@@ -1,27 +1,29 @@
 # Maintainer: Ben Boyter <ben@boyter.org>
 pkgname=scc-bin
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Sloc, Cloc and Code: scc is a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go"
-arch=('x86_64' 'i386')
+arch=('x86_64' 'i386' 'aarch64')
 url="https://github.com/boyter/scc"
 license=('MIT' 'UNLICENSE')
 conflicts=('scc')
 source_i386=(
-  https://raw.githubusercontent.com/boyter/scc/v$pkgver/LICENSE
-  https://github.com/boyter/scc/releases/download/v$pkgver/scc-$pkgver-i386-unknown-linux.zip
+  https://github.com/boyter/scc/releases/download/v$pkgver/scc_${pkgver}_Linux_i386.tar.gz
 )
 sha256sums_i386=(
-  '394715fd981d15253bdc4677286abfce01da356040381a0d9de7701bd7c8069c'
-  'd908d07917d876a2b5fc96986acbf41f1ce73e43379ed9c4c9a8d86009bf7759'
+  'a62f4ac7b1bb18ab7e7e68311614914e2097c1244816c451a6857914c0894764'
 )
 source_x86_64=(
-  https://raw.githubusercontent.com/boyter/scc/v$pkgver/LICENSE
-  https://github.com/boyter/scc/releases/download/v$pkgver/scc-$pkgver-x86_64-unknown-linux.zip
+  https://github.com/boyter/scc/releases/download/v$pkgver/scc_${pkgver}_Linux_x86_64.tar.gz
 )
 sha256sums_x86_64=(
-  '394715fd981d15253bdc4677286abfce01da356040381a0d9de7701bd7c8069c'
-  '13ca47ce00b5bd032f97f3af7aa8eb3c717b8972b404b155a378b09110e4aa0c'
+  '906ce2453690ca5de9e7dbb48f70cd2cedb9df7737c475ff9247b63454fc61b6'
+)
+source_aarch64=(
+  https://github.com/boyter/scc/releases/download/v$pkgver/scc_${pkgver}_Linux_arm64.tar.gz
+)
+sha256sums_aarch64=(
+  'ea65f05ce1d4486904ad2d0a19dcc5041c38908ff0fdcb86b83c54beb1f36d3f'
 )
 
 package() {
