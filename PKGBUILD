@@ -5,14 +5,14 @@ _shortpkgname=q-dns
 pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.'
 arch=(x86_64)
 url='https://github.com/natesales/q'
-pkgrel=2
+pkgrel=1
 license=('GPL-3.0')
 makedepends=('go' 'git')
 source=('git+https://github.com/natesales/q')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=0.8.0.r2.g6ea809c
+pkgver=0.8.2.r12.g7aa1b4a
 
 pkgver() {
 	cd q
