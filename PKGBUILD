@@ -2,7 +2,7 @@
 
 pkgname=dotto
 pkgver=6dea09
-pkgrel=4
+pkgrel=5
 pkgdesc="a pixel art editor (Very Unstable, Under Heavy Development)"
 arch=('any')
 url="https://github.com/LibreSprite/Dotto"
