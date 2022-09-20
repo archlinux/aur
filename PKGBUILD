@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=gog-stellaris
-pkgver=3.4.5
+pkgver=3.5.1
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="A strategy game with space exploration at its core"
@@ -15,7 +15,7 @@ depends=('bash' 'sed' 'glibc' 'libx11' 'libglvnd' 'gcc-libs')
 source=("stellaris_${pkgver//./_}.sh::gogdownloader://1508702879/en3installer0"
         "Stellaris.desktop"
         "start-stellaris.sh")
-sha512sums=('9db292680ec74b96d270a064ee4e12105209f872f403136fdfb375667f8f9b24ff0646cb46bde65122c402638c5256154819386867c8ac17a6a704f133d2b62c'
+sha512sums=('d07b59989e60a8f89a7d074d42138899f547934120fc1e322b17c99eed7338fd7d95b401274ef2d2dc2c9d0a8b970ebbbf8f5748de12386ad1ab5b1dd4d07b8e'
             'adb27526719b22f71211cd0398f1323a3821821f12fd6998f592eb5e31c0891234f2505e7eb0b685588116b305aaf33b78670539b26440744befc351b4776827'
             '909ba5ce65d6906f7357ad12f5f9cf3a2c81c15bd6414298b91616236754c1d4bff32f0ab0f83f6449e8c6adda669351ce23fbdd80c1366b6d36c862c6435603')
 
