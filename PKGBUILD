@@ -2,7 +2,7 @@
 # Contributor: luelistan <archlinux-aur-git@max-weller.de>
 
 pkgname=dhtest-git
-pkgver=r68.988afec
+pkgver=r70.c8f1dbb
 pkgrel=1
 pkgdesc="A DHCP client simulation on linux"
 arch=("x86_64")
