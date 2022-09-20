@@ -7,8 +7,10 @@ arch=('any')
 url="https://github.com/huboles/aursh"
 license=('GPL')
 groups=('aursh')
+depends=('bash')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/testing/$pkgname-$pkgver.tar.gz")
 install=aursh.install
+BUILDENV+=('!check')
 package() {
 	cd "$srcdir" || exit
     install -Dm644 aursh.conf "$pkgdir/etc/$pkgname/aursh.conf"
