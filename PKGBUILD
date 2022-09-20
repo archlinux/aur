@@ -1,6 +1,6 @@
 pkgname=wiki-loves-monuments-wallpapers
 pkgver=2021
-pkgrel=4
+pkgrel=5
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop"
 url="https://www.wikilovesmonuments.org"
 arch=('any')
@@ -77,7 +77,7 @@ source=(
     'image-62808473.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ab/The_Derelict_West_Pier_of_Brighton.jpg'
     'image-62875999.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b0/MK_30537_Spielbank_Wiesbaden.jpg'
     'image-62894928.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d2/Mestia%2C_evening.jpg'
-    'image-62609156.jpg::https://upload.wikimedia.org/wikipedia/commons/9/99/The_Tab%C4%81tab%C4%81ei_House_-_kashan_-_IRAN_%D8%AE%D8%A7%D9%86%D9%87_%D8%B7%D8%A8%D8%A7%D8%B7%D8%A8%D8%A7%DB%8C%DB%8C_%D9%87%D8%A7%DB%8C_%DA%A9%D8%A7%D8%B4%D8%A7%D9%86-_%D8%A7%DB%8C%D8%B1%D8%A7%D9%86_02.jpg'
+    'image-62609156.jpg::https://upload.wikimedia.org/wikipedia/commons/f/ff/The_Abbasi_House_-_kashan_-_IRAN_%D8%AE%D8%A7%D9%86%D9%87_%D8%B9%D8%A8%D8%A7%D8%B3%DB%8C%D8%A7%D9%86_%DA%A9%D8%A7%D8%B4%D8%A7%D9%86-_%D8%A7%DB%8C%D8%B1%D8%A7%D9%86_02.jpg'
     'image-73291732.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f9/Sheikhlotfolah.jpg'
     'image-73204683.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a9/Petra_Al-Kaznah_by_Night.jpg'
     'image-72728269.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d6/The_Cloisters_at_Gloucester_Cathedral.jpg'
@@ -126,7 +126,7 @@ source=(
     'image-110986152.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/%CE%9F%CE%B4%CF%8C%CF%82_%CE%99%CF%80%CF%80%CE%BF%CF%84%CF%8E%CE%BD.jpg'
 )
 sha1sums=(
-    '79e3bdc0ba6ab882eb150364fffcab493ea9655c'
+    '7229cb1248a1ba089d195a70489e0d09e68abd85'
     'f33f3cdd4d3c2485bc119ff4a72c54d260c3668d'
     '9f46d71d43317e3a84776c23af0e4c960f06aff0'
     '2d78387c4a6c49c5f335337e9f160e66ab891f46'
@@ -160,7 +160,7 @@ sha1sums=(
     'ecef7fd579e3805ca9a298f52eadd307fa8dc698'
     'dfb5e13850c8d371d0c9e9f56dbc9a6df5d847fe'
     '21e3c5bf2b424b8255f1c22b8f512fbf92caa69c'
-    'f4efbc47c26024bea4d75f94244a95ced5e274bb'
+    'fec9506cd02d1a9ec50a3f7690f88de247704155'
     '230e6b575597b46b97714f52dca04395ed2c6044'
     '9d18ad029b362d62a0e1234a7f1d117369d7a060'
     'bd1c98d2860537ea82ded75150c70ec2b341f8df'
