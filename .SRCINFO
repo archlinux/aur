@@ -1,0 +1,20 @@
+pkgbase = nmail
+	pkgdesc = Terminal-based email client
+	pkgver = 3.74
+	pkgrel = 1
+	url = https://github.com/d99kris/nmail
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = cyrus-sasl
+	depends = libetpan.so
+	depends = libmagic.so
+	depends = libncursesw.so
+	depends = libsqlite3.so
+	depends = libxapian.so
+	depends = openssl
+	depends = python
+	source = nmail-3.74.tar.gz::https://github.com/d99kris/nmail/archive/v3.74.tar.gz
+	sha256sums = 1f6fd6454df76cdcfe10be595ab4fef5a0ef7255be88c48f74b8dd0277e5f883
+
+pkgname = nmail
