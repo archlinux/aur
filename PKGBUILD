@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://git.sr.ht/~proycon/wayout"
 license=('GPLV3')
 options=("!buildflags")
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'ninja' 'pkgconf')
 source=("wayout::git+https://git.sr.ht/~proycon/wayout")
 md5sums=('SKIP')
 pkgver() {
