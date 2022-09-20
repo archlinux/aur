@@ -15,14 +15,12 @@ md5sums=("ee34eb57e44de768fe48a7183658062a")
 build()
 {
     cd ${pkgname}-${pkgver}
-    mkdir build
-    cd build
-    cmake ..
-    make
+    cmake -S . -B build
+    cmake --build build
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}/build
-    make DESTDIR="${pkgdir}" install
+    cd ${pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" cmake --install build
 }
