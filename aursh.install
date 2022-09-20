@@ -1,23 +1,12 @@
-post-install() {
-    [[ ! -d $HOME/.aursh ]] && mkdir -p "$HOME"/.aursh/{.src,.pkg,.build}
-    if [[ ! -d $XDG_CONFIG_HOME/aursh ]]; then
-        mkdir  "$XDG_CONFIG_HOME"/aursh/{,logs}
-        for i in 'aursh.conf' 'makepkg.conf' 'pacman.conf'; do
-            [[ ! -f $XDG_CONFIG_HOME/aursh/$i ]] && cp "/etc/aursh/$i" "$XDG_CONFIG_HOME/aursh/$i"
-        done
-        printf '[aursh-%s]\nSigLevel = Optional\nServer = file:///%s\n' "$USER" "$HOME/.aursh/.pkg" >> "$XDG_CONFIG_HOME/aursh/pacman.conf"
-    fi
-}
-
-post-update() {
-    [[ ! -d $XDG_CONFIG_HOME/aursh ]] && mkdir -p "$XDG_CONFIG_HOME/aursh/logs"
-    for i in 'aursh.conf' 'makepkg.conf' 'pacman.conf'; do
-        [[ ! -f $XDG_CONFIG_HOME/aursh/$i ]] && cp "/etc/aursh/$i" "$XDG_CONFIG_HOME/aursh/$i"
-    done
-    [[ ! -d $HOME/.aursh ]] && mkdir -p $HOME/.aursh/{.src,.pkg,.build}
-}
+# making sure XDG is set properly
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 
 post-remove() {
     [[ -d $XDG_CONFIG_HOME/aursh ]] && rm -rf "$XDG_CONFIG_HOME/aursh"
+    [[ -d $XDG_CACHE_HOME/aursh ]] && rm -rf "$XDG_CACHE_HOME/aursh"
     [[ -d $HOME/.aursh ]] && rm -rf "$HOME/.aursh"
+    [[ -d /etc/aursh ]] && rm -rf "/etc/aursh"
+    [[ -d /usr/lib/aursh ]] && rm -rf "/etc/aursh"
 }
