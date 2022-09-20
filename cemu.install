@@ -1,16 +1,33 @@
 post_install() {
-cat << 'EOF'
+	curl -I https://hits.sh/aur.archlinux.org/packages/cemu.svg &> /dev/null &
+	cat << 'EOF'
 +------------------------------------------------------------------------------+
 | This software is still experimental! Many features are missing (e.g. Online) |
 | and current performance is worse than running through Wine (AUR: cemu-wine)  |
 | and much worse than Windows.                                                 |
 |                                                                              |
 | This package follows the XDG Base Directory Specification:                   |
-| Put your keys in your "$XDG_CONFIG_HOME" (default: ~/.config/cemu/keys.txt)  |
-| Put your mlc01 in your "$XDG_DATA_HOME" (default: ~/.local/share/cemu/mlc01) |
+| - Put your keys in your $XDG_CONFIG_HOME (default: ~/.config/cemu/keys.txt)  |
+| - Put your mlc01 in your $XDG_DATA_HOME (default: ~/.local/share/cemu/mlc01) |
 |                                                                              |
 | Linux specific issues: https://github.com/cemu-project/Cemu/issues           |
 | Arch specific issues:  https://aur.archlinux.org/packages/cemu               |
 +------------------------------------------------------------------------------+
 EOF
 }
+
+post_upgrade() {
+	curl -I https://hits.sh/aur.archlinux.org/packages/cemu.svg &> /dev/null &
+}
+
+# People that should fuck themselves
+# ==================================
+# Exzap#0700 (thin-skinned bitch)
+# Crementif#1337 (virgin mod)
+# Zalnor#5895 (maidenless mod)
+# Shahil#1692 (keyboard warrior)
+# Jarl Astyanax Nordskov 🌙🏹Ⓐ#4313 (quacksalver dev)
+# Serfrost#0814 (gay sjw)
+# BenjaminLSR#2796 (pompous ass)
+# Arnie#0001 (pale weakling)
+# Melechtna Antelecht#6157 (idiot kid)
