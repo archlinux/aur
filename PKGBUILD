@@ -2,7 +2,7 @@
 # Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba-electron
-pkgver=202208131844_e5790011d3_release
+pkgver=202209161632_2afab8f106_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(any)
@@ -10,7 +10,7 @@ pkgdesc="Offers many different styles of Minecraft modpacks to the community. (U
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop"
         "ftb-app")
-sha256sums=("52b771025d09e327a55b26a86570e6cdc3c8428cdd8b0c93a9659b7405d9349f"
+sha256sums=("8edd8a0b1809b89bf7b07da3ad418ce73c86ac74717f5f7f5b558549ff385443"
             "2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530"
             "c4a3af22ae74b5398e257763d099e0345dccf37d9652d24557878e1b7053ca6d")
 license=("LGPL2.1")
