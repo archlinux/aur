@@ -1,6 +1,6 @@
 pkgbase = python-gbinder
 	pkgdesc = Python bindings for libgbinder
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/erfanoabdi/gbinder-python
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-gbinder
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = libgbinder
-	source = python-gbinder::git+https://github.com/erfanoabdi/gbinder-python.git#commit=bcf3debcc171108d02be49e22bfbab5c15d216e2
+	source = python-gbinder::git+https://github.com/erfanoabdi/gbinder-python.git#commit=423dc366561c82515f4f2f46017535e7d81ce5b1
 	sha512sums = SKIP
 
 pkgname = python-gbinder
