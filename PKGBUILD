@@ -61,6 +61,9 @@ _use_current=
 ### Enable KBUILD_CFLAGS -O3
 _cc_harder=y
 
+### Set this to your number of threads you have in your machine otherwise it will default to 128
+_nr_cpus=
+
 ### Set performance governor as default
 _per_gov=y
 
@@ -161,7 +164,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.19
-_minor=9
+_minor=10
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -423,6 +426,15 @@ prepare() {
             --disable NODES_SHIFT \
             --undefine NODES_SHIFT \
             --disable NEED_MULTIPLE_NODES
+    fi
+
+    ### Setting NR_CPUS
+    if [ -n "$_nr_cpus" ]; then
+        echo "Setting custom NR_CPUS..."
+        scripts/config --set-val NR_CPUS "$_nr_cpus"
+    else
+        echo "Setting default NR_CPUS..."
+        scripts/config --set-val NR_CPUS 128
     fi
 
     ### Disable MQ Deadline I/O scheduler
@@ -940,9 +952,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('0ad5b5986693adc1962be807bc3a64423a24b6a9da9df39b259d7e3bfd927f37'
+sha256sums=('67dab932e85f9b9062ced666c8ea888230a1dadfd624b05aead6b6ebc6d3bdd5'
             '8c42384613b972a88f2fda8413f31d580a4170158767f14f7595a78497367c57'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            '85aeec85cfeff447503c7c1f648c82764d22cecc57ce0b33338e7936c8282ee5'
-            '9659b83b734788c7cecb39d15f3a273d007bfa95fc3ed1951dd92796533fdcb2'
+            '37b05cf8cbefcc7660a548916ceba53adab153ef1202f49f465d02221fd4fa62'
+            '71f3b15838ec68e830953be2593a49713d16f8a40b65fb5d2c9a89d392ef8333'
             'd9ad53018d77344a31ec28482a09fa11d5189781972b1ed850102e3a9e20ba3a')
