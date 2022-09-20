@@ -1,8 +1,8 @@
 # Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=vmware-unlocker-git
-_pkgver=4.2.2
-pkgver=4.2.2
+_pkgver=4.2.3
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="VMware macOS utilities, from the dev branch of the upstream repo"
 arch=("x86_64")
@@ -20,19 +20,13 @@ sha512sums=("SKIP"
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  if [[ "$pkgver" != "$_pkgver.r%s.%s.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" ]]; then
-    _pkgver="$pkgver.r%s.%s.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | rev | cut -c 2- | rev
-    if [[ "$_pkgver" == *".$(git rev-list --count HEAD).$(git rev-parse --short HEAD).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" ]]; then
-      _pkgver="$_pkgver" | awk '{ print substr( $0, 1, length($0)-12 ) }'
-    fi
-  fi
+  __pkgver=$(echo "$_pkgver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | rev | cut -c 2- | rev)
+  echo "$__pkgver"
 }
 
 build() {
   cd "$srcdir/$pkgname/"
-  sed -e '/winres/ s/^#*/#/' -i build.sh
-  sed -e '/exe/ s/^#*/#/' -i build.sh
-  sed -e '/syso/ s/^#*/#/' -i build.sh
+  sed -e '/winres/ s/^#*/#/; /exe/ s/^#*/#/; /syso/ s/^#*/#/' -i build.sh
   bash build.sh "$pkgver"
 }
 
