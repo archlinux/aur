@@ -1,0 +1,13 @@
+pkgbase = magicard_ltd-linux_driver
+	pkgdesc = Printer Driver for Magicard Series
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://support.magicard.com/solution/linux-driver/
+	arch = x86_64
+	license = EULA
+	depends = libcurl-gnutls
+	depends = glibc
+	source = https://f08ddbe93aa02eaf9a6c-f08cd513e3a8c914f4f8f62af1786149.ssl.cf3.rackcdn.com/magicard_ltd-linux_driver-1.2.3.tar.gz
+	md5sums = dc9fcdbed3e4ba6fa990c97f9ab022b6
+
+pkgname = magicard_ltd-linux_driver
