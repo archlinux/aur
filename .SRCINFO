@@ -1,6 +1,6 @@
 pkgbase = python-ouster-sdk
 	pkgdesc = Ouster sensor SDK
-	pkgver = 0.4.1
+	pkgver = 0.5.1
 	pkgrel = 3
 	url = https://pypi.org/project/ouster-sdk/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-ouster-sdk
 	depends = python-numpy
 	depends = glew
 	depends = glfw-x11
-	source = https://files.pythonhosted.org/packages/source/o/ouster-sdk/ouster-sdk-0.4.1.tar.gz
-	sha256sums = 3ecf459dd327d251c7537df5728b1a2ec5d9f4c7a652e9c269db7b392a3292b0
+	source = https://files.pythonhosted.org/packages/source/o/ouster-sdk/ouster-sdk-0.5.1.tar.gz
+	sha256sums = 3d024f35e8da9afd668e4a222192db662e6d3394a942c4f5d5c7dbfd4825a3bf
 
 pkgname = python-ouster-sdk
