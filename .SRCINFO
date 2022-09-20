@@ -298,6 +298,7 @@ pkgbase = ttf-ms-win11
 pkgname = ttf-ms-win11
 	pkgdesc = Microsoft Windows 11 TrueType fonts
 	provides = ttf-font
+	provides = emoji-font
 	provides = ttf-tahoma
 	provides = ttf-ms-fonts
 	conflicts = ttf-vista-fonts

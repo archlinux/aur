@@ -340,7 +340,7 @@ _package() {
 
 package_ttf-ms-win11() {
     pkgdesc='Microsoft Windows 11 TrueType fonts'
-    provides+=(ttf-tahoma ttf-ms-fonts)
+    provides+=(emoji-font ttf-tahoma ttf-ms-fonts)
     conflicts+=(ttf-tahoma ttf-ms-fonts)
     _package ${_ttf_ms_win11[@]}
 }
