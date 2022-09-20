@@ -1,6 +1,6 @@
 pkgbase = alvr-nightly
 	pkgdesc = Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi.
-	pkgver = 19.0.0_dev01+nightly.2022.09.19
+	pkgver = 19.0.0_dev02+nightly.2022.09.19
 	pkgrel = 1
 	url = https://github.com/alvr-org/ALVR
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = alvr-nightly
 	provides = alvr
 	conflicts = alvr
 	options = !lto
-	source = alvr::git+https://github.com/alvr-org/ALVR.git#commit=2d8041e
+	source = alvr::git+https://github.com/alvr-org/ALVR.git#commit=d69b599
 	md5sums = SKIP
 
 pkgname = alvr-nightly

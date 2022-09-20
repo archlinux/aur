@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-nightly
 _pkgname=${pkgname%-nightly}
-pkgver=19.0.0_dev01+nightly.2022.09.19
+pkgver=19.0.0_dev02+nightly.2022.09.19
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
