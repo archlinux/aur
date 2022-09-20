@@ -2,7 +2,7 @@
 
 pkgname=dotto
 pkgver=6dea09
-pkgrel=1
+pkgrel=2
 pkgdesc="a pixel art editor (Very Unstable, Under Heavy Development)"
 arch=('any')
 url="https://github.com/LibreSprite/Dotto"
@@ -33,6 +33,6 @@ package() {
 	install -Dm644 data/Dotto.desktop "$pkgdir/usr/share/applications/Dotto.desktop"
 	install -Dm644 data/icon.png "$pkgdir/usr/share/icons/dotto.png"
 	install -Dm755 dotto "$pkgdir/opt/Dotto/dotto"
-	mkdir -p "$pkgdir/usr/bin/" # Just Ensure The Directory Exists
-	ln -sf "$pkgdir/opt/Dotto/dotto" "$pkgdir/usr/bin/dotto"
+	mkdir -p "/usr/bin/" # Just Ensure The Directory Exists
+	ln -sf "$pkgdir/opt/Dotto/dotto" "/usr/bin/dotto"
 }
