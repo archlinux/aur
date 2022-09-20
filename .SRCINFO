@@ -1,0 +1,21 @@
+pkgbase = wayqt-git
+	pkgdesc = Qt-based wrapper for various Wayland protocols
+	pkgver = r34.c296e49
+	pkgrel = 1
+	url = https://gitlab.com/desktop-frameworks/wayqt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = qt5-base
+	depends = qt5-wayland
+	depends = wayland
+	depends = wayland-protocols
+	depends = wlroots
+	provides = wayqt
+	provides = libwayqt.so
+	conflicts = wayqt
+	source = wayqt::git+https://gitlab.com/desktop-frameworks/wayqt
+	sha256sums = SKIP
+
+pkgname = wayqt-git
