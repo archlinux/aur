@@ -1,0 +1,5 @@
+pkg/
+src/
+*.log
+argopy-*.tar.gz
+python-argopy-*.pkg.tar*
