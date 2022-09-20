@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2022.09.2
+pkgver=2022.09.6
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("git+https://github.com/simple64/simple64.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             'bc93ed3b0cdea564302c3c1951ca313058ec1736f79472108aa4215cde74c047'
             'ebda5ebd0ec962df0006f112be5636b261d4ec912d71d1ce4b6eeb84f8b4382d'
-            '8c9d03fb3ddb974400b54f291a0ec647118396f106db6cdc23d30f10f1baad64'
+            '19ae0c28628ab0b2ac702d3a3fe6d3818a5e2f44ee0a423d1dd25e184887fdc9'
             'cbe0f5b43e8335092d574b5136dbc348d5fa74ac269773d93f5c1cfaba77952c'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 

@@ -35,7 +35,7 @@
  
      memset(&discord_app, 0, sizeof(discord_app));
  
-@@ -960,7 +961,7 @@ void MainWindow::loadCoreLib()
+@@ -973,7 +974,7 @@ void MainWindow::loadCoreLib()
  #ifdef CORE_LIBRARY_PATH
      QString corePath = CORE_LIBRARY_PATH;
  #else
@@ -44,7 +44,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -1053,7 +1054,7 @@ void MainWindow::loadPlugins()
+@@ -1066,7 +1067,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
