@@ -4,7 +4,7 @@
 pkgname=('python-gtkspellcheck')
 _pkgname='pygtkspellcheck'
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Spell-checking library written in Python for Gtk based on Enchant"
 arch=('any')
 url="https://github.com/koehlma/pygtkspellcheck"
@@ -16,12 +16,12 @@ source=("https://github.com/koehlma/${_pkgname}/archive/refs/tags/v${pkgver}.tar
 sha512sums=('f21cb7b1f38b84ae781bc7895572555769811458303957eafc91806834776d5a56bb6c77f805d2f2f36e428d4aac671734f963710c755c1075deaebe89b3f2d3')
 
 build() {
-  cd "${_pkgname}"
+  cd "${_pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${_pkgname}-${pkgver}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
