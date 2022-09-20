@@ -1,0 +1,15 @@
+pkgbase = vkoverhead
+	pkgdesc = Tool for evaluating CPU-based overhead of Vulkan drivers
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/zmike/vkoverhead
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python
+	depends = vulkan-driver
+	source = https://github.com/zmike/vkoverhead/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 7752291a4e5aa0b6e181959cb34916940569d10e91dbc92a77bee3f53ea2224d
+
+pkgname = vkoverhead
