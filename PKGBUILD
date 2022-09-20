@@ -15,15 +15,14 @@ md5sums=("3015608ed78cacc50958665754883e29")
 build()
 {
     cd ${pkgname}-${pkgver}
-    mkdir build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    cmake -S . -B build
+    cmake --build build
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}/build
+    cd ${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install build
 }
 
