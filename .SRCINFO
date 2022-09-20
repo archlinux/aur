@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-xclean-git
 	pkgdesc = Plugin for Vapoursynth: xclean
-	pkgver = r53.137b82a
+	pkgver = r66.c50de27
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=183245
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = vapoursynth-plugin-xclean-git
 	depends = vapoursynth-plugin-mvtools-git
 	depends = vapoursynth-plugin-mvtools_sf-git
 	depends = vapoursynth-plugin-temporalmedian-git
+	depends = vapoursynth-plugin-neo_tmedian-git
 	source = xclean::git+https://github.com/mysteryx93/xClean.git
 	sha256sums = SKIP
 

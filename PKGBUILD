@@ -2,7 +2,7 @@
 
 _plug=xclean
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r53.137b82a
+pkgver=r66.c50de27
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -14,6 +14,7 @@ depends=('vapoursynth-plugin-rgsf-git'
          'vapoursynth-plugin-mvtools-git'
          'vapoursynth-plugin-mvtools_sf-git'
          'vapoursynth-plugin-temporalmedian-git'
+         'vapoursynth-plugin-neo_tmedian-git'
          )
 makedepends=('git')
 source=("${_plug}::git+https://github.com/mysteryx93/xClean.git")
