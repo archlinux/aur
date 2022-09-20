@@ -1,0 +1,3 @@
+post_remove() {
+	rm -f "$pkgdir/usr/bin/dotto"
+}
