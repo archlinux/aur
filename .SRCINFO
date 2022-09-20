@@ -1,5 +1,5 @@
 pkgbase = hid-sony-panic-fix-dkms
-	pkgdesc = A quick hack to the hid-sony driver meant for the third party / clone DS4 controllers that do not support HID feature report 0x81.
+	pkgdesc = A quick hack to the hid-sony driver meant for the third party / clone DS4 controllers that do not support HID feature report 0x81. Also fixes a possible divide by zero on some clone controllers
 	pkgver = 5.19.8
 	pkgrel = 1
 	arch = x86_64
