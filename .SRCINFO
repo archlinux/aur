@@ -1,6 +1,6 @@
 pkgbase = odus-git
 	pkgdesc = Light-weight sudo alternative
-	pkgver = r34.ef1e609
+	pkgver = r40.18c6136
 	pkgrel = 1
 	url = https://github.com/mekb-turtle/odus
 	arch = any
