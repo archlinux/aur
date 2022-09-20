@@ -1,0 +1,14 @@
+pkgbase = shipments
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://git.sr.ht/~martijnbraam/shipments
+	arch = any
+	license = GPLv3
+	makedepends = make
+	makedepends = git
+	makedepends = meson
+	depends = python
+	source = shipments::git+https://git.sr.ht/~martijnbraam/shipments#tag=0.3.0
+	md5sums = SKIP
+
+pkgname = shipments
