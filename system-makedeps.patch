@@ -28,7 +28,7 @@ index 9f72c04..6462b11 100755
          lablGL/*.o) f="-g -Wno-pointer-sign -Werror -O2";;
          link.o)
 -            f="-g -std=c11 $muinc -Wall -Werror -Wextra -pedantic "
-+            f="$CFLAGS -g -std=c11 $(pkg-config --cflags "${mudeps[@]}") -Wall -Werror -Wextra -pedantic "
++            f="$CFLAGS -g -std=c11 $(pkg-config --cflags "${mudeps[@]}") -Wall -Wextra -pedantic "
              test "${mbt-}" = "debug" || f+="-O2 "
              $darwin && f+="-DMACOS -D_GNU_SOURCE -DGL_H='<OpenGL/gl.h>'" \
                      || f+="-D_POSIX_C_SOURCE -DGL_H='<GL/gl.h>'"
@@ -77,7 +77,7 @@ index 9f72c04..6462b11 100755
  
  libs="str.cma unix.cma"
 -clibs="-L$mudir/build/$mbt -lmupdf -lmupdf-third -lpthread"
-+clibs="-ljbig2dec $(pkg-config --libs "${mudeps[@]}") -lmupdf -lmupdf-third -lpthread
++clibs="-ljbig2dec $(pkg-config --libs "${mudeps[@]}") -lmupdf -lmupdf-third -lpthread"
  if $darwin; then
      mcomp=$ccomp
      clibs+=" -framework Cocoa -framework OpenGL"

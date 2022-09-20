@@ -4,7 +4,7 @@
 # Contributor: earnestly
 
 pkgname=llpp
-pkgver=36
+pkgver=39
 pkgrel=1
 pkgdesc='opengl accelerated pdf viewer based on mupdf'
 arch=('x86_64')
@@ -23,7 +23,7 @@ options=('!strip')
 source=("git+$cloneurl#tag=v$pkgver"
         'system-makedeps.patch')
 b2sums=('SKIP'
-        '911856ec752e461724fb76a3e2faf6596834fc6753f10790588e5b5b9c3c857973a977cee5fcccbb1d757e642902ef0983f6740726ea720509f452dda936b6ea')
+        'SKIP')
 
 prepare() {
   cd $pkgname
