@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if (( "$(vercmp $2 1.14-1)" <= 0 )); then
+    cat << EOF
+===> sslh systemd service has been splitted in sslh-fork.service and sslh-select.service
+EOF
+  fi
+  if (( "$(vercmp $2 1.16-3)" < 0 )); then
+    cat << EOF
+===> sslh may runs as unprivileged sslh user. Check your setup.
+EOF
+  fi
+  if (( "$(vercmp $2 1.19b)" < 0 )); then
+    cat << EOF
+===> Default config path is now /etc/sslh.cfg (as required by systemd generator)
+=====> Rename your /etc/sslh.conf into /etc/sslh.cfg
+===> sslh unit files security has been improved.
+=====> You may need to remove the PIDfile option in your /etc/sslh.cfg.
+===> sslh user is now created at unit startup (via DynamicUser)
+EOF
+  fi
+}
+
+# vim:set ts=2 sw=2 ft=sh et:
