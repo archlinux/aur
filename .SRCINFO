@@ -1,27 +1,25 @@
 pkgbase = xapian-core-git
 	pkgdesc = Open source search engine library
-	pkgver = v1.4.0.2731.g31ccc3a82
-	pkgrel = 2
+	pkgver = 1.5.0.r18998.72a282c84759
+	pkgrel = 1
 	url = https://github.com/xapian/xapian
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = automake
-	makedepends = autoconf
-	makedepends = libtool
 	makedepends = help2man
 	makedepends = graphviz
 	makedepends = doxygen
 	makedepends = python-docutils
 	makedepends = python-pygments
 	makedepends = tcl
+	makedepends = pngcrush
 	depends = zlib
 	depends = util-linux
 	provides = xapian-core
 	conflicts = xapian-core
-	source = git://github.com/xapian/xapian
+	options = libtool
+	source = git+https://github.com/xapian/xapian
 	sha512sums = SKIP
 
 pkgname = xapian-core-git
-

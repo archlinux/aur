@@ -1,15 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=xapian-core-git
-pkgver=v1.4.0.2731.g31ccc3a82
-pkgrel=2
+pkgver=1.5.0.r18998.72a282c84759
+pkgrel=1
 pkgdesc="Open source search engine library"
 arch=('i686' 'x86_64')
 url="https://github.com/xapian/xapian"
@@ -17,38 +10,41 @@ license=('GPL')
 depends=('zlib' 'util-linux')
 makedepends=(
   'git'
-  'automake'
-  'autoconf'
-  'libtool'
   'help2man'
   'graphviz'
   'doxygen'
   'python-docutils'
   'python-pygments'
   'tcl'
+  'pngcrush'
 )
 provides=('xapian-core')
 conflicts=('xapian-core')
-source=("git://github.com/xapian/xapian")
+source=("git+https://github.com/xapian/xapian")
 sha512sums=('SKIP')
-
+options=('libtool')
+		  
 pkgver() {
-  cd "$srcdir/xapian"
-  git describe --long | sed 's/Release_//;s/-/./g'
+  cd "$srcdir/xapian/xapian-core"
+  printf "%s.r%s.%s" $(awk '/AC_INIT/ {print $2}' configure.ac |tr -d \[\],) \
+	 $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
   cd "$srcdir/xapian"
-  ./bootstrap --without-autotools xapian-core
-
+  ./bootstrap xapian-core
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+  export CXXFLAGS+="-Wno-error=maybe-uninitialized -Wno-error=use-after-free"
   cd "$srcdir/xapian/${pkgname/-git/}"
   ./configure --prefix=/usr --enable-maintainer-mode
+  #hack to make docs build
+  make || true
   make
 }
 
 package() {
-  cd "$srcdir/xapian/${pkgname/-git/}"
+  cd "$srcdir"/xapian/xapian-core
   make DESTDIR="$pkgdir/" install
+  cd "$pkgdir"/usr/lib/pkgconfig
+  ln -s xapian-core-1.5.pc xapian-core.pc
 }
-
-# vim:set ts=2 sw=2 et:
