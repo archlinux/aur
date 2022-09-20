@@ -11,7 +11,7 @@ _mirthuser='mirthcon'
 
 if :; then
   _jsch_libname='jsch'
-  _jsch_oldver='0.1.54'
+  _jsch_oldver='0.1.55'
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
     _jsch_pkgver='0.2.1'
@@ -34,7 +34,9 @@ set -u
 pkgname='mirthconnect'
 #pkgname+='-git'
 #pkgver='3.12.0.b2650'
-pkgver='4.0.1.b293'
+#pkgver='4.0.1.b293'
+#pkgver='4.1.0.b2777'
+pkgver='4.1.1.b303'
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
 arch=('x86_64')
@@ -57,18 +59,21 @@ _srcdir='Mirth Connect'
 source=(
   "https://s3.amazonaws.com/downloads.mirthcorp.com/connect/${pkgver}/mirthconnect-${pkgver}-unix.tar.gz"
   '0000-mirth-disable-tls11.patch'
+  '0000a-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('8334c068adb05017514ce67ae2529a0d'
+md5sums=('56aaf39e5c04ca9c612e79801b0e6009'
          '426de9435b21e90df7ae044510938270'
+         '1acd364394ce76740ccea30f7133720f'
          '9d3781f917c5f5c4bc7e16860dc18344'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
-         '7a779d050bd1cfee55486a1d226466f1')
-sha256sums=('fd5223a15cdcaaf0d8071c1bdd9a0409fecd93fcec25e18c1daab1e9fe1f991d'
+         '093e7997245afcf04a598f4a9fa2ee14')
+sha256sums=('5f765609652afce42ac394228b15b005e22d2dcd57fb41a17fd465c1eaaf6f7f'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
+            '2bdf62155ce4a2e51f33fa27aab7f9d6f5e5ff209c9f3691db4782c1f30fee5c'
             'a3cb1b619269dbef91170f5470a0784aab4862932c17b63af686d5955b3c4bb9'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
-            '34ae98344a701d73145aa37e388f2765128d6e80240f0dc943d9ecc77ceed2d0')
+            'd1da7f180363924063cdc1f64c4fd049462f1cb02df0bf1ded2292c990e31bf2')
 
 source+=(
   '0000-jsch-disable-md5-3des-cbc-dss-arcfour.patch'
@@ -166,6 +171,10 @@ prepare() {
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
     # diff -pNaru5 'a' 'b' > '0000-mirth-disable-tls11.patch'
     patch -Nup1 -i "${srcdir}/0000-mirth-disable-tls11.patch"
+  elif grep -q -F -e 'SSLv2Hello' 'conf/mirth.properties'; then
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0000a-mirth-disable-SSLv2Hello.patch'
+    patch -Nup1 -i "${srcdir}/0000a-mirth-disable-SSLv2Hello.patch"
   fi
 
   _jsch_prepare
