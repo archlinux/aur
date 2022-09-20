@@ -15,7 +15,7 @@ optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
 conflicts=('lens-bin')
 source=("${pkgname}-${pkgver//+/-}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver//+/-}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('02034c97aacca27a2f14943bfe270868e632f0a295e6e596a7a4424ce4667d52e2a4b305923c37d06374652df5f5ef12323d65d4b2b1d44f9f02077d31d8bcf3'
+b2sums=('a9b64c89cddbce0cdb248b219c5f124ebe6606603ebb50c0600849fd3c3d3e2c326e8f3c9d6ce48909f8e40f0a84a4f48582280fa6a033eab123d076b463b9fe'
         '2aea209098a22d8e4b263a059f6e67b2a3e8f8dfb0c15ac81e33edb4c2be81fd7a6f419a04a77be5b5c8d81b160e6e3f159b4d8639ccab705fffecf149255a36')
 
 build() {
