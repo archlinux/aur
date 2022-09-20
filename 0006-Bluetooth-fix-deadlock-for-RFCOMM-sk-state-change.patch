@@ -1,4 +1,4 @@
-From fbfd3021298487e5eba89a3bc398d3f92e36e51d Mon Sep 17 00:00:00 2001
+From 47f7ee8a2fcd1f18956b456de5ed96723ded8066 Mon Sep 17 00:00:00 2001
 From: Desmond Cheong Zhi Xi <desmondcheongzx@gmail.com>
 Date: Mon, 4 Oct 2021 14:07:34 -0400
 Subject: [PATCH 6/8] Bluetooth: fix deadlock for RFCOMM sk state change

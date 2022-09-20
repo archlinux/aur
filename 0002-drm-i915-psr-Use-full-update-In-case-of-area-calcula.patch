@@ -1,4 +1,4 @@
-From 0e5136bc9576232f2d44833d7a15bf2c6c9edbf2 Mon Sep 17 00:00:00 2001
+From 1788d4888382fecb43fd14892a613e47144e534d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jouni=20H=C3=B6gander?= <jouni.hogander@intel.com>
 Date: Fri, 13 May 2022 17:28:10 +0300
 Subject: [PATCH 2/8] drm/i915/psr: Use full update In case of area calculation
