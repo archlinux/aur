@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-lazy
-pkgver=1.4
-pkgrel=6
+pkgver=1.5
+pkgrel=1
 pkgdesc="Lazy attributes for Python objects"
 url="https://github.com/stefanholek/lazy"
 license=('BSD')
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stefanholek/lazy/archive/$pkgver.tar.gz")
-sha512sums=('2a735b1436d3ebc76791645631cfcf54f1e332fd365c317bee92498b10397ec8206b271ae74427cae02985808a843eb98720c91e62dce93bb75702205da161bc')
+sha512sums=('be849c405b2a8513eaa2f1e6111bb265e307c947b8f076055ad02e21f7b56f4f52c9cde362e76bfc35703b0a6dcc0675ef8684cec64bb8736f19ed171c687019')
 
 build() {
   cd lazy-$pkgver
@@ -19,11 +19,11 @@ build() {
 
 check() {
   cd lazy-$pkgver
-  python setup.py test
+  python -m unittest discover
 }
 
 package() {
   cd lazy-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
