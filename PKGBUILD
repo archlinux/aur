@@ -1,11 +1,11 @@
 # Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-pkgname=maui-calendar-git
-_pkgname=${pkgname%-git}
-pkgver=r8.b4907c7
+_pkgname=maui-agenda
+pkgname=$_pkgname-git
+pkgver=0.5.5.r1.ge77f8a3
 pkgrel=1
-pkgdesc='Maui Calendar App'
-url='https://github.com/Nitrux/maui-calendar'
+pkgdesc='Calendar application built with MauiKit'
+url='https://github.com/Nitrux/agenda'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
 depends=(akonadi-contacts
@@ -22,13 +22,13 @@ makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git+$url.git)
+source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

@@ -1,8 +1,8 @@
-pkgbase = maui-calendar-git
-	pkgdesc = Maui Calendar App
-	pkgver = r8.b4907c7
+pkgbase = maui-agenda-git
+	pkgdesc = Calendar application built with MauiKit
+	pkgver = 0.5.5.r1.ge77f8a3
 	pkgrel = 1
-	url = https://github.com/Nitrux/maui-calendar
+	url = https://github.com/Nitrux/agenda
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -23,9 +23,9 @@ pkgbase = maui-calendar-git
 	depends = mauikit-git
 	depends = qt5-base
 	depends = qt5-declarative
-	provides = maui-calendar
-	conflicts = maui-calendar
-	source = git+https://github.com/Nitrux/maui-calendar.git
+	provides = maui-agenda
+	conflicts = maui-agenda
+	source = maui-agenda::git+https://github.com/Nitrux/agenda.git
 	sha256sums = SKIP
 
-pkgname = maui-calendar-git
+pkgname = maui-agenda-git
