@@ -1,0 +1,14 @@
+pkgbase = yj
+	pkgdesc = Convert YAML <=> TOML <=> JSON <=> HCL
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/sclevine/yj
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	provides = yj
+	conflicts = yj
+	source = yj-5.1.0.tar.gz::https://github.com/sclevine/yj/archive/refs/tags/v5.1.0.tar.gz
+	md5sums = f6ab69c49db27ced1bbb0031ea92936e
+
+pkgname = yj
