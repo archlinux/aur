@@ -2,7 +2,7 @@
 pkgname=python-buildlog-consultant
 _name=${pkgname#python-}
 pkgver=0.0.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Build log parser and analyser"
 arch=('any')
 url="https://github.com/jelmer/buildlog-consultant"
@@ -18,10 +18,10 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "$_name-$pkgver"
-#  python setup.py test
-#}
+check() {
+  cd "$_name-$pkgver"
+  python setup.py test
+}
 
 package() {
   cd "$_name-$pkgver"
