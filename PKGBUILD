@@ -3,7 +3,7 @@
 pkgname=com.qq.weixin.deepin
 _pkgver=3.2.1.154deepin14
 pkgver=${_pkgver//deepin/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Wine WeChat"
 arch=('x86_64')
 url="http://pc.weixin.qq.com/"
@@ -30,5 +30,11 @@ package() {
     # fix WeChatWin.dll error
     mv libldap24 ${pkgdir}/opt/apps/${pkgname}/lib
     sed -i '8iexport LD_LIBRARY_PATH=/opt/apps/com.qq.weixin.deepin/lib/' ${pkgdir}/opt/apps/${pkgname}/files/run.sh
+    # fix dock start
+    sed -i '8icount=`ps -ef |grep "WeChat.exe" |grep -v "grep" |wc -l`\
+if [ 0 != $count ];then\
+  /opt/deepinwine/tools/sendkeys.sh w WeChat\
+  exit 0\
+fi' ${pkgdir}/opt/apps/${pkgname}/files/run.sh
 
 }
