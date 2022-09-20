@@ -1,6 +1,6 @@
 pkgbase = matlab-support
 	pkgdesc = Provides dependencies desktop file and common fixes for MATLAB.
-	pkgver = 9.12.0
+	pkgver = 9.13.0
 	pkgrel = 1
 	url = http://www.mathworks.com
 	arch = x86_64

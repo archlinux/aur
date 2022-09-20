@@ -22,7 +22,7 @@
 ## guide when making this one.
 
 pkgname=matlab-support
-pkgver=9.12.0
+pkgver=9.13.0
 pkgrel=1
 pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
@@ -99,14 +99,14 @@ conflicts=('matlab')
 source=()
 
 prepare() {
-    # desktop file links matlab to system glib's as opposed to the ones shipped with matlab
+    # desktop file overrides some problematic libraries from MATLAB's install
     # see https://wiki.archlinux.org/index.php/Matlab#Addon_manager_not_working for more info
 
         msg2 'Creating desktop file'
         gendesk -f -n --pkgname 'matlab' \
         --pkgdesc 'A high-level language for numerical computation and visualization.' \
         --categories 'Development;Education;Science;Mathematics;IDE' \
-        --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6:/usr/lib/libgio-2.0.so:/usr/lib/libglib-2.0.so:/usr/lib/libgmodule-2.0.so:/usr/lib/libgobject-2.0.so:/usr/lib/libgthread-2.0.so matlab -desktop' \
+        --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6:/usr/lib/libfontconfig.so.1:/usr/lib/libtiff.so.5 matlab -desktop' \
         --mimetypes 'text/x-matlab' \
         "${srcdir}/matlab.desktop" >/dev/null 
 }
