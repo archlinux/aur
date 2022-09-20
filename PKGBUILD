@@ -94,7 +94,7 @@ package_gtk3-classic()
 	depends=(
 		atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 fribidi
 		libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
-		json-glib librsvg wayland-protocols desktop-file-utils mesa gtk-update-icon-cache
+		json-glib librsvg desktop-file-utils mesa gtk-update-icon-cache
 	)
 	optdepends=(
 		'libcups: printers in printing dialog'
