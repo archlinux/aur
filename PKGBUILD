@@ -3,7 +3,7 @@
 
 pkgname=ttf-xo-symbol-mac
 pkgver=1.00 # The fake version, the original is unversioned.
-pkgrel=1
+pkgrel=2
 pkgdesc="XO Symbol (macOS) font created considering trends of modern typography from «Новые облачные технологии»"
 arch=('any')
 url="https://fonts.myoffice.ru"

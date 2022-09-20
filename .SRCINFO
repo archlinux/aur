@@ -1,7 +1,7 @@
 pkgbase = ttf-xo-symbol-mac
 	pkgdesc = XO Symbol (macOS) font created considering trends of modern typography from «Новые облачные технологии»
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.myoffice.ru
 	install = ttf-xo-symbol-mac.install
 	arch = any
