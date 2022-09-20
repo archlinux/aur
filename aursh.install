@@ -1,0 +1,23 @@
+post-install() {
+    [[ ! -d $HOME/.aursh ]] && mkdir -p "$HOME"/.aursh/{.src,.pkg,.build}
+    if [[ ! -d $XDG_CONFIG_HOME/aursh ]]; then
+        mkdir  "$XDG_CONFIG_HOME"/aursh/{,logs}
+        for i in 'aursh.conf' 'makepkg.conf' 'pacman.conf'; do
+            [[ ! -f $XDG_CONFIG_HOME/aursh/$i ]] && cp "/etc/aursh/$i" "$XDG_CONFIG_HOME/aursh/$i"
+        done
+        printf '[aursh-%s]\nSigLevel = Optional\nServer = file:///%s\n' "$USER" "$HOME/.aursh/.pkg" >> "$XDG_CONFIG_HOME/aursh/pacman.conf"
+    fi
+}
+
+post-update() {
+    [[ ! -d $XDG_CONFIG_HOME/aursh ]] && mkdir -p "$XDG_CONFIG_HOME/aursh/logs"
+    for i in 'aursh.conf' 'makepkg.conf' 'pacman.conf'; do
+        [[ ! -f $XDG_CONFIG_HOME/aursh/$i ]] && cp "/etc/aursh/$i" "$XDG_CONFIG_HOME/aursh/$i"
+    done
+    [[ ! -d $HOME/.aursh ]] && mkdir -p $HOME/.aursh/{.src,.pkg,.build}
+}
+
+post-remove() {
+    [[ -d $XDG_CONFIG_HOME/aursh ]] && rm -rf "$XDG_CONFIG_HOME/aursh"
+    [[ -d $HOME/.aursh ]] && rm -rf "$HOME/.aursh"
+}

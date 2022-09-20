@@ -1,13 +1,15 @@
 pkgbase = aursh
-	pkgdesc = A simple cli package manager for the AUR written in bash
-	pkgver = 0.1
-	pkgrel = 2
-	url = https://github.com/huboles/aursh/releases/download/testing
+	pkgdesc = A simple AUR helper written in bash
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/huboles/aursh
+	install = aursh.install
 	arch = x86_64
+	groups = aursh
 	license = GPL
 	depends = git
 	depends = curl
-	source = aursh-0.1.tar.gz::https://github.com/huboles/aursh/releases/download/testing/aursh-0.1.tar.gz
-	sha256sums = 79ed2aa4fa3b8136f0a35a286b4ead449d068261a722a89e3d1587ff420bc8a7
+	source = aursh-0.2.tar.gz::https://github.com/huboles/aursh/releases/download/testing/aursh-0.2.tar.gz
+	sha256sums = f671611ba69d9e60dd729589b67a2342909a34af0abb64b42ce9f72801cbcf97
 
 pkgname = aursh

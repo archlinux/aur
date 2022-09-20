@@ -1,16 +1,21 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=aursh
-pkgver=0.1
-pkgrel=2
-pkgdesc="A simple cli package manager for the AUR written in bash"
+pkgver=0.2
+pkgrel=1
+pkgdesc="A simple AUR helper written in bash"
 arch=('x86_64')
-url="https://github.com/huboles/aursh/releases/download/testing"
+url="https://github.com/huboles/aursh"
 license=('GPL')
+groups=('aursh')
 depends=('git' 'curl')
-source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")
-sha256sums=('79ed2aa4fa3b8136f0a35a286b4ead449d068261a722a89e3d1587ff420bc8a7')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/testing/$pkgname-$pkgver.tar.gz")
+install=aursh.install
 package() {
 	cd "$srcdir" || exit
+    install -Dm644 aursh.conf "$pkgdir/etc/$pkgname/aursh.conf"
+    install -Dm644 makepkg.conf "$pkgdir/etc/$pkgname/makepkg.conf"
+    install -Dm644 pacman.conf "$pkgdir/etc/$pkgname/pacman.conf"
+    install -Dm755 functions.sh "$pkgdir/usr/lib/$pkgname/functions.sh"
     install -Dm755 aur.sh "$pkgdir/usr/bin/aursh"
-    install -Dm644 aursh.conf "$pkgdir/usr/share/$pkgname/aursh.conf"
 }
+sha256sums=('f671611ba69d9e60dd729589b67a2342909a34af0abb64b42ce9f72801cbcf97')
