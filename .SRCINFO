@@ -1,6 +1,6 @@
 pkgbase = librepcb-git
 	pkgdesc = A free EDA software to develop printed circuit boards (git master)
-	pkgver = r2362.0f68659b2
+	pkgver = r2604.951ecd9b8
 	pkgrel = 1
 	url = https://librepcb.org/
 	arch = x86_64

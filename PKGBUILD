@@ -8,7 +8,7 @@
 # for more details # on package signing.
 pkgname=librepcb-git
 _fullname=LibrePCB
-pkgver=r2362.0f68659b2
+pkgver=r2604.951ecd9b8
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (git master)"
 arch=('x86_64' 'i686')
@@ -47,9 +47,6 @@ build() {
 
   # Remove bundled hoedown, it is not needed on Qt >=5.14
   rm -rf libs/hoedown/
-
-  # Patch muparser include path
-  sed -i 's/muparser\/include\/muParser.h/muParser.h/' libs/librepcb/common/utils/mathparser.cpp
 
   # Build
   cd "$srcdir/$_fullname-build"
