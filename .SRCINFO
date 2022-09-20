@@ -1,8 +1,8 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
 	pkgver = 25.857d4b8
-	pkgrel = 1
-	url = https://gitlab.com/shssoichiro/soifunc
+	pkgrel = 2
+	url = https://github.com/shssoichiro/soifunc
 	arch = any
 	license = MIT
 	makedepends = git
@@ -19,7 +19,7 @@ pkgbase = vapoursynth-plugin-soifunc-git
 	optdepends = vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda
 	provides = vapoursynth-plugin-soifunc
 	conflicts = vapoursynth-plugin-soifunc
-	source = soifunc::git+https://git.bluefalcon.cc/soichiro/soifunc.git
+	source = soifunc::git+https://github.com/shssoichiro/soifunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-soifunc-git

@@ -3,10 +3,10 @@
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=25.857d4b8
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://gitlab.com/shssoichiro/soifunc'
+url='https://github.com/shssoichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
   'vapoursynth-plugin-vsutil-git'
@@ -24,7 +24,7 @@ optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu supp
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://git.bluefalcon.cc/soichiro/soifunc.git")
+source=("${_plug}::git+https://github.com/shssoichiro/soifunc.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
