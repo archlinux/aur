@@ -1,8 +1,8 @@
 # Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-pkgname=maui-settings-git
-_pkgname=${pkgname%-git}
-pkgver=r25.563c3a9
+_pkgname=maui-settings
+pkgname=$_pkgname-git
+pkgver=0.5.5.r1.g5dd3f75
 pkgrel=1
 pkgdesc='Maui Settings Manager is a settings manager for the Maui DE'
 url='https://github.com/Nitrux/maui-settings'
@@ -12,7 +12,7 @@ depends=(kcoreaddons
          ki18n
          kiconthemes
          mauikit-git
-         maui-manager-git
+         mauiman-git
          qt5-base
          qt5-declarative)
 makedepends=(git extra-cmake-modules)
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
