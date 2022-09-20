@@ -70,7 +70,9 @@ package_libsoup3-git() {
     libpsl.so
   )
   optdepends=('samba: Windows Domain SSO')
-  provides+=("${_pkg}-3.0.so")
+  provides+=("${_pkg}-3.0.so"
+             "${_pkgbase}")
+  conflicts+=("${_pkgbase}")
 
   # shellcheck disable=SC2154
   meson install -C build --destdir "${pkgdir}"
@@ -82,8 +84,9 @@ package_libsoup3-git() {
 package_libsoup3-docs-git() {
   pkgdesc+=" (documentation)"
   depends=()
+  conflicts+=("${_pkgbase}-docs-git")
 
-  mv doc/* "$pkgdir"
+  mv doc/* "${pkgdir}"
 }
 
 # vim:set sw=2 sts=-1 et:

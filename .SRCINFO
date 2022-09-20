@@ -43,7 +43,10 @@ pkgname = libsoup3-git
 	depends = libpsl.so
 	optdepends = samba: Windows Domain SSO
 	provides = libsoup-3.0.so
+	provides = libsoup3
+	conflicts = libsoup3
 
 pkgname = libsoup3-docs-git
 	pkgdesc = HTTP client/server library for GNOME (documentation)
 	depends = 
+	conflicts = libsoup3-docs-git
