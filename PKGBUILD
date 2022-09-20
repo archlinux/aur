@@ -1,3 +1,6 @@
+# To build without ASM (uasm), set NO_ASM variable. For example:
+# NO_ASM=1 makepkg -si
+
 pkgname=7-zip-full
 pkgver=22.01
 pkgrel=3
@@ -5,7 +8,8 @@ pkgdesc="File archiver with a high compression ratio. (Full package to replace p
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=('x86_64' 'i686' 'aarch64')
-makedepends=('uasm')
+makedepends=()
+[ ! "${NO_ASM}" ] && makedepends+=('uasm')
 [ "${CC}" == 'clang' ] && makedepends+=('clang' 'lld')
 provides=("${pkgname%-full}" 'p7zip')
 conflicts=("${provides[@]}")
@@ -43,7 +47,7 @@ build() {
         IS_X86=$([ "${PLATFORM}" == 'x86' ] && echo '1' || echo '')
         IS_ARM64=$([ "${PLATFORM}" == 'arm64' ] && echo '1' || echo '')
         MY_ARCH=
-        USE_ASM=1
+        USE_ASM=$([ ! "${NO_ASM}" ] && echo '1' || echo '')
         CC="${CC:-gcc}"
         CXX="${CXX:-g++}"
         CFLAGS_WARN='-Wno-error'
