@@ -3,8 +3,8 @@
 # Contributor: K. Piche <kpiche <at> rogers <dot> com>
 
 pkgname=ripmime
-pkgver=r13
-_commit=a556ffe08d620602475c976732e8e1a82f3169e9
+pkgver=r18
+_commit=20266ed9ddefafe7c6b9f3c6bbf869d6facab0e9
 pkgrel=1
 epoch=1
 pkgdesc='MIME/email package decoder'
