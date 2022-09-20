@@ -3,9 +3,9 @@
 # Contributor: M A <morealaz at gmail dot com>
 
 pkgname='java-openjdk-bin'
-_majorver='18'
-_fullver='18.0.2.1'
-_buildver='1'
+_majorver='19'
+_fullver='19'
+_buildver='36'
 pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
@@ -21,8 +21,8 @@ provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("https://download.java.net/java/GA/jdk${_fullver}/db379da656dc47308e138f21b33976fa/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
-sha256sums=('3bfdb59fc38884672677cebca9a216902d87fe867563182ae8bc3373a65a2ebd')
+source=("https://download.java.net/java/GA/jdk${_fullver}/877d6127e982470ba2a7faa31cc93d04/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
+sha256sums=('f47aba585cfc9ecff1ed8e023524e8309f4315ed8b80100b40c7dcc232c12f96')
 
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 

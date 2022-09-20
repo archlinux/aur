@@ -1,21 +1,21 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 18.0.2.1 Oracle Build.
-	pkgver = 18.0.2.1.u1
+	pkgdesc = Java OpenJDK 19 Oracle Build.
+	pkgver = 19.u36
 	pkgrel = 1
-	url = https://jdk.java.net/18
+	url = https://jdk.java.net/19
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=18
-	provides = java-environment-openjdk=18
-	provides = java-runtime=18
-	provides = java-runtime-openjdk=18
-	provides = java-runtime-headless=18
-	provides = java-runtime-headless-openjdk=18
-	source = https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_linux-x64_bin.tar.gz
-	sha256sums = 3bfdb59fc38884672677cebca9a216902d87fe867563182ae8bc3373a65a2ebd
+	provides = java-environment=19
+	provides = java-environment-openjdk=19
+	provides = java-runtime=19
+	provides = java-runtime-openjdk=19
+	provides = java-runtime-headless=19
+	provides = java-runtime-headless-openjdk=19
+	source = https://download.java.net/java/GA/jdk19/877d6127e982470ba2a7faa31cc93d04/36/GPL/openjdk-19_linux-x64_bin.tar.gz
+	sha256sums = f47aba585cfc9ecff1ed8e023524e8309f4315ed8b80100b40c7dcc232c12f96
 
 pkgname = java-openjdk-bin
