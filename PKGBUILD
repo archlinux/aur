@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-kids
-pkgver=5.8.264
+pkgver=6.2.291
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -22,13 +22,13 @@ options=(!strip)
 _debname=HUB-Kids.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/kidslinux.zip)
-sha256sums=('1f8b5911c823eaf29882adb98cac8e2bb47244cc16eff0689ced7b27a3fb2c68')
+sha256sums=('515945d89c7ebb7c9faf80e65f9fd2d3eac777f7fe45b18bfb94a1d7fe2819a0')
 
 prepare() {
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
   ar xv "${_debname}" > /dev/null
-  tar -xf data.tar.xz > /dev/null
+  tar -xf data.tar.zst > /dev/null
 
   #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
   find ./usr -type d -exec chmod 755 '{}' \;
