@@ -3,7 +3,7 @@
 # Contributor: Dustin Blackman
 
 pkgname='cf-alias-bin'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Create Cloudflare email alias' directly from your terminal or Alfred.'
 url='https://github.com/dustinblackman/cf-alias'
@@ -12,8 +12,8 @@ license=('MIT')
 provides=('cf-alias')
 conflicts=('cf-alias')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/cf-alias/releases/download/v0.1.3/cf-alias_0.1.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('bad7b5ceff9c6229bf820fe67b9631f4c6c5329d55295559e9edac18a0f592e9')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/cf-alias/releases/download/v0.1.4/cf-alias_0.1.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('d21f9aa2b99cb99f23c34f8138a43fb73e2a6331c6859dde84c9f91d22fb1f77')
 
 package() {
   # bin
