@@ -1,6 +1,6 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
-	pkgver = 0.207.1_6337
+	pkgver = 0.207.2_6523
 	pkgrel = 1
 	url = https://download.curseforge.com/
 	arch = x86_64
