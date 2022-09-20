@@ -1,0 +1,23 @@
+pkgbase = python-erddapy
+	pkgdesc = Retrieve scientific datasets from ERDDAP servers
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://ioos.github.io/erddapy/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-netcdf4
+	depends = python-pandas
+	depends = python-pytz
+	depends = python-requests
+	depends = python-xarray
+	optdepends = python-joblib: parallel searching
+	source = https://files.pythonhosted.org/packages/source/e/erddapy/erddapy-1.2.1.tar.gz
+	sha256sums = 618c7e07a8437d4fafb56fbc16da25cede92989e9bd5cf5a7be26e663e2a2d07
+
+pkgname = python-erddapy
