@@ -1,10 +1,10 @@
 pkgbase = python-ouster-sdk
 	pkgdesc = Ouster sensor SDK
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://pypi.org/project/ouster-sdk/
 	arch = any
-	license = BSD-3-Clause License
+	license = BSD
 	makedepends = python-setuptools
 	makedepends = python-pytest
 	makedepends = pybind11
