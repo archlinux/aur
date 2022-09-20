@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging
 pkgver=0.79.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
@@ -47,6 +47,18 @@ package() {
   install -Dm 644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README"
   install -Dm 644 "docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
   install -Dm 644 "README" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
+
   # bash completions
   install -Dm 644 "contrib/linux/bash-completion/dosbox" "$pkgdir/usr/share/bash-completion/completions/dosbox"
+
+  # dosbox resources
+  #fix for a wierd thing cp is doing to drives as it seems to extract the internal files instead of copying the files
+  install -d "$pkgdir/usr/share/dosbox-staging/drives"
+  cp -r "build/resources/drives/y" "$pkgdir/usr/share/dosbox-staging/drives"
+  cp -r "build/resources/drives/y.conf" "$pkgdir/usr/share/dosbox-staging/drives/"
+
+  cp -r "build/resources/freedos-cpi" "$pkgdir/usr/share/dosbox-staging/"
+  cp -r "build/resources/freedos-keyboard" "$pkgdir/usr/share/dosbox-staging/"
+  cp -r "build/resources/glshaders" "$pkgdir/usr/share/dosbox-staging/"
+  cp -r "build/resources/translations" "$pkgdir/usr/share/dosbox-staging/"
 }
