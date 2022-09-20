@@ -5,13 +5,15 @@
 pkgname=greetd-qtgreet-git
 _pkg="${pkgname%-git}"
 pkgver=1.0.0.r30.g04e0160
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt based greeter for greetd'
 arch=('aarch64' 'x86_64')
 url="https://gitlab.com/marcusbritanicus/QtGreet"
 license=('GPL3')
 depends=('greetd' 'json-c' 'qt5-base' 'qt5-wayland' 'wayqt' 'wlroots')
 makedepends=('git' 'meson')
+provides=("$_pkg")
+conflicts=("$_pkg")
 source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = greetd-qtgreet-git
 	pkgdesc = Qt based greeter for greetd
 	pkgver = 1.0.0.r30.g04e0160
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/marcusbritanicus/QtGreet
 	arch = aarch64
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = greetd-qtgreet-git
 	depends = qt5-wayland
 	depends = wayqt
 	depends = wlroots
+	provides = greetd-qtgreet
+	conflicts = greetd-qtgreet
 	source = greetd-qtgreet::git+https://gitlab.com/marcusbritanicus/QtGreet
 	sha256sums = SKIP
 
