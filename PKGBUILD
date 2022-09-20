@@ -1,7 +1,7 @@
 # Maintainer: V0IDPlusPlus <v0idplusplus at protonmail dot com>
 
 pkgname=tencent-docs-bin
-pkgver=2.3.17
+pkgver=2.3.20
 pkgrel=1
 pkgdesc="腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
