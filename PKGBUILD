@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
 pkgver=2021
-pkgrel=5
+pkgrel=6
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -61,7 +61,7 @@ source=(
     'image-69924253.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/%D0%91%D0%BE%D0%BB%D0%BE%D1%82%D0%BD%D1%8B%D0%B5_%D0%9A%D0%B8%D0%BF%D0%B0%D1%80%D0%B8%D1%81%D1%8B.jpg'
     'image-70155469.jpg::https://upload.wikimedia.org/wikipedia/commons/7/70/Por_do_Sol_em_Baixa_Grande.jpg'
     'image-69961168.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/%D0%9B%D0%B5%D0%B6%D0%BA%D0%B0_%D0%BC%D0%BE%D1%80%D0%B6%D0%B5%D0%B9_%D0%BD%D0%B0_%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B2%D0%B5_%D0%9D%D0%BE%D1%80%D1%82%D0%B1%D1%80%D1%83%D0%BA.jpg'
-    'image-69595567.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/Chestnut-tailed_starling%2C_Satchari_National_Park.jpg'
+    'image-69595567.jpg::https://upload.wikimedia.org/wikipedia/commons/5/5b/Chestnut-tailed_starling%2C_Satchari_National_Park_01.jpg'
     'image-68822431.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a4/Sunrise_Djanet.jpg'
     'image-68724727.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/Meteora%27s_monastery_2.jpg'
     'image-79083432.jpg::https://upload.wikimedia.org/wikipedia/commons/1/12/Geb%C3%A4nderte_Prachtlibelle_auf_Pusteblume_am_NSG_G%C3%BClper_See.jpg'
@@ -105,7 +105,7 @@ source=(
     'image-107212097.jpg::https://upload.wikimedia.org/wikipedia/commons/5/58/Montejunto_Por_do_Sol.jpg'
 )
 sha1sums=(
-    '7012e1f53ea9dcf9a005c8d02c85657687637c32'
+    'dcf3200bc1fc053c3a7c19b682da7270420cef12'
     'e58397f4cee346f2beeabc95d8902eba1db691a9'
     '1246b2cffb3709013d410024a322a8ff63760e99'
     '7d08f021a40eb746e137ab6efdf81a68c1737fee'
@@ -204,8 +204,8 @@ sha1sums=(
 _index=(
     56 49 38 25 14 1 80 57 39 26 2 81 70 58 15 3 82 59 40 27 16 71 60 28 4 83 61
     50 41 29 17 72 62 51 42 30 18 5 84 73 63 19 6 85 74 64 52 43 31 20 7 86 75
-    44 32 8 87 76 65 45 33 9 88 77 66 53 46 21 10 89 78 47 34 11 90 79 67 54 35
-    22 12 91 68 55 36 23 13 69 48 37 24 92 93 94
+    44 32 8 87 76 65 45 33 9 88 77 66 46 21 10 89 78 53 47 34 11 90 79 67 35 22
+    12 91 68 54 36 23 13 69 55 48 37 24 92 93 94
 )
 _ultrawide=(
     0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 0 1 1
