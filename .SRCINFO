@@ -7,6 +7,7 @@ pkgbase = vala-panel
 	arch = pentium4
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
