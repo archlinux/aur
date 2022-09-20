@@ -3,11 +3,10 @@ pkgname=aursh
 pkgver=0.2
 pkgrel=1
 pkgdesc="A simple AUR helper written in bash"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/huboles/aursh"
 license=('GPL')
 groups=('aursh')
-depends=('git' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/testing/$pkgname-$pkgver.tar.gz")
 install=aursh.install
 package() {
