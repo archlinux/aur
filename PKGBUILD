@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-young
-pkgver=5.8.264
+pkgver=6.2.291
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -22,13 +22,13 @@ options=(!strip)
 _debname=HUB-Young.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/younglinux.zip)
-sha256sums=('0421cf7897f2ce416bbb33b6ecbe99a746a71cd29800bac9b11a24ffe1391e0d')
+sha256sums=('d90cf330dff5d2b0b27703052d5903d029cb542d00f3fb8f334c607e0049ac24')
 
 prepare() {
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
   ar xv "${_debname}" > /dev/null
-  tar -xf data.tar.xz > /dev/null
+  tar -xf data.tar.zst > /dev/null
 
   #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
   find ./usr -type d -exec chmod 755 '{}' \;
