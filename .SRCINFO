@@ -14,8 +14,6 @@ pkgbase = ognibuild
 	depends = python-setuptools
 	depends = python-toml
 	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.14.tar.gz
-	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.14.tar.gz.asc
-	validpgpkeys = DC837EE14A7E37347E87061700806F2BD729A457
 	sha256sums = f8feefc9233a5b20cfe0d0562ed4709e20112671a17a8c752f2df334df88eb4a
 	sha256sums = SKIP
 
