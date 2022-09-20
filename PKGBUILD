@@ -1,7 +1,7 @@
 # Maintainer: Gomasy <nyan@gomasy.jp>
 
 pkgname=ibus-autostart
-pkgver=1.3
+pkgver=1.2
 pkgrel=1
 pkgdesc="iBus daemon autostart with XDG Autostart Specification"
 arch=('any')
@@ -16,7 +16,7 @@ package() {
 Name=IBus (KIMPanel)
 GenericName=Input Method Framework
 Comment=Start IBus Input Method Framework
-Exec=ibus-daemon -rxR
+Exec=ibus-daemon -drxR
 Icon=ibus
 Terminal=false
 Type=Application
