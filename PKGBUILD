@@ -9,7 +9,7 @@ arch=('any')
 license=('BSD')
 
 depends=('python-netcdf4' 'python-pandas' 'python-pytz' 'python-requests' 'python-xarray')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 optdepends=(
   'python-joblib: parallel searching'
 )

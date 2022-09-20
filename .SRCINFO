@@ -5,7 +5,6 @@ pkgbase = python-erddapy
 	url = https://ioos.github.io/erddapy/
 	arch = any
 	license = BSD
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
