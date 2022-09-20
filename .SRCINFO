@@ -7,10 +7,10 @@ pkgbase = devc-bin
 	conflicts = devc
 	provides = devc
 	arch = aarch64
-	source_aarch64 = https://github.com/nikaro/devc/releases/download/v1.0.0-beta.4/devc_1.0.0-beta.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8f38f1d01538da9412ec7636d10bd7e4abea7175457735a53f157a32c54e11c7
+	source_aarch64 = https://github.com/nikaro/devc/releases/download/v1.0.0-beta.5/devc_1.0.0-beta.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = b45de1d717a44fb34f983c55b1895b42894c5606a5826f875a4bdeafb73fcceb
 	arch = x86_64
-	source_x86_64 = https://github.com/nikaro/devc/releases/download/v1.0.0-beta.4/devc_1.0.0-beta.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2239089e829c126595e4f14b864bcd06fbe4c2a30ee977e51333605d2cdca870
+	source_x86_64 = https://github.com/nikaro/devc/releases/download/v1.0.0-beta.5/devc_1.0.0-beta.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3c11edc3e1568055ea82af606a6ac321525ac99571a31dcea5f0b818cfed268d
 	
 pkgname = devc-bin
