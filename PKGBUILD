@@ -1,7 +1,7 @@
 # Maintainer: Paul Spruce <paul.spruce@gmail.com>
 pkgname=arjun
 _pkgname=Arjun
-pkgver=2.1.5
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="HTTP parameter discovery suite."
 arch=("x86_64")
