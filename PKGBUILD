@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=rabtap
-pkgver=1.37
+pkgver=1.38
 pkgrel=1
 license=(GPL3)
 pkgdesc="RabbitMQ wire tap and swiss army knife "
@@ -9,7 +9,7 @@ makedepends=('go')
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/jandelgado/rabtap"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jandelgado/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a28eb08d733356218e2537bf03b01035eaf8c383693a2a0cac7b1c13c1266f21')
+sha256sums=('828e8623b44b8bde85be382c34cde4c807bdba0e4e0de0abf7aad72cf627480b')
 
 prepare() {
   # prevent creation of a `go` directory in one's home.
