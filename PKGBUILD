@@ -5,7 +5,7 @@
 
 pkgname=openmpi
 pkgver=4.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
 url='https://www.open-mpi.org'
@@ -54,8 +54,7 @@ build() {
     --with-hwloc=external \
     --with-libevent=external \
     --with-pmix=external \
-    --with-valgrind \
-    --without-slurm
+    --with-valgrind
 
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
