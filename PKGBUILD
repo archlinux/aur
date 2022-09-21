@@ -2,26 +2,30 @@
 
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
-makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gtest'
-             'java-environment' 'python' 'asciidoc' 'doxygen' 'graphviz'
-             'xdg-utils' 'highway')
+makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
+             'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr'
+             'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
+             'graphviz' 'xdg-utils')
 options=('!lto')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/google/brotli.git'
-        'git+https://github.com/lvandeve/lodepng.git'
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
-        'git+https://github.com/google/highway.git')
+        'git+https://github.com/google/highway.git'
+        'git+https://github.com/glennrp/libpng.git'
+        'git+https://github.com/madler/zlib.git'
+        'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,21 +36,19 @@ sha256sums=('SKIP'
 
 prepare() {
     git -C libjxl submodule init
-    git -C libjxl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
-    git -C libjxl config --local submodule.third_party/lodepng.url "${srcdir}/lodepng"
+    local _submodule
+    for _submodule in brotli googletest sjpeg skcms highway libpng zlib
+    do
+        git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
+    done
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
-    git -C libjxl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
-    git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
-    git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-    git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
+    git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
     git -C libjxl submodule update
 }
 
 build() {
-    export CC='clang'
-    export CXX='clang++'
-    export CFLAGS+=' -DNDEBUG'
-    export CXXFLAGS+=' -DNDEBUG'
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     cmake -B build -S libjxl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
@@ -58,6 +60,8 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
+        -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
+        -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
     make -C build all doc
 }
@@ -67,15 +71,15 @@ check() {
 }
 
 package_libjxl() {
-    depends=('brotli' 'giflib' 'gperftools' 'libjpeg-turbo' 'libpng' 'openexr')
+    depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'gimp: for gimp plugin'
                 'java-runtime: for JNI bindings')
     provides=('libjxl.so' 'libjxl_threads.so')
     
     make -C build DESTDIR="$pkgdir" install
-    install -D -m755 build/tools/libjxl_jni.so -t "${pkgdir}/usr/lib"
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/java"/{org.jpeg.jpegxl,jpegxl}.jar
 }
 
 package_libjxl-doc() {
