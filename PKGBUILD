@@ -1,7 +1,7 @@
 # Maintainer: Sven Yannick Klein <syk42 dot arch at gmail dot com>
 pkgname=firefly
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library to perform rational function interpolation over finite fields with a rational number reconstruction to promote the coefficients to Q. Usage of the optional dependencies flint and jemalloc is highly advised.'
 arch=('x86_64')
 url='https://gitlab.com/firefly-library/firefly.git'
