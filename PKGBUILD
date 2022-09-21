@@ -2,7 +2,7 @@
 
 pkgname=journalbeat-oss-bin
 pkgver=7.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
 url='https://www.elastic.co/products/beats'
@@ -17,7 +17,7 @@ backup=('etc/journalbeat-oss/journalbeat.yml', 'etc/journalbeat-oss/fields.yml')
 srcpath="journalbeat-${pkgver}-linux-x86_64"
 
 package() {
-  install -Dm755 "${srcdir}/${srcpath}/journalbeat" "${pkgdir}/usr/bin/journalbeat"
+  install -Dm755 "${srcdir}/${srcpath}/journalbeat" "${pkgdir}/usr/bin/journalbeat-oss"
   install -Dm644 "${srcdir}/${srcpath}/journalbeat.yml" "${pkgdir}/etc/journalbeat-oss/journalbeat.yml"
   install -Dm644 "${srcdir}/${srcpath}/journalbeat.reference.yml" "${pkgdir}/etc/journalbeat-oss/journalbeat.reference.yml"
   install -Dm644 "${srcdir}/${srcpath}/fields.yml" "${pkgdir}/etc/journalbeat-oss/fields.yml"
