@@ -4,7 +4,7 @@ _pkgname=OpenMRac-data
 _pkgname2=${_pkgname%-*}
 pkgname="${_pkgname,,}-git"
 pkgver=r7.103f6d1
-pkgrel=2
+pkgrel=3
 pkgdesc='Data for OpenMRac'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Franticware/${_pkgname}"
@@ -13,6 +13,7 @@ makedepends=('git' 'sox')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
