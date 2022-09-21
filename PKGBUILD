@@ -2,13 +2,12 @@
 pkgname=nerd-fonts-ibm-plex-mono
 _name=IBMPlexMono
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nerd Font patched version of IBM Plex™ Mono"
 arch=('any')
 url="https://www.nerdfonts.com"
 license=('MIT')
 provides=('nerd-fonts' 'ttf-font-nerd')
-conflicts=('nerd-fonts' 'nerd-fonts-complete')
 source=("$_name-$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/$_name.zip"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
 sha256sums=('05c76e08627cae7b334e3bcf88c41a263bd7da02680ec6f6987fc51c25cb4d39'
