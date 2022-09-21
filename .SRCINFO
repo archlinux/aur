@@ -1,0 +1,17 @@
+pkgbase = journalbeat-oss-bin
+	pkgdesc = Data shippers for Elasticsearch
+	pkgver = 7.15.2
+	pkgrel = 1
+	url = https://www.elastic.co/products/beats
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	conflicts = journalbeat-oss
+	backup = etc/journalbeat-oss/journalbeat.yml,
+	backup = etc/journalbeat-oss/fields.yml
+	source = https://artifacts.elastic.co/downloads/beats/journalbeat/journalbeat-oss-7.15.2-linux-x86_64.tar.gz
+	source = journalbeat-oss.service
+	sha512sums = f2d4e0588736a606cb09cb17089d7f4b761e78763e7be41b9b0f66bd71ac8d0cd7713c654f14ce15db22b532913ea8b2fd4125e3fd3019602d87a4cbdb534fea
+	sha512sums = 977a8209341891902a3edaedcab4370ab87260f88031c404dfbae7633d9b11673fa2719f81acc716cea6028a670c484092f579e560e2ba621e74682cf08efa2f
+
+pkgname = journalbeat-oss-bin
