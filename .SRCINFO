@@ -1,7 +1,7 @@
 pkgbase = vmware-unlocker-bin
 	pkgdesc = VMware macOS utilities
 	pkgver = 4.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DrDonk/unlocker
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = vmware-unlocker-bin
 	provides = vmware-unlocker
 	conflicts = vmware-unlocker
 	conflicts = vmware-unlocker-git
-	source = https://github.com/DrDonk/unlocker/releases/download/V4.2.3/unlocker423.zip
+	source = https://github.com/DrDonk/unlocker/releases/download/v4.2.3/unlocker423.zip
 	source = vmware-unlocker-post.hook
 	source = vmware-unlocker-pre.hook
 	sha512sums = 2345b049e260551162e78db10f3f3e5edbade071f7360b21b695253f1cc6dcb20937dd43401a75e16affdfdbd69ba505e41120ed56a43ff63accb1a372e31f5e
