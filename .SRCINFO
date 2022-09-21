@@ -1,6 +1,6 @@
 pkgbase = ttf-sarasa-ui-sc
 	pkgdesc = A CJK programming font based on Iosevka and Source Han Sans. (123M/248M, only Sarasa UI SC inside)
-	pkgver = 0.37.2
+	pkgver = 0.37.4
 	pkgrel = 1
 	url = https://github.com/be5invis/Sarasa-Gothic
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ttf-sarasa-ui-sc
 	makedepends = p7zip
 	provides = ttf-sarasa-ui-sc
 	conflicts = ttf-sarasa-gothic
-	noextract = sarasa-gothic-ttf-0.37.2.7z
-	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.37.2/sarasa-gothic-ttf-0.37.2.7z
-	source = LICENSE-0.37.2::https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v0.37.2/LICENSE
-	sha256sums = 8258ec10e2625dd55567f50e6e79296e47e3d93612997e1740b10362d9c709e5
+	noextract = sarasa-gothic-ttf-0.37.4.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.37.4/sarasa-gothic-ttf-0.37.4.7z
+	source = LICENSE-0.37.4::https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v0.37.4/LICENSE
+	sha256sums = 325e5d6e6bce9007048f8a621440b22b6329a23bc2b1b0d01934358c757bc805
 	sha256sums = 9caccb70771a676613a8a9a9863f20c49c861383af99c1dd7cc354226b375832
 
 pkgname = ttf-sarasa-ui-sc
