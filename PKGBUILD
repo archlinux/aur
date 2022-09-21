@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://git.causal.agency/litterbox"
 license=('GPL3')
 depends=('libretls' 'sqlite')
-makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://git.causal.agency/${pkgname%-git}.git")
