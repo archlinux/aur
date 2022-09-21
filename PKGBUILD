@@ -4,7 +4,7 @@
 pkgname=tachidesk
 _pkgname=tachidesk-server
 _PkgName=Tachidesk-Server
-pkgver=0.6.4_r1113
+pkgver=0.6.5_r1122
 pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
@@ -20,8 +20,8 @@ _assets="$_PkgName-v$_pkgver-r$_revnum-linux-assets"
 source=("$url/releases/download/v$_pkgver/$_jar"
   "$url/releases/download/v$_pkgver/$_assets.tar.gz")
 noextract=("$_jar")
-sha256sums=('3a4421032bd4c1046cc3c91af72bae11463e7c86fc4f2930b77abee7cb762b97'
-            '2f00771683908d3c24d49ff78f184f60210d5c0e7dd44a67e35c6b58c95c49f1')
+sha256sums=('5c395801c6a16117f4fa33cef30b809c30781bfee2933874cbf9ee7a20e28651'
+            'eb6109de83e4c44c9f3a1f177f6ce77a1ee0fe05e6c778239b4ebc68e29a57e4')
 
 package() {
   cd "$srcdir/"
