@@ -1,6 +1,6 @@
 pkgbase = bluej
 	pkgdesc = A free Java Development Environment designed for beginners, used by millions worlwide.
-	pkgver = 5.0.3
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://www.bluej.org
 	arch = any
@@ -12,16 +12,16 @@ pkgbase = bluej
 	license = custom
 	depends = gtk2
 	depends = archlinux-java-run
-	depends = java-runtime=11
-	depends = java-environment=11
-	depends = java11-openjfx
-	noextract = BlueJ-linux-503.deb
-	source = https://www.bluej.org/download/files/BlueJ-linux-503.deb
+	depends = java-runtime=17
+	depends = java-environment=17
+	depends = java17-openjfx
+	noextract = BlueJ-linux-510.deb
+	source = https://www.bluej.org/download/files/BlueJ-linux-510.deb
 	source = bluej
 	source = bluej.desktop
 	source = bluej.xml
-	sha256sums = 39aaea9a9b7165cef110461ea0256a1d7900bdfcdf498c799d4a7f8963f2a2ac
-	sha256sums = c1bdaad64fcf45b1efac00e010d5f750c417d64896cde80b9b7c5745277422b8
+	sha256sums = b4e6f5e7053d3a352dd03f25fc991a1988fce0bec75781549d0401e5c440c46d
+	sha256sums = fa1e1b8524e32ec4151565b901411a08458855e4a8f2a77ae77827af86db85a9
 	sha256sums = a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f
 	sha256sums = e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772
 

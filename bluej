@@ -1,8 +1,8 @@
 #!/bin/sh
-if [ -e /usr/lib/jvm/java-11-openjfx/lib ]; then
-        JAVAFXPATH=/usr/lib/jvm/java-11-openjfx
+if [ -e /usr/lib/jvm/java-17-openjfx/lib ]; then
+        JAVAFXPATH=/usr/lib/jvm/java-17-openjfx
 else
-        JAVAFXPATH=/usr/lib/jvm/java-11-openjdk
+        JAVAFXPATH=/usr/lib/jvm/java-17-openjdk
 fi
 
 CP="/opt/bluej/bluej.jar"
@@ -18,7 +18,7 @@ CP="$CP:$JAVAFXJARS"
 JFXRTOPT="-javafxpath=$JAVAFXPATH"
 JFXRTOPT2="-javafxjars=$JAVAFXJARS"
 
-archlinux-java-run -a 11 -b 11 -- \
+archlinux-java-run -a 17 -b 17 -- \
         -Djdk.gtk.version=2 \
         -Dawt.useSystemAAFontSettings=on -Xmx512M \
         -cp "$CP" bluej.Boot ${JFXRTOPT:+"$JFXRTOPT"} ${JFXRTOPT2:+"$JFXRTOPT2"} \
