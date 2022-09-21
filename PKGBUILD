@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-agent
 pkgver=6.8.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Sensu Go Agent"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://sensu.io'
