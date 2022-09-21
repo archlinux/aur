@@ -3,7 +3,7 @@
 pkgname=nimbus-git
 _gitname=nimbus
 pkgver=1.0.r7.g172733a
-pkgrel=1
+pkgrel=2
 pkgdesc="The default OpenIndiana theme"
 arch=("any")
 url="https://github.com/OpenIndiana/nimbus"
@@ -42,10 +42,9 @@ build() {
 }
 
 package() {
-    cd "$srcdir"
-    make -C "${_gitname}" install DESTDIR=$pkgdir
+    make -C "${_gitname}" install DESTDIR="$pkgdir"
 
-    install -d -m755 $pkgdir/usr/share/mate-panel/pixmaps/nimbus
-    install -m644 bottom-panel-image.png $pkgdir/usr/share/mate-panel/pixmaps/nimbus/bottom-panel-image.png
-    install -m644 top-panel-image.png $pkgdir/usr/share/mate-panel/pixmaps/nimbus/top-panel-image.png
+    install -d -m755 "$pkgdir/usr/share/mate-panel/pixmaps/nimbus"
+    install -m644 bottom-panel-image.png "$pkgdir/usr/share/mate-panel/pixmaps/nimbus/bottom-panel-image.png"
+    install -m644 top-panel-image.png "$pkgdir/usr/share/mate-panel/pixmaps/nimbus/top-panel-image.png"
 }
