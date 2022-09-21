@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=markdown-link-check
-pkgver=3.10.2
+pkgver=3.10.3
 pkgrel=1
 pkgdesc="Checks aliveness of hyperlinks in markdown documents"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('f780e1981804cf6d32c4465891c2d04c4c1ba58e7f7df4803a703555b26b87ab')
+sha256sums=('6c0ef3a8c65dc2e65d15eefb54a7a27798f499e5587d0ec0850a652c19537658')
 
 package() {
     npm install -g \
