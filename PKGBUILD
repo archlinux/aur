@@ -3,17 +3,17 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=textpieces
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Transform text without using random websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/liferooter/textpieces"
 license=('GPL3')
 depends=('json-glib' 'libadwaita' 'python-pyaml' 'gtksourceview5' 'libgee')
-makedepends=('gobject-introspection' 'meson' 'vala')
+makedepends=('blueprint-compiler' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('904e96cdb97ca0d71dcbbe84e233099f5f8193118125b87a78bf504a5af96c4ff952118f4127571fd6c1306c789e60a40426c133685226fb68040d6e1a4dabaf')
+b2sums=('8c1372484d0a906b5f29caf9f36fd3a314b8d35e22f019a57fbe3d1a2924e07ee877b17d9f081a9fc993ae61a6f79825066736357af7edd8f329c645e2a26549')
 
 
 build() {
@@ -22,7 +22,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
