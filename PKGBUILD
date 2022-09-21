@@ -9,7 +9,11 @@ url='https://github.com/upscayl/upscayl'
 _repo='https://github.com/upscayl/upscayl'
 license=('AGPL3')
 depends=('bash')
-makedepends=('fuse2' 'zlib')
+makedepends=(
+  'fuse2'
+  'zlib'
+  'findutils'
+)
 source=(
   "https://github.com/upscayl/upscayl/releases/download/v$pkgver/Upscayl-$pkgver.AppImage"
   "https://github.com/upscayl/upscayl/raw/v$pkgver/Real-ESRGAN_LICENSE.txt"
@@ -36,6 +40,27 @@ build() {
   chmod 755 squashfs-root
 }
 
+_fix_permission() (
+  target=$1
+
+  if [[ -L "$target" ]]; then
+    return 0
+  fi
+
+  if [[ -d "$target" || -x "$target" ]]; then
+    chmod 755 "$target"
+    return 0
+  fi
+
+  if [[ -f "$target" ]]; then
+    chmod 644 "$target"
+    return 0
+  fi
+
+  echo "Unrecognizable filesystem entry: $target" >&2
+  return 1
+)
+
 package() {
   msg2 'Creating target directory...'
   mkdir -p "$pkgdir/opt/"
@@ -61,5 +86,7 @@ package() {
   install -Dm644 Real-ESRGAN_LICENSE.txt "$pkgdir/usr/share/licenses/Real-ESRGAN_LICENSE.txt"
 
   msg2 'Fixing permissions...'
-  chmod -R 755 "$pkgdir/opt/upscayl"
+  find "$pkgdir" | while read -r target; do
+    _fix_permission "$target"
+  done
 }

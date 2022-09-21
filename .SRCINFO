@@ -7,6 +7,7 @@ pkgbase = upscayl-appimage
 	license = AGPL3
 	makedepends = fuse2
 	makedepends = zlib
+	makedepends = findutils
 	depends = bash
 	provides = upscayl
 	conflicts = upscayl
