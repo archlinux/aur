@@ -1,14 +1,14 @@
 pkgbase = sensu-cli
 	pkgdesc = Sensu Go cli
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 0
 	url = https://sensu.io
 	arch = x86_64
 	arch = armv7h
 	license = SENSU FREE LICENSE AGREEMENT
-	source_x86_64 = sensu-cli-6.8.0_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.0/sensu-go_6.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0fe5b814db96ce6bf8c3f4608f3e9adad38f0f6826475d6e568aa15ab2052447
-	source_armv7h = sensu-cli-6.8.0_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.0/sensu-go_6.8.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 0c069005e7d95ac08976e78e3025df95b829d7a5f613b78de7acf7a645b8a6c3
+	source_x86_64 = sensu-cli-6.8.1_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.1/sensu-go_6.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 55033250e3b18be1d9c8e76510549d0216901cfdc8a1f4bf63dc81820c174a41
+	source_armv7h = sensu-cli-6.8.1_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.1/sensu-go_6.8.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 9acbcbc4821f00d7637b7087b6a047d317e8b134436e33f337a868bb8cb8199c
 
 pkgname = sensu-cli
