@@ -1,6 +1,6 @@
 pkgbase = qmmp-1
-	pkgdesc = Qt based audio-player (1.x branch, Qt5)
-	pkgver = 1.6.1
+	pkgdesc = Qt based audio-player (1.x branch)
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://qmmp.ylsoftware.com
 	arch = x86_64
@@ -59,8 +59,8 @@ pkgbase = qmmp-1
 	optdepends = ffmpeg
 	optdepends = libsamplerate
 	optdepends = wavpack
-	provides = qmmp=1.6.1
-	source = qmmp-1.6.1.tar.bz2::https://qmmp.ylsoftware.com/files/qmmp/1.6/qmmp-1.6.1.tar.bz2
-	sha256sums = 2d8d5be8ed81dfa3b67de98b00800f7ea0fe9ac2d0f912e49265b0f4f7f5693f
+	provides = qmmp=1.6.2
+	source = qmmp-1.6.2.tar.bz2::https://qmmp.ylsoftware.com/files/qmmp/1.6/qmmp-1.6.2.tar.bz2
+	sha256sums = 484b1318d01a0ac5c765605872074fec6bec32dde5d92cea2286d1d6760a30b5
 
 pkgname = qmmp-1

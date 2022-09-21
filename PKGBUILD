@@ -1,7 +1,7 @@
 pkgname=qmmp-1
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="Qt based audio-player (1.x branch, Qt5)"
+pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
 url="https://qmmp.ylsoftware.com"
 license=('GPL')
@@ -41,7 +41,7 @@ optdepends=(
 
 _snapshot="${_name}-${pkgver}"
 source=("${_snapshot}.tar.bz2::${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
-sha256sums=('2d8d5be8ed81dfa3b67de98b00800f7ea0fe9ac2d0f912e49265b0f4f7f5693f')
+sha256sums=('484b1318d01a0ac5c765605872074fec6bec32dde5d92cea2286d1d6760a30b5')
 
 build() {
     cd "${srcdir}/${_snapshot}"
