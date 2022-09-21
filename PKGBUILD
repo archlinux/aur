@@ -44,8 +44,8 @@ source_x86_64=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver
 source_i686=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
 source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
 source_aarch64=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_arm64.deb")
-sha512sums_x86_64=('e592e61dd29283857aee47a4427a093b176732c3e2a2c2cee941bbc82e74e035d3aee683fb52ff6127ca13185361da0ff320c253a2aeb06d9fa2626c4661e8d6')
-sha512sums_i686=('ad5a1a872174d2cf1dcaa74524f7522026b7736ba48d9e79c2e520007b0a2c8cb5c5e70fe312dc9852db9aaf932470939e6e0dae10f79194496f1e1a925ee104')
+sha512sums_x86_64=('26e8a37558653e1b0b8049b2f1b066aec2c75c97718a347af6c696e6b55d1ffd35a0c37da97063f1f55c75aee5fb349e63204c3b34d6d6e615ff00b319c59982')
+sha512sums_i686=('ae11523a6e92185bbfd57131cfbfb180545d5c5ab091e05cb0db6371bfa660a2f7355fbbab56fa57a6aa83c4fbb88d51d87f8b6b99a76d57d6a6caa419f8a5fb')
 sha512sums_armv7h=('d43a468968be6a8c4e0dd327e1b83f8df8aace7f36a83d1098a06cc2c043aeb8553003ee1096fafa51bef7207ec247088caea891eb65ded2f91a733fc65ca28f')
 sha512sums_aarch64=('914c97c41b9d53507b0d3105b4788788a8bad2b9d662115481d2ff3082496bec59bc8229b5ab8e75fac11a5ee2fd45d7a71916b4c3505b59e91cd9fb8826cef1')
 
