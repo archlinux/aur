@@ -1,6 +1,6 @@
 # Maintainer: Aliaksandr Mianzhynski <amenzhinsky@gmail.com>
 pkgname=protoc-gen-go
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=("any")
@@ -19,4 +19,4 @@ package() {
 	install -Dm755 "protobuf-go-${pkgver}/protoc-gen-go" "${pkgdir}/usr/bin/protoc-gen-go"
 }
 
-sha256sums=('e59ae9ace31c3a84bddf1bc3f04a04c498adb9ea7f9fcde60db91bba33d55171')
+sha256sums=('df0b3dceeff0e1b6d029e60f076edd0d852cb8f3c2fe4fe3fe40164f16ec9b6b')
