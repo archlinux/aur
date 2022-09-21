@@ -1,7 +1,7 @@
 # Maintainer: r4v3n6101
 
 pkgname=xash3d-fwgs-git
-pkgver=r1906.55a29e6e
+pkgver=r2045.360dc4f7
 pkgrel=1
 pkgdesc="A custom GoldSrc engine implementation"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 provides=('xash3d')
 conflicts=('xash3d-hlsdk' 'xash3d-git')
 source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs" xash3d)
-md5sums=('SKIP' '2d482084b4edc75846be920a3fa4b950')
+md5sums=('SKIP' '6daaa685de3566fb45708de6c45581ff')
 
 pkgver() {
     cd $srcdir/$pkgname
@@ -37,6 +37,6 @@ package() {
     cd $srcdir
     install -Dm 755 "xash3d" "${pkgdir}/usr/bin/xash3d"
     cd $pkgname
-    ./waf install --strip --destdir="${pkgdir}/usr/local/lib/xash3d/"
-    install -Dm 755 "vgui_support/vgui-dev/lib/vgui.so" "${pkgdir}/usr/local/lib/xash3d/vgui.so"
+    ./waf install --strip --destdir="${pkgdir}/opt/xash3d/"
+    install -Dm 755 "3rdparty/vgui_support/vgui-dev/lib/vgui.so" "${pkgdir}/opt/xash3d/vgui.so"
 }
