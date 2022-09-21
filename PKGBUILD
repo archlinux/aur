@@ -105,7 +105,7 @@ else
 pkgname="emacs-pgtk-git"
 fi
 pkgver=29.0.50.157375
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -116,7 +116,7 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#commit=a203ad5ed0959d60f01f0265c4b658119a0b6858")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
 
