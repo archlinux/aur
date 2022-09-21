@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=libfreenect
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenKinect/libfreenect"
@@ -12,12 +12,7 @@ makedepends=('cmake' 'libxmu' 'cython' 'python-numpy')
 optdepends=('opencv: support for python demos'
             'python-matplotlib: support for python demos')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OpenKinect/libfreenect/archive/v${pkgver}.tar.gz)
-sha512sums=('e232487fe62a81161e6e74d34a625d6e86ca56befc1692590ecf863ce6b96b9094b3042557e8a4801a7a1fb3eade4cb02d647cc57dd6b043e7b891d48ff1cba1')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's/${GLUT_LIBRARY}/${GLUT_LIBRARIES}/g' examples/CMakeLists.txt wrappers/cpp/CMakeLists.txt
-}
+sha256sums=('6169600f999729a7f99dd71a9825ed6e7aec8b8aac4f532ecf2911f76133c125')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
