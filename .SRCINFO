@@ -1,7 +1,7 @@
 pkgbase = fallingtime-git
 	pkgdesc = Arcade game inspired by Fall Down. SDL 2, PC or OpenDingux.
 	pkgver = r96.9cc480b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cxong/FallingTime
 	arch = any
 	license = GPL2
@@ -11,6 +11,7 @@ pkgbase = fallingtime-git
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
+	provides = fallingtime
 	conflicts = fallingtime
 	source = fallingtime::git+https://github.com/cxong/FallingTime.git
 	source = fallingtime.sh

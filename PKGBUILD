@@ -3,7 +3,7 @@
 _pkgname=fallingtime
 pkgname=${_pkgname}-git
 pkgver=r96.9cc480b
-pkgrel=2
+pkgrel=3
 pkgdesc="Arcade game inspired by Fall Down. SDL 2, PC or OpenDingux."
 arch=('any')
 url="https://github.com/cxong/FallingTime"
@@ -16,8 +16,8 @@ source=("${_pkgname}::git+https://github.com/cxong/FallingTime.git"
 sha256sums=('SKIP'
           '2213caa4bb13f483b61a6ea57ee0f74394080505720d004a476ed10651150fc7'
           'e7c80c605000bedabb5cd0c415539288f2a3cc01246e84364dbdac2742a81414')
-
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
