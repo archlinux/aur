@@ -3,7 +3,7 @@
 _pkgname=OpenMRac
 pkgname="${_pkgname,,}-git"
 pkgver=r14.9676e0a
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenMRac, a split-screen racing game'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Franticware/${_pkgname}"
@@ -13,6 +13,7 @@ depends=('openmrac-data-git' 'sdl' 'sdl_image' 'openal')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
