@@ -2,7 +2,7 @@
 
 _pkgname=c2f
 pkgname="${_pkgname}-git"
-pkgver=r26.798fd7c
+pkgver=r30.5624e60
 pkgrel=1
 pkgdesc='Celsius/Fahrenheit converter in C99'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
