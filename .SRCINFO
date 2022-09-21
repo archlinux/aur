@@ -5,7 +5,6 @@ pkgbase = pounce-git
 	url = https://git.causal.agency/pounce
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	depends = libretls
 	depends = libxcrypt
 	provides = pounce
