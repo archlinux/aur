@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=105.0.5195.125
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -52,7 +52,7 @@ declare -gA _system_libs=(
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  [jsoncpp]=jsoncpp
+  #[jsoncpp]=jsoncpp  # triggers a CFI violation (https://crbug.com/1365218)
   [libaom]=aom
   [libavif]=libavif
   [libdrm]=
