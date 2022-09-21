@@ -1,4 +1,4 @@
-pkgname=pe-bear
+pkgname=pe-bear-bin
 pkgver=0.6.0
 _qtver=5.15
 pkgrel=1
