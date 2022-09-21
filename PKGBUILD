@@ -2,7 +2,7 @@
 
 pkgname=slint-cpp-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slint is a toolkit to efficiently develop fluid graphical user interfaces for any display: embedded devices and desktop applications"
 arch=("x86_64")
 url="https://slint-ui.com"
@@ -15,4 +15,6 @@ package() {
   cd Slint-cpp-$pkgver-Linux-$CARCH/
   mkdir -p ${pkgdir}/usr/
   cp -r . ${pkgdir}/usr/
+  cp ${pkgdir}/usr/include/slint/* ${pkgdir}/usr/include/
+  rm -rf ${pkgdir}/usr/include/slint/
 }
