@@ -1,4 +1,4 @@
-###PKGBUILD was last modified on September 15, 2022 at 03:53 PM EDT by bms###
+#PKGBUILD was last modified on September 19, 2022 at 05:30 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 pkgname=guile-colorized-git
 pkgver=v0.1.r5.g1625a79
@@ -26,3 +26,4 @@ package() {
 	cd "${pkgname%-git}"
 	make install
 }
+#end
