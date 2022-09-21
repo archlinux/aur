@@ -3,7 +3,7 @@
 _upkgname=asgardex
 _pkgname=ASGARDEX
 pkgname=asgardex-appimage
-pkgver=1.18.0
+pkgver=1.18.1
 msgver=(${pkgver//./})
 pkgrel=1
 pkgdesc="Thorchain wallet desktop app"
@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/thorchain/asgardex-electron/releases"
 license=('MIT')
 makedepends=('p7zip')
+depends=('fuse')
 validpgpkeys=('0F1342110E1A10DCAFA7194DABB32D7C24F80F1D' '9A6461A8CAAAA0AEB8EFDDA8C5334FE4FD04D709')
 source=("$url/download/v$pkgver/$_pkgname-$pkgver-linux.AppImage" "$url/download/v$pkgver/msg-v$msgver"{,.asc} )
 noextract=("$_pkgname-$pkgver.AppImage")
