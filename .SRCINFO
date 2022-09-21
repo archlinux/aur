@@ -1,7 +1,7 @@
 pkgbase = dream
 	pkgdesc = A software radio for AM and Digital Radio Mondiale (DRM)
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/drm
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = dream
 	depends = qt5-base
 	source = https://sourceforge.net/projects/drm/files/dream/2.1.1/dream-2.1.1-svn808.tar.gz
 	source = fix_qwttext.patch
+	source = fix_hamlib.patch
 	sha256sums = 417734a197ed596a08e75363c304be9b4595f2f21581bc64fec47c49f733bb05
 	sha256sums = a5c521644f9a95f73adc4eefa8bb690642caefa59b028ddd9b34aea231af96f2
+	sha256sums = df8dbc1f5c2e6e181377bf7832dbf057018dd1be2b9cdfa8d9a24db3f0f9b76a
 
 pkgname = dream

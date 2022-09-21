@@ -1,0 +1,41 @@
+--- src/util/Hamlib.cpp	2013-11-11 20:33:41.000000000 +0400
++++ src/util/Hamlib.cpp	2022-07-08 11:35:55.051764364 +0300
+@@ -421,21 +421,21 @@
+ 
+ 		/* Hamlib Model ID */
+ 		SetHamlibModelID(model);
+ 	}
+ 
+-	s.Put("Hamlib", "hamlib-model", model);
++	s.Put("Hamlib", "hamlib-model", (int)model);
+ 	s.Put("Hamlib", "hamlib-config", strHamlibConf);
+ 	s.Put("Hamlib", "settings", strSettings);
+ 	s.Put("Hamlib", "freqoffset", iFreqOffset);
+ }
+ 
+ void
+ CHamlib::SaveSettings(CSettings & s)
+ {
+ 	/* Hamlib Model ID */
+-	s.Put("Hamlib", "hamlib-model", iHamlibModelID);
++	s.Put("Hamlib", "hamlib-model", (int)iHamlibModelID);
+ 
+ 	/* Hamlib configuration string */
+ 	stringstream ss;
+ 	string sep = "";
+ 	for (map < string, string >::iterator i = config.begin();
+--- src/GUI-QT/DialogUtil.h	2013-11-11 20:33:43.000000000 +0400
++++ src/GUI-QT/DialogUtil.cpp	2022-07-08 11:39:51.420130677 +0300
+@@ -46,11 +46,11 @@
+ #include <QAction>
+ 
+ #include <qwt_thermo.h> /* S-Meter */
+ 
+ class CRig;
+-typedef int rig_model_t;
++typedef uint32_t rig_model_t;
+ 
+ /* Definitions ****************************************************************/
+ 
+ /* Definition for Courier font */
+ #ifdef _WIN32
