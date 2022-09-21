@@ -1,16 +1,17 @@
 pkgbase = mimi-git
-	pkgdesc = best alternative to xdg-open (git version)
-	pkgver = 66.c9ce958
+	pkgdesc = Mantained fork of mimi, a minimal and lightweight xdg-open drop-in replacement most suitable for Window Manager users.
+	pkgver = r117.ca08c8d
 	pkgrel = 1
-	url = http://github.com/taylorchu/mimi
+	url = https://github.com/BachoSeven/mimi
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = bash
-	depends = dmenu
+	optdepends = dmenu
+	optdepends = libnotify
 	provides = xdg-utils
 	conflicts = xdg-utils
-	source = git+https://github.com/taylorchu/mimi.git
+	source = git+https://github.com/BachoSeven/mimi.git
 	md5sums = SKIP
 
 pkgname = mimi-git

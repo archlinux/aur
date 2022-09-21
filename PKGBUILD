@@ -1,29 +1,33 @@
-# Contributor: tailinchu <use_my_id at gmail dot com>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=mimi-git
-pkgver=66.c9ce958
+_pkgname=mimi
+pkgver=r117.ca08c8d
 pkgrel=1
-pkgdesc="best alternative to xdg-open (git version)"
+pkgdesc="Mantained fork of mimi, a minimal and lightweight xdg-open drop-in replacement most suitable for Window Manager users."
+url='https://github.com/BachoSeven/mimi'
 arch=('any')
-url="http://github.com/taylorchu/mimi"
 license=('MIT')
-depends=('bash' 'dmenu')
+depends=('bash')
 makedepends=('git')
-conflicts=('xdg-utils')
-provides=('xdg-utils')
-source=("git+https://github.com/taylorchu/mimi.git")
+optdepends=('dmenu' 'libnotify')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
-_gitroot="mimi"
+provides=('xdg-utils')
+conflicts=('xdg-utils')
 
-pkgver () {
-    cd "$srcdir/$_gitroot"
-    echo "$(git rev-list --count HEAD).$(git describe --always)"
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+
+	# Get the version number.
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/$_gitroot"
-    make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -Dm 644 LICENSE  "${pkgdir}/usr/share/licenses/mimi"
-}
+	cd "${srcdir}/${_pkgname}"
 
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm 644 LICENSE  "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+# vim:set ts=2 sw=2 et:
