@@ -27,6 +27,15 @@ _cpusched='bore'
 ### Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
+### Tweak kernel options prior to a build via menuconfig
+_makemenuconfig=
+
+### Tweak kernel options prior to a build via xconfig
+_makexconfig=
+
+### Tweak kernel options prior to a build via gconfig
+_makegconfig=
+
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -61,7 +70,7 @@ _per_gov=y
 ### Enable TCP_CONG_BBR2
 _tcp_bbr2=y
 
-### Running with a 1000HZ, 750Hz, 600 Hz or 500Hz tick rate
+### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 _HZ_ticks=750
 
 ## Choose between perodic, idle or full
@@ -177,7 +186,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -424,10 +433,28 @@ prepare() {
         scripts/config --disable HZ_300 \
             --enable HZ_500 \
             --set-val HZ 500
-    else
+    elif [ "$_HZ_ticks" = "300" ]; then
         echo "Setting tick rate to 300Hz..."
         scripts/config --enable HZ_300 \
             --set-val HZ 300
+    elif [ "$_HZ_ticks" = "250" ]; then
+        echo "Setting tick rate to 250Hz..."
+        scripts/config --disable HZ_300 \
+            --enable HZ_250 \
+            --set-val HZ 250
+    elif [ "$_HZ_ticks" = "100" ]; then
+        echo "Setting tick rate to 100Hz..."
+        scripts/config --disable HZ_300 \
+            --enable HZ_100 \
+            --set-val HZ 100
+    else
+       if [ -n "$_HZ_ticks" ]; then
+           error "The value $_HZ_ticks is invalid. Choose the correct one again."
+       else
+           error "The value is empty. Choose the correct one again."
+       fi
+       error "Selecting Setting tick rate failed!"
+       exit
     fi
 
     ### Disable NUMA
@@ -795,12 +822,18 @@ prepare() {
     ### Running make nconfig
     [[ -z "$_makenconfig" ]] ||  make ${BUILD_FLAGS[*]} nconfig
 
+    ### Running make menuconfig
+    [[ -z "$_makemenuconfig" ]] ||  make ${BUILD_FLAGS[*]} menuconfig
+
+    ### Running make xconfig
+    [[ -z "$_makexconfig" ]] ||  make ${BUILD_FLAGS[*]} xconfig
+
+    ### Running make gconfig
+    [[ -z "$_makegconfig" ]] ||  make ${BUILD_FLAGS[*]} gconfig
+
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
     cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
-
-    ### Save configuration for later reuse
-    # cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
 }
 
