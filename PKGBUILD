@@ -1,7 +1,7 @@
 # Maintainer: Jan-Jaap Korpershoek <jjkorpershoek96 at gmail dot com>
 pkgname=php-language-server
 pkgver=5.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP language server implementation"
 arch=('x86_64')
 url="https://github.com/felixfbecker/php-language-server"
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-    path=$pkgdir/usr/share/php7/$pkgname
+    path="$pkgdir/usr/share/php7/$pkgname"
     mkdir -p $path
     mkdir -p "$pkgdir/usr/bin"
     install -Dm755 php-language-server "$pkgdir/usr/bin/"
