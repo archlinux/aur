@@ -1,17 +1,19 @@
-# Maintainer: Vincent Kobel (v@kobl.one)
+# Maintainer: ramen <hendrik@hndrkk.sh>
+# Contributor: Vincent Kobel (v@kobl.one)
 
 _pkgname='bat'
 pkgname="bat-cat-git"
-pkgver=r868.e5c4155
-pkgrel=4
+pkgver=r2448.2dbc88d3
+pkgrel=1
 pkgdesc="A cat(1) clone with wings."
 arch=('x86_64')
 url='https://github.com/sharkdp/bat'
 license=('Apache-2.0')
-sha256sums=('SKIP')
-source=("git+https://github.com/sharkdp/${_pkgname}")
-provides=('bat')
 makedepends=('git' 'rust' 'clang' 'bash' 'sed')
+provides=('bat')
+conflicts=('bat')
+source=("git+https://github.com/sharkdp/${_pkgname}")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
