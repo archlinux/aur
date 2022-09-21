@@ -1,7 +1,7 @@
 pkgbase = v2raya-git
 	pkgdesc = v2rayA nightly version
-	pkgver = 20220420.r1112.a18b689
-	pkgrel = 2
+	pkgver = 20220920.r1217.f1b93b2
+	pkgrel = 1
 	url = https://github.com/v2rayA/v2rayA
 	install = .INSTALL
 	arch = i686
@@ -16,11 +16,10 @@ pkgbase = v2raya-git
 	makedepends = yarn
 	makedepends = python2
 	depends = glibc
-	optdepends = v2ray>=4.37.0-1
-	optdepends = xray>=1.4.2-1
+	depends = v2ray>=5.0.0
 	provides = v2raya
 	conflicts = v2raya
-	source = v2raya-git::git+https://github.com/v2rayA/v2rayA
+	source = v2raya-git::git+https://github.com/v2rayA/v2rayA#branch=feat_v5
 	sha512sums = SKIP
 
 pkgname = v2raya-git
