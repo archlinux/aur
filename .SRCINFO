@@ -1,0 +1,16 @@
+pkgbase = litterbox-git
+	pkgdesc = TLS-only terminal IRC logger storing events in SQLite database
+	pkgver = 1.8.r238.567976b
+	pkgrel = 1
+	url = https://git.causal.agency/litterbox
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libretls
+	depends = sqlite
+	provides = litterbox
+	conflicts = litterbox
+	source = litterbox::git+https://git.causal.agency/litterbox.git
+	md5sums = SKIP
+
+pkgname = litterbox-git
