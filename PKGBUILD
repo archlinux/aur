@@ -2,7 +2,7 @@
 
 _pkgname=sline
 pkgname="${_pkgname}-git"
-pkgver=r111.b636ac0
+pkgver=r126.c6abf3e
 pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
