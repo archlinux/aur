@@ -7,7 +7,7 @@ _pkgname=WowUp
 pkgname=${_pkgname,,}-native
 _pkgver=2.9.0
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='World of Warcraft addon updater (system Electron)'
 arch=('x86_64')
 
