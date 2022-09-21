@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.0-1] - 2022-09-13
+
+- Add ssh server functionality by [@ivantsepp](https://github.com/@ivantsepp) in [#150](https://github.com/maaslalani/slides/pull/150)
+- feat: ensure that date strings are not interpreted as January 2, 2006 formatted strings by [@maaslalani](https://github.com/maaslalani) in [#170](https://github.com/maaslalani/slides/pull/170)
+- Feat: Yank Code Blocks by [@maaslalani](https://github.com/maaslalani) in [#173](https://github.com/maaslalani/slides/pull/173)
+- Code Comments to hide verbose code by [@maaslalani](https://github.com/maaslalani) in [#174](https://github.com/maaslalani/slides/pull/174)
+- feat: add support for java code execution by [@mfathi91](https://github.com/mfathi91) in [#184](https://github.com/maaslalani/slides/pull/184)
+
 ## [0.8.0-1] - 2022-04-07
 
 ### Fixed
