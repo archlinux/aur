@@ -33,6 +33,7 @@ provides=(
 build() {
   chmod +x "./Upscayl-$pkgver.AppImage"
   "./Upscayl-$pkgver.AppImage" --appimage-extract
+  chmod 755 squashfs-root
 }
 
 package() {
@@ -49,12 +50,16 @@ package() {
   install -Dm755 upscayl.desktop "$pkgdir/usr/share/applications/upscayl.desktop"
 
   msg2 'Installing the icon...'
+  icon_dir='usr/share/icons/hicolor/0x0/apps'
   mkdir -p "$pkgdir/usr/share/pixmaps"
-  ln -s /opt/upscayl/upscayl.png "$pkgdir/usr/share/pixmaps/upscayl.png"
+  ln -s "/opt/upscayl/$icon_dir/upscayl.png" "$pkgdir/usr/share/pixmaps/upscayl.png"
 
   msg2 'Installing the licenses...'
   mkdir -p "$pkgdir/usr/share/licenses"
   ln -s /opt/upscayl/LICENSE.electron.txt "$pkgdir/usr/share/licenses/LICENSE.electron.txt"
   ln -s /opt/upscayl/LICENSES.chromium.html "$pkgdir/usr/share/licenses/LICENSES.chromium.html"
   install -Dm644 Real-ESRGAN_LICENSE.txt "$pkgdir/usr/share/licenses/Real-ESRGAN_LICENSE.txt"
+
+  msg2 'Fixing permissions...'
+  chmod -R 755 "$pkgdir/opt/upscayl"
 }
