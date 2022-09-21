@@ -2,8 +2,8 @@
 
 _pkgname=cras
 pkgname="${_pkgname}-git"
-pkgver=r218.c477f53
-pkgrel=2
+pkgver=r222.6b9f9b1
+pkgrel=1
 pkgdesc='The Anti-Procrastination Tool'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ariadnavigo/${_pkgname}.git"
@@ -13,6 +13,7 @@ makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
