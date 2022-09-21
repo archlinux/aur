@@ -3,7 +3,7 @@
 # Contributor: gustash <gustavotcparreira@gmail.com>
 pkgname=xbox-xcloud
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xbox-xcloud-client is an open-source client for Xbox home streaming made in Javascript and Typescript."
 arch=('x86_64')
 url="https://github.com/unknownskl/xbox-xcloud-client"

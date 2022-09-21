@@ -1,7 +1,7 @@
 pkgbase = xbox-xcloud
 	pkgdesc = Xbox-xcloud-client is an open-source client for Xbox home streaming made in Javascript and Typescript.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unknownskl/xbox-xcloud-client
 	install = xbox-xcloud.install
 	arch = x86_64
