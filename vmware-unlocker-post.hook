@@ -10,4 +10,5 @@ Target = vmware*
 Description = Patching VMware...
 When = PostTransaction
 Depends = vmware-unlocker
-Exec = /usr/bin/unlock
+Depends = bash
+Exec = /usr/bin/bash -c 'env UNLOCK_QUIET=1 unlock'
