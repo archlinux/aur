@@ -1,14 +1,13 @@
 pkgbase = ripmime
-	pkgdesc = MIME/email package decoder
-	pkgver = r18
+	pkgdesc = Email attachment extractor
+	pkgver = 1.4.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/inflex/ripMIME
 	arch = any
 	license = BSD
-	makedepends = git
 	conflicts = ripmime-git
-	source = git+https://github.com/inflex/ripmime.git#commit=20266ed9ddefafe7c6b9f3c6bbf869d6facab0e9
-	sha256sums = SKIP
+	source = ripmime-1.4.1.0.tar.gz::https://github.com/inflex/ripmime/archive/1.4.1.0.tar.gz
+	sha256sums = 6d551d6b65b4da6c6b8dfd05be8141026cc760ca1fb8a707b7bf96c199c9f52d
 
 pkgname = ripmime

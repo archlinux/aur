@@ -3,26 +3,25 @@
 # Contributor: K. Piche <kpiche <at> rogers <dot> com>
 
 pkgname=ripmime
-pkgver=r18
-_commit=20266ed9ddefafe7c6b9f3c6bbf869d6facab0e9
+_pkgname=ripMIME
+pkgver=1.4.1.0
 pkgrel=1
 epoch=1
-pkgdesc='MIME/email package decoder'
+pkgdesc='Email attachment extractor'
 arch=(any)
-url="https://github.com/inflex/ripMIME"
+url='https://github.com/inflex/ripMIME'
 license=('BSD')
 conflicts=('ripmime-git')
-source=("git+https://github.com/inflex/${pkgname}.git#commit=$_commit")
-sha256sums=('SKIP')
-makedepends=('git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/inflex/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('6d551d6b65b4da6c6b8dfd05be8141026cc760ca1fb8a707b7bf96c199c9f52d')
 
 build() {
-  cd "${pkgname}"
+  cd "$_pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "$_pkgname-$pkgver"
   mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/man/man1"
   make LOCATION="${pkgdir}/usr" install
 
