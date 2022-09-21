@@ -1,15 +1,17 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor : Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='translit'
 pkgname="${_pkgname}-git"
 pkgver=1.0.0.r10.g326e80e
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple method of encoding Cyrillic letters with Latin ones'
 arch=('x86_64')
 url='https://github.com/artemanufrij/translit'
 license=('GPL3')
 depends=('granite' 'gtkspell3')
 makedepends=('git' 'meson' 'vala')
+conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
