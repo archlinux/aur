@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer:  Hendrik Schick <hendrik@hndrkk.sh>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Beini <bane@iki.fi>
@@ -9,7 +9,7 @@
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
 pkgname=conky-git
-pkgver=1.12.2.r4.g8f5014b9
+pkgver=1.13.1.r5.g65890ea2
 pkgrel=1
 pkgdesc="Lightweight system monitor for X"
 url="https://github.com/brndnmtthws/conky"
