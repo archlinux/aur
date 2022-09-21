@@ -57,16 +57,28 @@ source=(
 
 sha512sums=(
 	"SKIP"
-	"3da44a431b717e789da2790d8681102cbd12828aed5e5486d1af35090dd68c7ec0032d9419076e81d4fad5af1e4a78e53419aa049579294b3044ec82975cb0b2"
+	"1115cd219b855241270191c0b1e03fd567a5bfa7d77041bdeb70bd0ed6a08b01cfbdf7f45cda0153eada4f49429300bd8e09611f5ce185d0d4718a3dadf09263"
 	"2a466f530c78dd498d7af9aa7ced8057468283682912368c5a0d4e694feffe1079e345882a64fe9d2849a5da5d00b5d262e8b5c5d45f77965d1c6e9edadad512"
 )
 
-case "$CARCH" in
- 	"i686") _vscode_arch="ia32" ;;
-	"x86_64") _vscode_arch="x64" ;;
-	"aarch64") _vscode_arch="arm64" ;;
-	"armv7h") _vscode_arch="arm" ;;
-	*) _vscode_arch="DUMMY" ;;
+case "${CARCH}" in
+
+ 	"i686")
+ 		_vscode_arch="ia32"
+ 		;;
+	"x86_64")
+		_vscode_arch="x64"
+		;;
+	"aarch64")
+		_vscode_arch="arm64"
+		;;
+	"armv7h")
+		_vscode_arch="arm"
+		;;
+	*)
+		_vscode_arch="DUMMY"
+		;;
+
 esac
 
 pkgver() {
@@ -90,27 +102,27 @@ prepare() {
 
 	# Set the commit and build date
 	local _datestamp="$(date -u -Is | sed 's/\+00:00/Z/')"
-	sed -e "s/@COMMIT@/$_commit/" -e "s/@DATE@/$_datestamp/" -i product.json
+	sed -e "s|@COMMIT@|${_commit}|" -e "s|@DATE@|${_datestamp}|" -i "product.json"
 
 	# Patch appdata and desktop file
 	sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
     		s|@@NAME_SHORT@@|Code|g
 			s|@@NAME_LONG@@|Code - OSS|g
 			s|@@NAME@@|code-oss|g
-			s|@@ICON@@|code-oss|g
+			s|@@ICON@@|code|g
 			s|@@EXEC@@|/usr/bin/code-oss|g
 			s|@@LICENSE@@|MIT|g
 			s|@@URLPROTOCOL@@|vscode|g
-			s|inode/directory;||' resources/linux/code{.appdata.xml,-workspace.xml,.desktop,-url-handler.desktop}
+			s|inode/directory;||' "resources/linux/code"{.appdata.xml,-workspace.xml,.desktop,-url-handler.desktop}
 
-	sed -i 's|MimeType=.*|MimeType=x-scheme-handler/code-oss;|' resources/linux/code-url-handler.desktop
+	sed -i 's|MimeType=.*|MimeType=x-scheme-handler/code-oss;|' "resources/linux/code-url-handler.desktop"
 
 	# Add completitions for code-oss
 	cp "resources/completions/bash/code" "resources/completions/bash/code-oss"
 	cp "resources/completions/zsh/_code" "resources/completions/zsh/_code-oss"
 
 	# Patch completitions with correct names
-	sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}
+	sed -i 's|@@APPNAME@@|code-oss|g' "resources/completions/"{bash/code-oss,zsh/_code-oss}
 
 }
 
@@ -129,11 +141,7 @@ package() {
 
 	local _appdir="VSCode-linux-${_vscode_arch}"
 
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -d "${pkgdir}/usr/share/metainfo"
-	install -d "${pkgdir}/usr/share/mime/packages"
-	install -d "${pkgdir}/usr/share/applications"
-	install -d "${pkgdir}/usr/share/icons"
+	install -d "${pkgdir}/usr/share/"{licenses/${pkgname},metainfo,mime/packages,applications,icons}
 	install -d "${pkgdir}/opt/${pkgname}"
 	install -d "${pkgdir}/usr/bin"
 
