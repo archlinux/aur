@@ -1,0 +1,13 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: This package, due to the way it is build and packaged is officialy UNSUPPORTED"
+  echo "   by GloriousEggrol. Please do not bother them if something doesn't run with it."
+  echo "   If something does NOT run with this package, but DOES run with the same official"
+  echo "   version, installed according to upstream instructions, feel free to report it through"
+  echo "   the AUR comment section."
+}
+
+post_upgrade() {
+  post_install
+}

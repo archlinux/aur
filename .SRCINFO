@@ -1,9 +1,10 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
-	pkgver = GE.Proton7.33
+	pkgver = GE.Proton7.35
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
+	install = proton-ge-custom.install
 	arch = x86_64
 	arch = x86_64_v3
 	license = custom
@@ -213,7 +214,7 @@ pkgbase = proton-ge-custom
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=GE-Proton7-33
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=GE-Proton7-35
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -229,6 +230,7 @@ pkgbase = proton-ge-custom
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+	source = glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
 	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
 	source = dav1d::git+https://code.videolan.org/videolan/dav1d.git
@@ -269,9 +271,10 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
 	sha256sums = 55ca808868599b1d8ad53b222b8cb26fd96fa818c511163e361238025c76e9fe
-	sha256sums = 81163fc684989abff3be620ddd56ebcc76d1f9a919f1b72fdd0cd5f4b8e92ce3
+	sha256sums = b2cc798fe8a7b8a482db058930d526d30237839eada28cc2262a86270731d2f7
 
 pkgname = proton-ge-custom

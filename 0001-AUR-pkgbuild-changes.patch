@@ -1,4 +1,4 @@
-From 27bd2f629da113a2fe20469e27b4ae50a50e0603 Mon Sep 17 00:00:00 2001
+From ae2534b0d7d4c81ec77c6f34770519fdde5ba365 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Mon, 27 Jun 2022 01:26:56 +0300
 Subject: [PATCH] AUR pkgbuild changes
@@ -18,7 +18,7 @@ Subject: [PATCH] AUR pkgbuild changes
  11 files changed, 91 insertions(+), 32 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index f1f3d27d..4d683061 100644
+index 5ad5b576..be92bc8f 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -179,7 +179,7 @@ index f1f3d27d..4d683061 100644
          -Ddoc='disabled' \
  	-Dtests=disabled \
  	-Dgobject-cast-checks=disabled \
-@@ -879,7 +917,11 @@ WINE_SOURCE_ARGS = \
+@@ -888,7 +926,11 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -191,9 +191,9 @@ index f1f3d27d..4d683061 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -942,6 +984,9 @@ $(OBJ)/.vrclient-post-source:
- DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
+@@ -952,6 +994,9 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
  DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
+ DXVK_DEPENDS = glslang
  
 +DXVK_CPPFLAGS= -msse -msse2
 +DXVK_LDFLAGS= -static -static-libgcc -static-libstdc++
@@ -201,7 +201,7 @@ index f1f3d27d..4d683061 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32,CROSS))
  $(eval $(call rules-meson,dxvk,64,CROSS))
-@@ -964,6 +1009,9 @@ $(OBJ)/.dxvk-post-build32:
+@@ -974,6 +1019,9 @@ $(OBJ)/.dxvk-post-build32:
  DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
  DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
  
@@ -211,13 +211,14 @@ index f1f3d27d..4d683061 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
  $(eval $(call rules-meson,dxvk-nvapi,64,CROSS))
-@@ -1027,9 +1075,13 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -1037,10 +1085,14 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
 +VKD3D_PROTON_MESON_ARGS = -Denable_d3d12=true
  VKD3D_PROTON_MESON_ARGS32 = --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton
  VKD3D_PROTON_MESON_ARGS64 = --bindir=$(VKD3D_PROTON_DST64)/lib64/wine/vkd3d-proton
+ VKD3D_PROTON_DEPENDS = glslang
  
 +VKD3D_PROTON_CPPFLAGS= -msse -msse2
 +VKD3D_PROTON_LDFLAGS= -static -static-libgcc -static-libstdc++
@@ -225,7 +226,7 @@ index f1f3d27d..4d683061 100644
  $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
  $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
  $(eval $(call rules-meson,vkd3d-proton,64,CROSS))
-@@ -1267,14 +1319,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
+@@ -1278,14 +1330,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
  	mkdir -p $(FONTS_OBJ)/source-han
  	# Do not immediately create the target file, so that make is interrupted
  	# it will restart again
@@ -243,7 +244,7 @@ index f1f3d27d..4d683061 100644
  	mv $@.tmp $@
  
  $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
-@@ -1284,10 +1336,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
+@@ -1295,10 +1347,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
  	ttx -o $@ -m $($(notdir $@)_FONT) $(FONTS_OBJ)/ume-gothic/$(notdir $(basename $($(notdir $@)_NAMETABLE_PATCH))).ttx
  
  $(simsun.ttc): $(simsun.ttf) $(nsimsun.ttf)
@@ -257,7 +258,7 @@ index f1f3d27d..4d683061 100644
  $(micross.ttf): $(noto_sans.ttf) $(noto_sans_arabic.ttf) $(noto_sans_armenian.ttf) $(noto_sans_bengali.ttf) $(noto_sans_coptic.ttf) \
  		$(noto_sans_georgian.ttf) $(noto_sans_gujarati.ttf) $(noto_sans_hebrew.ttf) $(noto_sans_khmer.ttf) $(noto_sans_tamil.ttf) \
 diff --git a/compatibilitytool.vdf.template b/compatibilitytool.vdf.template
-index 5ac60e8b..1d161307 100644
+index 5ac60e8b..e580cd20 100644
 --- a/compatibilitytool.vdf.template
 +++ b/compatibilitytool.vdf.template
 @@ -14,7 +14,7 @@
@@ -265,7 +266,7 @@ index 5ac60e8b..1d161307 100644
  
        // For this template, we're going to substitute the display_name key in here, e.g.:
 -      "display_name" "##BUILD_NAME##"
-+      "display_name" "##BUILD_NAME## (Unofficial AUR package [native])"
++      "display_name" "##BUILD_NAME## (Unsupported AUR package [native])"
  
        "from_oslist"  "windows"
        "to_oslist"    "linux"
@@ -338,7 +339,7 @@ index c70751a2..1096dc19 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index ea03d77f..78b6d407 100644
+index 115c2b03..c6bf0ef6 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
 @@ -113,7 +113,11 @@ $(2)_LIBFLAGS$(3) = $$(foreach d,$$($(2)_DEPS$(3)),-L$$($$(d)_LIBDIR$(3))) \
@@ -354,7 +355,7 @@ index ea03d77f..78b6d407 100644
      STRIP="$$(STRIP)" \
      AR="$$(TARGET_$(4)$(3))-ar" \
 @@ -127,7 +131,7 @@ $(2)_ENV$(3) = \
-     PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_BINDIR$(3))),,:):$$(SRC)/glslang/bin:$$$$PATH" \
+     PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_BINDIR$(3))),,:):$$$$PATH" \
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 -    PKG_CONFIG_LIBDIR="/usr/lib/$$(PKG_CONFIG_TARGET_$(4)$(3))/pkgconfig:/usr/share/pkgconfig" \
@@ -442,7 +443,7 @@ index 69688a03..1c0d1d3b 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index dfa7b1e7..231e0acd 100755
+index dfeab12a..2a58d345 100755
 --- a/proton
 +++ b/proton
 @@ -417,7 +417,6 @@ class Proton:
@@ -453,7 +454,7 @@ index dfa7b1e7..231e0acd 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1682,8 +1681,6 @@ if __name__ == "__main__":
+@@ -1693,8 +1692,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -462,7 +463,7 @@ index dfa7b1e7..231e0acd 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1692,7 +1689,8 @@ if __name__ == "__main__":
+@@ -1703,7 +1700,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
