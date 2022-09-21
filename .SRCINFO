@@ -1,0 +1,17 @@
+pkgbase = mimi
+	pkgdesc = Active fork of mimi, a minimal and lightweight xdg-open drop-in replacement most suitable for Window Manager users.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BachoSeven/mimi
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	optdepends = dmenu
+	optdepends = libnotify
+	provides = xdg-utils
+	conflicts = xdg-utils
+	source = mimi-0.1.0.tar.gz::https://github.com/BachoSeven/mimi/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = e3f4970e7e9060b41ee752ae87f54da06ab6bafbc257e54d64ef6f9be64d944cf9c0fbee9a6fd839e334dfe99bd4b30ab69c03b451af168a0c74066170795359
+
+pkgname = mimi
