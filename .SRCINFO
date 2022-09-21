@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
-	pkgver = 5.14.0.rc7
+	pkgver = 6.0.0.rc6
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -8,18 +8,18 @@ pkgbase = linux-clear-current
 	makedepends = bc
 	makedepends = cpio
 	makedepends = git
-	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
 	makedepends = xmlto
 	options = !strip
-	source = https://git.kernel.org/torvalds/t/linux-5.14-rc7.tar.gz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.14.0.rc6-47
-	source = more-uarches-20210818.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210818.tar.gz
+	source = https://git.kernel.org/torvalds/t/linux-6.0-rc6.tar.gz
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=6.0.0.rc6-50
+	source = more-uarches-20220315.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20220315.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = cde1ef122a52199dc36fda0ba1127dbbb936c1687024ef6209d1f068de2674e0
+	sha256sums = 1af65b4cb6e12a35157741a0656cc23b941c62f5b3c7bed2fcfb8b3ab1240254
 	sha256sums = SKIP
-	sha256sums = d361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf
+	sha256sums = 5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c
 
 pkgname = linux-clear-current
 	pkgdesc = The Clear Linux current kernel and modules
@@ -27,7 +27,7 @@ pkgname = linux-clear-current
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	provides = VIRTUALBOX-GUEST-MODULES
@@ -35,3 +35,4 @@ pkgname = linux-clear-current
 
 pkgname = linux-clear-current-headers
 	pkgdesc = Headers and scripts for building modules for the Clear Linux current kernel
+	depends = pahole
