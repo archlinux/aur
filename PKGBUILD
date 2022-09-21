@@ -2,7 +2,7 @@
 
 pkgname=yj
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert YAML <=> TOML <=> JSON <=> HCL"
 url="https://github.com/sclevine/yj"
 depends=()
@@ -17,7 +17,7 @@ md5sums=('f6ab69c49db27ced1bbb0031ea92936e')
 build() {
   cd "$srcdir/yj-$pkgver"
   go mod download
-  go build -race
+  go build -ldflags "-X main.Version=$pkgver"
 }
 
 package() {
