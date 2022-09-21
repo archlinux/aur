@@ -4,7 +4,7 @@
 # Contributor: Sergey Kasmy
 
 pkgname=liquidctl-git
-pkgver=1.10.0.r42.f455e3f
+pkgver=1.10.0.r48.a81c9b5
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
   i2c-tools
   python
   python-colorlog
+  python-crcmod
   python-docopt
   python-hidapi
   python-pillow

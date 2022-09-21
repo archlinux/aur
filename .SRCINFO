@@ -1,6 +1,6 @@
 pkgbase = liquidctl-git
 	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices
-	pkgver = 1.10.0.r42.f455e3f
+	pkgver = 1.10.0.r48.a81c9b5
 	pkgrel = 1
 	url = https://github.com/liquidctl/liquidctl
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = liquidctl-git
 	depends = i2c-tools
 	depends = python
 	depends = python-colorlog
+	depends = python-crcmod
 	depends = python-docopt
 	depends = python-hidapi
 	depends = python-pillow
