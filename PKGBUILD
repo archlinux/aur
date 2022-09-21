@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=ttf-luciole
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A typeface developed explicitly for visually impaired people."
 arch=("any")
 url="http://www.luciole-vision.com/luciole-en.html"
@@ -19,7 +19,6 @@ sha256sums=('1ae1bbefc9ae6741d4a7f22ae1f34436f2df779995bfd314ebc42a17250d3f8a'
             'b65e176a58b7de57691aabc344f96cf9e4998adcc9dd268381b29ae6d8936e22')
 
 package() {
-  cd $srcdir
   install -d -m755 "$pkgdir/usr/share/licenses/$pkgname"
   install -D -m644 "Read%20Me.txt" "$pkgdir/usr/share/licenses/$pkgname/readme.txt"
 
