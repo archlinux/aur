@@ -1,0 +1,23 @@
+pkgbase = sanjuuni-git
+	pkgdesc = Converts images and videos into a format that can be displayed in ComputerCraft.
+	pkgver = 0.2~43+7a7a3af
+	pkgrel = 1
+	url = https://github.com/MCJack123/sanjuuni
+	arch = x86_64
+	arch = i386
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	arch = powerpc
+	arch = ppc64el
+	arch = s390x
+	arch = riscv64
+	arch = riscv32
+	license = GPL
+	depends = ffmpeg
+	depends = poco
+	depends = zlib
+	source = sanjuuni::git+https://github.com/MCJack123/sanjuuni.git
+	sha256sums = SKIP
+
+pkgname = sanjuuni-git
