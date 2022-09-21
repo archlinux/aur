@@ -7,12 +7,18 @@ pkgdesc="A simple FTP, FTPS or SFTP server for ArchLinux."
 arch=('x86_64')
 url="https://filezilla-project.org/download.php?type=server"
 license=('unknown')
+depends=('vim')
+optdepends=(
+firefox
+chrome
+)
 
 options=(!strip)
 
 _debname=FileZilla_Server_1.5.1_x86_64-linux-gnu.deb
 
 source=(https://dl3.cdn.filezilla-project.org/server/FileZilla_Server_1.5.1_x86_64-linux-gnu.deb)
+sha256sums=('236066c83aea912eeebee3dd794c57389e6d0ee23a5bd8619dee387b88f89fc0')
 
 prepare() {
   cd "$srcdir"
