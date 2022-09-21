@@ -1,14 +1,16 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname=txt2epub
 pkgname=${_pkgname}-git
 pkgver=0.0.1.r0.g73b0c60
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert one or more plain text files into an EPUB document'
 arch=('x86_64')
 url='https://github.com/kevinboone/txt2epub'
 license=('GPL3')
 makedepends=('git')
+conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
