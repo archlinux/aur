@@ -1,11 +1,11 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
-_electron=electron18
+_electron=electron20
 _electronver=$(</usr/lib/$_electron/version)
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}-native
-_pkgver=2.8.3
+_pkgver=2.9.0
 pkgver=${_pkgver/-/.}
 pkgrel=2
 pkgdesc='World of Warcraft addon updater (system Electron)'
@@ -24,25 +24,32 @@ makedepends=(
 )
 source=(
     "$_pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
+    bna-client-name.patch
     wago-fix.js
     wowup-native.desktop
     run_wowup-native.sh
 )
-sha256sums=('fb17965dbe1900a9cf4bf50a7f2bc46124ac622b0c1356b40c53fc76838554e0'
+sha256sums=('86f531caf94a037296e4317ffd996971afe5fdacc2ff8d971b986b93924d1ba1'
+            '967bec722d268b7566afb4bbfff298e0e0059b257e070edc58f907f49810c63e'
             '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '76ebf12e022e15075a6a3824731a8288acbc6a4e1f69f6bd0fa3591d6f658656'
             '96b62f48ab60f289a375b93eef8ccbd67be818e1043f450da706894b2c958356')
 
 prepare() {
+    # set correct electron path in launcher
+    sed -i "s|/usr/bin/electron|/usr/bin/$_electron|" run_wowup-native.sh wowup-native.desktop
+
+    cd "$_pkgname-$_pkgver/"
+
     # set legacy peer deps in .npmrc file to dependency conflict since npm 7
-    echo "legacy-peer-deps=true" >>"$_pkgname-$_pkgver/wowup-electron/.npmrc"
+    echo "legacy-peer-deps=true" >>wowup-electron/.npmrc
+
+    # client names follow Battle.Net app
+    patch --forward --strip=1 --input="${srcdir}/bna-client-name.patch"
 
     # intergient.com refuse to provide service to users in some country/region
     # add a workaround that extracts the key manually
-    cat wago-fix.js >>"$_pkgname-$_pkgver/wowup-electron/assets/preload/wago.js"
-
-    # set correct electron path in launcher
-    sed -i "s|/usr/bin/electron|/usr/bin/$_electron|" run_wowup-native.sh wowup-native.desktop
+    cat "${srcdir}/wago-fix.js" >>wowup-electron/assets/preload/wago.js
 }
 
 build() {

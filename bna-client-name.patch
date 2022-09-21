@@ -1,0 +1,580 @@
+From d49176854e30ef8989a559a246bb967a998c2515 Mon Sep 17 00:00:00 2001
+From: Cyano Hao <c@cyano.cn>
+Date: Wed, 31 Aug 2022 15:01:33 +0800
+Subject: [PATCH 1/4] =?UTF-8?q?Allow=20(and=20default=20to)=20=E2=80=9C{de?=
+ =?UTF-8?q?faultName}=E2=80=9D=20placeholder=20in=20installation=20label?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../client-selector.component.html            |  2 +-
+ .../client-selector.component.ts              |  2 +-
+ .../wow-client-options.component.html         |  2 +-
+ .../pages/my-addons/my-addons.component.ts    |  2 +-
+ .../warcraft/warcraft-installation.service.ts | 29 +++++++++++++------
+ .../src/common/warcraft/wow-installation.ts   |  1 +
+ 6 files changed, 25 insertions(+), 13 deletions(-)
+
+diff --git a/wowup-electron/src/app/components/common/client-selector/client-selector.component.html b/wowup-electron/src/app/components/common/client-selector/client-selector.component.html
+index 2fc7649c6..0762f2bb6 100644
+--- a/wowup-electron/src/app/components/common/client-selector/client-selector.component.html
++++ b/wowup-electron/src/app/components/common/client-selector/client-selector.component.html
+@@ -25,7 +25,7 @@
+       </mat-select-trigger>
+       <mat-option [value]="installation.id" *ngFor="let installation of wowInstallations$ | async">
+         <div class="d-flex">
+-          <div class="flex-grow-1">{{ installation.label }}</div>
++          <div class="flex-grow-1">{{ installation.displayName }}</div>
+           <div *ngIf="updates && installation.availableUpdateCount > 0">
+             <div class="d-inline update-badge ml-1 text-white">
+               {{ installation.availableUpdateCount }}
+diff --git a/wowup-electron/src/app/components/common/client-selector/client-selector.component.ts b/wowup-electron/src/app/components/common/client-selector/client-selector.component.ts
+index 0a3bbf4d7..b21fa3394 100644
+--- a/wowup-electron/src/app/components/common/client-selector/client-selector.component.ts
++++ b/wowup-electron/src/app/components/common/client-selector/client-selector.component.ts
+@@ -23,7 +23,7 @@ export class ClientSelectorComponent implements OnInit {
+   );
+ 
+   public readonly selectedWowInstallationLabel$ = this._sessionService.selectedWowInstallation$.pipe(
+-    map((wowInstall) => wowInstall?.label ?? "")
++    map((wowInstall) => wowInstall?.displayName ?? "")
+   );
+ 
+   public wowInstallations$: Observable<WowInstallation[]> = combineLatest([
+diff --git a/wowup-electron/src/app/components/options/wow-client-options/wow-client-options.component.html b/wowup-electron/src/app/components/options/wow-client-options/wow-client-options.component.html
+index 9b3327984..a599f07dc 100644
+--- a/wowup-electron/src/app/components/options/wow-client-options/wow-client-options.component.html
++++ b/wowup-electron/src/app/components/options/wow-client-options/wow-client-options.component.html
+@@ -3,7 +3,7 @@
+     <img [src]="wowLogoImage" />
+   </div>
+   <mat-card-title class="row">
+-    <div *ngIf="(editMode$ | async) === false" class="flex-grow-1">{{ installationModel.label }}</div>
++    <div *ngIf="(editMode$ | async) === false" class="flex-grow-1">{{ installationModel.displayName }}</div>
+     <mat-form-field *ngIf="(editMode$ | async) === true" class="no-input-border w-100">
+       <input matInput [(ngModel)]="installationModel.label" />
+     </mat-form-field>
+diff --git a/wowup-electron/src/app/pages/my-addons/my-addons.component.ts b/wowup-electron/src/app/pages/my-addons/my-addons.component.ts
+index ed5aad3b7..f5f661ce8 100644
+--- a/wowup-electron/src/app/pages/my-addons/my-addons.component.ts
++++ b/wowup-electron/src/app/pages/my-addons/my-addons.component.ts
+@@ -108,7 +108,7 @@ export class MyAddonsComponent implements OnInit, OnDestroy, AfterViewInit {
+   public readonly selectedWowInstallation$ = this._sessionService.selectedWowInstallation$;
+ 
+   public readonly selectedWowInstallationLabel$ = this._sessionService.selectedWowInstallation$.pipe(
+-    map((wowInstall) => wowInstall?.label ?? "")
++    map((wowInstall) => wowInstall?.displayName ?? "")
+   );
+ 
+   public readonly selectedWowInstallationId$ = this._sessionService.selectedWowInstallation$.pipe(
+diff --git a/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts b/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts
+index 041ddef02..1a4d5f6a3 100644
+--- a/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts
++++ b/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts
+@@ -47,6 +47,14 @@ export class WarcraftInstallationService {
+     private _electronService: ElectronService
+   ) {
+     this._wowInstallationsSrc.subscribe((installations) => {
++      for (const installation of installations) {
++        // Saved display names can be unreliable (e.g. language change,
++        // expansion release). Always regenerate them.
++        const typeName = getEnumName(WowClientType, installation.clientType);
++        this.getDisplayName(installation.label, typeName).then(
++          displayName => installation.displayName = displayName
++        ).catch(() => {});
++      }
+       this._wowInstallations = installations;
+     });
+ 
+@@ -132,6 +140,9 @@ export class WarcraftInstallationService {
+   }
+ 
+   public async updateWowInstallation(wowInstallation: WowInstallation): Promise<void> {
++    const typeName = getEnumName(WowClientType, wowInstallation.clientType);
++    wowInstallation.displayName = await this.getDisplayName(wowInstallation.label, typeName);
++
+     const storedInstallations = await this.getWowInstallationsAsync();
+     const matchIndex = _.findIndex(storedInstallations, (installation) => installation.id === wowInstallation.id);
+ 
+@@ -208,7 +219,8 @@ export class WarcraftInstallationService {
+     const typeName = getEnumName(WowClientType, clientType);
+     const currentInstallations = await this.getWowInstallationsByClientType(clientType);
+ 
+-    const label = await this.getNewInstallLabel(typeName, currentInstallations.length);
++    const label = currentInstallations.length ? `{defaultName} ${currentInstallations.length + 1}` : "{defaultName}";
++    const displayName = await this.getDisplayName(label, typeName);
+ 
+     const installation: WowInstallation = {
+       id: uuidv4(),
+@@ -216,6 +228,7 @@ export class WarcraftInstallationService {
+       defaultAddonChannelType: AddonChannelType.Stable,
+       defaultAutoUpdate: false,
+       label: label,
++      displayName: displayName,
+       location: applicationPath,
+       selected: false,
+     };
+@@ -237,7 +250,8 @@ export class WarcraftInstallationService {
+       const typeName = getEnumName(WowClientType, product.clientType);
+       const currentInstallations = await this.getWowInstallationsByClientType(product.clientType);
+ 
+-      const label = await this.getNewInstallLabel(typeName, currentInstallations.length);
++      const label = currentInstallations.length ? `{defaultName} ${currentInstallations.length + 1}` : "{defaultName}";
++      const displayName = await this.getDisplayName(label, typeName);
+ 
+       const fullProductPath = this.getFullProductPath(product.location, product.clientType);
+ 
+@@ -249,6 +263,7 @@ export class WarcraftInstallationService {
+         id: uuidv4(),
+         clientType: product.clientType,
+         label,
++        displayName,
+         location: fullProductPath,
+         selected: false,
+         defaultAddonChannelType: AddonChannelType.Stable,
+@@ -266,13 +281,9 @@ export class WarcraftInstallationService {
+     this._wowInstallationsSrc.next(wowInstallations);
+   }
+ 
+-  private async getNewInstallLabel(typeName: string, installCt: number): Promise<string> {
+-    let label = await this._translateService.get(`COMMON.CLIENT_TYPES.${typeName.toUpperCase()}`).toPromise();
+-    if (installCt > 0) {
+-      label += ` ${installCt + 1}`;
+-    }
+-
+-    return label;
++  private async getDisplayName(label: string, typeName: string): Promise<string> {
++    const defaultName = await this._translateService.get(`COMMON.CLIENT_TYPES.${typeName.toUpperCase()}`).toPromise();
++    return label.replace("{defaultName}", defaultName);
+   }
+ 
+   private getFullProductPath(location: string, clientType: WowClientType): string {
+diff --git a/wowup-electron/src/common/warcraft/wow-installation.ts b/wowup-electron/src/common/warcraft/wow-installation.ts
+index 033fdf368..2a2f7a0f6 100644
+--- a/wowup-electron/src/common/warcraft/wow-installation.ts
++++ b/wowup-electron/src/common/warcraft/wow-installation.ts
+@@ -6,6 +6,7 @@ export interface WowInstallation {
+   clientType: WowClientType;
+   location: string;
+   label: string;
++  displayName: string;
+   selected: boolean;
+   defaultAddonChannelType: AddonChannelType;
+   defaultAutoUpdate: boolean;
+
+From 9d8252e277114991f8fe1d03fde221fab79fb97e Mon Sep 17 00:00:00 2001
+From: Cyano Hao <c@cyano.cn>
+Date: Wed, 31 Aug 2022 16:20:46 +0800
+Subject: [PATCH 2/4] Update client names: follow Battle.net app
+
+---
+ wowup-electron/src/assets/i18n/cs.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/de.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/en.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/es.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/fr.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/it.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/ko.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/nb.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/pl.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/pt.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/ru.json    | 16 ++++++++--------
+ wowup-electron/src/assets/i18n/zh-TW.json | 14 +++++++-------
+ wowup-electron/src/assets/i18n/zh.json    | 14 +++++++-------
+ 13 files changed, 102 insertions(+), 102 deletions(-)
+
+diff --git a/wowup-electron/src/assets/i18n/cs.json b/wowup-electron/src/assets/i18n/cs.json
+index 55c31ac78..5a2f52b1c 100644
+--- a/wowup-electron/src/assets/i18n/cs.json
++++ b/wowup-electron/src/assets/i18n/cs.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Dragonflight Beta",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Wrath of the Lich King Classic Beta",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Public Test Realm (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Public Test Realm"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/de.json b/wowup-electron/src/assets/i18n/de.json
+index ba6a9a043..d7c15b9ae 100644
+--- a/wowup-electron/src/assets/i18n/de.json
++++ b/wowup-electron/src/assets/i18n/de.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "Der Ordner dieses Addons stimmt nicht mit der TOC-Datei überein"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Beta von Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Beta von Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Öffentlicher Testrealm (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Öffentlicher Testrealm (PTR)"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/en.json b/wowup-electron/src/assets/i18n/en.json
+index 643d25567..c4ceabc46 100644
+--- a/wowup-electron/src/assets/i18n/en.json
++++ b/wowup-electron/src/assets/i18n/en.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Dragonflight Beta",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Wrath of the Lich King Classic Beta",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Public Test Realm (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Public Test Realm"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/es.json b/wowup-electron/src/assets/i18n/es.json
+index 8e0857cdd..ddaabdc92 100644
+--- a/wowup-electron/src/assets/i18n/es.json
++++ b/wowup-electron/src/assets/i18n/es.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "La carpeta de este addon no se corresponde con el archivo toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Beta Classic",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "RPP Classic Era",
+-      "CLASSICPTR": "RPP Classic",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "RPP Retail"
++      "BETA": "Beta de Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Beta de Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Reino público de pruebas (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Reino público de pruebas"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/fr.json b/wowup-electron/src/assets/i18n/fr.json
+index 3ea220418..ad6a2f6ab 100644
+--- a/wowup-electron/src/assets/i18n/fr.json
++++ b/wowup-electron/src/assets/i18n/fr.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Beta Classic",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "PTR Classic",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "PTR Retail"
++      "BETA": "Bêta de Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Bêta de Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Royaume public de test (Wrath of the Lich King Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Royaume public de test"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/it.json b/wowup-electron/src/assets/i18n/it.json
+index d6593082c..71e5fe2e5 100644
+--- a/wowup-electron/src/assets/i18n/it.json
++++ b/wowup-electron/src/assets/i18n/it.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Beta di Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Beta di Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Reame Pubblico di Prova - PTR (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Reame pubblico di prova"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/ko.json b/wowup-electron/src/assets/i18n/ko.json
+index ea7be3d54..e40765554 100644
+--- a/wowup-electron/src/assets/i18n/ko.json
++++ b/wowup-electron/src/assets/i18n/ko.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "베타",
+-      "CLASSIC": "클래식",
+-      "CLASSICBETA": "클래식 베타",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "클래식 PTR",
+-      "RETAIL": "리테일",
+-      "RETAILPTR": "리테일 PTR"
++      "BETA": "용군단 베타",
++      "CLASSIC": "리치 왕의 분노 클래식",
++      "CLASSICBETA": "리치 왕의 분노 클래식 베타",
++      "CLASSICERA": "월드 오브 워크래프트 클래식",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "공개 테스트 서버 (리치 왕의 분노 클래식)",
++      "RETAIL": "어둠땅",
++      "RETAILPTR": "공개 테스트 서버"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/nb.json b/wowup-electron/src/assets/i18n/nb.json
+index e8af95e13..24f65d9e5 100644
+--- a/wowup-electron/src/assets/i18n/nb.json
++++ b/wowup-electron/src/assets/i18n/nb.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Dragonflight Beta",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Wrath of the Lich King Classic Beta",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Public Test Realm (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Public Test Realm"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/pl.json b/wowup-electron/src/assets/i18n/pl.json
+index b27f673de..653edd07c 100644
+--- a/wowup-electron/src/assets/i18n/pl.json
++++ b/wowup-electron/src/assets/i18n/pl.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "Folder tego addonu nie jest zgodny z toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Beta Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Beta Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Publiczny Serwer Testowy (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Publiczny Serwer Testowy"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/pt.json b/wowup-electron/src/assets/i18n/pt.json
+index f13a776d4..e5cb6abd1 100644
+--- a/wowup-electron/src/assets/i18n/pt.json
++++ b/wowup-electron/src/assets/i18n/pt.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "This addon's folder does not match the toc"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Beta",
+-      "CLASSIC": "Classic",
+-      "CLASSICBETA": "Classic Beta",
+-      "CLASSICERA": "Classic Era",
+-      "CLASSICERAPTR": "Classic Era PTR",
+-      "CLASSICPTR": "Classic PTR",
+-      "RETAIL": "Retail",
+-      "RETAILPTR": "Retail PTR"
++      "BETA": "Beta de Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Beta de Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "Reino de Teste Público (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Reino de Teste Público"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/ru.json b/wowup-electron/src/assets/i18n/ru.json
+index 118dd07c7..6c37a6de5 100644
+--- a/wowup-electron/src/assets/i18n/ru.json
++++ b/wowup-electron/src/assets/i18n/ru.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "Папка этой модификации не соответствует названию"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "Бета",
+-      "CLASSIC": "Классический",
+-      "CLASSICBETA": "Классический Бета",
+-      "CLASSICERA": "Эпоха классики",
+-      "CLASSICERAPTR": "Эпоха классики PTR",
+-      "CLASSICPTR": "Классический PTR",
+-      "RETAIL": "Актуальный",
+-      "RETAILPTR": "Актуальный PTR"
++      "BETA": "Бета Dragonflight",
++      "CLASSIC": "Wrath of the Lich King Classic",
++      "CLASSICBETA": "Бета Wrath of the Lich King Classic",
++      "CLASSICERA": "World of Warcraft Classic",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "PTR (Wrath Classic)",
++      "RETAIL": "Shadowlands",
++      "RETAILPTR": "Тестовый игровой мир (PTR)"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/zh-TW.json b/wowup-electron/src/assets/i18n/zh-TW.json
+index 44010b103..f00864d0f 100644
+--- a/wowup-electron/src/assets/i18n/zh-TW.json
++++ b/wowup-electron/src/assets/i18n/zh-TW.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "插件資料夾和 TOC 不匹配"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "巨龍崛起 Beta",
+-      "CLASSIC": "燃燒的遠征",
+-      "CLASSICBETA": "巫妖王之怒 Beta",
+-      "CLASSICERA": "經典舊世",
+-      "CLASSICERAPTR": "經典舊世大師賽季 PTR",
+-      "CLASSICPTR": "燃燒的遠征 PTR",
++      "BETA": "《巨龍崛起》Beta 測試",
++      "CLASSIC": "《巫妖王之怒》經典版",
++      "CLASSICBETA": "《巫妖王之怒》經典版 Beta 測試",
++      "CLASSICERA": "《魔獸世界》經典版",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "PTR《巫妖王之怒》",
+       "RETAIL": "暗影之境",
+-      "RETAILPTR": "暗影之境 PTR"
++      "RETAILPTR": "測試伺服器"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+diff --git a/wowup-electron/src/assets/i18n/zh.json b/wowup-electron/src/assets/i18n/zh.json
+index 9384ba7db..a4a783065 100644
+--- a/wowup-electron/src/assets/i18n/zh.json
++++ b/wowup-electron/src/assets/i18n/zh.json
+@@ -178,14 +178,14 @@
+       "TOC_NAME_MISMATCH_TOOLTIP": "插件文件夹和 TOC 不匹配"
+     },
+     "CLIENT_TYPES": {
+-      "BETA": "巨龙时代 Beta",
+-      "CLASSIC": "燃烧的远征",
+-      "CLASSICBETA": "巫妖王之怒 Beta",
+-      "CLASSICERA": "经典旧世",
+-      "CLASSICERAPTR": "经典旧世赛季服 PTR",
+-      "CLASSICPTR": "燃烧的远征 PTR",
++      "BETA": "“巨龙时代” Beta 测试",
++      "CLASSIC": "“巫妖王之怒”",
++      "CLASSICBETA": "“巫妖王之怒” 测试服",
++      "CLASSICERA": "魔兽世界（经典怀旧服）",
++      "CLASSICERAPTR": "Classic Season of Mastery PTR",
++      "CLASSICPTR": "公开测试服（巫妖王之怒）",
+       "RETAIL": "暗影国度",
+-      "RETAILPTR": "暗影国度 PTR"
++      "RETAILPTR": "公共测试服"
+     },
+     "DATES": {
+       "DATETIME_SHORT": "{d, date, short} {d, time, short}",
+
+From 78ec0969b4a9d39e0d7d114e6c63df4464263600 Mon Sep 17 00:00:00 2001
+From: Cyano Hao <c@cyano.cn>
+Date: Wed, 31 Aug 2022 17:08:06 +0800
+Subject: [PATCH 3/4] Fix lint
+
+---
+ .../src/app/services/warcraft/warcraft-installation.service.ts  | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts b/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts
+index 1a4d5f6a3..eee1e79d3 100644
+--- a/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts
++++ b/wowup-electron/src/app/services/warcraft/warcraft-installation.service.ts
+@@ -282,7 +282,7 @@ export class WarcraftInstallationService {
+   }
+ 
+   private async getDisplayName(label: string, typeName: string): Promise<string> {
+-    const defaultName = await this._translateService.get(`COMMON.CLIENT_TYPES.${typeName.toUpperCase()}`).toPromise();
++    const defaultName: string = await this._translateService.get(`COMMON.CLIENT_TYPES.${typeName.toUpperCase()}`).toPromise();
+     return label.replace("{defaultName}", defaultName);
+   }
+ 
+
+From 3335b0cdd55c410898701370e58bcb65c078d5e7 Mon Sep 17 00:00:00 2001
+From: Cyano Hao <c@cyano.cn>
+Date: Wed, 31 Aug 2022 17:18:20 +0800
+Subject: [PATCH 4/4] Fix test
+
+---
+ .../src/app/pages/get-addons/get-addons.component.spec.ts        | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/wowup-electron/src/app/pages/get-addons/get-addons.component.spec.ts b/wowup-electron/src/app/pages/get-addons/get-addons.component.spec.ts
+index bf986aed9..b718d286c 100644
+--- a/wowup-electron/src/app/pages/get-addons/get-addons.component.spec.ts
++++ b/wowup-electron/src/app/pages/get-addons/get-addons.component.spec.ts
+@@ -54,6 +54,7 @@ describe("GetAddonsComponent", () => {
+             clientType: WowClientType.Retail,
+             location: "C:/fake_wow",
+             label: "Wow Unit Test Client",
++            displayName: "Wow Unit Test Client",
+             defaultAutoUpdate: false,
+             selected: true,
+           };
