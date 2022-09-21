@@ -1,12 +1,12 @@
 pkgbase = netclient
-	pkgdesc = netclient daemon - a platform for modern, blazing fast virtual networks
+	pkgdesc = netclient daemon - a platform for modern, blazing fast wireguard virtual networks
 	pkgver = 0.16.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/gravitl/netmaker
 	arch = x86_64
 	license = custom:SSPL
 	depends = wireguard-tools
-	source = 0.16.0-0.tar.zst::https://github.com/gravitl/netmaker/releases/download/v0.16.0/netclient-0.16.0-1-x86_64.pkg.tar.zst
-	sha256sums = c16d676244663c29e395d02d79d3bcaa25947b8370b6254a45eb89011361027f
+	source = 0.16.0-1.tar.zst::https://github.com/gravitl/netmaker/releases/download/v0.16.0/netclient-0.16.0-1-x86_64.pkg.tar.zst
+	sha256sums = 9540d5fffb2cfbb5fc21348d8c19af00f96184dfc1b1ce1281b8804c1050b579
 
 pkgname = netclient
