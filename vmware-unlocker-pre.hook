@@ -10,4 +10,5 @@ Target = vmware*
 Description = Unpatching VMware...
 When = PreTransaction
 Depends = vmware-unlocker
-Exec = /usr/bin/relock
+Depends = bash
+Exec = /usr/bin/bash -c 'env UNLOCK_QUIET=1 relock'
