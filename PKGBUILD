@@ -1,7 +1,7 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 
 pkgname=sfk-bin
-pkgver=1.9.8.0
+pkgver=1.9.8.2
 pkgrel=1
 pkgdesc="Swiss File Knife - a command line tools collection"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('sfk')
 _bin='sfk198-linux-64.exe'
 source=("$_bin::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/$pkgver/$_bin/download")
 noextract=("$_bin")
-md5sums=('3d5252917676ecef219c9f4915abb8ed')
+md5sums=('c8aaebe21c4bd54bb7cd707cf286905c')
 
 prepare() {
   cp "$_bin" "$srcdir/sfk"
