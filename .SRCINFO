@@ -1,6 +1,6 @@
 pkgbase = walinuxagent
 	pkgdesc = Microsoft Azure Linux Agent
-	pkgver = 2.7.3.0
+	pkgver = 2.8.0.11
 	pkgrel = 1
 	url = https://github.com/Azure/WALinuxAgent
 	install = walinuxagent.install
@@ -15,7 +15,7 @@ pkgbase = walinuxagent
 	depends = net-tools
 	provides = walinuxagent
 	backup = etc/waagent.conf
-	source = https://github.com/Azure/WALinuxAgent/archive/v2.7.3.0.tar.gz
-	sha256sums = 61304320495eb873cc0f3fb584d6c9572e7aca1837403f22ae8933882561db01
+	source = https://github.com/Azure/WALinuxAgent/archive/v2.8.0.11.tar.gz
+	sha256sums = dbb36994d1df610943cd49609a49bf4ec6524520d88709891d282cec3607a31b
 
 pkgname = walinuxagent
