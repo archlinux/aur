@@ -24,7 +24,6 @@ depends=(
          libchamplain
          libcryptui
          libpst
-         libsoup3
          libytnef
          nss
          )
