@@ -1,8 +1,9 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
+# Maintainer: Anupam Srivastava <anupam@dont.tech>
 pkgname=fluent-kde-theme-git
 _themeName=Fluent
 _gitname="$_themeName-kde"
-pkgver=r18.60f741b
+pkgver=r78.dd4d868
 pkgrel=1
 pkgdesc="Fluent design theme for kde plasma"
 arch=('any')
@@ -27,7 +28,7 @@ package() {
    mkdir -p "${pkgdir}/usr/share/Kvantum"
    mkdir -p "${pkgdir}/usr/share/sddm/themes"
    mkdir -p "${pkgdir}/usr/share/wallpapers"
-   
+
    # aurorae theme
    cp -r "${srcdir}/${_gitname}/aurorae"/* "${pkgdir}/usr/share/aurorae/themes"
    # kvantum theme
