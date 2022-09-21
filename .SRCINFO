@@ -1,0 +1,11 @@
+pkgbase = memtool
+	pkgdesc = program that allows access to memory mapped registers
+	pkgver = 2018.03.0
+	pkgrel = 1
+	url = https://github.com/pengutronix/memtool
+	arch = x86_64
+	license = GPL
+	source = https://github.com/pengutronix/memtool/releases/download/v2018.03.0/memtool-2018.03.0.tar.xz
+	sha512sums = b618cf375157fa34ff3436097f4e3ecf649d5205d44f3bf4f4fa9a13947fb6becb4ed091c7364be015b2bae1b19c6b737ab6ddc7157990f6c703a9255a56edbf
+
+pkgname = memtool
