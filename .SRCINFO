@@ -1,6 +1,6 @@
 pkgbase = gradience-git
 	pkgdesc = Change the look of Adwaita, with ease
-	pkgver = r1635.54e1aa6
+	pkgver = r1683.5a06e8b
 	pkgrel = 1
 	url = https://github.com/GradienceTeam/Gradience
 	install = xdg-config.install
@@ -25,6 +25,7 @@ pkgbase = gradience-git
 	depends = python-material-color-utilities
 	depends = libportal-gtk4
 	depends = python-cssutils
+	depends = python-jinja
 	optdepends = adw-gtk3: The theme from libadwaita ported to GTK-3
 	optdepends = adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.
 	provides = gradience
