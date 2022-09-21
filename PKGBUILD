@@ -2,7 +2,7 @@
 
 pkgname=signal-in-tray
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 license=('GPL3')
 pkgdesc='Start signal in background via desktop files'
 depends=('signal-desktop' 'xdg-utils')
@@ -11,7 +11,7 @@ conflicts=()
 arch=('any')
 url='https://github.com/signalapp/Signal-Desktop'
 source=("signal-tray.desktop")
-sha512sums=('d7b95a741ad1f347e3c22c884e4e78a7a1e6830e5f748a49e5f49d03a3e78faeb61894ff9c41f4d8f3822f8e8bd3430fddda6bf22f103316bdb2faf6dad8c237')
+sha512sums=('7aac1481b42dc3930d99d192cae8b04f60426f14e73561fe90881eb36c2467491d3fb5bc3c4067f38bf73e13707e90c65f2a57c4524802aad7f92d5d37b1d3b1')
 
 package() {
   install -Dm 644 "${srcdir}"/signal-tray.desktop "${pkgdir}"/usr/share/applications/signal-tray.desktop
