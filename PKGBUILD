@@ -8,7 +8,7 @@ _pkgbase=gdm
 pkgbase=gdm-plymouth-nox
 pkgname=(gdm-plymouth-nox libgdm-plymouth-nox)
 pkgver=42.0+r11+g4a52f026
-pkgrel=1
+pkgrel=2
 pkgdesc="Display manager and login screen with plymouth support, but without xorg-server"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
@@ -23,10 +23,10 @@ source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
 sha256sums=('SKIP'
             '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8')
 
-pkgver() {
-  cd $_pkgbase
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+#pkgver() {
+#  cd $_pkgbase
+#  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+#}
 
 prepare() {
   cd $_pkgbase
