@@ -12,3 +12,17 @@ pkgbase = cmoc
 	sha256sums = 8074c731eb9cc7ad3a4b3c47fcd0d9044aba270f61ea34031a6a8f8898fb5c3f
 
 pkgname = cmoc
+pkgbase = cmoc
+	pkgdesc = 6809-generating cross-compiler for a subset of the C language.
+	pkgver = 0.1.80
+	pkgrel = 1
+	url = http://perso.b2b2c.ca/~sarrazip/dev/cmoc.html
+	arch = x86_64
+	license = GPL3
+	makedepends = discount
+	depends = perl
+	depends = lwtools
+	source = http://perso.b2b2c.ca/~sarrazip/dev/cmoc-0.1.80.tar.gz
+	sha256sums = 18c094b5be995d584bf5ba90f7336ca022210b0b093f995c3cd412fc9759ecbe
+
+pkgname = cmoc
