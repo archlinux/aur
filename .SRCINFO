@@ -1,14 +1,13 @@
 pkgbase = wutag
 	pkgdesc = CLI tool for tagging files
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/wojciechkepka/wutag
+	url = https://github.com/vv9k/wutag
 	arch = x86_64
 	license = MIT
 	provides = wutag
 	conflicts = wutag
-	source = https://github.com/wojciechkepka/wutag/releases/download/0.3.0/wutag-0.3.0-x86_64-unknown-linux.tar.xz
-	sha1sums = SKIP
+	source = https://github.com/vv9k/wutag/releases/download/0.5.0/wutag-0.5.0-x86_64-unknown-linux.tar.xz
+	sha256sums = c69177acd97d858023a963de676d54c61b8831523454f671e468a4e3fd81171a
 
 pkgname = wutag
-

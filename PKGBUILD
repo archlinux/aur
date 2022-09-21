@@ -1,30 +1,26 @@
-# Maintainer: Wojciech Kepka <wojtek.kepka@protonmail.com>
+# Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=wutag
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="CLI tool for tagging files"
 arch=('x86_64')
-url="https://github.com/wojciechkepka/wutag"
+url="https://github.com/vv9k/wutag"
 license=('MIT')
 depends=()
 makedepends=()
 provides=("wutag")
 conflicts=("wutag")
-sha1sums=('SKIP')
 source=("${url}/releases/download/${pkgver}/wutag-${pkgver}-x86_64-unknown-linux.tar.xz")
+sha256sums=("c69177acd97d858023a963de676d54c61b8831523454f671e468a4e3fd81171a")
 
-build() {
-    cd "$pkgname"
-    ./wutag print-completions bash > wutag.bash
-    ./wutag print-completions fish > wutag.fish
-    ./wutag print-completions zsh > _wutag
-}
 
 package() {
     ls -l
 	cd "$pkgname"
 	install -Dm755 "wutag" "$pkgdir/usr/bin/wutag"
+	install -Dm755 "wutagd" "$pkgdir/usr/bin/wutagd"
+	install -Dm644 "wutagd.service" "$pkgdir/etc/systemd/user/wutagd.service"
 
 	install -Dm644 "wutag.1" "$pkgdir/usr/share/man/man1/wutag.1"
 	install -Dm644 "wutag.bash" "$pkgdir/usr/share/bash-completion/completions/wutag"
