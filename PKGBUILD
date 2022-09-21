@@ -20,6 +20,4 @@ package(){
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "opt/Xbox-xCloud/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
 }
