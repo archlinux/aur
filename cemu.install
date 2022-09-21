@@ -1,5 +1,4 @@
 post_install() {
-	curl -I https://hits.sh/aur.archlinux.org/packages/cemu.svg &> /dev/null &
 	cat << 'EOF'
 +------------------------------------------------------------------------------+
 | This software is still experimental! Many features are missing (e.g. Online) |
@@ -15,19 +14,3 @@ post_install() {
 +------------------------------------------------------------------------------+
 EOF
 }
-
-post_upgrade() {
-	curl -I https://hits.sh/aur.archlinux.org/packages/cemu.svg &> /dev/null &
-}
-
-# People that should fuck themselves
-# ==================================
-# Exzap#0700 (thin-skinned bitch)
-# Crementif#1337 (virgin mod)
-# Zalnor#5895 (maidenless mod)
-# Shahil#1692 (keyboard warrior)
-# Jarl Astyanax Nordskov 🌙🏹Ⓐ#4313 (quacksalver dev)
-# Serfrost#0814 (gay sjw)
-# BenjaminLSR#2796 (pompous ass)
-# Arnie#0001 (pale weakling)
-# Melechtna Antelecht#6157 (idiot kid)

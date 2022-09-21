@@ -1,7 +1,7 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
 	pkgver = 2.0.144
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cemu.info
 	install = cemu.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = cemu
 	makedepends = git
 	makedepends = cmake>=3.21.1
 	makedepends = make
+	makedepends = clang>=12
+	makedepends = llvm>=12
 	makedepends = rapidjson
 	makedepends = boost>=1.79
 	makedepends = glslang>=11.8

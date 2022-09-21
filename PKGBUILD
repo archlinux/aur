@@ -1,7 +1,7 @@
 # Maintainer: Anuskuss <anuskuss@googlemail.com>
 pkgname=cemu
 pkgver=2.0.144
-pkgrel=1
+pkgrel=2
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://cemu.info
