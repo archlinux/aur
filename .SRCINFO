@@ -1,0 +1,12 @@
+pkgbase = po-uilib22
+	pkgdesc = UI library for the Fall semester of the 2022 PO course at IST university
+	pkgver = 202209081626
+	pkgrel = 1
+	url = https://web.tecnico.ulisboa.pt/~david.matos/w/pt/index.php/Programa%C3%A7%C3%A3o_com_Objectos
+	arch = x86_64
+	license = CC BY-NC-ND 4.0
+	depends = java-environment
+	source = https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/5/50/Po-uilib-202209081626.tar.bz2
+	sha256sums = 5a471fcf53a4a7d2ddede75a78ad0174e45abdf27f61e64b0a3da6d81fedb4d0
+
+pkgname = po-uilib22
