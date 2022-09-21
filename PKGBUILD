@@ -12,6 +12,7 @@ depends=(libgdata
          libphonenumber
          libsignon-glib
          libsoup3
+         webkit2gtk-5.0
          )
 makedepends=(git
              gnome-common
