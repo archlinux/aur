@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://git.causal.agency/catgirl"
 license=('GPL3')
 depends=('libretls' 'ncurses')
-makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://git.causal.agency/${pkgname%-git}.git")
