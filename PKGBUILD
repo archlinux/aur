@@ -21,7 +21,8 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.20.r3554.9efdd083
+GOVERSION=go1.17.13
+pkgver=2.0.27.r3653.6826fe87
 pkgrel=1
 epoch=3
 pkgdesc='Psiphon Tunnelling Proxy'
@@ -33,12 +34,14 @@ depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
         "psiphon.service"
-        "make.bash")
+        "make.bash.patch"
+        "https://storage.googleapis.com/golang/${GOVERSION}.linux-amd64.tar.gz")
 backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
 sha256sums=('SKIP'
-         'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
-         'd0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa'
-         '73ead204b4f0aa4f0a5f5ed174257b10dbb6f7430c5abacc450ea000adfd12da')
+            'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
+            'd0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa'
+            '681e9b7e8f32061028061a80c9663f11e2e8d396478c7067706e5ae3db121dc2'
+            '4cdd2bc664724dc7db94ad51b503512c5ae7220951cac568120f64f8e94399fc')
 
 pkgver() {
   cd $_pkgname
@@ -48,18 +51,27 @@ pkgver() {
   printf "%s.r%s.%s" "$TAG" "$REVISION" "$COMMIT"
 }
 
+prepare(){
+  cd "$srcdir/${_pkgname}"
+  patch --strip=1 --input=../make.bash.patch
+}
+
+# This follows the docker file in https://github.com/Psiphon-Labs/psiphon-tunnel-core/blob/master/ConsoleClient/Dockerfile
 build() {
+  cw=$(pwd)
+  export GOPATH=$cw/home/go
+  mkdir -p $GOPATH
+  export GOROOT=$cw/go
+  mkdir -p $GOROOT
+  export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+  export CGO_ENABLED=1
   
-  export GOPATH=$(pwd)
+  go get -u github.com/pwaller/goupx
   
   mkdir -p "${GOPATH}/src/github.com/Psiphon-Labs"
-  
-  ln -sf  "../../../$_pkgname/" "src/github.com/Psiphon-Labs/psiphon-tunnel-core"
-  
-  cp "$srcdir/make.bash" "$_pkgname/ConsoleClient/"
+  ln -sf  "../../../../../$_pkgname/" "${GOPATH}/src/github.com/Psiphon-Labs/psiphon-tunnel-core"
   
   cd "$_pkgname/ConsoleClient"
-  
   ./make.bash linux
 
 }
