@@ -1,6 +1,6 @@
 pkgbase = sensu-agent
 	pkgdesc = Sensu Go Agent
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 0
 	url = https://sensu.io
 	install = sensu-agent.install
@@ -12,11 +12,11 @@ pkgbase = sensu-agent
 	source = agent.yml.example
 	sha256sums = 7d8ca2731fe4a07beab0566d11ed47f0c069774752a96781ac7797697b3f7cc5
 	sha256sums = c9997fa4be0879bb73b7250863ce9737b422515cf9131626075ff313b4575eed
-	source_x86_64 = sensu-agent-6.8.0_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.0/sensu-go_6.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0fe5b814db96ce6bf8c3f4608f3e9adad38f0f6826475d6e568aa15ab2052447
-	source_armv7h = sensu-agent-6.8.0_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.0/sensu-go_6.8.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 0c069005e7d95ac08976e78e3025df95b829d7a5f613b78de7acf7a645b8a6c3
-	source_aarch64 = sensu-agent-6.8.0_aarch64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.0/sensu-go_6.8.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 98cb29cb5dac1229c381ad55c1fc5c7e4a29da399ac15c7f7a680fb6daf1f146
+	source_x86_64 = sensu-agent-6.8.1_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.1/sensu-go_6.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 55033250e3b18be1d9c8e76510549d0216901cfdc8a1f4bf63dc81820c174a41
+	source_armv7h = sensu-agent-6.8.1_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.1/sensu-go_6.8.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 9acbcbc4821f00d7637b7087b6a047d317e8b134436e33f337a868bb8cb8199c
+	source_aarch64 = sensu-agent-6.8.1_aarch64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.8.1/sensu-go_6.8.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = ab37c4e58c781aa9d50f2fac285b2d776c3baba1de6be35c8a97b11fd2c68ff8
 
 pkgname = sensu-agent
