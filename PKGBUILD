@@ -1,13 +1,13 @@
 # Maintainer SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=vmware-unlocker
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="VMware macOS utilities"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker"
 license=('MIT')
-#depends=("vmware-workstation>=16.0.0")
+depends=("vmware-workstation>=16.0.0")
 makedepends=("git" "zsh" "go")
 conflicts=("vmware-unlocker-bin" "vmware-unlocker-git")
 source=("$pkgname::git+$url#tag=V$pkgver" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
@@ -18,9 +18,7 @@ sha512sums=("SKIP"
 
 build() {
   cd "$srcdir/$pkgname/"
-  sed -e '/winres/ s/^#*/#/' -i build.sh
-  sed -e '/exe/ s/^#*/#/' -i build.sh
-  sed -e '/syso/ s/^#*/#/' -i build.sh
+  sed -e '/winres/ s/^#*/#/; /exe/ s/^#*/#/; /syso/ s/^#*/#/' -i build.sh
   zsh build.sh "$pkgver"
 }
 
