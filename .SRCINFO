@@ -1,0 +1,15 @@
+pkgbase = xban
+	pkgdesc = Hides the X mouse cursor on keypress and reveals it again when the mouse cursor moves
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bakkeby/xban
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = libxi
+	depends = libxfixes
+	source = git+https://github.com/bakkeby/xban.git
+	sha256sums = SKIP
+
+pkgname = xban
