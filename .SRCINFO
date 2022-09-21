@@ -1,0 +1,15 @@
+pkgbase = lidact-git
+	pkgdesc = A tool to execute programs on lid opening/closing.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/phranz/lidact
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = lidact
+	conflicts = lidact
+	conflicts = lidact-git
+	source = lidact::git+https://codeberg.org/phranz/lidact
+	sha512sums = SKIP
+
+pkgname = lidact-git
