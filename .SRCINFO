@@ -1,14 +1,17 @@
 pkgbase = sbcl-git
-	pkgdesc = SBCL from project GIT repo
-	pkgver = 1.0
+	pkgdesc = Steel Bank Common Lisp from Git
+	pkgver = sbcl.2.2.8.r129.g2a5fc6359
 	pkgrel = 1
-	arch = any
-	license = GPL
+	url = https://www.sbcl.org
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = BSD
 	makedepends = git
-	depends = automake
-	depends = gcc
-	depends = sbcl
-	provides = sbcl
+	makedepends = sbcl
+	provides = sbcl=sbcl.2.2.8.r129.g2a5fc6359
 	conflicts = sbcl
+	source = sbcl::git+git://git.code.sf.net/p/sbcl/sbcl
+	sha256sums = SKIP
 
 pkgname = sbcl-git

@@ -1,39 +1,38 @@
-###PKGBUILD was last modified on September 15, 2022 at 12:28 AM EDT by bms### 
+###PKGBUILD was last modified on September 15, 2022 at 02:30 PM EDT by bms### 
 
-# Maintainer: Gary Hollis <ghollisjr@gmail.com>
+# Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 
 pkgname=sbcl-git
-pkgver=sbcl.2.2.8.r94.g70c277589
+pkgver=sbcl.2.2.8.r129.g2a5fc6359
 pkgrel=1
 pkgdesc="Steel Bank Common Lisp from Git"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.sbcl.org"
 license=('BSD')
-makedepends=('texlive-bin' 'sbcl')
-provides=(sbcl)
+makedepends=('git' 'sbcl')
+provides=("sbcl=$pkgver")
 conflicts=(sbcl)
 BUILDENV+=('!check')
-source=("$pkgname::git+git://git.code.sf.net/p/sbcl/sbcl")
+source=("${pkgname%-git}::git+git://git.code.sf.net/p/sbcl/sbcl")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   sh make.sh --fancy
-  cd doc/manual && make
 }
 
 check() {
-  cd "$pkgname/tests" && sh run-tests.sh
+  cd "${pkgname%-git}/tests" && sh run-tests.sh
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   INSTALL_ROOT="$pkgdir/usr" ./install.sh
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname%-git}/COPYING"
 }
 
