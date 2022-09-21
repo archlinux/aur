@@ -99,6 +99,13 @@ package() {
 	#install the packageconfig file
 	install -Dm644 "$srcdir/$pkgname-$pkgver/build/firefly.pc" "$pkgdir/usr/lib/pkgconfig/firefly.pc"
 
+  #install the header files
+  install -dm755 "$pkgdir/usr/include/$pkgname/"
+  install -m644 $srcdir/$pkgname-$pkgver/source/include/$pkgname/*.hpp "$pkgdir/usr/include/$pkgname/"
+  install -m644 $srcdir/$pkgname-$pkgver/source/include/$pkgname/*.h "$pkgdir/usr/include/$pkgname/"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/build/include/$pkgname/version.hpp" "$pkgdir/usr/include/$pkgname/version.hpp"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/build/include/$pkgname/config.hpp" "$pkgdir/usr/include/$pkgname/config.hpp"
+
 	#install the manual (the firefly papers)
 	install -Dm644 "$srcdir/$pkgname-$pkgver/pdf/firefly.pdf" "$pkgdir/usr/share/doc/$pkgname/firefly.pdf"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/pdf/firefly-2.pdf" "$pkgdir/usr/share/doc/$pkgname/firefly-2.pdf"
