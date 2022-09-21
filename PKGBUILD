@@ -71,6 +71,7 @@ build() {
                 -DENABLE_GTK_DOC=ON \
                 -DENABLE_PLUGINS=all \
                 -DENABLE_SMIME=ON \
+                -DENABLE_WEATHER=OFF \
 
         ninja
 }
