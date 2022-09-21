@@ -8,7 +8,7 @@ pkgdesc="v2rayA nightly version"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/v2rayA/v2rayA"
 license=('GPL3')
-depends=('glibc' 'v2ray>=5.0.0')
+depends=('glibc')
 makedepends=('git' 'go>=2:1.16.0-1' 'nodejs>=14' 'yarn' 'python2')
 provides=('v2raya')
 conflicts=('v2raya')
@@ -36,6 +36,8 @@ build() {
 }
 
 package() {
+    depends+=('v2ray>=5.0.0')
+
     cd "${srcdir}"/"${pkgname}"/
     install -Dm 755 service/v2raya -t "${pkgdir}"/usr/bin/
     install -dm 750 "${pkgdir}"/etc/v2raya/
