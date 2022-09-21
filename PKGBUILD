@@ -6,7 +6,7 @@ pkgdesc="CLI program to filter word choices to aid solving Wordle game problems"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
-depends=("python>=3.6")
+depends=("python>=3.6" "python-pyspellchecker")
 makedepends=("python-pip" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha1sums=('d3aefb62b1a358261e3adbe940784f9ee600f9fd')
