@@ -5,12 +5,12 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=28
+pkgrel=29
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
 arch=('any')
-url="https://fedorahosted.org/bluecurve/"
+url="https://fedoraproject.org/wiki/Artwork"
 license=('GPL')
 groups=('redhat-artwork')
 makedepends=('python' 'perl-xml-simple' 'intltool')
@@ -282,16 +282,16 @@ PYSCRIPT
 }
 
 package() {
-  install -d -m755 $pkgdir/usr/share/icons
-  install -d -m755 $pkgdir/usr/share/licenses/$pkgname
+  install -d -m755 "$pkgdir/usr/share/icons"
+  install -d -m755 "$pkgdir/usr/share/licenses/$pkgname"
 
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
 
-  install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -D -m644 AUTHORS $pkgdir/usr/share/licenses/$pkgname/AUTHORS
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
 
   for theme in Bluecurve8 Bluecurve-inverse LBluecurve LBluecurve-inverse; do
-    cp -R theme/$theme $pkgdir/usr/share/icons/
+    cp -R theme/$theme "$pkgdir/usr/share/icons/"
   done
 }
 
