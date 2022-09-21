@@ -51,7 +51,7 @@ source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${
         "license.html")
 sha256sums=('1a725b585786f43b944336caf703360446e3f4b5e6e234057ff121e50ef91d9a'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
-            '03a1867113857d41774306535f43774ed2121869da7a4790f3f9fee618f4969a')
+            '6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1')
 
 if [ "${CARCH}" = "i686" ]; then
     depends+=('java-environment')
