@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/boolean'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/boolean-0.46.tar.gz')
+source=('https://cpan.metacpan.org/authors/id/I/IN/INGY/boolean-0.46.tar.gz')
 sha256sums=('95c088085c3e83bf680fe6ce16d8264ec26310490f7d1680e416ea7a118f156a')
 _distdir="boolean-0.46"
 
