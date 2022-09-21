@@ -1,6 +1,6 @@
 pkgbase = nvidia-container-toolkit
 	pkgdesc = NVIDIA container runtime toolkit
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-container-toolkit
 	install = nvidia-container-toolkit.install
@@ -13,7 +13,7 @@ pkgbase = nvidia-container-toolkit
 	replaces = nvidia-container-runtime-hook
 	options = !lto
 	backup = etc/nvidia-container-runtime/config.toml
-	source = v1.10.0-1.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.10.0.tar.gz
-	sha256sums = 7c88e6b16df92feac9a14f7ca7f2960409c71760b2563fea29c57c8799930db3
+	source = v1.11.0-1.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.11.0.tar.gz
+	sha256sums = 016e20b3a1a59409da131817d84b9fc56eab72d3f69a9797bbf960f73c9e5262
 
 pkgname = nvidia-container-toolkit
