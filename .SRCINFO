@@ -1,6 +1,6 @@
 pkgbase = c2f
 	pkgdesc = Celsius/Fahrenheit converter in C99
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ariadnavigo/cras/c2f
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = c2f
 	license = MIT
 	depends = sline
 	conflicts = c2f-git
-	source = c2f-0.3.1.tar.gz::https://github.com/ariadnavigo/c2f/archive/refs/tags/0.3.1.tar.gz
-	sha256sums = 60e678a92f22e7d00aaebb6b8541aabcbe9b9539ae6c24a647cbbabdf2d70314
+	source = c2f-0.3.2.tar.gz::https://github.com/ariadnavigo/c2f/archive/refs/tags/0.3.2.tar.gz
+	sha256sums = 35b6e5a19651cbb4e7c87e9fbe93df3fc1c896eee2008f4e6c9ebe0c283b17af
 
 pkgname = c2f
