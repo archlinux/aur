@@ -6,6 +6,7 @@ pkgbase = figma-linux-bin
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
+	depends = fuse2
 	provides = figma-linux
 	conflicts = figma-linux
 	options = !strip
