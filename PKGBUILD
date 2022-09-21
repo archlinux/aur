@@ -10,7 +10,6 @@ license=('unknown')
 depends=('vim')
 optdepends=(
 firefox
-chrome
 )
 
 options=(!strip)
