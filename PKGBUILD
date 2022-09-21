@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall-git
 _gitname=chwall
-pkgver=v0.5.7.r0.g9630456
+pkgver=v0.5.10.r0.g14af26c
 pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/${_gitname}"
-    make dist DESTDIR=$pkgdir
+    make dist DESTDIR="$pkgdir"
 }
