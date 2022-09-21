@@ -1,7 +1,7 @@
 pkgbase = python-yocto-cooker
 	pkgdesc = yocto-cooker is a easy yocto manager.
 	pkgver = 1.3.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/cpb-/yocto-cooker
 	arch = any
 	license = GPL2
@@ -11,6 +11,8 @@ pkgbase = python-yocto-cooker
 	depends = python-jsonschema
 	depends = python-urllib3
 	source = python-yocto-cooker-1.3.0.tar.gz::https://github.com/cpb-/yocto-cooker/archive/refs/tags/1.3.0.tar.gz
+	source = bumpjson.patch
 	md5sums = 19233c0f03a5a8cfb541ce0f5ed88d54
+	md5sums = 3f290d37e4242769cf4587979a081fbb
 
 pkgname = python-yocto-cooker
