@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
 depends=(libgdata
-         libgweather
          libical
          libphonenumber
          libsignon-glib
+         libsoup3
          )
 makedepends=(git
              gnome-common
@@ -50,6 +50,7 @@ build() {
                 -DENABLE_UOA=OFF \
                 -DENABLE_VALA_BINDINGS=ON \
                 -DWITH_PHONENUMBER=ON \
+                -DENABLE_WEATHER=OFF \
 
         ninja
 }
