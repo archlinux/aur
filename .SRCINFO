@@ -1,7 +1,7 @@
 pkgbase = easystroke
 	pkgdesc = Use mouse gestures to initiate commands and hotkeys
 	pkgver = 0.6.0
-	pkgrel = 23
+	pkgrel = 24
 	url = https://github.com/mrsteve0924/easystroke
 	arch = x86_64
 	license = custom:ISC

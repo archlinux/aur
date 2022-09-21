@@ -6,7 +6,7 @@
 
 pkgname=easystroke
 pkgver=0.6.0
-pkgrel=23
+pkgrel=24
 pkgdesc='Use mouse gestures to initiate commands and hotkeys'
 arch=('x86_64')
 url='https://github.com/mrsteve0924/easystroke'
