@@ -2,7 +2,7 @@
 
 pkgname=eg
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful examples at the command line"
 license=("MIT")
 url="https://github.com/srsudar/eg"
@@ -15,6 +15,6 @@ options=(!emptydirs)
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root=$pkgdir
+  python setup.py install --root="$pkgdir"
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
