@@ -28,7 +28,7 @@ main() {
 	(( status_code > 0 )) && {
 		echo "Installation aborted! You can install manually with command:"
 		echo "sudo pacman -U \"${pkgpath}\""
-		exit 4;
+		exit 4
 	}
 
 	echo "Installation successfully completed!"

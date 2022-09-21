@@ -153,7 +153,7 @@ package() {
 	install -m 644 "${pkgname}/resources/linux/code.desktop" "${pkgdir}/usr/share/applications/code-oss.desktop"
 	install -m 644 "${pkgname}/resources/linux/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-oss-url-handler.desktop"
 
-	install -m 644 "${_appdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/code-oss.png"
+	install -m 644 "${_appdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/code.png"
 
 	install -Dm 644 "${_appdir}/resources/completions/bash/code-oss" "${pkgdir}/usr/share/bash-completion/completions/code-oss"
 	install -Dm 644 "${_appdir}/resources/completions/zsh/_code-oss" "${pkgdir}/usr/share/zsh/site-functions/_code-oss"
