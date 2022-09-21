@@ -3,7 +3,7 @@
 _pkgbasename=libxml
 pkgname=lib32-$_pkgbasename
 pkgver=1.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc="The XML C parser and toolkit of Gnome. Older version (32-bit)"
 arch=(x86_64)
 url="http://xmlsoft.org/"
@@ -21,6 +21,9 @@ build() {
   
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
   
+  # fixes for modern GCC
+  sed -i 's|fprintf(output, shift)|fprintf(output, "%s", shift)|' debugXML.c
+
   # build with -D_FORTIFY_SOURCE=2
   sed -i "s|\(O_WRONLY\))|\1, 0666)|" nanohttp.c
 
