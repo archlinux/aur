@@ -6,7 +6,7 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2021.3.1.16
+pkgver=2022.1.1.11
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "license.html")
-sha256sums=('1a725b585786f43b944336caf703360446e3f4b5e6e234057ff121e50ef91d9a'
+sha256sums=('610db4550304f5b436bce23b4567c0d349e97b038bdc3eb2d5d1a03672579c77'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
             '03a1867113857d41774306535f43774ed2121869da7a4790f3f9fee618f4969a')
 
