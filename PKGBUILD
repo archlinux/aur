@@ -2,8 +2,8 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 _pkgname=cubeb
 pkgname=$_pkgname-git
-pkgver=0.2.r1393.g4783607
-pkgrel=3
+pkgver=0.2.r1395.g28c8aa4
+pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
@@ -26,14 +26,6 @@ pkgver() {
 	git describe --long --tags | sed 's/^cubeb-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd $_pkgname
-	sed -i '/install(TARGETS test_/d' CMakeLists.txt
-	sed -i 's/@PACKAGE@/@CMAKE_PROJECT_NAME@/' docs/Doxyfile.in
-	sed -i 's/@VERSION@/@CMAKE_PROJECT_VERSION@/' docs/Doxyfile.in
-	sed -i '$a install(DIRECTORY ${CMAKE_BINARY_DIR}/docs/html/ TYPE DOC)' CMakeLists.txt
-}
-
 build() {
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
@@ -42,7 +34,6 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_SANITIZERS=OFF \
 		-Wno-dev
