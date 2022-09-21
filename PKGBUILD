@@ -6,7 +6,7 @@
 # The differences between this PKGBUILD and the one from `emacs-git` are:
 # - The xwidgets webkit2gtk support is enabled.
 # - Built-in packages are native compiled by default.
-# - GPM and ALSA are enabled by default.
+# - GPM is enabled by default.
 ################################################################################
 
 ################################################################################
@@ -69,7 +69,7 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
 XI2="YES"         # Use Xinput2 support.
                   # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
 
-ALSA="YES"        # Linux sound support.
+ALSA=             # Linux sound support.
 
 NOCAIRO=          # Disable here.
 
