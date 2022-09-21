@@ -2,7 +2,7 @@
 
 pkgname=mimi-bachoseven-git
 _pkgname=mimi
-pkgver=r92.7420aed
+pkgver=r117.ca08c8d
 pkgrel=1
 pkgdesc="Mantained fork of mimi, a minimal and lightweight xdg-open drop-in replacement most suitable for Window Manager users."
 url='https://github.com/BachoSeven/mimi'
@@ -10,6 +10,7 @@ arch=('any')
 license=('GPL2')
 depends=('bash')
 makedepends=('git')
+optdepends=('dmenu' 'libnotify')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
@@ -28,5 +29,4 @@ package() {
 
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
 # vim:set ts=2 sw=2 et:

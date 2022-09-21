@@ -1,16 +1,17 @@
 pkgbase = mimi-bachoseven-git
 	pkgdesc = Mantained fork of mimi, a minimal and lightweight xdg-open drop-in replacement most suitable for Window Manager users.
-	pkgver = r92.7420aed
+	pkgver = r117.ca08c8d
 	pkgrel = 1
 	url = https://github.com/BachoSeven/mimi
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = bash
+	optdepends = dmenu
+	optdepends = libnotify
 	provides = xdg-utils
 	conflicts = xdg-utils
 	source = git+https://github.com/BachoSeven/mimi.git
 	md5sums = SKIP
 
 pkgname = mimi-bachoseven-git
-
