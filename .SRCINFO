@@ -1,0 +1,15 @@
+pkgbase = scooper-git
+	pkgdesc = CGI and FastCGI web interface for litterbox IRC logger
+	pkgver = 1.3.r118.992e373
+	pkgrel = 1
+	url = https://git.causal.agency/scooper
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = kcgi
+	provides = scooper
+	conflicts = scooper
+	source = scooper::git+https://git.causal.agency/scooper.git
+	md5sums = SKIP
+
+pkgname = scooper-git
