@@ -1,4 +1,4 @@
-###PKGBUILD was last modified on September 18, 2022 at 05:49 PM EDT by bms###
+#PKGBUILD was last modified on September 19, 2022 at 05:32 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 pkgname=remake-git
 pkgver=r3131.7619a012
@@ -41,3 +41,4 @@ package() {
   make DESTDIR="$pkgdir" install
   rm "$pkgdir"/usr/share/info/make.info{,-1,-2}
 }
+#end
