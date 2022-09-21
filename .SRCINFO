@@ -1,0 +1,24 @@
+pkgbase = xk-git
+	pkgdesc = IRC daemon, bot, TUI client
+	pkgver = v1.5.0.r125.gb8061b6
+	pkgrel = 1
+	url = https://git.janouch.name/p/xK
+	arch = i686
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = asciidoctor
+	depends = openssl
+	depends = readline
+	depends = ncurses
+	depends = libffi
+	optdepends = lua: support for Lua plugins (5.3, 5.4 and possibly newer)
+	provides = xk
+	conflicts = xk
+	options = zipman
+	source = git+https://git.janouch.name/p/xK.git
+	sha256sums = SKIP
+
+pkgname = xk-git
