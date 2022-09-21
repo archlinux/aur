@@ -1,19 +1,18 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya-git
-pkgver=20220420.r1112.a18b689
-pkgrel=2
+pkgver=20220920.r1217.f1b93b2
+pkgrel=1
 install=.INSTALL
 pkgdesc="v2rayA nightly version"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/v2rayA/v2rayA"
 license=('GPL3')
-depends=('glibc')
-optdepends=('v2ray>=4.37.0-1' 'xray>=1.4.2-1')
+depends=('glibc' 'v2ray>=5.0.0')
 makedepends=('git' 'go>=2:1.16.0-1' 'nodejs>=14' 'yarn' 'python2')
 provides=('v2raya')
 conflicts=('v2raya')
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url#branch=feat_v5")
 sha512sums=('SKIP')
 
 pkgver() {
