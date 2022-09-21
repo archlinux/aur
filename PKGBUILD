@@ -21,7 +21,7 @@ for external in "${!externals[@]}"; do
 	md5sums+=("SKIP")
 done
 
-arch=(x86_64 i386 armv7h x86_64_v3)
+arch=(x86_64 i386 armv7h x86_64_v3 aarch64 pentium4)
 depends=(fmt spdlog nlohmann-json systemd)
 makedepends=(cmake git)
 optdepends=("ananicy-rules-git: community rules")

@@ -7,6 +7,8 @@ pkgbase = ananicy-cpp
 	arch = i386
 	arch = armv7h
 	arch = x86_64_v3
+	arch = aarch64
+	arch = pentium4
 	license = GPLv3
 	makedepends = cmake
 	makedepends = git
@@ -21,3 +23,4 @@ pkgbase = ananicy-cpp
 	md5sums = SKIP
 
 pkgname = ananicy-cpp
+
