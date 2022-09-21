@@ -1,6 +1,6 @@
 # Maintainer: Jovan Lanik <jox969@gmail.com>
 pkgname=gtklock-git
-pkgver=1.3.6.r0.g2690d6b
+pkgver=1.3.7.r0.g5f09c65
 pkgrel=1
 pkgdesc="GTK-based lockscreen for Wayland"
 arch=('x86_64')
