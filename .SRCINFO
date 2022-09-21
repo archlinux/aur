@@ -7,7 +7,6 @@ pkgbase = libretls-git
 	license = BSD
 	license = ISC
 	license = MIT
-	makedepends = git
 	depends = openssl
 	provides = libretls
 	conflicts = libretls
