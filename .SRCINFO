@@ -1,7 +1,7 @@
 pkgbase = filebeat-oss-bin
 	pkgdesc = Data shippers for Elasticsearch
 	pkgver = 8.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/beats
 	arch = x86_64
 	license = Apache

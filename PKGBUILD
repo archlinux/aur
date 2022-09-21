@@ -2,7 +2,7 @@
 
 pkgname=filebeat-oss-bin
 pkgver=8.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
 url='https://www.elastic.co/products/beats'
@@ -17,7 +17,7 @@ backup=('etc/filebeat-oss/filebeat.yml', 'etc/filebeat-oss/fields.yml')
 srcpath="filebeat-${pkgver}-linux-x86_64"
 
 package() {
-  install -Dm755 "${srcdir}/${srcpath}/filebeat" "${pkgdir}/usr/bin/filebeat"
+  install -Dm755 "${srcdir}/${srcpath}/filebeat" "${pkgdir}/usr/bin/filebeat-oss"
   install -Dm644 "${srcdir}/${srcpath}/filebeat.yml" "${pkgdir}/etc/filebeat-oss/filebeat.yml"
   install -Dm644 "${srcdir}/${srcpath}/filebeat.reference.yml" "${pkgdir}/etc/filebeat-oss/filebeat.reference.yml"
   install -Dm644 "${srcdir}/${srcpath}/fields.yml" "${pkgdir}/etc/filebeat-oss/fields.yml"
