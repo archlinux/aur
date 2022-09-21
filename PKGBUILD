@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=kokkos
-pkgver=3.6.01
+pkgver=3.7.00
 pkgrel=1
 pkgdesc="C++ performance portability programming ecosystem"
 arch=(x86_64)
@@ -8,8 +8,8 @@ url="https://github.com/${pkgname}/${pkgname}"
 license=('custom:BSD-3-clause')
 depends=(bash hwloc)
 makedepends=(cmake)
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('0fa6aa921b6fe56cb464678d9c114e5c9f3ed1ed2f26f704dd7a37e596ca9b2daacc8a9885ff0144234bcb02c83f00c0646dd9963517326609a4dc29e4d7c7a6')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('f72b43096126cba11129ab44c2ebaeb1ee92b14db45bd451e86f40746e8edbfbe3415dee089080a6664ae4985e5796717c64bb5c508ca5e287b31bac248802f6')
 
 build() {
   cmake \
