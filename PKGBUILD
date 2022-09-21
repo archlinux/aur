@@ -4,7 +4,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-yoga9
-pkgver=5.15.12.arch1
+pkgver=5.19.9.arch1
 pkgrel=1
 pkgdesc='Linux for Lenovo Yoga9'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -21,13 +21,11 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
-  '0001-ucsi.patch'   # Patch for UCSI fix (1/7)
-  '0002-ucsi.patch'   # Patch for UCSI fix (2/7)
-  '0003-ucsi.patch'   # Patch for UCSI fix (3/7)
-  '0004-ucsi.patch'   # Patch for UCSI fix (4/7)
-  '0005-ucsi.patch'   # Patch for UCSI fix (5/7)
-  '0006-ucsi.patch'   # Patch for UCSI fix (6/7)
-  '0007-ucsi.patch'   # Patch for UCSI fix (7/7)
+  '0001-ACPICA-Make-address-space-handler-install-and-_REG-e.patch'
+  '0002-ACPI-EC-fix-ECDT-probe-ordering-issues.patch'
+  '0003-Add-IdeaPad-quick_charge-attribute-to-sysfs.patch'
+  '0004-Add-IdeaPad-WMI-Fn-Keys-driver.patch'
+  '0005-Add-IdeaPad-Usage-Mode-driver.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -35,16 +33,16 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('SKIP'
-            'e2d8d59ee965f5fabcb9dd15b70074798e168ccdbd75a9540390c281279f113d' # config
-            'debca80bf2c2019d99559a69c60d3a073988b7dd848b83294e6e06f7a3028bf1' # 0001-ucsi.patch
-            '5c43de1d1c6e83b930f730a3001d46478ec8559fed092857b24330ae0f25fed7' # 0002-ucsi.patch
-            '0ed3a757cb4501d92dfcb46b51fe46ee96276d936d5a4fe844a7c1fc10c237b0' # 0003-ucsi.patch
-            '374909c81caeb2e2d0ad59f5659b2ecf20c3a305c121196131e5a0bfe55e7667' # 0004-ucsi.patch
-            'c1f454e0141d6e85166e3cece392730347fe8634347735a27467a35c75eecc8d' # 0005-ucsi.patch
-            '1c3b545ca3cb880f3e8735c68e81b6865d8efc2f71bfb3ad8d5490b56fb6667b' # 0006-ucsi.patch
-            '164f537f87235bf6d66621de34348a5ea0f1d87a47e45bf761d3fb75267fd4f4' # 0007-ucsi.patch
-            )
+sha256sums=(
+  'SKIP'
+  '6795f4661c7260b4d223e2af3bd7b40956efafd50e4d0ea5b7d0ab90a6354231'
+  'b3cd2b1cb7dd0c080f2f06ddd6e7a9f4725c4ffecb3d22bb8f494b35b964bf6b'
+  '1635279d934394b9f76b3b19f754b1ad72311c7739f4841521c233ad153677ff'
+  '817e763de31de403a625ad6f5dc872383c037af20e4ebc66beb27e4516d82794'
+  'f28a48ec39fee2afb66a9fa79d8dbefaa8ec1e25293ce1a90b5db70591ab5fff'
+  'b4622a0a06dbfcd53555ed0fe259a79bcf79fbcbfad60c9a384d312b21ed5d6c'          
+)
+
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -85,7 +83,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
@@ -103,7 +101,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -123,11 +122,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include

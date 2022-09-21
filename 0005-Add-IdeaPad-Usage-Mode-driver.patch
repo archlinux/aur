@@ -1,0 +1,338 @@
+From 20d98289a006ae8548307cb18ab0998970b9d83d Mon Sep 17 00:00:00 2001
+From: Philipp Jungkamp <p.jungkamp@gmx.net>
+Date: Sat, 30 Jul 2022 15:46:13 +0200
+Subject: [PATCH 5/9] Add IdeaPad Usage Mode driver
+
+The so called 'usage mode' reported by the firmware of the Lenovo Yoga
+line via ACPI WMI is mapped to a tablet mode switch input device.
+
+Signed-off-by: Philipp Jungkamp <p.jungkamp@gmx.net>
+---
+ drivers/platform/x86/Kconfig                  |  11 +
+ drivers/platform/x86/Makefile                 |   1 +
+ drivers/platform/x86/ideapad-wmi-usage-mode.c | 279 ++++++++++++++++++
+ 3 files changed, 291 insertions(+)
+ create mode 100644 drivers/platform/x86/ideapad-wmi-usage-mode.c
+
+diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
+index 6ff757332aa0..8a3cf53a3c79 100644
+--- a/drivers/platform/x86/Kconfig
++++ b/drivers/platform/x86/Kconfig
+@@ -153,6 +153,17 @@ config IDEAPAD_WMI_FN_KEYS
+ 	  To compile this driver as a module, choose M here: the module will
+ 	  be called ideapad-wmi-fn-keys.
+ 
++config IDEAPAD_WMI_USAGE_MODE
++	tristate "Lenovo IdeaPad WMI usage mode"
++	depends on ACPI_WMI
++	depends on INPUT
++	help
++	  Say Y here if you want to receive SW_TABLET_MODE events depending on
++	  the usage mode (Laptop/Tent/Tablet/Drawboard) of the device.
++
++	  To compile this driver as a module, choose M here: the module will
++	  be called ideapad-wmi-usage-mode.
++
+ config ACERHDF
+ 	tristate "Acer Aspire One temperature and fan driver"
+ 	depends on ACPI && THERMAL
+diff --git a/drivers/platform/x86/Makefile b/drivers/platform/x86/Makefile
+index 5e9b678e48b9..b2b377afd1ab 100644
+--- a/drivers/platform/x86/Makefile
++++ b/drivers/platform/x86/Makefile
+@@ -17,6 +17,7 @@ obj-$(CONFIG_XIAOMI_WMI)		+= xiaomi-wmi.o
+ obj-$(CONFIG_GIGABYTE_WMI)		+= gigabyte-wmi.o
+ obj-$(CONFIG_YOGABOOK_WMI)		+= lenovo-yogabook-wmi.o
+ obj-$(CONFIG_IDEAPAD_WMI_FN_KEYS)	+= ideapad-wmi-fn-keys.o
++obj-$(CONFIG_IDEAPAD_WMI_USAGE_MODE)	+= ideapad-wmi-usage-mode.o
+ 
+ # Acer
+ obj-$(CONFIG_ACERHDF)		+= acerhdf.o
+diff --git a/drivers/platform/x86/ideapad-wmi-usage-mode.c b/drivers/platform/x86/ideapad-wmi-usage-mode.c
+new file mode 100644
+index 000000000000..abe61b4776e9
+--- /dev/null
++++ b/drivers/platform/x86/ideapad-wmi-usage-mode.c
+@@ -0,0 +1,279 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Ideapad WMI usage mode driver
++ *
++ * Maps the usage mode reported by the Lenovo Yoga firmware to a
++ * tablet mode switch.
++ *
++ * Copyright (C) 2022 Philipp Jungkamp <p.jungkamp@gmx.net>
++ */
++
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#include <linux/acpi.h>
++#include <linux/input.h>
++#include <linux/input/sparse-keymap.h>
++#include <linux/list.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
++#include <linux/pm.h>
++#include <linux/wmi.h>
++
++#define IDEAPAD_USAGE_MODE_EVENT_GUID	"06129D99-6083-4164-81AD-F092F9D773A6"
++#define IDEAPAD_USAGE_MODE_QUERY_GUID	"09B0EE6E-C3FD-4243-8DA1-7911FF80BB8C"
++
++enum ideapad_wmi_type {
++	IDEAPAD_WMI_USAGE_MODE_EVENT,
++	IDEAPAD_WMI_USAGE_MODE_QUERY,
++};
++
++struct ideapad_wmi_shared {
++	struct mutex *mutex;
++	struct wmi_device *event;
++	struct wmi_device *query;
++	struct input_dev *input_dev;
++};
++
++struct ideapad_wmi_private {
++	enum ideapad_wmi_type type;
++	struct ideapad_wmi_shared *shared;
++};
++
++static const struct key_entry ideapad_wmi_usage_mode_keymap[] = {
++	/* Laptop usage mode */
++	{ KE_SW, 0x01, { .sw = { SW_TABLET_MODE, 0 } } },
++	/* Tablet usage mode */
++	{ KE_SW, 0x02, { .sw = { SW_TABLET_MODE, 1 } } },
++	/* Drawing Board usage mode */
++	{ KE_SW, 0x03, { .sw = { SW_TABLET_MODE, 1 } } },
++	/* Tent usage mode */
++	{ KE_SW, 0x04, { .sw = { SW_TABLET_MODE, 1 } } },
++	{ KE_END },
++};
++
++static void ideapad_wmi_input_report(struct ideapad_wmi_private *priv,
++				     unsigned int scancode)
++{
++	dev_dbg(&priv->shared->query->dev,
++		"WMI report scancode: %d\n", scancode);
++	sparse_keymap_report_event(priv->shared->input_dev, scancode, 0 /* ignored */, true);
++}
++
++static void ideapad_wmi_update_usage_mode(struct ideapad_wmi_private *priv)
++{
++	struct wmi_device *query = priv->shared->query;
++	union acpi_object *obj;
++	struct acpi_buffer input;
++	struct acpi_buffer output = { ACPI_ALLOCATE_BUFFER, NULL };
++	int ret;
++
++	input.length =  (acpi_size) 0;
++	input.pointer = NULL;
++
++	if (!query)
++		return;
++
++	ret = wmidev_evaluate_method(query, 0, 0, &input, &output);
++	if (ret) {
++		dev_warn(&query->dev,
++			"WMI query usage mode failed\n");
++		return;
++	}
++
++	obj = (union acpi_object *)output.pointer;
++
++	if (obj && obj->type == ACPI_TYPE_INTEGER)
++		ideapad_wmi_input_report(priv, obj->integer.value);
++	else
++		dev_warn(&query->dev,
++			"WMI query usage mode is not an integer\n");
++
++	kfree(output.pointer);
++}
++
++static int ideapad_wmi_shared_init(struct ideapad_wmi_private *priv,
++				   struct wmi_device *dev)
++{
++	struct ideapad_wmi_shared *shared = priv->shared;
++	struct input_dev *input_dev;
++	int err;
++
++	mutex_lock(shared->mutex);
++
++	switch (priv->type) {
++	case IDEAPAD_WMI_USAGE_MODE_EVENT:
++		shared->event = dev;
++		break;
++	case IDEAPAD_WMI_USAGE_MODE_QUERY:
++		shared->query = dev;
++		break;
++	}
++
++	if (!shared->event || !shared->query)
++		goto unlock;
++
++	input_dev = input_allocate_device();
++	if (!input_dev) {
++		err = -ENOMEM;
++		goto err_unlock;
++	}
++
++	input_dev->name = "IdeaPad WMI tablet mode switch";
++	input_dev->phys = IDEAPAD_USAGE_MODE_EVENT_GUID "/input0";
++	input_dev->id.bustype = BUS_HOST;
++	input_dev->dev.parent = &shared->event->dev;
++
++	err = sparse_keymap_setup(input_dev, ideapad_wmi_usage_mode_keymap, NULL);
++	if (err) {
++		dev_err(&shared->event->dev,
++			"Could not set up input device keymap: %d\n", err);
++		goto err_free_dev;
++	}
++
++	err = input_register_device(input_dev);
++	if (err) {
++		dev_err(&shared->event->dev,
++			"Could not register input device: %d\n", err);
++		goto err_free_dev;
++	}
++
++	shared->input_dev = input_dev;
++
++	ideapad_wmi_update_usage_mode(priv);
++unlock:
++	mutex_unlock(shared->mutex);
++	return 0;
++
++err_free_dev:
++	input_free_device(input_dev);
++err_unlock:
++	mutex_unlock(shared->mutex);
++	return err;
++}
++
++static void ideapad_wmi_shared_exit(struct ideapad_wmi_private *priv)
++{
++	struct ideapad_wmi_shared *shared = priv->shared;
++
++	mutex_lock(shared->mutex);
++
++	switch (priv->type) {
++	case IDEAPAD_WMI_USAGE_MODE_EVENT:
++		shared->event = NULL;
++		break;
++	case IDEAPAD_WMI_USAGE_MODE_QUERY:
++		shared->query = NULL;
++		break;
++	}
++
++	if (!shared->query && !shared->event) {
++		input_unregister_device(shared->input_dev);
++		shared->input_dev = NULL;
++	}
++
++	mutex_unlock(shared->mutex);
++}
++
++static int ideapad_wmi_probe(struct wmi_device *wdev, const void *ctx)
++{
++	const struct ideapad_wmi_private *context = ctx;
++	struct ideapad_wmi_private *priv;
++	int err;
++
++	priv = devm_kzalloc(&wdev->dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->type = context->type;
++	priv->shared = context->shared;
++
++	err = ideapad_wmi_shared_init(priv, wdev);
++	if (err)
++		return err;
++
++	dev_set_drvdata(&wdev->dev, priv);
++
++	return 0;
++}
++
++static void ideapad_wmi_remove(struct wmi_device *wdev)
++{
++	struct ideapad_wmi_private *priv = dev_get_drvdata(&wdev->dev);
++
++	ideapad_wmi_shared_exit(priv);
++}
++
++static void ideapad_wmi_notify(struct wmi_device *wdev, union acpi_object *data)
++{
++	struct ideapad_wmi_private *priv = dev_get_drvdata(&wdev->dev);
++
++	dev_dbg(&priv->shared->query->dev,
++		"WMI notify\n");
++
++	ideapad_wmi_update_usage_mode(priv);
++}
++
++#ifdef CONFIG_PM_SLEEP
++#define ideapad_wmi_suspend 	NULL
++
++static int ideapad_wmi_resume(struct device *dev) {
++	struct ideapad_wmi_private *priv = dev_get_drvdata(dev);
++
++	ideapad_wmi_update_usage_mode(priv);
++
++	return 0;
++}
++
++#else
++#define ideapad_wmi_suspend 	NULL
++#define ideapad_wmi_resume 	NULL
++#endif
++
++static SIMPLE_DEV_PM_OPS(ideapad_wmi_pm, ideapad_wmi_suspend, ideapad_wmi_resume);
++
++static DEFINE_MUTEX(ideapad_wmi_shared_mutex);
++
++static struct ideapad_wmi_shared ideapad_wmi_shared = {
++	.mutex = &ideapad_wmi_shared_mutex,
++};
++
++static const struct ideapad_wmi_private ideapad_wmi_event_context = {
++	.type = IDEAPAD_WMI_USAGE_MODE_EVENT,
++	.shared = &ideapad_wmi_shared,
++};
++
++static const struct ideapad_wmi_private ideapad_wmi_query_context = {
++	.type = IDEAPAD_WMI_USAGE_MODE_QUERY,
++	.shared = &ideapad_wmi_shared,
++};
++
++static const struct wmi_device_id ideapad_wmi_id_table[] = {
++	{	/* Usage mode change event */
++		.guid_string = IDEAPAD_USAGE_MODE_EVENT_GUID,
++		.context = &ideapad_wmi_event_context,
++	},
++	{	/* Usage mode query method */
++		.guid_string = IDEAPAD_USAGE_MODE_QUERY_GUID,
++		.context = &ideapad_wmi_query_context,
++	},
++	{ }
++};
++
++static struct wmi_driver ideapad_wmi_driver = {
++	.driver = {
++		.name = "ideapad-wmi-usage-mode",
++		.pm = &ideapad_wmi_pm,
++	},
++	.no_notify_data = true,
++	.id_table = ideapad_wmi_id_table,
++	.probe = ideapad_wmi_probe,
++	.remove = ideapad_wmi_remove,
++	.notify = ideapad_wmi_notify,
++};
++
++module_wmi_driver(ideapad_wmi_driver);
++
++MODULE_DEVICE_TABLE(wmi, ideapad_wmi_id_table);
++MODULE_AUTHOR("Philipp Jungkamp <philipp.jungkamp@rwth-aachen.com>");
++MODULE_DESCRIPTION("Ideapad WMI fn keys driver");
++MODULE_LICENSE("GPL");
+-- 
+2.37.1
+

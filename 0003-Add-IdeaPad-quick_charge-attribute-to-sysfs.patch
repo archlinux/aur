@@ -1,0 +1,142 @@
+From dd5b484ed5bfb3afbfe59b59abf65b624a4042f3 Mon Sep 17 00:00:00 2001
+From: Philipp Jungkamp <p.jungkamp@gmx.net>
+Date: Sun, 3 Jul 2022 15:20:58 +0200
+Subject: [PATCH 3/9] Add IdeaPad quick_charge attribute to sysfs
+
+More recent IdeaPads allow USB-C quick-charging to be controlled via
+ACPI. This seems to be mutually exclusive with the ACPI conservation
+mode.
+
+Expose a readable and writable 'quick_charge' sysfs attribute next when
+support is indicated in ACPI.
+---
+ drivers/platform/x86/ideapad-laptop.c | 64 ++++++++++++++++++++++++++-
+ 1 file changed, 62 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/platform/x86/ideapad-laptop.c b/drivers/platform/x86/ideapad-laptop.c
+index abd0c81d62c4..dea35779264a 100644
+--- a/drivers/platform/x86/ideapad-laptop.c
++++ b/drivers/platform/x86/ideapad-laptop.c
+@@ -54,12 +54,16 @@ enum {
+ };
+ 
+ enum {
+-	GBMD_CONSERVATION_STATE_BIT = 5,
++	GBMD_QUICK_CHARGE_STATE_BIT   = 2,
++	GBMD_CONSERVATION_STATE_BIT   = 5,
++	GBMD_QUICK_CHARGE_SUPPORT_BIT = 17,
+ };
+ 
+ enum {
+ 	SBMC_CONSERVATION_ON  = 3,
+ 	SBMC_CONSERVATION_OFF = 5,
++	SBMC_QUICK_CHARGE_ON  = 7,
++	SBMC_QUICK_CHARGE_OFF = 8,
+ };
+ 
+ enum {
+@@ -140,6 +144,7 @@ struct ideapad_private {
+ 		bool kbd_bl               : 1;
+ 		bool touchpad_ctrl_via_ec : 1;
+ 		bool usb_charging         : 1;
++		bool quick_charge         : 1;
+ 	} features;
+ 	struct {
+ 		bool initialized;
+@@ -482,6 +487,12 @@ static ssize_t conservation_mode_store(struct device *dev,
+ 	if (err)
+ 		return err;
+ 
++	if (priv->features.quick_charge && state) {
++		err = exec_sbmc(priv->adev->handle, SBMC_QUICK_CHARGE_OFF);
++		if (err)
++			return err;
++	}
++
+ 	err = exec_sbmc(priv->adev->handle, state ? SBMC_CONSERVATION_ON : SBMC_CONSERVATION_OFF);
+ 	if (err)
+ 		return err;
+@@ -491,6 +502,48 @@ static ssize_t conservation_mode_store(struct device *dev,
+ 
+ static DEVICE_ATTR_RW(conservation_mode);
+ 
++static ssize_t quick_charge_show(struct device *dev,
++				 struct device_attribute *attr,
++				 char *buf)
++{
++	struct ideapad_private *priv = dev_get_drvdata(dev);
++	unsigned long result;
++	int err;
++
++	err = eval_gbmd(priv->adev->handle, &result);
++	if (err)
++		return err;
++
++	return sysfs_emit(buf, "%d\n", !!test_bit(GBMD_QUICK_CHARGE_STATE_BIT, &result));
++}
++
++static ssize_t quick_charge_store(struct device *dev,
++				  struct device_attribute *attr,
++				  const char *buf, size_t count)
++{
++	struct ideapad_private *priv = dev_get_drvdata(dev);
++	bool state;
++	int err;
++
++	err = kstrtobool(buf, &state);
++	if (err)
++		return err;
++
++	if (priv->features.conservation_mode && state) {
++		err = exec_sbmc(priv->adev->handle, SBMC_CONSERVATION_OFF);
++		if (err)
++			return err;
++	}
++
++	err = exec_sbmc(priv->adev->handle, state ? SBMC_QUICK_CHARGE_ON : SBMC_QUICK_CHARGE_OFF);
++	if (err)
++		return err;
++
++	return count;
++}
++
++static DEVICE_ATTR_RW(quick_charge);
++
+ static ssize_t fan_mode_show(struct device *dev,
+ 			     struct device_attribute *attr,
+ 			     char *buf)
+@@ -641,6 +694,7 @@ static DEVICE_ATTR_RW(usb_charging);
+ static struct attribute *ideapad_attributes[] = {
+ 	&dev_attr_camera_power.attr,
+ 	&dev_attr_conservation_mode.attr,
++	&dev_attr_quick_charge.attr,
+ 	&dev_attr_fan_mode.attr,
+ 	&dev_attr_fn_lock.attr,
+ 	&dev_attr_touchpad.attr,
+@@ -660,6 +714,8 @@ static umode_t ideapad_is_visible(struct kobject *kobj,
+ 		supported = test_bit(CFG_CAP_CAM_BIT, &priv->cfg);
+ 	else if (attr == &dev_attr_conservation_mode.attr)
+ 		supported = priv->features.conservation_mode;
++	else if (attr == &dev_attr_quick_charge.attr)
++		supported = priv->features.quick_charge;
+ 	else if (attr == &dev_attr_fan_mode.attr)
+ 		supported = priv->features.fan_mode;
+ 	else if (attr == &dev_attr_fn_lock.attr)
+@@ -1546,9 +1602,13 @@ static void ideapad_check_features(struct ideapad_private *priv)
+ 	if (!read_ec_data(handle, VPCCMD_R_FAN, &val))
+ 		priv->features.fan_mode = true;
+ 
+-	if (acpi_has_method(handle, "GBMD") && acpi_has_method(handle, "SBMC"))
++	if (acpi_has_method(handle, "GBMD") && acpi_has_method(handle, "SBMC")) {
+ 		priv->features.conservation_mode = true;
+ 
++		if (!eval_gbmd(handle,&val) && test_bit(GBMD_QUICK_CHARGE_SUPPORT_BIT, &val))
++			priv->features.quick_charge = true;
++	}
++
+ 	if (acpi_has_method(handle, "DYTC"))
+ 		priv->features.dytc = true;
+ 
+-- 
+2.37.1
+

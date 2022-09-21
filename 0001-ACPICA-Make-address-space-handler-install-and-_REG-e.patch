@@ -1,0 +1,177 @@
+From e3f898d7818e5941a5150e8e6a0f2bf682a79004 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Wed, 15 Jun 2022 12:50:13 +0200
+Subject: [PATCH 1/9] ACPICA: Make address-space-handler install and _REG
+ execution 2 separate steps
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+ACPI-2.0 says that the EC OpRegion handler must be available immediately
+(like the standard default OpRegion handlers):
+
+Quoting from the ACPI spec version 6.3: "6.5.4 _REG (Region) ...
+2. OSPM must make Embedded Controller operation regions, accessed via
+the Embedded Controllers described in ECDT, available before executing
+any control method. These operation regions may become inaccessible
+after OSPM runs _REG(EmbeddedControl, 0)."
+
+So the OS must probe the ECDT described EC and install the OpRegion handler
+before calling acpi_enable_subsystem() and acpi_initialize_objects().
+
+This is a problem because calling acpi_install_address_space_handler()
+does not just install the OpRegion handler, it also runs the EC's _REG
+method. This _REG method may rely on initialization done by the _INI
+methods of one of the PCI / _SB root devices.
+
+For the other early/default OpRegion handlers splits the Opregion handler
+install and the _REG execution into 2 separate steps:
+1. acpi_ev_install_region_handlers(), called early from acpi_load_tables()
+2. acpi_ev_initialize_op_regions(), called from acpi_initialize_objects()
+
+To fix the EC OpRegion issue, add a new flags parameter to
+acpi_install_address_space_handler() to allow doing things in
+2 steps for other OpRegion handlers, like the EC handler, too.
+
+To avoid having to modify all acpi_install_address_space_handler() callers,
+the function is renamed to acpi_install_address_space_handler_flags() and
+a static inline acpi_install_address_space_handler() is provided.
+
+BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=214899
+Reported-and-tested-by: Johannes Penßel <johannespenssel@posteo.net>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ drivers/acpi/acpica/evxfregn.c | 32 +++++++++++++++++++-------------
+ include/acpi/acpixf.h          | 33 ++++++++++++++++++++++++---------
+ include/acpi/actypes.h         |  2 ++
+ 3 files changed, 45 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/acpi/acpica/evxfregn.c b/drivers/acpi/acpica/evxfregn.c
+index 0a8372bf6a77..ed79615fb844 100644
+--- a/drivers/acpi/acpica/evxfregn.c
++++ b/drivers/acpi/acpica/evxfregn.c
+@@ -27,6 +27,7 @@ ACPI_MODULE_NAME("evxfregn")
+  *              handler         - Address of the handler
+  *              setup           - Address of the setup function
+  *              context         - Value passed to the handler on each access
++ *              flags           - Flags
+  *
+  * RETURN:      Status
+  *
+@@ -37,13 +38,18 @@ ACPI_MODULE_NAME("evxfregn")
+  * are executed here, and these methods can only be safely executed after
+  * the default handlers have been installed and the hardware has been
+  * initialized (via acpi_enable_subsystem.)
++ * To avoid this problem pass the ACPI_NO_EXEC__REG flag and
++ * later call this function again with ACPI_NO_INSTALL_SPACE_HANDLER to
++ * execute _REG.
+  *
+  ******************************************************************************/
+ acpi_status
+-acpi_install_address_space_handler(acpi_handle device,
+-				   acpi_adr_space_type space_id,
+-				   acpi_adr_space_handler handler,
+-				   acpi_adr_space_setup setup, void *context)
++acpi_install_address_space_handler_flags(acpi_handle device,
++					 acpi_adr_space_type space_id,
++					 acpi_adr_space_handler handler,
++					 acpi_adr_space_setup setup,
++					 void *context,
++					 u32 flags)
+ {
+ 	struct acpi_namespace_node *node;
+ 	acpi_status status;
+@@ -70,24 +76,24 @@ acpi_install_address_space_handler(acpi_handle device,
+ 	}
+ 
+ 	/* Install the handler for all Regions for this Space ID */
+-
+-	status =
+-	    acpi_ev_install_space_handler(node, space_id, handler, setup,
+-					  context);
+-	if (ACPI_FAILURE(status)) {
+-		goto unlock_and_exit;
++	if (!(flags & ACPI_NO_INSTALL_SPACE_HANDLER)) {
++		status =
++		    acpi_ev_install_space_handler(node, space_id, handler, setup,
++						  context);
++		if (ACPI_FAILURE(status))
++			goto unlock_and_exit;
+ 	}
+ 
+ 	/* Run all _REG methods for this address space */
+-
+-	acpi_ev_execute_reg_methods(node, space_id, ACPI_REG_CONNECT);
++	if (!(flags & ACPI_NO_EXEC__REG))
++		acpi_ev_execute_reg_methods(node, space_id, ACPI_REG_CONNECT);
+ 
+ unlock_and_exit:
+ 	(void)acpi_ut_release_mutex(ACPI_MTX_NAMESPACE);
+ 	return_ACPI_STATUS(status);
+ }
+ 
+-ACPI_EXPORT_SYMBOL(acpi_install_address_space_handler)
++ACPI_EXPORT_SYMBOL(acpi_install_address_space_handler_flags)
+ 
+ /*******************************************************************************
+  *
+diff --git a/include/acpi/acpixf.h b/include/acpi/acpixf.h
+index 67c0b9e734b6..91064f05c0de 100644
+--- a/include/acpi/acpixf.h
++++ b/include/acpi/acpixf.h
+@@ -643,15 +643,30 @@ ACPI_EXTERNAL_RETURN_STATUS(acpi_status
+ 							acpi_notify_handler
+ 							handler))
+ ACPI_EXTERNAL_RETURN_STATUS(acpi_status
+-			     acpi_install_address_space_handler(acpi_handle
+-								device,
+-								acpi_adr_space_type
+-								space_id,
+-								acpi_adr_space_handler
+-								handler,
+-								acpi_adr_space_setup
+-								setup,
+-								void *context))
++			     acpi_install_address_space_handler_flags(acpi_handle
++								      device,
++								      acpi_adr_space_type
++								      space_id,
++								      acpi_adr_space_handler
++								      handler,
++								      acpi_adr_space_setup
++								      setup,
++								      void *context,
++								      u32 flags))
++static ACPI_INLINE acpi_status acpi_install_address_space_handler(acpi_handle
++								  device,
++								  acpi_adr_space_type
++								  space_id,
++								  acpi_adr_space_handler
++								  handler,
++								  acpi_adr_space_setup
++								  setup,
++								  void *context)
++{
++	return acpi_install_address_space_handler_flags(
++			device, space_id, handler, setup, context,
++			ACPI_FULL_INITIALIZATION);
++}
+ ACPI_EXTERNAL_RETURN_STATUS(acpi_status
+ 			     acpi_remove_address_space_handler(acpi_handle
+ 							       device,
+diff --git a/include/acpi/actypes.h b/include/acpi/actypes.h
+index 3491e454b2ab..aba0a86fcf1e 100644
+--- a/include/acpi/actypes.h
++++ b/include/acpi/actypes.h
+@@ -566,6 +566,8 @@ typedef u64 acpi_integer;
+ #define ACPI_NO_OBJECT_INIT             0x0020
+ #define ACPI_NO_DEVICE_INIT             0x0040
+ #define ACPI_NO_ADDRESS_SPACE_INIT      0x0080
++#define ACPI_NO_INSTALL_SPACE_HANDLER   0x0100
++#define ACPI_NO_EXEC__REG               0x0200
+ 
+ /*
+  * Initialization state
+-- 
+2.37.1
+
