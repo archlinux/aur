@@ -2,8 +2,8 @@
 
 _pkgname=scalc
 pkgname="${_pkgname}-git"
-pkgver=r274.b65d54d
-pkgrel=2
+pkgver=r278.8931273
+pkgrel=1
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ariadnavigo/${_pkgname}"
@@ -12,6 +12,7 @@ makedepends=('sline' 'git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
 	cd "${_pkgname}"
