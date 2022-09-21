@@ -62,7 +62,6 @@ sha512sums=(
 )
 
 case "${CARCH}" in
-
  	"i686")
  		_vscode_arch="ia32"
  		;;
@@ -78,7 +77,6 @@ case "${CARCH}" in
 	*)
 		_vscode_arch="DUMMY"
 		;;
-
 esac
 
 pkgver() {
@@ -94,7 +92,7 @@ prepare() {
 	# Checkout git to latest release
 	git fetch --tags
 	local _commit="$(git rev-list --tags --max-count=1)"
-	declare -g _tag="$(git describe --tags ${_commit})"
+	declare -g _tag="$(git describe --tags "${_commit}")"
 	git checkout "${_tag}"
 
 	# Apply patch to source
@@ -107,13 +105,13 @@ prepare() {
 	# Patch appdata and desktop file
 	sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
     		s|@@NAME_SHORT@@|Code|g
-			s|@@NAME_LONG@@|Code - OSS|g
-			s|@@NAME@@|code-oss|g
-			s|@@ICON@@|code|g
-			s|@@EXEC@@|/usr/bin/code-oss|g
-			s|@@LICENSE@@|MIT|g
-			s|@@URLPROTOCOL@@|vscode|g
-			s|inode/directory;||' "resources/linux/code"{.appdata.xml,-workspace.xml,.desktop,-url-handler.desktop}
+    		s|@@NAME_LONG@@|Code - OSS|g
+    		s|@@NAME@@|code-oss|g
+    		s|@@ICON@@|code|g
+    		s|@@EXEC@@|/usr/bin/code-oss|g
+    		s|@@LICENSE@@|MIT|g
+    		s|@@URLPROTOCOL@@|vscode|g
+    		s|inode/directory;||' "resources/linux/code"{.appdata.xml,-workspace.xml,.desktop,-url-handler.desktop}
 
 	sed -i 's|MimeType=.*|MimeType=x-scheme-handler/code-oss;|' "resources/linux/code-url-handler.desktop"
 
