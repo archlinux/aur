@@ -1,0 +1,12 @@
+pkgbase = latestspigot-bin
+	pkgdesc = A simple Go program that downloads and builds the latest spigot
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ShayBox/latestspigot-bin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = latestspigot-bin::https://github.com/ShayBox/latestspigot-bin/releases/download/1.0.4/LatestSpigot-linux
+	sha256sums = a45fc65c47b68f2d2909e7abd571b1442f1df6a8d855ce4ce11a7dc3db076827
+
+pkgname = latestspigot-bin
