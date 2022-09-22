@@ -1,0 +1,14 @@
+pkgbase = python-hatch-requirements-txt
+	pkgdesc = Hatchling plugin to read project dependencies from requirements.txt
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/repo-helper/hatch-requirements-txt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-hatchling
+	source = https://github.com/repo-helper/hatch-requirements-txt/archive/v0.1.1/python-hatch-requirements-txt-0.1.1.tar.gz
+	sha256sums = e98f20047ad544f06b1d05bf803ba116eaec6d7bc640eadfc4bfcf95cbe22189
+
+pkgname = python-hatch-requirements-txt
