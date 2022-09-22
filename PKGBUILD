@@ -7,7 +7,7 @@ pkgdesc="天翼云电脑linux客户端（装好之后需要重启电脑才能正
 arch=("x86_64")
 url="https://www.ctyun.cn/"
 license=()
-depends=('libnotify' 'libxss' 'libxtst' 'xdg-utils' 'libusb'  'pulseaudio')
+depends=('gtk3' 'libnotify' 'libxss' 'libxtst' 'xdg-utils' 'libusb'  'pulseaudio' 'lib32-util-linux' 'util-linux-libs' 'opus' 'pixman')
 source=(
   "https://desk.ctyun.cn:8999/desktop-prod/software/linux_x86_xc_client/11/64/$pkgrel/CtyunClouddeskUniversal-$pkgver-$pkgrel-amd64-202207141538.deb")
 sha256sums=('dc241a446104c4ebbcd64c1c5a1709c80dbd73d5eadf84777468d5e536d5e8f8')

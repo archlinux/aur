@@ -4,12 +4,17 @@ pkgbase = ctyun-cloud-desk
 	pkgrel = 201340400
 	url = https://www.ctyun.cn/
 	arch = x86_64
+	depends = gtk3
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
 	depends = xdg-utils
 	depends = libusb
 	depends = pulseaudio
+	depends = lib32-util-linux
+	depends = util-linux-libs
+	depends = opus
+	depends = pixman
 	source = https://desk.ctyun.cn:8999/desktop-prod/software/linux_x86_xc_client/11/64/201340400/CtyunClouddeskUniversal-1.34.4-201340400-amd64-202207141538.deb
 	sha256sums = dc241a446104c4ebbcd64c1c5a1709c80dbd73d5eadf84777468d5e536d5e8f8
 
