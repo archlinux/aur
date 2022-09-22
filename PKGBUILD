@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnlearn
-_pkgver=4.8
+_pkgver=4.8.1
 pkgname=r-${_pkgname,,}
-pkgver=4.8
+pkgver=4.8.1
 pkgrel=1
 pkgdesc='Bayesian Network Structure Learning, Parameter Learning and Inference'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-rocr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e22ab1a430952f8746e4668012854d016e6456a72a907877b02a412b3bdbd41')
+sha256sums=('623c1bf0b3a38ee2060908c3197b763339115246dd72fb063f9476c7a54cd3ac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

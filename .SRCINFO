@@ -1,6 +1,6 @@
 pkgbase = r-bnlearn
 	pkgdesc = Bayesian Network Structure Learning, Parameter Learning and Inference
-	pkgver = 4.8
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bnlearn
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-bnlearn
 	optdepends = r-rgraphviz
 	optdepends = r-rmpfr
 	optdepends = r-rocr
-	source = https://cran.r-project.org/src/contrib/bnlearn_4.8.tar.gz
-	sha256sums = 3e22ab1a430952f8746e4668012854d016e6456a72a907877b02a412b3bdbd41
+	source = https://cran.r-project.org/src/contrib/bnlearn_4.8.1.tar.gz
+	sha256sums = 623c1bf0b3a38ee2060908c3197b763339115246dd72fb063f9476c7a54cd3ac
 
 pkgname = r-bnlearn
