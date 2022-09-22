@@ -1,0 +1,4 @@
+pkg/
+src/
+django_bootstrap5/
+*.pkg.tar.*
