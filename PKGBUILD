@@ -2,7 +2,7 @@
 # Contributor: Sergei Kolesnikov <youremail@domain.com>
 
 pkgname=gnome-shell-extension-runcat
-pkgver=18
+pkgver=19
 pkgrel=1
 pkgdesc="The cat tells you the CPU usage by running speed"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gnome-shell')
 makedepends=('zip')
 source=("${url}/archive/v${pkgver}.tar.gz")
 _srcname=gnome-runcat
-b2sums=('d57c060945c2797f95725931664a08ca99b9318a78565b78c884d5d953981d6249767f21166b850498a4ed3fa2e03ef1ef4a201edb882cc89e8d7292cb723f9a')
+b2sums=('debc76740d12cb14ccb60b51a13b795d8df096956415e52e1ec0124bde54548664f0e2917f2e472ee8c6086f5bb8d77833c20b5a70b18a4e62cbcb339c7cb795')
 
 build() {
 	cd "$_srcname-$pkgver"
