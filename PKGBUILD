@@ -1,52 +1,73 @@
 # Maintainer: LeSnake <dev.lesnake@posteo.de>
 
+
 pkgname=flashpoint-launcher-bin
-pkgver=10.1.1
-pkgrel=4
+pkgver=10.1.6
+pkgrel=1
+_dataver=1012
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 depends=('nss>=3.0'
-		'php'
-		'gtk3'
-		'libxss'
-		'wine'
-		'qemu'
-		'qemu-arch-extra'
-		'p7zip'
-		'wget')
-makedepends=('desktop-file-utils')
+				 'tar'
+				 'php'
+				 'gtk3'
+				 'libxss'
+				 'wine'
+				 'qemu-system-x86'
+				 'wget')
+makedepends=('desktop-file-utils'
+				     'git'
+    				 'p7zip')
 optdepends=('flashplayer-standalone: native Flash support')
 conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
-source=("https://github.com/FlashpointProject/launcher/releases/download/${pkgver}/Flashpoint-${pkgver}_linux-amd64.deb"
-		"https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/flashpoint-data-files-installer/flashpoint-install-data-files.sh")
-sha512sums=('dccc405a8f059887ef5f49b94a94e00e7bd87bf6f12922ffdac301d8339ffe96f482fab53d822cd47c222e5ad4151e8abbc832615525939770229d155c21dd78'
-			'0435c1f89439eaf08b8f72d4465a62cae4599335afe36c365327262bc6e9663215f026f33f0e41b6ce183280cd304484b07fd6d703e21bbc74d2870c629964cf')
+source=("flashpoint-data.7z::https://bluepload.unstable.life/selif/flashpoint-${_dataver}-linux-x64.7z"
+    "flashpint.deb::https://github.com/FlashpointProject/launcher/releases/download/${pkgver}/Flashpoint-${pkgver}_linux-amd64.deb")
+noextract=("flashpoint-data.7z")
+backup=('opt/Flashpoint/config.json')
+sha512sums=('0b521337d40169ab502f433a107d9b7b7ca73512fb99b27ca547240a251f75e931ca8a6b4450b0dec610b14cb1d1ae1fc9599bb82e757d6cfa79cd76bf5fabe8'
+    'd5667eccfaaeedb317f86fad4616b8761d8ca9858c6ac9c5ac45e62d8d22f77b639ae43b9681be842782939e399e615892832e54f88d594e024c20dcaefb9df1')
 
 package(){
-	echo Extracting package data ...
-	tar xf data.tar.xz -C ${pkgdir} -v
+	echo "Extracting Data files ..."
+	mkdir -vp "${pkgdir}/opt/Flashpoint/"
+	echo "Extracting... (This will take some time)"
+	bsdtar -xf flashpoint-data.7z -C "${pkgdir}/opt/Flashpoint/" Data/* FPSoftware/*
+#	rm ${srcdir}/flashpoint.7z
+#	cp -rp ${srcdir} ${pkgdir}/opt/Flashpoint/
 
-	echo Symlink to binary ...
-	install -d $pkgdir/usr/bin/
-	ln -sfv /opt/Flashpoint/flashpoint-launcher $pkgdir/usr/bin/flashpoint-launcher
+	echo "Extracting package data ..."
+	tar xf data.tar.xz -C "${pkgdir}" -v
 
-	echo Fixing desktop file ...
-	desktop-file-edit $pkgdir/usr/share/applications/flashpoint-launcher.desktop --set-key Path --set-value "~/.local/share/flashpoint"
+	echo "Creating Launcher..."
+	mkdir -vp "${pkgdir}/usr/bin"
+	printf \
+	"#!/usr/bin/env bash\n\ncd /opt/Flashpoint/\n/opt/Flashpoint/flashpoint-launcher \$@" > "${pkgdir}/usr/bin/flashpoint-launcher"
+	chmod -v 777 "${pkgdir}/usr/bin/flashpoint-launcher"
+#	echo Linking launcher
+#	mkdir -vp ${pkgdir}/usr/bin
+#	ln -sv ${pkgdir}/opt/Flashpoint/flashpoint-launcher ${pkgdir}/usr/bin/
 
-	echo Installing License ...
-	install -dv $pkgdir/usr/share/licenses/
-	cp -rv $pkgdir/opt/Flashpoint/licenses/ $pkgdir/usr/share/licenses/Flashpoint
+	echo "Fixing desktop file ..."
+	desktop-file-edit "${pkgdir}/usr/share/applications/flashpoint-launcher.desktop" --set-key Categories --set-value "Game;"
+	desktop-file-edit "${pkgdir}/usr/share/applications/flashpoint-launcher.desktop" --set-key Exec --set-value "/usr/bin/flashpoint-launcher"
 
-	echo Making config and preferences writable by all ...
-	touch "${pkgdir}/opt/Flashpoint/config.json"
-	chmod 666 "${pkgdir}/opt/Flashpoint/config.json"
-	touch "${pkgdir}/opt/Flashpoint/preferences.json"
-	chmod 666 "${pkgdir}/opt/Flashpoint/preferences.json"
-	touch "${pkgdir}/opt/Flashpoint/launcher.log"
-	chmod 666 "${pkgdir}/opt/Flashpoint/launcher.log"
+	echo "Installing License ..."
+	mkdir -vp "${pkgdir}/usr/share/licenses/"
+#	install -dv ${pkgdir}/usr/share/licenses/
+	cp -vr "${pkgdir}/opt/Flashpoint/licenses/" "${pkgdir}/usr/share/licenses/Flashpoint"
 
-	echo Installing data-files-installer ...
-	install -Dm755 $srcdir/flashpoint-install-data-files.sh $pkgdir/usr/bin/flashpoint-install-data-files
+#	echo Making config and preferences writable by all ...
+#	touch "${pkgdir}/opt/Flashpoint/extConfig.json"
+#	chmod 666 "${pkgdir}/opt/Flashpoint/extConfig.json"
+#	touch "${pkgdir}/opt/Flashpoint/preferences.json"
+#	chmod 666 "${pkgdir}/opt/Flashpoint/preferences.json"
+#	touch "${pkgdir}/opt/Flashpoint/launcher.log"
+#	chmod 666 "${pkgdir}/opt/Flashpoint/launcher.log"
+	chmod -R 777 "${pkgdir}/opt/Flashpoint"
+	#chmod -vR 777 "${pkgdir}/opt/Flashpoint/Data"
+
+#	echo Installing data-files-installer ...
+#	install -Dm755 ${srcdir}/flashpoint-install-data-files.sh ${pkgdir}/usr/bin/flashpoint-install-data-files
 }
