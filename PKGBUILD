@@ -2,12 +2,12 @@
 
 pkgname=upwork-beta
 pkgver=5.6.10.23
-pkgrel=1
-pkgdesc='Desktop Application Beta Version'
+pkgrel=2
+pkgdesc="Upwork Desktop Application Beta Version"
 arch=(x86_64)
-url='https://www.upwork.com/ab/downloads/?os=linux'
+url="https://www.upwork.com/ab/downloads/?os=linux"
 license=(custom)
-conflicts=(upwork)
+conflicts=(upwork upwork-desktop)
 depends=(alsa-lib gtk3 nss)
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
@@ -25,13 +25,13 @@ prepare() {
 
 package() {
     # Base
-    install -dm755 $pkgdir/opt/Upwork
-    cp -dr --no-preserve=ownership opt/Upwork/* $pkgdir/opt/Upwork/
+    install -dm755 "$pkgdir/opt/Upwork"
+    cp -dr --no-preserve=ownership opt/Upwork/* "$pkgdir/opt/Upwork/"
     # Menu
-    install -Dm644 usr/share/applications/upwork.desktop $pkgdir/usr/share/applications/upwork.desktop
+    install -Dm644 usr/share/applications/upwork.desktop "$pkgdir/usr/share/applications/upwork.desktop"
     # Icons
-    install -dm755 $pkgdir/usr/share
-    cp -dr --no-preserve=ownership usr/share/icons ${pkgdir}/usr/share/
+    install -dm755 "$pkgdir/usr/share"
+    cp -dr --no-preserve=ownership usr/share/icons "$pkgdir/usr/share/"
     # License
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/upwork/LICENSE
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/upwork/LICENSE"
 }
