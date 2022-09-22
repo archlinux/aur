@@ -1,16 +1,16 @@
 # Maintainer: Stella <stellarinfinity@riseup.net>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go."
 arch=('any')
-license=('MIT')
+license=('GPL3')
 conflicts=('danser-git')
 source=(
     "https://github.com/Wieku/danser-go/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('9bf92130e3f3d932e259d05e6ae1ad91fd8afab333b558ea908472139df1726b')
+sha256sums=('b73c0832e5373df38a3a7a3c8616b208feea0aeef3da930a1804f04e05238510')
 depends=(
     'libyuv'
     'ffmpeg'
@@ -33,8 +33,9 @@ build() {
         -trimpath \
         -modcacherw \
         -mod=readonly \
-        -ldflags "-s -w -X 'github.com/wieku/danser-go/build.VERSION=$build'
-            -X 'github.com/wieku/danser-go/build.Stream=Release'" \
+        -ldflags "-s -w -X 'github.com/wieku/danser-go/build.VERSION=$pkgver'
+            -X 'github.com/wieku/danser-go/build.Stream=Release'
+            -X 'github.com/wieku/danser-go/build.DanserExec=danser'" \
         -buildmode=c-shared \
         -o danser-core.so \
         -v -x
@@ -56,10 +57,10 @@ package() {
     mkdir -p "${pkgdir}/usr/lib/danser" "${pkgdir}/usr/bin"
 
     install -Dm755 libdanser-core.so libbass.so libbass_fx.so libbassmix.so assets.dpak "${pkgdir}/usr/lib/danser"
-    install -Dm755 danser "${pkgdir}/usr/lib/danser/${pkgname}"
-    install -Dm755 danser-launcher "${pkgdir}/usr/lib/danser/${pkgname}-gui"
+    install -Dm755 danser "${pkgdir}/usr/lib/danser/danser"
+    install -Dm755 danser-launcher "${pkgdir}/usr/lib/danser/danser-gui"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    ln -s "/usr/lib/danser/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "/usr/lib/danser/${pkgname}-gui" "${pkgdir}/usr/bin/${pkgname}-gui"
+    ln -s "/usr/lib/danser/danser" "${pkgdir}/usr/bin/danser"
+    ln -s "/usr/lib/danser/danser-gui" "${pkgdir}/usr/bin/danser-gui"
 }
