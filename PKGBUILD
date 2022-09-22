@@ -1,4 +1,4 @@
-# Maintainer: LeSnake <dev.lesnake@posteo.de>
+# Maintainer: evdinowork <etaash.mathamsetty@gmail.com>
 
 
 pkgname=flashpoint-launcher-bin
