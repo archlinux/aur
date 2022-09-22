@@ -1,7 +1,7 @@
 pkgbase = nudgis-obs-plugin
 	pkgdesc = OBS plugin for UbiCast Nudgis
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UbiCastTeam/nudgis-obs-plugin
 	arch = x86_64
 	license = GPL2

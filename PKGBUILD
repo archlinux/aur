@@ -1,6 +1,6 @@
 pkgname=nudgis-obs-plugin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS plugin for UbiCast Nudgis"
 arch=('x86_64')
 url="https://github.com/UbiCastTeam/nudgis-obs-plugin"
