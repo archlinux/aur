@@ -5,12 +5,12 @@
 
 pkgname=ttf-kanjistrokeorders
 pkgver=4.004
-pkgrel=0
+pkgrel=1
 pkgdesc="Kanji stroke order font"
 arch=('any')
 license=('custom')
 url="http://www.nihilist.org.uk/"
-source=("https://www.dropbox.com/s/9jv2pnw4ohxzaml/KanjiStrokeOrders_v4.004.zip")
+source=("http://www.dropbox.com/s/9jv2pnw4ohxzaml/KanjiStrokeOrders_v4.004.zip")
 sha256sums=('53061d36e2c7400b2b941bd6328c40d386586d5c5a3f89c43825a2d6979d5eee')
 
 
