@@ -7,8 +7,14 @@ arch=(i686 x86_64)
 url=https://www.oecd-nea.org/tools/abstract/detail/nesc9872
 license=(GPL3)
 makedepends=(gcc5)
-source=("git+https://github.com/padsley/DWUCK4.git")
-sha256sums=(SKIP)
+source=(
+    "git+https://github.com/padsley/DWUCK4.git"
+    dwuck4_gcc.sh
+)
+sha256sums=(
+    SKIP
+    '6c6213e2f61688381a51646d48f933c4207122e503b5887892a7fc6f790ca15a'
+)
 
 #pkgver() {
 #  cd "$srcname"
@@ -34,4 +40,10 @@ package() {
     cd "$srcdir/DWUCK4"
     install -Dm755 DWUCK4.exe  "$pkgdir/usr/bin/dwuck4"
     install -Dm755 DWUCK4.exe "$pkgdir/usr/bin/DWUCK4"
+    install -Dm555 dw4_doc.pdf "$pkgdir/usr/share/dwuck4/dw4_doc.pdf"
+    install -Dm555 DW4TST.LIS "$pkgdir/usr/share/dwuck4/DW4TST.LIS"
+    install -Dm555 DW4TST.DAT "$pkgdir/usr/share/dwuck4/DW4TST.DAT"
+
+    cd "$srcdir"
+    install -Dm755 dwuck4_gcc.sh "$pkgdir/etc/profile.d/dwuck4_gcc.sh"
 }
