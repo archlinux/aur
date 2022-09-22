@@ -14,6 +14,9 @@ if [ ! -d "$confdir" ]; then
 	mkdir -p -m 0700 "$confdir"
 	cp -a /usr/share/lbe/skel/. "$confdir"/
 fi
+if [ ! -e "$confdir"/help ]; then
+	ln -nsf /usr/share/doc/lbe/help "$confdir"/help
+fi
 cd "$confdir"
 
 # Protect session configuration files.
