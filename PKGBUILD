@@ -1,14 +1,17 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=dynamic-wallpaper
-pkgver=0.0.3
-_commit=b5edf84517063aa5c6d132f01abf6ffa9a9e19b0
+pkgver=0.0.4
+_commit=d43d3c73af028933cbed78aedf7ae3ce73e9735c
 pkgrel=1
 pkgdesc='Dynamic wallpaper creator for Gnome 42'
 arch=(any)
 url=https://github.com/dusansimic/dynamic-wallpaper
 license=(GPL2)
-depends=(python gtk4 libadwaita)
+depends=('python'
+         'python-gobject'
+         'gtk4'
+         'libadwaita>=1.2.0')
 makedepends=(meson git)
 checkdepends=(appstream-glib)
 source=("git+$url#commit=$_commit")
