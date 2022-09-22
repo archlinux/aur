@@ -1,6 +1,6 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 pkgname=odus-git
-pkgver=r40.18c6136
+pkgver=r42.b7b314f
 pkgrel=1
 pkgdesc='Light-weight sudo alternative'
 arch=('any')
