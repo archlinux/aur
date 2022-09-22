@@ -1,0 +1,12 @@
+pkgbase = latestpaper-bin
+	pkgdesc = A simple Go program that downloads the latest papermc
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ShayBox/latestpaper-bin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = latestpaper-bin::https://github.com/ShayBox/latestpaper-bin/releases/download/1.0.1/LatestPaper-linux
+	sha256sums = 390af14ac9e4182aa588b194fbb883bf690c0a4506ce9ea9e52abf53f77d58ab
+
+pkgname = latestpaper-bin
