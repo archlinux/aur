@@ -12,20 +12,11 @@ depends=('java-runtime=8')
 source=("https://nullroute.lt/mirrors/files/ldapbrowser-$pkgver.zip"
         "lbe.desktop"
         "lbe.sh")
-noextract=("ldapbrowser-$pkgver.zip")
 sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
             'ccdc18f2879c6ab10aa0f3ad087a3aa225a6146340be7e2fb46302b961255972'
             '3181d3f000e6df4a1dbc86f3860964f2528450dc7c29c75000fd36c37887c8b2')
 
-prepare() {
-  # Extract the archive manually into a subfolder
-  mkdir -p "ldapbrowser-$pkgver"
-  bsdtar -x -v -C "ldapbrowser-$pkgver" -f "ldapbrowser-$pkgver.zip"
-}
-
 package() {
-  cd "ldapbrowser-$pkgver"
-
   # Java program files
   mkdir -p "$pkgdir"/usr/lib/lbe
   cp -av lbe.jar lib "$pkgdir"/usr/lib/lbe/
@@ -49,7 +40,6 @@ package() {
   # Licenses
   mkdir -p "$pkgdir"/usr/share/licenses/lbe
   cp -av LICENSE.ICONS "$pkgdir"/usr/share/licenses/lbe/
-
 
   install -Dm755 "$srcdir"/lbe.desktop   "$pkgdir"/usr/share/applications/lbe.desktop
   install -Dm755 "$srcdir"/lbe.sh        "$pkgdir"/usr/bin/lbe
