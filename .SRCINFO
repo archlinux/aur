@@ -23,6 +23,7 @@ pkgbase = xf86-video-intel-git
 	depends = pixman
 	depends = xcb-util>=0.3.9
 	depends = systemd-libs
+	depends = libxfont2
 	optdepends = libxrandr: for intel-virtual-output
 	optdepends = libxinerama: for intel-virtual-output
 	optdepends = libxcursor: for intel-virtual-output

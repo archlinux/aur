@@ -2,6 +2,9 @@
 # based on extra/xf86-video-intel by:
 # AndyRTR <andyrtr@archlinux.org>
 # Jan de Groot <jgc@archlinux.org>
+#
+# Send PRs here: https://github.com/yurikoles-aur/xf86-video-intel-git
+#
 
 pkgname=xf86-video-intel-git
 _pkgname=${pkgname%-*}
@@ -13,7 +16,7 @@ url="https://01.org/linuxgraphics"
 license=('custom')
 install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
-depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs')
+depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs' 'libxfont2')
 makedepends=('xorg-server-devel' 'libx11' 'libxrender' 'libxv'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
@@ -31,7 +34,7 @@ conflicts=("$_pkgname" 'xorg-server<21.1.1'
 groups=('xorg-drivers-git')
 source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
-# options=('!makeflags')
+#options=('!makeflags')
 
 pkgver() {
   cd $pkgname
