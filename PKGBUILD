@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 package() {
     mkdir $pkgdir/opt/
-    cp -r trim_galore $pkgdir/opt/trim_galore
+    cp -r TrimGalore-0.6.7/trim_galore $pkgdir/opt/trim_galore
     
     mkdir -p "${pkgdir}/usr/bin"
     chmod 755 $pkgdir/opt/trim_galore
