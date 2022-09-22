@@ -8,14 +8,14 @@ pkgname=cro-chain-maind-bin
 pkgdesc='Crypto.org Chain CLI'
 license=('Apache')
 url='https://github.com/crypto-org-chain/chain-main'
-pkgver=3.3.3
+pkgver=3.3.5
 pkgrel=1
 arch=('x86_64')
 _pkgsrc="chain-main_${pkgver}_Linux_${arch}.tar.gz"
 source=(
   "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
 )
-sha512sums=('a35dab1ebcb37be18d5e0c10f3172eec11d51fd887ba67706cf8ad3f1ff380f3c3a458605cf4d27dad514592eaa6fa8e811db3eebe0c49c8967cbee975c84d4c')
+sha512sums=('9a832a0a1b3f4a98e073e6625ebcdc1d3699761add4b5b0e54632300dfd5874b9c82e017b097a5347bdda2b7029d08d89340ccfb6dec8c38996f6945ec45860f')
 
 
 package() {
