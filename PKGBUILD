@@ -2,7 +2,7 @@
 
 pkgname='lbe'
 pkgver=2.8.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Jarek Gawor's LDAP Browser/Editor (last freeware version)"
 arch=('any')
 #url="http://www.openchannelsoftware.com/projects/LDAP_Browser_Editor"
@@ -18,8 +18,9 @@ sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
 
 package() {
   # Java program files
+  # (lib/*.jar only contains a copy of JNDI, not needed for any current JRE version)
   mkdir -p "$pkgdir"/usr/lib/lbe
-  cp -av lbe.jar lib                  "$pkgdir"/usr/lib/lbe/
+  cp -av lbe.jar                      "$pkgdir"/usr/lib/lbe/
 
   # Docs
   mkdir -p "$pkgdir"/usr/share/doc/lbe
