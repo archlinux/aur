@@ -1,10 +1,11 @@
 pkgbase = lowcharts-git
 	pkgdesc = Tool to draw low-resolution graphs in terminal (git version)
-	pkgver = 0.5.6.r70.a9ad358
+	pkgver = 0.5.7.r71.ab83202
 	pkgrel = 1
 	url = https://github.com/juan-leon/lowcharts
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = rust

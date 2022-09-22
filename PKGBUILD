@@ -2,10 +2,10 @@
 
 pkgname=lowcharts-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.6.r70.a9ad358
+pkgver=0.5.7.r71.ab83202
 pkgrel=1
 pkgdesc="Tool to draw low-resolution graphs in terminal (git version)"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/juan-leon/lowcharts"
 license=('MIT')
 provides=("${_pkgname}")
@@ -21,16 +21,13 @@ pkgver() {
 
 check() {
 	cd "${srcdir}/${_pkgname}"
-
 	cargo test --locked --release
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	
 	cargo install --no-track --locked --root "${pkgdir}/usr" --path "${srcdir}/${_pkgname}"
 	
 	install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
 	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
