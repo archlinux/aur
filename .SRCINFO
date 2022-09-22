@@ -1,0 +1,16 @@
+pkgbase = ctyun-cloud-desk
+	pkgdesc = 天翼云电脑安装包, 2022-07-14 15:38:02
+	pkgver = 1.34.4
+	pkgrel = 201340400
+	url = https://www.ctyun.cn/
+	arch = x86_64
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libusb
+	depends = pulseaudio
+	source = https://desk.ctyun.cn:8999/desktop-prod/software/linux_x86_xc_client/11/64/201340400/CtyunClouddeskUniversal-1.34.4-201340400-amd64-202207141538.deb
+	sha256sums = dc241a446104c4ebbcd64c1c5a1709c80dbd73d5eadf84777468d5e536d5e8f8
+
+pkgname = ctyun-cloud-desk
