@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily mailman checkdbs
+
+[Timer]
+OnCalendar=8:00:00
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

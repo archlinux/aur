@@ -1,0 +1,16 @@
+#!/bin/sh
+
+## arg 1:  the new package version
+post_install() {
+  # check file permissions
+  cd /usr/lib/mailman && bin/check_perms > /dev/null
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  # check file permissions
+  cd /usr/lib/mailman && bin/check_perms > /dev/null
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

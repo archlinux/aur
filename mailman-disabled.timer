@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily mailman disabled
+
+[Timer]
+OnCalendar=9:00:00
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

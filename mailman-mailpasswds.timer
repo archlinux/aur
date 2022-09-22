@@ -1,0 +1,10 @@
+[Unit]
+Description=Monthly mailman mailpasswds
+
+[Timer]
+OnCalendar=*-*-1 05:00:00
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
