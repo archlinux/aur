@@ -1,0 +1,23 @@
+pkgbase = python-jaraco.tidelift
+	pkgdesc = Tools for Tidelift by jaraco
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/jaraco/jaraco.tidelift
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.tidelift/jaraco.tidelift-1.5.0.tar.gz
+	source = Makefile
+	md5sums = 6a95586094fafed2703efdbec0ffc951
+	md5sums = a6aa4bc42b138d75f938065a0994c3e1
+
+pkgname = python-jaraco.tidelift
+	depends = python>=3.7
+	depends = python-autocommand
+	depends = python-requests-toolbelt
+	depends = python-keyring
+	depends = python-importlib_resources
