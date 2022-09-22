@@ -1,5 +1,5 @@
 pkgbase = ctyun-cloud-desk
-	pkgdesc = 天翼云电脑安装包, 2022-07-14 15:38:02
+	pkgdesc = 天翼云电脑linux客户端（装好之后需要重启电脑才能正常使用）
 	pkgver = 1.34.4
 	pkgrel = 201340400
 	url = https://www.ctyun.cn/
