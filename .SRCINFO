@@ -1,0 +1,13 @@
+pkgbase = python2-idna
+	pkgdesc = Internationalized Domain Names in Applications (IDNA)
+	pkgver = 2.10
+	pkgrel = 4
+	url = https://github.com/kjd/idna
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.io/packages/source/i/idna/idna-2.10.tar.gz
+	sha512sums = 83b412de2f79a4bc86fb4bdac7252521b9d84f0be54f4fb1bde1ee13a210bbfa4b1a98247affbc7921046fb117a591316c12694c1be72865767646554c5207ac
+
+pkgname = python2-idna
