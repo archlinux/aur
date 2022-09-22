@@ -1,0 +1,16 @@
+pkgbase = python2-setuptools
+	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages
+	pkgver = 44.1.1
+	pkgrel = 2
+	epoch = 2
+	url = https://pypi.org/project/setuptools/
+	arch = any
+	license = PSF
+	makedepends = git
+	depends = python2
+	provides = python2-distribute
+	replaces = python2-distribute
+	source = python2-setuptools-44.1.1.tar.gz::https://github.com/pypa/setuptools/archive/v44.1.1.tar.gz
+	sha512sums = aabddfbd62b95ce7d8e68d582362361d32b91e65e6d00c393593521a2c1c383552e324ae64974049ae9880072c8741e2393e6482cd07ff7dd30615e91e9e1450
+
+pkgname = python2-setuptools
