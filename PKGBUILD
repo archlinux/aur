@@ -1,17 +1,18 @@
-# Maintainer: Pablo Arias <pabloariasal@gmail.com>
+# Maintainer: ramen <hendrik@hndrkk.sh>
+# Contributor: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=googler
-pkgver=4.3.2
+pkgver=4.3.12
 pkgrel=1
 pkgdesc="Google from the command-line"
 arch=('any')
-url="https://github.com/jarun/googler"
+url="https://github.com/oksiquatzel/googler"
 license=('GPL3')
 depends=('python')
 conflicts=('googler-git')
-source=("https://github.com/jarun/googler/archive/v$pkgver.tar.gz")
-sha256sums=('bd59af407e9a45c8a6fcbeb720790cb9eccff21dc7e184716a60e29f14c68d54')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('8e1ea39d7afde497c57a628421e84d75e087bc0d5e63afd1e9bf12ba18ee0102')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
