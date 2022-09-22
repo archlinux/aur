@@ -1,16 +1,19 @@
 pkgbase = lowcharts-bin
 	pkgdesc = Tool to draw low-resolution graphs in terminal
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/juan-leon/lowcharts
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	provides = lowcharts
 	conflicts = lowcharts
-	source_x86_64 = lowcharts-0.5.6-x86_64.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.6/lowcharts-v0.5.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0f35b121c65ead537bf888c935e7b96ceaa154e892686edc1c0e780da3ffa5e1
-	source_i686 = lowcharts-0.5.6-i686.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.6/lowcharts-v0.5.6-i686-unknown-linux-gnu.tar.gz
-	sha256sums_i686 = 17e92404e43930eb9aedbf38cf002a7b1cd9dc3d776b9e53d23552fec7439b41
+	source_x86_64 = lowcharts-0.5.7-x86_64.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.7/lowcharts-0.5.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4b158befe343ba29948a2e58bd636d78a44a42f23508af3024e5ac1a66283e7b
+	source_i686 = lowcharts-0.5.7-i686.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.7/lowcharts-0.5.7-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 6ec10ad5535003f46b908b96f23404d6e2b3241c0cb90e7c36ae34ecf280f04a
+	source_aarch64 = lowcharts-0.5.7-arm.tar.gz::https://github.com/juan-leon/lowcharts/releases/download/v0.5.7/lowcharts-0.5.7-arm-unknown-linux-gnueabihf.tar.gz
+	sha256sums_aarch64 = 96b1466e9d18598df669dd4dd876a981f72938e158c203e6b20325734d4aec88
 
 pkgname = lowcharts-bin
