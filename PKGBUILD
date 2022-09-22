@@ -3,34 +3,37 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=105.0b1
+pkgver=106.0b1
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.thunderbird.net/channel/#beta"
 depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'ffmpeg' 'ttf-font' 'libpulse' 'nss')
-makedepends=('unzip' 'zip' 'diffutils' 'python-setuptools' 'yasm' 'mesa' 'imake' 'inetutils'
+makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils'
              'xorg-server-xvfb' 'autoconf2.13' 'rust' 'clang' 'llvm' 'jack'
-             'nodejs' 'cbindgen' 'nasm' 'lld' 'python-zstandard' 'dump_syms'
-             'libotr'
+             'nodejs' 'cbindgen' 'nasm' 'lld' 'python' 'dump_syms'
              'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi')
-optdepends=('libcanberra: sound support'
+makedepends+=('libotr')
+optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'libotr: OTR support for active one-to-one chats'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
             'xdg-desktop-portal: Screensharing with Wayland')
+optdepends+=('libotr: OTR support for active one-to-one chats'
+             'libnotify: Notification integration')
 options=(!emptydirs !makeflags !strip !lto !debug)
+options+=(!buildflags)
 provides=("thunderbird=$pkgver")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-        "$pkgname".desktop
         install-dir.patch
-        zstandard-0.18.0.patch)
-sha512sums=('79dd23bbea39c339c32d004b7810adab40fcd2aa298baa9afaa60462a29801f839317aa18ea07fdfde674be8560d93ee5a70324f744e24da05491c08aa382758'
+        "$pkgname".desktop
+)
+sha512sums=('d07eac118f5d08891f55880900c58f0dd5fb1dc4eb8bad13af2fafd40df1089c54b47462ce0cca7d7e15f5235e99f503a0c2f25d1c438b97cd9c1cdb28ce8a25'
             'SKIP'
-            '642099b9cfee434aa96905cd4950c307a160641b85047630ce6ee6593fbb9ebb856fbf096f06049954f5d4a3d68f84297e147ac5812cefa8aae372fdaa74d62a'
             '0c68ce5df84245119f574e6144924eff151ef78c2a613468f8db470bd7674d167eece0004b7cf0a68e73fd7b2e90d4c7d3e4b3832df4fb27843bf479f3f364f4'
-            'c949cf492bc93b6f3f1f827744e0f39e555c518434c8e73e27143a769b0d123fe4ba2cae07b7b7e7b594f8da43383d4fb4cd28b6b52e0d3e7a985afbadfb3d04')
+            '642099b9cfee434aa96905cd4950c307a160641b85047630ce6ee6593fbb9ebb856fbf096f06049954f5d4a3d68f84297e147ac5812cefa8aae372fdaa74d62a')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
   4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
@@ -110,7 +113,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="system"
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="pip"
 
   echo "Building thunderbird..."
   ./mach build
