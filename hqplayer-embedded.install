@@ -12,6 +12,9 @@ fi
 if [ ! -f "libomp.so.5" ]; then
 ln -s libomp.so libomp.so.5
 fi
+if [ ! -f "libFLAC.so.8" ]; then
+ln -s libFLAC.so.12 libFLAC.so.8
+fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
@@ -31,6 +34,9 @@ ln -s libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
 fi
 if [ ! -f "libomp.so.5" ]; then
 ln -s libomp.so libomp.so.5
+fi
+if [ ! -f "libFLAC.so.8" ]; then
+ln -s libFLAC.so.12 libFLAC.so.8
 fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
