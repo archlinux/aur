@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pracma
-_pkgver=2.3.8
+_pkgver=2.4.2
 pkgname=r-${_pkgname,,}
-pkgver=2.3.8
-pkgrel=3
+pkgver=2.4.2
+pkgrel=1
 pkgdesc='Practical Numerical Math Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-quadprog
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2302d454406e72711714732658d0c59c9d5a1ead698f22ee23f38cba63d42764')
+sha256sums=('1d50337fdfd9a8d704a64f01dae5d52b9a2bd6d872fdaa4a6685b8d3bde89c16')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
