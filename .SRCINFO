@@ -1,6 +1,6 @@
 pkgbase = odamex-git
 	pkgdesc = A free client/server multiplayer engine for the classic FPS Doom.
-	pkgver = 10.2.0.r2.g6c2940915
+	pkgver = 10.2.0.r35.g40a7a8496
 	pkgrel = 1
 	url = http://odamex.net/
 	arch = i686
@@ -20,16 +20,10 @@ pkgbase = odamex-git
 	provides = odamex
 	conflicts = odamex
 	source = odamex-git::git+https://github.com/odamex/odamex.git#branch=stable
-	source = git+https://github.com/curl/curl.git
-	source = git+https://github.com/madler/zlib.git
-	source = git+https://github.com/glennrp/libpng.git
 	source = git+https://github.com/fltk/fltk
 	source = git+https://github.com/protocolbuffers/protobuf.git
 	source = git+https://github.com/miniupnp/miniupnp.git
 	source = git+https://github.com/open-source-parsers/jsoncpp.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
