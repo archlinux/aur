@@ -13,7 +13,6 @@ pkgbase = flashpoint-launcher-bin
 	depends = wine
 	depends = qemu
 	depends = qemu-arch-extra
-	depends = p7zip
 	depends = wget
 	optdepends = flashplayer-standalone: native Flash support
 	conflicts = flashpoint-bin
