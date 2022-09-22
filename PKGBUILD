@@ -3,7 +3,7 @@
 
 pkgname=python-pytenable
 _pkg=pyTenable
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
@@ -13,7 +13,6 @@ depends=(
 	'python-box'
 	'python-dateutil'
 	'python-defusedxml'
-	'python-ipaddress'
 	'python-marshmallow'
 	'python-requests'
 	'python-requests-pkcs12'
@@ -35,7 +34,7 @@ checkdepends=(
 	'python-responses')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('cfc7c070bab33e268039a521355f855c736486e41923052bf1ec6bed48c1d68d')
+sha256sums=('3722780d148f010c855d3d37ce529e22634e606d19a200b1fa149d125e86ba9e')
 
 prepare() {
 	cd "$_pkg-$pkgver"
