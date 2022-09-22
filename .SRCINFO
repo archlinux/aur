@@ -6,6 +6,7 @@ pkgbase = flashpoint-launcher-bin
 	arch = x86_64
 	license = MIT
 	makedepends = desktop-file-utils
+	makedepends = libarchive
 	depends = nss>=3.0
 	depends = php
 	depends = gtk3
@@ -17,9 +18,9 @@ pkgbase = flashpoint-launcher-bin
 	optdepends = flashplayer-standalone: native Flash support
 	conflicts = flashpoint-bin
 	conflicts = flashpoint-launcher-git
-	source = https://github.com/FlashpointProject/launcher/releases/download/10.1.1/Flashpoint-10.1.1_linux-amd64.deb
-	source = https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/flashpoint-data-files-installer/flashpoint-install-data-files.sh
-	sha512sums = dccc405a8f059887ef5f49b94a94e00e7bd87bf6f12922ffdac301d8339ffe96f482fab53d822cd47c222e5ad4151e8abbc832615525939770229d155c21dd78
-	sha512sums = 0435c1f89439eaf08b8f72d4465a62cae4599335afe36c365327262bc6e9663215f026f33f0e41b6ce183280cd304484b07fd6d703e21bbc74d2870c629964cf
+	source = https://github.com/FlashpointProject/launcher/releases/download/10.1.6/Flashpoint-10.1.6_linux-amd64.deb
+	source = https://bluepload.unstable.life/selif/flashpoint-1012-linux-x64.7z
+	sha512sums = d5667eccfaaeedb317f86fad4616b8761d8ca9858c6ac9c5ac45e62d8d22f77b639ae43b9681be842782939e399e615892832e54f88d594e024c20dcaefb9df1
+	sha512sums = 0b521337d40169ab502f433a107d9b7b7ca73512fb99b27ca547240a251f75e931ca8a6b4450b0dec610b14cb1d1ae1fc9599bb82e757d6cfa79cd76bf5fabe8
 
 pkgname = flashpoint-launcher-bin
