@@ -1,7 +1,7 @@
 pkgbase = lbe
 	pkgdesc = Jarek Gawor's LDAP Browser/Editor (last freeware version)
 	pkgver = 2.8.2
-	pkgrel = 7
+	pkgrel = 8
 	url = http://web.archive.org/web/20090201080715/http://mcs.anl.gov/~gawor/ldap/
 	arch = any
 	license = custom

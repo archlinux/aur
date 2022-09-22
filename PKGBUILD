@@ -2,7 +2,7 @@
 
 pkgname='lbe'
 pkgver=2.8.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Jarek Gawor's LDAP Browser/Editor (last freeware version)"
 arch=('any')
 #url="http://www.openchannelsoftware.com/projects/LDAP_Browser_Editor"
@@ -32,8 +32,15 @@ package() {
 
   # Initial config directory
   mkdir -p "$pkgdir"/usr/share/lbe/skel
-  cp -av attributes.config lbecacerts templates "$pkgdir"/usr/share/lbe/skel/
+  cp -av attributes.config templates "$pkgdir"/usr/share/lbe/skel/
   cp -av help/uofmichigan.cfg.sample "$pkgdir"/usr/share/lbe/skel/'U of Michigan'.cfg
+  ln -s /etc/ssl/certs/java/cacerts "$pkgdir"/usr/share/lbe/skel/lbecacerts
+  {
+    echo
+    echo "# Added by packager"
+    echo "krbextradata=binary"
+    echo "krbprincipalkey=binary"
+  } >> "$pkgdir"/usr/share/lbe/skel/attributes.config
 
   # Docs
   mkdir -p "$pkgdir"/usr/share/doc/lbe
@@ -43,15 +50,9 @@ package() {
   mkdir -p "$pkgdir"/usr/share/licenses/lbe
   cp -av LICENSE.ICONS "$pkgdir"/usr/share/licenses/lbe/
 
-  {
-    echo
-    echo "# added by packager"
-    echo "krbextradata=binary"
-    echo "krbprincipalkey=binary"
-  } >> "$pkgdir"/usr/lib/lbe/attributes.config
 
-  install -Dm755 "$srcdir/lbe.desktop"   "$pkgdir"/usr/share/applications/lbe.desktop
-  install -Dm755 "$srcdir/lbe.sh"        "$pkgdir"/usr/bin/lbe
+  install -Dm755 "$srcdir"/lbe.desktop   "$pkgdir"/usr/share/applications/lbe.desktop
+  install -Dm755 "$srcdir"/lbe.sh        "$pkgdir"/usr/bin/lbe
 }
 
 # vim: ts=2:sw=2:et
