@@ -1,14 +1,13 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# based on extra/xf86-video-amdgpu by:
-# Laurent Carlier <lordheavym@gmail.com>
+# based on extra/xf86-video-amdgpu: Laurent Carlier <lordheavym@gmail.com>
 #
-# Send PRs here: https://github.com/yurikoles-aur/xf86-video-ati-git
+# Send PRs here: https://github.com/yurikoles-aur/xf86-video-amdgpu-git
 #
 
 pkgname=xf86-video-amdgpu-git
 _pkgname=${pkgname%-*}
 pkgver=22.0.0.r8.g4e011b9
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org amdgpu video driver (git version)"
 arch=('x86_64')
 url="https://xorg.freedesktop.org/"
@@ -26,6 +25,12 @@ pkgver() {
   git describe --long --tags | sed 's/^xf86.video.amdgpu.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd ${pkgname}
+
+  NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
   cd ${pkgname}
 
@@ -38,7 +43,7 @@ build() {
 
   #CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
 
-  ./autogen.sh --prefix=/usr \
+  ./configure --prefix=/usr \
     --enable-glamor
   make
 }
