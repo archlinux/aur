@@ -1,6 +1,6 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 pkgname=gig
-pkgver=0.8.0
+pkgver=0.8.3
 pkgrel=2
 pkgdesc="Generate .gitignore files from your terminal (mostly) offline!"
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=()
 conflicts=()
 source=("gig.tar.gz::https://github.com/shihanng/gig/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("697758901ae545fbda4a978a42c282e5fcc7fa8387584198f5b7ed5a01aec64846a66f3dc8f0e970fa1d59236d5ab72ff7d846021ca3a33471a7070a04fcfa94")
+sha512sums=("aabe00ed0e3d599d363c57d46e07cdfb325d657925916d2e116f03e4964136ecb059ea872979035c7ba53fc26257885c9201f95e144065202600acfaec337846")
 
 build() {
   cd "gig-$pkgver"
