@@ -2,7 +2,7 @@
 
 pkgname=python-vt-py
 _pkg="${pkgname#python-}"
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Official Python client library for VirusTotal's REST API"
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-httpserver'
 provides=('python-virustotal')
 replaces=('python-virustotal-api')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0a84bf5b62b80c140c2f26e9cdafa1bbe0bde73decff610f4d908c1ba1e79975')
+sha256sums=('96dfb132aab1f95a71bf9c8413edf989c4eb105a38a8339348c28ccb324f38fb')
 
 prepare() {
 	cd "$_pkg-$pkgver"
