@@ -1,0 +1,14 @@
+pkgbase = bcm-convertor-uos
+	pkgdesc = 编程猫格式工厂 (A tool software to compile source code of codemao-kitten3-uos into applications).
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://shequ.codemao.cn/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/b/bcm-convertor.yzf/bcm-convertor.yzf_1.3.0_amd64.deb
+	sha512sums = d2e8064f025f75e64b91698124a52def2d1dd165df0d1c239453af28a511631e95bbf36af17eec26da83177a00ebef87c9356cd7cd0b2f9a3a5c78885995e3ed
+
+pkgname = bcm-convertor-uos
