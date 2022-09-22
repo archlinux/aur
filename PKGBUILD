@@ -3,9 +3,9 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=28.0.1
+_pkgver=28.0.2
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 epoch=3
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -16,8 +16,8 @@ _pythonver=3.10
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
 
-  # "libxinerama" "qt5-svg" provided by "vlc-luajit"
-  # "libxkbcommon-x11" provided by "qt5-base"
+  # "libxinerama" "provided by "vlc-luajit"
+  # "libxkbcommon-x11" provided by "qt6-base"
   # "jansson" "curl" provided by "ftl-sdk"
 
   # Needed to use Qt on Wayland platform
