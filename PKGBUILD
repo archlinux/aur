@@ -18,7 +18,7 @@ depends=(
   'python-ffmpeg-patched-git>=0.2.0'
   'ffmpeg'
 )
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=('whisper')
 source=('git+https://github.com/openai/whisper')
 sha256sums=('SKIP')

@@ -5,6 +5,7 @@ pkgbase = whisper-git
 	url = https://github.com/openai/whisper
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
