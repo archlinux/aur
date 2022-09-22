@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.159967.295c0a560ca.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.160177.3411a2a1d0e.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -26,7 +26,7 @@ conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vu
            'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/reduce_launch_overhead'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/discrete_mem'
         'LICENSE'
 #        'eglapi_hack.patch'
         )
