@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lsp_signature-git
-pkgver=0.1.1.r82.g86f0310
+pkgver=0.2.0.r1.ge65a638
 pkgrel=1
 pkgdesc="Neovim plugin for showing LSP signature hints"
 arch=('any')
@@ -20,6 +20,12 @@ sha256sums=('SKIP')
 
 pkgver() {
 	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	## do not run packadd
+	sed -i '158d' tests/signature_spec.lua
 }
 
 check() {
