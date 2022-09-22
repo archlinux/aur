@@ -1,0 +1,10 @@
+post_install() {
+    echo
+    echo "Add the following line to your ~/.bashrc "
+    echo "export PYTHONDOCS=/usr/share/doc/python2/html/"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
