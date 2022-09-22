@@ -1,7 +1,7 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kyma
-pkgver=2.3.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='Provides a set of commands you can use to install, manage, and test Kyma.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/kyma-project/cli'
 license=('Apache')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kyma-project/cli/archive/$pkgver.tar.gz")
-sha256sums=('a7bf6261fb474b79cad5f6dd2dc9d342310f2daef9038ab52054d6b196e768ab')
+sha256sums=('c73377dfabca4fb3dcf5ccd28970f8fc1ece771a5c03f33fc05738b55ed59610')
 
 build() {
   cd cli-$pkgver
