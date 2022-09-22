@@ -1,7 +1,7 @@
 pkgbase = lbe
 	pkgdesc = Jarek Gawor's LDAP Browser/Editor (last freeware version)
 	pkgver = 2.8.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://web.archive.org/web/20090201080715/http://mcs.anl.gov/~gawor/ldap/
 	arch = any
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = lbe
 	source = lbe.sh
 	sha256sums = 6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec
 	sha256sums = ccdc18f2879c6ab10aa0f3ad087a3aa225a6146340be7e2fb46302b961255972
-	sha256sums = 7bae189089e99ab328a77d545df2d253621d4577b5933e1899d357fbb3a7def4
+	sha256sums = a7a2010364196bae2fcd0db00e374a289ea9b0eee4d64f5dac9f88520aacd967
 
 pkgname = lbe

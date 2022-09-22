@@ -2,7 +2,7 @@
 
 : ${XDG_CONFIG_HOME:=~/.config}
 
-appdir="/opt/lbe"
+appdir="/usr/lib/lbe"
 
 if [ -d "$HOME/.lbe" ]; then
 	confdir="$HOME/.lbe"
