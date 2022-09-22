@@ -6,6 +6,6 @@ pkgbase = coronapoker-bin
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/tonikelope/coronapoker/releases/download/v16.56/CoronaPokerLINUX_16.56_portable.zip
-	md5sums = 
+	md5sums = fd047cf6b2900cc2380cb5ea0904efba
 
 pkgname = coronapoker-bin
