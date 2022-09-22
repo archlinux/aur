@@ -1,49 +1,48 @@
-# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
 
-pkgname=('python-trimesh' 'python2-trimesh')
-_name=trimesh
-pkgver=3.7.12
-pkgrel=1
-pkgdesc="Trimesh is a pure Python (2.7-3.4+) library for loading and using triangular meshes with an emphasis on watertight surfaces."
+pkgname=python-trimesh
+pkgver=3.9.31
+pkgrel=3
+pkgdesc='Trimesh is a pure Python library for loading and using triangular meshes with an emphasis on watertight surfaces'
 arch=('any')
 url="https://github.com/mikedh/trimesh"
 license=('MIT')
-depends=()
-makedepends=('python')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-md5sums=('a897b166a8b3719f1367822ea52a86a9')
-
+depends=(python python-numpy)
+makedepends=(python-setuptools)
+checkdepends=(python-scipy python-networkx python-rtree python-lxml
+              python-shapely python-pillow python-sympy python-requests
+              python-msgpack python-pyglet python-jsonschema
+              python-svg.path python-collada)
+optdepends=('python-networkx: graph operations'
+            'python-pyglet: preview windows'
+            'python-rtree: vector path handling'
+            'python-scipy: convex hulls'
+            'python-shapely: vector path handling'
+            'python-pillow: load images'
+            'python-jsonschema: validate JSON schemas like GLTF'
+            'python-requests: network requests'
+            'python-msgpack: serialize into msgpack'
+            'python-lxml: handle XML better and faster than built- in XML'
+            'python-sympy: do analytical math'
+            'python-svg.path: handle SVG format path strings'
+            'python-xxhash: hash ndarrays faster than built-in MD5/CRC'
+            'python-collada: parse collada/dae/zae files')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mikedh/trimesh/archive/${pkgver}.tar.gz)
+sha512sums=('869154628e399b336a8a028b0c3b7bf0a950384e957503ba662badf8d109e330daebbda617ff240cae4c07e2d88c4e07c0115637259d17c0c30890e940e04251')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd trimesh-${pkgver}
   python setup.py build
 }
 
-package_python-trimesh() {
-  depends+=('python-numpy')
-  optdepends+=(
-    'python-networkx: graph operations'
-    'python-pyembree: faster ray queries'
-    'python-pyglet: preview windows'
-    'python-rtree: vector path handling'
-    'python-scipy: convex hulls'
-    'python-shapely: vector path handling'
-    'python-xxhash: faster cache checks')
-  cd "${srcdir}/${_name}-${pkgver}"
+check() {
+  cd trimesh-${pkgver}
+  python -m unittest discover tests
+}
+
+package() {
+  cd trimesh-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-package_python2-trimesh() {
-  depends+=('python2-numpy')
-  optdepends+=(
-    'python2-networkx: graph operations'
-    'python2-pyembree: faster ray queries'
-    'python2-pyglet: preview windows'
-    'python2-rtree: vector path handling'
-    'python2-scipy: convex hulls')
-  cd "${srcdir}/${_name}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
-
-
-# vim:set ts=2 sw=2 et:
