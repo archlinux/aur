@@ -2,7 +2,7 @@
 
 
 pkgname=octetos-core
-pkgver=2.55.0
+pkgver=2.56.4
 pkgrel=1
 phase=alpha
 pkgdesc="C/C++ library to mainly provide Semantic Versioned inplmetation"
@@ -11,7 +11,7 @@ license=('GPL')
 url="https://github.com/azaeldevel/octetos-core.git"
 depends=('gcc' 'bison' 'libconfig' 'perl-xml-parser' 'intltool' 'cunit')
 #backup=('etc/nanorc')
-md5sums=('6f155f7f58f591df8296923e96412d70')
+md5sums=('4a3f22029b293fbec9f951aea19c1c51')
 source=(https://github.com/azaeldevel/$pkgname/archive/$pkgver-$phase.tar.gz)
 
 build() {
