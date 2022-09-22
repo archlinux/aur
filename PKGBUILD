@@ -2,7 +2,7 @@
 # Contributor: Gui||aume <michaudg@gmail.com>
 
 pkgname=rocketchat-client-bin
-pkgver=3.8.9
+pkgver=3.8.10
 pkgrel=1
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('rocketchat-desktop')
 conflicts=('rocketchat-desktop')
 source=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$pkgver/rocketchat-$pkgver-linux-amd64.deb"
         'LICENSE')
-sha256sums=('21aa4694451497e8b25b5ad3099ba037660e254a4dc1de4d3f640f0f7147774b'
+sha256sums=('23bea3930afb13873c22260da034801e6e0543828ba41a55a8c5c178f33de223'
             '362e3ce451a4aa3e51e5728a2102b01135827d3a4af0a450b672c54540dec5c5')
 
 package() {
