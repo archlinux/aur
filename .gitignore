@@ -1,6 +1,4 @@
 pkg/
 src/
 ledger/
-django_bootstrap5/
-*.tar.gz
 *.pkg.tar.*
