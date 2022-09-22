@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index 40b2b26..b140ece 100755
+--- a/setup.py
++++ b/setup.py
+@@ -10,8 +10,11 @@ setup(
+     author_email='samoilov.lex@gmail.com',
+     url='https://github.com/Sunderland93/sway-input-config',
+     packages=find_packages(),
+-    include_package_data=True,
+     package_data={"": ["data/*"]},
++    data_files=[
++        ('share/applications', ['sway-input-config.desktop']),
++        ('share/pixmaps', ['sway-input-config.svg']),
++    ],
+     install_requires=[],
+     entry_points={
+         'gui_scripts': [
