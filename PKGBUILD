@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r2658.f86f8229
+pkgver=r2679.82213191
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -28,8 +28,9 @@ source=("${pkgname%-*}::git+https://git.sr.ht/~sircmpwn/hare"
 	config.x86_64.mk
     config.aarch64.mk)
 sha512sums=('SKIP'
-            '829da5837216f6d90af61757fdd6af99c0fa5a6168089bf34cd4c10b1d8506539ff38f1d77d5524eb376fa0bc8f7afa801d279fc44caa7e448a40b0fca6670da'
-            '4c81f345dd820f0b6efd0b3e22a379bb60076a141275f0e54766670bbee4b6ab6c90d1ea36f2b5532f1b5cb6492053e738a82b579a6a0895343e7e441a6a8409')
+    '5df893f3d1f79cd9735ba0f3b9a61fad881eda887c8a4b0c97ee2b8b99171636c4f2699617d46963c35ec7946cb423b1b1debb685dbaef7909d6bd915e4f65c1'
+    'bb661bb2916d64eb3db5f4af1cdf6ec5271b4809d0f3afe80045cdffb5407e997d2ea9d2315dc4da131d765dcceaab5e23014597ccb000b7f7338896829eaa86')
+
 provides=("hare")
 conflicts=("hare")
 # options=(debug)
