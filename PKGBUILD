@@ -8,7 +8,7 @@
 pkgname=lib32-fluidsynth
 _name=fluidsynth
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=(x86_64)
 url="https://www.fluidsynth.org/"
@@ -41,9 +41,9 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib32 \
         -DCMAKE_BUILD_TYPE=None \
         -DFLUID_DAEMON_ENV_FILE=/etc/conf.d/fluidsynth \
-        -DLIB_SUFFIX=32 \
         -Denable-ladspa=ON \
         -Denable-portaudio=ON \
         -Wno-dev \
