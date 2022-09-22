@@ -1,7 +1,7 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=mingw-w64-libgit2
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
 arch=(any)
@@ -10,13 +10,20 @@ makedepends=(mingw-w64-cmake)
 options=(staticlibs !buildflags !strip)
 license=(GPL)
 url="https://github.com/libgit2/libgit2"
-source=("https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz")
-sha256sums=('e9923e9916a32f54c661d55d79c28fa304cb23617639e68bff9f94d3e18f2d4b')
+source=(
+    "https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz"
+    "0001-fix-uppercase-windows-h-include.patch"
+)
+sha256sums=(
+    '8de872a0f201b33d9522b817c92e14edb4efad18dae95cf156cf240b2efff93e'
+    'a7a87b9467ef4f0a4e2f68f75c4b3e30c6b681773c636192726e59500538cf7d'
+)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
     cd "${srcdir}/libgit2-${pkgver}"
+    patch -p1 < "$srcdir/0001-fix-uppercase-windows-h-include.patch"
     for _arch in ${_architectures}; do
         mkdir -p build-${_arch} && pushd build-${_arch}
         ${_arch}-cmake \
