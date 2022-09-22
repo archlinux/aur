@@ -1,7 +1,7 @@
 pkgbase = xf86-video-ati-git
 	pkgdesc = X.org ati video driver
 	pkgver = 19.1.0.r15.g7a6a34af
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://xorg.freedesktop.org/
 	arch = x86_64

@@ -1,11 +1,14 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # based on core/xf86-video-ati: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
+#
+# Send PRs here: https://github.com/yurikoles-aur/xf86-video-ati-git
+#
 
 _pkgname=xf86-video-ati
 pkgname="${_pkgname}-git"
 pkgver=19.1.0.r15.g7a6a34af
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="X.org ati video driver"
 arch=('x86_64')
