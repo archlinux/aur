@@ -1,7 +1,7 @@
 pkgbase = dzen2-suave
 	pkgdesc = X notification utility with Xinerama and XMP support, git version.
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Suavesito-Olimpiada/dzen
 	arch = i686
 	arch = x86_64
