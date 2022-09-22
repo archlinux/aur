@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Myxer
-Comment=Volume Mixer for PulseAudio
-Exec=myxer
-Icon=multimedia-volume-control
-StartupNotify=true
-Type=Application
-Categories=Audio;AudioVideo;Utility;
