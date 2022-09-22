@@ -15,7 +15,7 @@ source=("https://nullroute.lt/mirrors/files/ldapbrowser-$pkgver.zip"
 noextract=("ldapbrowser-$pkgver.zip")
 sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
             'ccdc18f2879c6ab10aa0f3ad087a3aa225a6146340be7e2fb46302b961255972'
-            'b2af92e7329c26673582d2df55ebbaa0dbc86a41c4080b5222a8b1d6ad607057')
+            '3181d3f000e6df4a1dbc86f3860964f2528450dc7c29c75000fd36c37887c8b2')
 
 prepare() {
   # Extract the archive manually into a subfolder
