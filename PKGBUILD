@@ -2,14 +2,14 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=kubepug-bin
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Kubernetes PreUpGrade (Checker)"
 arch=('x86_64')
 url="https://github.com/rikatz/kubepug"
 license=('Apache')
 source=("https://github.com/rikatz/kubepug/releases/download/v${pkgver}/kubepug_linux_amd64.tar.gz")
-sha256sums=('c09d7d06715ced8140950233319f0a749628da0ca21558bd6253e9777ca312f3')
+sha256sums=('7659087006c51318854a75469433d4e8d09aa40eec3828dd57ef5d0a4e7489a6')
 
 package() {
   install -Dm 755 "$srcdir/kubepug" "$pkgdir/usr/bin/kubepug"
