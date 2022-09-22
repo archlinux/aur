@@ -1,6 +1,6 @@
 pkgbase = sway-input-config-git
 	pkgdesc = Sway Input Configurator
-	pkgver = r3.db2708e
+	pkgver = r6.60f5704
 	pkgrel = 1
 	url = https://github.com/Sunderland93/sway-input-config
 	arch = i686
@@ -15,8 +15,6 @@ pkgbase = sway-input-config-git
 	provides = sway-input-config
 	conflicts = sway-input-config
 	source = sway-input-config::git+https://github.com/Sunderland93/sway-input-config.git#branch=master
-	source = data_files.patch
 	sha256sums = SKIP
-	sha256sums = 3f969a09be48e8c288039c41400eb9397a24ea3b08402f6f5e8c4b52d312b96a
 
 pkgname = sway-input-config-git
