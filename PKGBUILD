@@ -8,7 +8,6 @@ pkgrel=1
 pkgdesc="Trim Galore is a wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files, with extra functionality for RRBS data"
 arch=(x86_64)
 url="https://github.com/FelixKrueger/TrimGalore "
-depends=('libcurl-compat')
 optdepends=('cutadapt')
 source=('https://github.com/FelixKrueger/TrimGalore/archive/refs/tags/0.6.7.tar.gz')
 md5sums=('SKIP')
