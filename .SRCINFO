@@ -1,16 +1,22 @@
 pkgbase = python-restfly
-	pkgdesc = A library to make API wrappers creation easier
-	pkgver = 1.3.5
+	pkgdesc = Simple framework for building RESTful API libraries
+	pkgver = 1.4.6
 	pkgrel = 1
-	url = https://github.com/stevemcgrath/restfly
+	url = https://github.com/librestfly/restfly
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-sphinx
+	makedepends = python-wheel
+	depends = python-arrow
 	depends = python-box
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/r/restfly/restfly-1.3.5.tar.gz
-	sha512sums = d39f08a4f13ecb49a662e21b094b0b164eb57f93377dc953e2fabd80e33ace3bf898a3e9529733976f9095ef58d14bfe099d8052d9abf43e7f0b61175a214e4f
+	source = python-restfly-1.4.6.tar.gz::https://github.com/librestfly/restfly/archive/1.4.6.tar.gz
+	sha256sums = ff5936a964c78b1a7f74e58b765d321319790ed9410dde3a1f42bf9a7a4f9ba0
 
 pkgname = python-restfly
-
