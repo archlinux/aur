@@ -1,5 +1,5 @@
-pkgbase = gnome-shell-git
-	pkgdesc = Next generation desktop shell
+pkgbase = gnome-shell-mobile-git
+	pkgdesc = Next generation mobile shell
 	pkgver = 43.0+17+g901661487
 	pkgrel = 1
 	epoch = 1
@@ -7,6 +7,7 @@ pkgbase = gnome-shell-git
 	arch = x86_64
 	arch = i686
 	arch = pentium4
+	arch = aarch64
 	groups = gnome
 	license = GPL
 	makedepends = gtk-doc
@@ -45,7 +46,7 @@ pkgbase = gnome-shell-git
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
+	source = git+https://gitlab.gnome.org/verdre/gnome-shell.git#branch=mobile-shell
 	sha256sums = SKIP
 
-pkgname = gnome-shell-git
+pkgname = gnome-shell-mobile-git

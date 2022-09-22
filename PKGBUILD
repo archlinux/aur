@@ -5,13 +5,13 @@
 
 # shellcheck disable=SC2034
 _pkgname="gnome-shell"
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}-mobile-git"
 pkgver=43.0+17+g901661487
 pkgrel=1
 epoch=1
-pkgdesc="Next generation desktop shell"
+pkgdesc="Next generation mobile shell"
 url="https://gitlab.gnome.org/GNOME/${_pkgname}"
-arch=('x86_64' 'i686' 'pentium4')
+arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 license=(GPL)
 depends=(accountsservice gcr-git gjs-git gnome-bluetooth upower gnome-session gtk4
          gnome-settings-daemon gsettings-desktop-schemas-git libcanberra-pulse
@@ -25,7 +25,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
+source=("git+https://gitlab.gnome.org/verdre/${_pkgname}.git#branch=mobile-shell")
 sha256sums=('SKIP')
 
 pkgver() {
