@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=7.1.8
+pkgver=7.1.9
 pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-sphinx' 'python-sphinxcontrib-autoprogram')
 checkdepends=('python-pytest' 'python-pytest-vcr' 'python-requests-mock')
 backup=('etc/sopel.cfg')
 source=("https://github.com/sopel-irc/sopel/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('3ab937a3bad8070002912b086647b56f42a95ad94ff63c738c59738fc13069b7f16a64b8fcc127c6da7569f4f5ad10d4b398edeecb0f7ba6c439bcb0258574f7')
+sha512sums=('55fd81f7d16bf3a46c216a0ae68b72df3cc2f4d1d282786f87eadadf51d19838f92d2e29a6a424905099dbf9e27ea495f6d54e676947dcd5c3edcff1d7b5aea3')
 
 prepare() {
   cd sopel-$pkgver
