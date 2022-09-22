@@ -2,7 +2,7 @@
 # Maintainer: Andrey Anshin <Andrey.Anshin@taragol.is>
 
 pkgname=discover-overlay-git
-pkgver=v0.5.3.r1.gc9790a6
+pkgver=v0.6.3.r0.gde83063
 pkgrel=1
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
@@ -18,7 +18,6 @@ depends=(
     "python-pyxdg"
     "python-requests"
     "python-websocket-client"
-    "python-pidfile"
     "python-cairo"
     "python-pillow"
     "python-xlib"
