@@ -18,12 +18,13 @@ sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
             '7bae189089e99ab328a77d545df2d253621d4577b5933e1899d357fbb3a7def4')
 
 prepare() {
-  unzip -o -d "$srcdir/ldapbrowser-$pkgver" "$srcdir/ldapbrowser-$pkgver.zip"
+  # Extract the archive manually into a subfolder
+  mkdir -p "ldapbrowser-$pkgver"
+  bsdtar -x -v -C "ldapbrowser-$pkgver" -f "ldapbrowser-$pkgver.zip"
 }
 
 package() {
   mkdir -p "$pkgdir/opt"
-
   cp -a "$srcdir/ldapbrowser-$pkgver" "$pkgdir/opt/lbe"
 
   {
