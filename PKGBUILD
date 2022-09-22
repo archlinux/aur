@@ -3,8 +3,8 @@
 
 pkgname=kcm-grub2-git
 _product="${pkgname%-git}"
-pkgver=0.6.4.r132.gecb98f3
-pkgrel=1
+pkgver=0.6.4.r133.g0c9a766
+pkgrel=2
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader"
 arch=('x86_64')
 url='https://invent.kde.org/system/kcm-grub2'
@@ -13,7 +13,7 @@ depends=(
     'grub'
     'hwinfo'
     'kcmutils'
-    'libmagick6'
+    'libmagick'
     'packagekit-qt5'
 )
 makedepends=(
