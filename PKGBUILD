@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodb
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='biodb, a library and a development framework for connecting to chemical and biological databases'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d1e225bc61f3384acc68e73d0a85b74fe3336a51ac53bd62b8a9a5bb92b0200a')
+sha256sums=('cb6fe917b4edb40bdd7decb42e065202303b34b2e628b0186aa70aa51dc9bf86')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
