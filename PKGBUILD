@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=104.0.2
-pkgrel=2
+pkgver=105.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -39,7 +39,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
         "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('72bba06f04e7745f6b02951906413eb1c15a7e253e06e373302162c6219f286a'
+sha256sums=('2b5becbb89aa2b2007ba8c86ad517aeae1b54904d007d9d3acbf054be6a0ed62'
             'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
@@ -183,7 +183,7 @@ fi
 
   # LibreWolf
   # Remove some pre-installed addons that might be questionable
-  patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # Debian patch to enable global menubar
   patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
@@ -224,7 +224,7 @@ fi
   # UI patches
   # Remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
 
   # Remap help links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remap-links.patch
@@ -236,7 +236,7 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
 
   # Update privacy preferences
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
 
   # Remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-branding-urlbar.patch
@@ -274,7 +274,6 @@ fi
 
   # Needed build fix
   patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
-  patch -Np1 -i "${_patches_dir}"/custom/glibc236.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
