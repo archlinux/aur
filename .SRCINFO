@@ -1,0 +1,18 @@
+pkgbase = clairvoyant-git
+	pkgdesc = Magic 8-Ball fortune teller of sorts
+	pkgver = r104.7db385c
+	pkgrel = 1
+	url = https://github.com/cassidyjames/clairvoyant
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	provides = clairvoyant
+	conflicts = clairvoyant
+	source = git+https://github.com/cassidyjames/clairvoyant.git
+	b2sums = SKIP
+
+pkgname = clairvoyant-git
