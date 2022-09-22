@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=eyedropper
-pkgver=0.2.0
-_commit=607fbf05900a37187b3dc5a5050892dac19cb547 # tags/v0.2.0
+pkgver=0.3.0
+_commit=d7ce1a12feeb09c3ff58d6fb04af4e563afe2ad4 # tags/v0.3.0
 pkgrel=1
 pkgdesc='A simple to use color picker and editor'
 arch=(x86_64)
