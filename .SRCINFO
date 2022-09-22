@@ -1,16 +1,15 @@
 pkgbase = ruby-kaitai-struct
 	pkgdesc = Kaitai Struct: runtime library for Ruby
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = http://kaitai.io
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rdoc
-	noextract = kaitai-struct-0.9.gem
+	noextract = kaitai-struct-0.10.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/kaitai-struct-0.9.gem
-	sha1sums = e6c3c088da0afa7b67adc3981f6917c745bf9c98
+	source = https://rubygems.org/downloads/kaitai-struct-0.10.gem
+	sha1sums = c197657253e93e67076c0c61374fcefd3f8699fd
 
 pkgname = ruby-kaitai-struct
-
