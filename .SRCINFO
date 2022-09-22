@@ -1,18 +1,17 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 18.0.1
+	pkgver = 18.0.3
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
-	install = davinci-resolve.install
-	arch = any
+	arch = x86_64
 	license = Commercial
 	makedepends = libarchive
 	makedepends = xdg-user-dirs
+	makedepends = patchelf
 	depends = glu
 	depends = gtk2
 	depends = gstreamer
 	depends = libpng12
-	depends = lib32-libpng12
 	depends = ocl-icd
 	depends = openssl-1.0
 	depends = fuse2
@@ -23,12 +22,13 @@ pkgbase = davinci-resolve
 	depends = qt5-webengine
 	depends = qt5-websockets
 	depends = libxcrypt-compat
-	provides = davinci-resolve
+	depends = shared-mime-info
+	depends = gtk-update-icon-cache
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_18.0.1_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.0.1/DaVinci_Resolve_18.0.1_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=ZWbyMeTtCmK516XH3vKL2q1yLRk11pjqwpo3f42jSkDHy+ZjgLCRfMpYRkYnJ027fB/N7TYCeLnb6m14cGab1E86oFWVadnQto7LrOoWiV6OQ/xh0MxarkhFGKDIOgVQRIl+/VTRknaeSHNpgApQwKZ7buGO9GHWfFLq9VaaUDHINEvltiYEUCNNAx23BKOgvxnBSFe9llzc2gLibitiP5+Wo6hzSXwPuie3vMJNNIxyIttCNvH3RFF3IpIoVtpMYNNT3T1fXHCUqiSfZ25sUgfyOwRYkNb/ZizOOrvI7G9scq1Kt9LIkTvtOlwUleWXqq+VpPMTZ3tpjUSLYyq6xQ==&Expires=1662063944
-	sha256sums = b942bcae650d35355aa6a104809875bc51acd994504ddc62d18a516f660aa3cb
+	source = DaVinci_Resolve_18.0.3_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.0.3/DaVinci_Resolve_18.0.3_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=NMt6fSPsb3/DudVkL3swaB7OFfWXUuKqt7C20/KIKf78jGTw43hhEsDBxh4O3YiZYrNRi428iro1JuhlkZxcxDn2Jz5RGCigR6M2xMrRap+02TYGgfnZQF57UKxjZG0Pe+/o5R9OXDlnAfyitLz8/Fa6sHNkmOz1Y5N+u/UZ8C8ddVN0+mfjW3UYDIKu/7bTst3v8raSh2mudFo+SEaKp+MTRtNga3NLXWnqkUmmwe1WVikLbtPO3r8NtpEySFhsOXhKeyh7YBORgcyAMJmILRT46LOGtehb6hN6DD0fS6znjkjiyqRD2Lmuuq2W+3vGrfjU4DsPIdNkWGbgOuaw8A==&Expires=1663878624
+	sha256sums = 419a007310a24842e629baabf45b7e0c21716e8ffe1a6d7a85844181fcc7e09a
 
 pkgname = davinci-resolve
