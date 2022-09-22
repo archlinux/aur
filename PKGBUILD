@@ -2,13 +2,13 @@
 # Upstream URL: https://gitlab.com/gabmus/syndication-domination
 
 pkgname=python-syndom-git
-pkgver=e503361
+pkgver=f64caab
 pkgrel=1
 pkgdesc="A simple RSS/Atom parser library in C++, with python bindings"
 arch=('any')
 url="https://gitlab.com/gabmus/syndication-domination"
 license=('AGPL3')
-depends=('python' 'pugixml' 'pybind11' 'tidy')
+depends=('python' 'pugixml' 'pybind11' 'tidy' 'fmt')
 makedepends=('git' 'meson' 'pybind11' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

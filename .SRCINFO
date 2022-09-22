@@ -1,6 +1,6 @@
 pkgbase = python-syndom-git
 	pkgdesc = A simple RSS/Atom parser library in C++, with python bindings
-	pkgver = e503361
+	pkgver = f64caab
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/syndication-domination
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = python-syndom-git
 	depends = pugixml
 	depends = pybind11
 	depends = tidy
+	depends = fmt
 	provides = python-syndom
 	conflicts = python-syndom
 	source = python-syndom::git+https://gitlab.com/GabMus/syndication-domination.git
