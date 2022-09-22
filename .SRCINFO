@@ -1,0 +1,23 @@
+pkgbase = python2-dnspython
+	pkgdesc = A DNS toolkit for Python
+	pkgver = 1.16.0
+	pkgrel = 3
+	url = http://www.dnspython.org
+	arch = any
+	license = ISC
+	checkdepends = python2-idna
+	checkdepends = python2-pycryptodome
+	checkdepends = python2-ecdsa
+	checkdepends = python2-typing
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-ecdsa: DNSSEC support
+	optdepends = python2-pycryptodome: DNSSEC support
+	optdepends = python2-idna: support for updated IDNA 2008
+	source = http://www.dnspython.org/kits/1.16.0/dnspython-1.16.0.tar.gz
+	source = http://www.dnspython.org/kits/1.16.0/dnspython-1.16.0.tar.gz.asc
+	validpgpkeys = A580DEE052FEC78D8ACF383DF24B3AFC8CA2F5C7
+	sha256sums = 4bf5c5c12a4478ee7860ab176659cf64c4899ee76752d826b082f8af723c5cf9
+	sha256sums = SKIP
+
+pkgname = python2-dnspython
