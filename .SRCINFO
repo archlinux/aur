@@ -1,7 +1,7 @@
 pkgbase = wutag
 	pkgdesc = CLI tool for tagging files
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vv9k/wutag
 	arch = x86_64
 	license = MIT
