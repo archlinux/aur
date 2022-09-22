@@ -1,6 +1,6 @@
 pkgbase = python-pysdl2
 	pkgdesc = Python ctypes wrapper around SDL2
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = https://github.com/marcusva/py-sdl2
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pysdl2
 	optdepends = sdl2_image
 	optdepends = sdl2_mixer
 	optdepends = sdl2_ttf
-	source = python-pysdl2-0.9.13.tar.gz::https://github.com/marcusva/py-sdl2/archive/refs/tags/0.9.13.tar.gz
-	sha256sums = 930ad9c3edd551fdf33a618cac29f6cf2b6be287abbcee0c7eb4890b6941559b
+	source = python-pysdl2-0.9.14.tar.gz::https://github.com/marcusva/py-sdl2/archive/refs/tags/0.9.14.tar.gz
+	sha256sums = 8c8aa946f33fc29ae86d0a1b9fc4bd8db045bad074bd7b9f5c0605cc87441fdc
 
 pkgname = python-pysdl2
