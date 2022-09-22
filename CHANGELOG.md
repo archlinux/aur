@@ -16,7 +16,49 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 🛠 Maintenance
 
+- **Link directly to API Keys page in Studio - @abernix, #1202**
+
+  The `rover config auth` command will now provide a link that takes you directly to the "API Keys" page where you can create a Personal API Key, rather than a page that requires you to click through to another page.
+
 ## 📚 Documentation -->
+
+# [0.8.2] - 2022-09-06
+
+## 🚀 Features
+
+- **Check commands exit with failure when downstream tasks fail - @sachindshinde, #1280**
+
+  Historically, `rover graph check` and `rover subgraph check` have aggregated errors for operation checks and/or composition checks. Checks are expanding in Studio and will continue to expand over time, starting with downstream contract checks for `rover subgraph check`. When these tasks fail, Rover will throw an error and link to the checks page in Studio which will contiain more information on the exact failure.
+
+- **Detect improper VS Code API key pastes on Windows - @EverlastingBugstopper, #1026, 1268**
+
+  We have added new error messages and recovery suggestions for malformed API keys caused by invalid copy+pastes in VS Code on Windows.
+
+- **Adds `--watch` to `introspect` commands - @EverlastingBugstopper, #1207**
+
+  If you pass the `--watch` flag to `rover graph introspect` or `rover subgraph introspect`, the GraphQL server will be introspected once every second, printing updates to the terminal as the introspection response changes. This could be used to bootstrap development workflows when combined with `--output json` and a tool like `jq`.
+
+## 🐛 Fixes
+
+- **Trim double quotes in multilingual descriptions - @lrlna, #1245 fixes #1244 and #1114**
+
+  `rover graph introspect` no longer crashes if a field description contains cyrillic symbols.
+
+- **Fix link to ELv2 license information - @EverlastingBugstopper, #1262 fixes #1261**
+
+## 🛠 Maintenance
+
+- **Link directly to API Keys page in Studio - @abernix, #1202**
+
+  The `rover config auth` command will now provide a link that takes you directly to the "API Keys" page where you can create a Personal API Key, rather than a page that requires you to click through to another page.
+
+- **Skip Apollo Studio integration tests for fork PRs - @EverlastingBugstopper, #Issue #, 1216**
+
+  Our CI pipeline skips Apollo Studio integration tests for forked repositories because they don't have access to the Apollo Studio organization that we use to run them.
+
+- **Updates MacOS CI pipeline to use xcode 13.4 - @EverlastingBugstopper, #1211**
+
+- **Normalize git remote URLs for anonymized telemetry - @EverlastingBugstopper, #1279**
 
 # [0.8.1] - 2022-07-28
 
