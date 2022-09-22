@@ -4,9 +4,9 @@
 
 _pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=22.7.5.1034_1
-_pkgver=22.7.5.1034-1
-pkgrel=2
+pkgver=22.9.1.1107_1
+_pkgver=22.9.1.1107-1
+pkgrel=1
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -20,17 +20,18 @@ conflicts=('yandex-browser' 'yandex-browser-stable')
 options=(!strip)
 
 depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "libdrm" "gdbm" "gtk4" "nspr" "nss" "pango"
-"libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "wget" "xdg-utils" "harfbuzz-icu")
+"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "wget" "xdg-utils" "harfbuzz-icu")
 optdepends=(
     "speech-dispatcher"
     "vulkan-driver"
     "vulkan-icd-loader"
     "ttf-font"
+    "gstreamer-meta"
     "cryptopro-csp-k1"
 )
 
 source=("${pkgname}-${pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("8fd606608c8735775ac6a0295a1b8963413ec47613737a81a281db5ef2f216c3")
+sha256sums=("d88f61d8667377b5af3e6894a8da30946ec1136689d6afd92a730e328851c006")
 install=yandex-browser.install
 
 prepare() {
