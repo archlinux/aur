@@ -1,36 +1,36 @@
 #!/bin/sh -e
 
-: ${XDG_CONFIG_HOME:=~/.config}
+appdir=/usr/lib/lbe
+datadir=/usr/share/lbe
 
-appdir="/usr/lib/lbe"
-
-if [ -d "$HOME/.lbe" ]; then
-	confdir="$HOME/.lbe"
+if [ -d ~/.lbe ]; then
+	confdir=~/.lbe
 else
-	confdir="$XDG_CONFIG_HOME/lbe"
+	confdir=${XDG_CONFIG_HOME:-~/.config}/lbe
 fi
 
+# LBE tries to find everything in the current working directory (it pretty much
+# expects the user to double-click lbe.jar in their ~/Downloads/lbe), so for a
+# system-wide /usr installation we must manually set up a config directory and
+# chdir() into it.
+
 if [ ! -d "$confdir" ]; then
-	mkdir -pm0700 "$confdir"
+	mkdir -p -m 0700 "$confdir"
+	cp -a "$datadir"/skel/. "$confdir"/
+
+	# XXX: we don't really need lbe.properties if we chdir anyway
 
 	cat > "$confdir/lbe.properties" <<-EOF
 	base=$confdir/
 	session.dir=$confdir/
 	cacert.file=$confdir/lbecacerts
 	EOF
-
-	cp -a "$appdir/help/uofmichigan.cfg.sample" "$confdir/U of Michigan.cfg"
-
-	cp -a "$appdir/templates" "$confdir/"
 fi
 
-if [ ! -k "$appdir/attributes.config" ]; then
-	cp -a "$appdir/attributes.config" "$confdir/"
-fi
+# Protect session configs
+umask 077
 
-cd "$confdir" # FIXME: if we do this, we can ditch lbe.properties; any disadvantages?
-
-umask 077 # protect session files
+cd "$confdir"
 
 for jvm in /usr/lib/jvm/java-8-{openjdk,jre}; do
 	if [ -d "$jvm" ]; then
