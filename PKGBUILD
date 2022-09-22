@@ -1,7 +1,7 @@
 # Maintainer: Samuel Forestier <dev+archey@samuel.domains>
 
 pkgname=archey4
-pkgver=v4.13.4
+pkgver=4.14.0.0
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
@@ -20,25 +20,25 @@ provides=('archey')
 conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
-source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('b5f6cea12b20b35209fab14f4f021de0')
-sha1sums=('a95218466f2a06bb1ad9a300744cb1f37d5ffc75')
+source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('a8f398ecddb150f2dd0680be55a18662')
+sha1sums=('64ec0c4b488dacf6d5afbeca579cfa99986ae5b5')
 
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver:1}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	# Prepare the manual page.
 	sed \
 		-e "s/\${DATE}/$(date +'%B %Y')/1" \
-		-e "s/\${VERSION}/${pkgver:1}/1" \
+		-e "s/\${VERSION}/${pkgver}/1" \
 		archey.1 > dist/archey.1
 
 	python3 setup.py build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver:1}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	python3 setup.py -q install \
 		--root="$pkgdir" \
@@ -58,7 +58,7 @@ package() {
 }
 
 check() {
-	cd "${srcdir}/${pkgname}-${pkgver:1}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	python3 -m unittest
 }
