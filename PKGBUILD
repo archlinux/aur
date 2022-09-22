@@ -1,14 +1,14 @@
 # Maintainer: Steven Guikal <aur-void@fluix.one>
 pkgname=sline
-pkgver=1.1.3
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
 arch=(x86_64)
 url='https://github.com/ariadnavigo/sline/'
 license=('MIT')
 depends=(glibc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ariadnavigo/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('aac912c23e97ac2ba824adbc608dcfdcf689ff7a96339840e14c30d3df3038cb1ce8fb063a6bfba9d80c6ded355d9464e9a70a94a0c5a5706aee2f772fbde9c9')
+sha512sums=('d446991416f50600a36d5bd2910214a7a31db46ab33de200ab7c24fc176070959a9699881d9661497aab131a8f7b1691c76540b1c1de8c4a718689c61afb7743')
 
 build() {
   cd "$pkgname-$pkgver"
