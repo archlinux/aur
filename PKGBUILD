@@ -3,8 +3,9 @@
 # NOTE: '-bin' suffix not applied as per Arch Nonfree Applications Package
 #       Guidelines (as there will never be a source release)
 pkgname=rtt-rstudio
-pkgver=5.0.5007
-pkgrel=5
+# INFO: Upstream Binary Release Date: 2022-SEP-07
+pkgver=5.1.191044
+pkgrel=1
 # INFO: Full publisher-provided description for reference:
 #   R-Studio is a powerful cost-effective undelete and data recovery software utility.
 #   Empowered by the new unique data recovery technologies, it is the most comprehensive
@@ -15,7 +16,7 @@ pkgrel=5
 #   Flexible parameter settings give you absolute control over data recovery.
 pkgdesc="R-Studio is a powerful cost-effective undelete and data recovery software utility (non-free)."
 arch=('x86_64' 'i686')
-url="http://www.r-studio.com/data_recovery_linux/"
+url="https://www.r-studio.com/data_recovery_linux/"
 license=('custom')
 depends=(
   'xdg-utils'
@@ -24,17 +25,15 @@ depends=(
 provides=('r-studio-for-linux-bin')
 conflicts=('r-studio-for-linux-bin')
 source=(
-  "${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio%20for%20Linux"
+  "${pkgname}-eula.html"
   "${pkgname}-usage-recovery-manual.pdf::https://www.r-studio.com/downloads/Linux_Recovery_Manual.pdf"
 )
 source_x86_64=("https://www.r-studio.com/downloads/RStudio5_x64.rpm")
 source_i686=("https://www.r-studio.com/downloads/RStudio5_i386.rpm")
-sha512sums=(
-  'fc35d65f69d850ccdbff1a7c87fa7745f609556d777266eec81349b885f4e24c3a5421c7df7979bf9e41dc3dc17a7861aa12575805084232118a5ffb40592545'
-  '40af753652abf76b16075e7faf1005626bc6b49437de75b0c443e8de7cd5fef846de0ad30f72330a5a5ca4cd7cce2c436794a731bfb787f9768323a30917fef9'
-)
-sha512sums_x86_64=('b08696f4c0fc6981a95b9c30b8ee096cd574701a1729b0e1042d3cd110c2a40330fa802b644661983aa491f3fd1e93a89b6b1687126868aa3384fc9e49d1d7eb')
-sha512sums_i686=('47b9023def6ebf7154cae8366c8203a8dab766ae1567514b2ab629d66ec86b557578f99eb4a34b9bde9f5d2550d243e05265a157aecb16b79c75339e393356fa')
+sha512sums=('1bc63c247ee4bc210b435ea68fd06b9194e2c9c074a2d7fb3bcaef5f2930a2faba554e27785ca3b14c47bc42b5beb4ae42e2cf088ce92cb0fa846213412bccc2'
+            '196f045d6c28baae103b8b826d5056b32d1d15cb6054f15cbe7b6b6408cac7cbce6143bb021a91531be6c476d6c633bf35566bed8451dac5563d42b912ffda1b')
+sha512sums_x86_64=('699d467e9ec3c94d64d739712b9734eedca8711462f4926acb6aed3f98fe7c9e209efc8d09c888d772e06144d634cee35a73bb7e297e951e587b8488c92550d2')
+sha512sums_i686=('58f4b599f40f1be7bb14cef032f3ca4913e0ad705b0d103b84ad1bc3b9b3a5c053a2e624b1e7b9872c0e203207ce35ca6b60e1634c3c9a52a8fbf5ac5a098ef4')
 
 prepare() {
   cd "${srcdir}"

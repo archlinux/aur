@@ -1,14 +1,13 @@
 # .gitignore for rtt-rstudio
 
-# ignore built packages
+# ignore built packages (regardless of compression method used)
 *.pkg.t*
 
-# ignore intermediate directories
+# ignore intermediate packaging and build directories
 pkg/
 src/
 
-# ignore source files
+# ignore source files obtained externally
 RStudio5_x64.rpm
 RStudio5_i386.rpm
-rtt-rstudio-eula.html
 rtt-rstudio-usage-recovery-manual.pdf
