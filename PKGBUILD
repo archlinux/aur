@@ -13,7 +13,7 @@ pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://odamex.net/'
 license=('GPL')
-depends=('sdl2_mixer' 'sdl2' 'portmidi' 'miniupnpc')
+depends=('sdl2_mixer' 'sdl2' 'portmidi' 'miniupnpc' 'curl' 'zlib' 'libpng')
 makedepends=('git' 'cmake' 'deutex' 'ninja')
 optdepends=('timidity++: Required for the SDL2 MIDI music backend'
             'doomseeker: Online Doom multiplayer server launcher')
