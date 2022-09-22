@@ -14,6 +14,6 @@ pkgbase = libtexprintf-git
 	source = https://github.com/bartp5/libtexprintf/releases/download/v1.14/libtexprintf-1.14.tar.gz
 	source = texfree.patch
 	sha512sums = 4d2fc0d021749aab5ff7acc3cacb1f636ff9e3be8a275a07ca3c8f90cc6194df76c3ead5cd15b485498bd87f76216e53e91219bee9bae937c986b3c8783a98c9
-	sha512sums = 9acf7f00413d42942dea21914e6e69e9fb0d08dfebc195239168fbbcf06f92dc057e83bba16218795dadf9a2c78db0be3e9fcb59a7789dcb93a18aaa26a74a97
+	sha512sums = 99d6143676037827122b6c33c565f9f7749050c8b61dcacb72a3b725e46b293b734804bd9f30dbee31752bee0735078750288d68a767a7dc2d5483d738bd3ef2
 
 pkgname = libtexprintf-git

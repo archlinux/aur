@@ -46,3 +46,14 @@ index 6ea547f..1c430bc 100644
  void SetStyleUNICODE();
 +
 +#endif
+diff --git a/src/texprintfsymbols b/src/texprintfsymbols
+index 8fe4ea1..3dd26f9 100644
+--- a/src/texprintfsymbols
++++ b/src/texprintfsymbols
+@@ -9,5 +9,6 @@ ftexprintf
+ texboxtree
+ texlistsymbols
+ texerrors
++texfree
+ SetStyleASCII
+ SetStyleUNICODE
