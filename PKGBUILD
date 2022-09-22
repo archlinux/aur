@@ -1,8 +1,9 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 # Contributor: r7v
+# Contributor: gilcu3
 pkgname=klee
 pkgver=2.3
-pkgrel=12
+pkgrel=13
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -13,12 +14,12 @@ depends=('gperftools'
          'z3'
          'libcap'
          'python'
-         'llvm-libs>=6.0'
+         'llvm-libs>=14.0'
          'klee-uclibc'
          'sqlite')
 makedepends=('gperftools'
              'z3'
-             'llvm>=6.0'
+             'llvm>=14.0'
              'clang'
              'cmake'
              'git')
