@@ -4,7 +4,7 @@
 
 _pkgname=xf86-video-ati
 pkgname="${_pkgname}-git"
-pkgver=19.1.0.r4.g38453924
+pkgver=19.1.0.r15.g7a6a34af
 pkgrel=1
 epoch=1
 pkgdesc="X.org ati video driver"
@@ -12,22 +12,30 @@ arch=('x86_64')
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('systemd-libs' 'mesa')
-makedepends=('xorg-server-devel' 'systemd')
+makedepends=('xorg-server-devel' 'systemd' 'git' 'pixman')
 provides=("${_pkgname}")
 conflicts=('xorg-server<1.20.0' "${_pkgname}")
-groups=('xorg-drivers')
-source=("${_pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati.git")
+groups=('xorg-drivers-git')
+source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/^xf86-video-ati-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname}*
+  # from ati-git AUR pkg
+  git describe --long | sed 's/^xf86-video-ati-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
+prepare() {
+  cd ${pkgname}*
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${_pkgname}"
+  cd ${pkgname}* #-${pkgver}
 
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+#  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
@@ -36,18 +44,17 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}
 
-  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${_pkgname}"
+  cd ${pkgname}*
   make check
 }
 
 package() {
-  cd "${_pkgname}"
+  cd ${pkgname}*
 
   make "DESTDIR=${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
