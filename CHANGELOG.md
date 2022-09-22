@@ -22,6 +22,40 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.9.0] - 2022-09-22
+
+## 🚀 Features
+
+- **`rover template` command suite - @dbanty, @michael-watson, @EverlastingBugstopper, #1287**
+
+  Two new commands have made their way to Rover: `rover template list` and `rover template use`. These commands provide a similar experience to `create-react-app`, and allow you to extract GraphQL project templates to your local machine. Check out [the docs](https://www.apollographql.com/docs/rover/commands/template/) for more on this new functionality.
+
+- **`rover dev` to facilitate developing a supergraph on your local machine - @EverlastingBugstopper, #1190**
+
+  `rover dev` allows you to join multiple running subgraph servers together into a local supergraph, providing the ability to run queries and inspect query plans with Apollo Sandbox. Check out [the docs](https://www.apollographql.com/docs/rover/commands/dev) for more on this new functionality.
+
+- **If E013 is thrown and `$APOLLO_KEY` is set, give a more helpful suggestion - @ptondereau, #1284, #1285**
+
+  If Studio fails to recognize an API key and `APOLLO_KEY` is set, recommend unsetting the environment variable to use `--profile default` instead.
+
+## 🐛 Fixes
+
+- **Remove useless stdout line for composition results - @ptondereau, #1124, #1291**
+
+## 🛠 Maintenance
+
+- **Link directly to API Keys page in Studio - @abernix, #1202**
+
+  The `rover config auth` command will now provide a link that takes you directly to the "API Keys" page where you can create a Personal API Key, rather than a page that requires you to click through to another page.
+
+- **Prefer "supergraph schema" terminology to "gateway" - @EverlastingBugstopper, #1239, #1332**
+
+  `rover subgraph publish` now refers to updating the "supergraph schema" as opposed to updating the "gateway," since supergraph schema consumers can be routers and/or gateways now.
+
+## 📚 Documentation
+
+- **Fix a few typos in `ARCHITECTURE.md` - @dbanty, #1289**
+
 # [0.8.2] - 2022-09-06
 
 ## 🚀 Features
