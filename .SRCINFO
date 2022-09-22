@@ -1,15 +1,14 @@
 pkgbase = loko
 	pkgdesc = An optimizing R6RS Scheme compiler
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://scheme.fail
 	arch = x86_64
 	license = AGPL3
 	depends = chez-scheme
 	depends = akku
 	options = !strip
-	source = https://scheme.fail/releases/loko-0.7.0.tar.gz
-	md5sums = 056462de3ad93b18a3d02ebc513bc2d5
+	source = https://scheme.fail/releases/loko-0.11.0.tar.gz
+	sha256sums = 43f3b617cb193f71e6cf21e75ab1bf1e893e34e1b189637bbe9f7e7c7a205abc
 
 pkgname = loko
-
