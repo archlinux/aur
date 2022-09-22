@@ -2,26 +2,23 @@
 # Contributor: masutu <masutu dot arch at gmail dot com>
 pkgname=ezthumb
 pkgver=3.6.7
-pkgrel=4
+pkgrel=5
 pkgdesc='A video thumbnail generator based on ffmpeg'
 arch=('x86_64')
 url='https://sourceforge.net/projects/ezthumb/'
 license=('GPL3')
-depends=('ffmpeg' 'gd' 'gtk2')
-source=("$pkgname-$pkgver.tar.bz2::https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.bz2"
-        'harfbuzz.patch')
-sha256sums=('1d04a1521204b25454b8a2cedf4150df9c3c7d68059ed5742d03f7a30060674e'
-            '6708116d34b648e486952867326d2dee607000a65d56bf715ee9ba1f163eec92')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 < "$srcdir/harfbuzz.patch"
-}
+depends=('ffmpeg4.4' 'gd' 'gtk2')
+source=("$pkgname-$pkgver.tar.bz2::https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.bz2")
+sha256sums=('1d04a1521204b25454b8a2cedf4150df9c3c7d68059ed5742d03f7a30060674e')
 
 build() {
   cd "$pkgname-$pkgver"
+  # No support for ffmpeg 5+
+  export CPPFLAGS='-I/usr/include/ffmpeg4.4'
+  export LDFLAGS='-L/usr/lib/ffmpeg4.4'
   ./configure --prefix=/usr --with-gui=gtk2
-  make
+  # Required for IUP
+  make EXTRAINCS='-I/usr/include/harfbuzz'
 }
 
 package() {

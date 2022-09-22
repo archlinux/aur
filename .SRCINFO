@@ -1,17 +1,14 @@
 pkgbase = ezthumb
 	pkgdesc = A video thumbnail generator based on ffmpeg
 	pkgver = 3.6.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/ezthumb/
 	arch = x86_64
 	license = GPL3
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = gd
 	depends = gtk2
 	source = ezthumb-3.6.7.tar.bz2::https://downloads.sourceforge.net/project/ezthumb/ezthumb-3.6.7.tar.bz2
-	source = harfbuzz.patch
 	sha256sums = 1d04a1521204b25454b8a2cedf4150df9c3c7d68059ed5742d03f7a30060674e
-	sha256sums = 6708116d34b648e486952867326d2dee607000a65d56bf715ee9ba1f163eec92
 
 pkgname = ezthumb
-
