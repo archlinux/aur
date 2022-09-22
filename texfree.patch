@@ -5,7 +5,7 @@ index bfda36e..5c8199c 100644
 @@ -101,6 +101,11 @@ char * stexprintf(const char *format, ...)
  	return res;
  }
-
+ 
 +void texfree(void *ptr)
 +{
 +    free(ptr);
@@ -15,12 +15,14 @@ index bfda36e..5c8199c 100644
  {
     	va_list ap;
 diff --git a/src/texprintf.h b/src/texprintf.h
-index 6ea547f..1c430bc 100644
+index 6ea547f..1300dae 100644
 --- a/src/texprintf.h
 +++ b/src/texprintf.h
-@@ -1,9 +1,12 @@
+@@ -1,9 +1,14 @@
 +#ifndef __TEXPRINTF_H__
 +#define __TEXPRINTF_H__
++
++#include <stdio.h>
 +
  extern int TEXPRINTF_LW;								/* line width, if it is 0 the line width is infinite */
  extern char * TEXPRINTF_FONT;							/* default font, one of:
@@ -33,7 +35,7 @@ index 6ea547f..1c430bc 100644
  														 *  "mathsfit"
  														 *  "mathcal"
  														 *  "mathscr"
-@@ -18,9 +21,12 @@ extern int TEXPRINTF_WCW;								/* wide character width */
+@@ -18,9 +23,12 @@ extern int TEXPRINTF_WCW;								/* wide character width */
  extern int TEXPRINTF_ERR;
  int texprintf(const char *format, ...);					/* prints to stdout */
  char * stexprintf(const char *format, ...);				/* prints to string */
