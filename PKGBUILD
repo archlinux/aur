@@ -1,7 +1,7 @@
 # Maintainer: Luca Carlon <carlon.luca@gmail.com>
 
 pkgname=cgrc
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Generic log formatter'
 arch=(any)
