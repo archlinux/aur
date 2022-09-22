@@ -1,0 +1,16 @@
+pkgbase = xfresco
+	pkgdesc = Coupled reaction channels calculations
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://personal.us.es/moro/xfresco/download.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-fortran
+	depends = fresco
+	depends = lib32-gtk2
+	depends = gcc5
+	source = https://personal.us.es/moro/xfresco/xfresco-2.2.tar.gz
+	sha256sums = fd544fab64a7ffe08757df1adfca82484eb6c0033bb7d9e9ae342b3d92433aaa
+
+pkgname = xfresco
