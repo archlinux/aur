@@ -17,13 +17,13 @@ sha256sums=('8b146c4681d6395c146d20e6337db6ad58d098bf6621b7c79d48cc81d7c82abe'
 
 package() {
   install -d -m0755 "${pkgdir}/"{opt/"${_appname}",usr/bin}
+  install -D -m0644 "${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
   
   # the contents of the source file are extracted directly at the top level...
-  # thus, remove the zip so we can install the rest
-  rm "${_zip}"
+  # thus, remove the sources so we can install the rest
+  rm ${source[@]##*/}
   cp -a --no-preserve=ownership * "${pkgdir}/opt/${_appname}"
   
   chmod -R o+rX "${pkgdir}/opt/${_appname}"
   ln -s "/opt/${_appname}/sieve" "${pkgdir}/usr/bin/sieve"
-  install -D -m0644 "${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 }
