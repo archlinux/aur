@@ -1,6 +1,6 @@
 pkgbase = mtxclient
 	pkgdesc = Client API library for Matrix, built on top of Boost.Asio
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/mtxclient
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mtxclient
 	depends = libevent
 	depends = spdlog
 	depends = coeurl
-	source = mtxclient-0.8.1.tar.gz::https://github.com/Nheko-Reborn/mtxclient/archive/v0.8.1.tar.gz
-	sha256sums = 229bdb9bec36253aabdc681c3d1dfca8a1b76656238dc88157b637dc23fde6c1
+	source = mtxclient-0.8.2.tar.gz::https://github.com/Nheko-Reborn/mtxclient/archive/v0.8.2.tar.gz
+	sha256sums = 4caa12ddf954b9492d1ec9b6ca32ef0fc6478555f229db074d43bc5cc29a9c89
 
 pkgname = mtxclient
