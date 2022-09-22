@@ -1,8 +1,5 @@
 #!/bin/sh -e
 
-appdir=/usr/lib/lbe
-datadir=/usr/share/lbe
-
 if [ -d ~/.lbe ]; then
 	confdir=~/.lbe
 else
@@ -15,16 +12,16 @@ fi
 # chdir() into it.
 if [ ! -d "$confdir" ]; then
 	mkdir -p -m 0700 "$confdir"
-	cp -a "$datadir"/skel/. "$confdir"/
+	cp -a /usr/share/lbe/skel/. "$confdir"/
 fi
 cd "$confdir"
 
 # Protect session configuration files.
 umask 077
 
-for jvm in /usr/lib/jvm/java-8-{openjdk,jre}; do
+for jvm in /usr/lib/jvm/java-{11-{openjdk,jdk},8-{openjdk,jre}/jre}; do
 	if [ -d "$jvm" ]; then
-		exec "$jvm"/jre/bin/java -jar "$appdir/lbe.jar" "$@"
+		exec "$jvm"/bin/java -jar /usr/lib/lbe/lbe.jar "$@"
 	fi
 done
 

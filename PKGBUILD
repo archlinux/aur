@@ -2,19 +2,19 @@
 
 pkgname='lbe'
 pkgver=2.8.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Jarek Gawor's LDAP Browser/Editor (last freeware version)"
 arch=('any')
 #url="http://www.openchannelsoftware.com/projects/LDAP_Browser_Editor"
 url="http://web.archive.org/web/20090201080715/http://mcs.anl.gov/~gawor/ldap/"
 license=('custom')
-depends=('java-runtime=8')
+depends=('java-runtime>=8' 'java-runtime<=11')
 source=("https://nullroute.lt/mirrors/files/ldapbrowser-$pkgver.zip"
         "lbe.desktop"
         "lbe.sh")
 sha256sums=('6c1a1b80b81d83f005d4a006bc070b1b8f44f90151f7af6b14004c96e26687ec'
             'ccdc18f2879c6ab10aa0f3ad087a3aa225a6146340be7e2fb46302b961255972'
-            '3181d3f000e6df4a1dbc86f3860964f2528450dc7c29c75000fd36c37887c8b2')
+            '066aa536497ba582b5222548c982477ef894ce9ddc46db52b3a63971a67b40c5')
 
 package() {
   # Java program files
