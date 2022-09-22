@@ -1,6 +1,7 @@
 # Maintainer: Thore Bödecker <foxxx0@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
+_pkgbase='ceph'
 pkgbase='ceph-octopus'
 pkgname=('ceph-octopus' 'ceph-octopus-libs' 'ceph-octopus-mgr')
 _zstdver=1.5.2
@@ -41,7 +42,7 @@ checkdepends=('python-mock' 'python-nose' 'python-pycodestyle' 'python-pylint'
 # need newer version for LTO (https://github.com/ceph/ceph/pull/42602)
 options=('emptydirs' '!lto')
 source=(
-  "https://download.ceph.com/tarballs/${pkgbase}-${pkgver}.tar.gz"
+  "https://download.ceph.com/tarballs/${_pkgbase}-${pkgver}.tar.gz"
   'ceph.sysusers'
   "zstd-${_zstdver}.tar.gz::https://github.com/facebook/zstd/archive/v${_zstdver}.tar.gz"
   #'glibc2.32-strsignal-compat-backported.patch'
@@ -96,7 +97,7 @@ export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
 
 prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # apply patches from the source array
   local filename
@@ -142,7 +143,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # workaround for boost 1.74 -- similar fix exists upstream but I could
   # not get it to work: https://github.com/ceph/ceph/commit/3d708219092d
@@ -207,7 +208,7 @@ build() {
 ### testsuite currently broken, needs some debugging
 ###
 # check() {
-#   cd "${srcdir}/${pkgbase}-${pkgver}"
+#   cd "${srcdir}/${_pkgbase}-${pkgver}"
 # 
 #   export CTEST_PARALLEL_LEVEL=8
 #   export CTEST_OUTPUT_ON_FAILURE=1
@@ -225,7 +226,7 @@ package_ceph-octopus-libs() {
   provides=("ceph-libs=${pkgver}")
   conflicts=("ceph-libs")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # main install
   VERBOSE=1 make DESTDIR="${pkgdir}" -C build install
@@ -251,7 +252,7 @@ package_ceph-octopus() {
   provides=("ceph=${pkgver}")
   conflicts=("ceph")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # main install
   VERBOSE=1 make DESTDIR="${pkgdir}" -C build install
@@ -276,10 +277,10 @@ package_ceph-octopus() {
   find "${pkgdir}/usr/bin" -maxdepth 1 -type f -iname 'ceph_test_*' -delete
 
   # install tmpfiles.d and sysusers.d stuff
-  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/systemd/ceph.tmpfiles.d" \
-    "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
+  install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/systemd/ceph.tmpfiles.d" \
+    "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
   install -Dm644 "${srcdir}/ceph.sysusers" \
-    "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+    "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
 
   # remove debian init script
   rm -rf "${pkgdir}/etc/init.d"
@@ -320,7 +321,7 @@ package_ceph-octopus-mgr() {
   provides=("ceph-mgr=${pkgver}")
   conflicts=("ceph-mgr")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # main install
   VERBOSE=1 make DESTDIR="${pkgdir}" -C build install
