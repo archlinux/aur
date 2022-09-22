@@ -8,6 +8,7 @@ pkgdesc="Sieve script editor app version"
 arch=('x86_64')
 url="https://github.com/thsmi/sieve/"
 license=('AGPL3')
+depends=(alsa-lib nss gtk3)
 
 _zip="sieve-${pkgver}-linux-x64.zip"
 source=("https://github.com/thsmi/sieve/releases/download/${pkgver}/${_zip}"
