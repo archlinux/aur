@@ -15,7 +15,7 @@ pkgbase = v2raya
 	makedepends = go>=2:1.17.0-1
 	makedepends = nodejs>=14
 	makedepends = yarn
-	makedepends = python2
+	makedepends = git
 	depends = glibc
 	optdepends = v2ray>=4.37.0-1
 	optdepends = xray>=1.4.2-1
@@ -23,4 +23,3 @@ pkgbase = v2raya
 	sha512sums = SKIP
 
 pkgname = v2raya
-
