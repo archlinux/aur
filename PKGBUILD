@@ -52,9 +52,9 @@ build() {
 
   cat <<EOF >local.sh
 PREFIX=/usr
-HWLOC=$PREFIX
-GMPECM=$PREFIX
-CURL=$PREFIX
+HWLOC="\$PREFIX"
+GMPECM="\$PREFIX"
+CURL="\$PREFIX"
 # Remove 32-bit barriers to big factorizations
 FLAGS_SIZE="-DSIZEOF_P_R_VALUES=8 -DSIZEOF_INDEX=8"
 EOF
