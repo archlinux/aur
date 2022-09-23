@@ -1,0 +1,14 @@
+pkgbase = mpv-uosc-git
+	pkgdesc = Minimalist cursor proximity based UI for MPV player
+	pkgver = 3.1.2.r164.gdf37ca7
+	pkgrel = 1
+	url = https://github.com/tomasklaen/uosc
+	arch = x86_64
+	license = GPL3
+	depends = mpv
+	provides = mpv-uosc
+	conflicts = mpv-uosc
+	source = uosc::git+https://github.com/tomasklaen/uosc.git
+	sha256sums = SKIP
+
+pkgname = mpv-uosc-git
