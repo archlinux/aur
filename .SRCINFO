@@ -1,0 +1,21 @@
+pkgbase = st-syntax-git
+	pkgdesc = The perfect terminal experience, I guess?
+	pkgver = 0.8.5.r1397.c4dddf8
+	pkgrel = 1
+	epoch = 1
+	url = https://code.syntax.lol/st
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	optdepends = dmenu: feed urls to dmenu
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git+https://code.syntax.lol/st
+	sha1sums = SKIP
+
+pkgname = st-syntax-git
