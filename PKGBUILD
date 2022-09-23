@@ -2,7 +2,7 @@ _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release"
 pkgver=2.80.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 provides=('etlegacy')
@@ -40,10 +40,17 @@ package() {
     chmod 755 -R "${pkgdir}"/usr/lib/"${_pkgbase}"/legacy/omni-bot
     # assets
     ln -s /usr/share/enemy-territory/etmain/{pak0,pak1,pak2}.pk3 $pkgdir/usr/lib/$_pkgbase/etmain/
-    convert -background none  "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.svg -resize 64x64 -colors 256 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.png
 
+    for i in 16 22 24 32 48 64 128 256 512 1024; do
+        convert -background none  "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.svg -resize ${i}x${i} -colors 256 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.png
+        install -Dvm644 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.png \
+          "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/etl.png"
+    done
+
+    install -Dvm644 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.svg \
+          "$pkgdir/usr/share/icons/hicolor/scalable/apps/etl.svg"
+    
     # application entry
-    cp -dr --no-preserve='ownership' "${srcdir}"/"$_pkgbase-$pkgver"/misc/etl.png "${pkgdir}"/usr/share/icons/
     cp -dr --no-preserve='ownership' "${srcdir}"/"$_pkgbase-$pkgver"/misc/com.etlegacy.ETLegacy.desktop "${pkgdir}"/usr/share/applications/
 
     # doc

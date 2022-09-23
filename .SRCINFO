@@ -1,7 +1,7 @@
 pkgbase = etlegacy32-bin
 	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release
 	pkgver = 2.80.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.etlegacy.com/
 	install = etlegacy.install
 	arch = i686
