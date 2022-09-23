@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.2.r107981.g73fada029c
+pkgver=5.2.r108314.gec8be8a913
 pkgrel=1
 _svt_hevc_ver='b62f72e752243cee4104cfb41dc7ee409d3ac3e9'
 _svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
@@ -47,7 +47,7 @@ depends=(
     'libgme'
     'libiec61883'
     'libilbc'
-    'libjxl-git'
+    'libjxl'
     'libmodplug'
     'libmysofa'
     'libomxil-bellagio'
