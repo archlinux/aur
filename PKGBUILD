@@ -2,16 +2,16 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-maps-git
-pkgver=r1595.g396e95db
+pkgver=r1620.g9b4a5578
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
-url="https://ddnet.tw"
+url="https://ddnet.org"
 license=('custom')
-makedepends=('git')
-backup=('usr/share/ddnet/data/autoexec_server_maps.cfg'
-        'usr/share/ddnet/data/reset.cfg'
-        'usr/share/ddnet/data/storage.cfg')
+makedepends=(git)
+backup=(usr/share/ddnet/data/autoexec_server_maps.cfg
+        usr/share/ddnet/data/reset.cfg
+        usr/share/ddnet/data/storage.cfg)
 source=("git+https://github.com/ddnet/${pkgname%%-git}.git")
 md5sums=('SKIP')
 
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%%-git}
-
     # Remove exec permission from files
   find types/ -type f -exec chmod 644 {} \;
 }
@@ -38,19 +37,21 @@ package() {
   install -m644 reset.cfg           $_datadir
   install -m644 storage.cfg         $_datadir
 
-    # Disable test flag
+    # Unset test flag to disable cheats by default
   sed '/sv_test_cmds/s/1/0/' -i $_datadir/autoexec_server_maps.cfg
 
     # Set map type list, and fail if no map type is found
-  _typelist=$(ls -d types/* | sed 's|.*/||')
+  _typelist=$(find types/ -name '*.map' | cut -d/ -f2 | sort -u)
   [ -n "$_typelist" ]
 
+    # Install map types in the data directory used by DDNet Server,
+    # and symlink their maps in the maps directory used by DDNet Client
   for _type in $_typelist; do
     cp -a types/$_type $_datadir/types/
     ln -rs $_datadir/types/$_type/maps/* $_datadir/maps/
   done
 
-    # Avoid file conflicts of maps already provided in the DDNet package
+    # Remove conflicting maps already provided in the DDNet package
   rm -f "$_datadir/maps/Gold Mine.map" \
         "$_datadir/maps/LearnToPlay.map" \
         "$_datadir/maps/Sunny Side Up.map" \
