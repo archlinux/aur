@@ -1,7 +1,7 @@
 # Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
 # Contributor: Magnus Bjerke Vik <mbvett@gmail.com>
 pkgname=docker-credential-pass
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="program to use pass to keep Docker credentials safe"
 arch=(x86_64)
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('pass')
 makedepends=('go')
 _gourl="github.com/docker/docker-credential-helpers"
-source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/v$pkgver.tar.gz")
-sha512sums=('4e8c97c529e18e700aef77ba0ebfb1d432ca8f96bd0efddc0336e9fca5a5f8e98cb058dfaaee289dc4515dcf48d26d54df86120ce94648a8d87b291a14bae0d5')
+source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('99e7ad4eb5868b98ad27eb379d7bcd346850ec9f794bf1a218a217f19247f096e301bad2d320c99cad463049edef31086be3198ace98a9969e5aa956244513f2')
 noextract=("docker-credential-helpers-$pkgver.tar.gz")
 install=$pkgname.install
 
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd "$srcdir/src/$_gourl"
-  install -D -m 0755 bin/docker-credential-pass "$pkgdir/usr/bin/docker-credential-pass"
+  install -D -m 0755 bin/build/docker-credential-pass "$pkgdir/usr/bin/docker-credential-pass"
   install -D -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
