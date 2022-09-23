@@ -1,0 +1,14 @@
+pkgbase = fcsalyzer
+	pkgdesc = FCSalyzer is a free program for analysing flow cytometry data
+	pkgver = 0.9.22
+	pkgrel = 1
+	url = https://sourceforge.net/projects/fcsalyzer/
+	arch = any
+	license = GPLv3
+	makedepends = java-runtime
+	source = https://sourceforge.net/projects/fcsalyzer/files/Version%200.9.22-alpha/FCSalyzer%200.9.22-alpha.zip
+	source = FCSalyzer
+	sha512sums = 9f42990ddecd95bbb84605370a16e46e6bcae44738f3eaefa99a3ea28d56feffe4c80fe8d5da25df3faf49f9e5cf0b15aa428fba2380f870b660f09038e3e3e2
+	sha512sums = 543c0acfe6bc2b1b72896b615aa19b01279253a81becd011e061c336dec6cb245a7cdb762f281087b11550986caed6780aadf1eeb46daa535f2c7f2b61f16e85
+
+pkgname = fcsalyzer
