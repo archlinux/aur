@@ -4,15 +4,15 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.72.3
-pkgrel=3
+pkgver=2.74.0
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
 provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
            libgobject-2.0.so libgthread-2.0.so)
 conflicts=('glib2')
-depends=(pcre libffi util-linux-libs zlib tumbler libsysprof-capture libmount.so libffi.so)
+depends=(pcre2 libffi util-linux-libs zlib tumbler libsysprof-capture libmount.so libffi.so)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus)
 checkdepends=(desktop-file-utils)
@@ -21,14 +21,14 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'gvfs: most gio functionality')
 options=(!docs staticlibs)
 license=(LGPL)
-_commit=dce30492f6087a8e1e288f1706d41142b74ca1ff  # tags/2.72.3^0
+_commit=30bd57ecf8aa051de9848ba5a2b140f4810401ff  # tags/2.74.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
         glib-thumbnailer.patch
         glib-compile-schemas.hook
         glib-compile-schemas.hook gio-querymodules.{hook,script})
 sha256sums=('SKIP'
-            'f410289d8acf787cf0fc512efe5622d4bbd574c032e3ee0efd9cae2155b2c3dc'
+            '6d51eb5856268d79eee01b97a299fa9f99db18b2abb4df56f2ed9e641a09138a'
             '9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'

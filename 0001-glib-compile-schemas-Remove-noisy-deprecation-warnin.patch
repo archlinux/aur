@@ -8,10 +8,10 @@ Subject: [PATCH] glib-compile-schemas: Remove noisy deprecation warnings
  1 file changed, 13 deletions(-)
 
 diff --git a/gio/glib-compile-schemas.c b/gio/glib-compile-schemas.c
-index 83184e1e8d67..e575dad294e5 100644
+index 326658a88b35..f61d45b9a364 100644
 --- a/gio/glib-compile-schemas.c
 +++ b/gio/glib-compile-schemas.c
-@@ -1232,19 +1232,6 @@ parse_state_start_schema (ParseState  *state,
+@@ -1234,19 +1234,6 @@ parse_state_start_schema (ParseState  *state,
        return;
      }
  
