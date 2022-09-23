@@ -6,7 +6,14 @@ pkgbase = vegalinux64
 	arch = x86_64
 	license = Custom
 	depends = jre8-openjdk
+	depends = libmysqlclient
 	source = http://www.vegachess.com/download/vegalinux64.tar.gz
-	sha256sums = 6f9ba9ee0da41b412b2e3be18ae7b02710abe6672d38c5a56ae54ca466d78e5a
+	source = vegachess.desktop
+	source = vegateam.desktop
+	source = logo.png
+	sha256sums = 0e86c7dd3b71e112cef7684e7f13d0d1116fa022988cf32af84d03ea098d451e
+	sha256sums = 7ed253af097df983fc1ead3b77cd0ebb443696b32a0c50399d316f31e4b1c51b
+	sha256sums = e6b762f998a4cf88e7b52a4a7884c58c55cf0939e7077f1d038868a2706115fc
+	sha256sums = ac0385b28ad27877947913ae486d619f39c495d4e69369066e7e10755247bfc6
 
 pkgname = vegalinux64

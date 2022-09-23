@@ -3,6 +3,6 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/share/vegalinux64/Vega
+Exec=/usr/bin/Vega
 Name=Vega
 Icon=/usr/share/vegalinux64/logo.png

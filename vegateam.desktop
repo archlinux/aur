@@ -3,6 +3,6 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/share/vegalinux64/VegaTeam
+Exec=/usr/bin/VegaTeam
 Name=VegaTeam
 Icon=/usr/share/vegalinux64/logo.png
