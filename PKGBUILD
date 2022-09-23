@@ -2,14 +2,14 @@
 # Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba
-pkgver=202209161632_2afab8f106_release
+pkgver=202209221900_9dcfe8c658_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(x86_64)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop")
-sha256sums=("8edd8a0b1809b89bf7b07da3ad418ce73c86ac74717f5f7f5b558549ff385443"
+sha256sums=("3bec9d24cf0eafed46398d63410d0d02268907882bed08a5dfb62996cbbd55f7"
             "2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530")
 license=("LGPL2.1")
 depends=("java-runtime=17" "alsa-lib" "nss" "gtk3")
