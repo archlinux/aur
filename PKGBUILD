@@ -55,7 +55,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -380,7 +380,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   _nonfree_enabled=ON
   # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
   # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
-  # libjxl >= 0.7.0 is required by ffmpeg so switch to libjxl-git
   depends+=(
     sndio 'chromaprint-fftw' frei0r-plugins libgcrypt
     aribb24 libcaca 'celt' libcdio-paranoia codec2
@@ -390,7 +389,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
     'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo
-    lcms2 'libjxl-git'
+    lcms2 'libjxl>=0.7.0'
   )
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-frei0r --enable-gcrypt
