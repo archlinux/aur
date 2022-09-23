@@ -8,8 +8,8 @@ pkgbase = dwuck4
 	license = GPL3
 	makedepends = gcc5
 	source = git+https://github.com/padsley/DWUCK4.git
-	source = dwuck4_gcc5.conf
+	source = dwuck4
 	sha256sums = SKIP
-	sha256sums = 455a4f24f8130c8214985f99e9f633135c779bd76a649856bdfa8dd6d9f0a26f
+	sha256sums = ab5c76405d5b52d6dce9185e1144f7b4737c6063e1de26823ecc1106d94e3651
 
 pkgname = dwuck4

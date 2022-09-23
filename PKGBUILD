@@ -9,11 +9,11 @@ license=(GPL3)
 makedepends=(gcc5)
 source=(
     "git+https://github.com/padsley/DWUCK4.git"
-    dwuck4_gcc5.conf
+    dwuck4
 )
 sha256sums=(
     SKIP
-    '455a4f24f8130c8214985f99e9f633135c779bd76a649856bdfa8dd6d9f0a26f'
+    'ab5c76405d5b52d6dce9185e1144f7b4737c6063e1de26823ecc1106d94e3651'
 )
 
 #pkgver() {
@@ -38,12 +38,12 @@ build() {
 
 package() {
     cd "$srcdir/DWUCK4"
-    install -Dm755 DWUCK4.exe  "$pkgdir/usr/bin/dwuck4"
-    install -Dm755 DWUCK4.exe "$pkgdir/usr/bin/DWUCK4"
+    install -Dm755 DWUCK4.exe  "$pkgdir/usr/bin/DWUCK4.exe"
     install -Dm544 dw4_doc.pdf "$pkgdir/usr/share/dwuck4/dw4_doc.pdf"
     install -Dm644 DW4TST.LIS "$pkgdir/usr/share/dwuck4/DW4TST.LIS"
     install -Dm644 DW4TST.DAT "$pkgdir/usr/share/dwuck4/DW4TST.DAT"
 
     cd "$srcdir"
-    install -Dm644 dwuck4_gcc5.conf "$pkgdir/etc/ld.so.conf.d/dwuck4_gcc5.conf"
+    install -Dm755 dwuck4 "$pkgdir/usr/bin/dwuck4"
+    install -Dm755 dwuck4 "$pkgdir/usr/bin/DWUCK4"
 }
