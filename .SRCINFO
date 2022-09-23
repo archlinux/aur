@@ -1,0 +1,16 @@
+pkgbase = goosemod-installer
+	pkgdesc = A simple script to install GooseMod (A Discord Mod)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://goosemod.com/
+	arch = any
+	license = GPL
+	depends = python
+	optdepends = discord
+	optdepends = discord-ptb
+	optdepends = discord-canary
+	optdepends = discord-development
+	source = goosemod-installer
+	sha256sums = 45636f8fa18deae6847497d8a88d70afbcd70cae38d4c325454d98457960a712
+
+pkgname = goosemod-installer
