@@ -1,6 +1,6 @@
 pkgbase = docker-credential-pass-git
 	pkgdesc = Store docker credentials using the Standard Unix Password Manager (pass)
-	pkgver = 0.6.1.r5.123ba1b
+	pkgver = 0.7.0.r0.ac5992b
 	pkgrel = 1
 	url = https://github.com/docker/docker-credential-helpers
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = docker-credential-pass-git
 	md5sums = SKIP
 
 pkgname = docker-credential-pass-git
-

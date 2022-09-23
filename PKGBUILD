@@ -1,6 +1,6 @@
 # Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
 pkgname=docker-credential-pass-git
-pkgver=0.6.1.r5.123ba1b
+pkgver=0.7.0.r0.ac5992b
 pkgrel=1
 pkgdesc="Store docker credentials using the Standard Unix Password Manager (pass)"
 arch=('x86_64')
@@ -37,6 +37,6 @@ build() {
 
 package() {
   cd "${srcdir}/src/${_gourl}"
-  install -D -m 0755 bin/docker-credential-pass "${pkgdir}/usr/bin/docker-credential-pass"
+  install -D -m 0755 bin/build/docker-credential-pass "${pkgdir}/usr/bin/docker-credential-pass"
   install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
