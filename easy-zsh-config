@@ -3,10 +3,10 @@ if [ $# -gt 0 ]; then
   if [[ -r "${1}" ]]; then
     _POSH_THEME="${1}"
   else
-    _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+    _POSH_THEME="/usr/share/oh-my-posh/themes/atomic.omp.json"
   fi
 else
-  _POSH_THEME="/usr/share/oh-my-posh/themes/jandedobbeleer.omp.json"
+  _POSH_THEME="/usr/share/oh-my-posh/themes/atomic.omp.json"
 fi
 
 ## Apply the theme file
