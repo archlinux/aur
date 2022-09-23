@@ -1,6 +1,6 @@
 pkgbase = muposys
 	pkgdesc = Multi-Porpuse Software System
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/azaeldevel/muposys.git
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = muposys
 	depends = octetos-db-abstract
 	depends = cgicc
 	depends = sqlite3
-	source = https://github.com/azaeldevel/muposys/archive/0.26.0-alpha.tar.gz
-	md5sums = e9b7bf57b5f7a6116af7174c6bf8c189
+	source = https://github.com/azaeldevel/muposys/archive/0.27.0-alpha.tar.gz
+	md5sums = 45a56fc00f5991d059cabceb42689ecd
 
 pkgname = muposys

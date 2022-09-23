@@ -2,7 +2,7 @@
 
 
 pkgname=muposys
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 phase=alpha
 
@@ -18,14 +18,14 @@ license=('GPL')
 url="https://github.com/azaeldevel/muposys.git"
 depends=('octetos-core' 'octetos-db-abstract' 'cgicc' 'sqlite3')
 #backup=('etc/nanorc')
-md5sums=('e9b7bf57b5f7a6116af7174c6bf8c189')
+md5sums=('45a56fc00f5991d059cabceb42689ecd')
 source=(https://github.com/azaeldevel/$pkgname/archive/$pkgver-$phase.tar.gz)
 
 build() 
 {
     cd $pkgname-$pkgver-$phase
     autoreconf -fi
-    ./configure --disable-shared --enable-static --prefix=/$prefix --bindir=/$bindir --datarootdir=/$datarootdir --libdir=/$libdir --includedir=/$includedir --enable-os=archlinux --with-mediumword --with-mariadb
+    ./configure --prefix=/$prefix --bindir=/$bindir --datarootdir=/$datarootdir --libdir=/$libdir --includedir=/$includedir  --disable-shared --enable-static --enable-os=archlinux --with-tests --enable-database=maria
     make
 }
 
@@ -41,6 +41,7 @@ package()
 	chmod a+w -R $pkgdir/$bindir/css
 	chmod a+w -R $pkgdir/$bindir/js
 	chmod a+w -R $pkgdir/$bindir/user-mang
+	chown http:http $pkgdir/$datarootdir
 	chown http:http $pkgdir/$datarootdir/http
 	chown http:http $pkgdir/$bindir/*.html
 	chown http:http -R $pkgdir/$bindir/css
