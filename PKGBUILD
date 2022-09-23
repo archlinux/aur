@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=autobrr
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='The modern download automation tool for torrents'
 arch=('x86_64')
@@ -12,6 +12,7 @@ makedepends=('git' 'go' 'yarn')
 optdepends=(
   'postgresql'
   'qbittorrent'
+  'rtorrent'
   'transmission-cli'
   'deluge'
   'radarr'
@@ -19,7 +20,7 @@ optdepends=(
   'lidarr'
 )
 options=('!lto')
-_commit='ae4b288969027590e4bb1555bd82e82b006be7e2'
+_commit='34d2449751c5a42c82639ed85488bb273e25082e'
 source=(
   "$pkgname::git+https://github.com/autobrr/autobrr#commit=$_commit"
   'systemd.service'
