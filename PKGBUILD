@@ -3,7 +3,7 @@
 
 _crate="cargo-doc2readme"
 pkgname="cargo-doc2readme"
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from...'
 url='https://crates.io/crates/cargo-doc2readme'
@@ -13,21 +13,21 @@ depends=('gcc-libs' 'curl' 'libgit2.so=1.5')
 makedepends=('cargo' 'libgit2')
 
 source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-doc2readme/$pkgver/download"
-		"https://github.com/rust-lang/cargo/archive/refs/heads/rust-1.63.0.zip"
+		"https://github.com/rust-lang/cargo/archive/refs/heads/rust-1.64.0.zip"
 		"https://github.com/rust-lang/cargo/pull/11004.patch"
 		"fix-libgit2-1.5-compat.patch")
-sha512sums=('081026c6dbb3cf5314da4b4e423a26b162a89a39186e606b0efa4c346b003ee5b82aac2928e184ab5017d53d3908f12ef0d0b48db974a4b655096d7ca9f4f2ac'
-            'a786581377075ae921a4331e8f70c93242d6aef89ae5da29a69fc7f8597e9bc34682d48bd01ba8186fb509128a95706d9ccd4e75f85c15539dd6ff54b871a0fe'
+sha512sums=('9f9516aee6287c58a42dab3e3047976fa6a3e2d240ce07b126697f801cb93a5eafb33dd66955ff7a79e2d9357c45ab772468fc4665d05328681ee6a9c08f41be'
+            'b3de32f0b0e82230d5feb0d1eae35f1b1c7a11bd6e2d9c2d659a0715690c5e98ce02a51a4a1d78d8ed17df8f6a3fd8416eb380d7ab1628820fc521c663bfe68f'
             'ed4b148bbbdc26059278d9170d377f36b4847d3c253fa4e3549354de8e17bb2849a6541048a9438f1880f003c8debea9766737773c856c9acec31b90fb60553f'
-            '19b531890bf9c9762886a4344783305d8821370f92c36c56ccece503fc1089d309ee1225061aeeeac196cf5ed0b1e3f60730a4690134b8bcee1685affa10e942')
+            '547046415d7a97ef55a0d5cd9b740af2b5943a5f56feb999cb3d863970b76a934b269b018829a0594d368265c65edda7d9373e2df029435e87204d4214383160')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/cargo-rust-1.63.0"
+	cd "$srcdir/cargo-rust-1.64.0"
 	patch -N -p1 -i "$srcdir/11004.patch"
-	
+
 	cd "$srcdir/$_crate-$pkgver"
 	patch -N -p1 -i "$srcdir/fix-libgit2-1.5-compat.patch"
 	cargo fetch --locked
