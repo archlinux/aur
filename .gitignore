@@ -1,4 +1,4 @@
 /*.pkg.tar.zst
-/man.tar.xz
+/netbsd-manpages-*.tar.xz
 /pkg
 /src

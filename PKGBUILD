@@ -9,7 +9,7 @@ arch=('any')
 options=('!strip')
 url='https://man.netbsd.org/'
 license=('BSD')
-source=("https://cdn.netbsd.org/pub/NetBSD/NetBSD-$pkgver/amd64/binary/sets/man.tar.xz"
+source=("$pkgname-$pkgver.tar.xz::https://cdn.netbsd.org/pub/NetBSD/NetBSD-$pkgver/amd64/binary/sets/man.tar.xz"
         'manfmt')
 sha256sums=('24ec10b7e966e78a10961808f0ec8f41b29883289bfb89c7a75ae74209e46683'
             '4b8b668c7e7b44ea06299a468169f337a346ecd77804cca24bc0bcefaf976963')
