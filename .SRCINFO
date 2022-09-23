@@ -1,16 +1,13 @@
 pkgbase = ttf-xo-thames
 	pkgdesc = XO Thames font created considering trends of modern typography from «Новые облачные технологии»
-	pkgver = 1.00
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://fonts.myoffice.ru
 	install = ttf-xo-thames.install
 	arch = any
 	groups = ttf-xo-fonts
 	license = custom: XO FONTS Open License
-	makedepends = glibc
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = XO_Thames-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Thames.zip
+	source = XO_Thames-1.01.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Thames.zip
 	sha256sums = c9aab93b638d220eb537fba45a81b77067b92bed0ab1f58d497aef9ee926d725
 
 pkgname = ttf-xo-thames
