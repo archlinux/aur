@@ -2,7 +2,7 @@
 
 _name=polars
 pkgname=python-${_name}-bin
-pkgver=0.14.12
+pkgver=0.14.13
 pkgrel=1
 pkgdesc="Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model"
 arch=("x86_64")
@@ -16,9 +16,9 @@ optdepends=('python-pandas: for interoperability with pandas frames'
             'python-pytz: to enable conversion to python datetimes with timezones'
             'python-fsspec: to transparently open files locally or remotely')
 makedepends=('python-installer')
-source=("https://files.pythonhosted.org/packages/d8/e9/1e6b4e2808de127d6f40c96245565057db81676f27680c5222d919a1a603/polars-0.14.12-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" "https://raw.githubusercontent.com/pola-rs/polars/master/LICENSE")
-noextract=("polars-0.14.12-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
-b2sums=("546799875f329b32660ca837b110fdf0f15875c26c16ea26ecb0f16ae737284354a044336aae5fd0ff3debb090d83a570566f244ffdd26d7f0bb2ce1546232d9" "f6a50e749403e3b9b114db61efe141304953674ca8f202a8848c8df4321a18ecebc34529a4bb319eb1e9092763f7073f52d05635b5ed90e7839e5eb987bd2161")
+source=("https://files.pythonhosted.org/packages/42/7b/024438112607af0ba30c07e474fae2379c6cb7cf7eaed8adfeae09a007b8/polars-0.14.13-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" "https://raw.githubusercontent.com/pola-rs/polars/master/LICENSE")
+noextract=("polars-0.14.13-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+b2sums=("101a198b68e17b620e7e2655add98c1e50aa811876d761d654b5ce86fe16776651e9593768372655de55dcf103ff0562afdbdc482e7798c9c00839dba231d9dd" "f6a50e749403e3b9b114db61efe141304953674ca8f202a8848c8df4321a18ecebc34529a4bb319eb1e9092763f7073f52d05635b5ed90e7839e5eb987bd2161")
 
 package() {
     python -m installer -d "$pkgdir" $_name-$pkgver-*.whl
