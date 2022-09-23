@@ -1,6 +1,6 @@
 pkgbase = humnumsort
 	pkgdesc = A more human-friendly alternative to GNU Sort, written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ctrlcctrlv/humnumsort
 	arch = x86_64
