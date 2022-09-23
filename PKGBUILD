@@ -7,6 +7,12 @@ arch=('x86_64')
 url="https://kitten.codemao.cn/"
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib')
+optdepends=(
+	'pulseaudio: PulseAudio sound server for codemao-kitten3-uos.'
+	'alsa-lib: Shared library for ALSA applications.'
+	'libgnome-keyring: GNOME keyring services library.'
+	'lsb-release: Linux Standard Base version reporting utility.'
+)
 source=(
 	"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.codemao.kitten3/cn.codemao.kitten3_${pkgver}_amd64.deb"
 )

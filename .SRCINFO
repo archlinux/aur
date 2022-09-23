@@ -8,6 +8,10 @@ pkgbase = codemao-kitten3-uos
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
+	optdepends = pulseaudio: PulseAudio sound server for codemao-kitten3-uos.
+	optdepends = alsa-lib: Shared library for ALSA applications.
+	optdepends = libgnome-keyring: GNOME keyring services library.
+	optdepends = lsb-release: Linux Standard Base version reporting utility.
 	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/cn.codemao.kitten3/cn.codemao.kitten3_3.7.14_amd64.deb
 	sha512sums = f0da043950a495af69fbd22a58bbe672fa9d9d94a4bc6be6d8e38410ef14691b42c07077f0df05b6b5172f8e06537993c43ade7854bf3a16c633bd2b9fd60d00
 
