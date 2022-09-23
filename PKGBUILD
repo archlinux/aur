@@ -2,8 +2,8 @@
 # Contributor: Alireza Ayinmehr <alireza.darksun@gmail.com>
 # Contributor: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="program to use secretservice to keep Docker credentials safe"
 arch=(x86_64 i686 aarch64)
 url="https://github.com/docker/docker-credential-helpers"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libsecret')
 makedepends=('go')
 source=("docker-credential-helpers-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha512sums=('4e8c97c529e18e700aef77ba0ebfb1d432ca8f96bd0efddc0336e9fca5a5f8e98cb058dfaaee289dc4515dcf48d26d54df86120ce94648a8d87b291a14bae0d5')
+b2sums=('3719d8b84fa886e1220db22a5717a43757275cbeba5575879347b782543d2c0eeac915a28bcb3552d02161bee4d34e39fe44d1959c7a0f908289f33da7173dce')
 install=$pkgname.install
 
 build() {
@@ -22,12 +22,14 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-v -buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GOPATH="$srcdir"
-  GOPATH="$srcdir" make secretservice
+  # Makefile sets VERSION and REVISION using git commands which don't work when building from
+  # a tarball, override to use pkgver instead
+  GOPATH="$srcdir" make secretservice VERSION="$pkgver" REVISION=""
 }
 
 package() {
   cd "$srcdir/docker-credential-helpers-${pkgver}"
-  install -D -m 0755 bin/docker-credential-secretservice "$pkgdir/usr/bin/docker-credential-secretservice"
+  install -D -m 0755 bin/build/docker-credential-secretservice "$pkgdir/usr/bin/docker-credential-secretservice"
   install -D -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
