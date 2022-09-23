@@ -1,7 +1,7 @@
 # Maintainer: DrakeTDL <everyone@disroot.org>
 
 pkgname=goosemod-installer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple script to install GooseMod (A Discord Mod)"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=(python)
 optdepends=(discord discord-ptb discord-canary discord-development)
 source=("${pkgname}")
-sha256sums=('45636f8fa18deae6847497d8a88d70afbcd70cae38d4c325454d98457960a712')
+sha256sums=('ebe7c7b68347125a65f6bd54a2bc55a963876d397c0bd67347bbdd3990aa6476')
 
 package() {
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"

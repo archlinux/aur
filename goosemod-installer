@@ -9,22 +9,30 @@ sys.argv.pop(0)
 homeConfig = os.environ["XDG_CONFIG_HOME"] or f'{os.environ["HOME"]}/.config'
 
 
-def readAndWriteJson(channel):
-    with open(
-        f"{homeConfig}/discord{channel if channel != 'stable' else ''}/settings.json",
-        "r+",
-    ) as contents:
-        settings = json.load(contents)
-        settings["UPDATE_ENDPOINT"] = "https://updates.goosemod.com/goosemod"
-        settings["NEW_UPDATE_ENDPOINT"] = "https://updates.goosemod.com/goosemod/"
-        contents.seek(0)
-        json.dump(settings, contents, indent=2)
+def readAndWriteJson(channel, state):
+    config = (
+        f"{homeConfig}/discord{channel if channel != 'stable' else ''}/settings.json"
+    )
+
+    if state == "install":
+        with open(
+            config,
+            "r+",
+        ) as contents:
+            settings = json.load(contents)
+            settings["UPDATE_ENDPOINT"] = "https://updates.goosemod.com/goosemod"
+            settings["NEW_UPDATE_ENDPOINT"] = "https://updates.goosemod.com/goosemod/"
+            contents.seek(0)
+            json.dump(settings, contents, indent=2)
+    if state == "uninstall":
+        os.remove(config)
 
 
 help = """Help Screen - A simple script to install GooseMod (A Discord Mod)
 usage: goosemod_installer [options]
-  -h --help\t\t\t\t\tShows this help screen.
-  -c --channel <stable|ptb|canary|development>\tDiscord version channel you want to mod."""
+  -h --help\t\t\t\t\t  Shows this help screen.
+  -c --channel <stable|ptb|canary|development>\t  Discord version channel you want to mod.
+  -u --uninstall <stable|ptb|canary|development>  Removes the mod from Discord Channel"""
 
 if len(sys.argv) == 0:
     print(help)
@@ -35,6 +43,7 @@ for arg in sys.argv:
         case "-h" | "--help":
             print(help)
             exit(1)
+
         case "-c" | "--channel":
             sys.argv.pop(0)
             if not sys.argv[0] in [
@@ -45,5 +54,20 @@ for arg in sys.argv:
             ]:
                 print("Unknown Discord channel\ncheck help")
                 exit(2)
-            print("installed GooseMod to Discord channel:", sys.argv[0])
-            readAndWriteJson(sys.argv[0])
+            print("installing GooseMod to Discord channel:", sys.argv[0], "...")
+            readAndWriteJson(sys.argv[0], "install")
+            print("Fully restart Discord to start using GooseMod")
+
+        case "-u" | "--uninstall":
+            sys.argv.pop(0)
+            if not sys.argv[0] in [
+                "stable",
+                "ptb",
+                "canary",
+                "development",
+            ]:
+                print("Unknown Discord channel\ncheck help")
+                exit(2)
+            print("Uninstalling GooseMod from Discord channel:", sys.argv[0], "...")
+            readAndWriteJson(sys.argv[0], "uninstall")
+            print("Fully restart Discord")
