@@ -28,7 +28,6 @@ makedepends=('git'
              'xa'
 	     'desktop-file-utils')
 
-makedepends=('desktop-file-utils' 'git' 'xa')
 source=("git+https://github.com/mywave82/opencubicplayer.git")
 md5sums=('SKIP')
 
