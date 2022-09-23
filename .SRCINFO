@@ -7,12 +7,10 @@ pkgbase = ttf-xo-windy
 	arch = any
 	groups = ttf-xo-fonts
 	license = custom: XO FONTS Open License
-	makedepends = dos2unix
 	makedepends = glibc
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = XO_Windy-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Windy.zip
-	sha256sums = 91a59761849594ef392adb280012372e24d216bf8cfc4af2787d9cb47937bd47
+	sha256sums = 11a712f7b30f98e3fd40cc8bfedf4b602f52ad75d7e239b67f389e4b6882c299
 
 pkgname = ttf-xo-windy
-
