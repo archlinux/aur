@@ -4,7 +4,7 @@ _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=4.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-sphinx' 'python-sphinx_rtd_theme')
@@ -57,7 +57,7 @@ package_python-uproot-docs() {
     cd "${srcdir}/${_pkgname}5-${pkgver}"
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D README.md "${pkgdir}/usr/share/${pkgname}/README.md"
+    install -D README.md "${pkgdir}/usr/share/${pkgbase}/README.md"
 
     install -d "${pkgdir}/usr/share/doc/${pkgbase}"
     PYTHONPATH="${PWD}/build/lib" sphinx-build "${PWD}/docs-sphinx" "${pkgdir}/usr/share/doc/${pkgbase}"
