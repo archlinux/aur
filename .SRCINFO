@@ -1,6 +1,6 @@
 pkgbase = mindmaster_cn
 	pkgdesc = 多功能，高颜值，易使用的专业思维导图软件
-	pkgver = 9.0.4
+	pkgver = 10.0.3
 	pkgrel = 1
 	url = https://www.edrawsoft.cn/mindmaster/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mindmaster_cn
 	conflicts = mindmaster-cn
 	conflicts = mindmaster_en
 	replaces = mindmaster-cn
-	noextract = mindmaster_9.0.4_cn.x86_64.deb
+	noextract = mindmaster_10.0.3_cn.x86_64.deb
 	options = !strip
-	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/mindmaster_9.0.4_cn.x86_64.deb
-	sha256sums_x86_64 = 47a9ad72b6ffdd1ec3d9147e1fbde7de095c5d00ba9db52abd4daae86acf8f98
+	source_x86_64 = https://www.edrawsoft.cn/2download/x86_64/mindmaster_10.0.3_cn.x86_64.deb
+	sha256sums_x86_64 = ff5fb31a0dea8dc65e29cceedccfa31524c53031fe5d142e0d9fef5c847249dc
 
 pkgname = mindmaster_cn

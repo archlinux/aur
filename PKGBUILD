@@ -3,9 +3,9 @@
 # mindmaster 中文版
 
 pkgname=mindmaster_cn
-_pkgname=MindMaster-9
+_pkgname=MindMaster-10
 _softname=mindmaster
-pkgver=9.0.4
+pkgver=10.0.3
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -15,7 +15,7 @@ pkgdesc="多功能，高颜值，易使用的专业思维导图软件"
 license=('Commercial')
 url="https://www.edrawsoft.cn/mindmaster/"
 source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/${_softname}_${pkgver}_cn.${arch}.deb")
-sha256sums_x86_64=('47a9ad72b6ffdd1ec3d9147e1fbde7de095c5d00ba9db52abd4daae86acf8f98')
+sha256sums_x86_64=('ff5fb31a0dea8dc65e29cceedccfa31524c53031fe5d142e0d9fef5c847249dc')
 noextract=("${_softname}_${pkgver}_cn.${arch}.deb")
 
 prepare() {
@@ -27,11 +27,6 @@ prepare() {
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
     bsdtar -xf "${srcdir}/${pkgname}/data.tar.xz" --numeric-owner -C "${pkgdir}"
-
-    install -dm0755  "${pkgdir}/usr/share/pixmaps/" \
-                    "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/" \
-                    "${pkgdir}/usr/share/mime/packages/" \
-                    "${pkgdir}/usr/share/applications/"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${_softname}" << EOF
 #!/bin/sh
@@ -68,10 +63,7 @@ Comment[zh_CN]=思维导图软件
 Comment[zh_TW]=心智圖軟件
 
 EOF
-    ln -sf "/opt/${_pkgname}/${_softname}.desktop" "${pkgdir}/usr/share/applications/${_softname}.desktop"
-    ln -sf "/opt/${_pkgname}/${_softname}.png" "${pkgdir}/usr/share/pixmaps/${_softname}.png"
-    ln -sf "/opt/${_pkgname}/emmx.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/emmx.svg"
-    ln -sf "/opt/${_pkgname}/${_softname}.xml" "${pkgdir}/usr/share/mime/packages/${_softname}.xml"
+#     ln -sf "/opt/${_pkgname}/${_softname}.desktop" "${pkgdir}/usr/share/applications/${_softname}.desktop"
 }
 
 
