@@ -3,7 +3,7 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.1.6
-pkgrel=1
+pkgrel=2
 _dataver=1012
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=('desktop-file-utils'
 optdepends=('flashplayer-standalone: native Flash support')
 conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
 source=("flashpoint-data.7z::https://bluepload.unstable.life/selif/flashpoint-${_dataver}-linux-x64.7z"
-    "flashpint.deb::https://github.com/FlashpointProject/launcher/releases/download/${pkgver}/Flashpoint-${pkgver}_linux-amd64.deb")
+    "flashpoint.deb::https://github.com/FlashpointProject/launcher/releases/download/${pkgver}/Flashpoint-${pkgver}_linux-amd64.deb")
 noextract=("flashpoint-data.7z")
 backup=('opt/Flashpoint/config.json')
 sha512sums=('0b521337d40169ab502f433a107d9b7b7ca73512fb99b27ca547240a251f75e931ca8a6b4450b0dec610b14cb1d1ae1fc9599bb82e757d6cfa79cd76bf5fabe8'
