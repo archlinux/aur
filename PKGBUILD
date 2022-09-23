@@ -2,8 +2,8 @@
 
 pkgname=python-pyspellchecker
 _pkgname=pyspellchecker
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=0
 pkgdesc="Pure python spell checker based on work by Peter Norvig"
 arch=('any')
 url="https://github.com/barrust/pyspellchecker"
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/barrust/pyspellchecker/archive/v${pkgver}.tar.gz
 )
-sha256sums=('d3a4314c5f19b2fc3d7b7bc248df75a5343a3604d857e6eeaf318fe1847e8c6e')
+sha256sums=('878421257deccfb5f6f7f1902c4ab2ac0a1bb81da8ed1c116af3a4fbac2df2a2')
 
 build() {
     cd "${_pkgname}-${pkgver}"
