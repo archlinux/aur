@@ -1,6 +1,5 @@
 pkg
 src
-*.pkg.tar.xz
+*.tar.*
 *.log
-transmisson-remote-gui
-transgui
+*-git

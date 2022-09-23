@@ -1,10 +1,10 @@
-# Maintainer : Matt Parnell/ilikenwf <parwok@gmail.com>
-# Contributor : Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Contributor: Matt Parnell/ilikenwf <parwok@gmail.com>
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: Paul N. Maxwell <msg.maxwel@gmail.com>
 
-pkgname=transgui-gtk2-git
 _pkgname=transgui
-pkgver=5.16.0.r8.g2b36a4c
+pkgname=transgui-gtk2-git
+pkgver=5.18.0.r31.g1c81df7
 pkgrel=1
 epoch=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
@@ -15,27 +15,27 @@ depends=(gtk2)
 makedepends=(git lazarus)
 provides=(transmission-remote-gui transmission-remote-gui-gtk2)
 conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui transmission-remote-gui-gtk2 transgui-gtk transgui-qt)
-source=('git://github.com/transmission-remote-gui/transgui.git'
+source=("$pkgname"::'git+https://github.com/transmission-remote-gui/transgui.git'
         ${_pkgname}.desktop)
 md5sums=('SKIP'
          'c0504cb6d4e970892ac7be9206c787b5')
 _ws=gtk2
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-  mkdir "${srcdir}/config"
-  cd "${srcdir}/${_pkgname}"
+  mkdir -p "${srcdir}/config"
+  cd "${srcdir}/${pkgname}"
 
   lazbuild "${_pkgname}.lpi" --lazarusdir=/usr/lib/lazarus --widgetset=${_ws} \
     --primary-config-path="${srcdir}/config"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
 
   install -D -m 755 "units/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
