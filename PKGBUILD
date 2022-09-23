@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=gitoxide
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A command-line application for interacting with git repositories"
 url="https://github.com/Byron/gitoxide"
@@ -11,9 +11,9 @@ depends_x86_64=('gcc-libs')
 depends_i686=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Byron/gitoxide/archive/refs/tags/v$pkgver.tar.gz")
-cksums=('3796950596')
-sha256sums=('0d780f0ec2d01f64cb24be0f82ceb959d96575adb3c6027003f491a0788c6ebb')
-b2sums=('aa948e5d4f64379796a6619c30d7816249b545fe9eb88012f456de74f809b21e8c7d73d7639290b51c136e750868d7e869aacad1f95d8d39cb236b9257c95a46')
+cksums=('611980456')
+sha256sums=('f366897f3b8952b538694f76a814c687f6b9b1fa57b549a3d4b64eba3ae88c57')
+b2sums=('8f4222aac513425b5f92d7497112acfa1d4fb8c2c75260563606c2cada44e4960fe6e31a1acd9d72a3e8ceca58105de217e1d3ed52457a72d6fb7831738934c4')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
