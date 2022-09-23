@@ -3,14 +3,18 @@
 
 _pkgbdir=opencubicplayer
 pkgname=ocp-git
-pkgver=0.2.99.r43.1f55a2e
+pkgver=0.2.99.r66.68249a1
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
 license=('GPL')
+install=ocp.install
 
-depends=('libxxf86vm' 
+conflicts=('ocp')
+
+depends=('hicolor-icon-theme'
+	 'libxxf86vm' 
 	 'libxpm' 
 	 'alsa-lib' 
 	 'sdl2'
