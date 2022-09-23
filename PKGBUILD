@@ -1,63 +1,55 @@
-# Maintainer: Ossi Saukko <osaukko at gmail dot com>
-_name=ocp
+# Maintainer: Xavier (sapphirus at azorium dot net)
+# Original Maintainer: Ossi Saukko <osaukko at gmail dot com>
+
+_pkgbdir=opencubicplayer
 pkgname=ocp-git
-pkgver=0.2.90.r516.980c461
+pkgver=0.2.99.r43.1f55a2e
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://stian.cubic.org/project-ocp.php"
+url="https://stian.cubic.org/project-ocp.php"
 license=('GPL')
-depends=('hicolor-icon-theme'
-         'libxpm'
-         'libxxf86vm'
-         'ttf-unifont')
-optdepends=('adplug: for OPL formats support'
-            'alsa-lib: for ALSA output'
-            'flac: for FLAC audio support'
-            'libmad: for MPEG audio support'
-            'libvorbis: for Vorbis audio support'
-            'sdl: for SDL user interface support'
-            'sdl2: for SDL2 user interface support')
-makedepends=('git'
-             'xa')
-provides=("${_name}=${pkgver}")
-conflicts=("${_name}")
-install=$pkgname.install
-source=("${_name}::git://github.com/mywave82/opencubicplayer.git"
-        "unifont.patch")
-md5sums=('SKIP'
-         'ce9883e1daacd9624c65be1bcdbb9124')
 
-prepare() {
-    cd "${srcdir}/${_name}"
-    # The ttf-unifont package changes the file names. This patch changes the OCP source code to use the same names.
-    patch --forward --strip=2 --input="${srcdir}/unifont.patch"
-}
+depends=('libxxf86vm' 
+	 'libxpm' 
+	 'alsa-lib' 
+	 'sdl2'
+	 'flac'
+	 'libvorbis'
+	 'libmad'
+	 'libjpeg-turbo' 
+	 'libpng' 
+	 'freetype2' 
+	 'ttf-unifont' 
+	 'libdiscid' 
+	 'cjson')
+
+makedepends=('git'
+             'xa'
+	     'desktop-file-utils')
+
+makedepends=('desktop-file-utils' 'git' 'xa')
+source=("git+https://github.com/mywave82/opencubicplayer.git")
+md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_name}"
-    printf "%s.r%s.%s" "$(grep \^AC_INIT configure.ac|cut -d, -f2|xargs)" \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    	cd $_pkgbdir
+	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+}
+
+prepare() {
+        cd $_pkgbdir
+	git submodule init
+	git submodule update --init --recursive
 }
 
 build() {
-    cd "${srcdir}/${_name}"
-    git submodule init
-    git submodule update
-
-    # If both SDL and SDL2 are installed, then disable SDL.
-    # Otherwise there are functions with similar names and linking fails.
-    CONFIG="--prefix=/usr --sysconfdir=/etc --with-timidity-default-path=/etc/timidity++/ --with-unifontdir=/usr/share/fonts/Unifont"
-    if [ -f /usr/include/SDL/SDL.h ] && [ -f /usr/include/SDL2/SDL.h ]
-    then
-        CONFIG="${CONFIG} --without-sdl"
-    fi
-
-    ./configure ${CONFIG}
-    make
+  	cd $_pkgbdir	
+	./configure --prefix=/usr --sysconfdir=/etc --with-unifontdir=/usr/share/fonts/Unifont --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf		
+	make DESTDIR="$pkgdir"
 }
 
 package() {
-    cd "${srcdir}/${_name}"
-    make DESTDIR="${pkgdir}" install
+	cd $_pkgbdir
+	make DESTDIR="$pkgdir" install
 }
