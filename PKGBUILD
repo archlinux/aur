@@ -2,6 +2,7 @@
 pkgname=foundry-nuke
 pkgver=13.2v3
 pkgrel=1
+pkgdesc="Nuke is a node-based digital compositing and visual effects application"
 arch=('any')
 provides=('nuke')
 url="https://www.foundry.com/products/nuke"
