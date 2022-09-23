@@ -32,8 +32,14 @@ makedepends=(
 	wayland-protocols
 )
 _tag=4122630266abfd6623e169330da6e7d6bc01be7f # git rev-parse v${pkgver}
-source=("git+${url}.git#tag=${_tag}")
-sha256sums=('SKIP')
+source=(
+	"git+${url}.git#tag=${_tag}"
+	"pam_phosh"
+)
+sha256sums=(
+	'SKIP'
+	'b7793f80c533e84ad8adfe8bb46c69f107575e724aa9b53b41f370baa37e4fd5'
+)
 
 pkgver() {
 	cd phosh
@@ -55,4 +61,7 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" meson install -C _build
+
+		install -Dm644 "$srcdir"/pam_phosh \
+			"$pkgdir"/etc/pam.d/phosh
 }
