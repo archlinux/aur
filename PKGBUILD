@@ -2,14 +2,14 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.6.1.r809.ga4ad91a2
+pkgver=0.7.0.r51.g2ee9886a
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'gperftools' 'highway-git' 'libjpeg-turbo' 'libpng' 'openexr'
+             'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr'
              'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
              'graphviz' 'xdg-utils')
 source=('git+https://github.com/libjxl/libjxl.git'
@@ -47,7 +47,7 @@ prepare() {
 
 pkgver() {
     local _tag
-    _tag="$(git -C libjxl tag --list --sort='-v:refname' 'v[[:digit:]]*' | sed 's/^v//;/-base/d' | head -n1)"
+    _tag="$(git -C libjxl tag --list --sort='-v:refname' 'v[[:digit:]]*' | sed 's/^v//;/[[:alpha:]]/d' | head -n1)"
     printf "${_tag}.r%s.g%s" "$(git -C libjxl rev-list --count "v${_tag}..HEAD")" \
                              "$(git -C libjxl rev-parse --short HEAD)"
 }
@@ -77,8 +77,7 @@ check() {
 }
 
 package_libjxl-git() {
-    depends=('brotli' 'giflib' 'gperftools' 'highway-git' 'libjpeg-turbo'
-             'libpng' 'openexr')
+    depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'gimp: for gimp plugin'
                 'java-runtime: for JNI bindings')
