@@ -35,7 +35,5 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-
-	install -Dm755 "$srcdir/$pkgname/$pkgname" $pkgdir
+	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname/$pkgname"
 }
