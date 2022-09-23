@@ -1,14 +1,14 @@
 pkgbase = wl-gammarelay-rs
 	pkgdesc = Like wl-gammarelay, but written in rust, runs on a single thread, has three times less SLOC and uses DBus (for simplicity)
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/MaxVerevkin/wl-gammarelay-rs
 	arch = any
 	license = GPL3
 	makedepends = cargo
-	source = wl-gammarelay-rs-0.2.2.tar.gz::https://github.com/MaxVerevkin/wl-gammarelay-rs/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = f2e98a2f78071c531a5130ddfb4a5c1bd10ec4e357d74bc68b2344f5d9832ed9
-	sha512sums = 23f9f82e6306b427399d8502205d1457fb1fb831825e69d88445330a0e32f5fab07747fba489a79b8e4a34d1b5da1aaf7006eaab825e7dec7c7e999ed915ffa6
-	b2sums = 6f62ba870e92682d6a1a943baaa9c31f6382bee95211e4d99a550189354024529e3ecdcd14d3f22afce52d1f3af9f7446a9bc2c022501b64c222062ebc3b06cc
+	source = wl-gammarelay-rs-0.3.0.tar.gz::https://github.com/MaxVerevkin/wl-gammarelay-rs/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = f4f48afd26fc0b0e8ec4aa69e7f39f7a8d596eff6c22aaeca84e1cb202f18f80
+	sha512sums = 09344b2ef69f8514477a87f26d776280d48675845557936ab8d237b73b7b8425fc2e5a017622a198462279b8dc9efe4016a5767c39dbd8804d9a8e6f19cbc4a4
+	b2sums = 4333c037574ad3f678a1d381a2926d9e0cfc00906eee0defe615551dfc4df93b650af7c43a8faaca0a24781ec2a452d7ef4ef6a11274758c4bd70eae56144b28
 
 pkgname = wl-gammarelay-rs
