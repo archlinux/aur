@@ -11,20 +11,20 @@ url="http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html"
 license=('LGPL')
 depends=('qt4' 'xdg-utils')
 source=(
-    'http://users.telenet.be/Jan.Van.hijfte/qtforfpc/V2.5/qt4pas-V2.5_Qt4.5.3.tar.gz'
+    'https://github.com/pikatenor/qt4pas/archive/refs/tags/V2.5_Qt4.5.3.tar.gz'
     'qtwebkit.patch'
 )
-sha256sums=('825423db80da4df5c21816c0392b3394cddfe2f3293dfd08ace84941726affea'
+sha256sums=('119a4078c9933e94a3202dfdd46a44172a9098cbc0240491592071fe831761da'
             'af1721fbf6706931d0b82dd28b3540f56a65e1585b75873c4ac9eaddecf9c921')
 
 prepare() {
-	cd "qt4pas-V2.5_Qt4.5.3/"
+	cd "qt4pas-2.5_Qt4.5.3/"
 
     patch -p0 -i "$srcdir/qtwebkit.patch"
 }
 
 build() {
-	cd "qt4pas-V2.5_Qt4.5.3/"
+	cd "qt4pas-2.5_Qt4.5.3/"
 
 	qmake-qt4 -query
 	qmake-qt4
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "qt4pas-V2.5_Qt4.5.3/"
+	cd "qt4pas-2.5_Qt4.5.3/"
 
 	INSTALL_ROOT="$pkgdir" make install
 
