@@ -1,0 +1,24 @@
+[Unit]
+Description=Actix web server running Mozilla Firefox Sync Storage
+Wants=mysql.service
+After=network.target mysql.service
+
+[Service]
+ExecStart=/usr/bin/firefox-syncstorage --config=/etc/firefox-syncstorage.toml
+Restart=on-abort
+
+User=syncstorage
+Group=syncstorage
+UMask=007
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
