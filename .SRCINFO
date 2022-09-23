@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements. For Gnome shell 40,41,42,43 on Wayland Only.
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	makedepends = glib2
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons-ng
-	source = desktop-icons-ng-7.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/7/desktop-icons-ng-Version6.tar.gz
-	sha256sums = cfb0340e056cc8f35f733eba3363b7b6042be759b507c95c2455a38afac6134e
-	sha512sums = d697134a66ae9e8037a9cb914dc45164bf5e4b435ff0fab2fefaf5407c76fa2db64d721dc2974fc429ba531e747f8d2b203e3aa36e9b2b3e4dcbf279cf10eece
+	source = desktop-icons-ng-8.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/8/desktop-icons-ng-8.tar.gz
+	sha256sums = 58d42b1abbac0998eafd52abf0345cc8eca26e895334b9821fd66d76047ee922
+	sha512sums = ba15174d0c8e1d2593d1d9398eb87e12794e5f593dadf1f2b12f5d6513035b136641dd25951af344519b36c7334f1c325b1a33158cb87af55c1470f22bc588fb
 
 pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
