@@ -43,6 +43,11 @@
 # A file integrity check is performed after download. Due to the unconventional
 # way that the data is downloaded, the verification is done in prepare().
 #
+# This package uses HTTPDirFS with permanent cache. Due to this the maximum
+# download speed is around 15MiB/s. To disable cache, find and remove the
+# '--cache' option from httpdirfs. Read more about HTTPDirFS permanent cache
+# here: https://github.com/fangfufu/httpdirfs#permanent-cache-system
+#
 # If fonts cannot be downloaded directly, the ISO fill will be fully
 # downloaded. Due to that install.wim will be extracted from the ISO, it is
 # assumed that twice its size (almost 8 GiB) is necessary as temporary disk
@@ -407,7 +412,8 @@ prepare() {
       echo "- Downloading fonts directly"
       mkdir -p mnt/http
       echo "  - Mounting HTTP file"
-      httpdirfs --single-file-mode "$_iso" mnt/http
+      # Remove '--cache' here to disable HTTPDirFS permanent cache.
+      httpdirfs --cache --single-file-mode "$_iso" mnt/http
       echo "  - Creating loop device"
       _isoFile="mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}')"
       _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction | awk '{print $NF}')
