@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2' 'cuda
          'gnutls' 'gsm' 'intel-media-sdk' 'jack' 'kvazaar' 'ladspa' 'lame' 'libavc1394'
          'lcms2' 'lensfun-git' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia'
          'libdc1394' 'libdrm' 'libfdk-aac' 'libgme' 'libgl' 'libgcrypt' 'libiec61883'
-         'libilbc' 'libjxl-git' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
+         'libilbc' 'libjxl' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
          'libpulse' 'librabbitmq-c' 'librsvg' 'libssh' 'libsoxr' 'libtheora' 'libva'
          'libvdpau' 'libvorbis' 'libvpx' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
          'libwebp' 'lilv' 'lv2' 'ocl-icd' 'openal' 'opencore-amr' 'openh264' 'openjpeg2'
