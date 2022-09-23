@@ -1,4 +1,5 @@
-# Maintainer: Roman Mikhayloff <rimf@inbox.ru>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Roman Mikhayloff <rimf@inbox.ru>
 
 pkgname=ttf-xo-thames
 pkgver=1.00 # The fake version, the original is unversioned.
@@ -8,22 +9,15 @@ arch=('any')
 url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
-makedepends=('dos2unix' 'glibc')
+makedepends=('glibc')
 groups=('ttf-xo-fonts')
 source=("XO_Thames-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Thames.zip")
-sha256sums=('8f9c493003c3183b03353b56baa828f90a9b883daed2ba1c64fc1e1e36b859ab')
+sha256sums=('c9aab93b638d220eb537fba45a81b77067b92bed0ab1f58d497aef9ee926d725')
 install=${pkgname}.install
-
-prepare() {
-  iconv -f cp1251 -t utf8 -o LICENSE XO_Fonts_License.txt
-  dos2unix LICENSE
-}
 
 package() {
   install -dm755 "${pkgdir}"/usr/share/fonts/TTF
 
   cd "${srcdir}"
   install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF/
-
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
