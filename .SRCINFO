@@ -1,0 +1,23 @@
+pkgbase = ytdownloader-gui
+	pkgdesc = GUI video downloader supporting hundreds of sites
+	pkgver = 3.5.3
+	pkgrel = 1
+	url = https://github.com/aandrew-me/ytDownloader
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = jq
+	makedepends = sed
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = electron
+	conflicts = ytdownloader-gui
+	source = ytdownloader-gui::git+https://github.com/aandrew-me/ytDownloader.git
+	source = ytdownloader-gui.sh
+	source = ytdownloader-gui.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ytdownloader-gui

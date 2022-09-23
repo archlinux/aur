@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ytDownloader
+Comment=Download videos from hundreds of sites
+Keywords=
+Exec=ytdownloader-gui
+TryExec=
+Terminal=false
+Icon=/usr/share/icons/ytdownloader-gui.png
+Type=Application
+StartupNotify=false
+Categories=Network;Utilities;
