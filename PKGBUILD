@@ -4,7 +4,7 @@
 # match! rc[0-9]*$
 
 pkgname=lua-resty-core
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
 epoch=1
 
@@ -16,7 +16,7 @@ license=('BSD')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openresty/$pkgname/archive/v$pkgver.tar.gz")
 
-sha256sums=('efd6b51520429e64b1bcc10f477d370ebed1631c190f7e4dc270d959a743ad7d')
+sha256sums=('f6aabb0811cfd8b0b0c986399f713fd66c559623b6b534f33783da0e3bb68ea3')
 
 build() {
 	cd "$pkgname-$pkgver"
