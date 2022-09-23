@@ -12,6 +12,31 @@ URL_VERSION="https://version.home-assistant.io/stable.json"
 HASSIO_VERSION=$(curl -s ${URL_VERSION} | jq -e -r '.supervisor')
 URL_APPARMOR_PROFILE="https://version.home-assistant.io/apparmor.txt"
 
+check_machine() {
+    if [ -z "${MACHINE}" ]; then
+        echo
+        echo "MACHINE environment variable unknown! Please choose one of the following options:"
+        echo " - generic-x86-64"
+        echo " - odroid-c2"
+        echo " - odroid-n2"
+        echo " - odroid-xu"
+        echo " - qemuarm"
+        echo " - qemuarm-64"
+        echo " - qemux86"
+        echo " - qemux86-64"
+        echo " - raspberrypi"
+        echo " - raspberrypi2"
+        echo " - raspberrypi3"
+        echo " - raspberrypi4"
+        echo " - raspberrypi3-64"
+        echo " - raspberrypi4-64"
+        echo " - tinker"
+        echo " - khadas-vim3"
+        echo
+        exit 1
+    fi
+}
+
 ## arg 1:  the new package version
 pre_install() {
     # Check if Modem Manager is enabled
@@ -56,7 +81,7 @@ post_install() {
     
     # Check network connection
     while ! ping -c 1 -W 1 ${URL_CHECK_ONLINE}; do
-        info "Waiting for ${URL_CHECK_ONLINE} - network interface might be down..."
+        echo "Waiting for ${URL_CHECK_ONLINE} - network interface might be down..."
         sleep 2
     done
 
@@ -74,34 +99,12 @@ post_install() {
             HASSIO_DOCKER="${DOCKER_REPO}/amd64-hassio-supervisor"
         ;;
         "arm" |"armv6l")
-            if [ -z "${MACHINE}" ]; then
-                db_input critical ha/machine-type || true
-                db_go || true
-                db_get ha/machine-type || true
-                MACHINE="${RET}"
-                db_stop
-            fi
             HASSIO_DOCKER="${DOCKER_REPO}/armhf-hassio-supervisor"
         ;;
         "armv7l")
-            if [ -z "${MACHINE}" ]; then
-                db_input critical ha/machine-type || true
-                db_go || true
-                db_get ha/machine-type || true
-                MACHINE="${RET}"
-                db_stop
-            fi
             HASSIO_DOCKER="${DOCKER_REPO}/armv7-hassio-supervisor"
         ;;
         "aarch64")
-            if [ -z "${MACHINE}" ]; then
-                db_input critical ha/machine-type || true
-                db_go || true
-                db_get ha/machine-type || true
-                MACHINE="${RET}"
-                db_stop
-
-            fi
             HASSIO_DOCKER="${DOCKER_REPO}/aarch64-hassio-supervisor"
         ;;
         *)
@@ -110,6 +113,7 @@ post_install() {
             exit 1
         ;;
     esac
+    check_machine
     PREFIX=${PREFIX:-/usr}
     SYSCONFDIR=${SYSCONFDIR:-/usr/lib}
     DATA_SHARE=${DATA_SHARE:-$PREFIX/share/hassio}
