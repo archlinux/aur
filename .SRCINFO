@@ -1,14 +1,14 @@
 pkgbase = revanced-patches
 	pkgdesc = Official patches maintained by ReVanced
-	pkgver = 2.66.2
+	pkgver = 2.67.0
 	pkgrel = 1
 	url = https://github.com/revanced/revanced-patches
 	arch = any
 	license = GPL3
 	depends = java-environment>=17
-	source = https://github.com/revanced/revanced-patches/releases/download/v2.66.2/revanced-patches-2.66.2.jar
-	source = https://github.com/revanced/revanced-patches/raw/v2.66.2/LICENSE
-	sha256sums = d964f26f40973c16f673ca98983b863425582d81370cd5c342c563639ddd5250
+	source = https://github.com/revanced/revanced-patches/releases/download/v2.67.0/revanced-patches-2.67.0.jar
+	source = https://github.com/revanced/revanced-patches/raw/v2.67.0/LICENSE
+	sha256sums = 34ad5a6717c21a145c0965abb56efb1ef80466ceb6b5088fc0000d7d641ba00c
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = revanced-patches
