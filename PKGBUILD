@@ -1,7 +1,7 @@
 # Maintainer: Timo Kettenbach
 pkgname=borrg
-pkgver=0.1.0_pre_20220921
-_commit=2300c634931264d5ae31c2791645541ab4e14e29
+pkgver=0.1.0_pre_20220922
+_commit=09fd8420c828c1723b3277f4290eaa7a88978a40
 pkgrel=1
 pkgdesc="A borg wrapper written in rust"
 url="https://github.com/SebastianSpeitel/borrg"
@@ -12,7 +12,7 @@ makedepends=('rust')
 provides=("borrg")
 conflicts=("borrg-bin")
 source=("https://github.com/SebastianSpeitel/borrg/archive/${_commit}.tar.gz")
-sha256sums=('94bc8d811ce7b0a46454d74199a92c2efbdc51379cd3158db0dd3d5ea66b3ee8')
+sha256sums=('8c02c9951170dbe35f2484bada125e80cf39603549dd4ed05a88eb846e9752c1')
 
 build() {
 	cd "$pkgname-$_commit"
