@@ -1,7 +1,7 @@
 pkgbase = python-m2r2
 	pkgdesc = Markdown to reStructuredText converter, forked from m2r
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crossnox/m2r2
 	changelog = CHANGES.md
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = python-m2r2
 	depends = python-mistune1
 	depends = python-docutils
 	depends = python-setuptools
-	provides = python-m2r
 	source = python-m2r2-0.3.3.tar.gz::https://files.pythonhosted.org/packages/source/m/m2r2/m2r2-0.3.3.tar.gz
 	sha256sums = f9b6e9efbc2b6987dbd43d2fd15a6d115ba837d8158ae73295542635b4086e75
 
