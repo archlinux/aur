@@ -15,13 +15,13 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-	:
+	systemctl stop haos-agent.service
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    :
+    systemctl start haos-agent.service
 }
 
 ## arg 1:  the old package version
