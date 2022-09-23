@@ -8,6 +8,9 @@ install -d "/home/$1/.config/clash/service"
 ln -sf "/opt/clash-for-windows/static/files/linux/${_parch}/service/clash-core-service" \
      -t "/home/$1/.config/clash/service"
 
+# fix permissions of directories
+chown -R "$1:$1" "/home/$1/.config/clash"
+
 # setcap everytime to prevent the case clash is updated.
 for clsh in {clash,clash-meta};
 do
