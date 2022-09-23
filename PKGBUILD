@@ -1,7 +1,7 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 
 pkgname='linux-xanmod-headers-bin'
-pkgver='5.19.9'
+pkgver='5.19.10'
 xanmod='1'
 pkgrel="$xanmod"
 pkgbase="$pkgname"
@@ -13,13 +13,13 @@ options=('!strip')
 depends=('pahole')
 makedepends=('curl')
 conflicts=("${pkgname%-bin}")
-_url="https://github.com/xanmod/linux/releases"
-source=("${_url}$(curl -L -s "${_url}/tag/${pkgver}-xanmod${xanmod}"|grep -o '/download.*linux-headers.*deb'|grep -v 'x64v2')")
+_url="https://api.github.com/repos/xanmod/linux/releases"
+source=("$(curl -L -s "$_url"|grep -o "https:.*/download/${pkgver}-xanmod${xanmod}/linux-headers.*deb"|grep -v 'x64v2')")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('33b457a3300f5d100eb809fc31c7403cc35717f31a58d988e6efaa035172de88')
+sha256sums=('7025d63c53efcf261fde3ef9735151393ddbe72869160ad8bc30ba417152821e')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
