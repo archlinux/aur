@@ -2,10 +2,10 @@
 
 pkgname=libpanel
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A dock/panel library for GTK 4'
 arch=('x86_64')
-url='https://gitlab.gnome.org/chergert/libpanel'
+url='https://gitlab.gnome.org/GNOME/libpanel'
 license=('GPL3')
 depends=('libadwaita' 'gobject-introspection')
 makedepends=('meson' 'gi-docgen' 'vala')
