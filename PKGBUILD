@@ -1,4 +1,5 @@
-# Maintainer: Roman Mikhayloff <rimf@inbox.ru>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Roman Mikhayloff <rimf@inbox.ru>
 
 pkgname=ttf-xo-symbol
 pkgver=1.00 # The fake version, the original is unversioned.
@@ -8,22 +9,14 @@ arch=('any')
 url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
-makedepends=('dos2unix' 'glibc')
 groups=('ttf-xo-fonts')
 source=("XO_Symbol-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Symbol.zip")
-sha256sums=('5e8d33954c142b76dd94f541cd43d8f320514b5eef2ce70efb8abf7536e80fde')
+sha256sums=('21e37007bba378e868e7c31d84f375f6dfb6db1322098b60977254706ddf4c41')
 install=${pkgname}.install
-
-prepare() {
-  iconv -f cp1251 -t utf8 -o LICENSE XO_Fonts_License.txt
-  dos2unix LICENSE
-}
 
 package() {
   install -dm755 "${pkgdir}"/usr/share/fonts/TTF
 
   cd "${srcdir}"
   install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF/
-
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

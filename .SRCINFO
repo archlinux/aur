@@ -7,12 +7,9 @@ pkgbase = ttf-xo-symbol
 	arch = any
 	groups = ttf-xo-fonts
 	license = custom: XO FONTS Open License
-	makedepends = dos2unix
-	makedepends = glibc
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = XO_Symbol-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Symbol.zip
-	sha256sums = 5e8d33954c142b76dd94f541cd43d8f320514b5eef2ce70efb8abf7536e80fde
+	sha256sums = 21e37007bba378e868e7c31d84f375f6dfb6db1322098b60977254706ddf4c41
 
 pkgname = ttf-xo-symbol
-
