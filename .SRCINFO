@@ -1,6 +1,6 @@
 pkgbase = zapret-git
 	pkgdesc = Bypass deep packet inspection.
-	pkgver = 48.r6.5556319
+	pkgver = 48.r13.8ae38be
 	pkgrel = 1
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = zapret-git
 	depends = ipset
 	depends = curl
 	depends = iptables
-	provides = zapret=48.r6.5556319
-	provides = zapret-git=48.r6.5556319
+	provides = zapret=48.r13.8ae38be
+	provides = zapret-git=48.r13.8ae38be
 	conflicts = zapret
 	source = zapret::git+https://github.com/bol-van/zapret.git
 	source = sysusers.conf
@@ -21,19 +21,19 @@ pkgbase = zapret-git
 
 pkgname = zapret-nfqws-git
 	depends = libnetfilter_queue
-	depends = zapret-common-git=48.r6.5556319
-	provides = zapret=48.r6.5556319
-	provides = zapret-git=48.r6.5556319
-	provides = zapret-nfqws=48.r6.5556319
+	depends = zapret-common-git=48.r13.8ae38be
+	provides = zapret=48.r13.8ae38be
+	provides = zapret-git=48.r13.8ae38be
+	provides = zapret-nfqws=48.r13.8ae38be
 	conflicts = zapret
 	conflicts = zapret-nfqws
 	backup = opt/zapret/config.nfqws
 
 pkgname = zapret-tpws-git
-	depends = zapret-common-git=48.r6.5556319
-	provides = zapret=48.r6.5556319
-	provides = zapret-git=48.r6.5556319
-	provides = zapret-tpws=48.r6.5556319
+	depends = zapret-common-git=48.r13.8ae38be
+	provides = zapret=48.r13.8ae38be
+	provides = zapret-git=48.r13.8ae38be
+	provides = zapret-tpws=48.r13.8ae38be
 	conflicts = zapret
 	conflicts = zapret-tpws
 	backup = opt/zapret/config.tpws
@@ -43,10 +43,10 @@ pkgname = zapret-common-git
 	depends = ipset
 	depends = curl
 	depends = iptables
-	depends = zapret-git=48.r6.5556319
-	provides = zapret-common=48.r6.5556319
+	depends = zapret-git=48.r13.8ae38be
+	provides = zapret-common=48.r13.8ae38be
 	conflicts = zapret-common
 
 pkgname = zapret-docs-git
-	provides = zapret-docs=48.r6.5556319
+	provides = zapret-docs=48.r13.8ae38be
 	conflicts = zapret-docs
