@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='5.19.9'
+pkgver='5.19.10'
 xanmod='1'
 pkgrel="$xanmod"
 pkgbase="$pkgname"
@@ -21,13 +21,13 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
-_url="https://github.com/xanmod/linux/releases"
-source=("${_url}$(curl -L -s "${_url}/tag/${pkgver}-xanmod${xanmod}"|grep -o '/download.*linux-image.*deb'|grep -v 'x64v2')")
+_url="https://api.github.com/repos/xanmod/linux/releases"
+source=("$(curl -L -s "$_url"|grep -o "https:.*/download/${pkgver}-xanmod${xanmod}/linux-image.*deb"|grep -v 'x64v2')")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('cd1d46532da8be5f66ca0773ea9b719b30f699f934088ec8922d1b025719dcc9')
+sha256sums=('5a469b0825e74695fb08aaaf7489163ffd890a39b6bb8b2bc02599e8c1e18e0a')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
