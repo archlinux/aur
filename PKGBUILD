@@ -1,29 +1,29 @@
 _pkgname=dwm
 pkgname=$_pkgname-syntax-git
-pkgver=6.2.r1907.95c85db
+pkgver=6.3.r44.37a0da8
 pkgrel=1
 pkgdesc="FromSyntax's personal build of dwm"
-url=https://github.com/LukeSmithxyz/dwm
+url=https://code.syntax.lol/dwm
 arch=(i686 x86_64)
 license=(MIT)
 makedepends=(git)
 depends=(freetype2 libx11 libxft)
 optdepends=(
-	'libxft-bgra: if dwm crashes when displaying emojis'
-	'libxft-bgra-git: if dwm crashes when displaying emojis'
+	'libxft-git: if dwm crashes when displaying emojis'
 	'dmenu: program launcher'
 	'st: terminal emulator')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(git+https://github.com/LukeSmithxyz/dwm)
+source=(https://code.syntax.lol/dwm/archive/refs/heads/main.zip)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	echo "$(awk '/^VERSION =/ {print $3}' config.mk)".r"$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
+	cd dwm-main
+    echo "$(awk '/^VERSION =/ {print $3}' config.mk)".r"$(cat head_tag.txt)"
 }
 
 prepare() {
+    ls
 	cd "$_pkgname"
 	echo "CPPFLAGS+=${CPPFLAGS}" >> config.mk
 	echo "CFLAGS+=${CFLAGS}" >> config.mk
