@@ -3,7 +3,7 @@
 _pkgname=scikit-hep-testdata
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}")
-pkgver=0.4.20
+pkgver=0.4.21
 pkgrel=1
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
 arch=('any')
