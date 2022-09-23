@@ -9,6 +9,7 @@ url="https://github.com/vv9k/wutag"
 license=('MIT')
 depends=()
 makedepends=()
+install=".install"
 provides=("wutag")
 conflicts=("wutag")
 source=("${url}/releases/download/${pkgver}/wutag-${pkgver}-x86_64-unknown-linux.tar.xz")

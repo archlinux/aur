@@ -3,6 +3,7 @@ pkgbase = wutag
 	pkgver = 0.5.0
 	pkgrel = 2
 	url = https://github.com/vv9k/wutag
+	install = .install
 	arch = x86_64
 	license = MIT
 	provides = wutag
