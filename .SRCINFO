@@ -1,6 +1,6 @@
 pkgbase = argc
 	pkgdesc = A bash cli framework, also a task runner
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = argc
 	license = Apache
 	makedepends = cargo
 	depends = gcc-libs
-	source = argc-0.10.1.tar.gz::https://github.com/sigoden/argc/archive/v0.10.1.tar.gz
-	sha512sums = 23abb41e3984937f3685a7ea0be98edabe46331508755eb08d9ba731fa1462f49d378ba52c066a178de61a3da66cd0e216026eb974b3efa29e5a7905d9ab5a0f
+	source = argc-0.11.0.tar.gz::https://github.com/sigoden/argc/archive/v0.11.0.tar.gz
+	sha512sums = 5b703b19c70f64a24b2c4e1afe60e7660f1ad9b891ce9555201783e3bd437d186fcba8e891637b6a0fc300b7434d59c26e063cb5711e2183d0ba06918ba17933
 
 pkgname = argc
