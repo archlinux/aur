@@ -45,8 +45,8 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install "build/"
 
-  mkdir --parents "${pkgdir}/usr/share/licenses/${pkgname}/"
-  cp --target-directory "${pkgdir}/usr/share/licenses/${pkgname}/" \
+  install -D --target-directory="${pkgdir}/usr/share/licenses/${pkgname}/" \
+    --mode=644 \
     "${pkgdir}/usr/share/doc/Thor/LicenseAurora.txt" \
     "${pkgdir}/usr/share/doc/Thor/LicenseThor.txt"
 }
