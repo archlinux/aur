@@ -1,7 +1,7 @@
 # Maintainer: Francesco La Camera <fm@lacamera.org>
 pkgname=nvim-nightly
-pkgver=v0.8.0.dev.1132.g37a71d1f2
-pkgrel=1
+pkgver=0.8.0.dev
+pkgrel=2
 pkgdesc='hyperextensible Vim-based text editor'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/neovim/neovim/releases/tag/nightly'
