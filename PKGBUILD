@@ -1,7 +1,7 @@
 # Maintainer: Thomas Booker <tw.booker@outlook.com>
 
 pkgname=phosh-tour
-pkgver=r6.e6f0951
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Simple tour through phosh'
 arch=(x86_64 aarch64 armv7h)
@@ -14,13 +14,13 @@ makedepends=(
 	git
 	meson
 )
-_tag=e6f0951b1d4dda43037cfde54e698d3b2af84c6a
+_tag=808b07bdb7f56d315e71390c4854bfb39f983739
 source=("git+${url}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd phosh-tour
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags | sed 's/^v//'
 }
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-	arch-meson -Dvendor="Arch" -Dbrand="Librem 5/Pinephone" phosh-tour _build
+	arch-meson -Dvendor="Arch Linux" -Dbrand="Librem 5/Pinephone" phosh-tour _build
 	meson compile -C _build
 }
 
