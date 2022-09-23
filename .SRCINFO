@@ -1,18 +1,15 @@
 pkgbase = ttf-xo-tahion
 	pkgdesc = XO Tahion font created considering trends of modern typography from «Новые облачные технологии»
-	pkgver = 1.00
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://fonts.myoffice.ru
 	install = ttf-xo-tahion.install
 	arch = any
 	groups = ttf-xo-fonts
 	license = custom: XO FONTS Open License
-	makedepends = dos2unix
-	makedepends = glibc
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = XO_Tahion-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Tahion.zip
-	sha256sums = 70c10e31caeb5a2006527d8005f96ca38dd3ddabe30b7829dfed5a02c290b1c1
+	source = XO_Tahion-1.01.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Tahion.zip
+	sha256sums = 3fbcded935b80e78bd26528009de2fa654cd66924aa590a20531a8030338e41e
 
 pkgname = ttf-xo-tahion
-
