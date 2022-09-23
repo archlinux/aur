@@ -2,7 +2,7 @@
 
 pkgname=chromium-extension-return-youtube-dislike
 _extension=return-youtube-dislike
-pkgver=3.0.0.5
+pkgver=3.0.0.6
 pkgrel=1
 pkgdesc="Return YouTube Dislike - chromium extension"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/noahvogt/return-youtube-dislike"
 license=('GPL3')
 source=("https://github.com/noahvogt/$_extension/releases/download/v$pkgver/$_extension-$pkgver.crx")
 noextract=("$pkgname-$pkgver.crx")
-sha256sums=('3e1506bf65134babe932372b1a81e77ef6b7873a05d26183869095f0c2e633f3')
+sha256sums=('b009ec3528c12e1c1520a0803af412c7c7642ae274982e7611f27b0d3bca7bd6')
 
 build() {
     echo "{ \"external_crx\": \"/usr/share/$pkgname/$pkgname.crx\", \"external_version\": \"$pkgver\" }" > dhhncjeconphppfmkokhamjpjgkmaflf.json
