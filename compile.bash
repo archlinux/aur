@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 virtualenv ".venv" -p python3
 source ".venv/bin/activate"
 pip install --upgrade certifi
@@ -21,12 +22,6 @@ ulimit -n 20000
 #	-DDISABLE_FATAL_WARNINGS=ON \
 #	-DUSE_LTO:BOOL="$(grep -cq '[^!]lto' <<< "${1}" && echo 'ON' || echo 'OFF')" \
 #	-DVIEWER_CHANNEL="Alchemy Test"
-autobuild configure -A 64 -c ReleaseOS -- \
-	-DLL_TESTS:BOOL=OFF \
-	-DDISABLE_FATAL_WARNINGS=ON \
-	-DUSE_LTO:BOOL=OFF \
-	-DVIEWER_CHANNEL="Alchemy Test"
-cd "build-linux-64" || exit 1
 jobcount=$(nproc)
 if [[ ${jobcount} -gt 1 ]]; then
 	#if false; then
@@ -49,5 +44,12 @@ if [[ ${jobcount} -gt 1 ]]; then
 			jobcount=$((jobcount - 2))
 		fi
 fi
+export AUTOBUILD_CPU_COUNT=$jobcount
 echo "Building with ${jobcount} jobs (adjusted)"
+autobuild configure -A 64 -c ReleaseOS -- \
+	-DLL_TESTS:BOOL=OFF \
+	-DDISABLE_FATAL_WARNINGS=ON \
+	-DUSE_LTO:BOOL=OFF \
+	-DVIEWER_CHANNEL="Alchemy Test"
+cd "build-linux-64" || exit 1
 time ninja -j${jobcount}

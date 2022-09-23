@@ -4,7 +4,7 @@
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.5.48678.e2a7db7b2e
+pkgver=6.5.5.48680.55fd3b5dda
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
@@ -30,7 +30,7 @@ install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main'
 'compile.bash')
 sha256sums=('SKIP'
-            'c9748e0c52156fef1cc8ba156d7056334332a0e75f305beabad571569b02698d')
+            '7d6db14756c9051cedef54e02369e8f2944d89cf8ceb0cfae47dcde2698061d8')
 
 pkgver() {
     cd "${pkgname}" || exit 1
@@ -51,6 +51,7 @@ prepare() {
 build() {
     cd "${pkgname}" || exit 1
     pwd
+		echo "PWD: $PWD"
     ../../compile.bash "${OPTIONS}"
 }
 
