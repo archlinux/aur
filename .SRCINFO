@@ -1,0 +1,22 @@
+pkgbase = maxhub-share-uos
+	pkgdesc = MAXHUB 传屏助手 A wireless screen sharing software.
+	pkgver = 3.12.77.6
+	pkgrel = 1
+	url = https://www.maxhub.com/share/
+	arch = x86_64
+	license = custom
+	depends = qt5-tools
+	depends = qt5-xmlpatterns
+	depends = libspeechd
+	depends = qt5-sensors
+	depends = qt5-webengine
+	depends = qt5-svg
+	depends = ffmpeg4.4
+	depends = gtk3
+	depends = qt5-speech
+	depends = qt5-quickcontrols2
+	depends = qt5-wayland
+	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.cvte.maxhub.share/com.cvte.maxhub.share_3.12.77.6_amd64.deb
+	sha512sums = bfd95972fece4a9f43d88bf15c370be86e26a02255055cfa0900cad685658dd1b9d09be2703ba1ae01868303b2b7a57add96c8b5b78786eaf1579e1338fe205e
+
+pkgname = maxhub-share-uos
