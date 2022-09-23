@@ -12,12 +12,14 @@ depends=('bash' 'wget' 'jre-openjdk-headless' 'screen')
 makedepends=()
 checkdepends=()
 optdepends=(
-		'git: for updating script'
-		'python-pip: for chromedriver usage'
-		'python: for chromedriver usage'
-		'chromium: for chromedriver usage'
-		'systemd: for autostart function'
-		'xdg-utils: for opening Mojang EULA websites automatically'
+		'git: Version control'
+		'python-pip: Download plugins from spigot site'
+		'python: Download plugins from spigot site'
+		'chromium: Download plugins from spigot site'
+		'systemd: Start Minecraft on startup'
+		'xdg-utils: Open EULA page automatically'
+		'polkit: Elevate permissions graphically'
+		'ssmtp: Send report mails'
 )
 provides=(mcctl)
 conflicts=(mcctl)
