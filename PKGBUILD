@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino
-pkgver=2022.1.1
+pkgver=2022.2.0
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
@@ -26,8 +26,8 @@ conflicts=('intel-openvino')
 replaces=('intel-openvino')
 options=('!emptydirs')
 # supported firmwares: VPU_SUPPORTED_FIRMWARES in src/plugins/intel_myriad/myriad_dependencies.cmake
-_firmware_ver=1875 # FIRMWARE_PACKAGE_VERSION in src/plugins/intel_myriad/myriad_dependencies.cmake
-_gnaver=03.00.00.1455.0 # GNA_VERSION in cmake/dependencies.cmake
+_firmware_ver=20220307_34 # FIRMWARE_PACKAGE_VERSION in src/plugins/intel_myriad/myriad_dependencies.cmake
+_gnaver=03.00.00.1455.2 # GNA_VERSION in cmake/dependencies.cmake
 _tbbver=2020_20200415 # cmake/dependencies.cmake
 _tbbbind_ver=2_5_static_lin_v2 # cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
@@ -62,9 +62,9 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
 noextract=("firmware_usb-ma2x8x_${_firmware_ver}.zip"
            "firmware_pcie-ma2x8x_${_firmware_ver}.zip")
 sha256sums=('SKIP'
-            'b11368fec2036d96fb703d2a40b171184fefe89f27e74a988ef1ca34260a2bc5'
-            'e65fcc1c6b0f3e9d814e53022c212ec0a2b83197a9df38badb298fb85ccf3acf'
-            '99891696269d8fa10116c96e6b7bda4362736881f0df8df8b56c751ee18e5820'
+            'aabff3d817431792ef9e17056448979c2cdbb484ad4b0af9e68cb874ee10eef5'
+            '877c4e1616d14a94dd2764f4f32f1c1aa2180dcd64ad1823b31efdc3f56ad593'
+            'e52785d3f730fefb4e794bb7ab40c8676537ef2f7c69c5b4bb89a5d3cc0bbe60'
             '95b2f3b0b70c7376a0c7de351a355c2c514b42c4966e77e3e34271a599501008'
             '865e7894c58402233caf0d1b288056e0e6ab2bf7c9d00c9dc60561c484bc90f4'
             'SKIP'
@@ -89,7 +89,7 @@ sha256sums=('SKIP'
             '48b6a93bb54c36f9bc87a7f326b0a634f752f34f57f90a60dccc13f92fd96a9d'
             'cfcc5af35d7a50f83c780716f69f8a800b14bcf143f7abafd31a7a0dcb8c9ae8'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '33233c69916485f1bef20c9d5f48bdba1189012ce8bad9dafc01249e7bc10f86')
+            'f80b04310c3ba71acfbc04e4e83784ab45540659d257afc3b0924c0eef9921b7')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -98,7 +98,7 @@ prepare() {
     git -C openvino lfs pull "$(printf '%s' "${source[0]/git+/}" | sed 's/#.*$//')"
     
     git -C openvino submodule init
-    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/mkl-dnn.url "${srcdir}/oneDNN-openvinotoolkit"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/onednn.url "${srcdir}/oneDNN-openvinotoolkit"
     git -C openvino config --local submodule.thirdparty/xbyak.url "${srcdir}/xbyak"
     git -C openvino config --local submodule.thirdparty/zlib/zlib.url "${srcdir}/zlib"
     git -C openvino config --local submodule.thirdparty/pugixml.url "${srcdir}/pugixml"
@@ -164,20 +164,20 @@ package() {
     make -C build DESTDIR="$pkgdir" install
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
     
-    local _gnaver
-    local _gnasover
-    local _gnasover_full
-    local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
-    _gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
-    _gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
-    _gnasover_full="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
+    #local _gnaver
+    #local _gnasover
+    #local _gnasover_full
+    #local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
+    #_gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
+    #_gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
+    #_gnasover_full="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
     
-    rm "${_gnadir}/libgna.so."{"${_gnasover}","${_gnasover_full}"}
-    mv "${_gnadir}/libgna.so"{,."${_gnasover_full}"}
-    ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
-    ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
+    #rm "${_gnadir}/libgna.so."{"${_gnasover}","${_gnasover_full}"}
+    #mv "${_gnadir}/libgna.so"{,."${_gnasover_full}"}
+    #ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
+    #ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
     
-    cp -dr --no-preserve='ownership' "openvino/temp/gna_${_gnaver}/include" \
-        "${pkgdir}/opt/intel/openvino/runtime/include/gna"
-    chmod -R a+r "${pkgdir}/opt/intel/openvino/runtime/include/gna"
+    #cp -dr --no-preserve='ownership' "openvino/temp/gna_${_gnaver}/include" \
+    #    "${pkgdir}/opt/intel/openvino/runtime/include/gna"
+    #chmod -R a+r "${pkgdir}/opt/intel/openvino/runtime/include/gna"
 }
