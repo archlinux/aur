@@ -9,6 +9,7 @@ url="https://github.com/wojciechkepka/wutag"
 license=('MIT')
 depends=()
 makedepends=('cargo' 'git' 'help2man' )
+install=".install"
 provides=("wutag")
 conflicts=("wutag")
 sha1sums=('SKIP')

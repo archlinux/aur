@@ -1,0 +1,7 @@
+#!/bin/sh
+
+
+post_install() {
+    echo "restarting systemctl daemon"
+    systemctl daemon-reload
+}
