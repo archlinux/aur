@@ -6,6 +6,11 @@ DOCKER_REPO="ghcr.io/home-assistant"
 SERVICE_DOCKER="docker.service"
 SERVICE_NM="NetworkManager.service"
 
+PREFIX=${PREFIX:-/usr}
+SYSCONFDIR=${SYSCONFDIR:-/usr/lib}
+DATA_SHARE=${DATA_SHARE:-$PREFIX/share/hassio}
+CONFIG="/etc/hassio.json"
+
 # Read infos from web
 URL_CHECK_ONLINE="checkonline.home-assistant.io"
 URL_VERSION="https://version.home-assistant.io/stable.json"
@@ -35,6 +40,24 @@ check_machine() {
         echo
         exit 1
     fi
+}
+
+adjust_config() {
+    # Install Supervisor
+    sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}"/bin/hassio-supervisor
+    sed -i -e "s,%%BINARY_DOCKER%%,${BINARY_DOCKER},g" \
+        -e "s,%%SERVICE_DOCKER%%,${SERVICE_DOCKER},g" \
+        -e "s,%%BINARY_HASSIO%%,${PREFIX}/bin/hassio-supervisor,g" \
+        "${SYSCONFDIR}/systemd/system/hassio-supervisor.service"
+
+    systemctl enable hassio-supervisor.service > /dev/null 2>&1;
+
+    # Install AppArmor
+    curl -sL ${URL_APPARMOR_PROFILE} > "${DATA_SHARE}/apparmor/hassio-supervisor"
+    sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}/bin/hassio-apparmor"
+    sed -i -e "s,%%SERVICE_DOCKER%%,${SERVICE_DOCKER},g" \
+        -e "s,%%HASSIO_APPARMOR_BINARY%%,${PREFIX}/bin/hassio-apparmor,g" \
+        "${SYSCONFDIR}/systemd/system/hassio-apparmor.service"
 }
 
 ## arg 1:  the new package version
@@ -114,10 +137,7 @@ post_install() {
         ;;
     esac
     check_machine
-    PREFIX=${PREFIX:-/usr}
-    SYSCONFDIR=${SYSCONFDIR:-/usr/lib}
-    DATA_SHARE=${DATA_SHARE:-$PREFIX/share/hassio}
-    CONFIG="/etc/hassio.json"
+    
     cat > "${CONFIG}" <<- EOF
 {
 "supervisor": "${HASSIO_DOCKER}",
@@ -126,21 +146,7 @@ post_install() {
 }
 EOF
 
-    # Install Supervisor
-    sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}"/bin/hassio-supervisor
-    sed -i -e "s,%%BINARY_DOCKER%%,${BINARY_DOCKER},g" \
-        -e "s,%%SERVICE_DOCKER%%,${SERVICE_DOCKER},g" \
-        -e "s,%%BINARY_HASSIO%%,${PREFIX}/bin/hassio-supervisor,g" \
-        "${SYSCONFDIR}/systemd/system/hassio-supervisor.service"
-
-    systemctl enable hassio-supervisor.service > /dev/null 2>&1;
-
-    # Install AppArmor
-    curl -sL ${URL_APPARMOR_PROFILE} > "${DATA_SHARE}/apparmor/hassio-supervisor"
-    sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}/bin/hassio-apparmor"
-    sed -i -e "s,%%SERVICE_DOCKER%%,${SERVICE_DOCKER},g" \
-        -e "s,%%HASSIO_APPARMOR_BINARY%%,${PREFIX}/bin/hassio-apparmor,g" \
-        "${SYSCONFDIR}/systemd/system/hassio-apparmor.service"
+    adjust_config
 
     systemctl enable hassio-apparmor.service > /dev/null 2>&1;
     systemctl start hassio-apparmor.service
@@ -185,6 +191,7 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
+    adjust_config
     systemctl start hassio-apparmor.service
     systemctl start hassio-supervisor.service
 }
