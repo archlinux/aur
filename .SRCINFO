@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win11-auto
-	pkgver = 10.0.22000.318
-	pkgrel = 2
+	pkgver = 10.0.22621.382
+	pkgrel = 1
 	url = https://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = ttf-ms-win11-auto
 	provides = ttf-font
 	provides = ttf-ms-win11
 	conflicts = ttf-vista-fonts
-	source = https://software-download.microsoft.com/download/sg/888969d5-f34g-4e03-ac9d-1f9786c66749/22000.318.211104-1236.co_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+	source = https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/22621.382.220806-0833.ni_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
 	source = file://arial.ttf
 	source = file://arialbd.ttf
 	source = file://ariali.ttf
