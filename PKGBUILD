@@ -47,14 +47,6 @@ pkgver() {
 
 prepare() {
   patch -d "$_pkg" -p1 < fmt.patch
-}
-
-build() {
-  cd "$_pkg"
-
-  CFLAGS="$(_update_march "$CFLAGS")"
-  CPPFLAGS="$(_update_march "$CPPFLAGS")"
-  CXXFLAGS="$(_update_march "$CXXFLAGS")"
 
   cat <<EOF >local.sh
 PREFIX=/usr
@@ -64,6 +56,14 @@ CURL="\$PREFIX"
 # Remove 32-bit barriers to big factorizations
 FLAGS_SIZE="-DSIZEOF_P_R_VALUES=8 -DSIZEOF_INDEX=8"
 EOF
+}
+
+build() {
+  cd "$_pkg"
+
+  CFLAGS="$(_update_march "$CFLAGS")"
+  CPPFLAGS="$(_update_march "$CPPFLAGS")"
+  CXXFLAGS="$(_update_march "$CXXFLAGS")"
 
   make
 }
