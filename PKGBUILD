@@ -21,8 +21,8 @@ conflicts=('cado-nfs')
 provides=('cado-nfs')
 source=("git+https://gitlab.inria.fr/cado-nfs/${_pkg}.git"
         fmt.patch)
-md5sums=('SKIP'
-         '4e8d87c0205c40cf6be6c946e2062e1b')
+sha384sums=('SKIP'
+            '496b2b68ed11d3ad7c5febffd900475502b871bb4541307eb909eb23e0faa9f2e45856393b2c8bf45ab54cdf02c40e58')
 
 # Need -march for SIMD support. Makes the resulting package less portable.
 _march=native

@@ -20,6 +20,8 @@ pkgbase = cado-nfs-git
 	provides = cado-nfs
 	conflicts = cado-nfs
 	source = git+https://gitlab.inria.fr/cado-nfs/cado-nfs.git
-	md5sums = SKIP
+	source = fmt.patch
+	sha384sums = SKIP
+	sha384sums = 496b2b68ed11d3ad7c5febffd900475502b871bb4541307eb909eb23e0faa9f2e45856393b2c8bf45ab54cdf02c40e58
 
 pkgname = cado-nfs-git
