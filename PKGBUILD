@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 
 pkgname=shuttlepro-v2-git
-pkgver=0.1.r49.g2bb3c65
+pkgver=0.1.r50.g6783b94
 pkgrel=1
 pkgdesc="A user program for interpreting input from a Contour Design Shuttle device (git version). This is a moded version from SERVCUBED. https://github.com/SERVCUBED/ShuttlePRO"
 arch=('x86_64' 'i686')
