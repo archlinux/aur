@@ -9,21 +9,22 @@ arch=(x86_64 aarch64 armv7h)
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
 depends=(
-	seatd
-	xcb-util-errors
-	xcb-util-renderutil
-	xcb-util-wm
+	gobject-introspection
 	gnome-desktop
 	libinput
+	mutter
+	libseat.so
+	xcb-util-errors
+	xcb-util-wm
+	xcb-util-renderutil
+	glslang
 )
 makedepends=(
-	ctags
-	git
-	libhandy
 	meson
-	vala
+	git
 	vulkan-headers
 	wayland-protocols
+	xorg-xwayland
 )
 provides=(phoc wlroots)
 conflicts=(phoc wlroots)
