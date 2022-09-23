@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=NanoVNA Saver
-Comment=DeEmbed raw S-parameters (TouchStone files) to calibrated data
+Comment=A multiplatform tool to save Touchstone files from the NanoVNA, sweep frequency spans in segments to gain more than 101 data points, and generally display and analyze the resulting data.
 Exec=NanoVNASaver
 Icon=nanovna-saver.png
 Terminal=false
