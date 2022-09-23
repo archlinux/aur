@@ -1,6 +1,6 @@
 pkgbase = wutag-git
 	pkgdesc = CLI tool for tagging files
-	pkgver = 0
+	pkgver = 20220922.cf71b88
 	pkgrel = 1
 	url = https://github.com/wojciechkepka/wutag
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = wutag-git
 	sha1sums = SKIP
 
 pkgname = wutag-git
-
