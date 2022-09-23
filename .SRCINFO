@@ -1,0 +1,14 @@
+pkgbase = pychess-db
+	pkgdesc = Chess game database, PGN format, curated by the PyChess organization
+	pkgver = 20170627
+	pkgrel = 1
+	url = https://github.com/pychess/chess_db
+	arch = any
+	license = GPL3
+	optdepends = pychess: browse and analyze games
+	conflicts = pychess-db-git
+	options = !strip
+	source = pychess-db-20170627.tar.gz::https://github.com/pychess/chess_db/archive/refs/tags/20170627.tar.gz
+	sha512sums = 6fef6225c6cfb95873268a04a37bb286470a2d39a63c4381b21f2f9c310f316d9b035495a4442f44af0d98941744dfab98abcf5c5c293769d04607ed3389762c
+
+pkgname = pychess-db
