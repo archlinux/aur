@@ -2,14 +2,14 @@
 
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
-pkgver='1.3.1'
-pkgrel=2
+pkgver='1.3.2'
+pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
 license=('custom:BSD3')
 depends=('python-numpy')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
 source=(
   "${pkgname}::git+https://github.com/scikit-hep/boost-histogram.git#tag=v${pkgver}"
@@ -51,17 +51,17 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "${srcdir}/${pkgname}"
-  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${python_version}" pytest
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  python setup.py install  --skip-build --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
