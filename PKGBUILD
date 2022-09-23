@@ -2,11 +2,11 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=16.4.r13.ge61b85036
+pkgver=16.4.r35.gd64d76d62
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
-url="https://ddnet.tw"
+url="https://ddnet.org"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
 makedepends=('git' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools')
@@ -52,6 +52,7 @@ build() {
 }
 
 check() {
+    export GTEST_FILTER='-Net.Ipv4AndIpv6Work'
     ninja run_tests -C build
 }
 
