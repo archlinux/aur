@@ -2,7 +2,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-e820-patched
-pkgver=5.18.16.zen1
+pkgver=5.19.10.zen1
 pkgrel=1
 pkgdesc='Linux ZEN - patched with e820 PCIe device addresses overlap detection support'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -57,13 +57,13 @@ prepare() {
   make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
+  make -j40 -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make all
+  make -j40 all
   make htmldocs
 }
 
@@ -88,7 +88,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make -j40 INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
