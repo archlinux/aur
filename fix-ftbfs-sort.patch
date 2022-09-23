@@ -1,0 +1,12 @@
+--- a/pc/debugger/BaseD.cpp
++++ b/pc/debugger/BaseD.cpp
+@@ -3,6 +3,9 @@
+ #include "Menu_Bar.h"
+ #include "File_System.h"
+ #include "Instrument_Window.h"
++#include <algorithm>
++
++using namespace std;
+ 
+ char BaseD::tmpbuf[500];
+ 

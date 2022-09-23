@@ -1,0 +1,28 @@
+pkgbase = snestracker
+	pkgdesc = Full-featured music production software for the Super Nintendo Entertainment System
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/bazz1tv/snestracker
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gendesk
+	depends = alsa-lib
+	depends = boost-libs
+	depends = gtk3
+	depends = sdl2
+	options = !buildflags
+	source = snestracker::git+https://github.com/bazz1tv/snestracker#commit=d463d383026911a6c8c5106f154d81f3bdf9fdb5
+	source = github.com-bazzinotti-libgme_m::git+https://github.com/bazzinotti/libgme_m
+	source = github.com-bazzinotti-wla-dx::git+https://github.com/bazzinotti/wla-dx
+	source = github.com-bazzinotti-pcx2snes::git+https://github.com/bazzinotti/pcx2snes
+	source = fix-ftbfs-sort.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 4885950a7ba3e8bc3260360553c6fd27b4b9987c808e5c9236e62ca52b38d500f389b24bfa13a255514fd2881af9e61713f2d6a7b0e88f3e0509e7cf96cb4ea3
+
+pkgname = snestracker
