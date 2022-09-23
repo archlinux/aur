@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=1.7.3.r0.gcef05d043
+pkgver=1.8.0.r0.g07be95f61
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
@@ -9,20 +9,20 @@ url='https://www.copperspice.com/'
 license=('LGPL2.1')
 depends=('cups' 'fontconfig' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'libgl'
          'libice' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxi' 'libxkbcommon'
-         'libxkbcommon-x11' 'openssl' 'xcb-util-keysyms' 'xcb-util-image'
-         'xcb-util-renderutil' 'xcb-util-wm' 'zlib')
+         'libxkbcommon-x11' 'openssl' 'vulkan-icd-loader' 'xcb-util-keysyms'
+         'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib')
 optdepends=('mariadb-libs: for MySQL database support'
             'postgresql-libs: for PostgreSQL database support')
 makedepends=('git' 'cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
-             'libxcursor' 'libxext'  'libxfixes' 'libxinerama' 'libxrandr'
-             'libxrender' 'libxml2')
+             'vulkan-headers' 'libxcursor' 'libxext'  'libxfixes' 'libxinerama'
+             'libxrandr' 'libxrender' 'libxml2')
 provides=('copperspice')
 conflicts=('copperspice')
 options=('!lto')
 source=('git+https://github.com/copperspice/copperspice.git'
         '010-copperspice-fix-cmake-include-dirs.patch')
 sha256sums=('SKIP'
-            'ad8764d825950dcb98a1088a2f778d449c39e33a3c2edf037a45c30c341045d4')
+            'f383d50fe4b3a6ba428dbc1a4822173aff1bd2ba57efb31c8bd977f75db5c3e8')
 
 prepare() {
     patch -d copperspice -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"

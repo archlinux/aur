@@ -1,6 +1,6 @@
 --- a/src/core/CMakeLists.txt
 +++ b/src/core/CMakeLists.txt
-@@ -154,8 +154,8 @@ target_sources(CsCore
+@@ -162,8 +162,8 @@ target_sources(CsCore
  
  target_include_directories(CsCore
     PUBLIC
