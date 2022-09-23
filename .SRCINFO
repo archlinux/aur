@@ -7,13 +7,8 @@ pkgbase = phoc
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
-	makedepends = ctags
-	makedepends = git
-	makedepends = libhandy
 	makedepends = meson
-	makedepends = vala
-	makedepends = vulkan-headers
-	makedepends = wayland-protocols
+	makedepends = git
 	depends = gnome-desktop
 	depends = wlroots
 	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=ebc6d1d5a2acdc243af3c9237ac09bcdd8f727f2

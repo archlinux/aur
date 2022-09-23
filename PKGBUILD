@@ -13,13 +13,8 @@ depends=(
 	wlroots
 )
 makedepends=(
-	ctags
-	git
-	libhandy
 	meson
-	vala
-	vulkan-headers
-	wayland-protocols
+	git
 )
 _tag=ebc6d1d5a2acdc243af3c9237ac09bcdd8f727f2
 source=("git+${url}.git#tag=${_tag}")
