@@ -7,8 +7,8 @@
 # match! -rc[0-9]+$
 
 pkgname=libvirt-xen
-pkgver=8.6.0
-pkgrel=2
+pkgver=8.7.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -97,7 +97,7 @@ source=(
   "https://github.com/archlinux/svntogit-community/raw/packages/libvirt/repos/community-x86_64/glibc-2.36-virfile-fix.patch"
 )
 
-sha256sums=('a81847c43ac9ade61b6f8447c44e8ba2cc544ab49bac5c0b18a5b105f5da3ae2'
+sha256sums=('72e63a0f27911e339afd8269c6e8b029721893940edec11e09e471944f60e538'
             'SKIP'
             '766b998644d29bb8ea173a5911d5afc0f8e84f1845e19a65b349dd686d85aeed'
             '5ba526edc7f486588ccde4d8a4d1b9f4afeba9517029126d981705eb16e32495')
