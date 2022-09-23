@@ -17,7 +17,7 @@ sha256sums=('24ec10b7e966e78a10961808f0ec8f41b29883289bfb89c7a75ae74209e46683'
 package() {
 	mkdir -p $pkgdir/usr/share/man/man{1,3,3lua,4,5,7,8,9lua}
 
-	msg2 'Reformatting for consistency with Linux man pages (this may take a while.. )'
+	msg2 'Reformatting for consistency with Linux man pages (this may take a while...)'
 	export srcdir pkgdir pkgver
 	find $srcdir/usr/share/man/man*/* -maxdepth 0 -type f |
 	  xargs -P "$(nproc)" -n 1 "$srcdir/manfmt"
