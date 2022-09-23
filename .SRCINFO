@@ -1,0 +1,10 @@
+pkgbase = todo-mekb
+	pkgdesc = Terminal to-do list written in C
+	pkgver = r8.a733105
+	pkgrel = 1
+	url = https://github.com/mekb-turtle/todo
+	arch = any
+	source = todo::git+https://github.com/mekb-turtle/todo.git
+	sha256sums = SKIP
+
+pkgname = todo-mekb
