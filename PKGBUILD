@@ -1,10 +1,11 @@
 # $Id$
-# Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
+# Maintainer: Ryotaro Ko <aur AT p1kachu DOT net>
+# Contributor: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: Fabien Wang <fabien(dot)wang(at)gmail(dot)com>
 
 pkgname=qt4pas
 pkgver=2.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Free Pascal Qt4 Binding Library"
 arch=('x86_64')
 url="http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html"
