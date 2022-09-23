@@ -33,6 +33,7 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install "build/"
 
-  install -Dm644 "libSDL2pp-${pkgver}/COPYING.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+  install -D --target-directory="${pkgdir}/usr/share/licenses/${pkgname}/" \
+    --mode=644 \
+    "libSDL2pp-${pkgver}/COPYING.txt"
 }
