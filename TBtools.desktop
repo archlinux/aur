@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TBtools
+Comment=GUI/CommandLine Tool Box for biologistists to utilize NGS data. 
+GenericName=TBtools
+Terminal=false
+Icon=/opt/TBtools/TBtoolsLogo.png
+Type=Application
+Exec=/opt/TBtools/Linux.sh
+Categories=Education;Science;
