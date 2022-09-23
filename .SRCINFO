@@ -1,0 +1,22 @@
+pkgbase = dwm-syntax-git
+	pkgdesc = FromSyntax's personal build of dwm
+	pkgver = 6.2.r1907.95c85db
+	pkgrel = 1
+	url = https://github.com/LukeSmithxyz/dwm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = freetype2
+	depends = libx11
+	depends = libxft
+	optdepends = libxft-bgra: if dwm crashes when displaying emojis
+	optdepends = libxft-bgra-git: if dwm crashes when displaying emojis
+	optdepends = dmenu: program launcher
+	optdepends = st: terminal emulator
+	provides = dwm
+	conflicts = dwm
+	source = git+https://github.com/LukeSmithxyz/dwm
+	sha256sums = SKIP
+
+pkgname = dwm-syntax-git
