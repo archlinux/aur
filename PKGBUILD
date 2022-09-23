@@ -20,11 +20,6 @@ sha256sums=('1a00f882efed2c5a4bc95fb948adbce57dc43254b71375d9fee9fac7a020755c'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
             '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369')
 
-prepare() {
-    # Disable Ipv4AndIpv6Work network test, as it fails in clean chroot
-    sed -i '/^ *net.cpp$/d' DDNet-$pkgver/CMakeLists.txt
-}
-
 build() {
     mkdir -p build
     cd build
@@ -42,6 +37,7 @@ build() {
 }
 
 check() {
+    export GTEST_FILTER='-Net.Ipv4AndIpv6Work'
     ninja run_tests -C build
 }
 
