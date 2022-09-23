@@ -2,7 +2,7 @@
 
 pkgname=ihaskell-git
 pkgver=2129.e0c1a8d
-pkgrel=1
+pkgrel=2
 pkgdesc="A Haskell backend kernel for the IPython project"
 arch=('x86_64')
 url="https://github.com/gibiansky/IHaskell"
