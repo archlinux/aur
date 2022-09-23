@@ -1,21 +1,28 @@
 pkgbase = phosh-git
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.20.0.r22.g1c471472
+	pkgver = 0.21.0.r40.g2c03f935
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phosh
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
-	makedepends = ctags
-	makedepends = git
 	makedepends = meson
-	makedepends = vala
+	makedepends = git
 	makedepends = wayland-protocols
-	depends = callaudiod
+	depends = gtk3
+	depends = libhandy>=1.1.90
+	depends = gnome-desktop
+	depends = gnome-session
+	depends = upower
+	depends = libpulse
+	depends = gcr
 	depends = feedbackd
-	depends = libhandy
-	depends = phoc
+	depends = libnm
+	depends = evolution-data-server
+	depends = phoc-embedded-wlroots>=0.21.0
+	depends = gnome-shell
+	depends = callaudiod
 	depends = polkit
 	provides = phosh
 	conflicts = phosh

@@ -2,24 +2,33 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.20.0.r22.g1c471472
+pkgver=0.21.0.r40.g2c03f935
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
 url='https://gitlab.gnome.org/World/Phosh/phosh'
 license=(GPL3)
 depends=(
-	callaudiod
+	gtk3
+	'libhandy>=1.1.90'
+	gnome-desktop
+	gnome-session
+	upower
+	libpulse
+	gcr
 	feedbackd
-	libhandy
-	phoc
+	libnm
+	evolution-data-server
+	# Replace this with phoc once it works.
+	#'phoc>=0.21.0'
+	'phoc-embedded-wlroots>=0.21.0'
+	gnome-shell
+	callaudiod
 	polkit
 )
 makedepends=(
-	ctags
-	git
 	meson
-	vala
+	git
 	wayland-protocols
 )
 provides=(phosh)
