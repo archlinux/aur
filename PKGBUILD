@@ -9,20 +9,26 @@ arch=(x86_64 aarch64 armv7h)
 url='https://gitlab.gnome.org/World/Phosh/phosh'
 license=(GPL3)
 depends=(
-	callaudiod
-	feedbackd
-	libhandy
-	phoc
-	polkit
-	evolution-data-server
+	gtk3
+	'libhandy>=1.1.90'
+	gnome-desktop
+	gnome-session
 	upower
+	libpulse
+	gcr
+	feedbackd
 	libnm
+	evolution-data-server
+	# Replace this with phoc once it works.
+	#'phoc>=0.21.0'
+	'phoc-embedded-wlroots>=0.21.0'
+	gnome-shell
+	callaudiod
+	polkit
 )
 makedepends=(
-	ctags
-	git
 	meson
-	vala
+	git
 	wayland-protocols
 )
 _tag=4122630266abfd6623e169330da6e7d6bc01be7f # git rev-parse v${pkgver}

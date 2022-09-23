@@ -7,19 +7,23 @@ pkgbase = phosh
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
-	makedepends = ctags
-	makedepends = git
 	makedepends = meson
-	makedepends = vala
+	makedepends = git
 	makedepends = wayland-protocols
-	depends = callaudiod
-	depends = feedbackd
-	depends = libhandy
-	depends = phoc
-	depends = polkit
-	depends = evolution-data-server
+	depends = gtk3
+	depends = libhandy>=1.1.90
+	depends = gnome-desktop
+	depends = gnome-session
 	depends = upower
+	depends = libpulse
+	depends = gcr
+	depends = feedbackd
 	depends = libnm
+	depends = evolution-data-server
+	depends = phoc-embedded-wlroots>=0.21.0
+	depends = gnome-shell
+	depends = callaudiod
+	depends = polkit
 	source = git+https://gitlab.gnome.org/World/Phosh/phosh.git#tag=4122630266abfd6623e169330da6e7d6bc01be7f
 	sha256sums = SKIP
 
