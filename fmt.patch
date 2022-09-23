@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 983449a7a..7e94e44d6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -330,7 +330,7 @@ include("${CADO_NFS_SOURCE_DIR}/config/test-rand.cmake")
+ include("${CADO_NFS_SOURCE_DIR}/config/strlcpy.cmake")
+ include("${CADO_NFS_SOURCE_DIR}/config/linux.cmake")
+ include("${CADO_NFS_SOURCE_DIR}/config/hwloc.cmake")
+-include("${CADO_NFS_SOURCE_DIR}/config/fmt.cmake")
++#include("${CADO_NFS_SOURCE_DIR}/config/fmt.cmake")
+ include("${CADO_NFS_SOURCE_DIR}/config/gmpecm.cmake")
+ IF (NOT DEFINED ENV{NO_PYTHON_CHECK})
+   include("${CADO_NFS_SOURCE_DIR}/config/python.cmake")

@@ -19,8 +19,10 @@ optdepends=('curl: for cado-nfs-client.py'
             'perl: for bwc.pl')
 conflicts=('cado-nfs')
 provides=('cado-nfs')
-source=("git+https://gitlab.inria.fr/cado-nfs/${_pkg}.git")
-md5sums=('SKIP')
+source=("git+https://gitlab.inria.fr/cado-nfs/${_pkg}.git"
+        fmt.patch)
+md5sums=('SKIP'
+         '4e8d87c0205c40cf6be6c946e2062e1b')
 
 # Need -march for SIMD support. Makes the resulting package less portable.
 _march=native
@@ -41,6 +43,10 @@ _update_march()
 pkgver() {
   cd "$_pkg"
   git log -1 --format="%cd.%h" --date=short | sed 's/-//g'
+}
+
+prepare() {
+  patch -d "$_pkg" -p1 < fmt.patch
 }
 
 build() {
