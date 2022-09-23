@@ -9,7 +9,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.6.0
+pkgver=3.6.1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -33,7 +33,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "python310.diff"
         "influxdb.diff")
-sha256sums=('d63c8a9c810f628ddc4b5bc18671b4df9b02beb58710b82d55a6cf749b1cbb3f'
+sha256sums=('34313ece30f820f4e87c8104a10f3a4f54a8bc6c21b3578f6537b25aad83d3b6'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
