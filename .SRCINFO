@@ -1,0 +1,22 @@
+pkgbase = nanovna-saver-git
+	pkgdesc = PC control for the NanoVNA.
+	pkgver = v0.5.3.r16.g0f19d5a
+	pkgrel = 1
+	url = https://github.com/mihtjel/nanovna-saver
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-pyserial
+	depends = qt5-base
+	provides = nanovna-saver
+	conflicts = nanovna-saver
+	source = nanovna-saver-git::git+https://github.com/NanoVNA-Saver/nanovna-saver.git
+	source = nanovna-saver-git.desktop
+	md5sums = SKIP
+	md5sums = 2b23743a02100506da159231e775fd5a
+
+pkgname = nanovna-saver-git
