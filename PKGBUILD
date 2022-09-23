@@ -429,7 +429,7 @@ prepare() {
       echo "  - Loop device mounted as ISO at: $_mountpoint"
 
       echo "  - Extracting files from online Windows installation image"
-      7z e "${_mountpoint}/sources/install.wim" \
+      7z e -aoa "${_mountpoint}/sources/install.wim" \
         Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
 
       echo "  - Unmounting loop device $_loopDev as ISO at: $_mountpoint"
