@@ -1,7 +1,7 @@
 pkgbase = lenmus
 	pkgdesc = A free program for learning music
-	pkgver = 6.0.0
-	pkgrel = 3
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = http://www.lenmus.org/
 	arch = i686
 	arch = x86_64
@@ -15,11 +15,7 @@ pkgbase = lenmus
 	depends = fluidsynth
 	depends = soundfont-fluid
 	optdepends = timidity++: for sound without external midi player
-	source = https://github.com/lenmus/lenmus/archive/Release_6.0.0.tar.gz
-	source = 0001-FindPortMidi.patch
-	source = 0001-Fix-SetHTMLBackgroundImage.patch
-	sha256sums = 235a44a04e827fb9a118073ffcc92dc3714df073b7c67e915b860d3a8480e4fd
-	sha256sums = 43d92d3022cc2d57f35c9b6fde4997fa2dac8e0ff40afdc4078230b0aefb360f
-	sha256sums = 07719a0807d002370ea9f4331af7405e0bef55d221f3302c25e7a572b2ba7488
+	source = https://github.com/lenmus/lenmus/archive/Release_6.0.1.tar.gz
+	sha256sums = 1fa5b8edc468c800598845aa809b4a4e93058ed13af40bfacd037c44d1c4bc1d
 
 pkgname = lenmus
