@@ -1,7 +1,7 @@
 pkgbase = specter-desktop
 	pkgdesc = Specter Desktop functions as a watch-only coordinator for multi-signature and single-key Bitcoin wallets.
-	pkgver = 1.9.2
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://specter.solutions
 	install = specter-desktop.install
 	arch = any
@@ -35,14 +35,16 @@ pkgbase = specter-desktop
 	depends = python-urllib3
 	depends = python-flask-babel
 	depends = python-flask-apscheduler
+	depends = gunicorn
+	depends = python-cryptography<=37.0.4
 	backup = usr/lib/systemd/system/specter.service
-	source = https://github.com/cryptoadvance/specter-desktop/archive/refs/tags/v1.9.2.tar.gz
+	source = https://github.com/cryptoadvance/specter-desktop/archive/refs/tags/v1.13.0.tar.gz
 	source = specter.service
 	source = version.patch
 	source = specter-desktop.install
-	sha256sums = 711648c9b82ddc166ef927830fb2534fbe6bbdf4c1b2449bfd0edabf67d6e6e7
+	sha256sums = 9d0228e19ff12818fb3cf5e4ea66870e6e5d337fa8413fb8b7015900db28bf80
 	sha256sums = 9b5f57a0ebd48e6b7d1ac240913e4b502a6e3ffc5b64ff87ed263f1a4810a265
-	sha256sums = d073993940a460454ac8d9e7e3b4b073ad8d4826ede06c57c333899efba0d7f8
+	sha256sums = a37eca906ab2227984c36c8023cebb2ed54d8ceb46b7babb83f3982784f30d2b
 	sha256sums = 668ace7f14369014e42197321fa7e0edc90737c87e2b6a68354ab205d37e3aa6
 
 pkgname = specter-desktop
