@@ -1,7 +1,7 @@
 pkgbase = nanovna-saver
 	pkgdesc = PC control for the NanoVNA.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mihtjel/nanovna-saver
 	arch = any
 	license = GPL3
@@ -14,6 +14,6 @@ pkgbase = nanovna-saver
 	source = nanovna-saver-0.5.3.tar.gz::https://github.com/mihtjel/nanovna-saver/archive/v0.5.3.tar.gz
 	source = nanovna-saver.desktop
 	md5sums = a6f4cf094388b89cbb25ec8af8e33739
-	md5sums = 7905a0edb1bfa830d677aa79a6133229
+	md5sums = 2b23743a02100506da159231e775fd5a
 
 pkgname = nanovna-saver

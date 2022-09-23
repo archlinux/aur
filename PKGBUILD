@@ -1,7 +1,7 @@
 # Maintainer: Antony Jordan <antony.r.jorda at gmail dot com>
 pkgname=nanovna-saver
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PC control for the NanoVNA."
 arch=(any)
 url="https://github.com/mihtjel/nanovna-saver"
@@ -14,7 +14,7 @@ source=(
 )
 
 md5sums=('a6f4cf094388b89cbb25ec8af8e33739'
-         '7905a0edb1bfa830d677aa79a6133229')
+         '2b23743a02100506da159231e775fd5a')
 
 build() {
     cd "$pkgname-$pkgver"
