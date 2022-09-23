@@ -1,0 +1,10 @@
+pkgbase = foundry-nuke
+	pkgver = 13.2v3
+	pkgrel = 1
+	url = https://www.foundry.com/products/nuke
+	arch = any
+	provides = nuke
+	source = https://www.foundry.com/products/download_product?file=Nuke13.2v3-linux-x86_64.tgz
+	md5sums = 112031aa2dae0e1ba97db423aa325a7a
+
+pkgname = foundry-nuke
