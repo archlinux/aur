@@ -1,7 +1,7 @@
 pkgbase = plots
 	pkgdesc = A graph plotting app for GNOME
-	pkgver = 0.6.2
-	pkgrel = 3
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/alexhuntley/Plots
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = plots
 	depends = python-pyglm
 	depends = python-gobject
 	depends = python-opengl
-	source = plots-0.6.2.tar.gz::https://github.com/alexhuntley/Plots/archive/v0.6.2.tar.gz
-	sha256sums = f6b720298271ebe8f8cba73fdf528ad8c499ce12a096ad9973e239fa515ab14b
+	source = plots-0.8.1.tar.gz::https://github.com/alexhuntley/Plots/archive/v0.8.1.tar.gz
+	sha256sums = 23f9cb614bbdf4f0eb1fafc7fe3aeb68579a9d10275f71ab1ca5ec8817a3b15f
 
 pkgname = plots
