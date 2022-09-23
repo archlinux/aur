@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-blur-my-shell
 _pkgbase=blur-my-shell
 pkgver=43
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
@@ -41,4 +41,7 @@ package() {
     do
       install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
     done
+
+  # Patch for 43 https://github.com/aunetx/blur-my-shell/issues/339
+  sed -i '/"42"/c \ \ \ \ \ \ "42", "43"' ${_destdir}/metadata.json
 }
