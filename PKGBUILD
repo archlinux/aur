@@ -4,7 +4,7 @@
 # Contributor: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.5.19
+pkgver=1.5.20
 pkgrel=1
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
@@ -21,7 +21,7 @@ optdepends=(aspell-en id3lib sqlite
 install=upmpdcli.install
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz"
         'upmpdcli.service')
-sha256sums=('67fa1f5c06fecd404f3414b25a070c9deabe917241ed6881b7a8e41e8379ed09'
+sha256sums=('c6879fee99f8f289717fdceb5de3ac7669b225c333c1db80e66cafca8360f134'
             '53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9')
 backup=('etc/upmpdcli.conf')
 
