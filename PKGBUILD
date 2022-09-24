@@ -10,7 +10,7 @@ arch=("x86_64")
 provides=("supabase")
 conflicts=("supabase")
 source=("https://github.com/supabase/cli/releases/download/v$pkgver/supabase_${pkgver}_linux_amd64.tar.gz")
-sha256sums=("51a59582846af091fb53c72967482ae4443c617685dcc5c4f564bc77dfacbcce")
+sha256sums=("e0599cde5fa58c1776c3b136b027b8a23bec5d710bcbccd2ce078c0e3eb1cc1c")
 optdepends=(
     'bash-completion: for shell auto-completion'
     'zsh-completions: for shell auto-completion'
