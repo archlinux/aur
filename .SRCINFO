@@ -1,6 +1,6 @@
 pkgbase = lorien-bin
 	pkgdesc = Infinite canvas drawing/whiteboarding app
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/mbrlabs/Lorien
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = lorien-bin
 	depends = libxau
 	depends = libxdmcp
 	conflicts = lorien-git
-	source = https://github.com/mbrlabs/Lorien/releases/download/v0.4.0/Lorien_v0.4.0_Linux.tar.xz
+	source = https://github.com/mbrlabs/Lorien/releases/download/v0.5.0/Lorien_0.5.0_Linux.tar.xz
 	source = lorien.png
 	source = lorien.desktop
-	sha256sums = a7795d8d61d49629c56ee87f97d66473ff46c18e521f879634357a1e321e1d2a
+	sha256sums = ea8820088b07ed3bc79121de8dffbcc1cd4402990af663b0c2c62718d2585658
 	sha256sums = fcdd491ea3fa4e3ea0c43b15f2c3b92974f550c97abe5b081ac1cab614612851
 	sha256sums = 635c0be1607f406b4c51ab3f7b1d55c7c0f8fcfeddbe68a54723817cd6bda60f
 
