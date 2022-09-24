@@ -11,7 +11,7 @@ url="https://github.com/fn2006/PollyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme')
 provides=('pollymc')
-conflicts=('pollymc')
+conflicts=('polymc' 'pollymc')
 optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/fn2006/PollyMC/releases/download/${pkgver}/PollyMC-Linux-Qt6-${pkgver}.tar.gz")

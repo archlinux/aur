@@ -16,6 +16,7 @@ pkgbase = pollymc-bin
 	optdepends = java-runtime=8: support for Minecraft versions < 1.17
 	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
 	provides = pollymc
+	conflicts = polymc
 	conflicts = pollymc
 	noextract = PollyMC-Linux-Qt6-1.4.2.tar.gz
 	source = https://github.com/fn2006/PollyMC/releases/download/1.4.2/PollyMC-Linux-Qt6-1.4.2.tar.gz
