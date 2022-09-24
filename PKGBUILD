@@ -1,6 +1,6 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-patches'
-pkgver="2.69.0"
+pkgver="2.69.1"
 pkgrel=1
 pkgdesc='Official patches maintained by ReVanced'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('java-environment>=17')
 source=("${url}/releases/download/v${pkgver}/revanced-patches-${pkgver}.jar"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('01b7c569c8603584ce1365c417fd43d0c6105583846be1df1ba67285722382e3'
+sha256sums=('a8d9f344c3fc2cc76bea967d873d9f47cb7d3dfcd322d2478522ebc4f62cff58'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
