@@ -1,10 +1,10 @@
 # Maintainer: hertg <aur@her.tg>
 # This file is generated automatically
-_version=0.18.0
+_version=0.18.1
 _pkgname=egpu-switcher-bin
-_pkgver=0.18.0
-_sha256sum=c7cf6e3dbcd41d9cfb5e8f2ff16736476d4600b87198ff0ac5ea6de3cf8397c4
-_source=${_pkgname}-${_pkgver}::https://github.com/hertg/egpu-switcher/releases/download/0.18.0/egpu-switcher-amd64
+_pkgver=0.18.1
+_sha256sum=b07504dbc1d27cefb109018ad5302c36e62ddef84e091d12007b6515343b226c
+_source=${_pkgname}-${_pkgver}::https://github.com/hertg/egpu-switcher/releases/download/0.18.1/egpu-switcher-amd64
 pkgname=$_pkgname
 pkgver=$_pkgver
 pkgdesc='Automatically detect and use eGPU on startup'
