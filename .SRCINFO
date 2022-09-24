@@ -1,6 +1,6 @@
 pkgbase = gambit-c-git
 	pkgdesc = Scheme R5RS interpreter and compiler (via C) - git version
-	pkgver = 4.9.3.r1633.g5c8e698e
+	pkgver = 4.9.4.r96.g076710e5
 	pkgrel = 1
 	url = http://gambitscheme.org
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = gambit-c-git
 	provides = gambit-c
 	conflicts = gambit-c
 	options = staticlibs
+	options = !buildflags
+	options = !makeflags
 	source = gambit-scheme::git+https://github.com/gambit/gambit.git
 	md5sums = SKIP
 
