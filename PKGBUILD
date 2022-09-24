@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-gnome-clipboard-history
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Gnome Clipboard History is a Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=('any')
