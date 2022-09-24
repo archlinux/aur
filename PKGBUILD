@@ -15,6 +15,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/fn2006/PollyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
+conflicts=('polymc')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
