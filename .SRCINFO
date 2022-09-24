@@ -1,0 +1,25 @@
+pkgbase = pollymc-qt5-bin
+	pkgdesc = Minecraft launcher with ability to manage multiple instances.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/fn2006/PollyMC
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = java-runtime=8: support for Minecraft versions < 1.17
+	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
+	provides = pollymc
+	provides = pollymc-qt5
+	conflicts = pollymc
+	conflicts = pollymc-qt5
+	noextract = PollyMC-Linux-1.4.2.tar.gz
+	source = https://github.com/fn2006/PollyMC/releases/download/1.4.2/PollyMC-Linux-1.4.2.tar.gz
+	sha256sums = fe7a5221f361e53562f75a1ba23963845a65d4eec7b46afc6507da158c2d041d
+
+pkgname = pollymc-qt5-bin
