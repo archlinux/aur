@@ -8,7 +8,7 @@ _commit=a85ad0ea38bdc07968a3e28697d2606831b33e64
 _chromiumver=104.0.5112.81
 _gcc_patchset=2
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
