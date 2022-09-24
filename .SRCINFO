@@ -1,0 +1,16 @@
+pkgbase = python-rpa
+	pkgdesc = ModernGL: High performance rendering for Python 3
+	pkgver = 1.48.1
+	pkgrel = 1
+	url = https://github.com/tebelorg/RPA-Python
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = opencv
+	depends = python
+	depends = python-tagui
+	depends = tesseract
+	source = https://files.pythonhosted.org/packages/source/r/rpa/rpa-1.48.1.tar.gz
+	b2sums = SKIP
+
+pkgname = python-rpa
