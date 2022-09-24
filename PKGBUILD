@@ -1,7 +1,7 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 pkgname=homeassistant-supervised
-pkgver=1.2.2
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Home Assistant Supervised"
 arch=('x86_64')
 url="https://www.home-assistant.io/"
@@ -22,8 +22,8 @@ depends=(
 makedepends=('git')
 conflicts=('docker-desktop')
 install=.INSTALL
-backup=(etc/docker/daemon.json)
-_tag=2f62e65aab05fba7dbbf70d6c91a02f98067631f # git rev-parse "$pkgver"
+backup=(etc/docker/daemon.json,usr/lib/systemd/system/systemd-journal-gatewayd.socket)
+_tag=46ec13fd49800b33ab818d1b426c40aec43b025c # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/supervised-installer.git#tag=${_tag}")
 md5sums=('SKIP')
 
@@ -36,4 +36,5 @@ package() {
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/hassio-apparmor.service" "${pkgdir}/usr/lib/systemd/system/hassio-apparmor.service"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/hassio-supervisor.service" "${pkgdir}/usr/lib/systemd/system/hassio-supervisor.service"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/usr/share/hassio/apparmor/hassio-supervisor" "${pkgdir}/usr/share/hassio/apparmor/hassio-supervisor"
+    install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/usr/lib/systemd/system/systemd-journal-gatewayd.socket" "${pkgdir}/usr/lib/systemd/system/systemd-journal-gatewayd.socket"
 }

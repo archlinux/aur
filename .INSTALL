@@ -44,7 +44,7 @@ check_machine() {
 
 adjust_config() {
     # Install Supervisor
-    sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}"/bin/hassio-supervisor
+    sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}/bin/hassio-supervisor"
     sed -i -e "s,%%BINARY_DOCKER%%,${BINARY_DOCKER},g" \
         -e "s,%%SERVICE_DOCKER%%,${SERVICE_DOCKER},g" \
         -e "s,%%BINARY_HASSIO%%,${PREFIX}/bin/hassio-supervisor,g" \
@@ -85,6 +85,13 @@ post_install() {
     if [ "$(systemctl is-active systemd-resolved)" = 'inactive' ]; then
         systemctl enable systemd-resolved.service> /dev/null 2>&1;
         systemctl start systemd-resolved.service> /dev/null 2>&1;
+    fi
+
+    # Enable and start systemd-journal-gatewayd
+    if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
+        info "Enable systemd-journal-gatewayd"
+        systemctl enable systemd-journal-gatewayd.socket> /dev/null 2>&1;
+        systemctl start systemd-journal-gatewayd.socket> /dev/null 2>&1;
     fi
 
     # Enable and start docker
@@ -170,9 +177,11 @@ EOF
             echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
         fi
     else
-        echo
-        echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
-        echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
+        if ! grep -q "systemd.unified_cgroup_hierarchy=false" /proc/cmdline; then
+            echo
+            echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
+            echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
+        fi
     fi
     echo
     echo "Within a few minutes you will be able to reach Home Assistant at:"
@@ -191,6 +200,12 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
+    # Enable and start systemd-journal-gatewayd
+    if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
+        info "Enable systemd-journal-gatewayd"
+        systemctl enable systemd-journal-gatewayd.socket> /dev/null 2>&1;
+        systemctl start systemd-journal-gatewayd.socket> /dev/null 2>&1;
+    fi
     adjust_config
     systemctl start hassio-apparmor.service
     systemctl start hassio-supervisor.service
