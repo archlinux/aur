@@ -12,7 +12,6 @@ makedepends=("cmake" "git" "libcaption")
 source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=5c3866fcd3ae3834c75715e52239d531d445fd65")
 sha256sums=("SKIP")
 
-# Need to compile plugin in OBS compilation process
 build() {
   cd "$pkgname"
   cmake -B build \
