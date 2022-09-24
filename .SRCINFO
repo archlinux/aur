@@ -1,15 +1,15 @@
 pkgbase = remnote
 	pkgdesc = All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge
-	pkgver = 1.8.30
+	pkgver = 1.8.33
 	pkgrel = 1
 	url = https://www.remnote.com
 	arch = x86_64
 	license = custom:Commercial
-	noextract = RemNote-1.8.30.AppImage
+	noextract = RemNote-1.8.33.AppImage
 	options = !strip
-	source = https://download.remnote.io/RemNote-1.8.30.AppImage
+	source = https://download.remnote.io/RemNote-1.8.33.AppImage
 	source = remnote.sh
-	sha256sums = 994fd5338ebe1afb852ecd52ed8bad3b22aaef7162b075b680d90a0c5cc63b4a
+	sha256sums = a3d35ff16bc1057b39daa268bdcc4b71910b23da38c01e6bd45d2619e07c227d
 	sha256sums = 25f625c75af753260ed530a759f7adb09fe8cc164ec2f566923a1d229e6a2485
 
 pkgname = remnote
