@@ -1,0 +1,23 @@
+pkgbase = xxdiff-git
+	pkgdesc = A graphical browser for file and directory differences.
+	pkgver = r533.fe42f80
+	pkgrel = 1
+	url = https://github.com/blais/xxdiff
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = i686
+	arch = pentium4
+	license = GPL2
+	makedepends = flex>=2.5.31
+	makedepends = bison
+	makedepends = git
+	makedepends = python-docutils
+	depends = qt6-base
+	provides = xxdiff
+	conflicts = xxdiff
+	source = xxdiff::git+https://github.com/blais/xxdiff.git
+	sha256sums = SKIP
+
+pkgname = xxdiff-git
