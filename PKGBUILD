@@ -16,6 +16,13 @@ optdepends=('plasma-desktop: for included plasma theme'
             'latte-dock: for included latte theme')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+provides=(Monterey-kde-theme-plasmoids-git)
+conflicts=(Monterey-kde-theme-plasmoids-git monterey-kde-theme-git)
+pkgver() {
+	cd "${_pkgname}"
+    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 package() {
   install -dm0755 "$pkgdir"/usr/share/{aurorae/themes,color-schemes,plasma/{desktoptheme,look-and-feel,plasmoids},Kvantum,sddm/themes,wallpapers,latte/layouts}
