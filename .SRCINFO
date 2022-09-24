@@ -6,6 +6,7 @@ pkgbase = albion-online-launcher-bin
 	url = https://albiononline.com/
 	install = albion-online-launcher-bin.install
 	arch = x86_64
+	groups = albion
 	license = custom
 	makedepends = chrpath
 	depends = libgl

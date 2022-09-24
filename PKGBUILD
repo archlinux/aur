@@ -11,7 +11,7 @@ pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
-makedepends=(chrpath)
+groups=('albion')
 depends=(
   'libgl'
   'alsa-lib'
@@ -22,7 +22,9 @@ depends=(
   'xdelta3'
   'zenity'
 )
-optdepends=()
+makedepends=(chrpath)
+#checkdepends=()
+#optdepends=()
 source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20220919153054/albion-online-setup"
 	"albion-online-launcher.desktop" "albion-online" "Albion-Online.patch")
 install=albion-online-launcher-bin.install
