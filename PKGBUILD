@@ -2,9 +2,9 @@
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2022
 pkgver=2022.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Review, annotate, and edit PDF Documents"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.qoppa.com/pdfstudioviewer"
 license=('custom')
 depends=('java-runtime>=8' 'sane')
