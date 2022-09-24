@@ -2,7 +2,8 @@
 
 pkgname=pipewire-support
 pkgver=1
-pkgrel=11
+pkgrel=13
+
 arch=('any')
 url="https://wiki.archlinux.org/index.php/PipeWire"
 license=('GPL')
@@ -13,10 +14,11 @@ depends=("gst-plugin-pipewire"
         "pipewire-jack"
         "pipewire-pulse"
         "pipewire-v4l2"
+        "pipewire-x11-bell"
         "pipewire-zeroconf"
         "realtime-privileges"
         "sof-firmware"
-        "wireplumber")
+        "pipewire-session-manager")
 conflicts=("pulseaudio-equalizer"
         "pulseaudio-jack"
         "pulseaudio-lirc"
