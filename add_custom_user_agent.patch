@@ -1,0 +1,12 @@
+diff --git a/privatebin.go b/privatebin.go
+index 2e9cd0e..60125db 100644
+--- a/privatebin.go
++++ b/privatebin.go
+@@ -141,6 +141,7 @@ func (c *Client) CreatePaste(
+ 		c.URL.String(),
+ 		bytes.NewBuffer(body))
+ 
++  req.Header.Set("User-Agent", "privatebin client")
+ 	req.Header.Set("Content-Type",
+ 		"application/x-www-form-urlencoded")
+ 	req.Header.Set("Content-Length", strconv.Itoa(len(body)))
