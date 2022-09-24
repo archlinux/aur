@@ -11,12 +11,13 @@ groups=()
 depends=('yt-dlp' 'ffmpeg' 'electron')
 makedepends=('git' 'npm' 'jq' 'sed')
 # install=$pkgname.install
-source=("$pkgname::git+https://github.com/aandrew-me/ytDownloader.git"
+source=("$pkgname-$pkgver::https://github.com/aandrew-me/ytDownloader/archive/refs/tags/v${pkgver}.tar.gz"
 'ytdownloader-gui.sh' 'ytdownloader-gui.desktop')
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP') #autofill using updpkgsums
 
 build() {
+    mv "$srcdir"/"ytDownloader-${pkgver}" "$srcdir"/"$pkgname"
     STRING_TO_REPLACE='ffmpeg=cp.execSync("which ffmpeg").toString("utf8").split("\\n")[0]'
     cd "$srcdir"/"$pkgname"
     rm "$srcdir"/"$pkgname/windows.sh"
