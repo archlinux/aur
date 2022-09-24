@@ -1,5 +1,6 @@
-# Maintainer: Lenny McLennington <lenny@sneed.church>
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: fn2006 <usernamefn2006alreadyused@protonmail.com>
+# Contributor: Lenny McLennington <lenny@sneed.church>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=pollymc-bin
 pkgver=1.4.2
