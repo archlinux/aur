@@ -1,6 +1,6 @@
 pkgbase = kafka
 	pkgdesc = A high-throughput distributed messaging system
-	pkgver = 2.12_3.2.1
+	pkgver = 2.12_3.2.3
 	pkgrel = 1
 	url = https://kafka.apache.org/
 	install = install_kafka.sh
@@ -20,7 +20,7 @@ pkgbase = kafka
 	backup = etc/kafka/producer.properties
 	backup = etc/kafka/server.properties
 	backup = etc/kafka/tools-log4j.properties
-	source = https://dlcdn.apache.org///kafka/3.2.1/kafka_2.12-3.2.1.tgz
+	source = https://dlcdn.apache.org///kafka/3.2.3/kafka_2.12-3.2.3.tgz
 	source = zookeeper_log4j.properties
 	source = systemd_kafka.service
 	source = systemd_sysusers.d_kafka.conf
