@@ -1,8 +1,7 @@
 pkgbase = hardcode-fixer-git
 	pkgdesc = Fixes Hardcoded Icons
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
-	epoch = 2
 	url = https://github.com/Foggalong/hardcode-fixer
 	arch = i686
 	arch = x86_64

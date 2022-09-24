@@ -2,9 +2,10 @@
 # Contributor: Robert Orzanna <orschiro@gmail.com>
 
 pkgname=hardcode-fixer-git
-pkgver=1.0
+_pkgver=2.0
+pkgver=2.0
 pkgrel=1
-epoch=2
+#epoch=2
 pkgdesc="Fixes Hardcoded Icons"
 arch=('i686' 'x86_64')
 url="https://github.com/Foggalong/hardcode-fixer"
@@ -17,7 +18,7 @@ pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "$_pkgver" "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
