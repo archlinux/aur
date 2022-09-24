@@ -2,12 +2,15 @@
 _dist=Time-Moment
 pkgname=perl-time-moment
 pkgver=0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Encoding and decoding of UTF-8 encoding form"
 arch=(x86_64)
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=('perl')
+depends=(
+	perl
+	perl-test-requires
+)
 checkdepends=(perl-test-number-delta)
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/$_dist-$pkgver.tar.gz")
