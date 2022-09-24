@@ -1,6 +1,6 @@
 pkgbase = bluemail
 	pkgdesc = BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts
-	pkgver = 1.131.17
+	pkgver = 1.131.20
 	pkgrel = 1
 	url = https://www.bluemail.me
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = bluemail
 	depends = libxss
 	options = !strip
 	source = LICENSE
-	source = bluemail-1.131.17.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_139.snap
+	source = bluemail-1.131.20.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_141.snap
 	source = bluemail.sh
 	sha512sums = 546994dbf25972659db6130402926020fdfc763b3f41580d812aeb785824218bae1204babe99af51ad91fd758ad0e7f4d0636a00e9130ce13fc6ebb90540e9dc
-	sha512sums = 4b085c01a843256887aca8b0a5de740f288f1c13bfc0e81b07cf4ff68c76835670dbc82f2e24c84792387a2932c31f7a93e07f991a4b680e37e6b40a51764ccf
+	sha512sums = 3ea460144545b9708e192726ed81f2b183e88d63e033b4b37cad551116c55d38dda5aaa9e93dc8c2f516908e23c60eb6c652faf5f3182fe780d3b48d2226cdaf
 	sha512sums = 4f435819d7cd4db345c92858619618a693764dbab8fe9bec8155af9b2236f0e8a671a724fee06773e478bae2924694d0c2bf9a53ae2649fb5964b8b6cc739fba
 
 pkgname = bluemail
