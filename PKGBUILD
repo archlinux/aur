@@ -33,8 +33,14 @@ makedepends=(
 )
 provides=(phosh)
 conflicts=(phosh)
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=(
+	"git+${url}.git"
+	"pam_phosh"
+)
+sha256sums=(
+	'SKIP'
+	'b7793f80c533e84ad8adfe8bb46c69f107575e724aa9b53b41f370baa37e4fd5'
+	)
 
 pkgver() {
 	cd phosh
@@ -56,4 +62,7 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" meson install -C _build
+
+		install -Dm644 "$srcdir"/pam_phosh \
+			"$pkgdir"/etc/pam.d/phosh
 }
