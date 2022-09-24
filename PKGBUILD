@@ -1,8 +1,8 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: Minzord
 
 pkgname="aura-git"
-pkgver=3.2.5.r0.g0e17654b
+pkgver=3.2.9.r150.gaf05e0d8
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
@@ -24,13 +24,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}/haskell"
   mkdir -p "aura/bin"
   stack --jobs "$[$(nproc)+1]" --local-bin-path "aura/bin/" install -- aura
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/aura"
+  cd "${srcdir}/${pkgname}/haskell/aura"
 
   # Install binary
   install -Dm755 "bin/aura" "${pkgdir}/usr/bin/aura"
