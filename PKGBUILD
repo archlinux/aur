@@ -155,6 +155,27 @@ _build_zfs=
 # Enable bcachefs
 _bcachefs=
 
+# Enable NEST
+# NEST is a experimental cfs scheduler you can find more about here:
+# https://www.phoronix.com/news/Nest-Linux-Scheduling-Warm-Core
+# https://gitlab.inria.fr/nest-public/nest-artifact/-/tree/main
+# ATTENTION!:NEST is only active if you start applications with
+# taskset -c $THREADS application
+# example: taskset -c 0-23 application
+# ATTENTION!:Just works together with the BORE Scheduler and CFS Scheduler
+_nest=
+
+# Enable LATENCY NICE
+# Latency nice is a approach to sets latency-nice as a per-task attribute
+# It can improve the latency of applications similar to sched_nice, but focused on the latency
+# You need to set the values per task
+# Ananicy-cpp has a experimental implementation for this
+# It converts sched_nice to latency_nice and set this per task
+# You need to configure ananicy-cpp for this or use existing settings
+# If you want to test it, use the following branch
+# https://gitlab.com/ananicy-cpp/ananicy-cpp/-/tree/feature/latency-nice
+_latency_nice=
+
 if [ -n "$_use_llvm_lto" ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
@@ -164,7 +185,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.19
-_minor=10
+_minor=11
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -174,7 +195,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -252,6 +273,14 @@ fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
+fi
+## NEST Support
+if [ -n "$_nest" ]; then
+    source+=("${_patchsource}/sched/0001-NEST.patch")
+fi
+## Latency NICE Support
+if [ -n "$_latency_nice" ]; then
+    source+=("${_patchsource}/misc/0001-Add-latency-priority-for-CFS-class.patch")
 fi
 
 export KBUILD_BUILD_HOST=cachyos
@@ -970,9 +999,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('67dab932e85f9b9062ced666c8ea888230a1dadfd624b05aead6b6ebc6d3bdd5'
-            '8c42384613b972a88f2fda8413f31d580a4170158767f14f7595a78497367c57'
+sha256sums=('5554d2f90b806bb3454fcf3432882cf85077d660a89db5a4e8d7375271e3d973'
+            '53e59eaf64c80c9e2593c516f6c903a01a74a707314fc7b05c909e628d1e8883'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            '37b05cf8cbefcc7660a548916ceba53adab153ef1202f49f465d02221fd4fa62'
-            '9051cc9bd10bd70578eb53f5790c872d539a035d4e7e1268a37a7fc2faf3e58f'
+            'e8c5da2bac99834d059d0514dd751553dec4884ced222b871e13e1b98a6cc39a'
+            'a2746b23a66d3b78181267e6a6ce50b46824b54d6d4730ca1a8d1d19463a0d36'
             'd9ad53018d77344a31ec28482a09fa11d5189781972b1ed850102e3a9e20ba3a')
