@@ -19,7 +19,8 @@ depends=('glibc' 'binutils' 'libmpc')
 options=('!emptydirs' '!strip' '!buildflags')
 source=(
   "http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  #"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "https://libisl.sourceforge.io/isl-${_islver}.tar.bz2"
   # Fix build with glibc 2.28, which removes <sys/ustat.h>
   'glibc2.28-ustat.patch'
   'glibc2.30-ipc_perm.patch'
