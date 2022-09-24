@@ -1,6 +1,6 @@
 pkgbase = cewl-git
 	pkgdesc = CeWL is a Custom Word List Generator
-	pkgver = 5.4.3.2
+	pkgver = 139.ff7e485
 	pkgrel = 1
 	url = http://www.digininja.org/projects/cewl.php
 	arch = x86_64
