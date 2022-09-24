@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -18,7 +18,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ecb9091f557c1d0348ec63fc8a699071d2f46ee2f91affd23832ae79aa259398')
+sha256sums=('75c3351bdf3052e1075e3fad68ebd47f23147223260a84c24998ebb676096ebc')
 
 prepare() {
 	cd "$pkgname-$pkgver"
