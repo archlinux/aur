@@ -1,7 +1,7 @@
 pkgbase = vpaint
 	pkgdesc = VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology.
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vpaint.org
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,9 @@ pkgbase = vpaint
 	depends = qt5-base
 	depends = libxkbcommon-x11
 	conflicts = vpaint-git
+	source = Gui.pro.patch
 	source = https://github.com/dalboris/vpaint/archive/v1.7.tar.gz
+	md5sums = b9fd8b31d9a6edda47df543a7d4bfe90
 	md5sums = f714e2bd6569e08e16f89e22cfbcb2dd
 
 pkgname = vpaint
-

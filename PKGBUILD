@@ -3,7 +3,7 @@
 
 pkgname=vpaint
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -12,8 +12,14 @@ makedepends=('gendesk' 'icoutils')
 url='https://www.vpaint.org'
 conflicts=('vpaint-git')
 provides=()
-source=("https://github.com/dalboris/vpaint/archive/v$pkgver.tar.gz")
-md5sums=('f714e2bd6569e08e16f89e22cfbcb2dd')
+source=(
+	'Gui.pro.patch'
+	"https://github.com/dalboris/vpaint/archive/v$pkgver.tar.gz"
+)
+md5sums=(
+	'b9fd8b31d9a6edda47df543a7d4bfe90'
+	'f714e2bd6569e08e16f89e22cfbcb2dd'
+)
 
 prepare() {
 	icotool -x -o $srcdir/vpaint.png $srcdir/$pkgname-$pkgver/src/Gui/images/VPaint.ico
@@ -23,6 +29,11 @@ prepare() {
 }
 
 build() {
+	# Apply unreleased patch to un-break building 1.7 on recent linux/gcc
+	# https://github.com/dalboris/vpaint/pull/134#issuecomment-1256451558
+	# (This can be removed with any following release after current 1.7)
+	patch "$srcdir/$pkgname-$pkgver/src/Gui/Gui.pro" "$srcdir/Gui.pro.patch"
+
 	mkdir -p "$srcdir/$pkgname-$pkgver/build"
 	cd       "$srcdir/$pkgname-$pkgver/build"
 
