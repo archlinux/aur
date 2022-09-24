@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=yajsv
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Yet Another CLI JSON Schema Validator"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('b177bc924635b1cfbe2826d6c346d58d110e1cfdaea113d13fbc46cdeb40496bc80d57919c298118eca6d59acc0ce645b0a9bc97ffc0c2dd49199cb24ce541c7')
+sha256sums=('08118f3614231f3c5f86f4f68816e706e120b8c91cdf6c1caaea45a71e3e5943')
 
 build() {
   cd "$pkgname-$pkgver"
