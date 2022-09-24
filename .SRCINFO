@@ -1,6 +1,6 @@
 pkgbase = xdaliclock
 	pkgdesc = An advanced xclock substitute
-	pkgver = 2.43
+	pkgver = 2.47
 	pkgrel = 1
 	url = https://www.jwz.org/xdaliclock/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = xdaliclock
 	depends = libxext
 	depends = libxt
 	source = https://www.jwz.org/xdaliclock/xdaliclock-2.43.tar.gz
-	md5sums = 1c4a8a827c7ea02295c1bea18b13c8dc
-	sha256sums = 6b573a8bac23a72e87a1cd9966c28f1d653bdb0b28bb8fd11633a1a4c2fd9fa4
+	md5sums = 8fe019ecfa18effac6427a8a5bf04025
+	sha256sums = d4992ff62ba5bf263e6f92abc83afcb3ebfc2d4f7985c562ecf250b0bd6b50be
 
 pkgname = xdaliclock
 
