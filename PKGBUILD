@@ -1,7 +1,7 @@
 # Maintainer: Gin <ginnokami8@gmail.com>
 pkgname=waifu2x-caffe
 pkgver=v1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks. Rewritten from the original Waifu2x using Caffe. Compiled with CUDA & cuDNN enabled flags."
 arch=('x86_64')
 url="https://github.com/Gin-no-kami/waifu2x-caffe"
