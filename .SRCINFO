@@ -1,6 +1,6 @@
 pkgbase = babashka-bin
 	pkgdesc = A Clojure babashka for the grey areas of Bash.
-	pkgver = 0.9.162
+	pkgver = 0.10.163
 	pkgrel = 1
 	url = https://github.com/borkdude/babashka
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = babashka-bin
 	depends = zlib
 	provides = babashka
 	conflicts = babashka
-	source_x86_64 = babashka-bin-0.9.162-linux-amd64-static.tar.gz::https://github.com/borkdude/babashka/releases/download/v0.9.162/babashka-0.9.162-linux-amd64-static.tar.gz
-	sha256sums_x86_64 = d44047e9d625d594c8592d28debc3b770c5cd00b0d45bedff34a0021c3bbaf1d
-	source_aarch64 = babashka-bin-0.9.162-linux-aarch64-static.tar.gz::https://github.com/borkdude/babashka/releases/download/v0.9.162/babashka-0.9.162-linux-aarch64-static.tar.gz
-	sha256sums_aarch64 = 48a06abfdb40ff36a208b65d10c7c05632186e07c345476496b6167f4096b552
+	source_x86_64 = babashka-bin-0.10.163-linux-amd64-static.tar.gz::https://github.com/borkdude/babashka/releases/download/v0.10.163/babashka-0.10.163-linux-amd64-static.tar.gz
+	sha256sums_x86_64 = 62730ab178ed9e1e9371387e2a62d286c040f47db026caffa72e84d477b75f81
+	source_aarch64 = babashka-bin-0.10.163-linux-aarch64-static.tar.gz::https://github.com/borkdude/babashka/releases/download/v0.10.163/babashka-0.10.163-linux-aarch64-static.tar.gz
+	sha256sums_aarch64 = a439ca4b24a994dccfa8a5d7a89d038a8779712fd987b23e4c060d170366d147
 
 pkgname = babashka-bin
