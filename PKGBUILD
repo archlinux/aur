@@ -1,7 +1,7 @@
 # Maintainer: Sashanoraa <sasha@noraa.gay>
 
 pkgname=stargazer-gmi
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="stargzer gemini server"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~zethra/stargazer/archive/$pkgver.tar.gz")
 depends=('gcc-libs')
 makedepends=('rust' 'scdoc')
-sha256sums=('2d90b513d084e8fe2f439bea369305a91ddab55a9c135c4cf36a2a490de95587')
+sha256sums=('128a6c34ad300806aa846b482e0fdd6e2b7c519733429b7a9184174da1d3f6aa')
 
 prepare() {
     cd "stargazer-$pkgver"
