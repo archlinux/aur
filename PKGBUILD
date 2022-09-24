@@ -5,10 +5,10 @@
 
 _pkgname=librime
 pkgname=$_pkgname-sbxlm-git
-pkgver=1.4.0.r311.g805e904
+pkgver=1.4.0.r366.g5a3caf71
 _octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
 _luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
-pkgrel=5
+pkgrel=2
 epoch=1
 pkgdesc="Rime input method engine (声笔系列码 GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('cmake' 'boost' 'git' 'gtest' 'ninja')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("0001-fix-build.patch"
-        "git://github.com/sbxlmdsl/librime.git"
+        "git+https://github.com/sbxlmdsl/librime.git"
         "https://github.com/lotem/librime-octagram/archive/$_octagramcommit/librime-octagram-$_octagramcommit.tar.gz"
         "https://github.com/hchunhui/librime-lua/archive/$_luacommit/librime-lua-$_luacommit.tar.gz")
 sha512sums=('SKIP'
