@@ -1,4 +1,4 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <piotrgorski@cachyos.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -158,6 +158,26 @@ _bcachefs=
 # Enable RT kernel
 _rtkernel=
 
+# Enable NEST
+# NEST is a experimental cfs scheduler you can find more about here:
+# https://www.phoronix.com/news/Nest-Linux-Scheduling-Warm-Core
+# https://gitlab.inria.fr/nest-public/nest-artifact/-/tree/main
+# ATTENTION!:NEST is only active if you start applications with
+# taskset -c $THREADS application
+# example: taskset -c 0-23 application
+# ATTENTION!:Just works together with the BORE Scheduler and CFS Scheduler
+_nest=
+
+# Enable LATENCY NICE
+# Latency nice is a approach to sets latency-nice as a per-task attribute
+# It can improve the latency of applications similar to sched_nice, but focused on the latency
+# You need to set the values per task
+# Ananicy-cpp has a experimental implementation for this
+# It converts sched_nice to latency_nice and set this per task
+# You need to configure ananicy-cpp for this or use existing settings
+# If you want to test it, use the following branch
+# https://gitlab.com/ananicy-cpp/ananicy-cpp/-/tree/feature/latency-nice
+_latency_nice=
 
 if [[ -n "$_use_llvm_lto" && -n "$_rtkernel" ]]; then
     pkgsuffix=cachyos-rt-rc-lto
@@ -186,7 +206,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -261,10 +281,17 @@ fi
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
 fi
-
 ## rt kernel
 if [ -n "$_rtkernel" ]; then
     source+=("${_patchsource}/misc/0001-rt-rc.patch")
+fi
+## NEST Support
+if [ -n "$_nest" ]; then
+    source+=("${_patchsource}/sched/0001-NEST.patch")
+fi
+## Latency NICE Support
+if [ -n "$_latency_nice" ]; then
+    source+=("${_patchsource}/misc/0001-Add-latency-priority-for-CFS-class.patch")
 fi
 
 export KBUILD_BUILD_HOST=cachyos
@@ -1000,8 +1027,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('1af65b4cb6e12a35157741a0656cc23b941c62f5b3c7bed2fcfb8b3ab1240254'
-            '95af174f1013ff99432dbb01df3c4ef97e8c9b0fb1cc8725acef76fe28d25b4f'
-            '9f275b361dfc7d7006b82b3243603b7361bce2913d5c56f56aff5ee57a9da061'
+            'dd923e0bc0e23044b041c81ec8900b1e9ef43b14b6fd8edca41fad16abd34e69'
+            '434baa4c14f83eebb6b4b1397f74bd8ad97b687cef69092e2d1b0e85c780808c'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
             '882b0cc55f6eb6f69d9a40d65514d87b3d2dd6463a8aa05b076bda764fc64db0'
-            'ce2ee43bf1d4198ca0fb480e6b0e66389e454ec84d08960b13872e89ac8455c9')
+            'e77e5c5ceb80bc4513263034ddeeca1951962db8594a59a446030907bd06e6e6')
