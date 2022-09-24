@@ -3,7 +3,7 @@
 
 pkgname=kos
 pkgver=41
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple SUID tool written in C++'
 arch=('x86_64')
 url='https://github.com/TruncatedDinosour/kos'
@@ -15,12 +15,13 @@ optdepends=('bash'
 _bash_completions_dir='/usr/share/bash-completion/completions'
 depends=('libxcrypt')
 makedepends=('clang'
-    'pkgconf')
+    'pkgconf'
+    'bash')
 install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TruncatedDinosour/kos/archive/refs/tags/v$pkgver.tar.gz"
     'kos.sysusers')
 sha256sums=('2257ef5c6e104686f3b8f651aeda7d19ee850d75600ea595f4902199c8d3d1a3'
-            'c0517250baf3457b4429f24a370711b331945c5cdb23dc983fcd9daf7b73b05c')
+    'c0517250baf3457b4429f24a370711b331945c5cdb23dc983fcd9daf7b73b05c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver" || exit 1
@@ -34,12 +35,15 @@ build() {
         -arch x86_64 -mharden-sls=all -fcf-protection=full \
         -march=native -pipe -D_KOS_VERSION_="\"$pkgver\"" \
         ./src/main.cpp -o "${DESTDIR}kos" $(pkg-config --cflags --libs libxcrypt)
+
+    bash scripts/strip.sh "${DESTDIR}kos" || exit 3
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver" || exit 2
 
     install -Dm4755 -o root "$srcdir/$pkgname-$pkgver/kos" "$pkgdir/usr/bin/kos"
+
     install -Dm644 "${srcdir}"/kos.sysusers "${pkgdir}"/usr/lib/sysusers.d/kos.conf
     install -Dm644 "$srcdir/$pkgname-$pkgver/kos.1" "$pkgdir/usr/share/man/man1/kos.1"
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/kos/LICENSE"
