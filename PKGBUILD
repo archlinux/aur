@@ -3,19 +3,20 @@
 # Contributor: IKRadulov <ikradulov@vivaldi.net> 
 
 pkgname=mate-hud
-pkgver=22.04.4
+pkgver=22.10.3
 pkgrel=1
 pkgdesc="Run menubar commands, much like the unity 7 HUD"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-hud"
 license=('GPL2')
-depends=('rofi' 'python-gobject' 'mate-desktop' 'appmenu-gtk-module'
-         'dbus-python' 'python-psutil' 'python-setproctitle' 'python-xlib')
+depends=('appmenu-gtk-module' 'dbus-python' 'hicolor-icon-theme' 'mate-desktop'
+         'python-gobject' 'python-psutil' 'python-pyinotify' 'python-setproctitle'
+         'python-xlib' 'rofi')
 makedepends=('python-setuptools' 'python-distutils-extra')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ubuntu-mate/mate-hud/archive/${pkgver}.tar.gz")
-sha256sums=('4948df8f8e0cd057104667da7ce9d310efa0e065fdbb90b55e55c75da99af335')
+sha256sums=('763bf4251ba5efbfa2350267f9819888b675798e6fb15206d8a745cd8c3d1e6b')
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    ./setup.py "install" "--root=${pkgdir}" "--optimize=1"
+  cd "${pkgname}-${pkgver}"
+  ./setup.py install --root="${pkgdir}" --optimize=1
 }
