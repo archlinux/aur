@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.2.r11.g12b6830
+pkgver=2.0.4.r0.g101ff77
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=(
 )
 b2sums=(
 	'SKIP'
-	'dbb107d6eea8ce57e8275fb57fc24c10cbc490b1a95a80a4ae1676306d56ea4380a2b4350bea9045fdafb4730be31d060eabcc8f2e74afd3787e80564f79fca4'
+	'431a90ba59c911b5e822bf826a79228512ae1bc4221350cb0cf262f8f01c05d7c75effff59c0fc52a0f27b94ebd70d2d72c94432fcfef3920a3ae5ab179fdcd5'
 )
 
 pkgver() {
@@ -67,7 +67,6 @@ build() {
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DENABLE_VCPKG=OFF \
-		-DPUBLIC_RELEASE=ON \
 		-Wno-dev
 	cmake --build build
 }

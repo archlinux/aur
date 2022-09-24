@@ -2,6 +2,10 @@
 GID=$(id -g)
 readonly GID
 
+# https://github.com/cemu-project/Cemu/issues/173
+export LC_ALL=C
+unset LANGUAGE
+
 # https://mostlyuseful.tech/posts/overlay-mounting/
 exec unshare -rm bash -es -- \
 	"${XDG_DATA_HOME:-$HOME/.local/share}" \
