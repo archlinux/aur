@@ -17,6 +17,7 @@ pkgbase = mate-hud
 	depends = python-setproctitle
 	depends = python-xlib
 	depends = rofi
+	optdepends = DBUS-PLOTINUS: plotinus backend
 	source = mate-hud-22.10.3.tar.gz::https://github.com/ubuntu-mate/mate-hud/archive/22.10.3.tar.gz
 	sha256sums = 763bf4251ba5efbfa2350267f9819888b675798e6fb15206d8a745cd8c3d1e6b
 

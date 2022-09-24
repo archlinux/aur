@@ -13,6 +13,7 @@ depends=('appmenu-gtk-module' 'dbus-python' 'hicolor-icon-theme' 'mate-desktop'
          'python-gobject' 'python-psutil' 'python-pyinotify' 'python-setproctitle'
          'python-xlib' 'rofi')
 makedepends=('python-setuptools' 'python-distutils-extra')
+optdepends=('DBUS-PLOTINUS: plotinus backend')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ubuntu-mate/mate-hud/archive/${pkgver}.tar.gz")
 sha256sums=('763bf4251ba5efbfa2350267f9819888b675798e6fb15206d8a745cd8c3d1e6b')
 
