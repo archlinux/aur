@@ -2,18 +2,19 @@
 
 pkgname=samba-support
 pkgver=1
-pkgrel=3.1
+pkgrel=6
 arch=('any')
 url="https://wiki.archlinux.org/index.php/samba"
 license=('GPL')
 pkgdesc="Metapkg and configuration for Samba support"
 depends=("avahi"
         "nss-mdns"
-        "samba")
+        "samba"
+        "python-pysmbc")
 optdepends=('system-config-samba: The Samba configuration tool by Red Hat')
-provides=('samba-support')
 replaces=('manjaro-settings-samba')
 source=('smb.conf')
+backup=('etc/samba/smb.conf')
 md5sums=('6f594384fdd50e1a88653382fcedb12e')
 install=$pkgname.install
 

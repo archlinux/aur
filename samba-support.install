@@ -30,10 +30,6 @@ post_install() {
     systemctl is-active smb >/dev/null || systemctl enable smb
     systemctl is-active nmb >/dev/null || systemctl enable nmb
     systemctl is-active avahi-daemon >/dev/null || systemctl enable avahi-daemon
-    echo "Changing nsswitch.conf to:"
-    sed -i 's|hosts:.*|hosts: files mymachines myhostname mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns wins|g' /etc/nsswitch.conf
-    echo ""
-    echo "hosts: files mymachines myhostname mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns wins"
     add_group
 }
 
