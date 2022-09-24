@@ -5,7 +5,7 @@
 pkgname=dogecoin-qt
 _binname=dogecoin
 pkgver=1.14.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
@@ -27,12 +27,14 @@ options=(!lto)
 build() {
     cd "$srcdir/$_binname-$pkgver/"
 
+    LDFLAGS=${LDFLAGS/-static/}
+
     ./autogen.sh
 
     ./configure --with-incompatible-bdb --prefix=/usr \
 	--sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib --with-gui=qt5
 
-    LDFLAGS=${LDFLAGS/-static/} make
+    make
 }
 
 package() {

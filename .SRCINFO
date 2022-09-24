@@ -1,7 +1,7 @@
 pkgbase = dogecoin-qt
 	pkgdesc = Cryptocurrency
 	pkgver = 1.14.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dogecoin.com/
 	install = dogecoin.install
 	arch = x86_64
