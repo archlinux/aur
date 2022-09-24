@@ -1,0 +1,18 @@
+pkgbase = cewl-git
+	pkgdesc = CeWL is a Custom Word List Generator
+	pkgver = 139.ff7e485
+	pkgrel = 1
+	url = http://www.digininja.org/projects/cewl.php
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ruby
+	depends = ruby-bundler
+	depends = libxslt
+	depends = perl-image-exiftool
+	provides = cewl
+	conflicts = cewl
+	source = cewl-git::git+https://github.com/digininja/CeWL.git
+	sha512sums = SKIP
+
+pkgname = cewl-git
