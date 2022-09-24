@@ -2,8 +2,8 @@
 
 _pkgname='KDiskMark'
 pkgname="${_pkgname,,}-git"
-pkgver=2.3.0.r4.g9783700
-pkgrel=1
+pkgver=3.1.2.r3.g59c9758
+pkgrel=2
 pkgdesc='Simple disk benchmark tool'
 arch=('x86_64')
 url='https://github.com/JonMagon/KDiskMark'
@@ -19,12 +19,19 @@ pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd ${_pkgname}
+  git submodule init
+  git submodule update
+}
+
 build() {
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
   cmake -B build -S "${_pkgname}" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBEXECDIR='lib' \
     -Wno-dev
   make -C build
 }

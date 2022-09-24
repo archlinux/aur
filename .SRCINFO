@@ -1,7 +1,7 @@
 pkgbase = kdiskmark-git
 	pkgdesc = Simple disk benchmark tool
-	pkgver = 2.3.0.r4.g9783700
-	pkgrel = 1
+	pkgver = 3.1.2.r3.g59c9758
+	pkgrel = 2
 	url = https://github.com/JonMagon/KDiskMark
 	arch = x86_64
 	license = GPL3
