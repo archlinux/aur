@@ -1,3 +1,4 @@
+# Maintainer: Paul Spruce <paul.spruce@gmail.com>
 _pkgname=aquatone
 pkgname=aquatone-git
 pkgver=142.2daa022
