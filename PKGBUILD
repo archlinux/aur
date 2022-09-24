@@ -1,7 +1,7 @@
 # Maintainer Filip Parag <aur@filiparag.com>
 
 pkgname=wikiman
-pkgver=2.13
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Offline search engine for manual pages, Arch Wiki, Gentoo Wiki and other documentation."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('make')
 depends=('man' 'fzf' 'ripgrep' 'awk' 'w3m' 'findutils' 'coreutils' 'sed' 'grep' 'parallel')
 optdepends=('arch-wiki-docs: enable Arch Wiki')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('4a34d3a47ec22dfa4b3a759d7bed4d01bb25b5b5d7844d02ae3b7f2b33f18274')
+sha256sums=('096a163022f14068edf9aef132d878a8a5dbacdcec61dd0028efeb811a0975b6')
 backup=('etc/wikiman.conf')
 
 package() {
