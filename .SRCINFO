@@ -1,0 +1,21 @@
+pkgbase = git-of-theseus-git
+	pkgdesc = Plot stats on Git repositories
+	pkgver = 0.2.0.r31.gc949a53
+	pkgrel = 1
+	url = https://github.com/erikbern/git-of-theseus
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-gitpython
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-wcmatch
+	depends = python-pygments
+	depends = python-matplotlib
+	provides = git-of-theseus
+	conflicts = git-of-theseus
+	source = git-of-theseus::git+https://github.com/erikbern/git-of-theseus.git
+	md5sums = SKIP
+
+pkgname = git-of-theseus-git
