@@ -2,15 +2,15 @@
 # Contributor: Robert Orzanna <orschiro@gmail.com>
 
 pkgname=hardcode-fixer-git
-pkgver=r527.29a47ba
+pkgver=1.0
 pkgrel=1
-epoch=1
+#epoch=1
 pkgdesc="Fixes Hardcoded Icons"
 arch=('i686' 'x86_64')
 url="https://github.com/Foggalong/hardcode-fixer"
 license=('GPL')
 makedepends=('git')
-source=("$pkgname"::'git://github.com/Foggalong/hardcode-fixer.git')
+source=("$pkgname"::'git+https://github.com/Foggalong/hardcode-fixer.git')
 md5sums=('SKIP')
 
 pkgver() {

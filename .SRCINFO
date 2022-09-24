@@ -1,15 +1,13 @@
 pkgbase = hardcode-fixer-git
 	pkgdesc = Fixes Hardcoded Icons
-	pkgver = r527.29a47ba
+	pkgver = 1.0
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/Foggalong/hardcode-fixer
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	source = hardcode-fixer-git::git://github.com/Foggalong/hardcode-fixer.git
+	source = hardcode-fixer-git::git+https://github.com/Foggalong/hardcode-fixer.git
 	md5sums = SKIP
 
 pkgname = hardcode-fixer-git
-
