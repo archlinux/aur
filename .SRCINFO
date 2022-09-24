@@ -4,6 +4,7 @@ pkgbase = clash-verge
 	pkgrel = 1
 	url = https://github.com/zzzgydi/clash-verge
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = yarn
 	makedepends = cargo-tauri
