@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
 pkgname=phpactor
-pkgver=0.18.0
-pkgrel=3
+pkgver=2022.09.11
+pkgrel=1
 pkgdesc="PHP completion, refactoring, introspection tool and language server"
 arch=(any)
 url="https://github.com/phpactor/phpactor"
@@ -13,7 +13,7 @@ optdepends=('composer: faster class location and more features'
   'git: faster refactorings in your repository scope')
 provides=(phpactor)
 source=("https://github.com/phpactor/phpactor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("7e4ccf68bec067d163b21f88f6fdcb4cf3af3ac36cfbba4934b392d49a67ee17")
+sha256sums=("424ae7bd9cd56958ce8b6beaf0808d2d85eb018f1b3cc3d01c87ae0f3fca8ed3")
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -25,6 +25,9 @@ package() {
   cp -r . "$LIB_DIRECTORY"
 
   composer install --no-interaction --no-dev --optimize-autoloader --working-dir "$LIB_DIRECTORY"
+
+  mkdir "$LIB_DIRECTORY/extensions"
+  chmod 777 "$LIB_DIRECTORY/extensions" # allows to configure internal extensions while running on unpriviledged users
 
   ln -s "/usr/lib/$pkgname/bin/phpactor" "$pkgdir/usr/bin/phpactor"
 }
