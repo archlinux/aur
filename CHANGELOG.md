@@ -1,3 +1,27 @@
+## 11.4.6 (2022-09-22)
+
+## What's Changed
+* build(deps): bump github.com/spf13/viper from 1.12.0 to 1.13.0 by @dependabot in https://github.com/jhaals/yopass/pull/1463
+* build(deps-dev): bump @types/node from 18.7.3 to 18.7.15 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1462
+* build(deps): bump @emotion/react from 11.9.3 to 11.10.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1459
+* build(deps): bump @fontsource/roboto from 4.5.7 to 4.5.8 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1451
+* build(deps): bump i18next from 21.9.0 to 21.9.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1449
+* build(deps): bump github.com/gofrs/uuid from 4.2.0+incompatible to 4.3.0+incompatible by @dependabot in https://github.com/jhaals/yopass/pull/1469
+* build(deps): bump react-i18next from 11.18.4 to 11.18.6 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1466
+* build(deps-dev): bump typescript from 4.7.4 to 4.8.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1464
+* build(deps): bump i18next-browser-languagedetector from 6.1.4 to 6.1.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1450
+* build(deps): bump @emotion/styled from 11.10.0 to 11.10.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1465
+* build(deps-dev): bump @types/node from 18.7.15 to 18.7.18 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1472
+* build(deps-dev): bump @types/jest from 28.1.7 to 29.0.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1471
+* build(deps): bump openpgp from 5.2.0 to 5.5.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1461
+* build(deps): bump react-router-dom from 6.3.0 to 6.4.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1473
+* build(deps): bump @mui/material from 5.10.1 to 5.10.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1470
+* build(deps): bump github.com/prometheus/client_golang from 1.12.2 to 1.13.0 by @dependabot in https://github.com/jhaals/yopass/pull/1434
+* build(deps): bump i18next from 21.9.1 to 21.9.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1475
+
+
+**Full Changelog**: https://github.com/jhaals/yopass/compare/11.4.5...11.4.6
+
 ## 11.14.4 (2022-06-19)
 
 ## What's Changed
