@@ -4,7 +4,7 @@
 
 pkgname=ledger-git
 pkgver=latest
-pkgrel=5
+pkgrel=6
 pkgdesc="A double-entry accounting system with a command-line reporting interface (development version)"
 arch=('i686' 'x86_64')
 url="http://ledger-cli.org"
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('mpfr' 'boost-libs' 'libedit')
 provides=('ledger')
 conflicts=('ledger')
-makedepends=('boost' 'git' 'sed' 'python2' 'cmake')
+makedepends=('boost' 'git' 'sed' 'cmake')
 source=("git+https://github.com/ledger/ledger.git")
 sha256sums=('SKIP')
 
@@ -26,8 +26,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"/ledger
-  find -iname '*.py' -execdir sed -i 's|^#!.*python$|#!/usr/bin/python2|' '{}' \;
-  sed -i 's|^#!.*python$|#!/usr/bin/python2|' ./acprep
 }
 
 build() {
@@ -35,8 +33,7 @@ build() {
   cmake . \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr \
   -DCMAKE_INSTALL_LIBDIR:PATH=lib \
-  -DUSE_PYTHON=ON \
-  -DUSE_PYTHON27_COMPONENT=ON
+  -DUSE_PYTHON=ON
   make
 }
 

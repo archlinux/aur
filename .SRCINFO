@@ -1,7 +1,7 @@
 pkgbase = ledger-git
 	pkgdesc = A double-entry accounting system with a command-line reporting interface (development version)
 	pkgver = latest
-	pkgrel = 5
+	pkgrel = 6
 	url = http://ledger-cli.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = ledger-git
 	makedepends = boost
 	makedepends = git
 	makedepends = sed
-	makedepends = python2
 	makedepends = cmake
 	depends = mpfr
 	depends = boost-libs
