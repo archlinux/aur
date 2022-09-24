@@ -3,7 +3,7 @@
 
 pkgname=pamac-flatpak-gnome
 pkgver=10.4.2
-pkgrel=3
+pkgrel=4
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, and GNOME integration)"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('libnotify' 'libpamac-flatpak>=10.3.0' 'libhandy' 'git' 'fakeroot' 'pkgconf' 'appstream-glib' 'polkit-gnome')
 optdepends=('fwupd: support firmware updates')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
-conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak' 'pacmac-nosnap')
+conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak' 'pacmac-nosnap' 'gnome-software')
 provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
