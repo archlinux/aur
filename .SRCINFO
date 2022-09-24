@@ -1,0 +1,18 @@
+pkgbase = lunatask
+	pkgdesc = unofficial third-party Arch package for lunatask.app (*not* supported by Lunatask developers)
+	pkgver = 1.5.7
+	pkgrel = 0
+	url = https://lunatask.app
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = libindicator-gtk3
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	options = !strip
+	source = https://lunatask.app/download/Lunatask-1.5.7.AppImage
+	sha256sums = 5703075c7f2cef90d51c47f2eaf17fc6fd45122377e11fef3e0267a90fe63409
+
+pkgname = lunatask
