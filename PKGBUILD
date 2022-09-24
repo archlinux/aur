@@ -3,7 +3,7 @@
 _themename=Monterey
 _gitname="$_themename-kde"
 pkgname="${_themename,,}-kde-theme-plasmoids-git"
-pkgver=1.0.0
+pkgver=1.0.r3.a8b1418
 pkgrel=1
 pkgdesc='Monterey theme for KDE plasma'
 url="https://github.com/ProjectOSX/$_gitname"
