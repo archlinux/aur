@@ -1,0 +1,57 @@
+Description: Good output format with widechar, ANSI codes ignored when determining message, Goud output with ANSI colour
+Bug-Debian: http://bugs.debian.org/769565
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/cowsay/+bug/1027033
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/cowsay/+bug/1437804
+Author: Tony Maillefaud <maltouzes@gmail.com>
+Last-Update: 2015-12-10
+
+--- a/cowsay.orig	2016-06-24 19:45:15.000000000 -0700
++++ b/cowsay	2022-09-23 23:25:51.385611381 -0700
+@@ -11,6 +11,7 @@
+ use File::Basename;
+ use Getopt::Std;
+ use Cwd;
++use Text::CharWidth qw(mbswidth);
+ 
+ $version = "3.03";
+ $progname = basename($0);
+@@ -103,16 +104,21 @@
+     my ($l, $m);
+     $m = -1;
+     for my $i (@_) {
+-	$l = length $i;
++	$l = mbswidth $i =~ s/\e\[\d+(?>(;\d+)*)m//gr;
+ 	$m = $l if ($l > $m);
+     }
+     return $m;
+ }
+ 
++sub colstr {
++    (my $str, my $columns) = @_;
++    $str . ' ' x ($columns - mbswidth $str)
++}
++
+ sub construct_balloon {
+     my $max = &maxlength(@message);
+     my $max2 = $max + 2;	## border space fudge.
+-    my $format = "%s %-${max}s %s\n";
++    my $format = "%s %s %s\n";
+     my @border;	## up-left, up-right, down-left, down-right, left, right
+     if ($0 =~ /think/i) {
+ 	$thoughts = 'o';
+@@ -130,12 +136,12 @@
+     }
+     push(@balloon_lines, 
+ 	" " . ("_" x $max2) . " \n" ,
+-	sprintf($format, $border[0], $message[0], $border[1]),
++	sprintf($format, $border[0], colstr($message[0], $max), $border[1]),
+ 	(@message < 2 ? "" : 
+-	    map { sprintf($format, $border[4], $_, $border[5]) } 
++	    map { sprintf($format, $border[4], colstr($_, $max), $border[5]) } 
+ 		@message[1 .. $#message - 1]),
+ 	(@message < 2 ? "" : 
+-	    sprintf($format, $border[2], $message[$#message], $border[3])),
++	    sprintf($format, $border[2], colstr($message[$#message], $max), $border[3])),
+         " " . ("-" x $max2) . " \n"
+     );
+ }

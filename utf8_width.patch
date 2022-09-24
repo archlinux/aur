@@ -1,0 +1,24 @@
+Description: utf8 support in input, output and arguments on utf8-enabled locales
+ Note that this is not a complete solution (doesn't support Chinese/Japanese
+ characters for example) but it's better than what we had.
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=254557#27
+Bug-Debian: http://bugs.debian.org/254557
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/cowsay/+bug/393212
+Author: Damyan Ivanov <dmn@debian.org>
+
+--- a/cowsay
++++ b/cowsay
+@@ -12,6 +12,13 @@ use File::Basename;
+ use Getopt::Std;
+ use Cwd;
+ 
++if (${^UTF8LOCALE}) {
++    binmode STDIN, ':utf8';
++    binmode STDOUT, ':utf8';
++    require Encode;
++    eval { $_ = Encode::decode_utf8($_,1) } for @ARGV;
++}
++
+ $version = "3.03";
+ $progname = basename($0);
+ $eyes = "oo";
