@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=corncob
-_pkgver=0.2.0
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Count Regression for Correlated Observations with the Beta-Binomial'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c3731016c9d05d5bcd4c830db3da6a75dcde85a5d36ed6fbc4897fc7a1fd15e1')
+sha256sums=('10008121611e93f46d9ad4e8dfb9acf1952462249a0f30fb413c62b9078314aa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
