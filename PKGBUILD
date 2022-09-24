@@ -3,9 +3,9 @@ pkgbase=python-radio_beam
 _pname=${pkgbase#python-}
 _pyname=${_pname/_/-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.3.3
-pkgrel=2
-pkgdesc="A tool for manipulating and utilizing two dimensional gaussian beams within the astropy framework"
+pkgver=0.3.4
+pkgrel=1
+pkgdesc="Operations for radio astronomy beams with astropy"
 arch=('any')
 url="https://radio-beam.readthedocs.io"
 license=('BSD')
@@ -13,30 +13,27 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-astropy'
-             'python-sphinx-astropy')
-checkdepends=('python-pytest-astropy' 'python-scipy')
+             'python-sphinx-astropy'
+             'python-astropy')
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-doctestplus'
+              'python-matplotlib'
+              'python-scipy'
+              'python-six') # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1a019b5fb8f3449710c028f777316e38')
+md5sums=('4bb21e8a517e8df05108eca61f7da43f')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
-}
-
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}
-
-    sed -i "/astropy.tests.plugins.display/s/astropy.tests.plugins/pytest_astropy_header/" conftest.py
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 build() {
-    msg "Building Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     cd ${srcdir}/${_pyname}-${pkgver}/docs
     PYTHONPATH="../build/lib" make html
 }
@@ -44,12 +41,14 @@ build() {
 check() {
    cd ${srcdir}/${_pyname}-${pkgver}
 
-   pytest "build/lib" || warning "Tests failed"
+   pytest "build/lib" || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-radio_beam() {
-    depends=('python' 'python-astropy' 'python-six' 'python-scipy')
+    depends=('python-astropy' 'python-six' 'python-scipy')
     optdepends=('python-pytest-astropy: For testing'
+                'python-matplotlib: all functions'
+                'python-scipy: all functions'
                 'python-radio_beam-doc: Documentation for Radio Beam')
     cd ${srcdir}/${_pyname}-${pkgver}
 
