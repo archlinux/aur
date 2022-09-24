@@ -1,0 +1,17 @@
+pkgbase = perl-regexp-wildcards
+	pkgdesc = Convert wildcard expressions to Perl regular expressions
+	pkgver = 1.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Regexp-Wildcards
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-scalar-util
+	depends = perl-text-balanced
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/V/VP/VPIT/Regexp-Wildcards-1.05.tar.gz
+	sha512sums = e67b91f8c879c48d5d7c25304ca9978a2c22aba066ce34648bb172c5c3567aefb679a0767987a1e21106833093ae860c2b1c486d0c7fb48df086a32e581cc17c
+
+pkgname = perl-regexp-wildcards
