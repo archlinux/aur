@@ -1,14 +1,12 @@
 pkgbase = protoc-gen-grpc-web
 	pkgdesc = Protobuf gRPC compiler for Web Clients
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 0
 	url = https://github.com/grpc/grpc-web
 	arch = x86_64
 	license = Apache2
 	depends = protobuf>=3
-	source = https://github.com/grpc/grpc-web/archive/1.3.1.tar.gz
-	source = 0001-remove-harmful-static-flag.patch
-	sha512sums = 1034b46107b4b528d0983be4fadae26e645fbeb5d15c0024dbb460d1a3258dc84f6181a06c81e55ab3032edd83b744c2f4b12a4882ea4f915db80d1c264453c2
-	sha512sums = 8318175b047a74ee4b5ff51739bbe9cc83f86e842221f53d502d9287154fc28d03ae682922e399e2a8b38dc26ab016d61d1e2ac868f71d2e265e28aaf3c58d49
+	source = https://github.com/grpc/grpc-web/archive/1.4.0.tar.gz
+	sha512sums = 2dded3fd9a16924de442dfa94eab1b7b9242770187a35894b21d4f85e98576f3be7b30a374d7f33a49fe6caec2c261185c0102c784823ac4632e742fd90db583
 
 pkgname = protoc-gen-grpc-web
