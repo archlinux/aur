@@ -1,0 +1,15 @@
+pkgbase = nvidia-omniverse
+	pkgdesc = The platform for creating and operating metaverse applications.
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://www.nvidia.com/omniverse/
+	arch = x86_64
+	license = Custom: Nvidia
+	depends = electron
+	provides = omniverse
+	noextract = omniverse-launcher-linux.AppImage
+	options = !strip
+	source = https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage
+	md5sums = 7313eccc5d5abeefca00678427ed261c
+
+pkgname = nvidia-omniverse
