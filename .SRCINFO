@@ -1,11 +1,11 @@
 pkgbase = digisim-git
 	pkgdesc = A digital logic simulator programmed in lua
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	license = unknown
 	makedepends = git
-	makedepends = zig-dev-bin
+	makedepends = zig-git
 	depends = luajit
 	provides = digisim
 	conflicts = digisim
