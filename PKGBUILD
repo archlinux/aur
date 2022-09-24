@@ -1,7 +1,7 @@
 # Maintainer: Andrew <aandrew.me@pm.me>
 pkgname="ytdownloader-gui"
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI video downloader supporting hundreds of sites"
 arch=('any')
 url="https://github.com/aandrew-me/ytDownloader"
@@ -11,7 +11,7 @@ groups=()
 depends=('yt-dlp' 'ffmpeg' 'electron')
 makedepends=('git' 'npm' 'jq' 'sed')
 # install=$pkgname.install
-source=("$pkgname::git+https://github.com/aandrew-me/ytDownloader.git" 
+source=("$pkgname::git+https://github.com/aandrew-me/ytDownloader.git#tag=${pkgver}"
 'ytdownloader-gui.sh' 'ytdownloader-gui.desktop')
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP') #autofill using updpkgsums

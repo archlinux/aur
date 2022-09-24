@@ -1,7 +1,7 @@
 pkgbase = ytdownloader-gui
-	pkgdesc = GUI video downloader supporting hundreds of sites
+	pkgdesc = GUI video downloader supporting hundreds of sites. Frontend for yt-dlp.
 	pkgver = 3.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aandrew-me/ytDownloader
 	arch = any
 	license = GPL3
