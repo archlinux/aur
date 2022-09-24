@@ -1,6 +1,6 @@
 pkgbase = egpu-switcher
 	pkgdesc = Automatically detect and use eGPU on startup
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/hertg/egpu-switcher
 	install = egpu-switcher.install
@@ -9,7 +9,7 @@ pkgbase = egpu-switcher
 	makedepends = go
 	provides = egpu-switcher
 	conflicts = egpu-switcher
-	source = egpu-switcher-0.18.0::https://github.com/hertg/egpu-switcher/archive/refs/tags/0.18.0.tar.gz
+	source = egpu-switcher-0.18.1::https://github.com/hertg/egpu-switcher/archive/refs/tags/0.18.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = egpu-switcher
