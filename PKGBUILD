@@ -6,13 +6,13 @@
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
 pkgver=2.24.33
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
 url="https://www.gtk.org/"
 install=gtk2.install
-depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gdk-pixbuf2>=2.22.1'}
-         lib32-lib{'cups>=1.4.4',xcursor,'xrandr>=1.3','xi>=1.3',xinerama,xcomposite,xdamage}
+depends=(lib32-{atk,pango,cairo,gdk-pixbuf2}
+         lib32-lib{cups,xcursor,xrandr,xi,xinerama,xcomposite,xdamage}
          $_pkgbasename)
 makedepends=('python')
 license=('LGPL')
