@@ -1,6 +1,6 @@
 pkgbase = trezor-suite-appimage
 	pkgdesc = desktop app for Trezor hardware wallets
-	pkgver = 22.8.2
+	pkgver = 22.9.3
 	pkgrel = 1
 	url = https://suite.trezor.io/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = trezor-suite-appimage
 	depends = trezor-udev
 	depends = gtk3
 	depends = nss
-	noextract = Trezor-Suite-22.8.2.AppImage
+	noextract = Trezor-Suite-22.9.3.AppImage
 	options = !strip
-	source = https://github.com/trezor/trezor-suite/releases/download/v22.8.2/Trezor-Suite-22.8.2-linux-x86_64.AppImage
-	source = https://github.com/trezor/trezor-suite/releases/download/v22.8.2/Trezor-Suite-22.8.2-linux-x86_64.AppImage.asc
+	source = https://github.com/trezor/trezor-suite/releases/download/v22.9.3/Trezor-Suite-22.9.3-linux-x86_64.AppImage
+	source = https://github.com/trezor/trezor-suite/releases/download/v22.9.3/Trezor-Suite-22.9.3-linux-x86_64.AppImage.asc
 	validpgpkeys = EB483B26B078A4AA1B6F425EE21B6950A2ECB65C
-	sha256sums = 42bd015787a293bb12bf5b1caed05fd4571665a898069f1c27eb8b33d7e31a01
+	sha256sums = e6b988cd0f0bb283a118ee19a3d14c668d31e2cb6a338e82323bd0736da1ec4a
 	sha256sums = SKIP
 
 pkgname = trezor-suite-appimage
