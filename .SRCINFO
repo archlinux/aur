@@ -1,6 +1,6 @@
 pkgbase = minipro
 	pkgdesc = Open source programming utility for autoelectric.cn Minipro TL866
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://gitlab.com/DavidGriffith/minipro
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = minipro
 	depends = srecord
 	provides = minipro
 	conflicts = minipro
-	source = minipro::https://gitlab.com/DavidGriffith/minipro/-/archive/0.5/minipro-0.5.tar.gz
-	md5sums = 601df72a153e47dd452bc20c32acd275
+	source = minipro.tgz::https://gitlab.com/DavidGriffith/minipro/-/archive/0.6/minipro-0.6.tar.gz
+	sha256sums = 16b4220b5fc07dddc4d1d49cc181a2c6a735c833cc27f24ab73eac2572c9304a
 
 pkgname = minipro
-
