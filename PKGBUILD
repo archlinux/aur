@@ -1,13 +1,14 @@
 # Maintainer: Jan0660 <jan0660@tutanota.com>
 
-pkgname=oh-my-posh-git
+_pkgname='oh-my-posh'
+pkgname="${_pkgname}-git"
 pkgdesc="A prompt theme engine for any shell."
 
 pkgver() {
   cd "oh-my-posh"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r743.817725f
+pkgver=r2061.ac665b65
 pkgrel=1
 pkgbase=oh-my-posh-git
 replaces=()
@@ -17,7 +18,8 @@ license=('GPLv3')
 groups=()
 makedepends=('git' 'go')
 depends=()
-# provides=('oh-my-posh')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=('git+https://github.com/JanDeDobbeleer/oh-my-posh.git')
 sha256sums=('SKIP')
 
