@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.2.145
+pkgver=1.2.151
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.23-alpha-artifacts"
@@ -20,7 +20,7 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('e5c1e4def8cce80d30a4d268a880e6ea7114f395f5f2390fde0152edd5c25d91'
+sha256sums=('b76632638a7e6f384effe04bae37ad7dce189d0e2098554076c270bbb94ad794'
             '9eeb81df4e674bb5dea1a371b0e1731b42edd81f212c395e0a25071ac16c27cd')
 
 build() {
