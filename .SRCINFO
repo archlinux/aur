@@ -9,7 +9,7 @@ pkgbase = notepadnext-appimage
 	conflicts = notepadnext
 	noextract = NotepadNext-x86_64.AppImage
 	options = !strip
-	source_x86_64 = NotepadNext-x86_64.AppImage::https://github.com/dail8859/NotepadNext/releases/download/v0.5.4/NotepadNext-x86_64.AppImage
-	sha256sums_x86_64 = cf40301d999d6d42324085c7a901da53af0114bfb32a34edaa0eec0a7e5c57ba
+	source_x86_64 = NotepadNext-x86_64.AppImage::https://github.com/dail8859/NotepadNext/releases/download/v0.5.5/NotepadNext-x86_64.AppImage
+	sha256sums_x86_64 = 7f1ee454687d8fd8547839701a86cbd1ca9473d6bf8a0349828bebbceebc854a
 
 pkgname = notepadnext-appimage
