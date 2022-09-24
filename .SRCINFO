@@ -1,6 +1,6 @@
 pkgbase = arch-test-bin
 	pkgdesc = detect architectures supported by your machine/kernel
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 2
 	url = https://github.com/kilobyte/arch-test/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = arch-test-bin
 	provides = arch-test
 	conflicts = arch-test
 	options = !strip
-	source = http://ftp.debian.org/debian/pool/main/a/arch-test/arch-test_0.18-1_all.deb
-	md5sums = 83311b6a2373cbcd8e4bd682fcc652d6
+	source = http://ftp.debian.org/debian/pool/main/a/arch-test/arch-test_0.19-1_all.deb
+	md5sums = 28261cc07df4c119e916b7ae29a965e4
 
 pkgname = arch-test-bin

@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _pkgname=arch-test
 pkgname=${_pkgname}-bin
-pkgver=0.18
+pkgver=0.19
 _debrel=1
 pkgrel=2
 epoch=
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("http://ftp.debian.org/debian/pool/main/a/arch-test/${_pkgname}_$pkgver-${_debrel}_all.deb")
 noextract=()
-md5sums=('83311b6a2373cbcd8e4bd682fcc652d6')
+md5sums=('28261cc07df4c119e916b7ae29a965e4')
 validpgpkeys=()
 
 prepare() {
