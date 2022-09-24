@@ -1,0 +1,44 @@
+--- localepurge.orig	2022-09-24 22:36:03.000000000 +0200
++++ localepurge	2022-09-24 22:37:43.292433897 +0200
+@@ -27,7 +27,7 @@
+     echo " No $NOPURGECONF file present, exiting ..."
+     exit 0
+ else
+-    if fgrep --quiet --line-regexp NEEDSCONFIGFIRST $NOPURGECONF ; then
++    if grep -F --quiet --line-regexp NEEDSCONFIGFIRST $NOPURGECONF ; then
+ 	echo
+ 	echo "	  You have to configure \"localepurge\" by editing"
+ 	echo
+@@ -54,19 +54,19 @@
+ MANDELETE=0
+ globaltot=0
+ 
+-if fgrep --quiet --line-regexp DONTBOTHERNEWLOCALE $NOPURGECONF; then
++if grep -F --quiet --line-regexp DONTBOTHERNEWLOCALE $NOPURGECONF; then
+     DONTBOTHERNEWLOCALE=1
+ fi
+ 
+-if fgrep --quiet --line-regexp SHOWFREEDSPACE $NOPURGECONF; then
++if grep -F --quiet --line-regexp SHOWFREEDSPACE $NOPURGECONF; then
+     SHOWFREEDSPACE=1
+ fi
+ 
+-if fgrep --quiet --line-regexp MANDELETE $NOPURGECONF; then
++if grep -F --quiet --line-regexp MANDELETE $NOPURGECONF; then
+     MANDELETE=1
+ fi
+ 
+-if fgrep --quiet --line-regexp VERBOSE $NOPURGECONF \
++if grep -F --quiet --line-regexp VERBOSE $NOPURGECONF \
+     || [ "$1" = "-verbose" ] || [ "$1" = "-v" ] \
+     || [ "$2" = "-verbose" ] || [ "$2" = "-v" ]; then
+     VERBOSE=1
+@@ -165,7 +165,7 @@
+ if ! ((SHOWFREEDSPACE)); then
+     function get_used_space () { echo 0; }
+ else
+-    if fgrep --quiet --line-regexp QUICKNDIRTYCALC $NOPURGECONF; then
++    if grep -F --quiet --line-regexp QUICKNDIRTYCALC $NOPURGECONF; then
+ 	function get_used_space ()
+ 	{
+ 	    [ -d "$1" ] || return 1 # bail out if there's no such dir
