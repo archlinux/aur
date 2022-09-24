@@ -4,7 +4,7 @@
 
 pkgname=slic3r
 pkgver=1.3.0
-pkgrel=18
+pkgrel=20
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://slic3r.org/"
@@ -33,14 +33,28 @@ BUILDENV+=('!check')
 #source=("git+https://github.com/slic3r/Slic3r.git#tag=$pkgver"
 source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
         'slic3r.desktop'
-        'slic3r')
+        'slic3r'
+        '0001-Drop-error-admesh-works-correctly-on-little-endian-m.patch'
+        '0002-Removed-unused-header-wchich-generated-tons-of-warni.patch'
+        '0003-Make-boost-Placeholders-_1-visible.patch')
 md5sums=('5eb9afba30f69856040a20a4e42ff18a'
          'cf0130330574a13b4372beb8f241d71e'
-         'a30a96504f11c95956dd8ce645b77504')
+         'a30a96504f11c95956dd8ce645b77504'
+         'a8ef7a35d4a509d6acdcb5b1abc0f963'
+         'd7bc4392be9e268b84b94a2a7828e2bd'
+         '17e9667229e663092515cb68e6ad3205')
 _src_dir='$srcdir/Slic3r-$pkgver'
 
 prepare() {
   eval cd "$_src_dir"
+
+  msg2 "Applying patches from ypstream..."
+  # Fix build error aginast boost
+  patch -p1 -i $srcdir/0001-Drop-error-admesh-works-correctly-on-little-endian-m.patch
+  patch -p1 -i $srcdir/0002-Removed-unused-header-wchich-generated-tons-of-warni.patch
+  patch -p1 -i $srcdir/0003-Make-boost-Placeholders-_1-visible.patch
+
+  msg2 "Inline patching..."
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
   sed -i '/Growl/d' Build.PL
 
@@ -52,6 +66,7 @@ prepare() {
 
   # Fix needed for slic3r 1.3.0
   sed -i '12i #include <boost/core/noncopyable.hpp>' xs/src/libslic3r/GCodeSender.hpp
+
 }
 
 build() {

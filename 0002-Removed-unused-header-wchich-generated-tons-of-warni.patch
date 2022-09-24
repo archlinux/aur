@@ -1,0 +1,25 @@
+From 0c6eff1f253ec2093464dfaf3e938f395ab6a081 Mon Sep 17 00:00:00 2001
+From: zdroyer <ec2-user@ip-172-31-13-62.us-east-2.compute.internal>
+Date: Fri, 12 Apr 2019 12:47:34 +0000
+Subject: [PATCH 2/2] Removed unused header wchich generated tons of warnings
+ with boost 1.69
+
+---
+ xs/src/admesh/stl.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/xs/src/admesh/stl.h b/xs/src/admesh/stl.h
+index 9b0460221..b31fdd4f9 100644
+--- a/xs/src/admesh/stl.h
++++ b/xs/src/admesh/stl.h
+@@ -26,7 +26,6 @@
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <stddef.h>
+-#include <boost/detail/endian.hpp>
+ 
+ #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+     #include "windows.h"
+-- 
+2.37.3
+

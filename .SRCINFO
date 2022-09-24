@@ -1,7 +1,7 @@
 pkgbase = slic3r
 	pkgdesc = Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge.
 	pkgver = 1.3.0
-	pkgrel = 18
+	pkgrel = 20
 	url = http://slic3r.org/
 	arch = i686
 	arch = x86_64
@@ -39,8 +39,14 @@ pkgbase = slic3r
 	source = https://github.com/alexrj/Slic3r/archive/1.3.0.tar.gz
 	source = slic3r.desktop
 	source = slic3r
+	source = 0001-Drop-error-admesh-works-correctly-on-little-endian-m.patch
+	source = 0002-Removed-unused-header-wchich-generated-tons-of-warni.patch
+	source = 0003-Make-boost-Placeholders-_1-visible.patch
 	md5sums = 5eb9afba30f69856040a20a4e42ff18a
 	md5sums = cf0130330574a13b4372beb8f241d71e
 	md5sums = a30a96504f11c95956dd8ce645b77504
+	md5sums = a8ef7a35d4a509d6acdcb5b1abc0f963
+	md5sums = d7bc4392be9e268b84b94a2a7828e2bd
+	md5sums = 17e9667229e663092515cb68e6ad3205
 
 pkgname = slic3r

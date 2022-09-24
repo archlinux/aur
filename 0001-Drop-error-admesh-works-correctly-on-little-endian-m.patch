@@ -1,0 +1,30 @@
+From 2600eb1d47b0468252b7861f1b1c06e14360e612 Mon Sep 17 00:00:00 2001
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Tue, 6 Nov 2018 01:10:33 +0800
+Subject: [PATCH 1/2] Drop #error "admesh works correctly on little endian
+ machines only"
+
+admesh works fine on little-endian machines as of b9592961. It just doesn't
+compile because of this pesky #error.
+---
+ xs/src/admesh/stl.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/xs/src/admesh/stl.h b/xs/src/admesh/stl.h
+index f86f9940b..9b0460221 100644
+--- a/xs/src/admesh/stl.h
++++ b/xs/src/admesh/stl.h
+@@ -28,10 +28,6 @@
+ #include <stddef.h>
+ #include <boost/detail/endian.hpp>
+ 
+-#ifndef BOOST_LITTLE_ENDIAN
+-#error "admesh works correctly on little endian machines only!"
+-#endif
+-
+ #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+     #include "windows.h"
+     #define ADMESH_CHAR wchar_t
+-- 
+2.37.3
+
