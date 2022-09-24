@@ -14,3 +14,22 @@ pkgbase = monterey-kde-theme-plasmoids-git
 	sha256sums = SKIP
 
 pkgname = monterey-kde-theme-plasmoids-git
+pkgbase = monterey-kde-theme-plasmoids-git
+	pkgdesc = Monterey theme for KDE plasma
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ProjectOSX/Monterey-kde
+	arch = any
+	license = LGPL3
+	makedepends = git
+	optdepends = plasma-desktop: for included plasma theme
+	optdepends = kvantum-qt5: for included kvantum theme
+	optdepends = sddm: for included sddm theme
+	optdepends = latte-dock: for included latte theme
+	provides = Monterey-kde-theme-plasmoids-git
+	conflicts = Monterey-kde-theme-plasmoids-git
+	conflicts = monterey-kde-theme-git
+	source = monterey-kde-theme-plasmoids-git::git+https://github.com/ProjectOSX/Monterey-kde.git
+	sha256sums = SKIP
+
+pkgname = monterey-kde-theme-plasmoids-git
