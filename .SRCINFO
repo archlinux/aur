@@ -1,12 +1,12 @@
 pkgbase = streamspeed
-	pkgdesc = A simple C program that prints the throughput speed of stdin
-	pkgver = 1.0.0
+	pkgdesc = A simple Rust program that prints the transfer speed of stdin
+	pkgver = 2.0.0
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/xlash123/streamspeed
 	arch = x86_64
 	license = GPL
-	source = https://github.com/xlash123/streamspeed/archive/refs/tags/1.0.0.zip
-	sha256sums = e79cbf6d3bbda524b7768e200ee6fba4a874171e2877998f72891ba3a305ed68
+	source = https://github.com/xlash123/streamspeed/archive/refs/tags/2.0.0.zip
+	sha256sums = dba54e63f135bab23c2225e8e450839d2db408bb83f5d03a0966a3548aff0242
 
 pkgname = streamspeed
