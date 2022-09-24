@@ -24,6 +24,7 @@ pkgbase = pollymc-qt5
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	provides = pollymc
+	conflicts = polymc
 	conflicts = pollymc
 	source = https://github.com/fn2006/PollyMC/releases/download/1.4.2/PollyMC-1.4.2.tar.gz
 	sha256sums = 2a8bbf8e4df393245acd5bc83625b25a866abfeb75337fdb413cc891b49518f7
