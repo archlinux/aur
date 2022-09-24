@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20220923_nextpnr_0.4_9_gf4e6bbd3
+pkgver=20220924_nextpnr_0.4_9_gf4e6bbd3
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - all FPGA architectures"
