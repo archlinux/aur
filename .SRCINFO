@@ -1,11 +1,13 @@
 pkgbase = rime-sbxlm-sbxh
 	pkgdesc = 声笔系列码，声笔小鹤
-	pkgver = 220301
+	pkgver = 220813
 	pkgrel = 1
 	arch = any
 	groups = sbxlm
+	makedepends = unzip
+	makedepends = jq
 	depends = rime-sbxlm
-	source = https://gitee.com/sbxlm/sbxlm/attach_files/958324/download/220301.zip
-	sha256sums = a17439f7de55d033c727e9b8835d79d4b44a92d0bfc176c15868662391de1ffa
+	source = fetch-release.sh
+	sha256sums = 25753b1ae73ed951b43d0db122dd929b070df7ad38418314dc6a5956bef084fc
 
 pkgname = rime-sbxlm-sbxh
