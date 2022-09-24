@@ -1,0 +1,11 @@
+pkgbase = gobang-bin
+	pkgdesc = A cross-platform TUI database management tool written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TaKO8Ki/gobang
+	arch = x86_64
+	license = MIT
+	source = gobang-bin-0.1.0-alpha.5.tar.gz::https://github.com/TaKO8Ki/gobang/releases/download/v0.1.0-alpha.5/gobang-0.1.0-alpha.5-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 29b8f517937cf19691c6e594a0789fe80a528fff05c346883af0e2950b9b90ef
+
+pkgname = gobang-bin
