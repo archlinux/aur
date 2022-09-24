@@ -5,7 +5,7 @@
 pkgname=pollymc-bin
 pkgver=1.4.2
 pkgrel=1
-pkgdesc="Minecraft launcher with ability to manage multiple instances."
+pkgdesc="Fork of PolyMC that adds Ely.by support and allows you to use offline mode without an account."
 arch=('x86_64')
 url="https://github.com/fn2006/PollyMC"
 license=('GPL3')
