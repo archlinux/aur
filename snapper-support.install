@@ -21,7 +21,7 @@ post_install() {
     echo "Enabling automatic rebuild of grub-btrfs when snapshots are taken"
     /usr/bin/systemctl daemon-reload
     /usr/bin/systemctl enable --now grub-btrfs-snapper.path
-    /usr/bin/systemctl enable snapper-cleanup.timer
+    /usr/bin/systemctl enable --now snapper-cleanup.timer
     #/usr/bin/systemctl enable snapper-timeline.timer
     
     echo "Creating snapper config for root"
@@ -38,4 +38,8 @@ pre_remove() {
     if mkinitcpio_has_grub_btrfs_overlayfs_hook; then
         sed -re 's/(^HOOKS=["(].*) grub-btrfs-overlayfs/\1/g' -i /etc/mkinitcpio.conf
     fi
+    echo "Disabling related snapper and grub-btrfs services"
+    /usr/bin/systemctl disable --now grub-btrfs-snapper.path
+    /usr/bin/systemctl disable --now snapper-cleanup.timer
+    #/usr/bin/systemctl disable snapper-timeline.timer
 }
