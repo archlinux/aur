@@ -1,37 +1,41 @@
-From 3ee9ae9b0c8efdb356e53a7d36373e906de02f9d Mon Sep 17 00:00:00 2001
-From: graysky <graysky@archlinux.us>
-Date: Tue, 30 Nov 2021 06:27:15 -0500
+From da7641d4be383e1170ab39bc162480cb1836591e Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky AT proton DOT me>
+Date: Sat, 24 Sep 2022 14:12:44 -0400
 Subject: [PATCH] makefile: fix build for Arch Linux
 
+Fix up for Arch Linux build.  Thanks to Prime95 for the tip around polymult.a lib[1].
+
+1. https://www.mersenneforum.org/showthread.php?t=28094
+
 ---
- linux64/makefile | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ linux64/makefile | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/linux64/makefile b/linux64/makefile
-index f73ba4f..4ba2517 100644
+index 420801f..a319fc1 100644
 --- a/linux64/makefile
 +++ b/linux64/makefile
 @@ -18,15 +18,17 @@
  #	LFLAGS = -Wl,-M
  #	LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic $(shell pkg-config --static --libs libhwloc) -Wl,-Bstatic $(shell pkg-config --static --libs libcurl) -lstdc++ -Wl,-Bdynamic -ldl
- 
-+MPRIME_FLAGS= -I.. -I../gwnum -DX86_64 -O2 -Wno-unused-result -march=x86-64 -DPORT=8
+
++ALFLAGS = -I.. -I../gwnum -march=x86-64 -DX86_64 -O2 -Wno-unused-result -march=x86-64 -DPORT=8
 +
  CC = gcc
 -CFLAGS = -I.. -I../gwnum -I/usr/local/include -std=gnu99 -DX86_64 -Wno-unused-result -O2 -DPORT=8
-+CFLAGS = ${MPRIME_FLAGS} -std=gnu99
- 
++CFLAGS = ${ALFLAGS}
+
  CPP = g++
 -CPPFLAGS = -I.. -I../gwnum -I../../boost_1_76_0 -DX86_64 -std=c++11 -O2 -DPORT=8
-+CPPFLAGS = ${MPRIME_FLAGS} -std=c++11
- 
- LFLAGS = -Wl,-M -Wl,-L/usr/local/lib
- #LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -lz -lxml2 -ldl -lgmp
--LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -ldl -lgmp
-+LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++ $(shell pkg-config --static --libs hwloc) -lgmp
- 
- FACTOROBJ = factor64.o
- LINUXOBJS = prime.o menu.o cJSON.o ecm.o pair.o pm1prob.o
--- 
-2.34.1
++CPPFLAGS = ${ALFLAGS} -std=c++11
 
+-LFLAGS = -Wl,-M -Wl,-L/usr/local/lib
++LFLAGS = -Wl,-M
+ #LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld ../gwnum/polymult.a -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -lz -lxml2 -ldl -lgmp
+-LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld ../gwnum/polymult.a -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -ldl -lgmp
++LIBS= ../gwnum/gwnum.a ../gwnum/gwnum.ld ../gwnum/polymult.a -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++ $(shell pkg-config --static --libs hwloc) -lgmp
+
+ FACTOROBJ = factor64.o
+ LINUXOBJS = prime.o menu.o cJSON.o ecm.o exponentiate.o pair.o pm1prob.o
+--
+2.37.3
