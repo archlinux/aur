@@ -1,6 +1,6 @@
 pkgbase = python-jsonrpcserver
 	pkgdesc = Process JSON-RPC requests in Python.
-	pkgver = 5.0.8
+	pkgver = 5.0.9
 	pkgrel = 1
 	url = https://github.com/bcb/jsonrpcserver
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-jsonrpcserver
 	depends = python-jsonschema
 	depends = python-oslash
 	options = !emptydirs
-	source = python-jsonrpcserver-5.0.8.tar.gz::https://files.pythonhosted.org/packages/source/j/jsonrpcserver/jsonrpcserver-5.0.8.tar.gz
-	sha256sums = 5150071e4abc9a93f086aa0fd0004dfe0410de66adfaaf513613baa2c2fc00d7
+	source = python-jsonrpcserver-5.0.9.tar.gz::https://files.pythonhosted.org/packages/source/j/jsonrpcserver/jsonrpcserver-5.0.9.tar.gz
+	sha256sums = a71fb2cfa18541c80935f60987f92755d94d74141248c7438847b96eee5c4482
 
 pkgname = python-jsonrpcserver
