@@ -2,7 +2,7 @@
 
 _name=bincopy
 pkgname=python-bincopy
-pkgver=17.10.3
+pkgver=17.14.0
 pkgrel=1
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python-argparse-addons python-humanfriendly python-pyelftools)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('23d944e4e18a93153cfd6d214c3d437c2462aeb2e7cee7ffc82e5bfe0cb7e052bdaaf62fee0f963d3e135324dc1cdc2b50ad59e3e4b5174e9df1c91c8f8b673e')
-b2sums=('128b1095d80e3a93078d774cda3364709d13604b8f6561b1e34fcf27a1794cfc3f339a0efceeac8ab9e83b8d73793c24cd0bf02b30a0702ba321ba238f2cdd91')
+sha512sums=('ca542248b110d3b47a5a396f0191026ed1dd685c301e7bf68ce470afa9661a7244520428a43b744bd2beb0267c838536cb48837613f102104bbc11db459f203a')
+b2sums=('3e9020de8f61d4180a17eea876d11c6294cc81cbdc38298e949e163f3cbed59149b5942a6f02f113ebdfe18326573d7583925c9a423fef5eb06c0319c00f6d89')
 
 build() {
   cd $_name-$pkgver
