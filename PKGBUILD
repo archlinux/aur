@@ -16,12 +16,12 @@ source=("git+${url}#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   cargo build --release --package eww --no-default-features --features wayland
 }
 
 package() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   install -Dm755 target/release/eww "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
