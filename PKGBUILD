@@ -1,5 +1,5 @@
 # Maintainer: Xavier (sapphirus at azorium dot net)
-# Original Maintainer: Ossi Saukko <osaukko at gmail dot com>
+# Original Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 _pkgbase=ocp
 pkgname=${_pkgbase}
