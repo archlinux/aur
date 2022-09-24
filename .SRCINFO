@@ -1,0 +1,13 @@
+pkgbase = materialx
+	pkgdesc = Open standard for representing rich material and look-development content in computer graphics
+	pkgver = 1.38.5
+	pkgrel = 1
+	url = https://materialx.org/
+	arch = x86_64
+	license = Apache
+	depends = python
+	provides = usd
+	source = git+https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v1.38.5
+	md5sums = SKIP
+
+pkgname = materialx
