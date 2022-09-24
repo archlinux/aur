@@ -1,0 +1,18 @@
+pkgbase = eww-wayland
+	pkgdesc = A standalone widget system for wayland made in Rust.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/elkowar/eww
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = git
+	depends = gtk3
+	depends = gtk-layer-shell
+	provides = eww
+	conflicts = eww-git
+	conflicts = eww
+	source = git+https://github.com/elkowar/eww#tag=v0.4.0
+	md5sums = SKIP
+
+pkgname = eww-wayland
