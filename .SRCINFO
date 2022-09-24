@@ -1,0 +1,17 @@
+pkgbase = disable-c6-systemd-with-modern-standby
+	pkgdesc = A systemd service to disable the C6 state for Ryzen CPUs, with modern standby support.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jfredrickson/disable-c6
+	install = disable-c6-systemd-with-modern-standby.install
+	arch = any
+	license = MIT
+	depends = zenstates-git
+	provides = disable-c6-systemd
+	conflicts = disable-c6-systemd
+	source = disable-c6.service
+	source = enable-c6.service
+	md5sums = d75b5b334bf8acb0e710874f918b5df6
+	md5sums = 846e708cc70093a9fa5e307e6c65e1fd
+
+pkgname = disable-c6-systemd-with-modern-standby

@@ -1,0 +1,12 @@
+[Unit]
+Description=Ryzen Enable C6 to support modern standby.
+DefaultDependencies=no
+Before=suspend.target hibernate.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zenstates --c6-enable
+
+[Install]
+WantedBy=suspend.target hibernate.target
+
