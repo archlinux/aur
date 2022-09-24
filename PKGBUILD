@@ -2,7 +2,7 @@
 
 pkgname=supabase-bin
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 url="https://github.com/supabase/cli"
 license=("MIT")

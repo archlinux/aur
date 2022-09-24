@@ -1,7 +1,7 @@
 pkgbase = supabase-bin
 	pkgdesc = A CLI for Supabase, an open source Firebase alternative
 	pkgver = 1.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/supabase/cli
 	arch = x86_64
 	license = MIT
