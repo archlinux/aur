@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-light
 	pkgdesc = wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)
-	pkgver = 3.2.0
-	pkgrel = 3
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -15,12 +15,10 @@ pkgbase = wxwidgets-light
 	makedepends = libnotify
 	makedepends = cmake
 	options = debug
-	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.0
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.1
 	source = git+https://github.com/wxWidgets/nanosvg.git
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxwidgets/trunk/destdir.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = cb4a7ca0d40b090d5d40d77790828a26766c6b496b3a5f5351fa30b3a6b42bd9
 
 pkgname = wxwidgets-common-light
 	pkgdesc = wxWidgets common & base (GNOME/GStreamer free!)

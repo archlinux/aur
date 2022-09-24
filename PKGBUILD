@@ -5,8 +5,8 @@ pkgname=('wxwidgets-common-light'
          'wxwidgets-gtk3-light'
          'wxwidgets-qt5-light'
          )
-pkgver=3.2.0
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -23,11 +23,9 @@ makedepends=('git'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'git+https://github.com/wxWidgets/nanosvg.git'
-        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxwidgets/trunk/destdir.patch'
         )
 sha256sums=('SKIP'
             'SKIP'
-            'cb4a7ca0d40b090d5d40d77790828a26766c6b496b3a5f5351fa30b3a6b42bd9'
             )
 options=('debug')
 
@@ -38,8 +36,6 @@ prepare() {
 
   git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
   git submodule update --init 3rdparty/nanosvg
-
-  patch -Np1 -i "${srcdir}/destdir.patch"
 }
 
 build() {
