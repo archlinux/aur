@@ -1,0 +1,15 @@
+pkgbase = stylelint-less
+	pkgdesc = A collection of Less specific rules for stylelint
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/ssivanatarajan/stylelint-less
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = stylelint: peer dependency
+	noextract = stylelint-less-1.0.6.tgz
+	source = https://registry.npmjs.org/stylelint-less/-/stylelint-less-1.0.6.tgz
+	sha256sums = 45183342ba9e6ebd3aaf2bff3664d383769901bd071a859b6d016d0397e4f072
+
+pkgname = stylelint-less
