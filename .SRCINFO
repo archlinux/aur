@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 11.11.0
-	pkgrel = 2
+	pkgver = 11.12.0
+	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -40,7 +40,7 @@ pkgbase = gazebo
 	optdepends = libusb: USB peripherals support
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = gazebo-11.11.0.tar.gz::https://github.com/osrf/gazebo/archive/gazebo11_11.11.0.tar.gz
-	sha256sums = e6a1965198378a8360ab7fce465990f11951629a833e518c2163c645d015354a
+	source = gazebo-11.12.0.tar.gz::https://github.com/osrf/gazebo/archive/gazebo11_11.12.0.tar.gz
+	sha256sums = 6ef2721c1279bc836a845022784fb8bf9860468b36abbc5c1887446ea594d261
 
 pkgname = gazebo
