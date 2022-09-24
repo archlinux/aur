@@ -8,7 +8,7 @@ pkgbase = xdaliclock
 	license = X11R5
 	depends = libxext
 	depends = libxt
-	source = https://www.jwz.org/xdaliclock/xdaliclock-2.43.tar.gz
+	source = https://www.jwz.org/xdaliclock/xdaliclock-2.47.tar.gz
 	md5sums = 8fe019ecfa18effac6427a8a5bf04025
 	sha256sums = d4992ff62ba5bf263e6f92abc83afcb3ebfc2d4f7985c562ecf250b0bd6b50be
 
