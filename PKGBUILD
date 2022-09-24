@@ -2,7 +2,7 @@
 # Contributor: codyfish <fe27 at gmx dot net>
 # Contributor: sofiageo <george at sofianos dot dev>
 pkgname=rocm-validation-suite
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Tool for detecting and troubleshooting common problems affecting AMD GPUs"
 arch=('x86_64')
@@ -15,7 +15,7 @@ _git='https://github.com/ROCm-Developer-Tools/ROCmValidationSuite'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         "rvs-os-type.patch::https://github.com/acxz/ROCmValidationSuite/commit/eb1a4bf5de8d8ba25f21ee13d6af1c46416e3961.patch"
         "rocblas-header.patch::https://github.com/acxz/ROCmValidationSuite/commit/3522af8597773cb5071746401280b8d813ca12cc.patch")
-sha256sums=('a0ea3ab9cbb8ac17bfa4537713a4d7075f869949bfdead4565a46f75864bd4a9'
+sha256sums=('5dfbd41c694bf2eb4368edad8653dc60ec2927d174fc7aaa5fa416156c5f921f'
             'SKIP'
             'SKIP')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
