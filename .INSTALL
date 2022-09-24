@@ -88,10 +88,10 @@ post_install() {
     fi
 
     # Enable and start systemd-journal-gatewayd
-    if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
-        info "Enable systemd-journal-gatewayd"
-        systemctl enable systemd-journal-gatewayd.socket> /dev/null 2>&1;
-        systemctl start systemd-journal-gatewayd.socket> /dev/null 2>&1;
+    if [ "$(systemctl is-active hassio-journal-gatewayd.socket)" = 'inactive' ]; then
+        echo "Enable systemd-journal-gatewayd for homeassistant"
+        systemctl enable hassio-journal-gatewayd.socket> /dev/null 2>&1;
+        systemctl start hassio-journal-gatewayd.socket> /dev/null 2>&1;
     fi
 
     # Enable and start docker
@@ -201,10 +201,10 @@ pre_upgrade() {
 ## arg 2:  the old package version
 post_upgrade() {
     # Enable and start systemd-journal-gatewayd
-    if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
-        info "Enable systemd-journal-gatewayd"
-        systemctl enable systemd-journal-gatewayd.socket> /dev/null 2>&1;
-        systemctl start systemd-journal-gatewayd.socket> /dev/null 2>&1;
+    if [ "$(systemctl is-active hassio-journal-gatewayd.socket)" = 'inactive' ]; then
+        echo "Enable systemd-journal-gatewayd for homeassistant"
+        systemctl enable hassio-journal-gatewayd.socket> /dev/null 2>&1;
+        systemctl start hassio-journal-gatewayd.socket> /dev/null 2>&1;
     fi
     adjust_config
     systemctl start hassio-apparmor.service
