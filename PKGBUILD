@@ -3,7 +3,7 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -17,14 +17,22 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-changelog'
              'python-sunpy-sphinx-theme'
              'python-gwcs'
-             'python-matplotlib'
              'python-mpl-animators'
              'python-pytest-doctestplus'
              'graphviz'
-             'subversion')
-checkdepends=('python-pytest' 'python-reproject' 'python-sunpy')
+             'subversion')  # matplotlib <- mpl-animators
+checkdepends=('python-reproject' 'python-sunpy')  # pytest-doctestplus gwcs mpl-animators already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a042518ca2c97ccc61de8f7fc8150ce0')
+md5sums=('84cd91f9977db35fb95c65f3e4def477')
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
+#        -e "/ignore:distutils/a \	ignore:The default kernel will change from 'Hann' to  'Gaussian'" \
+#        -e "/ignore:distutils/a \	ignore:The default boundary mode will change from 'ignore' to  'strict'" \
+#        -i setup.cfg
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -39,14 +47,14 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed"  #-vv --color=yes
 }
 
 package_python-ndcube() {
-    depends=('python>=3.7' 'python-gwcs>=0.15')
+    depends=('python>=3.8' 'python-gwcs>=0.15')
     optdepends=('python-matplotlib>=3.2: plotting'
                 'python-mpl-animators>=1.0: plotting'
-                'python-reproject: reproject'
+                'python-reproject<0.10: reproject'
                 'python-ndcube-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
 
