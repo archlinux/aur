@@ -2,13 +2,14 @@
 _dist=Iterator-Util
 pkgname=perl-iterator-util
 pkgver=0.02
-pkgrel=1
+pkgrel=2
 pkgdesc="essential utilities for the Iterator class"
 arch=(any)
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=(
 	perl
+	perl-iterator
 	perl-test-simple
 )
 options=(!emptydirs purge)

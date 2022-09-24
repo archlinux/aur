@@ -1,12 +1,13 @@
 pkgbase = perl-iterator-util
 	pkgdesc = essential utilities for the Iterator class
 	pkgver = 0.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Iterator-Util
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
+	depends = perl-iterator
 	depends = perl-test-simple
 	options = !emptydirs
 	options = purge
