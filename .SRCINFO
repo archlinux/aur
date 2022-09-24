@@ -1,7 +1,7 @@
 pkgbase = imagej2
 	pkgdesc = Open scientific N-dimensional image processing
-	pkgver = 2.2.0
-	pkgrel = 1
+	pkgver = 2.9.0
+	pkgrel = 0
 	url = https://imagej.net
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = imagej2
 	makedepends = maven
 	depends = glibc
 	depends = java-runtime=8
-	source = https://github.com/imagej/imagej2/archive/refs/tags/imagej-2.2.0.tar.gz
-	sha256sums = 84846e5399f486fe23651935e51e203c8f8b16032e69d53ef2b3ad16a9c818fa
+	source = https://github.com/imagej/imagej2/archive/refs/tags/imagej-2.9.0.tar.gz
+	sha256sums = 21c584411a7c70bc44ad435970cf6f00c7af0c03b97bc9274e05956109fb0c80
 
 pkgname = imagej2
