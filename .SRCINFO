@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-meslo
 	pkgdesc = Standalone Meslo (ttf-meslo) patched font from the nerd-fonts library
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
@@ -10,7 +10,7 @@ pkgbase = nerd-fonts-meslo
 	provides = nerd-fonts-meslo
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Meslo.zip
+	source = nerd-fonts-meslo-2.2.2::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Meslo.zip
 	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.2/LICENSE
 	sha1sums = d57d073835504b217c4a2c13042ad637eed947e0
 	sha1sums = 3175046f10fc45ffaaf96f5e4023d12316db0688

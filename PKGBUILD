@@ -9,7 +9,7 @@ _nerdfonts_source='Meslo.zip'
 
 pkgname=${_pkgbase}-${_font_pkgname}
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone ${_font_name} (${_font_pkgbase}) patched font from the ${_pkgbase} library"
 arch=("any")
 url="https://github.com/ryanoasis/${_pkgbase}"
@@ -18,7 +18,7 @@ depends=('fontconfig')
 provides=( ${pkgname} )
 conflicts=( ${_pkgbase}-git ${_pkgbase}-complete )
 groups=( ${_pkgbase} )
-source=("https://github.com/ryanoasis/${_pkgbase}/releases/download/v${pkgver}/${_nerdfonts_source}"
+source=("${pkgname}-${pkgver}::https://github.com/ryanoasis/${_pkgbase}/releases/download/v${pkgver}/${_nerdfonts_source}"
         "https://github.com/ryanoasis/${_pkgbase}/raw/v${pkgver}/LICENSE")
 sha1sums=('d57d073835504b217c4a2c13042ad637eed947e0'
           '3175046f10fc45ffaaf96f5e4023d12316db0688')
