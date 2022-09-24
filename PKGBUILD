@@ -2,7 +2,7 @@
 
 _name=pytest-shell-utilities
 pkgname=python-pytest-shell-utilities
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Pytest plugin providing fixtures and code to help with running shell commands on tests"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python python-attrs python-pytest python-pytest-helpers-namespace pytho
 makedepends=(python-build python-installer python-setuptools python-setuptools-declarative-requirements python-setuptools-scm python-toml python-wheel)
 checkdepends=(python-pytest-subtests)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('9a2e04404d2243348080c3d12588e8fef002f6c96e406784c19dc01d1c8cd477')
-b2sums=('666253d51cbc5d1e3622ceb6130497d0dac130c686cb0b0c6f411125c00e26d303c042b0f1d5c469528f442ac725d80857ecd21442aa580c68b11702e21add69')
+sha256sums=('98a78d7a9c5385e066f04bbfeb5df1b43d76d9d3d45749c4267385f58b99f751')
+b2sums=('bb3760f626857bca6eac3c27132416db882becfb5da551cab19d513d700367943697e0ffb980b4189bb7965d0f082f3fcee408ea6bb18e156d87cfc36c5c130a')
 
 build() {
   cd $_name-$pkgver
