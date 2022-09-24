@@ -2,7 +2,7 @@
 
 pkgname=python-pyreadr
 _name=${pkgname#python-}
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='Reads/writes R RData and Rds files into/from pandas data frames'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cython')
 checkdepends=('python-xarray')
 optdepends=('python-xarray: for 3D array support')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('343a5cb9fcb9f646010b7b7947f8d4f100aa1dcf3c2ec0e1df79fc419e48e973')
+sha256sums=('7f14db1022030b2751cfbace6f1a16e6ff738ffc150360d694924e8278b9f60d')
 
 build() {
     cd "${_name}-${pkgver}"
