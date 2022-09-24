@@ -1,24 +1,27 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=sums
-pkgver=0.7
-pkgrel=3
+pkgver=0.8
+pkgrel=1
 pkgdesc="Sums is a simple GTK postfix calculator that adheres to GNOME's human-interface guidelines"
 arch=('x86_64')
 url="https://gitlab.com/leesonwai/sums"
 license=('GPL3')
-depends=('glib2' 'gtk4' 'libadwaita' 'mpfr')
+depends=('libadwaita' 'mpfr')
 makedepends=('meson' 'gobject-introspection' 'gobject-introspection-runtime' 'gcc')
 checkdepends=('appstream-glib')
 source=("${url}/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ad351bd81f10f231bcab75e2e9e9e13d3dd62bcf661b1aad9385abebddbbadf9')
+b2sums=('ae4d834b35e6d5ed660d525095a06d62848364ad429907e34dc59ca16cd4a2b5782f5a9f97e8a91c73974a97f5749e319ab0c3b7df45414a2b157eee1c44b6a4')
 
 build() {
-  arch-meson ${pkgname%-git}-${pkgver} build
+  arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs || :
+}
+
 package() {
-  cd "$srcdir"
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
