@@ -1,17 +1,17 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=passphrase2pgp
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="Predictable, passphrase-based PGP key generator"
+pkgdesc='Predictable, passphrase-based PGP key generator'
 arch=('x86_64')
-url="https://github.com/skeeto/passphrase2pgp"
+url='https://github.com/skeeto/passphrase2pgp'
 license=('Unlicense')
 depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('bash' 'gnupg' 'openssh')
 options=('!lto')
-_commit='89270b52ec9eb7d922b8c5e20912c9b9f1bd3d8a'
+_commit='f7c8d7d04855b9d7805b9c36c7e0ba677dc28965'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
