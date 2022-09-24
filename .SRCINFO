@@ -1,7 +1,7 @@
 pkgbase = python-rpa
-	pkgdesc = ModernGL: High performance rendering for Python 3
+	pkgdesc = RPA for Python is a Python package for RPA (robotic process automation)
 	pkgver = 1.48.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tebelorg/RPA-Python
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,6 @@ pkgbase = python-rpa
 	depends = python-tagui
 	depends = tesseract
 	source = https://files.pythonhosted.org/packages/source/r/rpa/rpa-1.48.1.tar.gz
-	b2sums = SKIP
+	b2sums = 2eabea0b0ce3560805a7b4a63a364cdc213d2d9a92ae4ec047b86f9816ba560d6b2e3fecc4484c98238524adef1ee4e4a199e679521ba86cb371f64004a600af
 
 pkgname = python-rpa
