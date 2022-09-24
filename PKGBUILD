@@ -41,6 +41,24 @@ makedepends=(
 	perl-unicode-utf8
 	python-docutils
 )
+#checkdepends=(
+#	aspell-en
+#	perl-berkeleydb
+#	perl-html-tokeparser-simple
+#	perl-io-prompt-tiny
+#	perl-mce
+#	perl-mldbm
+#	perl-pod-coverage-trustpod
+#	perl-test-minimumversion
+#	perl-test-pod-coverage
+#	perl-test-strict
+#	perl-test-synopsis
+#	perl-text-csv
+#	perl-text-diff
+#	perl-text-markdown-discount
+#	perl-www-mechanize
+#	tidy
+#)
 optdepends=()
 options=('!emptydirs' purge)
 source=("https://salsa.debian.org/lintian/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
@@ -49,6 +67,13 @@ sha512sums=('8472d63c95d6637de816676941b1666190d07fa87cb161eccb7d8635cbb8abffcc4
 prepare() {
 	cd "$pkgname-$pkgver"
 
+	#mkdir -p profiles/archlinux
+	#cat <<- EOF > profiles/archlinux/main.profile
+	#	Profile: archlinux/main
+	#	Extends: debian/main
+	#	Disable-Tags:
+	#	  bugs-field-does-not-refer-to-debian-infrastructure
+	#EOF
 	/usr/bin/perl -p -i -e "s/my \\\$LINTIAN_VERSION;/my \\\$LINTIAN_VERSION = q{${pkgver}};/;" bin/*
 }
 
@@ -68,6 +93,12 @@ build() {
 		pod2man "${podargs[@]}" --name="$BASENAME" --section=3 "$POD" > "man/man3/$BASENAME".3
 	done
 	private/generate-html-docs doc/api.html
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+
+	#private/runtests
 }
 
 package() {
