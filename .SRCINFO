@@ -1,12 +1,11 @@
 pkgbase = networkmanager-support
 	pkgdesc = Metapkg for useful NetworkManager packages
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.archlinux.org/index.php/NetworkManager
 	install = networkmanager-support.install
 	arch = any
 	license = GPL
-	depends = dhclient
 	depends = dnsmasq
 	depends = mobile-broadband-provider-info
 	depends = modemmanager

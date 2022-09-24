@@ -2,13 +2,12 @@
 
 pkgname=networkmanager-support
 pkgver=1
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://wiki.archlinux.org/index.php/NetworkManager"
 license=('GPL')
 pkgdesc="Metapkg for useful NetworkManager packages"
-depends=("dhclient"
-        "dnsmasq"
+depends=("dnsmasq"
         "mobile-broadband-provider-info"
         "modemmanager"
         "network-manager-sstp"
@@ -32,7 +31,7 @@ optdepends=('network-manager-applet: Applet for managing network connections'
             'nm-tray: A pure QT NetworkManager front-end residing in panels'
             'modem-manager-gui: A GTK+ Gui for modem manager'
             'qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers'
-            'gpsd: Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager')
+            'gpsd:  Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager')
 conflicts=("connman-support")
 install=$pkgname.install
 
