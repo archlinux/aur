@@ -1,11 +1,11 @@
 pkgname="rustpython-git"
-pkgver=r1018.d3158f3
+pkgver=r11862.2a26ed009
 pkgrel=1
 pkgdesc='A Python3 Interpreter written in Rust'
 arch=('x86_64' 'i686')
 url='https://github.com/RustPython/RustPython'
 #depends=('')
-makedepends=('rust')
+makedepends=('rust' 'python')
 license=('MIT')
 source=('git+https://github.com/RustPython/RustPython.git')
 md5sums=('SKIP')
