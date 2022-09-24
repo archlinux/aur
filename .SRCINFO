@@ -1,5 +1,5 @@
 pkgbase = aquatone-git
-	pkgdesc = A Tool for Domain Flyovers.
+	pkgdesc = A Tool for Domain Flyovers
 	pkgver = 142.2daa022
 	pkgrel = 1
 	url = https://github.com/shelld3v/aquatone
