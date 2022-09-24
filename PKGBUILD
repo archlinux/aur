@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=warp-git
-pkgver=0.2.1.r0.gf757077
+pkgver=0.3.0.r1.g58a554f
 pkgrel=1
 pkgdesc="Fast and secure file transfer"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
