@@ -1,16 +1,16 @@
 # Maintainer: libernux <dutchman55@gmx.com>
 pkgname="brother-mfc-5890cn"
 pkgver="1.1.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother MFC-5890cn"
 arch=("i686" "x86_64")
-url="http://solutions.brother.com/linux/en_us/"
+url="https://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=("cups")
 install="$pkgname.install"
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc5890cnlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc5890cncupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"https://www.brother.com/pub/bsc/linux/dlf/mfc5890cnlpr-$pkgver-$pkgrel.i386.rpm"
+	"https://www.brother.com/pub/bsc/linux/dlf/mfc5890cncupswrapper-$pkgver-$pkgrel.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
