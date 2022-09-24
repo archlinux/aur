@@ -2,7 +2,7 @@
 
 _name=spsdk
 pkgname=python-spsdk
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
@@ -33,6 +33,7 @@ depends=(
   python-pyserial
   python-ruamel-yaml
   python-sly
+  python-typing-extensions
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(
@@ -47,16 +48,13 @@ source=(
   $_name-$pkgver.tar.gz::https://github.com/NXPmicro/$_name/archive/refs/tags/$pkgver.tar.gz
   $pkgname-1.6.0-remove_pypemicro.patch
   $pkgname-1.7.0-cryptography.patch
-  $pkgname-1.7.0-pyyaml.patch
 )
-sha512sums=('21245a72e4eaa6bd71c71095895d3fae043c911ff0fe6600c430f73e4c4f18fe8bd9ffb6d6d4048d5b0ae3e832c18cc4080359e8a00cc6f6ec68f5b26ebfe6a4'
+sha512sums=('2ee9be8b0ada9ba9525361aa6b0461a1468afabb7664c5b08b7bdbb559d7fc7f5b612a40bc46e1c2f36396795b9e62309f6e474cefff6bfe359e3805b8a39903'
             '7bfb3739053284ba0b4084c1f84e37e307233fa7b52adf403fa5c574393d71e08ea02bdc927106b036d1055f6efd6c326b534d697c1d5f6c097def53dbafc560'
-            '2c6d56add47e17342f19b281b206e1b658c651e46d17a64aef007774f093a40e25f81c604e0d9b3a24079f2179ea1f113736cdf44b286a0a01a4ad6b6cab00ce'
-            '7e4d9af4e5f11dfce8dc30294ed9b2f78912869c71b3928903f972525f72df5ffc6ab266f419a845881638dc20af55b76ec995a4790b7dbede4d25154e16aa3c')
-b2sums=('0db5bf8e9d068dcec699585db05fb0a4d8255a132654a70d603bd5c85e10877c0e38a355fb6a705642844abbe3ab5712b625e82ff86061170876214f1df12e4a'
+            '2c6d56add47e17342f19b281b206e1b658c651e46d17a64aef007774f093a40e25f81c604e0d9b3a24079f2179ea1f113736cdf44b286a0a01a4ad6b6cab00ce')
+b2sums=('6b691a8d06d19f2581213484588a335a5e4cccd1310a277780b177a6c2e601a3c5312fe2eb0394c259a4f73669f18170dd18fdb612a02aed340523fbc271617f'
         '2c68116494b5e7ff51e59ec79dd3e354e2a8035ab35e29b27a097d7baa47e48c71a2cdac651920c76cd29097c5e8710e74106e41a4b3d5f543e259ef7404beac'
-        'a1005b5408d67c8a5105068107c52f5a84f5c36e19a84d04e8456e67d0c4658961f11dedf4e5a5a00b6e91beddac49ebfea9d9f04c527b6b58bf47067224f2bd'
-        'ca7d876a0d71c582908d26bd7e94d4ec793639b8fec64e6af931968d01b48f41b9483584155411bcd3b496672eeab9d1f5e6bad15f959ee75607da56ba0b2ab4')
+        'a1005b5408d67c8a5105068107c52f5a84f5c36e19a84d04e8456e67d0c4658961f11dedf4e5a5a00b6e91beddac49ebfea9d9f04c527b6b58bf47067224f2bd')
 
 prepare() {
   cd $_name-$pkgver
@@ -77,9 +75,6 @@ prepare() {
   # support python-cryptography >= 37
   # https://github.com/NXPmicro/spsdk/issues/43
   patch -Np1 -i ../$pkgname-1.7.0-cryptography.patch
-
-  # fix issue with pyyaml: https://github.com/NXPmicro/spsdk/issues/45
-  patch -Np1 -i ../$pkgname-1.7.0-pyyaml.patch
 }
 
 build() {
