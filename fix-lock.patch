@@ -1,0 +1,39 @@
+diff --git lib/agent/actions/lock/linux/prey-lock3 lib/agent/actions/lock/linux/prey-lock3
+index 9377d219..08c0a88e 100755
+--- lib/agent/actions/lock/linux/prey-lock3
++++ lib/agent/actions/lock/linux/prey-lock3
+@@ -138,12 +138,12 @@ class Lock:
+         self.window.set_resizable(False)
+         self.window.fullscreen()
+ 
+-        #_monitor = self.window.get_display().get_primary_monitor()
+-        #main_screen_width = _monitor.get_geometry().width
+-        #main_screen_height = _monitor.get_geometry().height
+-        _monitor = Gdk.Screen.get_default()
+-        main_screen_width = _monitor.get_width()
+-        main_screen_height = _monitor.get_height()
++        _monitor = self.window.get_display().get_primary_monitor()
++        main_screen_width = _monitor.get_geometry().width
++        main_screen_height = _monitor.get_geometry().height
++        #_monitor = Gdk.Screen.get_default()
++        #main_screen_width = _monitor.get_width()
++        #main_screen_height = _monitor.get_height()
+         main_screen_middle = main_screen_width / 2
+ 
+         # print "Main screen size: %s x %s" % (main_screen_width, main_screen_height)
+@@ -265,7 +265,16 @@ class Lock:
+         self.window.show_all()
+         # self.window.set_focus(self.entry)
+         seat = self.window.get_display().get_default_seat()
+-       
++        seat.grab(
++            fixed.get_parent_window(),
++            Gdk.SeatCapabilities.KEYBOARD,
++            True,
++            None,
++            None,
++            None,
++            None,
++            None,
++        )
+         self.label.hide()
