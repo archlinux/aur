@@ -1,6 +1,6 @@
 pkgbase = sfz-bin
 	pkgdesc = A simple static file serving command-line tool written in Rust
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/weihanglo/sfz
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = sfz-bin
 	license = MIT
 	provides = sfz
 	conflicts = sfz
-	source = https://github.com/weihanglo/sfz/releases/download/v0.7.0/sfz-v0.7.0-x86_64-unknown-linux-gnu.tar.gz
-	source = https://github.com/weihanglo/sfz/raw/v0.7.0/LICENSE-APACHE
-	source = https://github.com/weihanglo/sfz/raw/v0.7.0/LICENSE-MIT
-	md5sums = b5c13a2ba8a03e85047d548e19c0e113
+	source = https://github.com/weihanglo/sfz/releases/download/v0.7.1/sfz-v0.7.1-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/weihanglo/sfz/raw/v0.7.1/LICENSE-APACHE
+	source = https://github.com/weihanglo/sfz/raw/v0.7.1/LICENSE-MIT
+	md5sums = 08d4d0e69e758103fba6ede4b0e5513b
 	md5sums = 1836efb2eb779966696f473ee8540542
 	md5sums = b93f0f6d6a499152e5538a25abec2dc7
 
