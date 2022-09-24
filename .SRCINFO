@@ -6,6 +6,7 @@ pkgbase = nvidia-omniverse
 	arch = x86_64
 	license = Custom: Nvidia
 	depends = electron
+	depends = nvidia
 	provides = omniverse
 	noextract = omniverse-launcher-linux.AppImage
 	options = !strip
