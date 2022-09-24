@@ -12,19 +12,25 @@ depends=(
 	perl-config-tiny
 	perl-data-dpath
 	perl-data-validate-domain
+	perl-data-validate-uri
 	perl-devel-size
 	perl-email-address-xs
 	perl-file-find-rule
 	perl-font-ttf
 	perl-io-interactive
 	perl-json-maybexs
+	perl-list-someutils
 	perl-list-utilsby
+	perl-moox-aliases
+	perl-namespace-clean
+	perl-path-tiny
 	perl-perlio-gzip
 	perl-perlio-utf8-strict
 	perl-proc-processtable
 	perl-syntax-keyword-try
 	perl-text-levenshteinxs
 	perl-time-moment
+	perl-xml-libxml
 	perl-yaml-libyaml
 )
 makedepends=(
