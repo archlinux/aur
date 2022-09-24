@@ -4,7 +4,7 @@
 pkgname=epy-git
 _name=epy
 provides=('epy')
-pkgver=2022.4.18.r272.240cb6d
+pkgver=2022.4.18.r273.3d6cc57
 pkgrel=1
 pkgdesc="CLI Ebook Reader"
 arch=('any')
