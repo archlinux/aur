@@ -1,7 +1,7 @@
 pkgbase = r-tokenizers
 	pkgdesc = Fast, Consistent Tokenization of Natural Language Text
-	pkgver = 0.2.1
-	pkgrel = 4
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=tokenizers
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = r-tokenizers
 	optdepends = r-rmarkdown
 	optdepends = r-stopwords
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tokenizers_0.2.1.tar.gz
-	sha256sums = 28617cdc5ddef5276abfe14a2642999833322b6c34697de1d4e9d6dc7670dd00
+	source = https://cran.r-project.org/src/contrib/tokenizers_0.2.3.tar.gz
+	sha256sums = 626d6b48b79dc4c3c130aebe201aac620f93665e0c5a890c3b6ca25c465f4207
 
 pkgname = r-tokenizers
