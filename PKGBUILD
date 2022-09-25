@@ -1,70 +1,97 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: MadPhysicist <jfoxrabinovitz at gmail dot com>
 
+_opt_kut='kyo'
+_opt_kut='ta_utax_'
+
+# Unified: kyocera-cups kyocera-utax-ta
+
 set -u
 pkgname='kyocera-utax-ta'
-_pkgver='20140115'
-pkgver="0.0.${_pkgver}"
+_pkgver='9.1-0'; _rev='20220203'
+_blob='dc92d4bd-a761-4c0f-a981-0f1efc7c1a7f'
+pkgver="${_pkgver//-/.}.${_rev}"
 pkgrel='1'
 pkgdesc='PPD drivers for Kyocera UTAX TA Triumph Adler CD CDC CLP DC LP P printers copiers wide format'
 arch=('i686' 'x86_64')
 # https://www.kyoceradocumentsolutions.eu/index/products/product/fs4200dn.technical_specification.html (zip incomplete PPD list)
-url='https://www.utax.de/'
 #url='https://www.utaxuk.co.uk/'
+url='https://www.utax.de/'
 license=('custom')
 depends=('cups')
+depends+=('python-pypdf3' 'python-reportlab')
 options=('!strip')
 source=(
-  "https://www.triumph-adler.com/resource/blob/720/d317ddb2d4689ba40b3d24a409bf5601/talinuxpackages-ccd-clp-${_pkgver}-tar-data.gz"
-  "https://www.triumph-adler.com/resource/blob/852/b60e9e48a2dfc4b1e2eedb05a1f71506/linuxppd-p4030mfp-imfp-p4035mfp-imfp-p5035imfp-p6035imfp-20141024-zip-data.zip"
-  "https://www.triumph-adler.com/resource/blob/2536/eea11042f08f25b505525a91a95c423d/linuxppd-p3520d-p3521d-dn-pc2160dn-pc2660dn-pc3060dn-pc3570dn-20141024-zip-data.zip"
+  "TALinuxDriver${_pkgver%-*}-${_rev}.tar.gz::https://catalogue-prod.utax.de/blobs/${_blob}"
 )
-sha1sums=('b2a9f5cab041060d367fe9eb140a17aadb72f0b9'
-          '3bd8d8085010d299747bf2f7cb92e9970df57043'
-          '02cd98e5346ec4aa008cdb0a648d78f0e4342150')
-sha256sums=('d5031282b32266912f08c9f9b19b092c93e8aabda925d83a505e48e185e172ad'
-            'a9e2b3e0f8a9e2d9dc3d8828c0276f7b90123a2cfc03c3da11d6e0328a096893'
-            'a0581ceb1616a4ba899a4191d219832cd6bafd47934ca2f5e0a5b35c148a04d9')
+md5sums=('fb465c80027fbeadf5634bc91694793b')
+sha1sums=('e425379af9119a05a0f08079e664ad9c5178fdee')
+sha256sums=('86ceca48b1f5e39944c8f3115223ebd018e2f7ded53667c9d3e90afcb4241da4')
+
+prepare() {
+  set -u
+  # Set number of bits: '32bit' or '64bit', depending on ${CARCH}
+  declare -A _suffix=([i686]='i386' [x86_64]='x86_64')
+
+  local _ver='Redhat/Redhat/Global'
+  local _fl="${_ver}/${_opt_kut}dialog_${_suffix[${CARCH}]}/${_opt_kut}dialog-${_pkgver}.${_suffix[${CARCH}]}.rpm"
+  set +u; msg2 "Extracting ${_fl}"; set +u
+  mkdir 'dta'
+  bsdtar -C 'dta' -xf "${_fl}"
+  rm -r 'dta/usr/lib/.build-id'
+  set +u
+}
 
 package() {
   set -u
+  # Install the package
 
-  # Set language name: Default is English, pick only one
-  local _language=(
-    'English'
-    #'French'
-    #'German'
-    #'Italian'
-    #'Portuguese'
-    #'Spanish'
-  )
+  cd 'dta'
+  mv 'usr' "${pkgdir}"
 
-  # Set number of bits: '32bit' or '64bit', depending on ${CARCH}
-  declare -A _bittage=([i686]='32bit' [x86_64]='64bit')
+  local _pvx="${_pkgver%%-*}"
+  _pvx="${_pvx%.0}"
 
-  install -d "${pkgdir}/usr/share/cups/model/UTAX_TA"
-  find -type 'f' '(' -ipath "*/${_bittage[${CARCH}]}/Global/${_language[0]}/*" -o -ipath "*/LinuxPPD*/Global/${_language[0]}/*" ')' -iname '*.ppd' -exec mv '{}' "${pkgdir}/usr/share/cups/model/UTAX_TA" ';'
-  install -d "${pkgdir}/usr/lib/cups/filter/"
-  find -type 'f' -ipath "*/${_bittage[${CARCH}]}/Global/${_language[0]}/*" -iname 'kyofilter_*' -exec mv '{}' "${pkgdir}/usr/lib/cups/filter/" ';'
-  chmod 555 "${pkgdir}/usr/lib/cups/filter"/*
+  # From rpm postinstall
+  local _ALTERNATE_PPD_DIRECTORY=/usr/share/cups/model/TA_UTAX
+  #local _PRIMARY_PPD_DIRECTORY=/usr/share/ppd/ta_utax/
+  local _INSTALLED_PPD_DIRECTORY="/usr/share/kyocera/ppd${_pvx}"
+  local _TMP_INSTALL="/usr/share/kyocera${_pvx}/"
+  #local _PYTHON_DIRECTORY=/usr/share/kyocera/Python/
+  #local _KYOCERA_CONFIG=/usr/share/kyocera
+  #local _TMP_DIR=/tmp/kyocera_printers
+  #local _CONFIG_TMP=/tmp/kyocera_config
 
-  # Change extension to lower case .ppd
-  local _f1 _f2
-  for _f1 in "${pkgdir}/usr/share/cups/model"/*/*.[pP][pP][dD]; do
-    _f2="${_f1// /_}"
-    _f2="${_f2/.PPD/.ppd}"
-    if [ "${_f1}" != "${_f2}" ]; then
-      mv "${_f1}" "${_f2}"
-    fi
-  done
+  #_ALTERNATE_PPD_DIRECTORY="${_ALTERNATE_PPD_DIRECTORY/kyocera/Kyocera}"
+  _INSTALLED_PPD_DIRECTORY="${_TMP_INSTALL}${_INSTALLED_PPD_DIRECTORY##*/}"
 
-  # remove CR from EOL
-  sed -e 's:\r\+$::g' -i "${pkgdir}/usr/share/cups/model"/*/*.ppd
+  # Change folders to be more like 8.1404 for comparison
+  install -d "${pkgdir}/usr/share/cups/model"
+  mv "${pkgdir}${_INSTALLED_PPD_DIRECTORY}" "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"
 
-  # grep -he '^*ModelName:' "${pkgdir}/usr/share/cups/model"/*/*.ppd | sort -u > "${startdir}/models.${pkgver}.txt"
+  # Remove PyPDF3
+  rm -r "${pkgdir}${_TMP_INSTALL}"
+
+  if :; then
+    # Remove dialog launcher. It doesn't work for me.
+    rm "${pkgdir}/usr/bin/${_opt_kut}dialog${_pvx}"
+    rm -r "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/doc/"
+  else
+    depends+=('qt5-base')
+  fi
+
+  if :; then
+    rm "${pkgdir}/usr/bin"/kyoPPD* "${pkgdir}/usr/lib/cups/filter"/kyofilter*
+    depends+=('kyocera-cups')
+  fi
+
+  # grep -he '^*ModelName:' "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"/*.ppd | sed -E -e 's: {2,}: :g' | sort -u > "${startdir}/models.${pkgver}.txt"
 
   # Compressing hinders package compression which results in a much larger package
-  # gzip "${pkgdir}/usr/share/cups/model"/*/*.ppd
+  # gzip "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"/*.ppd
+
+  # Install LICENSES
+  install -Dpm644 "${srcdir}/LICENSES.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
 set +u
