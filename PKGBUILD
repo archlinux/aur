@@ -30,7 +30,7 @@ install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main'
 'compile.bash')
 sha256sums=('SKIP'
-            '7cdf3fd50b3bc3c2a85d5f6e78f40d28b9ae2888cca29202503891fab5e5da55')
+            'a97002b22640b2ee67019ed1c729dfb163116cdeeb4933755d6829e6fb02b82b')
 
 pkgver() {
     cd "${pkgname}" || exit 1
