@@ -2,5 +2,6 @@
 *
 !.gitignore
 !PKGBUILD
+!guile-hall-git-xdg-fix.patch
 !.SRCINFO
 #end

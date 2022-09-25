@@ -1,7 +1,7 @@
 pkgbase = guile-hall-git
 	pkgdesc = Project manager and build tool for GNU guile (Git snapshot)
 	pkgver = 0.4.1.r30.g36dd0c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/a-sassmannshausen/guile-hall
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = guile-hall-git
 	provides = guile-hall=0.4.1.r30.g36dd0c6
 	options = !strip
 	source = guile-hall::git+https://gitlab.com/a-sassmannshausen/guile-hall.git
+	source = guile-hall-git-xdg-fix.patch
 	sha256sums = SKIP
+	sha256sums = 0ea14d5f9fcf8ccf81c6235be643109671d7db691e3f8e55eca4d1326851224d
 
 pkgname = guile-hall-git
