@@ -1,12 +1,12 @@
 pkgbase = libclassicclient
 	pkgdesc = Gemalto PKCS#11 driver
-	pkgver = 7.3.0_b06.01
+	pkgver = 7.5.0_b02.00
 	pkgrel = 3
 	url = https://www.luxtrust.com/en/middleware
 	arch = x86_64
 	optdepends = luxtrust-middleware: LuxTrust software for web authentication
-	source_x86_64 = https://www.luxtrust.com/sites/default/files/downloads/middleware/LuxTrust_Middleware_1.4.1_Ubuntu_64bit.tar.gz
-	sha256sums_x86_64 = 2b27b873f223f254b37fcc6ae9b21e5bb48ac081b0845be0f3bee10d8a377eff
+	source_x86_64 = https://www.luxtrust.com/sites/default/files/downloads/middleware/LuxTrust_Middleware_1.8.0_Ubuntu_64bit.tar.gz
+	sha256sums_x86_64 = 003f23e06ad4960b4406b64d26ab72aa92877c56c8b4a9dfe16e14a17975740f
 
 pkgname = libclassicclient
 	depends = gcc-libs
