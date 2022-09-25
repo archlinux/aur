@@ -1,7 +1,7 @@
 pkgbase = electron-xdg-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - without creating a useless ~/.pki directory (binary version)
 	pkgver = 20.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org/
 	arch = x86_64
 	license = MIT
@@ -45,7 +45,7 @@ pkgbase = electron-xdg-bin
 	provides = electron
 	conflicts = electron20
 	conflicts = electron
-	source = https://github.com/noahvogt/electron-xdg/releases/download/20.0.3-1/electron-xdg-20.0.3-1-x86_64.pkg.tar.zst
-	sha256sums = 42f0a42b7509efe57808a3c6d0a9f21eaedc59f682854e2cb02b11d452e8a80b
+	source = https://github.com/noahvogt/electron-xdg/releases/download/20.0.3-2/electron-xdg-20.0.3-2-x86_64.pkg.tar.zst
+	sha256sums = efa5e0fef5b9e20f1a36670194054d1f42f4753f49a9009357c0a6de8b6c8495
 
 pkgname = electron-xdg-bin
