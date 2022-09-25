@@ -14,11 +14,11 @@ license=('custom:wxWindows')
 makedepends=('git'
              'glu'
              'sh'
-             'gtk2'
-             'gtk3'
-             'libsm'
-             'libgl'
              'libnotify'
+             'libsecret'
+             'libmspack'
+             'webkit2gtk'
+             'gspell'
              'qt5-base'
              'cmake'
              )
@@ -108,17 +108,15 @@ build() {
 package_wxwidgets-qt5-light() {
 pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   depends=('wxwidgets-common-light'
-           'libgl'
            'qt5-base'
-           'libsm'
            'sdl2'
            'libnotify'
+           'libmspack'
            )
   provides=('wxwidgets-qt5'
             'wxwidgets'
             )
   conflicts=('wxwidgets-qt5')
-  options+=('!emptydirs')
 
   make -C build-qt5 DESTDIR="${pkgdir}" install
 
@@ -130,16 +128,16 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk2-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-qt5-light/LICENSE"
 }
 
 package_wxwidgets-gtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
   depends=('wxwidgets-common-light'
-           'gtk3'
-           'libsm'
            'sdl2'
-           'libnotify'
+           'libmspack'
+           'gspell'
+           'webkit2gtk'
            )
   provides=('wxwidgets'
             'wxwidgets-gtk3'
@@ -151,7 +149,6 @@ package_wxwidgets-gtk3-light() {
   replaces=('wxgtk3-light'
             'wxgtk3'
             )
-  options+=('!emptydirs')
 
   make -C build-gtk3 DESTDIR="${pkgdir}" install
 
@@ -163,7 +160,7 @@ package_wxwidgets-gtk3-light() {
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk3-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-gtk3-light/LICENSE"
 }
 
 package_wxwidgets-common-light() {
@@ -171,6 +168,7 @@ package_wxwidgets-common-light() {
   depends=('sh'
            'expat'
            'zlib'
+           'libsecret-1.so'
            )
   provides=('wxbase'
             'wxbase-light'
@@ -185,7 +183,6 @@ package_wxwidgets-common-light() {
   replaces=('wxcommon-light'
             'wxgtk-common'
             )
-  options+=('!emptydirs')
 
   make -C build-qt5 DESTDIR="${pkgdir}" install
   make -C build-gtk3 DESTDIR="${pkgdir}" install
@@ -201,5 +198,5 @@ package_wxwidgets-common-light() {
   # Install translations
   make DESTDIR="${pkgdir}" -C wxwidgets locale_install
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-common-light/LICENSE"
 }
