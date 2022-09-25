@@ -1,6 +1,6 @@
 # Maintainer: (jmcb) <joelsgp@protonmail.com>
+# Contributor: (Joe084) <develon69 at gmail dot com>
 
-# Common metadata
 pkgname='pico-8'
 pkgver='0.2.5c'
 pkgrel=1
