@@ -20,29 +20,32 @@ _opt_UTAX=0
 
 set -u
 pkgname='kyocera-cups'
-pkgver='8.1601'
-pkgrel='2'
+#_pkgver='9.0-0'; _rev='20210527'
+_pkgver='9.1-0'; _rev='20220203'
+pkgver="${_pkgver//-/.}.${_rev}"
+pkgrel='1'
 pkgdesc='PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL printers copiers wide format'
 arch=('i686' 'x86_64')
 # https://www.kyoceradocumentsolutions.eu/index/products/product/fs4200dn.technical_specification.html (zip incomplete PPD list)
 #url='https://usa.kyoceradocumentsolutions.com/en/products-services/hardware/printers/ecosys-fs-4200dn.html' # (.tar.gz complete PPD list)
-url='https://www.kyoceradocumentsolutions.us/en/support/downloads.html' # select FS-4200dn
+url='https://www.kyoceradocumentsolutions.us/en/support/downloads.html' # select ECOSYS FS-4200dn
 license=('custom')
 depends=('cups')
+depends+=('python-pypdf3' 'python-reportlab')
 conflicts=('kyocera-ecosys-m2035dn' 'kyocera-ecosys-p6035cdn')
 options=('!strip')
 #install="${pkgname}.install"
 # https://downloads.kyoceradocumentsolutions.com.au/drivers/Drivers/KyoceraLinuxPackages-20141229.tar.gz # 8.1404
 #source=("https://cdn.kyostatics.net/dlc/eu/driver/all/linux_8_1602_ecosys.-downloadcenteritem-Single-File.downloadcenteritem.tmp/Linux_8.1602_EC..._P5021_5026.zip")
 #source=("https://usa.kyoceradocumentsolutions.com/content/dam/kdc/kdag/downloads/technical/executables/drivers/kyoceradocumentsolutions/us/en/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
-_srcdir="Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz"
+_srcdir="KyoceraLinuxPackages_${_rev}.tar.gz"
 source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${_srcdir//./_}.download.gz")
 #source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
-md5sums=('23228956c4f4df8a57dca10c9d783b59'
+md5sums=('6bc001940c9d4cb8e287bf23f708008c'
          'd3e7d0fe76377b0b058a9fb497cdfafa')
-sha1sums=('ad7adba5e29464e9c3c1f052c6899d54f5afe0f4'
+sha1sums=('4351c13addcad3bbd01c03a946a5494549a305b4'
           'cdb6d5622f9ca977ac178fb19553f5730096597b')
-sha256sums=('1375b67d4f79be0a02418cf8a03ea475e20ef92bf221fdb585f15a55c2d964e5'
+sha256sums=('aaa886745380a461a1b6d12a09484801867750c24b1320ec5b138467fba5c3c9'
             'c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4')
 
 source+=('repack.sh')
@@ -65,16 +68,14 @@ declare -gA _bittage=([i686]='32bit' [x86_64]='64bit')
 prepare() {
   set -u
   # Set number of bits: '32bit' or '64bit', depending on ${CARCH}
-  declare -A _suffix=([i686]='i386' [x86_64]='amd64')
+  declare -A _suffix=([i686]='i386' [x86_64]='x86_64')
 
-  # Set language name: Default is English
-  # Valid options are: de, en, es, fr, it, pt
-  # Options are result of `ls ${srcdir}/dist/KyoceraLinuxPackages/Global/${_bittage}`
-  local _language='en'
-
-  # No additional makedepends since bsdtar can handle rpms:
-  # http://unix.stackexchange.com/a/125703/79307
-  bsdtar -xf "dist/KyoceraLinuxPackages/Global/${_bittage[${CARCH}]}/kyodialog3.${_language}_0.5-0_${_suffix[${CARCH}]}.rpm"
+  local _ver='Redhat/Redhat/Global'
+  local _fl="${_ver}/kyodialog_${_suffix[${CARCH}]}/kyodialog-${_pkgver}.${_suffix[${CARCH}]}.rpm"
+  set +u; msg2 "Extracting ${_fl}"; set +u
+  mkdir 'dta'
+  bsdtar -C 'dta' -xf "${_fl}"
+  rm -r 'dta/usr/lib/.build-id'
   set +u
 }
 
@@ -112,28 +113,50 @@ _package_UTAX() {
 package() {
   set -u
   # Install the package
+
+  cd 'dta'
   mv 'usr' "${pkgdir}"
+
+  local _pvx="${_pkgver%%-*}"
+  _pvx="${_pvx%.0}"
+
+  # From rpm postinstall
+  local _ALTERNATE_PPD_DIRECTORY=/usr/share/cups/model/kyocera
+  #local _PRIMARY_PPD_DIRECTORY=/usr/share/ppd/kyocera/
+  local _INSTALLED_PPD_DIRECTORY="/usr/share/kyocera/ppd${_pvx}"
+  local _TMP_INSTALL="/usr/share/kyocera${_pvx}/"
+  #local _PYTHON_DIRECTORY=/usr/share/kyocera/Python/
+  #local _KYOCERA_CONFIG=/usr/share/kyocera
+  #local _TMP_DIR=/tmp/kyocera_printers
+  #local _CONFIG_TMP=/tmp/kyocera_config
+
+  _ALTERNATE_PPD_DIRECTORY="${_ALTERNATE_PPD_DIRECTORY/kyocera/Kyocera}"
+  _INSTALLED_PPD_DIRECTORY="${_TMP_INSTALL}${_INSTALLED_PPD_DIRECTORY##*/}"
 
   # Change folders to be more like 8.1404 for comparison
   install -d "${pkgdir}/usr/share/cups/model"
-  mv "${pkgdir}/usr/share/ppd/kyocera" "${pkgdir}/usr/share/cups/model/Kyocera"
-  rmdir "${pkgdir}/usr/share/ppd"
+  mv "${pkgdir}${_INSTALLED_PPD_DIRECTORY}" "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"
+
+  # Remove PyPDF3
+  rm -r "${pkgdir}${_TMP_INSTALL}"
 
   if :; then
     # Remove dialog launcher. It doesn't work for me.
-    rm "${pkgdir}/usr/bin/kyodialog3"
-    rm -r "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/doc/" "${pkgdir}/usr/share/kyocera"
+    rm "${pkgdir}/usr/bin/kyodialog${_pvx}"
+    rm -r "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/doc/"
+  else
+    depends+=('qt5-base')
   fi
 
   _package_UTAX
 
-  # grep -he '^*ModelName:' "${pkgdir}/usr/share/cups/model/Kyocera"/*.ppd | sort -u > "${startdir}/models.${pkgver}.txt"
+  # grep -he '^*ModelName:' "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"/*.ppd | sed -E -e 's: {2,}: :g' | sort -u > "${startdir}/models.${pkgver}.txt"
 
   # Compressing hinders package compression which results in a much larger package
-  # gzip "${pkgdir}/usr/share/cups/model/Kyocera"/*.ppd
+  # gzip "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"/*.ppd
 
   # Install LICENSES
-  install -Dpm644 "${srcdir}/dist/KyoceraLinuxPackages/LICENSES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.txt"
+  install -Dpm644 "${srcdir}/LICENSES.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
 set +u
