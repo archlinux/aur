@@ -1,7 +1,7 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=p3wm
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Three-way merge .pacnew files"
 arch=('any')
 url="https://github.com/5long/p3wm"
@@ -35,4 +35,4 @@ package() {
 }
 
 # Put checksum at the end so we can update it easier w/ `makepkg -g >> PKGBUILD`
-sha256sums=('db5cf7bf04b6a7a66a62a545ab0692c71ba293c6dc5d24cba5e84b4906f6a779')
+sha256sums=('1a996039edfed8c81d8c7d9d13a343f0abfdcb050c9152bb874de5f8099beeb3')
