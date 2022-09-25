@@ -8,6 +8,7 @@ pkgbase = zapzap-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
