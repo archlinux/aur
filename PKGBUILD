@@ -28,15 +28,15 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/${_pkgbase}
+  cd "${srcdir}/${_pkgbase}"
   make CFLAGS="${CFLAGS} $(sdl-config --cflags)"
   cd utils
   make CC="gcc ${CFLAGS}"
 }
 
 package() {
-  cd ${srcdir}/${_pkgbase}
-  mkdir -p ${pkgdir}/usr/bin
-  install -m755 vspcplay utils/applymask32 ${pkgdir}/usr/bin/
-  install -Dm644 vspcplay-icon.ico ${pkgdir}/usr/share/pixmaps/vspcplay.ico
+  cd "${srcdir}/${_pkgbase}"
+  mkdir -p "${pkgdir}/usr/bin"
+  install -m755 vspcplay utils/applymask32 "${pkgdir}/usr/bin/"
+  install -Dm644 vspcplay-icon.ico "${pkgdir}/usr/share/pixmaps/vspcplay.ico"
 }
