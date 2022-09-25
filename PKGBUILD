@@ -1,8 +1,8 @@
 # Maintainer : eggz
 pkgname=ffmpeg-nocuda
-pkgver=5.1.1
+pkgver=5.1.2
 gitver=n${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
