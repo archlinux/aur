@@ -1,6 +1,6 @@
 pkgbase = python-lazyarray
 	pkgdesc = a Python package that provides a lazily-evaluated numerical array class, larray, based on and compatible with NumPy arrays
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://pypi.org/project/lazyarray/#files
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-lazyarray
 	makedepends = python
 	makedepends = python-setuptools
 	conflicts = python2-lazyarray
-	source = https://files.pythonhosted.org/packages/source/l/lazyarray/lazyarray-0.5.1.tar.gz
-	sha256sums = 76964dd1384a6d020ae0e70806983d15d8fcd731734063f716696ebe300ab0af
+	source = https://files.pythonhosted.org/packages/source/l/lazyarray/lazyarray-0.5.2.tar.gz
+	sha256sums = fe31804d82115ed7c382840a1708f498419ec1455cac084707ece9908310c7d1
 
 pkgname = python-lazyarray
 	depends = python
