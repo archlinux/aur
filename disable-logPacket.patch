@@ -1,6 +1,6 @@
-diff '--color=auto' --unified --recursive --text vivictpp-0.2.0/src/workers/DecoderWorker.cc vivictpp-0.2.0.new/src/workers/DecoderWorker.cc
---- vivictpp-0.2.0/src/workers/DecoderWorker.cc	2022-08-20 14:09:56.000000000 +0200
-+++ vivictpp-0.2.0.new/src/workers/DecoderWorker.cc	2022-09-25 16:10:15.818620765 +0200
+diff '--color=auto' --unified --recursive --text src/vivictpp.original/src/workers/DecoderWorker.cc src/vivictpp-0.2.1/src/workers/DecoderWorker.cc
+--- src/vivictpp.original/src/workers/DecoderWorker.cc	2022-09-23 21:30:04.000000000 +0200
++++ src/vivictpp-0.2.1/src/workers/DecoderWorker.cc	2022-09-25 16:56:29.112970013 +0200
 @@ -59,6 +59,7 @@
                                               }, "seek"));
  }
