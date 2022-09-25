@@ -23,5 +23,6 @@ pkgbase = pico-8
 	source_armv7h = file://pico-8_0.2.5c_raspi.zip
 	sha256sums_armv7h = 56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e
 	source_aarch64 = file://pico-8_0.2.5c_raspi.zip
+	sha256sums_aarch64 = 56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e
 
 pkgname = pico-8
