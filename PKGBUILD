@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=gsettings-desktop-schemas-nofont
-pkgver=42.0
+pkgver=43.0
 pkgrel=1
 pkgdesc='Shared GSettings schemas for the desktop, patched to drop font dependencies'
 arch=('any')
