@@ -44,6 +44,14 @@ optdepends=(
         'vim: for editing PKGBUILD during install'
         'package-query: actually a required dependency, but moved to optdepends as aurtool installs it automatically on first launch'
 )
+provides=(
+        'aurtool'
+        'aurtool-git'
+)
+conflicts=(
+        'aurtool'
+        'aurtool-git'
+)
 
 package() {
         git clone https://github.com/m1ndflay3r/aurtool-zsh aurtool-zsh-git
