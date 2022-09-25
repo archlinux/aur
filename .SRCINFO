@@ -1,15 +1,15 @@
 pkgbase = redoc-cli
 	pkgdesc = ReDoc's Command Line Interface
-	pkgver = 0.13.15
+	pkgver = 0.13.20
 	pkgrel = 1
 	url = https://github.com/Redocly/redoc
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = redoc-cli-0.13.15.tgz
+	noextract = redoc-cli-0.13.20.tgz
 	options = !strip
-	source = https://registry.npmjs.org/redoc-cli/-/redoc-cli-0.13.15.tgz
-	sha256sums = 61a8cb512b8f47ce750f2278c55ab104f1603f266069b74f62f3e5965cf9ccea
+	source = https://registry.npmjs.org/redoc-cli/-/redoc-cli-0.13.20.tgz
+	sha256sums = 1b801684b5c43774b8296134f8e5dec0e0d6a828a522d69af2bb66c10167e2ba
 
 pkgname = redoc-cli

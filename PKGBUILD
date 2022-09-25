@@ -1,7 +1,8 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
+# Contributor: Kaizhao Zhang <zhangkaizhao at gmail dot com>
 
 pkgname=redoc-cli
-pkgver=0.13.15
+pkgver=0.13.20
 pkgrel=1
 pkgdesc="ReDoc's Command Line Interface"
 arch=('any')
@@ -14,7 +15,7 @@ source=(
   "https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
 )
 sha256sums=(
-  '61a8cb512b8f47ce750f2278c55ab104f1603f266069b74f62f3e5965cf9ccea'
+  '1b801684b5c43774b8296134f8e5dec0e0d6a828a522d69af2bb66c10167e2ba'
 )
 noextract=("${pkgname}-${pkgver}.tgz")
 
@@ -29,5 +30,3 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
 }
-
-# vim:set ts=2 sw=2 et:
