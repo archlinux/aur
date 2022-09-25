@@ -1,4 +1,4 @@
-# Maintainer: Anonymous <libre-menu-editor@proton.me>
+# Maintainer: Anonymous <libre-menu-editor@proton.me> 
 
 pkgname=libre-menu-editor
 pkgver=1.0
