@@ -3,14 +3,14 @@
 
 pkgname=apk-tools-static-bin
 pkgver=2.12.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Alpine Package Keeper - package manager for alpine"
 license=('Apache')
 url="https://pkgs.alpinelinux.org/package/edge/main/x86/apk-tools-static"
 arch=('any')
 _pkgname=${pkgname//-bin/}
 source=("${_pkgname}-${pkgver}_${pkgrel}.tgz::http://dl-cdn.alpinelinux.org/alpine/edge/main/$(uname -m)/apk-tools-static-${pkgver}-r${pkgrel}.apk")
-sha512sums=('f557a0876a25e59822151f3453412eaa6b7c55eb257554a59cad0b06d92a9085bb20315d78aceaa3817551ad2714f6bd2c70e2154a816e7045624daa88635882')
+sha512sums=('398cac8ebd63d18a8be5155816dec6bf764ccbdcf048922998bfa1e2d2690e4143916d9d104ff2bcaa5d6077ddd8c87c0342b04b5e53d46c3475be9b036d0e06')
 
 package() {
     install -Dm 755 "$srcdir/sbin/apk.static" "$pkgdir/usr/bin/apk.static"
