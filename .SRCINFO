@@ -1,6 +1,6 @@
 pkgbase = rough
 	pkgdesc = A GTK based app launcher written in Rust
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/z3oxs/rough.git
 	arch = x86_64
