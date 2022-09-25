@@ -1,7 +1,7 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 # Maintainer: hertg <aur@her.tg>
 pkgname=leftwm-git
-pkgver=0.3.0.r31.g0986691
+pkgver=0.3.0.r46.gd4fae27
 pkgrel=1
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
@@ -19,8 +19,16 @@ source=("${pkgname}::git+https://github.com/leftwm/leftwm.git")
 md5sums=('SKIP')
 
 build() {
+  if [[ $(ps --no-headers -o comm 1) == "systemd" ]]; then
+    buildflags=""
+    echo "Building for systemd."
+  else
+    buildflags="--no-default-features --features=lefthk,sys-log"
+    echo "Building for non-systemd."
+  fi
+
   cd $pkgname
-  cargo build --release
+  cargo build --release $buildflags
 }
 
 pkgver() {
