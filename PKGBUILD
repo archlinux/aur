@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://gitlab.com/then-try-this/samplebrain"
 license=('GPL')
 groups=()
-depends=('libsndfile' 'portaudio' 'liblo' 'fftw' 'qt6-base')
-makedepends=('git' 'qtcreator')
+depends=('libsndfile' 'portaudio' 'liblo' 'fftw' 'qt5-base')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	qmake
+	qmake-qt5
 	make
 }
 
