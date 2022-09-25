@@ -1,0 +1,16 @@
+pkgbase = pv-git
+	pkgdesc = Pipe Viewer is a terminal-based tool for monitoring the progress of data through a pipeline
+	pkgver = 1.6.20.r6.ga9cef81
+	pkgrel = 1
+	url = https://www.ivarch.com/programs/pv.shtml
+	arch = i686
+	arch = x86_64
+	license = custom:Artistic 2.0
+	makedepends = git
+	depends = glibc
+	provides = pv=1.6.20.r6.ga9cef81
+	conflicts = pv
+	source = git+https://github.com/a-j-wood/pv.git
+	sha256sums = SKIP
+
+pkgname = pv-git
