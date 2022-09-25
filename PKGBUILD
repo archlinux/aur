@@ -5,7 +5,7 @@ pkgver=22.06.5
 pkgrel=1
 pkgdesc="A system restore utility for Linux"
 arch=('x86_64' 'aarch64')
-url="https://github.com/teejee2008/timeshift"
+url="https://github.com/linuxmint/timeshift"
 license=('GPL3')
 depends=('cronie' 'gtk3' 'libgee' 'libnotify' 'libsoup' 'rsync' 'vte3' 'xapp'
          'xorg-xhost')
