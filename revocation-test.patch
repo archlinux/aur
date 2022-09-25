@@ -1,0 +1,45 @@
+--- a/tests/test_validate.py
++++ b/tests/test_validate.py
+@@ -171,7 +171,8 @@ def test_revocation_mode_hard(self):
+ 
+         expected = (
+             '(CRL|OCSP response) indicates the end-entity certificate was '
+-            'revoked at 22:42:35 on 2021-08-17, due to an unspecified reason'
++            'revoked at \\d\\d:\\d\\d:\\d\\d on \\d\\d\\d\\d-\\d\\d-\\d\\d'
++            ', due to an unspecified reason'
+         )
+         with self.assertRaisesRegex(RevokedError, expected):
+             validate_path(context, path)
+@@ -201,8 +202,8 @@ async def test_revocation_mode_hard_async(self):
+ 
+             expected = (
+                 '(CRL|OCSP response) indicates the end-entity certificate was '
+-                'revoked at 22:42:35 on 2021-08-17, due to an unspecified '
+-                'reason'
++                'revoked at \\d\\d:\\d\\d:\\d\\d on \\d\\d\\d\\d-\\d\\d-\\d\\d'
++                ', due to an unspecified reason'
+             )
+             with self.assertRaisesRegex(RevokedError, expected):
+                 await async_validate_path(context, path)
+@@ -229,8 +230,8 @@ async def test_revocation_mode_hard_aiohttp_autofetch(self):
+ 
+             expected = (
+                 '(CRL|OCSP response) indicates the end-entity certificate was '
+-                'revoked at 22:42:35 on 2021-08-17, due to an unspecified '
+-                'reason'
++                'revoked at \\d\\d:\\d\\d:\\d\\d on \\d\\d\\d\\d-\\d\\d-\\d\\d'
++                ', due to an unspecified reason'
+             )
+             with self.assertRaisesRegex(RevokedError, expected):
+                 await async_validate_path(context, path)
+@@ -257,8 +258,8 @@ async def test_revocation_mode_hard_requests_autofetch(self):
+ 
+             expected = (
+                 '(CRL|OCSP response) indicates the end-entity certificate was '
+-                'revoked at 22:42:35 on 2021-08-17, due to an unspecified '
+-                'reason'
++                'revoked at \\d\\d:\\d\\d:\\d\\d on \\d\\d\\d\\d-\\d\\d-\\d\\d'
++                ', due to an unspecified reason'
+             )
+             with self.assertRaisesRegex(RevokedError, expected):
+                 await async_validate_path(context, path)

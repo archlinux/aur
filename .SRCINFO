@@ -1,7 +1,7 @@
 pkgbase = python-pyhanko-certvalidator
 	pkgdesc = Validates X.509 certificates and paths
 	pkgver = 0.19.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MatthiasValvekens/certvalidator
 	arch = any
 	license = MIT
@@ -14,6 +14,10 @@ pkgbase = python-pyhanko-certvalidator
 	depends = python-cryptography
 	depends = python-uritools
 	source = pyhanko-certvalidator-0.19.5.tar.gz::https://github.com/MatthiasValvekens/certvalidator/archive/refs/tags/0.19.5.tar.gz
+	source = revocation-test.patch
+	source = digicert-ecc-p384-root-g5-revoked-chain-demos-digicert-com.crt
 	sha256sums = 2b3eabe4383340f8939eb559e7accfcf68e79a609bbd05ece3a7e959af1fcf4e
+	sha256sums = 73f997673be82a9d75f9a127e5303a05cf539e0955f7730e5a1f73596701da8c
+	sha256sums = 16ce93e1e0126da8be9b77e70446ed5e3faa8b7c3ebc514b512919633b2b5ca6
 
 pkgname = python-pyhanko-certvalidator
