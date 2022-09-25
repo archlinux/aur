@@ -52,7 +52,7 @@ package () {
   # Installs the extracted files
   install -Dm644 "LICENSE" "${_share}/licenses/${pkgname}/LICENSE"
   install -Dm755 "${_name}" "${_opt}/${_name}"
-  install -Dm644 -t "${_opt}" "${_name}.dat" "${pkgname}_manual.txt"
+  install -Dm644 -t "${_opt}" "${_name}.dat" "${pkgname}_manual.txt" "readme_linux.txt"
   if [ $CARCH != x86_64 ]; then
     install -Dm644 "${_name}_dyn" "${_target}/${_name}_dyn"
   fi
