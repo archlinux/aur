@@ -1,6 +1,6 @@
 pkgbase = corecomponents
 	pkgdesc = Toolkit for C++ application development
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://www.corecomponents.io
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = corecomponents
 	makedepends = freetype2
 	makedepends = libwebp
 	makedepends = sdl2>=2.0.10
-	source = corecomponents-2.2.2.tar.gz::https://www.corecomponents.io/download/CoreComponents-2.2.2.tar.gz
-	md5sums = 302e7921752136ceb4b45ffcdae37b03
-	sha1sums = f01d0dc1699dd82bf27ae137322286726e241420
+	source = corecomponents-2.2.3.tar.gz::https://www.corecomponents.io/download/CoreComponents-2.2.3.tar.gz
+	md5sums = 60c8e2d342fdb6ae199016357489e15a
+	sha1sums = dbc6972d7750d021e90c80d9a8c93ea88e2ddb29
 
 pkgname = corecomponents_core
 	pkgdesc = Toolkit for C++ application development: system abstraction and language primitives
