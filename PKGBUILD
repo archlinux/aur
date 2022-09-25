@@ -3,7 +3,7 @@
 
 pkgname=pyupgrade
 pkgver=2.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automatically upgrade syntax for newer versions of the language"
 arch=('any')
 url="https://github.com/asottile/pyupgrade"

@@ -1,7 +1,7 @@
 pkgbase = pyupgrade
 	pkgdesc = A tool to automatically upgrade syntax for newer versions of the language
 	pkgver = 2.38.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asottile/pyupgrade
 	arch = any
 	license = MIT
