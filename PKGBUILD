@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-openh264
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-gcc')
 makedepends=('nasm' 'mingw-w64-make')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/cisco/openh264/archive/v${pkgver}.tar.gz")
-sha256sums=('99b0695272bee73a3b3a5fcb1afef462c11a142d1dc35a2c61fef5a4b7d60bc0')
+sha256sums=('453afa66dacb560bc5fd0468aabee90c483741571bca820a39a1c07f0362dc32')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
