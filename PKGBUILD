@@ -1,19 +1,16 @@
 # Maintainer: Francesco La Camera <fm@lacamera.org>
 pkgname=nvi
 pkgver=1.79
-pkgrel=2
-pkgdesc="The Berkeley Vi Editor"
-arch=('i686' 'x86_64')
+pkgrel=3
+pkgdesc="Portable OpenBSD vi, originally distributed as part of 4BSD."
+arch=("i686" "x86_64")
 url="https://github.com/lacamera/nvi"
-license=('BSD')
-depends=('libtool' 'readline' 'ncurses')
-source=("git+https://github.com/lacamera/nvi.git"
-       "fixerrors.patch")
-md5sums=('SKIP' '0bbe8609c1e2866ed239af14c065a6bb')
+license=("BSD")
+depends=("libtool" "readline" "ncurses")
+source=("git+https://github.com/lacamera/nvi.git")
+md5sums=("SKIP")
 
 prepare(){
-  cd "$srcdir/$pkgname"
-  patch -p1 < ../fixerrors.patch
   cd "$srcdir/$pkgname/build"
   cp -pf /usr/share/libtool/build-aux/config.guess .
   cp -pf /usr/share/libtool/build-aux/config.sub .

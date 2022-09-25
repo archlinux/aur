@@ -1,8 +1,7 @@
-# Maintainer: Francesco La Camera <fm@lacamera.org>
 pkgbase = nvi
-	pkgdesc = The Berkley Vi Editor
+	pkgdesc = Portable OpenBSD vi, originally distributed as part of 4BSD.
 	pkgver = 1.79
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lacamera/nvi
 	arch = i686
 	arch = x86_64
@@ -10,9 +9,7 @@ pkgbase = nvi
 	depends = libtool
 	depends = readline
 	depends = ncurses
-	source = https://github.com/lacamera/nvi.git
-	source = fixerrors.patch
+	source = git+https://github.com/lacamera/nvi.git
 	md5sums = SKIP
-	md5sums = 0bbe8609c1e2866ed239af14c065a6bb
-pkgname = nvi
 
+pkgname = nvi
