@@ -1,6 +1,6 @@
 pkgbase = python-pyrate-limiter
-	pkgdesc = Python Rate-Limiter using Leaky-Bucket Algorimth Family
-	pkgver = 2.8.1
+	pkgdesc = Python Rate-Limiter using Leaky-Bucket Algorithm
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/vutran1710/PyrateLimiter
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyrate-limiter
 	depends = python
 	optdepends = python-filelock: for create file lock in module scope to reuse across buckets
 	optdepends = python-redis: for use a bucket with Redis using List
-	source = https://pypi.org/packages/source/p/pyrate-limiter/pyrate-limiter-2.8.1.tar.gz
-	sha512sums = f592b6ce0129ebee4305c60a07b2f02878c4dc2e13bd43f4dc051381367a77edb0a426534105333cbd5a98dad1665657b3d5f7f9eac06539a33a8b2bc6154f73
+	source = https://pypi.org/packages/source/p/pyrate-limiter/pyrate-limiter-2.8.2.tar.gz
+	sha512sums = a2273ee8c34fb35691d764ddfe9efbe08cab7da5e2a315160e40b5aa1f65308985440b90a4b5db1a33797f94147d8c66c02717e9e9eddd8d6a416035ae1164c2
 
 pkgname = python-pyrate-limiter
