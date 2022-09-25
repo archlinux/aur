@@ -26,23 +26,23 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  cd "$pkgname"
+  cd "_$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$pkgname-git"
+	cd "_$pkgname"
 	qmake
 	make
 }
 
 check() {
-	cd "$pkgname-git"
+	cd "_$pkgname"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-git"
+	cd "_$pkgname"
 	make INSTALL_ROOT="$pkgdir/" install
 }
 
