@@ -5,9 +5,9 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-63
+_pkgver=6.9.12-64
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
 url="https://legacy.imagemagick.org/"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'l
 checkdepends=('gsfonts' 'ttf-dejavu')
 source=("https://legacy.imagemagick.org/archive/releases/ImageMagick-$_pkgver.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('c4d7cdd81eb2e2e1676d260d7569dfb37b0ada65960d263cded8ea7cefd3f37b'
+sha256sums=('04b5a296dc0a8c41976cc4a83dcebe899ebd67e5c1e22dbc5d327e2327dc45e0'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
