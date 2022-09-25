@@ -1,11 +1,11 @@
 pkgbase = tidgi
 	pkgdesc = About TidGi is an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.
-	pkgver = 0.7.7
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = https://github.com/tiddly-gittly/TidGi-Desktop
 	arch = x86_64
-	license = MPL
-	source = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.7/tidgi_0.7.7_amd64.deb
+	license = MPL2
+	source = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/tidgi_0.7.9_amd64.deb
 	md5sums = SKIP
 
 pkgname = tidgi
