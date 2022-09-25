@@ -3,7 +3,7 @@
 pkgname=pilgo
 _binname=plg
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Configuration-based symlink farm manager CLI and framework'
 arch=('x86_64')
 url='https://github.com/gbrlsnchs/pilgo'
@@ -20,7 +20,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-X ${url#https://}/cmd/internal.version=$pkgver -s -w -extldflags $LDFLAGS" \
+    -ldflags "-X ${url#https://}/cmd/internal.version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
     -o $_binname "${url#https://}/cmd/plg"
 }
 
