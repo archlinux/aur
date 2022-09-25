@@ -5,17 +5,17 @@ _subproject_name='chcase'
 _subproject_commit='bb7ab10064056177f617246b3159a54386760c4f' # <-- NB: update on new version
 
 pkgname=konbucase
-pkgver=3.4.2
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='Convert case of your text'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ryonakano/konbucase'
 license=('GPL3')
-depends=('granite' 'gtksourceview4' 'libhandy')
+depends=('granite7-git' 'gtksourceview5' 'libhandy')
 makedepends=('git' 'meson' 'vala' )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "git+${url%/*}/${_subproject_name}#commit=${_subproject_commit}")
-sha256sums=('bd56da1f6473ad49c4f21771b9c3133c473791e96ce1ba8d0eaee2a0eed39c05'
+sha256sums=('3baa6e18160edf8edb08326931e8d0abf203e4c80f6df90e1d645e7b8eb572ed'
             'SKIP')
 
 prepare() {
