@@ -1,16 +1,17 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
 
 pkgname=fileformat
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Tool for recognizing file formats."
 arch=('x86_64')
 url="https://gitlab.com/os-18/$pkgname"
-license=('GPL3')
+license=('Boost or GPL3')
 makedepends=('make' 'bash' 'chrpath' 'lsb-release' 'glib2' 'amalthea-ldc2')
 depends=('amalthea-ldc2' 'glib2')
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('9d1acebf4267e05ed04532d76424b6fcb91467f81f613cca324410c8f913a59b')
+pkgfile=$pkgname-$pkgver.tar.gz
+source=("$pkgfile::$url/-/archive/v$pkgver/$pkgfile")
+sha256sums=('6140ee5387ed6857124484543ac19acbd8131ecfd94ee69e9ad4557d3d92e20b')
 
 build() {
     cd "$pkgname-v$pkgver"
