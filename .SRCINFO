@@ -13,7 +13,7 @@ pkgbase = clash-for-windows-electron-bin
 	depends = clash-geoip
 	optdepends = nftables: TUN mode required.
 	optdepends = iproute2: TUN mode required.
-	optdepends = clash-premium-bin: clash core
+	optdepends = clash-premium-bin>=2022.04.01: clash core
 	optdepends = clash-meta: clash core
 	provides = clash-for-windows
 	provides = clash-for-windows-electron

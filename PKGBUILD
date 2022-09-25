@@ -16,7 +16,7 @@ depends=('electron'
 optdepends=(
     'nftables: TUN mode required.'
     'iproute2: TUN mode required.'
-    'clash-premium-bin: clash core'
+    'clash-premium-bin>=2022.04.01: clash core'
     'clash-meta: clash core'
 )
 makedepends=('asar' 'npm')
@@ -45,6 +45,8 @@ build() {
     # fix for autostart and system electron
     cd apps
     sed -i 's|r=n\[1\],|r="cfw\\nIcon=clash\\n",|g' dist/electron/renderer.js
+    # force local mode
+    # sed -i 's|200===a.status|true|g' dist/electron/renderer.js
     sed -i 's|"electron-log": "^4.1.0",|"electron-log": "^4.4.6",|g' package.json
 
     export HOME=$srcdir
