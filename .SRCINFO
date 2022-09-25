@@ -1,7 +1,7 @@
 pkgbase = hostctl
 	pkgdesc = Command-line tool to manage your hosts file
 	pkgver = 1.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/guumaster/hostctl
 	arch = x86_64
 	license = MIT

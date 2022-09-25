@@ -2,7 +2,7 @@
 
 pkgname=hostctl
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Command-line tool to manage your hosts file'
 arch=('x86_64')
 url='https://github.com/guumaster/hostctl'
@@ -19,7 +19,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-X github.com/guumaster/hostctl/cmd/hostctl/actions.version=$pkgver -s -w -extldflags $LDFLAGS" \
+    -ldflags "-X github.com/guumaster/hostctl/cmd/hostctl/actions.version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
     -o $pkgname cmd/hostctl/main.go
 }
 
