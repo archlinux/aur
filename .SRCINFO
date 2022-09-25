@@ -1,6 +1,6 @@
 pkgbase = octosql
 	pkgdesc = A CLI tool which lets you query a plethora of databases and file formats using SQL
-	pkgver = 0.9.4
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/cube2222/octosql
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = octosql
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = octosql::git+https://github.com/cube2222/octosql.git#commit=d66b3b227f47262de12ff7ee3b7915e9df09d8f5
+	source = octosql::git+https://github.com/cube2222/octosql.git#commit=1acc4eb58add5a082acda1640b098ea9c68e7354
 	md5sums = SKIP
 
 pkgname = octosql
