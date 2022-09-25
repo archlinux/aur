@@ -5,3 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!*.patch
