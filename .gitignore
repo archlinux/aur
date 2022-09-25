@@ -1,22 +1,13 @@
-# Based on PaBLoX-CL's gist @ https://gist.github.com/PaBLoX-CL/6664716
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
 
-# ignore everything
-*
-!.gitignore
-
-# except PKGBUILD needed files
-!PKGBUILD
-!*.install
-!ChangeLog
-
-# except .srcinfo too
-!.SRCINFO
-
-# common wing-man files
-!*.diff
-!*.patch
-
-# add files that don't have an online source
-!pico-8.xml
-!pico-8.desktop
-
+pkg/
+src/
