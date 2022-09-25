@@ -1,7 +1,7 @@
 # Maintainer: hu3rror <hu3rror@protonmail.com>
 pkgname=tidgi-bin
 _pkgname=tidgi
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="Customizable personal knowledge-base with Github as unlimited storage and blogging platform."
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,9 +13,9 @@ install=${pkgname}.install
 source_i686=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_x86_64=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-sha512sums_i686=('a756974abc3a905055482951f44e3e38d566ca3bd8c0b333aedae5e2b4e602ac22516d4ba7bffe5528d66ce2f9784e3d548e6d48a33e36e54c56aac0bdea78e0')
-sha512sums_x86_64=('a756974abc3a905055482951f44e3e38d566ca3bd8c0b333aedae5e2b4e602ac22516d4ba7bffe5528d66ce2f9784e3d548e6d48a33e36e54c56aac0bdea78e0')
-sha512sums_aarch64=('8de1c7dd47a7c80f3f4ec26ada27c92db5cb171ef1c1b9522b4e7e2ef51f729dc50e8be70f0d0e0c552fa124089d94123010559478ce8d9d9188a1f60a08137d')
+sha512sums_i686=('1ab397bd010b159890114f2664a76ec7fa2d32764dcf9186a9602ec3b51df6fa2b548c9d86e4b117d4c63631377bdb851fc0b1004ba9d48f07d6fbbd04ab1470')
+sha512sums_x86_64=('1ab397bd010b159890114f2664a76ec7fa2d32764dcf9186a9602ec3b51df6fa2b548c9d86e4b117d4c63631377bdb851fc0b1004ba9d48f07d6fbbd04ab1470')
+sha512sums_aarch64=('63083459b7a635d4e0f716a34da69b91fdd152876b9f0f7917185d527f09bd184ca1556f5c299ad21b04e15e8259108fd23f25d3a1d8ae4b9c67ae0c17f143bf')
 
 
 package(){
