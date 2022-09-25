@@ -1,5 +1,5 @@
 pkgname=webcord-bin
-pkgver=3.8.3
+pkgver=3.8.4
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,9 +19,9 @@ source_x86_64=("$(_get_source x86_64)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source armv7hl)")
 
-sha256sums_x86_64=('3a4b0f314d4c2e51ab0a4bd8f71faa105aeeedf44738d2b5653f695fc13f6342')
-sha256sums_aarch64=('eac7de8f0e85061a469f685ed95e4f840b60ef64036bead9dbb1efc445d07e6f')
-sha256sums_armv7h=('2d8552e4d099a2e0cc60bbe3ad49fd311e8f02b95535b587d774db0bcc5e1b23')
+sha256sums_x86_64=('115fceac608b6f2b95ace4b30cfa024631b27e20bcf452e1d38ffb4d9e8c91ba')
+sha256sums_aarch64=('ea4980c60705d77bcf4e979df4a35d1f3a96321dd95dd2e638471c430e13ec99')
+sha256sums_armv7h=('9ec402a037be784a6b31e9e21974f9d931aa226a0b6536ed742ecb3e9dc668b6')
 
 noextract=(
     "${source_x86_64[0]%%::*}"
