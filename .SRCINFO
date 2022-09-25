@@ -1,0 +1,19 @@
+pkgbase = vitex
+	pkgdesc = A latex templating tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MikMuellerDev/vitex
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL2
+	makedepends = cargo
+	depends = gcc-libs
+	source = vitex-0.1.0.tar.gz::https://static.crates.io/crates/vitex/vitex-0.1.0.crate
+	b2sums = 4c112995278547ab65bb511cab474c51ea658797b16d2a1babe7d611cf8a3327b96ae70fd07d359cf5f1fad4dcc4c7b402f07a6f4ee71c641b6c91544058650f
+
+pkgname = vitex
