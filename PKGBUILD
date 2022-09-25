@@ -1,30 +1,35 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 pkgname=restack
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='Makes interactive Git rebase nicer.'
+pkgdesc='Makes interactive Git rebase aware of intermediate branches.'
 arch=(any)
 url="https://github.com/abhinav/restack"
 license=('MIT')
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('830b24e72693bce9896e60ca5d9f04888a3611f6a9d4c5f771f77dd6e25e4873')
+makedepends=('cargo-nightly')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=('f56b4f9d0c3cbe49e7ad67efb409962c7303bf4ea8c21a8dc4273b76725e5109')
 
-_gopackagepath=github.com/abhinav/restack/cmd/restack
+prepare() {
+	( cd "$pkgname-$pkgver" &&
+		cargo fetch --locked --target "$CARCH-unknown-linux-gnu" )
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	export CGO_ENABLED=0
-	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-	go build -o "$pkgname" "$_gopackagepath"
+	export RUSTUP_TOOLCHAIN=nightly-2022-09-21
+	export CARGO_TARGET_DIR=target
+	( cd "$pkgname-$pkgver" &&
+		cargo build --frozen --release \
+		--target "$CARCH-unknown-linux-gnu" \
+		-Z build-std=std,panic_abort \
+		-Z build-std-features=panic_immediate_abort &&
+		strip "target/$CARCH-unknown-linux-gnu/release/restack" )
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	"./$pkgname" -version
+	"$pkgname-$pkgver/target/$CARCH-unknown-linux-gnu/release/restack" --version
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/$pkgname" "$pkgname-$pkgver/target/$CARCH-unknown-linux-gnu/release/restack"
 }
