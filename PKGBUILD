@@ -7,7 +7,7 @@ pkgdesc='Graphical Interface for managing Application Launchers'
 provides=('libre-menu-editor')
 license=('GPL3')
 depends=('libadwaita' 'gtk4' 'python>=3' 'xdg-utils')
-arch=("x86_64")
+arch=("any")
 
 prepare() {
   cd $(dirname $srcdir)
