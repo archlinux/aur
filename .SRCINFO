@@ -1,6 +1,6 @@
 pkgbase = r-datawizard
 	pkgdesc = Easy Data Wrangling
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=datawizard
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-datawizard
 	optdepends = r-see
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/datawizard_0.6.0.tar.gz
-	sha256sums = 91deca5ae2e0fed52c443f9b31da2f05bea6d8755fdd49fdd63ca27d6d8109e5
+	source = https://cran.r-project.org/src/contrib/datawizard_0.6.1.tar.gz
+	sha256sums = f30b42e0b35fc6669d5a8077679a560ba3453a62ab098ab4d4b4bc6642c51467
 
 pkgname = r-datawizard
