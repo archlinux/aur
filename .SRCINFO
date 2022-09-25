@@ -1,6 +1,6 @@
 pkgbase = thunderbird-eas-4-tbsync
 	pkgdesc = Provider for Exchange ActiveSync Version History
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://github.com/jobisoft/EAS-4-TbSync
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = thunderbird-eas-4-tbsync
 	license = MPL2
 	depends = thunderbird>=102
 	depends = thunderbird<103
-	noextract = EAS-4-TbSync-4.1.2.xpi
-	source = EAS-4-TbSync-4.1.2.xpi::https://github.com/jobisoft/EAS-4-TbSync/releases/download/v4.1.2/EAS-4-TbSync.xpi
-	sha512sums = 4ed1180f2abc1dc294d8c44179ae371603d5bc357c4a27e0fd44c13027fe66039125ad6e6eea3cfd8180a057bb662e076abd8f4689b3b0dd86f19e77c8468ac2
+	noextract = EAS-4-TbSync-4.1.3.xpi
+	source = EAS-4-TbSync-4.1.3.xpi::https://github.com/jobisoft/EAS-4-TbSync/releases/download/v4.1.3/EAS-4-TbSync.xpi
+	sha512sums = bf7edd9fddf307e226690e6f3fe839955827e17af5bb7b806b3c706ebd5be47ef28a51942fc074fdbe124f02045953cb84d18251e163ec5894b33b0292854dfb
 
 pkgname = thunderbird-eas-4-tbsync
