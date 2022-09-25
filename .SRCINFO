@@ -1,11 +1,11 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 9.0.7
+	pkgver = 9.0.9
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache
-	depends = seafile-server>=9.0.7
+	depends = seafile-server>=9.0.9
 	depends = python-django
 	depends = python-future
 	depends = python-django-statici18n
@@ -27,6 +27,7 @@ pkgbase = seahub
 	depends = python-chardet
 	depends = python-cffi
 	depends = python-markdown
+	depends = python-bleach
 	optdepends = python-pymysql: Installation script
 	optdepends = python-pysaml2: SSO support
 	optdepends = python-django-saml2: SSO support
@@ -34,12 +35,12 @@ pkgbase = seahub
 	optdepends = python-django-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-9.0.7-server.tar.gz::https://github.com/haiwen/seahub/archive/v9.0.7-server.tar.gz
+	source = seahub-9.0.9-server.tar.gz::https://github.com/haiwen/seahub/archive/v9.0.9-server.tar.gz
 	source = django-3.2.15.tar.gz::https://github.com/django/django/archive/3.2.15.tar.gz
 	source = django-webpack-loader-0.7.0.tar.gz::https://github.com/django-webpack/django-webpack-loader/archive/0.7.0.tar.gz
 	source = seahub@.service
 	source = nginx.example.conf
-	sha256sums = eb6b49f961514053e417a93e098e6d8c01186ae71556916bdf4b784939db8022
+	sha256sums = 682949ad0866b3e7d97992bc728ac9fbea0db8a6eacc1babeecf107e46dd5123
 	sha256sums = 371f4f008b7c572bf7d78c564836f0bcd698fd9bc967807c7fbe4f65696d7df5
 	sha256sums = fef6b13bbd61d682e12f3bd73bb7ac1c398dd0dea22ef2cf34309c6d1078b0d1
 	sha256sums = 67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4

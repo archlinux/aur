@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=9.0.7
+pkgver=9.0.9
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -33,6 +33,7 @@ depends=(
     'python-chardet'
     'python-cffi'
     'python-markdown'
+    'python-bleach'
 )
 optdepends=(
     'python-pymysql: Installation script'
@@ -55,7 +56,7 @@ source=(
     'nginx.example.conf'
 )
 sha256sums=(
-    'eb6b49f961514053e417a93e098e6d8c01186ae71556916bdf4b784939db8022'
+    '682949ad0866b3e7d97992bc728ac9fbea0db8a6eacc1babeecf107e46dd5123'
     '371f4f008b7c572bf7d78c564836f0bcd698fd9bc967807c7fbe4f65696d7df5'
     'fef6b13bbd61d682e12f3bd73bb7ac1c398dd0dea22ef2cf34309c6d1078b0d1'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
