@@ -3,7 +3,7 @@
 # Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=nghttp2
-pkgver=1.49.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Framing layer of HTTP/2 is implemented as a reusable C library'
 arch=(x86_64)
@@ -17,7 +17,7 @@ backup=(
   etc/nghttpx/nghttpx.conf
   etc/logrotate.d/nghttpx
 )
-sha512sums=('599bc8e52bbe7f5bdfbf493ea2199c4c4bdeb9eac174d4c56b11fb321b11b86e82674bd3c7f60d7ea975ef60eec3f258b5438d1157491cfa23a1b9adccd7948a')
+sha512sums=('c2f7f14972cb268a85966f2bd26ac515fa61d9cf6b6bcaa5cffc04f02a18abf116b15537eb4dfbdfa79e7b1472de7034dfdbce7a082cc5b23627d87e2939e529')
 
 build() {
   cd nghttp2-$pkgver
