@@ -1,6 +1,6 @@
 pkgbase = desktop-files-creator
 	pkgdesc = Simple app to create desktop files on GNU/Linux
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/alexkdeveloper/desktop-files-creator
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = desktop-files-creator
 	makedepends = vala
 	makedepends = meson
 	depends = gtk4
-	depends = libadwaita-git
-	source = https://github.com/alexkdeveloper/desktop-files-creator/archive/refs/tags/1.1.7.tar.gz
-	sha256sums = 8b7d9c626228455e0095fc5f6777fca9b289c0fef53d200a81428f3bc336c88d
+	depends = libadwaita
+	source = https://github.com/alexkdeveloper/desktop-files-creator/archive/refs/tags/1.1.8.tar.gz
+	sha256sums = b3177fc49580ed1ad96853b5eb0f282d10c6ace84afefabd49809f2a408a48da
 
 pkgname = desktop-files-creator
