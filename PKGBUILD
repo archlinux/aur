@@ -5,14 +5,14 @@ pkgname=tachidesk
 _pkgname=tachidesk-server
 _PkgName=Tachidesk-Server
 pkgver=0.6.5_r1122
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
 url="https://github.com/Suwayomi/$_PkgName"
 license=("MPL2")
-depends=("java-runtime>=8")
+depends=("java-runtime>=8" "libc++")
 optdepends=("electron: running in Electron")
 provides=("$pkgname" "$_pkgname")
 _jar="$_PkgName-v$_pkgver-r$_revnum.jar"
