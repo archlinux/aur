@@ -2,45 +2,60 @@
 pkgbase=python-casa-formats-io
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Code to handle I/O from/to data in CASA format Resources"
 arch=('i686' 'x86_64')
 url="https://casa-formats-io.readthedocs.io"
 license=('custom:LGPL2')
-makedepends=('python-setuptools-scm' 'python-numpy' 'python-numpydoc' 'python-sphinx-automodapi' 'python-dask' 'python-toolz' 'python-astropy')
-checkdepends=('python-pytest')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-numpy'
+             'python-numpydoc'
+             'python-sphinx-automodapi'
+             'python-dask'
+#            'python-toolz'
+             'python-astropy')
+checkdepends=('python-pytest')  # astropy and dask already in makedepends. glue-core for pdepend
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b37878b461dfe9d2c42a00925cd73acf')
+md5sums=('fb4d06c549a5711c67a46030771e0eae')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 prepare() {
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "/oldest-supported-numpy/d" pyproject.toml
+    sed -i "/casa_io_formats.image_to_dask/s/_io_formats/_formats_io/" docs/index.rst
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     msg "Building Docs"
     cd ${srcdir}/${_pyname}-${pkgver}/docs
-    mkdir _static
-    PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
+#   mkdir _static
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-${_pyver}" pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-casa-formats-io() {
-    depends=('python>=3.6' 'python-astropy>=4.0' 'python-dask' 'python-toolz')
+    depends=('python>=3.8' 'python-astropy>=4.0' 'python-dask>=2.0' 'python-toolz')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-casa-formats-io-doc() {
