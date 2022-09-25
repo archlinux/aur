@@ -25,19 +25,24 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-	cd "$pkgname"
+	cd "$pkgname-git"
 	qmake
 	make
 }
 
 check() {
-	cd "$pkgname"
+	cd "$pkgname-git"
 	make -k check
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-git"
 	make INSTALL_ROOT="$pkgdir/" install
 }
 
