@@ -1,6 +1,6 @@
 pkgbase = ideapad-wmi-fn-keys
 	pkgdesc = Kernel module for Ideapad fn key detection
-	pkgver = r8.3ada633
+	pkgver = r4.fb2a17f
 	pkgrel = 1
 	url = https://github.com/LittleHuba/ideapad-wmi-fn-keys
 	arch = x86_64
