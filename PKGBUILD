@@ -2,7 +2,7 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mkinitcpio-archiso-git
-pkgver=59.r2.g5dfbb53
+pkgver=64.r0.ge0bc2c9
 pkgrel=1
 pkgdesc='Initcpio scripts used by archiso'
 arch=('any')
@@ -13,8 +13,10 @@ makedepends=('git')
 checkdepends=('shellcheck' 'shfmt')
 optdepends=(
   'curl: for PXE over HTTP'
+  'gnupg: for PGP signature verification of rootfs over PXE'
   'mkinitcpio-nfs-utils: for PXE over NFS'
   'nbd: for PXE over NBD'
+  'openssl: for CMS signature verification of rootfs over PXE'
   'pv: for status display during copy to RAM'
 )
 conflicts=("${pkgname%-git}")
@@ -22,7 +24,7 @@ provides=("${pkgname%-git}=${pkgver}")
 source=("git+https://gitlab.archlinux.org/mkinitcpio/${pkgname%-git}.git?signed")
 sha512sums=('SKIP')
 validpgpkeys=(
-  'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
+  '991F6E3F0765CF6295888586139B09DA5BF0D338' # David Runge <dvzrv@archlinux.org>
   'BB8E6F1B81CF0BB301D74D1CBF425A01E68B38EF' # nl6720 <nl6720@gmail.com>
 )
 
