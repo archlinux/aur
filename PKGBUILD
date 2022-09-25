@@ -1,7 +1,7 @@
 # Maintainer: Michael Vale <mike@vale.net.au>
 _pkgname=samplebrain
 pkgname=$_pkgname-git
-pkgver=git
+pkgver=0.18.r6.g6bc1cbe
 pkgrel=1
 epoch=
 pkgdesc="A custom sample mashing app designed by Aphex Twin."
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_release//g'
 }
 
 build() {
