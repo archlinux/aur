@@ -4,7 +4,7 @@
 
 _pkgbase=vspcplay
 pkgname=vspcplay-git
-pkgver=1.3.r52.414c9ab
+pkgver=1.4.r73.8de179a
 pkgrel=1
 pkgdesc="A terminal-based visual SNES sound file (SPC) player and optimisation tool"
 arch=('i686' 'x86_64')
@@ -12,16 +12,17 @@ url="http://vspcplay.raphnet.net/"
 license=('GPL2')
 depends=('sdl')
 makedepends=('git')
+conflicts=('vspcplay')
+provides=('vspcplay')
 source=(git+https://github.com/raphnet/vspcplay)
 md5sums=('SKIP')
 
 pkgver() {
   printf "%s.r%s.%s" \
     "$(
-      # Parse the base version from `main.c`
-      sed -n \
-        -e 's/#define PROG_NAME_VERSION_STRING ".* v\(.*\)"/\1/p' \
-        "${_pkgbase}/main.c"
+      # Parse base version from the Makefile
+      sed -n -e 's/.*-DVERSION_STR=\\"\([^"]*\)\\".*/\1/p' \
+        "${_pkgbase}/Makefile"
     )" \
     "$(git -C "${_pkgbase}" rev-list --count HEAD)" \
     "$(git -C "${_pkgbase}" rev-parse --short HEAD)"
@@ -29,9 +30,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
-  make CFLAGS="${CFLAGS} $(sdl-config --cflags)"
+  make CC="gcc ${CFLAGS}" LD="\$(CPP) ${LDFLAGS}"
   cd utils
-  make CC="gcc ${CFLAGS}"
+  make CC="gcc ${CFLAGS} ${LDFLAGS}"
 }
 
 package() {
