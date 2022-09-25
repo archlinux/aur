@@ -2,7 +2,7 @@
 
 _gemname=dry-files
 pkgname=ruby-$_gemname
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A library that provides a great abstraction for file manipulations'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('git' 'ruby-rdoc')
 options=('!emptydirs')
-_commit='82d44ca50f910ba3dfdd4b926b019fd599b63614'
+_commit='9698aeb5e5578b6861d96ec33934b7d2eda1eaa8'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
@@ -28,29 +28,22 @@ build() {
 }
 
 package() {
+  cd "$pkgname"
+
   local _gemdir="$(gem env gemdir)"
 
   gem install \
+    --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
     --install-dir "$pkgdir/$_gemdir" \
     --bindir "$pkgdir/usr/bin" \
-    "$pkgname/$_gemname-$pkgver.gem"
+    "$_gemname-$pkgver.gem"
 
   # delete cache
-  cd "$pkgdir/$_gemdir"
-  rm -vrf cache
+  rm -rf "$pkgdir/$_gemdir/cache"
 
-  # delete unnecessary files & folders
-  cd "gems/$_gemname-$pkgver"
-  rm -vrf "$_gemname.gemspec"
-
-  # move documentation
-  install -vd "$pkgdir/usr/share/doc/$pkgname"
-  mv -vt "$pkgdir/usr/share/doc/$pkgname" *.md
-
-  # move license
-  install -vd "$pkgdir/usr/share/licenses/$pkgname"
-  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE 
 }

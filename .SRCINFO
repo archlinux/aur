@@ -1,6 +1,6 @@
 pkgbase = ruby-dry-files
 	pkgdesc = A library that provides a great abstraction for file manipulations
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/dry-rb/dry-files
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ruby-dry-files
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = ruby-dry-files::git+https://github.com/dry-rb/dry-files#commit=82d44ca50f910ba3dfdd4b926b019fd599b63614
+	source = ruby-dry-files::git+https://github.com/dry-rb/dry-files#commit=9698aeb5e5578b6861d96ec33934b7d2eda1eaa8
 	b2sums = SKIP
 
 pkgname = ruby-dry-files
