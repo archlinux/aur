@@ -1,12 +1,12 @@
-diff -rupN --no-dereference glib-2.72.0/gio/tests/org.gtk.test.gschema.override.orig glib-2.72.0-new/gio/tests/org.gtk.test.gschema.override.orig
---- glib-2.72.0/gio/tests/org.gtk.test.gschema.override.orig	2022-03-17 16:01:31.000000000 +0100
-+++ glib-2.72.0-new/gio/tests/org.gtk.test.gschema.override.orig	1970-01-01 01:00:00.000000000 +0100
+diff -rupN --no-dereference glib-2.72.2/gio/tests/org.gtk.test.gschema.override.orig glib-2.72.2-new/gio/tests/org.gtk.test.gschema.override.orig
+--- glib-2.72.2/gio/tests/org.gtk.test.gschema.override.orig	2022-05-30 15:26:47.000000000 +0200
++++ glib-2.72.2-new/gio/tests/org.gtk.test.gschema.override.orig	1970-01-01 01:00:00.000000000 +0100
 @@ -1,2 +0,0 @@
 -[org.gtk.test.per-desktop:GNOME-Classic]
 -desktop = "GNOME Classic"
-diff -rupN --no-dereference glib-2.72.0/gio/tests/org.gtk.test.gschema.xml.orig glib-2.72.0-new/gio/tests/org.gtk.test.gschema.xml.orig
---- glib-2.72.0/gio/tests/org.gtk.test.gschema.xml.orig	2022-03-17 16:01:31.000000000 +0100
-+++ glib-2.72.0-new/gio/tests/org.gtk.test.gschema.xml.orig	1970-01-01 01:00:00.000000000 +0100
+diff -rupN --no-dereference glib-2.72.2/gio/tests/org.gtk.test.gschema.xml.orig glib-2.72.2-new/gio/tests/org.gtk.test.gschema.xml.orig
+--- glib-2.72.2/gio/tests/org.gtk.test.gschema.xml.orig	2022-05-30 15:26:47.000000000 +0200
++++ glib-2.72.2-new/gio/tests/org.gtk.test.gschema.xml.orig	1970-01-01 01:00:00.000000000 +0100
 @@ -1,222 +0,0 @@
 -<schemalist>
 -
@@ -230,9 +230,9 @@ diff -rupN --no-dereference glib-2.72.0/gio/tests/org.gtk.test.gschema.xml.orig 
 -  </schema>
 -
 -</schemalist>
-diff -rupN --no-dereference glib-2.72.0/glib/gstdio.c glib-2.72.0-new/glib/gstdio.c
---- glib-2.72.0/glib/gstdio.c	2022-03-17 16:01:31.000000000 +0100
-+++ glib-2.72.0-new/glib/gstdio.c	2022-03-28 10:49:45.327804097 +0200
+diff -rupN --no-dereference glib-2.72.2/glib/gstdio.c glib-2.72.2-new/glib/gstdio.c
+--- glib-2.72.2/glib/gstdio.c	2022-05-30 15:26:47.000000000 +0200
++++ glib-2.72.2-new/glib/gstdio.c	2022-05-31 08:56:18.761043527 +0200
 @@ -1045,6 +1045,11 @@ g_open (const gchar *filename,
  	int          mode)
  {

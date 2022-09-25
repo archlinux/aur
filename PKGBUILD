@@ -4,20 +4,25 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.72.3
+pkgver=2.74.0
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
-depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
+depends=(mingw-w64-libffi mingw-w64-pcre2 mingw-w64-gettext mingw-w64-zlib)
 makedepends=(mingw-w64-meson git)
 license=("LGPL2.1")
 options=(!strip !buildflags staticlibs !emptydirs)
 url="https://wiki.gnome.org/Projects/GLib"
-source=("git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
+_commit=30bd57ecf8aa051de9848ba5a2b140f4810401ff  # tags/2.74.0^0
+source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch")
 sha256sums=('SKIP'
-            '38d2a038b39cef7a2452ddf4b04422e17a40745cc9b1fc8297c24320cecca7f9')
-validpgpkeys=('923B7025EE03C1C59F42684CF0942E894B2EAFA0') # Philip Withnall (https://endlessos.org/) <pwithnall@endlessos.org>
+            '4e4d59c194dcbd9a88ccc0932b9a0e7e48e7480a2b848af24eeb005fa7c9f246')
+
+pkgver() {
+  cd glib
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
