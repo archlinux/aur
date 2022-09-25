@@ -1,0 +1,17 @@
+pkgbase = samplebrain-git
+	pkgdesc = A custom sample mashing app designed by Aphex Twin.
+	pkgver = git
+	pkgrel = 1
+	url = https://gitlab.com/then-try-this/samplebrain
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libsndfile
+	depends = portaudio
+	depends = liblo
+	depends = fftw
+	depends = qt6-base
+	source = git+https://gitlab.com/then-try-this/samplebrain.git
+	md5sums = SKIP
+
+pkgname = samplebrain-git
