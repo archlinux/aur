@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=rnote-git
-pkgver=r953.6bb6de8
+pkgver=r1034.3e457c2
 pkgrel=1
 pkgdesc="A simple drawing application to create handwritten notes"
 arch=('x86_64')
@@ -15,8 +15,10 @@ conflicts=("${pkgname%-git}")
 source=(
   "git+$url.git"
   "git+https://github.com/flxzt/piet.git"
+  "git+https://github.com/flxzt/piet-gpu.git"
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP')
 options=('!lto')
 
@@ -24,6 +26,7 @@ prepare() {
   cd "${pkgname%-git}"
   git submodule init
   git config submodule."piet".url "${srcdir}"/piet
+  git config submodule."piet-gpu".url "${srcdir}"/piet-gpu
   git submodule update --init --recursive
 }
 
