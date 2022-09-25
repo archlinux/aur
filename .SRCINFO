@@ -1,25 +1,19 @@
 pkgbase = restack-bin
 	pkgdesc = Makes interactive Git rebase nicer.
-	pkgver = 0.5.4
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/abhinav/restack
-	license = MIT
-	conflicts = restack
-	provides = restack
 	arch = aarch64
-	source_aarch64 = https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bfdf772813a70c4079d8d16fabc301d0649f1f906468e72f44f5ad27fe394d57
-	arch = armv6h
-	source_armv6h = https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_armv6.tar.gz
-	sha256sums_armv6h = 90448eaadfe643b46c7197c6d2bd08e77d29f365d69da6211d675b3aa552b603
 	arch = armv7h
-	source_armv7h = https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_armv7.tar.gz
-	sha256sums_armv7h = d78dea55a15b786c9eca984723c69bead2154c3f428fa360ac2daa3520f32d6a
-	arch = i686
-	source_i686 = https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_i386.tar.gz
-	sha256sums_i686 = 5ba6c96fd666ab093aaa4f1d786b458565f726ab3f3505c66c598c1e83c67538
 	arch = x86_64
-	source_x86_64 = https://github.com/abhinav/restack/releases/download/v0.5.4/restack_0.5.4_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e96b8e3a735f0771485fe501b2cf14ea2c6639d8fac8372deeedd4c4af093a05
-	
+	license = MIT
+	provides = restack
+	conflicts = restack
+	source_aarch64 = restack-bin_0.6.0_aarch64.tar.gz::https://github.com/abhinav/restack/releases/download/v0.6.0/restack-linux-arm64.tar.gz
+	sha256sums_aarch64 = 77cdb5da042264e4393d9150c43ad3035a243dde665282043432b0ec57d7fa3f
+	source_armv7h = restack-bin_0.6.0_armv7h.tar.gz::https://github.com/abhinav/restack/releases/download/v0.6.0/restack-linux-armv7.tar.gz
+	sha256sums_armv7h = 90b3e6e2aa106569c0ba93cf87f2d93eeb3e5b2056108f7c3931f7c073df6896
+	source_x86_64 = restack-bin_0.6.0_x86_64.tar.gz::https://github.com/abhinav/restack/releases/download/v0.6.0/restack-linux-amd64.tar.gz
+	sha256sums_x86_64 = 953baadaa008293257627ce0fa541671105f13584826c7c291765654896fabe5
+
 pkgname = restack-bin
