@@ -7,7 +7,7 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=1
+pkgrel=2
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -97,7 +97,7 @@ check() {
 
 	# only mention of server variable in parameter section should be to set correct server;
 	# md5sum of script body should match package version unless a setup file was provided:
-	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ ${_scriptTailMd5sums[${pkgver%.*}]} == $md5sum -o -n "$_SETUP_FILE" ]
+	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ "${_scriptTailMd5sums[${pkgver%.*}]}" == $md5sum -o -n "$_SETUP_FILE" ]
 }
 
 package() {
