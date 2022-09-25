@@ -1,6 +1,6 @@
 pkgbase = goneovim-git
 	pkgdesc = Neovim GUI written in Golang, using a Golang qt backend (git build)
-	pkgver = r2006.ac1785c
+	pkgver = r2327.7d6f2bd
 	pkgrel = 1
 	url = https://github.com/akiyosi/goneovim
 	arch = x86_64
@@ -26,14 +26,13 @@ pkgbase = goneovim-git
 	depends = zlib
 	depends = libglvnd
 	depends = libxcb
+	depends = gdk-pixbuf2
 	provides = goneovim
 	conflicts = goneovim
 	conflicts = goneovim-bin
 	source = goneovim::git+https://github.com/akiyosi/goneovim.git
-	source = goneovim.desktop
 	source = goneovim.ico
 	sha256sums = SKIP
-	sha256sums = bb7dd036f10fe1e9132d2bbbf346e99234425b012fadf177bb212c472ac5fca0
 	sha256sums = 0a36211b6ada93d811575b5ca9b33511e405f61cca791858ea2fe1eb5d29279e
 
 pkgname = goneovim-git
