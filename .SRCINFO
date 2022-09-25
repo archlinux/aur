@@ -1,0 +1,19 @@
+pkgbase = guile-todo-git
+	pkgdesc = Lispy todo tracker
+	pkgver = r15.b812dd7
+	pkgrel = 1
+	url = https://github.com/bms-1984/guile-todo
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = guile-hall
+	makedepends = git
+	depends = guile
+	depends = guile-config
+	provides = guile-todo=r15.b812dd7
+	options = !strip
+	source = guile-todo::git+https://github.com/bms-1984/guile-todo.git
+	sha256sums = SKIP
+
+pkgname = guile-todo-git
