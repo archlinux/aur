@@ -1,6 +1,6 @@
 pkgbase = pyupgrade
 	pkgdesc = A tool to automatically upgrade syntax for newer versions of the language
-	pkgver = 2.38.0
+	pkgver = 2.38.1
 	pkgrel = 1
 	url = https://github.com/asottile/pyupgrade
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pyupgrade
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tokenize-rt
-	source = https://files.pythonhosted.org/packages/source/p/pyupgrade/pyupgrade-2.38.0.tar.gz
-	b2sums = 9c5b188ff72ac5cf91258f5315e8a2bc2e44cc1dcc566024e3b830c7dae3656abbbac8fb7263196133e051025c767c18b4177fcc186ace978d6dcfd6d69a5512
+	source = https://files.pythonhosted.org/packages/source/p/pyupgrade/pyupgrade-2.38.1.tar.gz
+	b2sums = SKIP
 
 pkgname = pyupgrade
