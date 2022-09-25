@@ -3,7 +3,7 @@
 pkgname=privatebin-cli
 _binname=privatebin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for privatebin server'
 arch=('x86_64')
 url='https://github.com/gearnode/privatebin'
@@ -14,7 +14,8 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "add_custom_user_agent.patch")
 sha256sums=('84565e748a59495a8bc10a00e841eb24a4d245769da18200c32693841523e2e3'
-            '61756ce121b3f2bd18dde762cf824512298e532d3baf594eb0f4941dfea7ca3d')
+            '5ca9790d62ece94cb5a47e19bb873afe6911b1c3d8d0762732ffe3c5a04be172')
+
 prepare() {
   cd $_binname-$pkgver
   patch -p1 --input="../add_custom_user_agent.patch"
