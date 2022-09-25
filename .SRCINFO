@@ -1,6 +1,6 @@
 pkgbase = guile-hall-git
 	pkgdesc = Project manager and build tool for GNU guile (Git snapshot)
-	pkgver = 0
+	pkgver = 0.4.1.r30.g36dd0c6
 	pkgrel = 1
 	url = https://gitlab.com/a-sassmannshausen/guile-hall
 	arch = i686
@@ -12,7 +12,8 @@ pkgbase = guile-hall-git
 	depends = guile-config
 	depends = texinfo
 	optdepends = guix: for GNU Guix integration
-	provides = guile-hall=0
+	provides = guile-hall=0.4.1.r30.g36dd0c6
+	options = !strip
 	source = guile-hall::git+https://gitlab.com/a-sassmannshausen/guile-hall.git
 	sha256sums = SKIP
 
