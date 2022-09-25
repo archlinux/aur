@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$srcdir/gnome-fuzzy-app-search"
-  _uuid="${pkgname%-git}@gnome-shell-extensions.Czarlie.gitlab.com"
+  _uuid="gnome-fuzzy-app-search@gnome-shell-extensions.Czarlie.gitlab.com"
 
   make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions" install
 
