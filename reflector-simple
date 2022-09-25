@@ -521,11 +521,17 @@ BuildReflectorCommand() {
     fi
     reflector_cmd+=(--sort $(echo "${reflector_info[$ix]}" | tr -d '|'))  # with echo incrementing ix with ++ does not work
     ((ix++))
+
+    xx="${reflector_info[$ix]}"
+    [ $xx -le 0 ] && xx=5
+    export _MAX_MIRROR_LINES_TO_SHOW="$xx"
+
     if [ "$use_number_instead_of_latest" = "yes" ] ; then
-        reflector_cmd+=(--number "${reflector_info[$((ix++))]}")
+        reflector_cmd+=(--number "$xx")
     else
-        reflector_cmd+=(--latest "${reflector_info[$((ix++))]}")
+        reflector_cmd+=(--latest "$xx")
     fi
+    ((ix++))
     reflector_cmd+=(--download-timeout "${reflector_info[$((ix++))]}")
 
     # add optional free parameters to the command and save free params to file
@@ -792,11 +798,11 @@ Main() {
 
     Verbose "Starting ranking..."
     "${reflector_cmd[@]}" 2>&1 > $tmpfile | tee $ranklog | {
-        local line="" max_lines=0 value=0 line_count=-2
+        local line=""
+        local max_lines="$_MAX_MIRROR_LINES_TO_SHOW"
+        local value=0
+        local line_count=-2
         while read line ; do
-            if [[ "$line" == *"mirror(s) by"* ]]; then
-                max_lines=$(echo "$line" | sed -e 's/.*rating \(.*\) mirror.*/\1/')
-            fi
             if [[ "$line" != *"WARNING:"* ]]; then
                 ((line_count++))
             fi
