@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-git
 	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
 	pkgver = 6.5.5.48680.55fd3b5dda
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
@@ -48,6 +48,6 @@ pkgbase = alchemy-next-viewer-git
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = compile.bash
 	sha256sums = SKIP
-	sha256sums = 7d6db14756c9051cedef54e02369e8f2944d89cf8ceb0cfae47dcde2698061d8
+	sha256sums = 7cdf3fd50b3bc3c2a85d5f6e78f40d28b9ae2888cca29202503891fab5e5da55
 
 pkgname = alchemy-next-viewer-git
