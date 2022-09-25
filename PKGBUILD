@@ -1,43 +1,39 @@
-# Maintainer: Fernando Nogueira <mrfernando2509@gmail.com>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Fernando Nogueira <mrfernando2509@gmail.com>
 
 pkgname=supabase-git
-_pkgname=supabase
-pkgver=r195.764c066
+pkgver=1.4.9.r0.gaa6a512
 pkgrel=1
-pkgdesc='Supabase CLI'
-arch=(x86_64 i686)
-url="https://github.com/supabase/cli"
-license=('MIT')
-makedepends=('go')
+pkgdesc="CLI for Supabase, an open source Firebase alternative"
+arch=(x86_64)
+url="https://supabase.com/docs/reference/cli/about"
+license=(MIT)
+makedepends=(git go)
 provides=(supabase)
 conflicts=(supabase)
-source=("git+$url")
+options=(!lto)
+source=("supabase-cli::git+https://github.com/supabase/cli.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd cli
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  cd supabase-cli
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd cli
+  cd supabase-cli
   go build \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    -o $_pkgname
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -o supabase
 }
 
 package() {
-  cd cli
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-}
-
-pkgver() {
-    cd cli
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd supabase-cli
+  install -Dm755 supabase -t "${pkgdir}/usr/bin/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
