@@ -9,7 +9,8 @@ pkgrel=1
 arch=('x86_64')
 url='https://github.com/svt/vivictpp'
 license=('GPL2')
-depends=('sdl2'
+depends=('cmake'
+         'sdl2'
          'sdl2_ttf'
          'ffmpeg'
          'cli11'
