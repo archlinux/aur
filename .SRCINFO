@@ -1,0 +1,18 @@
+pkgbase = mangl
+	pkgdesc = graphical man page viewer
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/zigalenarcic/mangl
+	arch = x86_64
+	license = BSD 2-Clause
+	depends = zlib
+	depends = glfw
+	depends = libgl
+	depends = freetype2
+	optdepends = fontconfig: set custom font
+	source = mangl-1.1.2.tar.gz::https://github.com/zigalenarcic/mangl/archive/refs/tags/v1.1.2.tar.gz
+	source = mangl.desktop
+	sha256sums = a8f69f30d2dbddaffb9c766669739ad0c838d67e95d7806f7cee332bb304dc7b
+	sha256sums = 370e454df24a2bf0bf185988d92083c0ec5bd72548a5fba9c44867e76a1d8d91
+
+pkgname = mangl
