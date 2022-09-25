@@ -1,0 +1,13 @@
+pkgbase = cnoti-git
+	pkgdesc = little DBus notification monitor lib with noticat utility
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/mibli/cnoti
+	arch = x86_64
+	license = MIT
+	depends = cjson>=1.7.0
+	depends = dbus>=1.14.0
+	source = cnoti-git-0.1.2.zip::https://github.com/mibli/cnoti/archive/refs/tags/v0.1.2.zip
+	md5sums = 13147a95773261ac5a2d90f97eba551a
+
+pkgname = cnoti-git
