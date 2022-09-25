@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Omron LUNA-I and LUNA-88K emulator'
 pkgname=nono
-pkgver=0.2.5
+pkgver=0.4.3
 pkgrel=1
 url=http://www.pastel-flower.jp/~isaki/nono
 license=(custom)
 arch=(x86_64)
 depends=(libbsd libkqueue termcap wxgtk3)
-makedepends=(bmake clang freebsd-mk gettext)
+makedepends=(bmake freebsd-mk gettext)
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-b2sums=('55a886b2ab634a34244cf4cd149bc95ce9c7046437715209cb7c3b192c143f651fba20a9a6aec65352f204b9767f0dd1d5b90e1450accb408b8f14d6920c0555')
+b2sums=('375d2188308a36a20df3255c229b1041062dc4f6bad2fc7c00800d3d45fd164d77ebed6a12fbb1bd3cf18dd64156b0863dee8bb540f631553eefed16ca536095')
 
 prepare ()
 {
@@ -24,12 +24,7 @@ build ()
 {
 	cd "${pkgname}-${pkgver}"
 
-	# Use Clang because GCC 11+ has some false positive warnings that cause
-	# the compilation to fail due to -Werror. Plus, the BSDs are using Clang
-	# nowadays so using Clang builds is more tested.
 	./configure \
-		CC=clang \
-		CXX=clang++ \
 		CPPFLAGS="${CPPFLAGS} -I${srcdir}/include" \
 		WX_CONFIG=/usr/bin/wx-config-gtk3 \
 		--prefix=/usr
