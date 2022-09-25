@@ -1,7 +1,7 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=rtapp
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
@@ -12,12 +12,12 @@ optdepends=('linux-rt: The Linux-rt kernel and modules' 'linux-rt-bfq: The Linux
 install=${pkgname}.install
 source=('rtapp' 'rtcards' 'rtstatus' 'rtapp.conf' 'rtapp.timer' 'rtapp.service' 'readme.txt')
 sha256sums=('f00679d4a97b82f49a82b163d1555fcbdb9ecec6f88ec57ade0f4ca5cdf7ed28'
-'db15994d78fae58b5ae748bf5b793babd2464ab210489093a546d564c03a460d'
-'6fc74665a8106ec5b032e25c9c9192bd05abb9f8743a271f69212e2c750fd7d8'
+'2a797d4dcc6042fd2f3de02bb00d2b1a2512c1843f00a70d481445cb8dc89814'
+'a84aee15d191c96083fac9556de34d0715645a061367eb28262845707fd98838'
 '3aee59920ff779de23c60fda6069853b05feac2ce42e795c3aa276726b557124'
 'a34e0b3fda04676b28ac2fd194fdaadc99f5ab78b667a1694c94563dbb4918c2'
 'ab088bb25e520edcea8eaede7b3a22f4f0608459583615868b9df26ff5a9555a'
-'a6e72adb2f0f627962a1067206a0dea0d0e5783ae76d0087bb877a58e5caad1f')
+'04303b41e46c8c8f5829e73e92a754d9cf5718fd5ee84f470f8dfc41f410585a')
 backup=('etc/rtapp/rtapp.conf')
 
 package() {

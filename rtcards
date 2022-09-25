@@ -11,43 +11,35 @@ AUDIO CARDS
 cards_path=$(echo $(find /proc/asound -type d -name "card*") | awk  '{print $NF}' | tail -c 2)
 fw_devices=$(find /sys/devices/ -maxdepth 4 -type d -name "fw*" | wc -l)
 
-echo -e -n "CARD\tTYPE\t\t\tADDRESS\t\t\tNAME
---------------------------------------------------------------------------------------------------------
-"
+card_status() {
+if [[ $(find "/proc/asound/card"$1 -type f -name "hw_params" -exec cat {} \;) ]]; then
+echo -e -n "card$1\t\t"$(find "/proc/asound/card"$1 -type f -name "hw_params" -exec cat {} \; | awk 'FNR <= 1')
+    else
+echo -e -n "card$1\tunavailable"
+fi              
+}
+
+echo -e "CARD\tTYPE\t\t\tADDRESS\t\t\tSTATUS\t\tNAME"
+echo ""
 
 for (( i=0; i<=$cards_path; i++ )); do
     if [[ -d  "/proc/asound/card"$i"" ]]; then
     echo -n "card$i"
     usbid=$(find "/proc/asound/card"$i -type f -name "usbid" -exec cat {} \; )
         if [[ -z $usbid ]]; then
-                if [[ -d "/proc/asound/card"$i"/firewire" ]]; then 
-                    echo -e -n "\tFirewire Audio card"
-                    for (( j=0; j<$fw_devices; j++ )); do
-                        if [[ $(cat /proc/asound/cards | egrep "fw$j") ]]; then
-                            echo -e -n "\tfw$j"
-                            echo -n "   --> -- "
-                            echo -e -n "\t\t$(find "/proc/asound/card"$i -type f -name "info" -exec cat {} \; | egrep "name" | head -1 | sed 's/name\:\ //g' | awk '{print $1,$2,$3}')"
-                        fi
-                    done
-                else 
+                    cardid=$(find "/proc/asound/card"$i -type f -name "codec#0" -exec cat {} \; | grep "Vendor Id" | sed 's/Vendor Id\:\ //g')
                     echo -e -n "\tInternal Audio card"
-                    echo -e -n "\tcard"$i
-                    echo -n " --> -- "
-                    echo -e -n "\t\t$(find "/proc/asound/card"$i -type f -name "info" -exec cat {} \; | egrep "name" | head -1 | sed 's/name\:\ //g' | awk '{print $1,$2,$3}' )"
-                fi
+                    echo -e -n "\t$cardid"
+                    card_status $i
+                    echo -e -n "\t\t$(find "/proc/asound/card"$i -type f -name "info" -exec cat {} \; | grep "name" | head -1 | sed 's/name\:\ //g' | sed 's/^ *//g')"
             else
                 echo -e -n "\tUSB Audio card"
-                echo -e -n "\t\tusb"$(cat "/proc/asound/card"$i"/usbbus" | rev | cut -b5)
-                echo -n "  --> "$usbid
-                echo -e -n "\t$(find "/proc/asound/card"$i -type f -name "usbmixer" -exec cat {} \; | egrep "Card" | head -1 | sed 's/Card\://g' | awk '{print $1,$2,$3}' )"
+                #echo -e -n "\t\tusb"$(cat "/proc/asound/card"$i"/usbbus" | rev | cut -b5)
+                echo -e -n "\t\t$usbid"
+                card_status $i
+                echo -e -n "\t\t$(find "/proc/asound/card"$i -type f -name "usbmixer" -exec cat {} \; | grep "Card" | head -1 | sed 's/Card\://g' | sed 's/^ *//g')"
             fi
-                 echo ""
-    if [[ -a  "/proc/asound/card"$i"/pcm0p/sub0/hw_params" ]]; then
-        echo -e "card$i\tSTATUS  --> "$(cat /proc/asound/card"$i"/pcm0p/sub0/hw_params)
-    else
-        echo -e "card$i\tSTATUS  --> unavailable"
-    fi
-echo "--------------------------------------------------------------------------------------------------------"
+echo ""
 fi
 done
 
@@ -60,28 +52,9 @@ for (( j=1; j<=$usb_devices; j++ )); do
         usb_path=$(find /sys/devices -type d -name "usb$j" -not -path "*usb*/*" )
         echo -n "USB$j"
         echo -n " IRQ="$(cat "$(dirname "$usb_path")/irq")
-        echo -n " "$(find $usb_path -maxdepth 7 -type f \( -name "product" -o -name "name" -o -name "vendor_name" \) -exec cat {} \; | sed 's/^/"/g' | sed 's/$/",/g' | tr '\n' ' ' | sed 's/"[0-9]\S*//g;s/^ //' | xargs -n1 | sort -u | xargs | cut -d '=' -f 2 | sed -e 's/,$//')
+        echo -n " "$(find $usb_path -maxdepth 7 -type f \( -name "product" -o -name "name" -o -name "vendor_name" \) -exec cat {} \;)
         echo ""
 done
-    
-echo "
---------------------------------------------------------------------------------------------------------"
-
-echo "
-FIREWIRE INTERRUPTS AND DEVICES  
-"
-
-firewire_sys_path=$(find /sys/devices -name "fw[0-9]*" -not -path "*fw*/*")
-
-for i in $firewire_sys_path; do
-    echo -n $i | tail -c 3
-    echo -n " IRQ="$(cat "$(dirname "$i")/irq")
-    echo -n " "$(find $i  -maxdepth 7 -type f \( -name "product" -o -name "vendor_name" \) -exec cat {} \; | sed 's/^/"/g' | sed 's/$/",/g' | tr '\n' ' ' | sed 's/"[0-9]\S*//g;s/^ //' | xargs -n1 | sort -u | xargs | cut -d '=' -f 2 | sed -e 's/,$//')
-    echo ""
-done
-
-echo "
---------------------------------------------------------------------------------------------------------"
 
 echo "
 INTERNAL SOUND CARD AND INTERRUPTS
@@ -92,43 +65,7 @@ for i in $sound_sys_path; do
     if [[ -a $(dirname $(dirname "$i"))"/irq" ]]; then
     echo -n $i | tail -c 5
     echo -n " IRQ="$(cat $(dirname $(dirname "$i"))"/irq")
-    echo -n " "$(find $i -maxdepth 7 -type f \( -name "product" -o -name "name" \) -exec cat {} \; | sed 's/^/"/g' | sed 's/$/",/g' | tr '\n' ' '| sed 's/"[0-9]\S*//g;s/^ //' | xargs -n1 | sort -u | xargs | cut -d '=' -f 2 | sed -e 's/,$//')
+    echo -n " "$(find $i -maxdepth 7 -type f \( -name "product" -o -name "name" \) -exec cat {} \;)
     echo ""
     fi
 done
-
-echo "
---------------------------------------------------------------------------------------------------------"
-
-echo "
-SUMMARY OF ALL INTERRUPTS
-"
-isnumber () {
-if [ "$1" -eq "$1" ] 2>/dev/null; then
-  echo yes
-fi
-}
-
-irq_sys_path=$(find /sys/devices/ -type f -name "irq"  -not -path "*platform*/*")
-active_irqs=$(cat /proc/interrupts | awk '{print $1}' | sed 's/\://g' | tail -n +2)
-
-for i in $active_irqs; do
-    if [[ $(isnumber $i) ]]; then
-        echo -e -n "IRQ="$i"\t"
-        echo $(cat /proc/interrupts | grep " "$i":" | awk '{for (i='$(( $(nproc) + 2 ))'; i<=NF; i++)printf(" "$i); printf("\n");}')
-        if [[ $i -ge 10 ]]; then
-            for j in $irq_sys_path; do
-                IRQ=$(cat "$j")
-                if [[ "$IRQ" == "$i" ]]; then
-                    found=$(find -P $(dirname $j) -maxdepth 7 -type f \( -name "product" -o -name "name" -o -name "vendor_name" \) -exec cat {} \; | sed 's/^/"/g' | sed 's/$/",/g' | tr '\n' ' ' )
-                    if [[ $found ]]; then
-                        echo -n "-->"
-                        echo -e "\t"$(echo $found | sed 's/"[0-9]\S*//g;s/^ //' | xargs -n1 | sort -u | xargs | cut -d '=' -f 2 | sed -e 's/,$//')
-                    fi
-                fi
-            done
-        fi
-    fi  
-done
-    
-echo -e ""

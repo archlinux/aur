@@ -5,6 +5,8 @@
 
 # License: custom - All rights reserved
 
+source /etc/rtirq.conf
+
 echo "
 REALTIME PRIORITY
 "
@@ -12,8 +14,7 @@ echo "IRQS"
 source /etc/rtapp/rtapp.conf
 app="jackd jackdbus $APPLICATIONS"
 
-ps -eo rtprio,comm --sort -rtprio | sed -n -e '1p' -e '/irq\//p' -e '/ksoftirqd\//p'
-                
+rtirq status | grep "$RTIRQ_NAME_LIST"                
 
 echo "
 APPLICATIONS"
