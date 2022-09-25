@@ -15,13 +15,13 @@ pkgbase = pico-8
 	source = pico-8.xml
 	sha256sums = 272f33c38a74456a4d2597a6b1d0c6ee9695d0e47f31ce08018c24a78e62759e
 	sha256sums = 2776340602e7ad29898500c4b2162bb5dd7746b933fb443b551e25a751e375e7
-	source_i686 = hib://pico-8_0.2.5c_i386.zip
+	source_i686 = file://pico-8_0.2.5c_i386.zip
 	sha256sums_i686 = 3ddc7ae2fc67352cabda1935114403cc70f408f73d25faee5385d85faa071f2f
-	source_x86_64 = hib://pico-8_0.2.5c_amd64.zip
+	source_x86_64 = file://pico-8_0.2.5c_amd64.zip
 	sha256sums_x86_64 = a433059942d5a4275d879c718a7d7d1611068d65f9cf57782ffefb11d7e2c8db
-	source_armv6h = hib://pico-8_0.2.5c_raspi.zip
+	source_armv6h = file://pico-8_0.2.5c_raspi.zip
 	sha256sums_armv6h = 56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e
-	source_armv7h = hib://pico-8_0.2.5c_raspi.zip
+	source_armv7h = file://pico-8_0.2.5c_raspi.zip
 	sha256sums_armv7h = 56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e
 
 pkgname = pico-8
