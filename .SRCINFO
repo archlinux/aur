@@ -1,0 +1,12 @@
+pkgbase = statserial
+	pkgdesc = display serial port modem status lines
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.oocities.org/jefftranter@rogers.com/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.ibiblio.org/pub/Linux/system/serial/statserial-1.1.tar.gz
+	sha512sums = 070ec4b6fb4a432fd406571319d9431d55c6dd43ee9298c1907011038a57dd3efd5def434aeb6884fb195cc90aa961d2ad2ff0567c9c69173e6f4adc0509a805
+
+pkgname = statserial
