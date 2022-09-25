@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=105.0.5195.125
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -73,7 +73,7 @@ declare -gA _system_libs=(
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  [jsoncpp]=jsoncpp
+  #[jsoncpp]=jsoncpp  # triggers a CFI violation (https://crbug.com/1365218)
   [libaom]=aom
   [libavif]=libavif
   [libdrm]=
@@ -146,8 +146,11 @@ prepare() {
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
+  msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
+  msg2 'Applying patches'
   python "$_utils/patches.py" apply ./ "$_ungoogled_repo/patches"
+  msg2 'Applying domain substitution'
   python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
