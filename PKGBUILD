@@ -1,16 +1,16 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=gokart
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="Static analysis tool for securing Go code"
+pkgdesc='Static analysis tool for securing Go code'
 arch=('x86_64')
-url="https://github.com/praetorian-inc/gokart"
+url='https://github.com/praetorian-inc/gokart'
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='2a2120f0fb5b9dc2654bdad55a316783088c8bb1'
+_commit='3d38a9ae72f7d67d5c13f83ec5669630868e409e'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = gokart
 	pkgdesc = Static analysis tool for securing Go code
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/gokart
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gokart
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = gokart::git+https://github.com/praetorian-inc/gokart.git#commit=2a2120f0fb5b9dc2654bdad55a316783088c8bb1
+	source = gokart::git+https://github.com/praetorian-inc/gokart.git#commit=3d38a9ae72f7d67d5c13f83ec5669630868e409e
 	b2sums = SKIP
 
 pkgname = gokart
