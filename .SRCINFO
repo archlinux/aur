@@ -1,0 +1,16 @@
+pkgbase = guile-config-git
+	pkgdesc = Configuration management library for GNU Guile (Git snapshot)
+	pkgver = 0
+	pkgrel = 1
+	url = https://gitlab.com/a-sassmannshausen/guile-config
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = guile
+	provides = guile-config=0
+	source = guile-config::git+https://gitlab.com/a-sassmannshausen/guile-config.git
+	sha256sums = SKIP
+
+pkgname = guile-config-git
