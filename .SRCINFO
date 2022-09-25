@@ -1,6 +1,6 @@
 pkgbase = skyscraper-git
-	pkgdesc = Powerful and versatile game scraper written in c++.
-	pkgver = r2047.194f8e9
+	pkgdesc = Powerful and versatile game scraper written in C++.
+	pkgver = r2845.19832c4
 	pkgrel = 1
 	url = https://github.com/muldjord/skyscraper
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = skyscraper-git
 	makedepends = git
 	provides = skyscraper
 	conflicts = skyscraper
-	source = git+https://github.com/muldjord/skyscraper.git
+	source = git+https://github.com/muldjord/skyscraper.git#branch=master
 	md5sums = SKIP
 
 pkgname = skyscraper-git
-
