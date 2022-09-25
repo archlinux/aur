@@ -2,7 +2,7 @@
 
 # Disclaimer: This package is not from Nordic Semiconductor
 pkgname=nrf-connect-sdk-installer
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Installer script for the Nordic Semiconuctor nRF Connect Software Developement Kit (SDK)."
 arch=('x86_64')
@@ -81,6 +81,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://gitlab.com/hellesvik/${pkgname}/-/archive/v${pkgver}/nrf-connect-sdk-installer-v${pkgver}.tar.gz")
 sha256sums=('091c4d01648b602b42803f9edd7aac0e920e319e237cdf70ec0a1ae81c26be0c')
+sha256sums=('79f3b9df16d8195b128e1ed5967892dd881abdccc65cb32d45ea467bfbc8e4d1')
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
