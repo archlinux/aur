@@ -8,7 +8,8 @@ pkgdesc="A fantasy console for making, sharing and playing tiny games and other 
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lexaloffle.com/pico-8.php"
 license=('custom:commercial')
-depends=('glibc' 'hicolor-icon-theme')
+depends=('glibc' 'sdl2' 'hicolor-icon-theme')
+optdepends=('wget: BBS download support')
 replaces=('pico8-bin')
 
 
