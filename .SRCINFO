@@ -1,13 +1,13 @@
 pkgbase = odpi
 	pkgdesc = Oracle Database Programming Interface for Drivers and Applications
-	pkgver = 4.4.1
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://oracle.github.io/odpi/
 	arch = x86_64
 	license = UPL
 	license = Apache
 	depends = glibc
-	source = https://github.com/oracle/odpi/archive/refs/tags/v4.4.1.tar.gz
-	md5sums = d47b9436d05daa6cc879f763b22a27a1
+	source = https://github.com/oracle/odpi/archive/refs/tags/v4.5.0.tar.gz
+	md5sums = 2bd8e4b798237f3cb6653dc2760313e3
 
 pkgname = odpi
