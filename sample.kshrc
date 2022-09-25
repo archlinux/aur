@@ -62,7 +62,7 @@ typeset -A color=(
 
 PS1.get()
 {
-	ret=$?  # Workaround $? bug in ksh < 2022-03-16 (cf. https://github.com/ksh93/ksh/pull/226)
+	ret=$?  # Workaround $? bug in ksh < 2021-03-16 (cf. https://github.com/ksh93/ksh/pull/226)
 
 	pwd=$(pwd 2>/dev/null)
 	[[ ${pwd} == / ]] && return 0
