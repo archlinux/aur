@@ -7,9 +7,9 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=3.8.3.r688.8f7c3a3
+pkgver=3.8.4.r696.f9daf42
 pkgrel=2
-pkgdesc="A Discord and Fosscord client made with the Electron."
+pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
 
 _repo="WebCord"
@@ -25,15 +25,24 @@ optdepends=(
 makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
-    "${pkgname%-git}.desktop")
-md5sums=('SKIP'
-         'c420b0dd4b9a360b0b2f35840f562e39')
+source=(
+  "${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
+  "${pkgname%-git}.desktop"
+)
+md5sums=(
+  'SKIP'
+  'e7ea606e7dc9e11f4095220333c922be'
+)
 
 ### CONFIGURABLE VARIABLES ###
 
 # Set to "true" if you want to have update notifications enabled.
-_UPDATE_NOTIFICATIONS=true
+_UPDATE_NOTIFICATIONS=false
+
+# Set to "true" if you want to use dependencies from the upstream lockfile
+# (NOT RECOMMENDED, as they might be outdated). By the default, NPM will try to
+# pick the latest dependencies defined in `package.json`.
+_LOCKFILE=true
 
 # Set to "release" if you want to disable an access to the development tools.
 _RELEASE_TYPE=devel
@@ -43,30 +52,37 @@ _LOCAL_PACKAGES=(
   #marked semver
 )
 
-### "STATIC" VARIABLES (DO NOT CHANGE) ###
-
-depends+=(
-  "${_LOCAL_PACKAGES[@]}"
-)
-
-_NODE_MODULES=/usr/lib/node_modules/
-
 ### TYPE CHECKS ###
 
 _typecorrect=0
 
-if [[ -n "${_UPDATE_NOTIFICATIONS}" && "${_UPDATE_NOTIFICATIONS}" != "true" && "${_UPDATE_NOTIFICATIONS}" != "false" ]]; then
-  echo "PKGBUILD: _UPDATE_NOTIFICATIONS: Invalid type (should be boolean or empty)." >&2
-  _typecorrect=$((_typecorrect+1)) || true
-fi
+__cbe() {
+  if [[ -n "${2}" && "${2}" != "true" && "${2}" != "false" ]]; then
+    echo "PKGBUILD: ${1}: Invalid type (should be boolean or empty)." >&2
+    _typecorrect=$((_typecorrect+${3})) || true
+  fi
+}
+
+__cbe "_UPDATE_NOTIFICATIONS" "${_UPDATE_NOTIFICATIONS}" 1
+__cbe "_LOCKFILE" "${_LOCKFILE}" 2
+
 if [[ -n "${_RELEASE_TYPE}" && "${_RELEASE_TYPE}" != "devel" && "${_RELEASE_TYPE}" != "release" ]]; then
   echo "PKGBUILD: _RELEASE_TYPE: Invalid type (should be 'devel','release' or empty)." >&2
-  _typecorrect=$((_typecorrect+2)) || true
+  _typecorrect=$((_typecorrect+4)) || true
 fi
 
 [[ "${_typecorrect}" != 0 ]] && exit "${_typecorrect}"
 
 ### PKGBUILD STANDARD FUNCTIONS ###
+
+if [[ "${_LOCKFILE}" == "true" ]]; then
+  prepare() {
+    cd "${srcdir:?}/${pkgname%-git}"
+    _TIMES_MAX=1
+    _echo_times "Restoring upstream lockfile..."
+    git restore "package-lock.json"
+  }
+fi
 
 pkgver() {
   cd "${srcdir:?}/${pkgname%-git}"
@@ -74,23 +90,27 @@ pkgver() {
 }
 
 build() {
+  _TIMES=1
   _TIMES_MAX=6
   cd "${srcdir:?}/${pkgname%-git}"
 
   # Remove unnecesary developer dependencies
 
-  mapfile -t _remove_deps < <(grep -E '@electron-forge|electron-forge-maker' "${srcdir:?}/${pkgname%-git}/package.json" | sed 's~"\(.*\)":.*~\1~g' | tr -d " ")
+  mapfile -t _remove_deps < <(grep -E '@electron-forge|@reforged|@typescript-eslint' "${srcdir:?}/${pkgname%-git}/package.json" | sed 's~"\(.*\)":.*~\1~g' | tr -d " ")
 
   _remove_deps+=(
     typescript eslint eslint-import-resolver-typescript eslint-plugin-import
-    @typescript-eslint/parser @typescript-eslint/eslint-plugin
-    eslint-plugin-json-schema-validator husky
+    eslint-plugin-json-schema-validator husky @electron/fuses
   )
 
   _echo_times "Installing dependencies..."
   [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm i "${_LOCAL_PACKAGES[@]/#/"${_NODE_MODULES}"}"
-  [[ "$(npm pkg get devDependencies.husky "${srcdir:?}/${pkgname%-git}/package.json")" == "{}" ]] || npm pkg delete "${_remove_deps[@]/#/devDependencies.}"
-  _npm update
+  npm pkg delete "${_remove_deps[@]/#/devDependencies.}"
+  if [[ "${_LOCKFILE}" == "true" ]]; then
+    _npm ci 
+  else
+    _npm update
+  fi
   _cleanup && _compile && _genico && _gen_buildinfo
 }
 
@@ -129,8 +149,12 @@ package() {
 
 ### INTERNAL PKGBUILD VARIABLES ###
 
-_TIMES='1'
+_NODE_MODULES=/usr/lib/node_modules/
+_TIMES=1
 _TIMES_MAX='?'
+depends+=(
+  "${_LOCAL_PACKAGES[@]}"
+)
 
 ### INTERNAL PSEUDO-FUNCTIONS ###
 
@@ -154,6 +178,7 @@ _npm() {
     --cache="${srcdir:-.}/npm-cache"  \
     --no-audit \
     --no-fund \
+    --silent \
     --ignore-scripts \
     "$@"
 }
@@ -215,10 +240,13 @@ _genico(){
       [[ -n "${_msg}" ]] && _old_msg="${#_msg}" || _old_msg=0
       _msg="Generating images: F=$(basename "${_file}"); S=${_size}x${_size}"
       _print "${_old_msg}" "${_msg}"
-      _out="themeId-${_i}/${_size}x${_size}/apps/${pkgname%-git}.${_ext}"
+      _outdir="themeId-${_i}/${_size}x${_size}/apps"
+      _out="${_outdir}/${pkgname%-git}.${_ext}"
+      _outln="${_outdir}/${_repo}.${_ext}"
       mkdir -p "$(dirname "$_out")"
       if [[ "${_ext}" == "png" ]]; then
         convert "$_file" -size "${_size}x${_size}" "$_out" &
+        ln -sr "${_out}" "${_outln}" &
       else
         echo -e "\nERROR: Unknown image type! (${_ext})"
         exit 3
@@ -247,7 +275,7 @@ _postcompile() {
   cd "${srcdir:?}/${pkgname%-git}"
   _echo_times "Removing build dependencies..."
   rm -R tsconfig.json sources/code &
-  _npm --omit=dev i &
+  _npm --omit=dev ci &
   wait
   [[ -n "${_LOCAL_PACKAGES[*]}" ]] && _npm --omit=dev r "${_LOCAL_PACKAGES[@]}"
   rmdir node_modules/* --ignore-fail-on-non-empty

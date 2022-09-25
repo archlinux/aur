@@ -1,6 +1,6 @@
 pkgbase = webcord-git
-	pkgdesc = A Discord and Fosscord client made with the Electron.
-	pkgver = 3.8.3.r688.8f7c3a3
+	pkgdesc = A Discord and Fosscord client made with the Electron (master branch).
+	pkgver = 3.8.4.r696.f9daf42
 	pkgrel = 2
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
@@ -18,6 +18,6 @@ pkgbase = webcord-git
 	source = webcord::git+https://github.com/SpacingBat3/WebCord.git
 	source = webcord.desktop
 	md5sums = SKIP
-	md5sums = c420b0dd4b9a360b0b2f35840f562e39
+	md5sums = e7ea606e7dc9e11f4095220333c922be
 
 pkgname = webcord-git

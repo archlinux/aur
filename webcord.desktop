@@ -9,10 +9,11 @@ Comment[pl]=Klient Discord'a i Fosscord'a oparty o framework: „Electron”.
 Exec=webcord
 Icon=webcord
 Categories=Network;Chat;InstantMessaging
-Keywords=Electron;Web;Talk;Chat;Message;Internet;Screen share;Meeting;Fosscord
-Keywords[pl]=Electron;Sieć;Rozmowa;Czat;Wiadomość;Internet;Przesyłanie ekranu;Spotkanie;Fosscord
+Keywords=Electron;Web;Talk;Chat;Message;Internet;Screen share;Meeting;Fosscord;FreeCord
+Keywords[pl]=Electron;Sieć;Rozmowa;Czat;Wiadomość;Internet;Przesyłanie ekranu;Spotkanie;Fosscord;FreeCord
 Terminal=false
 StartupNotify=false
+StartupWMClass=WebCord
 Actions=StartHidden
 
 [Desktop Action StartHidden]
