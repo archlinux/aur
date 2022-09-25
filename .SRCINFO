@@ -6,9 +6,9 @@ pkgbase = fend
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	makedepends = pandoc
 	depends = gcc-libs
-	source = fend-1.1.1.tar.gz::https://static.crates.io/crates/fend/fend-1.1.1.crate
-	sha256sums = bd1a3706d3b2f8eff43256590cdb79764327a3253855541cc3097519e6ac2be4
+	source = fend-1.1.1.tar.gz::https://github.com/printfn/fend/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = c6989579808d5fbfbceda87f303d90573e89cef5442d15fd249a6ad5de467004
 
 pkgname = fend
-
