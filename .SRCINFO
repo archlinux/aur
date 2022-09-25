@@ -12,6 +12,7 @@ pkgbase = clash-verge
 	makedepends = clash-meta
 	makedepends = jq
 	makedepends = moreutils
+	makedepends = rust
 	depends = webkit2gtk
 	depends = clash-geoip
 	optdepends = clash-premium-bin>=2022.04.01: clash-core
