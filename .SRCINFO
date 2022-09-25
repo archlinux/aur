@@ -1,0 +1,24 @@
+pkgbase = vte4
+	pkgdesc = Virtual Terminal Emulator widget
+	pkgver = 0.70.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Terminal/VTE
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = gi-docgen
+	makedepends = gperf
+	makedepends = meson
+	depends = gtk4
+	depends = pcre2
+	depends = gnutls
+	depends = fribidi
+	depends = systemd
+	depends = vte-common
+	provides = libvte-2.91-gtk4.so=0-64
+	source = git+https://gitlab.gnome.org/GNOME/vte.git#commit=ae4a5d7df9e32ab40ceca5e06240561e819db148
+	sha256sums = SKIP
+
+pkgname = vte4
