@@ -13,6 +13,7 @@ pkgbase = wxwidgets-light
 	makedepends = libsm
 	makedepends = libgl
 	makedepends = libnotify
+	makedepends = qt5-base
 	makedepends = cmake
 	options = debug
 	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.1

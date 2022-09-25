@@ -19,6 +19,7 @@ makedepends=('git'
              'libsm'
              'libgl'
              'libnotify'
+             'qt5-base'
              'cmake'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
