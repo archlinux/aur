@@ -1,0 +1,18 @@
+pkgbase = geoclue_fake-git
+	pkgdesc = Fake Geoclue Service so that it doesn't need to phone home
+	pkgver = 0.r6.g0d7f9aa
+	pkgrel = 1
+	url = https://github.com/Grollicus/geoclue_fake
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	depends = libdbus-1.so
+	provides = geoclue
+	provides = geoclue2
+	conflicts = geoclue
+	conflicts = geoclue2
+	source = geoclue_fake-git::git+https://github.com/Grollicus/geoclue_fake
+	md5sums = SKIP
+
+pkgname = geoclue_fake-git
