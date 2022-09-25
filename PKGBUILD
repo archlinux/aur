@@ -1,8 +1,9 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Brad Pitcher <bradpitcher@gmail.com>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=python-trimesh
-pkgver=3.9.31
-pkgrel=3
+pkgver=3.15.2
+pkgrel=1
 pkgdesc='Trimesh is a pure Python library for loading and using triangular meshes with an emphasis on watertight surfaces'
 arch=('any')
 url="https://github.com/mikedh/trimesh"
@@ -27,8 +28,8 @@ optdepends=('python-networkx: graph operations'
             'python-svg.path: handle SVG format path strings'
             'python-xxhash: hash ndarrays faster than built-in MD5/CRC'
             'python-collada: parse collada/dae/zae files')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mikedh/trimesh/archive/${pkgver}.tar.gz)
-sha512sums=('869154628e399b336a8a028b0c3b7bf0a950384e957503ba662badf8d109e330daebbda617ff240cae4c07e2d88c4e07c0115637259d17c0c30890e940e04251')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('9ae3917f2485f5eba089fd04029187be356bbb032d8afa57801a5c19a897550a34bd6734848a47c937b42745fd4563a5a05352928f5e31a7146a3b002d6c765d')
 
 build() {
   cd trimesh-${pkgver}
