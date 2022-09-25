@@ -1,0 +1,13 @@
+pkgbase = libre-menu-editor
+	pkgdesc = Graphical Interface for managing Application Launchers
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = libadwaita
+	depends = gtk4
+	depends = python>=3
+	depends = xdg-utils
+	provides = libre-menu-editor
+
+pkgname = libre-menu-editor
