@@ -8,8 +8,8 @@ pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
 url="https://brltty.app"
 license=(LGPL2.1)
-makedepends=(alsa-lib at-spi2-atk at-spi2-core atk bluez-libs cython dbus
-             dracut espeak-ng expat festival gcc-libs git glibc glib2 gpm icu java-environment
+makedepends=(alsa-lib at-spi2-core bluez-libs cython dbus dracut espeak-ng expat
+             festival gcc-libs git glibc glib2 gpm icu java-environment
              liblouis libspeechd libxaw ncurses ocaml-ctypes ocaml-findlib pcre2
              polkit python-setuptools speech-dispatcher strip-nondeterminism systemd-libs
              tcl)
