@@ -6,7 +6,7 @@ pkgname=(
     'owlux_tools'
 )
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Yeelight smart LED control app"
 url="https://github.com/frankencode/Owlux"
 arch=('x86_64')
