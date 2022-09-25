@@ -1,0 +1,13 @@
+pkgbase = ideapad-wmi-fn-keys
+	pkgdesc = Kernel module for Ideapad fn key detection
+	pkgver = r8.3ada633
+	pkgrel = 1
+	url = https://github.com/LittleHuba/ideapad-wmi-fn-keys
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/LittleHuba/ideapad-wmi-fn-keys.git
+	sha256sums = SKIP
+
+pkgname = ideapad-wmi-fn-keys-dkms-git
