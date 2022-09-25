@@ -1,0 +1,28 @@
+pkgbase = samplebrain
+	pkgdesc = Custom sample smashing app designed by Aphex Twin
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://gitlab.com/then-try-this/samplebrain
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = hicolor-icon-theme
+	makedepends = libsndfile
+	makedepends = portaudio
+	makedepends = liblo
+	makedepends = fftw
+	makedepends = qt5-base
+	source = samplebrain::git+https://gitlab.com/then-try-this/samplebrain.git#commit=4e36c9292334729b895d7353468b9acd9c085c1b
+	b2sums = SKIP
+
+pkgname = samplebrain
+	depends = hicolor-icon-theme
+	depends = libsndfile
+	depends = portaudio
+	depends = liblo
+	depends = fftw
+	depends = qt5-base
+	optdepends = samplebrain-docs: documentation
+
+pkgname = samplebrain-docs
+	pkgdesc = Custom sample smashing app designed by Aphex Twin (documentation)
