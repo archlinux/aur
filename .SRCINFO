@@ -1,6 +1,6 @@
 pkgbase = procpath
 	pkgdesc = A process tree analysis workbench
-	pkgver = 1.5.1
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://heptapod.host/saajns/procpath
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = procpath
 	depends = python
 	depends = python-jsonpyth
 	depends = python-pygal
-	source = procpath::hg+https://heptapod.host/saajns/procpath#revision=4e8ba95a83be
+	source = procpath-1.6.1::hg+https://heptapod.host/saajns/procpath#revision=491eba08366067f7a3c904dda17c5c058e09fec5
 	sha512sums = SKIP
 
 pkgname = procpath
