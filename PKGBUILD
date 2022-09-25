@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -14,7 +14,7 @@ options=(!strip !buildflags staticlibs)
 makedepends=(mingw-w64-gcc mingw-w64-cmake ninja yasm)
 source=(https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
         "cmake.patch")
-b2sums=('7a38cc1a1871f044018a8ebf5022810b753b099ad61e0c6e2625a0480946e8b5e066fd1e1abc5523e817025c8a59d6f1092c12d632c5b602cf3a80f6ef8daa0e'
+b2sums=('d47ddb864c909c972f692667177417daef0350124a096547eacc83ab3630227fe7a23e95f3988a2109c580f9a87ba30a58bcc58be1a2e24fe694eb01655a4861'
         'SKIP'
         '627c000cc5b152e78714898156ebebb2524749bd1d701bbbdca0b431301426c2f821403299a6fd4420be80133d4e7178dea8b2f4aae2ab34e9e81e584ebda345')
 validpgpkeys=(B002F08B74A148DAA01F7123A48E86DB0B830498) # AOMedia release signing key <av1-discuss@aomedia.org>
@@ -58,4 +58,4 @@ package() {
   done
 }
 
-# vim:set et sw=2:
+# vim:set sw=2 sts=-1 et:
