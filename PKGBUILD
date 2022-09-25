@@ -4,6 +4,7 @@
 
 pkgname=mprime
 pkgver=30.8
+epoch=1
 _pkgver=308b15
 pkgrel=1
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes."
@@ -38,3 +39,5 @@ package() {
 	install -Dm644 gwnum/tutorial.txt "$pkgdir/usr/share/doc/$pkgname/tutorial.txt"
   cp -r prime95/hlp "$pkgdir/usr/share/doc/$pkgname"
 }
+
+# vim:set ts=2 sw=2 et:
