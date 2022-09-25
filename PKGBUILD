@@ -1,4 +1,5 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Brad Pitcher <bradpitcher@gmail.com>
+# Contributer: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=python-svg.path
 pkgver=6.2
