@@ -3,7 +3,7 @@
 
 pkgname=caddy-trojan
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imgk/caddy-trojan"
@@ -14,6 +14,7 @@ conflicts=("caddy")
 source=(
     "caddy.hook"
     "caddy.sysusers"
+    "caddy.tmpfiles"
     "https://raw.githubusercontent.com/caddyserver/dist/master/init/caddy.service"
     "https://raw.githubusercontent.com/caddyserver/dist/master/init/caddy-api.service"
     "https://raw.githubusercontent.com/caddyserver/dist/master/config/Caddyfile"
@@ -21,6 +22,7 @@ source=(
 )
 sha256sums=('fca52680914605bdf88e015ca3d79bb89def95877fb7369b67e9a0bfe3f85aca'
             '07436f8aa8fff8de61467e97ce4300431d6de763693b152160b21cca4a2a9629'
+            '99282b1a57857d23b97883dfd7dd147005956cc04405630d6e4d73bb7069f5ba'
             'df2189b76e606ba16f620a348a4ecab446c6760234363566d473a2a51636ebe7'
             'e1522046019c912af380dccfb6ac1a558b4c4df24fe0716bbdc6ad451bb598aa'
             '66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe'
@@ -55,6 +57,7 @@ package() {
     install -Dm644 "${srcdir}/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
     install -Dm644 "${srcdir}/caddy-api.service" "${pkgdir}/usr/lib/systemd/system/caddy-api.service"
     install -Dm644 "${srcdir}/caddy.sysusers" "${pkgdir}/usr/lib/sysusers.d/caddy.conf"
+    install -Dm644 "${srcdir}/caddy.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
 
     install -Dm644 "${srcdir}/caddy.hook" "${pkgdir}/usr/share/libalpm/hooks/caddy-trojan.hook"
 }
