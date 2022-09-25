@@ -1,24 +1,20 @@
 pkgbase = ksh93-git
-	pkgdesc = AT&T's KornShell (ksh93) from ast-base
-	pkgver = r5.0be82553
+	pkgdesc = KornShell 93u+m, fork based on ksh 93u+
+	pkgver = r1291.654461d2
 	pkgrel = 1
-	url = http://kornshell.org/
+	url = https://github.com/ksh93/ksh/
 	install = ksh93.install
 	arch = x86_64
 	license = EPL
-	license = CPL
-	makedepends = gcc
 	makedepends = git
 	depends = glibc
 	provides = ksh
+	provides = ksh93
 	conflicts = ksh
 	conflicts = ksh93
-	source = ksh93::git+http://github.com/att/ast#branch=master
+	source = ksh93::git+http://github.com/ksh93/ksh#branch=dev
 	source = sample.kshrc
-	source = LICENSE
 	sha512sums = SKIP
-	sha512sums = aeb54cb5ec944628ab64a692d364cab14bbc312c1a892b3692058f7f7b1cf72c95a6bfb4a95ffc3c4ddfb8f8ca4d17707023108d5504f912cb3ceb9e8d4da6b3
-	sha512sums = 917ae643f241741919eb7f4633ec7b3cd58fb0d19150a017773562c36b15812bcf5f680024994d546ef18d771ab25aefc4bfe57ebd0c08043c9ad17e9cd7e076
+	sha512sums = e9837bede44d13d47a342456ad911534dc7f4965f0611f369459849047e8c77d3c6678b60e7a7bbe0aa5f12b88325685b3cd68a6dcb3d5bcd970fd68d3d40ba7
 
 pkgname = ksh93-git
-

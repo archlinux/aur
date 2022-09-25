@@ -1,25 +1,24 @@
-# Maintainer: Adrien Wu <adrien.sf.wu dot gmail at com>
+# Maintainer: Johnothan King <johnothanking dot protonmail at com>
+# Contributor: Adrien Wu <adrien.sf.wu dot gmail at com>
 # Contributor: Head_on_a_Stick <matthew.t.hoare dot gmail at com>
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r5.0be82553
+pkgver=r1291.654461d2
 pkgrel=1
-pkgdesc="AT&T's KornShell (${_pkgname}) from ast-base"
+pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64')
-url='http://kornshell.org/'
-license=('EPL' 'CPL')
+url='https://github.com/ksh93/ksh/'
+license=('EPL')
 depends=('glibc')
-makedepends=('gcc' 'git')
+makedepends=('git')
 conflicts=('ksh' 'ksh93')
-provides=('ksh')
+provides=('ksh' 'ksh93')
 install='ksh93.install'
-source=("${_pkgname}::git+http://github.com/att/ast#branch=master"
-'sample.kshrc'
-'LICENSE')
+source=("${_pkgname}::git+http://github.com/ksh93/ksh#branch=dev"
+	'sample.kshrc')
 sha512sums=('SKIP'
-'aeb54cb5ec944628ab64a692d364cab14bbc312c1a892b3692058f7f7b1cf72c95a6bfb4a95ffc3c4ddfb8f8ca4d17707023108d5504f912cb3ceb9e8d4da6b3'
-'917ae643f241741919eb7f4633ec7b3cd58fb0d19150a017773562c36b15812bcf5f680024994d546ef18d771ab25aefc4bfe57ebd0c08043c9ad17e9cd7e076')
+	'e9837bede44d13d47a342456ad911534dc7f4965f0611f369459849047e8c77d3c6678b60e7a7bbe0aa5f12b88325685b3cd68a6dcb3d5bcd970fd68d3d40ba7')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -28,37 +27,34 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./bin/package make
+	test -n "${CFLAGS}" || CFLAGS=-Os      # Fallback to default ksh flags if necessary
+	./bin/package make CCFLAGS="${CFLAGS}"
 }
 
 package() {
 	cd "${srcdir}"
-	install -dm 755 "${pkgdir}/usr/share/ksh"
-	install -dm 755 "${pkgdir}/usr/share/ksh/functions"
-	install -dm 755 "${pkgdir}/usr/share/doc/ksh"
-	install -dm 755 "${pkgdir}/usr/share/licenses/ksh"
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/ksh/LICENSE"
-	install -Dm 644 sample.kshrc "${pkgdir}/etc/skel/.kshrc"
+	install -dm0755 "${pkgdir}/usr/share/ksh"
+	install -dm0755 "${pkgdir}/usr/share/ksh/functions"
+	install -dm0755 "${pkgdir}/usr/share/doc/ksh"
+	install -dm0755 "${pkgdir}/usr/share/licenses/ksh"
+	install -Dm0644 sample.kshrc "${pkgdir}/etc/skel/.kshrc"
 	cd "${srcdir}/$_pkgname"
-	install -Dm 644 "src/cmd/${_pkgname}/nval.3" "${pkgdir}/usr/share/man/man3/nval.3"
-	install -Dm 644 "src/cmd/${_pkgname}/shell.3" "${pkgdir}/usr/share/man/man3/shell.3"
-	install -Dm 644 "src/cmd/${_pkgname}/sh.1" "${pkgdir}/usr/share/man/man1/ksh.1"
-	local _man
-	for _man in 'rksh' 'pfksh'; do
-		ln -sf 'ksh.1' "${pkgdir}/usr/share/man/man1/${_man}.1"
+	install -Dm0644 LICENSE.md "${pkgdir}/usr/share/licenses/ksh/LICENSE.md"
+	install -Dm0644 "src/cmd/${_pkgname}/nval.3" "${pkgdir}/usr/share/man/man3/nval.3"
+	install -Dm0644 "src/cmd/${_pkgname}/shell.3" "${pkgdir}/usr/share/man/man3/shell.3"
+	install -Dm0644 "src/cmd/${_pkgname}/sh.1" "${pkgdir}/usr/share/man/man1/ksh.1"
+	for _man in 'ksh93' 'rksh'; do
+		ln -srf 'ksh.1' "${pkgdir}/usr/share/man/man1/${_man}.1"
 	done
-	local _fun
-	for _fun in 'dirs' 'popd' 'pushd'; do
-		install -Dm 644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
+	for _fun in 'autocd' 'man' 'dirs' 'popd' 'pushd'; do
+		install -Dm0644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
 	done
-	local _dox
-	for _dox in 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'README' 'RELEASE' 'RELEASE88' 'RELEASE93' 'TYPES'; do
-		install -Dm 644 "src/cmd/${_pkgname}/${_dox}" "${pkgdir}/usr/share/doc/ksh/${_dox}"
+	for _doc in 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'PROMO.mm' 'README' 'README-AUDIT.md' 'RELEASE' 'RELEASE88' 'RELEASE93' 'TYPES'; do
+		install -Dm0644 "src/cmd/${_pkgname}/${_doc}" "${pkgdir}/usr/share/doc/ksh/${_doc}"
 	done
-	install -Dm 755 "arch/linux.i386-64/bin/ksh" "${pkgdir}/usr/bin/ksh"	
-	local _exe
-	for _exe in 'rksh' 'pfksh'; do
-		ln -sf 'ksh' "${pkgdir}/usr/bin/${_exe}"
+	install -Dm0755 "arch/linux.i386-64/bin/ksh" "${pkgdir}/usr/bin/ksh"
+	for _exe in 'ksh93' 'rksh'; do
+		ln -srf 'ksh' "${pkgdir}/usr/bin/${_exe}"
 	done
-	install -Dm 755 "arch/linux.i386-64/bin/shcomp" "${pkgdir}/usr/bin/shcomp"
+	install -Dm0755 "arch/linux.i386-64/bin/shcomp" "${pkgdir}/usr/bin/shcomp"
 }

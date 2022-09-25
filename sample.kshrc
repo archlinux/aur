@@ -1,91 +1,84 @@
 # This file contains examples of some of the things you may want to
 # include in a user startup file.
 
-# skip this setup for non-interactive shells
-[[ -o interactive && -t 0 ]] || return
+# Set the shell options
+set -o emacs -o notify -o globstar
+[[ -o nobackslashctrl ]] && set -o nobackslashctrl
+[[ -o globcasedetect ]] && set -o globcasedetect
+#[[ -o noarrowkeysearch ]] && set -o noarrowkeysearch
 
-# disable core dumps
-ulimit -c 0
-
-# Environment variables. These could go in .profile if you prefer
-export VISUAL=vi
-export EDITOR=$VISUAL
-export PAGER=less
-export GZIP=-9
-
-# set some shell options
-set -o emacs -o trackall -o globstar
-
-# specify search path for autoloadable functions
+# Specify search path for autoloadable functions
 FPATH=/usr/share/ksh/functions:~/.func
 
-# avoid certain file types in completion
-FIGNORE='@(*.o|~*)'
+# Optional: Autoload functions installed with ksh
+#autoload autocd
+#autoload man
+#autoload dirs
+#autoload pushd
+#autoload popd
 
-# save more commands in history
-HISTSIZE=500
-HISTEDIT=$EDITOR
+# Optional: Set the precision of the time keyword to six and use %C
+#((.sh.version >= 20220606)) && TIMEFORMAT=$'\nreal\t%6lR\ncpu\t%6lC'
 
-# aliases for various command shortcuts
-alias ll='ls -lFb'
-alias la='ls -LaFb'
-alias pu='ps -fu $USER'
-alias md=mkdir
-alias rd=rmdir
+# Optional: Avoid certain file types in completion
+#FIGNORE='@(*.o|~*)'
 
-# avoid problems with long argument lists for some commands (like xargs)
-alias cp='command -x cp'  mv='command -x mv'  grep='command -x grep'
+# Save more commands in history
+HISTSIZE=2000
+#HISTEDIT=$EDITOR
 
-# some short functions
+# Remove the problematic default 'r' alias (this is only
+# done when it's safe, as old versions of ksh can crash
+# after 'unalias r').
+((.sh.version >= 20220806)) && unalias r
 
-# empty line
-empty() { echo $'\e[3J'; }
+# Below is a basic example that provides extra tilde expansions
+if ((.sh.version >= 20210318)) && [[ $(id -u) != 0 ]]; then
+	.sh.tilde.get()
+	{
+		case ${.sh.tilde} in
+		'~docs')   .sh.tilde=~/Documents ;;
+		'~dls')    .sh.tilde=~/Downloads ;;
+		'~share')  .sh.tilde=~/.local/share ;;
+		esac
+	}
+fi
 
-# man page viewer
-mere() { nroff -man -Tman $1 | ${MANPAGER:-less}; }
-
-# view/manipulate and export environment variables
-setenv() {
-        case $# in
-        0) export ;;
-        1) export "$1"= ;;
-        *) export "$1"="$2" ;;
-        esac
-    }
-
-# Use keyboard trap to map keys to other keys
-# note that escape sequences vary for different terminals so these
-# may not work for you
-trap '.sh.edchar=${keymap[${.sh.edchar}]:-${.sh.edchar}}' KEYBD
-keymap=(
-  [$'\eOD']=$'\eb'   # Ctrl-Left  -> move word left
-  [$'\eOC']=$'\ef'   # Ctrl-Right -> move word right
-  [$'\e[3~']=$'\cd'  # Delete     -> delete to right
-  [$'\e[1~']=$'\ca'  # Home       -> move to beginning of line
-  [$'\e[4~']=$'\ce'  # End        -> move to end of line
+# Associative array containing a set of RGB color codes.
+# Terminals emulators with support for wide color ranges
+# can take better advantage of this.
+typeset -A color=(
+	[bright_lavender]=$'\E[38;2;191;148;228m'
+	[red]=$'\E[38;2;255;0;0m'
+	[cyan_process]=$'\E[38;2;0;183;235m'
+	[ultramarine_blue]=$'\E[38;2;65;102;245m'
+	[reset]=$'\E[0m'
+	# Some extra examples
+	#[start_title]=$'\E]0;'
+	#[bell]=$'\a'
+	#[underline]=$'\E[4m'
+	#[spaced_dots]=$'\E[4:5m'
 )
 
-# keep a shortened version of the current directory for the prompt
-function _cd {
-  typeset -n dir=HOME
+PS1.get()
+{
+	ret=$?  # Workaround $? bug in ksh < 2022-03-16 (cf. https://github.com/ksh93/ksh/pull/226)
 
-  "cd" "$@"
+	pwd=$(pwd 2>/dev/null)
+	[[ ${pwd} == / ]] && return 0
+	case ${pwd} in
+		~)		pwd='~' ;;
+		~docs)		pwd='~docs' ;;
+		~dls)		pwd='~dls' ;;
+		~share)		pwd='~share' ;;
+		'')		pwd="${color[red]}No pwd found" ;;
+		*)		pwd=${pwd##*/} ;;
+	esac
+	if [[ $(id -u) == 0 ]]; then
+		PS1='${color[bright_lavender]}${pwd} ${color[red]}#${color[reset]} '
+	else
+		PS1='${color[ultramarine_blue]}${pwd} ${color[cyan_process]}\$${color[reset]} '
+	fi
 
-  if [[ $PWD = $HOME* && $HOME != / ]]; then
-    _pwd=\~${PWD#$HOME}
-    return
-  fi
-
-  for dir in JAVA_HOME GNOMEDIR; do
-    if [[ -n $dir && $PWD = $dir* ]]; then
-      _pwd="\$${!dir}${PWD#$dir}"
-      return
-    fi
-  done
-  _pwd="$PWD"
+	return $ret
 }
-alias cd=_cd
-_cd .
-
-# put the current directory and history number in the prompt
-PS1='$_pwd [!]\$ '
