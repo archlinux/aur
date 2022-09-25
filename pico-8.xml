@@ -9,5 +9,6 @@
     </magic>
     <glob-deleteall/>
     <glob pattern="*.p8"/>
+    <glob pattern="*.p8.png"/>
   </mime-type>
 </mime-info>
