@@ -1,13 +1,15 @@
 pkgbase = python-svg.path
 	pkgdesc = SVG path objects and parser
-	pkgver = 4.1
-	pkgrel = 3
+	pkgver = 6.2
+	pkgrel = 1
 	url = https://github.com/regebro/svg.path
 	arch = any
 	license = MIT
+	checkdepends = python-pillow
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = python-svg.path-4.1.tar.gz::https://github.com/regebro/svg.path/archive/4.1.tar.gz
-	sha512sums = fb302c65f85bd61d98baab9e2a9707bc82f1bf02f3c9a34e5b864dcc7d2e03f85bd26a4fadd91a4249dbc37ae13f57eb5cdfc2805cbcb4f693d6f5c8863a3e92
+	source = python-svg.path-6.2.tar.gz::https://github.com/regebro/svg.path/archive/6.2.tar.gz
+	sha512sums = 7c9a67467e888f4961d54daf2706125c4ae21bb0cd1010f335eb072df78f12b1da99ddcf64a33a85a0e82a8b347f19e876161e3da8ebf43e5e7b45bbaf7d3325
 
 pkgname = python-svg.path

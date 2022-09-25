@@ -1,0 +1,4 @@
+src/
+pkg/
+*.pkg.*
+python-svg.path-*.tar.gz

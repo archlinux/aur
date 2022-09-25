@@ -1,16 +1,17 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=python-svg.path
-pkgver=4.1
-pkgrel=3
+pkgver=6.2
+pkgrel=1
 pkgdesc="SVG path objects and parser"
 url="https://github.com/regebro/svg.path"
 license=('MIT')
+checkdepends=(python-pillow python-pytest)
 depends=(python)
 makedepends=(python-setuptools)
 arch=(any)
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/regebro/svg.path/archive/${pkgver}.tar.gz)
-sha512sums=('fb302c65f85bd61d98baab9e2a9707bc82f1bf02f3c9a34e5b864dcc7d2e03f85bd26a4fadd91a4249dbc37ae13f57eb5cdfc2805cbcb4f693d6f5c8863a3e92')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('7c9a67467e888f4961d54daf2706125c4ae21bb0cd1010f335eb072df78f12b1da99ddcf64a33a85a0e82a8b347f19e876161e3da8ebf43e5e7b45bbaf7d3325')
 
 build() {
   cd "svg.path-${pkgver}"
