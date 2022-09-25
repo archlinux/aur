@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
 depends+=('python')
-provides=('usd')
+provides=('materialx')
 source=(git+"https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
