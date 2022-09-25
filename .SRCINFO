@@ -10,7 +10,6 @@ pkgbase = pico-8
 	license = custom:commercial
 	depends = glibc
 	depends = sdl2
-	depends = hicolor-icon-theme
 	optdepends = wget: BBS download support
 	replaces = pico8-bin
 	source = pico-8.desktop

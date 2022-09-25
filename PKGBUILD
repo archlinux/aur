@@ -8,7 +8,7 @@ pkgdesc="A fantasy console for making, sharing and playing tiny games and other 
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lexaloffle.com/pico-8.php"
 license=('custom:commercial')
-depends=('glibc' 'sdl2' 'hicolor-icon-theme')
+depends=('glibc' 'sdl2')
 optdepends=('wget: BBS download support')
 replaces=('pico8-bin')
 
@@ -58,7 +58,7 @@ package () {
   fi
   install -Dm644 "${pkgname}.xml" "${_share}/mime/packages/${pkgname}.xml"
   install -Dm644 "${pkgname}.desktop" "${_share}/applications/${pkgname}.desktop"
-  install -Dm644 "${pkgname}.png" "${_share}/icons/hicolor/128x128/apps/${pkgname}.png"
+  install -Dm644 "${pkgname}.png" "${_share}/pixmaps/${pkgname}.png"
 
   # Links the installed binary to /usr/bin
   local _bin="${pkgdir}/usr/bin"
