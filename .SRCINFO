@@ -1,24 +1,5 @@
 pkgbase = tabview-git
 	pkgdesc = Curses CSV/tabular data viewer
-	pkgver = r228.d2be929
-	pkgrel = 1
-	url = https://github.com/tabviewer/tabview
-	arch = any
-	license = MIT
-	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = python
-	provides = tabview
-	conflicts = tabview
-	source = git+https://github.com/tabviewer/tabview.git
-	md5sums = SKIP
-
-pkgname = tabview-git
-pkgbase = tabview-git
-	pkgdesc = Curses CSV/tabular data viewer
 	pkgver = r226.77846ac
 	pkgrel = 1
 	url = https://github.com/tabviewer/tabview
