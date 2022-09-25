@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/rafatosta/$pkgname" 
 license=('GPL3')
 depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=($url/archive/v$pkgver.tar.gz)
 sha256sums=('2fdb9ee666f92ce2f28bc40ac0dd50da158897a7f268abc8b01a7343632d6ffd')
 
