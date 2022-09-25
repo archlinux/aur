@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='lutris-wine-git'
-pkgver=0.75.r0.gb9d7ede
+pkgver=0.75.r1.g50b2af9
 pkgrel=1
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('any')
@@ -26,7 +26,7 @@ depends=('aria2' 'qt5-tools' 'xterm' 'xorg-fonts-100dpi' 'xorg-fonts-75dpi'
          'libxrandr' 'lib32-libxrandr' 'xorg-xrandr' 'bc' 'xorg-xgamma' 'lsb-release'
          'iputils' 'curl' 'xdelta3' 'latencyflex-git' 'latencyflex-wine-git' 'xdg-utils'
          'desktop-file-utils' 'squashfs-tools' 'squashfuse' 'fuse2' 'reshade-shaders-git'
-         'winetricks' 'innoextract' 'p7zip'
+         'winetricks' 'innoextract' 'p7zip' 'gnu-netcat'
 )
 makedepends=('git')
 optdepends=('lib32-vulkan-radeon' 'vulkan-radeon' 'xf86-video-amdgpu'
