@@ -1,7 +1,7 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=tidal-hifi-bin
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=("tidal-hifi")
 source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/releases/download/${pkgver}/tidal-hifi-${pkgver}.tar.gz"
         "tidal-hifi.desktop"
         "icon.png")
-md5sums=('b40952709bb97f350f80b82138a5fcd6'
+md5sums=('bf6842dbd54ee3c802d9d4c2892273ea'
         'dab0192d01bab9a92dbca75269d0791b'
         'c17104184b4ae7af3b82c0930a22a777')
 
