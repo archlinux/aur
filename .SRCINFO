@@ -1,7 +1,7 @@
 pkgbase = notepadnext-appimage
 	pkgdesc = Cross-platform reimplementation of Notepad++ (binary AppImage)
-	pkgver = 0.5.4
-	pkgrel = 2
+	pkgver = 0.5.5
+	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
 	license = GPL3
