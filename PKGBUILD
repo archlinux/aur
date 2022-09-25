@@ -3,7 +3,7 @@
 
 pkgname='pico-8'
 pkgver='0.2.5c'
-pkgrel=1
+pkgrel=2
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lexaloffle.com/pico-8.php"
@@ -31,7 +31,7 @@ source_armv6h=("hib://${_file_zip_arm}")
 source_armv7h=("hib://${_file_zip_arm}")
 
 # Source files hash declaration (SHA-512)
-sha256sums=('6e9f6e6bee12e18c254e9e4a5843aed6a6181862bb629fb2d2f7a965ade5d523'
+sha256sums=('272f33c38a74456a4d2597a6b1d0c6ee9695d0e47f31ce08018c24a78e62759e'
             '1d5a1a2af803f16f0ed809ae55ad406447453a2ecb0cc11a62d5928d42349c08')
 sha256sums_i686=('3ddc7ae2fc67352cabda1935114403cc70f408f73d25faee5385d85faa071f2f')
 sha256sums_x86_64=('a433059942d5a4275d879c718a7d7d1611068d65f9cf57782ffefb11d7e2c8db')
