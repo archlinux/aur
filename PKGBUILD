@@ -3,7 +3,7 @@
 
 pkgname=thorium-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
 arch=('x86_64')
 license=('BSD3')
@@ -12,7 +12,7 @@ depends=('libnotify' 'nss' 'libxss' 'xdg-utils' 'libappindicator-gtk3' 'libsecre
 _filename=EDRLab.ThoriumReader_${pkgver}_amd64.deb
 options=('!strip')
 source=(
-  "${pkgname}.tar.gz::${url}/releases/download/v${pkgver}/${_filename}"
+  "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_filename}"
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=('8a264b9484f128a2395f39bf8b09478dc1c333dcdb3111838b3a4554accc461217ceb77dd5b0790b1399fd5b0da6f3bac6b6e4716fb38645143967ee232e49fe'
