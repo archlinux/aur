@@ -20,14 +20,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://gitlab.com/then-try-this/samplebrain.git")
+source=("samplebrain-git::git+https://gitlab.com/then-try-this/samplebrain.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
-
-prepare() {
-	mv $pkgname $pkgname-git
-}
 
 pkgver() {
   cd "$pkgname"
