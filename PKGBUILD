@@ -4,7 +4,7 @@
 
 pkgname=rippled
 pkgrel=1
-pkgver=1.9.3
+pkgver=1.9.4
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('x86_64')
 url="https://github.com/XRPLF/rippled"
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.sysusers"
         "0001-cflag_werror_format-security.patch"
         "0002-service_execstart_paths_security_and_sandboxing.patch")
-sha512sums=('1bb5ae17995b0683ebc5ab719914f0ed042f365b3e3652d18e44b8e2bb31ce2e823612c26e642793070b972c08969d9cfcdd24321c9ccc998bb40e83b2a3338d'
+sha512sums=('8fd442c8c8950690f5325aa8653449b0e749992d600eae0e04ccefa9d92e59fad1948ea0472c4d4a678841f19953fbda44bef31c354d5e213ed3f1496dc9e89e'
             '0c50bbd6b790163ca77ab6b8f5a078049dafe69f3818f05c8de3db626227c20cb55fbeaf38ca7594ce3a4f82156319ab69ccf24ca2615a278459f10a3ad7a04c'
             'bf651f870dc788a53960b950f1d069a2775fb806399c11b4e96499c26e325c844120bf7a1698a9482621b5634d2c7202b5917c582fd8a53002b2c9fe4caf6bae'
             '826c1233d10339176267cbd6ef394e3b4647630a074f2c4cdade7ee683319e01ea45209037cbce7acef7e97885adce7250f23d65174baca65f40a4aa2ef6b0fb'
