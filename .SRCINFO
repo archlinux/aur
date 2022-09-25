@@ -1,0 +1,13 @@
+pkgbase = noti-git
+	pkgdesc = little DBus notification monitor lib with noticat utility
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mibli/noti
+	arch = x86_64
+	license = MIT
+	depends = cjson>=1.7.0
+	depends = dbus>=1.14.0
+	source = noti-git-0.1.1.zip::https://github.com/mibli/noti/archive/refs/tags/v0.1.1.zip
+	md5sums = 6de95a62f4507cb297097d2386d07e48
+
+pkgname = noti-git
