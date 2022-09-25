@@ -9,8 +9,12 @@ license=('GPL3')
 depends=('libadwaita' 'gtk4' 'python>=3' 'xdg-utils')
 arch=("x86_64")
 
-package() {
+prepare() {
+  cd $(dirname $srcdir)
   tar -xf src.tar.xz
+}
+
+package() {
   cp -r "$srcdir/usr" "$pkgdir/usr"
 }
 
