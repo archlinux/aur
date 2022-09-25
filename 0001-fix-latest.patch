@@ -1,0 +1,47 @@
+diff --git a/ap.c b/ap.c
+index 6c48d26..6e22d3a 100644
+--- a/ap.c
++++ b/ap.c
+@@ -476,9 +476,9 @@ void xradio_bss_info_changed(struct ieee80211_hw *dev,
+                /* TODO:COMBO:Change this once
+                * mac80211 changes are available */
+                BUG_ON(!hw_priv->channel);
+-               hw_priv->ht_oper.ht_cap = sta->ht_cap;
++               hw_priv->ht_oper.ht_cap = sta->deflink.ht_cap;
+                priv->bss_params.operationalRateSet =__cpu_to_le32(
+-                 xradio_rate_mask_to_wsm(hw_priv, sta->supp_rates[hw_priv->channel->band]));
++                 xradio_rate_mask_to_wsm(hw_priv, sta->deflink.supp_rates[hw_priv->channel->band]));
+                /* TODO by Icenowy: I think this may lead to some problems. */
+ //             hw_priv->ht_oper.channel_type   = info->channel_type;
+                hw_priv->ht_oper.operation_mode = info->ht_operation_mode;
+diff --git a/main.c b/main.c
+index 2b76ede..779fa2c 100644
+--- a/main.c
++++ b/main.c
+@@ -502,8 +502,8 @@ int xradio_core_init(struct sdio_func* func)
+    u8 b;       /* MRK 5.5a */
+    struct ieee80211_hw *dev;
+    struct xradio_common *hw_priv;
+-   unsigned char randomaddr[ETH_ALEN];
+-   const unsigned char *addr = NULL;
++   unsigned char addr[ETH_ALEN];
++   bool addr_init = false;
+
+    //init xradio_common
+    dev = xradio_init_common(sizeof(struct xradio_common));
+@@ -518,12 +518,11 @@ int xradio_core_init(struct sdio_func* func)
+
+    // fill in mac addresses
+    if (hw_priv->pdev->of_node) {
+-       addr = of_get_mac_address(hw_priv->pdev->of_node);
++       addr_init = (of_get_mac_address(hw_priv->pdev->of_node, addr) == 0);
+    }
+-   if (!addr) {
++   if (!addr_init) {
+        dev_warn(hw_priv->pdev, "no mac address provided, using random\n");
+-       eth_random_addr(randomaddr);
+-       addr = randomaddr;
++       eth_random_addr(addr);
+    }
+    for (b = 0; b < XRWL_MAX_VIFS; b++) {               /* MRK 5.5a */
+        memcpy(hw_priv->addresses[b].addr, addr, ETH_ALEN);
