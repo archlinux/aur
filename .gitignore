@@ -1,3 +1,5 @@
+*.pkg.tar
+*.log
 good
 *.pkg.tar.xz
 pkg
