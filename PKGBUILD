@@ -3,7 +3,7 @@
 pkgbase='python-conllu'
 pkgname=('python-conllu')
 _module='conllu'
-pkgver='4.3'
+pkgver='4.5.2'
 pkgrel=1
 pkgdesc="CoNLL-U Parser parses a CoNLL-U formatted string into a nested python dictionary"
 url="https://github.com/EmilStenstrom/conllu/"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('35b5b76280507977e9e86f18369a1a4e5d4075a3680f1e9b2fac7ed5d0aaf427')
+sha256sums=('7c581c0d12fcdd546cbf69050063c37312de28dd3048c3f144ec5b851e71891c')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
