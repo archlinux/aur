@@ -43,6 +43,13 @@ check_machine() {
 }
 
 adjust_config() {
+    if [ -f /usr/lib/systemd/system/systemd-journal-gatewayd.socket ]
+    then
+        if ! grep -q "ListenStream=/run/systemd-journal-gatewayd.sock" /usr/lib/systemd/system/systemd-journal-gatewayd.socket; then
+            sed -i.bak 's/^\[Socket\]/\[Socket\]\nListenStream=\/run\/systemd-journal-gatewayd.sock/' /usr/lib/systemd/system/systemd-journal-gatewayd.socket
+        fi
+    fi
+
     # Install Supervisor
     sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}/bin/hassio-supervisor"
     sed -i -e "s,%%BINARY_DOCKER%%,${BINARY_DOCKER},g" \
@@ -85,13 +92,6 @@ post_install() {
     if [ "$(systemctl is-active systemd-resolved)" = 'inactive' ]; then
         systemctl enable systemd-resolved.service> /dev/null 2>&1;
         systemctl start systemd-resolved.service> /dev/null 2>&1;
-    fi
-
-    # Enable and start systemd-journal-gatewayd
-    if [ "$(systemctl is-active hassio-journal-gatewayd.socket)" = 'inactive' ]; then
-        echo "Enable systemd-journal-gatewayd for homeassistant"
-        systemctl enable hassio-journal-gatewayd.socket> /dev/null 2>&1;
-        systemctl start hassio-journal-gatewayd.socket> /dev/null 2>&1;
     fi
 
     # Enable and start docker
@@ -155,6 +155,13 @@ EOF
 
     adjust_config
 
+    # Enable and start systemd-journal-gatewayd
+    if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
+        echo "Enable systemd-journal-gatewayd"
+        systemctl enable systemd-journal-gatewayd.socket> /dev/null 2>&1;
+        systemctl start systemd-journal-gatewayd.socket> /dev/null 2>&1;
+    fi
+
     systemctl enable hassio-apparmor.service > /dev/null 2>&1;
     systemctl start hassio-apparmor.service
 
@@ -169,9 +176,9 @@ EOF
             echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
             echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
         fi
-    elif [ -f /boot/cmdline.txt ]
+    elif [ -f /boot/firmware/cmdline.txt ]
     then
-        if ! grep -q "systemd.unified_cgroup_hierarchy=false" /boot/cmdline.txt; then
+        if ! grep -q "systemd.unified_cgroup_hierarchy=false" /boot/firmware/cmdline.txt; then
             echo
             echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
             echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
@@ -200,13 +207,13 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    # Enable and start systemd-journal-gatewayd
-    if [ "$(systemctl is-active hassio-journal-gatewayd.socket)" = 'inactive' ]; then
-        echo "Enable systemd-journal-gatewayd for homeassistant"
-        systemctl enable hassio-journal-gatewayd.socket> /dev/null 2>&1;
-        systemctl start hassio-journal-gatewayd.socket> /dev/null 2>&1;
-    fi
     adjust_config
+    # Enable and start systemd-journal-gatewayd
+    if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
+        echo "Enable systemd-journal-gatewayd"
+        systemctl enable systemd-journal-gatewayd.socket> /dev/null 2>&1;
+        systemctl start systemd-journal-gatewayd.socket> /dev/null 2>&1;
+    fi
     systemctl start hassio-apparmor.service
     systemctl start hassio-supervisor.service
 }
