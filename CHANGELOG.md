@@ -5,6 +5,39 @@ This project adheres to [Semantic Versioning](https://semver.org/) since version
 
 ## [Unreleased]
 
+## [13.8.1] - 2022-09-23
+### Fixed
+- `EventDispatch` was missing new event names.
+
+## [13.8.0] - 2022-09-22
+### Added
+- Ported SDL2 joystick handing as `tcod.sdl.joystick`.
+- New joystick related events.
+
+### Changed
+- Using `libtcod 1.22.3`.
+- Bundle `SDL 2.24.0` on Windows and MacOS.
+
+### Deprecated
+- Renderers other than `tcod.RENDERER_SDL2` are now discouraged.
+
+### Fixed
+- Fixed double present bug in non-context flush functions.
+  This was affecting performance and also caused a screen flicker whenever the global fade color was active.
+- Fixed the parsing of SDL 2.24.0 headers on Windows.
+
+## [13.7.0] - 2022-08-07
+### Added
+- You can new use `SDLConsoleRender.atlas` to access the `SDLTilesetAtlas` used to create it.
+  [#121](https://github.com/libtcod/python-tcod/issues/121)
+
+### Fixed
+- Fixed the parsing of SDL 2.0.22 headers.  Specifically `SDL_FLT_EPSILON`.
+
+## [13.6.2] - 2022-05-02
+### Fixed
+- SDL renderers were ignoring tiles where only the background red channel was changed.
+
 ## [13.6.1] - 2022-03-29
 ### Changed
 - The SDL2 renderer has had a major performance update when compiled with SDL 2.0.18.

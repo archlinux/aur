@@ -5,7 +5,7 @@
 ## Cannot use libtcod as dependency; statically linked
 
 pkgname=python-tcod
-pkgver=13.7.0
+pkgver=13.8.1
 pkgrel=1
 pkgdesc='High-performance Python port of libtcod'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
 changelog=CHANGELOG.md
 source=(
 	"$pkgname::git+$url#tag=$pkgver?signed"
-	'libtcod::git+https://github.com/libtcod/libtcod#tag=1.21.0?signed')
+	'libtcod::git+https://github.com/libtcod/libtcod#tag=1.22.3?signed')
 sha256sums=('SKIP'
             'SKIP')
 validpgpkeys=('9EF1E80F3817BC043097A7C15814977902B194CC') # Kyle Benesch @ GitHub
@@ -28,11 +28,12 @@ prepare() {
 	git submodule init
 	git config submodule.libtcod.url "$srcdir/libtcod"
 	git submodule update
+	sed -i '/setuptools/s/==/>=/' pyproject.toml requirements.txt
 }
 
 build() {
 	cd "$pkgname"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	make -C docs man
 }
 
