@@ -1,5 +1,5 @@
 pkgbase = siyuan-appimage
-	pkgdesc = The next generation PKM system, your digital garden
+	pkgdesc = A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG
 	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://b3log.org/siyuan

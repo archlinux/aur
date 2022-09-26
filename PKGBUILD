@@ -3,7 +3,7 @@
 pkgname=siyuan-appimage
 pkgver=2.2.1
 pkgrel=1
-pkgdesc="The next generation PKM system, your digital garden"
+pkgdesc="A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
 license=("AGPL3")
