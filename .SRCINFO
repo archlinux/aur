@@ -1,17 +1,17 @@
 pkgbase = phpunit
 	pkgdesc = PHPUnit is a programmer-oriented testing framework for PHP.
-	pkgver = 9.5.24
+	pkgver = 9.5.25
 	pkgrel = 1
 	url = https://phpunit.de
 	install = phpunit.install
 	arch = any
 	license = BSD
 	depends = php>=7.0.0
-	source = https://phar.phpunit.de/phpunit-9.5.24.phar
-	source = https://phar.phpunit.de/phpunit-9.5.24.phar.asc
-	source = LICENSE-9.5.24::https://raw.githubusercontent.com/sebastianbergmann/phpunit/9.5.24/LICENSE
+	source = https://phar.phpunit.de/phpunit-9.5.25.phar
+	source = https://phar.phpunit.de/phpunit-9.5.25.phar.asc
+	source = LICENSE-9.5.25::https://raw.githubusercontent.com/sebastianbergmann/phpunit/9.5.25/LICENSE
 	validpgpkeys = D8406D0D82947747293778314AA394086372C20A
-	sha256sums = c6ea563d53fb64192d163c11fa7dd25fbca2ba638873138710451f58304289fc
+	sha256sums = 9b17aaed7c447841dab0ec12c380071f9ab43dd1e4ee9fbc319dd47282a2b4be
 	sha256sums = SKIP
 	sha256sums = c97186cfefa783568a49feaef88405390b9763def6af1b5a8c06e4f6a3113eb2
 
