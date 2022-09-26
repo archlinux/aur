@@ -3,12 +3,12 @@
 _pkgbase=i915-sriov-dkms
 pkgname=i915-sriov-dkms-git
 pkgver=5.15.49
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
 url="https://github.com/strongtz/i915-sriov-dkms"
 license=('GPL2')
-depends=('dkms')
+depends=('dkms' 'linux-headers')
 makedepends=('git')
 conflicts=("${_pkgbase}")
 install=${pkgname}.install
