@@ -1,6 +1,6 @@
 pkgbase = pomodoro
 	pkgdesc = Time tool.
-	pkgver = r16.6a7cbb5
+	pkgver = r22.41b74d5
 	pkgrel = 1
 	url = http://samuellando.com
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = pomodoro
 	makedepends = git
 	provides = pomodoro
 	conflicts = pomodoro
-	source = pomodoro::git+https://github.com/samuellando/pomodoro.git
+	source = pomodoro::git+https://github.com/samuellando/pomodoro.git#commit=41b74d5fc6f002bb87e2a69f36407a40662cd3cc
 	md5sums = SKIP
 
 pkgname = pomodoro
-

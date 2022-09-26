@@ -1,6 +1,6 @@
 # Maintainer: Samuel Lando samuel.lando@aol.com
 pkgname=pomodoro
-pkgver=r16.6a7cbb5
+pkgver=r22.41b74d5
 pkgrel=1
 pkgdesc="Time tool."
 arch=('any')
@@ -10,7 +10,8 @@ makedepends=('git')
 optdepends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname::git+https://github.com/samuellando/pomodoro.git")
+_commit="41b74d5fc6f002bb87e2a69f36407a40662cd3cc"
+source=("$pkgname::git+https://github.com/samuellando/pomodoro.git#commit=${_commit}")
 md5sums=('SKIP')
 
 pkgver() {
