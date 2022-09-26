@@ -2,15 +2,15 @@
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=qt5gtk2
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="GTK+2.0 integration plugins for Qt5"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://bitbucket.org/trialuser02/${pkgname}"
 license=('GPL')
 depends=('qt5-base')
 source=("${url}/downloads/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('8e8be7d8ab5d816eeb62b662b1a795f467d91cfe6ff623965acd1cbfc1b51fe7')
+sha256sums=('90157247862b7239b9a062f3b27d67fcb79210a7557abb9099db22d98c0f34aa')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

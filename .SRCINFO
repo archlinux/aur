@@ -1,14 +1,12 @@
 pkgbase = qt5gtk2
 	pkgdesc = GTK+2.0 integration plugins for Qt5
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://bitbucket.org/trialuser02/qt5gtk2
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = qt5-base
-	source = https://bitbucket.org/trialuser02/qt5gtk2/downloads/qt5gtk2-0.7.tar.bz2
-	sha256sums = 8e8be7d8ab5d816eeb62b662b1a795f467d91cfe6ff623965acd1cbfc1b51fe7
+	source = https://bitbucket.org/trialuser02/qt5gtk2/downloads/qt5gtk2-0.8.tar.bz2
+	sha256sums = 90157247862b7239b9a062f3b27d67fcb79210a7557abb9099db22d98c0f34aa
 
 pkgname = qt5gtk2
-
