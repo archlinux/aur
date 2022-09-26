@@ -24,6 +24,12 @@ prepare() {
   sed -i "s|NOT _paraview_add_plugin_XML_DOCUMENTATION|FALSE|g" CMake/ParaViewPlugin.cmake
   # https://gitlab.kitware.com/paraview/paraview/-/issues/21442
   curl -L https://github.com/sandialabs/seacas/commit/5e1b1918.patch | patch -p5 -d VTK/ThirdParty/exodusII/vtkexodusII || true
+  # plot fixes
+  curl -L https://gitlab.kitware.com/paraview/paraview/-/merge_requests/5616.patch | patch -p1
+  curl -L https://gitlab.kitware.com/paraview/paraview/-/commit/21389980b7183439a1b193a03fc0fed6915bcb44.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/9227.patch | patch -p1 -d VTK
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/9228.patch | patch -p1 -d VTK
+  sed -i '28i#include "vtkDataSetAttributes.h"' VTK/Charts/Core/vtkScatterPlotMatrix.cxx
 }
 
 build() {
