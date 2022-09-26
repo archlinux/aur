@@ -16,5 +16,5 @@ pkgver() {
 
 package() {
     cd "$pkgname"
-    install -Dm755 ps-lookup "$pkgdir/usr/bin"
+    install -Dm755 ps-lookup "$pkgdir/bin"
 }
