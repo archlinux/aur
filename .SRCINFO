@@ -1,6 +1,6 @@
 pkgbase = r-golem
 	pkgdesc = A Framework for Robust Shiny Applications
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=golem
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-golem
 	optdepends = r-stringr
 	optdepends = r-tools
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/golem_0.3.3.tar.gz
-	sha256sums = 9ea921ca108d7ac9a2b21cec29e6ec6e176a7fda49654d0a0fcd7a7d68f3fc2c
+	source = https://cran.r-project.org/src/contrib/golem_0.3.4.tar.gz
+	sha256sums = d1504ab10f5fc46074e4f99fd6a06a35faa613f65c49c7301518d12d233f7456
 
 pkgname = r-golem
