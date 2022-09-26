@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.0.48
+pkgver=7.1.0.49
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -25,7 +25,7 @@ makedepends=(
         'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
         'zstd' 'chrpath' 'xorgproto'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-        'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'gperftools' 'libraw'
+        'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl' 'highway'
@@ -34,7 +34,7 @@ makedepends=(
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('eb2d4dc3cc9fd3d4686aa64562177ca5067b1d40bcb6ec75fa1003eaf8c37f4e'
+sha256sums=('ff55aabc66bb1e110979acc526287185188541ea265e796c2e4b1cb2d81b4ecf'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -67,7 +67,7 @@ build() {
         --with-perl \
         --with-perl-options='INSTALLDIRS=vendor' \
         --without-jemalloc \
-        --with-tcmalloc \
+        --without-tcmalloc \
         --with-umem \
         --with-bzlib \
         --with-x \
@@ -123,7 +123,7 @@ package_imagemagick-full() {
     depends=(
         # official repositories:
             'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-            'libx11' 'bzip2' 'zlib' 'libltdl' 'gperftools' 'djvulibre' 'libraw'
+            'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
