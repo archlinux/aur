@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -89,7 +89,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '070-ffmpeg-fix-v4l2-memory-leak.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/30aa0c3f4873a92c5e3da8ba8cf030de56bf4cf7'
         'LICENSE')
-sha256sums=('95bf3ff8c496511e71e958fb249e663c8c9c3de583c5bebc0f5a9745abbc0435'
+sha256sums=('619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc'
             'SKIP'
             '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
             'b1d68f626168f2409a4b0987acf5b208e7ced2ddab49b11990a10f458d377e9a'
