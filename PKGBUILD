@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-adwaita-icon-theme
-pkgver=42.0
+pkgver=43
 pkgrel=1
 pkgdesc="Adwaita icon theme (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
 depends=('mingw-w64-hicolor-icon-theme')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/adwaita-icon-theme/${pkgver%%.*}/adwaita-icon-theme-${pkgver}.tar.xz")
-sha256sums=('5e85b5adc8dee666900fcaf271ba717f7dcb9d0a03d96dae08f9cbd27e18b1e0')
+sha256sums=('2e3ac77d32a6aa5554155df37e8f0a0dd54fc5a65fd721e88d505f970da32ec6')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
