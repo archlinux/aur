@@ -1,7 +1,7 @@
 # Maintainer: Liam Tölke <liamtoelke@gmail.com>
 
 pkgname=osu-tracker-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Statistics tracker for osu!"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   "osu-tracker"
 )
 noextract=("osu-tracker-$pkgver.AppImage")
-sha256sums=('8d4f82b3509bef179898d3d512b31349106d55f1d5d852b0d192d8c5c63cfba4'
+sha256sums=('c7842296df294cd07edbae70cb431684040c802bff54f77f52b94408681293f6'
             '5ca041d9863fd0d2bb7c760ea65c4adba76242d221ed042a8d477ab843b94b84'
             '7fbaabf8f0106f727c4ffe508592f0e59fe57c31ca3e5ce9921a32495fa5677e'
             'dbb4a0b56353da6e4d676293e5807ca078b63d919226c2cf03bd3e8f2224feeb'
