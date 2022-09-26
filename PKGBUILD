@@ -2,7 +2,7 @@
 
 pkgname=opensuperclone-git
 _pkgname=OpenSuperClone
-pkgver=r23.1426035
+pkgver=r26.f8ee02f
 pkgrel=1
 pkgdesc="Fork of HDDSuperClone"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("git+https://github.com/ISpillMyDrink/OpenSuperClone.git"
 	"fix-paths.patch"
 	"gtk3-build.patch")
 sha512sums=('SKIP'
-            '7e0aaa75a092a8a0f8d172cb8e28b5b60d377540b8a6bba5e19abfd3bdf0ac12c67b009d5ab20772d7177b52261047fb45b811a3a7b3073d9cab7835cd59fa76'
+            '6d5aa44b62b24936c1370db08c293389c75f731f21af3c9139a522441a046ad0aa9c6728e4224fdc7ce273c6a19f16d1ea1d813ffbc6003da189e7149e2fe14c'
             '5bdf87cbe58cd930aec94833612e6cde8249c74fe9457028fe4c5fb88375a98c852930654bb473d8441f762b15e69f0b2b1155df51fac06a20250c9f3a1fc2ae')
 
 pkgver() {

@@ -43,7 +43,7 @@ index b178357..313ae26 100644
  
  @item -i @var{spaces}
 diff --git a/src/clone_gui2.c b/src/clone_gui2.c
-index 3cefba7..a5eefa2 100644
+index 0d77349..fa51603 100644
 --- a/src/clone_gui2.c
 +++ b/src/clone_gui2.c
 @@ -1318,9 +1318,9 @@ void import_language_file_ccc(void)
@@ -58,7 +58,7 @@ index 3cefba7..a5eefa2 100644
      g_print ("found installed languages\n");
    }
    else if ( access( "Language/English", F_OK ) == 0 )
-@@ -5901,7 +5901,7 @@ void help_html_ccc(void)
+@@ -5886,7 +5886,7 @@ void help_html_ccc(void)
    if (pid == 0)
    {
      // make sure this exits and does not return
@@ -67,7 +67,7 @@ index 3cefba7..a5eefa2 100644
      system("sudo -E -H -P -u $(who | head -1 | awk '{print $1}') xdg-open /tmp/hddsuperclone.html > /dev/null 2>&1");
      exit(0);
    }
-@@ -5919,7 +5919,7 @@ void help_text_ccc(void)
+@@ -5904,7 +5904,7 @@ void help_text_ccc(void)
    if (pid == 0)
    {
      // make sure this exits and does not return
@@ -77,7 +77,7 @@ index 3cefba7..a5eefa2 100644
      exit(0);
    }
 diff --git a/src/clone_gui3.c b/src/clone_gui3.c
-index ca1c9bf..012dd19 100644
+index 0da9338..6c45732 100644
 --- a/src/clone_gui3.c
 +++ b/src/clone_gui3.c
 @@ -1309,9 +1309,9 @@ void import_language_file_ccc(void)
@@ -92,7 +92,7 @@ index ca1c9bf..012dd19 100644
      g_print ("found installed languages\n");
    }
    else if ( access( "Language/English", F_OK ) == 0 )
-@@ -5863,7 +5863,7 @@ void help_html_ccc(void)
+@@ -5848,7 +5848,7 @@ void help_html_ccc(void)
    if (pid == 0)
    {
      // make sure this exits and does not return
@@ -101,7 +101,7 @@ index ca1c9bf..012dd19 100644
      system("sudo -E -H -P -u $(who | head -1 | awk '{print $1}') xdg-open /tmp/hddsuperclone.html > /dev/null 2>&1");
      exit(0);
    }
-@@ -5881,7 +5881,7 @@ void help_text_ccc(void)
+@@ -5866,7 +5866,7 @@ void help_text_ccc(void)
    if (pid == 0)
    {
      // make sure this exits and does not return
@@ -111,10 +111,10 @@ index ca1c9bf..012dd19 100644
      exit(0);
    }
 diff --git a/src/hddscviewer2.c b/src/hddscviewer2.c
-index fc171fa..9e7541c 100644
+index 3f0330b..05af57c 100644
 --- a/src/hddscviewer2.c
 +++ b/src/hddscviewer2.c
-@@ -3635,9 +3635,9 @@ void import_language_file(void)
+@@ -3632,9 +3632,9 @@ void import_language_file(void)
                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                          GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
                                          NULL);
@@ -127,10 +127,10 @@ index fc171fa..9e7541c 100644
    }
    else if ( access( "Language/English", F_OK ) == 0 )
 diff --git a/src/hddscviewer3.c b/src/hddscviewer3.c
-index b080de7..47e50d2 100644
+index 5b29b39..8f23f89 100644
 --- a/src/hddscviewer3.c
 +++ b/src/hddscviewer3.c
-@@ -2603,9 +2603,9 @@ void import_language_file(void)
+@@ -2600,9 +2600,9 @@ void import_language_file(void)
                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                          GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
                                          NULL);
@@ -142,46 +142,19 @@ index b080de7..47e50d2 100644
      g_print ("found installed languages\n");
    }
    else if ( access( "Language/English", F_OK ) == 0 )
-diff --git a/src/hddsuperclone.c b/src/hddsuperclone.c
-index d8a9651..d9fcf27 100644
---- a/src/hddsuperclone.c
-+++ b/src/hddsuperclone.c
-@@ -18906,14 +18906,14 @@ int install_license_ccc (void)
-   }
-   memcpy (temp_data + 14, &checksum, 2);
- 
--  DIR* dir = opendir("/usr/local/etc");
-+  DIR* dir = opendir("/etc");
-   if (dir)
-   {
-     closedir(dir);
-   }
-   else
-   {
--    system("mkdir /usr/local/etc");
-+    system("mkdir /etc");
-   }
-   FILE *writefile = fopen(license_file_name_ccc, "wb");
-   if (writefile == NULL)
 diff --git a/src/hddsuperclone.h b/src/hddsuperclone.h
-index 952b49b..f427465 100644
+index 8c07a3f..351c38d 100644
 --- a/src/hddsuperclone.h
 +++ b/src/hddsuperclone.h
-@@ -512,10 +512,10 @@ char *get_smart_attribute_name_ccc(int id);
+@@ -503,7 +503,7 @@ char *get_smart_attribute_name_ccc(int id);
  
  
- unsigned char ccc_mac_address_ccc[6];
+ 
 -char *install_directory_ccc = "/usr/local/bin/";
--//char *license_file_name_ccc = "/usr/local/etc/hddsuperclone.lic";
--char *license_file_name_ccc = "/usr/local/etc/dhsdpurelceno.cil";
--char *time_check_file_name_ccc = "/usr/local/etc/dhsdpurelceno.kct";
 +char *install_directory_ccc = "/usr/bin/";
-+//char *license_file_name_ccc = "/etc/hddsuperclone.lic";
-+char *license_file_name_ccc = "/etc/dhsdpurelceno.cil";
-+char *time_check_file_name_ccc = "/etc/dhsdpurelceno.kct";
- long long blacklist_check_interval_ccc = 128000;    // 128000 seconds is about 1 1/2 day
  bool path_fail_ccc = false;
  char start_working_directory_ccc[PATH_MAX];
+ char called_name_ccc[PATH_MAX];
 diff --git a/src/tool.h b/src/tool.h
 index dc2f731..21281f2 100644
 --- a/src/tool.h
