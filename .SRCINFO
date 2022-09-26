@@ -1,0 +1,13 @@
+pkgbase = nextaw
+	pkgdesc = Athena Widgets with NEXTSTEP appearance
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://siag.nu/pub/neXtaw/
+	arch = x86_64
+	license = MIT
+	depends = libxt
+	depends = libxmu
+	source = https://siag.nu/pub/neXtaw/neXtaw-0.15.1.tar.gz
+	sha256sums = 7cfe6706b9a76620389e04a7a87f06786c8a6606829c3157c3e9e45a805bb584
+
+pkgname = nextaw
