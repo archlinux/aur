@@ -190,6 +190,7 @@
     "username": "",
     "password": "",
     "sslmode": 0,
+    "disable_sni": false,
     "root_cert": "",
     "client_cert": "",
     "client_key": "",
@@ -235,6 +236,11 @@
     "create_default_admin": false,
     "naming_rules": 1,
     "is_shared": 0,
+    "node": {
+      "host": "",
+      "port": 0,
+      "proto": "http"
+    },
     "backups_path": "/srv/sftpgo/backups"
   },
   "httpd": {
@@ -244,6 +250,7 @@
         "address": "",
         "enable_web_admin": true,
         "enable_web_client": true,
+        "enable_rest_api": true,
         "enabled_login_methods": 0,
         "enable_https": false,
         "certificate_file": "",
