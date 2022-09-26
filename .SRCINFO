@@ -1,6 +1,6 @@
 pkgbase = zwcad-bin
 	pkgdesc = ZWSOFT研发的二维CAD软件，可满足看图、审图、打印工作需要
-	pkgver = 23.0.3.4
+	pkgver = 23.1.3.4
 	pkgrel = 1
 	epoch = 1
 	url = https://www.zwcad.com
@@ -19,9 +19,9 @@ pkgbase = zwcad-bin
 	options = !strip
 	source = zwcad.sh
 	sha512sums = 3f978fc46a39c8e65551a8e581f234526183b6b811b1e857fb17903549b10442b676713c342880d144a47fc5da76882152901533abd898a24588b7e9bbbc207c
-	source_x86_64 = zwcad-23.0.3.4-x86_64.deb::https://download.zwcad.com/zwcad/cad_linux/2023/Official/zwcad2023_23.0.3.4_chs_amd64.deb
-	sha512sums_x86_64 = 3d124586fff017d624ae3e6dac5c08bc7cc527930def4cf0c06d410904fa60599874f56a4679d7ec7da454bc85c679f8af9e207004be52a1d6617cb494a173af
-	source_aarch64 = zwcad-23.0.3.4-aarch64.deb::https://download.zwcad.com/zwcad/cad_linux/2023/Official/zwcad2023_23.0.3.4_chs_arm64.deb
-	sha512sums_aarch64 = 507df24ab0a9772a13944e3d1e6a8f8c13e5188ff07c3becfe848b03506f4db48cb0f91c45d1ec5a4d4f15699d7ce563e1be8af3031d2df7d8e0cfc324e1cbcc
+	source_x86_64 = zwcad-23.1.3.4-x86_64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/2023/SP1/zwcad2023_23.1.3.4_amd64.deb?auth_key=1664192656-0-0-eb3fc495266d480071161e6b7ac270f4
+	sha512sums_x86_64 = 7a3e85de6f61023ce91664e8ce795dd69e640f2a9a636c15e161c34c1bdf8dc4a0c660c544ab951087d9a609e1dbcd70456bd70002eef4820a3aae6ad6eb2374
+	source_aarch64 = zwcad-23.1.3.4-aarch64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/2023/SP1/zwcad2023_23.1.3.4_arm64.deb?auth_key=1664192656-0-0-b2587d6066ca3b7ac1940cf4f135a7aa
+	sha512sums_aarch64 = 355ce8181fef73ca60bcd86941f2c32d3bcd3397e42a89dbd0df5d96621830fdeffc6e761b6dadb9c2338df7c60c25354f113c6253ff679817b712cde5aeb35c
 
 pkgname = zwcad-bin
