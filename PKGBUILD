@@ -2,7 +2,7 @@
 # Contributor: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=bart
-pkgver=0.7.00
+pkgver=0.8.00
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gcc>=11.2.0' 'openblas-lapack' 'fftw' 'libpng')
 optdepends=('octave' 'python3')
 source=("https://github.com/mrirecon/bart/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('53eec57f1e81d7d8cecfcca4828b28fedb8ae8fd1e38de652b9c8263309c74726d36e18ec683d511e11047d711903541ce1784051f79b9e00cc07ee29381c642')
+sha512sums=('2c8ebdbe6aca004debdf2ea977e07d4624612cee07f66946fd7b9608144d74ae3bad9e68ca158bec61b3f21f104df5f63457ed88423ed7bb74fd506f47532591')
 conflicts=('bart-git')
 
 build() {
