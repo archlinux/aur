@@ -1,0 +1,18 @@
+pkgbase = pam-python-git
+	pkgdesc = Python for PAM (py3 fork)
+	pkgver = r31.9641aa5
+	pkgrel = 1
+	url = https://github.com/castlabs/pam-python
+	arch = x86_64
+	license = GNU Affero General Public License
+	makedepends = python-sphinx
+	makedepends = make
+	makedepends = git
+	depends = pam
+	depends = python
+	provides = pam-python
+	conflicts = pam-python
+	source = pam-python::git+https://github.com/castlabs/pam-python.git
+	sha256sums = SKIP
+
+pkgname = pam-python-git
