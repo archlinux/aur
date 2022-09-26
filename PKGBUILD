@@ -2,7 +2,7 @@
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-_ver=2.2.0-945
+_ver=2.2.0-947
 pkgver=${_ver//-/_}
 pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
@@ -12,18 +12,8 @@ arch=("x86_64")
 depends=("dotnet-host>=3.1" "dotnet-runtime>=3.1")
 makedepends=("git" "cmake" "clang" "dotnet-sdk>=3.1")
 optdepends=()
-source=(
-    "$pkgname-$_ver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_ver.tar.gz"
-)
-sha256sums=(
-    "36c3b153b4c903821f6c9117c7a20646f6449ac62981737044fe46eec1c70144"
-)
-
-prepare() {
-  # Add missing include
-  cd "$pkgname-$_ver"/src/debugger/
-  echo -e "#include <limits>\n$(cat frames.cpp)" > frames.cpp
-}
+source=("$pkgname-$_ver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_ver.tar.gz")
+sha256sums=("bc9fb1d99fecc5c7deccd4a11d8d3100c907c69e044bf4be27e48641911079fd")
 
 build() {
   cd "$pkgname-$_ver"
