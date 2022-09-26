@@ -33,7 +33,7 @@ package_python-sphinx-thebe() {
     depends=('python-sphinx>=3.6')
     optdepends=('python-myst-parser: sphinx'
                 'python-sphinx-book-theme'
-                'python-jupyter_sphinx'
+                'python-jupyter-sphinx'
                 'python-sphinx-panels')
 #               'python-sphinx-thebe-doc: Documentation')
     cd ${srcdir}/${_pyname}-${pkgver}

@@ -14,5 +14,5 @@ pkgname = python-sphinx-thebe
 	depends = python-sphinx>=3.6
 	optdepends = python-myst-parser: sphinx
 	optdepends = python-sphinx-book-theme
-	optdepends = python-jupyter_sphinx
+	optdepends = python-jupyter-sphinx
 	optdepends = python-sphinx-panels
