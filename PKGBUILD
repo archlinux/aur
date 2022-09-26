@@ -6,7 +6,7 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
 pkgname=archiso-git
-pkgver=63.r7.g376e928
+pkgver=67.r0.gfbc7224
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
@@ -17,7 +17,8 @@ makedepends=('git')
 checkdepends=('shellcheck')
 optdepends=(
   'edk2-ovmf: for emulating UEFI with run_archiso'
-  'openssl: for codesigning support when building netboot artifacts'
+  'gnupg: for PGP signature verification of rootfs over PXE'
+  'openssl: for CMS signature verification of PXE artifacts and rootfs over PXE'
   'qemu-desktop: for run_archiso'
 )
 conflicts=("${pkgname%-git}")
@@ -25,7 +26,7 @@ provides=("${pkgname%-git}=${pkgver}")
 source=("git+https://gitlab.archlinux.org/archlinux/${pkgname%-git}.git?signed")
 sha512sums=('SKIP')
 validpgpkeys=(
-  'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
+  '991F6E3F0765CF6295888586139B09DA5BF0D338' # David Runge <dvzrv@archlinux.org>
   'BB8E6F1B81CF0BB301D74D1CBF425A01E68B38EF' # nl6720 <nl6720@gmail.com>
 )
 
