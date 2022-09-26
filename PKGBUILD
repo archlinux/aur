@@ -20,13 +20,13 @@ pkgver() {
 }
 
 prepare() {
-    export GOPATH="$srcdir/gopath"
     cd "$srcdir/$pkgname"
     mkdir -p build/
 }
 
 build() {
     cd "$srcdir/$pkgname"
+    export GOPATH="$srcdir/gopath"
     export CGO_CPPFLAGS="$CPPFLAGS"                                                                                                         
     export CGO_CFLAGS="$CFLAGS"                                                                                                             
     export CGO_CXXFLAGS="$CXXFLAGS"                                                                                                         
