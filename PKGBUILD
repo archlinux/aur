@@ -7,7 +7,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=8.7.0
+pkgver=8.8.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('92b87eecfcca60381c61aa9e056cff0d2326ef26c3e36c884643405c422973df')
+sha256sums=('81974b15b469f574c9a9bb194a968d96e3a7d819d64a980a914ea823dd13f28c')
 changelog=changelog.txt
 
 prepare() {
@@ -42,13 +42,14 @@ prepare() {
   local sharedUsr=usr/share
   local sharedPeaZip="${sharedUsr}/peazip"
   # Windows related stuff
-  rm "${sharedPeaZip}/readme/readme_Windows.txt"
   rm "${sharedPeaZip}/batch/"*.bat
   rm -r "${sharedPeaZip}/batch/SendTo"
   rm -r "${sharedPeaZip}/batch/Windows 11 mini context menu"
+  rm -r "${sharedPeaZip}/lang-wincontext"
+  rm "${sharedPeaZip}/readme/readme_Windows.txt"
   # macOS related stuff
-  rm "${sharedPeaZip}/readme/readme_macOS.txt"
   rm -r "${sharedPeaZip}/batch/macOS service menus"
+  rm "${sharedPeaZip}/readme/readme_macOS.txt"
   # KDE 3? You must be kidding.
   rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror"
   # KDE 4 is not supported on Arch since 2015-12-12 (https://archlinux.org/news/dropping-plasma-4/)
