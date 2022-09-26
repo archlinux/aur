@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rcdk
-_pkgver=3.6.0
+_pkgver=3.7.0
 pkgname=r-${_pkgname,,}
-pkgver=3.6.0
-pkgrel=4
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Interface to the 'CDK' Libraries"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9dd1978af1f8a930ab1ecad123395b1c31f58669d2e771951e9766280009716c')
+sha256sums=('28bc63cad0e22c9c725bea00e9af573e4bc634590ec2672a941ce85e8c761d1c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
