@@ -3,26 +3,21 @@
 # Contributor: dimino jeremie <jeremie@dimino.org>
 
 pkgname=proofgeneral
-pkgver=4.4
+pkgver=4.5
 pkgrel=3
 pkgdesc='Generic interface for proof assistants.'
 arch=('any')
 license=('GPL')
 url='https://proofgeneral.github.io/'
-depends=('emacs') # >=24.3, but the version constraint causes issues with emacs-nox
+depends=('emacs>=25.2')
 install="${pkgname}.install"
-source=("https://github.com/ProofGeneral/PG/archive/v${pkgver}.tar.gz")
+source=("https://github.com/ProofGeneral/PG/archive/refs/tags/v${pkgver}.tar.gz")
 replaces=('proofgeneral-nox')
 
-md5sums=('4a80e31f88cb22d7caa6f28ba83dcc06')
-sha256sums=('1ba236d81768a87afa0287f49d4b2223097bc61d180468cbd997d46ab6132e7e')
-sha512sums=('8be7f78b61a225fa4770698bbbb251424a0afe093efc3229f74f3a764317dc8cc00a72cb29e751f755dc5fdab59983906c9185f7828a1644a87d160265f12061')
+sha512sums=('ab2eed43053e3b6749e840a8d742058eaa91bfff7edbe12ea67bc492ffab07e1d77cf6a7772cb8c42ac73cae2cce65b48898b1cd10a77b906089768f8055b366')
 
 build() {
   cd "$srcdir/PG-${pkgver}"
-
-  make clean
-  chmod +x isar/isartags
 
   make
 }
@@ -30,5 +25,5 @@ build() {
 package() {
   cd "$srcdir/PG-${pkgver}"
 
-  make PREFIX=${pkgdir}/usr install -j1
+  make PREFIX=${pkgdir}/usr install
 }
