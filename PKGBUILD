@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=osfr
-_pkgver=0.2.8
+_pkgver=0.2.9
 pkgname=r-${_pkgname,,}
-pkgver=0.2.8
-pkgrel=4
+pkgver=0.2.9
+pkgrel=1
 pkgdesc="Interface to the 'Open Science Framework' ('OSF')"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bd0b978952d9780b86ed7b551d8b51f82a1cd5e7ebc548f57313e5d6cc44f1fb')
+sha256sums=('ac78ff916bbcf0eec13bbb23d7555537c49a6b54763fed229f4bdc48a179733d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

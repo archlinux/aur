@@ -1,7 +1,7 @@
 pkgbase = r-osfr
 	pkgdesc = Interface to the 'Open Science Framework' ('OSF')
-	pkgver = 0.2.8
-	pkgrel = 4
+	pkgver = 0.2.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=osfr
 	arch = any
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = r-osfr
 	optdepends = r-rprojroot
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/osfr_0.2.8.tar.gz
-	sha256sums = bd0b978952d9780b86ed7b551d8b51f82a1cd5e7ebc548f57313e5d6cc44f1fb
+	source = https://cran.r-project.org/src/contrib/osfr_0.2.9.tar.gz
+	sha256sums = ac78ff916bbcf0eec13bbb23d7555537c49a6b54763fed229f4bdc48a179733d
 
 pkgname = r-osfr
