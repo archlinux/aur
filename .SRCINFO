@@ -1,0 +1,11 @@
+pkgbase = yodejs-bin
+	pkgdesc = Fork of Node.js using GUI message loop
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://libyue.com/
+	arch = x86_64
+	license = Custom
+	source = https://github.com/yue/yode/releases/download/v0.9.0/yode-v0.9.0-linux-x64.zip
+	sha256sums = b2d5b8e37cb6ee10b5f78e3358d654350b799c9600a8901f09b49f3e22b41e92
+
+pkgname = yodejs-bin
