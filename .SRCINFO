@@ -1,0 +1,16 @@
+pkgbase = mowitz
+	pkgdesc = Widget library
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://siag.nu/pub/mowitz/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MIT
+	depends = libxpm
+	depends = libxaw
+	depends = nextaw
+	source = https://siag.nu/pub/mowitz/Mowitz-0.3.1.tar.gz
+	sha256sums = 6a4a9b2342becf0dd8ecd65d87ac5f88beee84464d0553e1223b201d94b3dfff
+
+pkgname = mowitz
