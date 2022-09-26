@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GCS
+Comment=GCS (GURPS Character Sheet) is a stand-alone, interactive, character sheet editor that allows you to build characters for the GURPS 4th Edition roleplaying game system.
+Exec=gcs
+Icon=gcs
+Terminal=false
+Type=Application
+Categories=Game;Utility;RolePlaying
+MimeType=application/gcs.adm;application/gcs.adq;application/gcs.eqm;application/gcs.eqp;application/gcs.gcs;application/gcs.gct;application/gcs.not;application/gcs.skl;application/gcs.spl
