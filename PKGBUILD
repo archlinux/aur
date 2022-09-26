@@ -2,13 +2,13 @@
 
 pkgname=sums-git
 pkgver=0.8.r5.g783ef87
-pkgrel=1
+pkgrel=2
 pkgdesc="Sums is a simple GTK postfix calculator that adheres to GNOME's human-interface guidelines"
 arch=('x86_64')
 url="https://gitlab.com/leesonwai/sums"
 license=('GPL3')
 depends=('libadwaita' 'mpfr')
-makedepends=('meson' 'gobject-introspection' 'gobject-introspection-runtime' 'gcc')
+makedepends=('git' 'meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
