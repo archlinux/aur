@@ -1,6 +1,6 @@
 pkgbase = dxvk-async-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)
-	pkgver = 1.9.4.r106.gb42c0725
+	pkgver = 1.10.1.r921.gf1f8d45f
 	pkgrel = 1
 	url = https://github.com/Sporif/dxvk-async.git
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dxvk-async-git
 	depends = lib32-vulkan-icd-loader
 	provides = dxvk
 	provides = d9vk
-	provides = dxvk=1.9.4.r106.gb42c0725
+	provides = dxvk=1.10.1.r921.gf1f8d45f
 	conflicts = d9vk-mingw-git
 	conflicts = d9vk-bin
 	conflicts = d9vk-winelib-git
@@ -32,11 +32,17 @@ pkgbase = dxvk-async-git
 	options = !buildflags
 	options = staticlibs
 	source = git+https://github.com/doitsujin/dxvk.git
+	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://github.com/Sporif/dxvk-async.git
 	source = dxvk.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 92db021e01bc44596dade8c5f326c42a59a9c8766810ed1ebab4c327904f42f8
 
 pkgname = dxvk-async-git
 	arch = x86_64

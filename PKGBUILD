@@ -1,8 +1,9 @@
-# Maintainer: giantdwarf <17hoehbr@gmail.com>
+# Maintainer: Andrius Lukosevicius <niobium93@gmail.com>
+# Contributor: giantdwarf <17hoehbr@gmail.com>
 
 pkgbase=dxvk-async-git
 pkgname=('dxvk-async-git')
-pkgver=1.10.1.r782.g36f523bb
+pkgver=1.10.1.r921.gf1f8d45f
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            '92db021e01bc44596dade8c5f326c42a59a9c8766810ed1ebab4c327904f42f8')
 
 pkgver() {
     cd dxvk
