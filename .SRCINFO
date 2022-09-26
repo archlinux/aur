@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
-	pkgver = 5.1.1
-	pkgrel = 3
+	pkgver = 5.1.2
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -79,7 +79,7 @@ pkgbase = ffmpeg-obs
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = intel-media-sdk: Intel QuickSync support
-	provides = ffmpeg=5.1.1
+	provides = ffmpeg=5.1.2
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -90,7 +90,7 @@ pkgbase = ffmpeg-obs
 	provides = libswscale.so
 	conflicts = ffmpeg
 	options = debug
-	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
+	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=05d6157aab34bc49f23284645a8f34ece870f44d
 	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2022-08-02
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	sha256sums = SKIP

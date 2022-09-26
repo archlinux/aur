@@ -54,8 +54,8 @@ fi
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
-pkgver=5.1.1
-pkgrel=3
+pkgver=5.1.2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -170,7 +170,8 @@ provides=(
 )
 conflicts=(ffmpeg)
 options=('debug')
-_tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
+# 5.1.2 + avcodec/libjxlenc: avoid hard failure with unspecified primaries
+_tag=05d6157aab34bc49f23284645a8f34ece870f44d
 _deps_tag=2022-08-02
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
