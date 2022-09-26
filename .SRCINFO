@@ -1,13 +1,13 @@
 pkgbase = proofgeneral-git
 	pkgdesc = Generic interface for proof assistants
-	pkgver = 4.4.r9297.ec4f9bad
-	pkgrel = 2
+	pkgver = 4.5.r9313.c304d73e
+	pkgrel = 1
 	url = https://github.com/ProofGeneral/PG
 	install = proofgeneral-git.install
 	arch = x86_64
 	license = GPLv3+
 	makedepends = git
-	depends = emacs>=25.1
+	depends = emacs>=25.2
 	provides = proofgeneral
 	conflicts = proofgeneral
 	source = proofgeneral::git+https://github.com/ProofGeneral/PG.git

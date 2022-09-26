@@ -3,12 +3,12 @@
 
 _pkgname=proofgeneral
 pkgname="$_pkgname-git"
-pkgver=4.4.r9297.ec4f9bad
-pkgrel=2
+pkgver=4.5.r9313.c304d73e
+pkgrel=1
 pkgdesc="Generic interface for proof assistants"
 arch=($CARCH)
 license=('GPLv3+')
-depends=('emacs>=25.1')
+depends=('emacs>=25.2')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -31,10 +31,15 @@ pkgver() {
   printf "%s.r%s.%s" "$TAG" "$REVISION" "$COMMIT"
 }
 
+build() {
+  cd "$srcdir/${_pkgname}"
+
+  make
+}
 
 package() {
   cd "$srcdir/${_pkgname}"
-  make
+  
   for file in $(find . -type f -name '*.el')
   do
       install -Dm644 "${file}" "${pkgdir}/usr/share/emacs/site-lisp/${_pkgname}/${file}"
