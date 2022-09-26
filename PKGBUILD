@@ -35,6 +35,8 @@ check() {
 
 package_python-jupyter_sphinx() {
     depends=('python-sphinx>=2' 'python-ipywidgets>=7.0.0' 'jupyter-nbconvert>=5.5')    #nbformat depend by nbconvert
+    provides=("python-jupyter-sphinx")
+    conflicts=("python-jupyter-sphinx")
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

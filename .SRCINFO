@@ -17,3 +17,5 @@ pkgname = python-jupyter_sphinx
 	depends = python-sphinx>=2
 	depends = python-ipywidgets>=7.0.0
 	depends = jupyter-nbconvert>=5.5
+	provides = python-jupyter-sphinx
+	conflicts = python-jupyter-sphinx
