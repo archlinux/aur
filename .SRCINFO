@@ -1,6 +1,6 @@
 pkgbase = abacus-git
 	pkgdesc = A simple interactive calculator REPL with support for variables, lambdas, and more.
-	pkgver = 1.4.0
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/viktordanov/abacus.git
 	arch = x86_64
