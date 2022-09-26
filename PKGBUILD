@@ -21,7 +21,7 @@ package() {
     # Create necessary directories (to cheat the installer)
     mkdir -p $pkgdir/tmp $pkgdir/opt $pkgdir/etc $pkgdir/usr/share/applications
 
-    # Install the program in the fake root
+    # Use the installer in the fake root
     fakechroot chroot $pkgdir /SeaToolsLinuxX64Installer.run --mode unattended
 
     # Remove installer file
@@ -29,7 +29,7 @@ package() {
 
     # Help the installer finish the unsuccessful operation (mitigating solution)
     cp $pkgdir/opt/SeaTools5/$_pkgname.desktop $pkgdir/usr/share/applications
-    # The shortcut is no need to be executable
+    # No need to be executable
     chmod -x $pkgdir/usr/share/applications/$_pkgname.desktop
     # Remove fake /tmp
     rm -rf $pkgdir/tmp
