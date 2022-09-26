@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rgl
-_pkgver=0.109.6
+_pkgver=0.110.2
 pkgname=r-${_pkgname,,}
-pkgver=0.109.6
+pkgver=0.110.2
 pkgrel=1
 pkgdesc='3D Visualization Using OpenGL'
 arch=('x86_64')
@@ -53,7 +53,7 @@ optdepends=(
   freetype2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f43446334b9470c48233afbe8748c6fc9a54e477d1ebb07262d4cfec44e88ca')
+sha256sums=('da1118c1990ae161a5787960fb22009601d2ee7d39ca9c97c31c70589bce346d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
