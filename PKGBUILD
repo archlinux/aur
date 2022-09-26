@@ -9,7 +9,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=107.0.5300.0
+pkgver=107.0.5304.10
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -35,11 +35,13 @@ depends=(
          'libwebp'
 #          'libvpx'
          'libva'
+         'libcbor'
          'opus'
          'openjpeg2'
          'bluez-libs'
          'libnet'
          'pipewire'
+         'qt5-base'
          )
 makedepends=(
              'gperf'
@@ -391,6 +393,7 @@ _flags=(
         'blink_enable_generated_code_formatting=false'
         'blink_symbol_level=0'
         'use_aura=true'
+        'use_qt=true'
         'use_gtk=true'
         'gtk_version=3'
         'use_gio=false'
