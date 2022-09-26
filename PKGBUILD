@@ -10,12 +10,12 @@ pkgdesc="Multiplatform transparent client-side encryption of your files in the c
 arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
-depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'libxtst' 'libnet' 'libxrender')
+depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'ttf-dejavu' 'libxtst' 'libnet' 'libxrender')
 makedepends=('java-environment>=17' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
-sha256sums=('SKIP'
+sha256sums=('f88aa4b895544b26824bb49c693ada21d0633a7cb9216de56545ef781255f279'
             'SKIP')
 options=('!strip')
 
