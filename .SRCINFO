@@ -1,7 +1,7 @@
 pkgbase = catppuccin-gtk-theme-frappe
 	pkgdesc = Soothing pastel theme for GTK3 - Frappe
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/catppuccin/gtk
 	arch = any
 	license = GPL3

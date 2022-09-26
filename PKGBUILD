@@ -3,7 +3,7 @@
 
 pkgname=catppuccin-gtk-theme-frappe
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Soothing pastel theme for GTK3 - Frappe'
 arch=('any')
 license=('GPL3')
@@ -36,6 +36,12 @@ package() {
         "Catppuccin-Frappe-Grey-hdpi" \
         "Catppuccin-Frappe-Grey-xhdpi" \
         "Catppuccin-Frappe-Grey" \
+        "Catppuccin-Frappe-Peach-hdpi" \
+        "Catppuccin-Frappe-Peach-xhdpi" \
+        "Catppuccin-Frappe-Peach" \
+        "Catppuccin-Frappe-Pink-hdpi" \
+        "Catppuccin-Frappe-Pink-xhdpi" \
+        "Catppuccin-Frappe-Pink" \
         "Catppuccin-Frappe-Purple-hdpi" \
         "Catppuccin-Frappe-Purple-xhdpi" \
         "Catppuccin-Frappe-Purple" \
@@ -48,6 +54,8 @@ package() {
         "Catppuccin-Frappe-Yellow-hdpi" \
         "Catppuccin-Frappe-Yellow-xhdpi" \
         "Catppuccin-Frappe-Yellow" \
+        "Catppuccin-Frappe-hdpi" \
+        "Catppuccin-Frappe-xhdpi" \
         "Catppuccin-Frappe" \
         "$pkgdir/usr/share/themes"
 }
