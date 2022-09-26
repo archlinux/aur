@@ -10,7 +10,12 @@ depends=()
 makedepends=('go>=1.18')
 provides=('dupefi')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('e54a64734ab3950f06b33828d1e99910')
+
+check() {
+  cd "$pkgname"-$pkgver
+  scripts/run_tests.sh
+}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,12 +27,7 @@ build() {
   scripts/build.sh
 }
 
-check() {
-  cd "$pkgname"-$pkgver
-  scripts/run_tests.sh
-}
-
 package() {
-  install -Dm755 "$pkgname"-$pkgver/build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 "$pkgname"-$pkgver/build/dupefi "$pkgdir"/usr/bin/dupefi
 }
 
