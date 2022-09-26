@@ -1,6 +1,7 @@
 # Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 
-pkgname=gnome-shell-extension-duckduckgo-search-provider-git
+_pkgname=gnome-shell-extension-duckduckgo-search-provider
+pkgname=$_pkgname-git
 pkgver=r9.1e87ab1
 pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
@@ -17,10 +18,14 @@ optdepends=(
 source=(git+https://github.com/keithamus/gnome-shell-duckduckgo-search-provider)
 sha256sums=('SKIP')
 
+_pkgdir=gnome-shell-duckduckgo-search-provider
+
 build() {
+  cd $_pkgdir
   make
 }
 
 package() {
+  cd $_pkgdir
   make DESTDIR="$pkgdir" install
 }
