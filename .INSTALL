@@ -162,6 +162,8 @@ EOF
 
     adjust_config
 
+    systemctl daemon-reload
+
     # Enable and start systemd-journal-gatewayd
     if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
         echo "Enable systemd-journal-gatewayd"
@@ -215,6 +217,7 @@ pre_upgrade() {
 ## arg 2:  the old package version
 post_upgrade() {
     adjust_config
+    systemctl daemon-reload
     # Enable and start systemd-journal-gatewayd
     if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'inactive' ]; then
         echo "Enable systemd-journal-gatewayd"
