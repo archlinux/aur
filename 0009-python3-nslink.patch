@@ -1,0 +1,45 @@
+diff -pNaru5 a/nslinkrelease.py b/nslinkrelease.py
+--- a/nslinkrelease.py	2008-04-17 09:58:04.000000000 -0400
++++ b/nslinkrelease.py	2022-09-25 21:07:39.447831425 -0400
+@@ -1,13 +1,13 @@
+-#!/usr/local/bin/python
++#!/usr/bin/python
+ # needs Python 2.0 or newer
+ import sys
+ import os,stat,fcntl
+ import socket,select
+ import struct
+ import re
+-import commands
++import subprocess
+ 
+ def toHex(s):
+     return " ".join([("%02x" % ord(c)) for c in s])
+ 
+ def lookupMajor(driverName):
+@@ -67,11 +67,11 @@ def devRelease(devName):
+     s = os.stat(devName)
+     if not stat.S_ISCHR(s[stat.ST_MODE]):
+         msg = "devRelease: '%s' is not char device" % devName
+         raise msg
+     # os.stat() dosn't return the dev type, so use /usr/sbin/stat
+-    s,o = commands.getstatusoutput("stat "+devName)
++    s,o = subprocess.getstatusoutput("stat "+devName)
+     if s:
+         msg = "devRelease: error running /usr/bin/stat: %d" % s
+         raise msg
+     r = re.compile("Device type: ([0-9]{1,3}),([0-9]{1,3})")
+     m = r.search(o)
+@@ -81,11 +81,11 @@ def devRelease(devName):
+     minor = int(m.group(2))
+     if major != lookupMajor("ttySI"):
+         raise "not nslink device"
+     ctlmajor = lookupMajor("NSLinkctl")
+     t = os.tempnam(None,".nslnkctl")
+-    s,o = commands.getstatusoutput("mknod --mode=600 %s c %d %d" % (t,ctlmajor,0))
++    s,o = subprocess.getstatusoutput("mknod --mode=600 %s c %d %d" % (t,ctlmajor,0))
+     if s:
+         msg = "error running mknod : %s" % o
+         raise msg
+     fd = os.open(t,os.O_RDONLY)
+     os.unlink(t)

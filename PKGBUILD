@@ -25,14 +25,14 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.00'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
 url='http://www.comtrol.com/'
 license=('GPL')
-depends=('glibc' 'openssl' 'python2' 'sed' 'groff' 'tcl' 'tk' 'util-linux') # python is also needed for the firmware updater
+depends=('glibc' 'openssl' 'python3' 'sed' 'groff' 'tcl' 'tk' 'util-linux') # python is also needed for the firmware updater
 optdepends=(
   'gksu: NS-Link Manager GUI'
 )
@@ -53,6 +53,9 @@ source=(
   '0004-kernel-5.12-tty-low_latency.patch'
   '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
   '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0007-service-priority.patch'
+  '0008-python3-firmware.patch'
+  '0009-python3-nslink.patch'
 )
 md5sums=('b59906d80268e69a24c211b398ffd10c'
          'e3ffb36acfdd321c919e44d477f0774a'
@@ -61,7 +64,10 @@ md5sums=('b59906d80268e69a24c211b398ffd10c'
          '7e0659716e30c6e2ff5c16f20aac07be'
          '4e0c61dc0c5da4c3125db7ac1e481aac'
          '93e85c98fd375285887b78f2df44ce01'
-         'f85645dfe886b57273b475d3c6cd0964')
+         'f85645dfe886b57273b475d3c6cd0964'
+         'e5692035f047cdec52658f67954c6f4d'
+         '8c329cf0f9c90cfd07ba86a4027eec48'
+         'e21d8211b2f209ace648340cb5583805')
 sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
@@ -69,7 +75,10 @@ sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             '7b7718789a4a23c3f16094f93b9fc0d8a5915e67e6a0aedef17cdb6adb22a1ac'
             'a48cdf948f907b00919c3a2dadbaa2c41c28891d689195e072765c39b0b4af49'
             '12c55d7b898b5cdcd09d6927fef1585a702fde356e8e039e7e85bbce64f3eed8'
-            '364a4fb9d8695067ee8d235d7763c59f6df417937b901a1810e00d397db21aee')
+            '364a4fb9d8695067ee8d235d7763c59f6df417937b901a1810e00d397db21aee'
+            'bfa34783131c52e0bc0645c76469aaf504b13ac16d57b02d5ea9002603fb583e'
+            '1353bc403b56ef0b00f4b87826991812ee24bcc9a0b2612c0027317a7aa86736'
+            'a84e1a9884580917afe55816b4ec9b44ec0f4977144e7f4325647ff58642ecd6')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -97,28 +106,40 @@ prepare() {
 
   #cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0002-kernel-5.6-proc_dir_entry-proc_ops.patch'
-  #patch -Nbup0 -i "${srcdir}/0002-kernel-5.6-proc_dir_entry-proc_ops.patch"
+  #patch -Nup0 -i "${srcdir}/0002-kernel-5.6-proc_dir_entry-proc_ops.patch"
 
   #cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0003-tty_unregister_driver-void.patch'
-  patch -Nbup0 -i "${srcdir}/0003-tty_unregister_driver-void.patch"
+  patch -Nup0 -i "${srcdir}/0003-tty_unregister_driver-void.patch"
 
   #cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
-  patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
+  patch -Nup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
 
   # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
   # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
   # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
   #cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
-  patch -Nbup0 -i "${srcdir}/0005-kernel-5.14-unsigned-tty-flow-tty.patch"
+  patch -Nup0 -i "${srcdir}/0005-kernel-5.14-unsigned-tty-flow-tty.patch"
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
   #rm -f *.orig; cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nbup0 -i "${srcdir}/0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  patch -Nup0 -i "${srcdir}/0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  #rm -f *.orig; cp -p nslink.service{,.orig}; false
+  #diff -pNau5 nslink.service{.orig,} > '0007-service-priority.patch'
+  #patch -Nup0 -i "${srcdir}/0007-service-priority.patch"
+
+  #rm -f *.orig; cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0007-service-priority.patch'
+  patch -Nup1 -i "${srcdir}/0007-service-priority.patch"
+
+  #rm -f *.orig; cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0009-python3-nslink.patch'
+  patch -Nup1 -i "${srcdir}/0009-python3-nslink.patch"
 
   # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison
@@ -150,8 +171,8 @@ prepare() {
 
   # Switch to python2
   sed -e '# Why using local on just this one?' \
-      -e 's:/usr/local/bin/python:/usr/bin/python:g' \
-      -e 's:/usr/bin/python:&2:g' \
+      -e '#s:/usr/local/bin/python:/usr/bin/python:g' \
+      -e '#s:/usr/bin/python:&2:g' \
     -i *.py 'nslinktool'
 
   # Branding in dmesg
@@ -190,12 +211,16 @@ prepare() {
   sed -e '# Cosmetic cleanup for simpler patch editing, trim space at eol' \
       -e 's:\s\+$::g' \
       -e '# Switch to python2' \
-      -e 's:/usr/bin/python:&2:g' \
+      -e '#s:/usr/bin/python:&2:g' \
     -i *.py
+
+  #rm -f *.orig; cd '..'; cp -pr 'DM-Firmware-Updater-1.06' 'a'; ln -s 'DM-Firmware-Updater-1.06' 'b'; false
+  #diff -pNaru5 'a' 'b' > '0008-python3-firmware.patch'
+  patch -Nup1 -i "${srcdir}/0008-python3-firmware.patch"
 
   # Patch usage and help into command line tool
   #diff -pNau5 dmupdate.py{.orig,} > '../dmupdate.py.usage.patch'
-  patch -Nbup0 -i "${srcdir}/dmupdate.py.usage.patch"
+  patch -Nup0 -i "${srcdir}/dmupdate.py.usage.patch"
   set +u
 }
 

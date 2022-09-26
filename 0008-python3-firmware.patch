@@ -1,0 +1,199 @@
+diff -pNaru5 a/DM-Firmware-Updater.py b/DM-Firmware-Updater.py
+--- a/DM-Firmware-Updater.py	2022-09-25 23:06:30.913939525 -0400
++++ b/DM-Firmware-Updater.py	2022-09-25 23:07:09.284353072 -0400
+@@ -11,21 +11,23 @@ def getVersionString(s):
+     resp = s.recv(1024)
+     fmt = ">LLLLLL64s6sLBBHBBBB"
+     devIpAddr, defRoute, srvIpAddr, ipMask, availMemAddr, availMemLength, version, macAddr, \
+     modelId, archId, numPorts, progId, boardRev, bootRevMajor, bootRevMinor, numApps \
+       = struct.unpack(fmt,resp[:struct.calcsize(fmt)])
++    if sys.hexversion >= 0x030000F0:
++        version=version.decode() # byte array to string array
+     return version[:version.index('\x00')]
+ 
+-def getArch((host,port),useIPv6=0):
++def getArch(hostport,useIPv6=0):
+ 
+     if useIPv6:
+         s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+     else:
+         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+     s.settimeout(15)
+     try:
+-        s.connect((host,port))
++        s.connect(hostport)
+     except socket.timeout:
+         return "network connection timeout";
+     except (OSError, socket.error) as e:
+         return "Error opening connection: " + str(e)
+ 
+@@ -40,26 +42,31 @@ def getArch((host,port),useIPv6=0):
+     except socket.timeout:
+         return "network connection timeout";
+     except (OSError, socket.error) as e:
+         return "error requesting device ID info: " + str(e)
+ 
+-    return ord(resp[98])
++    if sys.hexversion >= 0x030000F0:
++        #print(resp[98])      # 3 for me
++        return resp[98]      # python3 byte array
++    else:
++        #print(ord(resp[98])) # 3 for me
++        return ord(resp[98]) # python2 str array
+ 
+ 
+ # return error message if failure otherwise return None
+-def uploadFile((host,port),filedata,doreset,callback,useIPv6=0):
++def uploadFile(hostport,filedata,doreset,callback,useIPv6=0):
+     filesize = len(filedata)
+ 
+     if doreset:
+         if useIPv6:
+             s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+         else:
+             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+         callback(0,"opening connection")
+         s.settimeout(15)
+         try:
+-            s.connect((host,port))
++            s.connect(hostport)
+         except socket.timeout:
+             return("network connection timeout");
+         except (OSError, socket.error) as e:
+             return "Error opening connection: " + str(e)
+         callback(0,"sending reset command")
+@@ -69,11 +76,11 @@ def uploadFile((host,port),filedata,dore
+         except socket.timeout:
+             return("timeout sending reset command");
+         except (OSError, socket.error) as e:
+             return "Error sending reset command: " + str(e)
+         # wait 3 seconds for the unit to reset and come back up
+-        for i in xrange(6):
++        for i in range(6):
+             time.sleep(0.5)
+             callback((filesize*i)/6)
+         callback(filesize)
+ 
+     if useIPv6:
+@@ -81,11 +88,11 @@ def uploadFile((host,port),filedata,dore
+     else:
+         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+     callback(0,"opening connection")
+     s.settimeout(15)
+     try:
+-        s.connect((host,port))
++        s.connect(hostport)
+     except socket.timeout:
+         return("Timeout opening connection");
+     except (OSError, socket.error) as e:
+         return "Error opening connection: " + str(e)
+ 
+@@ -126,10 +133,11 @@ def uploadFile((host,port),filedata,dore
+ 
+ if sys.hexversion >= 0x030000F0:
+     from tkinter import *
+     from tkinter.ttk import *
+     import tkinter.filedialog as filedialog
++    import tkinter.messagebox as messagebox
+ else:
+     from Tkinter import *
+     from ttk import *
+     import tkFileDialog as filedialog
+     import tkMessageBox as messagebox
+diff -pNaru5 a/dmupdate.py b/dmupdate.py
+--- a/dmupdate.py	2022-09-25 23:06:30.923939633 -0400
++++ b/dmupdate.py	2022-09-25 23:06:33.043962526 -0400
+@@ -77,11 +77,11 @@ def getIdentReply(s):
+     s.send(struct.pack("<BBHL",cmd,index,length,addr))
+     resp = s.recv(1024)
+     signal.alarm(0)
+ 
+     if verbose>1:
+-        print "[%d] %s" % (len(resp),toHex(resp))
++        print("[%d] %s" % (len(resp),toHex(resp)))
+ 
+     return resp
+ 
+ def getArch(hostName):
+     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+@@ -137,33 +137,33 @@ def isRedBoot(s,verbose=False):
+             edata = remaining[:elen]
+             remaining = remaining[elen:]
+             extData.append((etype,elen,edata))
+ 
+     if verbose:
+-        print "%15s: %s" % ("devIpAddr",fmtIP(devIpAddr))
+-        print "%15s: %s" % ("defRoute",fmtIP(defRoute))
+-        print "%15s: %s" % ("srvIpAddr",fmtIP(srvIpAddr))
+-        print "%15s: %s" % ("ipMask",fmtIP(ipMask))
+-        print "%15s: %s" % ("availMemAddr",hex(availMemAddr))
+-        print "%15s: %s" % ("availMemLength",hex(availMemLength))
++        print("%15s: %s" % ("devIpAddr",fmtIP(devIpAddr)))
++        print("%15s: %s" % ("defRoute",fmtIP(defRoute)))
++        print("%15s: %s" % ("srvIpAddr",fmtIP(srvIpAddr)))
++        print("%15s: %s" % ("ipMask",fmtIP(ipMask)))
++        print("%15s: %s" % ("availMemAddr",hex(availMemAddr)))
++        print("%15s: %s" % ("availMemLength",hex(availMemLength)))
+         if verbose>1:
+-            print "%15s: %s" % ("version",repr(version))
++            print("%15s: %s" % ("version",repr(version)))
+         else:
+-            print "%15s: %s" % ("version",version[:version.index('\x00')])  # ignore trailing NULs
+-        print "%15s: %s" % ("macAddr", macToStr(macAddr))
+-        print "%15s: %s" % ("modelId",modelId)
+-        print "%15s: %s" % ("archId",archId)
+-        print "%15s: %s" % ("numPorts",numPorts)
+-        print "%15s: %s" % ("progId",progId)
+-        print "%15s: %s" % ("boardRev",boardRev)
+-        print "%15s: %s" % ("bootRevMajor",bootRevMajor)
+-        print "%15s: %s" % ("bootRevMinor",bootRevMinor)
+-        print "%15s: %s" % ("numApps",numApps)
+-        print "%15s: %s" % ("appRecords",appRecords)
+-        print "%15s: %s" % ("numUserBytes",numUserBytes)
+-        print "%15s: %s" % ("appEnables",hex(appEnables))
+-        print "%15s:" % ("extData:")
++            print("%15s: %s" % ("version",version[:version.index('\x00')])) # ignore trailing NULs
++        print("%15s: %s" % ("macAddr", macToStr(macAddr)))
++        print("%15s: %s" % ("modelId",modelId))
++        print("%15s: %s" % ("archId",archId))
++        print("%15s: %s" % ("numPorts",numPorts))
++        print("%15s: %s" % ("progId",progId))
++        print("%15s: %s" % ("boardRev",boardRev))
++        print("%15s: %s" % ("bootRevMajor",bootRevMajor))
++        print("%15s: %s" % ("bootRevMinor",bootRevMinor))
++        print("%15s: %s" % ("numApps",numApps))
++        print("%15s: %s" % ("appRecords",appRecords))
++        print("%15s: %s" % ("numUserBytes",numUserBytes))
++        print("%15s: %s" % ("appEnables",hex(appEnables)))
++        print("%15s:" % ("extData:"))
+         for e in extData:
+             descr = "             type:%d len:%d data: %s" % (e[0],e[1],toHex(e[2]))
+             if e[0] == 2:
+                 descr += " -- " + decodeFeatureBits(ord(e[2][0]))
+             elif e[0] == 3:
+@@ -172,11 +172,11 @@ def isRedBoot(s,verbose=False):
+                 descr += " -- ipv6 mode"
+             elif e[0] == 5:
+                 descr += " -- ipv4 configured address"
+             elif e[0] == 6:
+                 descr += " -- ipv6 current address"
+-            print descr
++            print(descr)
+ 
+     return version.startswith("Bootloader") and (progId == 0)
+ 
+ 
+ def downloadFile(hostName,fileobj,go=0,quiet=0,skip=0,base=0,entry=None,verify_redboot=0):
+@@ -188,11 +188,11 @@ def downloadFile(hostName,fileobj,go=0,q
+     isrb = isRedBoot(s,verbose)
+ 
+     alarm(0)
+ 
+     if verify_redboot and not isrb:
+-        print "Failed to re-connect to RedBoot, found running application."
++        print("Failed to re-connect to RedBoot, found running application.")
+         sys.exit(1)
+ 
+     bytecount = len(fileobj.read(skip))
+     index = 0
+     while 1:

@@ -1,0 +1,30 @@
+diff -pNaru5 a/nslink.service b/nslink.service
+--- a/nslink.service	2014-08-12 12:47:41.000000000 -0400
++++ b/nslink.service	2022-02-08 13:11:11.754490452 -0500
+@@ -4,10 +4,11 @@ Wants=network-online.target
+ After=network-online.target
+ After=syslog.target
+ 
+ [Service]
+ 
++Nice=-10
+ Type=forking
+ PIDFile=/var/run/nslinkd.pid
+ ExecStartPre=/sbin/modprobe nslink
+ ExecStart=/sbin/nslinkd
+ ExecStopPost=/sbin/rmmod nslink
+diff -pNaru5 a/nslink.service.run b/nslink.service.run
+--- a/nslink.service.run	2020-11-11 16:28:03.000000000 -0500
++++ b/nslink.service.run	2022-02-08 13:11:17.474526280 -0500
+@@ -4,10 +4,11 @@ Wants=network-online.target
+ After=network-online.target
+ After=syslog.target
+ 
+ [Service]
+ 
++Nice=-10
+ Type=forking
+ PIDFile=/run/nslinkd.pid
+ ExecStartPre=/sbin/modprobe nslink
+ ExecStart=/sbin/nslinkd
+ ExecStopPost=/sbin/rmmod nslink
