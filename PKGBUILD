@@ -1,6 +1,6 @@
 # Maintainer: Angelo Dalzotto <angelodalzotto97 at gmail dot com>
 pkgname=ns-usbloader
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="Awoo Installer/TinFoil/GoldLeaf NSPs (and other files) uploader and RCM tool."
 arch=('any')
@@ -17,11 +17,9 @@ source=(
 	"$pkgname"
 	"$pkgname.desktop"
 )
-sha256sums=(
-	"270625bd94148ecbb5912ab6535abc6a10c719a4dac1fefad12643cd578b9f03"
-	"d00fc704b669bb00f9e26bd70ea784015921c1f4825a8320b1e8f1f1f70ba6e5"
-	"f78baea7e90bc5c48215c938add3fc49e11b51208df69d9460769d2e27ca9877"
-)
+sha256sums=('a11f6022ae5499ba52c043a03fba9377e8fee47b9b95f6f346d245c663c03e79'
+            'd00fc704b669bb00f9e26bd70ea784015921c1f4825a8320b1e8f1f1f70ba6e5'
+            'f78baea7e90bc5c48215c938add3fc49e11b51208df69d9460769d2e27ca9877')
 
 package() {
 	install -Dm 644 res/app_icon32x32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
