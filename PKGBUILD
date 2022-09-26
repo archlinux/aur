@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.57.11.r1.gd49bafc8a
+pkgver=2.4.58.5.r0.g76856c584
 pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
@@ -11,7 +11,7 @@ license=('AGPL3')
 options=(!emptydirs)
 replaces=('slic3r++')
 depends=('boost-libs>=1.79.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'slicer-udev' 'wxwidgets-gtk3')
-makedepends=('boost>=1.79.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai')
+makedepends=('boost>=1.79.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'ninja' 'openvdb')
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-prerelease')
@@ -53,6 +53,7 @@ build()
 	cmake .. \
 		-G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-ignored-optimization-argument -ffat-lto-objects -DBOOST_FILESYSTEM_DEPRECATED" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DOpenGL_GL_PREFERENCE=GLVND \
 		-DSLIC3R_FHS=ON \
@@ -61,17 +62,16 @@ build()
 		-DSLIC3R_GTK=3 \
 		-DSLIC3R_BUILD_TESTS=OFF \
 		-DSLIC3R_ALPHA=ON \
-		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev-314/bin/wx-config \
-		-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument -Wl,-rpath=/opt/wxgtk-dev-314/lib"
+		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
 
-	samu
+	ninja
 }
 
 package()
 {
 	cd "$srcdir/SuperSlicer/build"
 
-	DESTDIR="$pkgdir" samu install
+	DESTDIR="$pkgdir" ninja install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
 	rm -r "${pkgdir}"/usr/lib/udev # Provided by slicer-udev
 }
