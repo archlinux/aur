@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=VSCodium Insiders
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/usr/share/vscodium-insiders-bin/bin/codium-insiders --no-sandbox --unity-launch %F
+Icon=vscodium-insiders-bin
+Type=Application
+StartupNotify=true
+StartupWMClass=VSCodium - Insiders
+Categories=Utility;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/share/vscodium-insiders-bin/bin/codium-insiders --no-sandbox --new-window %F
+Icon=vscodium-insiders-bin
+
