@@ -1,0 +1,7 @@
+src/
+pkg/
+*.tar.zst
+*.tar.xz
+unblockneteasemusic-aarch64
+unblockneteasemusic-x86_64
+LICENSE
