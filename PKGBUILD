@@ -1,6 +1,6 @@
 # Maintainer: Miłosz Bliźniak <mibli@gmx.com>
 pkgname=cnoti-git
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="little DBus notification monitor lib with noticat utility"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.zip::https://github.com/mibli/cnoti/archive/refs/tags/v$pkgver.zip")
 noextract=()
-md5sums=("13147a95773261ac5a2d90f97eba551a")
+md5sums=("6d8a4e20720d3b423296e3c8e40828e3")
 validpgpkeys=()
 
 build() {
