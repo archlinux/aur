@@ -1,7 +1,7 @@
 pkgbase = proofgeneral
 	pkgdesc = Generic interface for proof assistants.
 	pkgver = 4.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://proofgeneral.github.io/
 	install = proofgeneral.install
 	arch = any

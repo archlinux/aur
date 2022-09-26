@@ -4,7 +4,7 @@
 
 pkgname=proofgeneral
 pkgver=4.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Generic interface for proof assistants.'
 arch=('any')
 license=('GPL')
@@ -25,5 +25,8 @@ build() {
 package() {
   cd "$srcdir/PG-${pkgver}"
 
-  make PREFIX=${pkgdir}/usr install
+  for file in $(find . -type f -name '*.el')
+  do
+      install -Dm644 "${file}" "${pkgdir}/usr/share/emacs/site-lisp/${_pkgname}/${file}"
+  done
 }
