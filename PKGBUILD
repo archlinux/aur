@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-flit-core' 'python-build' 'python-installer')
 #'python-sphinx')
 checkdepends=('python-nose' 'python-myst-parser')
-#checkdepends=('python-jupyter_sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
+#checkdepends=('python-jupyter-sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('508620441832bdb282c0eadfd0e1dc7b')
 
@@ -34,7 +34,7 @@ package_python-myst-nb() {
     depends=('python-importlib-metadata'
              'ipython'
              'python-jupyter-cache'
-             'python-jupyter_sphinx'
+             'python-jupyter-sphinx'
              'python-myst-parser'
              'jupyter-nbclient'     # depends on nbformat
              'python-yaml'
