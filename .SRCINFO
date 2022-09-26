@@ -1,6 +1,6 @@
 pkgbase = patchance
 	pkgdesc = A modern graphical patchbay for JACK
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Houston4444/Patchance
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = patchance
 	makedepends = qt5-tools
 	depends = hicolor-icon-theme
 	depends = python-pyqt5
-	source = patchance-0.1.0.tar.gz::https://github.com/Houston4444/Patchance/archive/refs/tags/v0.1.0.tar.gz
-	source = HoustonPatchbay-17ee2760d36839042ab39ac4d43e2bb6ffd0702b.tar.gz::https://github.com/Houston4444/HoustonPatchbay/archive/17ee2760d36839042ab39ac4d43e2bb6ffd0702b.tar.gz
-	sha256sums = 3f6911198d1d7beb990aaf7b2fce989001e4d5c5d92bf2fe09b68f3c956d6734
-	sha256sums = f73374c305cbd77d50dc09f14ead1d88b9cf3600241b240899ae4bf8bcfc0321
+	source = https://github.com/Houston4444/Patchance/releases/download/v0.2.0/Patchance-0.2.0-source.tar.gz
+	sha256sums = c812360b94bb720825c70e8e344601f3e729a7a2b336555c626a3a10cf6ac6b0
 
 pkgname = patchance
