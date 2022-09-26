@@ -1,33 +1,50 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
 
-_name=atom
 pkgname=python-atom
-pkgver=0.6.0
-pkgrel=5
+_pkg=atom
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='Memory efficient Python objects'
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/nucleic/atom'
 license=('BSD' 'custom')
-depends=(python)
-makedepends=(python-setuptools python-cppy)
-checkdepends=(python-pytest)
-source=($pkgname-$pkgver.tar.gz::https://github.com/nucleic/atom/archive/$pkgver.tar.gz)
-sha512sums=('ff02baa80c1cfaf113a0dc153f825dc76cc01084aea0f34c6bb2f3e6926290d105ee433ab0abb2ad27a87fb5e76303fc2b4456c25fde3bab666234c4d3bbb4be')
+depends=('python')
+makedepends=(
+	'python-build'
+	'python-cppy'
+	'python-installer'
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-sphinx'
+	'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('a45bb13c82b8871b2792917eb0ea2e73ffe920f6001e259c117fdec2d002f966')
+
+prepare() {
+	cd "$_pkg-$pkgver"
+	sed -i '/sphinx.ext.graphviz/d;/html_theme/d' docs/source/conf.py
+}
 
 build() {
-  cd ${_name}-${pkgver}
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" make -C docs man
 }
 
 check() {
-  cd ${_name}-${pkgver}
-  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-
-  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" pytest
+	cd "$_pkg-$pkgver"
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest -x
 }
 
 package() {
-  cd ${_name}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --skip-build
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 docs/build/man/atom.1 -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
