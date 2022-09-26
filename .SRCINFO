@@ -1,6 +1,6 @@
 pkgbase = gitbucket
 	pkgdesc = A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility
-	pkgver = 4.35.3
+	pkgver = 4.38.2
 	pkgrel = 1
 	url = https://gitbucket.github.io
 	install = gitbucket.install
@@ -12,7 +12,7 @@ pkgbase = gitbucket
 	backup = etc/conf.d/gitbucket
 	backup = etc/gitbucket/database.conf
 	backup = etc/gitbucket/logback.xml
-	source = gitbucket-4.35.3.tar.gz::https://github.com/gitbucket/gitbucket/archive/4.35.3.tar.gz
+	source = gitbucket-4.38.2.tar.gz::https://github.com/gitbucket/gitbucket/archive/4.38.2.tar.gz
 	source = 10-database.patch
 	source = database.conf
 	source = logback.xml
@@ -20,7 +20,7 @@ pkgbase = gitbucket
 	source = gitbucket.sysusers
 	source = gitbucket.tmpfiles
 	source = gitbucket.service
-	sha256sums = 2351964f523839648ab13cd13adb4f747d5eb7a4e0f6950fc8573b865bc852da
+	sha256sums = 36b6f34a15fd967d582a4fa5483471585d2f240664f8c20dcdb02cb7343a22d2
 	sha256sums = adf29a3110aadb8268ed7113d7f712a9fb6ff51fa6d64d9e710775aa941fc457
 	sha256sums = 1ad37bef23b3992356c4140e3e96fc965275a0d7ced5e4a0e64ae37cfcac5fa5
 	sha256sums = c6185de1f0d118310e6e91e865c842b96343e4ebdbe8c1d2a16e1d4c270765b1
@@ -30,4 +30,3 @@ pkgbase = gitbucket
 	sha256sums = ce6d4b6d24df71e63296cdb69c2cd0a439d860b4fc3633cb87b5c16fe9ec543b
 
 pkgname = gitbucket
-

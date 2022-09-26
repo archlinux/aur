@@ -1,7 +1,7 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=gitbucket
-pkgver=4.35.3
+pkgver=4.38.2
 pkgrel=1
 pkgdesc="A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility"
 arch=(any)
@@ -23,7 +23,7 @@ source=(gitbucket-$pkgver.tar.gz::https://github.com/gitbucket/gitbucket/archive
 		gitbucket.service
 		)
 makedepends=(sbt 'java-environment-openjdk>=8')
-sha256sums=('2351964f523839648ab13cd13adb4f747d5eb7a4e0f6950fc8573b865bc852da'
+sha256sums=('36b6f34a15fd967d582a4fa5483471585d2f240664f8c20dcdb02cb7343a22d2'
             'adf29a3110aadb8268ed7113d7f712a9fb6ff51fa6d64d9e710775aa941fc457'
             '1ad37bef23b3992356c4140e3e96fc965275a0d7ced5e4a0e64ae37cfcac5fa5'
             'c6185de1f0d118310e6e91e865c842b96343e4ebdbe8c1d2a16e1d4c270765b1'
