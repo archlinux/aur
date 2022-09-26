@@ -2,7 +2,7 @@
 # Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
 pkgname=boatswain-git
-pkgver=0.1.0.r171.702ecce
+pkgver=0.1.3.r34.g3631287
 pkgrel=1
 pkgdesc='Control Elgato Stream Deck devices'
 arch=(x86_64)
@@ -19,8 +19,8 @@ depends=(
 makedepends=(
   git
   meson
+  gobject-introspection
 )
-
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
@@ -28,9 +28,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "%s.r%s.%s" \
-    "$(grep -m1 'version:' meson.build | cut -d\' -f2)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
