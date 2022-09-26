@@ -12,7 +12,7 @@ conflicts=('vibrantlinux')
 provides=('vibrantlinux')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
-pkgver=2.1.7.r0.ga75092b
+pkgver=2.1.10.r0.g5877b71
 
 pkgver() {
   cd "$_pkgname"
@@ -28,4 +28,6 @@ build() {
 package() {
   cd "$_pkgname"
   make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

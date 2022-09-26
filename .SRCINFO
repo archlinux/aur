@@ -1,6 +1,6 @@
 pkgbase = vibrantlinux-git
 	pkgdesc = vibranceGUI replacement for Linux
-	pkgver = 2.1.7.r0.ga75092b
+	pkgver = 2.1.10.r0.g5877b71
 	pkgrel = 1
 	url = https://github.com/libvibrant/vibrantlinux
 	arch = x86_64
