@@ -2,7 +2,7 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 # Maintainer gileri
 pkgname='noisetorch-git'
-pkgver=0.11.5.r68.ga902168
+pkgver=0.12.2.r13.g2792a64
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd NoiseTorch
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
