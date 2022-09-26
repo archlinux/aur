@@ -1,6 +1,6 @@
 pkgbase = gromit-mpx
 	pkgdesc = On-screen annotation tool
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/bk138/gromit-mpx/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gromit-mpx
 	depends = libx11
 	depends = libxi
 	backup = etc/gromit-mpx/gromit-mpx.cfg
-	source = git+https://github.com/bk138/gromit-mpx.git#tag=1.4.2
+	source = git+https://github.com/bk138/gromit-mpx.git#tag=1.4.3
 	source = flatpak-shared-modules::git+https://github.com/flathub/shared-modules.git
 	sha256sums = SKIP
 	sha256sums = SKIP

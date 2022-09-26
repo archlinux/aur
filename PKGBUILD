@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gromit-mpx
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='On-screen annotation tool'
 arch=('x86_64')
