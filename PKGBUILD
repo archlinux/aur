@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mnormt
-_pkgver=2.1.0
+_pkgver=2.1.1
 pkgname=r-${_pkgname,,}
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='The Multivariate Normal and t Distributions, and Their Truncated Versions'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d498505e32d8aa9fa54a1ab328c35ae3a85e0b20a0cf0d519a4df84e2b307b8')
+sha256sums=('95fca70378af0afd5a388982ba5528f5b27e02157eeb9940a0a9762d11511308')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
