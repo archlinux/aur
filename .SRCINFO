@@ -1,0 +1,13 @@
+pkgbase = dupefi
+	pkgdesc = A command-line duplicate file finder for linux.
+	pkgver = r74.f57f0cd
+	pkgrel = 1
+	url = https://github.com/hirak99/dupefi
+	arch = any
+	license = Apache
+	makedepends = go>=1.18
+	provides = dupefi
+	source = dupefi::git+https://github.com/hirak99/dupefi
+	md5sums = SKIP
+
+pkgname = dupefi
