@@ -33,10 +33,14 @@ JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   #
                   # To compile all site-lisp on demand (repos/AUR packages,
                   # ELPA, MELPA, whatever), add
-                  #    (setq comp-deferred-compilation t)
+                  #    (setq native-comp-deferred-compilation t)
                   # to your .emacs file.
+                  # 
+                  # And to keep the eln cache clean add 
+                  #    (setq native-compile-prune-cache t)
+                  # to delete old versions.
 
-AOT="YES"         # Compile all elisp files.
+AOT=              # Compile all elisp files.
 
 CLI=              # CLI only binary.
 
@@ -79,7 +83,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.160038
+pkgver=29.0.50.160133
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
