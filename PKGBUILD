@@ -3,13 +3,13 @@
 pkgname=blueproximity-py3-git
 _pkgname=blueproximity
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A proximity detector for your mobile phone via bluetooth. (Python3 version)"
 arch=('i686' 'x86_64')
 url="https://github.com/tiktaalik-dev/blueproximity"
 license=('GPL')
 conflicts=('blueproximity')
-depends=('python' 'bluez-utils-compat' 'pygtk' 'python-configobj' 'python-pybluez' 'python-xapp' 'xapps' 'librsvg')
+depends=('python' 'bluez-utils-compat' 'python-gobject' 'python-configobj' 'python-pybluez' 'python-xapp' 'xapps' 'librsvg')
 optdepends=('gnome-screensaver' 'xscreensaver')
 source=(https://github.com/tiktaalik-dev/blueproximity/archive/v$pkgver.tar.gz)
 options=(emptydirs)
