@@ -3,7 +3,7 @@
 _pkgbase=i915-sriov-dkms
 pkgname=i915-sriov-dkms-git
 pkgver=5.15.49
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
 url="https://github.com/strongtz/i915-sriov-dkms"
@@ -28,7 +28,4 @@ package() {
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  echo "* Blacklisting i915 module...(is this required?)"
-  install -D -m 644 modprobe.conf "${pkgdir}/etc/modprobe.d/i915-blacklist.conf"
 }
