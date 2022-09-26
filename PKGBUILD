@@ -4,19 +4,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-compress-raw-lzma'
-pkgver='2.103'
+pkgver='2.201'
 pkgrel='1'
 pkgdesc="Low-Level Interface to lzma compression library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0' 'xz>=5.2.5')
+depends=('perl>=0' 'xz>=5.2.6')
 makedepends=()
 url='https://metacpan.org/release/Compress-Raw-Lzma'
-source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Lzma-2.103.tar.gz')
-md5sums=('6790e847cd96c76c81beaa7c5800d4e1')
-sha512sums=('acfb0b97153621500da51b33742998fdea48609af347625fe72af497aad40a8702478ef047d9db7cf905ad5c3d54ac68e69658ca56c665b89e48d68a1a0a6767')
-_distdir="Compress-Raw-Lzma-2.103"
+source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Lzma-2.201.tar.gz')
+md5sums=('366a7fbb946cd2be6a60e69123b62f5e')
+sha512sums=('df43f8ab1550a3522fde74da07c18b095155bd58b2797bf5408253489de70843768db925d27ba183f8c19170d780b69c1949ccfd4e2d83e0a740e834034ce360')
+_distdir="Compress-Raw-Lzma-2.201"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
