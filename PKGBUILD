@@ -40,7 +40,113 @@ _enabled_modules=(xml_int/mod_xml_curl
                   xml_int/mod_xml_cdr
                   formats/mod_shout
                   applications/mod_callcenter
-                  languages/mod_lua)
+                  applications/mod_abstraction
+                  applications/mod_amvd
+                  applications/mod_bert
+                  applications/mod_blacklist
+                  applications/mod_cidlookup
+                  applications/mod_curl
+                  #applications/mod_cv			# requires aur/opencv2
+                  applications/mod_directory
+                  applications/mod_distributor
+                  applications/mod_dptools
+                  applications/mod_easyroute
+                  applications/mod_esl
+                  applications/mod_fsk
+                  #applications/mod_hiredis		# requires community/hiredis
+                  applications/mod_http_cache
+                  #applications/mod_ladspa		# requires extra/ladspa
+                  applications/mod_lcr
+                  #applications/mod_memcache		# requires community/libmemcached-awesome
+                  #applications/mod_mongo		# requires community/mongo-c-driver
+                  #applications/mod_mp4			# requires extra/libmp4v2
+                  #applications/mod_mp4v2		# requires extra/libmp4v2
+                  applications/mod_nibblebill
+                  applications/mod_oreka
+                  #applications/mod_osp			# requires OSP Toolkit from TransNexus http://www.transnexus.com/index.php/osp-toolkit
+                  applications/mod_prefix
+                  #applications/mod_rad_auth		# requires core/libnsl
+                  applications/mod_redis
+                  applications/mod_rss
+                  #applications/mod_signalwire		# requires signalwire C library https://github.com/signalwire/signalwire-c
+                  #applications/mod_sms_flowroute       # requires aur/h2o and flowroute account, see https://blog.flowroute.com/2016/07/28/flowroute-sms-in-freeswitch/
+                  applications/mod_snapshot
+                  #applications/mod_snom		# Useful for controlling the functionality and appearance of the programmable softkeys on a Snom phone. Unnecessary otherwise.
+                  applications/mod_sonar
+                  #applications/mod_soundtouch		# requires extra/soundtouch
+                  applications/mod_spy
+                  applications/mod_stress
+                  applications/mod_translate
+                  applications/mod_video_filter
+                  applications/mod_voicemail_ivr
+                  #asr_tts/mod_cepstral			# requires cepstral https://www.cepstral.com/; do not enable mod_cepstral and mod_flite together.
+                  #asr_tts/mod_flite			# requires community/flite; may need to be custom built
+                  #asr_tts/mod_pocketsphinx		# requires extra/libpulse, extra/libsamplerate
+                  asr_tts/mod_tts_commandline
+                  asr_tts/mod_unimrcp
+                  #codecs/mod_amrwb			# requires aur/vo-amrwbenc
+                  #codecs/mod_bv			# requires BroadVoice: https://docs.broadcom.com/docs/12358448 and https://docs.broadcom.com/docs/12358447
+                  codecs/mod_clearmode
+                  #codecs/mod_codec2			# requires community/codec2
+                  #codecs/mod_com_g729			# do not enable mod_com_g729 and mod_g729 together.
+                  codecs/mod_g729
+                  codecs/mod_dahdi_codec
+                  #codecs/mod_ilbc			# requires signalwire's fork of libilbc: https://github.com/signalwire/libilbc
+                  codecs/mod_isac
+                  codecs/mod_mp4v
+                  #codecs/mod_sangoma_codec		# requires Sangoma transcoding cards
+                  #codecs/mod_silk			# requires libsilk: https://freeswitch.org/stash/projects/SD/repos/libsilk/browse
+                  #codecs/mod_siren			# requires libg7221: https://github.com/juha-h/libg7221
+                  codecs/mod_theora
+                  #dialplans/mod_dialplan_asterisk	# use asterisk dialplan formatting instead of the default
+                  dialplans/mod_dialplan_directory
+                  #directories/mod_ldap			# requires core/libldap
+                  endpoints/mod_alsa
+                  endpoints/mod_dingaling
+                  #endpoints/mod_gsmopen		# requires an unlocked GSM dongle; see https://freeswitch.org/confluence/display/FREESWITCH/mod_gsmopen
+                  #endpoints/mod_khomp			# endpoint module for khomp boards.
+                  #endpoints/mod_opal			# requires aur/opal
+                  #endpoints/mod_portaudio		# requires extra/portaudio
+                  endpoints/mod_rtc
+                  endpoints/mod_rtmp
+                  #endpoints/mod_verto                  # requires libks https://github.com/signalwire/libks
+                  #event_handlers/mod_amqp		# requires community/librabbitmq-c
+                  event_handlers/mod_cdr_mongodb
+                  event_handlers/mod_cdr_pg_csv
+                  #event_handlers/mod_erlang_event	# requires community/erlang
+                  event_handlers/mod_event_multicast
+                  event_handlers/mod_fail2ban
+                  event_handlers/mod_format_cdr
+                  event_handlers/mod_json_cdr
+                  #event_handlers/mod_radius_cdr	# requires core/libnsl
+                  event_handlers/mod_odbc_cdr
+                  event_handlers/mod_rayo
+                  #event_handlers/mod_smpp		# requires aur/libsmpp34-git
+                  #event_handlers/mod_snmp		# requires extra/net-snmp
+                  event_handlers/mod_event_zmq
+                  #formats/mod_imagick			# requires extra/imagemagick
+                  #formats/mod_portaudio_stream		# requires extra/portaudio
+                  formats/mod_shell_stream
+                  formats/mod_ssml
+                  #formats/mod_vlc			# requires extra/vlc
+                  #formats/mod_opusfile			# requires community/libopusenc, community/opusfile
+                  languages/mod_basic
+                  #languages/mod_java			# requires a Java Development Kit at build-time, a Java Runtime Environment at runtime
+                  languages/mod_lua
+                  #languages/mod_perl			# requires core/perl
+                  languages/mod_python3
+                  #languages/mod_v8			# requires aur/v8-6.8
+                  #languages/mod_yaml			# requires extra/libyaml
+                  loggers/mod_graylog2
+                  loggers/mod_raven
+                  say/mod_say_de
+                  say/mod_say_es
+                  say/mod_say_en
+                  timers/mod_posix_timer
+                  timers/mod_timerfd
+                  #xml_int/mod_xml_ldap			# requires core/libldap
+                  #xml_int/mod_xml_radius		# requires core/libnsl
+)
 
 # DISABLED MODULES
 # Remove from _disabled_modules if you want to build these
@@ -53,14 +159,15 @@ _enabled_modules=(xml_int/mod_xml_curl
 # endpoints/mod_verto - also requires libks
 _disabled_modules=(languages/mod_spidermonkey
                    say/mod_say_ru
-                   dialplans/mod_dialplan_asterisk
+#                   dialplans/mod_dialplan_asterisk
                    applications/mod_signalwire
-                   endpoints/mod_verto)
+                   endpoints/mod_verto
+)
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
 pkgver=1.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -89,11 +196,11 @@ makedepends=('git'
              'ldns'
              'libedit'
              'curl'
-             'python2'
+             'python'
              'unixodbc'
              'sed'
              'make'
-             'libyuv-git'
+             'libyuv'
              'yasm'
              'mpg123'
              'lame'
@@ -119,6 +226,7 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'freeswitch.service'
 	 'freeswitch-arch.patch'  # required for 1.6.17
          'apr-nsig-fix.patch'
+         'python-3.10.patch'
          'freeswitch.conf.d.sig'
          'README.freeswitch.sig'
          'run.freeswitch.sig'
@@ -126,7 +234,8 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'conf_log.freeswitch.sig'
          'freeswitch.service.sig'
 	 'freeswitch-arch.patch.sig'
-         'apr-nsig-fix.patch.sig')  # required for 1.6.17
+         'apr-nsig-fix.patch.sig'  # required for 1.6.17
+         'python-3.10.patch.sig' )
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -137,6 +246,8 @@ sha512sums=('SKIP'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
 	    '4d4f5237297b298010b8a0b264435cc2c04742ca313272e7558f164b19aef97afaace5cf005eeffcfa6be096daedace67931cc209bccdabd2f3d01a42b643036'
             'd82ab534e9912d7440e66643c30d9e2691973f8915a00ed7c794fc8fc3649439fe6538d3b17e2eb2838a448ef394a613fb89429afa70055cdcaefd54339f6022'
+            '4739be0c1c6783ace2bd10f7573b1ca86be013d21a7f973b5fd348c98fb9ed1a548baacee6bb65b7501251106c8dbd7266997f8699d2d7070a2bd7efe145b866'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -163,6 +274,7 @@ prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
   patch -Np1 -i ../apr-nsig-fix.patch
+  patch -Np1 -i ../python-3.10.patch
 
   # BUILD BEGINS
   msg "Bootstrapping..."
@@ -186,12 +298,11 @@ prepare() {
   # CONFIGURE
   # We need to override some things for the ./configure for 1.6.17
   #./configure \
-  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca" # -I/usr/include/ffmpeg4.4"
+  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca -I/usr/include/python3.10" # -I/usr/include/ffmpeg4.4"
   export CXXFLAGS="${CFLAGS}"
   PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" \
   ./configure \
     --prefix=/var/lib/freeswitch \
-    --with-python=/usr/bin/python2 \
     --bindir=/usr/bin \
     --sbindir=/usr/sbin \
     --localstatedir=/var \
