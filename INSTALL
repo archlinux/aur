@@ -5,6 +5,7 @@ pre_install() {
 
 ## arg 1:  the new package version
 post_install() {
+    systemctl daemon-reload
     echo
     echo "Home Assistant OS Agent installation is complete, enable and start haos-agent using systemctl:"
     echo "    >> sudo systemctl enable haos-agent.service"
@@ -21,6 +22,7 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
+    systemctl daemon-reload
     systemctl start haos-agent.service
 }
 

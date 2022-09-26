@@ -2,7 +2,7 @@
 
 pkgname=homeassistant-osagent
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Home Assistant OS Agent"
 arch=('x86_64')
 url="https://github.com/home-assistant/os-agent"
