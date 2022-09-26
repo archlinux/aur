@@ -5,14 +5,14 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.17.5'
-pkgrel=4
+pkgver='0.17.6'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
 license=('AGPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
+depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
          'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
          'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
          'zlib')
@@ -41,7 +41,7 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-user.service")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('8a744ff7a95d1e83215cce118050640f6c12261abe4c60a56bcf88e500f0023d'
+sha256sums=('249358ef3b10ce99810781fedaec526a6eab943c120e4bba096aedf91c1afc40'
             'SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
