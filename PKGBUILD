@@ -1,20 +1,25 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=octoprint
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
 		python-blinker
+		python-click
+		python-colorlog
 		python-emoji
+		python-feedparser
 		python-filetype
-		python-flask-login
 		python-flask-assets
+		python-flask-babel
 		python-future
-		python-immutabledict # aur
+		python-frozendict
+		python-future
+		python-markdown
 		python-netaddr
 		python-netifaces
 		python-pathvalidate
@@ -28,7 +33,7 @@ depends=(
 		python-tornado
 		python-unidecode
 		python-websocket-client
-		python-wheel
+		python-zipstream-ng
 )
 makedepends=('python-virtualenv' 'rust')
 optdepends=('ffmpeg: timelapse support'
@@ -76,7 +81,7 @@ package() {
 	source $pkgdir/usr/lib/$pkgname/bin/activate
 
 	pushd $srcdir/OctoPrint-${pkgver}
-	pip --use-feature=in-tree-build --no-cache-dir install --install-option '--optimize=1' .
+	pip --no-cache-dir install --install-option '--optimize=1' .
 	popd
 
 	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
