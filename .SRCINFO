@@ -6,14 +6,9 @@ pkgbase = python-sarge
 	arch = any
 	license = GPL
 	makedepends = python
-	makedepends = python2
+	depends = python
+	conflicts = python-sarge-git
 	source = https://bitbucket.org/vinay.sajip/sarge/get/0.1.6.tar.gz
 	sha512sums = 8cf77141f516297cfc029b6255618f497ab94453214e61ef280dd571019a40f461d81ab9bb793b08de2dae89832e50aaf687205814b22c305e03883b9dc3bfea
 
 pkgname = python-sarge
-	depends = python
-	conflicts = python-sarge-git
-
-pkgname = python2-sarge
-	depends = python2
-	conflicts = python2-sarge-git
