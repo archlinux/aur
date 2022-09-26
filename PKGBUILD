@@ -1,8 +1,8 @@
 # Maintainer: Laurent OF Fough
 pkgname=iptvnator-bin
 _pkgname=iptvnator
-pkgver=0.8.0
-pkgrel=1
+pkgver=0.10.0
+pkgrel=2
 pkgdesc="Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -11,14 +11,14 @@ depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${_pkgname}.install
 source=("https://github.com/4gray/iptvnator/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('52c910dba4f57e507c2d6074b1d13e01b34379b0454a29213ad34ade44edf3cc')
+sha256sums=('5f3b4a1514db16e19f1a7305c1711f0d9e01c58bab2e9bf5b21e5d83c3ec2a2e')
 
 package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "${pkgdir}/opt/${_pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.${_pkgname}.chromium.html"
-	install -D -m644 "${pkgdir}/opt/${_pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.${_pkgname}.electron.txt"
+	install -D -m644 "${pkgdir}/opt/IPTVnator/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.${_pkgname}.chromium.html"
+	install -D -m644 "${pkgdir}/opt/IPTVnator/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.${_pkgname}.electron.txt"
 
 }
