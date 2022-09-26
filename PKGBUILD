@@ -1,13 +1,13 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.6.17.2
+pkgver=0.6.17.3
 pkgrel=1
 pkgdesc="Build desktop iso images, create bootable usb drives, install on usb drives."
 arch=('any')
 url="https://github.com/laurent85v/archuseriso"
 license=('GPL3')
-depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'libisoburn' 'mtools' 'squashfs-tools' 'syslinux' 'grub')
+depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils' 'grub' 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'syslinux')
 optdepends=('devtools: for building ZFS packages'
             'edk2-ovmf: for emulating UEFI with aui-run'
             'erofs-utils: for experimental EROFS support in aui-mkiso'
@@ -18,9 +18,9 @@ optdepends=('devtools: for building ZFS packages'
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('af0a1cf0ad17b2d2ef4c198cf1adb4abb0e684900f19fc7d921b9d3dd1ad990f'
+sha256sums=('96960739d283b1135ded00c5ebeb10493e45fb6308242d280e81c1eefff98625'
             'SKIP')
-b2sums=('b9e70897cf5df68f42dbd8ec007e5e5464172cc90f91c2a699e1ca2f676947a502eb735069782d07bd3794a692f8347cea533ddf1853ccf4a2a0a4e20e523cd1'
+b2sums=('19a1806692ed1d59fe7f60f11169e192a1691c8efb6cf18297c9011fe252c590b644cd1d21593b2909d71f585ff02b8f523475e65933cae02157e95401d9b17a'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
