@@ -1,0 +1,66 @@
+diff -Naur a/drivers/video/rockchip/rk_vop.c b/drivers/video/rockchip/rk_vop.c
+--- a/drivers/video/rockchip/rk_vop.c	2022-09-17 20:02:40.636754438 +0200
++++ b/drivers/video/rockchip/rk_vop.c	2022-09-17 20:02:21.401306932 +0200
+@@ -97,16 +97,6 @@
+ 	writel(fbbase, &regs->win0_yrgb_mst);
+ 	writel(0x01, &regs->reg_cfg_done); /* enable reg config */
+
+-	ret = reset_assert(dclk_rst);
+-	if (ret) {
+-		dev_warn(dev, "failed to assert dclk reset (ret=%d)\n", ret);
+-		return;
+-	}
+-	udelay(20);
+-
+-	ret = reset_deassert(dclk_rst);
+-	if (ret)
+-		dev_warn(dev, "failed to deassert dclk reset (ret=%d)\n", ret);
+
+ }
+
+@@ -373,11 +373,6 @@
+
+ 	rkvop_mode_set(dev, &timing, vop_id);
+
+-	ret = reset_get_by_name(dev, "dclk", &dclk_rst);
+-	if (ret) {
+-		dev_err(dev, "failed to get dclk reset (ret=%d)\n", ret);
+-		return ret;
+-	}
+
+ 	rkvop_enable(dev, regs, fbbase, 1 << l2bpp, &timing, &dclk_rst);
+
+@@ -422,24 +422,6 @@
+ 	if (!(gd->flags & GD_FLG_RELOC))
+ 		return 0;
+
+-	ret = reset_get_by_name(dev, "ahb", &ahb_rst);
+-	if (ret) {
+-		dev_err(dev, "failed to get ahb reset (ret=%d)\n", ret);
+-		return ret;
+-	}
+-
+-	ret = reset_assert(&ahb_rst);
+-	if (ret) {
+-		dev_err(dev, "failed to assert ahb reset (ret=%d)\n", ret);
+-	return ret;
+-	}
+-	udelay(20);
+-
+-	ret = reset_deassert(&ahb_rst);
+-	if (ret) {
+-		dev_err(dev, "failed to deassert ahb reset (ret=%d)\n", ret);
+-		return ret;
+-	}
+
+ #if defined(CONFIG_EFI_LOADER)
+ 	debug("Adding to EFI map %d @ %lx\n", plat->size, plat->base);
+@@ -442,8 +442,6 @@
+ 	}
+ 
+ #if defined(CONFIG_EFI_LOADER)
+-	debug("Adding to EFI map %d @ %lx\n", plat->size, plat->base);
+-	efi_add_memory_map(plat->base, plat->size, EFI_RESERVED_MEMORY_TYPE);
+ #endif
+ 
+ 	priv->regs = (struct rk3288_vop *)dev_read_addr(dev);

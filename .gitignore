@@ -1,0 +1,6 @@
+src/
+pkg/
+*.xz
+*.zst
+*.bin
+*.gz

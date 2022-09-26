@@ -1,0 +1,26 @@
+diff -Naur a/drivers/video/rockchip/rk3288_hdmi.c b/drivers/video/rockchip/rk3288_hdmi.c
+--- a/drivers/video/rockchip/rk3288_hdmi.c	2021-12-30 20:38:55.740008812 +0100
++++ b/drivers/video/rockchip/rk3288_hdmi.c	2021-12-30 21:04:52.856674540 +0100
+@@ -21,6 +21,14 @@
+ #include <power/regulator.h>
+ #include "rk_hdmi.h"
+ 
++static bool rk3288_hdmi_mode_valid(struct udevice *dev,
++			      const struct display_timing *timing)
++{
++	if (timing->hactive.typ > CONFIG_VIDEO_ROCKCHIP_MAX_XRES) return false;
++	if (timing->vactive.typ > CONFIG_VIDEO_ROCKCHIP_MAX_YRES) return false;
++	return true;
++}
++
+ static int rk3288_hdmi_enable(struct udevice *dev, int panel_bpp,
+ 			      const struct display_timing *edid)
+ {
+@@ -99,6 +107,7 @@
+ static const struct dm_display_ops rk3288_hdmi_ops = {
+ 	.read_edid = rk_hdmi_read_edid,
+ 	.enable = rk3288_hdmi_enable,
++	.mode_valid = rk3288_hdmi_mode_valid,
+ };
+ 
+ static const struct udevice_id rk3288_hdmi_ids[] = {

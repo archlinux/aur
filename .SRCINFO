@@ -1,0 +1,25 @@
+pkgbase = rk3288-uboot
+	pkgdesc = U-Boot for RK3288 Boards
+	pkgver = 2022.07
+	pkgrel = 1
+	url = https://github.com/u-boot/u-boot
+	install = rk3288-uboot.install
+	arch = armv7h
+	license = GPL3
+	makedepends = wget
+	makedepends = dtc
+	backup = boot/extlinux/extlinux.conf
+	source = https://github.com/u-boot/u-boot/archive/refs/tags/v2022.07.tar.gz
+	source = rockchip-write-dtbos
+	source = 95-boot.hook
+	source = 040-limit_mode_to_config_max.patch
+	source = 050-rk-vop-no-reset.patch
+	source = extlinux.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rk3288-uboot
