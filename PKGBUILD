@@ -1,6 +1,6 @@
 # Maintainer: Viktor Danov <orangeleaf12@gmail.com>
 pkgname=abacus-git
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 epoch=
 pkgdesc="A simple interactive calculator REPL with support for variables, lambdas, and more."
