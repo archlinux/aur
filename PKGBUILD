@@ -6,7 +6,7 @@
 pkgname=mingw-w64-qt6-imageformats
 _qtver=6.3.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -36,16 +36,6 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-$_arch
-
-    # Add symlinks of DLLs in usual bin directory
-    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/$_arch/bin"
-    for dll in "$pkgdir"/usr/$_arch/lib/qt6/bin/*.dll; do
-        ln -rs "$dll" "$pkgdir/usr/$_arch/bin/${dll##*/}"
-    done
-
-    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
-    find "$pkgdir/usr/$_arch/lib" -type f -name '*.prl' \
-      -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
     find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
     find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
