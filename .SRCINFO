@@ -1,7 +1,7 @@
 pkgbase = xivlauncher-cn
 	pkgdesc = Custom launcher for FFXIV CN
 	pkgver = 1.0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ottercorp/FFXIVQuickLauncher/
 	arch = x86_64
 	license = GPL
@@ -50,9 +50,7 @@ pkgbase = xivlauncher-cn
 	options = !strip
 	source = FFXIVQuickLauncher::git+https://github.com/ottercorp/FFXIVQuickLauncher.git#commit=ae08df3a025c8178d104ba8356cdb90b82362539
 	source = XIVLauncher.desktop
-	source = sdologinentry64.dll
 	sha512sums = SKIP
 	sha512sums = 7f6324cb31f99194fdd44c34b49bb3b7f04bad1b6cbb1b914959219b545bc3653643edac29134edebec82de00e36a83d1afdcc3e20f9bdaa9cbff8ceac3f5d16
-	sha512sums = 46e3eb353306e14d28f9d6ad6dde76c47e8ea724b66c95cd509f2ab28ce14ea3e7ac948953c6625714e8998e38de13107d9d5f319edb462ab3e9e0498438ae7e
 
 pkgname = xivlauncher-cn

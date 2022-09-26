@@ -2,7 +2,7 @@
 pkgname=xivlauncher-cn
 pkgver=1.0.0.9
 _pkgver=ae08df3a025c8178d104ba8356cdb90b82362539
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom launcher for FFXIV CN"
 arch=('x86_64')
 url='https://github.com/ottercorp/FFXIVQuickLauncher/'
@@ -36,18 +36,15 @@ conflicts=("xivlauncher")
 source=(
     "FFXIVQuickLauncher::git+https://github.com/ottercorp/FFXIVQuickLauncher.git#commit=${_pkgver}"
     "XIVLauncher.desktop"
-    "sdologinentry64.dll"
 )
 sha512sums=(
     'SKIP'
     '7f6324cb31f99194fdd44c34b49bb3b7f04bad1b6cbb1b914959219b545bc3653643edac29134edebec82de00e36a83d1afdcc3e20f9bdaa9cbff8ceac3f5d16'
-    '46e3eb353306e14d28f9d6ad6dde76c47e8ea724b66c95cd509f2ab28ce14ea3e7ac948953c6625714e8998e38de13107d9d5f319edb462ab3e9e0498438ae7e'
 )
 
 build() {
     mkdir -p "${srcdir}/build"
     mkdir -p "${srcdir}/build/Resources"
-    cp  "${srcdir}/sdologinentry64.dll" "${srcdir}/build/Resources/"
     cd "${srcdir}/FFXIVQuickLauncher/src/XIVLauncher.Core/"
     dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:DefineConstants=WINE_XIV_ARCH_LINUX
 }
@@ -56,7 +53,7 @@ package() {
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/opt/XIVLauncher/"
     install -D -m644 "${srcdir}/XIVLauncher.desktop" "${pkgdir}/usr/share/applications/XIVLauncher.desktop"
-    install -D -m644 "${srcdir}/FFXIVQuickLauncher/misc/linux_distrib/512.png" "${pkgdir}/share/icons/hicolor/512x512/apps/xivlauncher.png"
+    install -D -m644 "${srcdir}/FFXIVQuickLauncher/misc/linux_distrib/512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/xivlauncher.png"
     cp -r "${srcdir}/build/." "${pkgdir}/opt/XIVLauncher/"
     ln -s ../../opt/XIVLauncher/XIVLauncher.Core "${pkgdir}/usr/bin/XIVLauncher.Core"
 }
