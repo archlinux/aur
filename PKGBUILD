@@ -3,7 +3,7 @@
 
 pkgname=catppuccin-gtk-theme-macchiato
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Soothing pastel theme for GTK3 - Macchiato'
 arch=('any')
 license=('GPL3')
@@ -54,6 +54,8 @@ package() {
       "Catppuccin-Macchiato-Yellow-hdpi" \
       "Catppuccin-Macchiato-Yellow-xhdpi" \
       "Catppuccin-Macchiato-Yellow" \
+      "Catppuccin-Macchiato-hdpi" \
+      "Catppuccin-Macchiato-xhdpi" \
       "Catppuccin-Macchiato" \
       "$pkgdir/usr/share/themes"
 }
