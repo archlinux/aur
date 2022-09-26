@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-duckduckgo-search-provider-git
+	pkgdesc = KDE Connect implementation with GNOME Shell integration
+	pkgver = r9.1e87ab1
+	pkgrel = 1
+	url = https://github.com/keithamus/gnome-shell-duckduckgo-search-provider
+	arch = any
+	license = GPL-2
+	makedepends = typescript
+	depends = gnome-shell
+	optdepends = firefox: opening DuckDuckGo in Firefox
+	optdepends = chromium: opening DuckDuckGo in Chromium
+	optdepends = epiphany: opening DuckDuckGo in Epiphany
+	source = git+https://github.com/keithamus/gnome-shell-duckduckgo-search-provider
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-duckduckgo-search-provider-git
