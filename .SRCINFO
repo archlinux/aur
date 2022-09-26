@@ -1,6 +1,6 @@
 pkgbase = r-rlang
 	pkgdesc = Functions for Base Types and Core R and 'Tidyverse' Features
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rlang
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = r-rlang
 	optdepends = r-usethis
 	optdepends = r-vctrs>=0.2.3
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/rlang_1.0.5.tar.gz
-	sha256sums = 2da935e56697879ab128bec034564a6d11ea02cf479a3c92496121b72f922fab
+	source = https://cran.r-project.org/src/contrib/rlang_1.0.6.tar.gz
+	sha256sums = e6973d98a0ea301c0da1eeaa435e9e65d1c3f0b95ed68bdc2d6cb0c610166760
 
 pkgname = r-rlang
