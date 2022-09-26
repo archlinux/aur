@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-duckduckgo-search-provider-git
-	pkgdesc = KDE Connect implementation with GNOME Shell integration
+	pkgdesc = Add DuckDuckGo search suggestions to Gnome Shell Search
 	pkgver = r9.1e87ab1
 	pkgrel = 1
 	url = https://github.com/keithamus/gnome-shell-duckduckgo-search-provider
