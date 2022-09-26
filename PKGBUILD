@@ -3,7 +3,7 @@
 
 pkgname=catppuccin-gtk-theme-mocha
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Soothing pastel theme for GTK3 - Mocha'
 arch=('any')
 license=('GPL3')
@@ -39,9 +39,15 @@ package() {
 		"Catppuccin-Mocha-Grey-hdpi" \
 		"Catppuccin-Mocha-Grey-xhdpi" \
 		"Catppuccin-Mocha-Grey" \
+    "Catppuccin-Mocha-Lavender-hdpi" \
+    "Catppuccin-Mocha-Lavender-xhdpi" \
+    "Catppuccin-Mocha-Lavender" \
 		"Catppuccin-Mocha-Mauve-hdpi" \
 		"Catppuccin-Mocha-Mauve-xhdpi" \
 		"Catppuccin-Mocha-Mauve" \
+    "Catppuccin-Mocha-Peach-hdpi" \
+    "Catppuccin-Mocha-Peach-xhdpi" \
+    "Catppuccin-Mocha-Peach" \
 		"Catppuccin-Mocha-Pink-hdpi" \
 		"Catppuccin-Mocha-Pink-xhdpi" \
 		"Catppuccin-Mocha-Pink" \
@@ -54,6 +60,8 @@ package() {
 		"Catppuccin-Mocha-Yellow-hdpi" \
 		"Catppuccin-Mocha-Yellow-xhdpi" \
 		"Catppuccin-Mocha-Yellow" \
+    "Catppuccin-Mocha-hdpi" \
+    "Catppuccin-Mocha-xhdpi" \
 		"Catppuccin-Mocha" \
 		"$pkgdir/usr/share/themes"
 }
