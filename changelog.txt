@@ -1,3 +1,12 @@
+* Mon Sep 26 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.8.0-1
+  PeaZip 8.8.0 release completes the evolution of the GUI started in previous releases,
+  providing more customization options to better integrate the application in different
+  environments. It is now possible to automatically test archives after creation, and to
+  propagate Zone.Identifier stream on Windows when extracting archives.
+  TAR format support was improved, with option to follow pax or gnu standard, and to
+  save owner/group ids and names (on Linux).
+  Updated backends: 7z 22.01, Pea 1.09.
+
 * Sun Jun 26 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.7.0-1
   PeaZip 8.7.0 release comes with a simpler to use interface with re-organized options,
   improved file manager, and refreshed themes.
@@ -41,22 +50,3 @@
   It does not replaces or duplicates the function of sources package peazip-x.y.z.src, as
   it is simply meant to help packaging the application for a specific distribution system,
   rather than compiling and building the binaries of the application.
-
-* Sun Nov 21 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-5
-  - Dropped KDE 4 support from the package (https://archlinux.org/news/dropping-plasma-4).
-
-* Sun Nov 21 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.3.0-4
-  - Installable update, finally. The fix is borrowed from the peazip-qt-bin package.
-
-* Sun Nov 14 2021 Edoardo Brogiolo <edoardo@brogiolo.eu> - 8.3.0-3
-  - An attempt to fix the previous update.
-
-* Sun Nov 14 2021 Edoardo Brogiolo <edoardo@brogiolo.eu> - 8.3.0-1
-  PeaZip 8.3.0 adds Deflate and Deflate64 options for .7z format, improves theming,
-  command line usage, management of preferred checksum/hash algorithms list and
-  management of temporary work files.
-  The release is focused on improving the support for Linux, and to make easier to
-  port or package the application in environments, mandating a precise filesystem
-  hierarchy structure, separating architecture-dependent binary resources from other
-  types of resources, packaged with the application.
-  Full list of changes and fixes is available at https://peazip.github.io/changelog.html
