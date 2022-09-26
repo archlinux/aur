@@ -1,5 +1,5 @@
 pkgbase = mowitz
-	pkgdesc = Widget library
+	pkgdesc = "More Widgets" library
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://siag.nu/pub/mowitz/

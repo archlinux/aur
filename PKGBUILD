@@ -1,7 +1,7 @@
 pkgname=mowitz
 pkgver=0.3.1
 pkgrel=1
-pkgdesc="Widget library"
+pkgdesc="\"More Widgets\" library"
 arch=("x86_64")
 url="https://siag.nu/pub/mowitz/"
 license=("GPL" "LGPL" "MIT")
