@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-gtk4
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -34,7 +34,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk/${pkgver%.*}/gtk-${pkgver}.tar.xz")
 sha256sums=(
-  'c8d6203437d1e359d83124dc591546d403f67e3b00544e53dd50a9baacdcbd7f')
+  '5ce8d8de98a23bd0c8eca1a61094e1c009b5f009dcbd60b45e990a8db1b742fd')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
