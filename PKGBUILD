@@ -3,7 +3,7 @@
 ## Credit to ayatale for the systemd and config files
 
 pkgname=alist
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'alist.service'
         'alist.tmpfiles'
         'config.json')
-sha256sums=('1f8b0ae87044e161f1fb880bc70bb457424bb9fc0299ac09dc52d773ea6e03e5'
+sha256sums=('a8d9af1a920f040f7c20157c90700b58cd61e568de1527b231dc0181c5d16713'
             'b96d55f7e83310a7556a5b023be60e12f44c484e3e136f1488d737126c9ed34f'
             '48eb4f8f1070cfd2f9594fe72cb4b1a35fce091251fda11e2082f573f62ac12b'
             'ba9cd5b593313183ad8c0f008a6edba539063193c416d3893a5344e104a3fff1')
@@ -41,6 +41,17 @@ build() {
 		-X 'github.com/Xhofe/alist/conf.GoVersion=$(go version | awk '{print $3}')' \
 		-X 'github.com/Xhofe/alist/conf.GitTag=$pkgver'"
 }
+
+## FIXME: tests require an active connection
+# check() {
+# 	export CGO_CPPFLAGS="${CPPFLAGS}"
+# 	export CGO_CFLAGS="${CFLAGS}"
+# 	export CGO_CXXFLAGS="${CXXFLAGS}"
+# 	export CGO_LDFLAGS="${LDFLAGS}"
+# 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+# 	cd "$pkgname-$pkgver"
+# 	go test ./...
+# }
 
 package() {
 	cd "$pkgname-$pkgver"
