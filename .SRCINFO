@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	makedepends = glib2
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons-ng
-	source = desktop-icons-ng-8.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/9/desktop-icons-ng-9.tar.gz
+	source = desktop-icons-ng-9.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/9/desktop-icons-ng-9.tar.gz
 	sha256sums = f457287a91af3bfa78790cfc1b7277ee4ef7d8e330eab6c0c22a32a1602f3619
 	sha512sums = 86c05ea496aa536d728991d4c6ec18333c08c1361ba9d7aebaf666a98be3b28ede128e4d189e0ae19bc546830f30c0f0981eb5d3e39df9a95f9516bf8dc33325
 
