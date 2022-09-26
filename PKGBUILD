@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Exact
-_pkgver=3.1
+_pkgver=3.2
 pkgname=r-${_pkgname,,}
-pkgver=3.1
-pkgrel=4
+pkgver=3.2
+pkgrel=1
 pkgdesc='Unconditional Exact Test'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-exactdata
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d67f5c71b1209bea655d1e8d7530fa72359e0bcac25312551524501d0287e3cf')
+sha256sums=('53b4e20cbb57615970c572fc4e7a780a510bde8b5deadec3880095f6e17a6328')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
