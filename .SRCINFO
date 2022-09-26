@@ -1,6 +1,6 @@
 pkgbase = atom-community-git
 	pkgdesc = A hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors.
-	pkgver = 1.63.0_dev_eb8f6bf49
+	pkgver = 1.63.0_dev_a2bae55a7
 	pkgrel = 1
 	url = https://github.com/atom-community/atom
 	arch = x86_64
