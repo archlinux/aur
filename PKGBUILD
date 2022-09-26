@@ -20,7 +20,7 @@ optdepends=("ananicy-rules-git: community rules")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
