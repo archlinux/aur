@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "You need zaero data files to play,"
+  echo "copy them to '~/.yq2/zaero'."
+}
+
+post_upgrade() {
+  post_install
+}

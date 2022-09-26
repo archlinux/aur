@@ -1,0 +1,22 @@
+pkgbase = yamagi-quake2-zaero-git
+	pkgdesc = Zaero for yamagi-quake2 (development version)
+	pkgver = r90.d52ee31
+	pkgrel = 1
+	url = https://www.yamagi.org/quake2/
+	install = yamagi-quake2-zaero.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = sh
+	depends = yamagi-quake2
+	provides = yamagi-quake2-zaero
+	conflicts = yamagi-quake2-zaero
+	source = yamagi-quake2-zaero::git+https://github.com/yquake2/zaero.git
+	source = yamagi-quake2-zaero.sh
+	source = yamagi-quake2-zaero.desktop
+	sha256sums = SKIP
+	sha256sums = 4daeced3a4e5c3e59df0a8936fd681a26830ab140bfc86da0bc53e135ccb56ea
+	sha256sums = ad64cef29d28cd37bea07af6d396ed94a45056438664951910ea44f7e5f83ec9
+
+pkgname = yamagi-quake2-zaero-git
