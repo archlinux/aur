@@ -3,7 +3,7 @@
 
 pkgname=catppuccin-gtk-theme-latte
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Soothing pastel theme for GTK3 - Latte'
 arch=('any')
 license=('GPL3')
@@ -38,9 +38,15 @@ package() {
         "Catppuccin-Latte-Grey-hdpi" \
         "Catppuccin-Latte-Grey-xhdpi" \
         "Catppuccin-Latte-Grey" \
+        "Catppuccin-Latte-Lavender-hdpi" \
+        "Catppuccin-Latte-Lavender-xhdpi" \
+        "Catppuccin-Latte-Lavender" \
         "Catppuccin-Latte-Mauve-hdpi" \
         "Catppuccin-Latte-Mauve-xhdpi" \
         "Catppuccin-Latte-Mauve" \
+        "Catppuccin-Latte-Peach-hdpi" \
+        "Catppuccin-Latte-Peach-xhdpi" \
+        "Catppuccin-Latte-Peach" \
         "Catppuccin-Latte-Pink-hdpi" \
         "Catppuccin-Latte-Pink-xhdpi" \
         "Catppuccin-Latte-Pink" \
@@ -53,6 +59,8 @@ package() {
         "Catppuccin-Latte-Yellow-hdpi" \
         "Catppuccin-Latte-Yellow-xhdpi" \
         "Catppuccin-Latte-Yellow" \
+        "Catppuccin-Latte-hdpi" \
+        "Catppuccin-Latte-xhdpi" \
         "Catppuccin-Latte" \
         "$pkgdir/usr/share/themes"
 }
