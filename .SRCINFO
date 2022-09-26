@@ -1,7 +1,7 @@
 pkgbase = scuolabook
 	pkgdesc = Puoi leggere su computer desktop, sul portatile e sul tablet i tuoi libri scolastici digitali.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scuolabook.it/applicazioni
 	arch = x86_64
 	license = custom
@@ -12,11 +12,10 @@ pkgbase = scuolabook
 	depends = libxrandr
 	depends = qt5-svg
 	depends = qt5-webkit
-	noextract = Scuolabook_3.3.0_amd64_16.04.deb
+	noextract = Scuolabook_3.3.0_18.04_amd64.deb
 	source = license
-	source = https://cdn-support.scuolabook.it/3.3/Scuolabook_3.3.0_amd64_16.04.deb
+	source = https://cdn-support.scuolabook.it/3.3/Scuolabook_3.3.0_amd64_18.04.deb
 	md5sums = 94f26429ae1b95e18457020be1d7dc08
-	md5sums = b7c056dcdb0553f6c7e3442980722e1c
+	md5sums = 6c9b64779790432d7e40a448f202db5b
 
 pkgname = scuolabook
-
