@@ -10,7 +10,7 @@ pkgdesc="Multiplatform transparent client-side encryption of your files in the c
 arch=('x86_64')
 url="https://cryptomator.org/"
 license=('GPL3')
-depends=('fuse2')
+depends=('fuse2' 'ttf-dejavu')
 provides=('cryptomator')
 conflicts=('cryptomator')
 replaces=('cryptomator')
@@ -21,7 +21,7 @@ source=("cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage::https://github.com/cry
         'org.cryptomator.Cryptomator.png'
         'org.cryptomator.Cryptomator.svg'
         'cryptomator-vault.xml')
-sha256sums=('SKIP'
+sha256sums=('54c1b455c6cb18c8cee718681932e36e547f6bfcb1cf792a85a6cf570c401f06'
             'SKIP'
             '53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e'
             'd299636d78d093117fa7a26563f22e01cdb75b1fcc6cc279bc88627574c968bd'
