@@ -8,6 +8,6 @@ pkgbase = dupefi
 	makedepends = go>=1.18
 	provides = dupefi
 	source = https://github.com/hirak99/dupefi/archive/refs/tags/v1.0.tar.gz
-	md5sums = SKIP
+	md5sums = e54a64734ab3950f06b33828d1e99910
 
 pkgname = dupefi
