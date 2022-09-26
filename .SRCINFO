@@ -1,11 +1,12 @@
 pkgbase = perl-unicode-utf8
 	pkgdesc = Encoding and decoding of UTF-8 encoding form
 	pkgver = 0.62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Unicode-UTF8
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-test-fatal
 	depends = perl
 	options = !emptydirs
 	options = purge
