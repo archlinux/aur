@@ -4,7 +4,7 @@ pkgbase=python-sphinx_design
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A sphinx extension for designing beautiful, screen-size responsive web components"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-flit-core'
              'python-installer')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('118bdf14990a0420f6a27be69ef3de78')
+md5sums=('8283e2917f9bf3b1ab5688deb6a1aaa5')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

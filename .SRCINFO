@@ -1,6 +1,6 @@
 pkgbase = python-sphinx_design
 	pkgdesc = A sphinx extension for designing beautiful, screen-size responsive web components
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://sphinx-design.readthedocs.io
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-sphinx_design
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_design/sphinx_design-0.2.0.tar.gz
-	md5sums = 118bdf14990a0420f6a27be69ef3de78
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_design/sphinx_design-0.3.0.tar.gz
+	md5sums = 8283e2917f9bf3b1ab5688deb6a1aaa5
 
 pkgname = python-sphinx_design
 	depends = python-sphinx<6
