@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-graphene
-pkgver=1.10.6
+pkgver=1.10.8
 pkgrel=1
 pkgdesc='A thin layer of graphic data types (mingw-w64)'
 arch=('any')
@@ -15,9 +15,9 @@ depends=(
   'mingw-w64-glib2>=2.30.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
-  "https://github.com/ebassi/graphene/releases/download/${pkgver}/graphene-${pkgver}.tar.xz")
+  "graphene-${pkgver}.tar.gz::https://github.com/ebassi/graphene/archive/${pkgver}.tar.gz")
 sha256sums=(
-  '80ae57723e4608e6875626a88aaa6f56dd25df75024bd16e9d77e718c3560b25')
+  '922dc109d2dc5dc56617a29bd716c79dd84db31721a8493a13a5f79109a4a4ed')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
