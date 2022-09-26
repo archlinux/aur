@@ -11,13 +11,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('SKIP')
 
 prepare() {
-    export GOPATH="$srcdir/gopath"
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build/
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+    export GOPATH="$srcdir/gopath"
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
