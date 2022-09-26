@@ -2,7 +2,7 @@
 
 _pkgnamebase=cppfront
 pkgname=${_pkgnamebase}-git
-pkgver=r250.5b100f6
+pkgver=r264.8d5c9b7
 pkgrel=1
 pkgdesc="Experimental and incomplete compiler for proposed C++ 'syntax 2'"
 arch=('x86_64')
@@ -30,6 +30,6 @@ package() {
     install -Dm755 "$srcdir/${_pkgnamebase}/source/cppfront" \
         -t "$pkgdir/usr/bin/"
 
-    install -Dm755 "$srcdir/${_pkgnamebase}/include/cpp2util.h" \
+    install -Dm644 "$srcdir/${_pkgnamebase}/include/cpp2util.h" \
         -t "$pkgdir/usr/include/"
 }
