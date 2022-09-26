@@ -18,18 +18,6 @@ diff -rNc lxdui-2.1.1-orig/app/api/core.py lxdui-2.1.1/app/api/core.py
   
   # Authentication section
   initAuth(app)
-***************
-*** 133,136 ****
-      print("LXDUI started. Running on http://0.0.0.0:{}".format(port))
-      print("PID={}, Press CTRL+C to quit".format(pid))
-      terminal(app, port, debug)
-!     # app.run(debug=debug, host='0.0.0.0', port=port)
-\ No newline at end of file
---- 133,136 ----
-      print("LXDUI started. Running on http://0.0.0.0:{}".format(port))
-      print("PID={}, Press CTRL+C to quit".format(pid))
-      terminal(app, port, debug)
-!     # app.run(debug=debug, host='0.0.0.0', port=port)
 diff -rNc lxdui-2.1.1-orig/app/__metadata__.py lxdui-2.1.1/app/__metadata__.py
 *** lxdui-2.1.1-orig/app/__metadata__.py	2018-06-18 22:36:37.000000000 +0300
 --- lxdui-2.1.1/app/__metadata__.py	2018-07-02 15:35:41.889414434 +0300

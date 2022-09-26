@@ -1,8 +1,8 @@
-# Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
+# Maintainer: pappy <pa314159@users.noreply.github.com>
 
 _pkgname=lxdui
 pkgname=$_pkgname-git
-pkgver=0
+pkgver=2.2.0.839.48e1e06
 pkgrel=1
 
 srcver() {
@@ -40,7 +40,7 @@ install=lxdui.install
 backup=(etc/lxdui/lxdui.conf
 		etc/lxdui/log.conf
 		etc/lxdui/auth.conf)
-source=($pkgname::git+https://github.com/AdaptiveScale/$_pkgname
+source=("$pkgname::git+https://github.com/AdaptiveScale/$_pkgname#branch=develop"
 
 		$_pkgname.conf
 		$_pkgname.sysusers
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'b149cf164d32659b95802d0e4e455e98736de0d0ece519c48eae2eb846c35f3c'
             '4f96bb6af509e6dacf97e2298da9f2bf783f46279c6957ed288fed478206696d'
             '7487a9b77522a23b1be4c02961f46917d48b9c617d669843bbf26c4fd285d75d'
-            '929c933ed0085d74972fd20c14f07b01ad4aaaff93c84897527868424447ef1f')
+            '832a8e044f4eaa0221a151f6cfc7a7f99c97bb5526944585d2fbf4d5162433f6')
 
 prepare()
 {
@@ -90,7 +90,7 @@ package() {
 	install -Dm644 $_pkgname.tmpfiles $pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf
 
 	PYVER=$($pkgdir/usr/lib/$_pkgname/bin/python --version|cut -d\  -f2|cut -d. -f1,2)
-	mv $pkgdir/usr/lib/$_pkgname/lib/python$PYVER/site-packages/LXDUI-$(srcver)-py$PYVER.egg/conf/* $pkgdir/etc/$_pkgname
+	mv $pkgdir/usr/lib/$_pkgname/lib/python$PYVER/site-packages/conf/* $pkgdir/etc/$_pkgname
 	chmod 600 $pkgdir/etc/$_pkgname/auth.conf
 }
 
