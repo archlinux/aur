@@ -3,13 +3,13 @@
 pkgname=astrofox
 pkgver=1.4.0
 pkgrel=3
+_electron=electron19
 pkgdesc="A motion graphics program that lets turn audio into amazing videos"
 arch=('any')
 url="https://astrofox.io"
 license=('MIT')
-_electron=electron19
 depends=(${_electron} ffmpeg)
-makedepends=(yarn asar sed)
+makedepends=(yarn asar sed 'jq' 'moreutils')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/astrofox-io/astrofox/archive/refs/tags/v${pkgver}.tar.gz"
 ${pkgname}.sh
 ${pkgname}.desktop
@@ -19,34 +19,42 @@ sha512sums=('bf0adc3ea6f8a388c3e08b93ba70fdb950ec36cf847a9382e516e735506a8f0c0eb
             'b4b3828b1216adf3cf1105074b64bfbd6fd440fb61da7a389a3e6b172e6607c90de3218e6762997344d861dc10fbc2b3ecbccf02d01a292918b89eed3903bcf2')
 
 prepare() {
-     # patch for system ffmpeg
+    # patch for system ffmpeg
     cd $srcdir/${pkgname}-${pkgver}
 
+    # system ffmpeg
     sed -i "s#^export const FFMPEG_BINARY.*#export const FFMPEG_BINARY = '/usr/bin/ffmpeg';#g" \
         src/main/environment.js
+    # set electron in script
+    sed -i "s|_ELECTRON_|${_electron}|g" ${srcdir}/${pkgname}.sh
 
     cd $srcdir/${pkgname}-${pkgver}
     export HOME=$srcdir
-    # delete electron & electron-builder to install deps fast
-    sed -i '/"electron"/d' package.json
-    sed -i '/"electron-builder"/d' package.json
+    # system electron
+    local electronDist="/usr/lib/${_electron}"
+	local electronVersion="$(< $electronDist/version)"
+	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
+	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+
+    # disable in-app update
     sed -i 's|"autoUpdate": true,|"autoUpdate": false,|g' src/config/app.json
-    yarn install
+    sed -i 's|"checkForUpdates": true,|"checkForUpdates": false,|g' src/config/app.json
+
+    # fix entry
+    jq ".version = \"$pkgver\"" package.json | sponge package.json
+    jq '.main = "main.js"' package.json | sponge package.json
+
+
+    yarn install --prod
+    yarn add webpack
     yarn run  build-main  && yarn run build-prod
 
-    # prepare for asar entry
-    sed -i '13,$d' package.json
-    echo '''    "main": "main.js",
-    "dependencies": {}
-}
-''' >> package.json
     cp package.json app/
 
     rm app/*.map
     mv app/dev-app-update.yml app/app-update.yml
     asar pack app/ ${pkgname}.asar
-
-    sed -i "s|_ELECTRON_|${_electron}|g" ${srcdir}/${pkgname}.sh
 
 }
 
