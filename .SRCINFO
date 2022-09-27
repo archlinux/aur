@@ -1,0 +1,22 @@
+pkgbase = dropbear-git
+	pkgdesc = Small SSH server and client
+	pkgver = 2022.82.r21.g17e02fe
+	pkgrel = 1
+	url = https://matt.ucc.asn.au/dropbear/dropbear.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = pam
+	depends = zlib
+	provides = dropbear=2022.82.r21.g17e02fe
+	conflicts = dropbear
+	source = git+https://github.com/mkj/dropbear.git
+	source = dropbear.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/dropbear.service
+	source = localoptions.h::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/localoptions.h
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dropbear-git
