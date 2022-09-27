@@ -1,6 +1,6 @@
 pkgbase = josm-tested
 	pkgdesc = An editor for OpenStreetMap written in Java
-	pkgver = 18463
+	pkgver = 18543
 	pkgrel = 1
 	url = https://josm.openstreetmap.de/
 	arch = any
@@ -13,12 +13,12 @@ pkgbase = josm-tested
 	depends = ttf-font
 	provides = josm
 	conflicts = josm
-	noextract = josm-snapshot-18463.jar
+	noextract = josm-snapshot-18543.jar
 	backup = etc/conf.d/josm
-	source = https://josm.openstreetmap.de/download/josm-snapshot-18463.jar
+	source = https://josm.openstreetmap.de/download/josm-snapshot-18543.jar
 	source = josm.conf.d
-	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18463
-	sha256sums = fbef17b73032909fbce4abf3cb7c60699a0a695949c33f82b75c5bfd0902d467
+	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18543
+	sha256sums = 01099d07080e570b3c303017f22dcfedbb24debebd83bc778e10031b04566b67
 	sha256sums = 29377ce55c50951b1bd0e39003a977d8ea558c0657d613cea5f0056ce255e60e
 	sha256sums = SKIP
 
