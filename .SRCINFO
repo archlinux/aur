@@ -1,12 +1,12 @@
 pkgbase = flow-cli
 	pkgdesc = A command-line interface that provides useful utilities for building Flow applications
-	pkgver = 0.40.0
+	pkgver = 0.40.1
 	pkgrel = 1
 	url = https://docs.onflow.org/flow-cli/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	source = https://github.com/onflow/flow-cli/archive/refs/tags/v0.40.0.tar.gz
-	sha512sums = c86d807fc4cc892d1a6116cae08516acf7bc93090ad6f5550cda8004e40cc67c99f0763661ceae138d3b8c53d5e6d4301ee7dfb69181fea1796a91787dc695c5
+	source = https://github.com/onflow/flow-cli/archive/refs/tags/v0.40.1.tar.gz
+	sha512sums = baf3c1426804f916a9317efeb1fd3f3e358fd8e3ca70a83fab9b605e57bddcf9539117eba70ecaed608f1f51357b0ae2c429e12795769f621f2ea303d83ccc21
 
 pkgname = flow-cli
