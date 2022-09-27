@@ -1,0 +1,21 @@
+pkgbase = slack-export-viewer
+	pkgdesc = A Slack Export archive viewer
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/hfaran/slack-export-viewer
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm-git-archive
+	makedepends = python-wheel
+	depends = python-click
+	depends = python-emoji
+	depends = python-flask
+	depends = python-markdown2
+	source = slack-export-viewer-1.1.4.tar.gz::https://github.com/hfaran/slack-export-viewer/archive/refs/tags/1.1.4.tar.gz
+	b2sums = 1f62287573e98c63a3c2dab9cd3c57aff9c036bcc72aab6a123023e2cb3027e47e3fe80e25812c2d9c4bfa18081f186bcd7dd3ca873d6a00a944dbd477e853ca
+
+pkgname = slack-export-viewer
