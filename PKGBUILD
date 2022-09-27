@@ -3,7 +3,7 @@
 #
 
 pkgname=aurtool-zsh-git
-pkgver=2.0_alpha.5
+pkgver=2.0_alpha.6
 pkgrel=1
 pkgdesc="A lightweight aur package management utility written in zshell"
 arch=('any')
