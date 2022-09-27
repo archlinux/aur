@@ -1,6 +1,6 @@
 pkgbase = devbox-bin
 	pkgdesc = A cli tool to easily create isolated shells and containers with nix.
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/jetpack-io/devbox
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = devbox-bin
 	depends = nix
 	optdepends = docker
 	provides = devbox
-	source = https://github.com/jetpack-io/devbox/releases/download/0.0.6/devbox_0.0.6_linux_amd64.tar.gz
-	sha256sums = d6ce91848d2f14872cda25464c7de9609fb71f6d0a41d28469c72aebb251c6d0
+	source = https://github.com/jetpack-io/devbox/releases/download/0.0.7/devbox_0.0.7_linux_amd64.tar.gz
+	sha256sums = b5599600bc1ece12bb9575f5e9dc2ad1477a8cf84ae9984a9144cf0c3505c05c
 
 pkgname = devbox-bin
