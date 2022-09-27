@@ -1,4 +1,4 @@
-##
+#PKGBUILD was last modified on September 27, 2022 at 03:53 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 
 pkgname=guile-config-git
@@ -15,18 +15,22 @@ url="https://gitlab.com/a-sassmannshausen/guile-config"
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   git describe --tags | sed 's+-+.r+' | sed 's+^v++' | tr - .
 }
 
-build() {
-  cd ${pkgname%-git}
+prepare() {
+  cd "${pkgname%-git}"
   autoreconf -vif
   ./configure --prefix=/usr
+}
+
+build() {
+  cd "${pkgname%-git}"
   make
 }
 
 package() {
-  cd ${pkgname%-git}
-  make DESTDIR="$pkgdir/" install
+  cd "${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
