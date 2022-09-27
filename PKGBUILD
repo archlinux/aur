@@ -1,9 +1,9 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-uosc-git
 _gitname=uosc
-pkgver=3.1.2.r164.gdf37ca7
+pkgver=4.0.1.r7.g18f5660
 pkgrel=1
-pkgdesc='Minimalist cursor proximity based UI for MPV player'
+pkgdesc='Feature-rich minimalist proximity-based UI for MPV player'
 arch=(x86_64)
 url=https://github.com/tomasklaen/uosc
 license=(
