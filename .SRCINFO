@@ -1,7 +1,7 @@
 pkgbase = macchina-bin
 	pkgdesc = A system information fetcher/frontend, with an (unhealthy) emphasis on performance
 	pkgver = 6.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/macchina-cli/macchina
 	arch = aarch64
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = macchina-bin
 	optdepends = wmctrl
 	provides = macchina=6.1.6
 	conflicts = macchina
-	source_aarch64 = macchina-bin-6.1.6-3-aarch64::https://github.com/macchina-cli/macchina/releases/download/v6.1.6/macchina-linux-aarch64
+	source_aarch64 = macchina-bin-6.1.6-4-aarch64::https://github.com/macchina-cli/macchina/releases/download/v6.1.6/macchina-linux-aarch64
 	sha256sums_aarch64 = bb0f471538eab4d5714977b173be81ce009a053a1796bc41f6aa9256ea6ba5c6
-	source_x86_64 = macchina-bin-6.1.6-3-x86_64::https://github.com/macchina-cli/macchina/releases/download/v6.1.6/macchina-linux-x86_64
+	source_x86_64 = macchina-bin-6.1.6-4-x86_64::https://github.com/macchina-cli/macchina/releases/download/v6.1.6/macchina-linux-x86_64
 	sha256sums_x86_64 = 33f157858261c913d42dd6e1b9b9d22a23148537e6ea9dea25e4f26b250001f3
 
 pkgname = macchina-bin
