@@ -1,10 +1,10 @@
 # Maintainer: articpenguin <julia.schweinz at mailfence dot com>
-# Contributor: micwoj92
+# Contributor: Michal Wojdyla <micwoj9292 at gmail dot com>
 
 pkgname=ilua-git
 _pkgname=ilua
 pkgver=0.2.1.r135.05eb181
-pkgrel=2
+pkgrel=3
 pkgdesc="Portable Lua kernel for Jupyter "
 arch=(any)
 url="https://github.com/guysv/ilua"
@@ -18,11 +18,15 @@ depends=(
  python-twisted
  python-termcolor
  python-pygments
- python-service-identity
 )
 makedepends=(
  python-setuptools
+ #python-setuptools-scm
+ python-wheel
  git
+)
+optdepends=(
+ 'python-service-identity: for TLS client hostname verification'
 )
 provides=('ilua')
 #conflicts=('')  # It installs the kernel in /usr/share/jupyter/kernels/lua, not sure if it would conflict with other Lua Jupyter kernels packaged in the future
