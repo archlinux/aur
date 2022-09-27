@@ -1,6 +1,6 @@
 pkgbase = chrysalis
 	pkgdesc = Graphical configurator for Kaleidoscope-powered keyboards
-	pkgver = 0.11.3
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://github.com/keyboardio/Chrysalis
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = chrysalis
 	depends = electron19
 	depends = fuse2
 	depends = uucp
-	source = https://github.com/keyboardio/Chrysalis/archive/v0.11.3/Chrysalis-0.11.3.tar.gz
+	source = https://github.com/keyboardio/Chrysalis/archive/v0.11.4/Chrysalis-0.11.4.tar.gz
 	source = chrysalis.sh
-	sha256sums = 8160e78732d94bd08913d2a431fb0178b06bad013497d7d5392f569159462aba
+	sha256sums = c62076479f8db13530db597079e39218a9d600eeba8d9728044a10c81c86de33
 	sha256sums = 9de3ff052ca4600862b8663b93bf2b4223cf2e637995c67e1fe4cb4ed893b39f
 
 pkgname = chrysalis
