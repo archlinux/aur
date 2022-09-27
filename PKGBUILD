@@ -1,17 +1,16 @@
 pkgname=sqlconvert-tools
-pkgdesc="convert sql server to sqlite"
-pkgver=v0.0.1.r14.g077a8c2
+pkgdesc="sql database convert tools, mssql to sqlite or sqlite to mssql or mssql-transfer data"
+pkgver=v0.0.3.r4.g7c5e8d0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
 license=('GPL3')
-makedepends=('git')
+depends=('dotnet-runtime')
+makedepends=('git' 'dotnet-sdk')
 source=(
   'git+https://github.com/vcup/SqlConvertTools'
-  'https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh'
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
 )
 
@@ -20,18 +19,14 @@ pkgver() {
   git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare(){
-  [[ -d "${srcdir}/dotnet-sdk" ]] && rm -rf "${srcdir}/dotnet-sdk"
-  bash "${srcdir}/dotnet-install.sh" --install-dir "${srcdir}/dotnet-sdk" --channel Current --no-path
   cd "${srcdir}/SqlConvertTools"
   git submodule update --init --recursive
 }
 check(){
   cd "${srcdir}/SqlConvertTools"
-  PATH="${srcdir}/dotnet-sdk:${PATH}"
 }
 build(){
   cd "${srcdir}/SqlConvertTools"
-  PATH="${srcdir}/dotnet-sdk:${PATH}"
   dotnet restore ./SqlConvertTools.sln
   dotnet publish ./SqlConvertTools/SqlConvertTools.csproj -c "Release" \
     --nologo --force --output ./out
