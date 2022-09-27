@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-shell-configurator
 _pkgname=shell-configurator
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Configure and customize GNOME Shell with advanced settings."
 arch=('any')
 url="https://gitlab.com/adeswantaTechs/shell-configurator"

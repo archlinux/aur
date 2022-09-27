@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-shell-configurator
 	pkgdesc = Configure and customize GNOME Shell with advanced settings.
 	pkgver = 5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/adeswantaTechs/shell-configurator
 	arch = any
 	license = GPL3
