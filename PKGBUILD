@@ -1,4 +1,5 @@
-# Maintainer:  Johannes Löthberg <johannes@kyriasis.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor:  Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Alexander Minges <alexander.minges@gmail.com>
 # Contributor: TDY <tdy@archlinux.info>
 # Contributor: Andrzej Wąsowski <wasowski@data.pl>
@@ -7,32 +8,44 @@
 # Contributor: Vo Van Hong Ngoc <vhngoc@ubuntu-vn.org>
 
 pkgname=rawdog
-pkgver=2.23
-pkgrel=2
-
-pkgdesc="RSS Aggregator Without Delusions Of Grandeur"
-url="https://offog.org/code/rawdog.html"
+pkgver=3.0.rc0
+pkgrel=1
+pkgdesc='RSS Aggregator Without Delusions Of Grandeur'
 arch=('any')
-license=('GPL' 'LGPL')
+url='https://github.com/echarlie/rawdog-py3'
+license=('GPL2')
+depends=('python' 'python-feedparser')
+makedepends=('git' 'python-setuptools')
+optdepends=('python-tidylib')
+_commit='6ce74c30309e4353ec86e7a62fceddbd979f04f3'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
 
-depends=('python2-feedparser')
+pkgver() {
+  cd "$pkgname"
 
-install=rawdog.install
+  git describe --tags | sed -e 's/^v//' -e 's/-/./g'
+}
 
-source=("https://offog.org/files/rawdog-$pkgver.tar.gz")
+prepare() {
+  cd "$pkgname"
 
-sha1sums=('171520c909fae81ac8ec0e063e7ca36593aae372')
+  # FTBFS:
+  #   fix missing comma in setup.py
+  #   fix sys version check
+  # https://github.com/echarlie/rawdog-py3/pull/1
+  sed -e 's/\(\turl.*$\)/\1,/' -i setup.py
+  sed -e 's/sys.version_info !=/sys.version_info <=/' -i setup.py
+}
 
 build() {
-	cd rawdog-"$pkgver"
+  cd "$pkgname"
 
-	python2 setup.py build
+  python setup.py build
 }
 
 package() {
-	cd rawdog-"$pkgver"
+  cd "$pkgname"
 
-	python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-	install -Dm644 config "$pkgdir/usr/share/$pkgname/config"
-	install -Dm644 style.css "$pkgdir/usr/share/$pkgname/style.css"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
