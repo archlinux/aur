@@ -8,8 +8,8 @@
 pkgname=lib32-luajit
 # LuaJIT has abandoned versioned releases and now advises using git HEAD
 # https://github.com/LuaJIT/LuaJIT/issues/665#issuecomment-784452583
-_commit=5677985dc1f19cf0a67112f4365c7fb79237fa16
-pkgver="2.1.0.beta3.r431.g${_commit::8}"
+_commit=dad04f1754723e76ba9dcf9f401f3134a0cd3972
+pkgver="2.1.0.beta3.r449.g${_commit::8}"
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1 (32-bit)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ url="https://luajit.org/"
 license=('MIT')
 depends=('lib32-gcc-libs' 'luajit')
 source=("LuaJIT-${_commit}.tar.gz::https://repo.or.cz/luajit-2.0.git/snapshot/${_commit}.tar.gz")
-sha256sums=('d0538dcca7243afc3cd4a3d5def799860d96970818af8cf2cf46515c1e8b5e6d')
+sha256sums=('80a4f3ed14dc83b5ba394308464250771ab69e7281c7a879c65fb2ba97153338')
 
 build() {
   cd "luajit-2.0-${_commit::7}"
