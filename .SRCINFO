@@ -1,16 +1,17 @@
 pkgbase = udis86-git
-	pkgdesc = Disassembler library for x86
-	pkgver = 1.7.2.84.g56ff6c8
+	pkgdesc = Minimalistic disassembler library
+	pkgver = 1.7.2.r185.g2738fe5
 	pkgrel = 1
-	url = http://udis86.sourceforge.net
-	arch = i686
+	url = https://github.com/canihavesomecoffee/udis86
 	arch = x86_64
-	license = custom:BSD-2-clause
+	license = BSD
 	makedepends = git
-	makedepends = python2
-	provides = udis86
-	conflicts = udis86
-	source = git+https://github.com/vmt/udis86.git
-	sha512sums = SKIP
+	makedepends = python
+	makedepends = python-sphinx
+	depends = glibc
+	provides = libudis86.so
+	source = udis86::git+https://github.com/canihavesomecoffee/udis86?signed
+	validpgpkeys = A5DD905196EF3973280DA13CB965BC5D279F42ED
+	sha256sums = SKIP
 
 pkgname = udis86-git
