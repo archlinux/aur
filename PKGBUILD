@@ -1,10 +1,10 @@
 pkgname=generax
 _pkgname=GeneRax
 pkgver=2.0.4
-pkgrel=1
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/BenoitMorel/GeneRax"
-pkgdescr="A Tool for Species-Tree-Aware Maximum Likelihood-Based Gene  Family Tree Inference under Gene Duplication, Transfer, and Loss https://doi.org/10.1093/molbev/msaa141"
+pkgdesc="A Tool for Species-Tree-Aware Maximum Likelihood-Based Gene  Family Tree Inference under Gene Duplication, Transfer, and Loss https://doi.org/10.1093/molbev/msaa141"
 depends=('gcc-libs' 'gmp')
 makedepends=('cmake' 'make' 'gcc' 'openmpi'  'bison' 'flex' 'git')
 license=('AGPL')
