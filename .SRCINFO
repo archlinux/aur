@@ -1,6 +1,6 @@
 pkgbase = kpt-bin
 	pkgdesc = Toolchain which simplifies managing Kubernetes platforms and KRM-driven infrastructure
-	pkgver = 1.0.0_beta.20
+	pkgver = 1.0.0_beta.21
 	pkgrel = 1
 	url = https://kpt.dev
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kpt-bin
 	depends = kubectl
 	provides = kpt
 	conflicts = kpt
-	source = kpt-1.0.0-beta.20::https://github.com/GoogleContainerTools/kpt/releases/download/v1.0.0-beta.20/kpt_linux_amd64
-	b2sums = 6a3fc7fc1b60ea9a390bc74bcc9c2e390045413b9c37ca2be82c65543ff75e6ad7a0d389255da8175adc61593f3ac1caea3eade87231930afcdaa2ec2797f65a
+	source = kpt-1.0.0-beta.21::https://github.com/GoogleContainerTools/kpt/releases/download/v1.0.0-beta.21/kpt_linux_amd64
+	b2sums = c0b211f32cb7137053f05d286ba8b2bed7badef90a2f07c3dfae7e23ad27fad1daaba799018fdc76681f421fa70bd42cbbefe0de867584737af2b4d86dee7b70
 
 pkgname = kpt-bin
