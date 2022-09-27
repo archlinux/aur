@@ -1,14 +1,14 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=openttd-openmsx
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Free music set for openttd"
 arch=('any')
 url="http://www.openttd.org"
 license=('GPL')
 source=("https://cdn.openttd.org/openmsx-releases/${pkgver}/openmsx-${pkgver}-all.zip")
-sha256sums=('7698cadf06c44fb5e847a5773a22a4a1ea4fc0cf45664181254656f9e1b27ee2')
+sha256sums=('5a4277a2e62d87f2952ea5020dc20fb2f6ffafdccf9913fbf35ad45ee30ec762')
 depends=(timidity++ freepats-general-midi)
 
 prepare() {
