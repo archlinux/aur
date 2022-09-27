@@ -1,7 +1,7 @@
 # Maintainer: Haoqing Chen <chenhq2005@gmail.com>
 # Special thanks to PKGBUILD authors of the goneovim-bin AUR package for the desktop profile and icon
 pkgname=goneovim-git
-pkgver=r2327.7d6f2bd
+pkgver=r2332.c87cba6
 pkgrel=1
 pkgdesc="Neovim GUI written in Golang, using a Golang qt backend (git build)"
 arch=('x86_64')
@@ -35,6 +35,7 @@ build() {
     cd "$srcdir/${pkgname%-git}/cmd/goneovim"
     $(go env GOPATH)/bin/qtdeploy build desktop
     cp -pR ../../runtime ./deploy/linux/
+    sed -e 's/\/path\/to\/goneovim\/goneovim/\/opt\/goneovim\/goneovim/' -e 's/\/path\/to\/goneovim.ico/\/usr\/share\/pixmaps\/goneovim.ico/' -i "${srcdir}/${pkgname%-git}/cmd/goneovim/goneovim.desktop"
 }
 
 package() {
