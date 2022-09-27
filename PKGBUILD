@@ -1,7 +1,7 @@
-# Maintainer: Gabriel M. Dutra <gmdutra98@gmail.com>
+# Maintainer: Gabriel M. Dutra <0xdutra@gmail.com>
 
 pkgname=tflint
-pkgver=0.36.2
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="A linter for Terraform code"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver-source.tar.gz::https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('a5d4d9c036d9f671381c2feb3d84db3f293b53b89862bc1c72f327b6645a31d4')
+sha256sums=('5d1535e3a10d8edc403f06bac0035ae4d533a1b2127cb773c5941d84b0a1202b')
 _vendorpath="gopath/src/$_vendor"
 
 build() {

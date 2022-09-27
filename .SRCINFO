@@ -1,13 +1,13 @@
 pkgbase = tflint
 	pkgdesc = A linter for Terraform code
-	pkgver = 0.36.2
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/terraform-linters/tflint
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = tflint-0.36.2-source.tar.gz::https://github.com/terraform-linters/tflint/archive/v0.36.2.tar.gz
-	sha256sums = a5d4d9c036d9f671381c2feb3d84db3f293b53b89862bc1c72f327b6645a31d4
+	source = tflint-0.41.0-source.tar.gz::https://github.com/terraform-linters/tflint/archive/v0.41.0.tar.gz
+	sha256sums = 5d1535e3a10d8edc403f06bac0035ae4d533a1b2127cb773c5941d84b0a1202b
 
 pkgname = tflint
