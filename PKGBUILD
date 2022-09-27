@@ -2,70 +2,46 @@
 
 _basename=lilv
 pkgname=lib32-lilv
-pkgver=0.24.14
+pkgver=0.24.20
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard (32-bit)"
 arch=(x86_64)
-url="https://drobilla.net/software/lilv/"
+url="https://drobilla.net/software/lilv.html"
 license=(ISC)
 depends=(lib32-glibc lib32-lv2 lib32-serd lib32-sord lib32-sratom lilv)
-makedepends=(lib32-libsndfile waf)
-source=(https://download.drobilla.net/${_basename}-${pkgver}.tar.bz2{,.sig})
-sha512sums=('f266e91f3cbc325c25dd7d08bde5033091cb3072c2dcb1490e9474f562b798dbc71c45ca7d971ed4dfd6bb16f5f6725ae242a58c4486684b71350e73f1469f47'
+makedepends=(lib32-libsndfile meson)
+source=(https://download.drobilla.net/${_basename}-${pkgver}.tar.xz{,.sig})
+sha512sums=('68963b66fd6e577280867fcd5a601fd2cf539a10fcf0b667c22165cc7e42206fd6a20d56dbe97b587fb68f798d4db3b2351b87b1243c665c3a2b1bb82cbbf9a3'
             'SKIP')
-b2sums=('bc84fe5a4bf34f88ea7f9c09cb3168186f7f0fd2f3f23b08f55100502d959fd74fe7e1c6d9307772b1983fbeedde100f75d6751e9bf92a9663aaaa115ca0770c'
+b2sums=('50b2044a7fb62cfcbea6dc68cd0d26503780f30a5a04e2ceafca9e02b2369965d7d27b8d08bbfa136930a3b18a3e0eb6cf4c326d3c2d46218badb4a8ec6e1e01'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
-
-prepare() {
-    cd $_basename-$pkgver
-
-    # let wscript(s) find the custom waf scripts
-    mkdir -pv tools
-    touch __init__.py
-    cp -v waflib/extras/{autoship,autowaf,lv2}.py tools/
-    mkdir -pv plugins/tools/
-    cp -v waflib/extras/{autoship,autowaf,lv2}.py plugins/tools/
-    rm -rv waflib
-    sed -e 's/waflib.extras/tools/g' \
-        -e "s/load('autowaf'/load('autowaf', tooldir='tools'/g" \
-        -e "s/load('lv2'/load('lv2', tooldir='tools'/g" \
-        -i wscript
-}
 
 build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    export LINKFLAGS="$LDFLAGS"
+    arch-meson $_basename-$pkgver build \
+        --libdir='/usr/lib32' \
+        -Dbindings_py=disabled \
+        -Ddocs=disabled \
+        -Dtools=disabled
 
-    cd $_basename-$pkgver
-
-    waf configure --prefix=/usr \
-                  --libdir=/usr/lib32 \
-                  --no-bash-completion \
-                  --no-bindings \
-                  --dyn-manifest \
-                  --test
-
-    waf -v build
+    meson compile -C build
 }
 
 check() {
-    cd $_basename-$pkgver
-
-    waf test
+    meson test -C build
 }
 
 package() {
-    cd $_basename-$pkgver
+    meson install -C build --destdir "$pkgdir"
 
-    waf install --destdir="${pkgdir}"
+    install -vDm 644 $_basename-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 $_basename-$pkgver/{NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 
-    install -vDm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "$pkgdir"
 
-    cd "$pkgdir"/usr
-
-    rm -r bin include share/man
+    rm -r etc usr/bin usr/include usr/share/man
 }
