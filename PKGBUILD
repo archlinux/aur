@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-rounded-window-corners
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('gobject-introspection' 'yarn')
 source=("rounded-window-corners-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('4b4ea10bdb6691fd8ab7d239deb4b09463d6887030e1bd292cebe0b74955c03c')
+sha256sums=('1eda7273f7ca6de59065e108a916d67cbbd959413e36d7946610d268af7b6c92')
 
 build() {
   cd "rounded-window-corners-$pkgver"
@@ -42,7 +42,7 @@ package() {
     "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
 
-  for locale in nb_NO zh_CN; do
+  for locale in id nb_NO zh_CN; do
   install -Dm644 "_build/locale/${locale}/LC_MESSAGES/${uuid}.mo" -t \
     "$pkgdir/usr/share/locale/${locale}/LC_MESSAGES/"
   done
