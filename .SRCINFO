@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-notes-git
+	pkgdesc = A GNOME Shell extension providing customizable sticky notes on the desktop
+	pkgver = r223.12bfb34
+	pkgrel = 1
+	url = https://github.com/maoschanz/notes-extension-gnome
+	arch = any
+	license = GPL-3
+	makedepends = glib2
+	depends = gnome-shell
+	source = git+https://github.com/maoschanz/notes-extension-gnome
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-notes-git
