@@ -10,7 +10,7 @@ license=('gplv3')
 depends=('wayland' 'freetype2' 'ffmpeg' 'glew' 'openjpeg2')
 makedepends=('meson' 'wayland-protocols' )
 source=(
-	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/mmfm/releases/download/${pkgver}/vmp-${pkgver}.tar.xz"
+	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/vmp/releases/download/${pkgver}/vmp-${pkgver}.tar.xz"
 )
 
 sha256sums=(
