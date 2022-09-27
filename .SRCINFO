@@ -1,6 +1,6 @@
 pkgbase = maptool
 	pkgdesc = An open source virtual tabletop program
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://rptools.net/tools/maptool
 	install = maptool.install
@@ -13,7 +13,7 @@ pkgbase = maptool
 	makedepends = xdg-utils
 	makedepends = rpm-tools
 	depends = jre-openjdk
-	source = git+https://github.com/RPTools/maptool.git#tag=1.12.0
+	source = git+https://github.com/RPTools/maptool.git#tag=1.12.1
 	sha256sums = SKIP
 
 pkgname = maptool
