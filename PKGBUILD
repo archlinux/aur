@@ -1,14 +1,14 @@
 _pipname=dj_settings
 pkgname="python-${_pipname//_/-}"
-pkgver=2.1.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Settings manager and configuration parser"
 arch=('any')
 url="https://github.com/spapanik/dj_settings"
 license=('LGPL3')
 depends=('python-tomli' 'python-yaml')
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('abc22c93e8e1bdccfb24e26aa1cebeaff2763d7d37c22d325452739f6e36cc86')
+sha256sums=('42c28d62b525c7eea97e3f15acbc070a3f37a1f0f640a545111c02c3f3a11117')
 
 build() {
 	cd "${srcdir}"/${_pipname}-${pkgver}
