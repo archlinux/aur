@@ -3,7 +3,7 @@
 pkgbase = matrix-appservice-telegram
 	pkgdesc = A Matrix-Telegram hybrid puppeting/relaybot bridge.
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mautrix/telegram
 	install = mautrix-telegram.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = matrix-appservice-telegram
 	depends = python-mautrix>=0.18.2
 	depends = python-mautrix<0.19
 	depends = python-aiohttp
-	depends = python-magic-ahupp
+	depends = python-magic
 	optdepends = python-cryptg: Uses native code for Telegram crypto stuff instead of pure Python
 	optdepends = python-cchardet: For faster encoding detection
 	optdepends = python-aiodns: For asyncronous DNS requests
