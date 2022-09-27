@@ -1,14 +1,19 @@
 pkgbase = udis86
 	pkgdesc = Minimalistic disassembler library
 	pkgver = 1.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vmt/udis86
 	arch = x86_64
 	license = BSD
-	makedepends = python2
+	makedepends = python
+	makedepends = python-sphinx
 	depends = glibc
 	provides = libudis86.so=0-64
 	source = udis86-1.7.2.tar.gz::https://github.com/vmt/udis86/archive/v1.7.2.tar.gz
+	source = latest.patch::https://github.com/vmt/udis86/compare/v1.7.2...56ff6c8.diff
+	source = fix-python3-build.patch::https://github.com/vmt/udis86/pull/133.diff
 	sha256sums = 43567f7e12168943c5b5ffb3d3f5b7a33cb36328f8938a993458f3ded0ba5779
+	sha256sums = 1cd434338aa8356614fc6d72823604ad59e35a3a88dea7b0e27787a632254e01
+	sha256sums = 09ff274943c2f117da504e888d116c86adb752e9c96bc8ef3dffa3d55372a16f
 
 pkgname = udis86
