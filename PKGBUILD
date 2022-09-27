@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.160398.61646022bb5.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.160570.d1198923d78.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -10,23 +10,25 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
              'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
              'rust' 'rust-bindgen' 'directx-headers-git')
+# vulkan-radeonはビルドできないため公式リポジトリのものを使用
 depends=('libdrm' 'libxcb' 'wayland' 'python'
          'libclc' 'clang'
          'libx11' 'libxshmfence' 'zstd'
          'libelf' 'llvm-libs'
          'expat'
          'libxxf86vm' 'libxdamage' 'libomxil-bellagio' 'libunwind' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader'
-         'spirv-llvm-translator' 'spirv-tools')
+         'spirv-llvm-translator' 'spirv-tools' 'vulkan-radeon')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
             'opengl-man-pages: for the OpenGL API man pages'
             'compiler-rt: opencl')
-provides=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
+# vulkan-radeonをこのパッケージでビルドできないため､ここから外す
+provides=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
           'opencl-driver' 'vulkan-driver' 'mesa-libgl' 'opengl-driver')
-conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
+conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
            'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_radeonsi'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_nv'
         'LICENSE'
 #        'eglapi_hack.patch'
         )
@@ -81,13 +83,14 @@ build () {
     export CC="clang"
     export CXX="clang++"
 
+    # ビルドできないためvulkan-driversからamdを外す(vulkan-radeon)
     meson setup mesa _build \
         -D prefix=/usr \
         -D sysconfdir=/etc \
         -D b_ndebug=true \
         -D platforms=auto \
         -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
-        -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
+        -D vulkan-drivers=intel,swrast,virtio-experimental \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
         -D egl=enabled \
