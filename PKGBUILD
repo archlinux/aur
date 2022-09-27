@@ -1,6 +1,6 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=punes-git
-pkgver=0.107.r1340.0d596403
+pkgver=0.109.r1848.46ff1d83
 pkgrel=1
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('x86_64')
@@ -21,6 +21,11 @@ pkgver() {
     printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags | sed 's/v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}"/puNES
+    sed -e 's:^\tupdate-desktop-database.*$:\ttrue:' -i 'misc/Makefile.am'
+}
+
 build() {
     cd "${srcdir}"/puNES
     ./autogen.sh
@@ -29,22 +34,6 @@ build() {
 }
 
 package() {
-    #As of 11 January 2021 "make install" appears to be broken
-    #cd "${srcdir}"/puNES
-    #make DESTDIR="${pkgdir}" install
-    #rm -f "${pkgdir}"/usr/share/applications/mimeinfo.cache
-
-    #Install manually.
-    cd "${srcdir}"/puNES/misc
-    for i in 16 32 48 256; do
-            icon=hicolor_apps_${i}x${i}_punes.png
-            theme=`echo $icon | cut -d_ -f1`
-            context=`echo $icon | cut -d_ -f2`
-            size=`echo $icon | cut -d_ -f3`
-            iconfile=`echo $icon | cut -d_ -f4`
-            install -Dm 644 ./$icon "${pkgdir}"/usr/share/icons/$theme/$size/$context/$iconfile
-        done
-    install -Dm 644 ./punes.desktop "${pkgdir}"/usr/share/applications/punes.desktop
-    cd "${srcdir}"/puNES/src
-    install -Dm 755 ./punes "${pkgdir}"/usr/bin/punes
+    cd "${srcdir}"/puNES
+    make DESTDIR="${pkgdir}" install
 }
