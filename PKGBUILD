@@ -5,7 +5,7 @@ pkgver=16.9.26
 pkgrel=1
 pkgdesc="A wrapper around the Hauppauge HDPVR2/Colossus2 Linux driver"
 arch=('x86_64')
-makedepends=('boost' 'git')
+makedepends=('boost' 'git' 'xxd')
 depends=('boost-libs')
 source=(
  'https://s3.amazonaws.com/hauppauge/linux/hauppauge_hdpvr2_157321_patched_2016-09-26.tar.gz'
