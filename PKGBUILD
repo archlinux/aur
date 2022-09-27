@@ -2,13 +2,13 @@
 
 pkgname=workbench-git
 _pkgname=Workbench
-pkgver=r200.875b14d
+pkgver=r320.dff12ca
 pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/sonnyp/Workbench"
 license=('GPL3')
-depends=('blueprint-compiler' 'gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vala' 'vte4-git')
+depends=('blueprint-compiler' 'gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vala' 'vte4')
 makedepends=('git' 'gobject-introspection' 'meson' 'npm')
 checkdepends=('appstream-glib')
 optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
