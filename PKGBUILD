@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=slackdump
-pkgver=2.1.2
+pkgver=2.2.0_alpha
 pkgrel=1
 pkgdesc='Save your private and public slack messages, threads, files, and users locally'
 arch=('x86_64')
@@ -8,11 +8,11 @@ url="https://github.com/rusq/slackdump"
 license=('GPL')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rusq/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('03f1559b2f72520947535f3fd1d0571f1ddaff6d0162f5a8eda171dcaae9f01bbc57d9819e929e1a77e33e38352c47bccf183c42a980416e2ce2719a28afa72d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rusq/${pkgname}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
+b2sums=('c854c7daf20e059ebd8ee069dad4c6c36aa0f16f31cbb93cf4d18c628790cc9407edc680c5109c871723786d15772bf632195a664288bfe69ab2d22eee471c4e')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver//_/-}"
     mkdir -p build
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -23,12 +23,12 @@ build() {
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver//_/-}"
     go test ./...
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver//_/-}"
     install -Dm755 build/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
