@@ -1,0 +1,11 @@
+diff -U 3 -H -d -r -N -- a/src/r8168_n.c b/src/r8168_n.c
+--- a/src/r8168_n.c	2022-05-17 05:12:17.000000000 -0400
++++ b/src/r8168_n.c	2022-09-25 14:12:50.355200461 -0400
+@@ -397,6 +397,7 @@
+
+ static struct pci_device_id rtl8168_pci_tbl[] = {
+         { PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x8168), },
++        { PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x8136), },
+         { PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x8161), },
+         { PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x2502), },
+         { PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x2600), },
