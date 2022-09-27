@@ -6,6 +6,7 @@ pkgbase = ilua-git
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = git
 	depends = python

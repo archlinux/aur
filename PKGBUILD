@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=(
  python-setuptools
- #python-setuptools-scm
+ python-setuptools-scm
  python-wheel
  git
 )
