@@ -1,7 +1,7 @@
 pkgbase = qemu-esp-xtensa-git
 	pkgdesc = Espressif's fork of QEMU with support for ESP32 xtensa boards. Git version.
 	pkgver = r97829.0152246eb3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espressif/qemu
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = qemu-esp-xtensa-git
 	depends = pixman
 	depends = zlib
 	depends = bzip2
-	depends = python3
+	depends = python
 	depends = libgcrypt
 	depends = pcre
 	provides = qemu-esp-xtensa
