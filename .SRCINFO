@@ -1,20 +1,20 @@
 pkgbase = pyston-bin
 	pkgdesc = A fork of CPython with additional optimizations for performance
-	pkgver = 2.3.4
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://blog.pyston.org/
 	arch = aarch64
 	arch = x86_64
 	license = custom
 	depends = glibc
-	provides = pyston=2.3.4
+	provides = pyston=2.3.5
 	conflicts = pyston
 	options = !strip
 	source = LICENSE::https://raw.githubusercontent.com/pyston/pyston/pyston_master/LICENSE
 	sha256sums = SKIP
-	source_aarch64 = https://github.com/pyston/pyston/releases/download/pyston_2.3.4/pyston_2.3.4_portable_arm64.tar.gz
-	sha256sums_aarch64 = 0733d120562c73f129af5633f8ea7faad3fdcab931f2234c02cd81f21eada2cd
-	source_x86_64 = https://github.com/pyston/pyston/releases/download/pyston_2.3.4/pyston_2.3.4_portable_amd64.tar.gz
-	sha256sums_x86_64 = f8274bdead746f839791d785a5edad8a0b8723016b38751321c8eaf16ebd22db
+	source_aarch64 = https://github.com/pyston/pyston/releases/download/pyston_2.3.5/pyston_2.3.5_portable_arm64.tar.gz
+	sha256sums_aarch64 = c578cb806c62d9dca8728f190a87e172305bd80887e206df42c4c5658ab469c1
+	source_x86_64 = https://github.com/pyston/pyston/releases/download/pyston_2.3.5/pyston_2.3.5_portable_amd64.tar.gz
+	sha256sums_x86_64 = c71c711d60a9c18f243a9e30fd35e0818674ae96f534c67c27b0cdfbc9132ef8
 
 pkgname = pyston-bin

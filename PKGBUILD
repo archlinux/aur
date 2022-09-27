@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pyston-bin
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="A fork of CPython with additional optimizations for performance"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ source=("LICENSE::https://raw.githubusercontent.com/pyston/pyston/pyston_master/
 source_aarch64=("https://github.com/pyston/pyston/releases/download/pyston_${pkgver}/pyston_${pkgver}_portable_arm64.tar.gz")
 source_x86_64=("https://github.com/pyston/pyston/releases/download/pyston_${pkgver}/pyston_${pkgver}_portable_amd64.tar.gz")
 sha256sums=('SKIP')
-sha256sums_aarch64=('0733d120562c73f129af5633f8ea7faad3fdcab931f2234c02cd81f21eada2cd')
-sha256sums_x86_64=('f8274bdead746f839791d785a5edad8a0b8723016b38751321c8eaf16ebd22db')
+sha256sums_aarch64=('c578cb806c62d9dca8728f190a87e172305bd80887e206df42c4c5658ab469c1')
+sha256sums_x86_64=('c71c711d60a9c18f243a9e30fd35e0818674ae96f534c67c27b0cdfbc9132ef8')
 
 
 package() {
