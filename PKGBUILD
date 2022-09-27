@@ -2,7 +2,7 @@
 
 pkgname=obs-ndi-git
 _pkgname=obs-ndi
-pkgver=4.9.1.r20.gadcf4f0
+pkgver=r59.81a1612
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -12,12 +12,17 @@ provides=('obs-ndi')
 conflicts=('obs-ndi-bin')
 depends=('avahi' 'libndi' 'obs-studio')
 makedepends=('git' 'cmake')
-source=("git+${url}.git")
+install="${_pkgname}.install"
+source=("git+${url}.git#branch=rewrite")
 sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd ${_pkgname}
 }
 
 build() {
@@ -29,7 +34,10 @@ build() {
 
 package() {
     cd ${_pkgname}/build
-    make DESTDIR=${pkgdir} install
+    make
+
+    install -Dm755 obs-ndi.so ${pkgdir}/usr/lib/obs-plugins/obs-ndi.so
+    install -Dm644 ../data/locale/en-US.ini ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale/en-US.ini
 
     install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
 }

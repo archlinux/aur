@@ -1,0 +1,7 @@
+post_upgrade() {
+    echo "ensure that the avahai daemon is running: systemctl enable avahai-daemon.service --now"
+}
+
+post_install() {
+    post_upgrade
+}
