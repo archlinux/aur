@@ -1,6 +1,6 @@
 pkgbase = topgrade-git
 	pkgdesc = Invoke the upgrade procedure of multiple package managers
-	pkgver = 9.0.0
+	pkgver = 9.0.1.r5.ga5e0128
 	pkgrel = 1
 	url = https://github.com/r-darwish/topgrade
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = topgrade-git
 	provides = topgrade
 	conflicts = topgrade
 	source = git+https://github.com/r-darwish/topgrade.git
+	source = pakku.diff
 	sha256sums = SKIP
+	sha256sums = 7a2c8ef69773feb01ba25faee4619377d42f32b70ca392f0710d29fd7e6b9ba6
 
 pkgname = topgrade-git

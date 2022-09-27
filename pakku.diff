@@ -1,0 +1,123 @@
+diff --git a/config.example.toml b/config.example.toml
+index 231a6e6..9e7df6a 100644
+--- a/config.example.toml
++++ b/config.example.toml
+@@ -66,7 +66,7 @@
+ #greedy_cask = true
+ 
+ [linux]
+-# Arch Package Manager to use. Allowed values: autodetect, trizen, paru, yay, pikaur, pacman, pamac.
++# Arch Package Manager to use. Allowed values: autodetect, trizen, paru, yay, pikaur, pacman, pamac, pakku.
+ #arch_package_manager = "pacman"
+ # Arguments to pass yay (or paru) when updating packages
+ #yay_arguments = "--nodevel"
+diff --git a/src/config.rs b/src/config.rs
+index 9eec74c..3f1c682 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -203,6 +203,7 @@ pub enum ArchPackageManager {
+     Pacman,
+     Pikaur,
+     Pamac,
++    Pakku,
+ }
+ 
+ #[derive(Deserialize, Default, Debug)]
+@@ -214,6 +215,7 @@ pub struct Linux {
+     trizen_arguments: Option<String>,
+     pikaur_arguments: Option<String>,
+     pamac_arguments: Option<String>,
++    pakku_arguments: Option<String>,
+     dnf_arguments: Option<String>,
+     apt_arguments: Option<String>,
+     enable_tlmgr: Option<bool>,
+@@ -255,6 +257,7 @@ pub struct ConfigFile {
+     display_time: Option<bool>,
+     assume_yes: Option<bool>,
+     yay_arguments: Option<String>,
++    pakku_arguments: Option<String>,
+     no_retry: Option<bool>,
+     run_in_tmux: Option<bool>,
+     cleanup: Option<bool>,
+@@ -707,6 +710,15 @@ impl Config {
+             .unwrap_or("")
+     }
+ 
++    /// Extra Pakku arguments
++    pub fn pakku_arguments(&self) -> &str {
++        self.config_file
++            .linux
++            .as_ref()
++            .and_then(|s| s.pakku_arguments.as_deref())
++            .unwrap_or("")
++    }
++
+     /// Show news on Arch Linux
+     pub fn show_arch_news(&self) -> bool {
+         self.config_file
+diff --git a/src/steps/os/archlinux.rs b/src/steps/os/archlinux.rs
+index 60e8138..44075d8 100644
+--- a/src/steps/os/archlinux.rs
++++ b/src/steps/os/archlinux.rs
+@@ -229,6 +229,46 @@ impl ArchPackageManager for Pamac {
+     }
+ }
+ 
++pub struct Pakku {
++    executable: PathBuf,
++}
++
++impl Pakku {
++    fn get() -> Option<Self> {
++        Some(Self {
++            executable: which("pakku")?,
++        })
++    }
++}
++impl ArchPackageManager for Pakku {
++    fn upgrade(&self, ctx: &ExecutionContext) -> Result<()> {
++        let mut command = ctx.run_type().execute(&self.executable);
++
++        command
++            .arg("upgrade")
++            .args(ctx.config().pakku_arguments().split_whitespace())
++            .env("PATH", get_execution_path());
++
++        if ctx.config().yes(Step::System) {
++            command.arg("--no-confirm");
++        }
++
++        command.check_run()?;
++
++        if ctx.config().cleanup() {
++            let mut command = ctx.run_type().execute(&self.executable);
++            command.arg("clean");
++            if ctx.config().yes(Step::System) {
++                command.arg("--no-confirm");
++            }
++            command.check_run()?;
++        }
++
++        Ok(())
++    }
++}
++
++
+ fn box_package_manager<P: 'static + ArchPackageManager>(package_manager: P) -> Box<dyn ArchPackageManager> {
+     Box::new(package_manager) as Box<dyn ArchPackageManager>
+ }
+@@ -243,12 +283,14 @@ pub fn get_arch_package_manager(ctx: &ExecutionContext) -> Option<Box<dyn ArchPa
+             .or_else(|| Trizen::get().map(box_package_manager))
+             .or_else(|| Pikaur::get().map(box_package_manager))
+             .or_else(|| Pamac::get().map(box_package_manager))
++	    .or_else(|| Pakku::get().map(box_package_manager))
+             .or_else(|| Pacman::get(ctx).map(box_package_manager)),
+         config::ArchPackageManager::Trizen => Trizen::get().map(box_package_manager),
+         config::ArchPackageManager::Paru => YayParu::get("paru", &pacman).map(box_package_manager),
+         config::ArchPackageManager::Yay => YayParu::get("yay", &pacman).map(box_package_manager),
+         config::ArchPackageManager::Pacman => Pacman::get(ctx).map(box_package_manager),
+         config::ArchPackageManager::Pikaur => Pikaur::get().map(box_package_manager),
++	config::ArchPackageManager::Pakku => Pakku::get().map(box_package_manager),
+         config::ArchPackageManager::Pamac => Pamac::get().map(box_package_manager),
+     }
+ }
