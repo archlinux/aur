@@ -2,7 +2,7 @@
 
 _basename=sratom
 pkgname=lib32-sratom
-pkgver=0.6.12
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="An LV2 Atom RDF serialisation library (32-bit)"
 arch=(x86_64)
@@ -11,9 +11,9 @@ license=(custom:ISC)
 depends=(lib32-sord lib32-lv2 sratom)
 makedepends=(meson)
 source=("https://download.drobilla.net/$_basename-$pkgver.tar.xz"{,.sig})
-sha512sums=('e677945f59494970c8c723319216cf6543ed38c590b6db94e5e928e830004e96dc957a2cf2fb0b76278cf55f0d62ea03ba705fbc449424c467e29593eaa948dc'
+sha512sums=('3647ccca3ac98299a0bcc30d540788c627445c9a55f0b68a53e08ee45b15138c7a5466c92d1c10eac614325718d4f59eff6f0664f99891e8349e613be675c87d'
             'SKIP')
-b2sums=('76a01c84e418ee3ffeb1e0e44214e9b02ab58b9b572372ee43309650a7a674a55e49384e8b62657af30933b7bdb02faf38ff100030e2ec86947972cacf32db69'
+b2sums=('6f468e9a0de97cf83a4f3faeb8ceff8a5502da7f0dff6b5721ef985df352057cda0dbbf13656471ef7f3103a891570e3462ed6bf4517dbc546d9f83115db433b'
         'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
