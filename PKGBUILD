@@ -22,13 +22,13 @@ prepare() {
 
 build() {
   cd "$srcdir"/luagl
-  msg2 'Building with Lua 5.3'
+  echo 'Building with Lua 5.3'
   make USE_LUA53=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed"
 
-  msg2 'Building with Lua 5.1'
+  echo 'Building with Lua 5.1'
   make USE_LUA51=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed"
 
-  msg2 'Building with Lua 5.2'
+  echo 'Building with Lua 5.2'
   make USE_LUA52=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.2,--enable-new-dtags,--as-needed"
 }
 
