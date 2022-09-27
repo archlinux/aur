@@ -23,7 +23,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" PYTHONPATH="${PWD}/build/lib/:${PYTHONPATH}" python -m pytest -k 'not cli and not readme_images'
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" PYTHONPATH="${PWD}/build/lib/:${PYTHONPATH}" MPLBACKEND=Agg python -m pytest -k 'not cli and not readme_images'
 }
 
 package() {
