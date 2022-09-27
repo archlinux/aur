@@ -3,14 +3,14 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
 pkgver=2.6.3.r57.g702348a
-pkgrel=1
+pkgrel=2
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
-depends=('gspell' 'libhandy>=1.6' 'otf-fira-mono' 'otf-fira-sans' 'python-cairo'
+depends=('gspell' 'libadwaita' 'otf-fira-mono' 'otf-fira-sans' 'python-cairo'
          'python-chardet' 'python-gobject' 'python-levenshtein' 'python-pyenchant'
-         'python-pypandoc' 'python-regex' 'python-setuptools' 'webkit2gtk')
+         'python-pypandoc' 'python-regex' 'python-setuptools' 'webkit2gtk-5.0')
 makedepends=('git' 'meson' 'gobject-introspection' 'sassc')
 checkdepends=('appstream-glib')
 optdepends=('texlive-latexextra: for the pdftex module'
