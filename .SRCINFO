@@ -1,0 +1,21 @@
+pkgbase = python-repoze.sphinx.autointerface
+	pkgdesc = Auto-generate Sphinx API docs from Zope interfaces
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/repoze/repoze.sphinx.autointerface
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-sphinx
+	checkdepends = python-zope-interface
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/r/repoze.sphinx.autointerface/repoze.sphinx.autointerface-1.0.0.tar.gz
+	md5sums = 63471c93810215ac7ad02b966ad16c39
+
+pkgname = python-repoze.sphinx.autointerface
+	depends = python-setuptools
+	depends = python-sphinx>=4.0
+	depends = python-zope-interface
