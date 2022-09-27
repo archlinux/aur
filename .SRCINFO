@@ -1,0 +1,26 @@
+pkgbase = onionprobe-git
+	pkgdesc = git build of Onionprobe (tool for testing and monitoring the status of Tor Onion Services sites)
+	pkgver = r323.6c0a813
+	pkgrel = 1
+	url = https://gitlab.torproject.org/tpo/onion-services/onionprobe.git
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	depends = git
+	depends = python3
+	depends = python-prometheus_client
+	depends = python-stem
+	depends = python-cryptography
+	depends = python-yaml
+	depends = python-requests
+	depends = python-socks
+	depends = tor
+	source = onionprobe::git+https://gitlab.torproject.org/tpo/onion-services/onionprobe.git
+	sha512sums = SKIP
+
+pkgname = onionprobe-git
