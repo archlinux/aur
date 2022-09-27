@@ -1,0 +1,16 @@
+pkgbase = aarch64-ppp-elf-gcc
+	pkgdesc = ARM64 GCC Toolchain (10.3.0) for the PinePhone Pro
+	pkgver = 10.3.0
+	pkgrel = 1
+	url = https://crosstool-ng.github.io
+	arch = aarch64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = crosstool-ng
+	options = !emptydirs
+	source = https://gist.githubusercontent.com/wasertech/776d77c39e61ef89afca9a4e410accf1/raw/08729870349a42e5bb7cd89032bb46d2a14d5168/.config
+	sha256sums = SKIP
+
+pkgname = aarch64-ppp-elf-gcc
