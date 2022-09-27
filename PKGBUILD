@@ -7,6 +7,7 @@ arch=(i686 x86_64)
 url="https://www.eyrie.org/~eagle/software/kstart/"
 license=(custom)
 depends=(krb5)
+provides=(k5start=$pkgver krenew=$pkgver)
 source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
         "https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz.asc"
         "krenew.service"

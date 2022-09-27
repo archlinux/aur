@@ -7,6 +7,8 @@ pkgbase = kstart
 	arch = x86_64
 	license = custom
 	depends = krb5
+	provides = k5start=4.3
+	provides = krenew=4.3
 	source = https://archives.eyrie.org/software/kerberos/kstart-4.3.tar.gz
 	source = https://archives.eyrie.org/software/kerberos/kstart-4.3.tar.gz.asc
 	source = krenew.service
