@@ -23,6 +23,24 @@ ATTRS{idProduct}=="14be", ENV{pfufs_driver}="yes"
 ATTRS{idProduct}=="14b8", ENV{pfufs_driver}="yes"
 #fi-7700S
 ATTRS{idProduct}=="1522", ENV{pfufs_driver}="yes"
+#fi-800R
+ATTRS{idProduct}=="15fc", ENV{pfufs_driver}="yes"
+#fi-8150
+ATTRS{idProduct}=="1601", ENV{pfufs_driver}="yes"
+#fi-8250
+ATTRS{idProduct}=="1602", ENV{pfufs_driver}="yes"
+#fi-8150U
+ATTRS{idProduct}=="162d", ENV{pfufs_driver}="yes"
+#fi-8250U
+ATTRS{idProduct}=="162e", ENV{pfufs_driver}="yes"
+#fi-8170
+ATTRS{idProduct}=="15ff", ENV{pfufs_driver}="yes"
+#fi-8270
+ATTRS{idProduct}=="1600", ENV{pfufs_driver}="yes"
+#fi-8190
+ATTRS{idProduct}=="15fd", ENV{pfufs_driver}="yes"
+#fi-8290
+ATTRS{idProduct}=="15fe", ENV{pfufs_driver}="yes"
 # Give scanner users read/write permissions on the device.
 ENV{pfufs_driver}=="yes", MODE="0666", OWNER="root", GROUP="root"
 
