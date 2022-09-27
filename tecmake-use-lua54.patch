@@ -1,0 +1,35 @@
+--- src/luagl/tecmake.mak.old	2022-09-27 17:04:28.923659421 +0200
++++ src/luagl/tecmake.mak	2022-09-27 17:05:06.630327729 +0200
+@@ -445,6 +445,9 @@
+ ifdef USE_LUA53
+   LIBLUA_SFX := 53
+ endif
++ifdef USE_LUA54
++  LIBLUA_SFX := 54
++endif
+ 
+ ifdef USE_OLDLIBLUA
+   TEC_UNAME_LIBLUA_DIR ?= $(TEC_UNAME_LIB_DIR)
+@@ -763,6 +766,7 @@
+ LUA51 ?= $(TECTOOLS_HOME)/lua5.1
+ LUA52 ?= $(TECTOOLS_HOME)/lua52
+ LUA53 ?= $(TECTOOLS_HOME)/lua53
++LUA54 ?= $(TECTOOLS_HOME)/lua54
+ 
+ 
+ #---------------------------------#
+@@ -826,6 +830,14 @@
+   endif
+ endif
+ 
++ifdef USE_LUA54
++  LUA_SFX := 54
++  LIBLUA_SFX := 54
++  override USE_LUA = Yes
++  LUA := $(LUA54)
++  NO_LUALIB := Yes
++endif
++
+ ifdef LUA_SUFFIX
+   LUA_SFX := $(LUA_SUFFIX)
+ endif
