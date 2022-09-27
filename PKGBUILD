@@ -7,13 +7,13 @@ pkgdesc="git build of Onionprobe (tool for testing and monitoring the status of 
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://gitlab.torproject.org/tpo/onion-services/onionprobe.git"
 depends=("git"
-	 "python3" 
+	 "python" 
 	 "python-prometheus_client" 
 	 "python-stem" 
 	 "python-cryptography" 
 	 "python-yaml" 
 	 "python-requests" 
-	 "python-socks" 
+	 "python-pysocks" 
 	 "tor")
 license=("GPL3")
 sha512sums=("SKIP")
