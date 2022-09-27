@@ -1,0 +1,27 @@
+pkgbase = clash-meta
+	pkgdesc = Another Clash Kernel by MetaCubeX
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/Clash.Meta
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	depends = clash-geoip
+	conflicts = clash-meta
+	backup = etc/clash-meta/config.yaml
+	source = clash-meta-1.13.1.tar.gz::https://github.com/MetaCubeX/Clash.Meta/archive/refs/tags/v1.13.1.tar.gz
+	source = clash-meta.service
+	source = clash-meta@.service
+	source = clash-meta.sysusers
+	source = clash-meta.tmpfiles
+	source = config.yaml
+	sha256sums = 57836750490b4872593b3f01432ccb5d2b428cef8d5ae080b28d0cb314a1bcd2
+	sha256sums = b6b7ce11489a6f6322a41ce840b3f999b1ec88914f8bd6864c220269231bf759
+	sha256sums = 73638242c4286ec5cb0424a2990331bb6f68983ca0737a78e2d4d42ba1ff19c8
+	sha256sums = 655e8e2edcd82a6bdf2fd12430b7ab6f8e32db8dffce70e7342685a7cc65ebfb
+	sha256sums = 50737592c7bd743fe8f543924034718337477a203fa11ef4272cae496df3769c
+	sha256sums = 90f7fdacecd5928e37865b4f841517f925c8bedc769f16f7a7a1e89b923f1fb9
+
+pkgname = clash-meta
