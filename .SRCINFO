@@ -1,14 +1,13 @@
 pkgbase = commitizen-go
 	pkgdesc = Command line utility to standardize git commit messages, golang version
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/lintingzhen/commitizen-go
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = go
-	source = https://github.com/lintingzhen/commitizen-go/archive/v1.0.0.tar.gz
-	md5sums = b35e8fa0b64b253ee627a4b5fd67b8e0
+	source = https://github.com/lintingzhen/commitizen-go/archive/v1.0.1.tar.gz
+	sha256sums = 4947a9ecd8f34a24f2760d8a4795f2d222ac4d063aa270ee70f8ace5684b07af
 
 pkgname = commitizen-go
-
