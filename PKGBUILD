@@ -1,14 +1,13 @@
-#PKGBUILD was last modified on September 19, 2022 at 05:32 PM EDT by bms#
+#PKGBUILD was last modified on September 27, 2022 at 03:55 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 pkgname=remake-git
 pkgver=r3131.7619a012
 pkgrel=1
 pkgdesc="Enhanced GNU Make - tracing, error reporting, debugging, profiling and more"
-arch=('x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://bashdb.sourceforge.net/remake/"
 license=('GPL3')
 provides=("remake=$pkgver")
-conflicts=('remake')
 depends=('glibc' 'guile')
 makedepends=('git' 'patch')
 source=("${pkgname%-git}::git+https://github.com/rocky/remake.git")
