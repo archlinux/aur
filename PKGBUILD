@@ -1,7 +1,7 @@
 # Maintainer: Ryan Chan <rycwo at posteo dot net>
 
 pkgname="lemons"
-pkgver="0.6.1"
+pkgver="0.6.3"
 pkgrel=1
 pkgdesc="Output script for lemonbar"
 arch=("any")
@@ -19,7 +19,7 @@ optdepends=(
 	"pulseaudio: for volume display"
 	"otf-san-francisco-mono: for a nice default font")
 source=("https://git.sr.ht/~rycwo/""$pkgname""/archive/""$pkgver"".tar.gz")
-sha256sums=('60ac0215e46e4825410b45fa0b9ebe20d5dc56b412d49c613f1d825ef58f5caf')
+sha256sums=('6bf10bdd738789075ceeb47055adea4e3d82910f65f4964c56cd53d111c6acb2')
 
 package() {
 	cd "$srcdir""/""$pkgname""-""$pkgver"
