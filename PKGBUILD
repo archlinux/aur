@@ -11,8 +11,8 @@ license=('custom')
 options=(!strip)
 
 source=('https://download.jetbrains.com/cpp/CLion-2021.1.3.tar.gz'
-#source=('CLion-2021.1.3.tar.gz'
         'https://raw.githubusercontent.com/XDwanj/jetbrains-clion-pj/main/jetbrains-clion-pj.desktop')
+#source=('CLion-2021.1.3.tar.gz'
 #        'jetbrains-clion-pj.desktop')
 md5sums=('24cca82f760a52aaf47a00f86f0ee0df'
          '13a4fe6508442eb9654feecbe34d47e9')
