@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dbus-git
-pkgver=1.13.10.r2.gedece027
+pkgver=1.15.0.r3.gb5172c3b
 pkgrel=1
 pkgdesc="Message bus system"
 arch=('i686' 'x86_64')
@@ -9,11 +9,13 @@ url="https://www.freedesktop.org/wiki/Software/dbus/"
 license=('GPL' 'custom')
 depends=('glibc' 'audit' 'expat' 'systemd-libs')
 makedepends=('git' 'autoconf-archive' 'systemd')
-provides=('libdbus' 'dbus')
-conflicts=('libdbus' 'dbus')
+provides=("dbus=$pkgver" 'libdbus')
+conflicts=('dbus' 'libdbus')
 options=('staticlibs')
-source=("git+https://gitlab.freedesktop.org/dbus/dbus.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git"
+        "dbus-reload.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dbus/trunk/dbus-reload.hook")
+sha256sums=('SKIP'
+            'SKIP')
 
 
 pkgver() {
@@ -52,12 +54,13 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  rm -r "$pkgdir/usr/share/doc"
-  rm -r "$pkgdir/var/run"
+  rm -r "$pkgdir"/{etc,usr/share/doc,var}
 
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/dbus"
 
   # We have a pre-assigned uid (81)
   echo 'u dbus 81 "System Message Bus"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
+
+  install -Dm644 "$srcdir/dbus-reload.hook" -t "$pkgdir/usr/share/libalpm/hooks"
 }
