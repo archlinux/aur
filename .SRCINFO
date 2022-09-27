@@ -12,7 +12,12 @@ pkgbase = nni
 	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
+	depends = python-cloudpickle
+	depends = python-filelock
+	depends = python-json-tricks
+	depends = python-schema
+	depends = python-typeguard
+	depends = python-websockets
 	source = https://github.com/microsoft/nni/archive/refs/tags/v2.9.tar.gz
 	md5sums = ef2e4e55b4e2ec205205d8db784408c5
 
