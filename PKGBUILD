@@ -11,7 +11,7 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=105.0.5195.125
+pkgver=106.0.5249.61
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=1
@@ -34,19 +34,17 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        fix-TFLite-build-on-linux-with-system-zlib.patch
-        fix-debug-crash-and-log-spam-with-GTK3-Wayland.patch
-        enable-GlobalMediaControlsCastStartStop.patch
-        roll-src-third_party-ffmpeg.patch
+        REVERT-enable-GlobalMediaControlsCastStartStop.patch
+        REVERT-roll-src-third_party-ffmpeg-m102.patch
+        REVERT-roll-src-third_party-ffmpeg-m106.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('201b5c44668a415e3e05c0a806ab43a0904024340531332fc3ce39eb0cf10a66'
+sha256sums=('f27acb929b12fc9e60b035c2f9f1879866eec7cfe1665dccf544048e9e931497'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'f0c437c02cab7a6efc958f82fbb4ea35d5440f73d65731bad7c0dcaecb932121'
-            '5db1fae8a452774b5b177e493a2d1a435b980137b16ed74616d1fb86fe342ec7'
-            'a9a30d16ad6b0689c2c4a85a3c508f49254fc8e69e791a45302673812461eb58'
+            'ea7db6b14b276cbf04e434d31d8bbdfbc23d108dcc1c2cbc278eb8f22c0b3086'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
+            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -61,9 +59,9 @@ declare -gA _system_libs=(
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  [jsoncpp]=jsoncpp
+  #[jsoncpp]=jsoncpp  # triggers a CFI violation (https://crbug.com/1365218)
   [libaom]=aom
-  [libavif]=libavif
+  #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/d22d4de94120
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -109,26 +107,22 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Upstream fixes
-  patch -Np1 -i ../fix-TFLite-build-on-linux-with-system-zlib.patch
-  patch -Np1 -i ../fix-debug-crash-and-log-spam-with-GTK3-Wayland.patch
-
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
-  patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
+  patch -Rp1 -F3 -i ../REVERT-enable-GlobalMediaControlsCastStartStop.patch
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
-  patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
+  patch -Rp1 -i ../REVERT-roll-src-third_party-ffmpeg-m102.patch
+  # Revert switch from AVFrame::pkt_duration to AVFrame::duration
+  patch -Rp1 -i ../REVERT-roll-src-third_party-ffmpeg-m106.patch
 
   # https://crbug.com/angleproject/7582
   patch -Np0 -i ../angle-wayland-include-protocol.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
-  patch -Np1 -i ../patches/chromium-105-Bitmap-include.patch
-  patch -Np1 -i ../patches/chromium-105-browser_finder-include.patch
-  patch -Np1 -i ../patches/chromium-105-AdjustMaskLayerGeometry-ceilf.patch
+  patch -Np1 -i ../patches/chromium-106-AutofillPopupControllerImpl-namespace.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
