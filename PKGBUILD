@@ -3,12 +3,12 @@
 
 pkgname=('llvm10' 'llvm10-libs')
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses'
-             'libxml2' 'python-sphinx' 'python-recommonmark')
+makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
+             'python-sphinx' 'python-recommonmark' 'python-setuptools')
 options=('staticlibs')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz"
         "llvm-config.h"
