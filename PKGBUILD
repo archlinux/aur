@@ -13,7 +13,6 @@ license=('GPL3')
 depends=('gtk3' 'python-gobject' 'libsecret' 'python-cairo'
          'gst-plugins-good' 'gst-libav' 'gst-plugins-base')
 optdepends=('libkeybinder3: for media keys plugin'
-            'libappindicator-gtk3: Unity indicator applet support'
             'python-pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
             'python-systemd: Logging to the system journal')

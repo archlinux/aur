@@ -16,7 +16,6 @@ pkgbase = pithos-git
 	depends = gst-libav
 	depends = gst-plugins-base
 	optdepends = libkeybinder3: for media keys plugin
-	optdepends = libappindicator-gtk3: Unity indicator applet support
 	optdepends = python-pacparser: PAC proxy support
 	optdepends = python-pylast: Last.fm scrobbling support
 	optdepends = python-systemd: Logging to the system journal
