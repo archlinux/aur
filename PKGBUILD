@@ -1,6 +1,6 @@
 # Maintainer: MikMuellerDev <imse335 at gmail dot com>
 pkgname=vitex
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A latex templating tool"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('4c112995278547ab65bb511cab474c51ea658797b16d2a1babe7d611cf8a3327b96ae70fd07d359cf5f1fad4dcc4c7b402f07a6f4ee71c641b6c91544058650f')
+b2sums=('f62190a473995880e3d86425af234e9b073b3ac36c6d70928ec4b7d87cf26efcc535d5700be8489d7aed463cc7ab0fcc349d0ff79bce35abe9fca7a84408f5e0')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
