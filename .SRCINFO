@@ -1,0 +1,16 @@
+pkgbase = workerd-git
+	pkgdesc = A JavaScript / Wasm server runtime based on the same code that powers Cloudflare Workers.
+	pkgver = r63.8eb4d11
+	pkgrel = 1
+	url = https://github.com/cloudflare/workerd
+	arch = x86_64
+	license = apache
+	makedepends = bazel>=5.3.0
+	makedepends = clang>=11
+	makedepends = libc++>=11
+	provides = workerd
+	conflicts = workerd
+	source = workerd::git+https://github.com/cloudflare/workerd.git
+	sha256sums = SKIP
+
+pkgname = workerd-git
