@@ -1,0 +1,14 @@
+pkgbase = ot-simian
+	pkgdesc = Drum synthesizer inspired by the Simmons SDS-V
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://punklabs.com/ot-simian
+	arch = any
+	license = GPL3
+	makedepends = faust
+	makedepends = dub
+	makedepends = ldc
+	source = https://punklabs.com/content/projects/ot-simian/downloads/OneTrick-SIMIAN-1.0.0-Source.zip
+	sha256sums = 7c046141a763ca5ca5324e38fa4bdaf347770e94ca848c1a97a4396cb8223b27
+
+pkgname = ot-simian
