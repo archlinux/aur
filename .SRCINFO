@@ -1,6 +1,6 @@
 pkgbase = mesa-rusticl-git
 	pkgdesc = An open-source implementation of the OpenGL specification, with Rusticl
-	pkgver = 22.3.0_devel.160370.c9feed047e2.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 22.3.0_devel.160398.61646022bb5.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -82,7 +82,7 @@ pkgbase = mesa-rusticl-git
 	conflicts = vulkan-mesa-layer
 	conflicts = vulkan-mesa
 	conflicts = mesa-libgl
-	source = mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/discrete_mem
+	source = mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_radeonsi
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
