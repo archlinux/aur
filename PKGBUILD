@@ -2,7 +2,7 @@
 
 pkgname=snapcast
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
