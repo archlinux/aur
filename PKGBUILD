@@ -2,13 +2,13 @@
 
 pkgname=spass
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An Automated Theorem Prover for First-Order Logic with Equality."
 url="http://www.spass-prover.org/"
 arch=('i686' 'x86_64')
 license=('BSD 2-Clause')
-depends=('')
-makedepends=('')
+depends=()
+makedepends=()
 source=('http://www.spass-prover.org/download/sources/spass39.tgz')
 sha512sums=('d7ea0697426c476f2e03b2f9078b7e060671067a67fad7144bb5887a2dd3f39e19e1888f121fce546b5d6ea9a4dc458d1cbec56b59c93507e7dc2d0afa25a89b')
 
