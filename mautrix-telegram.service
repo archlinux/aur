@@ -7,6 +7,23 @@ Restart=on-failure
 User=mautrix-telegram
 WorkingDirectory=~
 
+ReadWritePaths=/var/lib/mautrix-telegram
+
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectKernelModules=true
+ProtectClock=true
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target
