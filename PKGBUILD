@@ -32,5 +32,5 @@ build() {
 
 package() {
   cd "$srcdir/${_pkgname}"
-  make release
+  make
 }
