@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FastqCleaner
-_pkgver=1.13.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fbd397aff31d036f40c7ebb55d9d197395195a5f3c00cdc8bf7a7bf105450f90')
+sha256sums=('062c1cf7abd7cb969a47845f9e6c1ca2593d25ea04cfaf8794f61ff384c72d44')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
