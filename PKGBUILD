@@ -2,7 +2,7 @@
 # Contributor: fatalis <fatalis@fatalis.pw>
 
 pkgname=scream-git
-pkgver=3.9.r160.98b39e2
+pkgver=4.0.r162.aa11ca9
 pkgrel=1
 pkgdesc='A Scream audio receiver using Pulseaudio, ALSA, JACK or stdout as audio output (git version)'
 url='https://github.com/duncanthrax/scream'
