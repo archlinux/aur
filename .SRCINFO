@@ -1,6 +1,6 @@
 pkgbase = python-wsgidav-seafile
 	pkgdesc = Seafile webdav server
-	pkgver = 9.0.7
+	pkgver = 9.0.9
 	pkgrel = 1
 	url = https://github.com/haiwen/seafdav
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-wsgidav-seafile
 	depends = python-sqlalchemy
 	depends = python-yaml
 	conflicts = python-wsgidav
-	source = https://github.com/haiwen/seafdav/archive/v9.0.7-server.tar.gz
-	sha256sums = 28c90ae3f1d7cb2cbac3e60b8b969f434f86432a0e37ef4dbbe68bf04b569760
+	source = https://github.com/haiwen/seafdav/archive/v9.0.9-server.tar.gz
+	sha256sums = b8a29e99d10064fe9bba38bf1d06f94d2bda043689bbe74047a71b8879f98a98
 
 pkgname = python-wsgidav-seafile
