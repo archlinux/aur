@@ -2,8 +2,8 @@
 # Contributor: Yakumo Saki <yakumo at ziomatrix dot org>
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=3.0.6
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
@@ -17,9 +17,8 @@ _filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
 source=("${_filename}::https://desktop.clickup.com/linux"
         "terms.html::https://clickup.com/terms")
 
-sha256sums=('4bd27fad7fed025e50f28cb7a845c2f20fcdc254d39f02f0622b64e2dc90e338'
+sha256sums=('197b305f9b1e015c9e2dc25b139b41da65f220b3a37797c9c3e4317041b9e057'
             'SKIP')
-
 prepare() {
     rm -rf squashfs-root
     chmod +x $_filename
