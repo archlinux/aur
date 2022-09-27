@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Jetbrains Clion Pj
+Comment=A cross-platform IDE for C and C++
+Exec=jetbrains-clion-pj %u
+Icon=jetbrains-clion-pj
+Terminal=false
+StartupWMClass=jetbrains-clion
+Type=Application
+Categories=Development;IDE;

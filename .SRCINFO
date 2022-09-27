@@ -1,0 +1,16 @@
+pkgbase = jetbrains-clion-pj
+	pkgdesc = A cross-platform IDE for C and C++.
+	pkgver = 2021.1.3
+	pkgrel = 1
+	url = https://www.jetbrains.com/clion/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://download.jetbrains.com/cpp/CLion-2021.1.3.tar.gz
+	source = https://raw.githubusercontent.com/XDwanj/jetbrains-clion-pj/main/jetbrains-clion-pj.desktop
+	md5sums = 24cca82f760a52aaf47a00f86f0ee0df
+	md5sums = 13a4fe6508442eb9654feecbe34d47e9
+
+pkgname = jetbrains-clion-pj
+	backup = opt/jetbrains-clion-pj/bin/clion64.vmoptions
+	backup = opt/jetbrains-clion-pj/bin/idea.properties
