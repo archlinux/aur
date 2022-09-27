@@ -1,6 +1,6 @@
 pkgbase = aladin
 	pkgdesc = Interactive software sky atlas
-	pkgver = 11.024
+	pkgver = 12.001
 	pkgrel = 1
 	url = http://aladin.u-strasbg.fr/aladin.gml
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = aladin
 	source = aladin.run
 	source = aladin.png
 	source = aladin.desktop
-	md5sums = 73464fb2b62a098427b0278b5b916e81
+	md5sums = b741cfb3fdc05c198e25cff7ad1887fe
 	md5sums = 8f5c34afe96b4a3034806ea1b70c8c77
 	md5sums = c79258b73b96c53c98779ae7c2003f31
 	md5sums = 870c25beb85eaf25f78530f52f0fac62
 
 pkgname = aladin
-
