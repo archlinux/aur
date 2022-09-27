@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=gofumpt
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A stricter gofmt"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mvdan/gofumpt"
 license=('custom')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mvdan/gofumpt/archive/v${pkgver}.tar.gz")
-sha512sums=('ca54bc7b58eb06e006c14da9ed9c31019fbde4880eff390b87374c2336b4721a7112e50fd0ffb8e59509abf006f0f736d85fd94a7824401419dde3f1d12c2114')
+sha512sums=('b23a1f4eb1ee642c9516ca85efacb7e49160061ec22d59a7e33713059de3a3032672c7a3d28d746bd76c0a0e28fb56159cf5b54c21519aa9c411ffd87a399520')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

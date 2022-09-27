@@ -1,13 +1,13 @@
 pkgbase = gofumpt
 	pkgdesc = A stricter gofmt
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mvdan/gofumpt
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = go
-	source = gofumpt-0.3.1.tar.gz::https://github.com/mvdan/gofumpt/archive/v0.3.1.tar.gz
-	sha512sums = ca54bc7b58eb06e006c14da9ed9c31019fbde4880eff390b87374c2336b4721a7112e50fd0ffb8e59509abf006f0f736d85fd94a7824401419dde3f1d12c2114
+	source = gofumpt-0.4.0.tar.gz::https://github.com/mvdan/gofumpt/archive/v0.4.0.tar.gz
+	sha512sums = b23a1f4eb1ee642c9516ca85efacb7e49160061ec22d59a7e33713059de3a3032672c7a3d28d746bd76c0a0e28fb56159cf5b54c21519aa9c411ffd87a399520
 
 pkgname = gofumpt
