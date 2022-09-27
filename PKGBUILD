@@ -5,13 +5,14 @@
 
 pkgname=pdf2djvu
 pkgver=0.9.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates DjVu files from PDF files"
 arch=('x86_64')
 url="https://jwilk.net/software/pdf2djvu"
 license=('GPL')
 depends=('poppler' 'djvulibre' 'gcc-libs' 'graphicsmagick' 'exiv2')
-makedepends=('python-nose' 'ttf-liberation' 'boost')
+makedepends=('ttf-liberation' 'boost')
+checkdepends=('python-nose' 'poppler-data')
 source=(
   "https://github.com/jwilk/pdf2djvu/releases/download/${pkgver}/pdf2djvu-${pkgver}.tar.xz"
   "pdf2djvu-tests-python-3.patch"

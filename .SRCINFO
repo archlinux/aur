@@ -1,11 +1,12 @@
 pkgbase = pdf2djvu
 	pkgdesc = Creates DjVu files from PDF files
 	pkgver = 0.9.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jwilk.net/software/pdf2djvu
 	arch = x86_64
 	license = GPL
-	makedepends = python-nose
+	checkdepends = python-nose
+	checkdepends = poppler-data
 	makedepends = ttf-liberation
 	makedepends = boost
 	depends = poppler
