@@ -3,7 +3,7 @@
 
 pkgname='ptouch-print'
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to print labels on Brother P-Touch printers"
 arch=('x86_64')
 url='https://familie-radermacher.ch/dominic/projekte/ptouch-print/'
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin/${pkgname}" "${pkgname}/build/ptouch-print"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}/build/ptouch-print"
   install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${pkgname}/${pkgname}.1"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}/README"
 }
