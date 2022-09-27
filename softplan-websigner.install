@@ -1,6 +1,4 @@
 post_install() {
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
     # Chrome and Chromium uses the manifest file in the /etc dir, which is
     # checked as an error in Litium package verification.
     # Thus we are going to move the manifest file after installation.
@@ -8,14 +6,15 @@ post_install() {
     # ensure that chrome and chromium extension manifest dir exists
     CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
     CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
+    EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
     mkdir -p $CHROME_MANIFEST_DIR
     mkdir -p $CHROMIUM_MANIFEST_DIR
+    mkdir -p $EDGE_MANIFEST_DIR
 
     # copy manifest to respective dirs
     cp /opt/softplan-websigner/manifest.json "$CHROME_MANIFEST_DIR"br.com.softplan.webpki.json
     cp /opt/softplan-websigner/manifest.json "$CHROMIUM_MANIFEST_DIR"br.com.softplan.webpki.json
-
-    update-desktop-database -q
+    cp /opt/softplan-websigner/manifest-edge.json "$EDGE_MANIFEST_DIR"br.com.softplan.webpki.json
 }
 
 post_upgrade() {
@@ -23,13 +22,11 @@ post_upgrade() {
 }
 
 post_remove() {
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
     # remove chromium and chrome manifests
     CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
     CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
+    EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
     rm -rf "$CHROME_MANIFEST_DIR"br.com.softplan.webpki.json
     rm -rf "$CHROMIUM_MANIFEST_DIR"br.com.softplan.webpki.json
-
-    update-desktop-database -q
+    rm -rf "$EDGE_MANIFEST_DIR"br.com.softplan.webpki.json
 }

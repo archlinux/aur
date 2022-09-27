@@ -1,10 +1,9 @@
 pkgbase = softplan-websigner
 	pkgdesc = The Web Signer native application.. An easy solution for using digital certificates in Web applications.
-	pkgver = 2.9.5.1
-	pkgrel = 2
+	pkgver = 2.12.1.1
+	pkgrel = 1
 	url = https://websigner.softplan.com.br
 	install = softplan-websigner.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
@@ -14,10 +13,7 @@ pkgbase = softplan-websigner
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source_i686 = softplan-websigner-2.9.5.1-32.deb::https://websigner.softplan.com.br/Downloads/2.9.5/webpki-chrome-32-deb
-	sha512sums_i686 = c5d9a30f1a93fa1f75ef10e9632ed6d30b59a19fb1b50dbdd27f6effd6a841f1f903a790a21cdde4f7713dfc745961e0477091f7e321c73f508a5649658ee023
-	source_x86_64 = softplan-websigner-2.9.5.1-64.deb::https://websigner.softplan.com.br/Downloads/2.9.5/webpki-chrome-64-deb
-	sha512sums_x86_64 = a57b50c3f6f8f38282b4b1f9a39f7447c9fd87d4e1da549248e9657c201502cd9db035a3e59e7f3326e46a903ae7f6973e7e084b6fb2f38c3944079cdcd71372
+	source = softplan-websigner-2.12.1.1-64.deb::https://websigner.softplan.com.br/Downloads/2.12.1/webpki-chrome-64-deb
+	sha512sums = 01a03ef086008c12e76409dd40f36ab15c00fae53f991d8e9ff7862243067052c341182df459076ccff86392ef8780d8d7438bc8107e5da47f59df03d5c05b50
 
 pkgname = softplan-websigner
-
