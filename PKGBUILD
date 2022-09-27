@@ -1,13 +1,14 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=check_zfs-git
-pkgver=r13.20eef86
-pkgrel=2
+pkgver=r62.e3cf94c
+pkgrel=1
 pkgdesc="Nagios-Plugin to check the status of a ZFS pool."
 arch=('i686' 'x86_64')
 url="https://github.com/zlacelle/nagios_check_zfs_linux"
 license=('GPL3')
-depends=('python2')
+makedepends=('git')
+depends=('python')
 source=("${pkgname}::git+https://github.com/zlacelle/nagios_check_zfs_linux.git")
 sha256sums=("SKIP")
 
