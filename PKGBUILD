@@ -1,4 +1,4 @@
-#PKGBUILD was last modified on September 25, 2022 at 02:34 AM EDT by bms#
+#PKGBUILD was last modified on September 27, 2022 at 04:01 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 pkgname=guile-todo-git
 pkgver=r15.b812dd7
@@ -19,11 +19,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd "${pkgname%-git}"
   hall build -x
   ./autogen.sh
   ./configure --prefix=/usr
+}
+  
+build() {
+  cd "${pkgname%-git}"
   make
 }
 
@@ -34,5 +38,5 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
