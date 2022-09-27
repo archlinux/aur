@@ -2,20 +2,20 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=workbench
-pkgver=42.3
+pkgver=43.0
 pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/sonnyp/Workbench"
 license=('GPL3')
-depends=('blueprint-compiler' 'gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vala' 'vte4-git')
+depends=('blueprint-compiler' 'gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vala' 'vte4')
 makedepends=('git' 'gobject-introspection' 'meson' 'npm')
 checkdepends=('appstream-glib')
 optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
 install="$pkgname.install"
-_commit=80d04ac891561b6e7e2f99fbfe1c3fde84c64c02
+_commit=dff12cab700f452601b23e4cafbbb4c24d610946
 source=("git+https://github.com/sonnyp/Workbench.git#commit=${_commit}"
         'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
         'git+https://github.com/sonnyp/troll.git')
