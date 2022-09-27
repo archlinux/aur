@@ -1,6 +1,6 @@
 # Maintainer: Chris Berkhout <chris@chrisberkhout.com>
 pkgname=pgn-extract
-pkgver=22.07
+pkgver=22.11
 pkgrel=1
 pkgdesc="A Portable Game Notation (PGN) Manipulator for Chess Games"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/"
 license=('GPL3')
 depends=('glibc')
 source=("https://www.cs.kent.ac.uk/~djb/pgn-extract/pgn-extract-${pkgver//\./-}.tgz")
-sha256sums=('51dda2d8cca7a6390c82d7f928263e3885b4ab62eb7e16a4431877af903ea7a6')
+sha256sums=('331e84d55299987dc27f159292ea3b59b94c47edc972f32e96f4e6c0c8621c0b')
 
 build() {
   cd "$srcdir/$pkgname"
