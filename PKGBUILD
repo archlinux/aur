@@ -2,7 +2,7 @@
 
 pkgname='netbird-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
@@ -24,9 +24,9 @@ source=(
 sha256sums=('128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec'
             'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec')
-sha256sums_x86_64=('ba1841b4b387677e242570011202b88179a50ba6ef3125367c9f67d214de62e6')
-sha256sums_aarch64=('55a3bb0af3e8863d6b64f4ebdf9b284edd420ce07f72994dfb42b4180c0670f0')
-sha256sums_armv6h=('80362cae40c07d1077aaee9f9391ccced349fdd3002d64baae37bf5f9bf163a4')
+sha256sums_x86_64=('0b3ceed8f8a092f0cf628216ac44cbe76b811f3194507d552d413ed4819a2ca1')
+sha256sums_aarch64=('4c671333193cfc4478b4edf2d3eab2612d2ed6a31c3ece275dbf7043d39133a4')
+sha256sums_armv6h=('4f12814008567f1cd466b3e724f9643d772400a4e4bca212cf1cd5c18487bd9e')
 
 _base_url="https://github.com/netbirdio/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux"
 
