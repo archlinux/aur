@@ -1,12 +1,12 @@
 # Maintainer: grimi
 pkgname=uade-git
-pkgver=r1372.60bca48
+pkgver=r1464.6338df4
 pkgrel=1
 pkgdesc="uade plays 200+ Amiga computer music formats"
 arch=("x86_64")
 url="https://gitlab.com/uade-music-player/uade"
 license=("GPL")
-depends=("libao" "bencodetools")
+depends=("libao" "bencodetools" "libzakalwe")
 makedepends=("pkgconf" "git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --without-write-audio
   make
 }
 
