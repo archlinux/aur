@@ -4,10 +4,11 @@ pkgbase = libre-menu-editor
 	pkgrel = 1
 	arch = any
 	license = GPL3
-	depends = libadwaita
-	depends = gtk4
 	depends = python>=3
+	depends = gtk4
+	depends = libadwaita
 	depends = xdg-utils
-	provides = libre-menu-editor
+	source = https://launchpad.net/libre-menu-editor/stable/1.0/+download/source.tar.xz
+	sha256sums = SKIP
 
 pkgname = libre-menu-editor
