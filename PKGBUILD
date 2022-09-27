@@ -3,7 +3,7 @@
 pkgname=hush3-bin
 _pkgname=hush3
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -13,16 +13,10 @@ makedepends=('wget' 'git' 'curl')
 conflicts=('hush3')
 source=("hush-$pkgver-amd64.deb::https://git.hush.is/attachments/5c3a4ff6-ffcf-44ea-af98-1db78fdffd9a"
         "$url/raw/branch/master/LICENSE"
-        "hushd.service"
-        "$url/raw/branch/master/doc/man/hush-cli.1"
-        "$url/raw/branch/master/doc/man/hushd.1"
-        "$url/raw/branch/master/doc/man/hush-tx.1")
+        "hushd.service")
 sha512sums=('71966a3e9925a1ea30e0036e6112b626554ea282459499f40d595ea5eacc53850141c6d2fa89e2bfec11d95b8ac4d1df3c4a19a2f99b9075f28f17dc209a9b70'
             '7b0af5cf16f2def174a5cf63dc536e07f8a0cd3bcd48f9edccc414d406b1cb11e0a82af157ea1c43449cbabad845a1f52b084dc9232b45935880d0d82fb356ca'
-            'f8ab447fc4d91a86090326427fbbe8eda019fcfddf0ba1654f599903b25f4084eacc510f262ce03f176e7fd22316c55e5d8cf43dd9a4ccea375643e8fa8270c6'
-            '7d262e59202cd368dea9420f5f61c524e4a199ff0e7f45582ae1651e8dc465cf721a5f29e3f2be467e50e7c2f6b0958928c5169b3f62e9bc8a020b1f408e0bd4'
-            '109f06a84e6856c83b4c265f825b7f5be262f6e3b38d456dab92834f23ef0a5d53317341d838a4abad56cf95782162c8aeab5e9816586351009c076981d36050'
-            '7a014402c27241deab98d4c5d2838e5563fbef6283c28356ec9f24eaea221d2cd02ccc08ca4d3bc4edbb3a7e218c7a68f25ac1967b13cfc06743ff26161dddaf')
+            'f8ab447fc4d91a86090326427fbbe8eda019fcfddf0ba1654f599903b25f4084eacc510f262ce03f176e7fd22316c55e5d8cf43dd9a4ccea375643e8fa8270c6')
 
 package() {
   # extract from deb file
@@ -42,9 +36,9 @@ package() {
   install -Dm644 "${srcdir}/usr/share/hush/asmap.dat" "${pkgdir}/opt/$_pkgname/asmap.dat"
 
   # install man pages
-  install -Dm644 "${srcdir}/hush-cli.1" "${pkgdir}/usr/share/man/man1/hush-cli.1"
-  install -Dm644 "${srcdir}/hushd.1" "${pkgdir}/usr/share/man/man1/hushd.1"
-  install -Dm644 "${srcdir}/hush-tx.1" "${pkgdir}/usr/share/man/man1/hush-tx.1"
+  install -Dm644 "${srcdir}/usr/share/man/man1/hush-cli.1.gz" "${pkgdir}/usr/share/man/man1/hush-cli.1.gz"
+  install -Dm644 "${srcdir}/usr/share/man/man1/hushd.1.gz" "${pkgdir}/usr/share/man/man1/hushd.1.gz"
+  install -Dm644 "${srcdir}/usr/share/man/man1/hush-tx.1.gz" "${pkgdir}/usr/share/man/man1/hush-tx.1.gz"
 
   # create symlinks
   install -d "${pkgdir}/usr/bin"
