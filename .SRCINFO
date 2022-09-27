@@ -1,0 +1,19 @@
+pkgbase = vmp
+	pkgdesc = Visual music player
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/milgra/vmp
+	arch = i686
+	arch = x86_64
+	license = gplv3
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = freetype2
+	depends = ffmpeg
+	depends = glew
+	depends = openjpeg2
+	source = vmp-0.8.tar.xz::https://github.com/milgra/mmfm/releases/download/0.8/vmp-0.8.tar.xz
+	sha256sums = 8905f59102a4c4158110e76cb116c9b4ab67bdeb2ed1bd9e0ef807888e80d32a
+
+pkgname = vmp
