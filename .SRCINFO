@@ -1,7 +1,7 @@
 pkgbase = gpower2-git
 	pkgdesc = A simple power dialog written in zig using gtk4
-	pkgver = r13.10ae693
-	pkgrel = 3
+	pkgver = r18.2f06314
+	pkgrel = 1
 	url = https://mzte.de/git/LordMZTE/gpower2
 	arch = x86_64
 	license = GPL-3
