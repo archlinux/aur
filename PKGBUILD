@@ -9,17 +9,21 @@
 
 pkgbase=font-symbola
 pkgname=('otf-symbola' 'ttf-symbola')
-pkgver=13.00
-pkgrel=8
+pkgver=14.00
+pkgrel=1
 pkgdesc='Font for symbol blocks of the Unicode Standard'
 arch=('any')
 url='https://dn-works.com/ufas/'
 license=('custom')
 makedepends=('fontforge' 'poppler')
-source=("$pkgbase-$pkgver-$pkgrel.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip"
-        "License-$pkgver-$pkgrel.pdf::https://dn-works.com/wp-content/uploads/2020/UFAS-Docs/License.pdf")
-sha512sums=('ba671168ab2dc15293ae404f849f13b9b1f4684ce1856a8c2bbf8b9a2e2d70a27f86ef166a5e3ab6260e651c8276537ee272710a7e1fb49beef26fbed6355a35'
-            '6b6f7688a5571375b59135e2a60c61d0ad7fd2d19f0f226a38b8b39696c6f01047758937e9431f8d64f4758fe207eac83ba4df847efccb24b119be4aff69dbf3')
+source=("$pkgbase-$pkgver-$pkgrel.pdf::https://dn-works.com/wp-content/uploads/2021/UFAS121921/Symbola.pdf"
+        "License-$pkgver-$pkgrel.pdf::https://dn-works.com/wp-content/uploads/2021/UFAS121921/License.pdf")
+sha512sums=('7e48bc125df8f2f3d7bfeb849bb4216cfb762ae13f55f0d165e2947595491571cf8fb5ed3cbf06c4fe8ac3fde844d18e19d745bd25bd74297e5e0c608f810079'
+            '29b7ae4fef078fbf266e0bff75bace6c146ad6bb5d7586b950eb8d29faae2aa612673a199c5a82b3807a26e7bff7d9963f0d174963b41c7ff47f25a6c5c9419d')
+
+prepare() {
+  pdfdetach -saveall ${source[0]%::*}
+}
 
 build() {
   fontforge -c 'open(argv[1]).generate(argv[2])' Symbola.{otf,ttf}
