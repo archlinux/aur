@@ -1,0 +1,10 @@
+[all]
+alias = ".SRCINFO"
+
+[".SRCINFO"]
+requires = [
+    "PKGBUILD",
+]
+commands = [
+    "makepkg --printsrcinfo > ${.target}",
+]
