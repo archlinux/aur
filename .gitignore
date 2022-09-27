@@ -1,8 +1,10 @@
 axtls/
 berkeley-db-1.xx/
 libffi/
+mbedtls/
 micropython/
 micropython-git-*.pkg.tar.xz
 micropython-git-*.pkg.tar.zst
+micropython-lib/
 pkg/
 src/

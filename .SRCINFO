@@ -1,11 +1,10 @@
 pkgbase = micropython-git
-	pkgdesc = A Python 3 implementation for microcontrollers and constrained environments (Unix version).
-	pkgver = 1.12.r451.g18fb5b443
+	pkgdesc = A Python 3 implementation for microcontrollers and constrained environments (Unix version)
+	pkgver = 1.19.1.r451.gbdbc44474f
 	pkgrel = 1
 	epoch = 1
 	url = http://micropython.org/
 	changelog = ChangeLog
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -15,14 +14,17 @@ pkgbase = micropython-git
 	provides = micropython
 	conflicts = micropython
 	conflicts = mpy-cross
-	source = micropython::git://github.com/micropython/micropython.git
+	source = micropython::git+https://github.com/micropython/micropython.git
 	source = axtls::git+https://github.com/pfalcon/axtls.git
-	source = libffi::git+https://github.com/atgreen/libffi.git
 	source = berkeley-db-1.xx::git+https://github.com/pfalcon/berkeley-db-1.xx.git
+	source = libffi::git+https://github.com/atgreen/libffi.git
+	source = mbedtls::git+https://github.com/ARMmbed/mbedtls.git
+	source = micropython-lib::git+https://github.com/micropython/micropython-lib.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = micropython-git
-

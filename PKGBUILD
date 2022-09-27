@@ -2,60 +2,64 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
-_pkgname="micropython"
-pkgname="${_pkgname}-git"
-pkgver=1.12.r451.g18fb5b443
+_pkgname='micropython'
+pkgname=$_pkgname-git
+pkgver=1.19.1.r451.gbdbc44474f
 pkgrel=1
 epoch=1
-pkgdesc="A Python 3 implementation for microcontrollers and constrained environments (Unix version)."
-arch=('i686' 'x86_64')
-url="http://micropython.org/"
-license=('MIT')
-depends=('libffi')
-makedepends=('git' 'python')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" 'mpy-cross')
+pkgdesc='A Python 3 implementation for microcontrollers and constrained environments (Unix version)'
+arch=(x86_64)
+url='http://micropython.org/'
+license=(MIT)
+depends=(libffi)
+makedepends=(git python)
+provides=($_pkgname)
+conflicts=($_pkgname mpy-cross)
 optdepends=('micropython-lib: for MicroPython standard library')
-source=("${_pkgname}::git://github.com/micropython/${_pkgname}.git"
-        "axtls::git+https://github.com/pfalcon/axtls.git"
-        "libffi::git+https://github.com/atgreen/libffi.git"
-        "berkeley-db-1.xx::git+https://github.com/pfalcon/berkeley-db-1.xx.git"
+source=("$_pkgname::git+https://github.com/micropython/$_pkgname.git"
+        'axtls::git+https://github.com/pfalcon/axtls.git'
+        'berkeley-db-1.xx::git+https://github.com/pfalcon/berkeley-db-1.xx.git'
+        'libffi::git+https://github.com/atgreen/libffi.git'
+        'mbedtls::git+https://github.com/ARMmbed/mbedtls.git'
+        'micropython-lib::git+https://github.com/micropython/micropython-lib.git'
 )
 changelog='ChangeLog'
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
 
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
 
   git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
 
-  for submodule in axtls berkeley-db-1.xx libffi; do
-    git submodule init "lib/$submodule"
-    git config submodule.$submodule.url "${srcdir}/$submodule"
-    git submodule update "lib/$submodule"
+  for submodule in axtls berkeley-db-1.xx libffi mbedtls micropython-lib; do
+    git submodule init lib/$submodule
+    git config submodule.$submodule.url "$srcdir"/$submodule
+    git submodule update lib/$submodule
   done
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd $_pkgname
   ( cd mpy-cross; make; )
   ( cd ports/unix; make)
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  ( cd ports/unix; make PREFIX="$pkgdir/usr" install; )
-  install mpy-cross/mpy-cross "$pkgdir/usr/bin"
+  cd $_pkgname
+  ( cd ports/unix; make PREFIX="$pkgdir"/usr install; )
+  install mpy-cross/build/mpy-cross "$pkgdir"/usr/bin
   # Install documentation
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   # Install license
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
