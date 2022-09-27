@@ -1,7 +1,7 @@
 pkgbase = rocrand
 	pkgdesc = Pseudo-random and quasi-random number generator on ROCm
 	pkgver = 5.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocsparse.readthedocs.io/en/master/
 	arch = x86_64
 	license = MIT
