@@ -1,11 +1,12 @@
-# Maintainer: Surefire <surefire at cryptomile dot net>
+# Maintainer: Taijian <taijian@posteo.de>
+# Contributor: Surefire <surefire at cryptomile dot net>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 # Contributor: Frikilinux <frikilinux at gmail dot com>
 
 pkgname=gnome-shell-extension-appindicator-git
-pkgver=40+1+g4463b84
-pkgrel=3
+pkgver=43+0+gc49dde6
+pkgrel=1
 epoch=1
 pkgdesc='AppIndicator/KStatusNotifierItem support for GNOME Shell'
 url='https://github.com/ubuntu/gnome-shell-extension-appindicator'
