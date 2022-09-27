@@ -1,4 +1,4 @@
-##
+#PKGBUILD was last modified on September 27, 2022 at 03:54 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 
 pkgname=guile-hall-git
@@ -19,28 +19,28 @@ sha256sums=('SKIP'
 options=(!strip)
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   git describe --tags | sed 's+-+.r+' | sed 's+^v++' | tr - .
 }
 
 prepare() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   git apply ../guile-hall-git-xdg-fix.patch
+  autoreconf -vif
+  ./configure --prefix=/usr
 }
 
 build() {
-  cd ${pkgname%-git}
-  autoreconf -vif
-  ./configure --prefix=/usr
+  cd "${pkgname%-git}"
   make
 }
 
 check() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   make check
 }
 
 package() {
-  cd ${pkgname%-git}
-  make DESTDIR="$pkgdir/" install
+  cd "${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
