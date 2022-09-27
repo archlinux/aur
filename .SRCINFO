@@ -1,6 +1,6 @@
 pkgbase = lunatask
 	pkgdesc = unofficial third-party Arch package for lunatask.app (*not* supported by Lunatask developers)
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 0
 	url = https://lunatask.app
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lunatask
 	depends = libxss
 	depends = libxtst
 	options = !strip
-	source = https://lunatask.app/download/Lunatask-1.5.7.AppImage
-	sha256sums = 5703075c7f2cef90d51c47f2eaf17fc6fd45122377e11fef3e0267a90fe63409
+	source = https://lunatask.app/download/Lunatask-1.5.8.AppImage
+	sha256sums = e682bdafb4f2630fc6ab8af8b3a71a56d86f13649c708ec08e2a59ac71d39eaf
 
 pkgname = lunatask

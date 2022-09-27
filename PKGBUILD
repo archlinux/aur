@@ -1,6 +1,6 @@
 # Maintainer: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=0
 pkgdesc='unofficial third-party Arch package for lunatask.app (*not* supported by Lunatask developers)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://lunatask.app/download/${_file})
-sha256sums=('5703075c7f2cef90d51c47f2eaf17fc6fd45122377e11fef3e0267a90fe63409')
+sha256sums=('e682bdafb4f2630fc6ab8af8b3a71a56d86f13649c708ec08e2a59ac71d39eaf')
 
 options=('!strip')
 
