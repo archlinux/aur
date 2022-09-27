@@ -44,8 +44,10 @@ _package_helper() {
   _lua_ver=$1
   _lua_ver_nodot=`echo $1 | cut -c1,3`
 
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
+
   install -m755 -d "$pkgdir"/usr/lib/lua/${_lua_ver}
-  install -m755 "$srcdir"/luagl/lib/Linux*/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}
+  install -m755 "$srcdir"/luagl/lib/${_linux_ver}/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}
   install -Dm644 "$srcdir"/luagl/COPYRIGHT "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
   install -m755 -d "$pkgdir"/usr/share/doc/$pkgname/html
   install -Dm644 "$srcdir"/luagl/html/*.* "$pkgdir"/usr/share/doc/$pkgname/html
