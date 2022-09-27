@@ -15,10 +15,12 @@ provides=('josm')
 conflicts=('josm')
 backup=('etc/conf.d/josm')
 source=(https://josm.openstreetmap.de/download/${pkgname%-tested}-snapshot-$pkgver.jar
+        ${pkgname%-tested}.sh
         ${pkgname%-tested}.conf.d
         ${pkgname%-tested}::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver)
 noextract=(${pkgname%-tested}-snapshot-$pkgver.jar)
 sha256sums=('01099d07080e570b3c303017f22dcfedbb24debebd83bc778e10031b04566b67'
+            'a96ba2cf3e42b20634e2b09f25546cdf1ac47a7a43dd79d24033aa2cfb638f2a'
             '29377ce55c50951b1bd0e39003a977d8ea558c0657d613cea5f0056ce255e60e'
             'SKIP')
 
@@ -27,7 +29,7 @@ package() {
 
   install -Dm644 ${pkgname%-tested}-snapshot-$pkgver.jar "${pkgdir}"/usr/share/java/${pkgname%-tested}/${pkgname%-tested}.jar
 
-#.desktop and icon file
+  #.desktop and icon file
   install -Dm644 ${pkgname%-tested}/native/linux/tested/usr/share/applications/org.openstreetmap.josm.desktop \
         "${pkgdir}"/usr/share/applications/org.openstreetmap.josm.desktop
   install -Dm644 ${pkgname%-tested}/native/linux/tested/usr/share/man/man1/josm.1 \
@@ -42,19 +44,7 @@ package() {
         "${pkgdir}"/usr/share/icons/hicolor/${_icon}x${_icon}/apps/org.openstreetmap.josm.png
   done
 
-#executable file
-  install -d "${pkgdir}"/usr/bin
-  cat <<"EOF" >"${pkgdir}"/usr/bin/${pkgname%-tested} 
-#!/bin/sh
-# source application-specific settings
-while true; do
-    JOSM_ARGS=
-    [ -f /etc/conf.d/josm ] && . /etc/conf.d/josm
-    CLASSPATH="/usr/share/java/josm/josm.jar"
-    java ${JOSM_ARGS} -cp "${CLASSPATH}" -Djosm.restart=true org.openstreetmap.josm.gui.MainApplication "$@"
-    [ $? -eq 9 ] || break
-done
-EOF
-  chmod 755 "${pkgdir}"/usr/bin/${pkgname%-tested}
+  #executable file
+  install -Dm755 ${pkgname%-tested}.sh "${pkgdir}"/usr/bin/${pkgname%-tested}
   install -Dm644 "${srcdir}"/${pkgname%-tested}.conf.d "${pkgdir}"/etc/conf.d/${pkgname%-tested}
 }

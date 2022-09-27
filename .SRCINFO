@@ -16,9 +16,11 @@ pkgbase = josm-tested
 	noextract = josm-snapshot-18543.jar
 	backup = etc/conf.d/josm
 	source = https://josm.openstreetmap.de/download/josm-snapshot-18543.jar
+	source = josm.sh
 	source = josm.conf.d
 	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18543
 	sha256sums = 01099d07080e570b3c303017f22dcfedbb24debebd83bc778e10031b04566b67
+	sha256sums = a96ba2cf3e42b20634e2b09f25546cdf1ac47a7a43dd79d24033aa2cfb638f2a
 	sha256sums = 29377ce55c50951b1bd0e39003a977d8ea558c0657d613cea5f0056ce255e60e
 	sha256sums = SKIP
 
