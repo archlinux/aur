@@ -1,6 +1,6 @@
 pkgbase = apostrophe-git
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.6.3.r2.g9d8c2d0
+	pkgver = 2.6.3.r57.g702348a
 	pkgrel = 1
 	url = https://world.pages.gitlab.gnome.org/apostrophe
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = apostrophe-git
 	depends = otf-fira-mono
 	depends = otf-fira-sans
 	depends = python-cairo
+	depends = python-chardet
 	depends = python-gobject
 	depends = python-levenshtein
 	depends = python-pyenchant
