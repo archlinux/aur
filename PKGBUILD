@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=webshot
-_pkgver=0.5.3
+_pkgver=0.5.4
 pkgname=r-${_pkgname,,}
-pkgver=0.5.3
-pkgrel=3
+pkgver=0.5.4
+pkgrel=1
 pkgdesc='Take Screenshots of Web Pages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7c4f2be61c8c4730202a9c3604072478e30cb85b423b7497cd703cc3f49dbc0')
+sha256sums=('3dc2b9baef7855e1deea060276b9ccc6375eee36b7100987cbb1f8e5cd7a8f24')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
