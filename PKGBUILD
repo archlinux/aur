@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -18,13 +18,17 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
+_kcoreaddons_version="5.98.0"
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        fix-tgcalls-cstdint.patch
+        "https://invent.kde.org/frameworks/kcoreaddons/-/archive/v$_kcoreaddons_version/kcoreaddons-v$_kcoreaddons_version.tar.gz"
+        "bundle-kcoreaddons.patch::https://github.com/desktop-app/cmake_helpers/compare/b9f1b60...ilya-fedin:cmake_helpers:6bcdd3fa3618038b1824a2f772543d9db48e8b27.patch"
        )
-sha512sums=('d58ad4b3eaf72b4885612ecca0b29057a1f0e7efc7a539c4ed7cdfa9f6b8dd19e378f1e4b9f28a644d8c8559a5310a168e0b949aafac6902bd21155795db2574'
-            'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888')
+sha512sums=('47d1e618a03f3b870b5aff81bc71793bcdd3fec91bb1263a65e0a935867ade4bc3de29f9f01ddce3837e7239e17a88caba6afc2b49b3181dd8cd6eeca597d6f2'
+            'd84f0d0c29f819488fd7632df28b8a9da5fb3a0724652529d3f8a59b62ea12f5f0a1755b346d2d8b015ec492dd0fead8b74199f9a7e7ada26d45b8fd7ada21c8'
+            '1edd0fc0a19de5cab558dd5721aa111ff9cb8f9bc24bad338173c696fc0c010a62eba1584d6deaad8940217b1725d15741cd55f546433bd62cccd0850036bce3')
 
 prepare() {
+    mv "$srcdir/kcoreaddons-v$_kcoreaddons_version" "tdesktop-$pkgver-full/Telegram/ThirdParty/kcoreaddons"
     cd tdesktop-$pkgver-full
 
     for ttf in Telegram/lib_ui/fonts/*.ttf; do
@@ -34,7 +38,12 @@ prepare() {
     sed -i 's/DemiBold/Bold/g' Telegram/lib_ui/ui/style/style_core_font.cpp
 
     rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
-    patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
+
+    # Using ilya-fedin/cmake_helpers bundled-kcoreaddons branch for now: https://github.com/telegramdesktop/tdesktop/issues/25073
+    patch -Np1 -i "$srcdir"/bundle-kcoreaddons.patch -d cmake
+
+    # Upstream suggested sed headers: https://github.com/telegramdesktop/tdesktop/issues/25073#issuecomment-1253908867
+    find . -type f \( -iname '*.h' -or -iname '*.cpp' \) -print0 | xargs -0 sed -i 's/<KUrlMimeData>/<kurlmimedata.h>/g;s/<KShell>/<kshell.h>/g;s/<KSandbox>/<ksandbox.h>/g'
 }
 
 build() {
