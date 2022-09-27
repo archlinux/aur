@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Wouter Wijsman <wwijsman@live.nl>
 pkgname=minigalaxy
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('dosbox: Use the system DOSBox installation'
             'scummvm: Use the system ScummVM installation'
             'wine: Install Windows games')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sharkwouter/minigalaxy/archive/$pkgver.tar.gz")
-sha256sums=('680f24248e1235459c1de1d127ea6c642a752ced8b9d2e14b2b168db093a9f48')
+sha256sums=('0ae5fc29560d4e02b193274fbfd1df169d500cdb63bb32dee8bbfb30c11f5855')
 
 build() {
   cd "$pkgname-$pkgver"
