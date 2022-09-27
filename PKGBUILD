@@ -66,7 +66,7 @@ package() {
   set -u
   cd "${_srcdir}"
 
-  make INSTALL_ROOT="$pkgdir" install
+  make -j1 INSTALL_ROOT="$pkgdir" install
   set +u
 }
 set +u
