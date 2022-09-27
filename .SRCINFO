@@ -1,6 +1,6 @@
 pkgbase = hw-probe
 	pkgdesc = Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = hw-probe
 	optdepends = inxi
 	optdepends = pnputils
 	optdepends = efibootmgr
-	source = https://github.com/linuxhw/hw-probe/archive/1.6.4.tar.gz
-	sha256sums = 3dc0d0b4b7a9ff65a7937f1b1ca3a36b9360ead0d6770f2a9abceff486d44274
+	source = https://github.com/linuxhw/hw-probe/archive/1.6.5.tar.gz
+	sha256sums = 42030ba2fb3f6fb0772ab34744fbb91a89b1b6a9b0ed99e861fa05ff86968fb1
 
 pkgname = hw-probe
