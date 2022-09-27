@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Jetbrains IDEA Pj
+Comment=Intelligent Java IDE
+Exec=jetbrains-idea-pj %u
+Icon=jetbrains-idea-pj
+Terminal=false
+StartupWMClass=jetbrains-idea
+Type=Application
+Categories=Development;IDE;

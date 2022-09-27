@@ -1,0 +1,16 @@
+pkgbase = jetbrains-idea-pj
+	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
+	pkgver = 2021.1.3
+	pkgrel = 1
+	url = https://www.jetbrains.com/idea/
+	arch = x86_64
+	license = custom:commercial
+	options = !strip
+	source = https://download.jetbrains.com/idea/ideaIU-2021.1.3.tar.gz
+	source = https://raw.githubusercontent.com/XDwanj/jetbrains-idea-pj/main/jetbrains-idea-pj.desktop
+	md5sums = d60b5c18840552ce14499e4afb237a15
+	md5sums = 394b981c187dcd127912fb33e42e0cc4
+
+pkgname = jetbrains-idea-pj
+	backup = opt/jetbrains-idea-pj/bin/idea64.vmoptions
+	backup = opt/jetbrains-idea-pj/bin/idea.properties
