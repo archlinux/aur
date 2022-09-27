@@ -7,6 +7,7 @@ pkgrel=0
 pkgdesc="cn.com.10jqka - a tool for scanning the stock infomation"
 arch=("x86_64")
 url="https://www.10jqka.com.cn"
+# url="http://activity.10jqka.com.cn/acmake/cache/1380.html"
 license=('custom')
 depends=()
 
