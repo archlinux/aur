@@ -13,13 +13,7 @@ pkgbase = scream-git
 	depends = libsoxr
 	depends = alsa-lib
 	provides = scream
-	provides = scream-pulse
-	provides = scream-ivshmem-pulse
-	provides = scream-alsa
-	provides = scream-ivshmem-alsa
 	conflicts = scream
-	conflicts = scream-pulse
-	conflicts = scream-alsa
 	source = git+https://github.com/duncanthrax/scream.git
 	sha256sums = SKIP
 
