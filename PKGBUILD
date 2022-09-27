@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-rounded-window-corners-git
-pkgver=6.r14.g18702a0
+pkgver=8.r0.g1701678
 pkgrel=1
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
@@ -49,7 +49,7 @@ package() {
     "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/schemas/"
 
-  for locale in nb_NO zh_CN; do
+  for locale in id nb_NO zh_CN; do
   install -Dm644 "_build/locale/${locale}/LC_MESSAGES/${uuid}.mo" -t \
     "$pkgdir/usr/share/locale/${locale}/LC_MESSAGES/"
   done
