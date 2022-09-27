@@ -1,7 +1,7 @@
 # Maintainer: Timothy Gelter <timothy dot gelter plus aur at gmail dot com>
 pkgname=globalprotect-bin
-pkgver=5.3.4.0
-pkgrel=5
+pkgver=6.0.1.1
+pkgrel=6
 pkgdesc="GlobalProtect VPN client Agent"
 arch=('x86_64')
 url="https://docs.paloaltonetworks.com/globalprotect/5-2/globalprotect-app-user-guide/globalprotect-app-for-linux/download-and-install-the-globalprotect-app-for-linux"
@@ -12,8 +12,8 @@ options=()
 install=globalprotect.install
 source=("local://GlobalProtect_tar-$pkgver-$pkgrel.tgz"
 	"local://GlobalProtect_UI_tar-$pkgver-$pkgrel.tgz")
-sha256sums=('e7cf7876aadc87a05aa2a87f54df5be51a6a4d2c681e3dbe59abcbb268ceb65c'
-            'e360df3d6b09b60df273dce57da9ae9ea1e5cf0ea138c8018b917b5ffcefdab8')
+sha256sums=('e761c7925b222bb6f7260ab143e50b1a741472d866ba0e75641cfb2124a75e01'
+            '1202c7aee105d44772915a00fe8693f4f49c994f32ccd6f08447545c2a0521be')
 package(){
 	# Adapted for Arch Linux from package tarball's install.sh
 	GPDIR="$pkgdir/opt/paloaltonetworks/globalprotect"
