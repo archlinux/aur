@@ -2,8 +2,8 @@
 
 pkgname=hush3-bin
 _pkgname=hush3
-pkgver=3.9.1
-pkgrel=3
+pkgver=3.9.2
+pkgrel=1
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -11,18 +11,18 @@ license=('GPL3')
 depends=('libsodium')
 makedepends=('wget' 'git' 'curl')
 conflicts=('hush3')
-source=("hush-$pkgver-amd64.deb::https://git.hush.is/attachments/0988a34a-a24f-4ced-8e3d-4b80eb9286d8"
+source=("hush-$pkgver-amd64.deb::https://git.hush.is/attachments/5c3a4ff6-ffcf-44ea-af98-1db78fdffd9a"
         "$url/raw/branch/master/LICENSE"
         "hushd.service"
         "$url/raw/branch/master/doc/man/hush-cli.1"
         "$url/raw/branch/master/doc/man/hushd.1"
         "$url/raw/branch/master/doc/man/hush-tx.1")
-sha512sums=('0cf7330bf07efdd5a85406e197cd6f0396f89cde1942a675f1eec5362e6d577506b7ebedc428916a1f80bcb25e26c1523d3cb24fd2dcc405d4c304b1800548a3'
+sha512sums=('71966a3e9925a1ea30e0036e6112b626554ea282459499f40d595ea5eacc53850141c6d2fa89e2bfec11d95b8ac4d1df3c4a19a2f99b9075f28f17dc209a9b70'
             '7b0af5cf16f2def174a5cf63dc536e07f8a0cd3bcd48f9edccc414d406b1cb11e0a82af157ea1c43449cbabad845a1f52b084dc9232b45935880d0d82fb356ca'
             'f8ab447fc4d91a86090326427fbbe8eda019fcfddf0ba1654f599903b25f4084eacc510f262ce03f176e7fd22316c55e5d8cf43dd9a4ccea375643e8fa8270c6'
-            'e16b6ceff19d20a2ea10759568d1f0ca6e6435e295e63e36e4ac1d76adef954b696cf5b9c0119219b0f8f09f4fe78d3dcf088741f5646cafd00e18ca9d99681f'
-            '52c1944263f3f8409e066abd1b61fa8d8e60af1e60b15334783d27a560f9830e6138a0d4dc6668c2e6f163951e592a5d81ca099bb602b87c385481d7c61d396d'
-            'fa28ceed11d6bfdade6831a6fb64aa9b5ff1ae1c52099409f18e5ebdf796b01c2746c865f1c099000a606fa6ed5034a20c8c1ff08aa488d89cbf9e017a44e044')
+            '7d262e59202cd368dea9420f5f61c524e4a199ff0e7f45582ae1651e8dc465cf721a5f29e3f2be467e50e7c2f6b0958928c5169b3f62e9bc8a020b1f408e0bd4'
+            '109f06a84e6856c83b4c265f825b7f5be262f6e3b38d456dab92834f23ef0a5d53317341d838a4abad56cf95782162c8aeab5e9816586351009c076981d36050'
+            '7a014402c27241deab98d4c5d2838e5563fbef6283c28356ec9f24eaea221d2cd02ccc08ca4d3bc4edbb3a7e218c7a68f25ac1967b13cfc06743ff26161dddaf')
 
 package() {
   # extract from deb file
