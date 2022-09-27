@@ -1,0 +1,13 @@
+pkgbase = scd2html
+	pkgdesc = Tool for generating HTML from scdoc files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sr.ht/~bitfehler/scd2html/
+	arch = x86_64
+	license = MIT
+	makedepends = scdoc
+	depends = glibc
+	source = scd2html-1.0.0.tar.gz::https://git.sr.ht/~bitfehler/scd2html/archive/v1.0.0.tar.gz
+	sha512sums = bf260106d69ebe5f9841cc5dd3d8e56b3e234aa81d468f195b9511970d58849edfbcf6962650fe36bd07f73151a48f2fdf0c504154976d386b4b9bfb60cb442d
+
+pkgname = scd2html
