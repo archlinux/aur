@@ -1,0 +1,14 @@
+pkgbase = cachyos-ananicy-rules
+	pkgdesc = CachyOS - ananicy-rules
+	pkgver = 1.r29.2b37863
+	pkgrel = 1
+	arch = any
+	groups = cachyos
+	license = GPL
+	provides = ananicy-rules-git
+	conflicts = ananicy-rules-git
+	replaces = ananicy-rules-git
+	source = cachyos-ananicy-rules::git+https://github.com/CachyOS/ananicy-rules.git
+	sha256sums = SKIP
+
+pkgname = cachyos-ananicy-rules
