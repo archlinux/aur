@@ -1,29 +1,46 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 
-pkgname=python-ytmusicapi
-pkgver=0.22.0
+_name=ytmusicapi
+pkgname=python-$_name
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Unofficial API for YouTube Music"
 arch=('any')
 url="https://github.com/sigma67/ytmusicapi"
 license=('MIT')
 depends=('python-requests')
-makedepends=('python-setuptools')
-_name=${pkgname#python-}
+makedepends=(
+    python-build
+    python-installer
+    python-setuptools-scm
+    python-sphinx
+    python-wheel
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('099e2ea16e141e7e42f8c724417cac4ddc9d680a67f7d6f45029c5e513dbec32')
+sha256sums=('def49b1406e0c7fb8b1cdd48a1eab5b55dff6877def68c8b1712a2ef8f9b5e7f')
+
+prepare() {
+  cd "$_name-$pkgver"
+  # Relax version requirement for python-setuptools
+  sed -i 's/"setuptools>=65"/"setuptools"/' pyproject.toml
+}
 
 build() {
-  cd ytmusicapi-$pkgver
-  python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+  make -C docs text
 }
 
 package() {
-  cd ytmusicapi-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" docs/build/text/*
+
+  # Symlink license file
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  ln -s "$site_packages/$_name-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
