@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-libogg
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Ogg bitstream and framing library (mingw-w64)"
 arch=(any)
 url="http://xiph.org"
@@ -16,6 +16,11 @@ sha256sums=('c4d91be36fc8e54deae7575241e03f4211eb102afb3fc0775fbbc1b740016705')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _pkgname="${pkgname#mingw-w64-}"
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+  curl -L https://github.com/xiph/ogg/pull/72.patch | patch -p1
+}
 
 build() {
   for _arch in ${_architectures}; do
