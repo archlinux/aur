@@ -1,7 +1,7 @@
 pkgbase = rocthrust
 	pkgdesc = Port of the Thrust parallel algorithm library atop HIP/ROCm
 	pkgver = 5.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.amd.com/bundle/rocTHRUST_API_Guide/page/index.html
 	arch = x86_64
 	license = Apache
