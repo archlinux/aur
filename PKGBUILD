@@ -14,7 +14,7 @@ _pkgname=chromium
 pkgver=106.0.5249.61
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=1
+_gcc_patchset=2
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -34,6 +34,7 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
         REVERT-enable-GlobalMediaControlsCastStartStop.patch
         REVERT-roll-src-third_party-ffmpeg-m102.patch
         REVERT-roll-src-third_party-ffmpeg-m106.patch
@@ -41,7 +42,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('f27acb929b12fc9e60b035c2f9f1879866eec7cfe1665dccf544048e9e931497'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'ea7db6b14b276cbf04e434d31d8bbdfbc23d108dcc1c2cbc278eb8f22c0b3086'
+            '2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121'
+            'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
@@ -59,7 +61,7 @@ declare -gA _system_libs=(
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  #[jsoncpp]=jsoncpp  # triggers a CFI violation (https://crbug.com/1365218)
+  [jsoncpp]=jsoncpp
   [libaom]=aom
   #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/d22d4de94120
   [libdrm]=
@@ -106,6 +108,9 @@ prepare() {
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
+
+  # Upstream fixes
+  patch -Np1 -i ../unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
