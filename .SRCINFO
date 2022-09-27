@@ -11,8 +11,7 @@ pkgbase = lib32-oxygen-gtk2
 	depends = oxygen-gtk2
 	conflicts = lib32-oxygen-gtk
 	replaces = lib32-oxygen-gtk
-	source = http://download.kde.org/stable/oxygen-gtk2/1.4.6/src/oxygen-gtk2-1.4.6.tar.bz2
+	source = https://download.kde.org/stable/oxygen-gtk2/1.4.6/src/oxygen-gtk2-1.4.6.tar.bz2
 	md5sums = 493892fc36302bfe862604f667a6c04e
 
 pkgname = lib32-oxygen-gtk2
-

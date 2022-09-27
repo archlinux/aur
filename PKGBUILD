@@ -1,4 +1,4 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: birdflesh <antkoul at gmail dot com>
 # Contributor: Zephyr
@@ -15,7 +15,7 @@ depends=('lib32-gtk2' "${_pkgbasename}")
 conflicts=('lib32-oxygen-gtk')
 replaces=('lib32-oxygen-gtk')
 makedepends=('cmake' 'gcc-multilib')
-source=(http://download.kde.org/stable/${_pkgbasename}/${pkgver}/src/${_pkgbasename}-${pkgver}.tar.bz2)
+source=(https://download.kde.org/stable/${_pkgbasename}/${pkgver}/src/${_pkgbasename}-${pkgver}.tar.bz2)
 md5sums=('493892fc36302bfe862604f667a6c04e')
 
 prepare() {
