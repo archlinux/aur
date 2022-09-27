@@ -1,7 +1,7 @@
 pkgbase = libpanel
 	pkgdesc = A dock/panel library for GTK 4
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libpanel
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = libpanel
 	makedepends = vala
 	depends = libadwaita
 	depends = gobject-introspection
-	source = https://gitlab.gnome.org/GNOME/libpanel/-/archive/1.0.0/libpanel-1.0.0.tar.gz
-	b2sums = 0986c241d82e09276552638ddebc17d95ca74af95e472cc839ebb19c3330bdbcf6dae4497b5a9c79a2d7ccc1bcca1d53df068518034f9a74b5ffaa21b5d0e676
+	source = https://gitlab.gnome.org/GNOME/libpanel/-/archive/1.0.1/libpanel-1.0.1.tar.gz
+	b2sums = b120b5e66b148a8a812fe7afb57d9b1ce855924fde78b9d89c91cfe45e90e8613b51b0881366f108e0ea53e651505c352d7c732f061e8d2206576b616a5de5e9
 
 pkgname = libpanel
