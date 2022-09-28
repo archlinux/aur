@@ -1,0 +1,15 @@
+pkgbase = kitty-gruvbox-theme-git
+	pkgdesc = Gruvbox theme for kitty terminal.
+	pkgver = r12.833d137
+	pkgrel = 1
+	url = https://github.com/wdomitrz/kitty-gruvbox-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = kitty
+	provides = kitty-gruvbox-theme
+	conflicts = kitty-gruvbox-theme
+	source = git+https://github.com/wdomitrz/kitty-gruvbox-theme.git
+	sha256sums = SKIP
+
+pkgname = kitty-gruvbox-theme-git
