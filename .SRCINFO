@@ -1,6 +1,6 @@
 pkgbase = substance-sampler
 	pkgdesc = Transform a real-life picture into a photorealistic surface or HDR environment.
-	pkgver = 3.3.2
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://www.adobe.com/products/substance3d-sampler.html
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = substance-sampler
 	depends = libtiff4
 	replaces = substance-alchemist
 	options = !strip
-	source = https://download.substance3d.com/adobe-substance-3d-sampler/3.x/Adobe_Substance_3D_Sampler-3.3.2-rc.1-1989-linux-x64-standard-Release-d7d12da5.rpm
-	sha256sums = d86b33aeab19e6938f6f1fb0c369220f2bc3f411086d3e4a414ad9fed3b32541
+	source = https://download.substance3d.com/adobe-substance-3d-sampler/3.x/Adobe_Substance_3D_Sampler-3.4.0-rc.3-2229-linux-x64-standard-Release-3dd2456e.rpm
+	sha256sums = 58b211634a6a72a98321b26fd0f4824ec2fd100f0e9fadbab67d5a3f448cd95d
 
 pkgname = substance-sampler

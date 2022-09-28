@@ -2,11 +2,11 @@
 # Co-maintainer: Rain Shinotsu <Rain_Shinotsu at protonmail dot com>
 
 pkgname=substance-sampler
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
-_rc=rc.1
-_build=1989
-_tag=d7d12da5
+_rc=rc.3
+_build=2229
+_tag=3dd2456e
 pkgdesc="Transform a real-life picture into a photorealistic surface or HDR environment."
 arch=('x86_64')
 url='https://www.adobe.com/products/substance3d-sampler.html'
@@ -15,7 +15,7 @@ depends=('libicu50' 'fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 
 options=('!strip')
 replaces=('substance-alchemist')
 source=("https://download.substance3d.com/adobe-substance-3d-sampler/3.x/Adobe_Substance_3D_Sampler-${pkgver}-${_rc}-${_build}-linux-x64-standard-Release-${_tag}.rpm")
-sha256sums=('d86b33aeab19e6938f6f1fb0c369220f2bc3f411086d3e4a414ad9fed3b32541')
+sha256sums=('58b211634a6a72a98321b26fd0f4824ec2fd100f0e9fadbab67d5a3f448cd95d')
 
 validpgpkeys=()
 
