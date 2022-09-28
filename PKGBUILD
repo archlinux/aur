@@ -1,7 +1,7 @@
 # Maintainer: marzeq <marzeqmarzeq at gmail dot com>
 
 pkgname="xbox-cloud-gaming"
-pkgver="1.0.13"
+pkgver="1.0.14"
 pkgrel="1"
 pkgdesc="An Electron Linux desktop app for Xbox Cloud Gaming"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("http-parser" "minizip" "re2")
 _filename="${pkgname}-electron_${pkgver}.pacman"
 source=("$url/releases/download/${pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=("84f6604fc6e6a0a60e2f6022af886e9e")
+md5sums=("bbccfa8d2c8962064656540d786991ca")
 options=(!strip)
 
 package() {
