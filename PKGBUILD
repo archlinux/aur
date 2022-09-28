@@ -11,7 +11,7 @@ pkgdesc="NICE DCV client for Linux. DCV is a desktop remotization server, with s
 arch=('x86_64')
 url="https://www.nice-software.com/products/dcv"
 license=('custom: commercial')
-depends=('cairo' 'dconf' 'desktop-file-utils' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'graphite' 'gst-plugins-base' 'gstreamer' 'gtk3' 'krb5' 'libepoxy' 'libjpeg6' 'libsasl' 'libsoup' 'libx11' 'lmdb' 'lz4' 'nss' 'pango' 'pcsclite' 'protobuf-c' 'sqlite' 'zlib')
+depends=('cairo' 'dconf' 'desktop-file-utils' 'ffmpeg4.4' 'gdk-pixbuf2' 'glib2' 'glibc' 'graphite' 'gst-plugins-base' 'gstreamer' 'gtk3' 'krb5' 'libepoxy' 'libjpeg6' 'libsasl' 'libsoup' 'libx11' 'lmdb' 'lz4' 'nss' 'pango' 'pcsclite' 'protobuf-c' 'sqlite' 'zlib')
 # At launch, dcvviewer shows an error looking for OpenSSL 3.0.0 libs, but I haven't noticed any broken features without it
 optdepends=('openssl3-git: Support for OpenSSL 3.0.0')
 source=(
