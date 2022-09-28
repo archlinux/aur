@@ -10,6 +10,7 @@ pkgbase = tcharmap-git
 	depends = python
 	depends = python-yaml
 	depends = python-pyqt5
+	depends = python-setuptools
 	options = !emptydirs
 	source = git+https://github.com/nrio0/tcharmap.git
 	source = tcharmap_start
@@ -17,4 +18,3 @@ pkgbase = tcharmap-git
 	sha256sums = 47bf16b6510c9f1b9bcf052ee0c268cdeb715a6f52290996659b6ce3fdc2a56b
 
 pkgname = tcharmap-git
-
