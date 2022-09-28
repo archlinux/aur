@@ -2,11 +2,11 @@
 _pkgname=kde-gruvbox
 pkgname=kdeplasma-themes-${_pkgname}-git
 pkgver=r6.2dd9528
-pkgrel=3
+pkgrel=4
 pkgdesc="A suite of themes for KDE applications that match the retro gruvbox colorscheme"
 arch=(any)
 url="https://github.com/printesoi/kde-gruvbox"
-license=('MIT')
+license=(MIT)
 depends=(plasma-workspace)
 makedepends=(git)
 optdepends=()
@@ -28,9 +28,12 @@ build() {
 
 package() {
     cd "$_pkgname"
-    install -Dm755 konsole $pkgdir/usr/share/konsole
-    install -Dm755 yakuake $pkgdir/usr/share/apps/yakuake/kns_skins
-    install -Dm755 color-schemes $pkgdir/usr/share/color-schemes
-    install -Dm755 plasma5 $pkgdir/usr/share/plasma/desktoptheme
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/kde-gruvbox-git/LICENSE
+    install -dm755 $pkgdir/usr/share/konsole
+    cp -r konsole/* $pkgdir/usr/share/konsole
+    install -dm755 $pkgdir/usr/share/apps/yakuake/kns_skins
+    cp -r yakuake/breeze-gruvbox-dark $pkgdir/usr/share/apps/yakuake/kns_skins
+    install -dm755 $pkgdir/usr/share/color-schemes
+    cp color-schemes/Gruvbox.colors $pkgdir/usr/share/color-schemes
+    install -dm755 $pkgdir/usr/share/plasma/desktoptheme
+    cp -r plasma5/gruvbox $pkgdir/usr/share/plasma/desktoptheme
 }
