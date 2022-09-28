@@ -10,8 +10,7 @@ pkgname="labview-${_release}"
 pkgver="1"
 pkgrel=1
 pkgdesc='A system-design platform and development environment for a visual programming language from National Instruments.'
-url="https://www.ni.com/it-it/support/downloads/software-products/download/unpackaged-linux.labview.
-460677.html"
+url="https://www.ni.com/it-it/support/downloads/software-products/download/unpackaged-linux.labview.460677.html"
 arch=('x86_64')
 license=("custom:LabVIEW-${_release}")
 depends=('xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'shared-mime-info')
