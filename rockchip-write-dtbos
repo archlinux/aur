@@ -7,7 +7,7 @@ if [ -f "/boot/dtbs/rk3288-miqi.dtb" ]; then
   fdtput /boot/dtbs/rk3288-openhour.dtb -t s /mmc@ff0f0000 cap-sd-highspeed
   fdtput /boot/dtbs/rk3288-openhour.dtb -t x /mmc@ff0f0000 card-detect-delay 0xc8
 fi
-for bp in /boot/dtbos/*.dts; do
+for bp in $(shopt -s nullglob; echo /boot/dtbos/*.dts); do
   echo Creating overlay from $bp
   dtc -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
   cat $bp | grep "//fdtput" | while read -r line ; do
@@ -17,14 +17,13 @@ for bp in /boot/dtbos/*.dts; do
 done
 target="rk3288"
 ubootdev=$(ls /dev/disk/by-partlabel/${target}-*-uboot | head -n1)
-if [ -n "$ubootdev" ]; then
-  rkdev=$(basename $ubootdev)
-  rkdev=${rkdev/"${target}-"/""}
-  rkdev=${rkdev/"-uboot"/""}
-  if [ -L "$ubootdev" ]; then
-    fdtoverlay -vi "/boot/dtbs/${target}-${rkdev}.dtb" \
-                -o "/boot/dtbs/${target}-joined.dtb" /boot/dtbos/*.dtbo
-  fi
-fi
-
+[ ! -L "$ubootdev" ] && exit 0
+[ ! -n "$ubootdev" ] && exit 0
+rkdev=$(basename $ubootdev)
+rkdev=${rkdev/"${target}-"/""}
+rkdev=${rkdev/"-uboot"/""}
+fdtoverlay -vi "/boot/dtbs/${target}-${rkdev}.dtb" \
+            -o "/boot/dtbs/${target}-joined.dtb" \
+            $(shopt -s nullglob; echo /boot/dtbos/${target}-all-*.dtbo) \
+            $(shopt -s nullglob; echo /boot/dtbos/${target}-${rkdev}-*.dtbo)
 exit 0
