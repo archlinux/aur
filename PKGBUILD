@@ -1,6 +1,6 @@
 _phpbase="82"
 _suffix=""
-pkgver="8.2.0beta1"
+pkgver="8.2.0RC2"
 pkgrel="3"
 pkgbase="php82"
 pkgdesc="PHP 8.2.0 pre-release compiled as to not conflict with mainline php"
@@ -113,7 +113,7 @@ source=(
     "pear-config-patcher.php"
     "php-makefile-patcher.php"
     "php-apache.conf"
-    "https://downloads.php.net/~pierrick/php-${pkgver}.tar.xz"
+    "https://downloads.php.net/~sergey/php-${pkgver}.tar.xz"
 )
 depends=(
 )
@@ -1498,4 +1498,4 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '46ebb4be04b98833bab649314775cc100bdd825c73d9bc3646df5c1ec7ebb2a6')
+            '06b5040d2ed868567175a3c2f7e3495acaf376fe8335142a3838c49dc7f5863d')
