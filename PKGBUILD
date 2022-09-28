@@ -1,7 +1,7 @@
 # Contributor: naelstrof <naelstrof@gmail.com>
 pkgname=mingw-w64-libvorbis
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Vorbis codec library (mingw-w64)"
 arch=(any)
 url="http://xiph.org"
