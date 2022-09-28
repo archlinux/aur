@@ -3,12 +3,12 @@
 
 pkgname=xdg-utils-handlr
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A shim for xdg-utils to use handlr under the hood"
 arch=('x86_64')
 url='https://github.com/chmln/handlr'
 license=('MIT')
-depends=('handlr-bin')
+depends=('handlr')
 provides=('xdg-utils')
 conflicts=('xdg-utils' 'xdg-utils-mimeo')
 
