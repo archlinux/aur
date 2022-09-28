@@ -2,17 +2,25 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
 url="https://echo.readthedocs.io"
 license=('MIT')
-makedepends=('python-setuptools-scm' 'python-numpy' 'python-sphinx-automodapi' 'python-numpydoc' 'python-qtpy' 'python-pyqt5')
-checkdepends=('python-pytest-cov')
+makedepends=('python-setuptools-scm'
+#            'python-wheel'
+#            'python-build'
+#            'python-installer'
+             'python-sphinx-automodapi'
+             'python-numpydoc'
+             'python-numpy'
+             'python-qtpy'
+             'python-pyqt5')
+checkdepends=('python-pytest')  # numpy qtpy pyqt5 already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('3e6c13ff65d07010acc031aa5ae6f494'
+md5sums=('283f2997784e0481af35c3c93a04eca6'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 prepare() {
@@ -24,27 +32,31 @@ prepare() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build
+#   python -m build --wheel --no-isolation
 
     msg "Building Docs"
     python setup.py build_sphinx
+#   cd ${srcdir}/${_pyname}-${pkgver}/doc
+#   PYTHONPATH="../build/lib" make SPHINXOPTS="" html
 
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-echo() {
     depends=('python>=3.6' 'python-numpy' 'python-qtpy')
-    optdepends=('python-pyqt5>=5.9'
+    optdepends=('python-pyqt5>=5.9: Interfacing with Qt widgets¶'
                 'python-echo-doc: Documentation for python-echo')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+#   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-echo-doc() {
