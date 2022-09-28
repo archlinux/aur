@@ -1,10 +1,10 @@
-pkgbase = xdg-desktop-portal-wlr-git
-	pkgdesc = xdg-desktop-portal backend for wlroots
-	pkgver = v0.3.0.r15.gefcbcb6
+pkgbase = xdg-desktop-portal-wlr-artix
+	pkgdesc = xdg-desktop-portal backend for wlroots, build without systemd
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/emersion/xdg-desktop-portal-wlr
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
 	makedepends = git
 	makedepends = meson
 	makedepends = wayland-protocols
@@ -18,13 +18,12 @@ pkgbase = xdg-desktop-portal-wlr-git
 	optdepends = bemenu: one of the built-in chooser options for the screencast portal
 	optdepends = wofi: one of the built-in chooser options for the screencast portal
 	optdepends = obs-xdg-portal: support for the screencast portal in obs
-	provides = xdg-desktop-portal-wlr
+	provides = xdg-desktop-portal-wlr-artix
 	provides = xdg-desktop-portal-impl
+	conflicts = xdg-desktop-portal-wlr-artix
+	conflicts = xdg-desktop-portal-wlr-git
 	conflicts = xdg-desktop-portal-wlr
-	options = debug
-	options = !strip
-	source = xdg-desktop-portal-wlr-git::git+https://github.com/emersion/xdg-desktop-portal-wlr.git
-	sha512sums = SKIP
+	source = https://github.com/emersion/xdg-desktop-portal-wlr/releases/download/v0.6.0/xdg-desktop-portal-wlr-0.6.0.tar.gz
+	sha512sums = e325c2de2a98ffc4612da3492138843b6c9927e536f52f7a87e794380c099f84ab8d344ee989bf88e71faaad2e5300fc31ac74058cea5040654ac74ce270ee53
 
-pkgname = xdg-desktop-portal-wlr-git
-
+pkgname = xdg-desktop-portal-wlr-artix

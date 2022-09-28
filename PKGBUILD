@@ -1,14 +1,15 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: gigablaster <gigakek [at] protonmail [dot] com>
+# Contributor: Davide Depau <davide@depau.eu>
 
-pkgname=xdg-desktop-portal-wlr-git
-pkgver=v0.3.0.r15.gefcbcb6
+pkgname=xdg-desktop-portal-wlr-artix
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='xdg-desktop-portal backend for wlroots'
+pkgdesc='xdg-desktop-portal backend for wlroots, build without systemd'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
 arch=(x86_64)
-license=(custom:MIT)
-provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
-conflicts=("${pkgname%-git}")
+license=(MIT)
+provides=("${pkgname%}" "xdg-desktop-portal-impl")
+conflicts=("${pkgname%}" "xdg-desktop-portal-wlr-git" "xdg-desktop-portal-wlr")
 depends=(xdg-desktop-portal pipewire libinih)
 makedepends=(git meson wayland-protocols wayland scdoc)
 optdepends=(
@@ -18,26 +19,22 @@ optdepends=(
   "wofi: one of the built-in chooser options for the screencast portal"
   "obs-xdg-portal: support for the screencast portal in obs"
 )
-source=(
-  "${pkgname}::git+https://github.com/emersion/xdg-desktop-portal-wlr.git"
-)
-sha512sums=('SKIP')
-options=(debug !strip)
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
+source=(
+  "${url}/releases/download/v${pkgver}/xdg-desktop-portal-wlr-${pkgver}.tar.gz"
+)
+
+sha512sums=(
+    'e325c2de2a98ffc4612da3492138843b6c9927e536f52f7a87e794380c099f84ab8d344ee989bf88e71faaad2e5300fc31ac74058cea5040654ac74ce270ee53'
+)
 
 build () {
-  msg2 "Note: this package, by default, creates a debug, non-stripped build to aid reporting bugs and development."
-  msg2 "If you would like a smaller release build, please consider editing the PKGBUILD or using the non-git package."
+    local meson_options=(
+      -D sd-bus-provider=libelogind
+      -D systemd=disabled
+    )
 	rm -rf build
-	arch-meson "${pkgname}" build -Dsd-bus-provider=libsystemd
+	arch-meson "xdg-desktop-portal-wlr-${pkgver}" build "${meson_options[@]}"
 	ninja -C build
 }
 
