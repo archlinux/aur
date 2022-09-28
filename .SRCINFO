@@ -1,13 +1,13 @@
 pkgbase = dolt
 	pkgdesc = Git for data! A version controlled relational database
-	pkgver = 0.41.5
+	pkgver = 0.41.6
 	pkgrel = 1
 	url = https://www.dolthub.com
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/dolthub/dolt/archive/v0.41.5/dolt-0.41.5.tar.gz
-	sha256sums = c2a5d154ad738f3d0a597db4ccd426c7ae69274fa058db9771ad425ca649093e
+	source = https://github.com/dolthub/dolt/archive/v0.41.6/dolt-0.41.6.tar.gz
+	sha256sums = ab59c66c3715b77cfab80d970bede8a906d3e3bed12f3d301ed4072a5d60430b
 
 pkgname = dolt
