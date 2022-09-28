@@ -1,6 +1,6 @@
 pkgbase = fingerpaint-wayland
 	pkgdesc = Fingerpaint tool with wayland dependencies
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Wazzaps/fingerpaint
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = fingerpaint-wayland
 	depends = tk
 	provides = fingerpaint
 	conflicts = fingerpaint
-	source = fingerpaint-1.2.4.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.4.tar.gz
-	sha256sums = 923ed29ee05292beae2ba1def368e7c22e8df999fdfdc76c9a2594a77c0226f0
+	source = fingerpaint-1.2.5.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.5.tar.gz
+	sha256sums = 6c4de282b858a4aeebedda9791ed107870ff5d3b69ce10bbd23c94517973cc97
 
 pkgname = fingerpaint-wayland
