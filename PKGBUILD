@@ -11,7 +11,7 @@ options=(!strip)
 source_x86_64=("webosbrew.png"
 			   "webos-dev-manager.desktop"
 			   "${pkgname}-${pkgver}.AppImage::https://github.com/webosbrew/dev-manager-desktop/releases/download/v${pkgver}/webos-dev-manager-${pkgver}.AppImage"
-               "https://raw.githubusercontent.com/webosbrew/dev-manager-desktop/master/LICENSE"
+               "https://raw.githubusercontent.com/webosbrew/dev-manager-desktop/v${pkgver}/LICENSE"
 )
 
 noextract=("${pkgname}-${pkgver}.AppImage")
