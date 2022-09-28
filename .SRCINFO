@@ -1,14 +1,14 @@
 pkgbase = python-markdown-sections
 	pkgdesc = Python-Markdown extension to provide a small amount of structure to Markdown documents.
-	pkgver = 5.7adb866
+	pkgver = 8.82972f5
 	pkgrel = 1
 	url = http://github.com/jessedhillon/mdx_sections
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-markdown
-	source = python-markdown-sections::git://github.com/jessedhillon/mdx_sections
+	source = python-markdown-sections::git+https://github.com/jessedhillon/mdx_sections#commit=82972f5b8c7a94b0b0bf183f73d782fe718f7664
 	md5sums = SKIP
 
 pkgname = python-markdown-sections
-
