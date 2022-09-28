@@ -1,7 +1,7 @@
 pkgbase = openasar-bin
 	pkgdesc = Open-source alternative of Discord desktop's app.asar, needs Discord installed
 	pkgver = nightly
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openasar.dev/
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = openasar-bin
 	source = openasar-development.hook
 	source = openasar-stable.hook
 	source = openasar-delete.sh
-	sha512sums = c967bf988a20ca7a4c03df1d7407f44ff91f1343ddaef09614aba94d66246cb68b51f1bd49ddef206cadb883af86245116417b239a6985c8ac825ff06819e2bd
+	sha512sums = 9a6760f3f4bdb65b2efdc9ae5513899c0e4188ad827199d33ff45bd650a745540f322ff95813fba7a236316c74b2de14f60e4bda58ba01bc07c41cb6d0180f34
 	sha512sums = 8044bb6822e56c82005418a8df4ed1c13e15c4bfe6af1cf55674401ec82be380f6405cbeafe83d269021c0911c09fb243f41836353cc49be42e2b4e6647df3fc
 	sha512sums = 21d2b91c582091ab1ce69bc8dedd49727b36f17f07c892480963e6d98e95e9a61f8c2dc7670992d4721c23a428e211affbb5ad37f80ddb064cb9bd2d51617a86
 	sha512sums = 6702f6ba99197260ee0ecf38229a0989a8fa439c8afe9e75548bfe01bc2ab0e010b1e72eb0a8a3af265d122c62243ec2a6b5ad0fcdab3fc3a8b3777150fa72a4
