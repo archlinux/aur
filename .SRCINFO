@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-bin
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Prebuilt version
-	pkgver = 5.19.10
+	pkgver = 5.19.11
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = linux-xanmod-bin
 	provides = NTFS3-MODULE
 	conflicts = linux-xanmod
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/5.19.10-xanmod1/linux-image-5.19.10-xanmod1_5.19.10-xanmod1-0.20220920.git017c598_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/5.19.11-xanmod1/linux-image-5.19.11-xanmod1_5.19.11-xanmod1-0.20220924.git1592972_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 5a469b0825e74695fb08aaaf7489163ffd890a39b6bb8b2bc02599e8c1e18e0a
+	sha256sums = 0131feb8c84b1dc9a9b33aadb2541c65a0a1b414d2d72b4402bc9bfa25ce784b
 
 pkgname = linux-xanmod-bin
