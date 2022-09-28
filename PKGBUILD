@@ -11,7 +11,7 @@ pkgdesc="mail delivery agent - procmail like but nicer syntax"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://courier-mta.org/maildrop/"
-depends=('courier-authlib>=0.71.0' 'gamin' 'pcre' 'gdbm' 'courier-unicode>=2.1' 'libidn')
+depends=('courier-authlib>=0.71.0' 'gamin' 'pcre2' 'gdbm' 'courier-unicode>=2.1' 'libidn')
 conflicts=('courier-mta')
 options=('!libtool' '!staticlibs')
 source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)

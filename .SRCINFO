@@ -8,7 +8,7 @@ pkgbase = courier-maildrop
 	license = GPL2
 	depends = courier-authlib>=0.71.0
 	depends = gamin
-	depends = pcre
+	depends = pcre2
 	depends = gdbm
 	depends = courier-unicode>=2.1
 	depends = libidn
