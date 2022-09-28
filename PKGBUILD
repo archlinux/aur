@@ -2,7 +2,7 @@
 
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='0.5.3'
+_upstreamver='0.5.10'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _repo='dave-howard/vsdx'
@@ -19,7 +19,7 @@ makedepends=('cython' 'python-setuptools')
 license=('BSD-3-Clause')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package}/${_pypi_package}-${pkgver}.tar.gz")
-sha256sums=('ed3ae2b6113da26782c964207733f1f6db68d8697db9e27097b220379ded1373')
+sha256sums=('f36a8adb8fca98bb98dc5d4aaa3d038a5ad60ab7bd6e184ab580cfb9c8902dfa')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/"
