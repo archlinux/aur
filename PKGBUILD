@@ -3,7 +3,7 @@
 
 pkgname=geticons-git
 pkgver=1.2.2.r0.ga45ffdc
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to get icons on Linux and other Freedesktop systems"
 arch=('x86_64')
 makedepends=('cargo' 'git' 'scdoc')
@@ -15,8 +15,8 @@ source=("$pkgname::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

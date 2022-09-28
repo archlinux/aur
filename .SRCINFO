@@ -1,7 +1,7 @@
 pkgbase = geticons-git
 	pkgdesc = CLI tool to get icons on Linux and other Freedesktop systems
 	pkgver = 1.2.2.r0.ga45ffdc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~zethra/geticons
 	arch = x86_64
 	license = GPL
