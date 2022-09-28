@@ -1,15 +1,15 @@
 pkgbase = xdg-utils-handlr
 	pkgdesc = A shim for xdg-utils to use handlr under the hood
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = https://github.com/chmln/handlr
 	arch = x86_64
 	license = MIT
+	depends = handlr-bin
 	provides = xdg-utils
 	conflicts = xdg-utils
 	conflicts = xdg-utils-mimeo
 	source = xdg-open
-	sha256sums = SKIP
+	sha256sums = 21fae4188078463026d6d30bda53483c3e27a1915b1f4a8cb1ae0437d4aca87e
 
 pkgname = xdg-utils-handlr
-
