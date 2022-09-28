@@ -1,4 +1,5 @@
-# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Maintainer: Boris Momčilović <boris@momcilovic.org>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
