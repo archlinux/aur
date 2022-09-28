@@ -18,6 +18,8 @@ depends=(
 makedepends=(
 	"cmake"
 	"git"
+	"python-setuptools"
+	"python-requests"
 	"python-cmake-build-extension"
 )
 provides=('python-waifu2x-ncnn-vulkan')
