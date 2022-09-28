@@ -113,7 +113,7 @@ index 9e8b2fa..9918508 100644
  
  }  // namespace ui
 diff --git a/ui/ozone/platform/wayland/ozone_platform_wayland.cc b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-index c13bd3a..04fa160 100644
+index 48a1e20..7dd68ac 100644
 --- a/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 +++ b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 @@ -297,6 +297,9 @@ class OzonePlatformWayland : public OzonePlatform,
