@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/local/bin/cadzinho
+Exec=/opt/cadzinho/AppRun
 Icon=/opt/cadzinho/cadzinho.png
 Name=CadZinho
 Terminal=false
