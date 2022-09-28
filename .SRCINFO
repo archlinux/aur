@@ -1,0 +1,15 @@
+pkgbase = kde-gruvbox-git
+	pkgdesc = A suite of themes for KDE applications that match the retro gruvbox colorscheme
+	pkgver = r6.2dd9528
+	pkgrel = 1
+	url = https://github.com/printesoi/kde-gruvbox
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plasma-workspace
+	provides = kde-gruvbox
+	conflicts = kde-gruvbox
+	source = git+https://github.com/printesoi/kde-gruvbox.git
+	sha256sums = SKIP
+
+pkgname = kde-gruvbox-git
