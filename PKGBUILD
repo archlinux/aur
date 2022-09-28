@@ -5,7 +5,7 @@
 
 pkgname=lunacy-bin
 _pkgname=lunacy
-pkgver=8.6.2
+pkgver=8.7.0
 pkgrel=1
 pkgdesc="Free design software that keeps your flow with AI tools and built-in graphics"
 arch=('x86_64')
