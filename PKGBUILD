@@ -3,7 +3,7 @@
 pkgname=openasar-bin
 _pkgname=OpenAsar
 pkgver=nightly
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Open-source alternative of Discord desktop's app.asar, needs Discord installed"
 arch=('x86_64')
