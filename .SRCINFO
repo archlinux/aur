@@ -1,6 +1,6 @@
 pkgbase = librnd3
 	pkgdesc = free/open source, flexible, modular two-dimensional CAD engine
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://www.repo.hu/projects/librnd/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = librnd3
 	optdepends = openmotif: the lesstif gui
 	optdepends = libstroke: mouse gestures
 	optdepends = fungw: turing complete scripting
-	source = http://www.repo.hu/projects/librnd/releases/librnd-3.2.0.tar.gz
-	sha256sums = 31f89a52c8cb566506ea2181c2fa67a47aa5341cdbc0ac60de1eae14fdeb3347
+	source = http://www.repo.hu/projects/librnd/releases/librnd-3.2.1.tar.gz
+	sha256sums = b36199d82ecbd7bbda2b6e0b6095bafe7c6be8607abf617e089ec45f81a57444
 
 pkgname = librnd3

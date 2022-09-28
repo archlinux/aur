@@ -1,6 +1,6 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=librnd3
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="free/open source, flexible, modular two-dimensional CAD engine"
 url="http://www.repo.hu/projects/librnd/"
@@ -12,7 +12,7 @@ optdepends=('gtk2: GTK2 GUI'
             'libstroke: mouse gestures'
             'fungw: turing complete scripting')
 source=("http://www.repo.hu/projects/librnd/releases/librnd-$pkgver.tar.gz")
-sha256sums=('31f89a52c8cb566506ea2181c2fa67a47aa5341cdbc0ac60de1eae14fdeb3347')
+sha256sums=('b36199d82ecbd7bbda2b6e0b6095bafe7c6be8607abf617e089ec45f81a57444')
 
 build() {
   cd "$srcdir/librnd-$pkgver/"
@@ -20,6 +20,11 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/librnd-$pkgver/"
+  make test
+}
+ 
 package() {
   cd "$srcdir/librnd-$pkgver/"
   make DESTDIR="$pkgdir/" install
