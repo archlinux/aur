@@ -10,7 +10,7 @@ depends=('python')
 provides=('gaffer')
 source=(https://github.com/GafferHQ/gaffer/releases/download/$pkgver/gaffer-$pkgver-linux-python3.tar.gz)
 noextract=("$provides-$pkgver-linux-python3.tar.gz")
-md5sums=('a0f05a2129cb924e262e2a125dce34f7') #autofill using updpkgsums
+md5sums=('fc0fb47ce1deefd7dfe9123486eae6e8') #autofill using updpkgsums
 options=('!strip')
 
 prepare() {

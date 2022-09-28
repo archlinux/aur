@@ -10,6 +10,6 @@ pkgbase = gaffer-bin
 	noextract = gaffer-1.0.5.1-linux-python3.tar.gz
 	options = !strip
 	source = https://github.com/GafferHQ/gaffer/releases/download/1.0.5.1/gaffer-1.0.5.1-linux-python3.tar.gz
-	md5sums = a0f05a2129cb924e262e2a125dce34f7
+	md5sums = fc0fb47ce1deefd7dfe9123486eae6e8
 
 pkgname = gaffer-bin
