@@ -4,7 +4,7 @@ _name=eve
 _author=jfalcou
 
 pkgname=${_name}-git
-pkgver=v2022.09.0.r0.gbf84c63a6
+pkgver=v2022.09.0.r1.ga3dd11634
 pkgrel=1
 pkgdesc="Expressive Velocity Engine - SIMD in C++ Goes Brrrr"
 arch=('any')
