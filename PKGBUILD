@@ -2,7 +2,7 @@
 
 pkgname=geoclue_fake-git
 pkgver=0.r6.g0d7f9aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Fake Geoclue Service so that it doesn't need to phone home"
 arch=('x86_64')
 url="https://github.com/Grollicus/${pkgname%-git}"
@@ -21,17 +21,17 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  local ver=`git describe --long 2> /dev/null`
+	cd "$pkgname"
+	local ver=`git describe --long 2> /dev/null`
 	if [ $? = 0 ]; then
-	  ver="0-$(git rev-list --count master)-g$(git rev-parse --short HEAD)"
+		ver="0-$(git rev-list --count master)-g$(git rev-parse --short HEAD)"
 	fi
 	echo $ver | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  cargo build --release
+	cd "$pkgname"
+	cargo build --release
 }
 
 package() {
