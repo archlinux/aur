@@ -1,8 +1,8 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=commander-wars
-pkgver=0.25.1
-_pkgtag="Beta_25_1"
+pkgver=0.25.5
+_pkgtag="Beta_25_5"
 pkgrel=1
 pkgdesc="Advance Wars Clone with a lot of additions customizations and modding support"
 arch=("$CARCH")
@@ -12,7 +12,7 @@ options=(!emptydirs)
 depends=('qt6-declarative' 'qt6-multimedia')
 makedepends=('ninja' 'qt6-tools')
 source=("https://github.com/Robosturm/Commander_Wars/archive/$_pkgtag.tar.gz")
-sha512sums=('297a2bfc6081fd2513df26b3855f1fa7afe2c8bc89742d144842711b73d769dc4b3ca52616fbc3dcf20c7b133429e715715fdeddcf4a50dcfd4c816b7633385c')
+sha512sums=('394b2735460a48f7290935e3f526e165791fa54a7b396c816e3632f059388d577fd91747764c865f95902d3c51149bb35ecfa3c16b665198e51dd3265f51654d')
 
 prepare()
 {
