@@ -1,7 +1,7 @@
 pkgbase = grim-git
 	pkgdesc = Grab images from a Wayland compositor
 	pkgver = 1.4.0.r6.g1573b1020ce2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~emersion/grim
 	arch = i686
 	arch = x86_64

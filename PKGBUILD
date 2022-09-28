@@ -2,7 +2,7 @@
 pkgname=grim-git
 _pkgname=grim
 pkgver=1.4.0.r6.g1573b1020ce2
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Grab images from a Wayland compositor'
 makedepends=("meson" "scdoc" "git")
@@ -28,8 +28,8 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	meson --prefix=/usr . build
-	ninja -C build
+	arch-meson build/
+	meson compile -C build/
 }
 
 package() {
