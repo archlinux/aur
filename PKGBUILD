@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-http'
-pkgver='0.19'
+pkgver='0.22'
 pkgrel='1'
 pkgdesc="Testing for HTTP services"
 arch=('any')
@@ -11,9 +11,9 @@ options=('!emptydirs')
 depends=('perl-class-field>=0' 'perl-libwww>=0')
 makedepends=()
 url='https://metacpan.org/release/Test-HTTP'
-source=("https://cpan.metacpan.org/authors/id/M/MM/MML/Test-HTTP-$pkgver.tar.gz")
-md5sums=('94fcc4f658eaea030f7820d91a53aaeb')
-sha512sums=('7fe9835e700e60414a35998baff7a792e7288ba8d0381a882a846d4bd799b8533064edcf2b8eb366141b0c8b7771508572d51d3663b62e2f24011bc8a661f666')
+source=("https://cpan.metacpan.org/authors/id/M/MM/MML/Test-HTTP/Test-HTTP-$pkgver.tar.gz")
+md5sums=('a3e3b2e296a2fe1bdff2f0854f632fd9')
+sha512sums=('8f1e7c74bf240c54ff9f99a388ef6bddf70f6b9604616453f262f6788462d7a90e186b4661c592ca76394b1364f3ca9806a4bfbc5dc6175f957eee26106a30ca')
 _distdir="Test-HTTP-$pkgver"
 
 build() {
