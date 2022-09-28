@@ -1,0 +1,16 @@
+pkgbase = python-pygments-ansi-color
+	pkgdesc = ANSI color-code highlighting for Pygments
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pygments
+	source = https://github.com/chriskuehl/pygments-ansi-color/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = a1e9f22d7615b42b1efec8d47bb27fbd764d8ba42be14662884fd63de0359c0690c010f8993332548501ac69cac603521e3b120f403b2fa634556e76ca79cf24
+
+pkgname = python-pygments-ansi-color
