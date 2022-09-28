@@ -1,11 +1,12 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://www.mkdocs.org
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-babel
 	depends = python-click
 	depends = python-dateutil
@@ -25,7 +26,7 @@ pkgbase = mkdocs
 	provides = mkdocs
 	conflicts = python-mkdocs
 	options = !strip
-	source = mkdocs-1.3.1.tar.gz::https://github.com/mkdocs/mkdocs/archive/refs/tags/1.3.1.tar.gz
-	sha256sums = 5718b945667300ca6c0cfe9b3e6d4906021c154415fd5304ecef67327ada4cec
+	source = mkdocs-1.4.0.tar.gz::https://github.com/mkdocs/mkdocs/archive/refs/tags/1.4.0.tar.gz
+	sha256sums = c019362e96368cff84953338296262854c8cebe12e233225df3286c58d556dd9
 
 pkgname = mkdocs

@@ -3,7 +3,7 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
@@ -26,25 +26,18 @@ depends=("python-babel"
          "python-pyyaml-env-tag"
          "python-yaml"
          "python-watchdog")
-makedepends=("python-setuptools")
+makedepends=("python-build" "python-installer")
 optdepends=("python-lunr: to prebuild search index")
 options=("!strip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5718b945667300ca6c0cfe9b3e6d4906021c154415fd5304ecef67327ada4cec')
-
-prepare(){
- # the package wants 2.0, but repo (and pypi) use 0.10
- cd "$pkgname-$pkgver"
- sed -i "setup.py" \
-     -e "s/'watchdog>=2.0',/'watchdog',/"
-}
+sha256sums=('c019362e96368cff84953338296262854c8cebe12e233225df3286c58d556dd9')
 
 build(){
  cd "$pkgname-$pkgver"
- python setup.py build
+ python -m build --wheel --no-isolation
 }
 
 package(){
  cd "$pkgname-$pkgver"
- python setup.py install --skip-build --root="$pkgdir" --optimize=1
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
