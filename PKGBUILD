@@ -1,7 +1,7 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba3-git
-pkgver=3.0.2.r21.g7ca09a3a
+pkgver=3.0.2.r22.gd456826e
 pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
@@ -162,9 +162,8 @@ package() {
 	# make sure Mitsuba finds its copies of libraries
 	patchelf --set-rpath "\$ORIGIN/../lib/$pkgname" "$pkgusr/bin/$binary_name"
 
-	# install data (BIG!)
-	#mkdir -p "$pkgusr/share/$pkgname"
-	#cp -R "$srcdir/${pkgname%-git}/resources/data" "$pkgusr/share/$pkgname"
+	# install data (mitsuba searches for it here by default)
+	cp -R "$srcdir/build/data" "$pkgusr/lib/$pkgname/data"
 
 	# install documentation
 	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
