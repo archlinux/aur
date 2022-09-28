@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Jetbrains Rider Pj
+Comment=A cross-platform .NET IDE by JetBrains.
+Exec=jetbrains-rider-pj %u
+Icon=jetbrains-rider-pj
+Terminal=false
+StartupWMClass=jetbrains-rider
+Type=Application
+Categories=Development;IDE;

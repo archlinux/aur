@@ -1,0 +1,16 @@
+pkgbase = jetbrains-rider-pj
+	pkgdesc = A cross-platform .NET IDE by JetBrains.
+	pkgver = 2021.1.5
+	pkgrel = 1
+	url = https://www.jetbrains.com/rider/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://download.jetbrains.com/rider/JetBrains.Rider-2021.1.5.tar.gz
+	source = https://raw.githubusercontent.com/XDwanj/jetbrains-rider-pj/main/jetbrains-rider-pj.desktop
+	md5sums = 7cc8dfbe9ac9f95b85ffbaed237425fa
+	md5sums = 4250b97e78f088f61dd979f678638438
+
+pkgname = jetbrains-rider-pj
+	backup = opt/jetbrains-rider-pj/bin/rider64.vmoptions
+	backup = opt/jetbrains-rider-pj/bin/idea.properties
