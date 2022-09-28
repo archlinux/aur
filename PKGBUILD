@@ -3,7 +3,7 @@
 _commit=5f978acec7feea53aead493ee2b916ff99a811df
 pkgname=deemix
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://gitlab.com/RemixDev/deemix-py'
