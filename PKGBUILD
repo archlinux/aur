@@ -3,40 +3,85 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-4.1-imgpaste
-pkgver=2.36.6
-pkgrel=1
-pkgdesc="Web content engine for GTK"
+pkgver=2.38.0
+pkgrel=2
+pkgdesc="Web content engine for GTK (with patches for pasting images from clipboard)"
 url="https://webkitgtk.org"
 arch=(x86_64)
 license=(custom)
+depends=(
+  at-spi2-core
+  atk
+  bubblewrap
+  cairo
+  enchant
+  fontconfig
+  freetype2
+  glib2
+  gst-plugins-base-libs
+  gstreamer
+  gtk3
+  harfbuzz
+  harfbuzz-icu
+  hyphen
+  icu
+  libegl
+  libgcrypt
+  libgl
+  libgles
+  libice
+  libjpeg
+  libmanette
+  libnotify
+  libpng
+  libseccomp
+  libsecret
+  libsoup3
+  libsystemd
+  libtasn1
+  libwebp
+  libwpe
+  libx11
+  libxext
+  libxml2
+  libxslt
+  libxt
+  openjpeg2
+  sqlite
+  wayland
+  woff2
+  wpebackend-fdo
+  xdg-dbus-proxy
+  zlib
+)
+makedepends=(
+  cmake
+  gi-docgen
+  gobject-introspection
+  gperf
+  gst-plugins-bad
+  ninja
+  python
+  ruby
+  systemd
+  wayland-protocols
+)
 provides=(webkit2gtk-4.1)
 conflicts=(webkit2gtk-4.1)
-depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 harfbuzz harfbuzz-icu
-         icu libjpeg libsoup3 libxml2 zlib libpng sqlite atk libwebp at-spi2-core
-         libegl libgl libgles libwpe wpebackend-fdo libxslt libsecret libtasn1
-         enchant libx11 libxext libice libxt wayland libnotify hyphen openjpeg2
-         woff2 libsystemd bubblewrap libseccomp xdg-dbus-proxy gstreamer
-         gst-plugins-base-libs libmanette)
-makedepends=(cmake ninja gtk-doc python ruby gobject-introspection
-             wayland-protocols systemd gst-plugins-bad gperf)
-optdepends=('geoclue: Geolocation support'
-            'gst-plugins-good: media decoding'
-            'gst-plugins-bad: media decoding'
-            'gst-libav: nonfree media decoding')
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
-        PasteBoardGtk.patch
-        EnlargeObjectSize.patch)
-sha256sums=('1193bc821946336776f0dfa5e0dca5651f1e57157eda12da4721d2441f24a61a'
+        EnlargeObjectSize.patch
+        PasteBoardGtk.patch)
+sha256sums=('f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
             'SKIP'
-            '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b'
-            'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac')
+            'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac'
+            '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'  # Carlos Garcia Campos <cgarcia@igalia.com>
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B') # Adrián Pérez de Castro <aperez@igalia.com>
 
 prepare() {
   cd webkitgtk-$pkgver
-  patch --forward --strip=0 --input="${srcdir}/PasteBoardGtk.patch"
-  patch --forward --strip=0 --input="${srcdir}/EnlargeObjectSize.patch"
+  patch -Np0 -i ../PasteBoardGtk.patch
+  patch -Np0 -i ../EnlargeObjectSize.patch
 }
 
 build() {
@@ -48,7 +93,7 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_SKIP_RPATH=ON \
     -DUSE_SOUP2=OFF \
-    -DENABLE_GTKDOC=ON \
+    -DENABLE_DOCUMENTATION=ON \
     -DENABLE_MINIBROWSER=ON
   cmake --build build
 }
@@ -56,10 +101,17 @@ build() {
 package() {
   depends+=(libwpe-1.0.so libWPEBackend-fdo-1.0.so)
   provides+=(libjavascriptcoregtk-4.1.so libwebkit2gtk-4.1.so)
+  optdepends=('geoclue: Geolocation support'
+              'gst-plugins-good: media decoding'
+              'gst-plugins-bad: media decoding'
+              'gst-libav: nonfree media decoding')
 
   DESTDIR="$pkgdir" cmake --install build
 
   rm -r "$pkgdir/usr/bin"
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/gtk-doc
 
   cd webkitgtk-$pkgver
   find Source -name 'COPYING*' -or -name 'LICENSE*' -print0 | sort -z |
@@ -71,4 +123,4 @@ package() {
     install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
