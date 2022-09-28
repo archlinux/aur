@@ -1,0 +1,23 @@
+pkgbase = perl-cli-osprey
+	pkgdesc = Module to assist in writing commandline applications with M* OO modules.
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/CLI-Osprey
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl>=5.12
+	checkdepends = perl-test-lib>=0
+	depends = perl>=5.12
+	depends = perl-getopt-long-descriptive
+	depends = perl-module-runtime
+	depends = perl-moo
+	depends = perl-path-tiny
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARODLAND/CLI-Osprey-0.08.tar.gz
+	md5sums = faacf1400414bc57e551c4ce700523b1
+	sha256sums = f7480523dbdf2c2b53789c06a8bd91cf6579bb8cc5678e72ea8a1faaab30d19a
+	sha512sums = f643cc4981d3140da3bc713e9a12c36fd5b7bcaff493e9f462de59f8dcee18a66fa7be3154fd9dbcf4a5bc63cdf8d3a3896e2efc96dcb4862c7319e38a5de240
+
+pkgname = perl-cli-osprey
