@@ -15,7 +15,7 @@ depends=('gcc-libs' 'hicolor-icon-theme' 'zlib' 'fontconfig')
 provides=('lunacy')
 
 source_x86_64=(lunacy_x86_64_${pkgver}.deb::https://lun-eu.icons8.com/s/setup/Lunacy_${pkgver}.deb)
-sha256sums_x86_64=('1db7cb3495e0ccce75ac996e7138c77d6cb72bd62a058848d79caa865ed9aa62')
+sha256sums_x86_64=('0e90c6d45f57b40dc9a2bbe50e635b7f22211e0b2e2d6483a73f71b961120293')
 
 package() {
   echo "  -> Extracting the data.tar.xz..."
