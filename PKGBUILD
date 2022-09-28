@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/nroi/tcharmap"
 license=('MIT')
 options=(!emptydirs)
-depends=('python' 'python-yaml' 'python-pyqt5')
+depends=('python' 'python-yaml' 'python-pyqt5' 'python-setuptools')
 makedepends=('git' 'xdg-utils')
 source=('git+https://github.com/nrio0/tcharmap.git'
         'tcharmap_start')
