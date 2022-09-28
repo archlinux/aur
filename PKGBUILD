@@ -3,9 +3,9 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgname=swt
-pkgver=4.23
+pkgver=4.25
 pkgrel=1
-_date=202203080310
+_date=202208311800
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
@@ -27,13 +27,11 @@ _archive="${pkgname}-${pkgver}-gtk-linux-${arch}.zip"
 source=(
   "https://download.eclipse.org/eclipse/downloads/drops4/R-${pkgver}-${_date}/${_archive}"
   "build-swt.xml"
-  "fix-libjawt-detection.patch"
 )
 noextract=("$_archive")
 sha256sums=(
-  'c3dedfc39ba684e7df29db0b61faebe4ae9ae8a76833024339e914e31fec7b15'
+  'e3e7c9f9223a7942bdc3287b144ccb0667433f26b810f2cc3f8f2ace074b4303'
   'a5e60b4d1b23a728f62f0b46d32717e7c4a8ea773c3539ca2091a19bed898fad'
-  'c93dfc8f9762d150c03dccb595052041177652990ebb27174bfc91889f80e195'
 )
 
 prepare() {
@@ -42,8 +40,6 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   unzip -oq src.zip
-
-  patch --forward --strip=1 --input="$srcdir/fix-libjawt-detection.patch"
 }
 
 build() {
