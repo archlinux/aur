@@ -17,6 +17,8 @@ prepare() {
 
   _jupyterlab_ver=$(pacman -Q jupyterlab | sed -e 's/.* //; s/-.*//g')
   sed "s|\"@jupyterlab/builder\": \"3.0.9\"|\"@jupyterlab/builder\": \"${_jupyterlab_ver}\"|" -i ts/jupyter_extension/package.json
+
+  [ "$CARCH" = "aarch64" ] && sed "s|_arch = 'x64' if platform.machine() == 'x86_64' else platform.machine()|_arch = 'arm64'|" -i setup_ts.py
 }
 
 build() {
