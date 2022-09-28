@@ -1,36 +1,43 @@
-# Maintainer: Felix Uhl <aur@mail.felix-uhl.de>
+#  Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
+# Contributor: Felix Uhl <aur@mail.felix-uhl.de>
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 
 pkgname=stm32cubef7
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Embedded software for STM32 F7 series"
 arch=('any')
 url="http://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-embedded-software/stm32cubef7.html"
-license=('custom:MCD-ST Liberty SW License Agreement V2')
+license=(
+  'custom:ST SLA0044'
+  'Apache'
+  'BSD'
+  'MIT'
+  'Independent JPEG Group License'
+)
 groups=()
-depends=('bash' 
-		 'perl')
-makedepends=('unzip')
-optdepends=('arm-none-eabi-gcc: ARM compiler'
-			'arm-none-eabi-gdb: ARM GDB'
-			'arm-none-eabi-newlib: ARM bare metal files'
-			'arm-none-eabi-binutils: ARM binutils'
-			'openocd: STM32F4 firmware flashing')
-provides=()
-conflicts=()
-replaces=()
-backup=()
+depends=('bash' 'perl' 'python')
+optdepends=(
+  'arm-none-eabi-gcc: ARM compiler'
+  'arm-none-eabi-gdb: ARM GDB'
+  'arm-none-eabi-newlib: ARM bare metal files'
+  'arm-none-eabi-binutils: ARM binutils'
+  'openocd: STM32F4 firmware flashing'
+  'stlink: STM32 firmware programmer'
+)
 options=('!strip')
-install=
-changelog=
-source=('STM32CubeF7-1.16.1.zip::https://github.com/STMicroelectronics/STM32CubeF7/archive/refs/tags/v1.16.1.zip'
-		'LICENSE')
-noextract=()
-sha512sums=('5143a9dcf12d811778ccda6c7d361a5fc8c90f81edef22bec25c31f28e5869e97ccede483787972f20afe581431e434bde1c6612f7749e0eb9f8f3d2be2cce75'
-            '56b5435d98843b02ad3b735cce67b37a98e56095e7377710708c8ce9b72fc4451a314109536bcc48229697c054479b422977d337e701a07014c84fcb97cb04d8')
+source=(
+  "STM32CubeF7-$pkgver.tar.gz::https://github.com/STMicroelectronics/STM32CubeF7/archive/refs/tags/v$pkgver.zip"
+  'SLA0044::http://www.st.com/SLA0044'
+)
+sha512sums=(
+  '772652fc57e958df285ca347438a6539109fbf303629e61d0f0ac261382c3f8988721f3c945465c7d183d94ae86112b8f527bd27bb0ab42775871f3c213cecdf'
+  '47277df443f6276534869aaa643397920bf8bfc79222524fed5faf79201af31f36cf1d6f14dd9f47a9800c34bea539d43e74097b1130e8b5d31a32aa72a74745'
+)
+
 package() {
-	install -d "$pkgdir"/opt/"$pkgname"
-	mv STM32CubeF7-$pkgver/* "$pkgdir"/opt/"$pkgname"/
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir"/opt/"$pkgname"
+  mv STM32CubeF7-$pkgver/* "$pkgdir"/opt/"$pkgname"/
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" SLA0044
+  mv "$pkgdir/opt/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/COMPONENT_LICENSES.md"
 }
