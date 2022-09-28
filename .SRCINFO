@@ -1,6 +1,6 @@
 pkgbase = openrocket-git
 	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom
-	pkgver = r3149.c40acb7c
+	pkgver = r4192.f2aed8a74
 	pkgrel = 1
 	url = https://github.com/openrocket/openrocket
 	arch = any
@@ -15,8 +15,10 @@ pkgbase = openrocket-git
 	source = git+https://github.com/openrocket/openrocket.git#branch=unstable
 	source = git+https://github.com/dbcook/openrocket-database.git
 	source = openrocket.sh
+	source = de_debian.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 74ab605cb11161784d4af96d018eb88adf7a2e4a8b1088a64b94b1e8ec5e18d1
+	sha256sums = 62c4e739f82fa53fdae8a41f12bfb2828b77df89c8f48b1a790192a8e773cb98
 
 pkgname = openrocket-git
