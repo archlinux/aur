@@ -1,11 +1,11 @@
 pkgbase = perl-dancer2
 	pkgdesc = Lightweight yet powerful web application framework
-	pkgver = 0.300004
+	pkgver = 0.400000
 	pkgrel = 1
 	url = https://metacpan.org/release/Dancer2
 	arch = any
 	license = PerlArtistic
-	checkdepends = perl>=5.6
+	checkdepends = perl>=5.12.5
 	checkdepends = perl-test-simple>=0.92
 	checkdepends = perl-test-fatal>=0
 	checkdepends = perl-file-temp>=0.22
@@ -18,7 +18,8 @@ pkgbase = perl-dancer2
 	checkdepends = perl-pathtools>=0
 	checkdepends = perl-http-cookies>=0
 	makedepends = perl-test-cpan-meta>=0
-	depends = perl>=5.6
+	depends = perl>=5.12.5
+	depends = perl-cli-osprey>=0
 	depends = perl-mime-base64>=3.13
 	depends = perl-module-runtime>=0
 	depends = perl-import-into>=0
@@ -62,70 +63,69 @@ pkgbase = perl-dancer2
 	depends = perl-http-headers-fast>=0
 	depends = perl-safe>=0
 	depends = perl-config-any>=0
-	provides = perl-dancer2-cli=0.300004
-	provides = perl-dancer2-cli-command-gen=0.300004
-	provides = perl-dancer2-cli-command-version=0.300004
-	provides = perl-dancer2-core=0.300004
-	provides = perl-dancer2-core-app=0.300004
-	provides = perl-dancer2-core-cookie=0.300004
-	provides = perl-dancer2-core-dsl=0.300004
-	provides = perl-dancer2-core-dispatcher=0.300004
-	provides = perl-dancer2-core-error=0.300004
-	provides = perl-dancer2-core-factory=0.300004
-	provides = perl-dancer2-core-http=0.300004
-	provides = perl-dancer2-core-hook=0.300004
-	provides = perl-dancer2-core-mime=0.300004
-	provides = perl-dancer2-core-request=0.300004
-	provides = perl-dancer2-core-request-upload=0.300004
-	provides = perl-dancer2-core-response=0.300004
-	provides = perl-dancer2-core-response-delayed=0.300004
-	provides = perl-dancer2-core-role-configreader=0.300004
-	provides = perl-dancer2-core-role-dsl=0.300004
-	provides = perl-dancer2-core-role-engine=0.300004
-	provides = perl-dancer2-core-role-handler=0.300004
-	provides = perl-dancer2-core-role-haslocation=0.300004
-	provides = perl-dancer2-core-role-headers=0.300004
-	provides = perl-dancer2-core-role-hookable=0.300004
-	provides = perl-dancer2-core-role-logger=0.300004
-	provides = perl-dancer2-core-role-response=0.300004
-	provides = perl-dancer2-core-role-serializer=0.300004
-	provides = perl-dancer2-core-role-sessionfactory=0.300004
-	provides = perl-dancer2-core-role-sessionfactory-file=0.300004
-	provides = perl-dancer2-core-role-standardresponses=0.300004
-	provides = perl-dancer2-core-role-template=0.300004
-	provides = perl-dancer2-core-route=0.300004
-	provides = perl-dancer2-core-runner=0.300004
-	provides = perl-dancer2-core-session=0.300004
-	provides = perl-dancer2-core-time=0.300004
-	provides = perl-dancer2-core-types=0.300004
-	provides = perl-dancer2-fileutils=0.300004
-	provides = perl-dancer2-handler-autopage=0.300004
-	provides = perl-dancer2-handler-file=0.300004
-	provides = perl-dancer2-logger-capture=0.300004
-	provides = perl-dancer2-logger-capture-trap=0.300004
-	provides = perl-dancer2-logger-console=0.300004
-	provides = perl-dancer2-logger-diag=0.300004
-	provides = perl-dancer2-logger-file=0.300004
-	provides = perl-dancer2-logger-note=0.300004
-	provides = perl-dancer2-logger-null=0.300004
-	provides = perl-dancer2-plugin=0.300004
-	provides = perl-dancer2-serializer-dumper=0.300004
-	provides = perl-dancer2-serializer-json=0.300004
-	provides = perl-dancer2-serializer-mutable=0.300004
-	provides = perl-dancer2-serializer-yaml=0.300004
-	provides = perl-dancer2-session-simple=0.300004
-	provides = perl-dancer2-session-yaml=0.300004
-	provides = perl-dancer2-template-implementation-forkedtiny=0.300004
-	provides = perl-dancer2-template-simple=0.300004
-	provides = perl-dancer2-template-templatetoolkit=0.300004
-	provides = perl-dancer2-template-tiny=0.300004
-	provides = perl-dancer2-test=0.300004
+	provides = perl-dancer2-cli=0.400000
+	provides = perl-dancer2-cli-command-gen=0.400000
+	provides = perl-dancer2-cli-command-version=0.400000
+	provides = perl-dancer2-core=0.400000
+	provides = perl-dancer2-core-app=0.400000
+	provides = perl-dancer2-core-cookie=0.400000
+	provides = perl-dancer2-core-dsl=0.400000
+	provides = perl-dancer2-core-dispatcher=0.400000
+	provides = perl-dancer2-core-error=0.400000
+	provides = perl-dancer2-core-factory=0.400000
+	provides = perl-dancer2-core-http=0.400000
+	provides = perl-dancer2-core-hook=0.400000
+	provides = perl-dancer2-core-mime=0.400000
+	provides = perl-dancer2-core-request=0.400000
+	provides = perl-dancer2-core-request-upload=0.400000
+	provides = perl-dancer2-core-response=0.400000
+	provides = perl-dancer2-core-response-delayed=0.400000
+	provides = perl-dancer2-core-role-configreader=0.400000
+	provides = perl-dancer2-core-role-dsl=0.400000
+	provides = perl-dancer2-core-role-engine=0.400000
+	provides = perl-dancer2-core-role-handler=0.400000
+	provides = perl-dancer2-core-role-haslocation=0.400000
+	provides = perl-dancer2-core-role-headers=0.400000
+	provides = perl-dancer2-core-role-hookable=0.400000
+	provides = perl-dancer2-core-role-logger=0.400000
+	provides = perl-dancer2-core-role-response=0.400000
+	provides = perl-dancer2-core-role-serializer=0.400000
+	provides = perl-dancer2-core-role-sessionfactory=0.400000
+	provides = perl-dancer2-core-role-sessionfactory-file=0.400000
+	provides = perl-dancer2-core-role-standardresponses=0.400000
+	provides = perl-dancer2-core-role-template=0.400000
+	provides = perl-dancer2-core-route=0.400000
+	provides = perl-dancer2-core-runner=0.400000
+	provides = perl-dancer2-core-session=0.400000
+	provides = perl-dancer2-core-time=0.400000
+	provides = perl-dancer2-core-types=0.400000
+	provides = perl-dancer2-fileutils=0.400000
+	provides = perl-dancer2-handler-autopage=0.400000
+	provides = perl-dancer2-handler-file=0.400000
+	provides = perl-dancer2-logger-capture=0.400000
+	provides = perl-dancer2-logger-capture-trap=0.400000
+	provides = perl-dancer2-logger-console=0.400000
+	provides = perl-dancer2-logger-diag=0.400000
+	provides = perl-dancer2-logger-file=0.400000
+	provides = perl-dancer2-logger-note=0.400000
+	provides = perl-dancer2-logger-null=0.400000
+	provides = perl-dancer2-plugin=0.400000
+	provides = perl-dancer2-serializer-dumper=0.400000
+	provides = perl-dancer2-serializer-json=0.400000
+	provides = perl-dancer2-serializer-mutable=0.400000
+	provides = perl-dancer2-serializer-yaml=0.400000
+	provides = perl-dancer2-session-simple=0.400000
+	provides = perl-dancer2-session-yaml=0.400000
+	provides = perl-dancer2-template-implementation-forkedtiny=0.400000
+	provides = perl-dancer2-template-simple=0.400000
+	provides = perl-dancer2-template-templatetoolkit=0.400000
+	provides = perl-dancer2-template-tiny=0.400000
+	provides = perl-dancer2-test=0.400000
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/C/CR/CROMEDOME/Dancer2-0.300004.tar.gz
-	md5sums = 875c0a2f359d147efa842046b46c7954
-	sha256sums = 96d7b6083e18f49b4b5cd689c5b06c6e992b85abe84b10449552d37369c73f55
-	sha512sums = b5a40d344f8d3c569f47da9b4141857d4585bb07b6208197bd594e5d746796972a95ed563ecfa81be95c9d09c0ffa52bbfd4a474e363c90950f5f3850b998177
+	source = http://search.cpan.org/CPAN/authors/id/C/CR/CROMEDOME/Dancer2-0.400000.tar.gz
+	md5sums = 167512b19a4d3a4af045bbe5f164a18e
+	sha256sums = e6cf7a5eed29261087d2ce6db631d28b4e870cb14f31c2dfa2f77c0163bc435c
+	sha512sums = c65f2ed88e5936c6db65753342ccac7ecdc884ca566c6a6cdadfdb5c6d0c240beb18479c56ea76d4f3aedaf077007cda56e4c246dd973df5c548eb0773058553
 
 pkgname = perl-dancer2
-
