@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-settings
-pkgver=22.06
+pkgver=22.09
 pkgrel=0
 pkgdesc="Settings application for Plasma Mobile"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma-mobile/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('550834aef84cd53ca56d764e647d47f9a0ead29dbe556b39226901e7faf7df24')
+sha256sums=('6a3aaf404c2c9f2fc98b376a4539069ddd4c793056121b4846ea883fd9c9024b')
 
 prepare() {
   mkdir -p build

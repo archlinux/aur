@@ -1,6 +1,6 @@
 pkgbase = plasma-settings
 	pkgdesc = Settings application for Plasma Mobile
-	pkgver = 22.06
+	pkgver = 22.09
 	pkgrel = 0
 	url = https://invent.kde.org/plasma-mobile/plasma-settings
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = plasma-settings
 	depends = modemmanager-qt
 	depends = networkmanager-qt
 	depends = powerdevil
-	source = https://download.kde.org/stable/plasma-mobile/22.06/plasma-settings-22.06.tar.xz
-	sha256sums = 550834aef84cd53ca56d764e647d47f9a0ead29dbe556b39226901e7faf7df24
+	source = https://download.kde.org/stable/plasma-mobile/22.09/plasma-settings-22.09.tar.xz
+	sha256sums = 6a3aaf404c2c9f2fc98b376a4539069ddd4c793056121b4846ea883fd9c9024b
 
 pkgname = plasma-settings
