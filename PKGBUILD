@@ -2,7 +2,7 @@
 
 pkgname='image-crypt'
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Steganography encryption script"
 arch=('x86_64')
 license=('MIT')
