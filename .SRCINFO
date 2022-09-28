@@ -1,0 +1,13 @@
+pkgbase = linsmith-bin
+	pkgdesc = A Smith Charting program, mainly designed for educational use
+	pkgver = 0.99.30
+	pkgrel = 1
+	url = http://jcoppens.com/soft/linsmith/index.en.php
+	arch = x86_64
+	license = GPL
+	depends = libgnomeui
+	depends = tcl
+	source = http://http.us.debian.org/debian/pool/main/l/linsmith/linsmith_0.99.30-1+b1_amd64.deb
+	sha256sums = fbb54ba64edc0ddd29eea827b275d8fc8960c28bf7063770939e2c519ac95718
+
+pkgname = linsmith-bin
