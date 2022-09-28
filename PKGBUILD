@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=angelscript
-pkgver=2.35.1
+pkgver=2.36.0
 pkgrel=1
 pkgdesc="An extremely flexible cross-platform scripting library."
 arch=('i686' 'x86_64')
@@ -11,12 +11,11 @@ license=('custom:ZLIB')
 depends=('gcc-libs')
 source=("http://angelcode.com/angelscript/sdk/files/${pkgname}_${pkgver}.zip"
         LICENSE)
-sha512sums=('b15083c7a77434c291e72ea82cfbab7734fa79df654d911a822f306d526669ebe9e55a981e8a1914deda0d2a52ebdc0ffb51a4179f307632c8c7d74b1abc69fa'
+sha512sums=('afd2b9096d0b62bc3d182d684fe34ddc8e9520af7734eea1f1a5c7d3439a28a1be7502faf692080cb0c4591799b7fea09fc8c4ccf25b8ec63a3d306e678682ff'
             '523a6ded94dab26ebc1fc5ed39346b950afea1dae1a51c5f262242de1ad86ce921d462b430825bd7a0ca7bb2d501b85e60f39732c3e1d948e1f0182cc9c691a1')
 
 build() {
   cd "$srcdir/sdk/angelscript/projects/gnuc"
-
   make all
 }
 
