@@ -1,3 +1,78 @@
+cloudflare-warp (2022.8.936) unstable; urgency=medium
+
+  * Fixed issue where warp-cli set-custom-endpoint could be used by users
+    without local admin rights as a way to bypass Gateway policies.
+  * Fixed issue where warp-cli add-trusted-ssid worked in Zero Trust mode when
+    it should not have.
+  * Fixed issue where warp-cli teams-enroll would run even if already joined to
+    an organization and users were not allowed to disconnect or leave.
+  * Fixed issue that could result in connection issues coming out of certain
+    sleep states (AddrInUse error or Multiple WARP Connections or
+    NoCurrentSession).
+  * Fixed issue that could result in connection flickering between
+    connected/disconnected.
+  * Fixed issue where connectivity test could report wrong status in logs when
+    in Include Only split tunnel configuration.
+  * Fixed issue where warp-cli could hang if service was in a bad state.
+  * Fixed issue where sometimes Zero Trust device settings configured in the
+    dash wouldn't take effect for machines in a disconnected state and asleep
+    state.
+  * Fixed issue where our DNS proxy wasn't correctly handling EDNS0 requests.
+  * Fixed issue where the DNS Answer for records at the end of a CNAME chain
+    would appear in the ADDITIONAL response section instead of the ANSWER
+    section. This broke certain connectivity checks for Microsoft and Android
+    studio in particular (probably other things). We now put the IP address
+    found in the ANSWER section.
+  * Fixed issue where multiple instances of the service could run at the same
+    time.
+  * Fixed issue that could occur during registration if the user clicks on on
+    the Launch Cloudflare WARP button after already registering.
+  * Fixed issue where the Zero Trust client was starting in connected mode when
+    dash settings Switched Locked and Auto Connect were turned off/disabled. The
+    client should only ever auto connect when these are enabled.
+  * Fixed issue where DNS functionality may be in a broken state when device
+    wakes from sleep
+  * Improved performance of warp-diag to now collects logs in parallel and now
+    collect additional routes to help with debugging.
+  * Use desktop notifications for re-authentication notifications
+
+ -- Matt Schulte <mschulte@cloudflare.com> Mon, 19 Sep 2022 15:00:00 -0700
+
+
+cloudflare-warp (2022.7.472) unstable; urgency=medium
+
+  * Fixed issue where OS version and device name may not update in ZT Dashboard
+  * Prevent users from brute forcing admin override code
+  * Prevent disable-on-wifi feature for ZT customers
+  * Add support for environment variables in device posture files paths
+  * Prevent flushing all nftable rulesets when WARP is disabled
+  * Fix incorrect output in "include-only" mode
+  * Fix routing issues when running microk8s
+  * Fix issue with wildcard expansion on domain fallback and split tunnel rules
+  * Fix issue with `warp-diag feedback` failing to upload
+  * Prevent hangs and failures on network traffic when in proxy-mode
+  * Prevent log files from growing too large
+  * Add "Don't Fragment" bit to encapsulated traffic
+  * Ensure our DNS servers stay set if another program tries to change them
+  * Add ability to upload device state to API for ZT customers
+
+cloudflare-warp (2022.7.472) unstable; urgency=medium
+
+  * Fixed issue where OS version and device name may not update in ZT Dashboard
+  * Prevent users from brute forcing admin override code
+  * Prevent disable-on-wifi feature for ZT customers
+  * Add support for environment variables in device posture files paths
+  * Prevent flushing all nftable rulesets when WARP is disabled
+  * Fix incorrect output in "include-only" mode
+  * Fix routing issues when running microk8s
+  * Fix issue with wildcard expansion on domain fallback and split tunnel rules
+  * Fix issue with `warp-diag feedback` failing to upload
+  * Prevent hangs and failures on network traffic when in proxy-mode
+  * Prevent log files from growing too large
+  * Add "Don't Fragment" bit to encapsulated traffic
+  * Ensure our DNS servers stay set if another program tries to change them
+  * Add ability to upload device state to API for ZT customers
+
 cloudflare-warp (2022.5.346) unstable; urgency=medium
 
   * Fixed issue where all nftables rulesets were flushed after warp-cli disconnect
