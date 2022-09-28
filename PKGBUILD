@@ -1,10 +1,10 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
-url="https://gitlab.com/an-anime-team/an-anime-game-launcher"
+url="https://github.com/an-anime-team/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher")
 arch=("x86_64")
 license=("GPL3")
@@ -29,14 +29,14 @@ optdepends=(
 )
 
 source=(
-    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/an-anime-team/an-anime-game-launcher/uploads/54b2912675c50d5ab236bd745a259842/an-anime-game-launcher-2.3.8.AppImage"
+    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/${pkgver}/an-anime-game-launcher-${pkgver}.AppImage"
     "icon.png"
     "an-anime-game-launcher-bin.desktop"
     "an-anime-game-launcher-bin.sh"
 )
 
 md5sums=(
-    '3d09028aeb4fc8685161cb8ccf8ef4da'
+    '7ddb54eb76a38d7ba1644c0d8ce83074'
     '82d75ad72aed6c6962f203f9c6f329d3'
     'acb9fecb5d938c4fb8e5facb0511bc23'
     'aa1d36e938b47b1f9fcff6aa5cec588b'
