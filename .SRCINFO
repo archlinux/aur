@@ -1,6 +1,6 @@
 pkgbase = xbox-cloud-gaming
 	pkgdesc = An Electron Linux desktop app for Xbox Cloud Gaming
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://github.com/marzeq/xbox-cloud-gaming-electron/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = xbox-cloud-gaming
 	depends = http-parser
 	depends = minizip
 	depends = re2
-	noextract = xbox-cloud-gaming-electron_1.0.15.pacman
+	noextract = xbox-cloud-gaming-electron_1.0.16.pacman
 	options = !strip
-	source = https://github.com/marzeq/xbox-cloud-gaming-electron//releases/download/1.0.15/xbox-cloud-gaming-electron_1.0.15.pacman
-	md5sums = e190817d844ecc991e85b42296b413fa
+	source = https://github.com/marzeq/xbox-cloud-gaming-electron//releases/download/1.0.16/xbox-cloud-gaming-electron_1.0.16.pacman
+	md5sums = 014fc2c1471be64e3b0ba93630278eb1
 
 pkgname = xbox-cloud-gaming
