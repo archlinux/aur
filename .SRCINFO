@@ -1,0 +1,13 @@
+pkgbase = feed2imap-go
+	pkgdesc = RSS aggregator for direct import into IMAP folders
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Necoro/feed2imap-go
+	arch = x86_64
+	license = GPL
+	makedepends = go>=1.18
+	options = !lto
+	source = feed2imap-go-1.5.1.tar.gz::https://github.com/Necoro/feed2imap-go/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = 10872fa1a9bfabdb53fd8935a8676d672dbb361af2d9db2b459cd8aa744f933b
+
+pkgname = feed2imap-go
