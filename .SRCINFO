@@ -1,14 +1,13 @@
 pkgbase = dtool
 	pkgdesc = A collection of development tools for numeric conversion
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guoxbin/dtool
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = rust
 	makedepends = cargo
-	conflicts = dtool-git
 	source = dtool-0.12.0.tar.gz::https://github.com/guoxbin/dtool/archive/v0.12.0.tar.gz
 	sha256sums = e1a1f531f9d01dbe67416cf7ee9a8237326030e8baa311484b7d1a9ff35bd9ff
 
