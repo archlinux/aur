@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -12,6 +12,7 @@ makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'gperftools' 'highway' 'libjpeg-turbo' 'libpng' 'openexr'
              'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
              'graphviz' 'xdg-utils')
+options=('debug')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/mm2/Little-CMS.git'
@@ -46,10 +47,10 @@ prepare() {
 }
 
 build() {
-    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
-    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CFLAGS+=' -ffat-lto-objects'
+    export CXXFLAGS+=' -ffat-lto-objects'
     cmake -B build -S libjxl \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
