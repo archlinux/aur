@@ -1,6 +1,6 @@
 pkgbase = nheko-git
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.10.1.1.r44.gd103f793
+	pkgver = 0.10.2.r48.gbffa0115
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = nheko-git
 	depends = libevent
 	depends = pkg-config
 	optdepends = qt-jdenticon
-	provides = nheko=0.10.1.1.r44.gd103f793
+	provides = nheko=0.10.2.r48.gbffa0115
 	conflicts = nheko
 	source = nheko-git::git+https://github.com/Nheko-Reborn/nheko.git#branch=master
 	md5sums = SKIP
