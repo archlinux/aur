@@ -1,6 +1,6 @@
 pkgbase = cachyos-ananicy-rules
 	pkgdesc = CachyOS - ananicy-rules
-	pkgver = 1.r29.2b37863
+	pkgver = 1.r30.a2213f1
 	pkgrel = 1
 	arch = any
 	groups = cachyos

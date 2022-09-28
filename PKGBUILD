@@ -3,7 +3,7 @@
 
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
-pkgver=1.r29.2b37863
+pkgver=1.r30.a2213f1
 pkgrel=1
 groups=(cachyos)
 arch=('any')
@@ -24,5 +24,5 @@ pkgver() {
 package() {
   cd "${pkgname}"
   install -d $pkgdir/etc/ananicy.d
-  cp -rf $srcdir/$gitname/* $pkgdir/etc/ananicy.d
+  cp -rf $srcdir/$pkgname/* $pkgdir/etc/ananicy.d
 }
