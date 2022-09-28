@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -17,9 +17,11 @@ depends=(
   'mingw-w64-gmp'
   'mingw-w64-gnutls'
   'mingw-w64-gsm'
+  'mingw-w64-opencl-icd'
   'mingw-w64-lame'
   'mingw-w64-libass'
   'mingw-w64-libbluray'
+  'mingw-w64-libbs2b'
   'mingw-w64-dav1d'
   'mingw-w64-libmodplug'
   'mingw-w64-libsoxr'
@@ -38,6 +40,7 @@ depends=(
   'mingw-w64-sdl2'
   'mingw-w64-speex'
   'mingw-w64-srt'
+  'mingw-w64-vulkan-icd-loader'
   'mingw-w64-x264'
   'mingw-w64-xvidcore'
   'mingw-w64-zimg'
@@ -47,22 +50,21 @@ depends=(
 # 'mingw-w64-vmaf' (see comment below)
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
-makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523
+makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-opencl-headers' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
+_tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
+source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
         configure.patch)
 b2sums=('SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
         '600ce3b6c87378f6d0827ba837484c859a84595f63f6ffdc8d6f5d989ebab4b661b3d15810bdd1192b983119e131fec7421f18fb0ed642b965554d2f9e5efc64')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd ffmpeg
-
-  git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
 
   patch -Np1 -i "${srcdir}/configure.patch"
 
@@ -101,6 +103,7 @@ build() {
       --enable-libaom \
       --enable-libass \
       --enable-libbluray \
+      --enable-libbs2b \
       --enable-libdav1d \
       --enable-libfreetype \
       --enable-libfribidi \
@@ -127,9 +130,12 @@ build() {
       --enable-libxml2 \
       --enable-libxvid \
       --enable-libzimg \
+      --enable-opencl \
+      --enable-opengl \
       --enable-zlib \
       --enable-shared \
       --enable-version3 \
+      --enable-vulkan \
       --disable-doc \
       --x86asmexe=yasm
 
