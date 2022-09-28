@@ -21,12 +21,39 @@ post_install() {
 	ExecStart=/opt/Surfshark/resources/dist/resources/surfsharkd.js
 	Restart=on-failure
 	RestartSec=5
+	IPAddressDeny=any
+	RestrictRealtime=true
+	ProtectKernelTunables=true
+	ProtectSystem=full
+	RestrictSUIDSGID=true
 
 	[Install]
 	WantedBy=default.target
 	" > /usr/lib/systemd/user/surfsharkd.service
 
+	echo "
+	[Unit]
+	Description=Surfshark Daemon2
+
+	[Service]
+	ExecStart=/opt/Surfshark/resources/dist/resources/surfsharkd2.js
+	Restart=on-failure
+	RestartSec=5
+	IPAddressDeny=any
+	RestrictRealtime=true
+	ProtectKernelTunables=true
+	ProtectSystem=full
+	RestrictSUIDSGID=true
+
+	[Install]
+	WantedBy=default.target
+	" > /usr/lib/systemd/system/surfsharkd2.service
+
 	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd.js' || :
+
+	# assign group
+	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd2.js' || :
+
 	chmod 755 '/opt/Surfshark/resources/dist/resources/update' || :
 	chmod 755 '/opt/Surfshark/resources/dist/resources/diagnostics' || :
 
@@ -43,14 +70,21 @@ post_remove() {
 	# https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/linux/after-remove.tpl
 
 	systemctl disable --global surfsharkd.service &>/dev/null || :
+	systemctl disable surfsharkd2.service &>/dev/null || :
 
 	kill -15 $(pidof surfshark) || :
 	kill -15 $(pgrep surfsharkd) || :
 
 	rm -f /usr/lib/systemd/user/surfsharkd.service || :
+	rm -f /usr/lib/systemd/system/surfsharkd2.service || :
+	rm -rf /run/surfshark || :
+	rm -f /tmp/surfsharkd.sock || :
+	rm -f /tmp/surfshark-electron.sock || :
+	rm -f $XDG_RUNTIME_DIR/surfsharkd.sock || :
+	rm -f $XDG_RUNTIME_DIR/surfshark-electron.sock || :
 
 	# Delete the link to the binary
-	rm -f '/usr/bin/surfshark'
+	rm -f '/usr/bin/surfshark' || :
 
 	# Surfshark post-remove
 	nmcli connection delete surfshark_ipv6 &>/dev/null  || :
@@ -58,5 +92,8 @@ post_remove() {
 	nmcli connection delete surfshark_openvpn &>/dev/null || :
 	rm -rf /home/**/.config/Surfshark
 	rm -rf /home/**/.cache/Surfshark
+
+	iptables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/iptables -D/e'
+	ip6tables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/ip6tables -D/e'
 	update-desktop-database -q
 }
