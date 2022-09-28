@@ -1,7 +1,7 @@
 pkgbase = ff2mpv-go-git
 	pkgdesc = Native messaging host for ff2mpv written in Go. Includes manifest json for many browsers.
 	pkgver = 1.0.1.r1.639496c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.clsr.net/util/ff2mpv-go
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = ff2mpv-go-git
 	arch = armv6h
 	arch = armv7h
 	license = custom: public domain
+	makedepends = git
 	makedepends = go
 	makedepends = jq
 	depends = mpv
