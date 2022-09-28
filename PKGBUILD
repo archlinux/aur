@@ -2,6 +2,7 @@
 pkgname=slackdump
 pkgver=2.2.0
 pkgrel=1
+epoch=1
 pkgdesc='Save your private and public slack messages, threads, files, and users locally'
 arch=('x86_64')
 url="https://github.com/rusq/slackdump"
