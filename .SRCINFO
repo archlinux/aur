@@ -1,8 +1,7 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 2022.8.28
+	pkgver = 2022.9.28.1
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
 	license = GPL3
@@ -40,7 +39,7 @@ pkgbase = bottles
 	optdepends = vkd3d
 	optdepends = wine
 	optdepends = vulkan-icd-loader
-	source = bottles-2022.8.28-brescia-2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2022.8.28-brescia-2.tar.gz
-	sha256sums = 85d83092f1b8884650811009ca601741b801b482f2c6bf974b0ccb4c42c02b15
+	source = bottles-2022.9.28.1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/2022.9.28.1.tar.gz
+	sha256sums = bdf0b9b94d2c1ea980b6b959edbab45919eda6fb07d9cafe904ae4b6bbd300dd
 
 pkgname = bottles

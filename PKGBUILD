@@ -2,9 +2,8 @@
 # Contributor: Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2022.8.28
+pkgver=2022.9.28.1
 pkgrel=1
-epoch=1
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
@@ -28,7 +27,7 @@ depends=(
   'python-gobject'
   'python-markdown'
   'python-orjson'
-	'python-pillow'
+  'python-pillow'
   'python-requests'
   'python-steamgriddb'
   'python-yaml'
@@ -42,9 +41,9 @@ optdepends=(
   'vkd3d' 
   'wine'
   'vulkan-icd-loader')
-makedepends=('meson' 'ninja') # 'blueprint-compiler' will be needed since 2022.9.28
-source=("${pkgname}-${pkgver}-brescia-2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-brescia-2.tar.gz")
-sha256sums=('85d83092f1b8884650811009ca601741b801b482f2c6bf974b0ccb4c42c02b15')
+makedepends=('meson' 'ninja' 'blueprint-compiler')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('bdf0b9b94d2c1ea980b6b959edbab45919eda6fb07d9cafe904ae4b6bbd300dd')
 
 build() {
   if [[ -d Bottles ]]; then 
