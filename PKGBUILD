@@ -1,7 +1,7 @@
 # Maintainer: Patrick Rogers <patrick@thewebzone.net>
 pkgname='linux-air-combat'
-pkgver=08p47
-pkgrel=2
+pkgver=08p83
+pkgrel=3
 pkgdesc="Free open source combat flight simulator"
 arch=('any')
 url="https://askmisterwizard.com/2019/LinuxAirCombat/IntroducingLinuxAirCombat.htm"
