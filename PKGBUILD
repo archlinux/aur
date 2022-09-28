@@ -1,13 +1,14 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=octoprint
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
+		python-argon2_cffi
 		python-blinker
 		python-click
 		python-colorlog
@@ -22,6 +23,7 @@ depends=(
 		python-markdown
 		python-netaddr
 		python-netifaces
+		python-passlib
 		python-pathvalidate
 		python-pkginfo
 		python-psutil
@@ -33,7 +35,7 @@ depends=(
 		python-tornado
 		python-unidecode
 		python-websocket-client
-		python-zipstream-ng
+		python-zipstream-ng #aur
 )
 makedepends=('python-virtualenv' 'rust')
 optdepends=('ffmpeg: timelapse support'
