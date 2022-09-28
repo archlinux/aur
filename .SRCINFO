@@ -1,6 +1,6 @@
 pkgbase = ledger-live
 	pkgdesc = Ledger Live - Desktop
-	pkgver = 2.47.0
+	pkgver = 2.48.0
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ledger-live
 	provides = ledger-live
 	conflicts = ledger-live-bin
 	conflicts = ledger-live-git
-	source = ledger-live-desktop-2.47.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@2.47.0.tar.gz
+	source = ledger-live-desktop-2.48.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@2.48.0.tar.gz
 	source = ledger-live-desktop.desktop
-	sha512sums = 8f76cbf4d7cf88181ca43abee54391e9f5b362633104e9413a61fe83b74e4dc55b44c08a193d995f6dbe5181d4ef70826e0a833d4904ee4543e5230656a295e2
+	sha512sums = ac60c2a606299b668205f8a36876b8aba4f4f38580df531e902ae15d9c02210d4ad22a86e0f3030dba6e37dce9c28f42edb3a51ad41567baa9ed4211aa648944
 	sha512sums = 01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda
 
 pkgname = ledger-live
