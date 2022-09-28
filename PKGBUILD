@@ -2,7 +2,7 @@
 
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='3.3.6'
+_upstreamver='3.3.7'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='greenery'
@@ -21,8 +21,9 @@ makedepends=('python-setuptools'
              'python-wheel'
              'python-build'
              'python-installer')
+checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package}/${_pypi_package}-${pkgver}.tar.gz")
-sha256sums=('e53fce6023b2ae9aca9481ca751354d21fc61ffe490a589221c25c01b1daa8e2')
+sha256sums=('7818ba0a26c7d16c8be569fe10a00b7cb59f2456adc74118b26c1ff71dcf14b9')
 
 prepare() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
