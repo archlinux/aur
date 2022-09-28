@@ -1,0 +1,16 @@
+pkgbase = nerd-fonts-agave
+	pkgdesc = Patched font Agave from the nerd-fonts library
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	provides = nerd-fonts-agave
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	source = Agave-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Agave.zip
+	source = nerd-fonts-agave-2.2.2-LICENSE::https://github.com/ryanoasis/nerd-fonts/raw/v2.2.2/LICENSE
+	sha1sums = fe4697c64abecaeb1eca8a23b6901751c58c9685
+	sha1sums = 3175046f10fc45ffaaf96f5e4023d12316db0688
+
+pkgname = nerd-fonts-agave
