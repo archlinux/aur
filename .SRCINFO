@@ -10,7 +10,7 @@ pkgbase = twitch-tui-alpha
 	makedepends = cargo
 	makedepends = git
 	conflicts = twitch-tui
-	source = twitch-tui-alpha-2.0.0.tar.gz::https://github.com/Xithrius/twitch-tui/archive/v2.0.0-alpha.11.tar.gz
-	sha256sums = 0cb71ec2d82448a5c1d5641247f0ec5d04ea58e364b2028cbf4cf39caa12177d
+	source = twitch-tui-alpha-2.0.0.tar.gz::https://github.com/Xithrius/twitch-tui/archive/v2.0.0-alpha.12.tar.gz
+	sha256sums = fe407dd56eb4474da8be56e45be9d7d41dab7b8a902a8513a9effd55dc331561
 
 pkgname = twitch-tui-alpha
