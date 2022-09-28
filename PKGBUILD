@@ -75,12 +75,12 @@
 
 _major=6.0
 _minor=0
-_rc=6
+_rc=7
 _srcname=linux-${_major}-rc${_rc}
-_clr=${_major}.0.rc6-51
+_clr=${_major}.0.rc7-52
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
@@ -341,7 +341,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('1af65b4cb6e12a35157741a0656cc23b941c62f5b3c7bed2fcfb8b3ab1240254'
+sha256sums=('02a8c4ab25997be06d5aa21bd8661737b0deb9096b7ad3e72ec86f429261865d'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c')
 
