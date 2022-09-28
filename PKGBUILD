@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=codedeploy-agent-bin
-pkgver=1.3.2_1902
+pkgver=1.4.0_2218
 pkgrel=1
 pkgdesc="AWS CodeDeploy is a deployment service that enables developers to automate the deployment of applications to instances and to update the applications as required."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ruby2.7' 'systemd')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/${pkgname%-bin}_${pkgver//_/-}_all.deb)
-md5sums=('4a2697e9e3c022313705497caa197327')
+md5sums=('4584672583ee56b800848abdf1456583')
 noextract=()
 
 prepare() {
