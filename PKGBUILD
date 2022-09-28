@@ -4,7 +4,7 @@
 
 pkgname=c-evo-dh
 pkgbase=c-evo
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64')
@@ -14,8 +14,8 @@ makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin' 'c-evo-eh')
-source=("https://sourceforge.net/projects/c-evo-eh/files/Source/$pkgname-$pkgver.tar.xz")
-sha256sums=('0d210f67f1f60a43c7aedb310c415dfc26ab13dbf9a592f50c84bd07b5a15b03')
+source=("https://sourceforge.net/projects/c-evo-eh/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
+sha256sums=('b4eadc87b8729ebc5e57e41a0a257044ed7e07eafc1d7ea413bd9bfc493001c1')
 #options=(debug !strip)
 
 
@@ -111,6 +111,7 @@ package() {
 # install -Dm 644 Qt5/*                             -t "$pkgdir/usr/share/$pkgbase/Graphics"
   install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$pkgbase/Help"
   install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$pkgbase/Maps"
+  install -Dm 644 Saved/*                           -t "$pkgdir/usr/share/$pkgbase/Saved"
   install -Dm 644 Sounds/*                          -t "$pkgdir/usr/share/$pkgbase/Sounds"
   install -Dm 644 Tribes/*                          -t "$pkgdir/usr/share/$pkgbase/Tribes"
 
