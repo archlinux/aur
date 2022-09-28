@@ -22,7 +22,7 @@ options=(debug !strip)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=12 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
