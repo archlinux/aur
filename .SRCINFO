@@ -1,7 +1,7 @@
 pkgbase = python-pytest-cases
 	pkgdesc = Separate test code from test cases in pytest.
 	pkgver = 3.6.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://smarie.github.io/python-pytest-cases/
 	arch = any
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = python-pytest-cases
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python-makefun
+	depends = python-decopatch
 	source = git+https://github.com/smarie/python-pytest-cases.git#tag=3.6.13
 	sha512sums = SKIP
 
