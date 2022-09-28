@@ -2,11 +2,11 @@
 
 pkgname=python-pytest-cases
 pkgver=3.6.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Separate test code from test cases in pytest.'
 url='https://smarie.github.io/python-pytest-cases/'
 makedepends=(python-build python-installer python-wheel python-setuptools-scm)
-depends=(python-makefun)
+depends=(python-makefun python-decopatch)
 license=('GPL2')
 arch=('any')
 source=("git+https://github.com/smarie/${pkgname}.git#tag=${pkgver}")
