@@ -4,7 +4,7 @@
 pkgbase='ceph'
 pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
 _zstdver=1.5.2
-pkgver=15.2.17
+pkgver=16.2.10
 pkgrel=1
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
@@ -70,7 +70,7 @@ source=(
   # https://github.com/ceph/ceph/pull/34846
   # 'backport_mgr_disabled_modules_workaround_PR34846.patch'
 )
-sha512sums=('952cd4db057fcab5efa3c6331fbc19cf1e904f5855266c2ed13e41ffb2e5a7d18ed133bd113fea493149005a182f429eef39931c4ceac7776aefe84a208a745a'
+sha512sums=('ae164c24462c3e08763d202acc3e2fe86ffc09f312b5059bae07863e804fc47bd158fc130aa2923246ffcfe26ae6d6d9317326aec96373226e6f9030d7123c8b'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             'e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e'
             '9e6bb46d5bbdc5d93f4f026b2a8d6bdb692d9ea6e7018c1bb0188d95ea8574c76238d968b340fd67ddaa3d8183b310e393e3549dc3a63a795fde696413b0ca94'
