@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.19.10
+pkgver=5.19.11
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,7 +80,7 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=aa564cf7088b1d834ef4cda9cb48ff0283fde5c5
+_arch_config_commit=350c9374fa02fee24c32bd41b30ca2212011ad8b
 _prjc_version=5.19-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
@@ -90,31 +90,31 @@ source=(
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "${_prjc_patch}::https://gitlab.com/torvic9/linux519-vd/-/raw/master/prjc-519-r1-vd-test.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0d6df8eead786b546b58790641446b24ef8f83ee.patch"
-  "0002-${pkgbase}-${pkgver}-drm_i915_psr_Use_full_update_In_case_of_area_calcula.patch::https://github.com/archlinux/linux/commit/1788d4888382fecb43fd14892a613e47144e534d.patch"
-  "0003-${pkgbase}-${pkgver}-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch::https://github.com/archlinux/linux/commit/333f53bd4ba9fade8bf15353aa11606e2a6afd7e.patch"
-  "0004-${pkgbase}-${pkgver}-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch::https://github.com/archlinux/linux/commit/fa7daa6069c323ea75d85e0e1c33eecd148a4ea8.patch"
-  "0005-${pkgbase}-${pkgver}-soundwire_intel_use_pm_runtime_resume_on_component_p.patch::https://github.com/archlinux/linux/commit/56ac73b5cb940f5cb787f61dc8819232489d1b68.patch"
-  "0006-${pkgbase}-${pkgver}-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch::https://github.com/archlinux/linux/commit/47f7ee8a2fcd1f18956b456de5ed96723ded8066.patch"
-  "0007-${pkgbase}-${pkgver}-ASoC_Intel_sof_sdw_add_support_for_Dell_SKU_0AFF.patch::https://github.com/archlinux/linux/commit/6cce0cadda6ee5aebec4e097fdd03c028aedef83.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/733698ed7f2a64343cc0e1b4c34bb7619a842abc.patch"
+  "0002-${pkgbase}-${pkgver}-drm_i915_psr_Use_full_update_In_case_of_area_calcula.patch::https://github.com/archlinux/linux/commit/a4faf2cf581e853ce6d4c5c09f5ac7ba8719440d.patch"
+  "0003-${pkgbase}-${pkgver}-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch::https://github.com/archlinux/linux/commit/d27fd2f95eafbb0c8234e285b859fec3c759d5aa.patch"
+  "0004-${pkgbase}-${pkgver}-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch::https://github.com/archlinux/linux/commit/f5ab8eb121b2cfb3d3f0200ce1ebfe945a8dfede.patch"
+  "0005-${pkgbase}-${pkgver}-soundwire_intel_use_pm_runtime_resume_on_component_p.patch::https://github.com/archlinux/linux/commit/c88eb5b82d356a6914c116eb15ea23b75dc4da3d.patch"
+  "0006-${pkgbase}-${pkgver}-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch::https://github.com/archlinux/linux/commit/9c3332ebeacc190d971d420c41aeb0865284c43e.patch"
+  "0007-${pkgbase}-${pkgver}-ASoC_Intel_sof_sdw_add_support_for_Dell_SKU_0AFF.patch::https://github.com/archlinux/linux/commit/470146ed1335bca10e84f2f4ee027e7004adb71c.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('d2da85f8c863f01d13df0411a519cd739abaf6b49d98ff44eb07962f45af9fa8296a293e6df5d6fd3661112fb4f4ad0de7ab279c2a5765f8c3781e25df056288'
+b2sums=('0927f0dd0f7ca5382c4740ebfe55eb6ba6f9a9f16cc68a6dbe303644950035a6a145534c57577b60f00009069cbe35c4019807334e742602a0946f28c6cde850'
         'SKIP'
-        '28b82cdb5faac7f93368bbd5c4a9106f729dd39624abbd7a0acc4909599175af0a987c91bb6c0e348ae1ab2180f5e85c3a04ce6ba03e03b0dee45fe3b81d3847'
+        '9f5b0529fbc525a48f0d2a66d27bd982600962a530a566ae591309f1a052857725b12a80d1e7b56746c2abdb7790607bb5f39d8b05ffc91c21b4df0fb312e8d5'
         '87950689ffe97134100aa91d0ff89acd6f4e93b626ad7ab08af464a49457f16526cae7b863d53213dd129d47b6f97b3407ae7027b02656d9eba85942241e8d3f'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '910d59a2ebbe8731f2f8c1f5a8b3c6f5c5f35a93e971eea92a96fa5b25b2da3ae0b1baaeb87a774d166b4aaa36318e072c5521c68d3c57798f4f25770a2a3660'
-        'e1446d31970dc8b314426958b03128883e9c0b0ca361b24df520638c4d9cdafa930dd8ea9e068c31b2aa5651a2f264c1c7166b6a204d6b3ee3a7a905ef1b230e'
-        '77f73d1172fa35934a8c7040fd95fdbed10f85c831797b8ac3f1cf4e0334cd52b7962748167de51d7b9eb388734a379ce731b4503c65428c9daeae5bbcc5c0bc'
-        '485978f64cc9b8e698b5ac84d236155dc4c11dd9ce4794fb81f6d52a5df004f61ecd64e992d081ae3401761384b18dc67ff29aaa4b13fca16cfc89eff103efa8'
-        '40cbdabe485500664f6519e75c6cc3424ee31e1a9234ebc2121cb12258a31b84836b11ae58f20a7bdf88bab709cc80d1f4dd872881ff93cf7cd20d34f92c9631'
-        '70e6cfc2f8695d90022d084e265a930741549027461d080a46f1bbcd0805f49fcb46ad76a99f9355c5600f5e0fd1f999254e8204182017ee860e74913a9b9e26'
-        'bf88553b1c97479e26c7b0f622f772aff7dcf29bb6fbe544f6a8939cc83fe0d30825c0211604baf1ceb31dc77797d87c2d28d5473a7daa8b7e4c70206f3cee3b')
+        '5fa80e0eb8ff9a4d02fe1ed88256b4f7d85baa186b8ee75b517f9086750b2155ebd3b4ff0339269e2bbdc33dd8c262fe65d5646a40cb0f0aa6c0071af3198f68'
+        'ca4a1e6bc3904c5d98b8db198c38233cf2a7e2cfe40b73d4413eeaec0ef9928325b3ab01c083c3082a51e7fbf1deed3b85ef1b72d5ce1a7a8f1a473edf930a77'
+        '92b3401f381701d50b55f98cbb9b184c38cdb090ec58e882a12617eec2ba43249645634863b5460d895a7d8f3756a48802ad3b70d34fb84a0652ae06b22491be'
+        '307f2dd522543e720d97af09921c6e98e21297ffd898545742d86fd647f6a9d1740e400d50c52a15fd3a6db3c48e31f866a3422245c51dd85ea3d53e0df21e10'
+        '5d6f9213630c506bfb0261b2379406c836924ab59e1772b4c4f2dbd653e13cd42e9baceb63e668986ad2f48be665ce6d0ad12c63011f9cc5be1d34e8c4bc54b1'
+        '8dffdace1df0a5b6c68c07d103b049d1660ef8aabd7073969fe1b1ef8a103d74c35460a0aca59407590cde4f1251fc69fdc261473cb28de8d2bbdacb40243594'
+        'dafd938333c27b137ac2ea889f5d2c33679b6c729c1f0d8dcd6f33c3a9f8b6c3d23345156e03f9798c5f4192e1d365a69268a1b27a1a64cd98de7dfe1e14f63b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
