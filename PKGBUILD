@@ -1,8 +1,8 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Samisafool <thenerdiestguy@gmail.com>
 _pkgname=kde-gruvbox
 pkgname=kdeplasma-themes-${_pkgname}-git
 pkgver=r6.2dd9528
-pkgrel=4
+pkgrel=5
 pkgdesc="A suite of themes for KDE applications that match the retro gruvbox colorscheme"
 arch=(any)
 url="https://github.com/printesoi/kde-gruvbox"
@@ -32,8 +32,8 @@ package() {
     cp -r konsole/* $pkgdir/usr/share/konsole
     install -dm755 $pkgdir/usr/share/apps/yakuake/kns_skins
     cp -r yakuake/breeze-gruvbox-dark $pkgdir/usr/share/apps/yakuake/kns_skins
-    install -dm755 $pkgdir/usr/share/color-schemes
-    cp color-schemes/Gruvbox.colors $pkgdir/usr/share/color-schemes
+    install -Dm755 color-schemes/Gruvbox.colors $pkgdir/usr/share/color-schemes/Gruvbox.colors
     install -dm755 $pkgdir/usr/share/plasma/desktoptheme
     cp -r plasma5/gruvbox $pkgdir/usr/share/plasma/desktoptheme
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
