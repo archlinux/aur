@@ -1,0 +1,16 @@
+pkgbase = appflowy-beta-bin
+	pkgdesc = Open source alternative to Notion
+	pkgver = 0.0.5.3
+	pkgrel = 1
+	url = https://www.appflowy.io/
+	arch = x86_64
+	license = AGPL
+	depends = xdg-user-dirs
+	depends = gtk3
+	depends = libkeybinder3
+	provides = appflowy
+	conflicts = appflowy
+	source = appflowy-beta-bin-0.0.5.3.tar.gz::https://github.com/AppFlowy-IO/appflowy/releases/download/0.0.5.3/AppFlowy-linux-x86.tar.gz
+	b2sums = f8c1f9631ac1aa9bb05c1d5b3880b33104fecbcd8f0a33576a667d453aa8a3ed3007486335c07bd1b0ae233a91a4e26a812a158c83935771967ac93585f8e464
+
+pkgname = appflowy-beta-bin
