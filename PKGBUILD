@@ -2,26 +2,15 @@
 pkgname=scopehal-apps-git
 pkgver=0.0.3323a0f
 pkgrel=1
-epoch=
 pkgdesc="glscopeclient and other client applications for libscopehal"
 arch=('x86_64')
-url="https://github.com/azonenberg/scopehal-apps"
+url="https://github.com/glscopeclient/scopehal-apps"
 license=('BSD')
 groups=()
 depends=('glm' 'gtkmm3' 'libsigc++' 'libyaml' 'liblxi-git' 'texlive-core' 'texlive-fontsextra' 'glew' 'catch2' 'clfft' 'ffts-git')
 makedepends=('cmake')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()  
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/azonenberg/scopehal-apps.git" "modules.patch")
 md5sums=('SKIP' 'SKIP')
-validpgpkeys=()
+source=("git+https://github.com/glscopeclient/scopehal-apps.git" "modules.patch")
 
 pkgver() {
   cd "${srcdir}/scopehal-apps"

@@ -4,8 +4,8 @@
  [submodule "lib"]
  	path = lib
 -	url = ../scopehal.git
-+	url = https://github.com/azonenberg/scopehal.git
++	url = https://github.com/glscopeclient/scopehal.git
  [submodule "doc"]
  	path = doc
 -	url = ../scopehal-docs.git
-+	url = https://github.com/azonenberg/scopehal-docs.git
++	url = https://github.com/glscopeclient/scopehal-docs.git
