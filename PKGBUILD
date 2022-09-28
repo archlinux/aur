@@ -22,7 +22,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
 # ogdi
 changelog=gdal.changelog
-source=(https://download.osgeo.org/${pkgbase}/${pkgver}/gdal-${pkgver}.tar.xz)
+source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz)
 sha256sums=('d12c30a9eacdeaab493c0d1c9f88eb337c9cbb5bb40744c751bdd5a5af166ab6')
 
 build() {
