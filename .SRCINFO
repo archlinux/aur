@@ -1,14 +1,14 @@
 pkgbase = consolation
 	pkgdesc = Libinput-based console pointer support for copy-paste, similar to gpm
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/consolation-team/consolation
 	arch = x86_64
 	license = GPL
+	makedepends = help2man
 	depends = libevdev>=0.9.1
 	depends = libinput>=1.21
-	depends = systemd>=183
-	depends = help2man
+	depends = systemd-libs>=183
 	source = https://deb.debian.org/debian/pool/main/c/consolation/consolation_0.0.9.orig.tar.xz
 	md5sums = d062066b16411a035217626568c51eed
 
