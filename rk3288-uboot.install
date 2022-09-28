@@ -27,6 +27,7 @@ post_install() {
 post_remove() {
   rm -vf /boot/dtbs/rk3288-openhour.dtb
   target="rk3288"
+  rm -vf /boot/dtbs/${target}-tojoin.dtb
   rm -vf /boot/dtbs/${target}-joined.dtb
   rm -vf /boot/dtbos/*.dtbo
 }
