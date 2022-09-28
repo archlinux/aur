@@ -1,0 +1,16 @@
+pkgbase = python-decopatch
+	pkgdesc = python decorators made easy.
+	pkgver = 1.4.10
+	pkgrel = 1
+	url = https://smarie.github.io/python-decopatch/
+	arch = any
+	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-makefun
+	source = git+https://github.com/smarie/python-decopatch.git#tag=1.4.10
+	sha512sums = SKIP
+
+pkgname = python-decopatch
