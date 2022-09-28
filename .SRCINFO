@@ -1,0 +1,15 @@
+pkgbase = dfl-utils
+	pkgdesc = Some utilities for DFL
+	pkgver = 0.1.0alpha1
+	pkgrel = 1
+	url = https://gitlab.com/desktop-frameworks/utils
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	source = https://gitlab.com/desktop-frameworks/utils/-/archive/v0.1.0-alpha1/utils-v0.1.0-alpha1.tar.gz
+	md5sums = 7d063413e266b12ea5cfeda99b131e88
+
+pkgname = dfl-utils
