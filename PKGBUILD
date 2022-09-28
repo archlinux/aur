@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.19.11
+pkgver=5.19.12
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -97,23 +97,25 @@ source=(
   0005-soundwire-intel-use-pm_runtime_resume-on-component-p.patch
   0006-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
   0007-ASoC-Intel-sof_sdw-add-support-for-Dell-SKU-0AFF.patch
+  0008-ACPI-processor-idle-Practically-limit-Dummy-wait-wor.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('5554d2f90b806bb3454fcf3432882cf85077d660a89db5a4e8d7375271e3d973'
+sha256sums=('c436a548c7312ce6fc5a3472cbead895eef8f52841fbe7c71fd8e48bdfe2b0ba'
             'SKIP'
-            '7dcbed3f72a2a84dd5b40bbe38c8fa2d82d1d68fcaa657f40163a6123a19886f'
+            '1e07bdd94abe73ac2074b151729cd9b73c7fa7a615a3a331a89dcb0da42649f8'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '7037fa27b33666a3bd20c888c667efb218e95e45af8debe591896cc79fe69c76'
-            '85fa81ddbc48c0775f220a378348ad0d9766a03cbecd277a814cf3b579d45108'
-            '5e7e99006fad5f53c575530f669e7e339d3533cdc3e38381d4fdc1b9d570d221'
-            '36e19de5c004a8bc91ee82c049f40fc90d2f4902f97faf3a14e75025f2a40d13'
-            '33025678ce2804ec8855537cb7801226e769c3e7d27ff9edd706de526d89686e'
-            '3ad14c8a2bfbbc1a0b3a54d01d7cb9698e564cf0e8047da0ae8d6c1d20d98f36'
-            '04a844a87d0cbf7a2210f59aab07ee203fdb36959d5d3f69f7f86124ee760768'
-            '6c0faae6fe0c624fe80776f12b53ec917acfbc07811222c41640a3d1dfff5353')
+            '3aa7bda60f75c4942387d2c8a39da7628d380b4bf2b228758e752638db042fc1'
+            '5206a8b5a27faa823bfb42ccc2390612894e0d94076461a6dde91256bc2f521f'
+            'fdbda1ec0255cb1c7d4bcfd66020f384fe788ebcd33a40005cf20d17f1320daf'
+            'f5b8540969dfce4eac33e7b53da541e384e1a9fbdc910a263d6a1aeaf39e69db'
+            '7484ac36b8b53b059498040c6daf965ce9c9abdfbc4c0c8e79bcb22f506a5f80'
+            'c64639ae4c7294ca45f334a6350c8a1a402a6625b1cfcaac52a3b483a06d6828'
+            '8c582af2aa685af59a26490c9c51d1584aa966e7c7dd7234ea602e369c82fc64'
+            '3b4d465a494bb9e8697db22acb67fe10f18e12eb16c68752b3e408ea4c08e608')
 
 prepare() {
   cd linux-${pkgver}

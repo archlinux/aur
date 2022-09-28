@@ -1,7 +1,7 @@
-From 6cce0cadda6ee5aebec4e097fdd03c028aedef83 Mon Sep 17 00:00:00 2001
+From 6baaafff07d5e0ddc546c97518d70b6533094513 Mon Sep 17 00:00:00 2001
 From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 Date: Tue, 13 Sep 2022 10:10:36 +0200
-Subject: [PATCH 7/8] ASoC: Intel: sof_sdw: add support for Dell SKU 0AFF
+Subject: [PATCH 7/9] ASoC: Intel: sof_sdw: add support for Dell SKU 0AFF
 
 Yet another SKU that needs a quirk for jack detection and four-speaker
 support.

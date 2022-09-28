@@ -1,7 +1,7 @@
-From 333f53bd4ba9fade8bf15353aa11606e2a6afd7e Mon Sep 17 00:00:00 2001
+From 05a080996060663c466061d348af4c67801c87d1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jouni=20H=C3=B6gander?= <jouni.hogander@intel.com>
 Date: Fri, 13 May 2022 17:28:11 +0300
-Subject: [PATCH 3/8] drm/i915: Ensure damage clip area is within pipe area
+Subject: [PATCH 3/9] drm/i915: Ensure damage clip area is within pipe area
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -27,10 +27,10 @@ Signed-off-by: Jouni Högander <jouni.hogander@intel.com>
  1 file changed, 16 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_psr.c b/drivers/gpu/drm/i915/display/intel_psr.c
-index fecdaaeac39e..36356893c7ca 100644
+index a0571c7249f1..7d61c55184e5 100644
 --- a/drivers/gpu/drm/i915/display/intel_psr.c
 +++ b/drivers/gpu/drm/i915/display/intel_psr.c
-@@ -1618,8 +1618,12 @@ static void psr2_man_trk_ctl_calc(struct intel_crtc_state *crtc_state,
+@@ -1624,8 +1624,12 @@ static void psr2_man_trk_ctl_calc(struct intel_crtc_state *crtc_state,
  }
  
  static void clip_area_update(struct drm_rect *overlap_damage_area,
@@ -44,7 +44,7 @@ index fecdaaeac39e..36356893c7ca 100644
  	if (overlap_damage_area->y1 == -1) {
  		overlap_damage_area->y1 = damage_area->y1;
  		overlap_damage_area->y2 = damage_area->y2;
-@@ -1709,7 +1713,8 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
+@@ -1715,7 +1719,8 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
  	 */
  	for_each_oldnew_intel_plane_in_state(state, plane, old_plane_state,
  					     new_plane_state, i) {
@@ -54,7 +54,7 @@ index fecdaaeac39e..36356893c7ca 100644
  		struct drm_atomic_helper_damage_iter iter;
  		struct drm_rect clip;
  
-@@ -1736,20 +1741,23 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
+@@ -1742,20 +1747,23 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
  			if (old_plane_state->uapi.visible) {
  				damaged_area.y1 = old_plane_state->uapi.dst.y1;
  				damaged_area.y2 = old_plane_state->uapi.dst.y2;
@@ -81,7 +81,7 @@ index fecdaaeac39e..36356893c7ca 100644
  			continue;
  		}
  
-@@ -1760,7 +1768,8 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
+@@ -1766,7 +1774,8 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
  						   &new_plane_state->uapi);
  		drm_atomic_for_each_plane_damage(&iter, &clip) {
  			if (drm_rect_intersect(&clip, &src))
@@ -91,7 +91,7 @@ index fecdaaeac39e..36356893c7ca 100644
  		}
  
  		if (damaged_area.y1 == -1)
-@@ -1768,7 +1777,7 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
+@@ -1774,7 +1783,7 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
  
  		damaged_area.y1 += new_plane_state->uapi.dst.y1 - src.y1;
  		damaged_area.y2 += new_plane_state->uapi.dst.y1 - src.y1;

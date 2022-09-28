@@ -1,7 +1,7 @@
-From 1788d4888382fecb43fd14892a613e47144e534d Mon Sep 17 00:00:00 2001
+From f741527431e0510b876d68c7e7ec4286cbd41a24 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jouni=20H=C3=B6gander?= <jouni.hogander@intel.com>
 Date: Fri, 13 May 2022 17:28:10 +0300
-Subject: [PATCH 2/8] drm/i915/psr: Use full update In case of area calculation
+Subject: [PATCH 2/9] drm/i915/psr: Use full update In case of area calculation
  fails
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -29,10 +29,10 @@ Reviewed-by: José Roberto de Souza <jose.souza@intel.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_psr.c b/drivers/gpu/drm/i915/display/intel_psr.c
-index 06db407e2749..fecdaaeac39e 100644
+index 8f09203e0cf0..a0571c7249f1 100644
 --- a/drivers/gpu/drm/i915/display/intel_psr.c
 +++ b/drivers/gpu/drm/i915/display/intel_psr.c
-@@ -1685,6 +1685,7 @@ static bool psr2_sel_fetch_pipe_state_supported(const struct intel_crtc_state *c
+@@ -1691,6 +1691,7 @@ static bool psr2_sel_fetch_pipe_state_supported(const struct intel_crtc_state *c
  int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
  				struct intel_crtc *crtc)
  {
@@ -40,7 +40,7 @@ index 06db407e2749..fecdaaeac39e 100644
  	struct intel_crtc_state *crtc_state = intel_atomic_get_new_crtc_state(state, crtc);
  	struct drm_rect pipe_clip = { .x1 = 0, .y1 = -1, .x2 = INT_MAX, .y2 = -1 };
  	struct intel_plane_state *new_plane_state, *old_plane_state;
-@@ -1770,6 +1771,19 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
+@@ -1776,6 +1777,19 @@ int intel_psr2_sel_fetch_update(struct intel_atomic_state *state,
  		clip_area_update(&pipe_clip, &damaged_area);
  	}
  
