@@ -1,0 +1,9 @@
+[Unit]
+Description=Ycash daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ycashd
+
+[Install]
+WantedBy=default.target
