@@ -1,0 +1,16 @@
+pkgbase = dfl-config-parser
+	pkgdesc = A Collection of Config Parsers for DFL. Currently it contains a config parser for KDE Color Schemes
+	pkgver = 0.1.0alpha1
+	pkgrel = 1
+	url = https://gitlab.com/desktop-frameworks/config-parser
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = dfl-color-utils
+	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.1.0-alpha1/config-parser-v0.1.0-alpha1.tar.gz
+	md5sums = 4382f13798b525d77297b6fec6ff6486
+
+pkgname = dfl-config-parser
