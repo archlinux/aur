@@ -1,0 +1,33 @@
+pkgbase = frappe-bench
+	pkgdesc = CLI to manage Multi-tenant deployments for Frappe apps
+	pkgver = 5.14.3
+	pkgrel = 1
+	url = https://github.com/frappe/bench
+	arch = x86_64
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-gitpython
+	depends = python-jinja
+	depends = python-crontab
+	depends = python-requests
+	depends = python-semantic-version
+	depends = python-setuptools
+	depends = python-tomli
+	optdepends = yarn: js dependency manager
+	optdepends = python-pip: py dependency manager
+	optdepends = wkhtmltopdf: for pdf generation
+	optdepends = cronie: bench's scheduled jobs: automated certificate renewal, scheduled backups
+	optdepends = nginx: proxying multitenant sites in production
+	optdepends = redis: caching and realtime updates
+	optdepends = mariadb: to run database driven apps
+	optdepends = postgresql: to run database driven apps
+	provides = bench
+	source = frappe-bench::git+https://github.com/frappe/bench#tag=v5.14.3
+	sha256sums = SKIP
+
+pkgname = frappe-bench
