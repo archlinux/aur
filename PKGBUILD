@@ -7,7 +7,7 @@
 
 pkgname=lxd
 pkgver=5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -15,9 +15,10 @@ license=('APACHE')
 depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'dqlite' 'libuv' 'ebtables')
 makedepends=('go' 'git' 'tcl' 'apparmor' 'libseccomp' 'systemd')
 optdepends=(
-    'lvm2: for lvm2 support'
-    'thin-provisioning-tools: for thin provisioning support'
-    'btrfs-progs: for btrfs storage driver support'
+    'lvm2: lvm2 support'
+    'thin-provisioning-tools: thin provisioning support'
+    'btrfs-progs: btrfs storage driver support'
+    'minio: storage buckets support'
     'cdrtools: VM support'
     'qemu: VM support'
     'edk2-ovmf: VM support'
