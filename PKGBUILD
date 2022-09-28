@@ -2,7 +2,7 @@
 
 pkgname=intel-ipu6-dkms-git
 _pkgname=ipu6-drivers
-pkgver=r53.3c24456e0
+pkgver=r55.095a2440a
 pkgrel=1
 pkgdesc="Intel IPU6 camera drivers (DKMS)"
 arch=('any')
@@ -10,10 +10,8 @@ url="https://github.com/intel/ipu6-drivers"
 license=('unknown')
 depends=('dkms')
 makedepends=('git')
-source=("git+${url}.git"
-        "0000-disable-remaining-ivsc-calls.patch")
-sha256sums=('SKIP'
-            '1ed8ca177e476ace36a2205b2ddc72bb4358ad16eaa1eb180b96d18c4f2631f0')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
@@ -23,7 +21,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     sed -i "s/^PACKAGE_VERSION=\".*\"$/PACKAGE_VERSION=\"$pkgver\"/g" ./dkms.conf
-    patch -p1 -i $srcdir/0000-disable-remaining-ivsc-calls.patch
 }
 
 package() {
