@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-settings
 pkgver=22.09
-pkgrel=0
+pkgrel=1
 pkgdesc="Settings application for Plasma Mobile"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/plasma-settings"
@@ -16,6 +16,7 @@ depends=(
   'modemmanager-qt'
   'networkmanager-qt'
   'powerdevil'
+  'kirigami-addons'
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma-mobile/$pkgver/$pkgname-$pkgver.tar.xz")
