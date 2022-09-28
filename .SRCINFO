@@ -1,14 +1,13 @@
 pkgbase = pgmtogrob
 	pkgdesc = Converts PGM files to grayscale grob images, readable by HP Calculators
 	pkgver = 0.1
-	pkgrel = 1
-	url = http://www.hpcalc.org/details.php?id=3244
+	pkgrel = 2
+	url = https://www.hpcalc.org/details.php?id=3244
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = netpbm
-	source = http://www.hpcalc.org/hp49/pc/misc/pgm2grob.tgz
-	md5sums = 025e0d6f451b00d98d5236b771bc93b9
+	source = pgmtogrob-0.1.tgz::https://www.hpcalc.org/hp49/pc/misc/pgm2grob.tgz
+	sha256sums = 1d70257ef18bed260321a122158979e3831608ed570cdcb4792056813ea3aa33
 
 pkgname = pgmtogrob
-
