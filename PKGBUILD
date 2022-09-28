@@ -2,7 +2,7 @@
 # Contributor: Bernhard Landauer <bernhard@manjaro.org>
 
 pkgname=kirigami-addons
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Add-ons for the Kirigami framework"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -13,7 +13,7 @@ makedepends=(cmake extra-cmake-modules git)
 provides=("$pkgname-git")
 conflicts=("$pkgname-git")
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('946fd46f7453a2bb027f55fb29fc6a6d5ecdc8af25e049a8a01710d332195d77')
+sha256sums=('be95b504fee01ea76ebc8c429b5700d2f4245be893cbac7f03f778b92e962d91')
 
 prepare() {
   mkdir -p build
