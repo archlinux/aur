@@ -1,6 +1,6 @@
 pkgbase = mlt-git
 	pkgdesc = Multimedia Framework
-	pkgver = r5850.1653687636.3513e741
+	pkgver = r5894.1664237398.5d9c6cb8
 	pkgrel = 1
 	url = https://github.com/mltframework/mlt
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = mlt-git
 	makedepends = libdv
 	makedepends = sox
 	makedepends = libexif
-	makedepends = python2
+	makedepends = python
 	makedepends = swig
 	makedepends = git
 	depends = libsamplerate

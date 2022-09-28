@@ -4,7 +4,7 @@
 pkgname=('mlt-git')
 _srcname='mlt'
 pkgdesc='Multimedia Framework'
-pkgver=r5850.1653687636.3513e741 
+pkgver=r5894.1664237398.5d9c6cb8 
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/mltframework/${_srcname}" license=('GPL2')
@@ -30,7 +30,7 @@ makedepends=( 	'ladspa'
 		'libdv'
 		'sox'
 		'libexif'
-		'python2'
+		'python'
 		'swig'
 		'git'
 		)
