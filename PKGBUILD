@@ -2,11 +2,11 @@
 
 pkgname=nerd-fonts-fontconfig
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fontconfig for Nerd Fonts Symbols'
 arch=('any')
 license=('MIT')
-depends=('ttf-nerd-fonts-symbols')
+depends=('ttf-nerd-fonts-symbols-2048-em')
 optdepends=()
 conflicts=()
 options=()
