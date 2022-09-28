@@ -6,3 +6,5 @@ src/
 emacs-git
 *.local
 local
+LOCAL
+*.txt
