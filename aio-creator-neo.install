@@ -1,0 +1,27 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Wine will be used to run this Windows app;       ##
+    ## therefore, not everything may work properly.     ##
+    ##                                                  ##
+    ## Please see:                                      ##
+
+> https://appdb.winehq.org/objectManager.php?sClass=application&iId=20755
+
+    ## for details and known limitations.               ##
+    ##                                                  ##
+
+EOF
+}
+
+post_remove() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## To completely remove user data, delete           ##
+    ## the ~/.local/share/aio-creator-neo directory.    ##
+    ##                                                  ##
+
+EOF
+}
