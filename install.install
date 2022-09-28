@@ -1,0 +1,4 @@
+post_install() {
+    echo "  You should add 'include /usr/share/kitty/themes/gruvbox/<path to theme>'"
+    echo "  to ~/.config/kitty/kitty.conf (your kitty config)."
+}

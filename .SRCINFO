@@ -3,6 +3,7 @@ pkgbase = kitty-gruvbox-theme-git
 	pkgver = r12.833d137
 	pkgrel = 1
 	url = https://github.com/wdomitrz/kitty-gruvbox-theme
+	install = install.install
 	arch = any
 	license = MIT
 	makedepends = git
