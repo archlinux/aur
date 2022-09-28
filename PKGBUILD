@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Map Editor for the game CrossCode"
 arch=('any')
@@ -17,9 +17,9 @@ source=("https://github.com/CCDirectLink/crosscode-map-editor/releases/download/
         "${pkgname}-LICENSE::https://github.com/CCDirectLink/crosscode-map-editor/raw/v${pkgver}/LICENSE"
         "${pkgname}.patch")
 noextract=("${_appimage_file}")
-sha256sums=('0a640488e6d78b8e0ac28ab657c2fb00b480aa1f9d2fe2d961249c10f33ddb45'
+sha256sums=('3193da99012be178ae0e5d032808269189c1f2e6cfd361ffb39248098d1f227d'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
-            '75c95fc6d99a6b6a4ffea39fa1c363c826e2f41f51feaf61e6fc2048daad7c95')
+            '11fde0a67b346874dabb8241393ead51723f3b4e9b75174c52a4b32e79ea9ccd')
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}"
@@ -58,11 +58,9 @@ EOF
   (
     cd "app"
 
-    patch --forward --strip=2 --input="${srcdir}/${pkgname}.patch"
-    sed -i "4a <script>require('electron').remote = require('@electron/remote');</script>" distAngular/index.html
+    patch --forward --input="${srcdir}/${pkgname}.patch"
 
     npm --no-audit --no-fund --no-package-lock uninstall electron-log electron-updater
-    npm --no-audit --no-fund --no-package-lock install --save @electron/remote
   )
 
   msg2 "Converting icons..."
