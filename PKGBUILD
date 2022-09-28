@@ -2,7 +2,7 @@
 
 _name=nrfutil
 pkgname=python-nrfutil
-pkgver=6.1.6
+pkgver=6.1.7
 pkgrel=1
 pkgdesc="CLI utility supporting Device Firmware Updates (DFU) and cryptographic functionality"
 arch=(any)
@@ -27,8 +27,8 @@ checkdepends=(python-behave python-nose)
 # tests are not included in sdist tarballs from pypi.org: https://github.com/NordicSemiconductor/pc-nrfutil/issues/385
 # source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 source=(pc-$_name-$pkgver.tar.gz::https://github.com/NordicSemiconductor/pc-$_name/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('f3594244b6ff1740bff99ff36ee74404ec7549ddcd3826a71b0a08366be1afdc')
-b2sums=('55195b68a8bebd4ff4cf4c2b37fd29692c6267a2495142fd31b5cc0c372383d39f4f5d2c0720d366f79118a766a2deb24802dbcce54a64e5df717867d1983990')
+sha256sums=('fb1a1d52775c1deeced0c8f8815ecc70958ad71a5f368ec3baf8154f63caa4fe')
+b2sums=('99b3726f2a4d1697c34d59be264df088c27b82a009b646bb9eff09f339e34a67285e53e1b30e53e42a24625aaf40947f644cf8f133a66eb33f4e39983b5b1a96')
 
 build() {
   cd pc-$_name-$pkgver
