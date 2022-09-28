@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.19.11
+gitver=v5.19.12
 patchver=20220315
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=5.19.v.11
+pkgver=5.19.v.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '50dd5c9760e85d57973b955b6c8e9c086ec517fcb98032badd05f6809d539d50'
+            '94ed211acd29dc29a19d7b976988bdd4afa4b1d897b382e0c5efeb52a955fac7'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
