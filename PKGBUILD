@@ -1,7 +1,7 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
 
 pkgname='qsv'
-pkgver='0.68.0'
+pkgver='0.69.0'
 pkgrel='1'
 pkgdesc='A command line program for CSV files. Fork of xsv.'
 arch=('any')
@@ -14,9 +14,9 @@ optdepends=('bash-completion: tab completion for bash')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'completion.patch')
 
-md5sums=('372340d319d60d59126b3f195e943645'
+md5sums=('420baa3aa867541e253d30d3c0825b64'
          'b6ac3fc857e4d2657be8c4e81c86a56c')
-sha512sums=('9ae1796909560bf3a917aba96666c026465ee43e820b5c1162e1af2defdebb622f58ccb7b987012367327168d603b34fea1074069ed1b71eb0a22e0651303a81'
+sha512sums=('367bbcf49c722a4f77a38e7f10c62de47733e350d7b0b389c53200b8be336485d42652c01b40aa1be4010f666843c9bd5da61dacfc5ed525ae20d45d5e9b65e2'
             '809cd1ad542319a8f98c061b222e386afe90668acdc3b4f9183aa5cb3d3e70548fd72d2a160841072fc6ab29d6cd6d1f6c0596f19451dc21ff63449d00b7d2db')
 
 prepare() {
