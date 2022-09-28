@@ -1,7 +1,7 @@
-# Maintainer: halfhorn <mwellsa at gmail dot com>
+# Maintainer: KristianB <kbrucaj at gmail dot com>
 # Contributor: halfhorn <mwellsa at gmail dot com>
 pkgname=wonderdraft
-pkgver=1.1.4.2
+pkgver=1.1.7.3
 pkgrel=1
 pkgdesc="An intuitive yet powerful fantasy mapmaking tool."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.wonderdraft.net"
 license=('custom')
 options=('!strip' '!emptydirs')
 source=("file://Wonderdraft-${pkgver}-Linux64.zip")
-md5sums=('899a5b5daf489dd214a094195b7e2b4f')
+md5sums=('0286f55568c803ef415152eb37e3c6ca')
 
 prepare(){
     sed -i 's|opt/Wonder|opt/wonder|' "${srcdir}/Wonderdraft.desktop"
