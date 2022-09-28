@@ -1,7 +1,7 @@
 # Maintainer: varsity <varsity@duck.com>
 pkgname=hybrid-bar-git
 pkgver=0.1.9
-pkgrel=1
+pkgrel=3
 makedepends=('rust' 'cargo' 'git' 'wget')
 depends=('gtk3' 'gtk-layer-shell')
 url="https://github.com/vars1ty/HybridBar"
