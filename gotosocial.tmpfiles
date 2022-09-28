@@ -1,3 +1,0 @@
-d	/usr/share/gotosocial	0750	gotosocial	gotosocial	-
-d	/var/log/gotosocial	0750	gotosocial	gotosocial	-
-f	/usr/bin/gotosocial	0750	gotosocial	gotosocial	-
