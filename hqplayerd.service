@@ -5,7 +5,7 @@ After=network-online.target sound.target local-fs.target remote-fs.target
 
 [Service]
 Type=simple
-ExecStartPre=/bin/sleep 60
+ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
