@@ -1,19 +1,22 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
 
 pkgname=python-spf-engine
-_pkgname="${pkgname#*-}"
+#_pkgname="${pkgname#*-}"
 pkgver=2.9.3
-_pkgver=2.9
-pkgrel=1
+#_pkgver=2.9
+pkgrel=2
 pkgdesc="SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail"
 arch=('any')
-url="https://launchpad.net/${_pkgname}"
+url="https://launchpad.net/${pkgname#*-}"
 license=('Apache'
          'GPL2')
 depends=('python-authres'
          'python-pymilter'
-         'python-pyspf>=2.0.9'
-         'python-setuptools')
+         'python-pyspf>=2.0.9')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
 optdepends=('postfix: Postfix integration'
             'sendmail: Sendmail integration') 
 provides=('spf-engine')
@@ -21,7 +24,7 @@ conflicts=('python-postfix-policyd-spf'
            'spf-engine')
 backup=(etc/python-policyd-spf/policyd-spf.conf
         etc/pyspf-milter/pyspf-milter.conf)
-source=("https://launchpad.net/${_pkgname}/${_pkgver}/${pkgver}/+download/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("${url}/${pkgver%.*}/${pkgver}/+download/${pkgname#*-}-${pkgver}.tar.gz"{,.asc}
         pyspf-milter.sysusers
         pyspf-milter.conf
         pyspf-milter.service)
@@ -33,15 +36,17 @@ sha512sums=('adde80eca38f372ad00ed7355951007b9c02ef8a52a5a4edcbf2fa9959220f1083e
 validpgpkeys=('E7729BFFBE85400FEEEE23B178D7DEFB9AD59AF1') # Donald Scott Kitterman <scott@kitterman.com> 
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  cd "${pkgname#*-}-${pkgver}"
+  python -m build --wheel --no-isolation
+  #python setup.py build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 \
-	--single-version-externally-managed --skip-build
-  
+  cd "${pkgname#*-}-${pkgver}"
+  #python setup.py install --root="${pkgdir}" --optimize=1 \
+	#--single-version-externally-managed --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
   # Fix and remove incorrect files and directory structure
   mv "${pkgdir}/usr/etc" "${pkgdir}/etc"
   rm "${pkgdir}/etc/init.d/pyspf-milter"
