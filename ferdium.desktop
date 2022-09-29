@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ferdium
+Exec=/usr/bin/ferdium %U
+Terminal=false
+Type=Application
+Icon=ferdium
+StartupWMClass=Ferdium
+Comment=Ferdium is your messaging app and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can down>
+MimeType=x-scheme-handler/ferdium;
+Categories=Network;InstantMessaging;
