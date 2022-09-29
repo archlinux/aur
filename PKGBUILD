@@ -1,6 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
 # Contributor: VitalyR <vitalyankh@gmail.com>
+# Contributor: dr460nf1r3 <aur@dr460nf1r3.org>
 
 # shellcheck disable=SC2034
 _pkgname="gjs"
@@ -13,7 +14,7 @@ url="https://gitlab.gnome.org/GNOME/${_pkgname}/blob/master/doc/Home.md"
 arch=('x86_64' 'i686' 'pentium4')
 license=(GPL)
 depends=('cairo' 'gobject-introspection-runtime' 'js102' 'dconf')
-makedepends=('gobject-introspection' 'git' 'autoconf-archive' 'sysprof' 'meson')
+makedepends=('cmake' 'gobject-introspection' 'git' 'autoconf-archive' 'sysprof' 'meson')
 checkdepends=('valgrind' 'xorg-server-xvfb')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")

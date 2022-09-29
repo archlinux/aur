@@ -10,6 +10,7 @@ pkgbase = gjs-git
 	license = GPL
 	checkdepends = valgrind
 	checkdepends = xorg-server-xvfb
+	makedepends = cmake
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = autoconf-archive
