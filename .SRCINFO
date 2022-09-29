@@ -1,7 +1,7 @@
 pkgbase = browsh
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brow.sh
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = browsh
 	arch = aarch64
 	license = LGPL2.1
 	makedepends = git
-	makedepends = npm
+	makedepends = go
 	depends = firefox>=63
 	optdepends = upx: compress binary
 	conflicts = browsh-bin
@@ -20,9 +20,7 @@ pkgbase = browsh
 	options = !strip
 	source = https://github.com/browsh-org/browsh/archive/v1.8.0.tar.gz
 	source = https://github.com/browsh-org/browsh/releases/download/v1.8.0/browsh-1.8.0.xpi
-	source = https://dl.google.com/go/go1.18.linux-amd64.tar.gz
 	sha256sums = 81b1f9d725527f851457046845f8ed0d1fdd00fdc97d3c19e69c0bc5a7e70cd3
 	sha256sums = d76c566dfe278181d62ca57dcb2c728b4372ff31d28f6a3b21c6adb3e11ffa90
-	sha256sums = e85278e98f57cdb150fe8409e6e5df5343ecb13cebf03a5d5ff12bd55a80264f
 
 pkgname = browsh
