@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=brew
-_pkgver=1.0-7
+_pkgver=1.0-8
 pkgname=r-${_pkgname,,}
-pkgver=1.0.7
-pkgrel=4
+pkgver=1.0.8
+pkgrel=1
 pkgdesc='Templating Framework for Report Generation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38b859c1dca63479f6937c593da8f806f2b3279585bb6e20ecff1b898469e76e')
+sha256sums=('11652d5a7042d645cc5be5f9f97ff4d46083cea7d3ad2dd6ad1570b52c097826')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
