@@ -210,7 +210,7 @@ build() {
     -DWITH_SYSTEM_GTEST=OFF \
     -DWITH_SYSTEM_NPM=OFF \
     -DENABLE_SHARED=ON \
-    -DWITH_TESTS=ON \
+    -DWITH_TESTS=OFF \
     -Wno-dev
 
   VERBOSE=1 make -C build all
