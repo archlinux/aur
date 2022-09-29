@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=caddy-cloudflare
-pkgver=2.5.2
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
