@@ -3,7 +3,7 @@
 
 pkgname=frappe-bench
 pkgver=5.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI to manage Multi-tenant deployments for Frappe apps"
 arch=('x86_64')
 url="https://github.com/frappe/bench"
@@ -19,7 +19,7 @@ makedepends=(
 depends=(
     "cronie"
     "python"
-    "node"
+    "nodejs"
     "python-click"
     "python-crontab"
     "python-gitpython"
