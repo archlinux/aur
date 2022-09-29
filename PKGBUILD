@@ -1,5 +1,29 @@
 # Maintainer: Platon Pronko < platon7pronko at gmail dot com >
 
+# README
+#
+# Ru
+# ==
+# Тиражирование и распространение СКЗИ является деятельностью
+# лицензируемой ФСБ России. Каждый экземпляр СКЗИ должен иметь
+# индивидуальный номер учета. Т.е. анонимный доступ невозможен.
+# AUR не выполняет оба этих пункта. Поэтому перед выполнением makepkg
+# необходимо скачивать СКЗИ самостоятельно с сайта производителя. Ссылка:
+#
+# https://cryptopro.ru/sites/default/files/private/csp/50/12500/linux-amd64.tgz
+#
+# Данный PKGBUILD старается следовать последней не-сертифицированной версии CSP (не RC).
+#
+# En
+# ==
+# This PKGBUILD does not automatically download CSP archive because
+# accessing it requires logging in. Please download the archive manually
+# and place alongside the PKGBUILD before building. Link:
+#
+# https://cryptopro.ru/sites/default/files/private/csp/50/12500/linux-amd64.tgz
+#
+# This PKGBUILD tracks the latest not-certified version of CSP (not RC).
+
 pkgname="cryptopro-csp-k1"
 pkgver=5.0.12500
 pkgrel=2
