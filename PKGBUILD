@@ -4,7 +4,7 @@ pkgver=3.0
 pkgrel=1
 pkgdesc="Find files using pretty C expressions"
 arch=('any')
-url="https://raf.org/rawhide/"
+url="https://raf.org/rawhide"
 license=('GPL3')
 depends=('acl'
          'pcre')
