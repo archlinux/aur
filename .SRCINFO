@@ -1,6 +1,6 @@
 pkgbase = tellus-git
 	pkgdesc = Host Intrusion Detection and Prevention System Based on Kernel Module
-	pkgver = r30.d05e2f8
+	pkgver = r32.1c63a03
 	pkgrel = 1
 	url = https://github.com/lanthora/tellus
 	arch = x86_64

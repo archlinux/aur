@@ -1,7 +1,7 @@
 # Maintainer: lanthora <lanthora at outlook dot com>
 
 pkgname=tellus-git
-pkgver=r30.d05e2f8
+pkgver=r32.1c63a03
 pkgrel=1
 pkgdesc="Host Intrusion Detection and Prevention System Based on Kernel Module"
 arch=('x86_64' 'armv7h' 'aarch64')
