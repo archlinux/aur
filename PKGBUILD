@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.6.5.r18.g99f42d0
+pkgver=1.7.2.r159.g5b68cdc
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -32,6 +32,7 @@ makedepends=(
   # "libmagick6"
   # "sqlite3"
   # "rpm-tools"
+  # "libcjson"
 )
 optdepends=(
   "pciutils: GPU output"
@@ -54,6 +55,7 @@ optdepends=(
   # "libmagick6: ImageMagick 6 support" 
   # "sqlite3: rpm package count"
   # "rpm-tools: slower rpm package count fallback"
+  # "libcjson: WSL Terminal font"
 )
 
 _provides_and_conflicts=(
@@ -83,6 +85,7 @@ build() {
     -DENABLE_SQLITE3=OFF \
     -DENABLE_RPM=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
+    -DENABLE_LIBCJSON=OFF \
     -Wno-dev
 
   cmake \
