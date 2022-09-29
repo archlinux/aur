@@ -1,0 +1,11 @@
+pkgbase = gap-messenger
+	pkgdesc = Gap messenger, Beyond Communication
+	pkgver = 4.5.18
+	pkgrel = 1
+	url = https://www.paymoapp.com/download/
+	arch = x86_64
+	license = proprietary
+	source = gap-4.5.18-x86_64.AppImage::https://desktop.gap.im/upgrade/gap.AppImage
+	sha512sums = 891ae9a7949e705ed2e0972ac39ee84e829d716dcc022cf5e6d37c9d91620bdf968d36d6652452aefe0f3addee5057fe92200abb2788be6fdf54027268cbab6e
+
+pkgname = gap-messenger
