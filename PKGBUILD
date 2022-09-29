@@ -3,19 +3,19 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
 pkgver=15.2.14
-pkgrel=8
+pkgrel=9
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL')
 options=('emptydirs')
-_artifact=v${pkgver}-7
+_artifact=v${pkgver}-${pkgrel}
 source=("ceph-bin-${pkgver}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_linux_${arch}.tar.zstd"
         "ceph-libs-bin-${pkgver}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_libs_linux_${arch}.tar.zstd"
         "ceph-mgr-bin-${pkgver}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_mgr_linux_${arch}.tar.zstd")
-sha512sums=('d8ed4d19f3638a18e16cadabf7a6eaab32bb37c5700fbd4559aa226e3406fc528a79c699de75ff29deb2c50b0c027261b9e671958674a16f96674deb6411a8b5'
-            'e0ee00643cd6f5d829a0ab2bddc4d52aa98db915e9c25020e4aefb731aceae154f0793694e7257b005c5a8e7a1d3c5b1c51d081e560981d36417a0e999fdc920'
-            'f07c64fdde6b99ab3849eefcdf1099058874c49d2a5cb530a9857347f4be76f77fff6a0df3bc7c83339b8c643797861548a69b35067d9d9081996fef71dac1b4')
+sha512sums=('e81d6e71299ce30b65c89b755989ecd0aed9f922b62b4f202586722645498591e79e72e5de2c99bbc881c5bb1a0ed857c7a96aefaddc339f345a9cc82e7686df'
+            'b9475a85f3f2c9f48b95d4169c7169e12f1bfa1e9bf5a3e027d8587b117355065cd0bf3503ff98363bd65e42e86ec5e2594a3a32e2950e02a11e77864b144b33'
+            'f0388a44afb2f86b91dd9b199147ad558f4d823091abca4375ac9671c3a38c84fc284b7e6c3b07197440611b49f0f24f24ded0ef048eefa73087002705c1d47f')
 # Don't extract source archives
 noextract=("${source[@]%%::*}")
 
@@ -24,6 +24,7 @@ package_ceph-libs-bin() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt')
   provides=("ceph-libs=${pkgver}-${pkgrel}")
+  conflicts=('ceph-libs')
 
   cd "${srcdir}"
 
@@ -40,6 +41,7 @@ package_ceph-bin() {
            'python-flask' 'python-pecan' 'python-pyopenssl' 'python-requests' 'python-werkzeug' 'xfsprogs'
            'python-yaml' 'python-pyaml')
   provides=("ceph=${pkgver}-${pkgrel}")
+  conflicts=('ceph')
 
   cd "${srcdir}"
 
@@ -57,7 +59,7 @@ package_ceph-mgr-bin() {
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
   provides=("ceph-mgr=${pkgver}-${pkgrel}")
-  conflicts=('ceph<14.2.1-1')
+  conflicts=('ceph-mgr')
   options=('emptydirs' '!strip')
 
   cd "${srcdir}"
