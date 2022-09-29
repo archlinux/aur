@@ -3,9 +3,11 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-pkgname=python-blivet
-pkgver=3.4.3
-_tag="blivet-${pkgver}"
+# shellcheck disable=SC2034
+_pkg="blivet"
+pkgname="python-${_pkg}"
+pkgver=3.6.0
+_tag="${_pkg}-${pkgver}"
 pkgrel=1
 pkgdesc='A DBus service and python module for management of the system storage configuration'
 arch=('x86_64'
@@ -28,10 +30,11 @@ depends=('python'
 checkdepends=('libselinux' 'python-mock' 'python-dbus')
 makedepends=('python-setuptools' 'make')
 url='https://fedoraproject.org/wiki/Blivet'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/storaged-project/blivet/archive/blivet-${pkgver}.tar.gz")
-sha512sums=('e0470dd524895163d6be4c68b143a9662fc54c506f6ddedf04804805faf305b885d3f73fccaf9ee172e41279efb461b17baaa0941b5dc91bcfadfd3517ef8d30')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/storaged-project/${_pkg}/archive/${_pkg}-${pkgver}.tar.gz")
+sha512sums=('6fada13e8a41f0c2ceccb7dc6a95a58d417cf31b24222d7cfb9987d0984984ca0873a0220e3eb66efaa0e56b5ea59df09875dfebb024c310698d49e844f497a5')
 
+# shellcheck disable=SC2154
 package() {
-  cd "${srcdir}/blivet-${_tag}"
+  cd "${srcdir}/${_pkg}-${_tag}" || exit
   python3 setup.py install --root="${pkgdir}" --optimize=1
 }

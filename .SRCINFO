@@ -1,6 +1,6 @@
 pkgbase = python-blivet
 	pkgdesc = A DBus service and python module for management of the system storage configuration
-	pkgver = 3.4.3
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Blivet
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = python-blivet
 	depends = multipath-tools
 	depends = util-linux
 	depends = systemd-libs
-	source = python-blivet-3.4.3.tar.gz::https://github.com/storaged-project/blivet/archive/blivet-3.4.3.tar.gz
-	sha512sums = e0470dd524895163d6be4c68b143a9662fc54c506f6ddedf04804805faf305b885d3f73fccaf9ee172e41279efb461b17baaa0941b5dc91bcfadfd3517ef8d30
+	source = python-blivet-3.6.0.tar.gz::https://github.com/storaged-project/blivet/archive/blivet-3.6.0.tar.gz
+	sha512sums = 6fada13e8a41f0c2ceccb7dc6a95a58d417cf31b24222d7cfb9987d0984984ca0873a0220e3eb66efaa0e56b5ea59df09875dfebb024c310698d49e844f497a5
 
 pkgname = python-blivet
