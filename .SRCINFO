@@ -1,9 +1,11 @@
 pkgbase = python-blivet-git
 	pkgdesc = a python module for management of a system storage configuration - python 3.x pkg
-	pkgver = bf9b55b
-	pkgrel = 2
+	pkgver = blivet+2.0.2+1+r1649+gbadffc78
+	pkgrel = 1
 	url = http://fedoraproject.org/wiki/Blivet
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = LGPL2.1
 	depends = multipath-tools
 	depends = mpathconf
@@ -15,8 +17,9 @@ pkgbase = python-blivet-git
 	depends = hawkey
 	depends = python-pyparted
 	depends = python-pykickstart
+	provides = python-blivet
+	conflicts = python-blivet
 	source = git+https://github.com/storaged-project/blivet.git
 	sha256sums = SKIP
 
 pkgname = python-blivet-git
-
