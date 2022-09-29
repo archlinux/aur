@@ -1,0 +1,23 @@
+pkgbase = deemix-py
+	pkgdesc = A barebone deezer downloader library
+	pkgver = 3.6.6
+	pkgrel = 1
+	url = https://pypi.org/project/deemix/
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-click
+	depends = python-pycryptodomex
+	depends = python-mutagen
+	depends = python-requests
+	depends = python-deezer-py>=1.3.0
+	depends = python-spotipy>=2.11.0
+	conflicts = deemix
+	conflicts = deemix-git
+	source = https://files.pythonhosted.org/packages/source/d/deemix/deemix-3.6.6.tar.gz
+	sha256sums = c446a1cc0d4f22b18f7e79ce72e5d02d5429495394164ebfd2ff5588b8160b09
+
+pkgname = deemix-py
