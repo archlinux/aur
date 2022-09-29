@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synapter
-_pkgver=2.20.0
+_pkgver=2.20.1
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc='Label-free data analysis pipeline for optimal identification and quantitation'
 arch=('any')
