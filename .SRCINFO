@@ -1,7 +1,7 @@
 pkgbase = dbus-x11
 	pkgdesc = Freedesktop.org message bus system (with x11 autolaunch)
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = dbus-x11
 	depends = systemd-libs
 	depends = expat
 	depends = audit
-	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=6fd1509ba3677ac434176882fbf1ca5d7603651e
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=2770215f6cc31cf4723c71cfc67d2a505225d659
 	source = dbus-reload.hook
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
