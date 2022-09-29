@@ -3,9 +3,9 @@
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=0
-pkgdesc="实时获取地球照片作为桌面壁纸"
+pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')

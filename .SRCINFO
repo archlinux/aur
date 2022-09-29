@@ -1,6 +1,6 @@
 pkgbase = earth-wallpaper-bin
-	pkgdesc = 实时获取地球照片作为桌面壁纸
-	pkgver = 1.8.4
+	pkgdesc = Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
+	pkgver = 1.8.5
 	pkgrel = 0
 	url = https://jihulab.com/ambition-echo/earth_wallpaper
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = earth-wallpaper-bin
 	depends = python
 	depends = python-pillow
 	depends = python-requests
-	source = https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/1.8.4/earth-wallpaper-deepin-amd64-1.8.4.deb
+	source = https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/1.8.5/earth-wallpaper-deepin-amd64-1.8.5.deb
 	sha256sums = SKIP
 
 pkgname = earth-wallpaper-bin
