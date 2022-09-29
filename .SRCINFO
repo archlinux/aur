@@ -1,6 +1,6 @@
 pkgbase = eidmiddleware
 	pkgdesc = AKD eID Middleware basic user package
-	pkgver = 3.6.0
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://www.eid.hr
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = eidmiddleware
 	depends = ccid
 	options = !strip
 	options = staticlibs
-	source = https://www.eid.hr/datastore/filestore/10/eidmiddleware_v3.6.0_amd64.deb
-	sha512sums = 40f5b6197990326de19857d9927c99ed41e6542cf38859c362ce9c1495030dbb9619ca43027b5497ffbf49a45c03fa2b08849107dc269cd0cfeaa5902e7ce531
+	source = https://www.eid.hr/datastore/filestore/10/eidmiddleware_v3.7.1_amd64.deb
+	sha512sums = c36ed4c56caa527fe5897e81dcea864102b43a83aa0cb8279d8ec8447d39408f951424d64fe4348c65afe43f484fc9ec2f971a42ba9740083dfa198658e99c06
 
 pkgname = eidmiddleware
