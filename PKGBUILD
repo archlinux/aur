@@ -1,7 +1,7 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-xrce-dds-agent
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="eProsima's XRCE DDS agent"
 arch=('x86_64')
 url="https://github.com/eProsima/Micro-XRCE-DDS-Agent"
@@ -30,7 +30,6 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DUAGENT_ISOLATED_INSTALL=OFF \
           -DUAGENT_SUPERBUILD=OFF \
-          -DUAGENT_USE_SYSTEM_FASTDDS=ON \
           -DUAGENT_LOGGER_PROFILE=OFF \
           -DCMAKE_MODULE_PATH="$srcdir/sanitizers-cmake/cmake/" \
           .

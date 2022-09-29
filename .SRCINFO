@@ -1,7 +1,7 @@
 pkgbase = eprosima-micro-xrce-dds-agent
 	pkgdesc = eProsima's XRCE DDS agent
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eProsima/Micro-XRCE-DDS-Agent
 	arch = x86_64
 	license = Apache
