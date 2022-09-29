@@ -1,10 +1,14 @@
 pkgbase = python-bsdiff4
 	pkgdesc = Binary diff and patch using the BSDIFF4-format
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilanschnell/bsdiff4
 	arch = x86_64
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = python-bsdiff4-1.2.2.tar.gz::https://github.com/ilanschnell/bsdiff4/archive/1.2.2.tar.gz
 	sha512sums = a263143ebd5316b7eb92b454a865d3c74491f075d12bc177e52031dc9a9f5e926e073de795ed6d67b91ad7c10fd18b28f55b24a1cc7ce59c2e968b8ac78521ee
