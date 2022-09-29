@@ -2,9 +2,9 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ivideon-server-headless'
-pkgver='3.11.0'
-pkgrel='7970'
-_rel='f5aef8f'
+pkgver='3.12.0'
+pkgrel='9099'
+_rel='63eb97d'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -20,8 +20,8 @@ source=("http://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname
 	"sysusers.conf"
 	"videoservertmp.conf")
 noextract=("${source[@]%%::*}")
-sha256sums=('45f19b211802929910da865604b5f27a1dc794efc851f75251d96e8f88299451'
-            'c9315034ab3e5974de5fd4a1cc80e328aaa2ad644d8440cb7b34519d1cc47055'
+sha256sums=('938d7cdde83ead24065fcdb4036b9944709f02455ca0e935941a62915a0acad6'
+            '0623ab4157aec447173d319f7cb49764ab0ae85e3d964d93d5b1ff34e3bd6e13'
             '7da74ca97c53669f95efea718bbf05ddd7b0d5b0b97dc93d2777ed8c64388254'
             '4b0fcdf8cc77eb8748041fbc78d2d7b3e75ced0d1b96b6ce38c17241441bc022'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
@@ -32,13 +32,13 @@ backup=("etc/videoserverd.conf")
 prepare() {
   cd "${srcdir}"
   bsdtar xf "${srcdir}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
-  bsdtar xf "data.tar.xz"
+  bsdtar xf "data.tar.gz"
   sed -i 's|$(dirname "$(readlink /etc/init.d/videoserver)")|/opt/ivideon/ivideon-server|g' "opt/ivideon/ivideon-server/serverctl.sh"
 
   mkdir "${srcdir}/ivideon-server-dahua-bin-module"
   cd "${srcdir}/ivideon-server-dahua-bin-module"
   bsdtar xf "${srcdir}/ivideon-server-dahua-bin-module_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
-  bsdtar xf "data.tar.xz"
+  bsdtar xf "data.tar.gz"
 
   mkdir "${srcdir}/libdahuasdk"
   cd "${srcdir}/libdahuasdk"
