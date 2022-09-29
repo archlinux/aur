@@ -10,7 +10,7 @@ _majorver=18
 _minorver=0
 _securityver=2.1
 _updatever=0
-pkgrel=1
+pkgrel=2
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -41,7 +41,7 @@ sha256sums=('f0df23f90e1457e1173670d98fdd82d60c13582e621ea34b5dd986276b690378'
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src'
           'openjdk-doc')
 conflicts=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src'
-           'openjdk-doc' 'jdk-openjdk-xdg')
+           'openjdk-doc')
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;

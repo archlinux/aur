@@ -1,6 +1,6 @@
 pkgbase = jdk-openjdk-xdg-bin
 	pkgver = 18.0.2.1.u0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -39,18 +39,17 @@ pkgbase = jdk-openjdk-xdg-bin
 	conflicts = jdk-openjdk
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
-	conflicts = jdk-openjdk-xdg
-	noextract = jdk-openjdk-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	noextract = jre-openjdk-headless-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	noextract = jre-openjdk-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	noextract = openjdk-doc-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	noextract = openjdk-src-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
+	noextract = jdk-openjdk-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	noextract = jre-openjdk-headless-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	noextract = jre-openjdk-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	noextract = openjdk-doc-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	noextract = openjdk-src-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
 	options = !lto
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-1/jdk-openjdk-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-1/jre-openjdk-headless-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-1/jre-openjdk-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-1/openjdk-doc-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-1/openjdk-src-xdg-18.0.2.1.u0-1-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-2/jdk-openjdk-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-2/jre-openjdk-headless-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-2/jre-openjdk-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-2/openjdk-doc-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/18.0.2.1.u0-2/openjdk-src-xdg-18.0.2.1.u0-2-x86_64.pkg.tar.zst
 	sha256sums = f0df23f90e1457e1173670d98fdd82d60c13582e621ea34b5dd986276b690378
 	sha256sums = 4cc6d91c68d98f04af47e4e2c8a4488e579f49e91bd02aa54568e6c8f46c532b
 	sha256sums = 87956a0b991bd5c4e4fbdcc1c43a38f9274c31b698e22129fcceee6890243923
@@ -77,7 +76,7 @@ pkgname = jre-openjdk-headless-xdg-bin
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-openjdk=18
-	provides = jre18-openjdk-headless=18.0.2.1.u0-1
+	provides = jre18-openjdk-headless=18.0.2.1.u0-2
 	backup = etc/jdk-openjdk-xdg/logging.properties
 	backup = etc/jdk-openjdk-xdg/management/jmxremote.access
 	backup = etc/jdk-openjdk-xdg/management/jmxremote.password.template
@@ -96,7 +95,7 @@ pkgname = jre-openjdk-headless-xdg-bin
 pkgname = jre-openjdk-xdg-bin
 	pkgdesc = OpenJDK Java 18 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre18-openjdk-headless=18.0.2.1.u0-1
+	depends = jre18-openjdk-headless=18.0.2.1.u0-2
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -107,12 +106,12 @@ pkgname = jre-openjdk-xdg-bin
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=18
 	provides = java-runtime-openjdk=18
-	provides = jre18-openjdk=18.0.2.1.u0-1
+	provides = jre18-openjdk=18.0.2.1.u0-2
 
 pkgname = jdk-openjdk-xdg-bin
 	pkgdesc = OpenJDK Java 18 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre18-openjdk=18.0.2.1.u0-1
+	depends = jre18-openjdk=18.0.2.1.u0-2
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -120,14 +119,14 @@ pkgname = jdk-openjdk-xdg-bin
 	depends = gcc-libs
 	provides = java-environment=18
 	provides = java-environment-openjdk=18
-	provides = jdk18-openjdk=18.0.2.1.u0-1
+	provides = jdk18-openjdk=18.0.2.1.u0-2
 
 pkgname = openjdk-src-xdg-bin
 	pkgdesc = OpenJDK Java 18 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk18-openjdk=18.0.2.1.u0-1
-	provides = openjdk18-src=18.0.2.1.u0-1
+	depends = jdk18-openjdk=18.0.2.1.u0-2
+	provides = openjdk18-src=18.0.2.1.u0-2
 
 pkgname = openjdk-doc-xdg-bin
 	pkgdesc = OpenJDK Java 18 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk18-openjdk=18.0.2.1.u0-1
-	provides = openjdk18-doc=18.0.2.1.u0-1
+	depends = jdk18-openjdk=18.0.2.1.u0-2
+	provides = openjdk18-doc=18.0.2.1.u0-2
