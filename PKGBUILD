@@ -63,6 +63,9 @@ source=(
   # snappy::uint32 which was an alias for std::uint32_t
   # 'fix_snappy_namespace_uint.patch'
 
+  # https://tracker.ceph.com/issues/50952
+  'https://patch-diff.githubusercontent.com/raw/ceph/ceph/pull/47304.patch'
+
   # Add python >= 3.8 workaround logic for incompatible modules
   # This has been designated for upstream backporting into the octupus (15) and pacific (16) branches.
   # TODO: check if merged and included in next releases
@@ -80,7 +83,8 @@ sha512sums=('ae164c24462c3e08763d202acc3e2fe86ffc09f312b5059bae07863e804fc47bd15
             '82c1608928ee669ef60b8930ce82c443152c446e669e7bde9ce32f78571afb19a9620c3818b69ac8cb3ea33e7d7ac40f77c89162c71b19b157336d907fa23e3d'
             '2e62020cce33e3152cdb9a128023ee673124c4bcfdb9ee17718891ba5c9a16d98eb03ed06fe7dc7833c98487c1c1eb67fadfad1aa2f40c2c648829c86b4caab0'
             'f1b54767d8d3c12ca9fe9eafd0590efa8560a52b5c18f1121f8fd8b7e69d70578bdeae9a1803612a8a8d0032f039f8786b5152a889ba359850e3d3d30a6af8c7'
-            '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222')
+            '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
+            '686a80cc00efae855988a087bace7ff94b33b069c87e2455a57126085e21e104e53e97835cda3493ceebfd0dc6ead1b5e6a08dd3c29884d1cb70ca4451577ef0')
 
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
