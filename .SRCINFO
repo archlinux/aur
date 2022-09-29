@@ -1,13 +1,14 @@
 pkgbase = kathara
 	pkgdesc = Lightweight network emulation system based on Docker containers.
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kathara.org/
 	install = kathara.install
 	changelog = kathara.changelog
 	arch = any
 	license = GPL3
 	makedepends = chrpath
+	makedepends = patchelf
 	optdepends = docker: for running network scenarios in a local environment
 	optdepends = xterm: for opening devices terminals
 	source = kathara.tar.gz
