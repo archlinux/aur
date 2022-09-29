@@ -1,3 +1,4 @@
+kpp-ladspa-descriptor.patch
 pkg/
 src/
 *.tar.*

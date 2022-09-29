@@ -1,7 +1,7 @@
 pkgbase = kpp
 	pkgdesc = Kapitonov Plugins Pack for guitar sound processing
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kpp-tubeamp.com/
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,9 @@ pkgbase = kpp
 	optdepends = ladspa-host: for running the LADSPA plugins
 	optdepends = lv2-host: for running the LV2 plugins
 	source = kpp-1.2.1.tar.gz::https://github.com/olegkapitonov/Kapitonov-Plugins-Pack/archive/refs/tags/1.2.1.tar.gz
+	source = kpp-ladspa-descriptor.patch::https://github.com/olegkapitonov/Kapitonov-Plugins-Pack/pull/26.diff
 	sha256sums = 056c152ee72c5a0cfd45ca0cd848ff13b098c8f58b14c26ad06d7ef49c792b40
+	sha256sums = 361cdfb787e34d6646065b064f7633ee82ddf2bad7e87fb06d5307ee40e2ead5
 
 pkgname = kpp
 	depends = cairo
