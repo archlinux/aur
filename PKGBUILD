@@ -1,6 +1,6 @@
 # Maintainer: Jasper Young <jasper.c.young@gmail.com>
 pkgname=jasper-i3blocks-blocklets-git
-pkgver=18092022.24232c9
+pkgver=28092022.ea0fe8f
 pkgrel=1
 #epoch=
 pkgdesc="Jasper's blocklets for i3blocks"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/jasper1378/i3blocks-blocklets"
 license=('MIT')
 groups=('i3')
-depends=('light' 'pulseaudio')
+depends=('pulseaudio')
 makedepends=('git')
 #checkdepends=()
 #optdepends=()

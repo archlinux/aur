@@ -1,13 +1,12 @@
 pkgbase = jasper-i3blocks-blocklets-git
 	pkgdesc = Jasper's blocklets for i3blocks
-	pkgver = 18092022.24232c9
+	pkgver = 28092022.ea0fe8f
 	pkgrel = 1
 	url = https://github.com/jasper1378/i3blocks-blocklets
 	arch = x86_64
 	groups = i3
 	license = MIT
 	makedepends = git
-	depends = light
 	depends = pulseaudio
 	source = git+https://github.com/jasper1378/i3blocks-blocklets.git
 	md5sums = SKIP
