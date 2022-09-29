@@ -1,0 +1,12 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -63,9 +63,6 @@ check = true
+ diff = true
+ color = true
+ 
+-[tool.pytest.ini_options]
+-addopts = "--cov=refurb --cov-report=html --cov-report=term-missing --cov-fail-under=100"
+-
+ [build-system]
+ requires = ["poetry-core>=1.0.0"]
+ build-backend = "poetry.core.masonry.api"
