@@ -1,0 +1,18 @@
+pkgbase = git-crypt-patched-git
+	pkgdesc = Transparent file encryption in Git with patch for worktree
+	pkgver = 0.7.0_2_g3349835
+	pkgrel = 1
+	url = https://www.agwa.name/projects/git-crypt/
+	arch = x86_64
+	license = GPL3
+	makedepends = libxslt
+	depends = git
+	depends = openssl
+	provides = git-crypt
+	conflicts = git-crypt
+	source = git+https://github.com/AGWA/git-crypt.git#branch=master
+	source = https://github.com/AGWA/git-crypt/pull/222.patch
+	sha256sums = SKIP
+	sha256sums = 69d1cfbefbdf00bb7035050a00b49b6204ae0fc1213bd26a703407597c5790f8
+
+pkgname = git-crypt-patched-git
