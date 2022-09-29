@@ -1,0 +1,18 @@
+pkgbase = python-pytest-loop
+	pkgdesc = Pytest plugin for looping test execution.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/anogowski/pytest-loop
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/p/pytest-loop/pytest-loop-1.0.6.tar.gz
+	md5sums = d604563f9446b9d6dff3b22d6ac2016b
+
+pkgname = python-pytest-loop
+	depends = python>=3.6
+	depends = python-pytest>=6
