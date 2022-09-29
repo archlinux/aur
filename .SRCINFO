@@ -2,7 +2,7 @@ pkgbase = mum-git
 	pkgdesc = A mumble client/daemon pair
 	pkgver = r650.24b3b57
 	pkgrel = 1
-	url = https://github.com/sornas/mum.git
+	url = https://github.com/mum-rs/mum.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = mum-git
 	optdepends = bash: for tab completions
 	optdepends = fish: for tab completions
 	optdepends = zsh: for tab completions
-	source = git+https://github.com/sornas/mum.git
+	source = git+https://github.com/mum-rs/mum.git
 	sha256sums = SKIP
 
 pkgname = mum-git
