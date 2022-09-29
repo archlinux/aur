@@ -1,5 +1,5 @@
-# Maintainer: Ernesto Castellotti <erny.castell@gmail.com>
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Ernesto Castellotti <erny.castell@gmail.com>
 
 # shellcheck disable=SC2034
 _pkg="blivet"
