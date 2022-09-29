@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr
-_pkgver=2.19.0
+_pkgver=2.19.1
 pkgname=r-${_pkgname,,}
-pkgver=2.19.0
-pkgrel=4
+pkgver=2.19.1
+pkgrel=1
 pkgdesc='Machine Learning in R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -136,7 +136,7 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1149c9b453896481c85906045aa82d511d96979ddecbe5a3faf04f9f4a5e6113')
+sha256sums=('9d52afd54d9d5746e798134d5675818cee65caa53d7eaf317d46ba88d5865202')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

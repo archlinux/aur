@@ -1,7 +1,7 @@
 pkgbase = r-mlr
 	pkgdesc = Machine Learning in R
-	pkgver = 2.19.0
-	pkgrel = 4
+	pkgver = 2.19.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr
 	arch = x86_64
 	license = BSD
@@ -126,7 +126,7 @@ pkgbase = r-mlr
 	optdepends = r-vdiffr
 	optdepends = r-wavelets
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/mlr_2.19.0.tar.gz
-	sha256sums = 1149c9b453896481c85906045aa82d511d96979ddecbe5a3faf04f9f4a5e6113
+	source = https://cran.r-project.org/src/contrib/mlr_2.19.1.tar.gz
+	sha256sums = 9d52afd54d9d5746e798134d5675818cee65caa53d7eaf317d46ba88d5865202
 
 pkgname = r-mlr
