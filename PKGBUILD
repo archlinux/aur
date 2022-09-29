@@ -6,8 +6,8 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-_tag=20220815
-pkgver=20220815.8413c63
+_tag=20220913
+pkgver=20220913.f09bebf
 pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
