@@ -4,6 +4,7 @@ pkgbase = advancecomp
 	pkgrel = 1
 	url = https://github.com/amadvance/advancecomp
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gcc-libs
 	depends = zlib
