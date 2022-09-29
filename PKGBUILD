@@ -4,8 +4,8 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=wee-slack-git
-pkgver=2.8.0.r0.gf3f08dd
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
