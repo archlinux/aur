@@ -28,7 +28,7 @@ sha512sums=('e7e68b1f911ad8d2096f67b0d59efd7141d82d49401a3f4b4ba0f3f48258dd73525
             '7b66b1dc928c9107a5f47ba8782eec0f811fe5988449afcb24e1e15cbc7c4c3e284d0480e272a4ba7a15d4acc374cae72ba3caa382cc9e67dd23c7ed6bad0e8c'
             '71e91adfa3d8fb198380069e42a6119fb37a588df2ad47b8eeaf5a87c874cb257da1e45eaa8229333bb7fc8a9218fb3411977642239bc93f01e37a2fdf58db3e'
             '7370860c300a2ceb009622a3ed543ffda7cd36ae4a339abc6fb4bc39a08abbbd8d09eb5da08b2702e9dfa2db3c35572df654ff265275d3cd96b076123a022198'
-            'fbb61e884094d3b259f0562809e1c058365346815541c85a3309b4f13e55629f9b14148d6a9c929ad5057901a26aaaef48fba6f094ef6484f81ff1a034cbf54f')
+            'e36b3962166cd1fb5f4f9f3eb567b6bbc1ac18c87a5d1d94096adfc9e2f0fe8e59d1aec12341a682445f1943b0d885c8b65ca6f0441221bb112110c491d382ac')
 prepare() {
     cd $_pkgname-$pkgver-full
     patch -Np1 --binary -i ../block-sponsored_messages.patch
@@ -41,14 +41,14 @@ prepare() {
 build() {
     cd kcoreaddons-$_kcorever
     cmake \
-            -B build \
-            -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX="${srcdir}/kcoreaddons" \
-            -DBUILD_TESTING=OFF \
-            -DBUILD_WITH_QT6=ON \
-            -DEXCLUDE_DEPRECATED_BEFORE_AND_AT=5.78.0 \
-            -DBUILD_SHARED_LIBS=OFF
+        -B build \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="${srcdir}/kcoreaddons" \
+        -DBUILD_TESTING=OFF \
+        -DBUILD_WITH_QT6=ON \
+        -DEXCLUDE_DEPRECATED_BEFORE_AND_AT=5.78.0 \
+        -DBUILD_SHARED_LIBS=OFF
     ninja -C build
     ninja -C build install
 
