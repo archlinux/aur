@@ -1,0 +1,293 @@
+
+diff --git a/php.ini-development b/php.ini-development
+index 7564350..dda3c3a 100644
+--- a/php.ini-development
++++ b/php.ini-development
+@@ -315,6 +315,12 @@
+ ; or per-virtualhost web server configuration file.
+ ; Note: disables the realpath cache
+ ; https://php.net/open-basedir
++
++; NOTE: this is considered a "broken" security measure.
++;       Applications relying on this feature will not receive full
++;       support by the security team.  For more information please
++;       see /usr/share/doc/php-common/README.Debian.security
++;
+ ;open_basedir =
+ 
+ ; This directive allows you to disable certain functions.
+@@ -1350,7 +1356,7 @@
+ ; where MODE is the octal representation of the mode. Note that this
+ ; does not overwrite the process's umask.
+ ; https://php.net/session.save-path
+-;session.save_path = "/tmp"
++;session.save_path = "/var/lib/php/sessions"
+ 
+ ; Whether to use strict session mode.
+ ; Strict session mode does not accept an uninitialized session ID, and
+diff --git a/ext/dba/config.m4 b/ext/dba/config.m4
+index 1e80319..51bdd84 100644
+--- a/ext/dba/config.m4
++++ b/ext/dba/config.m4
+@@ -375,61 +375,13 @@
+   dbdp4="/usr/local/BerkeleyDB.4."
+   dbdp5="/usr/local/BerkeleyDB.5."
+   for i in $PHP_DB4 ${dbdp5}1 ${dbdp5}0 ${dbdp4}8 ${dbdp4}7 ${dbdp4}6 ${dbdp4}5 ${dbdp4}4 ${dbdp4}3 ${dbdp4}2 ${dbdp4}1 ${dbdp}0 /usr/local /usr; do
+-    if test -f "$i/db5/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/db5/db.h
+-      break
+-    elif test -f "$i/db4/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/db4/db.h
+-      break
+-    elif test -f "$i/include/db5.3/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db5.3/db.h
+-      break
+-    elif test -f "$i/include/db5.1/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db5.1/db.h
+-      break
+-    elif test -f "$i/include/db5.0/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db5.0/db.h
+-      break
+-    elif test -f "$i/include/db4.8/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db4.8/db.h
+-      break
+-    elif test -f "$i/include/db4.7/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db4.7/db.h
+-      break
+-    elif test -f "$i/include/db4.6/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db4.6/db.h
+-      break
+-    elif test -f "$i/include/db4.5/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db4.5/db.h
+-      break
+-    elif test -f "$i/include/db4/db.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db4/db.h
+-      break
+-    elif test -f "$i/include/db/db4.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db/db4.h
+-      break
+-    elif test -f "$i/include/db4.h"; then
+-      THIS_PREFIX=$i
+-      THIS_INCLUDE=$i/include/db4.h
+-      break
+-    elif test -f "$i/include/db.h"; then
++    if test -f "$i/include/db.h"; then
+       THIS_PREFIX=$i
+       THIS_INCLUDE=$i/include/db.h
+       break
+     fi
+   done
+-  PHP_DBA_DB_CHECK(4, db-5.3 db-5.1 db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4 db, [(void)db_create((DB**)0, (DB_ENV*)0, 0)])
++  PHP_DBA_DB_CHECK(4, db, [(void)db_create((DB**)0, (DB_ENV*)0, 0)])
+ fi
+ PHP_DBA_STD_RESULT(db4,Berkeley DB4)
+ 
+diff --git a/ext/dba/dba.c b/ext/dba/dba.c
+index 57bfb5e..2bfc368 100644
+--- /dev/null
++++ b/tests/func/null-new_val.phpt
+@@ -0,0 +1,10 @@
++--TEST--
++ini_restore strcmp NULL new_val
++--FILE--
++<?php
++
++ini_set('error_log','ini_set_works');
++ini_restore('error_log');
++
++?>
++--EXPECT--
+diff --git a/ext/dba/config.m4 b/ext/dba/config.m4
+index 51bdd84..79136d5 100644
+--- a/ext/dba/config.m4
++++ b/ext/dba/config.m4
+@@ -145,6 +145,10 @@
+       THIS_PREFIX=$i
+       THIS_INCLUDE=$i/include/qdbm/depot.h
+       break
++    elif test -f "$i/include/qdbm/depot.h"; then
++      THIS_PREFIX=$i
++      THIS_INCLUDE=$i/include/qdbm/depot.h
++      break
+     fi
+   done
+ 
+diff --git a/sapi/fpm/php-fpm.8.in b/sapi/fpm/php-fpm.8.in
+index 905946e..a4cf632 100644
+--- a/sapi/fpm/php-fpm.8.in
++++ b/sapi/fpm/php-fpm.8.in
+@@ -139,22 +139,8 @@
+ .TP
+ .B php.ini
+ The standard php configuration file.
+-.SH EXAMPLES
+-For any unix systems which use init.d for their main process manager, you should use the init script provided to start and stop the php-fpm daemon.
+-.P
+-.PD 1
+-.RS
+-sudo /etc/init.d/php-fpm start
+-.RE
+-.TP
+-For any unix systems which use systemd for their main process manager, you should use the unit file provided to start and stop the php-fpm daemon.
+-.P
+-.PD 1
+-.RS
+-sudo systemctl start php-fpm.service
+-.RE
+-.TP
+-If your installation has no appropriate init script, launch php-fpm with no arguments. It will launch as a daemon (background process) by default. The file @php_fpm_localstatedir@/run/php-fpm.pid determines whether php-fpm is already up and running. Once started, php-fpm then responds to several POSIX signals:
++.SH SIGNAL
++Once started, php-fpm then responds to several POSIX signals:
+ .P
+ .PD 0
+ .RS
+@@ -168,10 +154,6 @@
+ .RE
+ .PD 1
+ .P
+-.SH TIPS
+-The PHP-FPM CGI daemon will work well with most popular webservers, including Apache2, lighttpd and nginx.
+-.PD 1
+-.P
+ .SH SEE ALSO
+ The PHP-FPM website:
+ .PD 0
+diff --git a/main/streams/plain_wrapper.c b/main/streams/plain_wrapper.c
+index f8c3d89..24aec33 100644
+--- a/main/streams/plain_wrapper.c
++++ b/main/streams/plain_wrapper.c
+@@ -750,7 +750,13 @@
+ 
+ 				switch (value) {
+ 					case PHP_STREAM_MMAP_SUPPORTED:
+-						return fd == -1 ? PHP_STREAM_OPTION_RETURN_ERR : PHP_STREAM_OPTION_RETURN_OK;
++						if (fd == -1)
++							return PHP_STREAM_OPTION_RETURN_ERR;
++						/* Don't mmap large files */
++						do_fstat(data, 1);
++						if (data->sb.st_size > 4 * 1024 * 1024)
++							return PHP_STREAM_OPTION_RETURN_ERR;
++						return PHP_STREAM_OPTION_RETURN_OK;
+ 
+ 					case PHP_STREAM_MMAP_MAP_RANGE:
+ 						if (do_fstat(data, 1) != 0) {
+diff --git a/ext/dba/dba.c b/ext/dba/dba.c
+index 2bfc368..6face3d 100644
+diff --git a/ext/dba/dba_db3.c b/ext/dba/dba_db3.c
+index 2f05901..f440d34 100644
+--- a/ext/dba/dba_db3.c
++++ b/ext/dba/dba_db3.c
+@@ -91,9 +91,9 @@
+ 	    dbp->set_errcall(dbp, php_dba_db3_errcall_fcn);
+ 		if(
+ #if (DB_VERSION_MAJOR > 4 || (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1))
+-			(err=dbp->open(dbp, 0, info->path, NULL, type, gmode, filemode)) == 0) {
++			(err=(dbp->open)(dbp, 0, info->path, NULL, type, gmode, filemode)) == 0) {
+ #else
+-			(err=dbp->open(dbp, info->path, NULL, type, gmode, filemode)) == 0) {
++			(err=(dbp->open)(dbp, info->path, NULL, type, gmode, filemode)) == 0) {
+ #endif
+ 			dba_db3_data *data;
+ 
+diff --git a/ext/dba/dba_db4.c b/ext/dba/dba_db4.c
+index 93dd36d..41e8f23 100644
+--- a/ext/dba/dba_db4.c
++++ b/ext/dba/dba_db4.c
+@@ -120,9 +120,9 @@
+ 	    dbp->set_errcall(dbp, php_dba_db4_errcall_fcn);
+ 	    if (
+ #if (DB_VERSION_MAJOR > 4 || (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1))
+-			(err=dbp->open(dbp, 0, info->path, NULL, type, gmode, filemode)) == 0) {
++			(err=(dbp->open)(dbp, 0, info->path, NULL, type, gmode, filemode)) == 0) {
+ #else
+-			(err=dbp->open(dbp, info->path, NULL, type, gmode, filemode)) == 0) {
++			(err=(dbp->open)(dbp, info->path, NULL, type, gmode, filemode)) == 0) {
+ #endif
+ 			dba_db4_data *data;
+ 
+diff --git a/ext/standard/tests/strings/setlocale_variation2.phpt b/ext/standard/tests/strings/setlocale_variation2.phpt
+index 6f62f71..d8666ba 100644
+--- a/ext/standard/tests/strings/setlocale_variation2.phpt
++++ b/ext/standard/tests/strings/setlocale_variation2.phpt
+@@ -47,6 +47,7 @@
+ //try different locale names
+ $failure_locale = array();
+ $success_count = 0;
++$expected = 0;
+ 
+ echo "-- Test setlocale() with all available locale in the system --\n";
+ // gather all locales installed in the system(stored $all_system_locales),
+@@ -56,6 +57,10 @@
+   if(setlocale(LC_ALL,$value )){
+    $success_count++;
+   }
++  else if ($value == 'no_NO.ISO-8859-1') {
++    // ignore this one, see rhbz #971416
++   $expected++;
++  }
+   else{
+    //failure values are put in to an array $failure_locale
+    $failure_locale[] = $value;
+@@ -64,11 +69,11 @@
+ 
+ echo "No of locales found on the machine = ".count($all_system_locales)."\n";
+ echo "No of setlocale() success = ".$success_count."\n";
+-echo "Expected no of failures = 0\n";
++echo "Expected no of failures = $expected\n";
+ echo "Test ";
+ // check if there were any failure of setlocale() function earlier, if any
+ // failure then dump the list of failing locales
+-if($success_count != count($all_system_locales)){
++if(($success_count + $expected) != count($all_system_locales)){
+   echo "FAILED\n";
+   echo "Names of locale() for which setlocale() failed ...\n";
+   var_dump($failure_locale);
+@@ -84,6 +89,6 @@
+ -- Test setlocale() with all available locale in the system --
+ No of locales found on the machine = %d
+ No of setlocale() success = %d
+-Expected no of failures = 0
++Expected no of failures = %d
+ Test PASSED
+ Done
+diff --git a/ext/pcre/tests/grep2.phpt b/ext/pcre/tests/grep2.phpt
+index 9721dfb..4c35ec3 100644
+--- a/ext/pcre/tests/grep2.phpt
++++ b/ext/pcre/tests/grep2.phpt
+@@ -36,12 +36,6 @@
+   string(1) "1"
+ }
+ bool(true)
+-array(3) {
+-  [5]=>
+-  string(1) "a"
+-  ["xyz"]=>
+-  string(2) "q6"
+-  [6]=>
+-  string(3) "h20"
++array(0) {
+ }
+-bool(false)
++bool(true)
+diff --git a/ext/pcre/tests/match_flags3.phpt b/ext/pcre/tests/match_flags3.phpt
+index 6511c71..05c62a0 100644
+--- a/ext/pcre/tests/match_flags3.phpt
++++ b/ext/pcre/tests/match_flags3.phpt
+@@ -41,5 +41,5 @@
+   }
+ }
+ 
+-Warning: preg_match(): Compilation failed: %s name must start with a non-digit at offset %d in %smatch_flags3.php on line %d
++Warning: preg_match(): Numeric named subpatterns are not allowed in %smatch_flags3.php on line %d
+ bool(false)
