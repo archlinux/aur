@@ -1,0 +1,12 @@
+pkgbase = sdl2_fontcache
+	pkgdesc = A generic font caching library
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/grimfang4/SDL_FontCache
+	arch = x86_64
+	license = MIT
+	depends = sdl2_ttf
+	source = git+https://github.com/grimfang4/SDL_FontCache.git
+	sha256sums = SKIP
+
+pkgname = sdl2_fontcache
