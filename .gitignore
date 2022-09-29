@@ -1,0 +1,5 @@
+DIE-Plugins-*.tar.gz
+pkg/
+src/
+die-plugins-*.pkg.tar.*
+die-plugins-*.src.tar.gz

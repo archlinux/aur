@@ -1,0 +1,496 @@
+diff --git a/patches/ttl-maintaner.patch b/patches/ttl-maintaner.patch
+new file mode 100644
+index 0000000..071332f
+--- /dev/null
++++ b/patches/ttl-maintaner.patch
+@@ -0,0 +1,134 @@
++diff --git a/plugins/a-comp.lv2/a-comp#stereo.ttl.in b/plugins/a-comp.lv2/a-comp#stereo.ttl.in
++index dd84c75..dc7f2d3 100644
++--- a/plugins/a-comp.lv2/a-comp#stereo.ttl.in
+++++ b/plugins/a-comp.lv2/a-comp#stereo.ttl.in
++@@ -185,5 +185,10 @@ A powerful stereo compressor.
++     doap:license "GPL v2+" ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    doap:maintainer [
+++        foaf:name "DISTRHO" ;
+++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++    ] ;
+++
++     lv2:microVersion 2 ;
++     lv2:minorVersion 2 .
++diff --git a/plugins/a-comp.lv2/a-comp.ttl.in b/plugins/a-comp.lv2/a-comp.ttl.in
++index 23adaa6..a76910c 100644
++--- a/plugins/a-comp.lv2/a-comp.ttl.in
+++++ b/plugins/a-comp.lv2/a-comp.ttl.in
++@@ -169,8 +169,13 @@ A powerful mono compressor.
++ """ ;
++ 
++     doap:name "DIE Compressor" ;
++-		doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+++    doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    doap:maintainer [
+++        foaf:name "DISTRHO" ;
+++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++    ] ;
+++
++     lv2:microVersion 2 ;
++     lv2:minorVersion 2 .
++diff --git a/plugins/a-delay.lv2/a-delay.ttl.in b/plugins/a-delay.lv2/a-delay.ttl.in
++index c5c4ccd..2681da5 100644
++--- a/plugins/a-delay.lv2/a-delay.ttl.in
+++++ b/plugins/a-delay.lv2/a-delay.ttl.in
++@@ -183,5 +183,10 @@ A simple delay plugin
++     doap:license "GPL v2+" ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    doap:maintainer [
+++        foaf:name "DISTRHO" ;
+++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++    ] ;
+++
++     lv2:microVersion 2 ;
++     lv2:minorVersion 4 .
++diff --git a/plugins/a-eq.lv2/a-eq.ttl.in b/plugins/a-eq.lv2/a-eq.ttl.in
++index 44efb56..118d9fc 100644
++--- a/plugins/a-eq.lv2/a-eq.ttl.in
+++++ b/plugins/a-eq.lv2/a-eq.ttl.in
++@@ -311,5 +311,10 @@ A basic 4 band EQ.
++     doap:license "GPL v2+" ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    doap:maintainer [
+++        foaf:name "DISTRHO" ;
+++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++    ] ;
+++
++     lv2:microVersion 2 ;
++     lv2:minorVersion 2 .
++diff --git a/plugins/a-exp.lv2/a-exp#stereo.ttl.in b/plugins/a-exp.lv2/a-exp#stereo.ttl.in
++index 72bce7f..120689e 100644
++--- a/plugins/a-exp.lv2/a-exp#stereo.ttl.in
+++++ b/plugins/a-exp.lv2/a-exp#stereo.ttl.in
++@@ -175,8 +175,13 @@ A powerful stereo expander
++ """ ;
++ 
++     doap:name "DIE Expander (stereo)" ;
++-		doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+++    doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    doap:maintainer [
+++        foaf:name "DISTRHO" ;
+++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++    ] ;
+++
++     lv2:microVersion 2 ;
++     lv2:minorVersion 2 .
++diff --git a/plugins/a-exp.lv2/a-exp.ttl.in b/plugins/a-exp.lv2/a-exp.ttl.in
++index b98c5fb..38b3237 100644
++--- a/plugins/a-exp.lv2/a-exp.ttl.in
+++++ b/plugins/a-exp.lv2/a-exp.ttl.in
++@@ -170,8 +170,13 @@ A powerful mono expander
++ """ ;
++ 
++     doap:name "DIE Expander" ;
++-		doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+++    doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    doap:maintainer [
+++        foaf:name "DISTRHO" ;
+++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++    ] ;
+++
++     lv2:microVersion 2 ;
++     lv2:minorVersion 2 .
++diff --git a/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in b/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
++index b96e947..fd8cb18 100644
++--- a/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
+++++ b/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
++@@ -33,6 +33,11 @@
++   doap:developer <http://ardour.org/credits.html> ;
++   doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++ 
+++  doap:maintainer [
+++   foaf:name "DISTRHO" ;
+++   foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++  ] ;
+++
++   lv2:microVersion 2 ;
++   lv2:minorVersion 2 ;
++ 
++diff --git a/plugins/a-reverb.lv2/a-reverb.ttl.in b/plugins/a-reverb.lv2/a-reverb.ttl.in
++index 66e1a91..29e3125 100644
++--- a/plugins/a-reverb.lv2/a-reverb.ttl.in
+++++ b/plugins/a-reverb.lv2/a-reverb.ttl.in
++@@ -20,6 +20,11 @@
++ 	doap:developer <http://ardour.org/credits.html> ;
++ 	doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++ 
+++	doap:maintainer [
+++		foaf:name "DISTRHO" ;
+++		foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+++	] ;
+++
++ 	lv2:microVersion 4 ;
++ 	lv2:minorVersion 2 ;
++ 	lv2:optionalFeature lv2:hardRTCapable ;
+diff --git a/patches/ttl-mod-brand.patch b/patches/ttl-mod-brand.patch
+new file mode 100644
+index 0000000..5e24c11
+--- /dev/null
++++ b/patches/ttl-mod-brand.patch
+@@ -0,0 +1,152 @@
++diff --git a/plugins/a-comp.lv2/a-comp#stereo.ttl.in b/plugins/a-comp.lv2/a-comp#stereo.ttl.in
++index dc7f2d3..13f17c2 100644
++--- a/plugins/a-comp.lv2/a-comp#stereo.ttl.in
+++++ b/plugins/a-comp.lv2/a-comp#stereo.ttl.in
++@@ -1,6 +1,7 @@
++ @prefix doap: <http://usefulinc.com/ns/doap#> .
++ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
++ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
+++@prefix mod:  <http://moddevices.com/ns/mod#> .
++ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
++ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
++@@ -185,6 +186,8 @@ A powerful stereo compressor.
++     doap:license "GPL v2+" ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    mod:brand "DISTRHO" ;
+++
++     doap:maintainer [
++         foaf:name "DISTRHO" ;
++         foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-comp.lv2/a-comp.ttl.in b/plugins/a-comp.lv2/a-comp.ttl.in
++index a76910c..d36eaee 100644
++--- a/plugins/a-comp.lv2/a-comp.ttl.in
+++++ b/plugins/a-comp.lv2/a-comp.ttl.in
++@@ -2,6 +2,7 @@
++ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
++ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
++ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+++@prefix mod:  <http://moddevices.com/ns/mod#> .
++ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
++ @prefix unit: <http://lv2plug.in/ns/extensions/units#> .
++@@ -172,6 +173,8 @@ A powerful mono compressor.
++     doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    mod:brand "DISTRHO" ;
+++
++     doap:maintainer [
++         foaf:name "DISTRHO" ;
++         foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-delay.lv2/a-delay.ttl.in b/plugins/a-delay.lv2/a-delay.ttl.in
++index 2681da5..1fc8ef2 100644
++--- a/plugins/a-delay.lv2/a-delay.ttl.in
+++++ b/plugins/a-delay.lv2/a-delay.ttl.in
++@@ -3,6 +3,7 @@
++ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
++ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
++ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+++@prefix mod:  <http://moddevices.com/ns/mod#> .
++ @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
++ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
++@@ -183,6 +184,8 @@ A simple delay plugin
++     doap:license "GPL v2+" ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    mod:brand "DISTRHO" ;
+++
++     doap:maintainer [
++         foaf:name "DISTRHO" ;
++         foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-eq.lv2/a-eq.ttl.in b/plugins/a-eq.lv2/a-eq.ttl.in
++index 118d9fc..a55d151 100644
++--- a/plugins/a-eq.lv2/a-eq.ttl.in
+++++ b/plugins/a-eq.lv2/a-eq.ttl.in
++@@ -2,6 +2,7 @@
++ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
++ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
++ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+++@prefix mod:  <http://moddevices.com/ns/mod#> .
++ @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
++ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
++@@ -311,6 +312,8 @@ A basic 4 band EQ.
++     doap:license "GPL v2+" ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    mod:brand "DISTRHO" ;
+++
++     doap:maintainer [
++         foaf:name "DISTRHO" ;
++         foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-exp.lv2/a-exp#stereo.ttl.in b/plugins/a-exp.lv2/a-exp#stereo.ttl.in
++index 120689e..7d4abc4 100644
++--- a/plugins/a-exp.lv2/a-exp#stereo.ttl.in
+++++ b/plugins/a-exp.lv2/a-exp#stereo.ttl.in
++@@ -2,6 +2,7 @@
++ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
++ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
++ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+++@prefix mod:  <http://moddevices.com/ns/mod#> .
++ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
++ @prefix unit: <http://lv2plug.in/ns/extensions/units#> .
++@@ -178,6 +179,8 @@ A powerful stereo expander
++     doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    mod:brand "DISTRHO" ;
+++
++     doap:maintainer [
++         foaf:name "DISTRHO" ;
++         foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-exp.lv2/a-exp.ttl.in b/plugins/a-exp.lv2/a-exp.ttl.in
++index 38b3237..c455376 100644
++--- a/plugins/a-exp.lv2/a-exp.ttl.in
+++++ b/plugins/a-exp.lv2/a-exp.ttl.in
++@@ -2,6 +2,7 @@
++ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
++ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
++ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+++@prefix mod:  <http://moddevices.com/ns/mod#> .
++ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
++ @prefix unit: <http://lv2plug.in/ns/extensions/units#> .
++@@ -173,6 +174,8 @@ A powerful mono expander
++     doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++     doap:developer <http://ardour.org/credits.html> ;
++ 
+++    mod:brand "DISTRHO" ;
+++
++     doap:maintainer [
++         foaf:name "DISTRHO" ;
++         foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in b/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
++index fd8cb18..90a8e7f 100644
++--- a/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
+++++ b/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
++@@ -33,6 +33,8 @@
++   doap:developer <http://ardour.org/credits.html> ;
++   doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++ 
+++  mod:brand "DISTRHO" ;
+++
++   doap:maintainer [
++    foaf:name "DISTRHO" ;
++    foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++diff --git a/plugins/a-reverb.lv2/a-reverb.ttl.in b/plugins/a-reverb.lv2/a-reverb.ttl.in
++index 29e3125..339a61f 100644
++--- a/plugins/a-reverb.lv2/a-reverb.ttl.in
+++++ b/plugins/a-reverb.lv2/a-reverb.ttl.in
++@@ -20,6 +20,8 @@
++ 	doap:developer <http://ardour.org/credits.html> ;
++ 	doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++ 
+++	mod:brand "DISTRHO" ;
+++
++ 	doap:maintainer [
++ 		foaf:name "DISTRHO" ;
++ 		foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
+diff --git a/plugins/a-comp.lv2/a-comp#stereo.ttl.in b/plugins/a-comp.lv2/a-comp#stereo.ttl.in
+index dd84c75..13f17c2 100644
+--- a/plugins/a-comp.lv2/a-comp#stereo.ttl.in
++++ b/plugins/a-comp.lv2/a-comp#stereo.ttl.in
+@@ -1,6 +1,7 @@
+ @prefix doap: <http://usefulinc.com/ns/doap#> .
+ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
++@prefix mod:  <http://moddevices.com/ns/mod#> .
+ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
+@@ -185,5 +186,12 @@ A powerful stereo compressor.
+     doap:license "GPL v2+" ;
+     doap:developer <http://ardour.org/credits.html> ;
+ 
++    mod:brand "DISTRHO" ;
++
++    doap:maintainer [
++        foaf:name "DISTRHO" ;
++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++    ] ;
++
+     lv2:microVersion 2 ;
+     lv2:minorVersion 2 .
+diff --git a/plugins/a-comp.lv2/a-comp.ttl.in b/plugins/a-comp.lv2/a-comp.ttl.in
+index 23adaa6..d36eaee 100644
+--- a/plugins/a-comp.lv2/a-comp.ttl.in
++++ b/plugins/a-comp.lv2/a-comp.ttl.in
+@@ -2,6 +2,7 @@
+ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
+ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
++@prefix mod:  <http://moddevices.com/ns/mod#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
+ @prefix unit: <http://lv2plug.in/ns/extensions/units#> .
+@@ -169,8 +170,15 @@ A powerful mono compressor.
+ """ ;
+ 
+     doap:name "DIE Compressor" ;
+-		doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++    doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+     doap:developer <http://ardour.org/credits.html> ;
+ 
++    mod:brand "DISTRHO" ;
++
++    doap:maintainer [
++        foaf:name "DISTRHO" ;
++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++    ] ;
++
+     lv2:microVersion 2 ;
+     lv2:minorVersion 2 .
+diff --git a/plugins/a-delay.lv2/a-delay.ttl.in b/plugins/a-delay.lv2/a-delay.ttl.in
+index c5c4ccd..1fc8ef2 100644
+--- a/plugins/a-delay.lv2/a-delay.ttl.in
++++ b/plugins/a-delay.lv2/a-delay.ttl.in
+@@ -3,6 +3,7 @@
+ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
+ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
++@prefix mod:  <http://moddevices.com/ns/mod#> .
+ @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
+@@ -183,5 +184,12 @@ A simple delay plugin
+     doap:license "GPL v2+" ;
+     doap:developer <http://ardour.org/credits.html> ;
+ 
++    mod:brand "DISTRHO" ;
++
++    doap:maintainer [
++        foaf:name "DISTRHO" ;
++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++    ] ;
++
+     lv2:microVersion 2 ;
+     lv2:minorVersion 4 .
+diff --git a/plugins/a-eq.lv2/a-eq.ttl.in b/plugins/a-eq.lv2/a-eq.ttl.in
+index 44efb56..a55d151 100644
+--- a/plugins/a-eq.lv2/a-eq.ttl.in
++++ b/plugins/a-eq.lv2/a-eq.ttl.in
+@@ -2,6 +2,7 @@
+ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
+ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
++@prefix mod:  <http://moddevices.com/ns/mod#> .
+ @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
+@@ -311,5 +312,12 @@ A basic 4 band EQ.
+     doap:license "GPL v2+" ;
+     doap:developer <http://ardour.org/credits.html> ;
+ 
++    mod:brand "DISTRHO" ;
++
++    doap:maintainer [
++        foaf:name "DISTRHO" ;
++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++    ] ;
++
+     lv2:microVersion 2 ;
+     lv2:minorVersion 2 .
+diff --git a/plugins/a-exp.lv2/a-exp#stereo.ttl.in b/plugins/a-exp.lv2/a-exp#stereo.ttl.in
+index 72bce7f..7d4abc4 100644
+--- a/plugins/a-exp.lv2/a-exp#stereo.ttl.in
++++ b/plugins/a-exp.lv2/a-exp#stereo.ttl.in
+@@ -2,6 +2,7 @@
+ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
+ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
++@prefix mod:  <http://moddevices.com/ns/mod#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
+ @prefix unit: <http://lv2plug.in/ns/extensions/units#> .
+@@ -175,8 +176,15 @@ A powerful stereo expander
+ """ ;
+ 
+     doap:name "DIE Expander (stereo)" ;
+-		doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++    doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+     doap:developer <http://ardour.org/credits.html> ;
+ 
++    mod:brand "DISTRHO" ;
++
++    doap:maintainer [
++        foaf:name "DISTRHO" ;
++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++    ] ;
++
+     lv2:microVersion 2 ;
+     lv2:minorVersion 2 .
+diff --git a/plugins/a-exp.lv2/a-exp.ttl.in b/plugins/a-exp.lv2/a-exp.ttl.in
+index b98c5fb..c455376 100644
+--- a/plugins/a-exp.lv2/a-exp.ttl.in
++++ b/plugins/a-exp.lv2/a-exp.ttl.in
+@@ -2,6 +2,7 @@
+ @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ @prefix idpy: <http://harrisonconsoles.com/lv2/inlinedisplay#> .
+ @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
++@prefix mod:  <http://moddevices.com/ns/mod#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix rsz:  <http://lv2plug.in/ns/ext/resize-port#> .
+ @prefix unit: <http://lv2plug.in/ns/extensions/units#> .
+@@ -170,8 +171,15 @@ A powerful mono expander
+ """ ;
+ 
+     doap:name "DIE Expander" ;
+-		doap:license <http://usefulinc.com/doap/licenses/gpl> ;
++    doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+     doap:developer <http://ardour.org/credits.html> ;
+ 
++    mod:brand "DISTRHO" ;
++
++    doap:maintainer [
++        foaf:name "DISTRHO" ;
++        foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++    ] ;
++
+     lv2:microVersion 2 ;
+     lv2:minorVersion 2 .
+diff --git a/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in b/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
+index b96e947..90a8e7f 100644
+--- a/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
++++ b/plugins/a-fluidsynth.lv2/a-fluidsynth.ttl.in
+@@ -33,6 +33,13 @@
+   doap:developer <http://ardour.org/credits.html> ;
+   doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+ 
++  mod:brand "DISTRHO" ;
++
++  doap:maintainer [
++   foaf:name "DISTRHO" ;
++   foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++  ] ;
++
+   lv2:microVersion 2 ;
+   lv2:minorVersion 2 ;
+ 
+diff --git a/plugins/a-reverb.lv2/a-reverb.ttl.in b/plugins/a-reverb.lv2/a-reverb.ttl.in
+index 66e1a91..339a61f 100644
+--- a/plugins/a-reverb.lv2/a-reverb.ttl.in
++++ b/plugins/a-reverb.lv2/a-reverb.ttl.in
+@@ -20,6 +20,13 @@
+ 	doap:developer <http://ardour.org/credits.html> ;
+ 	doap:license <http://usefulinc.com/doap/licenses/gpl> ;
+ 
++	mod:brand "DISTRHO" ;
++
++	doap:maintainer [
++		foaf:name "DISTRHO" ;
++		foaf:homepage <https://github.com/DISTRHO/DIE-Plugins> ;
++	] ;
++
+ 	lv2:microVersion 4 ;
+ 	lv2:minorVersion 2 ;
+ 	lv2:optionalFeature lv2:hardRTCapable ;
