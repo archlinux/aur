@@ -18,19 +18,19 @@ optdepends=(
 source=(git+https://github.com/keithamus/gnome-shell-duckduckgo-search-provider)
 sha256sums=('SKIP')
 
+_gitsrcdir=gnome-shell-duckduckgo-search-provider
+
 pkgver() {
-  cd "$pkgname"
+  cd "$_gitsrcdir"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-_pkgdir=gnome-shell-duckduckgo-search-provider
-
 build() {
-  cd $_pkgdir
+  cd $_gitsrcdir
   make
 }
 
 package() {
-  cd $_pkgdir
+  cd $_gitsrcdir
   make DESTDIR="$pkgdir" install
 }
