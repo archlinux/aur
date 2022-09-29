@@ -145,9 +145,9 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  # workaround for boost 1.74 -- similar fix exists upstream but I could
-  # not get it to work: https://github.com/ceph/ceph/commit/3d708219092d
-  CPPFLAGS+=' -DBOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT'
+  # https://tracker.ceph.com/issues/56610
+  # https://salsa.debian.org/ceph-team/ceph/-/merge_requests/9
+  CPPFLAGS+=' -DFMT_DEPRECATED_OSTREAM'
 
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
