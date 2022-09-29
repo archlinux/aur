@@ -8,7 +8,7 @@
 
 pkgbase=network-manager-applet-nolibappindicator
 pkgname=(network-manager-applet-nolibappindicator)
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="Applet for managing network connections (without dependency to libappindicator)"
 url="https://gitlab.gnome.org/GNOME/network-manager-applet"
