@@ -14,6 +14,11 @@ conflicts=('ffmpeg-audio-thumbnailer')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
   cd $_pkgname
   make
