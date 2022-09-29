@@ -1,7 +1,7 @@
 pkgbase = python-blivet
 	pkgdesc = A DBus service and python module for management of the system storage configuration
 	pkgver = 3.4.3
-	pkgrel = 5
+	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Blivet
 	arch = x86_64
 	arch = i686
