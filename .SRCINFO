@@ -1,12 +1,13 @@
 pkgbase = avogadroapp
 	pkgdesc = An advanced molecular editor
 	pkgver = 1.97.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://two.avogadro.cc
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = git
 	depends = avogadrolibs-qt5
 	depends = python-cclib
 	depends = vtk
