@@ -1,7 +1,7 @@
 # Maintainer: alzpmq <kodatemitsuru@outlook.com>
 # Contributor: lisuke <1657787678@qq.com>
 pkgname=xx-net-git
-pkgver=4.9.5.r5.g6d979b7a
+pkgver=4.10.0.r1.g6c1f94f1
 pkgrel=1
 pkgdesc="XX-Net, a web proxy tool.(development version)"
 arch=('x86_64' 'i686' 'armv7h')
@@ -10,8 +10,7 @@ license=('unknown')
 depends=('python' 'python-pycryptodome')
 options=('!strip')
 
-optdepends=('python2: A high-level scripting language'
-	    'miredo: a Teredo server/client, x86_64' 
+optdepends=('miredo: a Teredo server/client, x86_64' 
 	    'miredo-debian: a Teredo client, armv7')
 makedepends=('git')
 conflicts=('xx-net')
