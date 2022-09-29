@@ -156,6 +156,11 @@ build() {
   # workaround for boost 1.74 -- similar fix exists upstream but I could
   # not get it to work: https://github.com/ceph/ceph/commit/3d708219092d
   CPPFLAGS+=' -DBOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT'
+  # 2022-09-27 fmt>9 has deprecated an API that is used extensively throughout
+  # the code base. See:
+  # Upstream: https://tracker.ceph.com/issues/56610
+  # Debian: https://salsa.debian.org/ceph-team/ceph/-/merge_requests/9
+  CPPFLAGS+=' -DFMT_DEPRECATED_OSTREAM'
 
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
