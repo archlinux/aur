@@ -1,12 +1,13 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mkdocs.org
 	arch = any
 	license = BSD
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-babel
 	depends = python-click
 	depends = python-dateutil
