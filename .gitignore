@@ -1,4 +1,5 @@
 DIE-Plugins-*.tar.gz
+die-plugins-maintainer-mod-brand.patch
 pkg/
 src/
 die-plugins-*.pkg.tar.*
