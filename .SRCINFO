@@ -1,7 +1,7 @@
 pkgbase = python-tf2onnx
 	pkgdesc = Convert TensorFlow models to ONNX
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/onnx/tensorflow-onnx
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = python-tf2onnx
 	depends = python-onnx
 	depends = python-requests
 	depends = python-six
+	depends = python-flatbuffers
 	source = https://github.com/onnx/tensorflow-onnx/archive/v1.12.1/tf2onnx-v1.12.1.tar.gz
 	source = onnxruntime.diff
 	sha256sums = 77529a4eaa6d50a572020a023af93047b942fbde5cf4447878014037481b7f5f
