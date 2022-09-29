@@ -3,8 +3,8 @@
 # Contributor: Artem Borisovskiy
 
 pkgname=hydrogen-drumkits
-pkgver=20191129
-pkgrel=3
+pkgver=20220929
+pkgrel=1
 pkgdesc='Hydrogen drum kits'
 arch=(any)
 url='https://sourceforge.net/projects/hydrogen/'
@@ -12,9 +12,9 @@ license=('GPL2')
 depends=(hydrogen)
 changelog=ChangeLog
 
-
 _drumkits=(
     '3355606kit'
+    'BeatBuddy_Kit'
     'BJA_Pacific'
     'Boss_DR-110'
     'Classic-626'
@@ -54,6 +54,7 @@ for _drumkit in "${_drumkits[@]}"; do
 done
 
 sha256sums=('96b1d325fd52e97d7b99ca9191cb376e430ecea1f83d12281f314e30f20fa121'
+            'abc823a4e1ec52da4dae41a6c6712d9b04866c16b13b353bf756427f780c3b94'
             'a485753a2a60a1ce30e782784c0f26a84bbbee6bdb324b40c04a1f09f3668305'
             '5debdfb050f639478725af134d315649f242142f84691ce1409cd9f56f6943be'
             '3e95845d821129b119dea47fd56eadbb17da74b3a95a2154cac31a037b8a6f66'
@@ -86,7 +87,7 @@ sha256sums=('96b1d325fd52e97d7b99ca9191cb376e430ecea1f83d12281f314e30f20fa121'
 package() {
     local _drumkitsdir="$pkgdir/usr/share/hydrogen/data/drumkits"
     install -d "$_drumkitsdir"
-    cp -a "${_drumkits[@]}" "$_drumkitsdir"
+    find -mindepth 1 -type d ! -name '*.h2drumkit' -exec cp -a -t "$_drumkitsdir" {} +
     find "$_drumkitsdir" -type d -exec chmod 755 {} \;
     find "$_drumkitsdir" -type f -exec chmod 644 {} \;
 }
