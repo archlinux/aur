@@ -1,13 +1,13 @@
 pkgbase = notesnook
 	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
-	pkgver = 2.1.6
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = x86_64
 	license = GPLv3
 	depends = gtk3
 	depends = nss
-	source = notesnook_2.1.6_amd64.deb::https://github.com/streetwriters/notesnook/releases/download/v2.1.6/notesnook_amd64.deb
-	sha256sums = 87a2a96d8f086415ea569b2900abd42f0eafeb054c5888bfa9eb90b3432835dd
+	source = notesnook_2.2.0_amd64.deb::https://github.com/streetwriters/notesnook/releases/download/v2.2.0/notesnook_linux_amd64.deb
+	sha256sums = 6ff6bb8cf0ea8ad6d416f1a2bae1021c604b14183d821a4ce1168086348701bc
 
 pkgname = notesnook
