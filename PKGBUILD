@@ -10,6 +10,7 @@ url="https://localbyflywheel.com/"
 license=('custom:proprietary')
 makedepends=('rpmextract')
 depends=(
+  'libxcrypt-compat'
   'numactl'
   'ncurses5-compat-libs'
   'libaio'

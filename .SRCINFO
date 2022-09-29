@@ -6,6 +6,7 @@ pkgbase = local-by-flywheel-bin
 	arch = x86_64
 	license = custom:proprietary
 	makedepends = rpmextract
+	depends = libxcrypt-compat
 	depends = numactl
 	depends = ncurses5-compat-libs
 	depends = libaio
