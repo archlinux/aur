@@ -4,11 +4,13 @@
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=python-blivet
-pkgver=3.3.3
+pkgver=3.4.3
 _tag="blivet-${pkgver}"
 pkgrel=5
 pkgdesc='A DBus service and python module for management of the system storage configuration'
-arch=('pentium4' 'x86_64')
+arch=('x86_64'
+      'i686'
+      'pentium4')
 license=('LGPL2.1')
 depends=('python'
          'python-six'
@@ -27,7 +29,7 @@ checkdepends=('libselinux' 'python-mock' 'python-dbus')
 makedepends=('python-setuptools' 'make')
 url='https://fedoraproject.org/wiki/Blivet'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/storaged-project/blivet/archive/blivet-${pkgver}.tar.gz")
-sha512sums=('b80e4197d554d987efebd523347a37401299429f4bcc50d0b0c80aab709453df196122f0adffb7477bd20b4990c0d91b3162a96c956a8c4222d1c01de1e17a53')
+sha512sums=('e0470dd524895163d6be4c68b143a9662fc54c506f6ddedf04804805faf305b885d3f73fccaf9ee172e41279efb461b17baaa0941b5dc91bcfadfd3517ef8d30')
 
 package() {
   cd "${srcdir}/blivet-${_tag}"
