@@ -2,8 +2,8 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=fluiddyn
 pkgname=python-${_base}
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="A framework for studying fluid dynamics using Python"
 arch=(any)
 url="https://foss.heptapod.net/${_base}/${_base}"
@@ -15,11 +15,10 @@ checkdepends=(python-pytest python-scipy ipython)
 provides=(python-${_base})
 conflicts=(python2-${_base}-hg)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a581a20d06f7d43537dc7e1ec4b26022dfaa31e8eedcf07a1a72ff8ada396f042f468b2984e9cb76c5a349d83a7aba11496fdae669c73809d90d804a98e39d88')
+sha512sums=('ac3d17b15484d0b9cc0173d9e78f3d990b02676eb9fa14b31f366b9dadb4dedb7770ab2088e9e6eb64e221b4c3b9defc1003a4bf6710ef9c5931be149f8e2c8f')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
