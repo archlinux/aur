@@ -15,7 +15,7 @@ build () {
   cd SDL_FontCache
   sed -i 's|"SDL.h"|<SDL2/SDL.h>|g' SDL_FontCache.h
   sed -i 's|"SDL_ttf.h"|<SDL2/SDL_ttf.h>|g' SDL_FontCache.h
-  gcc -O3 -fPIC -shared SDL_FontCache.c -o libSDL2_FontCache.so
+  gcc -O3 -fPIC -shared SDL_FontCache.c -l SDL2 -l SDL2_ttf -o libSDL2_FontCache.so
 }
 
 package () {
