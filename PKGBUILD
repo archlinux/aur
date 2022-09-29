@@ -6,7 +6,7 @@
 pkgname=python-blivet
 pkgver=3.4.3
 _tag="blivet-${pkgver}"
-pkgrel=5
+pkgrel=1
 pkgdesc='A DBus service and python module for management of the system storage configuration'
 arch=('x86_64'
       'i686'
