@@ -5,7 +5,7 @@ _electron='electron20'
 
 pkgname="ferdium-electron"
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
@@ -69,7 +69,7 @@ package() {
   install -dm0755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/ferdium" <<EOF
 #!/bin/sh
-exec /usr/bin/$_electron /usr/lib/ferdium "\$@"
+ELECTRON_IS_DEV=0 exec /usr/bin/$_electron /usr/lib/ferdium "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/ferdium"
 
@@ -83,46 +83,4 @@ EOF
   done
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
-}
-
-_package() {
-  cd "$srcdir/$_sourcedirectory/"
-
-  # Determine where the unpacked output directory is located
-  local _outpath='out/linux'
-  if [ "$_electronbuilderarch" != 'x64' ]; then
-    _outpath="$_outpath-$_electronbuilderarch"
-  fi
-  _outpath="$_outpath-unpacked"
-
-  # Copy the linux-unpacked directory to the system
-  install -d -m755 "${pkgdir}/opt/$pkgname/"
-  cp -pr "$_outpath"/* "${pkgdir}/opt/$pkgname/"
-
-  # Create a symlink in the default $PATH
-  install -d -m755 "${pkgdir}/usr/bin/"
-  ln -s "/opt/$pkgname/$_pkgname" ${pkgdir}/usr/bin/$_pkgname
-
-  # Fix permissions of chrome-sandbox for those running the hardened kernel
-  chmod 4755 "${pkgdir}/opt/$pkgname/chrome-sandbox"
-
-  # Create a .desktop file
-  install -dm755 "$pkgdir/usr/share/applications/"
-  cat << EOF > "$pkgdir/usr/share/applications/$_pkgname.desktop"
-[Desktop Entry]
-Name=${_pkgname^}
-Exec=/usr/bin/$_pkgname %U
-Terminal=false
-Type=Application
-Icon=ferdium
-StartupWMClass=Ferdium
-Comment=Ferdium is your messaging app / former heir to the throne of Austria-Hungary and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdium for free for Mac, Windows, and Linux.
-MimeType=x-scheme-handler/ferdium;
-Categories=Network;InstantMessaging;
-EOF
-
-  # Install the icons
-  for _size in 16 24 32 48 64 96 128 256 512 1024; do
-    install -Dm644 "build-helpers/images/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
-  done
 }
