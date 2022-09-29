@@ -7,13 +7,13 @@ url="https://github.com/facebookresearch/fastText"
 provides=("python-fasttext")
 conflicts=("python-fasttext")
 
-pkgver=v0.1.0.r85.g25c3994
-pkgrel=3
+pkgver=v0.9.2.r8.g3697152
+pkgrel=1
 
 arch=("any")
 license=("BSD")
 
-makedepends=("python-setuptools" "python2-setuptools")
+makedepends=("python-setuptools")
 depends=("pybind11" "python-future" "python-numpy" "python-scipy" "python-pytorch")
 
 source=("${pkgname}::git+https://github.com/facebookresearch/fastText.git")
