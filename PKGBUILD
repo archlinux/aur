@@ -1,4 +1,4 @@
-# Maintainer: dakataca < dakataca@gmail.com>
+# Maintainer: dakataca <🐬dakataca@gmail.com>
 # Contributor: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=deemix-py
