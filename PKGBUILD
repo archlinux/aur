@@ -3,7 +3,7 @@
 
 pkgname=frappe-bench
 pkgver=5.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI to manage Multi-tenant deployments for Frappe apps"
 arch=('x86_64')
 url="https://github.com/frappe/bench"
@@ -17,26 +17,27 @@ makedepends=(
 )
 
 depends=(
+    "cronie"
     "python"
+    "node"
     "python-click"
+    "python-crontab"
     "python-gitpython"
     "python-jinja"
-    "python-crontab"
     "python-requests"
     "python-semantic-version"
     "python-setuptools"
     "python-tomli"
+    "redis"
+    "yarn"
 )
 
 optdepends=(
-    "yarn: js dependency manager"
+    "mariadb: to run database driven apps"
+    "nginx: proxying multitenant sites in production"
+    "postgresql: to run database driven apps"
     "python-pip: py dependency manager"
     "wkhtmltopdf: for pdf generation"
-    "cronie: bench's scheduled jobs: automated certificate renewal, scheduled backups"
-    "nginx: proxying multitenant sites in production"
-    "redis: caching and realtime updates"
-    "mariadb: to run database driven apps"
-    "postgresql: to run database driven apps"
 )
 
 provides=("bench")
