@@ -24,6 +24,7 @@ package_ceph-libs-bin() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt')
   provides=("ceph-libs=${pkgver}-${pkgrel}")
+  conflicts=('ceph-libs')
 
   cd "${srcdir}"
 
@@ -40,6 +41,7 @@ package_ceph-bin() {
            'python-flask' 'python-pecan' 'python-pyopenssl' 'python-requests' 'python-werkzeug' 'xfsprogs'
            'python-yaml' 'python-pyaml')
   provides=("ceph=${pkgver}-${pkgrel}")
+  conflicts=('ceph')
 
   cd "${srcdir}"
 
@@ -57,7 +59,7 @@ package_ceph-mgr-bin() {
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
   provides=("ceph-mgr=${pkgver}-${pkgrel}")
-  conflicts=('ceph<14.2.1-1')
+  conflicts=('ceph-mgr')
   options=('emptydirs' '!strip')
 
   cd "${srcdir}"
