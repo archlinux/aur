@@ -1,6 +1,6 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=torrserver-git
-pkgver=MatriX.112.r4.g325f1fb
+pkgver=MatriX.118.2.r0.gb505e71
 pkgrel=1
 pkgdesc="Torrent stream server"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686')
@@ -44,6 +44,6 @@ build() {
     go build -o "${pkgname%-git}" ./cmd
 }
 package(){
-    install -Dm755 "${srcdir}/${pkgname}/server/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/torrserver.service" -t "${pkgdir}/usr/lib/systemd/user"
+    install -Dm755 "${pkgname}/server/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "torrserver.service" -t "${pkgdir}/usr/lib/systemd/user"
 }
