@@ -1,13 +1,15 @@
 pkgbase = chromium-extension-keepassxc-browser
 	pkgdesc = KeePassXC Browser Integration - chromium extension
 	pkgver = 1.8.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keepassxreboot/keepassxc-browser
 	arch = any
 	license = custom:none
 	makedepends = chromium
 	makedepends = openssl
 	makedepends = jq
+	provides = chromium-extension-keepassxc-browser
+	conflicts = chromium-extension-keepassxc-browser
 	noextract = keepassxc-browser-1.8.2.2::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.8.2.2/keepassxc-browser_1.8.2.2_chromium.zip
 	source = keepassxc-browser-1.8.2.2.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.8.2.2/keepassxc-browser_1.8.2.2_chromium.zip
 	source = keepassxc-browser.pem
