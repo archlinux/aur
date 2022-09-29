@@ -1,4 +1,4 @@
-# Maintainer: dakataca <danieldakataca@gmail.com>
+# Maintainer: dakataca < dakataca@gmail.com>
 # Contributor: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=deemix-py
@@ -36,4 +36,6 @@ package() {
 }
 
 # Test: rm -f deemix-3.6.6{-1.src.tar.gz,.tar.gz,-1-any.pkg.tar.zst} -rf {pkg,src}/ deemix-py-3.6.6-1{-any.pkg.tar.zst,.src.tar.gz}
-# References: https://wiki.archlinux.org/title/Python_package_guidelines#Installation_methods
+## References:
+# https://wiki.archlinux.org/title/Python_package_guidelines#Installation_methods
+# https://gitlab.com/RemixDev/deemix-py/-/blob/main/setup.py#L26
