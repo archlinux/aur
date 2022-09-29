@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=ccx2paraview
 pkgdesc="CalculiX to Paraview converter (frd to vtk/vtu)"
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/calculix/${pkgname}"
@@ -9,7 +9,7 @@ license=(GPL3)
 depends=(python-numpy vtk ffmpeg python-mpi4py fmt pdal glew ospray qt5-base openvr unixodbc liblas cgns adios2 libharu gl2ps postgresql-libs netcdf mariadb-libs)
 makedepends=(cython python-build python-install python-hatchling)
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('cd1dc7f9de5ef3472866a7674baf53d9b4df2969f803829b39db58babb13504337c316fdabe6daa20009370df7fecea49144cca6343d3b50b7fdcf190504c09c')
+sha512sums=('c8e7c337f771603120cf33290d54d6e9562cd548a42578f191c1f1f505967165050989a687663aff57ac295e239a915369556b4f22e93ca761426e60ae027eb9')
 
 build() {
   cd ${pkgname}-${pkgver}
