@@ -2,7 +2,7 @@
 # Contributor: jkdhn <aur@jkdhn.me>
 
 pkgname=saleae-logic2
-pkgver=2.3.59
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=(
 source=("https://downloads.saleae.com/logic2/Logic-${pkgver}-master.AppImage")
 conflicts=("saleae-logic" "saleae-logic-beta")
 provides=("saleae-logic" "saleae-logic-beta")
-sha256sums=('8c8bbf383543ff1f938dc5521a53b0ebf2561122580ca650ac918c022c7dc136')
+sha256sums=('8ef0ff0cba5c24a02acbd2d248455916d0fe04cc5f6d499d2707e740cb40eeb8')
 
 build() {
 	_file="Logic-${pkgver}-master.AppImage"
