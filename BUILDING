@@ -6,7 +6,7 @@ $ makepkg -sr
 
 Wait for the build to complete, then install the package:
 
-$ pacman -U vscodium-insiders-bin-${version}-${arch}.pkg.tar.zst
+$ pacman -U vscodium-insiders-bin-*.pkg.tar.zst
 
 If the package installed correctly, and VSCodium runs correctly, update the AUR with the new code:
 

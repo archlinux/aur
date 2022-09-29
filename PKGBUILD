@@ -3,7 +3,7 @@
 
 pkgname=vscodium-insiders-bin
 pkgver=1.72.0.22271
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (binary release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -32,6 +32,7 @@ conflicts=(
 )
 source=(
     "${pkgname}.desktop"
+    "${pkgname}-uri-handler.desktop"
 )
 source_x86_64=(
     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-x64-${pkgver}-insider.tar.gz"
@@ -42,7 +43,7 @@ source_armv7h=(
 source_aarch64=(
     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-arm64-${pkgver}-insider.tar.gz"
 )
-sha256sums=('99dbc0d75aec1dbda70655fe3d9769aa2728116ae885e8be20c4b4f13ae1e80e')
+sha256sums=('99dbc0d75aec1dbda70655fe3d9769aa2728116ae885e8be20c4b4f13ae1e80e' 'ccd83957fc14eaeeffc56762e864a8d313f99fa480c105eaecd832fb29d075ab')
 sha256sums_x86_64=('54a3222c4fdd0729a201f04356bc330cca3fa70fe3d6fd6fa134c4f825e8e27a')
 sha256sums_aarch64=('48427357de6cdb6831e655a9ef0db496ec638c03ce34aed95675cf6f36a6b5be')
 sha256sums_armv7h=('a1ed1ad45d526e996f7ea96e9b2475f8c9f9de41a94e9630b5ca4650d76e3af0')
@@ -54,12 +55,13 @@ package() {
     install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
     install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
 
-    cp -r ${srcdir}/!(${pkgname}.desktop|VSCodium-*-${pkgver}-insider.tar.gz) ${pkgdir}/usr/share/${pkgname}
+    cp -r ${srcdir}/!(${pkgname}*.desktop|VSCodium-*-${pkgver}-insider.tar.gz) ${pkgdir}/usr/share/${pkgname}
     cp -r ${srcdir}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
     
     ln -s /usr/share/${pkgname}/bin/codium-insiders ${pkgdir}/usr/bin/codium-insiders
     
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -D -m644 ${pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop
     install -D -m644 ${srcdir}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
     
     # Symlink shell completions
