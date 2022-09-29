@@ -1,8 +1,11 @@
-Mon, 20 Dec 2021 11:46:35 +0000 Kathara Team <******@kathara.org>
+Thu, 29 Sep 2022 09:49:54 +0000 Kathara Team <contact@kathara.org>
 
-* Release v3.3.0
-    * Add multi-arch support (thanks to Nicolas Ollinger and Marcel Großmann)
-    * Unmount /etc/resolv.conf and /etc/hosts instead of patching them with cat
-    * Lab object has no side-effect when it is deployed with selected devices
-    * Fix exec command with non-returning commands (like ping)
-    * Add check that throws an exception when a device is connected multiple times on the same CD
+* Release v3.5.1
+    * It is now possible to restart only specific devices using 'lrestart'
+    * Add possibility to disconnect a device from a collision domain using vconfig and lconfig commands (see man for further information)
+    * Add check to ensure that required Docker images are compatible with the host architecture
+    * More generic regular expression for device 'env' meta
+    * Network scenario hash is now computed from LAB_NAME meta, if present
+    * Improve exceptions handling and better error descriptions
+    * Add several utility methods to the 'Kathara' facade and model classes
+    * Change pyuv dependency with the Python 3.10 compatible version
