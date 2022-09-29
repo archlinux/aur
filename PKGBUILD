@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=0.24.25
+pkgver=0.24.27.1
 _commit_glm=0d973b4
 _commit_glslang=42398c9
 _commit_imgui=fd2a90e
@@ -27,7 +27,7 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/richgel999/miniz#commit=$_commit_miniz"
         "git+https://github.com/lz4/lz4#commit=$_commit_lz4"
         )
-sha1sums=('4ac229665f8360e98d7fd91fd15c07eda929152d'
+sha1sums=('8e986c2ace5a74d1b05b1090bdd03c968dde4faa'
           'SKIP'
           'SKIP'
           'SKIP'

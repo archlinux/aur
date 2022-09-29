@@ -1,13 +1,13 @@
 pkgbase = shader-slang
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
-	pkgver = 0.24.25
+	pkgver = 0.24.27.1
 	pkgrel = 1
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
 	license = MIT
 	makedepends = premake
 	depends = glslang
-	source = https://github.com/shader-slang/slang/archive/refs/tags/v0.24.25.tar.gz
+	source = https://github.com/shader-slang/slang/archive/refs/tags/v0.24.27.1.tar.gz
 	source = git+https://github.com/shader-slang/glslang#commit=42398c9
 	source = git+https://github.com/syoyo/tinyobjloader#commit=d541711
 	source = git+https://github.com/g-truc/glm#commit=0d973b4
@@ -17,7 +17,7 @@ pkgbase = shader-slang
 	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=36c0c15
 	source = git+https://github.com/richgel999/miniz#commit=a426483
 	source = git+https://github.com/lz4/lz4#commit=d443718
-	sha1sums = 4ac229665f8360e98d7fd91fd15c07eda929152d
+	sha1sums = 8e986c2ace5a74d1b05b1090bdd03c968dde4faa
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
