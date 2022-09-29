@@ -3,7 +3,7 @@
 # Contributor: Caleb Bassi <calebjbassi@gmail.com>
 
 pkgname=gotop
-pkgver=4.1.4
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/layouts/htop "${pkgdir}"/etc/gotop/htop
   install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('9fe5eb25ee253e5679cd0dede0ec6e075d6782442bc3007bb9fea8c44e66b857')
+sha256sums=('e9d9041903acb6bd3ffe94e0a02e69eea53f1128274da1bfe00fe44331ccceb1')
