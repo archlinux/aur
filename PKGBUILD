@@ -2,18 +2,19 @@
 
 pkgname=ncmdump-git
 _basename="${pkgname%-git}"
-pkgver=r20.ee3bdb4
+pkgver=r9.131e769
 pkgrel=1
+epoch=1
 pkgdesc='netease cloud music copyright protection file dump'
-arch=('i686' 'x86_64')
-url='https://github.com/anonymous5l/ncmdump'
+arch=('any')
+url='https://github.com/taurusxin/ncmdump'
 conflicts=("$_basename")
 provides=("$_basename")
 license=('unknown')
 depends=('taglib')
 makedepends=('git')
-source=("$_basename"::'git+https://github.com/anonymous5l/ncmdump')
-md5sums=('SKIP')
+source=("$_basename"::'git+https://github.com/taurusxin/ncmdump')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_basename"
@@ -22,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_basename"
-  make
+  make linux
 }
 
 package() {
