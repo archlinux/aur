@@ -1,0 +1,13 @@
+pkgbase = swim-git
+	pkgdesc = Build tool for the Spade programming language
+	pkgver = r75.1892912
+	pkgrel = 1
+	url = https://gitlab.com/spade-lang/swim.git
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = git
+	makedepends = rust
+	source = git+https://gitlab.com/spade-lang/swim.git
+	sha256sums = SKIP
+
+pkgname = swim-git
