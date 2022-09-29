@@ -1,7 +1,7 @@
 pkgbase = mitsuba3-git
 	pkgdesc = A Retargetable Forward and Inverse Renderer
 	pkgver = 3.0.2.r22.gd456826e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mitsuba-renderer.org/
 	arch = x86_64
 	license = custom

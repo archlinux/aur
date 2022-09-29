@@ -2,7 +2,7 @@
 
 pkgname=mitsuba3-git
 pkgver=3.0.2.r22.gd456826e
-pkgrel=1
+pkgrel=2
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -168,6 +168,7 @@ package() {
 	# install documentation
 	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
 	cp -R "$srcdir/build/html" "$pkgdir/usr/share/doc/$pkgname"
+	rm -rf "$pkgdir/usr/share/doc/$pkgname/html/.doctrees" # not needed
 
 	# install python modules
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
