@@ -1,19 +1,13 @@
 pkgname=behafucha
-pkgver=0.7
-pkgrel=7
+pkgver=0.8
+pkgrel=1
 pkgdesc="Convert English/Hebrew text to Hebrew/English text"
 arch=('any')
-url="https://github.com/ilsh1964/behafucha/"
+url="https://github.com/amiad/behafucha/"
 license=('GPL')
-depends=(bc zenity pygtk xsel xvkbd)
-source=(https://github.com/ilsh1964/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('75d3598b0dc64ec17ddd8c6216e0c33c3922cef2f07259a0c95db026556ae20f')
-
-build() {
-  cd $srcdir/Behafucha-$pkgver/Source/
-  sed -i '1c#!/usr/bin/python2' Behafucha.py
-  sed -i '3c python2 /usr/lib/Behafucha/Behafucha.py' $pkgname
-}
+depends=(bc zenity xsel xvkbd)
+source=(https://github.com/amiad/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=('a48037533a499100b38ea3c0b9db73cf2dab7c091baeae4222b053ae4c4b6bf5')
 
 package() {
   cd $srcdir/Behafucha-$pkgver/Source/
