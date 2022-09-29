@@ -1,11 +1,10 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=puddletag-git
-_pkgname="${pkgname%%-*}"
-pkgver=2.1.1.r138.ge9d16b9
+pkgver=2.2.0.r10.gff36a9b
 pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux, git version"
-url="https://github.com/puddletag/${_pkgname}"
+url="https://github.com/${pkgname%%-*}/${pkgname%%-*}"
 license=('GPL3')
 arch=('any')
 depends=('python-configobj'
@@ -22,10 +21,10 @@ optdepends=('chromaprint: AcoustID support'
             'python-levenshtein: faster duplicate matching'
             'python-lxml: additional tag sources' 
             'quodlibet: QuodLibet library support')
-provides=('puddletag')
-conflicts=('puddletag')
-replaces=('puddletag-qt5-git')
-source=("${pkgname}::git+https://github.com/${_pkgname}/${_pkgname}")
+provides=("${pkgname%%-*}")
+conflicts=("${pkgname%%-*}")
+replaces=("${pkgname%%-*}-qt5-git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
