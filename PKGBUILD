@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=psych
-_pkgver=2.2.5
+_pkgver=2.2.9
 pkgname=r-${_pkgname,,}
-pkgver=2.2.5
+pkgver=2.2.9
 pkgrel=1
 pkgdesc='Procedures for Psychological, Psychometric, and Personality Research'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dcc3f9b30ed44dfd1de0366295a308e0b52959eb7ac9cb3bc3f32dc5b15fc321')
+sha256sums=('4cd518bff387fef95067696b0a0b323310e6f4a063c3d242f2a50bcb17675571')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
