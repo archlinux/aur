@@ -13,12 +13,12 @@ makedepends=('glib2')
 source=(git+https://github.com/maoschanz/notes-extension-gnome)
 sha256sums=('SKIP')
 
+_gitsrcdir=notes-extension-gnome
+
 pkgver() {
-  cd "$pkgname"
+  cd "$_gitsrcdir"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-_gitsrcdir=notes-extension-gnome
 
 build() {
   cd $_gitsrcdir
