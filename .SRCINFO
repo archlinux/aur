@@ -1,13 +1,13 @@
 pkgbase = energygraph
-	pkgdesc = Graphs the energy use of a host inside a text terminal, using intel-rapl data from the /sys filesystem. Uses RAPL interface in /sys to determine the energy use of different zones, and graphs it in a text terminal.
-	pkgver = 1.0_1
+	pkgdesc = Graphs the power use of a host inside a text terminal, using intel-rapl data from the /sys filesystem. Uses RAPL interface in /sys to determine the energy use of different zones, and graphs it in a text terminal.
+	pkgver = 1.1_1
 	pkgrel = 1
 	url = https://github.com/stolk/energygraph
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = make
-	source = git+https://github.com/stolk/energygraph.git#tag=395e38c63410f8edf6882826206d9d7247c92c5c
+	source = git+https://github.com/stolk/energygraph.git#tag=0ca5682a06f0460c445a534e4996512c86a16985
 	sha256sums = SKIP
 
 pkgname = energygraph
