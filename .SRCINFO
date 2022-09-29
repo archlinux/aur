@@ -1,15 +1,15 @@
 pkgbase = lbrowser-v3
 	pkgdesc = 龙芯浏览器V3版（基于 Chromium）
-	pkgver = 3.1.5793.6
+	pkgver = 3.2.1453.0
 	pkgrel = 1
 	url = http://lbrowser.loongnix.cn
 	arch = x86_64
 	arch = loongarch64
 	license = unknown
 	conflicts = lbrowser-v2
-	source_x86_64 = http://ftp.loongnix.cn/browser/lbrowser/3.1.5793.6/amd64/lbrowser_3.1.5793.6-1.stable.amd64.deb
-	sha512sums_x86_64 = 46a8ae98533780532678d9be9bb8ede82c00a88ec6ee6c66f82049a4c811834872d6d98f3635d82b089c40bd0a1dc0b12e2786e8b90ddece32c3d334787c2c74
-	source_loongarch64 = http://ftp.loongnix.cn/browser/lbrowser/3.1.5793.6/la64/lbrowser_3.1.5793.6-1.stable.loongarch64.deb
-	sha512sums_loongarch64 = 42bc12b3075351b706969e11791d5a5b1d8945f5e16f8e1e677d4d9a816ca42faf9430b04cecb2f9637093ffb94d277772750389b15b7a936c1a1cc56cdc78f1
+	source_x86_64 = http://ftp.loongnix.cn/browser/lbrowser/3.2.1453.0/amd64/lbrowser_3.2.1453.0-1.stable.amd64.deb
+	sha512sums_x86_64 = 77647ae930a0b85de8975c52fbe4f09c4a972c2eb461f9227fd2d6d9c10563fe80156781c3386ddb55a7c1e3b610847475f18ad56c9c099906544b59605269ce
+	source_loongarch64 = http://ftp.loongnix.cn/browser/lbrowser/3.2.1453.0/la64/lbrowser_3.2.1453.0-1.stable.loongarch64.deb
+	sha512sums_loongarch64 = 67206b649304c5144afad7325e442eccf0fde08f7417d1a4d2bf592555e6ddbb0e39054ada4597239520d21cb68b44723624defa635db82ad48ddfecfa900f36
 
 pkgname = lbrowser-v3
