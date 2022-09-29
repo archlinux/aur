@@ -1,13 +1,16 @@
 pkgbase = swim-git
 	pkgdesc = Build tool for the Spade programming language
 	pkgver = r75.1892912
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/spade-lang/swim.git
 	arch = x86_64
 	license = EUPL-1.2
-	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
+	depends = git
+	optdepends = nextpnr-ice40-nightly: uploading to iCE40-devices
+	optdepends = nextpnr-ecp5-nightly: uploading to ECP5-devices
+	optdepends = yosys-nightly: synthesising using the yosys suite
 	source = git+https://gitlab.com/spade-lang/swim.git
 	sha256sums = SKIP
 
