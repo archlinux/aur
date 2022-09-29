@@ -1,7 +1,7 @@
 pkgbase = ceph
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 15.2.14
-	pkgrel = 7
+	pkgrel = 9
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -180,7 +180,7 @@ pkgbase = ceph
 	sha512sums = cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5
 
 pkgname = ceph
-	depends = ceph-libs=15.2.14-7
+	depends = ceph-libs=15.2.14-9
 	depends = boost-libs
 	depends = curl
 	depends = fuse2
@@ -232,8 +232,8 @@ pkgname = ceph-libs
 	depends = fmt
 
 pkgname = ceph-mgr
-	depends = ceph=15.2.14-7
-	depends = ceph-libs=15.2.14-7
+	depends = ceph=15.2.14-9
+	depends = ceph-libs=15.2.14-9
 	depends = bash
 	depends = boost-libs
 	depends = coffeescript
