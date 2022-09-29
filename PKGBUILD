@@ -16,7 +16,7 @@ pkgname=(
   qemu-guest-agent-git
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=7.1.0.r103.g9fd704da68
+pkgver=7.1.0.r524.gdbc4f48b5a
 pkgrel=1
 epoch=17
 arch=(i686 x86_64)
@@ -136,7 +136,6 @@ _build() (
     --smbd=/usr/bin/smbd \
     --enable-modules \
     --enable-sdl \
-    --enable-slirp=system \
     --disable-werror \
     "${@:2}"
 
