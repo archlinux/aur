@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=babelgene
-_pkgver=22.3
+_pkgver=22.9
 pkgname=r-${_pkgname,,}
-pkgver=22.3
-pkgrel=3
+pkgver=22.9
+pkgrel=1
 pkgdesc='Gene Orthologs for Model Organisms in a Tidy Data Format'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f4a69bd472ce67682cb03e8186238bd3484fb9bbf185c6f291baa2d3481659c')
+sha256sums=('ce6601dcb78352516d3b0355042c52a20e154b39d3b27b93ff52150a59c885e2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

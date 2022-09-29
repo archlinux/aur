@@ -1,7 +1,7 @@
 pkgbase = r-babelgene
 	pkgdesc = Gene Orthologs for Model Organisms in a Tidy Data Format
-	pkgver = 22.3
-	pkgrel = 3
+	pkgver = 22.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=babelgene
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = r-babelgene
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/babelgene_22.3.tar.gz
-	sha256sums = 0f4a69bd472ce67682cb03e8186238bd3484fb9bbf185c6f291baa2d3481659c
+	source = https://cran.r-project.org/src/contrib/babelgene_22.9.tar.gz
+	sha256sums = ce6601dcb78352516d3b0355042c52a20e154b39d3b27b93ff52150a59c885e2
 
 pkgname = r-babelgene
