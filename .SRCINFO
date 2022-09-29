@@ -1,7 +1,7 @@
 pkgbase = avogadroapp
 	pkgdesc = An advanced molecular editor
 	pkgver = 1.97.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://two.avogadro.cc
 	arch = x86_64
 	license = BSD
