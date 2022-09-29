@@ -1,12 +1,11 @@
 pkgbase = python-fasttext
 	pkgdesc = Library for fast text representation and classification – Python bindings
 	pkgver = 0.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/facebookresearch/fastText
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = pybind11
 	depends = python-future
 	depends = python-numpy
