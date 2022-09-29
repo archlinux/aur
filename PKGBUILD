@@ -3,12 +3,12 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.2.r60.gd646c9d
+pkgver=1.2.r65.g45fd776
 pkgrel=1
 epoch=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
-url='https://notabug.org/ploum/offpunk.git'
+url='https://notabug.org/ploum/offpunk/'
 license=('BSD')
 depends=(
   'python'

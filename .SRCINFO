@@ -1,9 +1,9 @@
 pkgbase = offpunk-git
 	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities
-	pkgver = 1.2.r60.gd646c9d
+	pkgver = 1.2.r65.g45fd776
 	pkgrel = 1
 	epoch = 1
-	url = https://notabug.org/ploum/offpunk.git
+	url = https://notabug.org/ploum/offpunk/
 	arch = any
 	license = BSD
 	makedepends = coreutils
@@ -24,7 +24,7 @@ pkgbase = offpunk-git
 	optdepends = xdg-utils: xdg-open opens a URL in the preferred application
 	conflicts = av-98-offline
 	noextract = offpunk
-	source = git+https://notabug.org/ploum/offpunk.git
+	source = git+https://notabug.org/ploum/offpunk/
 	sha256sums = SKIP
 
 pkgname = offpunk-git
