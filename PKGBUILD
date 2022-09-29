@@ -1,26 +1,27 @@
 # Maintainer: Klotz <vanziegelstein@gmail.com>
 pkgname=baudrate
-pkgver=1.0
-pkgrel=2
-pkgdesc="Tool to find the baudrate of a serial device"
-arch=('x86_64')
-url="https://code.google.com/archive/p/baudrate/"
+pkgver=r9.68b7eef
+pkgrel=1
+pkgdesc="Tool to find the baudrate of a serial device (Python 3 fork)."
+arch=('any')
+url="https://github.com/sickcodes/python3-baudrate"
 license=('MIT')
-depends=('python2' 'python2-pyserial')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/baudrate/baudrate-1.0.tar.gz")
-md5sums=('df993cdae598f17748688a1a1ea27829')
+depends=('python-pyserial' 'python-getch')
+replaces=('baudrate=1.0-2')
+source=("baudrate::git+https://github.com/sickcodes/python3-baudrate")
+md5sums=('SKIP')
 
-prepare() {
-	cd "$pkgname-$pkgver/src/"
-	sed -i "1s/python/python2/" "${pkgname}.py"
+pkgver() {
+    cd "$pkgname"
+
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
+    install -d "$pkgdir/usr/share/licenses/$pkgname"    
+    install -d "$pkgdir/usr/bin"    
 
-	install -d "$pkgdir/usr/share/licenses/$pkgname"    
-	install -d "$pkgdir/usr/bin"    
-
-	install -m755 "$srcdir/$pkgname-$pkgver/src/baudrate.py" "$pkgdir/usr/bin/baudrate"
-	install -m644 "$srcdir/$pkgname-$pkgver/src/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -m755 "$srcdir/$pkgname/baudrate.py" "$pkgdir/usr/bin/baudrate"
+    install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }

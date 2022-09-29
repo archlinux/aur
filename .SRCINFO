@@ -1,14 +1,14 @@
 pkgbase = baudrate
-	pkgdesc = Tool to find the baudrate of a serial device
-	pkgver = 1.0
-	pkgrel = 2
-	url = https://code.google.com/archive/p/baudrate/
-	arch = x86_64
+	pkgdesc = Tool to find the baudrate of a serial device (Python 3 fork).
+	pkgver = r9.68b7eef
+	pkgrel = 1
+	url = https://github.com/sickcodes/python3-baudrate
+	arch = any
 	license = MIT
-	depends = python2
-	depends = python2-pyserial
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/baudrate/baudrate-1.0.tar.gz
-	md5sums = df993cdae598f17748688a1a1ea27829
+	depends = python-pyserial
+	depends = python-getch
+	replaces = baudrate=1.0-2
+	source = baudrate::git+https://github.com/sickcodes/python3-baudrate
+	md5sums = SKIP
 
 pkgname = baudrate
-
