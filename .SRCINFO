@@ -1,12 +1,11 @@
 pkgbase = behafucha
 	pkgdesc = Convert English/Hebrew text to Hebrew/English text
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amiad/behafucha/
 	arch = any
 	license = GPL
-	depends = bc
-	depends = zenity
+	depends = python
 	depends = xsel
 	depends = xvkbd
 	source = https://github.com/amiad/behafucha/archive/v0.8.tar.gz
