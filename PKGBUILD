@@ -3,7 +3,7 @@
 
 pkgname=vscodium-insiders
 pkgver=1.72.0.22271
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -44,10 +44,10 @@ conflicts=(
 )
 source=(
     "${pkgname}.desktop"
+    "${pkgname}-uri-handler.desktop"
     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-${pkgver}-insider-src.tar.gz"
 )
-sha256sums=('9d17eb0074bcd7b75ffd8c56718254c96108c01f857570f951d1e9a109269405'
-            '564e40899642ebf527b38404242002cb826b205c70031da8fd588426e3173119')
+sha256sums=('9d17eb0074bcd7b75ffd8c56718254c96108c01f857570f951d1e9a109269405' 'ca34047d62b5b433c2039151b9d55674a8aacdd1af57041d54387b76e44cd442' '564e40899642ebf527b38404242002cb826b205c70031da8fd588426e3173119')
 
 ###############################################################################
 
@@ -122,6 +122,7 @@ package() {
     ln -s /usr/share/${pkgname}/bin/codium-insiders ${pkgdir}/usr/bin/codium-insiders
     
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -D -m644 ${pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop
     install -D -m644 ${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
     
     # Symlink shell completions
