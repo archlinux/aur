@@ -1,11 +1,11 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Tobias T. <OldShatterhand at gmx-topmail dot de>
 # Contributor: SanskritFritz (gmail)
-# Maintainer: Bink <bibletime-gitwfhu4sip@katink.net>
+# Maintainer: Bink
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r977.g6496e8906
+pkgver=v3.0_rc1.r1114.g8230d9362
 pkgrel=1
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
@@ -13,7 +13,7 @@ arch=('x86_64' 'i686')
 url="https://bibletime.info/"
 license=('GPL2')
 depends=('sword>=1.8.1' 'qt5-webengine>=5.15')
-makedepends=('cmake' 'git' 'fop' 'po4a' 'docbook-xsl' 'docbook-xml')
+makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'fop' 'clucene>=2.0' 'cmake>=3.10')
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git+https://github.com/bibletime/bibletime.git")
@@ -29,6 +29,8 @@ build() {
 	_xslstylespath="/usr/share/xml/docbook/xsl-stylesheets-"$(pacman -Q docbook-xsl | cut -d ' ' -f 2 | cut -d '-' -f 1)
 	mkdir -p "$srcdir/$_gitname/build_dir"
 	cd "$srcdir/$_gitname/build_dir"
+
+	sed -i 's/@BT_VERSION_FULL@//g' ../cmake/platforms/linux/bibletime.desktop.cmake
 
 	CXXFLAGS+=" -fpermissive"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
