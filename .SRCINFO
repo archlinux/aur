@@ -1,0 +1,11 @@
+pkgbase = ttf-navbharati
+	pkgdesc = NavBharati - a font for Bharati script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bharatiscript.com
+	arch = any
+	license = custom
+	source = https://bharatiscript.com/media/Fonts/NavBharati.ttf
+	md5sums = SKIP
+
+pkgname = ttf-navbharati
