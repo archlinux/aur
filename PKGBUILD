@@ -5,7 +5,7 @@
 _pkg="blivet"
 _pkgname="python-${_pkg}"
 pkgname="${_pkgname}-git"
-pkgver=blivet+2.0.2+1+r1649+gbadffc78
+pkgver=2.0.2+1+r1649+gbadffc78
 pkgrel=1
 pkgdesc='a python module for management of a system storage configuration - python 3.x pkg'
 arch=('x86_64' 'i686' 'pentium4')
@@ -20,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkg}" || exit
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  local _git_tag="$(git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g')"
+  echo "${_git_tag##blivet+}"
 }
 
 # shellcheck disable=SC2154
