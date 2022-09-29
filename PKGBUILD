@@ -2,7 +2,7 @@
 
 _pkgname=ffmpeg-audio-thumbnailer
 pkgname=$_pkgname-git
-pkgver=r4.7d58046
+pkgver=r9.68ab554
 pkgrel=1
 pkgdesc="A minimal audio file thumbnailer for file managers, such as nautilus, dolphin, thunar, and nemo."
 url="https://github.com/saltedcoffii/ffmpeg-audio-thumbnailer"
@@ -15,7 +15,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-audio-thumbnailer-git
 	pkgdesc = A minimal audio file thumbnailer for file managers, such as nautilus, dolphin, thunar, and nemo.
-	pkgver = r4.7d58046
+	pkgver = r9.68ab554
 	pkgrel = 1
 	url = https://github.com/saltedcoffii/ffmpeg-audio-thumbnailer
 	arch = any
