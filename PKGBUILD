@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BBmisc
-_pkgver=1.12
+_pkgver=1.13
 pkgname=r-${_pkgname,,}
-pkgver=1.12
-pkgrel=3
+pkgver=1.13
+pkgrel=1
 pkgdesc='Miscellaneous Helper Functions for B. Bischl'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('900a633f69b7d9b13d58709eeae2fca2c1bc510765d778623a2af32cc870053e')
+sha256sums=('1145dcf9fed15e7beeaa4a5c7075d8a8badd17c8246838cd63e40cd9551e4405')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
