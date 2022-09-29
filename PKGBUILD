@@ -4,26 +4,30 @@
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
-pkgname=blivet-gui
+# shellcheck disable=SC2034
+_pkg="blivet"
+pkgname=${_pkg}-gui
 pkgver=2.4.0
 _pkgver="${pkgver}-1"
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
-arch=('any')
+arch=('x86_64'
+      'pentium4'
+      'i686')
 license=('GPL')
-url='https://github.com/storaged-project/blivet-gui'
-depends=('python' 'python-blivet' 'python-cairo' 'python-gobject' 'python-pid' 'adwaita-icon-theme')
+url="https://github.com/storaged-project/${_pkg}-gui"
+depends=('python' "python-${_pkg}" 'python-cairo' 'python-gobject' 'python-pid' 'adwaita-icon-theme')
 makedepends=('git' 'make')
-_commit="5aa45cffd1f9650f36a6b82f5bc50ccddc8a8c88"
-source=("${pkgname}::git+${url}#commit=${_commit}")
+source=("${pkgname}::git+${url}#tag=${pkgver}")
 sha512sums=('SKIP')
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   make
 }
 
+# shellcheck disable=SC2154
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   make DESTDIR="${pkgdir}" RPM_BUILD_ROOT="${pkgdir}" install
 }

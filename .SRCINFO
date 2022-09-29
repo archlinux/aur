@@ -3,7 +3,9 @@ pkgbase = blivet-gui
 	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/storaged-project/blivet-gui
-	arch = any
+	arch = x86_64
+	arch = pentium4
+	arch = i686
 	license = GPL
 	makedepends = git
 	makedepends = make
@@ -13,7 +15,7 @@ pkgbase = blivet-gui
 	depends = python-gobject
 	depends = python-pid
 	depends = adwaita-icon-theme
-	source = blivet-gui::git+https://github.com/storaged-project/blivet-gui#tag=2.4.0-1
+	source = blivet-gui::git+https://github.com/storaged-project/blivet-gui#tag=2.4.0
 	sha512sums = SKIP
 
 pkgname = blivet-gui
