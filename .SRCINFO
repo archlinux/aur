@@ -1,7 +1,7 @@
 pkgbase = ildaeil
 	pkgdesc = A mini-plugin host working as a plugin
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DISTRHO/Ildaeil
 	arch = x86_64
 	groups = clap-plugins
@@ -24,7 +24,7 @@ pkgbase = ildaeil
 	depends = libxcursor
 	depends = libxrandr
 	optdepends = clap-host: for CLAP plugins
-	optdepends = lv-host: for LV2 plugins
+	optdepends = lv2-host: for LV2 plugins
 	optdepends = vst-host: for VST2 plugins
 	optdepends = vst3-host: for VST3 plugins
 	provides = lv2-host

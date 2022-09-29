@@ -3,7 +3,7 @@
 _name=Ildaeil
 pkgname=${_name,,}
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A mini-plugin host working as a plugin'
 arch=(x86_64)
 url="https://github.com/DISTRHO/$_name"
@@ -14,7 +14,7 @@ provides=(lv2-host)
 groups=(clap-plugins lv2-plugins pro-audio vst-plugins vst3-plugins)
 optdepends=(
     'clap-host: for CLAP plugins'
-    'lv-host: for LV2 plugins'
+    'lv2-host: for LV2 plugins'
     'vst-host: for VST2 plugins'
     'vst3-host: for VST3 plugins'
 )
