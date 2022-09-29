@@ -16,7 +16,7 @@ arch=(x86_64)
 license=(GPL LGPL)
 makedepends=(libsecret libnotify libmm-glib gobject-introspection git gtk-doc meson libnma
              libgudev)
-_commit=d274db150995ddc120963735963c98cd741add7d  # tags/1.26.0^0
+_commit=c6738f174cebd39d39494e26d42ff9a59cca9f1b  # tags/1.28.0^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(network-manager-applet)
@@ -24,7 +24,7 @@ replaces=(network-manager-applet)
 
 pkgver() {
   cd network-manager-applet
-  git describe --tags | sed 's/-dev/dev/;s/-/+/g'
+  git describe --tags | sed 's/-dev/dev/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
