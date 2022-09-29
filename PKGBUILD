@@ -5,7 +5,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=blivet-gui
-pkgver=2.3.0
+pkgver=2.4.0
 _pkgver="${pkgver}-1"
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
