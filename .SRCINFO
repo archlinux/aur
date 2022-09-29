@@ -1,6 +1,6 @@
 pkgbase = python-openai
 	pkgdesc = convenient access to the OpenAI API from applications written in the Python language.
-	pkgver = 0.22.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://openai.com/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-openai
 	depends = python-pandas
 	depends = python-openpyxl
 	depends = python-pandas-stubs
-	source = openai-0.22.0.tar.gz::https://github.com/openai/openai-python/archive/v0.22.0.tar.gz
-	sha512sums = 25066b608c4c4f84b0c0d3cde358ca6feb2f73fd0b027235929744068db02761a8c71ca725b4720d7e85359a82fadea83bf65a6c79107aecc38c390d487c5e0e
+	source = openai-0.23.1.tar.gz::https://github.com/openai/openai-python/archive/v0.23.1.tar.gz
+	sha512sums = d59e334a8f583dbbe2543a15804739e7582c80bc7576b79c5b4a8b65ff4f5b7d5a235d4dcfcef84fa0502204028194e6ca18def627cedc107c7989c5678e3994
 
 pkgname = python-openai
