@@ -1,15 +1,15 @@
-# Maintainer: Alan Witkowski <alan.witkowski+aur@gmail.com>
+# Maintainer: jazztickets <jazztickets@gmail.com>
 pkgname=irrlamb-git
-pkgver=r597
+pkgver=r652
 pkgrel=1
-pkgdesc="3D game that probably involves a lot of physics and frustrating gameplay."
+pkgdesc="A 3D game that probably involves a lot of physics and frustrating gameplay."
 arch=('i686' 'x86_64')
-url="https://github.com/jazztickets/irrlamb"
+url="https://irrlamb.gitlab.io"
 license=('GPL3')
 depends=('gcc-libs' 'freetype2' 'sqlite' 'openal' 'libvorbis' 'libogg' 'libjpeg-turbo' 'libpng' 'zlib')
 conflicts=('irrlamb')
 makedepends=('cmake')
-source=("${pkgname}::git+https://github.com/jazztickets/irrlamb")
+source=("${pkgname}::git+https://gitlab.com/irrlamb/code.git")
 sha256sums=('SKIP')
 
 pkgver() {
