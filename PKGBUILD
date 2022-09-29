@@ -18,8 +18,8 @@ makedepends=(
 
 depends=(
     "cronie"
-    "python"
     "nodejs"
+    "python"
     "python-click"
     "python-crontab"
     "python-gitpython"
@@ -29,6 +29,7 @@ depends=(
     "python-setuptools"
     "python-tomli"
     "redis"
+    "ruby-foreman"
     "yarn"
 )
 
