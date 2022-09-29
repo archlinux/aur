@@ -1,12 +1,12 @@
 pkgbase = fiji-plugin-morpholibj
 	pkgdesc = Collection of mathematical morphology methods and plugins for ImageJ (Fiji version)
-	pkgver = 1.5.0
-	pkgrel = 1
+	pkgver = 1.5.1
+	pkgrel = 0
 	url = https://imagej.net/MorphoLibJ
 	arch = any
 	license = LGPL3
 	depends = fiji-bin
-	source = https://github.com/ijpb/MorphoLibJ/releases/download/v1.5.0/MorphoLibJ_-1.5.0.jar
-	sha256sums = 7f8be475ccf297f04bf0360d437b5c479aca538d147e7fa4092a9b3acfa2d27a
+	source = https://github.com/ijpb/MorphoLibJ/releases/download/v1.5.1/MorphoLibJ_-1.5.1.jar
+	sha256sums = 4e15c60ed1058ce5c103873c880e3d6448485d33359e6d37a63a208cdfb48a70
 
 pkgname = fiji-plugin-morpholibj
