@@ -1,6 +1,6 @@
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
 pkgname=rough
-pkgver=1.0.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A GTK based app launcher written in Rust"
 arch=(x86_64 i686)
