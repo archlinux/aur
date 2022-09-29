@@ -1,7 +1,7 @@
 pkgbase = ceph-bin
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 15.2.14
-	pkgrel = 8
+	pkgrel = 9
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -9,15 +9,15 @@ pkgbase = ceph-bin
 	noextract = ceph-libs-bin-15.2.14.tar.zst
 	noextract = ceph-mgr-bin-15.2.14.tar.zst
 	options = emptydirs
-	source = ceph-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-7/ceph_linux_x86_64.tar.zstd
-	source = ceph-libs-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-7/ceph_libs_linux_x86_64.tar.zstd
-	source = ceph-mgr-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-7/ceph_mgr_linux_x86_64.tar.zstd
+	source = ceph-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-9/ceph_linux_x86_64.tar.zstd
+	source = ceph-libs-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-9/ceph_libs_linux_x86_64.tar.zstd
+	source = ceph-mgr-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-9/ceph_mgr_linux_x86_64.tar.zstd
 	sha512sums = d8ed4d19f3638a18e16cadabf7a6eaab32bb37c5700fbd4559aa226e3406fc528a79c699de75ff29deb2c50b0c027261b9e671958674a16f96674deb6411a8b5
 	sha512sums = e0ee00643cd6f5d829a0ab2bddc4d52aa98db915e9c25020e4aefb731aceae154f0793694e7257b005c5a8e7a1d3c5b1c51d081e560981d36417a0e999fdc920
 	sha512sums = f07c64fdde6b99ab3849eefcdf1099058874c49d2a5cb530a9857347f4be76f77fff6a0df3bc7c83339b8c643797861548a69b35067d9d9081996fef71dac1b4
 
 pkgname = ceph-bin
-	depends = ceph-libs=15.2.14-8
+	depends = ceph-libs=15.2.14-9
 	depends = boost-libs
 	depends = curl
 	depends = fuse2
@@ -52,7 +52,7 @@ pkgname = ceph-bin
 	depends = xfsprogs
 	depends = python-yaml
 	depends = python-pyaml
-	provides = ceph=15.2.14-8
+	provides = ceph=15.2.14-9
 
 pkgname = ceph-libs-bin
 	depends = boost-libs
@@ -68,11 +68,11 @@ pkgname = ceph-libs-bin
 	depends = snappy
 	depends = systemd-libs
 	depends = fmt
-	provides = ceph-libs=15.2.14-8
+	provides = ceph-libs=15.2.14-9
 
 pkgname = ceph-mgr-bin
-	depends = ceph=15.2.14-8
-	depends = ceph-libs=15.2.14-8
+	depends = ceph=15.2.14-9
+	depends = ceph-libs=15.2.14-9
 	depends = bash
 	depends = boost-libs
 	depends = coffeescript
@@ -95,7 +95,7 @@ pkgname = ceph-mgr-bin
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=15.2.14-8
+	provides = ceph-mgr=15.2.14-9
 	conflicts = ceph<14.2.1-1
 	options = emptydirs
 	options = !strip
