@@ -1,0 +1,13 @@
+pkgbase = macutils-git
+	pkgdesc = Converting and decompressing some old Macintosh-oriented archive formats
+	pkgver = v2.0b4.r0.58b0225
+	pkgrel = 1
+	url = http://fileformats.archiveteam.org/wiki/Macutil
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	source = macutils::git+https://github.com/VorpalBlade/macutils#branch=modernization
+	md5sums = SKIP
+
+pkgname = macutils-git
