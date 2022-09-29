@@ -1,6 +1,6 @@
 pkgbase = hashcat-utils-git
 	pkgdesc = Hashcat-utils are a set of small utilities that are useful in advanced password cracking.
-	pkgver = v1.9.r23.g6a00fde
+	pkgver = v1.9.r27.gc208300
 	pkgrel = 1
 	url = https://github.com/hashcat/hashcat-utils
 	arch = i686
