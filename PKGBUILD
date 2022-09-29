@@ -2,7 +2,7 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r10930.4dd17a826
+pkgver=r10944.4469d86c7
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
@@ -45,7 +45,7 @@ optdepends=('gtk2: for the GTK2 interface'
             'mpg123: for MP1/MP2/MP3 playback')
 options=('!libtool')
 conflicts=('deadbeef')
-provides=('deadbeef=1.9.1')
+provides=('deadbeef=1.9.2')
 source=('git+https://github.com/DeaDBeeF-Player/deadbeef.git')
 md5sums=('SKIP')
 
