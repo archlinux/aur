@@ -13,6 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zer0-x/${pkgname}/archi
 sha512sums=("1be84ebb84d863721d007216649cc50cda8bf418e5e6ebc5cdcf32f7922a86b38d165d55e1354555cbd49a899daefaf21ad09bb2ad27802e1b9ea41e2db8a97c")
 
 prepare() {
+    cd "${pkgname}-${pkgver}"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
