@@ -1,6 +1,6 @@
 # Maintainer: Matan h <matan.honig2@gmail.com>
 pkgname="zenmap-python3-git"
-pkgver="7.92SVN"
+pkgver=7.92SVN
 pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer - rerwite in python 3"
 arch=("any")
@@ -16,7 +16,11 @@ optdepends=("gksu: starting zenmap as root")
 
 provides=("zenmap")
 source=("https://github.com/kulikjak/nmap/archive/refs/heads/master-python3.zip")
-md5sums=("931711d6aa99b266d1cde4df7ed63cd8")
+md5sums=("SKIP")
+
+pkgver() {
+	cat "$srcdir/nmap-master-python3/zenmap/share/zenmap/config/zenmap_version"
+}
 
 package() {
 	cd "$srcdir/nmap-master-python3/zenmap"

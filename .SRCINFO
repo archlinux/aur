@@ -8,10 +8,10 @@ pkgbase = zenmap-python3-git
 	makedepends = unzip
 	depends = nmap
 	depends = gtk3
-	depends = gobject
+	depends = python-gobject
 	optdepends = gksu: starting zenmap as root
 	provides = zenmap
-	source = zenmap-python3-git-7.92SVN.zip::https://github.com/kulikjak/nmap/archive/refs/heads/master-python3.zip
-	md5sums = 931711d6aa99b266d1cde4df7ed63cd8
+	source = https://github.com/kulikjak/nmap/archive/refs/heads/master-python3.zip
+	md5sums = SKIP
 
 pkgname = zenmap-python3-git
