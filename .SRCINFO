@@ -1,12 +1,11 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.17.4.arch1
+	pkgver = 5.19.12.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.17.4-arch1
+	url = https://github.com/archlinux/linux/commits/v5.19.12-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = cpio
@@ -18,9 +17,10 @@ pkgbase = linux-vfio
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.17.4-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.19.12-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -29,16 +29,16 @@ pkgbase = linux-vfio
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 3f02a0f2fe820f678d15fb0efce04e3716bdc7590d452317bf1b0b63f3b31cd2
+	sha256sums = 1e07bdd94abe73ac2074b151729cd9b73c7fa7a615a3a331a89dcb0da42649f8
 	sha256sums = b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77
-	sha256sums = d502ffaea89becded796ba79b7ff5aded8e5f86a479161c89214848871e49ed1
+	sha256sums = 5092c62db5ca8f6b806996ba3db0f610d9ad73d499384394e16823dda097f9cd
 
 pkgname = linux-vfio
 	pkgdesc = The Linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
