@@ -10,7 +10,7 @@ makedepends=("unzip")
 
 depends=("nmap"
             "gtk3"
-            "gobject")
+            "python-gobject")
 
 optdepends=("gksu: starting zenmap as root")
 
