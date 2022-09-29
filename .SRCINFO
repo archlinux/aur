@@ -1,0 +1,20 @@
+pkgbase = python-labxpipe
+	pkgdesc = LabxPipe
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://sr.ht/~vejnar/LabxPipe
+	arch = any
+	license = MPLv2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-labxdb-tools
+	depends = python-pyfnutils
+	depends = python-xlsxwriter
+	source = python-labxpipe-0.1.2.tar.gz::https://git.sr.ht/~vejnar/LabxPipe/archive/v0.1.2.tar.gz
+	sha1sums = 8732b1c2c1405b68d69af889c3d8f0f02cab77b3
+
+pkgname = python-labxpipe
