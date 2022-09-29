@@ -6,6 +6,7 @@ post_install() {
 	grep -qle '/bin/ksh$' '/etc/shells' || echo $'/usr/bin/ksh\n/bin/ksh' >> '/etc/shells'
 	grep -qle '/bin/ksh93$' '/etc/shells' || echo $'/usr/bin/ksh93\n/bin/ksh93' >> '/etc/shells'
 	grep -qle '/bin/rksh$' '/etc/shells' || echo $'/usr/bin/rksh\n/bin/rksh' >> '/etc/shells'
+	grep -qle '/bin/rksh93$' '/etc/shells' || echo $'/usr/bin/rksh93\n/bin/rksh93' >> '/etc/shells'
 }
 
 pre_upgrade() {
@@ -17,7 +18,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-	for _ksh in ksh ksh93 rksh; do
+	for _ksh in ksh ksh93 rksh rksh93; do
 		if getent passwd root | cut -d: -f7 | grep -qle "/bin/${_ksh}"; then
 			echo "**************************************************"
 			echo "*** Warning: root has ${_ksh} as the login shell."
@@ -31,7 +32,7 @@ pre_remove() {
 
 post_remove() {
 	# /usr/bin/${_ksh} is also detected
-	for _ksh in ksh ksh93 rksh; do
+	for _ksh in ksh ksh93 rksh rksh93; do
 		if getent passwd | cut -d: -f7 | grep -qle "/bin/${_ksh}"; then
 			echo "*** Warning: Some users have ${_ksh} as their login shell."
 			echo "*** Fix promptly to restore access."

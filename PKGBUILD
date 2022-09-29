@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1294.e920f42e
+pkgver=r1296.d84067a0
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64')
@@ -43,7 +43,7 @@ package() {
 	install -Dm0644 "src/cmd/${_pkgname}/nval.3" "${pkgdir}/usr/share/man/man3/nval.3"
 	install -Dm0644 "src/cmd/${_pkgname}/shell.3" "${pkgdir}/usr/share/man/man3/shell.3"
 	install -Dm0644 "src/cmd/${_pkgname}/sh.1" "${pkgdir}/usr/share/man/man1/ksh.1"
-	for _man in 'ksh93' 'rksh'; do
+	for _man in 'ksh93' 'rksh' 'rksh93'; do
 		ln -srf "${pkgdir}/usr/share/man/man1/ksh.1" "${pkgdir}/usr/share/man/man1/${_man}.1"
 	done
 	for _fun in 'autocd' 'man' 'dirs' 'popd' 'pushd'; do
@@ -53,7 +53,7 @@ package() {
 		install -Dm0644 "src/cmd/${_pkgname}/${_doc}" "${pkgdir}/usr/share/doc/ksh/${_doc}"
 	done
 	install -Dm0755 "arch/linux.i386-64/bin/ksh" "${pkgdir}/usr/bin/ksh"
-	for _exe in 'ksh93' 'rksh'; do
+	for _exe in 'ksh93' 'rksh' 'rksh93'; do
 		ln -srf "${pkgdir}/usr/bin/ksh" "${pkgdir}/usr/bin/${_exe}"
 	done
 	install -Dm0755 "arch/linux.i386-64/bin/shcomp" "${pkgdir}/usr/bin/shcomp"
