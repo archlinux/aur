@@ -18,6 +18,11 @@ optdepends=(
 source=(git+https://github.com/keithamus/gnome-shell-duckduckgo-search-provider)
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 _pkgdir=gnome-shell-duckduckgo-search-provider
 
 build() {
