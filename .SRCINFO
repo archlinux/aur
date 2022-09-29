@@ -1,0 +1,17 @@
+pkgbase = zenmap-python3-git
+	pkgdesc = Graphical Nmap frontend and results viewer - rerwite in python 3
+	pkgver = 7.92SVN
+	pkgrel = 1
+	url = https://github.com/kulikjak/nmap
+	arch = any
+	license = GPL2
+	makedepends = unzip
+	depends = nmap
+	depends = gtk3
+	depends = gobject
+	optdepends = gksu: starting zenmap as root
+	provides = zenmap
+	source = zenmap-python3-git-7.92SVN.zip::https://github.com/kulikjak/nmap/archive/refs/heads/master-python3.zip
+	md5sums = 931711d6aa99b266d1cde4df7ed63cd8
+
+pkgname = zenmap-python3-git
