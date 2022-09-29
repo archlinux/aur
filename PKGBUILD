@@ -10,7 +10,7 @@ _majorver=18
 _minorver=0
 _securityver=2.1
 _updatever=0
-pkgrel=2
+pkgrel=3
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -18,10 +18,6 @@ _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
-             'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
-             'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc')
 options=(!lto)
 source=("https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/$pkgver-$pkgrel/jdk-openjdk-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/$pkgver-$pkgrel/jre-openjdk-headless-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
@@ -47,19 +43,6 @@ case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
   i686)   _JARCH='x86';;
 esac
-
-_jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk
-_jdkdir=jdk${_majorver}u-${_git_tag//+/-}
-_imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
-
-_nonheadless=(lib/libawt_xawt.{so,debuginfo}
-              lib/libjawt.{so,debuginfo}
-              lib/libjsound.{so,debuginfo}
-              lib/libsplashscreen.{so,debuginfo})
-# prepare() {
-# echo oof
-# exit 1
-# }
 
 package_jre-openjdk-headless-xdg-bin() {
   pkgdesc="OpenJDK Java ${_majorver} headless runtime environment - with improved Support for the XDG Base Directory Specification"
