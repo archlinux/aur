@@ -1,46 +1,28 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-pkgname=(python-pymilter python2-pymilter)
-_pkgname=pymilter
+pkgname=python-pymilter
 pkgver=1.0.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
-url="https://github.com/sdgathman/${_pkgname}"
+url="https://github.com/sdgathman/${pkgname##*-}"
 license=('GPL')
+depends=('python')
 makedepends=('libmilter'
-			 'python-setuptools' 
-			 'python2-setuptools')
-source=("${url}/archive/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8093032829ddd53261dbe2991959514156767f3785dfb095ed9b17f3fba965e1')
-
-prepare() {
-  # Fix bad extract naming
-  mv "${_pkgname}-${_pkgname}-${pkgver}" "${pkgname}-${pkgver}"  
-
-  # Split for Python and Python2
-  cp -a "$pkgname-$pkgver"{,-py2}
-}
+             'python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgname##*-}-${pkgver}.tar.gz")
+sha512sums=('d6cd291f3be5402d6e4ab824deba940c6500d970b30c8d73b2fb1952eede4ac784033a7ae0b9a7307f18a3bfd52fc3f40fb0a9cce6cb94e724fce5cc3e8eb25e')
 
 build() {
-  cd "$srcdir/python-$_pkgname-$pkgver" 
-  python setup.py build
-
-  cd "$srcdir/python-$_pkgname-$pkgver-py2"
-  python2 setup.py build
+  cd "${pkgname##*-}-${pkgname##*-}-${pkgver}" 
+  python -m build --wheel --no-isolation
 }
 
-package_python-pymilter() {
-  depends=('python')
-  cd "$srcdir/python-$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build 
-}
-
-package_python2-pymilter() {
-  pkgdesc="Python 2 bindings for libmilter API"
-  depends=('python2')
-  replaces=('pymilter')
-  cd "$srcdir/python-$_pkgname-$pkgver-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+package() {
+  cd "${pkgname##*-}-${pkgname##*-}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
