@@ -1,8 +1,9 @@
 # Maintainer: Thore Bödecker <foxxx0@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
-pkgbase='ceph'
-pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
+_pkgbase='ceph'
+pkgbase='ceph-pacific'
+pkgname=('ceph-pacific' 'ceph-pacific-libs' 'ceph-pacific-mgr')
 _zstdver=1.5.2
 pkgver=16.2.10
 pkgrel=1
@@ -41,7 +42,7 @@ checkdepends=('python-mock' 'python-nose' 'python-pycodestyle' 'python-pylint'
 # need newer version for LTO (https://github.com/ceph/ceph/pull/42602)
 options=('emptydirs' '!lto')
 source=(
-  "https://download.ceph.com/tarballs/${pkgbase}-${pkgver}.tar.gz"
+  "https://download.ceph.com/tarballs/${_pkgbase}-${pkgver}.tar.gz"
   'ceph.sysusers'
   "zstd-${_zstdver}.tar.gz::https://github.com/facebook/zstd/archive/v${_zstdver}.tar.gz"
   #'glibc2.32-strsignal-compat-backported.patch'
@@ -97,7 +98,7 @@ export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
 
 prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # apply patches from the source array
   local filename
@@ -143,7 +144,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # https://tracker.ceph.com/issues/56610
   # https://salsa.debian.org/ceph-team/ceph/-/merge_requests/9
@@ -208,7 +209,7 @@ build() {
 ### testsuite currently broken, needs some debugging
 ###
 # check() {
-#   cd "${srcdir}/${pkgbase}-${pkgver}"
+#   cd "${srcdir}/${_pkgbase}-${pkgver}"
 # 
 #   export CTEST_PARALLEL_LEVEL=8
 #   export CTEST_OUTPUT_ON_FAILURE=1
@@ -220,11 +221,13 @@ build() {
 #   done
 # }
 
-package_ceph-libs() {
+package_ceph-pacific-libs() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt')
+  provides=("ceph-libs=${pkgver}")
+  conflicts=("ceph-libs")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # main install
   VERBOSE=1 make DESTDIR="${pkgdir}" -C build install
@@ -238,8 +241,8 @@ package_ceph-libs() {
   rm -rf "${pkgdir}/var"
 }
 
-package_ceph() {
-  depends=("ceph-libs=${pkgver}-${pkgrel}"
+package_ceph-pacific() {
+  depends=("ceph-pacific-libs=${pkgver}-${pkgrel}"
            'boost-libs' 'curl' 'fuse2' 'fuse3' 'fmt' 'glibc' 'gperftools' 'java-runtime'
            'keyutils' 'leveldb' 'libaio' 'libutil-linux' 'librdkafka'
            'lsb-release' 'ncurses'
@@ -247,8 +250,10 @@ package_ceph() {
            'python-prettytable' 'python-cmd2' 'python-dateutil' 'snappy' 'sudo' 'systemd-libs'
            'python-flask' 'python-pecan' 'python-pyopenssl' 'python-requests' 'python-werkzeug' 'xfsprogs'
            'python-yaml' 'python-pyaml')
+  provides=("ceph=${pkgver}")
+  conflicts=("ceph")
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # main install
   VERBOSE=1 make DESTDIR="${pkgdir}" -C build install
@@ -273,10 +278,10 @@ package_ceph() {
   find "${pkgdir}/usr/bin" -maxdepth 1 -type f -iname 'ceph_test_*' -delete
 
   # install tmpfiles.d and sysusers.d stuff
-  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/systemd/ceph.tmpfiles.d" \
-    "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
+  install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/systemd/ceph.tmpfiles.d" \
+    "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
   install -Dm644 "${srcdir}/ceph.sysusers" \
-    "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+    "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
 
   # remove debian init script
   rm -rf "${pkgdir}/etc/init.d"
@@ -304,8 +309,8 @@ package_ceph() {
   install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/osd"
 }
 
-package_ceph-mgr() {
-  depends=("ceph=${pkgver}-${pkgrel}" "ceph-libs=${pkgver}-${pkgrel}"
+package_ceph-pacific-mgr() {
+  depends=("ceph-pacific=${pkgver}-${pkgrel}" "ceph-pacific-libs=${pkgver}-${pkgrel}"
            'bash' 'boost-libs' 'coffeescript' 'curl' 'gperftools' 'nodejs' 'nss'
            'python' 'python-cherrypy' 'python-flask-restful' 'python-pecan'
            'python-pyjwt' 'python-routes' 'python-jsonpatch' 'python-more-itertools' 'python-numpy'
@@ -314,9 +319,10 @@ package_ceph-mgr() {
               'python-kubernetes: rook module'
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
-  conflicts=('ceph<14.2.1-1')
+  provides=("ceph-mgr=${pkgver}")
+  conflicts=('ceph-mgr')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
 
   # main install
   VERBOSE=1 make DESTDIR="${pkgdir}" -C build install
