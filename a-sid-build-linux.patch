@@ -1,0 +1,23 @@
+diff --git a/vst3/buildLinux.sh b/vst3/buildLinux.sh
+index 299dab8..e2202d7 100755
+--- a/vst3/buildLinux.sh
++++ b/vst3/buildLinux.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-VST_SDK_DIR=../../VST_SDK
++VST_SDK_DIR=${VST_SDK_DIR:-../../VST_SDK}
+ 
+ rm -rf build
+ 
+@@ -46,8 +46,7 @@ g++ \
+ 	-I../src \
+ 	-Isrc \
+ 	-I$VST_SDK_DIR/vst3sdk/ \
++	$(pkgconf --cflags --libs xcb) \
+ 	-fPIC -shared \
+-	-static-libgcc \
+-	-static-libstdc++ \
+ 	-o build/asid.vst3/Contents/x86_64-linux/asid.so \
+-	-O3
++	${CXXFLAGS:--O3} $LDFLAGS

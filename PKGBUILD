@@ -2,26 +2,28 @@
 
 _reponame=asid
 pkgname=a-sid
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Emulation of the C64 MOS 8580 SID analog filter as a VST3 plugin"
 arch=(x86_64)
 url='https://www.orastron.com/asid'
 license=(GPL3 MIT)
-depends=(glibc)
+depends=(glibc gcc-libs libxcb)
 makedepends=(vst3sdk)
 groups=(pro-audio vst3-plugins)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sdangelo/$_reponame/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('76bf5e925b2aed577b2eea255cb3f972be6f4d5c3925898855eefdbdbfbad17d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sdangelo/$_reponame/archive/refs/tags/$pkgver.tar.gz"
+        'a-sid-build-linux.patch')
+sha256sums=('16bd9df96d763dfba3add95e643b48713fb22401e6f54df57cceaf5793f65a55'
+            '0060a7758e066c83812b2f0c6944b7ca7c0f26e1226d271314507808b2b274f5')
 
 prepare() {
-  cd $_reponame-$pkgver/vst3
-  sed -i -e 's|VST_SDK_DIR=.*$|VST_SDK_DIR=/usr/include|' buildLinux.sh
+  cd $_reponame-$pkgver
+  patch -p1 -N -r - -i "$srcdir"/a-sid-build-linux.patch
 }
 
 build() {
   cd $_reponame-$pkgver/vst3
-  ./buildLinux.sh
+  VST_SDK_DIR=/usr/include ./buildLinux.sh
 }
 
 package() {
