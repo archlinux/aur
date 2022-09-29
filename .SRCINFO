@@ -1,0 +1,13 @@
+pkgbase = invasion-of-greek
+	pkgdesc = a stupid arcade game for your terminal
+	pkgver = 1.0.0_pre_20220925
+	pkgrel = 1
+	url = https://gitlab.fem-net.de/mabl/invasion-of-greek
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	provides = invasion-of-greek
+	source = https://gitlab.fem-net.de/mabl/invasion-of-greek/-/archive/e36bd4fe82bbfa59808492f66358fabad41f3e3e/invasion-of-greek-e36bd4fe82bbfa59808492f66358fabad41f3e3e.tar.gz
+	sha256sums = 961f1a9e4fcd45e54b87d0bca545caa74b30a70924b9ca033cec2f06191c4789
+
+pkgname = invasion-of-greek
