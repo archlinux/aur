@@ -14,7 +14,8 @@ license=('GPL')
 url='https://github.com/storaged-project/blivet-gui'
 depends=('python' 'python-blivet' 'python-cairo' 'python-gobject' 'python-pid' 'adwaita-icon-theme')
 makedepends=('git' 'make')
-source=("${pkgname}::git+${url}#tag=${_pkgver}")
+_commit="5aa45cffd1f9650f36a6b82f5bc50ccddc8a8c88"
+source=("${pkgname}::git+${url}#commit=${_commit}")
 sha512sums=('SKIP')
 
 build() {
