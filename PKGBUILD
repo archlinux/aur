@@ -6,7 +6,7 @@ pkgbase='ceph'
 pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
 _zstdver=1.5.2
 pkgver=15.2.14
-pkgrel=7
+pkgrel=9
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
@@ -156,6 +156,11 @@ build() {
   # workaround for boost 1.74 -- similar fix exists upstream but I could
   # not get it to work: https://github.com/ceph/ceph/commit/3d708219092d
   CPPFLAGS+=' -DBOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT'
+  # 2022-09-27 fmt>9 has deprecated an API that is used extensively throughout
+  # the code base. See:
+  # Upstream: https://tracker.ceph.com/issues/56610
+  # Debian: https://salsa.debian.org/ceph-team/ceph/-/merge_requests/9
+  CPPFLAGS+=' -DFMT_DEPRECATED_OSTREAM'
 
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
@@ -194,7 +199,6 @@ build() {
     -DWITH_XFS=ON \
     -DWITH_MGR=ON \
     -DWITH_MGR_DASHBOARD_FRONTEND=ON \
-    -DDASHBOARD_FRONTEND_LANGS="ALL" \
     -DWITH_RADOSGW=ON \
     -DWITH_RADOSGW_FCGI_FRONTEND=OFF \
     -DWITH_RADOSGW_BEAST_FRONTEND=ON \
@@ -206,7 +210,7 @@ build() {
     -DWITH_SYSTEM_GTEST=OFF \
     -DWITH_SYSTEM_NPM=OFF \
     -DENABLE_SHARED=ON \
-    -DWITH_TESTS=ON \
+    -DWITH_TESTS=OFF \
     -Wno-dev
 
   VERBOSE=1 make -C build all
