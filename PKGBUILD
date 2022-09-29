@@ -3,8 +3,8 @@
 # Maintainer: Thien An Dang Thanh < thienandangthanh@gmail.com >
 # Contributor: grueneerle
 pkgname=sidekick-browser-stable-bin
-pkgver=104.28.1.24083
-_pkgver=104.28.1.24083-e895149 # includes sequence after the pkgver using CDN source, using wget to see redirect
+pkgver=104.29.2.24653
+_pkgver=104.29.2.24653-0128f13 # includes sequence after the pkgver using CDN source, using wget to see redirect
 pkgrel=1
 pkgdesc="Sidekick is a revolutionary new work OS based on the Chromium browser. Designed to be the ultimate online work experience, it brings together your team and every web tool you use – all in one interface"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('www-browser')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://fast-cdn.meetsidekick.com/builds/sidekick-linux-release-x64-${_pkgver}.deb")
-sha512sums=('1e87a770a4a11b678121dc947482842b91748d5c1b20af61d659577dde379647ba0ff1feb10d8c7eedd16078de2a4c8138f5a374b7658ac685f9a6f615089172')
+sha512sums=('4de96c536abceed210f4121159223464d320cfa617aa804d5402b3cf0382f3b183309a1fec973968231cf7bd97d05445d08c8b8d4cfa99c462b1c9f4ea1773df')
 
 package(){
 # Extract package data
