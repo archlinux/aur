@@ -2,7 +2,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=socli
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc="Stack overflow command line client. Search and browse stack overflow without leaving the terminal"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-argcomplete'
          'python-urwid')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gautamkrishnar/socli/archive/${pkgver}.tar.gz")
-sha256sums=('265772d06fe3b08e0c4c7395766493d6e484d9e6fcb690761cfdbea2882c53c9')
+sha256sums=('38bb22e2ecfb0a43e0546dd6252f3b64e21d05a250295be2af96c65cac0a84b4')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
