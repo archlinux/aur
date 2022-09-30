@@ -6,6 +6,7 @@ pkgbase = shader-slang
 	arch = x86_64
 	license = MIT
 	makedepends = premake
+	makedepends = git
 	depends = glslang
 	source = https://github.com/shader-slang/slang/archive/refs/tags/v0.24.27.1.tar.gz
 	source = git+https://github.com/shader-slang/glslang#commit=42398c9

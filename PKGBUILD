@@ -37,7 +37,7 @@ sha1sums=('8e986c2ace5a74d1b05b1090bdd03c968dde4faa'
           'SKIP'
           'SKIP'
           'SKIP')
-makedepends=(premake)
+makedepends=(premake git)
 depends=(glslang)
 
 prepare() {
