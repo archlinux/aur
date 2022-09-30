@@ -39,17 +39,12 @@ pkgname = gnatcoll-omp
 	pkgdesc = GNAT Components Collection - Bindings to OpenMP
 	depends = gnatcoll-core
 
-pkgname = gnatcoll-python2
-	pkgdesc = GNAT Components Collection - Interface to the python 2 interpreter.
-	depends = python2
-	depends = gnatcoll-core
-	provides = gnatcoll-python
-	replaces = gnatcoll-python
-
-pkgname = gnatcoll-python3
+pkgname = gnatcoll-python
 	pkgdesc = GNAT Components Collection - Interface to the python 3 interpreter.
 	depends = python
 	depends = gnatcoll-core
+	provides = gnatcoll-python
+	replaces = gnatcoll-python
 
 pkgname = gnatcoll-readline
 	pkgdesc = GNAT Components Collection - Bindings to readline
