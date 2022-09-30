@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of Telegram Desktop messaging app.
-	pkgver = 4.2
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -45,12 +45,10 @@ pkgbase = forkgram
 	conflicts = telegram-desktop
 	conflicts = tdesktop-x64
 	replaces = tdesktop-x64
-	source = https://github.com/Forkgram/tdesktop/releases/download/v4.2/frk-v4.2-full.tar.gz
-	source = fix-tgcalls-cstdint.patch
+	source = https://github.com/Forkgram/tdesktop/releases/download/v4.2.4/frk-v4.2.4-full.tar.gz
 	source = https://download.kde.org/stable/frameworks/5.98/kcoreaddons-5.98.0.tar.xz
 	source = https://invent.kde.org/frameworks/kcoreaddons/-/merge_requests/258.patch
-	sha512sums = 464fc5c5b21fb4985b8681d4897ddda41d799c300c053ebe9ed9f589c66518b224342dbdd355eb030b3c098ab1a4e70c381a3a3d2a8d04f9d621ad024fb2c963
-	sha512sums = ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888
+	sha512sums = a91473b93d8b1887fd98bb75cd2d1b7cde0772e6cb762f819bf4aef962d83b20f37e87ed3be67bb7f1e84c5b5af4969c63d0979cca0c2984c80642c7e2448689
 	sha512sums = 7370860c300a2ceb009622a3ed543ffda7cd36ae4a339abc6fb4bc39a08abbbd8d09eb5da08b2702e9dfa2db3c35572df654ff265275d3cd96b076123a022198
 	sha512sums = fbb61e884094d3b259f0562809e1c058365346815541c85a3309b4f13e55629f9b14148d6a9c929ad5057901a26aaaef48fba6f094ef6484f81ff1a034cbf54f
 
