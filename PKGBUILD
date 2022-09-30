@@ -8,11 +8,20 @@ pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
 license=('AGPL3')
-makedepends=('cmake' 'python-setuptools' 'petsc' 'hdf5-openmpi' 'fftw')
+makedepends=('cmake' 'python-setuptools'
+             'petsc' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml'
+             'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
-source=(https://damask3.mpie.de/download/damask-${pkgver_}.tar.xz)
-sha256sums=('de6748c285558dec8f730c4301bfa56b4078c130ff80e3095faf76202f8d2109')
+source=(https://damask3.mpie.de/download/damask-${pkgver_}.tar.xz
+        0001-PETSc-3.17.1-backport.patch)
 
+sha256sums=('de6748c285558dec8f730c4301bfa56b4078c130ff80e3095faf76202f8d2109'
+            'd810807b097512c275ff43f66873117f54a190ab9cd2696c24f6c6cb1792ae1c')
+
+prepare() {
+    cd "$pkgname-$pkgver_"
+    patch --forward --strip=1 --input="${srcdir}/0001-PETSc-3.17.1-backport.patch"
+}
 
 build() {
   cmake -S ${pkgbase}-${pkgver_} -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
@@ -28,7 +37,7 @@ build() {
 
 package_damask-grid() {
   pkgdesc='Grid solver for DAMASK'
-  depends=('petsc' 'hdf5-openmpi' 'fftw')
+  depends=('petsc' 'hdf5-openmpi' 'fftw' 'zlib' 'libfyaml')
   optdepends=('dream3d: pre-processing')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -40,7 +49,7 @@ package_damask-grid() {
 
 package_damask-mesh() {
   pkgdesc='Mesh solver for DAMASK'
-  depends=('petsc' 'hdf5-openmpi')
+  depends=('petsc' 'hdf5-openmpi' 'libfyaml')
   optdepends=('neper: pre-processing')
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
