@@ -11,4 +11,3 @@ pkgbase = python2-progress
 	sha256sums = c88d89ee3bd06716a0b8b5504d9c3bcb3c1c0ab98f96dc7f1dc5f56812a4f60a
 
 pkgname = python2-progress
-
