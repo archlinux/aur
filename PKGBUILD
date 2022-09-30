@@ -37,5 +37,5 @@ prepare() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    PREFIX=$pkgdir/usr ./scripts/install
+    DESTDIR=$pkgdir PREFIX=/usr ./scripts/install
 }
