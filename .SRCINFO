@@ -1,0 +1,14 @@
+pkgbase = pytranscriber-bin
+	pkgdesc = UI for generating transcription (subtitles) using Google Speech Recognition (X11)
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/raryelcostasouza/pyTranscriber
+	arch = any
+	license = GPL
+	depends = libgl
+	options = !strip
+	options = !zipman
+	source = https://github.com/raryelcostasouza/pyTranscriber/releases/download/v1.8-stable/pyTranscriber-v1.8-linux-portable.zip
+	sha256sums = a360e64ac95d8f99750d3b18d5afdeb6f9ad0c141d2be022c56597735152cd9d
+
+pkgname = pytranscriber-bin
