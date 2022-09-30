@@ -1,7 +1,7 @@
 # Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=python-qiling-git
-pkgver=1.4.2.r473.g08e27510
+pkgver=1.4.4.r187.g62d89c7d
 pkgrel=1
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
