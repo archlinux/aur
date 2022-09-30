@@ -5,13 +5,13 @@
 
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
-pkgver=5.4.0.r267.g2866918f3
+pkgver=5.6.0.r71.g5e7ea0664
 pkgrel=1
 epoch=1
 url=https://www.minetest.net
 license=(GPL)
 arch=(i686 x86_64)
-makedepends=(cmake curl freetype2 git hicolor-icon-theme hiredis leveldb libvorbis luajit openal postgresql spatialindex sqlite jsoncpp gmp)
+makedepends=(cmake curl freetype2 git gmp hicolor-icon-theme hiredis jsoncpp leveldb libgl libjpeg libvorbis libxi luajit openal postgresql spatialindex sqlite)
 source=(git+https://github.com/minetest/minetest.git
 		git+https://github.com/minetest/irrlicht.git
 		git+https://github.com/minetest/minetest_game.git
@@ -19,11 +19,11 @@ source=(git+https://github.com/minetest/minetest.git
 		sysusers.d
 		tmpfiles.d)
 sha256sums=('SKIP'
-			'SKIP'
-			'SKIP'
-			'2d80b4ff925770bdf3d857debb2ad11227cc9b022eb01a358b18f8d5f2641a5c'
-			'e4166d639b35efda2cd72269208184ab1e72c54541344cd202ff2005c90b9433'
-			'd9405cf7cd0a657ef06082570783383a1f527fbc0bd122ea506d4fbe26950d4a')
+		'SKIP'
+		'SKIP'
+		'2d80b4ff925770bdf3d857debb2ad11227cc9b022eb01a358b18f8d5f2641a5c'
+		'e4166d639b35efda2cd72269208184ab1e72c54541344cd202ff2005c90b9433'
+		'd9405cf7cd0a657ef06082570783383a1f527fbc0bd122ea506d4fbe26950d4a')
 
 pkgver() {
 	git -C "${pkgbase%-git}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -59,7 +59,7 @@ build() {
 
 package_minetest-git() {
 	pkgdesc='Multiplayer infinite-world block sandbox game (git)'
-	depends=(curl desktop-file-utils freetype2 hicolor-icon-theme libvorbis luajit minetest-common-git openal postgresql-libs spatialindex sqlite xdg-utils jsoncpp gmp)
+	depends=(curl desktop-file-utils freetype2 gmp hicolor-icon-theme jsoncpp libgl libjpeg libvorbis libxi luajit minetest-common-git openal postgresql-libs spatialindex sqlite xdg-utils)
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
