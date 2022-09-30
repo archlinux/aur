@@ -1,0 +1,13 @@
+pkgbase = liftbridge
+	pkgdesc = Lightweight, fault-tolerant message streams.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://liftbridge.io/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = make
+	source = https://github.com/liftbridge-io/liftbridge/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 5f39a32eceba12d841420d4e7a4ca21297247d6fd405f3ec3141c9815afce5dc
+
+pkgname = liftbridge
