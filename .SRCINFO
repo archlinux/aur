@@ -1,7 +1,7 @@
 pkgbase = python-dahlia
 	pkgdesc = A simple text formatting package, inspired by the game Minecraft.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trag1c/Dahlia
 	arch = any
 	license = MIT
