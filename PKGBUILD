@@ -2,7 +2,7 @@
 
 pkgbase=samplebrain
 pkgname=('samplebrain' 'samplebrain-docs')
-pkgver=0.18
+pkgver=0.18.3
 pkgrel=1
 pkgdesc='Custom sample smashing app designed by Aphex Twin'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   'fftw'
   'qt5-base'
 )
-_commit='4e36c9292334729b895d7353468b9acd9c085c1b'
+_commit='524cd5894598fca8e6c42f7f869209e39bc2381f'
 source=("$pkgbase::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
