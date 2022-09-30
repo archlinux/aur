@@ -3,7 +3,7 @@
 _pkgbase=nginx-njs-dns
 _srcname=nginx-dns
 pkgname=${_pkgbase}-git
-pkgver=r43.93a521a
+pkgver=r48.6afbf1b
 pkgrel=1
 pkgdesc="Sample Configuration for DNS over HTTPS (DoH/DoT gateway) and GSLB with NGINX"
 arch=('any')

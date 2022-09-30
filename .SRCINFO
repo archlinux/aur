@@ -1,6 +1,6 @@
 pkgbase = nginx-njs-dns-git
 	pkgdesc = Sample Configuration for DNS over HTTPS (DoH/DoT gateway) and GSLB with NGINX
-	pkgver = r43.93a521a
+	pkgver = r48.6afbf1b
 	pkgrel = 1
 	url = https://github.com/TuxInvader/nginx-dns
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = nginx-njs-dns-git
 	sha256sums = SKIP
 
 pkgname = nginx-njs-dns-git
-
