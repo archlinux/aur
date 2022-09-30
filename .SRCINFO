@@ -1,13 +1,14 @@
 pkgbase = python-packageurl
 	pkgdesc = A purl aka. Package URL parser and builder
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/package-url/packageurl-python
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	conflicts = python-packageurl-git
