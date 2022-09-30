@@ -7,6 +7,10 @@ pkgbase = xamarin-android
 	license = MIT
 	makedepends = tar
 	makedepends = findutils
+	makedepends = jq
+	makedepends = git
+	makedepends = unzip
+	makedepends = curl
 	depends = mono>=5.0.0
 	depends = libzip
 	optdepends = jdk8-openjdk: For building Xamarin.Android Apps
@@ -16,9 +20,5 @@ pkgbase = xamarin-android
 	conflicts = xamarin-android
 	conflicts = xamarin-android-git
 	options = !strip
-	source = https://gist.githubusercontent.com/TheAirBlow/47668a5d2403baa4a06b927ebe4dc1e0/raw/index.js
-	source = https://gist.githubusercontent.com/TheAirBlow/47668a5d2403baa4a06b927ebe4dc1e0/raw/package.json
-	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = xamarin-android

@@ -16,7 +16,7 @@ pkgrel=1
 pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages"
 arch=('x86_64')
 depends=('mono>=5.0.0' 'libzip')
-makedepends=('tar' 'findutils')
+makedepends=('tar' 'findutils' 'jq' 'git' 'unzip' 'curl')
 optdepends=('jdk8-openjdk: For building Xamarin.Android Apps'
             'rider: .NET IDE supporting Android app development via Xamarin.Forms / Xamarin.Native.'
             'rider-eap: .NET IDE supporting Android app development via Xamarin.Forms / Xamarin.Native.')
@@ -25,42 +25,27 @@ provides=('xamarin-android')
 conflicts=('xamarin-android' 'xamarin-android-git')
 url="https://github.com/xamarin/xamarin-android"
 license=('MIT')
-source=('https://gist.githubusercontent.com/TheAirBlow/47668a5d2403baa4a06b927ebe4dc1e0/raw/index.js'
-         'https://gist.githubusercontent.com/TheAirBlow/47668a5d2403baa4a06b927ebe4dc1e0/raw/package.json')
-md5sums=('SKIP' 'SKIP')
 
 # Prepare build.zip
-# We check hashes here so we don't need
-# to redownload everything if hashes are valid
-# (filesize is very big)
 prepare() {
     cd ${srcdir}
-    cd ..
-    local hash
-    msg2 "Downloading npm modules..."
-    npm i >/dev/null 2>&1
     msg2 "Getting download url..."
-    cd ${srcdir}
+    local downloadUrl=$(curl https://dev.azure.com/xamarin/public/_apis/build/builds/$_buildid/artifacts | jq -r '.value[] | select(.name=="installers-unsigned - Linux").resource.downloadUrl')
     msg2 "Downloading build.zip..."
-    curl -o build.zip $(node index.js ${_buildid})
-    msg2 "Checking MD5 hashsum..."
-    cd ${srcdir}
+    curl -o build.zip $downloadUrl
     msg2 "Extracting build.zip..."
-    unzip -o build.zip | pv -l >/dev/null
+    unzip -o build.zip
     msg2 "Renaming..."
     mv "installers-unsigned - Linux" "build"
 }
 
 # Package .deb artifact
-# We do not hashes here, cause it doesn't
-# download or extract anything big here
 package() {
     cd "${srcdir}/build"
     msg2 "Extracting .deb artifact..."
     bsdtar xf ${_deb_filename}
     msg2 "Extracting .deb data..."
     bsdtar xf data.tar.xz
-    _cleanup
     msg2 "Installing..."
     chmod -R g-w usr
     mv usr "${pkgdir}"
