@@ -1,23 +1,22 @@
 pkgname=python2-typing
-pkgver=3.6.1
+pkgver=3.10.0.0
 pkgrel=1
-pkgdesc="Type Hints for Python"
-url=" https://docs.python.org/3/library/typing.html"
+pkgdesc="Backport of the standard library typing module to Python versions older than 3.6"
+url="https://pypi.python.org/pypi/typing"
 arch=('any')
 license=('PSF')
+depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/17/75/3698d7992a828ad6d7be99c0a888b75ed173a9280e53dbae67326029b60e/typing-3.6.1.tar.gz")
-md5sums=('3fec97415bae6f742fb3c3013dedeb89')
+source=("python2-typing-$pkgver.tar.gz::https://pypi.io/packages/source/t/typing/typing-$pkgver.tar.gz")
+sha256sums=('13b4ad211f54ddbf93e5901a9967b1e07720c1d1b78d596ac6a439641aa1b130')
 
 build() {
-  cd "${srcdir}"/typing-$pkgver
-  python2 setup.py build
+    cd typing-$pkgver
+    python2 setup.py build
 }
 
 package() {
-  depends=('python2')
-
-  cd "${srcdir}/typing-$pkgver"
-  python2 setup.py install --root=${pkgdir} --optimize=1
+    cd typing-$pkgver
+    python2 setup.py install --root "$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
