@@ -49,7 +49,7 @@ _hpn_ver=hpn17v4
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -196,7 +196,6 @@ package_openssh-hpn() {
 
   make DESTDIR="${pkgdir}" install
 
-  pushd "${pkgdir}/usr/share/man/man1" &>/dev/null; ln -sf hpnssh.1.gz slogin.1.gz; popd &>/dev/null
   install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 
   install -Dm644 ../hpnsshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/hpnsshdgenkeys.service
@@ -235,6 +234,7 @@ package_openssh-hpn-shim(){
     pushd "${pkgdir}/usr/share/man/man1" &>/dev/null; ln -s "hpn${i}.1.gz" "${i}.1.gz"; popd &>/dev/null
   done
   pushd "${pkgdir}/usr/bin" &>/dev/null; for i in findssl.sh sshd; do ln -s "hpn${i}" "${i}"; done; popd &>/dev/null
+  pushd "${pkgdir}/usr/share/man/man1" &>/dev/null; ln -sf hpnssh.1.gz slogin.1.gz; popd &>/dev/null
 
   install -dm0755 "${pkgdir}/usr/lib/ssh" "${pkgdir}/usr/share/man/man8"
   for i in sftp-server ssh-keysign ssh-pkcs11-helper ssh-sk-helper; do
