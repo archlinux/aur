@@ -2,7 +2,7 @@
 
 pkgname=samarium
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A dynamic, interpreted language that is transpiled to Python"
 arch=(any)
@@ -18,9 +18,12 @@ source=(
 sha256sums=('5746d8bf76802efc15f51b5cb8e759653e58eebd12172c389ab4f8e6d1714f89')
 
 build() {
+	cd ..
 	[ -f .gitignore ] && mv .gitignore .gitignore.tmp
-	pushd "$pkgname-$pkgver"
+
+	pushd "$srcdir/$pkgname-$pkgver"
 	python -m build --wheel --no-isolation
+
 	popd
 	[ -f .gitignore.tmp ] && mv .gitignore.tmp .gitignore || true
 }

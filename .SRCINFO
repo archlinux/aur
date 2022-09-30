@@ -1,7 +1,7 @@
 pkgbase = samarium
 	pkgdesc = A dynamic, interpreted language that is transpiled to Python
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/samarium-lang/Samarium
 	arch = any
 	license = MIT
