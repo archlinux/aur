@@ -4,12 +4,12 @@
 pkgname=tachidesk-jui
 __PkgName=Tachidesk-JUI
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("x86_64")
 url="https://github.com/Suwayomi/Tachidesk-JUI"
 license=("MPL2")
-depends=("jre-openjdk>=17")
+depends=("jre-openjdk>=17" "libc++")
 provides=("tachidesk-jui")
 __jar=$__PkgName-linux-x64-$pkgver.jar
 source=("$url/releases/download/v$pkgver/$__jar" 
