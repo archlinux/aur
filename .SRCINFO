@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 4.2.2.r0.g43bdfbf17
-	pkgrel = 2
+	pkgver = 4.2.4.r1.g0fbb2e77f
+	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -74,9 +74,7 @@ pkgbase = telegram-desktop-git
 	source = telegram-desktop-plasma-wayland-protocols::git+https://github.com/KDE/plasma-wayland-protocols.git
 	source = telegram-desktop-wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git
 	source = telegram-desktop-kimageformats::git+https://github.com/KDE/kimageformats.git
-	source = https://invent.kde.org/frameworks/kcoreaddons/-/archive/v5.98.0/kcoreaddons-v5.98.0.tar.gz
-	source = teolegram-desktop-cmake-bundled-kcoreaddons::git+https://github.com/ilya-fedin/cmake_helpers.git#branch=bundled-kcoreaddons
-	source = bundled-kcoreaddons.patch::https://github.com/ilya-fedin/cmake_helpers/compare/bundled-kcoreaddons...desktop-app:cmake_helpers:master.patch
+	source = telegram-desktop-kcoreaddons::git+https://github.com/KDE/kcoreaddons.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -110,8 +108,6 @@ pkgbase = telegram-desktop-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = d84f0d0c29f819488fd7632df28b8a9da5fb3a0724652529d3f8a59b62ea12f5f0a1755b346d2d8b015ec492dd0fead8b74199f9a7e7ada26d45b8fd7ada21c8
 	sha512sums = SKIP
-	sha512sums = cac45e8ea316e86ad3719f5e2ea1bea328d14e7c01a7b9425a05fe1a1e7b3364f6881a75d14dee28335c0c1e7290d5545a24a9c17c805686cefef3ba2d662e60
 
 pkgname = telegram-desktop-git
