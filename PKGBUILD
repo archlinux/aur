@@ -17,7 +17,7 @@ sha256sums=('bc819ba37ce6f932f0c4c9aadeab21904e73eeecc36bf288f1b01857d37b856f')
 build() {
 	cd "$pkgname-$pkgver"
 
-	rm -r build
+	rm -r build || true
 	arch-meson build -Dtools=true
 	meson compile -C build
 }
