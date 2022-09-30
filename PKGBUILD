@@ -4,8 +4,7 @@
 pkgname=seatools
 pkgdesc='Seagate graphical user interface (GUI) tool for managing hard drives and SSDs on a system.'
 pkgver=5.0.165
-_pkgname=SeaTools
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://www.seagate.com/support/downloads/seatools/'
 license=('custom:Seagate EULA')
@@ -13,6 +12,8 @@ depends=('gcc-libs')
 makedepends=('fakechroot')
 source=("https://www.seagate.com/files/www-content/support-content/downloads/${pkgname}/_shared/downloads/${_pkgname}LinuxX64Installer.zip")
 sha256sums=('64149fdc8ef6d84818873bcda10c8c3684bf38c627f1c2c3fcd64fb89c857b33')
+
+_pkgname=SeaTools
 
 package() {
     chmod u+x ./SeaToolsLinuxX64Installer.run
