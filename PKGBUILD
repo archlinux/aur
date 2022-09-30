@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb44-bin"
-pkgver="4.4.16"
+pkgver="4.4.17"
 _basever="4.4"
 _basedist="focal"
 pkgrel="2"
@@ -10,7 +10,8 @@ pkgdesc="A high-performance, open source, schema-free document-oriented database
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("custom:SSPLv1")
-depends=("curl")
+depends=(curl)
+makedepends=(chrpath)
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb")
@@ -18,8 +19,6 @@ backup=("etc/mongodb.conf")
 
 _repo_url=https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse
 source=(
-    "mongodb.conf"
-    "mongodb.service"
     "mongodb.sysusers"
     "mongodb.tmpfiles"
     "LICENSE"
@@ -36,32 +35,54 @@ noextract=(
     mongodb-org-shell_${pkgver}_${CARCH}.deb
     mongodb-org-server_${pkgver}_${CARCH}.deb
     mongodb-org-mongos_${pkgver}_${CARCH}.deb)
-sha256sums=('16db77050441afb964b1899f82466d53a0677c9c4802cd98b967d3cc2efe094f'
-            'de4f6770c45bc5418883659c479783c0184a6057df1c405a7933637984f82f0a'
-            '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
+sha256sums=('47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('d2ef9829ddd6b30ebb344f3ae64b375a0c8aa447b1d2da49f45ad700938c1223'
-                   '2598c6602179229d30aabf864e51f0f63758d19b2cc0f37468b74500ad42df93'
-                   'e528c1d47c244156587b89130c5d48117d65195b268a84293c013a3e98a2d0f6')
-sha256sums_aarch64=('89a621cc223b6f83b0b6a7d606d24426a155a7e697bbb446f7b96a2824d08ed2'
-                    'f0bfb8bb022f86e570f6de0dd42b92b479f021984e759aa206c8dc37e888c812'
-                    '3812a957f583b6320f310f073713afebc80616d4dc97c6060a7669e50764c395')
+sha256sums_x86_64=('e7d1810f8b90bb75445e61b765b3e1d04b66ab809d73927c8af2e6f34844891c'
+                   '605b7de66494d60f94d06e6603753f125bf4c91730f6275d6b889c8357e883e6'
+                   '39bdfb87a3d5723837894cf11a31fa91aeb987071afb27d173679275d5991ae4')
+sha256sums_aarch64=('356b9f717404926403e1a85e361dc7d638b805cde7c70ae4b08775506c28929e'
+                    '501e9623618365d03af397e508979c9e0bf3dd32e90910a3c146ffdb175a36ac'
+                    '3c9f5de2ffa4854aed69e1ae98e06c680e8539181d9d8f247b12160cc3d99c34')
 
 prepare() {
   mkdir -p output
   bsdtar -O -xf mongodb-org-shell_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf -  #mongo extracted
   bsdtar -O -xf mongodb-org-server_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #server extracted
   bsdtar -O -xf mongodb-org-mongos_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #mongos extracted
+
+  # Remove insecure RUNPATH '$ORIGIN/../lib' as reported by namcap
+  chrpath -d output/usr/bin/mongod
+  chrpath -d output/usr/bin/mongos
+
+  # Keep historical Arch dbPath
+  sed -i 's|dbPath: /var/lib/mongo$|dbPath: /var/lib/mongodb|' output/etc/mongod.conf
+
+  # Keep historical Arch conf file name
+  sed -i 's|/etc/mongod.conf|/etc/mongodb.conf|' output/lib/systemd/system/mongod.service
+
+  # Keep historical Arch user name (no need for separate daemon group name)
+  sed -i 's/User=mongod$/User=mongodb/' output/lib/systemd/system/mongod.service
+  sed -i 's/Group=mongod$/Group=mongodb/' output/lib/systemd/system/mongod.service
+
+  # Avoid legacy PID filepath
+  sed -i 's|/var/run/|/var/|' output/lib/systemd/system/mongod.service
+
+  # Remove sysconfig file, used by upstream's init.d script not used on Arch
+  sed -i '/^EnvironmentFile=/d' output/lib/systemd/system/mongod.service
+
+  # Make systemd wait as long as it takes for MongoDB to start
+  # If MongoDB needs a long time to start, prevent systemd from restarting it every 90 seconds
+  # See: https://jira.mongodb.org/browse/SERVER-38086
+  sed -i 's/\[Service]/[Service]\nTimeoutStartSec=infinity/' output/lib/systemd/system/mongod.service
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/share/man"
-  cp -r "output/usr/bin" "$pkgdir/usr/"
-  cp -r "output/usr/share/man/man1" "$pkgdir/usr/share/man/"
-  install -Dm644 "mongodb.conf" "$pkgdir/etc/mongodb.conf"
-  install -Dm644 "mongodb.service" "$pkgdir/usr/lib/systemd/system/mongodb.service"
-  install -Dm644 "mongodb.sysusers" "$pkgdir/usr/lib/sysusers.d/mongodb.conf"
-  install -Dm644 "mongodb.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mongodb.conf"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 output/etc/mongod.conf "$pkgdir/etc/mongodb.conf"
+  install -Dm644 output/lib/systemd/system/mongod.service "$pkgdir/usr/lib/systemd/system/mongodb.service"
+  install -Dm755 output/usr/bin/* -t "$pkgdir/usr/bin"
+  install -Dm644 output/usr/share/man/man1/* -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 mongodb.sysusers "$pkgdir/usr/lib/sysusers.d/mongodb.conf"
+  install -Dm644 mongodb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/mongodb.conf"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
