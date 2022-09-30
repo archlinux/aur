@@ -1,0 +1,13 @@
+pkgbase = firefox-snowflake
+	pkgdesc = Firefox extension for a WebRTC pluggable transport for Tor
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://snowflake.torproject.org/
+	arch = any
+	license = BSD
+	noextract = torproject_snowflake-0.6.1.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/3979765/torproject_snowflake-0.6.1.xpi
+	sha256sums = b54630c7a124821cfe24f80110b23b294ef0b92bf18799623a991b47e65e210f
+	b2sums = 09410278e8b075061e08dd20be9f12fadb672a33f202aff923abb2a9cc0bf3b4cf3711bd571c21c216303ee7beab2012e1ab64d911921f91e7994ae76af1ce85
+
+pkgname = firefox-snowflake
