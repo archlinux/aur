@@ -1,0 +1,9 @@
+[Unit]
+Description=Daemon for converting ~/.concierge to ~/.ssh/config
+
+[Service]
+ExecStart=/usr/bin/concierge -u None -o %h/.ssh/config
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
