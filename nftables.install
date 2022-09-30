@@ -1,0 +1,10 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  (( $(vercmp "$2" '1:0.9.9-1') > 0 )) || cat <<EOF
+==> Stopping/restarting the nftables service does NOT flush the ruleset anymore.
+==> The nftables.conf file requires a delete/flush directive to be restarted.
+==> See examples in /usr/share/nftables/ and /usr/share/doc/nftables/examples.
+==> The nftables service reload has been removed as it is now equivalent to a restart.
+EOF
+}
