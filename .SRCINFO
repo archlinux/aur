@@ -1,0 +1,23 @@
+pkgbase = emptyclip-git
+	pkgdesc = A top-down shooter RPG
+	pkgver = 24d67bd6
+	pkgrel = 1
+	url = https://emptyclip.gitlab.io
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gcc-libs
+	depends = sdl2
+	depends = sdl2_image
+	depends = openal
+	depends = libvorbis
+	depends = libogg
+	depends = freetype2
+	depends = sqlite
+	depends = zlib
+	conflicts = emptyclip
+	source = emptyclip-git::git+https://gitlab.com/emptyclip/code.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = emptyclip-git
