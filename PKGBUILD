@@ -1,6 +1,6 @@
 # Maintainer: Sundeep Mediratta <smedius@gmail.com>
 
-_pkgver='10'
+_pkgver='11'
 
 _basename='desktop-icons-ng'
 _extname="gtk4-${_basename}"
@@ -19,8 +19,8 @@ makedepends=('git' 'meson' 'glib2')
 conflicts=("${_shellextension}-${_basename}-git" "${_shellextension}-${_basename}")
 
 source=("${_extname}-${pkgver}.tar.gz::https://gitlab.com/smedius/${_basename}/-/archive/${_pkgver}/${_basename}-${_pkgver}.tar.gz")
-sha256sums=('b78bcd5371fa5026ac42ed3cf1cbc6d91d62f3b876873d51a3175237e7c7ebea')
-sha512sums=('efc36fbd5e8c38faf6576d45aecdfc460999765e82eabc35694d52fa0374afe68ce30ccccdf10275bc7306afe9532719c2e84d95dbed2d866552380af1b46b0a')
+sha256sums=('ce0467c2c8ed41745561eab656c65b1cc2e8e0f19850608d3f85991d804ad7b4')
+sha512sums=('32f46b394a6edebeb9dfca2ee6b3d8fa1fa02ee7ef91e6beaf1d691a4378564978d52534bb70144d6a2d44ebcbae2f308a3060c6727cc0891cc39a2c3a36bba7')
 
 package() {
 
