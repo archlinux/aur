@@ -1,7 +1,7 @@
 pkgbase = dtrx
 	pkgdesc = An intelligent archive extraction tool
 	pkgver = 8.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/dtrx-py/dtrx
 	arch = any
 	license = GPL3
