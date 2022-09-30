@@ -4,9 +4,11 @@ virtualenv ".venv" -p python3
 . ".venv/bin/activate"
 pip install --upgrade certifi
 pip3 install --upgrade llbase
-pip3 install --no-cache-dir --upgrade autobuild -i \
-	https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple \
-	--extra-index-url https://pypi.org/simple
+if $(command -v autobuild >/dev/null 2>&1) && [[ "$(autobuild --version)" == "autobuild 9.0.0" ]]; then
+	pip3 uninstall --yes autobuild
+fi
+pip3 install --no-cache --upgrade autobuild
+
 # we have a lot of files, relax ulimit to help performance
 ulimit -n 20000
 AUTOBUILD_CPU_COUNT=$(nproc)
@@ -39,4 +41,7 @@ autobuild configure -A 64 -c ReleaseOS -- \
 	-DVIEWER_CHANNEL="Alchemy Test"
 
 echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
-autobuild build -A64 -c ReleaseOS --no-configure
+# job count is not overrideable...
+#autobuild build -A64 -c ReleaseOS --no-configure
+cd build-linux-64
+ninja -j${AUTOBUILD_CPU_COUNT}
