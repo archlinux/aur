@@ -3,7 +3,7 @@
 pkgname=rofimoji-fuzzel-git
 pkgver=5.6.0.r0.gfd95a65
 pkgrel=1
-pkgdesc='Character picker for rofi'
+pkgdesc='Character picker for rofi (uses fuzzel instead of wofi)'
 arch=('any')
 url=https://github.com/fdw/rofimoji
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = rofimoji-fuzzel-git
-	pkgdesc = Character picker for rofi
+	pkgdesc = Character picker for rofi (uses fuzzel instead of wofi)
 	pkgver = 5.6.0.r0.gfd95a65
 	pkgrel = 1
 	url = https://github.com/fdw/rofimoji
@@ -16,8 +16,8 @@ pkgbase = rofimoji-fuzzel-git
 	optdepends = nerd-fonts: for the nerd_font character file
 	optdepends = wl-clipboard: for the Wayland clipboarder
 	optdepends = wtype: for the Wayland typer
-	provides = rofimoji-fuzzel
-	conflicts = rofimoji-fuzzel
+	provides = rofimoji
+	conflicts = rofimoji
 	source = git+https://github.com/fdw/rofimoji.git
 	source = fuzzel.patch
 	b2sums = SKIP
