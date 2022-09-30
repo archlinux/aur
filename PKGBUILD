@@ -6,27 +6,25 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-qt5-git
-pkgver=1.3.1.r299.gc5625d8d
+pkgver=1.4.0.r301.gc97a47dc
 pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme')
+depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5')
 provides=('polymc' 'polymc-qt5')
 conflicts=('polymc' 'polymc-qt5')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
 source=("git+https://github.com/PolyMC/PolyMC"
-        "git+https://github.com/PolyMC/libnbtplusplus"
-        "git+https://github.com/stachenov/quazip")
+        "git+https://github.com/PolyMC/libnbtplusplus")
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -37,8 +35,9 @@ pkgver() {
 prepare() {
   cd "PolyMC"
   git submodule init
-  git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
-  git config submodule.quazip.url "${srcdir}/quazip"
+  git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  git config submodule.libraries/quazip.active false
+  git config submodule.libraries/tomlplusplus.active false
   git submodule update
 }
 
@@ -48,13 +47,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR=5 \
+    -DBUILD_TESTING=OFF \
     -Bbuild -SPolyMC
   cmake --build build
-}
-
-check() {
-  cd "build"
-  ctest .
 }
 
 package() {
