@@ -1,11 +1,11 @@
 # maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 # contributor: Carl Rogers <carl.rogers@gmail.com>
-pkgname='levmar'
+pkgname=levmar
 pkgver=2.6
 pkgrel=3
 pkgdesc='Levenberg-Marquardt nonlinear least squares algorithms in C/C++'
 url='http://users.ics.forth.gr/~lourakis/levmar'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=('f2c' 'lapack')
 source=('http://users.ics.forth.gr/~lourakis/levmar/levmar-2.6.tgz')
