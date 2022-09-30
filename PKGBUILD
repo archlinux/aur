@@ -1,21 +1,26 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=emcee
 pkgname=python-${_pyname}-doc
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Documentation for Python emcee"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://emcee.readthedocs.io"
 license=('MIT')
-makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx' 'python-sphinx_rtd_theme' 'jupyter-nbconvert' 'pandoc' 'texlive-core' 'texlive-science' 'python-myst-nb' 'python-sphinx-book-theme')
+makedepends=("python-${_pyname}=${pkgver}"
+             'python-sphinx'
+             'python-setuptools'
+             'python-myst-nb'
+             'python-sphinx-book-theme'
+#            'python-sphinx_rtd_theme'
+#            'jupyter-nbconvert'
+#            'pandoc'
+             'texlive-core'
+             'texlive-science')
+#            'python-matplotlib'
+#            'python-celerite')
 source=("https://github.com/dfm/emcee/archive/v${pkgver}.tar.gz")
-md5sums=('8e3f039154fdca19c235970db1a316f7')
-
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-
-    sed -i "/myst_nb/a \    \'IPython\.sphinxext\.ipython_console_highlighting\'," conf.py
-}
+md5sums=('c0e7c64408c80180a02543b813667a99')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
