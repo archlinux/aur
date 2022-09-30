@@ -1,5 +1,5 @@
 pkgname=diesel-cli-git
-pkgver=2.0.0.r59.gb5b8cdb81
+pkgver=2.0.0.r61.gfe51ddd65
 pkgrel=1
 pkgdesc='CLI for the Diesel crate'
 arch=(i686 x86_64)
