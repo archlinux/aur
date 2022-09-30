@@ -1,0 +1,19 @@
+pkgbase = python2-pep517
+	pkgdesc = Wrappers to build Python packages using PEP 517 hooks
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/pypa/pep517
+	arch = any
+	license = MIT
+	checkdepends = python-mock
+	checkdepends = python-pytest-flake8
+	checkdepends = python-testpath
+	checkdepends = python-pip
+	makedepends = python2-setuptools
+	depends = python2-toml
+	depends = python2-importlib-metadata
+	depends = python2-zipp
+	source = https://pypi.io/packages/source/p/pep517/pep517-0.11.0.tar.gz
+	sha512sums = 4981aacef2b7bf86205a93753699c1af557a1af6e33214d8ecc99922ba48988a0cedd0e3194839f790c37b751d6caf3c85fd7538f0e33d15a7c97cf20174e4fd
+
+pkgname = python2-pep517
