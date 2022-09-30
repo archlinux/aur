@@ -13,6 +13,7 @@ depends=('multipath-tools' 'mpathconf' 'mdadm' 'libblockdev' 'libselinux'
          'python-six' 'python-pyudev' 'hawkey' 'python-pyparted' 'python-pykickstart')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+makedepends=('git')
 license=('LGPL2.1')
 url='http://fedoraproject.org/wiki/Blivet'
 source=("git+https://github.com/storaged-project/${_pkg}.git")

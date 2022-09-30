@@ -7,6 +7,7 @@ pkgbase = python-blivet-git
 	arch = i686
 	arch = pentium4
 	license = LGPL2.1
+	makedepends = git
 	depends = multipath-tools
 	depends = mpathconf
 	depends = mdadm
