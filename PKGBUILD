@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libchdr
 pkgname=$_pkgname-git
-pkgver=r153.5de1a59
+pkgver=r180.e02b3d6
 pkgrel=1
 pkgdesc="Standalone library for reading MAME's CHDv1-v5 formats"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -26,7 +26,8 @@ prepare() {
 
 build() {
 	cmake -S $_pkgname -B build \
-		-DBUILD_LTO=OFF \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DWITH_SYSTEM_ZLIB=ON \
 		-Wno-dev

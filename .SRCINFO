@@ -1,6 +1,6 @@
 pkgbase = libchdr-git
 	pkgdesc = Standalone library for reading MAME's CHDv1-v5 formats
-	pkgver = r153.5de1a59
+	pkgver = r180.e02b3d6
 	pkgrel = 1
 	url = https://github.com/rtissera/libchdr
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = libchdr-git
 	makedepends = cmake
 	makedepends = git
 	depends = zlib
-	provides = libchdr=r153.5de1a59
+	provides = libchdr=r180.e02b3d6
 	provides = libchdr.so
 	conflicts = libchdr
 	source = libchdr::git+https://github.com/rtissera/libchdr.git
