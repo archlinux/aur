@@ -1,17 +1,18 @@
-# Maintainer: Mees Valkenburg <`echo bWVlc3J1ZGlnZXJhcmRAbGl2ZS5ubAo= | base64 -d`>
+# Maintainer: JP Roemer <jp+aur@roemer.im>
+# Contributor: Mees Valkenburg <`echo bWVlc3J1ZGlnZXJhcmRAbGl2ZS5ubAo= | base64 -d`>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: rabyte <rabyte*gmail>
 
 pkgname='dtrx'
-pkgver='7.1'
-pkgrel='4'
-commit='671ccf7d1b7ea90a6e6e6cc44234ef14874d59bf'
+pkgver='8.4.0'
+pkgrel='1'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
-url='http://github.com/brettcs/dtrx'
+url='http://github.com/dtrx-py/dtrx'
 license=('GPL3')
-depends=('python2')
+depends=('python3')
+makedepends('python-setuptools')
 optdepends=(
   'tar: to extract tar, deb, and gem archives'
   'unzip: to extract zip archives'
@@ -27,11 +28,10 @@ optdepends=(
   'unshield: to extract InstallShield archives'
   'lha: to extract lzh archives'
 )
-
-md5sums=('SKIP')
-source=("git+http://github.com/brettcs/dtrx#commit=$commit")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('e96b87194481a54807763b33fc764d4de5fe0e4df6ee51147f72c0ccb3bed6fa')
 
 package() {
   cd "${srcdir}/${pkgname}"
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
 }

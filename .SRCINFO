@@ -1,11 +1,11 @@
 pkgbase = dtrx
 	pkgdesc = An intelligent archive extraction tool
-	pkgver = 7.1
-	pkgrel = 4
-	url = http://github.com/brettcs/dtrx
+	pkgver = 8.4.0
+	pkgrel = 1
+	url = http://github.com/dtrx-py/dtrx
 	arch = any
 	license = GPL3
-	depends = python2
+	depends = python
 	optdepends = tar: to extract tar, deb, and gem archives
 	optdepends = unzip: to extract zip archives
 	optdepends = cpio: to extract cpio and rpm archives
@@ -19,8 +19,7 @@ pkgbase = dtrx
 	optdepends = cabextract: to extract MS Cabinet archives
 	optdepends = unshield: to extract InstallShield archives
 	optdepends = lha: to extract lzh archives
-	source = git+http://github.com/brettcs/dtrx#commit=671ccf7d1b7ea90a6e6e6cc44234ef14874d59bf
-	md5sums = SKIP
+	source = dtrx-8.4.0.tar.gz::http://github.com/dtrx-py/dtrx/releases/download/8.4.0/dtrx-8.4.0.tar.gz
+	sha256sums = e96b87194481a54807763b33fc764d4de5fe0e4df6ee51147f72c0ccb3bed6fa
 
 pkgname = dtrx
-
