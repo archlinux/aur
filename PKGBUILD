@@ -1,8 +1,8 @@
 # Maintainer: Michael Prager <archlinuxaur@michaelprager.de>
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v3.6.RC1.r58.a5d64686d
-pkgrel=2
+pkgver=v3.6.RC2.r43.234bdb67e
+pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
 analysis with others."
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/golden-cheetah"
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags --exclude v3.5-RC2 | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
