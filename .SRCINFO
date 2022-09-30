@@ -6,6 +6,7 @@ pkgbase = mpir
 	install = mpir.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	makedepends = yasm
 	depends = gcc-libs
