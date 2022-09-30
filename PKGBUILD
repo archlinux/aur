@@ -5,7 +5,7 @@
 pkgname=xperia-flashtool
 _realname=flashtool
 pkgver=0.9.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('x86_64')
 url="http://www.flashtool.net/"
@@ -22,7 +22,7 @@ options=('!strip')
 package() {
   # Install program files
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
-  cp -rt "${pkgdir}/usr/lib/${pkgname}" FlashTool/*
+  cp -rt "${pkgdir}/usr/lib/${pkgname}" Flashtool/*
   # Install launcher scripts
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
