@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Booktab
+Comment="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
+Exec=/usr/bin/booktab
+Icon=booktab
+Terminal=false
+Type=Application
+Categories=Viewer;Literature;
