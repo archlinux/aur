@@ -1,0 +1,19 @@
+pkgbase = cskk-git
+	pkgdesc = SKK (Simple Kana Kanji henkan) library
+	pkgver = v0.10.2.r0.0f72f82
+	pkgrel = 1
+	url = https://github.com/naokiri/cskk
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	makedepends = cbindgen
+	makedepends = cargo-c
+	makedepends = glibc
+	depends = libxkbcommon
+	provides = cskk
+	conflicts = cskk
+	source = git+https://github.com/naokiri/cskk.git
+	md5sums = SKIP
+
+pkgname = cskk-git
