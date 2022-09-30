@@ -1,11 +1,14 @@
 pkgbase = zoem
 	pkgdesc = Zoem programming language
-	pkgver = 11.166
-	pkgrel = 2
+	pkgver = 21.341
+	pkgrel = 1
 	url = https://micans.org/zoem/
 	arch = x86_64
 	license = GPL2
-	source = https://micans.org/zoem/src/zoem-11-166.tar.gz
-	sha256sums = 1267a222ae2ee998a91dbe66df19cf998a0e7db45c7e59821049ae6b791f37fe
+	makedepends = cimfomfa
+	depends = readline
+	options = makeflags
+	source = https://micans.org/zoem/src/zoem-21-341.tar.gz
+	sha256sums = 370efc7f999572888f4e722cbff40efba395a5435f192e734e7ff87810a68768
 
 pkgname = zoem
