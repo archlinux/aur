@@ -2,6 +2,7 @@
 # Contributor: Arnaud Dovi <mr.dovi@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
+# Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
 pkgver=10.1.2.r312.3e245c6f8
@@ -19,7 +20,7 @@ conflicts=(
 )
 depends=(
   'bash'
-  'java-environment=11'
+  'java-environment=17'
   'polkit'
 )
 makedepends=(
@@ -58,8 +59,8 @@ prepare() {
 
   # Check Java version (thanks @ignapk)
   JDK_VERSION=$(java -version 2>&1)
-  if [[ ! $JDK_VERSION =~ 11\.0 ]]; then
-    echo "FAILURE: You seem to have jdk11 installed correctly but your system defaults to another java version. To enable jdk11 please type: sudo archlinux-java set java-11-openjdk"
+  if [[ ! $JDK_VERSION =~ 17\.0 ]]; then
+    echo "FAILURE: You seem to have jdk17 installed correctly but your system defaults to another java version. To enable jdk17 please type: sudo archlinux-java set java-17-openjdk"
     exit 1
   fi
 
