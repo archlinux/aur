@@ -1,0 +1,14 @@
+pkgbase = pytranscriber-wl-bin
+	pkgdesc = UI for generating transcription (subtitles) using Google Speech Recognition (Wayland)
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/raryelcostasouza/pyTranscriber
+	arch = x86_64
+	license = GPL
+	depends = libgl
+	options = !strip
+	options = !zipman
+	source = https://github.com/raryelcostasouza/pyTranscriber/releases/download/v1.8-stable/pyTranscriber-v1.8-linux-gnome40-wayland-portable.zip
+	sha256sums = a23835c09c496f564adcc8076d068f197e283ef8a16fec0e29f23586c75119b4
+
+pkgname = pytranscriber-wl-bin
