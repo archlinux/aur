@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MemeBox
+Description=Manage and trigger media in OBS as a browser source
+Exec=/usr/bin/memebox %u
+Icon=memebox
+Terminal=false
+Categories=Office;Presentation;
+StartupWMClass=MemeBox
