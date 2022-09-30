@@ -1,0 +1,153 @@
+From c13be39c510f5b697d135aac8d36fff757b7980d Mon Sep 17 00:00:00 2001
+From: Chinmay Dalal <dalal.chinmay.0101@gmail.com>
+Date: Fri, 30 Sep 2022 02:01:00 +0530
+Subject: [PATCH] change to fuzzel
+
+---
+ src/picker/docs/rofimoji.1    |  6 +++---
+ src/picker/docs/rofimoji.1.md |  6 +++---
+ src/picker/rofimoji.py        |  4 ++--
+ src/picker/selector.py        | 25 +++++++++++++------------
+ 4 files changed, 21 insertions(+), 20 deletions(-)
+
+diff --git a/src/picker/docs/rofimoji.1 b/src/picker/docs/rofimoji.1
+index ed6e487..6da100a 100644
+--- a/src/picker/docs/rofimoji.1
++++ b/src/picker/docs/rofimoji.1
+@@ -98,11 +98,11 @@ Choose the application to type with manually.
+ .RE
+ .TP
+ --selector \f[I]SELECTOR\f[R]
+-Possible values: rofi, wofi
++Possible values: rofi, fuzzel
+ .RS
+ .PP
+ Choose the selector application manually.
+-Usually \f[V]rofi\f[R], but for Wayland, you may want \f[V]wofi\f[R].
++Usually \f[V]rofi\f[R], but for Wayland, you may want \f[V]fuzzel\f[R].
+ # KEYBINDINGS
+ .RE
+ .PP
+@@ -123,7 +123,7 @@ character (alt+2 for the second most recently one etc.)
+ .PP
+ \f[I]alt+i\f[R] to copy the Unicode codepoint to the clipboard
+ .PP
+-Please note that wofi does not support keybindings other than
++Please note that fuzzel does not support keybindings other than
+ \f[I]enter\f[R].
+ .SH FILES
+ .TP
+diff --git a/src/picker/docs/rofimoji.1.md b/src/picker/docs/rofimoji.1.md
+index 6a37d48..38354ff 100644
+--- a/src/picker/docs/rofimoji.1.md
++++ b/src/picker/docs/rofimoji.1.md
+@@ -78,9 +78,9 @@ Select, insert, or copy Unicode characters like emoji using rofi.
+ 
+ \--selector _SELECTOR_
+ 
+-: Possible values: rofi, wofi
++: Possible values: rofi, fuzzel
+ 
+-      Choose the selector application manually. Usually `rofi`, but for Wayland, you may want `wofi`.
++      Choose the selector application manually. Usually `rofi`, but for Wayland, you may want `fuzzel`.
+ # KEYBINDINGS
+ 
+ (optional) Select multiple emoji with shift+enter
+@@ -99,7 +99,7 @@ Select, insert, or copy Unicode characters like emoji using rofi.
+ 
+ *alt+i* to copy the Unicode codepoint to the clipboard
+ 
+-Please note that wofi does not support keybindings other than *enter*.
++Please note that fuzzel does not support keybindings other than *enter*.
+ 
+ # FILES
+ 
+diff --git a/src/picker/rofimoji.py b/src/picker/rofimoji.py
+index dd4a895..fd38ca5 100755
+--- a/src/picker/rofimoji.py
++++ b/src/picker/rofimoji.py
+@@ -104,7 +104,7 @@ def parse_arguments(self) -> argparse.Namespace:
+             dest='selector_args',
+             action='store',
+             default=False,
+-            help='A string of arguments to give to the selector (rofi or wofi)'
++            help='A string of arguments to give to the selector (rofi or fuzzel)'
+         )
+         parser.add_argument(
+             '--max-recent',
+@@ -126,7 +126,7 @@ def parse_arguments(self) -> argparse.Namespace:
+             dest='selector',
+             action='store',
+             type=str,
+-            choices=['rofi', 'wofi'],
++            choices=['rofi', 'fuzzel'],
+             default=None,
+             help='Choose the application to select the characters with'
+         )
+diff --git a/src/picker/selector.py b/src/picker/selector.py
+index 255f4f1..d942b98 100644
+--- a/src/picker/selector.py
++++ b/src/picker/selector.py
+@@ -126,14 +126,14 @@ def show_skin_tone_selection(self, skin_tones: str, prompt: str, additional_args
+         return rofi.returncode, rofi.stdout
+ 
+ 
+-class Wofi(Selector):
++class Fuzzel(Selector):
+     @staticmethod
+     def supported() -> bool:
+-        return is_wayland() and is_installed('wofi')
++        return is_wayland() and is_installed('fuzzel')
+ 
+     @staticmethod
+     def name() -> str:
+-        return 'wofi'
++        return 'fuzzel'
+ 
+     def show_character_selection(
+             self,
+@@ -144,29 +144,30 @@ def show_character_selection(
+             additional_args: List[str]
+     ) -> Tuple[Union[Action, DEFAULT, CANCEL], Union[str, Shortcut]]:
+         parameters = [
+-            'wofi',
++            'fuzzel',
+             '--dmenu',
+-            '--allow-markup',
+-            '-i',
++            '-w',
++            '70',
+             '-p',
+             prompt,
+             *additional_args
+         ]
+ 
+-        wofi = run(
++        fuzzel = run(
+             parameters,
+             input=characters,
+             capture_output=True,
+             encoding='utf-8'
+         )
+-        return DEFAULT(), wofi.stdout
++        return DEFAULT(), fuzzel.stdout
+ 
+     def show_skin_tone_selection(self, skin_tones: str, prompt: str, additional_args: List[str]) -> Tuple[int, str]:
+-        wofi = run(
++        fuzzel = run(
+             [
+-                'wofi',
++                'fuzzel',
+                 '--dmenu',
+-                '-i',
++                '-w',
++                '70',
+                 '-p',
+                 prompt,
+                 *additional_args
+@@ -176,4 +177,4 @@ def show_skin_tone_selection(self, skin_tones: str, prompt: str, additional_args
+             encoding='utf-8'
+         )
+ 
+-        return wofi.returncode, wofi.stdout
++        return fuzzel.returncode, fuzzel.stdout
