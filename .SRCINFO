@@ -1,6 +1,6 @@
 pkgbase = sphinxcontrib-adadomain
 	pkgdesc = Adds Ada domain support to Sphinx.
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://bitbucket.org/tkoskine/sphinxcontrib-adadomain
 	arch = any
@@ -10,4 +10,3 @@ pkgbase = sphinxcontrib-adadomain
 	sha256sums = b7680ae711290c9a300234dccb6afad0956b1a6af011ee6ae4dbf2f152aeef10
 
 pkgname = sphinxcontrib-adadomain
-
