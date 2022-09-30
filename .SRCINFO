@@ -1,13 +1,13 @@
 pkgbase = conceal
 	pkgdesc = A trash collector.
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/TD-Sky/conceal
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = skim
-	source = conceal-0.1.0.tar.gz::https://github.com/TD-Sky/conceal/archive/v0.1.0.tar.gz
-	sha256sums = 11457b8373da8b04f33d12ce2431e44c7af980c6364abd834f24a249548414d1
+	source = conceal-0.1.2.tar.gz::https://github.com/TD-Sky/conceal/archive/v0.1.2.tar.gz
+	sha256sums = 009b5d64d4b43f8624d462dd90d491a68a35f4110ca3856b0a09b5116983c131
 
 pkgname = conceal
