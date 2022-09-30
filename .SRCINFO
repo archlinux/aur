@@ -1,14 +1,13 @@
 pkgbase = r-forestplot
 	pkgdesc = Advanced Forest Plot Using 'grid' Graphics
-	pkgver = 2.0.1
-	pkgrel = 4
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=forestplot
 	arch = any
 	license = GPL
 	depends = r
+	depends = r-abind
 	depends = r-checkmate
-	depends = r-magrittr
-	optdepends = r-abind
 	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-rlang
@@ -16,7 +15,7 @@ pkgbase = r-forestplot
 	optdepends = r-rmeta
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/forestplot_2.0.1.tar.gz
-	sha256sums = d143fcb567ce845de96d4e9293aefca4f53e97f55a3715f10d5862a0b989fc2f
+	source = https://cran.r-project.org/src/contrib/forestplot_3.0.0.tar.gz
+	sha256sums = 4fbe20b69d96609503e58354708af1c7464b57f415dde7b09345d305b627feac
 
 pkgname = r-forestplot

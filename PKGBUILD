@@ -1,21 +1,20 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=forestplot
-_pkgver=2.0.1
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.1
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Advanced Forest Plot Using 'grid' Graphics"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-abind
   r-checkmate
-  r-magrittr
 )
 optdepends=(
-  r-abind
   r-dplyr
   r-knitr
   r-rlang
@@ -25,7 +24,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d143fcb567ce845de96d4e9293aefca4f53e97f55a3715f10d5862a0b989fc2f')
+sha256sums=('4fbe20b69d96609503e58354708af1c7464b57f415dde7b09345d305b627feac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
