@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=google-lyra-git
-pkgver=0.0.2.r0.g4d759ef
+pkgver=1.2.0.r0.gc2395ff
 pkgrel=1
 pkgdesc="A very low-bitrate codec for speech compression"
 arch=('i686' 'x86_64')
 url="https://github.com/google/lyra"
 license=('apache')
 depends=('gcc-libs')
-makedepends=('git' 'bazel')
-provides=('google-lyra')
+makedepends=('git' 'bazel' 'python-numpy')
+provides=("google-lyra=$pkgver")
 conflicts=('google-lyra')
 source=("git+https://github.com/google/lyra.git")
 sha256sums=('SKIP')
@@ -24,21 +24,19 @@ pkgver() {
 build() {
   cd "lyra"
 
-  # does not work with ccache
-  #export CC="/usr/bin/gcc"
-  #export CXX="/usr/bin/g++"
-
   bazel \
     build \
     -c opt \
-    :encoder_main \
-    :decoder_main
+    :decoder_main \
+    :encoder_main
 }
 
 check() {
   cd "lyra"
 
-  #bazel test //:all
+  #bazel \
+  #  test \
+  #  //:all
 }
 
 package() {
