@@ -1,0 +1,18 @@
+pkgbase = python2-distro
+	pkgdesc = Linux OS platform information API
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/python-distro/distro
+	arch = any
+	license = Apache
+	checkdepends = python2-pytest
+	makedepends = python-sphinx
+	makedepends = python2-setuptools
+	options = !makeflags
+	source = https://github.com/python-distro/distro/archive/v1.6.0/python2-distro-1.6.0.tar.gz
+	sha512sums = 48cff21ea152ec57c4505a72ffb1af5a138199f10ea908e138d16f48732f602a5b4f8bec2ee76b629981a1625453adf1b6895f4573229002b3b3ff7b76efbede
+	b2sums = 558c4b1fcb93882b589375dd719f0f6100e4a78bbe9f167821c1588f82abbe00afd68f22f191f3722f0dd4358d76a6e295c8e69af29fdcd6ba7399d927e96f1c
+
+pkgname = python2-distro
+	depends = python2
+	depends = python2-setuptools
