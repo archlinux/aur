@@ -1,7 +1,7 @@
 pkgname=webcord
-pkgver=3.8.4
+pkgver=3.8.5
 pkgrel=1
-pkgdesc="A Discord and Fosscord client made with the Electron."
+pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
 _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
@@ -20,10 +20,10 @@ source=(
 )
 
 sha256sums=(
-    '76c7eb0166419f99549ca2a869e82ce2b9d303021471d242a84a3c4e811b157a'
+    '948e1e41b1cdac4030b5e87fe3bf24fc062b05af29b930113bd4e52a63a2cca9'
     '09fdd4b51af5c87480dceb52fe67e5666720f56e1f98c1aa567b5ca6699e261f'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
-    '3a9b6df6be84741b5839d559301b95cb75e012fd7f20f3f8eac10cc11bccc4a1'
+    '43ccf5216bb029deb2af2792218b35793f930200117f5bf8201a2406f66af583'
 )
 
 prepare() {

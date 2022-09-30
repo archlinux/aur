@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=WebCord
-Comment=A Discord and Fosscord client made with the Electron API.
+Comment=A Discord and Fosscord client made with the Electron API
 GenericName=Internet Messenger
 Exec=webcord %U
 Icon=webcord
