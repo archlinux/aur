@@ -12,9 +12,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gps"
 license=('GPL')
 
-depends=("clang"            "ada_language_server"
-         "gnatcoll-python2" "gnatcoll-xref"    "gnatcoll-db2ada" "gtkada"
-         "python2-gobject"  "python2-gobject2" "python2-cairo"   "python2-yaml")
+depends=("clang"           "ada_language_server"
+         "gnatcoll-python" "gnatcoll-xref"    "gnatcoll-db2ada" "gtkada"
+         "python-gobject"  "python-cairo"     "python-yaml")
+#         "python-gobject" "python-gobject2"  "python-cairo"   "python-yaml")
 
 makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
@@ -63,7 +64,8 @@ build()
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
 
   export BUILD=Production
-  make -j1 OS=unix PROCESSORS=0 BUILD=Production PRJ_BUILD=Release LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.10 -gargs"
+  make -j1 OS=unix PROCESSORS=0 BUILD=Production PRJ_BUILD=Release LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython3.10 -gargs"
+#  make -j1 OS=unix PROCESSORS=0 BUILD=Production PRJ_BUILD=Release LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.10 -gargs"
 #  make -C docs all     ### Docs are currently broken.
 }
 
@@ -86,13 +88,13 @@ package()
 
   # Add no longer available Python 2.7 packages.
   #
-  mkdir -p "$pkgdir/usr/lib/python2.7/site-packages"
+#  mkdir -p "$pkgdir/usr/lib/python2.7/site-packages"
  
-  pushd "$srcdir/site-packages"
-  for file in $(find . -type f); do
-    install -m 644 -D ${file} "$pkgdir/usr/lib/python2.7/site-packages"/${file#source/}
-  done
-  popd
+#  pushd "$srcdir/site-packages"
+#  for file in $(find . -type f); do
+#    install -m 644 -D ${file} "$pkgdir/usr/lib/python2.7/site-packages"/${file#source/}
+#  done
+#  popd
 
   # Add the desktop config.
   install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/gps.desktop"
