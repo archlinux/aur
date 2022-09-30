@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-jaraco.packaging
 _name=${pkgname#python-}
-pkgver=9.1.0
+pkgver=9.1.1
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-build')
 makedepends=('python-installer' 'python-setuptools-scm' 'python-wheel')
 #makedepends+=('python-pip' 'python-rst.linker' 'python-sphinx') # for building docs
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('17d1879215bf6a1ff236c0b2bdfdd5f9fa5abc995de35623e7b55206f5f9a668')
+sha256sums=('70aa6e1834d6698d57f9a490e453fcadf7b804a131caf88321d590bf0b49cd6e')
 
 build() {
   cd "$_name-$pkgver"
