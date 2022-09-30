@@ -1,7 +1,7 @@
 pkgbase = obs-gphoto
 	pkgdesc = Allows connect DSLR cameras with obs-studio through gPhoto on Linux
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maaleske/obs-gphoto
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = obs-gphoto
 	makedepends = cmake
 	makedepends = git
 	makedepends = libcaption
-	depends = obs-studio
+	depends = obs-studio>=28
 	depends = libgphoto2
 	source = obs-gphoto-0.5.0.tar.gz::https://github.com/maaleske/obs-gphoto/archive/v0.5.0.tar.gz
 	sha256sums = 6f1303582ea89f2f3203f86620ff5aeba66b5c83a8924c69e648845ae9fe2ba7
