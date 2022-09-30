@@ -38,7 +38,7 @@ package() {
   cd "${_name}-${_name}_${pkgver}" || exit
 
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
