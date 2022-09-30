@@ -1,7 +1,7 @@
 pkgbase = archi
 	pkgdesc = Free, open source, cross-platform tool and editor to create ArchiMate models.
 	pkgver = 4.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.archimatetool.com/
 	arch = x86_64
 	license = MIT
