@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo "You need to provide you own configuration file."
+	echo "The configuration directory is /etc/psiphon/ (for system service) and \$XDG_CONFIG_HOME/psiphon/ (for user service)."
+	echo "See the repository's README for how to use: https://github.com/Psiphon-Labs/psiphon-tunnel-core"
+	echo
+}

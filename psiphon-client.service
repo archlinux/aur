@@ -1,0 +1,12 @@
+[Unit]
+Description=Psiphon Proxy Client Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=%E/psiphon/
+ExecStart=/usr/bin/psiphon-console-client -config client.config -formatNotices
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
