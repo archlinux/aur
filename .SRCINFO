@@ -1,6 +1,6 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 10.1.2.r312.3e245c6f8
+	pkgver = 10.1.5.r1454.b88cf85d5
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ghidra-git
 	makedepends = gradle
 	makedepends = unzip
 	depends = bash
-	depends = java-environment=11
+	depends = java-environment=17
 	depends = polkit
 	provides = ghidra
 	conflicts = ghidra
