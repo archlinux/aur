@@ -1,7 +1,7 @@
 pkgbase = cef-minimal-obs-rc-bin
 	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio beta release in /opt/cef-obs
 	pkgver = 103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/obsproject/cef/tree/5060-shared-textures
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cef-minimal-obs-rc-bin
 	depends = pango
 	depends = libxrandr
 	depends = libxcomposite
-	depends = at-spi2-atk
+	depends = at-spi2-core
 	depends = libxkbcommon
 	depends = libcups
 	depends = mesa
