@@ -1,7 +1,7 @@
 pkgbase = unicorn-git
 	pkgdesc = Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU
-	pkgver = 2.0.0.r34.ga0e119c6
-	pkgrel = 2
+	pkgver = 2.0.0.r50.g2a3cc7a1
+	pkgrel = 1
 	url = http://www.unicorn-engine.org
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = unicorn-git
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = ruby
-	provides = unicorn=2.0.0.r34.ga0e119c6
+	provides = unicorn=2.0.0.r50.g2a3cc7a1
 	conflicts = unicorn
 	options = !emptydirs
 	options = debug
@@ -28,13 +28,13 @@ pkgname = python-unicorn-git
 	depends = python
 	depends = unicorn
 	depends = python-setuptools
-	provides = python-unicorn=2.0.0.r34.ga0e119c6
+	provides = python-unicorn=2.0.0.r50.g2a3cc7a1
 	conflicts = python-unicorn
 
 pkgname = ruby-unicorn-engine-git
 	depends = ruby
 	depends = unicorn
-	provides = ruby-unicorn-engine=2.0.0.r34.ga0e119c6
+	provides = ruby-unicorn-engine=2.0.0.r50.g2a3cc7a1
 	conflicts = ruby-unicorn-engine
 	replaces = ruby-unicorn
 	replaces = ruby-unicorn-git

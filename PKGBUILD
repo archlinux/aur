@@ -4,8 +4,8 @@
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-engine-git')
-pkgver=2.0.0.r34.ga0e119c6
-pkgrel=2
+pkgver=2.0.0.r50.g2a3cc7a1
+pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
     python const_generator.py ruby
   )
   (cd bindings/python
-    python setup.py build
+    LIBUNICORN_PATH="../../build" python setup.py build
   )
   (cd bindings/ruby/unicorn_gem
     gem build unicorn-engine.gemspec
@@ -65,6 +65,7 @@ package_python-unicorn-git() {
   conflicts=(python-unicorn)
   cd ${pkgbase}/bindings/python
   python setup.py install --root="${pkgdir}" -O1 --skip-build
+  rm -r "${pkgdir}/usr/lib/"python*/site-packages/unicorn/{include,lib}
   install -Dm 644 sample* shellcode.py -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
