@@ -1,0 +1,22 @@
+pkgbase = nft-fullcone-dkms-git
+	pkgdesc = nftables fullcone expression kernel module
+	pkgver = r3.0d3e2be
+	pkgrel = 1
+	url = https://github.com/fullcone-nat-nftables/nft-fullcone
+	arch = any
+	license = Unknown
+	makedepends = git
+	depends = dkms
+	optdepends = nftables-fullcone: nftables with fullcone
+	provides = nft-fullcone
+	conflicts = nft-fullcone
+	source = nft-fullcone.conf
+	source = dkms.conf
+	source = Kbuild
+	source = nft-fullcone-dkms-git::git+https://github.com/fullcone-nat-nftables/nft-fullcone.git
+	sha256sums = 7d903951298aea2ae93c92c940986c123bcedd5dd257e7961fdce88aaf301e02
+	sha256sums = 52b241ac66e906455aeed70e7a1c68941a1782342088c306a1a6428705007c87
+	sha256sums = 7b2e2cd7c465a679e7481817768e066ac86c37b6a5e630d61c73f2cc20151953
+	sha256sums = SKIP
+
+pkgname = nft-fullcone-dkms-git
