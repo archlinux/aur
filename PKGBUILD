@@ -1,14 +1,14 @@
 # Maintainer: Cedric Mamo <vrighter@gmail.com>
 pkgname=digisim-git
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="A digital logic simulator programmed in lua"
 arch=('x86_64')
 url=""
 license=('unknown')
 groups=()
 depends=('luajit')
-makedepends=('git' 'zig-git')
+makedepends=('git' 'zig')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
