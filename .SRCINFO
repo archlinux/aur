@@ -1,0 +1,13 @@
+pkgbase = chromium-extension-ublock-origin-bin
+	pkgdesc = An efficient blocker - chromium extension (binary version)
+	pkgver = 1.44.4
+	pkgrel = 1
+	url = https://github.com/noahvogt/chromium-extension-ublock-origin-aur
+	arch = any
+	license = GPL3
+	provides = chromium-extension-ublock-origin
+	conflicts = chromium-extension-ublock-origin
+	source = https://github.com/noahvogt/chromium-extension-ublock-origin-aur/releases/download/1.44.4-1/chromium-extension-ublock-origin-1.44.4-1-any.pkg.tar.zst
+	sha256sums = 24fb905ca9016b90d61d099243f0c865dfc5be33e42f1f1a0568afa368af8c41
+
+pkgname = chromium-extension-ublock-origin-bin
