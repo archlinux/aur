@@ -4,7 +4,7 @@ _pkgname=netns-helper
 pkgname=netns-helper-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=r46.d9381ec
+pkgver=r68.c32c9c5
 pkgrel=1
 pkgdesc='Helper systemd services to create network namespaces for other programs and services.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -14,7 +14,7 @@ arch=('any')
 optdepends=(
 	'nftables: nat feature'
 	'bash-completion')
-makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml' 'cmake')
 sha256sums=('SKIP')
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
 options=('!strip')
@@ -28,15 +28,12 @@ pkgver() {
 }
 
 build() {
-	mkdir -p "build/man" && cd "build/man"
-	xsltproc 'http://docbook.sourceforge.net/release/xsl-ns/current/manpages/docbook.xsl' "${srcdir}/${_pkgname}/man/manual.xml"
+	cmake -S "${_pkgname}" -B 'build' -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build 'build'
 }
 
 package() {
-	cd "${_pkgname}"
+	DESTDIR="${pkgdir}" cmake --install 'build'
 	
-	DESTDIR="${pkgdir}" PREFIX=/usr ./install.sh
-	
-	install -Dm644 "${srcdir}/build/man/"* -t "${pkgdir}/usr/share/man/man1"
-	install -Dm644 'license.txt' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm644 "${_pkgname}/license.txt" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
