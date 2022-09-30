@@ -1,0 +1,18 @@
+pkgbase = bspc-padman-git
+	pkgdesc = Quake 3 BSP-to-AAS compiler, WorldOfPadman version
+	pkgver = 1659723467.168.6417739
+	pkgrel = 1
+	url = https://github.com/PadWorld-Entertainment/bspc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = bspc
+	provides = bspc-padman
+	conflicts = bspc
+	conflicts = bspc-padman
+	source = git+https://github.com/PadWorld-Entertainment/bspc.git
+	md5sums = SKIP
+
+pkgname = bspc-padman-git
