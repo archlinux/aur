@@ -16,6 +16,7 @@ pkgbase = cryptomator
 	depends = libnet
 	depends = libxrender
 	optdepends = keepassxc-cryptomator: Use KeePassXC to store vault passwords
+	optdepends = ttf-hanazono: Install this font when using Japanese system language
 	options = !strip
 	source = cryptomator-1.6.14.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.6.14.tar.gz
 	source = cryptomator-1.6.14.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.6.14/cryptomator-1.6.14.tar.gz.asc
