@@ -1,6 +1,6 @@
 pkgbase = quartz-messenger
 	pkgdesc = libquartz based messenger
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = http://bultek.synchron.com.ua/bultekdev/software/quartz-messenger
 	arch = x86_64
