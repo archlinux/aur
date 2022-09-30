@@ -1,6 +1,6 @@
 # Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux54
+# https://gitlab.manjaro.org/packages/core/linux515
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -11,9 +11,6 @@
 # Maintainer: Joan Figueras
 # Contributor: Torge Matthies
 # Contributor: Jan Alexander Steffens (heftig)
-# Contributor: Yoshi2889
-# Contributor: Tobias Powalowski
-# Contributor: Thomas Baechler
 
 
 ##
@@ -68,14 +65,16 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+if [ -z ${_makenconfig} ]; then
+  _makenconfig=n
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-manjaro-xanmod-lts
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.10
-pkgver=${_major}.83
+_major=5.15
+pkgver=${_major}.70
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -83,7 +82,7 @@ pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="80d6abc298396d84fa5675dac947b9449bc5d881" # 5.10.83-1
+__commit="916fd5ee214c61050d526f5f0ecf62b7782d1f3f" # 5.15.70
 
 license=(GPL2)
 makedepends=(
@@ -100,12 +99,12 @@ _srcname="linux-${pkgver}-xanmod${xanmod}-lts"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz")
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43' # linux-5.4.tar.xz
-            'SKIP'                                                             #            .sign
-            '8bb92e28f3631b0263eaa9aa335d38b4b8ea2888885ffbebd9f7f9d6c261205d' # xanmod
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee' # choose-gcc-optimization.sh
-            'f9d6844152db56a795820cc21795e22b51a84c341d5c30fa18ad0d913af03696') # manjaro
+        "https://gitlab.manjaro.org/packages/core/linux${_major//.}/-/archive/${__commit}/linux${_major//.}-${__commit}.tar.gz")
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
+            'SKIP'                                                              #        tar.sign
+            '1a0abb6959e8774d07f6bae0ef01985b8bdc55a8224d0e6a0feb48c84e663626'  # xanmod
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
+            '07157806cedfe567fc76b3f6122d32a1024c35c9a1685ef6d7336bb81165c21f') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -145,19 +144,20 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux510-$__commit/0103-futex.patch              # remove conflicting patches
-  rm ../linux510-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
-  rm ../linux510-$__commit/0105-ucsi-acpi.patch
-  rm ../linux510-$__commit/0106-ucsi.patch
-  rm ../linux510-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
+  
+  # remove conflicting patches
+  rm ../linux${_major//.}-$__commit/0103-futex.patch              
+  rm ../linux${_major//.}-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux${_major//.}-$__commit/0202-mt76-mt7921-add-support-for-PCIe-ID-0x7922-0x0608-0x0616.patch
+  rm ../linux${_major//.}-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
 
   local _patch
-  for _patch in ../linux510-$__commit/*; do
+  for _patch in ../linux${_major//.}-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux510-$__commit/$_patch"
+      patch -Np1 < "../linux${_major//.}-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux510-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux${_major//.}-$__commit/0413-bootsplash.gitpatch"
 
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
@@ -201,7 +201,7 @@ prepare() {
   scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "manjaro"
 
   # Let's user choose microarchitecture optimization in GCC
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  ../choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
@@ -242,8 +242,9 @@ prepare() {
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
-
+  if [ "$_makenconfig" = "y" ]; then
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  fi
   # save configuration for later reuse
   cat .config > "${SRCDEST}/config.last"
 }
@@ -302,11 +303,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [ -f "$builddir/tools/bpf/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -316,15 +317,18 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg2 "Removing unneeded architectures..."
@@ -361,6 +365,7 @@ _package-headers() {
 
   msg2 "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
+  
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
