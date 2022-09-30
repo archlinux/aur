@@ -11,7 +11,7 @@ pkgdesc='A small Python module for determining appropriate platform-specific dir
 arch=('any')
 url="https://github.com/ActiveState/${_name}"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python2-setuptools')
 source=("https://pypi.io/packages/source/a/${_name}/${_name}-${pkgver}.tar.gz")
 sha512sums=('8b0cdd9fd471d45b186aa47607691cf378dabd3edc7b7026a57bd6d6f57698e86f440818a5e23ba4288b35d6bb8cb6eb0106eae8aab09d8863ee15025d300883')
 
