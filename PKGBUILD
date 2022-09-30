@@ -1,23 +1,16 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Gustavo Ramos Rehermann <rehermann6046@gmail.com>
+
 pkgname=bspc-padman-git
 _srcname=bspc
 pkgver=1659723467.168.6417739
 pkgrel=1
-pkgdesc="Quake 3 BSP-to-AAS compiler, WorldOfPadman version"
+pkgdesc="Quake 3 BSP-to-AAS compiler, to create bot navigation meshes. WorldOfPadman version"
 arch=("x86_64")
 url="https://github.com/PadWorld-Entertainment/bspc"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('git' 'cmake' 'ninja') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cmake' 'ninja')
 optdepends=()
 provides=("bspc" "bspc-padman")
 conflicts=("bspc" "bspc-padman")

@@ -1,5 +1,5 @@
 pkgbase = bspc-padman-git
-	pkgdesc = Quake 3 BSP-to-AAS compiler, WorldOfPadman version
+	pkgdesc = Quake 3 BSP-to-AAS compiler, to create bot navigation meshes. WorldOfPadman version
 	pkgver = 1659723467.168.6417739
 	pkgrel = 1
 	url = https://github.com/PadWorld-Entertainment/bspc
