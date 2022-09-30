@@ -1,0 +1,17 @@
+pkgbase = libnftnl-fullcone
+	pkgdesc = Netfilter library providing interface to the nf_tables subsystem (with fullcone patch)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/fullcone-nat-nftables/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libmnl
+	depends = nft-fullcone
+	provides = libnftnl
+	conflicts = libnftnl
+	source = libnftnl-fullcone::git+https://github.com/fullcone-nat-nftables/libnftnl-1.2.3-with-fullcone.git
+	validpgpkeys = 37D964ACC04981C75500FB9BD55D978A8A1420E4
+	sha256sums = SKIP
+
+pkgname = libnftnl-fullcone
