@@ -11,7 +11,7 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=106.0.5249.61
+pkgver=106.0.5249.91
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=2
@@ -40,7 +40,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-roll-src-third_party-ffmpeg-m106.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('f27acb929b12fc9e60b035c2f9f1879866eec7cfe1665dccf544048e9e931497'
+sha256sums=('5740496b406db5357e2dad131e1ed2cd1c5831732df7aea5f21036ece8e7549a'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121'
             'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
