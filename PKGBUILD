@@ -9,8 +9,13 @@ url="https://gitlab.com/spade-lang/swim.git"
 license=('EUPL-1.2')
 sha256sums=('SKIP')
 depends=('gcc-libs' 'git')
-optdepends=('nextpnr-ice40-nightly: uploading to iCE40-devices'
-            'nextpnr-ecp5-nightly: uploading to ECP5-devices'
+optdepends=('fujprog: upload to devices supported by fujprog'
+            'icestorm-nightly: pack and upload to iCE40-devices'
+            'nextpnr-ice40-nightly: pnr for iCE40-devices'
+            'nextpnr-ecp5-nightly: pnr for ECP5-devices'
+            'openocd: upload to devices supported by openocd'
+            'prjtrellis-nightly: utilities for ECP5-devices'
+            'tinyprog: upload to devices supported by tinyprog'
             'yosys-nightly: synthesising using the yosys suite')
 makedepends=('rust')
 source=("git+$url")
