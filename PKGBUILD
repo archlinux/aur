@@ -1,3 +1,4 @@
+# Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=yaskkserv2-bin
 pkgver=0.1.5
 pkgrel=1
