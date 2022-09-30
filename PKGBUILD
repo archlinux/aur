@@ -1,6 +1,6 @@
 # Maintainer: zehkira <KHNhbWUgYXMgbXkgbmFtZSkgYXQgcG0gbWU=>
 pkgname="myuzi"
-pkgver="v1.4.0"
+pkgver="v1.4.1"
 pkgrel=1
 pkgdesc="Spotify alternative with no ads, payments or accounts"
 arch=("any")
@@ -11,7 +11,7 @@ source=("https://gitlab.com/zehkira/myuzi/-/archive/$pkgver/$pkgname-$pkgver.tar
 sha256sums=("SKIP")
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver/source"
 	python setup.py install --root="$pkgdir" --optimize=1
 	make prefix="$pkgdir/usr" install
 }
