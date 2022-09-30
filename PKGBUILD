@@ -2,7 +2,7 @@
 
 pkgname=kotlin-language-server-git
 _pkgname=kotlin-language-server
-pkgver=r1115.8e52cc0
+pkgver=r1252.86fd15d
 pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-    jdk="$(find /usr/lib/jvm -maxdepth 1 -name "*1*" | head -1)" &&
+    jdk="$(find /usr/lib/jvm -maxdepth 1 -name "*1*jdk" | head -1)" &&
       test -n "$jdk" && export JAVA_HOME="$jdk"
     cd "${srcdir}/${_pkgname}"
     ./gradlew server:installDist
