@@ -1,8 +1,8 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 
 pkgname=chromium-extension-ublock-origin-bin
-pkgver=1.44.4
-pkgrel=1
+pkgver=1.4.4
+pkgrel=2
 pkgdesc="An efficient blocker - chromium extension (binary version)"
 arch=('any')
 url="https://github.com/noahvogt/chromium-extension-ublock-origin-aur"
