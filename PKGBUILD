@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=28.0.2
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -30,7 +30,7 @@ depends=(
   "xdg-desktop-portal"
 
   # Needed by obs-browser
-  "libxss" "libxrandr" "nss" "at-spi2-atk"
+  "libxss" "libxrandr" "nss" "at-spi2-core"
          
   # AUR Packages
   "ffmpeg-obs>=5" "vlc-luajit" "ftl-sdk"
