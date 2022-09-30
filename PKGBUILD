@@ -8,13 +8,13 @@ _cefbranch="5060"
 _chromiumver="103.0.${_cefbranch}.134"
 _rebuild="1" # The tarball sometime can get rebuild by OBS Project
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64")
 url="https://github.com/obsproject/cef/tree/5060-shared-textures"
 license=("BSD")
 depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
-         "at-spi2-atk" "libxkbcommon" "libcups" "mesa")
+         "at-spi2-core" "libxkbcommon" "libcups" "mesa")
 makedepends=("cmake")
 provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
