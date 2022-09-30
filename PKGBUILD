@@ -1,21 +1,29 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=classInt
-_cranver=0.4-7
+_cranver=0.4-8
 pkgname=r-${_cranname,,}
 pkgdesc="Choose Univariate Class Intervals"
 url="https://cran.r-project.org/package=classInt"
-license=("GPL (>= 2)")
+license=("GPL2" "GPL3")
 pkgver=${_cranver//[:-]/.}
 pkgrel=2
 
 arch=("i686" "x86_64")
-depends=("r" "r-e1071")
-optdepends=("r-spdata" "r-units" "r-knitr" "r-rmarkdown")
+depends=(
+    "r"
+    "r-e1071"
+)
+optdepends=(
+    "r-spdata>=0.2.6.2"
+    "r-units"
+    "r-knitr"
+    "r-rmarkdown"
+)
 makedepends=("gcc-fortran")
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a038159d8fcf1225d86699f2918dff0d')
+md5sums=("d2f3905a67d8c12286f34b0299d81499")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
