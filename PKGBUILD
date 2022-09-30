@@ -8,7 +8,7 @@
 
 pkgname=polymc
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -20,8 +20,16 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-sha256sums=('a66f25e0389815d2419a5b3aa1b85a390f14bbf3997c55c7da1ce4507b5aa511')
+source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz"
+        "fix-qt6-4.patch::https://github.com/PolyMC/PolyMC/commit/7ccafdc99321e82ee0f504a573a5c978480374a2.patch")
+sha256sums=('a66f25e0389815d2419a5b3aa1b85a390f14bbf3997c55c7da1ce4507b5aa511'
+            '4215ec878ec7a5a63cc5710ef09a66f271d332542f4c6f5bb5f270a924dadcc7')
+
+prepare() {
+    cd "PolyMC-$pkgver"
+
+    patch -Np1 -i "../fix-qt6-4.patch"
+}
 
 build() {
 
