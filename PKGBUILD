@@ -2,7 +2,7 @@
 
 _name=svgelements
 pkgname=python-$_name
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Svg Elements Parsing'
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('python-numpy: enable npoint() to do lightning fast linearization fo
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-scipy)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('6101a7b5a850847acacf20945a009075ae9c0719bc6e5775ae3de3f1c4f4011fe21d52101f43090255eefbee21807f436b8d6ce63323e1ed7f8c5a0f1e181bb4')
+b2sums=('e59e940370f494805f272085a40f085b0b3a83e847f5e8bf43f23083a4e187e9c8adc2c7e4728a1a8a9f62502de36f76c307f3a2552fa31a1d35a32d17dd2179')
 
 build() {
     cd "$_name-$pkgver"
