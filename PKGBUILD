@@ -6,7 +6,7 @@
 
 # shellcheck disable=SC2034
 _pkg="blivet"
-pkgname=${_pkg}-gui
+pkgname="${_pkg}-gui"
 pkgver=2.4.0
 _pkgver="${pkgver}-1"
 pkgrel=1
@@ -16,10 +16,15 @@ arch=('x86_64'
       'i686')
 license=('GPL')
 url="https://github.com/storaged-project/${_pkg}-gui"
-depends=('python' "python-${_pkg}" 'python-cairo' 'python-gobject' 'python-pid' 'adwaita-icon-theme')
+depends=('python'
+         "python-${_pkg}"
+         'python-cairo'
+         'python-gobject'
+         'python-pid'
+         'adwaita-icon-theme')
 makedepends=('git' 'make')
-source=("${pkgname}::git+${url}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}.git#tag=${_pkgver}")
+b2sums=('SKIP')
 
 build() {
   cd "${pkgname}" || exit
