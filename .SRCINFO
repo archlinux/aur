@@ -1,0 +1,17 @@
+pkgbase = hotsos-git
+	pkgdesc = Software analysis toolkit
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/canonical/hotsos
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-progress
+	depends = python-simplejson
+	depends = python-cryptography
+	depends = python-pyaml
+	source = hotsos-git::git+https://github.com/canonical/hotsos
+	md5sums = SKIP
+
+pkgname = hotsos-git
