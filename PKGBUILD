@@ -4,7 +4,7 @@ _cranname=wk
 _cranver=0.6.0
 pkgname=r-${_cranname,,}
 pkgdesc="Lightweight Well-Known Geometry Parsing"
-url="https://cran.r-project.org/package=wk"
+url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
 pkgrel=3
