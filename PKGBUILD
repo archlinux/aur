@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=eprosima-fast-dds-statistics-backend
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='eProsima Fast DDS Statistics Backend is a C++ library that provides collection and procession the statistics measurements reported by Fast DDS Statistics Module.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-	"c42894fc39bf82e5234574afd87840cf7ac2a9060bc6e35bbac1c1f1b4a5c3e4f8a478b7083f08b63110d4df002f7cab0016b5bed2482e1e26f0be18d49f39c9"
+	"94ea0fba5840a39d25490631049a8243ae00f92ecdd052c0897348ee003c58455c3aa7fc6e118f056db00e06a65588c577dcc59bf7ab9f5e0d1542c8257eb338"
 )
 
 prepare() {
@@ -45,7 +45,6 @@ build() {
 package() {
 	cd "${srcdir}"/${_build_directory}
 	DESTDIR="${pkgdir}" ninja install
-
 
 	mkdir -p "${pkgdir}"/usr/share/licenses/eprosima/fastdds_statistics_backend
 	mv "${pkgdir}"/usr/share/fastdds_statistics_backend/LICENSE "${pkgdir}"/usr/share/licenses/eprosima/fastdds_statistics_backend/LICENSE
