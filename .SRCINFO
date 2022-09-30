@@ -8,6 +8,7 @@ pkgbase = cryptomator-bin
 	depends = fuse2
 	depends = ttf-dejavu
 	optdepends = keepassxc-cryptomator: Use KeePassXC to store vault passwords
+	optdepends = ttf-hanazono: Install this font when using Japanese system language
 	provides = cryptomator
 	conflicts = cryptomator
 	replaces = cryptomator

@@ -14,7 +14,7 @@ depends=('fuse2' 'ttf-dejavu')
 provides=('cryptomator')
 conflicts=('cryptomator')
 replaces=('cryptomator')
-optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords')
+optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}-x86_64.AppImage"
         "cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}-x86_64.AppImage.asc"
         'org.cryptomator.Cryptomator.desktop'
