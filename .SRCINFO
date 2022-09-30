@@ -1,11 +1,12 @@
 pkgbase = dtrx
 	pkgdesc = An intelligent archive extraction tool
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/dtrx-py/dtrx
 	arch = any
 	license = GPL3
-	depends = python
+	makedepends = python-setuptools
+	depends = python3
 	optdepends = tar: to extract tar, deb, and gem archives
 	optdepends = unzip: to extract zip archives
 	optdepends = cpio: to extract cpio and rpm archives

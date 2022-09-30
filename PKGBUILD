@@ -6,13 +6,13 @@
 
 pkgname='dtrx'
 pkgver='8.4.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
 url='http://github.com/dtrx-py/dtrx'
 license=('GPL3')
 depends=('python3')
-makedepends('python-setuptools')
+makedepends=('python-setuptools')
 optdepends=(
   'tar: to extract tar, deb, and gem archives'
   'unzip: to extract zip archives'
