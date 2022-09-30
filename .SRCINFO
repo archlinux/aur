@@ -1,0 +1,14 @@
+pkgbase = python2-distlib
+	pkgdesc = Low-level components of distutils2/packaging
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://bitbucket.org/pypa/distlib
+	arch = any
+	license = PSF
+	makedepends = python2
+	source = https://files.pythonhosted.org/packages/source/d/distlib/distlib-0.3.3.zip
+	sha256sums = d982d0751ff6eaaab5e2ec8e691d949ee80eddf01a62eaa96ddb11531fe16b05
+	b2sums = 269ec9e8f22c991fea6b81c37d9b527348bd5431fe09b02a7972e3272c379842df0254ae0c9e7283bc1b5a2402d9bd9087e2d1fdd979c1ac3a8b99cfb962c308
+
+pkgname = python2-distlib
+	depends = python2
