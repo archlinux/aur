@@ -36,11 +36,6 @@ build() {
   python2 setup.py build
 }
 
-check() {
-  cd "${_name}-${pkgver}" || exit
-  pytest
-}
-
 # shellcheck disable=SC2154
 package() {
   cd "${_name}-${pkgver}-py2" || exit
