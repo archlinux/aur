@@ -1,26 +1,31 @@
 # Maintainer: Gustavo Ramos Rehermann <rehermann6046@gmail.com>
 
-pkgname=bspc-padman-git
+pkgname=bspc-warsow-git
 _srcname=bspc
-pkgver=1659723467.168.6417739
+pkgver=1664573766.111.d0673fd
 pkgrel=1
-pkgdesc="Quake 3 BSP-to-AAS compiler, to create bot navigation meshes. WorldOfPadman version"
+pkgdesc="Quake 3 BSP-to-AAS compiler, to create bot navigation meshes. Warsow version"
 arch=("x86_64")
-url="https://github.com/PadWorld-Entertainment/bspc"
+url="https://github.com/Warsow/bspc"
 license=('GPL')
 groups=()
 depends=()
-makedepends=('git' 'cmake' 'ninja')
+makedepends=('git' 'make')
 optdepends=()
-provides=("bspc" "bspc-padman")
-conflicts=("bspc" "bspc-padman")
+provides=("bspc" "bspc-warsow")
+conflicts=("bspc" "bspc-warsow")
 replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/PadWorld-Entertainment/bspc.git')
+source=(
+	'git+https://github.com/Warsow/bspc.git'
+	'bspc-ttimo::git+https://github.com/TTimo/bspc.git'
+	'bspc-makefile.patch')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'SKIP'
+         'e3dfc816409a85aa5a62f4b9dd7da258')
 
 pkgver() {
 	cd "$srcdir/$_srcname"
@@ -30,22 +35,26 @@ pkgver() {
 	printf "%s.%s.%s" "$(git show -s --format=%ct HEAD)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/$_srcname"
+
+	patch --forward --strip=1 --input="${srcdir}/bspc-makefile.patch"
+	git add Makefile
+	git commit -m autopatch-makefile
+
+	git remote add ttimo "${srcdir}/bspc-ttimo" || true
+	git fetch ttimo
+	git merge ttimo/master -m automerge -s ort -X theirs
+}
+
 build() {
-	cd "$srcdir"
+	cd "$srcdir/$_srcname"
 	
-	cmake -B build -S "$_srcname" \
-		-DCMAKE_BUILD_TYPE=None     \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-Wno-dev                    \
-		-G Ninja
-	
-	cmake --build build
+	make -j"$(nproc)"
 }
 package() {
-	# The below does not work, presumably because of the None target.
-	#DESTDIR="$pkgdir/" cmake --install build
-	
-	# Also rename bspcwop to bspc.
+	cd "$srcdir/$_srcname"
+
 	mkdir -p "$pkgdir/usr/bin"
-	cp "$srcdir/build/bspcwop" "$pkgdir/usr/bin/bspc"
+	cp bspc "$pkgdir/usr/bin/bspc"
 }

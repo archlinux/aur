@@ -1,0 +1,24 @@
+--- bspc.old/Makefile	2022-09-30 18:24:04.828168547 -0300
++++ bspc.new/Makefile	2022-09-30 18:23:58.614855578 -0300
+@@ -1,14 +1,16 @@
+-CC=gcc
+-CFLAGS=\
++CC?=gcc
++BASECFLAGS=\
+ 	-Dstricmp=strcasecmp -DCom_Memcpy=memcpy -DCom_Memset=memset \
+ 	-DMAC_STATIC= -DQDECL= -DLINUX -DBSPC -D_FORTIFY_SOURCE=2 \
+ 	-I. -Ideps -Wall
+ 
+-RELEASE_CFLAGS=-O3 -ffast-math
+-DEBUG_CFLAGS=-g -O0 -ffast-math
++CFLAGS?=
++
++#RELEASE_CFLAGS=-O3 -ffast-math
++#DEBUG_CFLAGS=-g -O0 -ffast-math
+ LDFLAGS=-lm -lpthread
+ 
+-DO_CC=$(CC) $(CFLAGS) -o $@ -c $<
++DO_CC=$(CC) $(BASECFLAGS) $(CFLAGS) -o $@ -c $<
+ 
+ #############################################################################
+ # SETUP AND BUILD BSPC
