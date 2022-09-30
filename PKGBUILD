@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=106.0b1
+pkgver=106.0b3
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -21,8 +21,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
             'xdg-desktop-portal: Screensharing with Wayland')
-optdepends+=('libotr: OTR support for active one-to-one chats'
-             'libnotify: Notification integration')
+optdepends+=('libotr: OTR support for active one-to-one chats')
 options=(!emptydirs !makeflags !strip !lto !debug)
 options+=(!buildflags)
 provides=("thunderbird=$pkgver")
@@ -30,10 +29,10 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         install-dir.patch
         "$pkgname".desktop
 )
-sha512sums=('d07eac118f5d08891f55880900c58f0dd5fb1dc4eb8bad13af2fafd40df1089c54b47462ce0cca7d7e15f5235e99f503a0c2f25d1c438b97cd9c1cdb28ce8a25'
-            'SKIP'
-            '0c68ce5df84245119f574e6144924eff151ef78c2a613468f8db470bd7674d167eece0004b7cf0a68e73fd7b2e90d4c7d3e4b3832df4fb27843bf479f3f364f4'
-            '642099b9cfee434aa96905cd4950c307a160641b85047630ce6ee6593fbb9ebb856fbf096f06049954f5d4a3d68f84297e147ac5812cefa8aae372fdaa74d62a')
+b2sums=('ad57a4a2eafc9f788108c5be924ed91ed822b2c5428464cb6ca808f3a65aed166edfc2a7e7d28c63d0d78096d337728a37d054385f0527136a19f6518f51115e'
+        'SKIP'
+        'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
+        '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
   4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
