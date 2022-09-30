@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timeDate
-_pkgver=4021.104
+_pkgver=4021.106
 pkgname=r-${_pkgname,,}
-pkgver=4021.104
+pkgver=4021.106
 pkgrel=1
 pkgdesc='Rmetrics - Chronological and Calendar Objects'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('03ee76e87162cf97f6e63714af107f83abb385b424a98b34a13cbe98d87acc0e')
+sha256sums=('14adf1ec6cbd80f11a243fa66ea943725a7a4c75923ae2d8e424235d500b10e2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
