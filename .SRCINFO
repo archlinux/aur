@@ -1,12 +1,12 @@
 pkgbase = r-isocodes
 	pkgdesc = Selected ISO Codes
-	pkgver = 2022.01.10
-	pkgrel = 4
+	pkgver = 2022.09.29
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ISOcodes
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/ISOcodes_2022.01.10.tar.gz
-	sha256sums = b25ddec624b46f5630c29267bdf4a749cfb9d001ef029fb9ca84dafe56b1c73f
+	source = https://cran.r-project.org/src/contrib/ISOcodes_2022.09.29.tar.gz
+	sha256sums = 4bae4fdf661a1c29694f9702240b84c933518ef70e66312cbaddaf35562d4fe5
 
 pkgname = r-isocodes

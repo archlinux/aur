@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISOcodes
-_pkgver=2022.01.10
+_pkgver=2022.09.29
 pkgname=r-${_pkgname,,}
-pkgver=2022.01.10
-pkgrel=4
+pkgver=2022.09.29
+pkgrel=1
 pkgdesc='Selected ISO Codes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b25ddec624b46f5630c29267bdf4a749cfb9d001ef029fb9ca84dafe56b1c73f')
+sha256sums=('4bae4fdf661a1c29694f9702240b84c933518ef70e66312cbaddaf35562d4fe5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
