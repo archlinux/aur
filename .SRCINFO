@@ -1,0 +1,15 @@
+pkgbase = python2-resolvelib
+	pkgdesc = Resolve abstract dependencies into concrete ones
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/sarugaku/resolvelib
+	arch = any
+	license = ISC
+	checkdepends = python-commentjson
+	checkdepends = python-pytest-runner
+	makedepends = python2-setuptools
+	source = python-resolvelib-0.5.5.tar.gz::https://github.com/sarugaku/resolvelib/archive/0.5.5.tar.gz
+	sha512sums = 3da39201c4472d45466750119282fc34591b6d79eb4e6e71ca3f221e43dceead213058b4b72bee00083e9885650a47486bd7496264fba10f623aec7c19dabf00
+
+pkgname = python2-resolvelib
+	depends = python2
