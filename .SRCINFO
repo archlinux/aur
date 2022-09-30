@@ -1,7 +1,7 @@
 pkgbase = pacseek
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moson-mo/pacseek
 	arch = x86_64
 	arch = aarch64

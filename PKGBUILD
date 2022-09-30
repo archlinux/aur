@@ -2,7 +2,7 @@
 
 pkgname=pacseek
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64' 'aarch64')
 url="https://github.com/moson-mo/$pkgname"
@@ -21,6 +21,7 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
+  export GOPATH="$srcdir"/gopath
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
