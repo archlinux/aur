@@ -6,7 +6,7 @@
 
 pkgname='dtrx'
 pkgver='8.4.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
 url='http://github.com/dtrx-py/dtrx'
@@ -32,6 +32,6 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgna
 sha256sums=('e96b87194481a54807763b33fc764d4de5fe0e4df6ee51147f72c0ccb3bed6fa')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"
 }
