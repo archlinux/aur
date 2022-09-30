@@ -6,16 +6,16 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.4.0.r223.g30abb653
-pkgrel=1
+pkgver=1.4.0.r301.gc97a47dc
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme')
+depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
 provides=('polymc')
 conflicts=('polymc')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
@@ -23,11 +23,9 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 options=(debug)
 source=("git+https://github.com/PolyMC/PolyMC"
-        "git+https://github.com/PolyMC/libnbtplusplus"
-        "git+https://github.com/stachenov/quazip")
+        "git+https://github.com/PolyMC/libnbtplusplus")
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -38,8 +36,9 @@ pkgver() {
 prepare() {
   cd "PolyMC"
   git submodule init
-  git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
-  git config submodule.quazip.url "${srcdir}/quazip"
+  git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  git config submodule.libraries/quazip.active false
+  git config submodule.libraries/tomlplusplus.active false
   git submodule update
 }
 
