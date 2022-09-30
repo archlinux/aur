@@ -1,6 +1,6 @@
 pkgbase = actionlint-bin
 	pkgdesc = Static checker for GitHub Actions workflow files
-	pkgver = 1.6.19
+	pkgver = 1.6.20
 	pkgrel = 1
 	url = https://github.com/rhysd/actionlint
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = actionlint-bin
 	provides = actionlint
 	conflicts = actionlint
 	conflicts = actionlint-git
-	source = https://github.com/rhysd/actionlint/releases/download/v1.6.19/actionlint_1.6.19_linux_amd64.tar.gz
-	sha256sums = 8303deaddeb25dd6f40f4ab6bf35d2194402ca046b7ffe07c88593ab46dac120
+	source = https://github.com/rhysd/actionlint/releases/download/v1.6.20/actionlint_1.6.20_linux_amd64.tar.gz
+	sha256sums = bc311cb7bf006072009ab55ef81f7b6545bf8fc35d63ae60e002c1e37e4afe04
 
 pkgname = actionlint-bin
