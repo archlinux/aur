@@ -49,7 +49,7 @@ _hpn_ver=hpn17v4
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -62,6 +62,7 @@ optdepends=('xorg-xauth: X11 forwarding'
 conflicts=('openssh-hpn-git')
 source=(
   "https://github.com/rapier1/openssh-portable/archive/hpn-${_pkgver}.tar.gz"
+  "hpn-revert-default-port-2222.patch::https://github.com/zer0def/openssh-portable/commit/04c6e9a9ab483f770d7d591ff8d40fb8cf2ee5ac.patch"
   'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
   #'openssl11.patch'
   #'hpn-banner.patch'
@@ -78,6 +79,7 @@ source=(
 
 sha512sums=(
   '28fe761ea2caef7a00365e6f16539defc27e24cc2e9d7ba3246654e6b632c24cddc54adae4daa4cc18ea1fe2b2ac92703e705ce97511eadae799227fc06e1867'
+  'c13f8d8dbbf28e4edbe0c82822d5651f56ed2a683b2e9d12b541657e5b0ba002b6a4b60eb9a6067ac28295ef529f65a2a728e0d5974d87dc7fe76d1d5b946fc0'
   '62e2d60fdd39243e6245d90a0940b67ac4e72d042d8146203d50cdaa2df51611d91831d3b152d42302490afd677ae3433a3eba975dee68dbf7c06728167bb6d4'
   #'5d96a288ae925584cdcde0305c511b18e3cfaed6cae49f5fc6f062f62100d10a087144e8263380d19a14dca71c745065ddaa0062542c2e2cfa1db04811d40dc7'
   #'a9ee92fd135c47a27ac260ab40c057f0e35c118efcb281e98e235158ffd8599acede67dcce6da4c2589b2a0bd794c587af80d4ce4f85c1b9823cb9acfbbe9050'
@@ -93,6 +95,7 @@ sha512sums=(
 
 b2sums=(
   '275cda60223ca33d00c7218ca360ae8ba34a6825aa46dd25c32f04f7cfc5caa8766d771f8da5e6f2071dc8f689917a3efc39b3e64bdaeb2a937df9766e764fc7'
+  'cbfde6e66551722222ef3aaa38f9be9d3b256be23308e6aaf8f8bcbe7c79b67d7b91ff7a06cf5807182dbbfb9cda89130f9945cc5e1d9576580fed3a879f3e5b'
   '1e6c8d39052bdc268c584488341e260a2695d4b9afabca41919710bb34833dd580ff1813c01b8ba91f2629273c8101ce0ed3b2749dabce054137b4ef37b2a548'
   #'051b7c350333ce57a4a5e57ba0f693aed4491a241fd9e65cf2a861773571b44b8d4ffa06506a0c4a05399a46108ec05321e69f210637f32e25c76e683b224505'
   #'b46019363a19e2a0c397d66b6f1dc24d1c1219372b7fd699d92a9c382b24b02437b37cb12b3bba7e3ca97cfe98170ad21fff5871daf2070bc3d175fe0b31680b'
@@ -108,6 +111,7 @@ b2sums=(
 
 b3sums=(
   'b8e7a8b0409f8e63e3c6c6f77751cac0296f3a41bf07a075f1a1b2e599c5af67'
+  '0c09e8a6b87c79b8d9669f0bbe7469e86a7543fc149c986d21d68347e14eb670'
   'db9e75e396c8f45aacb0e14003aabdcf29b812e468a5a40b371957ffe9c7f52f'
   #'145f9d17920d7b3b1ef935e3a735171ac9783cbd94ee47eec86f3fb96a6a34c6'
   #'86f8ba9e3469c86c2ced236240d9ba9a253d82b8b6732d8592db481d984de258'
@@ -138,6 +142,8 @@ prepare() {
 
   # double define fixed upstream in 4afe5ad21dd5a9a01cda3007cdd0af5bbe6b608c for 8.3p1-hpn14v22 on 2020-09-24
   #patch -Np1 < ${srcdir}/hpn14v22-globals-cleanup.patch
+
+  patch -Np1 < "${srcdir}/hpn-revert-default-port-2222.patch"
 
   autoreconf -fi
 }
