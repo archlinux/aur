@@ -1,0 +1,12 @@
+diff --git a/vendor/bat-native-ads/src/bat/ads/internal/ml/data/vector_data.cc b/vendor/bat-native-ads/src/bat/ads/internal/ml/data/vector_data.cc
+index 9f53602351..f7365fc0aa 100644
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/ml/data/vector_data.cc
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/ml/data/vector_data.cc
+@@ -8,6 +8,7 @@
+ #include <limits>
+ #include <numeric>
+ #include <utility>
++#include <cmath>
+ 
+ #include "base/check_op.h"
+ 

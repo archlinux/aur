@@ -1,0 +1,13 @@
+diff --git a/vendor/bat-native-ads/src/bat/ads/internal/ml/transformation/hash_vectorizer.cc b/vendor/bat-native-ads/src/bat/ads/internal/ml/transformation/hash_vectorizer.cc
+index 7933b7d988..1a9498dd43 100644
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/ml/transformation/hash_vectorizer.cc
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/ml/transformation/hash_vectorizer.cc
+@@ -5,6 +5,8 @@
+ 
+ #include "bat/ads/internal/ml/transformation/hash_vectorizer.h"
+ 
++#include <cstring>
++
+ #include "bat/ads/internal/ml/data/text_data.h"
+ #include "third_party/zlib/zlib.h"
+ 

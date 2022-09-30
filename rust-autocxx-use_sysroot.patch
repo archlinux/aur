@@ -1,0 +1,18 @@
+diff --git a/third_party/rust/autocxx/chromium_integration/rust_autocxx.gni b/third_party/rust/autocxx/chromium_integration/rust_autocxx.gni
+index 51b4aaf63ca0..0585ab4fb814 100644
+--- a/third_party/rust/autocxx/chromium_integration/rust_autocxx.gni
++++ b/third_party/rust/autocxx/chromium_integration/rust_autocxx.gni
+@@ -183,10 +183,12 @@ template("rust_autocxx") {
+       "-nostdinc++",
+       "-isystem" + rebase_path(libcxx_prefix + "/include"),
+       "-isystem" + rebase_path(libcxxabi_prefix + "/include"),
+-      "--sysroot=" + rebase_path(sysroot),
+       "-isystem" + rebase_path(
+               clang_base_path + "/lib/clang/" + clang_version + "/include"),
+     ]
++    if (use_sysroot) {
++      args += ["--sysroot=" + rebase_path(sysroot) ]
++    }
+   }
+ 
+   static_library(target_name) {

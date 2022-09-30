@@ -1,0 +1,116 @@
+diff --git a/brave/chromium_src/brave/third_party/bitcoin-core/src/src/serialize.h b/brave/chromium_src/brave/third_party/bitcoin-core/src/src/serialize.h
+deleted file mode 100644
+index 84ed46ed35..0000000000
+--- a/brave/chromium_src/brave/third_party/bitcoin-core/src/src/serialize.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/* Copyright (c) 2021 The Brave Authors. All rights reserved.
+- * This Source Code Form is subject to the terms of the Mozilla Public
+- * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+- * You can obtain one at http://mozilla.org/MPL/2.0/. */
+-
+-#ifndef BRAVE_CHROMIUM_SRC_BRAVE_THIRD_PARTY_BITCOIN_CORE_SRC_SRC_SERIALIZE_H_
+-#define BRAVE_CHROMIUM_SRC_BRAVE_THIRD_PARTY_BITCOIN_CORE_SRC_SRC_SERIALIZE_H_
+-
+-#include <ios>
+-#include <string>
+-
+-#include "base/check.h"
+-
+-namespace std {
+-namespace brave {
+-using string = ::std::string;
+-}
+-}  // namespace std
+-
+-#define throw CHECK(false) <<
+-#define ios_base brave
+-#define failure string
+-#include "src/brave/third_party/bitcoin-core/src/src/serialize.h"
+-#undef throw
+-#undef ios_base
+-#undef string
+-
+-#endif  // BRAVE_CHROMIUM_SRC_BRAVE_THIRD_PARTY_BITCOIN_CORE_SRC_SRC_SERIALIZE_H_
+diff --git a/brave/third_party/bitcoin-core/src/src/serialize.h b/brave/third_party/bitcoin-core/src/src/serialize.h
+index d9ca984f9..f23f8c412 100644
+--- a/brave/third_party/bitcoin-core/src/src/serialize.h
++++ b/brave/third_party/bitcoin-core/src/src/serialize.h
+@@ -24,6 +24,8 @@
+ #include <prevector.h>
+ #include <span.h>
+ 
++#include "base/check.h"
++
+ /**
+  * The maximum size of a serialized object in bytes or number of elements
+  * (for eg vectors) when the size is encoded as CompactSize.
+@@ -327,22 +329,22 @@ uint64_t ReadCompactSize(Stream& is, bool range_check = true)
+     {
+         nSizeRet = ser_readdata16(is);
+         if (nSizeRet < 253)
+-            throw std::ios_base::failure("non-canonical ReadCompactSize()");
++            CHECK(false) << std::string("non-canonical ReadCompactSize()");
+     }
+     else if (chSize == 254)
+     {
+         nSizeRet = ser_readdata32(is);
+         if (nSizeRet < 0x10000u)
+-            throw std::ios_base::failure("non-canonical ReadCompactSize()");
++            CHECK(false) << std::string("non-canonical ReadCompactSize()");
+     }
+     else
+     {
+         nSizeRet = ser_readdata64(is);
+         if (nSizeRet < 0x100000000ULL)
+-            throw std::ios_base::failure("non-canonical ReadCompactSize()");
++            CHECK(false) << std::string("non-canonical ReadCompactSize()");
+     }
+     if (range_check && nSizeRet > MAX_SIZE) {
+-        throw std::ios_base::failure("ReadCompactSize(): size too large");
++        CHECK(false) << std::string("ReadCompactSize(): size too large");
+     }
+     return nSizeRet;
+ }
+@@ -435,12 +437,12 @@ I ReadVarInt(Stream& is)
+     while(true) {
+         unsigned char chData = ser_readdata8(is);
+         if (n > (std::numeric_limits<I>::max() >> 7)) {
+-           throw std::ios_base::failure("ReadVarInt(): size too large");
++           CHECK(false) << std::string("ReadVarInt(): size too large");
+         }
+         n = (n << 7) | (chData & 0x7F);
+         if (chData & 0x80) {
+             if (n == std::numeric_limits<I>::max()) {
+-                throw std::ios_base::failure("ReadVarInt(): size too large");
++                CHECK(false) << std::string("ReadVarInt(): size too large");
+             }
+             n++;
+         } else {
+@@ -512,7 +514,7 @@ struct CustomUintFormatter
+ 
+     template <typename Stream, typename I> void Ser(Stream& s, I v)
+     {
+-        if (v < 0 || v > MAX) throw std::ios_base::failure("CustomUintFormatter value out of range");
++        if (v < 0 || v > MAX) CHECK(false) << std::string("CustomUintFormatter value out of range");
+         if (BigEndian) {
+             uint64_t raw = htobe64(v);
+             s.write(((const char*)&raw) + 8 - Bytes, Bytes);
+@@ -548,7 +550,7 @@ struct CompactSizeFormatter
+     {
+         uint64_t n = ReadCompactSize<Stream>(s, RangeCheck);
+         if (n < std::numeric_limits<I>::min() || n > std::numeric_limits<I>::max()) {
+-            throw std::ios_base::failure("CompactSize exceeds limit of type");
++            CHECK(false) << std::string("CompactSize exceeds limit of type");
+         }
+         v = n;
+     }
+@@ -571,7 +573,7 @@ struct LimitedStringFormatter
+     {
+         size_t size = ReadCompactSize(s);
+         if (size > Limit) {
+-            throw std::ios_base::failure("String length limit exceeded");
++            CHECK(false) << std::string("String length limit exceeded");
+         }
+         v.resize(size);
+         if (size != 0) s.read((char*)v.data(), size);

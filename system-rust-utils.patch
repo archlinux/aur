@@ -1,0 +1,77 @@
+diff --git a/build/rust/run_cxxbridge.py b/build/rust/run_cxxbridge.py
+index 5aa1f56ec2..370c181a47 100644
+--- a/build/rust/run_cxxbridge.py
++++ b/build/rust/run_cxxbridge.py
+@@ -22,7 +22,8 @@ import subprocess
+ 
+ def run(cargo_path, args, output, is_header):
+   cargo_home = os.path.join(cargo_path, RUST_DEPS_PACKAGE_VERSION)
+-  exe = os.path.abspath(os.path.join(cargo_home, 'bin', 'cxxbridge'))
++  # exe = os.path.abspath(os.path.join(cargo_home, 'bin', 'cxxbridge'))
++  exe = os.path.abspath(os.path.join('/usr', 'bin', 'cxxbridge'))
+ 
+   if sys.platform == "win32":
+     exe = exe + '.exe'
+diff --git a/script/cargo.py b/script/cargo.py
+index d7d872ef5b..6c550f56fc 100755
+--- a/script/cargo.py
++++ b/script/cargo.py
+@@ -23,7 +23,8 @@ def run_cargo(command, args):
+     env['RUSTUP_HOME'] = rustup_home
+     env['CARGO_HOME'] = rustup_home
+ 
+-    rustup_bin = os.path.abspath(os.path.join(rustup_home, 'bin'))
++    # rustup_bin = os.path.abspath(os.path.join(rustup_home, 'bin'))
++    rustup_bin = os.path.abspath(os.path.join('/usr', 'bin'))
+     cargo_exe = os.path.join(rustup_bin, 'cargo')
+     if sys.platform == "win32":
+         cargo_exe += ".exe"
+diff --git a/script/cargo_cbindgen.py b/script/cargo_cbindgen.py
+index 97a69b6625..fdd05a43a5 100755
+--- a/script/cargo_cbindgen.py
++++ b/script/cargo_cbindgen.py
+@@ -22,7 +22,8 @@ def run(args):
+     cargo_home = os.path.join(args.cargo_path, RUST_DEPS_PACKAGE_VERSION)
+     env["CARGO_HOME"] = cargo_home
+ 
+-    rustup_bin = os.path.abspath(os.path.join(rustup_home, "bin"))
++    # rustup_bin = os.path.abspath(os.path.join(rustup_home, "bin"))
++    rustup_bin = os.path.abspath(os.path.join("/usr", "bin"))
+     cbindgen_bin = os.path.join(
+         rustup_bin, "cbindgen" if sys.platform != "win32" else "cbindgen.exe"
+     )
+diff --git a/script/deps_config.py b/script/deps_config.py
+index 999ce5f74c..e463b24ff9 100755
+--- a/script/deps_config.py
++++ b/script/deps_config.py
+@@ -8,7 +8,7 @@ import os
+ # Version number and URL for pre-configured rust dependency package
+ # e.g. rust_deps_mac_0.1.0.gz
+ DEPS_PACKAGES_URL = "https://brave-build-deps-public.s3.brave.com"
+-RUST_DEPS_PACKAGE_VERSION = "1.0.0"
++RUST_DEPS_PACKAGE_VERSION = "" # "1.0.0"
+ MAC_TOOLCHAIN_ROOT = os.path.join(os.path.dirname(os.path.dirname(
+                                   os.path.dirname(__file__))),
+                                   'build', 'mac_files')
+diff --git a/script/download_rust_deps.py b/script/download_rust_deps.py
+index 920f5f837a..655fb832f2 100755
+--- a/script/download_rust_deps.py
++++ b/script/download_rust_deps.py
+@@ -7,6 +7,7 @@
+ 
+ import argparse
+ import os
++import shutil
+ import subprocess
+ import sys
+ 
+@@ -207,7 +208,8 @@ def main():
+         }
+     ]
+     for tool in tools:
+-        cargo_install(tool)
++        if shutil.which(tool["name"]) is None:
++            cargo_install(tool)
+ 
+     return 0
+ 

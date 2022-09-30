@@ -1,0 +1,32 @@
+diff --git a/brave/components/ntp_background_images/browser/view_counter_model.h b/brave/components/ntp_background_images/browser/view_counter_model.h
+index 940d8c4e47..13c0b9561c 100644
+--- a/brave/components/ntp_background_images/browser/view_counter_model.h
++++ b/brave/components/ntp_background_images/browser/view_counter_model.h
+@@ -23,10 +23,10 @@ class ViewCounterModel {
+ 
+   // Set each campaigns total image count.
+   void SetCampaignsTotalBrandedImageCount(
+-      const std::vector<size_t>& campaigns_total_image_count);
++      const std::vector<std::size_t>& campaigns_total_image_count);
+ 
+   // Returns current campaign index and its bg index.
+-  std::tuple<size_t, size_t> GetCurrentBrandedImageIndex() const;
++  std::tuple<std::size_t, std::size_t> GetCurrentBrandedImageIndex() const;
+ 
+   int current_wallpaper_image_index() const {
+     return current_wallpaper_image_index_;
+@@ -68,10 +68,10 @@ class ViewCounterModel {
+   int count_to_branded_wallpaper_ = 0;
+   bool always_show_branded_wallpaper_ = false;
+   bool show_branded_wallpaper_ = true;
+-  size_t current_campaign_index_ = 0;
+-  size_t total_campaign_count_ = 0;
+-  std::vector<size_t> campaigns_total_branded_image_count_;
+-  std::vector<size_t> campaigns_current_branded_image_index_;
++  std::size_t current_campaign_index_ = 0;
++  std::size_t total_campaign_count_ = 0;
++  std::vector<std::size_t> campaigns_total_branded_image_count_;
++  std::vector<std::size_t> campaigns_current_branded_image_index_;
+ 
+   // For NTP BI.
+   int current_wallpaper_image_index_ = 0;
