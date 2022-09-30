@@ -1,3 +1,12 @@
+# 10.0.20-1 / 2022-09-30
+
+* bump to new library version
+	* forums support
+	* see library changelog for full list
+* pkgconf now a makedep
+	* has been causing some issues with sodium
+* patch for the coroutines from last version upstreamed
+
 # 10.0.19-1 / 2022-09-13
 
 * bump to new library version
