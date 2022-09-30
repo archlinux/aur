@@ -1,0 +1,56 @@
+From bbf1d3253058e94300a79dfddec1453b36a8f940 Mon Sep 17 00:00:00 2001
+From: Martin Diehl <mail@martin-diehl.net>
+Date: Fri, 30 Sep 2022 13:27:32 +0200
+Subject: [PATCH] PETSc 3.17.1 backport
+
+---
+ CMakeLists.txt                   | 2 +-
+ src/DAMASK_interface.f90         | 2 +-
+ src/mesh/discretization_mesh.f90 | 4 ++++
+ 3 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b4c405319..7a6f9ea7f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@ endif()
+ # Dummy project to determine compiler names and version
+ project(Prerequisites LANGUAGES)
+ set(ENV{PKG_CONFIG_PATH} "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/pkgconfig")
+-pkg_check_modules(PETSC REQUIRED PETSc>=3.12.0 PETSc<3.17.0)
++pkg_check_modules(PETSC REQUIRED PETSc>=3.12.0 PETSc<3.18.0)
+ pkg_get_variable(CMAKE_Fortran_COMPILER PETSc fcompiler)
+ pkg_get_variable(CMAKE_C_COMPILER PETSc ccompiler)
+ 
+diff --git a/src/DAMASK_interface.f90 b/src/DAMASK_interface.f90
+index f5233f2f0..c37840a46 100644
+--- a/src/DAMASK_interface.f90
++++ b/src/DAMASK_interface.f90
+@@ -11,7 +11,7 @@
+ !--------------------------------------------------------------------------------------------------
+ #define PETSC_MAJOR 3
+ #define PETSC_MINOR_MIN 12
+-#define PETSC_MINOR_MAX 16
++#define PETSC_MINOR_MAX 17
+ 
+ module DAMASK_interface
+   use, intrinsic :: ISO_fortran_env
+diff --git a/src/mesh/discretization_mesh.f90 b/src/mesh/discretization_mesh.f90
+index 9baff52fb..70ee28343 100644
+--- a/src/mesh/discretization_mesh.f90
++++ b/src/mesh/discretization_mesh.f90
+@@ -100,7 +100,11 @@ subroutine discretization_mesh_init(restart)
+   debug_element = config_debug%get_asInt('element',defaultVal=1)
+   debug_ip      = config_debug%get_asInt('integrationpoint',defaultVal=1)
+ 
++#if (PETSC_VERSION_MAJOR==3 && PETSC_VERSION_MINOR>16)
++  call DMPlexCreateFromFile(PETSC_COMM_WORLD,interface_geomFile,'n/a',PETSC_TRUE,globalMesh,err_PETSc)
++#else
+   call DMPlexCreateFromFile(PETSC_COMM_WORLD,interface_geomFile,PETSC_TRUE,globalMesh,err_PETSc)
++#endif
+   CHKERRQ(err_PETSc)
+   call DMGetDimension(globalMesh,dimPlex,err_PETSc)
+   CHKERRQ(err_PETSc)
+-- 
+2.37.3
+
