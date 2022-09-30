@@ -1,14 +1,15 @@
 pkgname=python2-typing
-pkgver=3.10.0.0
+# Do not update this further. Version 4.0.0 dropped support for Python 2
+pkgver=3.10.0.2
 pkgrel=1
-pkgdesc="Backport of the standard library typing module to Python versions older than 3.6"
+pkgdesc="Backport of the standard library typing module to Python versions older than 3.6 (Legacy Python 2 version)"
 url="https://pypi.python.org/pypi/typing"
 arch=('any')
 license=('PSF')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("python2-typing-$pkgver.tar.gz::https://pypi.io/packages/source/t/typing/typing-$pkgver.tar.gz")
-sha256sums=('13b4ad211f54ddbf93e5901a9967b1e07720c1d1b78d596ac6a439641aa1b130')
+source=("python2-typing-$pkgver.tar.gz::https://github.com/python/typing/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('f77651a11ed494a8444520c812d208f62dfa18a5b6d591ffed29d5719bf79975')
 
 build() {
     cd typing-$pkgver

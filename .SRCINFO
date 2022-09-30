@@ -1,13 +1,13 @@
 pkgbase = python2-typing
-	pkgdesc = Backport of the standard library typing module to Python versions older than 3.6
-	pkgver = 3.10.0.0
+	pkgdesc = Backport of the standard library typing module to Python versions older than 3.6 (Legacy Python 2 version)
+	pkgver = 3.10.0.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/typing
 	arch = any
 	license = PSF
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-typing-3.10.0.0.tar.gz::https://pypi.io/packages/source/t/typing/typing-3.10.0.0.tar.gz
-	sha256sums = 13b4ad211f54ddbf93e5901a9967b1e07720c1d1b78d596ac6a439641aa1b130
+	source = python2-typing-3.10.0.2.tar.gz::https://github.com/python/typing/archive/refs/tags/3.10.0.2.tar.gz
+	sha256sums = f77651a11ed494a8444520c812d208f62dfa18a5b6d591ffed29d5719bf79975
 
 pkgname = python2-typing
