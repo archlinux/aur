@@ -1,0 +1,14 @@
+pkgbase = passage-git
+	pkgdesc = A fork of password-store that uses age as backend.
+	pkgver = 1.7.4a0.r5.1262d30
+	pkgrel = 1
+	url = https://github.com/FiloSottile/passage
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = passage
+	conflicts = passage
+	source = git+https://github.com/FiloSottile/passage.git
+	md5sums = SKIP
+
+pkgname = passage-git
