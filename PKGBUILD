@@ -2,10 +2,10 @@
 
 pkgname=qr-backup
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Paper backup of files using QR codes"
 url="https://github.com/za3k/qr-backup"
-license=('CC0')
+license=('custom:CC0')
 arch=('any')
 depends=('imagemagick' 'python' 'python-pillow' 'python-reedsolo' 'python-qrcode' 'ttf-dejavu' 'zbar')
 optdepends=('gnupg')
@@ -16,4 +16,5 @@ sha512sums=('0ad5b22312d93009eb32388f37cfdb44b882f91b87212a50dbe8bf547241b8012a4
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make PREFIX=/usr DESTDIR="${pkgdir}/" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
