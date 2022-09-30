@@ -3,7 +3,7 @@
 
 _name=gaphas
 pkgname=python-${_name}
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=(
 	'xorg-server-xvfb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6a326a3fbdec0dfc5e000883963c4a049ecebcf23721edd2654ee129d0125b3d')
+sha256sums=('c1bf8afe9cb800150b16c5711bac562e8554ce1e7e8e45cac80c990b11808f3c')
 
 build() {
 	cd "${_name}-${pkgver}"
