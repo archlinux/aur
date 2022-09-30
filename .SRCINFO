@@ -1,6 +1,6 @@
 pkgbase = ibmcloud-cli
 	pkgdesc = Command line client for IBM Cloud
-	pkgver = 2.10.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://console.bluemix.net/docs/cli/reference/ibmcloud/all_versions.html
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ibmcloud-cli
 	provides = bluemix-cli
 	conflicts = bluemix-cli
 	replaces = bluemix-cli
-	source_x86_64 = https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.10.0/binaries/IBM_Cloud_CLI_2.10.0_linux_amd64.tgz
-	sha256sums_x86_64 = 695f4e49fee1ea35dac5fcdb12f6ba2ee6b1e94edf456db45030c7b8c0e74395
-	source_i686 = https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.10.0/binaries/IBM_Cloud_CLI_2.10.0_linux_386.tgz
-	sha256sums_i686 = 23db52571517806b94b60c0dbc422b49e2c37c9b46394e3ea3f091fcd1af5191
-	source_aarch64 = https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.10.0/binaries/IBM_Cloud_CLI_2.10.0_linux_arm64.tgz
-	sha256sums_aarch64 = 4c8c9ca0b7e5b99416815c6cfbf6be80b8473973f1538da0a7f8c93612ca2b2e
+	source_x86_64 = https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.11.1/binaries/IBM_Cloud_CLI_2.11.1_linux_amd64.tgz
+	sha256sums_x86_64 = 8155ca2aa95307f8257efd982046546c9781e12935ba73af99f3532fc3635949
+	source_i686 = https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.11.1/binaries/IBM_Cloud_CLI_2.11.1_linux_386.tgz
+	sha256sums_i686 = 8521409d6d572026ab3da16fb7466a7f1dbada75721212d00b0a2380149ac14f
+	source_aarch64 = https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.11.1/binaries/IBM_Cloud_CLI_2.11.1_linux_arm64.tgz
+	sha256sums_aarch64 = 489b797f41e1efb55f679244feeee2b9880a8c6abf89ebc27a2c56106f8a7531
 
 pkgname = ibmcloud-cli
