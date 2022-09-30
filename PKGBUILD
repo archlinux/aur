@@ -1,5 +1,6 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
+# shellcheck disable=SC2034
 _pkgbase=gnome-desktop
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-common-git"
@@ -22,7 +23,7 @@ source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgbase}
+  cd "${_pkgbase}" || exit
   git describe --tags | sed 's/-/+/g'
 }
 
@@ -40,6 +41,8 @@ check() {
     meson test -C build --print-errorlogs
 }
 
+# shellcheck disable=SC2154
+# shellcheck disable=SC2295
 _pick() {
   local p="$1" f d; shift
   for f; do
@@ -64,7 +67,7 @@ package_gnome-desktop-common-git() {
 
   meson install -C build --destdir "$pkgdir"
 
-  cd "$pkgdir"
+  cd "${pkgdir}" || exit
 
   _pick gtk3 usr/include/gnome-desktop-3.0
   _pick gtk3 usr/lib/libgnome-desktop-3.so*
