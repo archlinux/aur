@@ -1,7 +1,4 @@
 pkg/
 src/
-mido-*.tar.gz
-python-mido-*.pkg.tar.xz
-python-mido-*.pkg.tar.zst
-python-mido-*.src.tar.gz
-.AURINFO
+*.tar.*
+*.zip
