@@ -1,6 +1,6 @@
 pkgbase = xamarin-android
 	pkgdesc = Provides open-source bindings of the Android SDK for use with .NET managed languages
-	pkgver = 11.4.99.0.43659
+	pkgver = 12.0.0.0.55118
 	pkgrel = 1
 	url = https://github.com/xamarin/xamarin-android
 	arch = x86_64

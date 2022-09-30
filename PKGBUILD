@@ -4,8 +4,8 @@
 
 # Uses latest public Xamarin DevOps successfull run:
 # https://dev.azure.com/xamarin/public/_build?definitionId=48&view=runs&statusFilter=succeeded
-_buildid=43659 # Build ID from public Xamarin DevOps
-_version=11.4.99.0 # Version supplied from any artifact filename
+_buildid=55118 # Build ID from public Xamarin DevOps
+_version=12.0.0.0 # Version supplied from any artifact filename
 _deb_filename=xamarin.android-oss_${_version}_amd64.deb # .deb artifact filename
 # Why use the .deb one? It already has everything we need and already
 # has the mono symlinks.
