@@ -4,7 +4,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=28.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -28,7 +28,7 @@ depends=(
   "xdg-desktop-portal"
 
   # Needed by obs-browser
-  "libxss" "libxrandr" "nss" "at-spi2-atk"
+  "libxss" "libxrandr" "nss" "at-spi2-core"
          
   # AUR Packages
   "ffmpeg-obs>=5" "vlc-luajit" "ftl-sdk"
