@@ -9,17 +9,17 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.7.0
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
 url='https://github.com/nipy/nipype'
 license=('Apache')
-depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'python-packaging' 'python-prov' 'python-pydot' 'python-pydotplus' 'python-dateutil' 'python-rdflib>=5.0.0' 'python-scipy' 'python-simplejson' 'python-traits' 'python-filelock' 'python-matplotlib' 'python-numpydoc' 'python-future' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-etelemetry>=0.2.0')
-makedepends=('python-sphinx' 'python-sphinxcontrib-napoleon')
-optdepends=('python-pybids' 'python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
+depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'python-packaging' 'python-prov' 'python-pydot' 'python-dateutil' 'python-rdflib>=5.0.0' 'python-scipy' 'python-simplejson' 'python-traits' 'python-filelock' 'python-etelemetry>=0.2.0' 'python-matplotlib' 'python-looseversion')
+makedepends=('python-numpydoc' 'python-sphinx' 'python-sphinxcontrib-napoleon' 'python-future' 'python-funcsigs' 'python-pytest' 'python-mock' )
+optdepends=('python-pybids' 'python-dipy' 'ants' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('2be7f3d27c2bc65c0f2ff9f4ff0e2d02cb85194b581a1dc26015311f8e684658')
+sha256sums=('c8bfc43c651b31958b763b1b46b0a7033c236c9dbcf6ba66d3f78eb5cb31fd00')
 
 _setpaths(){
 
