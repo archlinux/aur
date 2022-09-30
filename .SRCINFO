@@ -1,13 +1,16 @@
-pkgbase = pinniped-bin
-	pkgdesc = Pinniped provides identity services for Kubernetes clusters
-	pkgver = 0.18.0
+pkgbase = nodejs-jsonschema2md
+	pkgdesc = Convert Complex JSON Schemas into Markdown Documentation
+	pkgver = 7.1.1
 	pkgrel = 0
-	url = https://github.com/vmware-tanzu/pinniped
+	url = https://github.com/adobe/jsonschema2md
 	arch = x86_64
 	license = APACHE
-	conflicts = pinniped
-	conflicts = pinniped-git
-	source = pinniped-0.18.0::https://github.com/vmware-tanzu/pinniped/releases/download/v0.18.0/pinniped-cli-linux-amd64
-	sha512sums = 3055b297fe369cd24a2a5b51dd15ccce8b3ec205d7ccb82b240d19ccf87f217fa5b9303de4f5e3ff9baa4067dbd4ddbd309b4fd85213ef3c66d1b0047b65e05d
+	makedepends = npm
+	depends = nodejs
+	conflicts = nodejs-jsonschema2md
+	conflicts = nodejs-jsonschema2md-git
+	noextract = v7.1.1.tar.gz
+	source = https://github.com/adobe/jsonschema2md/archive/refs/tags/v7.1.1.tar.gz
+	sha512sums = 1340f298758ad79f8f1aa356417f8b37027018d20a9bbf2ca27522e991574336f08a88edbf9ccea9584a1f469e27d3b943c9e3d634e94d8cd34be4880faf0300
 
-pkgname = pinniped-bin
+pkgname = nodejs-jsonschema2md
