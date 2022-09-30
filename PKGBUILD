@@ -3,8 +3,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2022.2
-_pkgver=2022.2
+pkgver=2022.2.1
+_pkgver=222.4167.41
 pkgrel=1
 pkgdesc="A Professional Tool to Learn and Teach Programming with Python"
 arch=('x86_64')
@@ -14,12 +14,12 @@ license=('Apache')
 depends=('giflib' 'glibc' 'libxtst' 'libxslt' 'libdbusmenu-glib')
 makedepends=('python-setuptools')
 options=(!strip)
-source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
+source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython: Alternative Python shell'
 			'ipython2: Alternative Python 2 shell'
 			'python2: Support for Python 2 language')
-sha256sums=('c2a67930440e260be12efe2ae220877d5bb8af54f2036e2ef1ed200b90b06c20'
+sha256sums=('6e7fe76bdc7d500558375b9ae95eb9be4002efb94ee09fbaadc9cd22d0f71c41'
             'bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59')
 
 build() {
