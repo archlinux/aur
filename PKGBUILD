@@ -2,7 +2,7 @@
 
 pkgname=kotlin-language-server
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
 url="https://github.com/fwcd/KotlinLanguageServer"
@@ -15,7 +15,7 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('a968e0079787f1a6d2f46b4dbd49b2394c266287c8573097f71a14cdb794223d')
 
 build() {
-    jdk="$(find /usr/lib/jvm -maxdepth 1 -name "*1*" | head -1)" &&
+    jdk="$(find /usr/lib/jvm -maxdepth 1 -name "*1*jdk" | head -1)" &&
       test -n "$jdk" && export JAVA_HOME="$jdk"
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./gradlew server:installDist
