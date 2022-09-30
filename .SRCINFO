@@ -1,7 +1,7 @@
 pkgbase = dput
 	pkgdesc = Debian package upload tool
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.qa.debian.org/dput
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = dput
 	depends = python
 	depends = python-debian
 	depends = python-gpgme
+	depends = python-pyxdg
 	source = http://http.debian.net/debian/pool/main/d/dput/dput_1.1.2.tar.xz
 	md5sums = 21d77e7607cce37a42f7be38e5df8335
 

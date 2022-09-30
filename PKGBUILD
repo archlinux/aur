@@ -3,13 +3,13 @@
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian package upload tool"
 arch=('any')
 url="http://packages.qa.debian.org/dput"
 license=('GPL')
 makedepends=('python-setuptools')
-depends=('python' 'python-debian' 'python-gpgme')
+depends=('python' 'python-debian' 'python-gpgme' 'python-pyxdg')
 source=(http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz)
 md5sums=('21d77e7607cce37a42f7be38e5df8335')
 
