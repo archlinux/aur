@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r441.g9be52e5dd8
+pkgver=0.34.0.r493.g98e6fb26a3
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -24,6 +24,7 @@ depends=(
          'gnutls'
          'gsm'
          'glslang'
+         'harfbuzz'
          'hicolor-icon-theme'
          'jack'
          'kvazaar'
@@ -416,6 +417,10 @@ prepare() {
     '--enable-zimg'
     '--enable-zlib'
   )
+  _libass_options=(
+    '--enable-harfbuzz'
+    '--enable-fontconfig'
+  )
 
   local _legacy_mpv_options=(
     '--enable-gl-x11'
@@ -482,6 +487,7 @@ prepare() {
 
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options)
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options)
+  (IFS=$'\n'; echo "${_libass_options[*]}" > libass_options)
 
   cd mpv
 
