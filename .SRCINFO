@@ -1,0 +1,19 @@
+pkgbase = qr-backup
+	pkgdesc = Paper backup of files using QR codes
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/za3k/qr-backup
+	arch = any
+	license = CC0
+	depends = imagemagick
+	depends = python
+	depends = python-pillow
+	depends = python-reedsolo
+	depends = python-qrcode
+	depends = ttf-dejavu
+	depends = zbar
+	optdepends = gnupg
+	source = https://github.com/za3k/qr-backup/archive/refs/tags/v1.1.2.tar.gz
+	sha512sums = 0ad5b22312d93009eb32388f37cfdb44b882f91b87212a50dbe8bf547241b8012a4327b81c45a128deddf35702ee3a43c6a4efe0de88ff0395305f6dbbc9c4c3
+
+pkgname = qr-backup
