@@ -35,9 +35,6 @@ build() {
 check() {
   cd "${_tarname}"
 
-  # Remove Python 3 only test
-  rm mock/tests/testhelpers_py3.py
-
   python2 -m unittest discover
 }
 
