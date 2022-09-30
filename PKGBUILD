@@ -1,20 +1,20 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-test-env'
-pkgver='1.086'
+pkgname='perl-critic-toomuchcode'
+pkgver='0.18'
 pkgrel='1'
-pkgdesc="test the environment"
+pkgdesc="Perl-critic find unused imports"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.008')
 makedepends=()
-url='https://metacpan.org/release/Test-Env'
-source=("https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Test-Env-$pkgver.tar.gz")
-md5sums=('a0338c93a569c86d0bf8f6eb5a38ef61')
-sha512sums=('e9fe6c2639420b92d761a31d921f4dfa218afd1d61685a6b0752d5d3db409b2f18ab8ffbcdf8ce3ae16f7d8800ed3766e578821dcfc96f4e4b00f5da9c17c803')
-_distdir="Test-Env-$pkgver"
+url='https://metacpan.org/dist/Perl-Critic-TooMuchCode'
+source=("https://cpan.metacpan.org/authors/id/G/GU/GUGOD/Perl-Critic-TooMuchCode-$pkgver.tar.gz")
+md5sums=('09107814791c8619ec7e36cd27b9fa93')
+sha512sums=('0cab4af37272f68f35c22d200711afc23e67508f062347a0f94abf6010f885bed9bae344dc2fdbcaae4e0defcde91cdefabefe57f0c0fb140eeb3c22ac7e865b')
+_distdir="Perl-Critic-TooMuchCode-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
@@ -24,19 +24,19 @@ build() {
          MODULEBUILDRC=/dev/null
 
   cd "$srcdir/$_distdir"
-  /usr/bin/perl Makefile.PL
-  make
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 check() {
   cd "$srcdir/$_distdir"
   export PERL_MM_USE_DEFAULT=1 PERL5LIB="."
-  make test
+  ./Build test
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
+  ./Build install
 
   find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
