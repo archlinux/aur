@@ -1,0 +1,28 @@
+pkgbase = graphite-grub-theme
+	pkgdesc = Graphite grub theme
+	pkgver = 2022.09.02
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Graphite-gtk-theme
+	arch = any
+	license = GPL3
+	depends = grub
+	source = graphite-grub-theme-2022.09.02.tar.gz::https://github.com/vinceliuice/Graphite-gtk-theme/archive/2022-09-02.tar.gz
+	b2sums = 696518037f84d72a76e57ed4fe3d36ace787e128099f657c8ed224b5432889eef8d928dbaab00a2c6ca8614e603070aac099dde3281086ba2c2fef7e863a9947
+
+pkgname = graphite-grub-theme-default-1080p
+	provides = graphite-grub-theme-default-1080p
+
+pkgname = graphite-grub-theme-default-2k
+	provides = graphite-grub-theme-default-2k
+
+pkgname = graphite-grub-theme-default-4k
+	provides = graphite-grub-theme-default-4k
+
+pkgname = graphite-grub-theme-nord-1080p
+	provides = graphite-grub-theme-nord-1080p
+
+pkgname = graphite-grub-theme-nord-2k
+	provides = graphite-grub-theme-nord-2k
+
+pkgname = graphite-grub-theme-nord-4k
+	provides = graphite-grub-theme-nord-4k
