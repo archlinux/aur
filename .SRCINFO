@@ -1,6 +1,6 @@
 pkgbase = nvim-r
 	pkgdesc = Vim plugin to work with R
-	pkgver = 0.9.16
+	pkgver = 0.9.17
 	pkgrel = 1
 	url = https://github.com/jalvesaq/nvim-r
 	install = nvim-r.install
@@ -15,8 +15,7 @@ pkgbase = nvim-r
 	conflicts = vim-r
 	conflicts = r-vimcom
 	replaces = vim-r
-	source = nvim-r-0.9.16.tar.gz::https://github.com/jalvesaq/Nvim-R/archive/v0.9.16.tar.gz
-	sha256sums = 52ce6a161cfc17b0a9ade43831e5246a37d1cd29d4c63f101113e5fa4c02bcee
+	source = nvim-r-0.9.17.tar.gz::https://github.com/jalvesaq/Nvim-R/archive/v0.9.17.tar.gz
+	sha256sums = 8d671cb50eb1e5f6ae9999270e202c4eb4cd65ffb20cc7d8f2c18bc4bfcf0e4a
 
 pkgname = nvim-r
-
