@@ -1,6 +1,6 @@
 pkgbase = ruby-excon
 	pkgdesc = EXtended http(s) CONnections
-	pkgver = 0.92.5
+	pkgver = 0.93.0
 	pkgrel = 1
 	url = https://github.com/excon/excon
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ruby-excon
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = ruby-excon::git+https://github.com/excon/excon#commit=9116d97a7bf115587d3bc516838ab4ac2bd31782
+	source = ruby-excon::git+https://github.com/excon/excon#commit=b3f6cc4c4fc3ae26ade4564a2230b1f1a0d8e161
 	b2sums = SKIP
 
 pkgname = ruby-excon
