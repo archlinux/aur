@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://www.tarantool.org'
 license=(BSD)
 depends=(readline ncurses zlib libyaml openssl libunwind icu)
 makedepends=(git cmake systemd)
-checkdepends=(python-gevent python-tarantool)
+checkdepends=(python-gevent python-tarantool python-yaml)
 source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/luajit.git#branch=tarantool-1.7
         git+https://github.com/tarantool/libyaml.git
