@@ -1,13 +1,15 @@
 pkgbase = mongodb34-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 3.4.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
 	license = custom:SSPLv1
 	license = Apache
+	makedepends = chrpath
 	depends = curl
+	depends = openssl-1.0
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
 	provides = mongodb=3.4.24
 	conflicts = mongodb
