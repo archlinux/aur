@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  chmod +x ./configure
+  autoreconf -fi
   ./configure --prefix=/usr
   make
 }
