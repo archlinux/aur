@@ -1,17 +1,16 @@
 pkgbase = extractpdfmark
 	pkgdesc = Extract page mode and named destinations as PDFmark from PDF
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/trueroad/extractpdfmark
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = poppler
-	source = https://github.com/trueroad/extractpdfmark/releases/download/v1.1.0/extractpdfmark-1.1.0.tar.gz
-	source = https://github.com/trueroad/extractpdfmark/releases/download/v1.1.0/extractpdfmark-1.1.0.tar.gz.sig
+	source = https://github.com/trueroad/extractpdfmark/releases/download/v1.1.1/extractpdfmark-1.1.1.tar.gz
+	source = https://github.com/trueroad/extractpdfmark/releases/download/v1.1.1/extractpdfmark-1.1.1.tar.gz.sig
 	validpgpkeys = 49B8ED79B6A8C46E2F6DABB3FCD0C1621E80A02D
-	sha256sums = 0935045084211fcf68a9faaba2b65c037d0adfd7fa27224d2b6c7ae0fd7964cb
+	sha256sums = c62f3774c5a97df0517042dd5bbc1c3cdb65687617d1f0a3e8a6910f3191a21b
 	sha256sums = SKIP
 
 pkgname = extractpdfmark
-
