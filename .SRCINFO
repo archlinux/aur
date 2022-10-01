@@ -1,0 +1,24 @@
+pkgbase = pc6001vx-git
+	pkgdesc = Cross platform version of NEC PC-6001 emulator based on PC6001V
+	pkgver = v4.0.0.beta.2.r12.gbe17410
+	pkgrel = 1
+	url = https://github.com/eighttails/PC6001VX
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = libx11
+	depends = mesa
+	depends = ffmpeg
+	depends = sdl2
+	depends = qt6-base
+	depends = qt6-tools
+	depends = qt6-multimedia
+	depends = qt6-5compat
+	provides = pc6001vx
+	conflicts = pc6001vx
+	options = !buildflags
+	source = PC6001VX::git+https://github.com/eighttails/PC6001VX.git
+	md5sums = SKIP
+
+pkgname = pc6001vx-git
