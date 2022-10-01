@@ -1,0 +1,16 @@
+[Unit]
+Description=zwave-js-ui nodejs daemon
+After=network.target
+
+[Service]
+Type=simple
+User=zwave-js-ui
+Group=zwave-js-ui
+ExecStart=/usr/bin/node /usr/share/webapps/zwave-js-ui/server/bin/www.js
+Environment=ZWAVEJS_EXTERNAL_CONFIG=/var/lib/zwave-js-ui/.config-db
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
