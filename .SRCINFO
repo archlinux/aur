@@ -1,18 +1,16 @@
 pkgbase = ruby-fog-profitbricks
 	pkgdesc = This library can be used as a module for fog or as standalone ProfitBricks provider.
-	pkgver = 0.0.5
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/fog/fog-profitbricks
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-fog-core
-	depends = ruby-fog-xml
-	depends = ruby-nokogiri
-	noextract = fog-profitbricks-0.0.5.gem
+	depends = ruby-fog-json
+	noextract = fog-profitbricks-4.1.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-profitbricks-0.0.5.gem
-	sha512sums = e2d2858f1e7afbf3df114238d0c7107e7f9a2a0670611c253452347fe8ce849d13aa775f3ab16acbaf4629fd656f7c389d53857c129ebd8260d384161403f9d1
+	source = https://rubygems.org/downloads/fog-profitbricks-4.1.1.gem
+	sha512sums = c79caff85a3c690351ba0ea60d73760f85fef4a434e2db75fc4851ca34d02292691b826df4e4dd123aa5b079b891952e2ac0bd620fd16eae5292a1d48c132f50
 
 pkgname = ruby-fog-profitbricks
-
