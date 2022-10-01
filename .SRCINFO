@@ -6,9 +6,9 @@ pkgbase = python-nanotime
 	arch = any
 	license = custom:MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	source = git+https://github.com/jbenet/nanotime#commit=a60cbd2272b2dd36517445312e55ef44814d69e4
 	sha256sums = SKIP
 
 pkgname = python-nanotime
-
