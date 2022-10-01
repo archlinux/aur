@@ -7,6 +7,7 @@ pkgbase = vapoursynth-plugin-vsrgtools-git
 	license = GPL
 	makedepends = git
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = vapoursynth-plugin-vsutil-git
 	depends = vapoursynth-plugin-removegrain-git
 	depends = vapoursynth-plugin-rgsf-git
