@@ -1,8 +1,8 @@
 pkgbase = gwakeonlan-git
 	pkgdesc = GTK+ utility to awake machines using the Wake on LAN.
-	pkgver = 0.8.0
+	pkgver = 0.8.5
 	pkgrel = 1
-	url = https://www.muflone.com/gwakeonlan
+	url = http://www.muflone.com/gwakeonlan/
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -14,6 +14,6 @@ pkgbase = gwakeonlan-git
 	provides = gwakeonlan
 	conflicts = gwakeonlan
 	source = git+https://github.com/muflone/gwakeonlan.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gwakeonlan-git
