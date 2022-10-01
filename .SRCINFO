@@ -1,7 +1,7 @@
 pkgbase = beamerpresenter
 	pkgdesc = Modular multi-screen pdf presenter
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
 	license = AGPL3
@@ -9,6 +9,8 @@ pkgbase = beamerpresenter
 	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = libmupdf
+	makedepends = qt6-multimedia-ffmpeg
+	makedepends = qt6-multimedia-gstreamer
 	depends = qt6-multimedia
 	depends = jbig2dec
 	depends = openjpeg2

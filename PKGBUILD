@@ -7,7 +7,7 @@ _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
@@ -29,6 +29,11 @@ fi
 if [ "${_use_poppler}" == 'ON' ]
 then
     depends+=("poppler-qt${_qt_version_major}")
+fi
+
+if [ "${_qt_version_major}" == "6" ]
+then
+    makedepends+=('qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer')
 fi
 
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
