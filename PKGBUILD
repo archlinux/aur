@@ -33,7 +33,7 @@ prepare(){
 
   echo "all:
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) $(pkg-config --cflags opencv4) -o Inpaint.o Inpaint.cpp
-	  g++ -shared -lopencv_core -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
+	  g++ -shared -lopencv_photo -lopencv_core -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
 }
 
 build() {
