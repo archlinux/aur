@@ -1,0 +1,18 @@
+pkgbase = uwuifyy-git
+	pkgdesc = A command line tool to uwu'ify your text (git)
+	pkgver = 0.3.0.r13.g34d894d
+	pkgrel = 1
+	url = https://github.com/sgoudham/uwuifyy
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = uwuifyy
+	conflicts = uwuifyy
+	source = git+https://github.com/sgoudham/uwuifyy
+	source = uwuifyy-git-cargo-lock.patch::https://github.com/sgoudham/uwuifyy/commit/65a4c84b683708b38a231325b507c130564dee06.patch
+	sha512sums = SKIP
+	sha512sums = dfdbef6d32d581250bb3fab8fca16c69d38fb1fc6358b68ada066e73b4318605d9ef97ef2e6654e29890ce5f908235017cb02cfb0760247f5edb5666d178b9d7
+
+pkgname = uwuifyy-git
