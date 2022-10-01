@@ -1,8 +1,8 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-epoch=1
+epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm"
@@ -17,13 +17,21 @@ source=("${pkgname}::git+https://github.com/leftwm/leftwm.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
+  if [[ $(ps --no-headers -o comm 1) == "systemd" ]]; then
+    buildflags=""
+    echo "Building for systemd."
+  else
+    buildflags="--no-default-features --features=lefthk,sys-log"
+    echo "Building for non-systemd."
+  fi
+
   cd $pkgname
   cargo build --release
 }
 
 package() {
   cd $pkgname/target/release
-  install -Dm755 leftwm leftwm-worker leftwm-state leftwm-check leftwm-command -t "$pkgdir"/usr/bin
+  install -Dm755 leftwm leftwm-worker lefthk-worker leftwm-state leftwm-check leftwm-command -t "$pkgdir"/usr/bin
 
   install -d "$pkgdir"/usr/share/leftwm
   cp -R "$srcdir"/$pkgname/themes "$pkgdir"/usr/share/leftwm
