@@ -1,0 +1,18 @@
+pkgbase = ruby-fog-ovirt
+	pkgdesc = This library can be used as a module for fog.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/fog/fog-ovirt
+	arch = any
+	license = MIT
+	depends = ruby-activesupport
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	depends = ruby-fog-xml
+	depends = ruby-ovirt-engine-sdk
+	noextract = fog-ovirt-2.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-ovirt-2.0.2.gem
+	sha256sums = 3d4a1555fe78d8c30c6298f0a306c01591197a7ee25a788777b013f6a5e474c0
+
+pkgname = ruby-fog-ovirt
