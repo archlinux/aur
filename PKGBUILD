@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=105.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -79,9 +79,9 @@ prepare() {
   local _cachyos_patches_dir
   _cachyos_patches_dir="${srcdir}/cachyos-source/patches"
 
-  sed -i 's/lib\/librewolf/lib\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
-  sed -i 's/lib64\/librewolf/lib64\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
-  sed -i 's/librewolf/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
+  #sed -i 's/lib\/librewolf/lib\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
+  #sed -i 's/lib64\/librewolf/lib64\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
+  #sed -i 's/librewolf/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
 
   # Prepare patches, then return to the source directory
   pushd "${_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
