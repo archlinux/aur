@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
@@ -34,7 +34,7 @@ package()
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/"${pkgname}"/
 
     ## Create an executable.
-    echo -e "#!/bin/bash
+    echo -e "#!/usr/bin/env bash
 
 node /usr/share/\"${pkgname}\"/dist/cli.js \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
