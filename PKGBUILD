@@ -11,6 +11,7 @@ depends=(kvantum-theme-daemon-git plasma-workspace)
 makedepends=(git)
 provides=(kdeplasma-themes-daemon)
 conflicts=(kdeplasma-themes-daemon)
+options=(!strip)
 source=('git+https://github.com/MathisP75/daemon-dotfiles.git')
 sha256sums=('SKIP')
 
