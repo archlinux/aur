@@ -1,6 +1,6 @@
 pkgbase = r-tidybulk
 	pkgdesc = Brings transcriptomics to the tidyverse
-	pkgver = 1.8.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tidybulk
 	arch = any
@@ -59,7 +59,7 @@ pkgbase = r-tidybulk
 	optdepends = r-uwot
 	optdepends = r-vctrs
 	optdepends = r-widyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tidybulk_1.8.0.tar.gz
-	sha256sums = b78f20a6921eb1d44776aea1786b34180cf13c42488b7ca978c142fd87b7af09
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tidybulk_1.8.2.tar.gz
+	sha256sums = 2f256139a8da18dc03b390dbe2b890a1f19bc17d893167fee7b032888e444255
 
 pkgname = r-tidybulk
