@@ -10,7 +10,7 @@ makedepends=()
 provides=('Eitaa')
 arch=('x86_64')
 url="https://eitaa.com"
-source_x86_64=("$pkgname-v$pkgver.tar.xz::https://eitaa.com/dl/linux")
+source_x86_64=("$pkgname-v$pkgver.tar.xz::https://eitaa.com/app/desktop/linux")
 
 sha256sums_x86_64=('24792d51851545118df14b6118a3f4ef238fd8f783dfee0e461c1bffa3cc22b8')
 
