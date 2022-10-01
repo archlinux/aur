@@ -1,0 +1,11 @@
+[Unit]
+Description=Start ergo node on boot.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ergo-node
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=default.target
