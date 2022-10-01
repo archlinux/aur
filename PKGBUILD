@@ -1,25 +1,23 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Georg Wagner <puxplaying_at_gmail_dot_com>
+
 pkgname=autogit
-pkgver=1.2.7
+pkgver=1.8.0
 pkgrel=1
-pkgdesc="Define commands, using plugins, to execute across all your repositories."
-arch=(any)
-url="https://github.com/fabiospampinato/autogit#readme"
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm')
-optdepends=()
-source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-noextract=($pkgname-$pkgver.tgz)
+pkgdesc="Auto build, update, install PKGBUILDS from Github, Gitlab and AUR"
+arch=('any')
+url="https://github.com/puxplaying/autogit"
+license=('GPL3')
+depends=('pacman' 'sudo' 'bash' 'curl' 'fzf')
+makedepends=('git')
+optdepends=('manjaro-tools-pkg: Needed for Manjaro clean chroot package building'
+            'manjaro-chrootbuild: Needed for Manjaro clean chroot package building')
+backup=("etc/$pkgname/$pkgname.conf")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3c2879eb8cc859a6b71acbb933483c4a647685086cb5c51cc89fa99bf8fb8166')
 
-package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
-  find "${pkgdir}"/usr -name package.json -exec sed -i '/"_where"/d' '{}' '+'
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+package () {
+  cd "$pkgname-$pkgver"
+  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "$pkgname.conf" -t "$pkgdir/etc/$pkgname/"
+  cp -r reponames "$pkgdir/etc/$pkgname/"
 }
-
-sha256sums=('e2e9c128b67b96cb16640e621d0f8a62fb1888abaf853dc06fa77c07f12dbf8c')
