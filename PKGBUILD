@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
-pkgdesc="A bash cli framework, also a task runner"
+pkgdesc="Easily parse cli arguments in bash"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5b703b19c70f64a24b2c4e1afe60e7660f1ad9b891ce9555201783e3bd437d186fcba8e891637b6a0fc300b7434d59c26e063cb5711e2183d0ba06918ba17933')
+sha512sums=('21c1b5905d0bb99ab185f36e263ddab91dfecc0def4e9f38b1eb8e39545175a3cd7483f8935c67f812ecaba374f877d7809c8c474605236b6436b095ce08eba3')
 
 prepare() {
   cd "$pkgname-$pkgver"
