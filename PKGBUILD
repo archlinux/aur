@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.0.dev.r4311.g173d62b1c
+pkgver=1.7.3357.r0.gd908fa5e3
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -61,42 +61,23 @@ provides=(pcsx2-qt)
 conflicts=(pcsx2)
 
 source=(
-git+https://github.com/kenshen112/pcsx2.git#branch=packages
-git+https://github.com/rtissera/libchdr.git
-git+https://github.com/google/googletest.git
-git+https://github.com/mozilla/cubeb.git
-git+https://github.com/KhronosGroup/glslang.git
-git+https://github.com/KhronosGroup/Vulkan-Headers.git
-git+https://github.com/fmtlib/fmt.git
-)
-
-sha256sums=(
-SKIP
-SKIP
-SKIP
-SKIP
-SKIP
-SKIP
-SKIP
+git+https://github.com/PCSX2/pcsx2.git
+0001-QtHost.cpp-Fixed-Resources-dir.patch
+0002-Added-QT-Desktop-file.patch
 )
 
 prepare()
 {
   cd $srcdir/pcsx2
-  git submodule init
-  git config submodule.3rdparty/libchdr/libchdr.url $srcdir/libchdr
-  git config submodule.3rdparty/gtest.url $srcdir/googletest
-  git config submodule.3rdparty/cubeb/cubeb.url $srcdir/cubeb
-  git config submodule.3rdparty/glslang/glslang.url $srcdir/glslang
-  git config submodule.3rdparty/vulkan-headers.url $srcdir/Vulkan-Headers
-  git config submodule.3rdparty/fmt/fmt.url $srcdir/fmt
-  git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/glslang/glslang 3rdparty/vulkan-headers 3rdparty/fmt/fmt
+  git submodule update --init --recursive
+  patch --forward --strip=1 --input="${srcdir}/0001-QtHost.cpp-Fixed-Resources-dir.patch"
+  patch --forward --strip=1 --input="${srcdir}/0002-Added-QT-Desktop-file.patch"
 }
 
 pkgver()
 {
   cd $srcdir/pcsx2
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build()
@@ -125,3 +106,6 @@ package()
 
 # vim: ts=2 sw=2 et:
 
+sha256sums=('SKIP'
+            '88207a76ba366a343b5b9d8f90da0f44f2dd8145df0ad7582c223ff072528473'
+            '33b3d6bde2c3973db918a28d4eacbef6e5db4be65856091988364f840d3702e1')

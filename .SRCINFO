@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = v1.7.0.dev.r4311.g173d62b1c
+	pkgver = 1.7.3357.r0.gd908fa5e3
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = post.install
@@ -38,19 +38,11 @@ pkgbase = pcsx2-git
 	depends = zstd-cmake
 	provides = pcsx2-qt
 	conflicts = pcsx2
-	source = git+https://github.com/kenshen112/pcsx2.git#branch=packages
-	source = git+https://github.com/rtissera/libchdr.git
-	source = git+https://github.com/google/googletest.git
-	source = git+https://github.com/mozilla/cubeb.git
-	source = git+https://github.com/KhronosGroup/glslang.git
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = git+https://github.com/fmtlib/fmt.git
+	source = git+https://github.com/PCSX2/pcsx2.git
+	source = 0001-QtHost.cpp-Fixed-Resources-dir.patch
+	source = 0002-Added-QT-Desktop-file.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 88207a76ba366a343b5b9d8f90da0f44f2dd8145df0ad7582c223ff072528473
+	sha256sums = 33b3d6bde2c3973db918a28d4eacbef6e5db4be65856091988364f840d3702e1
 
 pkgname = pcsx2-git
