@@ -6,14 +6,14 @@
 # Contributor: Toni Spets <toni.spets@gmail.com>
 
 pkgname=poweriso
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A powerful CD/DVD image file processing tool"
 arch=('any')
 url="http://www.poweriso.com/"
 license=('freeware')
 source=(http://www.poweriso.com/$pkgname-$pkgver.tar.gz)
-sha256sums=('1893189e0c8b77da179df64a64cf8e62c4216684d1ab262867c6c96faae64ee2')
+sha256sums=('6364e4b5cb5fe75dd32f27703daf694f31d72344993b6a44e33c94c8f14c625b')
 
 package() {
   install -D -m755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
