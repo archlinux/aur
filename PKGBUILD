@@ -3,13 +3,13 @@
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=14.1.g89f5401
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173673'
 license=('MIT')
 depends=('vapoursynth'
-         'boost-libs'
+         'libboost_iostreams.so'
          'libopenblas'
          'google-glog'
          'gflags'
@@ -22,7 +22,7 @@ depends=('vapoursynth'
 makedepends=('git'
              'boost'
              'meson'
-              'cuda'
+             'cuda'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -83,7 +83,6 @@ build() {
   install -Dm644 build/src/caffe/proto/caffe.pb.h "${srcdir}/fakeroot/include/caffe/proto/caffe.pb.h"
 
   cd "${srcdir}/build"
-
 
   CXXFLAGS+=' -fpermissive'
   arch-meson "../${_plug}" \
