@@ -2,12 +2,13 @@
 set -e
 virtualenv ".venv" -p python3
 . ".venv/bin/activate"
-pip install --upgrade certifi
-pip3 install --upgrade llbase
-	pip3 uninstall --yes autobuild
+echo "Installing autobuild..."
+pip install --upgrade certifi --quiet
+pip3 install --upgrade llbase --quiet
 if command -v autobuild >/dev/null 2>&1 && [[ "$(autobuild --version)" == "autobuild 9.0.0" ]]; then
+	pip3 uninstall --yes autobuild --quiet
 fi
-pip3 install --no-cache --upgrade autobuild
+pip3 install --no-cache --upgrade autobuild --quiet
 
 # we have a lot of files, relax ulimit to help performance
 ulimit -n 20000
