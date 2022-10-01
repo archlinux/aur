@@ -1,6 +1,6 @@
 pkgname=briar-desktop-git
 _pkgname=briar-desktop
-pkgver=r403.77a3a75
+pkgver=r471.7ee4177
 pkgrel=1
 _build_type=nightly
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
@@ -57,7 +57,7 @@ build() {
 
 package() {
   cd "${_pkgname}/"
-  _bin_ver=$(grep 'versionCode =' build.gradle.kts | sed -e 's/^.*versionCode = "\(.*\)".*$/\1/')
+  _bin_ver=$(grep 'versionCode =' briar-desktop/build.gradle.kts | sed -e 's/^.*versionCode = "\(.*\)".*$/\1/')
   install -dm755 "$pkgdir/usr/bin/"
   cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
@@ -65,9 +65,9 @@ exec /usr/lib/jvm/java-17-openjdk/bin/java -jar '/usr/share/java/briar-desktop.j
 EOF
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-  install -m 644 -D "build/compose/jars/Briar-linux-${_gradle_arch}-${_bin_ver}-${_build_type}.jar" "$pkgdir/usr/share/java/$_pkgname.jar"
+  install -m 644 -D "${srcdir}/${_pkgname}/${_pkgname}/build/compose/jars/Briar-linux-${_gradle_arch}-${_bin_ver}-${_build_type}.jar" "$pkgdir/usr/share/java/$_pkgname.jar"
 
-  install -Dm644 ${srcdir}/${_pkgname}/src/main/resources/images/logo_circle.svg \
+  install -Dm644 ${srcdir}/${_pkgname}/${_pkgname}/src/main/resources/images/logo_circle.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
   # generated with inkscape from the svg
@@ -86,6 +86,6 @@ EOF
   install -Dm644 ${srcdir}/$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-  install -Dm644 ${srcdir}/${_pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml \
+  install -Dm644 ${srcdir}/${_pkgname}/${_pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml \
     "$pkgdir/usr/share/metainfo/org.briarproject.Briar.metainfo.xml"
 }

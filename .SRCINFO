@@ -1,6 +1,6 @@
 pkgbase = briar-desktop-git
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
-	pkgver = r403.77a3a75
+	pkgver = r471.7ee4177
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = x86_64
