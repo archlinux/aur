@@ -1,14 +1,16 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 # Contributor: Filip <fila pruda com>
 pkgname=poweradmin-git
-pkgver=2.2.2.r33.ga1f2356
+pkgver=3.2.0.r2.g6181224
 pkgrel=1
 pkgdesc="web-based DNS administration tool for PowerDNS server (git version)"
 arch=(any)
 url="https://www.poweradmin.org"
 license=(GPL)
-depends=(powerdns php)
+optdepends=("php: to locally host poweradmin")
 makedepends=(git)
+provides=(poweradmin)
+conflicts=(poweradmin)
 source=("git+https://github.com/poweradmin/poweradmin.git")
 sha256sums=('SKIP')
 backup=('etc/webapps/poweradmin/config.inc.php')
