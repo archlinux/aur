@@ -1,18 +1,19 @@
-# Maintaineir: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=fog-aws
 pkgname=ruby-$_gemname
-pkgver=0.7.6
+pkgver=3.15.0
 pkgrel=1
 pkgdesc='Module for the '\''fog'\'' gem to support Amazon Web Services.'
 arch=(any)
 url='http://github.com/fog/fog-aws'
 license=(MIT)
-depends=(ruby ruby-fog-core ruby-fog-json ruby-fog-xml ruby-ipaddress)
+depends=(ruby ruby-fog-core ruby-fog-json ruby-fog-xml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('2b5d4430cda2a84861799efd6e7a6f9b17eea253ed9d9a625d32121556c7a1df9ccb51032d66092a714ce19dbed11c15b1cc54b58d7339784bf816dbdc07ba40')
+sha512sums=('cf18f6a73b50406ae0d7dbd3b7b5b9be42551dd7657ad69f4195fc718c8cdc294a1506ee78090b9157b6f2d5ccb56e55bcfa617f3300cf9ab66876e36915976e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
