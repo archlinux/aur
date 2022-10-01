@@ -2,7 +2,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=libva-headless
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=(i686 x86_64 armv7h aarch64)
@@ -14,12 +14,11 @@ conflicts=("${pkgname%-headless}")
 provides=("${pkgname%-headless}" libva.so libva-drm.so)
 optdepends=(
     'intel-media-driver: backend for Intel GPUs (>= Broadwell)'
-    'libva-vdpau-driver: backend for Nvidia and AMD GPUs'
     'libva-intel-driver: backend for Intel GPUs (<= Haswell)'
+    'libva-mesa-driver: backend for AMD and Nvidia GPUs'
 )
 backup=(etc/libva.conf)
-_tag=b095d10bf355110352e75c22e581018a7ea7de5a
-source=(git+https://github.com/intel/libva.git#tag=${_tag})
+source=(git+https://github.com/intel/libva.git#tag=1333034d7ec6e4f8bcb340d8f7b81b8d32835c49)
 sha256sums=(SKIP)
 
 pkgver() {
@@ -29,13 +28,12 @@ pkgver() {
 build() {
     CFLAGS+=" -DENABLE_VA_MESSAGING" # Option missing
     arch-meson libva build -Dwith_x11=no -Dwith_glx=no -Dwith_wayland=no
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" meson install -C build
-    install -Dm 644 libva/COPYING -t "${pkgdir}"/usr/share/licenses/libva
-
+    meson install -C build --destdir "${pkgdir}"
+    install -Dm 644 libva/COPYING -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
     install -Dm 644 /dev/stdin "${pkgdir}"/etc/libva.conf <<END
 LIBVA_MESSAGING_LEVEL=1
 END
