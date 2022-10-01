@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell meta-package, installer and updater"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-shell"
@@ -11,8 +11,8 @@ depends=('foot' 'gnome-themes-extra' 'grim' 'imagemagick' 'jq'
          'network-manager-applet' 'pacman-contrib' 
          'papirus-icon-theme' 'playerctl' 'polkit-gnome' 
          'python-geopy' 'python-yaml' 'slurp' 'swappy' 'sway' 'swayidle'
-         'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'azote' 
-         'gopsuinfo' 'nwg-bar-bin' 'nwg-dock-bin' 'nwg-drawer-bin' 
+         'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'wlsunset' 
+         'azote' 'gopsuinfo' 'nwg-bar-bin' 'nwg-dock-bin' 'nwg-drawer-bin' 
          'nwg-menu-bin' 'nwg-look-bin' 'nwg-panel' 'nwg-shell-config' 
          'nwg-shell-wallpapers' 'nwg-displays' 'python-dasbus' 'swaync' 'gtklock')
 optdepends=('chromium: suggested web browser' 
