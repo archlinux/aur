@@ -1,4 +1,4 @@
-From 232614cab51bf6b18b42f37305ab65992d347be6 Mon Sep 17 00:00:00 2001
+From e650eac962da69b5ec93b249902f78bfc734dc18 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
 Subject: [PATCH 03/12] Fix using static PCRE2 and DBus-1
@@ -13,10 +13,10 @@ Change-Id: I2387b79462b6d183b71f9433dd937f63fc7ef26e
  2 files changed, 9 insertions(+)
 
 diff --git a/src/corelib/text/qregularexpression.cpp b/src/corelib/text/qregularexpression.cpp
-index a39977a34b..1b26a1e00e 100644
+index a9b7f99975..063de6d9e2 100644
 --- a/src/corelib/text/qregularexpression.cpp
 +++ b/src/corelib/text/qregularexpression.cpp
-@@ -57,6 +57,11 @@
+@@ -20,6 +20,11 @@
  #endif
  
  #define PCRE2_CODE_UNIT_WIDTH 16
@@ -29,10 +29,10 @@ index a39977a34b..1b26a1e00e 100644
  #include <pcre2.h>
  
 diff --git a/src/dbus/qdbus_symbols_p.h b/src/dbus/qdbus_symbols_p.h
-index accaa4f5ed..4b11c74caa 100644
+index e3008be761..9c745c16c4 100644
 --- a/src/dbus/qdbus_symbols_p.h
 +++ b/src/dbus/qdbus_symbols_p.h
-@@ -57,6 +57,10 @@
+@@ -21,6 +21,10 @@
  
  #ifndef QT_NO_DBUS
  
