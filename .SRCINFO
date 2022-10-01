@@ -1,6 +1,6 @@
 pkgbase = tealdeer-git
 	pkgdesc = A fast tldr client in Rust.
-	pkgver = r421.b369678
+	pkgver = r444.357f0e7
 	pkgrel = 1
 	url = https://github.com/dbrgn/tealdeer
 	arch = x86_64
