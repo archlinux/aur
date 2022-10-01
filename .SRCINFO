@@ -1,0 +1,15 @@
+pkgbase = ruby-aliyun-sdk
+	pkgdesc = A Ruby program to facilitate accessing Aliyun Object Storage Service
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/aliyun/aliyun-oss-ruby-sdk
+	arch = any
+	license = MIT
+	depends = ruby-nokogiri
+	depends = ruby-rest-client
+	noextract = aliyun-sdk-0.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/aliyun-sdk-0.8.0.gem
+	sha512sums = bd4aee54a2fb7dac498f64f8d2241b98affec55d83614abf64fe4b983366c164dae3e61ea15c9f52ef1324b3f7ee93c8d581b3b9e9006cbb8191290949dc938b
+
+pkgname = ruby-aliyun-sdk
