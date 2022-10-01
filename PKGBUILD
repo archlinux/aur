@@ -1,29 +1,30 @@
-# Author: mosra <mosra@centrum.cz>
 pkgname=tnb
-pkgver=2020_01_05
+pkgver=1.0.0
 pkgrel=1
+epoch=1
 pkgdesc="CLI-based Telegram Notification Bot"
 arch=('x86_64')
 url="https://github.com/Wint3rmute/tnb.git"
 license=('custom:WTFPL')
-makedepends=('git' 'rust')
+makedepends=('cargo')
 
-source=("git+git://github.com/Wint3rmute/tnb.git")
+source=("${pkgname}::git+https://github.com/Wint3rmute/tnb.git#tag=${pkgver}")
 sha1sums=('SKIP')
 
-# pkgver() {
-#     #cd "$srcdir/${pkgname%-git}"
-#     #git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
-# }
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cd "$srcdir/${pkgname%-git}"
-    # ls
-    cargo build --release --locked
+    cargo build --frozen --release --all-features
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    
-    install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
+
