@@ -11,8 +11,6 @@ depends=(kvantum)
 makedepends=(git)
 provides=(kvantum-theme-daemon)
 conflicts=(kvantum-theme-daemon)
-replaces=()
-backup=()
 source=('git+https://github.com/MathisP75/daemon-dotfiles.git')
 sha256sums=('SKIP')
 
