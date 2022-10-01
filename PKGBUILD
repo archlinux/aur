@@ -1,0 +1,32 @@
+# Maintainer: Chi_Tang <chitang@duck.com>
+
+pkgname=ca-certificates-gts
+pkgver=20221001
+pkgrel=1
+pkgdesc="Google Trust Service root certificates"
+arch=('any')
+url='https://pki.goog'
+license=('unknown')
+source=(
+        "gsr4.pem"::https://pki.goog/repo/certs/gsr4.pem
+        "gtsr1.pem"::https://pki.goog/repo/certs/gtsr1.pem
+        "gtsr2.pem"::https://pki.goog/repo/certs/gtsr2.pem
+        "gtsr3.pem"::https://pki.goog/repo/certs/gtsr3.pem
+        "gtsr4.pem"::https://pki.goog/repo/certs/gtsr4.pem
+        )
+sha512sums=('5710a00bcaa20dee297d0bb029c017e7cfe3fd622cf54554d74e77b712e5a9c84ae386e1f27a2be3f0d6b01ab09aae6619b335e4820270aeffc12f4cd605df66'
+            '6f98885d7764f1a41e784f4159196bf6ede4ea77411c19bd9e66133087d5179651b7c01dedab407f441945026f07180e5ee82ca41f1de159e5b9aaf491acfe9e'
+            'f26c3f7c175edf374f3f23c461fcd1686190a14ddd3248db909f38f30dc58098260a3fc08a323868f4fc093066081fa9f6d60e915e9019154151457c93a660b1'
+            '100111ea8326d5ddf323d7cfd8a8417f12de5fdf3ce879f55183a2c64fc565082221c7cb00b00c648c534ee8405b3d3e37434643f10e57792754b80f7507043b'
+            'e4b3404aa96f731c235af7addfea8c7e8b2cbc15e37a49f204089b634f522f4ba8257a6af46ad3428a301a298b854feb64e12e3c29d8a473e6f5b2253c700a81'
+            )
+
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
+package() {
+  install -Dm644 "gsr4.pem"   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/gts/gsr4.pem"
+  install -Dm644 "gtsr1.pem"  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/gts/gtsr1.pem"
+  install -Dm644 "gtsr2.pem"  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/gts/gtsr2.pem"
+  install -Dm644 "gtsr3.pem"  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/gts/gtsr3.pem"
+  install -Dm644 "gtsr4.pem"  "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/gts/gtsr4.pem"
+}
