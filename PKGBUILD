@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=6.1.16
-pkgrel=2
+pkgver=6.1.18
+pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-source=('karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.1.16'
+source=('karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.1.18'
         'karaokemugen-lib::git+https://gitlab.com/karaokemugen/lib.git'
         'karaokemugen-avatars::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git'
         'install.sh'
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '8373c231fb432d6efef66e3ecf94ff0f'
-         '55557823030b7824a85a55469e119cb4'
+         '68ffca0cac38cd6d8ae6204cfb86c7f6'
          '5e9a33a42fef7572b7e0fa504c586f32'
          '10561eed906a5efeed427f90501b4f49')
 
@@ -54,7 +54,7 @@ build() {
     yarn installkmfrontend
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronVer=$(electron --version | tail -c +2)
+    electronVer=$(electron19 --version | tail -c +2)
     yarn build
     yarn buildkmfrontend
     yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron -c.electronVersion=$electronVer --dir
