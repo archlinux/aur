@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.3_776.b315bed
+pkgver=0.2.3_783.40e6087
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -32,6 +32,11 @@ fi
 if [ "${_use_poppler}" == 'ON' ]
 then
     depends+=("poppler-qt${_qt_version_major}")
+fi
+
+if [ "${_qt_version_major}" == "6" ]
+then
+    makedepends+=('qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer')
 fi
 
 
