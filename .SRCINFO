@@ -1,6 +1,6 @@
 pkgbase = aria-git
 	pkgdesc = An experimental low-level programming language built to improve on C.
-	pkgver = 0.0.1.r3.bf82683
+	pkgver = 0.0.1.r4.9ffa9e3
 	pkgrel = 1
 	url = https://shkhuz.github.io/aria
 	arch = x86_64
