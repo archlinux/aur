@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.160382.e24a8168189.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.160673.73089969219.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -144,7 +144,6 @@ build () {
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=enabled \
-        -D gallium-xvmc=disabled \
         -D gbm=enabled \
         -D gles1=disabled \
         -D gles2=enabled \
