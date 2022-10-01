@@ -1,0 +1,14 @@
+pkgbase = write-shm
+	pkgdesc = Write to a shared memory
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/write_shm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/NikolasK-source/write_shm.git#tag=v0.1.3
+	sha256sums = SKIP
+
+pkgname = write-shm
