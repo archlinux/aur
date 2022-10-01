@@ -1,0 +1,17 @@
+pkgbase = haskell-vivid-supercollider
+	pkgdesc = Vivid + Supercollider
+	pkgver = 0.4.1.2
+	pkgrel = 1
+	url = https://vivid-synth.com/
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-split
+	depends = haskell-utf8-string
+	depends = haskell-vivid-osc
+	source = https://hackage.haskell.org/packages/archive/vivid-supercollider/0.4.1.2/vivid-supercollider-0.4.1.2.tar.gz
+	b2sums = 6e7336b192a7ea460bd1cd39ea367b5ebf8248d2e0d7f491a7adc258d61865170835ebf74d70ad8615fe04717c14c513316d1e11a04cc4f07b09acf36541fef5
+
+pkgname = haskell-vivid-supercollider
