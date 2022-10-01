@@ -1,6 +1,7 @@
 pkgbase = kvantum-theme-daemon-git
+	pkgdesc = Cyberpunk style theme for KDE
 	pkgver = r4.3bd2e02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MathisP75/daemon-dotfiles
 	arch = any
 	license = GPL
