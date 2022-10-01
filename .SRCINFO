@@ -1,0 +1,21 @@
+pkgbase = ruby-google-apis-core
+	pkgdesc = Common utility and base classes for legacy Google REST clients
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/google-apis-core
+	arch = any
+	license = Apache-2.0
+	depends = ruby-addressable
+	depends = ruby-googleauth
+	depends = ruby-httpclient
+	depends = ruby-mini_mime
+	depends = ruby-representable
+	depends = ruby-retriable
+	depends = ruby-rexml
+	depends = ruby-webrick
+	noextract = google-apis-core-0.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/google-apis-core-0.9.0.gem
+	sha512sums = 13e63beab1da6b5eb17c670786a59d07a4c3321a517446965e21682e8a354c524863eacf5c1007d18e55c72138575024ef8ff272f17943f5198265d4992a7671
+
+pkgname = ruby-google-apis-core
