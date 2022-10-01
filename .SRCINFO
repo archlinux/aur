@@ -1,10 +1,11 @@
 pkgbase = bluewho
 	pkgdesc = Information and notification of new discovered bluetooth devices
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://www.muflone.com/bluewho
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = gtk3
 	depends = gobject-introspection
 	depends = libnotify
@@ -16,7 +17,7 @@ pkgbase = bluewho
 	optdepends = alsa-utils: to play notification sound using aplay
 	optdepends = libpulse: to play notification sound using paplay
 	optdepends = mplayer: to play notification sound using mplayer
-	source = bluewho-0.5.1.tar.gz::https://github.com/muflone/bluewho/archive/0.5.1.tar.gz
-	sha256sums = 46600fd69c47563afcfd8074693e33e7d3a158126718ea480a7908c7ac0bd477
+	source = bluewho-0.5.2.tar.gz::https://github.com/muflone/bluewho/archive/0.5.2.tar.gz
+	sha256sums = efdfb95ba71f691b5485da69b4a10acef02a4c851f0bcd3e0780bcc3f3aa7a7f
 
 pkgname = bluewho
