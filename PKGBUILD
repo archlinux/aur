@@ -2,7 +2,7 @@
 
 pkgname=zwave-js-ui
 pkgver=8.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Full featured Z-Wave Control Panel UI and MQTT gateway"
 arch=('any')
 url="https://github.com/zwave-js/zwave-js-ui"
@@ -21,7 +21,7 @@ b2sums=('b4860e6f560b798a3ebe6f0dde849d488ddff3082eef019995874d7cd1a9e9c4670a1e9
         '20fe5b3391e8ef54b7047c082b183e492bea4b6b9dac11ebfa69e98ca6f6889cfde7a55897f6a6a8d91a2753a3a316cde8c4802d4e23a65bf421eeac8a2725fe'
         'e2d3de5e1446f5b1f7c97581a0fa66022050993399d23afba63079ba6c690f995708dffca442170da44abc526103143fbecb94e95a9b7d85fcbf37b3fc49db5e'
         '8b2c0b4e3659297e311f7f3ae69d337cddfc6dc55a5edc4f39bf8a26bc728cfb7ca5fe56d89e253d17d74646336f53d5cacac5b18cc94f2be8fd29ff900615de'
-        '3b1548c5c68d2a5ee3a1fd7f01f84c9c715b5a17540ece89d2ff38f375743057304e433b7b2265d9b9169aad3c2e046ccd636c9980808aadc036e2e6d0511f75')
+        '834801b8e862c8962357865ae5403e9440be142e21f2560e27c59dc28f663d7d7e3111c324f1a3b133e85debfe82cc2ea7fbe9c1e4b45d3bd829709b503eae89')
 
 build() {
   cd "$pkgname-$pkgver"

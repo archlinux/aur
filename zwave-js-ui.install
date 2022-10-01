@@ -6,3 +6,7 @@ post_install() {
 		echo "   This has to be done only once after switching to zwave-js-ui."
 	fi
 }
+
+post_upgrade() {
+	post_install
+}
