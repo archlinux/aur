@@ -1,8 +1,8 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=fog-dynect
 pkgname=ruby-$_gemname
-pkgver=0.0.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='This library can be used as a module for `fog` or as standalone provider to use Dynect DNS in applications.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fog-core ruby-fog-json ruby-fog-xml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('3f38c4b7cb2ee742c32ec1c21d2c79321a91aa48341afb1b2718173ca9707ae35db64a225c42b6fffa89ca70bf632d06ed41d41a50a94625bd1557b8987d3808')
+sha512sums=('e7eed3231c77329d46c607a64205066ce24dc3cdc41f709c18adc891e960ab057bae8ca65d986829a83cf43c8c08b6c0ea4e3fbd1a4d45cb54fe6c998d6fa720')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
