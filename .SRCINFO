@@ -1,0 +1,17 @@
+pkgbase = ruby-fog-digitalocean
+	pkgdesc = DigitalOcean fog provider gem
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/fog/fog-digitalocean
+	arch = any
+	license = MIT
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	depends = ruby-fog-xml
+	depends = ruby-ipaddress
+	noextract = fog-digitalocean-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-digitalocean-0.4.0.gem
+	sha256sums = a921d4c7f59c6e692e6bad4e2f2863ff9bb454249ba7c4d1603151e6cce58b0f
+
+pkgname = ruby-fog-digitalocean
