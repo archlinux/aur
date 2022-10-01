@@ -1,3 +1,12 @@
+2022-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.3.1.2-1:
+    Added --cryptkey-file command-line argument for people that would prefer ASF to read --cryptkey from specified file (@JustArchi).
+    Added exact wallet balance to the response after redeeming wallet code (@JustArchi).
+    Removed requirement of having a wallet set up in order to redeem wallet codes, as it's no longer required on Steam side (@JustArchi).
+    Updated generic-netf variant to latest .NET Framework 4.8.1, maintenance release (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-09-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.3.0.3-1:
     ASF's internal HTML parsing module was rebased on top of new major version. This is pretty big update, and while we thoroughly tested this against regressions, please let us know if you find anything unusual not working as expected (@JustArchi).
