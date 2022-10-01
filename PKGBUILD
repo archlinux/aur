@@ -26,7 +26,7 @@ build()
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target/
-    cargo build --all-features --frozen -r --target wasm32-unknown-unknown
+    cargo build -F wasm --frozen -r --target wasm32-unknown-unknown
 }
 
 package()
