@@ -1,0 +1,14 @@
+pkgbase = soh-otr-gc_nmq_d
+	pkgdesc = OTR game data for SoH (OOT Debug PAL GameCube non-Master Quest)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/HarbourMasters/Shipwright
+	arch = any
+	makedepends = soh-otr-exporter
+	depends = soh
+	provides = soh-otr
+	conflicts = soh-otr
+	source = file://baserom.z64
+	sha256sums = 94bdeb4ab906db112078a902f4477e9712c4fe803c4efb98c7b97c3f950305ab
+
+pkgname = soh-otr-gc_nmq_d
