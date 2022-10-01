@@ -6,7 +6,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -25,6 +25,7 @@ depends=(
     libass.so
     libavc1394
     libbluray.so
+    libbs2b.so
     libdav1d.so
     libdrm
     libfreetype.so
@@ -43,12 +44,14 @@ depends=(
     libvorbis.so
     libvorbisenc.so
     libvpx.so
+    libvulkan.so
     libwebp
     libx264.so
     libx265.so
     libxml2
     libxvidcore.so
     libzimg.so
+    ocl-icd
     opencore-amr
     openjpeg2
     opus
@@ -68,6 +71,8 @@ makedepends=(
     git
     ladspa
     nasm
+    opencl-headers
+    vulkan-headers
 )
 optdepends=(
     'avisynthplus: AviSynthPlus support'
@@ -87,8 +92,9 @@ provides=(
     "${pkgname%-headless}"
 )
 conflicts=("${pkgname%-headless}")
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=1bad30dbe34f2d100b43e8f773d3fe0b5eb23523)
+source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7)
 b2sums=('SKIP')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 pkgver() {
     git -C "${pkgname%-headless}" describe --tags | sed 's/^n//'
@@ -101,7 +107,6 @@ prepare() {
 
 build() {
     cd ${pkgname%-headless}
-
     ./configure \
         --prefix=/usr \
         --disable-debug \
@@ -119,6 +124,7 @@ build() {
         --enable-libaom \
         --enable-libass \
         --enable-libbluray \
+        --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
         --enable-libfreetype \
@@ -156,13 +162,14 @@ build() {
         --enable-libzimg \
         --enable-nvdec \
         --enable-nvenc \
+        --enable-opencl \
         --enable-shared \
         --enable-version3 \
+        --enable-vulkan \
         --disable-xlib \
         --disable-sdl2 \
         --disable-htmlpages \
         --disable-ffplay
-
     make
 }
 
