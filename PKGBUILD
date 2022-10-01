@@ -1,8 +1,9 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 _pkgname=WhiteSur-gtk-theme
-_pkgver=2022-02-21
+_pkgver=2022-08-26
 
 pkgname=whitesur-gtk-theme
 pkgver="${_pkgver//-/.}"
@@ -23,9 +24,7 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-sha256sums=(
-  'eb9c9bc02f7f4efd05903130a25e2f07b247cab3486be6c41da7c795f2765137'
-)
+sha256sums=('56c8b38668aedbd4fa69d9033c4aeb5375a9358a335b3ba03fb74edacf38d705')
 
 package() {
   cd "${_pkgname}-${_pkgver}"
