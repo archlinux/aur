@@ -33,7 +33,7 @@ prepare() {
 
   echo "all:
 	  clang++ -c -stdlib=libc++ -fPIC ${CXXFLAGS} ${CPPFLAGS} -I./LC $(pkg-config --cflags vapoursynth) -o VSPlugin.o LC/VSPlugin.cpp
-	  clang++ -stdlib=libc++ -fvisibility=default -shared -fPIC ${LDFLAGS} -o lib${_plug}.so VSPlugin.o" > Makefile
+	  clang++ -stdlib=libc++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so VSPlugin.o" > Makefile
 }
 
 build() {
