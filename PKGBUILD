@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.3.2
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -43,19 +43,19 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch')
-sha256sums=('7929ba4df870b6b30870bc0aed2525cfc606ed7091107b23cf7ed7e434caa9a6'
-            '44447564d76f656f78dcebbd9015f87cc5ab89caf1984909f32c8a57168ebfc6'
-            '62efb1cbd52b852115df5887c4653c39dce9e695470c3577f58388a8493964dc'
-            'ac185df12dafaa5b2a35b05ae0fa5ff05b6e885525c6159c89589028081b1285'
-            '454f758469ed0dc03278e851cc6dc19424fc8147396b3a54640c284e7085277c'
-            '7ceaa7fa65a73d2ae60a93cce1cb68e85bd486ac5529e3456c696fc2a3098749'
-            'b493577b3b524383312d6f093c7d41b621daea7e82f6efb7d219b2796e217a81'
-            'fc29185f66f3b9a288bdd7e36a363d3f573d9602d7b01588f58c352a54dfed8f'
-            '7b00f18dc4ebd42194f853acd1bee4fb4fcb586086ce6c2be7996df058c6dbb6'
-            '4e29919b6692be949164f47a929178dcff0e0075f51f3aa54d617795291cd31f'
-            '37a0951bec45840157275c0e79fc1882143b6152069cde93be193128c22e5d2d'
-            '9969dd32b3f8e5f6f67396a98a676a1d50a7beaf9fb150aa3c3127c8835086cd'
-            '0d1b83a7ab41a6f4d52c48c215949b7204e880531df0f1dd395a08f615b43faa')
+sha256sums=('cb6475a0bd8567c49f7ffbb072a05516ee6671171bed55db75b22b94ead9b37d'
+            '500986910d9a17eb189458c55e1930c264673597b85079b8289c5190f818f093'
+            '3e72ad7c7dba0d5bce851378d37df627322a8cee00e6048223ab6719b309a5d8'
+            '9b888e9ea827dd218f79b3d0828a61a43ead41744bac4513224030a7990e02f2'
+            '192e7332c3b087312de3c01d32ed59f60c7b0ebeb395e91c0d6e595a63b18ea0'
+            '66a4d740264d6aa72c6f249dcae20c723cba31d8987b2e46b354af37e6109bfc'
+            '7e58bb55e7e7af40e7e5492fc9e452dec574b216bd1a33739f1505d5fec24566'
+            '83d0248c3839285e3c8f2629f7d6525c11650b232dbcdfb0230151d51e6a0138'
+            'e9917a03214cb8fd0bdaabe5c47edd387c90b275780e9644ac657ac96c358c77'
+            'ea5bb116968d06b542e0b8e40e256c5d26d2caad496fb37f625d19274af064ec'
+            'dfad5479c5c0029806c929b7149e16120ec0cb05b0c08aaf4ec9ed23baa7aad2'
+            'b43ed68d0288676ed59c493b73a0916f818de90491390753de6e17e857ea3368'
+            'fa4986c24fa8eba1c956e78c6d8be4d0e11680364a6f30739ed347f4bca8c711')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -94,7 +94,7 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-$_arch
 
-    install -Dm644 $_pkgfqn/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname
+    install -Dm644 $_pkgfqn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgname
 
     # Add symlinks of DLLs in usual bin directory
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/$_arch/bin"

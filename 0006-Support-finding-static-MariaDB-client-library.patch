@@ -1,4 +1,4 @@
-From f7173fa91ccb9f2677baa8ab886a64d6aaceb777 Mon Sep 17 00:00:00 2001
+From 1882b898872ccdb2b907e9156dbea1b99c18ab01 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
 Subject: [PATCH 06/12] Support finding static MariaDB client library

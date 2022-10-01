@@ -1,4 +1,4 @@
-From 3c62f8d712bdc63818f80f0d70a864e46a8feec9 Mon Sep 17 00:00:00 2001
+From 3df7febd497f345222ea05159571aff0facb6915 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 26 Apr 2022 20:16:31 +0200
 Subject: [PATCH 11/12] Allow using properties of PkgConfig targets for glib2
