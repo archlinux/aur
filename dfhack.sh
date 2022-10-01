@@ -15,14 +15,12 @@ fi
 
 # check for dfhack user directory
 if [[ ! -d ~/.dwarffortress/hack ]] ; then
-  ln -s /opt/dwarffortress/hack                ~/.dwarffortress/hack
-  ln -s /opt/dwarffortress/stonesense          ~/.dwarffortress/stonesense
   ln -s /opt/dwarffortress/dfhack              ~/.dwarffortress/dfhack
   ln -s /opt/dwarffortress/dfhack-run          ~/.dwarffortress/dfhack-run
-  ln -s /opt/dwarffortress/dfhack.init-example ~/.dwarffortress/dfhack.init-example
+  ln -s /opt/dwarffortress/blueprints          ~/.dwarffortress/blueprints
+  ln -s /opt/dwarffortress/hack                ~/.dwarffortress/hack
+  ln -s /opt/dwarffortress/stonesense          ~/.dwarffortress/stonesense
   cp -r /opt/dwarffortress/dfhack-config       ~/.dwarffortress/dfhack-config
-
-  cp ~/.dwarffortress/dfhack.init{-example,}
 fi
 
 # workaround for bug in Debian/Ubuntu SDL patch

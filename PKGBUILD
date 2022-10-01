@@ -6,7 +6,7 @@
 pkgname=dfhack
 pkgver=0.47.05
 _pkgver=$pkgver-r7
-pkgrel=9
+pkgrel=10
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -22,8 +22,8 @@ source=("$pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver"
         Wno-restrict.patch)
 
 md5sums=('SKIP'
-         '81f5909c1a32391679f968e40f24d5ca'
-         '3853c6f890d3541f710f2c4833a9e696'
+         '45ab3b65cb5b01beff9fecccff777f85'
+         '37421a6cf2ca420bed4420ea8e402d40'
          '086fc32900f4c6589a06ac1c7acc6e98')
 
 prepare() {
