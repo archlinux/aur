@@ -1,0 +1,13 @@
+pkgbase = uwuifyy
+	pkgdesc = A command line tool to uwu'ify your text
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sgoudham/uwuifyy
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = uwuifyy-0.3.0.tar.gz::https://github.com/sgoudham/uwuifyy/archive/v0.3.0.tar.gz
+	sha512sums = 95d080ed08cc741acf8c0b0f7f6e4c1c43a2e656271ef848af1f7bdf01009621e0b2ebf2bda2a9c70284dd3bb522c7dbd461d3f65055cf554e6e7cb0221021c9
+
+pkgname = uwuifyy
