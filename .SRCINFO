@@ -1,0 +1,23 @@
+pkgbase = pc6001vx
+	pkgdesc = Cross platform version of NEC PC-6001 emulator based on PC6001V
+	pkgver = v3.9.0
+	pkgrel = 1
+	url = https://github.com/eighttails/PC6001VX
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = libx11
+	depends = mesa
+	depends = ffmpeg
+	depends = sdl2
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	provides = pc6001vx
+	conflicts = pc6001vx
+	options = !buildflags
+	source = https://github.com/eighttails/PC6001VX/archive/refs/tags/v3.9.0.tar.gz
+	sha512sums = 70fea925e20d3214c52859fab72e29266b6ba6138564a7b1376425c7b0070011ee40d1a23c8bd83c8fd50f4fa89970c0a6c58accc4ce6468987ef63333058d6d
+
+pkgname = pc6001vx
