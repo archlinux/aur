@@ -1,9 +1,9 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=ruby-fog-powerdns
 _gemname=fog-powerdns
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="This library can be used as a module for 'fog' or as a standalone provider to use PowerDNS DNS services in applications."
 arch=('any')
 url="https://github.com/fog/fog-powerdns"
@@ -12,7 +12,7 @@ depends=(ruby ruby-fog-core ruby-fog-json ruby-fog-xml)
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha512sums=('3d82420563731fcd52ebf29c32d81586ccb583ca50e63e68ed1beb8ad0f68ee57cf11a7e78b3f20d844e76215fad52744d26650156c8740b1e8e5ba74091d6fd')
+sha512sums=('a47dd7329dda99ca8b85ad2a9db69cf08339ad29ecc80926770a300a982bc432deb7ab06048eb49df65da6dd0f03f71ea3dcbcbaac5f44b66d3a47e82ba5314a')
 
 package() {
   cd "${srcdir}"

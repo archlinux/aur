@@ -1,7 +1,7 @@
 pkgbase = ruby-fog-powerdns
 	pkgdesc = This library can be used as a module for 'fog' or as a standalone provider to use PowerDNS DNS services in applications.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/fog/fog-powerdns
 	arch = any
 	license = MIT
@@ -10,9 +10,8 @@ pkgbase = ruby-fog-powerdns
 	depends = ruby-fog-core
 	depends = ruby-fog-json
 	depends = ruby-fog-xml
-	noextract = fog-powerdns-0.1.1.gem
-	source = http://rubygems.org/downloads/fog-powerdns-0.1.1.gem
-	sha512sums = 3d82420563731fcd52ebf29c32d81586ccb583ca50e63e68ed1beb8ad0f68ee57cf11a7e78b3f20d844e76215fad52744d26650156c8740b1e8e5ba74091d6fd
+	noextract = fog-powerdns-0.2.0.gem
+	source = http://rubygems.org/downloads/fog-powerdns-0.2.0.gem
+	sha512sums = a47dd7329dda99ca8b85ad2a9db69cf08339ad29ecc80926770a300a982bc432deb7ab06048eb49df65da6dd0f03f71ea3dcbcbaac5f44b66d3a47e82ba5314a
 
 pkgname = ruby-fog-powerdns
-
