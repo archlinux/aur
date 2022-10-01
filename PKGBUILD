@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=trashy
-pkgver=1.0.3
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='a cli system trash manager, alternative to rm and trash-cli'
 url="https://github.com/oberblastmeister/trashy"
 license=('MIT' 'Apache')
@@ -11,8 +11,8 @@ conflicts=('trash-cli')
 depends_x86_64=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('1035c43152d6c42340e0d5bf47793531230c51beae28fe579aa5a225a45cbe38')
-b2sums=('cf84ae297da891bd6a1011829b0807931a8d3ede948781d1e033ff6196f3aca57f86f8e88d33f8a27f97d3744410a79ccee72e437f45c64e78c75e47c06fc5a9')
+sha256sums=('72d620b4df9c2be0b9d0e17a73a26650afd28120a50180910ecc5e486011b0cb')
+b2sums=('3c3d6cad52f7d8944b858cbf0a6aa636a86aa6c209d1fed4de5122b99506f193fd1ad68530bc2394b3f1f51dc27e98a29d0b323b65dc47dfcdfa000ad30f025e')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
