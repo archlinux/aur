@@ -3,7 +3,7 @@
 _plug=nnedi3cl
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=8.0.geb2a810
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL'
@@ -11,6 +11,7 @@ license=('GPL2')
 depends=('vapoursynth'
          'vapoursynth-plugin-nnedi3_weights_bin'
          'opencl-icd-loader'
+         'libboost_filesystem.so'
          )
 makedepends=('git'
              'opencl-headers'

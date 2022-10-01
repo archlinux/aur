@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-nnedi3cl-git
 	pkgdesc = Plugin for Vapoursynth: nnedi3cl (GIT version)
 	pkgver = 8.0.geb2a810
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,7 @@ pkgbase = vapoursynth-plugin-nnedi3cl-git
 	depends = vapoursynth
 	depends = vapoursynth-plugin-nnedi3_weights_bin
 	depends = opencl-icd-loader
+	depends = libboost_filesystem.so
 	provides = vapoursynth-plugin-nnedi3cl
 	conflicts = vapoursynth-plugin-nnedi3cl
 	options = debug
