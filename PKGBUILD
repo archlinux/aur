@@ -1,22 +1,23 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gtransmemory
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="GTK+ application to manage words and sentences translations in many memories for each language."
 url="http://www.muflone.com/gtransmemory"
 arch=('any')
-license=('GPL2')
-depends=('gtk3' 'python2-xdg' 'python2-gobject' 'python2-polib')
+license=('GPL3')
+makedepends=('python-setuptools')
+depends=('gtk3' 'python-xdg' 'python-gobject' 'python-polib')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5c1b6f3771b22b8d44dc43fb83fb18bbece9d0a714d4109fba42d38c590d62b9')
+sha256sums=('6a59bcdf8a6224c2fb51318c99915ff9ddd8ad2787ed09945d4b99d469d83b16')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py install --optimize=1 --root "${pkgdir}"
+  python setup.py install --optimize=1 --root "${pkgdir}"
 }
