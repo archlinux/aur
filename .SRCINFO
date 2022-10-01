@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-jvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: jvsfunc (GIT version)
-	pkgver = 4.4.0.1.gf44039e
+	pkgver = 1.0.11.6.gb81ea80
 	pkgrel = 1
 	url = https://github.com/dnjulek/jvsfunc.git
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vapoursynth-plugin-jvsfunc-git
 	depends = vapoursynth-plugin-vsrgtools-git
 	provides = vapoursynth-plugin-jvsfunc
 	conflicts = vapoursynth-plugin-jvsfunc
-	source = jvsfunc::git+https://github.com/rlaPHOENiX/pvsfunc.git
+	source = jvsfunc::git+https://github.com/dnjulek/jvsfunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-jvsfunc-git

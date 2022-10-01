@@ -2,7 +2,7 @@
 
 _plug=jvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=4.4.0.1.gf44039e
+pkgver=1.0.11.6.gb81ea80
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/rlaPHOENiX/pvsfunc.git")
+source=("${_plug}::git+https://github.com/dnjulek/jvsfunc.git")
 sha256sums=('SKIP')
 
 pkgver() {
