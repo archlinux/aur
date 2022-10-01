@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Jon Mayo <jon.mayo at gmail dot com>
 pkgname=jupp
-pkgver="40"
+pkgver="41"
 pkgrel=1
 pkgdesc="Fork of the joe text editor. Jupp is \"the Editor which sucks less\""
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -12,8 +12,8 @@ conflicts=('joe')
 backup=('etc/joe/jmacsrc' 'etc/joe/joerc' 'etc/joe/jpicorc' 'etc/joe/jstarrc' 'etc/joe/jupprc' 'etc/joe/rjoerc')
 source=("https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1${pkgname}${pkgver}.tgz")
 # source=("http://pub.allbsd.org/MirOS/dist/jupp/joe-3.1${pkgname}${pkgver}.tgz")
-sha1sums=('3b4b9261b02206fc8f31cd27f415fdfc98eecae2')
-md5sums=('ad88a30b8ce2ca7bc732d9ba8a93c558')
+md5sums=('d7b470142895fe0097915d134b8ea90e')
+sha1sums=('9d0df4145af91ab4bb6a32ed987f9d1bf4e62301')
 
 build() {
   cd "${srcdir}"/${pkgname}
