@@ -11,7 +11,7 @@ pkgdesc="Fast and easy to use DXF to GCode converter for laser and router CNC"
 arch=("any")
 url="https://github.com/panzergame/dxfplotter"
 license=("MIT")
-makedepends=("git" "cmake" "make")
+makedepends=(git cmake make qt5-base qt5-svg python python-jinja)
 provides=("dxfplotter")
 source=("$pkgname-$pkgver::git+https://github.com/panzergame/$pkgname.git#tag=v${pkgver}")
 md5sums=('SKIP')
