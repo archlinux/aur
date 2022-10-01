@@ -1,0 +1,21 @@
+pkgbase = haskell-vivid
+	pkgdesc = Sound synthesis with SuperCollider
+	pkgver = 0.5.2.0
+	pkgrel = 1
+	url = https://vivid-synth.com/
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-hashable
+	depends = haskell-monadrandom
+	depends = haskell-network
+	depends = haskell-random-shuffle
+	depends = haskell-vivid-osc
+	depends = haskell-vivid-supercollider
+	depends = supercollider
+	source = https://hackage.haskell.org/packages/archive/vivid/0.5.2.0/vivid-0.5.2.0.tar.gz
+	b2sums = 210c76629107dbce602e635ab2a316983fee1cfba5839c3f43ce1d605e2ec73781c46c1f77b41b02d86c7e0f5798cbb9181b5e06d54b4aee0b97638f8a1a93f8
+
+pkgname = haskell-vivid
