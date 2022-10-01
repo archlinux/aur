@@ -1,0 +1,19 @@
+pkgbase = gtransmemory-git
+	pkgdesc = GTK+ application to manage words and sentences translations in many memories for each language.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://www.muflone.com/gtransmemory
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = gtk3
+	depends = python-xdg
+	depends = python-gobject
+	depends = python-polib
+	provides = gtransmemory
+	conflicts = gtransmemory
+	source = git+https://github.com/muflone/gtransmemory.git
+	sha256sums = SKIP
+
+pkgname = gtransmemory-git
