@@ -2,8 +2,8 @@
 
 
 pkgname=flashpoint-launcher-bin
-pkgver=10.1.6
-pkgrel=5
+pkgver=10.1.7
+pkgrel=1
 _dataver=1012
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
@@ -25,9 +25,10 @@ conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
 source=("flashpoint-data.7z::https://bluepload.unstable.life/selif/flashpoint-${_dataver}-linux-x64.7z"
     "flashpoint.deb::https://github.com/FlashpointProject/launcher/releases/download/${pkgver}/Flashpoint-${pkgver}_linux-amd64.deb")
 noextract=("flashpoint-data.7z")
-backup=('opt/Flashpoint/config.json')
+backup=('opt/Flashpoint/config.json'
+		'opt/Flashpoint/preferences.json')
 sha512sums=('0b521337d40169ab502f433a107d9b7b7ca73512fb99b27ca547240a251f75e931ca8a6b4450b0dec610b14cb1d1ae1fc9599bb82e757d6cfa79cd76bf5fabe8'
-    'd5667eccfaaeedb317f86fad4616b8761d8ca9858c6ac9c5ac45e62d8d22f77b639ae43b9681be842782939e399e615892832e54f88d594e024c20dcaefb9df1')
+    '4e18eec49ff88fcf63177074afc638639cd26b980d6ac54d1b466c31150557a483398a4f9049496d84b3b9e5d511feb6204550f91ce11319b66f67959c53766a')
 
 package(){
 	echo "Extracting Data files ..."
@@ -53,10 +54,10 @@ package(){
 	desktop-file-edit "${pkgdir}/usr/share/applications/flashpoint-launcher.desktop" --set-key Categories --set-value "Game;"
 	desktop-file-edit "${pkgdir}/usr/share/applications/flashpoint-launcher.desktop" --set-key Exec --set-value "/usr/bin/flashpoint-launcher"
 
-	echo "Installing License ..."
-	mkdir -vp "${pkgdir}/usr/share/licenses/"
 #	install -dv ${pkgdir}/usr/share/licenses/
-	cp -vr "${pkgdir}/opt/Flashpoint/licenses/" "${pkgdir}/usr/share/licenses/Flashpoint"
+	echo "Installing Licenses..."
+	mkdir -vp "${pkgdir}/usr/share/licenses/"
+	cp -r "${pkgdir}/opt/Flashpoint/licenses/" "${pkgdir}/usr/share/licenses/Flashpoint"
 
 #	echo Making config and preferences writable by all ...
 #	touch "${pkgdir}/opt/Flashpoint/extConfig.json"
