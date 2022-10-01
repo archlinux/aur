@@ -1,6 +1,6 @@
 pkgbase = molsketch
 	pkgdesc = A 2D molecular editing tool
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = http://molsketch.sourceforge.net
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = molsketch
 	depends = openbabel
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = https://downloads.sourceforge.net/molsketch/Molsketch-0.7.2-src.tar.gz
-	sha256sums = 1c6911163f7648aa0e0e4cafc1709cb1d30328c3c0131d6ad2e44e25e1c48f3f
+	source = https://downloads.sourceforge.net/molsketch/Molsketch-0.7.3-src.tar.gz
+	sha256sums = 68fb099690db5492183dc5c512116bb1c5ce4f9bec77aafbcfe65424703c2974
 
 pkgname = molsketch
-
