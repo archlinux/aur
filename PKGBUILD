@@ -1,7 +1,7 @@
 pkgname=briar-desktop
-pkgver=0.2.1.beta
+pkgver=0.3.0.beta
 pkgrel=1
-_bin_ver=0.2.1
+_bin_ver=0.3.0
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('java-runtime=17' 'bash')
 makedepends=('git' 'java-environment=17')
 source=("${pkgname}::git+https://code.briarproject.org/briar/briar-desktop.git#tag=${_bin_ver}-${_build_type}"
-        "briar::git+https://code.briarproject.org/briar/briar#commit=24d058cdccc286b410f28a29642b4aff70fe1926"
+        "briar::git+https://code.briarproject.org/briar/briar#commit=2aa39e43ef427ecf47a3e9e7a3e82884a354e56a"
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
@@ -57,9 +57,9 @@ exec /usr/lib/jvm/java-17-openjdk/bin/java -jar '/usr/share/java/briar-desktop.j
 EOF
   chmod +x "$pkgdir/usr/bin/$pkgname"
 
-  install -m 644 -D "build/compose/jars/Briar-linux-${_gradle_arch}-${_bin_ver}-${_build_type}.jar" "$pkgdir/usr/share/java/$pkgname.jar"
+  install -m 644 -D "${srcdir}/${pkgname}/${pkgname}/build/compose/jars/Briar-linux-${_gradle_arch}-${_bin_ver}-${_build_type}.jar" "$pkgdir/usr/share/java/$pkgname.jar"
 
-  install -Dm644 ${srcdir}/${pkgname}/src/main/resources/images/logo_circle.svg \
+  install -Dm644 ${srcdir}/${pkgname}/${pkgname}/src/main/resources/images/logo_circle.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
   # generated with inkscape from the svg
@@ -78,6 +78,6 @@ EOF
   install -Dm644 ${srcdir}/$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  install -Dm644 ${srcdir}/${pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml \
+  install -Dm644 ${srcdir}/${pkgname}/${pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml \
     "$pkgdir/usr/share/metainfo/org.briarproject.Briar.metainfo.xml"
 }
