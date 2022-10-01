@@ -3,7 +3,7 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.1.6
-pkgrel=3
+pkgrel=5
 _dataver=1012
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
@@ -32,13 +32,13 @@ sha512sums=('0b521337d40169ab502f433a107d9b7b7ca73512fb99b27ca547240a251f75e931c
 package(){
 	echo "Extracting Data files ..."
 	mkdir -vp "${pkgdir}/opt/Flashpoint/"
-	echo "Extracting... (This will take some time)"
+	echo "Extracting Flashpoint data... (This will take some time)"
 	bsdtar -xf flashpoint-data.7z -C "${pkgdir}/opt/Flashpoint/" Data/* FPSoftware/* Server/* Plugins/* Legacy/*
 #	rm ${srcdir}/flashpoint.7z
 #	cp -rp ${srcdir} ${pkgdir}/opt/Flashpoint/
 
 	echo "Extracting package data ..."
-	tar xf data.tar.xz -C "${pkgdir}" -v
+	tar xf data.tar.xz -C "${pkgdir}"
 
 	echo "Creating Launcher..."
 	mkdir -vp "${pkgdir}/usr/bin"
