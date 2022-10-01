@@ -1,6 +1,6 @@
 pkgbase = artemis3
 	pkgdesc = Radio Signals Recognition Manual
-	pkgver = 3.2.1
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://aresvalley.com/
 	install = artemis3.install
@@ -10,20 +10,20 @@ pkgbase = artemis3
 	makedepends = patch
 	depends = glibc>=2.27
 	depends = python>=3.7.0
-	depends = python-numpy>=1.17.2
-	depends = python-pandas>=0.24.2
-	depends = python-certifi>=2019.6.16
-	depends = python-aiohttp>=3.5.4
-	depends = python-urllib3>=1.24.3
-	depends = python-pygame>=1.9.6
-	depends = python-qtawesome>=0.6.0
-	depends = python-pyqt5>=5.12.2
-	source = https://github.com/AresValley/Artemis/archive/v3.2.1.tar.gz
+	depends = python-numpy>=1.23.1
+	depends = python-pandas>=1.4.3
+	depends = python-certifi>=2022.6.15
+	depends = python-aiohttp>=3.8.1
+	depends = python-urllib3>=1.26.9
+	depends = python-pygame>=2.1.2
+	depends = python-qtawesome>=1.1.1
+	depends = python-pyqt5>=5.15.7
+	source = https://github.com/AresValley/Artemis/archive/v3.2.4.tar.gz
 	source = artemis3
 	source = artemis3.sysusers
 	source = artemis3.desktop
 	source = fixbuild.patch
-	sha256sums = dfdfe81e0f7ef5f18cc04f8b410e58bdbde099f2e0d76de8b4e29e1155258c4a
+	sha256sums = b55f206e3f258202b7692ef410b7df2b4461fedfb1e1f30548a9676517122589
 	sha256sums = 11efdce8f8532de4064c42a6da264e3a835b134a05a8cc3be43081f397c901d1
 	sha256sums = 5add7b9bc96f588c734da485dccb3451aa5aa6dfc6b452c0ec9b2144cf20365c
 	sha256sums = de6e877836308b2ab02ff677589a3e60167c51beea611dc80ce0315dcd586595
