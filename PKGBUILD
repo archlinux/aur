@@ -3,34 +3,32 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+# Maintainer: Tristan Porteries <tristan.porteries@gmail.com>
+pkgname=dxfplotter
+pkgver=1.3.3
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
+pkgdesc="Fast and easy to use DXF to GCode converter for laser and router CNC"
 arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
+url="https://github.com/panzergame/dxfplotter"
 license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+makedepends=("git" "cmake" "make")
+provides=("dxfplotter")
+source=("$pkgname-$pkgver::git+https://github.com/panzergame/$pkgname.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
+prepare() {
+	cd "$pkgname-$pkgver"
+	git submodule init
+	git submodule update
+}
 
 build() {
-	cd "$pkgname-master"
-	cmake -S .
-	make
+	cd "$pkgname-$pkgver"
+	cmake -DBUILD_TESTING=OFF -S .
+	cmake --build . --target $pkgname
 }
 
 package() {
-	cd "$pkgname-master"
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+	cd "$pkgname-$pkgver"
+	cmake --install . --prefix $pkgdir
 }
