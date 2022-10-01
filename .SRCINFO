@@ -1,12 +1,12 @@
 pkgbase = com.kugou.spark
 	pkgdesc = Kugou Music Client from Spark Store
 	pkgver = 10.0.53spark3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kugou.com/
 	arch = i686
 	arch = x86_64
 	license = unknown
-	depends = deepin-wine-helper
+	depends = spark-dwine-helper
 	depends = wine
 	depends = xdg-utils
 	optdepends = wqy-microhei: Recommended font
