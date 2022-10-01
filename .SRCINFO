@@ -1,6 +1,6 @@
 pkgbase = python-time-machine
 	pkgdesc = Travel through time in your tests.
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://github.com/adamchainz/time-machine
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-time-machine
 	depends = python-coverage
 	depends = python-pytest-randomly
 	depends = python-dateutil
-	source = https://files.pythonhosted.org/packages/source/t/time-machine/time-machine-2.8.1.tar.gz
-	sha256sums = 4779029fa192fc36f782c1032a44be76ce8b75b1f0b7ec746647cb950b620bb7
+	source = https://files.pythonhosted.org/packages/source/t/time-machine/time-machine-2.8.2.tar.gz
+	sha256sums = 2ff3cd145c381ac87b1c35400475a8f019b15dc2267861aad0466f55b49e7813
 
 pkgname = python-time-machine
