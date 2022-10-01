@@ -1,9 +1,9 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=inpaint
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2.dafa5b5
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/invisiblearts/VapourSynth-Inpaint'
@@ -16,6 +16,7 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -32,7 +33,7 @@ prepare(){
 
   echo "all:
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) $(pkg-config --cflags opencv4) -o Inpaint.o Inpaint.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
+	  g++ -shared $(pkg-config --libs opencv4) -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
 }
 
 build() {
@@ -40,6 +41,5 @@ build() {
 }
 
 package() {
-  cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm755 "${_plug}/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 }

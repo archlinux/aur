@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-inpaint-git
 	pkgdesc = Plugin for Vapoursynth: inpaint (GIT version)
 	pkgver = r2.dafa5b5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/invisiblearts/VapourSynth-Inpaint
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-inpaint-git
 	depends = opencv
 	provides = vapoursynth-plugin-inpaint
 	conflicts = vapoursynth-plugin-inpaint
+	options = debug
 	source = inpaint::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-inpaint-git
-
