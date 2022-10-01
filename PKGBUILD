@@ -11,6 +11,7 @@ license=('GPL')
 depends=('vapoursynth-plugin-vstools-git')
 makedepends=('git'
              'python-pip'
+             'python-wheel'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")

@@ -7,6 +7,7 @@ pkgbase = vapoursynth-plugin-vskernels-git
 	license = GPL
 	makedepends = git
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = vapoursynth-plugin-vstools-git
 	provides = vapoursynth-plugin-vskernels
 	conflicts = vapoursynth-plugin-vskernels
