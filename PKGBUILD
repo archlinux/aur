@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gCrisprTools
-_pkgver=2.2.1
+_pkgver=2.2.2
 pkgname=r-${_pkgname,,}
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='Suite of Functions for Pooled Crispr Screen QC and Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-sparrow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('213ae328d2be47b2b198f001e32cecab623f0e3b82c79d5c01bbc392cc9809af')
+sha256sums=('d2f4f35dab3c482a9388b3b63aafa11bfcbc3616628c65a538d38419e3d36c08')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
