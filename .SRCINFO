@@ -1,7 +1,7 @@
 pkgbase = haskell-vivid
 	pkgdesc = Sound synthesis with SuperCollider
 	pkgver = 0.5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vivid-synth.com/
 	arch = x86_64
 	license = GPL

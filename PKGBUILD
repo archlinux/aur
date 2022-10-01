@@ -3,7 +3,7 @@
 _hkgname=vivid
 pkgname=haskell-vivid
 pkgver=0.5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sound synthesis with SuperCollider'
 url='https://vivid-synth.com/'
 license=(GPL)
