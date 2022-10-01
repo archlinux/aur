@@ -17,12 +17,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
-  test-env/bin/python tests.py
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m install --optimize=1 dist/*.whl
+#   test-env/bin/python tests.py
+# }
 
 package() {
   cd ${_base}-${pkgver}
