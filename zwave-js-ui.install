@@ -3,7 +3,7 @@ post_install() {
 		echo ":: ZWaveJS2MQTT has been renamed to ZWave JS UI."
 		echo "   To move your old zwavejs2mqtt files, use"
 		echo "   mv /var/lib/zwavejs2mqtt/{*,.*} /var/lib/zwave-js-ui && mv /etc/zwavejs2mqtt/* /etc/zwave-js-ui/ && chown -R zwave-js-ui:zwave-js-ui /var/lib/zwave-js-ui && sed 's/zwavejs2mqtt/zwave-js-ui/g' -i /var/lib/zwave-js-ui/settings.json"
-		echo "   You may have to merge /etc/zwave-js-ui/app.ts{,pacsave}, e.g. vimdiff app.ts{,.pacsave}"
+		echo "   You may have to merge /etc/zwave-js-ui/app.ts{,.pacsave}, e.g. vimdiff app.ts{,.pacsave}"
 		echo "   This has to be done only once after switching to zwave-js-ui."
 	fi
 }
