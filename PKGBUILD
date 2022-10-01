@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
@@ -33,7 +33,7 @@ package()
     cp -r "${srcdir}"/"${_pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/"${_pkgname}"/
 
     ## Create an executable.
-    echo -e "#!/bin/bash
+    echo -e "#!/usr/bin/env bash
 
 dotnet run --no-launch-profile --no-build -c Release --project /usr/share/\"${_pkgname}\"/NBXplorer/NBXplorer.csproj -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
