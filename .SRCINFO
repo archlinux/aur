@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-lc-git
 	pkgdesc = Plugin for Vapoursynth: lc (GIT version)
 	pkgver = 1.1.g9cea098
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MoePus/VapourSynth-LC
 	arch = x86_64
 	license = GPL
