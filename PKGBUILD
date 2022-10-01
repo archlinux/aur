@@ -1,10 +1,10 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gextractwinicons-git
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Extract cursors and icons from MS Windows compatible resource files"
-url="https://www.muflone.com/gextractwinicons"
+url="http://www.muflone.com/gextractwinicons"
 arch=('any')
 license=('GPL3')
 makedepends=('git' 'python-setuptools' 'gettext')
@@ -21,11 +21,11 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  python3 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${pkgname%-*}"
-  python3 setup.py install --optimize=1 --root "${pkgdir}"
+  python setup.py install --optimize=1 --root "${pkgdir}"
 }
 

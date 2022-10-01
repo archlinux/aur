@@ -1,8 +1,8 @@
 pkgbase = gextractwinicons-git
 	pkgdesc = Extract cursors and icons from MS Windows compatible resource files
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
-	url = https://www.muflone.com/gextractwinicons
+	url = http://www.muflone.com/gextractwinicons
 	arch = any
 	license = GPL3
 	makedepends = git
