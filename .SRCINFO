@@ -1,0 +1,18 @@
+pkgbase = lib32-flac1.3
+	pkgdesc = Free Lossless Audio Codec (32-bit) (compat libs for v8)
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://xiph.org/flac/
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = nasm
+	makedepends = cmake
+	makedepends = ninja
+	depends = lib32-gcc-libs
+	depends = lib32-libogg
+	depends = flac1.3
+	source = https://downloads.xiph.org/releases/flac/flac-1.3.4.tar.xz
+	sha512sums = 4a626e8a1bd126e234c0e5061e3b46f3a27c2065fdfa228fd8cf00d3c7fa2c05fafb5cec36acce7bfce4914bfd7db0b2a27ee15decf2d8c4caad630f62d44ec9
+
+pkgname = lib32-flac1.3
