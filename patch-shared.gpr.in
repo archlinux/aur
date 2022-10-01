@@ -5,7 +5,7 @@
        --  ??? missing hack to force libiconv first (working around
        --  a faulty libiconv in macports)
 -      for Switches ("Ada") use Clang_Libs & ("-lstdc++") & Python_shared_libs;
-+      for Switches ("Ada") use Clang_Libs & ("-lstdc++", "-lpython2.7", "-lpython3.10") & Python_shared_libs;
++      for Switches ("Ada") use Clang_Libs & ("-lstdc++", "-lpython3.10") & Python_shared_libs;
  
        case OS is
           when "osx" =>
