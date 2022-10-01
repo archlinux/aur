@@ -1,8 +1,8 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=fog-softlayer
 pkgname=ruby-$_gemname
-pkgver=1.0.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Module for the fog gem to support SoftLayer Cloud'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fog-core ruby-fog-json)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('e08f8587aca95260444689d79fd65bddf473c2451e1ed59725092a9755859e867a8ac8784953953047df397c4ee1d41f7d9795893f56925a820fd09788493dd1')
+sha512sums=('968747eeceb13ab23cd5aa8504efd4d25e09c645fbcba44e99f8317427d0bd932795635a2c204fdb3460ae4dc9a1dae58e79393589b7abbb4376c848b36d1b20')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
