@@ -1,25 +1,20 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: farawayer <farwayer@gmail.com>
 
 _gemname=signet
 pkgname=ruby-$_gemname
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Google's OAuth 1.0 / OAuth 2.0 implementation."
 arch=(any)
 url='https://rubygems.org/gems/signet'
 license=('Apache')
-depends=(
-  'ruby'
-  'ruby-addressable>=2.8' 'ruby-addressable<3'
-  'ruby-faraday>=0.17.5' 'ruby-faraday<3'
-  'ruby-jwt>=1.5' 'ruby-jwt<3'
-  'ruby-multi_json>=1.15' 'ruby-multi_json<2'
-)
+depends=('ruby-addressable' 'ruby-faraday' 'ruby-jwt' 'ruby-multi_json')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('016ed0caf471deaa1f58c09b12d11307104682e0b5320f45f4637580fe7b9ecb')
+sha256sums=('1d2831930dc28da32e34bec68cf7ded97ee2867b208f97c500ee293829cb0004')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
