@@ -2,7 +2,7 @@
 # Maintainer: Gustav Sörnäs <gustav at sornas dot net>
 
 pkgname=mum-git
-pkgver=r650.24b3b57
+pkgver=r686.c8039b0
 pkgrel=1
 pkgdesc="A mumble client/daemon pair"
 arch=('x86_64')
@@ -25,9 +25,9 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo build --locked --release --target-dir=target
 
-    which bash &>/dev/null && ./target/release/mumctl completions bash > mumctl.bash
-    which fish &>/dev/null && ./target/release/mumctl completions fish > mumctl.fish
-    which zsh &>/dev/null && ./target/release/mumctl completions zsh > mumctl.zsh
+    # which bash &>/dev/null && ./target/release/mumctl completions bash > mumctl.bash
+    # which fish &>/dev/null && ./target/release/mumctl completions fish > mumctl.fish
+    # which zsh &>/dev/null && ./target/release/mumctl completions zsh > mumctl.zsh
 }
 
 check() {
@@ -38,9 +38,9 @@ check() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
 
-    which bash &>/dev/null && install -Dm 644 mumctl.bash "${pkgdir}/usr/share/bash-completion/completions/mumctl"
-    which fish &>/dev/null && install -Dm 644 mumctl.fish "${pkgdir}/usr/share/fish/completions/mumctl.fish"
-    which zsh &>/dev/null && install -Dm 644 mumctl.zsh "${pkgdir}/usr/share/zsh/site-functions/_mumctl"
+    # which bash &>/dev/null && install -Dm 644 mumctl.bash "${pkgdir}/usr/share/bash-completion/completions/mumctl"
+    # which fish &>/dev/null && install -Dm 644 mumctl.fish "${pkgdir}/usr/share/fish/completions/mumctl.fish"
+    # which zsh &>/dev/null && install -Dm 644 mumctl.zsh "${pkgdir}/usr/share/zsh/site-functions/_mumctl"
 
     install -Dm 755 target/release/mumctl -t "${pkgdir}/usr/bin"
     install -Dm 755 target/release/mumd -t "${pkgdir}/usr/bin"
