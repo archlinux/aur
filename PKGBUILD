@@ -1,6 +1,6 @@
 _pkgname=art-rawconverter
 pkgname="${_pkgname}-bin"
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
@@ -25,8 +25,8 @@ makedepends=()
 optdepends=(
   'perl-image-exiftool: metadata support for CR3 images'
 )
-conflicts=('art-rawconverter-git' 'art-rawconverter')
-provides=('art-rawconverter-git' 'art-rawconverter')
+conflicts=('art-rawconverter')
+provides=('art-rawconverter')
 
 source=(
   "${_pkgname}-${pkgver}.tar.xz"::"https://bitbucket.org/agriggio/art/downloads/ART-${pkgver}-linux64.tar.xz"
@@ -34,7 +34,7 @@ source=(
 )
 
 sha256sums=(
-  'ac3ed35f23825cb3ac89fb23d668ac76439840e3fa17ce04c6e957d582875ac8'
+  '276a7e18d719bf7c182e8ceca8696faad1e1938b41be5e514a74aa99d6db9b5c'
   '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
 )
 
