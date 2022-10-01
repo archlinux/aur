@@ -482,3 +482,14 @@ Fixes:
 - We fixed two small issues with the event notes: empty lines are no longer added to the notes and formatting tags are not added on Google Calendar events if not needed.
 - We fixed the Contact Us button in the app settings - it was not behaving as expected on some platforms.
 
+=== Morgen 2.5.17
+Improvements:
+- We improved the date & time picker on the event panel. The calendar widget can now be closed by hitting ESC and does not prevent navigation across the event fields using TAB.
+
+Fixes:
+- We fixed an issue causing high CPU (and sometimes GPU) usage by stopping animations that are not needed.
+- We fixed a bug causing some event titles not to be displayed.
+- We fixed the timezone widget, which was not always displayed at the same time highlighted by the cursor on the timeline.
+- We also fixed the authentication with Outlook for those accounts that don't have an @outlook, @hotmail, or other Microsoft email address.
+- We fixed an issue preventing moving an event across two iCloud calendars on the same account.
+
