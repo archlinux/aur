@@ -141,7 +141,7 @@ install() {
 	# Prompt for destination directory
 	memtest86_esp_path="/EFI/memtest86"
 	echo -en "Press Enter if ${CB}$memtest86_esp_path${CR} is the directory where you want to install MemTest86, "
-	echo -en "else enter something else (like ${CB}/EFI/tools/memtest86${CR}): "
+	echo -en "else enter something else (e.g. ${CB}/EFI/tools/memtest86${CR}, or ${CB}/${CR} to install on ESP's root): "
 	memtest86_esp_path=$(promptuser "$memtest86_esp_path")
 
 	# Check if ESP is mounted or mount it otherwise
@@ -150,7 +150,7 @@ install() {
 
 	# Get user choice
 	echo "Select $PRGNAME action to perform:"
-	echo -e "${CB}1${CR}: Copy shellx64.efi file on ESP's root (bit safe)"
+	echo -e "${CB}1${CR}: Copy shellx64.efi file on ESP at ${CB}$memtest86_esp_path${CR} (bit safe)"
 	echo -e "${CB}2${CR}: Add a new EFI boot entry (more safe)"
 	echo -e "${CB}3${CR}: Add a boot entry for GRUB2 menu"
 	echo -e "${CB}4${CR}: Add a boot entry for systemd-boot menu"
@@ -162,11 +162,11 @@ install() {
 	done
 
 	case $choice in
-		1) # Install MemTest86 in $esp_mount_path/
+		1) # Install MemTest86 in ${esp_mount_path}${memtest86_esp_path}/
 			memtest86_esp_bin="shell$ARCH.efi"
-			memtest86_esp_path="/"
-			[[ -f "$esp_mount_path/$memtest86_esp_bin" ]] && mv -v "$esp_mount_path/$memtest86_esp_bin" "$esp_mount_path/$memtest86_esp_bin.bak" # Backup if exist
-			_common_install "$esp_mount_path" "$memtest86_esp_bin"
+			old_esp_bin="${esp_mount_path}${memtest86_esp_path}/$memtest86_esp_bin"
+			[[ -f "$old_esp_bin" ]] && mv -v "$old_esp_bin" "${old_esp_bin}.bak" # Backup if exist
+			_common_install "${esp_mount_path}${memtest86_esp_path}" "$memtest86_esp_bin"
 		;;
 
 		2) # Install MemTest86 in ${esp_mount_path}${memtest86_esp_path}/ & add an EFI boot entry
@@ -260,10 +260,11 @@ remove() {
 	_mount_esp "$esp_partition" "$esp_mount_path"
 
 	case $choice in
-		1) # Remove files in $esp_mount_path/
-			echo -e "MemTest86 will be removed from ${CB}$esp_mount_path/${CR}."
-			rm -v "$esp_mount_path/$memtest86_esp_bin" "$esp_mount_path/blacklist.cfg" "$esp_mount_path/mt86.png" "$esp_mount_path/unifont.bin"
-			[[ -f "$esp_mount_path/$memtest86_esp_bin.bak" ]] && mv -v "$esp_mount_path/$memtest86_esp_bin.bak" "$esp_mount_path/$memtest86_esp_bin"
+		1) # Remove files in ${esp_mount_path}${memtest86_esp_path}/
+			echo -e "MemTest86 will be removed from ${CB}${esp_mount_path}${memtest86_esp_path}/${CR}."
+			old_esp_bin="${esp_mount_path}${memtest86_esp_path}/$memtest86_esp_bin"
+			rm -v "${esp_mount_path}${memtest86_esp_path}"/{$memtest86_esp_bin,blacklist.cfg,mt86.png,unifont.bin}
+			[[ -f "${old_esp_bin}.bak" ]] && mv -v "${old_esp_bin}.bak" "$old_esp_bin"
 		;;
 
 		2) # Remove files in ${esp_mount_path}${memtest86_esp_path}/ & delete EFI boot entry
