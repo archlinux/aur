@@ -9,7 +9,7 @@
 _base=petsc
 pkgname=${_base}-complex
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -42,7 +42,7 @@ optdepends=('trilinos: support for zoltan'
 install=${_base}.install
 source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
-sha512sums=('c275c258933c08f894776bface1c9c3ae9e97c4a2cdd55d5b7bc05f088977a1c3492f646733ce2d700ddf17a823bdb49c0fbb1ff6fbbf4478395c0878295e52b'
+sha512sums=('ca3211931377be42659641423f814f1578782a5a7e1f5fb245f21fdc3258df373a60afc971c18733e0f5d593314a7a7f8e84e170b00bd06bc7ca0f3a649e7184'
   '3b64124b5775a0f61128b56c936899096355f694a98bc545657fe7744733b6829bffa6ddea904463d6782e0900ba654a65adf7fdb8642e9161f08fb56e74e56b')
 
 _install_dir=/opt/${_base}/${_config}
