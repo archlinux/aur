@@ -1,5 +1,5 @@
 pkgbase = bigfix-duke
-	pkgdesc = BigFix for Duke
+	pkgdesc = BigFix Enterprise Suite for Duke
 	pkgver = 10.0.2.52
 	pkgrel = 1
 	install = bigfix.install
