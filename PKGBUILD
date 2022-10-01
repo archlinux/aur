@@ -1,15 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=assrender
-pkgname="vapoursynth-plugin-${_plug}-git"
-pkgver=0.36.2.4.g0514c50
+pkgname=vapoursynth-plugin-${_plug}-git
+pkgver=0.37.1.3.g84878b7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/assrender.git'
 license=('GPL2')
 depends=('vapoursynth'
-         'libass'
+         'libass.so'
          )
 makedepends=('git'
              'cmake'
