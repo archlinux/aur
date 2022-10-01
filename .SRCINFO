@@ -8,6 +8,10 @@ pkgbase = dxfplotter
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	makedepends = qt5-base
+	makedepends = qt5-svg
+	makedepends = python
+	makedepends = python-jinja
 	provides = dxfplotter
 	source = dxfplotter-1.3.3::git+https://github.com/panzergame/dxfplotter.git#tag=v1.3.3
 	md5sums = SKIP
