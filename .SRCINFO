@@ -1,11 +1,12 @@
 pkgbase = bluewho-git
 	pkgdesc = Information and notification of new discovered bluetooth devices
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://www.muflone.com/bluewho
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = gtk3
 	depends = gobject-introspection
 	depends = libnotify
