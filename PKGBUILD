@@ -1,4 +1,5 @@
-# Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
+# Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
+# Contributer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 # Contributer: candroid_man <candroid_man@protonmail.com>
 # Contributer: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
