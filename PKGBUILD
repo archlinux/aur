@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-datavis3d
-_qtver=6.3.2
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtdatavis3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('ff641277b1c29ff649220e4af2c10323283e5ab6d814b8f87087543ef426af8f')
+sha256sums=('0db40038457da5638da8253e70578d6d8799fdb673d4de7bffb3260d6848050d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
