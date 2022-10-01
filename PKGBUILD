@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss08
-pkgver=16.2.0
+pkgver=16.2.1
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-ss08-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('e83899d74325343b479109313e5f6d52404ac6638058aa8166181bbe3cd1b6c7'
+sha256sums=('4cdd889c680a6122615e9bd3f47a6363cc6ad7e0b1550cae4e6200456f5513ea'
             '46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1')
 
 package() {
