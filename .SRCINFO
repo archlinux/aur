@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-vstools-git
+	pkgdesc = Plugin for Vapoursynth: vstools (GIT version)
+	pkgver = 1.1.2.0.g0566d47
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-tools.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-pip
+	depends = vapoursynth
+	provides = vapoursynth-plugin-vstools
+	conflicts = vapoursynth-plugin-vstools
+	source = vstools::git+https://github.com/Irrational-Encoding-Wizardry/vs-tools.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vstools-git
