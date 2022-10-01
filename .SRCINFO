@@ -1,0 +1,16 @@
+pkgbase = haskell-vivid-osc
+	pkgdesc = Vivid Oscillator
+	pkgver = 0.5.0.0
+	pkgrel = 1
+	url = https://vivid-synth.com/
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-cereal
+	depends = haskell-microspec
+	source = https://hackage.haskell.org/packages/archive/vivid-osc/0.5.0.0/vivid-osc-0.5.0.0.tar.gz
+	b2sums = ad4fe064bd0ee4416c94f10fd0177e412fe2ef3a277c9915de583f59784cc2d2870fd5dd47f79e0a6022fa83d6a091af78cb7771767e99f45d6eb8b1a2c008e6
+
+pkgname = haskell-vivid-osc
