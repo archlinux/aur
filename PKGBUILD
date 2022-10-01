@@ -2,7 +2,7 @@
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=qt6gtk2
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK+2.0 integration plugins for Qt6'
 arch=('any')
 groups=('therepoclub')

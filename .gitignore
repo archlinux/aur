@@ -1,3 +1,4 @@
 src/*
 pkg/*
-qt6gtk2-0.2*
+*.zst
+*.gz

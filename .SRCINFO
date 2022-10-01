@@ -1,7 +1,7 @@
 pkgbase = qt6gtk2
 	pkgdesc = GTK+2.0 integration plugins for Qt6
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trialuser02/qt6gtk2
 	arch = any
 	groups = therepoclub
