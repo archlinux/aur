@@ -1,18 +1,18 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=fog-xenserver
 pkgname=ruby-$_gemname
-pkgver=0.2.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Module for the fog gem to support XENSERVER.'
 arch=(any)
 url='https://github.com/fog/fog-xenserver'
 license=(MIT)
-depends=(ruby ruby-fog-core ruby-fog-xml)
+depends=(ruby ruby-fog-core ruby-fog-xml ruby-xmlrpc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('e11ae2f335de4e2e0e9f6423b7cf0243c89315ec63917e15914d8539f9c0a3b95511767f62080882ce736a477074b019615c0f7457e46b5fe3806bc7a371f5f1')
+sha512sums=('addaa8168047ab2b5fb1bbfbc93ef5c49dea48fd436a0df5301c1d5c5dbe04f1817d6716f4d220995b11bb761fc3f682d8d5b3fff0cc308fec344ae505445977')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

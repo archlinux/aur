@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-xenserver
 	pkgdesc = Module for the fog gem to support XENSERVER.
-	pkgver = 0.2.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/fog/fog-xenserver
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ruby-fog-xenserver
 	depends = ruby
 	depends = ruby-fog-core
 	depends = ruby-fog-xml
-	noextract = fog-xenserver-0.2.2.gem
+	depends = ruby-xmlrpc
+	noextract = fog-xenserver-1.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-xenserver-0.2.2.gem
-	sha512sums = e11ae2f335de4e2e0e9f6423b7cf0243c89315ec63917e15914d8539f9c0a3b95511767f62080882ce736a477074b019615c0f7457e46b5fe3806bc7a371f5f1
+	source = https://rubygems.org/downloads/fog-xenserver-1.0.0.gem
+	sha512sums = addaa8168047ab2b5fb1bbfbc93ef5c49dea48fd436a0df5301c1d5c5dbe04f1817d6716f4d220995b11bb761fc3f682d8d5b3fff0cc308fec344ae505445977
 
 pkgname = ruby-fog-xenserver
-
