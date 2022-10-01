@@ -1,7 +1,7 @@
 pkgbase = dfhack-bin
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it
 	pkgver = 0.47.05
-	pkgrel = 7
+	pkgrel = 8
 	url = https://dfhack.readthedocs.io/en/stable/
 	arch = x86_64
 	arch = i686
@@ -22,11 +22,11 @@ pkgbase = dfhack-bin
 	conflicts = dfhack-git
 	source = dfhack.sh
 	source = dfhack-run.sh
-	md5sums = 81f5909c1a32391679f968e40f24d5ca
-	md5sums = 3853c6f890d3541f710f2c4833a9e696
-	source_x86_64 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r6/dfhack-0.47.05-r6-Linux-64bit-gcc-7.tar.bz2
-	md5sums_x86_64 = 0a55f07d390d92084402f9736bdecd69
-	source_i686 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r6/dfhack-0.47.05-r6-Linux-32bit-gcc-7.tar.bz2
-	md5sums_i686 = 74ad5d411b4e557b73406b754ff56408
+	md5sums = 45ab3b65cb5b01beff9fecccff777f85
+	md5sums = 37421a6cf2ca420bed4420ea8e402d40
+	source_x86_64 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r7/dfhack-0.47.05-r7-Linux-64bit-gcc-7.tar.bz2
+	md5sums_x86_64 = cd1a8f9e2ac1282f685a41bcacac1450
+	source_i686 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r7/dfhack-0.47.05-r7-Linux-32bit-gcc-7.tar.bz2
+	md5sums_i686 = b643cd70785dc6e69c859c3695e5317d
 
 pkgname = dfhack-bin
