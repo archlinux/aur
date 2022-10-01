@@ -1,0 +1,28 @@
+pkgbase = xxenv-latest
+	pkgdesc = Enhances **env with a `latest` subcommand, which prints the latest version of the target platform
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/momo-lab/xxenv-latest
+	arch = any
+	license = MIT
+	makedepends = goenv
+	makedepends = nodenv
+	options = !strip
+	source = xxenv-latest-0.2.1.tar.gz::https://github.com/momo-lab/xxenv-latest/archive/v0.2.1.tar.gz
+	sha512sums = c1e0d3c0c95ab9486f0b37b1078d3c8ea81df9639c41b85dabae2742ba91962bb18fa2682e1cdbe67ef559a5e3e14cac9fb5a5f8e33a7cedabec520f97e2b102
+
+pkgname = goenv-latest
+	pkgdesc = Enhances goenv with a `latest` subcommand, which prints the latest Go version
+	depends = goenv
+
+pkgname = nodenv-latest
+	pkgdesc = Enhances nodenv with a `latest` subcommand, which prints the latest Node.js version
+	depends = nodenv
+
+pkgname = pyenv-latest
+	pkgdesc = Enhances pyenv with a `latest` subcommand, which prints the latest Python version
+	depends = pyenv
+
+pkgname = rbenv-latest
+	pkgdesc = Enhances rbenv with a `latest` subcommand, which prints the latest Ruby version
+	depends = rbenv
