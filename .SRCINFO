@@ -1,0 +1,15 @@
+pkgbase = ruby-fog-dnsimple
+	pkgdesc = Module for the fog gem to support DNSimple.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/fog/fog-dnsimple
+	arch = any
+	license = MIT
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	noextract = fog-dnsimple-2.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-dnsimple-2.1.0.gem
+	sha256sums = c3a8df8b7613f0b7ee86e5c179ae143dbd8797ab67012ea1124699c4019b7f51
+
+pkgname = ruby-fog-dnsimple
