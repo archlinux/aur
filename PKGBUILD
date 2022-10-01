@@ -1,4 +1,5 @@
-# Maintainer: tjbp <archlinux@tjbp.net>
+# Maintainer: joelvaz0x01 <joelvaz.whitehat@gmail.com>
+# Contributor: tjbp <archlinux@tjbp.net>
 # Contributor: Nick Boughton <nicholasboughton@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: GFdevelop
@@ -8,7 +9,7 @@ _npmname=cli
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=5.0.6
+pkgver=5.0.8
 pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=('any')
@@ -20,7 +21,7 @@ optdepends=()
 conflicts=('nodejs-vue-cli' 'vue')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
-sha256sums=('931b352f6aa7fae2158a01240312fe391a3053f7dfaa9c686b2fb370aeee4c50')
+sha256sums=('29aa4eb0ba827624e42683e1339ebd40e663ad09836dd027df30e3d2108b0b71')
 
 package() {
   mkdir -p "${pkgdir}"/usr/lib
