@@ -15,10 +15,10 @@ _sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-    python -m build --wheel --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-    python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
 }
