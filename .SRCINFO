@@ -1,0 +1,15 @@
+pkgbase = kdeplasma-themes-daemon-git
+	pkgver = r4.3bd2e02
+	pkgrel = 1
+	url = https://github.com/MathisP75/daemon-dotfiles
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = kvantum-theme-daemon-git
+	depends = plasma-workspace
+	provides = kdeplasma-themes-daemon
+	conflicts = kdeplasma-themes-daemon
+	source = git+https://github.com/MathisP75/daemon-dotfiles.git
+	sha256sums = SKIP
+
+pkgname = kdeplasma-themes-daemon-git
