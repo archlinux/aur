@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-panel-corners-git
 _pkgname=panel-corners
-pkgver=r14.344c1a8
+pkgver=6.r0.gc6a046d
 pkgrel=1
 pkgdesc="A gnome-shell extension to keep the old topbar corners, which were removed for GNOME 42"
 arch=('any')
@@ -16,11 +16,8 @@ source=(git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$srcdir/panel-corners"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
