@@ -1,0 +1,14 @@
+pkgbase = shared-mem-random
+	pkgdesc = write random values to a shared memory
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/shared_mem_random
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/NikolasK-source/shared_mem_random.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = shared-mem-random
