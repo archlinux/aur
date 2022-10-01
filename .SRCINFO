@@ -1,0 +1,14 @@
+pkgbase = binv
+	pkgdesc = Command line tool to bitwise invert a complete file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/bitwise_invert
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/NikolasK-source/bitwise_invert.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = binv
