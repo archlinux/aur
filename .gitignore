@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!bigfix.install
+!besclient.service
+!vars.sh
+!init-functions

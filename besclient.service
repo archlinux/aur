@@ -1,0 +1,21 @@
+[Unit]
+Documentation=man:systemd-sysv-generator(8)
+SourcePath=/etc/init.d/besclient
+Description=LSB: Starts BigFix Agent
+Before=multi-user.target
+Before=multi-user.target
+Before=multi-user.target
+Before=graphical.target
+After=remote-fs.target
+
+[Service]
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+SuccessExitStatus=5 6
+ExecStart=/etc/init.d/besclient start
+ExecStop=/etc/init.d/besclient stop
