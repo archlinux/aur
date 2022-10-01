@@ -1,10 +1,10 @@
-# Maintainer: Muflone https://www.muflone.com/contacts/english/
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=bluewho
 pkgver=0.5.2
 pkgrel=1
 pkgdesc="Information and notification of new discovered bluetooth devices"
-url="https://www.muflone.com/bluewho"
+url="http://www.muflone.com/bluewho"
 arch=('any')
 license=('GPL3')
 makedepends=('python-setuptools')
