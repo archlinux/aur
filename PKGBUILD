@@ -1,8 +1,8 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=ruby-platform
 _gemname=Platform
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Hopefully robust platform sensing."
 arch=('any')
@@ -19,4 +19,4 @@ package() {
   gem install --no-user-install --ignore-dependencies \
     -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
 }
-sha512sums=('c0e3a30e3a04b8ebfd91a7b46eb87d7adc015503c9a1fe42cf031ebbb3dd4ce1b48bdf301014b470b21fb0252bba8bdfad080e174a8798443c0d899f14f64bb9')
+sha512sums=('ee06c87afbb832ba415b11c5706b7345094fce61e0165f0c09f8e206aed36df5b86cd5fe086e6baede1db6a7f7433edeca506cf9f78830900ebea77fc911c152')
