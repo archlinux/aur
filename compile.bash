@@ -4,8 +4,8 @@ virtualenv ".venv" -p python3
 . ".venv/bin/activate"
 pip install --upgrade certifi
 pip3 install --upgrade llbase
-if $(command -v autobuild >/dev/null 2>&1) && [[ "$(autobuild --version)" == "autobuild 9.0.0" ]]; then
 	pip3 uninstall --yes autobuild
+if command -v autobuild >/dev/null 2>&1 && [[ "$(autobuild --version)" == "autobuild 9.0.0" ]]; then
 fi
 pip3 install --no-cache --upgrade autobuild
 
