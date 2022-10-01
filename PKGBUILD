@@ -2,23 +2,24 @@
 
 _gemname=dry-inflector
 pkgname=ruby-$_gemname
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="String inflections for Ruby"
+pkgdesc='String inflections for Ruby'
 arch=('any')
-url="https://github.com/dry-rb/dry-inflector"
+url='https://github.com/dry-rb/dry-inflector'
 license=('MIT')
 depends=('ruby')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('8d3a4000bc57bb0a1a7bd289b7ae4b7135fa34fb3703a9b7a8de8dceae8dbaaea88cb735438b1f63495b4fd9291209115bc16aada672ca2306cc082eb7974cf0')
+b2sums=('3915f51de7fe5a9cb8c5bee5e3937ef57657db9681992f100271b1c368bf4bff3762f3739ff3feee6090e2d2d9e38494db36285a17cdff4b8c5c3992d87ada3d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install \
+    --local \
     --verbose \
     --ignore-dependencies \
     --no-user-install \
