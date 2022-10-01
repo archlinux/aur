@@ -1,9 +1,36 @@
+## v1.2.1
+
+> 2022-10-01
+
+## Summary
+
+Minor patch release with a single bug fix, with mostly behind the scenes package 
+updates and upgrades.
+
+### Commits
+- [[`8d5a8cb`](https://github.com/sondr3/git-ignore)] Upgrade dependencies, clap to v4
+- [[`214f364`](https://github.com/sondr3/git-ignore)] Move to dtolnay/rust-toolchain for CI
+- [[`7e366f4`](https://github.com/sondr3/git-ignore)] Remove dependabot crates updates, upgrade packages
+- [[`46cc220`](https://github.com/sondr3/git-ignore)] Upgrade packages
+- [[`58a2ab8`](https://github.com/sondr3/git-ignore)] Upgrade packages
+- [[`8b0b4e0`](https://github.com/sondr3/git-ignore)] And release CI copying wrong assets
+- [[`f5d295e`](https://github.com/sondr3/git-ignore)] Add git-ignore AUR package
+- [[`e1c3c78`](https://github.com/sondr3/git-ignore)] Update CI versions
+- [[`79b10e5`](https://github.com/sondr3/git-ignore)] Add clap_mangen to build man pages, update build.rs
+- [[`40e8d11`](https://github.com/sondr3/git-ignore)] Update packages, fix deprecations
+- [[`684c360`](https://github.com/sondr3/git-ignore)] Add dependabot for GitHub Actions, Rust packages
+- [[`25bb013`](https://github.com/sondr3/git-ignore)] Fix wrong extension for Zig
+- [[`6e1d4e0`](https://github.com/sondr3/git-ignore)] Mention @sestrella in CHANGELOG [ci skip]
+- [[`584325b`](https://github.com/sondr3/git-ignore)] Unfuck publish pipeline
+- [[`df3ff6a`](https://github.com/sondr3/git-ignore)] Fix the release action, whoops
+
 ## 1.2.0
 
 > 2021-12-05
 
 The biggest release yet! From automatically recognizing templates based on files
-in your current directory to custom aliases and templates!
+in your current directory to custom aliases and templates! Huge thanks to 
+[`sestrella`](https://github.com/sestrella) for contributing the automatic matching functionality.
 
 - **Automatic**: When using the `-a/--auto`, `git-ignore` will automatically create `.gitignore`
   templates by matching against files in your current directory.

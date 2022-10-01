@@ -1,15 +1,15 @@
 pkgbase = git-ignore
 	pkgdesc = Quickly and easily list and fetch .gitignore templates from gitignore.io
-	pkgver = 1.2.0
-	pkgrel = 0
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/sondr3/git-ignore
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	makedepends = git
 	depends = gcc-libs
-	source = git-ignore::git+https://github.com/sondr3/git-ignore#tag=v1.2.0
-	sha256sums = SKIP
+	options = !lto
+	source = git-ignore-1.2.1.tar.gz::https://github.com/sondr3/git-ignore/archive/v1.2.1.tar.gz
+	sha256sums = 893061fa27b3a970fada4642f64eebed3a8c0c28a6a8b82c2eb8da6b68257710
 
 pkgname = git-ignore
