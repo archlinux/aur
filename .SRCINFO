@@ -1,0 +1,17 @@
+pkgbase = ruby-fog-rackspace
+	pkgdesc = Rackspace provider gem for Fog
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/fog/fog-rackspace
+	arch = any
+	license = MIT
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	depends = ruby-fog-xml
+	depends = ruby-ipaddress
+	noextract = fog-rackspace-0.1.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-rackspace-0.1.6.gem
+	sha256sums = d531c75379db7b6bb05a1f2d4ff8ba11d0b6d1261646c41f60644e0dcc8e1896
+
+pkgname = ruby-fog-rackspace
