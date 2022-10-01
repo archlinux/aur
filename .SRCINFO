@@ -7,6 +7,7 @@ pkgbase = vapoursynth-plugin-vsmask-git
 	license = GPL
 	makedepends = git
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = vapoursynth-plugin-vsutil-git
 	provides = vapoursynth-plugin-vsmask
 	conflicts = vapoursynth-plugin-vsmask
