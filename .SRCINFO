@@ -1,6 +1,6 @@
 pkgbase = deno-bin
 	pkgdesc = A modern runtime for JavaScript and TypeScript.
-	pkgver = 1.25.4
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://deno.land
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = deno-bin
 	provides = deno
 	conflicts = deno
 	conflicts = deno-git
-	source_x86_64 = deno-x86_64-unknown-linux-gnu.zip::https://github.com/denoland/deno/releases/download/v1.25.4/deno-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = ee29ceabab5141ce56ffbb4cbb74a9662de325e5b336933d19058764ea13633d
-	source_aarch64 = deno-linux-arm64.zip::https://github.com/LukeChannings/deno-arm64/releases/download/v1.25.4/deno-linux-arm64.zip
-	sha256sums_aarch64 = 393a62e4f6632d12f2c4d5529161d05504b3249a41593ca8a36807065ddc7023
+	source_x86_64 = deno-x86_64-unknown-linux-gnu.zip::https://github.com/denoland/deno/releases/download/v1.26.0/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 064fa0fbf93f91f2eea55234ff53ca42411c6fecf3e13df5240a4a1713ff9ce1
+	source_aarch64 = deno-linux-arm64.zip::https://github.com/LukeChannings/deno-arm64/releases/download/v1.26.0/deno-linux-arm64.zip
+	sha256sums_aarch64 = 019dd5af7fef99057884ce1f1802b860c8c4c940cef0bedf924a8ab1777f7b6c
 
 pkgname = deno-bin
