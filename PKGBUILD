@@ -2,7 +2,7 @@ pkgdesc="ROS - Extra nodes and plugins for MAVROS."
 url='https://wiki.ros.org/mavros_extras'
 
 pkgname='ros-noetic-mavros-extras'
-pkgver=1.13.0
+pkgver=1.14.0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 
 _dir="mavros-release-upstream-${pkgver}/mavros_extras"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/${pkgver}.tar.gz")
-sha256sums=('a814d4b7785163a9b591ea3307280ed81d8fa0bb67b82f02f5845823ef8a490b')
+sha256sums=('4c7a33080cb79b3adb5794c2b3057e64b019c36ee24806d4045120625bec5e02')
 
 build() {
   # Use ROS environment variables
