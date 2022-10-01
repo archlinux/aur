@@ -1,0 +1,89 @@
+diff --git a/libultraship/libultraship/CMakeLists.txt b/libultraship/libultraship/CMakeLists.txt
+index c00e6ec2..1684eef4 100644
+--- a/libultraship/libultraship/CMakeLists.txt
++++ b/libultraship/libultraship/CMakeLists.txt
+@@ -525,6 +525,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
+ 			">"
+ 			"ENABLE_OPENGL;"
+             "SPDLOG_ACTIVE_LEVEL=0;"
++            "SHIP_BASE_PATH=\"${CMAKE_INSTALL_PREFIX}\";"
+ 	)
+ endif()
+ ################################################################################
+diff --git a/libultraship/libultraship/Window.cpp b/libultraship/libultraship/Window.cpp
+index 539ed73c..a20c7ef3 100644
+--- a/libultraship/libultraship/Window.cpp
++++ b/libultraship/libultraship/Window.cpp
+@@ -58,8 +58,8 @@ extern "C" {
+         }
+ 
+     #ifndef __SWITCH__
+-        const char* controllerDb = "gamecontrollerdb.txt";
+-        int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
++        std::string controllerDb = Ship::Window::GetPathRelativeToAppBaseDirectory("gamecontrollerdb.txt");
++        int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
+         if (mappingsAdded >= 0) {
+             SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
+         } else {
+@@ -323,17 +323,37 @@ namespace Ship {
+ 
+ #ifdef __linux__
+         char* fpath = std::getenv("SHIP_HOME");
+-        if (fpath != NULL)
++        if (fpath != NULL) {
+             return std::string(fpath);
++        }
++
++        fpath = SDL_GetPrefPath(NULL, "soh");
++        if (fpath != NULL) {
++            std::string ret(fpath);
++            SDL_free(fpath);
++            return ret;
++        }
+ #endif
+ 
+         return ".";
+     }
+ 
++    std::string Window::GetAppBaseDirectoryPath() {
++#ifdef SHIP_BASE_PATH
++        return SHIP_BASE_PATH;
++#else
++        return GetAppDirectoryPath();
++#endif
++    }
++
+     std::string Window::GetPathRelativeToAppDirectory(const char* path) {
+         return GetAppDirectoryPath() + "/" + path;
+     }
+ 
++    std::string Window::GetPathRelativeToAppBaseDirectory(const char* path) {
++        return GetAppBaseDirectoryPath() + "/" + path;
++    }
++
+     void Window::StartFrame() {
+         gfx_start_frame();
+     }
+@@ -580,7 +600,7 @@ namespace Ship {
+     }
+ 
+     void Window::InitializeResourceManager() {
+-        MainPath = Config->getString("Game.Main Archive", GetPathRelativeToAppDirectory("oot.otr"));
++        MainPath = Config->getString("Game.Main Archive", GetPathRelativeToAppBaseDirectory("oot.otr"));
+         PatchesPath = Config->getString("Game.Patches Archive", GetAppDirectoryPath() + "/mods");
+         ResMan = std::make_shared<ResourceMgr>(GetInstance(), MainPath, PatchesPath);
+ 
+diff --git a/libultraship/libultraship/Window.h b/libultraship/libultraship/Window.h
+index c989aa39..c9ed624a 100644
+--- a/libultraship/libultraship/Window.h
++++ b/libultraship/libultraship/Window.h
+@@ -19,7 +19,9 @@ namespace Ship {
+ 			static std::shared_ptr<Window> GetInstance();
+ 			static std::shared_ptr<Window> CreateInstance(const std::string Name);
+ 			static std::string GetAppDirectoryPath();
++			static std::string GetAppBaseDirectoryPath();
+ 			static std::string GetPathRelativeToAppDirectory(const char* path);
++			static std::string GetPathRelativeToAppBaseDirectory(const char* path);
+ 
+ 			Window(std::string Name);
+ 			~Window();

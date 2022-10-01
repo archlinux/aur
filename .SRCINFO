@@ -1,0 +1,33 @@
+pkgbase = soh-git
+	pkgver = 4.0.0.r0.g8888fb2e
+	pkgrel = 1
+	url = https://github.com/HarbourMasters/Shipwright
+	arch = x86_64
+	arch = i686
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = curl
+	makedepends = lsb-release
+	source = git+https://github.com/HarbourMasters/Shipwright.git
+	source = soh.desktop
+	source = soh-install-paths.patch
+	source = otrgui-wrapper.sh
+	sha256sums = SKIP
+	sha256sums = 64fa7775b6a9e24cc783fedadf1ad4cb13b294f011e37392c748fee5b287a7ce
+	sha256sums = bd082ed8579ffb400f5225e200ce96900879837b8f01abc09a41416fa8fdaefa
+	sha256sums = 6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f
+
+pkgname = soh-git
+	pkgdesc = A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch
+	license = unknown
+	depends = sdl2
+	provides = soh
+	conflicts = soh
+
+pkgname = soh-otr-exporter-git
+	pkgdesc = OTR generation tools for SoH
+	license = MIT
+	depends = sdl2
+	depends = libpng
+	provides = soh-otr-exporter
+	conflicts = soh-otr-exporter
