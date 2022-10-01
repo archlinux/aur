@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsaa-git
+	pkgdesc = Plugin for Vapoursynth: vsaa (GIT version)
+	pkgver = 1.1.0.3.g4d83fda
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-aa.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = vapoursynth-plugin-vsutil-git
+	depends = vapoursynth-plugin-vsmask-git
+	depends = vapoursynth-plugin-vskernels-git
+	depends = vapoursynth-plugin-vsrgtools-git
+	depends = vapoursynth-plugin-vsexprtools-git
+	provides = vapoursynth-plugin-vsaa
+	conflicts = vapoursynth-plugin-vsaa
+	source = vsaa::git+https://github.com/Irrational-Encoding-Wizardry/vs-aa.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsaa-git
