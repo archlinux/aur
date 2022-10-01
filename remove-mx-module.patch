@@ -1,0 +1,54 @@
+--- a/PLUGINS
++++ b/PLUGINS
+@@ -272,9 +272,9 @@ entirely.
+   or a block element
+ 
+ When HTML is being sanitised by rawdog and the "tidyhtml" option is
+-enabled, this hook will be called just before Tidy is run (either via
+-PyTidyLib or via mx.Tidy). It can be used to add or modify Tidy options;
+-for example, to make it produce XHTML output.
++enabled, this hook will be called just before Tidy is run (via 
++PyTidyLib). It can be used to add or modify Tidy options; for example,
++to make it produce XHTML output.
+ 
+ ### clean_html(config, html, baseurl, inline)
+ 
+--- a/config
++++ b/config
+@@ -201,8 +201,7 @@ blocklevelhtml true
+ # Whether to attempt to turn feed-provided HTML into valid HTML.
+ # The most common problem that this solves is a non-closed element in an
+ # article causing formatting problems for the rest of the page.
+-# For this option to have any effect, you need to have PyTidyLib or mx.Tidy
+-# installed.
++# For this option to have any effect, you need to have PyTidyLib installed.
+ tidyhtml true
+ 
+ # Whether the articles displayed should be sorted first by the date
+--- a/rawdoglib/rawdog.py
++++ b/rawdoglib/rawdog.py
+@@ -47,11 +47,6 @@ try:
+ except:
+ 	tidylib = None
+ 
+-try:
+-	import mx.Tidy as mxtidy
+-except:
+-	mxtidy = None
+-
+ # The sanitisation code was restructured in feedparser 5.3.
+ try:
+ 	_resolveRelativeURIs = feedparser.urls._resolveRelativeURIs
+@@ -153,12 +148,9 @@ def sanitise_html(html, baseurl, inline, config):
+ 			# In tidy 5, wrap=0 means wrap to width 0.
+ 			"wrap": 68,
+ 			}
+-		call_hook("mxtidy_args", config, args, baseurl, inline)
+ 		call_hook("tidy_args", config, args, baseurl, inline)
+ 		if tidylib is not None:
+ 			output = tidylib.tidy_document(html, args)[0]
+-		elif mxtidy is not None:
+-			output = mxtidy.tidy(html, None, None, **args)[2]
+ 		else:
+ 			# No Tidy bindings installed -- do nothing.
+ 			output = "<body>" + html + "</body>"

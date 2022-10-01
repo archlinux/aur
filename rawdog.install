@@ -1,10 +1,11 @@
 post_install() {
-	printf "%s\n%s\n%s\n" \
-		"==> rawdog files are located in /usr/share/rawdog" \
-		" -> copy config and styles.css to ~/.rawdog" \
-		" -> move styles.css if you change the html output location in config"
-}
+  cat <<EOF
 
-post_upgrade() {
-	post_install $1
+Required files are located in /usr/share/doc/rawdog
+
+Copy config & style.css to ~/.rawdog
+
+Move style.css if the html output location is changed
+
+EOF
 }
