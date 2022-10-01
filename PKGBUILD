@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/mum-rs/mum.git"
 license=('MIT')
 sha256sums=('SKIP')
-depends=('alsa-lib' 'opus' 'openssl')
+depends=('alsa-lib' 'libnotify' 'opus' 'openssl')
 optdepends=('bash: for tab completions'
             'fish: for tab completions'
             'zsh: for tab completions')

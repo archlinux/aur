@@ -8,6 +8,7 @@ pkgbase = mum-git
 	makedepends = git
 	makedepends = rust
 	depends = alsa-lib
+	depends = libnotify
 	depends = opus
 	depends = openssl
 	optdepends = bash: for tab completions
