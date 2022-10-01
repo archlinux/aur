@@ -1,6 +1,6 @@
 pkgbase = imgurs
 	pkgdesc = CLI for a Imgur API written in Rust
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/MedzikUser/imgurs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = imgurs
 	optdepends = libnotify: Notification support
 	optdepends = xsel: Clipboard support
 	optdepends = xclip: Clipboard support
-	source = https://github.com/MedzikUser/imgurs/archive/v0.9.1.tar.gz
-	sha256sums = 1cb83bbfdbe957cd5b5924425861aad1a614bdf36ee2d2646a86b7e23e441571
+	source = https://github.com/MedzikUser/imgurs/archive/v0.10.0.tar.gz
+	sha256sums = 276878ce2ad79c082a045ff11fb38fe4683df49ece6b77f017a01a558576e6cb
 
 pkgname = imgurs
