@@ -3,7 +3,7 @@
 pkgname=mongodb44
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=4.4.16
+pkgver=4.4.17
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
@@ -26,7 +26,7 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-4.4.10-boost-1.79.patch
         mongodb-4.4.10-no-force-lld.patch
         mongodb-4.4.15-adjust-cache-alignment-assumptions.patch)
-sha256sums=('dfa2503904dabbeeac7980336458da9478115ea0ddc659d2e0ef2ab2c68d29fe'
+sha256sums=('9371c5adc1877add1c902fdac3f2eb284274e4cbe2294e98be29ac461a20b2c6'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '184b67c3a9fa894bd4eb8a79fd8bb580904b96c361cd30fd55fe4b1f2e46f507'
