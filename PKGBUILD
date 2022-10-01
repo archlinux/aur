@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.11.0.r0.g39b7cd6
+pkgver=0.12.0.r0.ga2242bf
 pkgrel=1
-pkgdesc="A bash cli framework also a task runner"
+pkgdesc="Easily parse cli arguments in bash"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')
