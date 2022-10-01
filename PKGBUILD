@@ -34,7 +34,6 @@ build() {
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DKF5CoreAddons_DIR="${srcdir}/kcoreaddons/lib/cmake/KF5CoreAddons" \
         -DCMAKE_BUILD_TYPE=Release \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
         -DTDESKTOP_API_TEST=ON \
