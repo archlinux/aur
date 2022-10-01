@@ -1,5 +1,5 @@
 pkgbase = openssl-3.0-bin
-	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
+	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. Can be installed alongside OpenSSL 1.
 	pkgver = 3.0.5
 	pkgrel = 2
 	url = https://www.openssl.org/
