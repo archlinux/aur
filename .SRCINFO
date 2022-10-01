@@ -1,7 +1,7 @@
 pkgbase = disable-c6-systemd-with-modern-standby
 	pkgdesc = A systemd service to disable the C6 state for Ryzen CPUs, with modern standby support.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jfredrickson/disable-c6
 	install = disable-c6-systemd-with-modern-standby.install
 	arch = any

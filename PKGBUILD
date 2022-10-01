@@ -3,7 +3,7 @@
 pkgname='disable-c6-systemd-with-modern-standby'
 pkgdesc='A systemd service to disable the C6 state for Ryzen CPUs, with modern standby support.'
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 provides=('disable-c6-systemd')
 conflicts=('disable-c6-systemd')
 arch=('any')
