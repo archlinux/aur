@@ -1,13 +1,14 @@
 pkgbase = volantes-cursors
 	pkgdesc = Cursors theme
 	pkgver = 20220828.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/varlesh/volantes-cursors
 	arch = any
 	license = GPL2
 	makedepends = bash
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
+	makedepends = libsoup
 	source = https://github.com/varlesh/volantes-cursors/archive/b13a4bbf6bd1d7e85fadf7f2ecc44acc198f8d01.tar.gz
 	sha256sums = 24a8b82fb99011032669c8721e11ddb05350b57baff7f2b3751853b6868acce1
 
