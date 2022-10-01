@@ -10,7 +10,7 @@ url='https://github.com/dnjulek/jvsfunc.git'
 license=('GPL')
 depends=('vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-lvsfunc-git'
-         'vapoursynth-plugin-vs-rgtools-git'
+         'vapoursynth-plugin-vsrgtools-git'
          )
 makedepends=('git'
              'python-pip'
