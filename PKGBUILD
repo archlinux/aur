@@ -32,4 +32,6 @@ package() {
     cp -r 'Icons/Daemon' $pkgdir/usr/share/icons
     install -dm755 $pkgdir/usr/share/color-schemes
     cp 'Colors/Daemon.colors' $pkgdir/usr/share/color-schemes
+    install -dm755 $pkgdir/usr/share/aurorae/themes
+    cp -r 'Window Borders/Daemon' $pkgdir/usr/share/aurorae/themes
 }
