@@ -1,0 +1,15 @@
+pkgbase = ruby-fog-openstack
+	pkgdesc = OpenStack fog provider gem.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/fog/fog-openstack
+	arch = any
+	license = MIT
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	noextract = fog-openstack-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-openstack-1.1.0.gem
+	sha256sums = 47f5406164769fe0702ade00e5519d09e6db905a54e29475cfa7050a80c609f6
+
+pkgname = ruby-fog-openstack
