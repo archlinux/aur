@@ -47,7 +47,4 @@ autobuild configure -A 64 -c ReleaseOS -- \
 	-DVIEWER_CHANNEL="Alchemy Test"
 
 echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
-# job count is not overrideable...
-#autobuild build -A64 -c ReleaseOS --no-configure
-cd build-linux-64
-ninja -j${AUTOBUILD_CPU_COUNT}
+autobuild build -A64 -c ReleaseOS --no-configure
