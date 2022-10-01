@@ -7,6 +7,7 @@ pkgbase = libadalang-tools
 	arch = x86_64
 	license = GPL
 	makedepends = gprbuild
+	makedepends = which
 	depends = libadalang
 	source = https://github.com/AdaCore/libadalang-tools/archive/refs/tags/v22.0.0.tar.gz
 	source = 0001-pp-actions.adb-patch-for-compatibility-with-release-.patch

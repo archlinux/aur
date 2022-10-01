@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('libadalang')
-makedepends=('gprbuild')
+makedepends=('gprbuild' 'which')
 
 source=("https://github.com/AdaCore/libadalang-tools/archive/refs/tags/v22.0.0.tar.gz"
         "0001-pp-actions.adb-patch-for-compatibility-with-release-.patch"
