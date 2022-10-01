@@ -1,4 +1,4 @@
-From e7b3391c2b5f568ad03282ee0f242e42170b22d0 Mon Sep 17 00:00:00 2001
+From bcf11383e1a08c12ea36aa98dd6aa4777b6b653c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 12 Sep 2022 17:38:47 +0200
 Subject: [PATCH 3/3] Fix compile error about missing QStringView overload
@@ -20,10 +20,10 @@ Prevents the following compiler error:
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index ef44327..997fa24 100644
+index 978b7ad..ec83f84 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
-@@ -595,7 +595,7 @@ bool generateClassImpl(QTextStream &out, const QMetaObject *mo, const QByteArray
+@@ -570,7 +570,7 @@ bool generateClassImpl(QTextStream &out, const QMetaObject *mo, const QByteArray
          const auto namespaceForTypeEntry = namespaceForType.constFind(type.toUtf8());
          if (namespaceForTypeEntry != namespaceForType.constEnd()) {
              const auto ns = QString::fromUtf8(namespaceForTypeEntry.value());
