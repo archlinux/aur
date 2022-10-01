@@ -1,10 +1,10 @@
---- /mnt/LMule/repo/aur/freetube/FreeTube-0.12.0-beta/_scripts/build.js	2021-03-07 01:41:43.000000000 +0000
-+++ /home/user/Desktop/build.js	2021-03-13 19:18:27.093723000 +0000
-@@ -24,12 +24,13 @@
+--- build.js	2022-10-01 10:05:50.271392294 +0100
++++ "build (c\303\263pia).js"	2022-10-01 10:10:02.334720959 +0100
+@@ -36,12 +36,13 @@
      arch = Arch.armv7l
    }
  
--  targets = Platform.LINUX.createTarget(['deb', 'zip', 'apk', 'rpm', 'AppImage', 'pacman'], arch)
+-  targets = Platform.LINUX.createTarget(['deb', 'zip', '7z', 'apk', 'rpm', 'AppImage', 'pacman'], arch)
 +  targets = Platform.LINUX.createTarget(['dir'], arch)
  }
  
@@ -15,12 +15,12 @@
    // asar: false,
    // compression: 'store',
    productName,
-@@ -67,7 +68,7 @@
+@@ -92,7 +93,7 @@
    linux: {
      category: 'Network',
      icon: '_icons/icon.svg',
--    target: ['deb', 'zip', 'apk', 'rpm', 'AppImage', 'pacman'],
+-    target: ['deb', 'zip', '7z', 'apk', 'rpm', 'AppImage', 'pacman'],
 +    target: ['dir'],
    },
-   mac: {
-     category: 'public.app-category.utilities',
+   // See the following issues for more information
+   // https://github.com/jordansissel/fpm/issues/1503
