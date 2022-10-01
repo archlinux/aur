@@ -1,7 +1,7 @@
 pkgbase = flashpoint-launcher-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint
 	pkgver = 10.1.6
-	pkgrel = 4
+	pkgrel = 3
 	url = https://github.com/FlashpointProject/launcher
 	arch = x86_64
 	license = MIT
