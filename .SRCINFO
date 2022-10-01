@@ -7,6 +7,7 @@ pkgbase = vapoursynth-plugin-jvsfunc-git
 	license = GPL
 	makedepends = git
 	makedepends = python-pip
+	makedepends = python-wheel
 	depends = vapoursynth-plugin-vsutil-git
 	depends = vapoursynth-plugin-lvsfunc-git
 	depends = vapoursynth-plugin-vsrgtools-git
