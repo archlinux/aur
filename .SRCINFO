@@ -1,7 +1,7 @@
 pkgbase = volantes-cursors
 	pkgdesc = Cursors theme
 	pkgver = 20220828.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/varlesh/volantes-cursors
 	arch = any
 	license = GPL2
