@@ -1,6 +1,6 @@
 pkgbase = bbg
 	pkgdesc = A static blog generator built with electron
-	pkgver = 20220829
+	pkgver = 20221001
 	pkgrel = 1
 	url = https://github.com/bbg-contributors/bbg
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = bbg
 	source = bbg.sh
 	source = icon.png::https://github.com/bbg-contributors/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png
 	source = bbg.desktop
-	source = app-20220829.asar::https://github.com/bbg-contributors/bbg/releases/download/20220829/app.asar
+	source = app-20221001.asar::https://github.com/bbg-contributors/bbg/releases/download/20221001/app.asar
 	sha256sums = d42008985970863855628fe7e65b43ad3c07bf18e51b4f770a95d6aef1bb3e56
 	sha256sums = d5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228
 	sha256sums = f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96
-	sha256sums = adb3b66730c687d14198cd6f3a93dc78e51198e74eff764eca5a44719da2cb0b
+	sha256sums = 07fe3c9ed0692820c6b2a245ef7bb38f36c5f60f775d292a69c7a83faeed646b
 
 pkgname = bbg
