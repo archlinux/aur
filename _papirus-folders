@@ -1,0 +1,56 @@
+#compdef papirus-folders
+#
+# @author: Sergei Eremenko (https://github.com/SmartFinn)
+# @license: MIT license (MIT)
+# @link: https://github.com/PapirusDevelopmentTeam/papirus-folders
+
+_get_colors() {
+	if ! command -v papirus-folders >/dev/null; then
+		_message "unable to find papirus-folders script"
+		return 1
+	fi
+
+	local -a colors=( $(papirus-folders -l | tr -d '>\n') )
+	_wanted colors exlp 'color' compadd -- "${colors[@]}"
+	return 0
+}
+
+_get_themes() {
+	local data_dir icons_dir icon_theme
+	local -a data_dirs=()
+	local -a icons_dirs=(
+		"$HOME/.icons"
+		"${XDG_DATA_HOME:-$HOME/.local/share}/icons"
+	)
+
+	# Get data directories from XDG_DATA_DIRS variable and
+	# convert colon-separated list into bash array
+	IFS=: read -rA data_dirs <<< "${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+
+	for data_dir in "${data_dirs[@]}"; do
+		[ -d "$data_dir/icons" ] || continue
+		icons_dirs=( "${icons_dirs[@]}" "${data_dir:a}/icons" )
+	done
+
+	for icons_dir in "${icons_dirs[@]}"; do
+		for icon_theme in "$icons_dir"/*; do
+			[ -f "$icon_theme/48x48/places/folder-blue.svg" ] || continue
+			_wanted icon_theme expl 'icon-theme' compadd -- "${icon_theme:t}"
+		done
+	done
+	return 0
+}
+
+_arguments -C \
+	'(-h --help)'{-h,--help}'[show help message and exit]' \
+	'(-V --version)'{-V,--version}'[show version number and exit]' \
+	'(-v --verbose)'{-v,--verbose}'[be verbose]' \
+	'(-C --color)'{-C,--color}'[change color of folders]:color:_get_colors' \
+	'(-D --default)'{-D,--default}'[back to the default color]' \
+	'(-R --restore)'{-R,--restore}'[restore the last used color from the config file]' \
+	'(-l --list)'{-l,--list}'[show available colors]' \
+	'(-o --once)'{-o,--once}'[do not save the changes to the config file]' \
+	'(-t --theme)'{-t,--theme}'[make changes to the specified theme]:icon-theme:_get_themes' \
+	'(-u --update-caches)'{-u,--update-caches}'[update icon caches]'
+
+# vim: ft=zsh sw=4 ts=4

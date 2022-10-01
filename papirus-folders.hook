@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Target = papirus-icon-theme
+Type = Package
+
+[Action]
+Depends = papirus-folders
+Description = Restoring the last used color of the folders...
+Exec = /usr/bin/papirus-folders -Ru
+When = PostTransaction
