@@ -2,12 +2,12 @@
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=brightness-controller-git
 pkgver=2.4.r5.g7c4a27e
-pkgrel=1
+pkgrel=2
 pkgdesc="Control Brightness of your Primary and Secondary Display in Linux"
 arch=('x86_64')
 url="https://github.com/LordAmit/Brightness"
 license=('GPL')
-depends=('python-pyqt5' 'python-qtpy' 'xorg-xrandr')
+depends=('ddcutil' 'python-pyqt5' 'python-qtpy' 'xorg-xrandr')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
