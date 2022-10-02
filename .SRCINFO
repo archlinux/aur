@@ -5,7 +5,6 @@ pkgbase = listen1
 	url = https://github.com/listen1/listen1_desktop
 	arch = x86_64
 	license = MIT
-	depends = electron13
 	source = https://github.com/listen1/listen1_desktop/releases/download/v2.26.2/listen1_2.26.2_linux_amd64.deb
 	sha256sums = 31fd195ef7ad2b1a48c9864b49467170554284774e3ce6b1f6e2cfa15cb43356
 
