@@ -1,0 +1,23 @@
+pkgbase = mogan
+	pkgdesc = A structured wysiwyg scientific text editor
+	pkgver = r195.584bb00
+	pkgrel = 1
+	url = https://github.com/XmacsLabs/mogan
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-svg
+	depends = freetype2
+	depends = sqlite
+	depends = libpng
+	depends = libiconv
+	depends = zlib
+	depends = libjpeg
+	depends = curl
+	source = mogan::git+https://github.com/XmacsLabs/mogan.git
+	md5sums = SKIP
+
+pkgname = mogan
