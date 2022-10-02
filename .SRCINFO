@@ -1,0 +1,19 @@
+pkgbase = python-simplepush
+	pkgdesc = Python library for simplepush.io
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/simplepush/simplepush-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-aiohttp
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/s/simplepush/simplepush-1.2.2.tar.gz
+	sha256sums = 0136a0305c310eb61fe1c3eb26ca343443e21e70c145a6231acd508cf087fb07
+
+pkgname = python-simplepush
