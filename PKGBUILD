@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r439.d2db201
+pkgver=r440.debea94
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -49,20 +49,32 @@ build() {
 	msg "Starting CMake"
 	cd "$_pkgname"
 
-# workaround for Sophos issue with fmt 9.0+ https://github.com/strasdat/Sophus/issues/366#issuecomment-1229178088
-CFLAGS="-DFMT_DEPRECATED_OSTREAM=1"
+	MEM_GB_PER_JOB=1
+	read -r _ FREEMEM _ <<< "$(grep --fixed-strings 'MemFree' /proc/meminfo)"
+	JOBS=$(echo "scale=0 ; $FREEMEM / (1024 * 1024) / $MEM_GB_PER_JOB" | bc)
+
+	if [ $JOBS == 0 ]
+	then
+		JOBS=1
+	fi
+
+	msg "Free memory: $FREEMEM. Estimated memory requirement per job (GB): $MEM_GB_PER_JOB: Using $JOBS build jobs"
+
+# -g1: Level 1 produces minimal information, enough for making backtraces in parts of the program that you don’t plan to debug.
+# -DFMT_DEPRECATED_OSTREAM: workaround for Sophos issue with fmt 9.0+ https://github.com/strasdat/Sophus/issues/366#issuecomment-1229178088
+CFLAGS="-DFMT_DEPRECATED_OSTREAM=1 -g1"
 CXXFLAGS="$CFLAGS"
 
 	cmake \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
-		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+		-DCMAKE_BUILD_TYPE="Release" \
 		-DBUILD_TESTS=OFF \
 		-DBASALT_INSTANTIATIONS_DOUBLE=OFF \
 		-Bbuild \
 		-GNinja
 
 	msg "Building the project"
-	ninja -C build -j8 # only increase if you have a lot of ram
+	ninja -C build -j$JOBS
 }
 
 package() {
