@@ -10,6 +10,8 @@ arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
 license=('LGPL3')
 depends=('xdg-desktop-portal' 'xdg-desktop-portal-gtk')
+optdepends=('cura-5-plugin-octoprint: Cura plugin which enables printing directly to OctoPrint and monitoring the progress'
+	'cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress')
 conflicts=('cura-5-bin')
 provides=('cura')
 options=(!strip)
