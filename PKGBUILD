@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kmon-git
-pkgver=1.6.0.r0.g61ed1a4
+pkgver=1.6.2.r0.g2367b58
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor (git)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -39,5 +39,8 @@ package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 "man/${pkgname%-git}.8" -t "$pkgdir/usr/share/man/man8"
+  install -Dm 644 "target/man/${pkgname%-git}.8" -t "$pkgdir/usr/share/man/man8"
+  install -Dm 644 "target/completions/${pkgname%-git}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
+  install -Dm 644 "target/completions/${pkgname%-git}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+  install -Dm 644 "target/completions/_${pkgname%-git}" -t "${pkgdir}/usr/share/zsh/site-functions"
 }

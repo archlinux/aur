@@ -1,6 +1,6 @@
 pkgbase = kmon-git
 	pkgdesc = Linux kernel manager and activity monitor (git)
-	pkgver = 1.6.0.r0.g61ed1a4
+	pkgver = 1.6.2.r0.g2367b58
 	pkgrel = 1
 	url = https://github.com/orhun/kmon
 	arch = x86_64
