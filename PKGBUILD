@@ -3,7 +3,7 @@
 #Configuration:
 _fragmant="${FRAGMENT:-#branch=dev}"
 pkgname=rizin-git
-pkgver=0.4.0.r26837.d5dea0a088
+pkgver=0.5.0
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
