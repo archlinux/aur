@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.3.19.0
+pkgver=2.4.4.1
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -15,7 +15,6 @@ depends=(
 	'mingw-w64-tbb'
 	'mingw-w64-giflib'
 	'mingw-w64-libwebp'
-	'mingw-w64-libsquish'
 	'mingw-w64-pugixml'
 	'mingw-w64-fmt'
 	'mingw-w64-freetype2'
@@ -33,22 +32,21 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('602c146aebee775f123459a6c6be753054144b8d82777de26965f2cc3e88113a')
+sha256sums=('3e81dff415bf58f4df889ab24a26d77c19a109ace4c5d55371925b5b00491588')
 
 _srcdir="oiio-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG -fpermissive'
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -fpermissive'
 	-DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF -DBUILD_MISSING_ROBINMAP=OFF
 	-DUSE_EXTERNAL_PUGIXML=ON -DCMAKE_CXX_STANDARD=20 -DINSTALL_DOCS=OFF 
 	-DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
 	-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=''
-	-DUSE_EMBEDDED_LIBSQUISH=OFF
 	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif;Ptex' )
 
-#prepare() {
-#	cd "${_srcdir}"
-#	patch -p1 -i "${srcdir}/fix-ffmpeg-5.1.patch"
-#}
+prepare() {
+	cd "${_srcdir}"
+	sed -i 's/void OIIO_API operator++(int) {/void operator++(int) {/' 'src/include/OpenImageIO/imagebuf.h'
+}
 
 build() {
 	for _arch in ${_architectures}; do
