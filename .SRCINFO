@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.3357.r0.gd908fa5e3
+	pkgver = 1.7.3358.r0.g92a9aa6d3
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = post.install
@@ -34,6 +34,7 @@ pkgbase = pcsx2-git
 	depends = qt6-tools
 	depends = qt6-svg
 	depends = soundtouch
+	depends = clang
 	depends = wayland
 	depends = zstd-cmake
 	provides = pcsx2-qt
