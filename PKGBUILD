@@ -2,7 +2,7 @@
 # Maintainer: hertg <aur@her.tg>
 pkgname=leftwm-git
 pkgver=0.4.0.r3.g1cc3a4d
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
@@ -42,6 +42,8 @@ pkgver() {
 package() {
   cd $pkgname/target/release
   install -Dm755 leftwm leftwm-worker lefthk-worker leftwm-state leftwm-check leftwm-command -t "$pkgdir"/usr/bin
+
+  install -D $srcdir/$pkgname/leftwm/doc/leftwm.1 -t "$pkgdir"/usr/local/share/man/man1
 
   install -d "$pkgdir"/usr/share/leftwm
   cp -R "$srcdir"/$pkgname/themes "$pkgdir"/usr/share/leftwm
