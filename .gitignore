@@ -6,5 +6,3 @@
 !PKGBUILD
 !.SRCINFO
 !brightness-controller.desktop
-!brightness-controller.sh
-!brightness-reset.sh
