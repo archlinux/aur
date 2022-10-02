@@ -3,12 +3,12 @@
 pkgname=cura-5-plugin-octoprint
 pkgver=3.7.2
 _pkgname=Cura-OctoPrintPlugin-${pkgver}
-pkgrel=4
+pkgrel=5
 pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
 arch=('any')
 license=('GPL3')
 url="https://github.com/fieldofview/OctoPrintPlugin"
-depends=('python' 'cura-5-bin' 'python-zeroconf')
+depends=('python' 'python-zeroconf')
 conflicts=('cura-5-plugin-octoprint-git')
 makedepends=('git' 'cmake')
 source=("https://github.com/fieldOfView/Cura-OctoPrintPlugin/archive/refs/tags/v${pkgver}.tar.gz"
