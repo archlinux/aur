@@ -1,7 +1,7 @@
 # Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
 
 pkgname=jakt-git
-pkgver=r1751.69c45772
+pkgver=r1910.9743d976
 pkgrel=1
 pkgdesc="The Jakt Programming Language from SerenityOS"
 arch=("x86_64")
@@ -29,7 +29,7 @@ build() {
     cmake --build build
 
     # test stage1
-    ./build/jakttest
+    ./build/bin/jakttest
 
     # stage2
     cmake -B build -DFINAL_STAGE=2
@@ -38,7 +38,7 @@ build() {
 
 check() {
     cd "${pkgname}"
-    ./build/jakttest
+    ./build/bin/jakttest
 }
 
 package() {
@@ -49,7 +49,7 @@ package() {
 
     cd "${pkgname}"
 
-    install -Dm755 "build/jakt" "${pkgdir}/usr/bin/jakt"
+    install -Dm755 "build/bin/jakt" "${pkgdir}/usr/bin/jakt"
     find runtime -maxdepth 1 -mindepth 1 -exec cp -r {} ${pkgdir}/usr/lib/jakt/ \;
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/jakt"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/jakt"
