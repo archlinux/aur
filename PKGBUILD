@@ -3,7 +3,7 @@
 
 _gemname=exifr
 pkgname=ruby-${_gemname}
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="module to read EXIF from JPEG and TIFF images"
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(ruby-rake ruby-test-unit)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/remvee/exifr/archive/release-$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('bf2a9f5235dbe60ad700ebd9cab08ed40d4646f2d4bf14bbb83cc95cbfc1dcec')
+sha256sums=('545d4f62a5d9d3ab4b97dac30d8e2072c450c25a42dc510aa0382694edd12849')
 
 build() {
   cd $_gemname-release-$pkgver
