@@ -71,7 +71,7 @@ sha256sums=('SKIP'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
             '3e1f866944235b999d2d727ed1ced431bd67405b053701c21068607ec76f23c3'
             '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77'
-            '84c1700e285ab1d94d16d0a602417a414447d8a23ac2e55a093285cc4bd2916d'
+            '89e9ade86131a5989ae2f2c2cee6a12f2c71df35d1ef7a84d6176dd3de0f2889'
             'bdf56f85b608da12074780271ae134b02a03278f7b53a183f6dd97d8d72073e0'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
             '8a1d802b1916c5a7d9b1cdde3e46a79e44f1b10a9d70be1f1885ce84406faa01')
@@ -117,7 +117,6 @@ build() {
 
   export SAGE_NUM_THREADS=10
   export PYTHONPATH="$PWD"/../sage-setup
-  export CPPFLAGS+=" -DUSE_GASMAN=1"
   python setup.py build
 }
 

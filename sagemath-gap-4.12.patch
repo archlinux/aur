@@ -137,7 +137,7 @@ index a4b047113c..86090b4353 100644
          return Hom(phi)
  
 diff --git a/src/sage/groups/finitely_presented.py b/src/sage/groups/finitely_presented.py
-index 2a61bbf91d..d26891a05f 100644
+index d953022d3d..ad339b8965 100644
 --- a/src/sage/groups/finitely_presented.py
 +++ b/src/sage/groups/finitely_presented.py
 @@ -596,9 +596,9 @@ class RewritingSystem():
@@ -197,8 +197,22 @@ index a76afc2ac9..9340c0d6c6 100644
          sage: FooGroup().gens()
          (f1,)
      """
+diff --git a/src/sage/groups/matrix_gps/finitely_generated.py b/src/sage/groups/matrix_gps/finitely_generated.py
+index a6d3dc0251..63956ad5f1 100644
+--- a/src/sage/groups/matrix_gps/finitely_generated.py
++++ b/src/sage/groups/matrix_gps/finitely_generated.py
+@@ -563,9 +563,6 @@ class FinitelyGeneratedMatrixGroup_gap(MatrixGroup_gap):
+             21499084800
+             sage: P = G.as_permutation_group()
+             sage: Psmaller = G.as_permutation_group(algorithm="smaller", seed=6)
+-            sage: P == Psmaller  # see the note below
+-            True
+-            sage: Psmaller = G.as_permutation_group(algorithm="smaller")
+             sage: P == Psmaller
+             False
+             sage: P.cardinality()
 diff --git a/src/sage/groups/perm_gps/partn_ref2/refinement_generic.pyx b/src/sage/groups/perm_gps/partn_ref2/refinement_generic.pyx
-index 2fcb0363a8..ca73c6b1ab 100644
+index f2ccca042a..47d6862333 100644
 --- a/src/sage/groups/perm_gps/partn_ref2/refinement_generic.pyx
 +++ b/src/sage/groups/perm_gps/partn_ref2/refinement_generic.pyx
 @@ -427,7 +427,7 @@ cdef class LabelledBranching:
@@ -211,10 +225,10 @@ index 2fcb0363a8..ca73c6b1ab 100644
              sage: L.small_generating_set()
              [(1,2,3)]
 diff --git a/src/sage/groups/perm_gps/permgroup.py b/src/sage/groups/perm_gps/permgroup.py
-index 4908934699..34ba0ccfd4 100644
+index 7723ec2526..aa60cc6874 100644
 --- a/src/sage/groups/perm_gps/permgroup.py
 +++ b/src/sage/groups/perm_gps/permgroup.py
-@@ -913,7 +913,7 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -927,7 +927,7 @@ class PermutationGroup_generic(FiniteGroup):
             sage: f = PG._coerce_map_from_(MG)
             sage: mg = MG.an_element()
             sage: p = f(mg); p
@@ -223,7 +237,7 @@ index 4908934699..34ba0ccfd4 100644
             sage: PG(p._gap_()) == p
             True
  
-@@ -959,12 +959,12 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -973,12 +973,12 @@ class PermutationGroup_generic(FiniteGroup):
              sage: P = G.as_permutation_group(algorithm='smaller', seed=5)
              sage: P1 = G.as_permutation_group()
              sage: P == P1
@@ -239,8 +253,64 @@ index 4908934699..34ba0ccfd4 100644
  
          Another check for :trac:`5583`::
  
+@@ -1303,7 +1303,7 @@ class PermutationGroup_generic(FiniteGroup):
+             sage: G.gens_small() # random
+             [('b','c'), ('a','c','b')] ## (on 64-bit Linux)
+             [('a','b'), ('a','c','b')] ## (on Solaris)
+-            sage: len(G.gens_small()) == 2
++            sage: len(G.gens_small()) == 2 # random
+             True
+         """
+         gens = self._libgap_().SmallGeneratingSet()
+@@ -4371,17 +4371,23 @@ class PermutationGroup_generic(FiniteGroup):
+ 
+         ::
+ 
+-            sage: G = PermutationGroup([[(1,2,3,4,5)],[(1,2)]]) #S_5 on [1..5]
+-            sage: G.is_transitive([1,4,5])
++            sage: G = PermutationGroup([[(1,2,3,4,5)],[(1,2)],[(6,7)]])
++            sage: G.is_transitive([1,2,3,4,5])
+             True
+-            sage: G.is_transitive([2..6])
++            sage: G.is_transitive([1..7])
+             False
+             sage: G.is_transitive(G.non_fixed_points())
+-            True
++            False
+             sage: H = PermutationGroup([[(1,2,3)],[(4,5,6)]])
+             sage: H.is_transitive(H.non_fixed_points())
+             False
+ 
++        If `G` does not act on the domain, it always returns ``False``::
++
++            sage: G = PermutationGroup([[(1,2,3,4,5)],[(1,2)]]) #S_5 on [1..5]
++            sage: G.is_transitive([1,4,5])
++            False
++
+         Note that this differs from the definition in GAP, where
+         ``IsTransitive`` returns whether the group is transitive on the
+         set of points moved by the group.
+@@ -4437,12 +4443,16 @@ class PermutationGroup_generic(FiniteGroup):
+             sage: G = PermutationGroup([[(1,2,3,4)],[(2,4)]])
+             sage: G.is_primitive([1..4])
+             False
+-            sage: G.is_primitive([1,2,3])
+-            True
+             sage: G = PermutationGroup([[(3,4,5,6)],[(3,4)]]) #S_4 on [3..6]
+             sage: G.is_primitive(G.non_fixed_points())
+             True
+ 
++        If `G` does not act on the domain, it always returns ``False``::
++
++            sage: G = PermutationGroup([[(1,2,3,4)],[(2,4)]])
++            sage: G.is_primitive([1,2,3])
++            False
++
+         """
+         #If the domain is not a subset of self.domain(), then the
+         #action isn't primitive.
 diff --git a/src/sage/interfaces/gap.py b/src/sage/interfaces/gap.py
-index c34fe530c3..569caa27bf 100644
+index ba175d4e34..d866cd3d60 100644
 --- a/src/sage/interfaces/gap.py
 +++ b/src/sage/interfaces/gap.py
 @@ -1512,6 +1512,8 @@ def gap_reset_workspace(max_workspace_size=None, verbose=False):
