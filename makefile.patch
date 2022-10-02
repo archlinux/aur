@@ -5,7 +5,7 @@ diff -aur src0/bible-kjv/Makefile src1/bible-kjv/Makefile
  
  # I use environment variables for these...
  #CFLAGS	      = -g
--CFLAGS	      = -Wall -Wformat -Werror -Wshadow -W -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wcast-align -Wcast-qual -Wbad-function-cast -Wpointer-arith -g2 -ggdb -DDESTLIB=\"$(DESTLIB)\"
+-CFLAGS	      = -Wall -Wformat -Werror -Wshadow -W -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wcast-align -Wcast-qual -Wbad-function-cast -Wpointer-arith -g2 -ggdb -DDESTLIB=\"$(DESTLIB)\" -ffile-prefix-map=$(CURDIR)=.
 -LDFLAGS       = 
 +CFLAGS	      += -DDESTLIB=\"$(DESTLIB)\"
  LDADD         = -lreadline
