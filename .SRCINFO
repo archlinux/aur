@@ -1,16 +1,16 @@
 pkgbase = ipmicfg
 	pkgdesc = Supermicro IPMI configuration tool
-	pkgver = 1.33.2
-	pkgrel = 220126
-	url = http://www.supermicro.com/products/nfo/ipmi.cfm
+	pkgver = 1.34.0
+	pkgrel = 220906
+	url = https://www.supermicro.com/en/solutions/management-software/ipmi-utilities
 	arch = x86_64
 	license = custom:Super Micro Computer
 	makedepends = unzip
 	makedepends = python-html2text
 	depends = glibc
-	source = https://www.supermicro.com/wftp/utility/IPMICFG/IPMICFG_1.33.0_build.210528.zip
+	source = https://www.supermicro.com/Bios/sw_download/481/IPMICFG_1.34.0_build.220906.zip
 	source = https://www.supermicro.com/about/policies/disclaimer.cfm
-	sha256sums = 9aedd2923bf21bc8694bedd50bd8dab5737d3a987193d0489a2d4a2e766fc374
+	sha256sums = 1b06d18ae14f1a8f4c2a70ebe414a71cea77c5b050ecacd21088f7dd6b8ac0c9
 	sha256sums = SKIP
 
 pkgname = ipmicfg
