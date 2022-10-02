@@ -1,7 +1,7 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2023.1
-	pkgrel = 3
+	pkgver = 2023.2
+	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
 	arch = x86_64
@@ -26,14 +26,12 @@ pkgbase = maya
 	depends = libxtst
 	optdepends = maya-arnold: Maya Arnold Renderer Plugin
 	optdepends = maya-bifrost: Maya Bifrost Effects Plugin
-	optdepends = maya-rokoko-motion-library: Maya Rokoko Motion Library Animation Plugin
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
-	optdepends = libtiff-maya-git: Prevents the "no version information" warning from printing
 	options = !strip
-	source = manual://Maya2023_64-2023.1-1532.x86_64.rpm
+	source = manual://Maya2023_64-2023.2-1794.x86_64.rpm
 	source = application-home-workaround.patch
-	sha256sums = ae1bd5b421959cbd65792e1a263aaf610100c8636756e24f997b010cc8776c23
+	sha256sums = bebe000496d845f4b866cc050e775e6c230b11a3f7bce2360f7b6a1adf0e4e78
 	sha256sums = 0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a
 
 pkgname = maya

@@ -5,9 +5,9 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=maya
-pkgver=2023.1
+pkgver=2023.2
 _majorver="${pkgver%%.*}"
-pkgrel=3
+pkgrel=1
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
@@ -17,15 +17,13 @@ depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing=12.1.
          'glu' 'gst-plugins-base-libs' 'libxtst')
 optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
             'maya-bifrost: Maya Bifrost Effects Plugin'
-            'maya-rokoko-motion-library: Maya Rokoko Motion Library Animation Plugin'
             'maya-substance: Maya Substance Material Plugin'
-            'maya-usd: Maya Universal Scene Description Plugin'
-            'libtiff-maya-git: Prevents the "no version information" warning from printing')
+            'maya-usd: Maya Universal Scene Description Plugin')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://Maya2023_64-$pkgver-1532.x86_64.rpm"
+source=("manual://Maya2023_64-$pkgver-1794.x86_64.rpm"
         'application-home-workaround.patch')
-sha256sums=('ae1bd5b421959cbd65792e1a263aaf610100c8636756e24f997b010cc8776c23'
+sha256sums=('bebe000496d845f4b866cc050e775e6c230b11a3f7bce2360f7b6a1adf0e4e78'
             '0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a')
 
 options=(!strip)
