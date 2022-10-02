@@ -1,10 +1,10 @@
 # Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
 _cranname=modelr
-_cranver=0.1.8
+_cranver=0.1.9
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-modelr
 pkgver=${_cranver//[:-]/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Modelling Functions that Work with the Pipe"
 arch=('any')
 url="https://cran.r-project.org/package=${_cranname}"
@@ -14,7 +14,7 @@ depends=('r>=3.2' 'r-broom'  'r-magrittr' 'r-purrr>=0.2.2' 'r-rlang>=0.2.0' 'r-t
 optdepends=('r-covr' 'r-ggplot2' 'r-testthat')
 
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-sha256sums=('825ba77d95d60cfb94920bec910872ca2ffe7790a44148b2992be2759cb361c4')
+sha256sums=('10e9fde89e4695bbab3de2490336f68805cc327807a809982231169963dfa9c9')
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
 }
