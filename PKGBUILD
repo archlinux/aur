@@ -3,7 +3,7 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.1.7
-pkgrel=1
+pkgrel=2
 _dataver=1012
 pkgdesc="Launcher for BlueMaxima's Flashpoint"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('nss>=3.0'
 				 'wget')
 makedepends=('desktop-file-utils'
 				     'git'
-    				 'p7zip')
+    				 'libarchive')
 optdepends=('flashplayer-standalone: native Flash support')
 conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
 source=("flashpoint-data.7z::https://bluepload.unstable.life/selif/flashpoint-${_dataver}-linux-x64.7z"
@@ -44,7 +44,9 @@ package(){
 	echo "Creating Launcher..."
 	mkdir -vp "${pkgdir}/usr/bin"
 	printf \
-	"#!/usr/bin/env bash\n\ncd /opt/Flashpoint/\n/opt/Flashpoint/flashpoint-launcher \$@" > "${pkgdir}/usr/bin/flashpoint-launcher"
+	"#!/usr/bin/env bash\n\n
+	cd /opt/Flashpoint/\n
+	/opt/Flashpoint/flashpoint-launcher \$@" > "${pkgdir}/usr/bin/flashpoint-launcher"
 	chmod -v 777 "${pkgdir}/usr/bin/flashpoint-launcher"
 #	echo Linking launcher
 #	mkdir -vp ${pkgdir}/usr/bin
