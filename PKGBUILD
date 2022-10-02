@@ -3,7 +3,7 @@
 
 _gemname=image_size
 pkgname=ruby-${_gemname}
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="measure image size using pure Ruby"
 arch=(any)
