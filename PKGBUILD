@@ -2,12 +2,12 @@
 
 pkgname=taskell
 pkgver=1.11.4
-pkgrel=244
+pkgrel=245
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
 url="https://hackage.haskell.org/package/$pkgname"
-depends=(ghc-libs haskell-aeson haskell-attoparsec haskell-brick haskell-config-ini haskell-file-embed haskell-fold-debounce haskell-http-client haskell-http-conduit haskell-http-types haskell-lens haskell-tz haskell-vty haskell-classy-prelude)
+depends=(ghc-libs haskell-aeson haskell-attoparsec haskell-brick0.71 haskell-config-ini haskell-file-embed haskell-fold-debounce haskell-http-client haskell-http-conduit haskell-http-types haskell-lens haskell-tz haskell-vty haskell-classy-prelude)
 makedepends=(ghc haskell-classy-prelude haskell-raw-strings-qq haskell-tasty haskell-tasty-discover haskell-tasty-expected-failure haskell-tasty-hunit)
 source=(https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 sha512sums=('34d75d01c8e88fbbb932dbe6394e570b454156f1ad02173616616c493f65bfc5c4d28ed4089312410f8cb1760a523052fe132bfcd44b8bbf42e912fe9da2cc10')
