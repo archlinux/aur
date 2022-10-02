@@ -240,20 +240,20 @@ index bca991909d42a..474faab3ee7a0 100644
  
  	/* frame drop variables */
 
-From 7b0cf93f6b518701daac9484cbd24be0cbf7e76e Mon Sep 17 00:00:00 2001
+From 07802b66747b5275f572bb6c551eb98fdb6d024a Mon Sep 17 00:00:00 2001
 From: tytan652 <tytan652@tytanium.xyz>
 Date: Thu, 11 Feb 2021 14:51:42 +0100
 Subject: [PATCH 3/3] UI: Add interface binding property for Linux
 
 ---
  UI/data/locale/en-US.ini             |  1 +
- UI/forms/OBSBasicSettings.ui         | 16 ++++-
+ UI/forms/OBSBasicSettings.ui         | 24 ++++++--
  UI/window-basic-auto-config-test.cpp |  3 +
  UI/window-basic-main-outputs.cpp     |  6 ++
  UI/window-basic-main.cpp             |  2 +
  UI/window-basic-settings.cpp         | 91 +++++++++++++++++++++++++++-
  UI/window-basic-settings.hpp         |  3 +
- 7 files changed, 119 insertions(+), 3 deletions(-)
+ 7 files changed, 123 insertions(+), 7 deletions(-)
 
 diff --git a/UI/data/locale/en-US.ini b/UI/data/locale/en-US.ini
 index 06361584c96cb..8104e3bf47548 100644
@@ -268,7 +268,7 @@ index 06361584c96cb..8104e3bf47548 100644
  Basic.Settings.Advanced.Network.EnableNewSocketLoop="Enable network optimizations"
  Basic.Settings.Advanced.Network.EnableLowLatencyMode="Enable TCP pacing"
 diff --git a/UI/forms/OBSBasicSettings.ui b/UI/forms/OBSBasicSettings.ui
-index 4552856e7a88c..e998830deddc4 100644
+index 4552856e7a88c..4efb6dcfa5a36 100644
 --- a/UI/forms/OBSBasicSettings.ui
 +++ b/UI/forms/OBSBasicSettings.ui
 @@ -7267,6 +7267,19 @@
@@ -291,7 +291,7 @@ index 4552856e7a88c..e998830deddc4 100644
                      <widget class="QLabel" name="bindToIPLabel">
                       <property name="text">
                        <string>Basic.Settings.Advanced.Network.BindToIP</string>
-@@ -7276,7 +7289,7 @@
+@@ -7276,17 +7289,17 @@
                       </property>
                      </widget>
                     </item>
@@ -299,7 +299,37 @@ index 4552856e7a88c..e998830deddc4 100644
 +                   <item row="2" column="1">
                      <widget class="QComboBox" name="bindToIP"/>
                     </item>
-                    <item row="3" column="1">
+-                   <item row="3" column="1">
++                   <item row="4" column="1">
+                     <widget class="QCheckBox" name="enableNewSocketLoop">
+                      <property name="text">
+                       <string>Basic.Settings.Advanced.Network.EnableNewSocketLoop</string>
+                      </property>
+                     </widget>
+                    </item>
+-                   <item row="4" column="1">
++                   <item row="5" column="1">
+                     <widget class="QCheckBox" name="enableLowLatencyMode">
+                      <property name="enabled">
+                       <bool>false</bool>
+@@ -7296,7 +7309,7 @@
+                      </property>
+                     </widget>
+                    </item>
+-                   <item row="3" column="0">
++                   <item row="4" column="0">
+                     <spacer name="horizontalSpacer_7">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+@@ -7309,7 +7322,7 @@
+                      </property>
+                     </spacer>
+                    </item>
+-                   <item row="2" column="1">
++                   <item row="3" column="1">
+                     <widget class="QCheckBox" name="dynBitrate">
+                      <property name="toolTip">
+                       <string>Basic.Settings.Output.DynamicBitrate.TT</string>
 @@ -7620,6 +7633,7 @@
    <tabstop>reconnectRetryDelay</tabstop>
    <tabstop>reconnectMaxRetries</tabstop>
