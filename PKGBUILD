@@ -7,9 +7,9 @@ _pkgname=crashplan
 pkgver=10.2.1
 _pkgtimestamp=15252000061021
 _pkgbuild=16
-pkgrel=1
+pkgrel=2
 pkgdesc="An business online/offsite backup solution"
-url="http://www.crashplan.com/business"
+url="https://www.crashplan.com/en-us/small-business/"
 arch=('x86_64')
 license=('custom')
 depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils' 'slf4j')

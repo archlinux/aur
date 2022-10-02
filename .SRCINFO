@@ -1,8 +1,8 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
 	pkgver = 10.2.1
-	pkgrel = 1
-	url = http://www.crashplan.com/business
+	pkgrel = 2
+	url = https://www.crashplan.com/en-us/small-business/
 	arch = x86_64
 	license = custom
 	makedepends = cpio
