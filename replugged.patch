@@ -143,7 +143,7 @@ index 770e195a..e542774c 100644
    }
  
 diff --git a/src/Powercord/index.js b/src/Powercord/index.js
-index 1ff93b59..2a0d9529 100644
+index 019e304c..0de3d47e 100644
 --- a/src/Powercord/index.js
 +++ b/src/Powercord/index.js
 @@ -253,6 +253,32 @@ class Powercord extends Updatable {
@@ -256,7 +256,7 @@ index 147e02e9..948f2b02 100644
    // Discord Server
    DISCORD_INVITE: 'B2TcnXV9Rg',
 diff --git a/src/patcher.js b/src/patcher.js
-index 372e41f5..a8d59761 100644
+index 372e41f5..eaace1cf 100644
 --- a/src/patcher.js
 +++ b/src/patcher.js
 @@ -7,7 +7,7 @@ const { existsSync, unlinkSync } = require('fs');
@@ -268,3 +268,11 @@ index 372e41f5..a8d59761 100644
  require.main.filename = join(discordPath, 'app_bootstrap/index.js');
  
  const electron = require('electron');
+@@ -30,7 +30,6 @@ function setAppUserModelId (...args) {
+   appSetAppUserModelId.apply(this, args);
+   if (!_patched) {
+     _patched = true;
+-    require('./updater.win32');
+   }
+ }
+ 
