@@ -1,19 +1,21 @@
 pkgbase = zstd-static
-	pkgdesc = Zstandard - Fast real-time compression algorithm
-	pkgver = 1.4.9
+	pkgdesc = Zstandard - Fast real-time compression algorithm (with static lib)
+	pkgver = 1.5.2
 	pkgrel = 1
-	url = http://www.zstd.net/
+	url = https://www.zstd.net/
 	arch = x86_64
 	license = BSD
+	license = GPL2
+	checkdepends = gtest
 	makedepends = cmake
 	depends = zlib
 	depends = xz
 	depends = lz4
-	provides = zstd
+	provides = zstd=1.5.2
+	provides = libzstd.so=1-64
 	conflicts = zstd
 	options = staticlibs
-	source = https://github.com/facebook/zstd/archive/v1.4.9.tar.gz
-	sha256sums = acf714d98e3db7b876e5b540cbf6dee298f60eb3c0723104f6d3f065cd60d6a8
+	source = https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz
+	sha256sums = 7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0
 
 pkgname = zstd-static
-
