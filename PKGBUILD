@@ -4,7 +4,7 @@ _realname=memtest86
 pkgname=$_realname-efi
 epoch=1
 pkgver=10.0build1000
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('any')
 url="https://www.memtest86.com"
@@ -24,8 +24,8 @@ sha512sums=('b08e6cf3cb9448d5ac7fb4ba7c6338d2037caebd16710f4c2897cfe73766d7dfba7
             'a8936ed4a1955d69251955b824cfdfc606c374d40509a767ee4e357e746947d5bf1bd6793e5a4224733907556375bee05c0dd27f8044604f136d84c9be365d42')
 
 prepare() {
-	7z x -y "$srcdir/memtest86-usb.img" > /dev/null
-	7z x -y "$srcdir/EFI System Partition.img" -oc:"$srcdir/$pkgname-$pkgver" > /dev/null
+	7z e -y "$srcdir/memtest86-usb.img" '*EFI System Partition*' > /dev/null
+	7z x -y "$srcdir/"*"EFI System Partition.img" -o"$srcdir/$pkgname-$pkgver" > /dev/null
 }
 
 package() {
