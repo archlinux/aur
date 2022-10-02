@@ -6,7 +6,7 @@ pkgbase = r-matrixmodels
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/MatrixModels_0.5-0.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/MatrixModels/MatrixModels_0.5-0.tar.gz
 	sha256sums = a87faf1a185219f79ea2307e6787d293e1d30bf3af9398e8cfe1e079978946ed
 
 pkgname = r-matrixmodels
