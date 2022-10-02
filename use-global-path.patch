@@ -1,0 +1,11 @@
+--- a/Source/PluginGui.h
++++ b/Source/PluginGui.h
+@@ -166,7 +166,7 @@ return options;
+     Array<File> allSbiFiles;
+ 
+ #if!JUCE_IOS
+-    File instrumentLoadDirectory = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("discoDSP").getChildFile("OPL"); // File();
++    File instrumentLoadDirectory = File::getSpecialLocation(File::globalApplicationsDirectory).getChildFile("share").getChildFile("opl-synth"); // File();
+     File instrumentSaveDirectory = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("discoDSP").getChildFile("OPL"); // File();
+ #endif
+ #if JUCE_IOS
