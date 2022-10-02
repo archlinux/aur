@@ -9,8 +9,8 @@ url="https://github.com/artur-shaik/wallabag-client"
 license=('MIT')
 makedepends=('python-setuptools' 'python-wheel')
 depends=('python-beautifulsoup4' 'python-pycryptodome' 'python-requests' 'python-click' 'python-click-spinner' 
- 'python-click-repl' 'python-pyxdg' 'python-colorama' 'python-setuptools' 'python-delorean' 'python-tzlocal'
- 'python-humanize' 'python-lxml' 'python-tabulate' 'python-packaging' 'python-babel' 'python-markdownify')
+ 'python-click-repl' 'python-pyxdg' 'python-colorama' 'python-setuptools' 'python-delorean' 'python-humanize'
+ 'python-lxml' 'python-tzlocal' 'python-tabulate' 'python-packaging' 'python-markdownify')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/w/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('50cf41bf54f3fe0ccf2238a0fb9a3a2b5bf4ede26925b5abad4d8dab23d2b70c')
