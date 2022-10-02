@@ -15,7 +15,6 @@ pkgbase = wallabag-client
 	depends = python-click-repl
 	depends = python-pyxdg
 	depends = python-colorama
-	depends = python-setuptools
 	depends = python-delorean
 	depends = python-humanize
 	depends = python-lxml
