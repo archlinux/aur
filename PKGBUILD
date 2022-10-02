@@ -23,7 +23,7 @@ makedepends=(
 	'make'
 	'nodejs'
 	'npm'
-	'python2'
+	'python'
 	'sed'
 )
 source=(
