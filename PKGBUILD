@@ -2,16 +2,24 @@
 # Contributor : Elvin L <elvin@eelviny.me>
 
 pkgname=rocrail
-pkgver=1621
-pkgrel=2.1
-pkgdesc="Rocrail - Innovative Model Railroad Control System"
+pkgver=03112022
+pkgrel=1
+pkgdesc="Innovative Model Railroad Control System"
 arch=('x86_64')
 url="http://wiki.rocrail.net/"
 license=('Proprietary')
-depends=('wxgtk2' 'libusb' 'wxgtk-common')
-makedepends=()
-source=("https://launchpad.net/rocrail/trunk/2.1/+download/Rocrail-$pkgver-archlinux-$arch.zip")
-md5sums=('dc8ebea1d8ee3a8b9d9e92a7db55760a')
+depends=('libusb' 'libsm' 'gtk3')
+makedepends=('curl')
+source=("https://wiki.rocrail.net/rocrail-snapshot/Debian/Rocrail-debian11-i64.zip")
+md5sums=('SKIP')
+
+pkgver() {
+  # get buildnumber
+  # curl -s https://wiki.rocrail.net/rocrail-snapshot/log.txt | head -n 1 | awk '{ print $1 }'
+  # get builddate
+  curl -s https://wiki.rocrail.net/rocrail-snapshot/ | grep -e '<a href="Debian/Rocrail-debian11-i64.zip"' | cut -d' ' -f 7 | rev | cut -c 1-8 | rev
+}
+
 
 package() {
   msg "Installing..."
