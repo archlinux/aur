@@ -1,0 +1,14 @@
+pkgbase = yj-bin
+	pkgdesc = CLI to convert between YAML, TOML, JSON, and HCL
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/sclevine/yj/releases
+	arch = x86_64
+	license = Apache
+	provides = yj
+	conflicts = yj
+	conflicts = yj-git
+	source = yj-5.1.0::https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
+	b2sums = efa71a2534846069478818d90266e350ae65021bb24661fcc6459cc60a0d81fdd0fe58ac3bf336ba799a6ae73d11405202c066ea54fcdfbb5d106d695bb41adf
+
+pkgname = yj-bin
