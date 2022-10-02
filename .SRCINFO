@@ -6,6 +6,8 @@ pkgbase = minfetch
 	arch = any
 	license = GPL
 	source = https://raw.githubusercontent.com/xXTacticalWaffleXx/minfetch/main/minfetch
+	source = https://github.com/xXTacticalWaffleXx/minfetch/raw/main/minfetch.1.gz
+	md5sums = d25d336f34b71b79b0e05d1966de39d3
 	md5sums = d25d336f34b71b79b0e05d1966de39d3
 
 pkgname = minfetch
