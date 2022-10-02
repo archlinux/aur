@@ -1,6 +1,6 @@
 pkgbase = furtherance
 	pkgdesc = Track your time without being tracked
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/lakoliu/furtherance
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = furtherance
 	depends = gtk4
 	depends = libadwaita
 	depends = sqlite
-	source = https://github.com/lakoliu/furtherance/archive/refs/tags/v1.5.4.tar.gz
-	sha256sums = 6c83947feccb521b4c23dde1321ae2776ffd7adad20fcbeb0a223ff0858878ed
+	source = https://github.com/lakoliu/furtherance/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 9bc237920417ace23b1719fff89bc979e1bc7d4c488d66125eaac7f1ee54c5f1
 
 pkgname = furtherance
