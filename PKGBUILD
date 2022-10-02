@@ -1,9 +1,9 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='lutris-wine-git'
-pkgver=0.75.r3.gb1e4b37
-pkgrel=1
+pkgver='0.75.4'
+pkgrel='1'
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/VHSgunzo/lutris-wine'
 license=('MIT')
 depends=('aria2' 'qt5-tools' 'xterm' 'xorg-fonts-100dpi' 'xorg-fonts-75dpi'
@@ -38,15 +38,15 @@ optdepends=('lib32-vulkan-radeon' 'vulkan-radeon' 'xf86-video-amdgpu'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/VHSgunzo/lutris-wine.git')
+source=("${pkgname}::git+https://github.com/VHSgunzo/lutris-wine.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd $srcdir/${pkgname%-git}
+    cd $srcdir/${pkgname}
     make DESTDIR="${pkgdir}" install
 }

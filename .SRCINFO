@@ -1,9 +1,9 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Easy launch of your Windows applications and games with Wine/Proton
-	pkgver = 0.75.r3.gb1e4b37
+	pkgver = 0.75.4
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = aria2
@@ -138,7 +138,7 @@ pkgbase = lutris-wine-git
 	optdepends = wine
 	provides = lutris-wine
 	conflicts = lutris-wine
-	source = git+https://github.com/VHSgunzo/lutris-wine.git
+	source = lutris-wine-git::git+https://github.com/VHSgunzo/lutris-wine.git
 	sha256sums = SKIP
 
 pkgname = lutris-wine-git
