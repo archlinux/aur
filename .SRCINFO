@@ -1,7 +1,7 @@
 pkgbase = wallabag-client
 	pkgdesc = Command line client for the self hosted read-it-later app Wallabag
-	pkgver = 1.8.2
-	pkgrel = 2
+	pkgver = 1.8.5
+	pkgrel = 1
 	url = https://github.com/artur-shaik/wallabag-client
 	arch = any
 	license = MIT
@@ -25,7 +25,7 @@ pkgbase = wallabag-client
 	depends = python-babel
 	depends = python-markdownify
 	options = !emptydirs
-	source = https://pypi.io/packages/source/w/wallabag-client/wallabag-client-1.8.2.tar.gz
-	sha512sums = bea109129bbdd6b577b86dc8256ce6119424fe288e7a0cce937f7377cf3f30e1f2904dcba5b5a1b74430698377ee4d40eb1d0de066569de8dac35afa4b8ad714
+	source = https://pypi.io/packages/source/w/wallabag-client/wallabag-client-1.8.5.tar.gz
+	sha256sums = 50cf41bf54f3fe0ccf2238a0fb9a3a2b5bf4ede26925b5abad4d8dab23d2b70c
 
 pkgname = wallabag-client
