@@ -1,6 +1,6 @@
 pkgbase = newsraft
 	pkgdesc = Feed reader with ncurses user interface
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 0
 	url = https://codeberg.org/grisha/newsraft
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = newsraft
 	depends = expat
 	depends = yajl
 	depends = gumbo-parser
-	source = https://codeberg.org/grisha/newsraft/archive/newsraft-0.10.tar.gz
-	sha256sums = 4ec6026650e40f6912d9cb5965d8eeb2c6c3092b276e29a0a954b578403ffc49
+	source = https://codeberg.org/grisha/newsraft/archive/newsraft-0.11.tar.gz
+	sha256sums = 37bb01dd46bda60cf3703d942646003f165448c4476e7c179354b5b042090344
 
 pkgname = newsraft
