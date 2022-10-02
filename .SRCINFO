@@ -1,6 +1,6 @@
 pkgbase = steam-boilr-gui
 	pkgdesc = Synchronize games from other platforms into your Steam library
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/PhilipK/BoilR
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = steam-boilr-gui
 	depends = mesa
 	depends = glu
 	provides = boilr-gui
-	source = https://github.com/PhilipK/BoilR/archive/refs/tags/v.1.5.0.tar.gz
+	source = https://github.com/PhilipK/BoilR/archive/refs/tags/v.1.5.1.tar.gz
 	source = boilr.png
 	source = boilr.desktop
-	sha256sums = c87bfe65fb9083c297ef2fd99b345bc634534a5660153e515494e268176d77d5
+	sha256sums = d3a30043995f7cfb77e9ec456bc31c10d4b1e74bff6f704f74c419f774fd0930
 	sha256sums = baab109c6311f05ddbf647aa384b42098db9308c27cb50537f99bb341930387f
 	sha256sums = c8e71371c9dc39db087e79d5a32df1ee0f4dd2cf5d069e38b491c3b9812d8424
 
