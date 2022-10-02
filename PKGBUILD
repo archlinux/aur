@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-uosc-git
 _gitname=uosc
-pkgver=4.0.1.r7.g18f5660
+pkgver=4.2.0.r0.g40b470f
 pkgrel=1
 pkgdesc='Feature-rich minimalist proximity-based UI for MPV player'
 arch=(x86_64)
@@ -12,6 +12,7 @@ license=(
 depends=(
   mpv
 )
+optdepends=('mpv-thumbfast: for showing thumbnails on-the-fly on seek')
 provides=(mpv-uosc)
 conflicts=(mpv-uosc)
 source=(
