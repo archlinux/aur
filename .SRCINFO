@@ -1,0 +1,13 @@
+pkgbase = neowofetch-git
+	pkgdesc = a combination of neofetch and uwufetch written in go
+	pkgver = r37.55c749c
+	pkgrel = 1
+	url = https://exhq.gay/neOwOfetch
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/exhq/neOwOfetch.git
+	sha256sums = SKIP
+
+pkgname = neowofetch-git
