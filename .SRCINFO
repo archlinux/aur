@@ -1,9 +1,10 @@
 pkgbase = leftwm-git
 	pkgdesc = Leftwm - A tiling window manager for the adventurer
 	pkgver = 0.4.0.r3.g1cc3a4d
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://github.com/leftwm/leftwm
+	install = readme.install
 	arch = i686
 	arch = x86_64
 	license = MIT

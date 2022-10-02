@@ -2,7 +2,7 @@
 # Maintainer: hertg <aur@her.tg>
 pkgname=leftwm-git
 pkgver=0.4.0.r3.g1cc3a4d
-pkgrel=3
+pkgrel=4
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
@@ -38,6 +38,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
+
+install='readme.install'
 
 package() {
   cd $pkgname/target/release
