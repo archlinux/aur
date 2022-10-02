@@ -4,43 +4,40 @@
 
 pkgname=ame
 _pkgname=amethyst
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
+_codename='Funky Fish'
 pkgdesc='A fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
-url="https://github.com/crystal-linux/$_pkgname"
+url="https://github.com/crystal-linux/${_pkgname}"
 license=('GPL3')
-source=("$_pkgname-$pkgver-$pkgrel::git+$url#tag=v$pkgver")
-sha256sums=('SKIP')
 depends=(
-    'git' 
-    'binutils' 
-    'fakeroot' 
-    'pacman-contrib' 
-    'vim' 
-    'expac' 
+    'git'
+    'pacman-contrib'
+    'vim'
+    'expac'
     'less'
 )
 makedepends=('cargo')
+source=("${_pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('d4174788608c34fe9eb5854b6c21a7b460930d567fe4262e492762a8377f5467')
 
 prepare() {
-    cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
-    export AMETHYST_CODENAME="Funky Fish"
+    export AMETHYST_CODENAME="${_codename}"
     cargo build --frozen --release
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
-    find target/release \
-        -maxdepth 1 \
-        -executable \
-        -type f \
-        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm 644 docs/CONFIG.md "${pkgdir}/usr/share/doc/${pkgname}/CONFIG.md"
 }
