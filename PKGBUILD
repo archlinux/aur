@@ -7,13 +7,14 @@ pkgdesc="Create licenses for your projects right from your terminal!"
 arch=('x86_64')
 url="https://github.com/nexxeln/license-generator"
 license=('MIT')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 md5sums=('4893275e1e08b10d9982acbf9cc39604')
-#md5sums=('adf6c93ac01bd0023dd30bb2bc85d9ae')
 validpgpkeys=('86395E99314F4E382517AF976558C915A20CDD93')
 
 prepare() {
+    cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
