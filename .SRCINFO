@@ -1,6 +1,6 @@
 pkgbase = cubiomes-viewer
 	pkgdesc = An efficient graphical Minecraft seed finder and map viewer
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/Cubitect/cubiomes-viewer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cubiomes-viewer
 	makedepends = gendesk
 	makedepends = qt5-tools
 	depends = qt5-base
-	source = https://github.com/Cubitect/cubiomes-viewer/releases/download/2.4.0/cubiomes-viewer-2.4.0-src.tar.gz
-	sha256sums = a48ac019a368c5b3af8daccf4ddcd97925baddfb5f4f00b9e953b7da266376a3
+	source = https://github.com/Cubitect/cubiomes-viewer/releases/download/2.5.0/cubiomes-viewer-2.5.0-src.tar.gz
+	sha256sums = 0eea88fef5ace6722775d67a09f8e671fa7bc514dd8d28620ff5e08f667e0a99
 
 pkgname = cubiomes-viewer
