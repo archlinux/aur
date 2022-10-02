@@ -1,6 +1,6 @@
 pkgbase = earth-wallpaper-nightly
 	pkgdesc = Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
-	pkgver = 1.8.4.r5.g8755e4d
+	pkgver = 1.8.5.r2.g7efc397
 	pkgrel = 0
 	url = https://jihulab.com/ambition-echo/earth_wallpaper
 	arch = x86_64
