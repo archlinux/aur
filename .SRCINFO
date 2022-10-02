@@ -1,0 +1,20 @@
+pkgbase = shm-modbus
+	pkgdesc = A collection of applications to simulate a shared memory based Modbus client
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/SHM_Modbus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = dump-shm
+	depends = modbus-rtu-client-shm
+	depends = modbus-tcp-client-shm
+	depends = shared-mem-random
+	depends = stdin-to-modbus-shm
+	depends = write-shm
+	source = git+https://github.com/NikolasK-source/SHM_Modbus.git#tag=v1.0.2
+	source = https://gist.githubusercontent.com/NikolasK-source/25f30f740396723501a51a4bc075ced7/raw/bcd66db1a4f65fd3657fa12fffda2ee8b3de19c9/shm-modbus
+	sha256sums = SKIP
+	sha256sums = 02c698aafa50d7774df6650e1f85c888140927556d95078fe512a1361be024de
+
+pkgname = shm-modbus
