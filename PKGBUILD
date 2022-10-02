@@ -3,7 +3,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=monolith
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='CLI to save web pages as single HTML files'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ license=(CC0-1.0)
 depends=(openssl)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('56e8b5a00b5cc01ab9ac9af4f8f4e398f014a172bb53faeb72d1f75ced04af4d002c92ac3b4015c6bc47d35a87f4c57151eda046021133d39805f41f391a0b3a')
+sha512sums=('47e3155fb6b28b5727536e049743ec80fece65111d17303904779b77260a6a1f483e9ef13edee466fe0e7809e18d510cef1dfd6a7501415b132eb9fe8c78971a')
 
 
 build() {
