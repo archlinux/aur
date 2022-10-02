@@ -1,3 +1,5 @@
 resources
 *.tar.*
 *.jar
+pkg/
+src/

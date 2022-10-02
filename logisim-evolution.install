@@ -14,7 +14,7 @@ pre_upgrade() {
 
   Please notice that this AUR repo is a build-from-source package.
 
-  However, binary version (the previous one) can be found as 'logisim-evolution-bin'.
+  The binary version can be found as 'logisim-evolution-bin'.
 
 
 EOF
