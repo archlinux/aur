@@ -1,0 +1,15 @@
+pkgbase = jube
+	pkgdesc = JUBE Benchmarking Environment
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://www.fz-juelich.de/jsc/jube
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	makedepends = git
+	depends = python
+	provides = jube=2.5.1
+	source = https://github.com/FZJ-JSC/JUBE/archive/refs/tags/REL-2.5.1.tar.gz
+	sha256sums = a8855f0cb3c3d3dab952ea70ce7dbe715f9fdd070a1ff3ecd9b9db147daf3fdd
+
+pkgname = jube
