@@ -1,7 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 
 #Configuration:
-_fragmant="${FRAGMENT:-#branch=dev}"
 pkgname=rizin-git
 pkgver=0.5.0
 pkgrel=1
@@ -17,7 +16,7 @@ depends=('sh' 'capstone' 'libcapstone.so' 'openssl' 'libzip' 'zlib'
          'libtree-sitter.so')
 provides=("rizin=${pkgver%.r*}")
 conflicts=('rizin')
-source=("$pkgname::git+https://github.com/rizinorg/rizin.git${_fragmant}")
+source=("$pkgname::git+https://github.com/rizinorg/rizin.git")
 md5sums=('SKIP')
 
 pkgver () {
