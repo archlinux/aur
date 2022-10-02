@@ -1,0 +1,4 @@
+post_upgrade() {
+	echo -e "\n\e[1;33mWarning:\e[0m When upgrading from a build without `lefthk` (basically anything before `0.4.0`) you need to completely restart `leftwm` in order to start the hotkey daemon proprerly. A `SoftReload` or `HardReload` will leave you with a session non responsive to keybinds but otherwise running well."
+	echo -e "\n\e[1;33mPlease reboot or exit to login/tty to restart `leftwm`.\e[0m"
+}
