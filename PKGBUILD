@@ -1,8 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=g4music
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc="Play your music"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/neithern/g4music"
@@ -10,23 +10,16 @@ license=('GPL3')
 depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'taglib' 'tracker3')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
-source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
-0344-add-dependencies-glib2.patch)
-b2sums=('1122a3e006575f496ba31edc7bd15ed718aa226660933eee6dcb74145ec3971f20a171b36424251648db23a492252c3ae98a53c319f6fa253971c43bb61d187f'
-        'e9df991df2864971ed35d7a00f456c082ac84fb238005afe0fe5ad306199a0acc3c2bb411029c6de003cd443c2205f4d300618946d91a5a80c0b92a872082ce8')
-
-prepare() {
-  cd "$pkgname-v$pkgver"
-  patch -p1 -i ../0344-add-dependencies-glib2.patch
-}
+source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
+b2sums=('8c9bade24788d54160a2e1a0be167107072a96d25c8fccc60765e3026ffcb2fc41b6c518925c76b5f14724636402341c0dac07cc2ce0eb3fee3e0237537ad6b0')
 
 build() {
-  arch-meson --buildtype release "$pkgname-v$pkgver" build
+  arch-meson "$pkgname-v$pkgver" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
