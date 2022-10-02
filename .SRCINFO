@@ -1,6 +1,6 @@
 pkgbase = biliup-app-bin
 	pkgdesc = Bilibili uploader, supports Windows, Linux, macOS.
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ForgQi/biliup-app
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = biliup-app-bin
 	depends = webkit2gtk
 	provides = biliup-app
 	conflicts = biliup-app
-	source = biliup-app_0.3.5_amd64.deb::https://github.com/ForgQi/biliup-app/releases/download/app-v0.3.5/biliup-app_0.3.5_amd64.deb
-	sha256sums = d0dd6c8f6f14a311a309e7ed4288280d85a4e9a7877e267ad043da7e8704e044
+	source = biliup-app_0.4.0_amd64.deb::https://github.com/ForgQi/biliup-app/releases/download/app-v0.4.0/biliup-app_0.4.0_amd64.deb
+	sha256sums = 05f8d092738caea32cb428b56a74aaa022a8f6f0abdbe1a69b0992174882f144
 
 pkgname = biliup-app-bin
