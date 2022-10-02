@@ -1,8 +1,8 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=nautilus-code-git
-pkgver=0.1+0+gb659237
+pkgver=0.4+0+g905db8f
 pkgrel=1
-pkgdesc="Adds right-click menu items to open current folder in VSCode or GNOME Builder"
+pkgdesc="Adds right-click menu items to open current folder in code editors"
 arch=(any)
 url="https://github.com/realmazharhussain/nautilus-code"
 license=('AGPL3')
