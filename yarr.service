@@ -1,0 +1,18 @@
+[Unit]
+Description = yet another rss reader
+After = network.target
+
+[Service]
+Type = simple
+User = yarr
+ExecStart = /usr/bin/yarr -db /var/lib/yarr/storage.db
+
+Restart = always
+RestartSec = 1
+
+StandardOutput = journal
+StandardError = journal
+SyslogIdentifier = yarr
+
+[Install]
+WantedBy = multi-user.target
