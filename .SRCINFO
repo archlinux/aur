@@ -1,7 +1,7 @@
 pkgbase = nautilus-code
-	pkgdesc = Adds right-click menu items to open current folder in VSCode or GNOME Builder
+	pkgdesc = Adds right-click menu items to open current folder in code editors
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realmazharhussain/nautilus-code
 	arch = any
 	license = AGPL3

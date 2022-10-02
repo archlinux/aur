@@ -2,8 +2,8 @@
 pkgname=nautilus-code
 __pkgver='0.4'
 pkgver=${__pkgver/-/+}
-pkgrel=1
-pkgdesc="Adds right-click menu items to open current folder in VSCode or GNOME Builder"
+pkgrel=2
+pkgdesc="Adds right-click menu items to open current folder in code editors"
 arch=(any)
 url="https://github.com/realmazharhussain/nautilus-code"
 license=('AGPL3')
