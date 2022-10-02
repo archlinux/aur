@@ -1,7 +1,7 @@
 pkgbase = python-trezor-agent-git
 	pkgdesc = Hardware-based SSH/PGP agent (Trezor/Keepkey/Ledger/OnlyKey/Jade)
-	pkgver = v0.14.4.r6.ge4d16a3
-	pkgrel = 3
+	pkgver = v0.14.5
+	pkgrel = 1
 	url = https://github.com/romanz/trezor-agent
 	arch = any
 	license = LGPL3
