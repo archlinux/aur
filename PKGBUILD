@@ -7,7 +7,7 @@
 pkgbase=arduino-noide
 pkgname=('arduino-noide-libs' 'arduino-noide-avr')
 pkgdesc="Arduino prototyping platform without the IDE"
-pkgver=1.6.8
+pkgver=1.8.19
 pkgrel=1
 arch=('any')
 url="http://arduino.cc/en/Main/Software"
