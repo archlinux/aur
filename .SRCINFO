@@ -1,6 +1,6 @@
 pkgbase = mergestat
 	pkgdesc = Query git repositories with SQL
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://app.mergestat.com/w/public
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mergestat
 	makedepends = help2man
 	depends = glibc
 	options = !lto
-	source = mergestat::git+https://github.com/mergestat/mergestat.git#commit=ee2c34250adada3ceae771177788f7f7439c64e3
+	source = mergestat::git+https://github.com/mergestat/mergestat.git#commit=ec3af79e5a3b70d329407a00fcda6c7013a04a46
 	source = git2go::git+https://github.com/libgit2/git2go.git
 	source = libgit2::git+https://github.com/libgit2/libgit2
 	b2sums = SKIP
