@@ -1,5 +1,7 @@
 # Maintainer: Geoff Hudson <geoff [at] sadcomputer [dot] co [dot] uk> Contributor: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr
 # <billyburly [at] gmail [dot] com>
+# Achilleas Koutsou <achilleas@koutsou.net>
+
 pkgname=crashplan-pro
 _pkgname=crashplan
 pkgver=10.2.0
