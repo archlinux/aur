@@ -71,8 +71,8 @@ prepare()
 {
   cd $srcdir/pcsx2
   git submodule update --init --recursive
-  patch --forward --strip=1 --input="${srcdir}/0001-QtHost.cpp-Fixed-Resources-dir.patch"
-  patch --forward --strip=1 --input="${srcdir}/0002-Added-QT-Desktop-file.patch"
+  git apply -3 "${srcdir}/0001-QtHost.cpp-Fixed-Resources-dir.patch"
+  git apply -3 "${srcdir}/0002-Added-QT-Desktop-file.patch"
 }
 
 pkgver()
