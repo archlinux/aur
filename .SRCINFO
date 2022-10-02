@@ -1,0 +1,21 @@
+pkgbase = python-xarray-einstats
+	pkgdesc = Stats, linear algebra and einops for xarray
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://einstats.python.arviz.org
+	arch = any
+	license = Apache
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python-scipy
+	depends = python-xarray
+	depends = python-pytest
+	optdepends = python-numba
+	optdepends = python-dask
+	optdepends = python-einops
+	source = python-xarray-einstats-0.3.0.tar.gz::https://github.com/arviz-devs/xarray-einstats/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 6231c6df75c2d0ef9e930be12897d0075383563f244832982c3a09544853def9
+
+pkgname = python-xarray-einstats
