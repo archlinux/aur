@@ -1,6 +1,6 @@
 # Maintainer: Magnus Schaaf <magnusschaaf plus arch at gmail dot com>
 pkgname=qgraf
-pkgver=3.6.4
+pkgver=3.6.5
 pkgrel=1
 pkgdesc="Feynman diagram generator for various types of QFT models"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('gcc-libs')
 makedepends=('gcc-fortran')
 source=("http://anonymous:aur@qgraf.tecnico.ulisboa.pt/links/$pkgname-$pkgver.tgz")
-sha256sums=('7997788082fc1a393a0db1c066567d55aea996e8350c2e7ff21945ddcb603e97')
+sha256sums=('648cc82bf3327a4c36d36847d3921fcfa5d7f73c1646241760db030abdc86c29')
 
 build() {
     sed -n 's/^!//p' "$pkgname-$pkgver.f08" > LICENSE
