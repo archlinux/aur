@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=6.0rc5
+pkgver=6.0rc7
 pkgrel=2
 pkgdesc='Linux'
-_srctag=v6.0-rc5
+_srctag=v6.0-rc7
 url="https://git.kernel.org/torvalds/h/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -21,7 +21,7 @@ source=(
   config         # the main kernel config file
   cs35l42-hda-no-acpi-dsd-csc3551.patch
   patch-realtek-um5302ta-quirk.patch
-  acp6x-um5302ta-quirk.patch
+  ASoC-amd-yc-Add-ASUS-UM5302TA-into-DMI-table.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,10 +29,10 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'ec58b63109b23d318af62b48a4f43e3042ddb45e71060c885d5d03f2cb3760b0'
+            '1e07bdd94abe73ac2074b151729cd9b73c7fa7a615a3a331a89dcb0da42649f8'
             '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82'
-            '132ece1b42f359fcbb4c97e96615747d34355f2f682efe744257f3310de77a98'
-            '25ec00e28f43db69b60714b749d12a482d8a47c8fce5bec04b64da2abd8948c6')
+            '9bb8bba7e33aa57b54f855d9dd788e9aa63e8c01526454694438cbaa22b1b7c5'
+            'c5e4e17c3e265710325d2af16bb1ba3b4a6e22f10677fef79ce7a22f91596bda')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

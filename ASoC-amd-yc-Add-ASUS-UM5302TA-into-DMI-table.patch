@@ -1,0 +1,39 @@
+From 4df5b13dec9e1b5a12db47ee92eb3f7da5c3deb5 Mon Sep 17 00:00:00 2001
+From: Xiaoyan Li <lxy.lixiaoyan@gmail.com>
+Date: Tue, 20 Sep 2022 15:14:34 -0500
+Subject: ASoC: amd: yc: Add ASUS UM5302TA into DMI table
+
+ASUS Zenbook S 13 OLED (UM5302TA) needs this quirk to get the built-in
+microphone working properly.
+
+Link: https://bugzilla.kernel.org/show_bug.cgi?id=216270
+Signed-off-by: Xiaoyan Li <lxy.lixiaoyan@gmail.com>
+Suggested-by: Mario Limonciello <mario.limonciello@amd.com>
+Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Link: https://lore.kernel.org/r/20220920201436.19734-2-mario.limonciello@amd.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/amd/yc/acp6x-mach.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/sound/soc/amd/yc/acp6x-mach.c b/sound/soc/amd/yc/acp6x-mach.c
+index e0b24e1daef3d..5eab3baf3573d 100644
+--- a/sound/soc/amd/yc/acp6x-mach.c
++++ b/sound/soc/amd/yc/acp6x-mach.c
+@@ -171,6 +171,13 @@ static const struct dmi_system_id yc_acp_quirk_table[] = {
+ 			DMI_MATCH(DMI_PRODUCT_NAME, "21J6"),
+ 		}
+ 	},
++	{
++		.driver_data = &acp6x_card,
++		.matches = {
++			DMI_MATCH(DMI_BOARD_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "UM5302TA"),
++		}
++	},
+ 	{}
+ };
+ 
+-- 
+cgit 
