@@ -1,0 +1,17 @@
+pkgbase = webos-cli-minimal
+	pkgdesc = Just the LG WebOS command line cli tool
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = http://webostv.developer.lge.com/sdk/installation/
+	arch = x86_64
+	license = custom:LG Software Development Kit License Agreement
+	license = APACHE
+	makedepends = unzip
+	conflicts = webos-cli
+	conflicts = webos-sdk
+	source = local:///webOS_SDK_TV_Installer_linux64_min.zip
+	source = cli.patch
+	sha256sums = SKIP
+	sha256sums = d4c42c1e624290b507f4ef56b09aa128b65eba0c1fedda902129aae99690dc4f
+
+pkgname = webos-cli-minimal

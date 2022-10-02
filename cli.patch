@@ -1,0 +1,264 @@
+diff --unified --recursive --text CLI/bin/ares "CLI (copy)/bin/ares"
+--- CLI/bin/ares	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares"	2020-05-20 17:52:16.884854393 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -16,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$CLI_ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-extend-dev "CLI (copy)/bin/ares-extend-dev"
+--- CLI/bin/ares-extend-dev	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-extend-dev"	2020-05-20 17:53:41.426428160 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares-extend-dev.js"
+@@ -16,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-device-info "CLI (copy)/bin/ares-device-info"
+--- CLI/bin/ares-device-info	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-device-info"	2020-05-20 17:53:41.426428160 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -16,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-generate "CLI (copy)/bin/ares-generate"
+--- CLI/bin/ares-generate	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-generate"	2020-05-20 17:53:56.949437936 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-inspect "CLI (copy)/bin/ares-inspect"
+--- CLI/bin/ares-inspect	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-inspect"	2020-05-20 17:54:03.515967689 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-install "CLI (copy)/bin/ares-install"
+--- CLI/bin/ares-install	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-install"	2020-05-20 17:54:16.745691752 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-launch "CLI (copy)/bin/ares-launch"
+--- CLI/bin/ares-launch	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-launch"	2020-05-20 17:54:20.165620399 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-novacom "CLI (copy)/bin/ares-novacom"
+--- CLI/bin/ares-novacom	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-novacom"	2020-05-20 17:54:23.328887740 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-package "CLI (copy)/bin/ares-package"
+--- CLI/bin/ares-package	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-package"	2020-05-20 17:54:27.048810126 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-server "CLI (copy)/bin/ares-server"
+--- CLI/bin/ares-server	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-server"	2020-05-20 17:54:32.388698676 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
+diff --unified --recursive --text CLI/bin/ares-setup-device "CLI (copy)/bin/ares-setup-device"
+--- CLI/bin/ares-setup-device	2020-02-05 13:56:34.000000000 +0000
++++ "CLI (copy)/bin/ares-setup-device"	2020-05-20 17:54:35.618631273 +0100
+@@ -1,7 +1,13 @@
+ #!/bin/bash
+
+ # the folder this script is in
+-BIN_DIR=$(cd "`dirname "$0"`" && pwd)
++SOURCE="${BASH_SOURCE[0]}"
++while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
++  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
++  SOURCE="$(readlink "$SOURCE")"
++  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
++done
++BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+ # node script we are going to run
+ SCRIPT="${BIN_DIR}/ares.js"
+@@ -19,4 +19,4 @@
+ export NODE_PATH=$(cd "${BIN_DIR}/../lib" && pwd)
+
+ # run node script with imported params
+-PATH="$BIN_DIR:$PATH" node "$SCRIPT" "$@"
++$BIN_DIR/$ARCH/node "$SCRIPT" "$@"
