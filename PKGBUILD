@@ -2,7 +2,7 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=9.0.0.post1
+pkgver=9.2.0
 pkgrel=1
 epoch=1
 _name=Pillow-SIMD
@@ -19,7 +19,8 @@ optdepends=('libwebp: for webp images'
             'python-pyqt5: for the ImageQt module')
 makedepends=('python-setuptools' 'libwebp' 'tk')
 checkdepends=('python-pytest')
-source=("https://github.com/uploadcare/pillow-simd/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/uploadcare/pillow-simd/archive/refs/tags/$pkgver.tar.gz")
+#source=("https://github.com/uploadcare/pillow-simd/archive/refs/tags/v$pkgver.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 conflicts=('python-pillow')
 provides=("python-pillow=$pkgver")
@@ -46,4 +47,4 @@ package() {
   install -m644 -t "$pkgdir/usr/include/python$_py3basever/" src/libImaging/*.h
 }
 
-sha256sums=('044f8e23f042e7f8f3a4a19b28a97d11c8a873afc1c056c596c904dcd52f25df')
+sha256sums=('1c3b4bce334fbb234be506cd3146a93714f9de43032aaf807ff47a20d6b42c95')
