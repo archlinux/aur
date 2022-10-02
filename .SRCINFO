@@ -1,13 +1,14 @@
 pkgbase = cura-5-bin
 	pkgdesc = Uncompressed version of Ultimaker Cura 5.1
 	pkgver = 5.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
 	provides = cura
+	conflicts = cura-5-bin-beta
 	options = !strip
 	source = https://github.com/Ultimaker/Cura/releases/download/5.1.0/Ultimaker-Cura-5.1.0-linux.AppImage
 	source = cura5.sh
