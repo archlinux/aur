@@ -4,9 +4,9 @@
 
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=10.2.0
-_pkgtimestamp=15252000061020
-_pkgbuild=14
+pkgver=10.2.1
+_pkgtimestamp=15252000061021
+_pkgbuild=16
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -22,7 +22,7 @@ source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('7fa6dc6c5338501bc4f63f2915f0d5420de25197'
+sha1sums=('983159b784a12c83b9a0e4cac92e8af8dec3e3d1'
           'f73e2b1155744594303d81b394031159e248654c'
           'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
