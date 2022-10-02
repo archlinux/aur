@@ -2,7 +2,7 @@
 # Contributor: magodo <wztdyl@sina.com>
 
 pkgname=aztfy
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Bring existing Azure resources under Terraform's management"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('glibc')
 optdepends=('terraform')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6cb8b470748fc91307bfafd71a49a47892eaf04ce6706db32d059d7fb902059c')
+sha256sums=('3cc9d79892c428a69b196c30302b6c773177be6830e28c3ef2116753eb13ee91')
 
 prepare() {
 	cd "$pkgname-$pkgver"
