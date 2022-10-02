@@ -9,7 +9,7 @@ url='http://webostv.developer.lge.com/sdk/installation/'
 # TODO: Licence
 license=('custom:LG Software Development Kit License Agreement' 'APACHE')
 makedepends=('unzip')
-conflicts=('webos-cli' 'webos-sdk')
+conflicts=('webos-cli' 'webos-sdk' 'webos-ide')
 source=(
   'local:///webOS_SDK_TV_Installer_linux64_min.zip'
   'cli.patch'
