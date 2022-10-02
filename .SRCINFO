@@ -1,6 +1,6 @@
 pkgbase = pxdo-git
 	pkgdesc = Python script for querying X-server information and manipulating X-windows
-	pkgver = c77d029
+	pkgver = 5a6536b
 	pkgrel = 1
 	url = https://github.com/xhsdf/rtile
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = pxdo-git
 	depends = python-xlib
 	provides = pxdo
 	conflicts = pxdo
-	source = pxdo-git::git://github.com/xhsdf/pxdo.git
+	source = pxdo-git::git+https://github.com/xhsdf/pxdo.git
 	md5sums = SKIP
 
 pkgname = pxdo-git
-

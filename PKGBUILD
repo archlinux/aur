@@ -1,5 +1,5 @@
 pkgname=pxdo-git
-pkgver=c77d029
+pkgver=5a6536b
 pkgrel=1
 pkgdesc="Python script for querying X-server information and manipulating X-windows"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,7 @@ provides=('pxdo')
 # The git repo is detected by the 'git:' or 'git+' beginning. The branch
 # '$pkgname' is then checked out upon cloning, expediating versioning:
 #source=('git+https://github.com/falconindy/expac.git'
-source=("$pkgname"::'git://github.com/xhsdf/pxdo.git')
+source=("$pkgname"::'git+https://github.com/xhsdf/pxdo.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
