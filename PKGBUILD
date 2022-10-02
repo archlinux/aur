@@ -1,7 +1,7 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver-git
 _pkgname=onedriver
-pkgver=0.12.0.r1.g73d9320
+pkgver=0.12.0.r11.g65be12a
 pkgrel=1
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
@@ -31,13 +31,24 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
 
   go build \
+    -v \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-X main.commit=$(git rev-parse HEAD) -linkmode external -extldflags \"${LDFLAGS}\""
+    -ldflags "-X main.commit=$(git rev-parse HEAD) -linkmode external -extldflags \"${LDFLAGS}\"" \
+    ./cmd/onedriver
 
-  make $_pkgname-launcher
+  export CGO_CFLAGS="-Wno-deprecated-declarations ${CFLAGS}"
+
+  go build \
+    -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-X main.commit=$(git rev-parse HEAD) -linkmode external -extldflags \"${LDFLAGS}\"" \
+    ./cmd/onedriver-launcher
 }
 
 package() {
