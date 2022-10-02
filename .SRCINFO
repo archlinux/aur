@@ -1,6 +1,6 @@
 pkgbase = openasar-bin
 	pkgdesc = Open-source alternative of Discord desktop's app.asar, needs Discord installed
-	pkgver = nightly
+	pkgver = 20221002193939
 	pkgrel = 1
 	epoch = 3
 	url = https://openasar.dev/
@@ -12,7 +12,7 @@ pkgbase = openasar-bin
 	optdepends = discord-development: Development channel Discord
 	conflicts = discord_arch_electron
 	conflicts = discord-canary-electron-bin
-	source = https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar
+	source = 20221002193939.asar::https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar
 	source = openasar-install.hook
 	source = openasar-install.sh
 	source = openasar-remove.hook

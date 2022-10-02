@@ -2,7 +2,8 @@
 
 pkgname=openasar-bin
 _pkgname=OpenAsar
-pkgver=nightly
+pkgver=20221002193939
+_pkgver=nightly
 pkgrel=1
 epoch=3
 pkgdesc="Open-source alternative of Discord desktop's app.asar, needs Discord installed"
@@ -15,7 +16,7 @@ optdepends=('discord: Stable channel Discord'
             'discord-development: Development channel Discord')
 conflicts=('discord_arch_electron'
            'discord-canary-electron-bin')
-source=("https://github.com/GooseMod/$_pkgname/releases/download/$pkgver/app.asar"
+source=(""$pkgver".asar::https://github.com/GooseMod/$_pkgname/releases/download/$_pkgver/app.asar"
         "openasar-install.hook"
         "openasar-install.sh"
         "openasar-remove.hook"
@@ -40,7 +41,7 @@ pkgver() {
 }
 
 package() {
-install -Dm 644 app.asar "$pkgdir"/usr/share/openasar/app.asar
+install -Dm 644 "$pkgver".asar "$pkgdir"/usr/share/openasar/app.asar
 install -Dm 644 openasar-install.hook "$pkgdir"/usr/share/libalpm/hooks/openasar-install.hook
 install -Dm 744 openasar-install.sh "$pkgdir"/usr/share/openasar/openasar-install.sh
 install -Dm 644 openasar-remove.hook "$pkgdir"/usr/share/libalpm/hooks/openasar-remove.hook
