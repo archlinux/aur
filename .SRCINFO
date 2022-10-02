@@ -1,6 +1,6 @@
 pkgbase = photobroom-git
 	pkgdesc = Photos managing tool
-	pkgver = v1.5.2.r748.g014c12417
+	pkgver = v1.6.0.r1.gb2c24ad5e
 	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = photobroom-git
 	makedepends = magic_enum
 	makedepends = qt6-tools
 	makedepends = imagemagick
+	makedepends = libwebp
 	depends = exiv2
 	depends = qt6-base
 	depends = dlib
@@ -22,7 +23,7 @@ pkgbase = photobroom-git
 	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=bf447aeb3bf57680f0c257f9d77ea7f5ef90b0ec
 	source = qml-colorpicker::git+https://github.com/rshest/qml-colorpicker.git#commit=5967b3e38033794f54d66c57a03f9a356df0dc03
 	source = face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
-	source = github_api::git+https://github.com/Kicer86/github_api.git#commit=32355e98c154d6f1f8cda309dfbe87cda2459d74
+	source = github_api::git+https://github.com/Kicer86/github_api.git#commit=4080d1a357ac5271f0871d9c077cd56491a32430
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
