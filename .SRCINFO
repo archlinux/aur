@@ -1,6 +1,6 @@
 pkgbase = maya-bifrost
 	pkgdesc = Autodesk Maya Bifrost Plugin
-	pkgver = 2.4.0.0
+	pkgver = 2.5.1.0
 	pkgrel = 1
 	url = https://area.autodesk.com/bifrost/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = maya-bifrost
 	depends = maya>=2023
 	depends = maya<2024.0
 	options = !strip
-	source = manual://Bifrost2023-2.4.0.0-2.4.0.0-1.x86_64.rpm
-	sha256sums = 781e5c87fc3c0abd47f5e060d98959583ff2018e46b28048bbf8f6b6a5b28a92
+	source = manual://Bifrost2023-2.5.1.0-2.5.1.0-1.x86_64.rpm
+	sha256sums = 0f50176d10157b09a0e4e2fe48fc3cf82571f7e5b8824b278c1eeccfc7d1abbe
 
 pkgname = maya-bifrost
