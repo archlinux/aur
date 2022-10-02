@@ -1,7 +1,7 @@
 pkgbase = r-ragg
 	pkgdesc = Graphic Devices Based on AGG
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ragg
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = r-ragg
 	depends = r-textshaping
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ragg_1.2.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/ragg_1.2.3.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 3b6151c93a79093f9e638448db8abf88a57fd7b1e1093867cc0f6b492bbf83e0
+	sha256sums = 976da0007ef0d4dbadda4734727b539671b65c1eff4ff392d734f4e2c846f2b2
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-ragg
