@@ -1,7 +1,7 @@
 pkgbase = swhkd-git
 	pkgdesc = A display server independent hotkey daemon inspired by sxhkd.
-	pkgver = .552.g1b6cf27
-	pkgrel = 2
+	pkgver = 1.2.1.r17.g022466e
+	pkgrel = 1
 	url = https://github.com/waycrate/swhkd
 	arch = x86_64
 	license = BSD
@@ -12,6 +12,8 @@ pkgbase = swhkd-git
 	depends = polkit
 	conflicts = swhkd-musl-git
 	source = swhkd::git+https://github.com/waycrate/swhkd.git
+	source = swhkd-vim::git+https://github.com/waycrate/swhkd-vim.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = swhkd-git
