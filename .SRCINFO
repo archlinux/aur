@@ -1,6 +1,6 @@
 pkgbase = r-arrow
 	pkgdesc = Integration to 'Apache' 'Arrow'
-	pkgver = 9.0.0.1
+	pkgver = 9.0.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=arrow
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = r-arrow
 	optdepends = r-withr
 	optdepends = libcurl-compat
 	optdepends = openssl
-	source = https://cran.r-project.org/src/contrib/arrow_9.0.0.1.tar.gz
-	sha256sums = ec3586c533eda28225979a762ff35f404b8a1e270fde1c806b8eb4b08db772ed
+	source = https://cran.r-project.org/src/contrib/arrow_9.0.0.2.tar.gz
+	sha256sums = 7c94a591f6262928a6c0b420ee5063199c453818094710f8c900441e27597484
 
 pkgname = r-arrow
