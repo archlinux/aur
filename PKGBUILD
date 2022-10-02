@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="https://trenchbroom.github.io/"
 license=("GPLv3")
 
-makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb")
+makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb" "zip")
 depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
 conflicts=("trenchbroom")
 provides=("trenchbroom")
