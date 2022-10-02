@@ -6,6 +6,7 @@ pkgbase = json-search-git
 	arch = aarch64
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = json-c
 	source = git+https://github.com/cosmo-ray/json-search.git
 	sha256sums = SKIP

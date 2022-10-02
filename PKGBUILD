@@ -14,7 +14,7 @@ pkgver() {
 	 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-makedepends=(gcc make)
+makedepends=(gcc make git)
 
 depends=(json-c)
 
