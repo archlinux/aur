@@ -1,4 +1,4 @@
-# Maintainer: Geoff Hudson <geoff [at] sadcomputer [dot] co [dot] uk> Contributor: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr 
+# Maintainer: Geoff Hudson <geoff [at] sadcomputer [dot] co [dot] uk> Contributor: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
@@ -22,7 +22,7 @@ source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/
         crashplan-pro_upgrade.path)
 sha1sums=('7fa6dc6c5338501bc4f63f2915f0d5420de25197'
           'f73e2b1155744594303d81b394031159e248654c'
-          'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'          
+          'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
           '0dfbf0ef3df2ad386419def132c28d63560f6e4e')
 options=(!strip)
@@ -35,7 +35,7 @@ build() {
   echo "  - https://support.code42.com/Terms_and_conditions/Legal_terms_and_conditions/CrashPlan_for_Small_Business_EULA"
   echo ""
 
-  
+
 
   cat <<EOF > install.vars
 TARGETDIR=/opt/$_pkgname
@@ -84,8 +84,8 @@ package() {
   install -D -m 755 $srcdir/upgrade.sh bin/upgrade.sh
 
   # We need to change the name for now
-  ln -sf "/opt/$_pkgname/bin/Code42Service" $pkgdir/opt/crashplan/bin/CrashPlanService 
-  ln -sf "/opt/$_pkgname/bin/desktop.sh" $pkgdir/opt/crashplan/bin/CrashPlanDesktop 
+  ln -sf "/opt/$_pkgname/bin/Code42Service" $pkgdir/opt/crashplan/bin/CrashPlanService
+  ln -sf "/opt/$_pkgname/bin/desktop.sh" $pkgdir/opt/crashplan/bin/CrashPlanDesktop
   ln -sf "/opt/$_pkgname/bin/service.sh" $pkgdir/opt/crashplan/bin/CrashPlanEngine
 
   # systemd unit
