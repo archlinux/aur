@@ -7,7 +7,7 @@
 
 pkgbase=odamex-git
 pkgname=odamex-git
-pkgver=10.2.0.r35.g40a7a8496
+pkgver=10.2.0.r46.g729e3ce6a
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -40,7 +40,7 @@ pkgver() {
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
-_submodlibs=(curl zlib libpng fltk protobuf miniupnp jsoncpp)
+_submodlibs=(fltk protobuf miniupnp jsoncpp)
 
 prepare() {
 	cd odamex-git
