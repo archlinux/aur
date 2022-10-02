@@ -1,9 +1,9 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=heroic-gogdl
-_basever=0.3
-pkgver=0.3+r13
-pkgrel=3
+_basever=0.4
+pkgver=0.4+r0
+pkgrel=1
 _commit=a55e3aae0f3c8d0674be7807cc5a8f82098b6094
 pkgdesc="GOG Downloading module for Heroic Games Launcher"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  echo "$_basever+r$(git rev-list --count e80c181..$_commit)"
+  echo "$_basever+r$(git rev-list --count v$_basever..$_commit)"
 }
 
 build() {
