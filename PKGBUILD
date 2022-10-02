@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${_pkgname}"
+  # Rationale: https://aur.archlinux.org/packages/rofi-bluetooth-git#comment-845300
   sed -i 's/rofi_command=.*/rofi_command="rofi -dmenu -p"/' rofi-bluetooth
 }
 
