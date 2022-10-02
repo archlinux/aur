@@ -1,6 +1,6 @@
 pkgbase = python-bioservices
 	pkgdesc = Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers
-	pkgver = 1.10.1
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://github.com/cokelaer/bioservices
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-bioservices
 	depends = python-requests-cache
 	depends = python-xmltodict
 	depends = python-suds
-	source = python-bioservices-1.10.1.tar.gz::https://github.com/cokelaer/bioservices/archive/refs/tags/v1.10.1.tar.gz
-	sha256sums = 3e90184bc4d597010c73acfaaccbce0e0ddcc80b8aaebe303014d97395e98ef0
+	source = python-bioservices-1.10.3.tar.gz::https://github.com/cokelaer/bioservices/archive/refs/tags/v1.10.3.tar.gz
+	sha256sums = 7a6ed5a0a834fc92f91b809e66eb186a5a410b38b5fa1dd741d52c654e6f8fa6
 
 pkgname = python-bioservices
