@@ -1,13 +1,13 @@
 pkgbase = gowin-eda
-	pkgver = 1.9.8.07
+	pkgver = 1.9.8.08
 	pkgrel = 1
 	url = http://www.gowinsemi.com.cn/faq.aspx
 	arch = x86_64
 	license = unknown
-	source = http://cdn.gowinsemi.com.cn/Gowin_V1.9.8.07_linux.tar.gz
+	source = http://cdn.gowinsemi.com.cn/Gowin_V1.9.8.08_linux.tar.gz
 	source = gowin-eda-ide.desktop
 	source = gowin-eda-programmer.desktop
-	sha256sums = 3fa7bdff0a3065429ff11de2a7f739659eae027d3a2c9d0dc0d47782449db11b
+	sha256sums = af66d8828d70f6313342c8e58686aaeb4e6cd4a7e6110130b09ce2a772bb1141
 	sha256sums = b508c7f10382a3ada34ee1797163c448559b1993898422f096c5381fd4abc7a6
 	sha256sums = 8f0a73964ae79785a5d79983887e436f6fce5626abc5ced5c7a300f67d90f2bc
 
