@@ -27,7 +27,7 @@ pkgbase = rizin-git
 	depends = libtree-sitter.so
 	provides = rizin=0.5.0
 	conflicts = rizin
-	source = rizin-git::git+https://github.com/rizinorg/rizin.git#branch=dev
+	source = rizin-git::git+https://github.com/rizinorg/rizin.git
 	md5sums = SKIP
 
 pkgname = rizin-git
