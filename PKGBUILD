@@ -1,29 +1,30 @@
-# Maintainer: avisy <994931954@qq.com>
+# Maintainer: zzy-ac <zzy-ac@qq.com>
 
 pkgname=listen1
-pkgver=2.1.5
+pkgver=2.26.2
 pkgrel=1
-pkgdesc="One for all free music in China"
-arch=('x86_64')
-url="https://listen1.github.io/listen1/"
+pkgdesc="  One for all free music in China"
+arch=("x86_64")
+url="https://github.com/listen1/listen1_desktop"
 license=('MIT')
-makedepends=('p7zip')
-noextract=("Listen1_${pkgver}_linux_x86_64.AppImage")
-options=("!strip")
-source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/Listen1_${pkgver}_linux_x86_64.AppImage" 
-"https://raw.githubusercontent.com/listen1/listen1/master/listen1/res/icon.png")
-sha256sums=('833166dfaac778e113223d2c8ffad0e30e02cc845d2a92db3a0449f983643ad2'
-'6cabb778a29488ab33bb320b63e40a59f680707b475e58f5ffe7d72cf9788834')
+depends=('electron13')
+source=(
+  https://github.com/$pkgname/$pkgname\_desktop/releases/download/v$pkgver/$pkgname\_$pkgver\_linux_amd64.deb)
+sha256sums=('31fd195ef7ad2b1a48c9864b49467170554284774e3ce6b1f6e2cfa15cb43356')
 
-
-package() {
-    cd "${srcdir}"
-    mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
-    mv "icon.png" "listen1.png"
-    7z x "${srcdir}/listen1.AppImage" listen1.desktop
-    sed -i 's/AppRun/env DESKTOPINTEGRATION=no "\/opt\/appimages\/listen1.AppImage" %U/' listen1.desktop
-    install -Dm755 "listen1.AppImage" "${pkgdir}/opt/appimages/listen1.AppImage"
-    install -Dm644 "listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
-    install -Dm644 "listen1.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/listen1.png"
+build() {
+  mkdir -p "${srcdir}/dpkgdir"
+  mkdir -p "${srcdir}/dpkgdir/temp"
+  tar -xvf data.tar.xz -C "${srcdir}/dpkgdir"
+  mv ${srcdir}/dpkgdir/opt/Listen1/resources/app.asar ${srcdir}/dpkgdir/temp
+  rm -rf ${srcdir}/dpkgdir/usr/share/doc ${srcdir}/dpkgdir/opt/Listen1/
+  mv ${srcdir}/dpkgdir/temp ${srcdir}/dpkgdir/opt/Listen1/
+  echo -e '#!/bin/bash \nelectron13 /opt/Listen1/app.asar' > ${srcdir}/dpkgdir/opt/Listen1/listen1
+  chmod a+x ${srcdir}/dpkgdir/opt/Listen1/listen1
+  mkdir ${srcdir}/dpkgdir/usr/bin
+  cp ${srcdir}/dpkgdir/opt/Listen1/listen1 ${srcdir}/dpkgdir/usr/bin/listen1
 }
 
+package() {
+  cp -r "${srcdir}/dpkgdir"/* "${pkgdir}"
+} 
