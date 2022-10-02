@@ -2,30 +2,28 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.160702.ed0d906e956.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.160832.df7946f6497.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
-             'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
-             'rust' 'rust-bindgen' 'directx-headers-git')
+             'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
+             'git' 'ninja'
+             'directx-headers-git' 'rust' 'rust-bindgen')
 # vulkan-radeonはビルドできないため公式リポジトリのものを使用
-depends=('libdrm' 'libxcb' 'wayland' 'python'
-         'libclc' 'clang'
-         'libx11' 'libxshmfence' 'zstd'
-         'libelf' 'llvm-libs'
-         'expat'
-         'libxxf86vm' 'libxdamage' 'libomxil-bellagio' 'libunwind' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader'
-         'spirv-llvm-translator' 'spirv-tools' 'vulkan-radeon')
+depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
+         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
+         'libxcb' 'python' 'libclc' 'clang' 'libx11' 'systemd-libs' 'llvm-libs' 'compiler-rt'
+         'spirv-llvm-translator' 'vulkan-radeon')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
-            'opengl-man-pages: for the OpenGL API man pages'
-            'compiler-rt: opencl')
+            'opengl-man-pages: for the OpenGL API man pages')
 # vulkan-radeonをこのパッケージでビルドできないため､ここから外す
-provides=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
-          'opencl-driver' 'vulkan-driver' 'mesa-libgl' 'opengl-driver')
-conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
-           'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
+provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
+          'vulkan-mesa-layer' 'mesa-libgl' 'opengl-driver' 'opencl-driver' 'vulkan-driver')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
+           'vulkan-mesa-layer' 'mesa-libgl' 'vulkan-mesa')
+
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_nv'
@@ -85,40 +83,42 @@ build () {
 
     # ビルドできないためvulkan-driversからamdを外す(vulkan-radeon)
     meson setup mesa _build \
-        -D prefix=/usr \
-        -D sysconfdir=/etc \
-        -D b_ndebug=true \
-        -D platforms=auto \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
-        -D vulkan-drivers=intel,swrast,virtio-experimental \
-        -D vulkan-layers=device-select,intel-nullhw,overlay \
-        -D dri3=enabled \
-        -D egl=enabled \
-        -D gallium-extra-hud=true \
-        -D gallium-nine=true \
-        -D gallium-omx=bellagio \
-        -D gallium-va=enabled \
-        -D gallium-vdpau=enabled \
-        -D gallium-xa=enabled \
-        -D gallium-xvmc=enabled \
-        -D gbm=enabled \
-        -D gles1=enabled \
-        -D gles2=enabled \
-        -D glvnd=true \
-        -D glx=dri \
-        -D libunwind=enabled \
-        -D llvm=enabled \
-        -D lmsensors=enabled \
-        -D osmesa=true \
-        -D shared-glapi=enabled \
-        -D microsoft-clc=disabled \
-        -D valgrind=enabled \
-        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
-        -D gallium-rusticl=true \
-        -D opencl-spirv=true \
-        -D shader-cache=enabled \
-        -D rust_std=2021
-       
+       --wrap-mode=nofallback \
+       -D prefix=/usr \
+       -D sysconfdir=/etc \
+       -D buildtype=release \
+       -D b_lto=true \
+       -D b_ndebug=true \
+       -D platforms=auto \
+       -D gallium-drivers=auto \
+       -D vulkan-drivers=intel,intel_hasvk,swrast \
+       -D vulkan-rt-drivers=auto \
+       -D vulkan-layers=device-select,intel-nullhw,overlay \
+       -D dri3=enabled \
+       -D egl=enabled \
+       -D gallium-extra-hud=true \
+       -D gallium-nine=true \
+       -D gallium-omx=bellagio \
+       -D gallium-va=enabled \
+       -D gallium-vdpau=enabled \
+       -D gallium-xa=enabled \
+       -D gbm=enabled \
+       -D gles1=enabled \
+       -D gles2=enabled \
+       -D glvnd=true \
+       -D glx=dri \
+       -D libunwind=enabled \
+       -D llvm=enabled \
+       -D lmsensors=enabled \
+       -D osmesa=true \
+       -D shared-glapi=enabled \
+       -D microsoft-clc=disabled \
+       -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
+       -D gallium-rusticl=true \
+       -D opencl-spirv=true \
+       -D shader-cache=enabled \
+       -D rust_std=2021
+
     meson configure _build
     
     ninja $NINJAFLAGS -C _build
