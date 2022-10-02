@@ -8,7 +8,9 @@ pkgbase = gnome-shell-extension-fuzzy-app-search
 	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-extension-fuzzy-app-search
+	provides = gnome-fuzzy-app-search
 	conflicts = gnome-shell-extension-fuzzy-app-search
+	conflicts = gnome-fuzzy-app-search
 	source = git+https://gitlab.com/Czarlie/gnome-fuzzy-app-search.git#tag=v5.0.14
 	sha256sums = SKIP
 
