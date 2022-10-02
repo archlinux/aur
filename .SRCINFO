@@ -1,0 +1,14 @@
+pkgbase = ablescript
+	pkgdesc = The best programming language
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://git.ablecorp.us/ablescript/able-script
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = ablescript_cli-0.5.2.tar.gz::https://static.crates.io/crates/ablescript_cli/ablescript_cli-0.5.2.crate
+	b2sums = fa47dec49e0bd74f26f8dca12e8e6463a355e7849b11525333304564ad5eda559478a11e7ab2af83e8d11f05e15a211d0499428406075af484f4022c0a686893
+
+pkgname = ablescript
