@@ -1,6 +1,6 @@
 pkgbase = openmodelica-git
 	pkgdesc = The Open Source Modelica Suite
-	pkgver = 1.19.0.dev.r669.gc94e2ebbd9
+	pkgver = 1.20.0.dev.r320.g9cbaf6232e
 	pkgrel = 1
 	url = https://openmodelica.org
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = openmodelica-git
 	source = git+https://github.com/OpenModelica/OMFMISimulator-3rdParty.git
 	source = git+https://github.com/OpenModelica/OMTLMSimulator.git
 	source = git+https://github.com/OpenModelica/OMCompiler-3rdParty
-	source = git+https://github.com/OpenModelica/OMSens.git
+	source = git+https://github.com/OpenModelica/OMSens
 	source = git+https://github.com/OpenModelica/OMSens_Qt.git
 	md5sums = SKIP
 	md5sums = SKIP

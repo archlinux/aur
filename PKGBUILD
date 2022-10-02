@@ -2,7 +2,7 @@
 # Contributor: Xwang <xwaang1976@gmail.com>
 
 pkgname=openmodelica-git
-pkgver=1.19.0.dev.r669.gc94e2ebbd9
+pkgver=1.20.0.dev.r320.g9cbaf6232e
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("$pkgname::git+https://github.com/OpenModelica/OpenModelica"
         git+https://github.com/OpenModelica/OMFMISimulator-3rdParty.git
         git+https://github.com/OpenModelica/OMTLMSimulator.git
         git+https://github.com/OpenModelica/OMCompiler-3rdParty
-        git+https://github.com/OpenModelica/OMSens.git
+        git+https://github.com/OpenModelica/OMSens
         git+https://github.com/OpenModelica/OMSens_Qt.git)
 md5sums=('SKIP'
          'SKIP'
@@ -38,18 +38,22 @@ provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
 
 prepare() {
-    mkdir bin
-    ln -s /usr/bin/gfortran-9 bin/gfortran
+
+    #mkdir bin
+    #ln -s /usr/bin/gfortran-9 bin/gfortran
     export PATH="$PWD/bin:$PATH"
     cd $pkgname
+   
     git submodule init
+           
     git config submodule.OMOptim.url "$srcdir"/OMOptim
     git config submodule.libraries.url "$srcdir"/OMLibraries
     git config submodule.OMSimulator.url "$srcdir"/OMSimulator
     git config submodule.OMCompiler-3rdParty.url "$srcdir"/OMCompiler-3rdParty
     git config submodule.OMSens.url "$srcdir"/OMSens
     git config submodule.OMSens_Qt.url "$srcdir"/OMSens_Qt
-    git submodule update
+    git submodule update --remote 
+    
     cd OMOptim
     git submodule init
     git config submodule.common.url "$srcdir"/OpenModelica-common
@@ -64,13 +68,20 @@ prepare() {
     git submodule init
     git config submodule.common.url "$srcdir"/OpenModelica-common
     git submodule update
-    cd ..
-    sed -i '18 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_painter_command.h
-    sed -i '16 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_null_paintdevice.h
-    sed -i '30 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_painter.cpp
-    sed -i '14 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_widget_overlay.cpp
-    sed -i '14 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_compass_rose.cpp
-    sed -i '16 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_dial_needle.cpp
+    cd .. 
+
+    #cd OMSens
+    #python setup.py install
+    #cd ..
+
+
+
+    #sed -i '18 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_painter_command.h
+    #sed -i '16 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_null_paintdevice.h
+    #sed -i '30 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_painter.cpp
+    #sed -i '14 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_widget_overlay.cpp
+    #sed -i '14 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_compass_rose.cpp
+    #sed -i '16 i #include <qpainterpath.h>' OMPlot/qwt/src/qwt_dial_needle.cpp
 }
  
 pkgver() {
@@ -82,8 +93,8 @@ build() {
     cd $pkgname
     autoreconf -fi
     autoconf
-    export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
-    ./configure --prefix=/usr/ CC=clang --with-UMFPACK # CXX=clang++
+    #export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
+    ./configure --prefix=/usr/ --without-omc --with-UMFPACK CC=clang #CXX=clang++
     make
 }
  
