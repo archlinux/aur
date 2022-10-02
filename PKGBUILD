@@ -7,9 +7,9 @@ pkgdesc='High-performance on-the-fly thumbnailer for mpv'
 arch=(x86_64)
 url=https://github.com/po5/thumbfast
 license=()
+optdepends=('mpv-uosc: for displaying thumbnails automatically on seek')
 depends=(
   mpv
-  mpv-uosc
   socat
 )
 provides=(mpv-thumbfast)
