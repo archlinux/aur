@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver () {
   cd ${pkgname}
-  printf "%s.r%s.%s" "$(grep -oP "^  version: 'v\K[0-9.]*(?=(-git)',$)" meson.build)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep -oP "^  version: 'v\K[0-9.]*" meson.build)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -45,7 +45,6 @@ build() {
     -D use_sys_xxhash=enabled           \
     -D use_sys_openssl=enabled          \
     -D use_sys_tree_sitter=enabled      \
-    -D use_libuv=true                   \
     -D packager="AUR"                   \
     -D packager_version="${pkgver}-git"
   ninja -C build
