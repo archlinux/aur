@@ -1,0 +1,28 @@
+diff --git a/src/jbig2.cc b/src/jbig2.cc
+index 515c1ef..0bddb90 100644
+--- a/src/jbig2.cc
++++ b/src/jbig2.cc
+@@ -418,8 +418,11 @@ main(int argc, char **argv) {
+       if (pixl->d > 8) {
+         gray = pixConvertRGBToGrayFast(pixl);
+         if (!gray) return 1;
+-      } else {
++      } else if (pixl->d == 4 || pixl->d == 8) {
+         gray = pixClone(pixl);
++      } else {
++        fprintf(stderr, "Unsupported input image depth: %d\n", pixl->d);
++        return 1;
+       }
+       if (up2) {
+         pixt = pixScaleGray2xLIThresh(gray, bw_threshold);
+@@ -432,6 +435,10 @@ main(int argc, char **argv) {
+     } else {
+       pixt = pixClone(pixl);
+     }
++    if (!pixt) {
++      fprintf(stderr, "Failed to convert input image to binary\n");
++      return 1;
++    }
+     if (verbose)
+       pixInfo(pixt, "thresholded image:");
+ 

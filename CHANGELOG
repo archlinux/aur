@@ -1,0 +1,7 @@
+v0.29-4:
+
+jbig2enc 0.29-4 contains a patch to set the dpi of images without dpi information. See here:
+https://github.com/agl/jbig2enc/pull/52/commits/cd6c1df2e3475237206385bf8a373bbe06932d86
+It won't do anything unless you use it, but it hasn't been tested.
+Edit the PKGBUILD to remove this patch ("dpi.patch") if you prefer.
+
