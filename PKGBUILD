@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.3358.r0.g92a9aa6d3
+pkgver=1.7.3360.r0.g5d3b3319a
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -45,7 +45,7 @@ depends=(
   soundtouch
   clang
   wayland
-  zstd-cmake
+  zstd
 )
 makedepends=(
   cmake
