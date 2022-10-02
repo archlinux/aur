@@ -1,0 +1,15 @@
+pkgbase = mpv-thumbfast-git
+	pkgdesc = High-performance on-the-fly thumbnailer for mpv
+	pkgver = r38.0017ff0
+	pkgrel = 1
+	url = https://github.com/po5/thumbfast
+	arch = x86_64
+	depends = mpv
+	depends = mpv-uosc
+	depends = socat
+	provides = mpv-thumbfast
+	conflicts = mpv-thumbfast
+	source = thumbfast::git+https://github.com/po5/thumbfast.git
+	sha256sums = SKIP
+
+pkgname = mpv-thumbfast-git
