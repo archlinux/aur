@@ -1,0 +1,5 @@
+/oci8-*.tgz
+/php-oci8-*.pkg.tar.xz
+/php-oci8-*.src.tar.gz
+/pkg/
+/src/
