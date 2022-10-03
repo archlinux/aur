@@ -21,7 +21,10 @@ else
         fi
     done
     rm -f Leapp_*_amd64.deb
-    wget https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb || echo "can't download https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb"  && exit 3
+    wget https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb
+    if [ $? -ne 0 ]; then
+        echo "can't download https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb"  && exit 3
+    fi
     sha512sum=$(sha512sum Leapp_${github_ver}_amd64.deb | awk '{printf $1}')
     cp PKGBUILD.tpl PKGBUILD
     cp .SRCINFO.tpl .SRCINFO
