@@ -1,6 +1,6 @@
 pkgbase = jqp
 	pkgdesc = A TUI playground to experiment with jq
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/noahgorstein/jqp
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jqp
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = jqp-0.2.0.tar.gz::https://github.com/noahgorstein/jqp//archive/v0.2.0.tar.gz
-	sha256sums = 3ef3228c9b5344cf382531c3b57623cd5a5c364234b7fec5852cf9d7e2694bd8
+	source = jqp-0.3.0.tar.gz::https://github.com/noahgorstein/jqp/archive/v0.3.0.tar.gz
+	sha256sums = b4e57b1c859f658b24934afd2835e9a5fbddff8404fa7a200d64e55d10665acb
 
 pkgname = jqp
