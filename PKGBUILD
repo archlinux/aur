@@ -1,4 +1,4 @@
-# Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
+# Maintainer: George Hilliard <thirtythreeforty@gmail.com>
 pkgname=receivemidi
 _pkgname=ReceiveMIDI
 pkgver=1.2.0
