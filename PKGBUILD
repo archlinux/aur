@@ -1,7 +1,7 @@
 # Maintainer: Louise <louise dot aur at mailbox dot org>
 
 pkgname=twinejs-standalone
-pkgver=2.4.1
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="an open-source tool for telling interactive, nonlinear stories"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/klembot/twinejs/releases/download/${pkgver}/Twine-${
         "https://twinery.org/icons/twine.svg"
         "twinejs.desktop")
 
-md5sums=('1594cc5d1163dedb67a467ada5c8e4cf'
+md5sums=('48bb2ac9e7696216bd41c7622cd1dca2'
          '3697bac4f363f894cf3ef707cc36b7b5'
          '71705539c71923a8464240a8cb3e567f')
 
