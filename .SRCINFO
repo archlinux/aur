@@ -1,7 +1,7 @@
 pkgbase = python-dlx
 	pkgdesc = Implementation of Donald Knuth's Dancing Links algorithm
 	pkgver = 1.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/dlx/
 	arch = x86_64
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = python-dlx
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	source = dlx-1.0.4.tar.gz::https://files.pythonhosted.org/packages/source/d/dlx/dlx-1.0.4.tar.gz
 	b2sums = 819c8bea96187dff42c6377200ec8be337a1201367cb33a9c2b3a9b152f1fcb90eb69bd255e3dc164611ac787904c5c5512325b1d0c4e309b0911f9777fd18b1
 
