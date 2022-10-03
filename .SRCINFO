@@ -1,0 +1,19 @@
+pkgbase = candyvim-git
+	pkgdesc = CandyVim WIP
+	pkgver = 0.1.0.r0.g1fa5a54
+	pkgrel = 1
+	url = https://github.com/mrshmllow/CandyVim
+	arch = any
+	makedepends = git
+	depends = neovim
+	depends = lua
+	depends = git
+	depends = fzf
+	depends = npm
+	depends = cargo
+	source = candyvim-git::git+https://github.com/mrshmllow/CandyVim.git
+	source = git+https://github.com/wbthomason/packer.nvim
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = candyvim-git
