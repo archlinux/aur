@@ -1,0 +1,13 @@
+diff --git a/src/ClimatologyOverlayFactory.cpp b/src/ClimatologyOverlayFactory.cpp
+index ad40891..0648f31 100644
+--- a/src/ClimatologyOverlayFactory.cpp
++++ b/src/ClimatologyOverlayFactory.cpp
+@@ -28,6 +28,8 @@
+ #include <wx/wx.h>
+ #include <wx/glcanvas.h>
+ 
++#include <GL/glx.h>
++
+ #ifdef __WXOSX__
+ # include <OpenGL/OpenGL.h>
+ # include <OpenGL/gl3.h>
