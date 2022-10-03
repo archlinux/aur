@@ -2,7 +2,7 @@
 # Maintainer: Gustav Sörnäs <gustav at sornas dot net>
 
 pkgname=mum-git
-pkgver=r688.b396bb8
+pkgver=r698.fe7f460
 pkgrel=1
 pkgdesc="A mumble client/daemon pair"
 arch=('x86_64')
