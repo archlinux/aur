@@ -2,7 +2,7 @@
 
 _pkgname=cwtch-server
 pkgname=cwtch-server-git
-pkgver=1.4.4.r0.gd748752
+pkgver=1.4.5.r0.gae0aa7a
 pkgrel=1
 pkgdesc="Server for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ sha512sums=('SKIP'
 pkgver() {
     cd "$srcdir/$_pkgname"
     ( set -o pipefail
-        git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags 2>/dev/null | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
