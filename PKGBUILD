@@ -1,8 +1,9 @@
 # Maintainer: Brendan Szymanski <hello@bscubed.dev>
+# Co-Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22061.40d581c0f
+pkgver=r22095.61399de5d
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -28,7 +29,8 @@ depends=('desktop-file-utils'
          'sdl2'
          'shared-mime-info'
          'zlib'
-         'zstd')
+         'zstd'
+         'enet')
 makedepends=('boost'
              'catch2'
              'clang'
@@ -39,6 +41,7 @@ makedepends=('boost'
              'nlohmann-json'
              'robin-map')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
+        'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/kinetiknz/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
@@ -79,6 +82,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -89,7 +93,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in {inih,cubeb,dynarmic,libressl,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt}; 
+    for submodule in {inih,cubeb,dynarmic,libressl,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet}; 
     do
         git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
