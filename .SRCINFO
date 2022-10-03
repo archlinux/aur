@@ -7,7 +7,6 @@ pkgbase = ferium-git
 	license = MPL2
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
 	depends = bzip2
 	provides = ferium
 	conflicts = ferium-gui-bin
