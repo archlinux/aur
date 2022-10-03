@@ -1,18 +1,17 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
-pkgname=rlr-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r25.5fd3169
+pkgname=rlr-git
+pkgver=r29.26ca7b5
 pkgrel=1
 pkgdesc="interactive pixel screen ruler and protractor"
 arch=('any')
 url="https://github.com/epilys/rlr"
 license=('GPL')
-makedepends=('git' 'cargo') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+${url}" "${pkgname%-git}.desktop")
-sha256sums=('SKIP'
-            '7f659ea7e8cb794963ff6881294a8aba388c33bc10c7e14c1ecf58fb241386e7')
+source=("${pkgname%-git}::git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -36,5 +35,9 @@ package() {
 	# binary
 	install -Dm0755 "${srcdir}/${pkgname%-git}/target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin/"
 	# desktop file
-	install -Dm644 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+	# png icon
+	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
+	# svg icon
+	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.png"
 }

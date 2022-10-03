@@ -1,6 +1,6 @@
 pkgbase = rlr-git
 	pkgdesc = interactive pixel screen ruler and protractor
-	pkgver = r25.5fd3169
+	pkgver = r29.26ca7b5
 	pkgrel = 1
 	url = https://github.com/epilys/rlr
 	arch = any
@@ -10,8 +10,6 @@ pkgbase = rlr-git
 	provides = rlr
 	conflicts = rlr
 	source = rlr::git+https://github.com/epilys/rlr
-	source = rlr.desktop
 	sha256sums = SKIP
-	sha256sums = 7f659ea7e8cb794963ff6881294a8aba388c33bc10c7e14c1ecf58fb241386e7
 
 pkgname = rlr-git
