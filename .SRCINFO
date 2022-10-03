@@ -24,7 +24,7 @@ pkgbase = waterfox-g5-bin
 	conflicts = waterfox-g5
 	source = waterfox-g5.desktop
 	source = https://cdn1.waterfox.net/waterfox/releases/G5.0/Linux_x86_64/waterfox-G5.0.tar.bz2
-	sha256sums = ad8eb0b7315251eb6d4f0184f4cba537a46a070783c16d2fccf33fb31a85242c
+	sha256sums = 9a212c170a9d1841d4679ad31e1a3ac3d282f460806216653ef76884228277c6
 	sha256sums = 62f06981c2e2e5abace5949b65c8f6e55f6cce86df04528b03313dad03eaa520
 
 pkgname = waterfox-g5-bin
