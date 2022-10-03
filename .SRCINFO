@@ -1,7 +1,7 @@
 pkgbase = mum-git
 	pkgdesc = A mumble client/daemon pair
-	pkgver = r686.c8039b0
-	pkgrel = 2
+	pkgver = r688.b396bb8
+	pkgrel = 1
 	url = https://github.com/mum-rs/mum.git
 	arch = x86_64
 	license = MIT

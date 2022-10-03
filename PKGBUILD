@@ -2,8 +2,8 @@
 # Maintainer: Gustav Sörnäs <gustav at sornas dot net>
 
 pkgname=mum-git
-pkgver=r686.c8039b0
-pkgrel=2
+pkgver=r688.b396bb8
+pkgrel=1
 pkgdesc="A mumble client/daemon pair"
 arch=('x86_64')
 url="https://github.com/mum-rs/mum.git"
@@ -25,24 +25,28 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo build --locked --release --target-dir=target
 
-    # which bash &>/dev/null && ./target/release/mumctl completions bash > mumctl.bash
-    # which fish &>/dev/null && ./target/release/mumctl completions fish > mumctl.fish
-    # which zsh &>/dev/null && ./target/release/mumctl completions zsh > mumctl.zsh
+    ./target/release/mumctl completions bash > mumctl.bash
+    ./target/release/mumctl completions fish > mumctl.fish
+    ./target/release/mumctl completions zsh > mumctl.zsh
 }
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    cargo test --locked --release --target-dir=target
+    RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo test --locked --release --target-dir=target
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
 
-    # which bash &>/dev/null && install -Dm 644 mumctl.bash "${pkgdir}/usr/share/bash-completion/completions/mumctl"
-    # which fish &>/dev/null && install -Dm 644 mumctl.fish "${pkgdir}/usr/share/fish/completions/mumctl.fish"
-    # which zsh &>/dev/null && install -Dm 644 mumctl.zsh "${pkgdir}/usr/share/zsh/site-functions/_mumctl"
+    install -Dm 644 mumctl.bash "${pkgdir}/usr/share/bash-completion/completions/mumctl"
+    install -Dm 644 mumctl.fish "${pkgdir}/usr/share/fish/completions/mumctl.fish"
+    install -Dm 644 mumctl.zsh "${pkgdir}/usr/share/zsh/site-functions/_mumctl"
 
-    install -Dm 755 target/release/mumctl -t "${pkgdir}/usr/bin"
-    install -Dm 755 target/release/mumd -t "${pkgdir}/usr/bin"
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 644 documentation/mumctl.1 "${pkgdir}/usr/share/man/man1/mumctl.1"
+    install -Dm 644 documentation/mumd.1 "${pkgdir}/usr/share/man/man1/mumd.1"
+    install -Dm 644 documentation/mumdrc.5 "${pkgdir}/usr/share/man/man5/mumdrc.5"
+
+    install -Dm 755 target/release/mumctl "${pkgdir}/usr/bin/mumctl"
+    install -Dm 755 target/release/mumd "${pkgdir}/usr/bin/mumd"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
