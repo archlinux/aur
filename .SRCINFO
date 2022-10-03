@@ -1,12 +1,13 @@
 pkgbase = python-qiskit-ibm-runtime
 	pkgdesc = IBM Client for Qiskit Runtime
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-ibm-runtime
 	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-dateutil
 	depends = python-ibm-platform-services

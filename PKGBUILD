@@ -2,7 +2,7 @@
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=('any')
 url="https://github.com/Qiskit/qiskit-ibm-runtime"
@@ -21,6 +21,7 @@ depends=(
 makedepends=(
     'python-build'
     'python-installer'
+    'python-setuptools'
     'python-wheel'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
