@@ -1,0 +1,30 @@
+pkgbase = waterfox-g-bin
+	pkgdesc = Fifth generation of customizable privacy-conscious web browser.
+	pkgver = 5.0
+	pkgrel = 0
+	url = https://www.waterfox.net
+	arch = x86_64
+	license = MPL
+	depends = gtk3
+	depends = gtk2
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = ttf-font
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = alsa-lib: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
+	provides = waterfox-g=5.0
+	conflicts = waterfox-g
+	source = waterfox-g.desktop
+	source = https://cdn1.waterfox.net/waterfox/releases/G5.0/Linux_x86_64/waterfox-G5.0.tar.bz2
+	sha256sums = 09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259
+	sha256sums = 62f06981c2e2e5abace5949b65c8f6e55f6cce86df04528b03313dad03eaa520
+
+pkgname = waterfox-g-bin
