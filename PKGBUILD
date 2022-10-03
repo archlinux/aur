@@ -2,9 +2,9 @@
 _pkgname=pyDes
 pkgname=python-pydes
 pkgver=2.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Pure python implementation of DES and TRIPLE DES encryption algorithm"
-arch=('x86_64')
+arch=('any')
 url="https://pypi.org/project/pyDes/"
 license=('MIT')
 depends=('python')

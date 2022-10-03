@@ -1,9 +1,9 @@
 pkgbase = python-pydes
 	pkgdesc = Pure python implementation of DES and TRIPLE DES encryption algorithm
 	pkgver = 2.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pypi.org/project/pyDes/
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
