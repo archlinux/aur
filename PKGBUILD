@@ -5,8 +5,8 @@
 
 # Maintainer: Rob Bolton <rob.a.bolton@gmail.com>
 pkgname=es-shell
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 epoch=
 pkgdesc="Extensible Shell, a shell based on Plan 9's rc shell, influenced by functional languages."
 arch=('any')
@@ -26,7 +26,7 @@ install=es-shell.install
 changelog=
 source=("https://github.com/wryun/es-shell/releases/download/v$pkgver/es-$pkgver.tar.gz")
 noextract=()
-md5sums=("bf4db55b47bcc99892468b2e0aec0c9e")
+md5sums=("caa8347ee5bb38435cf8cf7e736e4a99")
 validpgpkeys=()
 
 build() {
