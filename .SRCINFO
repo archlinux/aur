@@ -8,7 +8,7 @@ pkgbase = neovim-orgmode-git
 	groups = neovim-plugin
 	license = MIT
 	makedepends = git
-	depends = neovim>=0.5
+	depends = neovim
 	provides = neovim-orgmode
 	conflicts = neovim-orgmode
 	source = neovim-orgmode-git::git+https://github.com/kristijanhusak/orgmode.nvim
