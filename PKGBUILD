@@ -11,23 +11,21 @@
 pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
-_basekernel=5.19
-pkgver=5.19.12
+_basekernel=6.0
+pkgver=6.0.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
+###        "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0102-drm_i915_psr_Use_full_update_In_case_of_area_calculation_fails.patch'
-        '0103-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch'
-        '0104-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
-        '0105-soundwire_intel-use_pm_runtime_resume_on_component_probe.patch'
+        '0102-soundwire_Raise_DEFAULT_PROBE_TIMEOUT_to_10000_ms.patch'
+        '0103-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -49,14 +47,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
-            '1a0cb578fae91e5f25e5c4af0b891b929816cdcee6647f6ffa2d4d9a8ffe4578'
-            'b85e50683dbee63cf1ac3526985f9ccb11034f5ad0b4bbf1546be157f59a7dd5'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
+            'e292cca649691917adfc25dbcdba199435c5b7e2e8fbb29348d0978066326f61'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            'c0a9c427b55bd1c13ccebbb503926c4ce30823fcec6d1a949fec981a4ec3a367'
-            'b8701a6316fb286b44adb703528462303f361d9c7af9667fb19553c4ac90816c'
+            '02b035fa598f9e281b9b5b645809d1bcacfa189c733dc291b4305c77cde52960'
             '2c2c72e5f72cf306d38f91869619c6f808b5f694341eeba398de1b0919bf755b'
-            'e96f2ac9e9f880451875a3aecbc10268ee8268494a8c9dce49291426d7896253'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '8e5c147591d14300a59ed8354a9d0746cf78650256558b45f964ca76eaed9a9f'
@@ -79,8 +74,8 @@ prepare() {
   cd "linux-${_basekernel}"
 
   # add upstream patch
-  msg "add upstream patch"
-  patch -p1 -i "../patch-${pkgver}"
+###  msg "add upstream patch"
+###  patch -p1 -i "../patch-${pkgver}"
 
   local src
   for src in "${source[@]}"; do
