@@ -2,15 +2,15 @@
 
 _pkgname=latestspigot
 pkgname="${_pkgname}-bin"
-pkgver=1.0.4
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A simple Go program that downloads and builds the latest spigot"
-arch=('i686' 'x86_64')
-url="https://github.com/ShayBox/$pkgname"
-license=('MIT')
-source+=($pkgname::$url/releases/download/$pkgver/LatestSpigot-linux)
-sha256sums=('a45fc65c47b68f2d2909e7abd571b1442f1df6a8d855ce4ce11a7dc3db076827')
+pkgdesc="A simple Rust program that downloads and builds the latest Spigot"
+arch=("x86_64")
+url="https://github.com/ShayBox/${_pkgname}"
+license=("MIT")
+source=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_x86_64-unknown-linux-musl.tar.gz")
+sha256sums=("b72bc0c4c21074389cb17a110331d002321294078212e088a9f8bb40867e9d46")
 
 package() {
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 latest_spigot "${pkgdir}/usr/bin/$_pkgname"
 }

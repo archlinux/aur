@@ -1,12 +1,11 @@
 pkgbase = latestspigot-bin
-	pkgdesc = A simple Go program that downloads and builds the latest spigot
-	pkgver = 1.0.4
+	pkgdesc = A simple Rust program that downloads and builds the latest Spigot
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/ShayBox/latestspigot-bin
-	arch = i686
+	url = https://github.com/ShayBox/latestspigot
 	arch = x86_64
 	license = MIT
-	source = latestspigot-bin::https://github.com/ShayBox/latestspigot-bin/releases/download/1.0.4/LatestSpigot-linux
-	sha256sums = a45fc65c47b68f2d2909e7abd571b1442f1df6a8d855ce4ce11a7dc3db076827
+	source = https://github.com/ShayBox/latestspigot/releases/download/2.0.0/latestspigot_2.0.0_x86_64-unknown-linux-musl.tar.gz
+	sha256sums = b72bc0c4c21074389cb17a110331d002321294078212e088a9f8bb40867e9d46
 
 pkgname = latestspigot-bin
