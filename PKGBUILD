@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-rainbow-cursor-theme
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Material Based Cursor Theme: Rainbow"
 arch=('any')
 url="https://github.com/ful1e5/Bibata_Cursor_Rainbow"
 license=('GPL3')
 depends=('libxcursor' 'libpng')
-makedepends=('python-clickgen')
+makedepends=('python-clickgen1')
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
@@ -17,18 +18,21 @@ sha256sums=('95aa35220093fec18255465c07aba65aa4f6571761690886eb1e99dd7f8155ad'
 prepare() {
   cd Bibata_Cursor_Rainbow-$pkgver
   mkdir -p bitmaps
-  bsdtar -xf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps
+  bsdtar -xf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps/
 
   rm -rf themes
 }
 
 build() {
-  cd Bibata_Cursor_Rainbow-$pkgver/builder
+  cd Bibata_Cursor_Rainbow-$pkgver
+
+  pushd builder
   make build_unix
+  popd
 }
 
 package() {
   cd Bibata_Cursor_Rainbow-$pkgver
   install -d "$pkgdir"/usr/share/icons
-  cp -r themes/Bibata-* "$pkgdir"/usr/share/icons
+  cp -r themes/Bibata-* "$pkgdir"/usr/share/icons/
 }
