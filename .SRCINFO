@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.16.3.59.g94bef9dd528
+	pkgver = 3.17.4
 	pkgrel = 1
 	url = https://gitlab.com/petsc/petsc
 	install = petsc.install
@@ -15,7 +15,7 @@ pkgbase = petsc-git
 	makedepends = git
 	makedepends = cython
 	makedepends = chrpath
-	makedepends = hypre=2.23.0
+	makedepends = hypre=2.25.0
 	depends = openmpi
 	depends = lapack
 	depends = fftw
@@ -25,13 +25,13 @@ pkgbase = petsc-git
 	depends = python-numpy
 	depends = eigen>=3
 	depends = openblas
-	options = !staticlibs
-	source = git+https://gitlab.com/petsc/petsc.git#branch=release
-	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.16.3.tar.gz
+	options = staticlibs
+	source = git+https://gitlab.com/petsc/petsc.git#tag=v3.17.4
+	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.17.4.tar.gz
 	source = test_optdepends.sh
 	sha512sums = SKIP
-	sha512sums = ed58dd2f479b4177176f12aea55c8fd48a39e1f5105194896509d5e469095eb04c48405d4c062cc500b19e0b140a6984b482aa2a211b5fefc5be18d7071ec45a
-	sha512sums = e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8
+	sha512sums = 23773368dd0ffb77d12de1609f79c53e9a1e35d89f2696a3b2fdf02bf96adfde16e27feb1977159188f765a7697eb1f1a7947104aacf6c94471b5a23e1ff2936
+	sha512sums = af9c16c59915c1ddb03390bb0b97e8b7404fed200cd86f69cdf06fcd13f670bc3c3c7ddae527b621210408a01db0c55db249af1fc1082e284aa707d32b21ebcb
 
 pkgname = petsc-git
 	optdepends = boost: Free peer-reviewed portable C++ source libraries
@@ -55,8 +55,8 @@ pkgname = petsc-git
 	optdepends = suitesparse: Sparse matrix library
 	optdepends = superlu: Subroutines for sparsse linear systems
 	optdepends = libyaml: configuration files
-	provides = petsc=3.16.3
-	provides = petsc4py=3.16.3
+	provides = petsc=3.17.4
+	provides = petsc4py=3.17.4
 	conflicts = petsc
 
 pkgname = petsc-doc

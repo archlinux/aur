@@ -5,24 +5,25 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.16.3.59.g94bef9dd528
+pkgver=3.17.4
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/petsc/${_base}"
 license=('BSD')
-options=(!staticlibs)
+# DAMASK requires PETSc's static libraries
+options=(staticlibs)
 depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
          'python-mpi4py' "python-numpy" "eigen>=3" "openblas")
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
-             'git' 'cython' 'chrpath' "hypre=2.23.0")
-source=(git+${url}.git#branch=release
+             'git' 'cython' 'chrpath' "hypre=2.25.0")
+source=(git+${url}.git#tag=v3.17.4
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
         test_optdepends.sh)
 sha512sums=('SKIP'
-            'ed58dd2f479b4177176f12aea55c8fd48a39e1f5105194896509d5e469095eb04c48405d4c062cc500b19e0b140a6984b482aa2a211b5fefc5be18d7071ec45a'
-            'e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8')
+            '23773368dd0ffb77d12de1609f79c53e9a1e35d89f2696a3b2fdf02bf96adfde16e27feb1977159188f765a7697eb1f1a7947104aacf6c94471b5a23e1ff2936'
+            'af9c16c59915c1ddb03390bb0b97e8b7404fed200cd86f69cdf06fcd13f670bc3c3c7ddae527b621210408a01db0c55db249af1fc1082e284aa707d32b21ebcb')
 install=petsc.install
 
 _config=linux-c-opt
@@ -117,7 +118,8 @@ build() {
     --with-shared-libraries=1
     --with-zlib=1
     --with-petsc4py=1
-    --with-scalar-type=complex
+    # Disabled for DAMASK
+    # --with-scalar-type=complex
     --with-single-library=1
     " $(sh ${srcdir}/test_optdepends.sh)")
 
@@ -128,11 +130,10 @@ build() {
   make DESTDIR=${srcdir}/tmp install
 }
 
-# check() {
-#   cd "${srcdir}"/"${_base}"
-#   PETSC_DIR="${srcdir}"/"${_base}" PYTHONPATH="${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH}" make check
-#   exit
-# }
+check() {
+  cd "${srcdir}"/"${_base}"
+  PETSC_DIR="${srcdir}"/"${_base}" PYTHONPATH="${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH}" make check
+}
 
 package_petsc-git() {
   optdepends=(
@@ -211,6 +212,6 @@ package_petsc-doc () {
   [[ -d ${pkgdir}/${_install_dir}/share/doc ]] && \
     rm -fr "${pkgdir}"/"${_install_dir}"/share/doc
   mkdir -p "${pkgdir}"/"${_install_dir}"/share/doc
-  cp -r "${srcdir}/${_base}-${_mainver}/docs" \
+  cp -r "${srcdir}/${_base}-"*"/docs" \
      "${pkgdir}"/"${_install_dir}"/share/doc/${_base}
 }

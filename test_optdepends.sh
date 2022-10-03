@@ -53,8 +53,16 @@ if [ -f "$(find_so libboost_mpi.so)" ]; then
 fi;
 
 # CGNS: Recording and recovering computer data
-if [ -f "$(find_so libcgns.so)" ]; then
+CGNS_LIB="$(find_so libcgns.so)"
+if [ -f "${CGNS_LIB}" ] && [ -n "$(nm -D /usr/lib/libcgns.so | grep cgp_open | cut -d" " -f3)" ]; then
+    # CGNS_INC="$(find_inc "cgnslib.h" "cgns")"
+    # CONFOPTS+=" -I${CGNS_INC}"
+    # CONFOPTS+=" ${CGNS_LIB}"
 	CONFOPTS="${CONFOPTS} --with-cgns=1"
+    # CONFOPTS+=" --with-cgns-lib=${CGNS_LIB}"
+	# CONFOPTS+=" --with-cgns-include=${CGNS_INC}"
+else
+    CONFOPTS="${CONFOPTS} --with-cgns=0"
 fi
 
 # eigen: Lightweight C++ template library for vector and
