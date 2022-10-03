@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('libxcursor' 'libpng')
 makedepends=('python-clickgen>=2.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c27c40ffde4338cccf71d8ba8977be745dfdfd9caa7753587c72ead021858f19')
 
 prepare() {

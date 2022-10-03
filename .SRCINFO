@@ -9,5 +9,7 @@ pkgbase = bibata-cursor-theme
 	depends = libxcursor
 	depends = libpng
 	options = !strip
+	source = bibata-cursor-theme-2.0.0.tar.gz::https://github.com/ful1e5/Bibata_Cursor/archive/v2.0.0.tar.gz
+	sha256sums = c27c40ffde4338cccf71d8ba8977be745dfdfd9caa7753587c72ead021858f19
 
 pkgname = bibata-cursor-theme
