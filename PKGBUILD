@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-wip-git
-pkgver=0.7.r98.g1dede1e
+pkgver=0.9.r15.g1190e30
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator. Booster WIP branch.'
 arch=(x86_64)
