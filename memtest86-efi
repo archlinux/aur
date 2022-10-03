@@ -238,11 +238,7 @@ update() {
 	_mount_esp "$esp_partition" "$esp_mount_path"
 
 	case $choice in
-		1) # Update files in $esp_mount_path/
-			_common_install "$esp_mount_path" "$memtest86_esp_bin"
-		;;
-
-		2|3|4) # Update files in ${esp_mount_path}${memtest86_esp_path}/
+		1|2|3|4) # Update files in ${esp_mount_path}${memtest86_esp_path}/
 			_common_install "${esp_mount_path}${memtest86_esp_path}" "$memtest86_esp_bin"
 		;;
 	esac
