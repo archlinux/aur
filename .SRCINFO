@@ -1,6 +1,6 @@
 pkgbase = ocaml-core_extended
 	pkgdesc = Extra components that are not as closely vetted or as stable as Core
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/core_extended
@@ -11,7 +11,7 @@ pkgbase = ocaml-core_extended
 	depends = ocaml
 	depends = ocaml-bin_prot
 	depends = ocaml-core
-	depends = ocaml-core_kernel
+	depends = ocaml-core_unix
 	depends = ocaml-fieldslib
 	depends = ocaml-ppx_jane
 	depends = ocaml-re2
@@ -20,9 +20,9 @@ pkgbase = ocaml-core_extended
 	depends = ocaml-migrate-parsetree
 	depends = ocaml-ppxlib
 	depends = ocaml-re
+	depends = ocaml-record_builder
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.14/files/core_extended-v0.14.0.tar.gz
-	sha256sums = a7bf672f617891b10e405f1edb1c2ddc1db9e5b3169bd278bbb75b84d57d23ce
+	source = https://ocaml.janestreet.com/ocaml-core/v0.15/files/core_extended-v0.15.0.tar.gz
+	sha256sums = 875fcea0352c10e3ae6e96ddd86136ffd8e24cb19e56193463aa22c292c737d5
 
 pkgname = ocaml-core_extended
-
