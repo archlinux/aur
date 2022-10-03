@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-flagfox
 	pkgdesc = Flagfox addon for Firefox
-	pkgver = 6.1.54
+	pkgver = 6.1.55
 	pkgrel = 1
 	url = https://addons.mozilla.org/de/firefox/addon/flagfox/
 	arch = any
 	groups = firefox-addons
 	license = GPLV3
 	depends = firefox
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3996798/flagfox-6.1.54.xpi
-	md5sums = bd1b9ccca56d00be5232992424bc1631
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/4009925/flagfox-6.1.55.xpi
+	md5sums = b55655bfb3c934b6053fc6c4a7bf07f9
 
 pkgname = firefox-extension-flagfox
