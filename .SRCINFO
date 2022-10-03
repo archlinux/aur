@@ -89,6 +89,7 @@ pkgbase = mcpelauncher-linux-git
 	depends_x86_64 = libxi
 	depends_x86_64 = libegl
 	depends_x86_64 = qt5-webengine
+	depends_x86_64 = libuv
 	makedepends_x86_64 = git
 	makedepends_x86_64 = cmake
 	makedepends_x86_64 = clang

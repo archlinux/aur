@@ -2,14 +2,14 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=v0.3.4.r2.g75ec84c
-pkgrel=2
+pkgver=v0.4.0.r2.g4c7dadf
+pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL3' 'custom')
 makedepends_x86_64=('git' 'cmake' 'clang')
-depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'systemd' 'libxi' 'libegl' 'qt5-webengine')
+depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'systemd' 'libxi' 'libegl' 'qt5-webengine' 'libuv')
 optdepends=('mcpelauncher-msa: Xbox Live support')
 provides=('mcpelauncher-client')
 conflicts=('mcpelauncher-client')
