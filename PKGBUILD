@@ -12,11 +12,11 @@ license=('Apache-2.0')
 provides=('NoCloudCLI')
 conflicts=('NoCloudCLI')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.3-r1/nocloud_0.2.3-r1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bd65014d1c20a7375548b8b51381a0a8dde6591af2b8420246ee549fa24734eb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.3-r11/nocloud_0.2.3-r11_Linux_arm64.tar.gz")
+sha256sums_aarch64=('2d60258561bd1911c20e96d1c01ad037b1a68d85899187425f9a8a80cb36c531')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.3-r1/nocloud_0.2.3-r1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('735c0bdd2e0dae31afd806203500a30db0010bb866647ee0d15bcb62d16642b4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.3-r11/nocloud_0.2.3-r11_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ccf3bac309c8e38c51db8ffd2a2fc7a9953c09cf24c941d4e3a8617de95e43ce')
 
 package() {
   install -Dm755 "./nocloud" "${pkgdir}/usr/bin/nocloud"
