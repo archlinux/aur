@@ -1,12 +1,11 @@
 pkgbase = latestpaper-bin
-	pkgdesc = A simple Go program that downloads the latest papermc
-	pkgver = 1.0.1
+	pkgdesc = A simple Rust program that downloads the latest PaperMC
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/ShayBox/latestpaper-bin
-	arch = i686
+	url = https://github.com/ShayBox/latestpaper
 	arch = x86_64
 	license = MIT
-	source = latestpaper-bin::https://github.com/ShayBox/latestpaper-bin/releases/download/1.0.1/LatestPaper-linux
-	sha256sums = 390af14ac9e4182aa588b194fbb883bf690c0a4506ce9ea9e52abf53f77d58ab
+	source = https://github.com/ShayBox/latestpaper/releases/download/2.0.0/latestpaper_2.0.0_x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 93442bdd24fed5151a8b9a34c254f3c15d65e454d63c594963cacf307298a826
 
 pkgname = latestpaper-bin
