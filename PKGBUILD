@@ -6,7 +6,7 @@
 pkgname=adwaita-icon-theme-41
 basename=adwaita-icon-theme
 pkgver=41.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME standard icons, version 41"
 url="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
 arch=(any)
@@ -44,5 +44,5 @@ package() {
   make DESTDIR="$pkgdir" install
   mv -v "${pkgdir}/usr/share/pkgconfig/adwaita-icon-theme.pc" "${pkgdir}/usr/share/pkgconfig/adwaita-icon-theme-41.pc"
   mv -v "${pkgdir}/usr/share/icons/Adwaita" "${pkgdir}/usr/share/icons/Adwaita41"
-  sed -i 's/^Name=Adwaita$/Name=Adwaita 41/' "${pkgdir}/usr/share/icons/Adwaita41/index.theme"
+  sed -i 's/^Name=Adwaita$/Name=Adwaita41/' "${pkgdir}/usr/share/icons/Adwaita41/index.theme"
 }
