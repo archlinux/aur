@@ -1,9 +1,10 @@
 pkgbase = die-plugins
 	pkgdesc = DISTRHO Imported Effect Plugins, Ardour's plugins without Ardour
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DISTRHO/DIE-Plugins
 	arch = x86_64
+	arch = aarch64
 	groups = lv2-plugins
 	groups = pro-audio
 	license = GPL2

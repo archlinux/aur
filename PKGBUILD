@@ -1,11 +1,12 @@
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _name=DIE-Plugins
 pkgname=${_name,,}
 pkgdesc="DISTRHO Imported Effect Plugins, Ardour's plugins without Ardour"
 pkgver=1.1
-pkgrel=2
-arch=(x86_64)
+pkgrel=3
+arch=(x86_64 aarch64)
 url="https://github.com/DISTRHO/$_name"
 license=(GPL2)
 groups=(lv2-plugins pro-audio)
