@@ -1,5 +1,5 @@
 pkgbase = external-editor-revived
-	pkgdesc = External Editor Revived is a Thunderbird MailExtension which allows editing emails in programs such as Vim, Neovim, Emacs and etc.
+	pkgdesc = External Editor Revived is a Thunderbird MailExtension which allows editing emails in programs such as Vim, Neovim, Emacs, etc.
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Frederick888/external-editor-revived
