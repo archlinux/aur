@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ruff
-pkgver=0.0.50
+pkgver=0.0.52
 pkgrel=1
 pkgdesc='Experimental Python linter written in Rust'
 arch=('x86_64')
@@ -11,9 +11,8 @@ depends=('python>=3.7')
 makedepends=('maturin' 'python-installer' 'python-wheel')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('3dc12693b3dbbe519040e58565c0ce2a70df32aa2ab399fcd53aaad9c8a9e58a')
+sha256sums=('9837889c2dae4f8925b381155b27ad83cc2480a5f930efdb49decb7d0efce478')
 
-## TODO: Handle git sources in prepare()
 prepare() {
 	cd "$pkgname-$pkgver"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
