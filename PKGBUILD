@@ -19,7 +19,7 @@ sha512sums=("06f46e111104df99cfa16c5b9a828eb8968fb63f2a03f4d67d59b4b884dc8d682bf
 prepare()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    patch -N -p 1 -i "${srcdir}"/merge-459.diff
+    patch -i "${srcdir}"/merge-459.diff -N -p 1
 }
 
 build()
@@ -31,6 +31,7 @@ build()
 package()
 {
     # Assure that the directories exist.
+    mkdir -p "${pkgdir}"/opt/"${pkgname}"/
     mkdir -p "${pkgdir}"/usr/bin/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
@@ -38,10 +39,16 @@ package()
     binaries=("haveno-apitest" "haveno-cli" "haveno-daemon" "haveno-desktop" "haveno-inventory" "haveno-monitor" "haveno-pricenode" "haveno-relay" "haveno-seednode" "haveno-statsnode")
 
     for binary in "${binaries[@]}"; do
-        install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"/"${binary}" "${pkgdir}"/usr/bin/
+        install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"/"${binary}" "${pkgdir}"/opt/"${pkgname}"/
+        ln -s "${pkgdir}"/opt/"${pkgname}"/"${binary}" "${pkgdir}"/usr/bin/"${binary}"
     done
+
+    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/lib/ "${pkgdir}"/opt/"${pkgname}"/
+    find "${pkgdir}"/opt/"${pkgname}"/lib/ -exec chmod 755 {} + -type d
+    find "${pkgdir}"/opt/"${pkgname}"/lib/ -exec chmod 644 {} + -type f
 
     # Install the documentation.
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    chmod -R 644 "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -exec chmod 755 {} + -type d
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -exec chmod 644 {} + -type f
 }
