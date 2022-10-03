@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RyuSAK
+Comment=RyuSAK
+GenericName=RyuSAK
+Exec=ryusak %U
+Icon=ryusak
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
