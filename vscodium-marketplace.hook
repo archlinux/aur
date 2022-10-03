@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vscodium
+
+[Action]
+Description = [vscodium-marketplace] Patching product.json...
+Exec = /usr/share/vscodium/resources/app/patch.sh
+When = PostTransaction

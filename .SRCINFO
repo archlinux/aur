@@ -1,0 +1,16 @@
+pkgbase = vscodium-insiders-marketplace
+	pkgdesc = Enable vscode marketplace in vscodium
+	pkgver = 1.72.0
+	pkgrel = 1
+	url = https://marketplace.visualstudio.com/vscode
+	install = vscodium-insiders-marketplace.install
+	arch = any
+	license = unknown
+	depends = vscodium-insiders
+	depends = sed
+	source = vscodium-marketplace.hook
+	source = patch.sh
+	sha512sums = 4b0101d3cdc48036bf264afe58ba1c2c2dc6852e24ed837b25f39a61f332145cf168910410ff6123f41a980c0991f31c4167ed5883ad576d046d6c421f110a0f
+	sha512sums = 75cfb55f0c47447ae17c1c0ab828141b6cddaf671477bcb44e5832b96104db9ac6660001782e9e58ea060f3e744541cd878f724e6114a40b46c0e59c714ed09a
+
+pkgname = vscodium-insiders-marketplace
