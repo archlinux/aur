@@ -1,7 +1,7 @@
 pkgbase = quickemu
 	pkgdesc = Quickly create and run optimised Windows, macOS and Linux desktop virtual machines.
 	pkgver = 4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/quickemu-project/quickemu
 	arch = any
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = quickemu
 	depends = zsync
 	depends = edk2-ovmf
 	depends = xdg-user-dirs
+	depends = socat
 	optdepends = quickgui: graphical user interface
 	optdepends = aria2: faster downloads
 	provides = quickemu
