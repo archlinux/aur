@@ -1,7 +1,7 @@
 pkgbase = drill-search
 	pkgdesc = Search files without indexing, but clever crawling
 	pkgver = 571+100+g04683dbf
-	pkgrel = 2
+	pkgrel = 3
 	url = https://drill.software
 	arch = x86_64
 	license = GPL2
@@ -17,6 +17,5 @@ pkgbase = drill-search
 	replaces = drill-search-gtk
 	source = git+https://github.com/yatima1460/Drill.git#commit=04683dbf0d40510543db748c0a3c1a88524c5f8d
 	sha256sums = SKIP
-	sha256sums = c47265e527c991f64dec6cbc152f1651e38f649ba598c07fb79a8be66e14474f
 
 pkgname = drill-search

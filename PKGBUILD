@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=drill-search
 pkgver=571+100+g04683dbf
-pkgrel=2
+pkgrel=3
 pkgdesc="Search files without indexing, but clever crawling"
 arch=('x86_64')
 url="https://drill.software"
@@ -12,8 +12,7 @@ _commit=04683dbf0d40510543db748c0a3c1a88524c5f8d
 source=("git+https://github.com/yatima1460/Drill.git#commit=$_commit")
 conflicts=("$pkgname-cli" "$pkgname-gtk")
 replaces=("$pkgname-cli" "$pkgname-gtk")
-sha256sums=('SKIP'
-            'c47265e527c991f64dec6cbc152f1651e38f649ba598c07fb79a8be66e14474f')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/Drill"
