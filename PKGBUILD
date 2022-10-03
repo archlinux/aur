@@ -1,6 +1,6 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=mosdns
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A DNS forwarder"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'go')
 optdepends=('v2ray-domain-list-community: geosite.dat'
             'v2ray-geoip: geoip.dat')
 backup=('etc/mosdns/config.yaml')
-_tag=9c93eb7b838d42744fd7b4bef9e240e0061b40c2 # git rev-parse "v${pkgver}"
+_tag=8f67782128af0f9887669e26102dec91c291b140 # git rev-parse "v${pkgver}"
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
         "mosdns.service")
 sha512sums=('SKIP'
