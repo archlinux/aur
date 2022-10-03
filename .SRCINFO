@@ -1,15 +1,15 @@
 pkgbase = contentful-cli
 	pkgdesc = Official Contentful CLI
-	pkgver = 1.15.13
+	pkgver = 1.15.19
 	pkgrel = 1
 	url = https://github.com/contentful/contentful-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = contentful-cli-1.15.13.tgz
+	noextract = contentful-cli-1.15.19.tgz
 	options = !emptydirs
-	source = contentful-cli-1.15.13.tgz::https://registry.npmjs.org/contentful-cli/-/contentful-cli-1.15.13.tgz
-	sha256sums = 0efe26e313340aa6301ef759b54b0bc9fd7580d68651ccfd0848af61f1905b96
+	source = contentful-cli-1.15.19.tgz::https://registry.npmjs.org/contentful-cli/-/contentful-cli-1.15.19.tgz
+	sha256sums = 94b59a4bcb4bb100dc81d98cfc54f5b95e99a6b6668ffd759e3e788f9961d41d
 
 pkgname = contentful-cli
