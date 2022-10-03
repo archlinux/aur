@@ -1,13 +1,15 @@
-From 7c474e545ef6ad609b450c371958d849ba5107b1 Mon Sep 17 00:00:00 2001
+From c79ba7db030e787d4679982bc071a3909a545ed9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Thu, 19 Feb 2015 19:34:00 +0100
-Subject: [PATCH 6/6] Adjust RedHat config and service files
+Subject: [PATCH] Adjust RedHat config and service files
 
 Basically we reuse upstream's config for RedHat but we change a few things:
 
  * adjust paths to match ArchLinux packaging
  * remove the dynamic creation of CellServDB
  * enable network traffic encryption by default
+
+Change-Id: I58edd1c30b0915624a386bbae96879345d7e8b4b
 ---
  src/packaging/RedHat/openafs-cacheinfo      |  2 +-
  src/packaging/RedHat/openafs-client.service | 15 +++++++--------
@@ -64,5 +66,5 @@ index ac9d3c411..0a4b3bfea 100644
  
  [Install]
 -- 
-2.37.1
+2.37.3
 
