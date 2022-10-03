@@ -1,29 +1,27 @@
 # Maintainer: Sambhav <samb at disroot dot org>
 # Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
-pkgver=v0.1.beta.1.r54.gc899c58
+pkgver=v0.3.2.r5.gacd23b4
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL3', 'MIT')
 makedepends=('git' 'cmake')
-depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'libzip' 'protobuf' 'mcpelauncher-client')
+depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'mcpelauncher-client')
 provides=('mcpelauncher-ui')
 conflicts=('mcpelauncher-ui')
 source=(
-  'git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=ng'
+  'git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=qt6'
   'git+https://github.com/MCMrARM/axml-parser.git'
   'git+https://github.com/minecraft-linux/file-util.git'
   'google-play-api::git+https://github.com/MCMrARM/Google-Play-API.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-extract.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
-  'git+https://github.com/minecraft-linux/mcpelauncher-proprietary.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
 md5sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -49,10 +47,6 @@ prepare() {
   git config submodule.playdl-signin-ui-qt.url $srcdir/playdl-signin-ui-qt
   git config submodule.mcpelauncher-ui-qt.url $srcdir/mcpelauncher-ui-qt
   git submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
-  cd mcpelauncher-ui-qt
-  git submodule init
-  git config submodule.Resources/proprietary.url $srcdir/mcpelauncher-proprietary
-  git submodule update Resources/proprietary
 }
 build() {
   cd mcpelauncher-ui-manifest
