@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=paper-note-git
-pkgver=r246.ce1c297
+pkgver=r289.a15ffe2
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
