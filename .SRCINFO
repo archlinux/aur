@@ -1,6 +1,6 @@
 pkgbase = ocaml-core_bench
 	pkgdesc = A micro-benchmarking library for ocaml
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/core_bench
@@ -10,15 +10,19 @@ pkgbase = ocaml-core_bench
 	makedepends = dune
 	depends = ocaml
 	depends = ocaml-core
+	depends = ocaml-core_unix
+	depends = ocaml-ppx_compare
+	depends = ocaml-ppx_fields_conv
 	depends = ocaml-core_extended
 	depends = ocaml-ppx_jane
+	depends = ocaml-ppx_let
+	depends = ocaml-ppx_sexp_conv
 	depends = ocaml-textutils
 	depends = ocaml-migrate-parsetree
 	depends = ocaml-ppxlib
 	depends = ocaml-re
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.14/files/core_bench-v0.14.0.tar.gz
-	md5sums = 96c9241f978acbc3a6817b20b281996f
+	source = https://ocaml.janestreet.com/ocaml-core/v0.15/files/core_bench-v0.15.0.tar.gz
+	md5sums = 622be5cb12b8091c764caca053e1d368
 
 pkgname = ocaml-core_bench
-
