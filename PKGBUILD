@@ -2,7 +2,7 @@
 
 pkgname='erg-bin'
 _pkgname="erg"
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Statically typed language that can deeply improve the Python ecosystem"
 url="https://github.com/erg-lang/erg"

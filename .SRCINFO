@@ -1,6 +1,6 @@
 pkgbase = erg-bin
 	pkgdesc = Statically typed language that can deeply improve the Python ecosystem
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/erg-lang/erg
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = erg-bin
 	depends = python
 	conflicts = erg-git
 	conflicts = erg
-	source = erg::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v0.4.2-x86_64
+	source = erg::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v0.5.0-x86_64
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README.md
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README_JA.md
 	source = https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-CN.md
