@@ -1,0 +1,17 @@
+pkgbase = ocaml-record_builder
+	pkgdesc = A library which provides traversal of records with an applicative.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/janestreet/record_builder
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	depends = ocaml
+	depends = ocaml-base
+	depends = ocaml-ppx_jane
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/v0.15/files/record_builder-v0.15.0.tar.gz
+	sha256sums = 8a6e30166999971ecca0d52db2f45ed83a81e0d99679cf0c4dd649ce89b21bb1
+
+pkgname = ocaml-record_builder
