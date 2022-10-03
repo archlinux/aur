@@ -1,6 +1,6 @@
 pkgbase = dk-assist-git
 	pkgdesc = A tool that helps devs to set up a repository with configs, such as .env files
-	pkgver = v0.1.5.r2.gbc07925
+	pkgver = v0.1.5.r6.gdb7a81f
 	pkgrel = 1
 	url = https://github.com/jooaodanieel/dk-assist
 	arch = x86_64

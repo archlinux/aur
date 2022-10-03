@@ -1,6 +1,6 @@
 # Maintainer: João Daniel <jotaf.daniel@gmail.com>
 pkgname=dk-assist-git
-pkgver=v0.1.5.r2.gbc07925
+pkgver=v0.1.5.r6.gdb7a81f
 pkgrel=1
 epoch=
 pkgdesc="A tool that helps devs to set up a repository with configs, such as .env files"
