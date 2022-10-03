@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zydis
 pkgname=$_pkgname-git
-pkgver=3.2.0.r140.gf6dfdbd
+pkgver=3.2.0.r148.g109d08b
 pkgrel=1
 pkgdesc="Fast and lightweight x86/x86-64 disassembler library"
 arch=('x86_64')
 url="https://zydis.re/"
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'git' 'ruby-ronn-ng' 'zycore-c>=1.1.0')
+makedepends=('cmake' 'doxygen' 'git' 'ruby-ronn-ng' 'zycore-c>=1.1.0')
 provides=("$_pkgname=$pkgver" 'libZydis.so')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/zyantific/zydis.git")
