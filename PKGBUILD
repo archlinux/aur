@@ -2,7 +2,7 @@
 
 pkgname=python-wsgidav-seafile
 pkgver=9.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Seafile webdav server"
 arch=('any')
 url="https://github.com/haiwen/seafdav"
@@ -12,7 +12,9 @@ depends=('python'
          'python-seafobj'
          'python-defusedxml'
          'python-jinja'
+         'python-pip'
          'python-sqlalchemy'
+         'python-wheel'
          'python-yaml')
 makedepends=('python-setuptools'
              'libyaml')
