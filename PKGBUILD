@@ -35,9 +35,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/candyvim/site/pack/packer/start/"
   cp -r "${srcdir}/packer.nvim" "${pkgdir}/usr/share/candyvim/site/pack/packer/start/"
 
-  CANDYVIM_RUNTIME_DIR="${pkgdir}/usr/share/candyvim"
-
-  sed -e s"#RUNTIME_DIR_VAR#\"${CANDYVIM_RUNTIME_DIR}\"#"g \
+  sed -e s"#RUNTIME_DIR_VAR#\"${pkgdir}/usr/share/candyvim\"#"g \
     "utils/bin/cvim.template" \
     | tee "cvim" > /dev/null
 
