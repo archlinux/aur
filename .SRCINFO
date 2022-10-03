@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 20220702+asset0.5
+	pkgver = 20221002+asset0.5
 	pkgrel = 1
 	url = https://pokemonrevolution.net
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = pokemon-revolution-online-bin
 	conflicts = pokemon-revolution-online
 	options = debug
 	source = git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#commit=da21f5467ed5b29d59cc67df3ccdc7686d763406
-	source = PROClient_linux-20220702.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip
+	source = PROClient_linux-20221002.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip
 	sha512sums = SKIP
-	sha512sums = fd05069ae7c288bcf7f30678e8d8731578bc39136a220c355444623e1ffff9c42fb8e76800045f2f13af332ab11984ccd30deea6b4cd7c44ff5bad565f47c286
+	sha512sums = f22454eb8a98529eb3750189603c528aba54a957a19fc992971556e8ff71aa3678982977fcd9f0e236ebc5c01ced1f19c8c2c8b627ef7b4bd98c869a7c3eb24c
 
 pkgname = pokemon-revolution-online-bin
