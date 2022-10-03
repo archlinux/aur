@@ -38,8 +38,9 @@ package() {
 	cd dk-assist
   mkdir -p ${pkgdir}/opt/${pkgname}
   cp -rf * ${pkgdir}/opt/${pkgname}
-  mkdir -p ${pkgdir}/usr/local/bin/dk-assist
+  mkdir -p ${pkgdir}/usr/local/bin
   cp build/bin/native/releaseExecutable/dk-assist.kexe ${pkgdir}/usr/local/bin/dk-assist
+  chmod 755 ${pkgdir}/usr/local/bin/dk-assist
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
