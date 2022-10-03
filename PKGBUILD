@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RobustRankAggreg
-_pkgver=1.1
+_pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1
-pkgrel=6
+pkgver=1.2
+pkgrel=1
 pkgdesc='Methods for robust rank aggregation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23ab88f6f1e56ae85a45bf5107ad0c37202dde275d799ed9fe214a1ab2c754df')
+sha256sums=('a40a50f1ef72b296214df038391971bb861744df681b67f94c22220a24ab89d4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
