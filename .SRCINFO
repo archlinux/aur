@@ -1,6 +1,6 @@
 pkgbase = diesel-cli-git
 	pkgdesc = CLI for the Diesel crate
-	pkgver = 2.0.0.r61.gfe51ddd65
+	pkgver = 2.0.0.r67.g2b29893e6
 	pkgrel = 1
 	url = http://diesel.rs/
 	arch = i686
