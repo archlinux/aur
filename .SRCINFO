@@ -1,6 +1,6 @@
 pkgbase = wl-mpris-idle-inhibit
-	pkgdesc = Sway Idle Inhibitor using MPRIS2 as a signal
-	pkgver = 0.1.7
+	pkgdesc = Wayland Idle Inhibitor using MPRIS2 as a signal
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/sameer/wl-mpris-idle-inhibit
 	arch = i686
@@ -19,7 +19,9 @@ pkgbase = wl-mpris-idle-inhibit
 	depends = wayland
 	depends = dbus
 	optdepends = swayidle: Idle management daemon
-	source = wl-mpris-idle-inhibit-0.1.7.tar.gz::https://github.com/sameer/wl-mpris-idle-inhibit/archive/refs/tags/0.1.7.tar.gz
+	conflicts = sway-mpris-idle-inhibit
+	replaces = sway-mpris-idle-inhibit
+	source = wl-mpris-idle-inhibit-0.1.8.tar.gz::https://github.com/sameer/wl-mpris-idle-inhibit/archive/refs/tags/0.1.8.tar.gz
 	b2sums = SKIP
 
 pkgname = wl-mpris-idle-inhibit
