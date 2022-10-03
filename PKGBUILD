@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A Qt front-end for the JACK low-latency audio server"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('jack' 'hicolor-icon-theme' 'qt5-x11extras')
+depends=('jack' 'hicolor-icon-theme' 'portaudio')
 url="https://qjackctl.sourceforge.io/"
 makedepends=('cmake' 'git' 'qt5-tools')
 provides=('qjackctl')
@@ -27,7 +27,8 @@ pkgver() {
 build() {
   cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCONFIG_QT6=OFF \
     -S "$srcdir/${pkgname}"
   cmake --build build
 }
