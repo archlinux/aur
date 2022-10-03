@@ -1,5 +1,5 @@
 pkgbase = linux-amd-znver2
-	pkgver = 5.19.v.12
+	pkgver = 6.0.v.0
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = linux-amd-znver2
 	makedepends = lzop
 	makedepends = gcc>=9.1
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.19.12
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.0
 	source = config.x86_64
 	source = linux-amd-znver2.preset
 	source = linux.install
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20220315/more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = 191d0d03e58286c8b0d06299ddbda40e7540a72172fa8b1ef48feec0ab72a8d3
+	sha256sums = 94f8627b9980867ac29e87cd3e87ef135a9607c7b304552c315eed44cb3ae7fe
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = dea86a521603414a8c7bf9cf1f41090d5d6f8035ce31407449e25964befb1e50
