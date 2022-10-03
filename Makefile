@@ -7,7 +7,7 @@ PKGREL = $(shell bash -c 'source PKGBUILD && echo $pkgver')
 .DEFAULT: help
 
 help:: ## show this help text
-	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-13s - %s\n", $$1, $$2}'
+	@grep -Eh '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-13s - %s\n", $$1, $$2}'
 
 clean:: ## remove files associated with this build
 	rm -rf pkg src mitsuba3-git-*.pkg.tar.zst
