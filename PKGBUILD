@@ -1,10 +1,10 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
-pkgname=sway-mpris-idle-inhibit
+pkgname=wl-mpris-idle-inhibit
 pkgver=0.1.7
 pkgrel=1
 pkgdesc='Sway Idle Inhibitor using MPRIS2 as a signal'
 url="https://github.com/sameer/$pkgname"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sameer/sway-mpris-idle-inhibit/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sameer/wl-mpris-idle-inhibit/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT' 'APACHE')
 makedepends=('git' 'cargo' 'wayland' 'wayland-protocols' 'dbus')
