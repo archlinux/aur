@@ -1,0 +1,17 @@
+pkgbase = qcheck-git
+	pkgdesc = A quick alternative to cksfv for generating and verifying CRC32C checksum files(.sfv).
+	pkgver = r56.2262a31
+	pkgrel = 1
+	url = https://github.com/Wunkolo/qCheck
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = catch2
+	makedepends = boost
+	makedepends = sed
+	depends = boost-libs
+	source = git+https://github.com/Wunkolo/qCheck.git
+	sha512sums = SKIP
+
+pkgname = qcheck-git
