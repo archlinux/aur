@@ -1,4 +1,46 @@
 # Changelog
+## PENDING 2.0.0 (2022-09-26)
+
+### Enhancements
+* Add helper exception if an async type is requested without being wrapped in Awaitable.
+* Use mypyc to compile some parts of lagom for a speed boost. This is only available on some platforms. A non-compiled fallback is also built.
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+* 3.6 is now no longer formally supported (though it may still work)
+* The compiled classes are less tolerant of slightly incorrectly typed arguments
+
+### Benchmarking for compilation
+Running the benchmarking on a Darwin-CPython-3.8-64bit.
+
+001 is version 1.7.1 of lagom pre compilation.
+002 is the newly compiled version.
+
+```
+---------------------------------------------------------------------------------------------- benchmark: 6 tests ----------------------------------------------------------------------------------------------
+Name (time in us)                      Min                    Max                Mean              StdDev              Median                IQR            Outliers  OPS (Kops/s)            Rounds  Iterations
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_optimised (0002_baselin)      71.7450 (1.0)         971.7620 (1.65)      87.0807 (1.0)       20.9528 (1.0)       81.8410 (1.0)       5.2518 (1.0)     6107;9432       11.4836 (1.0)       87699           1
+test_plain (0002_baselin)         128.2760 (1.79)        588.2040 (1.0)      154.0175 (1.77)      32.0413 (1.53)     144.8510 (1.77)      9.5982 (1.83)    1084;1869        6.4928 (0.57)      14475           1
+test_magic (0002_baselin)         147.2380 (2.05)        598.4200 (1.02)     169.9302 (1.95)      36.6631 (1.75)     159.4025 (1.95)      8.2840 (1.58)      227;405        5.8848 (0.51)       2962           1
+test_optimised (0001_baselin)     159.1330 (2.22)     19,492.6290 (33.14)    218.7509 (2.51)     238.4710 (11.38)    185.7110 (2.27)     40.6575 (7.74)     542;4813        4.5714 (0.40)      43520           1
+test_plain (0001_baselin)         250.3910 (3.49)        780.7970 (1.33)     289.7597 (3.33)      52.2043 (2.49)     272.0675 (3.32)     18.1820 (3.46)     839;1469        3.4511 (0.30)       9416           1
+test_magic (0001_baselin)         271.6470 (3.79)      1,122.6480 (1.91)     314.4931 (3.61)      65.8549 (3.14)     291.0765 (3.56)     24.0800 (4.59)      230;353        3.1797 (0.28)       2718           1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+### Upgrade instructions
+Python 3.6 is no longer supported so this upgrade will not be possible. This release of the code may still work
+but this version and future releases will not be tested against 3.6.
+
+For python 3.7 and above the core parts of the library are now compiled and published to pypi. The interface for this
+new release is intended to be compatible with the 1.7.X version, but you should test before deploying to 
+production and report any bugs. The compiled version (and therefore performance improvements) is only available for
+CPython, other python runtimes are supported through a pure python wheel. 
+
+
 ## 1.7.1 (2022-05-25)
 
 ### Enhancements
