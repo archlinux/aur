@@ -5,9 +5,10 @@
 
 pkgname=emby-server-beta
 pkgver=4.8.0.10
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2022_05_07
 _ffdetect_ver=2022_05_07
+_skiasharp_ver=2.80.2
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
@@ -43,7 +44,6 @@ depends=('alsa-lib'
          'libx265.so'
          'ocl-icd'
          'opus'
-         'skia-sharp'
          'sqlite'
          'zlib'
          'zvbi')
@@ -58,6 +58,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 #        "https://mediabrowser.github.io/embytools/ffmpeg-${_ffmpeg_ver}.tar.gz"
 #        "https://mediabrowser.github.io/embytools/ffdetect-${_ffdetect_ver}-x64.tar.xz"
         "https://mediabrowser.github.io/embytools/emby-ffmpeg-bin-${_ffmpeg_ver}-1-x86_64.pkg.tar.zst"
+        "https://mediabrowser.github.io/embytools/libskiasharp-${_skiasharp_ver}-x64.tar.xz"
         'emby-server'
         'emby-server.conf'
         'emby-server.service'
@@ -69,6 +70,7 @@ backup=('etc/conf.d/emby-server')
 install=emby-server.install
 sha256sums=('ba6191985c3fdb14542220a26735e59b00f4b20432e6fd7b73a2ca4cff3aad64'
             'cfa7c7dedd99990ea2b7d2e4228c53d25061caf5fce87a79ce29c4a6ffd27ff2'
+            '7202499c296f1f1b80619e10322fceff2068e5e3ed36a3f96d3ae4c2427978bd'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             'd1a805284d8a1329f6f6e736423be747d8951c5a9600fbb79c13a6f9be7149c0'
             'a7f2e38d2d196984d1c1632c851215aea9072b3af998d10a6b68477ad886ea14'
@@ -122,11 +124,12 @@ prepare() {
 package() {
   install -dm 755 "${pkgdir}"/usr/lib
   cp -dr --no-preserve='ownership' system "${pkgdir}"/usr/lib/emby-server
-  ln -s ../libSkiaSharp.so.80.2.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
+#  ln -s ../libSkiaSharp.so.80.2.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
   install -Dm 755 emby-server -t "${pkgdir}"/usr/bin/
   install -Dm 755 opt/emby-server/bin/ffdetect "${pkgdir}"/usr/bin/ffdetect-emby
   install -Dm 755 opt/emby-server/bin/ffmpeg "${pkgdir}"/usr/bin/ffmpeg-emby
   install -Dm 755 opt/emby-server/bin/ffprobe "${pkgdir}"/usr/bin/ffprobe-emby
+  install -Dm 755 lib/libSkiaSharp.so* -t "${pkgdir}"/usr/lib/emby-server/
   install -Dm 644 emby-server.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm 644 emby-server.conf "${pkgdir}"/etc/conf.d/emby-server
   install -Dm 644 license.docx -t "${pkgdir}"/usr/share/licenses/$pkgname/license.docx
