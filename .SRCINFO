@@ -1,6 +1,6 @@
 pkgbase = joshi
 	pkgdesc = JavaScript Oriented Shell Interpreter
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/izaera/joshi
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = joshi
 	depends = glibc
 	depends = libxcrypt
 	optdepends = ncurses: terminal support
-	source = joshi-1.8.1.tar.gz::https://github.com/izaera/joshi/archive/refs/tags/1.8.1.tar.gz
-	sha256sums = c34ad1eac9501072df4e1e2203a37d14490ace4d9d6ac55405383430fb2d0d06
+	source = joshi-1.8.2.tar.gz::https://github.com/izaera/joshi/archive/refs/tags/1.8.2.tar.gz
+	sha256sums = 4eca131cc44e2cd8eedd848a6b2ef7453a92236c50daf35b9670439891ad8a3c
 
 pkgname = joshi
