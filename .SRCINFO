@@ -1,6 +1,6 @@
 pkgbase = receivemidi
 	pkgdesc = Multi-platform command-line tool to monitor and receive MIDI messages
-	pkgver = 1.0.6
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/gbevin/ReceiveMIDI
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = receivemidi
 	license = GPL3
 	depends = alsa-lib
 	depends = curl
-	source = receivemidi-1.0.6.tar.gz::https://github.com/gbevin/ReceiveMIDI/archive/1.0.6.tar.gz
-	md5sums = fff1bda61b343fdab59891c88c991d3a
+	source = receivemidi-1.2.0.tar.gz::https://github.com/gbevin/ReceiveMIDI/archive/1.2.0.tar.gz
+	sha256sums = df02505d5b1c97e3c228d5f110aef5ac4384362903c4dedc9ac1c3310419f739
 
 pkgname = receivemidi
-
