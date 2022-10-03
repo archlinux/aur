@@ -1,6 +1,6 @@
 pkgbase = aosp-devel
 	pkgdesc = Metapackage to pull all dependencies required to build modern Android
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://wiki.archlinux.org/title/Android#Building
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = aosp-devel
 	depends = lib32-ncurses
 	depends = lib32-readline
 	depends = lib32-ncurses5-compat-libs
+	depends = libxcrypt-compat
 	optdepends = wxgtk2: may be required on older versions
 	optdepends = python2-virtualenv: required on older versions to make python2 the default
 
