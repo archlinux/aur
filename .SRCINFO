@@ -1,11 +1,11 @@
 pkgbase = bibata-extra-cursor-theme
 	pkgdesc = Material Based Cursor Theme: More Bibata!
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ful1e5/Bibata_Extra_Cursor
 	arch = any
 	license = GPL3
-	makedepends = python-clickgen
+	makedepends = python-clickgen1
 	depends = libxcursor
 	depends = libpng
 	provides = bibata-extra-cursor
