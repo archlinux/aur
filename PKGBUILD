@@ -1,7 +1,7 @@
 # Maintainer: E.A.Davison <eadavison at protonmail dot com>
 
 pkgname=ctune-git
-pkgver=v1.0.12
+pkgver=v1.0.13
 pkgrel=0
 pkgdesc="NCurses internet radio player for Linux."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,8 @@ depends=('ncurses'
          'curl'
          'ffmpeg'
          'alsa-lib'
-         'pulseaudio')
+         'pulseaudio'
+         'libbsd')
 
 makedepends=('make'
              'cmake'

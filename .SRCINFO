@@ -1,6 +1,6 @@
 pkgbase = ctune-git
 	pkgdesc = NCurses internet radio player for Linux.
-	pkgver = v1.0.12
+	pkgver = v1.0.13
 	pkgrel = 0
 	url = https://github.com/An7ar35/ctune
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = ctune-git
 	depends = ffmpeg
 	depends = alsa-lib
 	depends = pulseaudio
+	depends = libbsd
 	optdepends = sdl2: for SDL2 output plugin support
 	optdepends = sndio: for SNDIO output plugin support
 	optdepends = vlc: for VLC player plugin support
