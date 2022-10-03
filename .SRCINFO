@@ -1,0 +1,16 @@
+pkgbase = knusperli-git
+	pkgdesc = A deblocking JPEG decoder
+	pkgver = 0.0.0.r10.g415439b
+	pkgrel = 1
+	url = https://github.com/google/knusperli/
+	arch = x86_64
+	license = Apache
+	makedepends = bazel
+	makedepends = git
+	depends = gcc-libs
+	provides = knusperli
+	conflicts = knusperli
+	source = knusperli-git::git+https://github.com/google/knusperli/
+	sha256sums = SKIP
+
+pkgname = knusperli-git
