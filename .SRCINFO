@@ -1,10 +1,11 @@
 pkgbase = debmirror
 	pkgdesc = Debian partial mirror script, with ftp and package pool support
 	pkgver = 2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/debian/debmirror
 	arch = any
 	license = GPL
+	makedepends = pod2man
 	depends = bzip2
 	depends = perl-lockfile-simple
 	depends = perl-libwww
