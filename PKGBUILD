@@ -1,10 +1,10 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
-pkgname=sway-video-idle-inhibit
+pkgname=wl-video-idle-inhibit
 pkgver=0.1.4
 pkgrel=1
-pkgdesc='Sway Idle Inhibitor using open video devices as a signal'
+pkgdesc='Wayland Idle Inhibitor using open video devices as a signal'
 url="https://github.com/sameer/$pkgname"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sameer/sway-video-idle-inhibit/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sameer/wl-video-idle-inhibit/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT' 'APACHE')
 makedepends=('git' 'cargo' 'wayland' 'wayland-protocols')

@@ -1,8 +1,8 @@
-pkgbase = sway-video-idle-inhibit
-	pkgdesc = Sway Idle Inhibitor using open video devices as a signal
+pkgbase = wl-video-idle-inhibit
+	pkgdesc = Wayland Idle Inhibitor using open video devices as a signal
 	pkgver = 0.1.4
 	pkgrel = 1
-	url = https://github.com/sameer/sway-video-idle-inhibit
+	url = https://github.com/sameer/wl-video-idle-inhibit
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -17,7 +17,7 @@ pkgbase = sway-video-idle-inhibit
 	makedepends = wayland-protocols
 	depends = wayland
 	optdepends = swayidle: Idle management daemon
-	source = sway-video-idle-inhibit-0.1.4.tar.gz::https://github.com/sameer/sway-video-idle-inhibit/archive/refs/tags/0.1.4.tar.gz
+	source = wl-video-idle-inhibit-0.1.4.tar.gz::https://github.com/sameer/wl-video-idle-inhibit/archive/refs/tags/0.1.4.tar.gz
 	b2sums = SKIP
 
-pkgname = sway-video-idle-inhibit
+pkgname = wl-video-idle-inhibit
