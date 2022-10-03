@@ -17,7 +17,7 @@ index b066a04..0e286f2 100644
       /opt/local/include # DarwinPorts
       /opt/csw/include # Blastwave
       /opt/include
-+     PATH_SUFFIXES openjpeg-2.4 openjpeg-2.3 openjpeg-2.2 openjpeg-2.1
++     PATH_SUFFIXES openjpeg-2.5
       REQUIRED
   )
  include_directories(${OPENJPEG_INCLUDE_DIR})

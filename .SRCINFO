@@ -1,7 +1,7 @@
 pkgbase = xygrib
 	pkgdesc = Grib reader and weather visualization software. Zygrib fork.
 	pkgver = 1.2.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://opengribs.org/
 	arch = x86_64
 	arch = aarch64
@@ -21,10 +21,11 @@ pkgbase = xygrib
 	source = xygrib.install
 	source = skewt.patch
 	source = CMakelists.txt.patch
+	source = proj8.patch
 	sha1sums = 8e3431ed6a5ef114d77ac57029129a26a381f696
 	sha1sums = 97eec7e40bd2d4f44986ffbf5096ac4ba37ebbfe
 	sha1sums = 1fa4cf6b72863c9f33a80946d9f4afe7f855df6a
-	sha1sums = 9fc7839f3fa38b7855ee5a165f7148162aba39bf
+	sha1sums = 56b94f60f4131c8865cd25f22b90472ba21f206e
+	sha1sums = 1af59e1fe5e07eb7cc1a3f9a52b3989a92bfd8e7
 
 pkgname = xygrib
-
