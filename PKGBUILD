@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=105.0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -79,19 +79,6 @@ prepare() {
   local _cachyos_patches_dir
   _cachyos_patches_dir="${srcdir}/cachyos-source/patches"
 
-  #sed -i 's/lib\/librewolf/lib\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
-  #sed -i 's/lib64\/librewolf/lib64\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
-  #sed -i 's/librewolf/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
-
-  # Prepare patches, then return to the source directory
-  pushd "${_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
-  popd
-  pushd "${_librewolf_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
-  popd
-  pushd "${_cachyos_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
-  popd
-
-
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -124,12 +111,10 @@ export RANLIB=llvm-ranlib
 # Branding
 ac_add_options --allow-addon-sideload
 ac_add_options --enable-update-channel=release
-ac_add_options --with-app-basename=${_pkgname}
 ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 export MOZ_REQUIRE_SIGNING=1
 
 # System libraries
@@ -190,7 +175,6 @@ fi
 
   # KDE menu
   patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
-  patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
@@ -199,21 +183,13 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/allow-searchengines-non-esr.patch
 
   # Remove search extensions (experimental)
-  cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
+  # cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  # patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
 
   # Assorted patches
   patch -Np1 -i "${_librewolf_patches_dir}"/urlbarprovider-interventions.patch
-
-  # Change some hardcoded directory strings that could lead to unnecessarily
-  # Created directories
-  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla_dirs.patch
-
-  # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
-  # should not break things, buuuuuuuuuut we'll see.
-  # patch -Np1 -i "${_librewolf_patches_dir}"/dbus_name.patch
 
   # Allow uBlockOrigin to run in private mode by default, without user intervention.
   patch -Np1 -i "${_librewolf_patches_dir}"/allow-ubo-private-mode.patch
@@ -224,7 +200,7 @@ fi
   # UI patches
   # Remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
-  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
 
   # Remap help links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remap-links.patch
@@ -236,7 +212,7 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
 
   # Update privacy preferences
-  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
 
   # Remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-branding-urlbar.patch
@@ -249,9 +225,6 @@ fi
 
   # Hide "snippets" section from the home page settings, as it was already locked.
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-snippets-from-home.patch
-
-  # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
-  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/sanitizing-description.patch
 
   # Add patch to hide website appearance settings
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/website-appearance-ui-rfp.patch
@@ -271,9 +244,6 @@ fi
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
-
-  # Needed build fix
-  patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
