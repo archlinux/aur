@@ -1,7 +1,7 @@
 # Maintainer: Pavle Portic <archlinux@theedgeofrage.com>
 
 pkgname=cdk8s-cli
-pkgver=2.0.75
+pkgver=2.1.3
 _pkgver=${pkgver/beta/-beta.}
 pkgrel=1
 pkgdesc="Define Kubernetes native apps and abstractions using object-oriented programming"
