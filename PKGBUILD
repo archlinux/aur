@@ -1,30 +1,44 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=shotman
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Simple, light, modern tool for screenshooting."
-arch=('any')
-url="https://gitlab.com/whynothugo/shotman"
+pkgdesc="Uncompromising screenshot GUI for Wayland"
+arch=("x86_64" "aarch64")
+url="https://git.sr.ht/~whynothugo/shotman"
 license=('ISC')
-depends=('pyside6' 'grimshot' 'qt6-wayland' 'qt6-svg' 'python')
-makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a76c4f4d1b9e5786b559c33781cc8bebcbaf4a8b07a4c50cff8e91620442aadd586b355b12e4f01579dc5745c08e6dd09b1b23bf51dc53d7b88701e45542ecee')
+depends=("libxkbcommon")
+optdepends=(
+    "sway: screenshots of a single window on swaywm"
+    "slurp: screenshots of a region on swaywm"
+)
+makedepends=("cargo")
+source=("shotman-${pkgver}::git+https://git.sr.ht/~whynothugo/shotman#tag=v${pkgver}?signed")
+sha512sums=("SKIP")
+
+prepare() {
+    cd "$pkgname-$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+    cd "$pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="${pkgdir}"
+    cd "$pkgname-$pkgver"
 
-  # TODO: manpages
-
-  install -vDm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
