@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@pm.me>
 pkgname=zshmux
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides quick access to tmux when a new shell is opened"
 arch=('any')
 url="https://github.com/huboles/zshmux"
