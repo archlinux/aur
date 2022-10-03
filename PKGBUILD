@@ -44,11 +44,11 @@ package()
     done
 
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/lib/ "${pkgdir}"/opt/"${pkgname}"/
-    find "${pkgdir}"/opt/"${pkgname}"/lib/ -exec chmod 755 {} + -type d
-    find "${pkgdir}"/opt/"${pkgname}"/lib/ -exec chmod 644 {} + -type f
+    find "${pkgdir}"/opt/"${pkgname}"/lib/ -type d -exec chmod 755 {} +
+    find "${pkgdir}"/opt/"${pkgname}"/lib/ -type f -exec chmod 644 {} +
 
     # Install the documentation.
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -exec chmod 755 {} + -type d
-    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -exec chmod 644 {} + -type f
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 }
