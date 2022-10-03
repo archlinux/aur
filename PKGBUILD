@@ -1,16 +1,17 @@
 # Maintainer: Maciej Suminski <orson@orson.net.pl>
-# Contributors: milk
+# Contributor: milk
+# Contributor: land_or
 # based on qjackctl-svn by robertfoster
 
 pkgname=qjackctl-git
-pkgver=r1253.7b3c624
+pkgver=r1567.a4ed248
 pkgrel=1
 pkgdesc="A Qt front-end for the JACK low-latency audio server"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('jack' 'hicolor-icon-theme' 'qt5-x11extras')
 url="https://qjackctl.sourceforge.io/"
-makedepends=('git' 'qt5-tools')
+makedepends=('cmake' 'git' 'qt5-tools')
 provides=('qjackctl')
 conflicts=('qjackctl' 'qjackctl-svn')
 # sf.net is the original repository, but has connection problems
@@ -24,15 +25,20 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE='None' \
+    -S "$srcdir/${pkgname}"
+  cmake --build build
+}
+
+check() {
+  cd build
+  ctest --output-on-failure
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
