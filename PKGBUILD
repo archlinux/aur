@@ -4,7 +4,7 @@
 
 pkgname=python-pytango
 _pkgname=pytango
-pkgver=9.3.4
+pkgver=9.3.6
 pkgrel=1
 pkgdesc="Python binding for Tango, a library dedicated to distributed control systems."
 groups=('tango-controls')
@@ -15,7 +15,7 @@ depends=('python' 'python-six>=1.10' 'python-numpy>=1.1' 'python-setuptools'
 	 'python-gevent' 'boost-libs' 'tango-cpp' 'boost')
 conflicts=('python-pytango-git')
 source=("https://gitlab.com/tango-controls/pytango/-/archive/v${pkgver}/pytango-v${pkgver}.tar.gz")
-sha256sums=('f1cf08b2ca6a62c7f6e77920b5d0ece98f90a5fd0d291ff6e35c6134c66e887e')
+sha256sums=('d5df7c01a5bb55c388ff83e478666dc3ac51dcd266e08ba3f51812dc90cd77f6')
 
 
 build() {
