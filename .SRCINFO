@@ -1,0 +1,29 @@
+pkgbase = rsync-reflink
+	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
+	pkgver = 3.2.6
+	pkgrel = 2
+	url = https://rsync.samba.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-commonmark
+	depends = acl
+	depends = libacl.so
+	depends = lz4
+	depends = openssl
+	depends = perl
+	depends = popt
+	depends = xxhash
+	depends = libxxhash.so
+	depends = zlib
+	depends = zstd
+	backup = etc/rsyncd.conf
+	backup = etc/xinetd.d/rsync
+	source = git+https://github.com/WayneD/rsync#tag=40695f1e31d29e5d715d986a53cdad1fe0ce0210
+	source = https://github.com/WayneD/rsync-patches/raw/master/clone-dest.diff
+	source = rsyncd.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b
+
+pkgname = rsync-reflink
