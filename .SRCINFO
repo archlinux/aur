@@ -1,13 +1,13 @@
 pkgbase = minfetch
 	pkgdesc = a simple customisable fetch script
-	pkgver = 1.0.1
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 0
 	url = https://github.com/xXTacticalWaffleXx/minfetch
 	arch = any
 	license = GPL
 	source = https://raw.githubusercontent.com/xXTacticalWaffleXx/minfetch/main/minfetch
 	source = https://github.com/xXTacticalWaffleXx/minfetch/raw/main/minfetch.1.gz
-	md5sums = d25d336f34b71b79b0e05d1966de39d3
-	md5sums = d25d336f34b71b79b0e05d1966de39d3
+	md5sums = 393a6bd8d89a8d67479d9ba125ea8a13
+	md5sums = 46b26ba946191ae1a2be24f9e387f577
 
 pkgname = minfetch
