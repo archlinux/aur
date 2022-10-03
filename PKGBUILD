@@ -9,6 +9,7 @@ pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
 depends=('gcc-libs')
 makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang')
+options=(!lto)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 source=(
