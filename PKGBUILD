@@ -2,10 +2,10 @@
 pkgname='ttf-sometype-mono-git'
 pkgdesc='Free monospaced font for coding and tabular layout'
 pkgver=r189.f21476e
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(custom:OFL)
-url=https://monospacedfont.com/
+url=https://github.com/dharmatype/Sometype-Mono/
 source=("${pkgname}::git+${url}#branch=master")
 sha512sums=(SKIP)
 conflicts=(ttf-sometype-mono)
