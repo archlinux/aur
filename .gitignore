@@ -1,5 +1,5 @@
-*.tar
-*.tar.gz
+/*.pkg.tar.zst
+/flexo*.tar.gz
 /flexo/
 /pkg/
 /src/
