@@ -1,6 +1,4 @@
-Ildaeil-src-*.tar.xz
-ildaeil-*.pkg.tar.xz
-ildaeil-*.pkg.tar.zst
-ildaeil-*.src.tar.gz
 pkg/
 src/
+*.tar.*
+*.zip
