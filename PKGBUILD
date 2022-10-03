@@ -2,7 +2,7 @@
 # Contributor: Wouter Wijsman <wwijsman@live.nl>
 pkgname=minigalaxy
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
 url="https://sharkwouter.github.io/minigalaxy"
@@ -24,6 +24,9 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+
+  # tests fail if locale is set to anything other than en_US
+  export LANG=en_US.UTF-8
 
   # Run unit tests
   python -m coverage run --source minigalaxy -m unittest discover -v tests

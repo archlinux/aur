@@ -1,7 +1,7 @@
 pkgbase = minigalaxy
 	pkgdesc = A simple GOG client for Linux
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sharkwouter.github.io/minigalaxy
 	arch = any
 	license = GPL3
