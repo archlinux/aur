@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.8.1
-	pkgrel = 4
+	pkgver = 1.8.9pre1
+	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -10,24 +10,16 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs
-	provides = openafs-modules=1.8.8.1
+	provides = openafs-modules=1.8.9pre1
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/1.8.8.1/openafs-1.8.8.1-src.tar.bz2
+	source = http://openafs.org/dl/openafs/candidate/1.8.9pre1/openafs-1.8.9pre1-src.tar.bz2
 	source = dkms.conf
-	source = 0001-Accepted-changes-for-openafs-stable-1_8_x.patch.gz
-	source = 0002-Pending-changes-for-openafs-stable-1_8_x.patch.gz
-	source = 0003-Linux-Introduce-file-mapping-readpage-helpers.patch
-	source = 0004-Linux-5.19-Rename-aops-readpage-to-read_folio.patch
-	source = 0005-Linux-5.19-Remove-flags-from-aops-write_begin.patch
-	sha256sums = e7c4bed7075bcd6402e3f0c2d5b9dbe76ad2ee3c5fd5ddc3973a3356ca23ef44
+	source = 0001-Linux-6.0-Replace-add_to_page_cache.patch
+	sha256sums = 3b9d5f646b1efd24ae18ba6be45490bb01b4547725621fb335379f5754c6cb7a
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
-	sha256sums = ed8debf0d269fb80b7e6d7d429ff3f34b6105fd423c482a3ea7c4fa54b19018b
-	sha256sums = c3fe812056b03cc068373c5c18411b3546f380ba72abfccf70bc166110f390da
-	sha256sums = 0e902a093d5bad45f422ef1fc47c686503315fa3049f304eadb8b9dae6be8027
-	sha256sums = 0bb7ac77fa5d3d42bd78f67974ecbcc7cb8973e2859d74c361cb5fa18275cb8e
-	sha256sums = 7c7c6d9e76b436f95ba46138b979694cb50ff33eba2de82f1f5d426213f1768c
+	sha256sums = af9db57b1d65cfb7d7c58aa15df764e4bceaaa99d2c829f2c2ee317567347131
 
 pkgname = openafs-modules-dkms
