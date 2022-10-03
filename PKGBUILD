@@ -59,11 +59,11 @@ _htmldocs_enable=
 _major=5.19
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=14
+_lqxpatchrel=15
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.19.12.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -85,7 +85,7 @@ validpgpkeys=(
 )
 sha512sums=('00313b2f9b82d2dc3fb8294007cf7d7599d254b717ed2de23c81fa7a1bbcbc2798ad286cb94e2f7f5bd54132d1d764facd90d30f79dbcc6616cc7f926adc2623'
             'SKIP'
-            'a4bfb46c43f0c1bca968686e85b4e6e5d3c53fc463f2657bcea8916aa5a15e48339d921e04b8d37a825968b7b611a9606a174d09f6699f969db72d73a9cbef50')
+            '6d0e1a69f46d70765cca5e108857a0d047f88d2da4f4ffb578d28b8a60ea854164074067428966e08c72fa860b5d1b86fa1e530e266a29c3b6851b60fb58c787')
 
 
 
@@ -190,6 +190,10 @@ prepare() {
             fi
         fi
 
+    ## Use DWARF5 debug info for Arch
+  echo "Upgrading debug info from toolchain default to DWARF v5..."
+  scripts/config --enable CONFIG_DEBUG_INFO_DWARF5
+
     ### Running make nconfig
 	[[ -z "$_makenconfig" ]] ||  make nconfig
 
@@ -259,11 +263,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
