@@ -1,5 +1,5 @@
 pkgbase = listen1-electron
-	pkgdesc = One for all free music in China
+	pkgdesc = One for all free music in China with electron13
 	pkgver = 2.26.2
 	pkgrel = 1
 	url = https://github.com/listen1/listen1_desktop
