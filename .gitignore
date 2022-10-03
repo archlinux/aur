@@ -1,0 +1,8 @@
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/munt.install
+!/munt-alsadrv.install
+!/munt-alsadrv.service
+
