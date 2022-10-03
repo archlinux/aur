@@ -9,7 +9,7 @@
 pkgname=librepcb
 pkgver=0.1.7
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -26,6 +26,7 @@ makedepends=(
   'pkg-config'
   'qt5-tools'
   'fontobene-qt5'
+  'gtest'
 )
 source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip"
@@ -49,6 +50,7 @@ build() {
   rm -rf libs/muparser/
   rm -rf libs/polyclipping/
   rm -rf libs/quazip/
+  rm -rf libs/googletest/
 
   # Remove bundled hoedown, it is not needed on Qt >=5.14
   rm -rf libs/hoedown/
@@ -62,7 +64,8 @@ build() {
     -DUNBUNDLE_FONTOBENE_QT5=1 \
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
-    -DUNBUNDLE_QUAZIP=1
+    -DUNBUNDLE_QUAZIP=1 \
+    -DUNBUNDLE_GTEST=1
   make
 }
 
