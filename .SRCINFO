@@ -1,15 +1,15 @@
 pkgbase = yues
 	pkgdesc = Yue library provider for any language/framework
-	pkgver = 0.2.0
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://libyue.com/
+	url = https://github.com/KaMeHb-UA/yues
 	arch = any
-	license = Custom
+	license = MIT
 	depends = luajit
 	depends = yue-lua51-bin
 	depends = lua51-filesystem
 	depends = lua51-socket
-	source = git+https://github.com/KaMeHb-UA/yues.git#tag=v0.2.0
+	source = git+https://github.com/KaMeHb-UA/yues.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = yues

@@ -1,4 +1,4 @@
-pkgver=0.2.0
+pkgver=0.1.1
 pkgname=yues
 pkgrel=1
 pkgdesc='Yue library provider for any language/framework'
@@ -11,8 +11,8 @@ depends=(
 )
 makedepends=(
 )
-url='https://libyue.com/'
-license=('Custom')
+url='https://github.com/KaMeHb-UA/yues'
+license=('MIT')
 source=("git+https://github.com/KaMeHb-UA/yues.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
