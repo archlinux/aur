@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=4.1.5
+pkgver=5.0
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -11,10 +11,12 @@ depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme' 'glibc' 'libpulse' 'nss' 'nspr')
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
-             'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils' 'git')
+             'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'python-dulwich' 'python-typing_extensions' 'pciutils' 'dump_syms'
+             'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi'
+             'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=254d5654531c0f2b6fe0705ae9632cf1f4e3b7c0
+_filesrev=73afdf0ae6ae3a2fde8e24b7e8219e2b81d13684
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
@@ -25,18 +27,16 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.appdata.xml.in::$_filesurl/waterfox-g.appdata.xml.in"
         "global_menu.patch::$_filesurl/patches/global_menu.patch"
         "g-kde.patch::$_filesurl/patches/g-kde.patch"
-        "g-kde_link-fix.patch::$_filesurl/patches/g-kde_link-fix.patch"
+        "fis-csd-global-menu.patch::$_filesurl/patches/fis-csd-global-menu.patch"
         "nongnome-proxies.patch::$_filesurl/patches/nongnome-proxies.patch"
         "mozilla-ntlm-full-path.patch::$_filesurl/patches/mozilla-ntlm-full-path.patch"
-        "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
-        "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
+        "glibc236.patch::$_filesurl/patches/glibc236.patch"
+        "libavcodec58_91.patch::$_filesurl/patches/libavcodec58_91.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
-        "libevent_p1.patch::$_filesurl/patches/libevent_p1.patch"
-        "libevent_p2.patch::$_filesurl/patches/libevent_p2.patch"
-        "libevent_p3.patch::$_filesurl/patches/libevent_p3.patch"
-        "libevent_p4.patch::$_filesurl/patches/libevent_p4.patch"
-        "rust_p1.patch::$_filesurl/patches/rust_p1.patch"
-        "rust_p2.patch::$_filesurl/patches/rust_p2.patch"
+        "waterfox-branded-icons.patch::$_filesurl/patches/waterfox-branded-icons.patch"
+        "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
+        "cbindgen-0.24.0.patch::$_filesurl/patches/cbindgen-0.24.0.patch"
+        "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         )
 sha256sums=('SKIP'
             '09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259'
@@ -45,20 +45,18 @@ sha256sums=('SKIP'
             '22e22f4ba6e74a5f33926f4665351c80c516470ac45716c27479147484dea855'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             '2d68de6cb40900f4f1aeee33b49ee602c0ba6e3758226d31032df64af728c90e'
-            '2b0c71f7bb90cf2741ba405615ac0d8f667ecef69930286bed16c1804f7550d1'
-            'c4c078280abe1077122e38586db796c7b7993c87b8f8b0a7b5ab17a22fd3792b'
-            '9ef02e976475ec56d07dfc19ebcaad3ffa8b5931b61564da2914226619204746'
-            'f1cae271fbb244669cbcf2c3d7c5c43f62cf247403baba921c75f5211e2439b7'
+            'b4c84d27f17426224db5a357dbc8183311101fe97a575f69cb0fef4839a936cf'
+            'ec96bc6c496f076a43d1005a3d0ab7ec8a4083242daca3b129c6aad2bfc7e353'
+            '6d74e7da4ade11c7e4b54a8037f3930946928e66e6a6ffb0e30180e9f1f3f364'
+            '539ff4b7580762b9f2fe47a9166502b7ed4c8cc98599694bf67476606c1c90d7'
             '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
-            '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
-            'c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4'
-            'e293a816a375650f9b121cc28de8091732f177169feb7c045179845558df196c'
-            '7aec90431a86b617ce89ede1c39d376318de5782d1b2313ba50b151d8c636ffc'
-            '8ee48d000f839467425cf7a74b88d79d982a48e2945db57f3d500ab76da9e787'
-            'e1354926fea2ba6f6719e0faccb82f3feda1e381224cc93dcc4fc222a60c2a28'
-            'efc7297595341c42026f3bea30224d5318b32c9d6878dde9f80e2f4ec13b39b9'
-            'e38e217ccb92b851a5e650e124e5d85c82fc266c3c170621033c6b77975e4493'
-            '0fb7a0f37a4dc73275a9915711d3cdc4f6c41f62a501d9c4696abb35cb40d076')
+            '6fbe9d11e1763c6689f68526792923e5896b789d85393dd29c771ac812d2ae19'
+            '27cd1dfcc545938b16db1555eecb728bea4e4666e92c4d05ec2c16eeef5064b4'
+            '443fb2d0d58d89f5bdb010183f00e1a5d6bc20e35bf3d1ad93537b7c02d471a9'
+            '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
+            '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
+            '4628d136c3beada292e83cd8e89502cac4aa3836851b34259a665582a7713978'
+            '3b6a88c19bd7e353ad2c8b1bbe6223a85ecbe543b4f2bd02f89e57c63c75bb99')
 
 prepare() {
 
@@ -72,18 +70,16 @@ prepare() {
   # Add patches
   patch -Np1 -i ../global_menu.patch
   patch -Np1 -i ../g-kde.patch
-  patch -Np1 -i ../g-kde_link-fix.patch
+  patch -Np1 -i ../fis-csd-global-menu.patch
   patch -Np1 -i ../nongnome-proxies.patch
   patch -Np1 -i ../mozilla-ntlm-full-path.patch
-  patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
-  patch -Np1 -i ../sandbox-fips.patch
+  patch -Np1 -i ../glibc236.patch
+  patch -Np1 -i ../libavcodec58_91.patch
   patch -Np1 -i ../fix-langpack-id.patch
-  patch -Np1 -i ../rust_p1.patch
-  patch -Np1 -i ../rust_p2.patch
-  patch -Np1 -i ../libevent_p1.patch
-  patch -Np1 -i ../libevent_p2.patch
-  patch -Np1 -i ../libevent_p3.patch
-  patch -Np1 -i ../libevent_p4.patch
+  patch -Np1 -i ../waterfox-branded-icons.patch
+  patch -Np1 -i ../fix-wayland-build.patch
+  patch -Np1 -i ../cbindgen-0.24.0.patch
+  patch -Np1 -i ../mach-depends.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
@@ -118,8 +114,9 @@ ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 
 ac_add_options --with-app-name=waterfox-g
 ac_add_options --with-app-basename=Waterfox
-ac_add_options --with-branding=browser/branding/waterfox
+ac_add_options --with-branding=waterfox/browser/branding
 ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --allow-addon-sideload
 ac_add_options "MOZ_ALLOW_LEGACY_EXTENSIONS=1"
 
@@ -130,6 +127,7 @@ ac_add_options --with-system-nss
 
 export MOZ_REQUIRE_SIGNING=
 export MOZ_INCLUDE_SOURCE_INFO=1
+export MOZ_APP_REMOTINGNAME=waterfox-g
 
 #mk_add_options MOZ_MAKE_FLAGS="-j$(($(nproc --all) / 2))"
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -143,7 +141,7 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   LDFLAGS+=" -Wl,--no-keep-memory -Wl,--no-mmap-output-file"
   export LDFLAGS
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   # LTO needs more open files
   ulimit -n 4096
@@ -184,13 +182,14 @@ END
 #   cat > ../mozconfig_LANG <<END
 # ac_add_options --with-app-name=waterfox-g
 # ac_add_options --with-app-basename=Waterfox
-# ac_add_options --with-branding=browser/branding/waterfox
+# ac_add_options --with-branding=waterfox/browser/branding
 # mk_add_options MOZ_OBJDIR=${PWD}/../obj_LANG
 # ac_add_options --prefix=/usr
-# ac_add_options --with-l10n-base=${PWD}/browser/locales/l10n
+# ac_add_options --with-l10n-base=${PWD}/waterfox/browser/locales
 # ac_add_options --enable-linker=lld
 # ac_add_options --disable-updater
 # ac_add_options --disable-bootstrap
+# ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 # END
 
 #   export JOBS=$(echo $(grep -c ^processor /proc/cpuinfo)\/2 | bc)
@@ -218,7 +217,7 @@ package_waterfox-g-kpe() {
 
   cd Waterfox
 
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   DESTDIR="$pkgdir" ./mach install
 
@@ -232,9 +231,9 @@ END
       ln -Ts /usr/lib/waterfox-g/browser/chrome/icons/default/default$i.png \
         "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox-g.png"
   done
-  install -Dm644 browser/branding/waterfox/content/about-logo.png \
+  install -Dm644 waterfox/browser/branding/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox-g.png"
-  install -Dm644 browser/branding/waterfox/content/about-logo@2x.png \
+  install -Dm644 waterfox/browser/branding/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/waterfox-g.png"
 
   install -Dm644 $srcdir/waterfox-g.desktop \
