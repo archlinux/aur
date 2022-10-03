@@ -1,4 +1,4 @@
-# Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
+# Maintainer: DylanLogan2581 <DylanLogan2581 at DylanLogan dot xyz>
 
 pkgname=waterfox-g5-bin
 pkgver=G5.0
