@@ -2,31 +2,37 @@
 # Contributor: John Hamelink <me@johnhame.link>
 
 pkgname=python-mopidy-tidal
-pkgver=0.2.7
+_pkg=Mopidy-Tidal
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Tidal music service integration'
 arch=('any')
 url=https://github.com/tehkillerbee/mopidy-tidal
 license=('Apache')
 depends=('mopidy' 'python-pykka' 'python-tidalapi' 'python-requests')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
-checkdepends=('python-pytest' 'python-mock')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Tidal/Mopidy-Tidal-$pkgver.tar.gz")
-sha256sums=('2b01c96db3200a38f658c62aaf90a1dd50dfe182b52c017d7c21009fe752a70d')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-mock')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/M/$_pkg/$_pkg-$pkgver.tar.gz"
+        "fix-playlists.patch::$url/commit/38bbd10.diff")
+sha256sums=('0d378a51281c755e5d32705f11f91d4b52e473151519962ba4ef3ce8257d811b'
+            '06156878a318e6df59ca2471247f2fbac59e8b5919a22f04602647c51fe54cd9')
+
+prepare() {
+	patch -p1 -d "$_pkg-$pkgver" < fix-playlists.patch
+}
 
 build() {
-	cd "Mopidy-Tidal-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 ## tests currently fail
-# check() {
-# 	cd "Mopidy-Tidal-$pkgver"
-# 	pytest -x
-# }
+check() {
+	cd "$_pkg-$pkgver"
+	PYTHONPATH="$PWD" pytest -x --disable-warnings
+}
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "Mopidy-Tidal-$pkgver"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
