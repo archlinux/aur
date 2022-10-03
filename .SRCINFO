@@ -1,0 +1,14 @@
+pkgbase = ttf-sometype-mono-git
+	pkgdesc = Free monospaced font for coding and tabular layout
+	pkgver = r189.f21476e
+	pkgrel = 1
+	url = https://github.com/dharmatype/Sometype-Mono/
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	provides = ttf-sometype-mono
+	conflicts = ttf-sometype-mono
+	source = ttf-sometype-mono-git::git+https://github.com/dharmatype/Sometype-Mono/#branch=master
+	sha512sums = SKIP
+
+pkgname = ttf-sometype-mono-git
