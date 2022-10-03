@@ -1,8 +1,8 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=keepass-plugin-kpuinput
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc='Keepass plugin to use /dev/uinput for auto-typing'
 depends=('keepass' 'libxkbcommon' 'systemd')
 makedepends=('gcc' 'linux-api-headers')
@@ -13,8 +13,8 @@ source=("https://keepass.info/extensions/v2/kpuinput/KPUInput-${pkgver}-Source.z
         "https://keepass.info/extensions/v2/kpuinput/KPUInput-${pkgver}.zip"
         "path_fix.patch"
         "89-kpuinput.rules")
-sha256sums=('f4619df4c27f0ca07cc4705124aeffb4072dbd164c5920d95e1fc4a946c79e40'
-            '20fb468085a6c0b0f87f95efe7b94406acbacbc132d2f52b17d3d3087ee4a294'
+sha256sums=('65723a293fe904c94f37249720db4868ff87c472db6f75d0966100f199bab5af'
+            '95af4f9147d43276b5d67b3ccb141757ca95b715d2d52a093ede2e27b5d0c585'
             '44f988874f4bf7fe7b154b075293bf7cdd048be59ea99252fa9d48bcc0995cab'
             'e03ed96e0be14976f618be4f386aebf9ecb38982786295025a1f439ca47ea663')
 
