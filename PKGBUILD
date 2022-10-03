@@ -1,12 +1,12 @@
 # Maintainer: Huck Boles <huboles@pm.me>
 pkgname=zshmux
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides quick access to tmux sessions whenever a new shell is opened"
 arch=('any')
 url="https://github.com/huboles/zshmux"
 license=('GPL')
-depends=('zsh')
+depends=('zsh' 'tmux')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {
