@@ -2,13 +2,13 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=4.4.0.r0.g67bdd9a
-pkgrel=1
+pkgver=4.4.0.r62.g858a949
+pkgrel=2
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
 url="http://X0rg.github.io/CPU-X/"
 license=('GPL3')
-depends=('gtk3' 'ncurses' 'libcpuid' 'pciutils' 'glfw' 'opencl-icd-loader' 'vulkan-icd-loader' 'procps-ng')
+depends=('gtk3' 'ncurses' 'libcpuid>=0.6.0' 'pciutils' 'glfw' 'opencl-icd-loader' 'vulkan-icd-loader' 'procps-ng')
 makedepends=('git' 'cmake' 'ninja' 'nasm' 'opencl-headers' 'vulkan-headers')
 optdepends=('opencl-driver: packaged openCL driver'
             'opengl-driver: packaged openGL driver'

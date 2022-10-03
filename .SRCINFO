@@ -1,7 +1,7 @@
 pkgbase = cpu-x-git
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 4.4.0.r0.g67bdd9a
-	pkgrel = 1
+	pkgver = 4.4.0.r62.g858a949
+	pkgrel = 2
 	url = http://X0rg.github.io/CPU-X/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cpu-x-git
 	makedepends = vulkan-headers
 	depends = gtk3
 	depends = ncurses
-	depends = libcpuid
+	depends = libcpuid>=0.6.0
 	depends = pciutils
 	depends = glfw
 	depends = opencl-icd-loader
