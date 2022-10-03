@@ -15,7 +15,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=qt6'
   'git+https://github.com/MCMrARM/axml-parser.git'
   'git+https://github.com/minecraft-linux/file-util.git'
-  'google-play-api::git+https://github.com/MCMrARM/Google-Play-API.git'
+  'google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-extract.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
