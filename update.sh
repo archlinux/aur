@@ -21,7 +21,7 @@ if [ "$pkgver" == "$LAST" ]; then
     exit 0
 fi
 
-DOWNLOAD_URL="https://github.com/pola-rs/polars/archive/refs/tags/py-polars-v$LAST.tar.gz"
+DOWNLOAD_URL="https://github.com/pola-rs/polars/archive/refs/tags/py-v$LAST.tar.gz"
 SUM=$(curl -sL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1)
 
 sed -i 's/.*sums=.*$/'$HASH_NAME'=("'$SUM'")/' PKGBUILD
