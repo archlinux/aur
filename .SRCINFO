@@ -1,6 +1,6 @@
 pkgbase = ocaml-re2
 	pkgdesc = OCaml bindings for RE2, Google's regular expression library
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/re2
@@ -14,8 +14,7 @@ pkgbase = ocaml-re2
 	depends = ocaml-migrate-parsetree
 	depends = ocaml-ppxlib
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.14/files/re2-v0.14.0.tar.gz
-	md5sums = 1ba423969e51a6a226d19f4cbb898719
+	source = https://ocaml.janestreet.com/ocaml-core/v0.15/files/re2-v0.15.0.tar.gz
+	md5sums = e830749c8a99af15285255228eb94521
 
 pkgname = ocaml-re2
-
