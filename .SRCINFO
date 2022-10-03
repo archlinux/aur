@@ -1,0 +1,12 @@
+pkgbase = triggermesh-bin
+	pkgdesc = Build your event driven applications in Kubernetes with TriggerMesh APIs. Event sources, targets, filters, splitters, functions, you can do it all.
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://github.com/triggermesh/tm
+	arch = x86_64
+	license = apache
+	provides = tm=$pkgver
+	source = https://github.com/triggermesh/tm/releases/download/v1.21.0/tm-linux-amd64
+	sha256sums = c24098aa88ae84260179845282303a294c36dd95222e93be385a94fda8900326
+
+pkgname = triggermesh-bin
