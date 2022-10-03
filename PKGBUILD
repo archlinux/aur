@@ -7,9 +7,9 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb
-pkgver=0.1.6
+pkgver=0.1.7
 _pkgver=${pkgver/_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -30,23 +30,15 @@ makedepends=(
 source=(
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip"
   "https://download.librepcb.org/releases/${_pkgver}/librepcb-${_pkgver}-source.zip.asc"
-  "cmake-muparser-fix.patch"
 )
 sha256sums=(
-  '8c7bf475ed59eb5b5e4b13073b96b9468ee01fb6980ef2b3471b1fbb39c46721'
+  '4c9e90ca61c94e537cab0632e684350873673d693f1c8837c916001d8896a6ad'
   'SKIP'
-  'a59a830a77f7401c5dea02172eaee54ba40953b04404a393cf2314e4002410eb'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
 
 prepare() {
   cd "${srcdir}/librepcb-${_pkgver}/"
-
-  # Patch muparser include path
-  sed -i 's/muparser\/include\/muParser.h/muParser.h/' libs/librepcb/common/utils/mathparser.cpp
-
-  # Apply CMake fix (https://github.com/LibrePCB/LibrePCB/pull/970)
-  patch -p1 < "${srcdir}/cmake-muparser-fix.patch"
 }
 
 build() {
