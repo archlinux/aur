@@ -1,7 +1,7 @@
 pkgbase = munt
 	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I
 	pkgver = 2.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://munt.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -15,21 +15,25 @@ pkgbase = munt
 	b2sums = 40a006d8138ff0492e3fef89a5b7d74a5d255259da08f575e989ac569ff5a181351b06e175fcf846d68aeca97cd5a1dec2c128037f760db2046850f5ca3641d8
 
 pkgname = munt
+	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I (library)
 	install = munt.install
 
 pkgname = munt-qt
+	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I (Qt GUI application)
 	depends = munt=2.7.0
 	depends = qt6-multimedia
 	depends = hicolor-icon-theme
 	depends = portaudio
 
 pkgname = munt-daemon
+	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I (ALSA driver daemon)
 	install = munt-daemon.install
 	depends = munt=2.7.0
 	depends = alsa-lib
 	depends = gcc-libs
 
 pkgname = munt-smf2wav
+	pkgdesc = Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I (smf2wav tool)
 	depends = munt=2.7.0
 	depends = glib2
 	conflicts = munt-alsadrv

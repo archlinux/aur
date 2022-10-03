@@ -5,7 +5,7 @@ pkgbase=munt
 pkgname=(munt munt-qt munt-daemon munt-smf2wav)
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 url=http://munt.sourceforge.net
 license=(GPL2)
@@ -34,12 +34,14 @@ package_munt () {
 	install -dm755 "$pkgdir/usr/share/mt32-rom-data"
 	make -C "$pkgbase-$pkgver/mt32emu" DESTDIR="$pkgdir" install
 
+	pkgdesc+=" (library)"
 	install=$pkgname.install
 }
 
 package_munt-qt () {
 	make -C "$pkgbase-$pkgver/mt32emu_qt" DESTDIR="$pkgdir" install
 
+	pkgdesc+=" (Qt GUI application)"
 	depends+=("munt=$pkgver" qt6-multimedia hicolor-icon-theme portaudio)
 }
 
@@ -51,6 +53,7 @@ package_munt-daemon () {
 	install -Dm644 README.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
 	install -Dm755 mt32d "${pkgdir}/usr/bin/mt32d"
 
+	pkgdesc+=" (ALSA driver daemon)"
 	depends+=("munt=$pkgver" alsa-lib gcc-libs)
 	install=$pkgname.install
 }
@@ -58,6 +61,7 @@ package_munt-daemon () {
 package_munt-smf2wav () {
 	make -C "$pkgbase-$pkgver/mt32emu_smf2wav" DESTDIR="$pkgdir" install
 
+	pkgdesc+=" (smf2wav tool)"
 	depends+=("munt=$pkgver" glib2)
 	replaces=(munt-alsadrv)
 	conflicts=(munt-alsadrv)
