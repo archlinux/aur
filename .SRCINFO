@@ -1,14 +1,14 @@
 pkgbase = revanced-integrations
 	pkgdesc = Integrations containing helper classes for ReVanced. Originally maintained by Vanced.
-	pkgver = 0.47.0
+	pkgver = 0.47.1
 	pkgrel = 1
 	url = https://github.com/revanced/revanced-integrations
 	arch = any
 	license = GPL3
 	depends = revanced-cli
-	source = integrations-0.47.0.apk::https://github.com/revanced/revanced-integrations/releases/download/v0.47.0/app-release-unsigned.apk
-	source = https://github.com/revanced/revanced-integrations/raw/v0.47.0/LICENSE
-	sha256sums = cd20e91978de1f1f8ae2aad26190448eae0aa47d68be1b79c839188575f9bb97
+	source = integrations-0.47.1.apk::https://github.com/revanced/revanced-integrations/releases/download/v0.47.1/app-release-unsigned.apk
+	source = https://github.com/revanced/revanced-integrations/raw/v0.47.1/LICENSE
+	sha256sums = 8f768efcbdd4d3c3da18ee516b3029416786885b452ef068195a9b0e2defbab0
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = revanced-integrations
