@@ -1,1 +1,5 @@
-*.tar*
+src/
+pkg/
+urwid_readline-*.tar.gz
+python-urwid_readline-*.pkg.tar*
+*.log
