@@ -10,8 +10,8 @@ url=https://github.com/$_ghuser/$_name
 license=(unknown)
 arch=(x86_64)
 provides=($_name)
-makedepends=(git)
-depends=(libvips)
+makedepends=(git meson cmake)
+depends=(libvips openjpeg2 gtk4)
 source=(git+$url)
 
 prepare() {
