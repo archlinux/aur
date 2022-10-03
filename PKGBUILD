@@ -5,13 +5,13 @@
 
 pkgname=xygrib
 pkgver=1.2.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Grib reader and weather visualization software. Zygrib fork."
 arch=('x86_64' 'aarch64')
 license=("GPL3")
 provides=('xygrib')
 conflicts=('xygrib-git')
-depends=('libnova' 'qwt' 'proj' 'qt5-base' 'openjpeg2')
+depends=('libnova' 'qwt' 'proj' 'qt5-base' 'qt5-tools' 'openjpeg2')
 makedepends=('cmake' 'zlib' 'bzip2' 'libpng')
 url="https://opengribs.org/"
 source=("https://github.com/opengribs/XyGrib/archive/v$pkgver.tar.gz" "xygrib.install" "skewt.patch" "CMakelists.txt.patch" "proj8.patch")
