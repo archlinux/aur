@@ -1,7 +1,7 @@
 pkgbase = ocaml-core_extended
 	pkgdesc = Extra components that are not as closely vetted or as stable as Core
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/core_extended
 	arch = i686

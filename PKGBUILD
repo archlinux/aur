@@ -4,7 +4,7 @@
 
 pkgname=ocaml-core_extended
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Extra components that are not as closely vetted or as stable as Core"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd "${srcdir}/core_extended-v${pkgver}"
-  DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
+  DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --release --verbose
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
