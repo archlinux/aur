@@ -1,0 +1,13 @@
+pkgbase = art-git
+	pkgdesc = My post arch configuration script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kavulox/Art.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/kavulox/Art.git
+	md5sums = SKIP
+
+pkgname = art-git
