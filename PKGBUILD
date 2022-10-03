@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=xcursor-pro-cursor-theme
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern X11 Cursor Theme"
 arch=('any')
 url="https://github.com/ful1e5/XCursor-pro"
 license=('GPL3')
 depends=('libxcursor' 'libpng')
-makedepends=('python-clickgen')
+makedepends=('python-clickgen1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
@@ -17,7 +17,7 @@ sha256sums=('01813486e9bacb3f87976642f30d1ee66fcdc35d7d46714cced4e8858ab68215'
 prepare() {
   cd XCursor-pro-$pkgver
   mkdir -p bitmaps
-  bsdtar -xf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps
+  bsdtar -xf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps/
 }
 
 build() {
@@ -37,5 +37,5 @@ build() {
 package() {
   cd XCursor-pro-$pkgver
   install -d "$pkgdir/usr/share/icons"
-  cp -r themes/XCursor-Pro* "$pkgdir/usr/share/icons"
+  cp -r themes/XCursor-Pro* "$pkgdir/usr/share/icons/"
 }
