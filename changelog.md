@@ -1,7 +1,34 @@
+## GE-Proton7-36
+
+Updates:
+
+- import nvapi enablement list from proton upstream (ValveSoftware@9a708e0)
+- import media-converter changes from proton upstream (ValveSoftware@5339633)
+- update dxvk
+- update vkd3d-proton
+- update wine-bleeding edge
+- add protonfix for Shatterline (thanks orowith2os)
+- add protonfix for Halo Reach mod tools (thanks orowith2os)
+- add protonfix for Ougon Musoukyoku (thanks namaenonaimumei)
+
+FSR Removed/Disabled indefinitely:
+
+Due to this commit in upstream proton -- ValveSoftware/wine@7c5306e
+
+The FSR patches had to be disabled.
+
+The commit is important because it fixes some problems that were happening with winevulkan, but unfortunately it also patches in a lot of components that were already part of the FSR patch.
+The problem is that the commit has much of the same contents as the FSR patch, but the FSR patch has the FSR bits all mixed in and its not within my know how to rebase.
+The original author of the FSR patches has already stated since the functionality was moved to gamescope (he was the one who moved it to gamescope) the wine patches will not be updated.
+With that being said the FSR patches have been increasingly problematic to maintain over time due to the lack of the original author willing to rebase the wine version in favor of instead of using the gamescope version.
+Moving forward if you need to use FSR, you will need to either use gamescope, or rely on the game itself having FSR as a built-in feature.
+
 ## GE-Proton-7-35
+
 - The Phantasy Star Online 2 update wasn't working properly. I've updated it and it's now working as expected (double checked on steam deck) -- Thanks Goldreaver
 
 ## GE-Proton-7-34
+
 - Phantasy Star Online 2 fixed (again)
 - Persona 4 Golden fixed (again) -- Thanks tgurr
 - GTA IV custom radio protonfix added -- Thanks xperia64
@@ -12,6 +39,7 @@
 - vkd3d updated to latest git
 
 ## GE-Proton-7-33
+
 - wine updated to latest bleeding edge, pulls in more fixes for gta v, rdr2, verified bioshock remastered 1/2 + infinite work with 2k launcher
 - dxvk updated to latest git
 - vkd3d updated to latest git
@@ -20,9 +48,11 @@
 - removed Divinity Original Sin 2 launcher protonfix as it's no longer needed
 
 ## GE-Proton-7-32
+
 - Version deprecated by upstream
 
 ## GE-Proton-7-31 Released
+
 - FXIV Launcher fixed (thanks Valve)
 - GTA V fixes added (thanks Valve)
 - NOSTEAM=1 envvar option available for Guild Wars 2. Use it the same way you do for ffxiv non-steam accounts:
@@ -33,6 +63,7 @@
 - patches added for Visual Novel Doukyuusei
 
 ## GE-Proton-7-30 Released
+
 - protonfix for Flatout Ultimate Carnage (single player only) added -- thanks Ranplayer
 - amazon games patch added (this is mainly for possible future compatibility, please use wine-ge for non-steam games)
 - wine-staging ddraw-Device_Caps and ddraw-version-check patchsets disabled in favor of new proton ddraw changes.
@@ -42,16 +73,19 @@
 - upstream openxr patches applied
 
 ## GE-Proton-7-29 Released
+
 - Halo Infinite patches pulled in from Proton experimental. Game should be playable now with videos. Mouse pointer issue is also fixed.
 - Upside down videos fixed in Endless Space 2 and some players in VRChat:
 
 ## GE-Proton-7-28 Released
+
 - Halo infinite wine video playback patches disabled -- they break too many games. You can still play it without videos like before. This should fix most issues with various games crashing in 7-27. Currently pending an update from Valve to fix the issue.
 - dxvk updated to latest git
 - vkd3d-proton updated to latest git
 - protonfix added for Super naughty maid 2 (thanks Marc-Pierre-Barbier!)
 
 ## GE-Proton-7-27 Released
+
 - DXVK:
 
 - dxvk updated to latest git (fixes some issues that were in 1.10* branch)
@@ -83,9 +117,11 @@
 - SQUAD protonfix EAC blob updated to last-known working version
 
 ## GE-Proton-7-26 Released
+
 - Fix WINE_FULLSCREEN_FSR_MODE= not working after previous aspect ratio update.
 
 ## GE-Proton-7-25 Released
+
 - FFXIV hydaelyn intro video after datacenter select fixed (again). May also fix WMV playback in some other games.
 - Trion/Glyph launcher and its games are now fixed (Trove, Rift)
 - revert proton commit 96b8220 to re-enable gallium nine patching compatibility
@@ -96,22 +132,26 @@
 - FSR will now auto-calculate resolutions based on screen aspect ratio rather than adding pre-defined entries based on width.
 
 ## GE-Proton-7-24 Released
+
 - Hotfix: Death Stranding crash fixed
 - FSR Updates
 
 ## GE-Proton-7-23 Released
+
 - Hotfix: fix Path of Exile not launching
 - FSR:
 
 I've attempted to make the FSR issue a bit easier for people by implementing a new option
 
 ## GE-Proton-7-22 Released
+
 - Hotfix:
 
 - Fixes crashes with 3440x1440 screen resolution
 - FSR resolutions removed from in-game resolution list. Please use WINE_FULLSCREEN_FAKE_CURRENT_RES to set scale-from resolution
 
 ## GE-Proton-7-21 Released
+
 - Wine:
 
 - Paladins crash fixed. I found the fix and reported it upstream and they were able to get it fixed. As long as they allow EAC to keep working the game should now be playable (again)
@@ -138,12 +178,14 @@ I've attempted to make the FSR issue a bit easier for people by implementing a n
 - FarCry 4 crash fixed on systems with high core counts (it still has a crashing problem with dxvk + amd. works with dxvk+nvidia and wined3d+amd):
 
 ## GE-Proton-7-20 Released
+
 - Fix FSR missing
 - Fix some WMV videos broken after previous release (UMVC3, Atelier, RE5)
 - Note: Audio is still broken on some of these (audio was broken before e.g. UMVC3)
 - Fix nvcuda missing
 
 ## GE-Proton-7-19 Released
+
 - V Rising fixes imported from upstream proton
 - More FFXIV fixes imported from upstream proton
 - FFXIV A Realm Reborn intro video missing audio fixed
@@ -160,6 +202,7 @@ I've attempted to make the FSR issue a bit easier for people by implementing a n
 - vkd3d-proton updated to latest bleeding edge
 
 ## GE-Proton7-18 Released
+
 - proton bleeding edge updates, contains patches to fix official FFXIV Launcher (finally)
 Additional notes:
 - As before, you can still also use NOSTEAM=1 %command% to log in with a standalone non-steam account.
@@ -168,11 +211,13 @@ Additional notes:
 - vkd3d-proton updated
 
 ## GE-Proton7-17 Released
+
 - This is just a minor update/hotfix release.
 - sapi-iteration-tokens staging patchset updated. Fixes Bless Unleashed launcher crash and fixes performance hit when patch set is not applied. Game is now playable.
 - wine updated to latest bleeding edge
 
 ## GE-Proton7-16 Released
+
 - added patch to fix crash in Elden Ring with fsync enabled after an extended period of time (thanks Paul Gofman!)
 - pull in video playback updates from upstream proton
 - pull in steam client updates from upstream proton
@@ -180,6 +225,7 @@ Additional notes:
 - vkd3d-proton updated to latest git
 
 ## GE-Proton7-15 Released
+
 - vp9 support enabled in gst-plugins-good for ghostwire tokyo videos (they work now)
 - protonfix added for State of Decay 2 crashes (thanks ThisNekoGuy!)
 - protonfix added for Fall Guys EAC (works now, thanks rokam!)

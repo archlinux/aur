@@ -147,8 +147,8 @@ $ proton 17300 winecfg
 # returns native path in ${_pfx}/${_appid}
 $ proton getnativepath "C:\Windows"
 
-# "${_mode}" winecfg in prefix ~/myfolder, matching protonfixes are run
-$ env STEAM_COMPAT_DATA_PATH=~/myfolder proton 17300 winecfg
+# "${_mode}" winecfg in prefix ~/myfolder/17300, matching protonfixes for crysis are run
+$ env STEAM_COMPAT_DATA_PATH=~/myfolder/17300 proton winecfg
 
 EOF
 }
