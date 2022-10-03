@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package, installer and updater
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
 	license = MIT
@@ -45,11 +45,14 @@ pkgbase = nwg-shell
 	depends = python-dasbus
 	depends = swaync
 	depends = gtklock
+	depends = gtklock-userinfo-module
+	depends = gtklock-powerbar-module
+	depends = gtklock-playerctl-module
 	optdepends = chromium: suggested web browser
 	optdepends = mousepad: suggested text editor
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
-	source = nwg-shell-0.3.3.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.3.3/nwg-shell-v0.3.3.tar.gz
-	md5sums = 6f1547eed943b05f8f7a5c96398d123e
+	source = nwg-shell-0.3.4.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.3.4/nwg-shell-v0.3.4.tar.gz
+	md5sums = 56d2712370ad512b9566bf1276456fe1
 
 pkgname = nwg-shell
