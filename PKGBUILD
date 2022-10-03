@@ -30,7 +30,7 @@ package() {
     fakechroot chroot $pkgdir /$_installer_bin --mode unattended
     echo 'done'
 
-    echo -ne 'Removing installer.. '
+    echo -ne 'Removing installer... '
     # Remove installer file
     rm $pkgdir/$_installer_bin
     echo 'done'
