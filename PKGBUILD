@@ -3,7 +3,7 @@
 # Contributor: Imperator Storm <ImperatorStorm11@protonmail.com>
 pkgname=ferium-git
 _pkgname=ferium
-pkgver=4.1.1.r2.gce2934f
+pkgver=4.2.0.r1.g5dc45e4
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64")
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare(){
     cd "$srcdir/ferium"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$CARCH-unknown-linux-musl"
 }
 build(){
     cd "$srcdir/ferium"
