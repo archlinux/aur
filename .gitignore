@@ -1,5 +1,4 @@
 pkg/
 src/
-soundfile-*.tar.gz
-python-soundfile-*.pkg.tar.*
-python-soundfile-*.src.tar.gz
+*.tar.*
+*.zip
