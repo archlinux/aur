@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-revealjs
 	pkgdesc = Sphinx extension with theme to generate Reveal.js presentation
-	pkgver = 1.0.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/attakei/sphinx-revealjs
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = python-sphinx-revealjs
 	depends = python
 	depends = python-sphinx
 	depends = python-docutils
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-revealjs/sphinx-revealjs-1.0.1.tar.gz
-	sha256sums = 7daa6262571470ba9ef03ee4c1daaecae1c9e7293d684bcff0a676d82abded54
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-revealjs/sphinx-revealjs-2.2.0.tar.gz
+	sha256sums = c508d517df650386f0599c2108940731892abd8fa0c24642111ed1271120184d
 
 pkgname = python-sphinx-revealjs
 	depends = python
 	depends = python-sphinx
 	depends = python-docutils
-

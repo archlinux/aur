@@ -3,7 +3,7 @@
 pkgbase='python-sphinx-revealjs'
 pkgname=('python-sphinx-revealjs')
 _module='sphinx-revealjs'
-pkgver='1.0.1'
+pkgver='2.2.0'
 pkgrel=1
 pkgdesc="Sphinx extension with theme to generate Reveal.js presentation"
 url="https://github.com/attakei/sphinx-revealjs"
@@ -14,7 +14,8 @@ depends=('python' 'python-sphinx' 'python-docutils')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('7daa6262571470ba9ef03ee4c1daaecae1c9e7293d684bcff0a676d82abded54')
+sha256sums=('c508d517df650386f0599c2108940731892abd8fa0c24642111ed1271120184d')
+
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
