@@ -2,7 +2,7 @@
 
 pkgname=shotman
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncompromising screenshot GUI for Wayland"
 arch=("x86_64" "aarch64")
 url="https://git.sr.ht/~whynothugo/shotman"
@@ -12,7 +12,7 @@ optdepends=(
     "sway: screenshots of a single window on swaywm"
     "slurp: screenshots of a region on swaywm"
 )
-makedepends=("cargo")
+makedepends=("git" "cargo")
 source=("shotman-${pkgver}::git+https://git.sr.ht/~whynothugo/shotman#tag=v${pkgver}?signed")
 sha512sums=("SKIP")
 
