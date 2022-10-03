@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 pkgname=xygrib-git
-pkgver=1.2.6.1.r107.gb58041c
+pkgver=1.2.6.1.r120.g88c425c
 pkgrel=1
 pkgdesc="Grib reader and weather visualization software. Zygrib fork."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'zlib' 'bzip2' 'libpng')
 url="https://opengribs.org/"
 source=("$pkgname::git+https://github.com/opengribs/XyGrib.git" "CMakelists.txt.patch" "xygrib.install")
 sha1sums=('SKIP'
-          'add3722f418a64fd70e3a912793d3e5530fac4a0'
+          '1cbac226906a24f9671558b043c072192f3df03f'
           '97eec7e40bd2d4f44986ffbf5096ac4ba37ebbfe')
 
 pkgver() {
@@ -23,13 +23,17 @@ pkgver() {
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd $pkgname
   patch --strip=1 -i $srcdir/CMakelists.txt.patch
+}
+
+build() {
+  cd $pkgname
   mkdir -p build
   cd build
   cmake ../
-  make
+  make -j $(nproc)
 }
 
 package() {
