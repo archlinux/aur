@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-tbb
 	pkgdesc = High level abstract threading library (mingw-w64)
-	pkgver = 2021.5.0
-	pkgrel = 2
+	pkgver = 2021.6.0
+	pkgrel = 1
 	url = https://github.com/oneapi-src/oneTBB
 	arch = any
 	license = APACHE
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-tbb
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/oneapi-src/oneTBB/archive/v2021.5.0.tar.gz
-	sha256sums = e5b57537c741400cf6134b428fc1689a649d7d38d9bb9c1b6d64f092ea28178a
+	source = https://github.com/oneapi-src/oneTBB/archive/v2021.6.0.tar.gz
+	sha256sums = 4897dd106d573e9dacda8509ca5af1a0e008755bf9c383ef6777ac490223031f
 
 pkgname = mingw-w64-tbb
