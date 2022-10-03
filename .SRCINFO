@@ -1,0 +1,21 @@
+pkgbase = pcbdraw
+	pkgdesc = Convert your KiCAD board into a nice looking 2D drawing suitable for pinout diagrams
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = https://github.com/yaqwsx/PcbDraw
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = kicad
+	depends = python-numpy
+	depends = python-lxml
+	depends = python-mistune1
+	depends = python-pybars3
+	depends = python-wand
+	depends = python-yaml
+	source = pcbdraw-0.6.1.tar.gz::https://github.com/yaqwsx/PcbDraw/archive/v0.6.1.tar.gz
+	sha512sums = bf149f030eb2b66bc7d4fcd3c93b8775dcd5ed49975a8f648c445f72496ba970704bcbe588975efe0607cbff6ebce41382aac0ac484f87eff853c4b5cfec9bcd
+
+pkgname = pcbdraw
