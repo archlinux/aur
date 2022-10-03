@@ -1,8 +1,8 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba3-git
-pkgver=3.0.2.r22.gd456826e
-pkgrel=2
+pkgver=3.0.2.r24.g2d897626
+pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
