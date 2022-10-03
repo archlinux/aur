@@ -1,8 +1,8 @@
 # Maintainer: Huck Boles <huboles@pm.me>
 pkgname=zshmux
 pkgver=1.0
-pkgrel=3
-pkgdesc="Provides quick access to tmux sessions whenever a new shell is opened"
+pkgrel=4
+pkgdesc="Provides quick access to tmux when a new shell is opened"
 arch=('any')
 url="https://github.com/huboles/zshmux"
 license=('GPL')

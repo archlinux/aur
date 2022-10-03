@@ -1,7 +1,7 @@
 pkgbase = zshmux
-	pkgdesc = Provides quick access to tmux sessions whenever a new shell is opened
+	pkgdesc = Provides quick access to tmux when a new shell is opened
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/huboles/zshmux
 	arch = any
 	license = GPL
