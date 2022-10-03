@@ -4,7 +4,7 @@
 pkgname=yank-note-bin
 _pkgname=yank-note
 _electron=electron
-pkgver=3.37.0
+pkgver=3.38.0
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('asar' 'yarn' 'jq' 'moreutils' 'node-gyp' 'git')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
-sha256sums=('007826b76337e681e341cadd843232607b5b8045fcf28e7d375824735abd2b98'
+sha256sums=('5b4469014c4321ae7a239e2fdb3793cb61c1c220588f9a3dcccdc9f02f8fb79e'
             'e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
 options=(!strip)
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
     # fix for electron20, see https://github.com/electron/electron/issues/35193,
     # and https://github.com/nodejs/nan/pull/943
     cd "$srcdir/opt/Yank Note/resources"/apps
-    jq '.resolutions.nan = "github:weedz/nan#a679b69b92e1997f6b40f1d3981a58a0021e1b99"' package.json|sponge package.json
+    jq '.resolutions.nan = "github:VerteDinde/nan#deprecate_accessor_signature"' package.json|sponge package.json
 
     cd $srcdir/usr/share/applications
     sed -i "s|^Exec.*|Exec=yank-note %U|g"   ${_pkgname}.desktop
