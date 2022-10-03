@@ -1,9 +1,10 @@
 pkgbase = f2c
 	pkgdesc = Fortran to C code translator
 	pkgver = 20200916
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.netlib.org/f2c
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = unzip
 	depends = glibc
@@ -14,4 +15,3 @@ pkgbase = f2c
 	sha256sums = ca404070e9ce0a9aaa6a71fc7d5489d014ade952c5d6de7efb88de8e24f2e8e0
 
 pkgname = f2c
-

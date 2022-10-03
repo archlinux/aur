@@ -1,4 +1,4 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jesin <jesin00@gmail.com>
@@ -6,11 +6,11 @@
 
 pkgname=f2c
 pkgver=20200916
-pkgrel=2
+pkgrel=3
 pkgdesc='Fortran to C code translator'
 url='https://www.netlib.org/f2c'
 license=('custom')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=('glibc')
 makedepends=('unzip')
 source=("$pkgname-$pkgver.tar.gz::$url/src.tgz"
