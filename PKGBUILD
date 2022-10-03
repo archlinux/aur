@@ -5,8 +5,8 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.8.8.1
-pkgrel=4
+pkgver=1.8.9pre1
+pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -16,18 +16,10 @@ makedepends=('libelf' 'linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
 install=openafs-modules.install
-source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        0001-Accepted-changes-for-openafs-stable-1_8_x.patch.gz
-        0002-Pending-changes-for-openafs-stable-1_8_x.patch.gz
-        0003-Linux-Introduce-file-mapping-readpage-helpers.patch
-        0004-Linux-5.19-Rename-aops-readpage-to-read_folio.patch
-        0005-Linux-5.19-Remove-flags-from-aops-write_begin.patch)
-sha256sums=('e7c4bed7075bcd6402e3f0c2d5b9dbe76ad2ee3c5fd5ddc3973a3356ca23ef44'
-            'ed8debf0d269fb80b7e6d7d429ff3f34b6105fd423c482a3ea7c4fa54b19018b'
-            'c3fe812056b03cc068373c5c18411b3546f380ba72abfccf70bc166110f390da'
-            '0e902a093d5bad45f422ef1fc47c686503315fa3049f304eadb8b9dae6be8027'
-            '0bb7ac77fa5d3d42bd78f67974ecbcc7cb8973e2859d74c361cb5fa18275cb8e'
-            '7c7c6d9e76b436f95ba46138b979694cb50ff33eba2de82f1f5d426213f1768c')
+source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-Linux-6.0-Replace-add_to_page_cache.patch)
+sha256sums=('3b9d5f646b1efd24ae18ba6be45490bb01b4547725621fb335379f5754c6cb7a'
+            'af9db57b1d65cfb7d7c58aa15df764e4bceaaa99d2c829f2c2ee317567347131')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -42,16 +34,8 @@ _extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
-  # Changes that have been accepted for OpenAFS 1.8.x
-  zcat "${srcdir}"/0001-Accepted-changes-for-openafs-stable-1_8_x.patch.gz | patch -p1
-
-  # Changes likely to be accepted for OpenAFS 1.8.x
-  zcat "${srcdir}"/0002-Pending-changes-for-openafs-stable-1_8_x.patch.gz | patch -p1
-
-  # Changes to support Linux 5.19
-  patch -p1 < "${srcdir}"/0003-Linux-Introduce-file-mapping-readpage-helpers.patch
-  patch -p1 < "${srcdir}"/0004-Linux-5.19-Rename-aops-readpage-to-read_folio.patch
-  patch -p1 < "${srcdir}"/0005-Linux-5.19-Remove-flags-from-aops-write_begin.patch
+  # Changes to support Linux 6.0
+  patch -p1 < "${srcdir}"/0001-Linux-6.0-Replace-add_to_page_cache.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
