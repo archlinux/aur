@@ -23,21 +23,25 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
 noextract=()
 
 prepare() {
+  cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
+  cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
+  cd "$pkgname-$pkgver"
   sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
 }
 sha256sums=('bb614079c3f144b71d5f2a5f22bb672edf5fe431fdfd20aa18b91e9624b71502')
