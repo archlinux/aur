@@ -1,0 +1,17 @@
+pkgbase = maelstrom-mod-1980
+	pkgdesc = Mod for the game Maelstrom mimicking the 80s style
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/Maelstrom/add-ons.html
+	arch = any
+	depends = maelstrom
+	conflicts = maelstrom-mod-star-trek
+	conflicts = maelstrom-mod-star-wars
+	conflicts = maelstrom-mod-extra
+	conflicts = maelstrom-mod-army-of-darkness
+	conflicts = maelstrom-mod-beavis-butthead
+	conflicts = maelstrom-mod-stooges
+	source = http://www.libsdl.org/projects/Maelstrom/add-ons/Maelstrom_1980.zip
+	sha256sums = fb6128a48cdf855709e6fa4a219be53e413b0d40d94f5ae509091af2360f8816
+
+pkgname = maelstrom-mod-1980
