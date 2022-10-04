@@ -1,4 +1,4 @@
-# Maintainer: Luis Sarmiento <>
+# Contributor: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname=mcnptools
 pkgver=5.3.1
 pkgrel=1
