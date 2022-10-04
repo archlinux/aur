@@ -1,19 +1,19 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=raider-file-shredder
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Securely delete your files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ADBeveridge/raider"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('meson' 'itstool' 'blueprint-compiler' 'gobject-introspection')
+makedepends=('meson' 'itstool' 'blueprint-compiler' 'gobject-introspection' 'gi-docgen')
 optdepends=('libnautilus-extension')
 checkdepends=('appstream-glib')
 conflicts=("${pkgname%-file-shredder}")
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('339cc732a60d2dcbc6a99459669ab53771fdf429aa9841f9669487b6d9fa2f17ae48b36f65178f3954009d25b6d990ae0594a86affff825650534fa214a9fbec')
+b2sums=('a97ba293a026fc4f4abbd6733257f0fa89afd636f35ce9277cb355b070d0b176faaa97327b2b026b7978032bfa31c339d54ff0b9f1315df9d42e8fe103b3778b')
 
 build() {
   arch-meson "${pkgname%-file-shredder}-$pkgver" build
@@ -21,7 +21,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
