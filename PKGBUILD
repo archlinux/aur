@@ -4,8 +4,8 @@
 
 pkgname=tango-cpp
 _pkgname=cppTango
-pkgver=9.4.0
-pkgrel=1
+pkgver=9.3.5
+pkgrel=2
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'armv7h')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('tango-idl' 'omniorb>=4.2.1' 'zeromq' 'doxygen' 'cmake>=3.7')
 conflicts=('tango')
 source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6a6368564f7762881a0c5b4a2023c9af1a2872aa648d94a679b4e8789283a409')
+sha256sums=('7542cd898c67cfb077465b00303e00c93e9ecf7562d2e6fb5646bcff4cd5d11a')
 _dir="${_pkgname}-${pkgver}"
 
 prepare() {
