@@ -1,13 +1,13 @@
 # Maintainer: Zhiya Luo <luozhiya@petalmail.com>
 
 pkgname=mogan
-pkgver=r195.584bb00
+pkgver=r199.ff87305
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
 arch=('x86_64')
 url='https://github.com/XmacsLabs/mogan'
 license=('GPL3')
-depends=("qt6-base" "qt6-svg" "freetype2" "sqlite" "libpng" "libiconv" "zlib" "libjpeg" "curl")
+depends=("qt5-base" "qt5-svg" "freetype2" "sqlite" "libpng" "libiconv" "zlib" "libjpeg" "curl")
 makedepends=("git" "cmake" "ninja")
 optdepends=()
 source=("${pkgname}::git+${url}.git")
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-  cmake -S"${pkgname}" -Bbuild -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr 
+  cmake -S"${pkgname}" -Bbuild -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTEXMACS_GUI=Qt5
   cmake --build build --parallel
 }
 
