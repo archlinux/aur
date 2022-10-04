@@ -3,7 +3,10 @@
 pkgname=azure-storage-cpp
 pkgdesc='Microsoft Azure Storage Client Library for C++'
 pkgver=7.5.0
-pkgrel=2
+# A rebuild is needed each time boost has its version updated.
+# Note: cpprestsdk itself doesn't link with and boost library files. But
+# azure-storeage-cpp will.
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/Azure/azure-storage-cpp'
 license=('APACHE')

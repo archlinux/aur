@@ -1,7 +1,7 @@
 pkgbase = azure-storage-cpp
 	pkgdesc = Microsoft Azure Storage Client Library for C++
 	pkgver = 7.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Azure/azure-storage-cpp
 	arch = x86_64
 	license = APACHE
