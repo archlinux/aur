@@ -22,7 +22,9 @@ noextract=("${source[@]%%::*}")
 
 package_ceph-libs-bin() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
-           'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt')
+           'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt' 'cryptsetup'
+           'lua' 'librdkafka'
+           'python-prettytable' 'python-yaml' 'python-setuptools')
   provides=("ceph-libs=${pkgver}-${pkgrel}")
   conflicts=('ceph-libs')
 
@@ -34,12 +36,11 @@ package_ceph-libs-bin() {
 package_ceph-bin() {
   depends=("ceph-libs=${pkgver}-${pkgrel}"
            'boost-libs' 'curl' 'fuse2' 'fuse3' 'fmt' 'glibc' 'gperftools' 'java-runtime'
-           'keyutils' 'leveldb' 'libaio' 'libutil-linux' 'librdkafka'
-           'lsb-release' 'ncurses'
-           'nss' 'oath-toolkit' 'python' 'python-bcrypt' 'python-setuptools'
-           'python-prettytable' 'python-cmd2' 'python-dateutil' 'snappy' 'sudo' 'systemd-libs'
-           'python-flask' 'python-pecan' 'python-pyopenssl' 'python-requests' 'python-werkzeug' 'xfsprogs'
-           'python-yaml' 'python-pyaml')
+           'keyutils' 'leveldb' 'libaio' 'libutil-linux' 'librdkafka' 'cryptsetup' 'libnl'
+           'ncurses'
+           'nss' 'oath-toolkit' 'python'
+           'snappy' 'sudo' 'systemd-libs' 'lua' 'gawk'
+           'xfsprogs')
   provides=("ceph=${pkgver}-${pkgrel}")
   conflicts=('ceph')
 
@@ -50,10 +51,11 @@ package_ceph-bin() {
 
 package_ceph-mgr-bin() {
   depends=("ceph=${pkgver}-${pkgrel}" "ceph-libs=${pkgver}-${pkgrel}"
-           'bash' 'boost-libs' 'coffeescript' 'curl' 'gperftools' 'nodejs' 'nss'
-           'python' 'python-cherrypy' 'python-flask-restful' 'python-pecan'
-           'python-pyjwt' 'python-routes' 'python-jsonpatch' 'python-more-itertools' 'python-numpy'
-           'python-scipy' 'python-six')
+           'bash' 'boost-libs' 'coffeescript' 'curl' 'gperftools' 'nodejs' 'nss' 'fmt'
+           'python' 'python-cherrypy' 'python-pecan' 'python-pyjwt' 'python-more-itertools'
+           'python-numpy' 'python-scipy' 'python-six' 'python-coverage' 'python-pytest' 'python-dateutil'
+           'python-prettytable' 'python-requests' 'python-pyopenssl' 'python-bcrypt' 'python-yaml'
+           'python-werkzeug' 'python-jinja')
   optdepends=('python-influxdb: influx module'
               'python-kubernetes: rook module'
               'python-prometheus_client: prometheus module'
