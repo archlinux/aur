@@ -1,6 +1,6 @@
 pkgbase = python-torchmetrics
 	pkgdesc = Machine learning metrics for distributed, scalable PyTorch applications
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/PyTorchLightning/metrics
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-torchmetrics
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-pytorch
-	source = torchmetrics-0.9.3.tar.gz::https://github.com/PyTorchLightning/metrics/releases/download/v0.9.3/torchmetrics-0.9.3.tar.gz
-	sha512sums = 0531b3feaca3003c3878f69bdfd9a831ce4e315248544ba3ad244c8167766a6d3c200de54aee3eb3d3bd589db9a798bf8e91eef9454c11b8c40deb08f22c6cc7
+	source = torchmetrics-0.10.0.tar.gz::https://github.com/PyTorchLightning/metrics/releases/download/v0.10.0/torchmetrics-0.10.0.tar.gz
+	sha512sums = 7fda6c2c23127ee80c5c162b991f7997409a078383bc657830df4ca248872974fa473fdc0088cea6ef6983e4e1bd197ab64a3917ecd472ad1bdbbbe4a85a9ca8
 
 pkgname = python-torchmetrics
