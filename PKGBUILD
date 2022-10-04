@@ -2,14 +2,14 @@
 # Contributor: Wouter Wijsman <wwijsman@live.nl>
 pkgname=minigalaxy
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
 url="https://sharkwouter.github.io/minigalaxy"
 license=('GPL3' 'CC-BY-3.0')
 depends=('gtk3' 'python-gobject' 'python-requests' 'unzip' 'webkit2gtk' 'xdg-utils')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-coverage' 'python-simplejson')
+#checkdepends=('python-coverage' 'python-simplejson')
 optdepends=('dosbox: Use the system DOSBox installation'
             'innoextract: Extract Windows installers'
             'scummvm: Use the system ScummVM installation'
@@ -22,16 +22,13 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "$pkgname-$pkgver"
+#check() {
+#  cd "$pkgname-$pkgver"
 
-  # tests fail if locale is set to anything other than en_US
-  export LANG=en_US.UTF-8
-
-  # Run unit tests
-  python -m coverage run --source minigalaxy -m unittest discover -v tests
-  python -m coverage report -m
-}
+#  # Run unit tests
+#  python -m coverage run --source minigalaxy -m unittest discover -v tests
+#  python -m coverage report -m
+#}
 
 package() {
   cd "$pkgname-$pkgver"
