@@ -1,6 +1,6 @@
 # Maintainer A. Kulkarni <cd+aur [shift-2] terminal.space>
 pkgname=lvm-autosnap
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Create lvm snapshots during boot and automatically offer to restore your system if it stops booting.'
 arch=('any')
@@ -42,3 +42,4 @@ package() {
   install -D -m0644 "${srcdir}/${_snapshot}/runtime-hook.sh" "${pkgdir}/usr/lib/initcpio/hooks/lvm-autosnap"
 }
 sha256sums=('5166933acf3cefe98ee2f773d11007935898e2eeb01de30dd227c91e96a92271')
+
