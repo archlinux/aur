@@ -13,15 +13,14 @@ license=(GPL2)
 options=('!strip')
 depends=(pahole)
 
-#_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}-xanmod${xanmod}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-x64v2")).browser_download_url')
-_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}-xanmod${xanmod}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-x64v2-${xanmod}")).browser_download_url' )
+_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-x64v2-xanmod" + $XANMOD)).browser_download_url')
 source=("${_url}")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('bf48c63320e13f7a63d0d788536cdfe82bddbd4f496c144e3f58abb047057a5e')
+sha256sums=('dc9b95289a3fc63886d9b5389ba67655ca9ffcfba883bb182790043d8ea75af3')
 
 prepare() {
   bsdtar -xf data.tar.xz

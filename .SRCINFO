@@ -7,9 +7,9 @@ pkgbase = linux-xanmod-edge-linux-headers-bin-x64v2
 	license = GPL2
 	depends = pahole
 	options = !strip
-	source = 
+	source = https://github.com/xanmod/linux/releases/download/6.0.0-xanmod1/linux-headers-6.0.0-x64v2-xanmod1_6.0.0-x64v2-xanmod1-0.20221003.git3325905_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = bf48c63320e13f7a63d0d788536cdfe82bddbd4f496c144e3f58abb047057a5e
+	sha256sums = dc9b95289a3fc63886d9b5389ba67655ca9ffcfba883bb182790043d8ea75af3
 
 pkgname = linux-xanmod-edge-linux-headers-bin-x64v2
