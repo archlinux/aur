@@ -1,0 +1,14 @@
+pkgbase = numix-tools-git
+	pkgdesc = Various tools and scripts used by the Numix Project
+	pkgver = r56.a63bf0c
+	pkgrel = 1
+	url = https://github.com/numixproject/numix-tools
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = librsvg: For svgscale
+	optdepends = svgcleaner: For svgclean [AUR package]
+	source = git+https://github.com/numixproject/numix-tools.git
+	sha256sums = SKIP
+
+pkgname = numix-tools-git
