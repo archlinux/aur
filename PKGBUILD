@@ -1,9 +1,9 @@
-#PKGBUILD was last modified on September 27, 2022 at 03:54 PM EDT by bms#
+#PKGBUILD was last modified on October 04, 2022 at 01:37 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 
 pkgname=guile-hall-git
 pkgver=0.4.1.r30.g36dd0c6
-pkgrel=2
+pkgrel=3
 pkgdesc="Project manager and build tool for GNU guile (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
@@ -15,7 +15,7 @@ source=("${pkgname%-git}::git+https://gitlab.com/a-sassmannshausen/guile-hall.gi
 	"guile-hall-git-xdg-fix.patch")
 url="https://gitlab.com/a-sassmannshausen/guile-hall"
 sha256sums=('SKIP'
-	    '0ea14d5f9fcf8ccf81c6235be643109671d7db691e3f8e55eca4d1326851224d')
+	    '18cdf8108554c2b3f581563367e095a30e9f107f0d9148dae4c1e508025a8845')
 options=(!strip)
 
 pkgver() {

@@ -1,35 +1,5 @@
-commit a219be1da65ac527d839db0c74f2c0bb6774ae84
-Author: Ben Sutter <14796185+bms-1984@users.noreply.github.com>
-Date:   Sun Sep 25 06:45:27 2022 -0400
-
-    add xdg config file
-
-diff --git a/doc/hall.texi b/doc/hall.texi
-index 5bc876a..e2fdaca 100644
---- a/doc/hall.texi
-+++ b/doc/hall.texi
-@@ -334,7 +334,7 @@ The special switches @option{--help}, @option{--version},
- @option{--usage} and @option{--cmdtree} are always available.  They
- will act as your guides as you explore the lands of Hall.
- @item
--Hall has a configuration file located at @file{~/.hall}.  You can set
-+Hall has a configuration file located at @file{~/.hall} or at @file{~/.config/hall/hall}.  You can set
- some settings there, to provide default values for all your projects.
- @end itemize
- 
-@@ -362,8 +362,8 @@ convert an existing Guile project to use Hall (using the
- 
- Outside of the standard options, @command{init} also accepts
- @option{--author}, @option{--license}, @option{--prefix} and
--@option{--website}.  All of these can be set in the @file{~/.hall}
--configuration file.
-+@option{--website}.  All of these can be set in the @file{~/.hall} and @file{~/.config/hall/hall}
-+configuration files.
- 
- It also accepts the special @option{--convert} switch, which will
- probably become a subcommand in the near future.
 diff --git a/scripts/hall.in b/scripts/hall.in
-index d14269e..90c0c1e 100644
+index d14269e..71da3d7 100644
 --- a/scripts/hall.in
 +++ b/scripts/hall.in
 @@ -149,8 +149,7 @@ distribution file.")
@@ -42,14 +12,17 @@ index d14269e..90c0c1e 100644
  
  '--convert' can be used when you have an existing project that you want to
  start using hall for.
-@@ -221,7 +220,9 @@ first.")
+@@ -221,7 +220,12 @@ first.")
           (handler (cut string-split <> #\,))
           (synopsis "CSV list regexp patterns to indicate files to skip.")
           (example "scripts/foo,AUTHORS,^.*rgp$")))))))
 -   (directory (in-home "."))
 +   (directory (list
-+	       (in-home  ".config/hall/" #t)
-+	       (in-home "." #t)))
++	       (path (given (string-append (let ((xdg (getenv "XDG_CONFIG_HOME")))
++					       (if (> (string-length xdg) 0)
++						   xdg
++						   (string-append (getenv "HOME") "/.config"))) "/hall/"))
++		     (eager? #t))))
     (parser simple-sexp-parser)))
  
  (define* (main #:optional (args (command-line)))
