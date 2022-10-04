@@ -29,11 +29,13 @@ build() {
 }
 
 check() {
+  cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
+  cd "$pkgname-$pkgver"
   sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
 }
 sha256sums=('0bdf82de5b48760e9dcaee0f474ac8cdc333969c60734c4aaa79bc33930a755f')
