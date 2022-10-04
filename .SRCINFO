@@ -1,7 +1,7 @@
 pkgbase = genrepass-bin
 	pkgdesc = Generate readable passwords from an ordered list of words extracted from text
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AlexChaplinBraz/genrepass-cli
 	arch = x86_64
 	arch = i686
