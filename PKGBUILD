@@ -1,5 +1,5 @@
 pkgname=go-returns-git
-pkgver=20161114.29_d537704
+pkgver=20181028.38_538ac60
 pkgrel=1
 pkgdesc="go-returns"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=(
 )
 
 source=(
-	"git://github.com/sqs/goreturns.git"
+	"git+https://github.com/sqs/goreturns.git"
 )
 
 md5sums=(
@@ -39,7 +39,7 @@ build() {
 	mkdir -p $srcdir/src
 	ln -sf $srcdir/goreturns $srcdir/src
 	cd $srcdir/src/goreturns
-	go get -v
+        GO111MODULE=off	go get -v
 }
 
 package() {
