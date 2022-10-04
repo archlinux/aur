@@ -18,24 +18,25 @@ depends=('python-numpy' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
 provides=('petsc4py')
 optdepends=('trilinos: support for trilinos'
-  'ptscotch: support for ptscotch sequential and parallel graph partitioning library'
-  'parmetis: support for parmetis parallel graph partitioning library'
-  'metis: support for metis graph partitioning library'
-  'pastix: support for the pastix solver'
-  'superlu: support for the superlu sparse solver'
-  'hypre: support for the hypre sparse system solver'
-  'hdf5-openmpi: support for the parallel version of HDF5'
-  'mumps: support for the mumps sparse solver'
-  'fftw: support for the FFTW fast Fourier transform'
-  'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
-  'suitesparse: support for the suitesparse sparse matrix libraries'
-  'valgrind: support for valgrind to help find memory-management problems in programs'
+  'fftw: support for the FFTW'
+  'hdf5: support for the HDF5'
+  'hypre: support for the HYPRE'
+  'metis: support for METIS'
+  'mumps: support for MUMPS'
+  'parmetis: support for ParMETIS'
+  'scalapack: support for ScaLAPACK'
+  'scotch: support for Scotch'
+  'suitesparse: support for SuiteSparse'
+  'superlu: support for SuperLU'
+  'triangle: support for Triangle'
+  'trilinos: support for the ML package from Trilinos'
   )
+
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha256sums=('9da802e703ad79fb7ef0007d17f68916573011073ee9712dcd1673537f6a5f68'
-            '2d253a7b4bb4efe0200b7c1b57f71e423f135dc439945981c5fe2298d8066dba')
+            '41897cf761833e2d0cf2b2425f5727817a2ec4220e126ff2fcb4bdfe071a194c')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
