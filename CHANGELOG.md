@@ -1,5 +1,31 @@
 # Changelog
 
+## [v4.0.0](https://github.com/fastly/cli/releases/tag/v4.0.0) (2022-10-04)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v3.3.0...v4.0.0)
+
+**Enhancements:**
+
+* Bump go-fastly to v6.5.1 [#635](https://github.com/fastly/cli/pull/635)
+* Update `--ssl-ciphers` description [#636](https://github.com/fastly/cli/pull/636)
+* Improve JS error message when a dependency is missing [#637](https://github.com/fastly/cli/pull/637)
+* Change default service version selection behaviour [#638](https://github.com/fastly/cli/pull/638)
+* Support for additional S3 storage classes [#641](https://github.com/fastly/cli/pull/641)
+* Change `compute serve --watch` flag to default to the project root directory [#642](https://github.com/fastly/cli/pull/642)
+* Document the newly supported Datadog sites for logging [#576](https://github.com/fastly/cli/pull/576)
+* Move the internal build scripts to the fastly.toml manifest [#640](https://github.com/fastly/cli/pull/640)
+* Implement `compute hashsum` [#649](https://github.com/fastly/cli/pull/649)
+* Add support for TOML `object_store` section [#651](https://github.com/fastly/cli/pull/651)
+* Add `--account-name` to GCS logging endpoint [#549](https://github.com/fastly/cli/pull/549)
+
+**Bug fixes:**
+
+* errors/log: be defensive against nil pointer dereference [#650](https://github.com/fastly/cli/pull/650)
+
+**Documentation:**
+
+* Fix typos [#652](https://github.com/fastly/cli/pull/652)
+
 ## [v3.3.0](https://github.com/fastly/cli/releases/tag/v3.3.0) (2022-09-05)
 
 [Full Changelog](https://github.com/fastly/cli/releases/tag/v3.2.5...v3.3.0)
