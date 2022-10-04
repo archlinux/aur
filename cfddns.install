@@ -1,7 +1,7 @@
 post_install() {
   echo "### cfddns ###"
   echo "1. Edit /etc/cfddns/cfddns.yml"
-  echo "2. Create domain list at /etc/cfddns/domains, 1 domain for each line"
+  echo "2. Create domain list at /etc/cfddns/domains, 1 domain per line"
   echo "3. systemctl enable --now cfddns"
-  echo "Run 'cfddns /etc/cfddns/domains -c /etc/cfddns/cfddns.yml' to manually update DNS records"
+  echo "Alternatively, you can run 'cfddns /etc/cfddns/domains -c /etc/cfddns/cfddns.yml' to manually update DNS records"
 }
