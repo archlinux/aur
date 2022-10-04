@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-xrdesktop-git
 	pkgdesc = Next generation desktop shell - with patches for xrdesktop.
-	pkgver = 42.0
+	pkgver = 42.5
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
@@ -42,9 +42,9 @@ pkgbase = gnome-shell-xrdesktop-git
 	depends = libinputsynth-git
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
-	provides = gnome-shell=42.0
+	provides = gnome-shell=42.5
 	conflicts = gnome-shell
-	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=42.0-xrdesktop
+	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=42.5-xrdesktop-legacy
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
