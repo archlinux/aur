@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-xz
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files (mingw-w64)
-	pkgver = 5.2.6
+	pkgver = 5.2.7
 	pkgrel = 1
 	url = https://tukaani.org/xz
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mingw-w64-xz
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://tukaani.org/xz/xz-5.2.6.tar.gz
-	source = https://tukaani.org/xz/xz-5.2.6.tar.gz.sig
+	source = https://tukaani.org/xz/xz-5.2.7.tar.gz
+	source = https://tukaani.org/xz/xz-5.2.7.tar.gz.sig
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
-	sha256sums = a2105abee17bcd2ebd15ced31b4f5eda6e17efd6b10f921a01cda4a44c91b3a0
+	sha256sums = 06327c2ddc81e126a6d9a78b0be5014b976a2c0832f492dcfc4755d7facf6d33
 	sha256sums = SKIP
 
 pkgname = mingw-w64-xz
