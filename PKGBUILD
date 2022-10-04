@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Costa <xfgusta@gmail.com>
 
 pkgname=elfy
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Display information about ELF files'
 arch=(x86_64)
 url="https://github.com/xfgusta/$pkgname"
 license=(MIT)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('85863295090cc7dfa5d21296d3c1fc343d09560b')
+sha1sums=('4e0acc9e09f3752cd3953a31cd9dfacf7cf15b41')
 
 build() {
   cd "$pkgname-$pkgver"
