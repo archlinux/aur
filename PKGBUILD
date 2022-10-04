@@ -4,15 +4,15 @@
 _pkgname=libcpuid
 pkgname=$_pkgname-git
 epoch=2
-pkgver=0.6.0.r0.g3bf569f
-pkgrel=1
+pkgver=0.6.0.r6.gf8f73a2
+pkgrel=2
 pkgdesc="A small C library for x86 CPU detection and feature extraction"
 arch=('i686' 'x86_64')
 url="http://libcpuid.sourceforge.net"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake' 'ninja' 'doxygen')
-provides=('libcpuid')
+provides=('libcpuid=0.6.0')
 conflicts=('libcpuid')
 source=("git+https://github.com/anrieff/libcpuid.git")
 sha512sums=('SKIP')
