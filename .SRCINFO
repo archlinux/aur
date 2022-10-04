@@ -1,0 +1,12 @@
+pkgbase = ttf-abuse
+	pkgdesc = Abuse is a font to inspired by the culture of Calligraffiti, that is an art form combines calligraphy, typography, and graffiti.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.dafont.com/abuse-2.font
+	arch = any
+	license = custom:personal use
+	depends = fontconfig
+	source = ttf-abuse.zip::https://dl.dafont.com/dl/?f=abuse_2
+	sha256sums = 2f0c5f98c416f109cdb4896f958476609793f81943e0b30832fa06f5de8cef64
+
+pkgname = ttf-abuse
