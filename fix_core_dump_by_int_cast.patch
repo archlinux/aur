@@ -1,0 +1,26 @@
+diff --git a/src/m64py/frontend/mainwindow.py b/src/m64py/frontend/mainwindow.py
+index f845bbc..7c59ff4 100644
+--- a/src/m64py/frontend/mainwindow.py
++++ b/src/m64py/frontend/mainwindow.py
+@@ -177,7 +177,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
+         width, height = size.width(), size.height()
+         dwidth, dheight = desktop.width(), desktop.height()
+         cw, ch = (dwidth/2)-(width/2), (dheight/2)-(height/2)
+-        self.move(cw, ch)
++        self.move(int(cw), int(ch))
+ 
+     def connect_signals(self):
+         """Connects signals."""
+diff --git a/src/m64py/frontend/romreader.py b/src/m64py/frontend/romreader.py
+index ff861d0..84de37a 100644
+--- a/src/m64py/frontend/romreader.py
++++ b/src/m64py/frontend/romreader.py
+@@ -123,7 +123,7 @@ class ROMReader(QThread):
+                 log.warn(str(err))
+                 continue
+             percent = float(filenum) / float(num_files) * 100
+-            self.parent.progressBar.valueChanged.emit(percent)
++            self.parent.progressBar.valueChanged.emit(int(percent))
+         self.exit()
+ 
+     def stop(self):
