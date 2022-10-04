@@ -4,21 +4,21 @@
 buildarch=8
 
 pkgname=uboot-nanopi-r4s
-pkgver=2022.07
+pkgver=2022.10
 pkgrel=1
 pkgdesc="U-Boot for FriendlyARM NanoPi R4S"
 arch=('aarch64')
 url='http://www.denx.de/wiki/U-Boot/WebHome'
 license=('GPL')
 backup=('boot/boot.txt' 'boot/boot.scr')
-makedepends=('arm-none-eabi-gcc' 'python' 'dtc')
+makedepends=('arm-none-eabi-gcc' 'python' 'python-setuptools' 'dtc' 'swig')
 install=${pkgname}.install
 atfver=2.7
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
         "https://github.com/ARM-software/arm-trusted-firmware/archive/v${atfver}.tar.gz"
         'boot.txt'
         'mkscr')
-sha256sums=('92b08eb49c24da14c1adbf70a71ae8f37cc53eeb4230e859ad8b6733d13dcf5e'
+sha256sums=('50b4482a505bc281ba8470c399a3c26e145e29b23500bc35c50debd7fa46bdf8'
             '327c65b1bc231608a7a808b068b00c1a22310e9fc86158813cd10a9711d5725e'
             '085f893239f75243b0f37b34e34d5ba2feb4f2d3af8ffca3ceb2ca8b68bb7c74'
             'a4fc8b6b92bc364d6542670d294aa618a8501fb8729f415cc0a3eed776ef0c8e')
