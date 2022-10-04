@@ -1,0 +1,15 @@
+pkgbase = ysoft-client
+	pkgdesc = YSOFT SafeQ Printing Software
+	pkgver = 4.0.87
+	pkgrel = 1
+	url = https://www.ysoft.com/
+	install = ysoft-client.install
+	arch = x86_64
+	license = 
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = libcups
+	source = local://ysoft-client_4.0-87_all.deb
+	sha256sums = 3d72e1606fd1d1bad493e7a35d6406181c24f72d31f5774b35f096418faa3e0d
+
+pkgname = ysoft-client

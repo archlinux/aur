@@ -1,0 +1,27 @@
+post_install(){
+  chmod 755 /usr/lib/cups/backend/sqport
+  chown root:root /usr/lib/cups/backend/sqport
+
+  SOCKET_PATH="/var/spool/sqport"
+  mkdir -p "$SOCKET_PATH"
+  chown :lp "$SOCKET_PATH"
+  chmod +t "$SOCKET_PATH"
+  chmod a+w "$SOCKET_PATH"
+  chmod g+s "$SOCKET_PATH"
+
+  echo 'Terminating running client processes...'
+  kill -9 `pidof ysoft-client-gnome` || true
+  kill -9 `pidof ysoft-client-kde` || true
+
+  echo 'Installation complete, please log out.'
+  # Post installation script - executed at the last phase of installation
+}
+
+post_remove(){
+  echo 'Terminating client processes...'
+  kill -9 `pidof ysoft-client-gnome` || true
+  kill -9 `pidof ysoft-client-kde` || true
+
+  echo 'Uninstallation complete.'
+}
+
