@@ -61,9 +61,13 @@ EOF
 build() {
   cd "$_pkg"
 
-  CFLAGS="$(_update_march "$CFLAGS")"
-  CPPFLAGS="$(_update_march "$CPPFLAGS")"
-  CXXFLAGS="$(_update_march "$CXXFLAGS")"
+  CFLAGS="$(_update_march "$CFLAGS") -ffile-prefix-map=${srcdir}=."
+  CPPFLAGS="$(_update_march "$CPPFLAGS") -ffile-prefix-map=${srcdir}=."
+  CXXFLAGS="$(_update_march "$CXXFLAGS") -ffile-prefix-map=${srcdir}=."
+
+  make cmake
+  local escaped="$(sed 's|[[.*^$\\\|]|\\&|g;s/\n/\\n/g' <<< "$srcdir")"
+  find build -type f -iname '*.h' -print0 | xargs -0 sed -zi "s|$escaped|$_pkg|g"
 
   make
 }
