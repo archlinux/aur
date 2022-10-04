@@ -1,6 +1,7 @@
 # Maintainer Simone Cimarelli a.k.a. AquilaIrreale <aquilairreale@ymail.com>
 # Contributor Jérémie Detrey
 # Contributor Christian Cornelssen
+# Contributor gilcu3
 
 _pkg=cado-nfs
 pkgname=${_pkg}-git
