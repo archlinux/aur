@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.3360.r0.g5d3b3319a
+pkgver=1.7.3368.r0.g7c3aa6516
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -43,7 +43,6 @@ depends=(
   qt6-tools
   qt6-svg
   soundtouch
-  clang
   wayland
   zstd
 )
@@ -90,8 +89,6 @@ build()
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_C_COMPILER=clang \
     -DWAYLAND_API=ON \
     -DQT_BUILD=ON \
     -DXDG_STD=TRUE \
