@@ -1,0 +1,4 @@
+post_install(){
+  [ $USER = root ] && USER=$SUDO_USER
+  XDG_RUNTIME_DIR=/run/user/`id -u $USER` aplay /usr/share/heart-of-darkness/hodsuccess.wav
+}
