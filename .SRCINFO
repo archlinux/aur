@@ -1,7 +1,7 @@
 pkgbase = shotman
 	pkgdesc = Uncompromising screenshot GUI for Wayland
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~whynothugo/shotman
 	arch = x86_64
 	arch = aarch64

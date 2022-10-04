@@ -2,7 +2,7 @@
 
 pkgname=shotman
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Uncompromising screenshot GUI for Wayland"
 arch=("x86_64" "aarch64")
 url="https://git.sr.ht/~whynothugo/shotman"
@@ -18,13 +18,13 @@ sha512sums=("SKIP")
 validpgpkeys=("1204CA9FC2FFADEEDC2961367880733B9D062837")
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -32,14 +32,14 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
