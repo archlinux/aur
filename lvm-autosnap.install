@@ -1,0 +1,21 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "To complete installation you need to:"
+    note "1) Modify /etc/lvm-autosnap.env (at least the CONFIGS entry)"
+    note "2) Add lvm-autosnap to the HOOKS section of /etc/mkinitcpio.conf (right after the lvm2 hook)"
+    note "3) Run mkinitcpio -P"
+    note "4) Enable lvm-autosnap.timer service (systemctl enable lvm-autosnap.timer)"
+}

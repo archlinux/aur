@@ -1,0 +1,14 @@
+pkgbase = lvm-autosnap
+	pkgdesc = Create lvm snapshots during boot and automatically offer to restore your system if it stops booting.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/intentionally-left-nil/lvm-autosnap
+	install = lvm-autosnap.install
+	arch = any
+	license = MIT
+	depends = lvm2
+	backup = etc/lvm-autosnap.env
+	source = lvm-autosnap-0.0.1.tar.gz::https://github.com/intentionally-left-nil/lvm-autosnap/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 5166933acf3cefe98ee2f773d11007935898e2eeb01de30dd227c91e96a92271
+
+pkgname = lvm-autosnap
