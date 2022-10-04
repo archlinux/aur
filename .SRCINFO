@@ -1,16 +1,13 @@
 pkgbase = python-pyviz_comms
 	pkgdesc = Bidirectional communication for the PyViz ecosystem
-	pkgver = 0.7.6
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/pyviz/pyviz_comms
 	arch = any
-	license = BSD
-	checkdepends = python-nose
-	checkdepends = flake8
+	license = custom:BSD-3-clause
 	makedepends = python-setuptools
 	depends = python-param
-	source = https://github.com/pyviz/pyviz_comms/archive/v0.7.6.tar.gz
-	sha256sums = 9f273a69e9ebc73e25edc12a03996e0d7f21f793be09bf4511a09489612256a2
+	source = pyviz_comms-2.2.1.tar.gz::https://github.com/pyviz/pyviz_comms/archive/v2.2.1.tar.gz
+	sha512sums = 7c64a9923483a0f73cc3c877b4d02b2c5dd5a90382bf7ae2f564125e14e35a3f2eac9a0a995fa502f34ac91e809986f1e58cb2c9b98c7ca6262682a37a9aea9e
 
 pkgname = python-pyviz_comms
-
