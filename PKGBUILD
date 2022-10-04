@@ -5,7 +5,7 @@
 
 # Maintainer: Code Liger <codeliger@protonmail.com>
 pkgname=video-compare
-pkgver=20220920
+pkgver=20220816
 pkgrel=1
 epoch=
 pkgdesc="Split screen video comparison tool using FFmpeg and SDL2 "
@@ -28,10 +28,6 @@ source=("https://github.com/pixop/video-compare")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
-
-pkgver() {
-	`curl -s https://api.github.com/repos/pixop/video-compare/releases/latest | jq -r '.tag_name'`
-}
 
 package() {
 	tar -C "$srcdir" -czf "$pkgdir/$pkgname" $pkgname
