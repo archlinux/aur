@@ -7,8 +7,7 @@ buildarch=8
 pkgbase=linux-aarch64-rockpro64
 _srcname=linux-5.19
 _kernelname=${pkgbase#linux}
-_desc="AArch64 with patches for PINE64's ROCKPro64"
-pkgdesc=${_desc}
+pkgdesc="AArch64 with patches for PINE64's ROCKPro64"
 pkgver=5.19.13
 pkgrel=1
 arch=('aarch64')
@@ -94,7 +93,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux Kernel and modules - ${_desc}"
+  pkgdesc="The Linux Kernel and modules - $pkgdesc"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" "WIREGUARD-MODULE")
@@ -134,7 +133,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
+  pkgdesc="Header files and scripts for building modules for linux kernel - $pkgdesc"
   provides=("linux-headers=${pkgver}")
   conflicts=('linux-headers' 'linux-aarch64-headers')
 
@@ -213,8 +212,9 @@ _package-headers() {
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    _package${_p#${pkgbase}}
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
