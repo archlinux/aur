@@ -17,6 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
 noextract=()
 
 prepare() {
+  cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
