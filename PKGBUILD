@@ -3,8 +3,8 @@
 
 pkgname='filenote-git'
 _pkgname="${pkgname%-git}"
-pkgver=r40.0e46d7e
-pkgrel=1
+pkgver=r41.556caa7
+pkgrel=2
 pkgdesc='Attach a comment to a file or directory (development version)'
 arch=('any')
 url='https://codeberg.org/kas/filenote'

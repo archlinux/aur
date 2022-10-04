@@ -1,7 +1,7 @@
 pkgbase = filenote-git
 	pkgdesc = Attach a comment to a file or directory (development version)
-	pkgver = r40.0e46d7e
-	pkgrel = 1
+	pkgver = r41.556caa7
+	pkgrel = 2
 	url = https://codeberg.org/kas/filenote
 	arch = any
 	license = GPL3
