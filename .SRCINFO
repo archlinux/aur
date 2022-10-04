@@ -1,23 +1,23 @@
 pkgbase = ceph-bin
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
-	pkgver = 15.2.14
-	pkgrel = 9
+	pkgver = 16.2.7
+	pkgrel = 1
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
-	noextract = ceph-bin-15.2.14.tar.zst
-	noextract = ceph-libs-bin-15.2.14.tar.zst
-	noextract = ceph-mgr-bin-15.2.14.tar.zst
+	noextract = ceph-bin-16.2.7.tar.zst
+	noextract = ceph-libs-bin-16.2.7.tar.zst
+	noextract = ceph-mgr-bin-16.2.7.tar.zst
 	options = emptydirs
-	source = ceph-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-9/ceph_linux_x86_64.tar.zstd
-	source = ceph-libs-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-9/ceph_libs_linux_x86_64.tar.zstd
-	source = ceph-mgr-bin-15.2.14.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v15.2.14-9/ceph_mgr_linux_x86_64.tar.zstd
-	sha512sums = d8ed4d19f3638a18e16cadabf7a6eaab32bb37c5700fbd4559aa226e3406fc528a79c699de75ff29deb2c50b0c027261b9e671958674a16f96674deb6411a8b5
-	sha512sums = e0ee00643cd6f5d829a0ab2bddc4d52aa98db915e9c25020e4aefb731aceae154f0793694e7257b005c5a8e7a1d3c5b1c51d081e560981d36417a0e999fdc920
-	sha512sums = f07c64fdde6b99ab3849eefcdf1099058874c49d2a5cb530a9857347f4be76f77fff6a0df3bc7c83339b8c643797861548a69b35067d9d9081996fef71dac1b4
+	source = ceph-bin-16.2.7.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v16.2.7-1/ceph_linux_x86_64.tar.zstd
+	source = ceph-libs-bin-16.2.7.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v16.2.7-1/ceph_libs_linux_x86_64.tar.zstd
+	source = ceph-mgr-bin-16.2.7.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v16.2.7-1/ceph_mgr_linux_x86_64.tar.zstd
+	sha512sums = ca9d7771a0469b20163731ef80512ca4c0828bc7dcb82288b59f030a6877eb86d7b1b033c9fe5089a373da5f1b01e6d9e318555889064982557da12a46fb5dec
+	sha512sums = 8b61b973347c60641587cce8b9c02c8953e80dccd210f2534f5490d47f740e05f81adb12a53a4daa8bf6ae368e3de54244155877e638fa3022fe959b07b2dace
+	sha512sums = f63a1f359d804cbfe31bfee301602ac6a10729b2292e264ac349ace4feb72171b9d62638181f449b97d68b0d37bde5377fbb9fb8b7cf2e1533c2aaacf7b95a11
 
 pkgname = ceph-bin
-	depends = ceph-libs=15.2.14-9
+	depends = ceph-libs=16.2.7-1
 	depends = boost-libs
 	depends = curl
 	depends = fuse2
@@ -31,28 +31,20 @@ pkgname = ceph-bin
 	depends = libaio
 	depends = libutil-linux
 	depends = librdkafka
-	depends = lsb-release
+	depends = cryptsetup
+	depends = libnl
 	depends = ncurses
 	depends = nss
 	depends = oath-toolkit
 	depends = python
-	depends = python-bcrypt
-	depends = python-setuptools
-	depends = python-prettytable
-	depends = python-cmd2
-	depends = python-dateutil
 	depends = snappy
 	depends = sudo
 	depends = systemd-libs
-	depends = python-flask
-	depends = python-pecan
-	depends = python-pyopenssl
-	depends = python-requests
-	depends = python-werkzeug
+	depends = lua
+	depends = gawk
 	depends = xfsprogs
-	depends = python-yaml
-	depends = python-pyaml
-	provides = ceph=15.2.14-9
+	provides = ceph=16.2.7-1
+	conflicts = ceph
 
 pkgname = ceph-libs-bin
 	depends = boost-libs
@@ -68,11 +60,18 @@ pkgname = ceph-libs-bin
 	depends = snappy
 	depends = systemd-libs
 	depends = fmt
-	provides = ceph-libs=15.2.14-9
+	depends = cryptsetup
+	depends = lua
+	depends = librdkafka
+	depends = python-prettytable
+	depends = python-yaml
+	depends = python-setuptools
+	provides = ceph-libs=16.2.7-1
+	conflicts = ceph-libs
 
 pkgname = ceph-mgr-bin
-	depends = ceph=15.2.14-9
-	depends = ceph-libs=15.2.14-9
+	depends = ceph=16.2.7-1
+	depends = ceph-libs=16.2.7-1
 	depends = bash
 	depends = boost-libs
 	depends = coffeescript
@@ -80,22 +79,30 @@ pkgname = ceph-mgr-bin
 	depends = gperftools
 	depends = nodejs
 	depends = nss
+	depends = fmt
 	depends = python
 	depends = python-cherrypy
-	depends = python-flask-restful
 	depends = python-pecan
 	depends = python-pyjwt
-	depends = python-routes
-	depends = python-jsonpatch
 	depends = python-more-itertools
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-six
+	depends = python-coverage
+	depends = python-pytest
+	depends = python-dateutil
+	depends = python-prettytable
+	depends = python-requests
+	depends = python-pyopenssl
+	depends = python-bcrypt
+	depends = python-yaml
+	depends = python-werkzeug
+	depends = python-jinja
 	optdepends = python-influxdb: influx module
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=15.2.14-9
-	conflicts = ceph<14.2.1-1
+	provides = ceph-mgr=16.2.7-1
+	conflicts = ceph-mgr
 	options = emptydirs
 	options = !strip
