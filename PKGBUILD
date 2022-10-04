@@ -28,7 +28,7 @@ prepare() {
 
 package() {
 
-  local kernver="${pkgver}-xanmod${xanmod}-x64v2"
+  local kernver="${pkgver}-x64v2-xanmod${xanmod}"
   local modulesdir="$pkgdir/usr/lib/modules/${kernver}"
   mkdir -p "${modulesdir}"
   cp -r lib/modules/${kernver}/* ${modulesdir}
