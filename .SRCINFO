@@ -1,0 +1,22 @@
+pkgbase = python-google-earthengine-api
+	pkgdesc = Python client libraries for calling the Google Earth Engine API.
+	pkgver = 0.1.326
+	pkgrel = 1
+	url = https://github.com/google/earthengine-api
+	arch = any
+	license = APACHE
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-google-api-python-client
+	depends = python-google-auth
+	depends = python-google-auth-httplib2
+	depends = python-httplib2
+	depends = python-six
+	optdepends = python-tensorflow
+	source = google-earthengine-api-0.1.326.tar.gz::https://github.com/google/earthengine-api/archive/refs/tags/v0.1.326.tar.gz
+	sha512sums = 222135ea9b73d30a42bd1c2963fb6a60e5c7633cbb50c3cbc9eb5b80dce1ab9bb22fd7e7dda7590604a16aa362cd3ceb6b1c6936fece87b669621f7a455ad4cd
+
+pkgname = python-google-earthengine-api
