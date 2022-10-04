@@ -1,14 +1,13 @@
 # Maintainer: Marshmallow <marshycity@gmail.com>
 pkgname=candyvim-git
 pkgver=0.1.0.r3.gd5a2b3f
-pkgrel=2
+pkgrel=3
 pkgdesc="CandyVim WIP"
 arch=('any')
 url='https://github.com/mrshmllow/CandyVim'
 license=()
 depends=(
   'neovim'
-  'lua'
   'git'
   'ripgrep'
   'npm'
