@@ -7,7 +7,7 @@
 # ATTENTION - one of two predefined values should be selected!
 # 'yes' - enable CachyOS config
 # 'no' - disable CachyOS config
-_cachy_config='yes'
+_cachy_config=${_cachy_config-'yes'}
 
 ### Selecting the CPU scheduler
 # ATTENTION - one of seven predefined values should be selected!
@@ -19,27 +19,27 @@ _cachy_config='yes'
 # 'cfs' - select 'Completely Fair Scheduler'
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-_cpusched='cfs'
+_cpusched=${_cpusched-'cfs'}
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
 ### Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=${_makenconfig-}
 
 ### Tweak kernel options prior to a build via menuconfig
-_makemenuconfig=
+_makemenuconfig=${_makemenuconfig-}
 
 ### Tweak kernel options prior to a build via xconfig
-_makexconfig=
+_makexconfig=${_makexconfig-}
 
 ### Tweak kernel options prior to a build via gconfig
-_makegconfig=
+_makegconfig=${_makegconfig-}
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=y
+_NUMAdisable=${_NUMAdisable-}
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -49,62 +49,62 @@ _NUMAdisable=y
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=${_localmodcfg-}
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
 # through the trouble of customizing your config options.  NOT recommended when
 # a new kernel is released, but again, convenient for package bumps.
-_use_current=
+_use_current=${_use_current-}
 
 ### Enable KBUILD_CFLAGS -O3
-_cc_harder=y
+_cc_harder=${_cc_harder-y}
 
 ### Set this to your number of threads you have in your machine otherwise it will default to 128
-_nr_cpus=
+_nr_cpus=${_nr_cpus-}
 
 ### Set performance governor as default
-_per_gov=y
+_per_gov=${_per_gov-y}
 
 ### Enable TCP_CONG_BBR2
-_tcp_bbr2=y
+_tcp_bbr2=${_tcp_bbr2=y}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
-_HZ_ticks=750
+_HZ_ticks=${_HZ_ticks-750}
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
-_tickrate=full
+_tickrate=${_tickrate-full}
 
 ## Choose between full(low-latency), voluntary or server
-_preempt=full
+_preempt=${_preempt-full}
 
 ### Disable MQ-Deadline I/O scheduler
-_mq_deadline_disable=y
+_mq_deadline_disable=${_mq_deadline_disable-y}
 
 ### Disable Kyber I/O scheduler
-_kyber_disable=y
+_kyber_disable=${_kyber_disable-y}
 
 ### Enable multigenerational LRU
 # ATTENTION - one of three predefined values should be selected!
 # 'standard' - enable multigenerational LRU
 # 'stats' - enable multigenerational LRU with stats
 # 'none' - disable multigenerational LRU
-_lru_config='standard'
+_lru_config=${_lru_config-'standard'}
 
 ### Enable per-VMA locking
 # ATTENTION - one of three predefined values should be selected!
 # 'standard' - enable per-VMA locking
 # 'stats' - enable per-VMA locking with stats
 # 'none' - disable per-VMA locking
-_vma_config='standard'
+_vma_config=${_vma_config-'standard'}
 
 ## Enable DAMON
-_damon=
+_damon=${_damon-}
 
 ## Enable Linux Random Number Generator
-_lrng_enable=y
+_lrng_enable=${_lrng_enable-y}
 
 # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
 # AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3"
@@ -115,15 +115,15 @@ _lrng_enable=y
 # - "generic" (kernel's default - to share the package between machines with different CPU µarch as long as they are x86-64)
 #
 # Or use the _use_auto_optimization with _use_auto_optimization=y
-_processor_opt=
+_processor_opt=${_processor_opt-}
 
-_use_auto_optimization=y
+_use_auto_optimization=${_use_auto_optimization-y}
 
 # disable debug to lower the size of the kernel
-_disable_debug=y
+_disable_debug=${_disable_debug-y}
 
 ## Enable zram/zswap ZSTD compression
-_zstd_compression=y
+_zstd_compression=${_zstd_compression-y}
 
 ### Selecting the ZSTD kernel and modules compression level
 # ATTENTION - one of two predefined values should be selected!
@@ -131,12 +131,12 @@ _zstd_compression=y
 # 'normal' - standard compression ratio
 # WARNING: the ultra settings can sometimes
 # be counterproductive in both size and speed.
-_zstd_level_value='normal'
+_zstd_level_value=${_zstd_level_value-'normal'}
 
 # Clang LTO mode, only available with the "llvm" compiler - options are "no", "full" or "thin".
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
-_use_llvm_lto=
+_use_llvm_lto=${_use_llvm_lto-}
 
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
@@ -147,13 +147,17 @@ _use_llvm_lto=
 # you can find a patched llvm-git in the cachyos-repo's.
 # The packagename is called "llvm-kcfi"
 # ATTENTION!: This is very experimental and could fail and the compilation or have other bugs in the kernel
-_use_kcfi=
+_use_kcfi=${_use_kcfi-}
 
 # Build the zfs module builtin in to the kernel
-_build_zfs=
+_build_zfs=${_build_zfs-}
 
 # Enable bcachefs
-_bcachefs=
+_bcachefs=${_bcachefs-}
+
+# Enable RT kernel
+# Only works for CFS Scheduler and BORE Scheduler
+_rtkernel=${_rtkernel-}
 
 # Enable NEST
 # NEST is a experimental cfs scheduler you can find more about here:
@@ -163,7 +167,7 @@ _bcachefs=
 # taskset -c $THREADS application
 # example: taskset -c 0-23 application
 # ATTENTION!:Just works together with the BORE Scheduler and CFS Scheduler
-_nest=
+_nest=${_nest-}
 
 # Enable LATENCY NICE
 # Latency nice is a approach to sets latency-nice as a per-task attribute
@@ -174,7 +178,7 @@ _nest=
 # You need to configure ananicy-cpp for this or use existing settings
 # If you want to test it, use the following branch
 # https://gitlab.com/ananicy-cpp/ananicy-cpp/-/tree/feature/latency-nice
-_latency_nice=
+_latency_nice=${_latency_nice-y}
 
 if [ -n "$_use_llvm_lto" ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
@@ -184,13 +188,13 @@ else
     pkgsuffix=cachyos-${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
-_major=5.19
-_minor=12
+_major=6.0
+_minor=0
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
-#_stable=${_major}
+#_stable=${_major}.${_minor}
+_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
@@ -220,12 +224,12 @@ fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
-    "config"
+    "config" "config-rt"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/openzfs/zfs.git#commit=979fd5a434ebc422c02dec5deddd485ce6127fc5")
+    source+=("git+https://github.com/openzfs/zfs.git#commit=6a6bd493988c75331deab06e5352a9bed035a87d")
 fi
 ## BMQ Scheduler
 if [ "$_cpusched" = "bmq" ]; then
@@ -247,7 +251,7 @@ fi
 if [ "$_cpusched" = "cacule-rdb" ]; then
     source+=("${_patchsource}/sched/0001-cacULE-cachy.patch")
 fi
-#ä TT Scheduler
+## TT Scheduler
 if [ "$_cpusched" = "tt" ]; then
     source+=("${_patchsource}/sched/0001-tt-cachy.patch")
 fi
@@ -269,6 +273,10 @@ fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
+fi
+## rt kernel
+if [ -n "$_rtkernel" ]; then
+    source+=("${_patchsource}/misc/0001-rt-rc.patch")
 fi
 ## NEST Support
 if [ -n "$_nest" ]; then
@@ -306,7 +314,11 @@ prepare() {
     done
 
     echo "Setting config..."
-    cp ../config .config
+    if [ -n "$_rtkernel" ]; then
+        cp ../config-rt .config
+    else
+        cp ../config .config
+    fi
 
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
@@ -337,6 +349,17 @@ prepare() {
        error "Selecting CachyOS config failed!"
        exit
     fi
+
+    ### Selecting proper RT config
+    if [ -n "$_rtkernel" ]; then
+        echo "Setting proper RT config"
+        scripts/config --disable RCU_NOCB_CPU_CB_BOOST \
+            --enable RCU_NOCB_CPU_DEFAULT_ALL \
+            --enable HZ_1000 \
+            --set-val HZ 1000 \
+            --enable PREEMPT_RT \
+            --enable PREEMPT_LAZY
+     fi
 
     ### Selecting the CPU scheduler
     if [ "$_cpusched" = "bmq" ]; then
@@ -593,7 +616,7 @@ prepare() {
             --set-str DEFAULT_TCP_CONG bbr2
     fi
 
-    ### Select LRU config
+   ### Select LRU config
     if [ "$_lru_config" = "standard" ]; then
        echo "Enabling multigenerational LRU..."
        scripts/config --enable LRU_GEN \
@@ -999,7 +1022,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('c436a548c7312ce6fc5a3472cbead895eef8f52841fbe7c71fd8e48bdfe2b0ba'
-            'c4543a2528981a6c4be7b368f3648995823ab9a1060afd7b51d06c9d377ad7fa'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
+            '545f9592ac0bb2959de4799133c53d79c9e2bd3f226804e92693a2e2c20d724a'
+            'f0e02c04001b39a79344a114daceda589658f79035ad8d912c3d3528c13d35ca'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            'efc09a728da21b8a9e068696c26e334d9fa950ad2e165cbd8a695f1897089da5')
+            '8513b07315568e8c8cdd0790778bda3a4eb5e2cf4f585662fdd8bccbe331a40f'
+            'd4b3fc8b159fd1445e34066c6a61bc73249b3733807cb63750e65561f6fa8bc0')
