@@ -4,7 +4,7 @@
 pkgname=tbs-firmware
 _pkgver=1.0
 _pkgdate=2022-08-23
-pkgver=${_pkgver}.r${_pkgdate//-/}
+pkgver=${_pkgver}.${_pkgdate//-/}
 pkgrel=1
 pkgdesc='TBS proprietary firmware'
 arch=('any')
