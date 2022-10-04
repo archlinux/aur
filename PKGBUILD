@@ -2,8 +2,8 @@
 
 pkgname=privatebin-cli
 _binname=privatebin
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='CLI for privatebin server'
 arch=('x86_64')
 url='https://github.com/gearnode/privatebin'
@@ -11,14 +11,11 @@ license=('ISC')
 conflicts=("${pkgname}-git")
 makedepends=('go' 'pandoc')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "add_custom_user_agent.patch")
-sha256sums=('84565e748a59495a8bc10a00e841eb24a4d245769da18200c32693841523e2e3'
-            '5ca9790d62ece94cb5a47e19bb873afe6911b1c3d8d0762732ffe3c5a04be172')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ceef4f10ad86df1109b6530ae4cb4c25ffe419c1e9ebf9803d5beed32e28246e')
 
 prepare() {
   cd $_binname-$pkgver
-  patch -p1 --input="../add_custom_user_agent.patch"
   pandoc --standalone --to man doc/privatebin.1.md -o privatebin.1
   pandoc --standalone --to man doc/privatebin.conf.5.md -o privatebin.conf.5
 }

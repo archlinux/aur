@@ -1,7 +1,7 @@
 pkgbase = privatebin-cli
 	pkgdesc = CLI for privatebin server
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/gearnode/privatebin
 	install = privatebin-cli.install
 	arch = x86_64
@@ -9,9 +9,7 @@ pkgbase = privatebin-cli
 	makedepends = go
 	makedepends = pandoc
 	conflicts = privatebin-cli-git
-	source = privatebin-cli-1.1.1.tar.gz::https://github.com/gearnode/privatebin/archive/refs/tags/v1.1.1.tar.gz
-	source = add_custom_user_agent.patch
-	sha256sums = 84565e748a59495a8bc10a00e841eb24a4d245769da18200c32693841523e2e3
-	sha256sums = 5ca9790d62ece94cb5a47e19bb873afe6911b1c3d8d0762732ffe3c5a04be172
+	source = privatebin-cli-1.2.0.tar.gz::https://github.com/gearnode/privatebin/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = ceef4f10ad86df1109b6530ae4cb4c25ffe419c1e9ebf9803d5beed32e28246e
 
 pkgname = privatebin-cli
