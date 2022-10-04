@@ -1,6 +1,6 @@
 pkgbase = python-deepl
 	pkgdesc = DeepL language translation API
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/deeplcom/deepl-python
 	install = deepl.install
@@ -12,7 +12,7 @@ pkgbase = python-deepl
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python-requests
-	source = python-deepl::git+https://github.com/deeplcom/deepl-python#tag=v1.10.0?signed
+	source = python-deepl::git+https://github.com/deeplcom/deepl-python#tag=v1.11.0?signed
 	source = remove-datafiles.patch
 	validpgpkeys = DBDC63E97C526204335805941FA7A782EC90634E
 	sha256sums = SKIP

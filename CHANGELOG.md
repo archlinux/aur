@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.0] - 2022-09-26
+### Added
+* Add formality options `'PREFER_LESS'` and `'PREFER_MORE'`.
+### Changed
+* Requests resulting in `503 Service Unavailable` errors are now retried.
+  Attempting to download a document before translation is completed will now
+  wait and retry (up to 5 times by default), rather than raising an exception.
+
+
 ## [1.10.0] - 2022-09-09
 ### Added
 * New language available: Ukrainian (`'uk'`). Add language code constant and tests.
@@ -194,6 +203,7 @@ Version increased to avoid conflicts with old packages on PyPI.
 Initial version.
 
 
+[1.11.0]: https://github.com/DeepLcom/deepl-python/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/DeepLcom/deepl-python/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/DeepLcom/deepl-python/compare/v1.8.0...v1.9.0
 [1.8.0]: https://github.com/DeepLcom/deepl-python/compare/v1.7.0...v1.8.0
