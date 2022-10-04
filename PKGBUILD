@@ -6,7 +6,7 @@
 
 pkgbase=dbus-xdg
 pkgname=(dbus-xdg-elogind dbus-xdg-docs)
-pkgver=1.14.0
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
