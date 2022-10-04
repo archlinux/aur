@@ -1,7 +1,7 @@
 #Maintainer: LevitatingBusinessMan (Rein Fernhout) <me@levitati.ng>
 
 pkgname=git-bro
-pkgver=d63ff6c
+pkgver=7b2b76c
 arch=("x86_64")
 pkgrel=1
 pkgdesc="Monitor remote git repositories for changes and automate tasks."
@@ -20,6 +20,6 @@ pkgver() {
 package() {
 	cd "${srcdir}/${pkgname}"
     install -Dvm 755 git-bro.rb $pkgdir/usr/bin/git-bro
-    install -DCv systemd/git-bro.service $pkgdir/usr/share/systemd/user/git-bro.service
-    install -DCv systemd/git-bro.timer $pkgdir/usr/share/systemd/user/git-bro.timer
+    install -Dvm 644 systemd/git-bro.service $pkgdir/usr/lib/systemd/user/git-bro.service
+    install -Dvm 644 systemd/git-bro.timer $pkgdir/usr/lib/systemd/user/git-bro.timer
 }
