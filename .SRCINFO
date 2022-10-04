@@ -1,7 +1,7 @@
 pkgbase = ame
 	pkgdesc = A fast and efficient AUR helper
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crystal-linux/amethyst
 	arch = x86_64
 	arch = aarch64
