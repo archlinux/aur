@@ -5,7 +5,7 @@ _pkgname=bililive-recorder
 provides=($_pkgname)
 conflicts=($pkgname-bin)
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
 arch=('x86_64')
 # options=(staticlibs)
@@ -27,7 +27,7 @@ build() {
 	cd ${srcdir}/BililiveRecorder
 
 	./webui/build.sh
-	dotnet publish -c Release BililiveRecorder.Cli/BililiveRecorder.Cli.csproj
+	dotnet publish -c Release BililiveRecorder.Cli/BililiveRecorder.Cli.csproj -r linux-x64
 }
 
 package() {
@@ -35,6 +35,6 @@ package() {
 
 	install -d $pkgdir/usr/lib/
 	install -d $pkgdir/usr/bin/
-	cp -ra BililiveRecorder.Cli/publish/any/Release/. $pkgdir/usr/lib/bililive-recorder
+	cp -ra BililiveRecorder.Cli/publish/linux-x64/Release/. $pkgdir/usr/lib/bililive-recorder
 	ln -s /usr/lib/bililive-recorder/BililiveRecorder.Cli "$pkgdir/usr/bin/BililiveRecorder.Cli"
 }

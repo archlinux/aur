@@ -1,7 +1,7 @@
 pkgbase = bililive-recorder
 	pkgdesc = B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bililive/BililiveRecorder
 	arch = x86_64
 	license = GPL3
