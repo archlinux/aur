@@ -1,10 +1,11 @@
-# Maintainer: Mark Weiman (markzz) <mark.weiman@markzz.com>
-# Maintainer: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Mark Weiman (markzz) <mark.weiman@markzz.com>
+# Contributor: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=5.19.12.arch1
+pkgver=5.19.13.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
