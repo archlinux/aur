@@ -15,8 +15,8 @@ pkgbase = candyvim-git
 	source = candyvim-git::git+https://github.com/mrshmllow/CandyVim.git
 	source = init-cvim.sh
 	source = cvim
-	sha256sums = SKIP,
-	sha256sums = bf7458c4708eb53996a8b98994d271523f7bf3ca5067702d7e749a14115b9b9f,
+	sha256sums = SKIP
+	sha256sums = bf7458c4708eb53996a8b98994d271523f7bf3ca5067702d7e749a14115b9b9f
 	sha256sums = 3187ea04d5dd498061325dd7ae75d067b49172277399f3e5e19b59a82d332ea7
 
 pkgname = candyvim-git
