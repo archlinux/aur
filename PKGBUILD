@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=tere
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A terminal file explorer"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url=https://github.com/mgunyho/tere
 license=("custom:EUPL")
 makedepends=(rust)
 source=(${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('a4ebd2f0b5728d6ec61749564106d67d74720fa05cb906686d559a5f15549698')
+sha256sums=('cb332750a1f1ea9f7de442559d6ccde46ad2ee0b954852866e23557aa38dc63b')
 
 build() {
 	cd ${pkgname}-${pkgver}
