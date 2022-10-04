@@ -1,5 +1,5 @@
 pkgname=coreboot-utils
-pkgver=4.15
+pkgver=4.17
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -11,11 +11,11 @@ provides=(ectool)
 conflicts=("coreboot-utils-git")
 makedepends=()
 source=("coreboot.${pkgver}.tar.gz::https://coreboot.org/releases/coreboot-${pkgver}.tar.xz")
-sha256sums=('20e6aaa6dd0eaec7753441c799711d1b4630e3ca709536386f2242ac2c8a1ec5')
+sha256sums=('95da11d1c6a450385101a68799258a398ce965f4e46cce6fe8d5ebd74e50c125')
 
 build() {
   cd coreboot-${pkgver}/util
-
+  export CFLAGS="$CFLAGS -Wno-error"
   make -C cbfstool
   make -C ifdtool
   make -C nvramtool
