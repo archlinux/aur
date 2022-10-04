@@ -1,6 +1,6 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=wl-video-idle-inhibit
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Wayland Idle Inhibitor using open video devices as a signal'
 url="https://github.com/sameer/$pkgname"
@@ -10,6 +10,8 @@ license=('MIT' 'APACHE')
 makedepends=('git' 'cargo' 'wayland' 'wayland-protocols')
 depends=('wayland')
 optdepends=('swayidle: Idle management daemon')
+replaces=('sway-video-idle-inhibit')
+conflicts=('sway-video-idle-inhibit')
 b2sums=('SKIP')
 
 build () {
@@ -26,4 +28,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 target/release/$pkgname "${pkgdir}/usr/bin/$pkgname"
+  ln -s ./$pkgname "${pkgdir}/usr/bin/sway-video-idle-inhibit"
 }
