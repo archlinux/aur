@@ -1,7 +1,7 @@
 pkgbase = python-google-earthengine-api
 	pkgdesc = Python client libraries for calling the Google Earth Engine API.
 	pkgver = 0.1.326
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/earthengine-api
 	arch = any
 	license = APACHE
@@ -11,6 +11,7 @@ pkgbase = python-google-earthengine-api
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-google-api-python-client
+	depends = python-google-cloud-storage
 	depends = python-google-auth
 	depends = python-google-auth-httplib2
 	depends = python-httplib2

@@ -2,13 +2,14 @@
 pkgname=python-google-earthengine-api
 _name=${pkgname#python-}
 pkgver=0.1.326
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client libraries for calling the Google Earth Engine API."
 arch=('any')
 url="https://github.com/google/earthengine-api"
 license=('APACHE')
 depends=(
          'python-google-api-python-client'
+         'python-google-cloud-storage'
          'python-google-auth'
          'python-google-auth-httplib2'
          'python-httplib2'
