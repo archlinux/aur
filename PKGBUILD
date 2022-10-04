@@ -1,6 +1,6 @@
 # Maintainer: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 pkgname=cow-proxy-git
-pkgver=1051.7f8245a
+pkgver=1059.41c0fb1
 pkgrel=1
 pkgdesc="HTTP proxy written in Go. COW can automatically identify blocked sites and use parent proxies to access"
 arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('go' 'mercurial' 'git')
 source=('cow@.service'
         'cow_user.service'
-	'git://github.com/cyfdecyf/cow.git')
+	'git+https://github.com/cyfdecyf/cow.git')
 
 sha1sums=('3efa6f55e51bed4043ac7a5804469bdd38032359'
           'ee250fdebc73255effd6219d0d8089990c9c73bd'
@@ -31,7 +31,7 @@ build() {
         cd "${srcdir}/${_gitname}"
 	git --work-tree=${srcdir}/src/github.com/cyfdecyf/cow checkout -f develop
 	cd ${srcdir}/src/github.com/cyfdecyf/cow
-	GOPATH=${srcdir} go get -v
+	GO111MODULE=off GOPATH=${srcdir} go get -v
 }
 
 package() {

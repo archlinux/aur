@@ -1,6 +1,6 @@
 pkgbase = cow-proxy-git
 	pkgdesc = HTTP proxy written in Go. COW can automatically identify blocked sites and use parent proxies to access
-	pkgver = 1012.b465963
+	pkgver = 1059.41c0fb1
 	pkgrel = 1
 	url = https://github.com/cyfdecyf/cow
 	install = cow-proxy-git.install
@@ -16,10 +16,9 @@ pkgbase = cow-proxy-git
 	conflicts = cow-proxy
 	source = cow@.service
 	source = cow_user.service
-	source = git://github.com/cyfdecyf/cow.git
+	source = git+https://github.com/cyfdecyf/cow.git
 	sha1sums = 3efa6f55e51bed4043ac7a5804469bdd38032359
 	sha1sums = ee250fdebc73255effd6219d0d8089990c9c73bd
 	sha1sums = SKIP
 
 pkgname = cow-proxy-git
-
