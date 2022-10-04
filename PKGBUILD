@@ -4,7 +4,7 @@ pkgname='saaghar-git'
  
 _gitname=Saaghar
 #The real value will be calculated by pkgver() function
-pkgver=380.3dbbb51
+pkgver=566.a19421c
 pkgrel=1
  
 pkgdesc="“Saaghar” (ساغر) is a Persian poetry software written by C++ under Qt framework, it uses "ganjoor" database as its database. It has tab feature in both its “Viewer” and its “Search” page that cause it be suitable for research goals."
@@ -16,7 +16,7 @@ license=('GPL3')
  
 depends=('qt5-base>=5.3.1' 'qt5-multimedia')
 makedepends=('git')
-source=('git://github.com/srazi/Saaghar.git')
+source=('git+https://github.com/srazi/Saaghar.git')
 md5sums=('SKIP')
  
  
