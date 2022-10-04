@@ -1,6 +1,6 @@
 pkgbase = python-awscrt
 	pkgdesc = A common runtime for AWS Python projects
-	pkgver = 0.14.6
+	pkgver = 0.14.7
 	pkgrel = 1
 	url = https://github.com/awslabs/aws-crt-python
 	arch = any
