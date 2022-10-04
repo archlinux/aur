@@ -4,8 +4,8 @@
 
 pkgbase=linux-xanmod-edge-linux-bin-x64v2
 pkgname=linux-xanmod-edge-linux-bin-x64v2
-_major=5.19
-pkgver=${_major}.12
+_major=6.0
+pkgver=${_major}.0
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='The Linux kernel and modules with Xanmod patches - Latest Mainline (EDGE) - Prebuilt version'
@@ -22,14 +22,14 @@ provides=(VIRTUALBOX-GUEST-MODULES
           WIREGUARD-MODULE
           KSMBD-MODULE
           NTFS3-MODULE)
-_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}-xanmod${xanmod}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-x64v2")).browser_download_url')
+_url=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-x64v2-xanmod" + $XANMOD)).browser_download_url')
 source=("${_url}")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('cd2e4692964817bb2c0d74f618913506a51dbcc2986a97e84dbb6b1584a5526b')
+sha256sums=('76074cc30e3d9cea6513288ee0d3a0ce4fc130dfa825357bc9f4998d16d4d1dd')
 
 prepare() {
   bsdtar -xf data.tar.xz
