@@ -3,18 +3,18 @@
 
 pkgname=upower-nocritical
 _pkgname=upower
-pkgver=0.99.11
+pkgver=1.90.0
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)"
 arch=('i686' 'x86_64')
 url="http://upower.freedesktop.org"
 license=('GPL')
 depends=('systemd' 'libusb' 'libimobiledevice' 'libgudev')
-makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python2' 'git' 'gtk-doc')
+makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python' 'git' 'gtk-doc')
 provides=('upower')
 conflicts=('upower')
 backup=('etc/UPower/UPower.conf')
-_commit=e1548bba61206a05bbc318b3d49ae24571755ac6  # tags/UPOWER_0_99_11^0
+_commit=d4259c009b3ca1169dfd19231a040c233fc3b58d  # tags/v1.90.0^0
 source=("git+https://gitlab.freedesktop.org/upower/upower.git#commit=$_commit"
         0001-Add-a-critical-action-Ignore.patch)
 md5sums=('SKIP'
@@ -22,29 +22,26 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed -e 's/UPOWER_//' -e 's/_/\./g' -e 's/-/+/g'
+  git describe --tags | sed -e 's/^v\|^UPOWER_//;s/_/\./g;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd $_pkgname
   patch -p1 < "$srcdir/0001-Add-a-critical-action-Ignore.patch"
-  sed -e 's|libplist >= 0.12|libplist-2.0 >= 2.2|' -i configure.ac # support libplist 2.2
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgname
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib \
-    --disable-static \
-    --enable-gtk-doc
-  make
+  arch-meson upower build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+  depends+=(libg{lib,object,io}-2.0.so)
+  provides+=(libupower-glib.so)
+
+  meson install -C build --destdir "$pkgdir"
 }
