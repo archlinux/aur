@@ -1,6 +1,6 @@
 # Maintainer: João Daniel <jotaf.daniel@gmail.com>
 pkgname=gcommit-git
-pkgver=v0.1.2.r7.g1613c0a
+pkgver=v0.1.2.r9.g812052b
 pkgrel=1
 epoch=
 pkgdesc="A git-plugin that eases pair-programming commits"

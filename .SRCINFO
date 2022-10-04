@@ -1,6 +1,6 @@
 pkgbase = gcommit-git
 	pkgdesc = A git-plugin that eases pair-programming commits
-	pkgver = v0.1.2.r7.g1613c0a
+	pkgver = v0.1.2.r9.g812052b
 	pkgrel = 1
 	url = https://github.com/jooaodanieel/GCommit
 	arch = x86_64
