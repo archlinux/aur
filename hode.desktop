@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Heart of Darkness (hode)
+Exec=sh hode.sh
+Icon=amazing
+Categories=Game
