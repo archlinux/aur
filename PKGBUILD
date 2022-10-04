@@ -4,8 +4,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=vte4-git
-pkgver=0.61.90+r304+g0372107a
-pkgrel=2
+pkgver=0.69.90+r35+g8ef3f6b2
+pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
@@ -29,7 +29,7 @@ prepare() {
 build() {
   arch-meson vte build \
     -D b_lto=false \
-    -D docs=true \
+    -D docs=false \
     -D gtk3=false \
     -D gtk4=true
   meson compile -C build

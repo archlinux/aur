@@ -1,7 +1,7 @@
 pkgbase = vte4-git
 	pkgdesc = Virtual Terminal Emulator widget
-	pkgver = 0.61.90+r304+g0372107a
-	pkgrel = 2
+	pkgver = 0.69.90+r35+g8ef3f6b2
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
 	license = LGPL
