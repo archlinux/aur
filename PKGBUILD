@@ -3,13 +3,13 @@
 
 pkgname='filenote-git'
 _pkgname="${pkgname%-git}"
-pkgver=r39.315f06c
+pkgver=r40.0e46d7e
 pkgrel=1
 pkgdesc='Attach a comment to a file or directory (development version)'
 arch=('any')
 url='https://codeberg.org/kas/filenote'
 license=('GPL3')
-depends=('python')
+depends=('python>=3.6')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
