@@ -14,7 +14,7 @@ url="https://github.com/pixop/video-compare"
 license=('GPL')
 groups=()
 depends=('ffmpeg' 'sdl2' 'sdl2_ttf')
-makedepends=('git')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,16 +24,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/pixop/video-compare.git")
+source=("https://github.com/pixop/video-compare")
 noextract=()
-md5sums=("SKIP")
+md5sums=('SKIP')
 validpgpkeys=()
 
-build() {
-	cd "$srcdir/$pkgname"
-	make
-}
-
 package() {
-	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname/$pkgname"
+	tar -C "$srcdir" -czf "$pkgdir/$pkgname" $pkgname
+	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname"
 }

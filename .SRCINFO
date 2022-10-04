@@ -5,11 +5,10 @@ pkgbase = video-compare
 	url = https://github.com/pixop/video-compare
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = ffmpeg
 	depends = sdl2
 	depends = sdl2_ttf
-	source = git+https://github.com/pixop/video-compare.git
+	source = https://github.com/pixop/video-compare
 	md5sums = SKIP
 
 pkgname = video-compare
