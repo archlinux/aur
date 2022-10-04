@@ -1,5 +1,6 @@
 # This PKGBUILD is based on linux-aarch64 from archlinuxarm: https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/linux-aarch64/PKGBUILD
 # Patches are from the Libreelec project
+# Maintainer: mmustermann
 
 buildarch=8
 
@@ -7,6 +8,7 @@ pkgbase=linux-aarch64-rockpro64
 _srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 with patches for PINE64's ROCKPro64"
+pkgdesc=${_desc}
 pkgver=5.19.12
 pkgrel=1
 arch=('aarch64')

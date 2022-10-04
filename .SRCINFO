@@ -1,4 +1,5 @@
 pkgbase = linux-aarch64-rockpro64
+	pkgdesc = AArch64 with patches for PINE64's ROCKPro64
 	pkgver = 5.19.12
 	pkgrel = 1
 	url = http://www.kernel.org/
