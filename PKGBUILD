@@ -30,7 +30,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	`curl -s https://api.github.com/repos/pixop/video-compare/releases/latest | jq -r '.tag_name'`
+	curl -s https://api.github.com/repos/pixop/video-compare/releases/latest | jq -r '.tag_name'
 }
 
 package() {
