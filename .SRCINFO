@@ -1,7 +1,7 @@
 pkgbase = r-dotcall64
 	pkgdesc = Enhanced Foreign Function Interface Supporting Long Vectors
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=dotCall64
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-dotcall64
 	optdepends = r-roxygen2
 	optdepends = r-spam
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/dotCall64_1.0-1.tar.gz
-	sha256sums = f10b28fcffb9453b1d8888a72c8fd2112038b5ac33e02a481492c7bd249aa5c6
+	source = https://cran.r-project.org/src/contrib/dotCall64_1.0-2.tar.gz
+	sha256sums = e0c7728aebbea5ebf06dfeefae4fc0a240e6dde7c2bf13f2ed041b91d337a4ac
 
 pkgname = r-dotcall64
