@@ -1,0 +1,16 @@
+pkgbase = certiliamiddleware
+	pkgdesc = Certilia Middleware for Certilia smart cards
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://www.id.hr
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = openssl-1.0
+	depends = ccid
+	options = !strip
+	options = staticlibs
+	source = https://www.id.hr/datastore/filestore/11/certiliamiddleware_v3.7.1_amd64.deb
+	sha512sums = a0c53b022210dc443dc8131df3ace1743c87dbc44eb526ed3efbe225471591f119b23cc28c2c63072cf9f322a6475bec62df5e1b2260fc2a41cf297e28780c2c
+
+pkgname = certiliamiddleware
