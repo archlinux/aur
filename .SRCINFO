@@ -1,11 +1,12 @@
 pkgbase = ocaml-uutf
 	pkgdesc = Non-blocking streaming Unicode codec for OCaml
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://github.com/dbuenzli/uutf
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = opam
 	depends = ocaml
 	depends = ocaml-cmdliner
 	depends = ocaml-uchar
@@ -15,9 +16,7 @@ pkgbase = ocaml-uutf
 	options = !libtool
 	options = !strip
 	options = zipman
-	source = https://github.com/dbuenzli/uutf/archive/v1.0.2.tar.gz
-	md5sums = 811ea24e7a86cd27cfc8239b24d1b92c
-	sha256sums = 16981ddb98589ac6a3407c9ac1d0b98eb99bee39c6954d021ab39df33ff23dd5
+	source = https://github.com/dbuenzli/uutf/archive/v1.0.3.tar.gz
+	sha256sums = bfa4cbfef0e585e4113f32c0ccc70df9d8da3ae45ca91ea4a50e2b9ca0b44094
 
 pkgname = ocaml-uutf
-

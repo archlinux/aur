@@ -1,14 +1,14 @@
 pkgname=ocaml-uutf
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Non-blocking streaming Unicode codec for OCaml"
 arch=('i686' 'x86_64')
 url="https://github.com/dbuenzli/uutf"
 license=('GPL')
 depends=('ocaml' 'ocaml-cmdliner' 'ocaml-uchar' 'ocaml-findlib' 'ocaml-topkg' 'ocamlbuild')
+makedepends=('opam')
 source=(https://github.com/dbuenzli/uutf/archive/v$pkgver.tar.gz)
-md5sums=('811ea24e7a86cd27cfc8239b24d1b92c')
-sha256sums=('16981ddb98589ac6a3407c9ac1d0b98eb99bee39c6954d021ab39df33ff23dd5')
+sha256sums=('bfa4cbfef0e585e4113f32c0ccc70df9d8da3ae45ca91ea4a50e2b9ca0b44094')
 options=(!libtool !strip zipman)
 
 build() {
