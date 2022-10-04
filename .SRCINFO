@@ -1,6 +1,6 @@
 pkgbase = slimbookintelcontroller
 	pkgdesc = Application for the performance management of Intel processors
-	pkgver = 0.5beta
+	pkgver = 0.6beta
 	pkgrel = 1
 	url = https://github.com/slimbook/slimbookintelcontroller
 	install = slimbookintelcontroller.install
@@ -16,7 +16,7 @@ pkgbase = slimbookintelcontroller
 	depends = python-gobject
 	depends = python-pillow
 	depends = systemd-libs
-	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookintelcontroller_0.5beta_all.deb
-	sha256sums = 8dadbfabddda81137ac80e46f4c52752c293f40c70133b4ee29c15668eaea87b
+	source = https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/slimbookintelcontroller_0.6beta_all.deb
+	sha256sums = df3529147772d220691c9bd249ac9c9a79cbc6bc928ce3d8316309286990647d
 
 pkgname = slimbookintelcontroller
