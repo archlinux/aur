@@ -1,0 +1,14 @@
+pkgbase = filenote-git
+	pkgdesc = Attach a comment to a file or directory (development version)
+	pkgver = r39.315f06c
+	pkgrel = 1
+	url = https://codeberg.org/kas/filenote
+	arch = any
+	license = GPL3
+	depends = python
+	provides = filenote
+	conflicts = filenote
+	source = git+https://codeberg.org/kas/filenote
+	sha256sums = SKIP
+
+pkgname = filenote-git
