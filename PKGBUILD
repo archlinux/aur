@@ -3,8 +3,8 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=python-pyfr
-pkgver=1.14.0
-_commit=ec32646
+pkgver=1.15.0
+_commit=d2a401a
 pkgrel=1
 pkgdesc="Framework for solving advection-diffusion type problems on streaming architectures"
 arch=('any')
@@ -18,7 +18,8 @@ depends=(
 	'python-numpy'
 	'python-pytools'
 	'python-mako'
-	'python-mpi4py')
+	'python-mpi4py'
+	'python-setuptools')
 optdepends=(
 	'metis: needed for running PyFR in parallel'
 	'scotch: needed for running PyFR in parallel'
@@ -30,12 +31,7 @@ optdepends=(
 	'cblas: needed for OpenMP backend'
 	'openblas: alternative blas for OpenMP backend'
 	'cgns: for importing CGNS meshes')
-makedepends=(
-	'git'
-	'python-setuptools'
-	'python-build'
-	'python-installer'
-	'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname::git+$url#commit=${_commit}?signed"
         '001-remove-tests.patch')
 sha256sums=('SKIP'
@@ -57,9 +53,8 @@ build() {
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
