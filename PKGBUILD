@@ -3,8 +3,8 @@ pkgdesc="Clear Linux kernel and modules in binary"
 url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-_major=5.19
-_minor=12
+_major=6.0
+_minor=0
 _clr=1194
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
@@ -23,7 +23,7 @@ provides=("WIREGUARD-MODULE")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=37350
+_clear_version=37370
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 
 source=("Manifest.kernel-native.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
@@ -78,5 +78,5 @@ package() {
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
-b2sums=('bb2866a301b7bec4070c48771c43bbb33acb9df0176dfba5129a49d8edfed038413c844111c272b7c0adb1c4df1d895f57170768571826c766b31d02a34cc62d'
-        '1d5c6a247aa88234a31435da017f47ad156c2acc707f0966d68be633a359e1c7117fbe1fd26a9c25151e0f23b0997825229787b5d1e3e02b30d91d660e266764')
+b2sums=('191b70d287fb2513fc6fd97a174de72943e75b4ab5cc9ae8b6d0ef32a5107cec9eef3ea8ae62eee310df0ceb5a6421826030af7f28a7809efd472c1027173372'
+        '3ed048dc12672ee433155d3555ba153dbed3a14d95fcba75c926ea4c0f5e7f431487bc7f2ace4808424907bf6d26f980f87b5ec13f103c67ffd4b55cb2a095a5')
