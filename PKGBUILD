@@ -32,7 +32,7 @@ check () {
   cd "${srcdir}/MUMPS_${pkgver}/examples"
   make all
   # From the README (in examples)
-  MPIRUN="mpirun -np 3 --mca opal_warn_on_missing_libcuda 0 --oversubscribe"
+  MPIRUN="mpirun -np 3 --mca plm_rsh_agent sh --mca opal_warn_on_missing_libcuda 0 --oversubscribe"
   export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${srcdir}/MUMPS_${pkgver}/lib"
   ${MPIRUN} ./ssimpletest < input_simpletest_real
   ${MPIRUN} ./dsimpletest < input_simpletest_real
