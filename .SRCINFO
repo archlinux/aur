@@ -1,0 +1,17 @@
+pkgbase = maelstrom-mod-star-trek
+	pkgdesc = Mod for the game Maelstrom based on Star Trek
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/Maelstrom/add-ons.html
+	arch = any
+	depends = maelstrom
+	conflicts = maelstrom-mod-star-wars
+	conflicts = maelstrom-mod-1980
+	conflicts = maelstrom-mod-extra
+	conflicts = maelstrom-mod-army-of-darkness
+	conflicts = maelstrom-mod-beavis-butthead
+	conflicts = maelstrom-mod-stooges
+	source = http://www.libsdl.org/projects/Maelstrom/add-ons/Star_Trek.zip
+	sha256sums = 1d3fb2da8d56d480e7ec4f1ab3d15b58027454ca566f127691bcef4a25c4fd54
+
+pkgname = maelstrom-mod-star-trek
