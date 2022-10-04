@@ -3,7 +3,7 @@
 # Contributer: TryA -  https://bbs.archlinux.org/viewtopic.php?id=114996
 
 pkgname=mprime
-pkgver=30.8
+pkgver=30.8.15
 epoch=1
 _pkgver=308b15
 pkgrel=1

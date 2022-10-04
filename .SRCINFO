@@ -1,6 +1,6 @@
 pkgbase = mprime
 	pkgdesc = A GIMPS, distributed computing project client, dedicated to finding Mersenne primes.
-	pkgver = 30.8
+	pkgver = 30.8.15
 	pkgrel = 1
 	epoch = 1
 	url = http://www.mersenne.org
