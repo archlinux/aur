@@ -8,12 +8,12 @@
 pkgbase=apt
 pkgname=('apt' 'apt-docs')
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://salsa.debian.org/apt-team/apt'
 license=('GPL2')
 makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'git' 'gtest' 'w3m' 'triehash'
-             'perl-text-wrapi18n' 'perl-locale-gettext' 'perl-yaml-tiny'
+             'perl-text-wrapi18n' 'perl-locale-gettext' 'perl-yaml-tiny' 'perl-syntax-keyword-try'
              'perl-term-readkey' 'perl-sgmls' 'perl-module-build' 'perl-unicode-linebreak' 'perl-pod-parser' 'po4a' 'xxhash' 'gnupg')
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' 'apt-utils')
 source=("https://salsa.debian.org/apt-team/apt/-/archive/$pkgver/apt-$pkgver.tar.bz2")
