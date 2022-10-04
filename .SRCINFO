@@ -1,6 +1,6 @@
 pkgbase = mprime-bin
 	pkgdesc = A GIMPS, distributed computing project client, dedicated to finding Mersenne primes. Precompiled binary version.
-	pkgver = 30.8
+	pkgver = 30.8.17
 	pkgrel = 1
 	epoch = 1
 	url = http://www.mersenne.org
@@ -9,7 +9,7 @@ pkgbase = mprime-bin
 	depends = gcc-libs
 	provides = mprime
 	conflicts = mprime
-	source = ftp://mersenne.org/gimps/p95v308b16.linux64.tar.gz
-	b2sums = 0d4b6f7c8e5eae2cf1dc64700b8274a4bbb024511fbcfb206474a889cb4bbe67c91b5be958593615b4089c37a51fd0b2e0026046edb3170986e86e126646245a
+	source = https://www.mersenne.org/ftp_root/gimps/p95v308b17.linux64.tar.gz
+	b2sums = 14e0e75fbb4784fdfe27e29535eb162071f04d63456f09bb98beb2a03af2b7d9eeac8357dc8d53e9591f9035351bedde40825b7eb8f6d85035e87b317a7aa50b
 
 pkgname = mprime-bin
