@@ -2,7 +2,7 @@
 
 pkgname=python-pgmpy
 _pkg="${pkgname#python-}"
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="Probabilistic Graphical Model library"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
 	'python-joblib'
 	'python-networkx'
 	'python-numpy'
+	'python-opt_einsum'
 	'python-pandas'
 	'python-pyparsing'
 	'python-scipy'
@@ -20,6 +21,7 @@ depends=(
 	'python-statsmodels'
 	'python-pytorch'
 	'python-tqdm')
+optdepends=('python-daft' 'python-lxml')
 makedepends=(
 	'python-setuptools'
 	'python-build'
@@ -31,7 +33,7 @@ makedepends=(
 checkdepends=('python-pytest' 'python-mock' 'python-daft')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8f642f15c478d08fae07ac499531862acea5b2c11ace0dd7a629d2682826a71b')
+sha256sums=('5069daaa472be8de392ba3f5798fe639fc8b6204d3d50baa2bd8d35390ab7250')
 
 prepare() {
 	cd "$_pkg-$pkgver"

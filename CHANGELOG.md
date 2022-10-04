@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.19] - 2021-06-30
+## [0.1.20] - 2022-09-30
+### Added
+1. `BayesianNetwork.get_random_cpds` method to randomly parameterize a network structure.
+2. Faster Variable Elimination using tensor contraction.
+3. `factors.factor_sum_product` method for faster sum-product operations using tensor contraction.
+
+### Fixed
+1. Bug in `DynamicBayesianNetwork.initialize_initial_state`. #1564
+2. Bug in `factors.factor_product`. #1565
+
+### Changed
+1. Runtime improvements in `DiscreteFactor.marginalize` and `DiscreteFactor.copy` methods.
+
+## [0.1.19] - 2022-06-30
 ### Added
 1. Adds checks for arguments to `BayesianNetwork.simulate` method.
 
@@ -16,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 5. `DAG.active_trail_nodes` allows tuples as variable names.
 6. Fixes CPD and edge creation in `UAIReader`.
 
-## [0.1.18] - 2021-03-30
+## [0.1.18] - 2022-03-30
 ### Fixed
 1. Fixes `CausalInference.is_valid_backdoor_adjustment_set` to accept str arguments for `Z`.
 2. Fixes `BayesianNetwork.remove_cpd` to work with integral node names.
