@@ -2,14 +2,15 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.7.14.brescia.3.r61.g57bbe195
-pkgrel=3
+pkgver=2022.9.28.1.r14.g33d99968
+pkgrel=2
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
 url="https://usebottles.com/"
 license=(GPL3)
 depends=(
+  blueprint-compiler
   cabextract
   dconf
   fvs
@@ -19,7 +20,7 @@ depends=(
   icoextract
   imagemagick
   lib32-gnutls
-  libadwaita-git
+  libadwaita
   libhandy
   libportal-gtk4
   p7zip
