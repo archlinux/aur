@@ -37,7 +37,7 @@ prepare() {
 
 package() {
 
-  local kernver="${pkgver}-xanmod${xanmod}-x64v2"
+  local kernver="${pkgver}-x64v2-xanmod${xanmod}"
   local modulesdir="$pkgdir/usr/lib/modules/${kernver}"
   mkdir -p "${modulesdir}"
 
@@ -47,7 +47,7 @@ package() {
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "boot/vmlinuz-${pkgver}-xanmod${xanmod}-x64v2" "$modulesdir/vmlinuz"
+  install -Dm644 "boot/vmlinuz-${pkgver}-x64v2-xanmod${xanmod}" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgname}" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
