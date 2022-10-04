@@ -8,7 +8,7 @@ pkgbase = video-compare
 	depends = ffmpeg
 	depends = sdl2
 	depends = sdl2_ttf
-	source = https://github.com/pixop/video-compare
+	source = https://github.com/pixop/video-compare/archive/refs/tags/20220920.tar.gz
 	md5sums = SKIP
 
 pkgname = video-compare
