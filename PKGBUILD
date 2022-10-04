@@ -1,45 +1,49 @@
-# Maintainer: ny-a <nyaarch64@gmail..com>
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Contributor: ny-a <nyaarch64@gmail..com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=stripe-cli
-pkgver=1.8.1
+pkgver=1.12.3
 pkgrel=1
 pkgdesc='CLI for Stripe'
 arch=(x86_64)
-url=https://stripe.com/docs/stripe-cli
+url=https://github.com/stripe/stripe-cli
 license=(Apache)
 depends=(glibc)
 makedepends=(go git)
-source=(
-  $pkgname-$pkgver.tar.gz::https://github.com/stripe/stripe-cli/archive/v$pkgver.tar.gz
-  reproducible-image-flags.patch
-)
-sha512sums=('110a93a4c9b4e16843cbdfb5942000b2d7eda35d063c0bdb53af390acb08ecfb5c4c5ed7aa0c2486e1e4614bfa044dc22413aa3c682e716aa64595145e6954c4'
-            '4f5ff8662f5e4bce1ded88a055e652c41dd6492cda5aee74795752abf0e97cc269ec1fef84df2247f62809f0c8cc1a88dd12104e07090cc224bbc5ad46b33f37')
+source=($pkgname-$pkgver.tar.gz::https://github.com/stripe/stripe-cli/archive/v$pkgver.tar.gz)
+b2sums=('1239b8ede1fadf3519c3177b638845fe21dab3ca5bbc620ff82d62def1dc6b083e5b6c94643190c5edf690df4352ea62c69fd4e7754a2bc0eeb75888b3832ee0')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  # Add reproducible image flags
-  patch -Np0 < ../reproducible-image-flags.patch
-
-  make setup
+  go mod download
 }
 
 build() {
   cd $pkgname-$pkgver
-  make build
+
+  go generate ./...
+
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -o stripe \
+    cmd/stripe/main.go
 }
 
 check() {
   cd $pkgname-$pkgver
-  make test
+  go test -failfast -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.txt ./... -run . -timeout=2m
 }
 
 package() {
   cd $pkgname-$pkgver
   install -D stripe -t "$pkgdir"/usr/bin
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 stripe-completion.bash "$pkgdir"/usr/share/bash-completion/completions/stripe
   cp -a docs "$pkgdir"/usr/share/doc/$pkgname
 }
