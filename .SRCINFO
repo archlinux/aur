@@ -1,6 +1,6 @@
 pkgbase = salut
 	pkgdesc = An animated mouse centric notification daemon made with snui.
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/snakedye/salut
 	install = salut.install
@@ -9,7 +9,7 @@ pkgbase = salut
 	makedepends = rust
 	depends = libxkbcommon
 	depends = fontconfig
-	source = https://gitlab.com/snakedye/salut/-/archive/v0.2.3/salut-v0.2.3.tar.gz
-	sha256sums = 93b0f596733ce857348044341f9bc850a2858a98634632a1bbca60daa4e2591d
+	source = https://gitlab.com/snakedye/salut/-/archive/v0.3.0/salut-v0.3.0.tar.gz
+	sha256sums = ddb73b15dca84395cdca2326bedf441c0e05792d613676aeafb8f16d610aceb0
 
 pkgname = salut

@@ -1,7 +1,7 @@
 # Maintainer : Frikilinux <frikilinux@gmail.com>
 
 pkgname=salut
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An animated mouse centric notification daemon made with snui."
 arch=(x86_64)
@@ -11,7 +11,7 @@ source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 depends=('libxkbcommon' 'fontconfig')
 install=${pkgname}.install
 makedepends=(rust)
-sha256sums=('93b0f596733ce857348044341f9bc850a2858a98634632a1bbca60daa4e2591d')
+sha256sums=('ddb73b15dca84395cdca2326bedf441c0e05792d613676aeafb8f16d610aceb0')
 
 build() {
   cd "${pkgname}-v${pkgver}"
