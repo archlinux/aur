@@ -1,0 +1,11 @@
+pkgbase = hoptodesk
+	pkgdesc = A Remote Desktop Software free for personal and commercial use.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.hoptodesk.com/
+	arch = x86_64
+	license = AGPL-3.0
+	source = https://www.hoptodesk.com/hoptodesk.deb
+	sha256sums = 3a56b980882fa88d59acc4ab54045ef8f7e9aec53c1070f21facdb275a7811ab
+
+pkgname = hoptodesk
