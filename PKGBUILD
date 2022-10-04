@@ -9,7 +9,7 @@ _srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 with patches for PINE64's ROCKPro64"
 pkgdesc=${_desc}
-pkgver=5.19.12
+pkgver=5.19.13
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -34,7 +34,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/master/projects/Rockchip/patches/linux/default/linux-2001-v4l2-wip-iep-driver.patch"
 )
 md5sums=('f91bfe133d2cb1692f705947282e123a'
-         '2f9945a50613017d430f7091be9939f8'
+         'cc9f3b62e1274e401b9c37f758493a86'
          'e0514a3e8f7383c1304faeff0121dfb5'
          '965c9f68072084cdbf1e083779d2ef0e'
          '417932cd6167ff0b47c6dc297e3eb3fb'
