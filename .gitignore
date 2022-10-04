@@ -3,4 +3,5 @@
 !.SRCINFO
 !BUILDING
 !PKGBUILD
-!vscodium.desktop
+!vscodium-git-uri-handler.desktop
+!vscodium-git.desktop

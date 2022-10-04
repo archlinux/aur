@@ -3,7 +3,7 @@ Name=VSCodium
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
 Exec=/usr/share/vscodium-git/bin/codium --no-sandbox --unity-launch %F
-Icon=vscodium
+Icon=vscodium-git
 Type=Application
 StartupNotify=true
 StartupWMClass=VSCodium
@@ -15,5 +15,5 @@ Keywords=vscode;
 [Desktop Action new-empty-window]
 Name=New Empty Window
 Exec=/usr/share/vscodium-git/bin/codium --no-sandbox --new-window %F
-Icon=vscodium
+Icon=vscodium-git
 
