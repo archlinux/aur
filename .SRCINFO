@@ -1,6 +1,6 @@
 pkgbase = python-smda
 	pkgdesc = Recursive diassembler optimized for CFG recovery from memory dumps
-	pkgver = 1.7.1
+	pkgver = 1.9.15
 	pkgrel = 1
 	url = https://github.com/danielplohmann/smda
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-smda
 	makedepends = python-wheel
 	depends = python-capstone
 	depends = python-lief
-	source = python-smda-1.7.1.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-1.7.1.tar.gz
+	source = python-smda-1.9.15.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-1.9.15.tar.gz
 	source = remove-datafiles.patch
-	sha256sums = 594ce990e5304064050be89dc9b5b547444c7861be279e2682f7d844e9719658
+	sha256sums = ad3161a40e07bbdfdbffcbc0314bba2acf3ab9e56a14f2ac6465d73f7f201915
 	sha256sums = b23093d15ee671d4b22caae61d80647181530de1d062d639f2a7cf747135d2c9
 
 pkgname = python-smda
