@@ -81,10 +81,10 @@
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.19
-_minor=12
+_major=6.0
+_minor=0
 _srcname=linux-${_major}
-_clr=${_major}.12-1194
+_clr=${_major}.0-1194
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -99,13 +99,13 @@ fi
 options=('!strip')
 _gcc_more_v='20220315'
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.tar.sign"
+  #"https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-5.19.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-5.19.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -124,7 +124,7 @@ prepare() {
 
     ### Add upstream patches
     echo "Add upstream patches"
-    patch -Np1 -i ../patch-${pkgver}
+    #patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
     echo "Setting version..."
@@ -134,7 +134,7 @@ prepare() {
 
     ### Add Clearlinux patches
     for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec |\
-     grep -Ev '^Patch0132|^Patch0201|^Patch0209|^Patch0210|^Patch0216|^Patch0217|^Patch0227|^Patch0228|^Patch0229|^Patch0301|^Patch0304|^Patch0118|^Patch0402|^Patch0113' | sed -n 's/.*: //p'); do
+     grep -Ev '^Patch0132|^Patch0118|^Patch0402|^Patch0113' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
@@ -417,9 +417,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '1a0cb578fae91e5f25e5c4af0b891b929816cdcee6647f6ffa2d4d9a8ffe4578'
+            #'1a0cb578fae91e5f25e5c4af0b891b929816cdcee6647f6ffa2d4d9a8ffe4578'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0c65735f3e636c45e5baffccd0d9cd519c939d95ec5daf3560a7a1338e1016fb'
