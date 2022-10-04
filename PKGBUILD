@@ -48,7 +48,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
-            'e292cca649691917adfc25dbcdba199435c5b7e2e8fbb29348d0978066326f61'
+            'e5ac6986c81b5fea10f5a150506f483fe8d6e0fb5b1d4e8ce9f2c19bed23b2c9'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             '02b035fa598f9e281b9b5b645809d1bcacfa189c733dc291b4305c77cde52960'
             '2c2c72e5f72cf306d38f91869619c6f808b5f694341eeba398de1b0919bf755b'
