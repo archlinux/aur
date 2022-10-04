@@ -6,7 +6,7 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.1.104
+pkgver=2.1.107
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -22,10 +22,14 @@ source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
 
+prepare() {
+	cd "$pkgname"
+	sed -i '2c\requires = ["flit_core>=2"]' pyproject.toml
+}
+
 build() {
 	cd "$pkgname"
-	## requires python-flit-core>=2,<3
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	make -C docs man
 }
 
