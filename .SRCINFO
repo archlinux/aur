@@ -1,19 +1,22 @@
 pkgbase = candyvim-git
 	pkgdesc = CandyVim WIP
-	pkgver = 0.1.0.r0.g1fa5a54
+	pkgver = 0.1.0.r3.gd5a2b3f
 	pkgrel = 1
 	url = https://github.com/mrshmllow/CandyVim
+	install = candyvim-git.install
 	arch = any
 	makedepends = git
 	depends = neovim
 	depends = lua
 	depends = git
-	depends = fzf
+	depends = ripgrep
 	depends = npm
 	depends = cargo
 	source = candyvim-git::git+https://github.com/mrshmllow/CandyVim.git
-	source = git+https://github.com/wbthomason/packer.nvim
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = init-cvim.sh
+	source = cvim
+	sha256sums = SKIP,
+	sha256sums = bf7458c4708eb53996a8b98994d271523f7bf3ca5067702d7e749a14115b9b9f,
+	sha256sums = 3187ea04d5dd498061325dd7ae75d067b49172277399f3e5e19b59a82d332ea7
 
 pkgname = candyvim-git

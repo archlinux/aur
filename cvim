@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export CANDYVIM_RUNTIME_DIR="${CANDYVIM_RUNTIME_DIR:-$HOME/.local/share/candyvim}"
+
+exec nvim -u "$CANDYVIM_RUNTIME_DIR/cvim/init.lua" "$@"
+

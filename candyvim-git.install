@@ -1,0 +1,9 @@
+post_install () {
+  echo -e "\033[1;34m-----------------CANDYVIM---------------------\033[0m"
+
+  echo "    Initialize CandyVim for current user:"
+  echo "        /usr/share/candyvim/init-cvim.sh"
+
+  echo -e "\033[1;34m----------------------------------------------\033[0m"
+}
+
