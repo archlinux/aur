@@ -1,0 +1,13 @@
+--- benchmarktaskdownload.cpp	2022-10-04 11:21:47.332545197 -0700
++++ benchmarktaskdownload_fix.cpp	2022-10-04 11:22:07.550171174 -0700
+@@ -46,10 +46,6 @@
+     m_dnsLookup.setNameserver(QHostAddress(MULLVAD_DEFAULT_DNS));
+ #endif
+ 
+-#if QT_VERSION >= 0x060400
+-#  error Check if QT added support for QDnsLookup::lookup() on Android
+-#endif
+-
+ #ifdef MVPN_ANDROID
+     NetworkRequest* request =
+         NetworkRequest::createForGetUrl(this, m_fileUrl.toString());
