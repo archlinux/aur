@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmatroska-git
-pkgver=1.6.3.r7.g8cf9207
+pkgver=1.7.0.r11.g7e61e84
 pkgrel=1
 pkgdesc="C++ libary to parse Matroska files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://matroska.org/index.html"
 license=('LGPL')
 depends=('glibc' 'libebml.so')
 makedepends=('git' 'cmake')
-provides=('libmatroska' 'libmatroska.so')
+provides=("libmatroska=$pkgver" 'libmatroska.so')
 conflicts=('libmatroska')
 source=("git+https://github.com/Matroska-Org/libmatroska.git")
 sha256sums=('SKIP')
