@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=4.1.2
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -45,6 +45,8 @@ source=(
     "hime::git+https://github.com/hime-ime/hime.git"
     "hunspell::git+https://github.com/hunspell/hunspell"
     "jemalloc::git+https://github.com/jemalloc/jemalloc"
+    "kcoreaddons::git+https://github.com/KDE/kcoreaddons.git"
+    "kimageformats::git+https://github.com/KDE/kimageformats.git"
     "lib_base::git+https://github.com/desktop-app/lib_base.git"
     "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
     "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
@@ -69,6 +71,8 @@ source=(
 )
 sha512sums=('SKIP'
             'e1328de1bf2dfc26a834aae855c9ee4734ff00e92f8c31fcfe633b0b5365456daa5ae1736a590a57889597f8703214829e0809d7e6d13e8fb02165c731b1ea88'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -128,6 +132,8 @@ prepare() {
     git config submodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
     git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
     git config submodule.Telegram/ThirdParty/jemalloc.url "$srcdir/jemalloc"
+    git config submodule.Telegram/ThirdParty/kcoreaddons.url "$srcdir/kcoreaddons"
+    git config submodule.Telegram/ThirdParty/kimageformats.url "$srcdir/kimageformats"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
