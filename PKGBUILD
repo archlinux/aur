@@ -29,10 +29,6 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-	curl -s https://api.github.com/repos/pixop/video-compare/releases/latest | jq -r '.tag_name'
-}
-
 package() {
 	tar -C "$srcdir" -czf "$pkgdir/$pkgname" $pkgname
 	install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname"
