@@ -1,9 +1,9 @@
-# Maintainer: Josh Klecka <makamakamaka5 at gmail dot com>
+#
 
 pkgname="zfs-utils-openrc"
 pkgver="2.1.6"
 pkgdesc="OpenRC init scripts for the Zettabyte File System."
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc})

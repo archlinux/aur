@@ -1,7 +1,7 @@
 pkgbase = zfs-utils-openrc
 	pkgdesc = OpenRC init scripts for the Zettabyte File System.
 	pkgver = 2.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = any
 	license = CDDL
