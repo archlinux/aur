@@ -1,6 +1,6 @@
 pkgbase = cado-nfs-git
 	pkgdesc = Implementation of the Number Field Sieve (NFS) algorithm for factoring integers
-	pkgver = 20220915.5fb07ce72
+	pkgver = 20221003.6a980444e
 	pkgrel = 1
 	url = http://cado-nfs.gforge.inria.fr/
 	arch = x86_64
