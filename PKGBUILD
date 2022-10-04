@@ -4,7 +4,7 @@
 
 pkgname=grass
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ url='http://grass.osgeo.org/'
 license=('GPL')
 depends=('bzip2' 'cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos' 'glibc' 'glu'
          'libpng' 'libtiff' 'libx11' 'libgl' 'netcdf' 'pdal' 'proj' 'python-gdal' 'python-numpy'
-         'python-pillow' 'python-wxpython-dev' 'readline' 'zlib' 'zstd')
-makedepends=('libxt')
+         'python-pillow' 'python-wxpython' 'readline' 'zlib' 'zstd')
+makedepends=('libxt' 'postgresql-libs')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
