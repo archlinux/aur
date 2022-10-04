@@ -34,8 +34,8 @@ clang_major_ver() {
 make_env_variant=""
 make_with_lto="make CC=clang HOSTCC=clang NM=llvm-nm AR=llvm-ar HOSTLD=ld.lld LD=ld.lld OBJCOPY=llvm-objcopy STRIP=llvm-strip"
 make_without_lto="make CC=clang HOSTCC=clang"
-# "Modern performance" – uses a slimmer config with
-# performance tuned to your specific machine (-march=native)
+# "Modern performance" – modifies the config to enable
+# performance tuned to your specific machine (native-intel or native-amd)
 USE_MPERFORMANCE=${USE_MPERFORMANCE:=false}
 # "Ancient" config – for older machines
 FOR_ANCIENT=${FOR_ANCIENT:=false}
@@ -67,15 +67,24 @@ build() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   _defconfig="nitrous_defconfig"
-  if $USE_MPERFORMANCE; then
-    _defconfig="nitrous-mperformance_defconfig"
-  elif $FOR_ANCIENT; then
-    _defconfig="nitrous-ancient_defconfig"
-  fi
 
   rm -f .clang
   $make_env_variant $_defconfig
   _handle_lsmod
+
+  if $USE_MPERFORMANCE; then
+    local cpu_vendor="$(lscpu | grep "Vendor ID" | head -n1 | cut -d ':' -f2 | awk '{ print $1 }')"
+    cpu_type="AMD"
+    if [ "$cpu_vendor" == "GenuineIntel" ]; then
+      cpu_type="INTEL"
+    elif [ "$cpu_vendor" == "AuthenticAMD" ]; then
+      cpu_type="AMD"
+    fi
+    # Enable native compilation
+    sed -i -re "s/CONFIG_MSKYLAKE=y/# CONFIG_MSKYLAKE is not set/g" .config
+    echo "CONFIG_MNATIVE_${cpu_type}=y" >> .config
+  fi
+
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
