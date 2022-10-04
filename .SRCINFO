@@ -7,6 +7,7 @@ pkgbase = git-bro
 	license = MIT
 	depends = ruby
 	depends = ruby-tomlrb
+	depends = ruby-libnotify
 	source = git+https://github.com/LevitatingBusinessMan/git-bro.git
 	sha256sums = SKIP
 
