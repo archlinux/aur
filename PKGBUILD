@@ -2,7 +2,7 @@
 pkgname='genrepass-bin'
 _pkgname='genrepass'
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Generate readable passwords from an ordered list of words extracted from text'
 arch=('x86_64' 'i686')
 url='https://github.com/AlexChaplinBraz/genrepass-cli'

@@ -1,7 +1,7 @@
 pkgbase = genrepass-bin
-	pkgdesc = Generate a readable password from an ordered list of words extracted from text
+	pkgdesc = Generate readable passwords from an ordered list of words extracted from text
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/AlexChaplinBraz/genrepass-cli
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = genrepass-bin
 	conflicts = genrepass
 	conflicts = genrepass-git
 	source_x86_64 = https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/1.1.1/genrepass-1.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 
+	sha256sums_x86_64 = 3e9d9cf0083a77b73f94c2a5992fa7f2be0c303eac6b998f7299bac40e1960bd
 	source_i686 = https://github.com/AlexChaplinBraz/genrepass-cli/releases/download/1.1.1/genrepass-1.1.1-i686-unknown-linux-gnu.tar.gz
-	sha256sums_i686 = 
+	sha256sums_i686 = 4cef7612fd24033daac08630f03e083c853eff337f831d5485d515b92e4ee552
 
 pkgname = genrepass-bin
