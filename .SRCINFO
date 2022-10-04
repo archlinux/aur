@@ -1,0 +1,14 @@
+pkgbase = agnos
+	pkgdesc = Obtain (wildcard) certificates from let\'s encrypt using dns-01 without the need for API access to your DNS provider.
+	pkgver = 0.1.0_beta.1
+	pkgrel = 1
+	install = INSTALL
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	source = agnos-0.1.0-beta.1.tar.gz::https://static.crates.io/crates/agnos/agnos-0.1.0-beta.1.crate
+	sha256sums = 242ecf449550a6dcc6e6b7f75a5a9cc205a448adfc5fe71387163bae32c90d21
+
+pkgname = agnos

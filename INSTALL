@@ -1,0 +1,17 @@
+info_msg="Running agnos often \
+    requires the ability to bind to port 53.\
+    You may do so: \n    \
+    1. By running agnos as root\n    \
+    2. By setting capabilities using:\n       \
+    # setcap 'cap_net_bind_service=+ep' /sur/bin/agnos"
+
+# arg 1:  the new package version
+post_install() {
+	echo -e $info_msg
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	echo -e $info_msg
+}
