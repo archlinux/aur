@@ -1,10 +1,11 @@
 pkgbase = python-flake8-comprehensions
 	pkgdesc = Flake8 plugin to help you write better list/set/dict comprehensions.
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adamchainz/flake8-comprehensions
 	arch = any
 	license = ISC
+	makedepends = python-setuptools
 	depends = flake8
 	source = https://github.com/adamchainz/flake8-comprehensions/archive/3.10.0.tar.gz
 	md5sums = 47d33393dc3c2164aa19fb080bb18322
