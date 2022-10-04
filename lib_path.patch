@@ -1,0 +1,21 @@
+diff --unified --recursive --text systemd-netlogd-1.2/meson.build systemd-netlogd-1.2-mod/meson.build
+--- systemd-netlogd-1.2/meson.build	2022-05-13 23:28:01.000000000 +0800
++++ systemd-netlogd-1.2-mod/meson.build	2022-10-04 21:10:09.719999945 +0800
+@@ -166,4 +166,4 @@
+                    libcap,
+                    libsystemd],
+                    install : true,
+-                   install_dir : '/lib/systemd')
++                   install_dir : '/usr/lib/systemd')
+diff --unified --recursive --text systemd-netlogd-1.2/units/systemd-netlogd.service.in systemd-netlogd-1.2-mod/units/systemd-netlogd.service.in
+--- systemd-netlogd-1.2/units/systemd-netlogd.service.in	2022-05-13 23:28:01.000000000 +0800
++++ systemd-netlogd-1.2-mod/units/systemd-netlogd.service.in	2022-10-04 21:05:00.656666607 +0800
+@@ -7,7 +7,7 @@
+ After=network.target
+ 
+ [Service]
+-ExecStart=/lib/systemd/systemd-netlogd
++ExecStart=/usr/lib/systemd/systemd-netlogd
+ PrivateTmp=yes
+ PrivateDevices=yes
+ WatchdogSec=20min

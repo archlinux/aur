@@ -1,1 +1,2 @@
-m systemd-journal-netlog systemd-journal
+#Type 	Name     		ID             		GECOS   Home directory 	Shell
+u 	systemd-journal-netlog 	-:systemd-journal 	- 	/	 	/bin/nologin
