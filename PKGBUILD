@@ -4,8 +4,7 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=3.3.0
-_commit=96b3aa7
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -14,7 +13,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 changelog=CHANGELOG.md
-source=("$pkgname::git+$url#commit=$_commit?signed")
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407' ## Mark McDonnell (Integralist)
               '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## GitHub
