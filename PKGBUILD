@@ -48,7 +48,7 @@ pkgver() {
 prepare() {
   patch -d "$_pkg" -p1 < fmt.patch
 
-  cat <<EOF >local.sh
+  cat <<EOF >"$_pkg/local.sh"
 PREFIX=/usr
 HWLOC="\$PREFIX"
 GMPECM="\$PREFIX"
