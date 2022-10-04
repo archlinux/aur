@@ -15,6 +15,7 @@ optdepends=(
 makedepends=("git" "cargo")
 source=("shotman-${pkgver}::git+https://git.sr.ht/~whynothugo/shotman#tag=v${pkgver}?signed")
 sha512sums=("SKIP")
+validpgpkeys=("1204CA9FC2FFADEEDC2961367880733B9D062837")
 
 prepare() {
     cd "$pkgname-$pkgver"
