@@ -1,7 +1,7 @@
 pkgbase = ocaml-uchar
 	pkgdesc = Compatibility library for OCaml's Uchar module
 	pkgver = 0.0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ocaml/uchar
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = ocaml-uchar
 	sha512sums = 487a9706cf9dfc9b9c94442a51766cc211687d6ebcb4dd3c94d09cb1ed6d7fd61e966e91a4121fe2d1681b2fd6bfee9079d3bccccdb6d65ba2111524ab5dd1bc
 
 pkgname = ocaml-uchar
-

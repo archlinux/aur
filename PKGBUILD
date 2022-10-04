@@ -3,7 +3,7 @@
 pkgname=ocaml-uchar
 _pkgname=uchar
 pkgver=0.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Compatibility library for OCaml's Uchar module"
 url="https://github.com/ocaml/uchar"
 arch=('i686' 'x86_64')
