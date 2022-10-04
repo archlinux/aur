@@ -1,0 +1,13 @@
+pkgbase = dbz
+	pkgdesc = A library (dbz-lib) and CLI tool (dbz-cli) for working with Databento Binary Encoding (DBZ) files
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/databento/dbz
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = https://github.com/databento/dbz/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = b5efcbc0b5c459ec1787a8b9d233426982d0b77d1ca1b3af34798d7f4da26cc8
+
+pkgname = dbz
