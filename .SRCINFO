@@ -1,5 +1,5 @@
 pkgbase = apt
-	pkgver = 2.3.15
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://salsa.debian.org/apt-team/apt
 	arch = i686
@@ -28,8 +28,8 @@ pkgbase = apt
 	provides = libapt-pkg
 	provides = libapt-pkg-dev
 	provides = apt-utils
-	source = https://salsa.debian.org/apt-team/apt/-/archive/2.3.15/apt-2.3.15.tar.bz2
-	sha512sums = cf044329116b959018bf6b5a20824fbb78bc8854ec2c47a6e24cd493a68e497ece4ecbb6e79d40e5996630a127c4d88598332132be9af4aaa781795e9f4f2731
+	source = https://salsa.debian.org/apt-team/apt/-/archive/2.5.3/apt-2.5.3.tar.bz2
+	sha512sums = f24789ac9502a0c9e5e2597e24142ca61f34a2a364771001349121d2bdc37b2a20395ec1afa0098a01d0c384f8d4fe9554ea8af2fe6064bd11c3db10e68131f6
 
 pkgname = apt
 	pkgdesc = Command-line package manager used on Debian-based systems
