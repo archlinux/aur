@@ -2,7 +2,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -86,3 +86,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
