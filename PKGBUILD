@@ -3,7 +3,7 @@
 _pkgname='solar-tweaks'
 pkgname="${_pkgname}-bin"
 pkgdesc="Solar Tweaks is a tool for tweaking and customizing Lunar Client. Give yourself an upgrade in your gaming experience. "
-pkgver=4.0.4
+pkgver=4.0.6
 _appimage="Solar-Tweaks-$pkgver.AppImage"
 pkgrel=1
 depends=('alsa-lib' 'atk' 'gtk3' 'nss')
@@ -17,7 +17,7 @@ conflicts=()
 source=(
     https://github.com/Solar-Tweaks/Solar-Tweaks/releases/download/v$pkgver/$_appimage
 )
-sha256sums=(4df8d4e2874843feb42f1a338c9d44d1b662c368e5c45c95e73d80e79721a3b7)
+sha256sums=(843dfbbfcc23f172817997ed31b8a8759b4e99b28f994b8b65690461f6e88c53)
 
 prepare () {
     cd "$srcdir"
