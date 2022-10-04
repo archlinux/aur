@@ -1,7 +1,7 @@
 # Maintainer: Roman Geraskin <roman dot n dot geraskin at gmail dot com>
 
 pkgname=werf-bin
-pkgver=1.2.176
+pkgver=1.2.177
 pkgrel=1
 pkgdesc='Kubernetes build and delivery tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 provides=('werf')
 conflicts=("werf-git")
 source=("https://tuf.werf.io/targets/releases/${pkgver}/linux-amd64/bin/werf")
-sha256sums=('6bba3594b7318a1da97e9f62631592293cfbc26e1f313fb2aded958c46299fce')
+sha256sums=('898aa9ace5b26cb0825bc94100910314327237a16962c6c0ef93004eddd757bb')
 
 package() {
   install -Dm755 werf "${pkgdir}/usr/bin/werf"
