@@ -1,21 +1,22 @@
 pkgbase = xorgxrdp-devel-git
 	pkgdesc = Xorg drivers for xrdp
-	pkgver = 0.2.15.r8.g9b7dd05
+	pkgver = 0.2.18.r31.g3f7ed8d
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = libxfont2
 	makedepends = nasm
 	makedepends = xorg-server-devel
+	makedepends = xrdp
 	depends = glibc
-	depends = xrdp
-	provides = xorgxrdp
+	provides = xorgxrdp=0.2.18.r31.g3f7ed8d
 	conflicts = xorgxrdp
 	options = staticlibs
 	source = git+https://github.com/neutrinolabs/xorgxrdp.git#branch=devel
 	sha256sums = SKIP
 
 pkgname = xorgxrdp-devel-git
-

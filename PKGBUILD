@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xorgxrdp-devel-git
-pkgver=0.2.15.r8.g9b7dd05
+pkgver=0.2.18.r31.g3f7ed8d
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('MIT')
-depends=('glibc' 'xrdp')
-makedepends=('git' 'nasm' 'xorg-server-devel')
-provides=('xorgxrdp')
+depends=('glibc')
+makedepends=('git' 'libxfont2' 'nasm' 'xorg-server-devel' 'xrdp')
+provides=("xorgxrdp=$pkgver")
 conflicts=('xorgxrdp')
 options=('staticlibs')
 source=("git+https://github.com/neutrinolabs/xorgxrdp.git#branch=devel")
