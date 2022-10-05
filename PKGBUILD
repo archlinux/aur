@@ -7,7 +7,7 @@ _rel=2
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 #pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -16,18 +16,18 @@ depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 install="${pkgname%-*-*}.install"
-source=(
-        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_amd64.deb"{,.asc} # beta
-        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_arm64.deb"{,.asc} # beta
-#        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc} # stable
+source=("${pkgname%-*-*}.sh")
+source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_amd64.deb"{,.asc} # beta
+#              "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc} # stable
+              )
+source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_arm64.deb"{,.asc} # beta
 #        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc} # stable
-        "${pkgname%-*-*}.sh"
-       )
-sha256sums=('cb5abb13c5f21c98d120415732a291893d43ade9cb698c6c91cef1a2c2abc113'
-            'SKIP'
-            'b83efa6dbfb59d1bf3979e8011b8ad8a156c0aa1f27d30c175941bda5b5dbfac'
-            'SKIP'
-            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
+               )
+sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
+sha256sums_x86_64=('cb5abb13c5f21c98d120415732a291893d43ade9cb698c6c91cef1a2c2abc113'
+                   'SKIP')
+sha256sums_aarch64=('b83efa6dbfb59d1bf3979e8011b8ad8a156c0aa1f27d30c175941bda5b5dbfac'
+                    'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
 package() {
