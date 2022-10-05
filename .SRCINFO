@@ -1,16 +1,21 @@
 pkgbase = playhouse
 	pkgdesc = A Playground for HTML/CSS/JavaScript
-	pkgver = r6.6420e3b
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/sonnyp/Playhouse
-	arch = any
-	license = GPL
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
+	makedepends = blueprint-compiler
 	makedepends = meson
+	depends = libadwaita
 	depends = webkit2gtk-5.0
 	depends = gjs
-	depends = gtk4
-	source = git+https://github.com/sonnyp/Playhouse
-	md5sums = SKIP
+	source = git+https://github.com/sonnyp/Playhouse.git#commit=287811d971872b51bb6127a35610d1442e15b1f4
+	source = git+https://github.com/sonnyp/troll.git
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = playhouse
