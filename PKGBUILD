@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=fq-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Tool, language and decoders for inspecting binary data.'
 url='https://github.com/wader/fq'
@@ -9,7 +9,7 @@ license=('custom')
 arch=('x86_64')
 provides=('fq')
 source=("fq-$pkgver-$pkgrel.tgz::https://github.com/wader/fq/releases/download/v$pkgver/fq_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('8d71d50adc808e3a90493ff96cb0206abe5df540053379a5b2521582e6cfa69c')
+sha256sums=('f34c369dd870da1d528230fb4dad8f2114384ee93ea0ab2a363f5d9b12be02e0')
 
 package() {
     tar xzf $srcdir/fq-$pkgver-$pkgrel.tgz
