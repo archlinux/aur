@@ -1,8 +1,8 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=ihaskell-git
-pkgver=2129.e0c1a8d
-pkgrel=2
+pkgver=2140.14059d9
+pkgrel=1
 pkgdesc="A Haskell backend kernel for the IPython project"
 arch=('x86_64')
 url="https://github.com/gibiansky/IHaskell"
@@ -16,6 +16,11 @@ makedepends=('git' 'ghc' 'haskell-hunit' 'haskell-here' 'haskell-hspec' 'haskell
 conflicts=()
 source=("git+https://github.com/gibiansky/IHaskell")
 sha256sums=('SKIP')
+
+pkgver() {
+        cd "$srcdir"/IHaskell
+        echo `git rev-list --count master`.`git rev-parse --short master`
+}
 
 build() {
   cd IHaskell

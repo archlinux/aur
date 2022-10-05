@@ -1,7 +1,7 @@
 pkgbase = ihaskell-git
 	pkgdesc = A Haskell backend kernel for the IPython project
-	pkgver = 2129.e0c1a8d
-	pkgrel = 2
+	pkgver = 2140.14059d9
+	pkgrel = 1
 	url = https://github.com/gibiansky/IHaskell
 	arch = x86_64
 	license = MIT
