@@ -1,15 +1,15 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 appname=qflipper
 pkgname=qflipper-git
-basever=1.2.0
+basever=1.2.1
 pkgver=${basever/-/}
 pkgrel=1
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
 url="https://flipperzero.one/update"
 license=('GPL3')
 arch=('x86_64')
-depends=('libusb' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-svg')
-makedepends=('git' 'qt5-tools')
+depends=('libusb' 'qt6-5compat' 'qt6-declarative' 'qt6-serialport' 'qt6-svg')
+makedepends=('git' 'qt6-tools')
 source=($appname::git+https://github.com/flipperdevices/qFlipper#tag=${basever})
 sha256sums=('SKIP')
 
@@ -22,7 +22,7 @@ prepare() {
 build() {
 	mkdir -p $appname/build
 	cd $appname/build
-	qmake ../qFlipper.pro -spec linux-g++ CONFIG+=qtquickcompiler PREFIX=/usr
+	qmake6 ../qFlipper.pro -spec linux-g++ CONFIG+=qtquickcompiler DEFINES+=DISABLE_APPLICATION_UPDATES PREFIX=/usr
 	make qmake_all
 	make
 }

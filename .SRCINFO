@@ -1,19 +1,18 @@
 pkgbase = qflipper-git
 	pkgdesc = Desktop application for updating Flipper Zero firmware via PC
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://flipperzero.one/update
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = libusb
-	depends = qt5-graphicaleffects
-	depends = qt5-quickcontrols
-	depends = qt5-quickcontrols2
-	depends = qt5-serialport
-	depends = qt5-svg
-	source = qflipper::git+https://github.com/flipperdevices/qFlipper#tag=1.2.0
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = qt6-serialport
+	depends = qt6-svg
+	source = qflipper::git+https://github.com/flipperdevices/qFlipper#tag=1.2.1
 	sha256sums = SKIP
 
 pkgname = qflipper-git
