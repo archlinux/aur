@@ -12,7 +12,7 @@ _rel=2
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 #pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -75,6 +75,13 @@ build() {
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
+
+  if [ "$CARCH" == "aarch64" ]; then
+    export CGO_ENABLED=1
+    export GOARCH=arm64
+    export CC=aarch64-linux-gnu-gcc
+  fi
+
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -138,7 +145,7 @@ package() {
   # Install main files
   install -d "$pkgdir/opt/Mullvad VPN"
 
-  if [ $CARCH == "aarch64" ]; then
+  if [ "$CARCH" == "aarch64" ]; then
     cp -r dist/linux-arm64-unpacked/* "$pkgdir/opt/Mullvad VPN/"
   else
     cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
