@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc='ACME protocol implementation in Python'
 arch=('any')
@@ -19,14 +19,17 @@ depends=(
   'python-requests-toolbelt'
 )
 makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
   'python-setuptools'
   'python-sphinx'
   'python-sphinx_rtd_theme'
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('fb0320ebfef31afc2d29b72973a50390f67a4dcd3f96be4804b5bc13e09b71055a20f3b1da504fb4ebc300ae8871d244487d252e81029f6c23a01ff1a2c9485e')
-b2sums=('3f129254df9db8d08c1bcbf371da5bda5e7cabd3f95e738cd28a7920ff50a2a263a4eb7cfe94d39bd05871f61a7f703d13baa3d6ed9d5d9db89c7b3a0ab95598')
+sha512sums=('a2bd5d564186bd72a8201be4a8036a1faac32a799d1e96193488cfd2e31d780261342f89eb17adfe88f9694c3a4573c883a8899ffb3fdf3cb815ed9039b07a63')
+b2sums=('2b91c0360c7adf0715c7db036dc62ae3df16f8a7d43d2af585d28d5b87052c843208fe8034fdc82b4c4de63f5dd2f2c8315a3b9df28d062b9539671d6ab7171f')
 
 prepare() {
   cd "acme-$pkgver"
@@ -40,7 +43,7 @@ prepare() {
 build() {
   cd "acme-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   # create man page
   make -C docs man
@@ -55,7 +58,7 @@ check() {
 package() {
   cd "acme-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # man pages
   install -vDm644 -t "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
