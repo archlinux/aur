@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _gemname=ast-tdl
 pkgname=ruby-${_gemname}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An experimental and minimalistic Training Description Language for Artificial Sport Trainer"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(ruby)
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('033ab3f55257f5b7fa9ebe5a468bd5b766a7b38ebf0f47ac811c27d2690c7e46')
+sha256sums=('18c7e684a71a666736d799300fc729db955184ebbe7b79a773168ae3b0efb3da')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
