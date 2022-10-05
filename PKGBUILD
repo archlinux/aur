@@ -1,7 +1,7 @@
 #Maintainer: LevitatingBusinessMan (Rein Fernhout) <me@levitati.ng>
 
 pkgname=git-bro
-pkgver=8d9d50b
+pkgver=r15.ade876b
 arch=("x86_64")
 pkgrel=1
 pkgdesc="Monitor remote git repositories for changes and automate tasks."
@@ -12,8 +12,8 @@ source=("git+https://github.com/LevitatingBusinessMan/git-bro.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git rev-parse --short HEAD
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
