@@ -4,7 +4,7 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=vcpkg
-pkgver=2022.08.15
+pkgver=2022.09.27
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
@@ -22,7 +22,7 @@ source=(
     'vcpkg.conf'
 )
 sha256sums=(
-    '89a3cb03aee1f081d4bf9fa9a610d6ae9275d92647099cf440f68fc40e980394'
+    'e509c355acbf8ba958dfa4905e29f3a62626778c0d19e79f0ac6a5650677182c'
     '6afa87afff491f6090c4ade5a9249942f9d503708f81c4cfea5ca22f6b96adba'
     '851f32d41ce7ec0140b8fe4cf1acbb1e8bab18b0d899d12a202558a270d5a4bb'
     '02a6d2bca471adedfc7acc9ba57860d976ec5115b282cb1a96341850e1c7b221'
@@ -40,7 +40,7 @@ package() {
     # vcpkg root
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/vcpkg" "${pkgdir}/${VCPKG_ROOT}/vcpkg"
     cp --preserve=mode -r \
-        "${srcdir}/${pkgname}-${pkgver}"/{docs,ports,scripts,triplets,.vcpkg-root} \
+        "${srcdir}/${pkgname}-${pkgver}"/{docs,ports,scripts,triplets,.vcpkg-root,LICENSE.txt} \
         "${pkgdir}/${VCPKG_ROOT}/"
 
     # default downloads root directory
