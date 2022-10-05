@@ -6,7 +6,7 @@
 _reponame=qtutilities
 pkgname=mingw-w64-qtutilities
 _name=${pkgname#mingw-w64-}
-pkgver=6.8.0
+pkgver=6.9.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (mingw-w64)'
