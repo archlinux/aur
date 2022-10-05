@@ -1,7 +1,7 @@
 pkgbase = protonup-qt-bin
 	pkgdesc = Install and manage Proton-GE for Steam and Wine-GE for Lutris with this graphical user interface.
 	pkgver = 2.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://davidotek.github.io/protonup-qt
 	arch = x86_64
 	license = GPL3
@@ -10,15 +10,9 @@ pkgbase = protonup-qt-bin
 	noextract = ProtonUp-Qt-2.7.4-x86_64.AppImage
 	options = !strip
 	source = ProtonUp-Qt-2.7.4-x86_64.AppImage::https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v2.7.4/ProtonUp-Qt-2.7.4-x86_64.AppImage
-	source = 256x256-net.davidotek.pupgui2.png::https://raw.githubusercontent.com/DavidoTek/ProtonUp-Qt/main/share/icons/hicolor/256x256/apps/net.davidotek.pupgui2.png
-	source = 128x128-net.davidotek.pupgui2.png::https://raw.githubusercontent.com/DavidoTek/ProtonUp-Qt/main/share/icons/hicolor/128x128/apps/net.davidotek.pupgui2.png
-	source = 64x64-net.davidotek.pupgui2.png::https://raw.githubusercontent.com/DavidoTek/ProtonUp-Qt/main/share/icons/hicolor/64x64/apps/net.davidotek.pupgui2.png
 	source = protonup-qt.desktop
 	source = protonup-qt
 	sha256sums = c8a73e28e41fa9c8aa50b9c28552dfeb2f67a6849833a166bbb9981842a6a640
-	sha256sums = 7b076d883121d5aa6c9575acb8afb3b725be290752cd923562db5101396c1b93
-	sha256sums = 8e4df1de1fd883a94e4dbe544b285f74288c8fe19a3d0b301c9953d885c7aba8
-	sha256sums = 3fe22cd927b21f7c40760abd82f1d64380e54c78c937286e7b27dfc7e8681c19
 	sha256sums = 3d2e9dbb6eb0fa034db3c1b2384fd23a8b004c90a8f72afbe86baff714433da1
 	sha256sums = 1baaba24e3fae798cde2f1801b9a0c5f92df5c61b0d8ba81c43731abcce44bc2
 
