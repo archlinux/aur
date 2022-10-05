@@ -8,6 +8,7 @@ pkgbase = pldebugger-git
 	license = Artistic2.0
 	makedepends = git
 	makedepends = llvm
+	makedepends = clang
 	depends = postgresql
 	options = !emptydirs
 	options = !libtool
