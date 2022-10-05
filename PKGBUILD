@@ -1,6 +1,6 @@
-# Maintainer: Matt Rhoades <dev@rhoatech.com>
-# Contributor: Christian Hesse <mail@eworm.de>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
+# Maintainer: Matt R <dev at rhoatech.com>
+# Contributor: Christian Hesse <mail at eworm.de>
+# Contributor: Sergej Pupykin <pupykin.s+arch at gmail.com> ([community] package)
 
 pkgname=remmina-git
 pkgver=1.4.27.r247.gb47c525e3
@@ -11,7 +11,7 @@ url='http://www.remmina.org/'
 license=('GPL')
 depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
 	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
-	'libsecret' 'webkit2gtk' 'libsodium')
+	'libsecret' 'webkit2gtk-4.1' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
     'libxkbfile' 'freerdp' 'gobject-introspection'
     'spice' 'spice-gtk' 'spice-protocol' 'gnome-keyring' 'kwallet' 'gtk-vnc'
