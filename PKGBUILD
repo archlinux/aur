@@ -1,7 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=furnace-git
-pkgver=dev111.r60.gf94c6f10
+pkgver=dev119.r39.g16b752dc
 pkgrel=1
 pkgdesc="A multi-system chiptune tracker compatible with DefleMask modules"
 url="https://github.com/tildearrow/furnace"
