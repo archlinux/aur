@@ -1,0 +1,26 @@
+pkgbase = chadwm-devguyahnaf-git
+	pkgdesc = DevGuyAhnaf's version of ChadWM (DWM Modif)
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ahnaf-zamil/chadwm
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = picom
+	depends = feh
+	depends = acpi
+	depends = rofi
+	depends = pavucontrol
+	depends = dash
+	depends = imlib2
+	depends = xorg-xsetroot
+	depends = wget
+	depends = xorg-server
+	provides = dwm
+	conflicts = dwm
+	source = chadwm::git+https://github.com/ahnaf-zamil/chadwm.git
+	sha256sums = SKIP
+
+pkgname = chadwm-devguyahnaf-git
