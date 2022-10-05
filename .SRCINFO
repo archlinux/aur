@@ -1,6 +1,6 @@
 pkgbase = itango
 	pkgdesc = An interactive Tango client.
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/tango-controls/itango
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = itango
 	depends = ipython>=1.0
 	depends = python-qtconsole
 	conflicts = itango-git
-	source = https://gitlab.com/tango-controls/itango/-/archive/0.1.8/itango-0.1.8.tar.gz
-	sha256sums = 29542b148b5e2c8ea95f3b060ec37a4bd0a88d933992fcaca45d9438eabe481c
+	source = https://gitlab.com/tango-controls/itango/-/archive/0.1.9/itango-0.1.9.tar.gz
+	source = setup.patch
+	sha256sums = 33e890fcf5355ebd9d7c1bfa3666e13b8846744e9d55125bda8f2a1650595c03
+	sha256sums = b66fd41e639afc1f215ca8c684ea73e2a393f27a0887bfea00ed15f9ef3c9e7f
 
 pkgname = itango
