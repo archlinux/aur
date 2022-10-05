@@ -1,6 +1,6 @@
 pkgbase = lovecraft
 	pkgdesc = Print random paragraphs from Lovecrafts stories
-	pkgver = 9948031
+	pkgver = r13.052ecf4
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/lovecraft
 	arch = x86_64

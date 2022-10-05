@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <public@reinfernhout.xyz>
 
 pkgname=lovecraft
-pkgver=9948031
+pkgver=r13.052ecf4
 arch=("x86_64")
 pkgrel=1
 pkgdesc="Print random paragraphs from Lovecrafts stories"
@@ -12,8 +12,8 @@ source=("git+https://github.com/LevitatingBusinessMan/lovecraft.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git rev-parse --short HEAD
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
