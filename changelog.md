@@ -1,3 +1,11 @@
+## GE-Proton7-37
+
+HOTFIX: The return of FSR
+
+-Huge thanks to Discord community member OOOOOF123 for rebasing the FSR patch, FSR is back in business!
+
+That's the only change in this build. Since it's a pretty important one I felt it should be released right away,i
+
 ## GE-Proton7-36
 
 Updates:
