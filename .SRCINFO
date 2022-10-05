@@ -1,6 +1,6 @@
 pkgbase = r-pdftools
 	pkgdesc = Text Extraction, Rendering and Converting of PDF Documents
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pdftools
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-pdftools
 	optdepends = r-tesseract
 	optdepends = r-testthat
 	optdepends = r-webp
-	source = https://cran.r-project.org/src/contrib/pdftools_3.3.0.tar.gz
-	sha256sums = 0913d2eae9718b11245a9b3d970b11152afbc83ee1424cd4e42f76fbd53e2e94
+	source = https://cran.r-project.org/src/contrib/pdftools_3.3.1.tar.gz
+	sha256sums = 96b999b99c05175c6a32e253d9bf5080ff45a5e92b6509cdd6d15b6d7ade3fe2
 
 pkgname = r-pdftools
