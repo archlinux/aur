@@ -1,13 +1,13 @@
 pkgbase = erigon
 	pkgdesc = Ethereum implementation on the efficiency frontier.
-	pkgver = 2022.09.03
+	pkgver = 2022.10.01
 	pkgrel = 1
 	url = https://github.com/ledgerwatch/erigon
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = https://github.com/ledgerwatch/erigon/archive/refs/tags/v2022.09.03.tar.gz
+	source = https://github.com/ledgerwatch/erigon/archive/refs/tags/v2022.10.01.tar.gz
 	sha256sums = 4ca59881444c1a810c91c8c2cbc3517cdff3d46f4c302dc913c117280b785dd5
 
 pkgname = erigon
