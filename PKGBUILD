@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="pam-max-retries"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.5.9
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="The SWC-DB PAM Max Retries auth Library"
 arch=("x86_64")
