@@ -1,4 +1,4 @@
-src/
 pkg/
-a-sid-*.tar.gz
-a-sid-*.pkg.tar.*
+src/
+*.tar.*
+*.zip

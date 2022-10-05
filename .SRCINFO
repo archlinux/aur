@@ -1,9 +1,10 @@
 pkgbase = a-sid
 	pkgdesc = Emulation of the C64 MOS 8580 SID analog filter as a VST3 plugin
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.orastron.com/asid
 	arch = x86_64
+	arch = aarch64
 	groups = pro-audio
 	groups = vst3-plugins
 	license = GPL3
@@ -12,9 +13,10 @@ pkgbase = a-sid
 	depends = glibc
 	depends = gcc-libs
 	depends = libxcb
+	optdepends = vst3-host: for loading the VST3 plugin
 	source = a-sid-1.0.3.tar.gz::https://github.com/sdangelo/asid/archive/refs/tags/1.0.3.tar.gz
 	source = a-sid-build-linux.patch
 	sha256sums = 16bd9df96d763dfba3add95e643b48713fb22401e6f54df57cceaf5793f65a55
-	sha256sums = 0060a7758e066c83812b2f0c6944b7ca7c0f26e1226d271314507808b2b274f5
+	sha256sums = bd21be0d58d33a126e95c61c70384f8ff63a0740b9d1c9f8752d84f6602d0f1d
 
 pkgname = a-sid
