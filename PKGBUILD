@@ -1,36 +1,42 @@
-pkgbase=nautilus-git
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: lubosz <lubosz@gmail.com>
+# Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
+
+# shellcheck disable=SC2034
 _pkgbase=nautilus
-pkgname=('nautilus-git' 'libnautilus-extension-git')
-pkgver=40.alpha+13+g9b733dd9d
+pkgbase="${_pkgbase}-git"
+pkgname=("${pkgbase}" 'libnautilus-extension-git')
+pkgver=43.0+11+g992ff6204
 pkgrel=1
 pkgdesc="Default file manager for GNOME"
 url="https://wiki.gnome.org/Apps/Files"
 arch=(x86_64)
 license=(GPL)
-depends=('libgexiv2' 'gnome-desktop' 'gvfs' 'dconf' 'tracker3' 'tracker3-miners'
-         'gnome-autoar' 'gst-plugins-base-libs')
-makedepends=('gobject-introspection' 'git' 'gtk-doc' 'meson' 'appstream-glib')
+depends=('libgexiv2' 'gnome-desktop-4' 'gvfs' 'dconf' 'tracker3' 'tracker3-miners'
+         'gnome-autoar' 'gst-plugins-base-libs' 'libportal-gtk4')
+makedepends=('cmake' 'gobject-introspection' 'git' 'gtk-doc' 'meson' 'appstream-glib')
 checkdepends=('python-gobject')
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git"
         "git+https://gitlab.gnome.org/GNOME/libgd.git")
 b2sums=('SKIP'
         'SKIP')
 
+# shellcheck disable=SC2154
 prepare() {
-  cd $_pkgbase
+  cd "${_pkgbase}" || exit
 
   git submodule init
-  git submodule set-url subprojects/libgd "$srcdir/libgd"
+  git submodule set-url subprojects/libgd "${srcdir}/libgd"
   git submodule update
 }
 
 pkgver() {
-  cd $_pkgbase
+  cd $_pkgbase || exit
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson $_pkgbase build \
+  arch-meson "${_pkgbase}" build \
     -D docs=true \
     -D packagekit=false
   meson compile -C build
@@ -62,12 +68,12 @@ package_nautilus-git() {
 
   _pick libne "$pkgdir"/usr/include
   _pick libne "$pkgdir"/usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig}
-  _pick libne "$pkgdir"/usr/share/{gir-1.0,gtk-doc}
+  _pick libne "$pkgdir"/usr/share/gir-1.0
 }
 
 package_libnautilus-extension-git() {
   pkgdesc="Library for extending the $pkgdesc"
-  depends=('gtk3')
+  depends=('gtk4')
   provides=('libnautilus-extension' 'libnautilus-extension.so')
   conflicts=('libnautilus-extension')
   mv libne/* "$pkgdir"
