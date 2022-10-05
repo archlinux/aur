@@ -1,0 +1,15 @@
+pkgbase = oauth2ms-git
+	pkgdesc = XOAUTH2 compatible O365 token fetcher
+	pkgver = r10.a1ef0cabfdea
+	pkgrel = 1
+	url = https://github.com/harishkrupo/oauth2ms
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python-pyxdg
+	depends = python-msal
+	depends = python-gnupg
+	source = git+https://github.com/harishkrupo/oauth2ms.git
+	md5sums = SKIP
+
+pkgname = oauth2ms-git
