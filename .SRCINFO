@@ -1,0 +1,17 @@
+pkgbase = python-myjdapi
+	pkgdesc = My.Jdownloader API Python Library
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/mmarquezs/My.Jdownloader-API-Python-Library/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pycryptodome
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/m/myjdapi/myjdapi-1.1.6.tar.gz
+	sha256sums = 252a9c6eee001d67bb000ceb8fdf99729c06cf46ff18a00fc89468672388de1e
+
+pkgname = python-myjdapi
