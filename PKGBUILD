@@ -12,16 +12,16 @@ source=("git+https://github.com/LevitatingBusinessMan/snappy-cli.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    make
+	cd "${srcdir}/${pkgname}"
+	make
 }
 
 package() {
- 	cd "${srcdir}/${pkgname}"
-    DESTDIR="$pkgdir" make install
+	cd "${srcdir}/${pkgname}"
+	DESTDIR="$pkgdir" make install
 }
