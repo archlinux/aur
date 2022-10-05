@@ -6,14 +6,14 @@ pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-common-git"
          "${_pkgbase}-git"
          "${_pkgbase}-4-git")
-pkgver=43
+pkgver=43+2+gc564dd8a
 pkgrel=1
 pkgdesc="Library with common API for various GNOME modules"
 epoch=1
 url="https://gitlab.gnome.org/GNOME/${_pkgbase}"
 arch=(x86_64)
 license=(GPL LGPL)
-makedepends=('gobject-introspection'
+makedepends=('gobject-introspection-git'
              'git'
              'meson'
              'gtk-doc'
