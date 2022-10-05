@@ -12,5 +12,5 @@ source=(
 sha256sums=('4e8466b2f382f9ac137622badd0d223bfbbc71da40ad1111de2da50393ce5dff')
 
 package() {
-	install -Dm755 airbrake "$pkgdir/usr/bin/airbrake"
+  install -Dm755 airbrake "$pkgdir/usr/bin/airbrake"
 }
