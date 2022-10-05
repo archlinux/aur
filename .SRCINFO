@@ -1,6 +1,6 @@
 pkgbase = clj-kondo-bin
 	pkgdesc = A minimal and opinionated linter for Clojure code that sparks joy.
-	pkgver = 2022.09.08
+	pkgver = 2022.10.05
 	pkgrel = 1
 	url = https://github.com/borkdude/clj-kondo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = clj-kondo-bin
 	depends = zlib
 	provides = clj-kondo
 	conflicts = clj-kondo
-	source_x86_64 = https://github.com/borkdude/clj-kondo/releases/download/v2022.09.08/clj-kondo-2022.09.08-linux-static-amd64.zip
-	sha256sums_x86_64 = 6b19b6ff26237503ee01c22c474ef7d027306a15f7608355dcde13fb690ed2eb
+	source_x86_64 = https://github.com/borkdude/clj-kondo/releases/download/v2022.10.05/clj-kondo-2022.10.05-linux-static-amd64.zip
+	sha256sums_x86_64 = 9f81b8cc8a918d2e54dd79b0d0a8fab17422b5f5c8c2e145f9bb9ce685caa870
 
 pkgname = clj-kondo-bin
