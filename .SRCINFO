@@ -1,12 +1,12 @@
 pkgbase = cowsay-cthulhu
 	pkgdesc = Cthulhu for cowsay
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/LevitatingBusinessMan/9e08c0751a4879ebc652378136882efe
 	arch = x86_64
 	license = MIT
 	depends = cowsay
 	source = cthulhu.cow
-	sha256sums = a4a439e2b4d30450d1b11fbda77fbad377ed5792f7ca805416631544974b5dd4
+	sha256sums = SKIP
 
 pkgname = cowsay-cthulhu
