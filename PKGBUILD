@@ -2,7 +2,7 @@
 
 pkgname='python-backoff'
 _name=${pkgname#python-}
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Function decoration for backoff and retry."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('500d3b81fef3d78f595b503cb20e33c9b332bc1b774d1c605072e2b4c40b39565d0d51668a4ee3ddbc821457c9e00aa8bee1291565183ea0d7195c0fb90d37fd')
+sha512sums=('5af5422b7953cad4066883b6100baa6340bed58fe9bc5014b6bb3b5d764d28c2b5aff6dbcc8301ce81ec14ec05071f0bb83eade3f007bbea490327da225ca026')
 
 package() {
   cd backoff-${pkgver}
