@@ -31,7 +31,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 [[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('acf6a91a176334658211fff1742ca8bb8517071d3058e84a7c7c8627aa5c01cc'
+sha256sums=('bdd40eee7f16e8d4f53d153db4e0288f83b92a39bc33c96b22568f25712fe3d4'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
