@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <public@reinfernhout.xyz>
 
 pkgname=alcase
-pkgver=fb11109
+pkgver=r6.c8f6f24
 arch=("x86_64")
 pkgrel=1
 pkgdesc="Turn text into alternating case"
@@ -12,8 +12,8 @@ source=("git+https://github.com/LevitatingBusinessMan/alcase.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git rev-parse --short HEAD
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
