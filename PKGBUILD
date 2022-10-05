@@ -38,12 +38,13 @@ _deps=(
   # is resolved
   pyopenssl
   wheel)
-depends=("${_deps[@]/#/python-}")
+depends=("${_deps[@]/#/python2-}")
 makedepends=("${_deps[@]/#/python2-}"
              'python-sphinx'
              'python-sphinx-inline-tabs')
 checkdepends=(
   git
+  python-contextlib2
   python-cryptography
   python-pytest-runner
   python-freezegun
