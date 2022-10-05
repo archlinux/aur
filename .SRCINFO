@@ -1,15 +1,14 @@
 pkgbase = python-spglib
 	pkgdesc = Python APIs for spglib, a C library for finding and handling crystal symmetries.
-	pkgver = 1.16.1
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = atztogo.github.io/spglib/
+	url = https://spglib.github.io/spglib
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = python-numpy
 	depends = spglib
-	source = https://github.com/atztogo/spglib/archive/v1.16.1.tar.gz
-	md5sums = 1933e2252a0e708951ee476eb93f6495
+	source = https://github.com/spglib/spglib/archive/v2.0.1.tar.gz
+	md5sums = 3c5b06fff5731d7baaaf1cbf8e98b14e
 
 pkgname = python-spglib
-
