@@ -1,7 +1,7 @@
 pkgbase = bible-kjv
 	pkgdesc = King James Bible, Concordance, and Command-Line Viewer
 	pkgver = 4.38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.debian.org/
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,6 @@ pkgbase = bible-kjv
 	source = http://ftp.debian.org/debian/pool/main/b/bible-kjv/bible-kjv_4.38.tar.gz
 	source = makefile.patch
 	sha256sums = 890b4d16fa2c0a9930fd4e6df22c6182b696ac0c1c47d12dc513227c62d8f249
-	sha256sums = 91bb9de66b17d67b72f5de57098928aa897ba62a77b5ddcf2695e74c0a97d572
+	sha256sums = aa8722a813d5dabd7f3f8a18b4c0b47d7c1a5680682bd15a1b2bc2871d553b19
 
 pkgname = bible-kjv
