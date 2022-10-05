@@ -2,30 +2,25 @@
 
 pkgname=spoofax3-jvm-bin
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spoofax 3 is a modular and incremental textual language workbench running on the JVM"
 arch=('x86_64')
 url="https://www.spoofax.dev/spoofax-pie/develop/"
 license=('EPL')
 depends=(webkit2gtk unzip)
 makedepends=(git curl)
+
+#pkgurl="https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/$pkgver/spoofax.lwb.eclipse.repository-$pkgver-spoofax3-linux-x86_64-jvm.zip"
+pkgurl="https://artifacts.metaborg.org/service/local/repositories/snapshots/content/org/metaborg/spoofax.lwb.eclipse.repository/999.9.9-develop-SNAPSHOT/spoofax.lwb.eclipse.repository-999.9.9-develop-20221005.132513-57-spoofax3-linux-x86_64-jvm.zip"
+
 source=(
-#         'git+https://github.com/metaborg/spoofax-pie'
+    "$pkgname-$pkgver.zip::$pkgurl"
         "spoofax3.desktop"
 )
-sha256sums=('9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
-
-# pkgver() {
-# 	cd "spoofax-pie"
-#     git describe --tags | cut -d- -f2
-# }
+sha256sums=('ff3ee7845eb7ba1a497e0b5987ddc9411bd4ab1056799534210c11616c835b8f'
+            '9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
 
 build() {
-    cd "$srcdir"
-    if not [ -e "$pkgname-$pkgver.zip" ]; then
-        curl "https://artifacts.metaborg.org/service/local/repositories/releases/content/org/metaborg/spoofax.lwb.eclipse.repository/$pkgver/spoofax.lwb.eclipse.repository-$pkgver-spoofax3-linux-x86_64-jvm.zip" --output "$pkgname-$pkgver.zip"
-        unzip "$pkgname-$pkgver.zip"
-    fi
     chmod +x "$srcdir/Spoofax3/jvm/bin/java"
 }
 
