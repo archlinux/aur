@@ -9,8 +9,6 @@ pkgver=1.9.9
 pkgrel=1
 epoch=
 
-_pkgmaj=${pkgver:0:3}
-
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
 arch=(x86_64 aarch64 armv7h)
 url='https://fluentbit.io/'
@@ -32,7 +30,7 @@ backup=('etc/fluent-bit/fluent-bit.conf'
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/$_pkgmaj/source-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/${pkgver%.*}/source-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
 
