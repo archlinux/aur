@@ -1,6 +1,6 @@
 pkgbase = guish-git
 	pkgdesc = A versatile graphical DSL and army knife to make and modify GUIs (newer 2.x version).
-	pkgver = 2.0.1.r0.gfc1de4b
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://codeberg.org/phranz/guish
 	arch = x86_64
