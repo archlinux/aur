@@ -2,7 +2,7 @@
 
 pkgname=ttf-fairfax-hd
 pkgdesc='Fairfax HD is a halfwidth scalable monospace font for terminals, text editors, IDEs, etc.'
-pkgver=1.000
+pkgver=1.001
 pkgrel=1
 arch=('any')
 license=('custom:SIL Open Font License v1.1')
