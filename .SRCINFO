@@ -8,7 +8,6 @@ pkgbase = c++utilities-doc
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = doxygen
-	makedepends = dia
 	makedepends = graphviz
 	source = c++utilities-5.19.0.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.19.0.tar.gz
 	sha256sums = 845362bd91d3e1ecb6bf3fc18492dda1d48458f35380dd79351ea7bb36804be0
