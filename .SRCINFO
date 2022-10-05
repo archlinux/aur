@@ -9,7 +9,6 @@ pkgbase = tagparser-doc
 	makedepends = ninja
 	makedepends = iso-codes
 	makedepends = doxygen
-	makedepends = dia
 	makedepends = graphviz
 	makedepends = c++utilities
 	source = tagparser-11.5.0.tar.gz::https://github.com/Martchus/tagparser/archive/v11.5.0.tar.gz
