@@ -1,7 +1,7 @@
 # Maintainer: dobedobedo <dobe0331 at gmail dot com>
 _pkgname='spectral'
 pkgname=("python-$_pkgname")
-pkgver=0.23
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="A Python module for hyperspectral image processing."
 arch=('x86_64')
@@ -18,9 +18,8 @@ optdepends=('python-pillow: Required if displaying or saving images'
            )
 url='http://www.spectralpython.net/'
 license=('MIT')
-sha256sums=('bc09fd6f7a81a2323f2a942534a972fc2a76b7f759bb57bfa5076a0e71de3bee')
-_source_url="https://files.pythonhosted.org/packages/a3/32/e37070f67f02e262ad4bea848d8df606c03b5c804617297be4e227059289"
-source=("$_source_url/$_pkgname-$pkgver.tar.gz")
+source=("https://github.com/spectralpython/spectral/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('ec04aa16a85a436358a39ce8c872b2c29d2f7f6d542e6cbe11505f9b686e171c')
 
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver/"
