@@ -2,7 +2,7 @@
 
 pkgname=nali-go-git
 _pkgname=nali
-pkgver=0.5.1.r1.ge1af0bc
+pkgver=0.5.1.r2.g0062ad9
 pkgrel=1
 pkgdesc='An offline tool for querying IP geographic information and CDN provider. (development version)'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
