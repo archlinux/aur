@@ -14,6 +14,9 @@ pkgbase = flameshot-old
 	optdepends = gnome-shell-extension-appindicator: for system tray icon if you are using Gnome
 	optdepends = grim: for wlroots wayland support
 	optdepends = xdg-desktop-portal: for wayland support, you will need the implementation for your wayland desktop environment
+	provides = flameshot
+	conflicts = flameshot
+	conflicts = flameshot-git
 	source = flameshot-0.10.2::git+https://github.com/flameshot-org/flameshot.git#commit=cda5a0f148ade1536d390ed988091848ecf62d13
 	sha256sums = SKIP
 

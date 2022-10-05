@@ -12,6 +12,8 @@ arch=('x86_64')
 url="https://github.com/flameshot-org/flameshot"
 license=('GPL')
 depends=('qt5-svg' 'hicolor-icon-theme')
+provides=('flameshot')
+conflicts=('flameshot' 'flameshot-git')
 makedepends=('make' 'qt5-tools' 'cmake' 'git')
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon if you are using Gnome'
