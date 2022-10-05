@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib-fs-hadoop"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.5.9
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="The SWC-DB FileSystem Hadoop library (dev-stage)"
 arch=("x86_64")
