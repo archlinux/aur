@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+    <mime-type type="application/x-bittorrent">
+        <icon name="ariang-native-torrent"/>
+    </mime-type>
+    <mime-type type="application/metalink+xml">
+        <icon name="ariang-native-metalink"/>
+    </mime-type>
+    <mime-type type="application/metalink4+xml">
+        <icon name="ariang-native-metalink"/>
+    </mime-type>
+</mime-info>

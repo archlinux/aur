@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+electron /usr/lib/ariang-native/ariang-native.asar "$@"

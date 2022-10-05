@@ -1,0 +1,34 @@
+pkgbase = ariang-native-git
+	pkgdesc = A better aria2 desktop frontend than AriaNg.
+	pkgver = 1.2.4.r29.g6bde400
+	pkgrel = 1
+	url = https://github.com/mayswind/AriaNg-Native
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = imagemagick
+	depends = shared-mime-info
+	provides = ariang-native
+	conflicts = ariang-native
+	source = git+https://github.com/mayswind/AriaNg-Native.git#branch=master
+	source = ariang-native
+	source = ariang-native.desktop
+	source = ariang-native.xml
+	sha256sums = SKIP
+	sha256sums = 2b6381f00d83250adc398c4db273ac47104c459c55b3191be908b108d8ae277d
+	sha256sums = 5fec0d94896e467512ea2e5a13c9dcbfb59d3ab825754a0b4bbf70968759dca8
+	sha256sums = ed0d10a82c0764dc355b975057a991576840d2701b560447933d2216bd28ed98
+
+pkgname = ariang-native-git
+
+pkgname = ariang-native-electron-git
+	pkgdesc = A better aria2 desktop frontend than AriaNg. with system electron
+	depends = shared-mime-info
+	depends = electron
+	provides = ariang-native
+	provides = ariang-native-electron
+	conflicts = ariang-native
+	conflicts = ariang-native-electron

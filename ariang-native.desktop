@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AriaNg Native
+Comment=A better aria2 desktop frontend than AriaNg.
+Exec=ariang-native %U
+Icon=ariang-native
+Terminal=false
+MimeType=application/x-bittorrent;application/metalink4+xml;application/metalink+xml
+Categories=Network;
+Keywords=aria2;ariang
