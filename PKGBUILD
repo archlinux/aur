@@ -2,7 +2,7 @@
 
 pkgname=openssl-1.1
 _pkgname=openssl
-_ver=1.1.1m
+_ver=1.1.1q
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=5
@@ -16,7 +16,7 @@ provides=("openssl=$pkgver" 'libcrypto.so' 'libssl.so')
 makedepends=('perl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('f89199be8b23ca45fc7cb9f1d8d3ee67312318286ad030f5316aca6462db6c96'
+sha256sums=('d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
             'SKIP'
             '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
