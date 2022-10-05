@@ -1,6 +1,6 @@
 pkgbase = git-bro
 	pkgdesc = Monitor remote git repositories for changes and automate tasks.
-	pkgver = 8d9d50b
+	pkgver = r15.ade876b
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/git-bro
 	arch = x86_64
