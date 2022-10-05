@@ -2,7 +2,7 @@
 
 pkgname=("ariang-native-git" "ariang-native-electron-git")
 pkgver=1.2.4.r29.g6bde400
-pkgrel=1
+pkgrel=2
 pkgdesc="A better aria2 desktop frontend than AriaNg."
 license=("MIT")
 depends=("shared-mime-info")
@@ -19,7 +19,7 @@ source=(
 sha256sums=('SKIP'
             '2b6381f00d83250adc398c4db273ac47104c459c55b3191be908b108d8ae277d'
             '5fec0d94896e467512ea2e5a13c9dcbfb59d3ab825754a0b4bbf70968759dca8'
-            'ed0d10a82c0764dc355b975057a991576840d2701b560447933d2216bd28ed98')
+            '30624966f2b4f9499c99ab69f855b4e6bf516e5fd4388c5c82a845fff95e0f98')
 _electron=electron
 
 pkgver(){
