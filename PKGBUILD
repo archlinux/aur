@@ -1,6 +1,6 @@
 pkgname=hode-git
 pkgver=26bcf11
-pkgrel=1
+pkgrel=2
 pkgdesc="Heart of Darkness engine rewrite"
 arch=(x86_64 aarch64)
 url=http://cyxdown.free.fr/hode/
@@ -28,6 +28,7 @@ pkgver(){
 }
 build(){
     cd hode
+    sed -i 's/kFrameDuration)/128)/' paf.cpp    # fix treehouse frame rate
     make
 }
 package(){
