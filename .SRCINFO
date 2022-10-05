@@ -1,6 +1,6 @@
 pkgbase = alcase
 	pkgdesc = Turn text into alternating case
-	pkgver = r6.c8f6f24
+	pkgver = r7.298cf11
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/alcase
 	arch = x86_64
