@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Generate zalgo text"
 license=("MIT")
 makedepends=("make" "ghc" "git")
+depensd=("haskell-random" "ghc-libs")
 url="https://github.com/LevitatingBusinessMan/zalgo"
 source=("git+https://github.com/LevitatingBusinessMan/zalgo.git")
 sha256sums=("SKIP")
