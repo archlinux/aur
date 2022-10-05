@@ -1,0 +1,11 @@
+pkgbase = airbrake-cli
+	pkgdesc = The offical command line interface for interacting with Airbrake.
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/airbrake/airbrake-cli
+	arch = x86_64
+	license = unknown
+	source = https://github.com/airbrake/airbrake-cli/releases/download/v1.2.9/airbrake_1.2.9_linux_x86_64.tar.gz
+	sha256sums = 4e8466b2f382f9ac137622badd0d223bfbbc71da40ad1111de2da50393ce5dff
+
+pkgname = airbrake-cli
