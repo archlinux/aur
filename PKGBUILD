@@ -1,3 +1,5 @@
+# Maintainer: Nacho Barrientos <nacho@criptonita.com>
+# Maintainer: pancho horrillo <pancho at pancho dot name>
 _pkgname=oauth2ms
 pkgname=${_pkgname}-git
 pkgrel=1
