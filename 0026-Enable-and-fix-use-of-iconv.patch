@@ -1,4 +1,4 @@
-From 1bfc05dc42edfc5fdd694fd81db6fb2a4e0362dd Mon Sep 17 00:00:00 2001
+From c57341b93b519fcf027422ff9b85986834bbccec Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:20 +0100
 Subject: [PATCH 26/32] Enable and fix use of iconv

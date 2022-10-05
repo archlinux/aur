@@ -1,4 +1,4 @@
-From d5e12ed7959fac200b629da221b22e65f11c999d Mon Sep 17 00:00:00 2001
+From a391524fc205594e890bced50a9ce1c6af01dc0e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
 Subject: [PATCH 29/32] Hardcode linker flags for platform plugins

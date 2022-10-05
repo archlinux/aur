@@ -1,4 +1,4 @@
-From ec97898dc6b1446c10a2e357627ffb198b614a81 Mon Sep 17 00:00:00 2001
+From 3c9701cd97287da483664e391b43590db0b16884 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:22:56 +0200
 Subject: [PATCH 11/32] Fix linking against static harfbuzz
@@ -8,7 +8,7 @@ Subject: [PATCH 11/32] Fix linking against static harfbuzz
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 2fe0a018b1..ceeee23164 100644
+index 3f77f67a07..f6da787b13 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -305,7 +305,11 @@
@@ -18,7 +18,7 @@ index 2fe0a018b1..ceeee23164 100644
 -                "-lharfbuzz"
 +                { "type": "pkgConfig", "args": "--static --libs harfbuzz", "condition": "!features.shared" },
 +                { "type": "pkgConfig", "args": "--libs harfbuzz", "condition": "features.shared" },
-+                { "libs": "-lharfbuzz  -lfreetype -lharfbuzz -lglib-2.0 -lintl -lws2_32 -lole32 -lwinmm -lshlwapi -lpcre -lintl -lpcre -lintl -liconv -lgraphite2 -lbz2", "condition": "!features.shared" },
++                { "libs": "-lharfbuzz  -lfreetype -lharfbuzz -lglib-2.0 -lintl -lws2_32 -lole32 -lwinmm -lshlwapi -lpcre2-8 -lintl -lpcre2-8 -lintl -liconv -lgraphite2 -lbz2", "condition": "!features.shared" },
 +                { "libs": "-Wl,-Bdynamic -lharfbuzz -Wl,-Bstatic", "condition": "!features.shared" },
 +                { "libs": "-lharfbuzz", "condition": "features.shared" }
              ]

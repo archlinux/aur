@@ -1,4 +1,4 @@
-From 9ad4e8f478409ea2e1ea979aff8752bff71e2c6d Mon Sep 17 00:00:00 2001
+From 3deacbd3286d0c9daf61cef211f3d8bf4fe7d18d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
 Subject: [PATCH 10/32] Fix linking against static freetype2
@@ -9,7 +9,7 @@ Change-Id: I6e4a2baa25beb5f63b46f25153bd7bac52a2262f
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index e0043542ec..2fe0a018b1 100644
+index e0043542ec..3f77f67a07 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -238,8 +238,10 @@
@@ -19,7 +19,7 @@ index e0043542ec..2fe0a018b1 100644
 -                { "type": "pkgConfig", "args": "freetype2" },
 -                { "type": "freetype", "libs": "-lfreetype", "condition": "!config.wasm" },
 +                { "type": "pkgConfig", "args": "--libs freetype2", "condition": "features.shared" },
-+                { "libs": "-lfreetype -lharfbuzz -lfreetype -lbrotlidec-static -lbrotlicommon-static -lglib-2.0 -lintl -lws2_32 -lole32 -lwinmm -lshlwapi -lpcre -lintl -lpcre -lintl -liconv -lgraphite2 -lbz2", "condition": "!features.shared && !config.wasm" },
++                { "libs": "-lfreetype -lharfbuzz -lfreetype -lbrotlidec-static -lbrotlicommon-static -lglib-2.0 -lintl -lws2_32 -lole32 -lwinmm -lshlwapi -lpcre2-8 -lintl -lpcre2-8 -lintl -liconv -lgraphite2 -lbz2", "condition": "!features.shared && !config.wasm" },
 +                { "libs": "-Wl,-Bdynamic -lfreetype -Wl,-Bstatic", "condition": "!features.shared && !config.wasm" },
 +                { "libs": "-lfreetype", "condition": "features.shared && !config.wasm" },
                  { "libs": "-s USE_FREETYPE=1", "condition": "config.wasm" },

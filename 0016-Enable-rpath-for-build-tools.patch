@@ -1,4 +1,4 @@
-From 68d31dfebc88da9640d54282aff55e09b16d66bb Mon Sep 17 00:00:00 2001
+From 3109e4fbfa72b4a077c0a9e404f004a436afc986 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 17:59:27 +0200
 Subject: [PATCH 16/32] Enable rpath for build tools

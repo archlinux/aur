@@ -1,4 +1,4 @@
-From 0d645ca83b306f66cc806bc1a487b02de963b612 Mon Sep 17 00:00:00 2001
+From e58f2252b012a32fdd558a83f45214bcae62d2b8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
 Subject: [PATCH 04/32] Make sure *.pc files are installed correctly

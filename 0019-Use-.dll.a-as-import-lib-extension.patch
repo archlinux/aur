@@ -1,4 +1,4 @@
-From 2baddbdcdde10ac0610bfd81b37020f174561dc3 Mon Sep 17 00:00:00 2001
+From f3e03f941d0152e07d6f535d5f632d87b136183b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 19/32] Use *.dll.a as import lib extension

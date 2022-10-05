@@ -1,4 +1,4 @@
-From 0352e345a0d67776eaacfe26a2047d5f5b06cb3b Mon Sep 17 00:00:00 2001
+From 1ac963fca35b3033f7932f56fa0b7d186b1c0fbf Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
 Subject: [PATCH 22/32] Adjust linker flags for static build with
