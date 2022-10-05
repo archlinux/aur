@@ -1,4 +1,4 @@
-From 5a96b713cfd0f59571eacbaad496e13e30a29192 Mon Sep 17 00:00:00 2001
+From ad827e36838a649a8d986ad2ffc473b2c4ab6728 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
 Subject: [PATCH 25/32] Ignore errors about missing feature static

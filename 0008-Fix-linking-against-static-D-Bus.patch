@@ -1,4 +1,4 @@
-From 4e4b4ef2a7722f09547903ab92a1f1c7cf527ce6 Mon Sep 17 00:00:00 2001
+From d274147bcb2fe8afaa5ec4974e8768ab8e302c00 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 19:36:25 +0100
 Subject: [PATCH 08/32] Fix linking against static D-Bus

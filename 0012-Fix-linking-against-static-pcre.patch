@@ -1,4 +1,4 @@
-From 907d2c90e2321ee3e269ebc8491ac62c902bc0c7 Mon Sep 17 00:00:00 2001
+From 8eb4ef294239e6d9188dedd7be9b3a3b9cf32d3c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:24:01 +0200
 Subject: [PATCH 12/32] Fix linking against static pcre
