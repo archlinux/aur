@@ -1,7 +1,7 @@
 pkgbase = python-arcsi
 	pkgdesc = Atmospheric and Radiometric Correction of Satellite Imagery
-	pkgver = 3.8.1
-	pkgrel = 3
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/remotesensinginfo/arcsi
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = python-arcsi
 	depends = python-rios
 	depends = python-py6s
 	options = !emptydirs
-	source = https://github.com/remotesensinginfo/arcsi/archive/refs/tags/v3.8.1.tar.gz
-	sha256sums = 83b069487e363b26de6a2708256b55846e19a6a8a906086ac025152268208877
+	source = https://github.com/remotesensinginfo/arcsi/archive/refs/tags/4.0.0.tar.gz
+	sha256sums = ff78ccbb4622c4ec59b66f0309d5716ba2c70b0b13b8df53e75909f27380ee2b
 
 pkgname = python-arcsi
