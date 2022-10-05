@@ -1,6 +1,6 @@
 pkgbase = krecorder
 	pkgdesc = A convergent audio recording application for Plasma
-	pkgver = 22.06
+	pkgver = 22.09
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/krecorder
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = krecorder
 	depends = kconfig
 	depends = qt5-multimedia
 	depends = kirigami2
-	source = https://download.kde.org/stable/plasma-mobile/22.06/krecorder-22.06.tar.xz
-	sha256sums = 6f907056f58dcbe4292c2b434420a2fb560eb46d02695801ef3728dfcbc70f91
+	source = https://download.kde.org/stable/plasma-mobile/22.09/krecorder-22.09.tar.xz
+	sha256sums = 314a77eab8a14e79b93df5ee85493cbac662251e98c926a2826b70afd7e18f4d
 
 pkgname = krecorder
