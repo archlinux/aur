@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <public@reinfernhout.xyz>
 
 pkgname=snappy-cli
-pkgver=r16.028bd45
+pkgver=r17.844a3a9
 arch=("x86_64")
 pkgrel=1
 pkgdesc="A cli utility for compressing files via snappy"
@@ -23,5 +23,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	DESTDIR="$pkgdir" make install
+	DESTDIR="$pkgdir" PREFIX="/usr" make install
 }
