@@ -1,6 +1,6 @@
 pkgbase = qmlkonsole
 	pkgdesc = Terminal app for Plasma Mobile
-	pkgver = 22.06
+	pkgver = 22.09
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/qmlkonsole
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = qmlkonsole
 	depends = kconfig
 	depends = kirigami2
 	depends = qmltermwidget
-	source = http://download.kde.org/stable/plasma-mobile/22.06/qmlkonsole-22.06.tar.xz
-	sha256sums = f6bc6f1694b8d55d5781a0f627ca261f9cd69ca413b7c7f5734f1b53d62244c0
+	source = http://download.kde.org/stable/plasma-mobile/22.09/qmlkonsole-22.09.tar.xz
+	sha256sums = e1733d32f0665f8b05485d2f1646c82b0838cdbb57c91fa8cd0aa9be894b6ea5
 
 pkgname = qmlkonsole
