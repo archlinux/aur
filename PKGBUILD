@@ -4,7 +4,7 @@
 _pkgname=mudita-center
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mudita/mudita-center/releases/download/${pkgver}/Mudita-Center.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('8369b673b40d2c93d445f74d771fdfa405c815549f7a05b210e520413c8cfd36')
+sha256sums_x86_64=('cd9908107cd73403d1e53a37ac3b917712c85c4ce2fb2295b0248a2e437e0a80')
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
