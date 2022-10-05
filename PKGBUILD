@@ -1,5 +1,5 @@
 pkgname=ntfs3-dkms-git
-pkgver=6.0.r0.g3b06a27
+pkgver=6.0.r0.gf76349c
 pkgrel=1
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
@@ -23,7 +23,7 @@ sha256sums=(
 )
 
 _ver="6.0"
-_since="1660773082"
+_since="1664139662"
 
 # The whole kernel history is very huge, so downloading it is a pain.
 # Also commits count is insane and we don't want to see all that in pkgver.
