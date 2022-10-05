@@ -1,6 +1,6 @@
 pkgbase = gnome-desktop-git
 	pkgdesc = Library with common API for various GNOME modules
-	pkgver = 43
+	pkgver = 43+2+gc564dd8a
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-desktop
@@ -8,7 +8,7 @@ pkgbase = gnome-desktop-git
 	license = GPL
 	license = LGPL
 	checkdepends = xorg-server-xvfb
-	makedepends = gobject-introspection
+	makedepends = gobject-introspection-git
 	makedepends = git
 	makedepends = meson
 	makedepends = gtk-doc
@@ -30,7 +30,7 @@ pkgname = gnome-desktop-common-git
 
 pkgname = gnome-desktop-git
 	pkgdesc = Library with common API for various GNOME modules (GTK3)
-	depends = gnome-desktop-common-git=1:43-1
+	depends = gnome-desktop-common-git=1:43+2+gc564dd8a-1
 	depends = gtk3
 	provides = libgnome-desktop-3.so
 	provides = gnome-desktop
@@ -38,7 +38,7 @@ pkgname = gnome-desktop-git
 
 pkgname = gnome-desktop-4-git
 	pkgdesc = Library with common API for various GNOME modules (GTK4)
-	depends = gnome-desktop-common-git=1:43-1
+	depends = gnome-desktop-common-git=1:43+2+gc564dd8a-1
 	depends = gtk4
 	provides = libgnome-bg-4.so
 	provides = libgnome-desktop-4.so
