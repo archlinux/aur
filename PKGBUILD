@@ -2,8 +2,8 @@
 
 pkgbase=brltty-git
 pkgname=(brltty-git brltty-udev-generic-git)
-pkgver=6.5.r83.g1c17566a9
-pkgrel=1
+pkgver=6.5.r120.gb382254b2
+pkgrel=2
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
 url="https://brltty.app"
@@ -42,7 +42,7 @@ build() {
 	CFLAGS+=" -ffat-lto-objects"
 	cd "${pkgbase%-git}"
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-	          --mandir=/usr/share/man \
+	          --mandir=/usr/share/man --libexecdir=/usr/lib/brltty \
 	          --with-scripts-directory=/usr/lib/brltty \
 	          --with-tables-directory=/usr/share/brltty \
 	          --with-writable-directory=/run/brltty \
