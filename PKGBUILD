@@ -1,6 +1,6 @@
 # Maintainer: Gustavo Sousa <gustavo.jo.sousa@gmail.com>
 pkgname=nerd-fonts-monofur
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Patched font Monofur from the nerd-fonts library"
 arch=("any")
@@ -9,7 +9,7 @@ license=('custom:Monofur Free License')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Monofur.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/patched-fonts/Monofur/Regular/complete/LICENSE.txt")
-sha1sums=('4494118d40aa755a511278cab3d1394694d72c6d'
+sha1sums=('ca64f25eb90af1d24012a1c529630c644c22b09d'
           '906c804f4ccc1e4cc70008e272ffa36003c868af')
 
 package() {

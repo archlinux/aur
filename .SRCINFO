@@ -1,14 +1,14 @@
 pkgbase = nerd-fonts-monofur
 	pkgdesc = Patched font Monofur from the nerd-fonts library
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
 	license = custom:Monofur Free License
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/Monofur.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.1/patched-fonts/Monofur/Regular/complete/LICENSE.txt
-	sha1sums = 4494118d40aa755a511278cab3d1394694d72c6d
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Monofur.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.2/patched-fonts/Monofur/Regular/complete/LICENSE.txt
+	sha1sums = ca64f25eb90af1d24012a1c529630c644c22b09d
 	sha1sums = 906c804f4ccc1e4cc70008e272ffa36003c868af
 
 pkgname = nerd-fonts-monofur
