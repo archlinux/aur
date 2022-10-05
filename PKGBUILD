@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=104.0.2
+pkgver=105.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -22,11 +22,11 @@ makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              python-setuptools python-zstandard git binutils lld dump_syms
              'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('networkmanager: Location detection via available WiFi networks'
-    'libnotify: Notification integration'
-    'pulseaudio: Audio support'
-    'speech-dispatcher: Text-to-Speech'
-    'hunspell-en_US: Spell checking, American English'
-    'xdg-desktop-portal: Screensharing with Wayland')
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
 backup=('usr/lib/cachy-browser/cachy.cfg'
         'usr/lib/cachy-browser/distribution/policies.json')
 groups=('cachyos')
@@ -37,10 +37,10 @@ _common_tag="v${pkgver}-${pkgrel}"
 _settings_tag='1.4'
 install=cachy-browser.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-    $pkgname.desktop
-    "git+https://github.com/cachyos/cachyos-browser-settings.git"
-    "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('72bba06f04e7745f6b02951906413eb1c15a7e253e06e373302162c6219f286a'
+        $pkgname.desktop
+        "git+https://github.com/cachyos/cachyos-browser-settings.git"
+        "git+https://github.com/cachyos/cachyos-browser-common.git")
+sha256sums=('fb1ed65cd9e6698122885fe38984cfd00018c7a837109f511762b2986b391e25'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -88,16 +88,16 @@ export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
 #ac_add_options --with-system-av1
-# ac_add_options --with-system-graphite2
+#ac_add_options --with-system-graphite2
 
-# ac_add_options --with-system-harfbuzz
+#ac_add_options --with-system-harfbuzz
 #ac_add_options --with-system-icu
 #ac_add_options --with-system-jpeg
 #ac_add_options --with-system-libevent
 #ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-# ac_add_options --with-system-zlib
+#ac_add_options --with-system-zlib
 ac_add_options --enable-optimize=-O3
 # Features
 ac_add_options --enable-pulseaudio
@@ -113,7 +113,6 @@ ac_add_options --disable-gpsd
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
-#ac_add_options --disable-trace-logging
 ac_add_options --disable-rust-tests
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webspeech
@@ -175,7 +174,7 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
     patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
+    #patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch # broken with 105
 
     msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
@@ -196,7 +195,7 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf-ui/website-appearance-ui-rfp.patch
 
     msg2 "lw-logo-devtools.patch"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools.patch
+    patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools-cachy.patch
 
     patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
 
@@ -204,7 +203,7 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
     msg2 "customized pref panel"
-    patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
+    patch -Np1 -i ${_patches_dir}/librewolf/cachy-pref-pane.patch
 
     msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
     patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
@@ -212,19 +211,16 @@ END
     msg2 "Hide passwordmgr"
     patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
 
+    msg2 "KDE MENU"
+    patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+    patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
+    patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
+
     msg2 "Use mold as linker"
     patch -Np1 -i ${_patches_dir}/add-mold-linker.patch
+    #msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+    #patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # broken with 105, wait for a upstream fix
 
-    msg2 "Fix build with zstandard 1.8.0"
-    patch -Np1 -i ${_patches_dir}/zstandard-0.18.0.patch
-
-    msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
-
-    msg2 "Debian patch to enable global menubar"
-    patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
-    msg2 "fix for glibc 2.36"
-    patch -Np1 -i ${_patches_dir}/glibc236.patch
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
     cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
 }
@@ -236,7 +232,7 @@ build() {
     export MOZ_NOSPAM=1
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
     #export MOZ_ENABLE_FULL_SYMBOLS=1
-    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
     export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
     # LTO needs more open files
