@@ -79,7 +79,6 @@ build() {
   if [ "$CARCH" == "aarch64" ]; then
     export CGO_ENABLED=1
     export GOARCH=arm64
-    export CC=aarch64-linux-gnu-gcc
   fi
 
   export GOPATH="$srcdir/gopath"
