@@ -16,7 +16,7 @@ makedepends=('git' 'cmake' 'alsa-lib' 'jack' 'webkit2gtk')
 source=('git+https://github.com/jatinchowdhury18/AnalogTapeModel.git'
        'fix-missing-utility-include.patch::https://github.com/juce-framework/JUCE/commit/ce8aff22c31c4d932a8414bc6f6185381dc970db.patch')
 sha256sums=('SKIP'
-            '62958e8fc9d30366436540a82b577e0053353a411b474d2720961b1e635643e8')
+            '8969747d67ebce627abc8ad325012ddf5ba147646102aab954ac831a5b16f8e0')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
