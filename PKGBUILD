@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ruff
-pkgver=0.0.52
+pkgver=0.0.55
 pkgrel=1
 pkgdesc='Experimental Python linter written in Rust'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python>=3.7')
 makedepends=('maturin' 'python-installer' 'python-wheel')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('9837889c2dae4f8925b381155b27ad83cc2480a5f930efdb49decb7d0efce478')
+sha256sums=('ae33dc5f92787406bea67120a5d9c313f3512ee68b4f09371dde273fc7c63155')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -20,7 +20,12 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	maturin build --release --strip
+	maturin build \
+		--release \
+		--strip \
+		--locked \
+		--target "$CARCH-unknown-linux-gnu" \
+		--all-features
 }
 
 check() {

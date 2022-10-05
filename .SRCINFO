@@ -1,6 +1,6 @@
 pkgbase = ruff
 	pkgdesc = Experimental Python linter written in Rust
-	pkgver = 0.0.52
+	pkgver = 0.0.55
 	pkgrel = 1
 	url = https://github.com/charliermarsh/ruff
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ruff
 	makedepends = python-wheel
 	depends = python>=3.7
 	options = !lto
-	source = ruff-0.0.52.tar.gz::https://files.pythonhosted.org/packages/source/r/ruff/ruff-0.0.52.tar.gz
-	sha256sums = 9837889c2dae4f8925b381155b27ad83cc2480a5f930efdb49decb7d0efce478
+	source = ruff-0.0.55.tar.gz::https://files.pythonhosted.org/packages/source/r/ruff/ruff-0.0.55.tar.gz
+	sha256sums = ae33dc5f92787406bea67120a5d9c313f3512ee68b4f09371dde273fc7c63155
 
 pkgname = ruff
