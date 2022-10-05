@@ -21,7 +21,7 @@ source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_p
 #              "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc} # stable
               )
 source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_arm64.deb"{,.asc} # beta
-#        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc} # stable
+#               "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc} # stable
                )
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 sha256sums_x86_64=('cb5abb13c5f21c98d120415732a291893d43ade9cb698c6c91cef1a2c2abc113'
