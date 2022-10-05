@@ -1,6 +1,6 @@
 pkgbase = yakuake-sessions
 	pkgdesc = Remember your yakuake session - directory, splitting terminal and virtual environment
-	pkgver = 635fde7
+	pkgver = 84d235f
 	pkgrel = 1
 	url = https://github.com/UfoDriver/yakuake-sessions
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = yakuake-sessions
 	license = unknown
 	makedepends = git
 	depends = qt5-base
-	source = git://github.com/UfoDriver/yakuake-sessions.git
+	source = git+https://github.com/UfoDriver/yakuake-sessions.git
 	md5sums = SKIP
 
 pkgname = yakuake-sessions
-
