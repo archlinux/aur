@@ -1,6 +1,6 @@
 pkgbase = t-rec-git
 	pkgdesc = Blazingly fast terminal recorder (git)
-	pkgver = 0.7.4.r0.g1ad1c3e
+	pkgver = 0.7.5.r0.ga9ed954
 	pkgrel = 1
 	url = https://github.com/sassman/t-rec-rs
 	arch = x86_64
