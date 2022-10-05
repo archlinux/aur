@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <public@reinfernhout.xyz>
 
 pkgname=snappy-cli
-pkgver=27319b2
+pkgver=r16.028bd45
 arch=("x86_64")
 pkgrel=1
 pkgdesc="A cli utility for compressing files via snappy"
@@ -12,8 +12,8 @@ source=("git+https://github.com/LevitatingBusinessMan/snappy-cli.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git rev-parse --short HEAD
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
