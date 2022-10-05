@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
-pkgver=3.5.0
-pkgrel=3
+pkgver=3.5.3
+pkgrel=1
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
@@ -27,7 +27,7 @@ optdepends=(
 )
 provides=()
 conflicts=()
-source=("https://github.com/8go/matrix-commander/archive/refs/tags/v3.5.0.tar.gz")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d2126ca1ba7c2bd984f156893a2968b5112818ab38fee73fb10c2d4a38989ddd')
 
 package() {
