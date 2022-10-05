@@ -1,7 +1,7 @@
 pkgbase = clash-verge
 	pkgdesc = A Clash GUI based on tauri.
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zzzgydi/clash-verge
 	arch = x86_64
 	arch = aarch64

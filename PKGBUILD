@@ -1,7 +1,7 @@
 # Maintainer: sukanka<su975853527 AT gmail dot com>
 pkgname=clash-verge
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64' 'aarch64')
 url="https://github.com/zzzgydi/clash-verge"
@@ -26,7 +26,6 @@ prepare(){
 
 	install -d src-tauri/resources
 	ln -sf /etc/clash/Country.mmdb src-tauri/resources/Country.mmdb
-
 	jq 'del(.scripts.prepare)' package.json|sponge package.json
 
 	cd src-tauri
@@ -34,7 +33,6 @@ prepare(){
 	jq '.tauri.bundle.active = false' tauri.conf.json|sponge tauri.conf.json
 	# disable updater
 	jq '.tauri.updater.active = false' tauri.conf.json|sponge tauri.conf.json
-
 
 }
 
