@@ -1,6 +1,6 @@
 pkgbase = tidal-hifi-bin
 	pkgdesc = The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = tidal-hifi-bin
 	depends = gtk3
 	provides = tidal-hifi
 	conflicts = tidal-hifi
-	source = tidal-hifi-4.2.0.tar.gz::https://github.com/Mastermindzh/tidal-hifi/releases/download/4.2.0/tidal-hifi-4.2.0.tar.gz
+	source = tidal-hifi-4.3.0.tar.gz::https://github.com/Mastermindzh/tidal-hifi/releases/download/4.3.0/tidal-hifi-4.3.0.tar.gz
 	source = tidal-hifi.desktop
 	source = icon.png
-	md5sums = bf6842dbd54ee3c802d9d4c2892273ea
+	md5sums = b9b0b2c2b93f0aade82f22501dc8bccb
 	md5sums = dab0192d01bab9a92dbca75269d0791b
 	md5sums = c17104184b4ae7af3b82c0930a22a777
 
