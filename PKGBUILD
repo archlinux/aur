@@ -5,7 +5,7 @@
 
 _reponame=qtutilities
 pkgname=qtutilities
-pkgver=6.8.0
+pkgver=6.9.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models'
