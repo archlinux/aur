@@ -12,7 +12,7 @@ _rel=2
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 #pkgver=${_pkgver}.${_channel}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
