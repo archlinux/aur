@@ -7,3 +7,4 @@
 !.SRCINFO
 !mullvad-vpn.install
 !mullvad-vpn.sh
+!no-rpm.diff
