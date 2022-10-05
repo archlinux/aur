@@ -1,29 +1,40 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=5.5.1
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
 makedepends=(python-build python-installer python-wheel python-poetry)
-depends=('python>=3.7' python-boltons python-click python-click-extra python-tabulate python-tomli python-tomli-w python-xmltodict)
+depends=('python>=3.7' python-boltons python-click 'python-click-extra>=3.2.5' python-packageurl python-tabulate python-tomli python-tomli-w 	python-typing_extensions python-xmltodict)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
+optdepends=('apm: support for managing Atom packages'
+            'rust: support for managing Rust packages'
+            'composer: support for PHP composer packages'
+            'dnf: support for RPM packages'
+            'flatpak: support for Flatpak packages'
+            'rubygems: support for Ruby packages'
+            'npm: support for Node.js packages'
+            'opkg: support for OPKG packages'
+            'pacman: support for Pacman packages'
+            'paru: support for AUR packages'
+            'python-pip: support for Python packages'
+            'python-pipx: support for Python pipx packages'
+            'snapd: support for Snap packages'
+            'steamcmd: support for Steam games'
+            'code: support for VSCode extensions'
+            'yarn: support for Node packages'
+            'yum: support for DNF packages'
+            'zypper: support for RPM packages')
 license=('GPL2')
 arch=('any')
 source=("https://github.com/kdeldycke/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('5f245de09397ab068ed1c191c2f164d004cf497a5aebb959d310dd6bda9495a73e4d242e65867a03b6f99531c48f26e3df8bbdad38076f645e7fc9d3ab055b5b')
+sha512sums=('8bd9d14406f56874001a986f11b4883717132813c70d24ccea53c5537d5f46822bf5ea0ae97c416b4e0c145fe275f337160ea3ba59f06311a9eff7f4152080a8')
 
 build() {
     # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
-    if [ -e "$srcdir/../.gitignore" ]; then
-        mv "$srcdir/../.gitignore" "$srcdir/../.gitignore.bak"
-        GITIGNORE_MOVED=1
-    fi
     cd "$srcdir/$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
-    if [ $GITIGNORE_MOVED = 1 ]; then
-        mv "$srcdir/../.gitignore.bak" "$srcdir/../.gitignore"
-    fi
+    GIT_DIR="$srcdir/$pkgname-$pkgver" python -m build --wheel --no-isolation
 }
 
 check() {

@@ -1,6 +1,6 @@
 pkgbase = meta-package-manager
 	pkgdesc = A wrapper around all package managers
-	pkgver = 5.5.1
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://kdeldycke.github.io/meta-package-manager/
 	arch = any
@@ -16,12 +16,32 @@ pkgbase = meta-package-manager
 	depends = python>=3.7
 	depends = python-boltons
 	depends = python-click
-	depends = python-click-extra
+	depends = python-click-extra>=3.2.5
+	depends = python-packageurl
 	depends = python-tabulate
 	depends = python-tomli
 	depends = python-tomli-w
+	depends = python-typing_extensions
 	depends = python-xmltodict
-	source = https://github.com/kdeldycke/meta-package-manager/archive/refs/tags/v5.5.1.tar.gz
-	sha512sums = 5f245de09397ab068ed1c191c2f164d004cf497a5aebb959d310dd6bda9495a73e4d242e65867a03b6f99531c48f26e3df8bbdad38076f645e7fc9d3ab055b5b
+	optdepends = apm: support for managing Atom packages
+	optdepends = rust: support for managing Rust packages
+	optdepends = composer: support for PHP composer packages
+	optdepends = dnf: support for RPM packages
+	optdepends = flatpak: support for Flatpak packages
+	optdepends = rubygems: support for Ruby packages
+	optdepends = npm: support for Node.js packages
+	optdepends = opkg: support for OPKG packages
+	optdepends = pacman: support for Pacman packages
+	optdepends = paru: support for AUR packages
+	optdepends = python-pip: support for Python packages
+	optdepends = python-pipx: support for Python pipx packages
+	optdepends = snapd: support for Snap packages
+	optdepends = steamcmd: support for Steam games
+	optdepends = code: support for VSCode extensions
+	optdepends = yarn: support for Node packages
+	optdepends = yum: support for DNF packages
+	optdepends = zypper: support for RPM packages
+	source = https://github.com/kdeldycke/meta-package-manager/archive/refs/tags/v5.8.0.tar.gz
+	sha512sums = 8bd9d14406f56874001a986f11b4883717132813c70d24ccea53c5537d5f46822bf5ea0ae97c416b4e0c145fe275f337160ea3ba59f06311a9eff7f4152080a8
 
 pkgname = meta-package-manager
