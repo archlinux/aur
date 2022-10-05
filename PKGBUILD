@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=datawizard
-_pkgver=0.6.1
+_pkgver=0.6.2
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Easy Data Wrangling'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f30b42e0b35fc6669d5a8077679a560ba3453a62ab098ab4d4b4bc6642c51467')
+sha256sums=('8d97fca35502dd94e2e47aaeb0cb9b0ed4450985b42d3f57a80a6602aba45e90')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
