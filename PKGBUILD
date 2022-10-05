@@ -23,5 +23,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	PREFIX=$pkgdir make install
+	DESTDIR="$pkgdir" PREFIX="/usr" make install
 }
