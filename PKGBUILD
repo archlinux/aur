@@ -2,7 +2,7 @@
 
 pkgname=pascal-fc
 pkgver=1
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="An implementation of pascal with extra constructs for teaching concurrent programming"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/danieljabailey/Pascal-FC"
 license=('GPL2')
 makedepends=('git' 'fpc')
 optdepends=('bash')
-source=('pascal-fc::git+git://github.com/danieljabailey/Pascal-FC#commit=b1bd078511879f8b678c8f7395d727953415926f'
+source=('pascal-fc::git+git://github.com/lexbailey/Pascal-FC#commit=b1bd078511879f8b678c8f7395d727953415926f'
 	'install_script.patch')
 noextract=()
 md5sums=('SKIP'
