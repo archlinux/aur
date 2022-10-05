@@ -1,5 +1,5 @@
 pkgbase = flameshot-old
-	pkgdesc = Powerful yet simple to use screenshot software
+	pkgdesc = Powerful yet simple to use screenshot software(The last version where non-English language translations work correctly)
 	pkgver = 0.10.2
 	pkgrel = 2
 	url = https://github.com/flameshot-org/flameshot
