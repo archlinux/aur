@@ -2,26 +2,26 @@
 
 pkgname=americas-army-2.5
 _pkgname=25Assist
-pkgver=8.21
-pkgrel=0
+pkgver=22.03.11
+pkgrel=1
 pkgdesc='A GUI client application for Downloading Installing and Playing Americas Army 2.5'
 arch=('any')
 groups=("games")
 url="http://aao25.com/"
 license=('EULA - ARMY GAME LICENSING AGREEMENT')
-depends=('mesa')
+depends=('mesa' 'lib32-gtk2' 'lib32-libcanberra' 'lib32-gnome-themes-extra' 'lib32-gtk-engine-murrine')
 source=("https://downloads.sourceforge.net/project/aa25assist/Binaries/25Assist-Linux.zip"
-	"https://www.americasarmy.com/images/logos/aapg-logo-small.svg")
-sha256sums=('7dfadbb114af300491a5e55b12b84cc53fff10f7d59eab61090eadb09961b0be'
-	    'bfa2c3dcb3f0e0d1ec242792b0e4232cffef86df4540435a01b28de12741eed4')
+		"Americasarmy-logo.svg")
+md5sums=('67aa89388ba92fb160ce98b8dc1f0af1'
+	    'f56dd64907c29a5ec3cdf19484043c1c')
 
 package() {
-        mkdir -p "${pkgdir}/opt/${_pkgname}"
+	mkdir -p "${pkgdir}/opt/${_pkgname}"
 
-        msg2 "Extracting library archives..."
-        cd "${pkgdir}" || exit
-        unzip "${srcdir}/$_pkgname-Linux.zip" -d "${pkgdir}/opt/${_pkgname}"
-	cp "${srcdir}/aapg-logo-small.svg" "${pkgdir}/opt/${_pkgname}/$_pkgname.svg"
+	msg2 "Extracting library archives..."
+	cd "${pkgdir}" || exit
+	unzip "${srcdir}/$_pkgname-Linux.zip" -d "${pkgdir}/opt/${_pkgname}"
+	cp "${srcdir}/Americasarmy-logo.svg" "${pkgdir}/opt/${_pkgname}/$_pkgname.svg"
 
 	msg2 "Creating launchers..."
 	cd "${srcdir}" || exit
