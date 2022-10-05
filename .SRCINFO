@@ -1,6 +1,6 @@
 pkgbase = plasma-angelfish
 	pkgdesc = Web browser for Plasma Mobile
-	pkgver = 22.06
+	pkgver = 22.09
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/angelfish
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = plasma-angelfish
 	depends = kdbusaddons
 	depends = kwindowsystem
 	depends = knotifications
-	source = https://download.kde.org/stable/plasma-mobile/22.06/angelfish-22.06.tar.xz
-	sha256sums = 6e8c743d2e56725bc63113c857e2e647cd389129cd5b023ac964cd08f8fc3369
+	source = https://download.kde.org/stable/plasma-mobile/22.09/angelfish-22.09.tar.xz
+	sha256sums = 9db3088d1dd4c6d725eb84b0ca1cd5e54a92360623d788b9fc21a8d909b290ae
 
 pkgname = plasma-angelfish
