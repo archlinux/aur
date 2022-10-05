@@ -1,6 +1,6 @@
 pkgbase = avogadrolibs-git
 	pkgdesc = Avogadro 2: libraries
-	pkgver = 1.95.1.r2510.eb54b42c
+	pkgver = 1.97.0.r3051.19594871
 	pkgrel = 1
 	url = http://openchemistry.org/projects/avogadro2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = avogadrolibs-git
 	depends = hdf5
 	depends = libmsym
 	depends = spglib
-	depends = libmmtf
+	depends = mmtf-cpp
 	depends = qt5-webview
 	depends = qt5-x11extras
 	depends = molequeue

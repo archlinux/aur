@@ -2,13 +2,13 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.95.1.r2510.eb54b42c
+pkgver=1.97.0.r3051.19594871
 pkgrel=1
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("x86_64")
 license=("Kitware")
-depends=("libarchive" "glew" "hdf5" "libmsym" "spglib" "libmmtf" "qt5-webview" "qt5-x11extras" "molequeue" "pybind11" "python-cclib")
+depends=("libarchive" "glew" "hdf5" "libmsym" "spglib" "mmtf-cpp" "qt5-webview" "qt5-x11extras" "molequeue" "pybind11" "python-cclib")
 makedepends=("git" "cmake" "eigen")
 checkdepends=("gtest")
 conflicts=("${_pkgname}" avogadro-crystals avogadro-molecules)
