@@ -1,7 +1,7 @@
 #Maintainer: LevitatingBusinessMan (Rein Fernhout) <me@levitati.ng>
 
 pkgname=zalgo
-pkgver=673bd73
+pkgver=r6.673bd73
 arch=("x86_64")
 pkgrel=1
 pkgdesc="Generate zalgo text"
