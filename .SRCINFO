@@ -1,0 +1,16 @@
+pkgbase = savilerow-bin
+	pkgdesc = A modelling assistant for Constraint Programming
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://savilerow.cs.st-andrews.ac.uk/
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	provides = savilerow
+	noextract = savilerow.sh
+	source = https://savilerow.cs.st-andrews.ac.uk/savilerow-1.9.1-linux.tgz
+	source = savilerow.sh
+	sha256sums = 6dab7b95c0889732f881b32ab359ba090f0d8c622d4aea50432b89007128a770
+	sha256sums = a26d063017332f8aa2960fc4bd2713d3087f13ce1f9c29366f35135f26a43ffd
+
+pkgname = savilerow-bin
