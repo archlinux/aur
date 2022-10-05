@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.59.1.r0.gd24a1486e5
+pkgver=1.68.0.r1.g9bd442e202
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -51,6 +51,7 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 	'python-poetry'
+	'python-setuptools-rust'
 )
 checkdepends=(
 	'python-pip'
@@ -126,8 +127,10 @@ build() {
 
 check() {
 	cd synapse
-	pip install dist/*.whl
-	PYTHONPATH="$PWD" python -m twisted.trial -j$(nproc) tests
+	python -m venv venv --system-site-packages
+	venv/bin/python -m installer dist/*.whl
+	# FIXME for some reason, python does not want to load synapse_rust.so whwn cwd == project root
+	( cd venv; ln -sf ../tests; bin/python -m twisted.trial -j$(nproc) tests )
 }
 
 package() {
