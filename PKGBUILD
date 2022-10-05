@@ -12,7 +12,7 @@ source=("FairfaxHD-${pkgver}.ttf::https://github.com/kreativekorp/open-relay/raw
         "FairfaxSMHD-${pkgver}.ttf::https://github.com/kreativekorp/open-relay/raw/${_commit}/FairfaxHD/FairfaxSMHD.ttf"
         "FairfaxHaxHD-${pkgver}.ttf::https://github.com/kreativekorp/open-relay/raw/${_commit}/FairfaxHD/FairfaxHaxHD.ttf"
         "FairfaxPonaHD-${pkgver}.ttf::https://github.com/kreativekorp/open-relay/raw/${_commit}/FairfaxHD/FairfaxPonaHD.ttf"
-        "${pkgname}-${pkgver}-OFL.txt::https://github.com/kreativekorp/open-relay/raw/${_commit}/FairfaxHD/OFL.txt)
+        "${pkgname}-${pkgver}-OFL.txt::https://github.com/kreativekorp/open-relay/raw/${_commit}/FairfaxHD/OFL.txt")
 sha256sums=('c3b521f9667001ae2b5a4491986bd1716fcd4955699fbb0300a2f01e53ca6951'
             '6d554128cb92eece0303ade4b362e340957f12e8ad8da28e4ad150a1dbfd92c6'
             'bb61bc0f2e035ab4f9287b41a443ad646f6af569c5f5444f69cd9d1e0c8059ab'
