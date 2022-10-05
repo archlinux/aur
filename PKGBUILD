@@ -1,6 +1,6 @@
 # Maintainer: github.com/lmorg
 pkgname=murex-git
-pkgver=r2438.1769d5bb
+pkgver=r2441.44d10c1d
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
