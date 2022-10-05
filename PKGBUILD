@@ -1,7 +1,7 @@
 # Maintainer: Marshmallow <marshycity@gmail.com>
 pkgname=candyvim-git
-pkgver=0.1.0.r3.gd5a2b3f
-pkgrel=3
+pkgver=0.1.1.r0.g45ff2f8
+pkgrel=1
 pkgdesc="CandyVim WIP"
 arch=('any')
 url='https://github.com/mrshmllow/CandyVim'
@@ -11,6 +11,8 @@ depends=(
   'git'
   'ripgrep'
   'npm'
+  'sqlite'
+  'cmake'
   'cargo')
 makedepends=('git')
 optdepends=()
