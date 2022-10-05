@@ -3,14 +3,14 @@
 
 pkgname='perl-x11-xlib'
 pkgver='0.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Low-level access to the X11 library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-try-tiny' 'libx11' 'libxext' 'libxtst')
+depends=('perl-try-tiny' 'libx11' 'libxtst' 'libxcomposite')
 makedepends=('perl-devel-checklib' 'perl-extutils-depends')
-checkdepends=('ttf-dejavu' 'xorg-server-xvfb' 'perl-test-pod' 'xorg-server-xephyr')
+checkdepends=('xorg-server-xvfb' 'xorg-server-xephyr')
 url='https://metacpan.org/dist/X11-Xlib'
 source=(https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/X11-Xlib-$pkgver.tar.gz)
 md5sums=('6ec3c6f20926f6cc0cd7ada700925ea5')
