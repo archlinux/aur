@@ -1,6 +1,6 @@
 pkgbase = plasma-dialer
 	pkgdesc = Dialer for Plasma Mobile
-	pkgver = 22.06
+	pkgver = 22.09
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/plasma-dialer
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = plasma-dialer
 	depends = telepathy-qt
 	depends = libpulse
 	depends = libphonenumber
-	source = https://download.kde.org/stable/plasma-mobile/22.06/plasma-dialer-22.06.tar.xz
-	sha256sums = 0745babe172f394b143e9a31be80af96acc967dc6a437926b4c17d9866954b1f
+	source = https://download.kde.org/stable/plasma-mobile/22.09/plasma-dialer-22.09.tar.xz
+	sha256sums = 3a27d12290762977109290a86c6bcf21b20703e7da4e8fe31ea595c068c168f2
 
 pkgname = plasma-dialer
