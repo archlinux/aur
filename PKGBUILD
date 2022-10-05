@@ -6,7 +6,7 @@
 _pkgname="matomo"
 
 pkgname="matomo-git"
-pkgver="4.11.0"
+pkgver="4.12.0"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("any")
