@@ -28,7 +28,7 @@ optdepends=(
 provides=()
 conflicts=()
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d2126ca1ba7c2bd984f156893a2968b5112818ab38fee73fb10c2d4a38989ddd')
+sha256sums=('19281c7a65158a018af2763f3d80ae1f019b298c93e854014ec8b1d2cbb9c7b7')
 
 package() {
   # Note: sometimes its "matrix-commander" and sometimes "matrix_commander"...
