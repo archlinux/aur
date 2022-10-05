@@ -1,6 +1,6 @@
 pkgbase = python-rsgislib
 	pkgdesc = A collection of Python modules for processing remote sensing and GIS datasets
-	pkgver = 5.0.10
+	pkgver = 5.0.11
 	pkgrel = 1
 	url = http://www.rsgislib.org
 	arch = i686
@@ -54,7 +54,7 @@ pkgbase = python-rsgislib
 	optdepends = python-xgboost: For classification.xgboost
 	optdepends = python-matplotlib-scalebar: For tools.mapping
 	options = !emptydirs
-	source = python-rsgislib-5.0.10.tar.gz::https://github.com/remotesensinginfo/rsgislib/archive/refs/tags/5.0.10.tar.gz
-	sha256sums = 07f7ca5c7f25395f35f7f246ddca5bcd3155936bb7e41175510f69860af2751e
+	source = python-rsgislib-5.0.11.tar.gz::https://github.com/remotesensinginfo/rsgislib/archive/refs/tags/5.0.11.tar.gz
+	sha256sums = 0d7857a3e58d2871db89ecbe012b198766302861cf27bf0b362fda84d9c54bde
 
 pkgname = python-rsgislib

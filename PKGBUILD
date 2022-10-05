@@ -3,7 +3,7 @@
 # Contributor: 	diestl <max at friedersdorff dot com>
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
-pkgver=5.0.10
+pkgver=5.0.11
 pkgrel=1
 pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-geopandas' 'python-rtr
 options=(!emptydirs)
 _github='https://github.com/remotesensinginfo/rsgislib'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('07f7ca5c7f25395f35f7f246ddca5bcd3155936bb7e41175510f69860af2751e')
+sha256sums=('0d7857a3e58d2871db89ecbe012b198766302861cf27bf0b362fda84d9c54bde')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
