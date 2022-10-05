@@ -27,13 +27,21 @@ build() {
 package() {
   cd "${srcdir}"
 
-  # prevent conflict with libmp4v2
-  for conflicting_file in mp4extract mp4info; do
-    mv $conflicting_file $conflicting_file-bento4
+  # install manually (there's no install target)
+  mkdir -p "${pkgdir}/usr/"{bin,lib,lib/bento4}
+  find -iname '*.so' -exec cp --target-directory="${pkgdir}/usr/lib" {} \;
+  find -maxdepth 1 -executable -type f -exec cp --target-directory="${pkgdir}/usr/bin" {} \;
+  find Source/Python/utils -iname '*.py' -exec cp --target-directory="${pkgdir}/usr/lib/bento4" {} \;
+  for file in mp4dash mp4dashclone mp4hls; do
+    sed -e 's!/../utils/!/../lib/bento4/!' "Source/Python/wrappers/$file" > "${pkgdir}/usr/bin/$file"
+    chmod 755 "${pkgdir}/usr/bin/$file"
   done
 
-  # install manually (there's no install target)
-  mkdir -p "${pkgdir}/usr/"{lib,bin}
-  find -iname '*.so' -exec mv --target-directory="${pkgdir}/usr/lib" {} \;
-  find -maxdepth 1 -executable -type f -exec mv --target-directory="${pkgdir}/usr/bin" {} \;
+  # prevent conflict with libmp4v2
+  suffix=-bento4
+  for conflicting_file in mp4extract mp4info; do
+    mv "${pkgdir}/usr/bin/$conflicting_file" "${pkgdir}/usr/bin/$conflicting_file$suffix"
+    find "${pkgdir}/usr/lib/bento4" -iname '*.py' -exec sed -i -e "s#\(Bento4Command(.*\)\b$conflicting_file\b#\1$conflicting_file$suffix#g" {} \;
+  done
+
 }
