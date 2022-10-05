@@ -1,6 +1,6 @@
 pkgbase = nvim-nightly
 	pkgdesc = hyperextensible Vim-based text editor
-	pkgver = 0.8.0.dev.33dd917
+	pkgver = 0.9.0.dev.759259e
 	pkgrel = 1
 	url = https://github.com/neovim/neovim/releases/tag/nightly
 	arch = i686
@@ -29,11 +29,11 @@ pkgbase = nvim-nightly
 	optdepends = xclip: X11 clipboard integration
 	optdepends = xsel: X11 clipboard integration
 	optdepends = wl-clipboard: wayland clipboard integration
-	provides = neovim=0.8.0.dev.33dd917
+	provides = neovim=0.9.0.dev.759259e
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim
-	source = nvim-nightly-0.8.0.dev.33dd917::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz
+	source = nvim-nightly-0.9.0.dev.759259e::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz
 	sha256sums = SKIP
 
 pkgname = nvim-nightly

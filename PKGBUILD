@@ -1,6 +1,6 @@
 # Maintainer: Francesco La Camera <fm@lacamera.org>
 pkgname=nvim-nightly
-pkgver=0.8.0.dev.33dd917
+pkgver=0.9.0.dev.759259e
 pkgrel=1
 pkgdesc='hyperextensible Vim-based text editor'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
