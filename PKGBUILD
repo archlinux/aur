@@ -18,8 +18,8 @@
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
 _zfsver="2.1.6"
-_kernelver="5.19.12.arch1-1"
-_kernelver_full="5.19.12.arch1-1"
+_kernelver="5.19.13.arch1-1"
+_kernelver_full="5.19.13.arch1-1"
 _extramodules="${_kernelver_full/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
