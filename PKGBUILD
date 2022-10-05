@@ -1,16 +1,17 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RefManageR
-_pkgver=1.3.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
-pkgrel=6
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Straightforward 'BibTeX' and 'BibLaTeX' Bibliography Management"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-bibtex
   r-httr
   r-jsonlite
   r-lubridate
@@ -25,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa3aec38cee95d7a75d79078a7b397fc08086fe3d0e2aed8f24d9468cb6dffea')
+sha256sums=('e8300f65ab38425356fa0705356c5c00a37253737885ec6dfe2e7d719f314dce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
