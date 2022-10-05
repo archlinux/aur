@@ -1,0 +1,12 @@
+pkgbase = kde-snap-assist
+	pkgdesc = This KWin script for KDE Plasma suggests other window thumbnails on snap. It tries to replicate the famous Windows 10/11 feature of the same name.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/emvaized/kde-snap-assist
+	arch = any
+	license = GPLv3
+	depends = kwin
+	source = git+https://github.com/emvaized/kde-snap-assist
+	md5sums = SKIP
+
+pkgname = kde-snap-assist
