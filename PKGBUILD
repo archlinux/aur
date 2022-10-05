@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert-minimal
-pkgver=0.17.3
+pkgver=0.17.5
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher - minimal plugins included"
 arch=('x86_64')
@@ -22,6 +22,7 @@ source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v$
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
         "mirrors/python::git+https://github.com/albertlauncher/python.git"
         "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
+
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
