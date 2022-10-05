@@ -1,6 +1,6 @@
 pkgbase = koko
 	pkgdesc = Image gallery application designed for desktop and touch devices
-	pkgver = 22.06
+	pkgver = 22.09
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/koko
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = koko
 	depends = kio
 	depends = kdbusaddons
 	depends = qt5-location
-	source = https://download.kde.org/stable/plasma-mobile/22.06/koko-22.06.tar.xz
-	md5sums = 10c5c263ac723bc0b37c18c0a706ba3f
+	source = https://download.kde.org/stable/plasma-mobile/22.09/koko-22.09.tar.xz
+	md5sums = 22703ff59ffe25f668677551750d749d
 
 pkgname = koko
