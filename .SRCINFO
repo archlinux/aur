@@ -1,6 +1,6 @@
 pkgbase = bicep-bin
 	pkgdesc = Bicep is a declarative language for describing and deploying Azure resources
-	pkgver = 0.10.61
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/Azure/bicep
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = bicep-bin
 	provides = bicep
 	conflicts = bicep
 	options = !strip
-	source = bicep-bin-0.10.61::https://github.com/Azure/bicep/releases/download/v0.10.61/bicep-linux-x64
-	source = https://raw.githubusercontent.com/Azure/bicep/v0.10.61/LICENSE
-	b2sums = 7138cdb86d9162728dc3abd8a641a764ba09d76bb8cd125dfc27afc1721da3bf2fe4bd68c46c021a405445044039aff3d3a803bdf0009c51a9ef990d238e0f53
+	source = bicep-bin-0.11.1::https://github.com/Azure/bicep/releases/download/v0.11.1/bicep-linux-x64
+	source = https://raw.githubusercontent.com/Azure/bicep/v0.11.1/LICENSE
+	b2sums = 7c69e4131fe0e962e8ae549d5a70dd16431969490bcdeb437a82d711179a255b579f9b5d17927b31b8b5dc2993c66566116b3b1758881d75a0fb4ee4bd16de46
 	b2sums = 1e0a143630bdf1d10e34a180d83b967ca132c6c976b5a7c93c1452b6747d3f05ed0aab8c7ef7436af61971ebab7b9fc6aa7378784e3776d8913c6825a6cb3e74
 
 pkgname = bicep-bin
