@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-go-geolite2-country-git
 	pkgdesc = MaxMind GeoLite2 country database for shadowsocks-go
-	pkgver = 20220910122630
+	pkgver = 20220912012541
 	pkgrel = 1
 	url = https://github.com/Dreamacro/maxmind-geoip
 	arch = any

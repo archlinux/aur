@@ -2,7 +2,7 @@
 
 _pkgname=shadowsocks-go-geolite2-country
 pkgname=$_pkgname-git
-pkgver=20220910122630
+pkgver=20220912012541
 pkgrel=1
 pkgdesc="MaxMind GeoLite2 country database for shadowsocks-go"
 arch=('any')
@@ -21,7 +21,8 @@ b2sums=(
 )
 
 pkgver() {
-    date -u +'%Y%m%d%H%M%S'
+    cd $pkgname
+    git show -s --format=%cd --date=format:%Y%m%d%H%M%S
 }
 
 package() {
