@@ -4,7 +4,7 @@
 
 pkgname=speki
 pkgver=0.1.2
-pkgrel=9
+pkgrel=10
 pkgdesc="Flashcard app for your terminal"
 url="https://github.com/TBS1996/speki"
 license=("GPL-2.0-only")
