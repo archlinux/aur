@@ -1,7 +1,8 @@
 pkgbase = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
-	pkgver = 1.13.0
+	pkgver = 1.10.40
 	pkgrel = 3
+	epoch = 1
 	url = https://www.solana.com
 	install = solana.install
 	arch = x86_64
@@ -16,13 +17,13 @@ pkgbase = solana
 	source = cargo-build-bpf
 	source = solana.sysusers
 	source = solana.tmpfiles
-	source = solana-1.13.0.tar.gz::https://github.com/solana-labs/solana/archive/v1.13.0.tar.gz
+	source = solana-1.10.40.tar.gz::https://github.com/solana-labs/solana/archive/v1.10.40.tar.gz
 	source = spl-token-cli-2.0.17.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/token-cli-v2.0.17.tar.gz
 	source = perf-libs-0.19.3.tar.gz::https://github.com/solana-labs/solana-perf-libs/releases/download/v0.19.3/solana-perf.tgz
 	sha256sums = 94bdd2014eea655a3576a0c67e2a56db33cb957636ca72186711be75615c1cf5
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = 70cd710d4037210af9ea27ebcfe1be4c36992bad2a2fe816b7c371e352aecaed
-	sha256sums = ce2c7ae830bbf79bce81d2267a7267651a58d3a4dade0269533bf023ecd7c578
+	sha256sums = 758cdbb7c25ef5dfb7c9fa3f9e4bbf265c69c47905909b285df48fe1ea0348bc
 	sha256sums = c17d42533fb666392cd577ecbc67eddad950ab8b911fa8e82e9c03dceaf37862
 	sha256sums = 5850dc8ba63017cdb0c97357cc0e26e60f445abc1ef3c95a61b88e59afae71a4
 
