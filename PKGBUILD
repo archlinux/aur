@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=menuconfig-git
-pkgver=r1087.a843d55
+pkgver=r972.4b30aed
 pkgrel=1
 pkgdesc='Standalone version of the mconf tool from the linux kernel'
 url='https://github.com/anatol/menuconfig'
