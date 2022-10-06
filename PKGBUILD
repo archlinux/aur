@@ -5,7 +5,7 @@
 pkgname=mozillavpn
 pkgver=2.9.0
 _debian_series=jammy1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('i686' 'x86_64')
 url="https://vpn.mozilla.org/"
@@ -25,6 +25,7 @@ depends=('polkit'
          'qt6-networkauth'
          'qt6-svg'
          'qt6-5compat'
+         'qt6-shadertools'
          'hicolor-icon-theme'
          'wireguard-tools'
          'WIREGUARD-MODULE'
@@ -37,7 +38,7 @@ sha256sums=('122b2e465da3dcbb226bde38413e7969b6128553999b1fc1ad59e1e3ace311ff'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    rm -rf build && mkdir build && cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr
+    rm -rf build && mkdir build && cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     
     # fix compiling with Qt >= 6.4
     patch src/connectionbenchmark/benchmarktaskdownload.cpp < ../issue_6676.patch

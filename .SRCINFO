@@ -1,7 +1,7 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
 	pkgver = 2.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vpn.mozilla.org/
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = mozillavpn
 	depends = qt6-networkauth
 	depends = qt6-svg
 	depends = qt6-5compat
+	depends = qt6-shadertools
 	depends = hicolor-icon-theme
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
