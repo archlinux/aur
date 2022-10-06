@@ -18,7 +18,7 @@ install='ksh93.install'
 source=("${_pkgname}::git+http://github.com/ksh93/ksh#branch=dev"
 	'sample.kshrc')
 sha512sums=('SKIP'
-	'a9acf3132757b275d4c182e1c262b25ebb578bcd2e40a5963f44be778da9007fb2ce770d0eac1c65a897ae1a359b944180dfc9d037293288111e3dd36b80adb3')
+	'f4a65e4181358703fc8905dbff917f966f46e39f8013c116d09e24615dd4676df1a83a037b972e624a1c2360ed803458682b231f657eaef5d55d22ac01d1d8ca')
 
 pkgver() {
 	cd "${_pkgname}"

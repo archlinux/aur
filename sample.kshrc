@@ -65,13 +65,13 @@ PS1.get()
 	ret=$?  # Workaround $? bug in ksh < 2021-03-16 (cf. https://github.com/ksh93/ksh/pull/226)
 
 	pwd=$(pwd 2>/dev/null)
-	[[ ${pwd} == / ]] && return 0
 	case ${pwd} in
 		~)		pwd='~' ;;
 		~docs)		pwd='~docs' ;;
 		~dls)		pwd='~dls' ;;
 		~share)		pwd='~share' ;;
 		'')		pwd="${color[red]}No pwd found" ;;
+		/)		;;  # Do nothing
 		*)		pwd=${pwd##*/} ;;
 	esac
 	if [[ $(id -u) == 0 ]]; then
