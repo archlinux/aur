@@ -1,8 +1,8 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=wl-mirror-git
-pkgver=0.12.1.r0.gae7968d
-pkgrel=2
+pkgver=0.12.2.r0.gcd88434
+pkgrel=1
 pkgdesc="a simple Wayland output mirror client (git version)"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=('i686' 'x86_64')
