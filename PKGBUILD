@@ -1,46 +1,36 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=vulkan-caps-viewer
-pkgver=3.01
+pkgver=3.25
+_pkgver_tag=${pkgver}_fixed
 pkgrel=1
-pkgdesc='Vulkan Hardware Capability Viewer'
-url='http://vulkan.gpuinfo.org/'
-arch=('x86_64')
-license=('GPL2')
-source=("git+https://github.com/SaschaWillems/VulkanCapsViewer#tag=$pkgver"
-        "git+https://github.com/KhronosGroup/Vulkan-Headers")
-sha1sums=('SKIP'
-          'SKIP')
-makedepends=(git)
-depends=(vulkan-icd-loader qt5-base)
-optdepends=(qt5-x11extras qt5-wayland)
-
-prepare() {
-  cd VulkanCapsViewer
-
-  git submodule init
-  git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
-  git submodule update
-}
+pkgdesc="Vulkan hardware capability viewer"
+url=https://github.com/SaschaWillems/VulkanCapsViewer
+license=(GPL2)
+arch=(x86_64)
+source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/refs/tags/${_pkgver_tag}/${pkgname}-${pkgver}.tar.gz")
+makedepends=("vulkan-headers>=1.3.226")
+depends=(vulkan-icd-loader qt5-x11extras qt5-wayland hicolor-icon-theme)
 
 build() {
-  cd VulkanCapsViewer
+    cd "$srcdir"
+    mkdir build
+    cd build
 
-  qmake \
-    QMAKE_CFLAGS="$CFLAGS" \
-    QMAKE_CXXFLAGS="$CXXFLAGS" \
-    QMAKE_LFLAGS="$LDFLAGS" \
-    PREFIX=/usr
-
-  make
+    qmake ../VulkanCapsViewer-${_pkgver_tag} \
+        DEFINES+="X11 WAYLAND" \
+        QMAKE_CFLAGS="$CFLAGS" \
+        QMAKE_CXXFLAGS="$CXXFLAGS" \
+        QMAKE_LFLAGS="$LDFLAGS" \
+        PREFIX=/usr
+    make
 }
 
 package() {
-  cd VulkanCapsViewer
+    cd "$srcdir/build"
+    make INSTALL_ROOT="$pkgdir" install
 
-  make INSTALL_ROOT="$pkgdir" install
-
-  # There's a bug preventing this from being installed automatically
-  install -Dm644 gfx/android_icon_256.png \
-    "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
+    install -Dm644 "${srcdir}"/VulkanCapsViewer-${_pkgver_tag}/gfx/android_icon_256.png \
+        "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
+sha256sums=('2c2366a00820d9eeebd2db68f85e0f889bd92e988a73ecdee4e723bb179638be')
