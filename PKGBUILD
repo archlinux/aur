@@ -1,6 +1,6 @@
 # Maintainer: Xyem <xyem@electricjungle.org>
 pkgname=sheepit-client-bin
-pkgver=6.22214.0
+pkgver=6.22274.0
 pkgrel=1
 pkgdesc='Client for the SheepIt render farm'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   'sheepit-client.sh'
 )
 sha256sums=(
-  'e9ebee8ea94eae078be4e8523425213212507e26296f49d273a799fafd441b4d'
+  '60fbbb3dbbd4436d897edcbc3589d3c521225588f9757fc1a8091bf56addf4de'
   '18c3c158263861bca6f61204741f7c7c9ea8201b99ec711bc60d096598f4e8ed'
 )
 
