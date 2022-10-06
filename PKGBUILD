@@ -5,7 +5,7 @@
 
 _pkg=cado-nfs
 pkgname=${_pkg}-git
-pkgver=20221003.6a980444e
+pkgver=20221005.5e2777b62
 pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('x86_64')
@@ -67,7 +67,7 @@ build() {
   CXXFLAGS="$(_update_march "$CXXFLAGS") -ffile-prefix-map=${srcdir}=."
 
   make cmake
-  local escaped="$(sed 's|[[.*^$\\\|]|\\&|g;s/\n/\\n/g' <<< "$srcdir")"
+  local escaped="$(sed 's|[.*^$\\\|[]|\\&|g;s/\n/\\n/g' <<< "$srcdir")"
   find build -type f -iname '*.h' -print0 | xargs -0 sed -zi "s|$escaped|$_pkg|g"
 
   make
