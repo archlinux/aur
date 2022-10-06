@@ -2,7 +2,7 @@
 
 pkgname=physx
 pkgdesc='NVIDIA PhysX SDK'
-pkgver=4.1.2.29873463
+pkgver=4.1.2.29882248
 pkgrel=1
 _reponame=PhysX
 _commit='c3d5537bdebd6f5cd82fcaf87474b838fe6fd5fa'
