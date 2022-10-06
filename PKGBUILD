@@ -4,7 +4,7 @@
 
 pkgname=speki
 pkgver=0.1.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Flashcard app for your terminal"
 url="https://github.com/TBS1996/speki"
 license=("GPL-2.0-only")
@@ -27,9 +27,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --all-features
-  ./target/release/speki --completions bash > target/release/speki-completion.bash
-  ./target/release/speki --completions zsh > target/release/speki-completion.zsh
-  ./target/release/speki --completions fish > target/release/speki-completion.fish
 
 }
 
