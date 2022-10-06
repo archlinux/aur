@@ -12,7 +12,7 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=22.3.0_devel.159472.d5394296bec
+pkgver=22.3.0_devel.160894.df3fdbdeb50
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
@@ -55,6 +55,7 @@ build () {
 
     meson setup mesa _build \
        -D b_ndebug=true \
+       -D b_lto=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
        -D prefix=/usr \
@@ -71,7 +72,6 @@ build () {
        -D gallium-va=enabled \
        -D gallium-vdpau=disabled \
        -D gallium-xa=disabled \
-       -D gallium-xvmc=disabled \
        -D gbm=enabled \
        -D gles1=disabled \
        -D gles2=enabled \
