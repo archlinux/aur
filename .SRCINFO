@@ -1,14 +1,13 @@
 pkgbase = nerd-fonts-space-mono
 	pkgdesc = Patched font Space Mono from nerd-fonts library
-	pkgver = 2.1.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
-	source = SpaceMono-2.1.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SpaceMono.zip
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.1.0/LICENSE
-	md5sums = 7f16c5d4f1609c06210c11196c8770fd
-	md5sums = 1b95f7668f3a4440b0d404e8dc3ccd9c
+	source = SpaceMono-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/SpaceMono.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.2/LICENSE
+	md5sums = d85d9aabebf3612bdabbbfe1e919f13c
+	md5sums = 935bbbdc8410b3b32315cc20da9d2126
 
 pkgname = nerd-fonts-space-mono
-
