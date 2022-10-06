@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Briar Desktop Nightly
+Comment=Secure messaging, anywhere
+Exec=/usr/bin/briar-desktop-nightly %u
+Icon=briar-desktop-nightly
+Terminal=false
+Type=Application
+Categories=Network;Chat;InstantMessaging;
