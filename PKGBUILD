@@ -2,13 +2,13 @@
 
 pkgname=ponscripter-sekaiproject
 _pkgname=ponscripter
-pkgver=v0.0.6.r142.40585ed
-pkgrel=1
+pkgver=v0.0.6.r162.4f887b8
+pkgrel=2
 pkgdesc="Sekai Project Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/sekaiproject/ponscripter-fork"
 license=('GPL')
-depends=('sdl_mixer' 'sdl_image' 'freetype2' 'gcc-libs' 'smpeg2')
+depends=('sdl2_mixer' 'sdl_image' 'freetype2' 'gcc-libs' 'smpeg')
 makedepends=('libmodplug')
 source=("${_pkgname}::git+https://github.com/sekaiproject/ponscripter-fork.git")
 md5sums=('SKIP')
@@ -31,7 +31,7 @@ build() {
     --disable-internal-libs \
     --disable-internal-sdl \
     --disable-internal-sdlimage \
-    --disable-internal-sdlmixer \
+    --with-external-sdl-mixer \
     --disable-internal-bz \
     --disable-internal-smpeg
   make
