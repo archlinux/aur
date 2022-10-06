@@ -1,14 +1,14 @@
 pkgbase = thunderhub
 	pkgdesc = Lightning Node Manager
 	pkgver = 0.13.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apotdevin/thunderhub
 	install = thunderhub.install
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=10
-	optdepends = lnd-bin
+	optdepends = lnd
 	options = !strip
 	backup = etc/thunderhub/accounts.yaml
 	backup = etc/thunderhub/env
