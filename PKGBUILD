@@ -3,7 +3,7 @@
 
 _pkgname=sigtop
 pkgname=$_pkgname-git
-pkgver=r214.b0813cc
+pkgver=r217.00705d9
 pkgrel=1
 pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
@@ -26,12 +26,11 @@ pkgver() {
 build() {
   cd $_pkgname
   make
-  head -n 15 sigtop.c | cut -b 4- >LICENSE
 }
 
 package() {
   cd $_pkgname
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
   install -Dm755 $_pkgname.1 "$pkgdir"/usr/share/man/man1/$_pkgname.1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE.md"
 }

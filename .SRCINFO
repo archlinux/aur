@@ -1,6 +1,6 @@
 pkgbase = sigtop-git
 	pkgdesc = Export messages from Signal Desktop
-	pkgver = r214.b0813cc
+	pkgver = r217.00705d9
 	pkgrel = 1
 	url = https://github.com/tbvdm/sigtop
 	arch = i686
