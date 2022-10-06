@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
 pkgname=chimerax
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(libffi6)
 options=(!strip)
 source=(local://ChimeraX-${pkgver}.tar.gz
         LICENSE)
-sha256sums=('2e95e4da2408d0dcf0540bc0f4b71cbd61eaa5d9aba92e8c94d0f341a6612734'
+sha256sums=('d34255343d86fb8e889230290ecf37ec2da42f12d5f486404c20c4de63517c87'
             '4361604379b11e73ad942144ef84aaf479815f80265f98fed9879f3c82e3aa8d')
 
 package() {
