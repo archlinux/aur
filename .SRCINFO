@@ -1,6 +1,6 @@
 pkgbase = mosdns
 	pkgdesc = A DNS forwarder
-	pkgver = 4.4.1
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mosdns
 	optdepends = v2ray-domain-list-community: geosite.dat
 	optdepends = v2ray-geoip: geoip.dat
 	backup = etc/mosdns/config.yaml
-	source = mosdns::git+https://github.com/IrineSistiana/mosdns.git#tag=a82790407617f8924374dbe198801732565b7971
+	source = mosdns::git+https://github.com/IrineSistiana/mosdns.git#tag=98670dd6457f81f76ef6cf1458e1e278e9e06daa
 	source = mosdns.service
 	sha512sums = SKIP
 	sha512sums = c4defddfc87754b8dd105df080374ec32785c435b5a60fa60608e5e0b57eddd4aa6c5581daceba6dff6d84b8e0f4914db0ea09f0150aecee17e216379f7fcb62
