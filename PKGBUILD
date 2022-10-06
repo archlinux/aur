@@ -3,20 +3,21 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.0.r0.gaa97a6d6
+pkgver=2.0.r53.gd22fa54f
 pkgrel=1
 pkgdesc="Sega Dreamcast core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/flycast"
 license=('GPL2')
 groups=('libretro')
-depends=('libgl' 'libretro-core-info')
+depends=('libretro-core-info')
 makedepends=(
 	'cmake'
 	'git'
 	'glm'
+	'glslang>=11.11'
 	'libchdr'
-	'libglvnd'
+	'libgl'
 	'libzip'
 	'miniupnpc'
 	'xbyak'
@@ -27,11 +28,15 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_reponame::git+$url.git"
+	'Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+	'VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
 	'unbundle-libs.patch'
 )
 b2sums=(
 	'SKIP'
-	'e958858e145819df2156856b55b441b960716403c140cf79c6bbec5fbfae06303e27ea42f9fa4d58250046c9700ac04e5d26feb6a469ea9cd9cdda4c471ad896'
+	'SKIP'
+	'SKIP'
+	'2f2edc320cd63737a9fcdfa90265a8003a576e3797b43291b44c567eb189253bb0b48c7a5e7bc5b36d89c2889a064ecbd9c0deac6d8df526289de8cd0e2349a8'
 )
 
 pkgver() {
@@ -41,6 +46,9 @@ pkgver() {
 
 prepare() {
 	cd $_reponame
+	git config submodule.core/deps/Vulkan-Headers.url ../Vulkan-Headers
+	git config submodule.core/deps/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
+	git submodule update
 	patch -Np1 < ../unbundle-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 }
@@ -61,6 +69,7 @@ build() {
 package() {
 	depends+=(
 		'libchdr.so'
+		'libGL.so'
 		'libminiupnpc.so'
 		'libxxhash.so'
 		'libzip.so'
