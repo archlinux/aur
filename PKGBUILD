@@ -3,8 +3,8 @@
 _CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86"
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.16.1
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
 url='https://github.com/NVIDIA/DALI'
@@ -49,8 +49,8 @@ build() {
     -DBUILD_LIBTIFF=ON \
     -DBUILD_LMDB=ON \
     -DBUILD_NVDEC=ON \
-    -DBUILD_NVJPEG2K=ON \
-    -DBUILD_NVJPEG=ON \
+    -DBUILD_NVJPEG2K=OFF \
+    -DBUILD_NVJPEG=OFF \
     -DBUILD_NVML=ON \
     -DBUILD_NVOF=ON \
     -DBUILD_NVTX=OFF \
