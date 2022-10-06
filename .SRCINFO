@@ -1,0 +1,15 @@
+pkgbase = dol-git
+	pkgdesc = Degrees of Lewdity, browser-based NSFW(18+) game by Vrelnir
+	pkgver = 0.3.11.4.r3845.343e474e4
+	pkgrel = 1
+	url = https://vrelnir.blogspot.com
+	arch = any
+	license = cc-by-nc-sa-4.0
+	makedepends = git
+	provides = dol
+	source = degrees-of-lewdity::git+https://gitgud.io/Vrelnir/degrees-of-lewdity.git
+	source = dol
+	md5sums = SKIP
+	md5sums = 18d1a258ecaff1c9708635ead15df35b
+
+pkgname = dol-git
