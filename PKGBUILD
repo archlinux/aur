@@ -3,7 +3,7 @@
 # Release notes: https://support.google.com/webdesigner/topic/6350071?hl=en&ref_topic=3249465
 
 pkgname=google-webdesigner
-pkgver=14.0.4.1108
+pkgver=15.0.2.1005
 pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
-sha256sums=('d52eea3e887ebf085de289c8b6521f42298dffec980c69d50cd48a46b76d51d6')
+sha256sums=('e445e43afd6348d1af2abf3df8d3fc53591b4a2dc2769938d610b07235d2de4f')
 
 package() {
   msg2 "Extracting the data.tar.xz"
@@ -27,7 +27,7 @@ package() {
   # Icons
   for i in 16 32 48 64 128; do
     install -Dm644 "${pkgdir}"/opt/google/webdesigner/resources/product_logo_${i}.png \
-                   "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/google-webdesigner.png
+      "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/google-webdesigner.png
   done
 
   # TODO: changelog /usr/share/doc/google-webdesigner/
