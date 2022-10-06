@@ -1,7 +1,7 @@
 pkgbase = python-codetiming
 	pkgdesc = Flexible, customizable timer for your Python code
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/realpython/codetiming
 	changelog = CHANGELOG.md
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python-codetiming
 	checkdepends = python-pytest
 	makedepends = python-flit-core
 	makedepends = python-build
-	makedepends = python-install
-	depends = python>=3.6
-	source = python-codetiming-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/c/codetiming/codetiming-1.3.0.tar.gz
-	sha256sums = 7f9949dad6438f458a22b811b0738c55e45f685d27551352871e15811f3a5e89
+	makedepends = python-installer
+	depends = python
+	source = python-codetiming-1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/c/codetiming/codetiming-1.3.1.tar.gz
+	sha256sums = 2fcb4afb18e0ac8302e4e059d2d3343ee1df0ab84d26ddf8cd80b9205c9e67dc
 
 pkgname = python-codetiming

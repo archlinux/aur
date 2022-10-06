@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.3.1] - 2022-10-06
+
+### Added
+
+- A `py.typed` file to mark `codetiming` as typed as specified in [PEP 561](https://peps.python.org/pep-0561/#packaging-type-information) (by [@alkatar21](https://github.com/alkatar21) in [#38])
+
+### Changed
+
+- Use GitHub Actions instead of CircleCI for CI ([#33])
+- Explicitly support Python 3.10 and 3.11 ([#32], [#34], [#35])
 
 ## [1.3.0] - 2021-02-09
 
@@ -42,7 +52,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Initial version of `codetiming`. Version 1.0.0 corresponds to the code in the tutorial [Python Timer Functions: Three Ways to Monitor Your Code](https://realpython.com/python-timer/).
 
 
-[Unreleased]: https://github.com/realpython/codetiming/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/realpython/codetiming/compare/v1.3.1...HEAD
+[1.3.0]: https://github.com/realpython/codetiming/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/realpython/codetiming/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/realpython/codetiming/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/realpython/codetiming/compare/v1.0.0...v1.1.0
@@ -57,3 +68,8 @@ Initial version of `codetiming`. Version 1.0.0 corresponds to the code in the tu
 [#27]: https://github.com/realpython/codetiming/pull/27
 [#29]: https://github.com/realpython/codetiming/issues/29
 [#30]: https://github.com/realpython/codetiming/pull/30
+[#32]: https://github.com/realpython/codetiming/pull/32
+[#33]: https://github.com/realpython/codetiming/pull/33
+[#34]: https://github.com/realpython/codetiming/pull/34
+[#35]: https://github.com/realpython/codetiming/pull/35
+[#38]: https://github.com/realpython/codetiming/pull/38
