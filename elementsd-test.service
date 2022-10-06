@@ -1,0 +1,65 @@
+[Unit]
+Description=Elements Liquid Blockchain (test chain)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/elementsd -daemon -chain=liquidv1test \
+                            -pid=/run/elementsd/elementsd-test.pid \
+                            -conf=/etc/elements/elements.conf \
+                            -datadir=/var/lib/elementsd
+
+# Make sure the config directory is readable by the service user
+PermissionsStartOnly=true
+ExecStartPre=/bin/chgrp elements /etc/elements
+
+# Process management
+####################
+
+Type=forking
+PIDFile=/run/elementsd/elementsd-test.pid
+Restart=on-failure
+
+# Directory creation and permissions
+####################################
+
+# Run as elements:elements
+User=elements
+Group=elements
+
+# /run/elementsd
+RuntimeDirectory=elementsd
+RuntimeDirectoryMode=0710
+
+# /etc/elements
+ConfigurationDirectory=elements
+ConfigurationDirectoryMode=0710
+
+# /var/lib/elementsd
+#StateDirectory=elementsd
+#StateDirectoryMode=0710
+
+# Hardening measures
+####################
+
+# Provide a private /tmp and /var/tmp.
+PrivateTmp=true
+
+# Mount /usr, /boot/ and /etc read-only for the process.
+ProtectSystem=full
+
+# Deny access to /home, /root and /run/user
+ProtectHome=true
+
+# Disallow the process and all of its children to gain
+# new privileges through execve().
+NoNewPrivileges=true
+
+# Use a new /dev namespace only populated with API pseudo devices
+# such as /dev/null, /dev/zero and /dev/random.
+PrivateDevices=true
+
+# Deny the creation of writable and executable memory mappings.
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

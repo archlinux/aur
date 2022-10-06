@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = elements-project
+
+[Action]
+Description = Setting elements daemon user directory permissions...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/chown -R elements:elements /etc/elements /var/lib/elementsd
