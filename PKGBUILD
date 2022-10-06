@@ -2,10 +2,10 @@
 # Contributor: Rustam Tsurik <rustam.tsurik@gmail.com>
 
 pkgname=memsource-editor
-_pkg=MemsourceEditor
-pkgver=22.25.0
+_pkg=Phrase
+pkgver=22.28.5
 pkgrel=1
-pkgdesc="A CAT translation tool, requires Memsource subscription"
+pkgdesc="A CAT translation tool, requires Phrase subscription"
 arch=('x86_64')
 license=('custom')
 url="http://www.memsource.com/"
@@ -25,13 +25,13 @@ depends+=('shared-mime-info')
 
 makedepends=('imagemagick')
 options=('!strip')
-source=("http://download.memsource.com/production/updates/memsource-editor/linux/x64/archive/install/${_pkg}-${pkgver}-x64.run"
+source=("https://download.memsource.com/production/updates/memsource-editor/linux/x64/archive/install/${_pkg}-${pkgver}-x64.run"
         "memsource-editor.desktop"
         "memsource-editor.xml"
         "memsource"
         "license.desktop")
 
-sha256sums=('4a00f4c0ad7f9979ba08cf6e745f7c53698ebf309f7e310bb00d390a4cf0d90f'
+sha256sums=('a8425fc6514e7e7a9c4bafe9eab941dbbc8c0adf68bd0b70bc2eeda6619e4558'
             '215a02637392af7a3f0af23411c5234c9ce8cdf1ae5c0e40b97c43e5b0995a45'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
