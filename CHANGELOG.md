@@ -1,5 +1,15 @@
 # Changelog
 
+## [v4.0.1](https://github.com/fastly/cli/releases/tag/v4.0.1) (2022-10-05)
+
+[Full Changelog](https://github.com/fastly/cli/releases/tag/v4.0.0...v4.0.1)
+
+**Bug fixes:**
+
+* Fix JS dependency lookup [#656](https://github.com/fastly/cli/pull/656)
+* Fix Rust 'existing project' bug [#657](https://github.com/fastly/cli/pull/657)
+* Fix Rust toolchain lookup regression [#658](https://github.com/fastly/cli/pull/658)
+
 ## [v4.0.0](https://github.com/fastly/cli/releases/tag/v4.0.0) (2022-10-04)
 
 [Full Changelog](https://github.com/fastly/cli/releases/tag/v3.3.0...v4.0.0)
