@@ -1,6 +1,6 @@
 pkgbase = sway-input-config-git
 	pkgdesc = Sway Input Configurator
-	pkgver = r6.60f5704
+	pkgver = r24.f2fa178
 	pkgrel = 1
 	url = https://github.com/Sunderland93/sway-input-config
 	arch = i686
