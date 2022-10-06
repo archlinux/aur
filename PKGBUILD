@@ -1,8 +1,8 @@
 # Maintainer: Mautamu mautam@usa.com
 pkgname=leftwm-theme-git
-pkgver=r40.e6907a6
+pkgver=r89.bbb57d0
 pkgrel=1
-epoch=2
+epoch=0
 pkgdesc="Theme manager for LeftWM"
 arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm-theme"
