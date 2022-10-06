@@ -1,0 +1,10 @@
+--- linux-5.10.146/drivers/nvme/host/core.c	2022-09-28 17:10:41.000000000 +0800
++++ linux-5.10.146/drivers/nvme/host/core.patch.c	2022-10-06 21:14:13.604143325 +0800
+@@ -4049,7 +4049,6 @@ static void nvme_validate_ns(struct nvme
+ 	if (!nvme_ns_ids_equal(&ns->head->ids, ids)) {
+ 		dev_err(ns->ctrl->device,
+ 			"identifiers changed for nsid %d\n", ns->head->ns_id);
+-		goto out_free_id;
+ 	}
+ 
+ 	ret = nvme_update_ns_info(ns, id);

@@ -1,8 +1,8 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase=linux-lts510
-pkgver=5.10.146
+pkgbase=linux-lts510-nvme-fix
+pkgver=5.10.147
 pkgrel=1
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
@@ -18,16 +18,18 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  02-fix-nvme.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('7bbd97f3278eadb73c19a1ca8c1a655c60afcee9f487b910063cdd15e9ee6dc1'
+sha256sums=('85253abf097eb5013b988a400eb022eed0e0626e7e0a7daa3ab4b6bcabbced9a'
             'SKIP'
             '2367f59976f6fc902d226229564a98f5d1df3a91e742a292c3deccc3e4a8ffc0'
-            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e')
+            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
+            '0e14c0d788262a9781d8ba1d6e894f30877f015ccf0b6d768d759eac48bcede9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -53,15 +55,14 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make -j4 all
+  make -j4 htmldocs
 }
 
 _package() {
