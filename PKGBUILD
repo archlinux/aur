@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.160382.e24a8168189
+pkgver=22.3.0_devel.160894.df3fdbdeb50
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -21,7 +21,7 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
 depends=('mesa-minimal-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
             'lib32-libelf' 'lib32-libunwind' 'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs-minimal-git')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vulkan' 'lib32-vulkan-driver' 'lib32-mesa-vulkan' 'lib32-vulkan-mesa-layers' 'lib32-opengl-driver' 'lib32-vulkan-driver')
+provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vulkan' 'lib32-mesa-vulkan' 'lib32-vulkan-mesa-layers' 'lib32-opengl-driver' 'lib32-vulkan-driver')
 conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vulkan' 'lib32-vulkan-mesa-layers' 'lib32-mesa-vdpau' )
 url="https://www.mesa3d.org"
 license=('custom')
@@ -84,7 +84,6 @@ build () {
         -D gallium-va=enabled \
         -D gallium-vdpau=disabled \
         -D gallium-xa=disabled \
-        -D gallium-xvmc=disabled \
         -D gbm=enabled \
         -D gles1=disabled \
         -D gles2=enabled \
