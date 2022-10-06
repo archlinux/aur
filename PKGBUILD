@@ -3,12 +3,12 @@
 pkgname=hqplayer-client
 pkgver=4.19.3
 _rpmpkgver=4.19.3-59
-pkgrel=1
+pkgrel=2
 pkgdesc="The high-end upsampling multichannel software HD-audio playe - client application"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
 license=('custom')
-depends=('hqplayer' 'qt5-webengine')
+depends=('hqplayer' 'qt5-webengine' 'qt5-quickcontrols2')
 source=("https://www.signalyst.eu/bins/hqplayer/fc36/hqplayer4desktop-$_rpmpkgver.fc36.x86_64.rpm")
 sha256sums=('644f5966ea752ef700c6ae0c0647165a6cb24da1c43e5180868eb862fa0c81a9')
 options=(!strip)
