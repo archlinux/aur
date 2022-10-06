@@ -2,7 +2,7 @@
 
 pkgname=pantalaimon
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
 url='https://github.com/matrix-org/pantalaimon'
@@ -16,6 +16,7 @@ sha256sums=('970e79db0692a23c0e2d7f6ee9e3cd67b482b5a3fcb739cc899806494748db77'
 
 build() {
         cd "${pkgname}-${pkgver}"
+	sed -i -e 's/matrix-nio[e2e]<0.21,>=0.20/matrix-nio[e2e]>=0.20/g' pantalaimon.egg-info/requires.txt
 }
 
 package() {
