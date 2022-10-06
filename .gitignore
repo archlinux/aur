@@ -1,4 +1,5 @@
 pkg/
 src/
-*.zip
 *.zst
+Mononoki-*.zip
+LICENSE

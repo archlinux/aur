@@ -1,17 +1,16 @@
 pkgbase = nerd-fonts-mononoki
 	pkgdesc = Patched font Mononoki from nerd-fonts library
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
 	makedepends = fontconfig
 	makedepends = xorg-mkfontscale
 	makedepends = xorg-mkfontdir
-	source = Mononoki-2.1.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Mononoki.zip
-	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.1.0/LICENSE
-	md5sums = 2937ef688b9ad1bf6a973cb63191ff7e
-	md5sums = 1b95f7668f3a4440b0d404e8dc3ccd9c
+	source = Mononoki-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Mononoki.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.2.2/LICENSE
+	sha256sums = d6d21469971ac8cf01d5c1e6a34372466d4f67a0db2e79b6fd0b4d9d6b8c9d05
+	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
 
 pkgname = nerd-fonts-mononoki
-
