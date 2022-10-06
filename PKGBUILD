@@ -4,7 +4,7 @@
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 
 pkgname=openstego
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Steganography application that provides data hiding and watermarking functionality"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('unzip')
 source=("https://github.com/syvaidya/openstego/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
         "openstego.desktop"
         "openstego.svg")
-sha256sums=('5b3ff627687fb5f1b7a87242710db5e929e70ac305183cc9c049716711d1d399'
+sha256sums=('278d0934e1132a352cde6f89a86018ffc35037c9cfacf1ebdfdadf1508d5ad36'
             '0749d41ac197897b2604c6617a012194f5efa793aed036c1a797412038ccebcf'
             '2e8eb54202cf0fe8130c9b284ba26ae196746cf299872efc401257c487101956')
 
