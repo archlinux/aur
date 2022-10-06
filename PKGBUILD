@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.4.1
+pkgver=7.4.2
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=ddbc5768a6c51082e0928fa5c472e47dc6c24845
@@ -75,7 +75,7 @@ package() {
     
     cp -r  assets templates theme t_modules lib "$pkgdir/opt/$pkgname"
  
-    for t in de es fr_FR hu id ja_JP nb_NO pt pt_BR pt_PT ru sv zh_CN tr; do
+    for t in de es fr_FR hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv zh_CN tr; do
         install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "$pkgdir/usr/share/locale/${t}/LC_MESSAGES"
     done
  
@@ -86,6 +86,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('9b93b5ff88deddf6c0ffbbb1e659c8d1'
+md5sums=('708ee048119299d0a6aaf753bd94e79a'
          '981ad3e496fbd8edb99704fc0e2aa939'
          '356d101a9cd37795dff104644b9c9482')
