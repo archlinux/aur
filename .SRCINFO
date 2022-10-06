@@ -1,0 +1,10 @@
+pkgbase = udev-notify-daemon-bin
+	pkgdesc = A simple daemon that listens for udev USB events and sends out a notification to dbus
+	pkgver = 0.1.0
+	pkgrel = 9
+	url = https://github.com/charlie-haley/udev-notify-daemon
+	arch = x86_64
+	license = MIT
+	source_x86_64 = udev-notify-daemon_amd64::https://github.com/charlie-haley/udev-notify-daemon/releases/download/v0.1.0/udev-notify-daemon_amd64
+
+pkgname = udev-notify-daemon-bin
