@@ -5,7 +5,7 @@ Type = Package
 Target = elements-project
 
 [Action]
-Description = Adding bitcoin daemon user...
+Description = Adding elements daemon user...
 Depends = systemd
 When = PostTransaction
 Exec = /usr/bin/systemd-sysusers /usr/lib/sysusers.d/elements.conf
