@@ -1,7 +1,7 @@
 # Maintainer: Barnabe di Kartola
 
 pkgname=kde-snap-assist
-pkgver=v1.6.0
+pkgver=v1.6.2
 pkgrel=1
 pkgdesc="This KWin script for KDE Plasma suggests other window thumbnails on snap. It tries to replicate the famous Windows 10/11 feature of the same name."
 arch=(any)
