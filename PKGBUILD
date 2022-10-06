@@ -4,8 +4,8 @@
 
 pkgname=gnome-shell-extension-pano
 pkgver=10
-pkgrel=1
-pkgdesc="Next-gen Clipboard Manager"
+pkgrel=2
+pkgdesc="Next-gen Clipboard Manager (forked from -git package)"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
 install=${pkgname}.install
