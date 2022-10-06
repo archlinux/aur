@@ -1,6 +1,6 @@
 pkgbase = nextpnr-all-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - all FPGA architectures
-	pkgver = 20221005_nextpnr_0.4_18_g41709dac
+	pkgver = 20221006_nextpnr_0.4_20_g0d1ea9e6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -27,7 +27,7 @@ pkgbase = nextpnr-all-nightly
 	conflicts = nextpnr-nexus-nightly
 	conflicts = nextpnr-generic-nightly
 	options = !strip
-	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=41709dac
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=0d1ea9e6
 	sha256sums = SKIP
 
 pkgname = nextpnr-all-nightly
