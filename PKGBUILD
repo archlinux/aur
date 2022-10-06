@@ -38,6 +38,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-    install -Dm755 speki -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/speki" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
