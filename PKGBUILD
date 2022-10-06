@@ -6,7 +6,7 @@
 
 pkgbase=awl
 pkgname=('awl' 'awl-docs')
-pkgver=0.62
+pkgver=0.63
 pkgrel=1
 pkgdesc="Andrew's Web Libraries"
 arch=('any')
@@ -17,14 +17,15 @@ makedepends=('doxygen' 'graphviz')
 options=('!strip')
 install=${pkgbase}.install
 source=("${pkgbase}-${pkgver}.tar.gz::$url/-/archive/r$pkgver/$pkgbase-r$pkgver.tar.gz")
-b2sums=('b0e8ac8a2baaeb3ee6b47ce470f098fb64a9894c3da130a085e4f20d96092836910c368d776e489e3d050fa6a9edcf06c89b1cd8c22632638effb07c1ea440a9')
+sha512sums=('9ea5aad9762ec889fdc7f870a793cec82eaa374f08bead122de219c98d255677f55baf943f529cbd5008381cdf0f61283babfaa780c2d9468c9e56c739a092ea')
+b2sums=('a49892f205662763c909af448e897114555867c751cced60da7338881243e60270f9c9da243cebd501c953f6eebc22ef093baab2a04627b09bf011b0fbd0b52d')
 
 package_awl() {
     pkgdesc="Andrew's Web Libraries - PHP Utility Libraries"
     depends=('php')
-    optdepends=('awl-docs')
+    optdepends=('awl-docs: documentation')
 
-    cd "${srcdir}/${pkgbase}-r${pkgver}"
+    cd "${pkgbase}-r${pkgver}"
 
     # create directory
     mkdir -vp "${pkgdir}/usr/share/${pkgbase}"
@@ -45,7 +46,7 @@ package_awl-docs() {
     pkgdesc="Andrew's Web Libraries - API documentation"
     depends=()
 
-    cd "${srcdir}/${pkgbase}-r${pkgver}"
+    cd "${pkgbase}-r${pkgver}"
 
     # create directory
     mkdir -vp "${pkgdir}/usr/share/doc/${pkgbase}"
