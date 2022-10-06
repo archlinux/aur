@@ -1,13 +1,13 @@
 # Maintainer: Daniel Chen <danielchen04 at hotmail dot ca>
 
 pkgname=mandown-git
-pkgver=r121.62fd3d5
+pkgver=r147.3a9334d
 pkgrel=1
 pkgdesc="Comic/manga/webtoon downloader and converter to CBZ/EPUB/PDF"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
-license=("LGPL3")
+license=("GPL2")
 depends=(
 	"python-requests"
 	"python-typer"

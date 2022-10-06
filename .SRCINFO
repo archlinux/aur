@@ -1,10 +1,10 @@
 pkgbase = mandown-git
 	pkgdesc = Comic/manga/webtoon downloader and converter to CBZ/EPUB/PDF
-	pkgver = r121.62fd3d5
+	pkgver = r147.3a9334d
 	pkgrel = 1
 	url = https://github.com/potatoeggy/mandown
 	arch = any
-	license = LGPL3
+	license = GPL2
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
