@@ -12,7 +12,7 @@ license=('GPL3')
 provides=("${_pkgname}")
 depends=('dkms')
 makedepends=('git')
-source=("git+${url}.git"#commit=11df204f32640c7d5ea402f3afd828a085504a3a)
+source=("git+${url}.git"#commit=1b6659cef9b285d9393ed95b6a6bf6acc67f0460)
 sha256sums=('SKIP')
 
 pkgver() {
