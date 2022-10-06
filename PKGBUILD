@@ -6,7 +6,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
 pkgver=1.12.1
 _pkgver=1.12.1
-pkgrel=4
+pkgrel=5
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -106,7 +106,7 @@ sha256sums=('SKIP'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
-            '15fee7875dc454184136df534d0450008912c83f0d74237ba5e6707db7e7914b'
+            'bd89e94fd077b2e2bf04ffb0794f5bcb68379a6abcd4339aa99e9bba9fe4edec'
             '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9')
 options=('!lto')
 
@@ -217,7 +217,7 @@ prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;6.0;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.7+PTX"  #include latest PTX for future compat
+  export TORCH_CUDA_ARCH_LIST="5.2;6.0;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.9;9.0+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 }
 
