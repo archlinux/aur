@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r801.3b8cc6deb
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -77,7 +77,7 @@ prepare() {
   ln -s ../../../"${pkgname}-gtest-1.8.1.zip" subprojects/packagecache/gtest-1.8.1.zip
   ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
 
-  arch-meson build -D default_audio_output=PulseAudio
+  arch-meson --buildtype=release -D default_audio_output=PulseAudio build
 }
 
 build() {
