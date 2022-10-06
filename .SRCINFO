@@ -1,0 +1,17 @@
+pkgbase = wcp
+	pkgdesc = Script-driven control panel/system menu for Wayland
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/milgra/wcp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = freetype2
+	depends = libpng
+	source = wcp-0.4.tar.xz::https://github.com/milgra/wcp/releases/download/0.4/wcp-0.4.tar.xz
+	sha256sums = 7f107cff7f02547cfaedd3c126b22f39ca2ed95232ebc799254f3ae1592e6a0f
+
+pkgname = wcp
