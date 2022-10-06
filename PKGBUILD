@@ -2,7 +2,7 @@
 
 _pkgname=shadowsocks-go-domain-sets
 pkgname=$_pkgname-git
-pkgver=20220910115313
+pkgver=20221003055316
 pkgrel=1
 pkgdesc="Commonly used domain sets for shadowsocks-go"
 arch=('any')
@@ -15,7 +15,8 @@ source=("$pkgname::git+$url.git#branch=release")
 b2sums=('SKIP')
 
 pkgver() {
-    date -u +'%Y%m%d%H%M%S'
+    cd $pkgname
+    git show -s --format=%cd --date=format:%Y%m%d%H%M%S
 }
 
 package() {
