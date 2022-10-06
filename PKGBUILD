@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=5.19.12.hardened1
-_kernver=5.19.12
+_pkgver=5.19.14.hardened1
+_kernver=5.19.14
 _hardenedver=hardened1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=5.19.12-hardened1-1-hardened
+_KERNNAME=5.19.14-hardened1-1-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('dfa4e22e07e10979cb92fddaaa7d99f931e529b03352da3a7837c888737f2e88'
-            '5c2eb85e3cbf0b312ec2953c3c83108baedf4457c6c447204fe4ca212ac65666'
-            '2450c910d14cfd07334e83d08721be8c786b6347c3ed4e86eea17d063e919b2a')
+sha256sums=('bc25030fe78b841653cc3b3605bca86c154de3a16ad0c17bbeebe8d6fe1cc350'
+            'b9954195fa2932369c3b65662e2b2626ef5ffd052b796ea65fd403b4c8eb8ad9'
+            'd3f75427f52a322c2a0351c7c97837f218a1e9fbb3f3cacb0e0d54029821cf18')
 
 package_linux-hardened-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-hardened-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.19.12.hardened1-1-hardened-bin() {
+package_linux5.19.14.hardened1-1-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.19.12.hardened1-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.19.12.hardened1-1-hardened-headers-bin() {
+package_linux5.19.14.hardened1-1-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.19.12.hardened1-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.19.12.hardened1-1-hardened-docs-bin() {
+package_linux5.19.14.hardened1-1-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
