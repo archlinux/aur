@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.71.2.22258.r5.gfadc24f
+pkgver=1.72.0.22279.r3.gbba3e74
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -42,11 +42,9 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}-uri-handler.desktop"
 )
-sha256sums=(
-    'SKIP'
-    '07cde55d43e5f456f90867c5592a04e33e79e15db21faf2160a22357737bd029'
-    '8e1130cea819c02a4aeba47383767c172735959a71ea150f1f63716df2f388d1'
-)
+sha256sums=('SKIP'
+            '07cde55d43e5f456f90867c5592a04e33e79e15db21faf2160a22357737bd029'
+            '8e1130cea819c02a4aeba47383767c172735959a71ea150f1f63716df2f388d1')
 provides=(
     'codium'
     'vscodium'
