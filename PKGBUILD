@@ -2,22 +2,22 @@
 
 pkgname=ponscripter-sekaiproject
 _pkgname=ponscripter
-pkgver=v0.0.6.r162.4f887b8
-pkgrel=2
-pkgdesc="Sekai Project Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
+pkgver=v3.0.0
+pkgrel=3
+pkgdesc="Sekai Project Fork (07th-Mod) of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/sekaiproject/ponscripter-fork"
+url="https://github.com/07th-mod/ponscripter-fork"
 license=('GPL')
 depends=('sdl2_mixer' 'sdl_image' 'freetype2' 'gcc-libs' 'smpeg')
 makedepends=('libmodplug')
-source=("${_pkgname}::git+https://github.com/sekaiproject/ponscripter-fork.git")
+source=("${_pkgname}::git+https://github.com/07th-mod/ponscripter-fork.git#tag=${pkgver}")
 md5sums=('SKIP')
 provides=('ponscripter')
 conflicts=('ponscripter')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+    git describe --tags
 }
 
 build() {
