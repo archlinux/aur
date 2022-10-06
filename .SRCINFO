@@ -1,6 +1,6 @@
 pkgbase = cadabra2
 	pkgdesc = A field-theory motivated approach to computer algebra
-	pkgver = 2.3.9.3
+	pkgver = 2.4.0.2
 	pkgrel = 1
 	url = https://cadabra.science
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = cadabra2
 	depends = gtkmm3
 	depends = jsoncpp
 	depends = mathjax
-	depends = pcre
 	depends = python-ipykernel
 	depends = python-matplotlib
 	depends = python-sympy
@@ -21,7 +20,7 @@ pkgbase = cadabra2
 	depends = texlive-latexextra
 	depends = texlive-science
 	conflicts = cadabra2-git
-	source = cadabra2-2.3.9.3.tar.gz::https://github.com/kpeeters/cadabra2/archive/2.3.9.3.tar.gz
-	sha256sums = 288284535bd4b0165f436aa4d4908e98044d4f2def5f661261bb358f6888279e
+	source = cadabra2-2.4.0.2.tar.gz::https://github.com/kpeeters/cadabra2/archive/2.4.0.2.tar.gz
+	sha256sums = a24c8636264f2278c16d4f2010ab92b497b292a3a5bc495557c70e457516e7fe
 
 pkgname = cadabra2

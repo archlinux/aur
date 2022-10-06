@@ -3,21 +3,20 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=cadabra2
-pkgver=2.3.9.3
+pkgver=2.4.0.2
 pkgrel=1
 pkgdesc="A field-theory motivated approach to computer algebra"
 arch=('x86_64')
 url="https://cadabra.science"
 license=('GPL')
 conflicts=('cadabra2-git')
-depends=(boost-libs glibmm gmp gtkmm3 jsoncpp mathjax pcre
-	 python-ipykernel python-matplotlib python-sympy sqlite
-	 texlive-latexextra texlive-science)
+depends=(boost-libs glibmm gmp gtkmm3 jsoncpp mathjax python-ipykernel python-matplotlib
+	 python-sympy sqlite texlive-latexextra texlive-science)
 
 makedepends=(boost cmake)
 
 source=($pkgname-$pkgver.tar.gz::"https://github.com/kpeeters/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('288284535bd4b0165f436aa4d4908e98044d4f2def5f661261bb358f6888279e')
+sha256sums=('a24c8636264f2278c16d4f2010ab92b497b292a3a5bc495557c70e457516e7fe')
 
 prepare() {
   mkdir -p "$srcdir/build"

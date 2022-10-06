@@ -5,3 +5,6 @@ cadabra2-*.pkg.tar.xz
 *.bak
 *.log
 *.sh
+*.tar.gz
+*.tar.zst
+*.zst.sig
