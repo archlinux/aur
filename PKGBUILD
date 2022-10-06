@@ -2,7 +2,7 @@
 # Contributor: Yuuta Liang <yuuta@yuuta.moe>
 
 pkgname=openbgpd
-pkgver=7.6
+pkgver=7.7
 pkgrel=1
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(libevent)
 source=(https://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-${pkgver}.tar.gz{,.asc}
         bgpd.service
         sysusers.conf)
-sha256sums=('b91152106c6450aa56df7bc3a6ea6b283088ca83ee138cc8bbbb14ced60c1417'
+sha256sums=('cbdfcc6a1e5d71ad105a2398a7af28ad09d5bfed191963f169fa213a72863c62'
             'SKIP'
             '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'
             '00165fa765f95ad0a99df2744401b7892384601f70a98d6d0097144cb55f9d68')
