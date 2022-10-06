@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 install -D /usr/share/doc/candyvim/config.example.lua ~/.config/cvim/config.lua
 
 mkdir -p ~/.local/share/candyvim

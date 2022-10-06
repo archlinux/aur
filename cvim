@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 export CANDYVIM_RUNTIME_DIR="${CANDYVIM_RUNTIME_DIR:-$HOME/.local/share/candyvim}"
 
