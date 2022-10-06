@@ -1,7 +1,7 @@
 pkgbase = vscode-php-debug
 	pkgdesc = PHP Debug Adapter (DAP)
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xdebug/vscode-php-debug
 	arch = any
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 pkgname=vscode-php-debug
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP Debug Adapter (DAP)'
 arch=('any')
 url="https://github.com/xdebug/$pkgname"
@@ -13,5 +13,5 @@ b2sums=('96710618ce939c7be45c7f5d1066f91638badffb8cd8dd86d08430f0fbe84f8eafac20a
 package() {
     install -dm755 "$pkgdir/usr/lib/node_modules/php-debug"
     cp -r "$srcdir/extension"/. "$pkgdir/usr/lib/node_modules/php-debug"
-    install -Dm644 "$srcdir/extension/LICENSE.txt" "$pkgdir/usr/share/licenses/php-debug/LICENSE.txt"
+    install -Dm644 "$srcdir/extension/LICENSE.txt" "$pkgdir/usr/share/licenses/vscode-php-debug/LICENSE.txt"
 }
