@@ -4,7 +4,7 @@
 
 pkgname=speki
 pkgver=0.1.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Flashcard app for your terminal"
 url="https://github.com/TBS1996/speki"
 license=("GPL-2.0-only")
@@ -37,6 +37,7 @@ check() {
 }
 
 package() {
+	cd "$pkgname-$pkgver"
     install -Dm755 speki -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
