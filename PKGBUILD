@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=arrayfire
 pkgver=3.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -40,7 +40,7 @@ build() {
       -DAF_WITH_NONFREE=ON \
       -DAF_BUILD_EXAMPLES=ON \
       -DAF_BUILD_DOCS=ON \
-      -DCUDA_architecture_build_targets="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.7+PTX" \
+      -DCUDA_architecture_build_targets="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.9;9.0+PTX" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCUDA_HOST_COMPILER=/usr/bin/gcc-11 \
       -DBoost_NO_BOOST_CMAKE=ON
