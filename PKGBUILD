@@ -4,7 +4,7 @@
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
 pkgver='1.72.0.22279'
-pkgrel=1
+pkgrel=2
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -39,12 +39,14 @@ makedepends=(
     'pkg-config'
 )
 source=(
-    "git+${url}#tag=${pkgver}"
-    'vscodium.desktop'
+    "${pkgname}.desktop"
+    "${pkgname}-uri-handler.desktop"
+    "https://github.com/VSCodium/vscodium/releases/download/${pkgver}/VSCodium-${pkgver}-src.tar.gz"
 )
 sha256sums=(
-    'SKIP'
     '63eccd0977b9dc783a11ff401940f48bbabd0d098b9563b7ef26402495dc9b88'
+    'fd3dc7cbea2b3eb74dc205f8faa28e913108d11aba41fcffe19a4e5222be33fd'
+    'f64618021d01be8dda15ed580720eed5ad8fce3cf97f5295549aa4e9e5c89c86'
 )
 provides=(
     'codium'
@@ -78,8 +80,6 @@ case "$CARCH" in
 esac
 
 build() {
-    cd "vscodium"
-
     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
     command -v nvm >/dev/null && nvm deactivate && nvm unload
     export NVM_DIR="${srcdir}/.nvm"
@@ -95,22 +95,22 @@ build() {
     	echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
     	exit 1
     fi
-    
+
     # Remove old build
     if [ -d "vscode" ]; then
-        rm -rf VSCode*
-        rm -rf vscode*
+        rm -rf vscode* VSCode*
     fi
-    
+
     # Export necessary environment variables
-    export SHOULD_BUILD=yes
-    export CI_BUILD=no
-    export OS_NAME=linux
+    export SHOULD_BUILD="yes"
+    export SHOULD_BUILD_REH="no"
+    export CI_BUILD="no"
+    export OS_NAME="linux"
     export VSCODE_ARCH="${_vscode_arch}"
+    export VSCODE_QUALITY="stable"
     export RELEASE_VERSION="${pkgver}"
-    
-    # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
-    export SKIP_LINUX_PACKAGES="True"
+    # the app will be updated with pacman
+    export DISABLE_UPDATE="yes"
 
     . get_repo.sh
     . build.sh
@@ -120,11 +120,20 @@ package() {
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
     install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
-    cp -r ${srcdir}/vscodium/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
-    cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
+
+    cp -r ${srcdir}/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
+    cp -r ${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
+    
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
-    install -D -m644 vscodium.desktop ${pkgdir}/usr/share/applications/vscodium.desktop
-    install -D -m644 ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png \
-            ${pkgdir}/usr/share/pixmaps/vscodium.png
+    
+    install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -D -m644 ${pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop
+    install -D -m644 ${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+
+    # Symlink shell completions
+    install -d -m755 ${pkgdir}/usr/share/zsh/site-functions
+    install -d -m755 ${pkgdir}/usr/share/bash-completion/completions
+    ln -s /usr/share/${pkgname}/resources/completions/zsh/_codium ${pkgdir}/usr/share/zsh/site-functions
+    ln -s /usr/share/${pkgname}/resources/completions/bash/codium ${pkgdir}/usr/share/bash-completion/completions
 }
