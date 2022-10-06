@@ -5,14 +5,14 @@ pkgname=scratch3-bin
 _pkgname=scratch3
 conflicts=("scratch3")
 pkgver=3.29.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
 url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
 depends=("c-ares" "ffmpeg" "flac" "gtk3" "libevent" "libxslt" "minizip" "nss" "re2" "snappy")
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-makedepends=('electron13' 'p7zip' 'asar')
+makedepends=('electron13-bin' 'p7zip' 'asar')
 source=("https://downloads.scratch.mit.edu/desktop/Scratch%20$pkgver%20Setup.exe"
         "https://raw.githubusercontent.com/LLK/scratch-desktop/develop/LICENSE"
         "${_pkgname}.desktop"
@@ -38,8 +38,11 @@ prepare() {
   mv $pkgname/electron $pkgname/$_pkgname
 
 # All license files in one place
-  mv $pkgname/LICENSE LICENSE-electron
-  mv $pkgname/LICENSES.chromium.html LICENSES.chromium.html
+  #mv $pkgname/LICENSE LICENSE-electron
+  #mv $pkgname/LICENSES.chromium.html LICENSES.chromium.html
+# Temporary fix for using electron13-bin
+  cp /usr/share/licenses/electron13-bin/LICENSE LICENSE-electron
+  cp /usr/share/licenses/electron13-bin/LICENSES.chromium.html LICENSES.chromium.html
 
 # This file is useless
   rm $pkgname/resources/default_app.asar
