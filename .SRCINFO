@@ -1,15 +1,13 @@
 pkgbase = hode-git
 	pkgdesc = Heart of Darkness engine rewrite
-	pkgver = 26bcf11
-	pkgrel = 2
+	pkgver = r20.26bcf11
+	pkgrel = 3
 	url = http://cyxdown.free.fr/hode/
 	install = hode.install
 	arch = x86_64
 	arch = aarch64
 	license = none
-	makedepends = make
 	makedepends = sdl2
-	makedepends = gcc
 	optdepends = heart-of-darkness: provides game data for hode engine
 	source = git+https://github.com/cyxx/hode.git
 	source = hode.ini
