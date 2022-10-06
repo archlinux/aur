@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='snazy-bin'
-pkgver=0.10.1
+pkgver=0.50.0
 pkgrel=1
 pkgdesc='snazy - a snazzy json log viewer'
 url='https://github.com/chmouel/snazy'
@@ -11,8 +11,8 @@ license=('Apache 2.0')
 provides=('snazy')
 conflicts=('snazy')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.10.1/snazy_0.10.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('3502d0f24ca79124a18499d2818c7ccb2ba98b2e0d6175d99d414798bb7369b7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.50.0/snazy_0.50.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('dc3fc9d2271cf2b44ff50a86cf6827de5f8dc6c0cf25c4c7219cb0e56c963760')
 
 package() {
   # bin
@@ -26,8 +26,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
 
-  install -Dm644 "completions/snazy.bash" "${pkgdir}/usr/share/bash-completion/completions/snazy"
-  install -Dm644 "completions/snazy.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/snazy.fish"
-  install -Dm644 "completions/_snazy" "${pkgdir}/usr/share/zsh/site-functions/_snazy"
+  ${pkgdir}/usr/bin/snazy --shell-completion=bash > "${pkgdir}/usr/share/bash-completion/completions/snazy"
+  ${pkgdir}/usr/bin/snazy --shell-completion=zsh > "${pkgdir}/usr/share/zsh/site-functions/_snazy"
+  ${pkgdir}/usr/bin/snazy --shell-completion=fish > "${pkgdir}/usr/share/fish/vendor_completions.d/snazy.fish"
 
 }
