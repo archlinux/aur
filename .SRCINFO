@@ -1,6 +1,6 @@
 pkgbase = base-devel-meta
 	pkgdesc = Metapackage for all the base-devel group.
-	pkgver = 2022.07.27
+	pkgver = 2022.10.06
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = base-devel-meta
 	depends = automake
 	depends = binutils
 	depends = bison
+	depends = debugedit
 	depends = fakeroot
 	depends = file
 	depends = findutils

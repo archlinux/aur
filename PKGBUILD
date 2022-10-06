@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=base-devel-meta
-pkgver=2022.07.27
+pkgver=2022.10.06
 pkgrel=1
 pkgdesc='Metapackage for all the base-devel group.'
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'automake'
   'binutils'
   'bison'
+  'debugedit'
   'fakeroot'
   'file'
   'findutils'
