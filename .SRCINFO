@@ -1,0 +1,13 @@
+pkgbase = axju-mynux
+	pkgdesc = A collection of wallpapers for axju-os.
+	pkgver = r27.6d45306
+	pkgrel = 1
+	url = https://github.com/axju/dotfiles.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = axju-mynux
+	source = git+https://github.com/axju/dotfiles.git
+	md5sums = SKIP
+
+pkgname = axju-mynux
