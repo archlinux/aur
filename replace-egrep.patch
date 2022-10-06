@@ -1,0 +1,49 @@
+From 1a7bec7500ce2af4648a70b9f301810d4afca9d3 Mon Sep 17 00:00:00 2001
+From: Alexander Huynh <git-46f1a0bd5592a2f9244ca321b129902a06b53e03@e.sc>
+Date: Mon, 12 Sep 2022 06:54:22 +0000
+Subject: [PATCH] replace deprecated `egrep` with `grep -E`
+
+On newer verions of GNU grep, this warning pops up:
+
+    egrep: warning: egrep is obsolescent; using grep -E
+
+Suppress the warning by doing what it asks. See the following for more
+detail: https://www.phoronix.com/news/GNU-Grep-3.8-Stop-egrep-fgrep
+---
+ virtualenvwrapper.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/virtualenvwrapper.sh b/virtualenvwrapper.sh
+index e83f666..4127a08 100644
+--- a/virtualenvwrapper.sh
++++ b/virtualenvwrapper.sh
+@@ -177,7 +177,7 @@ function virtualenvwrapper_derive_workon_home {
+     # path might contain stuff to expand.
+     # (it might be possible to do this in shell, but I don't know a
+     # cross-shell-safe way of doing it -wolever)
+-    if echo "$workon_home_dir" | (unset GREP_OPTIONS; command \egrep '([\$~]|//)' >/dev/null)
++    if echo "$workon_home_dir" | (unset GREP_OPTIONS; command \grep -E '([\$~]|//)' >/dev/null)
+     then
+         # This will normalize the path by:
+         # - Removing extra slashes (e.g., when TMPDIR ends in a slash)
+@@ -599,7 +599,7 @@ function virtualenvwrapper_show_workon_options {
+         | command \sed "s|/$VIRTUALENVWRAPPER_ENV_BIN_DIR/activate |/|g" \
+         | command \tr "/" "\n" \
+         | command \sed "/^\s*$/d" \
+-        | (unset GREP_OPTIONS; command \egrep -v '^\*$') 2>/dev/null
++        | (unset GREP_OPTIONS; command \grep -E -v '^\*$') 2>/dev/null
+ }
+ 
+ function _lsvirtualenv_usage {
+@@ -1306,7 +1306,7 @@ function wipeenv {
+     virtualenvwrapper_verify_active_environment || return 1
+ 
+     typeset req_file="$(virtualenvwrapper_tempfile "requirements.txt")"
+-    pip freeze | egrep -v '(distribute|wsgiref|appdirs|packaging|pyparsing|six)' > "$req_file"
++    pip freeze | grep -E -v '(distribute|wsgiref|appdirs|packaging|pyparsing|six)' > "$req_file"
+     if [ -n "$(cat "$req_file")" ]
+     then
+         echo "Uninstalling packages:"
+-- 
+2.37.2
+
