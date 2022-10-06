@@ -1,6 +1,6 @@
 pkgbase = tnt-gui
 	pkgdesc = Tree analysis using New Technology. https://doi.org/10.1111/cla.12160
-	pkgver = 2022.09.15
+	pkgver = 2022.10.05
 	pkgrel = 1
 	url = http://www.lillo.org.ar/phylogeny/tnt/
 	arch = x86_64
