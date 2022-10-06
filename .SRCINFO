@@ -1,0 +1,12 @@
+pkgbase = amass-bin
+	pkgdesc = In-depth Attack Surface Mapping and Asset Discovery
+	pkgver = 3.20.0
+	pkgrel = 1
+	url = https://github.com/OWASP/Amass
+	arch = x86_64
+	license = Apache
+	conflicts = amass
+	source = https://github.com/OWASP/Amass/releases/download/v3.20.0/amass_linux_amd64.zip
+	sha512sums = fffd310a5077be4d02ebfa3092a139b31b8b665cd0359af90f3ed9ff242ac3567eab7c82e965201974c8a6ba8b4c82e43a34e66f7c5e68d11d11d174573b1e97
+
+pkgname = amass-bin
