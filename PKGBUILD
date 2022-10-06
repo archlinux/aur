@@ -6,7 +6,7 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix-git
-pkgver=r1606.d258cbd
+pkgver=r1619.77450a3
 pkgrel=1
 pkgdesc='A user-friendly, customizable image viewer specifically designed to handle comic books'
 arch=('any')
@@ -14,7 +14,7 @@ url='https://sourceforge.net/projects/mcomix/'
 license=('GPL')
 depends=('gtk3' 'python-pillow>=6.0.0' 'xdg-utils' 'python>=3.7'
          'desktop-file-utils' 'hicolor-icon-theme'
-         'python-gobject>=3.36.0' 'python-cairo>=1.16.0')
+         'python-gobject>=3.36.0' 'python-cairo>=1.16.0' 'python-setuptools')
 makedepends=('gettext' 'intltool')
 optdepends=(
             'libunrar: for rar compressed comics'
