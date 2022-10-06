@@ -2,7 +2,7 @@
 
 pkgname=git-credential-keepassxc
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="git-credential-keepassxc is a Git credential helper that allows Git (and shell scripts) to get/store logins from/to KeePassXC"
 url="https://github.com/Frederick888/git-credential-keepassxc"
 makedepends=('cargo')
@@ -13,7 +13,7 @@ sha256sums=('8d1f010b756bf7f750b80d780d16fa56b6efda9c3516df9a848443855b356a02')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --locked --target-dir target
 }
 
 package() {
