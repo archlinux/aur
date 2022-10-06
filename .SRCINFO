@@ -1,0 +1,12 @@
+pkgbase = vscode-php-debug
+	pkgdesc = PHP Debug Adapter (DAP)
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://github.com/xdebug/vscode-php-debug
+	arch = any
+	license = MIT
+	depends = nodejs
+	source = extension.zip::https://github.com/xdebug/vscode-php-debug/releases/download/v1.28.0/php-debug-1.28.0.vsix
+	b2sums = 96710618ce939c7be45c7f5d1066f91638badffb8cd8dd86d08430f0fbe84f8eafac20ae6c0c0ee4242dc3e78db9e146d9566a9301f8ce0ba7cba20a879ce760
+
+pkgname = vscode-php-debug
