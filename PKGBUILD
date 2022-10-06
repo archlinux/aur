@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=extension-manager-git
-pkgver=r553.d1c18bf
+pkgver=r571.87bd7d0
 pkgrel=1
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mjakeman/extension-manager"
 license=('GPL3')
-depends=('libadwaita' 'libsoup3' 'json-glib' 'text-engine' 'libbacktrace')
+depends=('libadwaita' 'libsoup3' 'json-glib' 'text-engine' 'libbacktrace-git')
 makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
