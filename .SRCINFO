@@ -1,4 +1,4 @@
-pkgbase = postman-bin
+pkgbase = postman9-bin
 	pkgdesc = Build, test, and document your APIs faster
 	pkgver = 9.31.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = postman-bin
 	sha256sums = 6427cf13e6ef3c442312f50efc543588d47d4c6e86b48e2f9a3eb227b07ada2c
 	sha256sums = 74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245
 
-pkgname = postman-bin
+pkgname = postman9-bin
