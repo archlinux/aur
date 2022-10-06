@@ -82,6 +82,7 @@ build() {
     fi
     # Enable native compilation
     sed -i -re "s/CONFIG_MSKYLAKE=y/# CONFIG_MSKYLAKE is not set/g" .config
+    sed -i -re 's/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION="-nitrous-mperformance"/g' .config
     echo "CONFIG_MNATIVE_${cpu_type}=y" >> .config
   fi
 
