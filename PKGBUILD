@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
-pkgver=3.5.3
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
 provides=()
 conflicts=()
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('19281c7a65158a018af2763f3d80ae1f019b298c93e854014ec8b1d2cbb9c7b7')
+sha256sums=('958569ab13fc9127aa32597050f7bd46003aeff7c703ea324bc3a855c72bcc9b')
 
 package() {
   # Note: sometimes its "matrix-commander" and sometimes "matrix_commander"...
