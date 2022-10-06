@@ -4,23 +4,15 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname="haveno"
-pkgver="0.0.2"
+pkgver="0.0.3"
 pkgrel="1"
 pkgdesc="Decentralized P2P exchange built on Monero and Tor."
 arch=("any")
 url="https://github.com/haveno-dex/${pkgname}"
 license=("AGPL3")
 depends=("jdk11-openjdk")
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "merge-459.diff::https://patch-diff.githubusercontent.com/raw/haveno-dex/${pkgname}/pull/459.diff")
-sha512sums=("06f46e111104df99cfa16c5b9a828eb8968fb63f2a03f4d67d59b4b884dc8d682bf9cefb82501b098a53bc5bd1c8ab0f6067490f3eda1d89622c0fd3b68dc567"
-    "e84ad992664e1db647cd20060201a3cffb344ac822e67b76182dd9789c437e0b73dd020d3bc616062676e328015c535f1b2b6fc802ee1b803e9577817f9e4266")
-
-prepare()
-{
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    patch -i "${srcdir}"/merge-459.diff -N -p 1
-}
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=("c5ab75991b3692166e75a86ff78816ead88b52d26424c0100fc4dc1f9ff4965356a8ee40cc6af25c8f618932b5df4413a2f4b962fbfa93d994680fd3a46e7385")
 
 build()
 {
