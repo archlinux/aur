@@ -1,6 +1,6 @@
 pkgbase = blender-rocm
 	pkgdesc = A fully integrated 3D graphics creation suite (with ROCm)
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.blender.org
@@ -53,7 +53,7 @@ pkgbase = blender-rocm
 	provides = blender
 	conflicts = blender
 	options = !strip
-	source = git+https://git.blender.org/blender.git#tag=v3.3.0
+	source = git+https://git.blender.org/blender.git#tag=v3.3.1
 	source = git+https://git.blender.org/blender-addons.git
 	source = git+https://git.blender.org/blender-addons-contrib.git
 	source = git+https://git.blender.org/blender-translations.git

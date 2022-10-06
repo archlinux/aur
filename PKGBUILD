@@ -4,7 +4,7 @@
 # Contributor: tobias <tobias@archlinux.org>
 
 pkgname=blender-rocm
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 epoch=1
 pkgdesc="A fully integrated 3D graphics creation suite (with ROCm)"
