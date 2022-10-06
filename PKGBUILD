@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=rlr-git
-pkgver=r29.26ca7b5
+pkgver=r30.bff17e8
 pkgrel=1
 pkgdesc="interactive pixel screen ruler and protractor"
 arch=('any')
@@ -36,8 +36,10 @@ package() {
 	install -Dm0755 "${srcdir}/${pkgname%-git}/target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin/"
 	# desktop file
 	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-	# png icon
-	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
-	# svg icon
-	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.png"
+
+	# icon
+	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
+	# symbolic icon
+	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${pkgname%-git}.svg"
+
 }
