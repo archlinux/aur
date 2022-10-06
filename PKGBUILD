@@ -3,7 +3,7 @@
 _reponame=Mamba
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=2.2.r3.g1041f0a
+pkgver=2.3.r5.g8b4552f
 pkgrel=1
 pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK (git version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 
   (
     set -o pipefail
-    git describe --long --tags 2>/dev/null | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags --match 'v*.*' 2>/dev/null | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
