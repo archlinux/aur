@@ -1,6 +1,6 @@
 # Mainainer: Animo Solutions contact@animo.id
 pkgname="siera"
-pkgver="0.0.0"
+pkgver=0.1.0
 pkgrel="1"
 pkgdesc="A CLI tool for Hyperledger Aries written in Rust"
 arch=(x86_64)

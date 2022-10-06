@@ -1,6 +1,6 @@
 pkgbase = siera
         pkgdesc = A CLI tool for Aries written in Rust
-        pkgver = 0.0.0
+        pkgver = 0.1.0
         pkgrel = 1
         arch = x86_64
         license = MIT
