@@ -2,7 +2,7 @@
 
 pkgname=vim-vimtex
 _pkgname=vimtex
-pkgver=2.10
+pkgver=2.11
 pkgrel=1
 pkgdesc='A modern Vim and neovim filetype plugin for LaTeX files'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('vim')
 makedepends=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e7b522686767e74c4c2bdd464e294eb74312f592804f8cb94fbf670d9df8f973')
+sha256sums=('3a7968b42f46e06ed7d18baacad198f096437428d89ebb475d026956a68342e8')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
