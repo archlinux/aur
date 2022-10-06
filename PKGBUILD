@@ -1,6 +1,7 @@
+# Maintainer: Mike Hajostek <mhajostek@hockeymikey.com>
 # Maintainer: Jay Ta'ala <jay@jaytaala.com>
 # Contributor: Claudio d'Angelis <claudiodangelis at gmail dot com>
-pkgname=postman-bin
+pkgname=postman9-bin
 pkgver=9.31.0
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
