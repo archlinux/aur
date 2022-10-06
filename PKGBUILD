@@ -3,12 +3,12 @@
 pkgname=ponscripter-sekaiproject
 _pkgname=ponscripter
 pkgver=v3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Sekai Project Fork (07th-Mod) of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/07th-mod/ponscripter-fork"
 license=('GPL')
-depends=('sdl2_mixer' 'sdl_image' 'freetype2' 'gcc-libs' 'smpeg')
+depends=('sdl2_mixer' 'sdl_image' 'freetype2' 'gcc-libs' 'smpeg2')
 makedepends=('libmodplug')
 source=("${_pkgname}::git+https://github.com/07th-mod/ponscripter-fork.git#tag=${pkgver}")
 md5sums=('SKIP')
