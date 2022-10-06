@@ -1,23 +1,21 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kinship2
-_pkgver=1.8.5
+_pkgver=1.9.6
 pkgname=r-${_pkgname,,}
-pkgver=1.8.5
-pkgrel=4
+pkgver=1.9.6
+pkgrel=1
 pkgdesc='Pedigree Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-knitr
   r-quadprog
 )
-optdepends=(
-  r-knitr
-)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('72c226b6ccad9efcc70c86050a980fef2e8bb8040bbfe02cb105075a005a16d6')
+sha256sums=('0150bd5974c2a19885f6ff2e99f3c1f6361054a0910dcfc9dd26a8e0cd73bbf6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
