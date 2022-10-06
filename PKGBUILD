@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=pypyr
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc='Task runner for automation pipelines'
 arch=('any')
@@ -14,9 +14,15 @@ depends=(
   'python-tomli'
   'python-tomli-w'
 )
-makedepends=('git' 'python-setuptools')
+makedepends=(
+  'git'
+  'python-flit-core'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
 checkdepends=('python-pytest' 'python-pyfakefs')
-_commit='05c501132c25a6c4c3e6fe0798e93118b136efbd'
+_commit='7696e5ae5c4ccb81a5e7589cca4622d396d43e27'
 source=("$pkgname::git+https://github.com/pypyr/pypyr.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -29,21 +35,17 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$pkgname"
 
-  pytest --deselect tests/unit/pypyr/steps/fileformattoml_test.py::test_fileformattoml_with_encoding
+  pytest -v
 }
 
 package() {
   cd "$pkgname"
 
-  python setup.py install --root="$pkgdir" --optimize=1
-
-  # delete tests folder
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir/$site_packages/tests"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
