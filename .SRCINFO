@@ -1,7 +1,7 @@
 pkgbase = speki
 	pkgdesc = Flashcard app for your terminal
 	pkgver = 0.1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/TBS1996/speki
 	arch = x86_64
 	license = GPL-2.0-only
