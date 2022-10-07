@@ -6,7 +6,7 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.1.107
+pkgver=2.1.109
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
