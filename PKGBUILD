@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard-dkms
 pkgver=3.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
 license=("GPL3")
@@ -18,9 +18,9 @@ conflicts=('tuxedo-cc-wmi' 'tuxedo-keyboard')
 replaces=('tuxedo-cc-wmi' 'tuxedo-keyboard')
 backup=(etc/modprobe.d/tuxedo_keyboard.conf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v${pkgver}.tar.gz tuxedo_io.conf)
-sha256sums=('dbf95d83398db3d145f46579a6b97169dfc316c339c959cc17d214c8449f4a2e'
+sha256sums=('ac531c71b6baef3156d09c7d11680d120c9cbff6149866703db3d5c9829b0665'
             'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c')
-sha512sums=('a3c5b74fc5587763f131a66f507c0b33d462ed87c8e05391152c09d1425b5e1771bfb08cc2d1e3bb73b02074f503d866ea463fd44fb06d00b38c6ac4cfcd4e3b'
+sha512sums=('adaa353687158060ca0eb83540d423f435742285982ee1023c842d0e78c6df04b2e3fd73c21ce1a6eaf328acf33969e2c7ede4c99531595bc81b67c061ca3114'
             '3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81')
 
 package() {
