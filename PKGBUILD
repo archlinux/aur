@@ -3,7 +3,7 @@
 
 pkgname=ns3
 pkgver=3.36.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('any')
 url='http://www.nsnam.org/'
@@ -81,8 +81,9 @@ build() {
     # ns3
     cd "$srcdir/ns-allinone-$pkgver/ns-$pkgver"
     ./ns3 configure \
-        --build-profile=release \
+        --build-profile=default \
         --prefix=/usr \
+        --enable-logs \
         --enable-dpdk \
         --enable-examples \
         --enable-gsl \
@@ -90,7 +91,6 @@ build() {
         --enable-mpi \
         --enable-python-bindings \
         --enable-tests \
-        --enable-sudo \
         --with-brite="$srcdir/brite-hg" \
         --with-click="$srcdir/click-git/install" \
         --with-openflow="$srcdir/openflow-hg"
