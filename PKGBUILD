@@ -3,7 +3,7 @@
 
 pkgname=ns3
 pkgver=3.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('any')
 url='http://www.nsnam.org/'
@@ -24,9 +24,9 @@ depends=('python' 'dpdk'
 makedepends=('cmake' 'python-setuptools' 'python-pip' 'python-wheel' 'git'
              'mercurial'
              # documentation
-             'doxygen' 'graphviz' 'imagemagick' 'python-sphinx' 'dia'
-             'texlive-bin')
-optdepends=('uncrustify: utils/check-style.py style check program')
+             'doxygen' 'graphviz' 'imagemagick' 'python-sphinx' 'texlive-bin')
+optdepends=('uncrustify: utils/check-style.py style check program'
+            'dia: documentation diagrams')
 provides=('ns3' 'clickrouter')
 conflicts=('ns3-hg')
 source=("https://www.nsnam.org/releases/ns-allinone-$pkgver.tar.bz2"
@@ -126,6 +126,12 @@ package() {
     cd "$srcdir/click-git"
     cp -rf ./install/* "$pkgdir/usr"
 
+    # openflow
+    cd "$srcdir/openflow-hg"
+    ./waf install --destdir="$pkgdir"
+    # conflicts with openvswitch
+    rm -rf "$pkgdir/usr/include/openflow"
+
     # pybindgen
     cd "$srcdir/pybindgen-git"
     ./waf install --destdir="$pkgdir"
@@ -137,6 +143,17 @@ package() {
     # ns3
     cd "$srcdir/ns-allinone-$pkgver/ns-$pkgver"
     DESTDIR="$pkgdir" ./ns3 install
+
+    FILES=($(grep -r "$srcdir" "$pkgdir" 2>&1 | grep -v 'binary file matches' | cut -d: -f1 | sort -u))
+    sed -i \
+        -e "s,$srcdir/brite-hg,/usr/lib,g" \
+        -e "s,$srcdir/click-git/install,/usr,g" \
+        -e "s,$srcdir/click-git,,g" \
+        -e "s,$srcdir/openflow-hg/build,/usr/lib,g" \
+        -e "s,$srcdir/openflow-hg,/usr,g" \
+        -e "s,;$srcdir,,g" \
+        -e "s,-I$srcdir,,g" \
+        "${FILES[@]}"
 }
 
 # vim: set ts=4 sw=4 et :
