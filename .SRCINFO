@@ -1,0 +1,25 @@
+pkgbase = spek-x-git
+	pkgdesc = Acoustic spectrum analyser forked from spek.
+	pkgver = v0.9.0.r2.g5ed0a19
+	pkgrel = 1
+	url = https://github.com/MikeWang000000/spek-X
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = automake
+	makedepends = intltool
+	makedepends = gettext
+	depends = ffmpeg
+	depends = wxgtk3
+	provides = spek
+	conflicts = spek
+	source = spek-x-git::git+https://github.com/MikeWang000000/spek-X
+	md5sums = SKIP
+
+pkgname = spek-x-git
