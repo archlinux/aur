@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-gencpp
 	pkgdesc = ROS - C++ ROS message and service generators.
-	pkgver = 0.6.5
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://wiki.ros.org/gencpp
 	arch = i686
@@ -14,8 +14,7 @@ pkgbase = ros-noetic-gencpp
 	makedepends = ros-noetic-genmsg
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-genmsg
-	source = ros-noetic-gencpp-0.6.5.tar.gz::https://github.com/ros/gencpp/archive/0.6.5.tar.gz
-	sha256sums = 05acfeeb1bbc374356bf7674fee2a7aab3bf6a48ebad4a06fd0f0d4455a60720
+	source = ros-noetic-gencpp-0.7.0.tar.gz::https://github.com/ros/gencpp/archive/0.7.0.tar.gz
+	sha256sums = 3806b243153cde5c03695d5e2a5899a584b978a20b2c1b45e462219098bbb7b6
 
 pkgname = ros-noetic-gencpp
-
