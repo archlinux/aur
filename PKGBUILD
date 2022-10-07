@@ -1,15 +1,17 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-galois-git
 _name=galois
-pkgver=r1079.0eacac36
+pkgver=0.1.1.r19.ge3af9944
 pkgrel=1
+epoch=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=('any')
 url="https://github.com/mhostetter/galois"
 license=('MIT')
 depends=(
     'python-numpy'
-    'python-numba>=0.55.2'
+    'python-numba>=0.56.2'
+    'python-numba<0.57.0'
     'python-typing_extensions'
 )
 makedepends=(
@@ -28,7 +30,7 @@ b2sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_name}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

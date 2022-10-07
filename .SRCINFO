@@ -1,7 +1,8 @@
 pkgbase = python-galois-git
 	pkgdesc = A performant NumPy extension for Galois fields and their applications
-	pkgver = r1079.0eacac36
+	pkgver = 0.1.1.r19.ge3af9944
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/mhostetter/galois
 	arch = any
 	license = MIT
@@ -13,7 +14,8 @@ pkgbase = python-galois-git
 	makedepends = python-setuptools-scm-git-archive
 	makedepends = python-wheel
 	depends = python-numpy
-	depends = python-numba>=0.55.2
+	depends = python-numba>=0.56.2
+	depends = python-numba<0.57.0
 	depends = python-typing_extensions
 	provides = python-galois
 	conflicts = python-galois
