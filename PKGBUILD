@@ -1,17 +1,17 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=prometheus-pgbouncer-exporter
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="Prometheus exporter for PgBouncer metrics"
+pkgdesc='Prometheus exporter for PgBouncer metrics'
 arch=('x86_64')
-url="https://github.com/prometheus-community/pgbouncer_exporter"
+url='https://github.com/prometheus-community/pgbouncer_exporter'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('pgbouncer: for monitoring a local pgbouncer instance')
 options=('!lto')
-_commit='6f7e6de674d3b7d412a5960b7d2e849e40c1d76b'
+_commit='b9e5fbf8a4d0ac7facdacd77b0ad19e4daab2fc4'
 source=("$pkgname::git+$url.git#commit=$_commit"
         'systemd.service'
         'sysusers.conf')
@@ -46,8 +46,8 @@ build() {
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X github.com/prometheus/common/version.Version=$pkgver \
     -X github.com/prometheus/common/version.Revision=$pkgver \
-    -X github.com/prometheus/common/version.Branch=tarball \
-    -X github.com/prometheus/common/version.BuildUser=someone@builder \
+    -X github.com/prometheus/common/version.Branch=main \
+    -X github.com/prometheus/common/version.BuildUser=makepkg \
     -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
     -o "build/$pkgname" \
     .
