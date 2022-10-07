@@ -2,9 +2,9 @@ pkgdesc="ROS - MAVLink message marshaling library."
 url='https://wiki.ros.org/mavlink'
 
 pkgname='ros-noetic-mavlink'
-pkgver=2022.8.8
+pkgver='2022.8.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('LGPLv3')
 
 ros_makedepends=()

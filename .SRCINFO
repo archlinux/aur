@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
 	pkgver = 2022.8.8
-	pkgrel = 2
+	pkgrel = 1
 	url = https://wiki.ros.org/mavlink
 	arch = i686
 	arch = x86_64
