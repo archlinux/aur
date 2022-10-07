@@ -2,7 +2,7 @@
 pkgname='python-parquet-tools'
 _name='parquet_tools'
 pkgver='0.2.11'
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy install parquet-tools"
 url="https://github.com/ktrueda/parquet-tools"
 depends=(
@@ -10,7 +10,7 @@ depends=(
     'python-halo>=0.0.29' 'python-halo<0.1.0'
     'python-pyarrow'
     'python-pandas>=1' 'python-pandas<=2'
-    'python-tabulate>=0.8.7' 'python-tabulate<0.9.0'
+    'python-tabulate>=0.8.7' 'python-tabulate<1.0.0'
     'python-boto3>=1.13' 'python-boto3<2.0'
     'python-thrift>=0.13.0' 'python-thrift<1'
     'python-boto3>=1.13' 'python-boto3<=2'
