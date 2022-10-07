@@ -2,12 +2,12 @@
 
 pkgname=paper-note
 pkgver=22.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/posidon_software/paper"
 license=('GPL3')
-depends=('libadwaita' 'gtksourceview5' 'libgee')
+depends=('libadwaita' 'gtksourceview5' 'libgee' 'python-gobject')
 makedepends=('meson' 'gobject-introspection' 'blueprint-compiler' 'vala')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/${pkgname%-note}-$pkgver.tar.gz
