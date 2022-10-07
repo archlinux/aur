@@ -8,7 +8,6 @@ main() {
 	local -i status_code=0
 
 	[[ -e "${PKGBUILD}" ]] \
-		&& { source "${PKGBUILD}"; } \
 		|| { echo "Missing PKGBUILD?!"; exit 1; }
 
 	yes | sudo pacman -S devtools
@@ -16,6 +15,8 @@ main() {
 
 	(( status_code > 0 )) \
 		&& { echo "Build failed with status code: ${status_code}!"; exit 2; }
+
+	source "${PKGBUILD}"
 
 	local -r arch="$(uname -m)"
 	local -r pkgpath="${BASE_DIR}/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"

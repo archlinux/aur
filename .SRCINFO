@@ -36,7 +36,7 @@ pkgbase = code-translucent
 	source = build-with-chroot.sh
 	source = translucent.patch
 	sha512sums = SKIP
-	sha512sums = fb21e8bea65a01cb361b0a2f8a530fd28202cd6e85a35e0597859a63cf439a0b78ade43d24c5f743c61bed2e5d2f412c29ee45a8ef56e334245a35c07013e4a4
+	sha512sums = 59f8d08395e384966fb1825bf0b043ec99334e0562d651b3a06f07647e91989bff6800dd857095a5279a5f457acde5be67ff70b878ae9418d5b821dc81b999af
 	sha512sums = 6215a01213af475983efc9cdd7d1f2e3500358f2e361b583dbc163028fd65812cf72ab30fd9988dd9251cef71452b56af4f89a40a61a415eb564de44bc27a26d
 
 pkgname = code-translucent
