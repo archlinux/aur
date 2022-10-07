@@ -1,19 +1,18 @@
 pkgbase = drm_info
 	pkgdesc = Small utility to dump info about DRM devices
-	pkgver = 2.3.0
-	pkgrel = 3
-	url = https://github.com/ascent12/drm_info
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/emersion/drm_info
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = meson
-	makedepends = git
+	makedepends = scdoc
 	depends = libdrm
 	depends = json-c
 	depends = pciutils
 	conflicts = drm_info-git
-	source = drm_info-2.3.0.tar.gz::https://github.com/ascent12/drm_info/archive/refs/tags/v2.3.0.tar.gz
-	sha512sums = 111b558f36f7fdcc17bd77be0f4965cc4b69ab63149ea326b16566156e3d619f47033bee8164d9d28dc540c0a453ef774249ec3d37587f42ebe6c97fcc7925d2
-	b2sums = c06ad2ce028ad1bfb85b4db9a309f33ebc1cfcf476f184408a1fc7305bca5742fe4256e5d9a573c9731f459c48d53d43f78a3db6a99e76b986b72fdc1c557d51
+	source = https://gitlab.freedesktop.org/emersion/drm_info/-/archive/v2.4.0/drm_info-v2.4.0.tar.bz2
+	b2sums = 8a7d367eca019e3f0ce85e953460dff4c082f7e3cd4d5a33f0e0b0e85ad1ee1ce468b3ad2b2dd27b3b426ab1b93b08c984747392470a50b853bb61079be60536
 
 pkgname = drm_info

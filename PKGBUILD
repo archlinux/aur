@@ -1,21 +1,20 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=drm_info
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 license=(MIT)
 pkgdesc='Small utility to dump info about DRM devices'
-makedepends=(meson git)
+makedepends=(meson scdoc)
 depends=(libdrm json-c pciutils)
 arch=(x86_64 aarch64)
-url=https://github.com/ascent12/drm_info
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+url=https://gitlab.freedesktop.org/emersion/drm_info
 conflicts=(drm_info-git)
-sha512sums=('111b558f36f7fdcc17bd77be0f4965cc4b69ab63149ea326b16566156e3d619f47033bee8164d9d28dc540c0a453ef774249ec3d37587f42ebe6c97fcc7925d2')
-b2sums=('c06ad2ce028ad1bfb85b4db9a309f33ebc1cfcf476f184408a1fc7305bca5742fe4256e5d9a573c9731f459c48d53d43f78a3db6a99e76b986b72fdc1c557d51')
+source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+b2sums=('8a7d367eca019e3f0ce85e953460dff4c082f7e3cd4d5a33f0e0b0e85ad1ee1ce468b3ad2b2dd27b3b426ab1b93b08c984747392470a50b853bb61079be60536')
 
 build() {
 	rm -rf build
-	arch-meson build "${pkgname}-${pkgver}"
+	arch-meson build "${pkgname}-v${pkgver}" -Dlibpci=enabled -Dman-pages=enabled
 	meson compile -C build
 }
 
@@ -25,4 +24,6 @@ check () {
 
 package() {
 	meson install -C build --destdir="${pkgdir}"
+	install -Dm644 "${pkgname}-v${pkgver}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
