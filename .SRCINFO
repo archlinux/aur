@@ -1,0 +1,19 @@
+pkgbase = cranko-git
+	pkgdesc = Cross-platform, cross-language release automation tool
+	pkgver = r374.1bf27e5
+	pkgrel = 1
+	url = https://github.com/pkgw/cranko
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libgit2.so
+	depends = openssl
+	provides = cranko
+	conflicts = cranko
+	options = !lto
+	source = cranko::git+https://github.com/pkgw/cranko
+	sha256sums = SKIP
+
+pkgname = cranko-git
