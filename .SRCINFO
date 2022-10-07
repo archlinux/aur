@@ -1,7 +1,7 @@
 pkgbase = rlr-git
 	pkgdesc = interactive pixel screen ruler and protractor
 	pkgver = r30.bff17e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/epilys/rlr
 	arch = any
 	license = GPL

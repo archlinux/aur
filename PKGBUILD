@@ -2,7 +2,7 @@
 
 pkgname=rlr-git
 pkgver=r30.bff17e8
-pkgrel=1
+pkgrel=2
 pkgdesc="interactive pixel screen ruler and protractor"
 arch=('any')
 url="https://github.com/epilys/rlr"
@@ -40,6 +40,6 @@ package() {
 	# icon
 	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
 	# symbolic icon
-	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${pkgname%-git}.svg"
+	install -Dm644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.symbolic.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${pkgname%-git}-symbolic.svg"
 
 }
