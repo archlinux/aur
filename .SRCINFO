@@ -1,13 +1,13 @@
 pkgbase = harec
 	pkgdesc = The Hare programming language - bootstrapped compiler
-	pkgver = r1364.011593a
+	pkgver = r1372.d5ded03
 	pkgrel = 1
 	url = https://harelang.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qbe
-	source = git+https://git.sr.ht/~sircmpwn/harec#commit=011593a2cea0915d9244981b137f3516b3b4c78a
+	source = git+https://git.sr.ht/~sircmpwn/harec#commit=d5ded03c6fabc9cd07aa56f2cae00f120da47479
 	b2sums = SKIP
 
 pkgname = harec
