@@ -15,9 +15,9 @@ checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         '0001-fix-expired-url-in-test-file.patch')
 sha256sums=('e639a3d08d389e22fbac0cc64181dbe93c4b4ba9f0134e273e6dd3e26ae70b21'
-            '2136a388bea5d373c87d3dca9f5a43bc0f8aa837be8aebde75629d7cf04a224e')
+            '9fc9ff3b4bc374ef447d0857644afee7f361d15b2bdd5a9e2e559f480bb17bd7')
 b2sums=('6ec5383ff411e944ea90ae1a47061fdbd3f8bb5cfe9342936a3bebe8fc1e1791f7a5b7dfdb6d2d25bcee3ab1bf28d8bbf9101bb5d317afb5705e909964c49f68'
-        '1d8945e24e4708764a0765e202f057384c64915a9791ac7699ef6a48881a6d274baedaaee014a438cd9f38dfef55bbe5d6d62326582d9bf69068615e0711026a')
+        '2fa240416bb0e040b6b9c7083208e1e05aed27f58da590057c1e7b1736b6ef9267a3f269d6ba8feda53f458e097077206059b5be33429ad4f6620d2e0e21f7d1')
 
 prepare() {
 	cd "${srcdir}"/${_pkgname}-${pkgver}
