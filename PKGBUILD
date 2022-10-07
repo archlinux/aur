@@ -3,7 +3,7 @@
 # https://bz-attachments.freebsd.org/attachment.cgi?id=155711&action=diff&format=raw&headers=1
 pkgname=eukleides
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Eukleides is a computer language devoted to elementary plane geometry."
 arch=(x86_64)
@@ -11,7 +11,7 @@ url="http://eukleides.org/"
 license=('GPL')
 groups=()
 depends=()
-makedepends=(gcc make texinfo)
+makedepends=(gcc make flex bison texinfo)
 checkdepends=()
 optdepends=()
 provides=()
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("http://eukleides.org/files/$pkgname-$pkgver.tar.bz2" "$pkgname-$pkgver.patch")
 noextract=()
-md5sums=(2c88fc857008c2ce23c7848c60621548 ab133aa2149f27e0b99a3536f26af411)
+md5sums=(2c88fc857008c2ce23c7848c60621548 bbc5626dcdeb15aaf31ecb9050f28982)
 validpgpkeys=()
 
 prepare() {

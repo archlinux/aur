@@ -15,3 +15,31 @@
  
  % ------------------------------------------------------------------------------
  
+--- src/common/triangle.c	2010-04-27 06:31:00.000000000 +0000
++++ src/common/triangle.c	2022-10-07 13:53:08.065041358 +0000
+@@ -26,9 +26,9 @@
+ 
+ #define STO(addr) (POP(_symbol))->content->value.point = (addr)
+ 
+-_point *A, *B, *C;
++static _point *A, *B, *C;
+ 
+-double a, x, y;
++static double a, x, y;
+ 
+ void assign_A_B(int p)
+ {
+--- src/common/quadrilateral.c	2010-04-27 06:31:00.000000000 +0000
++++ src/common/quadrilateral.c	2022-10-07 13:57:47.751483202 +0000
+@@ -26,9 +26,9 @@
+ 
+ #define STO(addr) (POP(_symbol))->content->value.point = (addr)
+ 
+-double l, m, x, y, u, v;
++static double l, m, x, y, u, v;
+ 
+-_point *A, *B, *C, *D;
++static _point *A, *B, *C, *D;
+ 
+ void assign(int p, int s)
+ {
