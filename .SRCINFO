@@ -1,0 +1,14 @@
+pkgbase = yubioath-desktop-beta-bin
+	pkgdesc = Crossplatform graphical user interface for YubiKey one-time passwords
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.yubico.com/blog/introducing-yubico-authenticator-6-for-desktop/
+	arch = x86_64
+	license = BSD
+	depends = pcsclite
+	depends = ccid
+	depends = gnome-screenshot
+	source = https://developers.yubico.com/yubioath-desktop/Beta/yubioath-desktop-6.0.0-beta.1-linux.tar.gz
+	sha256sums = 23b3d927f9163496661a3e83b2cf29fb4991d14cb7a5ab3bf6126710630104b4
+
+pkgname = yubioath-desktop-beta-bin
