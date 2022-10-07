@@ -2,7 +2,7 @@
 
 _gemname=nanoc-core
 pkgname=ruby-$_gemname
-pkgver=4.12.7
+pkgver=4.12.8
 pkgrel=1
 pkgdesc='Contains the core of Nanoc'
 arch=('any')
@@ -28,9 +28,9 @@ source=(
   "$pkgname-LICENSE-$_nanocver::https://raw.githubusercontent.com/nanoc/nanoc/$_nanocver/$_gemname/LICENSE"
 )
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('5f89ece2ca8204e82d983576dfb3e47c47bb680e95b1a092d75c04ce1851306d4bed5ae8723ab17ec100d98851d69253c5175113ed5cb9292562bd489d400f1c'
+sha512sums=('22bc07d4a89d5137876a58d3636dce480ac1170d7acdda9a3b144725250816573165acaea2f70c4cc45ac9b4e2c9bc19c182f235c6bb65e75b64d938d5acbb0c'
             '023b2c0d554ce15e78005cf0354a0c28cd28b8c9f5901dd665257f5b64004c1e8ded3ab5b194fc049e5264e5af4438833163f65dca37f76c1ee910cdf353e05c')
-b2sums=('78938a02289e61c6ba1ccb6ee88a5bca8a04426ca6a41026863f76f85e21fa6f5a5535e5bce4b5f54ad4000867adb766206fa3f127689bc30b2dc8d5d80af7cf'
+b2sums=('4b9b6d6c9a4e4c56c94c3f877e276e8fe199dbc3c13e9cfac04f06343d150a47f5ff38dd372b346ba3637e81ef91076a33dad7d058772b555160b8b3b1bad57e'
         '95abf2d57bccc4622654a58cb45461ebd1fd01ffd434dc5e041d3fe97abe73af1a81e63d69653c0826239fe66e0d604573d739e10033a28d2403ce6ad3d35aa4')
 
 package() {
