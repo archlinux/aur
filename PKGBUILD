@@ -3,7 +3,7 @@
 
 pkgname=zsh-plugin-wd
 _pkgname=wd
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Jump to custom directories in zsh"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=(
 source=(
     "$_pkgname::${url}/archive/refs/tags/v${pkgver}.zip"
 )
-sha256sums=("1b89eba72840c17fdc42899f2269a25a442c56baad6f13b44278f866806a475f")
+sha256sums=("52a928c0aede59b7a6cbc6a04ed0b76f1f1ebc174bebd2352ae4d89af01a14f5")
 
 install=$pkgname.install
 
