@@ -1,0 +1,11 @@
+--- a/build.sh
++++ b/build.sh
+@@ -138,8 +138,6 @@ elif [[ ${UNAME} == *"Darwin"* ]]; then
+   sh ./link-mac.sh
+ else
+   my_os=linux64
+-  cp "${base_dir}/simple64-gui/discord/libdiscord_game_sdk.so" "${install_dir}"
+-  cp "${base_dir}/simple64-input-qt/vosk/libvosk.so" "${install_dir}"
+ fi
+ 
+ if [[ "$1" != "nozip" ]]; then
