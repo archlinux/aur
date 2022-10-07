@@ -4,8 +4,8 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=v2ray-git
-pkgver=5.1.0.r7.g2e0ea8804
-pkgrel=2
+pkgver=5.1.0.r17.ga4a3f4dee
+pkgrel=1
 pkgdesc="A set of network tools that helps you to build your own computer network (git version)."
 arch=(x86_64)
 url="https://github.com/v2fly/v2ray-core"
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(glibc v2ray-domain-list-community v2ray-geoip)
 makedepends=(go git)
 backup=(etc/v2ray/config.json)
-provides=(v2ray)
+provides=("v2ray=${pkgver%%.r*}")
 conflicts=(v2ray)
 source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')

@@ -1,7 +1,7 @@
 pkgbase = v2ray-git
 	pkgdesc = A set of network tools that helps you to build your own computer network (git version).
-	pkgver = 5.1.0.r7.g2e0ea8804
-	pkgrel = 2
+	pkgver = 5.1.0.r17.ga4a3f4dee
+	pkgrel = 1
 	url = https://github.com/v2fly/v2ray-core
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = v2ray-git
 	depends = glibc
 	depends = v2ray-domain-list-community
 	depends = v2ray-geoip
-	provides = v2ray
+	provides = v2ray=5.1.0
 	conflicts = v2ray
 	backup = etc/v2ray/config.json
 	source = v2ray-git::git+https://github.com/v2fly/v2ray-core.git
