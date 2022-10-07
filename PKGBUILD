@@ -45,5 +45,8 @@ build() {
 package() {
     cd ${pkgname%-git}
     install -Dm755 zig-out/bin/wayprompt "${pkgdir}"/usr/bin/wayprompt
+    ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/pinentry-wayprompt
+    ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/hiprompt-wayprompt
+    ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/wayprompt-cli
 }
 
