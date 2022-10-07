@@ -1,12 +1,13 @@
 pkgbase = aria2cd
 	pkgdesc = A systemd Service to start aria2 automatically.
 	pkgver = 1.2
-	pkgrel = 1
-	url = https://aur.archlinux.org/aria2cd.git
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/aria2cd
 	arch = any
 	license = custom:WTFPL
 	depends = aria2
 	depends = systemd
+	optdepends = curl: for getting tracker list
 	source = tracker-config.sh
 	source = update-aria2-tracker
 	source = notify-user
