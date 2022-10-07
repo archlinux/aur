@@ -3,12 +3,14 @@
 pkgname=cranko-bin
 _pkg="${pkgname%-bin}"
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform, cross-language release automation tool'
 arch=('x86_64' 'aarch64')
 url='https://github.com/pkgw/cranko'
 license=('MIT')
 depends=('gcc-libs' 'openssl' 'zlib')
+provides=("$_pkg")
+conflicts=("$_pkg")
 source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/${_pkg}%40${pkgver}/$_pkg-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/${_pkg}%40${pkgver}/$_pkg-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
