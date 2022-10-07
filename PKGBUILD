@@ -3,7 +3,7 @@
 
 pkgname=memebox
 _pkgname=meme-box
-pkgver=2022.1_rc1
+pkgver=2022.1
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Manage and trigger media in OBS as a browser source"
@@ -15,7 +15,7 @@ makedepends=('jq' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-b2sums=('6da59ee2bbfe2662da61b6f6785a2c8744d299e0361197cd3342a53eac830c562b527fea9252b99a5593639869797e8e5c0aec811ec9ffd71e46eb6d5b47f299'
+b2sums=('d15e1fc375b0dba44a7175883c6b0422538acdcbe2d9bc8a0221301d26c817231967c9e1a6515f253d240818a7294254023272d98c98d1720964de28e83c9b39'
         '9a825fe91ed8dc7d8a55e6b72aa84ce498e62096f9fdd6c14710d7a173d9ea722a2aa3883e5e0afdb32957b95e15f54956785d177252862fe0a2d06ec940702f'
         '3a92fad92d82110ace6e77f4486d6336d5c25a7e309990588d687956e05a07446cf7058e3e4211cc44370d2548f14568ec6ecc2fb57253763c6285cbe0b2b5bf')
 
@@ -26,9 +26,8 @@ prepare() {
   jq 'del(.scripts.postinstall)' package.json > package.json.tmp
   mv package.json.tmp package.json
 
-  # Install deps and patch `ttypescript` version
+  # Install dependencies
   npm install --legacy-peer-deps --cache "$srcdir"/npm-cache
-  npm install --legacy-peer-deps --cache "$srcdir"/npm-cache --save ttypescript@1.5.13
 }
 
 build() {
