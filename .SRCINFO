@@ -1,7 +1,7 @@
 pkgbase = aurtool-zsh-git
 	pkgdesc = A lightweight aur package management utility written in zshell
 	pkgver = 2.0_alpha.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/m1ndflay3r/aurtool-zsh
 	arch = any
 	license = GPL-3.0

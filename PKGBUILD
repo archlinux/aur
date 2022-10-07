@@ -4,7 +4,7 @@
 
 pkgname=aurtool-zsh-git
 pkgver=2.0_alpha.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight aur package management utility written in zshell"
 arch=('any')
 url="https://www.github.com/m1ndflay3r/aurtool-zsh"
@@ -61,6 +61,12 @@ package() {
         mkdir -p "$pkgdir"/usr/bin
         mkdir -p "$pkgdir"/usr/include
         mkdir -p "$pkgdir"/etc
+        zcompile aurtool
+        mv aurtool aurtool.bak
+        mv aurtool.zwc aurtool
+        zcompile libaurtool
+        mv libaurtool libaurtool.bak
+        mv libaurtool.zwc libaurtool
         install -m755 aurtool "$pkgdir"/usr/bin/aurtool
         install -m644 libaurtool "$pkgdir"/usr/include/libaurtool
         install -m644 README.md "$pkgdir"/etc/aurtool-README.md
