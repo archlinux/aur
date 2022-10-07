@@ -2,7 +2,7 @@
 
 pkgname=neovim-catppuccin-git
 _pkg="${pkgname%-git}"
-pkgver=r932.7f5a866
+pkgver=0.2.3.r17.g8deefde
 pkgrel=1
 pkgdesc="Soothing pastel theme for Neovim"
 arch=('any')
@@ -20,13 +20,13 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$_pkg"
 	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
 }
 
 package() {
 	cd "$_pkg"
-	find autoload colors doc lua plugin -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find autoload colors doc lua -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
