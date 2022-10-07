@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -e
+
+function get_aria2_home(){
+    for path in ${HOME}/.aria2 ${XDG_CONFIG_HOME:-${HOME}/.config}/aria2
+    do
+        [[ -f ${path}/aria2.conf ]] && echo ${path} && return 0
+    done
+    echo ${HOME}/.aria2 && return 0
+}
+
+ARIA2_CONFIG_HOME=$(get_aria2_home)
+echo "Aria2 config is placing at ${ARIA2_CONFIG_HOME}"
+if [[ -f "${ARIA2_CONFIG_HOME}/tracker-config.sh" ]]
+then
+    echo "Loading config from ${ARIA2_CONFIG_HOME}/tracker-config.sh"
+    source "${ARIA2_CONFIG_HOME}/tracker-config.sh"
+fi
+[[ -z $ENABLED ]] && ENABLED=false
+$ENABLED || exit 0
+[[ -z $TRACKER ]] && \
+    TRACKER=$(curl -Ls https://cdn.staticaly.com/gh/XIU2/TrackersListCollection/master/best_aria2.txt)
+grep -q 'bt-tracker=' "${ARIA2_CONFIG_HOME}/aria2.conf" && \
+    sed -i "s@bt-tracker=.*@bt-tracker=$TRACKER@" "${ARIA2_CONFIG_HOME}/aria2.conf" || \
+    sed -i "\$a bt-tracker=$TRACKER" "${ARIA2_CONFIG_HOME}/aria2.conf"
