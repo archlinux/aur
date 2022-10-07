@@ -1,7 +1,11 @@
 #!/usr/bin/env sh
+
 echo "aria2cd has been installed/updated successfully, but there is something extra to do."
-echo "You can run aria2cd-install to do it automatically or do the follow manually:"
-echo "You need to copy /usr/share/aria2/ to \${HOME}/.aria2/ or aria2c will not work correctly."
-echo "\${HOME} is the home directory of the user who runs aria2c"
-echo "You can also use \${XDG_CONFIG_HOME}/aria2/ instead of \${HOME}/.aria2/ for config and \${XDG_CACHE_HOME}/aria2/ for cache files such as DHT file and session file."
+echo ""
+echo "There are two options:"
+echo "1. You need to copy /usr/share/aria2/ to \${HOME}/.aria2/ or aria2c will not work correctly."
+echo "  \${HOME} is the home directory of the user who runs aria2c"
+echo "2. Copy aria2.conf and tracker-config.sh in /usr/share/aria2 to \${XDG_CONFIG_HOME:-\${HOME}/.config}/aria2/"
+echo "  Copy aria2.session, dht.dat and dnt6.dat in /usr/share/aria2 to \${XDG_CACHE_HOME:-\${HOME}/.config}/aria2/"
+echo ""
 echo "The latter(\${XDG_CACHE_HOME}/aria2/ and \${XDG_CONFIG_HOME}/aria2/) is preferered to use because it follows freedesktop's specification."
