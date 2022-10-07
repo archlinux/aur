@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
@@ -14,24 +14,22 @@ optdepends=('bash-completion: for bash completions'
 conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
-_commit=b70c6c35c6ad12c06991cd2bc0cabde9add3beed
+_commit=b8857d103a0870a24c9d3592c7d01ac72fdfe460
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'chris.pgp' # Christopher Allen Lane <chris@chris-allen-lane.com>
         'conf.yml'
-        "git+https://github.com/cheat/cheatsheets.git#commit=$_commit"
-        "cheatsheets-$pkgver-LICENSE::https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt")
+        "git+https://github.com/cheat/cheatsheets.git#commit=$_commit")
 sha256sums=('6a1739b71d436f45dc7c028ec79863a34e30cc13da7159bf23604b77f43faaf2'
             '6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6'
             '30df814034a3b7146232e195829564baa7c269940b40c81e1caefbbdc83744e8'
-            'SKIP'
-            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
+            'SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  auth-tarball-from-git --keyring ../chris.pgp \
-    --tag "$pkgver" --prefix "$pkgname-$pkgver" \
-    https://github.com/cheat/cheat.git ../"$pkgname-$pkgver.tar.gz"
+#  auth-tarball-from-git --keyring ../chris.pgp \
+#    --tag "$pkgver" --prefix "$pkgname-$pkgver" \
+#    https://github.com/cheat/cheat.git ../"$pkgname-$pkgver.tar.gz"
 
   export GOPATH="$srcdir/gopath"
   go mod vendor
@@ -82,6 +80,6 @@ package() {
       install -m644 "{}" \
       "$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
   install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/$pkgname/"
-  install -Dm644 "$srcdir/cheatsheets-$pkgver-LICENSE" \
+  install -Dm644 "$srcdir/cheatsheets/.github/LICENSE-txt" \
     "$pkgdir/usr/share/licenses/$pkgname/cheatsheets-LICENSE"
 }
