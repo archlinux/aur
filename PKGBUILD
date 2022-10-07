@@ -2,14 +2,14 @@
 # Contributor: Sergei Kolesnikov <youremail@domain.com>
 
 pkgname=gnome-shell-extension-runcat-git
-pkgver=18.r0.g7c9e5d9
+pkgver=21.r2.g8370617
 pkgrel=1
 pkgdesc="The cat tells you the CPU usage by running speed"
 arch=('any')
 url="https://github.com/win0err/gnome-runcat"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git' 'zip')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
@@ -30,5 +30,5 @@ package() {
 	_uuid='runcat@kolesnikov.se'
 	cd "$_srcname"
 	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-	bsdtar -xvf dist/$_uuid.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+	bsdtar -xvf dist/$_uuid.shell-extension.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 }
