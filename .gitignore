@@ -1,0 +1,6 @@
+*.pkg.*
+*.pkg.*.*
+*.zst
+mraa/
+pkg/
+src/

@@ -1,0 +1,15 @@
+diff --git a/src/mraa/include/version.h b/src/mraa/include/version.h
+index 47366ef..3a567a1 100644
+--- a/src/mraa/include/version.h
++++ b/src/mraa/include/version.h
+@@ -11,8 +11,8 @@
+ extern "C" {
+ #endif
+ 
+-const char* gVERSION;
+-const char* gVERSION_SHORT;
++extern const char* gVERSION;
++extern const char* gVERSION_SHORT;
+ 
+ #ifdef __cplusplus
+ }
