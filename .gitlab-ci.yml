@@ -14,11 +14,11 @@ check-for-update:
       - echo "${AUR_SSH_KEY}" > ~/.ssh/id_rsa_aur
       - chmod 600 ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa_aur
-      - ssh-keyscan gitlab.jonasled.de >> ~/.ssh/known_hosts
+      - ssh-keyscan jonasled.dev >> ~/.ssh/known_hosts
       - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
       - git checkout master
       - git remote rm origin
-      - git remote add origin git@gitlab.jonasled.de:jonasled/repetier-server-aur.git
+      - git remote add origin git@jonasled.dev:jonasled/repetier-server-aur.git
     script:
       - latest_version=$(curl https://download1.repetier.com/files/server/changelog.txt | grep "Version" | head -n1 | grep -Po "(\d+\.?)+")
       - source <(grep = PKGBUILD)
