@@ -1,7 +1,7 @@
 pkgbase = dosbox-staging-git
 	pkgdesc = A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems
-	pkgver = 0.80.0.alpha.50.g13964e0a0
-	pkgrel = 3
+	pkgver = 0.80.0.alpha.89.g7c62e648f
+	pkgrel = 1
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
 	license = GPL2

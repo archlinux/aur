@@ -3,8 +3,8 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.80.0.alpha.50.g13964e0a0
-pkgrel=3
+pkgver=0.80.0.alpha.89.g7c62e648f
+pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
 url="https://github.com/dosbox-staging/dosbox-staging"
@@ -22,18 +22,18 @@ md5sums=(
 )
 
 prepare() {
-  cd "$srcdir/${_pkgname}"
-  meson setup --prefix=/usr -Dbuildtype=release -Ddefault_library=shared -Db_lto=true -Db_asneeded=true -Dstrip=true release
+  cd "${srcdir}/${_pkgname}"
+  meson setup --prefix=/usr build
 }
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   git describe | sed -e 's/-/./g' -e 's/^v//g'
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
-  meson compile -C release
+  cd "${srcdir}/${_pkgname}"
+  meson compile -C build
 
   # Add current commit info to the README
   sed -i "s|%GIT_COMMIT%|$(git rev-parse main)|" docs/README.template
@@ -44,10 +44,10 @@ build() {
 package() {
   # install all files
   cd "${srcdir}/${_pkgname}"
-  meson install -C release --destdir "${pkgdir}"
+  meson install -C build --destdir "${pkgdir}"
 
   # dosbox-staging documents
-  install -Dm 644 "$srcdir/${_pkgname}/docs/README.template" "$pkgdir/usr/share/doc/${_pkgname}/README"
-  install -Dm 644 "$srcdir/${_pkgname}/docs/README.video" "$pkgdir/usr/share/doc/${_pkgname}/video.txt"
-  install -Dm 644 "$srcdir/${_pkgname}/README" "$pkgdir/usr/share/doc/${_pkgname}/manual.txt"
+  install -Dm 644 "${srcdir}/${_pkgname}/docs/README.template" "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm 644 "${srcdir}/${_pkgname}/docs/README.video" "${pkgdir}/usr/share/doc/${_pkgname}/video.txt"
+  install -Dm 644 "${srcdir}/${_pkgname}/README" "${pkgdir}/usr/share/doc/${_pkgname}/manual.txt"
   }
