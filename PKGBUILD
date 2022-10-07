@@ -1,8 +1,8 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 # Maintainer: hertg <aur@her.tg>
 pkgname=leftwm-git
-pkgver=0.4.0.r1.g9179969
-pkgrel=1
+pkgver=0.4.0.r3.g1cc3a4d
+pkgrel=4
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
