@@ -12,6 +12,7 @@ pkgbase = streamlink-twitch-gui-bin
 	depends = nss
 	depends = streamlink
 	provides = streamlink-twitch-gui
+	conflicts = streamlink-twitch-gui
 	options = !strip
 	source_i686 = https://github.com/streamlink/streamlink-twitch-gui/releases/download/v2.2.0/streamlink-twitch-gui-v2.2.0-linux32.tar.gz
 	sha256sums_i686 = 6905f3314067d6aecca4aeb16f31844c44797cbb3efa346200290d2e0e1d3b89
