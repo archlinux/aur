@@ -2,16 +2,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=5.19.arch1
+_ver=6.0.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v5.19
+_bcachefstag=v6.0
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=5.19.arch1.r1507
+pkgver=6.0.arch1.r1616
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip')
 source=(config         # the main kernel config file
 )
-sha256sums=('ded0a8da67ff5ab654beec9435514b598602a2cbd800395070119125e281956a'
+sha256sums=('85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144'
 )
 
 export KBUILD_BUILD_HOST=archlinux

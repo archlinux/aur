@@ -1,8 +1,8 @@
 pkgbase = linux-simple-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 5.19.arch1.r1507
+	pkgver = 6.0.arch1.r1616
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.19-arch1
+	url = https://github.com/archlinux/linux/commits/v6.0-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-simple-bcachefs-git
 	makedepends = git
 	options = !strip
 	source = config
-	sha256sums = ded0a8da67ff5ab654beec9435514b598602a2cbd800395070119125e281956a
+	sha256sums = 85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144
 
 pkgname = linux-simple-bcachefs-git
 	pkgdesc = The Linux kernel and modules with bcachefs support
