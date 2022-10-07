@@ -1,0 +1,11 @@
+pkgbase = syntest
+	pkgdesc = Rust library for syntax highlighting using Sublime Text syntax definitions.
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/trishume/syntect
+	arch = x86_64
+	license = MIT
+	source = https://github.com/trishume/syntect/archive/v5.0.0.tar.gz
+	sha256sums = 84c21f8321ebaa794fd740a53a3691daaf3a91fb1be6a04edaf2638855a15fe6
+
+pkgname = syntest
