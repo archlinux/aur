@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1296.d84067a0
+pkgver=r1297.9f597d01
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64')
