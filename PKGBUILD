@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=clairvoyant
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Magic 8-Ball fortune teller of sorts"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libadwaita')
 makedepends=('meson' 'vala')
 source=($url/archive/$pkgver.tar.gz)
-b2sums=('2f58e06f56eef50e121abd042b32776eae93466da000109559af8b3e24a3e0ddeac6936e7c3c30975bae313d25e0200bd09db4f01a84d5d8a929e797a99afc1f')
+b2sums=('53f66c3d4b3016f9325ce93b31e8d8d84e73ca4f2fd3bb9f3a140e3d8f34db39383cc087092fdee90ed6ef0693128dfc969ffa0c3f0113467471baea0fce3d87')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
