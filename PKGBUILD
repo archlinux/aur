@@ -1,39 +1,30 @@
-# Maintainer: Iván Gabaldón <contact|@|inetol.net>
+# Maintainer: Iván Gabaldón <ivan.gab at inetol dot net>
 
 pkgname=mcreator
 pkgver=2022.2.34517
-pkgrel=1
+pkgrel=2
 pkgdesc='Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE'
 arch=('x86_64')
 url='https://mcreator.net'
 license=('GPL3')
-depends=('jdk17-openjdk')
-conflicts=("$pkgname-bin")
-noextract=("$pkgname-source.tar.gz")
-source=("$pkgname-source.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+noextract=("$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/releases/download/$pkgver/MCreator.2022.2.Linux.64bit.tar.gz"
         "$pkgname.desktop")
-b2sums=('a14c4f584d115c63349f7820565f1bcfb1aff4db883e104a06479aa81830a6129d670c6954e2d6768cdf20ce4d1f8ccbfdfe3e9f3aa2b8e0cf28ec2a818c6a46'
-        '4078f75e36918bd2759d2194a9c376eacbe3549137474991548ccfd7afe02f0c122ba8ac3959b9455dfdc2d1d73f0eb7650f18522e21e502f50b86b85164faaf')
+b2sums=('95a9b1572bf70687bbe354acc76513ffb79339500d9a48f675dd3a1c23b5d6a2ba69746215fad15056ec56700d469287b6f6a2b4b2c83a0f360dceac1de1c3c9'
+        '8efa7edb9abe7b66a2a9482702e80cbebbcf390f8442daf280f9fd0e05610a831ab54fdedbf4bbe58662f4fdef4b5e7a15547883aaee006c35915a453dafb343')
 
 prepare() {
-    mkdir -p "$pkgname-$pkgver" "$pkgname-source"
-    bsdtar -xpf "$pkgname-source.tar.gz" --strip-components=1 -C "$pkgname-source"
-}
-
-build() {
-    cd "$pkgname-source"
-
-    ./gradlew exportLinux
-    bsdtar -xpf "build/export/MCreator 2022.2 Linux 64bit.tar.gz" --strip-components=1 -C "../$pkgname-$pkgver"
+    mkdir -p "$pkgname-$pkgver"
+    bsdtar -xpf "$pkgname-$pkgver.tar.gz" --strip-components=1 -C "$pkgname-$pkgver"
 }
 
 package() {
-    rm -r "$srcdir/$pkgname-$pkgver/jdk/"
-    cat >"$srcdir/$pkgname-$pkgver/mcreator.sh"<<EOF
+    cat >"$pkgname-$pkgver/mcreator.sh"<<EOF
 #!/usr/bin/env bash
+export CLASSPATH="./mcreator/lib/mcreator.jar:./lib/*"
 
-export CLASSPATH='./lib/mcreator.jar:./lib/*'
-/usr/lib/jvm/java-17-openjdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED net.mcreator.Launcher "\$1"
+cd /opt/mcreator/
+./jdk/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED net.mcreator.Launcher "\$1"
 EOF
 
     install -d "$pkgdir/opt/$pkgname"
