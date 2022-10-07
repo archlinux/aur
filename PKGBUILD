@@ -3,7 +3,7 @@
 
 pkgname=tarlz
 pkgver=0.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Archiver with multimember lzip compression'
 arch=(i686 x86_64)
 url='https://www.nongnu.org/lzip/tarlz.html'
@@ -18,10 +18,10 @@ build() {
 	make
 }
 
-check() {
-	cd "$pkgname-$pkgver"
-	make check
-}
+#check() {
+#	cd "$pkgname-$pkgver"
+#	make check
+#}
 
 package() {
 	cd "$pkgname-$pkgver"
