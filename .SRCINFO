@@ -1,7 +1,7 @@
 pkgbase = atoms-git
 	pkgdesc = Easily manage Linux chroot(s)
 	pkgver = r282.db7b25d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AtomsDevs/Atoms
 	arch = any
 	license = GPL3
