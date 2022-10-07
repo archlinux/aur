@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.19.0.10.realtime1
+pkgver=6.0.0.11.realtime1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=(x86_64)
@@ -12,13 +12,13 @@ makedepends=(bc cpio git graphviz imagemagick libelf pahole perl
 python-sphinx python-sphinx_rtd_theme tar texlive-latexextra xmlto xz)
 options=(!strip)
 source=(
-  "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
+  git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v$pkgver?signed
   config
 )
 sha512sums=('SKIP'
-            '69eb836b614e83c4784155fa61fc93f7f21f74d6105158d24c7242a5c5fe5a80a1d37c9112b8ebacb018a0da110711b3a65b51fd55e5c3f9b24d6f3addef8530')
+            'ac0337b5c2964d8ecde805c3f229616a56270b506a81b3f8c76eea68eae481981c0b3889b800aaf25659b26c401a3d3e5617fc263b20f76fb6d738868cdf110b')
 b2sums=('SKIP'
-        '101432624cf2efae07acc0bc940648a70d1dc7696e8067430607a21cf9b33a81a07ca7c228cba344f3cfb47ff0fb9b0215eaa7d6abee937e90fd8d39458f2705')
+        '7d8922354c9fc5188fa60a6fcbaf6e72bbc58c5d1875bcea83e8f6f6d506138cb9eca278fc8e798cd74e46ade1d9583c6a625a727f79e8f94ea56d3362775269')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
@@ -60,8 +60,7 @@ prepare() {
 
 build() {
   cd $pkgbase
-  make all
-  make htmldocs
+  make htmldocs all
 }
 
 _package() {
