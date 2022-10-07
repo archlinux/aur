@@ -69,6 +69,7 @@ check() {
   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
+  export OMPI_MCA_plm_rsh_agent=sh
   PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
 }
 
