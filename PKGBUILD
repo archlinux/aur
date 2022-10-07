@@ -1,7 +1,7 @@
 # Maintainer: Sylvain Durand <arch@durand.tf>
 
 pkgname=uptime-kuma
-pkgver=1.17.1
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="A free and open source uptime monitoring solution"
 
@@ -17,7 +17,7 @@ source=(
   "uptime-kuma.service"
 )
 
-sha256sums=('2b1bf89ae473ca65891819a3a83af9fb4267c6d9c47cf5ec959a91416ebe6ddd' 'c815b017787143b3c72fa2f38dcc7f6346c9eaaf0d8c388e024403d232775cea' '84ec5db5532ee2e218bc995ef1c04b7a4b9ebe4df198bba99fd031d6b9073796')
+sha256sums=('132fb5aed19f4eaa21ee383fa6a9f0756d2e01902f947c5859ad77e7495d1b4e' 'c02165cd82b264a85e375e5882dd2c0a4f52eb79b084134c25ee3aab69ed602f' '84ec5db5532ee2e218bc995ef1c04b7a4b9ebe4df198bba99fd031d6b9073796')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tar.gz
