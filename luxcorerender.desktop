@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=LuxCore UI
+Comment=Physically correct, unbiased rendering engine
+Path=/usr/bin
+Exec=luxcoreui
+Icon=/usr/share/luxcorerender/luxcorerender.png
+Terminal=true
+Categories=Graphics;

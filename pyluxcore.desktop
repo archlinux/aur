@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PyLuxCoreTools
+Comment=CLI tools for a physically correct, unbiased rendering engine
+Path=/opt/luxcorerender
+Exec=python3 pyluxcoretools.zip
+Icon=/usr/share/luxcorerender/luxcorerender.png
+Terminal=true
+Categories=Graphics;
