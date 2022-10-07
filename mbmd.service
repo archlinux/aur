@@ -1,0 +1,16 @@
+[Unit]
+Description=ModBus Measurement Daemon
+After=syslog.target
+After=network-online.target
+
+[Service]
+User=mbmd
+ExecStart=/usr/bin/mbmd run -c /etc/mbmd/mbmd.yaml
+Restart=always
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=yes
+CapabilityBoundingSet=~CAP_SYS_ADMIN
+
+[Install]
+WantedBy=multi-user.target

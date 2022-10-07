@@ -1,0 +1,18 @@
+pkgbase = mbmd-git
+	pkgdesc = ModBus Measurement Daemon - simple reading of data from ModBus meters and grid inverters
+	pkgver = r533.3b12dcc
+	pkgrel = 1
+	url = https://github.com/volkszaehler/mbmd
+	install = mbmd.install
+	arch = any
+	license = BSD
+	makedepends = go
+	provides = mbmd
+	source = git+https://github.com/volkszaehler/mbmd
+	source = mbmd.service
+	source = mbmd-users.conf
+	sha256sums = SKIP
+	sha256sums = 09c360375a89171772a36f8e467e1222f29eeb8ec440dc213ed0a975077cfb90
+	sha256sums = 2002b03f227257f7ae3be2047c76a5b75a039146232dbf94c277befcc29cc56d
+
+pkgname = mbmd-git

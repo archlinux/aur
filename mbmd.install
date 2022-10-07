@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+    echo ":: The example configuration has been copied to '/etc/mbmd/mbmd.dist.yaml'"
+    echo "   Please copy the file to '/etc/mbmd/mbmd.yaml' and adjust it."
+    echo "   Make sure to keep/copy the permissions."
+
+    chgrp mbmd '/etc/mbmd/mbmd.dist.yaml'
+}
