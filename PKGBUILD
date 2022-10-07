@@ -2,9 +2,9 @@
 # -*- mode: sh -*-
 
 pkgname=fuzzynote
-pkgver=0.24.1
+pkgver=0.25.2
 pkgrel=1
-_pkgdate=1664609760
+_pkgdate=1665136260
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
 arch=('x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
@@ -25,6 +25,8 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
+  unset GOPROXY
+
   go mod tidy
 
   go build \
@@ -44,13 +46,13 @@ package() {
 }
 
 sha256sums=(
-  'e14960e4a06782a34b97bfcc488c27876131169cbf4815b15321d41ee958147a'
+  '328250ba90d4bc733013d37e06353186517490cf3046b808521a9df0fb67a1c0'
 )
 sha512sums=(
-  '2e354d80eb1c723c0af0934ab382e4eb7b81c8e7ab4db19317363e5c8df281fa72f1619caa14dce0137104580769e73c70c49575ee7564a7257a9559136dbcf6'
+  '391c478eed0e1affccd2fc42bf73f71092e2ae1fe4342342d0985f5a0837c4cbc6bdc4a2f5c541cefc693c5c3b42262e6de26555991b6f7b30bffb1e39ea43ad'
 )
 b2sums=(
-  'bb40f748b2704aed0d6925cde4eb30372e6e42e5ce554550609b5e851da4e80630c952f2307650b140116747202bed85e4e0345f3298e3a84f55653b61a6a05b'
+  'e230aebb1a90128609e249bc0703ee4d3c1ea0846dfbd07904a696d4d5c1c74a7acea2fd971ec6abe1039a675c9bdc082c1239f30404351b1fa025dd61ce742b'
 )
 
 # eof
