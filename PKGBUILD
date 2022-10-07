@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="GTK3-based panel for sway window manager"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('wlr-randr: for non-sway Wayland WMs support'
             'ddcutil: for external displays brightness control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('dd8c9be4d806deb9b68b99df92302ca8')
+md5sums=('57cbbd12f0ab49b55078a63c9c2d74d5')
 
 package() {
   cd "${pkgname}-${pkgver}"
