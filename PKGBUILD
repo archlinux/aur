@@ -1,29 +1,31 @@
-# Maintainer: Andreas Manthey <abamanthey@gmail.com>
-# Contributor: Andreas Manthey <abamanthey@gmail.com>
+# Maintainer: Steven Seifried <gitlab@canox.net>
+# Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard-dkms
-_pkgbase=tuxedo-keyboard
-pkgver=2.0
+pkgver=3.0.11
 pkgrel=1
-pkgdesc="Tuxedo Computers Kernel module for keyboard backlightning."
+pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
-license=("GPL")
+license=("GPL3")
 arch=('x86_64') 
-makedepends=('git' 'linux-headers' 'gcc' 'make')				# bei lts oder hardened Kernel entsprechend anpassen
 depends=('dkms')
-source=('git+https://github.com/tuxedocomputers/tuxedo-keyboard.git'
-         'dkms.conf' 
-         )
-sha256sums=('SKIP'
-            'd803c7f8cd86cb705cf2ccb4e7cdc3da7cbc475a665d3f15f93a8b07664afe8c'
-            )
-install="${pkgname}.install"
-prepare() {
-  sed -e "s/@PKGNAME@/${_pkgbase}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${srcdir}/dkms.conf"      
-  (cd ${srcdir}/${_pkgbase} )
-}
+optdepends=('linux-headers: build modules against Arch kernel'
+            'linux-lts-headers: build modules against LTS kernel'
+            'linux-zen-headers: build modules against ZEN kernel'
+            'linux-hardened-headers: build modules against the HARDENED kernel'
+            'tuxedo-keyboard-ite-dkms: Required for models with per-key keyboard backlight (e.g. Polaris, Stellaris, XUX)')
+provides=('tuxedo-keyboard' 'tuxedo-io')
+conflicts=('tuxedo-cc-wmi' 'tuxedo-keyboard')
+replaces=('tuxedo-cc-wmi' 'tuxedo-keyboard')
+backup=(etc/modprobe.d/tuxedo_keyboard.conf)
+source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v${pkgver}.tar.gz tuxedo_io.conf)
+sha256sums=('dbf95d83398db3d145f46579a6b97169dfc316c339c959cc17d214c8449f4a2e'
+            'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c')
+sha512sums=('a3c5b74fc5587763f131a66f507c0b33d462ed87c8e05391152c09d1425b5e1771bfb08cc2d1e3bb73b02074f503d866ea463fd44fb06d00b38c6ac4cfcd4e3b'
+            '3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81')
+
 package() {
-  install -D "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-  cp -r "${srcdir}/${_pkgbase}"/* "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+  mkdir -p "${pkgdir}/usr/src/tuxedo-keyboard-${pkgver}"
+  cp -r "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/usr/src/tuxedo-keyboard-${pkgver}"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/tuxedo_keyboard.conf "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
+  install -Dm644 "${srcdir}"/tuxedo_io.conf "${pkgdir}/etc/modules-load.d/tuxedo_io.conf"
 }
