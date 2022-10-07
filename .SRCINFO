@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-robot-localization
 	pkgdesc = ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-	pkgver = 2.7.3
-	pkgrel = 3
+	pkgver = 2.7.4
+	pkgrel = 1
 	url = https://wiki.ros.org/robot_localization
 	arch = i686
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = ros-noetic-robot-localization
 	depends = geographiclib
 	depends = eigen
 	depends = yaml-cpp
-	source = ros-noetic-robot-localization-2.7.3.tar.gz::https://github.com/cra-ros-pkg/robot_localization/archive/2.7.3.tar.gz
-	sha256sums = 345fde18d885b1d1f5806eacaf7ae3cc24fd3cca985e4d7a6d43a2b9f9855bba
+	source = ros-noetic-robot-localization-2.7.4.tar.gz::https://github.com/cra-ros-pkg/robot_localization/archive/2.7.4.tar.gz
+	sha256sums = 3f4b7d681430840a4adfb91b26231262114630ba5229a626b43ecf2cf95fc038
 
 pkgname = ros-noetic-robot-localization
