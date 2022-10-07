@@ -11,7 +11,7 @@ depends=('python-numpy')
 optdepends=(
     'graphviz: graphviz based drawer function'
     'python-matplotlib: matplotlib based drawer function'
-    'python-pillow: also for required for graphviz based drawer function'
+    'python-pillow: also required for graphviz based drawer function'
 )
 makedepends=(
     'python-build'
