@@ -1,0 +1,20 @@
+pkgbase = ame-git
+	pkgdesc = A fast and efficient AUR helper (git version)
+	pkgver = 4.0.2.r576.5315b76
+	pkgrel = 1
+	url = https://github.com/crystal-linux/amethyst
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = git
+	depends = pacman-contrib
+	depends = vim
+	depends = expac
+	depends = less
+	provides = ame
+	conflicts = ame
+	source = git+https://github.com/crystal-linux/amethyst.git
+	sha256sums = SKIP
+
+pkgname = ame-git
