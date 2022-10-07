@@ -84,7 +84,7 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
   rust                  lib32-rust-libs
   libgphoto2
-  gsm
+  gsm                   lib32-gsm
   opencl-headers
 )
 
@@ -109,7 +109,7 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   libgphoto2
-  gsm
+  gsm                   lib32-gsm
   dosbox
   steam-native-runtime
 )
