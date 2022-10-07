@@ -3,13 +3,13 @@
 pkgname=('atoms-git' 'atoms-cli-git' 'atoms-core-git')
 pkgbase='atoms-git'
 _pkgname=Atoms
-pkgver=r214.3edc956
+pkgver=r282.db7b25d
 pkgrel=1
 pkgdesc="Easily manage Linux chroot(s)"
 arch=('any')
 url="https://github.com/AtomsDevs/Atoms"
 license=('GPL3')
-depends=('libadwaita-git' 'podman' 'proot' 'python-certifi' 'python-chardet' 'python-idna' 'python-orjson' 'python-requests' 'python-tabulate' 'python-uproot' 'python-urllib3' 'talloc' 'vte4' 'servicectl')
+depends=('libadwaita' 'podman' 'proot' 'python-certifi' 'python-chardet' 'python-idna' 'python-orjson' 'python-requests' 'python-tabulate' 'python-uproot' 'python-urllib3' 'talloc' 'vte4' 'servicectl')
 makedepends=('git' 'meson' 'python-setuptools')
 checkdepends=('appstream-glib' 'python-pytest')
 provides=("${pkgname%-git}")
