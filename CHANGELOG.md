@@ -19,6 +19,12 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 4.0.1
+
+### Added
+
+- Mounting files now works when running batch changes server side. [sourcegraph/src-cli#816](https://github.com/sourcegraph/src-cli/pull/816)
+
 ## 4.0.0
 
 ### Fixed

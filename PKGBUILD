@@ -5,8 +5,8 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=sourcegraph-cli
-pkgver=4.0.0
-_commit=cb9c49f
+pkgver=4.0.1
+_commit=5a9d166
 pkgrel=1
 pkgdesc='Command line interface to Sourcegraph'
 url='https://github.com/sourcegraph/src-cli'
