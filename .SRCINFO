@@ -1,0 +1,15 @@
+pkgbase = cwitch
+	pkgdesc = CLI tool to watch Twitch live streams and videos with the help of mpv and youtube-dl.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/zer0-x/cwitch
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = mpv
+	depends = youtube-dl
+	depends = python-prompt_toolkit
+	source = cwitch-0.2.1.tar.gz::https://github.com/zer0-x/cwitch/archive/refs/tags/v0.2.1.tar.gz
+	sha512sums = 8c22c93c2d8fd9f7fb1c0bd73a7bc10f80985feb0b85dd366f2e3e71e9d9031f05a289b83e5ac94b347bfbc22a8e0f85e0e761b47ee84f732bd946ef507fe595
+
+pkgname = cwitch
