@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-office-electron-git
-pkgver=0.7.2.r0.gbb9f13a
+pkgver=0.7.3.r0.g82c3f60
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
 arch=('x86_64')
