@@ -1,13 +1,13 @@
 pkgbase = sexpect
 	pkgdesc = Expect for shells
-	pkgver = 2.3.12
+	pkgver = 2.3.14
 	pkgrel = 1
 	url = https://github.com/clarkwang/sexpect
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	source = sexpect-2.3.12.tar.gz::https://github.com/clarkwang/sexpect/archive/refs/tags/v2.3.12.tar.gz
-	sha256sums = 7f43955aa6c328c90f9a6e7500a1f552bd44616f89b75b67b04aef6ee153cb1a
+	source = sexpect-2.3.14.tar.gz::https://github.com/clarkwang/sexpect/archive/refs/tags/v2.3.14.tar.gz
+	sha256sums = f6801c8b979d56eec54aedd7ede06e2342f382cee291beea88b52869186c557c
 
 pkgname = sexpect
