@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=6.0
 _minor=0
-_clr=1194
+_clr=1197
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=37370
+_clear_version=37420
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=68a4c1b26eec04cc4acbb1f7e453cee4e7b0c778d48cc703bfff8b8ed1df2de6
-_config_hash_clear_version=37370
+_config_hash=952b3ba67ca28591ff6d2d1ec48d96b922a1e6f1b904326acc498f0bdd2d21f3
+_config_hash_clear_version=37420
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('50fb46a986e37429c7275b30661795563326b1b24bf7a5b290e7a842c78a4e959a8d49aa2aa648471a4a97b7a3a29d0280a01bce2a79a8934eeea4eae84c12ef'
-        'd6370f5a7a67af1474c937d181608cb825c28c26df139386bb84626036b080c61031e8ae087bbc86205a02cdf53088e731c9ae844fd20f36027662e9bebf97ae'
-        '9c8441827e2ecbc382acd7478ec202654926a45752055a8d541b40ecdb080778c6c6a300c16ebed21a28d84f445e3f49fcca38a88cab07c39d49b6d76319bf00')
+b2sums=('754850b6306c26512eeeb9e5929bb90c41b14373e07c2d5ac6aad626b406f16482f4c4c573c486dddf90e6be23826992eae6575629b044daa57b687db54a994a'
+        '006a2853674732bb31df95bc6026ceb5024509326331538a1a2fc326ae1c18228879405396175c35298b40ba1020ef0b67d1ffe7ec79e3412effb7cd541bd61e'
+        '18a13fbb316dba82f81b71e54700e357b12256859e912e9fc505fe8ea3eb68ee0778d9eae6e0ed09656a65b01572b5a1501a4c44cc31a38f145becf08be402be')
