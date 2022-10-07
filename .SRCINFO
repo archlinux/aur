@@ -1,6 +1,6 @@
 pkgbase = zycore-c
 	pkgdesc = Zyan Core Library for C
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/zyantific/zycore-c
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zycore-c
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	source = zycore-c::git+https://github.com/zyantific/zycore-c.git#commit=bdbd3ff40a36a88595c2a2895bf300d5c1e7d972
+	source = zycore-c::git+https://github.com/zyantific/zycore-c.git#commit=a754e112e80538612e1be165dfd05a746b12e042
 	b2sums = SKIP
 
 pkgname = zycore-c
