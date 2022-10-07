@@ -1,0 +1,398 @@
+
+Erreur de segmentation Fri Oct  7 22:46:34 2022
+
+
+/usr/share/pharo-vm/lib/pharo
+PharoVM version:5.0-Pharo 9.0.14 built on Mar 30 2022 17:00:08 Compiler: 5.4.0 20160609 5.4.0 20160609 [Production Spur 64-bit VM]
+Built from: CoInterpreter * VMMaker-tonel.1 uuid: ad0a8882-d297-0d00-90d3-62ff092bce84 Mar 30 2022
+ With:StackToRegisterMappingCogit * VMMaker-tonel.1 uuid: ad0a8882-d297-0d00-90d3-62ff092bce84 Mar 30 2022
+ Revision: v9.0.14 - Commit: 93600e1 - Date: 2022-03-30 16:40:05 +0200
+
+C stack backtrace & registers:
+	rax 0x2400000000 rbx 0x00000008 rcx 0x00000061 rdx 0x7ffd4a5033bf
+	rdi 0x7ffd4a5033c0 rsi 0x7ffd4a5033c0 rbp 0x019318a0 rsp 0x7ffd4a502fc0
+	r8  0x7ffd4a503410 r9  0x7ffd4a5030d0 r10 0x00000017 r11 0x00000310
+	r12 0x7ffd4a5033bf r13 0x7ffd4a5033c0 r14 0x7ffd4a5033c0 r15 0x00000062
+	rip 0x7fced5675aa6
+*/lib64/ld-linux-x86-64.so.2(+0x10aa6)[0x7fced5675aa6]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(+0xc405c)[0x7fced52c405c]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(doReport+0x88)[0x7fced52c4318]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(sigsegv+0x14)[0x7fced52c43b4]
+/lib/libc.so.6(+0x38a00)[0x7fced5051a00]
+/lib64/ld-linux-x86-64.so.2(+0x10aa6)[0x7fced5675aa6]
+/lib64/ld-linux-x86-64.so.2(+0x10afb)[0x7fced5675afb]
+/lib64/ld-linux-x86-64.so.2(+0x10afb)[0x7fced5675afb]
+/lib64/ld-linux-x86-64.so.2(+0x10ef5)[0x7fced5675ef5]
+/lib64/ld-linux-x86-64.so.2(+0x4a20)[0x7fced5669a20]
+/lib/libc.so.6(+0x3adf5)[0x7fced5053df5]
+/lib/libc.so.6(+0x3af70)[0x7fced5053f70]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(+0x24a59)[0x7fced5224a59]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(interpret+0x7e22)[0x7fced52b5422]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(+0xbac82)[0x7fced52bac82]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(interpret+0x5f6)[0x7fced52adbf6]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(+0x25d8e)[0x7fced5225d8e]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(vm_main_with_parameters+0x278)[0x7fced5226018]
+/usr/share/pharo-vm/lib/libPharoVMCore.so(vm_main+0xb8)[0x7fced5226278]
+/lib/libc.so.6(+0x23290)[0x7fced503c290]
+/lib/libc.so.6(__libc_start_main+0x8a)[0x7fced503c34a]
+/usr/share/pharo-vm/lib/pharo[0x400619]
+[0x0]
+
+
+All Smalltalk process stacks (active first):
+Process         0x1deb62b0 priority 79
+    0x7ffd4a533800 I SessionManager>launchSnapshot:andQuit: 0x1ecc42d8: a(n) SessionManager
+    0x7ffd4a533870 I [] in SessionManager>snapshot:andQuit: 0x1ecc42d8: a(n) SessionManager
+    0x7ffd4a5338b0 I [] in FullBlockClosure>newProcess 0x1deb60d0: a(n) FullBlockClosure
+
+processes at priority 70
+Process         0x1d93d1e8 priority 70
+    0x7ffd4a50b728 M [] in Delay>wait 0x1d9462e8: a(n) Delay
+    0x7ffd4a50b768 M FullBlockClosure(BlockClosure)>ifCurtailed: 0x1deaec30: a(n) FullBlockClosure
+    0x7ffd4a50b7a0 M Delay>wait 0x1d9462e8: a(n) Delay
+    0x7ffd4a50b7e8 I [] in OSSVMProcess>initializeChildWatcher 0x22702ed8: a(n) OSSVMProcess
+    0x7ffd4a50b828 I FullBlockClosure(BlockClosure)>repeat 0x1d946318: a(n) FullBlockClosure
+    0x7ffd4a50b870 I [] in OSSVMProcess>initializeChildWatcher 0x22702ed8: a(n) OSSVMProcess
+    0x7ffd4a50b8b0 I [] in FullBlockClosure>newProcess 0x1d946400: a(n) FullBlockClosure
+
+processes at priority 60
+Process         0x1df3b568 priority 60
+        0x1df3b340 s [] in FullBlockClosure(BlockClosure)>newProcess
+
+circular process list!!
+
+processes at priority 40
+Process         0x21540f88 priority 40
+    0x7ffd4a519370 M Process>resume 0x1deb62b0: a(n) Process
+    0x7ffd4a5193b0 I FullBlockClosure(BlockClosure)>forkAt: 0x1deb60d0: a(n) FullBlockClosure
+    0x7ffd4a519408 I SessionManager>snapshot:andQuit: 0x1ecc42d8: a(n) SessionManager
+    0x7ffd4a519468 I [] in SmalltalkImage>snapshot:andQuit: 0x1ec55fa0: a(n) SmalltalkImage
+    0x7ffd4a5194b0 I CurrentExecutionEnvironment class>activate:for: 0x1ec4e1a0: a(n) CurrentExecutionEnvironment class
+    0x7ffd4a519500 I DefaultExecutionEnvironment(ExecutionEnvironment)>beActiveDuring: 0x1ec43048: a(n) DefaultExecutionEnvironment
+    0x7ffd4a519548 I DefaultExecutionEnvironment class>beActiveDuring: 0x1ec4e710: a(n) DefaultExecutionEnvironment class
+    0x7ffd4a519590 I SmalltalkImage>snapshot:andQuit: 0x1ec55fa0: a(n) SmalltalkImage
+    0x7ffd4a5195e0 I PhLDeploymentScript class>quitSession 0x229b12a0: a(n) PhLDeploymentScript class
+    0x7ffd4a519620 I WorldState class>quitSession 0x1f39def8: a(n) WorldState class
+    0x7ffd4a519650 M [] in OSWorldRenderer>initialize 0x1d941730: a(n) OSWorldRenderer
+    0x7ffd4a519690 M WorldState>runStepMethodsIn: 0x1f3af4a8: a(n) WorldState
+    0x7ffd4a5196c8 M WorldMorph>runStepMethods 0x1f3a0740: a(n) WorldMorph
+    0x7ffd4a5196f8 M WorldState>doOneCycleFor: 0x1f3af4a8: a(n) WorldState
+    0x7ffd4a519730 M WorldMorph>doOneCycleNow 0x1f3a0740: a(n) WorldMorph
+    0x7ffd4a519760 M WorldMorph>doOneCycle 0x1f3a0740: a(n) WorldMorph
+    0x7ffd4a519798 M [] in WorldMorph class>doOneCycle 0x1f39d368: a(n) WorldMorph class
+    0x7ffd4a5197d8 M FullBlockClosure(BlockClosure)>ensure: 0x1deb56f0: a(n) FullBlockClosure
+    0x7ffd4a519810 M WorldState class>doDrawCycleWith: 0x1f39def8: a(n) WorldState class
+    0x7ffd4a519848 M WorldMorph class>doOneCycle 0x1f39d368: a(n) WorldMorph class
+    0x7ffd4a519878 M MorphicRenderLoop>doOneCycle 0x215414f0: a(n) MorphicRenderLoop
+    0x7ffd4a5198a8 M MorphicRenderLoop>doOneCycleWhile: 0x215414f0: a(n) MorphicRenderLoop
+        0x21541538 s [] in MorphicUIManager>spawnNewProcess
+        0x21541618 s [] in FullBlockClosure(BlockClosure)>newProcess
+
+processes at priority 10
+Process         0x1d93a7d8 priority 10
+    0x7ffd4a52b830 M ProcessorScheduler class>idleProcess 0x1ec47f68: a(n) ProcessorScheduler class
+    0x7ffd4a52b870 I [] in ProcessorScheduler class>startUp 0x1ec47f68: a(n) ProcessorScheduler class
+    0x7ffd4a52b8b0 I [] in FullBlockClosure>newProcess 0x1d947a80: a(n) FullBlockClosure
+
+suspended processes
+Process         0x1d93d490 priority 50
+    0x7ffd4a513830 I WeakArray class>finalizationProcess 0x1ec48c90: a(n) WeakArray class
+    0x7ffd4a513870 I [] in WeakArray class>restartFinalizationProcess 0x1ec48c90: a(n) WeakArray class
+    0x7ffd4a5138b0 I [] in FullBlockClosure>newProcess 0x1d946c20: a(n) FullBlockClosure
+
+Process         0x20b8cad8 priority 40
+        0x20b92ae8 s AtomicSharedQueue>waitForNewItems
+        0x20b96f10 s AtomicSharedQueue>next
+        0x20b97fd0 s TKTWorkerProcess>privateNextTask
+        0x20b98b98 s [] in TKTWorkerProcess>workerLoop
+        0x20b99560 s FullBlockClosure(BlockClosure)>repeat
+        0x20b81628 s TKTWorkerProcess>workerLoop
+        0x20b816e0 s MessageSend>value
+        0x20b81798 s [] in TKTPharoProcessProvider>createProcessDoing:named:
+        0x20b81870 s [] in FullBlockClosure(BlockClosure)>newProcess
+
+Process         0x1d93a788 priority 60
+    0x7ffd4a50f830 I SmalltalkImage>lowSpaceWatcher 0x1ec55fa0: a(n) SmalltalkImage
+    0x7ffd4a50f870 I [] in SmalltalkImage>installLowSpaceWatcher 0x1ec55fa0: a(n) SmalltalkImage
+    0x7ffd4a50f8b0 I [] in FullBlockClosure>newProcess 0x1d9467a8: a(n) FullBlockClosure
+
+Process         0x1d9415d0 priority 20
+    0x7ffd4a5276b8 M [] in Delay>wait 0x1d942318: a(n) Delay
+    0x7ffd4a5276f8 M FullBlockClosure(BlockClosure)>ifCurtailed: 0x1d9476c0: a(n) FullBlockClosure
+    0x7ffd4a527730 M Delay>wait 0x1d942318: a(n) Delay
+    0x7ffd4a527770 I Duration>wait 0x1d9477c8: a(n) Duration
+    0x7ffd4a5277b0 I PhLTemplateSourcesUpdateChecker>wait 0x22a9c508: a(n) PhLTemplateSourcesUpdateChecker
+    0x7ffd4a5277f0 I [] in PhLTemplateSourcesUpdateChecker>run 0x22a9c508: a(n) PhLTemplateSourcesUpdateChecker
+    0x7ffd4a527830 I FullBlockClosure(BlockClosure)>repeat 0x1d9477e0: a(n) FullBlockClosure
+    0x7ffd4a527870 I [] in PhLTemplateSourcesUpdateChecker>run 0x22a9c508: a(n) PhLTemplateSourcesUpdateChecker
+    0x7ffd4a5278b0 I [] in FullBlockClosure>newProcess 0x1d9478c0: a(n) FullBlockClosure
+
+Process         0x21540fd8 priority 80
+    0x7ffd4a509878 I DelaySemaphoreScheduler(DelayBasicScheduler)>suspendAtTimingPriority 0x1f0dee60: a(n) DelaySemaphoreScheduler
+    0x7ffd4a5098b0 M [] in DelaySemaphoreScheduler>runBackendLoopAtTimingPriority 0x1f0dee60: a(n) DelaySemaphoreScheduler
+        0x221d2ef8 s FullBlockClosure(BlockClosure)>ensure:
+        0x21541748 s DelaySemaphoreScheduler(DelayBasicScheduler)>runBackendLoopAtTimingPriority
+        0x221d2bf8 s [] in DelaySemaphoreScheduler(DelayBasicScheduler)>startTimerEventLoopPriority:
+        0x21541828 s [] in FullBlockClosure(BlockClosure)>newProcess
+
+Most recent primitives
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:
+at:
+at:put:
+at:put:
+basicIdentityHash
+at:
+basicIdentityHash
+basicIdentityHash
+at:
+at:
+at:
+at:
+at:
+>>
+*
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+atLeast:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+atLeast:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+at:
+withArgs:executeMethod:
+basicNew
+new:
+primDefineFunctionWith:returnType:
+size
+findFirstInString:inSet:startingAt:
+primLoadSymbol:module:
+invokeFunction:withArguments:
+return:
+findNextUnwindContextUpTo:
+terminateTo:
+atAllPut:
+value
+new:
+at:
+value:
+value:
+sizeOrNil:
+sizeOrNil:
+close:
+**StackOverflow**
+wait
+basicIdentityHash
+signal
+at:
+value:
+value:
+sizeOrNil:
+sizeOrNil:
+close
+wait
+**StackOverflow**
+signal
+basicNew
+basicNew
+signal
+signal
+valueNoContextSwitch
+wait
+activeProcess
+at:
+value:
+closeFileArray:
+closeFileArray:
+closeFileArray:
+closeFileArray:
+sizeOrNil:
+sizeOrNil:
+close:
+**StackOverflow**
+wait
+signal
+sizeOrNil:
+sizeOrNil:
+close:
+wait
+signal
+value
+signal
+allInstances
+perform:
+wait
+valueNoContextSwitch
+signal
+do:
+do:
+do:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+stringHash:initialHash:
+basicNew
+new:
+initialize:
+suspend
+findNextUnwindContextUpTo:
+findNextUnwindContextUpTo:
+terminateTo:
+stackp:
+class
+new:
+value:
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+flushCache
+size
+new:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+replaceFrom:to:with:startingAt:
+species
+species
+class
+class
+superclass
+signal
+nowTick
+value:
+wait
+quitPrimitive
+
+stack page bytes 8192 available headroom 5576 minimum unused headroom 5944
+
+	(Erreur de segmentation)
