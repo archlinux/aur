@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs' 'imagemagick' 'go')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('63871c2f9315bde069abe034ad5f9dbf9975d8249f8a366e63be226f4362be71')
+sha256sums=('3b6c0ca9ded8f7b0765ea98d6ede77d3b6160e3263dd774c2a8f6d557ff94ea6')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -27,7 +27,7 @@ prepare() {
 
 
     cd "${pkgname}-${pkgver}"
-    sed -i "s|childProcess.execFileSync('git', \['describe', '--tags'\]).toString().trim()|'v${pkgver}'|g" scripts/build.mjs
+    sed -i "s|childProcess.execFileSync('git', \['describe', '--tags'\]).toString().trim()|'v${pkgver}'|g" scripts/build.ts
     # Uncomment if you want to have the tray functionality
     # sed -i "/if (os.platform() === 'linux' \&\& !settings.isFirstRun()) {\$/,+2d" background.ts
 
