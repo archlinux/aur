@@ -1,6 +1,6 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
-pkgname=tuxedo-keyboard-ite
+pkgname=tuxedo-keyboard-ite-dkms
 pkgver=0.2.3
 pkgrel=1
 pkgdesc="Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices."
