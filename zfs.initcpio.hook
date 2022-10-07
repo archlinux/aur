@@ -175,6 +175,7 @@ run_hook() {
     case ${root} in
         # root=zfs
         "zfs")
+            ZFS_DATASET="bootfs"
             mount_handler="zfs_mount_handler"
             ;;
         # root=ZFS=... syntax (grub)

@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-git
 	pkgdesc = Userspace utilities for the Zettabyte File System.
-	pkgver = 2.1.99.r1389.g48cf170d5a
+	pkgver = 2.1.99.r1446.g72c99dc959
 	pkgrel = 1
 	epoch = 2
 	url = https://zfsonlinux.org/
@@ -13,7 +13,7 @@ pkgbase = zfs-utils-git
 	makedepends = git
 	optdepends = python: pyzfs and extra utilities,
 	optdepends = python-cffi: pyzfs
-	provides = zfs-utils=2.1.99.r1389.g48cf170d5a
+	provides = zfs-utils=2.1.99.r1446.g72c99dc959
 	conflicts = zfs-utils
 	source = git+https://github.com/openzfs/zfs.git
 	source = zfs.initcpio.install
@@ -21,7 +21,7 @@ pkgbase = zfs-utils-git
 	source = zfs.initcpio.zfsencryptssh.install
 	b2sums = SKIP
 	b2sums = f7c78e5a0ce887e89e5cdc52515381d647a51586cb05c52a900e1307520f6f0fa828f8f5fd5a30823b233dcd79f0496375b21d044103e1d765e20f728c2d0fee
-	b2sums = 04892c161e9197d3d4d4cf5ae97d03e91b980426c033973cdcf76ff957e4ef0b2d541a7d184102ff267a29e5db772ac06616cacb3c4252f2fe5a18f0d81891f2
+	b2sums = 4b041722b4f355c9fca300fc021e3e4a0ffbb649f61d1ad9efd2b5c6b83fa2ecf5e60243f6a40bd3962a9140403043b3951e38b4a2e86ec5b5f07501a058ba75
 	b2sums = 04e2af875e194df393d6cff983efc3fdf02a03a745d1b0b1e4a745f873d910b4dd0a45db956c1b5b2d97e9d5bf724ef12e23f7a2be3d5c12be027eaccf42349a
 
 pkgname = zfs-utils-git
