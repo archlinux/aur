@@ -1,19 +1,27 @@
 pkgbase = luxcorerender-bin
-	pkgdesc = LuxCoreRender is a physically correct, unbiased rendering engine (official binary version).
-	pkgver = 2.2
+	pkgdesc = Physically correct, unbiased rendering engine
+	pkgver = 2.6
 	pkgrel = 1
+	url = https://luxcorerender.org/
 	arch = x86_64
-	license = apache
-	makedepends = unzip
-	depends = libx11
-	depends = libxcb
-	depends = ocl-icd
+	license = Apache
+	makedepends = python>=3.0
+	depends = embree
+	depends = gtk3
+	depends = openimagedenoise
+	depends = python>=3.0
+	optdepends = cuda: OptiX/CUDA acceleration
+	optdepends = ocl-icd: gpu acceleration
+	optdepends = opencl-driver: OPENCL gpu acceleration
+	optdepends = pyside2: pyluxcoretools gui
 	provides = luxcorerender
-	conflicts = luxcorerender
-	source = https://github.com/LuxCoreRender/LuxCore/releases/download/luxcorerender_v2.2/luxcorerender-v2.2-blender2.80-linux64-opencl.tar.bz2
-	source = https://github.com/LuxCoreRender/LuxCore/releases/download/luxcorerender_v2.2/luxcorerender-v2.2-linux64-opencl-sdk.tar.bz2
-	sha256sums = 9e607d10a24d0d24ca051c4f9d5114ca1a42d7b3749de8d56ac9024ae5a97c52
-	sha256sums = 13fc4670b1fc87d2b36d6228b035ce220adeaff6f65177f2945f247d89f4e212
+	source = https://github.com/LuxCoreRender/LuxCore/releases/download/luxcorerender_v2.6/luxcorerender-v2.6-linux64.tar.bz2
+	source = luxcorerender.desktop
+	source = luxcorerender.png
+	source = pyluxcore.desktop
+	sha512sums = 177ace570679971fe0184e875e13351d293638fb0cbf28480f0187d796ad0df0f92f9382c7193f28dbb0315aa46ff0f1de72856f23cad4fc9becfcf8e5add0f9
+	sha512sums = 24341c3d4c989031c3ec405bf5a26693b5f863255b50e917357af609b7a222e704032155bd256e624c653d4906e6f116330a9a48e767c453bf1eb730d08bd64e
+	sha512sums = 8051deb8edc98d9d48126d323230db83e0c9dd7de826d4da048cbd05b99c73d89d15d6666a81791e9c8165b9d8996692316d66877d2c776d5823a4895ac0a729
+	sha512sums = 3a447e5266908b3fd0e2a0f4fb72d5cda4286bd07d30eef73be9132b551f5d37fc0506b6923fda7d91ddd7fa1cb2ecaca1072393cb1045ea51472d490c34f8a7
 
 pkgname = luxcorerender-bin
-
