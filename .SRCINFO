@@ -1,0 +1,14 @@
+pkgbase = neovim-catppuccin
+	pkgdesc = Soothing pastel theme for Neovim
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/catppuccin/nvim
+	install = catppuccin.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim
+	source = neovim-catppuccin-0.2.3.tar.gz::https://github.com/catppuccin/nvim/archive/v0.2.3.tar.gz
+	sha256sums = 8831c0516c4b3fc20bfc417ce7b705da860ca9f4961c9bc57ebeeadef7b9969e
+
+pkgname = neovim-catppuccin
