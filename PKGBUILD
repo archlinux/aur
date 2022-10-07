@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-aiologger
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Asynchronous logging for python and asyncio'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python')
 optdepends=('python-aiofiles')
 makedepends=('python' 'python-setuptools')
-source=("$pkgname-$pkgver::https://github.com/b2wdigital/aiologger/archive/$pkgver.tar.gz")
-sha256sums=('03dd32b8b6218528b7e5f143c32c0727731f5d6700cfd6108ba42f87e3ad9963')
+source=("$pkgname-$pkgver::https://github.com/async-worker/aiologger/archive/$pkgver.tar.gz")
+sha256sums=('eb15ba148ee3ec51d12d88719eb66a620616ce5125dda445597bb5cd72393ef4')
 
 _pkgname=aiologger
 
