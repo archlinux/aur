@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.18.0
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
