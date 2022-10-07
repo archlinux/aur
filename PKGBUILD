@@ -1,13 +1,18 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 pkgname=styli.sh-git
-pkgver=r101.232f23c
-pkgrel=3
+pkgver=r114.9535177
+pkgrel=1
 pkgdesc="wallpaper switching made easy"
 arch=(any)
 url="https://github.com/thevinter/styli.sh"
 license=('GPL')
 groups=()
-depends=()
+depends=('wget' 'curl' 'coreutils' 'gawk' 'sed' 'jq')
+optdepends=(
+    'feh: for displaying wallpaper'
+    'nitrogen: for setting wallpaper'
+    'python-pywal: something with colorschemes'
+)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
