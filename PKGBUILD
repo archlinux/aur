@@ -2,7 +2,7 @@
 # Maintainer: winlu <derwinlu@gmail.com>
 
 pkgname=rebar3-zsh
-pkgver=3.18.0
+pkgver=3.19.0
 pkgrel=1
 pkgdesc="ZSH completion for rebar3."
 arch=('any')
