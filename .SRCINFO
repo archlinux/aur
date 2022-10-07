@@ -1,7 +1,7 @@
 pkgbase = tuxedo-keyboard-ite-dkms
 	pkgdesc = Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices.
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tuxedocomputers.com/
 	arch = x86_64
 	license = GPL
