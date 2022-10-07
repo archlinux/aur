@@ -4,9 +4,9 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=newrelic-php5
-pkgver=10.0.0.312
+pkgver=10.2.0.314
 _libver=20210902
-pkgrel=2
+pkgrel=1
 pkgdesc='PHP Monitoring Agent'
 arch=('x86_64' 'i686')
 url='https://newrelic.com/php'
@@ -17,7 +17,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://download.newrelic.com/php_agent/archive/$pkgver/$pkgname-$pkgver-linux.tar.gz"
         'newrelic-daemon.service')
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('9f643ce5183249560ba13ab114c44a52f6b33bc0e0bde7a79d211877c8e4d5f4554de83a9ac8dc3e8fa399cea91265fa83e41485a6235d232b26a8750394908c'
+b2sums=('955fb3dc0f1798429d787f6de2a7790514cb1d9172e804414ad447551e4b1051525041dd5ffe116efe398aedf5f7aa9dda9c9f53c75c6fe5330197636c206c0a'
         'c5f8acd4c94951f7761b98aa9965110f2128fb86b0fa0f5097f2a5ea537db5b58e62dcce57a23e458ca4906bcfe03aca687eb5e7239551726deee8a5d953abbd')
 
 prepare() {
