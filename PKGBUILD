@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard-dkms
 pkgver=3.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
 license=("GPL3")
@@ -25,7 +25,7 @@ sha512sums=('adaa353687158060ca0eb83540d423f435742285982ee1023c842d0e78c6df04b2e
 
 package() {
   mkdir -p "${pkgdir}/usr/src/tuxedo-keyboard-${pkgver}"
-  cp -r "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/usr/src/tuxedo-keyboard-${pkgver}"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/tuxedo_keyboard.conf "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
+  cp -r "${srcdir}/tuxedo-keyboard-${pkgver}"/* "${pkgdir}/usr/src/tuxedo-keyboard-${pkgver}"
+  install -Dm644 "${srcdir}/tuxedo-keyboard-${pkgver}"/tuxedo_keyboard.conf "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
   install -Dm644 "${srcdir}"/tuxedo_io.conf "${pkgdir}/etc/modules-load.d/tuxedo_io.conf"
 }
