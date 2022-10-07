@@ -1,7 +1,7 @@
 pkgbase = virtualfish
 	pkgdesc = Fish shell tool for managing Python virtual environments
 	pkgver = 2.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justinmayer/virtualfish
 	arch = any
 	license = MIT

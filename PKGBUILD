@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=virtualfish
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fish shell tool for managing Python virtual environments"
 arch=("any")
 url=https://github.com/justinmayer/virtualfish
