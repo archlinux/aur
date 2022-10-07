@@ -1,6 +1,6 @@
 pkgbase = samplebrain
 	pkgdesc = Custom sample smashing app designed by Aphex Twin
-	pkgver = 0.18.3
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://gitlab.com/then-try-this/samplebrain
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = samplebrain
 	makedepends = liblo
 	makedepends = fftw
 	makedepends = qt5-base
-	source = samplebrain::git+https://gitlab.com/then-try-this/samplebrain.git#commit=524cd5894598fca8e6c42f7f869209e39bc2381f
+	source = samplebrain::git+https://gitlab.com/then-try-this/samplebrain.git#commit=ac83efce3b53c0ae6ca6723602d168b88b8ecb9e
 	b2sums = SKIP
 
 pkgname = samplebrain
