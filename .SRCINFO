@@ -14,11 +14,11 @@ pkgbase = powershell
 	depends = glibc
 	depends = lttng-ust
 	depends = zlib
-	depends = openssl-1.0
+	depends = openssl>=1.0
 	depends = icu
 	options = staticlibs
 	options = !strip
-	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v7.2.1
+	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v7.2.6
 	source = powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	sha256sums = SKIP
