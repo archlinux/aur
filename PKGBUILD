@@ -80,6 +80,6 @@ package() {
       install -m644 "{}" \
       "$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
   install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/$pkgname/"
-  install -Dm644 "$srcdir/cheatsheets/.github/LICENSE-txt" \
+  install -Dm644 "$srcdir/cheatsheets/.github/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/cheatsheets-LICENSE"
 }
