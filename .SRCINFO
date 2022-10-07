@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.tar.sign
-	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.0.0-1194
+	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.0.0-1197
 	source = more-uarches-20220315.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20220315.tar.gz
 	source = 0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-5.19.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch
 	source = 0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-5.19.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch
