@@ -1,0 +1,4 @@
+Mathematica*.sh
+*.pkg.tar
+*.pkg.tar.xz
+*.pkg.tar.zst
