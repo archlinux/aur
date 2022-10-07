@@ -1,8 +1,8 @@
 # Maintainer: Charlie Haley <charlie.haley@hotmail.com>
 
 pkgname=udev-notify-daemon-bin
-pkgver=0.1.3
-pkgrel=12
+pkgver=0.1.4
+pkgrel=13
 pkgdesc="A simple daemon that listens for udev USB events and sends out a notification to dbus"
 url="https://github.com/charlie-haley/udev-notify-daemon"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 )
 sha256sums=(
     '206daa47fa8e6e7b3366cf2ccfc89f0ac505b2f46a88d2da6e2cb330f8d29cc2'
-    'f113da8d274799b42849a0b0fd525166fe256cec7a59430560f96aa9a9844246'
+    '5aa5dd0cc12a3cd1e9490f410db68917b55a31b873f9153b1a71e62c39eb7e01'
 )
 _srcname=udev-notify-daemon
 
