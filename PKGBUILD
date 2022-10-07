@@ -1,15 +1,15 @@
 # Maintainer: splatch
 
 pkgname=mvnd
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Maven Deamon, which aims at providing faster Maven builds using techniques known from Gradle and Takari."
 arch=(x86_64)
 url=https://github.com/apache/maven-mvnd
 license=('Apache')
 depends=('java-environment>=7' 'bash' 'maven')
-source=("${pkgname}-${pkgver}.zip::https://github.com/apache/maven-mvnd/releases/download/${pkgver}/maven-mvnd-${pkgver}-linux-amd64.zip")
-sha256sums=('ab959b606455e0576c5cf39d5f8252f5d2b4d67978a84cd669720f1c2d18fb73')
+source=("${pkgname}-${pkgver}.zip::https://dist.apache.org/repos/dist/dev/maven/mvnd/${pkgver}/maven-mvnd-${pkgver}-linux-amd64.zip")
+sha256sums=('a78b8c107cc7266b7b831d75eadcca4831846405274479b50c5e5ab6a1b5ec24')
 install=.install
 
 package() {
@@ -20,7 +20,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/mvn"
     mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
 
-    cd "${srcdir}/${pkgname}-${pkgver}-linux-amd64"
+    cd "${srcdir}/maven-mvnd-${pkgver}-linux-amd64"
 
     install -m755 bin/*.* "${pkgdir}/usr/share/java/${pkgname}/bin/"
     install -m755 bin/mvnd "${pkgdir}/usr/share/java/${pkgname}/bin/"
