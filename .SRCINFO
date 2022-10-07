@@ -1,13 +1,13 @@
 pkgbase = python-lxmf
 	pkgdesc = Lightweight Extensible Message Format for Reticulum
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/markqvist/lxmf
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-rns
-	source = https://files.pythonhosted.org/packages/source/l/lxmf/lxmf-0.1.9.tar.gz
-	sha256sums = fc00501d8f051fc66e9563d62531105fdbcd7f9153a5840e576bb58c544621ce
+	source = https://files.pythonhosted.org/packages/source/l/lxmf/lxmf-0.2.0.tar.gz
+	sha256sums = f6d0679381f7b9dd75cf9f9ad6268b0c2e1f8a935568fe782cfe5ca11876f1c8
 
 pkgname = python-lxmf
