@@ -138,6 +138,12 @@ _zstd_level_value=${_zstd_level_value-'normal'}
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 _use_llvm_lto=${_use_llvm_lto-}
 
+# Use suffix -lto only when requested by the user
+# Enabled by default.
+# If you do not want the suffix -lto remove the "y" sign next to the flag.
+# https://github.com/CachyOS/linux-cachyos/issues/36
+_use_lto_suffix=${_use_lto_suffix-y}
+
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
 # scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
@@ -180,7 +186,7 @@ _nest=${_nest-}
 # https://gitlab.com/ananicy-cpp/ananicy-cpp/-/tree/feature/latency-nice
 _latency_nice=${_latency_nice-}
 
-if [ -n "$_use_llvm_lto" ]; then
+if [[ -n "$_use_llvm_lto" && -n "$_use_lto_suffix" ]]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
 
@@ -1021,8 +1027,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
-            '61479bd23bafaad89512ef9cdd420b40797da40691503ee89ae188cb51bb4924'
-            'f0e02c04001b39a79344a114daceda589658f79035ad8d912c3d3528c13d35ca'
+            '94579d96177a5eb8ef4227dd10f70d999e2f17acb182fe7cb3b659a5c50a9cc5'
+            'fe22c8635aaa0d17742c3bcb943692782902c3eb8c213adfe47bb5dd517021e9'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
             '8180568fa32a598c9643cb757daa4a8b59b4d888917aa086f82f4929dcaea3d5'
             'e6146243342077c1c755ed377ebb866cd8f40cbfe7a1a86b7dfbd076151a0b3f')
