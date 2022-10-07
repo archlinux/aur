@@ -4,7 +4,7 @@
 
 pkgname=python-galsim
 _pkg=GalSim
-pkgver=2.3.5
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Modular galaxy image simulation toolkit"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-nose' 'python-yaml' 'python-pandas')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/G/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('369d86d86919eca95c3bafdca37415e3db98abb1066f5f909efb2a04bf043ae5')
+sha256sums=('7134e7d00847bb9670ac9568bd16a131611a811ad6a9e7d0fb1e1518771fb7b3')
 
 build() {
 	cd "$_pkg-$pkgver"
