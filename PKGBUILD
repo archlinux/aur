@@ -2,7 +2,7 @@
 # Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=r2664.d34545f0
+pkgver=r2681.680ad341
 pkgrel=1
 pkgdesc='The Hare programming language'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://harelang.org/'
 license=('GPL3' 'MPL2')
 depends=('qbe' 'harec')
 makedepends=('git' 'scdoc')
-_commit='d34545f0a7b228ae402bb2091c7b15548aee3e20'
+_commit='680ad341ca06ba932ac1442eab68004c196e28fc'
 source=("hare::git+https://git.sr.ht/~sircmpwn/hare#commit=$_commit")
 b2sums=('SKIP')
 
