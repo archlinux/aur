@@ -112,10 +112,14 @@ check() {
 package() {
     mkdir "${pkgdir}/usr/" || true
     cp -R "${srcdir}/build/"{bin,lib} "${pkgdir}/usr/"
+    cp -R "${srcdir}/build/usr/lib" "${pkgdir}/usr/"
 
-    # Fix systemd unit
+    # Fix systemd units
     sed -i \
         -e "s%ExecStart=/bin/warp-svc%ExecStart=/usr/bin/warp-svc%" \
         "${pkgdir}"/usr/lib/systemd/system/warp-svc.service
+    sed -i \
+        -e "s%ExecStart=/bin/warp-taskbar%ExecStart=/usr/bin/warp-taskbar%" \
+        "${pkgdir}"/usr/lib/systemd/user/warp-taskbar.service
 
 }
