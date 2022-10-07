@@ -1,6 +1,6 @@
 pkgbase = python-dephell-changelogs
 	pkgdesc = Find changelog for github repository, local dir, parse changelog
-	pkgver = 0.0.2
+	pkgver = 0.0.1
 	pkgrel = 6
 	url = https://github.com/dephell/dephell_changelogs
 	arch = any

@@ -3,7 +3,7 @@
 
 _pkgname=dephell_changelogs
 pkgname=python-dephell-changelogs
-pkgver=0.0.2
+pkgver=0.0.1
 pkgrel=6
 pkgdesc="Find changelog for github repository, local dir, parse changelog"
 arch=('any')
