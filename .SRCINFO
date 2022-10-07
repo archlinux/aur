@@ -1,0 +1,21 @@
+pkgbase = gnome-shell-extension-gsconnect-g43-git
+	pkgdesc = Temporary fix for GNOME 43 for GSConnnect (MacTavishAO's fork)
+	pkgver = 56.3
+	pkgrel = 1
+	url = https://github.com/MacTavishAO/gnome-shell-extension-gsconnect
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = eslint
+	depends = gnome-shell
+	optdepends = folks: Contacts integration (Evolution)
+	optdepends = libgdata: Contacts integration (GNOME Online Accounts)
+	optdepends = python-nautilus: Nautilus integration
+	optdepends = gsound: Themed sound effects
+	provides = gnome-shell-extension-gsconnect-g43
+	conflicts = gnome-shell-extension-gsconnect-g43
+	source = git+https://github.com/MacTavishAO/gnome-shell-extension-gsconnect
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-gsconnect-g43-git
