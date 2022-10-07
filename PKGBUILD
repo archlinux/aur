@@ -2,7 +2,7 @@ pkgdesc="ROS - MAVLink communication library."
 url='https://wiki.ros.org/libmavconn'
 
 pkgname='ros-noetic-libmavconn'
-pkgver=1.14.0
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
