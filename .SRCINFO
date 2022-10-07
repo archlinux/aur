@@ -1,7 +1,7 @@
 pkgbase = retsnoop
 	pkgdesc = BPF-based tool for detecting error conditions in the kernel
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anakryiko/retsnoop
 	arch = x86_64
 	groups = linux-tools
