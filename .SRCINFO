@@ -1,0 +1,34 @@
+pkgbase = engine-sim-git
+	pkgdesc = Combustion engine simulator that generates realistic audio.
+	pkgver = r235.1ca3c6b
+	pkgrel = 1
+	url = https://github.com/ange-yaghi/engine-sim
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = bison
+	makedepends = boost
+	makedepends = flex
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	provides = engine-sim
+	conflicts = engine-sim
+	source = git+https://github.com/bobsayshilol/engine-sim.git#branch=runtime-paths
+	source = git+https://github.com/ange-yaghi/csv-io.git
+	source = git+https://github.com/phire/delta-studio.git#branch=clang_linux
+	source = git+https://github.com/ange-yaghi/direct-to-video.git
+	source = git+https://github.com/ange-yaghi/piranha.git
+	source = git+https://github.com/ange-yaghi/simple-2d-constraint-solver.git
+	source = events.patch::https://github.com/phire/delta-studio/pull/2.patch
+	source = misc.patch::https://github.com/phire/delta-studio/pull/3.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = engine-sim-git
