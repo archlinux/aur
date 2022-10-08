@@ -21,6 +21,7 @@ package() {
 	install -Dm 755 "$work_dir/mcsctl.sh" "$pkgdir/usr/bin/mcsctl"
 	install -Dm 644 "$work_dir/mcs-update@.timer" "$pkgdir/usr/lib/systemd/system/mcs-update@.timer"
 	install -Dm 644 "$work_dir/mcs-update@.service" "$pkgdir/usr/lib/systemd/system/mcs-update@.service"
+	install -Dm 644 "$work_dir/mcsctl-completion.bash" "$pkgdir/usr/share/bash-completion/completions/mcsctl"
 
 	# Generate an example config file from default options inside the mcsctl script
 	sed -n '/\# Mutable config/,/\# \/Mutable config/p' "$work_dir/mcsctl.sh" | head -n -1 | tail -n +2 > "$srcdir/$pkgname-$pkgver/mcsctl.conf.bak"
