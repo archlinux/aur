@@ -1,5 +1,5 @@
 pkgbase = brother-hll2325dw
-	pkgdesc = Brother HL-L2325DW CUPS driver
+	pkgdesc = Brother HL-L2325DW CUPS driver (based on Brother's rpm package)
 	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://www.brother.com

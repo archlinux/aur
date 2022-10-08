@@ -1,5 +1,5 @@
-# Maintainer: Stefano Franchi <Stefano Franchi at gmail dot com>
-
+# Maintainer: Stefano Franchi <stefano.franchi at gmail dot com>
+# Based on brother-hll-2350dw by Roman Schmocker (schmocker.roman at gmail)
 pkgname=brother-hll2325dw
 pkgver=4.0.0
 pkgrel=1
