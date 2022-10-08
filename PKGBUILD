@@ -3,8 +3,8 @@
 
 pkgname=linode-cli
 pkgver=5.23.0
-_pkgver=4.136.0
-pkgrel=4
+_pkgver=4.137.0
+pkgrel=5
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-*}/${pkgname}"
@@ -22,7 +22,7 @@ install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
 sha512sums=('1db1bba6bb256a7f75b7117113e14cad1838a8fa20585d78d799d1717530842553f74ffab1a97bd7e2fde1bfa847172e0f3459a07c7dfd59d420e9b46d1cafdd'
-            '50bcfb434bb8ecf57c5afc09de6d93e2ab083807c0c6fca71105c6a14089dda571f6aaae04b7c540efc1aec3a9e751a4def931fb7963c98d758a00ba76a2847a')
+            'fcd630c379a5e9fb93e36c67d4d35762b1a6416e1ae9b7b21679c794a7f65fc731435731f13d4682d295f0dc365c86f9e0d657652de315aeb35ff9fd1ebdc3b2')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
