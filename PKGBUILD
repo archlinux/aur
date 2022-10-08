@@ -2,14 +2,14 @@
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=alberta
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Adaptive multi-Level finite element toolbox"
-url="http://www.alberta-fem.de"
+url="https://www.alberta-fem.de"
 license=('GPL2')
 arch=('x86_64')
-makedepends=('gcc-fortran') #'blas' 'electricfence' 'duma'
-source=("https://gitlab.mathematik.uni-stuttgart.de/ians-nmh/${pkgname}/${pkgname}3/-/archive/releases/${pkgname}3-releases.tar.gz")
-sha512sums=('3a03d671f8d1fdeb72b8463e7f732dd79ccbd24ce15a23a6e1ffe2a22adff6feb861939382dad627a9c554c5e5024732974dc3a9ae8e99207db560f96f509e13')
+makedepends=('gcc-fortran') # 'blas' 'electricfence' 'duma'
+source=("https://gitlab.com/${pkgname}-fem/${pkgname}3/-/archive/releases/${pkgname}3-releases.tar.gz")
+sha512sums=('0d502a7123db09d7c54fd8bb59de236a4e76a17d5922adf8b3b6b0e90963a563e4cb6dfda9434bc64fde011fe7f07e9375909fb267b69cb741b457cf645b5d81')
 
 build() {
   cd "${srcdir}/${pkgname}3-releases"
