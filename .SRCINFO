@@ -1,6 +1,6 @@
 pkgbase = python-sdbus-git
 	pkgdesc = Modern Python library for D-Bus
-	pkgver = r591.9da0fa3
+	pkgver = r649.938ca81
 	pkgrel = 1
 	url = https://github.com/python-sdbus/python-sdbus
 	arch = x86_64

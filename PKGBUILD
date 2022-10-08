@@ -6,7 +6,7 @@ pkgname=(
     'python-sdbus-secrets-git'
 )
 pkgbase='python-sdbus-git'
-pkgver=r591.9da0fa3
+pkgver=r649.938ca81
 pkgrel=1
 pkgdesc="Modern Python library for D-Bus"
 arch=('x86_64')
@@ -49,8 +49,9 @@ build () {
 check () {
     # TODO: After having a meson build system
     cd "$srcdir/$pkgbase"
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    env PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" python -m unittest --verbose
+    local test_lib_dir="./libtest"
+    python setup.py build --build-lib "$test_lib_dir"
+    env PYTHONPATH="$test_lib_dir" python -m unittest --verbose
 }
 
 package_python-sdbus-git() {
