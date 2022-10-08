@@ -1,10 +1,10 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 _pkgname=gdm-settings
 pkgname=gdm-settings-beta
-pkgdesc="A settings app for Gnome's Login Manager (GDM)"
+pkgdesc="A settings app for Gnome's Login Manager, GDM"
 url="https://github.com/realmazharhussain/gdm-settings"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=('AGPL3')
 depends=('gdm' 'libadwaita' 'glib2' 'python-gobject' 'gettext' 'polkit')
