@@ -29,6 +29,8 @@ build() {
 
 package() {
 	cd "$pkgname"
+	mkdir -p ${pkgdir}/usr/share/${pkgname}
+	cp -rf * ${pkgdir}/usr/share/${pkgname}
 	install -Dm775 ./gpu-passthrough-manager "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"	
 	
