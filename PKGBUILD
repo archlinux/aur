@@ -3,9 +3,9 @@
 pkgname=ame-git
 _pkgname=amethyst
 _shortname="${pkgname%-git}"
-pkgver=4.0.2.r576.5315b76
+pkgver=4.0.3.r576.5315b76
 pkgrel=1
-pkgdesc='A fast and efficient AUR helper (git version)'
+pkgdesc='Amethyst is a fast and efficient AUR helper (git version)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/crystal-linux/${_pkgname}"
 license=('GPL3')
