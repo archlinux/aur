@@ -2,3 +2,4 @@ src/
 pkg/
 *.pkg.tar.*
 *.deb
+jicofo.conf
