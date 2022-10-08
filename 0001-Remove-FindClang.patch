@@ -1,19 +1,22 @@
-From f900e808ecf3331a04f1ed71e344db40b30b1850 Mon Sep 17 00:00:00 2001
+From 7a9bc3ec5655ee1ed0564329e286bfbb1e7c0a73 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
-Date: Sat, 5 Mar 2022 14:39:31 +0100
-Subject: [PATCH 3/4] Remove FindClang
+Date: Sat, 26 Feb 2022 11:41:09 +0100
+Subject: [PATCH] Remove FindClang
 
 ---
- src/cmake/Modules/FindClang.cmake | 127 ------------------------------
- 1 file changed, 127 deletions(-)
+ src/cmake/Modules/FindClang.cmake | 123 ------------------------------
+ 1 file changed, 123 deletions(-)
  delete mode 100644 src/cmake/Modules/FindClang.cmake
 
 diff --git a/src/cmake/Modules/FindClang.cmake b/src/cmake/Modules/FindClang.cmake
 deleted file mode 100644
-index 41df6e10..00000000
+index c60f254e..00000000
 --- a/src/cmake/Modules/FindClang.cmake
 +++ /dev/null
-@@ -1,127 +0,0 @@
+@@ -1,123 +0,0 @@
+-# SPDX-License-Identifier: BSD-3-Clause
+-# Copyright 2011 Blender Foundation.
+-
 -# - Find Clang library
 -# Find the native Clang includes and library
 -# This module defines
@@ -23,13 +26,6 @@ index 41df6e10..00000000
 -#  CLANG_ROOT_DIR, The base directory to search for Clang.
 -#                        This can also be an environment variable.
 -#  CLANG_FOUND, If false, do not try to use Clang.
--
--#=============================================================================
--# Copyright 2021 Blender Foundation.
--#
--# Distributed under the OSI-approved BSD 3-Clause License,
--# see accompanying file BSD-3-Clause-license.txt for details.
--#=============================================================================
 -
 -# If CLANG_ROOT_DIR was defined in the environment, use it.
 -if(NOT CLANG_ROOT_DIR AND NOT $ENV{CLANG_ROOT_DIR} STREQUAL "")
@@ -142,5 +138,5 @@ index 41df6e10..00000000
 -unset(_CLANG_FIND_COMPONENTS)
 -unset(_CLANG_LIBRARIES)
 -- 
-2.35.1
+2.37.3
 

@@ -10,8 +10,8 @@
 [[ -v CUDA_HOST_COMPILER ]] && _cuda_host_compiler=(${CUDA_HOST_COMPILER})
 
 pkgname=cycles-standalone
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
@@ -20,27 +20,16 @@ depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree o
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=f0d2f3fca4daca1d7c2f4a39f3caea4a70186700"
-        0001-SelectCudaComputeArch.patch
-        0002-OpenEXR3.patch
-        0003-Remove-FindClang.patch
-        0004-FindOpenImageIO.patch
+source=("git+https://github.com/blender/cycles.git#commit=3cdcc8ac9273f8893880f85b5f11decd833a10d1"
+        0001-Remove-FindClang.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
-            '66c02b42e1b5c29aa0755d81fe684ddfd9d1b8f1d576e6873228de276b5d7c36'
-            '8e982140e10367fa04f0548b0567014401ada3c1df1385c4478b2bac8509fa23'
-            '8023662b9578f535a4094ec47f76c134ebf3472d352759775a60d0590d6e6b27'
-            '95a893fa34f2ad40bfc44ee3253408c96bc8ed5ebaa03d4117613d7641489be5'
+            '03bfcbcb9f6a78a3f59ef74ec77f09e43818c90cebf4f2c89b04ec608d341ce1'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
     _src_root_dir="$srcdir/cycles"
-    if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
-      git -C "$_src_root_dir"  apply -v "${srcdir}"/0001-SelectCudaComputeArch.patch
-    fi
-    git -C "$_src_root_dir" apply -v "${srcdir}"/0002-OpenEXR3.patch
-    git -C "$_src_root_dir" apply -v "${srcdir}"/0003-Remove-FindClang.patch
-    git -C "$_src_root_dir" apply -v "${srcdir}"/0004-FindOpenImageIO.patch
+    git -C "$_src_root_dir" apply -v "${srcdir}"/0001-Remove-FindClang.patch
 }
 
 build() {
@@ -66,6 +55,9 @@ build() {
 
     echo "${_CMAKE_FLAGS[@]}"
     # Make app
+    #
+    # INFO (2022-10-08):
+    # we don't support NanoVDB at the moment (no nanovdb package in AUR...)
     cmake -B build -S "cycles" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -73,6 +65,7 @@ build() {
         -DWITH_CYCLES_OSL=TRUE \
         -DWITH_CYCLES_LOGGING=TRUE \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
+        -DWITH_CYCLES_NANOVDB=FALSE \
         "${_CMAKE_FLAGS[@]}" \
         -Wno-dev
 
