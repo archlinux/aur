@@ -8,7 +8,7 @@ pkgname=libcurlpp
 pkgver="0.8.1"
 pkgrel=2
 pkgdesc="cURLpp is a C++ wrapper for libcURL."
-arch=('i686' 'x86_64', 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://curlpp.org"
 license=('MIT')
 depends=('curl>=7.10.0')

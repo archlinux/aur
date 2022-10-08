@@ -5,6 +5,7 @@ pkgbase = libcurlpp
 	url = http://curlpp.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake>=2.8.12
 	depends = curl>=7.10.0
@@ -12,4 +13,3 @@ pkgbase = libcurlpp
 	md5sums = 2fdd2fc2e577b7e76193018cac457e9c
 
 pkgname = libcurlpp
-
