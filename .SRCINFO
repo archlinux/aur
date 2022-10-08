@@ -1,12 +1,11 @@
 pkgbase = linux-drm-tip-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 5.14.r1029802.5e0ea887acd4
+	pkgver = 6.0.r1125124.74e2443e7681
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm-tip
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = cpio
@@ -18,22 +17,24 @@ pkgbase = linux-drm-tip-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
 	source = linux-drm-tip-git::git://anongit.freedesktop.org/drm-tip#branch=drm-tip
 	source = config
 	sha256sums = SKIP
-	sha256sums = 6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84
+	sha256sums = 85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144
 
 pkgname = linux-drm-tip-git
 	pkgdesc = The Linux kernel with bleeding-edge GPU drivers kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
