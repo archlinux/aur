@@ -1,7 +1,7 @@
 # Maintainer: Hezekiah Michael < spiritomb at protonmail dot com>
 
 pkgname=neovim-colors-brogrammer-noguibg-git
-pkgver=r.
+pkgver=r40.5477768
 pkgrel=1
 pkgdesc="A dark, colorful syntax highlighting theme. A fork without a set gui background."
 arch=('any')
