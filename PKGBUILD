@@ -11,12 +11,6 @@ depends=(kwin)
 source=("git+${url}")
 md5sums=(SKIP)
 
-pkgver() {
-    cd kde-snap-assist
-    vergit=$(git tag | sort | tail -n1 | sed 's|v||')
-    echo $vergit
-}
-
 package() {
   newname=$(echo $pkgname | sed 's/-//g')
   mv ${pkgname} ${newname}
