@@ -1,6 +1,6 @@
 pkgbase = python-images-upload-cli
 	pkgdesc = Upload images via APIs
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/DeadNews/images-upload-cli
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-images-upload-cli
 	depends = python-pillow
 	depends = python-pyperclip
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/i/images-upload-cli/images-upload-cli-1.0.6.tar.gz
-	sha256sums = f9cb4c91a5a2e137e3392fcf7860479f053d3a1850917e3fbdb425829b173d37
+	source = https://files.pythonhosted.org/packages/source/i/images-upload-cli/images-upload-cli-1.0.7.tar.gz
+	sha256sums = 6886986f118be4443d6bd46013afc64994c15b503e0f706940ec50ac760b3958
 
 pkgname = python-images-upload-cli
 	depends = python
