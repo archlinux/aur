@@ -1,6 +1,6 @@
 pkgbase = python-aggdraw
 	pkgdesc = Module to implements the basic WCK 2D Drawing Interface on top of the AGG library.
-	pkgver = 1.3.12
+	pkgver = 1.3.15
 	pkgrel = 1
 	url = https://github.com/pytroll/aggdraw
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = python-aggdraw
 	makedepends = python-setuptools
 	depends = python
 	depends = freetype2
-	source = https://files.pythonhosted.org/packages/c0/fe/ecb4d498145c825c5df565afb9fb3a52ff329599127d904d2bab6104506a/aggdraw-1.3.12.tar.gz
-	sha256sums = 129cbd59544bf208d2a3c62ff084bcf6c32d22d576a039186d954f8d201920a5
+	source = https://files.pythonhosted.org/packages/63/90/8cabdc73526cd8628ddb124e2e55f77dc3324bdddccc3dd14d070076bb19/aggdraw-1.3.15.tar.gz
+	sha256sums = 9aba19855e6b23c36e18a9462ad319ad11a7c222d33341ae21a5669840e5018d
 
 pkgname = python-aggdraw
-
