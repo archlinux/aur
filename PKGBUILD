@@ -2,7 +2,7 @@
 _pkgname=signalbackup-tools
 pkgname=${_pkgname}-git
 pkgver=20220914.1.r1.g3792949
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to work with Signal Backup files"
 arch=('x86_64')
 url="https://github.com/bepaald/signalbackup-tools"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	/bin/bash ./BUILDSCRIPT.sh
+	/bin/bash ./BUILDSCRIPT_MULTIPROC.bash44
 }
 
 package() {
