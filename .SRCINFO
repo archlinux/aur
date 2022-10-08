@@ -1,0 +1,11 @@
+pkgbase = force-upgrade
+	pkgdesc = Force upgrade or reinstall pacman keys
+	pkgver = 22.10.07
+	pkgrel = 2359
+	url = https://github.com/biglinux/force-upgrade
+	arch = any
+	license = GPL
+	source = git+https://github.com/biglinux/force-upgrade.git
+	md5sums = SKIP
+
+pkgname = force-upgrade
