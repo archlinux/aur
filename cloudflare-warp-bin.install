@@ -15,6 +15,11 @@ post_install() {
         echo "==>"
 	echo "==>   sudo systemctl enable --now warp-svc.service"
         echo "==>"
+        echo "==>"
+	echo "==> To also enable the taskbar now and automatically after startup:"
+        echo "==>"
+	echo "==>   systemctl --user enable --now warp-taskbar"
+        echo "==>"
         echo ""
 }
 
