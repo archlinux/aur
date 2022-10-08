@@ -1,0 +1,15 @@
+pkgbase = bigbashview
+	pkgdesc = BigBashView is a python app to run Bash+HTML in a Desktop WebView
+	pkgver = 3.6.6_2022_10_07
+	pkgrel = 2
+	url = https://github.com/biglinux/bigbashview
+	arch = any
+	license = GPL
+	depends = pyside6
+	depends = python-six
+	depends = webkit2gtk-4.1
+	depends = qt6-webengine
+	source = git+https://github.com/biglinux/bigbashview.git
+	md5sums = SKIP
+
+pkgname = bigbashview
