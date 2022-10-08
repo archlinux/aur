@@ -1,0 +1,18 @@
+pkgbase = bigcontrolcenter
+	pkgdesc = Complete control center to use in BigLinux with KDE
+	pkgver = 2022_10_07
+	pkgrel = 2349
+	url = https://github.com/biglinux/bigcontrolcenter
+	arch = any
+	license = GPL
+	depends = bigbashview
+	depends = kdialog
+	depends = print-manager
+	depends = gnome-alsamixer
+	depends = inxi
+	depends = biglinux-driver-manager
+	depends = geticons
+	source = git+https://github.com/biglinux/bigcontrolcenter.git
+	md5sums = SKIP
+
+pkgname = bigcontrolcenter
