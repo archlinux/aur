@@ -1,15 +1,15 @@
 # Maintainer: Hezekiah Michael < spiritomb at protonmail dot com>
 
 pkgname=neovim-colors-brogrammer-git
-pkgver=r2.a6518f8
+pkgver=r4.8aa391d
 pkgrel=1
 pkgdesc="A dark, colorful syntax highlighting theme."
 arch=('any')
-url="https://github.com/ErikBoesen/vim-brogrammer-theme"
+url="https://github.com/marciomazza/vim-brogrammer-theme"
 license=('unknown')
 makedepends=('git')
 depends=('neovim')
-source=("$pkgname::git://github.com/ErikBoesen/vim-brogrammer-theme.git")
+source=("$pkgname::git+https://github.com/marciomazza/vim-brogrammer-theme.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -17,7 +17,9 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -dm755 $pkgdir/usr/share/nvim/runtime/colors
-    install -Dm644 colors/* $pkgdir/usr/share/nvim/runtime/colors/
+    cd "$pkgname"
+    find colors \
+            -type f \
+            -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
