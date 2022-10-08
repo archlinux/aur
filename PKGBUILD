@@ -18,9 +18,11 @@ pkgver() {
 }
 
 package() {
-#   cd $srcdir/KWin-window-positioning-scripts
+  newname=$(echo $pkgname | sed 's/-//g')
+  mv ${pkgname} ${newname}
   mkdir -p "${pkgdir}/usr/share/kwin/scripts/"
-  cp -R ${srcdir}/${pkgname} "${pkgdir}/usr/share/kwin/scripts/"
-  rm -r "${pkgdir}/usr/share/kwin/scripts/${pkgname}/.git"
-  rm -r "${pkgdir}/usr/share/kwin/scripts/${pkgname}/.github"
+  rm -r "${srcdir}/${newname}/.git"
+  rm -r "${srcdir}/${newname}/.github"
+  rm -r "${srcdir}/${newname}/assets"
+  cp -R "${srcdir}/${newname}" "${pkgdir}/usr/share/kwin/scripts/"
 }
