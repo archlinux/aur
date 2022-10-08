@@ -1,7 +1,7 @@
 pkgbase = bibata-cursor-translucent
 	pkgdesc = Translucent Material Based Cursor Theme.
 	pkgver = 1.1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Silicasandwhich/Bibata_Cursor_Translucent.git
 	arch = any
 	license = GPL

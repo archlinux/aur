@@ -1,7 +1,7 @@
 # Maintainer: Luna Brown <SilicaSandwhich@gmail.com>
 pkgname=bibata-cursor-translucent
 pkgver=1.1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Translucent Material Based Cursor Theme."
 arch=('any')
 url="https://github.com/Silicasandwhich/Bibata_Cursor_Translucent.git"
