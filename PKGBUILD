@@ -1,7 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=20.3.0.Nexus.r10.gd7f552c
-bento4ver=1.6.0-639-3-Nexus
+pkgver=20.3.1.Nexus.r0.gfa470be
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 20+"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
@@ -13,10 +12,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 # kodi 20
 source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Nexus"
-        "bento4-$bento4ver.tar.gz::https://github.com/xbmc/Bento4/archive/refs/tags/$bento4ver.tar.gz")
-noextract=('bento4.tar.gz')
+        "xbmc-bento4::git+https://github.com/xbmc/Bento4.git#branch=release/v1.6.0-639-kodi")
 sha256sums=('SKIP'
-            '073efdc1d37140d813e5ee7ea33b3497531d2180ed3593280d13478391b9d049')
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -26,6 +24,8 @@ pkgver() {
 prepare() {
   [[ -d "$srcdir/$pkgname/$pkgname-build" ]] && rm -r "$srcdir/$pkgname/$pkgname-build"
   mkdir -p "$srcdir/$pkgname/$pkgname-build"
+  cd "$srcdir/xbmc-bento4"
+  git archive --format tar.gz -o "$srcdir/xbmc-bento4.tar.gz" HEAD .
 }
 
 build() {
@@ -35,7 +35,7 @@ build() {
            -DBUILD_SHARED_LIBS=1 \
            -DBUILD_TESTING=0 \
            -DENABLE_INTERNAL_BENTO4=ON \
-           -DBENTO4_URL="$srcdir/bento4-$bento4ver.tar.gz" \
+           -DBENTO4_URL="$srcdir/xbmc-bento4.tar.gz" \
            -DUSE_LTO=1
   make
 }
