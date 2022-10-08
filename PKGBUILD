@@ -1,7 +1,7 @@
-#Maintainer: zebdo <zebdo 4t zebdo d0t net>
+#Maintainer: zebdo <zebdo [at] posteo [dot] ee>
 
 pkgname=flipflip-bin
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="The latest pre-compiled package from the official GitHub page - a glorified slideshow, with lots of bells and whistles"
 url="https://github.com/ififfy/flipflip"
@@ -12,7 +12,7 @@ source=("flipflip.sh" "flipflip.desktop"
         "FlipFlip-Linux.zip::https://github.com/ififfy/flipflip/releases/download/v${pkgver}/FlipFlip-Linux.zip")
 sha256sums=('456141af40b4d96c8d3fc6f5b31306e8db625fde1db48bbfa3e1f44e7cc8895f'
             'a8b776757171dc59876c9f0e938328beff3ab7c8f12dc38cde8caa063ddc3038'
-            'e89593f63682ae36483ec5ac3a5ddc5d0e9837da60d08a9bb33a79463d363c2a')
+            'dc5792e769f0df650b159084d9147421c49439651a25ef14d9c50e102b857028')
 
 package() {
     # extract zip file
