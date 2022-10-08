@@ -1,0 +1,18 @@
+pkgbase = deduper-git
+	pkgdesc = Deduper finds you similar images on your local filesystem.
+	pkgver = r106.bda14d2
+	pkgrel = 1
+	url = https://cgit.chrisoft.org/deduper.git/
+	arch = x86_64
+	arch = aarch64
+	license = MPL2.0
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = cmake
+	depends = qt5-base
+	depends = opencv
+	conflicts = qdeduper
+	source = git+https://git.chrisoft.org/git/deduper.git
+	md5sums = SKIP
+
+pkgname = deduper-git
