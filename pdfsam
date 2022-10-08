@@ -1,5 +1,5 @@
 #!/bin/sh
-# run application with java env >= 8
+# run application with java env == 11
 
 PDFSAM_EXECUTABLE="/usr/share/java/pdfsam/bin/pdfsam.sh"
 PDFSAM_JAVA_VERSION="11"
