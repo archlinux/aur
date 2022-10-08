@@ -1,3 +1,6 @@
+2022-10-08 GregTheMadMonk <yagreg7@gmail.com> (credit for initial fix https://github.com/icolquhoun)
+	* 11
+	- Fix GNOME 42 compatibility
 2021-12-22 GregTheMadMonk <yagreg7@gmail.com>
 	* 10
 	- Update extension according to review notes on GNOME Extensions
