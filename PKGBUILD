@@ -2,7 +2,7 @@
 
 pkgname=aria2cd
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=(any)
 url="https://aur.archlinux.org/packages/aria2cd"
@@ -24,7 +24,7 @@ sha256sums=('85f465f6f32a1713f65c389b57f81d26cecfb1e7baf06c38f6b9477818fc4f85'
             '832238f364e518f66492ddf19b8b6b573847b216ffaa4bd30dceb36c7d325c56'
             '79e7fad888a53769776f691d3ce14bd29fc617bb58267304a9b04aa6ccbf4cf5'
             'd3dc278eeddbc910c775124bf474aa2c68b7bbba30226f6322ffc2c457785d27'
-            '334c0e9eed1a09cd1f44da4323a61aa79a3c4f2d51bec8a948c3d922867a5b1f'
+            '1ee51459337fafc9767734d1274cedbc1d5bf5c3092c98040235b7360a9b5925'
             '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5')
 package(){
 	mkdir -p "${pkgdir}/usr/share/aria2"
