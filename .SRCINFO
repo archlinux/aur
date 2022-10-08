@@ -1,4 +1,4 @@
-pkgbase = typora-free
+pkgbase = mark-ty
 	pkgdesc = A minimal markdown editor and reader.
 	pkgver = 1.4.7
 	pkgrel = 1
@@ -11,9 +11,13 @@ pkgbase = typora-free
 	depends = alsa-lib
 	optdepends = noto-fonts-emoji: Or some other emoji font to see emojis
 	optdepends = pandoc: Import/export for extra file formats
+	provides = typora
+	provides = typora-free
+	conflicts = typora
+	conflicts = typora-free
 	source = https://typora.io/linux/typora_1.4.7_amd64.deb
 	source = https://github.com/zzy-ac/repo/releases/download/source/typora-crack
 	sha512sums = fec39383931f0a9a41d2d8bb2d71895200bdadf7d9dedc5bf321ccd626de61a9afc2a476cfd0db028c5382484350a42e00eb3e166c588b960d43d4ccb3c8f277
 	sha512sums = 5594d11792fcab8ec4b159fd3b51160b76b0c7474f124fe8c86b421341d549c227c88732346b384502aa4cf6887cfb73098429d121ae42e6761f26db9fca68e4
 
-pkgname = typora-free
+pkgname = mark-ty

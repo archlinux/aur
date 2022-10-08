@@ -13,6 +13,8 @@ depends=('gtk3' 'nss' 'alsa-lib')
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
 	'pandoc: Import/export for extra file formats')
+provides=("typora" "typora-free")
+conflicts=("typora" "typora-free")
 _filename="${_pkgname}_${pkgver}_amd64.deb"
 install=typora.install
 source=("https://typora.io/linux/$_filename"
@@ -25,11 +27,11 @@ package() {
 	# remove lintian overrides
 	rm -rf "$pkgdir/usr/share/lintian/"
 	# move license to correct path
-	install -Dm644 "$pkgdir/usr/share/doc/$pkgname/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$pkgdir/usr/share/doc/$_pkgname/copyright" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	# delete previous copyright path
-	rm "$pkgdir/usr/share/doc/$pkgname/copyright"
+	rm "$pkgdir/usr/share/doc/$_pkgname/copyright"
 	# delete doc dir if empty
-	rmdir --ignore-fail-on-non-empty "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/doc"
+	rmdir --ignore-fail-on-non-empty "$pkgdir/usr/share/doc/$_pkgname" "$pkgdir/usr/share/doc"
 	# remove change log from application comment
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
 	# fix dir permissions
