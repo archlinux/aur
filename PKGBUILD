@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
@@ -21,11 +21,9 @@ source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver
         cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=bf447aeb3bf57680f0c257f9d77ea7f5ef90b0ec
         qml-colorpicker::git+https://github.com/rshest/qml-colorpicker.git#commit=5967b3e38033794f54d66c57a03f9a356df0dc03
         face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
-        github_api::git+https://github.com/Kicer86/github_api.git#commit=4080d1a357ac5271f0871d9c077cd56491a32430
 )
 noextract=()
 md5sums=('19c042f359b47ef954b11bc67f967577'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -35,10 +33,8 @@ prepare()
     rm -d $pkgname-$pkgver/cmake_modules
     rm -d $pkgname-$pkgver/src/gui/desktop/quick_items/external/qml-colorpicker
     rm -d $pkgname-$pkgver/src/face_recognition/dlib_wrapper/face_recognition_models
-    rm -d $pkgname-$pkgver/src/updater/github_api
     ln -s ../cmake_modules $pkgname-$pkgver/cmake_modules
     ln -s ../../../../../../qml-colorpicker $pkgname-$pkgver/src/gui/desktop/quick_items/external/qml-colorpicker
-    ln -s ../../../github_api $pkgname-$pkgver/src/updater/github_api
     ln -s ../../../../face_recognition_models $pkgname-$pkgver/src/face_recognition/dlib_wrapper/face_recognition_models
 }
 
