@@ -24,7 +24,7 @@ source=("https://github.com/lutzroeder/netron/archive/v${pkgver}/netron-${pkgver
 sha256sums=('7d3ef3b7a6c63390802301f7e143ea0413c07799bbb486fce41eab4a1005d735')
 
 prepare() {
-  cd netron-$pkgver
+  cd "${pkgbase}-${pkgver}"
 
   # Use dependencies from Arch
   sed '/python -m pip/d' -i Makefile
@@ -34,13 +34,13 @@ prepare() {
 }
 
 build() {
-  cd netron-$pkgver
+  cd "${pkgbase}-${pkgver}"
   make clean build_python build_electron
 }
 
 package_netron() {
-  provides=('netron' 'netron-cli')
   depends+=('gtk3' 'nss' 'dbus-glib' 'libdbusmenu-glib')
+  provides=('netron' 'netron-cli')
   conflicts=('netron-cli' 'netron-bin')
 
   cd "${pkgbase}-${pkgver}"
@@ -65,7 +65,7 @@ package_netron() {
 }
 
 package_netron-cli() {
-  pkgdesc='Visualizer for neural network, deep learning, and machine learning models (CLI only)'
+  pkgdesc="${pkgdesc} (CLI only)"
   arch=(any)
   conflicts=('netron')
 
