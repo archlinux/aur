@@ -1,0 +1,15 @@
+pkgbase = dracula-qtcreator-theme-git
+	pkgdesc = Dark theme for Qt Creator
+	pkgver = r27.898dbb5
+	pkgrel = 1
+	url = https://github.com/dracula/qtcreator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = qtcreator
+	provides = dracula-qtcreator-theme
+	conflicts = dracula-qtcreator-theme
+	source = git+https://github.com/dracula/qtcreator
+	md5sums = SKIP
+
+pkgname = dracula-qtcreator-theme-git
