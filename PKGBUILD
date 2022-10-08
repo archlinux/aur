@@ -2,7 +2,7 @@
 pkgname=nbtutor
 pkgdesc="Visualize Python code execution in Jupyter Notebook cells"
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/lgpage/${pkgname}"
 license=('custom:BSD-3-clause')
@@ -25,5 +25,7 @@ check() {
 package() {
   cd ${pkgname}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$pkgdir${site_packages}:PYTHONPATH" jupyter-nbextension install ${pkgname} --py --prefix="$pkgdir/usr/"
   install -Dm 644 LICENCE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

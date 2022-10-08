@@ -1,7 +1,7 @@
 pkgbase = nbtutor
 	pkgdesc = Visualize Python code execution in Jupyter Notebook cells
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lgpage/nbtutor
 	arch = any
 	license = custom:BSD-3-clause
