@@ -1,0 +1,16 @@
+pkgbase = biglinux-driver-manager
+	pkgdesc = Complete driver manager and hardware info
+	pkgver = 2022_10_07
+	pkgrel = 2351
+	url = https://github.com/biglinux/biglinux-driver-manager
+	arch = any
+	license = GPL
+	depends = bigbashview
+	depends = kdialog
+	depends = inxi
+	depends = zenity
+	depends = python-ansi2html
+	source = git+https://github.com/biglinux/biglinux-driver-manager.git
+	md5sums = SKIP
+
+pkgname = biglinux-driver-manager
