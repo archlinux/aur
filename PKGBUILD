@@ -5,10 +5,10 @@
 
 pkgname=ame
 _pkgname=amethyst
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 _codename='Funky Fish'
-pkgdesc='A fast and efficient AUR helper'
+pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
 url="https://github.com/crystal-linux/${_pkgname}"
 license=('GPL3')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("${_pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d4174788608c34fe9eb5854b6c21a7b460930d567fe4262e492762a8377f5467')
+sha256sums=('eb65a83614f458abb61faf7a1e3404093a696d35666d6e17c15e5767c981e94e')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
