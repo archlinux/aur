@@ -24,9 +24,6 @@ prepare() {
 
   # Remove bundled JRE
   rm -rf "opt/$_pkgname/jre"
-
-  # Bump max JRE version from 17 to 18
-  sed -i 's/17/18/g' "opt/$_pkgname/$_pkgname"
 }
 
 package() {
