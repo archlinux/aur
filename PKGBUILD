@@ -1,6 +1,6 @@
 pkgname=plasma-runners-tmux
 _srcname=krunner-tmux-sessions
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Searches running tmux sessions and attaches to them"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('cmake' 'extra-cmake-modules')
 url="https://github.com/Teyras/krunner-tmux-sessions"
 license=('MIT')
 source=(https://github.com/Teyras/krunner-tmux-sessions/archive/${pkgver}.tar.gz)
-sha1sums=('7069fbdbd985aa4169e71ce2de70e7bb3ca30298')
+sha1sums=('90c92791ea9eb2fda80c67c2caece5e975a9979b')
 
 prepare() {
 	mkdir -p build
