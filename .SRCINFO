@@ -1,0 +1,13 @@
+pkgbase = migrant
+	pkgdesc = Basic database migration manager powered by migrant_lib
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/jaemk/migrant
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/jaemk/migrant#commit=846bfd7a5e2e52df92ce619246d4a1331ec5d515
+	md5sums = SKIP
+
+pkgname = migrant
