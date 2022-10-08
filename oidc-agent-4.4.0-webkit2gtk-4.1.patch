@@ -1,0 +1,12 @@
+diff --color -Naur a/Makefile b/Makefile
+--- a/Makefile	2022-10-08 12:10:46.016621562 +0100
++++ b/Makefile	2022-10-08 13:40:05.231379048 +0100
+@@ -129,7 +129,7 @@
+ CPPFLAGS += -fPIC
+ ifndef MAC_OS
+ ifndef ANY_MSYS
+-CPPFLAGS += $(shell pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0) -lstdc++
++CPPFLAGS += $(shell pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.1) -lstdc++
+ endif
+ endif
+ ifndef MAC_OS
