@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-cmus-status-git
 	pkgdesc = A GNOME shell extension for displaying controlling cmus status via cmus-remote
-	pkgver = 10
+	pkgver = 11
 	pkgrel = 1
 	url = https://github.com/gregthemadmonk/gnome-cmus-status.git
 	arch = any
