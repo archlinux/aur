@@ -1,10 +1,10 @@
 pkgname=heart-of-darkness
 pkgver=1.1_uk
 pkgrel=1
-pkgdesc="Heart Of Darkness running under hode engine"
+pkgdesc="Heart of Darkness running under hode engine"
 arch=(any)
 url=https://heartofdarkness.ca/
-license=(none)
+license=(custom:Infogrames EULA)
 depends=(hode-git)
 install=success.install
 source=(https://heartofdarkness.ca/Download/speedrun/Heart%20of%20Darkness%20UK.iso)
