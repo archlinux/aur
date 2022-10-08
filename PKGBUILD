@@ -1,45 +1,103 @@
-# Maintainer: Jack Roehr <jack@seatgull.com>
+# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+
 pkgname=vector-git
-pkgver=v0.12.0.r2551.g4384165b84
-pkgrel=0
-depends=("zlib" "gcc-libs")
-makedepends=('cargo-nightly' 'git' 'rust')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+pkgver=0.19.0.r2241.g68aae83229
+pkgrel=1
+pkgdesc="A high-performance observability data pipeline"
+arch=("x86_64")
+_target="x86_64-unknown-linux-gnu"
 url="https://vector.dev"
-license=("MPL")
-pkgdesc="A high-performance observability data pipeline."
-source=("vector::git+https://github.com/vectordotdev/vector"
-	vector.sysusers
-	vector.tmpfiles)
-b2sums=('SKIP'
-	'45880197e43d2a6bb9790abae1b0d2388e1c3e0f3c50f82766785becf30299e35d7674b08d0d577471944d7d2d2e7eae326ae4429dcd047a7de39ba3d48a3fa7'
-	'210ddfcd6078a97ab4507054c3fb5bbea83da3048a41ba83e835f7a476cd62b77b4687284dc34a57d792fc8aacb225496f902ebcc6ddf07439df38a3311d7724')
-reponame="vector"
+license=("MPL2")
+options=(!lto) # TODO: Build with LTO
+backup=(
+	"etc/vector/vector.toml"
+	"etc/vector/agent/vector.yaml"
+	"etc/vector/aggregator/vector.yaml"
+)
+conflicts=("vector" "vector-bin")
+depends=("gcc-libs")
+# https://github.com/vectordotdev/vector/blob/master/docs/DEVELOPING.md#bring-your-own-toolbox
+makedepends=(
+	"git"
+	"cargo"
+	"protobuf"
+	"python"
+	"perl"
+	"cmake"
+)
+checkdepends=(
+	"cargo-nextest"
+)
+source=(
+	"${pkgname}::git+https://github.com/vectordotdev/vector"
+	"${pkgname%-git}.sysusers"
+	"${pkgname%-git}.tmpfiles"
+)
+sha512sums=(
+	'SKIP'
+	'4f7a5d63f4e89018d1f0e9aa0fba2bb5c448d7031a7ff40c82878f574243e075c2fca020e78c4c71b1caa1a5bd1f06b496a5d3ab432f01d145233fd6c9ec4b87'
+	'c192492df09d131f9174d2acbb7f265c280eb6d678589b8c93bacc47ae55c51573a5477d715897f8580ced420730992fb68bee78b374f1cc042888ea6b5512fd'
+)
 
 pkgver() {
-	cd "$reponame"
-	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	cd "${pkgname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$reponame"
-	cargo update
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "${pkgname}"
+	cargo fetch \
+		--locked
 }
 
 build() {
-	cd "$reponame"
-	export RUSTUP_TOOLCHAIN=nightly
-	cargo build --release
+	cd "${pkgname}"
+	cargo build \
+		--frozen \
+		--release \
+		--locked \
+		--target "${_target}"
+}
+
+check() {
+	cd "${pkgname}"
+	# Unit-Tests only, integration tests require services
+	cargo nextest run \
+		--workspace \
+		--fail-fast \
+		--test-threads num-cpus \
+		--frozen \
+		--release \
+		--locked \
+		--offline \
+		--no-default-features \
+		--target "${_target}"
 }
 
 package() {
-	install -Dm755 "$reponame/target/release/vector" "$pkgdir/usr/bin/vector"
-	install -Dm644 "$reponame/config/vector.toml" "$pkgdir/etc/vector/vector.toml"
-	install -Dm644 "$reponame/distribution/systemd/vector.service" "$pkgdir/usr/lib/systemd/system/vector.service"
-	install -Dm644 "vector.sysusers" "$pkgdir/usr/lib/sysusers.d/vector.conf"
-	install -Dm644 "vector.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/vector.conf"
+	install -Dm644 "${pkgname%-git}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
+	install -Dm644 "${pkgname%-git}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
+
+	cd "${pkgname}"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/PRIVACY.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/RELEASES.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/VERSIONING.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/RELEASES.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+
+	install -Dm755 "target/${_target}/release/vector" "${pkgdir}/usr/bin/vector"
+
+	install -Dm644 "config/vector.toml" "${pkgdir}/etc/vector/vector.toml"
+	install -Dm644 "config/agent/vector.yaml" "${pkgdir}/etc/vector/agent/vector.yaml"
+	install -Dm644 "config/aggregator/vector.yaml" "${pkgdir}/etc/vector/aggregator/vector.yaml"
+	cp -r config/examples "${pkgdir}/usr/share/doc/${pkgname}/examples"
+
+	install -Dm644 "distribution/systemd/vector.service" "${pkgdir}/usr/lib/systemd/system/vector.service"
+	install -Dm644 "distribution/systemd/hardened-vector.service" "${pkgdir}/usr/lib/systemd/system/hardened-vector.service"
+	install -Dm644 "distribution/systemd/vector.default" "${pkgdir}/etc/default/vector"
 }
