@@ -1,0 +1,20 @@
+pkgbase = biglinux-grub-restore
+	pkgdesc = Restore your installed system
+	pkgver = 22.10.07
+	pkgrel = 2319
+	url = https://github.com/biglinux/biglinux-grub-restore
+	arch = any
+	license = GPL
+	depends = zenity
+	depends = konsole
+	depends = mkinitcpio
+	depends = grub
+	depends = os-prober
+	depends = pamac-cli
+	depends = pacman
+	depends = util-linux
+	depends = manjaro-tools-base
+	source = git+https://github.com/biglinux/biglinux-grub-restore.git
+	md5sums = SKIP
+
+pkgname = biglinux-grub-restore
