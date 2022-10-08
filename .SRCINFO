@@ -1,7 +1,7 @@
 pkgbase = aria2cd
 	pkgdesc = A systemd Service to start aria2 automatically.
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://aur.archlinux.org/packages/aria2cd
 	arch = any
 	license = custom:WTFPL
@@ -20,7 +20,7 @@ pkgbase = aria2cd
 	sha256sums = 832238f364e518f66492ddf19b8b6b573847b216ffaa4bd30dceb36c7d325c56
 	sha256sums = 79e7fad888a53769776f691d3ce14bd29fc617bb58267304a9b04aa6ccbf4cf5
 	sha256sums = d3dc278eeddbc910c775124bf474aa2c68b7bbba30226f6322ffc2c457785d27
-	sha256sums = 334c0e9eed1a09cd1f44da4323a61aa79a3c4f2d51bec8a948c3d922867a5b1f
+	sha256sums = 1ee51459337fafc9767734d1274cedbc1d5bf5c3092c98040235b7360a9b5925
 	sha256sums = 0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5
 
 pkgname = aria2cd
