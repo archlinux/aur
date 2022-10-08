@@ -1,12 +1,13 @@
 pkgbase = prometheus-smartctl-exporter
 	pkgdesc = Prometheus exporter for S.M.A.R.T. metrics using smartctl
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus-community/smartctl_exporter
 	arch = x86_64
 	license = LGPL3
 	makedepends = go
 	depends = smartmontools
+	backup = etc/conf.d/prometheus-smartctl-exporter
 	source = prometheus-smartctl-exporter-0.8.0.tar.gz::https://github.com/prometheus-community/smartctl_exporter/archive/refs/tags/v0.8.0.tar.gz
 	source = prometheus-smartctl-exporter.conf
 	source = prometheus-smartctl-exporter.service

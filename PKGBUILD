@@ -3,13 +3,14 @@
 pkgname=prometheus-smartctl-exporter
 _pkgname=smartctl_exporter
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for S.M.A.R.T. metrics using smartctl"
 arch=(x86_64)
 url="https://github.com/prometheus-community/smartctl_exporter"
 license=(LGPL3)
 depends=(smartmontools)
 makedepends=(go)
+backup=("etc/conf.d/$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.conf"
         "$pkgname.service"
@@ -41,6 +42,7 @@ build() {
 package() {
   # systemd service
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -Dm644 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
 
   cd "$_pkgname-$pkgver"
 
