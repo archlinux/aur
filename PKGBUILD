@@ -2,7 +2,7 @@
 # Contributor: naelstrof <naelstrof@gmail.com>
 
 pkgname=mingw-w64-flac
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Free Lossless Audio Codec (mingw-w64)"
 url="http://flac.sourceforge.net/"
@@ -12,7 +12,7 @@ depends=('mingw-w64-libogg' 'mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'ninja' 'nasm')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/xiph/flac/releases/download/${pkgver}/flac-${pkgver}.tar.xz")
-sha256sums=('af41c0733c93c237c3e52f64dd87e3b0d9af38259f1c7d11e8cbf583c48c2506')
+sha256sums=('91303c3e5dfde52c3e94e75976c0ab3ee14ced278ab8f60033a3a12db9209ae6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _pkgname="${pkgname#mingw-w64-}"
