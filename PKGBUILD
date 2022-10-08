@@ -1,4 +1,5 @@
-# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Maintainer: Jack Roehr <jack@seatgull.com>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
 
 pkgname=vector-git
 pkgver=0.19.0.r2241.g68aae83229
