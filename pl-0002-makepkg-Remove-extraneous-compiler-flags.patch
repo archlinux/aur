@@ -1,4 +1,4 @@
-From 3451d1fb1636062c136227807f5cb1981ec0923c Mon Sep 17 00:00:00 2001
+From e3af0a91f8f817bc236f50e4b25a416e7855b282 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 17 Sep 2022 16:27:17 +0200
 Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
@@ -21,5 +21,5 @@ index 00af7f1..f71bd82 100644
  target_link_libraries(libpl PUBLIC fmt::fmt intervaltree)
  set_property(TARGET libpl PROPERTY POSITION_INDEPENDENT_CODE ON)
 -- 
-2.37.3
+2.38.0
 

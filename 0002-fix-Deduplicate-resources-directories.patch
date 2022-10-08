@@ -1,7 +1,7 @@
-From 81d7dc86e77b1b86cc82674f40800e2e4e423d1e Mon Sep 17 00:00:00 2001
+From 6308d2f5ff458132bba904443de12479cce27264 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 11 Jun 2022 23:08:31 +0200
-Subject: [PATCH 2/2] fix: Deduplicate resources directories
+Subject: [PATCH 2/3] fix: Deduplicate resources directories
 
 It seems to actually happens despite xdgpp already doing that...
 ---
@@ -10,7 +10,7 @@ It seems to actually happens despite xdgpp already doing that...
  2 files changed, 16 insertions(+)
 
 diff --git a/lib/libimhex/include/hex/helpers/utils.hpp b/lib/libimhex/include/hex/helpers/utils.hpp
-index b2edc4ff..9f0a66d2 100644
+index 5dec8b66..ff216804 100644
 --- a/lib/libimhex/include/hex/helpers/utils.hpp
 +++ b/lib/libimhex/include/hex/helpers/utils.hpp
 @@ -199,6 +199,17 @@ namespace hex {
@@ -32,7 +32,7 @@ index b2edc4ff..9f0a66d2 100644
      std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
  
 diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
-index dc58ced3..5c346ec8 100644
+index 352ba642..364612b3 100644
 --- a/lib/libimhex/source/helpers/fs.cpp
 +++ b/lib/libimhex/source/helpers/fs.cpp
 @@ -1,4 +1,5 @@
@@ -41,7 +41,7 @@ index dc58ced3..5c346ec8 100644
  
  #include <hex/api/content_registry.hpp>
  #include <hex/helpers/fs_macos.hpp>
-@@ -156,6 +157,8 @@ namespace hex::fs {
+@@ -166,6 +167,8 @@ namespace hex::fs {
          auto additionalDirs = ImHexApi::System::getAdditionalFolderPaths();
          std::copy(additionalDirs.begin(), additionalDirs.end(), std::back_inserter(paths));
  
@@ -50,7 +50,7 @@ index dc58ced3..5c346ec8 100644
          return paths;
      }
  
-@@ -175,6 +178,8 @@ namespace hex::fs {
+@@ -185,6 +188,8 @@ namespace hex::fs {
              for (auto &path : paths)
                  path = path / "imhex";
  
@@ -60,5 +60,5 @@ index dc58ced3..5c346ec8 100644
          #endif
      }
 -- 
-2.37.3
+2.38.0
 
