@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.2-36-g8d45c2e1
-_version=2.2+36+g8d45c2e1
+_tag=2.2-46-gf19f7758
+_version=2.2+46+gf19f7758
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -23,7 +23,6 @@ options=('!strip')
 backup=(
   "etc/${pkgname}/config"
   "etc/${pkgname}/logging.properties"
-  "etc/${pkgname}/callstats-java-sdk.properties"
   "etc/${pkgname}/sip-communicator.properties"
   "etc/${pkgname}/jvb.conf"
 )
@@ -59,7 +58,7 @@ package() {
         install -Dm755 -t "${DESTDIR}" "jvb/resources/jvb.sh"
 
         install -dm700 "${CONFDIR}"
-        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties" "config/callstats-java-sdk.properties"
+        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties"
         install -Dm600 "jvb/src/main/resources/reference.conf" "${CONFDIR}/jvb.conf"
         install -Dm644 "config/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${pkgname}.conf"
 
