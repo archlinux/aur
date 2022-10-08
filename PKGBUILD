@@ -1,12 +1,13 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=qmidiplayer-git
-pkgver=r204.5e6e461
+pkgver=r237.07ee50b
 pkgrel=1
 pkgdesc='A cross-platform midi file player based on libfluidsynth and Qt.'
 arch=('x86_64')
 url='https://chrisoft.org/QMidiPlayer/'
 license=('GPLv3')
+conflicts=('qmidiplayer')
 depends=(
     'qt5-base' 'qt5-quickcontrols'
     'rtmidi' 'fluidsynth'
@@ -42,7 +43,7 @@ prepare() {
 build () {
     cd ${srcdir}/QMidiPlayer
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-    make
+    cmake --build . -j
 }
 
 package() {

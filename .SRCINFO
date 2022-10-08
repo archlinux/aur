@@ -1,6 +1,6 @@
 pkgbase = qmidiplayer-git
 	pkgdesc = A cross-platform midi file player based on libfluidsynth and Qt.
-	pkgver = r204.5e6e461
+	pkgver = r237.07ee50b
 	pkgrel = 1
 	url = https://chrisoft.org/QMidiPlayer/
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = qmidiplayer-git
 	depends = glew
 	depends = openal
 	depends = devil
+	conflicts = qmidiplayer
 	source = git+https://git.chrisoft.org/git/QMidiPlayer.git
 	source = git+https://git.chrisoft.org/git/SMELT.git
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = qmidiplayer-git
-
