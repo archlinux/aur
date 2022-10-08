@@ -1,0 +1,14 @@
+pkgbase = nbtutor
+	pkgdesc = Visualize Python code execution in Jupyter Notebook cells
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/lgpage/nbtutor
+	arch = any
+	license = custom:BSD-3-clause
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = jupyter-notebook
+	source = nbtutor-2.0.3.tar.gz::https://github.com/lgpage/nbtutor/archive/2.0.3.tar.gz
+	sha512sums = f55b69ce96c449ad7a1a623135ef94c6b54894680925cce14ea08ab5d1f409a17cd6c59876a8a2f6e8b63206b58c5afb2610c60c2fb2aebe0c0a8084599aebfd
+
+pkgname = nbtutor
