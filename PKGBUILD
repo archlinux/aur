@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dragonflydb
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A modern replacement for Redis/Memcached'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://dragonflydb.io'
 license=('custom:BSL1.1')
 depends=('openssl' 'boost-libs' 'libunwind')
 makedepends=('git' 'cmake' 'ninja' 'python' 'boost')
-_commit='7ed808d5d093ec472de4868e02182cb1432c6967'
+_commit='608a80411a556be17b3ad2ea97e356b3b296fecf'
 source=(
   "$pkgname::git+https://github.com/dragonflydb/dragonfly#commit=$_commit"
   'github.com-romage-helio::git+https://github.com/romange/helio'
