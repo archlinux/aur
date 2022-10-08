@@ -1,15 +1,22 @@
-## v0.29.2 (Aug 16, 2022)
-
-IMPROVEMENTS:
-* Nomad services support use of `byTab` template function. [[GH-1594](https://github.com/hashicorp/consul-template/pull/1594)]
+## v0.29.5 (Oct 04, 2022)
 
 BUG FIXES:
-* Fix issue with pkiCert caching certificate based on consul key path. [[GH-1611](https://github.com/hashicorp/consul-template/pull/1611), [GH-1607](https://github.com/hashicorp/consul-template/issues/1607)]
-* Fix issue with setting the reload_signal to an empty string ("") not disabling the reload_signal as documented. [[GH-1610](https://github.com/hashicorp/consul-template/pull/1610), [GH-1428](https://github.com/hashicorp/consul-template/issues/1428), [GH-1442](https://github.com/hashicorp/consul-template/issues/1442)]
-* Limit Setgpid setting to strictly `sh -c` wrapped calls. [[GH-1600](https://github.com/hashicorp/consul-template/pull/1600), [GH-1604](https://github.com/hashicorp/consul-template/issues/1604)]
-* Fix potential for nil pointer dereference in vault config debug output. [[GH-1586](https://github.com/hashicorp/consul-template/issues/1586)]
+* Fix issue with ownership change detection incorrectly indicating a change when a user or group was set but not both [[GH-1652](https://github.com/hashicorp/consul-template/pull/1652)]
+* Fix issue with nomad configuration setup [[GH-1653](https://github.com/hashicorp/consul-template/pull/1653)]
 
-SECURITY:
-* Filter Vault Secrets from text/template error messages, [CVE-2022-38149](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-38149). [[GH-1613](https://github.com/hashicorp/consul-template/pull/1613)]
-* Updates dependencies several of which had known CVEs. [[GH-1622](https://github.com/hashicorp/consul-template/pull/1622), [GH-1614](https://github.com/hashicorp/consul-template/issues/1614)]
+## v0.29.4 (Sept 30, 2022)
+
+BUG FIXES:
+* Fix goroutine leak in vault token watcher on config reload. [[GH-1650](https://github.com/hashicorp/consul-template/issues/1650)]
+
+## v0.29.3 (Sept 30, 2022)
+
+IMPROVEMENTS:
+* Vault token management refactor to increase encapsulation and enable testing. [[GH-1645](https://github.com/hashicorp/consul-template/pull/1645)]
+
+BUG FIXES:
+* Log child process successful exits at INFO level (not ERR). [[GH-1649](https://github.com/hashicorp/consul-template/pull/1649), [GH-1282](https://github.com/hashicorp/consul-template/issues/1282)]
+* Fix reading vault agent token in wrapped format [[GH-1498](https://github.com/hashicorp/consul-template/issues/1498)]
+* Fix issue with transient goroutine leak causing unnecessary memory growth. [[GH-1644](https://github.com/hashicorp/consul-template/pull/1644)]
+* Fix issue with pkiCerts failing if cert file is moved. [[GH-1639](https://github.com/hashicorp/consul-template/pull/1639)]
 
