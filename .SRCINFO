@@ -3,7 +3,7 @@ pkgbase = chadwm-devguyahnaf-git
 	pkgver = 0.1
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/ahnaf-zamil/chadwm
+	url = https://gitlab.com/ahnaf-zamil/chadwm
 	arch = x86_64
 	arch = i686
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = chadwm-devguyahnaf-git
 	depends = xorg-server
 	provides = dwm
 	conflicts = dwm
-	source = chadwm::git+https://github.com/ahnaf-zamil/chadwm.git
+	source = chadwm::git+https://gitlab.com/ahnaf-zamil/chadwm.git
 	sha256sums = SKIP
 
 pkgname = chadwm-devguyahnaf-git

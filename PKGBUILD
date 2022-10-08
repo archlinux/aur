@@ -7,7 +7,7 @@ pkgrel=1
 epoch=1
 pkgdesc="DevGuyAhnaf's version of ChadWM (DWM Modif)"
 arch=('x86_64' 'i686')
-url="https://github.com/ahnaf-zamil/chadwm"
+url="https://gitlab.com/ahnaf-zamil/chadwm"
 license=('MIT')
 depends=('picom' 'feh' 'acpi' 'rofi' 'pavucontrol' 'dash' 'imlib2' 'xorg-xsetroot' 'wget' 'xorg-server')
 makedepends=('git')
@@ -15,7 +15,7 @@ checkdepends=()
 optdepends=()
 provides=('dwm')
 conflicts=('dwm')
-source=("$_pkgname::git+https://github.com/ahnaf-zamil/chadwm.git")
+source=("$_pkgname::git+https://gitlab.com/ahnaf-zamil/chadwm.git")
 sha256sums=('SKIP')
 
 pkgver() {
