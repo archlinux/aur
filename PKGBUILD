@@ -5,7 +5,7 @@ pkgname=scratch3
 conflicts=("scratch3-bin")
 
 pkgver=3.29.1
-pkgrel=1
+pkgrel=2
 _electronDist=electron13
 _electronVersion=13.6.9
 
@@ -15,7 +15,9 @@ url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
 depends=("c-ares" "ffmpeg" "gtk3" "libevent" "libxslt" "minizip" "nss" "re2" "snappy")
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-makedepends=('npm' $_electronDist)
+
+## /!\    bin version of electron   ↓↓↓ (AUR package)  /!\
+makedepends=('npm' "${_electronDist}-bin")
 source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xml"
@@ -102,7 +104,10 @@ build(){
 #  Copy/move all license files in one single place ($srcdir)
    cp LICENSE ../
    cp TRADEMARK ../
-   mv dist/${appOutputDir}/LICENSE* ../
+#  Temporary fix for using electron13-bin
+#    mv dist/${appOutputDir}/LICENSE* ../
+   cp /usr/share/licenses/${_electronDist}-bin/LICENSE ../LICENSE-electron
+   cp /usr/share/licenses/${_electronDist}-bin/LICENSES.chromium.html ../LICENSES.chromium.html
 
 #  And the icon file in SVG format
    cp src/icon/ScratchDesktop.svg ../$pkgname.svg
