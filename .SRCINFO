@@ -1,6 +1,6 @@
 pkgbase = center-git
 	pkgdesc = Center text to standard output
-	pkgver = r33.9861007
+	pkgver = r34.aa8ec1c
 	pkgrel = 1
 	url = https://git.thomasvoss.com/center
 	arch = x86_64
