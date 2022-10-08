@@ -6,9 +6,9 @@
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=3.00.r1333.g785119f2c
+pkgver=4.0.0.beta.1.r6.gaeaa6ca52
 pkgrel=1
-arch=(x86_64)
+arch=(x86_64 armv7h)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)'
