@@ -1,6 +1,6 @@
 # Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
 
-pkgbase=vim-candid-git
+pkgbase=vim-candid
 _pkgbase=vim-candid
 pkgname=('vim-candid-git'
 	'vim-lightline-candid-git')
