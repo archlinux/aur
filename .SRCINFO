@@ -1,6 +1,6 @@
 pkgbase = secrets-git
 	pkgdesc = Manage your passwords
-	pkgver = 6.0.beta.2.r280.g50b12686
+	pkgver = 7.0.r0.g6e0c69d8
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/secrets
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = secrets-git
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
-	depends = libadwaita-git>=1.2.alpha
+	depends = libadwaita
 	depends = libpwquality
 	depends = python-gobject
 	depends = python-pykeepass
 	depends = python-pyotp
 	depends = python-cairo
+	depends = python-validators
+	depends = python-zxcvbn
 	provides = secrets
 	conflicts = gnome-passwordsafe-git
 	conflicts = secrets
