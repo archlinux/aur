@@ -12,7 +12,7 @@ backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url=https://gitlab.com/dr460nf1r3/settings/
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg kfiredragonhelper)
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-zstandard git binutils lld dump_syms
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
 # source_aarch64=()
 sha256sums=('fb1ed65cd9e6698122885fe38984cfd00018c7a837109f511762b2986b391e25'
             'SKIP'
-            '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
+            'a6644083a30c93aae10df0007c572bcd9cb43d50ed88d3b0d0788ee5d0851323'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -168,7 +168,7 @@ fi
 
   # LibreWolf
   # Remove some pre-installed addons that might be questionable
-  # patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # Debian patch to enable global menubar
   patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
@@ -183,7 +183,7 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/allow-searchengines-non-esr.patch
 
   # Remove search extensions (experimental)
-  # cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
+  cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
