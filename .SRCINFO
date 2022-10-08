@@ -1,12 +1,11 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with WIP AMDGPU material
-	pkgver = 5.18.2022.02.18.r28.gad72a74cfe7e
+	pkgver = 6.0.r1123394.167c1d4ed701
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = cpio
@@ -18,22 +17,24 @@ pkgbase = linux-amd-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
 	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31
+	sha256sums = 1e07bdd94abe73ac2074b151729cd9b73c7fa7a615a3a331a89dcb0da42649f8
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
