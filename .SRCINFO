@@ -1,0 +1,21 @@
+pkgbase = i3expo-ng-git
+	pkgdesc = Exposè for i3 WM
+	pkgver = r75.6768f5a
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/morrolinux/i3expo-ng
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = make
+	depends = python
+	depends = python-pygame
+	depends = python-i3ipc
+	depends = python-pillow
+	depends = python-pyxdg
+	provides = i3expo
+	source = i3expo-ng-git::git+https://github.com/morrolinux/i3expo-ng.git
+	md5sums = SKIP
+
+pkgname = i3expo-ng-git
