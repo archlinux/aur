@@ -2,7 +2,7 @@
 
 pkgname=riff
 _pkgname=${pkgname##rust-}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='automatically provide external dependencies for Rust projects'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(cargo
          nix)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('e484537c39402cbe92ac8971696594d3a580a8b64050a5d2f53d1eecf9cb2e1a')
+sha256sums=('957128c5e08f6d3ca6358363f7ad437081eddc4a4bcebc29b1c1ce217f4526a0')
 
 prepare() {
 	cd "$_archive"
