@@ -1,6 +1,6 @@
 # Maintainer: Elaina Martineau <elainamartineau@gmail.com>
 pkgname=ttf-octicons
-pkgver=17.5.0
+pkgver=17.7.0
 pkgrel=1
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://octicons.github.com/"
 makedepends=('git' 'npm' 'nvm')
 depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
 source=("https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
-sha256sums=('b982e195786c85724ceb68fe8ae470dcd3620279e8db9b80bb5f3edb2af07d74')
+sha256sums=('ac97dbb3ce2323ce5126239ff7d6f23e482ecf9fbb9238090305a1855be93dcd')
 install=$pkgname.install
 
 _ensure_local_nvm() {
