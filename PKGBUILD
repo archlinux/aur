@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-wireguard-indicator
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Manage WireGuard VPN from Desktop"
 arch=(any)
@@ -8,7 +8,7 @@ license=(MIT)
 depends=('gnome-shell>=40.0')
 makedepends=(jq)
 source=("${pkgname}-${pkgver}.zip::https://extensions.gnome.org/extension-data/wireguard-indicatoratareao.es.v${pkgver}.shell-extension.zip")
-sha256sums=('c5b768d81bdecc7581b85bb4b16e97e9b809790f07527c0bbeb3a0b04ff30545')
+sha256sums=('d7290b9934394298c4c5fc5c041a292850b7cee71d26a3074c26434635e30d17')
 
 package() {
   rm "${pkgname}-${pkgver}.zip"
