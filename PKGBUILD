@@ -1,7 +1,7 @@
 # Maintainer: Marshmallow <marshycity@gmail.com>
 pkgname=candyvim-git
 pkgver=0.1.1.r0.g45ff2f8
-pkgrel=1
+pkgrel=2
 pkgdesc="CandyVim WIP"
 arch=('any')
 url='https://github.com/mrshmllow/CandyVim'
