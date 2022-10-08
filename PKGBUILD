@@ -6,11 +6,11 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgbase=netron
-pkgname=netron
-#pkgname=(netron netron-cli)
+pkgname=(netron)
+##pkgname+=(netron-cli)
 pkgdesc='Visualizer for neural network, deep learning, and machine learning models'
 pkgver=6.0.9
-pkgrel=1
+pkgrel=2
 url='https://netron.app/'
 arch=(x86_64)
 license=(MIT)
@@ -45,18 +45,18 @@ package_netron() {
 
   cd "${pkgbase}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/pypi/*.whl
-  mv "${pkgdir}/usr/bin/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}-cli"
+  #mv "${pkgdir}/usr/bin/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}-cli"
 
   mkdir -p "${pkgdir}/opt/"
   cp -r dist/linux-unpacked "${pkgdir}/opt/${pkgname}"
-  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  #ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 publish/icon.png "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
   gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "${pkgdesc}" \
           --name "Netron" \
           --comment "${pkgdesc}" \
-          --exec "${pkgname}" \
+          --exec "/opt/${pkgname}/${pkgname}" \
           --categories 'Development;Application;' \
           --icon "${pkgname}"
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
@@ -71,7 +71,7 @@ package_netron-cli() {
 
   cd "${pkgbase}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/pypi/*.whl
-  mv "${pkgdir}/usr/bin/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}-cli"
+  #mv "${pkgdir}/usr/bin/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}-cli"
 
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
