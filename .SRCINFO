@@ -1,0 +1,17 @@
+pkgbase = debtap-mod
+	pkgdesc = Convert and install .deb packages
+	pkgver = 22.10.08
+	pkgrel = 0003
+	url = https://github.com/biglinux/debtap-mod
+	arch = any
+	license = GPL
+	depends = yad
+	depends = namcap
+	depends = pamac-gtk
+	depends = kate
+	depends = zenity
+	depends = fakeroot
+	source = git+https://github.com/biglinux/debtap-mod.git
+	md5sums = SKIP
+
+pkgname = debtap-mod
