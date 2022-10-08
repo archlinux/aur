@@ -11,6 +11,7 @@ pkgbase = teamtalk-client
 	depends = qt5-multimedia
 	depends = qt5-speech
 	depends = qt5-x11extras
+	depends = openssl-3.0-bin
 	source = https://bearware.dk/teamtalk/v5.11/teamtalk-v5.11-ubuntu22-x86_64.tgz
 	source = teamtalk-client.install
 	source = TeamTalk.desktop
