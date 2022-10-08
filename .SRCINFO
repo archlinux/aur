@@ -1,7 +1,7 @@
 pkgbase = mkspiffs-git
 	pkgdesc = Tool to build and unpack SPIFFS images
-	pkgver = 0.2.3.r6.983970e
-	pkgrel = 2
+	pkgver = 0.2.3.r7.f248296
+	pkgrel = 1
 	url = https://github.com/igrr/mkspiffs
 	arch = x86
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = mkspiffs-git
 	depends = gcc-libs
 	provides = mkspiffs
 	conflicts = mkspiffs
-	source = git://github.com/igrr/mkspiffs.git
-	source = git://github.com/pellepl/spiffs.git
+	source = git+https://github.com/igrr/mkspiffs.git
+	source = git+https://github.com/pellepl/spiffs.git
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = mkspiffs-git
-

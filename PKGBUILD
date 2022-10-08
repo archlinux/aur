@@ -3,8 +3,8 @@
 # Contributor: Christian Hammacher <bmasterc@gmail.com>
 
 pkgname=mkspiffs-git
-pkgver=0.2.3.r6.983970e
-pkgrel=2
+pkgver=0.2.3.r7.f248296
+pkgrel=1
 pkgdesc="Tool to build and unpack SPIFFS images"
 arch=('x86' 'x86_64')
 url="https://github.com/igrr/mkspiffs"
@@ -14,8 +14,8 @@ makedepends=('git' 'gcc')
 provides=("mkspiffs")
 conflicts=("mkspiffs")
 source=(
-	'git://github.com/igrr/mkspiffs.git'
-	'git://github.com/pellepl/spiffs.git')
+	'git+https://github.com/igrr/mkspiffs.git'
+	'git+https://github.com/pellepl/spiffs.git')
 md5sums=('SKIP'
          'SKIP')
 
