@@ -2,7 +2,7 @@
 
 pkgname=lolminer
 #check download link before pushing.
-notagver=1.58
+notagver=1.60
 pkgtag=
 pkgver=${notagver}${pkgtag}
 pkgrel=2
