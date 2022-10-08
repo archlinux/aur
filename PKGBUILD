@@ -1,6 +1,6 @@
 # Maintainer: Brian Gisseler <gissf1@gmail.com>
 pkgname=zram-hibernate-git
-pkgver=r3.ae662b0
+pkgver=r26.1f0e5cc
 pkgrel=1
 pkgdesc="activate disk-based storage as swap for hibernation support when a system typically uses only zram swap"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/gissf1/zram-hibernate"
 license=('apache')
 source=('git+https://github.com/gissf1/zram-hibernate')
 makedepends=('git')
+depends=('ncurses' 'util-linux' 'bash' 'coreutils' 'sed' 'systemd' 'grep' 'gawk' 'sudo')
 sha256sums=('SKIP')
 
 pkgver() {
