@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=6504
-_version=1.0.6504
+_tag=6673
+_version=1.0.6673
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -27,7 +27,7 @@ source=(
 package() {
         cd "$srcdir/$pkgname"
 
-        install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-prosody/prosody.cfg.lua-jvb.example 
+        install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-prosody/prosody.cfg.lua-jvb.example doc/debian/jitsi-meet-prosody/jaas.cfg.lua
         sed -i 's@/usr/share/jitsi-meet/prosody-plugins/@/usr/lib/'$pkgname'@' "${pkgdir}/usr/share/doc/${pkgname}/prosody.cfg.lua-jvb.example"
 
         install -d "${pkgdir}/usr/lib"
