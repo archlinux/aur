@@ -1,0 +1,14 @@
+pkgbase = waydroid-biglinux
+	pkgdesc = Simplify waydroid usage
+	pkgver = 22.10.08
+	pkgrel = 0007
+	url = https://github.com/biglinux/waydroid-biglinux
+	arch = any
+	license = GPL
+	depends = waydroid
+	depends = python-pyclip
+	depends = bigbashview
+	source = git+https://github.com/biglinux/waydroid-biglinux.git
+	md5sums = SKIP
+
+pkgname = waydroid-biglinux
