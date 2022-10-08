@@ -7,9 +7,9 @@
 _pkgname=polymc
 pkgname=${_pkgname}-git
 pkgver=1.4.0.r301.gc97a47dc
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
