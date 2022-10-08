@@ -3,13 +3,13 @@
 
 _pkgname=resynthesizer
 pkgname=gimp-plugin-$_pkgname-git
-pkgver=2.0.3.r23.gb6ff907
+pkgver=2.0.3.r24.gecfc4e7
 pkgrel=1
 pkgdesc="Suite of gimp plugins for texture synthesis (like heal-selection). Git-Version"
 arch=('i686' 'x86_64')
 url="https://github.com/bootchk/resynthesizer"
 license=('GPL2')
-depends=('gimp')
+depends=('python2-gimp')
 makedepends=('git' 'intltool')
 conflicts=('gimp-resynth' 'gimp-resynth-git')
 provides=("${pkgname/-git/}=2.0")
