@@ -9,5 +9,5 @@ Terminal=false
 Icon=super-mario-4-jugadores
 Exec=super-mario-4-jugadores %F
 Categories=Game;
-StartupWMClass=SM4JLegacy.exe
+StartupWMClass=super-mario-4-jugadores
 
