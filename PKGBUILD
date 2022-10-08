@@ -3,7 +3,7 @@
 pkgname=poi-nightly-bin
 _pkgname=poi
 _releasever=10.9.2
-_buildver=8131
+_buildver=8163
 pkgver="${_releasever}.${_buildver}"
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool"
@@ -19,7 +19,7 @@ source=("${_pkgname}-${pkgver}.7z::https://nightly.poi.moe/$_buildver/${_pkgname
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
 noextract=("${_pkgname}-${pkgver}.7z")
-sha256sums=('9427bb924f2c40212d916f6247c5aaec748005cdeafe0f4a4e79f1345939ba4e'
+sha256sums=('ab9b36e1263c47ceb1a3d24bdc71b91b42f8fc7ea9ceb7eeb8a2ec4b58f2428b'
             '7f58b9f7918da59bf8003f9d2345eb0f0700b7cfcb3c07ef17a171e3f08fe3f8'
             '56280a62f7baf889253830353748f6ddd8d3c5924c5faaaffa863ada2d7e2e58'
             'b08d1eb63de3af0c67860fd8bfd709d492ac600eef9c0cd52e2ee65e5ab69194')
