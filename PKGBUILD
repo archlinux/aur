@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	./BUILDSCRIPT.sh
+	/bin/bash ./BUILDSCRIPT.sh
 }
 
 package() {
