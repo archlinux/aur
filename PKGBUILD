@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.1.2
+pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -30,9 +30,11 @@ depends=(
   'lib32-libass'
   'lib32-libavc1394'
   'lib32-libbluray'
+  'lib32-libbs2b'
   'lib32-libdav1d'
   'lib32-libdrm' 
   'lib32-freetype2'
+  'lib32-libglvnd'
   'lib32-libiec61883'
 #      'lib32-libmfx'
   'lib32-libmodplug'
@@ -58,6 +60,7 @@ depends=(
   'lib32-libxv'
   'lib32-xvidcore'
 #      'lib32-libzimg'
+  'lib32-ocl-icd'
   'lib32-opencore-amr'
   'lib32-openjpeg2'
   'lib32-opus'
@@ -67,6 +70,7 @@ depends=(
 #      'lib32-svt-av1'
   'lib32-v4l-utils'
   'lib32-vmaf'
+  'lib32-vulkan-icd-loader'
   'lib32-xz'
   'lib32-zlib'
 )
@@ -77,7 +81,10 @@ makedepends=(
   'ffnvcodec-headers'
   'git'
   'lib32-ladspa'
+  'lib32-mesa'
   'nasm'
+  'opencl-headers'
+  'vulkan-headers'
 )
 optdepends=(
 #      'avisynthplus: AviSynthPlus support'
@@ -85,27 +92,24 @@ optdepends=(
   'lib32-ladspa: LADSPA filters'
   'lib32-nvidia-utils: Nvidia NVDEC/NVENC support'
 )
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 options=(
   debug
 )
+_tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 source=(
-  "git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
-  "ffmpeg-vmaf2.x.patch"
+  "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   "add-av_stream_get_first_dts-for-chromium.patch"
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 b2sums=('SKIP'
-  '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a'
-  '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13'
+  '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
 )
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
   cd ${_pkgbasename}
 
   # Patching if needed
-  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch # vmaf 2.x support
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch  # https://crbug.com/1251779
 }
 
@@ -139,6 +143,7 @@ build() {
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
@@ -169,8 +174,11 @@ build() {
     --enable-libxml2 \
     --enable-nvenc \
     --enable-nvdec \
+    --enable-opencl \
+    --enable-opengl \
     --enable-shared \
     --enable-version3 \
+    --enable-vulkan \
     --disable-doc
 
 #    --enable-avisynth \ ## not available under 32 bit

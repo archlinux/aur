@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	pkgver = 5.0.1
-	pkgrel = 2
+	pkgver = 5.1.2
+	pkgrel = 1
 	epoch = 2
 	url = http://ffmpeg.org/
 	arch = x86_64
@@ -11,8 +11,11 @@ pkgbase = lib32-ffmpeg
 	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = lib32-ladspa
+	makedepends = lib32-mesa
 	makedepends = nasm
-	depends = ffmpeg>=2:5.0.1
+	makedepends = opencl-headers
+	makedepends = vulkan-headers
+	depends = ffmpeg>=2:5.1.2
 	depends = lib32-alsa-lib
 	depends = lib32-aom
 	depends = lib32-bzip2
@@ -27,9 +30,11 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-libass
 	depends = lib32-libavc1394
 	depends = lib32-libbluray
+	depends = lib32-libbs2b
 	depends = lib32-libdav1d
 	depends = lib32-libdrm
 	depends = lib32-freetype2
+	depends = lib32-libglvnd
 	depends = lib32-libiec61883
 	depends = lib32-libmodplug
 	depends = lib32-libpulse
@@ -49,6 +54,7 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-libxml2
 	depends = lib32-libxv
 	depends = lib32-xvidcore
+	depends = lib32-ocl-icd
 	depends = lib32-opencore-amr
 	depends = lib32-openjpeg2
 	depends = lib32-opus
@@ -57,18 +63,17 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-srt
 	depends = lib32-v4l-utils
 	depends = lib32-vmaf
+	depends = lib32-vulkan-icd-loader
 	depends = lib32-xz
 	depends = lib32-zlib
 	optdepends = lib32-ladspa: LADSPA filters
 	optdepends = lib32-nvidia-utils: Nvidia NVDEC/NVENC support
 	options = debug
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
-	source = ffmpeg-vmaf2.x.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 	source = add-av_stream_get_first_dts-for-chromium.patch
-	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
+	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = SKIP
-	b2sums = 65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a
-	b2sums = 3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13
+	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
 
 pkgname = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
