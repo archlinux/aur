@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=6447
-_version=1.0.6447
+_tag=6644
+_version=1.0.6644
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
@@ -16,12 +16,11 @@ depends=()
 optdepends=("nginx")
 makedepends=(
         "git"
-        "python" "python2"
+        "python"
         "nodejs" "npm"
 )
 options=('!strip')
 backup=(
-  "etc/webapps/${pkgname}/logging_config.js"
   "etc/webapps/${pkgname}/config.js"
   "etc/webapps/${pkgname}/interface_config.js"
 )
@@ -61,7 +60,7 @@ package() {
         find "$DESTDIR" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
         find "$DESTDIR" -type d -exec chmod 755 {} \;
 
-        for i in interface_config.js logging_config.js config.js
+        for i in interface_config.js config.js
         do
                 install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
                 ln -sf "/etc/webapps/${pkgname}/${i}" "$DESTDIR/${i}"
