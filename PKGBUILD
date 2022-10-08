@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.19.14
+pkgver=6.0
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,41 +81,31 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-5.19.y
-_commit=9b792e6dc19ee6bd70e7c71f579f4d87ff929c60
+_ckhrtimer=linux-6.0.y
+_commit=5be918e798e2c2cc94fa7dd0f6f031921a4f7598
 
 _gcc_more_v=20220315
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-drm-i915-psr-Use-full-update-In-case-of-area-calcula.patch
-  0003-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch
-  0004-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
-  0005-soundwire-intel-use-pm_runtime_resume-on-component-p.patch
-  0006-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
-  0007-ASoC-Intel-sof_sdw-add-support-for-Dell-SKU-0AFF.patch
-  0008-ACPI-processor-idle-Practically-limit-Dummy-wait-wor.patch
+  0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
+  0003-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('1ded27e1c4a8b51df5f93f2f772827183b805d9ab4771071307c13ee86cd1ac1'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '1e07bdd94abe73ac2074b151729cd9b73c7fa7a615a3a331a89dcb0da42649f8'
+            '85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
-            '7037fa27b33666a3bd20c888c667efb218e95e45af8debe591896cc79fe69c76'
-            '3aa7bda60f75c4942387d2c8a39da7628d380b4bf2b228758e752638db042fc1'
-            '5206a8b5a27faa823bfb42ccc2390612894e0d94076461a6dde91256bc2f521f'
-            'fdbda1ec0255cb1c7d4bcfd66020f384fe788ebcd33a40005cf20d17f1320daf'
-            'f5b8540969dfce4eac33e7b53da541e384e1a9fbdc910a263d6a1aeaf39e69db'
-            '7484ac36b8b53b059498040c6daf965ce9c9abdfbc4c0c8e79bcb22f506a5f80'
-            'c64639ae4c7294ca45f334a6350c8a1a402a6625b1cfcaac52a3b483a06d6828'
-            '8c582af2aa685af59a26490c9c51d1584aa966e7c7dd7234ea602e369c82fc64'
-            '3b4d465a494bb9e8697db22acb67fe10f18e12eb16c68752b3e408ea4c08e608')
+            '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
+            'd7c84eb6b873dcc953ec27816ce8600b75abc97c74db2a051f32a136ca97ddd2'
+            'f70be1121e87ac7fd2f7ea02b1d499a1b8dde45fb30322af2b16714bac339571'
+            '3b2d3a8c04ecad332ad1ac4de501d7550b9fd8ae9b451e5c6c47e7544d2b7d67')
 
 prepare() {
   cd linux-${pkgver}
