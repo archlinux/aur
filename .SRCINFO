@@ -1,0 +1,13 @@
+pkgbase = center-git
+	pkgdesc = Center text to standard output
+	pkgver = 1.0.r0.9861007
+	pkgrel = 1
+	url = https://git.thomasvoss.com/center
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	source = center-git::git://git.thomasvoss.com/center.git
+	b2sums = SKIP
+
+pkgname = center-git
