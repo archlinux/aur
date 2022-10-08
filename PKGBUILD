@@ -1,7 +1,7 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts"
 arch=('x86_64')
