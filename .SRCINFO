@@ -1,19 +1,19 @@
 pkgbase = pdfstudio-bin
 	pkgdesc = Review, annotate, and edit PDF Documents
-	pkgver = 2022.1.0
+	pkgver = 2022.1.1
 	pkgrel = 1
 	url = https://www.qoppa.com/pdfstudio/
 	arch = x86_64
 	license = custom
 	depends = java-runtime>=17
-	provides = pdfstudio=2022.1.0
+	provides = pdfstudio=2022.1.1
 	conflicts = pdfstudio
 	replaces = pdfstudio
 	source = pdfstudio.desktop
 	source = pdfstudio.png
-	source = https://download.qoppa.com/pdfstudio/v2022/PDFStudio_v2022_1_0_linux64.deb
+	source = https://download.qoppa.com/pdfstudio/v2022/PDFStudio_v2022_1_1_linux64.deb
 	sha256sums = b31863787364055ab0807ecf28a5bc5ac2af6299f6563018871d4c3ed5f5f00f
 	sha256sums = dc8dac6cd3276e35489ebad93fbaacf77ee1e0892bb74fa70c3b4179a15b75ce
-	sha256sums = 41a03aa07d3494eeaa1b5ae7d468ccec8df63dcb14d86175bd044d74b0c09362
+	sha256sums = 38f98d86791e4af1d965b87849a314fef0d22eb0dd4e6326b9218fd87cb3566e
 
 pkgname = pdfstudio-bin
