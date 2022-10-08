@@ -1,0 +1,20 @@
+pkgbase = rpmtoarch
+	pkgdesc = Convert and install .rpm packages
+	pkgver = 22.10.08
+	pkgrel = 0011
+	url = https://github.com/biglinux/rpmtoarch
+	arch = any
+	license = GPL
+	depends = yad
+	depends = namcap
+	depends = pamac-gtk
+	depends = kate
+	depends = zenity
+	depends = fakeroot
+	depends = ruby
+	depends = rpm-tools
+	depends = cpio
+	source = git+https://github.com/biglinux/rpmtoarch.git
+	md5sums = SKIP
+
+pkgname = rpmtoarch
