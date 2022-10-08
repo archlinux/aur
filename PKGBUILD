@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=105.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -181,9 +181,6 @@ fi
 
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/allow-searchengines-non-esr.patch
-
-  # Remove search extensions (experimental)
-  cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
