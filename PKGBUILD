@@ -6,7 +6,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=rmarkdown
-_cranver=2.16
+_cranver=2.17
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -51,7 +51,7 @@ optdepends=(
     r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d3d34e0419c419d3ab20eb60952a0f0f4c391d202277af55dcd673d25561fa71')
+sha256sums=('aa576c458ec4c2e8468aaa4e3f60202d8d9c7ef54fa01d6b2d243bffee08c4be')
 
 prepare() {
   # Skip a test that might fail depending on environment
