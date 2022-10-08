@@ -1,15 +1,15 @@
 # Maintainer: Hezekiah Michael < spiritomb at protonmail dot com>
 
 pkgname=vim-colors-brogrammer-git
-pkgver=r1.7168656
+pkgver=r2.f6d0403
 pkgrel=1
 pkgdesc="A dark, colorful syntax highlighting theme for vim."
 arch=('any')
-url="https://github.com/ErikBoesen/vim-brogrammer-theme"
+url="https://github.com/marciomazza/vim-brogrammer-theme"
 license=('unknown')
 makedepends=('git')
 depends=('vim')
-source=("$pkgname::git://github.com/ErikBoesen/vim-brogrammer-theme.git")
+source=("$pkgname::git+https://github.com/marciomazza/vim-brogrammer-theme.git")
 sha256sums=('SKIP')
 
 pkgver() {
