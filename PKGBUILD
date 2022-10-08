@@ -7,9 +7,9 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=13.0.1
+pkgver=13.1.0
 pkgrel=1
-pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
+pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation."
 arch=('x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
@@ -71,7 +71,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_BNDL_LINUX.sh")
-md5sums=('cdeae74ad72420c1dea5027f7f8c569e')
+md5sums=('23e6c72f6b948cefc4f588ec563af488')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -169,10 +169,4 @@ package() {
 
     msg2 "Fixing file permissions"
     chmod go-w -R ${pkgdir}/*
-
-    ## The documentation takes up the majority of the disk space (6.8G+).  If you
-    ## do not wish to have the documentation installed, uncomment the following
-    ## lines.
-    # msg2 "Removing documentation"
-    # rm -rf "${pkgdir}/opt/Mathematica/Documentation"
 }
