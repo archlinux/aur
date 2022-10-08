@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 pkgdesc="Quickly load .gitignore templates"
@@ -25,14 +25,14 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
