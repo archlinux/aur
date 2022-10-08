@@ -1,6 +1,6 @@
 pkgbase = xk-git
 	pkgdesc = IRC daemon, bot, TUI client
-	pkgver = v1.5.0.r125.gb8061b6
+	pkgver = v1.5.0.r189.g26ed2db
 	pkgrel = 1
 	url = https://git.janouch.name/p/xK
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = xk-git
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = git
-	makedepends = asciidoctor
 	depends = openssl
 	depends = readline
 	depends = ncurses
