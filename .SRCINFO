@@ -1,0 +1,12 @@
+pkgbase = pipewire-config
+	pkgdesc = simples interface de configuração de sample rate e frame period
+	pkgver = 22.10.07
+	pkgrel = 2331
+	url = https://github.com/xivastudio/pipewire-config
+	arch = any
+	license = GPL
+	depends = zenity
+	source = git+https://github.com/xivastudio/pipewire-config.git
+	md5sums = SKIP
+
+pkgname = pipewire-config
