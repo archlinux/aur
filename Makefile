@@ -4,11 +4,11 @@ all: help
 .PRECIOUS: .SRCINFO PKGBUILD
 .PHONY: help build update install publish
 
-REPODIR := $(shell egrep -m1 '^source=' PKGBUILD | cut -d= -f2 | sed -r "s/^\('(.*)'\)\$$/\1/ ; s~^git\+https?://github.com/.*/([^/]+)/?\$$~\1~")
+REPODIR := $(shell grep -Em1 '^source=' PKGBUILD | cut -d= -f2 | sed -r "s/^\('(.*)'\)\$$/\1/ ; s~^git\+https?://github.com/.*/([^/]+)/?\$$~\1~")
 REPO_BRANCH = $(shell git --bare --git-dir=$(REPODIR) branch --show-current | tr -d "\r\n")
-PKGNAME = $(shell egrep -m1 '^pkgname=' PKGBUILD | cut -d= -f2)
-PKGVER = $(shell egrep -m1 '^pkgver=' PKGBUILD | cut -d= -f2)
-PKGREL = $(shell egrep -m1 '^pkgrel=' PKGBUILD | cut -d= -f2)
+PKGNAME = $(shell grep -Em1 '^pkgname=' PKGBUILD | cut -d= -f2)
+PKGVER = $(shell grep -Em1 '^pkgver=' PKGBUILD | cut -d= -f2)
+PKGREL = $(shell grep -Em1 '^pkgrel=' PKGBUILD | cut -d= -f2)
 TARGET_ARCHIVE = $(PKGNAME)-$(PKGVER)-$(PKGREL)-any.pkg.tar.zst
 AUR_GIT_REMOTE = $(shell git remote show -n | head -n1)
 AUR_GIT_BRANCH = $(shell git branch --show-current)
