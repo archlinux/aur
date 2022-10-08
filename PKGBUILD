@@ -1,6 +1,7 @@
-# Maintainer: Travis Weir <tweirtx at gmail dot com>
+# Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
+# Based upon orphaned 'jdk-jetbrains' by Travis Weir <tweirtx at gmail dot com>
 
-pkgname=jdk-jetbrains
+pkgname=jdk11-jetbrains-bin
 _major=11
 _minor=0.15
 _build=2043.56
@@ -16,7 +17,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
 replaces=('intellij-jdk' 'jdk-jetbrains')
 _zipname="jbrsdk_nomod-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-b2sums=('abc5cd5a153c816c81a0e19174c6b2b6f316aa21be02a3f4288624af4a0a70013355ee5c16eb879c2f4565ce646c16fb105cc38e9f54d23b85a450629fbc0db6')
+sha256sums=('e0e324c1ff9cb31e745ca0df5ce62181cc3852659d1c4a65f875d984b06dcfcc')
 
 package() {
   find . -exec chmod g+r,o+r {} +
