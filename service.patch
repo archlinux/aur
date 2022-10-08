@@ -1,5 +1,5 @@
---- ArchiSteamFarm@.service.org	2021-11-01 14:32:25.829188085 +0100
-+++ ArchiSteamFarm@.service	2021-11-03 09:57:45.805924189 +0100
+--- ArchiSteamFarm@.service.org	2022-10-08 21:09:53.830905346 +0200
++++ ArchiSteamFarm@.service	2022-10-08 21:11:49.460474684 +0200
 @@ -3,7 +3,7 @@
  
  [Service]
@@ -7,9 +7,9 @@
 -ExecStart=/home/%i/ArchiSteamFarm/ArchiSteamFarm --no-restart --process-required --service --system-required
 +ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --no-restart --process-required --service --system-required
  Restart=on-success
- RestartSec=5s
+ RestartSec=1s
  SyslogIdentifier=asf-%i
-@@ -24,7 +24,8 @@
+@@ -27,7 +27,8 @@
  ProtectKernelTunables=yes
  ProtectProc=invisible
  ProtectSystem=strict
