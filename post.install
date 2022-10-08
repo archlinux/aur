@@ -1,0 +1,190 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+
+#descobrir o nome do usuario
+who=$(who | awk '{ print $1 }' | head -n 1)
+
+#adicinar usuario ao grupo realtime e video
+if [ -n "$(getent group | grep realtime)" ];then
+    usermod -a -G realtime $who
+else
+echo '
+users=$(ls /home)
+for i in $users; do 
+	if [ -z "$(groups $i | grep realtime)" ]; then
+		usermod -a -G realtime $i
+	fi
+done' | tee -a /usr/bin/big-first-boot
+fi
+usermod -a -G video $who
+usermod -a -G audio $who
+
+
+### toda essa parte foi movida para o systemD ###
+#Aumentar a frequência de interrupção RTC
+#echo 2048 > /sys/class/rtc/rtc0/max_user_freq
+#echo 2048 > /proc/sys/dev/hpet/max-user-freq
+
+#configurar o swapness para 10
+#cat /proc/sys/vm/swappiness
+#echo "vm.swappiness = 10" | tee /etc/sysctl.d/90-swappiness.conf
+#cat /proc/sys/vm/vfs_cache_pressure
+#echo "vm.vfs_cache_pressure = 100" | tee /etc/sysctl.d/99-vm.vfs_cache_pressure.conf
+
+### até aqui ###
+
+### movido para arquivos dentro do .pkg.tar.zst ###
+
+#Increasing the maximum watches on files to 6000
+#cat /proc/sys/fs/inotify/max_user_watches
+#if [ ! -e "/etc/sysctl.d/90-max_user_watches.conf" ]; then
+#    echo fs.inotify.max_user_watches = 600000 | tee /etc/sysctl.d/90-max_user_watches.conf
+#elif [ -e "/etc/sysctl.d/90-max_user_watches.conf" ]; then
+#    sed -i '/fs.inotify.max_user_watches/s/=.*$/= 600000/' /etc/sysctl.d/90-max_user_watches.conf
+#fi
+
+#baixar a latencia das placas de audio PCI internas
+for i in $(lspci | grep -i audio | awk '{print $1}'); do setpci -v -s $i latency_timer=ff; done
+
+#if [ ! -e /etc/security/limits.d/audio.conf ];then
+#    touch /etc/security/limits.d/audio.conf
+#fi
+
+#aumentar a prioridade e memoria para o audio
+#if [ -z "$(grep 'rtprio     98' /etc/security/limits.d/audio.conf)" ]; then
+#    echo "@audio   -  rtprio     98" | tee -a /etc/security/limits.d/audio.conf
+#fi
+#if [ -z "$(grep 'memlock    unlimited' /etc/security/limits.d/audio.conf)" ]; then
+#    echo "@audio   -  memlock    unlimited" | tee -a /etc/security/limits.d/audio.conf
+#fi
+#if [ -z "$(grep 'KERNEL=="rtc0", GROUP="audio"' /etc/udev/rules.d/40-timer-permissions.rules)" ]; then 
+#    echo 'KERNEL=="rtc0", GROUP="audio"' | tee -a /etc/udev/rules.d/40-timer-permissions.rules
+#fi
+#if [ -z "$(grep 'KERNEL=="hpet", GROUP="audio"' /etc/udev/rules.d/40-timer-permissions.rules)" ]; then 
+#    echo 'KERNEL=="hpet", GROUP="audio"' | tee -a /etc/udev/rules.d/40-timer-permissions.rules
+#fi
+#if [ -z "$(grep 'KERNEL=="raw1394", GROUP="audio"' /etc/udev/rules.d/50-raw-firewire.rules)" ]; then 
+#    echo 'KERNEL=="raw1394", GROUP="audio"' | tee -a /etc/udev/rules.d/50-raw-firewire.rules
+#fi
+
+### até aqui ###
+
+#PAM-enabled login
+if [ -z "$(grep pam_limits.so /etc/pam.d/crond)" ]; then
+    echo "session   required    pam_limits.so" | tee -a /etc/pam.d/crond
+fi
+if [ -z "$(grep pam_limits.so /etc/pam.d/login)" ]; then
+    echo "session   required    pam_limits.so" | tee -a /etc/pam.d/login
+fi
+if [ -z "$(grep pam_limits.so /etc/pam.d/polkit-1)" ]; then
+    echo "session   required    pam_limits.so" | tee -a /etc/pam.d/polkit-1
+fi
+if [ -z "$(grep pam_limits.so /etc/pam.d/system-auth)" ]; then
+    echo "session   required    pam_limits.so" | tee -a /etc/pam.d/system-auth
+fi
+if [ -z "$(grep pam_limits.so /etc/pam.d/system-services)" ]; then
+    echo "session   required    pam_limits.so" | tee -a /etc/pam.d/system-services
+fi
+
+
+##se o processador for intel desativar o pstate
+#verificar se o processador é intel
+cpu=$(lscpu | grep -i intel)
+#verificar se o pstate está ativo
+pstate=$(cat /etc/default/grub | grep intel_pstate=disable)
+
+#se o processador for intel and o pstate tiver ativo
+if [ -n "$cpu" -a -n "$pstate" ]; then
+	#desativar o pstate
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ intel_pstate=disable"/2' /etc/default/grub
+	#update-grub
+fi
+
+##desativar o mitigations
+mitigations=$(cat /etc/default/grub | grep mitigations=off)
+#se o mitigations não estiver em off
+if [ -z "$mitigations" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ mitigations=off"/2' /etc/default/grub
+	#update-grub
+fi
+
+clearcpuid=$(cat /etc/default/grub | grep clearcpuid=514)
+#se o clearcpuid não estiver
+if [ -z "$clearcpuid" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ clearcpuid=514"/2' /etc/default/grub
+	#update-grub
+fi
+
+nowatchdog=$(cat /etc/default/grub | grep nowatchdog)
+#se o nowatchdog não estiver
+if [ -z "$nowatchdog" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ nowatchdog"/2' /etc/default/grub
+	#update-grub
+fi
+
+nosoftlockup=$(cat /etc/default/grub | grep nosoftlockup)
+#se o nosoftlockup não estiver
+if [ -z "$nosoftlockup" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ nosoftlockup"/2' /etc/default/grub
+	#update-grub
+fi
+
+audit=$(cat /etc/default/grub | grep audit)
+#se o audit não estiver
+if [ -z "$audit" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ audit=0"/2' /etc/default/grub
+	#update-grub
+fi
+
+skewtick=$(cat /etc/default/grub | grep skew_tick=1)
+#se o skewtick não estiver
+if [ -z "$skewtick" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ skew_tick=1"/2' /etc/default/grub
+	#update-grub
+fi
+
+threadirqs=$(cat /etc/default/grub | grep threadirqs)
+#se o threadirqs não estiver
+if [ -z "$threadirqs" ]; then
+	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/\"/ threadirqs"/2' /etc/default/grub
+	#update-grub
+fi
+update-grub
+
+systemctl start xiva-audio-config
+udevadm control --reload-rules
+udevadm trigger
+
+}
+
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
