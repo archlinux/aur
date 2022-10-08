@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=paper-note-git
-pkgver=r289.a15ffe2
+pkgver=r291.fdf783d
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/posidon_software/paper"
 license=('GPL3')
-depends=('libadwaita' 'gtksourceview5' 'libgee')
+depends=('libadwaita' 'gtksourceview5' 'libgee' 'python-gobject')
 makedepends=('git' 'meson' 'gobject-introspection' 'blueprint-compiler' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
