@@ -1,0 +1,15 @@
+pkgbase = brother-hll2325dw
+	pkgdesc = Brother HL-L2325DW CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = perl
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf105332/hll2325dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = 5be7e0ea373b74e8d0ed6fe945f1d6e41bd4316984ec35c455a4baaaed83381f
+
+pkgname = brother-hll2325dw
