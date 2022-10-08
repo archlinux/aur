@@ -5,8 +5,8 @@ After=network-online.target
 ConditionVirtualization=false
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/prometheus-smartctl-exporter
+EnvironmentFile=-/etc/conf.d/prometheus-smartctl-exporter
+ExecStart=/usr/bin/prometheus-smartctl-exporter $SMARTCTL_EXPORTER_ARGS
 User=root
 Group=root
 Restart=on-failure
