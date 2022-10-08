@@ -23,11 +23,13 @@ pkgbase = onivim2-bin
 	provides = onivim2
 	conflicts = onivim2
 	options = !strip
-	source = https://github.com/santilococo/oni2/releases/download/v0.5.7/AppDir.tar
-	source = https://github.com/santilococo/oni2/releases/download/v0.5.7/AppCache.tar
+	source = onivim2-bin-0.5.7.AppImage::https://github.com/santilococo/oni2/releases/download/v0.5.7/Onivim2-x86_64.AppImage
+	source = onivim2-bin.png::https://raw.githubusercontent.com/santilococo/oni2/master/assets/images/logo.png
+	source = onivim2-bin.desktop::https://raw.githubusercontent.com/santilococo/oni2/master/scripts/linux/Onivim2.desktop
 	source = https://raw.githubusercontent.com/santilococo/oni2/master/LICENSE.md
-	sha256sums = 298bf2e27df94a3018be0366a70c82f41e59c7b018cb43448d4ed516755ba818
-	sha256sums = 7009fd05c2c1063632a72a54be29be78e9ef9b62238ae55c805a51227eb7cf78
+	sha256sums = 191528f7eeddd3c2ab35464e5418125920a612235037f26af12571579a451ae4
+	sha256sums = bb4938b950454bf4123a7d9850bd98da295811ad20491992de2b6b1da2759967
+	sha256sums = 255ddde65a19106a3f77acfae88e5003db09e86f1564a8435f2a42866c0e4c34
 	sha256sums = 32edcecd2c392702a06ee4490d839d8a6da786deb6ca0430f16655e071f0760a
 
 pkgname = onivim2-bin
