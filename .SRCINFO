@@ -13,8 +13,8 @@ pkgbase = mraa-radxa-git
 	makedepends = swig
 	depends = json-c
 	optdepends = python: for Python support
-	provides = mraa-radxa=2.1.0.23.gfc8c906
-	conflicts = mraa-radxa
+	provides = mraa=2.1.0.23.gfc8c906
+	conflicts = mraa
 	source = git+https://github.com/radxa/mraa.git
 	md5sums = SKIP
 

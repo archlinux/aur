@@ -4,8 +4,8 @@ pkgname=${_pkgname}-radxa-git
 pkgver=2.1.0.23.gfc8c906
 pkgrel=1
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
-provides=(${pkgname%-*}=$pkgver)
-conflicts=(${pkgname%-*})
+provides=(${_pkgname%-*}=$pkgver)
+conflicts=(${_pkgname%-*})
 depends=('json-c')
 makedepends=('git' 'cmake' 'swig')
 optdepends=('python: for Python support')
@@ -17,7 +17,7 @@ source=(git+https://github.com/radxa/mraa.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
 }
 
