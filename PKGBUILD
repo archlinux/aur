@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_version=1.0+914
-_url=https://download.jitsi.org/unstable/jicofo_1.0-914-1_all.deb
+_version=1.0+947
+_url=https://download.jitsi.org/unstable/jicofo_1.0-947-1_all.deb
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
@@ -24,6 +24,7 @@ backup=(
 )
 source=(
         "$_url"
+        "jicofo.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
         "config"
         "sip-communicator.properties"
         "service"
@@ -57,15 +58,14 @@ package() {
         sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/logging.properties"
 
         cd "$srcdir"
-        unzip "$srcdir/${_pkgbase}/usr/share/jicofo/jicofo.jar" reference.conf
-        mv reference.conf jicofo.conf
         install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties" "jicofo.conf"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
 
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('6c2d09f111287d9154a30d7388e805bf4a308cac5c1801354b5c3ddfcb03b036'
+sha256sums=('8b801396395d607671ac165fcab24328cf106522f5f953e40903ab7067ee8d47'
+            '7f11758428c2a9d4d03302d7286984a5ecbc060ee1e89a2e5535c8e78d876a12'
             'e0e42bb77b6c60e2a2d5ad57b12365166e90b91e53c91062909d578808d5e00c'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
             '59c6a682953a9981af90d111901b3637a79ff42d39d1fbd5fa22730ec4148762'
