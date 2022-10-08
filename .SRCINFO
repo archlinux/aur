@@ -1,6 +1,6 @@
 pkgbase = adwsteamgtk
 	pkgdesc = A simple Gtk wrapper for Adwaita-for-Steam
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Foldex/AdwSteamGtk
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = adwsteamgtk
 	depends = python-packaging
 	depends = steam
 	optdepends = gnome-shell-extension-rounded-window-corners: Rounded corners on GNOME
-	source = adwsteamgtk-0.1.1.tar.gz::https://github.com/Foldex/AdwSteamGtk/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = f6c8e75c6caf2652f4bf010ca6aec823f8a7bfe2b74aabce8aec2ba54cf26d4d
+	source = adwsteamgtk-0.1.2.tar.gz::https://github.com/Foldex/AdwSteamGtk/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 2a30bcb41bd8fe8f7fb5c526b72dfecb7150763fde596582d087328b730517fb
 
 pkgname = adwsteamgtk

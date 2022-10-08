@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=adwsteamgtk
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A simple Gtk wrapper for Adwaita-for-Steam"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 optdepends=('gnome-shell-extension-rounded-window-corners: Rounded corners on GNOME')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6c8e75c6caf2652f4bf010ca6aec823f8a7bfe2b74aabce8aec2ba54cf26d4d')
+sha256sums=('2a30bcb41bd8fe8f7fb5c526b72dfecb7150763fde596582d087328b730517fb')
 
 build() {
   arch-meson "AdwSteamGtk-$pkgver" build
