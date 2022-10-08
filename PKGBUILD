@@ -2,7 +2,7 @@
 
 pkgname=cavecube
 ghpkgname=CaveCube
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${ghpkgname}-${pkgver}/"
-    make -j$(nproc)
+    make NATIVE=y -j$(nproc)
 }
 
 check() {
