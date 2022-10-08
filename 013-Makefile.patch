@@ -1,0 +1,39 @@
+--- a/src/vboxhost/Makefile
++++ b/src/vboxhost/Makefile
+@@ -35,19 +35,19 @@
+ # terms and conditions of either the GPL or the CDDL or both.
+ #
+ 
+-ifneq ($(KERNELRELEASE),)
++ifneq ($(KBUILD_EXTMOD),)
+ 
+-# Building from kBuild (make -C <kernel_directory> M=`pwd`),
+-# or inside a kernel source tree.
++# Building from kBuild (make -C <kernel_directory> M=`pwd`).
++# KBUILD_EXTMOD is set to $(M) in this case.
+ 
+ obj-m = vboxdrv/
+- ifneq ($(wildcard $(CURDIR)/vboxnetflt/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetflt/Makefile),)
+ obj-m += vboxnetflt/
+  endif
+- ifneq ($(wildcard $(CURDIR)/vboxnetadp/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetadp/Makefile),)
+ obj-m += vboxnetadp/
+  endif
+- ifneq ($(wildcard $(CURDIR)/vboxpci/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxpci/Makefile),)
+ obj-m += vboxpci/
+  endif
+ 
+-else # ! KERNELRELEASE
++else # ! KBUILD_EXTMOD
+ 
+-# convenience Makefile without KERNELRELEASE
++# convenience Makefile without KBUILD_EXTMOD
+@@ -244,4 +244,4 @@ load: unload
+ 		fi; \
+ 	done
+ 
+-endif # ! KERNELRELEASE
++endif # ! KBUILD_EXTMOD

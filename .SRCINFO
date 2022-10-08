@@ -1,0 +1,77 @@
+pkgbase = virtualbox-bin-dev
+	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://www.virtualbox.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = python
+	noextract = VirtualBoxSDK-7.0.0_BETA3-153872.zip
+	source = https://www.virtualbox.org/download/testcase/VirtualBox-7.0.0_BETA3-153872-Linux_amd64.run
+	source = https://www.virtualbox.org/download/testcase/VirtualBoxSDK-7.0.0_BETA3-153872.zip
+	source = VBoxAuth-r96547.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=96547
+	source = VBoxAuthPAM-r96547.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=96547
+	source = VBoxAuthSimple-r96547.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=96547
+	source = dkms.conf
+	source = vboxreload
+	source = 60-vboxdrv.rules
+	source = vboxweb.service
+	source = virtualbox.sysusers
+	source = LICENSE.sdk
+	source = 013-Makefile.patch
+	sha256sums = 5410075008869fa8eed1e13e20c31737827962036a8a7f24b53e30e48d9dc6f7
+	sha256sums = d2b3029947c7667a2d036153439a32e5aad9bb27301392b85ff931fdf13e0616
+	sha256sums = 1d1a828b8411d08dc886463628589716151a514639d606d99e3578e9894fd5bd
+	sha256sums = b762b1d19647bd0d116f62fc683f061b7a80667fc0377e0a6b00691797a5fa3c
+	sha256sums = 7c7e19388158418762529805c19fab80ba329eb287dadc152bb226dfedb9d7ed
+	sha256sums = 63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388
+	sha256sums = 4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d
+	sha256sums = 9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e
+	sha256sums = e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f
+	sha256sums = 2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c
+	sha256sums = 09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1
+	sha256sums = d6ee5ac5fadad27b5551d28e81eda2b47e256f5fd4e6d58dcc722ed1bfa2d3ad
+
+pkgname = virtualbox-bin-dev
+	depends = device-mapper
+	depends = dkms
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libidl2
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxmu
+	depends = python
+	depends = sdl
+	optdepends = virtualbox-bin-dev-guest-iso: for guest additions CD image
+	optdepends = virtualbox-bin-dev-sdk: for the software developer kit
+	optdepends = virtualbox-ext-oracle: for Oracle extensions pack
+	provides = virtualbox=7.0.0
+	provides = virtualbox-host-dkms
+	provides = VIRTUALBOX-HOST-MODULES
+	conflicts = virtualbox
+	conflicts = virtualbox-host-dkms
+	conflicts = virtualbox-host-modules-arch
+	replaces = virtualbox_bin
+	replaces = virtualbox-sun
+	options = !strip
+	options = !emptydirs
+	backup = etc/vbox/vbox.cfg
+
+pkgname = virtualbox-bin-dev-guest-iso
+	pkgdesc = VirtualBox guest additions ISO image for use with virtualbox-bin package
+	arch = any
+	provides = virtualbox-guest-iso
+
+pkgname = virtualbox-bin-dev-sdk
+	pkgdesc = VirtualBox software developer kit for use with virtualbox-bin package
+	arch = any
+	license = LGPL2.1
+	license = GPL2
+	license = BSD
+	license = custom
+	depends = python
+	optdepends = java-runtime: for webservice java bindings
+	provides = virtualbox-sdk
+	conflicts = virtualbox-sdk
