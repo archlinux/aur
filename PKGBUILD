@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.1.99.r1070.g35d81a75a8
+pkgver=2.1.99.r1298.g6fca6195cd
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -334,7 +334,7 @@ _fix_utils() {
   #rm -r "${pkgdir}"/usr/lib/dracut
   rm -r "${pkgdir}"/usr/lib/modules-load.d
   rm -r "${pkgdir}"/usr/share/initramfs-tools
-  rm -r "${pkgdir}"/usr/share/zfs
+  rm -r "${pkgdir}"/usr/share/zfs/zfs-tests # For zpool set compatibility
 
   install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
   install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
