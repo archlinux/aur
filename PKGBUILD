@@ -7,7 +7,7 @@ url="https://github.com/bulletmark/$pkgname"
 license=(GPL3)
 arch=(any)
 depends=("python>=3.7")
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-setuptools python-build python-installer python-wheel)
 install=install.sh
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha1sums=('46a811141b79daacd4a5fda079c1b54de9152e85')
