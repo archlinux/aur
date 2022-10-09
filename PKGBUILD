@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("python>=3.6" "rsync" "sudo" "openssh" "python-requests"
          "python-ruamel-yaml" "python-rich" "python-packaging")
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 replaces=("pacsync")
 conflicts=("pacsync")
