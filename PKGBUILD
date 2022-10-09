@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.51.1.r3987.70415776
+pkgver=0.51.3.r3993.56391735
 pkgrel=1
 pkgdesc="An open source toolkit for creating maps and assets for Halo: Combat Evolved (git build)"
 depends=('libtiff' 'libarchive' 'libsquish' 'flac' 'freetype2' 'libsamplerate'
@@ -18,27 +18,27 @@ provides=('invader')
 conflicts=('invader')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname%-git}"
+  printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd invader
-    git submodule init
-    git config submodule.riat.url "${srcdir}/riat"
-    git submodule update
+  cd invader
+  git submodule init
+  git config submodule.riat.url "${srcdir}/riat"
+  git submodule update
 }
 
 build() {
-    cmake -S "${pkgname%-git}" \
-        -G Ninja \
-        -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+  cmake -S "${pkgname%-git}" \
+    -G Ninja \
+    -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
 
-    cmake --build build --config Release
+  cmake --build build --config Release
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install build --config Release
+  DESTDIR="${pkgdir}" cmake --install build --config Release
 }
