@@ -16,7 +16,7 @@ depends=(
     'mupdf-tools'
     'jbig2dec'
 )
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=(
     "git+https://github.com/JeziL/caj2pdf.git"
     "tmp.patch"
