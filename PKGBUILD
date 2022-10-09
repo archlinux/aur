@@ -33,5 +33,5 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('c32a294aeb800829f9d45b201c9e8ed7364aa5a90be173c410f0d0f7c0e7bbe2'
-            '50ab429f3511c6af7b85a7885556875b8c66976a5982ab62996aa614fbcf5a6e')
+sha256sums=('50ab429f3511c6af7b85a7885556875b8c66976a5982ab62996aa614fbcf5a6e'
+            '45149cc69f8f2088c67513f2da612bb47510057b0fefbe59c92357513ecbc560')
