@@ -35,7 +35,7 @@ build() {
     -DENABLE_SQLITE3='OFF' \
     -DENABLE_RPM='OFF' \
     -DENABLE_IMAGEMAGICK6='OFF' \
-    -DENABLE_LIBCJSON=OFF \
+    -DENABLE_LIBCJSON='OFF' \
     -Wno-dev
   cmake --build build
 }
