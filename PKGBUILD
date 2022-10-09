@@ -18,8 +18,8 @@ sha256sums=('dddbdf151a18723c9302a133e5cf79538be8eb9d274e8e07d2ac3ac34890837c')
 
 
 build() {
-	cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 # check() {
@@ -28,6 +28,6 @@ build() {
 # }
 
 package() {
-	cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
