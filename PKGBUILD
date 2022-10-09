@@ -2,7 +2,8 @@
 pkgname=uxplay
 _gitname=UxPlay
 pkgver=1.56d
-pkgrel=2
+epoch=1
+pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/FDH2/$_gitname"
