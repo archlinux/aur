@@ -3,14 +3,12 @@
 pkgname=python-pandas-profiling
 _pkgname=pandas-profiling
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=('any')
-url='https://github.com/pandas-profiling/pandas-profiling'
+url='https://github.com/ydataai/pandas-profiling'
 license=('MIT')
 depends=(
-  python-attrs
-  python-confuse
   python-htmlmin
   python-imagehash
   python-ipywidgets
@@ -22,12 +20,15 @@ depends=(
   python-numpy
   python-pandas
   python-phik
+  python-pydantic
   python-requests
   python-seaborn
   python-scipy
+  python-statsmodels
   python-tangled-up-in-unicode
   python-tqdm
   python-visions
+  python-yaml
 )
 
 makedepends=(python-setuptools)
