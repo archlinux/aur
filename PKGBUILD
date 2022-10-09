@@ -1,3 +1,4 @@
+# Maintainer: Jack Chen <redchenjs@live.com>
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _srcname=I.Ming
