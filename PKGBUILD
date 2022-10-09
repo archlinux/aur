@@ -3,7 +3,7 @@
 
 pkgname=fuzzynote-bin
 _pkgname=fuzzynote
-pkgver=0.25.2
+pkgver=0.25.3
 pkgrel=1
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking (pre-compiled)'
 arch=('x86_64')
@@ -23,13 +23,13 @@ package() {
 }
 
 sha256sums=(
-  '88c9e682b24157135634d36b653d3ba5acf766616507692c7f25d7bb78688cc6'
+  'a548477e9ab831caa8b06dfc54e6070a8ff9c36be0f2e2b69daf73c672f4dc4a'
 )
 sha512sums=(
-  'b9a3fdd7dc9d63436bffbfd89a29bed9c8368ae41494c3b60b4df080d56a4d1a9042896737ce9242c8570175efb72d7124adb9584ad23a42260d6975d0061e3f'
+  '9b0e86f08b6f02e979d1cc79596d2a0c59f53c4de04ca3d2e9b53c4e0f1e897be9867bc5702aa071921955beb623765220528a8df3a4589432c6e82f3b2bd58c'
 )
 b2sums=(
-  'e1b4b026473697ea5442ec28ccd1f169730d226853980b9f78817651bd1185a933be4eece8c8f6c53472594deb747b9b7096f760fcea550fef05427172d6670b'
+  '6ee7e84d92378fcddbbf4ffe5f7617171786472f9df3a065694a5d6a87887dd5f4fc140909105a53fff40c1801b425074eb6fb0eb972c4eab7de9d9d9ae89aa7'
 )
 
 # eof
