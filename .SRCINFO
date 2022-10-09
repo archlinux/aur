@@ -5,7 +5,9 @@ pkgbase = vim-plugins-profiler
 	url = https://github.com/bulletmark/vim-plugins-profiler
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.5
 	source = vim-plugins-profiler-1.14.tar.gz::https://github.com/bulletmark/vim-plugins-profiler/archive/1.14.tar.gz
