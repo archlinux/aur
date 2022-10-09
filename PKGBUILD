@@ -5,7 +5,7 @@ pkgrel=3
 pkgdesc="An open-source discord client."
 arch=('x86_64')
 url="https://github.com/gamingdoom/datcord"
-license=('MPL')
+license=('GPL3')
 depends=(gtk3 mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
