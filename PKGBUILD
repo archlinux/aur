@@ -1,7 +1,7 @@
 # Maintainer: Roni Hokkanen <roni dot hokkanen at protonmail dot com>
 
 pkgname=ergo-node
-pkgver=4.0.103
+pkgver=4.0.104
 pkgrel=1
 pkgdesc="Reference implementation of the Ergo protocol. Ergo is a smart contract platform and cryptocurrency. This package provides a Systemd service and a script that runs Ergo node using Xdg base dirs."
 arch=('any')
@@ -24,14 +24,14 @@ pkgver() {
 }
 
 prepare() {
-  if ! [ -f ergo-${pkgver}.jar ]; then
-    curl -LO "https://github.com/ergoplatform/ergo/releases/download/v${pkgver}/ergo-${pkgver}.jar"
+  if ! [ -f ergo-$(pkgver).jar ]; then
+    curl -LO "https://github.com/ergoplatform/ergo/releases/download/v$(pkgver)/ergo-$(pkgver).jar"
   fi
 }
 
 package() {
   install -Dm755 "${srcdir}/ergo-node" "${pkgdir}/usr/bin/ergo-node"
-  install -Dm644 "${srcdir}/ergo-${pkgver}.jar" "${pkgdir}/usr/share/ergo-node/ergo.jar"
+  install -Dm644 "${srcdir}/ergo-$(pkgver).jar" "${pkgdir}/usr/share/ergo-node/ergo.jar"
   install -Dm644 "${srcdir}/ergo/src/main/resources/samples/local.conf.sample" "${pkgdir}/usr/share/ergo-node/local.conf.sample"
   install -Dm644 "${srcdir}/ergo-node.service" "${pkgdir}/usr/lib/systemd/user/ergo-node.service"
   install -Dm644 "${srcdir}/ergo/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
