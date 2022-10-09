@@ -1,12 +1,12 @@
 pkgbase = rocm-cmake
 	pkgdesc = CMake modules for common build tasks needed for the ROCm software stack
-	pkgver = 5.2.3
-	pkgrel = 3
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/rocm-cmake
 	arch = x86_64
 	license = MIT
 	depends = cmake
-	source = rocm-cmake-5.2.3.tar.gz::https://github.com/RadeonOpenCompute/rocm-cmake/archive/rocm-5.2.3.tar.gz
-	sha256sums = c63b707ec07d24fda5a2a6fffeda4df4cc04ceea5df3b8822cbe4e6600e358b4
+	source = rocm-cmake-5.3.0.tar.gz::https://github.com/RadeonOpenCompute/rocm-cmake/archive/rocm-5.3.0.tar.gz
+	sha256sums = 659a8327f13e6786103dd562d3632e89a51244548fca081f46c753857cf09d04
 
 pkgname = rocm-cmake
