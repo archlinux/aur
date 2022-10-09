@@ -1,0 +1,22 @@
+pkgbase = libxfce4ui-move-monitor
+	pkgdesc = Commonly used Xfce widgets among Xfce applications
+	pkgver = 4.16.1
+	pkgrel = 1
+	url = https://www.xfce.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = libxfce4util
+	depends = gtk3
+	depends = xfconf
+	depends = libsm
+	depends = startup-notification
+	depends = libgtop
+	depends = libepoxy
+	depends = hicolor-icon-theme
+	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.1.tar.bz2
+	sha256sums = d96946ae5af6bf078dda415419e0021909f763ee0020b42f3e26f603e51585f6
+
+pkgname = libxfce4ui-move-monitor

@@ -1,0 +1,15 @@
+diff --git libxfce4kbd-private/xfce-shortcuts-xfwm4.c libxfce4kbd-private/xfce-shortcuts-xfwm4.c
+index 9caf627..1a972d8 100644
+--- libxfce4kbd-private/xfce-shortcuts-xfwm4.c
++++ libxfce4kbd-private/xfce-shortcuts-xfwm4.c
+@@ -60,6 +60,10 @@ const ShortcutTemplate xfwm4_shortcut_values[] = {
+   { N_("Fill window vertically"), "fill_vert_key" },
+   { N_("Toggle above"), "above_key" },
+   { N_("Toggle fullscreen"), "fullscreen_key" },
++  { N_("Move window to lower monitor"), "move_window_to_monitor_down_key" },
++  { N_("Move window to left monitor"), "move_window_to_monitor_left_key" },
++  { N_("Move window to right monitor"), "move_window_to_monitor_right_key" },
++  { N_("Move window to upper monitor"), "move_window_to_monitor_up_key" },
+   { N_("Move window to upper workspace"), "move_window_up_workspace_key" },
+   { N_("Move window to bottom workspace"), "move_window_down_workspace_key" },
+   { N_("Move window to left workspace"), "move_window_left_workspace_key" },
