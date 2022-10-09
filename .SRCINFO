@@ -6,8 +6,9 @@ pkgbase = yabsnap
 	arch = any
 	license = Apache
 	makedepends = rsync
+	depends = python3
 	provides = yabsnap
 	source = https://github.com/hirak99/yabsnap/archive/refs/tags/v1.04.tar.gz
-	md5sums = 06de97f5d33c541fb4da289e2d005029
+	md5sums = eead334094a1adeba5c119db892da3ab
 
 pkgname = yabsnap
