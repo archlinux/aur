@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-geoip2
-pkgver=3.3
-pkgrel=13
+pkgver=3.4
+pkgrel=1
 
 _modname="ngx_http_geoip2_module"
 
@@ -14,7 +14,7 @@ url="https://github.com/leev/ngx_http_geoip2_module"
 license=('BSD')
 
 source=(https://github.com/leev/ngx_http_geoip2_module/archive/$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('41378438c833e313a18869d0c4a72704b4835c30acaf7fd68013ab6732ff78a7')
+sha256sums=('ad72fc23348d715a330994984531fab9b3606e160483236737f9a4a6957d9452')
 
 prepare() {
 	mkdir -p build
