@@ -1,0 +1,11 @@
+pkgbase = voxel-lang
+	pkgdesc = Voxel Programming Language Installer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/UnityTheCoder/Voxel
+	arch = x86_64
+	license = custom
+	depends = python3
+	depends = python-pip
+
+pkgname = voxel-lang
