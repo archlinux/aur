@@ -1,7 +1,7 @@
 # Maintainer: Cat2048
 pkgname=datcord-bin
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source discord client."
 arch=('x86_64')
 url="https://github.com/gamingdoom/datcord"
@@ -15,18 +15,16 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=(datcord)
 conflicts=(datcord)
-replaces=()
-source=(https://github.com/gamingdoom/datcord/releases/latest/download/datcord-linux-$CARCH.tar.bz2)
-noextract=()
+source=("https://github.com/gamingdoom/datcord/releases/latest/download/datcord-linux-$CARCH.tar.bz2"
+               "datcord.desktop"
+               "datcord.png")
 sha256sums=('SKIP')
 
 package() {
 	mkdir -p "$pkgdir"/usr/bin/datcord.d
 	cd "$srcdir/datcord"
-	chmod -R 755 *
-	cp -R  * "$pkgdir"/usr/bin/datcord.d 
+        cp -R  * "$pkgdir"/usr/bin/datcord.d
 	ln -s /usr/bin/datcord.d/datcord "$pkgdir"/usr/bin/datcord
-	cd ../..
-	install -Dvm 775 datcord.desktop "$pkgdir"/usr/share/applications/datcord.desktop
-	install -Dvm 775 datcord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/datcord.png
+	install -Dvm 775 "$srcdir"/datcord.desktop "$pkgdir"/usr/share/applications/datcord.desktop
+	install -Dvm 775 "$srcdir"/datcord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/datcord.png
 }
