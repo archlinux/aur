@@ -14,15 +14,15 @@ source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
-    cmake -S "$pkgname" \
-        -B build \
-        -DCORROSION_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
+  cmake -S "$pkgname" \
+    -B build \
+    -DCORROSION_BUILD_TESTS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
 
-    cmake --build build --config Release
+  cmake --build build --config Release
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install build --config Release
+  DESTDIR="${pkgdir}" cmake --install build --config Release
 }
