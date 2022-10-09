@@ -1,5 +1,3 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
-
 pkgname=erigon
 pkgver=2.27.0
 pkgrel=1
