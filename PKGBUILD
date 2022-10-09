@@ -2,7 +2,7 @@
 pkgbase=python-lsp-mypy
 pkgname=(python-pylsp-mypy)
 _name=${pkgname#python-}
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2c10654cbcf287d3b94680b9826e3b58892dc410d1cf1c4221d010784c3adb39')
+sha256sums=('55ef7a75c1997b007eb17975469ee2b0468f0dd306f557199e813a8f046b2fea')
 
 build() {
   cd "$_name-$pkgver"
