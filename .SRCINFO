@@ -1,21 +1,34 @@
 pkgbase = quartus-standard-programmer
 	pkgdesc = Quartus Prime Programmer and Tools
-	pkgver = 17.1.1.593
+	pkgver = 19.1.0.670
 	pkgrel = 1
-	url = http://dl.altera.com/?edition=standard
-	install = quartus.install
+	url = http://fpgasoftware.intel.com/?edition=standard
 	arch = x86_64
 	license = custom
+	depends = expat
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libice
+	depends = libsm
+	depends = util-linux
+	depends = ncurses
+	depends = tcl
+	depends = zlib
+	depends = libx11
+	depends = libxau
+	depends = libxdmcp
+	depends = libxext
+	depends = libxft
+	depends = libxrender
+	depends = libxt
+	depends = libxtst
 	options = !strip
-	options = !upx
-	source = http://download.altera.com/akdlm/software/acdsinst/17.1std.1/593/ib_installers/QuartusProgrammerSetup-17.1.1.593-linux.run
-	source = http://download.altera.com/akdlm/software/acdsinst/17.1std/590/ib_installers/QuartusProgrammerSetup-17.1.0.590-linux.run
+	source = https://download.altera.com/akdlm/software/acdsinst/19.1std/670/ib_installers/QuartusProgrammerSetup-19.1.0.670-linux.run
 	source = 51-usbblaster.rules
-	source = quartus.install
-	sha256sums = c816847e72753c8fd625361d26ba269f88ad6f5ed4a613d43e9871373faf05a6
-	sha256sums = 69975a8f1530378b45de871f0677818d35f61237c936753cb660a939bc70a12c
-	sha256sums = dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b
-	sha256sums = 0e815b138bcec2d1f9c6aa498d2f56cc131417119af19016a2019173da526d9b
+	source = quartus.sh
+	sha256sums = 3c829397efcf9307a0bb044b3da3bd4a8a6b7a2cb5bcb56c4432d364ad9bd416
+	sha256sums = 02341b69e0d56dacb86df911092ac249df3c9a301a3169b20204859eef2d854b
+	sha256sums = 7b4bfe06f7e11c82117d16811a83626adf38a2000ce5be1cbdf1d1f1da74211a
 
 pkgname = quartus-standard-programmer
-
