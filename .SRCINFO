@@ -1,7 +1,8 @@
 pkgbase = cachyos-ananicy-rules
 	pkgdesc = CachyOS - ananicy-rules
-	pkgver = 1.r30.a2213f1
+	pkgver = 1.r55.478717a
 	pkgrel = 1
+	url = https://github.com/CachyOS/ananicy-rules
 	arch = any
 	groups = cachyos
 	license = GPL

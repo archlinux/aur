@@ -3,12 +3,13 @@
 
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
-pkgver=1.r30.a2213f1
+pkgver=1.r55.478717a
 pkgrel=1
 groups=(cachyos)
 arch=('any')
 license=('GPL')
 pkgdesc='CachyOS - ananicy-rules'
+url='https://github.com/CachyOS/ananicy-rules'
 source=("${pkgname}::git+https://github.com/CachyOS/${_gitname}.git")
 sha256sums=('SKIP')
 replaces=(ananicy-rules-git)
