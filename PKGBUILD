@@ -19,23 +19,23 @@ sha256sums=('5a411aceb978f43e626f0c2d1812ddd8807b645ed892453acabd532376c148e6')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    for _arch in ${_architectures}; do
-        mkdir -p build-${_arch} && pushd build-${_arch}
-        ${_arch}-configure \
-            --without-xml2 \
-            ..
-        make
-        popd
-    done
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  for _arch in ${_architectures}; do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-configure \
+        --without-xml2 \
+        ..
+    make
+    popd
+  done
 }
 
 package() {
-    for _arch in ${_architectures}; do
-        cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
-        make install DESTDIR="${pkgdir}"
-        ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.exe
-        ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
-        ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
-    done
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
+    make install DESTDIR="${pkgdir}"
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
+  done
 }
