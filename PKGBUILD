@@ -1,12 +1,12 @@
 # Maintainer: varsity <varsity@duck.com>
 pkgname=hybrid-bar-git
-pkgver=0.1.9
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 makedepends=('rust' 'cargo' 'git' 'wget')
 depends=('gtk3' 'gtk-layer-shell')
 url="https://github.com/vars1ty/HybridBar"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="A status bar focused on wl-roots Wayland compositors"
+pkgdesc="A status bar focused on wlroots Wayland compositors"
 license=('MIT')
 
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
