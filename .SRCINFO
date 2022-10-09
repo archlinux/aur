@@ -5,6 +5,7 @@ pkgbase = wordle-aid
 	url = https://github.com/bulletmark/wordle-aid
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

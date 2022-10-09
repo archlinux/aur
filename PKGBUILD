@@ -7,7 +7,7 @@ url="https://github.com/bulletmark/$pkgname"
 license=(GPL3)
 arch=(any)
 depends=("python>=3.6" "python-pyspellchecker")
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha1sums=('d3aefb62b1a358261e3adbe940784f9ee600f9fd')
 
