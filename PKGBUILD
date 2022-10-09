@@ -19,7 +19,6 @@ options=('!strip')
 depends=(coreutils kmod initramfs)
 optdepends=('crda: to set the correct wireless channels of your country'
             'linux-firmware: firmware images needed for some devices')
-makedepends=('jq' 'curl')
 provides=(VIRTUALBOX-GUEST-MODULES
           WIREGUARD-MODULE
           KSMBD-MODULE
