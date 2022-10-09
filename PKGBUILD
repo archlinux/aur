@@ -3,7 +3,7 @@
 # Contributor: Eric Vidal <eric@obarun.org>
 
 pkgname=kickshaw
-pkgver=1.0.73
+pkgver=1.0.74
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
 url='http://download.savannah.gnu.org/releases/obladi'
@@ -11,8 +11,8 @@ arch=('x86_64')
 sha256sums=('SKIP')
 license=('GPL2')
 source=("${url}/${pkgname}_${pkgver}_GTK3_source_only.tar.bz2")
-makedepends=('gtk3' 'pcre2' 'gcc')
-depends=('gtk3' 'pcre2')
+makedepends=('gtk3' 'gcc')
+depends=('gtk3')
 
 build()
 {
