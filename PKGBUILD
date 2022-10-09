@@ -3,7 +3,7 @@
 pkgname=gradience
 _pkgname=Gradience
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Change the look of Adwaita, with ease"
 arch=('x86_64')
 url="https://github.com/GradienceTeam/Gradience"
@@ -15,7 +15,7 @@ optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
             'adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.')
 install='xdg-config.install'
 source=($url/archive/$pkgver.tar.gz)
-b2sums=('3c9968072a03e9a7797b22f81a6776a8538d35f0f2d968ff28f8c88a233fc48c0b1b09b9e2f87d7bcf4124e444ea6967f9bcf01c3b9ea45f3a54882e1e5746eb')
+b2sums=('acc002974caee48e3c0d33d747eae2d4e3ffbe2300a219577f69d253ff0fdb1cc1b1e010163d0c5e4f12f5b80b37365d9e0a689a211157693a6567b1eaff8289')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build
