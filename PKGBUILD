@@ -1,11 +1,10 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
-# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-git
+# Maintainer: Bryan Malyn <bim9262@gmail.com>
+pkgname=sway-i3-style-fullscreen-git
 _pkgname=sway
-pkgver=r6934.251a648e
+pkgver=r6967.07c827b4
 pkgrel=1
 license=("MIT")
-pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
+pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager with patch for i3 style fullscreen"
 makedepends=(
 	"git"
 	"meson"
@@ -39,9 +38,11 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("${_pkgname}::git+https://github.com/swaywm/sway.git"
+	"https://gist.githubusercontent.com/bim9262/0f63e6b5d8107d7d2654b61e0b7debe2/raw/6837fc0d7e91d0f0a7449c5b36ac1da4469b591b/sway-decouple-client-and-container-fullscreen.patch"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
+            '8319fb528f8612d1e501e08cee0fc992a2f3aa81635ae2bce7d238619456c50d4d877cc7aa77fb927f612a0b5d41fd59565b53e1a0564df9922bdcca113824db'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
 provides=("sway")
 conflicts=("sway")
@@ -51,6 +52,11 @@ install=sway.install
 pkgver() {
 	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$_pkgname"
+    patch --forward --strip=1 --input="${srcdir}/sway-decouple-client-and-container-fullscreen.patch"
 }
 
 build() {
