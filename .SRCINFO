@@ -1,0 +1,16 @@
+pkgbase = python-pasp
+	pkgdesc = Probabilistic answer set programming
+	pkgver = 0.0.1.post1
+	pkgrel = 1
+	url = https://RenatoGeh.github.io/pasp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = gcc
+	depends = python
+	depends = clingo
+	depends = python-lark-parser
+	source = https://files.pythonhosted.org/packages/91/c3/b24566312efeba98cf5f5f8521c4d9233645350706c01288700eb2dc9679/pasp-plp-0.0.1.post1.tar.gz
+	sha256sums = de8e9b0da88c5d5f30ccdc903470783df7a6a5244883db24412a5fed81bf8e51
+
+pkgname = python-pasp
