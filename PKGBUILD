@@ -1,0 +1,19 @@
+# Maintainer: ThePirate42 <aur@thepirate42.org>
+
+pkgname=keepass-it
+pkgver=2.51
+pkgrel=1
+pkgdesc="Italian locale for keepass"
+arch=('any')
+url="https://keepass.info/translations.html"
+license=('GPL2')
+depends=('keepass')
+source=("https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Italian.zip")
+sha256sums=('f2f706b5445e109a822d47d383dbe3a4802596e57771d666dd07db7a19089d1f')
+
+package(){
+	
+	install -d -m755 "$pkgdir/usr/share/keepass/Languages"
+	install -m644 Italian.lngx "$pkgdir/usr/share/keepass/Languages/Italian.lngx"
+	
+}
