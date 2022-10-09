@@ -17,6 +17,8 @@ pkgbase = activate-linux-git
 	depends = libxt
 	depends = wayland
 	depends = wayland-protocols
+	options = !buildflags
+	options = !makeflags
 	source = git+https://github.com/MrGlockenspiel/activate-linux
 	sha512sums = SKIP
 

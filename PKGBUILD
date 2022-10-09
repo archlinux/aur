@@ -10,6 +10,7 @@ url='https://github.com/MrGlockenspiel/activate-linux'
 makedepends=('make' 'clang' 'git' 'pkgconf' 'libxfixes' 'libxinerama')
 depends=('cairo' 'libxi' 'libx11' 'libxt' 'wayland' 'wayland-protocols')
 license=('custom')
+options=('!buildflags' '!makeflags')
 conflict=('activate-linux')
 sha512sums=('SKIP')
 
@@ -21,8 +22,8 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname/src"
-  make --silent --directory ..
+  cd "$srcdir/$_pkgname"
+  make
 }
 
 package() {
