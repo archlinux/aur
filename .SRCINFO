@@ -5,7 +5,9 @@ pkgbase = docker-machine-add-ssh
 	url = https://github.com/bulletmark/docker-machine-add-ssh
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6
 	source = docker-machine-add-ssh-1.7.tar.gz::https://github.com/bulletmark/docker-machine-add-ssh/archive/1.7.tar.gz
