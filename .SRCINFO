@@ -163,7 +163,6 @@ pkgbase = ceph
 	source = fix-python310-update-mgr-more-itertools.patch
 	source = fix-test-encoding-exception-wording.patch
 	source = fix-test-import-tasks-deps.patch
-	source = ceph-16.2.7-remove-promtool-test.patch
 	source = disable-test-cls-fifo.patch
 	source = ceph-16.2.7-delete-test-librados-asio.patch
 	sha512sums = eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb278c2fe514c82ae12c438878d9ecea29139fa6b8d890f9f737138f10fb740c

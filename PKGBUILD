@@ -92,11 +92,6 @@ source=(
   # Add a missing dep to a tox virtualenv (python-nose)
   'fix-test-import-tasks-deps.patch'
 
-  # Remove a test that requires docker, and only tests Prometheus metrics anyway
-  # Note this test has been completely removed in 17.2.0, and can be dropped when
-  # we update to 17
-  'ceph-16.2.7-remove-promtool-test.patch'
-
   # Test breaks due to ambigous template in src/common/async/bind_like.h when called
   # in src/test/cls/fifo/bench_* and test_*. Not sure how to fix this so disabled for now
   'disable-test-cls-fifo.patch'
