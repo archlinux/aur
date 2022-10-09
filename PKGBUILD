@@ -55,7 +55,7 @@ source=(
   'ceph-15.2.0-rocksdb-cmake.patch'
   # 'ceph-15.2.4-system-uring.patch'
   # 'ceph-15.2.5-missing-includes.patch'
-  'ceph-15.2.14-gcc12.patch'
+  'ceph-15.2.14-include-memory.patch'
   'disable-empty-readable.sh-test.patch'
   # 'qa-src-update-mypy-to-0.782.patch'
   # 'fix-mgr-dashboard-partial_dict.patch'
