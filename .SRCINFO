@@ -5,7 +5,9 @@ pkgbase = edir
 	url = https://github.com/bulletmark/edir
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.5
 	depends = python-rich
