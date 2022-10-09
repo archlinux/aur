@@ -3,7 +3,7 @@
 # Contributor: Moses Narrow <moe_narrow@use.startmail.com>
 
 pkgname="pterodactyl-panel"
-pkgver=1.10.1
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/
         "pterodactyl-queue.service"
         "pterodactyl-scheduler.service"
         "pterodactyl-scheduler.timer")
-sha256sums=('29cbc3f90d4a3cb2ae821ed22fb4b9794b53e023dc294489504bd012b17f886a'
+sha256sums=('4041398471327023fddb9f3ddbbd92ea3e514d92a9a8979d3564389e669a0ba1'
             '0f6e444671802f5fc162380a6c6116adf845156704e035170dcc3cea80307bc6'
             '4e98afb6d923c1f74048e9fc633694702ed60c192550cd50693bebacab18e791'
             'd627c8beb19d3203432958103c8565355b41f92bf2e34a2e11f4662d97996cf6')
