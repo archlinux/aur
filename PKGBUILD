@@ -1,7 +1,7 @@
 # Maintainer: Marshmallow <marshycity@gmail.com>
 pkgname=candyvim-git
 pkgver=0.1.1.r0.g45ff2f8
-pkgrel=2
+pkgrel=3
 pkgdesc="CandyVim WIP"
 arch=('any')
 url='https://github.com/mrshmllow/CandyVim'
@@ -21,8 +21,8 @@ source=("${pkgname}::git+https://github.com/mrshmllow/CandyVim.git"
   "init-cvim.sh"
   "cvim")
 sha256sums=('SKIP'
-  '7a8f97474b860bd1e9b20a94768ef96fb69021adfa6ad6b2a999300ab4292915'
-  '3187ea04d5dd498061325dd7ae75d067b49172277399f3e5e19b59a82d332ea7')
+  '49e027f57102d887fa117146d58dd91d22a119d3c89df457b4a2f15a5d5e4ac8'
+  '6d1c86a865f1687a39fb24a09edbf175319ad21a257c8e06c1debc491b81cf66')
 
 pkgver() {
   cd "${pkgname}"
