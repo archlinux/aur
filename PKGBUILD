@@ -1,16 +1,15 @@
-# Maintainer: 
-# Contributor: FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Florian Will <florian dot will at gmail dot com>
 # Contributor: Drew DeVore <w.drew.devore at gmail dot com>
 
 pkgname=gmrender-resurrect-git
-pkgver=r336.4ac7d89
+pkgver=r340.2a4d744
 pkgrel=1
 epoch=1
 pkgdesc="Application to stream music from a UPnP server using gstreamer."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/hzeller/gmrender-resurrect"
-license=(GPL)
+license=(GPL2)
 depends=(libupnp gst-plugins-good gst-plugins-base)
 optdepends=('gst-libav: Extra media codecs'
             'gst-plugins-bad: Extra media codecs'
