@@ -5,6 +5,7 @@ pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
 arch=('x86_64')
+depends=('flac' 'alsa-lib')
 source=(
 	"${url}/releases/download/v${pkgver}/go-musicfox_${pkgver}_linux_amd64.zip"
 	"LICENSE"
