@@ -5,7 +5,9 @@ pkgbase = debugpy-run
 	url = https://github.com/bulletmark/debugpy-run
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6
 	source = debugpy-run-1.4.tar.gz::https://github.com/bulletmark/debugpy-run/archive/1.4.tar.gz
