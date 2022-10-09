@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=bspwm
+pkgname=bspwm-y
 pkgver=0.9.10
 pkgrel=1
 pkgdesc="minimal window manager"
@@ -20,12 +20,12 @@ source=("bspwm"::"git+https://github.com/yarob-0/bspwm.git")
 md5sums=("SKIP")
 
 build() {
-	cd "$pkgname"
+	cd bspwm
 	make
 }
 
 package() {
-	cd "$pkgname"
+	cd bspwm
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

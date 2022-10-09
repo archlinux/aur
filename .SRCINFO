@@ -1,4 +1,4 @@
-pkgbase = bspwm
+pkgbase = bspwm-y
 	pkgdesc = minimal window manager
 	pkgver = 0.9.10
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = bspwm
 	source = bspwm::git+https://github.com/yarob-0/bspwm.git
 	md5sums = SKIP
 
-pkgname = bspwm
+pkgname = bspwm-y
