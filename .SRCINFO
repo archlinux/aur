@@ -5,11 +5,12 @@ pkgbase = gnucash-asx-fetch
 	url = https://github.com/bulletmark/gnucash-asx-fetch
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6
 	source = gnucash-asx-fetch-1.5.tar.gz::https://github.com/bulletmark/gnucash-asx-fetch/archive/1.5.tar.gz
 	sha1sums = 8db2ae38705ffc6935382006eb3c383493bd5492
 
 pkgname = gnucash-asx-fetch
-
