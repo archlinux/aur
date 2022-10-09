@@ -3,7 +3,7 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.0.r53.gd22fa54f
+pkgver=2.0.r58.g387b9778
 pkgrel=1
 pkgdesc="Sega Dreamcast core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -36,7 +36,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'2f2edc320cd63737a9fcdfa90265a8003a576e3797b43291b44c567eb189253bb0b48c7a5e7bc5b36d89c2889a064ecbd9c0deac6d8df526289de8cd0e2349a8'
+	'667b64dab77b80d6091028d28b1c13e1e8f70d352d7d7f4fecb7f54a5db604f741a85d1e2e26ddef6be4e401a4d33209b7d919521452d81b169bf268759e75c2'
 )
 
 pkgver() {
@@ -54,8 +54,7 @@ prepare() {
 }
 
 build() {
-	cd $_reponame
-	cmake -B ../build \
+	cmake -S $_reponame -B build \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
@@ -63,7 +62,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBRETRO=ON \
 		-Wno-dev
-	cmake --build ../build
+	cmake --build build
 }
 
 package() {
