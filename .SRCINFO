@@ -1,10 +1,11 @@
 pkgbase = python-pypdf2
 	pkgdesc = Python library for splitting, merging, cropping, and transforming pages of PDF files
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/py-pdf/PyPDF2
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
