@@ -23,10 +23,10 @@ package() {
   install -D -m644 "${_version}/I.MingCP-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/I.MingCP-${_version}.ttf"
   install -D -m644 "${_version}/I.MingVar-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/I.MingVar-${_version}.ttf"
   install -D -m644 "${_version}/I.MingVarCP-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/I.MingVarCP-${_version}.ttf"
+  install -D -m644 "${_version}/PMingI.U-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/PMingI.U-${_version}.ttf"
+  install -D -m644 "${_version}/PMingI.UVar-${_version}.ttf" "${pkgdir}/usr/share/fonts/TTF/PMingI.UVar-${_version}.ttf"
 
   install -D -m644 "${_version}/readme.md" "${pkgdir}/usr/share/doc/${pkgname}/readme.md"
-  install -D -m644 "${_version}/I.Ming_history.md" "${pkgdir}/usr/share/doc/${pkgname}/I.Ming_history.md"
-  install -D -m644 "${_version}/I.MingVar_history.md" "${pkgdir}/usr/share/doc/${pkgname}/I.MingVar_history.md"
 
   install -D -m644 "${_version}/IPA_Font_License_Agreement_v1.0.md" \
       "${pkgdir}/usr/share/licenses/${pkgname}/IPA_Font_License_Agreement_v1.0.md"
