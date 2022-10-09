@@ -1,6 +1,7 @@
 # Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
 
-pkgbase=neovim-candid
+pkgbase=neovim-candid-git
+_pkgbase=neovim-candid
 pkgname=('neovim-candid-git'
 	'neovim-lightline-candid-git')
 pkgver=r86.f7198b5
@@ -9,11 +10,11 @@ arch=('any')
 url="https://github.com/flrnd/candid.vim"
 license=('MIT')
 makedepends=('git')
-source=("${pkgbase}::git+$url")
+source=("${_pkgbase}::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgbase}"
+    cd "${srcdir}/${_pkgbase}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -23,9 +24,9 @@ package_neovim-candid-git() {
 	depends=('neovim')
 	optdepends=('neovim-lightline-git: for lightline color scheme'
 		'md2vim: to make candid.txt help file')
-    provides=("${pkgbase}")
-    conflicts=("${pkgbase}")
-    cd "${srcdir}/${pkgbase}"
+    provides=("${_pkgbase}")
+    conflicts=("${_pkgbase}")
+    cd "${srcdir}/${_pkgbase}"
 	find autoload/candid.vim colors \
 		-type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/candid.vim/start/candid.vim/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${_pkgname}/"
@@ -44,7 +45,7 @@ package_neovim-lightline-candid-git() {
     _pkgname=neovim-lightline-candid
 	provides=('neovim-lightline-candid')
 	conflicts=('neovim-lightline-candid')
-    cd "${srcdir}/${pkgbase}"
+    cd "${srcdir}/${_pkgbase}"
 	find autoload/lightline -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/{}" \;
 }
