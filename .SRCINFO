@@ -1,0 +1,16 @@
+pkgbase = python-mkdocs-simple-hooks
+	pkgdesc = Define your own hooks for mkdocs, without having to create a new package.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/aklajnert/mkdocs-simple-hooks
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = mkdocs
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-simple-hooks/mkdocs-simple-hooks-0.1.5.tar.gz
+	sha256sums = dddbdf151a18723c9302a133e5cf79538be8eb9d274e8e07d2ac3ac34890837c
+
+pkgname = python-mkdocs-simple-hooks
