@@ -16,7 +16,11 @@ pkgbase = libxfce4ui-move-monitor
 	depends = libgtop
 	depends = libepoxy
 	depends = hicolor-icon-theme
+	provides = libxfce4ui
+	conflicts = libxfce4ui
 	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.1.tar.bz2
+	source = move-monitor-shortcuts.patch
 	sha256sums = d96946ae5af6bf078dda415419e0021909f763ee0020b42f3e26f603e51585f6
+	sha256sums = 26a0980d8ca0dae06a04740da90b27fc3b481f9ac6215720fcb7e1e9896e36d9
 
 pkgname = libxfce4ui-move-monitor

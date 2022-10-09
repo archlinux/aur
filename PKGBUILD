@@ -12,7 +12,6 @@ depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification'
          'libgtop' 'libepoxy' 'hicolor-icon-theme')
 provides=('libxfce4ui')
 conflicts=('libxfce4ui')
-replaces=('libxfce4ui')
 makedepends=('intltool' 'gobject-introspection' 'vala')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
         "move-monitor-shortcuts.patch")
