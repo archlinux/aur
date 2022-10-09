@@ -1,0 +1,16 @@
+pkgbase = booru-downloader-git
+	pkgdesc = Downloader for different boorus
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/enigmatico/boorudownloader/
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = pyinstaller
+	depends = python
+	depends = mpdecimal
+	backup = ~/.local/share//
+	source = boorudownloader::git+https://gitlab.com/enigmatico/boorudownloader.git
+	md5sums = SKIP
+
+pkgname = booru-downloader-git
