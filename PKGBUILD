@@ -1,13 +1,13 @@
 # Maintainer: ArtFox3  <artfox3@gmail.com>
 pkgname="lobster"
-pkgver=2.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Shell script to watch Movies/Webseries/Shows from the terminal."
 arch=('any')
 url="https://github.com/justchokingaround/lobster.git"
 license=('GPL2')
 makedepends=('git')
-depends=('fzf' 'curl' 'grep' 'sed' 'mpv')
+depends=('fzf' 'curl' 'grep' 'sed' 'patch' 'mpv')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
