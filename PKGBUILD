@@ -4,8 +4,8 @@
 # Contributor: Bruno Inec <bruno at inec dot fr>
 
 pkgname=wtfutil
-pkgver=0.41.0
-pkgrel=4
+pkgver=0.42.0
+pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
@@ -13,7 +13,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('e01f45aaa7a1e31ab555071763da184d611f87b1800265dc782502da9c985eaf')
+sha256sums=('083bc45aa08f3ad2080adddef8f4272b0a90e5f61f0f316eea35b69e227b4d43')
 
 prepare() {
   cd "wtf-$pkgver"
@@ -26,22 +26,12 @@ prepare() {
 build() {
   cd "wtf-$pkgver"
   export GOPATH="$srcdir/gopath"
-  local flags="-s -w -X main.version=${pkgver} -X main.date=$(date +%FT%T%z)"
-
-  go build -v \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${flags}" \
-    -buildvcs=false \
-    -o bin/"$pkgname"
-}
-
-check() {
-  cd "wtf-$pkgver"
-  export GOPATH="$srcdir/gopath"
-  go test ./...
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  make
 
   # Clean module cache for makepkg -C
   go clean -modcache
