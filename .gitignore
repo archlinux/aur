@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!tg.protocol
+!PKGBUILD
+!.SRCINFO
+!telegram-desktop-bin.desktop
+!telegram-desktop-bin.install
