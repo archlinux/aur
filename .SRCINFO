@@ -1,6 +1,6 @@
 pkgbase = altair
 	pkgdesc = A beautiful feature-rich GraphQL Client for all platforms.
-	pkgver = 4.6.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/imolorhe/altair
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = altair
 	depends = nss
 	depends = libxss
 	depends = dbus-glib
-	depends = electron14
+	depends = electron
 	provides = altair
-	source_x86_64 = altair-4.6.2.AppImage::https://github.com/imolorhe/altair/releases/download/v4.6.2/altair_4.6.2_x86_64_linux.AppImage
+	source_x86_64 = altair-5.0.0.AppImage::https://github.com/imolorhe/altair/releases/download/v5.0.0/altair_5.0.0_x86_64_linux.AppImage
 	source_x86_64 = altair
-	sha256sums_x86_64 = 0f622f7a6ef18382ab007631b380b1ec4920c9ce6ed8aae35f89a2633d75c2e2
-	sha256sums_x86_64 = b2a068cbaca2bc6f20cd84bc2e8d5b5edcddb8ef2e280402b3c008be984d7070
+	sha256sums_x86_64 = 46b0abde0d3073b40a19b73063a79e05ee504b4a78794806b1968fd5338aaef5
+	sha256sums_x86_64 = a3760d34334143f48d278f5cb17fd450da04048c7d3966e46bb44d35e9d171c7
 
 pkgname = altair
