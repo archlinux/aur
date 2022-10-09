@@ -1,29 +1,22 @@
-# Maintainer: Egan McComb <egan.mccomb@gmail.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Egan McComb <egan.mccomb@gmail.com>
 
 pkgname=tint-tetris
 _realname=tint
-pkgver=0.05
-pkgrel=3
-pkgdesc="TINT Is Not Tetris(tm) ...at least the name isn't"
+pkgver=0.07
+pkgrel=1
+pkgdesc="Tetris clone for text based terminal"
 arch=('i686' 'x86_64')
-url="https://packages.debian.org/stable/tint"
+url="https://packages.qa.debian.org/t/tint.html"
 license=('BSD')
-groups=()
-depends=('ncurses>=5.7')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-install=
+depends=('ncurses')
 source=(http://http.debian.net/debian/pool/main/t/tint/"$_realname"_"$pkgver".tar.xz)
-noextract=()
-md5sums=('134c5fac011bf3148c86be11540ac98b')
+md5sums=('f6360a9d96f0821d2aee1095c91a9a1f')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
   sed -i "s#/usr/games#/usr/bin#" Makefile
-  make || return 1
+  make
 }
 
 package() {
