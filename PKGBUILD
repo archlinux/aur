@@ -2,7 +2,7 @@
 
 _gemname='html2haml'
 pkgname="ruby-${_gemname}"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Converts HTML into Haml"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-erubis' 'ruby-haml' 'ruby-nokogiri' 'ruby-ruby_parser')
 makedepends=('ruby-bundler' 'ruby-rake')
 checkdepends=('ruby-minitest')
 source=("https://github.com/haml/html2haml/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ff5d1fbd3c1c3b769d67da8d8dc34a545041e47f3b443867b91bd504c28dae59a343a2db7ef0d88c2dd3cded468c6ed6b1b157436acbbcc3c8bc0934035c4d68')
+sha512sums=('e6e09b430ac1d753438e3bebeff5dc27b03ec795d433a511216a3b43fc11f3439b63da274febda4bd25d8331e630c4cc4d0c12dda5ce5e1e56e9bd1468df392c')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
@@ -45,10 +45,41 @@ package() {
 
   local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "pkg/${_gemname}-${pkgver}.gem"
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "${pkgdir}/${_gemdir}" \
+    --bindir "${pkgdir}/usr/bin" \
+    "pkg/${_gemname}-${pkgver}.gem"
 
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "${pkgdir}/${_gemdir}/cache/" \
+    "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "${pkgdir}/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
 
-  install -Dm 644 MIT-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 Changelog.markdown README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+  find "${pkgdir}/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "${pkgdir}/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
+
+  install --verbose -D --mode=0644 MIT-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install --verbose -D --mode=0644 Changelog.markdown README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }

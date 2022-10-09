@@ -1,6 +1,6 @@
 pkgbase = ruby-html2haml
 	pkgdesc = Converts HTML into Haml
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://haml.info/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ruby-html2haml
 	depends = ruby-nokogiri
 	depends = ruby-ruby_parser
 	options = !emptydirs
-	source = https://github.com/haml/html2haml/archive/v2.2.0/ruby-html2haml-2.2.0.tar.gz
-	sha512sums = ff5d1fbd3c1c3b769d67da8d8dc34a545041e47f3b443867b91bd504c28dae59a343a2db7ef0d88c2dd3cded468c6ed6b1b157436acbbcc3c8bc0934035c4d68
+	source = https://github.com/haml/html2haml/archive/v2.3.0/ruby-html2haml-2.3.0.tar.gz
+	sha512sums = e6e09b430ac1d753438e3bebeff5dc27b03ec795d433a511216a3b43fc11f3439b63da274febda4bd25d8331e630c4cc4d0c12dda5ce5e1e56e9bd1468df392c
 
 pkgname = ruby-html2haml
