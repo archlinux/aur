@@ -1,0 +1,249 @@
+diff --git src/client.c src/client.c
+index 3923dd98b..abf6dbb52 100644
+--- src/client.c
++++ src/client.c
+@@ -3504,6 +3504,177 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
+     return TRUE;
+ }
+ 
++typedef struct {
++    /* offset between current monitor midpoint and overlap midpoint */
++    guint midpoint_offset;
++    gboolean primary;
++    guint monitor_index;
++} MoveToMonitorProperties;
++
++static MoveToMonitorProperties*
++getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_rect, gboolean primary, gint index)
++{
++    MoveToMonitorProperties *props;
++    gint current_mid, overlap_low, overlap_high, overlap_mid;
++
++    /* ensure aligned */
++    switch (key) {
++        case KEY_MOVE_TO_MONITOR_LEFT:
++            g_return_val_if_fail (current_rect->x == other_rect->x + other_rect->width, NULL);
++            break;
++        case KEY_MOVE_TO_MONITOR_RIGHT:
++            g_return_val_if_fail (other_rect->x == current_rect->x + current_rect->width, NULL);
++            break;
++        case KEY_MOVE_TO_MONITOR_DOWN:
++            g_return_val_if_fail (other_rect->y == current_rect->y + current_rect->height, NULL);
++            break;
++        case KEY_MOVE_TO_MONITOR_UP:
++            g_return_val_if_fail (current_rect->y == other_rect->y + other_rect->height, NULL);
++            break;
++        default:
++            TRACE ("getMoveToMonitorProps() got invalid key %d)", key);
++            return NULL;
++    }
++
++    /* get current mid and overlap high/low */
++    if (key == KEY_MOVE_TO_MONITOR_LEFT || key == KEY_MOVE_TO_MONITOR_RIGHT)
++    {
++        /* get overlap in Y dimension */
++        overlap_low = MAX(current_rect->y, other_rect->y);
++        overlap_high = MIN(current_rect->y + current_rect->height, other_rect->y + other_rect->height);
++        current_mid = current_rect->y + (current_rect->height >> 1);
++    }
++    else
++    {
++        /* get overlap in X dimension */
++        overlap_low = MAX(current_rect->x, other_rect->x);
++        overlap_high = MIN(current_rect->x + current_rect->width, other_rect->x + other_rect->width);
++        current_mid = current_rect->x + (current_rect->width >> 1);
++    }
++
++    /* skip if no overlap */
++    g_return_val_if_fail (overlap_low < overlap_high, NULL);
++
++    overlap_mid = overlap_low + ((overlap_high - overlap_low) >> 1);
++
++    props = (MoveToMonitorProperties*) g_new (MoveToMonitorProperties, 1);
++    props->midpoint_offset = abs(overlap_mid - current_mid);
++    props->primary = primary;
++    props->monitor_index = index;
++    return props;
++}
++
++static int
++moveToMonitorPropertiesComp (const MoveToMonitorProperties *a, const MoveToMonitorProperties *b)
++{
++    /* Sort order is smallest offset, then if primary, then smallest index */
++    if (a->midpoint_offset == b->midpoint_offset)
++    {
++        if (a->primary == b->primary)
++        {
++            return (a->monitor_index < b->monitor_index ? -1 : 1);
++        }
++        else
++        {
++            return (a->primary ? -1 : 1);
++        }
++    }
++    else
++    {
++        return (a->midpoint_offset < b->midpoint_offset ? -1 : 1);
++    }
++}
++
++static void
++clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_monitor)
++{
++    ScreenInfo *screen_info;
++    DisplayInfo *display_info;
++    gint xoff, yoff;
++    GdkRectangle current_rect, target_rect;
++
++    /* We have the target target monitor, so offset based on x,y coords */
++    gdk_monitor_get_geometry(current_monitor, &current_rect);
++    gdk_monitor_get_geometry(target_monitor, &target_rect);
++    xoff = target_rect.x - current_rect.x;
++    yoff = target_rect.y - current_rect.y;
++
++    c->x += xoff;
++    c->y += yoff;
++    /* When unmaximising, we don't want to jump back to orig monitor */
++    c->saved_geometry.x += xoff;
++    c->saved_geometry.y += yoff;
++
++    /* TODO find out which of these 3 is actually needed */
++    screen_info = c->screen_info;
++    display_info = screen_info->display_info;
++    setNetFrameExtents (display_info,
++                        c->window,
++                        frameTop (c),
++                        frameLeft (c),
++                        frameRight (c),
++                        frameBottom (c));
++    clientSetNetActions (c);
++    clientReconfigure (c, CFG_FORCE_REDRAW);
++
++    /* If we were fullscreen or maximised, reset for new monitor size */
++    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
++    {
++        clientUpdateFullscreenSize (c);
++    }
++    else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
++    {
++        clientUpdateMaximizeSize (c);
++    }
++}
++
++void
++clientMoveToMonitorByDirection (Client *c, gint key)
++{
++    GdkDisplay *display;
++    GList *candidate_monitors;
++    GdkMonitor *current_monitor, *other_monitor, *primary_monitor;
++    GdkRectangle current_rect, other_rect;
++    guint num_monitors;
++    guint i;
++    MoveToMonitorProperties *props;
++
++    /* Get the current (client's) monitor and rect */
++    display = gdk_display_get_default ();
++    current_monitor = gdk_display_get_monitor_at_point (display, c->x, c->y);
++    gdk_monitor_get_geometry (current_monitor, &current_rect);
++    primary_monitor = gdk_display_get_primary_monitor (display);
++
++    /* Iterate through all monitors and record properties of ones that share target edge */
++    num_monitors = gdk_display_get_n_monitors (display);
++    candidate_monitors = NULL;
++    for (i = 0; i < num_monitors; i++) {
++        /* Get other monitor rect */
++        other_monitor = gdk_display_get_monitor (display, i);
++        if (other_monitor == current_monitor)
++        {
++            continue;
++        }
++        gdk_monitor_get_geometry (other_monitor, &other_rect);
++
++        /* Ensure aligned and get overlap */
++        props = getMoveToMonitorProps(key, &current_rect, &other_rect, other_monitor == primary_monitor, i);
++        if (props)
++        {
++            candidate_monitors = g_list_insert_sorted (candidate_monitors, props, moveToMonitorPropertiesComp);
++        }
++
++    }
++    g_return_if_fail (candidate_monitors != NULL);
++
++    /* Since list is sorted, take first (best candidate) */
++    props = (MoveToMonitorProperties*) candidate_monitors->data;
++    other_monitor = gdk_display_get_monitor (display, props->monitor_index);
++    g_list_free_full (candidate_monitors, g_free);
++
++    clientMoveToMonitor (c, current_monitor, other_monitor);
++}
++
+ gboolean
+ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
+ {
+@@ -4293,3 +4464,5 @@ clientGetStartupId (Client *c)
+     return (c->startup_id);
+ }
+ #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
++
++/* vim: set ts=4 sw=4 et : */
+diff --git src/client.h src/client.h
+index fd6ab669a..751c29a5f 100644
+--- src/client.h
++++ src/client.h
+@@ -469,6 +469,8 @@ gboolean                 clientToggleMaximizedAtPoint           (Client *,
+                                                                  gint,
+                                                                  int,
+                                                                  gboolean);
++void                     clientMoveToMonitorByDirection         (Client *,
++                                                                 gint);
+ gboolean                 clientTile                             (Client *,
+                                                                  gint,
+                                                                  gint,
+diff --git src/events.c src/events.c
+index 6ace19b1c..adccd1045 100644
+--- src/events.c
++++ src/events.c
+@@ -378,6 +378,13 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
+             case KEY_TOGGLE_FULLSCREEN:
+                 clientToggleFullscreen (c);
+                 break;
++
++            case KEY_MOVE_TO_MONITOR_DOWN:
++            case KEY_MOVE_TO_MONITOR_LEFT:
++            case KEY_MOVE_TO_MONITOR_RIGHT:
++            case KEY_MOVE_TO_MONITOR_UP:
++                clientMoveToMonitorByDirection (c, key);
++                break;
+             case KEY_MOVE_NEXT_WORKSPACE:
+                 workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE, event->time);
+                 break;
+diff --git src/settings.c src/settings.c
+index ce4a05e8a..2fc6a04f8 100644
+--- src/settings.c
++++ src/settings.c
+@@ -586,6 +586,10 @@ loadKeyBindings (ScreenInfo *screen_info)
+     parseShortcut (screen_info, KEY_MAXIMIZE_HORIZ, "maximize_horiz_key", shortcuts);
+     parseShortcut (screen_info, KEY_MAXIMIZE_VERT, "maximize_vert_key", shortcuts);
+     parseShortcut (screen_info, KEY_MAXIMIZE_WINDOW, "maximize_window_key", shortcuts);
++    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_DOWN, "move_window_to_monitor_down_key", shortcuts);
++    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_LEFT, "move_window_to_monitor_left_key", shortcuts);
++    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_RIGHT, "move_window_to_monitor_right_key", shortcuts);
++    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_UP, "move_window_to_monitor_up_key", shortcuts);
+     parseShortcut (screen_info, KEY_MOVE_DOWN_WORKSPACE, "move_window_down_workspace_key", shortcuts);
+     parseShortcut (screen_info, KEY_MOVE_LEFT_WORKSPACE, "move_window_left_workspace_key", shortcuts);
+     parseShortcut (screen_info, KEY_MOVE_NEXT_WORKSPACE, "move_window_next_workspace_key", shortcuts);
+diff --git src/settings.h src/settings.h
+index 4293dc096..612ee2e8a 100644
+--- src/settings.h
++++ src/settings.h
+@@ -78,6 +78,10 @@ enum
+     KEY_MAXIMIZE_VERT,
+     KEY_MAXIMIZE_WINDOW,
+     KEY_MOVE,
++    KEY_MOVE_TO_MONITOR_DOWN,
++    KEY_MOVE_TO_MONITOR_LEFT,
++    KEY_MOVE_TO_MONITOR_RIGHT,
++    KEY_MOVE_TO_MONITOR_UP,
+     KEY_MOVE_DOWN_WORKSPACE,
+     KEY_MOVE_LEFT_WORKSPACE,
+     KEY_MOVE_NEXT_WORKSPACE,
