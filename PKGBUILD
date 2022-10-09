@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-steam
 _name=${pkgname#python-}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Python package for interacting with Steam"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 checkdepends=('python-gevent-eventemitter' 'python-google-api-python-client' 'python-mock'
               'python-protobuf' 'python-pytest-cov' 'python-vcrpy' 'python-yaml')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0ed3e59354fc9bfd3284fdf130019f7154c08260d082564b2f96d750c2aca2ed')
+sha256sums=('cfd4382deb9d4dff29381151278903e1c0a374d0915262dc788f8ba01a36df1a')
 
 build() {
   cd "$_name-$pkgver"
