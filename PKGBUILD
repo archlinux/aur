@@ -8,7 +8,7 @@
 
 # Maintainer: Evan H. Moore <evmoore43@gmail.com>
 pkgname=gpu-passthrough-manager
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="GPU passthrough made easy."
 arch=('x86_64')
