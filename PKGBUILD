@@ -2,7 +2,7 @@
 
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
-pkgver=0.11.7
+pkgver=0.11.8
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
@@ -19,7 +19,7 @@ makedepends=(git
 _archive="${pkgname^}-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz"
         "$pkgname.sh")
-sha256sums=('0c5806530ee35b9d35082bd4d74fdfa8a67dfd3d50385ee01e4e6c71bf78aec0'
+sha256sums=('1b72ea249becc900badc6a3bee5cbc65deadb884d667e2b2fe79e8888d1f76ed'
             '9de3ff052ca4600862b8663b93bf2b4223cf2e637995c67e1fe4cb4ed893b39f')
 
 _yarnargs="--cache-folder '$srcdir/node_modules'"
