@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r61369.0b3a2c00857
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -153,6 +153,7 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
+    -DENABLE_INTERNAL_RAPIDJSON=ON
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_VAAPI=ON
     -DENABLE_VDPAU=ON

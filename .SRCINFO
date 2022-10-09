@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgver = r61369.0b3a2c00857
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
