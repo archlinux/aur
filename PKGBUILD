@@ -29,6 +29,8 @@ build() {
 
 package() {
 	cd "$pkgname"	
+	echo "Setting up GPUPM"
 	sh ./tools/pkg.sh
+	
 
 }
