@@ -1,0 +1,17 @@
+pkgbase = superlu_mt
+	pkgdesc = Set of subroutines to solve a sparse linear system (multithreading extension)
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://portal.nersc.gov/project/sparse/superlu
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = tcsh
+	makedepends = cmake
+	depends = blas
+	options = staticlibs
+	options = !makeflags
+	source = https://portal.nersc.gov/project/sparse/superlu/superlu_mt_3.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = superlu_mt
