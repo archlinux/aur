@@ -3,8 +3,8 @@
 pkgname=cura-5-bin
 _pkgname=cura-5-bin
 _shortname=cura5
-pkgver=5.1.0
-pkgrel=7
+pkgver=5.1.1
+pkgrel=0
 pkgdesc='Uncompressed version of Ultimaker Cura 5.1'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -22,7 +22,7 @@ source=(
     "cura.desktop.patch"
 )
 
-sha256sums=('eab92e31c12c1b101fbaf2664df00bed182528e282874e4f379c87b29692ac76'
+sha256sums=('375be6f99cedf154186bb40cb92c9f574959c399f0de4526a416a3759ccde97a'
             'f7917a834849618f62147bf68e8cb1cb31157e724163325effd495ddd8be2494'
             '22ee374746989baa4f87e79ecbc662b681ba9ca3fd93902408367461a2b4b571')
    

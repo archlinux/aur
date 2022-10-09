@@ -1,7 +1,7 @@
 pkgbase = cura-5-bin
 	pkgdesc = Uncompressed version of Ultimaker Cura 5.1
-	pkgver = 5.1.0
-	pkgrel = 7
+	pkgver = 5.1.1
+	pkgrel = 0
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
@@ -12,10 +12,10 @@ pkgbase = cura-5-bin
 	provides = cura
 	conflicts = cura-5-beta-bin
 	options = !strip
-	source = https://github.com/Ultimaker/Cura/releases/download/5.1.0/Ultimaker-Cura-5.1.0-linux.AppImage
+	source = https://github.com/Ultimaker/Cura/releases/download/5.1.1/Ultimaker-Cura-5.1.1-linux.AppImage
 	source = cura5.sh
 	source = cura.desktop.patch
-	sha256sums = eab92e31c12c1b101fbaf2664df00bed182528e282874e4f379c87b29692ac76
+	sha256sums = 375be6f99cedf154186bb40cb92c9f574959c399f0de4526a416a3759ccde97a
 	sha256sums = f7917a834849618f62147bf68e8cb1cb31157e724163325effd495ddd8be2494
 	sha256sums = 22ee374746989baa4f87e79ecbc662b681ba9ca3fd93902408367461a2b4b571
 
