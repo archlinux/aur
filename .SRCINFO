@@ -1,7 +1,7 @@
 pkgbase = cura-5-beta-bin
-	pkgdesc = Uncompressed version of Ultimaker Cura 5.2
+	pkgdesc = Uncompressed version of Ultimaker Cura 5 including beta versions for plugin installation options
 	pkgver = 5.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
