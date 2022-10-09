@@ -1,0 +1,22 @@
+pkgbase = slithin-bin
+	pkgdesc = A management application for your rM Tablet 1 and 2.
+	pkgver = 1.0.20.0
+	pkgrel = 1
+	url = https://github.com/furesoft/Slithin
+	arch = x86_64
+	groups = 
+	license = GPL-3.0
+	depends = aarch64-linux-gnu-gcc
+	depends = dotnet-runtime
+	depends = fontconfig
+	depends = gcc
+	depends = krb5
+	depends = lttng-ust2.12
+	depends = openssl
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/furesoft/Slithin/releases/download/1.0.20.0/Slithin.1.0.20.0.linux-x64.deb
+	sha512sums_x86_64 = 937217f5bdcdcd5bac4924fb3ad0dd304033bac08124f5e4676d25ead95fc6859e16565b793b3b429e98bc9cedc723a17cc39707069adc459afe108930b6db57
+
+pkgname = slithin-bin
