@@ -1,0 +1,20 @@
+pkgbase = bspwm
+	pkgdesc = minimal window manager
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = https://github.com/yarob-0/bspwm
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = git
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	optdepends = sxhkd: to define keyboard and pointer bindings [installed]
+	optdepends = xdo: for the example panel
+	provides = bspwm
+	provides = bspc
+	source = bspwm::git+https://github.com/yarob-0/bspwm.git
+	md5sums = SKIP
+
+pkgname = bspwm
