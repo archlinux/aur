@@ -1,0 +1,22 @@
+pkgbase = zht-bin
+	pkgdesc = The ZSH History Tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/forquare/zht
+	license = MIT
+	conflicts = zht
+	provides = zht
+	arch = aarch64
+	source_aarch64 = https://github.com/forquare/zht/releases/download/0.2.0/zht_0.2.0_Linux_ARM64.tar.gz
+	sha256sums_aarch64 = 9fc1e71118cc80e9088bc44bcda1bd66077afc751d38efc1e36b8494faf67d64
+	arch = armv6h
+	source_armv6h = https://github.com/forquare/zht/releases/download/0.2.0/zht_0.2.0_Linux_ARMv6.tar.gz
+	sha256sums_armv6h = 9162bd5bdd1382dddeedc239a0f803911b2b04d4b248f228d0cc9e2eccc4b893
+	arch = i686
+	source_i686 = https://github.com/forquare/zht/releases/download/0.2.0/zht_0.2.0_Linux_32bit.tar.gz
+	sha256sums_i686 = 254b80dc28b2749cf662a1380a87e81efd539b236ff665564c17fb062c55fdf6
+	arch = x86_64
+	source_x86_64 = https://github.com/forquare/zht/releases/download/0.2.0/zht_0.2.0_Linux_64bit.tar.gz
+	sha256sums_x86_64 = 1734dc6b9aaebd5c095ba2c27a3f628dca4a1fa249419c34bfea8f67a99f7f11
+	
+pkgname = zht-bin
