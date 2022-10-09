@@ -11,13 +11,14 @@ makedepends=('make' 'clang' 'pkgconf' 'libxfixes' 'libxinerama')
 depends=('cairo' 'libxi' 'libx11' 'libxt' 'wayland' 'wayland-protocols')
 conflicts=('activate-linux-git')
 license=('custom')
+options=('!buildflags' '!makeflags')
 sha512sums=('1fc9a8d808742fc3e95ecc4886792748d3abab7a81a6e9df078e18c4f8d5e11588bee7f775496d0e54ebddc281e1afc4d37b075fec3247da011d12ac8dafe4ec')
 
 source=("https://github.com/MrGlockenspiel/activate-linux/archive/refs/tags/v1.0.0.tar.gz")
 
 build() {
-  cd "$srcdir/$_pkg/src"
-  make --silent --directory ..
+  cd "$srcdir/$_pkg"
+  make #--silent
 }
 
 package() {
