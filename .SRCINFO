@@ -1,7 +1,7 @@
 pkgbase = code-features
 	pkgdesc = Unblock some features in Code OSS
-	pkgver = 1.70.0
-	pkgrel = 2
+	pkgver = 1.72.0
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-features.install
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = code-features
 	source = code-features.hook
 	source = patch.sh
 	md5sums = 5d5bd889095a60ffbf1918d5a2a08bdb
-	md5sums = bd0f2f3cac790e132ca90fe0f1cd78e1
+	md5sums = 34c5430c0bc6c9f19e6de83f51342f87
 
 pkgname = code-features
