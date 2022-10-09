@@ -1,11 +1,12 @@
 pkgbase = mingw-w64-flac
 	pkgdesc = Free Lossless Audio Codec (mingw-w64)
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flac.sourceforge.net/
 	arch = any
 	license = BSD
 	license = GPL
+	makedepends = git
 	makedepends = mingw-w64-cmake
 	makedepends = ninja
 	makedepends = nasm
@@ -14,7 +15,7 @@ pkgbase = mingw-w64-flac
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://github.com/xiph/flac/releases/download/1.4.1/flac-1.4.1.tar.xz
-	sha256sums = 91303c3e5dfde52c3e94e75976c0ab3ee14ced278ab8f60033a3a12db9209ae6
+	source = git+https://github.com/xiph/flac#commit=b6fbd6b3d97e2da4481bdbd25176f263fd6a5e75
+	b2sums = SKIP
 
 pkgname = mingw-w64-flac
