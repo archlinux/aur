@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gcfflasher
-pkgver=4.0.0_beta
+pkgver=4.0.3_beta
 pkgrel=1
 pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
   cd $pkgname
-  ./build_linux.sh
+  ./build_posix.sh
 }
 
 package() {
