@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libgpg-error
-pkgver=1.45
+pkgver=1.46
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.ta
         "02-fix-symbollist-on.mingw.patch"
         "05-w32-gen.all.patch"
         "07-windows-build.patch")
-sha256sums=('570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26'
+sha256sums=('b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d'
             '364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91'
             '9ccdc567810d58526888fd11c5f7d01101627011840b7b75a91e96aa9e71f49d'
             'f62a8464414a65b1aac20820d4f4eeb0aa25e5c865aa4ba5914f1f10a41d336d')
