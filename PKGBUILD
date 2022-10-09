@@ -17,19 +17,19 @@ sha256sums=('SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-    for _arch in ${_architectures}; do
-        cmake -S "$_pkgname" \
-            -B build/$_arch \
-            -DCORROSION_BUILD_TESTS=OFF \
-            -DCMAKE_INSTALL_PREFIX=/usr/$_arch \
-            -DCMAKE_BUILD_TYPE=Release
+  for _arch in ${_architectures}; do
+    cmake -S "$_pkgname" \
+      -B build/$_arch \
+      -DCORROSION_BUILD_TESTS=OFF \
+      -DCMAKE_INSTALL_PREFIX=/usr/$_arch \
+      -DCMAKE_BUILD_TYPE=Release
 
-        cmake --build build/$_arch --config Release
-    done
+    cmake --build build/$_arch --config Release
+  done
 }
 
 package() {
-    for _arch in ${_architectures}; do
-        DESTDIR="${pkgdir}" cmake --install build/$_arch --config Release
-    done
+  for _arch in ${_architectures}; do
+    DESTDIR="${pkgdir}" cmake --install build/$_arch --config Release
+  done
 }
