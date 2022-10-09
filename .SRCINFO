@@ -1,0 +1,25 @@
+pkgbase = neovim-candid
+	pkgver = r86.f7198b5
+	pkgrel = 1
+	url = https://github.com/flrnd/candid.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	source = neovim-candid::git+https://github.com/flrnd/candid.vim
+	md5sums = SKIP
+
+pkgname = neovim-candid-git
+	pkgdesc = A dark colorscheme with vibrant colors.
+	depends = neovim
+	optdepends = neovim-lightline-git: for lightline color scheme
+	optdepends = md2vim: to make candid.txt help file
+	provides = neovim-candid
+	conflicts = neovim-candid
+
+pkgname = neovim-lightline-candid-git
+	pkgdesc = Candid color scheme for lightline.
+	depends = neovim
+	depends = neovim-candid
+	optdepends = neovim-lightline-git
+	provides = neovim-lightline-candid
+	conflicts = neovim-lightline-candid
