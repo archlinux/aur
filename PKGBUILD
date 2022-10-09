@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-catppuccin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Soothing pastel theme for Neovim"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim')
 install=catppuccin.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8831c0516c4b3fc20bfc417ce7b705da860ca9f4961c9bc57ebeeadef7b9969e')
+sha256sums=('a800f46c9dccf1f0d978d3bf5ca8a570510fca3dcea89da06e6bae7c507ccb92')
 
 package() {
 	cd "nvim-$pkgver"
