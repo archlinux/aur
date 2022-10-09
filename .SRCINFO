@@ -1,6 +1,6 @@
 pkgbase = chrysalis-bin
 	pkgdesc = Graphical configurator for Kaleidoscope-powered keyboards (AppImage)
-	pkgver = 0.11.7
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://github.com/keyboardio/Chrysalis
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = chrysalis-bin
 	provides = chrysalis
 	conflicts = chrysalis
 	options = !strip
-	source = https://github.com/keyboardio/Chrysalis/releases/download/v0.11.7/Chrysalis-0.11.7.AppImage
-	sha256sums = b8d14f79579ccfa3b8dd5d127e98e606e409e73652566fff32aaec8aa15597ad
+	source = https://github.com/keyboardio/Chrysalis/releases/download/v0.11.8/Chrysalis-0.11.8.AppImage
+	sha256sums = cb26fab1108f8c708ad2d92e1d37dfc3636464772ac3db487476db06228b1aef
 
 pkgname = chrysalis-bin
