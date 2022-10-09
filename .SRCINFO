@@ -1,7 +1,7 @@
 pkgbase = uxplay
 	pkgdesc = AirPlay Unix mirroring server
-	pkgver = 1.56
-	pkgrel = 1
+	pkgver = 1.56d
+	pkgrel = 2
 	url = https://github.com/FDH2/UxPlay
 	arch = any
 	license = GPL3
@@ -14,9 +14,9 @@ pkgbase = uxplay
 	depends = gst-plugins-bad
 	depends = gst-libav
 	optdepends = gstreamer-vaapi: GStreamer plugin required for certain GPUs
-	source = UxPlay-1.56.tar.gz::https://github.com/FDH2/UxPlay/archive/refs/tags/1.56.tar.gz
+	source = UxPlay-1.56d.tar.gz::https://github.com/FDH2/UxPlay/archive/refs/tags/1.56d.tar.gz
 	source = uxplay.desktop
-	sha256sums = 8cbbcb42a4c5253f80166bda7e7379a586aee5229fce225bfacdef2dac83b907
+	sha256sums = ce9afd843ad970320c1cfbb37ca28b9937c3bac4de754d2d31683c74ee689435
 	sha256sums = 6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3
 
 pkgname = uxplay
