@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-git
-pkgver=3926.5e3aac38
+pkgver=4233.9f887944
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A free drawing program designed for young children. Checkout from git"
 url="http://www.newbreedsoftware.com/tuxpaint/"
 license=('GPL')
 depends=('sdl' 'libpaper' 'hicolor-icon-theme' 'librsvg' 'python' 'libimagequant'
-	 'sdl_ttf' 'sdl_pango' 'sdl_mixer' 'sdl_image' 'fontforge' 'sdl_gfx')
+	 'sdl2_ttf' 'sdl2_pango' 'sdl2_mixer' 'sdl2_image' 'fontforge' 'sdl2_gfx')
 provides=('tuxpaint')
 conflicts=('tuxpaint')
 makedepends=('git' 'gperf' 'awk')
