@@ -1,10 +1,12 @@
 # Maintainer: Jonas Bögle <aur@iwr.sh>
 # Contributor: Jonathan Duck <duckbrain30@gmail.com>
 
+# Consider using https://aur.archlinux.org/packages/typora instead
+
 _pkgname=typora
 pkgname="$_pkgname-free"
 pkgver=0.11.18
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimal markdown editor and reader."
 arch=('x86_64')
 filename="typora_${pkgver}_amd64.deb"
@@ -16,7 +18,8 @@ optdepends=(
 	'pandoc: Import/export for extra file formats')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://download.typora.io/linux/$filename")
+# The original URL is not available anymore
+source=("https://web.archive.org/web/20211127121316if_/https://typora.io/linux/$filename")
 sha512sums=('8933cb4eab13a37719a3771d14a7a3f5951f6bbce06381ffe37ad5bc3029efed3878723427a4e97b83dbc1d7ccc43b31551b0c336663c843f0e685f8a4e2390e')
 
 package() {
