@@ -1,7 +1,7 @@
 pkgbase = litecoin-qt
 	pkgdesc = Peer-to-peer network based digital currency (QT)
 	pkgver = 0.21.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.litecoin.org/
 	install = litecoin-qt.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = litecoin-qt
 	depends = qrencode
 	depends = protobuf
 	depends = libevent
+	depends = fmt
 	conflicts = litecoin
 	source = https://download.litecoin.org/litecoin-0.21.2.1/src/litecoin-0.21.2.1.tar.gz
 	source = boost1770.patch

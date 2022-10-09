@@ -4,12 +4,12 @@
 
 pkgname=litecoin-qt
 pkgver=0.21.2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer network based digital currency (QT)"
-depends=(boost-libs qt5-base miniupnpc qrencode protobuf libevent)
+depends=(boost-libs qt5-base miniupnpc qrencode protobuf libevent fmt)
 makedepends=(boost qt5-tools)
 conflicts=(litecoin)
 install=litecoin-qt.install
