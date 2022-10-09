@@ -1,6 +1,6 @@
 # Maintainer: Cat2048
 pkgname=datcord-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="An open-source discord client."
 arch=('x86_64')
