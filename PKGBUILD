@@ -4,7 +4,7 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.7.0.r224.g68bf82d2
+pkgver=1.30.7.0.r248.g41638850
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
