@@ -5,7 +5,9 @@ pkgbase = sleep-inhibitor
 	url = https://github.com/bulletmark/sleep-inhibitor
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.6
 	depends = python-ruamel-yaml
