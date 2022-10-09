@@ -2,8 +2,8 @@
 pkgname=python-mkdocs-simple-hooks
 _name=mkdocs-simple-hooks
 pkgver=0.1.5
-pkgrel=1
-pkgdesc="Define your own hooks for mkdocs, without having to create a new package. "
+pkgrel=2
+pkgdesc="Define your own hooks for mkdocs, without having to create a new package."
 arch=(any)
 url="https://github.com/aklajnert/mkdocs-simple-hooks"
 license=('MIT')

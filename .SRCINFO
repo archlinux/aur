@@ -1,7 +1,7 @@
 pkgbase = python-mkdocs-simple-hooks
 	pkgdesc = Define your own hooks for mkdocs, without having to create a new package.
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aklajnert/mkdocs-simple-hooks
 	arch = any
 	license = MIT
