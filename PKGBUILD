@@ -1,6 +1,6 @@
 pkgname=go-musicfox-bin
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
@@ -14,6 +14,9 @@ source=(
 package() {
 	install -d "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -d "${pkgdir}/usr/lib"
+	# fix libFLAC.so.8 error
+	ln -s /usr/lib/libFLAC.so "${pkgdir}/usr/lib/libFLAC.so.8"
 	install -Dm755 "${srcdir}/go-musicfox_${pkgver}_linux_amd64/musicfox" "${pkgdir}/usr/bin/musicfox"
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
