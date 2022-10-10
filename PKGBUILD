@@ -1,7 +1,7 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
 pkgver=10.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64')
@@ -17,11 +17,11 @@ makedepends=('imagemagick')
 conflicts=()
 replaces=()
 backup=()
-# ファイル名めっちゃ変わってるんだが...
+# もしかしてx86_64だけじゃなくなった感じ?
 # source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2"
 #             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
 #             "floorp.desktop")
-source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.bz2"
+source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.tar.bz2"
             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop")
 md5sums=('e84f5b1a8bd914209bb7aceeca7cabde'
