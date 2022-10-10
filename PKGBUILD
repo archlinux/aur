@@ -2,7 +2,7 @@
 
 pkgname=python-bflb-mcu-tool
 _name=${pkgname#python-}
-pkgver=1.7.6.post2
+pkgver=1.8.0
 pkgrel=1
 epoch=
 pkgdesc="BOUFFALOLAB MCU TOOL"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('fd464acc2762d7cc5866a4c339ec3efd7aa6f2425594f49fce0694a93af37e51')
+sha256sums=('ba97fd2761b45ea69660ec43d20502d34786a8bbe049402dd44028b283969ade')
 #validpgpkeys=()
 
 build() {
