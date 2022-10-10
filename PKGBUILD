@@ -2,8 +2,8 @@
 
 _pkgname="spamton-shimeji"
 pkgname="${_pkgname}"
-pkgver=r71.gc47c06a
-pkgrel=1
+pkgver=r71.c47c06a
+pkgrel=2
 pkgdesc="Spamton Shimeji to make your Xorg desktop [[NumberOneBestRatedArchRice]]"
 arch=(any)
 url="https://codeberg.org/thatonecalculator/spamton-linux-shimeji"

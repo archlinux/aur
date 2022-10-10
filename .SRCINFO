@@ -1,7 +1,7 @@
 pkgbase = spamton-shimeji
 	pkgdesc = Spamton Shimeji to make your Xorg desktop [[NumberOneBestRatedArchRice]]
-	pkgver = r71.gc47c06a
-	pkgrel = 1
+	pkgver = r71.c47c06a
+	pkgrel = 2
 	url = https://codeberg.org/thatonecalculator/spamton-linux-shimeji
 	arch = any
 	license = Custom
