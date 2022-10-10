@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert-minimal
-pkgver=0.17.5
+pkgver=0.17.6
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher - minimal plugins included"
 arch=('x86_64')
