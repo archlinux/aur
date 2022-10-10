@@ -1,9 +1,9 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver=3.0.0~alpha6
-pkgver_=3.0.0-alpha6
-pkgrel=4
+pkgver=3.0.0~alpha7
+pkgver_=3.0.0-alpha7
+pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -13,14 +13,16 @@ makedepends=('cmake' 'python-setuptools'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
 source=(https://damask3.mpie.de/download/damask-${pkgver_}.tar.xz
-        0001-PETSc-3.17.1-backport.patch)
+        CMakeLists.patch
+        setup.patch)
 
-sha256sums=('de6748c285558dec8f730c4301bfa56b4078c130ff80e3095faf76202f8d2109'
-            'd810807b097512c275ff43f66873117f54a190ab9cd2696c24f6c6cb1792ae1c')
+sha256sums=('442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4'
+            '296d2401fdbab78083a68366bfd0c9ac0ace096305ea9acbed0581d265be4f87'
+            'c98b009ac98952528d3d50a0844d433b8635206df3e0525a8018ad68c6fad947')
 
 prepare() {
-    cd "$pkgname-$pkgver_"
-    patch --forward --strip=1 --input="${srcdir}/0001-PETSc-3.17.1-backport.patch"
+    patch ${pkgname}-${pkgver_}/src/CMakeLists.txt "${srcdir}/CMakeLists.patch"
+    patch ${pkgname}-${pkgver_}/python/setup.cfg "${srcdir}/setup.patch"
 }
 
 build() {
@@ -31,8 +33,7 @@ build() {
   cmake --build build-mesh
 
   cd ${pkgbase}-${pkgver_}/python
-  python setup.py build_ext --inplace
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package_damask-grid() {
@@ -68,8 +69,7 @@ package_python-damask() {
 
   install -Dm644 ${pkgbase}-${pkgver_}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
-  cd ${pkgbase}-${pkgver_}/python
-  python setup.py install --skip-build --root=${pkgdir} --optimize=1
+  python -m installer --destdir=${pkgdir} ${pkgbase}-${pkgver_}/python/dist/*.whl
 }
 
 package_damask() {
