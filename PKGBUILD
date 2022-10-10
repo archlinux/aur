@@ -2,7 +2,7 @@
 
 pkgname=python-pycklink
 _name=${pkgname#python-}
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 epoch=
 pkgdesc="PYCKLINK"
@@ -21,9 +21,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/6e/87/f7b1d0785c0fdbeefa830b363b701f16e4f33fbea39f98d9174f08a05c86/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/6c/92/9ac9175933262cee37ca418b7f7cec6cebdd13dfb53c2454a788bd7cfa9a/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('01e761a36c2a36c9431521fcf5305507e550a70334175ab9b5148f572f54be93')
+sha256sums=('6b697b8beb1658e4f2276ce08e0539dc405f393724dab5b0a62fa80ddf79111e')
 #validpgpkeys=()
 
 build() {
