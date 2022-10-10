@@ -11,7 +11,7 @@ arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'ttf-dejavu' 'libxtst' 'libnet' 'libxrender')
-makedepends=('jdk17-openjdk' 'maven')
+makedepends=('java-environment>=17' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
@@ -22,11 +22,11 @@ options=('!strip')
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
 
 prepare() {
-  if ! archlinux-java status | grep default | grep -E "17" ; then
-      echo "You don't have a Java 17 JDK selected as your Java environment but the following installed on your system:"
+  if ! archlinux-java status | grep default | grep -E "17|18" ; then
+      echo "You don't have a Java 17 or 18 JDK selected as your Java environment but the following installed on your system:"
       echo "`archlinux-java status | sed '1,${/^Available Java environments/d}' | sed 's/^/     /'`"
-      echo "Select a Java 17 JDK using \"sudo archlinux-java set [name from the list above]\""
-      echo "If you switched to a JDK 17, please re-run the installation."
+      echo "Select a Java 17 or 18 JDK using \"sudo archlinux-java set [name from the list above]\""
+      echo "If you switched to a JDK 17 or 18, please re-run the installation."
       return 1
   fi
 }
