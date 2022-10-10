@@ -19,13 +19,13 @@ conflicts=('pacman')
 backup=("etc/pacman.conf"
         "etc/makepkg.conf")
 options=('emptydirs' 'strip')
-source=("https://gitlab.archlinux.org/pacman/pacman/-/archive/v6.0.1/pacman-v6.0.1.tar.gz"
+source=("https://gitlab.archlinux.org/pacman/pacman/-/archive/v6.0.2/pacman-v6.0.2.tar.gz"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
         "pacman.conf.arm"
         "makepkg.conf"
         "pacman-arch.patch")
-sha256sums=('68ff4cd1aa2860e583a3a6c9ac92665417b23e3ff7b38dfec7d1508c46087e0f'
+sha256sums=('e39eab7f2cbd7cd802f56bc33e677df22a31caf7887ec4fae4d2b1649a95e410'
             '0e09eb240512da85f7eaa314a5a98fe7d4c4e7ed5eebde7e3e937c0ae4ee7054'
             '7ff75a61a07eabbc1718a7171b897b6504a6370f2f59a14caf42bbf0dce26ea6'
             '3fa640a4a2138b8d07b6e6366ff0743206ecb32fc3b7f53490a614388c492cf3'
