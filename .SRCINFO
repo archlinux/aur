@@ -1,6 +1,6 @@
 pkgbase = discord-screenaudio
 	pkgdesc = Custom discord client with the ability to stream desktop audio
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/maltejur/discord-screenaudio
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = discord-screenaudio
 	depends = knotifications
 	depends = pipewire
 	depends = xdg-desktop-portal-impl
-	source = discord-screenaudio-1.3.1.tar.gz::https://github.com/maltejur/discord-screenaudio/archive/refs/tags/v1.3.1.tar.gz
+	source = discord-screenaudio-1.4.0.tar.gz::https://github.com/maltejur/discord-screenaudio/archive/refs/tags/v1.4.0.tar.gz
 	source = rohrkabel-1.2.tar.gz::https://github.com/Soundux/rohrkabel/archive/refs/tags/v1.2.tar.gz
-	sha256sums = e226d1a3b358a1c34442096e1adafac1b8a117254dbfc4411eb5e68d4afa5dae
+	sha256sums = 1ca9f5aac8f51c23b9b7c4282fe35e5c155c297ab36474d933debfb0b17abf9e
 	sha256sums = e167e50d4c633a2b96dde5faa28cd83dd56828868c669fcf86c7e0ade7db1dcd
 
 pkgname = discord-screenaudio
