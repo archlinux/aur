@@ -1,6 +1,6 @@
 pkgbase = minutor-git
 	pkgdesc = A minimalistic map generator for minecraft.
-	pkgver = 2.18.0
+	pkgver = 2.19.0.r25.gccaaa66
 	pkgrel = 1
 	url = http://seancode.com/minutor/
 	arch = i686
