@@ -1,4 +1,5 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Contributor: Ethan Skinner <aur@etskinner.com>
 # Contributor: Grégoire Seux <grego_aur@familleseux.net>
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
@@ -6,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.9.7
+pkgver=2022.10.2
 pkgrel=1
 epoch=1
 arch=(any)
@@ -50,12 +51,12 @@ depends=(
   python-yaml
   python-yarl
   python-zeroconf
+  python-setuptools
 )
 makedepends=(
   git
   python-build
   python-installer
-  python-setuptools
   python-wheel
 )
 optdepends=(
@@ -64,7 +65,7 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=77a933d6f02439c713995d98712cc5b4513fd8fe
+_tag=0bca3228560bfad3aec0542a6e79df5d3b4415d1
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
