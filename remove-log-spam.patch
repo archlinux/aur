@@ -1,0 +1,17 @@
+Index: tensorflow/core/common_runtime/gpu_fusion_pass.cc
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tensorflow/core/common_runtime/gpu_fusion_pass.cc b/tensorflow/core/common_runtime/gpu_fusion_pass.cc
+--- a/tensorflow/core/common_runtime/gpu_fusion_pass.cc	(revision ceda634f1ff648e5e94a8b923762bb82cee8ffde)
++++ b/tensorflow/core/common_runtime/gpu_fusion_pass.cc	(date 1665233152715)
+@@ -504,7 +504,7 @@
+ 
+ Status ROCmFusionPassBase::Run(const GraphOptimizationPassOptions& options,
+                                int grouping) {
+-  VLOG(0) << "ROCm Fusion is enabled.";
++  VLOG(kVlogLevel) << "ROCm Fusion is enabled.";
+ 
+   // Check if the graph is present, should be either in
+   // - options.graph (for all but POST_PARTITIONING grouping)

@@ -1,0 +1,180 @@
+From 322fe678e5b4c3b865774bf84c880030fc9eba24 Mon Sep 17 00:00:00 2001
+From: acxz <17132214+acxz@users.noreply.github.com>
+Date: Fri, 8 Jul 2022 15:34:44 -0400
+Subject: [PATCH] fix rocblas location and rocm file conflicts
+
+---
+ third_party/gpus/find_rocm_config.py          |  5 +-
+ .../gpus/find_rocm_config.py.gz.base64        |  2 +-
+ third_party/gpus/rocm_configure.bzl           | 95 +------------------
+ 3 files changed, 7 insertions(+), 95 deletions(-)
+
+diff --git a/third_party/gpus/find_rocm_config.py b/third_party/gpus/find_rocm_config.py
+index 91674c4da6d7b..23758c456e687 100644
+--- a/third_party/gpus/find_rocm_config.py
++++ b/third_party/gpus/find_rocm_config.py
+@@ -156,7 +156,8 @@ def _find_rocblas_config(rocm_install_path):
+   def rocblas_version_numbers(path):
+     possible_version_files = [
+         "rocblas/include/rocblas-version.h",  # ROCm 3.7 and prior
+-        "rocblas/include/internal/rocblas-version.h",  # ROCm 3.8
++        "rocblas/include/internal/rocblas-version.h",  # ROCm > 3.7 & < 5.2
++        "include/rocblas/internal/rocblas-version.h",  # ROCm 5.2
+     ]
+     version_file = None
+     for f in possible_version_files:
+@@ -187,8 +188,8 @@ def _find_rocrand_config(rocm_install_path):
+ 
+   def rocrand_version_number(path):
+     possible_version_files = [
+-        "rocrand/include/rocrand_version.h",  # ROCm 5.0 and prior
+         "include/rocrand/rocrand_version.h",  # ROCm 5.1
++        "rocrand/include/rocrand_version.h",  # ROCm 5.0 and prior
+     ]
+     version_file = None
+     for f in possible_version_files:
+diff --git a/third_party/gpus/find_rocm_config.py.gz.base64 b/third_party/gpus/find_rocm_config.py.gz.base64
+index 4d838d5eb572f..df578ba1153a1 100644
+--- a/third_party/gpus/find_rocm_config.py.gz.base64
++++ b/third_party/gpus/find_rocm_config.py.gz.base64
+@@ -1 +1 @@
+-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
+\ No newline at end of file
++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
+\ No newline at end of file
+diff --git a/third_party/gpus/rocm_configure.bzl b/third_party/gpus/rocm_configure.bzl
+index dd698f998a741..07e90e2e81308 100644
+--- a/third_party/gpus/rocm_configure.bzl
++++ b/third_party/gpus/rocm_configure.bzl
+@@ -178,7 +178,7 @@ def _rocm_include_path(repository_ctx, rocm_config, bash_bin):
+     inc_dirs.append(rocm_config.rocm_toolkit_path + "/hsa/include")
+ 
+     # Add HIP headers (needs to match $HIP_PATH)
+-    inc_dirs.append(rocm_config.rocm_toolkit_path + "/hip/include")
++    inc_dirs.append(rocm_config.rocm_toolkit_path + "include/hip")
+ 
+     # Add HIP-Clang headers (realpath relative to compiler binary)
+     rocm_toolkit_path = realpath(repository_ctx, rocm_config.rocm_toolkit_path, bash_bin)
+@@ -561,22 +561,10 @@ def _create_local_rocm_repository(repository_ctx):
+             out_dir = "rocm/include",
+             exceptions = ["gtest", "gmock"],
+         ),
+-        make_copy_dir_rule(
+-            repository_ctx,
+-            name = hipfft_or_rocfft + "-include",
+-            src_dir = rocm_toolkit_path + "/" + hipfft_or_rocfft + "/include",
+-            out_dir = "rocm/include/" + hipfft_or_rocfft,
+-        ),
+-        make_copy_dir_rule(
+-            repository_ctx,
+-            name = "rocblas-include",
+-            src_dir = rocm_toolkit_path + "/rocblas/include",
+-            out_dir = "rocm/include/rocblas",
+-        ),
+         make_copy_dir_rule(
+             repository_ctx,
+             name = "rocblas-hsaco",
+-            src_dir = rocm_toolkit_path + "/rocblas/lib/library",
++            src_dir = rocm_toolkit_path + "/lib/rocblas/library",
+             out_dir = "rocm/lib/rocblas/lib/library",
+         ),
+         make_copy_dir_rule(
+@@ -585,76 +573,8 @@ def _create_local_rocm_repository(repository_ctx):
+             src_dir = rocm_toolkit_path + "/miopen/include",
+             out_dir = "rocm/include/miopen",
+         ),
+-        make_copy_dir_rule(
+-            repository_ctx,
+-            name = "rccl-include",
+-            src_dir = rocm_toolkit_path + "/rccl/include",
+-            out_dir = "rocm/include/rccl",
+-        ),
+-        make_copy_dir_rule(
+-            repository_ctx,
+-            name = "hipsparse-include",
+-            src_dir = rocm_toolkit_path + "/hipsparse/include",
+-            out_dir = "rocm/include/hipsparse",
+-        ),
+-        make_copy_dir_rule(
+-            repository_ctx,
+-            name = "rocsolver-include",
+-            src_dir = rocm_toolkit_path + "/rocsolver/include",
+-            out_dir = "rocm/include/rocsolver",
+-        ),
+     ]
+ 
+-    # Add Hipsolver on ROCm4.5+
+-    if rocm_version_number >= 40500:
+-        copy_rules.append(
+-            make_copy_dir_rule(
+-                repository_ctx,
+-                name = "hipsolver-include",
+-                src_dir = rocm_toolkit_path + "/hipsolver/include",
+-                out_dir = "rocm/include/hipsolver",
+-            ),
+-        )
+-        copy_rules.append(
+-            make_copy_dir_rule(
+-                repository_ctx,
+-                name = "hipblas-include",
+-                src_dir = rocm_toolkit_path + "/hipblas/include",
+-                out_dir = "rocm/include/hipblas",
+-            ),
+-        )
+-
+-    # explicitly copy (into the local_config_rocm repo) the $ROCM_PATH/hiprand/include and
+-    # $ROCM_PATH/rocrand/include dirs, only once the softlink to them in $ROCM_PATH/include
+-    # dir has been removed. This removal will happen in a near-future ROCm release.
+-    hiprand_include = ""
+-    hiprand_include_softlink = rocm_config.rocm_toolkit_path + "/include/hiprand"
+-    softlink_exists = files_exist(repository_ctx, [hiprand_include_softlink], bash_bin)
+-    if not softlink_exists[0]:
+-        hiprand_include = '":hiprand-include",\n'
+-        copy_rules.append(
+-            make_copy_dir_rule(
+-                repository_ctx,
+-                name = "hiprand-include",
+-                src_dir = rocm_toolkit_path + "/hiprand/include",
+-                out_dir = "rocm/include/hiprand",
+-            ),
+-        )
+-
+-    rocrand_include = ""
+-    rocrand_include_softlink = rocm_config.rocm_toolkit_path + "/include/rocrand"
+-    softlink_exists = files_exist(repository_ctx, [rocrand_include_softlink], bash_bin)
+-    if not softlink_exists[0]:
+-        rocrand_include = '":rocrand-include",\n'
+-        copy_rules.append(
+-            make_copy_dir_rule(
+-                repository_ctx,
+-                name = "rocrand-include",
+-                src_dir = rocm_toolkit_path + "/rocrand/include",
+-                out_dir = "rocm/include/rocrand",
+-            ),
+-        )
+-
+     rocm_libs = _find_libs(repository_ctx, rocm_config, hipfft_or_rocfft, bash_bin)
+     rocm_lib_srcs = []
+     rocm_lib_outs = []
+@@ -710,20 +630,11 @@ def _create_local_rocm_repository(repository_ctx):
+         "%{rocsolver_lib}": rocm_libs["rocsolver"].file_name,
+         "%{copy_rules}": "\n".join(copy_rules),
+         "%{rocm_headers}": ('":rocm-include",\n' +
+-                            '":' + hipfft_or_rocfft + '-include",\n' +
+-                            '":rocblas-include",\n' +
+-                            '":miopen-include",\n' +
+-                            '":rccl-include",\n' +
+-                            hiprand_include +
+-                            rocrand_include +
+-                            '":hipsparse-include",\n' +
+-                            '":rocsolver-include"'),
++                            '":miopen-include"'),
+     }
+     if rocm_version_number >= 40500:
+         repository_dict["%{hipsolver_lib}"] = rocm_libs["hipsolver"].file_name
+-        repository_dict["%{rocm_headers}"] += ',\n":hipsolver-include"'
+         repository_dict["%{hipblas_lib}"] = rocm_libs["hipblas"].file_name
+-        repository_dict["%{rocm_headers}"] += ',\n":hipblas-include"'
+ 
+     repository_ctx.template(
+         "rocm/BUILD",

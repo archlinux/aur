@@ -5,19 +5,17 @@
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
-pkgbase=tensorflow-amd
+pkgbase=tensorflow-amd-git
 
 # Flags for building without/with cpu optimizations
 _build_no_opt=1
 _build_opt=1
 
 pkgname=()
-[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd python-tensorflow-amd)
-[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd python-tensorflow-opt-amd)
+[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd-git python-tensorflow-amd-git)
+[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
 
-# use ROCm fork of tensorflow: https://github.com/ROCmSoftwarePlatform/tensorflow-upstream
-# take branch+commit from docker.io/rocm/tensorflow@lastest Dockerfile
-_id="4f7f7b9d6489de80eb81572ecc188af299e9e495"
+pkgver=2.10.0
 _srcname="tensorflow"
 _pkgver=2.10.0
 pkgver=2.10.0
@@ -26,19 +24,22 @@ pkgdesc="Library for computation using data flow graphs for scalable machine lea
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
-depends=('c-ares' 'intel-mkl' 'onednn' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo')
-makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'hipsolver' 'rccl' 'git'
-             'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
-             'python-keras-applications' 'python-keras-preprocessing'
-             'cython')
+depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
+makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'rccl' 'git' 'miopen' 'python-pip' 'python-wheel'
+             'python-setuptools' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing'
+             'cython' 'patchelf' 'python-requests')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("tensorflow::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream.git#branch=r2.10-rocm-enhanced"
-        "fix-c++17-compat.patch"
-        "fix-rocblas-include.patch")
+        fix-c++17-compat.patch
+        fix-cusolver-version.patch
+        fix-rocblas-include.patch
+        remove-log-spam.patch)
 
 sha512sums=('SKIP'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            '4f88760a5e60c79ef29335eb511afef7f6b064f4b4820261f08c12f69d7ba1e3748fff480ee073d248b41aa56de642f69fa9e57ba106cd885ab47ca83d272353')
+            'e919b77f17c8508c21607a988e4451542900bb2a1453b55bff865e3b2602faebf4543bd640f60d84ac9b8d7b8599986f115077f7d411732fba3866cb5d6ad2e2'
+            '98f882a29c35f484d8f57cff602d910664ca0fabedb51a978d6d826adff7fca9bf7be6f92988c8b72a0159b7f71b43646c6eb5a8adde4ef8687c291ed435292e'
+            '4f88760a5e60c79ef29335eb511afef7f6b064f4b4820261f08c12f69d7ba1e3748fff480ee073d248b41aa56de642f69fa9e57ba106cd885ab47ca83d272353'
+            'fde73feeb2bbb814ba229c2b879e5e5944fd658e9810937753a25f2650f57c49f8a435924b47a1a54eb2852f9713b19a15d42b307593e26a74ad65aeee22c36a')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -80,11 +81,15 @@ prepare() {
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" $_srcname/tensorflow/tools/pip_package/setup.py
 
   cd "${srcdir}/$_srcname"
-  patch -Np1 -i "${srcdir}/fix-rocblas-include.patch"
+  # change rocblas.h to rocblas/rocblas.h
+  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocm_blas.h
+  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/core/util/gpu_solvers.h
+  sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
+
   cd "${srcdir}"
 
-  cp -r $_srcname tensorflow-amd
-  cp -r $_srcname tensorflow-opt-amd
+  cp -r $_srcname tensorflow-amd-git
+  cp -r $_srcname tensorflow-opt-amd-git
 
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
@@ -139,7 +144,7 @@ prepare() {
 build() {
   if [ "$_build_no_opt" -eq 1 ]; then
     echo "Building with rocm and without non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-amd
+    cd "${srcdir}"/tensorflow-amd-git
     export CC_OPT_FLAGS="-march=x86-64"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
@@ -157,7 +162,7 @@ build() {
 
   if [ "$_build_opt" -eq 1 ]; then
     echo "Building with rocm and with non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-opt-amd
+    cd "${srcdir}"/tensorflow-opt-amd-git
     export CC_OPT_FLAGS="-march=haswell -O3"
     export TF_NEED_CUDA=0
     export TF_NEED_ROCM=1
@@ -216,7 +221,10 @@ _package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   # Fix interoperability of C++14 and C++17. See https://bugs.archlinux.org/task/65953
-  # patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
+  patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
+
+  # Fix FS#75571
+  find "${pkgdir}"/usr/lib -type f -exec patchelf --replace-needed libiomp5.so libomp.so '{}' \; -print
 }
 
 _python_package() {
@@ -240,43 +248,43 @@ _python_package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-package_tensorflow-amd() {
+package_tensorflow-amd-git() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM)"
-  depends+=(rocm-hip-libraries hipsolver miopen rccl)
-  conflicts=(tensorflow tensorflow-rocm)
-  provides=(tensorflow tensorflow-rocm)
+  depends+=(rocm-hip-sdk miopen rccl)
+  conflicts=(tensorflow)
+  provides=(tensorflow)
 
-  cd "${srcdir}"/tensorflow-amd
+  cd "${srcdir}"/tensorflow-amd-git
   _package tmprocm
 }
 
-package_tensorflow-opt-amd() {
+package_tensorflow-opt-amd-git() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-libraries hipsolver miopen rccl)
-  conflicts=(tensorflow tensorflow-rocm)
-  provides=(tensorflow tensorflow-rocm tensorflow-amd)
+  depends+=(rocm-hip-sdk miopen rccl)
+  conflicts=(tensorflow)
+  provides=(tensorflow tensorflow-amd-git)
 
-  cd "${srcdir}"/tensorflow-opt-amd
+  cd "${srcdir}"/tensorflow-opt-amd-git
   _package tmpoptrocm
 }
 
-package_python-tensorflow-amd() {
+package_python-tensorflow-amd-git() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM)"
-  depends+=(tensorflow-amd rocm-hip-libraries hipsolver miopen rccl "${_common_py_depends[@]}")
-  conflicts=(python-tensorflow python-tensorflow-rocm)
-  provides=(python-tensorflow python-tensorflow-rocm)
+  depends+=(tensorflow-amd-git rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
+  conflicts=(python-tensorflow)
+  provides=(python-tensorflow)
 
-  cd "${srcdir}"/tensorflow-amd
+  cd "${srcdir}"/tensorflow-amd-git
   _python_package tmprocm
 }
 
-package_python-tensorflow-opt-amd() {
+package_python-tensorflow-opt-amd-git() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-opt-amd rocm-hip-libraries hipsolver miopen rccl "${_common_py_depends[@]}")
-  conflicts=(python-tensorflow python-tensorflow-rocm)
-  provides=(python-tensorflow python-tensorflow-rocm python-tensorflow-amd)
+  depends+=(tensorflow-opt-amd-git rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
+  conflicts=(python-tensorflow)
+  provides=(python-tensorflow python-tensorflow-amd-git)
 
-  cd "${srcdir}"/tensorflow-opt-amd
+  cd "${srcdir}"/tensorflow-opt-amd-git
   _python_package tmpoptrocm
 }
 
