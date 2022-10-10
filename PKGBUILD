@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggraph
-_pkgver=2.0.6
+_pkgver=2.1.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='An Implementation of Grammar of Graphics for Graphs and Networks'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b0ac90d834a3ce5641b4bca159d59d09607ddaab592908361b75cffb648d40a')
+sha256sums=('686fdb22dc4f613273fb755ec42399a208b4d10348eecd1a217afd4612245c1f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

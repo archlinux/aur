@@ -1,6 +1,6 @@
 pkgbase = r-ggraph
 	pkgdesc = An Implementation of Grammar of Graphics for Graphs and Networks
-	pkgver = 2.0.6
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggraph
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-ggraph
 	optdepends = r-rmarkdown
 	optdepends = r-seriation
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/ggraph_2.0.6.tar.gz
-	sha256sums = 7b0ac90d834a3ce5641b4bca159d59d09607ddaab592908361b75cffb648d40a
+	source = https://cran.r-project.org/src/contrib/ggraph_2.1.0.tar.gz
+	sha256sums = 686fdb22dc4f613273fb755ec42399a208b4d10348eecd1a217afd4612245c1f
 
 pkgname = r-ggraph
