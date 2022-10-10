@@ -1,11 +1,11 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Carlos van Rooijen <aur at carlosvanrooijen dot nl>
 pkgname=unpaper-git
-pkgver=6.r194.ef2120b
+pkgver=6.r299.a2a88fe
 pkgrel=1
 epoch=
 pkgdesc="Post-processing tool for scanned sheets of paper."
 arch=('i686' 'x86_64')
-url="https://github.com/Flameeyes/unpaper"
+url="https://github.com/unpaper/unpaper"
 license=('GPL')
 groups=()
 depends=('ffmpeg')
@@ -19,9 +19,9 @@ backup=()
 options=()
 changelog=
 install=
-source=("$pkgname::git://github.com/Flameeyes/unpaper.git")
+source=("$pkgname::git+https://github.com/unpaper/unpaper.git")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -29,16 +29,14 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  autoreconf -i
-  ./configure --prefix=/usr
-  make
+  arch-meson $pkgname build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  mv $pkgdir/usr/share/doc/unpaper/COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  meson install -C build --destdir "$pkgdir"
 }
-
