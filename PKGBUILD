@@ -17,7 +17,7 @@ source=(
     "$pkgname-$pkgver.zip::$pkgurl"
         "spoofax3.desktop"
 )
-sha256sums=('ff3ee7845eb7ba1a497e0b5987ddc9411bd4ab1056799534210c11616c835b8f'
+sha256sums=('SKIP'
             '9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
 
 build() {
