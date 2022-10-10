@@ -1,8 +1,10 @@
 # Contributer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributer: Guillaume ALAUX <guillaume@archlinux.org>
 # Contributer: Github user RikudouPatrickstar
+# Contributer: Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Det <nimetonmaili g-mail>
 
-# This PKGBUILD is directly modified from community/java11-openjdk
+# This PKGBUILD is modified from community/java11-openjdk and aur/jdk
 # Methods to build JBR with JCEF support is from https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/blob/master/.github/workflows/jbr-linux-x64.yml
 
 # TODO add test, see about packaging jtreg and using it here
@@ -22,8 +24,8 @@ _majorver=17
 _ver=17.0.4.1
 _hgver=17.0.4.1
 _updatever=1
-_jbver1=597
-_jbver2=1
+_jbver1=629
+_jbver2=2
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
@@ -69,8 +71,6 @@ build() {
   # build jbr
   cd $srcdir/${_jdkdir}
 
-  # Include jcef
-  git apply -p0 < jb/project/tools/patches/add_jcef_module.patch
   # Fix im cursor follow
   patch -Np1 -i ${srcdir}/idea.patch
 
@@ -111,8 +111,15 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
+  VENDOR_NAME="JetBrains s.r.o."
+  JDK_BUILD_NUMBER=$(git log --simplify-by-decoration --decorate=short --pretty=short | grep "jbr-" | cut -d "(" -f2 | cut -d ")" -f1 | awk '{print $2}' | sort -t "-" -k 2 -g | tail -n 1 | tr -d "," | awk -F "-|[+]" '{print $3}')
+  VENDOR_VERSION_STRING="JBR-${_ver}+${JDK_BUILD_NUMBER}-${_jbver1}.${_jbver2}-jcef"
+
   bash configure \
-    --with-version-build="${_updatever}" \
+    --with-vendor-name="$VENDOR_NAME" \
+    --with-vendor-version-string="$VENDOR_VERSION_STRING" \
+    --with-vendor-vm-bug-url=https://youtrack.jetbrains.com/issues/JBR \
+    --with-version-build="${JDK_BUILD_NUMBER}" \
     --with-version-pre="" \
     --with-version-opt="b${_jbver1}.${_jbver2}" \
     --with-stdc++lib=dynamic \
@@ -129,19 +136,52 @@ build() {
     --enable-unlimited-crypto \
     --enable-warnings-as-errors=no \
     ${NUM_PROC_OPT} \
-    --with-import-modules=/usr/lib/jcef-jetbrains/modular-sdk
     #--disable-javac-server
 
-  make images legacy-jre-image
+  make images
+
+  # Include jcef
+  git apply -p0 < jb/project/tools/patches/add_jcef_module.patch
+  cd $srcdir/${_imgdir}
+
+  mkdir -p jcef_tmp
+  ./jdk/bin/jmod extract --dir ./jcef_tmp ./jdk/jmods/java.desktop.jmod
+  ./jdk/bin/javac \
+    --patch-module java.desktop=./jdk/jmods/java.desktop.jmod \
+    --module-path /usr/lib/jcef-jetbrains/jmods -d ./jcef_tmp/classes \
+    ../../../src/java.desktop/share/classes/module-info.java
+  ./jdk/bin/jmod \
+    create --class-path ./jcef_tmp/classes --config ./jcef_tmp/conf \
+    --header-files ./jcef_tmp/include --legal-notice ./jcef_tmp/legal --libs ./jcef_tmp/lib \
+    java.desktop.jmod
+  mv java.desktop.jmod ./jmods/
+  rm -rf ./jcef_tmp
+
+  mkdir -p jcef_tmp
+  hash_modules=$(./jdk/bin/jmod describe ./jdk/jmods/java.base.jmod | grep hashes | awk '{print $2}' | tr '\n' '|' | sed s/\|$//)
+  ./jdk/bin/jmod extract --dir ./jcef_tmp ./jdk/jmods/java.base.jmod
+  rm ./jmods/java.base.jmod
+  ./jdk/bin/jmod \
+    create --module-path ./jmods --hash-modules "$hash_modules" \
+    --class-path ./jcef_tmp/classes --cmds ./jcef_tmp/bin --config ./jcef_tmp/conf --header-files ./jcef_tmp/include --legal-notice ./jcef_tmp/legal --libs ./jcef_tmp/lib \
+    java.base.jmod
+  mv java.base.jmod ./jmods/
+  rm -rf ./jcef_tmp
+
+  cp /usr/lib/jcef-jetbrains/jmods/* ./jmods/
+
+  __modules=$(cat ./jdk/release | grep MODULES | sed s/MODULES=//g | sed s/' '/','/g | sed s/\"//g | sed s/\\n//g)
+  __modules=${__modules},$(echo $(ls /usr/lib/jcef-jetbrains/jmods) | sed s/\.jmod/,/g | sed s/,$//g | sed s/' '//g)
+  ./jdk/bin/jlink \
+    --module-path ./jmods --no-man-pages --compress=2 \
+    --add-modules "$__modules" --output ./jbr_sdk
+  
+  mkdir -p ./jbr_sdk/jmods
+  echo "${__modules}," | while read -d, mod; do cp ./jmods/$mod.jmod ./jbr_sdk/jmods/; done
 
   # https://bugs.openjdk.java.net/browse/JDK-8173610
-  find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
-}
-
-check() {
-  cd ${_jdkdir}
-  # TODO package jtreg
-  # make -k check
+  find "." -iname '*.so' -exec chmod +x {} \;
+  find "." -iname 'jcef_helper' -exec chmod +x {} \;
 }
 
 package_jre17-jetbrains-imfix() {
@@ -156,7 +196,7 @@ package_jre17-jetbrains-imfix() {
   provides=("java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
   conflicts=("jre17-jetbrains")
   _pkgname="jre17-jetbrains"
-  backup=(etc/${_pkgbase}/logging.propertopenjdkies
+  backup=(etc/${_pkgbase}/logging.properties
           etc/${_pkgbase}/management/jmxremote.access
           etc/${_pkgbase}/management/jmxremote.password.template
           etc/${_pkgbase}/management/management.properties
@@ -172,25 +212,22 @@ package_jre17-jetbrains-imfix() {
           etc/${_pkgbase}/sound.properties)
   install=install_jre-jetbrains.sh
 
-  cd ${_imgdir}/jre
+  cd ${_imgdir}/jbr_sdk
 
   install -dm 755 "${pkgdir}${_jvmdir}"
-
-  cp -a bin lib \
-    "${pkgdir}${_jvmdir}"
-
-  # Include jcef libs
-  find /usr/lib/jcef-jetbrains -maxdepth 1 -mindepth 1 -exec ln -sf {} "${pkgdir}${_jvmdir}/lib/" \;
-  rm "${pkgdir}${_jvmdir}/lib/modular-sdk"
-  #rsync -av $srcdir/jcef/jcef_build/native/Release/ ${pkgdir}${_jvmdir}/lib --exclude="modular-sdk"
-
-  cp ../jdk/release "${pkgdir}${_jvmdir}"
-  cp ../jdk/lib/modules "${pkgdir}${_jvmdir}/lib"
 
   # Conf
   install -dm 755 "${pkgdir}/etc"
   cp -r conf "${pkgdir}/etc/${_pkgbase}"
   ln -s /etc/${_pkgbase} "${pkgdir}/${_jvmdir}/conf"
+
+  # bin
+  install -D -m755 bin/{java,jfr,jrunscript} -t "${pkgdir}/${_jvmdir}/bin"
+  install -D -m755 bin/{keytool,rmiregistry} -t "${pkgdir}/${_jvmdir}/bin"
+
+  # libs
+  cp -a lib "${pkgdir}/${_jvmdir}"
+  rm "${pkgdir}/${_jvmdir}/lib/"{ct.sym,libattach.so,libsaproc.so}
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
@@ -198,13 +235,16 @@ package_jre17-jetbrains-imfix() {
   ln -s ${_pkgbase} "${pkgdir}/usr/share/licenses/${_pkgname}"
   ln -s /usr/share/licenses/${_pkgbase} "${pkgdir}/${_jvmdir}/legal"
 
-  # Man pages
-  for f in bin/*; do
-    f=$(basename "${f}")
-    _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-jetbrains${_majorver}.1"
+  # man pages
+  local _file
+  for _file in ../jdk/man/man1/{java,jfr,jrunscript,keytool,rmiregistry}.1
+  do
+      __file=${_file%.1}
+      install -D -m644 "$_file" "${pkgdir}/usr/share/${__file#"../jdk/"}-jetbrains${_majorver}.1"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+  
+  install -D -m644 release -t "${pkgdir}/${_jvmdir}"
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
@@ -219,41 +259,38 @@ package_jdk17-jetbrains-imfix() {
   _pkgname="jdk17-jetbrains"
   install=install_jdk-jetbrains.sh
 
-  cd ${_imgdir}/jdk
+  cd ${_imgdir}/jbr_sdk
 
   install -dm 755 "${pkgdir}${_jvmdir}"
 
-  cp -a bin demo include jmods lib \
+  cp -a ../jdk/demo include jmods \
     "${pkgdir}${_jvmdir}"
+  # Symlink to system jcef
+  find /usr/lib/jcef-jetbrains/jmods -maxdepth 1 -mindepth 1 -exec ln -sf {} "${pkgdir}${_jvmdir}/jmods/" \;
 
-  rm "${pkgdir}${_jvmdir}/lib/src.zip"
-
-  # Remove files held by JRE
-  pushd ../jre
-  for d in bin lib; do
-    find ${d} ! -type d -exec rm "${pkgdir}${_jvmdir}/{}" \;
-  done
-  popd
-  find "${pkgdir}${_jvmdir}/lib" -type d -empty -delete
+  # bin
+  cp -a bin "${pkgdir}/${_jvmdir}"
+  rm "${pkgdir}/${_jvmdir}/bin/"{java,jfr,jrunscript,keytool,rmiregistry}
+    
+  # libs
+  install -D -m644 lib/ct.sym       -t "${pkgdir}/${_jvmdir}/lib"
+  install -D -m644 lib/libattach.so -t "${pkgdir}/${_jvmdir}/lib"
+  install -D -m644 lib/libsaproc.so -t "${pkgdir}/${_jvmdir}/lib"
 
   # Conf files all belong to JRE
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
-  cp -r legal "${pkgdir}/usr/share/licenses/${_pkgbase}"
-  pushd ../jre/legal
-  find . ! -type d -exec rm "${pkgdir}/usr/share/licenses/${_pkgbase}/{}" \;
-  popd
-  find "${pkgdir}/usr/share/licenses" -type d -empty -delete
   ln -s ${_pkgbase} "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-  # Man pages
-  for f in bin/*; do
-    f=$(basename "${f}")
-    _man=man/man1/"${f}.1"
-    test -f "../jre/bin/${f}" && continue
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-jetbrains${_majorver}.1"
+  # man pages
+  local _file
+  for _file in ../jdk/man/man1/*.1
+  do
+      __file=${_file%.1}
+      install -D -m644 "$_file" "${pkgdir}/usr/share/${__file#"../jdk/"}-jetbrains${_majorver}.1"
   done
+  rm "${pkgdir}/usr/share/man/man1/"{java,jfr,jrunscript,keytool,rmiregistry}-jetbrains"${_majorver}".1
 
   # Icons
   for s in 16 24 32 48; do
