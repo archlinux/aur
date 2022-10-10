@@ -1,7 +1,7 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r207.1eff006
+pkgver=r226.063369b
 pkgrel=1
 pkgdesc="Fast previewer for lf (stpv replacement)"
 arch=('i686' 'x86_64')
@@ -23,8 +23,9 @@ optdepends=(
     'git-delta: for diff files'
     'gnupg: for gpg-encrypted files'
     'highlight: for text files'
+    'imagemagick: for svg files'
     'jq: for json files'
-    'libreoffice-fresh: for odt files'
+    'libreoffice-fresh: for office files'
     'lynx: for html files'
     'mdcat: for markdown files'
     'perl-image-exiftool: for any files'
@@ -49,5 +50,5 @@ package() {
     cp "$srcdir/$_name/LICENSE" "$license_prefix"
 
     cd "$srcdir/${_name}"
-	LDFLAGS=-L/usr/lib make PREFIX="/usr" DESTDIR="$pkgdir" install
+    make PREFIX="/usr" DESTDIR="$pkgdir" LDFLAGS=-L/usr/lib install
 }
