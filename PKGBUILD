@@ -2,16 +2,16 @@
 
 pkgname=python-bflb-mcu-tool
 _name=${pkgname#python-}
-pkgver=1.6.8
+pkgver=1.7.1
 pkgrel=1
 epoch=
 pkgdesc="BOUFFALOLAB MCU TOOL"
 arch=('any')
 url="https://pypi.org/project/bflb-mcu-tool"
-license=('unkown')
+license=(MIT)
 groups=()
-depends=('python' )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=(python)
+makedepends=(python-build python-installer python-wheel)
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,13 +21,14 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/a5/57/ab4a45ca3e7736c415f28502db6d897256332521025a52872b534d288207/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/4b/9b/17c7b18505c341757759fae2ebe6e69fa1e40d4d51c9faade922c8df5f64/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('675f24619aded8f1313bde5c0cb2da5100e519c7ec5234b3b2481b66e5aa8bcc')
+sha256sums=('8c2b214c89bc47ebb3bd7cad5a6b1c8e3138a8e56195d569077e4bb3c916a596')
 #validpgpkeys=()
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf bflb_mcu_tool/utils/jlink
     python -m build --wheel --no-isolation
 }
 
