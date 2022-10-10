@@ -1,16 +1,20 @@
 pkgbase = python-bflb-iot-tool
 	pkgdesc = BOUFFALOLAB IOT TOOL
-	pkgver = 1.6.8
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://pypi.org/project/bflb-iot-tool
 	arch = any
-	license = unkown
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-pyserial
+	depends = python-ecdsa
+	depends = python-pycryptodome
+	depends = python-pylink-square
 	options = !strip
-	source = bflb-iot-tool-1.6.8.tar.gz::https://files.pythonhosted.org/packages/51/5d/181f57205588d0670508f118d590e4e75f6f35ac77ebd54e9b102560ae6e/bflb-iot-tool-1.6.8.tar.gz
-	sha256sums = 0209ef5af68994d486dfe3cbb49b5201ffe670a88602122258a9c908446c542e
+	source = bflb-iot-tool-1.7.1.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-iot-tool/bflb-iot-tool-1.7.1.tar.gz
+	sha256sums = cf97d71ea9f97778e32c976cbaada44b0347796c3308c27ef45492483f72f8aa
 
 pkgname = python-bflb-iot-tool
