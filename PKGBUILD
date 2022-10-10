@@ -5,7 +5,7 @@
 
 _pkgname=qmk
 pkgname=qmk-lite
-pkgver=1.1.0
+pkgver=1.1.1
 _qmk_udev_pkgver=0.1.1
 pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards - device-specific dependencies set as optional"
@@ -38,7 +38,7 @@ provides=('qmk')
 conflicts=('qmk')
 source=("https://files.pythonhosted.org/packages/source/q/qmk/qmk-${pkgver}.tar.gz"
         "qmk-udev-${_qmk_udev_pkgver}.tar.gz::https://github.com/qmk/qmk_udev/archive/refs/tags/v${_qmk_udev_pkgver}.tar.gz")
-sha256sums=('771577c9e68eb7fe08969bab36aeb420713a525062dce52a06eda40da8cda5e1'
+sha256sums=('dd028e09ebcd61f8bdf8cb82929dfafc0e007d97a5a3803b45819b4641773269'
             'e6cde001890e1d030d13bbe18799b76754aaea8a6d1309ce8c7956d713714920')
 
 build() {
@@ -50,6 +50,6 @@ build() {
 package() {
   make -C qmk_udev-${_qmk_udev_pkgver} DESTDIR="$pkgdir" PREFIX=/usr install
   cd "${_pkgname}-${pkgver}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
