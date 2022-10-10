@@ -1,0 +1,21 @@
+- Adds `jump` command to allow forward copying of history locations
+- Simplifies makefile/build system, including versioning
+- Adds `version` command to allow retrieving version information wthin the program
+- Fixes bug in searching where previous search highlighting was not removed upon subsequent searches
+- Updates text and formatting in the man page
+- Adds support for legacy forms of hostname verification for gemini tls connections. This maintains compatibility when built with go > 1.14
+- Adds recognition and handling for various unicode line endings
+- Fixes bug where 404 errors for websites were not shown when using the `lynx` webmode setting
+- Adds left gutter for link numbering when displaying text/gemini documents; this creates a more unified look with how gopher maps are displayed
+- Adds messaging to display how a command should be used when it is used incorrectly
+- Updates the `help` command to take an optional command as a paramater to get the syntax for the given command
+- Minor optimizations to rendering
+- Updates to DEVELOPING document
+- Adds text/gemini as default mime for gemini requests, if no other mime is sent by the server (per the gemini spec)
+- Adds support for relatively linked redirects
+- Removes client certificate support for gemini. They were not well implemented and may come back at some point in the future
+- Simplifies and consolidates code for the `gui` setting of the webmode configuration option
+- Adds `gui` setting (for webmode configuration option) support for BSD systems
+- Adds a timeout configuration option that allows users to set the gopher/gemini timeout (in seconds)
+- Fixes to line wrapping and rendering
+
