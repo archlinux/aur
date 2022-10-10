@@ -2,7 +2,7 @@
 
 pkgname=python-bflb-iot-tool
 _name=${pkgname#python-}
-pkgver=1.7.1
+pkgver=1.7.1.post1
 pkgrel=1
 epoch=
 pkgdesc="BOUFFALOLAB IOT TOOL"
@@ -12,9 +12,8 @@ license=('MIT')
 groups=()
 depends=(python python-pyserial python-ecdsa python-pycryptodome python-pylink-square)
 makedepends=(python-build python-installer python-wheel)
-optdepends=("jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
 checkdepends=()
-optdepends=()
+optdepends=("jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
 provides=()
 conflicts=()
 replaces=()
@@ -24,7 +23,7 @@ install=
 changelog=
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cf97d71ea9f97778e32c976cbaada44b0347796c3308c27ef45492483f72f8aa')
+sha256sums=('3ab263ce9da0d03359a0016e4465e2cc4c19cde93af70940ae14ad6b559b1762')
 #validpgpkeys=()
 
 build() {
