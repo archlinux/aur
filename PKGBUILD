@@ -2,7 +2,7 @@
 
 pkgname=spiceopus
 pkgver=2v33r242
-pkgrel=1
+pkgrel=2
 pkgdesc="Spice Opus is a free general purpose circuit simulator specially suited for optimization loops"
 arch=('x86_64')
 url="http://www.spiceopus.si/"
