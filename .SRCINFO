@@ -1,0 +1,13 @@
+pkgbase = spamton-shimeji-git
+	pkgdesc = Spamton Shimeji to make your Xorg desktop [[NumberOneBestRatedArchRice]]
+	pkgver = r69.8133f69
+	pkgrel = 1
+	url = https://codeberg.org/thatonecalculator/spamton-linux-shimeji
+	arch = any
+	license = Custom
+	depends = openjdk8-src
+	depends = libx11
+	source = spamton-shimeji::git+https://codeberg.org/thatonecalculator/spamton-linux-shimeji.git
+	sha256sums = SKIP
+
+pkgname = spamton-shimeji-git
