@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.160832.df7946f6497.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.160940.edb89ae6094.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -11,11 +11,11 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
              'git' 'ninja'
              'directx-headers-git' 'rust' 'rust-bindgen')
-# vulkan-radeonはビルドできないため公式リポジトリのものを使用
+# vulkan-radeonはビルドできないためAMD公式のものを使用
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
          'libxcb' 'python' 'libclc' 'clang' 'libx11' 'systemd-libs' 'llvm-libs' 'compiler-rt'
-         'spirv-llvm-translator' 'vulkan-radeon')
+         'spirv-llvm-translator' 'vulkan-amdgpu-pro')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
             'opengl-man-pages: for the OpenGL API man pages')
 # vulkan-radeonをこのパッケージでビルドできないため､ここから外す
@@ -26,7 +26,7 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-laye
 
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_nv'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/zink'
         'LICENSE'
 #        'eglapi_hack.patch'
         )
@@ -90,7 +90,7 @@ build () {
        -D b_lto=true \
        -D b_ndebug=true \
        -D platforms=auto \
-       -D gallium-drivers=auto \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
        -D vulkan-drivers=intel,intel_hasvk,swrast \
        -D vulkan-rt-drivers=auto \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
