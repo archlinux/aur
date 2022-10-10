@@ -1,80 +1,85 @@
-#
 # Maintainer: Mark Barbone <mark.l.barbone at gmail>
-# 
+# Contributor: MithicSpirit <rpc01234 at gmail dot com>
 
-pkgname=idris2-git
-pkgver=0.5.1.r146.g10b9685e
+_pkgname=idris2
+pkgname=$_pkgname-git
+pkgver=latest
 pkgrel=1
-pkgdesc="Funtional Programming Lanugage with Dependent Types"
-url="https://www.idris-lang.org/"
+pkgdesc='A purely functional programming language with first class types'
+url='https://www.idris-lang.org/'
 license=('custom')
 arch=('x86_64')
 depends=('chez-scheme')
 makedepends=('git')
-provides=('idris2')
-conflicts=('idris2')
-source=('git+https://github.com/idris-lang/Idris2.git')
-md5sums=('SKIP')
-
-_srcname="Idris2"
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/idris-lang/${_pkgname^}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd $_srcname
+    cd "$srcdir/$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_srcname"
+    cd "$srcdir/$_pkgname"
 
-    # Parallel builds cause problems
-    unset MAKEFLAGS
-
+    export MAKEFLAGS+=' -j1 '
     export SCHEME=chez
 
-    mkdir -p "$srcdir/bootstrap"
-    PREFIX="$srcdir/bootstrap" make bootstrap
-    PREFIX="$srcdir/bootstrap" make install
-    make clean
+    BOOTSTRAP="$srcdir/bootstrap"
+    export PATH="$BOOTSTRAP/bin:$PATH"
+    export LD_LIBRARY_PATH="$BOOSTRAP/lib:$LD_LIBRARY_PATH"
 
-    PATH="$srcdir/bootstrap/bin:$PATH" \
-        LD_LIBRARY_PATH="$srcdir/bootstrap/lib:$LD_LIBRARY_PATH" \
-        PREFIX=/usr/lib \
-        make
+    mkdir -p "$BOOTSTRAP"
+    PREFIX="$BOOTSTRAP" make bootstrap
+    PREFIX="$BOOTSTRAP" make install
+
+    make clean
+    PREFIX="/usr/lib" make all
+}
+
+check() {
+    cd "$srcdir/$_pkgname"
+
+    export MAKEFLAGS+=' -j1 '
+    export SCHEME=chez
+
+    BOOTSTRAP="$srcdir/bootstrap"
+    PATH="$BOOTSTRAP/bin:$PATH"
+    LD_LIBRARY_PATH="$BOOSTRAP/lib:$PATH"
+
+    make test
 }
 
 package() {
-    cd "$srcdir/$_srcname"
+    cd "$srcdir/$_pkgname"
 
-    unset MAKEFLAGS
+    export MAKEFLAGS+=' -j1 '
     export SCHEME=chez
 
-    # Install compiler and runtime
-    PREFIX="$pkgdir/usr/lib" make install-idris2
-    PREFIX="$pkgdir/usr/lib" make install-support
+    BOOTSTRAP="$srcdir/bootstrap"
+    export PREFIX="$pkgdir/usr/lib"
+    export IDRIS2_PREFIX="$PREFIX"
+    PATH="/usr/lib/bin:$PREFIX/bin:$BOOTSTRAP/bin:$PATH"
+    LD_LIBRARY_PATH="/usr/lib/lib:$PREFIX/lib:$BOOSTRAP/lib:$LD_LIBRARY_PATH"
 
-    IDRIS2_BINARY="$srcdir/$_srcname/build/exec/idris2"
+    make install
+    make install-libdocs
+    make install-api
 
-    # Install libraries
-    install_lib() {
-        IDRIS2_PREFIX="$pkgdir/usr/lib" \
-            "$IDRIS2_BINARY" --install-with-src $1.ipkg
-    }
-    for lib in prelude base contrib network test ; do
-        ( cd libs/$lib ; install_lib $lib )
-    done
-    install_lib idris2api
-
-    # Clean up install
     mkdir -p "$pkgdir/usr/bin"
-    mv "$pkgdir/usr/lib/bin/idris2_app/idris2.so" "$pkgdir/usr/bin/idris2"
-    rm -r "$pkgdir/usr/lib/bin"
-    mv "$pkgdir"/usr/lib/{lib/,}libidris2_support.so
-    rmdir "$pkgdir"/usr/lib/lib
+    mv "$pkgdir/usr/lib/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    sed -i 's|$DIR|/usr/lib|g' "$pkgdir/usr/bin/$_pkgname"
 
-    # Fix permissions
-    find "$pkgdir" -type d -exec chmod 755 {} \;
+    mv "$pkgdir/usr/lib/bin/${_pkgname}_app" "$pkgdir/usr/lib/${_pkgname}_app"
+    rmdir "$pkgdir/usr/lib/bin"
 
-    install -Dm644 <("$IDRIS2_BINARY" --bash-completion-script idris2) \
-        "$pkgdir/usr/share/bash-completion/completions/idris2"
+    mv "$pkgdir/usr/lib/lib/"* "$pkgdir/usr/lib/"
+    rmdir "$pkgdir/usr/lib/lib"
+
+    rm "$pkgdir/usr/lib/libidris2_support.so"
+    install "support/c/libidris2_support.a" "$pkgdir/usr/lib/$_pkgname-"*"/lib"
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
