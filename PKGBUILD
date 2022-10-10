@@ -12,6 +12,8 @@ license=('GPL2')
 groups=('xfce4', 'modified')
 depends=('libxfce4ui' 'xfconf' 'libwnck3' 'libepoxy' 'libxpresent'
          'hicolor-icon-theme')
+provides=('xfwm4')
+conflicts=('xfwm4')
 makedepends=('intltool')
 source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
         client-Handle-removal-of-GTK_FRAME_EXTENTS.patch
