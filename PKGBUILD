@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=libcalfbox-lss
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Library for real time midi sequencing and loading of various sampler formats"
 arch=(x86_64)
@@ -11,9 +11,9 @@ depends=(glibc)
 makedepends=(fluidsynth glib2 jack libsndfile meson util-linux)
 options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.xz{,.sig})
-sha512sums=('39f903805ac139bf3768b4632b7b34196dc9cd49e138b196ef56f634781ff59140d171938ecafbf2a8d43cca3cec488fd1b374f1eecdec98ebe823b8499ac262'
+sha512sums=('66f5784adeb6ce7d4c81e917be1ce64c08b07a2fea7b56598e19ab198c79faa548c0f1cf794a9b0228bb7e63d663867a85a6b2a100320f3ee538e9a92c26d25b'
             'SKIP')
-b2sums=('b2f9bb968adabe443e1c70a389441a781a29485501489e61411127b10ad68101fcbeea2d092b89ce8ed183be31dd966996bff6e99a6276eb55f2fcdaff47634a'
+b2sums=('0121edad47c25a1f0b724255a055aca93879247543792749cd7d868ee530892b0e03c9f7d6f74fec1e5882aa0f997e94109d8deb5a574ba73aaa1dd48013cae1'
         'SKIP')
 validpgpkeys=('45D952EF384ADFBB00913E3428C6A306F2909FEE') # Nils Hilbricht <nils@hilbricht.com>
 
