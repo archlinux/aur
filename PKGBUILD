@@ -4,9 +4,10 @@
 pkgbase=linux-usermode
 pkgname=('linux-usermode' 'linux-usermode-modules')
 _kernelname=-usermodelinux
-_major=5.19
-_minor=14
-pkgver=${_major}.${_minor}
+_major=6.0
+_minor=0
+#pkgver=${_major}.${_minor}
+pkgver=${_major}
 _srcname=linux-${pkgver}
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
@@ -15,14 +16,14 @@ license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils')
-source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.sign"
         'config'
         '70-uml.hook')
 
-sha256sums=('1ded27e1c4a8b51df5f93f2f772827183b805d9ab4771071307c13ee86cd1ac1'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '80284e5a2df806b1b1e43f66b08683d639ef53d2d43cdc47eb13f753d26c0c9a'
+            'e5bb0353b519d41882836765c02ab171ad9badc129c9924a2ccb46763f2bd4a0'
             '05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c')
 
 validpgpkeys=(
