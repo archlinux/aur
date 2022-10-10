@@ -1,7 +1,7 @@
 # Maintainer: Philipp Hentschel  <aur[at]f1ndus[dot]de>
 
 pkgname=apnotes
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=0
 pkgdesc='Interface for Linux to View, Edit, Create and Sync Notes written on apple devices'
 url='https://github.com/findus/apnotes'
@@ -10,8 +10,8 @@ license=('MIT')
 makedepends=('rust' 'scdoc')
 depends=('sqlite' 'openssl' 'dbus')
 source=(https://github.com/findus/apple-notes-bridge/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('cadaf44f83154a82d147189575e3275e64490fc7b13a22ba8a51202f73bbdd5e')
-sha512sums=('1f4ae624cb5490db3cb112dd15c16956ca48a6b714d9f3aae0c27eef0b2bc4c9b4adc44e6fca71f00ea1d7e614881556a73c0d32255a3fee4418ebb81b962b46')
+sha256sums=('5adf009d3ae401946c9079d22656d9edc3b389b8849854fcfc02e24183d0d405')
+sha512sums=('687c718df20b0f5d792858331c50e83d89f614dea26788f966447f4aafa444e9c5ebdcfb3b09294c0c3e4c90e0d86165bad8d0c50619d3a40b4691683653b405')
 validpgpkeys=('01938725ABC3812F5DBC219C6E19B9E46E818A5F')
 
 
