@@ -2,7 +2,7 @@
 
 pkgname=python-pycklink
 _name=${pkgname#python-}
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 epoch=
 pkgdesc="Python interface for the T-HEAD CKLink"
@@ -21,9 +21,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/38/71/f338433daf912f91eb69c2754d3b0a5a67617098d562221e6a83092fda0b/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/cf/2f/ac2d05e83f0e8a55926e8b14e5667cb8f2f28837224661dd96343d0003cc/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a2900d87b291e9cdb483bbd6571a63f6f448d8fd58b078af08a2e68a409fee5b')
+sha256sums=('7a4a86ff9ab15ef3db3b68462b05633e8b6879b3c1cbcec5f00484dd80bf38b0')
 #validpgpkeys=()
 
 build() {
