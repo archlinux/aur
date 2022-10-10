@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"
 pkgname=(python-detectron2 python-detectron2-cuda)
 _pkgname=detectron2
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="FAIR's next-generation platform for object detection and segmentation"
 arch=('x86_64')
 url='https://github.com/facebookresearch/detectron2'
@@ -56,6 +56,9 @@ package_python-detectron2() {
   )
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  # remove unused files
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rfv ${pkgdir}${site_packages}/tools
 }
 
 package_python-detectron2-cuda() {
@@ -69,5 +72,8 @@ package_python-detectron2-cuda() {
   cd "${pkgname}-${pkgver}"
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
   FORCE_CUDA=1 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  # remove unused files
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rfv ${pkgdir}${site_packages}/tools
 }
 # vim:set ts=2 sw=2 et:
