@@ -1,6 +1,6 @@
 pkgbase = python-sphinx_mdinclude
 	pkgdesc = Markdown extension for Sphinx
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://sphinx-mdinclude.readthedocs.io
 	arch = any
@@ -8,22 +8,22 @@ pkgbase = python-sphinx_mdinclude
 	checkdepends = python-pytest
 	checkdepends = python-sphinx
 	makedepends = python-flit-core
-	makedepends = python-docutils>=0.15
+	makedepends = python-docutils>=0.16
 	makedepends = python-mistune>=2.0
+	makedepends = python-pygments>=2.8
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_mdinclude/sphinx_mdinclude-0.5.2.tar.gz
-	source = fix-changlog-highlight.patch
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_mdinclude/sphinx_mdinclude-0.5.3.tar.gz
 	source = Makefile
-	md5sums = 6468d8b5f3020387b3358f0393d930a4
-	md5sums = b5bd8e2ac097462791d8f04a480f46e5
+	md5sums = 4657ffb422d58014f4d7cc96e983164b
 	md5sums = a6aa4bc42b138d75f938065a0994c3e1
 
 pkgname = python-sphinx_mdinclude
 	depends = python>=3.6
-	depends = python-docutils>=0.15
+	depends = python-docutils>=0.16
 	depends = python-mistune>=2.0
+	depends = python-pygments>=2.8
 	optdepends = python-sphinx_mdinclude-doc: Documentation for ndcube
 
 pkgname = python-sphinx_mdinclude-doc
