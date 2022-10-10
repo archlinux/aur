@@ -1,11 +1,12 @@
 pkgbase = splash
         pkgdesc = Multi-projector videomapping software, suitable for immersive spaces
         pkgver = 0.9.24
-        pkgrel = 1
+        pkgrel = 2
         url = https://sat-mtl.gitlab.io/documentation/splash
         arch = x86_64
         license = GPL
         depends = glfw-x11
+        depends = glm
         depends = gsl
         depends = python
         depends = portaudio
