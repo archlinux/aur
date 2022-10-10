@@ -2,7 +2,7 @@
 # PKGBuild Create By: lumpyzhu <lumpy.zhu@gmail.com>
 
 pkgname=xmake
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="A cross-platform build utility based on Lua"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/xmake-io/xmake"
 license=('Apache')
 makedepends=('ncurses' 'readline')
 source=("https://github.com/xmake-io/xmake/releases/download/v${pkgver}/xmake-v${pkgver}.tar.gz")
-sha256sums=('e44085090641547d8814afcc345d641d8ce1e38b6e05fee7375fc88150c0803d')
+sha256sums=('2d1159fd8910cd532b09315cbf7e3c8943df57f2b22952174c8cd04ba0358a14')
 
 build() {
     cd "$srcdir"
