@@ -1,11 +1,12 @@
 pkgbase = bombadillo
 	pkgdesc = A non-web client for the terminal, supporting Gopher, Gemini and much more.
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bombadillo.colorfield.space
 	arch = x86_64
 	arch = i686
-	arch = arm
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = go
 	depends = glibc

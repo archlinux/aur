@@ -3,9 +3,9 @@
 
 pkgname=bombadillo
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A non-web client for the terminal, supporting Gopher, Gemini and much more."
-arch=('x86_64' 'i686' 'arm')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://bombadillo.colorfield.space"
 license=('GPL3')
 depends=('glibc')
@@ -16,8 +16,7 @@ sha256sums=('2d4ec15cac6d3324f13a4039cca86fecf3141503f556a6fa48bdbafb86325f1c'
             'a379b36f6ba85a689942f90f9f4f4d416678f34c1e99bdbb8eaeadaaf6f0b788')
 
 prepare() {
-  cd "$pkgname"
-  patch --forward --strip=1 --input="${srcdir}/001-Makefile.patch"
+	patch -p1 -d "$pkgname" < 001-Makefile.patch
 }
 
 build() {
