@@ -9,14 +9,14 @@
 pkgname=bleachbit-cli
 _pkgname=bleachbit
 pkgver=4.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 conflicts=($_pkgname)
 provides=("bleachbit=${pkgver}")
 arch=(any)
 url='https://www.bleachbit.org/'
 license=(GPL3)
-depends=(python-gobject gtk3)
+depends=(python-gobject)
 makedepends=(auth-tarball-from-git)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/bleachbit/bleachbit/archive/refs/tags/v$pkgver.tar.gz
         az0.pgp) # Andrew Ziem <ahz001@gmail.com>

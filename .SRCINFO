@@ -1,13 +1,12 @@
 pkgbase = bleachbit-cli
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.
 	pkgver = 4.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL3
 	makedepends = auth-tarball-from-git
 	depends = python-gobject
-	depends = gtk3
 	provides = bleachbit=4.4.2
 	conflicts = bleachbit
 	source = bleachbit-4.4.2.tar.gz::https://github.com/bleachbit/bleachbit/archive/refs/tags/v4.4.2.tar.gz
