@@ -1,6 +1,6 @@
 pkgbase = python-bflb-mcu-tool
 	pkgdesc = BOUFFALOLAB MCU TOOL
-	pkgver = 1.7.6
+	pkgver = 1.7.6.post2
 	pkgrel = 1
 	url = https://pypi.org/project/bflb-mcu-tool
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-bflb-mcu-tool
 	makedepends = python-wheel
 	depends = python
 	options = !strip
-	source = bflb-mcu-tool-1.7.6.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-mcu-tool/bflb-mcu-tool-1.7.6.tar.gz
-	sha256sums = 546dfa082e1f6528ebe1d22569a8fdde7ff9cda2b4c14ad0768fc910b02ba9ea
+	source = bflb-mcu-tool-1.7.6.post2.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-mcu-tool/bflb-mcu-tool-1.7.6.post2.tar.gz
+	sha256sums = fd464acc2762d7cc5866a4c339ec3efd7aa6f2425594f49fce0694a93af37e51
 
 pkgname = python-bflb-mcu-tool
