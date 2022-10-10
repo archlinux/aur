@@ -1,0 +1,19 @@
+pkgbase = zap-soundboard-git
+	pkgdesc = Play sounds from a soundboard
+	pkgver = 1.1.0.r17.g18e8306
+	pkgrel = 1
+	url = https://gitlab.com/rmnvgr/zap
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = gjs
+	provides = zap-soundboard
+	conflicts = zap-soundboard
+	source = git+https://gitlab.com/rmnvgr/zap.git
+	b2sums = SKIP
+
+pkgname = zap-soundboard-git
