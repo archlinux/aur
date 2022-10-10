@@ -1,4 +1,6 @@
 # Maintainer:  Mubashshir <ahmubashshir@gmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Robin Broda <robin@broda.me>
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
@@ -6,18 +8,16 @@
 # what: libvirt/libvirt
 # match! -rc[0-9]+$
 
-pkgname=libvirt-xen
-pkgver=8.7.0
+pkgname=libvirt
+pkgver=8.8.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
 depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
-depends+=('xen')
 makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'glusterfs'
              'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-base')
-
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
             'gettext: required for libvirt-guests.service'
@@ -83,25 +83,23 @@ backup=(
   'etc/logrotate.d/libvirtd.qemu'
   'etc/sasl2/libvirt.conf'
 )
+options=(debug)
+source=(
+  "https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
+)
+sha256sums=('eb0cbb6cd199e7a2f341e62f5410ca2daf65a0bf91bd522d951c1a18f0df0fa3'
+            'SKIP')
+validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
+
+# libvirt-xen
+pkgname=libvirt-xen
+depends+=('xen')
 backup+=(
   'etc/libvirt/libxl.conf'
   'etc/libvirt/libxl-lockd.conf'
   'etc/libvirt/virtxend.conf'
   'etc/logrotate.d/libvirtd.libxl'
 )
-
-options=(debug)
-source=(
-  "https://libvirt.org/sources/${pkgname%*-xen}-$pkgver.tar.xz"{,.asc}
-  "https://github.com/archlinux/svntogit-community/raw/packages/libvirt/repos/community-x86_64/glibc-2.36-lxc-fix.patch"
-  "https://github.com/archlinux/svntogit-community/raw/packages/libvirt/repos/community-x86_64/glibc-2.36-virfile-fix.patch"
-)
-
-sha256sums=('72e63a0f27911e339afd8269c6e8b029721893940edec11e09e471944f60e538'
-            'SKIP'
-            '766b998644d29bb8ea173a5911d5afc0f8e84f1845e19a65b349dd686d85aeed'
-            '5ba526edc7f486588ccde4d8a4d1b9f4afeba9517029126d981705eb16e32495')
-validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
   cd "${pkgname%*-xen}-${pkgver}"
@@ -116,8 +114,6 @@ prepare() {
     src/qemu/qemu.conf.in \
     src/qemu/test_libvirtd_qemu.aug.in
 
-  patch -Np1 < ../glibc-2.36-lxc-fix.patch
-  patch -Np1 < ../glibc-2.36-virfile-fix.patch
 }
 
 build() {
@@ -139,7 +135,6 @@ build() {
     -Dsanlock=disabled \
     -Dsecdriver_apparmor=disabled \
     -Dsecdriver_selinux=disabled \
-    -Dstorage_sheepdog=disabled \
     -Dstorage_vstorage=disabled \
     -Ddtrace=disabled \
     -Dnumad=disabled \
@@ -156,6 +151,7 @@ check() {
 package() {
   conflicts=('libvirt')
   provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
+  provides+=('libvirt-libxl.so')
 
   DESTDIR="$pkgdir" ninja -C build install
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
@@ -177,6 +173,7 @@ package() {
 
   rm -f "$pkgdir/etc/libvirt/qemu/networks/autostart/default.xml"
 
+  # remove split modules
   rm "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_gluster.so
   rm "$pkgdir/usr/lib/libvirt/storage-backend/libvirt_storage_backend_iscsi-direct.so"
   rm "$pkgdir/usr/lib/libvirt/storage-file/libvirt_storage_file_gluster.so"

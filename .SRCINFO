@@ -1,6 +1,6 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 8.7.0
+	pkgver = 8.8.0
 	pkgrel = 1
 	url = https://libvirt.org/
 	arch = x86_64
@@ -95,20 +95,17 @@ pkgbase = libvirt-xen
 	backup = etc/libvirt/libxl-lockd.conf
 	backup = etc/libvirt/virtxend.conf
 	backup = etc/logrotate.d/libvirtd.libxl
-	source = https://libvirt.org/sources/libvirt-8.7.0.tar.xz
-	source = https://libvirt.org/sources/libvirt-8.7.0.tar.xz.asc
-	source = https://github.com/archlinux/svntogit-community/raw/packages/libvirt/repos/community-x86_64/glibc-2.36-lxc-fix.patch
-	source = https://github.com/archlinux/svntogit-community/raw/packages/libvirt/repos/community-x86_64/glibc-2.36-virfile-fix.patch
+	source = https://libvirt.org/sources/libvirt-8.8.0.tar.xz
+	source = https://libvirt.org/sources/libvirt-8.8.0.tar.xz.asc
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
-	sha256sums = 72e63a0f27911e339afd8269c6e8b029721893940edec11e09e471944f60e538
+	sha256sums = eb0cbb6cd199e7a2f341e62f5410ca2daf65a0bf91bd522d951c1a18f0df0fa3
 	sha256sums = SKIP
-	sha256sums = 766b998644d29bb8ea173a5911d5afc0f8e84f1845e19a65b349dd686d85aeed
-	sha256sums = 5ba526edc7f486588ccde4d8a4d1b9f4afeba9517029126d981705eb16e32495
 
 pkgname = libvirt-xen
-	provides = libvirt=8.7.0
+	provides = libvirt=8.8.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
 	provides = libvirt-qemu.so
+	provides = libvirt-libxl.so
 	conflicts = libvirt
