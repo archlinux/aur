@@ -1,5 +1,4 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: tobias <tobias funnychar archlinux.org>
+# Maintainer: Nicholas Dahm <(first).(last) at gmail>
 
 _pkgname=xfwm4
 pkgname=xfwm4-move-monitor
