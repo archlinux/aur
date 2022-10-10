@@ -2,7 +2,7 @@
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgbase=tnt-bin
-pkgname=('tnt-bin' 'tnt-mpi-bin' 'tnt-gui' 'tnt-extra')
+pkgname=('tnt-bin' 'tnt-mpi' 'tnt-gui' 'tnt-extra')
 pkgver=1.6
 pkgrel=1
 pkgdesc="Tree analysis using New Technology. https://doi.org/10.1111/cla.12160"
@@ -23,7 +23,7 @@ package_tnt-bin () {
 	chmod +x tnt
 	install -Dm 755 tnt ${pkgdir}/usr/bin/tnt
 }
-package_tnt-mpi-bin () {
+package_tnt-mpi () {
   depends=('tnt-ncurses5-compat-libs' 'pvm' 'openmpi' 'glibc')
 	cd ${srcdir}/binaries
 	chmod +x mpitnt

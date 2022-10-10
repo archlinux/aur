@@ -14,7 +14,7 @@ pkgname = tnt-bin
 	depends = tnt-ncurses5-compat-libs
 	depends = glibc
 
-pkgname = tnt-mpi-bin
+pkgname = tnt-mpi
 	depends = tnt-ncurses5-compat-libs
 	depends = pvm
 	depends = openmpi
