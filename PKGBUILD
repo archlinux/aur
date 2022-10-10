@@ -82,7 +82,7 @@ prepare() {
     done
 
     # LND maintainers try to provide at least 5 signatures per release; break if we have found less
-    if (( $numsigs < 5 )); then
+    if (( $numsigs < 4 )); then
         echo "[31mOnly $numsigs valid signatures found; exiting[0m"
         exit 1
     fi
