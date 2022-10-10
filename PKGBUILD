@@ -6,7 +6,7 @@
 # Contributor(s): IC-Parc, Imperial College London
 
 _major_version=7.0
-_minor_version=58
+_minor_version=63
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
@@ -23,7 +23,7 @@ install=eclipse-clp.install
 
 source_x86_64=("http://eclipseclp.org/Distribution/Builds/${_major_version}_${_minor_version}/x86_64_linux/eclipse_basic.tgz")
 
-md5sums_x86_64=('9d8cd209d24f4de47ce6f9a15b290e47')
+md5sums_x86_64=('08b84bdc956efd611ef914f32d878a05')
 
 package() {
   cd "${srcdir}"
