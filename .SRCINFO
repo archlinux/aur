@@ -1,15 +1,15 @@
 pkgbase = nginx-mainline-mod-vts
 	pkgdesc = Nginx virtual host traffic status module (module for mainline nginx)
-	pkgver = 0.1.18
-	pkgrel = 35
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/vozlt/nginx-module-vts
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = https://nginx.org/download/nginx-1.21.6.tar.gz
-	source = nginx-mainline-mod-vts-0.1.18.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v0.1.18.tar.gz
-	sha256sums = 66dc7081488811e9f925719e34d1b4504c2801c81dee2920e5452a86b11405ae
-	sha256sums = 17ea41d4083f6d1ab1ab83dad9160eeca66867abe16c5a0421f85a39d7c84b65
+	source = https://nginx.org/download/nginx-1.23.1.tar.gz
+	source = nginx-mainline-mod-vts-0.2.1.tar.gz::https://github.com/vozlt/nginx-module-vts/archive/v0.2.1.tar.gz
+	sha256sums = 5eee1bd1c23e3b9477a45532f1f36ae6178b43d571a9607e6953cef26d5df1e2
+	sha256sums = 1a63d78d3ae4df18b3a57a616eeee006cdc0bd71aa7ea2947046004b123704f4
 
 pkgname = nginx-mainline-mod-vts
-	depends = nginx-mainline=1.21.6
+	depends = nginx-mainline=1.23.1
