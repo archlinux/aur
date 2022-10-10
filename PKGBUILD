@@ -1,8 +1,8 @@
 # Maintainers: bofil <qccrypt@free.fr>; kusakata <shohei atmark kusakata period com>
 
 pkgname=qccrypt
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='A cross-plateform frontend for ccrypt software'
 arch=('i686' 'x86_64')
 url="http://qccrypt.free.fr/"
@@ -43,8 +43,8 @@ package() {
 	install -Dm644 icons/hicolor/256x256/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-cpt.png"
 }
 
-md5sums=('f6c50e4c6a3de42700281afcbcfbbac7'
-         '6cee2c9d496a0a2b1041da68f5d20e72'
+md5sums=('abd54f3949be676b73bd2b1e646f9525'
+         'd312101abf13cb107e1ec337410b86ce'
          'bf60d5c11809910d2a9c98aaa8217911'
          '14af5e3ee3813b1812145cf20defdb70'
          '6390b8d0119570f4d7d2deb7c05b61e8'
