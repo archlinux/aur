@@ -12,7 +12,6 @@ pkgbase = moonlight-qt-git
 	depends = qt5-svg
 	depends = ffmpeg
 	depends = sdl2_ttf
-	depends = discord-rpc-api
 	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
 	provides = moonlight-qt
 	conflicts = moonlight-qt
