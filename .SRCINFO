@@ -1,0 +1,12 @@
+pkgbase = plsplay
+	pkgdesc = A command line audio player.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/El-Wumbus/plsplay
+	arch = x86_64
+	license = GPL2
+	provides = plsplay
+	source = https://github.com/El-Wumbus/plsplay/releases/download/v0.1.0-alpha/plsplay_v0.1.0-alpha_x86_64-linux.tar.xz
+	sha256sums = 95192691a65c3bfc8e5197f8e049dda5dc03ee1e5174b053ffe2031e880021f0
+
+pkgname = plsplay
