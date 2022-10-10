@@ -2,13 +2,12 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
 pkgver=22.10.0.r0.g9df58f6
-pkgrel=2
+pkgrel=3
 pkgdesc="MATE desktop tweak tool"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-tweak"
 license=('GPL')
 depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-distro' 'python-gobject' 'python-psutil' 'python-setproctitle')
-makedepends=('python-dulwich')
 optdepends=('brisk-menu: for Manjaro panel layout'
             'mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'
@@ -18,7 +17,7 @@ optdepends=('brisk-menu: for Manjaro panel layout'
             'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout'
             'vala-panel-appmenu-mate-git: for Mutiny,Cupertino')
-makedepends=('bzr' 'git' 'python-distutils-extra' 'python-setuptools')
+makedepends=('bzr' 'git' 'python-distutils-extra' 'python-setuptools' 'python-dulwich')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('mate-tweak::git+https://github.com/ubuntu-mate/mate-tweak.git'
