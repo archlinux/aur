@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="spamton-shimeji"
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}"
 pkgver=r69.8133f69
 pkgrel=1
 pkgdesc="Spamton Shimeji to make your Xorg desktop [[NumberOneBestRatedArchRice]]"
