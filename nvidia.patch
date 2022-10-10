@@ -1,0 +1,11 @@
+--- render/gles2/renderer.c	2022-02-03 16:19:54.000000000 -0500
++++ render/gles2/renderer.c	2022-08-20 09:29:26.937878381 -0400
+@@ -159,7 +159,7 @@
+ 		assert(wlr_egl_is_current(renderer->egl));
+ 
+ 		push_gles2_debug(renderer);
+-		glFlush();
++		glFinish();
+ 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+ 		pop_gles2_debug(renderer);
+ 
