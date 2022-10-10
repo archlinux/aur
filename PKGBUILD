@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-pefile')
 makedepends=('python-setuptools')
-source=("${_name}-${pkgver}::${url}/archive/v${pkgver}/${_name}-${pkgver}.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}/${_name}-${pkgver}.tar.gz")
 sha256sums=('64f2647561352c86edba8d9156bff7ebccb1746c8855219b2c3cd8a968985210')
 
 build() {
