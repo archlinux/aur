@@ -20,7 +20,7 @@ pkgname = tnt-mpi
 	depends = openmpi
 	depends = glibc
 
-pkgname = tnt-gui
+pkgname = tnt-gui-bin
 	depends = tnt-ncurses5-compat-libs
 	depends = gtk3
 	depends = glibc
