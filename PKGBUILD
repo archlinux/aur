@@ -21,10 +21,6 @@ package() {
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   ln -s "/opt/$pkgname/lib/AudioRelay.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-  # Install bundled libs
-#  install -Dm644 "$pkgdir/opt/$pkgname/lib/runtime/lib/libnative-portaudio.so" -t "$pkgdir/usr/lib/"
-#  install -Dm644 "$pkgdir/opt/$pkgname/lib/runtime/lib/libnative-opus.so" -t "$pkgdir/usr/lib/"
-
   # Remove bundled JVM
   rm -rf "$pkgdir/opt/$pkgname/lib/runtime/"*
 
