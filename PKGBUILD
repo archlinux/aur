@@ -4,17 +4,17 @@
 # Contributor: <kaptoxic at yahoo dot com>
 
 pkgname="sketchsynth"
-pkgver=1.6.9
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="A software synthesis tool for developing implementations from sketches"
-url="https://bitbucket.org/gatoatigrado/sketch-frontend/wiki/Home"
+url="https://people.csail.mit.edu/asolar/"
 arch=('i686' 'x86_64')
 license=('MIT' 'BSD')
 depends=('bash' 'java-runtime')
 makedepends=()
 source=("http://people.csail.mit.edu/asolar/sketch-${pkgver}.tar.gz" "sketchsynth")
-md5sums=('f845406a0468975f7695f5993d3d658b'
-         '5fb1be29901fd3651ead93f919e64564')
+sha256sums=('5cdac9ce841fd532215ff9ad8cb61a38cbdf6de0a635a669d0e46cdae72da707'
+            '2c3ca4dce000b4960d84fef26f6701a98707a085cf04b18e4d33d1e9989ca6d5')
 
 build() {  
   cd "sketch-$pkgver"/sketch-backend
