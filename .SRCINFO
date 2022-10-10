@@ -50,5 +50,6 @@ pkgbase = hyprland-nvidia-git
 	source = hyprland::git+https://github.com/hyprwm/Hyprland.git
 	source = nvidia.patch
 	sha256sums = SKIP
+	sha256sums = 7ca975221f0b150fb6971b1142d10b5b62363731dc6de2d61026dc9a38b6e767
 
 pkgname = hyprland-nvidia-git

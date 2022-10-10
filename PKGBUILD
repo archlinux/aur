@@ -51,7 +51,8 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
         "nvidia.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '7ca975221f0b150fb6971b1142d10b5b62363731dc6de2d61026dc9a38b6e767')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
