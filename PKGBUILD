@@ -1,4 +1,5 @@
-# Maintainer: wuxxin <wuxxin@gmail.com>
+# Maintainer: anakano <azusanakan0 at outlook dot com>
+# Contributor: wuxxin <wuxxin@gmail.com>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
