@@ -2,13 +2,13 @@
 
 pkgname=python-pycklink
 _name=${pkgname#python-}
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 epoch=
 pkgdesc="Python interface for the T-HEAD CKLink"
 arch=('any')
 url="https://pypi.org/project/pycklink"
-license=('unkown')
+license=('MIT')
 groups=()
 depends=(python )
 makedepends=(python-build python-installer python-wheel)
@@ -21,9 +21,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/cf/2f/ac2d05e83f0e8a55926e8b14e5667cb8f2f28837224661dd96343d0003cc/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/b0/44/34293f3d2ada170ab2668ce138627a3b57d236e9a7c1427738cf0b56ef61/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('7a4a86ff9ab15ef3db3b68462b05633e8b6879b3c1cbcec5f00484dd80bf38b0')
+sha256sums=('6e8b4e4accba6e030a18725749dc854d5714dc023d052c7ff0e441d9eb70fbb3')
 #validpgpkeys=()
 
 build() {
