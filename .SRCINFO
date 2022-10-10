@@ -1,0 +1,23 @@
+pkgbase = jazz2-git
+	pkgdesc = Jazz² Resurrection - Open-source Jazz Jackrabbit 2 reimplementation
+	pkgver = 1.0.0+r5.cc8bee3
+	pkgrel = 1
+	url = http://deat.tk/jazz2/
+	install = jazz2.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	license = custom:MIT/Expat
+	makedepends = mesa
+	makedepends = cmake
+	makedepends = glfw
+	depends = libopenmpt
+	depends = openal
+	source = git+https://github.com/deathkiller/jazz2-native.git
+	source = jazz2.png
+	source = jazz2.desktop
+	md5sums = SKIP
+	md5sums = 4f9c50d3c78231f459481eab9d654919
+	md5sums = f603149c956a00b03f28fc7215a460b6
+
+pkgname = jazz2-git
