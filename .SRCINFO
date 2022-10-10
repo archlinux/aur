@@ -1,7 +1,7 @@
 pkgbase = qccrypt
 	pkgdesc = A cross-plateform frontend for ccrypt software
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qccrypt.free.fr/
 	arch = i686
 	arch = x86_64

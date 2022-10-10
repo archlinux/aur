@@ -2,13 +2,13 @@
 
 pkgname=qccrypt
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-plateform frontend for ccrypt software'
 arch=('i686' 'x86_64')
 url="http://qccrypt.free.fr/"
 license=('GPL2')
 depends=('ccrypt' 'libxcb' 'qt5-base')
-source=("http://qccrypt.free.fr/download/qccrypt-${pkgver}-src.zip" qccrypt.desktop x-cpt.xml qccrypt.xml x-cpt.desktop "icons.zip")
+source=("http://qccrypt.free.fr/download/qccrypt-${pkgver}-src.zip" "qccrypt.desktop" "x-cpt.xml" "qccrypt.xml" "x-cpt.desktop" "icons.zip")
 
 build() {
 	cd "${srcdir}/qccrypt-${pkgver}-src"
