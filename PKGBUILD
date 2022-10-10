@@ -81,5 +81,7 @@ package() {
     rm "$pkgdir/usr/lib/libidris2_support.so"
     install "support/c/libidris2_support.a" "$pkgdir/usr/lib/$_pkgname-"*"/lib"
 
+    install -Dm644 <(idris2 --bash-completion-script idris2) \
+        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
