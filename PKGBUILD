@@ -3,12 +3,12 @@
 
 pkgname=kicad-nightly
 pkgver=6.99.0_3850_g4a66203493
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad.org/'
 license=('GPL')
-depends=('wxwidgets-gtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
+depends=('wxwidgets-gtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython' 'unixodbc')
 makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja' 'tar' 'gzip')
 options=('!strip')
 optdepends=(
