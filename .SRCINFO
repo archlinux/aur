@@ -8,6 +8,7 @@ pkgbase = unpaper-git
 	license = GPL
 	makedepends = git
 	depends = ffmpeg
+	provides = unpaper
 	conflicts = unpaper
 	source = unpaper-git::git+https://github.com/unpaper/unpaper.git
 	sha256sums = SKIP
