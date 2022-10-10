@@ -2,7 +2,7 @@
 
 pkgname=python-bflb-iot-tool
 _name=${pkgname#python-}
-pkgver=1.7.1.post1
+pkgver=1.7.5
 pkgrel=1
 epoch=
 pkgdesc="BOUFFALOLAB IOT TOOL"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('3ab263ce9da0d03359a0016e4465e2cc4c19cde93af70940ae14ad6b559b1762')
+sha256sums=('7c27334c0122d92cd64350210a656bbabe834815227acd5e8f5914c451676e90')
 #validpgpkeys=()
 
 build() {
