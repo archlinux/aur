@@ -2,7 +2,7 @@
 
 pkgname=pacman-arch
 _pkgname=pacman
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
