@@ -1,0 +1,18 @@
+pkgbase = python-pydel
+	pkgdesc = Python module for parsing Synthstrom Audible Deluge song files
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/dcower/pydel
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-attrs
+	source = python-pydel::git+https://github.com/dcower/pydel#commit=c3d61a92ed3d4da1bd401872fab506f96f2989d3
+	b2sums = SKIP
+
+pkgname = python-pydel
