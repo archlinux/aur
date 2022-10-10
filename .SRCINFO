@@ -1,6 +1,6 @@
 pkgbase = lantern-bin
 	pkgdesc = Free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel, binary)
-	pkgver = 6.9.6
+	pkgver = 7.0.3
 	pkgrel = 1
 	url = https://getlantern.org
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = lantern-bin
 	options = !docs
 	source = lantern.service
 	sha256sums = fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b
-	source_i686 = lantern-bin-6.9.6-i686.deb::https://s3.amazonaws.com/lantern/lantern-installer-6.9.6-32-bit.deb
-	sha256sums_i686 = a347da65fe0c0bba5e8b97f9b728ff2ca304cb7869bed26890bc9b0f8a7e1dd9
-	source_x86_64 = lantern-bin-6.9.6-x86_64.deb::https://s3.amazonaws.com/lantern/lantern-installer-6.9.6-64-bit.deb
-	sha256sums_x86_64 = 7049618ec56a5c2a4fc77c5fe6546e80181f86971fa4490b97141939168faf96
+	source_i686 = lantern-bin-7.0.3-i686.deb::https://s3.amazonaws.com/lantern/lantern-installer-7.0.3-32-bit.deb
+	sha256sums_i686 = 0622ad53912d44da117392ecb7d60c5e30dd203e276c20d1d23b3797396e0674
+	source_x86_64 = lantern-bin-7.0.3-x86_64.deb::https://s3.amazonaws.com/lantern/lantern-installer-7.0.3-64-bit.deb
+	sha256sums_x86_64 = 6bf17b56533ffe6c2144413fb83e61e37dcef07841c0cb50c8d4bbd9dbaa6b05
 
 pkgname = lantern-bin
