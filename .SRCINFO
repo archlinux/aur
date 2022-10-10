@@ -1,0 +1,21 @@
+pkgbase = python-rpp
+	pkgdesc = Read and write Reaper RPP files with Python
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/Perlence/rpp
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-attrs
+	depends = python-ply
+	source = python-rpp::git+https://github.com/Perlence/rpp#commit=a53222364f51469572fd9b008d0d24fe23cca957
+	b2sums = SKIP
+
+pkgname = python-rpp
