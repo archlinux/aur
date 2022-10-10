@@ -1,6 +1,6 @@
 pkgbase = r-effectsize
 	pkgdesc = Indices of Effect Size and Standardized Parameters
-	pkgver = 0.7.0.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=effectsize
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = r-effectsize
 	optdepends = r-testthat
 	optdepends = r-tidymodels
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/effectsize_0.7.0.5.tar.gz
-	sha256sums = 21e5ce324d9932e052d2be40e87ba9af95bdf24935fbca45c745e8aa39791679
+	source = https://cran.r-project.org/src/contrib/effectsize_0.8.0.tar.gz
+	sha256sums = b70de82ee6c5e8342aad778209e9703d5abc3bbea13c3ebe31dfdd0ca82cea75
 
 pkgname = r-effectsize
