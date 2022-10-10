@@ -2,12 +2,12 @@
 pkgname=openrocket-beta-bin
 _pkgname=openrocket
 pkgver=22.02.beta.05
-pkgrel=1
-pkgdesc="OpenRocket simulation software, prerelease version"
+pkgrel=2
+pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom, prerelease"
 arch=('x86_64')
 url="https://openrocket.info/"
-license=('GPL')
-depends=(java-runtime)
+license=('GPL3')
+depends=('java-environment=11' 'desktop-file-utils')
 provides=(openrocket)
 conflicts=(openrocket)
 source=("https://github.com/$_pkgname/$_pkgname/releases/download/release-$pkgver/OpenRocket-$pkgver.jar"
