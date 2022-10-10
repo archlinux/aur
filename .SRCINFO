@@ -1,7 +1,7 @@
 pkgbase = jellyfin-bin
 	pkgdesc = The Free Software Media System
 	pkgver = 10.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jellyfin.org/
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = jellyfin-bin
 	source_x86_64 = jellyfin-10.8.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.8.5/jellyfin-server_10.8.5-1_amd64.deb
 	sha256sums_x86_64 = 04c71e12b3a769feaa92fe8404c39b7809c2654c74b7f9c5361fd016406c284f
 	source_aarch64 = jellyfin-10.8.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.8.5/jellyfin-server_10.8.5-1_arm64.deb
-	sha256sums_aarch64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums_aarch64 = 3aabb7161fab7dc5f2ffd38baaa90019413b99f94fbd7a6ada485865d9b47089
 	source_armv7h = jellyfin-10.8.5.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.8.5/jellyfin-server_10.8.5-1_armhf.deb
 	sha256sums_armv7h = cd2b84dba20badc8956bdc5c3e38184e38a4ef3c7e09d07acab235ee05fd6df5
 
