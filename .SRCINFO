@@ -1,0 +1,19 @@
+pkgbase = openrocket-beta-bin
+	pkgdesc = OpenRocket simulation software, prerelease version
+	pkgver = 22.02.beta.05
+	pkgrel = 1
+	url = https://openrocket.info/
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	provides = openrocket
+	conflicts = openrocket
+	noextract = OpenRocket-22.02.beta.05.jar
+	source = https://github.com/openrocket/openrocket/releases/download/release-22.02.beta.05/OpenRocket-22.02.beta.05.jar
+	source = openrocket.sh
+	source = de_debian.tar.gz
+	sha256sums = 785614700b919a607dc3751dcf3f8228bda8be5a20b3bb889a015164b8ce36da
+	sha256sums = 74ab605cb11161784d4af96d018eb88adf7a2e4a8b1088a64b94b1e8ec5e18d1
+	sha256sums = 62c4e739f82fa53fdae8a41f12bfb2828b77df89c8f48b1a790192a8e773cb98
+
+pkgname = openrocket-beta-bin
