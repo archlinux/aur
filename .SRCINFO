@@ -1,6 +1,6 @@
 pkgbase = bibata-cursor-theme-bin
 	pkgdesc = Material Based Cursor Theme
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/ful1e5/Bibata_Cursor
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = bibata-cursor-theme-bin
 	provides = bibata-cursor-theme
 	conflicts = bibata-cursor-theme
 	options = !strip
-	source = bibata-cursor-theme-2.0.1.tar.gz::https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.1/Bibata.tar.gz
-	sha256sums = 57138081f3dc15980fcd86d559db8e62867ca9ac93efe74971b27af28e4e7ba2
+	source = bibata-cursor-theme-2.0.2.tar.gz::https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.2/Bibata.tar.gz
+	sha256sums = 70dfc4a251227adfba73d1a7a0db8721b9f5dd5cab47143b438fb40741c8cd28
 
 pkgname = bibata-cursor-theme-bin
