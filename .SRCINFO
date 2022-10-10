@@ -14,6 +14,7 @@ pkgbase = splash
         depends = zeromq
         depends = jsoncpp
         depends = opencv
+        provides = splash
         source = splash-0.9.24.tar.gz::https://gitlab.com/sat-mtl/tools/splash/splash/-/jobs/artifacts/package-arch/download?job=package:fullsources
         md5sums = 777467c8b79f1e93a9ea1a848f219215
 
