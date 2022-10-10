@@ -33,13 +33,11 @@ optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("tensorflow::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream.git#branch=r2.10-rocm-enhanced"
         fix-c++17-compat.patch
         fix-cusolver-version.patch
-        fix-rocblas-include.patch
         remove-log-spam.patch)
 
 sha512sums=('SKIP'
             'e919b77f17c8508c21607a988e4451542900bb2a1453b55bff865e3b2602faebf4543bd640f60d84ac9b8d7b8599986f115077f7d411732fba3866cb5d6ad2e2'
-            '98f882a29c35f484d8f57cff602d910664ca0fabedb51a978d6d826adff7fca9bf7be6f92988c8b72a0159b7f71b43646c6eb5a8adde4ef8687c291ed435292e'
-            '4f88760a5e60c79ef29335eb511afef7f6b064f4b4820261f08c12f69d7ba1e3748fff480ee073d248b41aa56de642f69fa9e57ba106cd885ab47ca83d272353'
+            'fc263a0d0d318899914b26e8e06b3beb7c8e55118f5eb54c94fd97d8749151decfe6bf399130db43481d12908f4fdb58ff388acbcd90507d84f1d06d96f6019f'
             'fde73feeb2bbb814ba229c2b879e5e5944fd658e9810937753a25f2650f57c49f8a435924b47a1a54eb2852f9713b19a15d42b307593e26a74ad65aeee22c36a')
 
 # consolidate common dependencies to prevent mishaps
@@ -87,6 +85,8 @@ prepare() {
   sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/core/util/gpu_solvers.h
   sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
 
+  patch -Np1 -i "${srcdir}/fix-cusolver-version.patch"
+  patch -Np1 -i "${srcdir}/remove-log-spam.patch"
   cd "${srcdir}"
 
   cp -r $_srcname tensorflow-amd-git
