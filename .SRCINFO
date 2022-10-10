@@ -1,11 +1,11 @@
 pkgbase = openrocket-beta-bin
 	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom, prerelease
 	pkgver = 22.02.beta.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openrocket.info/
 	arch = x86_64
 	license = GPL3
-	depends = java-environment=11
+	depends = java-runtime=11
 	depends = desktop-file-utils
 	provides = openrocket
 	conflicts = openrocket
