@@ -2,7 +2,7 @@
 
 pkgname=p4
 _version=2022.1
-pkgver=2022.1.2285021
+pkgver=2022.1.2344699
 pkgrel=1
 
 pkgdesc="Perforce command line client"
