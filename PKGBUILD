@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=extract-dtb
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Tool to split a kernel image with appended dtbs into separated kernel and dtb files"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   rm ${pkgdir}/usr/{CHANGES.md,LICENSE}
 }
 
-sha256sums=('6d67cb875ba936a839021b32fd6c00e876a9a400e6b4d4989310c276c6be6b78')
+sha256sums=('a8a5b461c9e5fd564316566f63f5fe7458da69af68d59d60e0a66a3965099ada')

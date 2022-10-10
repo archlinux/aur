@@ -1,13 +1,13 @@
 pkgbase = extract-dtb
 	pkgdesc = Tool to split a kernel image with appended dtbs into separated kernel and dtb files
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/PabloCastellano/extract-dtb
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/PabloCastellano/extract-dtb/archive/refs/tags/1.2.2.tar.gz
-	sha256sums = 6d67cb875ba936a839021b32fd6c00e876a9a400e6b4d4989310c276c6be6b78
+	source = https://github.com/PabloCastellano/extract-dtb/archive/refs/tags/1.2.3.tar.gz
+	sha256sums = a8a5b461c9e5fd564316566f63f5fe7458da69af68d59d60e0a66a3965099ada
 
 pkgname = extract-dtb
