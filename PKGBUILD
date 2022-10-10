@@ -2,12 +2,13 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
 pkgver=22.10.0.r0.g9df58f6
-pkgrel=1
+pkgrel=2
 pkgdesc="MATE desktop tweak tool"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-tweak"
 license=('GPL')
 depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-distro' 'python-gobject' 'python-psutil' 'python-setproctitle')
+makedepends=('python-dulwich')
 optdepends=('brisk-menu: for Manjaro panel layout'
             'mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'
