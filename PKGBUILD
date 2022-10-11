@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=cmus-rpc-rs
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A Discord Rich Presence for cmus player using rust 🦀💙"
@@ -44,4 +44,4 @@ package() {
   cd "$pkgname-$pkgver"
   sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('bb614079c3f144b71d5f2a5f22bb672edf5fe431fdfd20aa18b91e9624b71502')
+sha256sums=('c95ee1e06f0fca3383deeae16aaf2fcd98d2ee3593c4843e2c61e87600ca004f')
