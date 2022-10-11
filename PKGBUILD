@@ -3,7 +3,7 @@
 
 pkgname=muon-meson-git
 _pkgname=${pkgname%-meson-git}
-pkgver=0.1.0+5.gab1e044c93c9c87e496f
+pkgver=0.1.0+5.gab1e044c93
 pkgrel=1
 pkgdesc='meson implementation in C'
 url='https://sr.ht/~lattis/muon'
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   set -o pipefail
-  git describe --long --tags 2>/dev/null | sed 's/-/+/; s/-/./g'
+  git describe --long --tags --abbrev=10 | sed 's/-/+/; s/-/./g'
 }
 
 build() {
