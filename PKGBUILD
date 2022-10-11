@@ -2,10 +2,10 @@
 
 pkgname=iir1-git
 _pkgname=iir1
-pkgver=1.9.3.r15.g3c281a2
+pkgver=1.9.3.r23.gedb4270
 pkgrel=1
 pkgdesc="DSP IIR Realtime C++ filter library"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/berndporr/iir1"
 license=('MIT')
 depends=('glibc')
@@ -20,31 +20,31 @@ md5sums=(
 )
 
 prepare() {
-  cd "$srcdir/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   cmake . --install-prefix="/usr"
 }
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   make
 }
 
 package() {
 
   # install all files
-  cd "$srcdir/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   DESTDIR="${pkgdir}" make install
 
   # manual and readme documents
-  cd "$srcdir/${_pkgname}/"
+  cd "${srcdir}/${_pkgname}/"
   mkdir -p "${pkgdir}/usr/share/doc/${_pkgname}"
   cp -r docs "${pkgdir}/usr/share/doc/${_pkgname}/manual"
-  install -Dm 644 "$srcdir/${_pkgname}/README.md" "$pkgdir/usr/share/doc/${_pkgname}/README.md"
-  install -Dm 644 "$srcdir/${_pkgname}/COPYING" "$pkgdir/usr/share/doc/${_pkgname}/COPYING"
+  install -Dm 644 "${srcdir}/${_pkgname}/README.md" "$pkgdir/usr/share/doc/${_pkgname}/README.md"
+  install -Dm 644 "${srcdir}/${_pkgname}/COPYING" "$pkgdir/usr/share/doc/${_pkgname}/COPYING"
 
   }
