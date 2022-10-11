@@ -3,7 +3,7 @@
 
 
 pkgname="voxel-lang"
-pkgver="1.0.0"
+pkgver="1.0.5"
 pkgrel="1"
 pkgdesc="Voxel Programming Language Installer"
 arch=("x86_64")
