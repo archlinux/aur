@@ -5,7 +5,7 @@ _imgui_wrap_ver=1
 
 pkgname=mangohud-nonvidia
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (without NVIDIA support)'
 url="https://github.com/flightlessmango/MangoHud"
 license=('MIT')

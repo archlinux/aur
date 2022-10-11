@@ -1,7 +1,7 @@
 pkgbase = mangohud-nonvidia
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (without NVIDIA support)
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	arch = aarch64
