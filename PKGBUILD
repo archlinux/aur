@@ -4,7 +4,7 @@
 _pkgname="via"
 
 pkgname="${_pkgname}-appimage"
-pkgver=1.3.1
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Your keyboard's best friend."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libnotify' 'libappindicator-gtk3' 'fuse2' 'fuse3' 'fuse-common' 'libse
 _appimage="via-${pkgver}-linux.AppImage"
 source_x86_64=("${_appimage}::https://github.com/the-via/releases/releases/download/v${pkgver}/via-${pkgver}-linux.AppImage/")
 noextract=("${_appimage}")
-sha256sums_x86_64=('d2cd73d280a265149fedb24161ec7c575523596c4d30898ad6b5875e09b3f34a')
+sha256sums_x86_64=('00f36dcdf795eb3f08176d1ba2672032aee6c1c2b57db0dd145efb5ebd143ceb')
 options+=('!strip')
 
 prepare() {
