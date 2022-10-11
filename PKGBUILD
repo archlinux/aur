@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=devtools
-_pkgver=2.4.4
+_pkgver=2.4.5
 pkgname=r-${_pkgname,,}
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Tools to Make Developing R Packages Easier'
 arch=('any')
@@ -55,7 +55,7 @@ optdepends=(
   r-rstudioapi
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('acd6759d269f30893eda173a738b1ce6537a11313c8e8e12e116452c4296934d')
+sha256sums=('38160ebd839acdec7ebf0699a085b4ab1ebd5500d3c57a9fa7ae484f1909904b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
