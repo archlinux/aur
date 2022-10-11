@@ -1,6 +1,6 @@
 pkgbase = sendmidi
 	pkgdesc = Multi-platform command-line tool to send out MIDI messages
-	pkgver = 1.0.14
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/gbevin/SendMIDI
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = sendmidi
 	license = GPL3
 	depends = alsa-lib
 	depends = curl
-	source = sendmidi-1.0.14.tar.gz::https://github.com/gbevin/SendMIDI/archive/1.0.14.tar.gz
-	md5sums = 9cdac54974820466bd19999b76afe566
+	source = sendmidi-1.1.0.tar.gz::https://github.com/gbevin/SendMIDI/archive/1.1.0.tar.gz
+	md5sums = 1d6b2f57d69a362af6405567ba2902b7
 
 pkgname = sendmidi
-
