@@ -1,12 +1,12 @@
 # Maintainer: Jesse McClure <code at jessemcclure dot org>
 _fossil=nkk
 pkgname=${_fossil}-fossil
-pkgver=r25.d3d9016a07
+pkgver=r5.c8b52ae0ba
 pkgrel=1
 pkgdesc='Wayland client library w/ cairo drawing'
 arch=('x86_64')
 license=('MIT')
-depends=(cairo glib2 glibc harfbuzz libxkbcommon pango wayland)
+depends=(cairo glib2 glibc libglvnd libxkbcommon pango wayland)
 makedepends=(fossil)
 provides=(nkk)
 url=https://code.jessemcclure.org/${_fossil}

@@ -1,6 +1,6 @@
 pkgbase = nkk-fossil
 	pkgdesc = Wayland client library w/ cairo drawing
-	pkgver = r25.d3d9016a07
+	pkgver = r5.c8b52ae0ba
 	pkgrel = 1
 	url = https://code.jessemcclure.org/nkk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nkk-fossil
 	depends = cairo
 	depends = glib2
 	depends = glibc
-	depends = harfbuzz
+	depends = libglvnd
 	depends = libxkbcommon
 	depends = pango
 	depends = wayland
