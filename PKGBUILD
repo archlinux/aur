@@ -1,4 +1,5 @@
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Dylan Araps <dylan.araps@gmail.com>
 
 pkgname=neofetch
