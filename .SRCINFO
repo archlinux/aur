@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-ipopt
 	pkgdesc = Interior Point OPTimizer (mingw-w64)
-	pkgver = 3.14.9
+	pkgver = 3.14.10
 	pkgrel = 1
 	url = https://projects.coin-or.org/Ipopt
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mingw-w64-coin-or-ipopt
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://github.com/coin-or/Ipopt/archive/releases/3.14.9.tar.gz
-	sha256sums = e12eba451269ec30f4cf6e2acb8b35399f0d029c97dff10465416f5739c8cf7a
+	source = https://github.com/coin-or/Ipopt/archive/releases/3.14.10.tar.gz
+	sha256sums = b73d705ca05a8fb47392ca7e31c4da81ae7d0eb751767cd04ba2bb19b7f140f9
 
 pkgname = mingw-w64-coin-or-ipopt
