@@ -1,6 +1,6 @@
 pkgbase = python-simplepush
 	pkgdesc = Python library for simplepush.io
-	pkgver = 1.2.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/simplepush/simplepush-python
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-simplepush
 	depends = python-requests
 	depends = python-aiohttp
 	depends = python-cryptography
-	source = https://files.pythonhosted.org/packages/source/s/simplepush/simplepush-1.2.2.tar.gz
-	sha256sums = 0136a0305c310eb61fe1c3eb26ca343443e21e70c145a6231acd508cf087fb07
+	source = https://files.pythonhosted.org/packages/source/s/simplepush/simplepush-2.0.0.tar.gz
+	sha256sums = e506858771da9a221770ff3a246a242d818eb98312b9eb8d152bca7accc7096e
 
 pkgname = python-simplepush

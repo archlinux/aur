@@ -2,7 +2,7 @@
 
 pkgname=python-simplepush
 _name=${pkgname#python-}
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python library for simplepush.io"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-aiohttp' 'python-cryptography')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('0136a0305c310eb61fe1c3eb26ca343443e21e70c145a6231acd508cf087fb07')
+sha256sums=('e506858771da9a221770ff3a246a242d818eb98312b9eb8d152bca7accc7096e')
 
 build() {
   cd "${_name}-${pkgver}"
