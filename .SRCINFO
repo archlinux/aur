@@ -1,0 +1,20 @@
+pkgbase = python-del2rpp
+	pkgdesc = Tool for converting Synthstrom Audible Deluge songs to REAPER projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dcower/del2rpp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pydel
+	depends = python-rpp
+	depends = python-attrs
+	source = python-del2rpp::git+https://github.com/dcower/del2rpp#commit=d0afa4ec39c2060b44e772f87a6700807d8d8155
+	b2sums = SKIP
+
+pkgname = python-del2rpp
