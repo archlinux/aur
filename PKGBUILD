@@ -2,7 +2,7 @@
 
 pkgname=cliphist
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 _tag='5a4258fa72c0e34625f949c8114da9ae46c91b6f'
 pkgdesc='clipboard history “manager” for wayland'
@@ -14,7 +14,7 @@ makedepends=('go')
 optdepends=('xdg-utils')
 conflicts=('cliphist-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a0ff01e0d0fc601671d131773fc6f68a3116e631d74b97553dcf68502440e277')
+sha256sums=('381b92356e76229c5d15c2d42b3ee63734b7463aacbd200087abd6ed3c30c5ce')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
