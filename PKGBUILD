@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-serialbus
-_qtver=6.3.1
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('00953f7704ba5b085abd241afc911fbfa981a8e1693bf0566f2d3a63f2d878d2')
+sha256sums=('efca55677c12085a85b6c0e0f401332922ebc8226b18b7fc9bb9c0d48549ea91')
 
 build() {
   source android-env ${_android_arch}
