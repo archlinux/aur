@@ -1,14 +1,13 @@
 pkgbase = yabsnap-git
 	pkgdesc = Btrfs automated snapshot manager.
-	pkgver = r57.8043bac
+	pkgver = r60.78bf3e5
 	pkgrel = 1
 	url = https://github.com/hirak99/yabsnap
 	arch = any
 	license = Apache
 	makedepends = rsync
-	makedepends = lsb-release
 	depends = python3
-	provides = yabsnap=r57.8043bac
+	provides = yabsnap=r60.78bf3e5
 	conflicts = yabsnap
 	source = yabsnap-git::git+https://github.com/hirak99/yabsnap
 	md5sums = SKIP
