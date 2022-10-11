@@ -1,26 +1,25 @@
-# $Id: PKGBUILD 188058 2016-08-30 15:26:04Z spupykin $
 # Maintainer: Thomas Sänger <thomas+aur@gecko.space>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Morgan LEFIEUX <comete_AT_archlinuxfr.org>
 
 pkgname=ubi_reader
-pkgver=20170607
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="UBI reader"
-arch=('i686' 'x86_64')
+pkgdesc="Collection of Python scripts for reading information about and extracting data from UBI and UBIFS images."
+arch=("any")
 url="https://github.com/jrspruitt/ubi_reader"
-license=('GPL3')
-depends=('python2' 'python2-lzo' 'python2-setuptools')
-makedepends=('git')
-source=("git+https://github.com/jrspruitt/ubi_reader.git")
-md5sums=('SKIP')
+license=("GPL3")
+depends=("python" "python-lzo")
+makedepends=("python-setuptools")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jrspruitt/ubi_reader/archive/refs/tags/v$pkgver-master.tar.gz")
+b2sums=('e802833fcc633739da6cb3cfffb8f398ad27261df55301b6322ea7303aeccbc57f6a685cefa4005ecf80e2a968139d091a8b5c6a9783dd613a5016ba56d55425')
 
 build() {
-  cd $srcdir/ubi_reader
-  python2 setup.py build
+  cd "${pkgname}-${pkgver}-master"
+  python setup.py build
 }
 
 package() {
-  cd $srcdir/ubi_reader
-  python2 setup.py install --root $pkgdir
+  cd "${pkgname}-${pkgver}-master"
+  python setup.py install --optimize=1 --root $pkgdir
 }

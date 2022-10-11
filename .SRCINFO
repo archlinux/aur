@@ -1,16 +1,14 @@
 pkgbase = ubi_reader
-	pkgdesc = UBI reader
-	pkgver = 20170607
+	pkgdesc = Collection of Python scripts for reading information about and extracting data from UBI and UBIFS images.
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/jrspruitt/ubi_reader
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
-	makedepends = git
-	depends = python2
-	depends = python2-lzo
-	depends = python2-setuptools
-	source = git+https://github.com/jrspruitt/ubi_reader.git
-	md5sums = SKIP
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lzo
+	source = ubi_reader-0.8.0.tar.gz::https://github.com/jrspruitt/ubi_reader/archive/refs/tags/v0.8.0-master.tar.gz
+	b2sums = e802833fcc633739da6cb3cfffb8f398ad27261df55301b6322ea7303aeccbc57f6a685cefa4005ecf80e2a968139d091a8b5c6a9783dd613a5016ba56d55425
 
 pkgname = ubi_reader
