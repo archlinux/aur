@@ -15,7 +15,7 @@ pkgbase = python2-bin
 	depends = sqlite
 	depends = zlib
 	provides = python2
-	conflicts = python<3
+	conflicts = python2
 	source = https://github.com/VanillaBase1lb/python2-bin-aur/releases/download/2.7.18/python2-build.tar.gz
 	md5sums = 2300c309db2782d10d5422856a8e2952
 
