@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
 # source_aarch64=()
 sha256sums=('f2fa1e03aecdd4dca0bcda94fd228d3a9ef3635862a2c140f8982d32ae7761e7'
             'SKIP'
-            'a6644083a30c93aae10df0007c572bcd9cb43d50ed88d3b0d0788ee5d0851323'
+            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
             'SKIP'
             'SKIP'
