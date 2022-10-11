@@ -9,14 +9,14 @@
 pkgname=lilypond-devel
 _pkgname=lilypond
 pkgver=2.23.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Music engraving program (development version)"
 arch=('x86_64')
 url="https://lilypond.org"
 license=('FDL1.3' 'GPL3' 'custom:OFL')
 groups=('pro-audio')
 # NOTE: use guile only with 2.24.x
-depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile1.8')
+depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile')
 makedepends=('fontconfig' 'fontforge' 'freetype2' 'glib2' 'imagemagick' 'pango'
 'python' 'rsync' 't1utils' 'texinfo' 'texlive-core' 'tex-gyre-fonts'
 'texlive-langcyrillic' 'zip')
@@ -42,6 +42,7 @@ build() {
   ./configure --prefix=/usr \
               --disable-texi2html
   make
+  make bytecode
 }
 
 package() {
@@ -49,6 +50,7 @@ package() {
   'libgobject-2.0.so' 'libpangoft2-1.0.so' 'libpango-1.0.so')
   cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" vimdir="/usr/share/vim/vimfiles" install
+  make DESTDIR="$pkgdir" install-bytecode
   install -vDm 644 LICENSE.OFL -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -vDm 644 {AUTHORS,NEWS}.txt README.md \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
