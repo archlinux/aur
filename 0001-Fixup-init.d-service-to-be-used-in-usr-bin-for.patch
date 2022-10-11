@@ -1,0 +1,26 @@
+From ebdeda6b21dd99ae29114280b76b030034007fb9 Mon Sep 17 00:00:00 2001
+From: Jacob McSwain <jacob@mcswain.dev>
+Date: Tue, 11 Oct 2022 13:50:03 -0500
+Subject: [PATCH] Fixup init.d service to be used in /usr/bin for
+ systemd
+
+---
+ frontend/debian/cuttlefish-user.cuttlefish-operator.init | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/frontend/debian/cuttlefish-user.cuttlefish-operator.init b/frontend/debian/cuttlefish-user.cuttlefish-operator.init
+index a57a9e4..50353f9 100755
+--- a/frontend/debian/cuttlefish-user.cuttlefish-operator.init
++++ b/frontend/debian/cuttlefish-user.cuttlefish-operator.init
+@@ -29,8 +29,6 @@
+ # Make sure calls to this script get redirected to systemctl when
+ # using systemd
+ 
+-. /lib/lsb/init-functions
+-
+ if [ -f /etc/default/cuttlefish-operator ]; then
+     . /etc/default/cuttlefish-operator
+ fi
+-- 
+2.37.3
+

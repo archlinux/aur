@@ -1,0 +1,13 @@
+[Unit]
+Description=Cuttlefish Host Orchestrator service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/cuttlefish-operator start
+ExecStop=/usr/bin/cuttlefish-operator stop
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
