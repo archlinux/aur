@@ -9,10 +9,9 @@ pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined, ser
 arch=('x86_64')
 url="https://github.com/mpsq/emacs-gcc-wayland-devel-builder"
 license=('GPL3')
-depends=('alsa-lib' 'cairo' 'gnutls' 'gtk3' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit' 'webkit2gtk')
-provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
-replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
+depends=('alsa-lib' 'cairo' 'gnutls' 'gtk3' 'libxml2' 'libxi' 'libsm' 'xcb-util' 'libxcb' 'libjpeg-turbo' 'libpng' 'giflib' 'libwebp' 'libtiff' 'libxpm' 'jansson' 'harfbuzz' 'gpm' 'libgccjit' 'webkit2gtk')
+provides=('emacs')
+replaces=('emacs')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/$pkgver/$pkgver.tar.gz")
 sha512sums=("16090b6e8bb52d6146ab382f90ae6abae867f685587a8a0fded36a8f1b30f2859c073232270fdd3e251cd8df7e5e9cb67dd7a2ca73cb8cca354a777ba28d301a")
