@@ -1,6 +1,6 @@
 pkgbase = voxel-lang
 	pkgdesc = Voxel Programming Language Installer
-	pkgver = 1.0.0
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/UnityTheCoder/Voxel
 	arch = x86_64
