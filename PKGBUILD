@@ -11,11 +11,11 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
              'git' 'ninja'
              'directx-headers-git' 'rust' 'rust-bindgen')
-# vulkan-radeonはビルドできないためAMD公式のものを使用
+# vulkan-radeonはビルドできないため公式リポジトリのものを使用
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
          'libxcb' 'python' 'libclc' 'clang' 'libx11' 'systemd-libs' 'llvm-libs' 'compiler-rt'
-         'spirv-llvm-translator' 'amdvlk')
+         'spirv-llvm-translator' 'vulkan-radeon')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
             'opengl-man-pages: for the OpenGL API man pages')
 # vulkan-radeonをこのパッケージでビルドできないため､ここから外す
