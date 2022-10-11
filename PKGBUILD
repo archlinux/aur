@@ -1,13 +1,13 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r57.8043bac
+pkgver=r60.78bf3e5
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/yabsnap"
 license=('Apache')
 depends=('python3')
-makedepends=('rsync' 'lsb-release')
+makedepends=('rsync')
 provides=("yabsnap=${pkgver}")
 conflicts=('yabsnap')
 source=("$pkgname::git+https://github.com/hirak99/yabsnap")
