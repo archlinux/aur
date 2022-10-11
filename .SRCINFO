@@ -4,6 +4,7 @@ pkgbase = mraa-radxa-git
 	pkgrel = 1
 	url = https://github.com/intel-iot-devkit/mraa
 	arch = aarch64
+	arch = armv6h
 	arch = armv7h
 	arch = x86_64
 	license = MIT

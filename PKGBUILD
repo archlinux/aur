@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'swig')
 optdepends=('python: for Python support')
 url="https://github.com/intel-iot-devkit/mraa"
 license=('MIT')
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
 
 source=(git+https://github.com/radxa/mraa.git)
 md5sums=('SKIP')
