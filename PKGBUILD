@@ -2,7 +2,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=gnome-session-properties
 pkgver=3.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The GNOME Session Properties Tool"
 arch=('x86_64')
 url="https://www.gnome.org"
@@ -21,8 +21,12 @@ prepare() {
   patch -p1 -i ../0001-Remove-unneeded-stuff.patch
   patch -p1 -i ../0002-Fix-GTK-3.14-incompatibilities.patch
 
+  # Fix icon
   sed -ri '/^Icon/ s/session-/gnome-session-/g' \
     "data/$pkgname.desktop.in.in"
+
+  # Don't hide from application menu
+  sed -i '/NoDisplay=true/d' "data/$pkgname.desktop.in.in"
 }
 
 build() {
