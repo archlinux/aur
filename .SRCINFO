@@ -12,6 +12,7 @@ pkgbase = mangohud-nonvidia
 	makedepends = libglvnd
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
+	makedepends = appstream
 	depends = gcc-libs
 	depends = dbus
 	depends = spdlog
