@@ -1,0 +1,15 @@
+pkgbase = github-subdomains-git
+	pkgdesc = Find subdomains on GitHub
+	pkgver = 42.a779fc2
+	pkgrel = 1
+	url = https://github.com/gwen001/github-subdomains
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = github-subdomains
+	conflicts = github-subdomains
+	source = github-subdomains-git::git+https://github.com/gwen001/github-subdomains.git
+	b2sums = SKIP
+
+pkgname = github-subdomains-git
