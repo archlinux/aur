@@ -1,16 +1,17 @@
-# Maintainer: Alexander Björk <bjorkalx@protonmail.com>
+# Maintainer: Allison Smith <alyway@protonmail.com>
+# Contributor: Alexander Björk <bjorkalx@protonmail.com>
 
 pkgname="redact"
 pkgdesc="Customize Redact to remove the content you'd like. Remove old tweets, images, discord messages, and much more."
-pkgver="0.12.6"
+pkgver="0.16.5"
 pkgrel=1
 arch=('x86_64')
 url="https://redact.dev/"
 license=('custom')
 provides=('redact')
 conflicts=('redact')
-source=("https://electron-release.redact.dev/build/Redact-${pkgver}.zip")
-sha256sums=('ec153a933dc3d728209cd7696cdab7e53e7cac7b76199fa343934e02504ee9ec')
+source=("https://update-desktop.redact.dev/build/Redact-${pkgver}.zip")
+sha256sums=('b276c8532ed2239eccfb64fb2e7dcf99374bff4f584329c5a2576797438a319d')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
