@@ -16,7 +16,7 @@ depends=(
 conflicts=('deemix' 'deemix-git')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(c446a1cc0d4f22b18f7e79ce72e5d02d5429495394164ebfd2ff5588b8160b09)
+sha256sums=(c446a1cc0d4f22b18f7e79ce72e5d02d5429495394164ebfd2ff5588b8160b09)   # makepkg -g para generarlo.
 
 pkgver() {
     cd ${srcdir}/${_name}-${pkgver}
