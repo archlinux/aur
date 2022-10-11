@@ -1,8 +1,9 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
 
-pkgname=keyring
+pkgname=himitsu-keyring
+_pkgname=keyring
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical frontend for managing a Himitsu key store"
 arch=(any)
 url="https://git.sr.ht/~martijnbraam/keyring"
@@ -13,12 +14,12 @@ source=("$pkgname-$pkgver::https://git.sr.ht/~martijnbraam/keyring/archive/${pkg
 md5sums=('78803817c9e98e05bba124d409176f85')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   meson install -C build --destdir "$pkgdir"
 }
