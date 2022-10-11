@@ -1,8 +1,8 @@
 diff --git src/client.c src/client.c
-index 3923dd98b..abf6dbb52 100644
+index 3923dd98b..ab3f9aa46 100644
 --- src/client.c
 +++ src/client.c
-@@ -3504,6 +3504,177 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
+@@ -3504,6 +3504,186 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
      return TRUE;
  }
  
@@ -90,36 +90,34 @@ index 3923dd98b..abf6dbb52 100644
 +static void
 +clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_monitor)
 +{
-+    ScreenInfo *screen_info;
-+    DisplayInfo *display_info;
-+    gint xoff, yoff;
++    /* Transform x,y coords based on their relative position on monitor
++     * - We transform c->x/y in case we're currently a floating window
++     * - We also transform saved_geometry in case we're currently fullscreen/maximised/tiled
++     *   - This means when we un-tile/maximise we'll stay on the updated monitor
++     */
 +    GdkRectangle current_rect, target_rect;
++    int within_monitor_x, within_monitor_y, monitor_offset_x, monitor_offset_y;
++    float monitor_ratio_x, monitor_ratio_y;
 +
-+    /* We have the target target monitor, so offset based on x,y coords */
 +    gdk_monitor_get_geometry(current_monitor, &current_rect);
 +    gdk_monitor_get_geometry(target_monitor, &target_rect);
-+    xoff = target_rect.x - current_rect.x;
-+    yoff = target_rect.y - current_rect.y;
 +
-+    c->x += xoff;
-+    c->y += yoff;
-+    /* When unmaximising, we don't want to jump back to orig monitor */
-+    c->saved_geometry.x += xoff;
-+    c->saved_geometry.y += yoff;
++    /* When side-tiled, sometimes x/y can come up negative, so restrict to monitor min/max */
++    within_monitor_x = MIN(MAX(c->saved_geometry.x, current_rect.x), current_rect.x + current_rect.width);
++    within_monitor_y = MIN(MAX(c->saved_geometry.y, current_rect.y), current_rect.y + current_rect.height);
++    /* Get the x,y offset relative to current monitor params */
++    monitor_offset_x = within_monitor_x - current_rect.x;
++    monitor_offset_y = within_monitor_y - current_rect.y;
++    monitor_ratio_x = monitor_offset_x / (float) current_rect.width;
++    monitor_ratio_y = monitor_offset_y / (float) current_rect.height;
 +
-+    /* TODO find out which of these 3 is actually needed */
-+    screen_info = c->screen_info;
-+    display_info = screen_info->display_info;
-+    setNetFrameExtents (display_info,
-+                        c->window,
-+                        frameTop (c),
-+                        frameLeft (c),
-+                        frameRight (c),
-+                        frameBottom (c));
-+    clientSetNetActions (c);
-+    clientReconfigure (c, CFG_FORCE_REDRAW);
++    /* Update the client x/y/width/height to be relative to the new monitor (+0.5 for rounding) */
++    c->x = target_rect.x + (monitor_ratio_x * target_rect.width) + 0.5;
++    c->y = target_rect.y + (monitor_ratio_y * target_rect.height) + 0.5;
++    c->saved_geometry.x = c->x;
++    c->saved_geometry.y = c->y;
 +
-+    /* If we were fullscreen or maximised, reset for new monitor size */
++    /* If we were fullscreen, maximised, or tiled, reset for new monitor size */
 +    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
 +    {
 +        clientUpdateFullscreenSize (c);
@@ -128,6 +126,13 @@ index 3923dd98b..abf6dbb52 100644
 +    {
 +        clientUpdateMaximizeSize (c);
 +    }
++    if (c->tile_mode != TILE_NONE)
++    {
++        clientUpdateTileSize (c);
++    }
++
++    /* Finally, re-draw to ensure everything updated */
++    clientReconfigure (c, CFG_FORCE_REDRAW);
 +}
 +
 +void
@@ -137,13 +142,17 @@ index 3923dd98b..abf6dbb52 100644
 +    GList *candidate_monitors;
 +    GdkMonitor *current_monitor, *other_monitor, *primary_monitor;
 +    GdkRectangle current_rect, other_rect;
++    gint c_mid_x, c_mid_y;
 +    guint num_monitors;
 +    guint i;
 +    MoveToMonitorProperties *props;
 +
 +    /* Get the current (client's) monitor and rect */
 +    display = gdk_display_get_default ();
-+    current_monitor = gdk_display_get_monitor_at_point (display, c->x, c->y);
++    /* Using gdk_display_get_monitor_at_point on client x/y is inacurate, so do by midpoint client window */
++    c_mid_x = c->x + (c->width >> 1);
++    c_mid_y = c->y + (c->height >> 1);
++    current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
 +    gdk_monitor_get_geometry (current_monitor, &current_rect);
 +    primary_monitor = gdk_display_get_primary_monitor (display);
 +
@@ -180,12 +189,6 @@ index 3923dd98b..abf6dbb52 100644
  gboolean
  clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
  {
-@@ -4293,3 +4464,5 @@ clientGetStartupId (Client *c)
-     return (c->startup_id);
- }
- #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-+
-+/* vim: set ts=4 sw=4 et : */
 diff --git src/client.h src/client.h
 index fd6ab669a..751c29a5f 100644
 --- src/client.h

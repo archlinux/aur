@@ -1,7 +1,7 @@
 pkgbase = xfwm4-move-monitor
 	pkgdesc = Xfce's window manager
 	pkgver = 4.16.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.xfce.org/xfce/xfwm4/start
 	arch = x86_64
 	groups = xfce4,
@@ -21,6 +21,6 @@ pkgbase = xfwm4-move-monitor
 	source = move-to-monitor.patch
 	sha256sums = b5b24ca04bd73c642db0a4b4df81d262381d758f01b51108257d48b391b8718c
 	sha256sums = cc49d8c0932dc3f630073e87c8fffaddd811306dc32d74a8127fe0de7baccd4d
-	sha256sums = b97a300b0e1718d519bce4fb7739a474c8fd90022cce9faa782100dc7e5961a8
+	sha256sums = 6e39d1675e46409128cdea58495bdc5764c768465b95280156991faf2422d8f0
 
 pkgname = xfwm4-move-monitor

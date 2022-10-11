@@ -3,7 +3,7 @@
 _pkgname=xfwm4
 pkgname=xfwm4-move-monitor
 pkgver=4.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Xfce's window manager"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfwm4/start"
@@ -19,7 +19,7 @@ source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgv
         move-to-monitor.patch)
 sha256sums=('b5b24ca04bd73c642db0a4b4df81d262381d758f01b51108257d48b391b8718c'
             'cc49d8c0932dc3f630073e87c8fffaddd811306dc32d74a8127fe0de7baccd4d'
-            'b97a300b0e1718d519bce4fb7739a474c8fd90022cce9faa782100dc7e5961a8')
+            '6e39d1675e46409128cdea58495bdc5764c768465b95280156991faf2422d8f0')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
