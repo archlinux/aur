@@ -1,0 +1,17 @@
+pkgbase = wchisp-git
+	pkgdesc = WCH ISP Tool in Rust
+	pkgver = f21dff0
+	pkgrel = 1
+	url = https://github.com/ch32-rs/wchisp
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	makedepends = rust
+	depends = cargo
+	provides = wchisp
+	conflicts = wchisp
+	options = !strip
+	source = wchisp::git+https://github.com/ch32-rs/wchisp.git
+	sha256sums = SKIP
+
+pkgname = wchisp-git
