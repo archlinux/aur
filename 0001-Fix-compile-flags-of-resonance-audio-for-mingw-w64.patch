@@ -1,0 +1,34 @@
+From 772f6bf283eaaf193e4aa0f168dd68b87eb8958e Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 1 Oct 2022 17:43:07 +0200
+Subject: [PATCH] Fix compile flags of resonance-audio for mingw-w64
+
+---
+ src/3rdparty/resonance-audio/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/3rdparty/resonance-audio/CMakeLists.txt b/src/3rdparty/resonance-audio/CMakeLists.txt
+index 6af0b3fb3..d94beb0ed 100644
+--- a/src/3rdparty/resonance-audio/CMakeLists.txt
++++ b/src/3rdparty/resonance-audio/CMakeLists.txt
+@@ -82,7 +82,7 @@ if (BUILD_RESONANCE_AUDIO_TESTS OR BUILD_GEOMETRICAL_ACOUSTICS_TESTS)
+     target_include_directories(gtest PUBLIC "${GTEST_DIR}/googletest/include")
+ endif (BUILD_RESONANCE_AUDIO_TESTS OR BUILD_GEOMETRICAL_ACOUSTICS_TESTS)
+ 
+-if (WIN32)
++if (WIN32 AND NOT MINGW)
+     add_definitions(-D_USE_MATH_DEFINES)
+     add_definitions(-DNOMINMAX)
+     # Disable type conversion warnings.
+@@ -92,7 +92,7 @@ if (WIN32)
+ elseif (APPLE)
+ elseif (ANDROID)
+     set(NEON ON)
+-elseif (UNIX)
++elseif (UNIX OR MINGW)
+     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+     set(CMAKE_CXX_FLAGS "-fPIC -O3 -Wno-vla -msse -msse2 -msse3 -mfpmath=sse")
+ endif ()
+-- 
+2.37.3
+

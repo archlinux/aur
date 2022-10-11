@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-multimedia
-_qtver=6.3.1
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,8 +18,20 @@ makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'android-aarch64-
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7e03242aadd634ff2d9fcf08948290f03da3d9a5012369d908da89f82b1d7336')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
+sha256sums=('e82e8e847cae2a951a11db05b6d10a22b21e3a1d72e06a7781cce4bd197e796f'
+            '2bd14f2aa5c1d23da1f5516b882463fa782f5166c37fecf4c8c15ef43257c338')
+
+prepare () {
+  cd $_pkgfqn
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   source android-env ${_android_arch}
