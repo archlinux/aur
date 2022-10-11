@@ -1,0 +1,18 @@
+pkgbase = batman
+	pkgdesc = A battery management service and program for linux phones
+	pkgver = 0.30
+	pkgrel = 1
+	url = https://github.com/FakeShell/batman
+	arch = any
+	license = GPLv2
+	makedepends = git
+	makedepends = tar
+	depends = yad
+	depends = wlr-randr
+	depends = upower
+	depends = bash
+	provides = batman
+	source = https://github.com/FakeShell/batman/releases/download/batman/batman.tar.gz
+	md5sums = SKIP
+
+pkgname = batman
