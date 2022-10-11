@@ -2,20 +2,20 @@
 # Maintainer: Randy Fay <randy at randyfay.com>
 
 pkgname='ddev-bin'
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
-pkgdesc='DDEV-Local: a local web development environment'
+pkgdesc='DDEV: a local web development environment'
 url='https://github.com/drud/ddev'
 arch=('aarch64' 'x86_64')
 license=('Apache 2')
 provides=('ddev')
 conflicts=('ddev')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.21.1/ddev_linux-arm64.v1.21.1.tar.gz")
-sha256sums_aarch64=('692fa720a7d8cd9f7b6ae1f039e19576eafd6d01974994c13bcf5370dcfda4f7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.21.2/ddev_linux-arm64.v1.21.2.tar.gz")
+sha256sums_aarch64=('b7f7c4e2b11e830c2ab6162c4ee61ec8b3759886f9d7ff4fd6c40611f58c276b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.21.1/ddev_linux-amd64.v1.21.1.tar.gz")
-sha256sums_x86_64=('296c224efc7ba7d991f3ccf3790fe819d0b883c6e8794065c88fd997ba526ea8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.21.2/ddev_linux-amd64.v1.21.2.tar.gz")
+sha256sums_x86_64=('349b8b32040782efdaf595385a2e9f84ba743819bedebcc06b0fbf004c287a5f')
 
 package() {
   # bin
