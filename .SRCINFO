@@ -1,0 +1,17 @@
+pkgbase = muon-meson
+	pkgdesc = meson implementation in C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://muon.build
+	arch = x86_64
+	license = GPL3
+	makedepends = ninja
+	makedepends = scdoc
+	depends = pkgconf
+	depends = curl
+	depends = libarchive
+	provides = muon
+	source = https://git.sr.ht/~lattis/muon/archive/0.1.0.tar.gz
+	sha256sums = 9d3825c2d562f8f8ad96d1f02167e89c4e84973decf205d127efd9293d7da35b
+
+pkgname = muon-meson
