@@ -9,7 +9,7 @@
 
 pkgname=anki
 pkgver=2.1.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -22,6 +22,7 @@ depends=(
     'python-beautifulsoup4'
     'python-requests'
     'python-wheel'
+    'qt6-multimedia'	# recording voice
 
     # anki
     'python-pysocks' # requests[socks]
