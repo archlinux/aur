@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.3.1
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -40,19 +40,19 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch')
-sha256sums=('0a64421d9c2469c2c48490a032ab91d547017c9cc171f3f8070bc31888f24e03'
-            'b50847b70210657d5579bbc6fe88c5343f675d63e0059183705777a2d0c0fcf6'
-            'c2e2499413b281be496de2b62385ff947c38b92f98028336b4c1a06230f5a180'
-            '16cd13db60b669f1b84bc98910b40a50b28e75b00b839883c0dd69e457a997b0'
-            'e6d6b86b2a4a9f30ce361b6baa6e5d32d1567828581d6bc65f6986a15a4ae0ab'
-            '34d6083183e58e02d8bc53db6fbeb2059766a23b3fe9ccdc0b53c861eefbfdb0'
-            '53e83363b0508d8005987fea8f752d2f0d804f07d434c0a7a1a39ebf9668d433'
-            'b90c472eda3caa44981d14b8081039c56653a0c85bd60175ff37d0d48ed43078'
-            '8ee1b3c4554be7d4f2ec5ac24727887ea4c47704e1ddcf80aacece93b9e54dda'
-            '0d8f78df6da2dd3bf7610fdc7b3018cb2698bbe6f523925ad4c3565e7ecb03c9'
-            'ae0d2140f3be5fa16ff32cb9715144de72139e509dacd937ad643c14177c14ce'
-            'c811240dc3f6e95a636bfbb8f05f5a074b6d82ac2bf623cdc32bf74cd9f39548'
-            '87e00cc7c4e47494f3eb117f930432cb2385ee5016280e22a719e775664512c7')
+sha256sums=('cb6475a0bd8567c49f7ffbb072a05516ee6671171bed55db75b22b94ead9b37d'
+            '500986910d9a17eb189458c55e1930c264673597b85079b8289c5190f818f093'
+            '3e72ad7c7dba0d5bce851378d37df627322a8cee00e6048223ab6719b309a5d8'
+            '9b888e9ea827dd218f79b3d0828a61a43ead41744bac4513224030a7990e02f2'
+            '192e7332c3b087312de3c01d32ed59f60c7b0ebeb395e91c0d6e595a63b18ea0'
+            '66a4d740264d6aa72c6f249dcae20c723cba31d8987b2e46b354af37e6109bfc'
+            '7e58bb55e7e7af40e7e5492fc9e452dec574b216bd1a33739f1505d5fec24566'
+            '83d0248c3839285e3c8f2629f7d6525c11650b232dbcdfb0230151d51e6a0138'
+            'e9917a03214cb8fd0bdaabe5c47edd387c90b275780e9644ac657ac96c358c77'
+            'ea5bb116968d06b542e0b8e40e256c5d26d2caad496fb37f625d19274af064ec'
+            'dfad5479c5c0029806c929b7149e16120ec0cb05b0c08aaf4ec9ed23baa7aad2'
+            'b43ed68d0288676ed59c493b73a0916f818de90491390753de6e17e857ea3368'
+            'fa4986c24fa8eba1c956e78c6d8be4d0e11680364a6f30739ed347f4bca8c711')
 
 prepare () {
   cd $_pkgfqn
@@ -94,7 +94,7 @@ package() {
   source android-env ${_android_arch}
   DESTDIR="$pkgdir" cmake --install build-$_android_arch
 
-  install -Dm644 $_pkgfqn/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 $_pkgfqn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgname
 
   # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
   find "$pkgdir/${ANDROID_PREFIX}/" -type f -name '*.prl' \
