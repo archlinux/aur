@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.20.0+r1244+g3385ea3481
+pkgver=1.21.1+r44+g430ec0d860
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -63,14 +63,8 @@ checkdepends=(xorg-server-xvfb)
 options=(debug)
 source=(
   "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git"
-  0001-meson-Allow-building-with-system-orc.patch
-  0002-HACK-meson-Disable-broken-tests.patch
-  0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 )
-sha256sums=('SKIP'
-            '292edebc224557db08404b0d53e2824413f0aad2a99c991de2cb8ccc6e9a7683'
-            'cdb0b056d8a1d31394fb3cf23dcfa8e7345cac6671dacdee8029b380ef30640d'
-            '79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f')
+sha256sums=('SKIP')
 
 pkgver() {
   cd gstreamer
@@ -79,16 +73,6 @@ pkgver() {
 
 prepare() {
   cd gstreamer
-
-  # Fix linking with system orc
-  git apply -3 ../0001-meson-Allow-building-with-system-orc.patch
-
-  # Disable broken tests
-  git apply -3 ../0002-HACK-meson-Disable-broken-tests.patch
-  
-  # Workaround broken detection of underscore prefixes
-  # https://github.com/mesonbuild/meson/issues/5482
-  git apply -3 ../0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 }
 
 build() {
@@ -100,9 +84,11 @@ build() {
     -D gpl=enabled
     -D gst-examples=disabled
     -D libnice=disabled
+    -D omx=disabled # fix
+    -D orc=enabled # fix
+    -D orc-source="system" # fix
     -D vaapi=enabled
     -D python=disabled # fix
-    -D omx=disabled # fix
     -D sharp=disabled # fix
     -D rs=disabled # fix
     -D tls=disabled # fix
@@ -253,10 +239,9 @@ package_lib32-gst-plugins-bad-libs-git() {
   conflicts=("lib32-gst-plugins-bad-libs")
 
   cd root; local files=(
-    usr/lib32/libgst{adaptivedemux,badaudio,basecamerabinsrc,codecparsers,codecs,cuda,insertbin,isoff,mpegts,photography,play,player,sctp,transcoder,uridownloader,vulkan,wayland,webrtc}-1.0.so*
-    usr/lib32/pkgconfig/gstreamer-{bad-audio,codecparsers,insertbin,mpegts,photography,play,player,sctp,transcoder,vulkan{,-wayland,-xcb},wayland,webrtc}-1.0.pc
+    usr/lib32/libgst{adaptivedemux,badaudio,basecamerabinsrc,codecparsers,codecs,cuda,insertbin,isoff,mpegts,photography,play,player,sctp,transcoder,uridownloader,vulkan,wayland,webrtc,webrtcnice}-1.0.so*
+    usr/lib32/pkgconfig/gstreamer-{bad-audio,codecparsers,cuda,insertbin,mpegts,photography,play,player,plugins-bad,sctp,transcoder,va,vulkan{,-wayland,-xcb},wayland,webrtc{,-nice}}-1.0.pc
 
-    usr/lib32/pkgconfig/gstreamer-plugins-bad-1.0.pc
     usr/lib32/gstreamer-1.0/libgstaccurip.so
     usr/lib32/gstreamer-1.0/libgstadpcmdec.so
     usr/lib32/gstreamer-1.0/libgstadpcmenc.so
@@ -272,6 +257,7 @@ package_lib32-gst-plugins-bad-libs-git() {
     usr/lib32/gstreamer-1.0/libgstbluez.so
     usr/lib32/gstreamer-1.0/libgstcamerabin.so
     usr/lib32/gstreamer-1.0/libgstcodecalpha.so
+    usr/lib32/gstreamer-1.0/libgstcodectimestamper.so
     usr/lib32/gstreamer-1.0/libgstcoloreffects.so
     usr/lib32/gstreamer-1.0/libgstdebugutilsbad.so
     usr/lib32/gstreamer-1.0/libgstdecklink.so
@@ -288,6 +274,7 @@ package_lib32-gst-plugins-bad-libs-git() {
     usr/lib32/gstreamer-1.0/libgstgaudieffects.so
     usr/lib32/gstreamer-1.0/libgstgdp.so
     usr/lib32/gstreamer-1.0/libgstgeometrictransform.so
+    usr/lib32/gstreamer-1.0/libgstgtkwayland.so
     usr/lib32/gstreamer-1.0/libgstid3tag.so
     usr/lib32/gstreamer-1.0/libgstinter.so
     usr/lib32/gstreamer-1.0/libgstinterlace.so
@@ -644,6 +631,7 @@ package_lib32-gstreamer-vaapi-git() {
   conflicts=("lib32-gstreamer-vaapi")
 
   cd root; local files=(
+    usr/lib32/gstreamer-1.0/pkgconfig/gstvaapi.pc
     usr/lib32/gstreamer-1.0/libgstvaapi.so
   ); _install
 }
