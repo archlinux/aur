@@ -1,7 +1,9 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkcore-git
-pkgver=5.5.23.r14.g6cb6070
+_pkgname=dtkcore
+_commit=8ce7d3e3c733ada955a4fd53b4d71ef93e456f27
+pkgver=5.6.2.r4.g8ce7d3e
 pkgrel=1
 pkgdesc='DTK core modules'
 arch=('x86_64' 'aarch64')
@@ -13,27 +15,23 @@ conflicts=('dtkcore')
 provides=('dtkcore')
 groups=('deepin-git')
 source=("$pkgname::git+https://github.com/linuxdeepin/dtkcore.git")
-sha512sums=('SKIP')
-
-pkgver() {
-    cd $pkgname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-}
+source=("$_pkgname.tar.gz::https://github.com/linuxdeepin/$_pkgname/archive/$_commit.tar.gz")
+sha512sums=('ee352e5ae634e73511e495d1ce8177d9939f4d774d6e4cb5fadaf405dd5602bd99798ed603b466bce91fe0869e01f08558b65a43d1da9f6e8157237f638c14e6')
 
 build() {
-  cd $pkgname
-  qmake-qt5 PREFIX=/usr DTK_VERSION=$pkgver LIB_INSTALL_DIR=/usr/lib
-  make
+  cd $_pkgname-$_commit
+  cmake -GNinja \
+      -DMKSPECS_INSTALL_DIR=/usr/lib/qt/mkspecs/modules/\
+      -DBUILD_DOCS=ON \
+      -DBUILD_EXAMPLES=OFF \
+      -DQCH_INSTALL_DESTINATION=/usr/share/doc/qt \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release
+  ninja
 }
 
 package() {
-  cd $pkgname
-  make INSTALL_ROOT="$pkgdir" install
+  cd $_pkgname-$_commit
+  DESTDIR="$pkgdir" ninja install
 }
