@@ -1,0 +1,12 @@
+pkgbase = meg
+	pkgdesc = Fetch many paths for many hosts - without killing the hosts
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tomnomnom/meg
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = meg-0.3.0.tar.gz::https://github.com/tomnomnom/meg/archive/v0.3.0.tar.gz
+	b2sums = SKIP
+
+pkgname = meg
