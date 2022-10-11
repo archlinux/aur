@@ -1,12 +1,13 @@
 pkgbase = uyap
 	pkgdesc = UYAP Dokuman Editor, UYAP Sablon Editor
 	pkgver = 5.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uyap.gov.tr/UYAP-Editor
+	install = uyap.install
 	arch = x86_64
 	license = custom
 	depends = pcsclite
-	depends = java-environment
+	depends = java-environment<=11
 	optdepends = akia: sign UYAP documents
 	optdepends = jre8: sign UYAP documents
 	optdepends = cups: print documents

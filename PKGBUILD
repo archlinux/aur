@@ -4,12 +4,13 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=uyap
 pkgver=5.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="UYAP Dokuman Editor, UYAP Sablon Editor"
 arch=("x86_64")
 url="https://uyap.gov.tr/UYAP-Editor"
 license=("custom")
-depends=("pcsclite" "java-environment")
+install=uyap.install
+depends=("pcsclite" "java-environment<=11")
 optdepends=("akia: sign UYAP documents"
 	    "jre8: sign UYAP documents"
 	    "cups: print documents")
@@ -22,11 +23,11 @@ prepare() {
     ar x uyap_pardus_5_4_5_amd64/uyapeditor_5.4.5_amd64.deb
     tar -Jxf ${srcdir}/data.tar.xz -C "${srcdir}"
     patch --forward --strip=1 --input="desktop-files.patch"
-    mkdir -p "${srcdir}"/usr/bin
-    mv "${srcdir}"/usr/share/UYAPEditor/dokuman.sh "${srcdir}"/usr/bin/uyapeditor
-    mv "${srcdir}"/usr/share/UYAPEditor/sablon.sh "${srcdir}"/usr/bin/uyapsablon
 }
 
 package() {
     mv "${srcdir}"/usr "${pkgdir}"/usr
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /usr/share/UYAPEditor/dokuman.sh "${pkgdir}"/usr/bin/uyapeditor
+    ln -s /usr/share/UYAPEditor/sablon.sh "${pkgdir}"/usr/bin/uyapsablon
 }
