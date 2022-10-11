@@ -9,9 +9,7 @@
 # http://http.at.debian.org/debian/pool/main/p/praat/
 
 pkgname=praat-bin
-pkgver=6.2.18
-# versioning snafu, see https://github.com/praat/praat/issues/2207
-_pkgver=6.2.22
+pkgver=6.2.22
 _debver=1
 pkgrel=1
 pkgdesc='Doing Phonetics by computer (speech analysis)'
@@ -27,7 +25,7 @@ depends=(alsa-lib
 optdepends=(ttf-sil-fonts)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("http://http.at.debian.org/debian/pool/main/p/${pkgname%-bin}/${pkgname%-bin}_$_pkgver-${_debver}_amd64.deb")
+source=("http://http.at.debian.org/debian/pool/main/p/${pkgname%-bin}/${pkgname%-bin}_$pkgver-${_debver}_amd64.deb")
 sha256sums=('99329ef6fa006322f8b706d242e817ae7b022f9097519888d3f068a595da4bab')
 
 prepare() {
