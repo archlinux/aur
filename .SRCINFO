@@ -1,10 +1,10 @@
 pkgbase = python-pycklink
 	pkgdesc = Python interface for the T-HEAD CKLink
-	pkgver = 0.0.9
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/pycklink
 	arch = any
-	license = unkown
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,7 +12,7 @@ pkgbase = python-pycklink
 	provides = cklink
 	provides = pycklink
 	options = !strip
-	source = pycklink-0.0.9.tar.gz::https://files.pythonhosted.org/packages/b0/44/34293f3d2ada170ab2668ce138627a3b57d236e9a7c1427738cf0b56ef61/pycklink-0.0.9.tar.gz
-	sha256sums = 6e8b4e4accba6e030a18725749dc854d5714dc023d052c7ff0e441d9eb70fbb3
+	source = pycklink-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pycklink/pycklink-0.1.0.tar.gz
+	sha256sums = 4062abc8a0552ee14d3bb4439ca6f8908855e243402ab3b7dc27b37c1365d1e2
 
 pkgname = python-pycklink
