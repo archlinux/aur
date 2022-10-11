@@ -1,7 +1,7 @@
 pkgbase = ente-desktop-appimage
 	pkgdesc = Secure backups for photos and videos
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.6.10
+	pkgrel = 1
 	url = https://ente.io/
 	arch = x86_64
 	license = GPL
@@ -11,9 +11,9 @@ pkgbase = ente-desktop-appimage
 	depends = fuse3
 	depends = fuse-common
 	depends = libsecret
-	noextract = ente-1.6.1.AppImage
+	noextract = ente-1.6.10.AppImage
 	options = !strip
-	source_x86_64 = ente-1.6.1.AppImage::https://github.com/ente-io/bhari-frame/releases/download/v1.6.1/ente-1.6.1.AppImage
-	sha256sums_x86_64 = 4ca1629d89c1dc28acea47d7a331a138c350ce41b7ce178729b4649233cb4009
+	source_x86_64 = ente-1.6.10.AppImage::https://github.com/ente-io/bhari-frame/releases/download/v1.6.10/ente-1.6.10.AppImage
+	sha256sums_x86_64 = 375354bffaa7e24d552cd6468894285a1dacc0248af06563c413383650b4df62
 
 pkgname = ente-desktop-appimage
