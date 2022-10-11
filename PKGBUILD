@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=('!strip')
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha256sums=('f847ad6dc25fb7d821468db93332d0a6d87992d4db5cac5dbf582f738fd8a2e7')
+sha256sums=('497126f8b0adbdac7f849902d276a4fc34cb9e3341c8ded0f064a034f4ed603c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
