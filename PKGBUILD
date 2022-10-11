@@ -7,7 +7,7 @@
 pkgname=wine-stable
 _pkgver=7.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=3
+pkgrel=4
 
 source=(https://dl.winehq.org/wine/source/7.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -112,10 +112,6 @@ prepare() {
     fi
   done
 
-  # https://bugs.winehq.org/show_bug.cgi?id=43530
-  export CFLAGS="${CFLAGS/-fno-plt/}"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
-
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
 
   # Fix openldap 2.5+ detection
@@ -128,6 +124,11 @@ prepare() {
 
 build() {
   cd "$srcdir/wine-64-build"
+
+  # https://bugs.winehq.org/show_bug.cgi?id=43530
+  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export LDFLAGS="${LDFLAGS/,-z,now/}"
+
   ../wine/configure \
       --prefix=/usr \
       --libdir=/usr/lib \
