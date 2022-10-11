@@ -3,8 +3,8 @@
 
 pkgname=easyeda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.7.31
-pkgrel=3
+pkgver=1.8.36
+pkgrel=1
 pkgdesc="EasyEDA Professional Edition"
 arch=('x86_64')
 url="https://pro.easyeda.com/"
@@ -21,7 +21,7 @@ source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/easyeda-pro-
 		"LICENSE"
 		"${pkgname}.install")
 noextract=()
-sha256sums=('3d1cfa547e7616d54c29cc01d6c2073a894a1cd4b6c8c719c68c99994728d38f'
+sha256sums=('bbfc33d276fe821ef8c712e2f9379850bac60a14352a2a42ccebff2c530d09d3'
 			'c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74'
 			'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76')
 
