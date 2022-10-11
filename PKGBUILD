@@ -4,7 +4,7 @@
 # This PKGBUILD is directly modified from aur/baidunetdisk-bin
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-electron
-pkgver=4.12.5
+pkgver=4.14.5
 pkgrel=1
 #_mainver=${pkgver%.*}
 pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version). Run with system electron."
@@ -24,7 +24,7 @@ source_x86_64=("${pkgname}-${pkgver}.deb::http://wppkg.baidupcs.com/issue/netdis
 
 sha256sums=('17bda6036e07916971257f25731130fb1b760b80798fa13273db39268ab9f28c'
             '14e82c2e285ee28e1d38538f8a434d3a1301621225a3130667d875688a5e430f')
-sha256sums_x86_64=('f5540fa3c58d827b221e69c82c42de2cd533098d65139734dac21dd79a75b605')
+sha256sums_x86_64=('d5f1acb2e2a41f241c83d30dd590f70919afc3573136b0bb0b4f07b1dc338ab8')
 
 prepare() {
     bsdtar -xpf "data.tar.xz"
