@@ -3,7 +3,7 @@
 
 pkgname=muon-meson-git
 _pkgname=${pkgname%-meson-git}
-pkgver=r1815.ba783656693ab3d6f4d6
+pkgver=0.1.0+5.gab1e044c93c9c87e496f
 pkgrel=1
 pkgdesc='meson implementation in C'
 url='https://sr.ht/~lattis/muon'
@@ -11,17 +11,15 @@ license=(GPL3)
 arch=(x86_64)
 depends=(pkgconf curl zlib libarchive)
 makedepends=(git ninja python-yaml scdoc)
-conflicts=()
+conflicts=(muon-meson)
 provides=(muon)
 source=("git+https://git.sr.ht/~lattis/muon")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/-/+/; s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  set -o pipefail
+  git describe --long --tags 2>/dev/null | sed 's/-/+/; s/-/./g'
 }
 
 build() {
