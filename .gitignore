@@ -1,0 +1,6 @@
+*.tar.zst
+pkg/
+src/
+android-cuttlefish/
+cuttlefish-base/
+!.gitignore
