@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.4.r0.g101ff77
+pkgver=2.0.4.r23.g2b9edce
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -9,7 +9,6 @@ url="https://cemu.info/"
 license=('MPL2')
 depends=(
 	'discord-rpc'
-	'imgui'
 	'pugixml'
 	'wxwidgets-gtk3>=3.2'
 )
@@ -23,7 +22,7 @@ makedepends=(
 	'glm'
 	'glslang'
 	'glu'
-	'libglvnd'
+	'libgl'
 	'libpng'
 	'libzip'
 	'nasm'
@@ -39,9 +38,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/cemu-project/Cemu.git"
+	'imgui::git+https://github.com/ocornut/imgui.git'
 	"$_pkgname.bash"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'431a90ba59c911b5e822bf826a79228512ae1bc4221350cb0cf262f8f01c05d7c75effff59c0fc52a0f27b94ebd70d2d72c94432fcfef3920a3ae5ab179fdcd5'
 )
@@ -53,11 +54,12 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	git config submodule.dependencies/imgui.url ../imgui
+	git submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
-	sed -i 's/GLSLANG_VERSION_LESS_OR_EQUAL_TO/GLSLANG_VERSION_GREATER_OR_EQUAL_TO/' src/Cafe/HW/Latte/Renderer/Vulkan/RendererShaderVk.cpp
 	sed -i '/target_precompile_headers/c target_compile_options(CemuCommon PUBLIC -include Common/precompiled.h)' src/Common/CMakeLists.txt
 }
 
