@@ -3,7 +3,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=hunspell-sk
-pkgver=2.4.4
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="Slovak dictionary for Hunspell"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/sk-spell/hunspell-sk"
 license=('GPL2' 'LGPL2.1' 'MPL1.1')
 optdepends=('hunspell: Hunspell spell checking library and program')
 source=("https://github.com/sk-spell/hunspell-sk/releases/download/v$pkgver/$pkgver-sk@dictionaries.addons.mozilla.org.xpi")
-sha512sums=('50748a913b46fac7a7df2498e1001bbec441e58769c13dd1f78841b5ee9d2b1ffbc56e1e5f36c6ced2af8b718185f99491868533d1c2ed649ec5001ce8e61065')
+sha512sums=('cf73e0b73e93253d887c576492f243238ac548c2b9688feda8606b413e45f865ba7f0647f5d3da385a7cff563d0325191f0c442385ba4efb5e766bfcfde80e90')
 
 package() {
   cd "$srcdir"/dictionaries
