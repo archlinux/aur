@@ -2,7 +2,7 @@
 
 pkgname=gnatstudio-bin
 pkgver=20220512
-pkgrel=1
+pkgrel=2
 pkgdesc="GNAT Programming Studio for Ada binary"
 
 arch=(i686 x86_64)
@@ -31,8 +31,8 @@ package()
 
     ./doinstall "$pkgdir/opt/gnatstudio"
 
-    mkdir "$pkgdir/lib"
-    cp $srcdir/libcrypt.so.1 $pkgdir/lib/libcrypt.so.1
+    mkdir -p "$pkgdir/usr/lib"
+    cp "$srcdir/libcrypt.so.1" "$pkgdir/usr/lib/libcrypt.so.1"
 
     # Install the license.
     install -D -m644     \
