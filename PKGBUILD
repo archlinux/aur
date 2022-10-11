@@ -3,7 +3,7 @@
 
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
@@ -32,7 +32,7 @@ package() {
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  for mdfile in CHANGES.md README.md; do
+  for mdfile in {CHANGES,README}.md; do
     install -Dm0644 "$mdfile" "$pkgdir/usr/share/doc/$pkgname/$mdfile"
   done
 
@@ -40,13 +40,13 @@ package() {
 }
 
 sha256sums=(
-  'd8270e9fada718397bd7c8fc3f73656c6c793bc28b732ce7d2cf40c2bc16d4f9'
+  '451abd8830588558e4ff7c699dbb987e251cdc78a75267304923a938eac3c97d'
 )
 sha512sums=(
-  '2891da828a569e760e342acc0bdfc0dd6c87f8ba260cb98ba985ea22692dc93453fd5f3e3e6b7494ea8094da3f9ad715987a2934bd372a212f7c671f370b37f7'
+  '61c79f6e7b1a4c34d3a56cd5933ed944d2b23bc22c2436897733c5d217a354555e7ad483d939129b99bd4f6718e3836035288d110f74ac341bb7907cbd1593de'
 )
 b2sums=(
-  'fc4962f31a5515247ac62c9a461792ead599f25ba2aaf4cf48183ed5d2fa477189f754385db70ea8ea077d5e3034f4417517ca4d89f390f08991faa057cb5bc2'
+  '420c6c49c1d228ad1d2870eaeb2ea14f1898a319e534dbe80b9b03eebc6200de5ff329e0597d7ee68ce63a792e3007802b3603813b37f68542499be6f75c7c87'
 )
 
 # eof
