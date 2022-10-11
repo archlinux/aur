@@ -1,7 +1,7 @@
 pkgbase = mraa-radxa-git
 	pkgdesc = Low Level Skeleton Library for IO Communication on GNU/Linux platforms.
 	pkgver = 2.1.0.23.gfc8c906
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/intel-iot-devkit/mraa
 	arch = aarch64
 	arch = armv6h

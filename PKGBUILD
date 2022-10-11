@@ -1,8 +1,8 @@
 # Maintainer: iohzrd <iohzrd@protonmail.com>
 _pkgname=mraa
-pkgname=${_pkgname}-radxa-git
+pkgname=$_pkgname-radxa-git
 pkgver=2.1.0.23.gfc8c906
-pkgrel=7
+pkgrel=8
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
 provides=(${_pkgname%-*}=$pkgver)
 conflicts=(${_pkgname%-*})
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 prepare() {
-  cd ${srcdir}/${_pkgname}
+  cd $srcdir/$_pkgname
   git apply ../../extern_gVERSION.patch
 }
 
@@ -40,5 +40,5 @@ build() {
 
 package() {
   cd $srcdir/mraa/build
-  make DESTDIR="${pkgdir}/" install
+  make DESTDIR=$pkgdir install
 }
