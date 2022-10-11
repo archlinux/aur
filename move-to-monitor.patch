@@ -1,8 +1,8 @@
 diff --git src/client.c src/client.c
-index 3923dd98b..ab3f9aa46 100644
+index 3923dd98b..675209c19 100644
 --- src/client.c
 +++ src/client.c
-@@ -3504,6 +3504,186 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
+@@ -3504,6 +3504,183 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
      return TRUE;
  }
  
@@ -96,18 +96,15 @@ index 3923dd98b..ab3f9aa46 100644
 +     *   - This means when we un-tile/maximise we'll stay on the updated monitor
 +     */
 +    GdkRectangle current_rect, target_rect;
-+    int within_monitor_x, within_monitor_y, monitor_offset_x, monitor_offset_y;
++    int monitor_offset_x, monitor_offset_y;
 +    float monitor_ratio_x, monitor_ratio_y;
 +
 +    gdk_monitor_get_geometry(current_monitor, &current_rect);
 +    gdk_monitor_get_geometry(target_monitor, &target_rect);
 +
-+    /* When side-tiled, sometimes x/y can come up negative, so restrict to monitor min/max */
-+    within_monitor_x = MIN(MAX(c->saved_geometry.x, current_rect.x), current_rect.x + current_rect.width);
-+    within_monitor_y = MIN(MAX(c->saved_geometry.y, current_rect.y), current_rect.y + current_rect.height);
 +    /* Get the x,y offset relative to current monitor params */
-+    monitor_offset_x = within_monitor_x - current_rect.x;
-+    monitor_offset_y = within_monitor_y - current_rect.y;
++    monitor_offset_x = c->saved_geometry.x - current_rect.x;
++    monitor_offset_y = c->saved_geometry.y - current_rect.y;
 +    monitor_ratio_x = monitor_offset_x / (float) current_rect.width;
 +    monitor_ratio_y = monitor_offset_y / (float) current_rect.height;
 +
