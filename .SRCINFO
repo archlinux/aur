@@ -1,7 +1,7 @@
 pkgbase = python-atheris
 	pkgdesc = A coverage-guided fuzzer for Python and Python extensions
 	pkgver = 2.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/atheris/
 	arch = x86_64
 	license = Apache

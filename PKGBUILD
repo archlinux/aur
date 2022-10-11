@@ -2,7 +2,7 @@
 
 pkgname=python-atheris
 pkgver=2.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='A coverage-guided fuzzer for Python and Python extensions'
 arch=('x86_64')
 url='https://github.com/google/atheris/'
@@ -37,8 +37,4 @@ package() {
   cd "$pkgname"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # https://github.com/google/atheris/issues/46
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -f "$pkgdir$site_packages/"*.a
 }
