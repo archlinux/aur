@@ -7,11 +7,11 @@ pkgver=0.40.0
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
-url="https://github.com/loadimpact/k6"
+url="https://github.com/grafana/k6"
 license=('AGPL3')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/grafana/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('d3e00387c6dda4e53b3816175b8772db53124198d8ceb499c9a1f6b76092df83')
 
 build() {
@@ -27,7 +27,8 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	install -vDm 755 ${pkgname} -t "${pkgdir}/usr/bin/"
-	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	# build bash completions
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
