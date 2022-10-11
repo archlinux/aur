@@ -1,6 +1,6 @@
 pkgbase = raven-qt
 	pkgdesc = Ravencoin Core Cryptocurrency Wallet (QT)
-	pkgver = 4.3.2.1
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://ravencoin.org/
 	install = raven-qt.install
@@ -9,6 +9,7 @@ pkgbase = raven-qt
 	license = MIT
 	makedepends = boost
 	makedepends = qt5-tools
+	makedepends = git
 	depends = openssl-1.0
 	depends = boost-libs
 	depends = libevent
@@ -22,10 +23,9 @@ pkgbase = raven-qt
 	provides = ravencoind
 	provides = ravencoin-tx
 	conflicts = raven
-	source = raven-qt::git+http://github.com/RavenProject/Ravencoin.git#tag=v4.3.2.1
+	source = raven-qt::git+http://github.com/RavenProject/Ravencoin.git#tag=v4.6.1
 	source = raven-qt.desktop
 	sha256sums = SKIP
 	sha256sums = e318e3c5a9fbdbcf5836f9ceee76f4a73acdcb47c535cb7beb1c19937b8540df
 
 pkgname = raven-qt
-

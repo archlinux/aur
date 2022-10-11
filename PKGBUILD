@@ -1,9 +1,10 @@
-# Maintainer: Jordan Day (FryDay) < jordanday444 at gmail dot com>
+# Maintainer: Allison Smith <alyway@protonmail.com>
+# Contributor: Jordan Day (FryDay) < jordanday444 at gmail dot com>
 # Contributor: metscoin <mets_coin@outlook.com>
 # shellcheck disable=SC2034
 
 pkgname=raven-qt
-pkgver=4.3.2.1
+pkgver=4.6.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://ravencoin.org/"
@@ -11,7 +12,7 @@ license=('MIT')
 pkgdesc="Ravencoin Core Cryptocurrency Wallet (QT)"
 depends=('openssl-1.0' 'boost-libs' 'libevent' 'db4.8' 'qt5-base' 'protobuf')
 optdepends=('miniupnpc: Automatic UPnP port mapping' 'qrencode: For generating QR codes within the GUI' 'zeromq: Send notifications via zeromq')
-makedepends=(boost qt5-tools)
+makedepends=(boost qt5-tools git)
 provides=('raven-qt' 'ravencoind' 'ravencoin-tx')
 conflicts=(raven)
 install=raven-qt.install
