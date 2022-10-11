@@ -1,7 +1,8 @@
 # $Id$
 
 pkgname=xscreensaver-xmatrix-color
-pkgver=6.03
+pkgver=6.05.1
+jwzspecialver=6.05 # Because the 6.05.1 zip unpacks to 6.05
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System, modified xmatrix with variable color."
 arch=('i686' 'x86_64')
@@ -17,19 +18,21 @@ source=(http://www.jwz.org/xscreensaver/${pkgname%%-*}-${pkgver}.tar.gz
 	xscreensaver-add-electricsheep.diff
 	xmatrix-color.diff
 	LICENSE)
-sha1sums=('04b272b7b4eadb68e812c682148162bd59d3b9f8'
+sha1sums=('1eb3ba5bd21494a8e64d5098702936c3c75499e2'
           'e8dc57b6471fb3867ee099304ac6bf628351cb98'
-          '061a488885bf0265529a04772eae63b24912c1a1'
+          '4d1d5bbec588273ee94484feea84d5003cf52d7d'
           'bf8995d86609cdab678ca277ae685407f82691db')
 
 prepare() {
-  cd ${pkgname%%-*}-${pkgver}
+  #cd ${pkgname%%-*}-${pkgver}
+  cd ${pkgname%%-*}-${jwzspecialver}
   patch -p0 -i "${srcdir}/xscreensaver-add-electricsheep.diff"
   patch -b -p0 -i "${srcdir}/xmatrix-color.diff"
 }
 
 build() {
-  cd ${pkgname%%-*}-${pkgver}
+  #cd ${pkgname%%-*}-${pkgver}
+  cd ${pkgname%%-*}-${jwzspecialver}
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib \
     --with-pam --with-login-manager --with-gtk --with-gl \
@@ -38,7 +41,8 @@ build() {
 }
 
 package() {
-  cd ${pkgname%%-*}-${pkgver}
+  #cd ${pkgname%%-*}-${pkgver}
+  cd ${pkgname%%-*}-${jwzspecialver}
   install -d "${pkgdir}/etc/pam.d"
   make install_prefix="${pkgdir}" install
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname%%-*}/LICENSE"

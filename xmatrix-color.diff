@@ -177,17 +177,17 @@
    </hgroup>
  
    <hgroup>
---- hacks/xmatrix.man	2021-01-25 10:00:59.634582133 -0600
-+++ hacks/xmatrix.man.mod	2021-10-22 10:25:36.214586238 -0500
-@@ -13,6 +13,7 @@
- [\-mode \fImode\fP]
- [\-phone \fInumber\fP]
- [\-fps]
+--- hacks/xmatrix.man	2022-09-04 11:40:03.613534185 -0500
++++ hacks/xmatrix.man.mod	2022-10-09 09:09:15.744682643 -0500
+@@ -14,6 +14,7 @@
+ [\-\-mode \fImode\fP]
+ [\-\-phone \fInumber\fP]
+ [\-\-fps]
 +[\-color\-shift \fIcolor\fP]
  .SH DESCRIPTION
  The \fIxmatrix\fP program draws the 2D "digital rain" effect, as seen on
- the computer monitors in the Wachowski brothers' film, "The Matrix".
-@@ -109,6 +110,10 @@
+ the computer monitors in the 1999 film, "The Matrix".
+@@ -113,6 +114,10 @@
  	xmatrix -ascii -program 'ps -eo comm | rev'
  	xmatrix -program 'od -txC -w6 /dev/random'
  	xmatrix -program 'cat /dev/random'
@@ -198,4 +198,5 @@
  .sp
  .fi
  .SH ENVIRONMENT
+
 
