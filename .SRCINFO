@@ -1,7 +1,7 @@
 pkgbase = pro-bitcoin-git
 	pkgdesc = Prometheus enabled bitcoin node
-	pkgver = v22.0.r34.gac9bdd94b
-	pkgrel = 3
+	pkgver = v24.0rc1.r0.gdef75f0fb
+	pkgrel = 1
 	url = https://github.com/pro-bitcoin/pro-bitcoin.git
 	arch = aarch64
 	arch = armv6h

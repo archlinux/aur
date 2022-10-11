@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=pro-bitcoin-git
-pkgver=v22.0.r34.gac9bdd94b
-pkgrel=3
+pkgver=v24.0rc1.r0.gdef75f0fb
+pkgrel=1
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://pro-bitcoin.io"
 depends=('boost' 'boost-libs' 'zeromq' 'libevent')
@@ -49,6 +49,7 @@ build() {
     --disable-util-cli \
     --disable-util-tx \
     --disable-util-util \
+    --enable-usdt \
     --with-gnu-ld
   make -j$_nproc
 }
@@ -57,11 +58,6 @@ build() {
 pkgver() {
   cd "$srcdir/${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-check() {
-  cd "$srcdir/${pkgname}"
-  make -j$_nproc check
 }
 
 package() {
