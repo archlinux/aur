@@ -1,12 +1,12 @@
 pkgbase = teku
 	pkgdesc = ConsenSys Ethereum Beacon Chain Client
-	pkgver = 22.9.1
+	pkgver = 22.10.1
 	pkgrel = 1
 	url = https://docs.teku.consensys.net
 	arch = any
 	license = Apache
 	depends = java-runtime>=11
-	source = https://artifacts.consensys.net/public/teku/raw/names/teku.tar.gz/versions/22.9.1/teku-22.9.1.tar.gz
-	sha256sums = a4ab66e30cc24c99d14f91d31d95443cb0d12c984521837ec72e114af5cb5fd9
+	source = https://artifacts.consensys.net/public/teku/raw/names/teku.tar.gz/versions/22.10.1/teku-22.10.1.tar.gz
+	sha256sums = 8418bfd435cae9a6d8226343b55c9f43decca3b2717a887ae57a1ca3ec4899d5
 
 pkgname = teku
