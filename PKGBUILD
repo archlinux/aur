@@ -2,7 +2,7 @@
 _pkgname=mraa
 pkgname=${_pkgname}-radxa-git
 pkgver=2.1.0.23.gfc8c906
-pkgrel=1
+pkgrel=5
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
 provides=(${_pkgname%-*}=$pkgver)
 conflicts=(${_pkgname%-*})
@@ -35,7 +35,7 @@ build() {
   -DBUILDSWIGNODE=OFF \
   -DBUILDSWIGPYTHON=ON \
 	-DCMAKE_INSTALL_LIBDIR=/usr/lib ../
-  make -j
+  make
 }
 
 package() {
