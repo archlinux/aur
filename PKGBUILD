@@ -6,7 +6,7 @@
 # Contributor: Justin Gottula <justin at jgottula com>
 # Contributor: RJ <private>
 pkgname=libftd2xx
-pkgver=1.4.24
+pkgver=1.4.27
 pkgrel=1
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('x86_64')
@@ -15,10 +15,8 @@ license=('Proprietary')
 depends=('glibc')
 source=(55-ft2232.rules)
 sha256sums=('f48e0c36821bebfcf791da0831ce7e10965c5a537e222e54f92cb0b2d4497cda')
-sha256sums_x86_64=('994d2a30bd3686afb345af834149455e2de2b9b3d6d0339be2042f19feca6eef')
-source_x86_64=(
-	http://www.ftdichip.com/Drivers/D2XX/Linux/${pkgname}-x86_64-${pkgver}.gz
-)
+sha256sums_x86_64=('537fc9db6e1eea110dd7661982dc49a28de22a4514b588e8a33a21110a5b6b4c')
+source_x86_64=("https://ftdichip.com/wp-content/uploads/2022/07/libftd2xx-x86_64-${pkgver}.tgz")
 
 package() {
 	# Make required dirs

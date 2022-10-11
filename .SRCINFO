@@ -1,6 +1,6 @@
 pkgbase = libftd2xx
 	pkgdesc = Library that allows a direct access to a USB FTDI2XX chip based device
-	pkgver = 1.4.24
+	pkgver = 1.4.27
 	pkgrel = 1
 	url = http://www.ftdichip.com/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = libftd2xx
 	depends = glibc
 	source = 55-ft2232.rules
 	sha256sums = f48e0c36821bebfcf791da0831ce7e10965c5a537e222e54f92cb0b2d4497cda
-	source_x86_64 = http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.4.24.gz
-	sha256sums_x86_64 = 994d2a30bd3686afb345af834149455e2de2b9b3d6d0339be2042f19feca6eef
+	source_x86_64 = https://ftdichip.com/wp-content/uploads/2022/07/libftd2xx-x86_64-1.4.27.tgz
+	sha256sums_x86_64 = 537fc9db6e1eea110dd7661982dc49a28de22a4514b588e8a33a21110a5b6b4c
 
 pkgname = libftd2xx
-
