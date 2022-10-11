@@ -4,15 +4,15 @@
 pkgname=python-gpustat
 _pkgname=gpustat
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple command-line utility for querying and monitoring GPU status'
 arch=('any')
 url='https://github.com/wookayin/gpustat'
 license=('MIT')
 depends=(
   nvidia-utils
-  python-blessings
-  python-nvidia-ml-py3
+  python-blessed
+  python-nvidia-ml-py
   python-psutil
   python-six
 )
