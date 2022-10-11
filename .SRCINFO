@@ -1,0 +1,17 @@
+pkgbase = redpanda-cpp-git
+	pkgdesc = A lightweighted QT-based C/C++ IDE
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/royqh1979/RedPanda-CPP
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-base
+	optdepends = git: for git support
+	source = git+https://github.com/royqh1979/RedPanda-CPP.git
+	source = redpandaide.desktop
+	sha256sums = SKIP
+	sha256sums = 8b5b7a27e7ea3ac31bdab6451a40124398a6c6625e64cf9cb6c2664b6939527a
+
+pkgname = redpanda-cpp-git
