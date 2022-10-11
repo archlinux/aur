@@ -1,0 +1,2 @@
+set runtimepath+=/usr/share/nvchad
+luafile /usr/share/nvchad/init.lua

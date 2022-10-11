@@ -1,0 +1,17 @@
+pkgbase = nvchad-git
+	pkgdesc = NvChad is a neovim config written in lua aiming to provide a base configuration with very beautiful UI and blazing fast startuptime.
+	pkgver = r1399.dc66931
+	pkgrel = 1
+	url = https://github.com/NvChad/NvChad
+	arch = any
+	license = GPL3
+	depends = neovim>=0.7.0
+	depends = xclip
+	provides = nvchad
+	conflicts = nvchad
+	source = nvchad-git::git+https://github.com/NvChad/NvChad.git
+	source = nvchad.vim.template
+	sha256sums = SKIP
+	sha256sums = 6b64e0f8bff887b6bed0822223a4acdfed682bee97d3aac73e7a2388e3b19d84
+
+pkgname = nvchad-git
