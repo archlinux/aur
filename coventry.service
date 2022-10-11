@@ -1,0 +1,44 @@
+# Copyright (C) 2020-2021 David Sugar <tychosoft@gmail.com>.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[Unit]
+Description=coventry telephony service
+ConditionPathExists=/usr/sbin/coventry
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=coventry.service
+
+[Service]
+# Environment support
+EnvironmentFile=-/etc/default/coventry
+
+# Basic permissions
+UMask=077
+User=root
+Group=root
+WorkingDirectory=/var/lib/coventry
+RuntimeDirectory=coventry
+RuntimeDirectoryMode=0700
+PermissionsStartOnly=True
+
+# Execution model
+Type=simple
+ExecStart=/usr/sbin/coventry -v --prefix /var/lib/coventry --config /etc/coventry.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+RestartPreventExitStatus=255
+
+# Realtime scheduling
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=10
+CPUSchedulingResetOnFork=True
