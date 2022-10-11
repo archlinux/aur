@@ -1,6 +1,6 @@
 pkgbase = duckypad-git
 	pkgdesc = duckyPad configurator (git)
-	pkgver = r621.e5985b0
+	pkgver = r667.5fbb28d6
 	pkgrel = 1
 	url = https://github.com/dekuNukem/duckyPad
 	install = duckypad.install
@@ -11,6 +11,8 @@ pkgbase = duckypad-git
 	makedepends = gendesk
 	depends = python-hidapi
 	depends = python-appdirs
+	depends = python-pyautogui
+	depends = tk
 	provides = duckypad
 	conflicts = duckypad
 	source = duckypad-git::git+https://github.com/dekuNukem/duckyPad
