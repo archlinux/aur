@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vegan
-_pkgver=2.6-2
+_pkgver=2.6-4
 pkgname=r-${_pkgname,,}
-pkgver=2.6.2
-pkgrel=5
+pkgver=2.6.4
+pkgrel=1
 pkgdesc='Community Ecology Package'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab77d110c959d19b0c6268ae0c8f78c897e2419eff3f1f7b19c1bb2f8db7c059')
+sha256sums=('5d8ad4bebe79ae2bbd840a34100cf54c62f089c66ea484a542a201afcba21d06')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

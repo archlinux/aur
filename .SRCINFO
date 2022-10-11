@@ -1,7 +1,7 @@
 pkgbase = r-vegan
 	pkgdesc = Community Ecology Package
-	pkgver = 2.6.2
-	pkgrel = 5
+	pkgver = 2.6.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=vegan
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-vegan
 	optdepends = r-markdown
 	optdepends = r-parallel
 	optdepends = r-tcltk
-	source = https://cran.r-project.org/src/contrib/vegan_2.6-2.tar.gz
-	sha256sums = ab77d110c959d19b0c6268ae0c8f78c897e2419eff3f1f7b19c1bb2f8db7c059
+	source = https://cran.r-project.org/src/contrib/vegan_2.6-4.tar.gz
+	sha256sums = 5d8ad4bebe79ae2bbd840a34100cf54c62f089c66ea484a542a201afcba21d06
 
 pkgname = r-vegan
