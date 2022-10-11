@@ -1,6 +1,6 @@
 pkgbase = upgrade
 	pkgdesc = Simplify system upgrades
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 0
 	url = https://github.com/dnut/upgrade
 	install = upgrade.install
@@ -15,7 +15,7 @@ pkgbase = upgrade
 	depends = paru
 	depends = kernel-modules-hook
 	backup = etc/upgrade.conf
-	source = git+https://github.com/dnut/upgrade#tag=0.1.2
+	source = git+https://github.com/dnut/upgrade#tag=0.2.0
 	sha256sums = SKIP
 
 pkgname = upgrade

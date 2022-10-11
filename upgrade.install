@@ -1,14 +1,22 @@
+rm_sudo() {
+    # this is kept around to let all the dependent systems get up to date
+    # these lines are removed from /etc/sudoers on 2022-10-11 in favor of sudoers.d/upgrade
+    sed -i '/^upgrade /d' /etc/sudoers
+    sed -i '/^%upgraders /d' /etc/sudoers
+}
 
 post_install() {
     groupadd upgraders
     useradd -mG upgraders upgrade
-    echo 'upgrade ALL=(ALL) NOPASSWD: /usr/bin/pacman' >> /etc/sudoers
-    echo '%upgraders ALL=(ALL) /usr/bin/upgrade' >> /etc/sudoers
     systemctl enable --now upgrade.timer
 }
 
 post_remove() {
     userdel upgrade
-    sed -i '/^upgrade /d' /etc/sudoers
-    sed -i '/^%upgraders /d' /etc/sudoers
+    groupdel upgraders
+    rm_sudo
+}
+
+post_upgrade() {
+    rm_sudo
 }

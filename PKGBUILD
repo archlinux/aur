@@ -1,6 +1,6 @@
 # Maintainer: Drew Nutter <dnut@users.noreply.github.com>
 pkgname=upgrade
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=0
 pkgdesc='Simplify system upgrades'
 url='https://github.com/dnut/upgrade'
@@ -28,5 +28,6 @@ package() {
     install -Dm644 upgrade.service "${pkgdir}/etc/systemd/system/upgrade.service"
     install -Dm644 upgrade.timer "${pkgdir}/etc/systemd/system/upgrade.timer"
     
+    install -Dm644 upgrade.sudoers "${pkgdir}/etc/sudoers.d/upgrade"
     install -Dm644 upgrade.conf "${pkgdir}/etc/upgrade.conf"
 }
