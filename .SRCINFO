@@ -1,0 +1,44 @@
+pkgbase = arduino1
+	pkgdesc = Arduino prototyping platform SDK (Legacy 1.x.x)
+	pkgver = 1.8.19
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/arduino/Arduino
+	install = arduino.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = java-environment=8
+	makedepends = ant
+	makedepends = unzip
+	makedepends = asciidoc
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = java-runtime=8
+	depends = arduino-builder
+	optdepends = arduino-docs: Offline documentation for arduino
+	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
+	conflicts = arduino
+	options = !strip
+	source = arduino-1.8.19.tar.xz::https://github.com/arduino/Arduino/releases/download/1.8.19/arduino-1.8.19.tar.xz
+	source = arduino-1.8.19.tar.xz.asc::https://github.com/arduino/Arduino/releases/download/1.8.19/arduino-1.8.19.tar.xz.asc
+	source = https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.12.0/WiFi101-Updater-ArduinoIDE-Plugin-0.12.0.zip
+	source = arduino-examples-1.9.1.zip::https://github.com/arduino/arduino-examples/archive/refs/tags/1.9.1.zip
+	source = https://downloads.arduino.cc/libastylej-2.05.1-5.zip
+	source = https://downloads.arduino.cc/libastylej-2.05.1-5.zip.asc
+	source = https://downloads.arduino.cc/liblistSerials/liblistSerials-1.4.2-2.zip
+	source = https://downloads.arduino.cc/liblistSerials/liblistSerials-1.4.2-2.zip.asc
+	source = arduino.sh
+	validpgpkeys = 326567C1C6B288DF32CB061A95FA6F43E21188C4
+	sha512sums = a7ebc544c3fdc528763dee6f31b923c889aec65139c7ff8bd5309e034cad681d089a5f5fa7fecf3b00e553f812cbfb5ae330344edabdf2cbdaa34425e3ea06ba
+	sha512sums = SKIP
+	sha512sums = 17e2d07fbdca491a8d80abb6f2ceb000c68af59b755da7db70dce2d5f781204340f43365c40e641acf0b084b2073b3b056f63d68990f405adefb76887f4c5b72
+	sha512sums = c0e21dd374b2751a1e5f2b790202d4883879da2e26e9a23ccbaec478647e2b8160cbc085e76888deafc05b9b14b1aff4ce2a9b834a7b83e8226c3bc41801015c
+	sha512sums = 0678ed29caf8d80aeb852aa8a7f6fe545655314e75eaf6660a2a90505cda39863414ed05cfb8a3323f92d250601c8684021551606c40cea5ed81a1c322a0348c
+	sha512sums = SKIP
+	sha512sums = 5ee4ca9c3137957b4130434cd0ee740fc1747ed1e015a94e5909e2392563c87ad7b60b156aed305510ec5f6cec495b2b478d8e355a9cdef6ca6bfb3ce97badf5
+	sha512sums = SKIP
+	sha512sums = 78e2959daeb84828fe3a17b931831cf2581182ef14cc4afacdfba7c305967ebf461bf4098dbae3c07acab5a54d8ee64ba5245c8a75cd2064172bcfbf5dcc243d
+
+pkgname = arduino1
