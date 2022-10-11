@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-git
 	pkgdesc = A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux.
-	pkgver = r173.1a4e0af
+	pkgver = r174.1ca4dcf
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gpu-screen-recorder-git
 	optdepends = nvlax: For recording one or multiple monitors using NvFBC
 	provides = gpu-screen-recorder
 	conflicts = gpu-screen-recorder
-	source = gpu-screen-recorder-git-r173.1a4e0af.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r173.1a4e0af.tar.gz
-	sha512sums = ad540c31320d0776991658663ec4982b3ba0343cfeb80544ab5da3e27cab56b2011bbaa119aaaeda8015eddd5a204f82b8a8ba14762f0edbecf506a9c48cabd3
+	source = gpu-screen-recorder-git-r174.1ca4dcf.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r174.1ca4dcf.tar.gz
+	sha512sums = 47d96c315ae86b9402a15ef3f535cb5b7cf5e071fdd17b5f55c2359b2117a351d478805eed00b10a41798f9182d83e9642c725d9094e83a4a0382422d1be463b
 
 pkgname = gpu-screen-recorder-git
