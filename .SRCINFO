@@ -1,6 +1,6 @@
 pkgbase = wchisp
 	pkgdesc = WCH ISP Tool in Rust
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ch32-rs/wchisp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = wchisp
 	provides = wchisp
 	conflicts = wchisp-git
 	options = !strip
-	source = wchisp-0.1.1.tar.gz::https://static.crates.io/crates/wchisp/wchisp-0.1.1.crate
-	sha256sums = 67fe2c2e04eda814a29fe70a519da1c65b9567697ee6d28b7a5d168f91407f9b
+	source = wchisp-0.1.2.tar.gz::https://static.crates.io/crates/wchisp/wchisp-0.1.2.crate
+	sha256sums = f847ad6dc25fb7d821468db93332d0a6d87992d4db5cac5dbf582f738fd8a2e7
 
 pkgname = wchisp
