@@ -94,7 +94,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    cd $_srcname
+  cd $_srcname
 
     ### Set package version variables
         _abiname="$(cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/defines | grep 'abiname:' | sed -r 's/abiname:\s*//')"
@@ -220,14 +220,14 @@ build() {
 }
 
 _package() {
-    pkgdesc="The $pkgdesc kernel and modules"
-    depends=(coreutils kmod initramfs)
-    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-                'linux-firmware: firmware images needed for some devices'
-                'sof-firmware: firmware images needed for Sound Open Firmware capable devices'
-                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-                'uksmd: Userspace KSM helper daemon')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE UKSMD-BUILTIN VHBA-MODULE)
+  pkgdesc="The $pkgdesc kernel and modules"
+  depends=(coreutils kmod initramfs)
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices'
+              'sof-firmware: firmware images needed for Sound Open Firmware capable devices'
+              'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
+              'uksmd: Userspace KSM helper daemon')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE UKSMD-BUILTIN VHBA-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -250,8 +250,8 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-lqx' 'pahole')
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=('linux-lqx' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
