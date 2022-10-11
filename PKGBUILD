@@ -2,7 +2,7 @@
 _pkgname=mraa
 pkgname=${_pkgname}-radxa-git
 pkgver=2.1.0.23.gfc8c906
-pkgrel=5
+pkgrel=6
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
 provides=(${_pkgname%-*}=$pkgver)
 conflicts=(${_pkgname%-*})
@@ -22,8 +22,8 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/..
-  git apply extern_gVERSION.patch
+  cd ${srcdir}/${_pkgname}
+  git apply ../../extern_gVERSION.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
-diff --git a/src/mraa/include/version.h b/src/mraa/include/version.h
+diff --git a/include/version.h b/include/version.h
 index 47366ef..3a567a1 100644
---- a/src/mraa/include/version.h
-+++ b/src/mraa/include/version.h
+--- a/include/version.h
++++ b/include/version.h
 @@ -11,8 +11,8 @@
  extern "C" {
  #endif
