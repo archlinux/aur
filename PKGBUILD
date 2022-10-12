@@ -2,7 +2,7 @@
 pkgname=iot-exporter
 _name=iot_exporter
 pkgver=r7.80f2fc7
-pkgrel=1
+pkgrel=2
 pkgdesc="MQTT metric exporter for Prometheus Monitoring"
 url='https://github.com/markuslindenberg/iot_exporter'
 makedepends=('go')

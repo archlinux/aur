@@ -1,7 +1,7 @@
 pkgbase = iot-exporter
 	pkgdesc = MQTT metric exporter for Prometheus Monitoring
 	pkgver = r7.80f2fc7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markuslindenberg/iot_exporter
 	arch = any
 	license = MIT
