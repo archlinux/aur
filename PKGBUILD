@@ -2,12 +2,12 @@
 
 pkgname=watchman-bin
 pkgver=2022.10.10.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
 license=(MIT)
-depends=(openssl gcc11-libs)
+depends=(openssl gcc-libs)
 makedepends=(patchelf python)
 provides=("watchman=$pkgver")
 conflicts=(watchman)
@@ -43,10 +43,6 @@ END
     bin/* lib/*
 
   patchelf --set-rpath /usr/lib/watchman bin/* lib/*
-
-  # Use libgcc from gcc11-libs to avoid a crash
-  # https://github.com/facebook/watchman/issues/1019
-  patchelf --add-rpath /usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0 bin/* lib/*
 }
 
 package() {
