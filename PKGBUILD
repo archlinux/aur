@@ -5,13 +5,13 @@ pkgver=2.0.0.r0.gbb6974c
 pkgrel=1
 pkgdesc="ppfetch, but written in Rust."
 arch=('x86_64')
-url="https://github.com/RedsonBr140/ppfetch-rs"
+url="https://gitlab.com/redsonbr/ppfetch-rs"
 license=('MIT')
 provides=(${_pkgname}-bin)
 conflicts=(${_pkgname}-bin)
 makedepends=('rust' 'git')
 depends=('wmctrl')
-source=("$pkgname::git+https://github.com/RedsonBr140/ppfetch-rs.git")
+source=("$pkgname::git+https://gitlab.com/redsonbr/ppfetch-rs.git")
 sha256sums=('SKIP')
 
 pkgver() {
