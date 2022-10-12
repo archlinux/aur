@@ -1,6 +1,6 @@
 pkgbase = suppaftp
 	pkgdesc = A super FTP/FTPS command-line interface
-	pkgver = 4.3.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/veeso/suppaftp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = suppaftp
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = suppaftp::git+https://github.com/veeso/suppaftp.git#commit=91c8f0338859f11be72f1eea3479a47f98c677ba
+	source = suppaftp::git+https://github.com/veeso/suppaftp.git#commit=030d5642283537e91ef56d0ed5267a0ad85a19c5
 	b2sums = SKIP
 
 pkgname = suppaftp

@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=suppaftp
-pkgver=4.3.0
+pkgver=4.5.2
 pkgrel=1
 pkgdesc='A super FTP/FTPS command-line interface'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='91c8f0338859f11be72f1eea3479a47f98c677ba'
+_commit='030d5642283537e91ef56d0ed5267a0ad85a19c5'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -30,15 +30,18 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  cargo build --frozen --release --features="secure cli-bin"
+  cargo build --frozen --release --all-features --package suppaftp-cli
 }
 
 package() {
   cd "$pkgname"
 
-  install -vDm755 -t "$pkgdir/usr/bin" target/release/suppaftp
+  # binary
+  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
 
+  # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
+  # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE*
 }
