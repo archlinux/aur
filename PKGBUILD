@@ -2,11 +2,11 @@
 
 pkgname=pywal-16-colors
 _gitname=pywal
-pkgver=3.3.0.r131.ge136433
+pkgver=3.3.1.r132.ge7b0970
 pkgrel=1
 pkgdesc="Generate and change color-schemes on the fly, now with 16 colors."
 arch=('any')
-url="https://github.com/sonjiku/pywal"
+url="https://github.com/eylles/pywal16"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
