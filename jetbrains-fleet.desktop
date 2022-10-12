@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=JetBrains Fleet
+Comment=Next-generation IDE by JetBrains
+Exec=jetbrains-fleet %u
+Icon=jetbrains-fleet
+Terminal=false
+StartupWMClass=jetbrains-fleet
+Type=Application
+Categories=Development;IDE;

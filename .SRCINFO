@@ -1,0 +1,15 @@
+pkgbase = jetbrains-fleet
+	pkgdesc = Next-generation IDE by JetBrains
+	pkgver = 1.9.231
+	pkgrel = 1
+	url = https://www.jetbrains.com/fleet/
+	arch = x86_64
+	license = custom:jetbrains
+	source = https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-1.9.231.tar.gz
+	source = jetbrains-fleet.desktop
+	source = LICENSE
+	sha256sums = 0e233e000651667b25072d0892ac69ebb31da93b7169dfdf2016efa68a2b094e
+	sha256sums = af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426
+	sha256sums = 823bce80facc46ff161e0a800bdda27452e8beeb396bb163af560e9e6c796c75
+
+pkgname = jetbrains-fleet
