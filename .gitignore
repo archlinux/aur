@@ -1,0 +1,7 @@
+flipper/
+pkg/
+src/
+*.zip
+*.tar.gz
+*.tar.zst
+*.pkg.tar.xz
