@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin
 	pkgver = 0.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64

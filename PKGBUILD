@@ -85,7 +85,7 @@ package_vala-panel-appmenu-xfce-git() {
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   DESTDIR="${pkgdir}" meson install -C build
-  rm -rf ${pkgdir}/usr/share/{vala-panel,glib-2.0,locale,mate-panel,vala-panel-appmenu}
+  rm -rf ${pkgdir}/usr/share/{vala-panel,glib-2.0,locale,mate-panel,vala-panel-appmenu,doc,licenses}
   rm -rf ${pkgdir}/usr/lib/{mate-panel,vala-panel,budgie-desktop}
 }
 
@@ -100,7 +100,7 @@ package_vala-panel-appmenu-valapanel-git() {
             'appmenu-qt5: for qt5 menus')
   
   DESTDIR="${pkgdir}" meson install -C build
-  rm -rf ${pkgdir}/usr/share/{xfce4,glib-2.0,locale,mate-panel,vala-panel-appmenu}
+  rm -rf ${pkgdir}/usr/share/{xfce4,glib-2.0,locale,mate-panel,vala-panel-appmenu,doc,licenses}
   rm -rf ${pkgdir}/usr/lib/{mate-panel,xfce4,budgie-desktop}
 }
 
@@ -114,7 +114,7 @@ package_vala-panel-appmenu-mate-git() {
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
   DESTDIR="${pkgdir}" meson install -C build
-  rm -rf ${pkgdir}/usr/share/{vala-panel,glib-2.0,locale,xfce4,vala-panel-appmenu}
+  rm -rf ${pkgdir}/usr/share/{vala-panel,glib-2.0,locale,xfce4,vala-panel-appmenu,doc,licenses}
   rm -rf ${pkgdir}/usr/lib/{xfce4,vala-panel,budgie-desktop}
 }
 
