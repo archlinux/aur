@@ -8,7 +8,7 @@ pkgbase = nodejs-markmap-cli
 	depends = nodejs
 	depends = npm
 	noextract = markmap-cli-.tgz
-	source = https://registry.npmjs.org/markmap-cli/-/markmap-cli-.tgz
-	sha1sums = 7d860f66794de7337b21ee8d36241ec5be92be03
+	source = https://registry.npmjs.org/markmap-cli/-/markmap-cli-0.14.3.tgz
+	sha1sums = cb0c20a8e6d15fd87bc580edf1c8833197bef3e2
 
 pkgname = nodejs-markmap-cli

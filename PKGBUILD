@@ -10,9 +10,9 @@ url="https://github.com/gera2ld/markmap/packages/markmap-cli#readme"
 license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(7d860f66794de7337b21ee8d36241ec5be92be03)
+sha1sums=('cb0c20a8e6d15fd87bc580edf1c8833197bef3e2')
 
 package() {
 	cd $srcdir
