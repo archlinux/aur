@@ -1,8 +1,8 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=wrapland-kwinft
-pkgver=5.25.0
-_pkgver=0.525.0
+pkgver=5.26.0
+_pkgver=0.526.0
 pkgrel=1
 pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=("wrapland")
 conflicts=("wrapland")
 makedepends=(extra-cmake-modules doxygen qt5-tools wayland-protocols pkgconf)
 source=("https://gitlab.com/kwinft/wrapland/-/archive/wrapland@$_pkgver/wrapland-wrapland@$_pkgver.tar.gz")
-md5sums=('658dcbd830efda591c681057db1b00d0')
+md5sums=('80c0543b132a4706efdc2ee0f35951d6')
 
 prepare() {
   tar -xvf wrapland-wrapland@$_pkgver.tar.gz
