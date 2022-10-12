@@ -2,23 +2,23 @@
 # Contributor: Adam Ehlers Nyholm Thomsen<adament@adament.net>
 
 pkgname=davix
-pkgver=0.7.5
+pkgver=0.8.3
 _pkgver="R_${pkgver//./_}"
 pkgrel=1
 pkgdesc="A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols."
 arch=('i686' 'x86_64')
-url="https://dmc.web.cern.ch/projects/davix/home"
+url="https://github.com/cern-fts/davix"
 license=('LGPL2.1')
-depends=('openssl' 'libxml2' 'boost-libs')
+depends=('openssl' 'libxml2' 'boost-libs' 'util-linux-libs')
 makedepends=('doxygen' 'boost' 'cmake')
 checkdepends=('gtest')
 optdepends=()
 conflicts=(davix-git)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cern-it-sdc-id/${pkgname}/archive/${_pkgver}.tar.gz")
-sha256sums=('f0c8125020d5ef7f8bf301be0dc149a8196f6b9d755b2be349aabbb49bb99193')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgver}/davix-${pkgver}.tar.gz")
+sha256sums=('7e30b5541e08d32dbf5ae03c6bcabeaec063aec10a6647787822227b4541ae3e')
 
 build() {
-	cd "${pkgname}-${_pkgver}"
+	cd "${pkgname}-${pkgver}"
 	cmake -DLIB_SUFFIX="" -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release .
 	make
 	make doc
@@ -32,6 +32,6 @@ build() {
 #}
 
 package() {
-	cd "${pkgname}-${_pkgver}"
+	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}/" install
 }
