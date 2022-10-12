@@ -1,2 +1,3 @@
 all:
-	makepkg --printsrcinfo > .SRCINFO
+	updpkgsums
+	makepkg -g >> PKGBUILD
