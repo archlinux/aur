@@ -3,16 +3,16 @@
 pkgname=yacd-git
 _pkgname=yacd
 pkgver=0.3.6.r12.ge405512
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Yet Another Clash Dashboard'
 arch=('any')
 _repo="haishanh/${_pkgname}"
 url="https://github.com/${_repo}"
-license=('GPL3')
+license=('MIT')
 
 makedepends=('git' 'pnpm')
-optdepends=('clash:  A rule-based tunnel in Go'
+optdepends=('clash: A rule-based tunnel in Go'
             'sing-box: The universal proxy platform')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

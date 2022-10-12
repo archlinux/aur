@@ -1,10 +1,10 @@
 pkgbase = yacd-git
 	pkgdesc = Yet Another Clash Dashboard
 	pkgver = 0.3.6.r12.ge405512
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/haishanh/yacd
 	arch = any
-	license = GPL3
+	license = MIT
 	makedepends = git
 	makedepends = pnpm
 	optdepends = clash: A rule-based tunnel in Go
