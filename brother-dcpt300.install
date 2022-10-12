@@ -5,7 +5,7 @@ post_install() {
 	# cupswrapper
 	/opt/brother/Printers/dcpt300/cupswrapper/cupswrapperdcpt300
 	
-	systemctl restart org.cups.cupsd.service
+	systemctl restart cups.service
 }
 
 post_upgrade() {

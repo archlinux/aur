@@ -8,7 +8,6 @@ pkgdesc="Driver for the Brother DCP-T300 multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups' 'lib32-glibc')
-makedepends=('')
 install="brother-dcpt300.install"
 arch=('i686' 'x86_64')
 
