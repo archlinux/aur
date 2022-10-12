@@ -1,7 +1,7 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
