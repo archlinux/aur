@@ -1,7 +1,7 @@
 pkgbase = chrysalis
 	pkgdesc = Graphical configurator for Kaleidoscope-powered keyboards
 	pkgver = 0.11.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keyboardio/Chrysalis
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = chrysalis
 	makedepends = moreutils
 	makedepends = node-gyp
 	makedepends = yarn
-	depends = electron19
+	depends = electron17
 	depends = fuse2
 	depends = uucp
 	source = https://github.com/keyboardio/Chrysalis/archive/v0.11.8/Chrysalis-0.11.8.tar.gz

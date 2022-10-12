@@ -3,11 +3,11 @@
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
 pkgver=0.11.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
 license=(GPL3)
-_electron=electron19
+_electron=electron17
 depends=("$_electron"
          fuse2
          uucp)
