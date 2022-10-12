@@ -3,7 +3,7 @@
 
 pkgname=python-codetiming
 _pkg="${pkgname#python-}"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Flexible, customizable timer for your Python code"
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('python-flit-core' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('2fcb4afb18e0ac8302e4e059d2d3343ee1df0ab84d26ddf8cd80b9205c9e67dc')
+sha256sums=('f8a4ed71042a571e9863022573b76036d3efed726f2bb99a3536e56c201da49c')
 
 build() {
 	cd "$_pkg-$pkgver"
