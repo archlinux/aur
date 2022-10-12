@@ -11,7 +11,7 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$_npmver.tgz)
+noextract=($_npmname-$pkgver.tgz)
 sha1sums=('cb0c20a8e6d15fd87bc580edf1c8833197bef3e2')
 
 package() {
