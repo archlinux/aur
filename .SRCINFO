@@ -1,9 +1,9 @@
 pkgbase = r-jaspgraphs
 	pkgdesc = Custom Graphs for JASP
-	pkgver = 0.5.2.15
+	pkgver = 0.5.2.16
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspGraphs
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = r-jaspbase
 	license = GPL
