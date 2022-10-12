@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.4.r23.g2b9edce
+pkgver=2.0.4.r28.gf42bebd
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -39,12 +39,10 @@ conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/cemu-project/Cemu.git"
 	'imgui::git+https://github.com/ocornut/imgui.git'
-	"$_pkgname.bash"
 )
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'431a90ba59c911b5e822bf826a79228512ae1bc4221350cb0cf262f8f01c05d7c75effff59c0fc52a0f27b94ebd70d2d72c94432fcfef3920a3ae5ab179fdcd5'
 )
 
 pkgver() {
@@ -56,6 +54,7 @@ prepare() {
 	cd $_pkgname
 	git config submodule.dependencies/imgui.url ../imgui
 	git submodule update
+	rm -r bin/shaderCache
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
@@ -69,6 +68,7 @@ build() {
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DENABLE_VCPKG=OFF \
+		-DPORTABLE=OFF \
 		-Wno-dev
 	cmake --build build
 }
@@ -85,12 +85,11 @@ package() {
 		'libzstd.so'
 	)
 	cd $_pkgname
-	mv bin/Cemu{_release,}
 	# shellcheck disable=SC2154
-	install -d "$pkgdir"/usr/lib/$_pkgname
-	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/lib/$_pkgname bin/*
+	install -d "$pkgdir"/usr/{bin,share/Cemu}
+	mv bin/Cemu_release "$pkgdir"/usr/bin/cemu
+	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/share/Cemu bin/*
 	install -Dm644 -t "$pkgdir"/usr/share/applications dist/linux/info.cemu.Cemu.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/metainfo dist/linux/info.cemu.Cemu.metainfo.xml
 	install -Dm644 src/resource/logo_icon.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/info.cemu.Cemu.png
-	install -D ../$_pkgname.bash "$pkgdir"/usr/bin/$_pkgname
 }
