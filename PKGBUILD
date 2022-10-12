@@ -14,10 +14,11 @@ sha256sums=(adbf6f677c3805fcf282c74e08f2d55fced3e6d05793a030f9b6bd235d9f8704
 						49eb837a0bd5fe37767e0e678c78e9fce52466ef541bc28917b7b13004a774a5)
 
 package() {
-	cd "MarioVsLuigi-Linux"
 	mkdir -p $pkgdir/opt/nsmb-mvl
 	mkdir -p $pkgdir/usr/share/applications
+	cp nsmb-mvl.desktop $pkgdir/usr/share/applications
+	cp nsmb-icon.png $pkgdir/opt/nsmb-mvl
+	cd "MarioVsLuigi-Linux"
 	cp -r * $pkgdir/opt/nsmb-mvl
-	cp -r nsmb-mvl.desktop $pkgdir/usr/share/applications
 }
 
