@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=ofork
-pkgver=10.0.4
+pkgver=10.0.5
 pkgrel=1
 pkgdesc="OFORK is a OTRS fork open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -34,7 +34,10 @@ depends=("perl"
          "perl-lwp-protocol-https"
          "perl-bytes-random-secure")
 optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
-            "apache:   A high performance Unix-based HTTP server")
+            "apache:   A high performance Unix-based HTTP server"
+	    "perl-crypt-eksblowfish"
+            "mod_perl"
+            "perl-dbd-oracle")
 backup=("etc/webapps/${pkgname}/Config.pm")
 install="${pkgname}.install"
 source=("${pkgname}.install"
@@ -50,17 +53,17 @@ source=("${pkgname}.install"
 	"https://ftp.o-fork.de/AddOns/MasterSlave-${pkgver}.opm"
 	"https://ftp.o-fork.de/AddOns/Survey-${pkgver}.opm")
 sha256sums=('237bea50871d37e6822b5b47c6c47e90061981293a7edfe3c679e968e7088b42'
-            '9dd55c850593b46d936a7070c60d603b2a0d0e81169f5ed8a300c42d45428118'
-            'c9f6c0a8917b631acde081317950d62dba7c2461885e889a576a02aacff30606'
-            '4c7d0a18ab46525c9f0831853e3878494ff48809027ebfbd9c27b022d77f8b65'
-            '598068234de4eaccfab1238c8179999a3ed8f53f139973a2d01e7824c1b5a5c6'
-            '6d506accf7484ecbda5465a925308269609cf136adb67ebe4bd90ae16bfcecd9'
-            '1522c12c44a2e3056a0c699c702e4de33a6d94a4f88fe1554639c2dc33793302'
-            '4c63d1c6dd697bf9f834db927864b8d32e0e5683a81276bcd4b689af2d7b0b1a'
-            '547073fa299605d39d6eb9b47f0d603add4fcefed712482e263357fddd73eff5'
-            '782bce827290507100b79452196400dda07beb2a6cfaddb3e6325e9ca4294adf'
-            '4b452f5e23e2ef4dd3f1e0f108543b35733079fa21e0c783f0e8f4d5960ae445'
-            '00cd245abfa427b69c83392209745903cfc761d29bd52254c22d34608e89583c')
+            '6523e133fa22ad2e8c084f7db7e38271eb554aa5cde91f2954ce6ec4f6271d5f'
+            '6ce590a6d5be8704cb24691166f975bc77ce14b563a5b0255bab7dc73539fee7'
+            'cf63f0448b1110a680d681403b3963f7a64e9363eaddc3801baa47f95ab15d6b'
+            '000fbf1d7dacdae65ce0080b7464f34a1756340b6d5d79b7a751d550cae2a197'
+            '0c54e72ba31e88d297ef1512b77c4675836837c293cf0442df820a59395ccf5b'
+            '8adb4eaa4a973b9556604ce7364b4f5752d927d44b4f81ef8bd6f79754e90c8b'
+            '622079af9890e2e9198708dcdc0e4af26927c4d959f6c31c2a19c9a741a8743a'
+            '3a2b477c7ff594cce4e1c4019cbf3c2678cd1913b16944940771108b4da27906'
+            '5e28f204af5dd869c2f50d6a7003ccbf49020156eb83dfa7ab1234fe3405523f'
+            'ee6d91f491841571e06497aeae2c1e403c46390b97357935cc19d569edf28f76'
+            '533a6760c7d89c70764be3f5d45b269c2c51a828262b778702be97384890286b')
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
