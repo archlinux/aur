@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r2679.82213191
+pkgver=r2690.7ed35bfb
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -33,7 +33,6 @@ sha512sums=('SKIP'
 
 provides=("hare")
 conflicts=("hare")
-# options=(debug)
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -45,6 +44,12 @@ build() {
 	cp "$srcdir/config.$CARCH.mk" config.mk
 	export VERSION="dev+$(echo "$_commit" | cut -c-7)"
 	export LOCALVER=arch
+
+	# remove '-Wl,' prefix if present, since it is only required when
+	# the linker is invoked indirectly. Keeping it will cause the linker to
+	# fail.
+	export LDFLAGS=${LDFLAGS#"-Wl,"}
+
 	make -j1 # XXX: parallel build driver builds are broken
 }
 
