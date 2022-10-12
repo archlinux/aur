@@ -1,0 +1,37 @@
+[Unit]
+Description=IOT expoter for prometheus
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/iot-exporter -mqtt.broker $MQTT_BROKER
+WorkingDirectory=/var/lib/iot-exporter
+EnvironmentFile=/etc/default/iot-exporter
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=iot-exporter
+
+CapabilityBoundingSet=
+NoNewPrivileges=true
+RemoveIPC=true
+LockPersonality=true
+
+ProtectControlGroups=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectHostname=true
+ProtectProc=noaccess
+ProtectClock=yes
+
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

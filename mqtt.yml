@@ -1,0 +1,23 @@
+'zigbee2mqtt/+':
+  - name: zigbee_link_quality
+    match: '^zigbee2mqtt/([^/]+)$'
+    value: '{{ .Payload.linkquality }}'
+    labels:
+      instance: '{{ index .Matches 1 }}'
+  - name: zigbee_update_available
+    match: '^zigbee2mqtt/([^/]+)$'
+    value: '{{ if .Payload.update_available }}1{{ else }}0{{ end }}'
+    labels:
+      instance: '{{ index .Matches 1 }}'
+'esphome/+/sensor/+/state':
+  - name: sensor_temperature_celsius
+    match: '^esphome/([^/]+)/sensor/temperatur_([^/]+)/state$'
+    labels:
+      instance: '{{ index .Matches 1 }}'
+      sensor: '{{ index .Matches 2 }}'
+'emsesp/+/boiler_data':
+  - name: ems_boiler_ignition_on
+    match: '^emsesp/([^/]+)/boiler_data$'
+    value: '{{ if eq .Payload.ignWork "on" }}1{{ else }}0{{ end }}'
+    labels:
+      instance: '{{ index .Matches 1 }}'

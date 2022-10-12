@@ -1,0 +1,3 @@
+d /var/lib/iot-exporter 0750 iot-exporter iot-exporter
+z /etc/default/iot-exporter 0640 iot-exporter iot-exporter
+L /var/lib/iot-exporter/mqtt.yml - - - - /etc/iot-exporter/mqtt.yml

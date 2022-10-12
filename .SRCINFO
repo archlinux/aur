@@ -1,0 +1,22 @@
+pkgbase = iot-exporter
+	pkgdesc = MQTT metric exporter for Prometheus Monitoring
+	pkgver = r7.80f2fc7
+	pkgrel = 1
+	url = https://github.com/markuslindenberg/iot_exporter
+	arch = any
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/markuslindenberg/iot_exporter.git
+	source = iot-exporter.env
+	source = iot-exporter.service
+	source = iot-exporter.sysusers
+	source = iot-exporter.tmpfiles
+	source = mqtt.yml
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = iot-exporter
