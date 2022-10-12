@@ -1,4 +1,5 @@
-# Maintainer: Martin Zecher Magni <mzecher@gmail.com>
+# Maintainer: jx11r <jx11r@hotmail.com>
+# Contributor: Martin Zecher Magni <mzecher@gmail.com>
 # Strongly based on DCP-T500W PKGBUILD by Samuel Fernando Mesa Giraldo
 
 pkgname=brother-dcpt300
