@@ -2,3 +2,4 @@
 src/
 pkg/
 /edlib-*.tar.gz
+/edlib-*.log
