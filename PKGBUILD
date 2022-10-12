@@ -1,26 +1,26 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-search-providers-vscode
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Add VSCode workspaces to Gnome search"
 arch=('x86_64')
-url="https://codeberg.org/flausch/gnome-search-providers-vscode"
+url="https://github.com/lunaryorn/gnome-search-providers-vscode"
 license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-md5sums=('852d336e07cbce295f19e868ba5152ae')
-sha1sums=('2695f33f605e88c71b1186db0ec28a8a29fb1ce3')
-sha512sums=('cb4ae7a4c43f62c95272285d11109994c7c52fe075f51cc529bff4a6a2eea7d170ced6dbb95c654f5c6c83b62bbfcac1053558bd707494fbf119f1bedb339da6')
+md5sums=('75b02f24054223dcd97211907d022934')
+sha1sums=('cf12baa4a0e35a38c551334eba73cce270787073')
+sha512sums=('482a799ddc460651b2b9ad799fea6816d075720b16d6e571e839e85d0d53ca73a6786f08d717b80ccd3fdb49523dddd9db4f43e0bed242bcc8cc0ec7b7dbc7b6')
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	export RUSTFLAGS='--cap-lints=allow'
 	make PREFIX="/usr" build
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
