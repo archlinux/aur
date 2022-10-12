@@ -4,6 +4,7 @@ pkgbase = system76-keyboard-configurator
 	pkgrel = 1
 	url = https://github.com/pop-os/keyboard-configurator
 	arch = x86_64
+        arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	makedepends = systemd
