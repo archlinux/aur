@@ -1,6 +1,6 @@
 pkgbase = i3expo-ng-git
 	pkgdesc = Exposè for i3 WM
-	pkgver = r75.6768f5a
+	pkgver = r85.b55a74b
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/morrolinux/i3expo-ng
@@ -14,7 +14,13 @@ pkgbase = i3expo-ng-git
 	depends = python-i3ipc
 	depends = python-pillow
 	depends = python-pyxdg
+	depends = libxdmcp
+	depends = libxau
+	depends = libxcb
+	depends = libx11
+	depends = xorg-xrandr
 	provides = i3expo
+	provides = i3expo-daemon
 	source = i3expo-ng-git::git+https://github.com/morrolinux/i3expo-ng.git
 	md5sums = SKIP
 
