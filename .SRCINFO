@@ -14,6 +14,7 @@ pkgname = aescrypt
 
 pkgname = aescrypt-gui
 	pkgdesc = Graphical user interface for AESCrypt
-	optdepends = perl: for aescrypt-gui
-	optdepends = zenity: for aescrypt-gui
-	optdepends = kdialog: for aescrypt-gui
+	depends = aescrypt
+	depends = perl
+	optdepends = zenity: GTK-based password prompt
+	optdepends = kdialog: Qt-based password prompt
