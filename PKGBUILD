@@ -43,6 +43,14 @@ source=(
 sha256sums=('012427205e400bc24c38a9dc24ca600c779574b8837492ccdb229aaca1ce7bc3'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
 
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+	sed -i 's/cleo\s/cleo_v0 /' \
+		trakt_scrobbler/console.py \
+		trakt_scrobbler/commands/command.py
+}
+
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py build
