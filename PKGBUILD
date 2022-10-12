@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=tembro
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Virtual software instrument based on samples"
 arch=(any)
@@ -10,10 +10,11 @@ license=(GPL3)
 groups=(pro-audio)
 depends=(hicolor-icon-theme libcalfbox-lss python python-pyqt5 ttf-dejavu)
 optdepends=('new-session-manager: for session management')
+options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.gz{,.sig})
-sha512sums=('9adc9137e90384c2c234f5079e4379c98dfcd90582f2db7e23e47cb67d28450cd906155e4f65fd35ecfe346e832e11b7ae2e8eb1166d5e38d9425e7a221414f4'
+sha512sums=('919a4eaf3d4f55cd133150d18139607a4edca8c67067cadd0ad423b2a3442a81cb6ada4204fb0219f11ad3a707aba20b8fb85ed7e8044cd6de1fdcd6ac64176c'
             'SKIP')
-b2sums=('cc23d6662ad3fd57b9412171b5b36456312dfcfe6abfd12b5d9cd458575509010bae457cb965db3d811853a01fc00e8081a62162c79e696694b422083f034899'
+b2sums=('f2da2d49f2b08118a4c38fe6e75902cb7603d1ffeaa675b1105040414aa12ac1b4933d2d9e42072958aaef99d61f97fdd570a68f24f10f7be70a75a596d6cb17'
         'SKIP')
 validpgpkeys=('45D952EF384ADFBB00913E3428C6A306F2909FEE') # Nils Hilbricht <nils@hilbricht.com>
 
