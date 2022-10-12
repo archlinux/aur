@@ -8,7 +8,7 @@ pkgbase = mpv_inhibit_gnome
 	makedepends = git
 	depends = mpv
 	depends = dbus
-	source = mpv_inhibit_gnome::git+https://github.com/Guldoman/mpv_inhibit_gnome.git#commit=a8b4d2c9be24baa7438e65778de512191406bb11
+	source = mpv_inhibit_gnome::git+https://github.com/Guldoman/mpv_inhibit_gnome.git#commit=9069be0f15fa2c222d78a183d4aa1477d8a8f2cd
 	sha256sums = SKIP
 
 pkgname = mpv_inhibit_gnome
