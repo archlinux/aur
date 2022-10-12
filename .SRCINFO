@@ -1,0 +1,18 @@
+pkgbase = libdspl
+	pkgdesc = Opensource cross-platform digital signal processing algorithm library, written in C language.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Dsplib/libdspl-2.0
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = blas
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/Dsplib/libdspl-2.0/archive/945a7fd417dab398a950ebc2557b3dcae109c7df.tar.gz
+	sha1sums = 435333d6f5052a9000c72f26344d5046353e29ab
+
+pkgname = libdspl
