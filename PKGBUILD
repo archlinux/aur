@@ -1,7 +1,7 @@
 # Maintainer Kamil Bączkowski <me@kavela.ch>
 
 pkgname=pywal-16-colors
-_gitname=pywal
+_gitname=pywal16
 pkgver=3.3.1.r132.ge7b0970
 pkgrel=1
 pkgdesc="Generate and change color-schemes on the fly, now with 16 colors."
