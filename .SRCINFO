@@ -1,8 +1,8 @@
 pkgbase = redfetch-git
 	pkgdesc = A fast fetch written in C, with the ppfetch Ascii Art.
-	pkgver = r0.ga0f9e6d
+	pkgver = r0.g000649b
 	pkgrel = 1
-	url = https://github.com/RedsonBr140/Redfetch
+	url = https://codeberg.org/redson/Redfetch
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
