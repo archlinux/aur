@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
-pkgver=2.1
-pkgrel=26
+pkgver=2.2
+pkgrel=1
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('BSD' 'GPL')
@@ -31,7 +31,7 @@ source+=('README'
 sha256sums=('SKIP'
             'a1b0557804eec614e6783103754c718b471a8efc116cb9ad67cd23d2dac99f41'
             'a97daddb428df9d0f4951d335cd36482bfd2f4710338aff87edc4c70cfcfc807'
-            'e913017f573b39f14d78b3f0bb5c4913731b0d65ed6b2c3672d96dcf86c04209')
+            'e912ff7d36c70c6bbcf87f9656535a2f470cf5a0f72912671d3a57246784f343')
 install=nft_geoip.install
 
 package() {

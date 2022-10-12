@@ -260,9 +260,7 @@ sub writeCountry
 	print $fh "define geoip".($family == AF_INET ? '4' : '6')."_iso_country_".uc($iso_code)." = {\n";
 	foreach my $range (@ranges) {
 		my ($start, $end) = split('-', $range);
-		print $fh "    $start";
-		print $fh "-$end" if ($start ne $end);
-		print $fh ",\n";
+		print $fh "    $start-$end,\n";
 	}
 	print $fh "}\n";
 	close $fh;
