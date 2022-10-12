@@ -1,8 +1,10 @@
-# Maintainer: Anthony Wang <ta180m@gmail.com>
+# Maintainer: Allison Smith <alyway@protonmail.com>
+# Contributor: Anthony Wang <ta180m@gmail.com>
+# I could only get this working in java-11-openjdk, hence the depends
 
 pkgname=terasology
-_version=5.1.1
-_version_postfix=alpha21
+_version=5.3.0
+_version_postfix=alpha23
 pkgver=${_version}${_version_postfix}
 pkgrel=1
 epoch=1
@@ -20,7 +22,7 @@ source=(
 )
 sha512sums=('b575b3e3bd5200794a9752ad6f96a147fd5af0196b7e81d1afb4358f9c4da1b656e5ad326cdeabf1be687f1ae69031d609420fc1df2001ef71a131068f2ef835'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            'f466a0675b0fc7a330dbce8ae80fc20749417c90ae89fc693c9e83a003b970a9f8b46239eb71c4318f59db37f1e8b57d9a36dfad4cd007987726342af3d6280e')
+            'cddc836c6704810b0c9025828d0ed35ea55d5024598a4b022dc2f6332c55ddf416cfd07852e599d9deefee5d1012e82ae8488a727422e05dd20194799473317d')
 
 package() {
     cd "$srcdir"
