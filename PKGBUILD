@@ -2,8 +2,8 @@
 
 pkgbase=linux-baytrail49 
 _srcname=linux-baytrail49
-pkgver=4.9.247.273.a60ee257c
-_pkgver=4.9.247
+pkgver=4.9.330.315.057159bf2
+_pkgver=4.9.330
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -16,8 +16,8 @@ source=("git+https://github.com/muhviehstah/linux-baytrail49.git#tag=${_pkgver}"
         )
 
 sha256sums=('SKIP'
-            'b77f767226dbd73e2fd9d2b78a12d0224e09aafee1e2cf3e5252934117aebb27'
-            '1ce3c022f05200a51e9ec5b2f6ba322138bf46ae8d8668ef284fea9c1ad16ca3'
+            '21956d91d45f025e70a906d6d7ee28c68fac45cb0cb099bd36fc074d47f50a72'
+            'f9651e7deee3148546266badb48ff1ebf2f73f1dc5f7bd48c8d034c7c076547d'
             'd872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a')
 
 _kernelname=${pkgbase#linux}

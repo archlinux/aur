@@ -1,5 +1,5 @@
 pkgbase = linux-baytrail49
-	pkgver = 4.9.247.273.a60ee257c
+	pkgver = 4.9.330.315.057159bf2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = linux-baytrail49
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.247
+	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.330
 	source = config
 	source = config.x86_64
 	source = linux-baytrail49.preset
 	sha256sums = SKIP
-	sha256sums = b77f767226dbd73e2fd9d2b78a12d0224e09aafee1e2cf3e5252934117aebb27
-	sha256sums = 1ce3c022f05200a51e9ec5b2f6ba322138bf46ae8d8668ef284fea9c1ad16ca3
+	sha256sums = 21956d91d45f025e70a906d6d7ee28c68fac45cb0cb099bd36fc074d47f50a72
+	sha256sums = f9651e7deee3148546266badb48ff1ebf2f73f1dc5f7bd48c8d034c7c076547d
 	sha256sums = d872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a
 
 pkgname = linux-baytrail49
@@ -35,4 +35,3 @@ pkgname = linux-baytrail49-headers
 
 pkgname = linux-baytrail49-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-baytrail49 kernel with baytrail freeze fixes
-
