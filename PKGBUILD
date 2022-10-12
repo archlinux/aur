@@ -1,16 +1,16 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=stig-viewer
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc="Graphical user interface for XCCDF STIG files"
 arch=('x86_64')
 url="https://public.cyber.mil/stigs/stig-viewing-tools/"
 license=('custom')
-source=("https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer_2-16_Linux.zip"
+source=("https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer_${pkgver/./-}_Linux.zip"
         "https://upload.wikimedia.org/wikipedia/commons/0/05/US-DefenseInformationSystemsAgency-Seal.svg"
         "local://LICENSE"
         "local://stig-viewer.desktop")
-sha256sums=('654d37251bcbaff4bef353f7e835cf01a5df1a13dae3440026e7af414375d3e6'
+sha256sums=('06b350cb758e9177140cf92a5ad95f2e6bc2c658fede46feff6a9701e9d185a6'
             'a1cdc9c6390b0af407c909bc9f02f2ed500103bac51ed6ce23ddbebf3fd7b9d8'
             'SKIP'
             'SKIP')
