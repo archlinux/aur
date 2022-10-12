@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=talosctl
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
