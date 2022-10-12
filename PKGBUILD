@@ -3,7 +3,7 @@
 
 pkgname=redfetch-git
 _pkgname=redfetch
-pkgver=r0.ga0f9e6d
+pkgver=r0.g000649b
 pkgrel=1
 pkgdesc="A fast fetch written in C, with the ppfetch Ascii Art."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('gcc' 'make' 'git')
 depends=('wmctrl')
 provides=('redfetch')
-source=("$_pkgname::git+https://github.com/RedsonBr140/redfetch.git")
+source=("$_pkgname::git+https://codeberg.org/redson/redfetch.git")
 sha256sums=('SKIP') # We can't verify the git build every time
 
 pkgver() {

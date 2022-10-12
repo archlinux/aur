@@ -10,7 +10,7 @@ pkgbase = redfetch-git
 	makedepends = git
 	depends = wmctrl
 	provides = redfetch
-	source = redfetch::git+https://github.com/RedsonBr140/redfetch.git
+	source = redfetch::git+https://codeberg.org/redson/redfetch.git
 	sha256sums = SKIP
 
 pkgname = redfetch-git
