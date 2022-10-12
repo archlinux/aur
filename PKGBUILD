@@ -4,10 +4,10 @@ _pkgname=xmlparsedata
 _pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=1.0.5
-pkgrel=2
-pkgdesc="Parse Data of 'R' Code as an 'XML' Tree"
+pkgrel=4
+pkgdesc='R code parse data as an XML tree'
 arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+url='https://github.com/r-lib/xmlparsedata'
 license=('MIT')
 depends=(
   r
@@ -17,11 +17,11 @@ optdepends=(
   r-testthat
   r-xml2
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('766034ab5e9728609bd240c9954d23ca0cdb881a98a31b9d3e1c8767c7b7cbb0')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/r-lib/xmlparsedata/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('89c58d560d0059e6b5481f41b4e7890fa457418ce7cb85e17974b4e63029f3bf')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}-${pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
