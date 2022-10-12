@@ -1,0 +1,21 @@
+pkgbase = python-jupyter_ascending
+	pkgdesc = Edit Jupyter notebooks using your favorite editor
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = https://github.com/untitled-ai/jupyter_ascending
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ipywidgets
+	depends = python-jupytext
+	depends = python-jsonrpcserver
+	depends = python-jsonrpcclient
+	depends = python-loguru
+	depends = python-attrs
+	depends = python-toml
+	depends = python-edlib
+	source = jupyter_ascending-0.1.23.tar.gz::https://github.com/untitled-ai/jupyter_ascending/archive/refs/tags/0.1.23.tar.gz
+	sha512sums = 63eab2459f8bb1b08e8a4adbeb44f78a775db34eec0e212503a5bdbe52878519d07717efeb0574bd262c2e693e90c4beec11d42524e7e57d1cbd1f186352566d
+
+pkgname = python-jupyter_ascending

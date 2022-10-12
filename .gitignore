@@ -1,0 +1,6 @@
+*.pkg.tar.*
+src/
+pkg/
+/python-jupyter_ascending-*.tar.gz
+/python-jupyter_ascending-*.log
+jupyter_ascending-0.1.23.tar.gz
