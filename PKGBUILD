@@ -1,5 +1,3 @@
-# Maintainer: Astroncia <kestraly+gmail+com>
-
 pkgname=astronciaiptv-git
 pkgver=0.0.92
 pkgrel=4
