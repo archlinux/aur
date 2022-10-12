@@ -3,7 +3,7 @@
 
 pkgname=caddy-trojan
 pkgver=2.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imgk/caddy-trojan"
@@ -20,7 +20,7 @@ source=(
     "https://raw.githubusercontent.com/caddyserver/dist/master/config/Caddyfile"
     "https://raw.githubusercontent.com/caddyserver/dist/master/welcome/index.html"
 )
-sha256sums=('fca52680914605bdf88e015ca3d79bb89def95877fb7369b67e9a0bfe3f85aca'
+sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
             'a9294eeba17a8fd57cf11cef21e2eb3719a016646eeac0764a0d9f9f380a40ef'
             '99282b1a57857d23b97883dfd7dd147005956cc04405630d6e4d73bb7069f5ba'
             'df2189b76e606ba16f620a348a4ecab446c6760234363566d473a2a51636ebe7'

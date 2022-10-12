@@ -6,4 +6,4 @@ Target = caddy-trojan
 [Action]
 Description = Copying Caddyfile...
 When = PostTransaction
-Exec = /usr/bin/install -Dm644 /usr/share/caddy/Caddyfile /etc/caddy/Caddyfile
+Exec = [[ ! -f /etc/caddy/Caddyfile ]] && /usr/bin/install -Dm644 /usr/share/caddy/Caddyfile /etc/caddy/Caddyfile
