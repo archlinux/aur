@@ -1,5 +1,3 @@
-# Maintainer: Astroncia <kestraly+gmail+com>
-
 pkgname=astronciaiptv
 pkgver=0.0.95
 pkgrel=1
