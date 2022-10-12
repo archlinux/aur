@@ -3,7 +3,7 @@
 
 pkgname=jabba
 pkgver=0.11.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Java Version Manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/shyiko/jabba"
@@ -16,12 +16,14 @@ sha256sums=('33874c81387f03fe1a27c64cb6fb585a458c1a2c1548b4b86694da5f81164355')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
+  echo "!! This patch will create new files -- if it says Skipped patch, it means it failed. If so, do a clean build [remove src]"
   patch -Np1 < ../../fix-golang-glide.patch
+  
 }
 
 build() {
   export GOPATH=$srcdir/gopath
-  mkdir $GOPATH
+  mkdir -p $GOPATH
 
   mkdir -p "$GOPATH/src/github.com/shyiko"
   mv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/shyiko/jabba"
