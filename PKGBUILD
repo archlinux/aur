@@ -28,11 +28,12 @@ sha256sums=('SKIP'
             'df3efb08711b0ef9be3a2e264cd54bd8d50d77576f538f499dcbfce1c4b4d9df'
             'cc2ec96b2ec18d8b161f0c8233c1ddff58cddb59bfd05e1c5910eb7ef0ce9c93'
             '48ed322539cff276909d8eb6d81c17c776e1f2ec6353ce6aef1b8a559271b0ad'
-            '09704f72e1d8a804d0a2de6443adbbec98431564538c95c28fed713ce219ecfb'
+            'c334dc381dc1abf44494ae73b64335e7a3df6151c661657ae0d639f01f9f0fb1'
             'eb6b4f2682290e341a377bee12246c076816789d8f716fdd26c7367a47408e91'
             'e8b0bc5a03fd39423c64fc804199b258d53f2ad5327954d74d3a3be0dfe7924a'
             '9a48034fabdf487502663149d7cfd4a59bdf0e116e681c790e0c39b23267d7cb'
             '7638620d532a55e3423cee9ee7905941ef81fae1b024bf7960bee1b9dcd65efe')
+
 backup=(etc/nginx/sites-available/{anki-sync-server-http,anki-sync-server-https} usr/lib/systemd/system/anki-sync-server.service)
 
 _install_dir_="/opt/${pkgname%-git}"
