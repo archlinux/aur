@@ -2,9 +2,9 @@
 
 pkgname=gcfflasher
 pkgver=4.0.3_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dresden-elektronik/gcfflasher"
 license=(BSD)
 depends=(libgpiod)
