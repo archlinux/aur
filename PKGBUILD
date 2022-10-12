@@ -20,7 +20,7 @@ source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgve
         "ASF.json"
         "NLog.config")
 sha256sums=('SKIP'
-            '875087dd231833ce8a79803e3c5d1cda710f5e0bdec3543b19a46828a5491f9c'
+            'd61a83e249f25cd36e1c88bf702a9b50a28f83821f6a6004a95d244bb3def361'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
             '636f3a125071cabfcb0c3828c6f9b0ec613789ab846ff71448d1a6eb110aee3f')

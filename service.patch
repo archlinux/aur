@@ -1,5 +1,5 @@
---- ArchiSteamFarm@.service.org	2022-10-08 21:09:53.830905346 +0200
-+++ ArchiSteamFarm@.service	2022-10-08 21:11:49.460474684 +0200
+--- ArchiSteamFarm@.service.org	2022-10-12 15:23:39.580608477 +0200
++++ ArchiSteamFarm@.service	2022-10-12 15:21:37.050911724 +0200
 @@ -3,7 +3,7 @@
  
  [Service]
@@ -19,3 +19,12 @@
  RemoveIPC=yes
  RestrictAddressFamilies=AF_INET AF_INET6
  RestrictNamespaces=yes
+@@ -41,7 +42,7 @@
+ # TODO: Requires systemd v247+ due to https://github.com/systemd/systemd/issues/16666
+ # Since we don't want to enforce OS upgrade for everybody just yet, it's commented out for now
+ # We'll likely enforce it when .NET switches to Debian 11+ requirement
+-#SecureBits=noroot-locked
++SecureBits=noroot-locked
+ 
+ [Unit]
+ After=network.target
