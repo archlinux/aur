@@ -3,7 +3,7 @@
 
 pkgname=jabba
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Java Version Manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/shyiko/jabba"
@@ -13,6 +13,11 @@ makedepends=('git' 'go' 'glide')
 depends=('glibc')
 source=("https://github.com/shyiko/jabba/archive/${pkgver}.tar.gz")
 sha256sums=('33874c81387f03fe1a27c64cb6fb585a458c1a2c1548b4b86694da5f81164355')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  patch -Np1 < ../../fix-golang-glide.patch
+}
 
 build() {
   export GOPATH=$srcdir/gopath

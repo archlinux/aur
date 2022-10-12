@@ -1,0 +1,167 @@
+From 7b9e621692810876a6b9363c6b6af7ea446ae39f Mon Sep 17 00:00:00 2001
+From: Abhinav Gupta <mail@abhinavg.net>
+Date: Sun, 21 Feb 2021 16:54:24 -0800
+Subject: [PATCH 1/2] Initialize Go modules
+
+Run `go mod init` and `go mod tidy` to initialize Go modules using
+dependencies specified in glide.lock.
+---
+ go.mod | 19 +++++++++++++++++++
+ go.sum | 39 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 58 insertions(+)
+ create mode 100644 go.mod
+ create mode 100644 go.sum
+
+diff --git a/go.mod b/go.mod
+new file mode 100644
+index 0000000..76c284b
+--- /dev/null
++++ b/go.mod
+@@ -0,0 +1,19 @@
++module github.com/shyiko/jabba
++
++go 1.15
++
++require (
++	github.com/Masterminds/semver v1.3.1
++	github.com/Sirupsen/logrus v0.10.0
++	github.com/hashicorp/go-rootcerts v0.0.0-20160503143440-6bb64b370b90
++	github.com/inconshreveable/mousetrap v1.0.0 // indirect
++	github.com/mitchellh/go-homedir v0.0.0-20160301183130-981ab348d865
++	github.com/mitchellh/ioprogress v0.0.0-20150521211556-816395526456
++	github.com/spf13/cobra v0.0.0-20160322171042-c678ff029ee2
++	github.com/spf13/pflag v0.0.0-20151218134703-7f60f83a2c81
++	github.com/stretchr/testify v1.7.0 // indirect
++	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
++	golang.org/x/sys v0.0.0-20160322232243-afce3de5756c // indirect
++	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
++	gopkg.in/yaml.v2 v2.0.0-20160928153709-a5b47d31c556
++)
+diff --git a/go.sum b/go.sum
+new file mode 100644
+index 0000000..0927bc9
+--- /dev/null
++++ b/go.sum
+@@ -0,0 +1,39 @@
++github.com/Masterminds/semver v1.3.1 h1:4CEBDLZtuloRJFiIzzlR/VcQOCiFzhaaa7hE4DEB97Y=
++github.com/Masterminds/semver v1.3.1/go.mod h1:MB6lktGJrhw8PrUyiEoblNEGEQ+RzHPF078ddwwvV3Y=
++github.com/Sirupsen/logrus v0.10.0 h1:I5b9VTLOttchcwWCzzNfRDAW2EFGlEN49hyoyq6d2ZI=
++github.com/Sirupsen/logrus v0.10.0/go.mod h1:rmk17hk6i8ZSAJkSDa7nOxamrG+SP4P0mm+DAvExv4U=
++github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
++github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
++github.com/hashicorp/go-rootcerts v0.0.0-20160503143440-6bb64b370b90 h1:VBj0QYQ0u2MCJzBfeYXGexnAl17GsH1yidnoxCqqD9E=
++github.com/hashicorp/go-rootcerts v0.0.0-20160503143440-6bb64b370b90/go.mod h1:o4zcYY1e0GEZI6eSEr+43QDYmuGglw1qSO6qdHUHCgg=
++github.com/inconshreveable/mousetrap v1.0.0 h1:Z8tu5sraLXCXIcARxBp/8cbvlwVa7Z1NHg9XEKhtSvM=
++github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
++github.com/kr/pretty v0.2.1 h1:Fmg33tUaq4/8ym9TJN1x7sLJnHVwhP33CNkpYV/7rwI=
++github.com/kr/pretty v0.2.1/go.mod h1:ipq/a2n7PKx3OHsz4KJII5eveXtPO4qwEXGdVfWzfnI=
++github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
++github.com/kr/text v0.1.0 h1:45sCR5RtlFHMR4UwH9sdQ5TC8v0qDQCHnXt+kaKSTVE=
++github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
++github.com/mitchellh/go-homedir v0.0.0-20160301183130-981ab348d865 h1:bCuq5mC5XKQognwAQG20DK+aKXCl9qbQr253imrLfMY=
++github.com/mitchellh/go-homedir v0.0.0-20160301183130-981ab348d865/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
++github.com/mitchellh/ioprogress v0.0.0-20150521211556-816395526456 h1:GPLl+eMs5PMtqSsc405es5pDH2k06xJilq8xrg2A1NI=
++github.com/mitchellh/ioprogress v0.0.0-20150521211556-816395526456/go.mod h1:waEya8ee1Ro/lgxpVhkJI4BVASzkm3UZqkx/cFJiYHM=
++github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
++github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
++github.com/spf13/cobra v0.0.0-20160322171042-c678ff029ee2 h1:ZUpMwiqoxlvb/9AuwEkR5ISR/oUsgztJiMykpL5lU2w=
++github.com/spf13/cobra v0.0.0-20160322171042-c678ff029ee2/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=
++github.com/spf13/pflag v0.0.0-20151218134703-7f60f83a2c81 h1:e8OMOPK+iXlzdnq5GOtSZDnw9HJi1faEKhCoEIxVUrY=
++github.com/spf13/pflag v0.0.0-20151218134703-7f60f83a2c81/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
++github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
++github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
++github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
++github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 h1:nIPpBwaJSVYIxUFsDv3M8ofmx9yWTog9BfvIu0q41lo=
++github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8/go.mod h1:HUYIGzjTL3rfEspMxjDjgmT5uz5wzYJKVo23qUhYTos=
++golang.org/x/sys v0.0.0-20160322232243-afce3de5756c h1:rvKEj3qecbotxLr4L4QmX+cKYj+t0LEVfTG5eSvNqMk=
++golang.org/x/sys v0.0.0-20160322232243-afce3de5756c/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
++gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
++gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c h1:Hei/4ADfdWqJk1ZMxUNpqntNwaWcugrBjAiHlqqRiVk=
++gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c/go.mod h1:JHkPIbrfpd72SG/EVd6muEfDQjcINNoR0C8j2r3qZ4Q=
++gopkg.in/yaml.v2 v2.0.0-20160928153709-a5b47d31c556 h1:hKXbLW5oaJoQgs8KrzTLdF4PoHi+0oQPgea9TNtvE3E=
++gopkg.in/yaml.v2 v2.0.0-20160928153709-a5b47d31c556/go.mod h1:JAlM8MvJe8wmxCU4Bli9HhUf9+ttbYbLASfIpnQbh74=
++gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c h1:dUUwHk2QECo/6vqA44rthZ8ie2QXMNeKRTHCNY2nXvo=
++gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+
+From 4cb0eeb1d2470a86fa89e4ee90d27168e81facea Mon Sep 17 00:00:00 2001
+From: Abhinav Gupta <mail@abhinavg.net>
+Date: Sun, 21 Feb 2021 16:57:45 -0800
+Subject: [PATCH 2/2] make/travis: Use Go modules
+
+Use Go modules for dependency management instead of glide.
+---
+ Makefile    |  4 +---
+ glide.lock  | 28 ----------------------------
+ glide.yaml  | 12 ------------
+ 4 files changed, 2 insertions(+), 44 deletions(-)
+ delete mode 100644 glide.lock
+ delete mode 100644 glide.yaml
+
+diff --git a/Makefile b/Makefile
+index f9bccba..4acb9ea 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,10 +4,8 @@ VERSION := $(shell git describe --tags --abbrev=0)
+ fetch:
+ 	go get \
+ 	github.com/mitchellh/gox \
+-	github.com/Masterminds/glide \
+ 	github.com/modocache/gover \
+-	github.com/aktau/github-release && \
+-	glide install
++	github.com/aktau/github-release
+ 
+ clean:
+ 	rm -f ./jabba
+diff --git a/glide.lock b/glide.lock
+deleted file mode 100644
+index 617afe6..0000000
+--- a/glide.lock
++++ /dev/null
+@@ -1,28 +0,0 @@
+-hash: d0bdfd6d2a9c4621081dd9e95c799ae9616074cc149a9a25f12182c9281f68a4
+-updated: 2018-05-06T09:59:22.870340859-07:00
+-imports:
+-- name: github.com/hashicorp/go-rootcerts
+-  version: 6bb64b370b90e7ef1fa532be9e591a81c3493e00
+-- name: github.com/inconshreveable/mousetrap
+-  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+-- name: github.com/Masterminds/semver
+-  version: 517734cc7d6470c0d07130e40fd40bdeb9bcd3fd
+-- name: github.com/mitchellh/go-homedir
+-  version: 981ab348d865cf048eb7d17e78ac7192632d8415
+-- name: github.com/mitchellh/ioprogress
+-  version: 8163955264568045f462ae7e2d6d07b2001fc997
+-- name: github.com/Sirupsen/logrus
+-  version: 4b6ea7319e214d98c938f12692336f7ca9348d6b
+-- name: github.com/spf13/cobra
+-  version: c678ff029ee250b65714e518f4f5c5cb934955de
+-- name: github.com/spf13/pflag
+-  version: 7f60f83a2c81bc3c3c0d5297f61ddfa68da9d3b7
+-- name: github.com/xi2/xz
+-  version: 48954b6210f8d154cb5f8484d3a3e1f83489309e
+-- name: golang.org/x/sys
+-  version: afce3de5756ca82699128ebae46ac95ad59d6297
+-  subpackages:
+-  - unix
+-- name: gopkg.in/yaml.v2
+-  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+-testImports: []
+diff --git a/glide.yaml b/glide.yaml
+deleted file mode 100644
+index 84a0ec3..0000000
+--- a/glide.yaml
++++ /dev/null
+@@ -1,12 +0,0 @@
+-package: jabba
+-import:
+-- package: github.com/spf13/cobra
+-- package: github.com/spf13/pflag
+-- package: github.com/Sirupsen/logrus
+-- package: github.com/mitchellh/go-homedir
+-- package: github.com/mitchellh/ioprogress
+-- package: gopkg.in/yaml.v2
+-- package: github.com/hashicorp/go-rootcerts
+-- package: github.com/Masterminds/semver
+-- package: github.com/inconshreveable/mousetrap
+-- package: github.com/xi2/xz
