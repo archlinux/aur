@@ -1,7 +1,7 @@
 # Maintainer: Brandon Hartshorn <brandon@thehartshorns.net>
 pkgname=aewan
 pkgver=1.0.01
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A multi-layered ascii-art/animation editor"
 arch=("x86_64")
