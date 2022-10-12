@@ -1,0 +1,21 @@
+pkgbase = tasmota-prometheus-discovery
+	pkgdesc = Custom Tasmota Service Discover for Tasmota devices
+	pkgver = r8.d407c77
+	pkgrel = 1
+	url = https://github.com/dougEfresh/tasmota-prometheus-service-discovery
+	arch = any
+	license = MIT
+	makedepends = go
+	backup = etc/default/tasmota-prometheus-discovery
+	source = git+https://github.com/dougEfresh/tasmota-prometheus-service-discovery.git
+	source = tasmota-prometheus-discovery.env
+	source = tasmota-prometheus-discovery.service
+	source = tasmota-prometheus-discovery.sysusers
+	source = tasmota-prometheus-discovery.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tasmota-prometheus-discovery

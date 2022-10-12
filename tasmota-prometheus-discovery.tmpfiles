@@ -1,0 +1,2 @@
+d /var/lib/tasmota-prometheus-discovery 0750 tasmota-prometheus-discovery tasmota-prometheus-discovery
+z /etc/default/tasmota-prometheus-discovery 0640 tasmota-prometheus-discovery tasmota-prometheus-discovery
