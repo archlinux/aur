@@ -1,6 +1,6 @@
 pkgbase = soh-git
-	pkgver = 4.0.0.r0.g8888fb2e
-	pkgrel = 1
+	pkgver = 4.0.2.r18.g825af33b
+	pkgrel = 2
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = x86_64
 	arch = i686
