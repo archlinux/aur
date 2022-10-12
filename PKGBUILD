@@ -1,5 +1,7 @@
 # Maintainer: Allison Smith <alyway@protonmail.com>
 # Contributor: Anthony Wang <ta180m@gmail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Max Bruckner <max@maxbruckner.de>
 # I could only get this working in java-11-openjdk, hence the depends
 
 pkgname=terasology
