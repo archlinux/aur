@@ -1,0 +1,18 @@
+pkgbase = python-jupyter
+	pkgdesc = Jupyter metapackage. Install all the Jupyter components in one go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://jupyter.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = jupyter-notebook
+	depends = python-qtconsole
+	depends = jupyter_console
+	depends = jupyter-nbconvert
+	depends = python-ipykernel
+	depends = python-ipywidgets
+	source = https://files.pythonhosted.org/packages/source/j/jupyter/jupyter-1.0.0.tar.gz
+	sha512sums = 1f0bc83f7a127c98ccf4b3868814116aa272ea5d0baac52d7a022305af7e2da28ca2b90fa3554ff085d8df3eb6d8b8cde80bf02b8e66064c59900b926d73c520
+
+pkgname = python-jupyter

@@ -1,0 +1,6 @@
+*.pkg.tar.*
+/src/
+/pkg/
+/python-jupyter-*.tar.gz
+/python-jupyter-*.log
+/jupyter-*.tar.gz
