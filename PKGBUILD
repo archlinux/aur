@@ -2,7 +2,7 @@
 
 pkgname=ada-web-server
 pkgver=2022
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete embeddable web application framework for Ada."
 
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(GPL)
 groups=(gcc-ada)
 
 depends=(openssl)
-makedepends=(gprbuild texlive-bin texlive-core python-sphinx)
+makedepends=(gprbuild texlive-bin texlive-core texlive-latexextra python-sphinx)
 
 provides=(aws)
 
