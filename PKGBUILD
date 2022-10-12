@@ -1,7 +1,7 @@
 # Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=driverkit
-pkgver=0.9.7
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Kit for building Falco drivers: kernel modules or eBPF probes"
 arch=('any')
