@@ -4,7 +4,7 @@
 
 pkgname=trakt-scrobbler-git
 pkgver=1.5.0.r2.gabf827e
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -14,7 +14,7 @@ depends=(
     "systemd"
 	'python-appdirs<2.0.0' #auto-deps
 	'python-appdirs>=1.4.4' #auto-deps
-	'python-cleo<1.0.0' #auto-deps
+	'python-cleo<=0.9' #auto-deps
 	'python-cleo>=0.8.1' #auto-deps
 	'python-confuse<3.0.0' #auto-deps
 	'python-confuse>=2.0.0' #auto-deps
@@ -60,6 +60,14 @@ pkgver() {
     )
 }
 
+prepare() {
+    cd "$srcdir/${pkgname%*-git}"
+
+	sed -i 's/cleo\s/cleo_v0 /' \
+		trakt_scrobbler/console.py \
+		trakt_scrobbler/commands/command.py \
+		pyproject.toml
+}
 build() {
     cd "$srcdir/${pkgname%*-git}"
     python -m build --no-isolation --wheel
