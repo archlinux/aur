@@ -50,18 +50,9 @@ package() {
     rm Terasology.bat
     rm -r natives/macosx
     rm -r natives/windows
-    #mkdir -p natives/linux
-
-    #link the lwjgl libraries
-    #ln -sf /usr/share/lwjgl2/native/linux/liblwjgl64.so natives/linux
-    #ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux64.so natives/linux
-    #ln -sf /usr/share/lwjgl2/native/linux/liblwjgl.so natives/linux
-    #ln -sf /usr/share/lwjgl2/native/linux/libjinput-linux.so natives/linux
+    strip -s natives/linux/libbullet-linux-amd64.so natives/linux/libbullet-linux-i686.so
     
     chmod a+w "$srcdir" # Terrible permissions hack to get the game to start
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
     
-    # Copy this file (not entirely sure about this, but doesn't start without it)
-    #install -Dm 644 "${srcdir}/rendering.cfg" "${pkgdir}/usr/share/${pkgname}/configs/engine/rendering.cfg"
-    #rm "${pkgdir}/usr/share/${pkgname}/rendering.cfg"
 }
