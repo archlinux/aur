@@ -3,7 +3,7 @@
 
 pkgname=lens
 pkgdesc='The Kubernetes IDE'
-pkgver=6.1.10
+pkgver=6.1.11
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
 conflicts=('lens-bin')
 source=("${pkgname}-${pkgver//+/-}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver//+/-}.tar.gz"
         "${pkgname}.desktop")
-b2sums=('23e08d202e7131a5c5b9f531798b961e9867e5f11313c24b5912d11c7a659b738a5bf21e936813eaf9f659a86a9c1e0efcff2c2925cda1a4a0509989857f72a9'
+b2sums=('39523beb1fecff7cf95bab14f8d04d9666d9f106a0a0fc6cedec5b6bc2ace47f60815ac7ee0fa5656d6caf04c43c38ca1e13ef6c5b18ac149bfba63cc70843f6'
         '2aea209098a22d8e4b263a059f6e67b2a3e8f8dfb0c15ac81e33edb4c2be81fd7a6f419a04a77be5b5c8d81b160e6e3f159b4d8639ccab705fffecf149255a36')
 
 build() {
