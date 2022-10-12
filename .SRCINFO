@@ -1,8 +1,8 @@
 pkgbase = pywal-16-colors
 	pkgdesc = Generate and change color-schemes on the fly, now with 16 colors
-	pkgver = 3.3.0.r131.ge136433-1
+	pkgver = 3.3.1.r132.ge7b0970
 	pkgrel = 1
-	url = https://github.com/sonjiku/pywal
+	url = https://github.com/eylles/pywal16
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -16,7 +16,7 @@ pkgbase = pywal-16-colors
 	conflicts = pywal
 	conflicts = pywal-git
 	conflicts = python-pywal
-	source = git+https://github.com/sonjiku/pywal.git
+	source = git+https://github.com/eylles/pywal16.git
 	sha256sums = SKIP
 
 pkgname = pywal-16-colors

@@ -15,7 +15,7 @@ optdepends=('feh: set wallpaper'
             'python2: reload gtk2 themes on the fly')
 provides=("pywal" "pywal-git")
 conflicts=("pywal" "pywal-git")
-source=('git+https://github.com/sonjiku/pywal.git')
+source=('git+https://github.com/eylles/pywal16.git')
 sha256sums=('SKIP')
 
 pkgver() {
