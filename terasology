@@ -1,3 +1,4 @@
 #!/bin/sh
+export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
 cd /usr/share/terasology
 exec sh Terasology

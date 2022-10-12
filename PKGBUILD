@@ -13,14 +13,14 @@ arch=('x86_64' 'i686')
 license=('Apache')
 url="https://terasology.org"
 options=('!strip')
-depends=('java-environment-openjdk>=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr')
+depends=(zlib bash java-runtime-openjdk=11 lib32-glibc)
 makedepends=('unzip')
 source=(
     "$pkgname"
     "${pkgname}.desktop"
     "TerasologyOmega${pkgver}.zip::https://github.com/MovingBlocks/Terasology/releases/download/v${_version}/TerasologyOmega.zip"
 )
-sha512sums=('b575b3e3bd5200794a9752ad6f96a147fd5af0196b7e81d1afb4358f9c4da1b656e5ad326cdeabf1be687f1ae69031d609420fc1df2001ef71a131068f2ef835'
+sha512sums=('a4764c3d5fdbf080b48e5de358f7162b334b4ca88e1249975d2d378f649a2a5fbdb8823d960a5167e9fd39745966efb4a597f3195207be0bf80cec810a4dff50'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
             'cddc836c6704810b0c9025828d0ed35ea55d5024598a4b022dc2f6332c55ddf416cfd07852e599d9deefee5d1012e82ae8488a727422e05dd20194799473317d')
 
