@@ -1,7 +1,8 @@
 pkgbase = filepacker
 	pkgdesc = Packs groups of n files in folders
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/DisableGraphics/Filepacker
 	arch = any
 	license = GPL
 	source = https://github.com/DisableGraphics/Filepacker/archive/refs/tags/v0.0.2.tar.gz
