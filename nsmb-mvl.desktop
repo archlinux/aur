@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/opt/nsmb-mvl/linux.x86_64
+Name=New Super Mario Bros. - Versus
+Icon=/opt/nsmb-mvl/nsmb_icon.png
