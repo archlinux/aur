@@ -2,7 +2,7 @@
 
 pkgname=yin-yang
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
@@ -16,8 +16,6 @@ sha256sums=('8d8da93878261b0f6f7548d9e1fed0028d063c0f1b95b2eeb84bd5bd97c9949d')
 package() {
     # This is a modified version of scripts/install.sh
     cd "$srcdir/Yin-Yang-$pkgver"
-    echo "Uninstalling old version, if it exists"
-    ./scripts/uninstall.sh
 
     echo "Installing dependencies …"
     pip3 install -r requirements.txt
