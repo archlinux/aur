@@ -2,7 +2,7 @@
 
 _name=leidenalg
 pkgname=python-$_name
-pkgver=0.8.10
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='The Leiden algorithm for community detection'
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python python-igraph)
 makedepends=(python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('670317fed31e87c38b1da4e0792922110f234a8cf5b4c80edd5f791fee537bc1')
+sha256sums=('4878f85b63c4df5632b2bf646e4f9760898ac1f55160dec26b8709b7bee2783c')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
