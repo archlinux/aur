@@ -1,3 +1,9 @@
+2022-10-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 2.5.1.r47.gdf1338860
+	Provides 'clap-host'
+	Add groups 'pro-audio', 'lv2-plugins' and 'vst-plugins'
+	Removed arch 'i686' because I can't test it
+
 2022-07-16 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.5.0.r1.ge3b25116d
