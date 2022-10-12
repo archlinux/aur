@@ -1,7 +1,7 @@
 # Maintainer: Brandon Hartshorn <brandon@thehartshorns.net>
 pkgname=aewan
 pkgver=1.0.01
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A multi-layered ascii-art/animation editor"
 arch=("x86_64")
@@ -26,7 +26,6 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
-	echo "$CFLAGS"
 	CFLAGS="$CFLAGS -Wno-error=format-security" ./configure --prefix=/usr --mandir=/usr/share/man
 	make
 }

@@ -1,7 +1,7 @@
 pkgbase = aewan
 	pkgdesc = A multi-layered ascii-art/animation editor
 	pkgver = 1.0.01
-	pkgrel = 2
+	pkgrel = 3
 	url = http://aewan.sourceforge.net/
 	arch = x86_64
 	license = GPL2
