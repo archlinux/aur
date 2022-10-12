@@ -1,32 +1,40 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
-_pkgname=jsonargparse
 pkgname=python-jsonargparse
+_pkg="${pkgname#python-}"
 pkgver=4.15.1
-pkgrel=1
-pkgdesc='Parsing of command line options, yaml/jsonnet config files and/or environment variables based on argparse'
+pkgrel=2
+pkgdesc='Parsing library for CLI options, configs, and environment variables'
 arch=('any')
 url='https://github.com/omni-us/jsonargparse'
 license=('MIT')
-depends=(
-  python-yaml
-)
-makedepends=(
-  python-setuptools
-)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/omni-us/jsonargparse/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('899d7d0ec7cf1eba24bc1338cddbb47f78b63fd4686333ee86300096d8477d4fb90c48ad5e3f5d421b5daa59d495c55c9fb80d1e3bf59c1719b3441fc753c91d')
+depends=('python-yaml')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/j/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('a2e9b9d44c90005ef969677bec8417d60f78360282d5190c962632c791e565e3')
+
+prepare() {
+  cd "$_pkg-$pkgver"
+  sed -i '2c\packages = jsonargparse' setup.cfg
+}
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  cd "$_pkg-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_pkg-$pkgver"
+  PYTHONPATH="$PWD" python -m unittest discover
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  rm -rf "${pkgdir}${site_packages}/jsonargparse_tests"
+  cd "${_pkg}-${pkgver}"
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+  local _site=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.rst" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
 # vim:set ts=2 sw=2 et:
