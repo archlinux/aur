@@ -1,6 +1,6 @@
 pkgbase = thunderbird-dav-4-tbsync
 	pkgdesc = Provider for CalDAV & CardDAV Version History
-	pkgver = 4.2
+	pkgver = 4.3
 	pkgrel = 1
 	url = https://github.com/jobisoft/DAV-4-TbSync
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = thunderbird-dav-4-tbsync
 	license = MPL2
 	depends = thunderbird>=102.3.3
 	depends = thunderbird<103
-	noextract = DAV-4-TbSync-4.2.xpi
-	source = DAV-4-TbSync-4.2.xpi::https://github.com/jobisoft/DAV-4-TbSync/releases/download/v4.2/DAV-4-TbSync.xpi
-	sha512sums = 738bc083901c559a55a1bbb63041940226898534b5cd6ec33541d3f9bc61fa251e7a6e177d618bd0131e0f8ca809afc1372053b20654928791f9a0ec7c8bdc7a
+	noextract = DAV-4-TbSync-4.3.xpi
+	source = DAV-4-TbSync-4.3.xpi::https://github.com/jobisoft/DAV-4-TbSync/releases/download/v4.3/DAV-4-TbSync.xpi
+	sha512sums = 34e2593b1d35c5537218f4f93d09669550f11b9c196adee57815723aae3b78c15a11f933664a52f8da2d1d3bf9f0ec13a7aa9edaf2172c764536a25441ea5fdd
 
 pkgname = thunderbird-dav-4-tbsync

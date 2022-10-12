@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-dav-4-tbsync
 _name=DAV-4-TbSync
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='Provider for CalDAV & CardDAV Version History'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 source=("${_name}-${pkgver}.xpi::https://github.com/jobisoft/${_name}/releases/download/v${pkgver}/${_name}.xpi")
 noextract=("${_name}-${pkgver}.xpi")
-sha512sums=('738bc083901c559a55a1bbb63041940226898534b5cd6ec33541d3f9bc61fa251e7a6e177d618bd0131e0f8ca809afc1372053b20654928791f9a0ec7c8bdc7a')
+sha512sums=('34e2593b1d35c5537218f4f93d09669550f11b9c196adee57815723aae3b78c15a11f933664a52f8da2d1d3bf9f0ec13a7aa9edaf2172c764536a25441ea5fdd')
 
 package() {
   _extension_id="dav4tbsync@jobisoft.de"
