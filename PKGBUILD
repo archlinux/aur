@@ -26,7 +26,8 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --mandir=/usr/share/man
+	echo "$CFLAGS"
+	CFLAGS="$CFLAGS -Wno-error=format-security" ./configure --prefix=/usr --mandir=/usr/share/man
 	make
 }
 
