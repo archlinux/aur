@@ -1,3 +1,3 @@
 all:
 	updpkgsums
-	makepkg -g >> PKGBUILD
+	makepkg --printsrcinfo > .SRCINFO

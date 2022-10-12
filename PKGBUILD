@@ -2,7 +2,7 @@
 
 pkgname=yin-yang
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
@@ -42,7 +42,7 @@ package() {
     # copy manifest for firefox extension
     cp ./resources/yin_yang.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
     # copy terminal executive
-    cp ./scripts/yin-yang "$pkgdir/usr/bin/"
+    cp ./resources/yin-yang "$pkgdir/usr/bin/"
     # copy .desktop file
     cp ./resources/Yin-Yang.desktop "$pkgdir/usr/share/applications/Yin-Yang.desktop"
     # copy icon
