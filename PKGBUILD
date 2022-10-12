@@ -21,7 +21,7 @@ source=("https://downloads.bitwig.com/4.4/bitwig-studio-4.4.deb")
 #beta source=("https://downloads.bitwig.com/beta/4.1/bitwig-studio-${_pkgver}.deb")
 #earlyaccess source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${_pkgver}.deb")
 
-sha256sums=('2babaab4664b3ffa208111a3b71c4c8756c4a20ddc2d4f0c04a77baec83f47ec')
+sha256sums=('e7165325cdcd3214a79ab865b3b102f85e603e81cd9868a1f59c22e47760e55f')
 
 package() {
   # Unpack package contents
