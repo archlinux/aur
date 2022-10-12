@@ -3,11 +3,12 @@
 _romname=gc_nmq_d
 _romdesc="OOT Debug PAL GameCube non-Master Quest"
 pkgname=soh-otr-${_romname}
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
+license=("unknown")
 provides=("soh-otr")
 conflicts=("soh-otr")
 depends=("soh")
@@ -20,9 +21,9 @@ SHIP_PREFIX=/opt/soh
 build() {
   cd "${srcdir}"
 
-  ln -s ${SHIP_PREFIX}/assets assets
+  [ ! -e assets ] && ln -s ${SHIP_PREFIX}/assets assets
   mkdir -p Extract/assets
-  cp -r "${SHIP_PREFIX}"/assets/game/ship_of_harkinian Extract/assets/
+  cp -r "${SHIP_PREFIX}"/assets/game Extract/assets/
 
   "assets/extractor/ZAPD.out" ed -eh -i "assets/extractor/xmls/${_romname^^}" \
     -b baserom.z64 -fl "assets/extractor/filelists" -o placeholder -osf placeholder -gsf 1 \
