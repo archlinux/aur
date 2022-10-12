@@ -2,7 +2,7 @@
 
 pkgname='image-crypt'
 pkgver=2.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Steganography encryption script"
 arch=('x86_64')
 license=('MIT')
@@ -13,9 +13,9 @@ depends=(
   'python-pycryptodomex'
 )
 makedepends=('git' 'python-setuptools')
-url='https://github.com/thek4n/ImageCrypt'
+url='https://github.com/thek4n/image-crypt'
 conflicts=('image-crypt')
-source=("$pkgname::git+https://github.com/thek4n/ImageCrypt.git#branch=master")
+source=("$pkgname::git+https://github.com/thek4n/image-crypt.git#branch=master")
 sha256sums=('SKIP')
 
 package() {

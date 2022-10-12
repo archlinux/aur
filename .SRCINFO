@@ -1,8 +1,8 @@
 pkgbase = image-crypt
 	pkgdesc = Steganography encryption script
 	pkgver = 2.0.1
-	pkgrel = 6
-	url = https://github.com/thek4n/ImageCrypt
+	pkgrel = 7
+	url = https://github.com/thek4n/image-crypt
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = image-crypt
 	depends = python-pyqt5
 	depends = python-pycryptodomex
 	conflicts = image-crypt
-	source = image-crypt::git+https://github.com/thek4n/ImageCrypt.git#branch=master
+	source = image-crypt::git+https://github.com/thek4n/image-crypt.git#branch=master
 	sha256sums = SKIP
 
 pkgname = image-crypt
