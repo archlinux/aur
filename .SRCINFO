@@ -1,7 +1,7 @@
 pkgbase = twonky
 	pkgdesc = A DLNA-compliant UPnP AV server software from PacketVideo.
 	pkgver = 8.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://twonky.com/
 	install = twonky.install
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = twonky
 	md5sums_armv6h = ce50b0cb8b42ddf15f4711d9a6ae1d7c
 	source_armv7h = twonky-armv7h-8.5.2.zip::http://www.twonkyforum.com/downloads/8.5.2/twonky-armel-glibc-2.15-hf-8.5.2.zip
 	md5sums_armv7h = ce50b0cb8b42ddf15f4711d9a6ae1d7c
-	source_aarch64 = twonky-aarch64-8.5.2.zip::http://www.twonkyforum.com/downloads/8.5.2/twonky-armel-glibc-2.15-hf-8.5.2.zip
-	md5sums_aarch64 = ce50b0cb8b42ddf15f4711d9a6ae1d7c
+	source_aarch64 = twonky-aarch64-8.5.2.zip::http://www.twonkyforum.com/downloads/8.5.2/twonky-armv8-8.5.2.zip
+	md5sums_aarch64 = 6c975b232230bffcde10376b1358aa03
 	source_arm = twonky-arm-8.5.2.zip::http://www.twonkyforum.com/downloads/8.5.2/twonky-armel-glibc-2.15-hf-8.5.2.zip
 	md5sums_arm = ce50b0cb8b42ddf15f4711d9a6ae1d7c
 
