@@ -2,7 +2,7 @@
 
 pkgname=hop-cli
 pkgver=0.1.46
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Interact with Hop in your terminal"
