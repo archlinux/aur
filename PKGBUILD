@@ -10,11 +10,15 @@ conflicts=('go-musicfox-bin' 'musicfox')
 depends=('flac' 'alsa-lib')
 makedepends=('gcc-objc')
 source=(
-	${url}/archive/refs/tags/v${pkgver}.tar.gz
+	go-musicfox-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 )
 
 build(){
 	cd go-musicfox-${pkgver}
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export GOPATH=${srcdir}
 	go build -o ../musicfox cmd/musicfox.go
 }

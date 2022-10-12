@@ -11,7 +11,7 @@ pkgbase = go-musicfox
 	provides = musicfox
 	conflicts = go-musicfox-bin
 	conflicts = musicfox
-	source = https://github.com/anhoder/go-musicfox/archive/refs/tags/v3.2.2.tar.gz
+	source = go-musicfox-3.2.2.tar.gz::https://github.com/anhoder/go-musicfox/archive/refs/tags/v3.2.2.tar.gz
 	sha256sums = 3ee5f02e404898706a54a563d6185ed3c17a42457bdbba3fa31aac01b174e8ed
 
 pkgname = go-musicfox
