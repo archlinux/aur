@@ -1,4 +1,4 @@
-pkgbase = nsmb-mvl-bin
+pkgbase = nsmb-mvl
 	pkgdesc = A unity-standalone 2-10 player remake of the Mario vs. Luigi gamemode from the New Super Mario Bros DS download game.
 	pkgver = 1.7.1.0_beta
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = nsmb-mvl-bin
 	sha256sums = 2085c03847bfb79b4e46b19e18d0d30087d5b40225827b723b6621a1c8c7df5c
 	sha256sums = 49eb837a0bd5fe37767e0e678c78e9fce52466ef541bc28917b7b13004a774a5
 
-pkgname = nsmb-mvl-bin
+pkgname = nsmb-mvl

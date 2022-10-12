@@ -1,5 +1,5 @@
 # Maintainer: grgergo
-pkgname=nsmb-mvl-bin
+pkgname=nsmb-mvl
 pkgver=1.7.1.0_beta
 pkgrel=1
 pkgdesc="A unity-standalone 2-10 player remake of the Mario vs. Luigi gamemode from the New Super Mario Bros DS download game."
