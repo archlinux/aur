@@ -21,6 +21,7 @@ SHIP_PREFIX=/opt/soh
 build() {
   cd "${srcdir}"
 
+  [ -e oot.otr ] && rm oot.otr
   [ ! -e assets ] && ln -s ${SHIP_PREFIX}/assets assets
   mkdir -p Extract/assets
   cp -r "${SHIP_PREFIX}"/assets/game Extract/assets/
