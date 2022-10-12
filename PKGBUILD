@@ -1,17 +1,17 @@
 #PKGBUILD was last modified on September 27, 2022 at 04:01 PM EDT by bms#
 # Maintainer: Ben Sutter <benjaminsutter@outlook.com>
 pkgname=guile-todo-git
-pkgver=r15.b812dd7
+pkgver=r3.e37ee87
 pkgrel=1
 pkgdesc="Lispy todo tracker"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/bms-1984/guile-todo"
+url="https://github.com/bms-1984/todo"
 license=('GPL')
 depends=('guile' 'guile-config')
 makedepends=('guile-hall' 'git')
 provides=("guile-todo=$pkgver")
 options=(!strip)
-source=("${pkgname%-git}::git+https://github.com/bms-1984/guile-todo.git")
+source=("${pkgname%-git}::git+https://github.com/bms-1984/todo.git")
 sha256sums=('SKIP')
 
 pkgver() {
