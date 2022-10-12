@@ -1,37 +1,41 @@
-# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Maintainer: Elmer Skjødt Henriksen <esh@fjerhammer.dk>
+# Contributor: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Contributor: bender02 at archlinux dot us
-pkgname=aescrypt
-pkgver=3.13
+
+pkgbase=aescrypt
+pkgname=('aescrypt' 'aescrypt-gui')
+pkgver=3.16
 pkgrel=1
 pkgdesc="Use AES256 (CBC mode, password SHA256 hashed) to encrypt files"
 arch=('i686' 'x86_64')
 url="http://www.aescrypt.com"
 license=('GPL')
-# about the license: the author said so on his forum...
-optdepends=('perl: for aescrypt-gui'
-            'zenity: for aescrypt-gui'
-            'kdialog: for aescrypt-gui')
-source=(https://www.aescrypt.com/download/v3/linux/${pkgname}-${pkgver}.tgz)
-sha256sums=('87cd6f6e15828a93637aa44f6ee4f01bea372ccd02ecf1702903f655fbd139a8')
+source=("https://www.aescrypt.com/download/v3/linux/${pkgbase}-${pkgver}.tgz")
+sha256sums=('e2e192d0b45eab9748efe59e97b656cc55f1faeb595a2f77ab84d44b0ec084d2')
 
 build() {
-	cd $srcdir/${pkgname}-${pkgver}/src
-	make -j$(nproc)
+  cd ${srcdir}/${pkgbase}-${pkgver}/src
+  make -j$(nproc)
 }
 
-package() {
-	install -d $pkgdir/usr/bin $pkgdir/usr/share/man/man1 \
-		$pkgdir/usr/share/aescrypt \
-		$pkgdir/usr/share/applications
-	install -m755 $srcdir/${pkgname}-${pkgver}/src/$pkgname \
-		$srcdir/${pkgname}-${pkgver}/src/${pkgname}_keygen \
-		$srcdir/${pkgname}-${pkgver}/gui/${pkgname}-gui \
-		$pkgdir/usr/bin/
-	install -m644 $srcdir/${pkgname}-${pkgver}/man/$pkgname.1 \
-		$pkgdir/usr/share/man/man1/
-	install -m644 $srcdir/${pkgname}-${pkgver}/gui/AESCrypt.desktop \
-		$pkgdir/usr/share/applications
-	install -m644 $srcdir/${pkgname}-${pkgver}/gui/SmallLock.png \
-		$pkgdir/usr/share/aescrypt
+package_aescrypt() {
+  pkgdesc="Command line utility for encrypting files using AES"
+
+  install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/src/aescrypt" "${pkgdir}/usr/bin/aescrypt"
+  install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/src/aescrypt_keygen" "${pkgdir}/usr/bin/aescrypt_keygen"
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/man/aescrypt.1" "${pkgdir}/usr/share/man/man1/aescrypt.1"
+
 }
 
+package_aescrypt-gui() {
+  pkgdesc="Graphical user interface for AESCrypt"
+  depends=('aescrypt' 'perl')
+  optdepends=(
+    'zenity: GTK-based password prompt'
+    'kdialog: Qt-based password prompt'
+  )
+  
+  install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/gui/aescrypt-gui"  "${pkgdir}/usr/bin/aescrypt-gui"
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/gui/AESCrypt.desktop" "${pkgdir}/usr/share/applications/AESCrypt.desktop"
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/gui/SmallLock.png" "${pkgdir}/usr/share/aescrypt/SmallLock.png"
+}
