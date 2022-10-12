@@ -3,8 +3,8 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.0.r0.g8888fb2e
-pkgrel=1
+pkgver=4.0.2.r18.g825af33b
+pkgrel=2
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
 makedepends=("cmake" "ninja" "curl" "lsb-release")
@@ -52,7 +52,7 @@ build() {
   cd build
   ninja ZAPD
 
-  ( cd ../OTRExporter; ./extract_assets.py -z ../build/ZAPD/ZAPD.out; )
+  ( cd ../OTRExporter; ./extract_assets.py -z ../build/ZAPD/ZAPD.out <<< "1"; )
   ninja soh
 
   ninja OTRGui
