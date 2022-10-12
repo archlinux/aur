@@ -1,16 +1,14 @@
 pkgbase = dinit
 	pkgdesc = Service monitoring / "init" system
-	pkgver = 0.15.1
-	pkgrel = 9
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/davmac314/dinit
 	arch = x86_64
 	arch = arm
 	arch = aarch64
 	license = Apache
 	makedepends = make
-	source = dinit-0.15.1.tar.gz::https://github.com/davmac314/dinit/archive/v0.15.1.tar.gz
-	source = custom-shutdown-prefix.patch::https://github.com/davmac314/dinit/commit/7788798e14890a98c1e554e1a455e705dc1308fb.patch
-	sha256sums = b6cc489079a6600ae5f89cbc52b6046bd522e8e91da60c6a3006c4224cba83b4
-	sha256sums = ed9ac7b9d9082f311829e2b44c9aaeff2aed344c51b1c8f17c2b6a7ce005F4cc
+	source = dinit-0.16.0.tar.gz::https://github.com/davmac314/dinit/archive/v0.16.0.tar.gz
+	sha256sums = 629666cebbcb1753216109d7583bd4621a375bf7940ccdaeda5443f713596e78
 
 pkgname = dinit
