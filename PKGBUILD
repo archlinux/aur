@@ -1,6 +1,6 @@
 pkgname=kwinft
-pkgver=5.25.0
-_pkgver=5.25.0
+pkgver=5.26.0
+_pkgver=5.26.0
 pkgrel=1
 pkgdesc='Wayland compositor and X11 window manager'
 arch=(x86_64)
@@ -12,7 +12,7 @@ optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 provides=("kwin=${pkgver}")
 conflicts=("kwin")
 source=("https://gitlab.com/kwinft/kwinft/-/archive/kwinft@$_pkgver/kwinft-kwinft@$_pkgver.tar.gz")
-md5sums=('1640a4a8ec226b8063803a2d3531d71f')
+md5sums=('c025d9e1a7b4256f64f640e01697bbc3')
 install=kwinft.install
 
 prepare() {
