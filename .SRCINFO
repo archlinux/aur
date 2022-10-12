@@ -1,7 +1,7 @@
 pkgbase = tasmota-prometheus-discovery
 	pkgdesc = Custom Tasmota Service Discover for Tasmota devices
 	pkgver = r8.d407c77
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dougEfresh/tasmota-prometheus-service-discovery
 	arch = any
 	license = MIT

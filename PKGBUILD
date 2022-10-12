@@ -2,7 +2,7 @@
 pkgname=tasmota-prometheus-discovery
 _name=tasmota-prometheus-service-discovery
 pkgver=r8.d407c77
-pkgrel=1
+pkgrel=2
 pkgdesc='Custom Tasmota Service Discover for Tasmota devices'
 url='https://github.com/dougEfresh/tasmota-prometheus-service-discovery'
 makedepends=(go)
