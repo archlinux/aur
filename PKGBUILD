@@ -1,8 +1,8 @@
 # Maintainer: Leonidas P. <jpegxguy at outlook dot com>
 
 pkgname=ksmbd-tools
-pkgver=3.4.5
-pkgrel=2
+pkgver=3.4.6
+pkgrel=1
 pkgdesc="Userspace tools for the ksmbd kernel SMB server"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/cifsd-team/ksmbd-tools"
@@ -10,12 +10,12 @@ license=('GPL2')
 depends=('KSMBD-MODULE' 'libnl')
 provides=('samba')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("e22e5bef29ffa2670fc82c490ad4dc6eb00963b4f963dd1852c811b437c77ee1")
+sha256sums=("d7b27313c3e40c1272776d0bbc5672363dff0f1cad9286d6450f4907907685b9")
 
 build() {
 	cd "${pkgname}-${pkgver}"
 	./autogen.sh
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-rundir=/run
 	make
 }
 
@@ -24,5 +24,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
-	install -Dm644 "ksmbd.service" "${pkgdir}/usr/lib/systemd/system/ksmbd.service"
 }
