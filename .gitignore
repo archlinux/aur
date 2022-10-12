@@ -17,3 +17,5 @@
 *.kate-swp
 !.SRCINFO
 !PKGBUILD
+!cookie.patch
+!.gitignore

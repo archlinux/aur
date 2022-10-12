@@ -5,7 +5,7 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.22
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -17,10 +17,13 @@ makedepends=('nginx-mainline-src')
 url="https://github.com/openresty/lua-nginx-module"
 license=('BSD')
 
-source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('294d3d4b2d14fda1b8c539ff86f90047d203df861eb9a1ac44ec5c679ef55408')
+source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
+	cookie.patch)
+sha256sums=('294d3d4b2d14fda1b8c539ff86f90047d203df861eb9a1ac44ec5c679ef55408'
+            '774e46d085ca8bd0d7cd84a36946cf1fd31f284ca9ebc90828b758297614975b')
 
 prepare() {
+	patch -d $_modname-nginx-module-$pkgver -p1 < cookie.patch
 	mkdir -p build
 	cd build
 	ln -sf /usr/src/nginx/auto
