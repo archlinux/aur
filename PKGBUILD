@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2209
+pkgver=2210
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
 arch=(aarch64 x86_64)
 license=(MIT)
 makedepends=(git cmake ninja clang)
-depends=(sdl2 libepoxy squashfs-tools squashfuse)
+depends=(sdl2 libepoxy squashfs-tools squashfuse erofs-utils)
 source=("git+https://github.com/FEX-Emu/FEX#tag=FEX-$pkgver"
         "git+https://github.com/catchorg/Catch2"
         "git+https://github.com/KhronosGroup/Vulkan-Headers"
