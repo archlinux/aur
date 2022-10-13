@@ -34,7 +34,7 @@ package() {
     cd "monica-v${pkgver}"
 
     install -d "${pkgdir}/usr/share/webapps/monica-crm"
-    cp -r * "${pkgdir}/usr/share/webapps/monica-crm"
+    cp -r ./* "${pkgdir}/usr/share/webapps/monica-crm"
 
     install -Dm640 -o root -g http ".env.example" "${pkgdir}/etc/webapps/monica-crm/config.env"
     ln -s "../../../../etc/webapps/monica-crm/config.env" "${pkgdir}/usr/share/webapps/monica-crm/.env"
