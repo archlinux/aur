@@ -1,19 +1,19 @@
 # Maintainer: tuberry
 
-_srcname='chinadns-ng'
-pkgname=chinadns-ng-git
+_srcname=chinadns-ng
+pkgname=${_srcname}-git
 pkgver=r356.e7c4ebd
 pkgrel=1
 pkgdesc='Chinadns next generation, refactoring with epoll and ipset'
-arch=('i686' 'x86_64')
-url="https://github.com/zfl9/${_srcname}"
-license=('AGPL3')
-depends=('glibc')
-makedepends=('git')
-provides=("${_srcname}")
-conflicts=("${_srcname}")
-source=("git+${url}")
-sha512sums=('SKIP')
+arch=(i686 x86_64)
+url=https://github.com/zfl9/${_srcname}
+license=(AGPL3)
+depends=(glibc)
+makedepends=(git)
+provides=(${_srcname})
+conflicts=(${_srcname})
+source=(git+${url})
+sha512sums=(SKIP)
 
 pkgver() {
     cd ${_srcname}
