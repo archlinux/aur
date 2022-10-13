@@ -3,8 +3,8 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.2.r18.g825af33b
-pkgrel=2
+pkgver=4.0.2.r35.g595e105e
+pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
 makedepends=("cmake" "ninja" "curl" "lsb-release")
@@ -82,6 +82,8 @@ package_soh-otr-exporter-git() {
   conflicts=("soh-otr-exporter")
   license=("MIT")
   depends=("sdl2" "libpng")
+  optdepends=("zenity: OTRGui file chooser"
+              "kdialog: OTRGui file chooser (KDE)")
 
   cd "${srcdir}/${_reponame}"
   cd build
