@@ -5,7 +5,7 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 
 pkgname=yacy-git
-pkgver=1.92+r1014+g3431f91db
+pkgver=1.92+r1349+g32e6a5f90
 pkgrel=1
 pkgdesc="Peer to peer search engine"
 arch=('any')
@@ -15,12 +15,10 @@ depends=('java-environment')
 makedepends=('apache-ant')
 install=yacy.install
 source=(git+https://github.com/yacy/yacy_search_server
-        'yacy.sh'
         'yacy.service')
 options=(!emptydirs)
-sha512sums=('SKIP'
-            'd6aeed6a12589e60d9d3632931672f1ea05f1387184d5bd59c08cab225e8104e4519489135175e4f58cd00a5a3341c229f38eabeb7ff1d68b6b786881631bc34'
-            '754b6224ef2a640cbfb50a3d46e92c04955dac3e683239872d2a5c9ba92016a1511c6049903322dd8a21e6d2cc51e2f4e9bd3339b4ef4aada68ae20b3acc189b')
+b2sums=('SKIP'
+        'e704efd6d4ea583df6851c12d41e7fd7c7d5acc40c1b22b48fb827c6ec7d996b7ecbb8c945354be649278b9e6e23763014606960f62b1193aa6c1495b1e5aa6f')
 
 pkgver() {
   cd yacy_search_server
@@ -28,20 +26,17 @@ pkgver() {
 }
 
 build() {
-	source /etc/profile
-
 	cd "$srcdir/yacy_search_server"
-	ant all
+	ant clean all dist
 }
 
 package() {
-	cd "$srcdir/yacy_search_server"
-	ant installonlinux -DDESTDIR="$pkgdir/"
-	install -d "$pkgdir"/usr/share/java/yacy
-	install -t "$pkgdir"/usr/share/java/yacy/ lib/*.jar
+	cd "$srcdir/yacy_search_server/RELEASE"
+	tar xfz *.tar.gz
+        install -d "$pkgdir"/usr/share/java
+        cp -r yacy/ "$pkgdir/usr/share/java"
 
-	install -Dm755 "${srcdir}/yacy.sh" "${pkgdir}/opt/yacy/yacy"
 	install -Dm644 "${srcdir}/yacy.service" "${pkgdir}/usr/lib/systemd/system/yacy.service"
 
-	rm -f "$pkgdir"/etc/yacy "$pkgdir"/usr/share/yacy/DATA "$pkgdir"/var/log/yacy
+	rm -f "$pkgdir"/etc/yacy "$pkgdir"/usr/share/java/yacy/DATA "$pkgdir"/var/log/yacy
 }

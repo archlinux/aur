@@ -2,17 +2,17 @@ post_install() {
 	echo
 	echo -n ">>> Creating yacy system user and group... "
 	getent group yacy &>/dev/null || groupadd -r yacy
-	getent passwd yacy &>/dev/null || /usr/sbin/useradd --comment 'YaCy P2P Searchengine' --system -g yacy --home '/usr/share/yacy/' -s /bin/false yacy
-	mkdir -p /var/lib/yacy
-	chown -R yacy:yacy /var/lib/yacy /opt/yacy
-	rm -f /usr/share/yacy/DATA
-	ln -s /var/lib/yacy /usr/share/yacy/DATA
-	echo "done"
+	getent passwd yacy &>/dev/null || /usr/sbin/useradd --comment 'YaCy P2P Searchengine' --system -g yacy --home '/usr/share/java/yacy/' -s /bin/false yacy
+        mkdir -p /var/lib/yacy
+	chown -R yacy:yacy /var/lib/yacy
+	rm -f /usr/share/java/yacy/DATA
+	ln -s /var/lib/yacy /usr/share/java/yacy/DATA
+        echo "done"
 	echo
 }
 
 post_upgrade() {
-	chown -R yacy:yacy /var/lib/yacy /opt/yacy
+	chown -R yacy:yacy /var/lib/yacy
 	systemctl --system daemon-reload
 }
 
@@ -23,7 +23,7 @@ pre_remove() {
 		/usr/sbin/userdel yacy &>/dev/null
 	getent group yacy &>/dev/null &&
 		groupdel yacy &>/dev/null
-	rm -f /usr/share/yacy/DATA
+	rm -f /usr/share/java/yacy/DATA
 	echo "done"
 	echo
 }

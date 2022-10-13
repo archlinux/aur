@@ -3,10 +3,9 @@ Description=YaCy P2P Web Search
 After=network.target
 
 [Service]
-PIDFile=/opt/yacy/.yacy/yacy.pid
-ExecStart=/opt/yacy/yacy start
-ExecReload=/opt/yacy/yacy restart
-ExecStop=/opt/yacy/yacy stop
+Type=forking
+ExecStart=/usr/share/java/yacy/startYACY.sh
+ExecStop=/usr/share/java/yacy/stopYACY.sh
 User=yacy
 TimeoutStopSec=50
 
