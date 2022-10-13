@@ -1,6 +1,6 @@
 pkgbase = rankmirrors
 	pkgdesc = Read a list of mirrors from a file and rank them by speed.
-	pkgver = r8.e3cab5c
+	pkgver = r9.f161c0c
 	pkgrel = 1
 	url = https://github.com/metis-os/metis-rankmirrors
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Castor <whoisYoges at castorisdead dot xyz>
 pkgname=rankmirrors
-pkgver=r8.e3cab5c
+pkgver=r9.f161c0c
 pkgrel=1
 pkgdesc="Read a list of mirrors from a file and rank them by speed."
 arch=('any')
@@ -16,6 +16,7 @@ sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/$pkgname/files"
+    chmod +x rankmirrors
 	install -Dm755 ./rankmirrors "${pkgdir}/usr/bin/rankmirrors"
 }
 
