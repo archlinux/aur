@@ -37,7 +37,7 @@ md5sums=('SKIP'
          '7656cda27d6a687fc29bc579102b5a55'
          'f43daa4f68f52bb7c88fd9ae19f358f1')
 
-options=('!strip')
+# options=('!strip')
 
 prepare() {
         OUTLINE_CLIENT="Outline-Client.AppImage"
