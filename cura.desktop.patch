@@ -1,23 +1,59 @@
 --- cura.desktop
 +++ cura.desktop
-@@ -1,15 +1,21 @@
+@@ -1,15 +1,57 @@
  [Desktop Entry]
 -Name=Ultimaker Cura
 -Name[de]=Ultimaker Cura
 +Name=Ultimaker Cura 5
 +Name[cs]=Ultimaker Cura 5
 +Name[de]=Ultimaker Cura 5
++Name[es]=Ultimaker Cura 5
++Name[fi]=Ultimaker Cura 5
++Name[fr]=Ultimaker Cura 5
++Name[hu]=Ultimaker Cura 5
++Name[it]=Ultimaker Cura 5
++Name[ja]=アルティメーカーキュラ5
++Name[ko]=얼티메이커 큐라 5
 +Name[nl]=Ultimaker Cura 5
++Name[pl]=Ultimaker Cura 5
++Name[pt]=Ultimaker Cura 5
++Name[ru]=Ультимейкер Кура 5
++Name[tr]=Ultimaker Cura 5
++Name[zh]=Ultimaker Cura 5
  GenericName=3D Printing Software
 +GenericName[cs]=3D-Tiskový Software
  GenericName[de]=3D-Druck-Software
++GenericName[es]=Software de Druck 3D
++GenericName[fi]=3D-tulostusohjelmisto
++GenericName[fr]=Logiciel d'impression 3D
++GenericName[hu]=3D nyomtató szoftver
++GenericName[it]=Software di stampa 3D
++GenericName[ja]=3D プリント ソフトウェア
++GenericName[ko]=3D 프린팅 소프트웨어
  GenericName[nl]=3D-Print Software
++GenericName[pl]=Oprogramowanie do drukowania 3D
++GenericName[pt]=Software de impressão 3D
++GenericName[ru]=Программное обеспечение для 3D-печати
++GenericName[tr]=3D Baskı Yazılımı
++GenericName[zh]=3D打印软件
  Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.
 -Exec=Ultimaker-Cura %F
 -Icon=cura-icon
 +Comment[cs]=Cura převádí 3D modely na cesty pro 3D tiskárnu. Připraví váš tisk na maximální přesnost, minimální dobu tisku a dobrou spolehlivost s mnoha dalšími funkcemi, díky nimž bude váš tisk skvělý.
-+Comment[de]=Cura wandelt 3D-Modelle in Pfade für einen 3D-Drucker um. Es bereitet Ihren Druck für maximale Genauigkeit, minimale Druckzeit und guter Zuverlässigkeit mit vielen zusätzlichen Funktionen vor, damit Ihr Druck großartig wird.
++Comment[de]=Cura wandelt 3D-Modelle in Pfade für einen 3D-Drucker um. Es bereitet Ihren Druck auf maximale Genauigkeit, minimale Druckzeit und hohe Zuverlässigkeit mit vielen zusätzlichen Funktionen vor, die Ihren Druck großartig machen.
++Comment[es]=Cura convierte modelos 3D en rutas para una impresora 3D. Prepara su impresión para obtener la máxima precisión, el tiempo de impresión mínimo y una buena confiabilidad con muchas características adicionales que hacen que su impresión salga genial.
++Comment[fi]=Cura muuntaa 3D-malleja 3D-tulostimen poluiksi. Se valmistelee tulostuksesi maksimaalista tarkkuutta, vähimmäistulostusaikaa ja hyvää luotettavuutta varten monilla lisäominaisuuksilla, jotka tekevät tulosteesta upean.
++Comment[fr]=Cura convertit les modèles 3D en chemins pour une imprimante 3D. Il prépare votre impression pour une précision maximale, un temps d'impression minimum et une bonne fiabilité avec de nombreuses fonctionnalités supplémentaires qui rendent votre impression excellente.
++Comment[hu]=A Cura a 3D-s modelleket 3D-nyomtatók útvonalává alakítja. Felkészíti a nyomatokat a maximális pontosságra, a minimális nyomtatási időre és a jó megbízhatóságra, számos extra funkcióval, amelyek nagyszerűvé teszik a nyomatokat.
++Comment[it]=Cura converte i modelli 3D in percorsi per una stampante 3D. Prepara la tua stampa per la massima precisione, tempo di stampa minimo e buona affidabilità con molte funzionalità extra che rendono la tua stampa eccezionale.
++Comment[ja]=Cura は、3D モデルを 3D プリンター用のパスに変換します。 最高の精度、最小限の印刷時間、優れた信頼性を実現するために印刷を準備し、印刷を素晴らしいものにする多くの追加機能を備えています。
++Comment[ko]=Cura는 3D 모델을 3D 프린터용 경로로 변환합니다. 인쇄물을 훌륭하게 만드는 많은 추가 기능으로 최대 정확도, 최소 인쇄 시간 및 우수한 안정성을 위해 인쇄물을 준비합니다.
 +Comment[nl]=Cura converteert 3D-modellen naar paden voor een 3D printer. Het bereidt je print voor om zeer precies, snel en betrouwbaar te kunnen printen, met veel extra functionaliteit om je print er goed uit te laten komen.
++Comment[pl]=Cura konwertuje modele 3D na ścieżki dla drukarki 3D. Przygotowuje wydruk pod kątem maksymalnej dokładności, minimalnego czasu drukowania i dobrej niezawodności dzięki wielu dodatkowym funkcjom, które sprawiają, że wydruk jest doskonały.
++Comment[pt]=O Cura converte modelos 3D em caminhos para uma impressora 3D. Ele prepara sua impressão para máxima precisão, tempo mínimo de impressão e boa confiabilidade com muitos recursos extras que tornam sua impressão excelente.
++Comment[ru]=Cura преобразует 3D-модели в контуры для 3D-принтера. Он подготавливает вашу печать к максимальной точности, минимальному времени печати и высокой надежности благодаря множеству дополнительных функций, которые делают вашу печать великолепной.
++Comment[tr]=Cura, 3B modelleri bir 3B yazıcı için yollara dönüştürür. Baskınızın harika olmasını sağlayan birçok ekstra özellik ile baskınızı maksimum doğruluk, minimum baskı süresi ve iyi güvenilirlik için hazırlar.
++Comment[zh]=Cura 将 3D 模型转换为 3D 打印机的路径。 它为您的打印做好准备，以实现最大的准确性、最短的打印时间和良好的可靠性，并具有许多使您的打印效果出色的额外功能。
 +Exec=/usr/bin/cura5 %F
 +Icon=cura5-icon
  Terminal=false
@@ -27,5 +63,5 @@
 -Keywords=3D;Printing;
 +Categories=Graphics;3DGraphics;Engineering;
 +Keywords=3D;Printing;Slicer;
- X-AppImage-Version=5.1.0
+ X-AppImage-Version=5.1.1
 
