@@ -1,7 +1,7 @@
 _pkgname=openssl
 _pkgver=3.0
 pkgname="${_pkgname}-${_pkgver}"
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.  Can be installed alongside OpenSSL 1."
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=(
   "ca-dir.patch"
 )
 sha256sums=(
-  'b6363cf1bca88f0a46a768883a225e644135432d6a51ab1c4660ab58af541078'
-  'SKIP'
+  '07fd675ff38077080059e3aa4b9d2632c950a2fb8257044c83c8d0128a06cb3d'
+  '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7'
 )
 
 prepare() {

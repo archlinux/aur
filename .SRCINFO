@@ -1,6 +1,6 @@
 pkgbase = openssl-3.0
 	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. Can be installed alongside OpenSSL 1.
-	pkgver = 3.0.5
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://www.openssl.org/
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = openssl-3.0
 	conflicts = openssl3-git
 	conflicts = openssl-git
 	options = staticlibs
-	source = https://github.com/openssl/openssl/archive/refs/tags/openssl-3.0.5.tar.gz
+	source = https://github.com/openssl/openssl/archive/refs/tags/openssl-3.0.6.tar.gz
 	source = ca-dir.patch
-	sha256sums = b6363cf1bca88f0a46a768883a225e644135432d6a51ab1c4660ab58af541078
-	sha256sums = SKIP
+	sha256sums = 07fd675ff38077080059e3aa4b9d2632c950a2fb8257044c83c8d0128a06cb3d
+	sha256sums = 0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7
 
 pkgname = openssl-3.0
