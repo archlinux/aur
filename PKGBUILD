@@ -1,14 +1,14 @@
 # Maintainer: Sebastian Bach <BastelBach at gmail dot com>
 
 pkgname=impostor-server-git
-pkgver=1.5.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Unofficial dedicated server for Among Us.'
 url='https://impostor.github.io/Impostor/'
 arch=('x86_64')
 license=('GPL3')
 depends=('zlib' 'krb5')
-makedepends=('git' 'dotnet-sdk>=5.0.0' 'lttng-ust')
+makedepends=('git' 'dotnet-sdk>=6.0.0' 'lttng-ust')
 options=('!strip')
 source=("git+https://github.com/Impostor/Impostor.git"
         "git+https://github.com/AeonLucid/Hazel-Networking.git"
@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd "Impostor/"
   dotnet restore ./src
-  dotnet publish -c release -o ./build/linux-x64 -f net5.0 -r linux-x64 --self-contained --no-restore ./src/Impostor.Server/Impostor.Server.csproj /p:PublishSingleFile=true
+  dotnet publish -c release -o ./build/linux-x64 -f net6.0 -r linux-x64 --self-contained --no-restore ./src/Impostor.Server/Impostor.Server.csproj /p:PublishSingleFile=true
 }
 
 package() {
