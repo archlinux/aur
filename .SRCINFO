@@ -1,0 +1,14 @@
+pkgbase = godot-mono-headless-bin
+	pkgdesc = A headless version of the Godot game engine for running tests and exporting projects.
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://godotengine.org
+	arch = x86_64
+	license = MIT
+	depends = dotnet-sdk
+	depends = mono
+	depends = msbuild
+	source = https://downloads.tuxfamily.org/godotengine/3.5.1/mono/Godot_v3.5.1-stable_mono_linux_headless_64.zip
+	sha512sums = 0e9ab52061f225f3cf2bc18ae0aaa410c3dc8805dba4e83ef634a7e06ac80656df64fe249e7969e6bc4fc60ba3b5aa3af346091d641cafb0be6b98f88f2f9451
+
+pkgname = godot-mono-headless-bin
