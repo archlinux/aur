@@ -2,12 +2,12 @@
 
 pkgname=indicator-sensors
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Small application to provide hardware sensor readings using the AppIndicator framework"
 arch=('x86_64')
 url="https://github.com/alexmurray/indicator-sensors"
 license=('GPL3')
-depends=('dconf' 'gobject-introspection' 'libappindicator-gtk3' 'libatasmart' 'libnotify' 'libpeas' 'lm_sensors' 'udisks2')
+depends=('dconf' 'gobject-introspection' 'libayatana-appindicator' 'libayatana-indicator' 'libappindicator-gtk3' 'libatasmart' 'libnotify' 'libpeas' 'lm_sensors' 'udisks2')
 optdepends=('libxnvctrl: NVIDIA GPU support')
 makedepends=('gnome-common' 'intltool')
 install=$pkgname.install
