@@ -5,7 +5,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=5.19.13.arch1
+pkgver=6.0.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -32,7 +32,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '1e07bdd94abe73ac2074b151729cd9b73c7fa7a615a3a331a89dcb0da42649f8'
+            '85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '5092c62db5ca8f6b806996ba3db0f610d9ad73d499384394e16823dda097f9cd')
 
