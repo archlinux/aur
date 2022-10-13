@@ -1,6 +1,6 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 pkgname='batman'
-pkgver=0.30
+pkgver=0.32
 pkgrel=1
 pkgdesc="A battery management service and program for linux phones"
 arch=(any)
