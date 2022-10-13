@@ -1,0 +1,21 @@
+pkgbase = onthespot-git
+	pkgdesc = A qt based free spotify downloader written in python.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/casualsnek/onthespot
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python3
+	makedepends = bash
+	depends = ffmpeg
+	provides = onthespot
+	conflicts = onthespot-git
+	conflicts = onthespot
+	options = !strip
+	options = !emptydirs
+	source = onthespot::git+https://github.com/casualsnek/onthespot
+	sha256sums = SKIP
+
+pkgname = onthespot-git
