@@ -1,4 +1,4 @@
-# Maintainer: Unix Sheikh <unixsheikh at protonmail dot com>
+# Maintainer: Unix Sheikh <aur at unixsheikh dot com>
 
 pkgname=salahtime-go
 pkgver=1.0.3
@@ -20,7 +20,7 @@ source=("https://codeberg.org/unixsheikh/salahtime-go/archive/v1.0.3.zip")
 md5sums=('ab6ebd237206ab5479a569c8edc319a9')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   go build \
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
