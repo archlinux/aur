@@ -7,7 +7,7 @@ pkgbase = center-git
 	arch = i686
 	license = BSD
 	makedepends = git
-	source = center-git::git://git.thomasvoss.com/center.git
+	source = center::git://git.thomasvoss.com/center.git
 	b2sums = SKIP
 
 pkgname = center-git

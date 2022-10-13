@@ -7,24 +7,24 @@ arch=('x86_64' 'i686')
 url="https://git.thomasvoss.com/center"
 license=('BSD')
 makedepends=('git')
-source=("$pkgname::git://git.thomasvoss.com/center.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git://git.thomasvoss.com/center.git")
 b2sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	printf "r%s.%s" \
-		"`git rev-list --count HEAD`" \
-		"`git rev-parse --short HEAD`"
+	cd ${pkgname%-git}
+	printf "%s" "`git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;y/-/./')`"
 }
 
 build() {
-	cd $pkgname
+	cd ${pkgname%-git}
 	make
 }
 
 package() {
-	cd $pkgname
+	cd ${pkgname%-git}
 	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
 }
