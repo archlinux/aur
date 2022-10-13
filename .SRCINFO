@@ -1,0 +1,15 @@
+pkgbase = python-torchdiffeq
+	pkgdesc = Differentiable ODE solvers with full GPU support and O(1)-memory backpropagation.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/rtqichen/torchdiffeq
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytorch
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/61/7e/629146662e96da319fe237920b7d928a9832cbfa06c1d7ee8cdfe53ed450/torchdiffeq-0.2.3.tar.gz
+	sha256sums = fe75f434b9090ac0c27702e02bed21472b0f87035be6581f51edc5d4013ea31a
+
+pkgname = python-torchdiffeq
