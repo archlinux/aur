@@ -93,7 +93,7 @@ build() {
     -D LIBPL_ENABLE_CLI=OFF \
     -D IMHEX_VERSION="$pkgver"
 
-  make -C build
+  cmake --build build
 }
 
 package() {
