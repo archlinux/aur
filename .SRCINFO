@@ -1,0 +1,19 @@
+pkgbase = r-ecosolver
+	pkgdesc = Embedded Conic Solver in R
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ECOSolveR
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = r
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-matrix
+	optdepends = r-rmarkdown
+	optdepends = r-slam
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ECOSolveR_0.5.4.tar.gz
+	sha256sums = 5d7489e8176c1df3f3f1290732243429280efca4f837916e6b6faa6dc8a8e324
+
+pkgname = r-ecosolver
