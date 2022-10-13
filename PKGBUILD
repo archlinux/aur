@@ -1,6 +1,6 @@
 # Maintainer: Thomas Voss <mail@thomasvoss.com>
 pkgname=center-git
-pkgver=r36.106b303
+pkgver=1.0.0.r1.106b303
 pkgrel=1
 pkgdesc="Center text to standard output"
 arch=('x86_64' 'i686')
