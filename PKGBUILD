@@ -1,22 +1,21 @@
 # Maintainer: Lubosz Sarnecki <lubosz.sarnecki@collabora.com>
- 
+
 _realname='gxr'
 pkgname="$_realname-git"
-pkgver=0.15.1.979.8894a85
+pkgver=0.16.0.1148.b204356
 pkgrel=1
 pkgdesc='A glib wrapper for the OpenVR and OpenXR APIs.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gxr'
-depends=('gtk3' 'gulkan-git' 'openvr' 'openxr')
+depends=('gtk3' 'gulkan-git' 'openxr')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc')
 license=('MIT')
- 
-source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
 
-optdepends=('monado-git: The open source OpenXR runtime.'
-            'steam: For SteamVR.')
+source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git#branch=main')
+
+optdepends=('monado-git: The open source OpenXR runtime.')
 
 md5sums=('SKIP')
 
@@ -38,9 +37,9 @@ build() {
   ninja -C build
 }
 
-check() {
-  meson test -C build/ --no-suite xr
-}
+#check() {
+#  meson test -C build/ --no-suite xr
+#}
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
