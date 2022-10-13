@@ -2,7 +2,7 @@
 
 pkgname=yin-yang
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
@@ -29,6 +29,7 @@ package() {
         "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
         "$pkgdir/usr/share/applications/"
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+        "$pkgdir/usr/lib/systemd/user/"
     )
     for dir in "${DIRS[@]}"
     do
@@ -47,6 +48,9 @@ package() {
     cp ./resources/Yin-Yang.desktop "$pkgdir/usr/share/applications/Yin-Yang.desktop"
     # copy icon
     cp ./resources/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/yin_yang.svg"
+    # systemd unit files
+    cp ./resources/yin_yang.service "$pkgdir/usr/lib/systemd/user/yin_yang.service"
+    cp ./resources/yin_yang.timer "$pkgdir/usr/lib/systemd/user/yin_yang.timer"
 
     cat << "EOF"
  __     ___          __     __
