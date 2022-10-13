@@ -30,13 +30,13 @@ prepare() {
 
   # check for any roms in the directory where PKGBUILD resides
   # and copy them to Shipwright/OTRExporter. It doesn't matter
-  # which rom will be used, let extract_assets.py do the guessing.
+  # which rom we'll be using, let extract_assets.py do the guessing.
   roms=( "${startdir}/"*.*64 )
   if (( "${#roms[@]}" )); then
     cp "${roms[@]}" OTRExporter
   else
     echo "NO ROMS FOUND! Please place them in \"${startdir}\"."
-    exit 1
+    return 1
   fi
 
   patch -Np1 -i "${srcdir}/soh-install-paths.patch"
