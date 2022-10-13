@@ -1,71 +1,45 @@
-# Maintainer: Thiago Almeida <thiago.almeida@topgolf.com>
-pkgname=hcledit-git
-_pkgname=hcledit-git
+# Maintainer: Bao Trinh <qubidt@gmail.com>
+# Contributor: Thiago Almeida <thiago.almeida@topgolf.com>
+pkgname=hcledit
 url=https://github.com/minamijoyo/hcledit
-pkgver=20220414.181_085cf84
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A command line editor for HCL"
-arch=('i686' 'x86_64')
-license=('GPL')
-depends=(
-  'glibc'
-)
-makedepends=(
-  'go'
-  'git'
-)
+arch=('any')
+license=('MIT')
+depends=('glibc')
+makedepends=('go')
+options=('!lto')
+changelog="${pkgname}.changelog"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minamijoyo/hcledit/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('92f71e91948b1e60f673a2a3112a326a168bf47de8f51d6ddca80a772a9e86b51ea32937086f12ba45ae88dcc8bfb89ee2c838f923e3daa3a9668e8995adcf3f')
 
-source=(
-  "$_pkgname::git+https://github.com/minamijoyo/hcledit#branch=${BRANCH:-master}"
-)
 
-md5sums=('SKIP')
+prepare() {
+  cd "${pkgname}-${pkgver}"
 
-backup=(
-)
+  # create directory for build output
+  mkdir -p build
 
-pkgver() {
-  if [[ "$PKGVER" ]]; then
-    echo "$PKGVER"
-    return
-  fi
-
-  cd "$srcdir/$_pkgname"
-  local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-  local count=$(git rev-list --count HEAD)
-  local commit=$(git rev-parse --short HEAD)
-  echo "$date.${count}_$commit"
+  # download dependencies
+  go mod download
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname}-${pkgver}"
 
-  if [ -L "$srcdir/$_pkgname" ]; then
-    rm "$srcdir/$_pkgname" -rf
-    mv "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
-  fi
-
-  rm -rf "$srcdir/go/src"
-
-  mkdir -p "$srcdir/go/src"
-
-  export GOPATH="$srcdir/go"
-
-  mv "$srcdir/$_pkgname" "$srcdir/go/src/"
-
-  cd "$srcdir/go/src/$_pkgname/"
-  ln -sf "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
-
-  echo ":: Updating git submodules"
-  git submodule update --init
-
-  echo ":: Building binary"
-  go get -v \
-    -gcflags "-trimpath $GOPATH/src"
+  go build -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -o build \
+    .
 }
 
 package() {
-  find "$srcdir/go/bin/" -type f -executable | while read filename; do
-    install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
-  done
+  cd "${pkgname}-${pkgver}"
+
+  install -vDm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

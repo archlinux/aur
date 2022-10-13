@@ -1,15 +1,15 @@
-pkgbase = hcledit-git
+pkgbase = hcledit
 	pkgdesc = A command line editor for HCL
-	pkgver = 20220414.181_085cf84
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/minamijoyo/hcledit
-	arch = i686
-	arch = x86_64
-	license = GPL
+	changelog = hcledit.changelog
+	arch = any
+	license = MIT
 	makedepends = go
-	makedepends = git
 	depends = glibc
-	source = hcledit-git::git+https://github.com/minamijoyo/hcledit#branch=master
-	md5sums = SKIP
+	options = !lto
+	source = hcledit-0.2.6.tar.gz::https://github.com/minamijoyo/hcledit/archive/refs/tags/v0.2.6.tar.gz
+	sha512sums = 92f71e91948b1e60f673a2a3112a326a168bf47de8f51d6ddca80a772a9e86b51ea32937086f12ba45ae88dcc8bfb89ee2c838f923e3daa3a9668e8995adcf3f
 
-pkgname = hcledit-git
+pkgname = hcledit

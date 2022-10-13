@@ -1,5 +1,6 @@
-/*.tar.xz
-/*.tar.zst
-/pkg
-/src
-/hcledit-git
+/src/
+/pkg/
+/*.zip
+/*.tar.gz
+/*.pkg.tar.*
+/*.log
