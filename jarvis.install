@@ -1,0 +1,21 @@
+pre_install() {
+    systemctl stop jarvis
+}
+
+post_install() {
+    systemctl enable jarvis
+    systemctl start jarvis
+}
+
+pre_upgrade() {
+}
+
+post_upgrade() {
+}
+
+pre_remove() {
+    systemctl stop jarvis
+}
+post_remove() {
+    systemctl disable jarvis
+}
