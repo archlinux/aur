@@ -1,7 +1,7 @@
 pkgbase = soh-otr-gc_nmq_d
 	pkgdesc = OTR game data for SoH (OOT Debug PAL GameCube non-Master Quest)
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = any
 	license = unknown
