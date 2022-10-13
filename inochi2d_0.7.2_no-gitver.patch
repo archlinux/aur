@@ -1,0 +1,13 @@
+diff --git a/dub.sdl b/dub.sdl
+index 510a0a9..16459a6 100644
+--- a/dub.sdl
++++ b/dub.sdl
+@@ -9,7 +9,7 @@ dependency "bindbc-opengl" version="~>1.0.1"
+ dependency "fghj" version="~>1.0.1"
+ versions "GL_32" "GL_ARB_gl_spirv" "GL_ARB_texture_filter_anisotropic"
+ stringImportPaths "shaders/"
+-preBuildCommands "dub run gitver -- --prefix IN --file source/inochi2d/ver.d --mod inochi2d.ver --appname Inochi2D"
++//preBuildCommands "dub run gitver -- --prefix IN --file source/inochi2d/ver.d --mod inochi2d.ver --appname Inochi2D"
+ 
+ 
+ configuration "full" {
