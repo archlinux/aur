@@ -1,0 +1,24 @@
+pkgbase = python-sentence-transformers
+	pkgdesc = Multilingual Sentence & Image Embeddings with BERT
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/UKPLab/sentence-transformers
+	arch = x86_64
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-transformers
+	depends = python-tokenizers
+	depends = python-tqdm
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-numpy
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-nltk
+	depends = python-sentencepiece
+	depends = python-huggingface-hub
+	source = https://github.com/UKPLab/sentence-transformers/archive/refs/tags/v2.2.2.tar.gz
+	sha256sums = 77b04de170b98a12dd61c38c8a5d5277e50e4d435c3776e1b0bcbea24196ae6a
+
+pkgname = python-sentence-transformers
