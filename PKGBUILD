@@ -2,7 +2,7 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.14.1
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
@@ -20,21 +20,23 @@ makedepends=('python-setuptools'
              'python-nbsphinx>=0.8.6'
              'pandoc')
 #'gcc-fortran')
-checkdepends=('python-pytest-xvfb')
+checkdepends=('python-pytest-xvfb'
+              'python-astropy'
+              'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('693dd73517c2943e2477c4d36a75f1a4'
+md5sums=('4ea372d76411d184e0f4bd0cf1f7459a'
          'd1823cc7683442d92450fadff7aed362')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/sherpa_local_fftw.patch"
-    sed -i -e "/oldest-supported-numpy/d" -e "/setuptools/s/ < 60//" pyproject.toml
+    sed -i -e "/oldest-supported-numpy/d" -e "/setuptools/s/, < 60//" pyproject.toml
 #   sed -e '/'\'nbsphinx\''/a \    '\'IPython\.sphinxext\.ipython_console_highlighting\','' \
 #       -i docs/conf.py
 }
@@ -46,17 +48,17 @@ build() {
 
     msg "Building Docs"
     cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-$(get_pyver)" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" #-vv --color=yes
 }
 
 package_python-sherpa() {
-    depends=('python>=3.7' 'python-numpy>=1.17.0' 'fftw')
+    depends=('python>=3.7' 'python-numpy>=1.20.0' 'fftw')
     optdepends=('python-matplotlib: Graphical output'
                 'python-astropy>=3.2.1: Data I/O support'
                 'ds9: Imaging requires'
