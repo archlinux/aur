@@ -1,19 +1,19 @@
 # Maintainer: Lubosz Sarnecki <lubosz.sarnecki@collabora.com>
- 
+
 _realname='gulkan'
 pkgname="$_realname-git"
-pkgver=0.15.1.300.f39526a
+pkgver=0.16.0.433.79ed354
 pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gulkan'
-depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'glfw')
+depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'libxkbcommon' 'wayland' 'xcb-util-keysyms' 'libdrm' 'wayland-protocols')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'gtk-doc')
+makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc')
 license=('MIT')
 
-source=('git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git')
+source=('git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git#branch=main')
 md5sums=('SKIP')
 
 ver() {
@@ -35,8 +35,7 @@ build() {
 }
 
 #check() {
-#  cd $_realname
-#  ninja -C build test
+#  meson test -C build/
 #}
 
 package() {
