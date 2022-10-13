@@ -1,14 +1,14 @@
 pkgbase = sugarjar
 	pkgdesc = A git/github helper inspired by arcanist (and others)
-	pkgver = 0.0.9
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/jaymzh/sugarjar
 	arch = x86_64
 	license = Apache
 	depends = git
 	depends = hub
-	source = https://github.com/jaymzh/sugarjar/releases/download/v0.0.9/sugarjar_0.0.9-1_amd64-ubuntu2004.deb
-	sha256sums = 558e7ee3c660b1d0281e6cb1848bcff915ad214f0d2fb8270158a6e78f93390d
+	depends = libxcrypt-compat
+	source = https://github.com/jaymzh/sugarjar/releases/download/v0.0.11/sugarjar_0.0.11-1_amd64-ubuntu2004.deb
+	sha256sums = d8818dcb66b2da24647c6a2cceb640cb5f69a1a45a96497f537822723a616e82
 
 pkgname = sugarjar
-

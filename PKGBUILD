@@ -1,14 +1,14 @@
 # Maintainer: Zeal Wierslee <zeal@wierslee.me>
 pkgname=sugarjar
-pkgver=0.0.9
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="A git/github helper inspired by arcanist (and others)"
 arch=('x86_64')
 url="https://github.com/jaymzh/sugarjar"
 license=('Apache')
-depends=('git' 'hub')
+depends=('git' 'hub' 'libxcrypt-compat')
 source=("https://github.com/jaymzh/sugarjar/releases/download/v$pkgver/sugarjar_$pkgver-${pkgrel}_amd64-ubuntu2004.deb")
-sha256sums=("558e7ee3c660b1d0281e6cb1848bcff915ad214f0d2fb8270158a6e78f93390d")
+sha256sums=("d8818dcb66b2da24647c6a2cceb640cb5f69a1a45a96497f537822723a616e82")
 
 package() {
   cd "$srcdir"
