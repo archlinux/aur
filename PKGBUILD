@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggsignif
-_pkgver=0.6.3
+_pkgver=0.6.4
 pkgname=r-${_pkgname,,}
-pkgver=0.6.3
-pkgrel=4
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Significance Brackets for 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca8545b25590e531512a90a18449a2cbab945f7434a1d60188c41f7d1839a7a9')
+sha256sums=('112051af425a0c0f2998ce187dacad066bc16f55af01e3e7b76d62ff6954b20a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
