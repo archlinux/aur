@@ -4,7 +4,7 @@
 _pkgname=ECOSolveR
 _pkgver=0.5.4
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Embedded Conic Solver in R'
 arch=('x86_64')
