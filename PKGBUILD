@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22095.61399de5d
+pkgver=r22216.013a34207
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -123,7 +123,10 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_C_COMPILER=clang \
       -DCMAKE_CXX_COMPILER=clang++ \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
       -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DUSE_DISCORD_PRESENCE=ON \
