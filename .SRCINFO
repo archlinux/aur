@@ -1,7 +1,7 @@
 pkgbase = inochi-creator
 	pkgdesc = Inochi2D Rigging Application
-	pkgver = 0.7.3
-	pkgrel = 2
+	pkgver = 0.7.4.1
+	pkgrel = 1
 	url = https://inochi2d.com/
 	arch = x86_64
 	license = BSD
@@ -15,18 +15,21 @@ pkgbase = inochi-creator
 	depends = harfbuzz
 	options = strip
 	options = !emptydirs
-	source = git+https://github.com/Inochi2D/inochi-creator.git
-	source = https://github.com/Inochi2D/gitver/archive/refs/tags/v1.6.0.tar.gz
+	source = https://github.com/Inochi2D/inochi-creator/archive/refs/tags/v0.7.4.1.tar.gz
 	source = git+https://github.com/Inochi2D/bindbc-imgui.git
 	source = git+https://github.com/Inochi2D/facetrack-d.git
 	source = git+https://github.com/KitsunebiGames/i18n.git
-	source = git+https://github.com/Inochi2D/inochi2d.git
+	source = git+https://github.com/Inochi2D/inochi2d.git#commit=08fe19825b0db01c0a7831711722e5c9660d74ad
+	source = inochi-creator_0.7.3_no-gitver.patch
+	source = inochi2d_0.7.2_no-gitver.patch
 	source = git+https://github.com/grillo-delmal/vpuppet-icons.git
-	sha256sums = SKIP
-	sha256sums = c46b1257350910e5f792e0641bf99c49c1ec89d4f45230b5366cb6a0ad9f37ff
-	sha256sums = SKIP
+	sha256sums = 73ed49b0e79180975c36350b461de113c3f48dcc6a5c51017c1699fd30fb2321
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = b6194827dc2fd710341aa48b2d0785cf5de5e038fe2041991009e3e2615427a4
+	sha256sums = e95e55d9d1e9e11a3105f8d9571ea5a41a11e9ac51a191c4819cac8509e4db21
 	sha256sums = SKIP
 
 pkgname = inochi-creator
