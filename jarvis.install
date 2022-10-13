@@ -1,10 +1,9 @@
 pre_install() {
-    systemctl stop jarvis
 }
 
 post_install() {
-    systemctl enable jarvis
-    systemctl start jarvis
+    systemctl enable jarvis.service
+    systemctl start jarvis.service
 }
 
 pre_upgrade() {
