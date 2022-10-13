@@ -1,6 +1,6 @@
 pkgbase = dict-cedict-git
 	pkgdesc = A port of CC-CEDICT database for dictd et al.
-	pkgver = 20211029.r9.7c9d7d8
+	pkgver = 20221013.r11.77bd06c
 	pkgrel = 1
 	url = https://www.mdbg.net/chinese/dictionary?page=cc-cedict
 	install = dict-cedict-git.install
