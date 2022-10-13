@@ -3,7 +3,7 @@
 # This PKGBUILD is heavily inspired by the cudatext-gtk2-bin package by ragouel
 pkgname=cudatext-qt5-bin
 _pkgname=cudatext
-pkgver=1.172.5.1
+pkgver=1.172.5.2
 pkgrel=0
 pkgdesc="Cross-platform text editor, written in Lazarus. Qt5 edition."
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('cudatext')
 conflicts=('cudatext-gtk2-bin')
 options=('!strip')
 source=("http://www.uvviewsoft.com/cudatext/files_linux/cudatext-linux-qt5-amd64-${pkgver}.tar.xz")
-sha256sums=('c9c4d463d489a081d83eb65a8273d542d48abd4ab31395d658c8f73bed418578')
+sha256sums=('f4278557e0868d2afcb417e20efa4885053b0a1c516562bc3dd7f48d78b56fce')
 
 prepare() {
 	echo "Creating desktop file"
