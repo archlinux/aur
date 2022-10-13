@@ -12,19 +12,19 @@ provides=('shcopy')
 conflicts=('shcopy')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('5a253cb2714fd4d3eae2509fbb3354a669f21081f182f49436327edc9cf14f0a')
+sha256sums_aarch64=('acc59c4d011c697e2c49d0ed8752c412b737781c83547da33b7a064193c00125')
 
 source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_armv6.tar.gz")
-sha256sums_armv6h=('856432bb55cc78e3cb6f8551dc83d378b1df917f8a641c619c398f090d5b5215')
+sha256sums_armv6h=('6f9ed971dfaa4ec1fccc823637e435286152e8eb5199416f9b039198e3156a66')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_armv7.tar.gz")
-sha256sums_armv7h=('0aeed3c1c24ba7ffeb46cda40af08941094b704788cee19585e24b3059761b73')
+sha256sums_armv7h=('092d4a0ce87b169fc2ee85a2bf6bc24c9a2225d34d51ce75722056785752b0cf')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_i386.tar.gz")
-sha256sums_i686=('0a82f12e5c90e5ede0edb26a3ba48f9a18fc37652a7de3919f7722ea65f112d7')
+sha256sums_i686=('439f1c8a07c55333129a6c606da5d90fdc370e9e6fa8461906cccfc3bf92f623')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_x86_64.tar.gz")
-sha256sums_x86_64=('b7988a8c4ba6f07ae5f6f5c11935a78fe0bcbf90d619e033b4645cde51569ba9')
+sha256sums_x86_64=('99b7aa80e00b61de51d707a3f7215b1db0a5768f664042c8bfb8ee354fe203aa')
 
 package() {
   # bin
