@@ -50,8 +50,6 @@ prepare() {
 
 build() {
     cd "${pkgname}" || exit 1
-    pwd
-		echo "PWD: $PWD"
     ../../compile.bash "${OPTIONS}"
 }
 
