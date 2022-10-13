@@ -45,7 +45,7 @@ prepare() {
         VERSION=$(awk '/version:/ {print $2}' latest-linux.yml)
         echo "Found version ($VERSION)"
 	echo "Downloading '$OUTLINE_CLIENT' ver $VERSION from '$DOWNLOAD_URL'"
-        curl $DOWNLOAD_URL -o "${srcdir}/$OUTLINE_CLIENT"
+        curl $DOWNLOAD_URL -o $OUTLINE_CLIENT
 }
 
 package() {
