@@ -1,13 +1,10 @@
 --- a/src/gallium/drivers/zink/nir_to_spirv/nir_to_spirv.c
 +++ b/src/gallium/drivers/zink/nir_to_spirv/nir_to_spirv.c
-@@ -1075,8 +1075,8 @@
-          ctx->int_samplers[index] = var_id;
-       }
-       BITSET_SET(ctx->samplers_used, index);
--      if (mediump)
--         ctx->samplers_used_mediump |= 1 << index;
-+      // if (mediump)
-+      //    ctx->samplers_used_mediump |= 1 << index;
-    } else {
-       ctx->image_types[index] = image_type;
-       ctx->images[index] = var_id;
+@@ -1052,6 +1052,7 @@
+    enum glsl_base_type basetype = glsl_get_sampler_result_type(type) == GLSL_TYPE_VOID ? GLSL_TYPE_FLOAT : glsl_get_sampler_result_type(type);
+    SpvId image_type;
+    SpvId var_id = create_image_var(ctx, var, bindless, basetype, &image_type);
++   bool mediump = (var->data.precision == GLSL_PRECISION_MEDIUM || var->data.precision == GLSL_PRECISION_LOW);
+ 
+    if (var->data.fb_fetch_output)
+       spirv_builder_emit_input_attachment_index(&ctx->builder, var_id, var->data.index);

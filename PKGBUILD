@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.161123.fa759185850.61f1b507eb56fc13a58fe7134d95cdc5
+pkgver=22.3.0_devel.161123.fa759185850.5a0380f9e9caaef8fcede4e465e4a788
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -30,11 +30,11 @@ source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=ru
         )
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         'dda07c53ad6d2e1341d4d71a71e7092d'
+         'b583d7eef8e4835f6e6acbbe7caf7b7e'
          )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '6e879dd0436e5a28c11244d99935951b22dda7c3b2413942c4a97d4b763c63d25eee31112eaed2a91e9b866058ad53e981ff7ac2d44172d8c09c25209f72a6ca'
+            '1f8c1fa1071fc00b7af67ea979ea8d5ddcaca8f28f14a58ecbccdfc784049f75092f6c69d5cd228ec100a7060f439b0bc278f2b02b32a9f51795993da18f0d65'
             )
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
