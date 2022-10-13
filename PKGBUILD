@@ -9,7 +9,7 @@ license=('BSD')
 makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname::git+git://git.thomasvoss.com/center.git#tag=v$pkgver")
+source=("$pkgname::git://git.thomasvoss.com/center.git#tag=v$pkgver")
 b2sums=('SKIP')
 
 pkgver() {
