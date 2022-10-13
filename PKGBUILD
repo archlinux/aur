@@ -31,8 +31,8 @@ package()
 
     ./doinstall "$pkgdir/opt/gnatstudio"
 
-    mkdir -p "$pkgdir/usr/lib"
-    cp "$srcdir/libcrypt.so.1" "$pkgdir/usr/lib/libcrypt.so.1"
+#    mkdir -p "$pkgdir/usr/lib"
+#    cp "$srcdir/libcrypt.so.1" "$pkgdir/usr/lib/libcrypt.so.1"
 
     # Install the license.
     install -D -m644     \
