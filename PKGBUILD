@@ -6,14 +6,14 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-_swiftver=swift-5.6-RELEASE
-pkgver=5.6.2
+_swiftver=swift-5.7-RELEASE
+pkgver=5.7.0
 pkgrel=1
 swiftargumentparserver=1.0.3
 swiftcryptover=1.1.5
 swiftniover=2.31.2
 swiftniosslver=2.15.0
-yamsver=4.0.2
+yamsver=5.0.0
 
 pkgdesc="The Swift programming language and debugger"
 arch=('x86_64')
@@ -38,12 +38,11 @@ source=(
     "swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=${_swiftver}"
     "llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
     "0001-arch-aur-patches.patch"
-    "0002-asprintf-exists.patch"
     # swift src to check afterwards
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=${yamsver}"
     "sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
-    "swift-cmark-gfm::git+https://github.com/apple/swift-cmark#branch=release/5.6-gfm"
+    "swift-cmark-gfm::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
     "swift-crypto::git+https://github.com/apple/swift-crypto#tag=${swiftcryptover}"
     "swift-docc::git+https://github.com/apple/swift-docc#branch=main"
     "swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main"
@@ -72,8 +71,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'e47ca269514997096b6141c18f1dd2cfd83182bb41ccee62169ff3d634198bb4'
-    'd9985dd648ecb83d56a48e3128000b869f819526ecda9735d7c6a3b9fd2047b7'
+    '3941d6e2ff26ee0bf2d0ae37ed618d1cb36af85e256b0b84dd4e5d8549ec2982'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -101,7 +99,6 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
-    ( cd swift-corelibs-foundation && patch -p1 -i "$srcdir/0002-asprintf-exists.patch" )
 }
 
 #pkgver() {

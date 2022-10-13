@@ -1,33 +1,41 @@
-From 13b68dca129e307f6abcabba4936765f734d7879 Mon Sep 17 00:00:00 2001
+From b79f0992a2201a2864dfde89291b3e1504613bea Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
-Date: Sat, 2 Apr 2022 13:44:08 +0200
+Date: Sun, 20 Mar 2022 12:05:07 +0100
 Subject: [PATCH] arch aur patches
 
 ---
- utils/build-presets.ini | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ utils/build-presets.ini | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 64ba12b1e04..faf53241aff 100644
+index 57518c0853d..e959488e23e 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -818,11 +818,9 @@ llbuild
+@@ -822,10 +822,8 @@ llbuild
  swiftpm
  swift-driver
  xctest
 -libicu
- libcxx
  swiftdocc
  
 -build-ninja
  install-llvm
  install-swift
  install-lldb
-@@ -844,14 +842,13 @@ build-swift-stdlib-unittest-extra
- 
+@@ -833,8 +831,7 @@ install-llbuild
+ install-swiftpm
+ install-swift-driver
+ install-xctest
+-install-libicu
+-install-prefix=/usr
++install-prefix=/usr/lib/swift-git
+ install-sourcekit-lsp
+ install-swiftdocc
+ build-swift-static-stdlib
+@@ -847,13 +844,13 @@ build-swift-stdlib-unittest-extra
  test-installable-package
  
--# Build the benchmarks against the toolchain.
+ # Build the benchmarks against the toolchain.
 -toolchain-benchmarks
 +# does not work outside /usr, Build the benchmarks against the toolchain.
 +# toolchain-benchmarks
@@ -40,13 +48,58 @@ index 64ba12b1e04..faf53241aff 100644
  
  # This ensures the default module cache
  # location is local to this run, allowing
-@@ -953,7 +950,6 @@ build-swift-stdlib-unittest-extra
- install-destdir=%(install_destdir)s
+@@ -1102,7 +1099,6 @@ mixin-preset=
+     mixin_linux_install_components_with_clang
+ build-subdir=buildbot_incremental
  
- # Path to the .tar.gz package we would create.
--installable-package=%(installable_package)s
+-libicu
+ llbuild
+ swiftpm
+ swift-driver
+@@ -1116,7 +1112,6 @@ sourcekit-lsp
+ install-llvm
+ install-swift
+ install-llbuild
+-install-libicu
+ install-swiftpm
+ install-swift-driver
+ install-foundation
+@@ -1671,12 +1666,10 @@ mixin-preset=
+     mixin_linux_install_components_with_clang
  
- host-test
+ libdispatch
+-libicu
+ foundation
+ xctest
+ libcxx=false
+ 
+-install-libicu
+ install-foundation
+ install-libdispatch
+ install-xctest
+@@ -1918,7 +1911,6 @@ mixin-preset=buildbot_indexstoredb_linux,sanitize
+ mixin-preset=
+     mixin_linux_install_components_with_clang
+ 
+-libicu
+ llbuild
+ swiftpm
+ xctest
+@@ -1933,7 +1925,6 @@ reconfigure
+ 
+ install-foundation
+ install-libdispatch
+-install-libicu
+ install-libcxx
+ install-llvm
+ install-swift
+@@ -2687,7 +2678,6 @@ no-assertions
+ [preset: linux_lldb]
+ lldb
+ foundation
+-libicu
+ libdispatch
+ build-ninja
  
 -- 
 2.35.1
