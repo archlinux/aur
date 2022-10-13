@@ -7,7 +7,8 @@
 
 pkgname=openssh-gssapi
 _pkgname=openssh
-pkgver=8.4p1
+pkgver=9.0p1
+_patch=1
 pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol'
 url='https://www.openssh.com/portable.html'
@@ -22,18 +23,16 @@ optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X'
             'libfido2: FIDO/U2F support')
 
-validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
-#source=("git://anongit.mindrot.org/openssh.git?signed#tag=V_8_2_P1"
+validpgpkeys=('7168B983815A5EEF59A4ADFD2A3F414E736060BA')
 source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz"{,.asc}
-        "https://sources.debian.org/data/main/o/openssh/1:${pkgver}-5/debian/patches/gssapi.patch"
+        "${pkgname}-${pkgver}-${_patch}-gssapi.patch::https://sources.debian.org/data/main/o/openssh/1:${pkgver}-${_patch}/debian/patches/gssapi.patch"
         'sshdgenkeys.service'
         'sshd.service'
         'sshd.conf'
-        'sshd.pam'
-        'glibc-2.31.patch')
-sha256sums=('5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
+        'sshd.pam')
+sha256sums=('03974302161e9ecce32153cfa10012f1e65c8f3750f573a73ab1befd5972a28a'
             'SKIP'
-            '15139c42894dd0ebd182608ecd7151a9eef6158aed30c676e7685e8407c6d1cb'
+            'd2f4c7bb1bc33540605a3bb0c9517d7b4ed2f5d77c24f7afcd64891be59f4ed2'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
@@ -46,10 +45,7 @@ install=install
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-
-    patch -p1 -i ../glibc-2.31.patch
-    patch -p1 -i ../gssapi.patch
-
+    patch -p1 -i ../${pkgname}-${pkgver}-${_patch}-gssapi.patch
     autoreconf
 }
 
