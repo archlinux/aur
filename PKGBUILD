@@ -2,8 +2,8 @@
 
 _pkgname=horovod
 pkgname=python-horovod
-pkgver=0.25.0
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc='Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet'
 arch=('x86_64')
 url='https://github.com/horovod/horovod'
@@ -56,7 +56,6 @@ prepare() {
   export HOROVOD_BUILD_CUDA_CC_LIST="52,53,60,61,62,70,72,75,80,86"
   export CC=/opt/cuda/bin/gcc
   export CXX=/opt/cuda/bin/g++
-  export MAKEFLAGS="-j1"
 }
 
 build() {
