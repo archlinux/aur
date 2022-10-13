@@ -12,7 +12,7 @@ pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=6.0
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -20,7 +20,7 @@ license=('GPL2')
 makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
-###        "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
@@ -48,6 +48,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
+            '483447baa17bb08dfeb1b966c9b93bd0a7cac096d8086b0bbd09fb0d4968fe1e'
             'e5ac6986c81b5fea10f5a150506f483fe8d6e0fb5b1d4e8ce9f2c19bed23b2c9'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             '02b035fa598f9e281b9b5b645809d1bcacfa189c733dc291b4305c77cde52960'
@@ -74,8 +75,8 @@ prepare() {
   cd "linux-${_basekernel}"
 
   # add upstream patch
-###  msg "add upstream patch"
-###  patch -p1 -i "../patch-${pkgver}"
+  msg "add upstream patch"
+  patch -p1 -i "../patch-${pkgver}"
 
   local src
   for src in "${source[@]}"; do
