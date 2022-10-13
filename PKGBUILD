@@ -2,7 +2,7 @@
 
 _name=tzdata
 pkgname=python-tzdata
-pkgver=2022.4
+pkgver=2022.5
 pkgrel=1
 pkgdesc='Provider of IANA time zone data'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-subtests')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ada9133fbd561e6ec3d1674d3fba50251636e918aa97bd59d63735bef5a513bb')
-b2sums=('738464ce6f9f036f5b010ff69f26ec9fdb6f0053f13de18fa4c66b3c4e8e5cf0c237b0e4545e99a18e5cb9eff39714bf49a96aecc4024d6a44ec63688a0353f3')
+sha256sums=('e15b2b3005e2546108af42a0eb4ccab4d9e225e2dfbf4f77aad50c70a4b1f3ab')
+b2sums=('506352518815a22314ac3d8bcdffa9d999ed52ceb75f55a9591d1220a242519c9c7baf38d0495eedaf134af087bcedf8895fad1b52ac856e1aae646485911386')
 
 build() {
   cd $_name-$pkgver
@@ -33,9 +33,4 @@ package() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   ln -s /etc/localtime "$pkgdir/$site_packages"/tzdata/zoneinfo/localtime
-
-  # Symlink license file
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/$_name-$pkgver.dist-info/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
