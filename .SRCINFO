@@ -1,12 +1,12 @@
 pkgbase = transfer.sh
 	pkgdesc = Easy and fast file sharing from the command-line
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://transfer.sh/
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/dutchcoders/transfer.sh/archive/v1.3.1.tar.gz
-	sha512sums = 728cc46b202e2a4f33c319f19f8426f853539c45d92d656a6486d03272f0eb821f20ccfeb665d61eab3c9c881a7645f58a486562ff75a3c821e860e47ec44ea1
+	source = https://github.com/dutchcoders/transfer.sh/archive/v1.4.0.tar.gz
+	b2sums = 80416447dbfd3ad2f0ef966947fb39b2a119094463d2268514e86ca21da8634c1e9359852a7aab6595d43a3ce5f76fdd48056f9f88c08893f02b23ea0b401410
 
 pkgname = transfer.sh
