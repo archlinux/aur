@@ -2,12 +2,12 @@
 
 pkgname=plasma-bigscreen
 pkgver=5.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma shell for TVs'
 arch=(x86_64)
 url='https://plasma-bigscreen.org/'
 license=(GPL2)
-depends=(plasma-workspace plasma-nano plasma-settings qt5-virtualkeyboard plasma-remotecontrollers)
+depends=(plasma-pa plasma-nm plasma-nano plasma-settings kdeconnect qt5-virtualkeyboard plasma-remotecontrollers)
 makedepends=(extra-cmake-modules)
 optdepends=('aura-browser: web browser' 'plank-player: media player')
 source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
