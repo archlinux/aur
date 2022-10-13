@@ -2,13 +2,13 @@
 
 pkgname=navidrome
 pkgver=0.47.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Music Server and Streamer compatible with Subsonic/Airsonic'
 arch=('x86_64')
 url='https://www.navidrome.org'
 license=('GPL3')
-depends=('ffmpeg' 'nodejs>=16' 'taglib')
-makedepends=('git' 'go' 'npm')
+depends=('ffmpeg' 'taglib')
+makedepends=('git' 'go' 'npm' 'nodejs>=16')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/navidrome/navidrome/archive/refs/tags/v$pkgver.tar.gz"
     "navidrome.service"
@@ -16,7 +16,7 @@ source=(
     "sysusers.conf"
 )
 sha256sums=('68f9f013d8e17a769770cdd7a1f4d9fc279b3d5e83418bbb54018781de96ab76'
-            '790cdabdffba7163a92e22572f4a0810081c9617338b8c28d3eb8d0a7edb8ae1'
+            '1a155be78b109b5e6d18eaae5c35f1ff0f084d48e44ab5cf8e0a87c9d6bcd9fc'
             '23e62c707f3518f917e578979407cb26af2fd021fe88e580b920ccd05458ce13'
             'ee74a732f807e314f97e22b907882d16d125512d6ee23a36251fde2b3b7e608c')
 backup=('etc/navidrome/navidrome.toml')
@@ -35,7 +35,7 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -ldflags="-X github.com/navidrome/navidrome/consts.gitSha=$gitSha -X github.com/navidrome/navidrome/consts.gitTag=v$pkgver" -tags=netgo
+    go build -ldflags="-X github.com/navidrome/navidrome/consts.gitSha=$gitSha -X github.com/navidrome/navidrome/consts.gitTag=v$pkgver" -tags=netgo -buildvcs=false
 }
 
 package() {
