@@ -1,6 +1,6 @@
 pkgbase = dict-ecdict-git
 	pkgdesc = A port of Ultimate ECDICT database for dictd et al.
-	pkgver = 1.0.0.r13.51a10e0
+	pkgver = 1.0.0.r14.7f70551
 	pkgrel = 1
 	url = https://github.com/skywind3000/ECDICT-ultimate
 	install = dict-ecdict-git.install
