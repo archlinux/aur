@@ -1,7 +1,7 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname='hebcal'
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Jewish calendar generator'
 arch=('any')
 url='https://github.com/hebcal/hebcal'
