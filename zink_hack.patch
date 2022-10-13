@@ -1,0 +1,13 @@
+--- a/src/gallium/drivers/zink/nir_to_spirv/nir_to_spirv.c
++++ b/src/gallium/drivers/zink/nir_to_spirv/nir_to_spirv.c
+@@ -1075,8 +1075,8 @@
+          ctx->int_samplers[index] = var_id;
+       }
+       BITSET_SET(ctx->samplers_used, index);
+-      if (mediump)
+-         ctx->samplers_used_mediump |= 1 << index;
++      // if (mediump)
++      //    ctx->samplers_used_mediump |= 1 << index;
+    } else {
+       ctx->image_types[index] = image_type;
+       ctx->images[index] = var_id;

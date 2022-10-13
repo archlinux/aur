@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.160940.edb89ae6094.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.3.0_devel.161123.fa759185850.61f1b507eb56fc13a58fe7134d95cdc5
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -11,32 +11,30 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
              'git' 'ninja'
              'directx-headers-git' 'rust' 'rust-bindgen')
-# vulkan-radeonはビルドできないため公式リポジトリのものを使用
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
          'libxcb' 'python' 'libclc' 'clang' 'libx11' 'systemd-libs' 'llvm-libs' 'compiler-rt'
-         'spirv-llvm-translator' 'vulkan-radeon')
+         'spirv-llvm-translator')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
             'opengl-man-pages: for the OpenGL API man pages')
-# vulkan-radeonをこのパッケージでビルドできないため､ここから外す
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
+provides=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
           'vulkan-mesa-layer' 'mesa-libgl' 'opengl-driver' 'opencl-driver' 'vulkan-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
+conflicts=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
            'vulkan-mesa-layer' 'mesa-libgl' 'vulkan-mesa')
 
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/zink'
         'LICENSE'
-#        'eglapi_hack.patch'
+        'zink_hack.patch'
         )
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-#         '83448b54dfea2e53891476fe3d6657e3'
+         'dda07c53ad6d2e1341d4d71a71e7092d'
          )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-#            '2cf8ef08c5ac02e5a795c37a67a12547ab752620b2c2a3f34ff53195f50e1758ebc8004f0b356d99255f2c9af19815e6ac61d66aaebecebe5d1d00578d1f412d'
+            '6e879dd0436e5a28c11244d99935951b22dda7c3b2413942c4a97d4b763c63d25eee31112eaed2a91e9b866058ad53e981ff7ac2d44172d8c09c25209f72a6ca'
             )
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
@@ -81,7 +79,6 @@ build () {
     export CC="clang"
     export CXX="clang++"
 
-    # ビルドできないためvulkan-driversからamdを外す(vulkan-radeon)
     meson setup mesa _build \
        --wrap-mode=nofallback \
        -D prefix=/usr \
@@ -91,7 +88,7 @@ build () {
        -D b_ndebug=true \
        -D platforms=auto \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
-       -D vulkan-drivers=intel,intel_hasvk,swrast \
+       -D vulkan-drivers=auto \
        -D vulkan-rt-drivers=auto \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
