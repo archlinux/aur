@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=gyroflow
 # Hyphens are not allowed in `pkgver`.
-_pkgver=1.0.0-rc5
+_pkgver=1.2.0
 pkgver=${_pkgver//-/_}
 pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
@@ -11,15 +11,12 @@ license=("GPL3")
 depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "opencl-driver" "libva-mesa-driver" "ocl-icd" "ffmpeg")
 makedepends=("cargo" "opencl-headers")
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
-        "use-system-dynamic-opencv.patch"
         "gyroflow.desktop")
-sha512sums=("e0e81888ce27634ba49fe2bb3831d870b29e0dd9e1818ff9ccc914b079db623c793aa538cc4996b1625bcd3389b83d9204b15de5117856fdc5aea2296068dab2"
-	    "7d0b2be79f97304d814279ba1382864cdc314a81994b7cebc2126f20dbe70f1a6260bb3af3379f2d7a98ce36255aa928f2955afdebcd7b141bfed2fc824613f8"
-	    "03279c2568350619f1cbdd88960e77773f55bafa4da81de4fb9276743fa66ff11edd0149af9caae7ecba3afa3b8704217552634973373aaaf98f20f64fa95a84")
+sha512sums=('92ff3a5e7a7e1916d3617ea3d132ea5ab6171e8cea81a00db46da289e66873eda86a57c2cb4d999524cc1375d82744f38caf241599a9490af883eb8e6d8f56b9'
+            '03279c2568350619f1cbdd88960e77773f55bafa4da81de4fb9276743fa66ff11edd0149af9caae7ecba3afa3b8704217552634973373aaaf98f20f64fa95a84')
 
 prepare() {
 	cd "${pkgname}-${_pkgver}"
-	patch --forward --strip=1 --input="${srcdir}/use-system-dynamic-opencv.patch"
 	cargo update
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
@@ -31,6 +28,8 @@ build() {
 	export QMAKE="/usr/bin/qmake6"
 	# Use system libraries.
 	export FFMPEG_DIR="/usr"
+	# Since 9eecb6c1ee89ea5d137758c5ada45e1c5895e636, if OPENCV_LINK_PATHS
+	# does not contain `vcpkg`, it will dynamically link to system opencv.
 	export OPENCV_LINK_PATHS="/usr"
 	# See <https://github.com/gyroflow/gyroflow/blob/master/__env-linux.sh>.
 	# But I need to add `opencv_dnn` to build it.
