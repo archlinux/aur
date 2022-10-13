@@ -13,9 +13,6 @@ pkgbase = postgis-src
 	depends = libxml2
 	depends = libxslt
 	depends = protobuf-c
-	depends = sfcgal
-	depends = zstd
-	depends = lz4
 	depends = proj
 	optdepends = gtk2-appmenu: for GTK support
 	provides = postgis-src=3.3.1

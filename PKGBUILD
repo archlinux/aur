@@ -7,7 +7,7 @@ pkgdesc="Postgres GIS extensions (from source)"
 arch=('i686' 'x86_64')
 url="http://postgis.net/"
 license=('GPL')
-depends=('postgresql' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt' 'protobuf-c' 'sfcgal' 'zstd' 'lz4' 'proj')
+depends=('postgresql' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt' 'protobuf-c' 'proj')
 optdepends=('gtk2-appmenu: for GTK support')
 provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname postgis)
@@ -17,7 +17,7 @@ sha256sums=('91be800a72d748c5a3a4a00d82ac1de42023e29da61ece6ebf9c77fe228fcb1a')
 build() {
   cd postgis-${pkgver}
 
-  ./configure --prefix=/usr --with-gdalconfig=/usr/bin/gdal-config --with-gui --with-zstd --with-lz4 --with-projdir=/usr/lib
+  ./configure --prefix=/usr --with-gdalconfig=/usr/bin/gdal-config --with-gui --with-projdir=/usr/lib
   make
 }
 
