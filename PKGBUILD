@@ -1,7 +1,7 @@
 # Maintainer: matt kasun <matt  at gravil.com>
 pkgname=netclient
-pkgver=0.16.0
-pkgrel=1
+pkgver=0.16.1
+pkgrel=0
 pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netmaker'
@@ -9,7 +9,7 @@ license=("custom:SSPL")
 depends=('wireguard-tools')
 
 source=("${pkgver}-${pkgrel}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('9540d5fffb2cfbb5fc21348d8c19af00f96184dfc1b1ce1281b8804c1050b579')
+sha256sums=('c998782c5fdc04421424c8ea01f5e73d4b6879db94b558474aa842df7f05d13d')
 
 
 package() {
