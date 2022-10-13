@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=rsspls
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Generate RSS feeds from web pages"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/wezm/rsspls"
 license=('MIT' 'Apache')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2b870159b1c2d0a4d69e8a8136a7cce5d395c6b39040a3a7fbc15dab36597623')
+sha256sums=('ff815b7f7854fb00bb320ffa5cfedea58fc011be3001119663721c6b4a141556')
 
 build() {
   cd "$pkgname-$pkgver"

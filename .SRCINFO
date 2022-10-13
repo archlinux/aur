@@ -1,13 +1,13 @@
 pkgbase = rsspls
 	pkgdesc = Generate RSS feeds from web pages
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/wezm/rsspls
 	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = cargo
-	source = rsspls-0.3.0.tar.gz::https://github.com/wezm/rsspls/archive/0.3.0.tar.gz
-	sha256sums = 2b870159b1c2d0a4d69e8a8136a7cce5d395c6b39040a3a7fbc15dab36597623
+	source = rsspls-0.4.1.tar.gz::https://github.com/wezm/rsspls/archive/0.4.1.tar.gz
+	sha256sums = ff815b7f7854fb00bb320ffa5cfedea58fc011be3001119663721c6b4a141556
 
 pkgname = rsspls
