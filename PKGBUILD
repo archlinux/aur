@@ -5,20 +5,20 @@ pkgname=fortune-mod-mingju-git
 pkgver=r15.e2398a0
 pkgrel=1
 pkgdesc="Chinese mingju for fortune-mod"
-url="https://github.com/xuchunyang/${_srcname}"
-license=("custom")
-depends=('fortune-mod')
-makedepends=('git' 'fortune-mod' 'opencc')
-provides=('fortune-mod-mingju')
-conflicts=('fortune-mod-mingju')
-groups=('fortune-mods')
-source=("git+${url}")
-md5sums=('SKIP')
-arch=('any')
+url=https://github.com/xuchunyang/${_srcname}
+license=(custom)
+depends=(fortune-mod)
+makedepends=(git fortune-mod opencc)
+provides=(fortune-mod-mingju)
+conflicts=(fortune-mod-mingju)
+groups=(fortune-mods)
+source=(git+${url})
+md5sums=(SKIP)
+arch=(any)
 
 pkgver() {
   cd ${_srcname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
