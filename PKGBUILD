@@ -2,7 +2,7 @@
 
 _srcname='chinadns-ng'
 pkgname=chinadns-ng-git
-pkgver=r354.14cc634
+pkgver=r356.e7c4ebd
 pkgrel=1
 pkgdesc='Chinadns next generation, refactoring with epoll and ipset'
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ depends=('glibc')
 makedepends=('git')
 provides=("${_srcname}")
 conflicts=("${_srcname}")
-
 source=("git+${url}")
 sha512sums=('SKIP')
 
