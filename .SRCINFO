@@ -1,0 +1,12 @@
+pkgbase = mkpkg
+	pkgdesc = Tool to rebuild packages based on dependency triggers (git)
+	pkgver = 2.3.0.r4.g65081dbd9f
+	pkgrel = 1
+	url = https://github.com/gene-git/Arch-mkpkg
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/gene-git/Arch-mkpkg
+	sha512sums = SKIP
+
+pkgname = mkpkg
