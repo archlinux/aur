@@ -1,5 +1,5 @@
 agent/
-buildkite-agent-bin-*.tar.xz
+*.pkg.tar.*
 buildkite-agent-linux-*.tar.gz
 pkg/
 src/
