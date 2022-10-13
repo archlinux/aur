@@ -39,8 +39,13 @@ if [[ ${build_jobs} -gt 1 ]]; then
 		fi
 	fi
 fi
+if pacman -Qq ccache &> /dev/null; then
+	export PATH="/usr/lib/ccache/bin/:$PATH"
+	export CCACHE_SLOPPINESS="file_macro,locale,time_macros"
+	export CCACHE_NOHASHDIR="true"
+fi
 export AUTOBUILD_CPU_COUNT=$build_jobs
-autobuild configure -A 64 -c ReleaseOS -- \
+schedtool -B -n 1 -e ionice -n 1 autobuild configure -A 64 -c ReleaseOS -- \
 	-DLL_TESTS:BOOL=OFF \
 	-DDISABLE_FATAL_WARNINGS=ON \
 	-DUSE_LTO:BOOL=OFF \
@@ -48,4 +53,4 @@ autobuild configure -A 64 -c ReleaseOS -- \
 	-DVIEWER_CHANNEL="Alchemy Test"
 
 echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
-autobuild build -A64 -c ReleaseOS --no-configure
+schedtool -B -n 1 -e ionice -n 1 autobuild build -A64 -c ReleaseOS --no-configure
