@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kopete
-pkgver=22.08.1
+pkgver=22.08.2
 pkgrel=1
 pkgdesc='Instant Messenger'
 url='https://apps.kde.org/kopete/'
@@ -16,7 +16,7 @@ makedepends=(extra-cmake-modules mediastreamer libgadu jsoncpp kdoctools kdesign
 optdepends=('mediastreamer: jingle support' 'libgadu: Gadu-Gadu protocol' 'kdnssd: bonjour protocol')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig} 
         kopete-mediastreamer2.14.patch kopete-srtp2.patch kopete-openssl-1.1.patch kopete-mediastreamer-4.3.patch)
-sha256sums=('95efa778fdd63227c136775a2c994eb902d5c98ca127373afaaad90db6c33765'
+sha256sums=('4ee284051c0989eb99d0430af3c0a239d49b5d4aa0673e8b6fb925b6bed9a9cc'
             'SKIP'
             '0dd400ecbcbc8f7c77beb71e9907a1cb0eaedabf7aa9f9a28d9f0d3f0dd960d2'
             'ceed663f7007654d186d918cf7a0742972ed5bd319879021e9ba80e395177700'
