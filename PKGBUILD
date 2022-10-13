@@ -10,9 +10,9 @@ groups=()
 depends=('python')
 optdepends=()
 provides=()
-conflicts=()
-replaces=('idle3'
-          'python-idle')
+conflicts=('idle3'
+           'python-idle')
+replaces=()
 source=('idle.desktop')
 sha256sums=('8bbde2b6be32cd47bc4547fb941466fc89d13f2538a2c30594e5e21d83ca0800')
 

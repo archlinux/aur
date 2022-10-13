@@ -6,8 +6,8 @@ pkgbase = idle
 	arch = any
 	license = Python
 	depends = python
-	replaces = idle3
-	replaces = python-idle
+	conflicts = idle3
+	conflicts = python-idle
 	source = idle.desktop
 	sha256sums = 8bbde2b6be32cd47bc4547fb941466fc89d13f2538a2c30594e5e21d83ca0800
 
