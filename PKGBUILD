@@ -19,7 +19,7 @@ sha256sums=('4255940099097670cce308e643c510a05936fa3720a35f25b5ef4c3ce185b80d'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "$srcdir/pullrequests.patch"
+  patch -Np1 -i "$srcdir/patch.diff"
   tar -C "${srcdir}" -czf "../patched.tar.gz" "${pkgname}-${pkgver}"
 }
 
