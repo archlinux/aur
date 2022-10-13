@@ -2,7 +2,7 @@
 
 pkgname=gnatstudio-bin
 pkgver=20220512
-pkgrel=2
+pkgrel=3
 pkgdesc="GNAT Programming Studio for Ada binary"
 
 arch=(i686 x86_64)

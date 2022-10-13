@@ -1,7 +1,7 @@
 pkgbase = gnatstudio-bin
 	pkgdesc = GNAT Programming Studio for Ada binary
 	pkgver = 20220512
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AdaCore/gnatstudio
 	arch = i686
 	arch = x86_64
