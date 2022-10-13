@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=bfy
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="brainfuc*k interpreter: a simple brainfuc*k interpreter and REPL writen in rust 🦀🤪"
@@ -38,4 +38,4 @@ package() {
   cd "$pkgname-$pkgver"
   sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('6cbc8ec926988fee38eae1f43b63c8004b4a8e775bb597b14dd2be1c8ff3a1ab')
+sha256sums=('7994e9b500c63e09e5ee47e72b5654c84a2130c968256cebb687fce94ec6c55b')

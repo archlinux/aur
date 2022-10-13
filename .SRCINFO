@@ -1,6 +1,6 @@
 pkgbase = bfy
 	pkgdesc = brainfuc*k interpreter: a simple brainfuc*k interpreter and REPL writen in rust 🦀🤪
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/anas-elgarhy/bfy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bfy
 	makedepends = cargo
 	provides = bfy
 	replaces = bfy
-	source = bfy-0.1.0.tar.gz::https://static.crates.io/crates/bfy/bfy-0.1.0.crate
-	sha256sums = 6cbc8ec926988fee38eae1f43b63c8004b4a8e775bb597b14dd2be1c8ff3a1ab
+	source = bfy-0.1.1.tar.gz::https://static.crates.io/crates/bfy/bfy-0.1.1.crate
+	sha256sums = 7994e9b500c63e09e5ee47e72b5654c84a2130c968256cebb687fce94ec6c55b
 
 pkgname = bfy
