@@ -2,21 +2,21 @@
 
 pkgname=eclipse-rcp
 epoch=2
-pkgver=4.24
+pkgver=4.25
 pkgrel=1
-_release=2022-06/R
+_release=2022-09/R
 pkgdesc="IDE for Rich Client Platform (RCP) and Remote Application Platform (RAP)"
 arch=('x86_64')
 url="https://eclipse.org/ide"
 license=('EPL')
-depends=('java-environment>=11')
+depends=('java-environment>=17')
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
 
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop::https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/desktopintegration/eclipse.desktop?h=f20")
-sha512sums=('2d443d7d1c4f19166e776e85b05a7f1840e353e009d6c138f0971979724df4e5a78fb07b5aa082d812d330180132b8fb40f30528fefa169f2373adaadec3db4b'
+sha512sums=('afb0a20a5cc9eb330baf38e6b2554d5fd86ee492e5451a147b1f335cf24335378e86cd832561eba6fc941b4f9ba08faf50fe5048ecc015bb9c62d0b580b11845'
             'e1ef156793d844ab20e38b0ea055836a0732005657556eee85ae337d0ed4242cd204a0c62709b505454ac7ae7c2235d2ef286252855728c79cf66e77b97041a0')
 
 backup=('usr/lib/eclipse/eclipse.ini')
