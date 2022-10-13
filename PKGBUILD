@@ -1,15 +1,14 @@
-# Maintainer: Castor < whoisyoges at castorisdead dot xyz >
-
+# Maintainer: Castor <whoisyoges at castorisdead dot xyz>
 pkgname=onthespot-git
 _pkgname=onthespot
 pkgver=0.4
 pkgrel=1
 pkgdesc="A qt based free spotify downloader written in python."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/casualsnek/onthespot"
 license=('GPL2')
-depends=('ffmpeg')
-makedepends=('git' 'python3' 'bash')
+depends=('ffmpeg' 'qt5-base')
+makedepends=('git' 'python3' 'python-pip' 'bash')
 provides=('onthespot')
 conflicts=('onthespot-git' 'onthespot')
 options=(!strip !emptydirs)
