@@ -3,7 +3,7 @@
 _pkgname=osqp
 _pkgver=0.6.0.6
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.6.0.6
 pkgrel=1
 pkgdesc="Quadratic Programming Solver using the 'OSQP' Library"
 arch=('x86_64')
