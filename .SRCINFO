@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-desktop-icons-neo
+	pkgdesc = A fork of Desktop Icons NG that adds a whole bunch of new features and polish
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/DEM0NAssissan7/desktop-icons-neo
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = gnome-shell
+	depends = gnome-shell-extensions
+	depends = nautilus
+	source = gnome-shell-extension-desktop-icons-neo-1.4.2::https://github.com/DEM0NAssissan7/desktop-icons-neo/archive/1.4.2-LTS.tar.gz
+	sha256sums = 4a6e5b25cf53cfb320fe25f774b4741499cf87e0eac767fd19407b32e2481e57
+
+pkgname = gnome-shell-extension-desktop-icons-neo
