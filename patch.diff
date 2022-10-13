@@ -1,0 +1,79 @@
+#Fix unresponsive keyboard input when is used with an -l flag (by tryzniak)
+#Show downloaded percentage on prompt file selection (by haodemon)
+#Add some extra features and fixed somes bugs (by meteor314)
+
+diff -up a/app.js b/app.js
+--- a/app.js
++++ b/app.js
+@@ -17,2 +17,3 @@
+ var path = require('path')
++var fs = require('fs')
+
+@@ -47,2 +48,3 @@
+   .alias('d', 'not-on-top').describe('d', 'do not float video on top').boolean('d')
++  .describe('exit', 'exit peerflix on download').boolean('n')
+   .describe('on-downloaded', 'script to call when file is 100% downloaded')
+@@ -155,2 +157,11 @@
+       if (interactive) {
++        var getDownloadedSize = function (file) {
++          var p = path.join(engine.path, file.path)
++          if (fs.existsSync(p)) {
++            var size = fs.statSync(p).size
++            return Math.round(size / file.length) * 100  // percentage
++          }
++          return 0
++        }
++
+         var filenamesInOriginalOrder = engine.files.map(file => file.path)
+@@ -164,3 +175,3 @@
+               return {
+-                name: file.name + ' : ' + bytes(file.length),
++                name: file.name + ' : ' + bytes(file.length) + ' (' + getDownloadedSize(file) + '%)',
+                 value: filenamesInOriginalOrder.indexOf(file.path)
+@@ -214,2 +225,8 @@
+
++  if (argv['exit']) {
++    engine.on('uninterested', function () {
++      process.exit(0)
++    })
++  }
++
+   engine.server.on('listening', function () {
+@@ -345,5 +362,5 @@
+
+-    var interactive = !player && process.stdin.isTTY && !!process.stdin.setRawMode
++    var interactive = process.stdin.isTTY && !!process.stdin.setRawMode
+
+-    if (interactive) {
++    if (!interactive) {
+       keypress(process.stdin)
+@@ -389,2 +406,3 @@
+       process.stdin.setRawMode(true)
++      process.stdin.resume()
+     }
+@@ -410,4 +428,13 @@
+       clivas.line('{yellow:info} {green:streaming} {bold:' + filename + ' (' + bytes(filelength) + ')} {green:-} {bold:' + bytes(swarm.downloadSpeed()) + '/s} {green:from} {bold:' + unchoked.length + '/' + wires.length + '} {green:peers}    ')
+-      clivas.line('{yellow:info} {green:path} {cyan:' + engine.path + '}')
+       clivas.line('{yellow:info} {green:downloaded} {bold:' + bytes(swarm.downloaded) + '} (' + downloadedPercentage + '%) {green:and uploaded }{bold:' + bytes(swarm.uploaded) + '} {green:in }{bold:' + runtime + 's} {green:with} {bold:' + hotswaps + '} {green:hotswaps}     ')
++      // calculate estimated time from remaining bytes for the whole torrent and current download speed
++      var estimatedTime = (swarm.downloaded > 0) ? Math.floor(((engine.torrent.length) - swarm.downloaded) / swarm.downloadSpeed()) : 0;
++      var estimatedTimeString = ''
++      var estimatedHour = Math.floor(estimatedTime /(60*60))
++      // calculate estimated minutes romainig
++      var estimatedMinute = Math.floor((estimatedTime - estimatedHour*60*60)/60)
++      if (estimatedTime > 0) {
++        estimatedTimeString = '{yellow:info} {green: estimated time remaining for the complete download of this torrent} {bold:' + estimatedHour + 'h ' + estimatedMinute + 'm ' + Math.floor(estimatedTime % 60) + 's}'
++        clivas.line(estimatedTimeString)
++      }
+       clivas.line('{yellow:info} {green:verified} {bold:' + verified + '} {green:pieces and received} {bold:' + invalid + '} {green:invalid pieces}')
+@@ -415,9 +442,3 @@
+       clivas.line('{80:}')
+-
+-      if (interactive) {
+-        var openLoc = ' or CTRL+L to open download location}'
+-        if (paused) clivas.line('{yellow:PAUSED} {green:Press SPACE to continue download' + openLoc)
+-        else clivas.line('{50+green:Press SPACE to pause download' + openLoc)
+-      }
+-
++      clivas.line('{yellow:info} {green:path} {cyan:' + engine.path + '}')
+       clivas.line('')
