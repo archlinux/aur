@@ -1,16 +1,15 @@
 pkgbase = nyaash
-	pkgver = 1.2.4
-	pkgrel = 1
 	pkgdesc = Simple POSIX shell script to query Nyaa instances.
-	md5sums = 37363bcdbf987aec88a7f58cd9bcf6f2 
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://notabug.org/BezierQuadratic/nyaash
-	license = GPL
 	arch = any
+	license = GPL
 	depends = lynx
 	depends = curl
-	optdepends = noto-fonts-cjk: chinese, japanese, and korean character
+	optdepends = noto-fonts-cjk: chinese, japanese, and korean characters
 	optdepends = dmenu: dmenu_nyaash gui
-	source = https://notabug.org/BezierQuadratic/nyaash/archive/1.2.4.tar.gz 
+	source = https://notabug.org/BezierQuadratic/nyaash/archive/1.3.0.tar.gz
+	md5sums = 7db7d53cda3937bf6f0bb4d47dec7f77
 
 pkgname = nyaash
-
