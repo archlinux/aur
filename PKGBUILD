@@ -1,45 +1,46 @@
 # Maintainer: Limao Luo <luolimao+AUR@gmail.com>
-#
+# Maintainer: Niko Cantero <vextium at gmail dot com>
 # (Added from libxfce4util package)
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: tobias <tobias@archlinux.org>
 
-pkgname=libxfce4util-git
-pkgver=4.16pre1.r2.g8266864
+_pkgname=libxfce4util
+pkgname="${_pkgname}-git"
+pkgver=4.17.2.r22.ge2f2a6e
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=(i686 x86_64)
-url=http://git.xfce.org/xfce/${pkgname%-*}/tree/README
+url=http://gitlab.xfce.org/xfce/${_pkgname}/
 license=(GPL2)
 groups=(xfce4-git)
 depends=(glib2)
-makedepends=(git xfce4-dev-tools gobject-introspection vala)
-provides=(${pkgname%-git}=${pkgver%+*})
-conflicts=(${pkgname%-*})
-source=($pkgname::git+https://gitlab.xfce.org/xfce/${pkgname%-*})
+makedepends=('git' 'xfce4-dev-tools' 'gobject-introspection' 'vala')
+provides=(${_pkgname-git}=${pkgver%+*})
+conflicts=(${_pkgname%})
+source=(git+https://gitlab.xfce.org/xfce/${_pkgname})
 sha256sums=('SKIP')
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd $pkgname/
-    git describe | sed 's/^xfce-//;s/-/.r/;s/-/./g'
+    cd ${srcdir}/${_pkgname}
+    git describe | sed 's/^libxfce4util-//;s/-/.r/;s/-/./g'
 }
 
 build() {
-    cd $pkgname/
-    ./autogen.sh \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-	      --sbindir=/usr/bin \
-        --libexecdir=/usr/lib \
-        --localstatedir=/var \
-        --disable-static \
-        --enable-gtk-doc \
-        --disable-debug
-    make
+  cd ${srcdir}/${_pkgname}
+
+  ./autogen.sh \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --sbindir=/usr/bin \
+      --libexecdir=/usr/lib \
+      --localstatedir=/var \
+      --disable-static \
+      --disable-debug
+  make
 }
 
 package() {
-    make -C $pkgname DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir"/usr/share/gtk-doc/
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
