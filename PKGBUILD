@@ -7,7 +7,9 @@ arch=('x86_64' 'i686')
 url="https://git.thomasvoss.com/center"
 license=('BSD')
 makedepends=('git')
-source=("$pkgname::git://git.thomasvoss.com/center.git#tag=v$pkgver")
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("$pkgname::git+git://git.thomasvoss.com/center.git#tag=v$pkgver")
 b2sums=('SKIP')
 
 pkgver() {
