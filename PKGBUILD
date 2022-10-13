@@ -11,6 +11,19 @@ arch=(x86_64)
 url="https://${pkgname}.com"
 license=('custom')
 provides=('conda')
+optdepends=('libxau: for Anaconda Navigator support'
+	'libxi: for Anaconda Navigator support'
+	'libxss: for Anaconda Navigator support'
+	'libxtst: for Anaconda Navigator support'
+	'libxcursor: for Anaconda Navigator support'
+	'libxcomposite: for Anaconda Navigator support'
+	'libxdamage: for Anaconda Navigator support'
+	'libxfixes: for Anaconda Navigator support'
+	'libxrandr: for Anaconda Navigator support'
+	'libxrender: for Anaconda Navigator support'
+	'mesa-libgl: for Anaconda Navigator support'
+	'alsa-lib: for Anaconda Navigator support'
+	'libglvnd: for Anaconda Navigator support')
 source=(https://repo.${pkgname}.com/archive/Anaconda3-${pkgver}-Linux-x86_64.sh)
 options=(!strip libtool staticlibs)
 sha512sums=('45b7fd085cb4edabb388ab64cd1d5e1bb62aeb4c906d371552fa71b6fae341b10d30c4acb54af43d63f027180d6a16095443668f36954cbc2f362e295c8e2c47')
