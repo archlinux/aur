@@ -1,6 +1,6 @@
 pkgbase = batman
 	pkgdesc = A battery management service and program for linux phones
-	pkgver = 0.30
+	pkgver = 0.32
 	pkgrel = 1
 	url = https://github.com/FakeShell/batman
 	arch = any
