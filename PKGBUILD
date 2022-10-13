@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=idle
 pkgver=3.10.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Integrated Development and Learning Environment (desktop entry)"
 arch=('any')
 url="https://packages.debian.org/stable/python/idle"
@@ -23,7 +23,7 @@ package() {
 
   for _icon in 16 32 48 256; do
     _icon_dir="${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
-    install -dm644 "${_icon_dir}"
+    install -d "${_icon_dir}"
     ln -s /usr/lib/python3.10/idlelib/Icons/idle_${_icon}.png "${_icon_dir}/${pkgname}.png"
   done
 }
