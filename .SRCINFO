@@ -1,8 +1,8 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
-	pkgver = 6.0.0.11.realtime1
+	pkgver = 6.0.0.11.realtime2
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v6.0.0.11.realtime1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v6.0.0.11.realtime2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-rt
 	makedepends = xmlto
 	makedepends = xz
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v6.0.0.11.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v6.0.0.11.realtime2?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 64254695FFF0AA4466CC19E67B96E8162A8CF5D1

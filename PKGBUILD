@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=6.0.0.11.realtime1
+pkgver=6.0.0.11.realtime2
 pkgrel=1
 pkgdesc='Linux RT'
 arch=(x86_64)
