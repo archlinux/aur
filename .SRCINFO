@@ -1,7 +1,7 @@
 pkgbase = dput
 	pkgdesc = Debian package upload tool
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://packages.qa.debian.org/dput
 	arch = any
 	license = GPL

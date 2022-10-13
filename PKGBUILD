@@ -3,7 +3,7 @@
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Debian package upload tool"
 arch=('any')
 url="http://packages.qa.debian.org/dput"
@@ -15,6 +15,10 @@ md5sums=('21d77e7607cce37a42f7be38e5df8335')
 
 build() {
   cd "$pkgname-$pkgver"
+
+  # Adjust requirement, so that pyxdg is used when dput verifies dependencies (Debian overrrides the name of the pyxdg package instead)
+  sed -ri -e 's/"xdg"/"pyxdg"/' setup.py
+
   python setup.py build
 }
 
