@@ -1,0 +1,26 @@
+pkgbase = plot-git
+	pkgdesc = plot on the command line
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/annacrombie/plot
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv8
+	arch = armv7
+	arch = armv7l
+	arch = armv7h
+	arch = armv6h
+	arch = armhf
+	arch = armel
+	arch = arm
+	license = license-free
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = scdoc
+	source = git+https://github.com/annacrombie/plot.git
+	sha256sums = SKIP
+
+pkgname = plot-git
