@@ -1,0 +1,25 @@
+pkgbase = shcopy-bin
+	pkgdesc = Copy text to clipboard from anywhere using ANSI OSC 52 sequence
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/aymanbagabas/shcopy
+	license = MIT
+	conflicts = shcopy
+	provides = shcopy
+	arch = aarch64
+	source_aarch64 = https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 792f4f410a5018f7568c46040acab8f26bba7cabd951cc66d08cd527fd09aa58
+	arch = armv6h
+	source_armv6h = https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_armv6.tar.gz
+	sha256sums_armv6h = 530698232e1f17975c9be461650c0c6f8ce470b2a7884519f3799b84343f7a66
+	arch = armv7h
+	source_armv7h = https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_armv7.tar.gz
+	sha256sums_armv7h = d80f3d14409c70fbfe97547d43fcfec4aaf6c46c25c2f0ef2da1953a85b4c650
+	arch = i686
+	source_i686 = https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_i386.tar.gz
+	sha256sums_i686 = ad3d5fb2cfd719c2dca4374d945a6e1d47419830ddc85c3d4094a83fa23a7b23
+	arch = x86_64
+	source_x86_64 = https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6e7e5f808d1dc6cca6d7b91221cdcda1c27671851ae7d1b011ef7e48aaba0e5e
+	
+pkgname = shcopy-bin
