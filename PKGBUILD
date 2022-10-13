@@ -2,7 +2,7 @@
 pkgname=engine-sim-git
 provides=('engine-sim')
 conflicts=('engine-sim')
-pkgver=r235.1ca3c6b
+pkgver=r235.af6a219
 pkgrel=1
 license=('MIT')
 pkgdesc='Combustion engine simulator that generates realistic audio.'
@@ -10,18 +10,15 @@ makedepends=('cmake' 'bison' 'boost' 'flex' 'git')
 depends=('sdl2' 'sdl2_image')
 arch=('any')
 url='https://github.com/ange-yaghi/engine-sim'
-source=('git+https://github.com/bobsayshilol/engine-sim.git#branch=runtime-paths'
+source=('git+https://github.com/bobsayshilol/engine-sim.git#branch=sdl-build'
         # Submodules
         'git+https://github.com/ange-yaghi/csv-io.git'
-        'git+https://github.com/phire/delta-studio.git#branch=clang_linux'
+        'git+https://github.com/bobsayshilol/delta-studio.git#branch=sdl-build'
         'git+https://github.com/ange-yaghi/direct-to-video.git'
         'git+https://github.com/ange-yaghi/piranha.git'
         'git+https://github.com/ange-yaghi/simple-2d-constraint-solver.git'
-        # Patches - misc still has some conflicts so we don't apply yet
-        'events.patch::https://github.com/phire/delta-studio/pull/2.patch'
-        'misc.patch::https://github.com/phire/delta-studio/pull/3.patch'
         )
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd engine-sim
@@ -40,9 +37,6 @@ prepare() {
         git config "submodule.externals/vendor/dependencies/submodules/${SUBMODULE}.url" "${srcdir}/${SUBMODULE}"
     done
     git submodule update
-
-    cd dependencies/submodules/delta-studio
-    git am "${srcdir}/events.patch"
 }
 
 build() {
