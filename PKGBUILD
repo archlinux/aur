@@ -1,7 +1,7 @@
 # Maintainer A. Kulkarni <cd+aur [shift-2] terminal.space>
 
 pkgname=systemd-boot-lifeboat
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Keep rotating backups of systemd-boot bootloader entries"
 arch=('any')
@@ -15,5 +15,5 @@ package() {
   install -D -m0755 "${srcdir}/${_snapshot}/systemd_boot_lifeboat.py" "${pkgdir}/usr/share/systemd-boot-lifeboat/systemd_boot_lifeboat.py"
   install -D -m0644 "${srcdir}/${_snapshot}/systemd-boot-lifeboat.service" "${pkgdir}/usr/lib/systemd/system/systemd-boot-lifeboat.service"
 }
-sha256sums=('9c3959e7768b0406cb3723a4b98e8eee2f5703b1ec1d81f5f8b0069b0ff1d700')
 
+sha256sums=('3e2382a92e28a9a93f9052af946fc47a43ebd4a775586cc43925bf94163f1e28')
