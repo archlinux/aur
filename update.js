@@ -31,6 +31,7 @@ const newVersion = `${r.major}.${r.minor}.${r.releaseNum}`;
 if (newVersion !== pkgver) {
   setVar('_downloadid', r.downloadId);
   setVar('pkgver', newVersion);
+  setVar('pkgrel', '1');
   fs.writeFileSync('PKGBUILD', pkgbuildLines.join('\n'));
   console.info(`Updated PKGBUILD to ${newVersion}`);
 } else {

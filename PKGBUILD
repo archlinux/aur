@@ -10,25 +10,17 @@ pkgver=18.0.4
 _downloadid=22eb3c7927f3445e91cc4d15a2483295
 sha256sums=('6a7d4d6f6518c4f6db1cf27e17614cc37f4f8310b7f9f623fd31a89390f4ee47')
 
-# Hardcoded
+#
 pkgname=(fusion-studio fusion-render-node)
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU accelerated 2D and 3D compositing and motion graphics software. Requires USB activation dongle."
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/products/fusion"
 license=('Commercial')
 depends=(
-  'alsa-lib'
-  'apr-util'
-  'glu'
-  'libogg'
-  'libvorbis'
-  'libxcrypt-compat'
-  'luajit'
-  'ocl-icd'
-  'opencl-driver'
-  'qt5-x11extras'
-  'tbb'
+  'alsa-lib' 'apr-util' 'glu' 'libogg' 'libvorbis'
+  'libxcrypt-compat' 'luajit' 'ocl-icd' 'opencl-driver'
+  'qt5-x11extras' 'tbb'
 )
 optdepends=(
   'cuda: gpu acceleration'
@@ -69,7 +61,7 @@ _download() {
 }
 if [ "$1" = "-d" ]; then _download $2; exit; fi
 
-_major=$(cut -d '.' -f 1,2 <<< "$pkgver")
+_major=$(cut -d '.' -f 1,1 <<< "$pkgver")
 
 _package_shared() {
   _fusion="$pkgdir/opt/$pkgname"
@@ -79,7 +71,7 @@ _package_shared() {
   mkdir "$pkgdir/usr/bin" -p
   mkdir "$pkgdir/usr/share/applications" -p
   mkdir "$pkgdir/usr/share/pixmaps/" -p
-  mv "$_fusion/.DirIcon" "$pkgdir/usr/share/icons/hicolor/apps/$_iconName.png"
+  mv "$_fusion/.DirIcon" "$pkgdir/usr/share/pixmaps/$_iconName.png"
   cat << 'EOF' > "$pkgdir/etc/udev/rules.d/99-$pkgname.rules"
 # BMD hardware (such as Speed Editor)
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1edb", MODE="0666"
@@ -114,11 +106,12 @@ package_fusion-studio() {
   ln -s "/opt/fusion-studio/FusionServer" "$pkgdir/usr/bin/FusionServer"
   ln -s "/opt/fusion-studio/fuscript" "$pkgdir/usr/bin/fuscript"
 
+  # Filename here is specifically set so xdg-mime prefers fusion-studio
   cat $_fusion/Fusion.desktop \
     | sed -e "s|/opt/BlackmagicDesign/Fusion$_major|/opt/$pkgname|" \
     | sed -e "s|GenericName=.*|GenericName=VFX Compositor$2|" \
-    | sed -e "s|Comment=.*|$pkgdesc|" \
-    > "$pkgdir/usr/share/applications/$pkgname.desktop"
+    | sed -e "s|Comment=.*|Comment=$pkgdesc|" \
+    > "$pkgdir/usr/share/applications/fusion-studio-client.desktop"
 
   mv "$_fusion/fusion.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 
@@ -166,11 +159,12 @@ package_fusion-render-node() {
   ln -s "/opt/fusion-render-node/FusionRenderNode" "$pkgdir/usr/bin/fusion-render-node"
   ln -s "/opt/fusion-render-node/FusionRenderNode" "$pkgdir/usr/bin/FusionRenderNode"
 
+  # Filename here is specifically set so xdg-mime prefers fusion-studio
   cat $_fusion/FusionRenderNode.desktop \
     | sed -e "s|/opt/BlackmagicDesign/FusionRenderNode$_major|/opt/$pkgname|" \
     | sed -e "s|GenericName=.*||" \
-    | sed -e "s|Comment=.*|Headless rendering for Fusion Studio $_major|" \
-    > "$pkgdir/usr/share/applications/$pkgname.desktop"
+    | sed -e "s|Comment=.*|Comment=Headless rendering for Fusion Studio $_major|" \
+    > "$pkgdir/usr/share/applications/fusion-studio-render-node.desktop"
 
   _package_shared_post
 }
