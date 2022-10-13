@@ -44,7 +44,7 @@ autobuild configure -A 64 -c ReleaseOS -- \
 	-DLL_TESTS:BOOL=OFF \
 	-DDISABLE_FATAL_WARNINGS=ON \
 	-DUSE_LTO:BOOL=OFF \
-	-DALCHEMY_GLOBAL_CFLAGS="-march=x86-64-v2 -mtune=generic -Wno-deprecated -Wno-uninitialized" \
+	-DDCMAKE_CXX_FLAGS="-march=x86-64-v2 -mtune=generic -Wno-deprecated -Wno-uninitialized" \
 	-DVIEWER_CHANNEL="Alchemy Test"
 
 echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
