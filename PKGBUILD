@@ -7,7 +7,7 @@ arch=('any')
 url="https://packages.debian.org/stable/python/idle"
 license=("Python")
 groups=()
-depends=('python')
+depends=('python>=3.10' 'python<3.11')
 optdepends=()
 provides=()
 conflicts=('idle3'
