@@ -4,7 +4,7 @@ _romname=gc_nmq_pal_f
 _romdesc="Ocarina of Time Gamecube Europe PAL"
 pkgname=soh-otr-${_romname}
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
@@ -24,7 +24,7 @@ build() {
   [ -e oot.otr ] && rm oot.otr
   [ ! -e assets ] && ln -s ${SHIP_PREFIX}/assets assets
   mkdir -p Extract/assets
-  cp -r "${SHIP_PREFIX}"/assets/game Extract/assets/
+  cp -r "${SHIP_PREFIX}"/assets/game/* Extract/assets/
 
   "assets/extractor/ZAPD.out" ed -eh -i "assets/extractor/xmls/${_romname^^}" \
     -b baserom.z64 -fl "assets/extractor/filelists" -o placeholder -osf placeholder -gsf 1 \
