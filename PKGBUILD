@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2022.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -17,11 +17,9 @@ install="${pkgname%-*}.install"
 _tag=06c847a7a7d72a148bd5dba0a44860eb1b3aa182 # tags/2022.4^0
 _commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
-        'override.conf')
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
 sha256sums=('SKIP'
-            'SKIP'
-            'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316')
+            'SKIP')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (code signing key) <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
@@ -88,19 +86,6 @@ build() {
       dist-assets/shell-completions/
   done
 
-  echo "Copying binaries"
-  binaries=(
-    mullvad-daemon
-    mullvad
-    mullvad-problem-report
-    libtalpid_openvpn_plugin.so
-    mullvad-setup
-    mullvad-exclude
-  )
-  for binary in ${binaries[*]}; do
-    cp target/release/${binary} dist-assets/${binary}
-  done
-
   echo "Updating relay list..."
   cargo run --bin relay_list --frozen --release > dist-assets/relays.json
 }
@@ -108,21 +93,29 @@ build() {
 package() {
   cd "$srcdir/mullvadvpn-app"
 
-  # Install main files
-  install -d "$pkgdir/opt/$pkgname"
-  cp -r dist-assets/* "$pkgdir/opt/$pkgname/"
-
-  # Symlink daemon service to correct directory
-  install -d "$pkgdir/usr/lib/systemd/system"
-  ln -s "/opt/$pkgname/linux/mullvad-daemon.service" \
-    "$pkgdir/usr/lib/systemd/system/"
-
   # Install binaries
-  install -Dm755 dist-assets/{mullvad,mullvad-exclude} -t "$pkgdir/usr/bin/"
+  install -Dm755 target/release/mullvad{-daemon,-problem-report,-setup} -t \
+    "$pkgdir/opt/Mullvad VPN/resources/"
+
+  install -Dm755 target/release/{mullvad,mullvad-exclude} -t \
+    "$pkgdir/usr/bin/"
+
+  install -m644 target/release/libtalpid_openvpn_plugin.so -t \
+    "$pkgdir/opt/Mullvad VPN/resources/"
+
+  install -m755 "dist-assets/binaries/$CARCH-unknown-linux-gnu/openvpn" -t \
+    "$pkgdir/opt/Mullvad VPN/resources/"
 
   # Link to the problem report binary
-  ln -s "/opt/$pkgname/resources/mullvad-problem-report" \
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
     "$pkgdir/usr/bin/mullvad-problem-report"
+
+  # Install relay list
+  install -Dm644 dist-assets/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
+
+  # Install service
+  install -Dm644 dist-assets/linux/mullvad-daemon.service -t \
+    "$pkgdir/usr/lib/systemd/system/"
 
   # Install completions
   install -Dm644 dist-assets/shell-completions/mullvad.bash \
@@ -131,8 +124,4 @@ package() {
     "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 dist-assets/shell-completions/mullvad.fish -t \
     "$pkgdir/usr/share/fish/vendor_completions.d/"
-
-  # Install override for daemon
-  install -Dm644 "$srcdir/override.conf" -t \
-    "$pkgdir/etc/systemd/system/mullvad-daemon.service.d/"
 }

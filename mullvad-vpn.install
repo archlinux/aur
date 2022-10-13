@@ -1,7 +1,7 @@
 pre_install() {
   if systemctl status mullvad-daemon &> /dev/null; then
     echo 'Stopping & disabling Mullvad VPN daemon...'
-    /opt/mullvad-cli/resources/mullvad-setup prepare-restart || true
+    /opt/Mullvad VPN/resources/mullvad-setup prepare-restart || true
     systemctl disable --now mullvad-daemon
     cp /var/log/mullvad-vpn/daemon.log /var/log/mullvad-vpn/old-install-daemon.log \
       || echo "Failed to copy old daemon log"
@@ -36,8 +36,8 @@ pre_remove() {
   systemctl stop mullvad-daemon || true
   systemctl disable mullvad-daemon || true
 
-  /opt/mullvad-cli/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
-  /opt/mullvad-cli/resources/mullvad-setup remove-device || echo "Failed to remove device from account"
+  /opt/Mullvad VPN/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
+  /opt/Mullvad VPN/resources/mullvad-setup remove-device || echo "Failed to remove device from account"
 }
 
 post_remove() {
