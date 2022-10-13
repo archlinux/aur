@@ -1,5 +1,5 @@
 pkgname=ca-certificates-russian-root
-pkgver=20221010
+pkgver=20221013
 pkgrel=1
 pkgdesc="Russian root certificates"
 arch=('any')
@@ -12,8 +12,8 @@ source=(
     "https://gu-st.ru/content/Other/doc/russian_trusted_sub_ca.cer"
 )
 sha256sums=(
-    'd26d2d0231b7c39f92cc738512ba54103519e4405d68b5bd703e9788ca8ecf31'
-    'bbbde2103e790b999ec62bd03cf625a5a2e7c316e10afe6a490eedead8b3fd9b'
+    '936a43fea6e8e525bcc0f81acd9c3d21b4fc4b9b68acea7906d698005afc6504'
+    'f0ae589f36774f29ef3648f7984b08d42fcce6f1ffeeb6236d773daeb2744ea6'
 )
 
 
