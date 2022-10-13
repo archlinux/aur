@@ -1,17 +1,18 @@
 pkgbase = python-leidenalg
 	pkgdesc = The Leiden algorithm for community detection
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vtraag/leidenalg
-	arch = any
+	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
 	depends = python-igraph
+	optdepends = tqdm: Optimizer progress status
 	source = https://files.pythonhosted.org/packages/source/l/leidenalg/leidenalg-0.9.0.tar.gz
 	sha256sums = 4878f85b63c4df5632b2bf646e4f9760898ac1f55160dec26b8709b7bee2783c
 
