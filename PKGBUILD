@@ -2,14 +2,13 @@
 
 pkgname=buildkite-agent-bin
 pkgver=3.36.1
-_commit='79f5ed9aad089fddc33f0665fd8e31f3decca48f'
 pkgrel=1
 pkgdesc='The Buildkite Agent'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://buildkite.com/docs/agent/v3'
 license=('MIT')
 options=('!strip' 'staticlibs')
-source=("git+https://github.com/buildkite/agent.git#commit=$_commit"
+source=("git+https://github.com/buildkite/agent.git#tag=v$pkgver"
         'buildkite-agent.sysusers'
         'buildkite-agent.tmpfiles')
 backup=('etc/buildkite-agent/buildkite-agent.cfg')
