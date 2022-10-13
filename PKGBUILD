@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-totp
 _releasename=twofactor_totp
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Two factor TOTP provider for Nextcloud"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('711b6946cd6cdf597cc46f38624648b91dc2de983691014d96b6367f9353481a')
+sha256sums=('59ad8feada69ef92310ac4c6e01e4343cfa24f347bca32818b864305cbfe00e2')
