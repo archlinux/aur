@@ -1,6 +1,6 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=idle
-pkgver=3.10.6
+pkgver=3.10.8
 pkgrel=1
 pkgdesc="Python Integrated Development and Learning Environment (desktop entry)"
 arch=('any')
