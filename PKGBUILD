@@ -2,20 +2,18 @@
 
 pkgname=gnatstudio-bin
 pkgver=20220512
-pkgrel=3
+pkgrel=4
 pkgdesc="GNAT Programming Studio for Ada binary"
 
 arch=(i686 x86_64)
 url=https://github.com/AdaCore/gnatstudio
 license=(GPL3)
 
-depends=("python")
+depends=("python" "libxcrypt-compat")
 conflicts=("gnat-gps")
 
-source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz
-        libcrypt.so.1)
-sha256sums=(788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0
-            d8bb7a3c2905e37666355b2c4b1c54ae2139c943618421d4e78d104f35722c32)
+source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz)
+sha256sums=(788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0)
 
 
 prepare()
@@ -30,9 +28,6 @@ package()
     cd $srcdir/gnatstudio-23.0w-20220512-x86_64-linux-bin
 
     ./doinstall "$pkgdir/opt/gnatstudio"
-
-#    mkdir -p "$pkgdir/usr/lib"
-#    cp "$srcdir/libcrypt.so.1" "$pkgdir/usr/lib/libcrypt.so.1"
 
     # Install the license.
     install -D -m644     \
