@@ -1,16 +1,15 @@
 # Maintainer: Carlos Galindo < arch -at - cgj.es >
 _appname=twofactor_totp
 pkgname=nextcloud-app-twofactor-totp
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Second factor TOTP (RFC 6238) provider for Nextcloud"
 arch=("any")
 url="https://github.com/nextcloud/twofactor_totp"
 license=('AGPL3')
-depends=('nextcloud>=22' 'nextcloud<26')
-makedepends=("npm" "composer")
+makedepends=("npm" "composer" "yq")
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6eafcc39e165262353682eea4fec536a469a4ff2833b584ea3807a8c9e8285bcd8d452d9f008cf83cd7f5eae55258262efaebd4b8b4cdd89236c8ae6a59b969d')
+sha512sums=('a1468e9e6ef2d1962b9682f84509ea22076c76fd06ae917b5ce93bec6af154c80043d620741875d4cfb5331be12bc67b00bbbe28cce653e801e686f14409827b')
 
 build() {
 	cd "$_appname-$pkgver"
@@ -19,7 +18,18 @@ build() {
 	npm run build
 }
 
+_get_nextcloud_versions() {
+  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_appname}-${pkgver}/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_appname}-${pkgver}/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version=$(expr ${_app_max_major_version} + 1)
+}
+
 package() {
+	local _app_min_major_version
+	local _app_max_major_version
+	_get_nextcloud_versions
+	depends=("nextcloud>=$_app_min_major_version" "nextcloud<$_app_max_major_version")
+
 	cd "$_appname-$pkgver"
 	mkdir -p "$pkgdir/usr/share/webapps/nextcloud/apps"
 	local _appdir="$pkgdir/usr/share/webapps/nextcloud/apps/$_appname"
