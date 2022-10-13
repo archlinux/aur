@@ -1,7 +1,7 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname='hebcal'
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Jewish calendar generator'
 arch=('any')
 url='https://github.com/hebcal/hebcal'
@@ -17,10 +17,12 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make PREFIX=/usr
+  make clean all
+  make PREFIX=/usr DESTDIR="$pkgdir"
 }
 
-package() {
-  cd "$pkgname-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+ package() {
+:
+#     cd "$pkgname-$pkgver"
+#   make PREFIX=/usr DESTDIR="$pkgdir" install
 }

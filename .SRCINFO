@@ -1,7 +1,7 @@
 pkgbase = hebcal
 	pkgdesc = A Jewish calendar generator
 	pkgver = 5.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hebcal/hebcal
 	arch = any
 	license = GPL2
