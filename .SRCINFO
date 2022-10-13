@@ -1,11 +1,13 @@
 pkgbase = idle
 	pkgdesc = Python Integrated Development and Learning Environment (desktop entry)
 	pkgver = 3.10.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/stable/python/idle
 	arch = any
 	license = Python
-	depends = python
+	depends = python>=3.10
+	depends = python<3.11
+	depends = hicolor-icon-theme
 	conflicts = idle3
 	conflicts = python-idle
 	source = idle.desktop

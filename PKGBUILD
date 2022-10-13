@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=idle
 pkgver=3.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Integrated Development and Learning Environment (desktop entry)"
 arch=('any')
 url="https://packages.debian.org/stable/python/idle"
