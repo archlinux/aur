@@ -4,7 +4,7 @@ pkgver=1.8.0
 pkgrel=1
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
-conflicts=('outline-client-appimage' 'outline-client-appimage-wayland' 'outline-client-appimage-beta-git')
+conflicts=('outline-client-appimage' 'outline-client-appimage-wayland' 'outline-client-appimage-git')
 license=("Apache License 2.0")
 url="https://github.com/Jigsaw-Code/outline-releases"
 
@@ -61,5 +61,5 @@ package() {
   install -Dm644 "${srcdir}/outline-client512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/outline-client.png"
   install -Dm644 "${srcdir}/outline-client1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/outline-client.png"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/opt/outline-client/Outline-Client.AppImage" "${pkgdir}/usr/bin/outline-client"
+  ln -s "/opt/outline-client/Outline-Client.AppImage" "${pkgdir}/usr/bin/outline-client"
 }
