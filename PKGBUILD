@@ -3,9 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: kalew515 <youremail@domain.com>
 pkgname=fast-translate
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="一款适用于Linux系统的翻译软件，支持选中即翻译，方便文献阅读等"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/kalew515/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('43a7078db22d1bd73f4973aa71b745d8')
+md5sums=('1cf9d7ef16387d518abc33977ad1cd1d')
 validpgpkeys=()
 
 prepare() {
@@ -39,9 +39,9 @@ build() {
 	install -vd build/${pkgname}/usr/bin
 	install -vd build/${pkgname}/usr/share/applications
 	install -vd build/${pkgname}/usr/share/icons
-	install -vd build/${pkgname}/opt/fast-translate
+	install -vd build/${pkgname}/opt/${pkgname}
 	cp -r pkg/aur/ftranslate build/${pkgname}/usr/bin/
-	cp -r src/config/icon/logo.svg.png build/${pkgname}/usr/share/icons/fast-translate.png
+	cp -r src/data/icon/logo.svg.png build/${pkgname}/usr/share/icons/fast-translate.png
 	cp -r pkg/aur/fast-translate.desktop build/${pkgname}/usr/share/applications/
 	cp -r src/* build/${pkgname}/opt/${pkgname}/
 }
