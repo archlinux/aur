@@ -6,10 +6,10 @@ pkgdesc="plot on the command line"
 #https://github.com/annacrombie/plot
 _pkgpath="github.com/${_githuborg}/${_pkgname}"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkgpath}"
-license=('license-free')
+license=('MIT')
 makedepends=('git' 'meson' 'pkgconfig' 'cmake' 'scdoc')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -37,6 +37,7 @@ install -Dm755 ${srcdir}/${_pkgname}/build/lib/libplot.so ${pkgdir}/usr/lib/libp
 install -Dm755 ${srcdir}/${_pkgname}/build/cli/plot ${pkgdir}/usr/bin/${_pkgname}
 install -Dm755 ${srcdir}/${_pkgname}/include/plot/plot.h ${pkgdir}/usr/include/plot/plot.h
 install -Dm755 ${srcdir}/${_pkgname}/include/plot/file_input.h ${pkgdir}/usr/include/plot/file_input.h
+install -Dm644 ${srcdir}/${_pkgname}/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
 _msg2() {

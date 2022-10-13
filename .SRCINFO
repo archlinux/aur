@@ -1,7 +1,7 @@
 pkgbase = plot-git
 	pkgdesc = plot on the command line
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/annacrombie/plot
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = plot-git
 	arch = armhf
 	arch = armel
 	arch = arm
-	license = license-free
+	license = MIT
 	makedepends = git
 	makedepends = meson
 	makedepends = pkgconfig
