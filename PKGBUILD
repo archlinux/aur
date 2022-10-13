@@ -3,7 +3,7 @@
 _pkgname=CVXR
 _pkgver=1.0-10
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Disciplined Convex Optimization'
 arch=('x86_64')
