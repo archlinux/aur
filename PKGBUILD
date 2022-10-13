@@ -2,11 +2,11 @@
 # Contributor: Aris Synodinos <arissynod-gmail-com>
 
 pkgname=gazebo-git
-pkgver=r32522.20705f51af
+pkgver=r32533.5bb2ff2f74
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments. Git version."
 arch=('i686' 'x86_64')
-url="http://gazebosim.org/"
+url="https://classic.gazebosim.org/"
 license=('Apache')
 depends=('boost' 'curl' 'freeglut' 'freeimage' 'tbb' 'libccd' 'libltdl' 'graphviz'
          'libtar' 'libxml2' 'ogre-1.9' 'protobuf' 'sdformat-9' 'ignition-math' 'ignition-transport-8'
@@ -24,7 +24,7 @@ makedepends=('cmake' 'doxygen' 'ruby-ronn' 'git')
 install="gazebo.install"
 provides=('gazebo')
 conflicts=('gazebo')
-source=("gazebo"::"git+https://github.com/osrf/gazebo")
+source=("gazebo"::"git+https://github.com/gazebosim/gazebo-classic")
 sha256sums=('SKIP')
 
 _pkgname=gazebo

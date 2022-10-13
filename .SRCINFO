@@ -1,8 +1,8 @@
 pkgbase = gazebo-git
 	pkgdesc = A multi-robot simulator for outdoor environments. Git version.
-	pkgver = r32522.20705f51af
+	pkgver = r32533.5bb2ff2f74
 	pkgrel = 1
-	url = http://gazebosim.org/
+	url = https://classic.gazebosim.org/
 	install = gazebo.install
 	arch = i686
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = gazebo-git
 	optdepends = urdfdom: Load URDF files
 	provides = gazebo
 	conflicts = gazebo
-	source = gazebo::git+https://github.com/osrf/gazebo
+	source = gazebo::git+https://github.com/gazebosim/gazebo-classic
 	sha256sums = SKIP
 
 pkgname = gazebo-git
