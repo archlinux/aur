@@ -1,6 +1,6 @@
 pkgbase = cloudflare-warp-bin
 	pkgdesc = Cloudflare Warp Client
-	pkgver = 2022.9.505
+	pkgver = 2022.9.591
 	pkgrel = 1
 	url = https://1.1.1.1
 	install = cloudflare-warp-bin.install
@@ -19,13 +19,13 @@ pkgbase = cloudflare-warp-bin
 	provides = warp-diag
 	provides = warp-svc
 	conflicts = cloudflare-warp
-	source = cloudflare-warp-bin-2022.9.505-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_9_505_1_amd64_a6d2e18d42_amd64.deb
-	source = cloudflare-warp-bin-2022.9.505-1-Release::https://pkg.cloudflareclient.com/dists/focal/Release
-	source = cloudflare-warp-bin-2022.9.505-1-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages
-	md5sums = fc343591de051319ad99c1ed79d65791
+	source = cloudflare-warp-bin-2022.9.591-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_9_591_1_amd64_fa851354e5_amd64.deb
+	source = cloudflare-warp-bin-2022.9.591-1-Release::https://pkg.cloudflareclient.com/dists/focal/Release
+	source = cloudflare-warp-bin-2022.9.591-1-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages
+	md5sums = 8201fd388091cb0007bb22e7a8b3bb8c
 	md5sums = SKIP
 	md5sums = SKIP
-	sha256sums = a48217d299d1d34b6605269a05c8553d08681e0c723a24383e26fc69d5824596
+	sha256sums = 174ea21e71f02e9aa11c95bfd5226182945b9adc54e3b04bad694c0ecbcc5d82
 	sha256sums = SKIP
 	sha256sums = SKIP
 
