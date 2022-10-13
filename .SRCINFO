@@ -1,0 +1,11 @@
+pkgbase = godot-server-bin
+	pkgdesc = A headless version of the Godot game engine optimized for running game servers.
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://godotengine.org
+	arch = x86_64
+	license = MIT
+	source = https://downloads.tuxfamily.org/godotengine/3.5.1/Godot_v3.5.1-stable_linux_server.64.zip
+	sha512sums = 2ee75f7fa932027773fd1a0906b909a5c484c1c7c245cd2e57da06b28524ec8f4c6716106e3e5d7cfe39ec3342fabe596bf08e8de41297be3e7592a7fad66de3
+
+pkgname = godot-server-bin
