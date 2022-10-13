@@ -30,12 +30,11 @@ if [[ ${build_jobs} -gt 1 ]]; then
 		if [[ ${requiredmemorykb} -gt ${freememorykb} ]]; then
 			jobs=1
 			echo "Allocating build jobs according to available memory (${freememorykb}/${requiredmemorykb})..."
-    	while [[ $((jobs * mempercorekb)) -lt ${freememorykb} ]]; do
+			while [[ $((jobs * mempercorekb)) -lt ${freememorykb} ]]; do
 				jobs=$((jobs+1))
 				echo -e "${jobs}...$(((jobs * mempercorekb)/1024/1024))GB"
-    	done
-			echo ""
-    	build_jobs=${jobs}
+			done
+			build_jobs=${jobs}
 		fi
 	fi
 fi
