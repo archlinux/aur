@@ -1,0 +1,14 @@
+pkgbase = godot-mono-server-bin
+	pkgdesc = A headless version of the Godot game engine optimized for running game servers.
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://godotengine.org
+	arch = x86_64
+	license = MIT
+	depends = dotnet-sdk
+	depends = mono
+	depends = msbuild
+	source = https://downloads.tuxfamily.org/godotengine/3.5.1/mono/Godot_v3.5.1-stable_mono_linux_server_64.zip
+	sha512sums = f6f1abb637c250dcad0683673df2876151983eab5faccab18b3c5ed96a2c9a87d96b05cf7b4fc5e65ee50e8e6b43d12c26847c55ca0ee343abe1b532555f202d
+
+pkgname = godot-mono-server-bin
