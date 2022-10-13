@@ -1,12 +1,12 @@
 pkgbase = impostor-server-git
 	pkgdesc = Unofficial dedicated server for Among Us.
-	pkgver = 1.5.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://impostor.github.io/Impostor/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = dotnet-sdk>=5.0.0
+	makedepends = dotnet-sdk>=6.0.0
 	makedepends = lttng-ust
 	depends = zlib
 	depends = krb5
@@ -19,4 +19,3 @@ pkgbase = impostor-server-git
 	sha512sums = b1360d6aa5cd769ee7dbdb32148f7e1786acdb6a3080b67a48328252af8cc18ff3448a46f04e656993d891a578217599de96a80e96d7da57f95b107d451fdfaa
 
 pkgname = impostor-server-git
-
