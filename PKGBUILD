@@ -1,10 +1,11 @@
 # Maintainer: Johannes Pfrang <johannespfrang+arch @ gmail.com>
 # Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 # Co-Maintainer: Ariel AxionL <arielaxionl@gmail.com | axionl@aosc.io>
+# Co-Maintainer: Christian Heusel <christian@heusel.eu>
 
 _pkgname=teleport
 pkgname=teleport-bin
-pkgver=10.3.1
+pkgver=10.3.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -26,10 +27,10 @@ source_aarch64=("teleport-bin-${pkgver}-aarch64.tar.gz::https://get.gravitationa
 sha256sums=('22fd1ee136e9422458740811c9946de447105f26e87dbbc8daa35d17bd1f3894'
             '21ca4e56c9c5e1ce11570894e85ded853e26e91cc2e16ed9114b3d6a2c5c22ef'
             'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a')
-sha256sums_i386=('04b9a0ca916fe7ac1edcb567c69dfe08eb6687a112e3f54c45a85336d75b96db')
-sha256sums_x86_64=('8dd5d8164492ab3a026647a2e979ae5d74499001edad4d02bceabd730181b1fa')
-sha256sums_armv7h=('f5b89f56e8db4aeab97901fad0fbf1e84add75d254700bc9e67e885625957660')
-sha256sums_aarch64=('73f1997a99a84dfc7fb20c06af54b5ab145e6ead161a71ab31560974c4214c6a')
+sha256sums_i386=('df0c17c02e04467d65099a456d43d95cfd615a7b11c4e5628faa393a54f73c44')
+sha256sums_x86_64=('869f6a0276bbfd392c4da4a0513512cf353316bc6d448c93dd0c5492b2130f8f')
+sha256sums_armv7h=('6c7a6dc28585958405f50f26850630dd470ca46d4431a5b8dedf40d6f18898d4')
+sha256sums_aarch64=('22405ff5a8fe122bb22bcc42bd82b0662ef75574125db8c167b18640f613b0fb')
 
 options=(!strip)
 
