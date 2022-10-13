@@ -10,6 +10,7 @@ pkgbase = outline-client-appimage-git
 	conflicts = outline-client-appimage
 	conflicts = outline-client-appimage-wayland
 	conflicts = outline-client-appimage-git
+	options = !strip
 	source = latest-linux.yml::https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/latest-linux.yml
 	source = outline-client16.png
 	source = outline-client24.png
