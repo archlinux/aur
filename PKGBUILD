@@ -5,20 +5,20 @@ pkgname=fortune-mod-gushiwen-git
 pkgver=r2.00d7cec
 pkgrel=1
 pkgdesc="Chinese gushiwen for fortune-mod"
-url="https://github.com/shenyunhang/${_srcname}"
-license=("GPL3")
-depends=('fortune-mod')
-makedepends=('git')
-provides=('fortune-mod-gushiwen')
-conflicts=('fortune-mod-gushiwen')
-groups=('fortune-mods')
-source=("git+${url}")
-md5sums=('SKIP')
-arch=('any')
+url=https://github.com/shenyunhang/${_srcname}
+license=(GPL3)
+depends=(fortune-mod)
+makedepends=(git)
+provides=(fortune-mod-gushiwen)
+conflicts=(fortune-mod-gushiwen)
+groups=(fortune-mods)
+source=(git+${url})
+md5sums=(SKIP)
+arch=(any)
 
 pkgver() {
     cd ${_srcname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
