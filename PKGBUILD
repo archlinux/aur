@@ -45,7 +45,7 @@ build() {
     --with-uuid=e2fs \
     --enable-nls \
     --enable-thread-safety \
-    --with-llvmi \
+    --with-llvm \
     --with-zstd \
     --with-lz4
 
