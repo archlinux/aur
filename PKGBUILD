@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libva-nvidia-driver
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='VA-API implementation that uses NVDEC as a backend'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gst-plugins-bad-libs' 'libegl')
 makedepends=('meson' 'ffnvcodec-headers' 'libva')
 conflicts=('libva-vdpau-driver')
 source=("https://github.com/elFarto/nvidia-vaapi-driver/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8a64c069200750f12d013c79547e459cbb87b498357478c5f36cb97f710294e0')
+sha256sums=('c19e35d41cd39a93c2a1af99065d51719a994fdd89f8b0716914cba7e716718e')
 
 build() {
     arch-meson "nvidia-vaapi-driver-${pkgver}" build
