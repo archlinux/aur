@@ -4,7 +4,7 @@
 
 pkgname=librsb
 pkgver=1.3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A shared memory parallel sparse matrix library including Sparse BLAS"
 arch=(x86_64)
 url="https://sourceforge.net/projects/${pkgname}"
@@ -29,8 +29,8 @@ build() {
   cd ${pkgname}-${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr \
-    --enable-fortran-module-install \
-    CFLAGS='-fPIC -g -O3' FCFLAGS='-fPIC -g -O3'
+    --enable-fortran-module-install
+#    CFLAGS='-fPIC -g -O3' FCFLAGS='-fPIC -g -O3'
   make
 }
 
