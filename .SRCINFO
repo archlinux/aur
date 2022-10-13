@@ -1,13 +1,13 @@
 pkgbase = copilot-cli
 	pkgdesc = A tool to help deploy containerized applications on Amazon ECS
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/aws/copilot-cli
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = copilot-cli-1.22.0.tar.gz::https://github.com/aws/copilot-cli/archive/v1.22.0.tar.gz
-	sha256sums = 52728ccb5d20e121419b3dc7d8cd67cc78c6f0c7b5f5a49346ebf407b606b541
+	source = copilot-cli-1.22.1.tar.gz::https://github.com/aws/copilot-cli/archive/v1.22.1.tar.gz
+	sha256sums = 76ff51c0ef38949683977ee89634ef3f5cc2d9913d69b8cae6ebc7e5ab853cf6
 
 pkgname = copilot-cli
