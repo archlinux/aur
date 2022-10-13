@@ -4,7 +4,7 @@
 _pkgname=scs
 _pkgver=3.0-1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Splitting Conic Solver'
 arch=('x86_64')
