@@ -14,7 +14,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd ${pkgname%-git}
-	printf "%s" "`git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;y/-/./')`"
+	printf "%s" "`git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;y/-/./'`"
 }
 
 build() {
