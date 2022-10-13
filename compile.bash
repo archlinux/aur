@@ -21,9 +21,9 @@ if [[ ${build_jobs} -gt 1 ]]; then
 	free_output="$(free --kilo --total | tr -s ' ')"
 	totalmemorykb=$(grep Total <<< "$free_output" | cut -d ' ' -f 2)
 	freememorykb=$(grep Total <<< "$free_output" | cut -d ' ' -f 4)
-	echo "Total memory:    $totalmemorykb (includes swap)"
-	echo "Free memory:     $freememorykb"
-	echo "Required memory: $requiredmemorykb"
+	#echo "Total memory:    $totalmemorykb (includes swap)"
+	#echo "Free memory:     $freememorykb"
+	#echo "Required memory: $requiredmemorykb"
 	if [[ ${requiredmemorykb} -gt ${totalmemorykb} ]]; then
 		echo "Not enough physical memory to build with all cores, adjusting"
 		echo "Estimated required memory to build with all cores: $((requiredmemorykb/1024/1024)) GB"
