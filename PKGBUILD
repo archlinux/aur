@@ -26,7 +26,7 @@ sha512sums=('537d223be619d8b192756791cb614638f7188532f981e233bbfa8c0245adf5afe94
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
             'ec2625c3ccfb6c142ea12ef4392b00f3d4cb0a5411d603b98157d55cd162ed3b422dbbd42e8b13211063db94a42f6d1f3febd4acaadde69ea17bfd8eccae3539'
-            '0f22d1d251babca743bccb48c30599a9553d3c57f6d6a560c62f34511d2d0ef1e00a889c89120a6e2f76e91eee5754fd8b946a2993632a38ca76d3f2ae97876e')
+            '8baed17b9ac663a53bc1f91eabe454e22822c9ac28b67083c0747ff4fef7569628f1b8f735001b07ac44ab6b10e36030f0e951e6df3912bd2bda474645be9643')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
@@ -45,7 +45,9 @@ build() {
     --with-uuid=e2fs \
     --enable-nls \
     --enable-thread-safety \
-    --with-llvm
+    --with-llvmi \
+    --with-zstd \
+    --with-lz4
 
   make world -j16
 }
