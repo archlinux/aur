@@ -108,8 +108,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 extras/convert.lua "${pkgdir}"/usr/bin/conky-convert.lua
-	install -Dm644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
-	install -Dm644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
-	install -Dm644 extras/nano/conky.nanorc "${pkgdir}"/usr/share/nano/conky.nanorc
-	install -Dm644 extras/gedit/conky.lang "${pkgdir}"/usr/share/gtksourceview-3.0/language-specs/conky.lang
 }
