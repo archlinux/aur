@@ -4,14 +4,14 @@ pkgname=cura-5-bin
 _pkgname=cura-5-bin
 _shortname=cura5
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Uncompressed version of Ultimaker Cura 5 for plugin installation options'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
 license=('LGPL3')
 depends=('xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 optdepends=('cura-5-plugin-octoprint: Cura plugin which enables printing directly to OctoPrint and monitoring the progress'
-	'cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress')
+	'cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress latest git version')
 conflicts=('cura-5-beta-bin')
 provides=('cura')
 options=(!strip)
@@ -24,7 +24,7 @@ source=(
 
 sha256sums=('375be6f99cedf154186bb40cb92c9f574959c399f0de4526a416a3759ccde97a'
             'f7917a834849618f62147bf68e8cb1cb31157e724163325effd495ddd8be2494'
-            '22ee374746989baa4f87e79ecbc662b681ba9ca3fd93902408367461a2b4b571')
+            '076fee81d82b5ae55e44d230adef79cf944f51befb76f30074195ac18dd7e16a')
    
 prepare() {
     cd "${srcdir}"
