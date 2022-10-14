@@ -1,7 +1,7 @@
 # Maintainer: Agorgianitis Loukas <agorglouk@gmail.com>
 
 pkgname=vscode-tailwindcss-language-server-bin
-pkgver=0.5.10
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Tailwind CSS language server component from tailwindcss-intellisense vscode extension"
 arch=('any')
