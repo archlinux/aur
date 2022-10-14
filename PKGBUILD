@@ -2,7 +2,7 @@
 
 pkgname=nbdkit
 pkgver=1.32.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -43,8 +43,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf -i
 
-  # disable guestfish tests because of https://bugs.archlinux.org/task/71746
-  ./configure --prefix=/usr --sbindir=/usr/bin GUESTFISH=no --without-libguestfs --without-rust
+  ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
@@ -56,12 +55,6 @@ package() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  mkdir -p bin
-
-  echo -e "#!/bin/sh\nexec false" > bin/guestfish
-  chmod +x bin/guestfish
-  export PATH="$(realpath bin):$PATH"
 
   make check
 }
