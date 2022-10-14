@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-valent-git
+	pkgdesc = GNOME Shell integration for Valent
+	pkgver = r41.dcfebec
+	pkgrel = 1
+	url = https://github.com/andyholmes/gnome-shell-extension-valent
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gnome-common
+	optdepends = valent
+	provides = gnome-shell-extension-valent
+	conflicts = gnome-shell-extension-valent
+	source = git+https://github.com/andyholmes/gnome-shell-extension-valent.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-valent-git
