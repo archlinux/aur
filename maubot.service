@@ -6,8 +6,7 @@ Type=simple
 User=maubot
 Group=maubot
 WorkingDirectory=/var/lib/maubot/
-ExecStart=/usr/bin/maubot -c /etc/synapse/maubot/config.yaml \
-          -r /etc/synapse/maubot/registration.yaml
+ExecStart=/bin/python -m maubot -c /etc/maubot/config.yaml
 Restart=always
 RestartSec=3
 

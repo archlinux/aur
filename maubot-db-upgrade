@@ -7,10 +7,4 @@ fi
 
 cd /var/lib/maubot
 
-if [[ ! -e /var/lib/maubot/alembic ]]; then
-  ln -s /usr/share/maubot/alembic ./
-fi
-if [[ ! -e /var/lib/maubot/alembic.ini ]]; then
-  ln -s /usr/share/maubot/alembic.ini ./
-fi
-sudo -u maubot alembic -x config=/etc/synapse/maubot/config.yaml upgrade head
+sudo -u maubot /bin/python -m maubot -c /etc/maubot/config.yaml upgrade head
