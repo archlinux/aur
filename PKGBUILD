@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni <fathoni DOT id AT gmail DOT com>
 
 pkgname=evaltool-bin
-pkgver=1.8.7
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Explore and test functionality of the Inertial Sense products in real-time"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('qt5-charts-ubuntu-ver')
 
 source=("https://github.com/inertialsense/inertial-sense-sdk/releases/download/${pkgver}/EvalTool_${pkgver}.deb")
-sha256sums=('24329802140825e201d5e9f0f41490657b3a41a7678a7deb8c5e43b3be31f2a2')
+sha256sums=('90e7e040b84458568778a5a9e27315af0fb103aab9c6d4b771d1cdc5f5d813c5')
 
 package(){
 	# Extract package data
