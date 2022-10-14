@@ -1,0 +1,6 @@
+BambuStudio
+pkg
+simh
+*.zst
+src
+*.commit

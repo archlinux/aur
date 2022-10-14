@@ -1,0 +1,24 @@
+--- BambuStudio/CMakeLists.txt.orig	2022-10-14 00:35:55.606666615 -0400
++++ BambuStudio/CMakeLists.txt	2022-10-14 10:58:21.179999900 -0400
+@@ -691,8 +691,10 @@
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
+ elseif (SLIC3R_FHS)
+     # CMAKE_INSTALL_FULL_DATAROOTDIR: read-only architecture-independent data root (share)
+-    set(SLIC3R_FHS_RESOURCES "${CMAKE_INSTALL_FULL_DATAROOTDIR}/BambuStudio")
+-    install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/ DESTINATION ${SLIC3R_FHS_RESOURCES}
++    # set(SLIC3R_FHS_RESOURCES "${CMAKE_INSTALL_FULL_DATAROOTDIR}/BambuStudio")
++    set(SLIC3R_FHS_RESOURCES "/usr/share/BambuStudio")
++    # install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/ DESTINATION ${SLIC3R_FHS_RESOURCES}
++    install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/ DESTINATION "${CMAKE_INSTALL_PREFIX}/share/BambuStudio"
+         PATTERN "*/udev" EXCLUDE
+     )
+     install(FILES src/platform/unix/BambuStudio.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+@@ -701,7 +703,7 @@
+             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${SIZE}x${SIZE}/apps RENAME BambuStudio.png
+         )
+     endforeach()
+-    install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/udev/ DESTINATION lib/udev/rules.d)
++    # install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/udev/ DESTINATION lib/udev/rules.d)
+ elseif (CMAKE_MACOSX_BUNDLE)
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/BambuStudio.app/Contents/resources")
+ else ()
