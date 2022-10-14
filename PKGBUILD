@@ -1,4 +1,4 @@
-# Maintainer: Sasasu <su@sasasu.me>
+# Maintainer: Sasasu <i@sasa.su>
 pkgname=fly-cli
 pkgver=v7.8.3
 pkgrel=14
