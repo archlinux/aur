@@ -2,7 +2,7 @@
 # Maintainer: peterfab9845 <archlinux@peterfab.com>
 
 pkgname=mcsctl-git
-pkgver=3.0.0.r0.g9f1b8b7
+pkgver=3.0.0.r4.gff820fd
 pkgrel=1
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit templates.'
 arch=('any')
