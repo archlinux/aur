@@ -26,9 +26,6 @@ package(){
 	# Install launcher
 	install -Dm755 "${srcdir}"/discordchatexporter-cli "${pkgdir}"/usr/bin/discordchatexporter-cli
 
-	# Install license
-	install -Dm644 License.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/License.txt
-
 	# Install application
 	cd DiscordChatExporter.Cli/bin/Release/net6.0/publish
 	find . -type f -exec install -Dm644 "{}" "${pkgdir}"/usr/lib/${pkgname}"/{}" \;
