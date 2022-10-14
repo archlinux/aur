@@ -1,5 +1,5 @@
 # Maintainer: NotAShelf  <me@notashelf.dev>
-pkgname=cloneit
+pkgname=cloneit-git
 pkgver=0.1.0+30.g02a4942
 pkgrel=1
 pkgdesc="A cli tool to download specific GitHub directories or files ."

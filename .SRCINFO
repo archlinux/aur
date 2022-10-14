@@ -1,4 +1,4 @@
-pkgbase = cloneit
+pkgbase = cloneit-git
 	pkgdesc = A cli tool to download specific GitHub directories or files .
 	pkgver = 0.1.0+30.g02a4942
 	pkgrel = 1
@@ -10,8 +10,8 @@ pkgbase = cloneit
 	makedepends = git
 	provides = cloneit
 	conflicts = cloneit
-	source = cloneit::git+https://github.com/alok8bb/cloneit.git
+	source = cloneit-git::git+https://github.com/alok8bb/cloneit.git
 	md5sums = SKIP
 	sha256sums = SKIP
 
-pkgname = cloneit
+pkgname = cloneit-git
