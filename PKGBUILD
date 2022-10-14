@@ -6,36 +6,24 @@
 # Contributor: 
 # 
 pkgname='mkpkg'
-pkgdesc='Tool to rebuild packages based on dependency triggers (git)'
+pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
-_branch='master'
 
-pkgver=2.3.0.r4.g65081dbd9f
+pkgver=2.3.2
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(MIT)
-depends=('python>3.9')
-makedepends=('python-pip' 'python-poetry')
+depends=('python>3.9' 'python-packaging')
+makedepends=('git' 'python-pip' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
-source=("git+https://github.com/gene-git/${_gitname}")
+source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-    cd "${_gitname}"
-    git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' 
-}
-
-prepare() {
-    cd "${_gitname}"
-    git fetch
-    git clean -f
-    git pull origin $_branch
-}
 
 build() {
     cd "${_gitname}"
+    /usr/bin/rm -f dist/*
     poetry build
 }
 
