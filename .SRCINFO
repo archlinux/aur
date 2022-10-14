@@ -1,6 +1,6 @@
 pkgbase = awl-dns-git
 	pkgdesc = A DNS client
-	pkgver = 0.5.0.r1.g0d011bb
+	pkgver = 0.5.2.r32.g2d94ea6
 	pkgrel = 1
 	url = https://git.froth.zone/sam/awl
 	arch = i686
