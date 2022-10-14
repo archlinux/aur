@@ -1,27 +1,35 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _projectname=Fluida.lv2
-pkgname="${_projectname,,}"
-pkgver=0.7
-pkgrel=2
-pkgdesc="An LV2 plugin which wraps the fluidsynth SF2 soundfont player"
-arch=('i686' 'x86_64')
-url="https://github.com/brummer10/${_projectname}"
-license=('GPL2')
-depends=('cairo')
-makedepends=('fluidsynth' 'lv2' 'xxd')
-groups=('lv2-plugins' 'pro-audio')
-source=("https://github.com/brummer10/Fluida.lv2/files/6329806/${_projectname%*.lv2}_${pkgver}.tar.gz")
-sha256sums=('9334e7cf2019f79711fd00037953eeed6b1272e826497c2db014dc66a50315a8')
-
+_plugin_uri="https://github.com/brummer10/$_projectname"
+pkgname=${_projectname,,}
+pkgver=0.8
+pkgrel=1
+pkgdesc='An LV2 plugin which wraps the fluidsynth SF2 soundfont player'
+arch=(x86_64 aarch64)
+url='https://github.com/brummer10/$_projectname'
+license=(GPL2)
+depends=(cairo)
+makedepends=(fluidsynth lv2 xxd)
+checkdepends=(lv2lint)
+optdepends=('lv2-host: for LV2 plugin')
+groups=(lv2-plugins pro-audio)
+source=("https://github.com/brummer10/Fluida.lv2/releases/download/v$pkgver/${_projectname%*.lv2}_$pkgver.tar.gz")
+sha256sums=('67aa666bf68c13b3def8b47d19589a86ccd8f534aa2090d1304c6c025fe38e51')
 
 build() {
-  cd "${srcdir}/${_projectname%*.lv2}_${pkgver}"
+  cd ${_projectname%*.lv2}_$pkgver
   make
+}
+
+check() {
+  cd ${_projectname%*.lv2}_$pkgver
+  lv2lint -Mpack -I Fluida/$_projectname "$_plugin_uri"
 }
 
 package() {
   depends+=('libfluidsynth.so')
-  cd "${srcdir}/${_projectname%*.lv2}_${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd ${_projectname%*.lv2}_$pkgver
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
