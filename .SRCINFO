@@ -1,0 +1,11 @@
+pkgbase = nextcloud-cli
+	pkgdesc = Hello world in your terminal!
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = go>=1.19.2
+	source = ncli.go
+	sha512sums = SKIP
+
+pkgname = nextcloud-cli
