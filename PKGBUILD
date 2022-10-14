@@ -2,7 +2,7 @@
 # Contributor: Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2022.9.28.1
+pkgver=2022.10.14
 pkgrel=1
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
   'vulkan-icd-loader')
 makedepends=('meson' 'ninja' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bdf0b9b94d2c1ea980b6b959edbab45919eda6fb07d9cafe904ae4b6bbd300dd')
+sha256sums=('7405a756896bceb0adc4d2e0ad688eeab235c888f848674d1eff9416fb1360bd')
 
 build() {
   if [[ -d Bottles ]]; then 
