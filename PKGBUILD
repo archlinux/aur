@@ -1,21 +1,30 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=wk
-_cranver=0.6.0
+_cranver=0.7.0
 pkgname=r-${_cranname,,}
 pkgdesc="Lightweight Well-Known Geometry Parsing"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("i686" "x86_64")
-depends=("r" "r-cpp11")
-optdepends=("r-testthat" "r-vctrs" "r-sf" "r-tibble")
+depends=(
+    "r>=2.10"
+    "r-cpp11"
+)
+optdepends=(
+    "r-readr"
+    "r-sf"
+    "r-testthat>=3.0.0"
+    "r-tibble"
+    "r-vctrs>=0.3.0"
+)
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("51cf1c60f384c57b7b90cc46d3bb182e")
+b2sums=('aac272e4ad329a972a6ce6b6a775c3a0d82af3c616e47e76ecfd4956093bc1a202f6da633ee3ebda9affb33a8c31c0a90df47899dde79028ed666adc473c1270')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

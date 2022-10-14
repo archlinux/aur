@@ -1,18 +1,19 @@
 pkgbase = r-wk
 	pkgdesc = Lightweight Well-Known Geometry Parsing
-	pkgver = 0.6.0
-	pkgrel = 3
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=wk
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r
+	depends = r>=2.10
 	depends = r-cpp11
-	optdepends = r-testthat
-	optdepends = r-vctrs
+	optdepends = r-readr
 	optdepends = r-sf
+	optdepends = r-testthat>=3.0.0
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/wk_0.6.0.tar.gz
-	md5sums = 51cf1c60f384c57b7b90cc46d3bb182e
+	optdepends = r-vctrs>=0.3.0
+	source = https://cran.r-project.org/src/contrib/wk_0.7.0.tar.gz
+	b2sums = aac272e4ad329a972a6ce6b6a775c3a0d82af3c616e47e76ecfd4956093bc1a202f6da633ee3ebda9affb33a8c31c0a90df47899dde79028ed666adc473c1270
 
 pkgname = r-wk
