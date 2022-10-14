@@ -1,14 +1,14 @@
 # Maintainer: xaque <xaque at duck dot com>
 
-_stablever=2205.0
-_engver=22.05.0
-_builddate="20220507"
-_debname="o3de_2205_0.deb"
+_stablever=2210.0
+_engver=22.10.0
+_builddate="20221011"
+_debname="o3de_2210_0.deb"
 _binname="o3de"
 
 pkgname=o3de-bin
-pkgver="${_stablever}_${_builddate}"
-pkgrel=2
+pkgver=2210.0_20221005
+pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine'
 arch=('x86_64')
 license=('APACHE' "MIT")
@@ -62,19 +62,9 @@ package() {
         exit 1
     fi
 
-    # Trying to create new project fails if launcher doesn't find clang++-<ver>
-    # Force use of system clang with local symlink in PATH
-    mkdir -p "${pkgdir}"/opt/O3DE/${_engver}/.symbin
-    ln -s $(which clang) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang-13
-    ln -s $(which clang) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang-14
-    ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang++-13
-    ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/.symbin/clang++-14
-
-    # Script in /usr/bin to run o3de with modified env
+    # Symlink into /usr/bin
     mkdir -p "${pkgdir}/usr/bin"
-    echo '#!/bin/sh' >"${pkgdir}/usr/bin/${_binname}"
-    echo "PATH=\""'$PATH'":/opt/O3DE/${_engver}/.symbin\" /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/${_binname}"
-    chmod +x "${pkgdir}/usr/bin/${_binname}"
+    ln -s "/opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" "${pkgdir}/usr/bin/${_binname}"
 
     # Extract .ico and install icons
     icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o .
