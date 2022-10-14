@@ -1,4 +1,5 @@
 pkg
 src
 sigil*
-*.pkg.tar.zst
+*.pkg.*
+*.log

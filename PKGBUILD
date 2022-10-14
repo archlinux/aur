@@ -7,7 +7,7 @@ _localepurge=
 
 pkgname=sigil-git
 pkgname_="${pkgname%-git}"
-pkgver=1.9.10.r31.g036cd7b27
+pkgver=1.9.20.r12.gf5fe387a1
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 arch=('x86_64')
