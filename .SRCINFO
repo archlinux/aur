@@ -1,6 +1,6 @@
 pkgbase = flow-bin
 	pkgdesc = A static type checker for JavaScript - binary version
-	pkgver = 0.189.0
+	pkgver = 0.190.0
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = flow-bin
 	optdepends = bash-completion: Bash completion
 	provides = flow
 	conflicts = flow
-	source = flow-bin-0.189.0-1.zip::https://github.com/facebook/flow/releases/download/v0.189.0/flow-linux64-v0.189.0.zip
-	source = flow-bin-0.189.0-1-bash-completion::https://github.com/facebook/flow/raw/v0.189.0/resources/shell/bash-completion
-	source = flow-bin-0.189.0-1-LICENSE::https://github.com/facebook/flow/raw/v0.189.0/LICENSE
-	sha512sums = 8776333323b23426ad4c33aa6a854cc2dffbb0dcf18da03bb1cc8e094c38c95fb02fdb897bffdbfc618c04f118ef1aa03100d8b751f409ae55cf63bca973089d
+	source = flow-bin-0.190.0-1.zip::https://github.com/facebook/flow/releases/download/v0.190.0/flow-linux64-v0.190.0.zip
+	source = flow-bin-0.190.0-1-bash-completion::https://github.com/facebook/flow/raw/v0.190.0/resources/shell/bash-completion
+	source = flow-bin-0.190.0-1-LICENSE::https://github.com/facebook/flow/raw/v0.190.0/LICENSE
+	sha512sums = a747f558ac23b9c126713ab25cb5c109b5f802339c04d6634c2bde8fe65eaf83350a01ab45ffbcb5910e0f453e61ebe56a1daa2bf8678865c06a28edffd1dc1c
 	sha512sums = 50dd81cc39c67bc463e51a2d492119a2533548cb7e3f765e02cf9ada999397710351a1c4deadc4ffc59f4c2347b2e6ba2d4c42cbb63026ef48d50a2f2f5ee87a
 	sha512sums = 3b8288e5dac996da44bd81b0eb1d96905c4b90ad9154f3d29d073c96890b75cd281fa03af0b77f331dbec239d341363b5f9b328bafea0d4b8d0a3e900d150f80
 
