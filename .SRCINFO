@@ -1,6 +1,6 @@
 pkgbase = python-finnhub-python
 	pkgdesc = Finnhub API
-	pkgver = 2.4.14
+	pkgver = 2.4.15
 	pkgrel = 1
 	url = https://pypi.org/project/finnhub-python
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-finnhub-python
 	depends = python
 	depends = python-requests
 	depends = python-future
-	source = https://files.pythonhosted.org/packages/source/f/finnhub-python/finnhub-python-2.4.14.tar.gz
-	sha256sums = 3b44e7b1b4e0d5ef75397d382a5a62b6691f30ae60133646835090c3ab3d033e
+	source = https://files.pythonhosted.org/packages/source/f/finnhub-python/finnhub-python-2.4.15.tar.gz
+	sha256sums = 5a9f9cb61571783ee8f49b770b4ce962e5af237ec9231824b8a8403bbdd0cef2
 
 pkgname = python-finnhub-python
