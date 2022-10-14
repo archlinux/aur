@@ -1,4 +1,4 @@
-# Maintainer: Iván Gabaldón <ivan.gab at inetol dot net>
+# Maintainer: Ivan Gabaldon <ivan.gab at inetol dot net>
 # Contributor: Sonu Ishaq <sonuishaq67@gmail.com>
 
 pkgname=deskreen
