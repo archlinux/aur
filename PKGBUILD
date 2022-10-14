@@ -2,12 +2,13 @@
 _pkgname=helm-diff
 pkgname=$_pkgname-cwrau-git
 pkgver=r274.52e85fa
-pkgrel=0
+pkgrel=1
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
 url='https://github.com/cwrau/helm-diff'
 license=('Apache')
 conflicts=('helm-diff')
+provides=('helm-diff')
 depends=('glibc')
 makedepends=('go')
 source=("git+$url.git")
