@@ -1,36 +1,39 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+# Maintainer: NotAShelf  <me@notashelf.dev>
+pkgname=cloneit
+pkgver=0.1.0+30.g02a4942
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
-arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
-license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+pkgdesc="A cli tool to download specific GitHub directories or files ."
+arch=('x86_64' 'aarch64')
+url="https://github.com/alok8bb/cloneit"
+license=('MIT')
+makedepends=('cargo' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+md5sums=('SKIP')
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git describe --tags | sed 's/-/+/; s/-/./'
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
 
 build() {
-	cd "$pkgname-master"
-	cmake -S .
-	make
+    cd "${srcdir}/${pkgname}"
+    cargo build --release 
 }
 
 package() {
-	cd "$pkgname-master"
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+    cd "${srcdir}/${pkgname}"
+
+    install -Dm755 "target/release/cloneit" "$pkgdir/usr/bin/cloneit"
+
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
+
