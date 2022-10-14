@@ -1,0 +1,9 @@
+post_install() {
+  chmod 755 /opt/brailleblaster/brailleblaster-nix.sh
+echo "If using with orca, please install java-atk-wrapper-openjdk for the version of openjdk you have installed"
+}
+
+post_upgrade() {
+ 	post_install
+}
+

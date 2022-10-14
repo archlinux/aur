@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Braille Blaster
+GenericName=Braille Blaster
+Comment=Braille Blaster Braille Translater
+Exec=//opt/brailleblaster/brailleblaster-nix.sh
+Icon=brailleblaster
+Terminal=false
+Type=Application
+Categories=Office
+Keywords=BrailleBlaster
+Name[en_US]=Braille Blaster
