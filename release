@@ -1,0 +1,39 @@
+#! /bin/sh
+
+if [ "$1" = "--help" ] || [ "$1" = "-h" ] || [ "$1" = "help" ] || [ -z "$1" ]; then
+  cat <<EOF
+$ release VERSION
+Prepare a new version for release
+
+Parameters:
+  \$1: version number of new release
+
+Example:
+  $ release 1337
+EOF
+  exit
+fi
+
+command -v wget >/dev/null || { echo "wget is not installed" 1>&2; exit 127; }
+command -v makepkg >/dev/null || { echo "makepkg was not found" 1>&2; exit 127; }
+command -v git >/dev/null || { echo "git is not installed" 1>&2; exit 127; }
+
+VERSION="$1"
+
+# update version nr
+sed -r "s/^pkgver=.*$/pkgver=\"$VERSION\"/g" PKGBUILD -i
+
+# upate shasum
+URL=`sed -r "s/\\\\$\{pkgver\}/$VERSION/g" PKGBUILD | grep -Po '^source=\("\K.*(?=")'`
+echo "computing shasum for $URL"
+SHASUM=`wget "$URL" -qO - 2>/dev/null | sha256sum | cut -d\  -f1 | tr -d "\n"`
+sed -r "s/^sha256sums=\([\"'][^\"']+[\"']\)$/sha256sums=(\"$SHASUM\")/" PKGBUILD -i
+
+# regenerate .SRCINFO
+makepkg -f && makepkg --printsrcinfo > .SRCINFO
+
+# check changes
+git --no-pager diff PKGBUILD
+
+# cleanup temp
+rm -r src pkg *.tar.gz *.tar.zst
