@@ -1,0 +1,21 @@
+pkgbase = selfprivacy-git
+	pkgdesc = Deploy your own private services
+	pkgver = 0.7.0.r50.g90dd3be
+	pkgrel = 1
+	url = https://selfpricacy.org
+	arch = x86_64
+	license = GPL3
+	makedepends = flutter
+	makedepends = ninja
+	makedepends = cmake
+	depends = gnome-keyring
+	depends = jsoncpp
+	depends = libsecret
+	depends = gtk3
+	depends = gio
+	provides = selfprivacy
+	conflicts = selfprivacy
+	source = selfprivacy::git+https://git.selfprivacy.org/kherel/selfprivacy.org.app
+	sha256sums = SKIP
+
+pkgname = selfprivacy-git
