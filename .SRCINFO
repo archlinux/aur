@@ -1,6 +1,6 @@
 pkgbase = python-djlint
 	pkgdesc = HTML Template Linter and Formatter
-	pkgver = 1.18.0
+	pkgver = 1.19.1
 	pkgrel = 00
 	url = https://github.com/Riverside-Healthcare/djlint
 	arch = any
@@ -19,12 +19,12 @@ pkgbase = python-djlint
 	depends = python-regex
 	depends = python-tomli
 	depends = python-tqdm
-	noextract = djlint-1.18.0-py3-none-any.whl
+	noextract = djlint-1.19.1-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/a0/3f/1c3a96680665c496f3232578bc8c1f232782c277b6a6196873d993ab7bda/djlint-1.18.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/f9/66/d0e13665881252e2295ea77be6c873a28bcb1ffa645012a6d8a938085b4a/djlint-1.19.1-py3-none-any.whl
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 942b006fcab05c649669952ae4eccc8d
+	md5sums = 3b70e8412b676604f2d20693f9618faa
 	md5sums = 97a733ff40c50b4bfc74471e1f6ca88b
 
 pkgname = python-djlint
