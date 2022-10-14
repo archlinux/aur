@@ -1,7 +1,4 @@
-.AURINFO
 pkg/
 src/
-Fluida_*.tar.gz
-fluida.lv2-*.pkg.tar.xz
-fluida.lv2-*.pkg.tar.zst
-fluida.lv2-*.src.tar.gz
+*.tar.*
+*.zip

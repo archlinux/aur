@@ -1,8 +1,8 @@
 pkgbase = fluida.lv2
 	pkgdesc = An LV2 plugin which wraps the fluidsynth SF2 soundfont player
 	pkgver = 0.8
-	pkgrel = 1
-	url = https://github.com/brummer10/$_projectname
+	pkgrel = 2
+	url = https://github.com/brummer10/Fluida.lv2
 	arch = x86_64
 	arch = aarch64
 	groups = lv2-plugins
