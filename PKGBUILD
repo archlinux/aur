@@ -2,7 +2,7 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.7
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest')  # numpy qtpy pyqt5 already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('283f2997784e0481af35c3c93a04eca6'
+md5sums=('1099665ac250566484895f3012d0c828'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 prepare() {
