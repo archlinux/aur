@@ -1,21 +1,20 @@
-# Maintainer: Iván Gabaldón <contact|@|inetol.net>
+# Maintainer: Iván Gabaldón <ivan.gab at inetol dot net>
 # Contributor: Sonu Ishaq <sonuishaq67@gmail.com>
 
 pkgname=deskreen
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Turns any device with a web browser to a second screen for your computer'
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+arch=('aarch64' 'x86_64' 'i686')
 url='https://deskreen.com'
 license=('AGPL3')
-depends=('nss')
-makedepends=('glibc' 'libxcrypt-compat' 'yarn')
+makedepends=('libxcrypt-compat' 'yarn')
 conflicts=("$pkgname-bin")
 source=("$pkgname-source.tar.gz::https://github.com/pavlobu/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
 noextract=("$pkgname-source.tar.gz")
 b2sums=('3e22d44be54b457507a5c0ea8534c70228a7bea92bd7c5b090118835854fe69d2a4c585675eb816c9642269fed95fbceb4ac576dd00d37d644f9c5c649b71fd6'
-        'ba7d1537ead5757091ec51da21ad1751bb1dcad2fe90cb3b5377f0507f9484643f0d9d784b23d7dccc88fe5f54d9559fd2e945ad4c6170614f1b04979c64e802')
+        'afa917c32b27e56dd12c0e8a755624bffe846fa38b64ba9a202f27366b2c6a7ee715ce9389c9fc37a04c8876563ef4764551bf0cdaa51c67b96628f7e79f4388')
 
 prepare() {
     mkdir -p "$pkgname-$pkgver" "$pkgname-source"
@@ -25,7 +24,6 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname-source/"
 
-    # DEPS
     yarn install --frozen-lockfile
     cd app/client/
     yarn install --frozen-lockfile
@@ -33,36 +31,30 @@ build() {
     yarn install --frozen-lockfile
     cd ..
 
-    # BUILD
     yarn build
-    if [ "$CARCH" == 'x86_64' ]; then
-        yarn electron-builder build --linux deb --x64
-        cp "release/${pkgname}_${pkgver}_amd64.deb" "../$pkgname-$pkgver.deb"
-    elif [ "$CARCH" == 'i686' ]; then
-        yarn electron-builder build --linux deb --ia32
-        cp "release/${pkgname}_${pkgver}_i386.deb" "../$pkgname-$pkgver.deb"
-    elif [ "$CARCH" == 'aarch64' ]; then
-        yarn electron-builder build --linux deb --arm64
-        cp "release/${pkgname}_${pkgver}_arm64.deb" "../$pkgname-$pkgver.deb"
-    elif [ "$CARCH" == 'armv7h' ]; then
-        yarn electron-builder build --linux deb --armv7l
-        cp "release/${pkgname}_${pkgver}_armv7l.deb" "../$pkgname-$pkgver.deb"
-    fi
+    case "$CARCH" in
+        'aarch64')
+            yarn electron-builder build --linux dir --arm64
+            ;;
+        'x86_64')
+            yarn electron-builder build --linux dir --x64
+            ;;
+        'i686')
+            yarn electron-builder build --linux dir --ia32
+            ;;
+    esac
 
-    cp 'LICENSE' '../LICENSE'
-    bsdtar -xpf "../$pkgname-$pkgver.deb" -C "$srcdir"
-    bsdtar -xpf '../data.tar.xz' -C "$srcdir/$pkgname-$pkgver"
+    cp -r 'release/linux-unpacked/'* "$srcdir/$pkgname-$pkgver/"
+    cp 'resources/icon.png' "$srcdir/$pkgname-$pkgver/"
+    cp 'LICENSE' "$srcdir/"
 }
 
 package() {
     install -d "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/$pkgname-$pkgver/opt/Deskreen/"* "$pkgdir/opt/$pkgname"
+    cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname/"
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-    install -d "$pkgdir/usr/share/icons"
-    cp -r "$srcdir/$pkgname-$pkgver/usr/share/icons/"* "$pkgdir/usr/share/icons/"
 
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

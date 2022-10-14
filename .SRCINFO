@@ -1,22 +1,19 @@
 pkgbase = deskreen
 	pkgdesc = Turns any device with a web browser to a second screen for your computer
 	pkgver = 2.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://deskreen.com
+	arch = aarch64
 	arch = x86_64
 	arch = i686
-	arch = aarch64
-	arch = armv7h
 	license = AGPL3
-	makedepends = glibc
 	makedepends = libxcrypt-compat
 	makedepends = yarn
-	depends = nss
 	conflicts = deskreen-bin
 	noextract = deskreen-source.tar.gz
 	source = deskreen-source.tar.gz::https://github.com/pavlobu/deskreen/archive/v2.0.3.tar.gz
 	source = deskreen.desktop
 	b2sums = 3e22d44be54b457507a5c0ea8534c70228a7bea92bd7c5b090118835854fe69d2a4c585675eb816c9642269fed95fbceb4ac576dd00d37d644f9c5c649b71fd6
-	b2sums = ba7d1537ead5757091ec51da21ad1751bb1dcad2fe90cb3b5377f0507f9484643f0d9d784b23d7dccc88fe5f54d9559fd2e945ad4c6170614f1b04979c64e802
+	b2sums = afa917c32b27e56dd12c0e8a755624bffe846fa38b64ba9a202f27366b2c6a7ee715ce9389c9fc37a04c8876563ef4764551bf0cdaa51c67b96628f7e79f4388
 
 pkgname = deskreen
