@@ -6,13 +6,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2022.5
-_channel=beta
-_rel=2
+_channel=stable
+_rel=1
 # beta
-pkgver=${_pkgver}.${_channel}${_rel}
+#pkgver=${_pkgver}.${_channel}${_rel}
 # stable
-#pkgver=${_pkgver}.${_channel}
-pkgrel=3
+pkgver=${_pkgver}.${_channel}
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -23,7 +23,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=592e3092fe9b3845788a3982dca5745f6cbd47bc # tags/2022.5-beta2^0
+_tag=5bcd2533633d76b1deaf5875b24a2c83bec6fc49 # tags/2022.5^0
 _commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
@@ -55,7 +55,6 @@ prepare() {
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
   mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
-
   go mod download -x
   popd
 
@@ -75,12 +74,6 @@ build() {
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
-
-  if [ "$CARCH" == "aarch64" ]; then
-    export CGO_ENABLED=1
-    export GOARCH=arm64
-  fi
-
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -153,15 +146,14 @@ package() {
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
 
   # Install services
-  install -Dm644 dist-assets/linux/{mullvad-daemon,mullvad-early-boot-blocking}.service -t \
+  install -Dm644 dist-assets/linux/{mullvad{-daemon,-early-boot-blocking}}.service -t \
     "$pkgdir/usr/lib/systemd/system/"
 
   # Install binaries
-  install -Dm755 dist-assets/{mullvad,mullvad-daemon,mullvad-exclude} -t "$pkgdir/usr/bin/"
+  install -Dm755 dist-assets/{mullvad,mullvad{-daemon,-exclude}} -t "$pkgdir/usr/bin/"
 
   # Link to the problem report binary
-  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
-    "$pkgdir/usr/bin/mullvad-problem-report"
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
 
   # Link to the GUI binary
   install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
