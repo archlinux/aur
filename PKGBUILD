@@ -1,8 +1,8 @@
 # Contributor: Edgard Matthijs <ematthijs at skynet dot be>
 
 pkgname=gfourcc
-pkgver=0.1.3.r14.g804f245
-pkgrel=6
+pkgver=0.1.4.r2.g9817643
+pkgrel=7
 pkgdesc="GUI Tool for changing the FOURCC code and description of AVI files"
 arch=('i686' 'x86_64')
 url="https://github.com/gamegard68/gfourcc"
