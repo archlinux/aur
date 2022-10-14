@@ -12,6 +12,7 @@ pkgbase = overgrive
 	depends = python
 	depends = python-gobject
 	depends = python-oauth2client
+	depends = python-pip
 	depends = python-pyinotify
 	provides = overgrive
 	conflicts = overgrive
