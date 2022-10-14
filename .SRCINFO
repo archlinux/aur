@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.19.13.arch1
+	pkgver = 6.0.1.arch2
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.19.13-arch1
+	url = https://github.com/archlinux/linux/commits/v6.0.1-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,10 +20,10 @@ pkgbase = linux-pds
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v5.19.13-arch1
+	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v6.0.1-arch2
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
-	source = 0009-prjc_v5.19-r0.patch
+	source = 0009-prjc_v6.0-r0.patch
 	source = 0005-glitched-pds.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -31,8 +31,8 @@ pkgbase = linux-pds
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = d1c4016fb770bd739dd2349c80186101746cd52f615a24cba28ffdf14f8c8d0850a5029c62509a88637090939b1c2a245163cd2d9607123c24a0aac623c3cd58
-	sha512sums = 1b6f2dd6b2f15f141ee22e54f3eaeb88f8074b8089a2d6de39ca598310c04c5082464b69d633813f013a6d662b48158194a94e36c95306778f63cb6f77ee7be4
+	sha512sums = 2c4548d57dc28238330b0221bacaa22d55bdf2045a00dd73322bfbe4b693fdee5578c485948e36972f3f828f5e929c48ff2e400c1e82370b5279d482b393c785
+	sha512sums = cbc6b26e8ab7916f4b9b36ef1242a43690c8d40677cc688a007c07c8c7b5396751fb9b51e17b83be4a96f5a74aaa4561f94d0360c94ed073a41856cbf9a52334
 	sha512sums = 889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57
 
 pkgname = linux-pds

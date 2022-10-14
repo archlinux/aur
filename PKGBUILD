@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.19.13.arch1
+pkgver=6.0.1.arch2
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -84,7 +84,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v5.19-r0.patch
+    0009-prjc_v6.0-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -102,8 +102,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'd1c4016fb770bd739dd2349c80186101746cd52f615a24cba28ffdf14f8c8d0850a5029c62509a88637090939b1c2a245163cd2d9607123c24a0aac623c3cd58'
-            '1b6f2dd6b2f15f141ee22e54f3eaeb88f8074b8089a2d6de39ca598310c04c5082464b69d633813f013a6d662b48158194a94e36c95306778f63cb6f77ee7be4'
+            '2c4548d57dc28238330b0221bacaa22d55bdf2045a00dd73322bfbe4b693fdee5578c485948e36972f3f828f5e929c48ff2e400c1e82370b5279d482b393c785'
+            'cbc6b26e8ab7916f4b9b36ef1242a43690c8d40677cc688a007c07c8c7b5396751fb9b51e17b83be4a96f5a74aaa4561f94d0360c94ed073a41856cbf9a52334'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
