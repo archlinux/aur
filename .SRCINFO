@@ -1,14 +1,14 @@
 pkgbase = tracer-bin
 	pkgdesc = Posterior summarisation in Bayesian phylogenetics
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/beast-dev/tracer
 	arch = x86_64
 	license = unknown
 	depends = java-runtime
-	source = https://github.com/beast-dev/tracer/releases/download/v1.7.1/Tracer_v1.7.1.tgz
+	source = https://github.com/beast-dev/tracer/releases/download/v1.7.2/Tracer_v1.7.2.tgz
 	source = tracer.desktop
-	sha256sums = 200d7ffa1e48994b71245994e299847ac2be72d3d5c37d9048418557e1d8c12e
+	sha256sums = b263e803377a9ae7b377e6637a6734907fb9908265c5451c628286fa87a6d5e2
 	sha256sums = 07c099a1d34b4718d46e083b98cf9352e50d81ee6cb7346544cd9d1248f02ea8
 
 pkgname = tracer-bin
