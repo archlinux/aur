@@ -2,7 +2,7 @@
 _pkgname=daemon-dotfiles
 pkgname=kvantum-theme-daemon-git
 pkgver=r4.3bd2e02
-pkgrel=2
+pkgrel=3
 pkgdesc="Cyberpunk style theme for KDE"
 arch=(any)
 url="https://github.com/MathisP75/daemon-dotfiles"
