@@ -3,7 +3,7 @@
 pkgname=kame-editor-git
 pkgver=1.3.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/beelzy/kame-editor"
 license=('GPL3')
 pkgdesc='A 3DS theme editor made with Qt5'

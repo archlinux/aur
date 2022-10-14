@@ -5,6 +5,7 @@ pkgbase = kame-editor-git
 	url = https://gitlab.com/beelzy/kame-editor
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
