@@ -3,7 +3,7 @@
 
 pkgname=deskreen
 pkgver=2.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Turns any device with a web browser to a second screen for your computer'
 arch=('aarch64' 'x86_64' 'i686')
 url='https://deskreen.com'
@@ -14,48 +14,46 @@ source=("$pkgname-source.tar.gz::https://github.com/pavlobu/$pkgname/archive/v$p
         "$pkgname.desktop")
 noextract=("$pkgname-source.tar.gz")
 b2sums=('3e22d44be54b457507a5c0ea8534c70228a7bea92bd7c5b090118835854fe69d2a4c585675eb816c9642269fed95fbceb4ac576dd00d37d644f9c5c649b71fd6'
-        'afa917c32b27e56dd12c0e8a755624bffe846fa38b64ba9a202f27366b2c6a7ee715ce9389c9fc37a04c8876563ef4764551bf0cdaa51c67b96628f7e79f4388')
+        '96072794fba957f5d9258778f41595c00e8ea3b866b9692f64282212254139c2c85e4b9ca516d4f6efe1a1deb7fc1c269ec09f86c98debe04e4507cecc79457e')
 
 prepare() {
-    mkdir -p "$pkgname-$pkgver" "$pkgname-source"
+    mkdir -p "$pkgname-source"
     bsdtar -xpf "$pkgname-source.tar.gz" --strip-components=1 -C "$pkgname-source/"
 }
 
 build() {
     cd "$srcdir/$pkgname-source/"
 
-    yarn install --frozen-lockfile
+    SKIP_PREFLIGHT_CHECK=true yarn install --frozen-lockfile
     cd app/client/
-    yarn install --frozen-lockfile
-    cd ..
-    yarn install --frozen-lockfile
-    cd ..
+    SKIP_PREFLIGHT_CHECK=true yarn install --frozen-lockfile
+    cd ../../
+    SKIP_PREFLIGHT_CHECK=true yarn build
 
-    yarn build
     case "$CARCH" in
         'aarch64')
-            yarn electron-builder build --linux dir --arm64
+            yarn electron-builder build --arm64 -l dir
+            mv 'release/linux-arm64-unpacked/' 'release/linux-unpacked/'
             ;;
         'x86_64')
-            yarn electron-builder build --linux dir --x64
+            yarn electron-builder build --x64 -l dir
+            #mv 'release/linux-x64-unpacked/' 'release/linux-unpacked/'
             ;;
         'i686')
-            yarn electron-builder build --linux dir --ia32
+            yarn electron-builder build --ia32 -l dir
+            mv 'release/linux-ia32-unpacked/' 'release/linux-unpacked/'
             ;;
     esac
-
-    cp -r 'release/linux-unpacked/'* "$srcdir/$pkgname-$pkgver/"
-    cp 'resources/icon.png' "$srcdir/$pkgname-$pkgver/"
-    cp 'LICENSE' "$srcdir/"
 }
 
 package() {
     install -d "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/$pkgname-$pkgver/"* "$pkgdir/opt/$pkgname/"
+    cp -r "$srcdir/$pkgname-source/release/linux-unpacked/"* "$pkgdir/opt/$pkgname/"
+    cp "$srcdir/$pkgname-source/resources/icon.png" "$pkgdir/opt/$pkgname/"
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$pkgname-source/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
