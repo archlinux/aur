@@ -34,5 +34,5 @@ package() {
     install -dm755 $pkgdir/usr/share/aurorae/themes
     cp -r 'window-borders/Daemon' $pkgdir/usr/share/aurorae/themes
     install -dm755 $pkgdir/usr/share/kwin/scripts
-    cp -rT 'kwin-scripts/flex-grid' $pkgdir/usr/share/kwin/scripts/flexgrid
+    cp -r 'kwin-scripts/flex-grid' $pkgdir/usr/share/kwin/scripts/flexgrid
 }
