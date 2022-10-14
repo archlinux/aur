@@ -12,7 +12,7 @@ _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -146,7 +146,7 @@ package() {
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
 
   # Install services
-  install -Dm644 dist-assets/linux/{mullvad{-daemon,-early-boot-blocking}}.service -t \
+  install -Dm644 dist-assets/linux/mullvad{-daemon,-early-boot-blocking}.service -t \
     "$pkgdir/usr/lib/systemd/system/"
 
   # Install binaries
