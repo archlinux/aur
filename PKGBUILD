@@ -1,11 +1,11 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=kookbook-git
-pkgver=0.2.1.r37.g427e897
+pkgver=0.2.1.r92.gd6db5f9
 pkgrel=1
 pkgdesc="Cookbook creator"
 arch=(x86_64)
-url="https://cgit.kde.org/kookbook.git/tree/doc/intro.md"
+url="https://invent.kde.org/utilities/kookbook"
 license=(MIT)
 depends=(qt5-base qt5-declarative)
 makedepends=(git cmake extra-cmake-modules)

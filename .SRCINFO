@@ -1,8 +1,8 @@
 pkgbase = kookbook-git
 	pkgdesc = Cookbook creator
-	pkgver = 0.2.1.r37.g427e897
+	pkgver = 0.2.1.r92.gd6db5f9
 	pkgrel = 1
-	url = https://cgit.kde.org/kookbook.git/tree/doc/intro.md
+	url = https://invent.kde.org/utilities/kookbook
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -16,4 +16,3 @@ pkgbase = kookbook-git
 	sha512sums = SKIP
 
 pkgname = kookbook-git
-
