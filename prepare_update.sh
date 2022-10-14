@@ -21,7 +21,7 @@ then
 else
 	sed -i "s|pkgrel\=.*|pkgrel\=1|" "$BUILD_FILE"
 	# Have makepkg update the version using pkgver()
-	makepkg -o
+	makepkg --nodeps --nobuild
 fi
 
 makepkg --printsrcinfo > .SRCINFO
