@@ -1,6 +1,6 @@
 pkgbase = naver-whale-stable
 	pkgdesc = The web browser from NAVER
-	pkgver = 3.17.145.11
+	pkgver = 3.17.145.12
 	pkgrel = 1
 	url = https://whale.naver.com
 	install = naver-whale-stable.install
@@ -16,10 +16,10 @@ pkgbase = naver-whale-stable
 	depends = xdg-utils
 	options = !emptydirs
 	options = !strip
-	source = https://repo.whale.naver.com/stable/deb/pool/main/n/naver-whale-stable/naver-whale-stable_3.17.145.11-1_amd64.deb
+	source = https://repo.whale.naver.com/stable/deb/pool/main/n/naver-whale-stable/naver-whale-stable_3.17.145.12-1_amd64.deb
 	source = naver-whale-stable.sh
 	source = LICENSE.html
-	sha256sums = 9cb2d296c4ac3cc7c712839ad18fb2d3811931a37645fe79f264b726839ec60c
+	sha256sums = 369d42ad08a4c84468913c72204b768e2058f8f50b8a27609bb0c8e56e9df867
 	sha256sums = 11522689f4c94ea86bc7e50feb48c6b823cb3cdb7bb04b565a0db2f12d25d9a5
 	sha256sums = ed82f8f83c93cbd468395cc80e3be7beb8a3f18bdf5770f165c348c15f7e5e84
 
