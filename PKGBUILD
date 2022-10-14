@@ -10,7 +10,8 @@ license=(GPL3)
 source=("https://git.sr.ht/~lattis/muon/archive/$pkgver.tar.gz")
 sha256sums=('9d3825c2d562f8f8ad96d1f02167e89c4e84973decf205d127efd9293d7da35b')
 depends=(pkgconf curl libarchive)
-makedepends=(ninja scdoc)
+makedepends=(ninja python-yaml scdoc)
+checkdepends=(git)
 provides=(muon)
 
 build() {
