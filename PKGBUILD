@@ -2,7 +2,7 @@
 _pkgname=daemon-dotfiles
 pkgname=kdeplasma-themes-daemon-git
 pkgver=r4.3bd2e02
-pkgrel=3
+pkgrel=4
 pkgdesc="Cyberpunk style theme for KDE"
 arch=(any)
 url="https://github.com/MathisP75/daemon-dotfiles"
@@ -29,7 +29,7 @@ package() {
     install -dm755 $pkgdir/usr/share/plasma/desktoptheme
     cp -r 'icons/Daemon' $pkgdir/usr/share/icons
     install -dm755 $pkgdir/usr/share/aurorae/themes
-    cp -rT 'kwin-scripts/Flex Grid' $pkgdir/usr/share/kwin/scripts/flexgrid
+    cp -rT 'kwin-scripts/flex-rid' $pkgdir/usr/share/kwin/scripts/flexgrid
     install -dm755 $pkgdir/usr/share/icons
     cp -r 'plasma-styles/Daemon' $pkgdir/usr/share/plasma/desktoptheme
     install -dm755 $pkgdir/usr/share/kwin/scripts
