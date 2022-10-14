@@ -1,0 +1,20 @@
+pkgbase = g3k-git
+	pkgdesc = A 3DUI widget toolkit.
+	pkgver = 0.16.0.1331.50cabc0
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xrdesktop/g3k
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = glslang
+	makedepends = gtk-doc
+	makedepends = vulkan-headers
+	depends = gxr-git
+	provides = g3k=0.16.0.1331.50cabc0
+	conflicts = g3k
+	source = git+https://gitlab.freedesktop.org/xrdesktop/g3k.git
+	md5sums = SKIP
+
+pkgname = g3k-git
