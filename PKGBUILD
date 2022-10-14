@@ -5,7 +5,6 @@ pkgrel=1
         pkgdesc='a braille translater written in java'
 arch=('x86_64')
         depends=('java-environment')
-        install="${pkgname}.install"
 license=('custom')
 url='https://www.brailleblaster.org/'
 _dlname='brailleblaster'
