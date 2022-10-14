@@ -1,6 +1,6 @@
 pkgbase = godot4-mono-bin
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = beta2
+	pkgver = beta3
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = godot4-mono-bin
 	source = icon.png
 	sha512sums = 0658a4cbd5a5842c1c072eaca25cf243db14251b3b619afff076999ad9104e41e32a444bfbb771992ec9a990d814fcce234ff3c2a416493e5eb3a8d112b85235
 	sha512sums = 3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e
-	source_i686 = godot4-mono-bin-beta2-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/beta2/mono/Godot_v4.0-beta2_mono_linux_x86_32.zip
-	sha512sums_i686 = 1dd7b6224b7277ff7fe0ae1526461e282c295ed0bf37210cc6d6d0c9568dd969b3e4410f77879b15bc4cdea8a16a218ffc7aa07a45c4a9afacff4ef50bcbd20f
-	source_x86_64 = godot4-mono-bin-beta2-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/beta2/mono/Godot_v4.0-beta2_mono_linux_x86_64.zip
-	sha512sums_x86_64 = 64382559349ea7a3f058ef71952ba1c819ed21b6b9f978d493cf016529d82029f2a9bde6e338af157209201f9bef04685e63bb7d1b7a7614694e66d844413d34
+	source_i686 = godot4-mono-bin-beta3-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/beta3/mono/Godot_v4.0-beta3_mono_linux_x86_32.zip
+	sha512sums_i686 = ae8ac707062e89c552a6d7fc304cf22db756d23e7d56e853f5218a0b687391b6d548d2a7ffde73e0f69786306f71379f4a810256f2ad11c0b4f73255653e7bce
+	source_x86_64 = godot4-mono-bin-beta3-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/beta3/mono/Godot_v4.0-beta3_mono_linux_x86_64.zip
+	sha512sums_x86_64 = dba88500d723846c8c136bd55c623410a36019dab293e4eb9ed830452019296cabb60e28ddafd90ec699cdcd9a16fde5d7caca023b8a0a2a511fae7659d5e602
 
 pkgname = godot4-mono-bin
