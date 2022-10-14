@@ -46,6 +46,7 @@ build() {
     --output runtime \
     --module-path jmod \
     --add-modules java.base,java.desktop,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,jdk.unsupported,jdk.crypto.ec,jdk.accessibility \
+    --strip-native-commands \
     --no-header-files \
     --no-man-pages \
     --strip-debug \
