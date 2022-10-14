@@ -2,21 +2,20 @@
 
 pkgname=pinapp
 _pkgname=PinApp
-pkgver=1.1.1
-_commit=077c1fe5b1c2fdf38ec66f566583e79a9b9e4d1f
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Create your own application shortcuts"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fabrialberio/PinApp"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('git' 'meson')
+makedepends=('meson')
 checkdepends=('appstream-glib')
-source=(git+$url.git#commit=${_commit})
-b2sums=('SKIP')
+source=($url/archive/$pkgver.tar.gz)
+b2sums=('d5c3a2eeef9aa2f703b538a5855334dca5e8dd4da3db95ae2e36faa2402ed491b58f51390c11d0e3f41a6488ccf018090595e12642473a7abda7d9861a5f09d0')
 
 build() {
-  arch-meson "${_pkgname%-git}" build
+  arch-meson "${_pkgname%-git}-$pkgver" build
   meson compile -C build
 }
 

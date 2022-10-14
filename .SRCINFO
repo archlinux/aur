@@ -1,16 +1,15 @@
 pkgbase = pinapp
 	pkgdesc = Create your own application shortcuts
-	pkgver = 1.1.1
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/fabrialberio/PinApp
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	checkdepends = appstream-glib
-	makedepends = git
 	makedepends = meson
 	depends = libadwaita
-	source = git+https://github.com/fabrialberio/PinApp.git#commit=077c1fe5b1c2fdf38ec66f566583e79a9b9e4d1f
-	b2sums = SKIP
+	source = https://github.com/fabrialberio/PinApp/archive/1.1.4.tar.gz
+	b2sums = d5c3a2eeef9aa2f703b538a5855334dca5e8dd4da3db95ae2e36faa2402ed491b58f51390c11d0e3f41a6488ccf018090595e12642473a7abda7d9861a5f09d0
 
 pkgname = pinapp
