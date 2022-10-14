@@ -1,0 +1,13 @@
+--- Directory.Build.props	2022-10-14 20:38:01.046129111 +1100
++++ Directory.Build.props.patched	2022-10-14 20:38:12.599462669 +1100
+@@ -15,7 +15,7 @@
+     apparently rely on a specific version of the runtime.
+   -->
+   <PropertyGroup>
+-    <RuntimeFrameworkVersion>6.0.9</RuntimeFrameworkVersion>
++    <RuntimeFrameworkVersion>6.0.10</RuntimeFrameworkVersion>
+   </PropertyGroup>
+ 
+-</Project>
+\ No newline at end of file
++</Project>
