@@ -1,12 +1,12 @@
 # Maintainer: Voxel <voxel.aur@gmail.com>
 pkgname=deepqt
 _module='DeepQt'
-pkgver='1.0.1'
-pkgrel=2
+pkgver='1.1.0'
+pkgrel=1
 pkgdesc="Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files."
 url="https://github.com/VoxelCubes/DeepQt"
-depends=('python>=3.10.0')
-makedepends=('python-setuptools')
+depends=('python>=3.10.0' 'pyside6')
+makedepends=('python-setuptools' 'python-pip')
 license=('GPL')
 arch=('any')
 source=("https://github.com/VoxelCubes/DeepQt/archive/refs/tags/v$pkgver.tar.gz")
