@@ -2,7 +2,7 @@ _pkgname=openssl
 _pkgver=3.0
 pkgname="${_pkgname}-${_pkgver}-bin"
 pkgver=3.0.5
-pkgrel=2
+pkgrel=4
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.  Can be installed alongside OpenSSL 1."
 arch=('i686' 'x86_64')
 url="https://www.openssl.org/"
@@ -18,7 +18,7 @@ source=(
   "http://ftp.debian.org/debian/pool/main/o/openssl/libssl3_${pkgver}-${pkgrel}_amd64.deb"
 )
 sha256sums=(
-  '1b6c27131c8b23866fbeb445ad51358040b1370440513285d489f95e201e232a'
+  '237a8f2f90e45d6412be747cb5c769e1c48f1e16197596d02362bebee7ea7ff7'
 )
 
 prepare() {
