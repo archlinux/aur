@@ -2,10 +2,10 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2022.4
-pkgrel=2
+pkgver=2022.5
+pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('dbus' 'iputils')
@@ -14,8 +14,8 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!lto')
 install="${pkgname%-*}.install"
-_tag=06c847a7a7d72a148bd5dba0a44860eb1b3aa182 # tags/2022.4^0
-_commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
+_tag=5bcd2533633d76b1deaf5875b24a2c83bec6fc49 # tags/2022.5^0
+_commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
 sha256sums=('SKIP'
@@ -45,7 +45,6 @@ prepare() {
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
   mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
-
   go mod download -x
   popd
 }
@@ -53,9 +52,8 @@ prepare() {
 build() {
   cd "$srcdir/mullvadvpn-app"
   local RUSTC_VERSION=$(rustc --version)
-  source env.sh ""
 
-  echo "Building Mullvad VPN CLI $pkgver..."
+  echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
@@ -71,14 +69,12 @@ build() {
   # Clean module cache for makepkg -C
   go clean -modcache
 
-  export MULLVAD_ADD_MANIFEST="1"
-
   echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
-
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 
+  echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   mkdir -p dist-assets/shell-completions
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
@@ -86,7 +82,7 @@ build() {
       dist-assets/shell-completions/
   done
 
-  echo "Updating relay list..."
+  echo "Updating relays.json..."
   cargo run --bin relay_list --frozen --release > dist-assets/relays.json
 }
 
@@ -94,10 +90,10 @@ package() {
   cd "$srcdir/mullvadvpn-app"
 
   # Install binaries
-  install -Dm755 target/release/mullvad{-daemon,-problem-report,-setup} -t \
+  install -Dm755 target/release/mullvad{-problem-report,-setup} -t \
     "$pkgdir/opt/Mullvad VPN/resources/"
 
-  install -Dm755 target/release/{mullvad,mullvad-exclude} -t \
+  install -Dm755 target/release/{mullvad,mullvad{-daemon,-exclude}} -t \
     "$pkgdir/usr/bin/"
 
   install -m644 target/release/libtalpid_openvpn_plugin.so -t \
@@ -107,14 +103,13 @@ package() {
     "$pkgdir/opt/Mullvad VPN/resources/"
 
   # Link to the problem report binary
-  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
-    "$pkgdir/usr/bin/mullvad-problem-report"
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
 
   # Install relay list
   install -Dm644 dist-assets/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
 
-  # Install service
-  install -Dm644 dist-assets/linux/mullvad-daemon.service -t \
+  # Install services
+  install -Dm644 dist-assets/linux/{mullvad{-daemon,-early-boot-blocking}} -t \
     "$pkgdir/usr/lib/systemd/system/"
 
   # Install completions
