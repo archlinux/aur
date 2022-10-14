@@ -1,19 +1,19 @@
 # Maintainer: Lubosz Sarnecki <lubosz.sarnecki@collabora.com>
- 
+
 basename='xrdesktop'
 pkgname="$basename-git"
-pkgver=0.15.1.863.4fbda41
+pkgver=0.16.0.1326.531cab9
 pkgrel=1
 pkgdesc='A library for XR interaction with classical desktop compositors.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/xrdesktop'
-depends=('gxr-git')
+depends=('g3k-git' 'python3')
 provides=("$basename="$pkgver)
 conflicts=("$basename")
 makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers' 'pygobject-devel')
 license=('MIT')
- 
-source=('git+https://gitlab.freedesktop.org/xrdesktop/xrdesktop.git')
+
+source=('git+https://gitlab.freedesktop.org/xrdesktop/xrdesktop.git#branch=main')
 
 md5sums=('SKIP')
 
