@@ -32,8 +32,8 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-VCS}"
-# Git, tags available
-	printf "%s" "$(git describe --tags | sed 's/rcssserver-//')"
+	# Git, tags available
+	printf "%s" "$(git describe --tags | sed 's/rcssserver-//' | sed 's/-.*//')"
 }
 
 build() {
