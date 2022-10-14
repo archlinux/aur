@@ -1,0 +1,16 @@
+pkgbase = partmc-git
+	pkgdesc = Particle-resolved Monte Carlo code for atmospheric aerosol simulation
+	pkgver = 2.6.1.r6.gb3e955e5
+	pkgrel = 1
+	url = http://lagrange.mechse.illinois.edu/partmc/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = gsl
+	depends = netcdf-fortran
+	source = git+https://github.com/compdyn/partmc
+	md5sums = SKIP
+
+pkgname = partmc-git
