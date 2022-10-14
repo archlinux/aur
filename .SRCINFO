@@ -8,6 +8,7 @@ pkgbase = fly-cli
 	makedepends = go
 	conflicts = concourse-fly
 	conflicts = concourse-fly-bin
+	conflicts = concourse-fly-cli
 	conflicts = concourse-fly-git
 	source = https://github.com/concourse/concourse/archive/v7.8.3.tar.gz
 	sha256sums = 4efecca96ca83bcd92f3268268a1783b33da170798a54494247c58379a251774
