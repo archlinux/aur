@@ -1,18 +1,18 @@
 pkgbase = qtscrcpy
 	pkgdesc = Android real-time screencast control tool
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barry-ran/QtScrcpy
 	arch = x86_64
 	arch = aarch64
 	license = Apache
+	makedepends = chrpath
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
 	depends = android-tools
 	depends = qt5-multimedia
 	depends = qt5-x11extras
-	optdepends = sndcpy: audio mirroring for Android >=10
 	conflicts = qt-scrcpy
 	replaces = qt-scrcpy
 	backup = etc/qtscrcpy/config.ini

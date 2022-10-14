@@ -2,14 +2,13 @@
 pkgname=('qtscrcpy' 'qtscrcpy-docs')
 pkgbase=qtscrcpy
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache')
 depends=('android-tools' 'qt5-multimedia' 'qt5-x11extras')
-makedepends=('cmake' 'git' 'qt5-tools')
-optdepends=('sndcpy: audio mirroring for Android >=10')
+makedepends=('chrpath' 'cmake' 'git' 'qt5-tools')
 conflicts=('qt-scrcpy')
 replaces=('qt-scrcpy')
 backup=("etc/$pkgbase/config.ini")
@@ -36,9 +35,6 @@ prepare() {
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/QtScrcpyCore"
   git submodule update
 
-  # Use system packages instead of static bundled tools
-  rm -rf third_party/adb
-
   patch --strip=1 QtScrcpy/main.cpp < "$srcdir/path-fix.patch"
 
   # Not ready for Qt6 yet
@@ -51,16 +47,23 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Wno-dev
   cmake --build build
+
+  cd "$srcdir/QtScrcpy"
+
+  # Remove insecure RPATH
+  chrpath --delete output/x64/None/QtScrcpy
 }
 
 package_qtscrcpy() {
   cd "$srcdir/QtScrcpy"
   install -Dm755 output/x64/None/QtScrcpy -t "$pkgdir/opt/$pkgbase/"
+  install -Dm644 output/x64/None/scrcpy-server -t "$pkgdir/opt/$pkgbase/"
+  install -Dm644 output/x64/None/sndcpy.apk "$pkgdir/opt/$pkgbase/"
+  install -Dm755 output/x64/None/sndcpy.sh "$pkgdir/opt/$pkgbase/"
   install -Dm644 backup/logo.png "$pkgdir/usr/share/pixmaps/$pkgbase.png"
   install -Dm644 config/config.ini -t "$pkgdir/etc/$pkgbase/"
-  install -Dm644 QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server -t "$pkgdir/opt/$pkgbase/"
 
-  cp -r keymap "$pkgdir/opt/$pkgbase"
+  cp -r keymap "$pkgdir/opt/$pkgbase/"
   chmod 666 "$pkgdir/opt/$pkgbase/keymap"
 
   install -Dm755 "$srcdir/$pkgbase.sh" "$pkgdir/usr/bin/$pkgbase"
