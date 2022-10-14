@@ -1,7 +1,7 @@
 pkgbase = openpnp
 	pkgdesc = Open Source SMT Pick and Place Hardware and Software
 	pkgver = 2022_08_01_18_07_09.2a36a8d
-	pkgrel = 10
+	pkgrel = 12
 	url = https://openpnp.org/
 	arch = arm64
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = openpnp
 	depends = jre11-openjdk
 	source = https://openpnp.s3-us-west-2.amazonaws.com/develop/2022-08-01_18-07-09.2a36a8d/OpenPnP-unix-develop.tar.gz
 	source = OpenPnP.desktop
+	source = https://github.com/openpnp/openpnp-logo/raw/develop/OpenPnP-Symbol-Logo.png
 	sha256sums = 19c89aa87745d8d203bd79d1de82ae08d8df03ddcd487bfcd9fd60d1126f6522
-	sha256sums = 601e6d05eb9ba2ab339a30748f62db313b6deb8c2f12ab55f97841c111233d5f
+	sha256sums = b47618084d2eda5f57b1f81f6b09ea401d78d73f38c30b3f30412cf7a9029a2d
+	sha256sums = 68876dfc26c08db4ef9808a9aab3f152dbf4efa01c7df83de9e00141dfe952c2
 
 pkgname = openpnp
