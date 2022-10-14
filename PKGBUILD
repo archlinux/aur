@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.32.2
+pkgver=1.32.3
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
@@ -31,12 +31,12 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
-		fs74747.patch
+		0001-rust-prevent-dead_code-warning.patch
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 < "${srcdir}/fs74747.patch"
+  patch -p1 < "${srcdir}"/0001-rust-prevent-dead_code-warning.patch
 }
 
 build() {
@@ -66,6 +66,6 @@ check() {
   make check
 }
 
-sha256sums=('ecff2b5724c82955d8f4e5c4fc8323aac53d4c9758dd8363cd1596a254063478'
+sha256sums=('5ef9627be6831977fc30d6808e12e01a3bb22a2805f0a250a4320f0360b9d01d'
             'SKIP'
-            '4ae58421aa6cc59868f6ca11c82d308ceb5972cbcbd3c09416837bb98377911e')
+            'e65e11e122e8ae2b7f93f33f42cdbd3e619f02a36038dbab4dc42c5c3e403008')

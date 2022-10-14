@@ -1,6 +1,6 @@
 pkgbase = nbdkit
 	pkgdesc = NBD server toolkit
-	pkgver = 1.32.2
+	pkgver = 1.32.3
 	pkgrel = 1
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = i686
@@ -22,13 +22,13 @@ pkgbase = nbdkit
 	optdepends = libtorrent-rasterbar
 	optdepends = boost
 	optdepends = libselinux
-	source = http://download.libguestfs.org/nbdkit/1.32-stable/nbdkit-1.32.2.tar.gz
-	source = http://download.libguestfs.org/nbdkit/1.32-stable/nbdkit-1.32.2.tar.gz.sig
-	source = fs74747.patch
+	source = http://download.libguestfs.org/nbdkit/1.32-stable/nbdkit-1.32.3.tar.gz
+	source = http://download.libguestfs.org/nbdkit/1.32-stable/nbdkit-1.32.3.tar.gz.sig
+	source = 0001-rust-prevent-dead_code-warning.patch
 	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
 	validpgpkeys = 71C2CC22B1C4602927D2F3AAA7A16B4A2527436A
-	sha256sums = ecff2b5724c82955d8f4e5c4fc8323aac53d4c9758dd8363cd1596a254063478
+	sha256sums = 5ef9627be6831977fc30d6808e12e01a3bb22a2805f0a250a4320f0360b9d01d
 	sha256sums = SKIP
-	sha256sums = 4ae58421aa6cc59868f6ca11c82d308ceb5972cbcbd3c09416837bb98377911e
+	sha256sums = e65e11e122e8ae2b7f93f33f42cdbd3e619f02a36038dbab4dc42c5c3e403008
 
 pkgname = nbdkit
