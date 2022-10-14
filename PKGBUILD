@@ -4,7 +4,7 @@
 _name=Carla
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=2.5.1.r47.gdf1338860
+pkgver=2.5.1.r58.gdc9b58b4c
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
@@ -19,7 +19,7 @@ provides=(
   ladspa-host
   lv2-host
   vst3-host
-  vst-host 
+  vst-host
 )
 depends=(
   alsa-lib
@@ -38,7 +38,6 @@ makedepends=(
   freetype2
   git
   liblo
-  libpulse
   libsndfile
   qt5-tools
 )
@@ -68,8 +67,8 @@ build() {
 }
 
 package() {
-  depends+=(libasound.so libfluidsynth.so libfreetype.so liblo.so libmagic.so
-            libpulse.so libsndfile.so)
+  depends+=(libasound.so libfluidsynth.so libfreetype.so libGL.so liblo.so libmagic.so
+            libsndfile.so)
   cd $_pkgname
   make \
     DEFAULT_QT=5 \
