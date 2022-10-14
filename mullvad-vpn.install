@@ -3,6 +3,8 @@ pre_install() {
     echo 'Stopping & disabling Mullvad VPN daemon...'
     /opt/Mullvad\ VPN/resources/mullvad-setup prepare-restart || true
     systemctl disable --now mullvad-daemon
+    echo 'Disabling Mullvad early boot blocking service...'
+    systemctl disable mullvad-early-boot-blocking.service || true
     cp /var/log/mullvad-vpn/daemon.log /var/log/mullvad-vpn/old-install-daemon.log \
       || echo "Failed to copy old daemon log"
   fi
@@ -18,6 +20,7 @@ post_install() {
 
   echo 'Enabling Mullvad VPN daemon...'
   systemctl enable --now mullvad-daemon
+  systemctl enable mullvad-early-boot-blocking
 }
 
 pre_upgrade() {
@@ -28,17 +31,22 @@ post_upgrade() {
   echo 'Starting & enabling Mullvad VPN daemon...'
   systemctl daemon-reload
   systemctl enable --now mullvad-daemon
+  echo 'Enabling Mullvad early boot blocking service...'
+  systemctl enable mullvad-early-boot-blocking
 
   chmod u+s "/usr/bin/mullvad-exclude"
 }
 
 pre_remove() {
-  # the user might've disabled or stopped the service themselves already
-  echo 'Making sure the Mullvad VPN daemon is stopped & disabled...'
-  systemctl stop mullvad-daemon || true
-  systemctl disable mullvad-daemon || true
+  # SIGTERM for some reason causes the app to crash sometimes and SIGINT works as expected.
+  pkill -2 -x "mullvad-gui" || true
+  sleep 0.5
+  pkill -9 -x "mullvad-gui" || true
 
-  pkill -x "mullvad-gui" || true
+  # the user might've disabled or stopped the services themselves already
+  echo 'Making sure the services are stopped & disabled...'
+  systemctl disable --now mullvad-daemon || true
+  systemctl disable --now mullvad-early-boot-blocking.service || true
 
   /opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
   /opt/Mullvad\ VPN/resources/mullvad-setup remove-device || echo "Failed to remove device from account"

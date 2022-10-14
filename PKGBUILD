@@ -7,23 +7,25 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2022.4
+pkgver=2022.5
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('cargo' 'git' 'go' 'nodejs>=16' 'npm>=8.3' 'libxcrypt-compat')
 options=('!lto')
 install="$pkgname.install"
-_tag=06c847a7a7d72a148bd5dba0a44860eb1b3aa182 # tags/2022.4^0
-_commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
+_tag=5bcd2533633d76b1deaf5875b24a2c83bec6fc49 # tags/2022.5^0
+_commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
+        'no-rpm.diff'        
         "$pkgname.sh")
 sha256sums=('SKIP'
             'SKIP'
+            'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (code signing key) <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
@@ -41,7 +43,7 @@ prepare() {
   git submodule update
 
   # Disable building of rpm
-  sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
+  patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
 
   export RUSTUP_TOOLCHAIN=stable
   echo "Removing old Rust build artifacts"
@@ -52,7 +54,6 @@ prepare() {
   pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
   mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
-
   go mod download -x
   popd
 
@@ -67,12 +68,8 @@ build() {
   cd "$srcdir/mullvadvpn-app"
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cd gui/; node -p "require('./package.json').version" | sed -Ee 's/\.0//g')
-  source env.sh ""
 
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
-
-  echo "Updating version in metadata files..."
-  ./version-metadata.sh inject ${PRODUCT_VERSION} --desktop
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
@@ -88,14 +85,12 @@ build() {
   # Clean module cache for makepkg -C
   go clean -modcache
 
-  export MULLVAD_ADD_MANIFEST="1"
-
   echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
-
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 
+  echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   mkdir -p dist-assets/shell-completions
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
@@ -103,7 +98,9 @@ build() {
       dist-assets/shell-completions/
   done
 
-  echo "Copying binaries"
+  echo "Updating relays.json..."
+  cargo run --bin relay_list --frozen --release > dist-assets/relays.json
+
   binaries=(
     mullvad-daemon
     mullvad
@@ -116,12 +113,9 @@ build() {
     cp target/release/${binary} dist-assets/${binary}
   done
 
-  echo "Updating relay list..."
-  cargo run --bin relay_list --frozen --release > dist-assets/relays.json
-
-  # Build Electron GUI app
+  # Build Electron GUI
   pushd gui
-  echo "Packing final release artifact..."
+  echo "Packing Mullvad VPN ${PRODUCT_VERSION} artifact(s)..."
   export npm_config_cache="$srcdir/npm_cache"
   npm run pack:linux
   popd
@@ -143,17 +137,23 @@ package() {
   install -d "$pkgdir/opt/Mullvad VPN"
   cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
 
-  # Symlink daemon service to correct directory
-  install -d "$pkgdir/usr/lib/systemd/system"
-  ln -s "/opt/Mullvad VPN/resources/mullvad-daemon.service" \
+  if [ "$CARCH" == "aarch64" ]; then
+    cp -r dist/linux-arm64-unpacked/* "$pkgdir/opt/Mullvad VPN/"
+  else
+    cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
+  fi
+
+  chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
+
+  # Install services
+  install -Dm644 dist-assets/linux/{mullvad{-daemon,-early-boot-blocking}}.service -t \
     "$pkgdir/usr/lib/systemd/system/"
 
   # Install binaries
-  install -Dm755 dist-assets/{mullvad,mullvad-exclude} -t "$pkgdir/usr/bin/"
+  install -Dm755 dist-assets/{mullvad,mullvad{-daemon,-exclude}} -t "$pkgdir/usr/bin/"
 
   # Link to the problem report binary
-  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
-    "$pkgdir/usr/bin/mullvad-problem-report"
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
 
   # Link to the GUI binary
   install -m755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
