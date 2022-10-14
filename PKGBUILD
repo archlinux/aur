@@ -26,13 +26,13 @@ package() {
     cp 'colors/Daemon.colors' $pkgdir/usr/share/color-schemes
     install -dm755 $pkgdir/usr/share/plasma/look-and-feel
     cp -r 'global-theme/org.kde.plasma.daemon' $pkgdir/usr/share/plasma/look-and-feel
+    cp -r 'splash-screen/Daemon' $pkgdir/usr/share/plasma/look-and-feel
     install -dm755 $pkgdir/usr/share/plasma/desktoptheme
+    cp -r 'plasma-styles/Daemon' $pkgdir/usr/share/plasma/desktoptheme
+    install -dm755 $pkgdir/usr/share/icons
     cp -r 'icons/Daemon' $pkgdir/usr/share/icons
     install -dm755 $pkgdir/usr/share/aurorae/themes
-    cp -rT 'kwin-scripts/flex-grid' $pkgdir/usr/share/kwin/scripts/flexgrid
-    install -dm755 $pkgdir/usr/share/icons
-    cp -r 'plasma-styles/Daemon' $pkgdir/usr/share/plasma/desktoptheme
-    install -dm755 $pkgdir/usr/share/kwin/scripts
     cp -r 'window-borders/Daemon' $pkgdir/usr/share/aurorae/themes
-    cp -r 'splash-screen/Daemon' $pkgdir/usr/share/plasma/look-and-feel
+    install -dm755 $pkgdir/usr/share/kwin/scripts
+    cp -rT 'kwin-scripts/flex-grid' $pkgdir/usr/share/kwin/scripts/flexgrid
 }
