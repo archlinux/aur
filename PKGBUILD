@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Mangano <fmang+aur mg0.fr>
 
 pkgname=wish-edict
-pkgver=20200924
+pkgver=20221014
 pkgrel=1
 pkgdesc='Japanese-English dictionaries EDICT2 and KANJIDIC for Wish'
 license=('Creative Commons BY-SA')
@@ -10,10 +10,10 @@ url='http://www.edrdg.org/jmdict/edict.html'
 arch=('any')
 depends=('wish')
 
-source=('http://ftp.monash.edu.au/pub/nihongo/kanjidic.gz'
-  'http://ftp.monash.edu.au/pub/nihongo/edict2.gz')
-sha256sums=('ad4b48eec71100f1644425f607fdff9f5e2d5aad0dc28933610f4229307b45e9'
-  '3bc4aff67037e058e7c5d3241f8c34d9bc37e5fcb1e77752bc4eb17b0e7cb0f2')
+source=('http://ftp.edrdg.org/pub/Nihongo/kanjidic.gz'
+  'http://ftp.edrdg.org/pub/Nihongo/edict2.gz')
+sha256sums=('a0186f24f238661ce0d3160a2ed74c90b8ff50c597fff693175913949264ba95'
+  'caf7e6ed1177e4ef215849ae4d42a370e5947118efdd4ab8566062237b4ce397')
 
 build() {
 	cd "$srcdir"
