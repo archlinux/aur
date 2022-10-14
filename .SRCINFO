@@ -1,14 +1,14 @@
 pkgbase = gatk
 	pkgdesc = Variant discovery in high-throughput bioinformatics sequencing data
-	pkgver = 4.2.6.1
-	pkgrel = 7
+	pkgver = 4.3.0.0
+	pkgrel = 1
 	url = https://software.broadinstitute.org/gatk
 	arch = any
 	license = BSD
 	depends = java-runtime>=8
 	depends = python
 	depends = r
-	source = https://github.com/broadinstitute/gatk/releases/download/4.2.6.1/gatk-4.2.6.1.zip
-	sha256sums = 1125cfc862301d437310506c8774d36c3a90d00d52c7b5d6b59dac7241203628
+	source = https://github.com/broadinstitute/gatk/releases/download/4.3.0.0/gatk-4.3.0.0.zip
+	sha256sums = e2c27229b34c3e22445964adf00639a0909887bbfcc040f6910079177bc6e2dd
 
 pkgname = gatk
