@@ -7,7 +7,7 @@ pkgbase = mkpkg
 	license = MIT
 	makedepends = python-pip
 	makedepends = python-poetry
-	depends = python>3.10
+	depends = python>3.9
 	source = git+https://github.com/gene-git/Arch-mkpkg
 	sha512sums = SKIP
 
