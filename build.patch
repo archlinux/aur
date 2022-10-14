@@ -1,0 +1,49 @@
+diff --git a/Makefile b/Makefile
+index d05d86d..f640c87 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,10 @@
+ AR ?= $(CROSS)ar
+ CXX ?= $(CROSS)g++
+ 
+-UPDFPARSERLIB = ./lib/updfparser/libupdfparser.a
++UPDFPARSERLIB = "$(PWD)/../updfparser/libupdfparser.a"
+ 
+-CXXFLAGS=-Wall -fPIC -I./include -I./lib/pugixml/src/ -I./lib/updfparser/include
+-LDFLAGS = $(UPDFPARSERLIB)
++CXXFLAGS=-Wall -fPIC -I./include "-I$(PWD)/../updfparser/include"
++LDFLAGS = $(UPDFPARSERLIB) `pkg-config --libs pugixml`
+ 
+ BUILD_STATIC ?= 0
+ BUILD_SHARED ?= 1
+@@ -39,10 +39,10 @@ TARGETDIR   := bin
+ SRCEXT      := cpp
+ OBJEXT      := o
+ 
+-SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/loan_token.cpp src/bytearray.cpp src/pugixml.cpp
++SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/loan_token.cpp src/bytearray.cpp
+ OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
+ 
+-all: lib obj $(TARGETS)
++all: obj $(TARGETS)
+ 
+ lib:
+ 	mkdir lib
+@@ -59,14 +59,14 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+ 
+ libgourou: libgourou.a libgourou.so
+ 
+-libgourou.a: $(OBJECTS) $(UPDFPARSERLIB)
++libgourou.a: $(OBJECTS)
+ 	$(AR) crs $@ obj/*.o  $(UPDFPARSERLIB)
+ 
+-libgourou.so: $(OBJECTS) $(UPDFPARSERLIB)
++libgourou.so: $(OBJECTS)
+ 	$(CXX) obj/*.o $(LDFLAGS) -o $@ -shared
+ 
+ build_utils:
+-	make -C utils ROOT=$(PWD) CXX=$(CXX) AR=$(AR) DEBUG=$(DEBUG) STATIC_UTILS=$(STATIC_UTILS)
++	make -C utils ROOT=.. CXX=$(CXX) AR=$(AR) DEBUG=$(DEBUG) STATIC_UTILS=$(STATIC_UTILS)
+ 
+ clean:
+ 	rm -rf libgourou.a libgourou.so obj
