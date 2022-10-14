@@ -1,7 +1,7 @@
 pkgbase = via-appimage
 	pkgdesc = Your keyboard's best friend.
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caniusevia.com/
 	arch = x86_64
 	license = Proprietary

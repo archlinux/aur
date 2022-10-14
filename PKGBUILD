@@ -5,7 +5,7 @@ _pkgname="via"
 
 pkgname="${_pkgname}-appimage"
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Your keyboard's best friend."
 arch=('x86_64')
 url="https://caniusevia.com/"
@@ -25,7 +25,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}.desktop"
+        "squashfs-root/${_pkgname}-nativa.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -34,8 +34,8 @@ package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}-nativa.desktop"\
+            "${pkgdir}/usr/share/applications/${_pkgname}-nativa.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
