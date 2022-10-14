@@ -32,7 +32,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144'
+            '6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '5092c62db5ca8f6b806996ba3db0f610d9ad73d499384394e16823dda097f9cd')
 
