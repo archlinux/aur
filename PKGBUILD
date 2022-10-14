@@ -44,6 +44,10 @@ package() {
   sed -i -E \
     "s|Icon=mbcord|Icon=/usr/share/icons/hicolor/${_size}/apps/${_desktop_icon}|" \
     "${srcdir}/squashfs-root/${_desktop_file}"
+  
+  sed -i -E \
+    "s|Name=mbc|Name=MBC|" \
+    "${srcdir}/squashfs-root/${_desktop_file}"
   (
     cd squashfs-root
     find . -type f -not -name "${_desktop_file}" \
