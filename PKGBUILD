@@ -17,7 +17,7 @@ build()
 {
     cd ${pkgname}-${pkgver}
     cmake -S . -B build
-    make --build build
+    cmake --build build
 }
 
 package()
