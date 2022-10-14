@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
-_commit=c82e69a8b97898d583e8c1d8d6dace15924ba70c
+_commit=71f721b956bf7530cbdc8ffaf4bb2168affc80ac
 pkgname=flow-cli
-pkgver=0.41.0
+pkgver=0.41.1
 pkgrel=1
 pkgdesc='A command-line interface that provides useful utilities for building Flow applications'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://docs.onflow.org/flow-cli/'
 license=('Apache-2.0')
 makedepends=('go')
 source=("flow-cli-$pkgver.tar.gz::https://github.com/onflow/flow-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('6d9ca6c0540350032e4a51de0c014a9e51af08c3ee0dc1fd6ee07cb4dcb96d9c31d1ce2c01e2a0d4a308f663acb165a23fde6fef600d6724316c83ae1c512530')
+sha512sums=('8c9de5fbb4f8a8143aad9ba95191171064ed53c423524de6583e27101af092889acc5bd1bdbf1b2f5c9c961959095075c9675d17c995f4e9072731c107082eeb')
 
 build() {
     cd flow-cli-$pkgver
