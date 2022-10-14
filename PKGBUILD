@@ -1,7 +1,7 @@
 # Maintainer: Clansty <i@gao4.pw>
 
 pkgname=altserver-bin
-_pkgver=0.0.3-rc1
+_pkgver=0.0.5
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='AltServer for Linux'
@@ -20,7 +20,7 @@ package() {
     install -Dm644 "altserver.service" "${pkgdir}/usr/lib/systemd/system/altserver.service"
 }
 sha256sums=('3d5b1c66a9959aa42eea5db7222768236b8a52f6a9caa3bbad7a5404506ffa4e')
-sha256sums_x86_64=('eb4be591663e1b61108feee7f58f305b593854cdc9205ad474251cd273670f5c')
-sha256sums_i686=('8584d408384e049e1b6fec27cc5d1159572f2300be3c074b902143bbe8e98898')
-sha256sums_aarch64=('e765516f3c37d7c48e816b10a8a6872cc6db817b41fbd36ca8f7a37db0cdca5e')
-sha256sums_armv7h=('5dce8a7bcffbb037283a4cb0cbab7f8e738860ddee016a6339e0566291a87f03')
+sha256sums_x86_64=('0be7c3adc69ec1177a15032b3b8e37c5d0e4fefb47c9c439cd62c238b3ea17fb')
+sha256sums_i686=('c71b9cc5e7e614e8999fa7e0027299eb2cf1706fa64a95ef2f3c65962e3ddc42')
+sha256sums_aarch64=('886020aa44b50d382252051967d6ec4ac35f5a08234887a6f8c96e73a5f3de29')
+sha256sums_armv7h=('f7da2526538c10c6d9b4520ba5246e999523d78e887320f71eb3390229993db8')
