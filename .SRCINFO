@@ -1,0 +1,17 @@
+pkgbase = serialport-assistant-git
+	pkgdesc = Linux 串口小助手
+	pkgver = 1.2.1.r0.g963defd
+	pkgrel = 1
+	url = https://github.com/ambition-echo/serialPortAssistant
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = qt5-base
+	depends = qt5-serialport
+	source = git+https://github.com/ambition-echo/serialPortAssistant.git
+	source = serialPortAssistant.desktop
+	sha256sums = SKIP
+	sha256sums = 101accf332d7a9d18c0630628570951747dc9d4f4797c808c8bc0d24670055df
+
+pkgname = serialport-assistant-git

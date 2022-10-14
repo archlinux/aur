@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Application;Development;
+Comment=Linux 串口小助手
+Exec=/opt/serialport-assistant-git/serialPortAssistant
+Icon=serialPortAssistant
+GenericName=串口小助手
+Keywords=serialPort
+Name=serialPortAssistant
+StartupNotify=false
+Terminal=false
+Type=Application
