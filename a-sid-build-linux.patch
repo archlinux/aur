@@ -1,32 +1,47 @@
 diff --git a/vst3/buildLinux.sh b/vst3/buildLinux.sh
-index 299dab8..353926d 100755
+index 647969a..2ac4034 100755
 --- a/vst3/buildLinux.sh
 +++ b/vst3/buildLinux.sh
-@@ -1,13 +1,13 @@
+@@ -1,15 +1,19 @@
  #!/bin/bash
  
 -VST_SDK_DIR=../../VST_SDK
-+VST_SDK_DIR=${VST_SDK_DIR:-../../VST_SDK}
++VST_SDK_DIR="${VST_SDK_DIR:-../../VST_SDK}"
  
  rm -rf build
  
- mkdir -p build
- cp -R asid.vst3 build
+ mkdir -p build/asid.vst3/Contents
+ cp -R asid.vst3/Contents/Resources build/asid.vst3/Contents
  
 -mkdir -p build/asid.vst3/Contents/x86_64-linux
 +mkdir -p build/asid.vst3/Contents/$(uname -m)-linux
  
  g++ \
++	-DRELEASE=1 \
++	-I../src \
++	-Isrc \
++	-I$VST_SDK_DIR/vst3sdk/ \
  	src/vst3/entry.cpp \
-@@ -46,8 +46,7 @@ g++ \
- 	-I../src \
- 	-Isrc \
- 	-I$VST_SDK_DIR/vst3sdk/ \
-+	$(pkgconf --cflags --libs xcb) \
+ 	src/vst3/plugin.cpp \
+ 	src/vst3/controllerLinux.cpp \
+@@ -42,16 +46,11 @@ g++ \
+ 	src/asid_gui.c \
+ 	src/gui-x.c \
+ 	\
+-	-DRELEASE=1 \
+-	-I../src \
+-	-Isrc \
+-	-I$VST_SDK_DIR/vst3sdk/ \
  	-fPIC -shared \
--	-static-libgcc \
--	-static-libstdc++ \
+-	-lxcb \
 -	-o build/asid.vst3/Contents/x86_64-linux/asid.so \
--	-O3
+-	-O3 \
+-	-ffast-math
+-	
++	$(pkg-config --cflags --libs xcb) \
 +	-o build/asid.vst3/Contents/$(uname -m)-linux/asid.so \
-+	${CXXFLAGS:--O3} $LDFLAGS
++	${CXXFLAGS:--O3 -ffast-math} $LDFLAGS
++
+ # for a more static build we probably need
+ # -static-libgcc -static-libstdc++ -l:library.a...
+ # with static libraries built with -fPIC
