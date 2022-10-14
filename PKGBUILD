@@ -1,25 +1,25 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 
 pkgname=wg++
-pkgver=4.2
-pkgrel=3
+pkgver=5.0
+pkgrel=1
 pkgdesc='WebGrab+Plus is a freeware (license via donation) multi-site incremental XMLTV EPG grabber.'
 arch=('any')
 url='http://webgrabplus.com/'
 license=('custom')
 depends=(
-	'dotnet-host-bin'
-	'dotnet-runtime-5.0-bin'
+	'dotnet-host'
+	'dotnet-runtime'
 	)
 makedepends=('git')
 provides=('wg++')
-source=("http://webgrabplus.com/sites/default/files/download/SW/V4.2.2/WebGrabPlus_V4.2_install.tar.gz"
-        "https://github.com/SilentButeo2/webgrabplus-siteinipack/raw/master/evaluation-builds/WebGrabPlus_V4.2.2.3_eval_install.tar.gz"
+source=("http://www.webgrabplus.com/sites/default/files/download/SW/V4.2.2/WebGrabPlus_V4.2_install.tar.gz"
+        "http://webgrabplus.com/sites/default/files/download/SW/V5.0.1/WebGrabPlus_V5.0.1_beta_install.tar.gz"
 	"git+https://github.com/SilentButeo2/webgrabplus-siteinipack.git"
         "wg++")
 
 md5sums=('569b438673a4e1963c52f62c26bbcf16'
-         '8d106d05122e5d57c0d4e94c09cea87c'
+         '4b53c034a71ba316eb18d49fb4ca853b'
          'SKIP'
          'b9fc49688d55da5cf447b7a7b9a45361')
 
