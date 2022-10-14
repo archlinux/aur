@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.15.71.51.realtime2
+pkgver=5.15.71.51.realtime3
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=(x86_64)
