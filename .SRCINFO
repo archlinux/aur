@@ -1,13 +1,13 @@
 pkgbase = lunasvg
 	pkgdesc = standalone SVG rendering library in C++
-	pkgver = 2.3.2
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/sammycage/lunasvg
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/sammycage/lunasvg/archive/refs/tags/v2.3.2.tar.gz
-	sha256sums = 12abe6865dd030adfac70c30592eaa25c4e34fa81379e5149b0186282721f40c
+	source = https://github.com/sammycage/lunasvg/archive/refs/tags/v2.3.4.tar.gz
+	sha256sums = 1933bf3fcdec81a1c17702b3c6efb00b9e3380e3fcea508f4ee4b11b0d2e45c0
 
 pkgname = lunasvg
