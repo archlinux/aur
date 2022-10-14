@@ -1,14 +1,14 @@
-pkgbase = helm-diff
+pkgbase = helm-diff-cwrau-git
 	pkgdesc = Helm plugin that shows a diff explaining what a helm upgrade would change
-	pkgver = 3.6.0
-	pkgrel = 1
-	url = https://github.com/databus23/helm-diff
-	install = helm-diff.install
+	pkgver = r274.52e85fa
+	pkgrel = 0
+	url = https://github.com/cwrau/helm-diff
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/databus23/helm-diff/archive/v3.6.0/helm-diff-3.6.0.tar.gz
-	sha256sums = 6b50512352f734d36ee13e7f9e9f951aead709d1438ad54eabeb8c38bbb42fad
+	conflicts = helm-diff
+	source = git+https://github.com/cwrau/helm-diff.git
+	sha256sums = SKIP
 
-pkgname = helm-diff
+pkgname = helm-diff-cwrau-git

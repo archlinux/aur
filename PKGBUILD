@@ -1,23 +1,30 @@
 # Maintainer: ml <ml@visu.li>
-pkgname=helm-diff
-pkgver=3.6.0
-pkgrel=1
+_pkgname=helm-diff
+pkgname=$_pkgname-cwrau-git
+pkgver=r274.52e85fa
+pkgrel=0
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
-url='https://github.com/databus23/helm-diff'
+url='https://github.com/cwrau/helm-diff'
 license=('Apache')
-install=helm-diff.install
+conflicts=('helm-diff')
 depends=('glibc')
 makedepends=('go')
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6b50512352f734d36ee13e7f9e9f951aead709d1438ad54eabeb8c38bbb42fad')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  sed -i '/^hooks:$/Q' "$pkgname-$pkgver"/plugin.yaml
+  cd "$srcdir/$_pkgname"
+  sed -i '/^hooks:$/Q' plugin.yaml
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -28,13 +35,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
   go test -ldflags "-linkmode=external" ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
   # /usr/lib/helm/plugins is my own choice and not a standard. feedback welcome
-  install -Dm755 bin/diff -t "$pkgdir/usr/lib/helm/plugins/${pkgname##helm-}/bin"
-  install -m644 plugin.yaml -t "$pkgdir/usr/lib/helm/plugins/${pkgname##helm-}"
+  install -Dm755 bin/diff -t "$pkgdir/usr/lib/helm/plugins/${_pkgname##helm-}/bin"
+  install -m644 plugin.yaml -t "$pkgdir/usr/lib/helm/plugins/${_pkgname##helm-}"
 }
