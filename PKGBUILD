@@ -5,7 +5,7 @@
 pkgname=shadowsocks-rust-bin
 _pkgname=shadowsocks-rust
 pkgver=1.14.3
-pkgrel=7
+pkgrel=8
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (binary version)'
 arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -50,6 +50,6 @@ package() {
     install -Dm644 shadowsocks-rust-local@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-local@.service"
     install -Dm644 shadowsocks-rust-server@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-server@.service"
 
-    install -Dm644 config.json "${pkgdir}/etc/shadowsocks/config_rust.json.example"
-    install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"
+    install -Dm644 config.json "${pkgdir}/etc/shadowsocks-rust/config_rust.json.example"
+    install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks-rust/config_ext_rust.json.example"
 }
