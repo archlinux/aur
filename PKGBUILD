@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='5.19.14'
+pkgver='5.19.15'
 xanmod='1'
 pkgrel="$xanmod"
 pkgbase="$pkgname"
@@ -27,7 +27,7 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('c36d30dd0c31410f83cbce123859cd75888801aa0db6f46bbd7ca49d73d64135')
+sha256sums=('ab908795bbbd3cdf8888526b8f264dd40f5d8cb8901628ba6a2824b1f4d27c95')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
