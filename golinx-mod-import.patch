@@ -1,0 +1,11 @@
+--- linx.go.orig	2022-10-13 16:29:32.187844000 +0300
++++ linx.go	2022-10-13 16:29:54.216305611 +0300
+@@ -19,7 +19,7 @@
+ 
+ 	"github.com/timshannon/config"
+ 	"github.com/atotto/clipboard"
+-	"mutantmonkey.in/code/golinx/progress"
++	"github.com/mutantmonkey/golinx/progress"
+ )
+ 
+ type RespOkJSON struct {
