@@ -1,0 +1,19 @@
+pkgbase = game-of-life-git
+	pkgdesc = A simulator of Conway's game of life
+	pkgver = 0.1.2.r14.g5d62c57
+	pkgrel = 1
+	url = https://github.com/sixpounder/game-of-life
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = cargo
+	depends = libadwaita
+	provides = game-of-life
+	conflicts = game-of-life
+	source = git+https://github.com/sixpounder/game-of-life.git
+	b2sums = SKIP
+
+pkgname = game-of-life-git
