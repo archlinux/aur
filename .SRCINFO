@@ -1,6 +1,6 @@
 pkgbase = video-trimmer
 	pkgdesc = Trim videos quickly
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://apps.gnome.org/app/org.gnome.gitlab.YaLTeR.VideoTrimmer
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = video-trimmer
 	depends = gtk4
 	depends = gst-plugins-good
 	depends = libadwaita
-	source = https://gitlab.gnome.org/YaLTeR/video-trimmer/-/archive/v0.7.1/video-trimmer-v0.7.1.tar.gz
-	sha256sums = 6abbbe29cc0c5101e8d6e5a001a9573fab3cb733a12ed39527e89a1262a1095e
+	depends = python-gobject
+	source = https://gitlab.gnome.org/YaLTeR/video-trimmer/-/archive/v0.8.0/video-trimmer-v0.8.0.tar.gz
+	sha256sums = e84e00c3a1e30d6c638bf46cff1cbb8b68b4d4af26e4ce430716e15fa9d58dc7
 
 pkgname = video-trimmer
