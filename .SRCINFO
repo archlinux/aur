@@ -12,7 +12,6 @@ pkgbase = selfprivacy-git
 	depends = jsoncpp
 	depends = libsecret
 	depends = gtk3
-	depends = gio
 	provides = selfprivacy
 	conflicts = selfprivacy
 	source = selfprivacy::git+https://git.selfprivacy.org/kherel/selfprivacy.org.app
