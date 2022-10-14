@@ -1,6 +1,6 @@
 pkgbase = pkglog
 	pkgdesc = Reports log of package updates
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/bulletmark/pkglog
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pkglog
 	makedepends = python-wheel
 	depends = python>=3.7
 	depends = python-rich
-	source = pkglog-1.10.tar.gz::https://github.com/bulletmark/pkglog/archive/1.10.tar.gz
-	sha1sums = 542d9a9f6a93178bb8744f40f104be4fded483c1
+	source = pkglog-1.11.tar.gz::https://github.com/bulletmark/pkglog/archive/1.11.tar.gz
+	sha1sums = bf04e99dc457b0ff6d9f715fd6d6509cab43a8b8
 
 pkgname = pkglog
