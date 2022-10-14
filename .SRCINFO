@@ -1,14 +1,19 @@
 pkgbase = sugarjar
 	pkgdesc = A git/github helper inspired by arcanist (and others)
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaymzh/sugarjar
 	arch = x86_64
 	license = Apache
 	depends = git
 	depends = hub
 	depends = libxcrypt-compat
-	source = https://github.com/jaymzh/sugarjar/releases/download/v0.0.11/sugarjar_0.0.11-1_amd64-ubuntu2004.deb
-	sha256sums = d8818dcb66b2da24647c6a2cceb640cb5f69a1a45a96497f537822723a616e82
+	depends = ruby
+	depends = rubygems
+	depends = ruby-mixlib-log
+	depends = ruby-mixlib-shellout
+	depends = ruby-pastel
+	source = https://github.com/jaymzh/sugarjar/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 1706a82e75ef7ac0469b8f7e9f6d0105cf731cd77280079464c2cfe89f86bef9
 
 pkgname = sugarjar
