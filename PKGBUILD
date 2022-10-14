@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=libversion
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Advanced version string comparison library'
 url='https://github.com/repology/libversion'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/repology/libversion/archive/${pkgver}.tar.gz")
-sha256sums=('2b4ac5a6aa84a6b1795d9194c260517b709c9723d020ca61d9030ad2cfd7ea57')
-b2sums=('d65f4d415e5c17abf49b641bb7ecee08ccd07c747bfddb43c6d0586a6d48bbb4e87b607f0812abb3da7c5696e928c79ebd1c0a00d7baaf5be75caffe7b18a2e7')
+sha256sums=('14776f2ea2e7e8883641fd18416d25a75860afe46397130b6d52290420856600')
+b2sums=('e345aea49dd9968ab2a39e4c8544b5be3249026eea0816f5da46cd1ad4a7f8ccf71566293befe8cfe58f55cac3534c8b8483f4e7ce9dd87bb40c0fab54ef0f2e')
 
 build() {
   cmake -B build -S "libversion-${pkgver}" \
