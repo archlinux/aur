@@ -16,7 +16,7 @@ url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(MIT)
-depends=('python>3.10')
+depends=('python>3.9')
 makedepends=('python-pip' 'python-poetry')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}")
