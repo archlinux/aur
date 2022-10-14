@@ -1,6 +1,6 @@
 pkgbase = handbrake-nvenc
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://handbrake.fr/
 	arch = x86_64
 	license = GPL
@@ -29,8 +29,8 @@ pkgbase = handbrake-nvenc
 	makedepends = jansson
 	makedepends = librsvg
 	makedepends = libgudev
-	makedepends = numactl
 	makedepends = meson
+	depends = numactl
 	conflicts = handbrake
 	source = https://github.com/HandBrake/HandBrake/releases/download/1.5.1/HandBrake-1.5.1-source.tar.bz2
 	source = https://github.com/HandBrake/HandBrake/releases/download/1.5.1/HandBrake-1.5.1-source.tar.bz2.sig
