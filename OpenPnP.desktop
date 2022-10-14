@@ -5,4 +5,5 @@ Name=OpenPnP
 Comment=Open Source SMT Pick and Place Hardware and Software
 Path=/opt/openpnp
 Exec=OpenPnP
+Icon=OpenPnP.png
 Terminal=false
