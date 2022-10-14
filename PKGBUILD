@@ -5,7 +5,7 @@
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20220429.r168.g8280a6351
+pkgver=20220429.r226.gecc8075f9
 pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
@@ -49,7 +49,6 @@ build() {
         --gss \
         --gnutls \
         --sasl \
-        --with-ui=ncurses \
         --with-idn2=/usr \
         --disable-idn \
         --idn2 \
