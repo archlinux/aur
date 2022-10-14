@@ -1,15 +1,15 @@
 pkgbase = breezex-cursor-theme
 	pkgdesc = Extended KDE Cursor theme, Highly inspired on KDE Breeze
-	pkgver = 1.0.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ful1e5/BreezeX_Cursor
 	arch = any
 	license = GPL
-	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v1.0.3/BreezeX-Light.tar.gz
-	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v1.0.3/BreezeX-Dark.tar.gz
-	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v1.0.3/BreezeX-Black.tar.gz
-	sha256sums = 5c44d78578ea6fe16a5bc1b7c06b02b8c2246f4e6c4f999b2504e46472a4549c
-	sha256sums = 9649186ccdb56ffb77b4340cf3c481af499fa82571a5525c33f992b1c888c198
-	sha256sums = 640a83b32cc3d1f9d483b96b153f0adc0d68300f413373d56ed92c3ed2a3e368
+	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Light.tar.gz
+	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Dark.tar.gz
+	source = https://github.com/ful1e5/BreezeX_Cursor/releases/download/v2.0.0/BreezeX-Black.tar.gz
+	sha256sums = 9f339954d999811a5760e4f51ff6c9b55d219444144f08bebbed994d9c52f0cf
+	sha256sums = 9e4c5d02a2981568725d91a7d6b67440f0d327f92a3cc641bf103bfa0961853b
+	sha256sums = bf77913a2796c2e36e80efa8e31379db19c916312342e55a664ac6961c28656e
 
 pkgname = breezex-cursor-theme
