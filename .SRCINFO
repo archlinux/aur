@@ -1,0 +1,13 @@
+pkgbase = vim-tips
+	pkgdesc = Display tips at Vim startup
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/michaelb/vim-tips
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	source = vim-tips-0.4::https://github.com/michaelb/vim-tips/archive/v0.4.tar.gz
+	sha512sums = 156b21e43a34cd69b00f3540615680cba008507b38a665616e739fc86b5da1f0ef44f7311b4430c51bbfc072dc5d3459128239029090b3d5e66c15ab8f5d7cad
+
+pkgname = vim-tips
