@@ -22,5 +22,5 @@ pkgver() {
 package() {
     cd "$_pkgname"
     install -dm755 $pkgdir/usr/share/Kvantum
-    cp -r 'Kvantum Themes/Daemon' $pkgdir/usr/share/Kvantum/
+    cp -r 'kvantum-themes/Daemon' $pkgdir/usr/share/Kvantum/
 }
