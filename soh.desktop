@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Ship of Harkinian
-Exec=soh.elf
+Exec=soh
 Terminal=false
 Icon=soh
 Type=Application

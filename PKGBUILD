@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.2.r35.g595e105e
+pkgver=4.0.3.r21.g350315a5
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
@@ -13,7 +13,7 @@ source=("git+${url}.git"
         "soh-install-paths.patch"
         "otrgui-wrapper.sh")
 sha256sums=('SKIP'
-            '64fa7775b6a9e24cc783fedadf1ad4cb13b294f011e37392c748fee5b287a7ce'
+            'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'bd082ed8579ffb400f5225e200ce96900879837b8f01abc09a41416fa8fdaefa'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
