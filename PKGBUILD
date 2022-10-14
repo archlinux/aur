@@ -33,6 +33,6 @@ package() {
     cp -r 'icons/Daemon' $pkgdir/usr/share/icons
     install -dm755 $pkgdir/usr/share/aurorae/themes
     cp -r 'window-borders/Daemon' $pkgdir/usr/share/aurorae/themes
-    install -dm755 $pkgdir/usr/share/kwin/scripts
-    cp -r 'kwin-scripts/flex-grid' $pkgdir/usr/share/kwin/scripts/flexgrid
+    install -dm755 $pkgdir/usr/share/kwin/scripts/flexgrid
+    cp -rT 'kwin-scripts/flex-grid' $pkgdir/usr/share/kwin/scripts/flexgrid
 }
