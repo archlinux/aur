@@ -1,13 +1,16 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=2.4.1.r10.a26ea19
+pkgver=2.4.2.r90.97b4255
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/keyd"
 license=('MIT')
-makedepends=('git')
+makedepends=(git)
+optdepends=(
+	'python3: for keyd-application-mapper'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/rvaiya/keyd.git')
