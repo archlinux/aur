@@ -15,10 +15,10 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.0RC3"
+pkgver="8.2.0RC4"
 pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.0RC3 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.0RC4 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -128,8 +128,8 @@ source=(
     "pear-config-patcher.php"
     "php-makefile-patcher.php"
     "php-apache.conf"
-    "https://downloads.php.net/~pierrick/php-${pkgver}.tar.xz"
-    "debian-php-8.2.0RC3.patch"
+    "https://downloads.php.net/~sergey/php-${pkgver}.tar.xz"
+    "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.2.patch"
@@ -198,7 +198,7 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "debian-php-8.2.0RC3.patch"
+    "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.2.patch"
@@ -210,20 +210,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "pam"
     "krb5"
     "c-client"
@@ -231,45 +231,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.0RC3"
-    "php82-pdo=8.2.0RC3"
-    "php82-openssl=8.2.0RC3"
+    "php82=8.2.0RC4"
+    "php82-pdo=8.2.0RC4"
+    "php82-openssl=8.2.0RC4"
 )
 _ext_depends_dba=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "db"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "unixodbc"
-    "php82-pdo=8.2.0RC3"
+    "php82-pdo=8.2.0RC4"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "postgresql-libs"
-    "php82-pdo=8.2.0RC3"
+    "php82-pdo=8.2.0RC4"
 )
 _ext_depends_firebird=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "libfbclient"
-    "php82-pdo=8.2.0RC3"
+    "php82-pdo=8.2.0RC4"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "sqlite"
-    "php82-pdo=8.2.0RC3"
+    "php82-pdo=8.2.0RC4"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.0RC3"
+    "php82=8.2.0RC4"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -1521,7 +1521,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '9965c3a339bf8f1e7d3dbaca8d8438285b6d9d09a01e1adaba6b357c5d8b458e'
+            '7ddc807bbcc5cc7576d3f901584819212b287bd33ae6ac15ff93a62bebb62948'
             'cc0950b5eb48a1b828c878635e3905ede40f1b5560211efb25907e581dec0d18'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
