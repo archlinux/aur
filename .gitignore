@@ -3,3 +3,4 @@ LICENSE
 *.gz
 pkg
 src
+*.tar.zst
