@@ -2,42 +2,41 @@
 # Maintainer: Dominik Richter <dom@mondoo.com>
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
-# TODO:
-# - replace the html license with a proper TXT version
-# - use upstream oss-licenses instead of bundling it
-
 pkgname=mondoo
-pkgver=6.19.0
+orignalVersion="6.19.1"
+pkgver="${orignalVersion/-/_}"
 pkgrel=1
-pkgdesc="Infrastructure search, analytics, and security analysis"
+pkgdesc="Mondoo Client CLI for the Mondoo Policy as Code Platform"
 url="https://mondoo.com"
 license=('custom')
 source=(
-    "https://releases.mondoo.com/mondoo/${pkgver}/mondoo_${pkgver}_linux_amd64.tar.gz"
+    "https://releases.mondoo.com/mondoo/${orignalVersion}/mondoo_${orignalVersion}_linux_amd64.tar.gz"
     'LICENSE.html'
     'OSS-LICENSES.tar.xz'
     'mondoo.service'
     'mondoo.sh'
-)
+    )
 arch=('x86_64')
+depends=()
 
-sha256sums=('604181efeab048fbc0fe48eee72fbf6313c7c845c290716dd736e044c211c396'
+sha256sums=('5310611c867a5cc304b461d19490d7836ba044674aef25f09e6ac0cfab045880'
             'c8d346670913c91bf712405e57c2311e6fbda37261f8abfadf9ca7e5fdd768bd'
             'cd99e204a986af5a91f46c43478b28f556a4f50fd9721844d0b600d45ac43cb8'
-	        '2febf46353886823e6a61ca15c73e651d71d45579b0a1a17e18905a61387e7e6'
-            '92ceefe40c2963f96d02e36743338599cfa9a062d00a5e38580370099b01066c')
+            '2febf46353886823e6a61ca15c73e651d71d45579b0a1a17e18905a61387e7e6'
+            '92ceefe40c2963f96d02e36743338599cfa9a062d00a5e38580370099b01066c'
+            )
 
 
 package() {
-  install -dm755 ${pkgdir}/opt/$pkgname/bin \
-                 ${pkgdir}/usr/bin
-
+  install -dm755 ${pkgdir}/usr/bin
+  install -dm755 ${pkgdir}/opt/$pkgname/bin
   cp ${srcdir}/$pkgname ${pkgdir}/opt/$pkgname/bin/.
 
-  install -Dm 755 mondoo.sh ${pkgdir}/usr/bin/mondoo
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
   install -Dm 644 OSS-LICENSES.tar.xz "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.tar.xz
   install -Dm 644 mondoo.service "$pkgdir"/usr/lib/systemd/system/mondoo.service
+  install -Dm 755 mondoo.sh "$pkgdir"/usr/bin/mondoo
+  
 }
 
 #vim: syntax=sh
