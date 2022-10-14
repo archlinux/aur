@@ -3,9 +3,9 @@
 _pkgname=pacseek
 pkgname=pacseek-git
 pkgver=1.7.3.188.d233faf
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (git version)'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/moson-mo/$_pkgname"
 license=('MIT')
 depends=('pacman')
