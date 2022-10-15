@@ -5,6 +5,7 @@ pkgbase = minetest-subway-miner
 	url = https://content.minetest.net/packages/AFCM/subway_miner/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = subway_miner-1.6.zip
 	options = !strip
