@@ -1,13 +1,13 @@
 pkgbase = badgerdb
 	pkgdesc = An embeddable, persistent and fast key-value (KV) database written in pure Go
-	pkgver = 3.2103.2
+	pkgver = 3.2103.3
 	pkgrel = 1
 	url = https://blog.dgraph.io/post/badger
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = badgerdb-3.2103.2.tar.gz::https://github.com/dgraph-io/badger/archive/v3.2103.2.tar.gz
-	sha256sums = 52e874cfa60f098915ab40ea0d4f34415c4065bb6b7ca586e3c3ae662c4d76ba
+	source = badgerdb-3.2103.3.tar.gz::https://github.com/dgraph-io/badger/archive/v3.2103.3.tar.gz
+	sha256sums = edb88ae20b80bd3836947618d6219c65fcf4c4cae0bad4d4c47ba31f26b9b7e5
 
 pkgname = badgerdb
