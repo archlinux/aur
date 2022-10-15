@@ -5,6 +5,7 @@ pkgbase = minetest-alter
 	url = https://content.minetest.net/packages/yaman/alter/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = alter-0.2.1.zip
 	options = !strip
