@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /opt/newleaf
-python index.py
+PYTHONPATH=/opt/newleaf:$PYTHONPATH python /opt/newleaf/index.py

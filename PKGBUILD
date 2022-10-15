@@ -16,7 +16,7 @@ source=("git+https://git.sr.ht/~cadence/$_repo"
 	'newleaf'
 )
 sha256sums=('SKIP'
-	    '32fd2e6be6a10aab9a304814ae5205cb6c88994e7df716f7211406cd822caf6c'
+	    '0d36db5aa76a2ba406a3e68c52739af4bd2931fa1842c9455a89dbda9df22b8e'
 )
 install=post.install
 
