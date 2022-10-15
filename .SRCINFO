@@ -1,0 +1,18 @@
+pkgbase = treeview-git
+	pkgdesc = A treeview tool to see directories & files
+	pkgver = .r0.86a167c
+	pkgrel = 1
+	url = https://gitlab.gnome.org/patradebasish1987/treeview
+	arch = i686
+	arch = x86_64
+	license = UNLICENSE
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = asciidoc
+	provides = treeview
+	conflicts = treeview
+	source = treeview-git::git+https://gitlab.gnome.org/patradebasish1987/treeview
+	sha1sums = SKIP
+
+pkgname = treeview-git
