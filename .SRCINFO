@@ -1,0 +1,14 @@
+pkgbase = nodejs-whistle
+	pkgdesc = HTTP, HTTP2, HTTPS, Websocket debugging proxy
+	pkgver = 2.9.31
+	pkgrel = 1
+	url = https://github.com/avwo/whistle
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = whistle-2.9.31.tgz
+	source = https://registry.npmjs.org/whistle/-/whistle-2.9.31.tgz
+	sha1sums = b881eae4eed1e28aef5fd6de2e4d7dcef964e2d5
+
+pkgname = nodejs-whistle
