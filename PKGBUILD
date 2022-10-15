@@ -5,7 +5,7 @@
 
 _pkgname=clipboard
 pkgname=dfl-clipboard
-pkgver=0.1.0alpha1
+pkgver=0.1.0beta1
 pkgrel=1
 pkgdesc="Clipboard Manager based on wlroots data control protocol"
 arch=('x86_64' 'aarch64')
@@ -13,16 +13,16 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 depends=('qt5-base' 'dfl-wayqt')
 makedepends=('meson' 'ninja')
-source=("$url/-/archive/v${pkgver/alpha1/-alpha1}/${_pkgname}-v${pkgver/alpha1/-alpha1}.tar.gz")
-md5sums=('f9ea24134d1819b70ebe009444a95d33')
+source=("$url/-/archive/v${pkgver/beta1/-beta1}/${_pkgname}-v${pkgver/beta1/-beta1}.tar.gz")
+md5sums=('8020ba33a7b79e44f69047dc9f874506')
 
 build() {
-  cd "${_pkgname}-v${pkgver/alpha1/-alpha1}"
+  cd "${_pkgname}-v${pkgver/beta1/-beta1}"
   meson .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
 package() {
-  cd "${_pkgname}-v${pkgver/alpha1/-alpha1}"
+  cd "${_pkgname}-v${pkgver/beta1/-beta1}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
