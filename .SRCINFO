@@ -5,6 +5,7 @@ pkgbase = minetest-castrum
 	url = https://content.minetest.net/packages/1248/castrum/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = castrum-1.11.2.zip
 	options = !strip
