@@ -1,8 +1,8 @@
 pkgbase = concord-git
 	pkgdesc = A Discord API wrapper library made in C
-	pkgver = v2.1.0
+	pkgver = v2.2.0
 	pkgrel = 1
 	arch = any
-	depends = openssl
+	depends = curl
 
 pkgname = concord-git
