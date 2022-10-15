@@ -2,9 +2,9 @@
 # Contributor: unclesam <web _AT_ shinobi-mail _DOT_ de>
 
 pkgname=mintstick-git
-pkgver=r217.43e1194
+pkgver=r245.b7f43d2
 pkgrel=1
-pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
+pkgdesc="Format or write images to USB sticks (Linux Mint tool)"
 arch=('any')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL')
@@ -13,7 +13,7 @@ optdepends=('dosfstools: FAT filesystems' 'e2fsprogs: Ext filesystems' 'ntfs-3g:
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git+$url.git)
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,21 +22,21 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  sed -i 's| /usr| "'$pkgdir'"/usr|g' install.sh
-  sed -i 's|DATAFILES="mintstick.glade mintstick.ui"|DATAFILES="mintstick.ui"|' install.sh
+  sed -i 's| /usr| "'$pkgdir'"/usr|g' $pkgname/install.sh
+
+  sed -i 's/DATAFILES="mintstick.glade \(.*\)/DATAFILES="\1/' $pkgname/install.sh
+  sed -i 's/org.linuxmint.im.policy/com.linuxmint.mintstick.policy/' $pkgname/install.sh
+
+  sed -i '/.*kde4.*/d' $pkgname/install.sh
 }
 
 package() {
-  cd $pkgname
-
-  install -dm755 "$pkgdir/usr/share"
-  cp -a share/nemo "$pkgdir/usr/share"
-
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/applications"
-  install -dm755 "$pkgdir/usr/share/kde4/apps/solid/actions"
-  install -dm755 "$pkgdir/usr/share/polkit/org.linuxmint.im.policy"
+  install -dm755 "$pkgdir/usr/share/"{applications,polkit-1/actions}
+
+  cp -a $pkgname/share/nemo "$pkgdir/usr/share"
+
+  cd $pkgname
   ./install.sh
 }
 
