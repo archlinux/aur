@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORFik
-_pkgver=1.16.5
+_pkgver=1.16.6
 pkgname=r-${_pkgname,,}
-pkgver=1.16.5
+pkgver=1.16.6
 pkgrel=1
 pkgdesc='Open Reading Frames in Genomics'
 arch=('x86_64')
@@ -47,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ad72b39e05a7e16328288ac35c1dc79b43943fc8f28e026c7d45a455ab107474')
+sha256sums=('419bd792d5806f736908931d80b952745430cc861e7d2bc63db6f475bef12b7a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
