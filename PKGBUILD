@@ -7,7 +7,7 @@
 pkgname=mate-tweak
 pkgver=22.10.0
 _umsver=22.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-tweak"
@@ -23,10 +23,8 @@ optdepends=('brisk-menu: for Manjaro panel layout'
             'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout'
             'vala-panel-appmenu-mate: for Mutiny,Cupertino')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/refs/tags/$pkgver.tar.gz"
-        "ubuntu-mate-settings-$_umsver.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/refs/tags/$_umsver.tar.gz")
-sha256sums=('c33c092b0151b50d8a5706825f1bcef57f1738f8f5cf22af49c11f45bc14e84a'
-            '0de25012c7a93a4d5347c467cd1694edc29c525ae5c9afafa6a982f1f1d7a6bb')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c33c092b0151b50d8a5706825f1bcef57f1738f8f5cf22af49c11f45bc14e84a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -36,5 +34,4 @@ prepare() {
 package() {
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  cp -r "$srcdir"/ubuntu-mate-settings-$_umsver/usr/share/mate-panel "$pkgdir/usr/share"
 }

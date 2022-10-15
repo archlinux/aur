@@ -1,7 +1,7 @@
 pkgbase = mate-tweak
 	pkgdesc = Tweak tool for MATE (fork of MintDesktop)
 	pkgver = 22.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ubuntu-mate/mate-tweak
 	arch = any
 	license = GPL
@@ -25,8 +25,6 @@ pkgbase = mate-tweak
 	optdepends = topmenu-gtk: for Mutiny panel layout
 	optdepends = vala-panel-appmenu-mate: for Mutiny,Cupertino
 	source = mate-tweak-22.10.0.tar.gz::https://github.com/ubuntu-mate/mate-tweak/archive/refs/tags/22.10.0.tar.gz
-	source = ubuntu-mate-settings-22.10.2.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/refs/tags/22.10.2.tar.gz
 	sha256sums = c33c092b0151b50d8a5706825f1bcef57f1738f8f5cf22af49c11f45bc14e84a
-	sha256sums = 0de25012c7a93a4d5347c467cd1694edc29c525ae5c9afafa6a982f1f1d7a6bb
 
 pkgname = mate-tweak
