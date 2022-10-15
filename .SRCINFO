@@ -5,6 +5,7 @@ pkgbase = minetest-easytest
 	url = https://content.minetest.net/packages/mooD_Slayer/ksurvive/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = ksurvive-0.0.7.zip
 	options = !strip
