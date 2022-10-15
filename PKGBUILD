@@ -8,7 +8,7 @@ url="https://framagit.org/Nautigsam/krunner-duckduckgo-bangs"
 license=('GPL')
 depends=('krunner' 'qt5-base' 'ki18n')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/Nautigsam/krunner-duckduckgo-bangs/repository/archive.tar.gz?ref=v${pkgver}")
+source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/Nautigsam/krunner-duckduckgo-bangs/-/archive/v${pkgver}/krunner-duckduckgo-bangs-v${pkgver}.tar.gz")
 noextract=("${source[@]%%::*}")
 
 prepare() {
@@ -28,4 +28,4 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-md5sums=('1ffb1fd2fd32111cc568748f1d0b22b8')
+md5sums=('b98f05e1feb9287fc1e9418e9f3a37e2')

@@ -11,8 +11,7 @@ pkgbase = plasma5-runners-duckduckgo-bangs
 	depends = qt5-base
 	depends = ki18n
 	noextract = plasma5-runners-duckduckgo-bangs-1.0.1.tar.gz
-	source = plasma5-runners-duckduckgo-bangs-1.0.1.tar.gz::https://framagit.org/Nautigsam/krunner-duckduckgo-bangs/repository/archive.tar.gz?ref=v1.0.1
-	md5sums = 1ffb1fd2fd32111cc568748f1d0b22b8
+	source = plasma5-runners-duckduckgo-bangs-1.0.1.tar.gz::https://framagit.org/Nautigsam/krunner-duckduckgo-bangs/-/archive/v1.0.1/krunner-duckduckgo-bangs-v1.0.1.tar.gz
+	md5sums = b98f05e1feb9287fc1e9418e9f3a37e2
 
 pkgname = plasma5-runners-duckduckgo-bangs
-
