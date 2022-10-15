@@ -5,6 +5,7 @@ pkgbase = minetest-loria
 	url = https://content.minetest.net/packages/siegment/loria/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = loria-21w30h.zip
 	options = !strip
