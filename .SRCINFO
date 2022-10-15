@@ -1,13 +1,13 @@
 pkgbase = pkgtop
 	pkgdesc = Interactive package manager & resource monitor
-	pkgver = 2.4
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/orhun/pkgtop
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = pkgtop-2.4.tar.gz::https://github.com/orhun/pkgtop/archive/2.4.tar.gz
-	sha512sums = 35ae09a150f49adf4f86056f44b2c104be0904828ae1d2c83c0644dc6fd948864b5acd7ec1fe1972af82075c30be9c8568c5c122e13ee3e15a505f25b51e3f4c
+	depends = glibc
+	source = pkgtop-2.4.1.tar.gz::https://github.com/orhun/pkgtop/archive/2.4.1.tar.gz
+	sha512sums = 8f17780a16584216b434fc6bd37cb8422bf1d1d34ce4b6433bc469987199f4743a9a4a9368aa65db6ec6bc98d30291193be5d92954cf0d758576fc1d8ce501e2
 
 pkgname = pkgtop
-
