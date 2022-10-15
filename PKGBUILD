@@ -2,7 +2,7 @@
 
 _pkgname=notification
 pkgname=dfl-notification
-pkgver=0.1.0alpha1
+pkgver=0.1.0beta1
 pkgrel=1
 pkgdesc="Implementation of the XDG Desktop Notification Spec"
 arch=('x86_64' 'aarch64')
@@ -10,16 +10,16 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('meson' 'ninja')
-source=("$url/-/archive/v${pkgver/alpha1/-alpha1}/${_pkgname}-v${pkgver/alpha1/-alpha1}.tar.gz")
-md5sums=('3c2c5d717dfe1d6c53146fabb21e500e')
+source=("$url/-/archive/v${pkgver/beta1/-beta1}/${_pkgname}-v${pkgver/beta1/-beta1}.tar.gz")
+md5sums=('6ae0ae7bdb03e200ef81e6d1c87dfe5f')
 
 build() {
-  cd "${_pkgname}-v${pkgver/alpha1/-alpha1}"
+  cd "${_pkgname}-v${pkgver/beta1/-beta1}"
   meson .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
 package() {
-  cd "${_pkgname}-v${pkgver/alpha1/-alpha1}"
+  cd "${_pkgname}-v${pkgver/beta1/-beta1}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
