@@ -5,6 +5,7 @@ pkgbase = minetest-jail-escape
 	url = https://content.minetest.net/packages/StarNinjas/jail_escape/
 	arch = any
 	license = CC0
+	makedepends = unzip
 	depends = minetest-common
 	noextract = jail_escape-2.3.zip
 	options = !strip
