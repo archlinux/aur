@@ -1,22 +1,32 @@
 pkgbase = luastatus
 	pkgdesc = universal status bar content generator
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = python-docutils
+	makedepends = libxcb>=1.10
+	makedepends = yajl>=2.0.4
+	makedepends = alsa-lib>=1.0.27.2
+	makedepends = libpulse>=4.0
+	makedepends = libudev>=204.0
+	makedepends = libnl>=3.0
+	makedepends = glib2>=2.40.2
+	makedepends = libx11>=1.6.2
+	makedepends = xcb-util>=0.3.8
+	makedepends = xcb-util-wm>=0.4.1
 	depends = lua<5.5
 	optdepends = libxcb>=1.10: for barlib 'dwm' and plugin 'xtitle'
 	optdepends = yajl>=2.0.4: for barlib 'i3'
 	optdepends = alsa-lib>=1.0.27.2: for plugin 'alsa'
-	optdepends = libudev>=204.0: for plugin 'battery-linux', 'backlight-linux' and 'udev'
-	optdepends = glib2>=2.40.2: for plugin 'dbus'
-	optdepends = linux-headers: for plugin 'network'
-	optdepends = libnl>=3.0: for plugin 'network'
 	optdepends = libpulse>=4.0: for plugin 'pulse'
+	optdepends = libudev>=204.0: for plugin 'battery-linux', 'backlight-linux' and 'udev'
+	optdepends = libnl>=3.0: for plugin 'network'
+	optdepends = glib2>=2.40.2: for plugin 'dbus'
+	optdepends = libx11>=1.6.2: for plugin 'xkb'
 	optdepends = xcb-util>=0.3.8: for plugin 'xtitle'
 	optdepends = xcb-util-wm>=0.4.1: for plugin 'xtitle'
 	source = https://github.com/shdown/luastatus/archive/refs/tags/v0.6.0.tar.gz
