@@ -5,6 +5,7 @@ pkgbase = minetest-voxel-dungeon
 	url = https://content.minetest.net/packages/Noodlemire/voxeldungeon/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = voxeldungeon-1.6.1.zip
 	options = !strip
