@@ -5,6 +5,7 @@ pkgbase = minetest-minekart
 	url = https://content.minetest.net/packages/wsor4035/minekart/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = minekart-2021.10.11.zip
 	options = !strip
