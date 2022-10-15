@@ -4,7 +4,7 @@
 pkgname=zrythm
 _pkgver=1.0.0-beta.3.5.1
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
@@ -43,6 +43,7 @@ build() {
     -Ddebug=true \
     -Dmanpage=true \
     -Dcheck_updates=false \
+    -Dcarla_binaries_dir=/usr/lib/carla \
     -Dportaudio=enabled -Drtmidi=enabled -Drtaudio=enabled -Dsdl=enabled
   ninja -C build
 }
