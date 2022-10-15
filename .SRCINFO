@@ -1,0 +1,13 @@
+pkgbase = golrs-bin
+	pkgdesc = a TUI for vizualising a rust implementation of the game of life.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/MajorBarnulf/golrs
+	arch = x86_64
+	license = MIT
+	provides = golrs
+	conflicts = golrs
+	source = https://github.com/MajorBarnulf/golrs/releases/download/v0.2.0/golrs-0.2.0-x86_64.tar.gz
+	sha256sums = c599c3982c70aa995ef883f323d6a1b72ad47ca10f9438a9ce23116155e706f7
+
+pkgname = golrs-bin
