@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='kaspa_exporter-bin'
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='wishlist using netbox as inventory source'
 url='https://jon4hz.io'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('kaspa_exporter')
 conflicts=('kaspa_exporter')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.2/kaspa_exporter-v0.2.2-linux-arm64.tar.gz")
-sha256sums_aarch64=('fc0362f713838eac1293820ba3233b661d43ac8b8028efd080cd07a437d307f8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.3/kaspa_exporter-v0.2.3-linux-arm64.tar.gz")
+sha256sums_aarch64=('03d4a5ad0785e0356cc5d52030cfe9ac91a2e58378e1539201010cca017fadc0')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.2/kaspa_exporter-v0.2.2-linux-armv7.tar.gz")
-sha256sums_armv7h=('5c933d108556656784e7f095463b19185a6f887b7e7c309e882ba466bd76c549')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.3/kaspa_exporter-v0.2.3-linux-armv7.tar.gz")
+sha256sums_armv7h=('ed131fec8d8a80b66956f46eef36fdf149f005e9a949626cb67c422cae984820')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.2/kaspa_exporter-v0.2.2-linux-386.tar.gz")
-sha256sums_i686=('8cecab68ce9abcbb2d999ff2a49b184dd2d0e851209a3824c8af8077bf2fe9ac')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.3/kaspa_exporter-v0.2.3-linux-386.tar.gz")
+sha256sums_i686=('d798f63d38aacb35f27aff84b85ea9f57d01a85aeb94a5d3931489b451eaaf1e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.2/kaspa_exporter-v0.2.2-linux-amd64.tar.gz")
-sha256sums_x86_64=('39d6cc1bd00b1a2ff8824a93b020aff44c183d64a3cf9c37fa53fbad37d5932c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/kaspa_exporter/releases/download/v0.2.3/kaspa_exporter-v0.2.3-linux-amd64.tar.gz")
+sha256sums_x86_64=('ddf7d6ae309c46f374837f07c2fc93a6db5580a0e57b63b3be6f207e7806be92')
 
 package() {
   # bin
