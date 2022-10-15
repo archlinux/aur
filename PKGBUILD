@@ -3,14 +3,13 @@
 
 pkgname=languagetool-ngrams-de
 pkgver=20150819
-pkgrel=1
+pkgrel=2
 pkgdesc="Finding errors using n-gram data, german text"
 arch=('any')
 url="http://wiki.languagetool.org/finding-errors-using-n-gram-data"
 license=('CCPL')
 optdepends=('languagetool: system wide installation of LT'
-'libreoffice-extension-languagetool: standalone LT for LibreOffice'
-'openoffice-extension-languagetool: standalone LT for OpenOffice')
+'libreoffice-extension-languagetool: standalone LT for LibreOffice')
 install=${pkgname}.install
 source=(${pkgname}-${pkgver}.zip::"https://languagetool.org/download/ngram-data/ngrams-de-${pkgver}.zip")
 md5sums=('f9c8bbd525198fdf8005eed763ceda25')

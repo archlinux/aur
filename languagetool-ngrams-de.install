@@ -3,7 +3,7 @@ post_install() {
   # in two configuration files in every users home directory and the skeleton directory.
 
   _CONFIGLT=".languagetool.cfg"
-  _CONFIGOO=".languagetool-ooo.cfg"
+  _CONFIGOO=".config/LanguageTool/LibreOffice/Languagetool.cfg"
   _KEY="ngramDir"
   _VALUE="/usr/share/ngrams"
 
@@ -38,8 +38,11 @@ post_install() {
         _update_file "$USERDIR" "$_CONFIGOO"
       else
         # create symbolic link to the 1st if it doesn't.
-        (ln -s "$_CONFIGLT" "$USERDIR/$_CONFIGOO")
+        (install -d $(dirname "$USERDIR/$_CONFIGOO"))
+        (ln -s "$USERDIR/$_CONFIGLT" "$USERDIR/$_CONFIGOO")
         printf "    \e[95mLink created\e[0m\t| $USERDIR/$_CONFIGOO\n"
+        # Fix the ownership of possibly created directories.
+        (chown --recursive --reference="$USERDIR" "$USERDIR/.config/")
       fi
     fi
   done
@@ -49,7 +52,12 @@ post_install() {
   if [ -e "/etc/skel/$_CONFIGOO" ]; then
     _update_file "/etc/skel" "$_CONFIGOO"
   else
-    (ln -s "$_CONFIGLT" "/etc/skel/$_CONFIGOO")
+    (install -d $(dirname "/etc/skel/$_CONFIGOO"))
+    (ln -s "../../../$_CONFIGLT" "/etc/skel/$_CONFIGOO")
     printf "    \e[95mLink created\e[0m\t| /etc/skel/$_CONFIGOO\n"
   fi
+}
+
+post_upgrade() {
+  post_install
 }
