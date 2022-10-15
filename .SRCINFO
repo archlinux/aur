@@ -1,6 +1,6 @@
 pkgbase = mrdoc-desktop-bin
 	pkgdesc = MrDoc觅思文档Linux客户端。
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 2
 	url = https://mrdoc.pro/
 	arch = x86_64
