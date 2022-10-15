@@ -5,6 +5,7 @@ pkgbase = minetest-formspec-editor
 	url = https://content.minetest.net/packages/Just_Visiting/formspec_editor/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = formspec_editor-1.1.zip
 	options = !strip
