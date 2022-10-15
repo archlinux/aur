@@ -5,6 +5,7 @@ pkgbase = minetest-luckydude
 	url = https://content.minetest.net/packages/xenonca/luckydude/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = luckydude-1.3.zip
 	options = !strip
