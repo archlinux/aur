@@ -5,7 +5,7 @@
 
 _pkgname=config-parser
 pkgname=dfl-config-parser
-pkgver=0.1.0alpha1
+pkgver=0.1.0beta1
 pkgrel=1
 pkgdesc="A Collection of Config Parsers for DFL. Currently it contains a config parser for KDE Color Schemes"
 arch=('x86_64' 'aarch64')
@@ -13,16 +13,16 @@ url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
 depends=('qt5-base' 'dfl-color-utils')
 makedepends=('meson' 'ninja')
-source=("$url/-/archive/v${pkgver/alpha1/-alpha1}/${_pkgname}-v${pkgver/alpha1/-alpha1}.tar.gz")
-md5sums=('4382f13798b525d77297b6fec6ff6486')
+source=("$url/-/archive/v${pkgver/beta1/-beta1}/${_pkgname}-v${pkgver/beta1/-beta1}.tar.gz")
+md5sums=('c8451b4cd29beb9c9eecd38965c0c543')
 
 build() {
-  cd "${_pkgname}-v${pkgver/alpha1/-alpha1}"
+  cd "${_pkgname}-v${pkgver/beta1/-beta1}"
   meson .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
 
 package() {
-  cd "${_pkgname}-v${pkgver/alpha1/-alpha1}"
+  cd "${_pkgname}-v${pkgver/beta1/-beta1}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
