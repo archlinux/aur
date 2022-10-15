@@ -27,6 +27,7 @@ pkgver() {
 
 prepare() {
     cd "$_repo"
+    rm LICENSE requirements.txt README.md Dockerfile
     mv configuration.sample.py configuration.py
 }
 
