@@ -5,6 +5,7 @@ pkgbase = minetest-modular-portals
 	url = https://content.minetest.net/packages/UnbrokenUnworn/modular_portals/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = modular_portals-10101.zip
 	options = !strip
