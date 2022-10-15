@@ -5,6 +5,7 @@ pkgbase = minetest-newplanet
 	url = https://content.minetest.net/packages/Hi_World/newplanet/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = newplanet-1.2.1.zip
 	options = !strip
