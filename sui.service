@@ -1,0 +1,38 @@
+[Unit]
+Description=Sui Full Node
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/sui-node "$SUI_ARGS"
+ReadWritePaths=/var/lib/sui
+WorkingDirectory=/var/lib/sui
+EnvironmentFile=/etc/default/sui
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=sui
+
+CapabilityBoundingSet=
+NoNewPrivileges=true
+RemoveIPC=true
+LockPersonality=true
+
+ProtectControlGroups=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectHostname=true
+ProtectProc=noaccess
+ProtectClock=yes
+
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

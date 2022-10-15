@@ -1,0 +1,3 @@
+d /var/lib/sui 0750 sui sui
+z /etc/default/sui 0640 sui sui
+z /etc/sui/fullnode.yaml 0640 sui sui
