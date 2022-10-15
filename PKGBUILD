@@ -1,8 +1,7 @@
-# Maintainer: Sean Chen <ufbycd@163.com>
+# Maintainer: Shawn Chen <ufbycd@163.com>
 
-pkgbase=mounriver-studio-community
-pkgname=($pkgbase)
-pkgver=1.10
+pkgname=mounriver-studio-community
+pkgver=1.30
 pkgrel=1
 arch=('x86_64')
 pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
@@ -19,8 +18,8 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
             'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A')
 options=('!strip')
-source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz")
-sha256sums=('5999264d653b8698aaacd961ca38f44a7d11adfedafc1b1c1ecc5ab6ff7754a9')
+source=("${pkgname}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz")
+sha256sums=('dd692f617b1c67a66d27a85d3e19e65668e8f462df7a732d6cd40803d663c762')
 
 package() {
     cd "$srcdir/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}"
