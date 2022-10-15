@@ -1,16 +1,16 @@
 pkgbase = pkgtop-git
 	pkgdesc = Interactive package manager & resource monitor (git)
-	pkgver = 2.4.r0.g639b2fe
-	pkgrel = 2
+	pkgver = 2.4.1.r0.g960d88d
+	pkgrel = 1
 	url = https://github.com/orhun/pkgtop
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	provides = pkgtop
 	conflicts = pkgtop
 	source = git+https://github.com/orhun/pkgtop
 	sha256sums = SKIP
 
 pkgname = pkgtop-git
-
