@@ -5,6 +5,7 @@ pkgbase = minetest-labyrinthus
 	url = https://content.minetest.net/packages/1248/labyrinthus/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = labyrinthus-2.10.1.zip
 	options = !strip
