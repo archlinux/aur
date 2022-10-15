@@ -4,12 +4,12 @@
 
 _pkgname=server
 pkgname=etebase-server
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
 depends=(
-	'python-aioredis'
+	'python-redis'
 	'python-aiofiles'
 	'python-django'
 	'python-fastapi'
@@ -40,7 +40,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         $pkgname.ini.patch
         '0001-fix-settings-ensure-environment-variables-always-ove.patch'
         $pkgname)
-sha256sums=('217b6072d87368f605f46212b495851eb81c213447a5d8b4bf3119e14e3e298e'
+sha256sums=('a9f5289a8ddce4feb79795d542b81a98bf77727c377f8839140b2ec029e2712e'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
             '8ecd76be056ea582b01f6230de9a74b9c4ce4a637f2b0a27edc5b6f7848b5fba'
