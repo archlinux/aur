@@ -1,6 +1,6 @@
 pkgbase = dfl-settings
 	pkgdesc = A class that extends QSettings
-	pkgver = 0.1.0alpha2
+	pkgver = 0.1.0beta1
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/settings
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dfl-settings
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
-	source = https://gitlab.com/desktop-frameworks/settings/-/archive/v0.1.0-alpha2/settings-v0.1.0-alpha2.tar.gz
-	md5sums = fd4de558c1c896732c598f856d78a3e4
+	source = https://gitlab.com/desktop-frameworks/settings/-/archive/v0.1.0-beta1/settings-v0.1.0-beta1.tar.gz
+	md5sums = e1ef64c206bcec12b44be5fb1fe509cc
 
 pkgname = dfl-settings
