@@ -1,0 +1,17 @@
+pkgbase = nowm-git
+	pkgdesc = Managing window without a window manager
+	pkgver = r45.3a42b3a
+	pkgrel = 1
+	url = https://github.com/K4zoku/nowm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = xdotool
+	optdepends = xorg-xinit: for starting Xorg automatically
+	provides = nowm
+	conflicts = nowm
+	source = nowm::git+https://github.com/K4zoku/nowm.git
+	sha256sums = SKIP
+
+pkgname = nowm-git
