@@ -3,5 +3,6 @@ pkgbase = concord-git
 	pkgver = v2.1.0
 	pkgrel = 1
 	arch = any
+	depends = openssl
 
 pkgname = concord-git
