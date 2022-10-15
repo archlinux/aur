@@ -1,6 +1,6 @@
 pkgbase = python-py-eddy-tracker
 	pkgdesc = Py-Eddy-Tracker libraries
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/AntSimi/py-eddy-tracker
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-py-eddy-tracker
 	depends = python-zarr
 	depends = python-netcdf4
 	depends = python-numba
-	source = py-eddy-tracker-3.6.0.tar.gz::https://github.com/AntSimi/py-eddy-tracker/archive/v3.6.0.tar.gz
-	sha512sums = cae450c99156f5363f71e71c526a4da370481e849f1656a410c07bf62bb87d5c787b5d7ba017d5d21619aeb8a8501e7d02983524d516afa2459e0275d45e932a
+	source = py-eddy-tracker-3.6.1.tar.gz::https://github.com/AntSimi/py-eddy-tracker/archive/v3.6.1.tar.gz
+	sha512sums = ae8e869422ba2f183883580b3ace54b2b1e4a06da081a2909c0aa6d89b963dabfbc9f99e5446de071a923effbbd004561eca5ec5e0d109c5c0acf7f51ecea605
 
 pkgname = python-py-eddy-tracker

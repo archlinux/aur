@@ -2,7 +2,7 @@
 _base=py-eddy-tracker
 pkgname=python-${_base}
 pkgdesc="Py-Eddy-Tracker libraries"
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 arch=(any)
 url="https://github.com/AntSimi/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-opencv python-pint python-polygon python-yaml 
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cae450c99156f5363f71e71c526a4da370481e849f1656a410c07bf62bb87d5c787b5d7ba017d5d21619aeb8a8501e7d02983524d516afa2459e0275d45e932a')
+sha512sums=('ae8e869422ba2f183883580b3ace54b2b1e4a06da081a2909c0aa6d89b963dabfbc9f99e5446de071a923effbbd004561eca5ec5e0d109c5c0acf7f51ecea605')
 
 build() {
   cd ${_base}-${pkgver}
