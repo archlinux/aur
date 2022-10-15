@@ -20,7 +20,7 @@ build(){
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export GOPATH=${srcdir}
-	go build -o ../musicfox -ldflags "-s -w -X go-musicfox/pkg/constants.AppVersion=v3.2.2" cmd/musicfox.go
+	go build -o ../musicfox -ldflags "-s -w -X go-musicfox/pkg/constants.AppVersion=v${pkgver}" cmd/musicfox.go
 }
 
 package() {
