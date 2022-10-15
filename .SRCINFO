@@ -5,6 +5,7 @@ pkgbase = minetest-voxel-knights
 	url = https://content.minetest.net/packages/Lone_Wolf/voxel_knights/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = voxel_knights-0.1.5.zip
 	options = !strip
