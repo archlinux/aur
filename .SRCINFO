@@ -1,0 +1,47 @@
+pkgbase = cemu-new
+	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
+	pkgver = 2.0.182
+	pkgrel = 1
+	url = https://cemu.info
+	install = cemu.install
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = cmake>=3.21.1
+	makedepends = make
+	makedepends = rapidjson
+	makedepends = boost>=1.79
+	makedepends = glslang>=11.8
+	makedepends = glm>=0.9.9.8
+	makedepends = nasm
+	makedepends = vulkan-headers>=1.3.225
+	makedepends = glu
+	makedepends = libpulse
+	depends = fmt>=9.1
+	depends = sdl2>=2.0.22
+	depends = pugixml>=1.12.1
+	depends = libzip>=1.9.2
+	depends = libpng>=1.6.37
+	depends = wxwidgets-gtk3>=3.2
+	optdepends = alsa-lib: Audio output
+	optdepends = vulkan-driver: Vulkan graphics
+	source = git+https://github.com/cemu-project/Cemu#commit=ada8bbb3b49622e19deccb7358b1c804a766baab
+	source = git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
+	source = git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
+	source = git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
+	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
+	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
+	source = overlay.diff
+	source = mic.diff
+	source = gui.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
+	sha256sums = 46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f
+	sha256sums = 1081822dec41144e0a7ac934b284f131fcb4b87ffdcef144da0a13e8f8dda169
+
+pkgname = cemu-new
