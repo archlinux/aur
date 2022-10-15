@@ -7,7 +7,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.154
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -17,11 +17,13 @@ source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx-utils.sysusers'
         'nvidia-390xx.rules'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+        kernel-6.0.patch
         kernel-4.16.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
         '67e32932eeddda8fef667d25c34faf7b3a02f01cf9c15a97e5613bd44a0e8dcf7396e25399a52701f55dd18054c689720f237bb07d5bd580394d8dc8c9d05534'
         'e1bd2982f9697e74b593380acf471e03192cd8d20f14bd9b43e6d5925421c518278e75515a0713be25b29bf99d7ea49c770adf2cede79736a03f323d5ed96a33'
+        '35cccbce1728e80086ebe2304f6951535f8d2597259dcd88e9644363c7f52f74c6e11a2369cefd99c5fec79d86a8b9dbcb6fd8aa9c6f871e420585d60131f4ea'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
 
 create_links() {
@@ -60,6 +62,9 @@ DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
 
     # Gift for linux-rt guys
     sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
+
+    # Partial fix for kernel 6.0, ACPI has issues
+    patch -Np1 -i ../../kernel-6.0.patch
 }
 
 package_opencl-nvidia-390xx() {
