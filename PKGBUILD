@@ -2,12 +2,12 @@
 
 _stablever=2210.0
 _engver=22.10.0
-_builddate="20221011"
+_builddate="20221005"
 _debname="o3de_2210_0.deb"
 _binname="o3de"
 
 pkgname=o3de-bin
-pkgver=2210.0_20221005
+pkgver="${_stablever}_${_builddate}"
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine'
 arch=('x86_64')
