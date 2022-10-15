@@ -8,23 +8,14 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
     It can not yet be done across buildservice instances
     The user must be able to create DESTPRJ
 ---
- osc/commandline.py | 55 +++++++++++++++++++++++++++++++++++++++++++++-
- osc/core.py        | 28 +++++++++++++++++++++++
- 2 files changed, 82 insertions(+), 1 deletion(-)
+ osc/commandline.py | 53 ++++++++++++++++++++++++++++++++++++++++++++++
+ osc/core.py        | 28 ++++++++++++++++++++++++
+ 2 files changed, 81 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..2a62febd422a1afcc37a49b3817df20778bc1bbe 100644
+index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..f85afe3687e04eb7e5d4c05cd7c37ab060193061 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3120,7 +3120,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
-         if opts.repo:
-             query["repository"] = opts.repo
-         if opts.set_release:
--            query["setrelease"] = opts.set_release
-+-            query["setrelease"] = opts.set_release
-         if opts.no_delay:
-             query["nodelay"] = "1"
-         baseurl = ['source', source_project]
 @@ -3134,6 +3134,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                  break
              sys.stdout.write(decode_it(buf))

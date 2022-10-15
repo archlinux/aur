@@ -9,7 +9,7 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index d9fd9e8ce7df203737c707e57fce844934503a98..2e7a7eda4c919380684630c5b74a2da29b61709b 100644
+index 051bf1647eb033f69ecbcef0566cb4828fde90cc..707c5a3ab6e094e6b47b1440de58e0cd9d9b0681 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -3142,6 +3142,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.

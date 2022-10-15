@@ -7,7 +7,7 @@
 
 pkgname=osc
 pkgver=1.0.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
@@ -37,12 +37,12 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
 sha256sums=('02bb2166fbda06babbcd60e67437ba83f9032c12c41529325e49d0663cb11aa5'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
             '4f9d5a4aa7d84e0237a3ba633004c7472d873450c769a666f6dde3b7929f3f88'
-            'ef3d2cc10cbccba6c40b9c3d2b57d9ccf5604cfd9621d4682ae06d6e9b09cd97'
-            '5585ca1fb854c18132ff4cbfe5582e99fa6bfcea3ef8d77b4dbee94f51624472'
-            '3fa1037c69df6c2598044410a2d219ec71871d07ff4a22d61f4a0fe67a7ee743'
-            '2937aa8e3df9b81b7a4e67198a7cfadfe2afb5b4dc45fd73da98f7d877c51665'
+            '1d3898b73d896f5dde7c1f7e0461acb733fbe3128d551a4a559d2b2b581ef416'
+            '5db15a7df9ac0588a7bc6a081e96a6f48e13afc95f4059bebb09dfa466178d45'
+            '5e55efe6a7b9f350bde5cf2b5794658c2eedd0383e06e4fd3b69d49c723724aa'
+            'cf9b73a11fc82397b0b24dc5b7a1143de413552fd62d16559c5f7b2f861e7b1d'
             '5564c4cdaed550ddfe05ce74e96448c9232181b4f6fc637c933642eb221461f2'
-            '8fb660b0f3b8267134b7eab4d6b43f9e7c5387983acd1eb98ee1f58f626ca88e')
+            '78068b5755323f526acea891a44309639b2cee97eb2cbb2bcedfac4b51055447')
 
 prepare() {
   # Add 'Arch_Core' and 'Arch_Extra' as osc build targets
