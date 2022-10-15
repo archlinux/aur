@@ -2,16 +2,17 @@
 pkgname=minetest-mesecons-lab
 _pkgname=mesecons_lab
 _pkgauthor=BuckarooBanzay
-pkgver=2022.04.27
-_cdbrel=11990
+pkgver=2022.10.07
+_cdbrel=14229
 pkgrel=1
 pkgdesc="Mesecons laboratory and tutorials"
 license=("MIT")
-sha256sums=('55dfa53c20cab07cd72a5220d76858060bd404720282cba6d980cd3316809dc2')
+sha256sums=('a1e72f94838d4edd5273b13ab5151aa2ce1cf391a24be4a26f25b0f38ab5f547')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
 depends=("minetest-common")
+makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.zip::https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/releases/${_cdbrel}/download/")
 options=(!strip)
 noextract=("${_pkgname}-${pkgver}.zip")
