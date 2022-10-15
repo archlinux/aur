@@ -9,10 +9,10 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 94b2b427842a395403b3b28aa06e3bd97f07a091..846dd5214efdfb6a7ee88ae3fcf16df7ab73d847 100644
+index d9fd9e8ce7df203737c707e57fce844934503a98..2e7a7eda4c919380684630c5b74a2da29b61709b 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3195,6 +3195,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3142,6 +3142,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
                          help='No idea')
@@ -21,7 +21,7 @@ index 94b2b427842a395403b3b28aa06e3bd97f07a091..846dd5214efdfb6a7ee88ae3fcf16df7
      @cmdln.option('-r', '--re-sign', action='store_true',
                          help='re-sign the binaries')
      @cmdln.option('-m', '--message', metavar='TEXT',
-@@ -3240,7 +3242,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3187,7 +3189,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
@@ -31,10 +31,10 @@ index 94b2b427842a395403b3b28aa06e3bd97f07a091..846dd5214efdfb6a7ee88ae3fcf16df7
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index df13c3dbe1c22035058641c3d0dc01b7ff4e6282..6715928a7b31074001ad3f95299c0f1676fd9421 100644
+index 60137a067ead1b040c516b88c102827cdefd1414..5a04d7a76e3bd9efa73886529738c5b5f0a67638 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5672,6 +5672,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -5554,6 +5554,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
               withhistory = False,
               makeolder = False,
               resign = False,
@@ -43,7 +43,7 @@ index df13c3dbe1c22035058641c3d0dc01b7ff4e6282..6715928a7b31074001ad3f95299c0f16
               comment = None):
      """
      Create a copy of a project.
-@@ -5693,6 +5695,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -5575,6 +5577,9 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['comment'] = comment
      if now:
          query['nodelay'] = '1'

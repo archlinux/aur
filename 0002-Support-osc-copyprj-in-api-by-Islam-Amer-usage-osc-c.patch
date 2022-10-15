@@ -8,21 +8,30 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
     It can not yet be done across buildservice instances
     The user must be able to create DESTPRJ
 ---
- osc/commandline.py | 53 ++++++++++++++++++++++++++++++++++++++++++++++
- osc/core.py        | 28 ++++++++++++++++++++++++
- 2 files changed, 81 insertions(+)
+ osc/commandline.py | 55 +++++++++++++++++++++++++++++++++++++++++++++-
+ osc/core.py        | 28 +++++++++++++++++++++++
+ 2 files changed, 82 insertions(+), 1 deletion(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index da95836f6ad5b2ebc132cb7cc3fee995eb173592..083b67d35b5a123c0511404626ebdf7af9180f37 100644
+index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..2a62febd422a1afcc37a49b3817df20778bc1bbe 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3187,6 +3187,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3120,7 +3120,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+         if opts.repo:
+             query["repository"] = opts.repo
+         if opts.set_release:
+-            query["setrelease"] = opts.set_release
++-            query["setrelease"] = opts.set_release
+         if opts.no_delay:
+             query["nodelay"] = "1"
+         baseurl = ['source', source_project]
+@@ -3134,6 +3134,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                  break
              sys.stdout.write(decode_it(buf))
  
 +    @cmdln.option('-b', '--with-binaries', action='store_true',
 +                        help='copy the built binaries over to avoid a rebuild')
-+    @cmdln.option('-H', '--with-history', action='store_true',
++    @cmdln.option('-x', '--with-history', action='store_true',
 +                        help='replicate the history of each package.')
 +    @cmdln.option('-o', '--make-older', action='store_true',
 +                        help='No idea')
@@ -77,10 +86,10 @@ index da95836f6ad5b2ebc132cb7cc3fee995eb173592..083b67d35b5a123c0511404626ebdf7a
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index 1cf4895e181670863bd3564e6934b0a65c9488f3..1b2ce7a5e00fcff4b71adbafea9e6f363bcf6f9e 100644
+index 2ef744296c65e43adfb0ea60cd0a203ac7173e2c..a3c45884eadc729cc785dd7c9cc3e5723c516b92 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5667,6 +5667,34 @@ def copy_pac(src_apiurl, src_project, src_package,
+@@ -5549,6 +5549,34 @@ def copy_pac(src_apiurl, src_project, src_package,
              raise oscerr.APIError('failed to copy: %s' % ', '.join(todo))
          return 'Done.'
  
