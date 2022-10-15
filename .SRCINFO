@@ -9,6 +9,10 @@ pkgbase = nodejs-whistle
 	depends = npm
 	noextract = whistle-2.9.31.tgz
 	source = https://registry.npmjs.org/whistle/-/whistle-2.9.31.tgz
+	source = whistle.desktop
+	source = nodejs-whistle.png
 	sha1sums = b881eae4eed1e28aef5fd6de2e4d7dcef964e2d5
+	sha1sums = a8f84443d428494c3aa83702664fbdd63cb1a78d
+	sha1sums = 7e0711fb1e4ea12788824b6c4081ed0fb3d7f822
 
 pkgname = nodejs-whistle
