@@ -2,9 +2,9 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.3.4.1
+_pkgver=1.0.0-beta.3.5.1
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
@@ -18,7 +18,7 @@ options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://gitlab.gnome.org/GNOME/libpanel.git"
         "git+https://github.com/drobilla/zix.git")
-sha256sums=('c928eeb5a3010e49164fd6e858d0a8b1c1210e00a3c3d1b817cde5b7c1944505'
+sha256sums=('aec7667c7bd886df4acf8e10648637bdd68bd94cb74642128ead8a1d48e34d90'
             'SKIP'
             'SKIP'
             'SKIP')
