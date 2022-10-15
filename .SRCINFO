@@ -1,7 +1,7 @@
 pkgbase = perl-gis-distance-git
 	pkgdesc = GIS::Distance -- Perl interface to calculate calculate geographic distances.
 	pkgver = 0.19.3+r109.20210309.ge160e93
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bluefeet/GIS-Distance
 	arch = any
 	license = PerlArtistic
@@ -11,9 +11,9 @@ pkgbase = perl-gis-distance-git
 	depends = perl
 	depends = perl-bareword-filehandles
 	depends = perl-const-fast
-	depends = perl-geo-point
 	depends = perl-indirect
 	depends = perl-multidimensional
+	optdepends = perl-geo-point: To be able to handle 'Geo::Point' objects.
 	provides = perl-gis-distance=0.19.3+r109.20210309.ge160e93
 	conflicts = perl-gis-distance
 	options = !emptydirs
