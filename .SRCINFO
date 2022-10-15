@@ -6,6 +6,7 @@ pkgbase = minetest-proxima-survival
 	url = https://content.minetest.net/packages/debiankaios/proxima_survival/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = proxima_survival-0.1.zip
 	options = !strip
