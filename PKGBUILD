@@ -1,16 +1,16 @@
 # Maintainer: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
 pkgver=1.5.9
-pkgrel=0
-pkgdesc='unofficial third-party Arch package for lunatask.app (*not* supported by Lunatask developers)'
+pkgrel=2
+pkgdesc='lunatask.app (unofficial and *not* supported by Lunatask developers'
 arch=('x86_64')
-depends=('appimagelauncher' 'gconf' 'libindicator-gtk3' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' )
+depends=('gconf' 'libindicator-gtk3' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' )
 url='https://lunatask.app'
-license=('custom')
+license=('proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://lunatask.app/download/${_file})
-sha256sums=('7503583e8e1948f0e6f273b50e42186175811c492a99a3ac7c46fc4887a63205')
+sha512sums=('1a9254200903fbe95eb20c4cb40fd3e685837c8481a1d0138d807464ace6c746a1709e9e6a61b386b63a81dcaafb0dff1780f4d92f50a01819857651f32d3e3f')
 
 options=('!strip')
 
