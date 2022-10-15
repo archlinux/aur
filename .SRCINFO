@@ -5,6 +5,7 @@ pkgbase = minetest-moontest
 	url = https://content.minetest.net/packages/Droog71/moontest/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = moontest-2022.02.05.zip
 	options = !strip

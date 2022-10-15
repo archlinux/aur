@@ -12,6 +12,7 @@ sha256sums=('3277feda7417f5c94f12dda579863448d5ad78e5be3b78d498cf263555115226')
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
 depends=("minetest-common")
+makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.zip::https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/releases/${_cdbrel}/download/")
 options=(!strip)
 noextract=("${_pkgname}-${pkgver}.zip")
