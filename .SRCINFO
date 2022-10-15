@@ -5,6 +5,7 @@ pkgbase = minetest-parkour
 	url = https://content.minetest.net/packages/Emojiminetest/parkour/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = parkour-11037.zip
 	options = !strip
