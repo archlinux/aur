@@ -5,6 +5,7 @@ pkgbase = minetest-grand-theft-box
 	url = https://content.minetest.net/packages/jamiebearcub/grand_theft_box/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = grand_theft_box-10176.zip
 	options = !strip
