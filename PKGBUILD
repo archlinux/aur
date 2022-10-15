@@ -2,8 +2,8 @@
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-pkgbase=linux-git
-pkgver=5.10rc2.r81.g4ef8451b3326
+pkgbase=linux-zen-515lts
+pkgver=5.15.74.r0.ga3f2f5ac9d61
 pkgrel=1
 pkgdesc='Linux (Git)'
 url="https://www.kernel.org"
@@ -11,16 +11,15 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf git pahole
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
 _srcname=linux
 source=(
-  'git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
-  config         # the main kernel config file
+  'git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
+  config
 )
 sha256sums=('SKIP'
-            'a01c8ef3463c239f868fa679006bc591b1a088274dde8c9c162440dd0547ccad')
+            'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -34,6 +33,11 @@ pkgver() {
 
 prepare() {
   cd $_srcname
+
+  git reset --hard
+  git checkout v5.15.74
+  for i in ../../*patch; do echo $i
+  patch -p1 -i $i; done
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -60,7 +64,6 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
 }
 
 _package() {
@@ -168,27 +171,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
-
-  cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  echo "Installing documentation..."
-  local src dst
-  while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-}
-
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")

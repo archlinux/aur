@@ -1,6 +1,6 @@
-pkgbase = linux-git
+pkgbase = linux-zen-515lts
 	pkgdesc = Linux (Git)
-	pkgver = 5.10rc2.r81.g4ef8451b3326
+	pkgver = 5.15.74.r0.ga3f2f5ac9d61
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -10,18 +10,13 @@ pkgbase = linux-git
 	makedepends = libelf
 	makedepends = git
 	makedepends = pahole
-	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
 	options = !strip
-	source = git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux
+	source = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	source = config
 	sha256sums = SKIP
-	sha256sums = a01c8ef3463c239f868fa679006bc591b1a088274dde8c9c162440dd0547ccad
+	sha256sums = SKIP
 
-pkgname = linux-git
+pkgname = linux-zen-515lts
 	pkgdesc = The Linux (Git) kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -31,9 +26,5 @@ pkgname = linux-git
 	provides = WIREGUARD-MODULE
 	replaces = wireguard-arch
 
-pkgname = linux-git-headers
+pkgname = linux-zen-515lts-headers
 	pkgdesc = Headers and scripts for building modules for the Linux (Git) kernel
-
-pkgname = linux-git-docs
-	pkgdesc = Documentation for the Linux (Git) kernel
-
