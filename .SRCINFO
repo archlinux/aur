@@ -5,6 +5,7 @@ pkgbase = minetest-juanchi-game
 	url = https://content.minetest.net/packages/runs/juanchi/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = juanchi-4.10.zip
 	options = !strip
