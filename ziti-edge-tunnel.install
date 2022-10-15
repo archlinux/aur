@@ -1,0 +1,11 @@
+#!/bin/sh
+post_install() {
+  ssize=$(tput cols)
+  printf '\n'
+  printf %"$ssize"s | tr " " "-"
+  echo "ziti-edge-tunnel was installed..."
+  echo "First install an OpenZiti identity or enroll token in: /opt/openziti/etc/identities"
+  echo "then start or restart this systemd service unit."
+  printf %"$ssize"s | tr " " "-"
+  printf '\n'
+}
