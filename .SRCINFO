@@ -5,6 +5,7 @@ pkgbase = minetest-nomansland
 	url = https://content.minetest.net/packages/Big_Caballito/no_mans_land/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = no_mans_land-0.1.1.zip
 	options = !strip
