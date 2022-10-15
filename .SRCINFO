@@ -1,6 +1,6 @@
 pkgbase = dfl-gamma-effects
 	pkgdesc = A class to handle various display effects that can be performed using wlr-gamma-control protocol
-	pkgver = 0.1.0alpha1
+	pkgver = 0.1.0beta1
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/gamma-effects
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dfl-gamma-effects
 	makedepends = ninja
 	depends = qt5-base
 	depends = dfl-wayqt
-	source = https://gitlab.com/desktop-frameworks/gamma-effects/-/archive/v0.1.0-alpha1/gamma-effects-v0.1.0-alpha1.tar.gz
-	md5sums = 0bd2b50e330f9b145911a38115fb9a27
+	source = https://gitlab.com/desktop-frameworks/gamma-effects/-/archive/v0.1.0-beta1/gamma-effects-v0.1.0-beta1.tar.gz
+	md5sums = d0b8f06f2615023d68607948c270f366
 
 pkgname = dfl-gamma-effects
