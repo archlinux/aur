@@ -3,23 +3,23 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=retext-git
-pkgver=7.2.1.r1255.0c605f9
+pkgver=8.0.0.r1289.fa18e91
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages."
 arch=('any')
 url="https://github.com/retext-project/retext"
 license=('GPL3')
-depends=('python-pyqt5'
+depends=('python-pyqt6'
          'python-markups'
          'shared-mime-info'
          'xdg-utils'
          'hicolor-icon-theme' 
-	 'desktop-file-utils'
-         'gconf')
+	 'desktop-file-utils')
 makedepends=('imagemagick' 'git' 'qt5-tools')
 optdepends=('python-markdown: for Markdown language support'
             'python-docutils: for reStructuredText language support'
-            'python-pyenchant: for spell checking support')
+            'python-pyenchant: for spell checking support'
+	    'qt6-webengine: for more powerfull preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+${url}.git"
@@ -38,7 +38,7 @@ pkgver() {
 
 build () {
   cd $pkgname/ReText/locale
-  lrelease-qt5 *.ts
+  lrelease *.ts
 }
 
 package () {
