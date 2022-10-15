@@ -5,6 +5,7 @@ pkgbase = minetest-towerdefense
 	url = https://content.minetest.net/packages/Aurailus/lexa/
 	arch = any
 	license = CC-BY-4.0
+	makedepends = unzip
 	depends = minetest-common
 	noextract = lexa-0.0.4.zip
 	options = !strip
