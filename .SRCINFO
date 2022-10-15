@@ -1,14 +1,15 @@
 pkgbase = minetest-minegistic
 	pkgdesc = Basic game of connecting resource nodes together
-	pkgver = 2022.02.24
+	pkgver = 2022.07.02
 	pkgrel = 1
 	url = https://content.minetest.net/packages/logalog/minegistic/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
-	noextract = minegistic-2022.02.24.zip
+	noextract = minegistic-2022.07.02.zip
 	options = !strip
-	source = minegistic-2022.02.24.zip::https://content.minetest.net/packages/logalog/minegistic/releases/11420/download/
-	sha256sums = 05a203ea33ff79d59a0cdcc7ff8ac17820e7532b7d94664612d580920b2709eb
+	source = minegistic-2022.07.02.zip::https://content.minetest.net/packages/logalog/minegistic/releases/12692/download/
+	sha256sums = 8e9dbe4ca0aa8c61fa0b9d38c75041a3139b75e55385f2155d29dff61f4322f2
 
 pkgname = minetest-minegistic
