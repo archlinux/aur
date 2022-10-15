@@ -5,6 +5,7 @@ pkgbase = minetest-infinite-ikea
 	url = https://content.minetest.net/packages/benrob0329/ikea/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = ikea-0.0.5.zip
 	options = !strip
