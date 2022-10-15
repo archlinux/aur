@@ -30,6 +30,7 @@ sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
 options=('!strip' 'staticlibs') # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 _install_dir="opt/${pkgname}" # Default engine installation directory. Can be useful if you do not have a lot of space in /opt directory.
+_use_system_clang=0 # Set to 1 if you want to use Arch's Clang compiler instead of Epic's for a potentially smaller installation size
 _ccache_support=false # Patches for ccache. More optimizations might be needed?
 _WithDDC=false # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
 
@@ -96,16 +97,19 @@ prepare() {
   if [[ ! -d ${pkgname} ]]
   then
     git clone --depth=1 --branch=4.27 git@github.com:EpicGames/UnrealEngine ${pkgname}
-    cd ${pkgname}
+    cd ${pkgname} || return
   else
-    cd ${pkgname}
+    cd ${pkgname} || return
     rm -f .git/index.lock
     git fetch --depth=1 origin tag ${pkgver}
     git reset --hard ${pkgver}
   fi
 
   # Apply custom patches
-  patch -p1 -i "${srcdir}/clang_path_fix.patch" # Replace Windows specific search with the correct path (used for -mode=GenerateClangDatabase in UBT)
+  if [ "${_use_system_clang}" -eq 1 ]; then
+    patch -p1 -i "${srcdir}/clang_path_fix.patch" # Replace Windows specific search with the correct path (used for -mode=GenerateClangDatabase in UBT)
+  fi
+  
   if [[ ${_ccache_support} == true ]]
   then
     patch -p1 -i "${srcdir}/ccache_executor.patch"
