@@ -5,6 +5,7 @@ pkgbase = minetest-minetest-extended
 	url = https://content.minetest.net/packages/PetiAPocok/minetest_extended/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = minetest_extended-1.2.zip
 	options = !strip
