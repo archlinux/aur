@@ -1,0 +1,22 @@
+pkgbase = libosmocore-nosystemd-git
+	pkgdesc = Osmocom core library (functions relating to mobile communication standards). Compiled without systemd logging dependency.
+	pkgver = 1.7.0+52.r4351.20221011.327e5e990
+	pkgrel = 1
+	url = https://osmocom.org/projects/libosmocore/wiki/Libosmocore
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = python
+	source = libosmocore::git+https://gitea.osmocom.org/osmocom/libosmocore.git
+	sha256sums = SKIP
+
+pkgname = libosmocore-nosystemd-git
+
+pkgname = libosmocore-nosystemd-git-doc
