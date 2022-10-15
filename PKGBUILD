@@ -1,8 +1,8 @@
-# Maintainer: Ke Liu <spcter119 AT gmail.com>
+# Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyterlab_code_formatter
-pkgver=1.4.11
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=(any)
 url=https://pypi.org/project/${pkgname//_/-}
@@ -14,7 +14,7 @@ depends=(python
 makedepends=(python-setuptools)
 optdepends=(autopep8 yapf python-isort python-black)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('b05f65b4b1499feeccae0d273b8fad8d37f6c8acaa32da10d4fc00dc223d2bde')
+sha256sums=('4a4fd3d713f4ae577df6c0b04093d958a19178ce49fb109ded7e8ae551eea780')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
