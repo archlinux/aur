@@ -5,6 +5,7 @@ pkgbase = minetest-box-world-3d
 	url = https://content.minetest.net/packages/Hume2/boxworld3d/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = boxworld3d-1.zip
 	options = !strip
