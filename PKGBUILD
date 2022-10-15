@@ -4,15 +4,15 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=dianara
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A Qt pump.io client"
 arch=('i686' 'x86_64')
-url="http://dianara.nongnu.org/"
+url="https://dianara.nongnu.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth')
 source=("https://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('6229fd940c6cbc62e310c41bc010ce763c604bd2aa24a82d0055be8ac5d91f8f')
+sha256sums=('82bdfbaf2b057ca8cda3016c964d012bc18eb71333a2f474bd5f37446fd5ed77')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
