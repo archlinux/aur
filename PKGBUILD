@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('sh' 'bash' 'coreutils' 'sed' 'wine' 'libsh')
 provides=($_pkgname)
 source=(git+https://github.com/Thaodan/$_pkgname)
-makedepends=('shpp')
+makedepends=('shpp' 'git')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
