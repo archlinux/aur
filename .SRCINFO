@@ -1,13 +1,13 @@
 pkgbase = cargo-deb
 	pkgdesc = Cargo subcommand that generates Debian packages.
-	pkgver = 1.39.1
+	pkgver = 1.40.3
 	pkgrel = 1
 	url = https://github.com/kornelski/cargo-deb
 	arch = any
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = cargo-deb-1.39.1.tar.gz::https://github.com/kornelski/cargo-deb/archive/refs/tags/v1.39.1.tar.gz
-	sha256sums = e6499a241b777ce49ddd0b191d35ecd260b637278b520e7ecfba3b3cb9d28da8
+	source = cargo-deb-1.40.3.tar.gz::https://github.com/kornelski/cargo-deb/archive/refs/tags/v1.40.3.tar.gz
+	sha256sums = 6c6664159d376a654375ba0a3e19ccc0988c89a75ab964afef741d774e239345
 
 pkgname = cargo-deb
