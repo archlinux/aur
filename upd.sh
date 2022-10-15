@@ -21,7 +21,7 @@ makepkg --printsrcinfo > .SRCINFO
 git add .SRCINFO PKGBUILD
 git commit -m "Update to $VER"
 
-# CLeanup
+# Cleanup
 rm -rf pkg/ src/ *.snap *.pkg.tar.zst
 
 printf "\nAll done!\nRemember to git push!\n"

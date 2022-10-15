@@ -3,7 +3,7 @@
 
 pkgname=termius-beta
 pkgver=7.49.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
@@ -18,12 +18,12 @@ source=(
     "termius-beta.desktop"
     "tos.html"
 )
-sha512sums=('0ff9e64ebe4d442b5f6952b1637c4a4ada168821b428da922009f9e47d5e3cd8de6a0ff03ede4992842bc752eb96f67ad08a96df03ee6bfded14b381ef223926'
+sha512sums=('9409950d005a63ab72ac08b5aff99ee6b6ea76dcdc8be86474d7b05e21cfed67ca30af4bf3d06a06608bd3c263db482e747d0598e7b399fa72afe38f47e1815e'
             'f626754916d9a07faa6d1b2bbdf34da8385aaf1b29eca3c0007079b06de18a4a3c51007d8b753a0c9d721c9ea48f646d00ac3ec219cb4eb77c4419bba634d34b'
             '53f9c61fba12b72817c5e7f4e0ac520489265fbf425fa46f13129da66632b41a2a128072d9e0e64e37e4e8feb8424bc1c15eed127d630314e6459ceb2dbafb4b')
 
 prepare() {
-    mkdir $pkgname
+    mkdir -p $pkgname
     unsquashfs -f -d $pkgname $pkgname-$pkgver.snap
 }
 
