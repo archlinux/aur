@@ -5,6 +5,7 @@ pkgbase = minetest-balloonair
 	url = https://content.minetest.net/packages/NO11/balloonair/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = balloonair-1.0.0.zip
 	options = !strip
