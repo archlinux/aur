@@ -4,7 +4,7 @@
 
 pkgname=erg-git
 _pkg="${pkgname%-git}"
-pkgver=0.5.6.r2.g73f0a3e
+pkgver=0.5.9.r26.g1cad1e6
 pkgrel=1
 pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url="https://github.com/erg-lang/erg"
