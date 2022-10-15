@@ -1,7 +1,7 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 4.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cheat/cheat
 	arch = x86_64
 	arch = arm
@@ -22,7 +22,7 @@ pkgbase = cheat
 	source = cheat-4.3.3.tar.gz::https://github.com/cheat/cheat/archive/refs/tags/4.3.3.tar.gz
 	source = chris.pgp
 	source = conf.yml
-	source = git+https://github.com/cheat/cheatsheets.git#commit=b8857d103a0870a24c9d3592c7d01ac72fdfe460
+	source = git+https://github.com/cheat/cheatsheets.git#commit=ff3e2f2fcd85b8420243559ceaebfddb761fec36
 	sha256sums = 6a1739b71d436f45dc7c028ec79863a34e30cc13da7159bf23604b77f43faaf2
 	sha256sums = 6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6
 	sha256sums = 30df814034a3b7146232e195829564baa7c269940b40c81e1caefbbdc83744e8
