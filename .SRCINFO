@@ -5,6 +5,7 @@ pkgbase = minetest-planet-alive
 	url = https://content.minetest.net/packages/daret/a_planet_alive/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = a_planet_alive-0.8.1.zip
 	options = !strip
