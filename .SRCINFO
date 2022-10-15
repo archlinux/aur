@@ -5,6 +5,7 @@ pkgbase = minetest-realtest
 	url = https://content.minetest.net/packages/Wuzzy/realtest_mt5/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = realtest_mt5-1.2.2.zip
 	options = !strip
