@@ -22,6 +22,6 @@ build() {
 package() {
   [ ! -d "${pkgdir}"/etc/systemd/system/ ] && install -dm755 "${pkgdir}"/etc/systemd/system/
   install -dm755 "${pkgdir}"/opt/mcsmanager/
-  install -m755 mcsm-web.service "${pkgdir}"/etc/systemd/system/
+  install -m644 mcsm-web.service "${pkgdir}"/etc/systemd/system/
   cp -r web "${pkgdir}"/opt/mcsmanager/
 }
