@@ -1,0 +1,49 @@
+From c4475535ea6a60c0a013cce393e3b206cc967607 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Thu, 21 Jul 2022 12:37:43 +0200
+Subject: [PATCH] fix(settings): ensure environment variables always override
+ config
+
+DJANGO_STATIC_ROOT is required in order to run `collectstatic` in
+a packaging environment - manually specifying it as an environment
+variable should always override any config files that may exist.
+---
+ etebase_server/settings.py | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/etebase_server/settings.py b/etebase_server/settings.py
+index 97ec7e9..1f9bf3e 100644
+--- a/etebase_server/settings.py
++++ b/etebase_server/settings.py
+@@ -126,13 +126,12 @@ USE_TZ = True
+ # Static files (CSS, JavaScript, Images)
+ # https://docs.djangoproject.com/en/3.0/howto/static-files/
+ 
++STATIC_ROOT = os.path.join(BASE_DIR, "static")
+ STATIC_URL = "/static/"
+-STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "static"))
+ 
+-MEDIA_ROOT = os.environ.get("DJANGO_MEDIA_ROOT", os.path.join(BASE_DIR, "media"))
++MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+ MEDIA_URL = "/user-media/"
+ 
+-
+ # Define where to find configuration files
+ config_locations = [
+     os.environ.get("ETEBASE_EASY_CONFIG_PATH", ""),
+@@ -193,6 +192,12 @@ if any(os.path.isfile(x) for x in config_locations):
+ SENDFILE_BACKEND = "etebase_server.fastapi.sendfile.backends.simple"
+ SENDFILE_ROOT = MEDIA_ROOT
+ 
++if "DJANGO_STATIC_ROOT" in os.environ:
++    STATIC_ROOT = os.environ["DJANGO_STATIC_ROOT"]
++
++if "DJANGO_MEDIA_ROOT" in os.environ:
++    MEDIA_ROOT = os.environ["DJANGO_MEDIA_ROOT"]
++
+ # Make an `etebase_server_settings` module available to override settings.
+ try:
+     from etebase_server_settings import *
+-- 
+2.37.1
+
