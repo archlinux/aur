@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2022.5
-pkgrel=4
+pkgrel=5
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -109,7 +109,7 @@ package() {
   install -m644 dist-assets/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
 
   # Install OpenVPN certificate
-  install -m644 dist-assets/ca.crt -t "$pkgdir/opt/MullvadVPN/resources/"
+  install -m644 dist-assets/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
 
   # Install services
   install -Dm644 dist-assets/linux/mullvad{-daemon,-early-boot-blocking}.service -t \
