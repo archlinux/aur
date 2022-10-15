@@ -2,7 +2,7 @@
 # Contributor: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=python-yalafi
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Yet another LaTeX filter"
 url="https://github.com/matze-dd/YaLafi"
@@ -14,7 +14,7 @@ source=(
     "https://github.com/matze-dd/YaLafi/archive/$pkgver.zip"
     "ltdirectory.patch"
 )
-sha256sums=('4af3de71f254ca210a6638a09f49d09e339ef0ff4934d144513fb94fe5561d7e'
+sha256sums=('7e2985c11f6001d586e09a5cf2838479fe12600cfff315933941952110c67259'
             'ff59913ed6c4cc63dcf47f9604d5a096bd30e152f14e36ec53fa1e37793e5c10')
 
 prepare() {
