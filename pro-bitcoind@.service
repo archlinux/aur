@@ -1,6 +1,6 @@
 [Unit]
 Description=Prometheus Bitcoin daemon on %I
-After=network.target
+After=network-online.target
 
 [Service]
 ExecStart=/usr/bin/pro-bitcoind -daemon \
