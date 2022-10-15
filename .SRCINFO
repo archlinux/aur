@@ -1,14 +1,15 @@
 pkgbase = minetest-hades-revisited
 	pkgdesc = Use your limited supplies to survive and use terraforming to create a beautiful habitable place.
-	pkgver = 0.14.3
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Wuzzy/hades_revisited/
 	arch = any
 	license = LGPL2.1
+	makedepends = unzip
 	depends = minetest-common
-	noextract = hades_revisited-0.14.3.zip
+	noextract = hades_revisited-0.15.2.zip
 	options = !strip
-	source = hades_revisited-0.14.3.zip::https://content.minetest.net/packages/Wuzzy/hades_revisited/releases/11091/download/
-	sha256sums = 34684e5c8cf12652e51aaa15a3671ac7da50ad8a0d2323713484e852ce447ca1
+	source = hades_revisited-0.15.2.zip::https://content.minetest.net/packages/Wuzzy/hades_revisited/releases/12964/download/
+	sha256sums = b074531d67a56497745cc02695fe72b4142946ca615039b39397838abff9f4a3
 
 pkgname = minetest-hades-revisited
