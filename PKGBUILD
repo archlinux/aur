@@ -1,6 +1,6 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=doxypress-bin
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A fork of Doxygen, with improved output and support for clang parsing"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('doxypress')
 conflicts=('doxypress')
 replaces=('doxypress')
 source=("https://download.copperspice.com/doxypress/binary/${pkgname%-bin}-${pkgver}-arch-x64.tar.bz2")
-sha512sums=('6ef02f1eb87209b9bcf283583a065109eeb053a6667d4f41ee57302b3ce8b67306d27a8e3976addb7c4f7e9faf246a683b87a3b18e75699323960518719e4daa')
+sha512sums=('f58c4844ece6762d6fd5c7748502f203e1bcf7ec5c83e8dbd043b6cb46ecaee6f1368b7729c25d112e84a1bf6eb998dc3a5405a28fe76d036fe9f2bf3d02c9b3')
 noextract=("${pkgname%-bin}-${pkgver}-arch-x64.tar.bz2")
 
 package() {
