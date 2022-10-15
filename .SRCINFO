@@ -5,6 +5,7 @@ pkgbase = minetest-holiday-horrors
 	url = https://content.minetest.net/packages/sunnysideup/holidayhorrors/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = holidayhorrors-2021.12.22.zip
 	options = !strip
