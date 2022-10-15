@@ -1,12 +1,12 @@
 # Maintainer: Norman Dubert <sfiveo13 at gmail dot com>
 pkgname=tachidesk-qtui
 pkgver=2022.10.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source manga read that runs extensions built for Tachiyomi"
 arch=(any)
 url="https://github.com/Suwayomi/Tachidesk-QtUI"
 license=('MIT')
-depends=('qt6-websockets' 'qt6-base' 'qt6-5compat' 'qt6-declarative' 'qt6-shadertools')
+depends=('qt6-websockets' 'qt6-base' 'qt6-5compat' 'qt6-declarative' 'qt6-shadertools' 'qt6-imageformats')
 makedepends=('cmake' 'git')
 provides=("tachidesk-qtui")
 source=("git+https://github.com/Suwayomi/Tachidesk-QtUI"
