@@ -1,0 +1,9 @@
+[Unit]
+Description=Newleaf server
+PartOf=newleaf.service
+
+[Socket]
+ListenStream=3000
+
+[Install]
+WantedBy=sockets.target

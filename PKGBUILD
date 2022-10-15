@@ -4,7 +4,7 @@ pkgname=newleaf
 _repo=NewLeaf
 pkgdesc="A YouTube data extractor, compatible with the Invidious API."
 pkgver=r119.714f103
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://sr.ht/~cadence/tube/"
 license=('AGPL3')
@@ -14,9 +14,15 @@ provides=('newleaf')
 conflicts=('newleaf')
 source=("git+https://git.sr.ht/~cadence/$_repo"
 	'newleaf'
+	'newleaf.conf'
+	'newleaf.service'
+	'newleaf.socket'
 )
 sha256sums=('SKIP'
-	    '0d36db5aa76a2ba406a3e68c52739af4bd2931fa1842c9455a89dbda9df22b8e'
+            '0d36db5aa76a2ba406a3e68c52739af4bd2931fa1842c9455a89dbda9df22b8e'
+            'f43ba9354ac49b9847daa2bbc7cffca0b3a8c381e3b34a0c48f8936a072465df'
+            'e8d49375fe484781df9b06fc6c00641200b2589c34c3dd9a72ad6c263ed21520'
+            '2fe8f20bec277f81efcf4c62f18bbf4ccf0109663910819acad5bbff8ee0cf5c'
 )
 install=post.install
 
@@ -33,6 +39,8 @@ prepare() {
 
 package() {
     install -Dm755 newleaf "$pkgdir/usr/bin/newleaf"
+    install -Dm644 newleaf.conf "$pkgdir/usr/lib/sysusers.d/newleaf.conf"
+    install -Dm644 newleaf.{service,socket} -t "$pkgdir/usr/lib/systemd/system"
     cd "$_repo"
     mkdir -p "$pkgdir/opt/newleaf"
     cp -r * "$pkgdir/opt/newleaf"

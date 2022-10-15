@@ -1,0 +1,16 @@
+[Unit]
+Description=Newleaf service
+After=network.target
+Requires=newleaf.socket
+
+[Service]
+ExecStart=/usr/bin/newleaf
+Type=notify
+PrivateTmp=true
+WorkingDirectory=/tmp
+User=newleaf
+Group=newleaf
+
+[Install]
+Also=newleaf.socket
+WantedBy=multi-user.target
