@@ -1,7 +1,7 @@
 pkgbase = heyu
 	pkgdesc = X10 Automation for Linux, Unix, and Mac OS X
 	pkgver = 2.11_rc3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.heyu.org/
 	arch = i686
 	arch = x86_64
