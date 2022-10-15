@@ -3,8 +3,8 @@
 
 _name=Ildaeil
 pkgname=${_name,,}
-pkgver=1.1
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc='A mini-plugin host working as a plugin'
 arch=(x86_64 aarch64)
 url="https://github.com/DISTRHO/$_name"
@@ -20,7 +20,7 @@ optdepends=(
     'vst3-host: for VST3 plugins'
 )
 source=("https://github.com/DISTRHO/$_name/releases/download/v$pkgver/$_name-src-$pkgver.tar.xz")
-sha256sums=('5879aa84986efa822bd4e10fd58aeaf2f1f5abc110b1139125203b009185e2e6')
+sha256sums=('9bdcdc0e563e4e990d3775cd7ac845b9799f7e2da090e85ecb1b438ddb2be2d3')
 
 
 build() {
