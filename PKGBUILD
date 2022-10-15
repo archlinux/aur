@@ -1,6 +1,6 @@
 # Maintainer: Thomas Voss <mail@thomasvoss.com>
 pkgname=center
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Center text to standard output"
 arch=('x86_64' 'i686')
