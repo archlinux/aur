@@ -6,7 +6,7 @@ _commit=2325d6fe45ef64fa94a8a05fcd75fc49e82e9dbb
 
 pkgname=binder_linux-dkms
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url='https://github.com/choff/anbox-modules'
 pkgdesc='Android kernel driver fork by @choff in DKMS format, binder only.'
@@ -18,7 +18,7 @@ source=(
     "git+${url}.git#commit=${_commit}"
     "6.0-fix.diff")
 sha256sums=('SKIP'
-            'c8fc28dbaafca6b5e3e2dab5e75e194c73e43e825ed611b366885bc774b9885b')
+            'ab4cf84f5091cb4f0cd7521fbff78ec705556ff0a6b07d440b775a14705adec1')
 prepare(){
     cd "${srcdir}/anbox-modules"
     git apply "${srcdir}/6.0-fix.diff"

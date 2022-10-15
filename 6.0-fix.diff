@@ -15,7 +15,7 @@ index 61dd545..7fe818d 100644
  
  	if (ret == 0) {
 +#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0))
-+		ret = register_shrinker(&binder_shrinker, "binder");
++		ret = register_shrinker(&binder_shrinker, "android-binder");
 +#else
  		ret = register_shrinker(&binder_shrinker);
 +#endif
