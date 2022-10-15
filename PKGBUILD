@@ -6,8 +6,8 @@
 
 pkgbase=virtualbox-bin
 pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
-pkgver=6.1.38
-_build=153438
+pkgver=6.1.40
+_build=154048
 _rev=96547
 _rdeskver=1.8.4
 pkgrel=1
@@ -29,8 +29,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('379fa1b64cec3f6cb1b3c8316aef59c9afb2fc6b489d5af9ce3481fe0397ec8b'
-            '94a16cae187b92aca2c675a88b61eeb83aa07319ae9a0b600e3441277af41213'
+sha256sums=('4a6b781563dd9db7bd0c8759867fce6a6ff801ccfd97fb2febb9b5fe333f788d'
+            'f0eb87d02ebbd39c95f3a572802d1e77a3e52a943a6f3d205d131a5bf75a31fb'
             '1d1a828b8411d08dc886463628589716151a514639d606d99e3578e9894fd5bd'
             'b762b1d19647bd0d116f62fc683f061b7a80667fc0377e0a6b00691797a5fa3c'
             '7c7e19388158418762529805c19fab80ba329eb287dadc152bb226dfedb9d7ed'
