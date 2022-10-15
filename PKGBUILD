@@ -1,6 +1,7 @@
 pkgname="concord-git"
 pkgver="v2.1.0"
 pkgrel="1"
+depends=('openssl')
 pkgdesc="A Discord API wrapper library made in C"
 arch=('any')
 
