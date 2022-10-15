@@ -11,6 +11,7 @@ pkgbase = overgrive
 	depends = libnotify
 	depends = python
 	depends = python-gobject
+	depends = python-google-auth-oauthlib
 	depends = python-oauth2client
 	depends = python-pip
 	depends = python-pyinotify

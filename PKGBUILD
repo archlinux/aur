@@ -9,7 +9,7 @@ license=('unknown')
 
 # original overgrive dependencies
 # libnotify python python-oauth2client python-pyinotify python-pip python-gobject libappindicator-gtk3
-depends=(gobject-introspection libappindicator-gtk3 libnotify python python-gobject python-oauth2client python-pip python-pyinotify)
+depends=(gobject-introspection libappindicator-gtk3 libnotify python python-gobject python-google-auth-oauthlib python-oauth2client python-pip python-pyinotify)
 
 provides=('overgrive')
 conflicts=('overgrive')
