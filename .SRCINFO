@@ -1,0 +1,11 @@
+pkgbase = mockitt
+	pkgdesc = A prototyping & collaboration tool.墨刀/modao/mockitt
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://mockitt.com/downloads
+	arch = x86_64
+	license = custom
+	source = https://cdn-release.modao.cc/desktop/mockitt_1.2.5_amd64.deb
+	md5sums = 4815b13965c969e561975f61fdfb60d8
+
+pkgname = mockitt
