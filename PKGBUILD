@@ -6,7 +6,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.141.03
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -15,10 +15,12 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-470xx-utils.sysusers'
         'nvidia-470xx.rules'
+        'kernel-6.0.patch'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
+            'fac1ed6d07e0ad5cb4591321653cd570729552ff13e4b15a45a556c29edc2904367c463648743ef45788a718cc7aba95446308a99fa17ba97da44467df031915'
             '07aca8ea6aac5592060b4177ef43e9a3a5b2e3bc1a2d5959bf2ae349763fc62ed80b987af5607bf2d9a48e25c4e38e64970bca0177d63bd57a703d47debf5e18')
 
 
@@ -54,6 +56,9 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
 
     # Gift for linux-rt guys
     sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
+
+    # Incomplete fix for kernel 6.0; patch has ACPI issues, YMMV.
+    patch -Np1 -i ../../kernel-6.0.patch
 }
 
 package_opencl-nvidia-470xx() {
