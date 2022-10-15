@@ -5,6 +5,7 @@ pkgbase = minetest-builda-city
 	url = https://content.minetest.net/packages/Splizard/buildacity/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = buildacity-0.3.2.zip
 	options = !strip
