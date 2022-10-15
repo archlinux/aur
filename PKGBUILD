@@ -1,9 +1,8 @@
-# 2015-09-01 02:12:19.0 +0200
 # Maintainer: Gilles Quenot <gilles.quenot@sputnick.fr>
 pkgname=heyu
 pkgver=2.11_rc3
 _pkgver=2.11-rc3
-pkgrel=4
+pkgrel=2
 pkgdesc="X10 Automation for Linux, Unix, and Mac OS X"
 arch=(i686 x86_64)
 url="http://www.heyu.org/"
