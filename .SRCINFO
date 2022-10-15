@@ -1,6 +1,6 @@
 pkgbase = r-famat
 	pkgdesc = Functional analysis of metabolic and transcriptomic data
-	pkgver = 1.5.0
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/famat
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-famat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/famat_1.5.0.tar.gz
-	sha256sums = 50ff3923e007aef83b3abeeb317996d62fc3dba7ce79ae346439dfa0b59bf80d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/famat_1.6.6.tar.gz
+	sha256sums = 44f028dfc8acc8d91bd6e5174460f6f51f2de1a26d00598bd4be8961e29044ba
 
 pkgname = r-famat

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=famat
-_pkgver=1.5.0
+_pkgver=1.6.6
 pkgname=r-${_pkgname,,}
-pkgver=1.5.0
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='Functional analysis of metabolic and transcriptomic data'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('50ff3923e007aef83b3abeeb317996d62fc3dba7ce79ae346439dfa0b59bf80d')
+sha256sums=('44f028dfc8acc8d91bd6e5174460f6f51f2de1a26d00598bd4be8961e29044ba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
