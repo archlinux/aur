@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-config-standard
-pkgver=28.0.0
+pkgver=29.0.0
 pkgrel=1
 pkgdesc='Standard shareable config for stylelint'
 arch=('any')
