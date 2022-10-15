@@ -1,0 +1,23 @@
+pkgbase = ginkgo-hpc-git
+	pkgdesc = Numerical linear algebra software package
+	pkgver = r5521.8b036c64f4
+	pkgrel = 1
+	url = https://ginkgo-project.github.io/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = gtest
+	depends = cuda
+	depends = gflags
+	depends = hwloc
+	depends = numactl
+	depends = openmpi
+	options = !lto
+	source = git+https://github.com/ginkgo-project/ginkgo.git
+	md5sums = SKIP
+
+pkgname = ginkgo-hpc-git
