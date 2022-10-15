@@ -1,0 +1,14 @@
+pkgbase = cargo-auditable
+	pkgdesc = A cargo-subcommand to make production Rust binaries auditable
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/rust-secure-code/cargo-auditable
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-auditable-0.5.2.tar.gz::https://github.com/rust-secure-code/cargo-auditable/archive/v0.5.2.tar.gz
+	sha512sums = c9538ac743845346f2363c8cd3beb6af2673af4f63d7c0fba78934ffb820fca675094f4643b35345dab3191b59fdded2e6c1fccb29029455124476a1eab4bd09
+
+pkgname = cargo-auditable
