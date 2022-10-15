@@ -13,6 +13,6 @@ pkgbase = mrdoc-desktop-bin
 	provides = mrdoc-desktop
 	conflicts = mrdoc-desktop
 	source = https://repo.linuxacme.cn/mrdoc-desktop_0.2.2_amd64.deb
-	sha512sums = 08baec8292c83fe513770fb12c71d6caec0dd583bea422597238f94e249cd22232c68c8bfb9c89a4d8fb08930b0015792dbb2490e05c3e75580a855a78e870fa
+	sha512sums = 67fd0888097c987d0a56f936406ed7fcdbd3a6d2bcd4aa4f53d1f12370e996666963983d7486a767dae3931be3c180cae80b5f880fc629bb4bf9561db66f0e79
 
 pkgname = mrdoc-desktop-bin
