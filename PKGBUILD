@@ -1,12 +1,13 @@
-# Maintainer: Jonathon Fernyhough <jonathon+m2x dev>
-# Contributor: twa022 <twa022 at gmail dot com>
-# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com>
+# Contributor : Jonathon Fernyhough <jonathon+m2x dev>
+# Contributor : twa022 <twa022 at gmail dot com>
+# Contributor : Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor : Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
 pkgver=22.10.0
 _umsver=22.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-tweak"
