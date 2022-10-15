@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=v5.19.9.arch1
-pkgver=v5.19.9.arch1.r1108681.5a6bf64b47f4
+_srcver_tag=v6.0.1.arch2
+pkgver=v6.0.1.arch2.r1125357.3e93567c5196
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -99,13 +99,13 @@ source=(
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens ~ heftig
+    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens (heftig)
     "C7E7849466FE2358343588377258734B41C31549"  # David Runge <dvzrv@archlinux.org>
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '5780c7597cdb31c14a55f1575df60110803a63e7e922a2901d9f7abbe822ce113e44fb5409823e345af088e1ca30a130b78d9ca74290c442bd6dec64186a585d')
+            'e3d15e5d26622fa632ed1056a3b22545f6c3b426438bc064d08925afe0b38c2224486da2fd89df64763b42da96fda4d5fd1b668a54d5088fe0a59c9c395128e0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
