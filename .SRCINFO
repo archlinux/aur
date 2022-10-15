@@ -5,6 +5,7 @@ pkgbase = minetest-driftgame
 	url = https://content.minetest.net/packages/paramat/driftgame/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = driftgame-2020.09.15.zip
 	options = !strip
