@@ -5,6 +5,7 @@ pkgbase = minetest-stella
 	url = https://content.minetest.net/packages/1248/stella/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = stella-1.0.0.zip
 	options = !strip
