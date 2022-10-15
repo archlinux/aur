@@ -22,12 +22,11 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's| /usr| "'$pkgdir'"/usr|g' $pkgname/install.sh
-
-  sed -i 's/DATAFILES="mintstick.glade \(.*\)/DATAFILES="\1/' $pkgname/install.sh
-  sed -i 's/org.linuxmint.im.policy/com.linuxmint.mintstick.policy/' $pkgname/install.sh
-
-  sed -i '/.*kde4.*/d' $pkgname/install.sh
+  sed -i -e '/.*kde4.*/d' \
+         -e 's/mintstick.glade//g' \
+         -e 's/org.linuxmint.im.policy/com.linuxmint.mintstick.policy/g' \
+         -e 's| /usr| "'$pkgdir'"/usr|g' \
+         $pkgname/install.sh
 }
 
 package() {
