@@ -5,6 +5,7 @@ pkgbase = minetest-whynot
 	url = https://content.minetest.net/packages/bell07/whynot_game/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = whynot_game-2022.04.20.zip
 	options = !strip
