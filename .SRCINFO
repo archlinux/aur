@@ -1,6 +1,6 @@
 pkgbase = libxc
 	pkgdesc = A library of exchange-correlation functionals for density-functional theory
-	pkgver = 5.2.3
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://www.tddft.org/programs/libxc
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libxc
 	makedepends = cmake
 	depends = python-numpy
 	options = staticlibs
-	source = https://www.tddft.org/programs/libxc/down.php?file=5.2.3/libxc-5.2.3.tar.gz
-	sha512sums = e7a5100af2a4a1d0aee773919cca31bfffdc2a8c0a04d9df9247df5ec78a9ef13d1da9585cc6e3f3f96f6a974cafc762493d66d2fd7dea312b9e0f4dee3c934f
+	source = https://www.tddft.org/programs/libxc/down.php?file=6.0.0/libxc-6.0.0.tar.gz
+	sha512sums = f0657c89ad83d7b6293e51745243cfa5052bfdae099cbd682f2408e4798478497c87814a685d2a345ffa15ba6e06c58c3772236ab78024bea938fbc41be8026d
 
 pkgname = libxc
