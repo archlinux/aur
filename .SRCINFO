@@ -5,6 +5,7 @@ pkgbase = minetest-little-lady
 	url = https://content.minetest.net/packages/Just_Visiting/littlelady/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = littlelady-10980.zip
 	options = !strip
