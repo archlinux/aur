@@ -5,6 +5,7 @@ pkgbase = minetest-colour-hop
 	url = https://content.minetest.net/packages/talas/colourhop/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = colourhop-1.2.1.zip
 	options = !strip
