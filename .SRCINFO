@@ -5,6 +5,7 @@ pkgbase = minetest-blockbomber
 	url = https://content.minetest.net/packages/MisterE/blockbomber/
 	arch = any
 	license = LGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = blockbomber-2022.03.15.zip
 	options = !strip
