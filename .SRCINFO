@@ -5,6 +5,7 @@ pkgbase = minetest-openblox
 	url = https://content.minetest.net/packages/ROllerozxa/openblox/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = openblox-2021.08.17.zip
 	options = !strip
