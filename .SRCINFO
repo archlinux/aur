@@ -5,6 +5,7 @@ pkgbase = minetest-farlands-reloaded
 	url = https://content.minetest.net/packages/wsor4035/farlands_reloaded/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = farlands_reloaded-2022.03.27.zip
 	options = !strip
