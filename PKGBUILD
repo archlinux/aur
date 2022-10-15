@@ -1,6 +1,6 @@
 # Maintainer: Star_caorui <Star_caorui@hotmail.com>
 pkgname=caddy-dnspod
-pkgver=2.5.2
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
