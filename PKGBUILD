@@ -16,7 +16,7 @@ depends=(lldb)
 makedepends=(cmake cargo npm python)
 options=(!debug strip) #Debug package is broken
 source=("$_reponame-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac1536fe5c765587ede369fad097b04f253427bb6d267a24a5ea606f95a98e80')
+sha256sums=('95b905f2fe5a9e216b95be198b2416f73956db6c22fdbfabb6f0b55568929b76')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable

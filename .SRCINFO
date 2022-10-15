@@ -17,6 +17,6 @@ pkgbase = codelldb
 	options = !debug
 	options = strip
 	source = vscode-lldb-1.8.1.tar.gz::https://github.com/vadimcn/vscode-lldb/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = ac1536fe5c765587ede369fad097b04f253427bb6d267a24a5ea606f95a98e80
+	sha256sums = 95b905f2fe5a9e216b95be198b2416f73956db6c22fdbfabb6f0b55568929b76
 
 pkgname = codelldb
