@@ -623,7 +623,7 @@
 +extern AudioInputAPIPtr g_inputAudio;
 --- a/src/config/CemuConfig.cpp
 +++ b/src/config/CemuConfig.cpp
-@@ -300,8 +300,10 @@ void CemuConfig::Load(XMLConfigParser& parser)
+@@ -295,8 +295,10 @@ void CemuConfig::Load(XMLConfigParser& parser)
  	audio_delay = audio.get("delay", 2);
  	tv_channels = audio.get("TVChannels", kStereo);
  	pad_channels = audio.get("PadChannels", kStereo);
@@ -634,7 +634,7 @@
  
  	const auto tv = audio.get("TVDevice", "");
  	try
-@@ -323,6 +325,16 @@ void CemuConfig::Load(XMLConfigParser& parser)
+@@ -318,6 +320,16 @@ void CemuConfig::Load(XMLConfigParser& parser)
  		forceLog_printf("config load error: can't load pad device: %s", pad);
  	}
  
@@ -651,7 +651,7 @@
  	// account
  	auto acc = parser.get("Account");
  	account.m_persistent_id = acc.get("PersistentId", account.m_persistent_id);
-@@ -489,10 +501,13 @@ void CemuConfig::Save(XMLConfigParser& parser)
+@@ -488,10 +500,13 @@ void CemuConfig::Save(XMLConfigParser& parser)
  	audio.set("delay", audio_delay);
  	audio.set("TVChannels", tv_channels);
  	audio.set("PadChannels", pad_channels);
@@ -667,7 +667,7 @@
  	auto acc = config.set("Account");
 --- a/src/config/CemuConfig.h
 +++ b/src/config/CemuConfig.h
-@@ -435,9 +435,9 @@ struct CemuConfig
+@@ -462,9 +462,9 @@ struct CemuConfig
  	// audio
  	sint32 audio_api = 0;
  	sint32 audio_delay = 2;
@@ -682,7 +682,7 @@
  	struct
 --- a/src/gui/GeneralSettings2.cpp
 +++ b/src/gui/GeneralSettings2.cpp
-@@ -22,6 +22,8 @@
+@@ -23,6 +23,8 @@
  #endif
  #include "audio/CubebAPI.h"
  
@@ -691,7 +691,7 @@
  #include "Cafe/HW/Latte/Renderer/Vulkan/VulkanAPI.h"
  #include "Cafe/HW/Latte/Renderer/Vulkan/VulkanRenderer.h"
  #include "Cafe/Account/Account.h"
-@@ -69,6 +71,15 @@ private:
+@@ -70,6 +70,15 @@ private:
  	IAudioAPI::DeviceDescriptionPtr m_description;
  };
  
@@ -707,7 +707,7 @@
  class wxVulkanUUID : public wxClientData
  {
  public:
-@@ -423,6 +434,47 @@ wxPanel* GeneralSettings2::AddAudioPage(wxNotebook* notebook)
+@@ -424,6 +435,47 @@ wxPanel* GeneralSettings2::AddAudioPage(wxNotebook* notebook)
  		audio_panel_sizer->Add(box_sizer, 0, wxEXPAND | wxALL, 5);
  	}
  
@@ -755,7 +755,7 @@
  	audio_panel->SetSizerAndFit(audio_panel_sizer);
  	return audio_panel;
  }
-@@ -837,9 +889,12 @@ void GeneralSettings2::StoreConfig()
+@@ -857,9 +909,12 @@ void GeneralSettings2::StoreConfig()
  	config.tv_channels = (AudioChannels)m_tv_channels->GetSelection();
  	//config.pad_channels =  (AudioChannels)m_pad_channels->GetSelection();
  	config.pad_channels = kStereo; // (AudioChannels)m_pad_channels->GetSelection();
@@ -768,7 +768,7 @@
  
  	config.tv_device.clear();
  	const auto tv_device = m_tv_device->GetSelection();
-@@ -859,6 +914,15 @@ void GeneralSettings2::StoreConfig()
+@@ -879,6 +934,15 @@ void GeneralSettings2::StoreConfig()
  			config.pad_device = device_description->GetDescription()->GetIdentifier();
  	}
  
@@ -784,7 +784,7 @@
  	// graphics
  	config.graphic_api = (GraphicAPI)m_graphic_api->GetSelection();
  
-@@ -956,19 +1020,29 @@ void GeneralSettings2::OnAudioLatencyChanged(wxCommandEvent& event)
+@@ -977,19 +1041,29 @@ void GeneralSettings2::OnAudioLatencyChanged(wxCommandEvent& event)
  
  void GeneralSettings2::OnVolumeChanged(wxCommandEvent& event)
  {
@@ -823,7 +823,7 @@
  	}
  	
  
-@@ -1027,9 +1101,11 @@ void GeneralSettings2::UpdateAudioDeviceList()
+@@ -1048,9 +1122,11 @@ void GeneralSettings2::UpdateAudioDeviceList()
  {
  	m_tv_device->Clear();
  	m_pad_device->Clear();
@@ -835,7 +835,7 @@
  
  	const auto audio_api = (IAudioAPI::AudioAPI)GetConfig().audio_api;
  	const auto devices = IAudioAPI::GetDevices(audio_api);
-@@ -1039,6 +1115,14 @@ void GeneralSettings2::UpdateAudioDeviceList()
+@@ -1060,6 +1135,14 @@ void GeneralSettings2::UpdateAudioDeviceList()
  		m_pad_device->Append(device->GetName(), new wxDeviceDescription(device));
  	}
  
@@ -850,7 +850,7 @@
  	if(m_tv_device->GetCount() > 1)
  		m_tv_device->SetSelection(1);
  	else
-@@ -1046,6 +1130,8 @@ void GeneralSettings2::UpdateAudioDeviceList()
+@@ -1067,6 +1151,8 @@ void GeneralSettings2::UpdateAudioDeviceList()
  
  	m_pad_device->SetSelection(0);
  
@@ -859,7 +859,7 @@
  	// todo reset global instance of audio device
  }
  
-@@ -1431,6 +1517,8 @@ void GeneralSettings2::ApplyConfig()
+@@ -1452,6 +1538,8 @@ void GeneralSettings2::ApplyConfig()
  	m_tv_channels->SetSelection(config.tv_channels);
  	//m_pad_channels->SetSelection(config.pad_channels);
  	m_pad_channels->SetSelection(0);
@@ -868,7 +868,7 @@
  	
  	SendSliderEvent(m_tv_volume, config.tv_volume);
  
-@@ -1465,6 +1553,22 @@ void GeneralSettings2::ApplyConfig()
+@@ -1486,6 +1574,22 @@ void GeneralSettings2::ApplyConfig()
  	else
  		m_pad_device->SetSelection(0);
  
@@ -891,7 +891,7 @@
  	// account
  	UpdateOnlineAccounts();
  	m_active_account->SetSelection(0);
-@@ -1528,6 +1632,9 @@ void GeneralSettings2::UpdateAudioDevice()
+@@ -1550,6 +1654,9 @@ void GeneralSettings2::UpdateAudioDevice()
  {
  	auto& config = GetConfig();
  
@@ -901,7 +901,7 @@
  	// tv audio device
  	{
  		const auto selection = m_tv_device->GetSelection();
-@@ -1537,13 +1644,13 @@ void GeneralSettings2::UpdateAudioDevice()
+@@ -1559,13 +1665,13 @@ void GeneralSettings2::UpdateAudioDevice()
  			return;
  		}
  
@@ -917,7 +917,7 @@
  				sint32 channels;
  				if (m_game_launched && g_tvAudio)
  					channels = g_tvAudio->GetChannels();
-@@ -1565,7 +1672,6 @@ void GeneralSettings2::UpdateAudioDevice()
+@@ -1587,7 +1691,6 @@ void GeneralSettings2::UpdateAudioDevice()
  
  				try
  				{
@@ -925,7 +925,7 @@
  					g_tvAudio = IAudioAPI::CreateDevice((IAudioAPI::AudioAPI)config.audio_api, description->GetDescription(), 48000, channels, snd_core::AX_SAMPLES_PER_3MS_48KHZ * AX_FRAMES_PER_GROUP, 16);
  					g_tvAudio->SetVolume(m_tv_volume->GetValue());
  				}
-@@ -1586,13 +1692,13 @@ void GeneralSettings2::UpdateAudioDevice()
+@@ -1608,13 +1714,13 @@ void GeneralSettings2::UpdateAudioDevice()
  			return;
  		}
  
@@ -941,7 +941,7 @@
  				sint32 channels;
  				if (m_game_launched && g_padAudio)
  					channels = g_padAudio->GetChannels();
-@@ -1614,7 +1720,6 @@ void GeneralSettings2::UpdateAudioDevice()
+@@ -1636,7 +1742,6 @@ void GeneralSettings2::UpdateAudioDevice()
  
  				try
  				{
@@ -949,7 +949,7 @@
  					g_padAudio = IAudioAPI::CreateDevice((IAudioAPI::AudioAPI)config.audio_api, description->GetDescription(), 48000, channels, snd_core::AX_SAMPLES_PER_3MS_48KHZ * AX_FRAMES_PER_GROUP, 16);
  					g_padAudio->SetVolume(m_pad_volume->GetValue());
  					g_padVolume = m_pad_volume->GetValue();
-@@ -1626,6 +1731,54 @@ void GeneralSettings2::UpdateAudioDevice()
+@@ -1648,6 +1753,54 @@ void GeneralSettings2::UpdateAudioDevice()
  			}
  		}
  	}
@@ -1027,7 +1027,7 @@
  #include "gui/wxgui.h"
  #include "util/crypto/aes128.h"
  #include "gui/MainWindow.h"
-@@ -28,6 +28,7 @@
+@@ -29,6 +29,7 @@
  #include "Cafe/OS/libs/vpad/vpad.h"
  
  #include "audio/IAudioAPI.h"
@@ -1035,7 +1035,7 @@
  #if BOOST_OS_WINDOWS
  #pragma comment(lib,"Dbghelp.lib")
  #endif
-@@ -220,6 +221,7 @@ void mainEmulatorCommonInit()
+@@ -223,6 +224,7 @@ void mainEmulatorCommonInit()
  	rplSymbolStorage_init();
  	// static initialization
  	IAudioAPI::InitializeStatic();

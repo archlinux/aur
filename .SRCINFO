@@ -1,7 +1,7 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
-	pkgver = 2.0.144
-	pkgrel = 2
+	pkgver = 2.0.182
+	pkgrel = 1
 	url = https://cemu.info
 	install = cemu.install
 	arch = x86_64
@@ -9,8 +9,6 @@ pkgbase = cemu
 	makedepends = git
 	makedepends = cmake>=3.21.1
 	makedepends = make
-	makedepends = clang>=12
-	makedepends = llvm>=12
 	makedepends = rapidjson
 	makedepends = boost>=1.79
 	makedepends = glslang>=11.8
@@ -18,36 +16,30 @@ pkgbase = cemu
 	makedepends = nasm
 	makedepends = vulkan-headers>=1.3.225
 	makedepends = glu
+	makedepends = libpulse
 	depends = fmt>=9.1
 	depends = sdl2>=2.0.22
 	depends = pugixml>=1.12.1
 	depends = libzip>=1.9.2
 	depends = libpng>=1.6.37
 	depends = wxwidgets-gtk3>=3.2
+	optdepends = alsa-lib: Audio output
 	optdepends = vulkan-driver: Vulkan graphics
-	source = git+https://github.com/cemu-project/Cemu#commit=7864d76ecaff3ce500c6d3f09910fbb24027efd7
-	source = imgui-1.88.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.88.tar.gz
-	source = imgui.cmake::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252c/ports/imgui/CMakeLists.txt
-	source = imgui.conf::https://raw.githubusercontent.com/microsoft/vcpkg/1b0252c/ports/imgui/imgui-config.cmake.in
+	source = git+https://github.com/cemu-project/Cemu#commit=ada8bbb3b49622e19deccb7358b1c804a766baab
 	source = git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
+	source = git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
 	source = git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	source = xdg.diff
 	source = overlay.diff
-	source = gamelist.diff
 	source = mic.diff
 	sha256sums = SKIP
-	sha256sums = 9f14c788aee15b777051e48f868c5d4d959bd679fc5050e3d2a29de80d8fd32e
-	sha256sums = 262faed507149c89aab7572fd2c2a968f843ca2900043e30a9c339735ed08a8f
-	sha256sums = 91528f60cca93d3bce042d2ac16a63169025ec25a34453b49803126ed19153ae
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 31c7df4abb5261c5290bc6c6972a69a6fce3f89c3a80c0224c2e5274bc00e46f
+	sha256sums = SKIP
 	sha256sums = f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	sha256sums = 00a8b51434c45f595b54b3d317719cd36955ce36dcb246c796eabfd3d3967ed1
-	sha256sums = afcebfb585d9a2495bb905ad716ef09a48f881e5597d859dd8a88d1dbf76c63f
+	sha256sums = 46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f
 
 pkgname = cemu
