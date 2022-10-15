@@ -5,6 +5,7 @@ pkgbase = minetest-spmeter
 	url = https://content.minetest.net/packages/crabycowman123/spmeter/
 	arch = any
 	license = AGPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = spmeter-0.1.2.zip
 	options = !strip
