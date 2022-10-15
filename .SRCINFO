@@ -6,7 +6,8 @@ pkgbase = protonhax
 	arch = x86_64
 	license = BSD
 	makedepends = tcc
-	source = git+https://github.com/jcnils/protonhax.git
-	md5sums = SKIP
+	conflicts = protonhax-git
+	source = protonhax-1.0.4.tar.gz::https://github.com/jcnils/protonhax/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = da4104a16265a4cf482510d41d7c2ad02679ff3f6b70b2a2675958af08f72a49
 
 pkgname = protonhax
