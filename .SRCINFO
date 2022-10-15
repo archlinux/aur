@@ -5,6 +5,7 @@ pkgbase = minetest-water-game
 	url = https://content.minetest.net/packages/Lefty/water_game/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = water_game-8455.zip
 	options = !strip
