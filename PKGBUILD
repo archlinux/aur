@@ -1,8 +1,8 @@
 # Maintainer: necklace <ns@nsz.no>
 
 pkgname=iridium-rpm
-pkgver=102.0
-pkgrel=2
+pkgver=106.0
+pkgrel=1
 _folder='iridium-browser'
 _name='iridium-browser'
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
@@ -15,9 +15,9 @@ depends=('ffmpeg4.4' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
-source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.04.100.0-1.el8.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.10.106-1.el8.x86_64.rpm')
 
-sha256sums=('9c280fd7f77f5afc0300d61fdc3c087b7e8b8075bfc25e49470631dadde8f44c')
+sha256sums=('0f4c0e17e80853ee40592d27e8acf933077bcbf0273ddd93ef09a7ca315ee1da')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
