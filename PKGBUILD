@@ -2,7 +2,7 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.alpha.26.0.13.r202.g2fa57d645
+pkgver=1.0.0.beta.3.9.1.r0.g9d19b2f4c
 pkgrel=1
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
@@ -11,7 +11,7 @@ url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
          'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
-         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'graphviz')
+         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'graphviz' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse')
 makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
              'ladspa' 'lv2' 'gtksourceview3' 'cmake')
