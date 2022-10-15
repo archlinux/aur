@@ -3,11 +3,11 @@
 
 pkgname=python-amqp
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
 url="https://github.com/celery/py-amqp"
-license=('LGPL')
+license=('BSD')
 depends=('python-vine')
 checkdepends=('python-case' 'python-pytest-sugar')
 source=("https://github.com/celery/py-amqp/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
@@ -26,6 +26,7 @@ check() {
 package() {
   cd py-amqp-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 # vim:set ts=2 sw=2 et:
