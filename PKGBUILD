@@ -3,12 +3,12 @@
 pkgname=pinapp
 _pkgname=PinApp
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Create your own application shortcuts"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://github.com/fabrialberio/PinApp"
 license=('GPL3')
-depends=('libadwaita')
+depends=('libadwaita' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/$pkgver.tar.gz)
