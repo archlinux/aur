@@ -1,8 +1,8 @@
 # 2015-09-01 02:12:19.0 +0200
 # Maintainer: Gilles Quenot <gilles.quenot@sputnick.fr>
 pkgname=heyu
-pkgver=2.11_rc2
-_pkgver=2.11-rc2
+pkgver=2.11_rc3
+_pkgver=2.11-rc3
 pkgrel=4
 pkgdesc="X10 Automation for Linux, Unix, and Mac OS X"
 arch=(i686 x86_64)
@@ -13,8 +13,8 @@ depends=()
 makedepends=('make')
 conflicts=('heyu')
 source=("https://github.com/HeyuX10Automation/heyu/archive/v${_pkgver}.tar.gz")
-md5sums=('97f5d0ed8be6bd2931dc796024b1c0bd')
- 
+md5sums=('7a88fcfe7133ca7a149e1c102de2ba0d')
+
 prepare() { true; }
 
 build() {
