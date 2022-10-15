@@ -2,7 +2,7 @@
 
 
 pkgname=astrodmx-capture
-pkgver=1.5.0.0
+pkgver=1.7.1.0
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
@@ -12,15 +12,23 @@ url="https://www.astrodmx-capture.org.uk/"
 license=(custom)
 options=(!strip)
 install=$pkgname.install
+depends=('glibc>=2.27')
 
 # The Author, Nicola, is now copying new releases into both the `current` and `old` folders so that we
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions
 # without breakage after a new version is released. Thanks Nicola!
 source=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("aa3585edc44aa79a52e5bbb6a6b09ad81c6796ab494319fdd086f92289aa3ffb")
+sha256sums=("2a91bc1d8ac783eb36e687de83b422c5268335b3405f1066886e34341ffe9100")
 
 _instdir="/opt/AstroDMx-Capture"
 _prefix="AstroDMx-${pkgver}-manual"
+
+
+noextract=('astrodmx-capture_${pkgver}_x86-64-manual.tar.gz')
+prepare() {
+	mkdir ${_prefix}
+	bsdtar -xf "astrodmx-capture_${pkgver}_x86-64-manual.tar.gz" -C ${_prefix}
+}
 
 package() {
     # create the desitination folder
@@ -28,10 +36,6 @@ package() {
 
     # copy over the linux 64 bit files
     cp --recursive ${_prefix}/opt/AstroDMx-Capture/* "${pkgdir}${_instdir}"
-
-    # remove broken libs (see: https://www.astrodmx-capture.org.uk/astrodmx-capture-known-issues/)
-    rm "${pkgdir}${_instdir}/lib/libstdc++.so.6"
-    rm "${pkgdir}${_instdir}/lib/libgcc_s.so.1"
 
     # add xdg menu
     mkdir -p ${pkgdir}/etc/xdg/menus/applications-merged/
