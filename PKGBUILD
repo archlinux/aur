@@ -37,8 +37,7 @@ build() {
 }
 
 package() {
-	install -d "$pkgdir/usr/"{bin,lib/invidious}
-	install -d "$pkgdir/etc/systemd/system"
+	install -d "$pkgdir"/{usr/lib/invidious,etc}
 
 	cp -r "$srcdir/invidious/"{invidious,locales,config,assets} \
 		 "$pkgdir/usr/lib/invidious/"
@@ -47,5 +46,4 @@ package() {
 	mv "$pkgdir/usr/lib/invidious/config/config.example.yml" "$pkgdir/etc/invidious.yml"
 
 	ln -s /etc/invidious.yml "$pkgdir/usr/lib/invidious/config/config.yml"
-	ln -s /usr/lib/invidious/invidious "$pkgdir/usr/bin/invidious"
 }
