@@ -1,15 +1,15 @@
 pkgbase = betterbird-it-bin
 	pkgdesc = ITALIAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 102.3.2
+	pkgver = 102.3.3
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	depends = dbus-glib
-	provides = betterbird=102.3.2
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-102.3.2-bb19.it.linux-x86_64.tar.bz2
+	provides = betterbird=102.3.3
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-102.3.3-bb20.it.linux-x86_64.tar.bz2
 	source = betterbird.desktop
-	sha256sums = 7cf49d51cc01e6646c0a729275d21bdc9d982cb1aeaae60201a7a469eb1a55e5
+	sha256sums = aa88fd18d03302fc6c28f94b671a1cb40134f31d26b8ea5eb2b5df9ef0c2d199
 	sha256sums = 45149cc69f8f2088c67513f2da612bb47510057b0fefbe59c92357513ecbc560
 
 pkgname = betterbird-it-bin
