@@ -1,6 +1,6 @@
 pkgname=go-musicfox
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
@@ -20,7 +20,7 @@ build(){
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export GOPATH=${srcdir}
-	go build -o ../musicfox cmd/musicfox.go
+	go build -o ../musicfox -ldflags "-s -w -X go-musicfox/pkg/constants.AppVersion=v3.2.2" cmd/musicfox.go
 }
 
 package() {
