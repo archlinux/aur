@@ -1,16 +1,18 @@
-# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
+# Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 # Contributor: gilbus <aur@tinkershell.eu>
-pkgname=swaylock-git
-pkgver=1.4.r15.gdee0021
+pkgname=swaylock-plugin-git
+pkgver=1.5.r61.g44d6234
 pkgrel=1
-pkgdesc='Screen locker for Wayland '
-url='https://github.com/swaywm/swaylock'
+pkgdesc='Screen locker for Wayland -- Fork with background plugin support '
+url='https://github.com/mstoeckl/swaylock-plugin'
 license=('MIT')
 provides=('swaylock')
 conflicts=('swaylock')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2')
+depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2' 'swaybg')
 makedepends=('meson' 'git' 'scdoc' 'wayland-protocols')
+optdepends=('mpvpaper')
 source=("${pkgname%-git}::git+$url")
 sha1sums=('SKIP')
 
