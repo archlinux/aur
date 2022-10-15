@@ -2,7 +2,7 @@
 
 pkgname=newleaf
 _repo=NewLeaf
-desc="NewLeaf is a YouTube data extractor, compatible with the Invidious API."
+pkgdesc="A YouTube data extractor, compatible with the Invidious API."
 pkgver=r119.714f103
 pkgrel=1
 arch=('x86_64')
