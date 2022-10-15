@@ -1,9 +1,8 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
-# Contributor, Maintainer prior to 2022-09-20: Anuskuss <anuskuss@googlemail.com>
 
 pkgname=cemu
 pkgver=2.0.182
-pkgrel=1
+pkgrel=2
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://cemu.info
@@ -31,7 +30,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=ada8bbb3b49622e19deccb7358b1c804a766baab
+	git+https://github.com/cemu-project/Cemu#commit=ada8bbb3b49622e19deccb7358b1c804a766baab # v2.0-7
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -45,6 +44,7 @@ source=(
 	overlay.diff # 6aa7a0c7b2003f625bfecd64f6143a10605234b2
 	mic.diff # 5231a71527cb57ea79b1b2ab9e4d7247d9141dd1
 	crc.diff # f0938e1a23f6cdd03bfd1e21d84f2c0f65aeb45f
+	gui.diff # b3814225e4a63fad543b2a9ebf11ed6f5e21f389
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -54,7 +54,8 @@ sha256sums=('SKIP'
             'SKIP'
             'f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f'
             '46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f'
-            '095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a')
+            '095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a'
+            '6ec9545cdd05f59a5d7e956c5c0e083f734dd9e6cc681c5dc500fd43dbeab44f')
 
 pkgver() {
 	cd Cemu
@@ -95,13 +96,13 @@ prepare() {
 	# The subdirectory "default" is incorrect in upstream
 	sed -i 's/gameProfiles\/default/gameProfiles/' src/Cafe/GameProfile/GameProfile.cpp
 
+	# gamelist column width improvement
+	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
+
 	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
 	sed -i '/add_library/aSystemInfo/SystemInfo.cpp SystemInfo/SystemInfoLinux.cpp' src/util/CMakeLists.txt
-
-	# gamelist column width fix
-	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
 
 	# experimental: microphone (https://github.com/cemu-project/Cemu/pull/251)
 	rm -f src/audio/{Cubeb,IAudio}InputAPI.{cpp,h}
@@ -109,13 +110,17 @@ prepare() {
 
 	# Fix CRC errors (graphics packs) (https://github.com/cemu-project/Cemu/pull/375)
 	git apply "$srcdir/crc.diff"
+
+	# experimental: input ui (https://github.com/cemu-project/Cemu/pull/345)
+	git apply "$srcdir/gui.diff"
 }
 
 build() {
 	# prefer clang (faster)
 	if [[ $(clang --version 2> /dev/null | sed -E '1!d;s/^clang version ([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]] &&
 	   [[ $(llvm-config --version 2> /dev/null | sed -E 's/^([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]]; then
-		[[ -z $CC ]] && [[ -z $CXX ]] && export CC=$(which clang) && export CXX=$(which clang++)
+		[[ -z $CC  ]] && export CC=$(which clang)
+		[[ -z $CXX ]] && export CXX=$(which clang++)
 	fi
 
 	cd Cemu
@@ -133,12 +138,12 @@ package() {
 	cd Cemu
 	install -D bin/Cemu_release "$pkgdir/usr/bin/cemu"
 
-	pushd bin/gameProfiles/default
+	pushd bin/gameProfiles/default > /dev/null
 	mv 000500001011000.ini 0005000010111000.ini
 	for ini in *[A-Z]*; do mv $ini ${ini,,}; done
 	# install -Dm644 ../example.ini "$pkgdir/usr/share/cemu/gameProfiles/example.ini"
 	install -Dm644 * -t "$pkgdir/usr/share/cemu/gameProfiles"
-	popd
+	popd > /dev/null
 
 	install -Dm644 bin/resources/sharedFonts/* -t "$pkgdir/usr/share/cemu/resources/sharedFonts"
 	for lang in {ca,de,es,fr,hu,it,ja,ko,nb,nl,pl,pt,ru,sv,tr,zh}; do
