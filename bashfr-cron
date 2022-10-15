@@ -5,7 +5,7 @@
 export PATH=/usr/bin:/bin:/usr/sbin:$PATH
 
 cd /tmp
-if ! wget &> /dev/null -N http://sputnick.fr/scripts/bashfr; then
+if ! wget &> /dev/null -N https://sputnick.fr/scripts/bashfr; then
     echo >&2 "Le telechargement du fichier fortune bashfr a echoue, merci de passer le paquet fortune-mod-bashfr en perime si le probleme persiste."
     exit 1
 fi
