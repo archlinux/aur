@@ -5,6 +5,7 @@ pkgbase = minetest-cellestial-game
 	url = https://content.minetest.net/packages/LMD/cellestial_game/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = cellestial_game-r40.zip
 	options = !strip
