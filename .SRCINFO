@@ -5,6 +5,7 @@ pkgbase = minetest-coconut-collection
 	url = https://content.minetest.net/packages/MCL/coconut_collection/
 	arch = any
 	license = GPLv2
+	makedepends = unzip
 	depends = minetest-common
 	noextract = coconut_collection-1.0.0.zip
 	options = !strip
