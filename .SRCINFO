@@ -5,6 +5,7 @@ pkgbase = minetest-labyrinth
 	url = https://content.minetest.net/packages/Just_Visiting/labyrinth/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = labyrinth-1.0.0.zip
 	options = !strip
