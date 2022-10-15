@@ -7,7 +7,7 @@ pkgdesc="typora历史旧版本，中国下载地址构建。"
 arch=('x86_64')
 filename="Typora_Linux_${pkgver}_amd64.deb"
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
-url="https://www.typora.net/"
+url="https://www.typora.io/"
 depends=('gtk3' 'libxss')
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
