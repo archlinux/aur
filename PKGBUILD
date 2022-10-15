@@ -1,4 +1,5 @@
-# Maintainer: JcNils <jcnils at user dot noreply dot github dot com >
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: JcNils <jcnils at user dot noreply dot github dot com >
 # Contributor: Xaryphon <xaryphon at tuta dot io>
 pkgname=protonhax
 pkgver=1.0.4
