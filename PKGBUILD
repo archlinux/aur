@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=game-of-life
-pkgver=0.1.3
+pkgver=0.1.4_3
 pkgrel=1
 pkgdesc="A simulator of Conway's game of life"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('libadwaita')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('a840a7a32fae36cece0b95fdb52692c2d4a558651d080f7fa666b2b1e5595d5b56e43f362c36405efe713667513b23c5bf9b20a4872b65bfd49d8d8d7a531529')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v${pkgver//_/-}.tar.gz)
+b2sums=('1201790e460afc3e479861bc6114a20379b5346abe85f59103f3987a9d1fe0a3118de6177b7f0be23165573619e6681b4eb2a8b13a0571a1fb21fa8c3806b93e')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
