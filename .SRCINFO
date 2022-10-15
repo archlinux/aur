@@ -5,6 +5,7 @@ pkgbase = minetest-snake-3d
 	url = https://content.minetest.net/packages/cx384/snake_3d/
 	arch = any
 	license = LGPLv2.1
+	makedepends = unzip
 	depends = minetest-common
 	noextract = snake_3d-1.1.zip
 	options = !strip
