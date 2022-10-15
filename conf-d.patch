@@ -1,0 +1,49 @@
+diff --git a/scripts/pam_snapper_userdel.sh b/scripts/pam_snapper_userdel.sh
+index 30be9be..1ffa63e 100755
+--- a/scripts/pam_snapper_userdel.sh
++++ b/scripts/pam_snapper_userdel.sh
+@@ -40,7 +40,7 @@ fi
+ if [ ${DRYRUN} == 0 ] ; then
+ 	# Delete the snapper configuration
+ 	# This deletes $SNAPPERCFGDIR/home_${MYUSER}
+-	# removes "home_${MYUSER}" from /etc/sysconfig/snapper
++	# removes "home_${MYUSER}" from /etc/conf.d/snapper
+ 	# and deletes all snapshots
+ 	${CMD_SNAPPER} -c home_${MYUSER} delete-config
+ 	# Delete the USER's home subvolume
+diff --git a/scripts/snapper-daily b/scripts/snapper-daily
+index 27e7a10..2ee7fff 100755
+--- a/scripts/snapper-daily
++++ b/scripts/snapper-daily
+@@ -9,10 +9,10 @@ export PATH
+ 
+ 
+ #
+-# get information from /etc/sysconfig/snapper
++# get information from /etc/conf.d/snapper
+ #
+-if [ -f /etc/sysconfig/snapper ] ; then
+-    . /etc/sysconfig/snapper
++if [ -f /etc/conf.d/snapper ] ; then
++    . /etc/conf.d/snapper
+ fi
+ 
+ 
+diff --git a/scripts/snapper-hourly b/scripts/snapper-hourly
+index bc6cd4d..1ef49ff 100755
+--- a/scripts/snapper-hourly
++++ b/scripts/snapper-hourly
+@@ -9,10 +9,10 @@ export PATH
+ 
+ 
+ #
+-# get information from /etc/sysconfig/snapper
++# get information from /etc/conf.d/snapper
+ #
+-if [ -f /etc/sysconfig/snapper ] ; then
+-    . /etc/sysconfig/snapper
++if [ -f /etc/conf.d/snapper ] ; then
++    . /etc/conf.d/snapper
+ fi
+ 
+ 

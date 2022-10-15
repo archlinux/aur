@@ -1,0 +1,12 @@
+diff --git a/data/org.opensuse.Snapper.service b/data/org.opensuse.Snapper.service
+index 39d7333..6c49474 100644
+--- a/data/org.opensuse.Snapper.service
++++ b/data/org.opensuse.Snapper.service
+@@ -1,5 +1,5 @@
+ # DBus service activation config
+ [D-BUS Service]
+ Name=org.opensuse.Snapper
+-Exec=/usr/sbin/snapperd
++Exec=/usr/bin/snapperd
+ User=root
+ 
