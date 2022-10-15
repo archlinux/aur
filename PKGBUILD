@@ -2,7 +2,7 @@
 
 pkgname=kimi-linphone-desktop
 pkgver=4.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /usr/local with all deps included)."
 arch=('x86_64')
 url="https://linphone.org"
@@ -1412,7 +1412,7 @@ package() {
     echo "--- End listing contents of $pkgdir ---"
 
     # Remove certificate. No need to package certificate.
-    rm -f $pkgdir$linphone_desktop_install_prefix/share/linphone/rootca.pem
+    # rm -f $pkgdir$linphone_desktop_install_prefix/share/linphone/rootca.pem
 
     export NO_BRP_CHECK_RPATH=true
 
