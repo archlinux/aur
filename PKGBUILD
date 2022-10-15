@@ -1,7 +1,7 @@
 # Contributor: LinuxAcme <lyp@linuxacme.cn>
 _pkgname=mrdoc-desktop
 pkgname="$_pkgname-bin"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=2
 pkgdesc="MrDoc觅思文档Linux客户端。"
 arch=('x86_64')
