@@ -2,7 +2,7 @@
 # Maintainer: squitch <contact.squitch@gmail.com>
 
 pkgname='python-alphacodersdownloader'
-pkgver=0.1.4.1
+pkgver=0.1.4.2
 pkgrel=1
 pkgdesc='A script for download backgrounds on https://alphacoders.com written in Python.'
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   cd AlphacodersDownloader-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-sha256sums=('f9babfd92a70a56ede862cc845fcf02f7042c6af81eaf15998d2ade97d4ccf54')
+sha256sums=('6cf92a12fcc28b7103238c816c5d1bbb3b8eda818fb697a2d75a8aca0db81b84')
