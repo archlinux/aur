@@ -21,14 +21,18 @@ sha256sums=('SKIP'
 install=post.install
 
 pkgver() {
-    cd "$_name"
+    cd "$_repo"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$_repo"
+    mv configuration.sample.py configuration.py
 }
 
 package() {
     install -Dm755 newleaf "$pkgdir/usr/bin/newleaf"
-    cd "$_name"
-    mv configuration.sample.py configuration.py
+    cd "$_repo"
     mkdir -p "$pkgdir/opt/newleaf"
     cp -r * "$pkgdir/opt/newleaf"
 }
