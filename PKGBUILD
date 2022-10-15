@@ -2,7 +2,7 @@
 pkgname=cloneit-git
 pkgver=0.1.0+30.g02a4942
 pkgrel=1
-pkgdesc="A cli tool to download specific GitHub directories or files ."
+pkgdesc="A cli tool to download specific GitHub directories or files."
 arch=('x86_64' 'aarch64')
 url="https://github.com/alok8bb/cloneit"
 license=('MIT')
