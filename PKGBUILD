@@ -1404,7 +1404,7 @@ package() {
     echo "--- End listing contents of $pkgdir ---"
 
     # Remove certificate. No need to package certificate.
-    rm -f $pkgdir$linphone_desktop_install_prefix/share/linphone/rootca.pem
+    # rm -f $pkgdir$linphone_desktop_install_prefix/share/linphone/rootca.pem
 
     export NO_BRP_CHECK_RPATH=true
 
