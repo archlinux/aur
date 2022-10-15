@@ -2,20 +2,21 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.22.2
+pkgver=0.22.3
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
 depends=(python-sympy python-scipy python-numba python-matplotlib python-tqdm)
 makedepends=(python-setuptools)
-# checkdepends=(python-pytest python-h5py python-pandas napari)
+checkdepends=(python-pytest python-h5py python-pandas napari)
 optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-pandas: for handling tabular data'
-  'python-tqdm: for display progress bars during calculations'
-  'napari: for displaying images interactively')
+  'napari: for displaying images interactively'
+  'python-ipywidgets: for interactive widgets'
+  'python-numba-mpi: for njittable MPI wrapper')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9df879035972a7bbe38a97e41432c63ae27449372d2c4f292a95afb5db8136a80890f3d06187565b189e3596e0fd3e99301daa2b30cc11197583af28155ca754')
+sha512sums=('2faf77ed30e0c81d8bf05436fa8e964b6447a73885e7c673932ad478902283952de2bfcb23e945900e2799f3ae292f14c796c20c779536d6bb96cfe2f54d54e7')
 
 build() {
   cd ${_base}-${pkgver}
