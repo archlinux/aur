@@ -1,7 +1,7 @@
-From 2535fbde890f14c78b750139fcf87d1143850626 Mon Sep 17 00:00:00 2001
+From 53d3043700195a20fe3d308707e43b90b6bff0b1 Mon Sep 17 00:00:00 2001
 From: Johannes Weiner <hannes@cmpxchg.org>
 Date: Tue, 2 Aug 2022 12:28:11 -0400
-Subject: [PATCH 02/13] mm: vmscan: fix extreme overreclaim and swap floods
+Subject: [PATCH 2/4] mm: vmscan: fix extreme overreclaim and swap floods
 
 During proactive reclaim, we sometimes observe severe overreclaim, with
 several thousand times more pages reclaimed than requested.

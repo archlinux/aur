@@ -68,8 +68,8 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.1
-pkgrel=2
+pkgver=6.0.2
+pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -93,37 +93,19 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
   0003-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
-  0004-wifi-cfg80211-fix-u8-overflow-in-cfg80211_update_not.patch
-  0005-wifi-cfg80211-mac80211-reject-bad-MBSSID-elements.patch
-  0006-wifi-mac80211-fix-MBSSID-parsing-use-after-free.patch
-  0007-wifi-cfg80211-ensure-length-byte-is-present-before-a.patch
-  0008-wifi-cfg80211-fix-BSS-refcounting-bugs.patch
-  0009-wifi-cfg80211-avoid-nontransmitted-BSS-list-corrupti.patch
-  0010-wifi-mac80211_hwsim-avoid-mac80211-warning-on-bad-ra.patch
-  0011-wifi-mac80211-fix-crash-in-beacon-protection-for-P2P.patch
-  0012-wifi-cfg80211-update-hidden-BSSes-to-avoid-WARN_ON.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('8ede745a69351ea0f27fe0c48780d4efa37ff086135e129358ce09694957e8f9'
+sha256sums=('a13c26388cacccb684cd9f51109596a280c8186b7e95174d31ee7c5718e95c9d'
             'SKIP'
             '6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            'ef7a2c6f17b6a8aca10871003afa47c1dca17d56ca5a194062ebba6b9f6a24c9'
-            '6a51df34248c14c1a8af6aee404b6c788611da15659401867e8cea75b8d3dee2'
-            '4bd3fd1f025435429d1cdb1d4d70b30b957b8b2c0993f05e7d5cd459ed698ff6'
-            '675b4ed06c1f812b34cc08b50a5d4e0252e439670c600c8a7c203d04887c19f5'
-            '59afea6cef75bfa06e624123b49e03fb3ae7e47c5cc14f269aed053569381105'
-            '3d51b87761b2a6c8238222260cce44c3269df7d852512d58523509b10fa6e31b'
-            'fc75fc3747a4d9d87aa8db1e7adeae7980d14af96d1ea40d081994c7be981359'
-            '01f0b2ebd3da6406f43ebbd775583b8b982d227e2c00eb3ce857dd101ddbbb84'
-            'fe792302abc37bcfb8c55a200e68496f848a9ffb0183a3f56acb7125a782c881'
-            'bf75dbfbfdcaef2b4732b33711ab9dcaec2533812ad8261def6594754e7b7122'
-            'a8f83077419461dcc7733e4c386f8bac5bea179f464e6ec6dc00cbf220c5ea8e'
-            '9a477f560a74476d89a3e874fbddec8a1df242f5dac1e7a4f84bab2afad24789')
+            '44da7179cd7ec2eb4a5e5b170a7f68bb1508a2e2694f943bf131bbd81dfddc8c'
+            'd6c9579937204568f3bb57b2f45c1f5aedb0596a9358a58bbbcd74dc8bad1735'
+            '23254c5dd2006cf83a605bf39d575a5ff3f3bf647dff2902b4a8ed66358b8459')
 
 prepare() {
   cd linux-${pkgver}
