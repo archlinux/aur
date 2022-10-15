@@ -5,6 +5,7 @@ pkgbase = minetest-berzerkpt
 	url = https://content.minetest.net/packages/carlos_rupp/berzerkpt/
 	arch = any
 	license = MIT
+	makedepends = unzip
 	depends = minetest-common
 	noextract = berzerkpt-1.0.2.zip
 	options = !strip
