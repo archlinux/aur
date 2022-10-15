@@ -5,6 +5,7 @@ pkgbase = minetest-arcade3d
 	url = https://content.minetest.net/packages/Thunder1035/pacman/
 	arch = any
 	license = GPLv3
+	makedepends = unzip
 	depends = minetest-common
 	noextract = pacman-2022.04.26.zip
 	options = !strip
