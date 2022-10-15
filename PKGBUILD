@@ -1,7 +1,7 @@
 # Maintainer: spaceslug <me at spaceslug dot no>
 pkgname=dwarffortress-linuxdwarfpack-appimage
-pkgver=0.47.05_r6
-pkgrel=2
+pkgver=0.47.05_r7
+pkgrel=1
 pkgdesc="The AppImage of lnp-forge built LinuxDwarfPack appimage"
 arch=('x86_64')
 url="https://github.com/McArcady/lnp-forge"
@@ -13,7 +13,7 @@ optdepends=('nvidia-utils: If you have nvidia graphics'
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 _filename=Dwarf_Fortress-${pkgver//_/-}-x86_64.AppImage
 source=("${url}/releases/download/${pkgver//_/-}/${_filename}")
-sha256sums=('3de45fb66f5fca546e8dab7e75a262a6bb1fcf3c5431ce8b66369be43a46b0e7')
+sha256sums=('aebb171bf69721e9441c4fb28a9ee4e779b1858b3e087e9a6ad4de0cda8500e5')
 INSTALL_FOLDER="/opt/${pkgname}"
 INSTALL_PATH="${INSTALL_FOLDER}/${_filename}"
 
