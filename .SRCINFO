@@ -1,0 +1,16 @@
+pkgbase = sddm-theme-industrial
+	pkgdesc = Industrial SDDM theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MaKaNu/sddm-industrial
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	source = git+https://github.com/MaKaNu/sddm-industrial.git
+	md5sums = SKIP
+
+pkgname = sddm-theme-industrial
