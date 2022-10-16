@@ -5,7 +5,7 @@
 pkgbase='ceph'
 pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
 _zstdver=1.5.2
-pkgver=16.2.10
+pkgver=17.2.4
 pkgrel=1
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
@@ -100,7 +100,7 @@ source=(
   # not sure why yet, need to ask upstream for help
   'ceph-16.2.7-delete-test-librados-asio.patch'
 )
-sha512sums=('ae164c24462c3e08763d202acc3e2fe86ffc09f312b5059bae07863e804fc47bd158fc130aa2923246ffcfe26ae6d6d9317326aec96373226e6f9030d7123c8b'
+sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40d94b802db5b344faeab7c4e48d65c8ade47d0cbf0eaa0e7ddf399b09a279d'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             'e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e'
             '9e6bb46d5bbdc5d93f4f026b2a8d6bdb692d9ea6e7018c1bb0188d95ea8574c76238d968b340fd67ddaa3d8183b310e393e3549dc3a63a795fde696413b0ca94'
@@ -358,7 +358,7 @@ package_ceph-mgr() {
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
   provides=("ceph-mgr=${pkgver}-${pkgrel}")
-  conflicts=('ceph<15.2.1-1' 'ceph-mgr-bin')
+  conflicts=('ceph<16.2.1-1' 'ceph-mgr-bin')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
