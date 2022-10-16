@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts510
 pkgver=5.10.148
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -18,6 +18,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-add_skip_encoding_bpf_enum64_option_to_pahole.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -27,7 +28,8 @@ validpgpkeys=(
 sha256sums=('12523f6be221067094ec541b196bce70493f7f44f031b3c4711d82e290c6e956'
             'SKIP'
             '2367f59976f6fc902d226229564a98f5d1df3a91e742a292c3deccc3e4a8ffc0'
-            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e')
+            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
+            '7bb98f326314557afb158902c5eec8e0e42cf3f973ddffe78e1850f0309dd780')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
