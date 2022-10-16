@@ -1,7 +1,7 @@
 pkgbase = google-drive-ocamlfuse-git
 	pkgdesc = FUSE-based file system backed by Google Drive, written in OCaml
 	pkgver = r667.d664318
-	pkgrel = 2
+	pkgrel = 3
 	url = https://astrada.github.io/google-drive-ocamlfuse/
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = google-drive-ocamlfuse-git
 	depends = gapi-ocaml>=0.4.2
 	depends = ocaml-sqlite3>=1.6.1
 	depends = ocaml-extlib
+	depends = tiny_httpd>=0.6
 	makedepends = git
 	makedepends = dune
 	makedepends = ocaml-ounit
