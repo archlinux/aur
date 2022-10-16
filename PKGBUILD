@@ -1,9 +1,10 @@
-# Maintainer: alex4ip <alex4ip@gmail.com>
-# Contiributer: Alex Ellis <alex@openfaas.com>
+# Maintainer: ayr-ton <ayrton@riseup.net>
+# Contributer: alex4ip <alex4ip@gmail.com>
+# Contributer: Alex Ellis <alex@openfaas.com>
 
 pkgname=arkade-bin
 _pkgname=arkade
-pkgver=0.8.28
+pkgver=0.8.46
 pkgrel=1
 epoch=1
 pkgdesc='Your one-stop CLI for Kubernetes. provides a simple CLI with strongly-typed flags to install charts and apps to your cluster in one command.'
@@ -25,7 +26,7 @@ provides=('arkade')
 _OWNER=alexellis
 
 case "${CARCH}" in
-  x86_64)    _CARCH=''        && sha256sums=('b1e1035edb936efbd0635835962e03474011e20e6b23a46dfc8b1fc6eaea5fe3');;
+  x86_64)    _CARCH=''        && sha256sums=('9bc9af1ca4da12f1041ad0029484bec14b33e0a87c35fcf07e7f901be53497b2');;
   aarch64)   _CARCH='-arm64'  && sha256sums=('SKIP');;
   arm*)      _CARCH='-armhf'  && sha256sums=('SKIP');;
 esac
