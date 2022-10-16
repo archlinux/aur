@@ -1,6 +1,6 @@
 # Maintainer: Reinhold Gschweicher <pyro4hell@gmail.com>
 pkgname=infinisim-git
-pkgver=r50.8861b98
+pkgver=r79.e4a3aa0
 pkgrel=1
 pkgdesc="Simulator for InfiniTime user interface without needing a PineTime "
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -51,6 +51,8 @@ prepare() {
 	cd "$srcdir/${pkgname}"
 	# install lv_font_conv dependency to local directory
 	npm install lv_font_conv@1.5.2
+	# install lv_img_conv dependency to local directory
+	npm install ts-node@10.9.1 @swc/core lv_img_conv@0.3.0
 	git submodule init
 	git config submodule.InfiniTime.url "$srcdir/InfiniTime"
 	git config submodule.libpng.url "$srcdir/libpng"

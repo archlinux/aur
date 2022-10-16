@@ -1,6 +1,6 @@
 pkgbase = infinisim-git
 	pkgdesc = Simulator for InfiniTime user interface without needing a PineTime
-	pkgver = r50.8861b98
+	pkgver = r79.e4a3aa0
 	pkgrel = 1
 	url = https://github.com/InfiniTimeOrg/InfiniSim
 	arch = i686
