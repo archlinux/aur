@@ -1,0 +1,13 @@
+pkgbase = unfurl-bin
+	pkgdesc = Pull out bits of URLs provided on stdin
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/tomnomnom/unfurl
+	arch = x86_64
+	license = MIT
+	provides = unfurl
+	conflicts = unfurl
+	source = unfurl-bin-0.4.3.tar.gz::https://github.com/tomnomnom/unfurl/releases/download/v0.4.3/unfurl-linux-amd64-0.4.3.tgz
+	b2sums = SKIP
+
+pkgname = unfurl-bin
