@@ -4,11 +4,14 @@ _pkgname=fefeblog-consoleview
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=20221016.02.r5.20221016.aebf33b
-pkgrel=1
+pkgrel=2
 pkgdesc="Simble bash script to view 'Fefes Blog' (http://blog.fefe.de/) on the console."
 url="https://gitlab.com/dreieckli/fefeblog-consoleview"
 arch=('any')
-license=('GPL3')
+license=(
+  'GPL3'
+  'custom: logo'
+)
 groups=()
 depends=(
   "bash"
@@ -58,4 +61,5 @@ package() {
   install -v -D -m644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -v -D -m644 "logo.jpg" "${pkgdir}/usr/share/doc/${_pkgname}/logo.jpg"
   install -v -D -m644 "COPYING.GPL3.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPL3.txt"
+  install -v -D -m644 "logo.info.md" "${pkgdir}/usr/share/licenses/${pkgname}/logo.info.md"
 }
