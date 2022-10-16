@@ -4,8 +4,8 @@
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=3
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron17' 'libappindicator-gtk3')
@@ -16,7 +16,7 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-
         "${_pkgname}"
         "${_pkgname}.png"
         "${_pkgname}.desktop")
-sha256sums=('6b6218a5a63baff115d9953347109b95c736acf8ee70206726a45ce79e7f056e'
+sha256sums=('7617189b6433129e021b93ee29e6d3a9d1c6b382b92891a0b0738b2dfe52cc34'
             'cd7961420bae8fb54b8523bb8b3190ce1cfb584b73f391bad52ca7a354b1b76f'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             'e8b7502721d837ee056eeb47fe38cbe23d6a9d6fff8228b976543e33d74ea2e5')
