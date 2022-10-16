@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
 pkgver=0.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
 license=('GPL')
-depends=('leptonica' 'pyside6' 'python-pytesseract' 'wl-clipboard')
+depends=('leptonica' 'pyside6' 'python-certifi' 'python-pytesseract' 'wl-clipboard')
 makedepends=('python-pip' 'python-poetry')
-#checkdepends=('python-certifi' 'python-levenshtein' 'python-pydocstyle' 'python-pytest-cov' 'python-toml')
+#checkdepends=('python-levenshtein' 'python-pydocstyle' 'python-pytest-cov' 'python-toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
