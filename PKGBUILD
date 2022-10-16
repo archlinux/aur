@@ -4,7 +4,7 @@ _pkgname=dooble
 _repourl="https://github.com/textbrowser/dooble"
 
 pkgname=dooble-bin
-pkgver=2022.06.15
+pkgver=2022.10.15
 pkgrel=1
 pkgdesc="Dooble is the scientific browser"
 arch=('x86_64')
@@ -18,10 +18,8 @@ source=(
   "LICENSE-${pkgver}::${_repourl}/raw/${pkgver}/LICENSE"
 )
 noextract=("Dooble-${pkgver}_amd64.deb")
-sha256sums=(
-  '5b50db570f79f6ac2a95fcb078f440e37d539d5d93aea02cda4276a166e12fbe'
-  'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
-)
+sha256sums=('b627238a1a77a75b7666101861c2deb6620c0350ee37e0ed73b1cc430c176ab3'
+            'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
 
 package() {
   bsdtar -O -xf "Dooble-${pkgver}_amd64.deb" data.tar.zst | bsdtar -C "${pkgdir}" -xf -
