@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=6673
-_version=1.0.6673
+_tag=6694
+_version=1.0.6694
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
