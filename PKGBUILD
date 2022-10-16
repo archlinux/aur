@@ -2,11 +2,12 @@
 
 pkgname=keyd
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/$pkgname"
 license=('MIT')
+makedepends=(git)
 optdepends=(
 	'python3: for keyd-application-mapper'
 )
