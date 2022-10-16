@@ -1,7 +1,7 @@
 pkgbase = r-gghighlight
 	pkgdesc = Highlight Lines and Points in 'ggplot2'
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gghighlight
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = r-gghighlight
 	optdepends = r-sf
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/gghighlight_0.3.3.tar.gz
-	sha256sums = 018d26b23a0918e5191501997daf9ccb9680692d879e56fef017cb086cb94e47
+	source = https://cran.r-project.org/src/contrib/gghighlight_0.4.0.tar.gz
+	sha256sums = ede2df12f935eb6517624e2659e807165f2b49ca3c862f2c10ef48f3deb0cc6d
 
 pkgname = r-gghighlight
