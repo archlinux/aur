@@ -3,7 +3,7 @@
 _pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
 pkgver=r667.d664318
-pkgrel=1
+pkgrel=2
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
@@ -28,23 +28,23 @@ source=('git+https://github.com/astrada/google-drive-ocamlfuse.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
 
     export OCAMLPATH="$(ocamlfind printconf destdir)"
 
-    dune build -p "$pkgname"
+    dune build -p "$_pkgname"
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
 
-    dune install "$pkgname" --destdir="${pkgdir}" --prefix="/usr" --libdir="$(ocamlfind printconf destdir)"
+    dune install "$_pkgname" --destdir="${pkgdir}" --prefix="/usr" --libdir="$(ocamlfind printconf destdir)"
 
     install -dm755 "${pkgdir}/usr/share/"
 
