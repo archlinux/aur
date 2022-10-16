@@ -1,22 +1,27 @@
 # Maintainer: Zhiya Luo <luozhiya@petalmail.com>
 
 pkgname=mogan
-pkgver=r199.ff87305
+pkgver=1.1.1_rc3_r241.241
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
 arch=('x86_64')
 url='https://github.com/XmacsLabs/mogan'
 license=('GPL3')
-depends=("qt5-base" "qt5-svg" "freetype2" "sqlite" "libpng" "libiconv" "zlib" "libjpeg" "curl")
+depends=("qt5-base" "qt5-svg" "freetype2" "sqlite" "libpng" "libiconv" "zlib" "libjpeg" "curl" "texlive-core" "python" "libxext")
 makedepends=("git" "cmake" "ninja")
-optdepends=()
+optdepends=(
+  'gawk: conversion of some files'
+  'ghostscript: rendering ps files'
+  'imagemagick: convert images'
+  'aspell: spell checking')
 source=("${pkgname}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local _pkgver=$(awk -F '\"' '/set \(XMACS_VERSION / {print $2}' CMakeLists.txt | awk '{ sub(/-/, "_"); print $0}')_r$(git rev-list --count HEAD).$(git rev-list --count HEAD)
+  echo "$_pkgver"
 }
 
 prepare() {
