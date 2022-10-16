@@ -2,16 +2,16 @@
 
 pkgname=menugenerator
 _pkgname=MenuGenerator
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A simple menu generator for fluxbox openbox jwm that uses xdg-menu."
 arch=('any')
-url="https://github.com/BlackCodec/MenuGenerator/tree/master"
+url="https://github.com/BlackCodec/MenuGenerator/"
 license=('GPL')
 depends=('python-xdg' 'python-cairosvg')
 optdepends=('lxmenu-data: menu data')
-source=("https://github.com/BlackCodec/MenuGenerator/archive/$pkgver.zip")
-md5sums=('974710695a3509b87c711811ae593105')
+source=("https://github.com/BlackCodec/MenuGenerator/archive/refs/tags/$pkgver.zip")
+md5sums=('2d42be97efd7655894a0f6ed54ed19c6')
 
 package() {
    install -Dm 755 "$srcdir/$_pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
