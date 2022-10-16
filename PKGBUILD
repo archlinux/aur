@@ -1,7 +1,7 @@
 # Maintainer: Yaroslav de la Peña Smirnov <yps@yaroslavps.com>
 
 pkgname=revela
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A static web image gallery generator."
 arch=('any')
