@@ -9,7 +9,7 @@
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
 pkgname=conky-git
-pkgver=1.13.1.r5.g65890ea2
+pkgver=1.15.0.r2.g186f2162
 pkgrel=1
 pkgdesc="Lightweight system monitor for X"
 url="https://github.com/brndnmtthws/conky"
@@ -18,7 +18,7 @@ arch=('x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2')
 depends=(
   'glibc' 'glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft' 'imlib2'
-  'libxml2' 'libpulse' 'libxnvctrl' 'systemd-libs' 'ncurses' 'curl'
+  'libxml2' 'libpulse' 'libxnvctrl' 'systemd-libs' 'ncurses' 'curl' 'pandoc'
   libncursesw.so libXNVCtrl.so libsystemd.so libpulse.so libcurl.so)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -68,7 +68,7 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   make -C build DESTDIR="$pkgdir" install
   install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
-  install -Dm644 extras/vim/syntax/conkyrc.vim -t \
+  install -Dm644 extras/vim/syntax/conkyrc.vim.j2 -t \
     "$pkgdir"/usr/share/vim/vimfiles/syntax/
   install -Dm644 extras/vim/ftdetect/conkyrc.vim -t \
     "$pkgdir"/usr/share/vim/vimfiles/ftdetect/

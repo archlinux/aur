@@ -1,6 +1,6 @@
 pkgbase = conky-git
 	pkgdesc = Lightweight system monitor for X
-	pkgver = 1.13.1.r5.g65890ea2
+	pkgver = 1.15.0.r2.g186f2162
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = conky-git
 	depends = systemd-libs
 	depends = ncurses
 	depends = curl
+	depends = pandoc
 	depends = libncursesw.so
 	depends = libXNVCtrl.so
 	depends = libsystemd.so
