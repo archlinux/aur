@@ -53,10 +53,6 @@ source=(
   'ceph-13.2.2-dont-install-sysvinit-script.patch'
   'disable-empty-readable.sh-test.patch'
 
-  # Fixes an encoding test's expected output to include the new stuff from c++ 17
-  # ... or at least, I think that's what is causing it
-  'fix-test-encoding-exception-wording.patch'
-
   # Add a missing dep to a tox virtualenv (python-nose)
   'fix-test-import-tasks-deps.patch'
 
@@ -74,7 +70,6 @@ sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40
             '8ec0d668fefee12d2c7f5b5297dd81fc6a559f5823d069e6395d9b4240110eb8f95049d3054697a459948c1f3784b4450539849cf9d7f3b1aa1c7fbd96c475df'
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
-            '380ae6d3a768dacaaf2bbe634aa4b1d296da3318553256e4bbae747eb477549968a6c4333b9d212d4ea2db74ae554ac3c4edd7408f46f5f86971d84284748686'
             '7297ec3824815f6f5e534f225ae10f0b0c046713c062adf2cb7af12e44db6f699948a87851fc24b7c038bfa95646a9b66c6256c6bad9253f469b75cd4ed81c7d'
             '3774cbc1a979ee8bf7138b96defcf69499444afe0b7186b21feac3453a3a5ec93741f5942d256d93999e9bc306c8d018206893e04e1a3eb9e03593105d9f5791'
             '66770a80ba4e05ea72d4809cb5819cce7499ea7523b85b1a57370df68de1d7f6f94b1c10d0f9f9a3c8e6a86d0419434c70778c568cd06a0dd2e6126631a3355c')
