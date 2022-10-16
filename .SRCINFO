@@ -1,0 +1,12 @@
+pkgbase = tgfs-ui-bin
+	pkgdesc = GUI for TGFS
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tg-fs/tgfs-ui
+	arch = any
+	license = GPL
+	depends = tgfs-git
+	source = tgfs-ui.tar.gz::https://github.com/tg-fs/tgfs-ui/releases/download/0.0.1/tgfs_ui_bundle.tar.gz
+	sha256sums = 6bdf9eef2e7725fc6d687e51a2e3d4a0bd8b34c9ba8346d236635d80750656d8
+
+pkgname = tgfs-ui-bin
