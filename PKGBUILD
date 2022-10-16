@@ -2,16 +2,16 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.16.10
+pkgver=11.16.14
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
 url="https://hst-crds.stsci.edu/static/users_guide/index.html"
 license=('BSD')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
-checkdepends=('python-pytest' 'python-lockfile' 'python-filelock' 'python-mock' 'python-astropy' 'python-nose' 'python-pylint' 'python-yaml' 'python-asdf')
+checkdepends=('python-pytest' 'python-lockfile' 'python-filelock' 'python-mock' 'python-astropy' 'python-nose' 'python-pylint' 'python-yaml' 'python-asdf' 'python-beautifulsoup4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a9bf010276fef8357fb26e3a9e488703')
+md5sums=('46d5198856c0b740bf1d93046212e9df')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
