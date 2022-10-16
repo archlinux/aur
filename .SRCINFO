@@ -10,7 +10,7 @@ pkgbase = gtklock
 	depends = wayland
 	depends = gtk3
 	depends = gtk-layer-shell
-	source = https://github.com/jovanlanik/gtklock/archive/refs/tags/v1.4.1.tar.gz
+	source = gtklock-1.4.1.tar.gz::https://github.com/jovanlanik/gtklock/archive/refs/tags/v1.4.1.tar.gz
 	sha256sums = 76973caec1cc0e9d2d2e88d32ae1fab67bac93a10995755c6e66e5009ba8df85
 
 pkgname = gtklock
