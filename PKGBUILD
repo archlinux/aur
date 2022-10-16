@@ -17,5 +17,5 @@ package() {
   cd ${pkgname}-${pkgver}
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
    install -Dvm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
-   setcap cap_net_raw+ep /usr/bin/tcpping
+   setcap cap_net_raw+ep "${pkgdir}/usr/bin/tcpping"
 }
