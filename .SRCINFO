@@ -1,6 +1,6 @@
 pkgbase = clonezilla-unstable
 	pkgdesc = ncurses partition and disk imaging/cloning program
-	pkgver = 5.2.4
+	pkgver = 5.2.6
 	pkgrel = 1
 	url = https://clonezilla.org
 	arch = any
@@ -29,9 +29,9 @@ pkgbase = clonezilla-unstable
 	provides = clonezilla
 	conflicts = clonezilla
 	backup = etc/drbl/drbl-ocs.conf
-	source = https://free.nchc.org.tw/drbl-core/src/unstable/clonezilla-5.2.4.tar.xz
+	source = https://free.nchc.org.tw/drbl-core/src/unstable/clonezilla-5.2.6.tar.xz
 	source = usrbin.patch
-	sha256sums = 6764e08d8de8aeca4902d83b3a181c0016c045e0b69fe887f761d9ff82bc03e5
+	sha256sums = d5f3582921832555174133d033814879c6fd2b81bff837e876efb1f838109791
 	sha256sums = 9340f18b27a1b3b41c4935c5831f6503e4cadf333f03433769906da40a6e38e6
 
 pkgname = clonezilla-unstable
