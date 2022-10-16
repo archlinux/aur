@@ -1,8 +1,8 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pkgname=dooble
 _repourl="https://github.com/textbrowser/dooble"
-
 pkgname=dooble-bin
 pkgver=2022.10.15
 pkgrel=1
