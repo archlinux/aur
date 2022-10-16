@@ -31,9 +31,19 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+# Unique compiler supported upstream is GCC
 ## Choose between GCC and CLANG config (default is GCC)
-if [ -z ${_compiler+x} ]; then
-  _compiler=gcc
+## Use the environment variable "_compiler=clang"
+if [ "${_compiler}" = "clang" ]; then
+  _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
+fi
+
+# Choose between the 4 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64 / config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
+# This will be overwritten by selecting any option in microarchitecture script
+# Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
+if [ -z ${_config+x} ]; then
+  _config=config_x86-64-v2
 fi
 
 # Compress modules with ZSTD (to save disk space)
@@ -61,10 +71,10 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt
-_major=5.15
-pkgver=${_major}.55
-_branch=5.x
-_rt=48
+_major=6.0
+pkgver=${_major}.2
+_branch=6.x
+_rt=11
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
@@ -97,10 +107,10 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '1cf7890ca9ee7e5ac9d48d9bfc16802917f87212304341c2769c7d986d9682ab'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+            '96f9e8f40c36b84b501fbaa9cc1d66cb390390c47314cb7384bbcd1581277ece'
+            'dda2e928f3b02c28e71d4e99f90b499b4c99a265d30fceec7dc1dd7082afc285')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -128,12 +138,11 @@ prepare() {
   done
 
   # Applying configuration
-  cp -vf CONFIGS/xanmod/${_compiler}/config .config
+  cp -vf CONFIGS/xanmod-rt/gcc/${_config} .config
   # enable LTO_CLANG_THIN
   if [ "${_compiler}" = "clang" ]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
-    _LLVM=1
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -163,10 +172,10 @@ prepare() {
   fi
 
   # Let's user choose microarchitecture optimization in GCC
-  ../choose-gcc-optimization.sh $_microarchitecture
-  # Disable CONFIG_GENERIC_CPU2 if we have choosen another microarchitecture
-  # https://github.com/xanmod/linux/issues/240
-  [ "$_microarchitecture" = "0" ] || scripts/config --disable CONFIG_GENERIC_CPU2
+  # Use default microarchitecture only if we have not choosen another microarchitecture
+  if [ "$_microarchitecture" -ne "0" ]; then
+    ../choose-gcc-optimization.sh $_microarchitecture
+  fi
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
@@ -193,20 +202,20 @@ prepare() {
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make ${_compiler_flags} LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit 1
     fi
   fi
 
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  make ${_compiler_flags} olddefconfig
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   if [ "$_makenconfig" = "y" ]; then
-    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+    make ${_compiler_flags} nconfig
   fi
 
   # save configuration for later reuse
@@ -215,7 +224,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
+  make ${_compiler_flags} all
 }
 
 _package() {
