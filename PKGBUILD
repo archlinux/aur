@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=octosql
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='A CLI tool which lets you query a plethora of databases and file formats using SQL'
 arch=('x86_64')
@@ -10,12 +10,13 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='0d9d1b108c0d13b960c5c61a06613e66aaec3eef'
+_commit='2e6b0cdb2fc53660ebebdc243bd397df348b0351'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
+
   git describe --tags | sed 's/^v//'
 }
 
@@ -56,6 +57,7 @@ build() {
 
 check() {
   cd "$pkgname"
+
   go test -v ./...
 }
 
