@@ -55,12 +55,6 @@ source=(
   'ceph-15.2.14-include-memory.patch'
   'disable-empty-readable.sh-test.patch'
 
-  # Fix breaking change to PY_SSIZE_T_CLEAN macro defintion requirements in python >= 3.10
-  # by defining the macro ahead of any calls.
-  # https://tracker.ceph.com/issues/53441
-  # https://github.com/ceph/ceph/pull/44112
-  'fix-python310-ssize-macro.patch'
-
   # RGW string header is missing includes that are required when boost is >=1.75
   # https://tracker.ceph.com/issues/50924
   'ceph-16.2.4-rgw-string-missing-includes.patch'
@@ -92,7 +86,6 @@ sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40
             '82c1608928ee669ef60b8930ce82c443152c446e669e7bde9ce32f78571afb19a9620c3818b69ac8cb3ea33e7d7ac40f77c89162c71b19b157336d907fa23e3d'
             'f1b54767d8d3c12ca9fe9eafd0590efa8560a52b5c18f1121f8fd8b7e69d70578bdeae9a1803612a8a8d0032f039f8786b5152a889ba359850e3d3d30a6af8c7'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
-            'cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5'
             '1c43b1d466b39b6ad46dd5eb9e5dea4708142ba911b6e901daff427de7889c2018e69e39d5c6b40dc6f979e8533114716ad57b25f7dc3d57e012b5c47a5efb16'
             '6be59a31f0cad390bf9f40041c05049e7d525c6910eab200a5b2a707d59cb80f5119651a86a865680a074a021ff3be8cc3769eb5bf1978691dc2cd91d96e500c'
             '380ae6d3a768dacaaf2bbe634aa4b1d296da3318553256e4bbae747eb477549968a6c4333b9d212d4ea2db74ae554ac3c4edd7408f46f5f86971d84284748686'
