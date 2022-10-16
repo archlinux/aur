@@ -2,12 +2,12 @@
 _projectname='luv'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.11'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/aantron/$_projectname"
 license=('MIT')
-depends=('libuv' 'ocaml>=4.02.0' 'ocaml-ctypes>=0.14.0' 'ocaml-result')
+depends=('libuv' 'ocaml>=4.02.0' 'ocaml-compiler-libs' 'ocaml-ctypes>=0.14.0' 'ocaml-result' 'ocaml-stdlib-shims')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
