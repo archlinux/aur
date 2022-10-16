@@ -3,7 +3,7 @@
 _pkgname=adhocspot-script
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=20190514.6+r4.20220207.ffc4473
+pkgver=20221016.01+r5.20220207.a6f3c78
 pkgrel=1
 pkgdesc="Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption."
 url="https://gitlab.com/dreieckli/adhocspot-script"
