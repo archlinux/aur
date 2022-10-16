@@ -4,11 +4,14 @@ _pkgname=adhocspot-script
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=20221016.01.r14.20221016.81f5146
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption."
 url="https://gitlab.com/dreieckli/adhocspot-script"
 arch=('any')
-license=('GPL3')
+license=(
+  'GPL3'
+  'custom: craiyon.com'
+)
 groups=()
 depends=(
   "bash"
@@ -70,6 +73,8 @@ package() {
 
   install -v -D -m755 "adhocspot.sh" "${_execdir}/adhocspot.sh"
   install -v -D -m644 "README.md" "${_docdir}/README.md"
+  install -v -D -m644 "logo.jpg" "${_docdir}/logo.jpg"
   install -v -D -m644 "COPYING.GPL3.txt" "${_licdir}/COPYING.GPL3.txt"
+  install -v -D -m644 "logo.copyingnotice.txt" "${_licdir}/logo.copyingnotice.txt"
   # install -v -d -m755 "${_rundir}"
 }
