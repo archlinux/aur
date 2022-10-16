@@ -2,7 +2,7 @@
 # Contributor: nerflad (nerflad@gmail.com)
 pkgname=gapi-ocaml
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple OCaml client for Google Services.'
 arch=('x86_64')
 url='https://astrada.github.io/gapi-ocaml/'
@@ -40,5 +40,5 @@ package() {
 
     install -dm755 "${pkgdir}/usr/share/"
 
-    mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+    #mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
