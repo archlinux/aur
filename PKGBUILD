@@ -1,14 +1,15 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=buteo
 pkgname=$_pkgname-git
-pkgver=r1.39dcd65
+pkgver=r10.1762c37
 pkgrel=1
+epoch=1
 pkgdesc="A XMPP based Groupware application"
 arch=('x86_64' 'i686')
 url="https://buteo.codeberg.page/"
 license=('GPL3')
-depends=('libstrophe' 'glib2' 'gpgme' 'gtk3' 'libvc')
-makedepends=('git')
+depends=('gtkmm3' 'libstrophe' 'boost-libs')
+makedepends=('git' 'autoconf-archive' 'libtool' 'boost')
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'eagle-xmpp-git')
 replaces=('eagle-xmpp-git')
