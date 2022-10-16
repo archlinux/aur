@@ -59,10 +59,6 @@ source=(
   # https://tracker.ceph.com/issues/50924
   'ceph-16.2.4-rgw-string-missing-includes.patch'
 
-  # Updates more-itertools.py to a version that doesn't depend on removed classes in
-  # python >= 3.10
-  'fix-python310-update-mgr-more-itertools.patch'
-
   # Fixes an encoding test's expected output to include the new stuff from c++ 17
   # ... or at least, I think that's what is causing it
   'fix-test-encoding-exception-wording.patch'
@@ -87,7 +83,6 @@ sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40
             'f1b54767d8d3c12ca9fe9eafd0590efa8560a52b5c18f1121f8fd8b7e69d70578bdeae9a1803612a8a8d0032f039f8786b5152a889ba359850e3d3d30a6af8c7'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
             '1c43b1d466b39b6ad46dd5eb9e5dea4708142ba911b6e901daff427de7889c2018e69e39d5c6b40dc6f979e8533114716ad57b25f7dc3d57e012b5c47a5efb16'
-            '6be59a31f0cad390bf9f40041c05049e7d525c6910eab200a5b2a707d59cb80f5119651a86a865680a074a021ff3be8cc3769eb5bf1978691dc2cd91d96e500c'
             '380ae6d3a768dacaaf2bbe634aa4b1d296da3318553256e4bbae747eb477549968a6c4333b9d212d4ea2db74ae554ac3c4edd7408f46f5f86971d84284748686'
             '7297ec3824815f6f5e534f225ae10f0b0c046713c062adf2cb7af12e44db6f699948a87851fc24b7c038bfa95646a9b66c6256c6bad9253f469b75cd4ed81c7d'
             '3774cbc1a979ee8bf7138b96defcf69499444afe0b7186b21feac3453a3a5ec93741f5942d256d93999e9bc306c8d018206893e04e1a3eb9e03593105d9f5791'
