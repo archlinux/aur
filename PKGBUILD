@@ -1,5 +1,5 @@
 pkgname=mingw-w64-zlib
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="A compression/decompression Library (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-gcc)
 url="http://www.zlib.net/"
 source=("http://zlib.net/zlib-${pkgver}.tar.gz")
 options=(!strip !buildflags staticlibs)
-sha256sums=('91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9')
+sha256sums=('b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
