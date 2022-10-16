@@ -11,7 +11,7 @@ depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plug
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('8c9bade24788d54160a2e1a0be167107072a96d25c8fccc60765e3026ffcb2fc41b6c518925c76b5f14724636402341c0dac07cc2ce0eb3fee3e0237537ad6b0')
+b2sums=('8e5c97f5e6c9db1a2e64693d69a894d04bbb941196f3497c8377509b245bbbdf51edb86d65c7da57449d6dff83b54d1a71d1ff545b96c0e0235b294641e4e93e')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build
