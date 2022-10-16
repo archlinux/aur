@@ -31,13 +31,14 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## NOTICE: clang config is not ready yet in 5.17.x
+# Unique compiler supported upstream is GCC
 ## Choose between GCC and CLANG config (default is GCC)
-if [ -z ${_compiler+x} ] || [ "$_compiler" = "clang" ]; then
-  _compiler=gcc
+## Use the environment variable "_compiler=clang"
+if [ "${_compiler}" = "clang" ]; then
+  _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
 fi
 
-# Choose between the 3 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
+# Choose between the 4 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
 # Possible values: config_x86-64 / config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
 # This will be overwritten by selecting any option in microarchitecture script
 # Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
@@ -137,12 +138,11 @@ prepare() {
   done
 
   # Applying configuration
-  cp -vf CONFIGS/xanmod/${_compiler}/${_config} .config
+  cp -vf CONFIGS/xanmod/gcc/${_config} .config
   # enable LTO_CLANG_THIN
   if [ "${_compiler}" = "clang" ]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
-    _LLVM=1
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -202,20 +202,20 @@ prepare() {
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make ${_compiler_flags} LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit 1
     fi
   fi
 
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  make ${_compiler_flags} olddefconfig
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   if [ "$_makenconfig" = "y" ]; then
-    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+    make ${_compiler_flags} nconfig
   fi
 
   # save configuration for later reuse
@@ -224,7 +224,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
+  make ${_compiler_flags} all
 }
 
 _package() {
