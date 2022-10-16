@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.877+0+gd8cca3d5
+pkgver=1.0.947+0+g154167d7
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
@@ -40,8 +40,7 @@ build() {
         cd "$pkgname"
         export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
         export PATH=$JAVA_HOME/bin:$PATH
-        mvn clean
-        mvn package -DskipTests -Dassembly.skipAssembly=true
+        mvn -DskipTests -Dassembly.skipAssembly=true clean package install
         mvn dependency:copy-dependencies -DincludeScope=runtime
 }
 
@@ -51,12 +50,12 @@ package() {
         DESTDIR="${pkgdir}/usr/lib/${pkgname}"
         CONFDIR="${pkgdir}/etc/${pkgname}"
 
-        install -Dm644 -t "${DESTDIR}/lib" target/dependency/*
-        install -Dm644 target/jicofo*.jar "${DESTDIR}/jicofo.jar"
+        install -Dm644 -t "${DESTDIR}/lib" jicofo/target/dependency/*
+        install -Dm644 jicofo/target/jicofo*.jar "${DESTDIR}/jicofo.jar"
 
         install -dm700 "${CONFDIR}"
         install -Dm600 -t "${CONFDIR}" "lib/logging.properties"
-        install -Dm600 "src/main/resources/reference.conf" "${CONFDIR}/jicofo.conf"
+        install -Dm600 "jicofo-selector/src/main/resources/reference.conf" "${CONFDIR}/jicofo.conf"
         install -Dm755 -t "${DESTDIR}" "resources/jicofo.sh"
         sed -i 's@/var/log/jitsi@/var/log/'${pkgname}'@' "${CONFDIR}/logging.properties"
 
