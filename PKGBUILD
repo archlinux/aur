@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=g4music
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="Play your music"
 arch=('x86_64' 'aarch64')
