@@ -1,7 +1,7 @@
 pkgbase = genimage
 	pkgdesc = tool to generate multiple filesystem and flash images from a tree
-	pkgver = 14
-	pkgrel = 2
+	pkgver = 16
+	pkgrel = 1
 	url = https://github.com/pengutronix/genimage
 	arch = x86_64
 	license = GPL2
@@ -10,15 +10,11 @@ pkgbase = genimage
 	optdepends = genext2fs
 	optdepends = qemu-headless: qemu-img
 	optdepends = qemu: qemu-img
-	optdepends = dtc
 	optdepends = uboot-tools: mkimage
 	optdepends = rauc
 	optdepends = android-simg2img: simg2img
 	optdepends = simg-tools: simg2img
-	source = genimage-14.tar.gz::https://github.com/pengutronix/genimage/archive/v14.tar.gz
-	source = index.html::https://github.com/pengutronix/genimage/blob/v14/README.rst
-	sha1sums = 043fed792abe0280b830c61765fd44870f1fdf61
-	sha1sums = SKIP
+	source = genimage-16.tar.gz::https://github.com/pengutronix/genimage/archive/v16.tar.gz
+	sha256sums = 5b5ff31e58afdcf71bd7b61f7d81ee43c4c0751276bc03d51f40475e1c66e51a
 
 pkgname = genimage
-
