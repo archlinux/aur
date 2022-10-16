@@ -70,8 +70,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-_major=5.19
-pkgver=${_major}.15
+_major=6.0
+pkgver=${_major}.2
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -106,9 +106,9 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            'dd90224e8a6d0a66e9325c229c1b96645d65c15034c658b94395b9ff8a201794'
+            'feb15accc0576f78eca9cbf8f8178419c4a2aeb3915a9bfefacf2467bcc55b35'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
