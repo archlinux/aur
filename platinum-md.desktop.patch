@@ -1,0 +1,14 @@
+--- squashfs-root/platinum-md.desktop
++++ squashfs-root/platinum-md.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+ Name=platinum-md
+-Exec=AppRun
++Exec=/usr/bin/platinum-md %F
+ Terminal=false
+ Type=Application
+ Icon=platinum-md
+ StartupWMClass=platinum-md
+-X-AppImage-Version=1.2.1
+ Comment=A Gui for NetMD
+ Categories=Utility;

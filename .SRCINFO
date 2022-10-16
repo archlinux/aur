@@ -1,0 +1,19 @@
+pkgbase = platinum-md-appimage
+	pkgdesc = Graphical MiniDisc NetMD conversion and upload
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://platinum-md.app/
+	arch = x86_64
+	license = MIT
+	provides = platinum-md
+	conflicts = platinum-md
+	noextract = platinum-md-1.2.1.AppImage
+	options = !strip
+	source = platinum-md-1.2.1.AppImage::https://github.com/gavinbenda/platinum-md/releases/download/v1.2.1/platinum-md-1.2.1.AppImage
+	source = platinum-md.desktop.patch
+	source = platinum-md.sh
+	sha256sums = 6a4abeabd75b86ce374662f0def34b0da2b8d46699d22ad50975fb20b63dab91
+	sha256sums = a8bee953fba1c2cc6decee246b248cbadfea494399596d689b014160cf99cc0e
+	sha256sums = 48cabf82aa718504665acb181fd0dc91f26e8e6f636482e96ae9827ddb2dcb81
+
+pkgname = platinum-md-appimage
