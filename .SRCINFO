@@ -1,0 +1,12 @@
+pkgbase = patr-bin
+	pkgdesc = CLI app for interacting with patr resources
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://patr.cloud
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = file:///build/patr-0.2.1.tar.xz
+	md5sums = SKIP
+
+pkgname = patr-bin
