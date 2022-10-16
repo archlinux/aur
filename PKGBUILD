@@ -39,7 +39,11 @@ makedepends=("zstd=${_zstdver}" 'bash' 'bc' 'boost' 'boost-libs' 'bzip2' 'c-ares
              'xfsprogs' 'xmlstarlet' 'xmlsec' 'xxhash' 'yaml-cpp' 'yasm' 'zlib' )
 checkdepends=('python-mock' 'python-nose' 'python-pycodestyle' 'python-pylint'
               'python-pytest' 'python-pytest-cov')
-# need newer version for LTO (https://github.com/ceph/ceph/pull/42602)
+# Despite the upstream suggesting that LTO is now possible, I still am unable
+# to set this. I get SEGVs in tests, and repeated mentions of C++ One Definition Rule
+# violations in builds -- probably causing the segfaults. Need to look into this some
+# more before I enable it.
+# See: https://github.com/ceph/ceph/pull/42602
 options=('emptydirs' '!lto')
 source=(
   "https://download.ceph.com/tarballs/${pkgbase}-${pkgver}.tar.gz"
