@@ -1,0 +1,14 @@
+pkgbase = qemu-patch-raspberry4
+	pkgdesc = A patched version of QEMU 6.2.50 for Raspberry4.
+	pkgver = 6.2.50
+	pkgrel = 1
+	url = http://www.qemu.org/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	source = git+https://github.com/Integral-Tech/qemu-patch-raspberry4
+	sha512sums = SKIP
+
+pkgname = qemu-patch-raspberry4
