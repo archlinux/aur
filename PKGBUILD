@@ -1,20 +1,19 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Horus645/swww"
 license=('GPL')
-depends=('gcc-libs' 'lz4')
+depends=('gcc-libs' 'lz4' 'libxkbcommon')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('15ac26a0212d4f75161ea7a00edaf3e377937deca2291f86f601a43c44f3c7d8')
+sha256sums=('194eb58cde544d19756c7d84cdf1290ed3fbaaa7144258d964445c6e146d9ff8')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    # tag v0.4.1 needs to write version to the lockfile
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
