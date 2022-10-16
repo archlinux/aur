@@ -1,6 +1,6 @@
 # Maintainer: Mordechai Hadad <mordechai.hadad01@gmail.com>
 pkgname=bob-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 epoch=
 pkgdesc="A version manager for neovim "
