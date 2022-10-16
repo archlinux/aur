@@ -3,8 +3,8 @@
 
 pkgname=python-imagededup
 _pkg="${pkgname#python-}"
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Finding duplicate images made easy'
 arch=('x86_64')
 url='https://github.com/idealo/imagededup'
@@ -16,12 +16,13 @@ depends=(
   'python-pywavelets'
   'python-scikit-learn'
   'python-scipy'
-  'python-tensorflow'
+  'python-pytorch'
+  'python-torchvision'
   'python-tqdm')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ec8b4d5bd23b50fdf12e3dea5eb680b6852cea13fea3a3ec506098ea91b54c24')
+sha256sums=('e16c5402ed19ea2b32b69293c12b0b58f093185cc04d392a18a77e6e984b0dcb')
 
 build() {
   cd "$_pkg-$pkgver"
