@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-git
-pkgver=1.0.6172+0+g0fe738315
+pkgver=1.0.6694+0+gb558d7936
 pkgrel=1
 pkgdesc="Jitsi Meet Web git build"
 arch=('any')
@@ -11,12 +11,11 @@ depends=()
 optdepends=("nginx")
 makedepends=(
         "git"
-        "python" "python2"
+        "python"
         "nodejs" "npm"
 )
 options=('!strip')
 backup=(
-  "etc/webapps/${pkgname}/logging_config.js"
   "etc/webapps/${pkgname}/config.js"
   "etc/webapps/${pkgname}/interface_config.js"
 )
@@ -32,7 +31,7 @@ pkgver() {
 
 build() {
         cd "$pkgname"
-        npm install --no-package-lock
+        npm install # --no-package-lock
         make
         make source-package
 }
@@ -61,7 +60,7 @@ package() {
         find "$DESTDIR" -type f -execdir sed -i "s#${srcdir}##g" "{}" \;
         find "$DESTDIR" -type d -exec chmod 755 {} \;
 
-        for i in interface_config.js logging_config.js config.js
+        for i in interface_config.js config.js
         do
                 install -Dm644 "$DESTDIR/${i}" "$CONFDIR/${i}"
                 ln -sf "/etc/webapps/${pkgname}/${i}" "$DESTDIR/${i}"
