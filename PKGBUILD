@@ -1,9 +1,10 @@
-# Maintainer: alex4ip <alex4ip@gmail.com>
-# Contiributer: Alex Ellis <alex@openfaas.com>
+# Maintainer: ayr-ton <ayrton@riseup.net>
+# Contributer: alex4ip <alex4ip@gmail.com>
+# Contributer: Alex Ellis <alex@openfaas.com>
 
 pkgname=k3sup-bin
 _pkgname=k3sup
-pkgver=0.12.0
+pkgver=0.12.8
 pkgrel=1
 epoch=1
 pkgdesc='k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any local or remote VM.'
@@ -22,7 +23,7 @@ provides=('k3sup')
 _OWNER=alexellis
 _suffix=""
 source=("$pkgname-$pkgver::https://github.com/${_OWNER}/${_pkgname}/releases/download/${pkgver}/${provides}${_suffix}")
-sha256sums=('e99ef7fa624bb33f8d9bc4cfad4bfa0c891ca78d909bb6e81bcd8ba53dd50f47')
+sha256sums=('80d3d3a3aab38617667330ed05adea8b332492b7fec54b29393f85de27045da9')
 
 package() {  
   install -Dm 755 "$srcdir/$pkgname-$pkgver" "${pkgdir}/usr/bin/${provides}"
