@@ -1,7 +1,7 @@
 pkgbase = mpv-gallery-view-git
 	pkgdesc = MPV gallery view for chapters and playlists.
 	pkgver = 0.0.0.r188
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/occivink/mpv-gallery-view
 	install = mpv-gallery-view.install
 	arch = any

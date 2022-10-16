@@ -2,7 +2,7 @@
 
 pkgname="mpv-gallery-view-git"
 pkgver=0.0.0.r188
-pkgrel=1
+pkgrel=2
 install="mpv-gallery-view.install"
 pkgdesc="MPV gallery view for chapters and playlists."
 arch=('any')
