@@ -45,31 +45,14 @@ source=(
   "https://download.ceph.com/tarballs/${pkgbase}-${pkgver}.tar.gz"
   'ceph.sysusers'
   "zstd-${_zstdver}.tar.gz::https://github.com/facebook/zstd/archive/v${_zstdver}.tar.gz"
-  #'glibc2.32-strsignal-compat-backported.patch'
   'ceph-14.2.0-cflags.patch'
   'ceph-12.2.4-boost-build-none-options.patch'
   'ceph-13.2.0-cflags.patch'
   'ceph-13.2.2-dont-install-sysvinit-script.patch'
-  # 'ceph-14.2.0-link-crc32-statically.patch'
   'ceph-14.2.0-cython-0.29.patch'
   'ceph-15.2.0-rocksdb-cmake.patch'
-  # 'ceph-15.2.4-system-uring.patch'
-  # 'ceph-15.2.5-missing-includes.patch'
   'ceph-15.2.14-include-memory.patch'
   'disable-empty-readable.sh-test.patch'
-  # 'qa-src-update-mypy-to-0.782.patch'
-  # 'fix-mgr-dashboard-partial_dict.patch'
-
-  # snappy 1.1.9 removed major parts from their namespace, including the
-  # snappy::uint32 which was an alias for std::uint32_t
-  # 'fix_snappy_namespace_uint.patch'
-
-  # Add python >= 3.8 workaround logic for incompatible modules
-  # This has been designated for upstream backporting into the octupus (15) and pacific (16) branches.
-  # TODO: check if merged and included in next releases
-  # https://tracker.ceph.com/issues/45147
-  # https://github.com/ceph/ceph/pull/34846
-  # 'backport_mgr_disabled_modules_workaround_PR34846.patch'
 
   # Fix breaking change to PY_SSIZE_T_CLEAN macro defintion requirements in python >= 3.10
   # by defining the macro ahead of any calls.
