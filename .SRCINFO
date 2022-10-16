@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod
-	pkgdesc = Linux Xanmod - Current Stable (STABLE)
+	pkgdesc = Linux Xanmod - Current Stable (CURRENT)
 	pkgver = 6.0.2
 	pkgrel = 1
 	url = http://www.xanmod.org/
@@ -22,7 +22,7 @@ pkgbase = linux-xanmod
 	sha256sums = 5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e
 	sha256sums = SKIP
 	sha256sums = feb15accc0576f78eca9cbf8f8178419c4a2aeb3915a9bfefacf2467bcc55b35
-	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
+	sha256sums = 5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
@@ -37,5 +37,5 @@ pkgname = linux-xanmod
 	provides = NTFS3-MODULE
 
 pkgname = linux-xanmod-headers
-	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Current Stable (STABLE) kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Current Stable (CURRENT) kernel
 	depends = pahole
