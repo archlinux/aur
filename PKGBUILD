@@ -9,8 +9,8 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.3.0
-pkgrel=8
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,8 +22,8 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=5aa48dd")
-md5sums=('872b623fd3ba919185b4cc671ea7c20f'
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=b313ced")
+md5sums=('0457f8ac8b56ccd8af4ecf06b2259c8d'
          'SKIP')
 
 prepare() {
@@ -79,4 +79,6 @@ package() {
 
   install -Dm644 LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  find "$pkgdir"/opt/vagrant/embedded/gems -name gem_make.out -delete
 }
