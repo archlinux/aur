@@ -1,0 +1,14 @@
+--- squashfs-root/electronwmd.desktop
++++ squashfs-root/electronwmd.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+ Name=electronwmd
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/electronwmd %U
+ Terminal=false
+ Type=Application
+ Icon=electronwmd
+ StartupWMClass=electronwmd
+-X-AppImage-Version=0.2.1-1.3.0
+ Comment=Electron version of WebMinidisc Pro
+ Categories=Utility;
