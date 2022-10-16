@@ -18,12 +18,20 @@ echo == Changing pkgver in PKGBUILD...
 sed -i "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
 
 echo == Downloading source to compute SHA256...
+touch install.sh # Need to do this in case it doesn't exist
 makepkg --verifysource --skipchecksums
 SHA256=$(sha256sum bautista-${VERSION}.tar.gz | awk '{print $1}')
 echo SHA256=$SHA256
 
 echo == Changing sha256sums in PKGBUILD...
 sed -i "s/^sha256sums=.*$/sha256sums=\(\"${SHA256}\"\)/" PKGBUILD
+
+echo == Updating PKGBUILD and install.sh...
+tar xvf bautista-${VERSION}.tar.gz 
+mv bautista-${VERSION}/arch/install.sh .
+# TODO: transform PKGBUILD sources/prepare fields to match AUR build and overwrite
+
+rm -rf bautista-${VERSION}
 
 echo == Checking package build...
 if ! makepkg -frs

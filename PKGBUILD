@@ -22,12 +22,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/joshi-stuff/bautista/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=("a8f5eb43a9ec4566ee4410647dfdc90769e1b5160bb661e083dcaccef19f875b")
-
-prepare() {
-	rm -f $srcdir/root
-	ln -s $startdir/root $srcdir/root
-}
+sha256sums=("a53778bc022d078529488c76a7b058f3ab65808b38076aa035b51ad13df50bb2")
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -42,10 +37,9 @@ check() {
 }
 
 package() {
-	cd $srcdir
-	cp -arv ../root/* $pkgdir
-
 	cd $srcdir/$pkgname-$pkgver
+
+	cp -arv arch/root/* $pkgdir
 
 	mkdir -p $pkgdir/usr/lib/bautista
 	cp -arv node/bautista/*.js $pkgdir/usr/lib/bautista
