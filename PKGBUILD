@@ -31,8 +31,8 @@ package() {
   install -Dm755 "${srcdir}/platinum-md-${pkgver}.AppImage" "${pkgdir}/opt/appimages/platinum-md.AppImage"
   install -Dm755 "${srcdir}/platinum-md.sh" "${pkgdir}/usr/bin/platinum-md"
 
-  install -dm755 "${pkgdir}/usr/share/mime/application"
+  install -dm755 "${pkgdir}/usr/share"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
-  install -Dm644 "${srcdir}/squashfs-root/platinum-md.desktop" "${pkgdir}/usr/share/applications/platinum.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/platinum-md.desktop" "${pkgdir}/usr/share/applications/platinum-md.desktop"
 }
