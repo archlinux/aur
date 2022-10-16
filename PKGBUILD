@@ -1,9 +1,8 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="mpv-gallery-view-git"
-# I have no idea how I'm supposed to handle the version number of a git package with no tags
-pkgver="1.0.0"
-pkgrel="1"
+pkgver=0.0.0.r188
+pkgrel=1
 install="mpv-gallery-view.install"
 pkgdesc="MPV gallery view for chapters and playlists."
 arch=('any')
@@ -14,6 +13,12 @@ conflicts=('mpv-gallery-view')
 url="https://github.com/occivink/mpv-gallery-view"
 source=("git+https://github.com/occivink/mpv-gallery-view")
 md5sums=('SKIP')
+
+pkgver(){
+	cd "mpv-gallery-view"
+	pkgver=$(echo ${pkgver} | sed 's/\.r[0-9]*$//')
+	echo "${pkgver}.r$(git rev-list --count HEAD)"
+}
 
 package(){
 	mkdir -p $pkgdir/usr/lib/mpv/mpv-gallery-view/scripts
