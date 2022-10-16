@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-7tv-git
 _pkgname=chatterino7
-pkgver=r3610.d2e9c105
+pkgver=r3626.a0e87b96
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 arch=('any')
@@ -27,8 +27,10 @@ source=("git+https://github.com/SevenTV/chatterino7"
         "git+https://github.com/Chatterino/qtkeychain"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/arsenm/sanitizers-cmake"
-        "git+https://github.com/Neargye/magic_enum")
+        "git+https://github.com/Neargye/magic_enum"
+        "git+https://github.com/google/googletest")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -61,6 +63,7 @@ prepare () {
     git config submodule.sanitizers-cmake $srcdir/$_pkgname/lib/sanitizers-cmake
     # We can't set the local directory of this submodule as we have no way of accessing the config name `submodule.magic_enum` because underscores are actually not allowed.
     #git config submodule.magic_enum $srcdir/$_pkgname/lib/magic_enum
+    git config submodule.googletest $srcdir/$_pkgname/lib/googletest
     git submodule update
 }
 

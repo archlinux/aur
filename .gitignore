@@ -18,3 +18,4 @@ signals/
 websocketpp/
 sanitizers-cmake/
 magic_enum/
+googletest/
