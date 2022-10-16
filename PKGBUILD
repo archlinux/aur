@@ -2,7 +2,7 @@
 # Contributor: K4zoku <kazoku0356@gmail.com>
 _pkgname="nowm"
 pkgname="${_pkgname}-git"
-pkgver=r45.3a42b3a
+pkgver=r47.eab9c16
 pkgrel=1
 pkgdesc="Managing window without a window manager"
 arch=('any')

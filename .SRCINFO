@@ -1,6 +1,6 @@
 pkgbase = nowm-git
 	pkgdesc = Managing window without a window manager
-	pkgver = r45.3a42b3a
+	pkgver = r47.eab9c16
 	pkgrel = 1
 	url = https://github.com/K4zoku/nowm
 	arch = any
