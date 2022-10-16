@@ -2,18 +2,18 @@
 
 pkgname=shortwave
 _pkgname=Shortwave
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 epoch=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/Shortwave"
 license=('GPL3')
-depends=('libadwaita' 'libshumate' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
-makedepends=('meson' 'cargo')
+depends=('libadwaita' 'libshumate' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-libav')
+makedepends=('meson' 'cargo' 'wayland-protocols')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-b2sums=('8b196fa1e26802fac2d7b26bd22080f1fa6f7a619ae85ba0035edfb6f962bd72e94d71b6b3645ac5a42e2e6e54935390d2235f2c74411995910395521e670b65')
+b2sums=('28b0988348aba1b17c9d1022f5ab99deaf4cefcc3253a5df4ac247c1d6ea2fc8c59203bb2538eeb48dbca9cfc82419813fc702a57cfbce84fb94385bab7c6bc7')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build
