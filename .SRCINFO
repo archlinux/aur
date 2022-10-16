@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-bin
 	pkgdesc = Jitsi Meet Web binary
 	pkgver = 1.0.6644
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = jitsi-meet-bin
 	conflicts = jitsi-meet
 	noextract = config_1.0.6644.deb
 	options = !strip
-	backup = etc/webapps/jitsi-meet/logging_config.js
 	backup = etc/webapps/jitsi-meet/config.js
 	backup = etc/webapps/jitsi-meet/interface_config.js
 	source = https://download.jitsi.org/stable/jitsi-meet-web_1.0.6644-1_all.deb
