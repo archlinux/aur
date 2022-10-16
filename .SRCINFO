@@ -1,0 +1,14 @@
+pkgbase = nodejs-keyoxide
+	pkgdesc = CLI for Keyoxide
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://keyoxide.org
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = nodejs
+	depends = npm
+	noextract = keyoxide-0.4.4.tgz
+	source = https://registry.npmjs.org/keyoxide/-/keyoxide-0.4.4.tgz
+	sha1sums = 38bc2cbb149eb8456d96fed66c1264a969a234d0
+
+pkgname = nodejs-keyoxide
