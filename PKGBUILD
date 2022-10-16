@@ -12,7 +12,7 @@ pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=6.0
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,8 +24,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.x
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0102-soundwire_Raise_DEFAULT_PROBE_TIMEOUT_to_10000_ms.patch'
-        '0103-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
+        '0102-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
+        '0103-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -48,11 +48,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
-            '483447baa17bb08dfeb1b966c9b93bd0a7cac096d8086b0bbd09fb0d4968fe1e'
-            'e5ac6986c81b5fea10f5a150506f483fe8d6e0fb5b1d4e8ce9f2c19bed23b2c9'
+            'a659e67693ded7c0968a10032f5b0fd9ec021ebf62d92a8fd256ae37f9b76408'
+            'd982c7a129ef53f2fe3f12e243fe835eb122028d756a714c04db5db676239636'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            '02b035fa598f9e281b9b5b645809d1bcacfa189c733dc291b4305c77cde52960'
-            '2c2c72e5f72cf306d38f91869619c6f808b5f694341eeba398de1b0919bf755b'
+            'a75d2a2322c8cd99a6dc9945424fd9006e7a8f9d2793c0ae97ef931f2d54b9a5'
+            'a8a2d8b402b2877df1a949a106c634b6c366dd33b954c4b735ce1d3778214169'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '8e5c147591d14300a59ed8354a9d0746cf78650256558b45f964ca76eaed9a9f'
