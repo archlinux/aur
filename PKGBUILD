@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 pkgname=google-drive-ocamlfuse
 pkgver=0.7.30
-pkgrel=2
+pkgrel=3
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
@@ -14,6 +14,7 @@ depends=(
 'gapi-ocaml>=0.4.2'
 'ocaml-sqlite3>=1.6.1'
 'ocaml-extlib'
+'tiny_httpd>=0.6'
 )
 makedepends=(
 'dune'
