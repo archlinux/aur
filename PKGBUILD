@@ -5,7 +5,7 @@ _base=cheap_repr
 pkgname=python-${_base}
 pkgdesc="Better version of repr/reprlib for short, cheap string representations"
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="http://github.com/alexmojaki/${_base}"
 license=(MIT)
@@ -13,7 +13,7 @@ depends=(python)
 makedepends=(python-setuptools-scm)
 checkdepends=(python-pytest python-django)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('fc4531da1c8618a85bc6957ac8410f3594f603e71943efa5fa37d2263dbde83a0f1c3a88357e3c7338595e5c4b7378b713a5bcfa18067eba8435633fcccb624a')
+sha512sums=('5f389587cdb6c5e037ecb2eb64b17b391a3993cb2c5010db8cdc78cd709183911273291fb346276d9fac07ac6d93454697dcdbdb49f5dead9c16b3dce4aa94b7')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
