@@ -1,0 +1,15 @@
+[Unit]
+Description=Matrix registration bot
+
+[Service]
+Type=simple
+User=registrationbot
+Group=registrationbot
+WorkingDirectory=/var/lib/matrix-registration-bot/
+ExecStart=/bin/python -m matrix_registration_bot.bot --config /etc/matrix-registration-bot.yaml
+Restart=always
+RestartSec=30
+SyslogIdentifier=matrix-registration-bot
+
+[Install]
+WantedBy=multi-user.target
