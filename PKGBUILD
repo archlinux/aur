@@ -49,7 +49,6 @@ source=(
   "https://download.ceph.com/tarballs/${pkgbase}-${pkgver}.tar.gz"
   'ceph.sysusers'
   "zstd-${_zstdver}.tar.gz::https://github.com/facebook/zstd/archive/v${_zstdver}.tar.gz"
-  'ceph-13.2.0-cflags.patch'
   'ceph-13.2.2-dont-install-sysvinit-script.patch'
   'disable-empty-readable.sh-test.patch'
 
@@ -64,7 +63,6 @@ source=(
 sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40d94b802db5b344faeab7c4e48d65c8ade47d0cbf0eaa0e7ddf399b09a279d'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             'e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e'
-            '8ec0d668fefee12d2c7f5b5297dd81fc6a559f5823d069e6395d9b4240110eb8f95049d3054697a459948c1f3784b4450539849cf9d7f3b1aa1c7fbd96c475df'
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
             '3774cbc1a979ee8bf7138b96defcf69499444afe0b7186b21feac3453a3a5ec93741f5942d256d93999e9bc306c8d018206893e04e1a3eb9e03593105d9f5791'
@@ -170,6 +168,7 @@ build() {
     -DWITH_RADOSGW_AMQP_ENDPOINT=OFF \
     -DWITH_SYSTEMD=ON \
     -DWITH_SYSTEM_BOOST=ON \
+    -DWITH_SYSTEM_ZSTD=ON \
     -DWITH_SYSTEM_GTEST=OFF \
     -DWITH_SYSTEM_NPM=OFF \
     -DENABLE_SHARED=ON \
