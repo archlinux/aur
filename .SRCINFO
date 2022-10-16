@@ -1,5 +1,5 @@
 pkgbase = tetris
-	pkgdesc = Port of OpenBSD tetris for Linux.
+	pkgdesc = Linux port of the OpenBSD version
 	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/eNV25/tetris
