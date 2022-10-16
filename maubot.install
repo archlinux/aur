@@ -1,6 +1,6 @@
 post_upgrade() {
   msg2 'upgrade database'
-  sudo -u maubot python -m maubot -c etc/maubot.yaml upgrade head
+  sudo -u maubot python -m maubot -c etc/maubot/config.yaml upgrade head
 }
 
 post_remove() {

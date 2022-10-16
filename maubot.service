@@ -6,9 +6,10 @@ Type=simple
 User=maubot
 Group=maubot
 WorkingDirectory=/var/lib/maubot/
-ExecStart=/bin/python -m maubot -c /etc/maubot.yaml
+ExecStart=/bin/python -m maubot -c /etc/maubot/config.yaml
 Restart=always
-RestartSec=3
+RestartSec=30
+SyslogIdentifier=maubot
 
 [Install]
 WantedBy=multi-user.target

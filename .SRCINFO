@@ -1,7 +1,7 @@
 pkgbase = maubot
 	pkgdesc = A plugin-based Matrix bot system
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maubot/maubot
 	install = maubot.install
 	arch = any
@@ -29,14 +29,14 @@ pkgbase = maubot
 	optdepends = python-olm: e2be
 	optdepends = python-pycryptodome: e2be
 	optdepends = python-unpaddedbase64: e2be
-	backup = etc/maubot.yaml
+	backup = etc/maubot/config.yaml
 	source = maubot-0.3.1.tar.gz::https://github.com/maubot/maubot/archive/v0.3.1.tar.gz
 	source = sysusers-maubot.conf
 	source = tmpfiles-maubot.conf
 	source = maubot.service
 	sha256sums = f3189ab1846274efe20649ecd31943a1c7b12ecb52d845e62d8e7a0fdf3db933
 	sha256sums = e2f01fd60338dd576bb72dee2f536210cb54540ace4a40aa94b5aebe6944ba0f
-	sha256sums = 5735aedc078a0363e40f03b6be79f3bee406565d648b3529a828e6e133b034ab
-	sha256sums = 4be80b61a0278bfc15434d32d1f38e8ebb67695782294560c2683c0bfbb4482b
+	sha256sums = 3fda190e5e5a2dff7c6192c27427a902c286069fac6b56e9abf61b021d49bf9a
+	sha256sums = 8dfbed8ad630cc5ab0e111a7e5da3245ddf82881a00ed6b540bfdcb7ece33083
 
 pkgname = maubot

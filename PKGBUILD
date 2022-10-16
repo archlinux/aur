@@ -6,7 +6,7 @@
 
 pkgname=maubot
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A plugin-based Matrix bot system"
 arch=(any)
 license=(AGPLv3)
@@ -18,7 +18,7 @@ optdepends=(
   "python-pycryptodome: e2be"
   "python-unpaddedbase64: e2be"
 )
-backup=(etc/${pkgname}.yaml)
+backup=(etc/${pkgname}/config.yaml)
 install=${pkgname}.install
 source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"${url}/archive/v${pkgver/_rc/-rc}.tar.gz"
     "sysusers-${pkgname}.conf"
@@ -26,8 +26,8 @@ source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"${url}/archive/v${pkgver/_rc/-rc
     "${pkgname}.service")
 sha256sums=('f3189ab1846274efe20649ecd31943a1c7b12ecb52d845e62d8e7a0fdf3db933'
             'e2f01fd60338dd576bb72dee2f536210cb54540ace4a40aa94b5aebe6944ba0f'
-            '5735aedc078a0363e40f03b6be79f3bee406565d648b3529a828e6e133b034ab'
-            '4be80b61a0278bfc15434d32d1f38e8ebb67695782294560c2683c0bfbb4482b')
+            '3fda190e5e5a2dff7c6192c27427a902c286069fac6b56e9abf61b021d49bf9a'
+            '8dfbed8ad630cc5ab0e111a7e5da3245ddf82881a00ed6b540bfdcb7ece33083')
 
 prepare() {
   cd "${pkgname}-${pkgver/_rc/-rc}"
@@ -47,8 +47,8 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   cd "${pkgname}"
-  install -Dm640 example-config.yaml ${pkgdir}/etc/${pkgname}.yaml
-  install -Dm640 example-config.yaml ${pkgdir}/usr/share/${pkgname}/example-config.yaml
+  install -Dm600 example-config.yaml ${pkgdir}/etc/${pkgname}/config.yaml
+  install -Dm600 example-config.yaml ${pkgdir}/usr/share/${pkgname}/example-config.yaml
 
   cd "${srcdir}/"
   install -Dm644 maubot.service -t  ${pkgdir}/usr/lib/systemd/system/
