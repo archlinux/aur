@@ -21,8 +21,6 @@
  }
  
  void InputPanel::on_timer(const EmulatedControllerPtr& emulated_controller, const ControllerPtr& controller)
-diff --git a/src/gui/input/panels/InputPanel.h b/src/gui/input/panels/InputPanel.h
-index 6ac15089..3d7bb3ab 100644
 --- a/src/gui/input/panels/InputPanel.h
 +++ b/src/gui/input/panels/InputPanel.h
 @@ -12,9 +12,9 @@ class wxComboBox;

@@ -55,7 +55,7 @@ sha256sums=('SKIP'
             'f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f'
             '46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f'
             '095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a'
-            '6ec9545cdd05f59a5d7e956c5c0e083f734dd9e6cc681c5dc500fd43dbeab44f')
+            '1081822dec41144e0a7ac934b284f131fcb4b87ffdcef144da0a13e8f8dda169')
 
 pkgver() {
 	cd Cemu
