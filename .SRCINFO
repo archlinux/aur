@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-fixed-ss08
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 16.3.3
+	pkgver = 16.3.4
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v16.3.3/ttf-iosevka-fixed-ss08-16.3.3.zip
-	source = ttf-iosevka-fixed-ss08-16.3.3-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v16.3.3/LICENSE.md
-	sha256sums = 831c0a436fa60f6bd58485df6033ffaf219e974aeac1c81efb5696c4a2d72942
+	source = https://github.com/be5invis/Iosevka/releases/download/v16.3.4/ttf-iosevka-fixed-ss08-16.3.4.zip
+	source = ttf-iosevka-fixed-ss08-16.3.4-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v16.3.4/LICENSE.md
+	sha256sums = 337b9ea02148f1f7ede526e81b6c38446a862bf379538c3b20ffb2e68c4b0f31
 	sha256sums = 46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1
 
 pkgname = ttf-iosevka-fixed-ss08
