@@ -1,0 +1,14 @@
+pkgbase = tgfs-git
+	pkgdesc = A simple file tagger and manager
+	pkgver = 4c8562b
+	pkgrel = 1
+	url = https://github.com/tg-fs/tgfs
+	arch = any
+	license = GPL
+	depends = python
+	depends = sqlite
+	provides = tgfs
+	source = tgfs::git+https://github.com/tg-fs/tgfs.git
+	sha256sums = SKIP
+
+pkgname = tgfs-git
