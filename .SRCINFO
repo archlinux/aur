@@ -1,16 +1,16 @@
 pkgbase = pycharm-community-jre
 	pkgdesc = PyCharm Community Edition IDE for Python with bundled JRE
-	pkgver = 2022.2.2
+	pkgver = 2022.2.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
 	license = APACHE
 	conflicts = pycharm-community-eap
 	conflicts = pycharm-community-edition
-	source = https://download.jetbrains.com/python/pycharm-community-2022.2.2.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-community-2022.2.3.tar.gz
 	source = pycharm.desktop
 	source = pycharm.sh
-	sha256sums = 2f361c5f59c685c9f8d1385029ed753eabe5b688a82acef6e83a50f0d2b9d7a8
+	sha256sums = cb03d44599a03419c0c63fc917846fca28c9ea664ed2b2a1c36240dcffb2a387
 	sha256sums = f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21
 	sha256sums = b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc
 
