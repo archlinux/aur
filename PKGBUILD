@@ -2,13 +2,12 @@
 
 pkgname=o
 pkgver=2.57.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
-depends=(vte3)
-makedepends=(git go)
+makedepends=(git go vte3)
 source=("git+$url#commit=983e53231e91f3c24e0010c8ec9e17c9cff62442") # tag: v2.57.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
@@ -49,6 +48,7 @@ optdepends=('asciidoctor: for writing man pages'
             'shfmt: for formattig Shell scripts'
             'tidy: for formatting HTML'
             'v: for compiling and formatting V'
+            'vte3: for the ko GUI frontend'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
 b2sums=('SKIP')
@@ -64,10 +64,11 @@ build() {
 package() {
   cd $pkgname
   install -Dm755 o "$pkgdir/usr/bin/o"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/edit"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/edith"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/sw"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   DESTDIR="$pkgdir" make gui-install
