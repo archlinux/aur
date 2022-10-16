@@ -4,7 +4,7 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=3.0.6
+pkgver=3.1.1
 _gitname="release-$pkgver-linux1"
 pkgrel=1
 pkgdesc='GUI for managing Git and GitHub'
@@ -24,7 +24,6 @@ optdepends=('github-cli: CLI interface for GitHub'
             'hub: CLI interface for GitHub')
 makedepends=(nodejs-lts-gallium
              npm
-             python2
              xorg-server-xvfb
              yarn)
 DLAGENTS=("http::/usr/bin/git clone --branch $_gitname --single-branch %u")
