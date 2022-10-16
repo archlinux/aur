@@ -1,0 +1,20 @@
+pkgbase = fefeblog-consoleview-git
+	pkgdesc = Simble bash script to view 'Fefes Blog' (http://blog.fefe.de/) on the console.
+	pkgver = 20221016.02.r5.20221016.aebf33b
+	pkgrel = 1
+	epoch = 0
+	url = https://gitlab.com/dreieckli/fefeblog-consoleview
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = ncurses
+	depends = pandoc
+	provides = fefeblog-consoleview=20221016.02.r5.20221016.aebf33b
+	conflicts = fefeblog-consoleview
+	options = emptydirs
+	source = fefeblog-consoleview::git+https://gitlab.com/dreieckli/fefeblog-consoleview.git
+	sha256sums = SKIP
+
+pkgname = fefeblog-consoleview-git
