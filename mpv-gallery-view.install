@@ -1,0 +1,10 @@
+post_install(){
+	echo "To add the scripts to MPV symlink the contents of the folders:
+	- /usr/share/mpv/mpv-gallery-view/scripts
+	- /usr/share/mpv/mpv-gallery-view/script-modules
+
+to:
+
+	- ~/.config/mpd/scripts
+	- ~/.config/mpd/script-modules"
+}
