@@ -73,7 +73,7 @@ fi
 pkgbase=linux-xanmod
 _major=6.0
 pkgver=${_major}.2
-_branch=5.x
+_branch=6.x
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod - Current Stable (CURRENT)'
