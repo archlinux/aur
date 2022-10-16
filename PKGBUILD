@@ -1,10 +1,10 @@
 # Maintainer: Iván Zaera Avellón <ivan dot zaera at protonmail dot com>
 pkgname=bautista
-pkgdesc="A domotic butler bot"
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
+pkgdesc='A domotic butler bot'
 arch=('any')
-url="https://github.com/joshi-stuff/bautista"
+url='https://github.com/joshi-stuff/bautista'
 license=('GPL3')
 depends=(
 	'nodejs'
@@ -12,59 +12,42 @@ depends=(
 makedepends=(
 	'coreutils'
 	'npm'
+	'shadow'
 )
+backup=(
+	'etc/bautista/config.json'
+	'etc/bautista/creds.json'
+)
+install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/joshi-stuff/bautista/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=("a8f5eb43a9ec4566ee4410647dfdc90769e1b5160bb661e083dcaccef19f875b")
 
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
+prepare() {
+	rm -f $srcdir/root
+	ln -s $startdir/root $srcdir/root
+}
 
-	npm install
+build() {
+	cd $srcdir/$pkgname-$pkgver
+	make clean
+	make build
+}
+
+check() {
+	cd $srcdir/$pkgname-$pkgver
+	make lint
+	make test
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd $srcdir
+	cp -arv ../root/* $pkgdir
 
-	mkdir -p $pkgdir/etc/bautista
-	cat >$pkgdir/etc/bautista.json <<EOF
-{
-	"control": {
-		"period": 58000
-	},
-	"devices": {
-		"Pruebas": {
-			"controlled": true,
-			"rules": {
-				"hoursOn": 3,
-				"consecutive": true
-			}
-		}
-	},
-	"meross": {
-		"user": "***",
-		"password": "***"
-	},
-	"telegram": {
-		"token": "***",
-		"allowedUsers": [
-			"***"
-		]
-	}
-}
-EOF
-
-	mkdir -p $pkgdir/usr/bin
-	cat >$pkgdir/usr/bin/bautista <<EOF
-#!/bin/sh
-node /usr/lib/bautista/index.js
-EOF
-	chmod +x $pkgdir/usr/bin/bautista
+	cd $srcdir/$pkgname-$pkgver
 
 	mkdir -p $pkgdir/usr/lib/bautista
-	cp -r * $pkgdir/usr/lib/bautista
-	rm $pkgdir/usr/lib/bautista/package.json
-	rm $pkgdir/usr/lib/bautista/package-lock.json
-	rm $pkgdir/usr/lib/bautista/yarn.lock
+	cp -arv node/bautista/*.js $pkgdir/usr/lib/bautista
+	cp -ar node/node_modules $pkgdir/usr/lib/bautista
 }
