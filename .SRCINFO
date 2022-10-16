@@ -1,0 +1,15 @@
+pkgbase = unifetch-git
+	pkgdesc = An unofficial successor of neofetch, fresh version.
+	pkgver = 22.10
+	pkgrel = 16
+	url = https://github.com/jin-asanami/
+	arch = any
+	license = MIT
+	checkdepends = shellcheck
+	makedepends = git
+	depends = bash
+	conflicts = unifetch
+	source = unifetch::git+https://github.com/jin-asanami//unifetch.git
+	sha512sums = SKIP
+
+pkgname = unifetch-git
