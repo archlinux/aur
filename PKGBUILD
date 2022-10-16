@@ -2,9 +2,9 @@
 
 pkgname=avvie
 _reponame=Avvie
-pkgver=2.1
-_commit=e42f8833a59c516ce112b0797a2a031801568e6a
-pkgrel=2
+pkgver=2.2
+_commit=e7d53574a93862856ec058693343be85522ccefb
+pkgrel=1
 pkgdesc="A utility for quickly cropping images"
 arch=(x86_64)
 url=https://github.com/Taiko2k/Avvie
