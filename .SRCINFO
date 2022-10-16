@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-turnserver-git
 	pkgdesc = Jitsi Meet Prosody Plugins git build
-	pkgver = 1.0.6172+0+g0fe738315
+	pkgver = 1.0.6694+0+gb558d7936
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any

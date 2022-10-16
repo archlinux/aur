@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-turnserver-git
-pkgver=1.0.6172+0+g0fe738315
+pkgver=1.0.6694+0+gb558d7936
 pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins git build"
 arch=('any')
@@ -26,6 +26,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf doc/debian/jitsi-meet-turn/coturn-certbot-deploy.sh
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf
 }
 sha256sums=('SKIP')
