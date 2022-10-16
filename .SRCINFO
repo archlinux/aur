@@ -1,0 +1,26 @@
+pkgbase = ktra-git
+	pkgdesc = Your Little Cargo Registry
+	pkgver = 0.7.0.r0.g07ffd10
+	pkgrel = 1
+	url = https://github.com/moriturus/ktra
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = ktra
+	conflicts = ktra
+	backup = etc/ktra.toml
+	source = ktra::git+https://github.com/moriturus/ktra.git
+	source = ktra.service
+	source = ktra.sysusers
+	source = ktra.tmpfiles
+	source = ktra.toml
+	sha256sums = SKIP
+	sha256sums = 8415def2810b845b3b960448f40bac214bb1bd21e481b624f0a3e2aab7b093dd
+	sha256sums = 838072db74b691e28cc28c46982dd9af9806b4283179ab4a96df8d7624685f96
+	sha256sums = 466c7ce99bace309a30ea753d9b8b46ebfd8868ef7bb5016abdfb0a00543bddd
+	sha256sums = 97f4f75a722dd239097d552b56a62f967f791ab6aac8859a3324893deb909e55
+
+pkgname = ktra-git

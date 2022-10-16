@@ -1,0 +1,21 @@
+[Unit]
+Description=Your Little Cargo Registry
+After=network.target network-online.target nss-lookup.target
+
+StartLimitIntervalSec=30s
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ktra -c /etc/ktra.toml
+Restart=always
+RestartSec=3s
+Environment=RUST_LOG=info
+
+User=ktra
+Group=ktra
+ReadOnlyPaths=/
+ReadWritePaths=/var/lib/ktra/
+
+[Install]
+WantedBy=multi-user.target

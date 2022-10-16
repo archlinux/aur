@@ -1,0 +1,24 @@
+[index_config]
+# remote_url = ""
+local_path = "/var/lib/ktra/index/"
+# branch = "main"
+# https_username = ""
+# https_password = ""
+# ssh_privkey_path = "/var/lib/ktra/id_ed25519"
+# ssh_key_passphrase = ""
+# ssh_pubkey_path = "/var/lib/ktra/id_ed25519.pub"
+# ssh_username = ""
+# git_email = "undefined@example.com"
+# git_name = "ktra-driver"
+
+[crate_files_config]
+dl_dir_path = "/var/lib/ktra/dl/"
+cache_dir_path = "/var/lib/ktra/crates_io_caches/"
+# dl_path = ["dl"]
+
+[db_config]
+db_dir_path = "/var/lib/ktra/db/"
+
+[server_config]
+# address = [0, 0, 0, 0]
+# port = 8000
