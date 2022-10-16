@@ -9,7 +9,7 @@
 
 _pkgname=calibre
 pkgname=calibre-unicode-path
-pkgver=6.2.1
+pkgver=6.7.1
 pkgrel=1
 pkgdesc='Ebook management application. With unicode filename and path patch.'
 arch=(x86_64)
@@ -78,9 +78,9 @@ _archive="$_pkgname-$pkgver"
 source=("https://download.calibre-ebook.com/$pkgver/$_archive.tar.xz"
         "$url/signatures/$_archive.tar.xz.sig"
         "000-fix-unicode-filename.patch")
-sha256sums=('eae23824750360d4486aa6275364dd00926b1f363c50404171fcacefbf8f7476'
+sha256sums=('07ffeb06cbce5c0e54a868ddd8c2dc0210c50afade23b526b5f129bb1688b1ad'
             'SKIP'
-            'SKIP')
+            'f88174672c6086b81acd64ee3d9b1bfe14230a18599a28310c377eb409e17ea2')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 prepare(){
