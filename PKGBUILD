@@ -3,8 +3,8 @@
 pkgname=kodi-addon-vfs-sftp
 pkgbase=${pkgname}
 _gitname=vfs.sftp
-pkgver=1.0.0
-_gitver=branch=master
+pkgver=19.0.1
+_gitver=branch=Matrix
 pkgrel=1
 pkgdesc='SFTP Addon for Kodi'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
