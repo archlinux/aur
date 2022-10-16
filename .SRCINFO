@@ -1,6 +1,6 @@
 pkgbase = zx
 	pkgdesc = A tool for writing better scripts
-	pkgver = 7.0.7
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://github.com/google/zx
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zx
 	makedepends = npm
 	makedepends = git
 	depends = nodejs
-	source = git+https://github.com/google/zx.git#commit=c73ccb468cfd2340fb296e17a543eb2399b449ec
+	source = git+https://github.com/google/zx.git#commit=79222d7ee227534509e6158e5dd58cb3d1f1e1fa
 	md5sums = SKIP
 
 pkgname = zx
