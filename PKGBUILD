@@ -9,7 +9,7 @@ license=('GPL')
 depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl')
 makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'libtool' 'pkg-config' 'python')
 conflicts=('libosmocore')
-provides=('libosmocore')
+provides=('libosmocore=${pkgver}')
 source=("git+https://gitea.osmocom.org/osmocom/libosmocore.git")
 sha256sums=('SKIP')
 
