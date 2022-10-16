@@ -6,11 +6,11 @@
 _pkgname=libstrangle
 pkgname=${_pkgname}-git
 pkgdesc="Simple FPS Limiter"
-pkgver=r113.36122df
+pkgver=0.1.1.r135.0273e31
 pkgrel=1
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64')
-depends=('lib32-gcc-libs' 'lib32-glibc' 'libglvnd')
+depends=('lib32-gcc-libs' 'lib32-glibc' 'libglvnd' 'linux-api-headers' 'libx11' 'xorgproto')
 makedepends=('git')
 provides=('libstrangle')
 conflicts=('libstrangle')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
