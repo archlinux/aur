@@ -139,8 +139,6 @@ build() {
 
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
-  export PYTHON_VERSION="$(python --version | awk '{print $2}')"
-  export PYTHON_INCLUDE_DIR="$(python -c "from sysconfig import get_path; print(get_path('include'))")"
   export CMAKE_BUILD_TYPE='RelWithDebInfo'
   export CMAKE_WARN_UNUSED_CLI=no
 
@@ -154,10 +152,6 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DENABLE_GIT_VERSION=ON \
-    -DWITH_PYTHON2=OFF \
-    -DWITH_PYTHON3="${PYTHON_VERSION}" \
-    -DMGR_PYTHON_VERSION=3 \
-    -DPYTHON_INCLUDE_DIR="${PYTHON_INCLUDE_DIR:?}" \
     -DWITH_BABELTRACE=OFF \
     -DWITH_LTTNG=OFF \
     -DWITH_OPENLDAP=OFF \
