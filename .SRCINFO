@@ -1,4 +1,4 @@
-pkgbase = solana
+pkgbase = solana-aarch64
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
 	pkgver = 1.14.3
 	pkgrel = 3
@@ -25,4 +25,4 @@ pkgbase = solana
 	sha256sums = 0c42881863712359a1ea622958998108aea612a18cb670d9f285a1dfcf935551
 	sha256sums = c17d42533fb666392cd577ecbc67eddad950ab8b911fa8e82e9c03dceaf37862
 
-pkgname = solana
+pkgname = solana-aarch64
