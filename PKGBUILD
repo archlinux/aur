@@ -1,12 +1,12 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww-git
-pkgver=0.4.0
-pkgrel=1
+pkgver=0.5.0
+pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Horus645/swww"
 license=('GPL')
-depends=('gcc-libs' 'lz4')
+depends=('gcc-libs' 'lz4' 'libxkbcommon')
 makedepends=('cargo')
 provides=('swww')
 conflicts=('swww')
