@@ -1,6 +1,6 @@
 pkgbase = jitsi-videobridge-git
 	pkgdesc = Jitsi Meet Videobridge git build
-	pkgver = 2.1+682+g0192d75e8
+	pkgver = 2.2+47+g1d5f2e8d0
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -16,7 +16,6 @@ pkgbase = jitsi-videobridge-git
 	options = !strip
 	backup = etc/jitsi-videobridge-git/config
 	backup = etc/jitsi-videobridge-git/logging.properties
-	backup = etc/jitsi-videobridge-git/callstats-java-sdk.properties
 	backup = etc/jitsi-videobridge-git/sip-communicator.properties
 	backup = etc/jitsi-videobridge-git/jvb.conf
 	source = jitsi-videobridge-git::git+https://github.com/jitsi/jitsi-videobridge

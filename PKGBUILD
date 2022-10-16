@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-videobridge-git
-pkgver=2.1+682+g0192d75e8
+pkgver=2.2+47+g1d5f2e8d0
 pkgrel=1
 pkgdesc="Jitsi Meet Videobridge git build"
 arch=('any')
@@ -18,7 +18,6 @@ options=('!strip')
 backup=(
   "etc/${pkgname}/config"
   "etc/${pkgname}/logging.properties"
-  "etc/${pkgname}/callstats-java-sdk.properties"
   "etc/${pkgname}/sip-communicator.properties"
   "etc/${pkgname}/jvb.conf"
 )
@@ -60,7 +59,7 @@ package() {
         install -Dm755 -t "${DESTDIR}" "jvb/resources/jvb.sh"
 
         install -dm700 "${CONFDIR}"
-        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties" "config/callstats-java-sdk.properties"
+        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties"
         install -Dm600 "jvb/src/main/resources/reference.conf" "${CONFDIR}/jvb.conf"
         install -Dm644 "config/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${pkgname}.conf"
 
