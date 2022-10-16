@@ -1,7 +1,7 @@
 # Maintainer: Zhiya Luo <luozhiya@petalmail.com>
 
 pkgname=mogan
-pkgver=1.1.1_rc3_r241.241
+pkgver=1.1.1_rc3_r241.dabfcce
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  local _pkgver=$(awk -F '\"' '/set \(XMACS_VERSION / {print $2}' CMakeLists.txt | awk '{ sub(/-/, "_"); print $0}')_r$(git rev-list --count HEAD).$(git rev-list --count HEAD)
+  local _pkgver=$(awk -F '\"' '/set \(XMACS_VERSION / {print $2}' CMakeLists.txt | awk '{ sub(/-/, "_"); print $0}')_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
   echo "$_pkgver"
 }
 
