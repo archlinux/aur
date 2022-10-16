@@ -2,7 +2,7 @@
 
 pkgname=crowbook
 pkgver=0.15.2e
-pkgrel=5
+pkgrel=6
 pkgdesc="Converts books written in Markdown to HTML, LaTeX/PDF and EPUB"
 arch=('x86_64')
 url="https://github.com/lise-henry/crowbook"
@@ -15,6 +15,9 @@ md5sums=('SKIP')
 prepare() {
 	cd "$srcdir/$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
+	# Update needed to fix build issues caused by a breaking change in Rust 1.64:
+	# https://blog.rust-lang.org/2022/09/22/Rust-1.64.0.html#compatibility-notes
+	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
