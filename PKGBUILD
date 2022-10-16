@@ -2,27 +2,28 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 _pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
-pkgver=r635.0543cb6
+pkgver=r667.d664318
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
 license=('MIT')
 depends=(
-'ocaml>=4.02.3'
+'ocaml>=4.04.0'
 'ocaml-findlib>=1.2.7'
 'ocamlfuse>=2.7.1'
-'gapi-ocaml>=0.3.16'
+'gapi-ocaml>=0.4.2'
 'ocaml-sqlite3>=1.6.1'
+'ocaml-extlib'
 )
 makedepends=(
 'git'
 'dune'
 'ocaml-ounit'
 )
+options=('!strip' 'staticlibs')
 conflicts=('google-drive-ocamlfuse')
 provides=('google-drive-ocamlfuse')
-options=('staticlibs')
 source=('git+https://github.com/astrada/google-drive-ocamlfuse.git')
 sha256sums=('SKIP')
 
@@ -35,28 +36,17 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	# Old method requires ocamlbuild instead of jbuilder/dune
-	#ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "/usr"
-	#ocaml setup.ml -build
+    export OCAMLPATH="$(ocamlfind printconf destdir)"
 
-	#dune build --debug-backtraces --debug-dependency-path --debug-findlib --no-buffer --verbose @install
-	dune build @install
+    dune build -p "$pkgname"
 }
-
-#check() {
-#	cd "$srcdir/$_pkgname"
-#
-#	ocaml setup.ml -test
-#}
 
 package() {
 	cd "$srcdir/$_pkgname"
 
-	#export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
-	#ocaml setup.ml -install
+    dune install "$pkgname" --destdir="${pkgdir}" --prefix="/usr" --libdir="$(ocamlfind printconf destdir)"
 
-	mkdir -p "$pkgdir/usr"
-	mkdir -p "$pkgdir/$(ocamlfind printconf destdir)"
-    
-	dune install --prefix="$pkgdir/usr" --libdir="$pkgdir/$(ocamlfind printconf destdir)"
+    install -dm755 "${pkgdir}/usr/share/"
+
+    mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
