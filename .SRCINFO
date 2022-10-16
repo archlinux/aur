@@ -1,7 +1,7 @@
 pkgbase = tint2-git
-	pkgdesc = Git official release
+	pkgdesc = tint2 is a simple panel/taskbar made for modern X window managers. Git release.
 	pkgver = 17.0.1.r0.gf628cba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/o9000/tint2
 	install = tint2-git.install
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = tint2-git
 	depends = startup-notification
 	provides = tint2
 	conflicts = tint2
-	conflicts = tint
 	conflicts = tint2-svn
 	source = git+https://gitlab.com/o9000/tint2.git
 	md5sums = SKIP
