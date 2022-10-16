@@ -27,15 +27,15 @@ pkgver() {
 package() {
   cd "${pkgname%-git}"
 
-  msg 'Installing documentation...'
+  echo 'Installing documentation...'
   install -Dm 644 README.md "$pkgdir/usr/share/doc/vim-toml/README.md"
 
-  msg 'Installing appdirs...'
+  echo 'Installing appdirs...'
   install -dm 755 "$pkgdir/usr/share/vim/vimfiles"
   for _appdir in ftdetect syntax; do
     cp -dpr --no-preserve=ownership $_appdir "$pkgdir/usr/share/vim/vimfiles/$_appdir"
   done
 
-  msg 'Cleaning up pkgdir...'
+  echo 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
