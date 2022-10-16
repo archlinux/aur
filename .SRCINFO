@@ -1,7 +1,7 @@
 pkgbase = r-gginnards
 	pkgdesc = Explore the Innards of 'ggplot2' Objects
-	pkgver = 0.1.0.1
-	pkgrel = 4
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gginnards
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-gginnards
 	optdepends = r-pryr
 	optdepends = r-rmarkdown
 	optdepends = r-sf
-	source = https://cran.r-project.org/src/contrib/gginnards_0.1.0-1.tar.gz
-	sha256sums = 5d0a37295b3b2b067daeca4d9334753e9692fa52872ddca09a58f959b5cefecd
+	source = https://cran.r-project.org/src/contrib/gginnards_0.1.1.tar.gz
+	sha256sums = 16aa799376c051b4f6acbd68db29f9bb22a3a5efa6a36691268a8d63954f8f67
 
 pkgname = r-gginnards
