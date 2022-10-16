@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.56.0
+pkgver=2.57.0
 pkgrel=1
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
@@ -24,6 +24,7 @@ optdepends=('asciidoctor: for writing man pages'
             'gdb: for debugging C'
             'gdc: for compiling D'
             'ghc: for compiling Haskell'
+            'godot: for using GDScript'
             'google-java-format: for formatting Java'
             'guessica: for updating PKGBUILD files'
             'hare: for compiling Hare'
@@ -49,16 +50,17 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('470f71bd8248cce41868e654f9352d00b8d9ba6069ac57bf209c7ad4e832614e')
-b2sums=('a31b670210539f3e418a9d0e1d3fff135a8b0d52b4295a5e353c55374991a99b06ad2b69b0d88b31af9738f324200cbedefdeb0dda70ca2afae23f0c15187c81')
+sha256sums=('78fcd537465c43293770b87265a2c558279839151440e9c91deb570833e3e2a1')
+b2sums=('54e255c3912fc89acdc8add69ef9f6685e81a1edb1468d0f37f54482ee89db076aa16dabe766ce012aa39ba2edaf926f523f56ab6ab095b1bf4ee2aae430e791')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
   install -Dm755 o "$pkgdir/usr/bin/o"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/edit"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/edith"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/vs"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/sw"
   install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
