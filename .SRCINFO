@@ -1,12 +1,12 @@
 pkgbase = imagej-plugin-morpholibj
 	pkgdesc = Collection of mathematical morphology methods and plugins for ImageJ
 	pkgver = 1.5.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://imagej.net/MorphoLibJ
 	arch = any
 	license = LGPL3
 	depends = imagej
-	source = https://github.com/ijpb/MorphoLibJ/releases/download/v1.5.1/MorphoLibJ_-1.5.1.jar
-	sha256sums = 4e15c60ed1058ce5c103873c880e3d6448485d33359e6d37a63a208cdfb48a70
+	source = https://github.com/ijpb/MorphoLibJ/releases/download/v1.5.1-FillLabelHoles-V2/MorphoLibJ_-1.5.1-FillLabelHolesV2.jar
+	sha256sums = d43c2adab13bf1fd2b71430387c478bb17f84e8b8b90c66bd54c45a3ee1e0985
 
 pkgname = imagej-plugin-morpholibj
