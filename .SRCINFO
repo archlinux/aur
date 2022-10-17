@@ -1,6 +1,6 @@
 pkgbase = reflector-pacman-hook-git
 	pkgdesc = Pacman hook to automatically update Pacman mirrorlist using reflector
-	pkgver = r45.647f466
+	pkgver = r81.9d5f298
 	pkgrel = 1
 	url = https://github.com/desbma/pacman-hooks
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = reflector-pacman-hook-git
 	md5sums = SKIP
 
 pkgname = reflector-pacman-hook-git
-
