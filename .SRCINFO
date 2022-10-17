@@ -1,0 +1,20 @@
+pkgbase = desq-session
+	pkgdesc = Session Manager for DesQ
+	pkgver = 0.0.7.1
+	pkgrel = 1
+	url = https://gitlab.com/DesQ
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesq
+	depends = dfl-utils
+	depends = dfl-xdg
+	depends = dfl-applications
+	depends = dfl-login1
+	source = https://gitlab.com/DesQ/Session/-/archive/v0.0.7.1/Session-v0.0.7.1.tar.gz
+	md5sums = f8673d7f636658626a86a81cd9011035
+
+pkgname = desq-session
