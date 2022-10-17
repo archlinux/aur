@@ -1,0 +1,21 @@
+pkgbase = desq-apps-docs
+	pkgdesc = A simple Document Viewer for DesQ
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQApps/DesQDocs
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = poppler-qt5
+	depends = qdocumentview
+	depends = libdesqui
+	depends = dfl-applications
+	depends = dfl-settings
+	depends = dfl-utils
+	source = https://gitlab.com/DesQ/DesQApps/DesQDocs/-/archive/v0.0.7/DesQDocs-v0.0.7.tar.gz
+	md5sums = cd332b360457dcb81e33272b684560a8
+
+pkgname = desq-apps-docs
