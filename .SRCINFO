@@ -1,6 +1,6 @@
 pkgbase = r-openssl
 	pkgdesc = Encryption, Signatures and Certificates Based on OpenSSLi
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=openssl
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = r-openssl
 	optdepends = r-rmarkdown
 	optdepends = r-sodium
 	optdepends = r-testthat>=2.1.0
-	source = https://cran.r-project.org/src/contrib/openssl_2.0.3.tar.gz
-	b2sums = 75ccd661cc3a81a3cc80a4d1eda7477145c37cb02c7fa54c69affa62a45968a6ed50b5f1964dcaef549dbe89054949553934da7e7cafdbdc28d3a7e8e977f7ac
+	source = https://cran.r-project.org/src/contrib/openssl_2.0.4.tar.gz
+	b2sums = cbe07ad4ea853735bbdea37291e030c3f2e12a40a6be259947017de7e510f24129acfe248e93d0c5b8e9a4a095eb3aa1cfe63d4f215229e55c85d201a5e2719f
 
 pkgname = r-openssl
