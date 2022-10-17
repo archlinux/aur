@@ -3,7 +3,7 @@
 
 pkgname=topgrade-git
 pkgver=9.0.1.r1084.8dd4559
-pkgrel=1
+pkgrel=2
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
 url=https://github.com/topgrade-rs/topgrade
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-  [[ -d target/release ]] || mkdir target/release
+  [[ -d target/release ]] || mkdir -p target/release
 }
 
 build() {
