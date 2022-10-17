@@ -15,7 +15,7 @@ conflicts=(pyside2-tools)
 makedepends=(cmake shiboken6 qt6-tools)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('d19979589e8946488e1b5e01ac0da75ab73b40c901726723335e160241a56892')
+sha256sums=('dcee166a112a7eb04bb58c1164997e1f720c1e3e2ee199ee8c9a70e82f51e321')
 
 build() {
   cmake -B build -S ${_pkgfqn}/sources/pyside-tools/ \
