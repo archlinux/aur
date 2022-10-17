@@ -1,7 +1,7 @@
 pkgbase = slimbookbattery
 	pkgdesc = Battery optimization application for portable devices.
 	pkgver = 4.0.8beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/slimbook/slimbookbattery
 	install = slimbookbattery.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = slimbookbattery
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libnotify
+	depends = polkit
 	depends = python-gobject
 	depends = python-pillow
 	depends = python-setuptools
