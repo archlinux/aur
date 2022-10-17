@@ -1,7 +1,5 @@
 [Unit]
 Description=SSH Key Generation
-ConditionPathExists=|!/etc/ssh/ssh_host_dsa_key
-ConditionPathExists=|!/etc/ssh/ssh_host_dsa_key.pub
 ConditionPathExists=|!/etc/ssh/ssh_host_ecdsa_key
 ConditionPathExists=|!/etc/ssh/ssh_host_ecdsa_key.pub
 ConditionPathExists=|!/etc/ssh/ssh_host_ed25519_key

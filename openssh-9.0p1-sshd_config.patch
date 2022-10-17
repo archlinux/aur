@@ -1,0 +1,30 @@
+diff -ruN a/sshd_config b/sshd_config
+--- a/sshd_config	2022-04-06 02:47:48.000000000 +0200
++++ b/sshd_config	2022-10-10 19:55:58.961117951 +0200
+@@ -58,7 +58,7 @@
+ #PermitEmptyPasswords no
+ 
+ # Change to no to disable s/key passwords
+-#KbdInteractiveAuthentication yes
++KbdInteractiveAuthentication no
+ 
+ # Kerberos options
+ #KerberosAuthentication no
+@@ -79,7 +79,7 @@
+ # If you just want the PAM account and session checks to run without
+ # PAM authentication, then enable this but set PasswordAuthentication
+ # and KbdInteractiveAuthentication to 'no'.
+-#UsePAM no
++UsePAM yes
+ 
+ #AllowAgentForwarding yes
+ #AllowTcpForwarding yes
+@@ -88,7 +88,7 @@
+ #X11DisplayOffset 10
+ #X11UseLocalhost yes
+ #PermitTTY yes
+-#PrintMotd yes
++PrintMotd no
+ #PrintLastLog yes
+ #TCPKeepAlive yes
+ #PermitUserEnvironment no
