@@ -13,8 +13,7 @@ source=(
   "rmx.tar.gz::https://github.com/demfabris/rmx/releases/download/v${pkgver}/${_bin}-musl-${CARCH}.tar.gz"
 )
 
-sha256sums=('3a5b96fda88d0341ec754e87b1bd3c4d709055f100cc5726e9ae4e26a82bcfa9'
-            '8899df45cca8f97bfa04143216cad98634b8f29eabaa5b241ab5300fa5c30f69')
+sha256sums=('3b3006029b5735d8c34c204f5f4ca01631546de7e5c1e75dfbfe4f0c7c5dafdd')
 
 package(){
   install -Dm755 ${srcdir}/target/x86_64-unknown-linux-musl/release/${_bin} "${pkgdir}/usr/bin/${_bin}"
