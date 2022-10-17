@@ -1,6 +1,6 @@
 pkgbase = dfl-xdg
 	pkgdesc = XDG Specifications implementation for Qt
-	pkgver = 0.1.0beta1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/xdg
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dfl-xdg
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
-	source = https://gitlab.com/desktop-frameworks/xdg/-/archive/v0.1.0-beta1/xdg-v0.1.0-beta1.tar.gz
-	md5sums = 4ca7276663a32c27df9fd0dc4eebbd9a
+	source = https://gitlab.com/desktop-frameworks/xdg/-/archive/v0.1.0/xdg-v0.1.0.tar.gz
+	md5sums = 6459a1807ca335d12b0b13c5c785795f
 
 pkgname = dfl-xdg
