@@ -1,0 +1,16 @@
+pkgbase = vim-trailing-whitespace-git
+	pkgdesc = Highlights trailing whitespace
+	pkgver = 1.0.r31.g9071740
+	pkgrel = 1
+	url = https://github.com/bronson/vim-trailing-whitespace
+	arch = any
+	license = CCPL
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-trailing-whitespace
+	conflicts = vim-better-whitespace
+	conflicts = vim-trailing-whitespace
+	source = vim-trailing-whitespace::git+https://github.com/bronson/vim-trailing-whitespace
+	sha256sums = SKIP
+
+pkgname = vim-trailing-whitespace-git
