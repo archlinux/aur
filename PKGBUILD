@@ -2,12 +2,12 @@
 
 pkgname="webtrees"
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The web’s leading online collaborative genealogy application"
 url="https://webtrees.net/"
 license=("GPL3")
 arch=("any")
-depends=("php")
+depends=("php" "php-gd" "php-intl")
 optdepends=("php-sqlite: sqlite3 database support")
 source=("$pkgname-$pkgver.zip::https://github.com/fisharebest/webtrees/releases/download/$pkgver/$pkgname-$pkgver.zip")
 sha256sums=('47ac8c5ad92f177a3be39bf498419f910767fe790ff3ce1d29ed0f65780ac116')
