@@ -10,15 +10,15 @@
 
 pkgname=conky-git
 pkgver=1.15.0.r2.g186f2162
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system monitor for X"
 url="https://github.com/brndnmtthws/conky"
 license=('BSD' 'GPL')
 arch=('x86_64')
-makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2')
+makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2' 'pandoc')
 depends=(
   'glibc' 'glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft' 'imlib2'
-  'libxml2' 'libpulse' 'libxnvctrl' 'systemd-libs' 'ncurses' 'curl' 'pandoc'
+  'libxml2' 'libpulse' 'libxnvctrl' 'systemd-libs' 'ncurses' 'curl'
   libncursesw.so libXNVCtrl.so libsystemd.so libpulse.so libcurl.so)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
