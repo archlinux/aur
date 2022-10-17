@@ -2,7 +2,7 @@
 
 pkgbase=nuclei-openocd
 pkgname=(nuclei-openocd nuclei-openocd-bin)
-pkgver=2022.04
+pkgver=2022.08
 pkgrel=1
 pkgdesc="nuclei-openocd 是 Nuclei Studio IDE 的调试工具。"
 arch=("x86_64")
@@ -17,7 +17,7 @@ license=('unknow')
 options=(!strip)
 
 source=("https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-${pkgver}-linux-x64.tgz")
-sha256sums=('658c8eca2faea4f6b15ab27e49da95dd027f87fef4eba9c2b59fd0a2ff268eff')
+sha256sums=('9f76df84e18474e3fc6c21ca7df9ae8aedd04dbbc4ce51f3dc6f16b33fc91e47')
 
 package_nuclei-openocd() {
 	depends=('nuclei-openocd-bin')
