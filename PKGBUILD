@@ -13,7 +13,7 @@ conflicts=('mujoco')
 source=("git+https://github.com/deepmind/mujoco.git"
     "$_pkgname.patch")
 sha256sums=('SKIP'
-            'fa3ec3a529a80aa74804c23fe8b7a0d3ddebd0c86cef1597e60aaf5cb39c7317')
+            '23d0cb6f8d080b5c0b5bf460db6a88ba9d5a6dfe6f661216edde48d319cfa1b1')
 
 pkgver() {
   cd "$_pkgname"
