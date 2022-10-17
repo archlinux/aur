@@ -5,6 +5,8 @@
 
 ## arg 1:  the new package version
 post_install() {
+	# TODO: this fails the first time we install because the group still doesn't
+	# exist
 	chgrp bautista /etc/bautista/creds.json
 
 echo
