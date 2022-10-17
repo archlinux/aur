@@ -26,7 +26,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm "$pkgdir"/usr/bin/{designer,assistant,linguist,qmllint,qmltyperegistrar}
+  rm "$pkgdir"/usr/bin/{designer,assistant,linguist,qmllint,qmltyperegistrar,qmlformat}
   mv "$pkgdir"/usr/bin/rcc "$pkgdir"/usr/bin/pyside6-rcc
   mv "$pkgdir"/usr/bin/uic "$pkgdir"/usr/bin/pyside6-uic
   mv "$pkgdir"/usr/bin/lupdate "$pkgdir"/usr/bin/pyside6-lupdate
