@@ -1,0 +1,23 @@
+pkgbase = desq-utils-sni
+	pkgdesc = System tray for DesQ
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQUtils/SNI
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesqui
+	depends = libdbusmenu-qt5
+	depends = dfl-utils
+	depends = dfl-applications
+	depends = dfl-status-notifier
+	depends = dfl-layouts
+	depends = dfl-xdg
+	depends = dfl-wayqt
+	source = https://gitlab.com/DesQ/DesQUtils/SNI/-/archive/v0.0.7/SNI-v0.0.7.tar.gz
+	md5sums = a1366126c589939f53563edb5069e5ca
+
+pkgname = desq-utils-sni
