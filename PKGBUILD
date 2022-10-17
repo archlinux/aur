@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python'
          'python-requests' 'python-rx')
 makedepends=('python-setuptools')
-checkdepends=()
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-responses')
 optdepends=()
 provides=()
 conflicts=()
@@ -21,6 +21,11 @@ sha256sums=('6e09d7210b8e0abb6892767d722079eb35b14c29e770cdb4df64d569ecbaa17c')
 build() {
   cd "$_name-$pkgver"
   python setup.py build
+}
+
+check() {
+  cd "$_name-$pkgver"
+  pytest
 }
 
 package() {
