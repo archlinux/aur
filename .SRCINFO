@@ -1,0 +1,15 @@
+pkgbase = twitch-python
+	pkgdesc = Object-oriented Twitch API for Python developers
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/PetterKraabol/Twitch-Python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-rx
+	source = https://files.pythonhosted.org/packages/source/t/twitch-python/twitch-python-0.0.20.tar.gz
+	sha256sums = 6e09d7210b8e0abb6892767d722079eb35b14c29e770cdb4df64d569ecbaa17c
+
+pkgname = twitch-python
