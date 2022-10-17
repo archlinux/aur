@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NCmisc
-_pkgver=1.1.6
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.6
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Miscellaneous Functions for Creating Adaptive Functions and Scripts'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-matrix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2aa85997d5ec2222e610604022684c004a4925241761d9a0104919f1cf3a8c79')
+sha256sums=('26fcfbc79810f23a28389a5ce5519e6ddc2470c5e924ba8cf4dd19a1b0fd9f83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = r-ncmisc
 	pkgdesc = Miscellaneous Functions for Creating Adaptive Functions and Scripts
-	pkgver = 1.1.6
-	pkgrel = 4
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=NCmisc
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = r-ncmisc
 	depends = r-proftools
 	optdepends = r-kernsmooth
 	optdepends = r-matrix
-	source = https://cran.r-project.org/src/contrib/NCmisc_1.1.6.tar.gz
-	sha256sums = 2aa85997d5ec2222e610604022684c004a4925241761d9a0104919f1cf3a8c79
+	source = https://cran.r-project.org/src/contrib/NCmisc_1.2.0.tar.gz
+	sha256sums = 26fcfbc79810f23a28389a5ce5519e6ddc2470c5e924ba8cf4dd19a1b0fd9f83
 
 pkgname = r-ncmisc
