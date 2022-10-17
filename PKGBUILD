@@ -1,6 +1,6 @@
 # Maintainer: mekb https://github.com/mekb-turtle
-pkgname=minesweeper-terminal
-pkgver=r4.aef79f1
+pkgname=minesweeper-terminal-git
+pkgver=r5.285fd95
 pkgrel=1
 pkgdesc='Terminal Minesweeper game written in C'
 arch=('any')
