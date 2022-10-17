@@ -1,0 +1,18 @@
+pkgbase = clipmenu-rofi
+	pkgdesc = Clipboard management, patched to use rofi by default
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://github.com/cdown/clipmenu
+	arch = any
+	license = custom:Public Domain
+	depends = rofi
+	depends = xsel
+	depends = clipnotify
+	depends = xdotool
+	provides = clipmenu
+	source = clipmenu-rofi-6.2.0.tar.gz::https://github.com/cdown/clipmenu/archive/6.2.0.tar.gz
+	source = use-rofi.patch
+	sha512sums = adfd649a120264552e2c05314ae2ad039055308f77d620dbb3fc206e4244a6f1f2e5ed4a7e86fd547a78692aebaec1761528e10408d838f80def99959ef58295
+	sha512sums = d911375d2edde369ab3b496d62cea0e044387982aa08682c3e4a00416de177a66b4be79601df506b1f650e7a2882d8b61a53ec1e71516a017aa4567992ddbbad
+
+pkgname = clipmenu-rofi

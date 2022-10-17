@@ -1,0 +1,5 @@
+--- clipmenu
++++ clipmenu
+@@ -3 +3 @@
+-: "${CM_LAUNCHER=dmenu}"
++: "${CM_LAUNCHER=rofi}"
