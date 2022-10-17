@@ -1,0 +1,15 @@
+pkgbase = konica-minolta-c266-series
+	pkgdesc = CUPS PostScript driver for KONICA MINOLTA bizhub C266 Series (C226/C266)
+	pkgver = 60003.0000
+	pkgrel = 1
+	url = https://www.konicaminolta.eu/en/business-solutions/support/download-center.html
+	arch = any
+	license = custom:konica minolta commercial license
+	makedepends = gzip
+	depends = cups
+	source = https://p.knova.konicaminolta.com/PublicDownload/download?fileId=6BC17559-AB3B-44C1-B492-5BA788A3F558
+	source = LICENSE
+	sha256sums = f3a30d21a96ed4c4b4d341e3665e14bc8b64310712890b92be23b7cab6e1e65c
+	sha256sums = a3dcdd6459b4a376c61ad8c69ced0f356581229b39b209debe1679749824c408
+
+pkgname = konica-minolta-c266-series
