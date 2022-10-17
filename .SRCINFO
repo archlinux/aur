@@ -1,6 +1,6 @@
 pkgbase = parallel-launcher
 	pkgdesc = Modern N64 Emulator
-	pkgver = 6.11.1
+	pkgver = 6.12.1
 	pkgrel = 0
 	url = https://parallel-launcher.ca
 	install = parallel-launcher.install
@@ -11,7 +11,6 @@ pkgbase = parallel-launcher
 	makedepends = make
 	makedepends = qt5-tools
 	depends = glibc
-	depends = libstdc++5
 	depends = gcc-libs
 	depends = qt5-base
 	depends = qt5-svg
@@ -22,7 +21,7 @@ pkgbase = parallel-launcher
 	depends = sqlite
 	depends = libgcrypt
 	optdepends = noto-fonts: intended font
-	source = https://gitlab.com/parallel-launcher/parallel-launcher/uploads/b7aa31bcbd78bea33c70eb6a3bb67b23/parallel-launcher-6.11.1.tar.gz
-	sha256sums = 0cf88b61ba078427564c882776bb8f0ffdc6b0ebce200481cf0a9850595fa805
+	source = https://gitlab.com/parallel-launcher/parallel-launcher/uploads/123bdae376389605fe5819231fb7d7f5/parallel-launcher-6.11.2.tar.gz
+	sha256sums = dff1b0a0119ffb4d456ac5065c81c2f77503718d1c4de68a7992d477df0d831a
 
 pkgname = parallel-launcher
