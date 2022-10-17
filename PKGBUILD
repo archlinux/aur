@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wage at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cameractrls
 pkgver=0.4.10
 pkgrel=1
