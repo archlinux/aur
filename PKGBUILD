@@ -1,8 +1,8 @@
 # maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=cephadm-git
-pkgver=17.0.0.r8135.gf5b96461081
-pkgrel=1
+pkgver=18.0.0.r520.g9f56295fcfb
+pkgrel=2
 pkgdesc='Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers'
 arch=('any')
 url="https://ceph.com/"
@@ -24,6 +24,6 @@ pkgver() {
 
 package() {
     cd $srcdir/ceph
-    install -Dm0755 src/cephadm/cephadm $pkgdir/usr/bin/cephadm
+    install -Dm0755 src/cephadm/cephadm.py $pkgdir/usr/bin/cephadm
 }
 
