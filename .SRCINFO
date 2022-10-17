@@ -1,0 +1,20 @@
+pkgbase = desq-apps-term
+	pkgdesc = A simple terminal emulator for DesQ
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQApps/DesQTerm
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = qtermwidget
+	depends = libdesqui
+	depends = dfl-settings
+	depends = dfl-utils
+	depends = dfl-applications
+	source = https://gitlab.com/DesQ/DesQApps/DesQTerm/-/archive/v0.0.7/DesQTerm-v0.0.7.tar.gz
+	md5sums = f7338b94423a81fe8076bb968adda717
+
+pkgname = desq-apps-term
