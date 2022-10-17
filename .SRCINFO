@@ -1,0 +1,19 @@
+pkgbase = desq-utils-keyring
+	pkgdesc = DesQ Polkit Agent
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQUtils/Keyring
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesqui
+	depends = polkit-qt5
+	depends = dfl-wayqt
+	depends = dfl-settings
+	source = https://gitlab.com/DesQ/DesQUtils/Keyring/-/archive/v0.0.7/Keyring-v0.0.7.tar.gz
+	md5sums = 40f623445762fa49893749314cad014c
+
+pkgname = desq-utils-keyring
