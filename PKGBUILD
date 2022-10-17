@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=105.0.3
+pkgver=106.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -40,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('f2fa1e03aecdd4dca0bcda94fd228d3a9ef3635862a2c140f8982d32ae7761e7'
+sha256sums=('1546ebfd9d5a814f17479ed626519ed69aa3c89c22c7fb1fe5c84e4d7e5d7e18'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -216,8 +216,6 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
 
-    msg2 "Use mold as linker"
-    patch -Np1 -i ${_patches_dir}/add-mold-linker.patch
     #msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
     #patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # broken with 105, wait for a upstream fix
 
