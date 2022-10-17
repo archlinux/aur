@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.19
-_major=5.19
+_srcname=linux-6.0
+_major=6.0
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=7
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
@@ -24,16 +24,14 @@ makedepends=(
 options=('!strip')
 _modprobeddb=
 source=(
-  https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v6.x/stable-review/"$_rcpatch".{xz,sign}
   # https://lkml.org/lkml/2019/8/23/712
   #"$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-drm-i915-psr-Use-full-update-In-case-of-area-calcula.patch
-  0003-drm-i915-Ensure-damage-clip-area-is-within-pipe-area.patch
-  0004-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
-  0005-soundwire-intel-use-pm_runtime_resume-on-component-p.patch
+  0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
+  0003-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -41,16 +39,14 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('755416aee62b7e737ad29a3f552ba462dd4e6f1b8cc6b61c4961ea2ff8a06b68eb69f9d671e8146cfcedc7edff2e184c71bd2bd00e214e4f374b3252719c2975'
+b2sums=('cf011d218b1bd95c93fe42d6f265e7aadda8fd88098b28b057a1e24c6a197da38f18a7c83ab9def14897be563da2e4234c3e33b2d29bffc872b1999ff9b57794'
         'SKIP'
-        '9fd934cf511ded0800a387beda79e1d4c7523926c69cae0f4eee62cfbc0fab4b97e666c9a0b79130aff9e17dfc4c222a04a6037776182954b1edc0af9b8517c6'
+        'c2eb16c09006df5fa4c57d24663f9f20443fc683b0890d1c70eaeb08a6da146a9421114719da1a6ed66624f07715fb6cf6d0403c472e3612944e233dd2b2f429'
         'SKIP'
-        '28b82cdb5faac7f93368bbd5c4a9106f729dd39624abbd7a0acc4909599175af0a987c91bb6c0e348ae1ab2180f5e85c3a04ce6ba03e03b0dee45fe3b81d3847'
-        '601a38549c139dee5511075133fca55fd6d11821df0d6c94807e9182fd8b09572d59cdf9ae14ff79cd38c8db15feb1d80373cfed938627fac1f05ac7169c9b22'
-        '0a2fb7535f65e402b1b24e5e86f48dddd004d2ca2feff4a6066e221e55e34d6343eb1e515b62ee03c2ccb19692921593ae5a17ff63fba46c6df6b74bfe37897c'
-        'e53054446bb25fea9ba1de582c57da637112219c308255dd4003c040b61bb8d26fcd5bd61515884df91f81611a762edf2fe83493567354c164cf55afbc6e4fa8'
-        'b6a3342e9993383e714eeabeb1e2ab6e9f9062af4d0c8551522c3554cc84b93ed3bf4ce22e8e74e1e73f3fd668c334ca2e3e358bd6e75c9d75eb487983ee8bd5'
-        '5efabcfc95f308af6f22015e6a15b170393773c214711460aaf9d455c4ea74ad258fb3d392f8c0383fb7b10f97c1f237b332544345ff98ba69c4c176728bea60')
+        'f6f53ed92891b063ae6874764ad370f5de2d115dcf7a5d5d35f4fa678947235abb023b156c6563c068a313654a856807298f1935d78238f698e38b9bcd4db6e6'
+        '2692c46e15bf1527aa19a1db2b1c325a95a15fc2128cc49da2fa31d14f10615c736c928180ac403b76054b9e504057cedaf5252c0e1ca697162bdc7d394379cd'
+        '4128728302395142a282840d4408500cf8b0d45f4df70e0e4b845150222193217a11945d4c6a901813b9fed1425d2c280ef0cf5c3e9281512bdf934c93b5a0cc'
+        '63c2639fe24acaafb993dc06fc244d965da76730da08d23308b668c598a9d1da1be898a344fdb693acc7d8e883234437abd8d6bc89ca21eae637d8955ce5f25b')
 
 
 export KBUILD_BUILD_HOST=archlinux
