@@ -4,14 +4,13 @@
 _pkgname=mimejs
 _version=0.1
 pkgname=${_pkgname}-git
-pkgver=${_version}.88537e0
+pkgver=${_version}.f136dc0
 pkgrel=1
 pkgdesc='A replacement for xdg-open written in Node.js'
 arch=('i686' 'x86_64')
 url="https://github.com/karabaja4/mimejs"
 license=('MIT')
 depends=('file' 'bash' 'nodejs')
-makedepends=('npm')
 provides=('xdg-utils')
 conflicts=('xdg-utils')
 source=('git+https://github.com/karabaja4/mimejs.git')
@@ -25,11 +24,6 @@ prepare() {
 pkgver() {
   cd "${_pkgname}"
   echo "${_version}.$(git rev-parse --short HEAD)"
-}
-
-build() {
-  cd "${_pkgname}"
-  npm install
 }
 
 package() {
