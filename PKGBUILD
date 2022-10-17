@@ -9,7 +9,7 @@ pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
+makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang' 'libxslt')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
@@ -19,7 +19,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.sysusers
         postgresql.tmpfiles
         pgenv.sh)
-sha256sums=('4d3c101ea7ae38982f06bdc73758b53727fb6402ecd9382006fa5ecc7c2ca41f'
+sha256sums=('72ec74f4a7c16e684f43ea42e215497fcd4c55d028a68fb72e99e61ff40da4d6'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
@@ -58,23 +58,8 @@ build() {
     --disable-rpath
   )
 
-  # only build plpython3 for now
-  ./configure "${options[@]}" \
-    PYTHON=/usr/bin/python
-  make -C src/pl/plpython all
-  make -C contrib/hstore_plpython all
-  make -C contrib/ltree_plpython all
-
-  # save plpython3 build and Makefile.global
-  cp -a src/pl/plpython{,3}
-  cp -a contrib/hstore_plpython{,3}
-  cp -a contrib/ltree_plpython{,3}
-  cp -a src/Makefile.global{,.python3}
-  make distclean
-
   # regular build with everything
-  ./configure "${options[@]}" \
-    PYTHON=/usr/bin/python2
+  ./configure "${options[@]}"
   make world
 }
 
