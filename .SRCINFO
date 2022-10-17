@@ -1,16 +1,24 @@
 pkgbase = python-pglast
 	pkgdesc = PostgreSQL language AST and statement prettifier
-	pkgver = 3.14
+	pkgver = 3.15
 	pkgrel = 1
 	url = https://github.com/lelit/pglast
 	arch = x86_64
 	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = cython
-	makedepends = python-setuptools
 	makedepends = protobuf-c
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-sphinx
 	depends = python
-	source = git+https://github.com/lelit/pglast#commit=67b4d6662bf576b38e89d794e09d722455ebeb60
-	md5sums = SKIP
+	depends = python-setuptools
+	source = python-pglast::git+https://github.com/lelit/pglast#commit=c97de80bfcb66a2f4c047fb61e7df20b6f98e40e
+	source = github.com-pganalyze-libpg_query::git+https://github.com/pganalyze/libpg_query
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = python-pglast
