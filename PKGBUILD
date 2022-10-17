@@ -3,8 +3,8 @@
 
 pkgname=chromium-extension-rggl
 _extension=rggl
-pkgver=6.1.3
-_commit=44e8dbcb3e179e9ff86dc58b416cf32c79caff34
+pkgver=6.1.4
+_commit=2eea7ca3616af89b4398cb2ce4611657e195fdee
 pkgrel=1
 pkgdesc="Remove German Gender Language - chromium extension"
 arch=('any')
