@@ -1,10 +1,10 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.6.0
-pkgrel=2
+pkgver=10.6.1
+pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('MPL2')
 depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'nss' 'ttf-font')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
@@ -17,16 +17,17 @@ makedepends=('imagemagick')
 conflicts=()
 replaces=()
 backup=()
-# もしかしてx86_64だけじゃなくなった感じ?
-# source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2"
-#             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
-#             "floorp.desktop")
-source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.tar.bz2"
-            "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
-            "floorp.desktop")
-md5sums=('e84f5b1a8bd914209bb7aceeca7cabde'
-            'c12cf6c807ad562188e648c60b2b7289'
+source=("https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
+            "floorp.desktop"
+            "https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.en-US.linux-${arch}.tar.bz2")
+md5sums=('c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
+
+if test "$CARCH" == x86_64; then
+    md5sums+=('05758f135c0a6446652fdfd6b884098e')
+elif test "$CARCH" == aarch64; then
+    md5sums+=('d7209721a4f4993fb9f0a995c10292a8')
+fi
 
 package() {
   cd "${srcdir}/${pkgname}"
