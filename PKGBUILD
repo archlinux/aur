@@ -18,7 +18,7 @@ source=(
 )
 noextract=($_npmname-$_npmver.tgz)
 sha1sums=('a735c4edc928a5ea3dd891cd49c2d8568168de8b'
-          'a8f84443d428494c3aa83702664fbdd63cb1a78d'
+          'ad7056273ff8d5c2798b4ab870f5981288a67c60'
           '74d44892ab7cac4c4b3f56b24158605ede05c984')
 
 package() {

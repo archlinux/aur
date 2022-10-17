@@ -6,4 +6,4 @@ Name=whistle
 Categories=Network;
 Keywords=Internet;Debug;Proxy
 Exec=xdg-open "http://127.0.0.1:8899"
-Icon=/usr/share/icons/hicolor/512x512/apps/nodejs-whistle.png
+Icon=/usr/share/icons/hicolor/160x160/apps/nodejs-whistle.png
