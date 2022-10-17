@@ -1,6 +1,6 @@
-# shellcheck disable=SC2034
-# shellcheck disable=SC2164
-# Maintainer: Štěpán Němec <stepnem@gmail.com>
+# shellcheck disable=SC2034 # unused var
+# shellcheck disable=SC2164 # cd might fail
+# Maintainer: Štěpán Němec <stepnem@smrk.net>
 
 pkgname=exman
 pkgver=2063.8
