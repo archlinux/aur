@@ -3,7 +3,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=tup-git
-pkgver=0.7.5.r71.g80b1a442
+pkgver=0.7.11.r95.g4e9f5b32
 pkgrel=1
 pkgdesc='A fast, file-based build system'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ makedepends=(git)
 provides=(tup)
 conflicts=(tup)
 install=tup.install
-source=(git://github.com/gittup/tup)
+source=(git+https://github.com/gittup/tup)
 sha512sums=('SKIP')
 
 pkgver() {
