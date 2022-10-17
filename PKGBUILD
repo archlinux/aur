@@ -18,7 +18,7 @@ build() {
 
 package() {
   cd "${srcdir}/wsproxy-${pkgver}"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
