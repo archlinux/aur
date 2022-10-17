@@ -1,5 +1,5 @@
 pkgbase = cura-5-beta-bin
-	pkgdesc = Cura is an open source slicing application for 3D printers include betaversion
+	pkgdesc = Cura is an open source slicing application for 3D printers (include betaversion)
 	pkgver = 5.2.0
 	pkgrel = 5
 	url = https://ultimaker.com/software/ultimaker-cura
