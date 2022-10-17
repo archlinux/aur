@@ -161,6 +161,16 @@ prepare() {
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
+    # File systems
+    scripts/config --module NTFS3_FS \
+                   --enable NTFS3_LZX_XPRESS \
+                   --enable NTFS3_FS_POSIX_ACL
+
+    scripts/config --module SMB_SERVER \
+                   --enable SMB_SERVER_SMBDIRECT \
+                   --enable SMB_SERVER_CHECK_CAP_NET_ADMIN \
+                   --enable SMB_SERVER_KERBEROS5
+
     # Security options
     scripts/config --enable SECURITY_SELINUX \
                    --enable SECURITY_SELINUX_BOOTPARAM \
@@ -238,7 +248,7 @@ _package() {
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+    provides=(KSMBD-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
     install=linux.install
 
     cd $_srcname
