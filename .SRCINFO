@@ -1,0 +1,11 @@
+pkgbase = sviesolutions-via-bin
+	pkgdesc = SVI eSolutions video conferencing application
+	pkgver = 2022.10.1379.557
+	pkgrel = 1
+	url = https://assistance.sviesolutions.com
+	arch = x86_64
+	depends = libatomic_ops
+	source = https://via.sviesolutions.com/Application/Via/Via.tar.gz
+	sha256sums = d3b8793636129ba69a9108fcee8b5122756b82569bc93f117ab7ad0cb93948aa
+
+pkgname = sviesolutions-via-bin
