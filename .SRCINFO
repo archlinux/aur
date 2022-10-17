@@ -1,13 +1,11 @@
 pkgbase = iam-policy-json-to-terraform
 	pkgdesc = Small tool to convert an IAM Policy in JSON format into a Terraform aws_iam_policy_document
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/flosell/iam-policy-json-to-terraform
-	arch = any
+	arch = x86_64
 	license = Apache License 2.0
-	makedepends = go
-	makedepends = make
-	source = iam-policy-json-to-terraform-1.8.0.tar.gz::https://github.com/flosell/iam-policy-json-to-terraform/archive/refs/tags/1.8.0.tar.gz
-	sha256sums = 428ee4c7c40a77c3f2c08f1ea5b5ac145db684bba038ab113848e1697ef906dc
+	source = https://github.com/flosell/iam-policy-json-to-terraform/releases/download/1.8.1/iam-policy-json-to-terraform_amd64
+	sha256sums = b148c7cafb050acf255f9da79fed58d5d5acc29f24281b9fd79c8cb50bc55c2f
 
 pkgname = iam-policy-json-to-terraform
