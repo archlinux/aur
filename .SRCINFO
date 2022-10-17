@@ -1,7 +1,8 @@
 pkgbase = uefitool
 	pkgdesc = UEFI firmware image viewer and editor and utilities
-	pkgver = A61
+	pkgver = A62
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = armv7h
 	arch = aarch64
@@ -10,7 +11,7 @@ pkgbase = uefitool
 	license = BSD
 	makedepends = cmake
 	depends = qt6-base
-	source = https://github.com/LongSoft/UEFITool/archive/A61.tar.gz
-	sha256sums = 54fbc130a71e6474f0f9342166465670dff0dac9ba743fe162ae2c9912826155
+	source = https://github.com/LongSoft/UEFITool/archive/A62.tar.gz
+	sha256sums = fa39be2912141f7d95cd733acf2f49e94c1df3cfbb069bb856d6e9bae86ff8bb
 
 pkgname = uefitool
