@@ -3,7 +3,7 @@
 # Based on: AUR packages qt6-base-git and mingw-w64-qt6-base-git, official qt5-base package
 
 pkgname=mingw-w64-qt6-base-static-nosql
-_qtver=6.3.0
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -31,7 +31,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0006-Support-finding-static-MariaDB-client-library.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
         '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch')
-sha256sums=('b865aae43357f792b3b0a162899d9bf6a1393a55c4e5e4ede5316b157b1a0f99'
+sha256sums=('cb6475a0bd8567c49f7ffbb072a05516ee6671171bed55db75b22b94ead9b37d'
             'bff8b8af7b4eec0961890190bc1d31d98c2270985698a8071b5ee1434a12f13a'
             'bdc4834c7c88176113770356e24104040622c30779a770da3292e487d0b451c8'
             '08647a0b4f3beef39a2308cea4ed7b63887e58ef7b8f53294ba8d136eaf32109'
@@ -81,7 +81,7 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-$_arch
 
-    install -Dm644 $_pkgfqn/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname
+    install -Dm644 $_pkgfqn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgname
 
     # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
     find "$pkgdir/usr/$_arch/static/lib" -type f -name '*.prl' \

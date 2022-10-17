@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-base-static-nosql
 	pkgdesc = A cross-platform application and UI framework (mingw-w64)
-	pkgver = 6.3.0
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -26,13 +26,13 @@ pkgbase = mingw-w64-qt6-base-static-nosql
 	depends = mingw-w64-pcre2
 	depends = mingw-w64-zstd
 	optdepends = qt6-base: development tools
-	provides = mingw-w64-qt6-base-static=6.3.0
+	provides = mingw-w64-qt6-base-static=6.4.0
 	conflicts = mingw-w64-qt6-base-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtbase-everywhere-src-6.3.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.4/6.4.0/submodules/qtbase-everywhere-src-6.4.0.tar.xz
 	source = 0001-Use-CMake-s-default-import-library-suffix.patch
 	source = 0002-Fix-finding-D-Bus.patch
 	source = 0003-Fix-using-static-PCRE2-and-DBus-1.patch
@@ -41,7 +41,7 @@ pkgbase = mingw-w64-qt6-base-static-nosql
 	source = 0006-Support-finding-static-MariaDB-client-library.patch
 	source = 0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch
 	source = 0008-Fix-crashes-in-rasterization-code-using-setjmp.patch
-	sha256sums = b865aae43357f792b3b0a162899d9bf6a1393a55c4e5e4ede5316b157b1a0f99
+	sha256sums = cb6475a0bd8567c49f7ffbb072a05516ee6671171bed55db75b22b94ead9b37d
 	sha256sums = bff8b8af7b4eec0961890190bc1d31d98c2270985698a8071b5ee1434a12f13a
 	sha256sums = bdc4834c7c88176113770356e24104040622c30779a770da3292e487d0b451c8
 	sha256sums = 08647a0b4f3beef39a2308cea4ed7b63887e58ef7b8f53294ba8d136eaf32109
