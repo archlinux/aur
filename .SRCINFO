@@ -14,6 +14,6 @@ pkgbase = vmp
 	depends = glew
 	depends = openjpeg2
 	source = vmp-0.81.tar.xz::https://github.com/milgra/vmp/releases/download/0.81/vmp-0.81.tar.xz
-	sha256sums = b71767e702c89917e476d722e858582ef511f51e28fa2c568527b0579f3664e8
+	sha256sums = eb569dcdd07d80e8e976e31c9568aa665c520d76414e557fc0bdb4484293e941
 
 pkgname = vmp
