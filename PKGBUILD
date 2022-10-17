@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=check-broken-packages-pacman-hook-git
-pkgver=r62.48e4f6f
+pkgver=r81.9d5f298
 pkgrel=1
 pkgdesc='Pacman hook to check for broken packages'
 arch=('x86_64')
@@ -30,6 +30,6 @@ build() {
 
 package() {
     cd "${srcdir}/${_gitname}"
-    install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" check-broken-packages/check-broken-packages.hook
+    install -Dm 644 check-broken-packages/check-broken-packages.hook "${pkgdir}/usr/share/libalpm/hooks/80-check-broken-packages.hook" 
     install -Dm 755 -t "${pkgdir}/usr/bin" check-broken-packages/target/release/check-broken-packages
 }
