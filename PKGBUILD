@@ -5,7 +5,7 @@ pkgname=yank-note-bin
 _pkgname=yank-note
 _electron=electron
 pkgver=3.40.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
 url='https://github.com/purocean/yn'
@@ -31,11 +31,6 @@ prepare() {
     sed -i "s|^exports.BIN_DIR.*|exports.BIN_DIR='/usr/bin';|g" constant.js
     # disable autoupdate checker.
     sed -i "s|^var disabled.*|var disabled = true;|g" updater.js
-
-    # fix for electron20, see https://github.com/electron/electron/issues/35193,
-    # and https://github.com/nodejs/nan/pull/943
-    cd "$srcdir/opt/Yank Note/resources"/apps
-    jq '.resolutions.nan = "github:VerteDinde/nan#deprecate_accessor_signature"' package.json|sponge package.json
 
     cd $srcdir/usr/share/applications
     sed -i "s|^Exec.*|Exec=yank-note %U|g"   ${_pkgname}.desktop
