@@ -1,7 +1,7 @@
 # Maintainer: dingjing <dingjing@live.cn>
 
 pkgname=jarvis
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='一款数据分析与展示平台(版本号高于 1.0.0 才可正常使用)'
 url='https://github.com/dingjingmaster/jarvis'
@@ -9,8 +9,8 @@ arch=('x86_64')
 license=('MIT')
 depends=('openssl' 'sqlite3')
 makedepends=('cmake')
-source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.3.tar.gz")
-sha512sums=('6812c98bc9f3ba44d10e0a71f09d88d9531df20ff2f34d80ffb2d815a153283caa56b6f4d5bf570fe7765cb2e1c549afe871be1a5a5683b578b424fe31b3124c')
+source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.4.tar.gz")
+sha512sums=('31960759b244975fd9fbc5a227ba3026d1acf5533799da40f64a40923d00f0fe175bc5860b943281313a977de5e7e35e807c6d44914739e16ff3b27c57119107')
 
 prepare() {
     cd ${srcdir}/${pkgname}-$pkgver 
