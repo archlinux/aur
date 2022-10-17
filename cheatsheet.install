@@ -1,0 +1,3 @@
+post_install() {
+	echo "Run 'cheatsheet -update' now to download data archives"
+}
