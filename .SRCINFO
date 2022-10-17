@@ -1,0 +1,20 @@
+pkgbase = ruff-git
+	pkgdesc = Experimental Python linter written in Rust
+	pkgver = 0.0.79.r0.gcf0d198
+	pkgrel = 1
+	url = https://github.com/charliermarsh/ruff
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = maturin
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gcc-libs
+	optdepends = python>=3.7
+	provides = ruff
+	conflicts = ruff
+	options = !lto
+	source = ruff::git+https://github.com/charliermarsh/ruff
+	sha256sums = SKIP
+
+pkgname = ruff-git
