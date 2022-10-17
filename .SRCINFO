@@ -1,7 +1,7 @@
 pkgbase = cura-5-beta-bin
-	pkgdesc = Uncompressed version of Ultimaker Cura 5 including beta versions for plugin installation options
+	pkgdesc = Cura is an open source slicing application for 3D printers include betaversion
 	pkgver = 5.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
