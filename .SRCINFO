@@ -1,0 +1,15 @@
+pkgbase = libdesq
+	pkgdesc = The DesQ library to handle X11 protocols, system calls, classes and functions to be used across the DesQ project.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/libdesq
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	source = https://gitlab.com/DesQ/libdesq/-/archive/v0.0.7/libdesq-v0.0.7.tar.gz
+	md5sums = 309dcac10d71352853c7eb69db60c2b1
+
+pkgname = libdesq
