@@ -1,6 +1,6 @@
 pkgbase = bender
 	pkgdesc = Dependency management tool for hardware design projects
-	pkgver = 0.25.2
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/pulp-platform/bender
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bender
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = bender-0.25.2.tar.gz::https://github.com/pulp-platform/bender/archive/v0.25.2.tar.gz
-	sha512sums = e2a55f2d4a9cfca309b7ec1a22a230dbdb0f0d8bba5c4b6a46e9971a3e0c90cd68a5266162812115a24e8179524cdec90cbf54035e04e87628a784f3e75f8df9
+	source = bender-0.26.1.tar.gz::https://github.com/pulp-platform/bender/archive/v0.26.1.tar.gz
+	sha512sums = 667b3c147e7e18f5edfe57eeb8cad020b6f6fda0a9158664a1252385ceaf3d5340ea6fb2ced3a9fdd0b0e4568ebab952313ddd4adf5d0c749ac71e3d9b80a76a
 
 pkgname = bender
