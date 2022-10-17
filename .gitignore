@@ -1,3 +1,6 @@
-wineasio-*
-src
-pkg
+# exclude everything except directory .gitignore, PKGBUILD, .SRCINFO and wineasio.install
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/wineasio.install
