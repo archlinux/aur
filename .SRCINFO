@@ -1,0 +1,19 @@
+pkgbase = desq-utils-lock
+	pkgdesc = Screen Locker for DesQ
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQUtils/Lock
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesq
+	depends = pam
+	depends = dfl-wayqt
+	depends = dfl-settings
+	source = https://gitlab.com/DesQ/DesQUtils/Lock/-/archive/v0.0.7/Lock-v0.0.7.tar.gz
+	md5sums = 4e2c113217427877c50c5f47798661b8
+
+pkgname = desq-utils-lock
