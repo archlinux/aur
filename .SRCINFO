@@ -1,19 +1,23 @@
 pkgbase = file-git
 	pkgdesc = File type identification utility - git checkout
-	pkgver = 5.21.r4.g4f2c3a6
+	pkgver = 5.43.r81.g4cfda317
 	pkgrel = 1
 	url = http://www.darwinsys.com/file/
 	arch = i686
 	arch = x86_64
-	groups = base
 	groups = base-devel
 	license = custom
 	makedepends = git
+	depends = glibc
 	depends = zlib
+	depends = xz
+	depends = bzip2
+	depends = libseccomp
+	depends = libseccomp.so
+	provides = libmagic.so
 	provides = file
 	conflicts = file
-	source = git://github.com/file/file
+	source = git+https://github.com/file/file.git
 	sha256sums = SKIP
 
 pkgname = file-git
-

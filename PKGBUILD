@@ -4,37 +4,56 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=file-git
-pkgver=5.21.r4.g4f2c3a6
+pkgver=5.43.r81.g4cfda317
 pkgrel=1
 pkgdesc='File type identification utility - git checkout'
 arch=('i686' 'x86_64')
 license=('custom')
-groups=('base' 'base-devel')
+groups=('base-devel')
 url='http://www.darwinsys.com/file/'
-depends=('zlib')
+depends=('glibc' 'zlib' 'xz' 'bzip2' 'libseccomp' 'libseccomp.so')
 makedepends=('git')
-provides=('file')
+provides=('libmagic.so' 'file')
 conflicts=('file')
-source=('git://github.com/file/file')
+source=('git+https://github.com/file/file.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd file/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git rev-parse --short HEAD)"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
+prepare() {
+	cd file/
+
+	autoreconf -fi
+}
 
 build() {
 	cd file/
 
-	autoreconf -fi
-	./configure --prefix=/usr --datadir=/usr/share/file
+	./configure \
+		--prefix=/usr \
+		--datadir=/usr/share/file \
+		--enable-fsect-man5 \
+		--enable-libseccomp
 	make
+}
+
+check() {
+	cd file/
+
+	make check
 }
 
 package() {
@@ -43,6 +62,5 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	install -D -m0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-	rmdir "${pkgdir}/usr/share/man/man5"
 }
 
