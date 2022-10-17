@@ -1,13 +1,15 @@
 pkgbase = sensu-go
 	pkgver = 6.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sensu.io
 	arch = x86_64
 	groups = sensu-go
+	groups = sensu
 	license = custom:MIT
 	makedepends = go
 	makedepends = curl
 	makedepends = jq
+	depends = glibc
 	source = sensu-go-6.7.3.tar.gz::https://github.com/sensu/sensu-go/archive/refs/tags/v6.7.3.tar.gz
 	source = sensu-agent.service
 	source = sensu-backend.service

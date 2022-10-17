@@ -3,12 +3,13 @@
 pkgbase='sensu-go'
 pkgname=('sensu-go-agent' 'sensu-go-backend' 'sensu-go-cli')
 pkgver=6.7.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://sensu.io'
 license=('custom:MIT')
-groups=('sensu-go')
+groups=('sensu-go' 'sensu')
 makedepends=('go' 'curl' 'jq')
+depends=('glibc')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/sensu/sensu-go/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase/-go/}-agent.service"
         "${pkgbase/-go/}-backend.service"
@@ -25,22 +26,22 @@ sha256sums=('a3fd81cbe10ad6b9dc4c7cc227f59b121bdf916e52606eb915b29b2139f09b54'
             '7e5f0c7d8eb9161d9e9f40fd8ef825cc500156d4575eb3599c2083013bd22407')
 
 prepare() {
+    cd "${srcdir}/${pkgbase}-${pkgver}"
+
     _pkgtagsha="$(curl -L https://api.github.com/repos/sensu/sensu-go/git/ref/tags/v${pkgver} | jq -r '.object.sha')"
+    mkdir -p build/
 }
 
 build() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    go build -ldflags "-X \"github.com/sensu/sensu-go/version.Version=${pkgver}\" -X \"github.com/sensu/sensu-go/version.BuildDate=$(date -I)\" -X \"github.com/sensu/sensu-go/version.BuildSHA='${_pkgtagsha}'\" " \
-        -asmflags -trimpath \
-        -o bin/sensu-agent \
-        ./cmd/sensu-agent
-    go build -ldflags "-X \"github.com/sensu/sensu-go/version.Version=${pkgver}\" -X \"github.com/sensu/sensu-go/version.BuildDate=$(date -I)\" -X \"github.com/sensu/sensu-go/version.BuildSHA='${_pkgtagsha}'\" " \
-        -o bin/sensu-backend \
-        ./cmd/sensu-backend
-    go build -ldflags "-X \"github.com/sensu/sensu-go/version.Version=${pkgver}\" -X \"github.com/sensu/sensu-go/version.BuildDate=$(date -I)\" -X \"github.com/sensu/sensu-go/version.BuildSHA='${_pkgtagsha}'\" " \
-        -o bin/sensuctl \
-        ./cmd/sensuctl
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+    go build -o build -ldflags="-linkmode=external -X='github.com/sensu/sensu-go/version.Version=${pkgver}' -X='github.com/sensu/sensu-go/version.BuildDate=$(date -I)' -X='github.com/sensu/sensu-go/version.BuildSHA=${_pkgtagsha}'" ./cmd/...
 }
 
 package_sensu-go-agent() {
@@ -53,7 +54,7 @@ package_sensu-go-agent() {
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver%.*}.yml.example" "${pkgdir}/usr/share/doc/${pkgname}/${pkgname/$pkgbase-/}.yml.example"
@@ -72,7 +73,7 @@ package_sensu-go-backend() {
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver%.*}.yml.example" "${pkgdir}/usr/share/doc/${pkgname}/${pkgname/$pkgbase-/}.yml.example"
@@ -90,7 +91,7 @@ package_sensu-go-cli() {
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    install -Dm755 "bin/${_pkgname/-cli/ctl}" "${pkgdir}/usr/bin/${_pkgname/-cli/ctl}"
+    install -Dm755 "build/${_pkgname/-cli/ctl}" "${pkgdir}/usr/bin/${_pkgname/-cli/ctl}"
     install -Dm755 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
