@@ -1,22 +1,17 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=immugw
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A REST proxy for immudb"
+pkgdesc='A REST proxy for immudb'
 arch=('x86_64')
-url="https://github.com/codenotary/immugw"
+url='https://github.com/codenotary/immugw'
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
+backup=('etc/immugw/immugw.toml')
 options=('!lto')
-_commit='77f6c4c3adfaebbb4ca039e12eb57a55045943d9'
+_commit='323096dcaf7bf12fadf9219099f46371b5be556c'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'config.toml'
@@ -63,9 +58,9 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
-    -X github.com/codenotary/immugw/cmd/version.Version=${pkgver} \
-    -X github.com/codenotary/immugw/cmd/version.Commit=$(git rev-parse HEAD) \
+    -ldflags "-linkmode external -extldflags $LDFLAGS \
+    -X github.com/codenotary/immugw/cmd/version.Version=$pkgver \
+    -X github.com/codenotary/immugw/cmd/version.Commit=$_commit \
     -X github.com/codenotary/immugw/cmd/version.BuiltBy=aur@archlinux \
     -X github.com/codenotary/immugw/cmd/version.BuiltAt=$(date -d@"$SOURCE_DATE_EPOCH" +%s)" \
     -o build_output \

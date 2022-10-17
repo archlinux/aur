@@ -1,6 +1,6 @@
 pkgbase = immugw
 	pkgdesc = A REST proxy for immudb
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/codenotary/immugw
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = immugw
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = immugw::git+https://github.com/codenotary/immugw.git#commit=77f6c4c3adfaebbb4ca039e12eb57a55045943d9
+	backup = etc/immugw/immugw.toml
+	source = immugw::git+https://github.com/codenotary/immugw.git#commit=323096dcaf7bf12fadf9219099f46371b5be556c
 	source = config.toml
 	source = systemd.service
 	source = sysusers.conf
