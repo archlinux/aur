@@ -6,7 +6,7 @@
 # Maintainer: Jose M. Garcia <josemaria.alkala at gmail dot com>
 _pkgname='mchfuse'
 pkgname="${_pkgname}-bin"
-pkgver="0.3.2"
+pkgver="0.4.0"
 pkgrel=1
 epoch=0
 pkgdesc="Western Digital My Cloud Home FUSE file system"
@@ -32,15 +32,15 @@ source_armv6h=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgv
 source_armv5h=("https://github.com/mnencia/${_pkgname}/releases/download/v${pkgver}/mchfuse_${pkgver}_Linux_armv5.tar.gz" "mchfuse.conf")
 
 noextract=()
-md5sums_x86_64=('c8f1e8803c67745038ec34d698899963'
+md5sums_x86_64=('5e12fc1c63ab9acc708e68554d786808'
                 'fa672977e621324c4dd65fb9d2506c20')
-md5sums_aarch64=('7a91fa13fc780f0de59b450036f6cc85'
+md5sums_aarch64=('da2f45c4c50ae020cfd622a9840c0d0a'
                  'fa672977e621324c4dd65fb9d2506c20')
-md5sums_armv7h=('12ca1e0256538438930b7d3de6f7ded4'
+md5sums_armv7h=('107316cb2305294064b7c70d2af25694'
                 'fa672977e621324c4dd65fb9d2506c20')
-md5sums_armv6h=('de44344cadbaf4eeb513f8ec35e92249'
+md5sums_armv6h=('b38b9a83acca689de94ba7970a5a9f4d'
                 'fa672977e621324c4dd65fb9d2506c20')
-md5sums_armv5h=('7e4fabd6ffcfee5a09adb468b5738b5c'
+md5sums_armv5h=('4fcc323149863b3a4357e7529d1fe6c8'
                 'fa672977e621324c4dd65fb9d2506c20')
 validpgpkeys=()
 backup=('etc/mchfuse.conf')
