@@ -1,4 +1,4 @@
-# Maintainer: Nici <NiciTheNici at protonmail dot com>
+# Maintainer: Nici <NicolasVontobel at protonmail dot com>
 pkgname='manga-cli-git'
 _pkgname='manga-cli'
 pkgver=r9.a1b7cff
