@@ -1,6 +1,6 @@
 pkgbase = stashpad
 	pkgdesc = Stashpad is the developer notepad.
-	pkgver = 1.0.6
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://www.stashpad.com/
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = stashpad
 	makedepends = coreutils
 	makedepends = imagemagick
 	source = https://releases.stashpad.com/download/appimage
-	sha256sums = 0a5a43951e2a5f245d1be6e296f19ca789b49fefdcf05106d781607c8ead0fc2
+	sha256sums = 00bf2bfc73f02508b3a8e24c63cd0a5e67c4367fe507210b8ae81396b04f53f8
 
 pkgname = stashpad
