@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mne
 _name=${pkgname#python-}
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('9dcbcff99787f448c079330b628f8ea3648f9ad3')
+sha1sums=('3d89284011b3cd4fa38dccfb9ccd5572b3a62fdc')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
