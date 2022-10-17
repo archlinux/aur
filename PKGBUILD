@@ -1,6 +1,6 @@
 # Maintainer: mekb https://github.com/mekb-turtle
-pkgname=2048-terminal
-pkgver=r3.5f43040
+pkgname=2048-terminal-git
+pkgver=r4.d12e4d2
 pkgrel=1
 pkgdesc='Terminal 2048 game written in C'
 arch=('any')
