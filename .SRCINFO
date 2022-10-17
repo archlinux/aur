@@ -1,0 +1,20 @@
+pkgbase = desq-theme
+	pkgdesc = DesQ Themes
+	pkgver = 0.0.7.1
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/Theme
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesqui
+	depends = dfl-settings
+	depends = dfl-applications
+	depends = dfl-utils
+	depends = dfl-xdg
+	source = https://gitlab.com/DesQ/Theme/-/archive/v0.0.7.1/Theme-v0.0.7.1.tar.gz
+	md5sums = d84e32dd63196d9fb921364c3e5a6548
+
+pkgname = desq-theme
