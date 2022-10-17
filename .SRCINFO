@@ -1,6 +1,6 @@
 pkgbase = python-dearpygui
 	pkgdesc = A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies
-	pkgver = 1.7
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/hoffstadt/DearPyGui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-dearpygui
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/hoffstadt/DearPyGui/archive/refs/tags/v1.7.tar.gz
-	sha256sums = 9be64c73f684b037f3e5231a0f22eda28b09fc347ece31387773a189953cc9bc
+	source = https://github.com/hoffstadt/DearPyGui/archive/refs/tags/v1.7.2.tar.gz
+	sha256sums = 00512f4bc44c4674175dc3b49b55e7342920bc0c17555d367858c6c14df39b61
 
 pkgname = python-dearpygui
