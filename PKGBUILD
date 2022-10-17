@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=pacdiff-pacman-hook-git
-pkgver=r77.9e7d418
+pkgver=r81.9d5f298
 pkgrel=1
 pkgdesc='Pacman hook to review .pacnew files automatically'
 arch=('any')
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_gitname}"
-    install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" pacdiff/pacdiff.hook
+    install -Dm 644 pacdiff/pacdiff.hook "${pkgdir}/usr/share/libalpm/hooks/90-pacdiff.hook" 
     install -Dm 755 -t "${pkgdir}/usr/share/libalpm/scripts" pacdiff/pacdiff_delta
 }
