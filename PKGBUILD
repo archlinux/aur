@@ -3,10 +3,10 @@
 pkgbase='sensu-go'
 pkgname=('sensu-go-agent' 'sensu-go-backend' 'sensu-go-cli')
 pkgver=6.7.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://sensu.io'
-license=('MIT')
+license=('custom:MIT')
 groups=('sensu-go')
 makedepends=('go' 'curl' 'jq')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/sensu/sensu-go/archive/refs/tags/v${pkgver}.tar.gz"

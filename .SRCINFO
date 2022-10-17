@@ -1,10 +1,10 @@
 pkgbase = sensu-go
 	pkgver = 6.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sensu.io
 	arch = x86_64
 	groups = sensu-go
-	license = MIT
+	license = custom:MIT
 	makedepends = go
 	makedepends = curl
 	makedepends = jq
