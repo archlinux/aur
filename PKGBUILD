@@ -4,15 +4,15 @@ pkgname=nbc
 _ver=1.2.1
 _rev=r4
 pkgver=$_ver.$_rev
-pkgrel=5
+pkgrel=6
 pkgdesc="Next Byte Codes (NBC) compiler for the LEGO Mindstorms NXT programmable brick"
 arch=('i686' 'x86_64')
 url="http://bricxcc.sourceforge.net/nbc/"
 license=('MPL')
 depends=(libusb-compat)
 makedepends=(fpc)
-source=("https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC release $_ver $_rev/$pkgname-$pkgver.src.tgz"
-        "https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC release $_ver $_rev/$pkgname-$pkgver.tgz"
+source=("https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC%20release%20$_ver%20$_rev/$pkgname-$pkgver.src.tgz"
+        "https://sourceforge.net/projects/bricxcc/files/NBC_NXC/NBC%20release%20$_ver%20$_rev/$pkgname-$pkgver.tgz"
         "$pkgname.patch")
 noextract=("$pkgname-$pkgver.tgz")
 sha512sums=('32e6d19bd6a22abca0cb299c7032eae7fff5ba509037d942441ac657570a05d48342bab0b986631e508fdd9fdbff0531f60ac25c2de0d6cc77b755fe288bb7b6'
