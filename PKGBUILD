@@ -5,7 +5,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=251.r59852.cb19517490
+pkgver=252.r60426.09925036cf
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -35,7 +35,7 @@ source=('git+https://github.com/systemd/systemd'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 sha512sums=('SKIP'
-            'e9d16140a2b412c1d2f61fb27543baee40cc9369e6545abf6a06f99af5a07c3df536083ffe058b4a6467ec9dcefc99a75eae730a9ffc58533511ef752a6e2763'
+            'd53034fcb1c8ebaee6f3abc3bf55766d0948ba87129e15da1609c8f84d9340f8ff18642db04e5ee5e05b2bab208a18e39a0170981c55e010b7dbc18c6dfa0fdc'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
@@ -83,11 +83,11 @@ build() {
   )
 
   local _meson_options=(
+    # internal version comparison is incompatible with pacman:
+    #   249~rc1 < 249 < 249.1 < 249rc
+    -Dversion-tag="${_tag_name/-/\~}-${pkgrel}-arch"
+    -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
-
-    # https://bugs.archlinux.org/task/75852
-    --buildtype debugoptimized
-    -D b_ndebug=true
 
     -Dgnu-efi=true
     -Dima=false
@@ -114,10 +114,10 @@ build() {
     -Dsysvrcnd-path=
 
     -Dsbat-distro='arch'
-    -Dsbat-distro-summary='Arch Linux AUR'
+    -Dsbat-distro-summary='Arch Linux'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
+    -Dsbat-distro-url="https://archlinux.org/packages/core/x86_64/${pkgname}/"
   )
 
   arch-meson "$_pkgbase" build "${_meson_options[@]}"
@@ -130,7 +130,8 @@ check() {
 }
 
 package_systemd-git() {
-  pkgdesc='system and service manager (git version)'
+  pkgdesc='system and service manager'
+  pkgdesc=+' (git version)'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
@@ -221,7 +222,8 @@ package_systemd-git() {
 }
 
 package_systemd-libs-git() {
-  pkgdesc='systemd client libraries (git version)'
+  pkgdesc='systemd client libraries'
+  pkgdesc+=' (git version)'
   depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
   provides=('libsystemd' 'libsystemd.so' 'libudev.so')
@@ -235,7 +237,8 @@ package_systemd-libs-git() {
 }
 
 package_systemd-resolvconf-git() {
-  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
+  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
+  pkgdesc+=' (git version)'
   license=('LGPL2.1')
   depends=('systemd-git')
   provides=('openresolv' 'resolvconf')
@@ -251,7 +254,8 @@ package_systemd-resolvconf-git() {
 }
 
 package_systemd-sysvcompat-git() {
-  pkgdesc='sysvinit compat for systemd (git version)'
+  pkgdesc='sysvinit compat for systemd'
+  pkgdesc+=' (git version)'
   license=('GPL2')
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')

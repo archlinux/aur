@@ -1,10 +1,7 @@
-From c553f5d0c0e4dcbba02b34e997f5af872064e763 Mon Sep 17 00:00:00 2001
+From f7d07e298c819a81eab965efbdbf53a2ce67fc0e Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 6 Mar 2018 23:39:47 +0100
-Subject: [PATCH 1/2] Use Arch Linux' device access groups
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH] Use Arch Linux' device access groups
 
   cdrom   → optical
   dialout → uucp
@@ -17,10 +14,10 @@ Content-Transfer-Encoding: 8bit
  4 files changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 6bbb2db55d..2ef5c3c344 100644
+index 32e5413a62..f781e06fed 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -913,19 +913,19 @@ conf.set_quoted('NOBODY_GROUP_NAME', nobody_group)
+@@ -796,19 +796,19 @@ conf.set_quoted('NOBODY_GROUP_NAME', nobody_group)
  static_ugids = []
  foreach option : ['adm-gid',
                    'audio-gid',
@@ -82,10 +79,10 @@ index d5237f02ae..7b531c4710 100644
         description : 'soft-static allocation for the "video" group')
  option('wheel-gid', type : 'integer', value : 0,
 diff --git a/rules.d/50-udev-default.rules.in b/rules.d/50-udev-default.rules.in
-index 0394530479..0437396cf2 100644
+index 18a3cf46bf..f3c440fd89 100644
 --- a/rules.d/50-udev-default.rules.in
 +++ b/rules.d/50-udev-default.rules.in
-@@ -26,7 +26,7 @@ SUBSYSTEM=="tty", KERNEL=="sclp_line[0-9]*", GROUP="tty", MODE="0620"
+@@ -22,7 +22,7 @@ SUBSYSTEM=="tty", KERNEL=="sclp_line[0-9]*", GROUP="tty", MODE="0620"
  SUBSYSTEM=="tty", KERNEL=="ttysclp[0-9]*", GROUP="tty", MODE="0620"
  SUBSYSTEM=="tty", KERNEL=="3270/tty[0-9]*", GROUP="tty", MODE="0620"
  SUBSYSTEM=="vc", KERNEL=="vcs*|vcsa*", GROUP="tty"
@@ -94,7 +91,7 @@ index 0394530479..0437396cf2 100644
  
  SUBSYSTEM=="mem", KERNEL=="mem|kmem|port", GROUP="kmem", MODE="0640"
  
-@@ -72,13 +72,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
+@@ -67,13 +67,13 @@ KERNEL=="irlpt[0-9]*", GROUP="lp"
  SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_USB_INTERFACES}=="*:0701??:*", GROUP="lp"
  
  SUBSYSTEM=="block", GROUP="disk"
@@ -115,10 +112,10 @@ index 0394530479..0437396cf2 100644
  KERNEL=="qft[0-9]*|nqft[0-9]*|zqft[0-9]*|nzqft[0-9]*|rawqft[0-9]*|nrawqft[0-9]*", GROUP="disk"
  KERNEL=="loop-control", GROUP="disk", OPTIONS+="static_node=loop-control"
 diff --git a/sysusers.d/basic.conf.in b/sysusers.d/basic.conf.in
-index a602b872e4..8d38febb6a 100644
+index 8cc1a7cad2..21bb6d8948 100644
 --- a/sysusers.d/basic.conf.in
 +++ b/sysusers.d/basic.conf.in
-@@ -23,17 +23,17 @@ g utmp    {{UTMP_GID   }}     -            -
+@@ -22,17 +22,17 @@ g utmp    {{UTMP_GID   }}     -            -
  
  # Physical and virtual hardware access groups
  g audio   {{AUDIO_GID  }}     -            -
@@ -139,14 +136,10 @@ index a602b872e4..8d38febb6a 100644
  g video   {{VIDEO_GID  }}     -            -
  
  # Default group for normal users
--- 
-2.37.1
-
-From ab2adb92b4f2ca54082eece6cc236626f7208c9e Mon Sep 17 00:00:00 2001
+From 14de5ced41edc9fa8e380330c03adc89ef257fbc Mon Sep 17 00:00:00 2001
 From: Christian Hesse <mail@eworm.de>
 Date: Mon, 27 Dec 2021 23:32:42 +0100
-Subject: [PATCH 2/2] generate tmpfiles.d/legacy.conf
-
+Subject: [PATCH] generate tmpfiles.d/legacy.conf
 ---
  tmpfiles.d/legacy.conf.in | 3 ---
  tmpfiles.d/meson.build    | 2 +-
@@ -167,10 +160,10 @@ index 4f2c0d7c43..62e2ae0986 100644
  # /run/lock/subsys is used for serializing SysV service execution, and
  # hence without use on SysV-less systems.
 diff --git a/tmpfiles.d/meson.build b/tmpfiles.d/meson.build
-index ca1abbf3fe..25e2b53402 100644
+index b8d3919025..000bd0bd22 100644
 --- a/tmpfiles.d/meson.build
 +++ b/tmpfiles.d/meson.build
-@@ -29,7 +29,7 @@ foreach pair : files
+@@ -27,7 +27,7 @@ foreach pair : files
  endforeach
  
  in_files = [['etc.conf',                      ''],
@@ -179,6 +172,4 @@ index ca1abbf3fe..25e2b53402 100644
              ['static-nodes-permissions.conf', ''],
              ['systemd.conf',                  ''],
              ['var.conf',                      ''],
--- 
-2.37.1
 
