@@ -1,5 +1,5 @@
 [Unit]
-Description=PostgreSQL 14 database server
+Description=PostgreSQL 15 database server
 After=network.target
 
 [Service]
@@ -9,17 +9,17 @@ User=postgres
 Group=postgres
 
 Environment=PGROOT=/var/lib/postgres
-Environment=PATH=/opt/postgresql14/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Environment=LD_LIBRARY_PATH=/opt/postgresql14/lib
+Environment=PATH=/opt/postgresql15/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=LD_LIBRARY_PATH=/opt/postgresql15/lib
 
 SyslogIdentifier=postgres
-PIDFile=/var/lib/postgres/data14/postmaster.pid
+PIDFile=/var/lib/postgres/data15/postmaster.pid
 RuntimeDirectory=postgresql
 RuntimeDirectoryMode=755
 
-ExecStartPre=/opt/postgresql14/bin/postgresql-check-db-dir ${PGROOT}/data14
-ExecStart=/opt/postgresql14/bin/postgres -D ${PGROOT}/data14
-ExecStartPost=/usr/bin/echo "Before using, source /opt/postgresql14/bin/pgenv.sh to set PostgreSQL environment"
+ExecStartPre=/opt/postgresql15/bin/postgresql-check-db-dir ${PGROOT}/data15
+ExecStart=/opt/postgresql15/bin/postgres -D ${PGROOT}/data15
+ExecStartPost=/usr/bin/echo "Before using, source /opt/postgresql15/bin/pgenv.sh to set PostgreSQL environment"
 ExecReload=/bin/kill -HUP ${MAINPID}
 KillMode=mixed
 KillSignal=SIGINT

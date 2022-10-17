@@ -1,2 +1,2 @@
-d /var/lib/postgres/data14 700 postgres postgres
-h /var/lib/postgres/data14 -   -        -        - +C
+d /var/lib/postgres/data15 700 postgres postgres
+h /var/lib/postgres/data15 -   -        -        - +C
