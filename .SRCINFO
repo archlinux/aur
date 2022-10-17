@@ -1,0 +1,13 @@
+pkgbase = patrcli
+	pkgdesc = CLI app for interacting with patr resources
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://patr.cloud
+	arch = x86_64
+	license = MIT
+	provides = patr
+	conflicts = patr
+	source = https://github.com/oliashish/aur-release/releases/download/0.2.1/patr-0.2.1.tar.xz
+	sha256sums = SKIP
+
+pkgname = patrcli
