@@ -7,7 +7,7 @@ RUN groupadd -g ${GROUP_ID} build && useradd -m -u ${USER_ID} -g build build
 WORKDIR /home/build
 RUN pacman -Sy --noconfirm go git
 USER build
-WORKDIR src
+WORKDIR /home/build/src
 CMD \
     makepkg -f && \
     makepkg --printsrcinfo > .SRCINFO && \
