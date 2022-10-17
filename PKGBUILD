@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=xmonad-recompile-pacman-hook-git
-pkgver=r79.bbea889
+pkgver=r81.9d5f298
 pkgrel=1
 pkgdesc='Pacman hook to recompile Xmonad config and avoid the infamous black screen'
 arch=('any')
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_gitname}"
-    install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks"  xmonad-recompile/xmonad-recompile.hook
+    install -Dm 644 xmonad-recompile/xmonad-recompile.hook "${pkgdir}/usr/share/libalpm/hooks/40-xmonad-recompile.hook" 
 }
