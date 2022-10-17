@@ -1,0 +1,17 @@
+pkgbase = twitch-chat-downloader
+	pkgdesc = Download chat messages from past broadcasts on Twitch
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/PetterKraabol/Twitch-Chat-Downloader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-pytz
+	provides = python-tcd
+	source = https://files.pythonhosted.org/packages/source/t/tcd/tcd-3.2.2.tar.gz
+	sha256sums = ee6a8e22c54ccfd29988554b13fe56b2a1bf524e110fa421d77e27baa8dcaa19
+
+pkgname = twitch-chat-downloader
