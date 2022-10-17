@@ -1,6 +1,6 @@
 pkgbase = nodejs-emmet-ls
 	pkgdesc = Emmet support by LSP
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://www.npmjs.com/package/emmet-ls
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodejs-emmet-ls
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = emmet-ls-0.3.0.tgz
-	source = https://registry.npmjs.org/emmet-ls/-/emmet-ls-0.3.0.tgz
-	b2sums = d14ec2de039da45f4cf7d8f648538a6578818076a22cc571eba2b072b3684e86ac33bd01c9f892703734cfda3c277e045b4a73f7b79cebfcd30c12819c36bfcb
+	noextract = emmet-ls-0.3.1.tgz
+	source = https://registry.npmjs.org/emmet-ls/-/emmet-ls-0.3.1.tgz
+	b2sums = 54993e3833fd50a7a1298cdb4b617e8f31582e3d6069c4f3dd0c3e0c12d9c7fb305ceb66428952d49ae05fe56f40f68847f3c50b7eb8ae1a45da0a90aa9fea6d
 
 pkgname = nodejs-emmet-ls
