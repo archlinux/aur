@@ -10,6 +10,8 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+    systemctl stop jarvis.service
+    systemctl start jarvis.service
 }
 
 pre_remove() {

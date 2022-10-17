@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssl' 'sqlite3')
 makedepends=('cmake')
 source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.5.tar.gz")
-sha512sums=('835eeadfc4fedf76b578ce0377a64ac0971e0d648ce30e49231d74f8e08584b4ed02f2432b70d108a7ed2ad9f72bcd72f897301e3104df135d100da271a79eeb')
+sha512sums=('6f6ffcb9d0af8b46fe36e889e6886f5230d275c849e7922cae99eab874b32c66630c905745d4e626ee4401ae8ba8a90975c8f0ffb0a6f1914e29c7bfcdd281b6')
 
 prepare() {
     cd ${srcdir}/${pkgname}-$pkgver 
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}/build
-    make jarvis
+    make -j8 
 }
 
 package() {
