@@ -1,0 +1,13 @@
+pkgbase = waybackurls-bin
+	pkgdesc = Fetch all the URLs that the Wayback Machine knows about for a domain
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tomnomnom/waybackurls
+	arch = x86_64
+	license = MIT
+	provides = waybackurls
+	conflicts = waybackurls
+	source = waybackurls-bin-0.1.0.tar.gz::https://github.com/tomnomnom/waybackurls/releases/download/v0.1.0/waybackurls-linux-amd64-0.1.0.tgz
+	b2sums = SKIP
+
+pkgname = waybackurls-bin
