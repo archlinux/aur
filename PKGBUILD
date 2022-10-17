@@ -7,7 +7,8 @@ pkgdesc="Download chat messages from past broadcasts on Twitch "
 arch=('any')
 url="https://github.com/PetterKraabol/Twitch-Chat-Downloader"
 license=('MIT')
-depends=('python' 'python-requests' 'python-dateutil' 'python-pytz')
+depends=('python' 
+         'python-requests' 'python-dateutil' 'python-pytz' 'twitch-python')
 makedepends=('python-setuptools')
 checkdepends=()
 optdepends=()

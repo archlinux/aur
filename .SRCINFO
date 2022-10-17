@@ -10,6 +10,7 @@ pkgbase = twitch-chat-downloader
 	depends = python-requests
 	depends = python-dateutil
 	depends = python-pytz
+	depends = twitch-python
 	provides = python-tcd
 	source = https://files.pythonhosted.org/packages/source/t/tcd/tcd-3.2.2.tar.gz
 	sha256sums = ee6a8e22c54ccfd29988554b13fe56b2a1bf524e110fa421d77e27baa8dcaa19
