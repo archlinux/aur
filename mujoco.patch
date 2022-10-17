@@ -147,3 +147,36 @@ index 3534929..6732055 100644
    LIBRARY_NAME
    glfw
    GIT_REPO
+diff --git a/simulate/cmake/SimulateDependencies.cmake b/simulate/cmake/SimulateDependencies.cmake
+index 9fba6a2..6404d29 100644
+--- a/simulate/cmake/SimulateDependencies.cmake
++++ b/simulate/cmake/SimulateDependencies.cmake
+@@ -26,8 +26,8 @@ option(MUJOCO_SIMULATE_USE_SYSTEM_MUJOCO "Use installed MuJoCo version."
+ )
+ unset(DEFAULT_USE_SYSTEM_MUJOCO)
+ 
+-option(MUJOCO_SIMULATE_USE_SYSTEM_MUJOCO "Use installed MuJoCo version." OFF)
+-option(MUJOCO_SIMULATE_USE_SYSTEM_GLFW "Use installed GLFW version." OFF)
++option(MUJOCO_SIMULATE_USE_SYSTEM_MUJOCO "Use installed MuJoCo version." ON)
++option(MUJOCO_SIMULATE_USE_SYSTEM_GLFW "Use installed GLFW version." ON)
+ 
+ set(MUJOCO_DEP_VERSION_glfw
+     7d5a16ce714f0b5f4efa3262de22e4d948851525 # 3.3.6
+@@ -59,7 +59,7 @@ findorfetch(
+ )
+ 
+ option(MUJOCO_EXTRAS_STATIC_GLFW
+-       "Link MuJoCo sample apps and simulate libraries against GLFW statically." ON
++       "Link MuJoCo sample apps and simulate libraries against GLFW statically." OFF
+ )
+ if(MUJOCO_EXTRAS_STATIC_GLFW)
+   set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
+@@ -78,7 +78,7 @@ findorfetch(
+   USE_SYSTEM_PACKAGE
+   MUJOCO_SIMULATE_USE_SYSTEM_GLFW
+   PACKAGE_NAME
+-  glfw
++  glfw3
+   LIBRARY_NAME
+   glfw
+   GIT_REPO

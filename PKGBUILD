@@ -10,7 +10,7 @@ makedepends=('abseil-cpp' 'gtest' 'benchmark' 'cmake' 'git')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
     "${pkgname}.patch")
 sha256sums=('7aad590d2ec6056f0235021e493db014784452538e45513c4c022de22d8270b0'
-            '23d0cb6f8d080b5c0b5bf460db6a88ba9d5a6dfe6f661216edde48d319cfa1b1')
+            '3654132f7685e6c1d4b0f9cddc266e5d2bfe63f440dad53606d8aac4af046642')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
