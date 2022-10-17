@@ -1,7 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
+# Contributor: little_sheepycn <little_sheepycn@redstonebuild.onmicrosoft.com>
 
 pkgname=xdroid-bin
-pkgver=8.0.96
+pkgver=9.0.5
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -20,9 +21,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.zip::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}.run.zip")
-noextract=(${pkgname}-${pkgver}.zip)
-sha256sums=('d139d6f1586943a1cc87f91a89d1704b202cb6f397b9193ad8f95c19c213eec6')
+source=("${pkgname}-${pkgver}.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}.run.tar.gz")
+noextract=(${pkgname}-${pkgver}.tar.gz)
+sha256sums=('438803baef30141994e9582f6c5505af07dbec638396a048740b59d52b8e8033')
 #validpgpkeys=()
 
 package() {
@@ -31,7 +32,7 @@ package() {
                     "${pkgdir}/usr/share/icons" \
                     "${pkgdir}/usr/share/applications"
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.zip" --no-same-owner  --no-same-permissions -C "${pkgdir}/opt/${pkgname}"
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner  --no-same-permissions -C "${pkgdir}/opt/${pkgname}"
     mv -v "${pkgdir}"/opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}*.run "${pkgdir}/opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}.run"
 
     ln -sf "/opt/${pkgname%-bin}/xAppCenter.png" "${pkgdir}/usr/share/icons/xAppCenter.png"
