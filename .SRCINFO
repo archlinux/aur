@@ -1,6 +1,6 @@
 pkgbase = jarvis
 	pkgdesc = 一款数据分析与展示平台(版本号高于 1.0.0 才可正常使用)
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/dingjingmaster/jarvis
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jarvis
 	makedepends = cmake
 	depends = openssl
 	depends = sqlite3
-	source = https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.4.tar.gz
-	sha512sums = 5f1d83b65fe77d3b49e365e3dcd517e13b7e4af74ff44d44371c72dbea67646e539aa02e46416057d7dc48cfcea8857ffd3845719c72bccd87dd578d1c190c80
+	source = https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.5.tar.gz
+	sha512sums = 835eeadfc4fedf76b578ce0377a64ac0971e0d648ce30e49231d74f8e08584b4ed02f2432b70d108a7ed2ad9f72bcd72f897301e3104df135d100da271a79eeb
 
 pkgname = jarvis

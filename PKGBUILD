@@ -1,7 +1,7 @@
 # Maintainer: dingjing <dingjing@live.cn>
 
 pkgname=jarvis
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='一款数据分析与展示平台(版本号高于 1.0.0 才可正常使用)'
 url='https://github.com/dingjingmaster/jarvis'
@@ -9,8 +9,8 @@ arch=('x86_64')
 license=('MIT')
 depends=('openssl' 'sqlite3')
 makedepends=('cmake')
-source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.4.tar.gz")
-sha512sums=('5f1d83b65fe77d3b49e365e3dcd517e13b7e4af74ff44d44371c72dbea67646e539aa02e46416057d7dc48cfcea8857ffd3845719c72bccd87dd578d1c190c80')
+source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.5.tar.gz")
+sha512sums=('835eeadfc4fedf76b578ce0377a64ac0971e0d648ce30e49231d74f8e08584b4ed02f2432b70d108a7ed2ad9f72bcd72f897301e3104df135d100da271a79eeb')
 
 prepare() {
     cd ${srcdir}/${pkgname}-$pkgver 
@@ -36,6 +36,8 @@ package() {
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/build/app/${pkgname}              "${pkgdir}/usr/local/${pkgname}/bin/"
+    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/build/tools/gold-tool              "${pkgdir}/usr/local/${pkgname}/bin/"
+    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/tools/gold-tool.py                 "${pkgdir}/usr/local/${pkgname}/bin/"
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/data/${pkgname}.service           "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
     install -Dm755 ../../README.md                                                      "${pkgdir}/usr/share/doc/${pkgname}/README"
