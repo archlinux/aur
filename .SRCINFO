@@ -1,7 +1,7 @@
 pkgbase = twitch-python
 	pkgdesc = Object-oriented Twitch API for Python developers
 	pkgver = 0.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PetterKraabol/Twitch-Python
 	arch = any
 	license = MIT

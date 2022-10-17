@@ -2,7 +2,7 @@
 pkgname=twitch-python
 _name=twitch-python
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-oriented Twitch API for Python developers "
 arch=('any')
 url="https://github.com/PetterKraabol/Twitch-Python"
