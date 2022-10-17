@@ -1,5 +1,5 @@
 diff --git a/cmake/MujocoDependencies.cmake b/cmake/MujocoDependencies.cmake
-index b13a3ec..967d438 100644
+index d919b6e..68485aa 100644
 --- a/cmake/MujocoDependencies.cmake
 +++ b/cmake/MujocoDependencies.cmake
 @@ -106,9 +106,9 @@ find_package(Git REQUIRED)
@@ -115,7 +115,7 @@ index b13a3ec..967d438 100644
      # Support new IN_LIST if() operator.
      set(CMAKE_POLICY_DEFAULT_CMP0057 NEW)
 diff --git a/sample/cmake/SampleDependencies.cmake b/sample/cmake/SampleDependencies.cmake
-index 14cc943..588e788 100644
+index 3534929..6732055 100644
 --- a/sample/cmake/SampleDependencies.cmake
 +++ b/sample/cmake/SampleDependencies.cmake
 @@ -26,8 +26,8 @@ option(MUJOCO_SAMPLES_USE_SYSTEM_MUJOCO "Use installed MuJoCo version."
@@ -129,16 +129,16 @@ index 14cc943..588e788 100644
  
  set(MUJOCO_DEP_VERSION_glfw
      7d5a16ce714f0b5f4efa3262de22e4d948851525 # 3.3.6
-@@ -58,7 +58,7 @@ findorfetch(
-   EXCLUDE_FROM_ALL
+@@ -59,7 +59,7 @@ findorfetch(
  )
  
--option(MUJOCO_SAMPLES_STATIC_GLFW "Link MuJoCo sample apps against GLFW statically." ON)
-+option(MUJOCO_SAMPLES_STATIC_GLFW "Link MuJoCo sample apps against GLFW statically." OFF)
- if(MUJOCO_SAMPLES_STATIC_GLFW)
+ option(MUJOCO_EXTRAS_STATIC_GLFW
+-       "Link MuJoCo sample apps and simulate libraries against GLFW statically." ON
++       "Link MuJoCo sample apps and simulate libraries against GLFW statically." OFF
+ )
+ if(MUJOCO_EXTRAS_STATIC_GLFW)
    set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
-   set(BUILD_SHARED_LIBS
-@@ -76,7 +76,7 @@ findorfetch(
+@@ -78,7 +78,7 @@ findorfetch(
    USE_SYSTEM_PACKAGE
    MUJOCO_SAMPLES_USE_SYSTEM_GLFW
    PACKAGE_NAME
