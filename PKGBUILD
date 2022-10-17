@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('qtscrcpy' 'qtscrcpy-docs')
 pkgbase=qtscrcpy
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('chrpath' 'cmake' 'git' 'qt5-tools')
 conflicts=('qt-scrcpy')
 replaces=('qt-scrcpy')
 backup=("etc/$pkgbase/config.ini")
-_commit=fbae27b7235c635eefbd2877cc324625bd7c0b42  #tags/v2.1.0^0
+_commit=e218cebdad203c492fdbe098cd5ca2ecd35c69a3  #tags/v2.1.1^0
 source=("git+https://github.com/barry-ran/QtScrcpy.git#commit=${_commit}"
         'git+https://github.com/barry-ran/QtScrcpyCore.git'
         'path-fix.patch'
