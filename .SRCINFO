@@ -1,0 +1,19 @@
+pkgbase = ci-toolbox-bin
+	pkgdesc = CI toolbox for Gitlab CI
+	pkgver = 8.3.0
+	pkgrel = 1
+	url = https://gitlab.com/mbedsys/citbx4gitlab
+	arch = any
+	license = GPL3
+	depends = bzip2
+	depends = file
+	depends = git
+	depends = git-lfs
+	depends = python-yaml
+	depends = tar
+	provides = ci-toolbox
+	conflicts = ci-toolbox
+	source = https://gitlab.com/api/v4/projects/mbedsys%2fcitbx4gitlab/packages/generic/ci-toolbox/8.3.0/ci-toolbox-8.3.0.tar.xz
+	sha256sums = e95100f4a0061f40088c36e5a40d625105b21e17e83ab604cf77b0590b1ea41d
+
+pkgname = ci-toolbox-bin
