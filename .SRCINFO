@@ -9,7 +9,6 @@ pkgbase = rmx-bin
 	conflicts = rmx-bin
 	conflicts = rmx-git
 	source = rmx.tar.gz::https://github.com/demfabris/rmx/releases/download/v0.1.5/rmx-musl-x86_64.tar.gz
-	sha256sums = 3a5b96fda88d0341ec754e87b1bd3c4d709055f100cc5726e9ae4e26a82bcfa9
-	sha256sums = 8899df45cca8f97bfa04143216cad98634b8f29eabaa5b241ab5300fa5c30f69
+	sha256sums = 3b3006029b5735d8c34c204f5f4ca01631546de7e5c1e75dfbfe4f0c7c5dafdd
 
 pkgname = rmx-bin
