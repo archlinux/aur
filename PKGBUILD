@@ -1,7 +1,7 @@
 # Maintainer: kylon
 
 pkgname=sharedown
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Electron application to download Sharepoint videos (especially meant for students)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=(
 )
 noextract=("${pkgname}-${pkgver}.AppImage")
 sha256sums_x86_64=(
-	'00c9616f84936abdbfb0a41e4e31b42245fa74c2046a3a305ce6d9928ba228c5'
+	'bd5a729fa24d90b3edc9ed4377382feda3d153c4c597af2528172014711b37aa'
 	'0586bf9de90587649c43c58b8665d97ac41fde8a64e5e239bef07099dbd1e255'
 	'42cd3a7ed38456d161af85013b25237c982013204f1c578021eb341c7c864dd7'
 )
