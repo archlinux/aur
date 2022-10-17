@@ -1,0 +1,102 @@
+diff -Naur VirtualBox/src/VBox/Devices/EFI/Firmware/Config.kmk VirtualBox-7.0.0-patched/src/VBox/Devices/EFI/Firmware/Config.kmk
+--- VirtualBox/src/VBox/Devices/EFI/Firmware/Config.kmk	2022-10-07 01:06:07.000000000 +0800
++++ VirtualBox/src/VBox/Devices/EFI/Firmware/Config.kmk	2022-10-18 00:05:58.556587859 +0800
+@@ -155,7 +155,7 @@
+ ifn1of ($(KBUILD_HOST),win) # This stuff isn't up to our standard at all! :/
+  TEMPLATE_VBoxEfiBldProg_CFLAGS = $(filter-out -pedantic,$(TEMPLATE_VBoxBldProg_CFLAGS)) \
+  	-Wno-sign-compare -Wno-missing-prototypes -Wno-strict-prototypes \
+-	-Wno-implicit-function-declaration -Wno-missing-declarations -Wno-shadow -Wno-format \
++	-Wno-implicit-function-declaration -Wno-missing-declarations -Wno-shadow \
+ 	-Wno-empty-body -Wno-unused-parameter -Wno-unused-variable -Wno-unused-label
+  TEMPLATE_VBoxEfiBldProg_CXXFLAGS = $(filter-out -pedantic,$(TEMPLATE_VBoxBldProg_CXXFLAGS)) \
+  	-Wno-all -Wno-shadow -Wno-empty-body -Wno-unused-parameter -Wno-unused-variable \
+diff -Naur VirtualBox/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf VirtualBox-7.0.0-patched/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf
+--- VirtualBox/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf	2022-10-07 01:06:11.000000000 +0800
++++ VirtualBox/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLibCrypto.inf	2022-10-18 00:06:23.696587255 +0800
+@@ -567,10 +567,10 @@
+   #   -Werror=unused-but-set-variable: Warn whenever a local variable is assigned to, but otherwise unused (aside from its declaration).
+   #
+   GCC:*_*_IA32_CC_FLAGS    = -U_WIN32 -U_WIN64 $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
+-  GCC:*_*_X64_CC_FLAGS     = -U_WIN32 -U_WIN64 $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=format -Wno-format -Wno-error=unused-but-set-variable -DNO_MSABI_VA_FUNCS
++  GCC:*_*_X64_CC_FLAGS     = -U_WIN32 -U_WIN64 $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=format -Wno-error=unused-but-set-variable -DNO_MSABI_VA_FUNCS
+   GCC:*_*_ARM_CC_FLAGS     = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
+-  GCC:*_*_AARCH64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-format -Wno-error=unused-but-set-variable
+-  GCC:*_*_RISCV64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-format -Wno-error=unused-but-set-variable
++  GCC:*_*_AARCH64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
++  GCC:*_*_RISCV64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
+   GCC:*_CLANG35_*_CC_FLAGS = -std=c99 -Wno-error=uninitialized
+   GCC:*_CLANG38_*_CC_FLAGS = -std=c99 -Wno-error=uninitialized
+   GCC:*_CLANGPDB_*_CC_FLAGS = -std=c99 -Wno-error=uninitialized -Wno-error=incompatible-pointer-types -Wno-error=pointer-sign -Wno-error=implicit-function-declaration -Wno-error=ignored-pragma-optimize
+diff -Naur VirtualBox/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLib.inf VirtualBox-7.0.0-patched/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLib.inf
+--- VirtualBox/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLib.inf	2022-10-07 01:06:11.000000000 +0800
++++ VirtualBox/src/VBox/Devices/EFI/Firmware/CryptoPkg/Library/OpensslLib/OpensslLib.inf	2022-10-18 00:06:11.496587548 +0800
+@@ -618,10 +618,10 @@
+   #   -Werror=unused-but-set-variable: Warn whenever a local variable is assigned to, but otherwise unused (aside from its declaration).
+   #
+   GCC:*_*_IA32_CC_FLAGS    = -U_WIN32 -U_WIN64 $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
+-  GCC:*_*_X64_CC_FLAGS     = -U_WIN32 -U_WIN64 $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=format -Wno-format -Wno-error=unused-but-set-variable -DNO_MSABI_VA_FUNCS
++  GCC:*_*_X64_CC_FLAGS     = -U_WIN32 -U_WIN64 $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=format -Wno-error=unused-but-set-variable -DNO_MSABI_VA_FUNCS
+   GCC:*_*_ARM_CC_FLAGS     = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
+-  GCC:*_*_AARCH64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-format -Wno-error=unused-but-set-variable
+-  GCC:*_*_RISCV64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-format -Wno-error=unused-but-set-variable
++  GCC:*_*_AARCH64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
++  GCC:*_*_RISCV64_CC_FLAGS = $(OPENSSL_FLAGS) -Wno-error=maybe-uninitialized -Wno-error=unused-but-set-variable
+   GCC:*_CLANG35_*_CC_FLAGS = -std=c99 -Wno-error=uninitialized
+   GCC:*_CLANG38_*_CC_FLAGS = -std=c99 -Wno-error=uninitialized
+   GCC:*_CLANGPDB_*_CC_FLAGS = -std=c99 -Wno-error=uninitialized -Wno-error=incompatible-pointer-types -Wno-error=pointer-sign -Wno-error=implicit-function-declaration -Wno-error=ignored-pragma-optimize
+diff -Naur VirtualBox/src/VBox/Devices/Makefile.kmk VirtualBox-7.0.0-patched/src/VBox/Devices/Makefile.kmk
+--- VirtualBox/src/VBox/Devices/Makefile.kmk	2022-10-07 01:09:00.000000000 +0800
++++ VirtualBox/src/VBox/Devices/Makefile.kmk	2022-10-18 00:05:52.186588012 +0800
+@@ -836,7 +836,7 @@
+   ifeq ($(KBUILD_TARGET),win)
+    $(file)_CFLAGS = -wd4018
+   else
+-   $(file)_CFLAGS += -Wno-sign-compare -Wno-format -Wno-bad-function-cast
++   $(file)_CFLAGS += -Wno-sign-compare -Wno-bad-function-cast
+   endif
+  endef
+ 
+diff -Naur VirtualBox/src/VBox/Devices/PC/ipxe/Makefile.kmk VirtualBox-7.0.0-patched/src/VBox/Devices/PC/ipxe/Makefile.kmk
+--- VirtualBox/src/VBox/Devices/PC/ipxe/Makefile.kmk	2022-10-07 01:09:09.000000000 +0800
++++ VirtualBox/src/VBox/Devices/PC/ipxe/Makefile.kmk	2022-10-18 00:06:41.116586837 +0800
+@@ -401,7 +401,7 @@
+  #
+  BLDPROGS += ipxezbin
+  ipxezbin_TEMPLATE = VBoxBldProg
+- ipxezbin_CFLAGS   = -Wno-format -Wno-unused-function -Wno-pointer-arith
++ ipxezbin_CFLAGS   = -Wno-unused-function -Wno-pointer-arith
+  ipxezbin_SOURCES  = src/util/zbin.c
+  ipxezbin_LIBS     = lzma # @todo Can't assume liblzma on the build system
+ 
+diff -Naur VirtualBox/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk VirtualBox-7.0.0-patched/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
+--- VirtualBox/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk	2022-10-07 01:09:52.000000000 +0800
++++ VirtualBox/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk	2022-10-18 00:06:32.176587052 +0800
+@@ -118,7 +118,7 @@
+  VBoxDTraceCmd_DEFS.win = YY_USE_PROTOS=1 YYENABLE_NLS=0 YYLTYPE_IS_TRIVIAL=0
+  VBoxDTraceCmd_SDKS = VBOX_ZLIB
+  ifn1of ($(KBUILD_TARGET), win)
+-  VBoxDTraceCmd_CFLAGS = -Wno-format $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow
++  VBoxDTraceCmd_CFLAGS = $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow
+  endif
+  VBoxDTraceCmd_INCS = \
+  	include \
+diff -Naur VirtualBox/src/VBox/Main/webservice/Makefile.kmk VirtualBox-7.0.0-patched/src/VBox/Main/webservice/Makefile.kmk
+--- VirtualBox/src/VBox/Main/webservice/Makefile.kmk	2022-10-07 01:11:33.000000000 +0800
++++ VirtualBox/src/VBox/Main/webservice/Makefile.kmk	2022-10-18 00:06:49.433253307 +0800
+@@ -260,7 +260,7 @@
+   ifn1of ($(KBUILD_TARGET), win)
+    vboxsoap_CXXFLAGS += -Wno-shadow -Wno-parentheses $(VBOX_GCC_Wno-literal-suffix) \
+    	$(VBOX_GCC_Wno-stringop-overflow) $(VBOX_GCC_Wno-stringop-truncation) \
+-   	$(VBOX_GCC_Wno-vla) -Wno-format -Wno-deprecated-declarations $(VBOX_GCC_fno-printf-return-value)
++   	$(VBOX_GCC_Wno-vla) -Wno-deprecated-declarations $(VBOX_GCC_fno-printf-return-value)
+    ifn1of ($(KBUILD_TYPE), debug) # Save time+memory by using -O0 instead of -O2.
+     vboxsoap_CXXFLAGS += -O0 ## @todo this could be interesting for g++ (not clang++): -fcprop-registers
+    endif
+@@ -331,7 +331,6 @@
+   	$(VBOXWEB_OUT_DIR)/gsoap_copy_all_ts
+   ifn1of ($(KBUILD_TARGET), win)
+    $(VBOX_GSOAP_CXX_SOURCES)_CXXFLAGS = \
+-	-Wno-format \
+ 	$(VBOX_GCC_Wno-int-in-bool-context) \
+ 	$(VBOX_GCC_Wno-logical-op)
+    # currently necessary when compiling against OpenSSL 1.0 due to a missing

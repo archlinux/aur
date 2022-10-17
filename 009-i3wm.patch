@@ -1,0 +1,59 @@
+diff -Naur VirtualBox/src/VBox/Frontends/VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp VirtualBox/src/VBox/Frontends/VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp
+--- VirtualBox/src/VBox/Frontends/VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp	2022-10-07 01:10:57.000000000 +0800
++++ VirtualBox/src/VBox/Frontends/VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp	2022-10-17 18:44:38.623060909 +0800
+@@ -443,7 +443,7 @@
+     /* Get cached available-geometry: */
+     const QRect availableGeometry = m_availableGeometryData.value(iHostScreenIndex);
+     /* Return cached available-geometry if it's valid or screen-geometry otherwise: */
+-    return availableGeometry.isValid() ? availableGeometry :
++    return availableGeometry.isValid() && NativeWindowSubsystem::X11WindowManagerType() != X11WMType_i3 ? availableGeometry :
+            QApplication::desktop()->screenGeometry(iHostScreenIndex);
+ #  endif /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
+ # else /* !VBOX_WS_X11 */
+diff -Naur VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.cpp VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.cpp
+--- VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.cpp	2022-10-07 01:11:02.000000000 +0800
++++ VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.cpp	2022-10-17 18:46:00.023058941 +0800
+@@ -117,6 +117,9 @@
+                 else
+                 if (QString((const char*)pcData).contains("Xfwm4", Qt::CaseInsensitive))
+                     wmType = X11WMType_Xfwm4;
++                else
++                if (QString((const char*)pcData).contains("i3", Qt::CaseInsensitive))
++                    wmType = X11WMType_i3;
+                 if (pcData)
+                     XFree(pcData);
+             }
+diff -Naur VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.h VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.h
+--- VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.h	2022-10-07 01:11:02.000000000 +0800
++++ VirtualBox/src/VBox/Frontends/VirtualBox/src/platform/x11/VBoxUtils-x11.h	2022-10-17 18:46:29.719724889 +0800
+@@ -49,6 +49,7 @@
+     X11WMType_Metacity,
+     X11WMType_Mutter,
+     X11WMType_Xfwm4,
++    X11WMType_i3,
+ };
+ 
+ /** X11: Screen-saver inhibit methods. */
+@@ -95,7 +96,7 @@
+     /** X11: Determines and returns whether the compositing manager is running. */
+     bool X11IsCompositingManagerRunning();
+     /** X11: Determines and returns current Window Manager type. */
+-    X11WMType X11WindowManagerType();
++    SHARED_LIBRARY_STUFF X11WMType X11WindowManagerType();
+ 
+ #if 0 // unused for now?
+     /** X11: Inits the screen saver save/restore mechanism. */
+diff -Naur VirtualBox/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp VirtualBox/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp
+--- VirtualBox/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp	2022-10-07 01:11:07.000000000 +0800
++++ VirtualBox/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp	2022-10-17 18:47:32.173056706 +0800
+@@ -888,6 +888,10 @@
+     /* Enable translucency through Qt API if supported: */
+     if (uiCommon().isCompositingManagerRunning())
+         setAttribute(Qt::WA_TranslucentBackground);
++
++    if (NativeWindowSubsystem::X11WindowManagerType() == X11WMType_i3)
++         setWindowFlags(Qt::FramelessWindowHint);
++
+ #endif /* VBOX_WS_X11 */
+ 
+     /* Make sure we have no focus: */

@@ -1,0 +1,13 @@
+diff -Naur VirtualBox/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR3LibGuestCtrl.cpp VirtualBox/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR3LibGuestCtrl.cpp
+--- VirtualBox/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR3LibGuestCtrl.cpp	2022-10-07 01:03:07.000000000 +0800
++++ VirtualBox/src/VBox/Additions/common/VBoxGuest/lib/VBoxGuestR3LibGuestCtrl.cpp	2022-10-17 18:42:49.856396864 +0800
+@@ -178,6 +178,9 @@
+  */
+ DECL_NO_INLINE(static, bool) vbglR3GuestCtrlDetectPeekGetCancelSupport(uint32_t idClient)
+ {
++
++    return false;
++
+     /*
+      * Seems we get VINF_SUCCESS back from the host if we try unsupported
+      * guest control messages, so we need to supply some random message

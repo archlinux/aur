@@ -1,0 +1,44 @@
+diff -Naur VirtualBox/src/VBox/HostDrivers/linux/Makefile VirtualBox/src/VBox/HostDrivers/linux/Makefile
+--- VirtualBox/src/VBox/HostDrivers/linux/Makefile	2022-10-07 01:11:17.000000000 +0800
++++ VirtualBox/src/VBox/HostDrivers/linux/Makefile	2022-10-17 18:41:30.366398773 +0800
+@@ -33,25 +33,25 @@
+ # SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
+ #
+ 
+-ifneq ($(KERNELRELEASE),)
++ifneq ($(KBUILD_EXTMOD),)
+ 
+-# Building from kBuild (make -C <kernel_directory> M=`pwd`),
+-# or inside a kernel source tree.
++# Building from kBuild (make -C <kernel_directory> M=`pwd`).
++# KBUILD_EXTMOD is set to $(M) in this case.
+ 
+ obj-m = vboxdrv/
+- ifneq ($(wildcard $(CURDIR)/vboxnetflt/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetflt/Makefile),)
+ obj-m += vboxnetflt/
+  endif
+- ifneq ($(wildcard $(CURDIR)/vboxnetadp/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetadp/Makefile),)
+ obj-m += vboxnetadp/
+  endif
+- ifneq ($(wildcard $(CURDIR)/vboxpci/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxpci/Makefile),)
+ obj-m += vboxpci/
+  endif
+ 
+-else # ! KERNELRELEASE
++else # ! KBUILD_EXTMOD
+ 
+-# convenience Makefile without KERNELRELEASE
++# convenience Makefile without KBUILD_EXTMOD
+ 
+ ifndef SUDO
+  ifneq ($(shell id -u),0)
+@@ -244,5 +244,5 @@
+ 		fi; \
+ 	done
+ 
+-endif # ! KERNELRELEASE
++endif # ! KBUILD_EXTMOD
+ 

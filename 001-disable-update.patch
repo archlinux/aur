@@ -1,0 +1,12 @@
+diff -Naur VirtualBox/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp VirtualBox/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp
+--- VirtualBox/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp	2022-10-07 01:10:56.000000000 +0800
++++ VirtualBox/src/VBox/Frontends/VirtualBox/src/extradata/UIExtraDataManager.cpp	2022-10-17 18:23:44.166424535 +0800
+@@ -2421,7 +2421,7 @@
+ bool UIExtraDataManager::applicationUpdateEnabled()
+ {
+     /* 'True' unless 'restriction' feature allowed: */
+-    return !isFeatureAllowed(GUI_PreventApplicationUpdate);
++    return false;
+ }
+ 
+ QString UIExtraDataManager::applicationUpdateData()

@@ -1,0 +1,12 @@
+diff -Naur VirtualBox/src/VBox/Additions/x11/vboxvideo/Makefile.kmk VirtualBox/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
+--- VirtualBox/src/VBox/Additions/x11/vboxvideo/Makefile.kmk	2022-10-17 19:34:31.559655466 +0800
++++ VirtualBox/src/VBox/Additions/x11/vboxvideo/Makefile.kmk	2022-10-17 19:34:55.606321555 +0800
+@@ -406,7 +406,7 @@
+ 
+ ifdef VBOX_USE_SYSTEM_XORG_HEADERS
+  # Build using local X.Org headers.  We assume X.Org Server 1.7 or later.
+- DLLS    := $(filter-out vboxvideo_drv_%,$(DLLS)) vboxvideo_drv_system
++ DLLS    := $(filter-out vboxvideo_drv_%,$(DLLS))
+  SYSMODS := $(filter-out vboxvideo_drv%,$(SYSMODS))
+  vboxvideo_drv_system_TEMPLATE = VBOXGUESTR3XORGMOD
+  vboxvideo_drv_system_CFLAGS := \
