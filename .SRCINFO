@@ -1,12 +1,12 @@
 pkgbase = containerlab-bin
 	pkgdesc = containerlab enables container-based networking labs
-	pkgver = 0.32.1
+	pkgver = 0.32.2
 	pkgrel = 1
 	url = https://github.com/srl-labs/containerlab
 	arch = x86_64
 	license = BSD
 	provides = containerlab
-	source = containerlab-0.32.1.tar.gz::https://github.com/srl-labs/containerlab/releases/download/v0.32.1/containerlab_0.32.1_Linux_amd64.tar.gz
-	sha256sums = d16a202c69d7f732c713f1d185bc21fd0860a620edfc2a96c1afb766d8da7012
+	source = containerlab-0.32.2.tar.gz::https://github.com/srl-labs/containerlab/releases/download/v0.32.2/containerlab_0.32.2_Linux_amd64.tar.gz
+	sha256sums = 43b51aa80a587ef88b5c39f7410bc4111f489fdf1110434768c587233fc90222
 
 pkgname = containerlab-bin

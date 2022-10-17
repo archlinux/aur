@@ -1,6 +1,6 @@
 # Maintainer: aps42 <arch@andre-sterba.de>
 pkgname=containerlab-bin
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc='containerlab enables container-based networking labs'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 
 source=("${pkgname/-bin/}-${pkgver}.tar.gz::https://github.com/srl-labs/containerlab/releases/download/v${pkgver}/containerlab_${pkgver}_Linux_amd64.tar.gz")
 
-sha256sums=('d16a202c69d7f732c713f1d185bc21fd0860a620edfc2a96c1afb766d8da7012')
+sha256sums=('43b51aa80a587ef88b5c39f7410bc4111f489fdf1110434768c587233fc90222')
 
 package() {
   install -Dm755 ${pkgname/-bin/} "$pkgdir"/usr/bin/${pkgname/-bin/}
