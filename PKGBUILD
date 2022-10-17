@@ -1,7 +1,9 @@
+# Maintainer: 	whitels <2959471117 at qq dot com>
+
 _npmname=whistle
-_npmver=2.9.31
+_npmver=2.9.32
 pkgname=nodejs-whistle # All lowercase
-pkgver=2.9.31
+pkgver=2.9.32
 pkgrel=1
 pkgdesc="HTTP, HTTP2, HTTPS, Websocket debugging proxy"
 arch=(any)
@@ -10,19 +12,19 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(
-	"https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
+	"https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz"
 	"whistle.desktop"
-	"nodejs-whistle.png"
+	"${pkgname}.png::https://raw.githubusercontent.com/avwo/whistle/master/biz/webui/htdocs/img/whistle.png"
 )
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('b881eae4eed1e28aef5fd6de2e4d7dcef964e2d5'
+sha1sums=('a735c4edc928a5ea3dd891cd49c2d8568168de8b'
           'a8f84443d428494c3aa83702664fbdd63cb1a78d'
-          '7e0711fb1e4ea12788824b6c4081ed0fb3d7f822')
+          '74d44892ab7cac4c4b3f56b24158605ede05c984')
 
 package() {
 	cd $srcdir
 	install -Dm 644 whistle.desktop -t "${pkgdir}"/usr/share/applications/
-	install -Dm 644 nodejs-whistle.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/nodejs-whistle.png
+	install -Dm 644 nodejs-whistle.png "${pkgdir}"/usr/share/icons/hicolor/160x160/apps/nodejs-whistle.png
 	local _npmdir="$pkgdir/usr/lib/node_modules/"
 	mkdir -p $_npmdir
 	cd $_npmdir
