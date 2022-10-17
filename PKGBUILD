@@ -1,7 +1,7 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=vmp
-pkgver=0.82
+pkgver=0.83
 pkgrel=1
 pkgdesc='Visual music player'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	'7a90e9d4d7e4beff39564819100b24c3d71c4c8d72fc08e9027d1b7fc0a6c6c2'
+	'3990e1f87b995839104a6618321495e6a0ad299c4e571685112a39e5f30c775e'
 )
 
 prepare() {
