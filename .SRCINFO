@@ -7,7 +7,7 @@ pkgbase = mautrix-wsproxy
 	license = AGPL
 	makedepends = go
 	makedepends = git
-	source = https://github.com/mautrix/wsproxy/archive/v1.0.0.tar.gz
+	source = mautrix-wsproxy-1.0.0.tar.gz::https://github.com/mautrix/wsproxy/archive/v1.0.0.tar.gz
 	sha256sums = 17800afd4196d6759700ae8983b730ee9280fd60db84778eefaa29d47874d336
 
 pkgname = mautrix-wsproxy

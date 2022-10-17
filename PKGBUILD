@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('AGPL')
 makedepends=(go git)
 url="https://github.com/mautrix/wsproxy"
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('17800afd4196d6759700ae8983b730ee9280fd60db84778eefaa29d47874d336')
 
 build() {
