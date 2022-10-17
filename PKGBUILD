@@ -5,7 +5,7 @@ _pkgname=V8
 _pkgver=4.2.1
 pkgname=r-${_pkgname,,}
 pkgver=4.2.1
-pkgrel=4
+pkgrel=7
 pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   r-curl
   r-jsonlite
   r-rcpp
-  v8
 )
 makedepends=(
   make
@@ -29,7 +28,7 @@ source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('99881af4798d11da0adccd8e4e1aa5dc4adccf5e3572724c14f6f90c2b8c3ff0')
 options=(staticlibs)
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL --configure-vars='DOWNLOAD_STATIC_LIBV8=1' ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
