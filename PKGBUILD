@@ -30,6 +30,6 @@ package() {
   install -D -m 644 "${_distdir}/English/CUPS1.2/KOC266opn.ppd" "${ppdmodel}/KOC266opn.ppd"
 
   # Language specific generic printer driver
-  install -D -m 644 "${_distdir}/Chinese_Simplified/CUPS1.2/KOC266SCX.ppd" "${ppdmodel}/KOC266SCX.ppd"
-  #install -D -m 644 "${_distdir}/English/CUPS1.2/KOC266UX.ppd" "${ppdmodel}/KOC266UX.ppd"
+  #install -D -m 644 "${_distdir}/Chinese_Simplified/CUPS1.2/KOC266SCX.ppd" "${ppdmodel}/KOC266SCX.ppd"
+  install -D -m 644 "${_distdir}/English/CUPS1.2/KOC266UX.ppd" "${ppdmodel}/KOC266UX.ppd"
 }
