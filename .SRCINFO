@@ -1,6 +1,6 @@
 pkgbase = kos
 	pkgdesc = A simple SUID tool written in C++
-	pkgver = 42
+	pkgver = 43
 	pkgrel = 1
 	url = https://github.com/TruncatedDinosour/kos
 	install = kos.install
@@ -14,9 +14,9 @@ pkgbase = kos
 	optdepends = bash-completion
 	provides = kos
 	conflicts = kos
-	source = kos-42.tar.gz::https://github.com/TruncatedDinosour/kos/archive/refs/tags/v42.tar.gz
+	source = kos-43.tar.gz::https://github.com/TruncatedDinosour/kos/archive/refs/tags/v43.tar.gz
 	source = kos.sysusers
-	sha256sums = f8f8396bee94e68f418f3ab07786950da4da8727adb7be78613683ddfc987cfd
+	sha256sums = 143376572f7c91f647e4b7a5eac2bedaabb9d09a45be29522b8e97f8fe132401
 	sha256sums = c0517250baf3457b4429f24a370711b331945c5cdb23dc983fcd9daf7b73b05c
 
 pkgname = kos
