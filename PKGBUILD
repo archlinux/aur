@@ -3,7 +3,7 @@
 # Contributor: Advaith Madhukar <advaith.madhukar at gmail dot com>
 
 pkgname=pyside6-tools
-_qtver=6.3.2
+_qtver=6.4.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -26,7 +26,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm "$pkgdir"/usr/bin/{rcc,designer,assistant,linguist,qmllint,qmltyperegistrar}
+  rm "$pkgdir"/usr/bin/{designer,assistant,linguist,qmllint,qmltyperegistrar}
+  mv "$pkgdir"/usr/bin/rcc "$pkgdir"/usr/bin/pyside6-rcc
   mv "$pkgdir"/usr/bin/uic "$pkgdir"/usr/bin/pyside6-uic
   mv "$pkgdir"/usr/bin/lupdate "$pkgdir"/usr/bin/pyside6-lupdate
   mv "$pkgdir"/usr/bin/lrelease "$pkgdir"/usr/bin/pyside6-lrelease
