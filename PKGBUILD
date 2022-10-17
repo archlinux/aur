@@ -13,6 +13,7 @@ makedepends=(
 	'coreutils'
 	'npm'
 	'shadow'
+	'yarn'
 )
 backup=(
 	'etc/bautista/config.json'
