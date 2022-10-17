@@ -1,0 +1,46 @@
+[Unit]
+Description=PostgreSQL 16 database server
+After=network.target
+
+[Service]
+Type=notify
+TimeoutSec=120
+User=postgres
+Group=postgres
+
+Environment=PGROOT=/var/lib/postgres
+Environment=PATH=/opt/postgresql16/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=LD_LIBRARY_PATH=/opt/postgresql16/lib
+
+SyslogIdentifier=postgres
+PIDFile=/var/lib/postgres/data16/postmaster.pid
+RuntimeDirectory=postgresql
+RuntimeDirectoryMode=755
+
+ExecStartPre=/opt/postgresql16/bin/postgresql-check-db-dir ${PGROOT}/data16
+ExecStart=/opt/postgresql16/bin/postgres -D ${PGROOT}/data16
+ExecStartPost=/usr/bin/echo "Before using, source /opt/postgresql16/bin/pgenv.sh to set PostgreSQL environment"
+ExecReload=/bin/kill -HUP ${MAINPID}
+KillMode=mixed
+KillSignal=SIGINT
+
+# Due to PostgreSQL's use of shared memory, OOM killer is often overzealous in
+# killing Postgres, so adjust it downward
+OOMScoreAdjust=-200
+
+# Additional security-related features
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateDevices=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
