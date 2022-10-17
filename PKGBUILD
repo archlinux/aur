@@ -1,7 +1,7 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=wcp
-pkgver=0.51
+pkgver=0.52
 pkgrel=1
 pkgdesc='Script-driven control panel/system menu for Wayland'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	'bcee8a7ee3a28e82a652ed17b1130020e4dd2bab22a4cdd3071e2df8bcac9544'
+	'f12cc87c50ac2bc024c9cc9c0d7d0f8cdb544da302749fc72e6a03a4a2f7a04b'
 )
 
 prepare() {
