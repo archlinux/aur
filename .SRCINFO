@@ -1,0 +1,14 @@
+pkgbase = msi-ec-git
+	pkgdesc = Driver for MSI laptop EC
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/BeardOverflow/msi-ec
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	provides = msi-ec
+	source = git+https://github.com/BeardOverflow/msi-ec.git
+	sha256sums = SKIP
+
+pkgname = msi-ec-git
