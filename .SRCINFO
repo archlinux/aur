@@ -12,6 +12,7 @@ pkgbase = twitch-python
 	depends = python
 	depends = python-requests
 	depends = python-rx
+	provides = python-twitch-python
 	source = https://files.pythonhosted.org/packages/source/t/twitch-python/twitch-python-0.0.20.tar.gz
 	sha256sums = 6e09d7210b8e0abb6892767d722079eb35b14c29e770cdb4df64d569ecbaa17c
 
