@@ -5,7 +5,7 @@
 pkgname=x2goclient
 pkgver=4.1.2.2
 pkgrel=3
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL2')
 url="https://wiki.x2go.org/doku.php"
 pkgdesc="a graphical client (Qt5) for the X2Go system"
