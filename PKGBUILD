@@ -4,7 +4,7 @@ pkgname=openasar-bin
 _pkgname=OpenAsar
 pkgver=20221010154340
 _pkgver=nightly
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="Open-source alternative of Discord desktop's app.asar, needs Discord installed"
 arch=('x86_64')
@@ -37,7 +37,7 @@ sha512sums=(SKIP
             '3ca8d2adad92dc01e98bb8c0fa1216d946a661274bc30a5ae639f903c7d489bb7bee83db3cd0d8d79bfd31e58c1c608998b566c7d069323ed6c95483522c0d89'
             '06fdb8c0b3d4a1b7a25d492b5475f04240321ddcb4c1b6bd7195b40be7a049295f5727d8c6432c3d140822a01640399e9bb8bbfd5e7b076af97be54d08060a36')
 pkgver() {
-  curl -sS https://api.github.com/repos/GooseMod/OpenAsar/releases | grep published_at | sed 2d | sed 's/[^0-9]*//g'
+  curl -sS https://api.github.com/repos/GooseMod/OpenAsar/releases | grep published_at |head -n 2| sed 1d | sed 's/[^0-9]*//g'
 }
 
 package() {
