@@ -1,12 +1,12 @@
 pkgbase = vasm
 	pkgdesc = Portable and retargetable 6502 6800 6809 arm c16x jagrisc m68k pdp11 ppc qnice test tr3200 vidcore x86 z80 assembler.
-	pkgver = 1.9
+	pkgver = 1.9a
 	pkgrel = 1
 	url = http://sun.hasenbraten.de/vasm/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = http://phoenix.owl.de/tags/vasm1_9.tar.gz
-	sha256sums = 1986e21096a7a08f18699921c719098152f0e981468fa8bf651fe44681526482
+	source = http://phoenix.owl.de/tags/vasm1_9a.tar.gz
+	sha256sums = 6b6d19197d0b420ebedfae60b1256c630431e18f47350269582aa994e06298fa
 
 pkgname = vasm
