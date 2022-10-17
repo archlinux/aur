@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _name=pyHanko
 pkgname='python-pyhanko'
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
@@ -13,7 +13,7 @@ optdepends=('python-uharfbuzz: to use OpenType fonts.'
             'python-fonttools: to use OpenType fonts.')
 makedepends=('python-setuptools' 'python-pytest-runner' 'python-wheel')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-sha256sums=('f398bea40e6af5ffb321fb8f1cf761467d8e98fb702360da727ba7a1c955363d')
+sha256sums=('99ca50455b81b66d1ba5b06a3a8f8460bd4a4afe182515938e18331e5c254a3b')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
