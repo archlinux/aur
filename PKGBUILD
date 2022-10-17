@@ -6,8 +6,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.45
-pkgrel=1
+pkgver=3.11.47
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Plagman/gamescope
@@ -47,13 +47,22 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=215a19b0e80cfeb6219c752fcfcf719d5c913432
+_tag=b87660561fd3b48e55a26febac4aa5cd6b459172
 source=("git+https://github.com/Plagman/gamescope.git#tag=${_tag}"
         "0001-Add-force-orientation-option.patch"
-        "0002-Force-orientation-only-to-internal-display.patch")
+        "0002-drm-add-support-for-the-panel-orientation-property.patch"
+        "0003-drm-de-duplicate-connector-type-logic.patch"
+        "0004-drm-fix-an-issue-where-g_nOutputWidth-and-g_nOutputH.patch"
+        "0005-Add-note-that-force-orientation-is-for-internal-disp.patch"
+        "0006-Check-for-current-and-pending-mode_id-before-abort.patch")
+
 b2sums=('SKIP'
-        '53ccad968f46ed022ea847d2bc60513b797a054ab105c7e67e384f1ed53cffc814be64d3a699ba0a567076c4205e4c03a07576607b82a2f4f92c0018b2482f53'
-        'f0a9071917387b9025cecf8c4a818b6773947b2996240898439eb3d845a8ffc0f93404b28133a78e96ef5a43ddf00a71e39459e6e0281d5b884efdd3d339720f')
+        'a9df35e654243800edc73a40d63a2331c5df01df89ccbdccd5fee9ab035c1502cc564ce6e9c95711974d75c46d8b44cd7565fd4e8dae55cfc2dcb479fb8fb621'
+        'f5b58715eb27b9009fc9692b90ae592e829649830c563dc7d9bf8597e22682694578ccaafba72b10a1420510bc791cf88d4438d1e6f642bd3052b8fd6473daa6'
+        'c20a9f48065e60fe85ec81b06e31174dd77541fa14235f7f1b0f1e288493d7c5130ca35648413b1b7c9edafde408828c963a6ef56f8408ebcc0ee87d8ac6cce0'
+        '8067bf9bb87b0583dd549dfc32d611aa1e9779eaae6923772e976b948466bede2240345126c0dc56806eac8cdfc18c65b661f99defa6d2b6a88124b9ce3620e2'
+        '0a74da00387a555981f7184f40ee05ae713d456022808564d99cef0263968e458d37c70b052a95791aead05587fc3ed59df4edd4a6a32a40f74f9b1a6d991b3e'
+        '50282530f918023f3148d07eb8ba58678c1a4d3d09269db3b9100d49595cd5ea154ae092a6c1c30f1f560fbd7ce2b863c9a5019187256ab5ef35673cd9304075')
 
 prepare() {
   cd "$srcdir/$_pkgname"

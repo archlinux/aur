@@ -1,18 +1,23 @@
-From 8ced376eb1efece6df825b474f2f2fb1dfb9e863 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
- <samsagax@gmail.com>
-Date: Mon, 18 Jul 2022 19:59:41 -0300
-Subject: [PATCH 1/2] Add --force-orientation option
+From 300d990e95e72d45ae97818397e83ed789cec70e Mon Sep 17 00:00:00 2001
+From: ruineka <ruinairas1992@gmail.com>
+Date: Fri, 7 Oct 2022 08:29:52 -0500
+Subject: [PATCH 1/6] Add --force-orientation option
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+Co-authored-by: Joaquín Ignacio Aramendía <samsagax@gmail.com>
+Co-authored-by: alphonsez1 <alphonsez743@gmail.com>
+Co-authored-by: Ruineka <ruineka@pop-os.localdomain>
 ---
- src/drm.cpp      | 51 +++++++++++++++++++++++++++++++-----
- src/drm.hpp      | 27 ++++++++++++-------
- src/main.cpp     | 22 +++++++++++++++-
- src/wlserver.cpp | 67 ++++++++++++++++++++++++++++++++++++++----------
- 4 files changed, 138 insertions(+), 29 deletions(-)
+ src/drm.cpp      | 53 +++++++++++++++++++++++++++++++++++++++++-------
+ src/drm.hpp      | 29 ++++++++++++++++++--------
+ src/main.cpp     | 22 +++++++++++++++++++-
+ src/wlserver.cpp | 51 ++++++++++++++++++++++++++++++++++++----------
+ 4 files changed, 127 insertions(+), 28 deletions(-)
 
 diff --git a/src/drm.cpp b/src/drm.cpp
-index 980e608..c4204be 100644
+index 6994220..d3057f7 100644
 --- a/src/drm.cpp
 +++ b/src/drm.cpp
 @@ -48,6 +48,8 @@ const char *g_sOutputName = nullptr;
@@ -24,7 +29,7 @@ index 980e608..c4204be 100644
  
  static LogScope drm_log("drm");
  static LogScope drm_verbose_log("drm", LOG_SILENT);
-@@ -1256,7 +1258,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
+@@ -1259,7 +1261,7 @@ void drm_lock_fbid( struct drm_t *drm, uint32_t fbid )
  void drm_unlock_fbid( struct drm_t *drm, uint32_t fbid )
  {
  	struct fb &fb = get_fb( *drm, fbid );
@@ -33,62 +38,69 @@ index 980e608..c4204be 100644
  	assert( fb.held_refs > 0 );
  	if ( --fb.held_refs != 0 )
  		return;
-@@ -1297,7 +1299,26 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1276,6 +1278,25 @@ void drm_unlock_fbid( struct drm_t *drm, uint32_t fbid )
+ 	drm_unlock_fb_internal( drm, &fb );
+ }
+ 
++/* Handle the orientation of the display */
++uint64_t get_drm_effective_orientation()
++{
++	switch ( g_drmModeOrientation )
++	{
++		case PANEL_ORIENTATION_0:
++			return DRM_MODE_ROTATE_0;
++		case PANEL_ORIENTATION_90:
++			return DRM_MODE_ROTATE_90;
++		case PANEL_ORIENTATION_180:
++			return DRM_MODE_ROTATE_180;
++		case PANEL_ORIENTATION_270:
++			return DRM_MODE_ROTATE_270;
++		case PANEL_ORIENTATION_AUTO:
++			return g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0;
++	}
++	abort(); //Should not happen unless something went terribly wrong
++}
++
+ /* Prepares an atomic commit without using libliftoff */
+ static int
+ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
+@@ -1300,7 +1321,16 @@ drm_prepare_basic( struct drm_t *drm, const struct FrameInfo_t *frameInfo )
  
  	drm->fbids_in_req.push_back( fb_id );
  
 -	add_plane_property(req, drm->primary, "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
-+	switch ( g_drmModeOrientation )
++	drm_screen_type screenType = drm_get_screen_type(drm);
++
++	if ( screenType == DRM_SCREEN_TYPE_INTERNAL )
 +	{
-+	case PANEL_ORIENTATION_0:
++		add_plane_property(req, drm->primary, "rotation", get_drm_effective_orientation());
++	}
++	else
++	{
 +		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_0);
-+		break;
-+	case PANEL_ORIENTATION_270:
-+		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_270);
-+		break;
-+	case PANEL_ORIENTATION_90:
-+		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_90);
-+		break;
-+	case PANEL_ORIENTATION_180:
-+		add_plane_property(req, drm->primary, "rotation", DRM_MODE_ROTATE_180);
-+		break;
-+	/* we are keeping the original method used for by default to prevent a sudden break in compatibility for devices using this method.*/
-+	case PANEL_ORIENTATION_AUTO:
-+	default:
-+		add_plane_property(req, drm->primary, "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
-+		break;
 +	}
  
  	add_plane_property(req, drm->primary, "FB_ID", fb_id);
  	add_plane_property(req, drm->primary, "CRTC_ID", drm->crtc->id);
-@@ -1547,7 +1568,25 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
+@@ -1550,7 +1580,16 @@ drm_prepare_liftoff( struct drm_t *drm, const struct FrameInfo_t *frameInfo, boo
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_W", entry.layerState[i].srcW );
  			liftoff_layer_set_property( drm->lo_layers[ i ], "SRC_H", entry.layerState[i].srcH );
  
 -			liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
-+			switch ( g_drmModeOrientation )
++			drm_screen_type screenType = drm_get_screen_type(drm);
++
++			if ( screenType == DRM_SCREEN_TYPE_INTERNAL )
 +			{
-+				case PANEL_ORIENTATION_0:
-+					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_0);
-+					break;
-+				case PANEL_ORIENTATION_270:
-+					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_270);
-+					break;
-+				case PANEL_ORIENTATION_90:
-+					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_90);
-+					break;
-+				case PANEL_ORIENTATION_180:
-+					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_180);
-+					break;
-+				case PANEL_ORIENTATION_AUTO:
-+				default: /* We are using auto to ensure compatibility with devicess that used this method*/
-+					liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0);
-+					break;
++				liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", get_drm_effective_orientation());
++			}
++			else
++			{
++				liftoff_layer_set_property( drm->lo_layers[ i ], "rotation", DRM_MODE_ROTATE_0);
 +			}
  
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_X", entry.layerState[i].crtcX);
  			liftoff_layer_set_property( drm->lo_layers[ i ], "CRTC_Y", entry.layerState[i].crtcY);
-@@ -2047,7 +2086,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
+@@ -2050,7 +2089,7 @@ bool drm_update_color_mtx(struct drm_t *drm)
  		drm_ctm.matrix[i] = color.s31_32;
  	}
  
@@ -97,7 +109,7 @@ index 980e608..c4204be 100644
  	if (drmModeCreatePropertyBlob(drm->fd, &drm_ctm,
  			sizeof(struct drm_color_ctm), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create CTM property blob");
-@@ -2125,7 +2164,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
+@@ -2128,7 +2167,7 @@ bool drm_update_gamma_lut(struct drm_t *drm)
  		gamma_lut[i].blue  = drm_calc_lut_value( b_exp, drm->pending.color_linear_gain[2], drm->pending.color_gain[2], drm->pending.gain_blend );
  	}
  
@@ -106,7 +118,16 @@ index 980e608..c4204be 100644
  	if (drmModeCreatePropertyBlob(drm->fd, gamma_lut,
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create gamma LUT property blob");
-@@ -2176,7 +2215,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+@@ -2147,7 +2186,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
+ 	if ( !drm->crtc->has_degamma_lut )
+ 		return true;
+ 
+-	enum drm_screen_type screen_type = drm->pending.screen_type;		
++	enum drm_screen_type screen_type = drm->pending.screen_type;
+ 
+ 	if (drm->pending.color_degamma_exponent[screen_type][0] == drm->current.color_degamma_exponent[screen_type][0] &&
+ 		drm->pending.color_degamma_exponent[screen_type][1] == drm->current.color_degamma_exponent[screen_type][1] &&
+@@ -2179,7 +2218,7 @@ bool drm_update_degamma_lut(struct drm_t *drm)
  		degamma_lut[i].blue  = drm_quantize_lut_value( safe_pow( input, drm->pending.color_degamma_exponent[screen_type][2] ) );
  	}
  
@@ -116,10 +137,10 @@ index 980e608..c4204be 100644
  			lut_entries * sizeof(struct drm_color_lut), &blob_id) != 0) {
  		drm_log.errorf_errno("Unable to create degamma LUT property blob");
 diff --git a/src/drm.hpp b/src/drm.hpp
-index fabda88..a1d2d44 100644
+index cb4256a..6fe156a 100644
 --- a/src/drm.hpp
 +++ b/src/drm.hpp
-@@ -96,7 +96,7 @@ struct fb {
+@@ -98,7 +98,7 @@ struct fb {
  	uint32_t id;
  	/* Client buffer, if any */
  	struct wlr_buffer *buf;
@@ -128,7 +149,7 @@ index fabda88..a1d2d44 100644
  	 * doesn't need to be atomic as it's only ever
  	 * modified/read from the steamcompmgr thread */
  	int held_refs;
-@@ -118,19 +118,19 @@ struct drm_t {
+@@ -120,19 +120,19 @@ struct drm_t {
  	std::unordered_map< uint32_t, struct connector > connectors;
  
  	std::map< uint32_t, drmModePropertyRes * > props;
@@ -152,7 +173,7 @@ index fabda88..a1d2d44 100644
  	struct liftoff_device *lo_device;
  	struct liftoff_output *lo_output;
  	struct liftoff_layer *lo_layers[ k_nMaxLayers ];
-@@ -168,16 +168,16 @@ struct drm_t {
+@@ -170,16 +170,16 @@ struct drm_t {
  	std::vector < uint32_t > fbids_queued;
  	/* FBs currently on screen */
  	std::vector < uint32_t > fbids_on_screen;
@@ -173,7 +194,7 @@ index fabda88..a1d2d44 100644
  	std::atomic < uint64_t > flipcount;
  
  	std::atomic < bool > paused;
-@@ -204,7 +204,16 @@ enum drm_mode_generation {
+@@ -206,7 +206,16 @@ enum drm_mode_generation {
  	DRM_MODE_GENERATE_FIXED,
  };
  
@@ -190,8 +211,15 @@ index fabda88..a1d2d44 100644
  
  bool init_drm(struct drm_t *drm, int width, int height, int refresh);
  void finish_drm(struct drm_t *drm);
+@@ -236,4 +245,6 @@ drm_screen_type drm_get_screen_type(struct drm_t *drm);
+ char *find_drm_node_by_devid(dev_t devid);
+ int drm_get_default_refresh(struct drm_t *drm);
+ 
++uint64_t get_drm_effective_orientation();
++
+ extern bool g_bSupportsAsyncFlips;
 diff --git a/src/main.cpp b/src/main.cpp
-index 9f88dfc..6ceb80f 100644
+index 9f88dfc..8972a22 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -79,6 +79,7 @@ const struct option *gamescope_options = (struct option[]){
@@ -214,7 +242,7 @@ index 9f88dfc..6ceb80f 100644
  	}
  }
  
-+static enum g_panel_orientation force_orientation (const char *str)
++static enum g_panel_orientation force_orientation(const char *str)
 +{
 +	if (strcmp(str, "normal") == 0) {
 +		return PANEL_ORIENTATION_0;
@@ -252,19 +280,10 @@ index 9f88dfc..6ceb80f 100644
  
  	setenv("DISPLAY", base_server->get_nested_display_name(), 1);
 diff --git a/src/wlserver.cpp b/src/wlserver.cpp
-index 27240ff..0bdb8a4 100644
+index 75da389..9215df1 100644
 --- a/src/wlserver.cpp
 +++ b/src/wlserver.cpp
-@@ -6,7 +6,7 @@
- #include <unistd.h>
- #include <pthread.h>
- #include <string.h>
--#include <poll.h>	
-+#include <poll.h>
- 
- #include <linux/input-event-codes.h>
- 
-@@ -65,6 +65,7 @@ struct wlserver_content_override {
+@@ -68,6 +68,7 @@ struct wlserver_content_override {
  enum wlserver_touch_click_mode g_nDefaultTouchClickMode = WLSERVER_TOUCH_CLICK_LEFT;
  enum wlserver_touch_click_mode g_nTouchClickMode = g_nDefaultTouchClickMode;
  
@@ -272,39 +291,60 @@ index 27240ff..0bdb8a4 100644
  static struct wl_list pending_surfaces = {0};
  
  static void wlserver_x11_surface_info_set_wlr( struct wlserver_x11_surface_info *surf, struct wlr_surface *wlr_surf );
-@@ -1011,18 +1012,38 @@ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
+@@ -234,7 +235,7 @@ static void wlserver_handle_pointer_motion(struct wl_listener *listener, void *d
+ 
+ 		XTestFakeRelativeMotionEvent( server->get_xdisplay(), int(dx), int(dy), CurrentTime );
+ 		XFlush( server->get_xdisplay() );
+-	}	
++	}
+ }
+ 
+ static void wlserver_handle_pointer_button(struct wl_listener *listener, void *data)
+@@ -1042,22 +1043,51 @@ bool wlserver_surface_is_async( struct wlr_surface *surf )
+ 	return get_wl_surface_info( surf )->presentation_hint != 0;
+ }
+ 
++/* Handle the orientation of the touch inputs */
++static void apply_touchscreen_orientation(double *x, double *y )
++{
++	double tx = 0;
++	double ty = 0;
++
++	switch ( get_drm_effective_orientation() )
++	{
++		case DRM_MODE_ROTATE_0:
++			tx = *x;
++			ty = *y;
++			break;
++		case DRM_MODE_ROTATE_90:
++			tx = 1.0 - *y;
++			ty = *x;
++			break;
++		case DRM_MODE_ROTATE_180:
++			tx = 1.0 - *x;
++			ty = 1.0 - *y;
++			break;
++		case DRM_MODE_ROTATE_270:
++			tx = *y;
++			ty = 1.0 - *x;
++			break;
++	}
++
++	*x = tx;
++	*y = ty;
++}
++
+ void wlserver_touchmotion( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
 -		double tx = g_bRotated ? y : x;
 -		double ty = g_bRotated ? 1.0 - x : y;
--
-+		double tx = 0;
-+		double ty = 0;
-+		switch ( g_drmModeOrientation )
-+		{
-+			case PANEL_ORIENTATION_0:
-+				tx = x;
-+				ty = y;
-+				break;
-+			case PANEL_ORIENTATION_90:
-+				tx = 1.0 - y;
-+				ty = x;
-+				break;
-+			case PANEL_ORIENTATION_180:
-+				tx = 1.0 - x;
-+				ty = 1.0 - y;
-+				break;
-+			case PANEL_ORIENTATION_270:
-+				tx = y;
-+				ty = 1.0 - x;
-+				break;
-+			case PANEL_ORIENTATION_AUTO:
-+			default: /* we are using the "auto" enum case to ensure compatibility for devices that were already using this*/
-+				tx = g_bRotated ? y : x;
-+				ty = g_bRotated ? 1.0 - x : y;
-+				break;
-+		}
++		double tx = x;
++		double ty = y;
++
++		apply_touchscreen_orientation(&tx, &ty);
+ 
  		tx *= g_nOutputWidth;
  		ty *= g_nOutputHeight;
 -
@@ -317,39 +357,17 @@ index 27240ff..0bdb8a4 100644
  		wlserver.mouse_surface_cursorx = tx;
  		wlserver.mouse_surface_cursory = ty;
  
-@@ -1050,18 +1071,38 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
+@@ -1085,18 +1115,17 @@ void wlserver_touchdown( double x, double y, int touch_id, uint32_t time )
  {
  	if ( wlserver.mouse_focus_surface != NULL )
  	{
 -		double tx = g_bRotated ? y : x;
 -		double ty = g_bRotated ? 1.0 - x : y;
--
-+		double tx = 0;
-+		double ty = 0;
-+		switch ( g_drmModeOrientation )
-+		{
-+			case PANEL_ORIENTATION_0:
-+				tx = x;
-+				ty = y;
-+				break;
-+			case PANEL_ORIENTATION_90:
-+				tx = 1.0 - y;
-+				ty = x;
-+				break;
-+			case PANEL_ORIENTATION_180:
-+				tx =  1.0 - x;
-+				ty =  1.0 - y;
-+				break;
-+			case PANEL_ORIENTATION_270:
-+				tx = y;
-+				ty = 1.0 - x;
-+				break;
-+			case PANEL_ORIENTATION_AUTO:
-+			default: /* we are using the "auto" enum case to ensure compatibility for devices that were already using this*/
-+				tx = g_bRotated ? y : x;
-+				ty = g_bRotated ? 1.0 - x : y;
-+				break;
-+		}
++		double tx = x;
++		double ty = y;
++
++		apply_touchscreen_orientation(&tx, &ty);
+ 
  		tx *= g_nOutputWidth;
  		ty *= g_nOutputHeight;
 -
@@ -363,5 +381,5 @@ index 27240ff..0bdb8a4 100644
  		wlserver.mouse_surface_cursory = ty;
  
 -- 
-2.37.3
+2.38.0
 

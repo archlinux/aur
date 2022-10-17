@@ -1,0 +1,44 @@
+From dd2a8414c1f5ab6e5cedcb682055b1e3820df610 Mon Sep 17 00:00:00 2001
+From: Simon Ser <contact@emersion.fr>
+Date: Tue, 11 Oct 2022 19:05:44 +0200
+Subject: [PATCH 3/6] drm: de-duplicate connector type logic
+
+---
+ src/drm.cpp | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/src/drm.cpp b/src/drm.cpp
+index 470aaa4..38a7b2f 100644
+--- a/src/drm.cpp
++++ b/src/drm.cpp
+@@ -731,20 +731,14 @@ static bool setup_best_connector(struct drm_t *drm, bool force)
+ 	}
+ 
+ 	char description[256];
+-	switch (best->connector->connector_type) {
+-	case DRM_MODE_CONNECTOR_LVDS:
+-	case DRM_MODE_CONNECTOR_eDP:
++	if (drm_get_connector_type(best->connector) == DRM_SCREEN_TYPE_INTERNAL) {
+ 		snprintf(description, sizeof(description), "Internal screen");
+-		break;
+-	default:
+-		if (best->make && best->model) {
+-			snprintf(description, sizeof(description), "%s %s", best->make, best->model);
+-		} else if (best->model) {
+-			snprintf(description, sizeof(description), "%s", best->model);
+-		} else {
+-			snprintf(description, sizeof(description), "External screen");
+-		}
+-		break;
++	} else if (best->make && best->model) {
++		snprintf(description, sizeof(description), "%s %s", best->make, best->model);
++	} else if (best->model) {
++		snprintf(description, sizeof(description), "%s", best->model);
++	} else {
++		snprintf(description, sizeof(description), "External screen");
+ 	}
+ 
+ 	const drmModeModeInfo *mode = nullptr;
+-- 
+2.38.0
+

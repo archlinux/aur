@@ -1,0 +1,67 @@
+From df741bfda4ea65bfce8d3c001701d84f64cdff72 Mon Sep 17 00:00:00 2001
+From: ruineka <ruinairas1992@gmail.com>
+Date: Thu, 13 Oct 2022 06:43:47 -0700
+Subject: [PATCH 4/6] drm: fix an issue where g_nOutputWidth and
+ g_nOutputHeight weren't updated
+
+---
+ src/drm.cpp | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/src/drm.cpp b/src/drm.cpp
+index 38a7b2f..89aeb36 100644
+--- a/src/drm.cpp
++++ b/src/drm.cpp
+@@ -1289,7 +1289,7 @@ void update_drm_effective_orientation(struct drm_t *drm, struct connector *conn)
+ 	{
+ 		g_drmEffectiveOrientation = DRM_MODE_ROTATE_0;
+ 		return;	
+-	}	
++	}
+ 	switch ( g_drmModeOrientation )
+ 	{
+ 		case PANEL_ORIENTATION_0:
+@@ -1325,13 +1325,12 @@ void update_drm_effective_orientation(struct drm_t *drm, struct connector *conn)
+ 				{
+ 					g_drmEffectiveOrientation = DRM_MODE_ROTATE_270;
+ 				}
+-				break;
+ 			}
+ 			else
+ 			{
+ 				g_drmEffectiveOrientation = g_bRotated ? DRM_MODE_ROTATE_270 : DRM_MODE_ROTATE_0;
+-				break;
+ 			}
++			break;
+ 	}
+ }
+ 
+@@ -1906,9 +1905,7 @@ bool drm_set_connector( struct drm_t *drm, struct connector *conn )
+ 
+ 	drm->connector = conn;
+ 	drm->needs_modeset = true;
+-
+-	update_drm_effective_orientation(drm, conn);
+-
++	
+ 	return true;
+ }
+ 
+@@ -2277,6 +2274,14 @@ bool drm_set_mode( struct drm_t *drm, const drmModeModeInfo *mode )
+ 		g_nOutputWidth = mode->vdisplay;
+ 		g_nOutputHeight = mode->hdisplay;
+ 	}
++	
++	update_drm_effective_orientation(drm, drm->connector);
++
++	if ( g_drmEffectiveOrientation == PANEL_ORIENTATION_0 || g_drmModeOrientation == PANEL_ORIENTATION_180 )
++	{
++		g_nOutputWidth = mode->hdisplay;
++		g_nOutputHeight = mode->vdisplay;
++	}
+ 
+ 	return true;
+ }
+-- 
+2.38.0
+

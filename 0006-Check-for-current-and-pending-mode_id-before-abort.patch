@@ -1,0 +1,27 @@
+From 4450a9bf094057846e56bcef838c84cdd5335153 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joaqu=C3=ADn=20Ignacio=20Aramend=C3=ADa?=
+ <samsagax@gmail.com>
+Date: Mon, 17 Oct 2022 16:48:48 -0300
+Subject: [PATCH 6/6] Check for current and pending mode_id before abort
+
+This fixes #624
+---
+ src/steamcompmgr.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/steamcompmgr.cpp b/src/steamcompmgr.cpp
+index 0e9e159..aa4e4a0 100644
+--- a/src/steamcompmgr.cpp
++++ b/src/steamcompmgr.cpp
+@@ -1919,7 +1919,7 @@ paint_all(bool async)
+ 
+ 			if ( ret != 0 )
+ 			{
+-				if ( g_DRM.current.mode_id == 0 )
++				if ( g_DRM.current.mode_id == 0 && g_DRM.pending.mode_id == 0)
+ 				{
+ 					xwm_log.errorf("We failed our modeset and have no mode to fall back to! (Initial modeset failed?): %s", strerror(-ret));
+ 					abort();
+-- 
+2.38.0
+
