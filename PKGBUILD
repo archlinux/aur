@@ -22,11 +22,11 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 sha256sums=('72ec74f4a7c16e684f43ea42e215497fcd4c55d028a68fb72e99e61ff40da4d6'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
+            '39692245a4948a8eec7281f4a86772818012742a8e35fbb12f67f28e7d91cb08'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '665c692161edee50ca0d8c3aae4a39a39c96ce2878cab30dbac4c6f4443c0cbc'
-            'c0e84a98a6241fad578ea6e862e24637fec1ed9e820ce1f3826af1c2869ba55d')
+            '7beb8640c93d90a74ee226d394646aa8006693a23c8fa6840efb6d136e53613b'
+            '440bb4f91ad58a43f8549afd5f47f8ad2cdcd4e41ceff84e25b967f235c429dc')
 
 prepare() {
   cd postgresql-${pkgver}
