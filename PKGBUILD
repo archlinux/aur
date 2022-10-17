@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sed-git
-pkgver=4.4.r84.ga59fb88
+pkgver=4.8.r45.g777817b
 pkgrel=1
 pkgdesc="A non-interactive command-line text editor (stream editor)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/sed/"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'rsync')
-provides=('sed')
+provides=("sed=$pkgver")
 conflicts=('sed')
 source=("git+https://git.savannah.gnu.org/git/sed.git")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "sed"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
