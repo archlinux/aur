@@ -2,39 +2,38 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=topgrade-git
-pkgver=9.0.1.r5.ga5e0128
+pkgver=9.0.1.r1084.8dd4559
 pkgrel=1
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
-url=https://github.com/r-darwish/topgrade
+url=https://github.com/topgrade-rs/topgrade
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+$url.git" pakku.diff)
-sha256sums=('SKIP'
-            '7a2c8ef69773feb01ba25faee4619377d42f32b70ca392f0710d29fd7e6b9ba6')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.r+' | cut -c2- | tr - .
+  printf %s.r%s.%s $(grep ^version Cargo.toml|cut -d\" -f2) $(git rev-list --count HEAD) $(git describe --always)
 }
 
 prepare() {
   cd ${pkgname%-git}
-  git apply "$srcdir"/pakku.diff
+  [[ -d target/release ]] || mkdir target/release
 }
 
 build() {
   cd ${pkgname%-git}
-  cargo build --release --locked
+  cargo build --release 
 }
 
 package() {
   cd ${pkgname%-git}
-
-  install -Dm755 target/release/${pkgname%-git} "$pkgdir"/usr/bin/${pkgname%-git}
+  
+  install -Dm755 target/release/${pkgname%-git}-rs "$pkgdir"/usr/bin/${pkgname%-git}
   install -Dm644 ${pkgname%-git}.8 "$pkgdir"/usr/share/man/man8/${pkgname%-git}.8
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
