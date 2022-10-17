@@ -8,7 +8,7 @@
 #
 
 _pkgname=sidfactory2
-_pkgver=20211230
+_pkgver=20221007
 #_commit=8a5dc723da875ba31e361f64c9de415525fd0e35
 
 
@@ -36,7 +36,7 @@ conflicts=('sidfactory2')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Chordian/${_pkgname}/archive/${pkg_ident}.tar.gz")
 
 #
-sha256sums=('6e49d7164f36eabb8d64719f0f5a4683ddf937056b2cba031270080716561bb7')
+sha256sums=('a96c8a1451de650dcb466b0423fcff7265ece0ccb6941ce65c7d61d4ee449626')
 
 
 #
