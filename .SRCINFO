@@ -6,7 +6,6 @@ pkgbase = msi-ec-git
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = make
 	provides = msi-ec
 	source = git+https://github.com/BeardOverflow/msi-ec.git
 	sha256sums = SKIP
