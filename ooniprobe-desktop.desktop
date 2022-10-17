@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=OONI Probe
-Exec="/opt/OONI Probe/ooniprobe-desktop" %U
+Exec=/opt/OONI\ Probe/ooniprobe-desktop --no-sandbox %U
 Terminal=false
 Type=Application
 Icon=ooniprobe-desktop

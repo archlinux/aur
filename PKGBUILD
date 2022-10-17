@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.7.0
-_cliver=3.14.1
-pkgrel=2
+pkgver=3.8.0
+_cliver=3.15.1
+pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
@@ -14,9 +14,9 @@ replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v$_cliver/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('00b2fb6d51ecdc3f0e071183ab96b5c8c8f1a7e96ab3517af712065e9da3bcc3'
-            'b6abce139d56f0bd80c61210e0c28359b85a8f633932a56ee7d617ea255151ca'
-            'baaf4f3cca079dddc0b4e048c8778c6cc84786bb88fd9d218424b7b9f04f1135')
+sha256sums=('73fac422d1ec5b144e59dd5dd9bb6882f5e3da9fd3e344965b5b7af08bac739d'
+            'a4a36c070e303070a536dec72c8af9028136f31e8c0a7bd440b0ff0a8f7765de'
+            '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
 
 prepare() {
   cd "${pkgname#ooni}-$pkgver"
@@ -50,15 +50,15 @@ package() {
 
   for icon_size in 16 48; do
     icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -d $pkgdir/$icons_dir
+    install -d $pkgdir/${icons_dir}
     install -m644 dist/.icon-set/icon_${icon_size}x${icon_size}.png \
-      $pkgdir$icons_dir/$pkgname.png
+      ${pkgdir}${icons_dir}/$pkgname.png
   done
 
   for icon_size in 32 64 128 256 512 1024; do
     icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
     install -d $pkgdir/$icons_dir
     install -m644 dist/.icon-set/app_${icon_size}.png \
-      $pkgdir$icons_dir/$pkgname.png
+      ${pkgdir}${icons_dir}/$pkgname.png
   done
 }
