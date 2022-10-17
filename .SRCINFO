@@ -1,0 +1,18 @@
+pkgbase = libfsm-git
+	pkgdesc = DFA regular expression library & friends
+	pkgver = r2867.6038ae4f
+	pkgrel = 1
+	url = https://github.com/katef/libfsm
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = bmake
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = docbook-xml
+	depends = glibc
+	provides = libfsm
+	source = git+https://github.com/katef/libfsm.git
+	md5sums = SKIP
+
+pkgname = libfsm-git
