@@ -1,7 +1,7 @@
 pkgbase = debmirror
 	pkgdesc = Debian partial mirror script, with ftp and package pool support
-	pkgver = 2.36
-	pkgrel = 2
+	pkgver = 2.37
+	pkgrel = 1
 	url = https://salsa.debian.org/debian/debmirror
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = debmirror
 	optdepends = ed
 	optdepends = gnupg
 	optdepends = patch
-	source = https://mirrors.edge.kernel.org/debian/pool/main/d/debmirror/debmirror_2.36.tar.xz
-	sha512sums = fc9c6e83a919b28df3e222b3991844da8e362fe1d0f6ab353fc7fee70313de7568f3558ca11db2fb83b711dccea9e3c9dcc0a41446e9fbeceba7cfeb9c65a038
+	source = https://salsa.debian.org/debian/debmirror/-/archive/debian/1%252.37/debmirror-debian-1%252.37.tar.bz2
+	sha512sums = cdca294e0f689e6dc3020bcba35870a35924263e541c8cbf9076efe277e02d2fc0b15e02938e2736939e9dadf326f960f165ecc303c51a2718296621ecc85287
 
 pkgname = debmirror

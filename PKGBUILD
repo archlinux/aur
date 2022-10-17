@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=debmirror
-pkgver=2.36
-pkgrel=2
+pkgver=2.37
+pkgrel=1
 pkgdesc='Debian partial mirror script, with ftp and package pool support'
 url="https://salsa.debian.org/debian/${pkgname}"
 arch=('any')
@@ -10,21 +10,21 @@ license=('GPL')
 depends=('bzip2' 'perl-lockfile-simple' 'perl-libwww' 'rsync')
 optdepends=('diffutils' 'ed' 'gnupg' 'patch')
 makedepends=('pod2man')
-source=("https://mirrors.edge.kernel.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha512sums=('fc9c6e83a919b28df3e222b3991844da8e362fe1d0f6ab353fc7fee70313de7568f3558ca11db2fb83b711dccea9e3c9dcc0a41446e9fbeceba7cfeb9c65a038')
+source=("https://salsa.debian.org/debian/${pkgname}/-/archive/debian/1%25${pkgver}/${pkgname}-debian-1%25${pkgver}.tar.bz2")
+sha512sums=('cdca294e0f689e6dc3020bcba35870a35924263e541c8cbf9076efe277e02d2fc0b15e02938e2736939e9dadf326f960f165ecc303c51a2718296621ecc85287')
 
 build() {
-    cd "${srcdir}/work"
+    cd "${srcdir}/${pkgname}-debian-1%${pkgver}"
     make all
 }
 
 check() {
-    cd "${srcdir}/work"
+    cd "${srcdir}/${pkgname}-debian-1%${pkgver}"
     make check
 }
 
 package() {
-    cd "${srcdir}/work"
+    cd "${srcdir}/${pkgname}-debian-1%${pkgver}"
 
     # see https://packages.debian.org/fr/sid/all/debmirror/filelist
     install -Dm 755 debmirror ${pkgdir}/usr/bin/debmirror
