@@ -9,7 +9,7 @@ url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
 depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt5-base' 'qt5-multimedia' 'qt5-x11extras')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
-             'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
+             'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
