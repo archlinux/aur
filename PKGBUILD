@@ -1,8 +1,8 @@
 # Maintainer: Apoorv <apoorvs569@gmail.com>
 
 pkgname=monique-monosynth-git
-pkgver=r527.53ebe655
-pkgrel=6
+pkgver=r577.4ed0bb04
+pkgrel=7
 pkgdesc="Monique is a monophonic synth from Thomas Arndt"
 arch=('x86_64')
 url="https://github.com/surge-synthesizer/monique-monosynth"
