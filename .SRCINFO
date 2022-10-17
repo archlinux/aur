@@ -1,0 +1,21 @@
+pkgbase = desq-apps-dropdown
+	pkgdesc = A Quake-style DropDown app capable of showing widgets for DesQ
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQApps/DesQDropDown
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = qt5-base
+	depends = libdesqui
+	depends = dfl-applications
+	depends = dfl-settings
+	depends = dfl-utils
+	depends = dfl-xdg
+	depends = dfl-wayqt
+	source = https://gitlab.com/DesQ/DesQApps/DesQDropDown/-/archive/v0.0.7/DesQDropDown-v0.0.7.tar.gz
+	md5sums = 5001025adac48159814624e72db6b4be
+
+pkgname = desq-apps-dropdown
