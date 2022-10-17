@@ -1,0 +1,23 @@
+pkgbase = pearson-reader-plus-it
+	pkgdesc = A simple Reader for Pearson digital books (IT).
+	pkgver = 4.7
+	pkgrel = 1
+	url = https://it.pearson.com/
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	depends = unzip
+	depends = tar
+	optdepends = chromium: a modern browser for the application to work
+	optdepends = firefox: a modern browser for the application to work
+	optdepends = google-chrome: a modern browser for the application to work
+	optdepends = evince: a pdf viewer
+	optdepends = epdfview: a pdf viewer
+	optdepends = qpdfview: a pdf viewer
+	optdepends = mupdf: a pdf viewer
+	options = !strip
+	source = https://link.pearson.it/B300361C
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pearson-reader-plus-it
