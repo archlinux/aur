@@ -1,0 +1,12 @@
+pkgbase = lavat-git
+	pkgdesc = Little program that simulates a lava lamp in the terminal.
+	pkgver = r13.5d2629c
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/AngelJumbo/lavat.git
+	arch = any
+	license = MIT
+	source = git+https://github.com/AngelJumbo/lavat.git
+	md5sums = SKIP
+
+pkgname = lavat-git
