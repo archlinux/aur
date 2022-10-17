@@ -1,7 +1,7 @@
 pkgbase = x2goclient
 	pkgdesc = a graphical client (Qt5) for the X2Go system
 	pkgver = 4.1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.x2go.org/doku.php
 	arch = x86_64
 	license = GPL2
