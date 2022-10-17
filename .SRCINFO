@@ -1,0 +1,13 @@
+pkgbase = anew-bin
+	pkgdesc = A tool for adding new lines to files, skipping duplicates
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tomnomnom/anew
+	arch = x86_64
+	license = MIT
+	provides = anew
+	conflicts = anew
+	source = anew-bin-0.1.1.tar.gz::https://github.com/tomnomnom/anew/releases/download/v0.1.1/anew-linux-amd64-0.1.1.tgz
+	b2sums = SKIP
+
+pkgname = anew-bin
