@@ -4,7 +4,7 @@
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
 pkgver=1.72.2.22289
-pkgrel=1
+pkgrel=2
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -107,7 +107,6 @@ build() {
     export VSCODE_ARCH="${_vscode_arch}"
     export VSCODE_QUALITY="stable"
     export RELEASE_VERSION="${pkgver}"
-    export BUILD_SOURCEVERSION=$( cat /dev/urandom | env LC_ALL=C tr -dc 'a-z0-9' | fold -w 40 | head -n 1 )
     # the app will be updated with pacman
     export DISABLE_UPDATE="yes"
 
