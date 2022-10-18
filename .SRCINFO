@@ -1,8 +1,8 @@
-pkgbase = polymc-git
+pkgbase = placeholdermc-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 1.4.0.r348.gc089f9b5
-	pkgrel = 2
-	url = https://github.com/PolyMC/PolyMC
+	pkgver = 1.4.0.r356.g0868a5e5
+	pkgrel = 1
+	url = https://github.com/PlaceholderMC/PlaceholderMC
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -30,9 +30,9 @@ pkgbase = polymc-git
 	provides = polymc
 	conflicts = polymc
 	options = debug
-	source = git+https://github.com/PolyMC/PolyMC
-	source = git+https://github.com/PolyMC/libnbtplusplus
+	source = git+https://github.com/PlaceholderMC/PlaceholderMC
+	source = git+https://github.com/PolyMC/libnbtplusplus#commit=2203af7eeb48c45398139b583615134efd8d407f
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = polymc-git
+pkgname = placeholdermc-git
