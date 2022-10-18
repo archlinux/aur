@@ -7,6 +7,7 @@ pkgbase = stainless-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = sbt
+	depends = java-runtime
 	provides = stainless
 	conflicts = stainless
 	source = git+https://github.com/epfl-lara/stainless
