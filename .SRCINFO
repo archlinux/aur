@@ -1,7 +1,7 @@
 pkgbase = r-checkmate
 	pkgdesc = Fast and Versatile Argument Checks
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 8
 	url = https://cran.r-project.org/package=checkmate
 	arch = x86_64
 	license = BSD
