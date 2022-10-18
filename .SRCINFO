@@ -1,7 +1,7 @@
 pkgbase = r-corrplot
 	pkgdesc = Visualization of a Correlation Matrix
 	pkgver = 0.92
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=corrplot
 	arch = any
 	license = MIT
