@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=spam
 _pkgver=2.9-1
 pkgname=r-${_pkgname,,}
 pkgver=2.9.1
-pkgrel=1
+pkgrel=4
 pkgdesc='SPArse Matrix'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
