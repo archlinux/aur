@@ -9,7 +9,7 @@
 
 pkgname=placeholdermc
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PlaceholderMC/PlaceholderMC"
@@ -49,6 +49,8 @@ prepare() {
     cd "PlaceholderMC-$pkgver"
 
     patch -Np1 -i "../fix-qt6-4.patch"
+
+	sed -i "s|https://meta.polymc.org/v1/|https://meta.scrumplex.rocks/v1/|g" CMakeLists.txt
 }
 
 build() {
