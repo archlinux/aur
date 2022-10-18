@@ -1,7 +1,7 @@
 pkgbase = sviesolutions-via-bin
 	pkgdesc = SVI eSolutions video conferencing application
-	pkgver = 2022.10.1379.557
-	pkgrel = 1
+	pkgver = 20220929
+	pkgrel = 2
 	url = https://assistance.sviesolutions.com
 	arch = x86_64
 	depends = libatomic_ops
