@@ -1,7 +1,7 @@
 pkgbase = r-servr
 	pkgdesc = A Simple HTTP Server to Serve Static Files or Dynamic Documents
 	pkgver = 0.24
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=servr
 	arch = any
 	license = GPL
