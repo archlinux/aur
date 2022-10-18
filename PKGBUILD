@@ -5,7 +5,7 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=moodle
-pkgver=4.0.3
+pkgver=4.0.4
 _pkgver="stable400"
 pkgrel=1
 pkgdesc='An open-source software learning management system'
@@ -16,7 +16,7 @@ depends=('php7>=7.3.0' 'php7-intl>=7.3.0' 'php7-gd>=7.3.0' 'mariadb>=10.2.29' 'p
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/${pkgname}-${pkgver}.tgz")
-sha256sums=('c84bcd852ab94f05c6eccf394f807a5fdc21a7f680b68acd7039f103b443e02b')
+sha256sums=('9b07d44cc8cd8fd04aa8815ecda7a452d47d97000c9ac1da014b7aae4a9f5bc9')
 
 
 package() {
