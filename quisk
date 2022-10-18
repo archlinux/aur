@@ -1,2 +1,2 @@
 #!/bin/sh
-python2 /opt/quisk/quisk.py
+python /opt/quisk/quisk.py
