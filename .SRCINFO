@@ -1,7 +1,7 @@
 pkgbase = r-lifecycle
 	pkgdesc = Manage the Life Cycle of your Package Functions
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=lifecycle
 	arch = any
 	license = MIT
