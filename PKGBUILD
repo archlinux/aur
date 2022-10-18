@@ -3,7 +3,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   'python-magic'
   'python-pybeam'
   'python-pyxdg'
-  'python-toml'
+  'python-tomli-w'
   'python-zstandard'
   'rpm-tools'
   'xz'
@@ -36,7 +36,7 @@ optdepends=(
   'python-pyenchant: for spell checking'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ff6271f2e77a76f19caa5ceff9d90e32ef9da3a6140f0726e0e697c0381f496b')
+sha256sums=('805d0962d9b3980e85d265db3cfb2625818866faa0b8a534552a8d4035cabc6a')
 
 build() {
   cd "$pkgname-$pkgver"
