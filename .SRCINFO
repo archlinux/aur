@@ -1,7 +1,7 @@
 pkgbase = r-lava
 	pkgdesc = Latent Variable Models
 	pkgver = 1.6.10
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=lava
 	arch = any
 	license = GPL

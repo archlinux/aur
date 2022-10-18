@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=lava
 _pkgver=1.6.10
 pkgname=r-${_pkgname,,}
 pkgver=1.6.10
-pkgrel=4
+pkgrel=7
 pkgdesc='Latent Variable Models'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
