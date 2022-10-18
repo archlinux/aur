@@ -1,7 +1,7 @@
 pkgbase = r-rcmdcheck
 	pkgdesc = Run 'R CMD check' from 'R' and Capture Results
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=rcmdcheck
 	arch = any
 	license = MIT

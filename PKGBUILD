@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=rcmdcheck
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=4
+pkgrel=7
 pkgdesc="Run 'R CMD check' from 'R' and Capture Results"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
