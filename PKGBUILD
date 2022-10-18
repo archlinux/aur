@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmnipathR
-_pkgver=3.4.0
+_pkgver=3.4.7
 pkgname=r-${_pkgname,,}
-pkgver=3.4.0
+pkgver=3.4.7
 pkgrel=1
 pkgdesc='OmniPath web service client and more'
 arch=('any')
@@ -27,6 +27,7 @@ depends=(
   r-rappdirs
   r-readr
   r-readxl
+  r-rmarkdown
   r-rlang
   r-stringr
   r-tibble
@@ -46,13 +47,12 @@ optdepends=(
   r-parallelmap
   r-paramhelpers
   r-rgraphviz
-  r-rmarkdown
   r-smoof
   r-suprahex
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d1bebd4567b5f91deee5a8392c7ec378a02556e7bdc1ff2b3a140f99c076606e')
+sha256sums=('fa43c35ab66984367b35499e5a5ead8a04d02b9c13570cdc46984d905c848280')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
