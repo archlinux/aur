@@ -1,7 +1,7 @@
 pkgbase = r-rootsolve
 	pkgdesc = Nonlinear Root Finding, Equilibrium and Steady-State Analysis of Ordinary Differential Equations
 	pkgver = 1.8.2.3
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=rootSolve
 	arch = x86_64
 	license = GPL

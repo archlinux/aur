@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=rootSolve
 _pkgver=1.8.2.3
 pkgname=r-${_pkgname,,}
 pkgver=1.8.2.3
-pkgrel=4
+pkgrel=10
 pkgdesc='Nonlinear Root Finding, Equilibrium and Steady-State Analysis of Ordinary Differential Equations'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
