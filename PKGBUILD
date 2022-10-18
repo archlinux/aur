@@ -3,7 +3,7 @@
 # Contributor: Mark wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile
-pkgver=50
+pkgver=51
 pkgrel=1
 pkgdesc='A window tiling extension for Gnome'
 url='https://github.com/gTile/gTile'
@@ -12,7 +12,7 @@ license=('GPL2+')
 depends=('gnome-shell')
 makedepends=('bazel' 'python' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gTile/gTile/archive/V${pkgver}.tar.gz")
-sha256sums=('ca22e5c4ce848508eb421efb418e5bf76bab4ecfeebf491f075fb47f59a0dde6')
+sha256sums=('7e3b3c40e182f6a090069245ba43c6a324b5342585e4efec15d09f54a8422f3d')
 
 build() {
   cd gTile-${pkgver}
