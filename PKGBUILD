@@ -1,10 +1,11 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=cyclocomp
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=5
 pkgdesc='Cyclomatic Complexity of R Code'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

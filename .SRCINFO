@@ -1,7 +1,7 @@
 pkgbase = r-cyclocomp
 	pkgdesc = Cyclomatic Complexity of R Code
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://cran.r-project.org/package=cyclocomp
 	arch = any
 	license = MIT
