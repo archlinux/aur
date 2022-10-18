@@ -1,7 +1,7 @@
 pkgbase = r-r.methodss3
 	pkgdesc = S3 Methods Simplified
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 7
 	url = https://cran.r-project.org/package=R.methodsS3
 	arch = any
 	license = LGPL
