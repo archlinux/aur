@@ -8,12 +8,12 @@ pkgbase = mailtm-bin
 	provides = mailtm
 	arch = aarch64
 	source_aarch64 = https://github.com/ABGEO/mailtm/releases/download/v0.2.0/mailtm_0.2.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bf1f32cffecdc353492ce2359fa573504f2c01ee075ffe287daff5fdcf32dedc
+	sha256sums_aarch64 = eec4fe2700d3e44a1575625035535dadb889e39f7b6f6a65d808a1358dda40d9
 	arch = i686
 	source_i686 = https://github.com/ABGEO/mailtm/releases/download/v0.2.0/mailtm_0.2.0_Linux_i386.tar.gz
-	sha256sums_i686 = f38e0ee6b0415975ef93c49b5d64eb4dc5f45bcce5484705a917031ec2c8733e
+	sha256sums_i686 = 1b6753f550d0e98ad1a33f0bad109be371fa0e2a39fee52340bfa182fb67344a
 	arch = x86_64
 	source_x86_64 = https://github.com/ABGEO/mailtm/releases/download/v0.2.0/mailtm_0.2.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ff955712c5e6966fa34f2d3d7394ac0930925d1be11722db3bbd623c5ae2956f
+	sha256sums_x86_64 = 12f207318db3f376e7011e15cb21877da5023587dba96541164a60c2b71338b2
 	
 pkgname = mailtm-bin
