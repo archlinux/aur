@@ -1,11 +1,13 @@
 # system requirements: C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=conquer
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Convolution-Type Smoothed Quantile Regression'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
