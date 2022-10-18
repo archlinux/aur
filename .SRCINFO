@@ -1,7 +1,7 @@
 pkgbase = r-ggrepel
 	pkgdesc = Automatically Position Non-Overlapping Text Labels with 'ggplot2'
 	pkgver = 0.9.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=ggrepel
 	arch = x86_64
 	license = GPL
