@@ -1,6 +1,6 @@
 # Maintainer: Yellow <yellow@example.com>
-# Maintainer: Lenny McLennington <lennymclennington@protonmail.com>
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Elijah Gregg <lovetocode999@tilde.team>
 # Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
