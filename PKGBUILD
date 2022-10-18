@@ -1,8 +1,8 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 _pkgname=uritools
-pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
-pkgver=0.11.0.r0.g7816d9b
+pkgname="python-${_pkgname}-git"
+pkgver=4.0.0.r0.g0f20688
 pkgrel=1
 pkgdesc='RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('git')
 provides=("python-${_pkgname}")
-conflicts=$provides
+conflicts=("python-${_pkgname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
@@ -25,24 +25,12 @@ check() {
   python setup.py test
 }
 
-package_python-uritools-git() {
+package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -d "$pkgdir/usr/share/doc/python-${_pkgname}/"
-  install -pm644 CHANGES.rst README.rst "$pkgdir/usr/share/doc/python-${_pkgname}/"
+  install -pm644 CHANGELOG.rst README.rst "$pkgdir/usr/share/doc/python-${_pkgname}/"
   install -Dpm644 LICENSE "$pkgdir/usr/share/licenses/python-${_pkgname}/LICENSE"
-}
-
-package_python2-uritools-git() {
-  depends=('python2' 'python2-ipaddress')
-  provides=("python2-${_pkgname}")
-  conflicts=$provides
-
-  cd "$srcdir/$_pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -d "$pkgdir/usr/share/doc/python2-${_pkgname}/"
-  install -pm644 CHANGES.rst README.rst "$pkgdir/usr/share/doc/python2-${_pkgname}/"
-  install -Dpm644 LICENSE "$pkgdir/usr/share/licenses/python2-${_pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
