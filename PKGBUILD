@@ -3,7 +3,7 @@
 
 pkgname=python-atom
 _pkg=atom
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Memory efficient Python objects'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 	'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('a45bb13c82b8871b2792917eb0ea2e73ffe920f6001e259c117fdec2d002f966')
+sha256sums=('3155b7a0a286cb5c2bff2929fc2341d071dc9169b0d0ff1f15450ddd57d24c57')
 
 prepare() {
 	cd "$_pkg-$pkgver"
