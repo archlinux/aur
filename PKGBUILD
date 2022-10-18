@@ -8,7 +8,7 @@
 _pkgname=placeholdermc
 pkgname=${_pkgname}-git
 pkgver=1.4.0.r356.g0868a5e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PlaceholderMC/PlaceholderMC"
@@ -37,6 +37,7 @@ pkgver() {
 
 prepare() {
   cd "PlaceholderMC"
+  sed -i "s|https://meta.polymc.org/v1/|https://meta.scrumplex.rocks/v1/|g" CMakeLists.txt
   git submodule init
   git config submodule.depends/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
