@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.68.0.r1.g9bd442e202
+pkgver=1.69.0.r0.g6b097a3e17
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -88,6 +88,7 @@ source=(
         'sysusers-synapse.conf'
         'tmpfiles-synapse.conf'
         'override-hardened.conf'
+	'0001-Allow-poetry-core-1.3.2.patch'
 )
 
 md5sums=('SKIP'
@@ -97,7 +98,8 @@ md5sums=('SKIP'
          'ea198d6265d626af4a4c143bf3df9a66'
          'ecd9f66fb57fe1a2e1e2df07a460a35b'
          'e961c9ecad84a70345a57a7e9e6d5b09'
-         'e93ce7c015b3617f71c0fe2a4879f0e5')
+         'e93ce7c015b3617f71c0fe2a4879f0e5'
+         '29a91903e0601676fe2d1488ed98afe3')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
