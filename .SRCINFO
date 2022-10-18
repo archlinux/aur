@@ -1,0 +1,16 @@
+pkgbase = cargo-careful-git
+	pkgdesc = Execute Rust code carefully, with extra checking along the way
+	pkgver = 0.2.4.r3.g3994f51
+	pkgrel = 1
+	url = https://github.com/RalfJung/cargo-careful
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = cargo-careful
+	conflicts = cargo-careful
+	source = git+https://github.com/RalfJung/cargo-careful
+	sha512sums = SKIP
+
+pkgname = cargo-careful-git
