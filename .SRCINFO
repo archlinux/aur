@@ -1,7 +1,7 @@
 pkgbase = r-cowplot
 	pkgdesc = Streamlined Plot Theme and Plot Annotations for 'ggplot2'
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=cowplot
 	arch = any
 	license = GPL
