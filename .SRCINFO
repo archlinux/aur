@@ -1,7 +1,7 @@
 pkgbase = placeholdermc
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 1.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PlaceholderMC/PlaceholderMC
 	arch = i686
 	arch = x86_64
