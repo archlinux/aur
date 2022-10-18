@@ -30,6 +30,9 @@ for name in $(find . -mindepth 1 -maxdepth 1 -type d -not -name "\.*"); do
 
     if [ -f $package/.norelease ]; then
         echo "  disabled: $package (explicit)"
+    elif [ -f $package/.forcerelease ]; then
+        echo "  enabled: $package ($local_version) (explicit)"
+        packages+=($package)
     elif [ "$local_version" == "$(echo -e "$local_version\n$remote_version" | sort -V | head -n1)" ]; then
         echo "  disabled: $package (local version $local_version <= remote version $remote_version)"
     elif [[ ! " ${arch[*]} " =~ " any " ]] && [[ ! " ${arch[*]} " =~ " $(uname -m) " ]]; then
