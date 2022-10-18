@@ -1,7 +1,7 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
 	pkgver = 2.21.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rstan
 	arch = x86_64
 	license = GPL
