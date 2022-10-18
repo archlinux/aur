@@ -1,10 +1,13 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Grey Christoforo <first name at last name dot net>
 
 _pkgname=filehash
 _pkgver=2.4-3
 pkgname=r-${_pkgname,,}
 pkgver=2.4.3
-pkgrel=3
+pkgrel=8
 pkgdesc='Simple Key-Value Database'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

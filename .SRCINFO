@@ -1,7 +1,7 @@
 pkgbase = r-filehash
 	pkgdesc = Simple Key-Value Database
 	pkgver = 2.4.3
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=filehash
 	arch = x86_64
 	license = GPL
