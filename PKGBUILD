@@ -1,7 +1,8 @@
-# maintainer: Guoyi
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 pkgname=freebayes
 pkgver=1.3.6
-pkgrel=1
+pkgrel=4
 pkgdesc="About Bayesian haplotype-based genetic polymorphism discovery and genotyping"
 arch=('x86_64')
 url="https://github.com/freebayes/freebayes"
@@ -27,7 +28,7 @@ prepare() {
 build() {
   cd "$pkgname"
   test -d build || mkdir build
-  meson --prefix=/usr --buildtype=release --includedir=/usr/include/vcflib build 
+  meson --prefix=/usr --buildtype=release --includedir=/usr/include/vcflib build
   #marked it because meson.build:9:0: ERROR: Unknown options: "prefer_system_deps"
   #-Dprefer_system_deps=true
   cd build
