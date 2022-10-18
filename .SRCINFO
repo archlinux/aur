@@ -1,7 +1,7 @@
 pkgbase = r-formula
 	pkgdesc = Extended Model Formulas
 	pkgver = 1.2.4
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=Formula
 	arch = any
 	license = GPL
