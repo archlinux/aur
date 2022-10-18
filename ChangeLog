@@ -493,3 +493,15 @@ Fixes:
 - We also fixed the authentication with Outlook for those accounts that don't have an @outlook, @hotmail, or other Microsoft email address.
 - We fixed an issue preventing moving an event across two iCloud calendars on the same account.
 
+
+
+=== Morgen 2.5.18
+Improvement:
+- The maximum "No Later than" option of Scheduling Links has been extended to 4 months.
+- Scheduling Links now load faster.
+ 
+Fixes:
+- We fixed some reported issues with the Team's Availability feature. This feature is still in Beta. Please contact us if you'd like to get early access.
+- Fixed an issue preventing the notes of new tasks created in the calendar to be saved.
+- We fixed the validation of attendees' email addresses. Some domains were not recognized correctly.
+- Fixed a crash happening when removing a calendar account.
