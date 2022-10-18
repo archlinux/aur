@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mkhl/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=('f8495b5ceb18b44dd4c54abf13e05485dacaef0aaba5ca077a1a181ccd56bda6dd54ecb1ab15094ad4dd32eed1c6f415e3e2de8a542947d85ef1779f5666f54d')
+sha512sums=('01eb8a5cb162b5dd109ffa7704a4b6f8c440c537478d8b49e87c91d85019dd195cb441b0115bbe4a18d6d260dfdccd0736495ad3341d0a9eda421483cd5d026b')
 validpgpkeys=()
 
 prepare() {
