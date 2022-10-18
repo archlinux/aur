@@ -2,7 +2,7 @@
 pkgname=rmx-bin
 _bin="rmx"
 pkgver=0.1.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Multiplatform port of GNU rm with extra features and improved performance"
 arch=("x86_64")
 url="https://github.com/demfabris/rmx"

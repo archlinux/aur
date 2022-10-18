@@ -1,7 +1,7 @@
 pkgbase = rmx-bin
 	pkgdesc = Multiplatform port of GNU rm with extra features and improved performance
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/demfabris/rmx
 	arch = x86_64
 	license = Apache
