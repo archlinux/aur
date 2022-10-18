@@ -1,7 +1,7 @@
 pkgbase = r-devtools
 	pkgdesc = Tools to Make Developing R Packages Easier
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=devtools
 	arch = any
 	license = MIT
