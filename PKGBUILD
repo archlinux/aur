@@ -235,3 +235,10 @@ END
 }
 
 # vim:set sw=2 et:
+md5sums=('d74f2d068e97491aa498e7c8ed2f8877'
+         'SKIP'
+         'bb20e95b9d65d59ba39f2f7f1c853c27'
+         '6fcf81de61fa98bccedf1f7b8656d83a'
+         '63ebf05aea29545081dab2cb023e2bba'
+         '10872ca39ebb8844ec753203c55bccc4'
+         '68708a0695494a318f13425f0c608d72')

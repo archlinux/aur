@@ -58,5 +58,12 @@ pkgbase = thunderbird-appmenu
 	source = thunderbird.desktop
 	source = identity-icons-brand.svg
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	md5sums = d74f2d068e97491aa498e7c8ed2f8877
+	md5sums = SKIP
+	md5sums = bb20e95b9d65d59ba39f2f7f1c853c27
+	md5sums = 6fcf81de61fa98bccedf1f7b8656d83a
+	md5sums = 63ebf05aea29545081dab2cb023e2bba
+	md5sums = 10872ca39ebb8844ec753203c55bccc4
+	md5sums = 68708a0695494a318f13425f0c608d72
 
 pkgname = thunderbird-appmenu
