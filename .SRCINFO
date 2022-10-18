@@ -1,0 +1,19 @@
+pkgbase = python-maxvolpy-git
+	pkgdesc = Constructing different low-rank skeleton and cross approximations
+	pkgver = 0.3.8r24.55cf40c
+	pkgrel = 1
+	url = https://bitbucket.org/muxas/maxvolpy
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = git
+	makedepends = python-numpy
+	makedepends = python-pip
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-maxvolpy
+	conflicts = python-maxvolpy
+	source = python-maxvolpy::git+https://bitbucket.org/muxas/maxvolpy.git
+	md5sums = SKIP
+
+pkgname = python-maxvolpy-git

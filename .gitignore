@@ -1,0 +1,6 @@
+# Ignore conventional directories.
+/pkg
+/src
+
+# Ignore bare git directory.
+python-maxvolpy
