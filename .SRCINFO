@@ -1,7 +1,7 @@
 pkgbase = r-bit64
 	pkgdesc = A S3 Class for Vectors of 64bit Integers
 	pkgver = 4.0.5
-	pkgrel = 5
+	pkgrel = 8
 	url = https://cran.r-project.org/package=bit64
 	arch = x86_64
 	license = GPL

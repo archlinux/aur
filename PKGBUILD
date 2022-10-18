@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=bit64
 _pkgver=4.0.5
 pkgname=r-${_pkgname,,}
 pkgver=4.0.5
-pkgrel=5
+pkgrel=8
 pkgdesc='A S3 Class for Vectors of 64bit Integers'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
