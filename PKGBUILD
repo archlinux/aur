@@ -4,8 +4,8 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard
-pkgver=5.20.9
-_pkgver=5_20_9
+pkgver=5.20.13
+_pkgver=5_20_13
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('any')
@@ -14,18 +14,18 @@ license=('custom')
 depends=('java-runtime=8' 'xdg-utils')
 makedepends=('java-environment=8' 'fontconfig' 'freetype2')
 source=(
-    "https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh"
+    "http://www.roomeqwizard.com/installers/REW_linux_no_jre_$_pkgver.sh"
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
 sha512sums=(
-    'f0513c3b6cd0255de132e82df77f820914dbebdd37bdcd6ae5df1451a4c97a3dd1286c33168ee3b76a0ab9335452a3f735f7a4060c85f7e61de8f8b5d7bc8d9a'
+    'f6770915f37d3f930a9c232a48957c3a7dbe841a295fc07b15dab75ae7c5dd9d3ef5086573766504be61424af446aa7338c456451f5bfa5d1aca6eecf7210a9c'
     '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770'
 )
 
 package() {
   export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
 
-  sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"
+  sh REW_linux_no_jre_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"
 
   mkdir -p "$pkgdir/usr/bin" \
            "$pkgdir/usr/share/icons" \
