@@ -1,7 +1,7 @@
 pkgbase = r-proc
 	pkgdesc = Display and Analyze ROC Curves
 	pkgver = 1.18.0
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=pROC
 	arch = x86_64
 	license = GPL
