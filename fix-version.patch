@@ -1,0 +1,15 @@
+diff --git a/readline.lua b/readline.lua
+index 939a054..74f494e 100644
+--- a/readline.lua
++++ b/readline.lua
+@@ -7,8 +7,8 @@
+ ---------------------------------------------------------------------
+ 
+ local M = {} -- public interface
+-M.Version     = '3.1' -- reset OldHistoryLength if histfile gets set
+-M.VersionDate = '20apr2022'
++M.Version     = '3.2' -- fix a memory leak in readline()
++M.VersionDate = '01oct2022'
+ 
+ --[[
+ Alexander Adler suggests adding four Alternate-Interface functions:
