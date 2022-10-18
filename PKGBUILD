@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Navrat <vn158 at seznam dot cz>
 pkgname="trilium-server-bin"
-pkgver=0.54.3
+pkgver=0.55.1
 pkgrel=1
 pkgdesc="A hierarchical note taking application built on modern technologies (server only)."
 depends=('libxss' 'nss')
@@ -10,7 +10,7 @@ license=('AGPL3')
 source=("https://github.com/zadam/trilium/releases/download/v$pkgver/trilium-linux-x64-server-$pkgver.tar.xz" "${pkgname%-bin}")
 OPTIONS=(!strip)
 
-sha512sums=('1b44f74b6f9c3350fc9569b6d7c0663696b60f9bc2c5c91bc34f9d95cca4c203a8da9e5503984fe43696a9a6a720778d600a3c4f2021d0072e66e5597e870c65'
+sha512sums=('32943a4057d58afeaea224ccf88f69240614c2296dc47b5fd0d3dd9a399087ff231da41642491fbf7c0d958b0cf594c3a588034f1903bfc8d5e1b3a8775d2cd4'
             '5137657683b83086e7985c1d75111b78a1760ce02e6cf8e8386477a01758fa511226de98ea4d817a52c8109116f002cdec9994e2eb5baef10fde2eaf2df42fb7')
 
 package()
