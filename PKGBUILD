@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=gh
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=3
 pkgdesc="'GitHub' 'API'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
