@@ -3,18 +3,21 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.3.r21.g350315a5
+pkgver=4.0.3.r24.gf300c02b
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
-makedepends=("cmake" "ninja" "curl" "lsb-release")
+depends=("sdl2" "libpulse" "libpng")
+makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu")
 source=("git+${url}.git"
         "soh.desktop"
         "soh-install-paths.patch"
+        "otrgui-extractor-path.patch"
         "otrgui-wrapper.sh")
 sha256sums=('SKIP'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
-            'bd082ed8579ffb400f5225e200ce96900879837b8f01abc09a41416fa8fdaefa'
+            'e6dc5050b464ce53963ba4acf46addf3ecff5ff578d56f6f94db0c197f094a7c'
+            '099692ec8b8b0929a328a1a6d4a70d2895c11087602995ffd9ef093847c1bb97'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
 SHIP_PREFIX=/opt/soh
@@ -40,6 +43,7 @@ prepare() {
   fi
 
   patch -Np1 -i "${srcdir}/soh-install-paths.patch"
+  patch -Np1 -i "${srcdir}/otrgui-extractor-path.patch"
 }
 
 build() {
@@ -52,7 +56,7 @@ build() {
   cd build
   ninja ZAPD
 
-  ( cd ../OTRExporter; ./extract_assets.py -z ../build/ZAPD/ZAPD.out <<< "1"; )
+  ( cd ../OTRExporter; ./extract_assets.py -z ../build/ZAPD/ZAPD.out --non-interactive; )
   ninja soh
 
   ninja OTRGui
@@ -62,8 +66,8 @@ package_soh-git() {
   pkgdesc="A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch"
   provides=("soh")
   conflicts=("soh")
+  depends=("sdl2" "libpulse")
   license=("unknown")
-  depends=("sdl2")
 
   cd "${srcdir}/${_reponame}"
   cd build
@@ -81,7 +85,7 @@ package_soh-otr-exporter-git() {
   provides=("soh-otr-exporter")
   conflicts=("soh-otr-exporter")
   license=("MIT")
-  depends=("sdl2" "libpng")
+  depends=("libpng")
   optdepends=("zenity: OTRGui file chooser"
               "kdialog: OTRGui file chooser (KDE)")
 

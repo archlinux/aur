@@ -1,8 +1,8 @@
 diff --git a/libultraship/libultraship/CMakeLists.txt b/libultraship/libultraship/CMakeLists.txt
-index c00e6ec2..1684eef4 100644
+index f4090cef..230986da 100644
 --- a/libultraship/libultraship/CMakeLists.txt
 +++ b/libultraship/libultraship/CMakeLists.txt
-@@ -525,6 +525,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
+@@ -541,6 +541,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
  			">"
  			"ENABLE_OPENGL;"
              "SPDLOG_ACTIVE_LEVEL=0;"
@@ -11,7 +11,7 @@ index c00e6ec2..1684eef4 100644
  endif()
  ################################################################################
 diff --git a/libultraship/libultraship/Window.cpp b/libultraship/libultraship/Window.cpp
-index 539ed73c..a20c7ef3 100644
+index d731b797..e4015a4a 100644
 --- a/libultraship/libultraship/Window.cpp
 +++ b/libultraship/libultraship/Window.cpp
 @@ -58,8 +58,8 @@ extern "C" {
@@ -64,22 +64,24 @@ index 539ed73c..a20c7ef3 100644
      void Window::StartFrame() {
          gfx_start_frame();
      }
-@@ -580,7 +600,7 @@ namespace Ship {
+@@ -580,8 +600,8 @@ namespace Ship {
      }
  
-     void Window::InitializeResourceManager() {
--        MainPath = Config->getString("Game.Main Archive", GetPathRelativeToAppDirectory("oot.otr"));
-+        MainPath = Config->getString("Game.Main Archive", GetPathRelativeToAppBaseDirectory("oot.otr"));
-         PatchesPath = Config->getString("Game.Patches Archive", GetAppDirectoryPath() + "/mods");
-         ResMan = std::make_shared<ResourceMgr>(GetInstance(), MainPath, PatchesPath);
- 
+     void Window::InitializeResourceManager(const std::vector<std::string>& OTRFiles, const std::unordered_set<uint32_t>& ValidHashes) {
+-        MainPath = Config->getString("Game.Main Archive", GetAppDirectoryPath());
+-        PatchesPath = Config->getString("Game.Patches Archive", GetAppDirectoryPath() + "/mods");
++        MainPath = Config->getString("Game.Main Archive", GetAppBaseDirectoryPath());
++        PatchesPath = Config->getString("Game.Patches Archive", GetAppBaseDirectoryPath() + "/mods");
+         if (OTRFiles.empty()) {
+             ResMan = std::make_shared<ResourceMgr>(GetInstance(), MainPath, PatchesPath, ValidHashes);
+         } else {
 diff --git a/libultraship/libultraship/Window.h b/libultraship/libultraship/Window.h
-index c989aa39..c9ed624a 100644
+index 490a1e0c..59fda86c 100644
 --- a/libultraship/libultraship/Window.h
 +++ b/libultraship/libultraship/Window.h
-@@ -19,7 +19,9 @@ namespace Ship {
+@@ -20,7 +20,9 @@ namespace Ship {
  			static std::shared_ptr<Window> GetInstance();
- 			static std::shared_ptr<Window> CreateInstance(const std::string Name);
+ 			static std::shared_ptr<Window> CreateInstance(const std::string Name, const std::vector<std::string>& OTRFiles = {}, const std::unordered_set<uint32_t>& ValidHashes = {});
  			static std::string GetAppDirectoryPath();
 +			static std::string GetAppBaseDirectoryPath();
  			static std::string GetPathRelativeToAppDirectory(const char* path);
@@ -87,3 +89,26 @@ index c989aa39..c9ed624a 100644
  
  			Window(std::string Name);
  			~Window();
+diff --git a/soh/soh/OTRGlobals.cpp b/soh/soh/OTRGlobals.cpp
+index 7a5ba86c..dc588c6a 100644
+--- a/soh/soh/OTRGlobals.cpp
++++ b/soh/soh/OTRGlobals.cpp
+@@ -78,15 +78,15 @@ ItemTableManager* ItemTableManager::Instance;
+ 
+ OTRGlobals::OTRGlobals() {
+     std::vector<std::string> OTRFiles;
+-    std::string mqPath = Ship::Window::GetPathRelativeToAppDirectory("oot-mq.otr");
++    std::string mqPath = Ship::Window::GetPathRelativeToAppBaseDirectory("oot-mq.otr");
+     if (std::filesystem::exists(mqPath)) { 
+         OTRFiles.push_back(mqPath);
+     } 
+-    std::string ootPath = Ship::Window::GetPathRelativeToAppDirectory("oot.otr");
++    std::string ootPath = Ship::Window::GetPathRelativeToAppBaseDirectory("oot.otr");
+     if (std::filesystem::exists(ootPath)) {
+         OTRFiles.push_back(ootPath);
+     }
+-    std::string patchesPath = Ship::Window::GetPathRelativeToAppDirectory("mods");
++    std::string patchesPath = Ship::Window::GetPathRelativeToAppBaseDirectory("mods");
+     if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
+         if (std::filesystem::is_directory(patchesPath)) {
+             for (const auto& p : std::filesystem::recursive_directory_iterator(patchesPath)) {
