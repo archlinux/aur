@@ -1,7 +1,7 @@
 pkgbase = r-rdpack
 	pkgdesc = Update and Manipulate Rd Documentation Objects
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=Rdpack
 	arch = any
 	license = GPL
