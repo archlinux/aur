@@ -1,7 +1,7 @@
 pkgbase = r-reshape2
 	pkgdesc = Flexibly Reshape Data: A Reboot of the Reshape Package
 	pkgver = 1.4.4
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=reshape2
 	arch = x86_64
 	license = MIT
