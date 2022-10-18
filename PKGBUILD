@@ -11,7 +11,7 @@
 # PKGBUILD: Nikita Tarasov <nikatar@disroot.org>
 
 _pkgname=thunderbird
-pkgbase=thunderbird
+pkgbase=thunderbird-appmenu
 pkgname=thunderbird-appmenu
 pkgver=102.0.3
 pkgrel=5
@@ -36,7 +36,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         cbindgen-0.24.0.diff arc4random.diff unity-menubar.patch
-        $pkgbase.desktop identity-icons-brand.svg)
+        ${_pkgname}.desktop identity-icons-brand.svg)
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -88,9 +88,9 @@ ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-ac_add_options --with-app-name=$pkgbase
+ac_add_options --with-app-name=${_pkgname}
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=$pkgbase
+export MOZ_APP_REMOTINGNAME=${_pkgname}
 export MOZ_APP_PROFILE="mozilla/thunderbird"
 
 # Keys
@@ -165,7 +165,7 @@ package() {
   cd thunderbird-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  local vendorjs="$pkgdir/usr/lib/$pkgbase/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/${_pkgname}/browser/defaults/preferences/vendor.js"
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
@@ -180,7 +180,7 @@ pref("browser.shell.checkDefaultBrowser", false);
 pref("extensions.autoDisableScopes", 11);
 END
 
-  local distini="$pkgdir/usr/lib/$pkgbase/distribution/distribution.ini"
+  local distini="$pkgdir/usr/lib/${_pkgname}/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
@@ -189,39 +189,39 @@ about=Mozilla Thunderbird for Arch Linux
 
 [Preferences]
 app.distributor=archlinux
-app.distributor.channel=$pkgbase
+app.distributor.channel=${_pkgname}
 app.partner.archlinux=archlinux
 END
 
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgbase.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
   done
   install -Dvm644 browser/branding/$theme/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgbase.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
   install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgbase.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/${_pkgname}.png"
   install -Dvm644 browser/branding/$theme/content/about-logo.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgbase.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
   install -Dvm644 ../identity-icons-brand.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgbase-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname}-symbolic.svg"
 
-  install -Dvm644 ../$pkgbase.desktop \
-    "$pkgdir/usr/share/applications/$pkgbase.desktop"
+  install -Dvm644 ../${_pkgname}.desktop \
+    "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgbase" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/${_pkgname}" <<END
 #!/bin/sh
-exec /usr/lib/$pkgbase/thunderbird "\$@"
+exec /usr/lib/${_pkgname}/thunderbird "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgbase" "$pkgdir/usr/lib/$pkgbase/thunderbird-bin"
+  ln -srfv "$pkgdir/usr/bin/${_pkgname}" "$pkgdir/usr/lib/${_pkgname}/thunderbird-bin"
 
   # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$pkgbase/libnssckbi.so"
+  local nssckbi="$pkgdir/usr/lib/${_pkgname}/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
