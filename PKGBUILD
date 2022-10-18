@@ -5,7 +5,7 @@ major=4.0
 minor=87
 pkgver=${major}.${minor}
 arch=('x86_64')
-pkgrel=2
+pkgrel=3
 pkgdesc='YSOFT SafeQ Printing Software'
 url='https://www.ysoft.com/'
 license=('')
@@ -35,6 +35,7 @@ sha256sums=(
   '35d443eae73d12f926bc9f383f1f642efe0de1d5398efbc923fbabb141326660'
 )
 install="ysoft-client.install"
+backup=(etc/ysoft/safeq-client.ini)
 
 package() {
   cd "${srcdir}"
