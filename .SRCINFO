@@ -1,0 +1,14 @@
+pkgbase = biscuit-kms
+	pkgdesc = simple key-value store for your infrastructure secrets.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/dcoker/biscuit.git
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = gox
+	makedepends = tar
+	source = https://github.com/dcoker/biscuit/releases/download/v0.1.4/biscuit_0.1.4_Linux-64bit.tar.gz
+	sha256sums = a116620ec37548c0204b32dbfd98810a910d01e80b2cc448dac58e4f413161ad
+
+pkgname = biscuit-kms
