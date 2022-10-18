@@ -1,11 +1,12 @@
 # system requirements: git
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=gitcreds
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=0.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Query 'git' Credentials from 'R'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
