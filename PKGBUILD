@@ -2,7 +2,7 @@
 
 pkgname=plex-htpc
 pkgver=1.26.1
-pkgrel=1
+pkgrel=2
 _snapid=81OP06hEXlwmMrpMAhe5hyLy5bQ9q6Kz
 _snaprev=19
 pkgdesc="Plex HTPC application for linux"
@@ -10,7 +10,7 @@ arch=('x86_64')
 url='http://plex.tv'
 license=('unknown')
 makedepends=('squashfs-tools')
-depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'mpv')
+depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'qt5-x11extras' 'mpv' 'ffmpeg4.4')
 optdepends=('qt5-wayland: Wayland support' 'libva: GPU accelerated decoding')
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap" "qt.conf")
 sha256sums=('823e1dc29ca44b46ba2559fa33657740c97de5af668046c37850baa98c46131f'
