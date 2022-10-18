@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmixmod
-_pkgver=2.1.6
+_pkgver=2.1.7
 pkgname=r-${_pkgname,,}
-pkgver=2.1.6
-pkgrel=4
+pkgver=2.1.7
+pkgrel=1
 pkgdesc='Classification with Mixture Modelling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
   make
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('daa8e00d0ebf6ec11af327518bda1cdc043c6568c45b5f607b4c6b3999c7376f')
+sha256sums=('f84f00b233fe5a34b2efeeb319c508b63c2f8d9d2ff332531e2c9c9c20001a25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
