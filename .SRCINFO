@@ -1,7 +1,7 @@
 pkgbase = r-vroom
 	pkgdesc = Read and Write Rectangular Text Data Quickly
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=vroom
 	arch = x86_64
 	license = MIT
