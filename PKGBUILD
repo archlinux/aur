@@ -1,13 +1,14 @@
 _pkgname=gourou
 pkgname="${_pkgname}-git"
 pkgver=r100.6e3958f
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (git version)"
 arch=('any')
 license=('LGPL3')
 url="https://indefero.soutade.fr/p/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
 conflicts=(gourou gourou-bin)
+provides=(libgourou)
 options=(strip)
 source=("git://soutade.fr/libgourou.git" "git://soutade.fr/updfparser.git" "ssl.patch" "build.patch")
 sha512sums=('SKIP'
