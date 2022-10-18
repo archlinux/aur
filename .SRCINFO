@@ -1,6 +1,6 @@
 pkgbase = python-gql
 	pkgdesc = Python GraphQL client
-	pkgver = 3.1.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/graphql-python/gql
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-gql
 	depends = python-requests
 	depends = python-websockets
 	depends = python-yarl
-	source = python-gql-3.1.0.tar.gz::https://github.com/graphql-python/gql/archive/v3.1.0.tar.gz
-	sha256sums = d7124b80060f3c363f040ab05fff624d3948d6f99a2e012c2ae440180897a343
+	source = python-gql-3.4.0.tar.gz::https://github.com/graphql-python/gql/archive/v3.4.0.tar.gz
+	sha256sums = 311d77282dd78e7a8b6f7519c7513f2375c0b938b40588d41443745e59260ba5
 
 pkgname = python-gql
