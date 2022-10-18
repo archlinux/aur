@@ -1,3 +1,14 @@
+* Tue Oct 18 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.9.0-1
+  PeaZip 8.9.0 release completes the progress towards the upcoming 9.x line, with many
+  updates both for the UI and under the hood.
+  Amongst the many improvements, a progress bar is now visible when opening archives,
+  and theming engine was updated to make the application easier to integrate with
+  different desktop environments.
+  The archive creation / extraction menu was revamped to make easier to add bookmarked
+  or previously visited files and folders, and a new "Add to separate archives" entry
+  is available in app's context menu.
+  Updated backends: Pea 1.10.
+
 * Mon Sep 26 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.8.0-1
   PeaZip 8.8.0 release completes the evolution of the GUI started in previous releases,
   providing more customization options to better integrate the application in different
@@ -33,20 +44,3 @@
   This release improves scripting, usage of layouts (files defining advanced inclusion and
   exclusion filters, and optionally input list), and updates compression settings.
   Updated backends: 7z 21.07, Pea 1.06, and Zstd 1.5.2.
-
-* Thu Dec 16 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.4.0-1
-  PeaZip 8.4.0 is the first release providing experimental native packages for Darwin/macOS
-  platform, built for aarch64 M1 Apple Silicon SoC, and Intel x86_64.
-  This release brings fixes, improvements in management of temporary files, option to stop
-  test batches only if errors are detected, and new language selection control.
-  A new alternative benchmark is available, based on integer and floating point arithmetic,
-  testing single core and multi core performances.
-  PeaZip now comes with updated backends: Pea 1.05, and 7z 21.06, which are now employed on
-  all platforms.
-  On Linux, 7z backend replaces p7zip, which is still fully supported as alternative.
-  New peazip-x.y.z.pack package is meant to help developers to create packages of PeaZip
-  for various package management systems (e.g. DEB, RPM), containing packages' directories
-  from last build.
-  It does not replaces or duplicates the function of sources package peazip-x.y.z.src, as
-  it is simply meant to help packaging the application for a specific distribution system,
-  rather than compiling and building the binaries of the application.
