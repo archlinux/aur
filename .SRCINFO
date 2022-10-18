@@ -1,6 +1,6 @@
 pkgbase = r-lowmaca
 	pkgdesc = LowMACA - Low frequency Mutation Analysis via Consensus Alignment
-	pkgver = 1.26.1
+	pkgver = 1.26.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LowMACA
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-lowmaca
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LowMACA_1.26.1.tar.gz
-	sha256sums = eebc77f0151ceb9dcb07f9918e0e73da824f807876f925ac3f0c850bf1bf17c2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LowMACA_1.26.2.tar.gz
+	sha256sums = a19495a3847ca2eb680576a71fd77a039385baab2eb659e241c644ee1f3ddd46
 
 pkgname = r-lowmaca
