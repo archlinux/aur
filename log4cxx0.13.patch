@@ -1,17 +1,17 @@
-From c9d161a6d946590bf808eb6006430c8c8d8b5cd6 Mon Sep 17 00:00:00 2001
-From: Achmad Fathoni <fathoni.id@gmail.com>
-Date: Sun, 15 Aug 2021 19:48:13 +0700
-Subject: [PATCH] Fix for log4cxx 0.12.0
+From 338da6f966ef35454672730702203c54dddea027 Mon Sep 17 00:00:00 2001
+From: readlnh <readlnh@163.com>
+Date: Tue, 18 Oct 2022 19:24:36 +0200
+Subject: [PATCH] fix build with log4cxx 0.13
 
 ---
  src/rosconsole/impl/rosconsole_log4cxx.cpp | 17 ++++++++++-------
  1 file changed, 10 insertions(+), 7 deletions(-)
 
 diff --git a/src/rosconsole/impl/rosconsole_log4cxx.cpp b/src/rosconsole/impl/rosconsole_log4cxx.cpp
-index 90183126..1d6f667b 100644
+index 90183126..ce122b1f 100644
 --- a/src/rosconsole/impl/rosconsole_log4cxx.cpp
 +++ b/src/rosconsole/impl/rosconsole_log4cxx.cpp
-@@ -127,6 +127,8 @@ class ROSConsoleStdioAppender : public log4cxx::AppenderSkeleton
+@@ -127,6 +127,8 @@ protected:
    }
  };
  
@@ -29,6 +29,15 @@ index 90183126..1d6f667b 100644
  #ifdef _MSC_VER
    if ( ros_root_cstr != NULL ) {
  	  free(ros_root_cstr);
+@@ -184,7 +186,7 @@ void print(void* handle, ::ros::console::Level level, const char* str, const cha
+   log4cxx::Logger* logger  = (log4cxx::Logger*)handle;
+   try
+   {
+-    logger->forcedLog(g_level_lookup[level], str, log4cxx::spi::LocationInfo(file, function, line));
++    logger->forcedLog(g_level_lookup[level], str, log4cxx::spi::LocationInfo(file, log4cxx::spi::LocationInfo::calcShortFileName(file), function, line));
+   }
+   catch (std::exception& e)
+   {
 @@ -200,7 +202,7 @@ bool isEnabledFor(void* handle, ::ros::console::Level level)
  
  void* getHandle(const std::string& name)
@@ -43,11 +52,11 @@ index 90183126..1d6f667b 100644
  bool get_loggers(std::map<std::string, levels::Level>& loggers)
  {
 -  log4cxx::spi::LoggerRepositoryPtr repo = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME)->getLoggerRepository();
-+  log4cxx::spi::LoggerRepositoryPtr repo = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME)->getLoggerRepository().lock();
++  log4cxx::spi::LoggerRepository *repo = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME)->getLoggerRepository() ;
  
    log4cxx::LoggerList current_loggers = repo->getCurrentLoggers();
    log4cxx::LoggerList::iterator it = current_loggers.begin();
-@@ -352,20 +354,21 @@ class Log4cxxAppender : public log4cxx::AppenderSkeleton
+@@ -352,20 +354,21 @@ protected:
    ros::console::LogAppender* appender_;
  };
  
@@ -80,12 +89,6 @@ index 90183126..1d6f667b 100644
      g_log4cxx_appender = 0;
    }
    // reset this so that the logger doesn't get crashily destroyed
-@@ -383,7 +386,7 @@ void shutdown()
-   //
-   // See https://code.ros.org/trac/ros/ticket/3271
-   //
--  log4cxx::Logger::getRootLogger()->getLoggerRepository()->shutdown();
-+  log4cxx::Logger::getRootLogger()->getLoggerRepository().lock()->shutdown();
- }
- 
- } // namespace impl
+-- 
+2.38.0
+

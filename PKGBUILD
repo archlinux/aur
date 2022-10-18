@@ -41,13 +41,12 @@ depends=(
 
 _dir="rosconsole-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz"
-  "log4cxx012.patch")
+  "log4cxx0.13.patch")
 sha256sums=('234d83dfddcf864e5d223eaedd58e1505ad0d2707ea4ff497b69c4f28501f179'
-  'bc220c8d62f9c0c9cea378908ecae195d4bad1a1993a8de0fae370989ff2445d')
-
+  'fd9fb611f66f99285da67ef027bac04e9691a404016957b64b32dc79111deef1')
 prepare() {
   cd "${srcdir}/$_dir"
-  patch -p1 --input="${srcdir}/log4cxx012.patch"
+  patch -p1 --input="${srcdir}/log4cxx0.13.patch"
 }
 
 build() {
