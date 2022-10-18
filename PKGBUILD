@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=prodlim
 _pkgver=2019.11.13
 pkgname=r-${_pkgname,,}
 pkgver=2019.11.13
-pkgrel=4
+pkgrel=7
 pkgdesc='Product-Limit Estimation for Censored Event History Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
