@@ -6,11 +6,11 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-git
-pkgver=1.4.0.r365.gafaef4e8
+pkgver=1.4.0.r381.g3405fd91
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/PlaceholderMC/PlaceholderMC"
+url="https://github.com/PrismLauncher/PrismLauncher"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
 provides=('polymc')
@@ -22,18 +22,18 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 options=(debug)
-source=("PlaceholderMC::git+https://github.com/PlaceholderMC/PrismLauncher.git"
-        "libnbtplusplus::git+https://github.com/PlaceholderMC/libnbtplusplus.git")
+source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
+        "git+https://github.com/PrismLauncher/libnbtplusplus.git")
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "PlaceholderMC"
+  cd "PrismLauncher"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "PlaceholderMC"
+  cd "PrismLauncher"
   git submodule init
   git config submodule.depends/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
@@ -48,7 +48,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR="6" \
-    -Bbuild -SPlaceholderMC
+    -Bbuild -SPrismLauncher
   cmake --build build
 }
 
