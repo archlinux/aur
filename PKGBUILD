@@ -12,13 +12,13 @@ provides=('mailtm')
 conflicts=('mailtm')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.2.0/mailtm_0.2.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('ea54470e6dc1cac8bece8c9da34a5f8f241aee7fd7ec7807b1e1e382eff43dfa')
+sha256sums_aarch64=('bc48e9e7d5cfbe2146cd0f22a703834018f6c3f2f9065c7847c4170a0cd322b6')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.2.0/mailtm_0.2.0_Linux_i386.tar.gz")
-sha256sums_i686=('b367f49d29c7722d96a714d0afec91b266af25e21f655449c11e1970a40792cd')
+sha256sums_i686=('87558b646d75b2ddf3932e06e8143ece1b88d00b1803a53c9b8b1681478376c5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.2.0/mailtm_0.2.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1eba7c09c14c4562a8e78ad639c1c9dfeaea7f353e515fbe057b32301ab5d9d1')
+sha256sums_x86_64=('810fbe77a427854462fe84017fa2a12280c8ef171150dc81506324626d7dfadd')
 
 package() {
   install -Dm755 "./mailtm" "${pkgdir}/usr/bin/mailtm"
