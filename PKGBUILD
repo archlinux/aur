@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=listenv
 _pkgver=0.8.0
 pkgname=r-${_pkgname,,}
 pkgver=0.8.0
-pkgrel=4
+pkgrel=10
 pkgdesc='Environments Behaving (Almost) as Lists'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

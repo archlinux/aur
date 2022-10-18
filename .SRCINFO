@@ -1,7 +1,7 @@
 pkgbase = r-listenv
 	pkgdesc = Environments Behaving (Almost) as Lists
 	pkgver = 0.8.0
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=listenv
 	arch = any
 	license = LGPL
