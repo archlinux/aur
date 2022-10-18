@@ -1,7 +1,7 @@
 pkgbase = r-sessioninfo
 	pkgdesc = R Session Information
 	pkgver = 1.2.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=sessioninfo
 	arch = any
 	license = GPL
