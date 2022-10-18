@@ -26,5 +26,6 @@ pkgver() {
 package() {
     cd "$srcdir/$_pkgname"
     install -D -m755 font-size "$pkgdir/usr/lib/urxvt/perl/font-size"
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -D -m644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README.markdown"
 }
