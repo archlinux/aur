@@ -1,0 +1,13 @@
+diff --git a/index.py b/index.py
+index e88e343..e515ba3 100644
+--- a/index.py
++++ b/index.py
+@@ -143,7 +143,7 @@ class NewLeaf(object):
+ 
+ bind_port = getattr(configuration, "bind_port", 3000)
+ bind_host = getattr(configuration, "bind_host", "0.0.0.0")
+-server_root = pathlib.Path(__file__).parent.joinpath("root")
++server_root = pathlib.Path("/var/lib/newleaf")
+ 
+ cherrypy.config.update({"server.socket_port": bind_port, "server.socket_host": bind_host})
+ cherrypy.quickstart(NewLeaf(), "/", {

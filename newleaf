@@ -1,2 +1,2 @@
 #!/bin/sh
-PYTHONPATH=/opt/newleaf:$PYTHONPATH python /opt/newleaf/index.py
+PYTHONPATH=/etc/newleaf:$PYTHONPATH python -m newleaf

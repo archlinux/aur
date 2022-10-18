@@ -1,0 +1,13 @@
+[project]
+name = "newleaf"
+version = "0.0.1"
+dependencies = [
+    "cherrypy",
+    "yt-dlp",
+    "cachetools",
+    "dateutil",
+    "requests"
+]
+
+[tool.setuptools.packages]
+find = {}

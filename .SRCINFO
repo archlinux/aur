@@ -1,7 +1,7 @@
 pkgbase = newleaf
 	pkgdesc = A YouTube data extractor, compatible with the Invidious API.
 	pkgver = r119.714f103
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~cadence/tube/
 	install = post.install
 	arch = x86_64
@@ -17,7 +17,17 @@ pkgbase = newleaf
 	conflicts = newleaf
 	source = git+https://git.sr.ht/~cadence/NewLeaf
 	source = newleaf
+	source = newleaf.conf
+	source = newleaf.service
+	source = newleaf.socket
+	source = pyproject.toml
+	source = change-web-root-path.patch
 	sha256sums = SKIP
-	sha256sums = 0d36db5aa76a2ba406a3e68c52739af4bd2931fa1842c9455a89dbda9df22b8e
+	sha256sums = 1113c3c65adafdb40257babf3d6f50f8368aa5122c25ee291b5ddb27d5ecbb30
+	sha256sums = f43ba9354ac49b9847daa2bbc7cffca0b3a8c381e3b34a0c48f8936a072465df
+	sha256sums = e8d49375fe484781df9b06fc6c00641200b2589c34c3dd9a72ad6c263ed21520
+	sha256sums = 2fe8f20bec277f81efcf4c62f18bbf4ccf0109663910819acad5bbff8ee0cf5c
+	sha256sums = 631c87c67fd46e56aedd6564bae7f1324f016b78dbfbda7b71d08e4683609bee
+	sha256sums = 2bc6fec3e63625f72397d16aafef1eb5dbf4c3472f7e9acee28f50486550680e
 
 pkgname = newleaf
