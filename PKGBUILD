@@ -1,7 +1,10 @@
 # Maintainer: Christophe Noisel <cnoisel at proton.me>
 
 pkgname=sviesolutions-via-bin
-pkgver=2022.10.1379.557
+# no versioning available
+# use info from the download headers
+# curl -vI 'https://via.sviesolutions.com/Application/Via/Via.tar.gz' 2>&1 >>/dev/null | grep 'Last-Modified'
+pkgver=20220929
 pkgrel=1
 pkgdesc='SVI eSolutions video conferencing application'
 arch=('x86_64')
