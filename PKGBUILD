@@ -1,8 +1,8 @@
 # Contributor: John Regan <john@jrjrtech.com>
 pkgname=perl-io-prompter
 pkgver=0.004015
-pkgrel=1
-pkgdesc='IO::Prompter'
+pkgrel=2
+pkgdesc='IO::Promter - Prompt for input, read it, clean it, return it.'
 _dist=IO-Prompter
 arch=('any')
 url="https://metacpan.org/release/$_dist"

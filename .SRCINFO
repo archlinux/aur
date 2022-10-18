@@ -1,7 +1,7 @@
 pkgbase = perl-io-prompter
-	pkgdesc = IO::Prompter
+	pkgdesc = IO::Promter - Prompt for input, read it, clean it, return it.
 	pkgver = 0.004015
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/IO-Prompter
 	arch = any
 	license = GPL
