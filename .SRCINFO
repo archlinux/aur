@@ -9,7 +9,6 @@ pkgbase = vapoursynth-plugin-dfttest2-cpu-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gcc11
-	makedepends = unzip
 	depends = vapoursynth
 	provides = vapoursynth-plugin-dfttest2-cpu
 	conflicts = vapoursynth-plugin-dfttest2
