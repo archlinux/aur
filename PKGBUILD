@@ -1,6 +1,6 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.6.1
+pkgver=10.6.2
 pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
@@ -24,9 +24,9 @@ md5sums=('c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
 
 if test "$CARCH" == x86_64; then
-    md5sums+=('05758f135c0a6446652fdfd6b884098e')
+    md5sums+=('0c96629e68104d654dd03ca182bbc6d2')
 elif test "$CARCH" == aarch64; then
-    md5sums+=('d7209721a4f4993fb9f0a995c10292a8')
+    md5sums+=('a1a2aeb4447433a487b2d62c136e77e7')
 fi
 
 package() {
