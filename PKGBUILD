@@ -1,13 +1,13 @@
-# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
-# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-git
-pkgver=1.4.0.r348.gc089f9b5
-pkgrel=2
+pkgver=1.4.0.r365.gafaef4e8
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PlaceholderMC/PlaceholderMC"
@@ -22,9 +22,8 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 options=(debug)
-source=("git+https://github.com/PlaceholderMC/PlaceholderMC"
-        "git+https://github.com/PlaceholderMC/libnbtplusplus")
-
+source=("PlaceholderMC::git+https://github.com/PlaceholderMC/PrismLauncher.git"
+        "libnbtplusplus::git+https://github.com/PlaceholderMC/libnbtplusplus.git")
 sha256sums=('SKIP'
             'SKIP')
 
