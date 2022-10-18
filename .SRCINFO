@@ -1,7 +1,7 @@
 pkgbase = r-miniui
 	pkgdesc = Shiny UI Widgets for Small Screens
 	pkgver = 0.1.1.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=miniUI
 	arch = any
 	license = GPL
