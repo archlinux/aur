@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
-
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 _pkgname=fields
 _pkgver=14.1
 pkgname=r-${_pkgname,,}
 pkgver=14.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Tools for Spatial Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

@@ -1,7 +1,7 @@
 pkgbase = r-fields
 	pkgdesc = Tools for Spatial Data
 	pkgver = 14.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=fields
 	arch = x86_64
 	license = GPL
