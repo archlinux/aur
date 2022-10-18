@@ -1,10 +1,12 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=xmlparsedata
 _pkgver=1.0.5
 pkgname=r-${_pkgname,,}
 pkgver=1.0.5
-pkgrel=4
+pkgrel=6
 pkgdesc='R code parse data as an XML tree'
 arch=('any')
 url='https://github.com/r-lib/xmlparsedata'
