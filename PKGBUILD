@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="cyberchef-web"
-pkgver=9.37.0
+pkgver=9.48.0
 pkgrel=1
 pkgdesc="The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis"
 url="https://gchq.github.io/CyberChef/"
@@ -12,7 +12,7 @@ replaces=("cyberchef-html")
 makedepends=("unzip")
 source=("$pkgname-$pkgver.zip::https://github.com/gchq/CyberChef/releases/download/v$pkgver/CyberChef_v$pkgver.zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('cdf6e55880b53171e765d14331c23f7c3328b3037d20dc0459e37436e175e303')
+sha256sums=('ce99537f5850904e6cd431bf48ef71896c9de69a12be1572f2f0582ad1e06504')
 options=("!strip")
 
 package(){
