@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=misc3d
 _pkgver=0.9-1
 pkgname=r-${_pkgname,,}
 pkgver=0.9.1
-pkgrel=3
+pkgrel=9
 pkgdesc='Miscellaneous 3D Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

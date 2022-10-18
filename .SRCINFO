@@ -1,7 +1,7 @@
 pkgbase = r-misc3d
 	pkgdesc = Miscellaneous 3D Plots
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 9
 	url = https://cran.r-project.org/package=misc3d
 	arch = any
 	license = GPL
