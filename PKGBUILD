@@ -1,11 +1,13 @@
 # system requirements: C++11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=DescTools
 _pkgver=0.99.46
 pkgname=r-${_pkgname,,}
 pkgver=0.99.46
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Descriptive Statistics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
