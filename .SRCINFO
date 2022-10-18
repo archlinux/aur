@@ -1,6 +1,6 @@
 pkgbase = wxparaver
 	pkgdesc = Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).
-	pkgver = 4.10.4.20220914
+	pkgver = 4.10.5.20221018
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = wxparaver
 	depends = boost
 	depends = libxml2
 	depends = zlib
-	source = https://ftp.tools.bsc.es/wxparaver/wxparaver-4.10.4-src.tar.bz2
+	source = https://ftp.tools.bsc.es/wxparaver/wxparaver-4.10.5-src.tar.bz2
 	source = wxParaver.desktop
-	sha512sums = 9a53c6a85089b4d060f08b873504e59082c0e6c8c7ca39dcae6686eedae1c65bccb34f23e859884aee24d55081daf07784e3219bf6f316c5ef7bdf06bc4f66d6
+	sha512sums = e33031c80a3b3a8e4ee6ae8839f3c0225f81f34f3aae48e7d1e35c66b62fce0e59045f4814dce7e20391925c5b9157666f15bc69b5f6b4ff2d9ff92fd52ddda1
 	sha512sums = f1b000ea660765bbd454d9ae54d360233389121e54f8bcab241420b42aefa4f679735500efd43afdcd932f3a7bd339f00ff299f755a62163c1c3e34bd6920f6e
 
 pkgname = wxparaver
