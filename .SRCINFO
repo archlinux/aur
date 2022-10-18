@@ -1,5 +1,5 @@
 pkgbase = perl-contextual-return
-	pkgdesc = Contextual::Return
+	pkgdesc = Contextual::Return - Create context-sensitive return values
 	pkgver = 0.004014
 	pkgrel = 1
 	url = https://metacpan.org/release/Contextual-Return

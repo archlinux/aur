@@ -2,7 +2,7 @@
 pkgname=perl-contextual-return
 pkgver=0.004014
 pkgrel=1
-pkgdesc='Contextual::Return'
+pkgdesc='Contextual::Return - Create context-sensitive return values'
 _dist=Contextual-Return
 arch=('any')
 url="https://metacpan.org/release/$_dist"
