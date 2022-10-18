@@ -1,0 +1,19 @@
+pkgbase = perl-test-http-localserver
+	pkgdesc = Test::HTTP::LocalServer - spawn a local HTTP server for testing
+	pkgver = 0.74
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-HTTP-LocalServer
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-http-message
+	depends = perl-cgi
+	depends = perl-http-request-ascgi
+	depends = perl-http-daemon
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/Test-HTTP-LocalServer-0.74.tar.gz
+	md5sums = 602f834ef266181244a39f73b37ca69a
+
+pkgname = perl-test-http-localserver
