@@ -1,7 +1,7 @@
 pkgbase = r-r.oo
 	pkgdesc = R Object-Oriented Programming with or without References
 	pkgver = 1.25.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=R.oo
 	arch = any
 	license = LGPL
