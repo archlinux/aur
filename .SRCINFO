@@ -1,7 +1,7 @@
 pkgbase = r-covr
 	pkgdesc = Test Coverage for Packages
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=covr
 	arch = x86_64
 	license = GPL
