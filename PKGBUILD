@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-nvidia
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -36,7 +36,7 @@ build() {
     -DHIP_COMMON_DIR="$srcdir/$_dirhip" \
     -DHIP_PLATFORM=nvidia \
     -DCMAKE_INSTALL_PREFIX=/opt/rocm
-  cmake --build
+  cmake --build build
 }
 
 package() {

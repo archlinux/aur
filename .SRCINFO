@@ -1,7 +1,7 @@
 pkgbase = hip-runtime-nvidia
 	pkgdesc = Heterogeneous Interface for Portability ROCm
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
 	license = MIT
