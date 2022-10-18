@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=sandwich
 _pkgver=3.0-2
 pkgname=r-${_pkgname,,}
 pkgver=3.0.2
-pkgrel=1
+pkgrel=4
 pkgdesc='Robust Covariance Matrix Estimators'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
