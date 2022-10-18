@@ -1,10 +1,13 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=ipred
 _pkgver=0.9-13
 pkgname=r-${_pkgname,,}
 pkgver=0.9.13
-pkgrel=1
+pkgrel=4
 pkgdesc='Improved Predictors'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

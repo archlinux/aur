@@ -1,7 +1,7 @@
 pkgbase = r-ipred
 	pkgdesc = Improved Predictors
 	pkgver = 0.9.13
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=ipred
 	arch = x86_64
 	license = GPL
