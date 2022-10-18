@@ -1,7 +1,7 @@
 pkgbase = r-rex
 	pkgdesc = Friendly Regular Expressions
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=rex
 	arch = any
 	license = MIT
