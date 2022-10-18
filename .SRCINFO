@@ -1,24 +1,13 @@
 pkgbase = python-blkinfo
 	pkgdesc = A python library to list information about all available or the specified block devices
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/grinrag/blkinfo
 	arch = any
 	license = GPL3
 	depends = python
-	depends = python2
 	depends = util-linux
-	source = https://files.pythonhosted.org/packages/source/b/blkinfo/blkinfo-0.1.2.tar.gz
-	source = blkinfo-0.1.2.tar.gz.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = 1fc84964e5b253dd2c179769499af996a622bd3f8a3ef5acce894c2f538597521f7f8f522dc2b1e69909bfc632f786714efe81eb9d7727442dc14ea67375b528
-	sha512sums = SKIP
+	source = python-blkinfo::git+https://github.com/genalt/blkinfo#tag=0.2.0
+	sha256sums = SKIP
 
 pkgname = python-blkinfo
-	depends = python
-	depends = util-linux
-
-pkgname = python2-blkinfo
-	depends = python2
-	depends = util-linux
-
