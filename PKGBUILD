@@ -2,7 +2,7 @@
 # Maintainer: Michael Lass <bevan@bi-co.net>
 
 pkgname=sslyze
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-pip')
 source=("https://github.com/nabla-c0d3/sslyze/archive/${pkgver}.tar.gz"
         "sslyze")
-sha256sums=('563a19800d2e11942db97f5f79f03ab2ea7bd7eb723ad11d0fd06405e3ca0db9'
+sha256sums=('65d9b0304edba2e7eb324565a3b176de0fbca8a86d1e4b0b75c71ac27293f85b'
             '042db33726a889a64910121f2098e10e6a5ebf4a102a54d09d9a27ed363a8e5d')
 
 package() {
