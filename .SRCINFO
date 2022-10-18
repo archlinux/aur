@@ -1,7 +1,7 @@
 pkgbase = r-emt
 	pkgdesc = Exact Multinomial Test: Goodness-of-Fit Test for Discrete Multivariate Data
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=EMT
 	arch = any
 	license = GPL
