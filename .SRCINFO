@@ -1,7 +1,7 @@
 pkgbase = r-tkrplot
 	pkgdesc = TK Rplot
 	pkgver = 0.0.26
-	pkgrel = 3
+	pkgrel = 8
 	url = https://cran.r-project.org/package=tkrplot
 	arch = x86_64
 	license = GPL

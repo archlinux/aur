@@ -1,11 +1,12 @@
 # system requirements: Windows or X11
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=tkrplot
 _pkgver=0.0-26
 pkgname=r-${_pkgname,,}
 pkgver=0.0.26
-pkgrel=3
+pkgrel=8
 pkgdesc='TK Rplot'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
