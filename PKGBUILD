@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=topgrade-git
-pkgver=9.0.1.r1084.8dd4559
-pkgrel=2
+pkgver=9.1.0.r1129.4192db1
+pkgrel=1
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
 url=https://github.com/topgrade-rs/topgrade
@@ -20,13 +20,9 @@ pkgver() {
   printf %s.r%s.%s $(grep ^version Cargo.toml|cut -d\" -f2) $(git rev-list --count HEAD) $(git describe --always)
 }
 
-prepare() {
-  cd ${pkgname%-git}
-  [[ -d target/release ]] || mkdir -p target/release
-}
-
 build() {
   cd ${pkgname%-git}
+  export CARGO_TARGET_DIR=target
   cargo build --release 
 }
 
