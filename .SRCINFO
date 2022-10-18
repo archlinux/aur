@@ -1,7 +1,7 @@
-pkgbase = rp-bookshelf
+pkgbase = rp-bookshelf-git
 	pkgdesc = Browser for Raspberry Pi Press publications in PDF format
 	pkgver = r121.a1ce47b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi-ui/bookshelf
 	arch = x86_64
 	license = BSD
@@ -13,9 +13,10 @@ pkgbase = rp-bookshelf
 	depends = libcurl-gnutls
 	provides = rp-bookshelf
 	conflicts = rp-bookshelf
+	conflicts = rp-bookshelf-git
 	source = git+https://github.com/raspberrypi-ui/bookshelf.git
 	source = 0001-removed-repetitive-macro.patch
 	sha256sums = SKIP
 	sha256sums = 6f0389387e40641044d20c8d8dca9d8bec9f00dae180ef1754126adc732ae9f9
 
-pkgname = rp-bookshelf
+pkgname = rp-bookshelf-git

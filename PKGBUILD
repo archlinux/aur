@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
-pkgname=rp-bookshelf
+pkgname=rp-bookshelf-git
 pkgver=r121.a1ce47b
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser for Raspberry Pi Press publications in PDF format"
 arch=('x86_64')
 url="https://github.com/raspberrypi-ui/bookshelf"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('glib2' 'gtk3>=3.24' 'libx11' 'intltool' 'libcurl-gnutls')
 makedepends=('git')
 provides=("rp-bookshelf")
-conflicts=("rp-bookshelf")
+conflicts=("rp-bookshelf" "rp-bookshelf-git")
 source=('git+https://github.com/raspberrypi-ui/bookshelf.git'
 		'0001-removed-repetitive-macro.patch')
 sha256sums=('SKIP'
