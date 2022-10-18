@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=lmodel2
 _pkgver=1.7-3
 pkgname=r-${_pkgname,,}
 pkgver=1.7.3
-pkgrel=4
+pkgrel=9
 pkgdesc='Model II Regression'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

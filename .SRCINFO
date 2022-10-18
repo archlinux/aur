@@ -1,7 +1,7 @@
 pkgbase = r-lmodel2
 	pkgdesc = Model II Regression
 	pkgver = 1.7.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=lmodel2
 	arch = any
 	license = GPL
