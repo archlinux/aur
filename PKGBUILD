@@ -1,11 +1,13 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Contibutor: Peter Jung <admin@ptr1337.dev>
+# Contributor: vnepogodin
 # Contributor: torvic9 AT mailbox DOT org
 # Contributor: lsf
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=105.0.3
-pkgrel=3
+pkgver=106.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -39,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
         "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('f2fa1e03aecdd4dca0bcda94fd228d3a9ef3635862a2c140f8982d32ae7761e7'
+sha256sums=('1546ebfd9d5a814f17479ed626519ed69aa3c89c22c7fb1fe5c84e4d7e5d7e18'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -97,7 +99,7 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 ac_add_options --disable-bootstrap
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 ac_add_options --enable-hardening
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --enable-release
 ac_add_options --enable-rust-simd
 ac_add_options --prefix=/usr
