@@ -1,7 +1,7 @@
 pkgbase = r-htmlwidgets
 	pkgdesc = HTML Widgets for R
 	pkgver = 1.5.4
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=htmlwidgets
 	arch = any
 	license = MIT
