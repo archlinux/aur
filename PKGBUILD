@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=crankshaft
 _app_id="space.$pkgname.Crankshaft"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A Steam client plugin manager and framework."
 arch=('x86_64')
 url="https://crankshaft.space"
 license=('GPL3')
-depends=('libappindicator-gtk3' 'python-jsbeautifier' 'steam')
+depends=('libappindicator-gtk3' 'python-jsbeautifier' 'steam' 'xdg-utils')
 makedepends=('git' 'go' 'setconf' 'yarn')
 checkdepends=('appstream-glib' 'desktop-file-utils')
-_commit=646a9f2908bee629d3a3f78243010834ac69cd10
+_commit=e8e69525d9a649fbd1759ee727f7a3baf33012da  #tags/0.2.5^0
 source=("git+https://git.sr.ht/~avery/crankshaft#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   export GOPATH="$srcdir/gopath"
-  go mod tidy
+  go mod download -x
 
   pushd injected
   yarn config set cache-folder "$srcdir/yarn-cache"
@@ -30,9 +30,13 @@ prepare() {
   popd
 
   mkdir -p rpc/inject/scripts
+  mkdir -p build
 
   setconf "autostart/$pkgname.service" ExecStart "$pkgname"
   setconf "autostart/$pkgname.service" ExecStopPost "$pkgname -cleanup"
+
+  # Don't display title in system tray
+  sed -i '/systray.SetTitle/d' tray/tray.go
 }
 
 build() {
@@ -44,7 +48,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go run -v cmd/bundle-scripts/main.go
   cp .build/* rpc/inject/scripts
-  go build -v -o ".dist/$pkgname" "cmd/$pkgname/$pkgname.go"
+  go build -v -o build ./cmd/...
 
   # Clean module cache for makepkg -C
   go clean -modcache
@@ -58,7 +62,7 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 ".dist/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "desktop/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "desktop/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "autostart/$pkgname.service" -t "$pkgdir/usr/lib/systemd/user/"

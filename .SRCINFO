@@ -1,6 +1,6 @@
 pkgbase = crankshaft
 	pkgdesc = A Steam client plugin manager and framework.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://crankshaft.space
 	arch = x86_64
@@ -14,7 +14,8 @@ pkgbase = crankshaft
 	depends = libappindicator-gtk3
 	depends = python-jsbeautifier
 	depends = steam
-	source = git+https://git.sr.ht/~avery/crankshaft#commit=646a9f2908bee629d3a3f78243010834ac69cd10
+	depends = xdg-utils
+	source = git+https://git.sr.ht/~avery/crankshaft#commit=e8e69525d9a649fbd1759ee727f7a3baf33012da
 	sha256sums = SKIP
 
 pkgname = crankshaft
