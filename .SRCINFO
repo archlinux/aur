@@ -1,7 +1,7 @@
 pkgbase = r-gdtools
 	pkgdesc = Utilities for Graphical Rendering
 	pkgver = 0.2.4
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=gdtools
 	arch = x86_64
 	license = GPL
