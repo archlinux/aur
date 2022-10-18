@@ -1,0 +1,25 @@
+pkgbase = prismlauncher-qt5-bin
+	pkgdesc = Minecraft launcher with ability to manage multiple instances.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/PlaceholderMC/PlaceholderMC
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = java-runtime=8: support for Minecraft versions < 1.17
+	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
+	provides = polymc
+	provides = polymc-qt5
+	conflicts = polymc
+	conflicts = polymc-qt5
+	noextract = PlaceholderMC-Linux-1.4.2.tar.gz
+	source = https://github.com/PlaceholderMC/PlaceholderMC/releases/download/1.4.2/PlaceholderMC-Linux-1.4.2.tar.gz
+	sha256sums = 27c0efa28013d24d3713989e2610f2fa268a9a315bdf83f2316560fa7b529050
+
+pkgname = prismlauncher-qt5-bin
