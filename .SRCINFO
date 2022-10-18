@@ -1,7 +1,7 @@
 pkgbase = r-crosstalk
 	pkgdesc = Inter-Widget Interactivity for HTML Widgets
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=crosstalk
 	arch = any
 	license = MIT
