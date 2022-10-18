@@ -1,7 +1,7 @@
 pkgbase = r-splus2r
 	pkgdesc = Supplemental S-PLUS Functionality in R
 	pkgver = 1.3.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=splus2R
 	arch = x86_64
 	license = GPL

@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=splus2R
 _pkgver=1.3-3
 pkgname=r-${_pkgname,,}
 pkgver=1.3.3
-pkgrel=4
+pkgrel=9
 pkgdesc='Supplemental S-PLUS Functionality in R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
