@@ -1,12 +1,12 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
-# Maintainer: Julien Taverna <jujudusud gmail com>
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Jose Riha <jose1711 gmail com>
+# Contributor: Julien Taverna <jujudusud gmail com>
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgbase=jamulus
 pkgname=(jamulus jamulus-headless)
-pkgver=3.9.0
-pkgrel=2
+pkgver=3.9.1
+pkgrel=1
 pkgdesc="Internet jam session software"
 arch=(x86_64 aarch64)
 url='https://jamulus.io/'
@@ -19,7 +19,7 @@ groups=(pro-audio)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/jamulussoftware/$pkgbase/archive/r${pkgver//./_}.tar.gz"
   'jamulus.service'
   'jamulus.sysusers')
-sha256sums=('742b1954111c55b39ea7b2863c762d6731359e2b4793ef2409b150096fb196a5'
+sha256sums=('758381a92ff7b264534773b71b6bf8e098bbeb6d693efdc2916609f2ff842889'
             '98e45f7f877dbc9f8113d63b6e009ff1025e73e1cce86f671b57474a4764e11f'
             '4117ad3a93b3211f679f93794b308ad292d1799a86f85a6b353cfdff8515e2f9')
 _pkgsrc=$pkgbase-r${pkgver//./_}
@@ -41,8 +41,9 @@ package_jamulus() {
   install -vDm755 jamulus -t "$pkgdir"/usr/bin
   install -vDm644 ChangeLog README.md -t "$pkgdir"/usr/share/doc/$pkgbase
   install -vDm644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgbase
-  install -vDm644 distributions/jamulus{,-server}.desktop -t "$pkgdir"/usr/share/applications
-  install -vDm644 distributions/jamulus{,-server}.svg -t "$pkgdir"/usr/share/pixmaps
+  install -vDm644 linux/Jamulus.1 "$pkgdir"/usr/share/man/man1/jamulus.1
+  install -vDm644 linux/jamulus{,-server}.desktop -t "$pkgdir"/usr/share/applications
+  install -vDm644 src/res/io.jamulus.jamulus{,server}.svg -t "$pkgdir"/usr/share/pixmaps
   install -vDm644 ../jamulus.service -t "$pkgdir"/usr/lib/systemd/system
   install -vDm644 ../jamulus.sysusers "$pkgdir"/usr/lib/sysusers.d/$pkgbase.conf
 }
