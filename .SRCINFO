@@ -1,6 +1,6 @@
 pkgbase = radarr-develop
 	pkgdesc = Movie download automation for usenet and torrents.
-	pkgver = 4.2.4.6635
+	pkgver = 4.3.0.6671
 	pkgrel = 1
 	url = https://github.com/Radarr/Radarr
 	arch = x86_64
@@ -34,11 +34,11 @@ pkgbase = radarr-develop
 	sha512sums = 2ef38a061f4438349f7dafe209328fe9de5f44712f16435805e2622050be45a3fffd1838d9fccef2d6aa7603cf05b01280df6fed957b66d2d67ceaeeedcd5f6f
 	sha512sums = c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e
 	sha512sums = 3ece517c026422dd9f6a8c20e8832021c12be4fa84c85ec0758adf4c955620d2b0e75ee534a09b0f87ab587b374fcd757c818c722d147fd6cc9065735d7d6e0f
-	source_x86_64 = Radarr.develop.4.2.4.6635.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/develop/updatefile?version=4.2.4.6635&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = 3afe6a43c4e41a5aa2b283a7616797023cccfa90d2e0eb3ecdea000c24a49391304b46ae0813c7153ac838e2a665c165412ed0a055a3815f536444a735653f8c
-	source_aarch64 = Radarr.develop.4.2.4.6635.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/develop/updatefile?version=4.2.4.6635&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = 5ae2c7a7560cd92bb978952394f6fc42795c731ffc61183e02cd0c7bd2135aea046795612a4002031d9e6c2759b5a98abfa6953ea66712a45708dd9507dadd05
-	source_armv7h = Radarr.develop.4.2.4.6635.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/develop/updatefile?version=4.2.4.6635&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = 8610dc86fdfa61a98fcd984dce60226b7747a76179c308d0cf41a614ff1747df3a290f8c69adacf1f1833f9ba42629734b5d2e3add333ac17ad1c254bc59d2f6
+	source_x86_64 = Radarr.develop.4.3.0.6671.linux-core-x64.tar.gz::https://radarr.servarr.com/v1/update/develop/updatefile?version=4.3.0.6671&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = c4671925180c94d055de7ba0bdd28538d17ef1c62a2742d1de45a5a3d4960cf7bc166f55653a97ce466997ac82e87a633003a4652a681e83cb798190b96824cd
+	source_aarch64 = Radarr.develop.4.3.0.6671.linux-core-arm64.tar.gz::https://radarr.servarr.com/v1/update/develop/updatefile?version=4.3.0.6671&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = ec90e7b8520735d383e13bb6abcf6a4291ed6e1a5b22ac1fe45f1d0bb17624a5181d4cc127f0d1f60a837fdbd0f971f08cf2f6464e40fbe9666d0fa8fa2ff48e
+	source_armv7h = Radarr.develop.4.3.0.6671.linux-core-arm.tar.gz::https://radarr.servarr.com/v1/update/develop/updatefile?version=4.3.0.6671&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = 3efcccff829d0dd71646b05fad4b35ee90f0cd62154f952aefcb5775fd4d4b54a3082b35a7f9f18df2c6757b2c2cbbe56809d9045388030edfdc2f0d405582d5
 
 pkgname = radarr-develop
