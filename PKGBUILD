@@ -7,7 +7,7 @@ pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
 license=('AGPLv3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'harmonyos-sans')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'pkgconf')
 provides=("BambuStudio")
 conflicts=("BambuStudio")
@@ -29,8 +29,6 @@ pkgver() {
 }
 
 prepare() {
-  # fix runtime exception on startup
-  patch -p0 < "$srcdir/BambuStudio.cpp.patch"
   # fix broken udev install reference
   patch -p0 < "$srcdir/CMakeLists.txt.patch"
 }
