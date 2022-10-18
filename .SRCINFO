@@ -1,24 +1,17 @@
 pkgbase = python-mbdata
 	pkgdesc = MusicBrainz database tools for Python
-	pkgver = 25.0.4
+	pkgver = 26.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/mbdata
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/m/mbdata/mbdata-25.0.4.tar.gz
-	source = mbdata-25.0.4-LICENSE::https://github.com/lalinsky/mbdata/raw/v25.0.4/LICENSE
-	sha256sums = 1aab8797552e7e77881389b1aad4fe587458fb7e343d14410f2a662e9eaea081
-	sha256sums = ecae6699839c9b7845aa36aba997c2ec5f09c5eb237f8910b972269de4bfc5f9
-
-pkgname = python-mbdata
 	depends = python
 	depends = python-psycopg2
 	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/m/mbdata/mbdata-26.0.0.tar.gz
+	source = mbdata-26.0.0-LICENSE::https://github.com/lalinsky/mbdata/raw/v26.0.0/LICENSE
+	sha256sums = b07bdacbbbe5f62218a1a232cf379b7d81e4f047190566256bd6c25f1ef2dddb
+	sha256sums = ecae6699839c9b7845aa36aba997c2ec5f09c5eb237f8910b972269de4bfc5f9
 
-pkgname = python2-mbdata
-	depends = python2
-	depends = python2-psycopg2
-	depends = python2-six
-
+pkgname = python-mbdata
