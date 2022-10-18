@@ -1,7 +1,7 @@
 pkgbase = r-ellipsis
 	pkgdesc = Tools for Working with ...
 	pkgver = 0.3.2
-	pkgrel = 5
+	pkgrel = 8
 	url = https://cran.r-project.org/package=ellipsis
 	arch = x86_64
 	license = MIT
