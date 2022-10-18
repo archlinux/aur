@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=dichromat
 _pkgver=2.0-0.1
 pkgname=r-${_pkgname,,}
 pkgver=2.0.0.1
-pkgrel=1
+pkgrel=6
 pkgdesc='Color Schemes for Dichromats'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
