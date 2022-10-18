@@ -1,6 +1,6 @@
 # Maintainer: Martin Kühl <martin.kuehl@posteo.net>
 pkgname=color-scheme-monitor
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="Monitor the system-wide color scheme and adapt unaware applications to it"
@@ -8,7 +8,7 @@ arch=(i686 x86_64 armv6h armv7h)
 url="https://codeberg.org/mkhl/color-scheme-monitor/"
 license=(custom:0BSD)
 groups=()
-depends=(dbus xdg-desktop-portal)
+depends=(dbus systemd xdg-desktop-portal)
 makedepends=(cargo sed)
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mkhl/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=('cb941441f867b23ee08b4397dea6a82a97a731426459bfb073d6a70494cec92d2490723812a43a2f830f974d2581446f838aea2f477d977459e68e1528fc8df4')
+sha512sums=('d6c93093fc68065cfce54fe80415db64c756c28392d0bdcb15aca6a96e6f2efd70e5ef0951e65b4c84b886f31da1f8cf0e97a3f69cf38f38b54059f912499640')
 validpgpkeys=()
 
 prepare() {
@@ -44,6 +44,6 @@ check() {
 
 package() {
 	cd "$pkgname"
-	DESTDIR="$pkgdir/" PREFIX=/usr ./install
+	DESTDIR="$pkgdir/" PREFIX=/usr LIBEXECDIR=/usr/lib ./install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

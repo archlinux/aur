@@ -1,6 +1,6 @@
 pkgbase = color-scheme-monitor
 	pkgdesc = Monitor the system-wide color scheme and adapt unaware applications to it
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://codeberg.org/mkhl/color-scheme-monitor/
 	arch = i686
@@ -11,8 +11,9 @@ pkgbase = color-scheme-monitor
 	makedepends = cargo
 	makedepends = sed
 	depends = dbus
+	depends = systemd
 	depends = xdg-desktop-portal
-	source = color-scheme-monitor-0.1.1.tar.gz::https://codeberg.org/mkhl/color-scheme-monitor/archive/v0.1.1.tar.gz
-	sha512sums = d3b43f96808c3c8e6d518f9d1ef65f32bdf68f6e72b2d0dafef51f465ba383de971b8deedca44987b191379d3aba555a28d065b80715a30a9842d03d9320e213
+	source = color-scheme-monitor-0.1.2.tar.gz::https://codeberg.org/mkhl/color-scheme-monitor/archive/v0.1.2.tar.gz
+	sha512sums = d6c93093fc68065cfce54fe80415db64c756c28392d0bdcb15aca6a96e6f2efd70e5ef0951e65b4c84b886f31da1f8cf0e97a3f69cf38f38b54059f912499640
 
 pkgname = color-scheme-monitor
