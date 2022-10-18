@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=lmom
 _pkgver=2.9
 pkgname=r-${_pkgname,,}
 pkgver=2.9
-pkgrel=1
+pkgrel=7
 pkgdesc='L-Moments'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

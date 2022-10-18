@@ -1,7 +1,7 @@
 pkgbase = r-lmom
 	pkgdesc = L-Moments
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 7
 	url = https://cran.r-project.org/package=lmom
 	arch = x86_64
 	license = CPL
