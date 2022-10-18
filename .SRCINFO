@@ -1,7 +1,7 @@
 pkgbase = r-coin
 	pkgdesc = Conditional Inference Procedures in a Permutation Test Framework
 	pkgver = 1.4.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=coin
 	arch = x86_64
 	license = GPL
