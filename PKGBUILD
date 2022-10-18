@@ -4,7 +4,7 @@
 
 pkgname=gns3-gui
 pkgver=2.2.34
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
@@ -16,9 +16,9 @@ depends=(
     'python-jsonschema'
     'python-psutil'
     'python-pyqt5'
+    'python-pyqt5-sip'
     'python-sentry_sdk'
     'python-setuptools'
-    'python-sip'
     'qt5-svg'
     'qt5-websockets'
 )
@@ -35,6 +35,7 @@ prepare() {
     cd "$pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
+        -e 's|^jsonschema==3\.2\.0|jsonschema>=3.2.0|' \
         -e 's|^sentry-sdk==1\.9\.5$|sentry-sdk>=1.9.5|' \
         -e 's|^psutil==5\.9\.1$|psutil>=5.9.1|' \
         -e 's|^distro==1\.7\.0$|distro>=1.7.0|' \
