@@ -1,7 +1,7 @@
 pkgbase = r-usethis
 	pkgdesc = Automate Package and Project Setup
 	pkgver = 2.1.6
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=usethis
 	arch = any
 	license = MIT
