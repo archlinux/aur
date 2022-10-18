@@ -1,7 +1,7 @@
 pkgbase = r-multcomp
 	pkgdesc = Simultaneous Inference in General Parametric Models
 	pkgver = 1.4.20
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=multcomp
 	arch = any
 	license = GPL
