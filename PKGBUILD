@@ -1,6 +1,6 @@
 # Maintainer: Martin Kühl <martin.kuehl@posteo.net>
 pkgname=gnome-search-provider-emoji-shortcodes
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="GNOME Search Provider for Emoji Shortcodes"
@@ -8,7 +8,7 @@ arch=(i686 x86_64 armv6h armv7h)
 url="https://codeberg.org/mkhl/$pkgname"
 license=(custom:0BSD)
 groups=()
-depends=(dbus gnome-desktop)
+depends=(dbus gnome-shell)
 makedepends=(cargo sed)
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mkhl/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=('ddc4757b80cec3f853c078b73bc548fe743c8fd4960a70c1e8df82ece2f37f726456c5124dae6cd469ea76b11aaff6bab9328f4039665ec99ae3a95b502e94d1')
+sha512sums=('f8495b5ceb18b44dd4c54abf13e05485dacaef0aaba5ca077a1a181ccd56bda6dd54ecb1ab15094ad4dd32eed1c6f415e3e2de8a542947d85ef1779f5666f54d')
 validpgpkeys=()
 
 prepare() {
@@ -45,6 +45,6 @@ check() {
 
 package() {
 	cd "$pkgname"
-	make DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib install
+	make CARGO=true DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
