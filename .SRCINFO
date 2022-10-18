@@ -1,0 +1,19 @@
+pkgbase = ytsub-git
+	pkgdesc = A subscriptions only TUI Youtube client that uses the Invidious API
+	pkgver = v0.3.1.r0.ga950632
+	pkgrel = 1
+	url = https://github.com/sarowish/ytsub
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = sqlite
+	optdepends = mpv: for playing videos,
+	optdepends = yt-dlp: for playing videos
+	provides = ytsub
+	conflicts = ytsub
+	options = !lto
+	source = git+https://github.com/sarowish/ytsub
+	sha256sums = SKIP
+
+pkgname = ytsub-git
