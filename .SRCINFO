@@ -1,6 +1,6 @@
 pkgbase = anaconda
 	pkgdesc = Simplifies package management and deployment of Anaconda
-	pkgver = 2022.05
+	pkgver = 2022.10
 	pkgrel = 1
 	url = https://anaconda.com
 	install = anaconda.install
@@ -23,7 +23,7 @@ pkgbase = anaconda
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
-	sha512sums = 45b7fd085cb4edabb388ab64cd1d5e1bb62aeb4c906d371552fa71b6fae341b10d30c4acb54af43d63f027180d6a16095443668f36954cbc2f362e295c8e2c47
+	source = https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
+	sha512sums = a0f17c8bbdcb05397da831af513a027738033844e7f9cdeb6e8b192d9c8f917109e72326e449f74bf3ee2a0da3789e0864c3d51ef2bdc816c62cc85f3395d226
 
 pkgname = anaconda

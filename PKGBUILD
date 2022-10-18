@@ -4,7 +4,7 @@
 # Contributor: Ismaël Bouya <ismael.bouya@normalesup.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 pkgname=anaconda
-pkgver=2022.05
+pkgver=2022.10
 pkgrel=1
 pkgdesc="Simplifies package management and deployment of Anaconda"
 arch=(x86_64)
@@ -26,7 +26,7 @@ optdepends=('libxau: for Anaconda Navigator support'
 	'libglvnd: for Anaconda Navigator support')
 source=(https://repo.${pkgname}.com/archive/Anaconda3-${pkgver}-Linux-x86_64.sh)
 options=(!strip libtool staticlibs)
-sha512sums=('45b7fd085cb4edabb388ab64cd1d5e1bb62aeb4c906d371552fa71b6fae341b10d30c4acb54af43d63f027180d6a16095443668f36954cbc2f362e295c8e2c47')
+sha512sums=('a0f17c8bbdcb05397da831af513a027738033844e7f9cdeb6e8b192d9c8f917109e72326e449f74bf3ee2a0da3789e0864c3d51ef2bdc816c62cc85f3395d226')
 install="${pkgname}.install"
 
 package() {
