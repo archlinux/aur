@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: getzze <getzze@gmail.com>
 
 _pkgname=mco
 _pkgver=1.15.6
 pkgname=r-${_pkgname,,}
 pkgver=1.15.6
-pkgrel=4
+pkgrel=10
 pkgdesc='Multiple Criteria Optimization Algorithms and Related Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

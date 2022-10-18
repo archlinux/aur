@@ -1,7 +1,7 @@
 pkgbase = r-mco
 	pkgdesc = Multiple Criteria Optimization Algorithms and Related Functions
 	pkgver = 1.15.6
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=mco
 	arch = x86_64
 	license = GPL
