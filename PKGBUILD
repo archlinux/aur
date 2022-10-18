@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Thomas Ivesdal-Tronstad <thotro at lyse dot net>
 
 _pkgname=pracma
 _pkgver=2.4.2
 pkgname=r-${_pkgname,,}
 pkgver=2.4.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Practical Numerical Math Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
