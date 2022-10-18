@@ -1,7 +1,7 @@
 pkgbase = r-ini
 	pkgdesc = Read and Write '.ini' Files
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=ini
 	arch = any
 	license = GPL
