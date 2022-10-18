@@ -1,7 +1,7 @@
 pkgbase = r-chron
 	pkgdesc = Chronological Objects which can Handle Dates and Times
 	pkgver = 2.3.58
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=chron
 	arch = x86_64
 	license = GPL
