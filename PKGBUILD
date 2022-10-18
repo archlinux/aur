@@ -1,4 +1,5 @@
 # Maintainer: getchoo <getchoo at tuta dot io>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: vorpalblade77@gmail.com
 # Contributor: b.klettbach@gmail.com
 # Contributor: Patrik Plihal <patrik.plihal at gmail dot com>
@@ -7,8 +8,6 @@
 pkgname=multimc5
 _pkgname=multimc
 pkgver=0.6.16
-_nbtplusplusver=dc72a20b7efd304d12af2025223fad07b4b78464
-_quazipver=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -24,8 +23,8 @@ optdepends=('visualvm: Profiling support'
 provides=('multimc')
 conflicts=('multimc')
 source=("${pkgname}::git+https://github.com/MultiMC/Launcher#tag=${pkgver}"
-        "libnbtplusplus::git+https://github.com/MultiMC/libnbtplusplus#commit=${_nbtplusplusver}"
-        "quazip::git+https://github.com/MultiMC/quazip#commit=${_quazipver}"
+        "libnbtplusplus::git+https://github.com/MultiMC/libnbtplusplus"
+        "quazip::git+https://github.com/MultiMC/quazip"
         "https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz"
         "0001-Readd-lin-system-and-LAUNCHER_LINUX_DATADIR.patch"
         "fix-jars.patch"

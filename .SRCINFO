@@ -18,8 +18,8 @@ pkgbase = multimc5
 	provides = multimc
 	conflicts = multimc
 	source = multimc5::git+https://github.com/MultiMC/Launcher#tag=0.6.16
-	source = libnbtplusplus::git+https://github.com/MultiMC/libnbtplusplus#commit=dc72a20b7efd304d12af2025223fad07b4b78464
-	source = quazip::git+https://github.com/MultiMC/quazip#commit=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
+	source = libnbtplusplus::git+https://github.com/MultiMC/libnbtplusplus
+	source = quazip::git+https://github.com/MultiMC/quazip
 	source = https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz
 	source = 0001-Readd-lin-system-and-LAUNCHER_LINUX_DATADIR.patch
 	source = fix-jars.patch
