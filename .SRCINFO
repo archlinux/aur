@@ -1,7 +1,7 @@
 pkgbase = r-promises
 	pkgdesc = Abstractions for Promise-Based Asynchronous Programming
 	pkgver = 1.2.0.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=promises
 	arch = x86_64
 	license = MIT
