@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.34
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
 url='https://github.com/GNS3/gns3-server'
@@ -45,6 +45,7 @@ prepare() {
     cd "$pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
+        -e 's|^jsonschema==3\.2\.0|jsonschema>=3.2.0|' \
         -e 's|^aiohttp==3\.8\.1|aiohttp>=3.8.1|' \
         -e 's|^aiofiles==0\.8\.0$|aiofiles>=0.8.0|' \
         -e 's|^Jinja2==3\.0\.3$|Jinja2>=3.0.3|' \
