@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _appdata_id=org.nicotine_plus.Nicotine
-pkgver=3.3.0.dev3.r8026.0558c10b
+pkgver=3.3.0.dev3.r8161.1e600eeed
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -57,6 +57,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "$srcdir/${_appdata_id}"{-gtk4.desktop,-libadwaita.desktop} -t \
+  install -Dm644 "$srcdir/${_appdata_id}"{-gtk4,-libadwaita}.desktop -t \
     "$pkgdir/usr/share/applications/"
 }
