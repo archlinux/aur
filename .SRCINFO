@@ -1,7 +1,7 @@
 pkgbase = r-rversions
 	pkgdesc = Query 'R' Versions, Including 'r-release' and 'r-oldrel'
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rversions
 	arch = any
 	license = MIT
