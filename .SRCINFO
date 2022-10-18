@@ -1,6 +1,6 @@
 pkgbase = r-flowclean
 	pkgdesc = flowClean
-	pkgver = 1.34.0
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowClean
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-flowclean
 	optdepends = r-flowviz
 	optdepends = r-grid
 	optdepends = r-gridextra
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowClean_1.34.0.tar.gz
-	sha256sums = b1ba48be9f90df83b29090871b431e864fa592883020216da5176333c2117896
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowClean_1.34.1.tar.gz
+	sha256sums = d0e58ac89fd302761136cbcd5eb859351a61da2bd8967840bcd054ec16630f7f
 
 pkgname = r-flowclean
