@@ -1,7 +1,7 @@
 pkgbase = r-loo
 	pkgdesc = Efficient Leave-One-Out Cross-Validation and WAIC for Bayesian Models
 	pkgver = 2.5.1
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=loo
 	arch = any
 	license = GPL
