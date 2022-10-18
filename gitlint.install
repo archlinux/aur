@@ -1,0 +1,25 @@
+post_install() {
+  _GITLINT_COMPLETE=bash_source gitlint > gitlint.bash
+  _GITLINT_COMPLETE=fish_source gitlint > gitlint.fish
+  _GITLINT_COMPLETE=zsh_source gitlint > gitlint.zsh
+
+  install -Dm644 gitlint.bash "/usr/share/bash-completion/completions/gitlint"
+  install -Dm644 gitlint.fish "/usr/share/fish/vendor_completions.d/gitlint.fish"
+  install -Dm644 gitlint.zsh "/usr/share/zsh/site-functions/_gitlint"
+}
+
+post_upgrade() {
+  _GITLINT_COMPLETE=bash_source gitlint > gitlint.bash
+  _GITLINT_COMPLETE=fish_source gitlint > gitlint.fish
+  _GITLINT_COMPLETE=zsh_source gitlint > gitlint.zsh
+
+  install -Dm644 gitlint.bash "/usr/share/bash-completion/completions/gitlint"
+  install -Dm644 gitlint.fish "/usr/share/fish/vendor_completions.d/gitlint.fish"
+  install -Dm644 gitlint.zsh "/usr/share/zsh/site-functions/_gitlint"
+}
+
+post_remove() {
+  rm "/usr/share/bash-completion/completions/gitlint"
+  rm "/usr/share/fish/vendor_completions.d/gitlint.fish"
+  rm "/usr/share/zsh/site-functions/_gitlint"
+}
