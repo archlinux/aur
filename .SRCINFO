@@ -1,7 +1,7 @@
 pkgbase = r-ggpp
 	pkgdesc = Grammar Extensions to 'ggplot2'
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggpp
 	arch = any
 	license = GPL
