@@ -8,7 +8,7 @@
 _pkgname=placeholdermc
 pkgname=${_pkgname}-git
 pkgver=1.4.0.r356.g0868a5e5
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PlaceholderMC/PlaceholderMC"
@@ -37,7 +37,6 @@ pkgver() {
 
 prepare() {
   cd "PlaceholderMC"
-  sed -i "s|https://meta.polymc.org/v1/|https://meta.scrumplex.rocks/v1/|g" CMakeLists.txt
   git submodule init
   git config submodule.depends/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
@@ -52,6 +51,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR="6" \
+	-DLauncher_APP_BINARY_NAME="PlaceholderMC" \
+	-DLauncher_META_URL="https://meta.scrumplex.rocks/v1/" \
+	-DLauncher_NEWS_RSS_URL="" \
+	-DLauncher_NEWS_OPEN_URL="" \
+	-DLauncher_HELP_URL="" \
     -Bbuild -SPlaceholderMC
   cmake --build build
 }
