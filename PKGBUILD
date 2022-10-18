@@ -2,7 +2,7 @@
 # Maintainer: Andreas Baumann <mail at andreasbaumann dot cc>
 
 pkgname=thruk
-pkgver=2.48.2
+pkgver=2.50
 pkgrel=1
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
@@ -21,7 +21,7 @@ backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
         'etc/thruk/thruk_local.conf' 'etc/logrotate.d/thruk-base')
 source=(http://download.thruk.org/pkg/v$pkgver/src/$pkgname-$pkgver.tar.gz)
-md5sums=('ffc1a662d28d0d86840b46c6b2abbf16')
+md5sums=('0d9d2397ed0bab87768b1f8b74243f32')
 
 build() {
   cd $pkgname-$pkgver
