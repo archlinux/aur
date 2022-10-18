@@ -1,6 +1,6 @@
 pkgbase = urxvt-font-size-git
 	pkgdesc = On-the-fly URxvt font size adjustments
-	pkgver = 21
+	pkgver = r32.0984499
 	pkgrel = 1
 	url = https://github.com/majutsushi/urxvt-font-size
 	install = urxvt-font-size.install
@@ -12,8 +12,7 @@ pkgbase = urxvt-font-size-git
 	depends = xorg-xlsfonts
 	provides = urxvt-font-size
 	conflicts = urxvt-font-size
-	source = git://github.com/majutsushi/urxvt-font-size.git
+	source = git+https://github.com/majutsushi/urxvt-font-size.git
 	md5sums = SKIP
 
 pkgname = urxvt-font-size-git
-
