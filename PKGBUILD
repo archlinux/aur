@@ -4,7 +4,7 @@
 
 pkgdesc='Wayland terminal emulator. Git builds without any custom tinkering.'
 pkgname=foot-upstream-git
-pkgver=1.13.1.r47.g37218be6
+pkgver=1.13.1.r78.g3ba03901
 pkgrel=1
 conflicts=('foot')
 provides=('foot')
@@ -29,6 +29,7 @@ makedepends=(
   tllist
   wayland
   wayland-protocols
+  xorg-xwayland
 )
 checkdepends=('check')
 optdepends=(
@@ -48,7 +49,7 @@ pkgver() {
 build() {
   cd foot
   ./pgo/pgo.sh \
-    full-headless-sway \
+    partial \
     . build \
     -Dterminfo=disabled \
     --prefix=/usr \
