@@ -1,7 +1,7 @@
 pkgbase = r-operator.tools
 	pkgdesc = Utilities for Working with R's Operators
 	pkgver = 1.6.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=operator.tools
 	arch = any
 	license = GPL
