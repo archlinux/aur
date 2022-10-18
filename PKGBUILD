@@ -14,10 +14,10 @@ _log_path="/var/log/${_pkgname}"
 
 pkgname=nginx-libressl
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 librever=3.6.0
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
 depends=('pcre2' 'zlib' 'pam' 'gd' 'libxslt')
 makedepends=( 'libxslt' 'gd' 'git')
