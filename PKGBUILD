@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=vazirmatn-fonts
-pkgver=33.001
+pkgver=33.003
 pkgrel=1
 pkgdesc="A beautiful Persian font based on DejaVu font."
 url="https://github.com/rastikerdar/vazirmatn"
@@ -13,7 +13,7 @@ conflicts=('vazirmatn')
 replaces=('vazir-fonts')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/vazirmatn-v${pkgver}.zip"
         "LICENSE::https://raw.githubusercontent.com/rastikerdar/vazirmatn/master/OFL.txt")
-sha256sums=('bac8e08a6592db13c19bb740a901550e60862defc9cece0a8a35d7b36e024467'
+sha256sums=('0a9afd41967e6f57096a56a181a23f81a2b999b62f1f2a4e4b26736580854fdb'
             '17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31')
 
 package() {
