@@ -127,9 +127,9 @@ build() {
 
   # Do 3-tier PGO
 #  echo "Building instrumented browser..."
-#  cat >.mozconfig ../mozconfig - <<END
+  cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-profile-generate=cross
-#END
+END
 #  ./mach build
 #
 #  echo "Profiling instrumented browser..."
