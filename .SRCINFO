@@ -1,7 +1,7 @@
 pkgbase = r-rgl
 	pkgdesc = 3D Visualization Using OpenGL
 	pkgver = 0.110.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rgl
 	arch = x86_64
 	license = GPL

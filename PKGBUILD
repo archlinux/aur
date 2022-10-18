@@ -1,11 +1,13 @@
 # system requirements: OpenGL, GLU Library, XQuartz (on OSX), zlib(optional), libpng (>=1.2.9, optional), FreeType (optional),pandoc (>=1.14, needed for vignettes; if not present, markdownpackage will be used)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=rgl
 _pkgver=0.110.2
 pkgname=r-${_pkgname,,}
 pkgver=0.110.2
-pkgrel=1
+pkgrel=3
 pkgdesc='3D Visualization Using OpenGL'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
