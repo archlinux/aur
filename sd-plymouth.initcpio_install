@@ -13,6 +13,7 @@ build() {
 	PLYMOUTH_IMAGE_DIR=$(grep "ImageDir *= *" ${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ImageDir *= *//')
 	PLYMOUTH_PLUGIN_PATH="$(plymouth --get-splash-plugin-path)"
 	PLYMOUTH_MODULE_NAME="$(grep "ModuleName *= *" ${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')"
+	FONT=$(fc-match -f %{file})
 
 	add_binary /usr/bin/plymouthd
 	add_binary /usr/bin/plymouth
@@ -28,15 +29,23 @@ build() {
 	add_file /etc/plymouth/plymouthd.conf
 	add_file ${DATADIR}/plymouthd.defaults
 	
-	if [ -f "/usr/share/fonts/cantarell/Cantarell-VF.otf" ]; then
-		add_binary ${PLYMOUTH_PLUGIN_PATH}/label.so
-		add_file "/etc/fonts/fonts.conf"
-		add_file "/usr/share/fonts/cantarell/Cantarell-VF.otf"
-		if [ -f "/etc/fonts/conf.d/60-latin.conf" ]; then
-		  add_file "/etc/fonts/conf.d/60-latin.conf"
-		fi
+	add_binary ${PLYMOUTH_PLUGIN_PATH}/label-freetype.so
+	if [ -f "/usr/bin/pango-view" ]; then
+	  add_binary ${PLYMOUTH_PLUGIN_PATH}/label-pango.so
 	fi
-
+	add_file "/etc/fonts/fonts.conf"
+	add_file ${FONT}
+	add_symlink "/usr/share/fonts/Plymouth.ttf" ${FONT}
+	
+	if [ -f "/usr/share/fonts/cantarell/Cantarell-VF.otf" ]; then
+	  add_file "/usr/share/fonts/cantarell/Cantarell-VF.otf"
+	  add_symlink "/usr/share/fonts/cantarell/Cantarell-Thin.otf" "/usr/share/fonts/cantarell/Cantarell-VF.otf"
+	  add_symlink "/usr/share/fonts/cantarell/Cantarell-Regular.otf" "/usr/share/fonts/cantarell/Cantarell-VF.otf"
+	fi	
+	if [ -f "/etc/fonts/conf.d/60-latin.conf" ]; then
+	  add_file "/etc/fonts/conf.d/60-latin.conf"
+	fi
+	
 	if [ ! -f ${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so ]; then
 		echo "The default plymouth plugin (${PLYMOUTH_MODULE_NAME}) doesn't exist" > /dev/stderr
 		exit 1
