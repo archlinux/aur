@@ -1,7 +1,7 @@
 pkgbase = r-openxlsx
 	pkgdesc = Read, Write and Edit xlsx Files
 	pkgver = 4.2.5
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=openxlsx
 	arch = x86_64
 	license = MIT
