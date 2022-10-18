@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=ggsignif
 _pkgver=0.6.4
 pkgname=r-${_pkgname,,}
 pkgver=0.6.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Significance Brackets for 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
