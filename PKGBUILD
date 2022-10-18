@@ -1,11 +1,14 @@
 # system requirements: Pandoc (>= 1.17.2)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: haha662 <haha662 at outlook dot com>
+
 
 _pkgname=bookdown
 _pkgver=0.29
 pkgname=r-${_pkgname,,}
 pkgver=0.29
-pkgrel=1
+pkgrel=3
 pkgdesc='Authoring Books and Technical Documents with R Markdown'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

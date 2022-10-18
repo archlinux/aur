@@ -1,7 +1,7 @@
 pkgbase = r-bookdown
 	pkgdesc = Authoring Books and Technical Documents with R Markdown
 	pkgver = 0.29
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bookdown
 	arch = any
 	license = GPL
