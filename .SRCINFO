@@ -1,7 +1,7 @@
 pkgbase = r-ckmeans.1d.dp
 	pkgdesc = Optimal, Fast, and Reproducible Univariate Clustering
 	pkgver = 4.3.4
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=Ckmeans.1d.dp
 	arch = x86_64
 	license = LGPL
