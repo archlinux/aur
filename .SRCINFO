@@ -1,7 +1,7 @@
 pkgbase = r-formula.tools
 	pkgdesc = Programmatic Utilities for Manipulating Formulas, Expressions, Calls, Assignments and Other R Objects
 	pkgver = 1.7.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=formula.tools
 	arch = any
 	license = GPL
