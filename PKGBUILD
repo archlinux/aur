@@ -1,10 +1,13 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
 
 _pkgname=rematch
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=1.0.1
-pkgrel=4
+pkgrel=10
 pkgdesc="Match Regular Expressions with a Nicer 'API'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
