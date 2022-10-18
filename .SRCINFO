@@ -1,7 +1,7 @@
 pkgbase = r-psych
 	pkgdesc = Procedures for Psychological, Psychometric, and Personality Research
 	pkgver = 2.2.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=psych
 	arch = any
 	license = GPL
