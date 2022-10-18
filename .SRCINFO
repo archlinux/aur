@@ -1,7 +1,7 @@
 pkgbase = r-corpus
 	pkgdesc = Text Corpus Analysis
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=corpus
 	arch = x86_64
 	license = Apache

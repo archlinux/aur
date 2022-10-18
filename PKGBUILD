@@ -1,10 +1,12 @@
 # Maintainer: sukanka <su975853527@gmail.com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 _pkgname=corpus
 _pkgver=0.10.2
 pkgname=r-${_pkgname,,}
 pkgver=0.10.2
-pkgrel=1
+pkgrel=4
 pkgdesc='Text Corpus Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
