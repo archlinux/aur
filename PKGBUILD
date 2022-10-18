@@ -2,19 +2,23 @@
 
 pkgname=ruby-cucumber-compatibility-kit
 pkgver=11.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
 url='https://github.com/cucumber/compatibility-kit'
 license=(MIT)
 depends=(ruby-cucumber-messages ruby-rake ruby-rspec)
+makedepends=(npm)
 options=(!emptydirs)
 source=(https://github.com/cucumber/compatibility-kit/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('d9ae3e2362253f77207b47938f2457265a3fb5cb3ecf02666a64953028f07622')
 
 build() {
   local _gemdir="$(gem env gemdir)"
-  cd compatibility-kit-$pkgver/ruby
+  cd compatibility-kit-$pkgver/devkit
+  npm install
+  npm run copy-to:ruby
+  cd ../ruby
   gem build cucumber-compatibility-kit.gemspec
   gem install \
     --local \
@@ -41,8 +45,7 @@ build() {
 check() {
   local _gemdir="$(gem env gemdir)"
   cd compatibility-kit-$pkgver/ruby
-  # https://github.com/cucumber/compatibility-kit/issues/21
-  GEM_HOME="tmp_install/$_gemdir" rake || echo "Tests failed"
+  GEM_HOME="tmp_install/$_gemdir" rake
 }
 
 package() {
