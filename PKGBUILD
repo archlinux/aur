@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=SQUAREM
 _pkgver=2021.1
 pkgname=r-${_pkgname,,}
 pkgver=2021.1
-pkgrel=4
+pkgrel=10
 pkgdesc='Squared Extrapolation Methods for Accelerating EM-Like Monotone Algorithms'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
