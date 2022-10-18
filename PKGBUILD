@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=gld
 _pkgver=2.6.5
 pkgname=r-${_pkgname,,}
 pkgver=2.6.5
-pkgrel=1
+pkgrel=4
 pkgdesc='Estimation and Use of the Generalised (Tukey) Lambda Distribution'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
