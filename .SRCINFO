@@ -1,0 +1,16 @@
+pkgbase = python-tuna
+	pkgdesc = Python profile viewer
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = https://github.com/nschloe/tuna
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/tuna/tuna-0.5.11.tar.gz
+	sha256sums = d47f3e39e80af961c8df016ac97d1643c3c60b5eb451299da0ab5fe411d8866c
+
+pkgname = python-tuna
