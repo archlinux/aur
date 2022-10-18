@@ -1,7 +1,7 @@
 pkgbase = r-progress
 	pkgdesc = Terminal Progress Bars
 	pkgver = 1.2.2
-	pkgrel = 5
+	pkgrel = 8
 	url = https://cran.r-project.org/package=progress
 	arch = any
 	license = MIT
