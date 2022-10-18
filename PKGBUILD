@@ -2,22 +2,22 @@
 # Contributor: jingutech
 # Contributor: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.23.0
+pkgver=2.26.2
 pkgrel=1
-listen1_commit=c035361c446194ca883c949c3256645fc578b056
+listen1_commit=48c61747768a7b7ee99498cc33930fdf639c0bc8
 pkgdesc="One for all free music in China (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
 license=('MIT')
-depends=('electron13')
+depends=('electron13-bin')
 makedepends=('npm' 'git')
 provides=('listen1')
 conflicts=('listen1')
 source=(
-	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"git+https://github.com/listen1/listen1_chrome_extension.git#commit=$listen1_commit"
 )
-sha256sums=('1f1826bca924c2ae5b050ebaa31ae151b704c236a8d41d5d5a7201889522da3c'
+sha256sums=('b0c78cc08b69730930919cdf604e1767f9b9796a7676cfc3c31b5ce4a509878d'
             'SKIP')
 
 prepare() {
@@ -55,7 +55,7 @@ Terminal=false
 Type=Application
 Icon=listen1
 StartupWMClass=Listen1
-X-AppImage-Version=2.23.0
+X-AppImage-Version=2.26.2
 Categories=Utility;
 X-AppImage-BuildId=1HvKDJ3EUJMJwm6YxKB8wQfQx3p
 " > "$srcdir/listen1.desktop"
