@@ -2,15 +2,15 @@
 
 pkgname=crowbook
 pkgver=0.15.2e
-pkgrel=6
+pkgrel=7
 pkgdesc="Converts books written in Markdown to HTML, LaTeX/PDF and EPUB"
 arch=('x86_64')
 url="https://github.com/lise-henry/crowbook"
 license=('LGPL')
 makedepends=('cargo')
 optdepends=('texlive-latexextra: create PDF')
-source=("git+https://github.com/lise-henry/crowbook.git#tag=v$pkgver")
-md5sums=('SKIP')
+source=("https://github.com/lise-henry/crowbook/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=('397ab6bde9a234b369c2fe0889003e27')
 
 prepare() {
 	cd "$srcdir/$pkgname"
