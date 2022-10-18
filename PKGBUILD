@@ -9,11 +9,13 @@
 
 pkgname=placeholdermc
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PlaceholderMC/PlaceholderMC"
 license=('GPL3')
+provides=('polymc') # For now...
+conflicts=('polymc') # For now...
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
 optdepends=('glfw: to use system GLFW libraries'
@@ -21,6 +23,8 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
+
+# There are weird sources here because submodules aren't downloaded when downloading from Github tagged archive
 source=("https://github.com/PlaceholderMC/PlaceholderMC/archive/refs/tags/$pkgver.tar.gz"
         "fix-qt6-4.patch::https://github.com/PlaceholderMC/PlaceholderMC/commit/7ccafdc99321e82ee0f504a573a5c978480374a2.patch"
 		"https://github.com/gulrak/filesystem/archive/cd6805e94dd5d6346be1b75a54cdc27787319dd2.zip"
@@ -37,6 +41,7 @@ sha256sums=('0b0d03df46470f4847169f4d50804f6714d1ace746b4bb31cc0b0b4dccc82ca4'
 			)
 
 prepare() {
+	# I'm sure there's a better way to clean old libraries
 	rm -rf "PlaceholderMC-$pkgver/libraries/quazip"
 	rm -rf "PlaceholderMC-$pkgver/libraries/tomlplusplus"
 	rm -rf "PlaceholderMC-$pkgver/libraries/filesystem"

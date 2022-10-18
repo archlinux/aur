@@ -1,7 +1,7 @@
 pkgbase = placeholdermc
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 1.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PlaceholderMC/PlaceholderMC
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = placeholdermc
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
+	provides = polymc
+	conflicts = polymc
 	source = https://github.com/PlaceholderMC/PlaceholderMC/archive/refs/tags/1.4.2.tar.gz
 	source = fix-qt6-4.patch::https://github.com/PlaceholderMC/PlaceholderMC/commit/7ccafdc99321e82ee0f504a573a5c978480374a2.patch
 	source = https://github.com/gulrak/filesystem/archive/cd6805e94dd5d6346be1b75a54cdc27787319dd2.zip
