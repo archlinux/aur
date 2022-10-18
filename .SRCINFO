@@ -1,7 +1,7 @@
 pkgbase = lua-readline
 	pkgdesc = Lua bindings to readline
-	pkgver = 3.1
-	pkgrel = 2
+	pkgver = 3.2
+	pkgrel = 1
 	url = https://pjb.com.au/comp/lua/readline.html
 	arch = x86_64
 	arch = i686
@@ -11,30 +11,13 @@ pkgbase = lua-readline
 	makedepends = lua52
 	makedepends = lua53
 	depends = readline
-	source = https://pjb.com.au/comp/lua/readline-3.1.tar.gz
-	sha256sums = 826736fbc0a631480aa464f4fb7bf9298ef25f17e45c1f3925ab26c9bd960244
+	source = https://pjb.com.au/comp/lua/readline-3.2.tar.gz
+	sha256sums = 6422e2d260afb7d73199ca64610f05437e571f239cca832de4d86f7d1f5569d6
 
 pkgname = lua-readline
-	pkgdesc = Lua bindings to readline - for Lua 5.4
-	depends = readline
-	depends = lua<5.5
-	depends = lua-posix
 
 pkgname = lua51-readline
-	pkgdesc = Lua bindings to readline - for Lua 5.1
-	depends = readline
-	depends = lua51
-	depends = lua51-posix
 
 pkgname = lua52-readline
-    pkgdesc = Lua bindings to readline - for Lua 5.2
-    depends = readline
-    depends = lua52
-    depends = lua52-posix
 
 pkgname = lua53-readline
-	pkgdesc = Lua bindings to readline - for Lua 5.3
-	depends = readline
-	depends = lua53
-	depends = lua53-posix
-
