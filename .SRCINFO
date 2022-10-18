@@ -1,7 +1,7 @@
 pkgbase = r-sys
 	pkgdesc = Powerful and Reliable Tools for Running System Commands in R
 	pkgver = 3.4
-	pkgrel = 5
+	pkgrel = 11
 	url = https://cran.r-project.org/package=sys
 	arch = x86_64
 	license = MIT
