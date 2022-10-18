@@ -1,7 +1,7 @@
 pkgbase = r-v8
 	pkgdesc = Embedded JavaScript and WebAssembly Engine for R
 	pkgver = 4.2.1
-	pkgrel = 7
+	pkgrel = 9
 	url = https://cran.r-project.org/package=V8
 	arch = x86_64
 	license = MIT

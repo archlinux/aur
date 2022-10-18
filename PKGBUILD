@@ -1,11 +1,13 @@
 # system requirements: V8 engine version 6+ is needed for ES6 and WASMsupport. On Linux you can also build against libv8-dev (Debian)or v8-devel (Fedora). We also provide static libv8 binaries formost platforms, see the README for details.
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=V8
 _pkgver=4.2.1
 pkgname=r-${_pkgname,,}
 pkgver=4.2.1
-pkgrel=7
+pkgrel=9
 pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
