@@ -1,0 +1,13 @@
+--- /home/jason/aur/tiscamera/src/tiscamera-v-tiscamera-1.0.0/tools/tcam-capture/CMakeLists.txt	2022-06-01 05:02:14.000000000 -0400
++++ CMakeLists.txt	2022-10-17 23:15:29.793280725 -0400
+@@ -22,8 +22,8 @@
+ find_package(GLIB2     REQUIRED QUIET)
+ find_package(GObject   REQUIRED QUIET)
+ find_package(GObjectIntrospection REQUIRED QUIET)
+-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets MultiMediaWidgets Multimedia REQUIRED)
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
++find_package(QT NAMES Qt5 COMPONENTS Widgets MultiMediaWidgets Multimedia REQUIRED)
++find_package(Qt5 COMPONENTS Widgets REQUIRED)
+ # find_package(Qt5MultimediaWidgets REQUIRED)
+ 
+ set(TCAM_CAPTURE_SOURCES
