@@ -1,7 +1,7 @@
 pkgbase = r-webshot
 	pkgdesc = Take Screenshots of Web Pages
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=webshot
 	arch = any
 	license = GPL
