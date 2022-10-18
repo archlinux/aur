@@ -1,6 +1,7 @@
 *.tar.gz
 *.zip
 *.pkg.tar.xz
+*.pkg.tar.zst
 icon.png
 LICENSE
 pkg/
