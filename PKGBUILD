@@ -1,11 +1,12 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 # Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=metadynminer
 _pkgver=0.1.7
 pkgname=r-${_pkgname,,}
 pkgver=0.1.7
-pkgrel=1
+pkgrel=4
 pkgdesc="Tools to Read, Analyze and Visualize Metadynamics HILLS Files from 'Plumed'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
