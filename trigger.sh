@@ -30,6 +30,7 @@ git push
   sed "s/PKGVER/${ver}/g" _service \
    > home:nicman23/${_pkgname}-appmenu-bin/_service
   cd home:nicman23/${_pkgname}-appmenu-bin/
+  osc add *
   osc commit -m "$ver_msg"
   [ -z "$difff" ] || osc rebuild
   osc results -w
