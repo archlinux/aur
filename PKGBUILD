@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=plot3D
 _pkgver=1.4
 pkgname=r-${_pkgname,,}
 pkgver=1.4
-pkgrel=3
+pkgrel=6
 pkgdesc='Plotting Multi-Dimensional Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
