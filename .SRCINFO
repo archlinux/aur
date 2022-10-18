@@ -1,7 +1,7 @@
 pkgbase = r-coda
 	pkgdesc = Output Analysis and Diagnostics for MCMC
 	pkgver = 0.19.4
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=coda
 	arch = any
 	license = GPL
