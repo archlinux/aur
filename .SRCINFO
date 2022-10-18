@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast core
-	pkgver = 2.0.r58.g387b9778
+	pkgver = 2.0.r63.gc5c941e9
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -14,14 +14,16 @@ pkgbase = libretro-flycast-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = glm
-	makedepends = glslang>=11.11
 	makedepends = libchdr
 	makedepends = libgl
 	makedepends = libzip
 	makedepends = miniupnpc
+	makedepends = vulkan-headers
+	makedepends = vulkan-icd-loader
 	makedepends = xbyak
 	makedepends = xxhash
 	makedepends = zlib
+	depends = glslang>=11.11
 	depends = libretro-core-info
 	provides = libretro-flycast
 	conflicts = libretro-flycast
@@ -32,9 +34,10 @@ pkgbase = libretro-flycast-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 667b64dab77b80d6091028d28b1c13e1e8f70d352d7d7f4fecb7f54a5db604f741a85d1e2e26ddef6be4e401a4d33209b7d919521452d81b169bf268759e75c2
+	b2sums = 86bf39dfb1152009819bcb92838b9eb2fd5572b47ed9d7cba2516a615dccc486608726c0e0a951dc77d07ddcd451bca8b20ff14a196244d210d68e23f0caceee
 
 pkgname = libretro-flycast-git
+	depends = glslang>=11.11
 	depends = libretro-core-info
 	depends = libchdr.so
 	depends = libGL.so
