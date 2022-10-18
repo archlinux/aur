@@ -13,8 +13,8 @@ post_install(){
   kill -9 `pidof ysoft-client-gnome` || true
   kill -9 `pidof ysoft-client-kde` || true
 
-  echo 'Installation complete, please log out.'
-  # Post installation script - executed at the last phase of installation
+  echo 'Please configure your autentication method via ysoft-client-settings'
+  echo 'You can also modify /etc/ysoft/safeq-client.ini to configure it'
 }
 
 post_remove(){

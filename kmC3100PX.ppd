@@ -1,0 +1,1268 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems Printer Description File
+*% For "KONICA MINOLTA C3100P PPD" version 3016.102
+*% Copyright(C) 2013 KONICA MINOLTA, INC.
+*% Created:     10.30.13
+*% Modified:    01.16.15
+
+*FormatVersion:         "4.3"
+*LanguageVersion:       English
+*LanguageEncoding:      UTF-8
+*FileVersion:           "1.2.0"
+
+*Manufacturer:          "KONICA MINOLTA"
+*ModelName:             "KONICA MINOLTA bizhub C3100P"
+*NickName:              "KONICA MINOLTA C3100P PPD"
+*ShortNickName:         "KONICA MINOLTA C3100P PPD"
+*PCFileName:            "kmC3100PX.PPD"
+*Product:               "(bizhub C3100P)"
+*PSVersion:             "(3016.102) 0"
+
+*% === Device Capabilities =========================
+*LanguageLevel:         "3"
+
+*ColorDevice:           True
+*DefaultColorSpace:     CMYK
+
+*Protocols:             TBCP
+
+*ScreenFreq:            "106.0"
+*ScreenAngle:           "45.0"
+*DefaultScreenProc:     Dot
+*ScreenProc Dot:        "{180 mul cos exch 180 mul cos add 2 div}"
+*ScreenProc Line:       "{ pop }"
+*ScreenProc Ellipse:    "{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+
+*Throughput:            "31"
+
+*% === Begin Interpreter Header Common  ============
+*SuggestedJobTimeout:   "0"
+*SuggestedWaitTimeout:  "300"
+*RequiresPageRegion All: True
+*DefaultTransfer:       Null
+*Transfer Null:         "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+*% === Begin Interpreter Header Functions ==========
+*TTRasterizer: Type42
+*?TTRasterizer: "
+  save
+  42 /FontType resourcestatus
+  { pop pop (Type42)} {pop pop (None)} ifelse = flush
+  restore"
+*End
+
+*FileSystem: True
+*?FileSystem: "
+  save
+  statusdict /diskonline get exec {(True)}{(False)} ifelse = flush
+  restore"
+*End
+
+*Password: "0"
+
+*ExitServer: "
+  count 0 eq
+  { false } { true exch startjob } ifelse
+  not { 
+    (WARNING : Cannot perform the exitserver command.) = 
+    (Password supplied is not valid.) = 
+    (Please contact the author of this software.) = flush quit
+  } if"
+*End
+
+*Reset: "
+  count 0 eq
+  { false } { true exch startjob } ifelse
+  not {
+    (WARNING: Cannot reset printer.) =
+    (Missing or invalid password.) =
+    (Please contact the author of this software.) = flush quit
+  } if
+  systemdict /quit get exec
+    (WARNING : Printer Reset Failed.) = flush"
+*End
+
+*% === Begin Custom Header Function ============
+*FreeVM:                "7168000"
+*AcceptsTrueType:       True
+*PrintPSErrors:         True
+*AccurateScreensSupport: True
+
+*%---------------------------------------------------------
+*%-----------   Installable Options Group   ---------------
+*%---------------------------------------------------------
+*OpenGroup: InstallableOptions/Installable Options
+
+*% === Paper Source Unit ========================
+*OpenUI *PaperSourceUnit/Paper Source Unit: PickOne
+*DefaultPaperSourceUnit: None
+*PaperSourceUnit None/None:                                 ""
+*PaperSourceUnit Unit2/Unit 2:                              ""
+*CloseUI: *PaperSourceUnit
+
+*% === Hard Disk ================================
+*OpenUI *OptionalDisk/Hard Disk: PickOne
+*DefaultOptionalDisk: Installed
+*OptionalDisk None/None:                                    ""
+*OptionalDisk Installed/Installed:                          ""
+*CloseUI: *OptionalDisk
+
+*CloseGroup: InstallableOptions
+
+*%---------------------------------------------------------
+*%-----------   OS Supported UI Group   -------------------
+*%---------------------------------------------------------
+
+*% === Collate ==================================
+*OpenUI *Collate/Collate: Boolean
+*OrderDependency: 60 AnySetup *Collate
+*DefaultCollate: True
+*Collate False/Off:                                         "<</Collate false>> setpagedevice"
+*Collate True/On:                                           "<</Collate true>> setpagedevice"
+*CloseUI: *Collate
+
+*% === Paper Source =============================
+*OpenUI *InputSlot/Paper Source: PickOne
+*OrderDependency: 30 AnySetup *InputSlot
+*DefaultInputSlot: Auto
+*InputSlot Tray1/Tray 1:                                    "<</ManualFeed false /MediaPosition 0>> setpagedevice"
+*InputSlot Tray2/Tray 2:                                    "<</ManualFeed false /MediaPosition 1>> setpagedevice"
+*InputSlot ManualFeed/Manual Feed:                          "<</ManualFeed true>>setpagedevice"
+*InputSlot Auto/Auto:                                       "<</ManualFeed false /TraySwitch true /MediaPosition 41>> setpagedevice"
+*CloseUI: *InputSlot
+
+*% === Paper Type ===============================
+*OpenUI *MediaType/Paper Type: PickOne
+*OrderDependency: 14 AnySetup *MediaType
+*DefaultMediaType: PrinterDefault
+*MediaType PrinterDefault/No Setting:                       ""
+*MediaType PlainPaper/Plain Paper (60-90g/m2):                          "<</MediaType (Plain)>> setpagedevice"
+*MediaType Recycled/Recycled (60-90g/m2):                               "<</MediaType (Recycled)>> setpagedevice"
+*MediaType ThickStock1/Thick 1 (91-150g/m2):                "<</MediaType (Heavy)>> setpagedevice"
+*MediaType ThickStock2/Thick 2 (151-210g/m2):               "<</MediaType (Card Stock)>> setpagedevice"
+*MediaType Glossy/Glossy1 (100-128g/m2):                    "<</MediaType (Gloss)>> setpagedevice"
+*MediaType Glossy2/Glossy2 (129-158g/m2):                   "<</MediaType (Gloss2)>> setpagedevice"
+*MediaType Envelope/Envelope:                               "<</MediaType (Envelope)>> setpagedevice"
+*MediaType LabelStock/Label:                                "<</MediaType (Labels)>> setpagedevice"
+*MediaType Postcard/Postcard:                               "<</MediaType (Postcard)>> setpagedevice"
+*MediaType Letterhead/Letterhead:                           "<</MediaType (Letterhead)>> setpagedevice"
+*MediaType SingleSidedOnly/Single Side Only (60-90g/m2):    "<</MediaType (SingleSidedOnly)>> setpagedevice"
+*MediaType Special/Special Paper (60-90g/m2):               "<</MediaType (Special)>> setpagedevice"
+*CloseUI: *MediaType
+
+*% === Resolution ===============================
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 600dpi
+*Resolution 600dpi/600dpi:                                  "<</HWResolution [600 600]>> setpagedevice"
+*Resolution 1200dpi/1200dpi (High Quality):                 "<</HWResolution [1200 1200]>> setpagedevice"
+*CloseUI: *Resolution
+
+*%---------------------------------------------------------
+*%-----------   Paper Group   -----------------------------
+*%---------------------------------------------------------
+
+*OpenUI *PageSize/Paper Size: PickOne
+*OrderDependency: 40 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter/Letter:                                    "<</PageSize [612 792]>> setpagedevice"
+*PageSize Legal/Legal:                                      "<</PageSize [612 1008]>> setpagedevice"
+*PageSize Statement/Statement:                              "<</PageSize [396 612]>> setpagedevice"
+*PageSize Executive/Executive:                              "<</PageSize [522 756]>> setpagedevice"
+*PageSize 8.5x13.5/8 1/2x13 1/2:                            "<</PageSize [612 972]>> setpagedevice"
+*PageSize 8.125x13.25/8 1/8x13 1/4:                         "<</PageSize [585 954]>> setpagedevice"
+*PageSize A4/A4:                                            "<</PageSize [595 842]>> setpagedevice"
+*PageSize A5/A5:                                            "<</PageSize [420 595]>> setpagedevice"
+*PageSize A6/A6:                                            "<</PageSize [298 420]>> setpagedevice"
+*PageSize B5/B5 (JIS):                                      "<</PageSize [516 729]>> setpagedevice"
+*PageSize ISOB5/B5 (ISO):                                   "<</PageSize [499 709]>> setpagedevice"
+*PageSize B6/B6:                                            "<</PageSize [362 512]>> setpagedevice"
+*PageSize A4Plus/Folio:                                     "<</PageSize [595 935]>> setpagedevice"
+*PageSize LetterPlus/SP Folio:                              "<</PageSize [612 914]>> setpagedevice"
+*PageSize Foolscap/Foolscap:                                "<</PageSize [576 936]>> setpagedevice"
+*PageSize UKQuarto/UK Quarto:                               "<</PageSize [576 720]>> setpagedevice"
+*PageSize GLetter/Government Letter:                        "<</PageSize [576 756]>> setpagedevice"
+*PageSize GLegal/Government Legal:                          "<</PageSize [612 935]>> setpagedevice"
+*PageSize 4x6/4x6 Postcard:                                 "<</PageSize [288 432]>> setpagedevice"
+*PageSize Com10/Envelope Com10:                             "<</PageSize [297 684]>> setpagedevice"
+*PageSize EnvDL/Envelope DL:                                "<</PageSize [312 624]>> setpagedevice"
+*PageSize EnvC6/Envelope C6:                                "<</PageSize [323 459]>> setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch:                      "<</PageSize [279 540]>> setpagedevice"
+*PageSize EnvChou3/Envelope Chou #3:                        "<</PageSize [340 666]>> setpagedevice"
+*PageSize EnvChou4/Envelope Chou #4:                        "<</PageSize [255 581]>> setpagedevice"
+*PageSize JPostcard/Japanese Postcard:                      "<</PageSize [284 419]>> setpagedevice"
+*PageSize JPostcardD/Japanese Postcard-D:                   "<</PageSize [420 567]>> setpagedevice"
+*PageSize 16K/16K:                                          "<</PageSize [553 765]>> setpagedevice"
+*PageSize Kai16/Kai 16:                                     "<</PageSize [524 737]>> setpagedevice"
+*PageSize Kai32/Kai 32:                                     "<</PageSize [369 524]>> setpagedevice"
+*CloseUI: *PageSize
+
+*UseHWMargins True:                 ""
+*DefaultUseHWMargins:               True
+*HWMargins:                         12 12 12 12
+*LeadingEdge Short:                 ""
+*DefaultLeadingEdge:                Short
+*MaxMediaWidth:                     "613"
+*MaxMediaHeight:                    "1010"
+*ParamCustomPageSize Height:        1 points 419.53 1009.13
+*ParamCustomPageSize Width:         2 points 260.79 612.28
+*ParamCustomPageSize WidthOffset:   3 points 0 0
+*ParamCustomPageSize HeightOffset:  4 points 0 0
+*ParamCustomPageSize Orientation:   5 int 0 1
+
+*NonUIOrderDependency: 44 AnySetup *CustomPageSize
+*CustomPageSize True: "
+pop pop pop
+exch
+  <<
+    /CustomPageSize [5 -2 roll]
+    /ImagingBBox null
+  >> setpagedevice"
+*End
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 45 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter/Letter:                                  "<</PageSize [612 792]>> setpagedevice"
+*PageRegion Legal/Legal:                                    "<</PageSize [612 1008]>> setpagedevice"
+*PageRegion Statement/Statement:                            "<</PageSize [396 612]>> setpagedevice"
+*PageRegion Executive/Executive:                            "<</PageSize [522 756]>> setpagedevice"
+*PageRegion 8.5x13.5/8 1/2x13 1/2:                          "<</PageSize [612 972]>> setpagedevice"
+*PageRegion 8.125x13.25/8 1/8x13 1/4:                       "<</PageSize [585 954]>> setpagedevice"
+*PageRegion A4/A4:                                          "<</PageSize [595 842]>> setpagedevice"
+*PageRegion A5/A5:                                          "<</PageSize [420 595]>> setpagedevice"
+*PageRegion A6/A6:                                          "<</PageSize [298 420]>> setpagedevice"
+*PageRegion B5/B5 (JIS):                                    "<</PageSize [516 729]>> setpagedevice"
+*PageRegion ISOB5/B5 (ISO):                                 "<</PageSize [499 709]>> setpagedevice"
+*PageRegion B6/B6:                                          "<</PageSize [362 512]>> setpagedevice"
+*PageRegion A4Plus/Folio:                                   "<</PageSize [595 935]>> setpagedevice"
+*PageRegion LetterPlus/SP Folio:                            "<</PageSize [612 914]>> setpagedevice"
+*PageRegion Foolscap/Foolscap:                              "<</PageSize [576 936]>> setpagedevice"
+*PageRegion UKQuarto/UK Quarto:                             "<</PageSize [576 720]>> setpagedevice"
+*PageRegion GLetter/Government Letter:                      "<</PageSize [576 756]>> setpagedevice"
+*PageRegion GLegal/Government Legal:                        "<</PageSize [612 935]>> setpagedevice"
+*PageRegion 4x6/4x6 Postcard:                               "<</PageSize [288 432]>> setpagedevice"
+*PageRegion Com10/Envelope Com10:                           "<</PageSize [297 684]>> setpagedevice"
+*PageRegion EnvDL/Envelope DL:                              "<</PageSize [312 624]>> setpagedevice"
+*PageRegion EnvC6/Envelope C6:                              "<</PageSize [323 459]>> setpagedevice"
+*PageRegion EnvMonarch/Envelope Monarch:                    "<</PageSize [279 540]>> setpagedevice"
+*PageRegion EnvChou3/Envelope Chou #3:                      "<</PageSize [340 666]>> setpagedevice"
+*PageRegion EnvChou4/Envelope Chou #4:                      "<</PageSize [255 581]>> setpagedevice"
+*PageRegion JPostcard/Japanese Postcard:                    "<</PageSize [284 419]>> setpagedevice"
+*PageRegion JPostcardD/Japanese Postcard-D:                 "<</PageSize [420 567]>> setpagedevice"
+*PageRegion 16K/16K:                                        "<</PageSize [553 765]>> setpagedevice"
+*PageRegion Kai16/Kai 16:                                   "<</PageSize [524 737]>> setpagedevice"
+*PageRegion Kai32/Kai 32:                                   "<</PageSize [369 524]>> setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: A4
+*ImageableArea Letter/Letter:                               "12 12 600 780"
+*ImageableArea Legal/Legal:                                 "12 12 600 996"
+*ImageableArea Statement/Statement:                         "12 12 384 600"
+*ImageableArea Executive/Executive:                         "12 12 510 744"
+*ImageableArea 8.5x13.5/8 1/2x13 1/2:                       "12 12 600 960"
+*ImageableArea 8.125x13.25/8 1/8x13 1/4:                    "12 12 573 942"
+*ImageableArea A4/A4:                                       "12 12 583 830"
+*ImageableArea A5/A5:                                       "12 12 408 583"
+*ImageableArea A6/A6:                                       "12 12 286 408"
+*ImageableArea B5/B5 (JIS):                                 "12 12 504 717"
+*ImageableArea ISOB5/B5 (ISO):                              "12 12 487 697"
+*ImageableArea B6/B6:                                       "12 12 350 500"
+*ImageableArea A4Plus/Folio:                                "12 12 583 923"
+*ImageableArea LetterPlus/SP Folio:                         "12 12 600 902"
+*ImageableArea Foolscap/Foolscap:                           "12 12 564 924"
+*ImageableArea UKQuarto/UK Quarto:                          "12 12 564 708"
+*ImageableArea GLetter/Government Letter:                   "12 12 564 744"
+*ImageableArea GLegal/Government Legal:                     "12 12 600 923"
+*ImageableArea 4x6/4x6 Postcard:                            "12 12 276 420"
+*ImageableArea Com10/Envelope Com10:                        "12 12 285 672"
+*ImageableArea EnvDL/Envelope DL:                           "12 12 300 612"
+*ImageableArea EnvC6/Envelope C6:                           "12 12 311 447"
+*ImageableArea EnvMonarch/Envelope Monarch:                 "12 12 267 528"
+*ImageableArea EnvChou3/Envelope Chou #3:                   "12 12 328 654"
+*ImageableArea EnvChou4/Envelope Chou #4:                   "12 12 243 569"
+*ImageableArea JPostcard/Japanese Postcard:                 "12 12 272 407"
+*ImageableArea JPostcardD/Japanese Postcard-D:              "12 12 408 555"
+*ImageableArea 16K/16K:                                     "12 12 541 753"
+*ImageableArea Kai16/Kai 16:                                "12 12 512 725"
+*ImageableArea Kai32/Kai 32:                                "12 12 357 512"
+
+*DefaultPaperDimension: A4
+*PaperDimension Letter/Letter:                              "612 792"
+*PaperDimension Legal/Legal:                                "612 1008"
+*PaperDimension Statement/Statement:                        "396 612"
+*PaperDimension Executive/Executive:                        "522 756"
+*PaperDimension 8.5x13.5/8 1/2x13 1/2:                      "612 972"
+*PaperDimension 8.125x13.25/8 1/8x13 1/4:                   "585 954"
+*PaperDimension A4/A4:                                      "595 842"
+*PaperDimension A5/A5:                                      "420 595"
+*PaperDimension A6/A6:                                      "298 420"
+*PaperDimension B5/B5 (JIS):                                "516 729"
+*PaperDimension ISOB5/B5 (ISO):                             "499 709"
+*PaperDimension B6/B6:                                      "362 512"
+*PaperDimension A4Plus/Folio:                               "595 935"
+*PaperDimension LetterPlus/SP Folio:                        "612 914"
+*PaperDimension Foolscap/Foolscap:                          "576 936"
+*PaperDimension UKQuarto/UK Quarto:                         "576 720"
+*PaperDimension GLetter/Government Letter:                  "576 756"
+*PaperDimension GLegal/Government Legal:                    "612 935"
+*PaperDimension 4x6/4x6 Postcard:                           "288 432"
+*PaperDimension Com10/Envelope Com10:                       "297 684"
+*PaperDimension EnvDL/Envelope DL:                          "312 624"
+*PaperDimension EnvC6/Envelope C6:                          "323 459"
+*PaperDimension EnvMonarch/Envelope Monarch:                "279 540"
+*PaperDimension EnvChou3/Envelope Chou #3:                  "340 666"
+*PaperDimension EnvChou4/Envelope Chou #4:                  "255 581"
+*PaperDimension JPostcard/Japanese Postcard:                "284 419"
+*PaperDimension JPostcardD/Japanese Postcard-D:             "420 567"
+*PaperDimension 16K/16K:                                    "553 765"
+*PaperDimension Kai16/Kai 16:                               "524 737"
+*PaperDimension Kai32/Kai 32:                               "369 524"
+
+*%---------------------------------------------------------
+*%-----------   Printer Features Group   ------------------
+*%---------------------------------------------------------
+
+*% === Nearest Size and Scale ===================
+*OpenUI *KMNearestSize/Nearest Size and Scale: Boolean
+*OrderDependency: 10 AnySetup *KMNearestSize
+*DefaultKMNearestSize: False
+*KMNearestSize False/Off:                                   "<</DeferredMediaSelection true>> setpagedevice"
+*KMNearestSize True/On:                                     "<</DeferredMediaSelection false>> setpagedevice
+ <</Policies <</PageSize 3>>
+ >> setpagedevice"
+*End
+*CloseUI: *KMNearestSize
+
+*% === Manually Print on 2nd Side ===============
+*OpenUI *KMPrintOnBackside/Manually Print on 2nd Side: Boolean
+*OrderDependency: 12 AnySetup *KMPrintOnBackside
+*DefaultKMPrintOnBackside: False
+*KMPrintOnBackside False/Off:                               "<</PrintOnBackside false>> setpagedevice"
+*KMPrintOnBackside True/On:                                 "<</PrintOnBackside true>> setpagedevice"
+*CloseUI: *KMPrintOnBackside
+
+*% === Print Type ===============================
+*OpenUI *KMDuplex/Print Type: PickOne
+*OrderDependency: 15 AnySetup *KMDuplex
+*DefaultKMDuplex: 2Sided
+*KMDuplex 1Sided/1-Sided:                                   "<</Duplex false>> setpagedevice"
+*KMDuplex 2Sided/2-Sided:                                   "<</Duplex true>> setpagedevice"
+*CloseUI: *KMDuplex
+
+*% === Orientation ==============================
+*OpenUI *KMOrientation/Original Orientation: PickOne
+*OrderDependency: 35 AnySetup *KMOrientation
+*DefaultKMOrientation: Portrait
+*KMOrientation Portrait/Portrait:                           "<</PclOrientation 0>> setpagedevice"
+*KMOrientation Landscape/Landscape:                         "<</PclOrientation 1>> setpagedevice"
+*CloseUI: *KMOrientation
+
+*% === Binding Position =========================
+*OpenUI *KMBinding/Binding Position: PickOne
+*OrderDependency: 15 AnySetup *KMBinding
+*DefaultKMBinding: LeftBinding
+*KMBinding LeftBinding/Left Bind:                           "<</Binding 0>> setpagedevice"
+*KMBinding TopBinding/Top Bind:                             "<</Binding 2>> setpagedevice"
+*KMBinding RightBinding/Right Bind:                         "<</Binding 1>> setpagedevice"
+*CloseUI: *KMBinding
+
+*% === Select Color =============================
+*OpenUI *KMSelectColor/Select Color: PickOne
+*OrderDependency: 64 AnySetup *KMSelectColor
+*DefaultKMSelectColor: True
+*KMSelectColor True/Auto Color:                             "<</ProcessColorModel /DeviceCMYK>>setpagedevice
+ <</EdgeMatching 1>> setpagedevice"
+*End
+*KMSelectColor False/Gray Scale:                            "<< /ProcessColorModel /DeviceGray>> setpagedevice
+ <</EdgeMatching 1>> setpagedevice"
+*End
+*CloseUI: *KMSelectColor
+
+*% === Glossy Mode ==============================
+*%OpenUI *KMGlossyMode/Glossy Mode: Boolean
+*%OrderDependency: 10 AnySetup *KMGlossyMode
+*%DefaultKMGlossyMode: False
+*%KMGlossyMode False/Off:                                    "<</GlossyMode false>> setpagedevice"
+*%KMGlossyMode True/On:                                      "<</GlossyMode true>> setpagedevice"
+*%CloseUI: *KMGlossyMode
+
+*%==== Edge Strength ============================
+*OpenUI *KMEdgeType/Edge Strength: PickOne
+*OrderDependency: 100 AnySetup *KMEdgeType
+*DefaultKMEdgeType: LEVEL2
+*KMEdgeType OFF/Off: "statusdict /setedgeenhtype known {statusdict begin 0 setedgeenhtype end} if"
+*KMEdgeType LEVEL1/Low: "statusdict /setedgeenhtype known {statusdict begin 1 setedgeenhtype end} if"
+*KMEdgeType LEVEL2/Middle: "statusdict /setedgeenhtype known {statusdict begin 2 setedgeenhtype end} if"
+*KMEdgeType LEVEL3/High: "statusdict /setedgeenhtype known {statusdict begin 3 setedgeenhtype end} if"
+*CloseUI: *KMEdgeType
+
+*%---------------------------------------------------------
+*%-----------   Image Options Group   ---------------------
+*%---------------------------------------------------------
+
+*OpenGroup: *KMImageOptions/Image Options
+
+*% === Image RGB Source =========================
+*OpenUI *KMImageRGBSource/Image RGB Source: PickOne
+*OrderDependency: 70 AnySetup *KMImageRGBSource
+*DefaultKMImageRGBSource: sRGB
+*KMImageRGBSource None/None:"statusdict /setsourceprofileex known {statusdict begin 2 (DEVICE) setsourceprofileex end} if"
+*KMImageRGBSource sRGB/sRGB:"statusdict /setsourceprofileex known {statusdict begin 2 (sRGB) setsourceprofileex end} if"
+*KMImageRGBSource AdobeRGB/Adobe RGB (1998):"statusdict /setsourceprofileex known {statusdict begin 2 (AdobeRGB1998) setsourceprofileex end} if"
+*KMImageRGBSource AppleRGB/Apple RGB:"statusdict /setsourceprofileex known {statusdict begin 2 (AppleRGB) setsourceprofileex end} if"
+*KMImageRGBSource ColorMatch/ColorMatch RGB:"statusdict /setsourceprofileex known {statusdict begin 2 (ColorMatchRGB) setsourceprofileex end} if"
+*KMImageRGBSource baRGB/Blue Adjust RGB:"statusdict /setsourceprofileex known {statusdict begin 2 (BlueAdjustRGB) setsourceprofileex end} if"
+*CloseUI: *KMImageRGBSource
+
+*% === Image RGB Intent =========================
+*OpenUI *KMImageRGBIntent/Image RGB Intent: PickOne
+*OrderDependency: 72 AnySetup *KMImageRGBIntent
+*DefaultKMImageRGBIntent: Picture
+*KMImageRGBIntent Business/Vivid:"statusdict /setintent known {statusdict begin 2 2 setintent end} if"
+*KMImageRGBIntent Picture/Photographic:"statusdict /setintent known {statusdict begin 2 0 setintent end} if"
+*KMImageRGBIntent Proof/Relative Color:"statusdict /setintent known {statusdict begin 2 1 setintent end} if"
+*KMImageRGBIntent Match/Absolute Color:"statusdict /setintent known {statusdict begin 2 3 setintent end} if"
+*CloseUI: *KMImageRGBIntent
+
+*% === Image RGB Gray Treatment =================
+*OpenUI *KMImageRGBGrayTreatment/Image RGB Gray Treatment: PickOne
+*OrderDependency: 74 AnySetup *KMImageRGBGrayTreatment
+*DefaultKMImageRGBGrayTreatment: BlackGray
+*KMImageRGBGrayTreatment CompBlack/Composite Black:"statusdict /setrgbblack known {statusdict begin 2 2 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 2 (Automatic) setdestinationprofileex end} if"
+*End
+*KMImageRGBGrayTreatment BlackGray/Black and Gray:"statusdict /setrgbblack known {statusdict begin 2 1 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 2 (Automatic) setdestinationprofileex end} if"
+*End
+*KMImageRGBGrayTreatment BlackOnly/Black Only:"statusdict /setrgbblack known {statusdict begin 2 0 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 2 (Automatic) setdestinationprofileex end} if"
+*End
+*CloseUI: *KMImageRGBGrayTreatment
+
+*% === Image Halftone ===========================
+*OpenUI *KMImageHalftones/Image Halftone: PickOne
+*OrderDependency: 76 AnySetup *KMImageHalftones
+*DefaultKMImageHalftones: Detail
+*KMImageHalftones Smooth/Smooth: "statusdict /sethalftoneex known {statusdict begin 2 0 sethalftoneex end} if"
+*KMImageHalftones Detail/Detail: "statusdict /sethalftoneex known {statusdict begin 2 1 sethalftoneex end} if"
+*KMImageHalftones UltraDetail/Line Art: "statusdict /sethalftoneex known {statusdict begin 2 2 sethalftoneex end} if"
+*CloseUI: *KMImageHalftones
+
+*% === Image Edge Enhancement ===================
+*OpenUI *KMImageEdge/Image Edge Enhancement: Boolean
+*OrderDependency: 78 AnySetup *KMImageEdge
+*DefaultKMImageEdge: False
+*KMImageEdge False/Off: "statusdict /setedgeenhance known {statusdict begin 2 0 setedgeenhance end} if"
+*KMImageEdge True/On: "statusdict /setedgeenhance known {statusdict begin 2 1 setedgeenhance end} if"
+*CloseUI: *KMImageEdge
+
+*CloseGroup: *KMImageOptions
+
+*%---------------------------------------------------------
+*%-----------   Text Options Group   ----------------------
+*%---------------------------------------------------------
+
+*OpenGroup: *KMTextOptions/Text Options
+
+*% === Text RGB Source ==========================
+*OpenUI *KMTextRGBSource/Text RGB Source: PickOne
+*OrderDependency: 80 AnySetup *KMTextRGBSource
+*DefaultKMTextRGBSource: sRGB
+*KMTextRGBSource None/None:"statusdict /setsourceprofileex known {statusdict begin 1 (DEVICE) setsourceprofileex end} if"
+*KMTextRGBSource sRGB/sRGB:"statusdict /setsourceprofileex known {statusdict begin 1 (sRGB) setsourceprofileex end} if"
+*KMTextRGBSource AdobeRGB/Adobe RGB (1998):"statusdict /setsourceprofileex known {statusdict begin 1 (AdobeRGB1998) setsourceprofileex end} if"
+*KMTextRGBSource AppleRGB/Apple RGB:"statusdict /setsourceprofileex known {statusdict begin 1 (AppleRGB) setsourceprofileex end} if"
+*KMTextRGBSource ColorMatch/ColorMatch RGB:"statusdict /setsourceprofileex known {statusdict begin 1 (ColorMatchRGB) setsourceprofileex end} if"
+*KMTextRGBSource baRGB/Blue Adjust RGB:"statusdict /setsourceprofileex known {statusdict begin 1 (BlueAdjustRGB) setsourceprofileex end} if"
+*CloseUI: *KMTextRGBSource
+
+*% === Text RGB Intent ==========================
+*OpenUI *KMTextRGBIntent/Text RGB Intent: PickOne
+*OrderDependency: 82 AnySetup *KMTextRGBIntent
+*DefaultKMTextRGBIntent: Business
+*KMTextRGBIntent Business/Vivid:"statusdict /setintent known {statusdict begin 1 2 setintent end} if"
+*KMTextRGBIntent Picture/Photographic:"statusdict /setintent known {statusdict begin 1 0 setintent end} if"
+*KMTextRGBIntent Proof/Relative Color:"statusdict /setintent known {statusdict begin 1 1 setintent end} if"
+*KMTextRGBIntent Match/Absolute Color:"statusdict /setintent known {statusdict begin 1 3 setintent end} if"
+*CloseUI: *KMTextRGBIntent
+
+*% === Text RGB Gray Treatment ==================
+*OpenUI *KMTextRGBGrayTreatment/Text RGB Gray Treatment: PickOne
+*OrderDependency: 84 AnySetup *KMTextRGBGrayTreatment
+*DefaultKMTextRGBGrayTreatment: BlackGray
+*KMTextRGBGrayTreatment CompBlack/Composite Black:"statusdict /setrgbblack known {statusdict begin 1 2 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 1 (Automatic) setdestinationprofileex end} if"
+*End
+*KMTextRGBGrayTreatment BlackGray/Black and Gray:"statusdict /setrgbblack known {statusdict begin 1 1 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 1 (Automatic) setdestinationprofileex end} if"
+*End
+*KMTextRGBGrayTreatment BlackOnly/Black Only:"statusdict /setrgbblack known {statusdict begin 1 0 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 1 (Automatic) setdestinationprofileex end} if"
+*End
+*CloseUI: *KMTextRGBGrayTreatment
+
+*% === Text Halftone ============================
+*OpenUI *KMTextHalftones/Text Halftone: PickOne
+*OrderDependency: 86 AnySetup *KMTextHalftones
+*DefaultKMTextHalftones: UltraDetail
+*KMTextHalftones Smooth/Smooth: "statusdict /sethalftoneex known {statusdict begin 1 0 sethalftoneex end} if"
+*KMTextHalftones Detail/Detail: "statusdict /sethalftoneex known {statusdict begin 1 1 sethalftoneex end} if"
+*KMTextHalftones UltraDetail/Line Art: "statusdict /sethalftoneex known {statusdict begin 1 2 sethalftoneex end} if"
+*CloseUI: *KMTextHalftones
+
+*% === Text Edge Enhancement ====================
+*OpenUI *KMTextEdge/Text Edge Enhancement: Boolean
+*OrderDependency: 88 AnySetup *KMTextEdge
+*DefaultKMTextEdge: True
+*KMTextEdge False/Off: "statusdict /setedgeenhance known {statusdict begin 1 0 setedgeenhance end} if"
+*KMTextEdge True/On: "statusdict /setedgeenhance known {statusdict begin 1 1 setedgeenhance end} if"
+*CloseUI: *KMTextEdge
+
+*CloseGroup: *KMTextOptions
+
+*%---------------------------------------------------------
+*%-----------   Graphics Options Group   ------------------
+*%---------------------------------------------------------
+
+*OpenGroup: *KMGraphicsOptions/Graphics Options
+
+*% === Graphics RGB Source ======================
+*OpenUI *KMGraphicsRGBSource/Graphics RGB Source: PickOne
+*OrderDependency: 90 AnySetup *KMGraphicsRGBSource
+*DefaultKMGraphicsRGBSource: sRGB
+*KMGraphicsRGBSource None/None:"statusdict /setsourceprofileex known {statusdict begin 3 (DEVICE) setsourceprofileex end} if"
+*KMGraphicsRGBSource sRGB/sRGB:"statusdict /setsourceprofileex known {statusdict begin 3 (sRGB) setsourceprofileex end} if"
+*KMGraphicsRGBSource AdobeRGB/Adobe RGB (1998):"statusdict /setsourceprofileex known {statusdict begin 3 (AdobeRGB1998) setsourceprofileex end} if"
+*KMGraphicsRGBSource AppleRGB/Apple RGB:"statusdict /setsourceprofileex known {statusdict begin 3 (AppleRGB) setsourceprofileex end} if"
+*KMGraphicsRGBSource ColorMatch/ColorMatch RGB:"statusdict /setsourceprofileex known {statusdict begin 3 (ColorMatchRGB) setsourceprofileex end} if"
+*KMGraphicsRGBSource baRGB/Blue Adjust RGB:"statusdict /setsourceprofileex known {statusdict begin 3 (BlueAdjustRGB) setsourceprofileex end} if"
+*CloseUI: *KMGraphicsRGBSource
+
+*% === Graphics RGB Intent ======================
+*OpenUI *KMGraphicsRGBIntent/Graphics RGB Intent: PickOne
+*OrderDependency: 91 AnySetup *KMGraphicsRGBIntent
+*DefaultKMGraphicsRGBIntent: Business
+*KMGraphicsRGBIntent Business/Vivid:"statusdict /setintent known {statusdict begin 3 2 setintent end} if"
+*KMGraphicsRGBIntent Picture/Photographic:"statusdict /setintent known {statusdict begin 3 0 setintent end} if"
+*KMGraphicsRGBIntent Proof/Relative Color:"statusdict /setintent known {statusdict begin 3 1 setintent end} if"
+*KMGraphicsRGBIntent Match/Absolute Color:"statusdict /setintent known {statusdict begin 3 3 setintent end} if"
+*CloseUI: *KMGraphicsRGBIntent
+
+*% === Graphics RGB Gray Treatment ==============
+*OpenUI *KMGraphicsRGBGrayTreatment/Graphics RGB Gray Treatment: PickOne
+*OrderDependency: 92 AnySetup *KMGraphicsRGBGrayTreatment
+*DefaultKMGraphicsRGBGrayTreatment: BlackGray
+*KMGraphicsRGBGrayTreatment CompBlack/Composite Black:"statusdict /setrgbblack known {statusdict begin 3 2 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 3 (Automatic) setdestinationprofileex end} if"
+*End
+*KMGraphicsRGBGrayTreatment BlackGray/Black and Gray:"statusdict /setrgbblack known {statusdict begin 3 1 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 3 (Automatic) setdestinationprofileex end} if"
+*End
+*KMGraphicsRGBGrayTreatment BlackOnly/Black Only:"statusdict /setrgbblack known {statusdict begin 3 0 setrgbblack end} if
+statusdict /setdestinationprofileex known {statusdict begin 3 (Automatic) setdestinationprofileex end} if"
+*End
+*CloseUI: *KMGraphicsRGBGrayTreatment
+
+*% === Graphics Halftone ========================
+*OpenUI *KMGraphicsHalftones/Graphics Halftone: PickOne
+*OrderDependency: 93 AnySetup *KMGraphicsHalftones
+*DefaultKMGraphicsHalftones: Detail
+*KMGraphicsHalftones Smooth/Smooth: "statusdict /sethalftoneex known {statusdict begin 3 0 sethalftoneex end} if"
+*KMGraphicsHalftones Detail/Detail: "statusdict /sethalftoneex known {statusdict begin 3 1 sethalftoneex end} if"
+*KMGraphicsHalftones UltraDetail/Line Art: "statusdict /sethalftoneex known {statusdict begin 3 2 sethalftoneex end} if"
+*CloseUI: *KMGraphicsHalftones
+
+*% === Graphics Edge Enhancement ================
+*OpenUI *KMGraphicsEdge/Graphics Edge Enhancement: Boolean
+*OrderDependency: 94 AnySetup *KMGraphicsEdge
+*DefaultKMGraphicsEdge: True
+*KMGraphicsEdge False/Off: "statusdict /setedgeenhance known {statusdict begin 3 0 setedgeenhance end} if"
+*KMGraphicsEdge True/On: "statusdict /setedgeenhance known {statusdict begin 3 1 setedgeenhance end} if"
+*CloseUI: *KMGraphicsEdge
+
+*CloseGroup: *KMGraphicsOptions
+
+*%---------------------------------------------------------
+*%-----------   Simulation Options Group   ----------------
+*%---------------------------------------------------------
+
+*OpenGroup: *KMSimultaionGroup/Simulation
+
+*% === Simulation Profile =======================
+*OpenUI *KMSimProfile/Simulation Profile: PickOne
+*OrderDependency: 110 AnySetup *KMSimProfile
+*DefaultKMSimProfile: None
+*KMSimProfile None/None:"statusdict /setsimulationprofile known {statusdict begin (None) setsimulationprofile end} if"
+*KMSimProfile SWOP/SWOP:"statusdict /setsimulationprofile known {statusdict begin (SWOP) setsimulationprofile end} if"
+*KMSimProfile Euroscale/Euroscale:"statusdict /setsimulationprofile known {statusdict begin (Euroscale) setsimulationprofile end} if"
+*KMSimProfile Commercial/Commercial Press:"statusdict /setsimulationprofile known {statusdict begin (CommercialPress) setsimulationprofile end} if"
+*KMSimProfile DIC/DIC:"statusdict /setsimulationprofile known {statusdict begin (DIC) setsimulationprofile end} if"
+*KMSimProfile TOYO/TOYO:"statusdict /setsimulationprofile known {statusdict begin (TOYO) setsimulationprofile end} if"
+*KMSimProfile JapanColor/Japan Color:"statusdict /setsimulationprofile known {statusdict begin (JapanColor) setsimulationprofile end} if"
+*CloseUI: *KMSimProfile
+
+*% === Match Paper Color ========================
+*OpenUI *KMMatchPaperColor/Match Paper Color: PickOne
+*OrderDependency: 112 AnySetup *KMMatchPaperColor
+*DefaultKMMatchPaperColor: OFF
+*KMMatchPaperColor OFF/Off:"statusdict /setsimulationintent known {statusdict begin 1 setsimulationintent end} if"
+*KMMatchPaperColor ON/On:"statusdict /setsimulationintent known {statusdict begin 3 setsimulationintent end} if"
+*CloseUI: *KMMatchPaperColor
+
+*% === CMYK Gray Treatment ======================
+*OpenUI *KMCMYKGrayTreatment/CMYK Gray Treatment: PickOne
+*OrderDependency: 114 AnySetup *KMCMYKGrayTreatment
+*DefaultKMCMYKGrayTreatment: CompBlack
+*KMCMYKGrayTreatment CompBlack/Composite Black:"statusdict /setsimblack known {statusdict begin 2 setsimblack end} if"
+*KMCMYKGrayTreatment BlackGray/Black and Gray:"statusdict /setsimblack known {statusdict begin 1 setsimblack end} if"
+*KMCMYKGrayTreatment BlackOnly/Black Only:"statusdict /setsimblack known {statusdict begin 0 setsimblack end} if"
+*CloseUI: *KMCMYKGrayTreatment
+
+*CloseGroup: *KMSimultaionGroup
+
+*%---------------------------------------------------------
+*%-----------   User Constraints   ------------------------
+*%---------------------------------------------------------
+
+*% === PaperSourceUnit - InputSlot ====================
+*UIConstraints: *PaperSourceUnit None                       *InputSlot Tray2
+
+*UIConstraints: *InputSlot Tray2                            *PaperSourceUnit None
+
+*% === OptionalDisk - Collate =========================
+*UIConstraints: *OptionalDisk None                          *Collate True
+
+*UIConstraints: *Collate True                               *OptionalDisk None
+
+*% === MediaType - InputSlot ==========================
+*UIConstraints: *MediaType Envelope                         *InputSlot Tray1
+
+*UIConstraints: *InputSlot Tray1                            *MediaType Envelope
+
+*UIConstraints: *MediaType ThickStock1                      *InputSlot Tray2
+*UIConstraints: *MediaType ThickStock2                      *InputSlot Tray2
+*UIConstraints: *MediaType Glossy                           *InputSlot Tray2
+*UIConstraints: *MediaType Glossy2                          *InputSlot Tray2
+*UIConstraints: *MediaType Envelope                         *InputSlot Tray2
+*UIConstraints: *MediaType LabelStock                       *InputSlot Tray2
+*%*UIConstraints: *MediaType Letterhead                       *InputSlot Tray2
+*UIConstraints: *MediaType Postcard                         *InputSlot Tray2
+
+*UIConstraints: *InputSlot Tray2                            *MediaType ThickStock1
+*UIConstraints: *InputSlot Tray2                            *MediaType ThickStock2
+*UIConstraints: *InputSlot Tray2                            *MediaType Glossy
+*UIConstraints: *InputSlot Tray2                            *MediaType Glossy2
+*UIConstraints: *InputSlot Tray2                            *MediaType Envelope
+*UIConstraints: *InputSlot Tray2                            *MediaType LabelStock
+*%*UIConstraints: *InputSlot Tray2                            *MediaType Letterhead
+*UIConstraints: *InputSlot Tray2                            *MediaType Postcard
+
+*% === MediaType - KMDuplex ===========================
+*UIConstraints: *MediaType Glossy                           *KMDuplex 2Sided
+*UIConstraints: *MediaType Glossy2                          *KMDuplex 2Sided
+*UIConstraints: *MediaType Envelope                         *KMDuplex 2Sided
+*UIConstraints: *MediaType LabelStock                       *KMDuplex 2Sided
+*UIConstraints: *MediaType Postcard                         *KMDuplex 2Sided
+*%*UIConstraints: *MediaType Letterhead                       *KMDuplex 2Sided
+*UIConstraints: *MediaType SingleSidedOnly                  *KMDuplex 2Sided
+
+*UIConstraints: *KMDuplex 2Sided                            *MediaType Glossy
+*UIConstraints: *KMDuplex 2Sided                            *MediaType Glossy2
+*UIConstraints: *KMDuplex 2Sided                            *MediaType Envelope
+*UIConstraints: *KMDuplex 2Sided                            *MediaType LabelStock
+*%*UIConstraints: *KMDuplex 2Sided                            *MediaType Letterhead
+*UIConstraints: *KMDuplex 2Sided                            *MediaType Postcard
+*UIConstraints: *KMDuplex 2Sided                            *MediaType SingleSidedOnly
+
+*% === PageSize - InputSlot ===========================
+*UIConstraints: *PageSize LetterPlus                        *InputSlot Tray1
+*UIConstraints: *PageSize Legal                             *InputSlot Tray1
+*UIConstraints: *PageSize Foolscap                          *InputSlot Tray1
+*UIConstraints: *PageSize GLegal                            *InputSlot Tray1
+*UIConstraints: *PageSize A4Plus                            *InputSlot Tray1
+*UIConstraints: *PageSize 8.5x13.5                          *InputSlot Tray1
+*UIConstraints: *PageSize 8.125x13.25                       *InputSlot Tray1
+*%UIConstraints: *PageSize JPostcard                         *InputSlot Tray1
+*%UIConstraints: *PageSize JPostcardD                        *InputSlot Tray1
+*UIConstraints: *PageSize ISOB5                             *InputSlot Tray1
+*UIConstraints: *PageSize Com10                             *InputSlot Tray1
+*UIConstraints: *PageSize EnvMonarch                        *InputSlot Tray1
+*UIConstraints: *PageSize EnvDL                             *InputSlot Tray1
+*UIConstraints: *PageSize EnvC6                             *InputSlot Tray1
+*UIConstraints: *PageSize EnvChou3                          *InputSlot Tray1
+*UIConstraints: *PageSize EnvChou4                          *InputSlot Tray1
+
+*UIConstraints: *PageRegion LetterPlus                      *InputSlot Tray1
+*UIConstraints: *PageRegion Legal                           *InputSlot Tray1
+*UIConstraints: *PageRegion Foolscap                        *InputSlot Tray1
+*UIConstraints: *PageRegion GLegal                          *InputSlot Tray1
+*UIConstraints: *PageRegion A4Plus                          *InputSlot Tray1
+*UIConstraints: *PageRegion 8.5x13.5                        *InputSlot Tray1
+*UIConstraints: *PageRegion 8.125x13.25                     *InputSlot Tray1
+*%UIConstraints: *PageRegion JPostcard                       *InputSlot Tray1
+*%UIConstraints: *PageRegion JPostcardD                      *InputSlot Tray1
+*UIConstraints: *PageRegion ISOB5                           *InputSlot Tray1
+*UIConstraints: *PageRegion Com10                           *InputSlot Tray1
+*UIConstraints: *PageRegion EnvMonarch                      *InputSlot Tray1
+*UIConstraints: *PageRegion EnvDL                           *InputSlot Tray1
+*UIConstraints: *PageRegion EnvC6                           *InputSlot Tray1
+*UIConstraints: *PageRegion EnvChou3                        *InputSlot Tray1
+*UIConstraints: *PageRegion EnvChou4                        *InputSlot Tray1
+
+*UIConstraints: *InputSlot Tray1                            *PageSize LetterPlus
+*UIConstraints: *InputSlot Tray1                            *PageSize Legal
+*UIConstraints: *InputSlot Tray1                            *PageSize Foolscap
+*UIConstraints: *InputSlot Tray1                            *PageSize GLegal
+*UIConstraints: *InputSlot Tray1                            *PageSize A4Plus
+*UIConstraints: *InputSlot Tray1                            *PageSize 8.5x13.5
+*UIConstraints: *InputSlot Tray1                            *PageSize 8.125x13.25
+*%UIConstraints: *InputSlot Tray1                            *PageSize JPostcard
+*%UIConstraints: *InputSlot Tray1                            *PageSize JPostcardD
+*UIConstraints: *InputSlot Tray1                            *PageSize ISOB5
+*UIConstraints: *InputSlot Tray1                            *PageSize Com10
+*UIConstraints: *InputSlot Tray1                            *PageSize EnvMonarch
+*UIConstraints: *InputSlot Tray1                            *PageSize EnvDL
+*UIConstraints: *InputSlot Tray1                            *PageSize EnvC6
+*UIConstraints: *InputSlot Tray1                            *PageSize EnvChou3
+*UIConstraints: *InputSlot Tray1                            *PageSize EnvChou4
+
+*UIConstraints: *InputSlot Tray1                            *PageRegion LetterPlus
+*UIConstraints: *InputSlot Tray1                            *PageRegion Legal
+*UIConstraints: *InputSlot Tray1                            *PageRegion Foolscap
+*UIConstraints: *InputSlot Tray1                            *PageRegion GLegal
+*UIConstraints: *InputSlot Tray1                            *PageRegion A4Plus
+*UIConstraints: *InputSlot Tray1                            *PageRegion 8.5x13.5
+*UIConstraints: *InputSlot Tray1                            *PageRegion 8.125x13.25
+*%UIConstraints: *InputSlot Tray1                            *PageRegion JPostcard
+*%UIConstraints: *InputSlot Tray1                            *PageRegion JPostcardD
+*UIConstraints: *InputSlot Tray1                            *PageRegion ISOB5
+*UIConstraints: *InputSlot Tray1                            *PageRegion Com10
+*UIConstraints: *InputSlot Tray1                            *PageRegion EnvMonarch
+*UIConstraints: *InputSlot Tray1                            *PageRegion EnvDL
+*UIConstraints: *InputSlot Tray1                            *PageRegion EnvC6
+*UIConstraints: *InputSlot Tray1                            *PageRegion EnvChou3
+*UIConstraints: *InputSlot Tray1                            *PageRegion EnvChou4
+
+*UIConstraints: *PageSize LetterPlus                        *InputSlot Tray2
+*UIConstraints: *PageSize GLetter                           *InputSlot Tray2
+*UIConstraints: *PageSize Statement                         *InputSlot Tray2
+*UIConstraints: *PageSize 16K                               *InputSlot Tray2
+*UIConstraints: *PageSize UKQuarto                          *InputSlot Tray2
+*UIConstraints: *PageSize Foolscap                          *InputSlot Tray2
+*UIConstraints: *PageSize A4Plus                            *InputSlot Tray2
+*UIConstraints: *PageSize 8.5x13.5                          *InputSlot Tray2
+*UIConstraints: *PageSize 8.125x13.25                       *InputSlot Tray2
+*UIConstraints: *PageSize A5                                *InputSlot Tray2
+*UIConstraints: *PageSize A6                                *InputSlot Tray2
+*UIConstraints: *PageSize B6                                *InputSlot Tray2
+*UIConstraints: *PageSize 4x6                               *InputSlot Tray2
+*UIConstraints: *PageSize JPostcard                         *InputSlot Tray2
+*UIConstraints: *PageSize JPostcardD                        *InputSlot Tray2
+*UIConstraints: *PageSize ISOB5                             *InputSlot Tray2
+*UIConstraints: *PageSize Com10                             *InputSlot Tray2
+*UIConstraints: *PageSize EnvMonarch                        *InputSlot Tray2
+*UIConstraints: *PageSize EnvDL                             *InputSlot Tray2
+*UIConstraints: *PageSize EnvC6                             *InputSlot Tray2
+*UIConstraints: *PageSize EnvChou3                          *InputSlot Tray2
+*UIConstraints: *PageSize EnvChou4                          *InputSlot Tray2
+*UIConstraints: *PageSize Kai16                             *InputSlot Tray2
+*UIConstraints: *PageSize Kai32                             *InputSlot Tray2
+
+*UIConstraints: *PageRegion LetterPlus                      *InputSlot Tray2
+*UIConstraints: *PageRegion GLetter                         *InputSlot Tray2
+*UIConstraints: *PageRegion Statement                       *InputSlot Tray2
+*UIConstraints: *PageRegion 16K                             *InputSlot Tray2
+*UIConstraints: *PageRegion UKQuarto                        *InputSlot Tray2
+*UIConstraints: *PageRegion Foolscap                        *InputSlot Tray2
+*UIConstraints: *PageRegion A4Plus                          *InputSlot Tray2
+*UIConstraints: *PageRegion 8.5x13.5                        *InputSlot Tray2
+*UIConstraints: *PageRegion 8.125x13.25                     *InputSlot Tray2
+*UIConstraints: *PageRegion A5                              *InputSlot Tray2
+*UIConstraints: *PageRegion A6                              *InputSlot Tray2
+*UIConstraints: *PageRegion B6                              *InputSlot Tray2
+*UIConstraints: *PageRegion 4x6                             *InputSlot Tray2
+*UIConstraints: *PageRegion JPostcard                       *InputSlot Tray2
+*UIConstraints: *PageRegion JPostcardD                      *InputSlot Tray2
+*UIConstraints: *PageRegion ISOB5                           *InputSlot Tray2
+*UIConstraints: *PageRegion Com10                           *InputSlot Tray2
+*UIConstraints: *PageRegion EnvMonarch                      *InputSlot Tray2
+*UIConstraints: *PageRegion EnvDL                           *InputSlot Tray2
+*UIConstraints: *PageRegion EnvC6                           *InputSlot Tray2
+*UIConstraints: *PageRegion EnvChou3                        *InputSlot Tray2
+*UIConstraints: *PageRegion EnvChou4                        *InputSlot Tray2
+*UIConstraints: *PageRegion Kai16                           *InputSlot Tray2
+*UIConstraints: *PageRegion Kai32                           *InputSlot Tray2
+
+*UIConstraints: *InputSlot Tray2                            *PageSize LetterPlus
+*UIConstraints: *InputSlot Tray2                            *PageSize GLetter
+*UIConstraints: *InputSlot Tray2                            *PageSize Statement
+*UIConstraints: *InputSlot Tray2                            *PageSize 16K
+*UIConstraints: *InputSlot Tray2                            *PageSize UKQuarto
+*UIConstraints: *InputSlot Tray2                            *PageSize Foolscap
+*UIConstraints: *InputSlot Tray2                            *PageSize A4Plus
+*UIConstraints: *InputSlot Tray2                            *PageSize 8.5x13.5
+*UIConstraints: *InputSlot Tray2                            *PageSize 8.125x13.25
+*UIConstraints: *InputSlot Tray2                            *PageSize A5
+*UIConstraints: *InputSlot Tray2                            *PageSize A6
+*UIConstraints: *InputSlot Tray2                            *PageSize B6
+*UIConstraints: *InputSlot Tray2                            *PageSize 4x6
+*UIConstraints: *InputSlot Tray2                            *PageSize JPostcard
+*UIConstraints: *InputSlot Tray2                            *PageSize JPostcardD
+*UIConstraints: *InputSlot Tray2                            *PageSize ISOB5
+*UIConstraints: *InputSlot Tray2                            *PageSize Com10
+*UIConstraints: *InputSlot Tray2                            *PageSize EnvMonarch
+*UIConstraints: *InputSlot Tray2                            *PageSize EnvDL
+*UIConstraints: *InputSlot Tray2                            *PageSize EnvC6
+*UIConstraints: *InputSlot Tray2                            *PageSize EnvChou3
+*UIConstraints: *InputSlot Tray2                            *PageSize EnvChou4
+*UIConstraints: *InputSlot Tray2                            *PageSize Kai16
+*UIConstraints: *InputSlot Tray2                            *PageSize Kai32
+
+*UIConstraints: *InputSlot Tray2                            *PageRegion LetterPlus
+*UIConstraints: *InputSlot Tray2                            *PageRegion GLetter
+*UIConstraints: *InputSlot Tray2                            *PageRegion Statement
+*UIConstraints: *InputSlot Tray2                            *PageRegion 16K
+*UIConstraints: *InputSlot Tray2                            *PageRegion UKQuarto
+*UIConstraints: *InputSlot Tray2                            *PageRegion Foolscap
+*UIConstraints: *InputSlot Tray2                            *PageRegion A4Plus
+*UIConstraints: *InputSlot Tray2                            *PageRegion 8.5x13.5
+*UIConstraints: *InputSlot Tray2                            *PageRegion 8.125x13.25
+*UIConstraints: *InputSlot Tray2                            *PageRegion A5
+*UIConstraints: *InputSlot Tray2                            *PageRegion A6
+*UIConstraints: *InputSlot Tray2                            *PageRegion B6
+*UIConstraints: *InputSlot Tray2                            *PageRegion 4x6
+*UIConstraints: *InputSlot Tray2                            *PageRegion JPostcard
+*UIConstraints: *InputSlot Tray2                            *PageRegion JPostcardD
+*UIConstraints: *InputSlot Tray2                            *PageRegion ISOB5
+*UIConstraints: *InputSlot Tray2                            *PageRegion Com10
+*UIConstraints: *InputSlot Tray2                            *PageRegion EnvMonarch
+*UIConstraints: *InputSlot Tray2                            *PageRegion EnvDL
+*UIConstraints: *InputSlot Tray2                            *PageRegion EnvC6
+*UIConstraints: *InputSlot Tray2                            *PageRegion EnvChou3
+*UIConstraints: *InputSlot Tray2                            *PageRegion EnvChou4
+*UIConstraints: *InputSlot Tray2                            *PageRegion Kai16
+*UIConstraints: *InputSlot Tray2                            *PageRegion Kai32
+
+*% === PaperSize - KMDuplex ===========================
+*UIConstraints: *PageSize Statement                         *KMDuplex 2Sided
+*UIConstraints: *PageSize A5                                *KMDuplex 2Sided
+*UIConstraints: *PageSize A6                                *KMDuplex 2Sided
+*UIConstraints: *PageSize B6                                *KMDuplex 2Sided
+*UIConstraints: *PageSize 4x6                               *KMDuplex 2Sided
+*UIConstraints: *PageSize JPostcard                         *KMDuplex 2Sided
+*UIConstraints: *PageSize JPostcardD                        *KMDuplex 2Sided
+*UIConstraints: *PageSize ISOB5                             *KMDuplex 2Sided
+*UIConstraints: *PageSize Com10                             *KMDuplex 2Sided
+*UIConstraints: *PageSize EnvMonarch                        *KMDuplex 2Sided
+*UIConstraints: *PageSize EnvDL                             *KMDuplex 2Sided
+*UIConstraints: *PageSize EnvC6                             *KMDuplex 2Sided
+*UIConstraints: *PageSize EnvChou3                          *KMDuplex 2Sided
+*UIConstraints: *PageSize EnvChou4                          *KMDuplex 2Sided
+*UIConstraints: *PageSize Kai32                             *KMDuplex 2Sided
+
+*UIConstraints: *PageRegion Statement                       *KMDuplex 2Sided
+*UIConstraints: *PageRegion A5                              *KMDuplex 2Sided
+*UIConstraints: *PageRegion A6                              *KMDuplex 2Sided
+*UIConstraints: *PageRegion B6                              *KMDuplex 2Sided
+*UIConstraints: *PageRegion 4x6                             *KMDuplex 2Sided
+*UIConstraints: *PageRegion JPostcard                       *KMDuplex 2Sided
+*UIConstraints: *PageRegion JPostcardD                      *KMDuplex 2Sided
+*UIConstraints: *PageRegion ISOB5                           *KMDuplex 2Sided
+*UIConstraints: *PageRegion Com10                           *KMDuplex 2Sided
+*UIConstraints: *PageRegion EnvMonarch                      *KMDuplex 2Sided
+*UIConstraints: *PageRegion EnvDL                           *KMDuplex 2Sided
+*UIConstraints: *PageRegion EnvC6                           *KMDuplex 2Sided
+*UIConstraints: *PageRegion EnvChou3                        *KMDuplex 2Sided
+*UIConstraints: *PageRegion EnvChou4                        *KMDuplex 2Sided
+*UIConstraints: *PageRegion Kai32                           *KMDuplex 2Sided
+
+*UIConstraints: *KMDuplex 2Sided                            *PageSize Statement
+*UIConstraints: *KMDuplex 2Sided                            *PageSize A5
+*UIConstraints: *KMDuplex 2Sided                            *PageSize A6
+*UIConstraints: *KMDuplex 2Sided                            *PageSize B6
+*UIConstraints: *KMDuplex 2Sided                            *PageSize 4x6
+*UIConstraints: *KMDuplex 2Sided                            *PageSize JPostcard
+*UIConstraints: *KMDuplex 2Sided                            *PageSize JPostcardD
+*UIConstraints: *KMDuplex 2Sided                            *PageSize ISOB5
+*UIConstraints: *KMDuplex 2Sided                            *PageSize Com10
+*UIConstraints: *KMDuplex 2Sided                            *PageSize EnvMonarch
+*UIConstraints: *KMDuplex 2Sided                            *PageSize EnvDL
+*UIConstraints: *KMDuplex 2Sided                            *PageSize EnvC6
+*UIConstraints: *KMDuplex 2Sided                            *PageSize EnvChou3
+*UIConstraints: *KMDuplex 2Sided                            *PageSize EnvChou4
+*UIConstraints: *KMDuplex 2Sided                            *PageSize Kai32
+
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion Statement
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion A5
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion A6
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion B6
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion 4x6
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion JPostcard
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion JPostcardD
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion ISOB5
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion Com10
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion EnvMonarch
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion EnvDL
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion EnvC6
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion EnvChou3
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion EnvChou4
+*UIConstraints: *KMDuplex 2Sided                            *PageRegion Kai32
+
+*% === MediaType - Envelope Paper =====================
+*UIConstraints: *MediaType PlainPaper                       *PageSize EnvDL
+*UIConstraints: *MediaType Recycled                         *PageSize EnvDL
+*UIConstraints: *MediaType ThickStock1                      *PageSize EnvDL
+*UIConstraints: *MediaType ThickStock2                      *PageSize EnvDL
+*UIConstraints: *MediaType Glossy                           *PageSize EnvDL
+*UIConstraints: *MediaType Glossy2                          *PageSize EnvDL
+*UIConstraints: *MediaType LabelStock                       *PageSize EnvDL
+*UIConstraints: *MediaType Letterhead                       *PageSize EnvDL
+*UIConstraints: *MediaType Postcard                         *PageSize EnvDL
+*UIConstraints: *MediaType SingleSidedOnly                  *PageSize EnvDL
+*UIConstraints: *MediaType Special                          *PageSize EnvDL
+
+*UIConstraints: *MediaType PlainPaper                       *PageRegion EnvDL
+*UIConstraints: *MediaType Recycled                         *PageRegion EnvDL
+*UIConstraints: *MediaType ThickStock1                      *PageRegion EnvDL
+*UIConstraints: *MediaType ThickStock2                      *PageRegion EnvDL
+*UIConstraints: *MediaType Glossy                           *PageRegion EnvDL
+*UIConstraints: *MediaType Glossy2                          *PageRegion EnvDL
+*UIConstraints: *MediaType LabelStock                       *PageRegion EnvDL
+*UIConstraints: *MediaType Letterhead                       *PageRegion EnvDL
+*UIConstraints: *MediaType Postcard                         *PageRegion EnvDL
+*UIConstraints: *MediaType SingleSidedOnly                  *PageRegion EnvDL
+*UIConstraints: *MediaType Special                          *PageRegion EnvDL
+
+*UIConstraints: *PageSize EnvDL                             *MediaType PlainPaper
+*UIConstraints: *PageSize EnvDL                             *MediaType Recycled
+*UIConstraints: *PageSize EnvDL                             *MediaType ThickStock1
+*UIConstraints: *PageSize EnvDL                             *MediaType ThickStock2
+*UIConstraints: *PageSize EnvDL                             *MediaType Glossy
+*UIConstraints: *PageSize EnvDL                             *MediaType Glossy2
+*UIConstraints: *PageSize EnvDL                             *MediaType LabelStock
+*UIConstraints: *PageSize EnvDL                             *MediaType Letterhead
+*UIConstraints: *PageSize EnvDL                             *MediaType Postcard
+*UIConstraints: *PageSize EnvDL                             *MediaType SingleSidedOnly
+*UIConstraints: *PageSize EnvDL                             *MediaType Special
+
+*UIConstraints: *PageRegion EnvDL                           *MediaType PlainPaper
+*UIConstraints: *PageRegion EnvDL                           *MediaType Recycled
+*UIConstraints: *PageRegion EnvDL                           *MediaType ThickStock1
+*UIConstraints: *PageRegion EnvDL                           *MediaType ThickStock2
+*UIConstraints: *PageRegion EnvDL                           *MediaType Glossy
+*UIConstraints: *PageRegion EnvDL                           *MediaType Glossy2
+*UIConstraints: *PageRegion EnvDL                           *MediaType LabelStock
+*UIConstraints: *PageRegion EnvDL                           *MediaType Letterhead
+*UIConstraints: *PageRegion EnvDL                           *MediaType Postcard
+*UIConstraints: *PageRegion EnvDL                           *MediaType SingleSidedOnly
+*UIConstraints: *PageRegion EnvDL                           *MediaType Special
+
+*UIConstraints: *MediaType PlainPaper                       *PageSize EnvC6
+*UIConstraints: *MediaType Recycled                         *PageSize EnvC6
+*UIConstraints: *MediaType ThickStock1                      *PageSize EnvC6
+*UIConstraints: *MediaType ThickStock2                      *PageSize EnvC6
+*UIConstraints: *MediaType Glossy                           *PageSize EnvC6
+*UIConstraints: *MediaType Glossy2                          *PageSize EnvC6
+*UIConstraints: *MediaType LabelStock                       *PageSize EnvC6
+*UIConstraints: *MediaType Letterhead                       *PageSize EnvC6
+*UIConstraints: *MediaType Postcard                         *PageSize EnvC6
+*UIConstraints: *MediaType SingleSidedOnly                  *PageSize EnvC6
+*UIConstraints: *MediaType Special                          *PageSize EnvC6
+
+*UIConstraints: *MediaType PlainPaper                       *PageRegion EnvC6
+*UIConstraints: *MediaType Recycled                         *PageRegion EnvC6
+*UIConstraints: *MediaType ThickStock1                      *PageRegion EnvC6
+*UIConstraints: *MediaType ThickStock2                      *PageRegion EnvC6
+*UIConstraints: *MediaType Glossy                           *PageRegion EnvC6
+*UIConstraints: *MediaType Glossy2                          *PageRegion EnvC6
+*UIConstraints: *MediaType LabelStock                       *PageRegion EnvC6
+*UIConstraints: *MediaType Letterhead                       *PageRegion EnvC6
+*UIConstraints: *MediaType Postcard                         *PageRegion EnvC6
+*UIConstraints: *MediaType SingleSidedOnly                  *PageRegion EnvC6
+*UIConstraints: *MediaType Special                          *PageRegion EnvC6
+
+*UIConstraints: *PageSize EnvC6                             *MediaType PlainPaper
+*UIConstraints: *PageSize EnvC6                             *MediaType Recycled
+*UIConstraints: *PageSize EnvC6                             *MediaType ThickStock1
+*UIConstraints: *PageSize EnvC6                             *MediaType ThickStock2
+*UIConstraints: *PageSize EnvC6                             *MediaType Glossy
+*UIConstraints: *PageSize EnvC6                             *MediaType Glossy2
+*UIConstraints: *PageSize EnvC6                             *MediaType LabelStock
+*UIConstraints: *PageSize EnvC6                             *MediaType Letterhead
+*UIConstraints: *PageSize EnvC6                             *MediaType Postcard
+*UIConstraints: *PageSize EnvC6                             *MediaType SingleSidedOnly
+*UIConstraints: *PageSize EnvC6                             *MediaType Special
+
+*UIConstraints: *PageRegion EnvC6                           *MediaType PlainPaper
+*UIConstraints: *PageRegion EnvC6                           *MediaType Recycled
+*UIConstraints: *PageRegion EnvC6                           *MediaType ThickStock1
+*UIConstraints: *PageRegion EnvC6                           *MediaType ThickStock2
+*UIConstraints: *PageRegion EnvC6                           *MediaType Glossy
+*UIConstraints: *PageRegion EnvC6                           *MediaType Glossy2
+*UIConstraints: *PageRegion EnvC6                           *MediaType LabelStock
+*UIConstraints: *PageRegion EnvC6                           *MediaType Letterhead
+*UIConstraints: *PageRegion EnvC6                           *MediaType Postcard
+*UIConstraints: *PageRegion EnvC6                           *MediaType SingleSidedOnly
+*UIConstraints: *PageRegion EnvC6                           *MediaType Special
+
+*UIConstraints: *MediaType PlainPaper                       *PageSize EnvMonarch
+*UIConstraints: *MediaType Recycled                         *PageSize EnvMonarch
+*UIConstraints: *MediaType ThickStock1                      *PageSize EnvMonarch
+*UIConstraints: *MediaType ThickStock2                      *PageSize EnvMonarch
+*UIConstraints: *MediaType Glossy                           *PageSize EnvMonarch
+*UIConstraints: *MediaType Glossy2                          *PageSize EnvMonarch
+*UIConstraints: *MediaType LabelStock                       *PageSize EnvMonarch
+*UIConstraints: *MediaType Letterhead                       *PageSize EnvMonarch
+*UIConstraints: *MediaType Postcard                         *PageSize EnvMonarch
+*UIConstraints: *MediaType SingleSidedOnly                  *PageSize EnvMonarch
+*UIConstraints: *MediaType Special                          *PageSize EnvMonarch
+
+*UIConstraints: *MediaType PlainPaper                       *PageRegion EnvMonarch
+*UIConstraints: *MediaType Recycled                         *PageRegion EnvMonarch
+*UIConstraints: *MediaType ThickStock1                      *PageRegion EnvMonarch
+*UIConstraints: *MediaType ThickStock2                      *PageRegion EnvMonarch
+*UIConstraints: *MediaType Glossy                           *PageRegion EnvMonarch
+*UIConstraints: *MediaType Glossy2                          *PageRegion EnvMonarch
+*UIConstraints: *MediaType LabelStock                       *PageRegion EnvMonarch
+*UIConstraints: *MediaType Letterhead                       *PageRegion EnvMonarch
+*UIConstraints: *MediaType Postcard                         *PageRegion EnvMonarch
+*UIConstraints: *MediaType SingleSidedOnly                  *PageRegion EnvMonarch
+*UIConstraints: *MediaType Special                          *PageRegion EnvMonarch
+
+*UIConstraints: *PageSize EnvMonarch                        *MediaType PlainPaper
+*UIConstraints: *PageSize EnvMonarch                        *MediaType Recycled
+*UIConstraints: *PageSize EnvMonarch                        *MediaType ThickStock1
+*UIConstraints: *PageSize EnvMonarch                        *MediaType ThickStock2
+*UIConstraints: *PageSize EnvMonarch                        *MediaType Glossy
+*UIConstraints: *PageSize EnvMonarch                        *MediaType Glossy2
+*UIConstraints: *PageSize EnvMonarch                        *MediaType LabelStock
+*UIConstraints: *PageSize EnvMonarch                        *MediaType Letterhead
+*UIConstraints: *PageSize EnvMonarch                        *MediaType Postcard
+*UIConstraints: *PageSize EnvMonarch                        *MediaType SingleSidedOnly
+*UIConstraints: *PageSize EnvMonarch                        *MediaType Special
+
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType PlainPaper
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType Recycled
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType ThickStock1
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType ThickStock2
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType Glossy
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType Glossy2
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType LabelStock
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType Letterhead
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType Postcard
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType SingleSidedOnly
+*UIConstraints: *PageRegion EnvMonarch                      *MediaType Special
+
+*% === MediaType - KMGlossyMode ==
+*%UIConstraints: *MediaType ThickStock1                      *KMGlossyMode True
+*%UIConstraints: *MediaType ThickStock2                      *KMGlossyMode True
+*%UIConstraints: *MediaType Glossy                           *KMGlossyMode True
+*%UIConstraints: *MediaType Glossy2                          *KMGlossyMode True
+*%UIConstraints: *MediaType Envelope                         *KMGlossyMode True
+*%UIConstraints: *MediaType LabelStock                       *KMGlossyMode True
+*%UIConstraints: *MediaType Postcard                         *KMGlossyMode True
+
+*%UIConstraints: *KMGlossyMode True                        *MediaType ThickStock1 
+*%UIConstraints: *KMGlossyMode True                        *MediaType ThickStock2
+*%UIConstraints: *KMGlossyMode True                        *MediaType Glossy
+*%UIConstraints: *KMGlossyMode True                        *MediaType Glossy2
+*%UIConstraints: *KMGlossyMode True                        *MediaType Envelope
+*%UIConstraints: *KMGlossyMode True                        *MediaType LabelStock
+*%UIConstraints: *KMGlossyMode True                        *MediaType Postcard
+
+*% === KMEdgeType - KMImageEdge/KMTextEdge/KMGraphicsEdge ==
+*UIConstraints: *KMEdgeType OFF                             *KMImageEdge True
+*UIConstraints: *KMEdgeType OFF                             *KMTextEdge True
+*UIConstraints: *KMEdgeType OFF                             *KMGraphicsEdge True
+
+*UIConstraints: *KMImageEdge True                           *KMEdgeType OFF
+*UIConstraints: *KMTextEdge True                            *KMEdgeType OFF
+*UIConstraints: *KMGraphicsEdge True                        *KMEdgeType OFF
+
+*%==== Resolution - KMEdgeType ==
+*UIConstraints: *Resolution 1200dpi             *KMEdgeType LEVEL1
+*UIConstraints: *Resolution 1200dpi             *KMEdgeType LEVEL2
+*UIConstraints: *Resolution 1200dpi             *KMEdgeType LEVEL3
+
+*UIConstraints: *KMEdgeType LEVEL1              *Resolution 1200dpi
+*UIConstraints: *KMEdgeType LEVEL2              *Resolution 1200dpi
+*UIConstraints: *KMEdgeType LEVEL3              *Resolution 1200dpi
+
+*% === KMPrintOnBackside - InputSlot/KMDuplex =========
+*UIConstraints: *KMPrintOnBackside True                     *InputSlot Tray1
+*UIConstraints: *KMPrintOnBackside True                     *InputSlot Tray2
+*UIConstraints: *KMPrintOnBackside True                     *KMDuplex 2Sided
+
+*UIConstraints: *InputSlot Tray1                            *KMPrintOnBackside True
+*UIConstraints: *InputSlot Tray2                            *KMPrintOnBackside True
+*UIConstraints: *KMDuplex 2Sided                            *KMPrintOnBackside True
+
+
+*%---------------------------------------------------------
+*%-----------   Font Information   ------------------------
+*%---------------------------------------------------------
+
+*FCacheSize 256MB:2000000
+*FCacheSize 512MB:2000000
+*FCacheSize 768MB:2000000
+*FCacheSize 1024MB:2000000
+
+*DefaultFont: Courier
+*Font AlbertusMT-Italic:  Standard "(001.000)" Standard Disk
+*Font AlbertusMT-Light:  Standard "(001.000)" Standard Disk
+*Font AlbertusMT:  Standard "(001.000)" Standard Disk
+*Font AntiqueOlive-Bold:  Standard "(501.009)" ExtendedRoman Disk
+*Font AntiqueOlive-Compact:  Standard "(501.008)" ExtendedRoman Disk
+*Font AntiqueOlive-Italic:  Standard "(501.010)" ExtendedRoman Disk
+*Font AntiqueOlive-Roman:  Standard "(501.008)" ExtendedRoman Disk
+*Font Apple-Chancery:  Standard "(001.001)" ExtendedRoman Disk
+*Font Arial-BoldItalicMT:  Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-BoldMT:  Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-ItalicMT:  Standard "(501.012)" ExtendedRoman Disk
+*Font ArialMT:  Standard "(501.009)" ExtendedRoman ROM
+*Font AvantGarde-Book:  Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-BookOblique:  Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-Demi:  Standard "(501.010)" ExtendedRoman Disk
+*Font AvantGarde-DemiOblique:  Standard "(501.010)" ExtendedRoman Disk
+*Font Bodoni-Bold:  Standard "(501.006)" ExtendedRoman Disk
+*Font Bodoni-BoldItalic:  Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Italic:  Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Poster:  Standard "(501.009)" ExtendedRoman Disk
+*Font Bodoni-PosterCompressed:  Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni:  Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Demi:  Standard "(501.007)" ExtendedRoman Disk
+*Font Bookman-DemiItalic:  Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Light:  Standard "(501.006)" ExtendedRoman Disk
+*Font Bookman-LightItalic:  Standard "(501.007)" ExtendedRoman Disk
+*Font Chicago:  Standard "(501.011)" ExtendedRoman Disk
+*Font Clarendon-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font Clarendon-Light:  Standard "(501.009)" ExtendedRoman Disk
+*Font Clarendon:  Standard "(501.009)" ExtendedRoman Disk
+*Font CooperBlack-Italic:  Standard "(001.003)" Standard Disk
+*Font CooperBlack:  Standard "(001.003)" Standard Disk
+*Font Copperplate-ThirtyThreeBC:  Standard "(001.002)" Standard Disk
+*Font Copperplate-ThirtyTwoBC:  Standard "(001.002)" Standard Disk
+*Font Coronet-Regular:  Standard "(001.000)" ExtendedRoman Disk
+*Font Courier-Bold:  Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-BoldOblique:  Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-Oblique:  Standard "(501.010)" ExtendedRoman Disk
+*Font Courier:  Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-BoldExtendedTwo:  Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-ExtendedTwo:  Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile:  Standard "(501.008)" ExtendedRoman Disk
+*Font Geneva:  Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-Bold:  Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-BoldCondensed:  Standard "(501.006)" ExtendedRoman Disk
+*Font GillSans-BoldItalic:  Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Condensed:  Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-ExtraBold:  Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Italic:  Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Light:  Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans-LightItalic:  Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans:  Standard "(501.009)" ExtendedRoman Disk
+*Font Goudy-Bold:  Standard "(001.002)" Standard Disk
+*Font Goudy-BoldItalic:  Standard "(001.002)" Standard Disk
+*Font Goudy-ExtraBold:  Standard "(001.001)" Standard Disk
+*Font Goudy-Italic:  Standard "(001.002)" Standard Disk
+*Font Goudy:  Standard "(001.003)" Standard Disk
+*Font Helvetica-Bold:  Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-BoldOblique:  Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Bold:  Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-BoldObl:  Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Oblique:  Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed:  Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Bold:  Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-BoldOblique:  Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Oblique:  Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Narrow:  Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Oblique:  Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica:  Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-Black:  Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-BlackItalic:  Standard "(501.009)" ExtendedRoman Disk
+*Font HoeflerText-Italic:  Standard "(501.010)" ExtendedRoman Disk
+*Font HoeflerText-Ornaments:  Special "(001.001)" Special Disk
+*Font HoeflerText-Regular:  Standard "(501.009)" ExtendedRoman Disk
+*Font JoannaMT-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-BoldItalic:  Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-Italic:  Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT:  Standard "(501.009)" ExtendedRoman Disk
+*Font LetterGothic-Bold:  Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-BoldSlanted:  Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-Slanted:  Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic:  Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Book:  Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-BookOblique:  Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Demi:  Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-DemiOblique:  Standard "(501.009)" ExtendedRoman Disk
+*Font Marigold:  Standard "(001.000)" Standard Disk
+*Font Monaco:  Standard "(501.012)" ExtendedRoman Disk
+*Font MonaLisa-Recut:  Standard "(001.000)" Standard Disk
+*Font NewCenturySchlbk-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font NewCenturySchlbk-BoldItalic:  Standard "(501.009)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Italic:  Standard "(501.011)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Roman:  Standard "(501.008)" ExtendedRoman Disk
+*Font NewYork:  Standard "(501.013)" ExtendedRoman Disk
+*Font Optima-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font Optima-BoldItalic:  Standard "(501.009)" ExtendedRoman Disk
+*Font Optima-Italic:  Standard "(501.010)" ExtendedRoman Disk
+*Font Optima:  Standard "(501.010)" ExtendedRoman Disk
+*Font Oxford:  Standard "(001.000)" Standard Disk
+*Font Palatino-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-BoldItalic:  Standard "(501.007)" ExtendedRoman Disk
+*Font Palatino-Italic:  Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-Roman:  Standard "(501.006)" ExtendedRoman Disk
+*Font StempelGaramond-Bold:  Standard "(501.007)" ExtendedRoman Disk
+*Font StempelGaramond-BoldItalic:  Standard "(501.012)" ExtendedRoman Disk
+*Font StempelGaramond-Italic:  Standard "(501.009)" ExtendedRoman Disk
+*Font StempelGaramond-Roman:  Standard "(501.011)" ExtendedRoman Disk
+*Font Symbol:  Special "(001.008)" Special Disk
+*Font Candid:  Special "(001.008)" Special Disk
+*Font Taffy:  Standard "(001.001)" Standard Disk
+*Font Times-Bold:  Standard "(501.009)" ExtendedRoman Disk
+*Font Times-BoldItalic:  Standard "(501.009)" ExtendedRoman Disk
+*Font Times-Italic:  Standard "(501.010)" ExtendedRoman Disk
+*Font Times-Roman:  Standard "(501.010)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldItalicMT:  Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldMT:  Standard "(501.009)" ExtendedRoman Disk
+*Font TimesNewRomanPS-ItalicMT:  Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPSMT:  Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-Bold:  Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-BoldExt:  Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldExtObl:  Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldOblique:  Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-Condensed:  Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-CondensedBold:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedBoldOblique:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedOblique:  Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-Extended:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-ExtendedObl:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Light:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-LightOblique:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Oblique:  Standard "(501.009)" ExtendedRoman Disk
+*Font Univers:  Standard "(501.009)" ExtendedRoman Disk
+*Font Wingdings-Regular:  Special "(001.001)" Special Disk
+*Font ZapfChancery-MediumItalic:  Standard "(002.000)" ExtendedRoman Disk
+*Font ZapfChanceryCE-MediumItalic:  Win1250 "(002.000)" ExtendedRoman Disk
+*Font ZapfDingbats:  Special "(001.005S)" Special Disk
+
+*?FontQuery: "
+ save
+   { count 1 gt
+     { exch dup 127 string cvs (/) print print (:) print
+       /Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+     } { exit } ifelse
+   } bind loop
+   (*) = flush
+ restore"
+*End
+*?FontList: "
+ save
+  (*) {cvn ==} 128 string /Font resourceforall
+  (*) = flush
+ restore"
+*End
+
+*% end of PPD

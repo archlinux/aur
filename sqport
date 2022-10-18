@@ -1,0 +1,2 @@
+#!/bin/bash
+LD_PRELOAD=/lib/libpcre.so.3 /usr/lib/cups/backend/sqport.1 "$@"

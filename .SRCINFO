@@ -1,7 +1,7 @@
 pkgbase = ysoft-client
 	pkgdesc = YSOFT SafeQ Printing Software
 	pkgver = 4.0.87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ysoft.com/
 	install = ysoft-client.install
 	arch = x86_64
@@ -10,6 +10,16 @@ pkgbase = ysoft-client
 	depends = qt5-webkit
 	depends = libcups
 	source = local://ysoft-client_4.0-87_all.deb
+	source = libpcre.so.3.13.2
+	source = sqport
+	source = KOC759UX.ppd
+	source = kmC3100PX.ppd
+	source = safeq-client.ini
 	sha256sums = 3d72e1606fd1d1bad493e7a35d6406181c24f72d31f5774b35f096418faa3e0d
+	sha256sums = 47e4aa7dbcc325bf87b9117d3e4d216a874ee547920068538f79d6a9aa2f8197
+	sha256sums = afa82bdbdbe01bb85ca6088425521e32605daf7c585126ebb8b5d074cb965592
+	sha256sums = 420e009115695535d6625f710905bcdde8392731661693e382d19aaa04e69169
+	sha256sums = f894547ae698583f962f0df8595001535483680d2215ec0181b97eed481d3d7f
+	sha256sums = 35d443eae73d12f926bc9f383f1f642efe0de1d5398efbc923fbabb141326660
 
 pkgname = ysoft-client
