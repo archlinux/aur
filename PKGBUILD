@@ -3,8 +3,8 @@
 # Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia
-pkgver=515.43.04
-pkgrel=2
+pkgver=520.56.06
+pkgrel=1
 pkgdesc="mhwd-nvidia pci id"
 arch=("any")
 url="https://garudalinux.org/"
