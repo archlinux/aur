@@ -1,6 +1,6 @@
 pkgbase = dialect
 	pkgdesc = A translation app for GNOME.
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://apps.gnome.org/app/com.github.gi_lom.dialect
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = dialect
 	depends = libsoup3
 	depends = python-gobject
 	depends = python-gtts
-	source = git+https://github.com/dialect-app/dialect.git#commit=3c8351326bdb571bc55d29fb9e8712ea2e17afeb
+	source = git+https://github.com/dialect-app/dialect.git#commit=88a5efe5e601d8204143f84990b8026190ba5881
 	source = git+https://github.com/dialect-app/po.git
 	sha256sums = SKIP
 	sha256sums = SKIP
