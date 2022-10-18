@@ -4,27 +4,29 @@ pkgname=cura-5-beta-bin
 _pkgname=cura-5-beta-bin
 _shortname=cura5
 pkgver=5.2.0
-beta=-beta
-subbeta=.2
-pkgrel=5
+beta=
+subbeta=
+pkgrel=6
 pkgdesc='Cura is an open source slicing application for 3D printers (include betaversion)'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
 license=('LGPL3')
 depends=('xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 optdepends=('cura-5-plugin-octoprint: Cura plugin which enables printing directly to OctoPrint and monitoring the progress'
-	'cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress latest git version')
+	'cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress (latest git version)')
 conflicts=('cura-5-bin')
 provides=('cura')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=(
-    "https://github.com/Ultimaker/Cura/releases/download/${pkgver}${beta}/Ultimaker-Cura-${pkgver}${beta}${subbeta}-linux.AppImage"
+    "https://github.com/Ultimaker/Cura/releases/download/${pkgver}${beta}/Ultimaker-Cura-${pkgver}${beta}${subbeta}-linux.zip"
+    "https://raw.githubusercontent.com/Ultimaker/Cura/${pkgver}/LICENSE"
     "${_shortname}.sh"
     "cura.desktop.patch"
 )
 
-sha256sums=('fd07b982db237c8383f41ca1f02bd32eb40698ca2f2ba6d6c0cc39f36fd6e62f'
+sha256sums=('33cd9bc322775967a34ef672fe5ba8dd2ba2b8eb867c6623e1bbbb3347972713'
+            'f361bfaa2b63576ba829b3fb608f3f8baf5c25df51ebaba8c3554a7f3108e87d'
             'f7917a834849618f62147bf68e8cb1cb31157e724163325effd495ddd8be2494'
             '076fee81d82b5ae55e44d230adef79cf944f51befb76f30074195ac18dd7e16a')
    
@@ -43,6 +45,7 @@ package() {
     cp -rf "${srcdir}/${_shortname}" "${pkgdir}/opt/"
     install -d "${pkgdir}/usr/bin/"
     install -Dm 755 "${srcdir}/cura5.sh" "${pkgdir}/usr/bin/${_shortname}"
-    install -Dm 644 "${srcdir}/cura5/cura-icon.png" "${pkgdir}/usr/share/pixmaps/cura5-icon.png"
+    install -Dm 755 "${srcdir}/cura5/cura-icon.png" "${pkgdir}/usr/share/pixmaps/cura5-icon.png"
     install -Dm 644 "${srcdir}/cura5/cura.desktop" "${pkgdir}/usr/share/applications/cura5.desktop"
+    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
