@@ -1,0 +1,17 @@
+pkgbase = perl-io-prompter
+	pkgdesc = IO::Prompter
+	pkgver = 0.004015
+	pkgrel = 1
+	url = https://metacpan.org/release/IO-Prompter
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-contextual-return
+	optdepends = perl-term-readkey: better performance
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/IO-Prompter-0.004015.tar.gz
+	md5sums = cf40bb0aed4a5a02f98dab854a53737a
+
+pkgname = perl-io-prompter
