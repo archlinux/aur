@@ -1,7 +1,7 @@
 pkgbase = r-cardata
 	pkgdesc = Companion to Applied Regression Data Sets
 	pkgver = 3.0.5
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=carData
 	arch = any
 	license = GPL
