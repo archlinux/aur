@@ -1,0 +1,15 @@
+pkgbase = ringo-kms
+	pkgdesc = wrapper for biscuit, can be used to select and decrypt the secrets in your project.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/enrichman/ringo.git
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = gox
+	makedepends = tar
+	depends = biscuit-kms
+	source = https://github.com/enrichman/ringo/releases/download/v1.0.1/ringo-linux_amd64.tgz
+	sha256sums = 49683704a3f3d57ad1ac6a4101a39924cf81190e5be2f914faf99b3763af8ba9
+
+pkgname = ringo-kms
