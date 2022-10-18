@@ -1,5 +1,6 @@
 # Maintainer: Yellow <yellow@example.com>
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: txtsd <code@ihavea.quest>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Elijah Gregg <lovetocode999@tilde.team>
 # Contributor: Miko <mikoxyzzz@gmail.com>
