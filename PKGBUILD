@@ -2,7 +2,7 @@
 # Contributor: David Birks <david@birks.dev>
 
 pkgname='aws-cli-v2'
-pkgver='2.7.35'
+pkgver='2.8.3'
 pkgrel='1'
 
 pkgdesc='Unified command line interface for Amazon Web Services (version 2)'
@@ -11,39 +11,39 @@ url='https://github.com/aws/aws-cli/tree/v2'
 license=('Apache')
 
 depends=(
-  'python-awscrt'
   'python-colorama'
-  'python-cryptography'
-  'python-distro'
   'python-docutils'
-  'python-jmespath'
-  'python-prompt_toolkit'
+  'python-cryptography'
   'python-ruamel-yaml'
+  'python-wcwidth'
+  'python-prompt_toolkit'
+  'python-distro'
+  'python-awscrt'
+  'python-dateutil'
+  'python-jmespath'
   'python-urllib3'
 )
 makedepends=(
-  'python-setuptools'
+  'python-build'
+  'python-wheel'
+  'python-flit'
+  'python-installer'
 )
 
 provides=('aws-cli')
 conflicts=('aws-cli' 'aws-cli-git' 'aws-cli-v2-bin')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/aws-cli/archive/$pkgver.tar.gz")
-sha256sums=('6f3ac1a652ad21ffe990a03b1b7f8185d2d8179f0acbd28b9ada02a15f804d6c')
+sha256sums=('d96d176262b65f03eab6ef9728ff79e9a30a082aa51285ee012ab58cefb39d55')
 
 build() {
-  cd "$srcdir"/aws-cli-$pkgver
-  python setup.py build
-
-  echo "Generating auto-complete index. Takes 5-10 minutes..."
-  PYTHONPATH=. ./scripts/gen-ac-index --index-location=./ac.index
+  cd "$srcdir/aws-cli-$pkgver"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-    cd "$srcdir"/aws-cli-$pkgver
-    python setup.py install --root="$pkgdir"
-
-    install -Dm 644 ac.index "$pkgdir"/usr/lib/python3.10/site-packages/awscli/data/ac.index
-    install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm 644 bin/aws_bash_completer "$pkgdir"/usr/share/bash-completion/completions/aws
+  cd "$srcdir/aws-cli-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 bin/aws_bash_completer "$pkgdir/usr/share/bash-completion/completions/aws"
 }
