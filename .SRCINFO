@@ -1,7 +1,7 @@
 pkgbase = r-catools
 	pkgdesc = Tools: Moving Window Statistics, GIF, Base64, ROC AUC, etc
 	pkgver = 1.18.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=caTools
 	arch = x86_64
 	license = GPL
