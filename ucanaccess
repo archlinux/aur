@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for name in /usr/share/java/ucanaccess/*.jar; do
+    CP="${CP}:${name}"
+done
+#CLASSPATH="$UCANACCESS_HOME/hsqldb-2.5.0.jar:$UCANACCESS_HOME/jackcess-3.0.1.jar:$UCANACCESS_HOME/commons-lang3-3.8.1.jar:$UCANACCESS_HOME/commons-logging-1.2.jar:$UCANACCESS_HOME/ucanaccess-5.0.1.jar"
+
+exec /usr/bin/java -cp "$CP" net.ucanaccess.console.Main "$@"

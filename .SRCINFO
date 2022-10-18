@@ -1,0 +1,19 @@
+pkgbase = ucanaccess
+	pkgdesc = Java JDBC driver implementation that allows to read/write Microsoft Access databases
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://ucanaccess.sourceforge.net/site.html
+	arch = any
+	license = Apache
+	checkdepends = maven
+	makedepends = java-environment=8
+	makedepends = maven
+	depends = java-runtime=8
+	source = ucanaccess-5.0.1.zip::https://sourceforge.net/projects/ucanaccess/files/UCanAccess-5.0.1-src.zip/download
+	source = ucanaccess
+	md5sums = eb626eed4140706be4118375d2fb5456
+	md5sums = SKIP
+	sha1sums = c7dc634372efb6fd6dc2a9abb75977b5b0d77812
+	sha1sums = SKIP
+
+pkgname = ucanaccess
