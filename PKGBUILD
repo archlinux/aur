@@ -1,11 +1,12 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 # Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=rcompanion
 _pkgver=2.4.18
 pkgname=r-${_pkgname,,}
 pkgver=2.4.18
-pkgrel=1
+pkgrel=4
 pkgdesc='Functions to Support Extension Education Program Evaluation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
