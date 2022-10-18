@@ -1,7 +1,7 @@
 pkgbase = r-multcompview
 	pkgdesc = Visualizations of Paired Comparisons
 	pkgver = 0.1.8
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=multcompView
 	arch = any
 	license = GPL
