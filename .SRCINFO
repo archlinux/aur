@@ -1,7 +1,7 @@
 pkgbase = r-numderiv
 	pkgdesc = Accurate Numerical Derivatives
 	pkgver = 2016.8.1.1
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=numDeriv
 	arch = any
 	license = GPL
