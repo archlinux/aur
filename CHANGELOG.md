@@ -1,5 +1,22 @@
 # Changelog
 
+## [v4.2.0](https://github.com/fastly/cli/releases/tag/v4.2.0) (2022-10-18)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.1.0...v4.2.0)
+
+**Enhancements:**
+
+* Service Authorization [#660](https://github.com/fastly/cli/pull/660)
+* Add Object Store API calls [#670](https://github.com/fastly/cli/pull/670)
+* Remove upper limit on Go toolchain [#678](https://github.com/fastly/cli/pull/678)
+
+**Bug fixes:**
+
+* Fix `compute pack` to produce expected `package.tar.gz` filename [#662](https://github.com/fastly/cli/pull/662)
+* Fix `--help` flag to not display an error [#672](https://github.com/fastly/cli/pull/672)
+* Fix command substitution issue for Windows OS [#677](https://github.com/fastly/cli/pull/677)
+* Fix Makefile for Windows [#679](https://github.com/fastly/cli/pull/679)
+
 ## [v4.1.0](https://github.com/fastly/cli/releases/tag/v4.1.0) (2022-10-11)
 
 [Full Changelog](https://github.com/fastly/cli/compare/v4.0.1...v4.1.0)
