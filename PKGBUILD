@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=hunspell
 _pkgver=3.0.2
 pkgname=r-${_pkgname,,}
 pkgver=3.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='High-Performance Stemmer, Tokenizer, and Spell Checker'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

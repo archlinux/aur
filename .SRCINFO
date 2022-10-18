@@ -1,7 +1,7 @@
 pkgbase = r-hunspell
 	pkgdesc = High-Performance Stemmer, Tokenizer, and Spell Checker
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=hunspell
 	arch = x86_64
 	license = LGPL
