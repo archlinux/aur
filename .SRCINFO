@@ -1,0 +1,16 @@
+pkgbase = perl-contextual-return
+	pkgdesc = Contextual::Return
+	pkgver = 0.004014
+	pkgrel = 1
+	url = https://metacpan.org/release/Contextual-Return
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-want
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Contextual-Return-0.004014.tar.gz
+	md5sums = 5cb31f1637c17af6a8e5b852d820af79
+
+pkgname = perl-contextual-return
