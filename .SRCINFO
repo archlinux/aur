@@ -26,11 +26,11 @@ pkgbase = firedragon
 	makedepends = nodejs
 	makedepends = cbindgen
 	makedepends = nasm
+	makedepends = mold
 	makedepends = python-setuptools
 	makedepends = python-zstandard
 	makedepends = git
 	makedepends = binutils
-	makedepends = lld
 	makedepends = dump_syms
 	makedepends = wasi-compiler-rt>13
 	makedepends = wasi-libc>=1:0+258+30094b6
