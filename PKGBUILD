@@ -1,10 +1,12 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=shinyWidgets
 _pkgver=0.7.4
 pkgname=r-${_pkgname,,}
 pkgver=0.7.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Custom Inputs Widgets for Shiny'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
