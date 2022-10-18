@@ -1,7 +1,7 @@
 pkgbase = backblaze-b2
 	pkgdesc = Backblaze B2 Command Line Client
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = any
 	license = MIT

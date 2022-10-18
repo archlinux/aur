@@ -3,7 +3,7 @@
 pkgname=backblaze-b2
 _pkgname=b2
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
@@ -33,6 +33,7 @@ build() {
     # This requriement seems overly strict, relax
     sed -i -e 's:\(arrow>=.*\),.*:\1:' requirements.txt
     sed -i -e 's:\(docutils==.*\):docutils>=0.16:' requirements.txt
+    sed -i -e 's:\(tabulate==.*\):tabulate<0.10:' requirements.txt
 
     python setup.py build
 }
