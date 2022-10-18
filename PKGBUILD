@@ -1,10 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Kibouo <csonka.mihaly@hotmail.com>
+# Contributor: Ward Segers <w@rdsegers.be>
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=whisker
 _pkgver=0.4
 pkgname=r-${_pkgname,,}
 pkgver=0.4
-pkgrel=4
+pkgrel=10
 pkgdesc='{{mustache}} for R, Logicless Templating'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
