@@ -1,10 +1,14 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Ward Segers <w@rdsegers.be>
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=lintr
 _pkgver=3.0.1
 pkgname=r-${_pkgname,,}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A 'Linter' for R Code"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

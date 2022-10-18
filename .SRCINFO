@@ -1,7 +1,7 @@
 pkgbase = r-lintr
 	pkgdesc = A 'Linter' for R Code
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=lintr
 	arch = any
 	license = MIT
