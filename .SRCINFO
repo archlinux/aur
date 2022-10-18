@@ -1,7 +1,7 @@
 pkgbase = r-lmtest
 	pkgdesc = Testing Linear Regression Models
 	pkgver = 0.9.40
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=lmtest
 	arch = x86_64
 	license = GPL
