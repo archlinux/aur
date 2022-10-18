@@ -1,7 +1,7 @@
 pkgbase = r-th.data
 	pkgdesc = TH's Data Archive
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 9
 	url = https://cran.r-project.org/package=TH.data
 	arch = any
 	license = GPL
