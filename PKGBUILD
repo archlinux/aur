@@ -15,7 +15,7 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=18.0.2.u2
+pkgver=19.u11
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
@@ -52,13 +52,11 @@ source=(
   gradle.properties
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
-  java-openjfx-gstreamer-lite-gcc10-compat.patch
 )
-b2sums=('7c913def2a1f1248221a51a7730a6067183f3f7ce1bea5a2792c961f73f423754e50e4f01b0f51ae4703a24bf11c334f4dfa4e8913623399d457cff88f820ab7'
+b2sums=('5a7f1402a5fac2d2442814fcf2c1338a260b8a372e5a7359661e852a389deae83491a466dfc707fd83ea71557df3ecf661d438f8544cf442012c8c36d986e03c'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
-        'c8372fef5837b0c9067e7f01d3310ddc6f9143cdd6891b6627f783a63b24e3b69a88e17b82e01686a0d43a17c692008c3b20a563abc647964f2b34300e6ffc1a'
-        '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
-        '119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64')
+        '30f5f096f29a85b7d3a40de6bd3420fc951e24eee1d19017c41f3553c1d44832bd87742af691c9f68c1149ea827faf88edfa6af1e27cb324b7bf7d093a74398e'
+        '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e')
 
 prepare() {
   cd jfx-${pkgver//.u/-}
@@ -67,7 +65,6 @@ prepare() {
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
   patch -Np1 -i ../java-openjfx-no-xlocale.patch
-  patch -Np1 -i ../java-openjfx-gstreamer-lite-gcc10-compat.patch
   sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
 }
 
