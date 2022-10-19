@@ -8,10 +8,10 @@
 
 pkgname=prismlauncher-qt5
 pkgver=5.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
-url="https://github.com/PrismLauncher/PrismLauncher"
+url="https://prismlauncher.org"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5')
 provides=('prismlauncher')
