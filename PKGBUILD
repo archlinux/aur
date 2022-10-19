@@ -1,6 +1,6 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>
 pkgname=tmux-resurrect
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Persist tmux environment across system restarts."
 arch=("any")
@@ -9,7 +9,7 @@ install=$pkgname.install
 license=('MIT')
 depends=('tmux' 'bash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tmux-plugins/tmux-resurrect/archive/v$pkgver.tar.gz")
-sha256sums=('4c78cf50662d6868a0f398707bb0d6802697c93cbb3162fb8bf4b8e87b4e3b72')
+sha256sums=('f8559d86d81be769054d63b28a268229a09bc6cc311f0623656c3090ec781b76')
 
 package() {
     cd "${pkgname}-${pkgver}"
