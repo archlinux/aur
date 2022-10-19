@@ -6,6 +6,7 @@ pkgdesc="a simple customisable fetch script"
 arch=('any')
 url="https://github.com/xXTacticalWaffleXx/minfetch"
 license=('GPL')
+depends=('bash')
 source=('https://raw.githubusercontent.com/xXTacticalWaffleXx/minfetch/main/minfetch'
         'https://github.com/xXTacticalWaffleXx/minfetch/raw/main/minfetch.1.gz')
 md5sums=('393a6bd8d89a8d67479d9ba125ea8a13'
