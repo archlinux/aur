@@ -29,7 +29,7 @@ prepare() {
     git config submodule.cmake/cotire.url "$srcdir/cotire"
     git config submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
     git config submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
