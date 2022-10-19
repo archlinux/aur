@@ -2,20 +2,30 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
 url="http://specutils.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-sphinx-astropy' 'python-gwcs' 'python-ndcube>=2.0' 'python-mpl-animators' 'graphviz')
-checkdepends=('python-pytest-remotedata' 'python-pytest-astropy-header')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-sphinx-astropy'
+             'python-gwcs'
+             'python-ndcube>=2.0'
+#            'python-mpl-animators'
+             'graphviz')
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-doctestplus'
+              'python-pytest-remotedata') # gwcs, ndcube already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://stsci.box.com/shared/static/28a88k1qfipo4yxc4p4d40v4axtlal8y.fits"
         "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('39cb753998d5d45bfa937488cb78bc7e'
+md5sums=('bc7a3b05b9ab0581f51a0a02a674fe77'
          '6de4c8ee5659e87a302e3de595074ba5'
          '3586c5d0810108a182ba9146908dc180'
          'b527ca1f834de432631d530c937d6cd1')
@@ -25,6 +35,7 @@ prepare() {
 
     cp ${srcdir}/*.fits docs
     patch -Np1 -i "${srcdir}/use_local_doc_fits_offline.patch"
+    sed -i "/astropy.utils.exceptions/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
 }
 
 build() {
@@ -67,11 +78,11 @@ check() {
         --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_legendre \
         --deselect=build/lib/specutils/tests/test_loaders.py::test_muscles_loader \
         --deselect=build/lib/specutils/tests/test_loaders.py::test_subaru_pfs_loader \
-        --deselect=build/lib/specutils/tests/test_spectral_axis.py::test_create_spectral_axis || warning "Tests failed"
+        --deselect=build/lib/specutils/tests/test_spectral_axis.py::test_create_spectral_axis || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-specutils() {
-    depends=('python>=3.7' 'python-scipy' 'python-gwcs>=0.17.0' 'python-ndcube>=2.0')
+    depends=('python>=3.8' 'python-scipy' 'python-gwcs>=0.17.0' 'python-ndcube>=2.0')
     optdepends=('python-specutils-doc: Documentation for Specutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 
