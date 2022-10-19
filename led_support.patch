@@ -133,7 +133,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
  }
  
  /* Query device for axis ranges */
-@@ -977,6 +1026,19 @@
+@@ -980,6 +1029,19 @@
      event_query_model(proto_data->evdev, &priv->model, &priv->id_vendor,
                        &priv->id_product);
  
@@ -153,7 +153,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
      xf86IDrvMsg(pInfo, X_PROBED, "Vendor %#hx Product %#hx\n",
                  priv->id_vendor, priv->id_product);
  }
-@@ -1077,5 +1139,6 @@
+@@ -1080,5 +1142,6 @@
      EventQueryHardware,
      EventReadHwState,
      EventAutoDevProbe,
