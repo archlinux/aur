@@ -1,5 +1,6 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
+_pkgname=virtualbox-ext-oracle
 _pkgver=6.1.$(curl -s http://download.virtualbox.org/virtualbox|grep -v _|sed -n -E '/href="6\.1/ { s:[^"]+"6\.1\.::; s:/".+::; p }'|sort -n|tail -1)
 _arcname=Oracle_VM_VirtualBox_Extension_Pack-$_pkgver.vbox-extpack
 _source=http://download.virtualbox.org/virtualbox/$_pkgver/$_arcname
@@ -28,12 +29,12 @@ package()
 	# shrink uneeded cpuarch
 	[[ -d shrunk ]] || mkdir shrunk
 	tar xfC $_arcname shrunk
-	rm -r shrunk/{darwin*,solaris*,win*,linux.*}
+	rm -r shrunk/{darwin*,solaris*,win*}
 	tar -c --gzip --file shrunk.vbox-extpack -C shrunk .
 
 	install -Dm 644 shrunk.vbox-extpack \
 		$pkgdir/usr/share/virtualbox/extensions/$_arcname
 	install -Dm 644 shrunk/ExtPack-license.txt \
-		$pkgdir/usr/share/licenses/$pkgname/PUEL
+		$pkgdir/usr/share/licenses/$_pkgname/PUEL
 }
 
