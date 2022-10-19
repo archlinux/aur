@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22216.013a34207
+pkgver=r22254.b8a70c999
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -32,6 +32,7 @@ depends=('desktop-file-utils'
          'zstd'
          'enet')
 makedepends=('boost'
+             'llvm'
              'catch2'
              'clang'
              'cmake'
@@ -98,18 +99,18 @@ prepare() {
         git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
 
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
 
     cd "$srcdir/$_pkgname"/externals/cubeb
 
     git config --file=.gitmodules submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
     git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
     
     cd "$srcdir/$_pkgname"/externals/sirit
     
     git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
