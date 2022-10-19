@@ -1,19 +1,17 @@
 # Maintainer: efoundation <dev [at] e -dot- email>
 # Maintainer: steadfasterX <steadfasterX [at] binbash -dot- rocks>
 pkgname=easy-installer
-pkgver=0.13.4
-pkgrel=2
-pkgdesc="The Easy Installer is a desktop application which helps users install /e/OS by Murena (https://doc.e.foundation/what-s-e) on supported devices."
+pkgver=0.15.1
+pkgrel=1
+pkgdesc="The Easy Installer is a desktop application which helps users install Android /e/ (https://doc.e.foundation/what-s-e) on supported devices."
 arch=('x86_64')
 url="https://gitlab.e.foundation/e/tools/${pkgname}"
 license=('GPL3')
 depends=()
-# required java version
-_reqjava=11
-makedepends=('git' 'gradle' "java-environment-openjdk=${_reqjava}" 'java-runtime-common' 'ruby-ronn')
+makedepends=('git' 'gradle' 'java-runtime-common' 'ruby-ronn')
 optdepends=()
 backup=()
-source=("${pkgname}-${pkgver}::git+https://gitlab.e.foundation/e/tools/${pkgname}.git#tag=v${pkgver}-beta"
+source=("${pkgname}-${pkgver}::git+https://gitlab.e.foundation/e/tools/${pkgname}.git#tag=v${pkgver}"
         "${pkgname}.8.md")
 md5sums=('SKIP'
          'bc6e92b53daabcee25e57904b3eb1bb6')
@@ -24,7 +22,7 @@ MAN8PAGE=${pkgname}.8
 
 build(){
     cd "$pkgname-$pkgver"
-    export JAVA_HOME="/usr/lib/jvm/java-${_reqjava}-openjdk"
+    export JAVA_HOME="$(pwd)/buildSrc/linux/jdk-11.0.2/"
     [ ! -d $JAVA_HOME ] && echo "ERROR: $JAVA_HOME does not exist" && exit 3
     ./gradlew dist
 }
