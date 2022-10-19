@@ -1,13 +1,15 @@
 pkgbase = dra-git
 	pkgdesc = A command line tool to download assets from GitHub releases (git)
-	pkgver = 0.3.8.r0.g18390ef
+	pkgver = 0.4.0.r0.g21c0ef0
 	pkgrel = 1
 	url = https://github.com/devmatteini/dra
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
+	depends = xz
+	depends = zlib
+	depends = bzip2
 	provides = dra
 	conflicts = dra
 	options = !lto
