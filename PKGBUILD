@@ -2,10 +2,10 @@
 
 pkgname=prismlauncher-bin
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
-url="https://github.com/PrismLauncher/PrismLauncher"
+url="https://prismlauncher.org"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme')
 provides=('prismlauncher')
