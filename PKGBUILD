@@ -11,7 +11,7 @@ conflicts=('media-control-indicator')
 provides=('media-control-indicator')
 depends=('python-gobject' 'libappindicator-gtk3' 'playerctl' 'python-urllib3' 'adwaita-icon-theme' 'python-colorthief')
 makedepends=('git')
-source=('git://github.com/Xaymup/media-control-indicator.git')
+source=('git+https://github.com/Xaymup/media-control-indicator.git')
 md5sums=('SKIP')
 
 pkgver() {
