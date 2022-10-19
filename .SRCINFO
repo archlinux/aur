@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-qt5-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 5.0.r0.g41032aaa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://prismlauncher.org
 	arch = i686
 	arch = x86_64
@@ -32,8 +32,6 @@ pkgbase = prismlauncher-qt5-git
 	conflicts = prismlauncher
 	conflicts = prismlauncher-qt5
 	source = git+https://github.com/PrismLauncher/PrismLauncher.git
-	source = git+https://github.com/PrismLauncher/libnbtplusplus.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = prismlauncher-qt5-git
