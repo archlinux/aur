@@ -1,0 +1,11 @@
+pkgbase = rollercoaster
+	pkgdesc = Cool Terminal tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://tinyurl.com/ycyhdpve
+	arch = any
+	depends = bash
+	source = rollercoaster::https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh
+	sha512sums = SKIP
+
+pkgname = rollercoaster
