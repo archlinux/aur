@@ -2,8 +2,9 @@
 # Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
 # Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 #
+
 pkgname=splashtop-streamer
-pkgver=3.0.4.0
+pkgver=3.5.2.0
 pkgrel=1
 pkgdesc="Splashtop Remote Streamer. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64')
@@ -16,7 +17,7 @@ backup=('etc/dbus-1/system.d/com.splashtop.streamer.Daemon.conf')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://download.splashtop.com/linux/STB_CSRS_Ubuntu_v${pkgver}_amd64.tar.gz")
-sha512sums=('15cca0bb9d1562d67da4dbd6a8c1a369919d77e4e132beb10f7af32e33e3b794c2fc11d664562a6872d8af8a6908a0814656baae68bcc0ca2d60383d499b9527')
+sha512sums=('387d8e8fbf0f2ad3b7031da9996ce2c4e33580ca85d38b79b940260e8223c2f2a669aa4797a04927b782fe1816bd9596938b51b90c23ded5b0eb7e1aa50756e1')
 
 prepare(){
     tar xzf STB_CSRS_Ubuntu_v${pkgver}_amd64.tar.gz

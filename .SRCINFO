@@ -1,6 +1,6 @@
 pkgbase = splashtop-streamer
 	pkgdesc = Splashtop Remote Streamer. Remotely access your desktop from any device from anywhere!
-	pkgver = 3.0.4.0
+	pkgver = 3.5.2.0
 	pkgrel = 1
 	url = https://www.splashtop.com
 	install = splashtop-streamer.install
@@ -39,7 +39,7 @@ pkgbase = splashtop-streamer
 	options = !strip
 	options = !emptydirs
 	backup = etc/dbus-1/system.d/com.splashtop.streamer.Daemon.conf
-	source = https://download.splashtop.com/linux/STB_CSRS_Ubuntu_v3.0.4.0_amd64.tar.gz
-	sha512sums = 15cca0bb9d1562d67da4dbd6a8c1a369919d77e4e132beb10f7af32e33e3b794c2fc11d664562a6872d8af8a6908a0814656baae68bcc0ca2d60383d499b9527
+	source = https://download.splashtop.com/linux/STB_CSRS_Ubuntu_v3.5.2.0_amd64.tar.gz
+	sha512sums = 387d8e8fbf0f2ad3b7031da9996ce2c4e33580ca85d38b79b940260e8223c2f2a669aa4797a04927b782fe1816bd9596938b51b90c23ded5b0eb7e1aa50756e1
 
 pkgname = splashtop-streamer
