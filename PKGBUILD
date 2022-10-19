@@ -2,16 +2,16 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="ncurses interface for QEMU"
 arch=(i686 x86_64)
 url="https://github.com/nemuTUI/nemu"
 license=(BSD)
-depends=(qemu ncurses sqlite udev libusb)
+depends=(qemu ncurses sqlite udev libusb json-c libxml2 libarchive bash)
 makedepends=(cmake)
 source=("${pkgname}-$pkgver.tar.bz2::https://github.com/nemuTUI/nemu/archive/v${pkgver}.tar.gz")
-sha256sums=('4a7ba85d6e5944a83f04184bfbb82ea1be1401e704448ef3f1fa721adccf8091')
+sha256sums=('72e87844cb0b84c261edc7fe2db9b0df9207472ca502ded30c6b131964815ca1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
