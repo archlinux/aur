@@ -1,14 +1,14 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=minosoft
 pkgname=$_pkgname-git
-pkgver=r1967.298c27bcd
+pkgver=r3153.566463927
 pkgrel=1
 pkgdesc="Open source minecraft client, written from scratch in kotlin (and java)."
 arch=('any')
 url="https://gitlab.bixilon.de/bixilon/minosoft"
 license=('GPL3')
 depends=('java-runtime>=11' 'sh')
-makedepends=('git' 'maven' 'java-environment')
+makedepends=('git' 'gradle' 'java-environment>=11')
 optdepends=('java-runtime>=16: recommended by developer')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -26,17 +26,17 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	mvn clean package
+	gradle clean fatJar
 }
 
 check() {
 	cd "$srcdir/$_pkgname"
-	mvn verify
+	gradle check
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm644 target/Minosoft-*-jar-with-dependencies.jar "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
+	install -Dm644 build/libs/minosoft-fat*.jar "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
 	install -Dm644 doc/img/Minosoft_logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	cd "$srcdir"
