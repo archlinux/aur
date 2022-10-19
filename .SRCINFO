@@ -14,8 +14,7 @@ pkgbase = media-control-indicator-git
 	depends = python-colorthief
 	provides = media-control-indicator
 	conflicts = media-control-indicator
-	source = git://github.com/Xaymup/media-control-indicator.git
+	source = git+https://github.com/Xaymup/media-control-indicator.git
 	md5sums = SKIP
 
 pkgname = media-control-indicator-git
-
