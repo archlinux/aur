@@ -1,24 +1,23 @@
-# Maintainer: Lenny McLennington <lenny@sneed.church>
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=prismlauncher-qt5-bin
-pkgver=1.4.2
+pkgver=5.0
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
-url="https://github.com/PlaceholderMC/PlaceholderMC"
+url="https://github.com/PrismLauncher/PrismLauncher"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme')
-provides=('polymc' 'polymc-qt5')
-conflicts=('polymc' 'polymc-qt5')
+provides=('prismlauncher' 'prismlauncher-qt5')
+conflicts=('prismlauncher' 'prismlauncher-qt5')
 optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
-source=("https://github.com/PlaceholderMC/PlaceholderMC/releases/download/${pkgver}/PlaceholderMC-Linux-${pkgver}.tar.gz")
-noextract=("PlaceholderMC-Linux-${pkgver}.tar.gz")
-sha256sums=('27c0efa28013d24d3713989e2610f2fa268a9a315bdf83f2316560fa7b529050')
+source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-Linux-${pkgver}.tar.gz")
+noextract=("PrismLauncher-Linux-${pkgver}.tar.gz")
+sha256sums=('7e5f8753134418a65ab11043563cb45880c0adc5a2c1a5c2897dd9de068e2e39')
 
 package() {
     install -d "$pkgdir/usr"
-    tar -C "$pkgdir/usr" -xvf PlaceholderMC-Linux-${pkgver}.tar.gz
+    tar -C "$pkgdir/usr" -xvf PrismLauncher-Linux-${pkgver}.tar.gz
     chown -R root:root "$pkgdir/usr"  # fils in tarball are not owned by root
 }
