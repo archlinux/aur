@@ -1,7 +1,7 @@
 pkgbase = dsp56300-emulator
 	pkgdesc = Emulates musical devices that used the Motorola 56300 DSPs (VST3 plugin)
 	pkgver = 1.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dsp56300/gearmulator
 	install = dsp56300-emulator.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = dsp56300-emulator
 	makedepends = webkit2gtk
 	depends = freetype2
 	depends = alsa-lib
-	depends = vst3-host
+	optdepends = vst3-host: for VST3 plugin
 	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#commit=7ebedff6b64828f3ce4aac84360e361fed9e6d1b
 	source = github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300
 	source = github.com-dsp56300-JUCE::git+https://github.com/dsp56300/JUCE
