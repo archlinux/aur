@@ -1,6 +1,7 @@
 #!/bin/bash
-pathPre=`pwd`
-electronicWechatPath=/opt/electronic-wechat-uos-bin
-cd ${electronicWechatPath}
-./electronic-wechat
-cd ${pathPre}
+# pathPre=`pwd`
+# electronicWechatPath=/opt/electronic-wechat-uos-bin
+# cd ${electronicWechatPath}
+# ./electronic-wechat
+# cd ${pathPre}
+electron /opt/electronic-wechat-uos-bin/resources/app.asar
