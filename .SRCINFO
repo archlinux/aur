@@ -1,8 +1,8 @@
 pkgbase = prismlauncher-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 5.0.r0.g41032aaa
-	pkgrel = 1
-	url = https://github.com/PrismLauncher/PrismLauncher
+	pkgrel = 2
+	url = https://prismlauncher.org
 	arch = i686
 	arch = x86_64
 	arch = aarch64
