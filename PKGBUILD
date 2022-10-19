@@ -26,7 +26,7 @@ prepare() {
   cd "$srcdir/Tangram"
   git submodule init
   git config submodule.src/troll.url "$srcdir/troll"
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
