@@ -1,16 +1,17 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='gitscover'
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='Discover new GitHub repositories'
 arch=('x86_64')
 url='https://github.com/linuxhubit/gitscover'
 license=('GPL3')
 depends=('granite')
-makedepends=('meson' 'vala')
+makedepends=('meson' 'vala' 'libsoup')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a0593cfcfdfe0c8bb7efe85bad18eac1d46b8ba697c6f7c5f45b97dd9de218d6')
+sha256sums=('1d6b2f1196c036bed0e64527c34828b37c132553a0993a5ae6d0c942de5b0954')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" 'build'
