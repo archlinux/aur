@@ -1,7 +1,7 @@
 pkgbase = moonwm
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
 	pkgver = 8.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = moonwm
 	depends = imagemagick
 	depends = libnotify
 	depends = notification-daemon
-	depends = otf-nerd-fonts-fira-code
+	depends = nerd-fonts-fira-code
 	depends = pademelon
 	depends = pavucontrol
 	depends = sound-theme-freedesktop
