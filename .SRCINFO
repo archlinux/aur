@@ -1,6 +1,6 @@
 pkgbase = lalrpop
 	pkgdesc = LR(1) parser generator for Rust
-	pkgver = 0.19.7
+	pkgver = 0.19.8
 	pkgrel = 1
 	url = https://github.com/lalrpop/lalrpop
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lalrpop
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = lalrpop-0.19.7.tar.gz::https://github.com/lalrpop/lalrpop/archive/0.19.7.tar.gz
-	sha256sums = d75bb1006e5c471f6f16f34fea3e986c91d2a22133238e68c9e0caf28f02b88a
+	source = lalrpop-0.19.8.tar.gz::https://github.com/lalrpop/lalrpop/archive/0.19.8.tar.gz
+	sha256sums = a76a5507d6c2767a5b4fd8318eb276e45155d45e50e3c402788a008ceb99f619
 
 pkgname = lalrpop
