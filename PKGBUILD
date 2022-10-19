@@ -14,7 +14,7 @@ backup=('usr/lib/firedragon/firedragon.cfg'
   'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url=https://gitlab.com/dr460nf1r3/settings/
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg)
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg xdg-desktop-portal)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
   autoconf2.13 rust clang llvm jack nodejs cbindgen nasm mold
   python-setuptools python-zstandard git binutils dump_syms lld
