@@ -34,7 +34,7 @@ prepare() {
   cd "$srcdir/mullvadvpn-app"
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
-  git submodule update
+  git submodule--helper update
 
   export RUSTUP_TOOLCHAIN=stable
   echo "Removing old Rust build artifacts"
