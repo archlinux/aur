@@ -33,7 +33,7 @@ prepare() {
   cd "$srcdir/QtScrcpy"
   git submodule init
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/QtScrcpyCore"
-  git submodule update
+  git submodule--helper update
 
   patch --strip=1 QtScrcpy/main.cpp < "$srcdir/path-fix.patch"
 
