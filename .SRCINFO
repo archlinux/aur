@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-timecube-git
 	pkgdesc = Plugin for Vapoursynth: timecube (GIT version)
-	pkgver = 3.1.0.g22acabc
+	pkgver = 3.1.8.g868ed49
 	pkgrel = 1
 	url = https://github.com/sekrit-twc/timecube
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = vapoursynth-plugin-timecube-git
 	options = debug
 	source = timecube::git+https://github.com/sekrit-twc/timecube.git
 	source = git+https://github.com/sekrit-twc/vsxx.git
+	source = git+https://github.com/sekrit-twc/graphengine.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

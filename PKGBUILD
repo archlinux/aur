@@ -3,7 +3,7 @@
 
 _plug=timecube
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.1.0.g22acabc
+pkgver=3.1.8.g868ed49
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,10 +14,12 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/sekrit-twc/${_plug}.git"
+source=("${_plug}::git+https://github.com/sekrit-twc/timecube.git"
         'git+https://github.com/sekrit-twc/vsxx.git'
+        'git+https://github.com/sekrit-twc/graphengine.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             )
 options=('debug')
@@ -29,22 +31,23 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-  git config submodule.vsplugin/vsxx.url "${srcdir}/vsxx"
-  git submodule update --init
+  git config submodule.vsxx.url "${srcdir}/vsxx"
+  git config submodule.graphengine.url "${srcdir}/graphengine"
+  git -c protocol.file.allow=always submodule update --init \
+    vsxx \
+    graphengine
 
   # use system vapoursynth headers
-  rm -fr vsxx/VapourSynth.h
-  rm -fr vsxx/VSScript.h
-  rm -fr vsxx/VSHelper.h
+  rm -fr vsxx/vapoursynth
 
-  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
-      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i vsxx/VapourSynth++.hpp
+  sed -e 's|"VapourSynth4.h"|<VapourSynth4.h>|g' \
+      -i vsxx/VapourSynth4++.hpp
 
-  sed -e "s|-Ivsxx|& $(pkg-config --cflags vapoursynth)|g" \
-      -e '/VSScript.h/d' \
+  sed -e "s|-Ivsxx/vapoursynth|$(pkg-config --cflags vapoursynth)|g" \
+      -e '/VSConstants4/d' \
+      -e '/VapourSynth4.h/d' \
       -e '/VapourSynth.h/d' \
-      -e '/VSHelper.h/d'\
+      -e '/VSHelper4.h/d'\
       -i Makefile
 }
 
