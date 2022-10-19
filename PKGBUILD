@@ -33,7 +33,7 @@ prepare() {
   git submodule init
   git config submodule.icon-development-kit-www.url "$srcdir/icon-development-kit-www"
   git config submodule.src/troll.url "$srcdir/troll"
-  git submodule update
+  git submodule--helper update
 
   # This is not a Flatpak
   sed -i 's|app/share|usr/share|g' src/re.sonny.Workbench
