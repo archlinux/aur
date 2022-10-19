@@ -3,7 +3,7 @@
 _plug=lc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.1.g9cea098
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/MoePus/VapourSynth-LC'
@@ -27,9 +27,10 @@ prepare() {
   cd "${_plug}"
 
   sed '3i#include <cmath>' \
-     -i LC/LC.H
-  sed 's|vapoursynth/||g' \
-     -i LC/Helper.h
+    -i LC/LC.H
+  sed -e '4i#include <iostream>' \
+      -e's|vapoursynth/||g' \
+      -i LC/Helper.h
 
   echo "all:
 	  clang++ -c -stdlib=libc++ -fPIC ${CXXFLAGS} ${CPPFLAGS} -I./LC $(pkg-config --cflags vapoursynth) -o VSPlugin.o LC/VSPlugin.cpp
