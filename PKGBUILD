@@ -3,8 +3,8 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 pkgname=python-projectq
 _name="ProjectQ"
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Open-source framework for quantum computing"
 arch=('x86_64')
 url="https://github.com/ProjectQ-Framework/ProjectQ"
@@ -27,7 +27,7 @@ makedepends=(
 checkdepends=('python-pytest')
 optdepends=('python-boto3: support for AWS Braket service')
 source=("https://github.com/${_name}-Framework/${_name}/releases/download/v${pkgver}/${pkgname/python-}-${pkgver}.tar.gz")
-b2sums=('8fa8346e59eaaa2226dd26e351bc3e752f0dc0d092550a4a4060096be727f0fce2bb5303461ce18ee9041a585a1c2298661757314bddecbbfadac2936a31be30')
+b2sums=('5edaf7ff1f4e505533b1ea6e05a06d7080113bac7de1e2971d9c1064664946560ebd441dce09b731b02a9b11779caf0498227f56f08cb153fa84cbfd707f827d')
 
 build() {
     cd "${srcdir}/${_name,,}-${pkgver}"
