@@ -5,15 +5,15 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.10.1.r147.g7e035c36
+pkgver=0.5.12.beta1.r4.g8937bcc1
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('cabextract' 'curl' 'glib2' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
-         'python-dbus' 'python-distro' 'python-gobject' 'python-lxml'
-         'python-pillow' 'python-requests' 'python-yaml' 'unzip'
+         'python-certifi' 'python-dbus' 'python-distro' 'python-gobject'
+         'python-lxml' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
          'webkit2gtk' 'xdg-utils' 'xorg-xrandr')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
@@ -33,6 +33,8 @@ optdepends=(
   'linux-steam-integration: start Steam with LSI'
   "mangohud: Display the games' FPS + other information"
   'python-evdev: Controller support'
+  'python-pefile: Extract icons from Windows executables'
+  'python-pypresence: Discord Rich Presence integration'
   'vkd3d: Vulkan 3D support'
   'vulkan-icd-loader: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
