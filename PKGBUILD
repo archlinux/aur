@@ -43,20 +43,20 @@ prepare() {
   git submodule init
   git config submodule.lib/AppImageUpdate.url "$srcdir/AppImageUpdate"
   git config submodule.lib/libappimage.url "$srcdir/libappimage"
-  git submodule update
+  git submodule--helper update
 
   pushd lib/AppImageUpdate
   git submodule init
   git config submodule.lib/zsync2.url "$srcdir/zsync2"
   git config submodule.lib/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
   git config submodule.lib/libappimage.url "$srcdir/libappimage"
-  git submodule update
+  git submodule--helper update
   popd
 
   pushd lib/AppImageUpdate/lib/libappimage
   git submodule init
   git config submodule.lib/gtest.url "$srcdir/googletest"
-  git submodule update
+  git submodule--helper update
   popd
 
   pushd lib/AppImageUpdate/lib/zsync2
@@ -64,13 +64,13 @@ prepare() {
   git config submodule.lib/cpr.url "$srcdir/cpr"
   git config submodule.lib/args.url "$srcdir/args"
   git config submodule.lib/gtest.url "$srcdir/googletest"
-  git submodule update
+  git submodule--helper update
   popd
 
   pushd lib/libappimage
   git submodule init
   git config submodule.lib/gtest.url "$srcdir/googletest"
-  git submodule update
+  git submodule--helper update
   popd
 }
 
