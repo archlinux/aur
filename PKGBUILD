@@ -4,7 +4,7 @@
 
 pkgname=airtame-application
 pkgver=4.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Airtame official screen streaming application."
 arch=('x86_64')
 url="https://airtame.com"
@@ -13,7 +13,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux'
 makedepends=('patchelf' 'hq' 'tidy')
 source=("https://downloads.airtame.com/app/latest/linux/Airtame-${pkgver}.deb" "LICENSE.html::https://airtame.com/legal_page/terms-and-conditions/")
 sha1sums=('6b280e5fcaa6fa092212e97b17a476f027017f7b'
-          'db177a2522b60b11445052c1f85705f0a052fa0c')
+          'SKIP')
 package() {
   # Extract package data
   tar xf data.tar.xz -C "${pkgdir}"
@@ -26,6 +26,9 @@ package() {
 
   # Fix insecure rpath
   patchelf --force-rpath --set-rpath "\$ORIGIN" "${pkgdir}/opt/${pkgname}/resources/build/native/out/lib/libAirtameEncryption.so"
+
+  # Fix permissions of chrome-sandbox
+  chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
   # Install main license
   install -m 644 -D <(hq -f LICENSE.html .legal_page data | tidy -i -ashtml -utf8 - 2> /dev/null) "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
