@@ -1,0 +1,19 @@
+pkgbase = liblxi
+	pkgdesc = LXI library
+	pkgver = 1.17
+	pkgrel = 1
+	url = https://github.com/lxi/liblxi
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	makedepends = meson
+	depends = libxml2
+	depends = avahi
+	depends = libadwaita
+	optdepends = lxi-tools
+	provides = liblxi
+	conflicts = liblxi-git
+	source = https://github.com/lxi/liblxi/releases/download/v1.17/liblxi-1.17.tar.xz
+	sha256sums = 4c0f15cbc07e8df4f7519e61d2d28f8f4479865af55fa195a9e8f9032126e58a
+
+pkgname = liblxi
