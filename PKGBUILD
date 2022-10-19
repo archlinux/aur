@@ -2,7 +2,7 @@
 pkgname=spinnaker-spin
 pkgver=1.29.0
 pkgrel=1
-pkgdesc="Spin CLI to manage Spinnaker applications, pipelines and configs"
+pkgdesc="Spin is a command-line administration tool to manage Spinnaker applications, pipelines and configs"
 arch=('x86_64')
 url="https://spinnaker.io/docs/guides/spin/"
 license=('Apache')
