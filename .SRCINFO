@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-depan-git
 	pkgdesc = Plugin for Vapoursynth: depan. (GIT Version)
-	pkgver = 1.0.ge248fa9
+	pkgver = r1.0.g2f05589
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=173505
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vapoursynth-plugin-depan-git
 	provides = vapoursynth-plugin-depan
 	conflicts = vapoursynth-plugin-depan
 	options = debug
-	source = https://www.dropbox.com/s/d72bougsis2se58/vapoursynth-depan-1.tar.gz
-	sha256sums = bca09707018b2011e6300900006d71b21b2290c4bd8ba34b27c844d6ff03b6d6
+	source = depan::git+https://github.com/Vapoursynth-Plugins-Gitify/DePan.git
+	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-depan-git
