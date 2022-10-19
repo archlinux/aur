@@ -1,17 +1,19 @@
 pkgbase = python-oletools
 	pkgdesc = Python tools to analyze security characteristics of MS Office and OLE files
-	pkgver = 0.56
+	pkgver = 0.60.1
 	pkgrel = 1
 	url = https://github.com/decalage2/oletools
 	arch = any
 	license = BSD
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-colorclass
 	depends = python-easygui
 	depends = python-pyparsing
 	depends = python-msoffcrypto-tool
-	source = https://github.com/decalage2/oletools/releases/download/v0.56/oletools-0.56.tar.gz
-	sha512sums = dc6dd56f39dd07c7672f6df9372a9114935db1a0d4c080eeacf9e94058548dee03fd55b6aa0ac892264c75e4b0893e804f2b6b8e8ded8d18b18ad6671b6d5c10
+	source = python-oletools-0.60.1.zip::https://files.pythonhosted.org/packages/source/o/oletools/oletools-0.60.1.zip
+	sha256sums = 67a796da4c4b8e2feb9a6b2495bef8798a3323a75512de4e5669d9dc9d1fae31
 
 pkgname = python-oletools
-
