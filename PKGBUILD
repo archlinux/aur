@@ -8,8 +8,8 @@ url="https://github.com/jzbor/moonwm"
 license=('MIT')
 groups=()
 depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg imagemagick libnotify
-            notification-daemon otf-nerd-fonts-fira-code pademelon pavucontrol sound-theme-freedesktop
-            xorg-xrandr xorg-xrdb)
+            nerd-fonts-fira-code notification-daemon pademelon pavucontrol
+            sound-theme-freedesktop xorg-xrandr xorg-xrdb)
 makedepends=(git go-md2man pkgconf)
 checkdepends=()
 optdepends=('scrot: integrated screenshot support'
