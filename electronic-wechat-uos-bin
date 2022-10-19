@@ -1,0 +1,6 @@
+#!/bin/bash
+pathPre=`pwd`
+electronicWechatPath=/opt/electronic-wechat-uos-bin
+cd ${electronicWechatPath}
+./electronic-wechat
+cd ${pathPre}
