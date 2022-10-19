@@ -1,7 +1,7 @@
 pkgbase = normcap
 	pkgdesc = OCR powered screen-capture tool to capture information instead of images
-	pkgver = 0.3.12
-	pkgrel = 2
+	pkgver = 0.3.13
+	pkgrel = 1
 	url = https://dynobo.github.io/normcap
 	arch = any
 	license = GPL
@@ -12,9 +12,9 @@ pkgbase = normcap
 	depends = python-certifi
 	depends = python-pytesseract
 	depends = wl-clipboard
-	source = normcap-0.3.12.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v0.3.12.tar.gz
+	source = normcap-0.3.13.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v0.3.13.tar.gz
 	source = normcap.desktop
-	sha256sums = 07c3339c9fbec035bcc7b295ea9d9f28045eab90392eb07e21fe2ba06508a04b
+	sha256sums = 2ab67e66333c37d8e118faec3ddb414d5bd8b509a15387b230e245e19811f18e
 	sha256sums = 29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9
 
 pkgname = normcap
