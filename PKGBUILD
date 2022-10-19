@@ -3,8 +3,9 @@
 
 pkgname=gerbv-git
 _pkgname=gerbv
-pkgver=2.9.2.r3.g319a8af
+pkgver=2.9.3.r1.g8aa1e02
 pkgrel=1
+epoch=1
 pkgdesc="An open source Gerber file (RS-274X only) viewer"
 url="https://github.com/gerbv/gerbv"
 license=('GPL')
@@ -20,6 +21,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
   git describe --tags | cut -c2- | sed 's+-+.r+' | tr - .
+}
+prepare() {
+  cd $_pkgname
+  sed -i -e "s/m4_esyscmd(utils\/git-version-gen.sh [0-9.]*)/$pkgver/" configure.ac
 }
 
 build () {
