@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/patradebasish1987/treeview"
 license=('UNLICENSE' 'MIT')
 provides=("treeview")
-makedepends=('cargo' 'git' 'asciidoc')
-conflicts=('treeview')
+makedepends=('cargo' 'git')
+conflicts=('treeview-bin')
 source=("$pkgname::git+https://gitlab.gnome.org/patradebasish1987/treeview")
 sha1sums=('SKIP')
 

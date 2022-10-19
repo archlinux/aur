@@ -9,9 +9,8 @@ pkgbase = treeview-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = asciidoc
 	provides = treeview
-	conflicts = treeview
+	conflicts = treeview-bin
 	source = treeview-git::git+https://gitlab.gnome.org/patradebasish1987/treeview
 	sha1sums = SKIP
 
