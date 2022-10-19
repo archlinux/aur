@@ -1,0 +1,13 @@
+[Unit]
+Description=Clash core service created by Clash for Windows for normal user.
+After=network-online.target nftables.service iptabels.service
+
+[Service]
+Type=simple
+ExecStartPre=/opt/clash-for-windows/cfw-start-pre.sh %i
+ExecStart=/home/%i/.config/clash/service/clash-core-service
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
