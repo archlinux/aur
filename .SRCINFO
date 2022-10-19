@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-weather-widget-2
 	pkgdesc = An updated version of the plasma-applet-weather-widget by Kotelnik
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/blackadderkate/weather-widget-2
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = plasma5-applets-weather-widget-2
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
 	depends = qt5-xmlpatterns
-	source = https://github.com/blackadderkate/weather-widget-2/archive/refs/tags/v2.3.3.tar.gz
-	sha256sums = 32edd1ee12ca3d98ba44c6081ef23bb6a5c1fafc1af49269bc2c3c333a8f2812
+	source = https://github.com/blackadderkate/weather-widget-2/archive/refs/tags/v2.3.4.tar.gz
+	sha256sums = 8237457d8ae4a22072416b6ede3c9960ce721d2ebba8bcc221cad92bb109f03f
 
 pkgname = plasma5-applets-weather-widget-2
