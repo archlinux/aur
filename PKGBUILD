@@ -1,14 +1,14 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=lxi-tools-git
-pkgver=r724.91ee029
-pkgrel=1
+pkgver=r764.9dbd16a
+pkgrel=2
 pkgdesc="LXI Tools is a collection of software tools for controlling LXI instruments"
 arch=('i686' 'x86_64')
 url="https://github.com/lxi/lxi-tools"
 license=('BSD-3')
 provides=('lxi-tools')
 conflicts=('lxi-tools')
-depends=('liblxi-git' 'lua53' 'gtk4>=4.5.0' 'gtksourceview5>=5.3.3')
+depends=('liblxi' 'lua53' 'gtk4>=4.5.0' 'gtksourceview5>=5.4.0')
 makedepends=('git' 'meson')
 source=("$pkgname::git+https://github.com/lxi/lxi-tools")
 md5sums=('SKIP')
