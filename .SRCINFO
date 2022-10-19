@@ -6,7 +6,7 @@ pkgbase = discord-chat-exporter-cli
 	arch = any
 	license = GPL
 	makedepends = unzip
-	depends = dotnet-runtime>=6.0.0
+	depends = dotnet-runtime>=6
 	noextract = discord-chat-exporter-cli-2.36.2.zip
 	source = discord-chat-exporter-cli-2.36.2.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.36.2/DiscordChatExporter.CLI.zip
 	source = discord-chat-exporter-cli
