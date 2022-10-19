@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=2.0.0.r0.g912ec1e
+pkgver=2.0.2.r14.g4862394
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
@@ -26,7 +26,7 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
   git submodule init
   git config submodule.po.url $srcdir/po
-  git submodule update
+  git submodule--helper update
 }
 
 build() {

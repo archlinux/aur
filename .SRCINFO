@@ -1,6 +1,6 @@
 pkgbase = dialect-git
 	pkgdesc = A translation app for GNOME.
-	pkgver = 2.0.0.r0.g912ec1e
+	pkgver = 2.0.2.r14.g4862394
 	pkgrel = 1
 	url = https://apps.gnome.org/app/com.github.gi_lom.dialect
 	arch = any
