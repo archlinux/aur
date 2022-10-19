@@ -8,10 +8,14 @@ arch=('x86_64')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
-depends=()
+depends=('nss' 'gtk3' 'libxss')
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=(
+	'xdg-desktop-portal-kde: KDE下的原生对话框'
+	'xdg-desktop-portal-lxqt: lxqt下的原生对话框'
+	'xdg-desktop-portal-gnome: Gnome下的原生对话框'
+)
 provides=(electronic-wechat)
 conflicts=()
 replaces=()
@@ -35,7 +39,8 @@ package() {
 	for directory in /usr/bin /opt/electronic-wechat-uos-bin /usr/share/applications; do
 		mkdir -p ${pkgdir}${directory}
 	done
-	cp -r ${srcdir}/electronic-wechat-linux-x64/* electronic-wechat-uos-bin.svg ${pkgdir}/opt/electronic-wechat-uos-bin
+	cp -r ${srcdir}/electronic-wechat-linux-x64/* ${pkgdir}/opt/electronic-wechat-uos-bin
+	cp ${srcdir}/electronic-wechat-uos-bin.svg ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.desktop ${pkgdir}/usr/share/applications
 	cp ${srcdir}/electronic-wechat-uos-bin ${pkgdir}/usr/bin
 	chmod 644 ${pkgdir}/usr/share/applications/electronic-wechat-uos-bin.desktop
