@@ -2,10 +2,10 @@
 
 pkgname=n2-git
 pkgver=0.1.0.r289.693d2ef
-pkgrel=1
+pkgrel=2
 pkgdesc='n2 ("into"), a ninja compatible build system'
 arch=('x86_64' 'aarch64')
-url=https://github.com/evmar/n2
+url="https://github.com/evmar/n2"
 license=(Apache)
 makedepends=(git rust coreutils sed gcc)
 depends=(gcc-libs glibc)
@@ -43,4 +43,7 @@ build() {
 package() {
   cd "${_git_folder}"
   install -Dm755 target/release/"${pkgname%-git}" -t "$pkgdir/usr/bin/"
+
+  install -d "${pkgdir}/usr/lib/n2/bin"
+  ln -s /usr/bin/n2 "${pkgdir}/usr/lib/n2/bin/ninja"
 }
