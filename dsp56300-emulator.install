@@ -1,0 +1,9 @@
+post_install() {
+  cat <<EOF
+
+The ROM needs to be installed to /usr/lib/vst3.
+
+The plugin can only load one ROM at a time.
+
+EOF
+}

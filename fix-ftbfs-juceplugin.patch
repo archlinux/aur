@@ -1,0 +1,10 @@
+--- a/source/jucePlugin/ui3/Tabs.h
++++ b/source/jucePlugin/ui3/Tabs.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <vector>
++#include <stddef.h>
+ 
+ namespace juce
+ {

@@ -1,0 +1,10 @@
+--- a/source/dsp56kEmu/logging.h
++++ b/source/dsp56kEmu/logging.h
+@@ -3,6 +3,7 @@
+ #include <sstream>
+ #include <string>
+ #include <iomanip>
++#include <memory>
+ 
+ namespace Logging
+ {
