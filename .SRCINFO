@@ -7,13 +7,14 @@ pkgbase = rtw8852be-dkms-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = bc
-	makedepends = linux-headers
+	depends = dkms
+	depends = bc
+	depends = linux-headers
 	conflicts = rtw8852be
 	conflicts = rtl8852be
 	source = git+https://github.com/lwfinger/rtw8852be.git
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 474381268f02061270d91abe8cfdd880773ad0536766fcbfbb058f06a2d1c332
+	sha256sums = 7505da64cf4861f25f0968a323d312cb609b6cb77f4eb64d58a224c1e123f89d
 
 pkgname = rtw8852be-dkms-git
