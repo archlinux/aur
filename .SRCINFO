@@ -1,8 +1,8 @@
 pkgbase = prismlauncher-qt5-bin
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 5.0
-	pkgrel = 1
-	url = https://github.com/PrismLauncher/PrismLauncher
+	pkgrel = 2
+	url = https://prismlauncher.org
 	arch = x86_64
 	license = GPL3
 	depends = java-runtime
