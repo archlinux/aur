@@ -1,7 +1,7 @@
 # Maintainer: fft
 
 pkgname=apr-2-svn
-pkgver=r1904699
+pkgver=r1904703
 pkgrel=1
 pkgdesc='Apache Portable Runtime library. This is version 2 from SVN trunk, possibly unstable.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}::svn+https://svn.apache.org/repos/asf/apr/apr/trunk/"
         'omit_extra_libs.patch'
         'dont_override_external_buildflags')
 sha256sums=('SKIP'
-            '315932ef6536fc0644c1efe770ceb3bb675c3c7103a7cbb2f02efd8be03eb752'
+            '268f65a263199901a07788a28e3e7bac74cd445dac677ca4e22a054d9e5315fd'
             '12595d331b48be9e44bd843635eb4f0f500bd213e197a551a9d383a28a24641f'
             '3d491d3af8fb5a75db4e085a17e5d8dcbe058bd256ef893ee779dc97fc9f8ad6'
             '5ac0bdc532479f6082d29115ac9d3ca24524fd8b97a556568755b88e5a68e3df')
