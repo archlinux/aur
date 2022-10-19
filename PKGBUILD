@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.3.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -203,26 +203,26 @@ prepare() {
     for submodule in "${_submodules[@]}"; do
         git submodule init "${submodule#*::}"
         git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
-        git submodule update "${submodule#*::}"
+        git submodule--helper update "${submodule#*::}"
     done
 
     pushd vkd3d-proton
         for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
             git submodule init "${submodule}"
             git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-            git submodule update "${submodule}"
+            git submodule--helper update "${submodule}"
         done
         pushd subprojects/dxil-spirv
             git submodule init third_party/spirv-headers
             git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
-            git submodule update third_party/spirv-headers
+            git submodule--helper update third_party/spirv-headers
         popd
     popd
 
     pushd dxvk-nvapi
         git submodule init external/Vulkan-Headers
         git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
-        git submodule update external/Vulkan-Headers
+        git submodule--helper update external/Vulkan-Headers
         # GCC 12 build failure
         git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
@@ -360,4 +360,4 @@ sha256sums=('SKIP'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
-            '7816c01f28d90ace7f1200d30a6cf371fff6c5746312c463adecc91f701908ab')
+            '6a7f985afff6085dd81bae09b8b2fe8e028facdcf9837793b21d003fef023d9b')
