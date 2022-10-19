@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=cura-modern-appimage
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="State-of-the-art slicer app to prepare your 3D models for your 3D printer. (Modern AppImage)"
 arch=('x86_64')
@@ -17,12 +17,12 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 source=(
-  "https://github.com/Ultimaker/Cura/releases/download/5.2.0/Ultimaker-Cura-5.2.0-linux-modern.zip"
-  "https://raw.githubusercontent.com/Ultimaker/Cura/5.2.0/LICENSE"
+  "https://github.com/Ultimaker/Cura/releases/download/5.2.1/Ultimaker-Cura-5.2.1-linux-modern.AppImage"
+  "https://raw.githubusercontent.com/Ultimaker/Cura/5.2.1/LICENSE"
   "cura.desktop.patch"
 )
 sha512sums=(
-  "9ba8572b450862472f7463863f60daa5ec28335673a803747c48bd737d0c18e1bb826073a866e24921fc0ec6fadba4b7478f275c3483083ea0f67dfef9740530"
+  "9274e16e27a35f3308d7555a4a576a4122478006bb0746db2b48b6b6e9ee038ca03cb4a3a1b58c001b933a92aa696e07ffd49151b1a22b04ea56b64cfe59dea8"
   "d163a24c8255b008c556a4b3f97559b18105a75fcdb74af52fad479b6b66ff25305c28df1df160b16a72beadc7b55900f31de39b04732beb2de4c1cf2e576c62"
   "25e638fea3a18087388dd960a746441dc95753b5ba00f9e011f723b6df74e884acb95c1b80611b4d97730fdc03f944b9aaee8277c9cc9a7578260383686c12e1"
 )
