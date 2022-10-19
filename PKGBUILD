@@ -3,7 +3,7 @@
 
 pkgbase=dxvk-async-git
 pkgname=('dxvk-async-git')
-pkgver=1.10.1.r921.gf1f8d45f
+pkgver=1.10.1.r953.g53a0c372
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -19,13 +19,13 @@ source=("git+https://github.com/doitsujin/dxvk.git"
         "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         "git+https://github.com/Sporif/dxvk-async.git"
-        "dxvk.conf")
+        "dxvk-async-env.conf")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '92db021e01bc44596dade8c5f326c42a59a9c8766810ed1ebab4c327904f42f8')
+            '5ea0fbf7fddb45a8575ff001793011a594d999aaeb66ef95378bca950c844300')
 
 pkgver() {
     cd dxvk
@@ -71,6 +71,6 @@ package_dxvk-async-git() {
         mkdir -p "$pkgdir/usr/bin"
         ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
         chmod +x "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
-        # Async variable
-        install -Dm644 "$srcdir/dxvk.conf" "$pkgdir/etc/environment.d/dxvk.conf"
+        # Async environment variable
+        install -Dm644 "$srcdir/dxvk-async-env.conf" "$pkgdir/etc/environment.d/dxvk-async-env.conf"
 }
