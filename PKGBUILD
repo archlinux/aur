@@ -1,6 +1,6 @@
 # Maintainer: Debasish Patra <patradebasish1987@gmail.com>
 pkgname=treeview-git
-pkgver=.r0.86a167c
+pkgver=.r0.17f1ab3
 pkgrel=1
 pkgdesc="A treeview tool to see directories & files"
 arch=('i686' 'x86_64')

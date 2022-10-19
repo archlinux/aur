@@ -1,6 +1,6 @@
 pkgbase = treeview-git
 	pkgdesc = A treeview tool to see directories & files
-	pkgver = .r0.86a167c
+	pkgver = .r0.17f1ab3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/patradebasish1987/treeview
 	arch = i686
