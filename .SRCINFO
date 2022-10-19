@@ -1,16 +1,15 @@
 pkgbase = taglib-sharp
 	pkgdesc = Library for reading and writing metadata in media files for Mono
-	pkgver = 2.2.0.0
+	pkgver = 2.3.0.0
 	pkgrel = 1
 	url = https://github.com/mono/taglib-sharp
 	arch = any
 	license = LGPL2.1
 	makedepends = msbuild
 	depends = mono
-	source = taglib-sharp-2.2.0.0.tar.gz::https://github.com/mono/taglib-sharp/archive/TaglibSharp-2.2.0.0.tar.gz
+	source = https://github.com/mono/taglib-sharp/archive/TaglibSharp-2.3.0.0.tar.gz
 	source = taglib-sharp.pc
-	sha256sums = 69e33531e9129046381989afe4e5aa3db98a83ec478884a393efd93f1952a8c1
+	sha256sums = c96834a945369e07f9018959e38dafd3769237aec8ba3ffb2f460644da081a4e
 	sha256sums = 7b84254952a5a87f746f9927d866951683434c0ec5ed55a4995f69c5c2b5c7b3
 
 pkgname = taglib-sharp
-
