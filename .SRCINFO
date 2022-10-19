@@ -1,6 +1,6 @@
 pkgbase = codedeploy-agent-bin
 	pkgdesc = AWS CodeDeploy is a deployment service that enables developers to automate the deployment of applications to instances and to update the applications as required.
-	pkgver = 1.4.0_2218
+	pkgver = 1.4.1_2244
 	pkgrel = 1
 	url = https://aws.amazon.com/documentation/codedeploy/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = codedeploy-agent-bin
 	depends = systemd
 	provides = codedeploy-agent
 	conflicts = codedeploy-agent
-	source = https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/codedeploy-agent_1.4.0-2218_all.deb
-	md5sums = 4584672583ee56b800848abdf1456583
+	source = https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/codedeploy-agent_1.4.1-2244_all.deb
+	md5sums = 4b5da7df2ed057fe1a9b1b72c216e8e2
 
 pkgname = codedeploy-agent-bin
