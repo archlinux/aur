@@ -8,7 +8,7 @@ pkgdesc="Linux driver for RTW8852BE PCIe card"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/lwfinger/rtw8852be/tree/main"
-makedepends=('make' 'git' 'build-essential' 'gcc' 'bc' 'linux-headers')
+makedepends=('git' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}" "rtl8852be")
 source=("git+https://github.com/lwfinger/rtw8852be.git"
        'dkms.conf')
