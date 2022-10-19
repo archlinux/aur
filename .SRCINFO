@@ -1,6 +1,6 @@
 pkgbase = make-git
 	pkgdesc = A tool which controls the generation of executables and other non-source files of a program from the program's source files
-	pkgver = 4.3.r2.g4533348
+	pkgver = 4.3.91.r0.g7c71df56
 	pkgrel = 1
 	url = https://www.gnu.org/software/make/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = make-git
 	makedepends = wget
 	depends = glibc
 	depends = guile
-	provides = make
+	provides = make=4.3.91.r0.g7c71df56
 	conflicts = make
 	source = git+https://git.savannah.gnu.org/git/make.git
 	sha256sums = SKIP
 
 pkgname = make-git
-
