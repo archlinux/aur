@@ -3,7 +3,7 @@
 
 _pkgname=datalad
 pkgname=python-$_pkgname
-pkgver=0.17.2
+pkgver=0.17.7
 pkgrel=1
 pkgdesc='Keep code, data, containers under control with git and git-annex'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('python-requests-ftp: extra downloaders'
             'python-xmp-toolkit: XMP metadata'
             'python-pillow: generic image metadata')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/datalad/${_pkgname}/archive/$pkgver.tar.gz")
-sha512sums=('7eceaea6bd0f0e251f194d8c1846e5abfff46174c536a42c1c0f891ca06f9688f8d291dec706f4ca51128d6588ceaf28039d80e63ebc5a15417bca3c74f0d866')
+sha512sums=('b01442bdd672e6ab0ebfe7fc71721437e117df0ddbe68558b8c21d4f5d387de807870250eac83630e52d2bb5ecf69686b5679c2a1458edb13b7e2a940c4e1330')
 
 build() {
     cd "$srcdir/${_pkgname}-$pkgver"
