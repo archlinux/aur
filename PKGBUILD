@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=2.0.2.r14.g4862394
+pkgver=2.1.0.r0.g88a5efe
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
