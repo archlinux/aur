@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-chain
+	pkgdesc = A custom theme for Plymouth inspired by the blockchain theme in plymouth themes.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hugopikachu/plymouth-theme-chain
+	install = plymouth-theme-chain.install
+	arch = any
+	license = MIT
+	depends = plymouth
+	source = plymouth-theme-chain-1.0.0.tar.gz::https://github.com/Hugopikachu/plymouth-theme-chain/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4b734dcebd4bf19c6a01aa273822aab138f40c0d5019a15bfe92d4cbf0c3eb22
+
+pkgname = plymouth-theme-chain
