@@ -9,6 +9,7 @@ pkgbase = nomad-device-nvidia-bin
 	arch = arm
 	arch = aarch64
 	license = MPL2
+	provides = nomad-device-nvidia
 	options = !strip
 	source_i686 = https://releases.hashicorp.com/nomad-device-nvidia/1.0.0/nomad-device-nvidia_1.0.0_linux_386.zip
 	sha256sums_i686 = 70f9096deee98bcf3adc68e6e032be45e93153e9822a17965cbba5d1b555d9db

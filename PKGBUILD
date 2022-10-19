@@ -7,6 +7,7 @@ pkgdesc='Nomad device driver for Nvidia GPU'
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/hashicorp/nomad-device-nvidia"
 license=('MPL2')
+provides=('nomad-device-nvidia')
 changelog=nomad-device-nvidia.changelog
 source_i686=("https://releases.hashicorp.com/nomad-device-nvidia/${pkgver}/nomad-device-nvidia_${pkgver}_linux_386.zip")
 source_x86_64=("https://releases.hashicorp.com/nomad-device-nvidia/${pkgver}/nomad-device-nvidia_${pkgver}_linux_amd64.zip")
