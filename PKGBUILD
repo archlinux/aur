@@ -51,7 +51,7 @@ prepare() {
   git config submodule.src/writeas.url "$srcdir/writeas-vala"
   git config submodule.src/writegood.url "$srcdir/libwritegood-vala"
   git config submodule.data/language-specs.url "$srcdir/custom-gtksourceview-languages"
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
