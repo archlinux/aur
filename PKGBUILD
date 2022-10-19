@@ -13,6 +13,7 @@ url=https://www.virtualbox.org/
 license=(custom:PUEL)
 options=('!strip')
 provides=(virtualbox-ext-oracle)
+conflicts=(virtualbox-ext-oracle)
 install=virtualbox-ext-oracle.install
 optdepends=('rdesktop: client to connect vm via RDP')
 depends=("virtualbox>=$pkgver" 'virtualbox<7')

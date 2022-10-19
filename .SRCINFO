@@ -10,6 +10,7 @@ pkgbase = virtualbox6-ext-oracle
 	depends = virtualbox<7
 	optdepends = rdesktop: client to connect vm via RDP
 	provides = virtualbox-ext-oracle
+	conflicts = virtualbox-ext-oracle
 	options = !strip
 
 pkgname = virtualbox6-ext-oracle
