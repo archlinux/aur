@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=2.0.182
-pkgrel=2
+pkgrel=3
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://cemu.info
@@ -34,17 +34,18 @@ source=(
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
-	# git+https://github.com/microsoft/vcpkg#commit=1b0252ca70ca2244a711535462c7f981eb439e83
-	# git+https://github.com/KhronosGroup/Vulkan-Headers#commit=715673702f5b18ffb8e5832e67cf731468d32ac6
 	git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
 	# cubeb submodules
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	# patches
-	overlay.diff # 6aa7a0c7b2003f625bfecd64f6143a10605234b2
-	mic.diff # 5231a71527cb57ea79b1b2ab9e4d7247d9141dd1
+	# upstream merged patches
 	crc.diff # f0938e1a23f6cdd03bfd1e21d84f2c0f65aeb45f
-	gui.diff # b3814225e4a63fad543b2a9ebf11ed6f5e21f389
+	dialog-crash-fix.diff # e88d20cbfbada6b1d144c4944f080f70299c1506
+	mlc-discord-rich-presence.diff # 271a4e4719463ece58db74b9c390f83bf6e956cf
+	# upstream proposed patches
+	overlay.diff # 6aa7a0c7b2003f625bfecd64f6143a10605234b2 (https://github.com/cemu-project/Cemu/pull/142)
+	mic.diff # 5231a71527cb57ea79b1b2ab9e4d7247d9141dd1 (https://github.com/cemu-project/Cemu/pull/251)
+	gui.diff # b3814225e4a63fad543b2a9ebf11ed6f5e21f389 (https://github.com/cemu-project/Cemu/pull/345)
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -52,9 +53,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a'
+            '03bc995a63af7be8c83673272c6c6bcb08bbb8ed48c8a06af7adfdaa475be61a'
+            'fa034a95b38e0e292deedda1d8d93663163a56460579c497ee8d76902ee8de95'
             'f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f'
             '46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f'
-            '095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a'
             '1081822dec41144e0a7ac934b284f131fcb4b87ffdcef144da0a13e8f8dda169')
 
 pkgver() {
@@ -72,12 +75,12 @@ prepare() {
 	# cemu submodules
 	for submodule in dependencies/{cubeb,imgui,ZArchive}; do
 		git config submodule.$submodule.url "file://$srcdir/${submodule##*/}"
-		git submodule update --init $submodule
+		git submodule--helper update --init $submodule
 	done
 	pushd dependencies/cubeb > /dev/null
 	for submodule in {cmake/sanitizers-cmake,googletest}; do
 		git config submodule.$submodule.url "file://$srcdir/${submodule##*/}"
-		git submodule update --init $submodule
+		git submodule--helper update --init $submodule
 	done
 	popd > /dev/null
 
@@ -99,20 +102,17 @@ prepare() {
 	# gamelist column width improvement
 	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
 
-	# experimental: linux overlay (https://github.com/cemu-project/Cemu/pull/142)
 	rm -rf src/util/SystemInfo
 	git apply "$srcdir/overlay.diff"
 	sed -i '/add_library/aSystemInfo/SystemInfo.cpp SystemInfo/SystemInfoLinux.cpp' src/util/CMakeLists.txt
 
-	# experimental: microphone (https://github.com/cemu-project/Cemu/pull/251)
 	rm -f src/audio/{Cubeb,IAudio}InputAPI.{cpp,h}
 	git apply "$srcdir/mic.diff"
 
-	# Fix CRC errors (graphics packs) (https://github.com/cemu-project/Cemu/pull/375)
 	git apply "$srcdir/crc.diff"
-
-	# experimental: input ui (https://github.com/cemu-project/Cemu/pull/345)
 	git apply "$srcdir/gui.diff"
+	git apply "$srcdir/dialog-crash-fix.diff"
+	git apply "$srcdir/mlc-discord-rich-presence.diff"
 }
 
 build() {

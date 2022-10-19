@@ -1,7 +1,7 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
 	pkgver = 2.0.182
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cemu.info
 	install = cemu.install
 	arch = x86_64
@@ -30,9 +30,11 @@ pkgbase = cemu
 	source = git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
+	source = crc.diff
+	source = dialog-crash-fix.diff
+	source = mlc-discord-rich-presence.diff
 	source = overlay.diff
 	source = mic.diff
-	source = crc.diff
 	source = gui.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -40,9 +42,11 @@ pkgbase = cemu
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a
+	sha256sums = 03bc995a63af7be8c83673272c6c6bcb08bbb8ed48c8a06af7adfdaa475be61a
+	sha256sums = fa034a95b38e0e292deedda1d8d93663163a56460579c497ee8d76902ee8de95
 	sha256sums = f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
 	sha256sums = 46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f
-	sha256sums = 095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a
-	sha256sums = 6ec9545cdd05f59a5d7e956c5c0e083f734dd9e6cc681c5dc500fd43dbeab44f
+	sha256sums = 1081822dec41144e0a7ac934b284f131fcb4b87ffdcef144da0a13e8f8dda169
 
 pkgname = cemu
