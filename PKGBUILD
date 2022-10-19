@@ -1,7 +1,7 @@
 # Maintainer: Francois Menning <f.menning@pm.me>
 
 pkgname=qogir-gtk-theme-git
-pkgver=2021.11.17.r18.gdccc3e2
+pkgver=2022.10.16.r15.g5f0d167
 pkgrel=1
 pkgdesc='Qogir is a flat Design theme for GTK'
 arch=('any')
@@ -30,6 +30,7 @@ package() {
   ./install.sh \
     --dest "${pkgdir}/usr/share/themes" \
     --theme all \
-    --logo arch \
+    --icon arch \
+    --libadwaita \
     --tweaks image
 }
