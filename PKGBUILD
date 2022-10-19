@@ -27,7 +27,7 @@ prepare() {
   cd "$srcdir/VulkanCapsViewer"
   git submodule init
   git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
