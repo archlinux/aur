@@ -8,6 +8,9 @@ arch=('x86_64')
 url="https://github.com/SandwichFox/MBCord"
 license=('MIT')
 conflicts=()
+optdepends=('discord: Official stable client'
+            'discord-canary: Official canary client'
+)
 depends=()
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source=(
