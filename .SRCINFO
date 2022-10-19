@@ -1,0 +1,20 @@
+pkgbase = cockpit-navigator-git
+	pkgdesc = A Featureful File Browser for Cockpit
+	pkgver = r370.d70d66f
+	pkgrel = 1
+	url = https://github.com/45Drives/cockpit-navigator
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	makedepends = sed
+	depends = cockpit
+	depends = python
+	depends = rsync
+	depends = zip
+	provides = cockpit-navigator
+	conflicts = cockpit-navigator
+	source = cockpit-navigator::git+https://github.com/45Drives/cockpit-navigator.git#branch=main
+	sha256sums = SKIP
+
+pkgname = cockpit-navigator-git
