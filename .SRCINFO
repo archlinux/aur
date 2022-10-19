@@ -1,0 +1,19 @@
+pkgbase = lxi-tools
+	pkgdesc = LXI Tools is a collection of software tools for controlling LXI instruments
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/lxi/lxi-tools
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	makedepends = meson
+	depends = liblxi
+	depends = lua53
+	depends = gtk4>=4.5.0
+	depends = gtksourceview5>=5.3.3
+	provides = lxi-tools
+	conflicts = lxi-tools-git
+	source = https://github.com/lxi/lxi-tools/releases/download/v2.2/lxi-tools-2.2.tar.xz
+	sha256sums = 96303381f8f19d3df955f170fe56bb51fa248ba55b41e4b4995847819aefe1e5
+
+pkgname = lxi-tools
