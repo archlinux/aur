@@ -2,7 +2,7 @@
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.39.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -28,8 +28,9 @@ prepare() {
     # use arch-packaged .NET version rather than forcing this version
     rm global.json
 
-    export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    # use absolute path to global dotnet exe
+    sed -i "s|? \"dotnet\"|? \"$(command -v dotnet)\"|" scripts/common.cake
+
     export DOTNET_NOLOGO=1
 
     dotnet tool restore
@@ -38,11 +39,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # specify build targets manually so we only get what we need
-    for target in InstallDotnetCoreSdk PublishNet6Builds
-    do
-        dotnet cake --target "$target" --configuration Release --exclusive
-    done
+    dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk
 }
 
 package() {
