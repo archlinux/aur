@@ -2,7 +2,7 @@
 
 _plug=rife-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.0.gc2f08c5
+pkgver=9.0.g6c6d0fa
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('vapoursynth')
 makedepends=('git'
              'meson'
              'cmake'
+             'vulkan-headers'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -35,13 +36,15 @@ prepare() {
 
   cd "${_plug}"
   git config submodule.subprojects/ncnn.url "${srcdir}/ncnn"
-  git submodule update --init subprojects/ncnn
+  git -c protocol.file.allow=always submodule update --init \
+    subprojects/ncnn
 
   sed "s|models|${_plug}-models|g" -i RIFE/plugin.cpp
 
   cd subprojects/ncnn
   git config submodule.glslang.url "${srcdir}/glslang"
-  git submodule update --init glslang
+  git -c protocol.file.allow=always submodule update --init \
+    glslang
 }
 
 build() {
