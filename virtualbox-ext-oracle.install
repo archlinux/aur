@@ -1,5 +1,5 @@
 post_install () {
-  sha256sum=$(sha256sum /usr/share/licenses/virtualbox6-ext-oracle/PUEL| dd bs=1 count=64 2>/dev/null)
+  sha256sum=$(sha256sum /usr/share/licenses/virtualbox-ext-oracle/PUEL| dd bs=1 count=64 2>/dev/null)
   VBoxManage extpack install --accept-license=$sha256sum \
     /usr/share/virtualbox/extensions/Oracle_VM_VirtualBox_Extension_Pack-${1%%-*}.vbox-extpack >/dev/null
 }
