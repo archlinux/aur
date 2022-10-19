@@ -30,7 +30,9 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  GIT_COMMITTER_EMAIL="user@mail.com" git pull -X theirs origin pull/2466/head --no-edit
+  git config user.name "user"
+  git config user.email "user@domain.fake"
+  git pull -X theirs origin pull/2466/head --no-edit
 }
 
 pkgver() {
