@@ -3,8 +3,8 @@
 # Old Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
  
 pkgname=python-cairo-git
-pkgver=v1.21.0.r3.g35084e9
-pkgrel=2
+pkgver=1.21.0.r30.g93f4f4d
+pkgrel=1
 pkgdesc="Python bindings for the cairo graphics library. Git version."
 url="http://www.cairographics.org/"
 arch=('i686' 'x86_64')
@@ -19,17 +19,12 @@ sha256sums=('SKIP')
  
 pkgver() {
     cd ${srcdir}/${pkgname}
-    #PREFIX="pycairo_version        = '"
-    #ver=$(grep "$PREFIX" setup.py | sed "s/$PREFIX//" | sed "s/'//")
-    #revision=$(git rev-list --count HEAD)
-    #hash=$(git log --pretty=format:'%h' -n 1)
-    #echo $ver.$revision.$hash
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
  
 package() {
     cd ${srcdir}/${pkgname}
-    python3 setup.py install --root=${pkgdir}/ --optimize=1
+    python setup.py install --root=${pkgdir}/ --optimize=1
 }
  
 # vim:set ts=4 sw=4 et:
