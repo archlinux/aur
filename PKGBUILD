@@ -1,5 +1,5 @@
 pkgname=amazon-corretto-19-bin
-pkgver=19.0.0.36.1
+pkgver=19.0.1.10.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -18,6 +18,6 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-19-amazon-corretto"
 }
 
-md5sums=('67625e062138323132d0dfa13744f4ad'
+md5sums=('e1dace15f9c1e5a3622b09747b7f0ccd'
          'SKIP')
 
