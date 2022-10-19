@@ -1,63 +1,49 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gmssl-git
-pkgver=r705.gf0dc2dce
+pkgver=3.0.0.r45.g8177f87d
 pkgrel=1
 pkgdesc="Chinese national cryptographic algorithms and protocols"
 arch=('i686' 'x86_64')
 url="http://gmssl.org/"
-license=('custom')
-depends=('perl')
-makedepends=('git')
-provides=('gmssl')
-conflicts=('gmssl' 'openssl')
-options=('staticlibs')
-source=("git+https://github.com/guanzhi/GmSSL.git"
-        "ca-dir.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/openssl/trunk/ca-dir.patch")
-sha256sums=('SKIP'
-            'SKIP')
+license=('apache')
+depends=('glibc')
+makedepends=('git' 'cmake')
+provides=("gmssl=$pkgver")
+conflicts=('gmssl')
+source=("git+https://github.com/guanzhi/GmSSL.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "GmSSL"
-
-  patch -Np0 -i "$srcdir/ca-dir.patch"
-  sed -i "s#'File::Glob' => qw/glob/;#'File::Glob' => qw/:glob/;#g" "Configure"
-  sed -i "s#'File::Glob' => qw/glob/;#'File::Glob' => qw/:glob/;#g" "test/build.info"
-}
 
 pkgver() {
   cd "GmSSL"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
   cd "GmSSL"
 
-  ./config \
-    --prefix="/usr" \
-    --openssldir="/etc/ssl" \
-    --libdir="lib"
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DBUILD_SHARED_LIBS="ON" \
+    ./
+  make -C "_build"
 }
 
 check() {
   cd "GmSSL"
 
-  #make test
+  #make -C "_build" test
 }
 
 package() {
   cd "GmSSL"
 
-  make \
-    DESTDIR="$pkgdir" \
-    MANSUFFIX="ssl" \
-    install_sw \
-    install_ssldirs \
-    install_man_docs
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gmssl"
+  make -C "_build" DESTDIR="$pkgdir" install
 }
