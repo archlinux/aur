@@ -2,18 +2,18 @@
 
 pkgname=rtw8852be-dkms-git
 _pkgbase=rtw8852be
-pkgver=r11.4e94214
+pkgver=r224.8046f59
 pkgrel=1
 pkgdesc="Linux driver for RTW8852BE PCIe card"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/lwfinger/rtw8852be/tree/main"
-makedepends=('git')
+makedepends=('make' 'git' 'build-essential' 'gcc' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}" "rtl8852be")
 source=("git+https://github.com/lwfinger/rtw8852be.git"
        'dkms.conf')
 sha256sums=('SKIP'
-            '70c218fb75c47d1be0833319ef77f464888974722b241ebce4b85add4509a357')
+            '474381268f02061270d91abe8cfdd880773ad0536766fcbfbb058f06a2d1c332')
 
 pkgver() {
     cd ${srcdir}/${_pkgbase}
