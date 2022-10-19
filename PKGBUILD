@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=DBItest
-_cranver=1.7.2
+_cranver=1.7.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -34,7 +34,7 @@ optdepends=(
     r-rsqlite
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b0326452263b7b01e0672ca04d8d1311880ef864d5e69a97062f086ab045a57f')
+sha256sums=('30b7026378fedaec7e730fa4e242968dd70642f496457d7bf47d35e5c7ab891c')
 
 build() {
   mkdir -p build

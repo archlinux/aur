@@ -1,6 +1,6 @@
 pkgbase = r-dbitest
 	pkgdesc = Testing DBI Backends
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DBItest
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-dbitest
 	optdepends = r-lintr
 	optdepends = r-rmarkdown
 	optdepends = r-rsqlite
-	source = https://cran.r-project.org/src/contrib/DBItest_1.7.2.tar.gz
-	sha256sums = b0326452263b7b01e0672ca04d8d1311880ef864d5e69a97062f086ab045a57f
+	source = https://cran.r-project.org/src/contrib/DBItest_1.7.3.tar.gz
+	sha256sums = 30b7026378fedaec7e730fa4e242968dd70642f496457d7bf47d35e5c7ab891c
 
 pkgname = r-dbitest
