@@ -36,8 +36,11 @@ package() {
 
     install -dm755 "${pkgdir}/usr/local/${pkgname}/bin"
     install -dm744 "${pkgdir}/usr/local/${pkgname}/html"
+    install -dm744 "${pkgdir}/usr/local/${pkgname}/html/js"
 
-    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/data/html/*                        "${pkgdir}/usr/local/${pkgname}/html/"
+    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/data/html/index.html               "${pkgdir}/usr/local/${pkgname}/html/"
+    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/data/html/js/main.js               "${pkgdir}/usr/local/${pkgname}/html/js"
+
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/build/app/${pkgname}              "${pkgdir}/usr/local/${pkgname}/bin/"
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/build/tools/gold-tool              "${pkgdir}/usr/local/${pkgname}/bin/"
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/tools/gold-tool.py                 "${pkgdir}/usr/local/${pkgname}/bin/"
