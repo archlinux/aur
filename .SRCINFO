@@ -1,6 +1,6 @@
 pkgbase = python-looseversion
 	pkgdesc = Version numbering for anarchists and software realists
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/effigies/looseversion
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-looseversion
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = looseversion-1.0.1.tar.gz::https://github.com/effigies/looseversion/archive/1.0.1.tar.gz
-	md5sums = 02013c840c53c939e735830fd6baddd0
+	source = looseversion-1.0.2.tar.gz::https://github.com/effigies/looseversion/archive/1.0.2.tar.gz
+	md5sums = c001b5ac130e4c2431f8a6e8d4f4823e
 
 pkgname = python-looseversion
