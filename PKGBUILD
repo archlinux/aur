@@ -1,6 +1,6 @@
 # Maintainer: Ischa Abraham <contact@ischa.dev>
 pkgname=passh-agent-git
-pkgver=0.2.0.5.gb7358d0
+pkgver=0.2.0.8.gb3c6ba6
 pkgrel=1
 pkgdesc="An ssh-agent implementation to fetch your SSH keys from Pass."
 url="https://github.com/MrPixelized/passh-agent"
