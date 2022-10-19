@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=audiorelay
 pkgver=0.26.3
-pkgrel=1
-_jre_ver=18
+pkgrel=2
+_jre_ver=19
 pkgdesc="Stream your PC audio to your phone"
 arch=('x86_64')
 url="https://audiorelay.net"

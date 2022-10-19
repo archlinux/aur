@@ -1,14 +1,14 @@
 pkgbase = audiorelay
 	pkgdesc = Stream your PC audio to your phone
 	pkgver = 0.26.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audiorelay.net
 	arch = x86_64
 	license = unknown
 	depends = alsa-lib
 	depends = flac
 	depends = harfbuzz
-	depends = java-runtime=18
+	depends = java-runtime=19
 	depends = libogg
 	depends = libpulse
 	depends = libvorbis
