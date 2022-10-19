@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-pulse-git
-pkgver=2.3.r25.ge24d8df
+pkgver=2.4.r10.g01ba926
 pkgrel=1
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
   for submodule in EELEditor GraphicEQWidget FlatTabWidget LiquidEqualizerWidget; do
     git submodule init
     git config submodule.src/subprojects/"$submodule".url "$srcdir/$submodule"
-    git submodule update
+    git submodule--helper update
   done
 
   mkdir -p build
