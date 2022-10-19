@@ -2,8 +2,8 @@
 
 pkgname=novelwriter-git
 _pkgname=novelWriter
-pkgver=v2.0rc1.r19.gefb7d12e
-pkgrel=1
+pkgver=2.0rc1.r19.gefb7d12e
+pkgrel=2
 epoch=1
 pkgdesc="Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents"
 arch=(any)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
