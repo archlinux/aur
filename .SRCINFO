@@ -1,0 +1,22 @@
+pkgbase = python-mata
+	pkgdesc = Pyhton bindings for open source automata library that offers interface for different kinds of automata (NFA, AFA, etc.)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/VeriFIT/mata
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-coverage
+	makedepends = cython
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-tabulate
+	depends = mata
+	source = https://github.com/VeriFIT/mata/archive/1.4.1.tar.gz
+	sha256sums = 33f5a7f4d68403ab2e5c48b4050162c25702d0f89ef9c101f2573ff9af7ac09a
+
+pkgname = python-mata
