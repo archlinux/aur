@@ -1,0 +1,20 @@
+From: Stefan Fritsch <sf@debian.org>
+Subject: #463399
+
+---
+ apr-config.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: apr/apr-config.in
+===================================================================
+--- apr.orig/apr-config.in
++++ apr/apr-config.in
+@@ -36,7 +36,7 @@
+ CPPFLAGS="@EXTRA_CPPFLAGS@"
+ CFLAGS="@EXTRA_CFLAGS@"
+ LDFLAGS="@EXTRA_LDFLAGS@"
+-LIBS="@EXTRA_LIBS@"
++LIBS=""
+ EXTRA_INCLUDES="@EXTRA_INCLUDES@"
+ SHLIBPATH_VAR="@shlibpath_var@"
+ APR_SOURCE_DIR="$(cd @installbuilddir@/.. ; pwd)"
