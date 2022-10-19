@@ -61,7 +61,7 @@ prepare() {
   git submodule init
   git config submodule.depends/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.url "${srcdir}/quazip"
-  git submodule update
+  git submodule--helper update
 
 }
 
