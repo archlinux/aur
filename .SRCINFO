@@ -7,6 +7,7 @@ pkgbase = vapoursynth-plugin-pyd2v-git
 	license = MIT
 	makedepends = git
 	makedepends = python-poetry
+	makedepends = python-pip
 	depends = vapoursynth
 	depends = python-jsonpickle
 	depends = python-click

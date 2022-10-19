@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=pyd2v
 pkgname=vapoursynth-plugin-${_plug}-git
@@ -14,6 +14,7 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'python-poetry'
+             'python-pip'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
