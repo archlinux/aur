@@ -1,0 +1,12 @@
+--- a/amd-disable-c6.service	2022-10-18 20:37:43.913530567 -0700
++++ b/amd-disable-c6.service	2022-10-18 20:37:54.603628465 -0700
+@@ -6,7 +6,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/sbin/amd-disable-c6 --disable_c6_retry
++ExecStart=/usr/bin/amd-disable-c6 --disable_c6_retry
+ 
+ [Install]
+ -Alias=amd-disable-c6
+ WantedBy=multi-user.target

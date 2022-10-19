@@ -32,10 +32,11 @@ url="https://github.com/joakimkistowski/amd-disable-c6.git"
 # pulled from git so skip the verification check
 ##
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}#branch=master" "00-fix-sbin.patch")
+source=("${_gitname}::git+${url}#branch=master" "00-fix-sbin.patch" "01-fix-sbin.patch")
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
-            'c1bb428d02994f872e4be2f282ffd5c453f4ebc714a79fc8337032d9d02c1a4a')
+            'c1bb428d02994f872e4be2f282ffd5c453f4ebc714a79fc8337032d9d02c1a4a'
+            'bfb1e396caf7b4a84a2e2987b884fe1e2dd4bad626f1f813d0b39f9539cddef0')
 
 pkgver() {
   # shellcheck disable=SC2154
@@ -56,6 +57,7 @@ prepare() {
 
   # Apply patches
   patch -p1 -i "${srcdir}/00-fix-sbin.patch"
+  patch -p1 -i "${srcdir}/01-fix-sbin.patch"
 }
 
 package() {
