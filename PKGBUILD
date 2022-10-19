@@ -7,7 +7,7 @@
 _pkgname=prismlauncher
 pkgname=${_pkgname}-git
 pkgver=5.0.r0.g41032aaa
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
@@ -22,10 +22,10 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 options=(debug)
-source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
-        "git+https://github.com/PrismLauncher/libnbtplusplus.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/PrismLauncher/PrismLauncher.git")
+        #"git+https://github.com/PrismLauncher/libnbtplusplus.git")
+sha256sums=('SKIP')
+            #'SKIP')
 
 pkgver() {
   cd "PrismLauncher"
@@ -35,7 +35,8 @@ pkgver() {
 prepare() {
   cd "PrismLauncher"
   git submodule init
-  git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  # Git CVE prevents this from working :/
+  #git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
