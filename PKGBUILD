@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r78263.ca3bfde193
+pkgver=r78910.8bb462b167
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -40,7 +40,6 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
       -DPARAVIEW_USE_PYTHON=OFF \
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
       -DPARAVIEW_PLUGIN_DISABLE_XML_DOCUMENTATION=ON \
