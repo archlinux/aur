@@ -11,7 +11,7 @@ url="https://github.com/zzy-ac/fcitx5-skin-microsoft-style"
 license=('Apache')
 depends=('fcitx5')
 source=("$url/raw/main/Microsoft-style-dark.tar.gz")
-md5sums=('0ab85d47d7546c2ab7083057c341a0f5')
+
 
 package() {
     _variant_name=Microsoft-style-dark
@@ -21,3 +21,4 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/fcitx5/themes/$_variant_name
     install -m644 ./* "$pkgdir"/usr/share/fcitx5/themes/$_variant_name
 }
+sha256sums=('4f8a6d713ecba746157d04e45b897f8a536dee8e126a5063b0ddb6251ec6a0ba')

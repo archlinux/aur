@@ -7,6 +7,6 @@ pkgbase = fcitx5-skin-microsoft-style-dark
 	license = Apache
 	depends = fcitx5
 	source = https://github.com/zzy-ac/fcitx5-skin-microsoft-style/raw/main/Microsoft-style-dark.tar.gz
-	md5sums = 0ab85d47d7546c2ab7083057c341a0f5
+	sha256sums = 4f8a6d713ecba746157d04e45b897f8a536dee8e126a5063b0ddb6251ec6a0ba
 
 pkgname = fcitx5-skin-microsoft-style-dark
