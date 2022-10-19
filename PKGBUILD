@@ -123,7 +123,7 @@ prepare() {
   pushd $pkgname
     git submodule init proton-wine
     git submodule set-url proton-wine "$srcdir"/proton-wine-ge
-    git submodule update proton-wine
+    git submodule--helper update proton-wine
     pushd proton-wine
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
