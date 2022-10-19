@@ -1,8 +1,8 @@
 pkgbase = vapoursynth-plugin-eoefunc-git
 	pkgdesc = Plugin for Vapoursynth: eoefunc (GIT version)
-	pkgver = r34.56559d7
+	pkgver = r51.c40c91b
 	pkgrel = 1
-	url = https://gitlab.com/arjraj/EoEfunc
+	url = https://github.com/End-of-Eternity/EoEfunc
 	arch = any
 	license = GPL
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = vapoursynth-plugin-eoefunc-git
 	depends = python-numpy
 	provides = vapoursynth-plugin-eoefunc
 	conflicts = vapoursynth-plugin-eoefunc
-	source = eoefunc::git+https://gitlab.com/arjraj/EoEfunc.git
+	source = eoefunc::git+https://github.com/End-of-Eternity/EoEfunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-eoefunc-git
