@@ -25,7 +25,7 @@ prepare() {
   cd "$srcdir/$pkgname"
   git submodule init
   git config submodule.po.url "$srcdir/po"
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
