@@ -1,0 +1,12 @@
+pkgbase = spinnaker-spin
+	pkgdesc = Spin CLI to manage Spinnaker applications, pipelines and configs
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://spinnaker.io/docs/guides/spin/
+	arch = x86_64
+	license = Apache
+	provides = spin=$pkgver
+	source = https://storage.googleapis.com/spinnaker-artifacts/spin/1.29.0/linux/amd64/spin
+	sha256sums = a43015239211710c2f4225c8c3ae2909b80f22851940574e5244ff0dd472249d
+
+pkgname = spinnaker-spin
