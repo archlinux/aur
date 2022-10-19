@@ -5,7 +5,7 @@ pkgbase=chicago95-git
 pkgname=(chicago95-gtk-theme-git
          chicago95-icon-theme-git
          xcursor-chicago95-git)
-pkgver=2.0.1.r118.g7159007
+pkgver=3.0.1.r2.gcabad1d
 pkgrel=1
 pkgdesc="Windows 95 inspired theme"
 arch=(any)
