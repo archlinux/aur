@@ -9,6 +9,6 @@ pkgbase = jarvis
 	depends = openssl
 	depends = sqlite3
 	source = https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.6.tar.gz
-	sha512sums = 8e1850b8a04b7ae3d654c89b33179661e74c58af4b6018000721da46ca97f0d5a95cdee82cb324affa98fe0d4f6376d338ed96607213f413db495eb55a33c4e6
+	sha512sums = 748bf5ceb4b9b1a98c80a9b9ee958d0829d8832b95a1eed5574126ddd9122344fe3a79f420e65e382704102a10d982a3934439a37164360a1ae6485fc6fe15b3
 
 pkgname = jarvis
