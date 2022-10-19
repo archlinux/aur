@@ -37,7 +37,7 @@ prepare() {
   cd ${_repo}
   git submodule init
   git config submodule.platform.url "${srcdir}/UXP"
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
