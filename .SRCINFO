@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-qt5-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 5.0.r0.g41032aaa
-	pkgrel = 3
+	pkgrel = 4
 	url = https://prismlauncher.org
 	arch = i686
 	arch = x86_64
@@ -28,9 +28,11 @@ pkgbase = prismlauncher-qt5-git
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	provides = prismlauncher
-	provides = prismlauncher-qt5
+	provides = polymc
+	provides = polymc-qt5
 	conflicts = prismlauncher
-	conflicts = prismlauncher-qt5
+	conflicts = polymc
+	conflicts = polymc-qt5
 	source = git+https://github.com/PrismLauncher/PrismLauncher.git
 	sha256sums = SKIP
 
