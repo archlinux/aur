@@ -3,10 +3,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=tkrplot
-_pkgver=0.0-26
+_pkgver=0.0-27
 pkgname=r-${_pkgname,,}
-pkgver=0.0.26
-pkgrel=8
+pkgver=0.0.27
+pkgrel=1
 pkgdesc='TK Rplot'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   tk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dd66264c2553f6927aff297c6b1c3b61867d6c63aec080f40a1e9d53cfc9d120')
+sha256sums=('c99211919414400b0f579e1354407f2e154cfe85533d324bcf9c68172c2772a5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

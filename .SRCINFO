@@ -1,13 +1,13 @@
 pkgbase = r-tkrplot
 	pkgdesc = TK Rplot
-	pkgver = 0.0.26
-	pkgrel = 8
+	pkgver = 0.0.27
+	pkgrel = 1
 	url = https://cran.r-project.org/package=tkrplot
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = tk
-	source = https://cran.r-project.org/src/contrib/tkrplot_0.0-26.tar.gz
-	sha256sums = dd66264c2553f6927aff297c6b1c3b61867d6c63aec080f40a1e9d53cfc9d120
+	source = https://cran.r-project.org/src/contrib/tkrplot_0.0-27.tar.gz
+	sha256sums = c99211919414400b0f579e1354407f2e154cfe85533d324bcf9c68172c2772a5
 
 pkgname = r-tkrplot
