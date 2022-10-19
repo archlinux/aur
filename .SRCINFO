@@ -1,13 +1,13 @@
 pkgbase = mullvad-vpn-dinit
 	pkgdesc = Dinit service scripts for Mullvad
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	arch = any
 	license = Unlicense
 	depends = mullvad-vpn
 	depends = dinit
 	source = mullvad-daemon
-	sha256sums = e4674c42ad16da2b34082d0a44819ce10e27aa8b47a502c91883e9d3c5dac5c1
-	sha512sums = 313891eb81919854c80ce5f2c759b24d129864b7323586bc0cf16b4c6fbb74a5cbb4b576b587ffb785c537c8635ac2b67ec4994c374acc6d55623d1d8336a3e1
+	sha256sums = 5922c40e853e3b82a9a2231b1b4692204c6ccfd13044d51aa3d9de30f1fc3770
+	sha512sums = e4c843a7e3711760facbac6bfc365f31e4c71b7b79d49230f8a90e9a87665e8e98087fc7a6774fec6c2d1ba2bf9eedc061cb6262e480e74dc5d5dac591a7e03d
 
 pkgname = mullvad-vpn-dinit
