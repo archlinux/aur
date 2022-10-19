@@ -1,13 +1,13 @@
 pkgbase = mkinitcpio-ykfde
 	pkgdesc = Full disk encryption with Yubikey (Yubico key)
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/mkinitcpio-ykfde
 	install = mkinitcpio-ykfde.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = markdown
+	makedepends = discount
 	makedepends = systemd
 	depends = yubikey-personalization
 	depends = cryptsetup
