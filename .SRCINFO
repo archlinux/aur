@@ -1,0 +1,21 @@
+pkgbase = python-comparxiv
+	pkgdesc = A wrapper of latexdiff to compare two version of an arXiv preprint with a single command
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/temken/comparxiv
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-arxiv
+	depends = python-argparse
+	depends = python-requests
+	depends = python-tqdm
+	depends = texlive-bin
+	depends = texlive-core
+	source = comparxiv-0.1.8.tar.gz::https://github.com/temken/comparxiv/archive/refs/tags/v0.1.8.tar.gz
+	b2sums = df820799c1d03d141af27e3fb6b8f4caa6c8ce190056496ff99bc4b6857d8d9a1f6d268ed14352bbc2293d22fd1d1ea1295eac2ec89b44a9fdb70b6c12be6330
+
+pkgname = python-comparxiv
