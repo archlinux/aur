@@ -2,7 +2,7 @@
 # Maintainer: Temuri Takalandze <takalandzet@gmail.com>
 
 pkgname='mailtm-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='CLI client for Mail.tm disposable mail service'
 url='https://github.com/ABGEO/mailtm'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('mailtm')
 conflicts=('mailtm')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.3.0/mailtm_0.3.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5f1f902846eb060573c13920cd1d80e2e4d376d794d77f7330dfd67bab786eeb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.3.1/mailtm_0.3.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e0ac053bf3c6e581b97120fa76d3e79bbfd9e27511201877e4ad0d168f92c000')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.3.0/mailtm_0.3.0_Linux_i386.tar.gz")
-sha256sums_i686=('68731703126f20f87510a6464ec5a4c1f40076ee6709a3fd85644c7ca0373e2e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.3.1/mailtm_0.3.1_Linux_i386.tar.gz")
+sha256sums_i686=('8c84b3b2c8f00fc9b40d54bd9d129cc432bb0fabc4a10d19e569654330b2722a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.3.0/mailtm_0.3.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('25b70d76f3842335f097315349c9e8b14c366861669ba90a34d055b8180359ef')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ABGEO/mailtm/releases/download/v0.3.1/mailtm_0.3.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('bddad5b6e6aeab6d7dc53f661f38ed1ae5a736bab97a91e01f8a470e10e8bcd7')
 
 package() {
   install -Dm755 "./mailtm" "${pkgdir}/usr/bin/mailtm"
