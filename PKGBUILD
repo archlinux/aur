@@ -2,7 +2,7 @@
 
 pkgname=whisper-git
 _pkgname=whisper
-pkgver=1.0.r8.e90b8fa
+pkgver=1.0.r44.7f3e408
 pkgrel=1
 pkgdesc="General-purpose speech recognition model by OpenAI"
 arch=('any')
@@ -16,6 +16,8 @@ depends=(
   'python-more-itertools'
   'python-transformers>=4.19.0'
   'python-ffmpeg-patched-git>=0.2.0'
+  'python-huggingface-hub'
+  'python-requests'
   'ffmpeg'
 )
 makedepends=('git' 'python-setuptools')
