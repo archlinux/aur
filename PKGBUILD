@@ -1,7 +1,7 @@
 # Maintainer: Tomás Ralph <tomasralph2000@gmail.com>
 _pkgname=ZeroTier-GUI
 pkgname=zerotier-gui-git
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Linux front-end for ZeroTier"
 arch=(any)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "1.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
