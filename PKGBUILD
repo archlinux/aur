@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=28.1.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -127,6 +127,7 @@ fi
 
 prepare() {
   cd "$srcdir/obs-studio"
+  git config --local protocol.file.allow always
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git submodule update
@@ -137,6 +138,7 @@ prepare() {
   sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include/asio.hpp||' CMakeLists.txt
   sed -i "s|AND EXISTS|EXISTS|" CMakeLists.txt
   sed -i "s|add_subdirectory(deps/json)|find_package(nlohmann_json 3.10.0 REQUIRED)|" CMakeLists.txt
+  git config --local protocol.file.allow always
   git config submodule.deps/qr.url $srcdir/qr
   git submodule update deps/qr
 }
