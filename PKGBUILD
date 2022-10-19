@@ -36,7 +36,7 @@ source=("${_gitname}::git+${url}#branch=master" "00-fix-sbin.patch" "01-fix-sbin
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
             'c1bb428d02994f872e4be2f282ffd5c453f4ebc714a79fc8337032d9d02c1a4a'
-            'bfb1e396caf7b4a84a2e2987b884fe1e2dd4bad626f1f813d0b39f9539cddef0')
+            '615ba2b99cbddc0ce2da27c229a85ef5a8d613cb7fdbd1e4d8c45f1112def239')
 
 pkgver() {
   # shellcheck disable=SC2154
