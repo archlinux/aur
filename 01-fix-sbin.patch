@@ -1,6 +1,6 @@
---- a/amd-disable-c6.service	2022-10-18 20:37:43.913530567 -0700
-+++ b/amd-disable-c6.service	2022-10-18 20:37:54.603628465 -0700
-@@ -6,7 +6,7 @@
+--- a/amd-disable-c6.service	2022-10-18 20:58:22.224967372 -0700
++++ b/amd-disable-c6.service	2022-10-18 20:58:21.424964229 -0700
+@@ -6,8 +6,7 @@
  
  [Service]
  Type=oneshot
