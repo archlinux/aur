@@ -1,0 +1,20 @@
+pkgbase = ibus-hangul-git
+	pkgdesc = Korean input engine for IBus
+	pkgver = 1.5.4+r2+g24bf7fc
+	pkgrel = 1
+	url = https://github.com/libhangul/ibus-hangul
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-common
+	depends = ibus
+	depends = libhangul
+	depends = iso-codes
+	depends = gtk-update-icon-cache
+	depends = python-gobject
+	provides = ibus-hangul
+	conflicts = ibus-hangul
+	source = git+https://github.com/libhangul/ibus-hangul.git
+	sha512sums = SKIP
+
+pkgname = ibus-hangul-git
