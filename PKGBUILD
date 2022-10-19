@@ -1,29 +1,30 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Guoyi Zhang <myname at malacology dot net>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=libmaus
-pkgver=2.0.504
-pkgrel=2
-_release=20180619115641
+pkgver=2.0.812_release_20220919125234
+pkgrel=3
 pkgdesc="Bioinformatics data structures and algorithms in C++"
 arch=('x86_64')
 url=https://gitlab.com/german.tischler/libmaus2
 license=('GPL2')
-source=(https://gitlab.com/german.tischler/"${pkgname}"2/-/archive/"${pkgver}"-release-20180619115641/"${pkgname}"2-"${pkgver}"-release-"${_release}".tar.gz)
-sha256sums=('e134287064723593844fd9bff35872e2e618d825e3389166cfbba2b49ff3bcc5')
-
+source=(https://gitlab.com/german.tischler/"${pkgname}"2/-/archive/"${pkgver//_/-}"/"${pkgname}"2-"${pkgver//_/-}".tar.gz)
+sha256sums=('08e6dee0fcb68253e1edd1e442650104051b096ffa8417b05f8b6f2aa04018e4')
+makedepends=('make' 'gcc' 'boost')
 build() {
-  cd "${srcdir}"/libmaus2-"${pkgver}"-release-"${_release}"
-  ./configure --prefix="${pkgdir}"/usr/local --exec-prefix "${pkgdir}"/
+  cd "${srcdir}"/libmaus2-"${pkgver//_/-}"
+  ./configure --prefix="${pkgdir}"/usr --exec-prefix "${pkgdir}"/
   make
 }
 
 check() {
-  cd "${srcdir}/libmaus2-${pkgver}-release-${_release}"
+  cd ${srcdir}/libmaus2-"${pkgver//_/-}"
   make test
 }
 
 package() {
-  cd "${srcdir}"/libmaus2-"${pkgver}"-release-"${_release}"
-  make install && mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
+  cd ${srcdir}/libmaus2-"${pkgver//_/-}"
+  make install
+  mv "${pkgdir}"/lib "${pkgdir}"/usr/lib
   install -Dm644 AUTHORS "${pkgdir}"/usr/share/licenses/"${pkgname}"2/AUTHORS
 }
