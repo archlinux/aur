@@ -41,7 +41,7 @@ prepare() {
   cd "$srcdir/mullvadvpn-app"
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
-  git submodule update
+  git submodule--helper update
 
   # Disable building of rpm
   patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
