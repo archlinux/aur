@@ -1,6 +1,6 @@
 pkgbase = basalt-monado-git
 	pkgdesc = Visual-Inertial Mapping with Non-Linear Factor Recovery
-	pkgver = r440.debea94
+	pkgver = r441.fdf933c
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mateosss/basalt
 	arch = i686
