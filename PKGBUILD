@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
 pkgver=520.56.06
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -148,6 +148,9 @@ package() {
   # CUDA
   install -Dm755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib/libcuda.so.${pkgver}"
   install -Dm755 "libnvcuvid.so.${pkgver}" "${pkgdir}/usr/lib/libnvcuvid.so.${pkgver}"
+
+  # NVVM Compiler library loaded by the CUDA driver to do JIT link-time-optimization
+  install -Dm644 "libnvidia-nvvm.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-nvvm.so.${pkgver}"
 
   # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
   install -Dm755 "libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${pkgver}"
