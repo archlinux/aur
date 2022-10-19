@@ -3,7 +3,7 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}"
-pkgver=2.4.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
@@ -16,7 +16,7 @@ optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/ANTsX/ANTs/archive/v${pkgver}.tar.gz")
-md5sums=('35fef402ede48f80dae507c3e42fbdad')
+md5sums=('31f99492769f2be69b48f8a4e941447a')
 
 prepare() {
   cd "${srcdir}/ANTs-${pkgver}"
