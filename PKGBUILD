@@ -1,14 +1,14 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=electronic-wechat-uos-bin
 pkgver=v2.3.1.fix
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用Electron构建, 利用UOS请求头修复了登陆问题."
 arch=('x86_64')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
-depends=('nss' 'gtk3' 'libxss' 'electron')
+depends=('nss' 'xdg-utils' 'libxss' 'electron')
 makedepends=()
 checkdepends=()
 optdepends=(
@@ -39,7 +39,7 @@ package() {
 	for directory in /usr/bin /opt/electronic-wechat-uos-bin /usr/share/applications; do
 		mkdir -p ${pkgdir}${directory}
 	done
-	cp -r ${srcdir}/electronic-wechat-linux-x64/* ${pkgdir}/opt/electronic-wechat-uos-bin
+	cp -r ${srcdir}/electronic-wechat-linux-x64/resources ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.svg ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.desktop ${pkgdir}/usr/share/applications
 	cp ${srcdir}/electronic-wechat-uos-bin ${pkgdir}/usr/bin
@@ -47,5 +47,4 @@ package() {
 	chmod -R 755 ${pkgdir}/opt/electronic-wechat-uos-bin
 	chmod a=rx ${pkgdir}/usr/bin/electronic-wechat-uos-bin
 	chmod u=rwx ${pkgdir}/usr/bin/electronic-wechat-uos-bin
-	rm ${pkgdir}/opt/electronic-wechat-uos-bin/electronic-wechat
 }
