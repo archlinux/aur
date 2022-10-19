@@ -1,5 +1,5 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
-# Contibutor: Peter Jung <admin@ptr1337.dev>
+# Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: vnepogodin
 # Contributor: torvic9 AT mailbox DOT org
 # Contributor: lsf
@@ -7,48 +7,48 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=106.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
-        'usr/lib/firedragon/distribution/policies.json')
+  'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url=https://gitlab.com/dr460nf1r3/settings/
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm mold
-             python-setuptools python-zstandard git binutils dump_syms
-             'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
+  autoconf2.13 rust clang llvm jack nodejs cbindgen nasm mold
+  python-setuptools python-zstandard git binutils dump_syms lld
+  'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
-            'profile-sync-daemon: Load the browser profile into RAM'
-            'whoogle: Searching the web using a locally running Whoogle instance'
-            'searx: Searching the web using a locally running searX instance'
-            'networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'libappindicator-gtk3: Global menu support for GTK apps'
-            'appmenu-gtk-module-git: Appmenu for GTK only'
-            'plasma5-applets-window-appmenu: Appmenu for Plasma only')
+  'profile-sync-daemon: Load the browser profile into RAM'
+  'whoogle: Searching the web using a locally running Whoogle instance'
+  'searx: Searching the web using a locally running searX instance'
+  'networkmanager: Location detection via available WiFi networks'
+  'libnotify: Notification integration'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'hunspell-en_US: Spell checking, American English'
+  'libappindicator-gtk3: Global menu support for GTK apps'
+  'appmenu-gtk-module-git: Appmenu for GTK only'
+  'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip !lto !debug)
 install=$pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
-        "$pkgname.desktop"
-        "git+https://gitlab.com/dr460nf1r3/common.git"
-        "git+https://gitlab.com/dr460nf1r3/settings.git"
-        "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
-        "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
-        "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
+  "$pkgname.desktop"
+  "git+https://gitlab.com/dr460nf1r3/common.git"
+  "git+https://gitlab.com/dr460nf1r3/settings.git"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
+  "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
+  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
 sha256sums=('1546ebfd9d5a814f17479ed626519ed69aa3c89c22c7fb1fe5c84e4d7e5d7e18'
-            'SKIP'
-            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+  'SKIP'
+  '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -133,26 +133,26 @@ ac_add_options --disable-updater
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 END
 
-if [[ $CARCH == 'aarch64' ]]; then
-  cat >>../mozconfig <<END
+  if [[ $CARCH == 'aarch64' ]]; then
+    cat >>../mozconfig <<END
 # taken from manjaro build:
 ac_add_options --enable-optimize="-g0 -O2"
 END
 
-  export MOZ_DEBUG_FLAGS=" "
-  export CFLAGS+=" -g0"
-  export CXXFLAGS+=" -g0"
-  export RUSTFLAGS="-Cdebuginfo=0"
+    export MOZ_DEBUG_FLAGS=" "
+    export CFLAGS+=" -g0"
+    export CXXFLAGS+=" -g0"
+    export RUSTFLAGS="-Cdebuginfo=0"
 
-  # we should have more than enough RAM on the CI spot instances.
-  # ...or maybe not?
-  export LDFLAGS+=" -Wl,--no-keep-memory"
-  # patch -Np1 -i "${_librewolf_patches_dir}"/arm.patch # not required anymore?
-  # patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
+    # we should have more than enough RAM on the CI spot instances.
+    # ...or maybe not?
+    export LDFLAGS+=" -Wl,--no-keep-memory"
+    # patch -Np1 -i "${_librewolf_patches_dir}"/arm.patch # not required anymore?
+    # patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
 
-else
+  else
 
-  cat >>../mozconfig <<END
+    cat >>../mozconfig <<END
 # probably not needed, enabled by default?
 ac_add_options --enable-optimize
 
@@ -162,7 +162,7 @@ ac_add_options --disable-elf-hack
 # might help with failing x86_64 builds?
 export LDFLAGS+=" -Wl,--no-keep-memory"
 END
-fi
+  fi
 
   # Upstream patches from gentoo
   # PGO improvements
@@ -248,7 +248,6 @@ fi
   cp -r "${srcdir}"/common/source_files/* ./
 }
 
-
 build() {
   cd firefox-"$pkgver"
 
@@ -270,7 +269,7 @@ build() {
 ac_add_options --enable-profile-generate
 END
 
-    else
+  else
 
     cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
@@ -321,9 +320,9 @@ END
   fi
 
   # cat >>.mozconfig <<END
-# ac_add_options --enable-linker=lld
-# ac_add_options --disable-bootstrap
-# END
+  # ac_add_options --enable-linker=lld
+  # ac_add_options --disable-bootstrap
+  # END
 
   ./mach build
 
