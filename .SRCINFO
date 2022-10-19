@@ -1,7 +1,7 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = x86_64
 	arch = aarch64
