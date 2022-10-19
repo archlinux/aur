@@ -1,7 +1,7 @@
 pkgbase = 86box
 	pkgdesc = An emulator for classic IBM PC clones
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = 86box
 	license = GPL2
 	makedepends = cmake>=3.21
 	makedepends = ninja
-	makedepends = qt6-tools
+	makedepends = qt5-tools
 	depends = hicolor-icon-theme
 	depends = libslirp
 	depends = openal
-	depends = qt6-base
+	depends = qt5-base
 	depends = rtmidi
 	depends = sdl2
 	optdepends = 86box-roms: ROM files

@@ -2,13 +2,13 @@
 pkgname=86box
 _pkgname=86Box
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
-makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
+depends=('hicolor-icon-theme' 'libslirp' 'openal' 'qt5-base' 'rtmidi' 'sdl2')
+makedepends=('cmake>=3.21' 'ninja' 'qt5-tools')
 optdepends=(
     '86box-roms: ROM files'
     'discord-game-sdk: Discord Rich Presence'
@@ -22,12 +22,12 @@ sha512sums=('38abe254ea24eb6430eb87eca517bf7b318188df0f0f6d6dec5a04fefac143d591c
 
 build() {
     case "$CARCH" in
-        pentium4) _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
-        x86_64)   _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
-        arm7h)    _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
-        aarch64)  _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
+        pentium4) _NDR=off; _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
+        x86_64)   _NDR=off; _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
+        arm7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
+        aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
-    LDFLAGS='-z now' cmake -S"$_pkgname-$pkgver" -Bbuild --preset "$_PRESET" --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DSLIRP_EXTERNAL=on
+    LDFLAGS='-z now' cmake -S"$_pkgname-$pkgver" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DNEW_DYNAREC="$_NDR" -DSLIRP_EXTERNAL=on
     cmake --build build
 }
 
