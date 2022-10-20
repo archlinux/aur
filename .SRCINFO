@@ -1,10 +1,12 @@
 pkgbase = input-leap-git
 	pkgdesc = Open-source KVM software
-	pkgver = 2.4.0+197+ga9ffcbec
-	pkgrel = 2
+	pkgver = 2.4.0+299+g20423846
+	pkgrel = 1
 	url = https://github.com/input-leap/input-leap
 	arch = x86_64
 	license = custom:GPL2WithOpenSSLException
+	makedepends = glibc
+	makedepends = gcc-libs
 	makedepends = libx11
 	makedepends = libxrandr
 	makedepends = libxext
@@ -12,6 +14,10 @@ pkgbase = input-leap-git
 	makedepends = xorgproto
 	makedepends = libxtst
 	makedepends = libxi
+	makedepends = openssl
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = libx11
 	makedepends = openssl
 	makedepends = avahi
 	makedepends = qt5-base
@@ -29,6 +35,8 @@ pkgbase = input-leap-git
 
 pkgname = input-leap-headless-git
 	pkgdesc = Open-source KVM software (client and server CLI binaries)
+	depends = glibc
+	depends = gcc-libs
 	depends = libx11
 	depends = libxrandr
 	depends = libxext
@@ -37,17 +45,21 @@ pkgname = input-leap-headless-git
 	depends = libxtst
 	depends = libxi
 	depends = openssl
-	provides = input-leap-headless=2.4.0+197+ga9ffcbec
-	provides = barrier-headless=2.4.0+197+ga9ffcbec
+	provides = input-leap-headless=2.4.0+299+g20423846
+	provides = barrier-headless=2.4.0+299+g20423846
 	conflicts = input-leap-headless
 	conflicts = barrier-headless
 
 pkgname = input-leap-git
 	pkgdesc = Open-source KVM software (GUI)
 	depends = input-leap-headless-git
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = openssl
 	depends = avahi
 	depends = qt5-base
-	provides = input-leap=2.4.0+197+ga9ffcbec
-	provides = barrier=2.4.0+197+ga9ffcbec
+	provides = input-leap=2.4.0+299+g20423846
+	provides = barrier=2.4.0+299+g20423846
 	conflicts = input-leap
 	conflicts = barrier
