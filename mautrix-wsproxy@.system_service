@@ -2,7 +2,7 @@
 Description=Mautrix wsproxy (%i config)
 
 [Service]
-ExecStart=/usr/bin/wsproxy -config /etc/wsproxy/$i.yaml
+ExecStart=/usr/bin/mautrix-wsproxy -config /etc/mautrix-wsproxy/%i.yaml
 Restart=on-failure
 PrivateTmp=yes
 ProtectSystem=full
