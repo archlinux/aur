@@ -25,7 +25,7 @@ prepare() {
   cd "$srcdir/$pkgname"
   git submodule init
   git config submodule.po.url "$srcdir/po"
-  git submodule--helper update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
