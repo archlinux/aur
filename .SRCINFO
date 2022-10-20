@@ -1,6 +1,6 @@
 pkgbase = orchis-theme
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
-	pkgver = 2022_09_28
+	pkgver = 2022_10_19
 	pkgrel = 1
 	url = https://github.com/vinceliuice/orchis-theme
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = orchis-theme
 	conflicts = orchis-theme
 	replaces = orchis-theme-bin
 	options = !strip
-	source = orchis-theme-2022_09_28.tar.gz::https://github.com/vinceliuice/orchis-theme/archive/refs/tags/2022-09-28.tar.gz
-	sha256sums = 7b6f49d58e1396ca85a0dcf918606393f54940c87ca5621cde9825a5bcb5b2ab
+	source = orchis-theme-2022_10_19.tar.gz::https://github.com/vinceliuice/orchis-theme/archive/refs/tags/2022-10-19.tar.gz
+	sha256sums = 7f40104b9842435f7cceee1139f809b5e089e3316664fb3ad6f894bf692e3746
 
 pkgname = orchis-theme
