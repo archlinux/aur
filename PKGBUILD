@@ -1,6 +1,6 @@
 # Maintainer: 
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
 pkgver=11.11
 pkgrel=2
