@@ -1,0 +1,13 @@
+pkgbase = ton-git-bin
+	pkgdesc = The Open Network
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/ton-blockchain/ton
+	arch = x86_64
+	license = LGPL2
+	depends = pacman>5
+	source = ton-git-bin.tar.gz::https://github.com/tonthemoon/ton/releases/download/nightly-linux-x86_64/ton-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = ton-git-bin
+
