@@ -62,7 +62,7 @@ prepare() {
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
 	git config submodule.ui/thirdparty/imgui.url ../imgui
 	git config submodule.ui/thirdparty/implot.url ../implot
-	git submodule update
+	git submodule--helper update
 	mkdir ../build tomlplusplus/include
 	python scripts/gen-license.py > XEMU_LICENSE
 }
