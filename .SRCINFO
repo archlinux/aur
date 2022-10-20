@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-dr460nized-sweet-git
 	pkgdesc = Plymouth theme for Garuda dr460nized inspired by Sweet by EliverLara.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/VitoF/plymouth-theme-dr460nized-sweet
 	install = info.install
 	arch = any
