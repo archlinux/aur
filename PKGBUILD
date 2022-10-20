@@ -6,7 +6,7 @@
 # Contributor: Otto Sabart <seberm[at]gmail[dot]com>
 
 pkgname=knot-git
-pkgver=3.0.dev.r527.1e6928a83
+pkgver=3.3.dev.r78.f6670ca01
 pkgrel=1
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
@@ -14,7 +14,8 @@ url="https://www.knot-dns.cz/"
 license=('GPL3')
 depends=('libedit' 'gnutls' 'liburcu' 'lmdb'
          'libidn2' 'systemd' 'libcap-ng'
-         'fstrm' 'protobuf-c' 'libmaxminddb')
+         'fstrm' 'protobuf-c' 'libmaxminddb'
+         'libbpf' 'libxdp' 'libnghttp2' 'libmnl' 'ngtcp2-git')
 makedepends=('git' 'automake' 'autoconf' 'make' 'libtool' 'pkg-config')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
@@ -37,9 +38,11 @@ prepare() {
         --with-storage=/var/lib/knot \
         --enable-recvmmsg \
         --enable-dnstap \
+        --enable-quic \
         --enable-systemd \
         --enable-reuseport \
-        --disable-silent-rules &>/dev/null
+        --disable-silent-rules \
+	--enable-fastparser
 }
 
 pkgver() {
@@ -49,6 +52,7 @@ pkgver() {
 
 build() {
     cd "${_gitname}"
+
     make
 }
 

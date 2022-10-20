@@ -1,6 +1,6 @@
 pkgbase = knot-git
 	pkgdesc = High-performance authoritative-only DNS server, development build
-	pkgver = 3.0.dev.r527.1e6928a83
+	pkgver = 3.3.dev.r78.f6670ca01
 	pkgrel = 1
 	url = https://www.knot-dns.cz/
 	arch = x86_64
@@ -21,7 +21,12 @@ pkgbase = knot-git
 	depends = fstrm
 	depends = protobuf-c
 	depends = libmaxminddb
-	provides = knot=3.0.dev.r527.1e6928a83
+	depends = libbpf
+	depends = libxdp
+	depends = libnghttp2
+	depends = libmnl
+	depends = ngtcp2-git
+	provides = knot=3.3.dev.r78.f6670ca01
 	conflicts = knot
 	options = !strip
 	options = debug
@@ -30,4 +35,3 @@ pkgbase = knot-git
 	sha256sums = SKIP
 
 pkgname = knot-git
-
