@@ -3,9 +3,9 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=28.1.0-beta1
+_pkgver=28.1.0-rc1
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 epoch=3
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -156,7 +156,8 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=$_browser \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DBETA="$_pkgver" ..
+    -DRELEASE_CANDIDATE="$_pkgver" ..
+#    -DBETA="$_pkgver" ..
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-$pkgrel\" //|" config/obsconfig.h
 
