@@ -2,10 +2,10 @@
 pkgname='rollercoaster'
 pkgver='1.0'
 pkgdesc='Cool Terminal tool'
-pkgrel='1'
+pkgrel='2'
 arch=('any')
 url='https://tinyurl.com/ycyhdpve'
-depends=('bash' 'alas-utils')
+depends=('bash' 'alsa-utils')
 source=("${pkgname}::https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh")
 sha512sums=("SKIP")
 
