@@ -1,6 +1,6 @@
 pkgbase = oh-my-posh
 	pkgdesc = A prompt theme engine for any shell.
-	pkgver = 12.6.3
+	pkgver = 12.6.5
 	pkgrel = 1
 	url = https://github.com/JanDeDobbeleer/oh-my-posh
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = oh-my-posh
 	makedepends = git
 	makedepends = go
 	noextract = themes.zip
-	source = https://github.com/JanDeDobbeleer/oh-my-posh/archive/refs/tags/v12.6.3.tar.gz
-	source = themes-a78aee1cc9fb7ca475cd6303294add086ee6c78429101c36bc9559fa8a54893f.zip::https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v12.6.3/themes.zip
-	source = LICENSE-fb7a3a9b5480177438d2b1be15cfa8da6d3d4c7471c46c892e43fd5d2df97183::https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/v12.6.3/COPYING
-	sha256sums = a78aee1cc9fb7ca475cd6303294add086ee6c78429101c36bc9559fa8a54893f
+	source = https://github.com/JanDeDobbeleer/oh-my-posh/archive/refs/tags/v12.6.5.tar.gz
+	source = themes-c7d4633d443d1fa2ea5a9d5efcad784bba123c6a6d94da3b2330b51be94bcbf7.zip::https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v12.6.5/themes.zip
+	source = LICENSE-fb7a3a9b5480177438d2b1be15cfa8da6d3d4c7471c46c892e43fd5d2df97183::https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/v12.6.5/COPYING
+	sha256sums = c7d4633d443d1fa2ea5a9d5efcad784bba123c6a6d94da3b2330b51be94bcbf7
 	sha256sums = fb7a3a9b5480177438d2b1be15cfa8da6d3d4c7471c46c892e43fd5d2df97183
 	sha256sums = a5308c4e51268229a039ec4ec9a251a4cdb89d9380383e6e13aeba64a74f19ad
 

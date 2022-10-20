@@ -1,13 +1,13 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 pkgname=oh-my-posh
-pkgver=12.6.3
+pkgver=12.6.5
 pkgrel=1
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
 license=('MIT')
 makedepends=('curl' 'grep' 'sed' 'unzip' 'git' 'go')
-sha256sums=('a78aee1cc9fb7ca475cd6303294add086ee6c78429101c36bc9559fa8a54893f'
+sha256sums=('c7d4633d443d1fa2ea5a9d5efcad784bba123c6a6d94da3b2330b51be94bcbf7'
             'fb7a3a9b5480177438d2b1be15cfa8da6d3d4c7471c46c892e43fd5d2df97183'
             'a5308c4e51268229a039ec4ec9a251a4cdb89d9380383e6e13aeba64a74f19ad')
 #
