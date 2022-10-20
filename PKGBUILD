@@ -4,11 +4,13 @@
 # shellcheck disable=2034,2154
 
 pkgname=lix
-pkgver=0.9.47
+pkgver=0.9.48
 pkgrel=1
 changelog=.CHANGELOG
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('f24133cc5e2ef17b65b69ac6cf2e6cbcf4382cb5f8f960a699c015a4060a9903fe920261716038b58e8dd86fdf08cda37d4efc25e118f3e7e6f682f71b2e2e08')
+source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
+        "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
+sha512sums=('27e7e432625c9f6197601cea1062f8861cc4f82559f2b7fb74740b137cc6cf6f8bddec8146f821ba477d58676eb7b365922d390fa2fe5e4a649a9a9502afa2dc'
+            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
@@ -34,12 +36,6 @@ _dubv=( "4.0.4+5.2.0"   # allegro
 # These have to be git clones, otherwise dub isn't able to pick them up with the correct version later on
 # no git, no version field, assumed ~master
 # https://dub.pm/commandline.html#add-path
-source+=(   "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
-            "$pkgname.desktop"
-            )
-sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
-                '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
-                )
 source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
             "$pkgname-bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
             "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
@@ -106,24 +102,24 @@ _build() {
 }
 
 build() {
-    cd "$_gitname-$pkgver" || exit
+    cd "$_gitname-$pkgver" || exit 1
     _build build
 }
 
 check() {
-    cd "$_gitname-$pkgver" || exit
+    cd "$_gitname-$pkgver" || exit 1
     _build test
 }
 
 package() {
+    cd "$_gitname-$pkgver" || exit 1
+
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
-            "$pkgname.desktop" \
+            "data/desktop/com.lixgame.Lix.desktop" \
         `# DSTFILE:` \
             "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-    cd "$_gitname-$pkgver" || exit
 
     # install application entry icon
     install -Dm644 \

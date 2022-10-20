@@ -1,12 +1,38 @@
 Version history
 ===============
 
+0.9.48
+------
+
+2022-10-15
+
+Don't cap level search results at 18, but show all results. Downside: Now, I
+expect the search to be slow when you enter the first one-two letters. We'll
+see what is worse and can still improve the search in the future.
+
+Always return to lobby after playing multiplayer with a single tribe, even
+when that tribe hasn't fulfilled the hidden save requirement from
+singleplayer. Lix has never properly supported 1-tribe multiplayer, but Lix
+has never explicitly disallowed it either.
+
+The connection picker in the networking menu will now connect when you press
+the generic Okay hotkey, in addition to the networking menu hotkey.
+
+Fixed option dialog's help text for the username option: All translations
+explained ./data/user/yourname.txt, which is out of use since 2017. Now,
+all translations explain ./user/options.sdl, the correct save file.
+
+Added FreeDesktop resources in ./data/desktop/ by Matthias Mailänder. Thanks!
+I don't know yet where to put such resources (that aren't needed directly by
+Lix while Lix is running) in the future; ./data/ is catch-all for now.
+
+
 0.9.47
 ------
 
 2022-08-11
 
-Add Swedish translation of the Lix user interface by Sanchez.
+Add Swedish translation of the Lix user interface by Sanchez. Thanks!
 
 Fix #387: Update skill panel on tweak. Now, after shifting a skill assignment
 forward or backward by a single frame in the replay tweaker, the skill panel
