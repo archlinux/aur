@@ -3,7 +3,7 @@
 pkgname=owncast-git
 _pkgname=owncast
 pkgver=0.0.12.8e43b9d
-pkgrel=2
+pkgrel=3
 pkgdesc="Take control over your live stream video by running it yourself. Streaming + chat out of the box."
 url='https://github.com/owncast/owncast'
 arch=('any')
