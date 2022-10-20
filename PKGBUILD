@@ -7,7 +7,7 @@
 
 pkgname=knot-git
 pkgver=3.3.dev.r78.f6670ca01
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
 url="https://www.knot-dns.cz/"
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('libedit' 'gnutls' 'liburcu' 'lmdb'
          'libidn2' 'systemd' 'libcap-ng'
          'fstrm' 'protobuf-c' 'libmaxminddb'
-         'libbpf' 'libxdp' 'libnghttp2' 'libmnl' 'ngtcp2-git')
+         'libbpf' 'libxdp' 'libnghttp2' 'libmnl' 'ngtcp2')
 makedepends=('git' 'automake' 'autoconf' 'make' 'libtool' 'pkg-config')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
