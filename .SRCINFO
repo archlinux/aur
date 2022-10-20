@@ -1,7 +1,7 @@
 pkgbase = nyrna
 	pkgdesc = Suspend games and applications at any time and resume whenever you wish
-	pkgver = 2.5.2
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/Merrit/nyrna
 	arch = x86_64
 	license = GPL3
@@ -19,9 +19,9 @@ pkgbase = nyrna
 	depends = xdotool
 	depends = xz
 	provides = nyrna
-	source = nyrna-2.5.2.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v2.5.2.tar.gz
+	source = nyrna-2.6.0.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v2.6.0.tar.gz
 	source = flutter::git+https://github.com/flutter/flutter.git
-	sha256sums = aacea91934ca59a09c1482f7456c11863e7163f63bdda2af002b93d384b941a8
+	sha256sums = 6bd68f12639adbab0173a7ff670d3d1ddda5fbbdc5b8184c18812abda5cff0df
 	sha256sums = SKIP
 
 pkgname = nyrna
