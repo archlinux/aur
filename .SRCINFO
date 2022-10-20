@@ -8,6 +8,7 @@ pkgbase = fsearch-git
 	license = GPL2
 	makedepends = git
 	makedepends = meson
+	makedepends = itstool
 	depends = gtk3
 	depends = icu
 	depends = pcre2
