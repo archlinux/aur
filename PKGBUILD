@@ -21,9 +21,9 @@ options=('!strip' 'staticlibs')
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   git submodule init
-  git config submodule.src/config.url "$srcdir/config"
-  git config submodule.src/llvm-project.url "$srcdir/llvm-project"
-  git config submodule.src/wasi-libc.url "$srcdir/wasi-libc"
+  git config submodule.externals/config.url "$srcdir/config"
+  git config submodule.externals/llvm-project.url "$srcdir/llvm-project"
+  git config submodule.externals/wasi-libc.url "$srcdir/wasi-libc"
   git submodule update
   sed -ri 's/^DEBUG_PREFIX_MAP=/DEBUG_PREFIX_MAP=-fno-exceptions /' Makefile 
 }
