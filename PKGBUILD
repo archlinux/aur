@@ -51,9 +51,9 @@ package() {
   install -Dm600 example-config.yaml ${pkgdir}/usr/share/${pkgname}/example-config.yaml
 
   cd "${srcdir}/"
-  install -Dm644 maubot.service -t  ${pkgdir}/usr/lib/systemd/system/
-  install -Dm644 sysusers-maubot.conf ${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf
-  install -Dm644 tmpfiles-maubot.conf ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
+  install -Dm644 ${pkgname}.service -t  ${pkgdir}/usr/lib/systemd/system/
+  install -Dm644 sysusers-${pkgname}.conf ${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf
+  install -Dm644 tmpfiles-${pkgname}.conf ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
 
   rm ${pkgdir}/usr/example-config.yaml
 }
