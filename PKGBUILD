@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=learnr
-_pkgver=0.10.1
+_pkgver=0.11.1
 pkgname=r-${_pkgname,,}
-pkgver=0.10.1
-pkgrel=4
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Interactive Tutorials for R'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,13 +12,17 @@ license=('Apache')
 depends=(
   r
   r-checkmate
+  r-curl
+  r-digest
   r-ellipsis
   r-evaluate
   r-htmltools
   r-htmlwidgets
   r-jsonlite
   r-knitr
+  r-lifecycle
   r-markdown
+  r-promises
   r-rappdirs
   r-renv
   r-rmarkdown
@@ -32,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6174932b8dbdb7c458c8d89e242359b0903040332cd1e5741b1e956e74adbc23')
+sha256sums=('fa8fceca3023a7cf6128b4b80b4e01f1c6dc4a692df6e53c5b75f9b1e12069dc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
