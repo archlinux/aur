@@ -1,28 +1,32 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: xiretza <xiretza+aur@gmail.com>
 pkgname=python-discord
-_pkgname=discord.py
-pkgver=1.7.3
+pkgver=2.0.1
+_tarname=discord.py-$pkgver
 pkgrel=1
 pkgdesc="An API wrapper for Discord written in Python"
-arch=(any)
+arch=('any')
 url="https://github.com/Rapptz/discord.py"
 license=('MIT')
-depends=('python' 'python-aiohttp')
+depends=('python-aiohttp>=3.7.4' 'python-aiohttp<4')
 makedepends=('python-setuptools')
-optdepends=('python-pynacl: Voice support'
-            'libffi: Voice support')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Rapptz/discord.py/archive/v${pkgver}.tar.gz")
-sha512sums=('9a71c2167e67b760c6c406039e823837cc150601b8571265490f5b7f7b713b676421f4e7e79322461c8df1edadec9349d9013984d714b642e65ba51ed1573952')
+optdepends=('python-pynacl>=1.3.0: voice support'
+			'libffi: voice support'
+			'python-orjson>=3.5.4: speed support'
+			'python-aiodns: speed support'
+			'python-brotli: speed support'
+			'python-cchardet=2.1.7: speed support'
+			'python<3.10: speed support')
+source=("$_tarname.tar.gz::https://github.com/Rapptz/discord.py/archive/v$pkgver.tar.gz")
+sha512sums=('339f5feb2a5873e909555af6f868d8bbdb4fd59410b8042ac4c0643ff9c125df98839289ac051d578a7b6ff222b166d1404718c1c9b8a9fdeef598214058e616')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-
+	cd "$srcdir/$_tarname"
 	python setup.py build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+	cd "$srcdir/$_tarname"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
