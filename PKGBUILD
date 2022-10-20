@@ -3,7 +3,7 @@
 _pkgbase=libcamera
 pkgbase=libcamera-minimal-git
 pkgname=(libcamera-minimal-git)
-pkgver=r3912.74ab3f77
+pkgver=0.0.1.r29.gc8e6b114
 pkgrel=1
 pkgdesc="An open source camera stack and framework for Linux, Android, and ChromeOS"
 url="https://libcamera.org"
@@ -25,11 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  (
-    set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
