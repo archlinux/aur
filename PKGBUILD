@@ -2,7 +2,7 @@
 
 pkgname=eidklient
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -11,7 +11,8 @@ _upstream_arch=
 [[ "$CARCH" == "x86_64" ]] && _upstream_arch="x86_64"
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
 _appimage="eID_klient-${_upstream_arch}.AppImage"
-_url="https://eidas.minv.sk/downloadservice/eidklient/linux/"
+_url="https://eidas.minv.sk/downloadservice/eidklient/linux"
+# alternative version URI: https://eidas.minv.sk/TCTokenService/download/linux/ubuntu/version.txt
 source=("${_url}/eID_klient_release_notes.txt")
 source_i686=("${_url}/${_appimage}")
 source_x86_64=("${_url}/${_appimage}")
@@ -28,12 +29,12 @@ prepare() {
 }
 
 pkgver() {
-       # Match version from upstream release notes
-       cat eID_klient_release_notes.txt | grep "verzia" | head -n1 | sed 's/^.*verzia \([0-9.]*\).*/\1/'
+    # Match version from upstream release notes
+    grep -Pom1 'verzia \K[\d.]+' eID_klient_release_notes.txt
 }
 
 package() {
-    depends=( "pcsclite" "ccid" "squashfuse" )
+    depends=( "pcsclite" "ccid" "fuse2" )
     optdepends=('disig-web-signer: online certificates update support')
 
     # AppImage
