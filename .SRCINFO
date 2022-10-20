@@ -1,7 +1,8 @@
 pkgbase = fractal-git
 	pkgdesc = Matrix messaging app for GNOME written in Rust
-	pkgver = 5.alpha.r724.b55752c1
-	pkgrel = 2
+	pkgver = 5.alpha1.r55.g92692649
+	pkgrel = 1
+	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/fractal
 	arch = i686
 	arch = x86_64
