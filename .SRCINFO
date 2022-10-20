@@ -8,9 +8,14 @@ pkgbase = verilator-git
 	makedepends = python
 	makedepends = systemc
 	makedepends = lsb-release
+	makedepends = git
 	depends = perl
 	optdepends = systemc
+	provides = verilator
+	conflicts = verilator
 	source = verilator::git+https://github.com/verilator/verilator.git
+	source = 3694.diff
 	sha512sums = SKIP
+	sha512sums = bc9a86041442a2dd14f2de6dbce3b29601998599b0054c5e23173ac909bbb5ef6da8c35c28121eac7155ccdee88cf42b3e0ab2addebd6d20ba89cf0729e5f25e
 
 pkgname = verilator-git

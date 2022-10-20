@@ -14,9 +14,15 @@ license=('LGPL')
 depends=('perl')
 optdepends=('systemc')
 # lsb-release is used by configure script to enable usage of c++17
-makedepends=('python' 'systemc' 'lsb-release')
-source=("verilator::git+https://github.com/verilator/verilator.git")
-sha512sums=('SKIP')
+makedepends=('python' 'systemc' 'lsb-release' 'git')
+conflicts=('verilator')
+provides=('verilator')
+source=(
+  "verilator::git+https://github.com/verilator/verilator.git"
+  "3694.diff"
+)
+sha512sums=('SKIP'
+            'bc9a86041442a2dd14f2de6dbce3b29601998599b0054c5e23173ac909bbb5ef6da8c35c28121eac7155ccdee88cf42b3e0ab2addebd6d20ba89cf0729e5f25e')
 
 pkgver() {
   cd "$_pkgname"
@@ -25,6 +31,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+  git apply $srcdir/fix.patch
   autoconf
 }
 
