@@ -1,4 +1,4 @@
-# Maintainer: Dawson Dias <thexerothermicsclerodermoid@gmail.com>
+# Maintainer: txtsd <code@ihavea.quest>
 # Maintainer: Atakku <atakkudev@gmail.com>
 
 pkgname=blockbench-bin
