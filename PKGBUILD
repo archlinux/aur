@@ -28,6 +28,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
+  svn revert -R ./
   patch -Np1 -i ../ship_find_apr.m4.patch
   patch -Np1 -i ../fix-apr.pc.patch
   patch -Np1 -i ../omit_extra_libs.patch
