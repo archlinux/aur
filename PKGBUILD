@@ -56,7 +56,7 @@ prepare() {
 	git config submodule.vendor/Snippets.url ../Snippets
 	git config submodule.vendor/stb.url ../stb
 	git config submodule.vendor/TinySHA1.url ../TinySHA1
-	git submodule--helper update
+	git -c protocol.file.allow=always submodule update
 	# remove hardcoded optimization flags
 	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile.libretro
 }
