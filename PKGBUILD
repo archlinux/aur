@@ -82,7 +82,7 @@ pkgdesc="Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers-variant'
          'linux-pf-headers')
 pkgver=${_basekernel}.${_kernelname}${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://codeberg.org/pf-kernel/linux/wiki/README"
 license=('GPL2')
@@ -100,7 +100,7 @@ source=("linux-pf::git+https://codeberg.org/thaodan/linux.git#tag=v${_basekernel
        )
 sha256sums=('SKIP'
             '4415388555aab8845e60f6b3996e3a75b8159d516b7b04a6adb8ade54de3ff9c'
-            '64632c7d7d68954da4ecfbd639878eea3041bbbad2d2621c7a6943d89950cb6e'
+            '68224090bb850c91d0c86646008283bdbea58ba13129535a4bf2266d115be180'
             'f016df0b9651b83bc72f955ca596b6a3d325b3118026a397ba36033c8026c86d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
