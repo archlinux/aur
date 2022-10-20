@@ -6,6 +6,7 @@ pkgbase = btsdu-git
 	arch = x86_64
 	license = GPL2
 	makedepends = cargo
+	makedepends = git
 	optdepends = ncdu: display results
 	provides = btsdu
 	conflicts = btsdu
