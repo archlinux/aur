@@ -3,7 +3,7 @@
 
 _gemname=snapsync
 pkgname=ruby-$_gemname
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='tool to automate backing up snapper snapshots to other medias'
 arch=(any)
@@ -13,11 +13,14 @@ depends=(ruby ruby-logging ruby-concurrent-ruby-0 ruby-ruby-dbus ruby-thor)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2187e8d112fba66dcb763cb0d41ca0e04665a5fa')
+sha256sums=('3a79eebfba196907c8d11cb8d71211a2b0cdc7cab4795acf9e6b3ccb1b1d86bf')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/systemd/"* -t "$pkgdir/usr/lib/systemd/system/"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/usrlib/"* -t "$pkgdir/usr/lib/snapsync/"
 }
