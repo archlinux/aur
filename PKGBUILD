@@ -8,7 +8,7 @@ pkgdesc="A collection of of HDL related tools"
 arch=('i686' 'x86_64')
 url="https://github.com/VHDL-LS/rust_hdl"
 license=('MPL2')
-makedepends=('git' 'rust' 'pandoc')
+makedepends=('git' 'rust')
 provides=("rust_hdl=$pkgver")
 source=("git+https://github.com/VHDL-LS/${_pkgname}.git"
   "installed.patch")

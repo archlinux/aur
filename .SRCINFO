@@ -8,7 +8,6 @@ pkgbase = rust_hdl-git
 	license = MPL2
 	makedepends = git
 	makedepends = rust
-	makedepends = pandoc
 	provides = rust_hdl=v0.18.0.r13.g2c69084
 	source = git+https://github.com/VHDL-LS/rust_hdl.git
 	source = installed.patch
