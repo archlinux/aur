@@ -2,7 +2,7 @@
 
 _pkgname=astronvim
 pkgname=${_pkgname}-git
-pkgver=2.1.1.r5.g4ea5899
+pkgver=v2.4.0
 pkgrel=1
 pkgdesc="AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins"
 arch=('any')
@@ -16,7 +16,7 @@ provides=("${_pkgname}")
 
 pkgver() {
 	cd ${pkgname}
-	git describe --tags | sed 's/^v\(.*\)[-]\([^-]*-g\)/\1.r\2/;s/-/./g'
+	git describe --tags | sed 's/\(^v.*\)[-]\([^-]*-g\)/\1.r\2/;s/-/./g'
 }
 
 package() {
