@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="olivetin-bin"
-_pkgver=2022-04-07
+_pkgver=2022-10-19
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
@@ -10,30 +10,30 @@ license=("AGPL3")
 arch=("x86_64" "armv5h" "armv6h" "armv7h" "aarch64")
 provides=("olivetin")
 conflicts=("olivetin")
-source_x86_64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-amd64.tar.gz")
-source_armv5h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm32v5.tar.gz")
-source_armv6h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm32v6.tar.gz")
-source_armv7h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm32v7.tar.gz")
-source_aarch64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm64.tar.gz")
+source_x86_64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-amd64.tar.gz")
+source_armv5h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm32v5.tar.gz")
+source_armv6h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm32v6.tar.gz")
+source_armv7h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm32v7.tar.gz")
+source_aarch64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm64.tar.gz")
 source=("olivetin.service"
         "olivetin@.service")
-sha256sums_x86_64=('834adb89db7bed9819c8a600b8e368145019b84db9d53b0b7cecf0c7ca1b9115')
-sha256sums_armv5h=('b767a246b516741afcc2f491519aba88c2b78f8da0f299f5c99c8896136cade5')
-sha256sums_armv6h=('a31d9f61323ec9ae9f46f6dba6292214c84a0d9fbd70ac067b289618a972286c')
-sha256sums_armv7h=('0e3a748b1f0ef453bf4821ebd65b0b33e114de16e56b37ffa05a29f607897f0f')
-sha256sums_aarch64=('43554c7194200adf912981c4fc0ff8c479ba2d1c39a7f65517666014cfa3d120')
 sha256sums=('7d69ac6da345c383b616df7bab83257efa63c7c3574991dfe6e7b8976664ddb3'
             '23d7f8b5bdc5d508cb8c23efd356d99ea5ad6d29f79c1cd4084f7d0f302ac49a')
+sha256sums_x86_64=('95e8a37ff01d85736db155be4d763fdc6d444414dbbd66e2f2749ee73eef6bbb')
+sha256sums_armv5h=('422ced0e3afba7c0ca937a3c5833c2693b196f61d5e0dadae6ece748d7f4a0b8')
+sha256sums_armv6h=('ec12b5db6ddc00acc778950d5b5a4bcd2d188338fb8bb802bffb6a21ba0e790d')
+sha256sums_armv7h=('cf311c4e25c7278e3ed53378ff260bcc4945efc9c29efcae2f60fce94aee5f56')
+sha256sums_aarch64=('a0cc96d3f33c95a0f3c76c7177d3b01de9846226d8b8bc434bfce21719602bd2')
 backup=("etc/olivetin/config.yaml")
 
 prepare(){
  # enter the proper directory
  case "$CARCH" in
-  "x86_64") cd "OliveTin-$_pkgver-linux-amd64";;
-  "armv5h") cd "OliveTin-$_pkgver-linux-arm32v5";;
-  "armv6h") cd "OliveTin-$_pkgver-linux-arm32v6";;
-  "armv7h") cd "OliveTin-$_pkgver-linux-arm32v7";;
-  "aarch64") cd "OliveTin-$_pkgver-linux-arm64";;
+  "x86_64") cd "OliveTin-linux-amd64";;
+  "armv5h") cd "OliveTin-linux-arm32v5";;
+  "armv6h") cd "OliveTin-linux-arm32v6";;
+  "armv7h") cd "OliveTin-linux-arm32v7";;
+  "aarch64") cd "OliveTin-linux-arm64";;
   *) echo "[KO] Unsupported architecture provided" && return 1;;
  esac
 
@@ -58,11 +58,11 @@ CONTENT
 package(){
  # enter the proper directory
  case "$CARCH" in
-  "x86_64") cd "OliveTin-$_pkgver-linux-amd64";;
-  "armv5h") cd "OliveTin-$_pkgver-linux-arm32v5";;
-  "armv6h") cd "OliveTin-$_pkgver-linux-arm32v6";;
-  "armv7h") cd "OliveTin-$_pkgver-linux-arm32v7";;
-  "aarch64") cd "OliveTin-$_pkgver-linux-arm64";;
+  "x86_64") cd "OliveTin-linux-amd64";;
+  "armv5h") cd "OliveTin-linux-arm32v5";;
+  "armv6h") cd "OliveTin-linux-arm32v6";;
+  "armv7h") cd "OliveTin-linux-arm32v7";;
+  "aarch64") cd "OliveTin-linux-arm64";;
   *) echo "[KO] Unsupported architecture provided" && return 1;;
  esac
  
