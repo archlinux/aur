@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r648.61dc0ebb
+pkgver=r721.a6304315
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/bsc"
   git submodule init
-  git config submodule.src/vendor/yices/v2.6/yices2.url "$srcdir/yices2"
+  git config submodule.externals/vendor/yices/v2.6/yices2.url "$srcdir/yices2"
   git submodule update
 }
 
