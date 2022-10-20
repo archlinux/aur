@@ -22,7 +22,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='conky - built for nvidia - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
@@ -97,6 +97,7 @@ build() {
 		-D BUILD_LUA_IMLIB2=ON \
 		-D BUILD_LUA_RSVG=ON \
 		-D BUILD_NVIDIA=ON \
+		-D BUILD_DOCS=OFF \
 		.
 
 	make
