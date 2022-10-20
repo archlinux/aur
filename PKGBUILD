@@ -11,6 +11,7 @@ conflicts=("patr")
 source=("https://github.com/oliashish/aur-release/releases/download/0.2.1/patr-0.2.1.tar.xz")
 sha256sums=("SKIP")
 
+
 package() {
     install -Dm755 "$srcdir/patr" "$pkgdir/usr/bin/patrcli"
 }
