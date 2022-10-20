@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.src/libretro/libretro-common.url ../libretro-common
-	git submodule--helper update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
