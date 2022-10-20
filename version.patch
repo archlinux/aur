@@ -1,0 +1,18 @@
+@@ -185,7 +185,7 @@
+   if(mrb_obj_is_kind_of(mrb, obj, mrb->eException_class)) {
+     throw RuntimeError("A ruby exception occurred: %1").arg(inspect(obj));
+   }
+-#elif MRUBY_RELEASE_MAJOR == 2
++#elif MRUBY_RELEASE_MAJOR >= 2
+   if(mrb_class(mrb, obj)->tt == MRB_TT_EXCEPTION) {
+     throw RuntimeError("A ruby exception occurred: %1").arg(inspect(obj));
+   }
+@@ -340,7 +340,7 @@
+   return rv.toList();
+ }
+ 
+-#elif MRUBY_RELEASE_MAJOR == 2
++#elif MRUBY_RELEASE_MAJOR >= 2
+ 
+ 
+ #define CASE(insn,ops) case insn: FETCH_ ## ops (); L_ ## insn
