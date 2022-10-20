@@ -1,6 +1,6 @@
 pkgbase = lightlyshaders-git
 	pkgdesc = Round corners and outline effect for KWin
-	pkgver = r72.ea8187d
+	pkgver = r136.925ad83
 	pkgrel = 1
 	url = https://github.com/a-parhom/LightlyShaders
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = lightlyshaders-git
 	depends = kde-dev-utils
 	provides = lightlyshaders
 	conflicts = lightlyshaders
-	source = git+https://github.com/a-parhom/LightlyShaders.git
+	source = git+https://github.com/a-parhom/LightlyShaders.git#branch=v2.0
 	sha256sums = SKIP
 
 pkgname = lightlyshaders-git

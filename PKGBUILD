@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=lightlyshaders-git
-pkgver=r72.ea8187d
+pkgver=r136.925ad83
 pkgrel=1
 pkgdesc="Round corners and outline effect for KWin"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=('qt5-x11extras' 'qt5-xmlpatterns' 'qt5-tools' 'kconfig' 'kconfigwidgets
 makedepends=('git' 'extra-cmake-modules')
 provides=('lightlyshaders')
 conflicts=('lightlyshaders')
-source=("git+${url}.git")
+source=("git+${url}.git#branch=v2.0")
 sha256sums=('SKIP')
 
 pkgver() {
