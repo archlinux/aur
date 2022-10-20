@@ -6,7 +6,7 @@ _pkgname=blockbench
 provides=(blockbench)
 conflicts=(blockbench)
 pkgname_orig=Blockbench
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="A free, modern block model editor."
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
 makedepends=('gzip')
 source=("https://github.com/JannisX11/blockbench/releases/download/v${pkgver}/Blockbench_${pkgver}.deb")
-sha512sums=('4a343ab863a8752db025f3166b3b794d89568ecbcfcfc95dba82068beb0e597787bb8b49e34a5f30f6f207238a27024fea5c5bded6aad9a99fe97271f8a547dc')
+sha512sums=('eedcf439589c4aa576e721880b391a5f6c4b25427e10e1b0fe6cec1e76519073d996a1e594c2658591165760db62bb2a1828fb266edf068ef28ff7582aaeefa2')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
