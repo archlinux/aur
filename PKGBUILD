@@ -6,8 +6,8 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-qt5-git
-pkgver=5.0.r0.g41032aaa
-pkgrel=4
+pkgver=5.0.r18.ga9d4370a
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
@@ -21,11 +21,11 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("git+https://github.com/PrismLauncher/PrismLauncher.git")
-        #"git+https://github.com/PrismLauncher/libnbtplusplus.git")
+source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
+        "git+https://github.com/PrismLauncher/libnbtplusplus.git")
 
-sha256sums=('SKIP')
-            #'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "PrismLauncher"
@@ -35,12 +35,11 @@ pkgver() {
 prepare() {
   cd "PrismLauncher"
   git submodule init
-  # Git CVE prevents this from working :/
-  #git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
