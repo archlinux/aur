@@ -1,7 +1,7 @@
 pkgbase = ryujinx-ldn-bin
 	pkgdesc = Experimental Nintendo Switch Emulator written in C# (LDN build)
 	pkgver = 1.1.0_ldn2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.patreon.com/ryujinx
 	arch = x86_64
 	license = MIT
