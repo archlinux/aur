@@ -10,7 +10,6 @@ pkgver=0.6
 pkgrel=5
 pkgdesc='FIM (Fbi IMproved) is a highly customizable and scriptable image viewer.'
 arch=('i686' 'x86_64')
-conflicts=('fim-svn')
 url='https://www.nongnu.org/fbi-improved/'
 license=('GPL2')
 optdepends=('djvulibre: djvu support'
