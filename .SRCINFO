@@ -8,7 +8,7 @@ pkgbase = nomadnet
 	makedepends = python-setuptools
 	depends = python-lxmf
 	depends = python-urwid
-	source = https://files.pythonhosted.org/packages/source/n/nomadnet/nomadnet-0.2.5-1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/n/nomadnet/nomadnet-0.2.5.tar.gz
 	sha256sums = 5801bb5183b74a85c311bcf33624aab8a453f0521b4ebf3f6d99f217be0c69c2
 
 pkgname = nomadnet
