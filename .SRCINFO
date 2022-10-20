@@ -1,7 +1,7 @@
 pkgbase = hyper
 	pkgdesc = A terminal built on web technologies
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyper.is/
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = hyper
 	source = hyper-3.3.0.tar.gz::https://github.com/vercel/hyper/archive/v3.3.0.tar.gz
 	source = hyper.desktop
 	sha256sums = 01bd48fb3d8035782c36f409c997e21a1adbdedc8a56e03367683765d1b532a6
-	sha256sums = bcdfdc24e3af1df76fc5fadb195ef914eec060bb49bcad33fd5a74836c19ad20
+	sha256sums = ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf
 
 pkgname = hyper

@@ -7,7 +7,7 @@
 
 pkgname=hyper
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is/"
@@ -24,7 +24,7 @@ source=(
     "$pkgname.desktop"
 )
 sha256sums=('01bd48fb3d8035782c36f409c997e21a1adbdedc8a56e03367683765d1b532a6'
-            'bcdfdc24e3af1df76fc5fadb195ef914eec060bb49bcad33fd5a74836c19ad20')
+            'ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf')
 
 _hyper_src_dir="$pkgname-$pkgver"
 
