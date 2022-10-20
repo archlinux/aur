@@ -53,7 +53,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.dependencies/imgui.url ../imgui
-	git submodule update
+	git submodule--helper update
 	rm -r bin/shaderCache
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/discord-rpc/d' CMakeLists.txt
