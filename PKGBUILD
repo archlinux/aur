@@ -1,17 +1,34 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Avery Warddhana <nullableVoidPtr+arch _ gmail>
 
 pkgname=python-overrides
-pkgver=3.1.0
+_name=${pkgname#python-}
+pkgver=7.3.1
 pkgrel=1
-pkgdesc='A decorator to automatically detect mismatch when overriding a method'
-arch=('any')
+pkgdesc="A decorator to automatically detect mismatch when overriding a method"
 url='https://github.com/mkorpela/overrides'
+arch=('any')
 license=('Apache')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mkorpela/overrides/archive/${pkgver}.tar.gz")
-sha256sums=('af85c1b1c5a46342862442e5f02f7269ecf957d05f043151f861c8f43ffcec15')
+checkdepends=('python-pytest' 'mypy')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('8b97c6c1e1681b78cbc9424b138d880f0803c2254c5ebaabdde57bb6c62093f2')
+
+build() {
+    cd "${_name}-${pkgver}"
+    python setup.py build
+}
+
+check() {
+    cd "${_name}-${pkgver}"
+    pytest tests
+    mypy overrides
+    sh ./check_mypy.sh
+}
 
 package() {
-  cd "overrides-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "${_name}-${pkgver}"
+	export PYTHONHASHSEED=0
+    python setup.py install --root="$pkgdir" --optimize=1
 }
+
+# vim:set et sw=4 sts=4 tw=80:

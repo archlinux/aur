@@ -1,13 +1,14 @@
 pkgbase = python-overrides
 	pkgdesc = A decorator to automatically detect mismatch when overriding a method
-	pkgver = 3.1.0
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://github.com/mkorpela/overrides
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
+	checkdepends = mypy
 	makedepends = python-setuptools
-	source = python-overrides-3.1.0.tar.gz::https://github.com/mkorpela/overrides/archive/3.1.0.tar.gz
-	sha256sums = af85c1b1c5a46342862442e5f02f7269ecf957d05f043151f861c8f43ffcec15
+	source = https://files.pythonhosted.org/packages/source/o/overrides/overrides-7.3.1.tar.gz
+	sha256sums = 8b97c6c1e1681b78cbc9424b138d880f0803c2254c5ebaabdde57bb6c62093f2
 
 pkgname = python-overrides
-
