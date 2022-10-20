@@ -1,0 +1,20 @@
+pkgbase = openvizsla-host-git
+	pkgdesc = The host software of OpenVizsla, Open Hardware FPGA-based USB analyzer.
+	pkgver = r296.f70968b
+	pkgrel = 1
+	url = http://openvizsla.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libusb
+	depends = python-crcmod
+	provides = openvizsla-host
+	conflicts = openvizsla-host
+	source = git+https://github.com/openvizsla/ov_ftdi.git#branch=master
+	source = lib_path.patch
+	source = udev.patch
+	sha256sums = SKIP
+	sha256sums = 5a73b6c29faf394eeeff45a613e3111faf1ffdc671143a488caa3e9f31d9a4c0
+	sha256sums = 1bb88c1749792b2bec238d37ca0aad25023701e973110bb16b379f7a5fcf92d6
+
+pkgname = openvizsla-host-git

@@ -1,0 +1,43 @@
+diff --git a/software/host/LibOV.py b/software/host/LibOV.py
+index 26265fc..908935f 100644
+--- a/software/host/LibOV.py
++++ b/software/host/LibOV.py
+@@ -18,7 +18,7 @@ elif sys.platform == 'win32':
+ else:
+     _lib_suffix = 'so'
+ 
+-libov = ctypes.cdll.LoadLibrary(_lpath + "/libov." + _lib_suffix)
++libov = ctypes.cdll.LoadLibrary("/usr/lib/ov_ftdi/libov." + _lib_suffix)
+ 
+ class FTDI_Device(ctypes.Structure):
+     _fields_ = [
+diff --git a/software/host/ovctl.py b/software/host/ovctl.py
+index 337b2fc..412cf56 100755
+--- a/software/host/ovctl.py
++++ b/software/host/ovctl.py
+@@ -3,13 +3,15 @@
+ # This needs python3.3 or greater - argparse changes behavior
+ # TODO - workaround
+ 
++import sys
++# Hack to import library from /usr/lib/ov_ftdi
++sys.path.append('/usr/lib/ov_ftdi')
+ import LibOV
+ import argparse
+ import time
+ 
+ import zipfile
+ 
+-import sys
+ import os, os.path
+ import struct
+ #import yappi
+@@ -21,7 +23,7 @@ MIN_MINOR = 3
+ 
+ default_package = os.getenv('OV_PKG')
+ if default_package is None:
+-    default_package = os.path.join(os.path.dirname(os.path.realpath(__file__)), "ov3.fwpkg")
++    default_package = os.path.join("/usr/lib/ov_ftdi", "ov3.fwpkg")
+ 
+ def as_ascii(arg):
+     if arg == None:
