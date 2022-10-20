@@ -1,0 +1,26 @@
+pkgbase = cura-5-modern-beta-bin
+	pkgdesc = Cura is an open source slicing application for 3D printers (Modern AppImage, include betaversion)
+	pkgver = 5.2.1
+	pkgrel = 0
+	url = https://ultimaker.com/software/ultimaker-cura
+	arch = x86_64
+	license = LGPL3
+	depends = xdg-desktop-portal
+	depends = xdg-desktop-portal-gtk
+	optdepends = cura-5-plugin-octoprint: Cura plugin which enables printing directly to OctoPrint and monitoring the progress
+	optdepends = cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress (latest git version)
+	provides = cura
+	conflicts = cura-5-bin
+	conflicts = cura-5-modern-bin
+	conflicts = cura-5-beta-bin
+	options = !strip
+	source = https://github.com/Ultimaker/Cura/releases/download/5.2.1/Ultimaker-Cura-5.2.1-linux-modern.AppImage
+	source = https://raw.githubusercontent.com/Ultimaker/Cura/5.2.1/LICENSE
+	source = cura5.sh
+	source = cura.desktop.patch
+	sha256sums = d110ca8e62efd5e7c647afd5374127c7b8e2b80f4308a6e83686957476465d38
+	sha256sums = f361bfaa2b63576ba829b3fb608f3f8baf5c25df51ebaba8c3554a7f3108e87d
+	sha256sums = f7917a834849618f62147bf68e8cb1cb31157e724163325effd495ddd8be2494
+	sha256sums = 076fee81d82b5ae55e44d230adef79cf944f51befb76f30074195ac18dd7e16a
+
+pkgname = cura-5-modern-beta-bin
