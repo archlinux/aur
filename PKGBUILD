@@ -1,7 +1,8 @@
-# Maintainer: Johannes Pfrang <johannespfrang+arch @ gmail.com>
-# Co-Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
-# Co-Maintainer: Ariel AxionL <arielaxionl@gmail.com | axionl@aosc.io>
+# Maintainer: Ariel AxionL <arielaxionl@gmail.com | axionl@aosc.io>
+# Co-Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 # Co-Maintainer: Christian Heusel <christian@heusel.eu>
+# Contributor: Johannes Pfrang <johannespfrang+arch @ gmail.com>
+# Contributor: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 _pkgname=teleport
 pkgname=teleport-bin
