@@ -6,8 +6,8 @@
 
 pkgbase=libxml2
 pkgname=(libxml2 libxml2-docs)
-pkgver=2.10.2
-pkgrel=2
+pkgver=2.10.3
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(
   python
 )
 options=(debug)
-_commit=21b24b51608d471bb9f7c4225e23d0db2acecc52  # tags/v2.10.2^0
+_commit=f507d167f1755b7eaea09fb1a44d29aab828b6d1  # tags/v2.10.3^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
         no-fuzz.diff
