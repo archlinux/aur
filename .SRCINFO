@@ -1,13 +1,13 @@
 pkgbase = pymol-git
 	pkgdesc = Molecular visualization system on an Open Source foundation
 	pkgver = r4806.c7095ec2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pymol.org/
 	arch = x86_64
 	license = custom
 	makedepends = desktop-file-utils
 	makedepends = gendesk
-	makedepends = libmmtf
+	makedepends = mmtf-cpp
 	makedepends = msgpack-c
 	makedepends = netcdf
 	makedepends = git
@@ -28,4 +28,3 @@ pkgbase = pymol-git
 	md5sums = a6b62ae41658a772f75b3b123a8e5c0b
 
 pkgname = pymol-git
-

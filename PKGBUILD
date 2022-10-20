@@ -3,13 +3,13 @@
 _name=pymol
 pkgname="${_name}-git"
 pkgver=r4806.c7095ec2
-pkgrel=1
+pkgrel=2
 pkgdesc="Molecular visualization system on an Open Source foundation"
 arch=('x86_64')
 url="https://pymol.org/"
 license=('custom')
 depends=('freetype2' 'glew' 'glm' 'glut' 'python-numpy' 'tcsh')
-makedepends=('desktop-file-utils' 'gendesk' 'libmmtf' 'msgpack-c' 'netcdf' 'git')
+makedepends=('desktop-file-utils' 'gendesk' 'mmtf-cpp' 'msgpack-c' 'netcdf' 'git')
 optdepends=('python-pmw: pmw based UI'
             'python-pyqt5: Qt5 based UI'
 			'ffmpeg: MPEG encoding')
