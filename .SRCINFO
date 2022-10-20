@@ -1,15 +1,21 @@
 pkgbase = python-uritools-git
 	pkgdesc = RFC 3986 compliant, Unicode-aware, scheme-agnostic replacement for urlparse
 	pkgver = 4.0.0.r0.g0f20688
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tkem/uritools
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = python
 	provides = python-uritools
 	conflicts = python-uritools
-	source = git+https://github.com/tkem/uritools.git
+	source = uritools::git+https://github.com/tkem/uritools
 	md5sums = SKIP
 
 pkgname = python-uritools-git
