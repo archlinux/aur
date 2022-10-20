@@ -3,7 +3,7 @@
 _pkggit=terrascan
 
 pkgname=terrascan-bin
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=3
 pkgdesc="Detect compliance and security violations across Infrastructure as Code"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('terrascan')
 provides=('terrascan')
 license=('Apache-2')
 source=("https://github.com/accurics/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('9aebcf198f4ee6442435c1682b9f20215063a52a5191e85d91d75d0873a0c227')
+sha256sums=('81558c0fcb708bbc56422dda44f2dbc76e121a295da65ac805608a7976dbd46c')
 
 package() {
   cd "${srcdir}"
