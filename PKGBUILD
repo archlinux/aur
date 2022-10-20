@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssl' 'sqlite3')
 makedepends=('cmake')
 source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.6.tar.gz")
-sha512sums=('9fd63c75ef7d1ca63ff7d497e3125e4964a7684eb10074568f54d89f0f9b09c7ce45e4e05ce004851adfe672c6f1daf5c22943c54516f074954cc62a413c0eae')
+sha512sums=('4c30587da5429ef7f136c293156521052c22a48a2d0fa4075de5be496c327a1e318438bb7dd7995e6b4b728fe56eb010dba01465fd6f87cde6a785aa6f89739e')
 
 prepare() {
     cd ${srcdir}/${pkgname}-$pkgver 
@@ -44,6 +44,7 @@ package() {
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/build/app/${pkgname}              "${pkgdir}/usr/local/${pkgname}/bin/"
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/build/tools/gold-tool              "${pkgdir}/usr/local/${pkgname}/bin/"
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/tools/gold-tool.py                 "${pkgdir}/usr/local/${pkgname}/bin/"
+    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/tools/au-sge.py                    "${pkgdir}/usr/local/${pkgname}/bin/"
     install -Dm755 ${srcdir}/${pkgname}-${pkgver}/data/${pkgname}.service           "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
 
