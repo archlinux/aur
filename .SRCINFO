@@ -1,21 +1,18 @@
 pkgbase = wpimath
 	pkgdesc = WPILib's mathematics and controls library
-	pkgver = 2023.0.0a
+	pkgver = 2023.1.1a
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = x86_64
 	license = BSD
 	license = MIT
 	makedepends = cmake
-	makedepends = opencv
-	makedepends = python
 	depends = fmt
 	depends = eigen
 	depends = libuv
 	options = !strip
-	options = libtool
 	options = staticlibs
-	source = git+https://github.com/wpilibsuite/allwpilib#tag=v2023.0.0-alpha-1
+	source = git+https://github.com/wpilibsuite/allwpilib#tag=v2023.1.1-alpha-1
 	md5sums = SKIP
 
 pkgname = wpimath
