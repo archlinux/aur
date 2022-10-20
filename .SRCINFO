@@ -1,7 +1,7 @@
 pkgbase = animationgarden-bin
 	pkgdesc = Desktop application for Animation Garden.
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Him188/animation-garden-desktop
 	arch = x86_64
 	license = GPL
