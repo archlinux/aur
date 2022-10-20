@@ -1,6 +1,6 @@
 pkgbase = jcef-jetbrains-git
 	pkgdesc = A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)
-	pkgver = r608.e238cf9
+	pkgver = 104.4.26.api1.9.r0.d4bdd8a
 	pkgrel = 1
 	url = https://github.com/JetBrains/jcef
 	arch = x86_64
