@@ -2,7 +2,7 @@
 
 pkgname=qt6-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content (E.g. Spotify)'
-pkgver=106.0.5249.61
+pkgver=106.0.5249.119
 pkgrel=1
 arch=('x86_64')
 url='https://www.widevine.com/'
@@ -18,6 +18,6 @@ prepare() {
 }
 
 package() {
-  install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
+  install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/qt6/plugins/ppapi/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
