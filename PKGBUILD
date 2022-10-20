@@ -2,7 +2,7 @@
 
 pkgname=animationgarden-bin
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop application for Animation Garden."
 arch=('x86_64')
 url="https://github.com/Him188/animation-garden-desktop"
@@ -17,9 +17,9 @@ package(){
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 	install -dm755 "${pkgdir}"/usr/bin
 	ln -s /opt/animationgarden/bin/AnimationGarden "${pkgdir}"/usr/bin/AnimationGarden
-	install -Dm644 "${pkgdir}"/opt/animationgarden/share/doc/copyright "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
- 	sed -i 's|^Exec=/opt/animationgarden/bin/AnimationGarden|Exec=AnimationGarden|g' "$pkgdir"/opt/animationgarden/lib/animationgarden-AnimationGarden.desktop
- 	sed -i 's|^Icon=/opt/animationgarden/lib/AnimationGarden|Icon=/usr/share/icons/AnimationGarden|g' "$pkgdir"/opt/animationgarden/lib/animationgarden-AnimationGarden.desktop
+	install -Dm644 "${pkgdir}"/opt/animationgarden/share/doc/copyright "${pkgdir}"/usr/share/licenses/$pkgname/COPYRIGHT
+ 	sed -i 's|^Exec=/opt/animationgarden/bin/AnimationGarden|Exec=AnimationGarden|g' "${pkgdir}"/opt/animationgarden/lib/animationgarden-AnimationGarden.desktop
+ 	sed -i 's|^Icon=/opt/animationgarden/lib/AnimationGarden|Icon=/usr/share/icons/AnimationGarden|g' "${pkgdir}"/opt/animationgarden/lib/animationgarden-AnimationGarden.desktop
 	install -Dm644 "${pkgdir}/opt/animationgarden/lib/animationgarden-AnimationGarden.desktop" "${pkgdir}/usr/share/applications/animationgarden-AnimationGarden.desktop"
 	install -Dm644 "${pkgdir}/opt/animationgarden/lib/AnimationGarden.png" "${pkgdir}/usr/share/icons/AnimationGarden.png"
 }
