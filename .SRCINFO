@@ -1,6 +1,6 @@
 pkgbase = frc-toolchain
 	pkgdesc = The FIRST Robotics Competition C/C++ build system components
-	pkgver = 2022.1
+	pkgver = 2023.4
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/toolchain-builder
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = frc-toolchain
 	options = libtool
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/wpilibsuite/roborio-toolchain/releases/download/v2022-1/FRC-2022-Linux-Toolchain-7.3.0.tar.gz
-	sha512sums = ca5775cc3eed46488566b12807367a9f5c9827e631a400d7e385593f76a5323abf1a7e025c3ccbdcf77e4fd9b7bc405c34d4055ca3b81cd5a5a7822ceca473f4
+	source = https://github.com/wpilibsuite/opensdk/releases/download/v2023-4/cortexa9_vfpv3-roborio-academic-2023-x86_64-linux-gnu-Toolchain-12.1.0.tgz
+	sha512sums = bcf6f494cf9f4ada54e017c885ee85b0fb5d6ae2d4464fba3d9e87da232b23256c623706b724b20d911cebc24982f6e30b1d757c2f056be243e9206093246f4f
 
 pkgname = frc-toolchain

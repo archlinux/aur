@@ -1,20 +1,18 @@
-# Maintainter: Tyler Veness <calcmogul at gmail dot com>
+# Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=frc-toolchain
-pkgver=2022.1
-_year=2022
+pkgver=2023.4
+_year=2023
 pkgrel=1
 pkgdesc="The FIRST Robotics Competition C/C++ build system components"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/toolchain-builder'
 license=('GPL')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
-source=("https://github.com/wpilibsuite/roborio-toolchain/releases/download/v${pkgver//\./-}/FRC-${_year}-Linux-Toolchain-7.3.0.tar.gz")
-sha512sums=('ca5775cc3eed46488566b12807367a9f5c9827e631a400d7e385593f76a5323abf1a7e025c3ccbdcf77e4fd9b7bc405c34d4055ca3b81cd5a5a7822ceca473f4')
+source=("https://github.com/wpilibsuite/opensdk/releases/download/v${pkgver//\./-}/cortexa9_vfpv3-roborio-academic-${_year}-x86_64-linux-gnu-Toolchain-12.1.0.tgz")
+sha512sums=('bcf6f494cf9f4ada54e017c885ee85b0fb5d6ae2d4464fba3d9e87da232b23256c623706b724b20d911cebc24982f6e30b1d757c2f056be243e9206093246f4f')
 
 package() {
   mkdir -p $pkgdir/usr
-  cp -r $srcdir/frc${_year}/roborio/* $pkgdir/usr
-  rm -r $pkgdir/usr/include
-  rm -r $pkgdir/usr/share/{info,man}
+  cp -r $srcdir/roborio-academic/{arm-nilrt-linux-gnueabi,bin,libexec,share/gdb} $pkgdir/usr
 }
