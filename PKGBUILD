@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git apply $srcdir/fix.patch
+  git apply $srcdir/3694.patch
   autoconf
 }
 
