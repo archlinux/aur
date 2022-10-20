@@ -30,11 +30,11 @@ sha512sums=('a0f17c8bbdcb05397da831af513a027738033844e7f9cdeb6e8b192d9c8f917109e
 install="${pkgname}.install"
 
 package() {
-	prefix=${pkgdir}/opt/${pkgname}
+	prefix="${pkgdir}"/opt/${pkgname}
 	LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
 
 	# Packaging anaconda for installation to /opt/anaconda
-	bash ${srcdir}/Anaconda3-${pkgver}-Linux-${CARCH}.sh -b -p $prefix -f
+	bash "${srcdir}"/Anaconda3-${pkgver}-Linux-${CARCH}.sh -b -p $prefix -f
 	[ "$BREAK_EARLY" = 1 ] && exit 1
 	cd $prefix
 
@@ -45,5 +45,5 @@ package() {
 	sed -e "s|${pkgdir}||g" -i $(grep "${pkgdir}" . -rIl 2>/dev/null)
 
 	# Installing license
-	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
