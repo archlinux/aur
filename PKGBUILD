@@ -25,7 +25,7 @@ prepare() {
     cd "$srcdir/$_gitname"
     git submodule init
     git config submodule.buildtools.url "$srcdir/buildtools"
-    git submodule update
+    git submodule--helper update
     cd buildtools
     git apply ../aarch64.patch
 }
