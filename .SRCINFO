@@ -1,0 +1,13 @@
+pkgbase = nginx-user-service
+	pkgdesc = Systemd user service for nginx.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/nginx-user-service
+	arch = any
+	license = MIT
+	depends = nginx
+	options = !strip
+	source = nginx.service
+	sha256sums = 21aee6b30a2fd6ba62974d7730028f2387d4f07fef99620c442587b94b3353d7
+
+pkgname = nginx-user-service

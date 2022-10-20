@@ -1,0 +1,15 @@
+[Unit]
+Description=A high performance web server and a reverse proxy server
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=nginx.pid
+SyslogLevel=err
+
+ExecStart=nginx -g 'pid "%t/nginx.pid"; error_log stderr;' -c '${XDG_CONFIG_HOME}/nginx/nginx.conf' -p '${XDG_DATA_HOME}/nginx'
+ExecReload=nginx -s reload
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
