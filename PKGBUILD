@@ -7,7 +7,7 @@
 
 pkgname=knot-git
 pkgver=3.3.dev.r78.f6670ca01
-pkgrel=3
+pkgrel=4
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
 url="https://www.knot-dns.cz/"
@@ -38,12 +38,13 @@ prepare() {
         --with-storage=/var/lib/knot \
         --enable-recvmmsg \
         --enable-dnstap \
-        --enable-quic \
+        --disable-quic \
         --enable-systemd \
         --enable-reuseport \
         --disable-silent-rules \
 	--enable-fastparser
 }
+# ngtcp2 0.10.0 broken the API and Knot DNS master branch is not adapted yet
 
 pkgver() {
     cd "${_gitname}"
