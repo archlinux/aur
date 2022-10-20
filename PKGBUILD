@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=makeimg
-pkgver=v0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Declarative way to build Arch or Alpine Linux images'
 arch=(any)
 url='https://sr.ht/~bitfehler/makeimg'
@@ -18,22 +18,22 @@ optdepends=(
   'patch: for applying patches'
 )
 makedepends=(
-  asciidoc
+  scdoc
   make
 )
 provides=('makeimg')
 conflicts=('makeimg-git')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v0.2.0.tar.gz")
-sha512sums=('637913d5de2cc6897a2c81378520e54dce6578673d40fa74646312c57e88e35f6d1d2bdfc032d8f089f85edd515a6d1d5c984f6362c592bfe7545ad1d00295d2')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v${pkgver}.tar.gz")
+sha512sums=('5fddcc0ec5bd0a1df7cce232a25f8c382eb0f98bb5f0cc6edbd8f13a88fe99f542135b5a942ccb3fcaab940d3bdac1472302a4997a45872d25202d90765c7512')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v${pkgver}"
   make man
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v${pkgver}"
   install -Dm755 makeimg -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/makeimg"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/makeimg"
