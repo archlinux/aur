@@ -1,0 +1,15 @@
+[Unit]
+Description=Matrix identity server
+
+[Service]
+Type=simple
+User=sydent
+Group=sydent
+WorkingDirectory=/var/lib/sydent/
+ExecStart=/bin/python -m sydent.sydent
+Restart=always
+RestartSec=30
+SyslogIdentifier=sydent
+
+[Install]
+WantedBy=multi-user.target
