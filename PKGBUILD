@@ -13,8 +13,8 @@ conflicts=('qsoas')
 install=
 source=("https://bip.cnrs.fr/wp-content/uploads/qsoas/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.desktop")
-md5sums=('8da245b1b9f8504e2bf286927a9d6ce4'
-         '9a61e0edc06ee1fb1810dacf6988313a')
+md5sums=('661ef55a4de1e4bddaeaaa3f0256ee25'
+         '05857d790bc8bb91efcaf95f72ec2d7a')
 
 build() {
 	cd "$pkgname-$pkgver"
