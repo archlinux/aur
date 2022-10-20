@@ -14,7 +14,7 @@ url="https://github.com/mautrix/wsproxy"
 source=(${_pkgname}::git+https://github.com/mautrix/wsproxy.git
         ${_pkgname}@.system_service)
 sha256sums=('SKIP'
-	    '32941b9d596bdb9154db9db1d01a112979e39d2b9e9599d81e72af169871272a')
+	    '69a295316f3ba6da47cdb97640c3a950c54c382629a92ce5e542d6d43a47c1d6')
 install=${_pkgname}.install
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines :
