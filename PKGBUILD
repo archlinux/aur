@@ -8,7 +8,7 @@ url="https://github.com/JanDeDobbeleer/oh-my-posh"
 license=('MIT')
 makedepends=('curl' 'grep' 'sed' 'unzip' 'git' 'go')
 sha256sums=('c7d4633d443d1fa2ea5a9d5efcad784bba123c6a6d94da3b2330b51be94bcbf7'
-            'fb7a3a9b5480177438d2b1be15cfa8da6d3d4c7471c46c892e43fd5d2df97183'
+            'd3d50f5f908e822154a1b491ca1b0bc5a7e4cf0e21c716fcd8f64f54b8451785'
             'a5308c4e51268229a039ec4ec9a251a4cdb89d9380383e6e13aeba64a74f19ad')
 #
 source=(
