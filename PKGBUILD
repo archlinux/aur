@@ -4,14 +4,14 @@
 pkgname=tlclient
 pkgver=4.14.0
 _buildnr=2324
-pkgrel=1
+pkgrel=2
 pkgdesc="A remote desktop application"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.cendio.com/thinlinc/download"
 license=('custom:cendio')
-depends=('python2' 'pygtk' 'openssh' 'libx11' 'alsa-lib' 'zlib')
+depends=('python' 'python-gobject' 'openssh' 'libx11' 'alsa-lib' 'zlib')
 optdepends=('cups: required for remote printing'
-            'python2-ldap: auth against ldap')
+            'python-ldap: auth against ldap')
 
 source=('tlclient.desktop' 'tlclient.png')
 sha256sums=('caa7417fa2f6a530bef2c6ca05f4c8a219ec85add7884fbb7368c0bf18be2988'
