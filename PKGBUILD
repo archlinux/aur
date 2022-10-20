@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=28.0.1.19
+pkgver=28.1.0.beta1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -73,7 +73,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR="/opt/cef-obs" \
-    -DOBS_VERSION_OVERRIDE=$pkgver ..
+    ..
 
   make
 }
