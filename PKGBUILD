@@ -3,22 +3,30 @@
 _pkgbase=liblc3
 pkgbase=liblc3-git
 pkgname=(liblc3-git)
-pkgver=r45.448f3de
+pkgver=v1.0.1.r0.gcf1676d
 pkgrel=1
 pkgdesc="Low Complexity Communication Codec (LC3)"
 url="https://github.com/google/${_pkgbase}"
 license=(Apache)
 arch=(x86_64)
 makedepends=(git meson)
-source=("git+https://github.com/google/${_pkgbase}.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/google/${_pkgbase}.git"
+  "pr-12.patch::https://github.com/google/liblc3/pull/12.patch"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+
+prepare() {
+  cd $_pkgbase
+  patch -Np1 <../pr-12.patch
+}
 
 pkgver() {
   cd $_pkgbase
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -38,8 +46,6 @@ package_liblc3-git() {
   depends=(glibc)
   provides=(liblc3 liblc3.so)
   conflicts=(liblc3)
-
-  install -Dt "$pkgdir/usr/bin" -m755 builddir/tools/{dlc3,elc3}
 
   meson install -C builddir --destdir "$pkgdir"
 }

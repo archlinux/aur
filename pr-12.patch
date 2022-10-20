@@ -1,0 +1,11 @@
+diff --git a/tools/meson.build b/tools/meson.build
+index 96aa046..8d0cf49 100644
+--- a/tools/meson.build
++++ b/tools/meson.build
+@@ -17,6 +17,7 @@ inc = include_directories('../include')
+ lc3toolslib = static_library('lc3toolslib',
+     ['lc3bin.c', 'wave.c'],
+     link_with: lc3lib,
++    include_directories: inc,
+     dependencies: m_dep,
+ )
