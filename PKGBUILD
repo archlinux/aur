@@ -48,7 +48,7 @@ prepare() {
 	cd $_reponame
 	git config submodule.core/deps/Vulkan-Headers.url ../Vulkan-Headers
 	git config submodule.core/deps/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
-	git submodule update
+	git submodule--helper update
 	patch -Np1 < ../unbundle-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 }
