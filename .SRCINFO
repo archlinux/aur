@@ -17,7 +17,7 @@ pkgbase = qsoas
 	source = version.patch
 	md5sums = 661ef55a4de1e4bddaeaaa3f0256ee25
 	md5sums = 05857d790bc8bb91efcaf95f72ec2d7a
-	md5sums = 9378cfd8b1b7a8151e26559117889af7
+	md5sums = 06813859ba6c32778b3259c68d654310
 
 pkgname = qsoas
 
