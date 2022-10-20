@@ -1,5 +1,5 @@
 pkgname=nullfs-dkms-git
-pkgver=0.12.1.r0.g9df70f3
+pkgver=0.13.r0.gbbbbd73
 pkgrel=1
 pkgdesc='A virtual black hole file system that behaves like /dev/null (DKMS)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd nullfsvfs
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
