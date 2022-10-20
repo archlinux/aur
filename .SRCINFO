@@ -1,12 +1,13 @@
 pkgbase = nnn-git
 	pkgdesc = The fastest terminal file manager ever written.
-	pkgver = 2.8.r2.gc139178
+	pkgver = 4.6.r48.gf89ba775
 	pkgrel = 1
 	url = https://github.com/jarun/nnn
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = bash
+	depends = sed
 	optdepends = atool: for more archive formats
 	optdepends = libarchive: for more archive formats
 	optdepends = zip: for zip archive format
@@ -22,4 +23,3 @@ pkgbase = nnn-git
 	md5sums = SKIP
 
 pkgname = nnn-git
-
