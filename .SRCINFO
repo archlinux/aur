@@ -1,6 +1,6 @@
 pkgbase = mkdocs-htmlproofer-plugin
 	pkgdesc = MkDocs plugin to validates URL in rendered html files
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/manuzhang/mkdocs-htmlproofer-plugin
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mkdocs-htmlproofer-plugin
 	depends = python-requests
 	conflicts = python-mkdocs-htmlproofer-plugin-git
 	replaces = python-mkdocs-htmlproofer-plugin-git
-	source = mkdocs-htmlproofer-plugin-0.9.0.tar.gz::https://github.com/manuzhang/mkdocs-htmlproofer-plugin/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 5cf60769b7ae53ff95fe9bfa22925bc2e2e01b1b2d98082b30a59b05b64e1766
+	source = mkdocs-htmlproofer-plugin-0.10.0.tar.gz::https://github.com/manuzhang/mkdocs-htmlproofer-plugin/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 1eb19086d5491cb32083993eeb12786629447feb14f1b123483351a2c9e21b34
 
 pkgname = mkdocs-htmlproofer-plugin
