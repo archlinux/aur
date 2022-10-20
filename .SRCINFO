@@ -1,0 +1,15 @@
+pkgbase = btsdu-git
+	pkgdesc = Btrfs Snapshot Disk Usage Analyzer
+	pkgver = r7.a9e131c
+	pkgrel = 1
+	url = https://github.com/rkapl/btsdu
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	optdepends = ncdu: display results
+	provides = btsdu
+	conflicts = btsdu
+	source = btsdu-git::git+https://github.com/rkapl/btsdu
+	sha512sums = SKIP
+
+pkgname = btsdu-git
