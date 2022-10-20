@@ -17,7 +17,7 @@ conflicts=('zenpower3')
 install=$_pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$_pkgname.conf")
-sha256sums=('6c48f7e07d13658f357a02005da1689cb6935fac34e21a4bf5b7483c7d0c4476'
+sha256sums=('28e085d97bde19f273bb85aecdcb7c96a75d47b5a1cf226128eb99b0a9c7c6b3'
             '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a')
 
 prepare() {
