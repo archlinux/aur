@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-git
-	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch.
+	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles
 	pkgver = 3.19.0+86.r11603.20221020.15c070cb3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -55,7 +55,9 @@ pkgbase = claws-mail-gtk2-git
 	optdepends = spamassassin: adds support for spamfiltering.
 	provides = claws=3.19.0+86.r11603.20221020.15c070cb3
 	provides = claws-mail=3.19.0+86.r11603.20221020.15c070cb3
+	provides = claws-mail-title-superset=3.19.0+86.r11603.20221020.15c070cb3
 	provides = claws-mail-gtk2=3.19.0+86.r11603.20221020.15c070cb3
+	provides = claws-mail-title-superset-gtk2=3.19.0+86.r11603.20221020.15c070cb3
 	provides = claws-mail-bash-completion
 	provides = claws-mail-extra-plugins=3.19.0+86.r11603.20221020.15c070cb3
 	conflicts = claws
@@ -67,6 +69,8 @@ pkgbase = claws-mail-gtk2-git
 	replaces = claws-mail-extra-plugins
 	replaces = sylpheed-claws
 	source = claws-mail::git://git.claws-mail.org/claws.git#branch=gtk2
+	source = 0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset
 	sha256sums = SKIP
+	sha256sums = 79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6
 
 pkgname = claws-mail-gtk2-git

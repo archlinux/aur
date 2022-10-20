@@ -16,8 +16,8 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+86.r11603.20221020.15c070cb3
-pkgrel=1
-pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch.'
+pkgrel=2
+pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles'
 arch=(
   'i686'
   'x86_64'
@@ -93,15 +93,19 @@ conflicts=(
 provides=(
   "claws=${pkgver}"
   "${_pkgname}=${pkgver}"
+  "${_pkgname}-title-superset=${pkgver}"
   "${_pkgname}-${_pkgvariant}=${pkgver}"
+  "${_pkgname}-title-superset-${_pkgvariant}=${pkgver}"
   "${_pkgname}-bash-completion"
   "claws-mail-extra-plugins=${pkgver}"
 )
 source=(
   "${_pkgname}::git://git.claws-mail.org/claws.git#branch=${_gitbranch}"
+  "0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
 )
 sha256sums=(
   'SKIP'
+  '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
 )
 
 
@@ -126,6 +130,11 @@ fi
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+
+  ls -1 "${srcdir}"/*.diff "${srcdir}"/*.patch | sort -V | while read _patch; do
+    msg2 "Applying patch '${_patch}' ..."
+    patch -N -p1 --follow-symlinks -i "${_patch}"
+  done
 
   msg2 "Generating git log ..."
   git log > "${srcdir}/git.log"
