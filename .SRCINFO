@@ -1,7 +1,7 @@
 pkgbase = asterisk-codec_opus
 	pkgdesc = Opus Software Codec for Asterisk
 	pkgver = 20.0_1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://digium.com
 	arch = x86_64
 	license = EULA
