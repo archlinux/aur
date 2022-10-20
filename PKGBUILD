@@ -20,7 +20,7 @@ package() {
 	install -Dt "${pkgdir}/usr/lib/asterisk/modules" -m0755 codec_opus.so
 	install -Dt "${pkgdir}/usr/lib/asterisk/modules" -m0755 format_ogg_opus.so
 
-    install -dm750 /var/lib/asterisk/{,documentation,documentation/thirdparty}
+	install -dm750 /var/lib/asterisk/{,documentation,documentation/thirdparty}
 	install -Dt "${pkgdir}/var/lib/asterisk/documentation/thirdparty" -m0644 codec_opus_config-en_US.xml
 
 	install -Dt "${pkgdir}/usr/share/licenses/asterisk/modules/${_modname}" -m0644 LICENSE
