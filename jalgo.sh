@@ -1,3 +1,7 @@
 #!/bin/sh
-cd /usr/lib/jalgo
-java -Djava.library.path=extlibs -Djava.ext.dirs=runtime/modules -Dawt.useSystemAAFontSettings=gasp -jar runtime/j-Algo.jar
+
+cd /usr/lib/jalgo \
+    && exec java \
+        -Dawt.useSystemAAFontSettings=gasp \
+        -jar org.jalgo-0.0.1-SNAPSHOT-shaded.jar \
+        "$@"

@@ -1,15 +1,15 @@
 pkgbase = jalgo
 	pkgdesc = Algorithm visualization tool written in Java developed at TU Dresden
-	pkgver = 20120214
-	pkgrel = 7
-	url = http://j-algo.binaervarianz.de/
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/tud-fop/j-Algo
 	arch = any
-	license = GPL
-	depends = java-runtime>=6
+	license = GPL2
+	depends = java-runtime>=8
 	optdepends = jalgo-doc: documentation
-	source = https://downloads.sourceforge.net/project/j-algo/j-algo/20120214/j-Algo-linux-complete-20120214.tar.gz
-	md5sums = dc3bfcfc1b2b55a3cba63ac90a1cc69e
-	sha256sums = 23779874f423bf54e591f9be156c985569bfb7e6136336bd33b4de422fc1dbd3
+	source = https://github.com/tud-fop/j-Algo/releases/download/v0.0.1/jalgo.zip
+	md5sums = f09fa85c5d407f7a3ccb312c7a1d4d46
+	sha256sums = 163c3f889896bdd14411d1b216a6397bacd37793f962091fcbaf34c530125c46
 
 pkgname = jalgo
-
