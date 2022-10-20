@@ -2,7 +2,7 @@
 
 _plug=depan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.g2f05589
+pkgver=1.0.g2f05589
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
