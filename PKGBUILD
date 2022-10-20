@@ -30,7 +30,7 @@ package() {
   install -d ${pkgdir}/{etc/$_pkgname,usr/lib/systemd/system}
   install -Dm755 ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
   install -Dm644 ${srcdir}/${_pkgname}/example-config.yaml ${pkgdir}/etc/${_pkgname}/example-config.yaml
-  install ${srcdir}/${_pkgname}\@.system_service ${pkgdir}/usr/lib/systemd/system/${_pkgname}\@.service
+  install -Dm644 ${srcdir}/${_pkgname}\@.system_service ${pkgdir}/usr/lib/systemd/system/${_pkgname}\@.service
   install -Dm755 ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
 
