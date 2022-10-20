@@ -3,12 +3,12 @@
 
 pkgname=casacore
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite of C++ libraries for radio astronomy data processing"
 arch=('x86_64')
 url="https://github.com/casacore/casacore"
 license=('GPL')
-depends=('boost-libs' 'fftw' 'openblas' 'lapack' 'cfitsio' 'wcslib' 'python-numpy')
+depends=('boost-libs' 'fftw' 'gsl' 'openblas' 'lapack' 'cfitsio' 'wcslib' 'python-numpy')
 makedepends=('cmake' 'gcc-fortran' 'gsl' 'boost')
 optdepends=(
   'sofa: only for testing casacore measures'
@@ -34,6 +34,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('63f1c8eff932b0fcbd38c598a5811e6e5397b72835b637d6f426105a183b3f91')
 
 build() {
+  export CXXFLAGS="${CFLAGS}"
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \

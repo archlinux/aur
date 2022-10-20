@@ -1,7 +1,7 @@
 pkgbase = casacore
 	pkgdesc = Suite of C++ libraries for radio astronomy data processing
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casacore/casacore
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = casacore
 	makedepends = boost
 	depends = boost-libs
 	depends = fftw
+	depends = gsl
 	depends = openblas
 	depends = lapack
 	depends = cfitsio
