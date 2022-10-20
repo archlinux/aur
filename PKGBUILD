@@ -4,7 +4,7 @@
 
 _gemname=haml
 pkgname=ruby-$_gemname
-pkgver=6.0.6
+pkgver=6.0.7
 pkgrel=1
 pkgdesc="a layer on top of HTML or XML"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(ruby ruby-temple ruby-tilt)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/haml/haml/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('6f5937c03c62f009df2f316a38dcb952aed22c60b5b5b850a5d0c2dbc8c4386d')
+sha256sums=('c2698a2261f5c58da15b7f5af1956b0cee8e8c609fb688d8dfba05aaf69585e2')
 
 prepare() {
   cd ${_gemname}-$pkgver
