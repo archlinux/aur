@@ -4,7 +4,7 @@
 
 pkgname="mkdocs"
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")
@@ -26,7 +26,7 @@ depends=("python-babel"
          "python-pyyaml-env-tag"
          "python-yaml"
          "python-watchdog")
-makedepends=("python-hatchling" "python-build" "python-installer" "python-wheel")
+makedepends=("python-hatchling" "python-pathspec" "python-build" "python-installer" "python-wheel")
 optdepends=("python-lunr: to prebuild search index")
 options=("!strip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
