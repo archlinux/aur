@@ -60,7 +60,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.core.url ../TIC-80
-	git submodule--helper update
+	git -c protocol.file.allow=always submodule update
 	cd core
 	git config submodule.vendor/argparse.url ../../argparse
 	git config submodule.vendor/blip-buf.url ../../blip-buf
@@ -77,7 +77,7 @@ prepare() {
 	git config submodule.vendor/wren.url ../../wren
 	git config submodule.vendor/zip.url ../../kuba-zip
 	git config submodule.vendor/zlib.url ../../zlib
-	git submodule--helper update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
