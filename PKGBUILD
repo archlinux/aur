@@ -1,6 +1,6 @@
 basename=libsurvive
 pkgname=$basename-git
-pkgver=2207.d939c24
+pkgver=2216.5319743
 pkgrel=1
 pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index."
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ provides=($basename)
 makedepends=("git" "cmake" "ninja")
 source=($basename::"git+https://github.com/cntools/libsurvive.git"
         cnkalman.git::"git+https://github.com/cntools/cnkalman.git"
-	cnmatrix.git::"git+https://github.com/cntools/cnmatrix.git")
+        cnmatrix.git::"git+https://github.com/cntools/cnmatrix.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -26,7 +26,19 @@ pkgver() {
 
 prepare() {
   cd $basename
-  git submodule update --init --recursive
+
+  # https://bugs.archlinux.org/task/76255
+  git submodule set-url libs/cnkalman "$srcdir/cnkalman.git"
+  # avoided security issue by setting submodule url
+  git -c protocol.file.allow=always submodule update --init
+
+  cd libs/cnkalman
+  git submodule set-url libs/cnmatrix "$srcdir/cnmatrix.git"
+  # avoided security issue by setting submodule url
+  git -c protocol.file.allow=always submodule update --init
+
+  cd "$srcdir"/$basename
+
   sed "s!cnmatrix/matrix.h!cnmatrix/cn_matrix.h!g" -i tools/vive_mouse/vive_mouse.c
   git revert --no-commit 84423daf44b430f8ec12e7650f46027070d7df73
 }
