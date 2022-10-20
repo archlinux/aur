@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 20 Oct 2022 23:32:13 +0000
+Subject: [PATCH] server-connection: Ensure we clean up the socket
+
+If the `conn` has been freed due to stealing, we don't disconnect but we
+still need to clean up the socket.
+
+Fixes: https://gitlab.gnome.org/GNOME/libsoup/-/merge_requests/321#note_1578921
+---
+ libsoup/server/soup-server-connection.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libsoup/server/soup-server-connection.c b/libsoup/server/soup-server-connection.c
+index 166b5be958ff..3250cf46844f 100644
+--- a/libsoup/server/soup-server-connection.c
++++ b/libsoup/server/soup-server-connection.c
+@@ -111,6 +111,8 @@ soup_server_connection_finalize (GObject *object)
+         if (priv->conn)
+                 disconnect_internal (conn);
+ 
++        g_clear_object (&priv->socket);
++
+         g_clear_pointer (&priv->io_data, soup_server_message_io_destroy);
+ 
+         g_clear_object (&priv->iostream);

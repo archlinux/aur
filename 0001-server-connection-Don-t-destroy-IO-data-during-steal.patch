@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 20 Oct 2022 23:30:12 +0000
+Subject: [PATCH] server-connection: Don't destroy IO data during steal
+
+When we're reacting to a websocket upgrade, the data is currently in use
+and cannot be destroyed yet.
+
+Fixes: https://gitlab.gnome.org/GNOME/libsoup/-/issues/309
+---
+ libsoup/server/soup-server-connection.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libsoup/server/soup-server-connection.c b/libsoup/server/soup-server-connection.c
+index 380ac42b3c8f..166b5be958ff 100644
+--- a/libsoup/server/soup-server-connection.c
++++ b/libsoup/server/soup-server-connection.c
+@@ -559,7 +559,6 @@ soup_server_connection_steal (SoupServerConnection *conn)
+         soup_server_connection_get_local_address (conn);
+         soup_server_connection_get_remote_address (conn);
+ 
+-        g_clear_pointer (&priv->io_data, soup_server_message_io_destroy);
+         g_clear_object (&priv->conn);
+         g_clear_object (&priv->iostream);
+ 
