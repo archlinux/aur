@@ -1,0 +1,16 @@
+pkgbase = python-polt
+	pkgdesc = Python library to monitor and control user input devices
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/moses-palmer/pynput
+	arch = any
+	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-xdgspec
+	source = https://files.pythonhosted.org/packages/source/p/polt/polt-1.0.0.tar.gz
+	sha256sums = 7f69f52ae1e1407b33f2efc79a5cb44b8f5c3d034f764a0d665cbcd18216dc9b
+
+pkgname = python-polt
