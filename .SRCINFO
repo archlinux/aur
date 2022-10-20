@@ -13,5 +13,6 @@ pkgbase = rust_hdl-git
 	source = git+https://github.com/VHDL-LS/rust_hdl.git
 	source = installed.patch
 	sha256sums = SKIP
+	sha256sums = c33b0d9a415f3b0702f4446de6b0ad4ad834893ef002d8e9c9aeb16aadd0851c
 
 pkgname = rust_hdl-git
