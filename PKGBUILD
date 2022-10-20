@@ -7,7 +7,7 @@
 
 pkgname=knot-git
 pkgver=3.3.dev.r78.f6670ca01
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
 url="https://www.knot-dns.cz/"
@@ -73,6 +73,6 @@ package() {
     mv "${pkgdir}"/etc/knot/{knot.sample.conf,knot.conf}
 
     install -Dm644 distro/common/knot.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm644 distro/arch/knot.tmpfiles.arch "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
-    install -Dm644 distro/arch/knot.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
+    install -Dm644 distro/pkg/arch/knot.tmpfiles.arch "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
+    install -Dm644 distro/pkg/arch/knot.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
 }
