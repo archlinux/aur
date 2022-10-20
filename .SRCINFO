@@ -5,6 +5,7 @@ pkgbase = rollercoaster
 	url = https://tinyurl.com/ycyhdpve
 	arch = any
 	depends = bash
+	depends = alas-utils
 	source = rollercoaster::https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh
 	sha512sums = SKIP
 
