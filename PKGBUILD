@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 optdepends=('cura-5-plugin-octoprint: Cura plugin which enables printing directly to OctoPrint and monitoring the progress'
 	'cura-5-plugin-octoprint-git: Cura plugin which enables printing directly to OctoPrint and monitoring the progress (latest git version)')
-conflicts=('cura-5-beta-bin')
+conflicts=('cura-5-beta-bin' 'cura-5-modern-bin' 'cura-5-modern-beta-bin')
 provides=('cura')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
