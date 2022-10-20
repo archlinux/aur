@@ -3,3 +3,4 @@ pkg
 *.src.tar.gz
 *.pkg.tar.zst
 listen1_chrome_extension
+*.tar.gz

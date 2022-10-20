@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Listen1
+Comment=One for all free music in China
+Exec=listen1 %U
+Terminal=false
+Type=Application
+Icon=listen1
+StartupWMClass=Listen1
+# DO NOT modify __PKGVER__ here, it's updated in PKGBUILD
+X-AppImage-Version=__PKGVER__
+Categories=Utility;
+X-AppImage-BuildId=1HvKDJ3EUJMJwm6YxKB8wQfQx3p

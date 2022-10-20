@@ -3,34 +3,45 @@
 # Contributor: Bruce Zhang
 pkgname=listen1-desktop
 pkgver=2.26.2
-pkgrel=1
-listen1_commit=48c61747768a7b7ee99498cc33930fdf639c0bc8
+_electron=electron13
+pkgrel=2
 pkgdesc="One for all free music in China (Build from source)"
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/listen1/listen1_desktop"
 license=('MIT')
-depends=('electron13-bin')
-makedepends=('npm' 'git')
+depends=("${_electron}")
+makedepends=('npm' 'jq' 'moreutils')
 provides=('listen1')
 conflicts=('listen1')
 source=(
-	"$pkgname-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"git+https://github.com/listen1/listen1_chrome_extension.git#commit=$listen1_commit"
+	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
+	"chrome_extension-${pkgver}.tar.gz::https://github.com/listen1/listen1_chrome_extension/archive/refs/tags/v${pkgver}.tar.gz"
+	"listen1.sh"
+	"listen1.desktop"
 )
 sha256sums=('b0c78cc08b69730930919cdf604e1767f9b9796a7676cfc3c31b5ce4a509878d'
-            'SKIP')
+            '7bf4e4ba07797bb4183a413e7c1df144671da4727829d2862ea1e831edafea7f'
+            '6e13f2757600659fe5d48ba88bc24ae632049c2f4c3f1a8c95eac75fba4e38d2'
+            '4fb54621e98ddd1cfe8d10619d193256fd0702b58ab01736aec512765f43d9df')
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
-	electronDist="\/usr\/lib\/electron13"
-	electronVersion="tail /usr/lib/electron13/version"
-	sed -i "s#\"productName\": \"Listen1\",/\"productName\": \"Listen1\",\"electronDist\": \"$electronDist\",\"electronVersion\": \"$electronVersion\",##" package.json
-	rmdir app/listen1_chrome_extension
-	cp -r "$srcdir/listen1_chrome_extension" app/listen1_chrome_extension
+
+	local electronDist="/usr/lib/${_electron}"
+	local electronVersion="$(< $electronDist/version)"
+	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
+	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+
+	cp -rf "$srcdir/listen1_chrome_extension-$pkgver"/* app/listen1_chrome_extension
+
+	sed -i "s|__ELECTRON__|${_electron}|g" ${srcdir}/listen1.sh
+	sed -i "s|__PKGVER__|${pkgver}|g" ${srcdir}/listen1.desktop
 }
 
 build() {
 	cd "${pkgname/-/_}-$pkgver"
+	export HOME=${srcdir}
 	npm install
 	npm run dist:linux64 -- --dir
 }
@@ -42,23 +53,9 @@ package() {
 	install -Dm644 resources/app.asar "$pkgdir/usr/share/listen1/app.asar"
 
 	# Install start script
-	echo "#!/usr/bin/env sh
-exec /usr/lib/electron13/electron /usr/share/listen1/app.asar" > "$srcdir/listen1.sh"
 	install -Dm755 "$srcdir/listen1.sh" "$pkgdir/usr/bin/listen1"
 
 	# Install desktop file
-	echo "[Desktop Entry]
-Name=Listen1
-Comment=One for all free music in China
-Exec=/usr/bin/listen1
-Terminal=false
-Type=Application
-Icon=listen1
-StartupWMClass=Listen1
-X-AppImage-Version=2.26.2
-Categories=Utility;
-X-AppImage-BuildId=1HvKDJ3EUJMJwm6YxKB8wQfQx3p
-" > "$srcdir/listen1.desktop"
 	install -Dm644 "$srcdir/listen1.desktop" "$pkgdir/usr/share/applications/listen1.desktop"
 
 	# Install icons
