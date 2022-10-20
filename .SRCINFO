@@ -1,24 +1,22 @@
 pkgbase = pavumeter
 	pkgdesc = A simple GTK volume meter for the PulseAudio sound server
 	pkgver = 0.9.3
-	pkgrel = 7
-	url = http://git.0pointer.de/pavumeter.git
+	pkgrel = 8
+	url = http://git.0pointer.net/pavumeter.git
 	arch = i686
 	arch = x86_64
-	groups = pulseaudio-gnome
 	license = GPL
 	makedepends = lynx
 	makedepends = git
-	depends = gtkmm
-	depends = pulseaudio
 	depends = gnome-icon-theme
+	depends = gtkmm
 	depends = libsigc++
+	depends = pulseaudio
 	source = git://git.0pointer.net/pavumeter.git
 	source = pavumeter.desktop
 	source = pavumeter-record.desktop
-	md5sums = SKIP
-	md5sums = ead0c02a2af5fcf4acc381da39b836df
-	md5sums = 2d784d472cd22dfc5320c30112e1e59d
+	sha256sums = SKIP
+	sha256sums = 76c61e2991ac58d4158c51ab7829a8d09a301c1514e9ba6aa624dad9684a747e
+	sha256sums = 06fb8e2ac01f49fca112c05f4f5323ae521eafec72e734e65d9d0313b6f2c1ce
 
 pkgname = pavumeter
-
