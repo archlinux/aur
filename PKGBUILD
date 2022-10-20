@@ -4,7 +4,7 @@
 _pkgname=trezord
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}-go"
-pkgver=2.0.31.r5.g106e5e9
+pkgver=2.0.32.r5.gf559ee5
 pkgrel=1
 pkgdesc='Trezor Communication Daemon aka Trezor Bridge (written in Go)'
 arch=('x86_64')
