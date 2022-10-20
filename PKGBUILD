@@ -5,7 +5,7 @@
 _pkgname=cura
 pkgname=$_pkgname-bin
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
 license=('LGPL3')
@@ -34,8 +34,9 @@ prepare() {
 }
 
 package() {
-  install -Dm755 cura.sh "$pkgdir/usr/bin/Ultimaker-Cura"
   install -Dm755 cura-engine.sh "$pkgdir/usr/bin/CuraEngine"
+  install -Dm755 cura.sh "$pkgdir/usr/bin/Ultimaker-Cura"
+  ln -s /usr/bin/Ultimaker-Cura "$pkgdir/usr/bin/cura"
   install -Dm644 squashfs-root/cura.desktop "$pkgdir/usr/share/applications/cura.desktop"
   install -Dm644 squashfs-root/cura-icon.png "$pkgdir/usr/share/pixmaps/cura-icon.png"
   install -dm755 "$pkgdir/opt"
