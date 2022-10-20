@@ -1,8 +1,8 @@
 # Maintainer: 
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=v11.12..r993.935380f
+pkgver=11.11.r44.g448dc51
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -43,9 +43,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s.r%s.%s" \
-		"$(grep 'PROGVERS=' "${pkgname%-git}" | head -n1 | cut -d\" -f2 | sed 's/^v//' | sed 's/-/_/g')" \
-		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
