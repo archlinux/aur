@@ -11,7 +11,7 @@ depends=()
 optdepends=()
 
 source=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/foxglove/studio/releases/download/v${pkgver}/foxglove-studio-${pkgver}-linux-amd64.deb")
-sha512sums=('SKIP')
+sha512sums=('fb9c32e439f9ec22cbb9fa405bbdaae38e32a71c7eaff794bbade3043eeac9fce3254bd7c908ca37421a0e3eac4334195733a689e6d828c1948ed560ffebbc8a')
 
 #prepare() {
 #}
