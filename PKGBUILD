@@ -289,7 +289,7 @@ package_ceph() {
   find "${pkgdir}/usr/lib" -maxdepth 1 -type l -delete
   find "${pkgdir}/usr/lib/ceph" -maxdepth 1 -type f -delete
   find "${pkgdir}/usr/lib/ceph" -maxdepth 1 -type l -delete
-  rm -rf "${pkgdir}"/usr/lib/{ceph/{compressor,crypto,erasure-code,librbd},rados-classes}
+  rm -rf "${pkgdir}"/usr/lib/{ceph/{compressor,crypto,erasure-code,librbd,denc},rados-classes}
   rm -rf "${pkgdir}"/usr/lib/python*
   rm -rf "${pkgdir}/usr/include"
 
@@ -355,7 +355,7 @@ package_ceph-mgr() {
   rm -rf "${pkgdir}/usr/sbin"
 
   # remove everything except mgr related stuff, rest is in ceph/ceph-libs
-  rm -rf "${pkgdir}"/usr/lib/{ceph/{compressor,crypto,erasure-code},rados-classes}
+  rm -rf "${pkgdir}"/usr/lib/{ceph/{compressor,crypto,erasure-code,librbd,denc},rados-classes}
   rm -rf "${pkgdir}/usr/include"
   find "${pkgdir}/usr/bin" -maxdepth 1 -type f -not -name 'ceph-mgr' -delete
   find "${pkgdir}"/usr/lib/systemd/system -maxdepth 1 -type f -not -iname 'ceph-mgr*' -delete
