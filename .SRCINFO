@@ -1,0 +1,11 @@
+pkgbase = mullvad-vpn-runit
+	pkgdesc = Runit init service for Mullvad Desktop App
+	pkgver = 2022.5
+	pkgrel = 1
+	url = https://codeberg.org/klee/mullvad-vpn-runit
+	arch = any
+	license = aGPL-3.0-
+	source = mullvad-daemon.run
+	sha256sums = 46c064f399853f8c9a60675f7fa71cc61a9259d1ae774c652596f1ef5a4db063
+
+pkgname = mullvad-vpn-runit

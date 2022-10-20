@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sv check NetworkManager >/dev/null || exit 1
+[ -r conf ] && . ./conf
+exec /usr/bin/mullvad-daemon -v --disable-stdout-timestamps >/dev/null 2>&1
