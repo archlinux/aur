@@ -7,7 +7,7 @@
 _pkgbase=nginx
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
-pkgver=1.23.1
+pkgver=1.23.2
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=b30bec3d71d6"
-        "git+https://boringssl.googlesource.com/boringssl#commit=557b80f1a3e599459367391540488c132a000d55"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=3be953161026"
+        "git+https://boringssl.googlesource.com/boringssl#commit=b819f7e9392d25db6705a6bd3c92be3bb91775e2"
         "service"
         "logrotate")
 sha256sums=('SKIP'
@@ -87,9 +87,19 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
 
   export CXXFLAGS="$CXXFLAGS -fPIC"
-  # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
-  # -Wno-array-bounds: 2022-05-21 for compatiblity with GCC 12.1 (https://bugs.chromium.org/p/boringssl/issues/detail?id=492&sort=-modified)
-  export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter -Wno-array-bounds"
+  export CFLAGS="$CFLAGS -fPIC"
+
+  if [[ $CC == "clang" ]];then
+    _cc_opt="-flto"
+    _ld_opt="-flto -fuse-ld=lld"
+  else
+    _cc_opt=""
+    _ld_opt=""
+
+    # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
+    # -Wno-array-bounds: 2022-05-21 for compatiblity with GCC 12.1 (https://bugs.chromium.org/p/boringssl/issues/detail?id=492&sort=-modified)
+    export CFLAGS="$CFLAGS -Wno-stringop-overflow -Wno-array-parameter -Wno-array-bounds"
+  fi
 
   cd ${srcdir}/boringssl
   mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make crypto ssl
@@ -114,8 +124,8 @@ build() {
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     --with-openssl=${srcdir}/boringssl \
-    --with-cc-opt="-I../boringssl/include" \
-    --with-ld-opt="-L../boringssl/build/ssl -L../boringssl/build/crypto" \
+    --with-cc-opt="${_cc_opt} -I../boringssl/include" \
+    --with-ld-opt="${_ld_opt} -L../boringssl/build/ssl -L../boringssl/build/crypto" \
     ${_common_flags[@]} \
     ${_mainline_flags[@]} \
     ${_quic_flags[@]}
