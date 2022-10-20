@@ -1,6 +1,6 @@
 pkgbase = ranger-sixel-git
 	pkgdesc = A simple, vim-like file manager, with PR2466 applied for sixel image previews.
-	pkgver = 1.9.3.548.ga6c80d8e
+	pkgver = 1.9.3.546.g576e4a7f
 	pkgrel = 1
 	url = https://github.com/ranger/ranger/pull/2466
 	arch = any

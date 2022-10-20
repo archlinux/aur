@@ -32,6 +32,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   git config user.name "user"
   git config user.email "user@domain.fake"
+  git config pull.rebase false
   git pull -X theirs origin pull/2466/head --no-edit
 }
 
