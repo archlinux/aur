@@ -30,8 +30,8 @@ build() {
 
 package() {
   install -d ${pkgdir}{/etc/mautrix-wsproxy,/usr/lib/systemd/system}
-  install ${srcdir}/${_pkgname}/example-config.yaml ${pkgdir}/etc/mautrix-wsproxy/${_pkgname}-example-config.yaml
-  install ${srcdir}/${_pkgname}\@.system_service ${pkgdir}/usr/lib/systemd/system/${_pkgname}\@.service
+  install -Dm640 ${srcdir}/${_pkgname}/example-config.yaml ${pkgdir}/etc/mautrix-wsproxy/${_pkgname}-example-config.yaml
+  install -Dm644 ${srcdir}/${_pkgname}\@.system_service ${pkgdir}/usr/lib/systemd/system/${_pkgname}\@.service
   install -Dm755 ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
 
