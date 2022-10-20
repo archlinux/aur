@@ -34,7 +34,7 @@ prepare() {
   cd "$srcdir/MangoHud"
   git submodule init modules/minhook
   git config submodule.minhook.url "$srcdir/minhook"
-  git submodule--helper update
+  git -c protocol.file.allow=always submodule update
 
   ln -sfv \
     "$srcdir/imgui-${_imgui_ver}" \
