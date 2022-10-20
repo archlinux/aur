@@ -12,6 +12,6 @@ pkgbase = mautrix-wsproxy-git
 	source = mautrix-wsproxy::git+https://github.com/mautrix/wsproxy.git
 	source = mautrix-wsproxy@.system_service
 	sha256sums = SKIP
-	sha256sums = 69a295316f3ba6da47cdb97640c3a950c54c382629a92ce5e542d6d43a47c1d6
+	sha256sums = 10a88bd98e1a0fa4559b361ce7cc5e16256574dad56402813f98783d44644c22
 
 pkgname = mautrix-wsproxy-git
