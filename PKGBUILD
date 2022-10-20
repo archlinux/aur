@@ -5,7 +5,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/crunchy-labs/crunchy-cli"
 license=('GPL3')
 
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 
 replaces=('crunchyroll-go')
@@ -17,7 +17,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crunchy-labs/crunchy-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('402eb336d9df0a9f9fe290ebbb0e709c1fe7ea93f251a846b6a82fc5524fe47d')
+sha256sums=('dbf94f9b86236dfe893a491714d34eecb3d24cc275c78f3a0e81139488be233a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
