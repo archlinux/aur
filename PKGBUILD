@@ -1,33 +1,30 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nickvision-tagger
-pkgver=2022.6.3
+pkgver=2022.10.4
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/nlogozzo/NickvisionTagger"
-license=(GPL3)
-depends=(gtk4 libadwaita jsoncpp libcurlpp taglib libmusicbrainz5)
-makedepends=(git cmake)
-source=("git+https://github.com/nlogozzo/NickvisionTagger.git#tag=${pkgver}"
-        "git+https://github.com/Makman2/GCR_CMake.git")
-sha256sums=("SKIP"
-            "SKIP")
-
-prepare() {
-    cd "$srcdir/NickvisionTagger"
-    git submodule init
-    git config submodule.GCR_CMake.url "${srcdir}/GCR_CMake"
-    git submodule update
-}
+license=('GPL3')
+depends=('chromaprint' 'jsoncpp' 'libadwaita' 'libcurlpp' 'taglib')
+makedepends=('meson')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('0a895facdb31022af4457415f9aec294d4c7a0f1f16933364c6db53eb554777f')
 
 build() {
-    cmake -B build -S NickvisionTagger \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE="RelWithDebInfo"
-    cmake --build build
+  arch-meson NickvisionTagger-$pkgver build
+  meson compile -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
-    ln -s /usr/bin/org.nickvision.tagger "${pkgdir}/usr/bin/${pkgname}"
+  meson install -C build --destdir "$pkgdir"
+
+  # conflicts with system chromaprint
+  rm "$pkgdir/usr/bin/fpcalc"
+
+  # File (usr/bin/org.nickvision.tagger) has the world writable bit set.
+  chmod 0755 "$pkgdir/usr/bin/org.nickvision.tagger"
+
+  ln -s /usr/bin/org.nickvision.tagger "$pkgdir/usr/bin/$pkgname"
 }
