@@ -1,0 +1,17 @@
+pkgbase = rust_hdl-git
+	pkgdesc = A collection of of HDL related tools
+	pkgver = v0.18.0.r13.g2c69084
+	pkgrel = 1
+	url = https://github.com/VHDL-LS/rust_hdl
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = rust
+	makedepends = pandoc
+	provides = rust_hdl=v0.18.0.r13.g2c69084
+	source = git+https://github.com/VHDL-LS/rust_hdl.git
+	source = installed.patch
+	sha256sums = SKIP
+
+pkgname = rust_hdl-git

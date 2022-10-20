@@ -1,0 +1,37 @@
+diff --git a/vhdl_lang/Cargo.toml b/vhdl_lang/Cargo.toml
+index a50bce1..e6aa066 100644
+--- a/vhdl_lang/Cargo.toml
++++ b/vhdl_lang/Cargo.toml
+@@ -32,4 +32,5 @@ assert_matches = "^1"
+ 
+ [features]
+ default = []
+-packaged = []
+\ No newline at end of file
++packaged = []
++installed = []
+diff --git a/vhdl_lang/src/config.rs b/vhdl_lang/src/config.rs
+index 65942bc..0594842 100644
+--- a/vhdl_lang/src/config.rs
++++ b/vhdl_lang/src/config.rs
+@@ -215,6 +215,8 @@ impl Config {
+         let config_relative_path = if cfg!(feature = "packaged") {
+             // relative to packaged bin folder
+             "../vhdl_libraries"
++        } else if cfg!(feature = "installed") {
++            "/usr/lib/rust_hdl/vhdl_libraries"
+         } else {
+             // relative to target/debug or target/release
+             "../../vhdl_libraries"
+diff --git a/vhdl_ls/Cargo.toml b/vhdl_ls/Cargo.toml
+index feb906a..d98db65 100644
+--- a/vhdl_ls/Cargo.toml
++++ b/vhdl_ls/Cargo.toml
+@@ -30,4 +30,5 @@ pretty_assertions = "^0"
+ 
+ [features]
+ default = []
+-packaged = ["vhdl_lang/packaged"]
+\ No newline at end of file
++packaged = ["vhdl_lang/packaged"]
++installed = ["vhdl_lang/installed"]
