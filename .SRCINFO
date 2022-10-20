@@ -10,7 +10,6 @@ pkgbase = libplacebo-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
-	makedepends = python-mako
 	makedepends = python-jinja
 	makedepends = python-markupsafe
 	makedepends = ffmpeg
