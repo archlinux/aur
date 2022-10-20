@@ -23,7 +23,7 @@ prepare() {
   cd "$srcdir/$pkgname"
   git submodule init
   git config submodule.src/libnica.url "$srcdir/libnica"
-  git submodule--helper update
+  git -c protocol.file.allow=always submodule update
 
   # Partially revert 2877813 | Upstream issue #82
   # https://github.com/clearlinux/linux-steam-integration/pull/2
