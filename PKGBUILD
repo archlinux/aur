@@ -1,12 +1,12 @@
-# Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
+# Maintainer: 
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=11.0.r891.3b180f2
+pkgver=v11.12..r993.935380f
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
-url="https://github.com/frostworx/steamtinkerlaunch"
+url="https://github.com/sonic2kk/steamtinkerlaunch"
 license=('GPL3')
 depends=('bash' 'procps-ng' 'unzip' 'xxd' 'wget' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
 makedepends=('git')
@@ -38,7 +38,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/frostworx/steamtinkerlaunch.git')
+source=('git+https://github.com/sonic2kk/steamtinkerlaunch.git')
 sha1sums=('SKIP')
 
 pkgver() {
