@@ -35,7 +35,7 @@ prepare() {
   for submodule in EELEditor GraphicEQWidget FlatTabWidget LiquidEqualizerWidget; do
     git submodule init
     git config submodule.src/subprojects/"$submodule".url "$srcdir/$submodule"
-    git submodule--helper update
+    git -c protocol.file.allow=always submodule update
   done
 
   mkdir -p build
