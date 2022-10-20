@@ -1,6 +1,6 @@
 post_install() {
   echo 'To obtain a valid free serial number please visit'
-  echo 'http://www.freeoffice.com/en/download'
+  echo 'https://www.freeoffice.com/en/download'
 }
 
 post_upgrade() {
