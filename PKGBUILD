@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssl' 'sqlite3')
 makedepends=('cmake')
 source=("https://github.com/dingjingmaster/jarvis/archive/refs/tags/0.0.6.tar.gz")
-sha512sums=('1eb5791622b0c620cc459561d4fc86490ca1275b20daa7ad034522cead74c5a8e0a354badd39038abd67ab12f13fca3d5d783b95bad4e65888dd9fbabae1f4c2')
+sha512sums=('db68bb86fb08a2268e5a1d8b29fa488c6bb8909c65c764fbe13ad9f44dc7bba68c0935b73536ba1cd8df21bb92410842abbda40efe274506a102c4b3c3a84d3d')
 
 prepare() {
     cd ${srcdir}/${pkgname}-$pkgver 
