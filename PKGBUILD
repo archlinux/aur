@@ -17,7 +17,7 @@ depends=(
 )
 provides=($_binname)
 conflicts=($_binname)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")  # TODO check for signed tag
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('43869040dc82014e0893f5ab2daa56950791d553fbb8db847ab8d51c3be6d3d8')
 
 prepare() {
