@@ -1,7 +1,7 @@
 pkgbase = r-rnexml
 	pkgdesc = Semantically Rich I/O for the 'NeXML' Format
-	pkgver = 2.4.7
-	pkgrel = 3
+	pkgver = 2.4.8
+	pkgrel = 1
 	url = https://cran.r-project.org/package=RNeXML
 	arch = any
 	license = BSD
@@ -31,7 +31,7 @@ pkgbase = r-rnexml
 	optdepends = r-taxadb
 	optdepends = r-testthat
 	optdepends = r-xslt
-	source = https://cran.r-project.org/src/contrib/RNeXML_2.4.7.tar.gz
-	sha256sums = cb311d6dda33a95521a6df360a2d2f4e6d6bc6b330ac5e19ea721ca665bce6fe
+	source = https://cran.r-project.org/src/contrib/RNeXML_2.4.8.tar.gz
+	sha256sums = 26d429f95afe2e24d79eb7b0d3eeec4068e7d33b715abb8f48f380e0ccbbb850
 
 pkgname = r-rnexml
