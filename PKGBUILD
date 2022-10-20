@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msgps
-_pkgver=1.3.4
+_pkgver=1.3.5
 pkgname=r-${_pkgname,,}
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Degrees of Freedom of Elastic Net, Adaptive Lasso and Generalized Elastic Net'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('74775a6b9e8c8787d91a34af1aa486bc7638d0ab855860824a4d023c41e0c800')
+sha256sums=('2eda002d55ae47a544de2ed63e2853e1a17c7fae865e954deb796edbc27573bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
