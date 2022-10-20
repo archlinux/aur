@@ -3,17 +3,17 @@
 
 pkgname=fragview-git
 _gitname=fragview
-pkgver=0.1.16.gaf55f55
+pkgver=0.1.3.2.gc0ab8dc
 pkgrel=1
 pkgdesc="Analyze disk content and files fragmentation by displaying its map"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/i-rinat/fragview"
 license=('MIT')
 depends=('gtkmm3')
 makedepends=('git' 'boost' 'sqlite' 'cmake')
 optdepends=('sqlite: to open fragmentator.db databases created by fragdb')
-source=('git://github.com/i-rinat/fragview.git')
-md5sums=('SKIP')
+source=('git+https://github.com/i-rinat/fragview.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
