@@ -2,9 +2,10 @@
 # Maintainer: LSUtigers3131
 # https://gitlab.manjaro.org/packages/extra/pamac
 
-pkgname=pamac-all
-pkgver=10.3.0
-pkgrel=5
+_pkgname=pamac
+pkgname=${_pkgname}-all
+pkgver=10.4.2
+pkgrel=1
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -19,31 +20,26 @@ provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('aa9f2760cf6a08df658067e5c61f62aecb01db3fd32efd8b3a9c268ecad40fdc')
+sha256sums=('1ec8fa2a555bb407aab473208d4c07363c0023e03c06475c3097c79b98aca856')
+
+_srcdir="$_pkgname-v$pkgver"
 
 prepare() {
-  cd "$srcdir/pamac-v$pkgver"
+  cd "$_srcdir"
   # adjust version string
-  sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
+  sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" 'src/version.vala'
 }
 
 build() {
-  cd "$srcdir/pamac-v$pkgver"
-  mkdir -p builddir
-  cd builddir
-  meson --prefix=/usr --sysconfdir=/etc --buildtype=release -Denable-fake-gnome-software=true
+  mkdir -p 'builddir'
+  meson --prefix='/usr' --sysconfdir='/etc' --buildtype=release -Denable-fake-gnome-software=false \
+    builddir "$_srcdir"
   # build
-  ninja
+  meson compile -C 'builddir'
 }
 
 package() {
-  cd "$srcdir/pamac-v$pkgver/builddir"
-
-  DESTDIR="$pkgdir" ninja install
-  # remove pamac-gnome-integration
-  rm "$pkgdir/usr/bin/gnome-software"
-  rm "$pkgdir/usr/share/applications/org.gnome.Software.desktop"
-  rm "$pkgdir/usr/share/dbus-1/services/org.gnome.Software.service"
-
+  meson install -C 'builddir' --destdir "$pkgdir"
+  install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:

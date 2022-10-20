@@ -1,7 +1,7 @@
 pkgbase = pamac-all
 	pkgdesc = A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)
-	pkgver = 10.3.0
-	pkgrel = 5
+	pkgver = 10.4.2
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = pamac-all
 	depends = libpamac-full
 	depends = libhandy
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
-	provides = pamac=10.3.0-5
+	provides = pamac=10.4.2-1
 	conflicts = pamac
 	conflicts = pamac-gtk
 	conflicts = pamac-cli
@@ -33,7 +33,7 @@ pkgbase = pamac-all
 	conflicts = pamac-flatpak
 	conflicts = pamac-flatpak-gnome
 	options = !emptydirs
-	source = pamac-10.3.0.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.3.0/pamac-v10.3.0.tar.gz
-	sha256sums = aa9f2760cf6a08df658067e5c61f62aecb01db3fd32efd8b3a9c268ecad40fdc
+	source = pamac-10.4.2.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.4.2/pamac-v10.4.2.tar.gz
+	sha256sums = 1ec8fa2a555bb407aab473208d4c07363c0023e03c06475c3097c79b98aca856
 
 pkgname = pamac-all
