@@ -1,6 +1,6 @@
 # Maintainer:  <castix at autistici dot org>
 pkgname=airwindows-lv2-git
-pkgver='7.0'
+pkgver='12.0'
 pkgrel=1
 epoch=
 pkgdesc="This is an LV2 port of the Airwindows plugins made by Chris Johnson. Porting accomplished by Hannes Braun"
@@ -9,7 +9,7 @@ url="https://github.com/hannesbraun/airwindows-lv2"
 license=('MIT')
 groups=('lv2-plugins')
 depends=('glibc')
-makedepends=('git' 'cmake')
+makedepends=('git' 'meson')
 provides=("${pkgname%-lv2-git}")
 conflicts=("${pkgname%-lv2-git}")
 source=('git+https://github.com/hannesbraun/airwindows-lv2')
@@ -17,22 +17,16 @@ md5sums=('SKIP')
 
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/${pkgname%-git}"
   mkdir -p build
-  cd build
-  cmake "../${pkgname%-git}"
+  meson setup build -Dlv2dir=/usr/lib/lv2
+  meson compile -C $srcdir/${pkgname%-git}/build
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$srcdir/${pkgname%-git}"
+  meson install -C $srcdir/${pkgname%-git}/build --destdir ${pkgdir}
 
-  make DESTDIR="$pkgdir/" install
-  
-  # there should be an evironment variable to avoid doing this mv
-  # doing this becuse of namcap complaints about local being non-standard
-  mv "${pkgdir}/usr/local/lib" "${pkgdir}/usr/lib"
-  rmdir "${pkgdir}/usr/local"
-  
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cp "../${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
