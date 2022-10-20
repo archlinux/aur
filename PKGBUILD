@@ -18,7 +18,7 @@ md5sums=('661ef55a4de1e4bddaeaaa3f0256ee25'
 
 build() {
 	cd "$pkgname-$pkgver"
-	qmake -qt=5
+	qmake-qt5
 	make
 }
 
