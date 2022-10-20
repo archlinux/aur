@@ -29,7 +29,6 @@ makedepends=('git'
              'ffmpeg'
              'lcms2'
              'shaderc'
-             'dav1d'
              )
 provides=('libplacebo'
           'libplacebo.so'

@@ -16,7 +16,6 @@ pkgbase = libplacebo-git
 	makedepends = ffmpeg
 	makedepends = lcms2
 	makedepends = shaderc
-	makedepends = dav1d
 	depends = libvulkan.so
 	depends = liblcms2.so
 	depends = glslang
