@@ -18,24 +18,24 @@ sha256sums=('SKIP'
             '1bb88c1749792b2bec238d37ca0aad25023701e973110bb16b379f7a5fcf92d6')
 
 pkgver() {
-	cd "$srcdir/ov_ftdi"
+  cd "$srcdir/ov_ftdi"
 # Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/ov_ftdi"
-	patch -p1 -i "$srcdir/udev.patch"
-	patch -p1 -i "$srcdir/lib_path.patch"
+  cd "$srcdir/ov_ftdi"
+  patch -p1 -i "$srcdir/udev.patch"
+  patch -p1 -i "$srcdir/lib_path.patch"
 }
 
 build() {
-	cd "$srcdir/ov_ftdi/software/host"
-	make
+  cd "$srcdir/ov_ftdi/software/host"
+  make
 }
 
 package() {
-	cd "$srcdir/ov_ftdi/software/host"
+  cd "$srcdir/ov_ftdi/software/host"
   install -Dm755 ovctl.py "${pkgdir}/usr/bin/ovctl"
   install -Dm644 libov.so "${pkgdir}/usr/lib/ov_ftdi/libov.so"
   install -Dm644 LibOV.py "${pkgdir}/usr/lib/ov_ftdi/LibOV.py"
