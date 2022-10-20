@@ -1,6 +1,6 @@
 pkgbase = alacritty-sixel-git
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
-	pkgver = 0.12.0.2074.ga9335fcb
+	pkgver = 0.12.0.2076.g15ff7565
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/alacritty/alacritty
