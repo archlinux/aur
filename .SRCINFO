@@ -1,0 +1,17 @@
+pkgbase = perl-tree-rb-xs
+	pkgdesc = Red/Black Tree implemented in C, with similar API to Tree::RB
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://metacpan.org/dist/Tree-RB-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test2-suite
+	makedepends = perl-extutils-depends
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/Tree-RB-XS-0.07.tar.gz
+	md5sums = 452c60e65103105925a17f9f57a1d69d
+
+pkgname = perl-tree-rb-xs
