@@ -1,7 +1,7 @@
 pkgbase = neo-matrix
 	pkgdesc = Simulates the digital rain from "The Matrix"
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/st3w/neo
 	arch = x86_64
 	license = GPL3
