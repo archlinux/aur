@@ -45,7 +45,7 @@ pkgver() {
 prepare() {
 	cd $_reponame
 	git config submodule.ext/armips.url ../armips
-	git submodule--helper update
+	git -c protocol.file.allow=always submodule update
 	sed -i '/COMPILE_FLAGS/s/-O2//;/FLAGS_RELEASE/s/-O2//' CMakeLists.txt
 	# unbundle glslang
 	rmdir ext/glslang
