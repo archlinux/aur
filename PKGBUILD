@@ -1,7 +1,7 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
-pkgver=0.12.0.2074.ga9335fcb
+pkgver=0.12.0.2076.g15ff7565
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
@@ -20,6 +20,7 @@ prepare() {
   cd "$_pkgname/alacritty"
   git config user.name "user"
   git config user.email "user@domain.fake"
+  git config pull.rebase false
   git pull -X theirs origin pull/4763/head --no-edit
 }
 
