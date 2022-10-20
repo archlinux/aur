@@ -6,15 +6,15 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-git
-pkgver=5.0.r0.g41032aaa
-pkgrel=4
+pkgver=5.0.r18.ga9d4370a
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
-provides=('prismlauncher' 'polymc')
-conflicts=('prismlauncher' 'polymc')
+provides=('prismlauncher')
+conflicts=('prismlauncher')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
@@ -22,10 +22,10 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 options=(debug)
-source=("git+https://github.com/PrismLauncher/PrismLauncher.git")
-        #"git+https://github.com/PrismLauncher/libnbtplusplus.git")
-sha256sums=('SKIP')
-            #'SKIP')
+source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
+        "git+https://github.com/PrismLauncher/libnbtplusplus.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "PrismLauncher"
@@ -35,12 +35,11 @@ pkgver() {
 prepare() {
   cd "PrismLauncher"
   git submodule init
-  # Git CVE prevents this from working :/
-  #git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
+  git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
-  git submodule update
+  git submodule--helper update
 }
 
 build() {
