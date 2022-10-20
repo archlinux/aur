@@ -1,6 +1,6 @@
 # Maintainer: beelzy
 pkgname=rstmcpp-git
-pkgver=1604771866.36928e9
+pkgver=1640486611.536830f
 pkgrel=1
 pkgdesc="A tool that converts wav files to .bcstm or .bcwav"
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ source=("${_gitname}::git+${_gitroot}"
 
 prepare() {
     cd "$srcdir/$_gitname"
-    git submodule init
+    git submodule--helper init
     git config submodule.gc-dspadpcm-encode.url "$srcdir/gc-dspadpcm-encode"
-    git submodule update
+    git submodule--helper update
 }
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = rstmcpp-git
 	pkgdesc = A tool that converts wav files to .bcstm or .bcwav
-	pkgver = 1604771866.36928e9
+	pkgver = 1640486611.536830f
 	pkgrel = 1
 	url = https://gitlab.com/beelzy/rstmcpp
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = rstmcpp-git
 	sha256sums = SKIP
 
 pkgname = rstmcpp-git
-
