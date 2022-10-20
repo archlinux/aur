@@ -1,0 +1,16 @@
+pkgbase = mplcairo
+	pkgdesc = A (new) cairo backend for Matplotlib.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/matplotlib/mplcairo
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-matplotlib
+	depends = python-cairo
+	depends = cairo
+	source = git+https://github.com/matplotlib/mplcairo.git#tag=v0.5
+	sha256sums = SKIP
+
+pkgname = mplcairo
