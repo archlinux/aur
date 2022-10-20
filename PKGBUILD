@@ -16,8 +16,6 @@ depends=('alsa-lib' 'gtk3' 'libxss' 'nodejs' 'nss')
 makedepends=('electron' 'yarn' 'npm')
 conflicts=('hyperterm')
 replaces=('hyperterm')
-backup=()
-changelog=
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vercel/$pkgname/archive/v$pkgver.tar.gz"
