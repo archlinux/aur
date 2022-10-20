@@ -1,0 +1,17 @@
+diff --git a/qltui.py b/qiling/tui.py
+similarity index 100%
+rename from qltui.py
+rename to qiling/tui.py
+diff --git a/qltool b/qltool
+index be6a52d3..b454a932 100755
+--- a/qltool
++++ b/qltool
+@@ -229,7 +229,7 @@ if __name__ == '__main__':
+         handle_examples(parser)
+ 
+     if options.subcommand == 'qltui':
+-        import qltui
++        from qiling import tui as qltui
+         options = qltui.get_data()
+         qltui_enabled = True
+ 
