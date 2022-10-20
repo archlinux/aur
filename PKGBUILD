@@ -7,7 +7,7 @@ pkgdesc="EGL Man Pages"
 arch=('any')
 url="http://www.opengl.org/wiki/Getting_started/XML_Toolchain_and_Man_Pages"
 license=('custom')
-makedepends=('libxslt' 'docbook-xsl' 'subversion')
+makedepends=('libxslt' 'docbook-xsl' 'git')
 source=('git+https://github.com/KhronosGroup/EGL-Registry')
 md5sums=('SKIP')
 
