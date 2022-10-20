@@ -1,4 +1,4 @@
-# Maintainer: Michael Trio <michael at linuxbase dot nl>
+# Maintainer: Michael Trip <michael at linuxbase dot nl>
 # Contributor: Schrottfresse <schrottfresse at gmx dot de>
 
 pkgname=tlclient
