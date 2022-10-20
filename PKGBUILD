@@ -4,7 +4,7 @@
 _pkgname=lwgeom
 _pkgver=0.2-9
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Bindings to Selected 'liblwgeom' Functions for Simple Features"
 arch=('x86_64')
