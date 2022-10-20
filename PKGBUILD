@@ -3,7 +3,7 @@
 _pkgname=sftime
 _pkgver=0.2-0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Classes and Methods for Simple Feature Objects that Have a Time Column'
 arch=('any')
