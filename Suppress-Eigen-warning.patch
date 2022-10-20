@@ -1,0 +1,15 @@
+diff --git a/wpimath/src/main/native/include/frc/controller/LinearPlantInversionFeedforward.h b/wpimath/src/main/native/include/frc/controller/LinearPlantInversionFeedforward.h
+index d4cc3c426..bbf9a30a1 100644
+--- a/wpimath/src/main/native/include/frc/controller/LinearPlantInversionFeedforward.h
++++ b/wpimath/src/main/native/include/frc/controller/LinearPlantInversionFeedforward.h
+@@ -7,7 +7,10 @@
+ #include <array>
+ #include <functional>
+ 
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Warray-bounds"
+ #include "Eigen/QR"
++#pragma GCC diagnostic pop
+ #include "frc/EigenCore.h"
+ #include "frc/system/Discretization.h"
+ #include "frc/system/LinearSystem.h"

@@ -1,0 +1,159 @@
+From 39eb7e564a841726f8068a42eae5f79de05efa1d Mon Sep 17 00:00:00 2001
+From: Tyler Veness <calcmogul@gmail.com>
+Date: Thu, 20 Oct 2022 09:06:50 -0700
+Subject: [PATCH] [build] Fix CMake system library opt-ins
+
+I'm working on setting up an AUR package for wpimath, and that platform
+generally builds against system versions of libraries instead of
+packaging its own. I had to make a few fixes.
+
+-DUSE_VCPKG_EIGEN now only removes include paths for Eigen instead of
+drake as well.
+
+The USE_VCPKG flags were renamed to USE_SYSTEM since they seem general
+enough for that to work (the find_package() commands work the same way
+on Arch). The unofficial-libuv CMake library file only exists on vcpkg,
+so we can either keep it as-is (only works on vcpkg) or provide our own
+library file for finding the system install.
+---
+ CMakeLists.txt                  | 16 ++++++++--------
+ wpilib-config.cmake.in          |  4 ++--
+ wpimath/CMakeLists.txt          | 12 +++++++-----
+ wpinet/CMakeLists.txt           |  2 +-
+ wpinet/wpinet-config.cmake.in   |  2 +-
+ wpiutil/CMakeLists.txt          |  2 +-
+ wpiutil/wpiutil-config.cmake.in |  2 +-
+ 7 files changed, 21 insertions(+), 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 22a94023d..b898dbf2f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,10 +63,10 @@ option(WITH_SIMULATION_MODULES "Build simulation modules" ON)
+ option(WITH_EXTERNAL_HAL "Use a separately built HAL" OFF)
+ set(EXTERNAL_HAL_FILE "" CACHE FILEPATH "Location to look for an external HAL CMake File")
+ 
+-# Options for using a package manager (vcpkg) for certain dependencies.
+-option(USE_VCPKG_FMTLIB "Use vcpkg fmtlib" OFF)
+-option(USE_VCPKG_LIBUV "Use vcpkg libuv" OFF)
+-option(USE_VCPKG_EIGEN "Use vcpkg eigen" OFF)
++# Options for using a package manager (e.g., vcpkg) for certain dependencies.
++option(USE_SYSTEM_FMTLIB "Use system fmtlib" OFF)
++option(USE_SYSTEM_LIBUV "Use system libuv" OFF)
++option(USE_SYSTEM_EIGEN "Use system eigen" OFF)
+ 
+ # Options for installation.
+ option(WITH_FLAT_INSTALL "Use a flat install directory" OFF)
+@@ -136,12 +136,12 @@ else()
+     set (wpilib_config_dir share/wpilib)
+ endif()
+ 
+-if (USE_VCPKG_LIBUV)
+-set (LIBUV_VCPKG_REPLACE "find_package(unofficial-libuv CONFIG)")
++if (USE_SYSTEM_LIBUV)
++set (LIBUV_SYSTEM_REPLACE "find_package(unofficial-libuv CONFIG)")
+ endif()
+ 
+-if (USE_VCPKG_EIGEN)
+-set (EIGEN_VCPKG_REPLACE "find_package(Eigen3 CONFIG)")
++if (USE_SYSTEM_EIGEN)
++set (EIGEN_SYSTEM_REPLACE "find_package(Eigen3 CONFIG)")
+ endif()
+ 
+ find_package(LIBSSH 0.7.1)
+diff --git a/wpilib-config.cmake.in b/wpilib-config.cmake.in
+index 50feffcc1..e0d27d109 100644
+--- a/wpilib-config.cmake.in
++++ b/wpilib-config.cmake.in
+@@ -2,8 +2,8 @@ include(CMakeFindDependencyMacro)
+ @FILENAME_DEP_REPLACE@
+ set(THREADS_PREFER_PTHREAD_FLAG ON)
+ find_dependency(Threads)
+-@LIBUV_VCPKG_REPLACE@
+-@EIGEN_VCPKG_REPLACE@
++@LIBUV_SYSTEM_REPLACE@
++@EIGEN_SYSTEM_REPLACE@
+ @WPIUTIL_DEP_REPLACE@
+ @NTCORE_DEP_REPLACE@
+ @CSCORE_DEP_REPLACE@
+diff --git a/wpimath/CMakeLists.txt b/wpimath/CMakeLists.txt
+index ba5d51535..e11353a2c 100644
+--- a/wpimath/CMakeLists.txt
++++ b/wpimath/CMakeLists.txt
+@@ -108,18 +108,20 @@ endif()
+ wpilib_target_warnings(wpimath)
+ target_link_libraries(wpimath wpiutil)
+ 
+-if (NOT USE_VCPKG_EIGEN)
+-    install(DIRECTORY src/main/native/thirdparty/drake/include/ DESTINATION "${include_dest}/wpimath")
++if (NOT USE_SYSTEM_EIGEN)
+     install(DIRECTORY src/main/native/thirdparty/eigen/include/ DESTINATION "${include_dest}/wpimath")
+     target_include_directories(wpimath SYSTEM PUBLIC
+-                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/main/native/thirdparty/drake/include>
+-                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/main/native/thirdparty/eigen/include>
+-                            $<INSTALL_INTERFACE:${include_dest}/wpimath>)
++                               $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/main/native/thirdparty/eigen/include>
++                               $<INSTALL_INTERFACE:${include_dest}/wpimath>)
+ else()
+     find_package(Eigen3 CONFIG REQUIRED)
+     target_link_libraries (wpimath Eigen3::Eigen)
+ endif()
+ 
++install(DIRECTORY src/main/native/thirdparty/drake/include/ DESTINATION "${include_dest}/wpimath")
++target_include_directories(wpimath SYSTEM PUBLIC
++                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/main/native/thirdparty/drake/include>)
++
+ target_include_directories(wpimath PUBLIC
+                             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/main/native/include>
+                             $<INSTALL_INTERFACE:${include_dest}/wpimath>)
+diff --git a/wpinet/CMakeLists.txt b/wpinet/CMakeLists.txt
+index 3994f8bd5..5bb54e950 100644
+--- a/wpinet/CMakeLists.txt
++++ b/wpinet/CMakeLists.txt
+@@ -126,7 +126,7 @@ target_compile_features(wpinet PUBLIC cxx_std_20)
+ wpilib_target_warnings(wpinet)
+ target_link_libraries(wpinet PUBLIC wpiutil)
+ 
+-if (NOT USE_VCPKG_LIBUV)
++if (NOT USE_SYSTEM_LIBUV)
+     target_sources(wpinet PRIVATE ${uv_native_src})
+     install(DIRECTORY src/main/native/thirdparty/libuv/include/ DESTINATION "${include_dest}/wpinet")
+     target_include_directories(wpinet PRIVATE
+diff --git a/wpinet/wpinet-config.cmake.in b/wpinet/wpinet-config.cmake.in
+index e61a677ed..f54fe455b 100644
+--- a/wpinet/wpinet-config.cmake.in
++++ b/wpinet/wpinet-config.cmake.in
+@@ -1,6 +1,6 @@
+ include(CMakeFindDependencyMacro)
+ @FILENAME_DEP_REPLACE@
+-@LIBUV_VCPKG_REPLACE@
++@LIBUV_SYSTEM_REPLACE@
+ @WPIUTIL_DEP_REPLACE@
+ 
+ @FILENAME_DEP_REPLACE@
+diff --git a/wpiutil/CMakeLists.txt b/wpiutil/CMakeLists.txt
+index db9a3ed38..6ea8331d1 100644
+--- a/wpiutil/CMakeLists.txt
++++ b/wpiutil/CMakeLists.txt
+@@ -118,7 +118,7 @@ if (ATOMIC)
+ endif()
+ 
+ 
+-if (NOT USE_VCPKG_FMTLIB)
++if (NOT USE_SYSTEM_FMTLIB)
+     target_sources(wpiutil PRIVATE ${fmtlib_native_src})
+     install(DIRECTORY src/main/native/thirdparty/fmtlib/include/ DESTINATION "${include_dest}/wpiutil")
+     target_include_directories(wpiutil PUBLIC
+diff --git a/wpiutil/wpiutil-config.cmake.in b/wpiutil/wpiutil-config.cmake.in
+index 821b926ba..fde839e2f 100644
+--- a/wpiutil/wpiutil-config.cmake.in
++++ b/wpiutil/wpiutil-config.cmake.in
+@@ -2,7 +2,7 @@ include(CMakeFindDependencyMacro)
+ @FILENAME_DEP_REPLACE@
+ set(THREADS_PREFER_PTHREAD_FLAG ON)
+ find_dependency(Threads)
+-@FMTLIB_VCPKG_REPLACE@
++@FMTLIB_SYSTEM_REPLACE@
+ 
+ @FILENAME_DEP_REPLACE@
+ include(${SELF_DIR}/wpiutil.cmake)
