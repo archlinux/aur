@@ -26,7 +26,7 @@ prepare() {
   git submodule init
   git config submodule.Bluetooth_Headset_Battery_Level.url \
     "$srcdir/Bluetooth_Headset_Battery_Level"
-  git submodule--helper update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
