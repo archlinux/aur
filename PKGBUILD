@@ -1,23 +1,24 @@
+# Maintainer: Wu Junyu (aka Tenshi65535) <wu.junyu.aur@outlook.com>
 # Maintainer: Dan McCurry <dan.mccurry at linux dot com>
 pkgname=qsoas
-pkgver=2.1
+pkgver=3.1
 pkgrel=1
 pkgdesc="Open-source software developed to analyze electrochemical data and other one-dimensional signals."
-arch=('i686' 'x86_64')
-url="http://bip.cnrs-mrs.fr/bip06/qsoas"
+arch=('x86_64')
+url="https://bip.cnrs.fr/groups/bip06/software/"
 license=('GPL2')
-depends=('ruby' 'qt4' 'gsl')
+depends=('ruby' 'mruby' 'gsl' 'qt5-bin')
 provides=('qsoas')
 conflicts=('qsoas')
 install=
-source=("http://bip.cnrs-mrs.fr/bip06/qsoas/downloads/${pkgname}-${pkgver}.tar.gz"
+source=("https://bip.cnrs.fr/wp-content/uploads/qsoas/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.desktop")
-md5sums=('4d8a46e1d53f64eace22aaa717200a51'
-         '05857d790bc8bb91efcaf95f72ec2d7a')
+md5sums=('8da245b1b9f8504e2bf286927a9d6ce4'
+         '9a61e0edc06ee1fb1810dacf6988313a')
 
 build() {
 	cd "$pkgname-$pkgver"
-	qmake-qt4
+	qmake -qt=5
 	make
 }
 
