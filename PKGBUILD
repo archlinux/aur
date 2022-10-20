@@ -11,7 +11,7 @@ license=('GPL3')
 url="https://gitlab.gnome.org/GNOME/fractal"
 depends=('gtk4' 'gtksourceview5' 'gst-plugins-base-libs' 'gst-editing-services' 'gspell' 'libadwaita>=1:1.2.alpha' 'pipewire' 'libshumate' 'org.freedesktop.secrets')
 conflicts=('fractal')
-provides=('fractal' 'fractal-next')
+provides=("fractal=$pkgver" 'fractal-next')
 replaces=('fractal-next')
 makedepends=('rust' 'git' 'meson' 'clang')
 source=("git+https://gitlab.gnome.org/GNOME/fractal.git")

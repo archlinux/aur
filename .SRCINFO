@@ -20,7 +20,7 @@ pkgbase = fractal-git
 	depends = pipewire
 	depends = libshumate
 	depends = org.freedesktop.secrets
-	provides = fractal
+	provides = fractal=5.alpha1.r55.g92692649
 	provides = fractal-next
 	conflicts = fractal
 	replaces = fractal-next
