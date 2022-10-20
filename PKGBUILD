@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 pkgname=pavumeter
 pkgver=0.9.3
-pkgrel=8
+pkgrel=9
 pkgdesc="A simple GTK volume meter for the PulseAudio sound server"
 arch=('i686' 'x86_64')
 url='http://0pointer.de/lennart/projects/pavumeter/'
