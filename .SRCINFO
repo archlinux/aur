@@ -1,13 +1,16 @@
 pkgbase = unblockneteasemusic-bin
 	pkgdesc = Revive unavailable songs for Netease Cloud Music
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UnblockNeteaseMusic/server
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = unblockneteasemusic
+	conflicts = nodejs-unblockneteasemusic
+	conflicts = netease-cloud-music-unblock-enhanced-git
 	options = !strip
+	backup = etc/unblockneteasemusic/args.conf
 	source = unblockneteasemusic.service
 	source = unblockneteasemusic.sysusers
 	source = args.conf
