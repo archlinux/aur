@@ -2,7 +2,7 @@
 
 pkgname=dsp56300-emulator
 pkgver=1.2.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs (VST3 plugin)'
 arch=('x86_64')
 url='https://github.com/dsp56300/gearmulator'
@@ -58,12 +58,12 @@ prepare() {
   git config submodule.source/dsp56300.url "$srcdir/github.com-dsp56300-dsp56300"
   git config submodule.source/JUCE.url "$srcdir/github.com-dsp56300-JUCE"
 
-  git submodule update
+  git submodule--helper update
 
   pushd source/dsp56300
   git submodule init
   git config submodule.source/asmjit.url "$srcdir/github.com-asmjit-asmjit"
-  git submodule update
+  git submodule--helper update
   popd
 
   # fix FTBFS issues
