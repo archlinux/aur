@@ -1,2 +1,2 @@
-d  /var/cache/mock  2755  root  mock  -  -
-d  /var/lib/mock    2755  root  mock  -  -
+d  /var/cache/mock  0775  root  mock  -  -
+d  /var/lib/mock    0775  root  mock  -  -
