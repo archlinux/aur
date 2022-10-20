@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-pkgname='libplacebo-git'
+pkgname=libplacebo-git
 pkgver=4.208.0.99.g0ce3fa4
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
@@ -56,7 +56,7 @@ prepare() {
   cd libplacebo
   git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
   git config submodule.3rdparty/glad.url "${srcdir}/glad"
-  git submodule update --init \
+  git -c protocol.file.allow=always submodule update --init \
     3rdparty/glad \
     demos/3rdparty/nuklear
 }
