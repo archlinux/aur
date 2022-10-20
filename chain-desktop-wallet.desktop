@@ -1,9 +1,11 @@
 [Desktop Entry]
-Name=Crypto.org Chain Desktop Wallet (Beta)
-Exec=chain-desktop-wallet %U
+Name=Crypto.com DeFi Desktop Wallet
+Exec=chain-desktop-wallet --no-sandbox %U
 Terminal=false
 Type=Application
 Icon=chain-desktop-wallet
-StartupWMClass=Crypto.org Chain Desktop Wallet (Beta)
-Comment=Crypto.com Chain Desktop Wallet App
+StartupWMClass=Crypto.com DeFi Desktop Wallet
+X-AppImage-Version=1.3.2
+Comment=Crypto.com DeFi Desktop Wallet App
+MimeType=x-scheme-handler/cryptowallet;
 Categories=Utility;
