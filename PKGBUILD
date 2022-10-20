@@ -1,9 +1,9 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-labxpipe
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="LabxPipe"
+pkgdesc="Genomics pipelines"
 arch=("any")
 url="https://sr.ht/~vejnar/LabxPipe"
 license=("MPLv2")
@@ -17,7 +17,7 @@ makedepends=('python-build'
              'python-setuptools-scm'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/LabxPipe/archive/v${pkgver}.tar.gz")
-sha1sums=('8732b1c2c1405b68d69af889c3d8f0f02cab77b3')
+sha1sums=('304c6c80dfef6086587235b412f2456e30641fc6')
 
 build() {
     cd "$srcdir/LabxPipe-v$pkgver"
