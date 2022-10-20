@@ -1,4 +1,5 @@
-# Maintainer: osch <oliver@luced.de>
+# Maintainer: evorster <evorster@gmail.com>
+# Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-wxgtk2
 pkgver=3.1.3
@@ -23,6 +24,11 @@ prepare() {
   sed -i -e '/#include <iterator>/i #include <limits>' libraries/lib-utility/MemoryX.h
   mkdir -p build
   cd build
+  depsDir=$(readlink -f ./.offline)
+  export CONAN_USER_HOME="$depsDir/conan"
+  conan config home
+  conan config init
+  conan config set storage.download_cache="$CONAN_USER_HOME/download_cache"
   conan remove "*" --src --builds --force
   cmake -G "Unix Makefiles" \
         -DCMAKE_BUILD_TYPE=Release \
