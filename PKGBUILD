@@ -1,5 +1,14 @@
 # Maintainer: A Frederick Christensen <aur@ivories.org>
 
+####
+#
+# THIS pkgbuild IS OBSOLETE AND UNMAINTAINED.
+# USE mautrix-wsproxy-git INSTEAD
+# https://aur.archlinux.org/packages/mautrix-wsproxy-git
+# 2022-10-20 - A Frederick Christensen
+#
+####
+
 pkgname=mautrix-wsproxy
 pkgver=1.0.0
 pkgrel=1
