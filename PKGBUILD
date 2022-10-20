@@ -2,7 +2,7 @@
 
 _gemname=rubocop-rails
 pkgname=ruby-${_gemname}
-pkgver=2.14.2
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="Automatic Rails code style checking tool"
 arch=(any)
@@ -14,7 +14,7 @@ url=https://docs.rubocop.org/rubocop-rails/
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/rubocop-rails/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('23a9d142e89a0dc507ce5275908a3d63dc7d025906dcbd2311ce22603190ee26')
+sha256sums=('1201c6b7bc29075e59251b065ad6cd51fbcd677062a95f51da467137c89dd79d')
 
 prepare() {
   cd $_gemname-$pkgver
