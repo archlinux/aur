@@ -1,11 +1,11 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
-pkgver=0.12.0.2066.g53110c6e
+pkgver=0.12.0.2074.ga9335fcb
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
-url="https://github.com/microo8/alacritty-sixel"
+url="https://github.com/alacritty/alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
@@ -13,8 +13,15 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/microo8/alacritty.git")
+source=("$_pkgname::git+https://github.com/alacritty/alacritty.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$_pkgname/alacritty"
+  git config user.name "user"
+  git config user.email "user@domain.fake"
+  git pull -X theirs origin pull/4763/head --no-edit
+}
 
 pkgver() {
 	cd $_pkgname/alacritty
