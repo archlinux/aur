@@ -3,6 +3,7 @@ pkgbase = mautrix-wsproxy-git
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/mautrix/wsproxy
+	install = mautrix-wsproxy.install
 	arch = x86_64
 	license = AGPL
 	makedepends = go
@@ -10,6 +11,8 @@ pkgbase = mautrix-wsproxy-git
 	provides = mautrix-wsproxy
 	conflicts = mautrix-wsproxy
 	source = mautrix-wsproxy::git+https://github.com/mautrix/wsproxy.git
+	source = mautrix-wsproxy@.system_service
 	sha256sums = SKIP
+	sha256sums = 32941b9d596bdb9154db9db1d01a112979e39d2b9e9599d81e72af169871272a
 
 pkgname = mautrix-wsproxy-git

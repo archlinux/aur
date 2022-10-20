@@ -11,8 +11,11 @@ makedepends=('go' 'git')
 provides=('mautrix-wsproxy')
 conflicts=('mautrix-wsproxy')
 url="https://github.com/mautrix/wsproxy"
-source=("${_pkgname}"::"git+https://github.com/mautrix/wsproxy.git")
-sha256sums=('SKIP')
+source=(${_pkgname}::git+https://github.com/mautrix/wsproxy.git
+        ${_pkgname}@.system_service)
+sha256sums=('SKIP'
+	    '32941b9d596bdb9154db9db1d01a112979e39d2b9e9599d81e72af169871272a')
+install=${_pkgname}.install
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines :
 # "If there are no tags then use number of revisions since beginning of the history"
@@ -27,8 +30,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -d ${pkgdir}{/etc/mautrix-wsproxy,/usr/lib/systemd/system}
+  install ${srcdir}/${_pkgname}/example-config.yaml ${pkgdir}/etc/mautrix-wsproxy/${_pkgname}-example-config.yaml
+  install ${srcdir}/${_pkgname}@.system_service ${pkgdir}/usr/lib/systemd/system/${_pkgname}@.service
+  install -Dm755 ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
 
 # vim:set ts=2 sw=2 et:
