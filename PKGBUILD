@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.11.43.r2.gc40c8aa
+pkgver=3.11.47.r11.g677e3b6
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -47,7 +47,7 @@ prepare() {
     git submodule init
     git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
     git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
-    git submodule update
+    git submodule--helper update
 
     # make stb.wrap use our local clone
     sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
