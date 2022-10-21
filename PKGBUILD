@@ -1,6 +1,6 @@
 # Maintainer: Emil Edholm <bobby @ verypublic.org>
 
-pkgname=foxglove-studio
+pkgname=foxglove-studio-bin
 pkgver=1.29.1
 pkgrel=1
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
