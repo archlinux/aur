@@ -1,6 +1,6 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-host
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="CLAP example host"
 arch=(x86_64)
@@ -18,8 +18,8 @@ options=()
 install=
 changelog=
 source=(git+https://github.com/free-audio/clap-host#tag=$pkgver
-  git+https://github.com/free-audio/clap#branch=next
-  git+https://github.com/free-audio/clap-helpers#branch=next)
+  git+https://github.com/free-audio/clap#branch=main
+  git+https://github.com/free-audio/clap-helpers#branch=main)
 noextract=()
 sha256sums=(SKIP
   SKIP
@@ -28,11 +28,9 @@ sha256sums=(SKIP
 build() {
   cd "$pkgname"
 
-  git submodule init
-  git config submodule.clap.url "$srcdir/clap"
-  git config submodule.clap-helpers.url "$srcdir/clap-helpers"
-  git submodule deinit vcpkg
-  git submodule update
+  rm -rf clap clap-helpers
+  ln -s "$srcdir/clap"
+  ln -s "$srcdir/clap-helpers"
 
   rm -rf build
   mkdir build
