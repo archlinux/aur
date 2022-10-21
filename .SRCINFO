@@ -1,0 +1,17 @@
+pkgbase = hp-vendor-dkms-git
+	pkgdesc = HP Dev One specific platform driver from Pop!_OS
+	pkgver = 279.67a92d0
+	pkgrel = 1
+	url = https://github.com/pop-os/hp-vendor
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	provides = hp-vendor
+	conflicts = hp-vendor
+	source = hp-vendor::git+https://github.com/pop-os/hp-vendor.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = f18343301f682c68137c25234cf52f19
+
+pkgname = hp-vendor-dkms-git
