@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !auto-cpufreq.install
+!auto-cpufreq.service

@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=1.5.5.r203.3985d3e
+pkgver=1.9.6.r3.gff72e1e
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
@@ -9,18 +9,18 @@ url="https://github.com/AdnanHodzic/auto-cpufreq"
 license=('LGPL-3.0')
 depends=('python-distro' 'python-psutil' 'python-click' 'dmidecode')
 optdepends=('cpufreqctl: CPU Power Manager'
-            'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell')
-makedepends=('git' 'python-setuptools')
+            'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell'
+            'thermald: recommended by upstream')
+makedepends=('git' 'python-setuptools' 'python-pip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" "${pkgname%-git}.service")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    local srcversion="$(grep "version: '" snap/snapcraft.yaml | cut -d "'" -f 2)"
-    printf "%s.r%s.%s" $srcversion "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -39,5 +39,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README"
     install -Dm755 scripts/cpufreqctl.sh -t "$pkgdir/usr/share/${pkgname%-git}/scripts"
-    install -Dm644 "scripts/${pkgname%-git}.service" -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 "$srcdir/${pkgname%-git}.service" -t "$pkgdir/usr/lib/systemd/system"
 }
