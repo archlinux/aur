@@ -1,6 +1,6 @@
 pkgbase = gummy
 	pkgdesc = Linux brightness/temperature manager for X11
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/Fushko/gummy
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gummy
 	depends = libudev.so
 	provides = gummy
 	conflicts = gummy-git
-	source = git+https://github.com/Fushko/gummy#tag=0.2
+	source = git+https://github.com/Fushko/gummy#tag=0.3
 	md5sums = SKIP
 
 pkgname = gummy

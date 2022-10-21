@@ -1,8 +1,8 @@
 # Maintainer: mi544 (sd32 at protonmail.com)
 
 pkgname=gummy
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="Linux brightness/temperature manager for X11"
 arch=('x86_64')
 url="https://github.com/Fushko/$pkgname"
