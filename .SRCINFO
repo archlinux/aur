@@ -1,13 +1,13 @@
 pkgbase = ps7b_libps4000a
 	pkgdesc = Library for PicoScope 4000a series in PicoScope 7 Beta
-	pkgver = 2.1.99_2r3303
+	pkgver = 2.1.100_2r3310
 	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps4000a/
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps4000a/libps4000a_2.1.99-2r3303_amd64.deb
-	md5sums = 1b6b604b2a1c93b9b51f2641559dc600
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps4000a/libps4000a_2.1.100-2r3310_amd64.deb
+	md5sums = 9bacc7d7bdb99a428a242be917ae7d6a
 
 pkgname = ps7b_libps4000a
