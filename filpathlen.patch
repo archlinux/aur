@@ -1,0 +1,12 @@
+diff --unified --recursive --text soundmodem-0.20.orig/soundcard/ptt.c soundmodem-0.20.new/soundcard/ptt.c
+--- a/soundcard/ptt.c	2022-10-17 11:29:22.330678824 -0700
++++ b/soundcard/ptt.c	2022-10-17 11:29:43.930646194 -0700
+@@ -204,7 +204,7 @@
+ 			logprintf(MLOG_ERROR, "Hamlib: rig_init model=%d\n", rig_modl);
+ 			goto the_end;
+ 		}
+-		strncpy(state->u.rig_ptr->state.rigport.pathname, path, FILPATHLEN);
++		strncpy(state->u.rig_ptr->state.rigport.pathname, path, HAMLIB_FILPATHLEN);
+ 
+ 		logprintf(MLOG_INFO, "Hamlib: pttinit parsing %s\n", ptr_key ? ptr_key : "NULL" );
+ 
