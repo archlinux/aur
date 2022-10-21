@@ -1,15 +1,14 @@
 pkgbase = googler-git
 	pkgdesc = Google from the command-line
-	pkgver = 3.5.r4.g2356105
+	pkgver = 4.3.2.r27.g8231da1
 	pkgrel = 1
-	url = https://github.com/jarun/googler
+	url = https://github.com/oksiquatzel/googler
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
 	conflicts = googler
-	source = git+https://github.com/jarun/googler.git
+	source = git+https://github.com/oksiquatzel/googler.git
 	md5sums = SKIP
 
 pkgname = googler-git
-

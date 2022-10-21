@@ -1,19 +1,20 @@
-# Maintainer: Pablo Arias <pabloariasal@gmail.com>
+# Maintainer: ramen <hendrik@hndrkk.sh>
+# Contributor: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 
 _pkgname=googler
 pkgname=googler-git
-pkgver=3.5.r4.g2356105
+pkgver=4.3.2.r27.g8231da1
 pkgrel=1
 pkgdesc="Google from the command-line"
 arch=('any')
-url="https://github.com/jarun/googler"
+url="https://github.com/oksiquatzel/googler"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
 conflicts=('googler')
-source=('git+https://github.com/jarun/googler.git')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 prepare() {
