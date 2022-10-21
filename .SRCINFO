@@ -1,18 +1,19 @@
 pkgbase = ruby-googleauth
 	pkgdesc = Authorization for Google APIs, and support for Application Default Credentials
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/googleauth
 	arch = any
 	license = Apache
 	depends = ruby-faraday
 	depends = ruby-jwt
+	depends = ruby-memoist
 	depends = ruby-multi_json
 	depends = ruby-os
 	depends = ruby-signet
-	noextract = googleauth-1.2.0.gem
+	noextract = googleauth-1.3.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/googleauth-1.2.0.gem
-	sha256sums = f74a577449dabbb9cc76d10383b41eb0ac1e9b5d958123209acd72e76c630b0c
+	source = https://rubygems.org/downloads/googleauth-1.3.0.gem
+	sha256sums = 51dd7362353cf1e90a2d01e1fb94321ae3926c776d4dc4a79db65230217ffcc2
 
 pkgname = ruby-googleauth
