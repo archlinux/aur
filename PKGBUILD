@@ -3,7 +3,7 @@
 _pkgname=death-road-to-canada
 pkgname=${_pkgname}-gog
 pkgver=20210402
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=(custom)
 groups=('games' 'gog')

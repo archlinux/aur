@@ -1,7 +1,7 @@
 pkgbase = death-road-to-canada-gog
 	pkgdesc = Randomly-Generated Road Trip Action-RPG
 	pkgver = 20210402
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deathroadtocanada.com
 	arch = x86_64
 	groups = games
