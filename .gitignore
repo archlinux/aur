@@ -1,0 +1,9 @@
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.log
+
+pkg
+src
+
+wg-systray
