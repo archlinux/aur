@@ -4,12 +4,12 @@
 pkgname=siyuan-note-bin
 _pkgname=siyuan-note
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
 url="https://b3log.org/siyuan/"
 license=('AGPL3')
-depends=(electron20)
+depends=(electron21)
 optdepends=('pandoc: docx export.')
 provides=($_pkgname)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.tar.gz"
