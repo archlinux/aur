@@ -13,7 +13,7 @@ replaces=("python-mkdocs-minify-plugin")
 depends=("mkdocs" "python-htmlmin" "python-jsmin" "python-csscompressor")
 makedepends=("python-build" "python-installer" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a7a6769e59d541be4b258fc3f4757a9e9d98f665cd17ab2c4961a5c70d196fa7')
+sha256sums=('abd6ab5a6443007b27c99d9334b997c845b90123e07edd9dac6692f0f9e39a68')
 
 build(){
  cd "$pkgname-$pkgver"
