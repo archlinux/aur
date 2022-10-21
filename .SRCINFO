@@ -1,15 +1,16 @@
 pkgbase = matrixcli-git
-        pkgdesc = simple matrix client based on the matrix-python-sdk
-        pkgver = 2020.02.26
-        pkgrel = 1
-        url = https://github.com/saadnpq/matrixcli.git
-        arch = any
-        license = GPL3
+	pkgdesc = simple matrix client based on the matrix-python-sdk
+	pkgver = 2020.02.26
+	pkgrel = 2
+	url = https://github.com/saadsolimanxyz/matrixcli
+	arch = any
+	license = GPL3
 	depends = python
 	provides = matrixcli
 	provides = matrix-python-sdk
 	conflicts = matrixcli
 	conflicts = matrix-python-sdk
-        source = https://github.com/saadnpq/matrixcli.git
+	source = git+https://github.com/saadsolimanxyz/matrixcli.git
+	sha256sums = SKIP
 
 pkgname = matrixcli-git
