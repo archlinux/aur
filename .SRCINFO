@@ -1,7 +1,7 @@
 pkgbase = ton-git-bin
 	pkgdesc = The Open Network
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ton-blockchain/ton
 	arch = x86_64
 	license = LGPL2

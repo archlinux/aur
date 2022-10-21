@@ -1,7 +1,7 @@
 # Maintainer: tonthemoon <tonthemoon at mailbox.org>
 pkgname=ton-git-bin
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Network"
 arch=('x86_64')
 url="https://github.com/ton-blockchain/ton"
