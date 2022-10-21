@@ -1,0 +1,17 @@
+pkgbase = python-ttach
+	pkgdesc = Image Test Time Augmentation with PyTorch
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/qubvel/ttach
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytorch
+	source = ttach-0.0.3.tar.gz::https://github.com/qubvel/ttach/archive/refs/tags/v0.0.3.tar.gz
+	sha512sums = 84c0dc442a560521b5321695926d28ce3353be3af609c607ab1cbb68cb78bfcbf5e5cebbc885c26acfefb488a12d7fcb499e1a41fda957b0f5f9f1754f557d37
+
+pkgname = python-ttach
