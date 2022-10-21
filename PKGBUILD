@@ -33,7 +33,7 @@ prepare() {
     git submodule init
     git config submodule."c/c-ringbuf".url "${srcdir}/c-ringbuf"
     git config submodule."c/rnnoise".url "${srcdir}/rnnoise"
-    git submodule update
+    git submodule--helper update
 }
 
 build() {
