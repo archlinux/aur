@@ -1,5 +1,6 @@
-# Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
-# Former Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
+# Maintainer: Jesse R Codling <jclds139@gmail.com>
+# Contributor: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
+# Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 
 pkgbase=uboot-sunxi
 pkgname=('uboot-a10-olinuxino-lime'
@@ -16,19 +17,24 @@ pkgname=('uboot-a10-olinuxino-lime'
          'uboot-pcduino'
          'uboot-pcduino3'
          'uboot-pcduino3-nano')
-pkgver=2017.01
-pkgrel=3
+pkgver=2022.10
+pkgrel=1
 arch=('any')
-url="http://git.denx.de/u-boot.git/"
+url="https://github.com/u-boot/u-boot"
+options=(!distcc)
 license=('GPL')
-makedepends=('arm-none-eabi-gcc' 'bc' 'dtc' 'python2')
+makedepends=('arm-none-eabi-gcc' 'bc' 'dtc' 'python' 'swig')
 backup=(boot/boot.txt boot/boot.scr)
-source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'boot.txt'
         'mkscr')
-md5sums=('ad2d82d5b4fa548b2b95bbc26c9bad79'
+md5sums=('bea02112ee09eb362f35c296d8968daa'
          '95f60c0ae1315e986d8a2aee15d5f854'
          '021623a04afd29ac3f368977140cfbfd')
+sha256sums=('49abc4dd4daff017b8abd6ee33b63d4892de878602ba5474347167c7d721e1b6'
+            '24ca87bc2941bc5c6230e9004c0305fa63c5c007160bd438d296691bd979f27a'
+            'a4fc8b6b92bc364d6542670d294aa618a8501fb8729f415cc0a3eed776ef0c8e')
+
 
 boards=('A10-OLinuXino-Lime'
         'A10s-OLinuXino-M'
@@ -45,22 +51,17 @@ boards=('A10-OLinuXino-Lime'
         'Linksprite_pcDuino3'
         'Linksprite_pcDuino3_Nano')
 
-prepare() {
-  cd u-boot-${pkgver}
-
-  sed -i 's/env python$/&2/' tools/binman/binman{,.py}
-}
-
 build() {
   cd u-boot-${pkgver}
 
-  unset CFLAGS CXXFLAGS LDFLAGS
+  unset CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
+  export CROSS_COMPILE=arm-none-eabi-
 
   for i in ${boards[@]}; do
     mkdir ../bin_${i}
-    make distclean
-    make ${i}_config
-    make CROSS_COMPILE=arm-none-eabi- EXTRAVERSION=-${pkgrel}
+    make mrproper
+    make ${i}_defconfig
+    make -j`nproc`
     mv u-boot-sunxi-with-spl.bin ../bin_${i}
   done
 
