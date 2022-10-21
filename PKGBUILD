@@ -1,8 +1,8 @@
 # Maintainer: spyophobia <76800505+spyophobia@users.noreply.github.com>
 
 pkgname=simple-tls-bin
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A simple TLS1.3 tunnel for TCP traffic."
 arch=('x86_64' 'aarch64')
 url="https://github.com/IrineSistiana/simple-tls"
@@ -11,8 +11,8 @@ provides=('simple-tls')
 conflicts=('simple-tls')
 source_x86_64=("${url}/releases/download/v${pkgver}/simple-tls-linux-amd64.zip")
 source_aarch64=("${url}/releases/download/v${pkgver}/simple-tls-linux-arm64.zip")
-sha512sums_x86_64=('cdfa018e3ec4db157e259dfc58c00358ea6dea6c714715bbaaaced7f2348e44e03159f636fc641eae03fc02fce207841f9705b8b21a6ec2f9a907442097f019e')
-sha512sums_aarch64=('912993fe59144081f290e412dfec4bb8269bebcc486b67d3b03bc70da85d416f59a9d6ef83321a4101431f9acdf6340b3044d77844285b5343670b1b3eae56c5')
+sha512sums_x86_64=('abf4ede2040e201cc2a6513d371949b647715e315b5cf7abc299104df369124a02bd7f345c59cd885b4e330ce6b26f345e1231707fe8c5f83389d950b77e27fc')
+sha512sums_aarch64=('aca3c8043a87fda26189ecc69e51a5ac455c1f696432fad31bc3cc8c8ef14e1adbb8f882ef8437024a237cb7214c28a7cc23e25a7cfd3caa1b6ffa2880a7b0fb')
 
 package() {
   cd "$srcdir"
