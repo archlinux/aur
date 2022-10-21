@@ -3,14 +3,14 @@
 
 pkgname=kubeswitch-bin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The kubectx for operators."
 arch=('x86_64')
 url="https://github.com/danielfoehrKn/kubeswitch"
 license=('Apache')
 source=("https://github.com/danielfoehrKn/kubeswitch/releases/download/${pkgver}/switcher_linux_amd64" "https://github.com/danielfoehrKn/kubeswitch/releases/download/${pkgver}/switch.sh")
-sha256sums=('24e8909aa5bd7ea8b1f486b46d1506ae6fcbcefe16d89c28884e9d217d8ada70'
-            '9c01adbe98329cc43bf6e1832e6d98de934e368ca170ba8260ff710c826d4116')
+sha256sums=('17759a0e43d342716567f6ca602f3168efc8d1d036dbab79dfba2054d14b318c'
+            '93c131f9b8103604bd840d62cd2c5086be63da5454e73789e49bddf9f238088f')
 options=(!strip)
 
 package() {
