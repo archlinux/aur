@@ -1,6 +1,6 @@
 # Maintainer: Sundeep Mediratta <smedius@gmail.com>
 
-_pkgver='Gtk4-13'
+_pkgver='Gtk4-14'
 
 _basename='desktop-icons-ng'
 _extname="gtk4-${_basename}"
@@ -10,7 +10,7 @@ _uuid='gtk4-ding@smedius.gitlab.com'
 pkgname="${_shellextension}-${_extname}"
 pkgver="${_pkgver}"
 pkgrel=1
-pkgdesc="A Gtk4 fork from the official desktop icons project, with several enhancements for gnome shell 40, 41, 43"
+pkgdesc="A Gtk4 fork from the official desktop icons project, with several enhancements, better multimonitor support, GSConnect integration for gnome shell 40, 41, 43"
 arch=('x86_64' 'i686')
 url="https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding"
 license=('GPL3')
@@ -19,8 +19,8 @@ makedepends=('git' 'meson' 'glib2')
 conflicts=("${_shellextension}-${_basename}-git" "${_shellextension}-${_basename}")
 
 source=("${_extname}-${pkgver}.tar.gz::https://gitlab.com/smedius/${_basename}/-/archive/${_pkgver}/${_basename}-${_pkgver}.tar.gz")
-sha256sums=('8adba0b84437a8451627899bdeacfc7f67e68971f614e7e848af7a5460576271')
-sha512sums=('656ba0648a2659b1267e346e875c3ec0fd3ea94a6ca0cfcda14a03b11c7a8a55bdd728b78579949dac34ee961353f1ee888124cf591d499eb86c9c6dbc79d7df')
+sha256sums=('fb593b3bdd0a6ec30500d204b0c8d5abd379a44a0fd2417135ea6b746649780d')
+sha512sums=('5bd521056d3ba8719764329533e583ed95788e2c2b4b569d6e3cc762edad63c3c6532c023ea31ca799b25311c3b889fa29ef73fa12bf74ce505dc31e2ab3f611')
 
 package() {
 
