@@ -1,37 +1,36 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Mario Rubio <mario at mrrb dot eu>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=PcbDraw
 pkgname=pcbdraw
-pkgver=0.6.1
-pkgrel=3
-pkgdesc='Convert your KiCAD board into a nice looking 2D drawing suitable for pinout diagrams'
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Convert your KiCAD board into a nicely looking 2D drawing suitable for pinout diagrams"
 arch=('any')
-url='https://github.com/yaqwsx/PcbDraw'
+url="https://github.com/yaqwsx/$_pkgname"
 license=('MIT')
-depends=('python' 'kicad' 'python-numpy' 'python-lxml' 'python-mistune1' 'python-pybars3' 'python-wand' 'python-yaml')
-makedepends=('python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('bf149f030eb2b66bc7d4fcd3c93b8775dcd5ed49975a8f648c445f72496ba970704bcbe588975efe0607cbff6ebce41382aac0ac484f87eff853c4b5cfec9bcd')
+depends=('python3' 'kicad' 'python-numpy' 'python-lxml' 'python-mistune' 'python-pybars3' 'python-yaml' 'python-svgpathtools' 'python-pcbnewtransition' 'python-pyvirtualdisplay' 'python-pillow' 'python-click' 'python-wxpython')
+#depends=('inkscape')
+makedepends=('python-setuptools' 'python-wheel' 'python-pytest')
+options=('!strip' '!emptydirs')
+provides=('pcbdraw')
+conflicts=('pcbdraw')
 
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
+sha512sums=('d736694e4eab200fe7c65e3e3b29a5ca7a825c8d43f55d89c7457f11d788f007cd7bcb345bb1d7a579df50edff58c093545266d180cebfce85722cea91c0782a')
 
 prepare() {
   cd $_pkgname-$pkgver
+
   sed -e '/"versioneer"/d' -i setup.py
 }
 
-build() {
-  cd $_pkgname-$pkgver
-
-  python setup.py build
-}
-
 package() {
-  cd $_pkgname-$pkgver
+  cd "$srcdir/$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: set ts=2 sw=2 et:
