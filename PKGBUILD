@@ -5,7 +5,7 @@ _pkgbase=vim-candid
 pkgname=('vim-candid-git'
 	'vim-lightline-candid-git')
 pkgver=r86.f7198b5
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/flrnd/candid.vim"
 license=('MIT')
@@ -30,8 +30,7 @@ package_vim-candid-git() {
 	find autoload/candid.vim colors \
 		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	which md2vim > /dev/null
-	if [[ $? == 0 ]]; then
+	if [ -x "$(command -v md2vim)" ]; then
 		md2vim README.md candid.txt
 		install -Dm 644 candid.txt -t "$pkgdir/usr/share/vim/vimfiles/doc/"
 		rm candid.txt

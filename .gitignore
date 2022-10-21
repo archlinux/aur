@@ -1,4 +1,5 @@
-pkg
-src
-*.tar.xz
-vim-candid
+*.tar.*
+*.zip
+pkg/
+src/
+vim-candid/
