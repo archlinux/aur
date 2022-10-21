@@ -1,9 +1,31 @@
 #!/bin/sh
 ME="${0##*/}"
 
+usage() {
+  cat << __EOT__
+Usage: $ME command [argument …]
+
+When using the sortdir library, applications will receive directory
+entries in alphabetical order.
+
+Ordering depends on the current locale used by your application.
+You can override this by setting the SORTDIR_LOCALE environment
+variable. Examples:
+
+  export SORTDIR_LOCALE=hu_HU
+or
+  export SORTDIR_LOCALE=C
+
+Version comparing (see strverscmp(3)) is performed if SORTDIR_VERSCMP
+is set to any value. In this case SORTDIR_LOCALE is ignored.
+
+Reverse ordering is provided if SORTDIR_REVERSE is set to any value.
+__EOT__
+}
+
 case "$1" in
   -h | --help )
-    printf 'usage: %s command [argument ...]\n' "$ME"
+    usage
     exit 0
   ;;
   * )
