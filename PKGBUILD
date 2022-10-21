@@ -2,7 +2,7 @@
 
 pkgname=wpimath
 pkgver=2023.1.1a
-pkgrel=3
+pkgrel=4
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
@@ -53,14 +53,7 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  # Fix includes install
-  mkdir -p "$pkgdir"/usr/include
-  mv "$pkgdir"/usr/wpilib/include/wpiutil/* "$pkgdir"/usr/include
-  mv "$pkgdir"/usr/wpilib/include/wpimath/* "$pkgdir"/usr/include
-
-  # Fix libs install
+  mv "$pkgdir"/usr/wpilib/include "$pkgdir"/usr/include
   mv "$pkgdir"/usr/wpilib/lib "$pkgdir"/usr/lib
-
-  # Delete empty folder
   rm -r "$pkgdir"/usr/wpilib
 }
