@@ -1,4 +1,5 @@
 # Maintainer: Nick <nift4@protonmail.com>
+# Maintainer: Erfan Abdi <erfangplus@gmail.com>
 # Contributor: ikeramat <ikeramat@protonmail.com>
 pkgname=lmo-desktop-mode-git
 _pkgname=lmo-desktop-mode
