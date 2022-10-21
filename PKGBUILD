@@ -2,7 +2,7 @@
 
 _pkgbase=hp-vendor
 pkgname=${_pkgbase}-dkms-git
-pkgver=279.67a92d0
+pkgver=r279.67a92d0
 pkgrel=1
 pkgdesc="HP Dev One specific platform driver from Pop!_OS"
 arch=('x86_64')
@@ -21,8 +21,8 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/${_pkgbase}"
 
-# Git, no tags available
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Git, no tags available
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
