@@ -4,7 +4,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ssl
-pkgver=0.5.12
+pkgver=0.5.13
 pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
@@ -30,4 +30,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('3ef53f92035cdf65adb520b004cef881dccf0545637e1b0a5b4c1b0f13e1df55')
+sha256sums=('d84e1d25a60a766a9ccc30a3a46229fd83414252f502ff27acba037b473dec7c')
