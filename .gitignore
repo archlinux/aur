@@ -1,4 +1,10 @@
-pkg
-src
-neovim-candid
-*.tar.xz
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+pkg/
+src/
+neovim-candid/
