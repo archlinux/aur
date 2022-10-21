@@ -7,6 +7,7 @@ pkgbase = python-pybluez-git
 	license = GPL
 	makedepends = boost
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = bluez-libs
 	provides = python-pybluez
