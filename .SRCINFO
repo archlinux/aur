@@ -1,7 +1,7 @@
 pkgbase = zlodej
 	pkgdesc = Zloděj (The Clue!)
 	pkgver = V1.7E+patch
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/cosp/
 	install = zlodej.install
 	arch = any

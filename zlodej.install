@@ -1,7 +1,7 @@
 post_install(){
   DIR=/usr/share/zlodej/DATADISK
   cp -n $DIR/{ORIGIN,GAMES}.LST
-  [ $USER = root ] && USER=$SUDO_USER
+  USER=`w|tail -1|cut -d' ' -f1`
   chown $USER:$USER $DIR/GAMES.LST
 }
 pre_remove(){

@@ -1,6 +1,6 @@
 pkgname=zlodej
 pkgver=V1.7E+patch
-pkgrel=1
+pkgrel=2
 pkgdesc="Zloděj (The Clue!)"
 arch=(any)
 url=https://sourceforge.net/projects/cosp/
