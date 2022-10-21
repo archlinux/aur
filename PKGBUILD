@@ -2,7 +2,7 @@
 # Co-Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=aeron
-pkgver=1.39.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="Efficient reliable UDP unicast, UDP multicast, and IPC message transport"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'libbsd' 'util-linux-libs' 'zlib' 'java-environment')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/real-logic/aeron/archive/${pkgver}.tar.gz"
         "aeronmd.service")
-sha256sums=('23b394fe3a56f0ba6c6d64cb6a0134873a26b22fca91e4dc8e3351856b480381'
+sha256sums=('d86f0e593baddc3b3eb469f6975ae7fad8a8da92b55aaa3865dbfcde64d001fa'
             '3e6f3d61880ef39743c77103a169f53074337adbe382c78a768bd001d8a646be')
 
 build() {
