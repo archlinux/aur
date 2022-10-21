@@ -2,7 +2,7 @@
 pkgname="qinfo-git"
 _pkgname="qinfo"
 pkgver=r97.rc3c6e44.
-pkgrel=1
+pkgrel=2
 pkgdesc="A system info program. Fetches system info and displays it."
 arch=("x86_64")
 url="https://github.com/El-Wumbus/qinfo"
