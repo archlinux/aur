@@ -1,0 +1,18 @@
+pkgbase = latexdraw-bin
+	pkgdesc = A vector drawing editor for LaTeX (JavaFX)
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = http://latexdraw.sourceforge.net
+	arch = x86_64
+	license = GPL3
+	makedepends = dpkg
+	depends = freetype2
+	depends = libnet
+	depends = java-runtime
+	optdepends = ttf-droid: font for CJK characters
+	provides = latexdraw
+	conflicts = latexdraw
+	source = latexdraw-4.0.3.deb::https://sourceforge.net/projects/latexdraw/files/latexdraw/4.0.3/latexdraw_4.0.3-1_amd64.deb
+	sha512sums = 9c3e1d2ddf2635a6d5f89b19b55d0a116f21a8b1d9e334622d2d37d487e6aeae0e97813f339f42af7b08529c6a3211fc8559fc0d0ca48d66144977f5f13027dd
+
+pkgname = latexdraw-bin
