@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.0
+pkgver=5.0.2
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=73afdf0ae6ae3a2fde8e24b7e8219e2b81d13684
+_filesrev=4383f19a2d7552296f37ca5c654d231fb5f2bd12
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
