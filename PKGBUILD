@@ -1,6 +1,6 @@
 # Maintainer: Jovan Lanik <jox969@gmail.com>
 pkgname=gtklock
-pkgver=1.4.1
+pkgver=2.0.1
 pkgrel=2
 pkgdesc="GTK-based lockscreen for Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(pam wayland gtk3 gtk-layer-shell)
 makedepends=(scdoc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76973caec1cc0e9d2d2e88d32ae1fab67bac93a10995755c6e66e5009ba8df85')
+sha256sums=('d1802a7fcb8cace0408ab34627841d7ea28d630f934c8b7884536f9dfa76910e')
 
 build() {
 	cd "$pkgname-$pkgver"
