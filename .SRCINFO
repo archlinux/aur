@@ -1,0 +1,21 @@
+pkgbase = sortdir
+	pkgdesc = Have [almost] any application sort its directory listings
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://ftp.uhulinux.hu/sources/sortdir
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	provides = sortdir
+	conflicts = sortdir
+	source = http://ftp.uhulinux.hu/sources/sortdir/sortdir-0.6.tar.gz
+	source = sortdir.sh
+	sha256sums = 62acb494d995e868d721d01e2d00e525f2ead23670ba23272d529a7606eebd2e
+	sha256sums = 876bf68aead28140a4484f286f09f9f3e8ecbaaf48caebbcfb1d489195b23212
+	sha512sums = b20db137a559fef9962a842b84fd177206af2d3f64399c1fe11f34add00b5350d2f3e33a453d87c49860259d0a9b99853ced06f84848c538a3b9321bd0f6b210
+	sha512sums = 21f80b42093ff6687d5a8295227cf393144323fdc983ed7c98ade2465c70f8a234661fd41821f03833fe50259cca5e4e05092af428acac8695de5ea162d50178
+	b2sums = 2ecb715e454d796bfd1ae6888f294a51ed2af13970cb5f204de76e35065568ed4ab31b694b9f1f7a64b119c0aeca113d8ad9c3f1cf03e32524b4de770e65686f
+	b2sums = eabcfb6267c6a6eb9047b945e47c7c715a8677a4402bee744ba8ec9d235f85fe49baf5ffa0e6219ac69b48c5a7a02c9ce0e2291d0d403de29bcb5b1437470a64
+
+pkgname = sortdir
