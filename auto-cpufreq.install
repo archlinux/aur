@@ -7,7 +7,7 @@ post_install() {
 	echo 'systemctl enable --now auto-cpufreq'
 	echo ''
 	echo 'To view live log, run:'
-	echo 'auto-cpufreq --log'
+	echo 'auto-cpufreq --stats'
 	echo ''
 }
 
@@ -26,7 +26,7 @@ post_remove() {
 	rm /var/log/auto-cpufreq.log
 
 	# Remove auto-cpufreq's cpufreqctl binary
-	rm /usr/bin/cpufreqctl.auto-cpufreq
+	rm /usr/bin/cpufreqctl
 
 	# Restore original cpufreqctl binary if backup was made
 	if [ -f "/usr/bin/cpufreqctl.auto-cpufreq.bak" ]; then
