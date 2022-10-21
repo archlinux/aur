@@ -33,6 +33,8 @@ pkgbase = python-gradio
 	depends = python-httpx
 	depends = python-pydantic
 	depends = python-websockets
+	depends = python-linkify-it-py
+	depends = python-mdit_py_plugins
 	source = python-gradio-3.6.0b1::https://github.com/gradio-app/gradio/archive/refs/tags/v3.6.0b1.tar.gz
 	sha512sums = 8fdb638155c36d3081d979c61c769bfa53ea372cfe73f275b89e38e135d2375837c068ae4d25bb36393dfc3878d28f59fd001fd74d994947e9b97cdf30275a37
 
