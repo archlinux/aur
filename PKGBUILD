@@ -15,8 +15,8 @@ source=('git+https://github.com/bobsayshilol/engine-sim.git#branch=sdl-build'
         'git+https://github.com/ange-yaghi/csv-io.git'
         'git+https://github.com/bobsayshilol/delta-studio.git#branch=sdl-build'
         'git+https://github.com/ange-yaghi/direct-to-video.git'
-        'git+https://github.com/ange-yaghi/piranha.git'
-        'git+https://github.com/ange-yaghi/simple-2d-constraint-solver.git'
+        'git+https://github.com/bobsayshilol/piranha.git#branch=sdl-build'
+        'git+https://github.com/bobsayshilol/simple-2d-constraint-solver.git#branch=gcc-fixes'
         )
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
@@ -29,13 +29,18 @@ pkgver() {
 }
 
 prepare() {
-    # Submodule init
+    # Submodule stuff
     cd engine-sim
-    
     git submodule init
+
+    # Changes to use local sources
     for SUBMODULE in 'csv-io' 'delta-studio' 'direct-to-video' 'piranha' 'simple-2d-constraint-solver'; do
-        git config "submodule.dependencies/submodules/${SUBMODULE}.url" "${srcdir}/${SUBMODULE}"
+        git submodule set-url "dependencies/submodules/${SUBMODULE}" "${srcdir}/${SUBMODULE}"
     done
+    git submodule set-branch --branch sdl-build 'dependencies/submodules/piranha'
+    git submodule set-branch --branch sdl-build 'dependencies/submodules/delta-studio'
+    git submodule set-branch --branch gcc-fixes 'dependencies/submodules/delta-studio'
+
     git submodule update
 }
 
