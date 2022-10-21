@@ -11,7 +11,14 @@ pkgbase = ibutils
 	depends = tk
 	depends = perl
 	source = https://www.openfabrics.org/downloads/ibutils/ibutils-1.5.7-0.2.gbd7e502.tar.gz
+	source = ibutils-1.5.7-tk86.patch
+	source = ibutils-1.5.7-format-security.patch
+	source = add-ibdev2netdev.patch
+	source = ibutils-1.5.7-gcc10.patch
 	sha256sums = 67a3b417c8d0820400045dd7143674824086c6793a40ded333be50e498d9a703
+	sha256sums = dd9f1932b8b6cb1ea1efacf9a44daf82bd20b913a4a8ef689060093449d67324
+	sha256sums = ebc03537554605ddd41a079fa3b0975c229f646ed7d0f626fea7965a3bf8ad07
+	sha256sums = c813833cc450e5e0ee23b30add62c5a047cea87fcbda2474ea595f63b1df6507
+	sha256sums = 1cdac515114e532a12d810d63880dfb869c528b48a6fa4a5bdb4d1930dc6734c
 
 pkgname = ibutils
-
