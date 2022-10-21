@@ -54,7 +54,7 @@ prepare() {
   cd "$srcdir/zotero-build"
   git submodule init
   git config submodule.xpi/zotero-transfw.url "$srcdir/zotero-transfw"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/zotero-client"
   git submodule init
@@ -68,18 +68,18 @@ prepare() {
   git config submodule.chrome/content/zotero/xpcom/utilities.url "$srcdir/zotero-utilities"
   git config submodule.chrome/content/zotero/xpcom/translate.url "$srcdir/zotero-translate"
   git config submodule.chrome/content/zotero/locale/csl.url "$srcdir/zotero-csl"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd pdf-reader
   git submodule init
   git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   cd ..
 
   cd pdf-worker
   git submodule init
   git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   cd ..
 
   npm i --legacy-peer-deps
@@ -87,7 +87,7 @@ prepare() {
   cd "$srcdir/zotero-standalone-build"
   git submodule init
   git config submodule.modules/zotero-libreoffice-integration.url "$srcdir/zotero-libreoffice-integration"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   ./fetch_xulrunner.sh -p l
   ./fetch_pdftools
