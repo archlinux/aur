@@ -1,20 +1,22 @@
 pkgbase = trezord-go
 	pkgdesc = TREZOR Communication Daemon aka TREZOR Bridge (written in Go)
-	pkgver = 2.0.31
+	pkgver = 2.0.32
 	pkgrel = 1
 	url = https://github.com/trezor/trezord-go
+	install = trezord-go.install
+	changelog = CHANGELOG.md
 	arch = x86_64
 	arch = i686
 	license = LGPL3
-	makedepends = go>=1.12
+	makedepends = go
 	depends = glibc
-	conflicts = trezord-git
-	conflicts = trezor-bridge-bin
+	depends = trezor-udev
+	provides = trezord
 	conflicts = trezord
 	options = !emptydirs
-	source = trezord-go-2.0.31.tar.gz::https://github.com/trezor/trezord-go/archive/v2.0.31.tar.gz
+	source = trezord-go-2.0.32.tar.gz::https://github.com/trezor/trezord-go/archive/v2.0.32.tar.gz
 	source = sysusers.d.conf
-	sha256sums = fd834a5bf04417cc50ed4a418d40de4c257cbc86edca01b07aa01a9cf818e60e
+	sha256sums = 4738eba87fcae0e81ab89696eca45915a8f00aaf778f784b715523baad89e4a3
 	sha256sums = a9a6c343814b94e9ad3665c971cc33825794e8a8e46e1076819b63c548c89abf
 
 pkgname = trezord-go

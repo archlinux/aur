@@ -2,21 +2,28 @@
 # Contributor: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=trezord-go
-pkgver=2.0.31
+pkgver=2.0.32
 pkgrel=1
 pkgdesc="TREZOR Communication Daemon aka TREZOR Bridge (written in Go)"
 arch=('x86_64' 'i686')
 url="https://github.com/trezor/trezord-go"
 license=('LGPL3')
-depends=('glibc')
-makedepends=('go>=1.12')
-conflicts=('trezord-git' 'trezor-bridge-bin' 'trezord')
+depends=('glibc' 'trezor-udev')
+makedepends=('go')
+provides=('trezord')
+conflicts=('trezord')
 options=('!emptydirs')
 install=trezord-go.install
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
        'sysusers.d.conf')
-sha256sums=('fd834a5bf04417cc50ed4a418d40de4c257cbc86edca01b07aa01a9cf818e60e'
+sha256sums=('4738eba87fcae0e81ab89696eca45915a8f00aaf778f784b715523baad89e4a3'
             'a9a6c343814b94e9ad3665c971cc33825794e8a8e46e1076819b63c548c89abf')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	go mod download
+}
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -42,8 +49,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm 755 trezord -t "$pkgdir/usr/bin/"
-	install -Dm 644 release/linux/trezord.service -t "$pkgdir/usr/lib/systemd/system/"
-	install -Dm 644 release/linux/trezor.rules -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm 644 "$srcdir/sysusers.d.conf" "$pkgdir/usr/lib/sysusers.d/trezord.conf"
+	install -D trezord -t "$pkgdir/usr/bin/"
+	install -Dm644 release/linux/trezord.service -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dm644 "$srcdir/sysusers.d.conf" "$pkgdir/usr/lib/sysusers.d/trezord.conf"
 }
