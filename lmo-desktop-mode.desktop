@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Desktop Mode
+Comment=Client and companion application for LibreMobileOS desktop mode
+Exec=java -jar /usr/share/lmo-desktop-mode/VncViewer.jar
+Icon=lmo-desktop-mode.png
+Terminal=false
+Type=Application
+Categories=Utility;RemoteAccess;Java;
+MimeType=
