@@ -12,10 +12,6 @@ depends=(
 source=("${pkgname}.tar.gz::https://github.com/tonthemoon/ton/releases/download/nightly-linux-${arch}/ton-${arch}.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-  date +%s
-}
-
 package() {
   cd "$srcdir"
   mkdir -p ${pkgdir}/usr/bin
