@@ -1,7 +1,7 @@
 # Maintainer: leuko <aur_et_aydos_de>
 _pkgname=xpra-html5
 pkgname=${_pkgname}-git
-pkgver=v4.5.1.r14.g281b274
+pkgver=v6.0.r1.g21cabde
 pkgrel=1
 pkgdesc="HTML5 client for Xpra"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=($_pkgname)
 makedepends=(
 	git
 	python-setuptools
-	uglify-js  # for minifying HTML5
+	uglify-js  # for compressing Javascript
 	gzip  # compression for served files (.gz)
 	brotli  # compression for served files (.br)
 )
@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install $pkgdir/usr/share/xpra/www
+  python setup.py install $pkgdir  # `args[2]` is `root_dir`
 }
