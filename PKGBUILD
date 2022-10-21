@@ -1,7 +1,7 @@
 # Maintainer: alcubierre-drive
 pkgname=xtrlock-pam-fp-git
 pkgrel=1
-pkgver=0.1.r0.g5722176
+pkgver=0.1.r1.g3d73226
 pkgdesc="xtrlock-pam patched with fprintd support (toggle to disable password waiting)"
 arch=('x86_64')
 url="https://github.com/alcubierre-drive/xtrlock-pam"
