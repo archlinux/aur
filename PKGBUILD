@@ -1,17 +1,18 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Pablo Peralta <pptrx100@gmail.com>
 
 pkgname=vido
-pkgver=1.2.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Video/Audio Downloader frontend for youtube-dl'
 arch=('any')
 url='https://sourceforge.net/projects/vido'
 license=('GPL3')
 conflicts=('vido-git')
-depends=('python-gobject' 'gtk3' 'youtube-dl')
+depends=('python-gobject' 'xapp' 'libblockdev' 'libaccounts-glib' 'libibus' 'libgexiv2' )
 makedepends=('gendesk')
+optdepends=('youtube-dl')
 source=("${pkgname}-${pkgver}.zip::https://sourceforge.net/projects/vido/files/${pkgver}/vido_${pkgver}.zip/download")
-sha256sums=('147fb751d5ea79e1428780a57dc01cb771db271514b89668f8f58793d3e9d055')
+sha256sums=('0477f1753446b2a08943cac0733dfa19c893070fcdc87316b491f6abd0f26041')
 
 package() {
   cd "${pkgname}"
