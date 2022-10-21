@@ -1,7 +1,7 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-plugins
-pkgver=1.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="CLAP example plugins"
 arch=(x86_64)
 url="https://github.com/free-audio/clap-plugins"
@@ -30,12 +30,11 @@ sha256sums=(SKIP
 build() {
   cd "$pkgname"
 
-  git submodule init
-  git config submodule.clap.url "$srcdir/clap"
-  git config submodule.clap-helpers.url "$srcdir/clap-helpers"
-  git config submodule.yas.url "$srcdir/yas"
-  git submodule deinit vcpkg
-  git submodule update
+  rm -rf clap clap-helpers vcpkg yas
+
+  ln -s "$srcdir/clap"
+  ln -s "$srcdir/clap-helpers"
+  ln -s "$srcdir/yas"
 
   rm -rf build
   mkdir build
