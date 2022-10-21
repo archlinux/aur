@@ -3,7 +3,7 @@
 
 pkgname=mojave-gtk-theme
 _pkgname=Mojave-gtk-theme
-pkgver=2022_06_07
+pkgver=2022_10_21
 pkgrel=1
 pkgdesc='A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
 license=('GPL3')
 url='https://github.com/vinceliuice/Mojave-gtk-theme'
 source=("${pkgname}-${pkgver//_/-}.tar.gz::https://github.com/vinceliuice/${_pkgname}/archive/${pkgver//_/-}.tar.gz")
-sha512sums=('938281a3c6d090a144c7388567500d374af4c3e5dfd6c15082ac1384e51e353927113b7bbb0b01d15221763336af8c5eba92d0a1a787de55219cd205973c5014')
+sha512sums=('6cbfa7eaac9139e29981724eaf0e6923a25f5be30a5cede4221c7c8866e98077b83a15d794e66ccaf10df59a3f1f34e32d760363599c7a769dbba6f4531c50db')
 makedepends=('sassc' 'optipng' 'inkscape')
 options=('!strip')
 conflicts=('mojave-gtk-theme-git')
