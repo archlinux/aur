@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
 pkgver=3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
@@ -13,13 +13,17 @@ depends=(
   "python-aiofiles>=0.6.0"
   "python-argparse"
   # "python-asyncio" part of python since 3.3
+  "python-atomicwrites"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-cachetools"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
   # "python-datetime" part of standard python
   "python-markdown"
   "python-matrix-nio>=0.14.1"
   "python-pillow"
   "python-magic"
+  "python-olm"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-peewee"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
   "python-pyxdg"
-  # "python-uuid" part of standard python 
+  # "python-uuid" part of standard python
 )
 optdepends=(
   "dbus-python: needed for notifications on desktop systems"
