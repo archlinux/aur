@@ -3,14 +3,14 @@
 
 pkgname=python-pybluez-git
 _gitname=pybluez
-pkgver=0.22.r238.g5096047
+pkgver=0.22.r242.g4d46ce1
 pkgrel=1
 pkgdesc='Python wrapper for the BlueZ Bluetooth stack'
 arch=('any')
 url='https://github.com/pybluez/pybluez'
 license=('GPL')
 depends=('python' 'bluez-libs')
-makedepends=('boost')
+makedepends=('boost' 'git')
 provides=('python-pybluez')
 conflicts=('python-pybluez')
 source=('git+https://github.com/pybluez/pybluez.git'
