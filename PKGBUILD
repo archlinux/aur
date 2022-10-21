@@ -2,7 +2,7 @@
 # Maintainer: Purple Clay <purple clay at gmail dot com>
 
 pkgname='dns53-bin'
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Dynamic DNS within Amazon Route53. Expose your EC2 quickly, easily and privately'
 url='https://github.com/purpleclay/dns53'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('dns53')
 conflicts=('dns53')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.8.0/dns53_0.8.0_linux-arm64.tar.gz")
-sha256sums_aarch64=('e2be15c599485d882a3a7f213e71d73589c02763e3fe07b972b14f248fb64f2c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.9.0/dns53_0.9.0_linux-arm64.tar.gz")
+sha256sums_aarch64=('c650aa942cb729a09e1ca36215cd5dd68c4efe60b750fd851a135f2618cd8191')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.8.0/dns53_0.8.0_linux-arm.tar.gz")
-sha256sums_armv7h=('d804d92d7b66a7acbe3f3498449a0728759dad4eb95f9ec5406753365f432b93')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.9.0/dns53_0.9.0_linux-arm.tar.gz")
+sha256sums_armv7h=('68d1f7c358ea828ce4a3e91721b5876a555935ad273278ed1f5aa1447ceee3b7')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.8.0/dns53_0.8.0_linux-i386.tar.gz")
-sha256sums_i686=('5090cdb668c087359bca3215d74d520a276d1467b2159b6c9edf37c3517825b8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.9.0/dns53_0.9.0_linux-i386.tar.gz")
+sha256sums_i686=('bed863f7eb0ec7889edd05536531fbc1fc3aa81616372452fa8df555aebe8e72')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.8.0/dns53_0.8.0_linux-x86_64.tar.gz")
-sha256sums_x86_64=('1de02135711dd24574912989bf99dce11378bad5f276104979081cefb28c62e5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.9.0/dns53_0.9.0_linux-x86_64.tar.gz")
+sha256sums_x86_64=('fcb7f1f704d727fd08197f6f5f885ee90ea477896bdbd1658e3bca6ab4ad5ade')
 
 package() {
   # bin
