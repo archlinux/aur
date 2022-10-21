@@ -1,6 +1,6 @@
 pkgbase='python-gfpgan'
 pkgname=('python-gfpgan' 'gfpgan-model')
-pkgver=1.3.2
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="GFPGAN aims at developing Practical Algorithms for Real-world Face Restoration. "
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('python-pytorch' 'python-numpy' 'python-opencv' 'python-torchvision' 'p
 makedepends=('python-setuptools')
 
 source=("https://github.com/TencentARC/GFPGAN/archive/refs/tags/v$pkgver.tar.gz"
-'https://github.com/TencentARC/GFPGAN/releases/download/v0.2.0/GFPGANCleanv1-NoCE-C2.pth'
-'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth')
-sha256sums=('9c8b380fa4391c11d9393cf5314f7bf843cbf694ee4ee499e5105e9293c0f59d'
-            '29e25ee90c170f4231163f4c83df6b59c968b73f3ce00cb884015ae005db083c'
-            'c953a88f2727c85c3d9ae72e2bd4846bbaf59fe6972ad94130e23e7017524a70')
+'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth'
+'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/RestoreFormer.pth')
+sha256sums=('a3b04c61554341800ef04b1daa11a92c8afef5de150348974df8e1989ec29130'
+            'e2cd4703ab14f4d01fd1383a8a8b266f9a5833dacee8e6a79d3bf21a1b6be5ad'
+            '07404d446d62ca3d5ed38b1de09a947a1e77d46dbccec961a74d713a8f24ace0')
 
 package_python-gfpgan() {
     optdepends=('gfpgan-model: pre-trained model and inference script'
