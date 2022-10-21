@@ -3,8 +3,8 @@
 # an on Hurrican PKGBUILD by Stefan Schmidt <thrimbor gmail com>
 
 pkgname=hurrican-git
-pkgver=1.0.9.3.r0.g3808399
-pkgrel=2
+pkgver=1.0.9.3.r318.g2a92579
+pkgrel=1
 pkgdesc="Freeware jump and shoot game based on the Turrican game series (development version)"
 arch=('i686' 'x86_64')
 url="http://hurrican.sourceforge.net"
@@ -13,11 +13,9 @@ depends=('sdl_image' 'sdl_mixer' 'libmodplug' 'libgl' 'libepoxy')
 makedepends=('git' 'mesa' 'cmake')
 conflicts=('hurrican')
 source=(hurrican::"git+https://github.com/thrimbor/hurrican.git"
-        glm::"git+https://github.com/g-truc/glm.git"
         hurrican.desktop
         hurrican.png)
 sha256sums=('SKIP'
-            'SKIP'
             '11f6a06115d543b9dfb74781c4db79224fceec2f6c0ceecd9c2cd15081d96174'
             'be6b84adf5bd89430f2e087d9fe51e9e769cf1a17fb89f4288e8d4551ecf0b84')
             
@@ -28,7 +26,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}"/hurrican
     git submodule init
-    git config submodule.Hurrican/3rdparty/glm.url "${srcdir}"/glm
+    #git config submodule.Hurrican/3rdparty/glm.url "${srcdir}"/glm
     git submodule update
 }
 
