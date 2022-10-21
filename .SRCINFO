@@ -1,0 +1,13 @@
+pkgbase = python-fairscale
+	pkgdesc = PyTorch extensions for high performance and large scale training.
+	pkgver = 0.4.12
+	pkgrel = 1
+	url = https://github.com/facebookresearch/fairscale
+	arch = x86_64
+	license = custom
+	depends = python-pytorch
+	depends = python-numpy
+	source = python-fairscale-0.4.12::https://github.com/facebookresearch/fairscale/archive/refs/tags/v0.4.12.tar.gz
+	sha512sums = 1124b70e9f60431d73d4a94260bf2773527ad931f311602ac07305fc31f7865e5aee9c126d10160eabc11891a45e0ac6ca3529e890532fd33e774bae63469bed
+
+pkgname = python-fairscale
