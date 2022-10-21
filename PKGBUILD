@@ -61,7 +61,7 @@ _minor=0
 #_subversion=1
 _srcname=linux-pf
 pkgbase=linux-pf
-_unpatched_sublevel=2
+_unpatched_sublevel=3
 _pfrel=2
 _kernelname=pf
 _projectcpatchname=prjc_v5.15-r1.patch
@@ -82,7 +82,7 @@ pkgdesc="Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers-variant'
          'linux-pf-headers')
 pkgver=${_basekernel}.${_kernelname}${_pfrel}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://codeberg.org/pf-kernel/linux/wiki/README"
 license=('GPL2')
@@ -99,7 +99,7 @@ source=("linux-pf::git+https://codeberg.org/thaodan/linux.git#tag=v${_basekernel
         "60-linux.hook"
        )
 sha256sums=('SKIP'
-            '4415388555aab8845e60f6b3996e3a75b8159d516b7b04a6adb8ade54de3ff9c'
+            '30fc2e55d0a4393bc8d8002901e4193a867243bc2e03043a426b7cea112834d6'
             '68224090bb850c91d0c86646008283bdbea58ba13129535a4bf2266d115be180'
             'f016df0b9651b83bc72f955ca596b6a3d325b3118026a397ba36033c8026c86d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
