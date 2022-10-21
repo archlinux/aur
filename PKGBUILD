@@ -7,7 +7,7 @@ pkgver=0.11.0
 pkgrel=1
 pkgdesc="A minimalist Vim plugin manager. (install for neovim user)"
 arch=('any')
-url="http://github.com/junegunn/vim-plug"
+url="https://github.com/junegunn/vim-plug"
 depends=('neovim')
 license=('MIT')
 conflicts=(
@@ -25,7 +25,7 @@ sha256sums=('b313ac61f9deffca9e6cb2dabd2cc13716d5fe8dafaab5e5c97dc2820fd50dbd'
 install=${pkgname}.install
 
 package() {
-  install -Dm 644 ${pkgname}-${pkgver}/plug.vim ${pkgdir}/usr/share/nvim/site/autoload/plug.vim
+  install -Dm 644 vim-plug-${pkgver}/plug.vim ${pkgdir}/usr/share/nvim/site/autoload/plug.vim
   install -Dm 644 sample.init.vim ${pkgdir}/usr/share/vim-plug/sample.init.vim
 }
 
