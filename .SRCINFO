@@ -1,15 +1,14 @@
 pkgbase = nginx-mainline-mod-ndk
 	pkgdesc = Module for mainline nginx that adds generic tools that module developers can use
-	pkgver = 0.3.1
-	pkgrel = 4
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/vision5/ngx_devel_kit
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
-	source = https://github.com/vision5/ngx_devel_kit/archive/v0.3.1/ngx_devel_kit-0.3.1.tar.gz
-	sha256sums = 0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85
+	source = https://github.com/vision5/ngx_devel_kit/archive/v0.3.2/ngx_devel_kit-0.3.2.tar.gz
+	sha256sums = aa961eafb8317e0eb8da37eb6e2c9ff42267edd18b56947384e719b85188f58b
 
 pkgname = nginx-mainline-mod-ndk
-

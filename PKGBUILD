@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-ndk
-pkgver=0.3.1
-pkgrel=4
+pkgver=0.3.2
+pkgrel=1
 
 _modname="ngx_devel_kit"
 
@@ -14,7 +14,7 @@ url="https://github.com/vision5/ngx_devel_kit"
 license=('BSD')
 
 source=(https://github.com/vision5/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85')
+sha256sums=('aa961eafb8317e0eb8da37eb6e2c9ff42267edd18b56947384e719b85188f58b')
 
 prepare() {
 	mkdir -p build
