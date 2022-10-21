@@ -1,6 +1,6 @@
 pkgbase = assemblyscript
 	pkgdesc = TypeScript to WebAssembly compiler
-	pkgver = 0.21.6
+	pkgver = 0.21.7
 	pkgrel = 1
 	url = https://assemblyscript.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = assemblyscript
 	makedepends = npm
 	depends = nodejs
 	conflicts = typescript
-	noextract = assemblyscript-0.21.6.tgz
-	source = https://registry.npmjs.org/assemblyscript/-/assemblyscript-0.21.6.tgz
-	sha256sums = e8e015b729ec4fe106be3b8da61ab85e2abe4d3e4c29cbedbcf0f47a95b47fff
+	noextract = assemblyscript-0.21.7.tgz
+	source = https://registry.npmjs.org/assemblyscript/-/assemblyscript-0.21.7.tgz
+	sha256sums = 914b349ee42cf0bc6ebf5ea0342843bc7e7c98157bd0d6256a8feb5707b589bb
 
 pkgname = assemblyscript
