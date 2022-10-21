@@ -12,8 +12,6 @@ url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('git' 'libxi' 'glu')
 depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser' 'mujs')
-internal=('extract' 'freeglut' 'lcms2')
-
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
