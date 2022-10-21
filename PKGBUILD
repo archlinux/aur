@@ -11,6 +11,7 @@ conflicts=("findex" "findex-git")
 source=("https://github.com/mdgaziur/findex/releases/download/v$pkgver/findex-$pkgver-x86_64.tar.gz")
 sha256sums=('06db2e1da43edc9c88f9214a75dada10cab0d1fca779a8361ce832c06b4931ed')
 install=post_install.install
+depends=("gtk3" "libkeybinder3")
 
 package() {
     cd "$srcdir/findex-$pkgver-x86_64"
