@@ -1,4 +1,5 @@
 #!/bin/bash
+XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
 export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/osu-stable}"
 
 wine /usr/share/gosumemory/gosumemory.exe
