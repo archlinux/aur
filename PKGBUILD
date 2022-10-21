@@ -2,22 +2,23 @@
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail.com>
 
 pkgname=obs-plugin-input-overlay
-pkgver=4.8fix
-pkgrel=1
-groups=('obs-plugins')
-pkgdesc="obs-studio plugin to show keyboard, gamepad and mouse input on stream, with d-pad fixes for Linux."
+pkgver=4.8
+pkgrel=2
+#groups=('obs-plugins')
+pkgdesc="obs-studio plugin to show keyboard, gamepad and mouse input on stream, legacy v4 branch with D-pad fix for Linux."
 arch=("x86_64")
 url="https://github.com/univrsal/input-overlay"
 license=("GPL")
 provides=("obs-input-overlay")
 conflicts=("obs-input-overlay")
-depends=("obs-studio>=19.0.3" "libuiohook")
+depends=("obs-studio" "libuiohook")
 makedepends=("git")
 source=("git+https://github.com/univrsal/input-overlay.git#branch=legacy")
 sha256sums=('SKIP')
 build() {
     cd "${srcdir}/input-overlay"
     git submodule update --init --recursive
+    sed 's#LibObs#libobs#' CMakeLists.txt -i
     cmake .
     make
 }
