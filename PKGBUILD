@@ -1,7 +1,8 @@
 # Maintainer: Lars Francke <lars.francke@stackable.tech>
 
-pkgname=stackablectl
-pkgver=v0.5.0.r10.g53df183
+_pkgname=stackablectl
+pkgname="${_pkgname}-git"
+pkgver=0
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
@@ -10,6 +11,8 @@ license=('Apache')
 makedepends=('go' 'rust')
 source=("$pkgname::git+https://github.com/stackabletech/stackablectl.git")
 b2sums=('SKIP')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 
 pkgver() {
   cd "$pkgname"
