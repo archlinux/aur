@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=4.208.0.99.g0ce3fa4
+pkgver=5.228.0.rc1.23.g0b685385
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
