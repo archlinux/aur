@@ -1,7 +1,7 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=mmfm
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Viewer and manager for multimedia files'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	'36329422be453b5aa97f1eec9eb2448d3f456e309378b4ede42f95418b88cc61'
+	'4755c8b6b1625ff3f7af8e33fa5b1302a27f7b829295c72a9c94876a093e4ec7'
 )
 
 prepare() {
@@ -29,6 +29,5 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" ninja -C build install
-	cp -R "${pkgname}-${pkgver}/res" "${pkgdir}/usr/share/${pkgname}/"
 }
 
