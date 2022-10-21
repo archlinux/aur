@@ -1,0 +1,4 @@
+pkg
+src
+rustic-git
+*.pkg.tar.zst
