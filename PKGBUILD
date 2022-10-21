@@ -2,12 +2,12 @@
 
 _java_ver=19
 _jdkname="zulu-${_java_ver}"
-_zulu_build="${_java_ver}.28.81-ca"
+_zulu_build="${_java_ver}.30.11-ca"
 pkgname="${_jdkname}-bin"
-pkgver="${_java_ver}.0.0"
+pkgver="${_java_ver}.0.1"
 pkgrel=1
 pkgdesc='Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.'
-arch=('aarch64' 'i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 url='https://www.azul.com/downloads/'
 license=('custom')
 depends=(
@@ -25,19 +25,15 @@ provides=(
 )
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
-source_i686=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_i686.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('c640fc5e5710dba3f92099a791be50fab54f91cf2c3838cb536ded27ecc562a6')
-sha256sums_i686=('2ad3386e696507b55245811b1d6bce3bdcd5b29e8cd19a0395615c2d8ebe2e64')
-sha256sums_x86_64=('6813da339124261092daab369a1c60dea5f27f4ba9608a16517191d30511a087')
+sha256sums_aarch64=('5f9c1ea91000a271afad3726149a6aefbca3c3b9e0fa790e9aa7fbf0f38aa9ed')
+sha256sums_x86_64=('2ac8cd9e7e1e30c8fba107164a2ded9fad698326899564af4b1254815adfaa8a')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 package() {
   if [ "${CARCH}" = "aarch64" ]; then
     cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64"
-  elif [ "${CARCH}" = "i686" ]; then
-    cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_i686"
   else
     cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_x64"
   fi

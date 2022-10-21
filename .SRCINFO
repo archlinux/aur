@@ -1,11 +1,10 @@
 pkgbase = zulu-19-bin
 	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 19.0.0
+	pkgver = 19.0.1
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = zulu-19-bin.install
 	arch = aarch64
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-environment-common>=3
@@ -17,11 +16,9 @@ pkgbase = zulu-19-bin
 	provides = java-runtime-headless-openjdk=19
 	provides = java-runtime=19
 	provides = java-runtime-openjdk=19
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu19.28.81-ca-jdk19.0.0-linux_aarch64.tar.gz
-	sha256sums_aarch64 = c640fc5e5710dba3f92099a791be50fab54f91cf2c3838cb536ded27ecc562a6
-	source_i686 = https://cdn.azul.com/zulu/bin/zulu19.28.81-ca-jdk19.0.0-linux_i686.tar.gz
-	sha256sums_i686 = 2ad3386e696507b55245811b1d6bce3bdcd5b29e8cd19a0395615c2d8ebe2e64
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu19.28.81-ca-jdk19.0.0-linux_x64.tar.gz
-	sha256sums_x86_64 = 6813da339124261092daab369a1c60dea5f27f4ba9608a16517191d30511a087
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 5f9c1ea91000a271afad3726149a6aefbca3c3b9e0fa790e9aa7fbf0f38aa9ed
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-linux_x64.tar.gz
+	sha256sums_x86_64 = 2ac8cd9e7e1e30c8fba107164a2ded9fad698326899564af4b1254815adfaa8a
 
 pkgname = zulu-19-bin
