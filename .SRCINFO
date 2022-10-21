@@ -1,0 +1,15 @@
+pkgbase = python-fonts-git
+	pkgdesc = Python font packaging framework
+	pkgver = r16.3abfa4b
+	pkgrel = 1
+	url = https://github.com/pimoroni/fonts-python
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	provides = python-fonts
+	conflicts = python-fonts
+	source = git+https://github.com/pimoroni/fonts-python.git
+	sha512sums = SKIP
+
+pkgname = python-fonts-git
