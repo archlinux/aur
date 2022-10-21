@@ -1,6 +1,4 @@
-# Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
-# Contributor: Laszlo Papp <lpapp@kde.org>
-# Contributor: Alexander Blinne <alexander@blinne.net>
+# Maintainer: Enamul Hasan Abid <enamulhabid@gmail.com>
 
 _pkgname=8188eu
 pkgname="${_pkgname}-dkms-git"
