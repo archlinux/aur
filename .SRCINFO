@@ -1,11 +1,18 @@
 pkgbase = python-diffusers
 	pkgdesc = Pretrained diffusion models
-	pkgver = 0.3.0
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://pypi.org/project/diffusers
+	url = https://github.com/huggingface/diffusers
 	arch = x86_64
 	license = Apache License 2.0
-	source = python-diffusers-0.3.0::https://github.com/huggingface/diffusers/archive/refs/tags/v0.3.0.tar.gz
-	b2sums = 5e44f2c9527caad11919c001757179e8dce31b8244c9bdda12b88b332e20371e88cd863e587a6c8ab7e60e95340ceec1fdbcb0e4dc50a61715c28cc90343ff96
+	depends = python-pillow
+	depends = python-requests
+	depends = python-regex
+	depends = python-numpy
+	depends = python-huggingface-hub
+	depends = python-filelock
+	depends = python-importlib-metadata
+	source = python-diffusers-0.6.0::https://github.com/huggingface/diffusers/archive/refs/tags/v0.6.0.tar.gz
+	sha512sums = 415ef2cfa6c6ba2654064910e068f4546e2f975e53441232d642c56e599e3a2cee1ffbe0dff96b7e5d788178e3cb4703ce8694987c47e4b67e579e796bb38c54
 
 pkgname = python-diffusers
