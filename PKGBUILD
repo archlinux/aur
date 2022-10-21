@@ -1,20 +1,13 @@
-#!/usr/hint/bash
-# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034,SC2154 # unused/uninitialized variables.
-# shellcheck disable=SC2191
-[[ -v TRAVIS ]] && DISABLE_PYTHON=1
+# Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
+# Contributor: Started by https://github.com/qumaciel at https://github.com/PixarAnimationStudios/USD/issues/2000
 
-# Configuration.
-_ver="v20.05" #switch to last blender supported version, latest is "v20.08"
+# WARNING This USD build is not intended for building Blender.
+
+_tbbmajorver=2019
+_tbbpkgminorver=6
+_opensubdivver=3.4.4
+_ver="v22.11"
 _fragment="#tag=$_ver"
-if ((DISABLE_PYTHON)); then
-  _CMAKE_FLAGS+=( "-DPXR_ENABLE_PYTHON_SUPPORT:BOOL=OFF" )
-  makedepends+=( python2 )
-else
-  _CMAKE_FLAGS+=( -DPXR_PYTHON_SHEBANG:STRING="/usr/bin/python2" )
-  eval "depends+=( python2{,-opengl,-pyside} )"
-  eval "makedepends+=( python2-{jinja,pyside-tools} )"
-fi
 
 pkgname=usd
 pkgver=${_ver#v}
@@ -23,45 +16,98 @@ pkgdesc="3D VFX pipeline interchange file format."
 arch=('x86_64')
 url="https://graphics.pixar.com/usd/docs/index.html"
 license=('Apache')
-depends+=('boost-libs' 'glew' 'openexr' 'opensubdiv')
-makedepends+=('boost' 'cmake' 'git' 'intel-tbb' 'ninja')
+depends+=('boost-libs' 'glew' 'openexr' 'python-opengl' 'pyside6' 'pyside2')
+makedepends+=('boost' 'cmake' 'git' 'ninja' 'python-jinja' 'inetutils' 'doxygen' 'glfw' 'glew' 'python' 'python-pygments' 'python-docutils' 'opencl-headers' 'cuda')
 provides=("usd=${pkgver}")
+conflicts=("usd")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
-        "boost_python2.patch"
-        "blender.patch")
-sha256sums=('SKIP'
-            '2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e'
-            '95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a')
+        https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz
+        "https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${_opensubdivver//./_}.tar.gz"
+        )
+sha512sums=('SKIP'
+            '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
+            'fc8f28b79347015c8991150535c1339e695d96947c72fadd4fa27b546a0813c1125cd175ee03bed5aacdb3609f74c4e526ef70103d1195ba9f7df041e73ea9fb'
+            )
+options=(!lto)
+
+
+
+
+
 
 prepare() {
-  git -C USD apply -v "${srcdir}"/{boost_python2,blender}.patch
-}
 
-#pkgver() {
-#  git -C USD describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+  ############################
+  #       TBB 2019.6         #
+  ############################
+
+  # USD is built against tbb 2019 update 6 and it is broken with current 2021.6.0
+  mkdir -p "${srcdir}"/tbb2019
+  cd oneTBB-${_tbbmajorver}_U${_tbbpkgminorver}
+  make
+  install -Dm755 build/linux_*/*.so* -t "${srcdir}"/tbb2019/usr/lib
+  install -d "${srcdir}"/tbb2019/usr/include
+  cp -a include/tbb "${srcdir}"/tbb2019/usr/include
+  cmake \
+    -DINSTALL_DIR="${srcdir}"/tbb2019/usr/lib/cmake/TBB \
+    -DSYSTEM_NAME=Linux \
+    -DTBB_VERSION_FILE="${srcdir}"/tbb2019/usr/include/tbb/tbb_stddef.h \
+    -P cmake/tbb_config_installer.cmake
+
+  ############################
+  #     opensubdiv 3.4.4     #
+  ############################
+  # opensubdiv also depends on tbb and the upstream package is patched to work
+  # with tbb2021, so we need to rebuild targeting tbb2019 to build
+  # usd with -DPXR_BUILD_MONOLITHIC
+  mkdir -p "${srcdir}"/opensubdiv344
+  cd "${srcdir}"/"OpenSubdiv-${_opensubdivver//./_}"
+
+  mkdir -p build
+  cd build
+
+  mkdir -p CMakeFiles/osd_static_gpu.dir/osd
+
+  cmake .. \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DTBB_LOCATION="${srcdir}"/tbb2019/usr \
+      -DOSD_CUDA_NVCC_FLAGS='--gpu-architecture=compute_53' \
+      -DCUDA_HOST_COMPILER=/usr/bin/g++ \
+      -DCMAKE_INSTALL_PREFIX="${srcdir}"/opensubdiv344/usr
+
+  make
+  make install
+
+}
 
 build() {
   _CMAKE_FLAGS+=(
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr
-    -DPXR_BUILD_TESTS:BOOL=OFF
-    -DPXR_BUILD_MONOLITHIC:BOOL=ON          # Required by blender-2.83
-    -DBoost_NO_BOOST_CMAKE=ON               # Fix boost overwriting boost_python27 with boost_python
-    -DPXR_SET_INTERNAL_NAMESPACE=usdBlender
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr/usd
+    -DPXR_BUILD_TESTS=ON
+    -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
+    -DOPENSUBDIV_ROOT_DIR="${srcdir}"/opensubdiv344/usr
+    -DBoost_NO_BOOST_CMAKE=ON
+    -DPXR_USE_PYTHON_3=ON
     -DBUILD_SHARED_LIBS=ON
-    -DCMAKE_DEBUG_POSTFIX=_d
+    -DPXR_MALLOC_LIBRARY:path=/usr/lib/libjemalloc.so
+    -DPXR_VALIDATE_GENERATED_CODE=OFF
   )
+  export CXXFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
   cmake -S USD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
-# shellcheck disable=SC2046
-  ninja -C build ${MAKEFLAGS:--j1}
-}
 
-#check() {
-#  ninja -C build test
-#}
+  LD_PRELOAD=/usr/lib/libjemalloc.so ninja -C build ${MAKEFLAGS:--j12}
+}
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-}
+  mkdir -p $pkgdir/usr/bin
+  ln -s "/usr/usd/bin/usdview" "$pkgdir/usr/bin/usdview"
 
-# vim:set ts=2 sw=2 et:
+  echo ""
+  echo "----------------------------------------------"
+  echo "To launch usdview use this env vars:"
+  echo "PATH       /lib:/usr/usd/bin"
+  echo "PYTHONPATH /usr/usd/lib/python"
+  echo "LD_PRELOAD /usr/lib/libjemalloc.so (Optional)"
+  echo "----------------------------------------------"
+}

@@ -1,31 +1,38 @@
 pkgbase = usd
 	pkgdesc = 3D VFX pipeline interchange file format.
-	pkgver = 20.05
+	pkgver = 22.11
 	pkgrel = 1
 	url = https://graphics.pixar.com/usd/docs/index.html
 	arch = x86_64
 	license = Apache
-	makedepends = python2-jinja
-	makedepends = python2-pyside-tools
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = intel-tbb
 	makedepends = ninja
-	depends = python2
-	depends = python2-opengl
-	depends = python2-pyside
+	makedepends = python-jinja
+	makedepends = inetutils
+	makedepends = doxygen
+	makedepends = glfw
+	makedepends = glew
+	makedepends = python
+	makedepends = python-pygments
+	makedepends = python-docutils
+	makedepends = opencl-headers
+	makedepends = cuda
 	depends = boost-libs
 	depends = glew
 	depends = openexr
-	depends = opensubdiv
-	provides = usd=20.05
-	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v20.05
-	source = boost_python2.patch
-	source = blender.patch
-	sha256sums = SKIP
-	sha256sums = 2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e
-	sha256sums = 95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a
+	depends = python-opengl
+	depends = pyside6
+	depends = pyside2
+	provides = usd=22.11
+	conflicts = usd
+	options = !lto
+	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v22.11
+	source = https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.tar.gz
+	source = https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v3_4_4.tar.gz
+	sha512sums = SKIP
+	sha512sums = 6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15
+	sha512sums = fc8f28b79347015c8991150535c1339e695d96947c72fadd4fa27b546a0813c1125cd175ee03bed5aacdb3609f74c4e526ef70103d1195ba9f7df041e73ea9fb
 
 pkgname = usd
-
