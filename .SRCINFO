@@ -1,6 +1,6 @@
 pkgbase = rustic-git
 	pkgdesc = A self hosted music server with support for many streaming services
-    pkgver = r406.d7ce0b5
+	pkgver = r406.d7ce0b5
 	pkgrel = 1
 	url = https://github.com/rustic-music-player/rustic
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = rustic-git
 	arch = armv7h
 	license = GPL3
 	makedepends = git
-	makedepends = cargo-nightly
+	makedepends = cargo
 	provides = rustic
 	source = rustic-git::git+https://github.com/rustic-music-player/rustic
 	md5sums = SKIP
