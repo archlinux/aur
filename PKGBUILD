@@ -1,6 +1,6 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
-# Maintainer: qwivan <qw7692336 at gmail dot com>
+# Maintainer: qwivan <ivanngonline@hotmail.com>
 
 pkgname="pushbullet-cli"
 pkgver="1.2.2"
