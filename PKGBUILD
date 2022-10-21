@@ -2,9 +2,9 @@
 # Contributor: max.bra <max dot bra at alice dot it>
 
 pkgname=viagee
-pkgver=3.0
+pkgver=3.6
 _pkgbranch=master
-pkgrel=2
+pkgrel=1
 pkgdesc="Formerly gnome-gmail. It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client."
 arch=('any')
 url="https://davesteele.github.io/viagee/"
@@ -16,7 +16,7 @@ conflicts=('gnome-gmail')
 provides=('gnome-gmail')
 replaces=('gnome-gmail')
 source=(https://github.com/davesteele/$pkgname/archive/master/$pkgver.tar.gz)
-md5sums=('5a687eca75dea304f83636bc00531cad')
+md5sums=('48a529f94c3744ac33fa85710fb32dfc')
 install=$pkgname.install
 
 build() {
