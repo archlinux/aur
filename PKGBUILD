@@ -39,7 +39,7 @@ build() {
 package() {
   make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 "xcb-util-wm-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "xcb-util-wm-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   rm -fr "${pkgdir}/usr/include"
 }
