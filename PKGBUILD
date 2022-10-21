@@ -3,7 +3,7 @@
 pkgname=wg-systray-git
 _pkgname=wg-systray
 pkgver=r6.17fc0f2
-pkgrel=1
+pkgrel=2
 pkgdesc='System tray icon which helps managing WireGuard interfaces.'
 arch=('x86_64')
 url='https://github.com/GaZaTu/wg-systray'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('qt5-base' 'wireguard-tools')
 makedepends=('cmake' 'git')
 provides=('wg-systray')
-conflicts=('x11-emoji-picker')
+conflicts=()
 source=('wg-systray::git+https://github.com/GaZaTu/wg-systray')
 sha256sums=('SKIP')
 
