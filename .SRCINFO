@@ -1,10 +1,12 @@
 pkgbase = lilo
 	pkgdesc = A bootloader for Linux
 	pkgver = 24.2
-	pkgrel = 3
-	url = https://alioth.debian.org/projects/lilo/
+	pkgrel = 4
+	url = https://web.archive.org/web/20160627071029/https://lilo.alioth.debian.org/
 	install = lilo.install
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = BSD
 	makedepends = bin86
@@ -24,6 +26,8 @@ pkgbase = lilo
 	source = 09_fix-manpage-lilo-conf-5.patch
 	source = 10_fix-manpage-lilo-conf-5.patch
 	source = 11_fix-gcc-10.patch
+	source = 12_add-nvme-support.patch
+	source = 13_check-for-__GLIBC__.patch
 	md5sums = fe5e8c9754cee342b958b5fcbbb6eb51
 	md5sums = c828942206c191242875d9b5fbeae094
 	md5sums = 3e9380373e16b930c079ad31376468d9
@@ -34,6 +38,7 @@ pkgbase = lilo
 	md5sums = 96cfca0c181b116de256e990752f5af0
 	md5sums = fd26557bc2d704105369c5ad6e3cc38e
 	md5sums = 112a98527481c4d9ec8e76a0bd30af8e
+	md5sums = 450098c06bbf86f72ec9cda267a4b4b8
+	md5sums = 6e709ce403b396f290d85d1a82fb7bb0
 
 pkgname = lilo
-

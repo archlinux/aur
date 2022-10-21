@@ -5,10 +5,10 @@
 
 pkgname=lilo
 pkgver=24.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A bootloader for Linux"
-arch=('i686' 'x86_64')
-url="https://alioth.debian.org/projects/lilo/"
+arch=('i486' 'i686' 'pentium4' 'x86_64')
+url="https://web.archive.org/web/20160627071029/https://lilo.alioth.debian.org/"
 license=('BSD')
 backup=('etc/lilo.conf')
 depends=('device-mapper' 'coreutils')
@@ -26,6 +26,8 @@ source=("https://alioth-archive.debian.org/releases/lilo/Lilo/${pkgver}/${pkgnam
         '09_fix-manpage-lilo-conf-5.patch'
         '10_fix-manpage-lilo-conf-5.patch'
         '11_fix-gcc-10.patch'
+        '12_add-nvme-support.patch'
+        '13_check-for-__GLIBC__.patch'
         )
 
 md5sums=('fe5e8c9754cee342b958b5fcbbb6eb51'
@@ -38,6 +40,8 @@ md5sums=('fe5e8c9754cee342b958b5fcbbb6eb51'
          '96cfca0c181b116de256e990752f5af0'
          'fd26557bc2d704105369c5ad6e3cc38e'
          '112a98527481c4d9ec8e76a0bd30af8e'
+         '450098c06bbf86f72ec9cda267a4b4b8'
+         '6e709ce403b396f290d85d1a82fb7bb0'
         )
 
 prepare(){
@@ -51,6 +55,7 @@ prepare(){
   patch -Np1 -i ../09_fix-manpage-lilo-conf-5.patch
   patch -Np1 -i ../10_fix-manpage-lilo-conf-5.patch
   patch -Np1 -i ../11_fix-gcc-10.patch
+  patch -Np1 -i ../12_add-nvme-support.patch
 }
 
 build() {
