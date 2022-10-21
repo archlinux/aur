@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: ramen <hendrik@hndrkk.sh>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Gore Liu <goreliu@126.com>
 
 pkgname=python-lolcat
