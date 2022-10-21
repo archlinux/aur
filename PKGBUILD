@@ -3,6 +3,7 @@
 pkgbase=pipewire-git
 pkgname=('pipewire-git'
          'pipewire-docs-git'
+         'pipewire-audio-git'
          'pipewire-jack-git'
          'pipewire-alsa-git'
          'pipewire-pulse-git'
@@ -13,7 +14,7 @@ pkgname=('pipewire-git'
          'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.51.21.g15431570f
+pkgver=0.3.59.126.gfacf73b01
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -28,12 +29,15 @@ makedepends=('git'
              'sbc'
              'rtkit'
              'dbus'
+             'systemd'
+             'glib2'
              'sdl2'
              'ncurses'
              'libsndfile'
              'bluez-libs'
              'ffmpeg'
              'libldac'
+             'opus'
              'libfreeaptx'
              'libfdk-aac'
              'libcamera-git'
@@ -107,27 +111,17 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-git() {
-  depends=('rtkit'
-           'libasound.so'
-           'libbluetooth.so'
-           'libdbus-1.so'
-           'libfdk-aac.so'
-           'libldacBT_enc.so'
+  depends=('libdbus-1.so'
+           'libglib-2.0.so'
            'libncursesw.so'
-           'libfreeaptx.so'
-           'libsbc.so'
-           'libsndfile.so'
            'libsystemd.so'
            'libudev.so'
            'libvulkan.so'
-           'libwebrtc_audio_processing.so'
-           'libusb-1.0.so'
-           'liblilv-0.so'
-           'libx11'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
               'pipewire-alsa-git: ALSA support'
+              'pipewire-audio-git: Audio support'
               'pipewire-pulse-git: PulseAudio support'
               'pipewire-ffmpeg-git: ffmpeg support'
               'pipewire-session-manager: Session manager'
@@ -156,9 +150,24 @@ package_pipewire-git() {
   # directories for overrides
   mkdir -p "${pkgdir}/etc/pipewire/"{client-rt,client,minimal,pipewire}.conf.d
 
-  rm -fr "${srcdir}"/{alsa,camera,docs,ffmpeg,jack,pulse,roc,v4l2,x11-bell,zeroconf}
+  rm -fr "${srcdir}"/{audio,alsa,camera,docs,ffmpeg,jack,pulse,roc,v4l2,x11-bell,zeroconf}
 
   (cd "${pkgdir}"
+
+  _pick audio usr/bin/pw-{cat,play,record,midi{play,record},dsdplay}
+  _pick audio usr/bin/pw-{loopback,mididump}
+  _pick audio usr/bin/spa-{acp-tool,resample}
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-echo-cancel.so"
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-filter-chain.so"
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
+  _pick audio usr/lib/spa-0.2/{aec,audio*,bluez5,volume}
+  _pick audio usr/lib/systemd/user/filter-chain.service
+  _pick audio usr/share/man/man1/pw-{cat,mididump}.1
+  _pick audio usr/share/pipewire/filter-chain*
+  _pick audio usr/share/spa-0.2/bluez5
 
   _pick docs usr/share/doc
 
@@ -166,7 +175,7 @@ package_pipewire-git() {
   _pick jack usr/include/jack
   _pick jack usr/lib/libjack*
   _pick jack usr/lib/pkgconfig/jack.pc
-  _pick jack usr/lib/spa-0.2/jack/libspa-jack.so
+  _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/pipewire/jack.conf
   _pick jack usr/share/man/man1/pw-jack.1
 
@@ -180,17 +189,17 @@ package_pipewire-git() {
   _pick pulse usr/share/alsa-card-profile
 
   _pick alsa usr/lib/alsa-lib
-  _pick alsa usr/lib/spa-0.2/alsa/libspa-alsa.so
+  _pick alsa usr/lib/spa-0.2/alsa
   _pick alsa usr/share/alsa
 
-  _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
+  _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 
   _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
   _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
 
   _pick v4l2 usr/bin/pw-v4l2
   _pick v4l2 "usr/lib/pipewire-${_ver}/v4l2"
-  _pick v4l2 usr/lib/spa-0.2/v4l2/libspa-v4l2.so
+  _pick v4l2 usr/lib/spa-0.2/v4l2
 
   _pick roc "usr/lib/pipewire-${_ver}/libpipewire-module-roc-sink.so"
   _pick roc "usr/lib/pipewire-${_ver}/libpipewire-module-roc-source.so"
@@ -215,6 +224,31 @@ package_pipewire-docs-git() {
   mv docs/* "${pkgdir}"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+package_pipewire-audio-git() {
+  pkgdesc+=" - Audio support (GIT Version)"
+  depends=("libpipewire-${_ver}.so"
+           'alsa-card-profiles'
+           'libasound.so'
+           'libbluetooth.so'
+           'libfdk-aac.so'
+           'libfreeaptx.so'
+           'libldacBT_enc.so'
+           'liblilv-0.so'
+           'libopus.so'
+           'libsbc.so'
+           'libsndfile.so'
+           'libusb-1.0.so'
+           'libwebrtc_audio_processing.so'
+           'pipewire-git'
+           )
+  provides=("pipewire-audio=${pkgver}")
+  conflicts=('pipewire-audio')
+
+  mv audio/* "${pkgdir}"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
 }
 
 package_pipewire-jack-git() {
@@ -282,6 +316,7 @@ package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
+           'libasound.so'
            'pipewire-session-manager'
           )
   backup=('usr/share/alsa/alsa.conf.d/50-pipewire.conf'
@@ -366,6 +401,7 @@ package_pipewire-libcamera-git() {
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
            'libcamera-git'
+           'gcc-libs'
            )
   provides=("pipewire-libcamera=${pkgver}")
   conflicts=('pipewire-libcamera')
@@ -379,7 +415,6 @@ package_pipewire-x11-bell-git() {
   pkgdesc+=" - X11 bell (GIT version)"
   depends=('libcanberra.so'
            "libpipewire-${_ver}.so"
-           'libx11'
            'libxfixes'
            )
   provides=("pipewire-x11-bell=${pkgver}")
