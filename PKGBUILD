@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-comparxiv
 _name=${pkgname#python-}
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="A wrapper of latexdiff to compare two version of an arXiv preprint with a single command"
 arch=('any')
 url="https://github.com/temken/comparxiv"
@@ -21,34 +21,13 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-#checkdepends=('python-pytest')
-source=(
-    "${_name}-${pkgver}.tar.gz::https://github.com/temken/${_name}/archive/refs/tags/v${pkgver}.tar.gz"
-    "fix-query.patch::https://github.com/temken/${_name}/commit/a73f623.patch"
-)
-b2sums=(
-    'df820799c1d03d141af27e3fb6b8f4caa6c8ce190056496ff99bc4b6857d8d9a1f6d268ed14352bbc2293d22fd1d1ea1295eac2ec89b44a9fdb70b6c12be6330'
-    '0320b0a2fd23196f645814e05d8b1792248c2094953e93cc60042232698014aee0df205515aab502fecb64bd9feccf2e84c870c5a71a06d6b7368ccb98657a35')
-
-prepare() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/fix-query.patch"
-}
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('d9c7583ee8e9bf9943195f31d76a799232ebf99f197ea8a907a2c98c90228777855fe050c7d56e3bced1c71c5508b4b01bc7998287f2caa1ef6933a0cb1c61e2')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m build --wheel --no-isolation
 }
-
-#check() {
-#    cd "${srcdir}/${_name}-${pkgver}"
-#    rm -rf test
-#    python -m installer --destdir="test" dist/*.whl
-#    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-#    export PYTHONPATH="${PWD}/test/usr/lib/python${python_version}/site-packages"
-#    rm -rf ${_name}
-#    python -m pytest -v tests/
-#}
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
