@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
@@ -33,9 +33,9 @@ prepare()
     rm -d $pkgname-$pkgver/cmake_modules
     rm -d $pkgname-$pkgver/src/gui/desktop/quick_items/external/qml-colorpicker
     rm -d $pkgname-$pkgver/src/face_recognition/dlib_wrapper/face_recognition_models
-    ln -s ../cmake_modules $pkgname-$pkgver/cmake_modules
-    ln -s ../../../../../../qml-colorpicker $pkgname-$pkgver/src/gui/desktop/quick_items/external/qml-colorpicker
-    ln -s ../../../../face_recognition_models $pkgname-$pkgver/src/face_recognition/dlib_wrapper/face_recognition_models
+    cp -r cmake_modules $pkgname-$pkgver/cmake_modules
+    cp -r qml-colorpicker $pkgname-$pkgver/src/gui/desktop/quick_items/external/qml-colorpicker
+    cp -r face_recognition_models $pkgname-$pkgver/src/face_recognition/dlib_wrapper/face_recognition_models
 }
 
 build()
