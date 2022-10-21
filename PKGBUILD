@@ -1,18 +1,19 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
+# Maintainer: qwivan <qw7692336 at gmail dot com>
 
 pkgname="pushbullet-cli"
-pkgver="0.7.5"
+pkgver="1.2.2"
 pkgrel="2"
 pkgdesc="Command line tool for controlling PushBullet."
 arch=('i686' 'x86_64')
-url="https://github.com/r-darwish/pushbullet-cli"
+url="https://github.com/GustavoKatel/pushbullet-cli"
 license=('MIT')
 depends=('python-pushbullet.py' 'python-click' 'python-keyrings-alt' 'python-magic')
 provides=("${pkgname}")
 
-source=("https://github.com/r-darwish/${pkgname}/archive/0.7.5.tar.gz")
-sha256sums=('e221a9ad4061247c168626106bbaff1fe2833fe6509a06e83a70e63023153a16')
+source=("https://github.com/GustavoKatel/${pkgname}/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('bede70a79c94776d2e935466482056db59eaeea680118072392ddf1ae56d1392')
 
 build() {
 	cd "${pkgname}-${pkgver}"
