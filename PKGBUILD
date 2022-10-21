@@ -1,8 +1,8 @@
 # Maintainer: Skydrome <skydrome at protonmail dot com>
 
 pkgname=zulu-embedded-jdk
-pkgver=18.0.2
-_build=18.32.11
+pkgver=19.0.1
+_build=19.30.11
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for ARMv8 64bit devices.'
 arch=('armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
@@ -17,22 +17,24 @@ depends=('java-runtime-common>=3' 'java-environment-common>=3'
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        pkgver=17.0.4
-        _build=17.36.15
-        sha256sums=('ff265ededbe59a894d760440b76286175f3f1a4687751e60f98db40ee2a6d6af')
+        pkgver=17.0.5
+        _build=17.38.21
+        sha256sums=('55f936d1b067bfc760ae5682f563ac79dd93a31d0042e04c77bac11f62dacf0b')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         provides=("java-environment=13" "java-runtime=13")
         ;;
     aarch64) _arch='aarch64'
-        sha256sums=('9cab96609bbbfc21846499aabf63c78e9913e408d3967bb66963607c45b92d8d')
+        sha256sums=('5f9c1ea91000a271afad3726149a6aefbca3c3b9e0fa790e9aa7fbf0f38aa9ed')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         ;;
     i686) _arch='i686'
-        sha256sums=('425480c471d5400f8d622d4530fa7d6c8d92bc62253d3af7950ff8e08d27686c')
+        pkgver=18.0.2.1
+        _build=18.32.13
+        sha256sums=('91337d39daccf91169761b2b0b80249f1a65cb60e8a6a82d5bbffd2eee10ef4e')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         ;;
     x86_64) _arch='x64'
-        sha256sums=('df1b433f77fe57ab8697643772f88d8727e9e70dc5ccc6a274cde1870bd96474')
+        sha256sums=('2ac8cd9e7e1e30c8fba107164a2ded9fad698326899564af4b1254815adfaa8a')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         ;;
 esac
