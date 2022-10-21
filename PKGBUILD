@@ -2,7 +2,7 @@
 pkgname=engine-sim-git
 provides=('engine-sim')
 conflicts=('engine-sim')
-pkgver=r235.af6a219
+pkgver=r238.c695edb
 pkgrel=1
 license=('MIT')
 pkgdesc='Combustion engine simulator that generates realistic audio.'
@@ -34,7 +34,7 @@ prepare() {
     
     git submodule init
     for SUBMODULE in 'csv-io' 'delta-studio' 'direct-to-video' 'piranha' 'simple-2d-constraint-solver'; do
-        git config "submodule.externals/vendor/dependencies/submodules/${SUBMODULE}.url" "${srcdir}/${SUBMODULE}"
+        git config "submodule.dependencies/submodules/${SUBMODULE}.url" "${srcdir}/${SUBMODULE}"
     done
     git submodule update
 }
