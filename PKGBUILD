@@ -56,6 +56,7 @@ prepare(){
   patch -Np1 -i ../10_fix-manpage-lilo-conf-5.patch
   patch -Np1 -i ../11_fix-gcc-10.patch
   patch -Np1 -i ../12_add-nvme-support.patch
+  patch -Np1 -i ../13_check-for-__GLIBC__.patch
 }
 
 build() {
