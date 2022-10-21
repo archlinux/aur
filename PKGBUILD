@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=10.8.129
+pkgver=10.9.54
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -66,24 +66,25 @@ prepare() {
   msg2 "Running GN..."
   gn gen $OUTFLD \
     -vv --fail-on-unused-args \
-    --args='is_asan=false
+    --args='cppgc_enable_young_generation=true
+            dcheck_always_on=false
+            is_asan=false
             is_clang=false
             is_component_build=true
             is_debug=false
             is_official_build=false
             treat_warnings_as_errors=false
             use_custom_libcxx=false
+            use_goma=false
             use_lld=true
             use_sysroot=false
             v8_enable_backtrace=true
             v8_enable_disassembler=true
-            v8_generate_external_defines_header=true
             v8_enable_i18n_support=true
             v8_enable_object_print=true
             v8_enable_sandbox=false
             v8_enable_verify_heap=true
-            v8_use_external_startup_data=false
-            dcheck_always_on=false'
+            v8_use_external_startup_data=false'
 
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
   msg2 "Adding icu missing folders"
