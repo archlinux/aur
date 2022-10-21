@@ -2,7 +2,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-e820-patched
-pkgver=5.19.10.zen1
+pkgver=6.0.2.zen1
 pkgrel=1
 pkgdesc='Linux ZEN - patched with e820 PCIe device addresses overlap detection support'
 _srctag=v${pkgver%.*}-${pkgver##*.}
