@@ -15,7 +15,7 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="16.4.0"
+_pkg_ver="16.5.0"
 _commit="6cd58652c0c3b9e3fef1e3f5e9411aa213b623bf"
 
 # ctags submodule
@@ -25,7 +25,7 @@ _ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 
 # dbgd/wxdap submodule
 _dbgd_pkg_name="eranif-dbgd"
-_dbgd_pkg_ident="cb1c8e4655ed96879f210efc7d2f2c039698b003"
+_dbgd_pkg_ident="6b4f0310c632776575495487f74b77c80732e747"
 _dbgd_pkg_name_ident="${_dbgd_pkg_name}-${_dbgd_pkg_ident:0:7}"
 
 # pkg
@@ -85,9 +85,9 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('60ed21b27a6bff5815bf93573f04c2dc1fc8b7088539daa0f9ff242cfc966fb4'
+sha256sums=('2e36498eff3051780fb93c0fd8c4b723a2461ed72cbd3394317f2481ed48f24a'
             '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
-            '909d3b1367badd29808ecedd60cfdb4884de8850366d537fc1c54e9e8662cd39'
+            'b8feff844f0d355b7a5d2b04906be6e688021a66b9d7ed55a18d9f97cae47208'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
