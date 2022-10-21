@@ -3,7 +3,7 @@
 
 pkgname=tere
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal file explorer"
 arch=(x86_64)
 url=https://github.com/mgunyho/tere
@@ -12,10 +12,22 @@ makedepends=(rust)
 source=(${url}/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('000d597c731f7c69175c6c50ccb20a3f508122e678b46d9fd89736ff7f0ea60e')
 
-build() {
-	cd ${pkgname}-${pkgver}
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
 
-	cargo build --release --locked
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	cargo build --release --frozen
+}
+
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	cargo test --frozen
 }
 
 package() {
