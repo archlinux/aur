@@ -5,7 +5,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
 pkgname=notesnook
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://notesnook.com/"
 license=('GPLv3')
 depends=('gtk3' 'nss')
 source=("notesnook_${pkgver}_amd64.deb"::"https://github.com/streetwriters/notesnook/releases/download/v$pkgver/notesnook_linux_amd64.deb")
-sha256sums=('c83e24137bd70fb37bd4ba5a41f3ab14d96379e5465165443cd8458b2c5d3e63')
+sha256sums=('a1c9bd68bcbd099e25e8c74e4aa60947caf7774938b629066805d5084dd9a2c5')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir"
