@@ -2,7 +2,7 @@
 
 pkgname=tarantool
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
