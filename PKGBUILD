@@ -1,7 +1,7 @@
 # Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
 
 pkgname=fname
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc=' Generate random, human-friendly names.'
 arch=('any')
