@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsp56300-emulator
-pkgver=1.2.15
-pkgrel=3
+pkgver=1.2.20
+pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs (VST3 plugin)'
 arch=('x86_64')
 url='https://github.com/dsp56300/gearmulator'
@@ -27,7 +27,7 @@ makedepends=(
 )
 optdepends=('vst3-host: for VST3 plugin')
 install=dsp56300-emulator.install
-_commit='7ebedff6b64828f3ce4aac84360e361fed9e6d1b'
+_commit='c115834af1437320599cba86d8d7a9a32e1bf5df'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300'
@@ -46,7 +46,10 @@ b2sums=('SKIP'
 pkgver() {
   cd "$pkgname"
 
-  git describe --tags | sed 's/^v//'
+  # no git tags after 1.2.15
+  #git describe --tags | sed 's/^v//'
+  grep 'gearmulator VERSION' CMakeLists.txt | \
+    sed -e 's/^project(gearmulator VERSION \(.*\))/\1/'
 }
 
 prepare() {
