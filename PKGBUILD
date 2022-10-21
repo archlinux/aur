@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=seer-gdb
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="A gui frontend to gdb"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ build() {
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX='/usr' ..
 
-        make
+        make seergdb
 }
 
 package() {
