@@ -1,7 +1,7 @@
 # Maintainer: Rigo Reddig <rigo.reddig@gmail.com>
 pkgname=textshot-git
 _pkgname=textshot
-pkgver=r40.fabf700
+pkgver=r86.a91c188
 pkgrel=1
 pkgdesc="Python tool for grabbing text via screenshot"
 arch=('any')

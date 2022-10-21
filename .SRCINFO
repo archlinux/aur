@@ -1,6 +1,6 @@
 pkgbase = textshot-git
 	pkgdesc = Python tool for grabbing text via screenshot
-	pkgver = r40.fabf700
+	pkgver = r86.a91c188
 	pkgrel = 1
 	url = https://github.com/ianzhao05/textshot
 	arch = any
@@ -23,4 +23,3 @@ pkgbase = textshot-git
 	sha256sums = SKIP
 
 pkgname = textshot-git
-
