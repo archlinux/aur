@@ -1,15 +1,15 @@
 # Maintainer: Aidan Neal <decator(dot)c(at)proton(dot)me>
 pkgname="qinfo-git"
 _pkgname="qinfo"
-pkgver=r70.rb3f292d.
+pkgver=r97.rc3c6e44.
 pkgrel=1
 pkgdesc="A system info program. Fetches system info and displays it."
 arch=("x86_64")
 url="https://github.com/El-Wumbus/qinfo"
 license=("LGPL3")
 provides=("qinfo")
-makedepends=("gcc" "make" "git")
-depends=("coreutils")
+makedepends=("meson" "ninja")
+depends=()
 optdepends=("snapd: List number of snap packages"
             "flatpak: List number of flatpak packages")
 source=($_pkgname::"git+https://github.com/El-Wumbus/qinfo.git")
@@ -20,7 +20,13 @@ pkgver() {
   printf "r%s.$s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$_pkgname"
+  mkdir -p build
+  meson setup build
+  meson compile -C build
+}
 package() {
   cd "$_pkgname"
-  make DESTDIR="${pkgdir}" install
+  install build/qinfo -Dm755 ${pkgdir}/usr/bin/qinfo
 }
