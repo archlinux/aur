@@ -2,11 +2,11 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
-url="https://codeberg.org/flausch/mdcat"
+url="https://github.com/lunaryorn/mdcat"
 license=('MPL2')
 options=(!lto)
 depends=('gcc-libs'
@@ -16,25 +16,25 @@ makedepends=('asciidoctor'
 optdepends=('less: for mdless'
             'librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('5d7b4f4b4c1066a679cd171e7d784b4ab8cad37c44d1e1b4250a21683abff9ca')
+sha256sums=('a918d68bb07fbb00d7b733176175fb2bb0925e1393db072cd04d6927cb8e9fd6')
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgname}-${pkgver}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgname}-${pkgver}"
   cargo build --frozen --release --target-dir=target
 }
 
 check() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgname}-${pkgver}"
   cargo test --frozen
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgname}-${pkgver}"
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   # Hard link binary as mdless. When invoked as mdless mdcat will paginate
