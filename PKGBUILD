@@ -2,11 +2,11 @@
 
 pkgname=gsc
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="All-sky catalog of positions and magnitudes for ~19 million stars and other objects"
 url=""http://gsss.stsci.edu/Catalogs/GSC/GSC1/GSC1.htm
 license=(GPL2)
-arch=(i686 x86_64)
+arch=(any)
 depends=()
 makedepends=(cmake)
 source=("http://cdsarc.u-strasbg.fr/viz-bin/nph-Cat/tar.gz?bincats/GSC_${pkgver}"
