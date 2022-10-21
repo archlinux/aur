@@ -1,6 +1,6 @@
 pkgbase='python-facexlib'
 pkgname=('python-facexlib' 'facexlib-model')
-pkgver=0.2.2
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="FaceXlib aims at providing ready-to-use face-related functions based on current STOA open-source methods. "
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://github.com/xinntao/facexlib/archive/refs/tags/v$pkgver.tar.gz"
 'https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth'
 'https://github.com/xinntao/facexlib/releases/download/v0.1.0/recognition_arcface_ir_se50.pth'
 'https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth')
-sha256sums=('c53d72a39f5523c8a6c9c5150bf57aab21df54722f0b0a40cce0d03c14bc095d'
+sha256sums=('707b75bf79db7d64d3adc9b8f7d2d07332035da78ef6f202a93376e9dd9779ca'
             'ff9277bcc68ecc10e77d88b6d0a32825ec3c85562095542734ec6212eaaf6d81'
             'e4c76d5872fe22a930ea6b584cbd99c0c7e3a128327b5da43db37117fcf50933'
             '7c22235f0925deba15d4d63e53afcb654c47055bbcd98f56e393ab2584007ed8'
