@@ -15,6 +15,7 @@ sha512sums=('eab6588e6a47d28a3b25ecd13b5018529419db6b49c74458c093699b60a194933be
             'SKIP'
             )
 options=('debug')
+validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alan.coopersmith@oracle.com>
 
 prepare() {
   mkdir -p build
