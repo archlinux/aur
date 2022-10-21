@@ -1,6 +1,6 @@
 pkgbase = everest-mons
 	pkgdesc = Command-Line Installer and Manager for Celeste Modding
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/coloursofnoise/mons
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = everest-mons
 	depends = python-pyyaml
 	depends = python-urllib3
 	conflicts = mons
-	source = mons-1.4.1.tar.gz::https://files.pythonhosted.org/packages/source/m/mons/mons-1.4.1.tar.gz
-	md5sums = 18d21726e416aebbb16f6a1229b9229d
+	source = mons-1.4.3.tar.gz::https://files.pythonhosted.org/packages/source/m/mons/mons-1.4.3.tar.gz
+	md5sums = eee1e49136296f280316cc06c7215dbf
 
 pkgname = everest-mons
