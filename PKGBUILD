@@ -6,8 +6,8 @@
 # Contributor: Otto Sabart <seberm[at]gmail[dot]com>
 
 pkgname=knot-git
-pkgver=3.3.dev.r78.f6670ca01
-pkgrel=4
+pkgver=3.3.dev.r81.d16319067
+pkgrel=1
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
 url="https://www.knot-dns.cz/"
@@ -38,7 +38,7 @@ prepare() {
         --with-storage=/var/lib/knot \
         --enable-recvmmsg \
         --enable-dnstap \
-        --disable-quic \
+        --enable-quic \
         --enable-systemd \
         --enable-reuseport \
         --disable-silent-rules \

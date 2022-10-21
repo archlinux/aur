@@ -1,7 +1,7 @@
 pkgbase = knot-git
 	pkgdesc = High-performance authoritative-only DNS server, development build
-	pkgver = 3.3.dev.r78.f6670ca01
-	pkgrel = 4
+	pkgver = 3.3.dev.r81.d16319067
+	pkgrel = 1
 	url = https://www.knot-dns.cz/
 	arch = x86_64
 	license = GPL3
@@ -26,7 +26,7 @@ pkgbase = knot-git
 	depends = libnghttp2
 	depends = libmnl
 	depends = ngtcp2
-	provides = knot=3.3.dev.r78.f6670ca01
+	provides = knot=3.3.dev.r81.d16319067
 	conflicts = knot
 	options = !strip
 	options = debug
