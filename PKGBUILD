@@ -1,8 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=luacheck-git
-pkgver=0.25.0.r42.gca770a4
+pkgver=latest.r2.g81bb2f2
 pkgrel=1
+_rockrel=1
 pkgdesc='A tool for linting and static analysis of Lua code'
 arch=(any)
 url="https://github.com/lunarmodules/${pkgname%-git}"
@@ -16,6 +17,8 @@ provides=("${pkgname%-git}=$pkgver")
 conflicts=(${pkgname%-git})
 optdepends=('lua-lanes: for parallel checking')
 _archive="${pkgname%-git}"
+_rock="$_archive-dev-$_rockrel.all.rock"
+_rockspec="$_archive-dev-$_rockrel.rockspec"
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -26,12 +29,13 @@ pkgver() {
 
 build() {
 	cd "$_archive"
-	luarocks make --pack-binary-rock --deps-mode=none --no-manifest -- ${pkgname%-git}-*.rockspec
+	luarocks make --pack-binary-rock --deps-mode none -- $_rockspec
 }
 
 package() {
 	cd "$_archive"
-	luarocks install --tree="$pkgdir/usr" --deps-mode=none --no-manifest -- ${pkgname%-git}-*.all.rock
+	luarocks --tree "$pkgdir/usr" \
+		install --deps-mode none --no-manifest -- $_rock
 	sed -i -e "s!$pkgdir!!" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
