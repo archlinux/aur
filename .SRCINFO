@@ -1,6 +1,6 @@
 pkgbase = pkger-rs
 	pkgdesc = Build rpm, deb, pkg and other packages using Docker
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/vv9k/pkger
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pkger-rs
 	makedepends = cargo
 	provides = pkger
 	conflicts = pkger
-	source = pkger-0.9.0.tar.gz::https://github.com/vv9k/pkger/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = f532b2a1e8e0895feb147a4c85204f6d5650f99304e6eadce65de2f5183bb734
+	source = pkger-0.10.0.tar.gz::https://github.com/vv9k/pkger/archive/refs/tags/0.10.0.tar.gz
+	sha256sums = 3f50ce572d6a6082bb21e7fccf125d0832a52e10dea74e8f98248499f6b56154
 
 pkgname = pkger-rs
