@@ -1,10 +1,10 @@
 pkgname=hode-git
-pkgver=r20.26bcf11
-pkgrel=3
+pkgver=0.2.9f+r4.26bcf11
+pkgrel=1
 pkgdesc="Heart of Darkness engine rewrite"
 arch=(x86_64 aarch64)
 url=http://cyxdown.free.fr/hode/
-license=(none)
+license=(unknown)
 makedepends=(sdl2)
 optdepends=('heart-of-darkness: provides game data for hode engine')
 install=hode.install
@@ -24,7 +24,7 @@ md5sums=(
     bfdd04e5fdc88f9dfcc2664bbb7578d6)
 pkgver(){
     cd hode
-    echo r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
+    git describe --tags|sed 's/-\(.*\)-g/+r\1./'
 }
 build(){
     cd hode
