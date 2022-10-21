@@ -1,4 +1,5 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: txtsd <code@ihavea.quest>
 # Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Miko <mikoxyzzz@gmail.com>
@@ -7,14 +8,14 @@
 _pkgname=prismlauncher
 pkgname=${_pkgname}-git
 pkgver=5.0.r18.ga9d4370a
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
 provides=('prismlauncher')
-conflicts=('prismlauncher')
+conflicts=('polymc' 'polymc-qt5' 'prismlauncher' 'prismlauncher-qt5')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
@@ -61,4 +62,3 @@ package() {
   cd "build"
   DESTDIR="$pkgdir" cmake --install .
 }
-
