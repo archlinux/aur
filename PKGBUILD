@@ -1,5 +1,5 @@
 pkgname=derclou-git
-pkgver=r14.7b219e7
+pkgver=2.7_r14.7b219e7
 pkgrel=1
 pkgdesc="Der Clou! - SDL2 Port"
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ md5sums=(
     3a3ca09a78ccbc1bdad22bc9d9afdf64)
 pkgver(){
     cd derclou
-    echo r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
+    echo 2.7_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 build(){
     cd derclou

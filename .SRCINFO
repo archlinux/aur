@@ -1,6 +1,6 @@
 pkgbase = derclou-git
 	pkgdesc = Der Clou! - SDL2 Port
-	pkgver = r14.7b219e7
+	pkgver = 2.7_r14.7b219e7
 	pkgrel = 1
 	url = https://github.com/vcosta/derclou
 	install = derclou.install
