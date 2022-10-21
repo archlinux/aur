@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -93,19 +93,29 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
   0003-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
+  0004-soundwire-intel-Initialize-clock-stop-timeout.patch
+  0005-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
+  0006-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
+  0007-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch
+  0008-drm-amdgpu-Fix-for-BO-move-issue.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('a13c26388cacccb684cd9f51109596a280c8186b7e95174d31ee7c5718e95c9d'
+sha256sums=('b0d522241805794d8af3a67d331ba063a16496c6fb6d365d48f7ed78ee1c3dcf'
             'SKIP'
-            '6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3'
+            '9764b52d6b79378124755ba6926104ed4d0cf079e7e1b7eafb7a99406f747fb5'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            '44da7179cd7ec2eb4a5e5b170a7f68bb1508a2e2694f943bf131bbd81dfddc8c'
-            'd6c9579937204568f3bb57b2f45c1f5aedb0596a9358a58bbbcd74dc8bad1735'
-            '23254c5dd2006cf83a605bf39d575a5ff3f3bf647dff2902b4a8ed66358b8459')
+            '0579b6f69a528f25a49fd872c43a8352f8a6e6e1581fbfc626ae04d9789eb2fb'
+            '38d0bf2d48ea454376eaca2af6b7dec285304b710eeccb44e82b0eb2b4359786'
+            '095c5607059a98d764e8b26377587134521c47a12df66729736cedc41f6da017'
+            '596e972f4c4fda1e830eb1dc6851a0d66a41cc504880f78cf32cb379aa6818ab'
+            '22e15d9cc9b59da9febe0ea28c6d862828bb304160d310c83ce21934658fe80a'
+            '0fa8801cbab408513d740b41e325498dd5468b5055e6e456daa727178d678b97'
+            '530a4b74bc6df917c401a0a0b0c1658a8e9ee361b22b6cd56e1305858c190fb5'
+            '322267bec409b46de82f1ed2b8e37cd5cd26bcd5e935f7f4581d21a48a6894e7')
 
 prepare() {
   cd linux-${pkgver}

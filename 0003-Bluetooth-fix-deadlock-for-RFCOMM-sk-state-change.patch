@@ -1,7 +1,7 @@
-From f5f2d7131ea930f307fbbf101c93e2493821f687 Mon Sep 17 00:00:00 2001
+From d8e3330b3698c49d50f5a411aafab8b176012621 Mon Sep 17 00:00:00 2001
 From: Desmond Cheong Zhi Xi <desmondcheongzx@gmail.com>
 Date: Mon, 4 Oct 2021 14:07:34 -0400
-Subject: [PATCH 3/4] Bluetooth: fix deadlock for RFCOMM sk state change
+Subject: [PATCH 3/9] Bluetooth: fix deadlock for RFCOMM sk state change
 
 Syzbot reports the following task hang [1]:
 
@@ -165,7 +165,7 @@ index 7324764384b6..c6494e85cd68 100644
  	refcount_set(&d->refcnt, 1);
  
 diff --git a/net/bluetooth/rfcomm/sock.c b/net/bluetooth/rfcomm/sock.c
-index 4bf4ea6cbb5e..4850dafbaa05 100644
+index 21e24da4847f..559604dd0d65 100644
 --- a/net/bluetooth/rfcomm/sock.c
 +++ b/net/bluetooth/rfcomm/sock.c
 @@ -61,19 +61,22 @@ static void rfcomm_sk_data_ready(struct rfcomm_dlc *d, struct sk_buff *skb)
@@ -227,5 +227,5 @@ index 4bf4ea6cbb5e..4850dafbaa05 100644
  
  /* ---- Socket functions ---- */
 -- 
-2.38.0
+2.38.1
 
