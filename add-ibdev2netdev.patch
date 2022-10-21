@@ -1,0 +1,201 @@
+--- /dev/null	2016-06-11 21:31:27.877143799 -0400
++++ ibdev2netdev	2016-06-11 22:55:00.358718594 -0400
+@@ -0,0 +1,198 @@
++#! /bin/bash
++
++usage()
++{
++        echo "$(basename $0) <options>"
++        echo "-h, --help                print help message"
++        echo "-v, --verbose             print more info"
++}
++
++case $1 in
++        "-h" | "--help")
++                usage
++                exit 0
++                ;;
++esac
++
++if (( $# > 1 )); then
++	usage
++	exit -1
++fi
++
++if (( $# == 1 )) && [ "$1" != "-v" ]; then
++	usage
++        exit -1
++fi
++
++ibdevs=$(ls /sys/class/infiniband/)
++
++devs=$(ls /sys/class/net/ | grep ^[ei])
++if [ "x$devs" == "x" ]; then
++	# no relevant devices - quit immediately
++	exit
++fi
++
++for d in $devs; do
++	if [ -f /sys/class/net/$d/dev_id ]; then
++		oldstyle=n
++		break
++	fi
++done
++
++if [ "x$oldstyle" == "xn" ]; then
++	for d in $ibdevs; do
++		ibrsc=$(cat /sys/class/infiniband/$d/device/resource)
++		eths=$(ls /sys/class/net/)
++		for eth in $eths; do
++			filepath_resource=/sys/class/net/$eth/device/resource
++
++			if [ -f $filepath_resource ]; then
++				ethrsc=$(cat $filepath_resource)
++				if [ "x$ethrsc" == "x$ibrsc" ]; then
++					filepath_devid=/sys/class/net/$eth/dev_id
++					filepath_devport=/sys/class/net/$eth/dev_port
++					if [ -f $filepath_devid ]; then
++						port1=0
++						if [ -f $filepath_devport ]; then
++							port1=$(cat $filepath_devport)
++							port1=$(printf "%d" $port1)
++						fi
++
++						port=$(cat $filepath_devid)
++						port=$(printf "%d" $port)
++						if [ $port1 -gt $port ]; then
++							port=$port1
++						fi
++
++						port=$(( port + 1 ))
++
++						filepath_carrier=/sys/class/net/$eth/carrier
++
++						if [ -f $filepath_carrier ]; then
++							link_state=$(cat $filepath_carrier 2> /dev/null)
++        	                                        if (( link_state == 1 )); then
++                	                                        link_state="Up"
++                        	                        else
++                                	                        link_state="Down"
++                                        	        fi
++						else
++							link_state="NA"
++						fi
++
++						if [ "$1" == "-v" ]; then
++							filepath_portstate=/sys/class/infiniband/$d/ports/$port/state
++							filepath_deviceid=/sys/class/infiniband/$d/device/device
++							filepath_fwver=/sys/class/infiniband/$d/fw_ver
++							filepath_vpd=/sys/class/infiniband/$d/device/vpd
++
++							# read port state
++							if [ -f $filepath_portstate ]; then
++								ibstate=$(printf "%-6s" $(cat $filepath_portstate | gawk '{print $2}'))
++							else
++								ibstate="na"
++							fi
++
++							# read device
++							if [ -f $filepath_deviceid ]; then
++								devid=$(printf "mt%d" $(cat $filepath_deviceid))
++							else
++								devid="na"
++							fi
++
++							# read fw version
++							if [ -f $filepath_fwver ]; then
++								fwver=$(cat $filepath_fwver)
++							else
++								fwver="na"
++							fi
++
++							# read device description and part id from the vpd
++							if [ -f $filepath_vpd ]; then
++								tmp=$ifs
++								ifs=":"
++								vpd_content=`cat $filepath_vpd`
++								devdesc=$(printf "%-15s" $(echo $vpd_content | strings | head -1))
++								partid=$(printf "%-11s" $(echo $vpd_content | strings | head -4 | tail -1 | gawk '{print $1}'))
++								ifs=$tmp
++							else
++								devdesc=""
++								partid="na"
++							fi
++
++							echo "$d ($devid - $partid) $devdesc fw $fwver port $port ($ibstate) ==> $eth ($link_state)"
++						else
++							echo "$d port $port ==> $eth ($link_state)"
++						fi
++					fi
++				fi
++			fi
++		done
++	done
++else
++##########################
++### old style
++##########################
++
++function print_line()
++{
++	echo "$1 port $2 <===> $3"
++}
++
++function find_guid()
++{
++	ibdevs=$(ls /sys/class/infiniband/)
++	for ibdev in $ibdevs; do
++		ports=$(ls /sys/class/infiniband/$ibdev/ports/)
++		for port in $ports; do
++			gids=$(ls /sys/class/infiniband/$ibdev/ports/$port/gids)
++			for gid in $gids; do
++				pguid=$(cat /sys/class/infiniband/$ibdev/ports/$port/gids/$gid | cut -b 21- | sed -e 's/://g')
++				if [ x$pguid == x$1 ]; then
++					print_line $ibdev $port $2
++				fi
++			done
++		done
++	done
++}
++
++function find_mac()
++{
++	ibdevs=$(ls /sys/class/infiniband/)
++	for ibdev in $ibdevs; do
++		type=$(cat /sys/class/infiniband/$ibdev/node_type|cut -d ' ' -f 2)
++		ports=$(ls /sys/class/infiniband/$ibdev/ports/)
++		for port in $ports; do
++			gids=$(ls /sys/class/infiniband/$ibdev/ports/$port/gids)
++			for gid in $gids; do
++				if [[ "$type" = "RNIC" ]]; then
++					pmac=$(cat /sys/class/infiniband/$ibdev/ports/$port/gids/$gid | cut -b 1-14|sed -e 's/://g')
++				else
++					first=$(cat /sys/class/infiniband/$ibdev/ports/$port/gids/$gid | cut -b 21-22)
++					first=$(( first ^ 2 ))
++					first=$(printf "%02x" $first)
++					second=$(cat /sys/class/infiniband/$ibdev/ports/$port/gids/$gid | cut -b 21- | sed -e 's/://g' | cut -b 3-6)
++					third=$(cat /sys/class/infiniband/$ibdev/ports/$port/gids/$gid | cut -b 21- | sed -e 's/://g' | cut -b 11-)
++					pmac=$first$second$third
++				fi
++				if [ x$pmac == x$1 ]; then
++					print_line $ibdev $port $2
++				fi
++			done
++		done
++	done
++}
++
++ifcs=$(ifconfig -a | egrep '^eth|^ib' | gawk '{print $1}')
++
++for ifc in $ifcs; do
++	len=$(cat /sys/class/net/$ifc/addr_len)
++	if (( len == 20 )); then
++		guid=$(cat /sys/class/net/$ifc/address | cut -b 37- | sed -e 's/://g')
++		find_guid $guid $ifc
++	elif (( len == 6)); then
++		mac=$(cat /sys/class/net/$ifc/address | sed -e 's/://g')	
++		find_mac $mac $ifc
++	fi
++done
++fi
++

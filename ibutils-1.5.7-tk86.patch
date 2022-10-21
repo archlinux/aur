@@ -1,0 +1,25 @@
+diff --git a/ibdiag/config/tk.m4 b/ibdiag/config/tk.m4
+index 91ff1cb..e992392 100644
+--- a/ibdiag/config/tk.m4
++++ b/ibdiag/config/tk.m4
+@@ -18,14 +18,16 @@ dnl if we were not given a path - try finding one:
+ if test "x$with_tk_lib" = "xnone"; then
+    dirs="/usr /usr/local /usr/local/ibgd /usr/local/ibg2 /usr/local/ibed /usr/local/ofed"
+    for d in $dirs; do
+-     if test -e $d/lib/libtk8.4.so -o -e $d/lib/libtk8.5.so; then
++      for v in 8.4 8.5 8.6; do
++        if test -e $d/lib/libtk$v.so; then
+         with_tk_lib=$d/lib
+         AC_MSG_NOTICE(TK: found in:$with_tk_lib)
+-     fi
+-     if test -e $d/lib64/libtk8.4.so -o -e $d/lib64/libtk8.5.so; then
++        fi
++        if test -e $d/lib64/libtk$v.so; then
+         with_tk_lib=$d/lib64
+         AC_MSG_NOTICE(TK: found in:$with_tk_lib)
+-     fi
++        fi
++      done
+    done
+ fi
+ 

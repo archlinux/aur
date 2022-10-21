@@ -1,0 +1,24 @@
+diff -up ibutils-1.5.7/ibis/src/ibis.c.me ibutils-1.5.7/ibis/src/ibis.c
+diff -up ibutils-1.5.7/ibis/src/ibis.i.me ibutils-1.5.7/ibis/src/ibis.i
+diff -up ibutils-1.5.7/ibis/src/ibis_wrap.c.me ibutils-1.5.7/ibis/src/ibis_wrap.c
+--- ibutils-1.5.7/ibis/src/ibis_wrap.c.me	2020-03-06 14:20:14.131825861 +0100
++++ ibutils-1.5.7/ibis/src/ibis_wrap.c	2020-03-06 15:03:55.330170055 +0100
+@@ -3004,7 +3004,6 @@ typedef struct {
+ 
+ 
+   /* globals */
+-  ibis_t    IbisObj;
+   static ibis_opt_t  *ibis_opt_p;
+   ibis_opt_t IbisOpts;
+ 
+diff -up ibutils-1.5.7/ibis/src/ibissh_wrap.cpp.me ibutils-1.5.7/ibis/src/ibissh_wrap.cpp
+--- ibutils-1.5.7/ibis/src/ibissh_wrap.cpp.me	2020-03-06 15:20:56.161234609 +0100
++++ ibutils-1.5.7/ibis/src/ibissh_wrap.cpp	2020-03-06 15:21:08.705388057 +0100
+@@ -3004,7 +3004,6 @@ typedef struct {
+ 
+ 
+   /* globals */
+-  ibis_t    IbisObj;
+   static ibis_opt_t  *ibis_opt_p;
+   ibis_opt_t IbisOpts;
+ 
