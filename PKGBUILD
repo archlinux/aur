@@ -82,9 +82,11 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.0
-_minor=2
+_minor=3
 _srcname=linux-${_major}
-_clr=${_major}.1-1199
+_clr=${_major}.2-1201
+_gcc_more_v='20220315'
+_xanmod='4fb567893c40f29c68ab952148d82709847f2106'
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -97,15 +99,14 @@ if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
 options=('!strip')
-_gcc_more_v='20220315'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-5.19.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/8f964c6180f3fba9eca1c3598c93b2b56f421a9c/linux-5.19.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-5.19.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-5.19.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -419,7 +420,7 @@ done
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            'a659e67693ded7c0968a10032f5b0fd9ec021ebf62d92a8fd256ae37f9b76408'
+            'c2735c685dda548811190ecb1379f52cbdb866b198914a67030072a7d2191ca3'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0c65735f3e636c45e5baffccd0d9cd519c939d95ec5daf3560a7a1338e1016fb'
