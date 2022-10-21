@@ -1,5 +1,5 @@
 pkgname=smpeg-git
-pkgver=r366.c5793e5
+pkgver=2.0.0_r366.c5793e5
 pkgrel=1
 pkgdesc="SDL MPEG Player Library"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ source=(git+https://github.com/icculus/smpeg.git)
 md5sums=(SKIP)
 pkgver(){
   cd smpeg
-  echo r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
+  echo 2.0.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 build(){
   cd smpeg
