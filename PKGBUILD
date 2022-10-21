@@ -6,10 +6,9 @@
 
 pkgbase=virtualbox-bin
 pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
-pkgver=6.1.40
-_build=154048
+pkgver=7.0.2
+_build=154219
 _rev=96547
-_rdeskver=1.8.4
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
@@ -29,8 +28,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('4a6b781563dd9db7bd0c8759867fce6a6ff801ccfd97fb2febb9b5fe333f788d'
-            'f0eb87d02ebbd39c95f3a572802d1e77a3e52a943a6f3d205d131a5bf75a31fb'
+sha256sums=('3ae19123af28e052cc0df926c7ff1fadd2f6618c8a2385d3814c79de07a6bd74'
+            '86614406ac13e7ec22812721ac1ad54e2ee5a82d4ed715591a7c61881c9ea573'
             '1d1a828b8411d08dc886463628589716151a514639d606d99e3578e9894fd5bd'
             'b762b1d19647bd0d116f62fc683f061b7a80667fc0377e0a6b00691797a5fa3c'
             '7c7e19388158418762529805c19fab80ba329eb287dadc152bb226dfedb9d7ed'
@@ -40,7 +39,7 @@ sha256sums=('4a6b781563dd9db7bd0c8759867fce6a6ff801ccfd97fb2febb9b5fe333f788d'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             '09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1'
-            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635')
+            'a3ec0cab869e2d64914bffbf1c11a3c571808438656af654932f96e7a69114fd')
 
 prepare() {
     local _extractdir="${pkgname}-${pkgver}/VirtualBox-extracted"
@@ -50,7 +49,6 @@ prepare() {
     sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" --noexec --nox11 --target "${pkgname}-${pkgver}"
     bsdtar -xf "${pkgname}-${pkgver}/VirtualBox.tar.bz2" -C "$_extractdir"
     bsdtar -xf "VirtualBoxSDK-${pkgver}-${_build}.zip" -C "${pkgname}-${pkgver}"
-    bsdtar -xf "${_extractdir}/rdesktop-vrdp.tar.gz" -C "${pkgname}-${pkgver}" --include='*.1'
     
     # dkms configuration
     install -D -m644 dkms.conf -t "${_extractdir}/src/vboxhost"
@@ -84,11 +82,11 @@ package_virtualbox-bin() {
     cp -Pr --no-preserve='ownership' "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
     
     # mark binaries suid root, and make sure the directory is only writable by the user
-    chmod 4755 "${pkgdir}/${_installdir}"/{VirtualBoxVM,VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo}}
+    chmod 4755 "${pkgdir}/${_installdir}"/{VirtualBoxVM,VBox{Headless,Net{AdpCtl,DHCP,NAT},VolInfo}}
     chmod go-w "${pkgdir}/${_installdir}"
     
-    # remove guest iso, rdesktop-vrdp packed sources and bundled sdk files
-    rm -r "${pkgdir}/${_installdir}"/{additions/VBoxGuestAdditions.iso,rdesktop-vrdp.tar.gz,sdk}
+    # remove guest iso and bundled sdk files
+    rm -r "${pkgdir}/${_installdir}"/{additions/VBoxGuestAdditions.iso,sdk}
     
     # module sources
     install -d -m755 "${pkgdir}/usr/src"
@@ -115,10 +113,6 @@ package_virtualbox-bin() {
     # systemd
     install -D -m644 vboxweb.service -t "${pkgdir}/usr/lib/systemd/system"
     install -D -m644 virtualbox.sysusers "${pkgdir}/usr/lib/sysusers.d/virtualbox.conf"
-    
-    # man page for rdesktop-vrdp
-    install -D -m644 "${pkgname}-${pkgver}/rdesktop-${_rdeskver}-vrdp/doc/rdesktop.1" \
-        "${pkgdir}/usr/share/man/man1/rdesktop-vrdp.1"
     
     # symlinks
     local _dir

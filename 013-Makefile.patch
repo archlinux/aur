@@ -1,7 +1,7 @@
 --- a/src/vboxhost/Makefile
 +++ b/src/vboxhost/Makefile
-@@ -23,25 +23,25 @@
- # terms and conditions of either the GPL or the CDDL or both.
+@@ -33,25 +33,25 @@
+ # SPDX-License-Identifier: GPL-3.0-only OR CDDL-1.0
  #
  
 -ifneq ($(KERNELRELEASE),)
@@ -13,18 +13,18 @@
 +# KBUILD_EXTMOD is set to $(M) in this case.
  
  obj-m = vboxdrv/
--ifneq ($(wildcard $(CURDIR)/vboxnetflt/Makefile),)
-+ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetflt/Makefile),)
-  obj-m += vboxnetflt/
- endif
--ifneq ($(wildcard $(CURDIR)/vboxnetadp/Makefile),)
-+ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetadp/Makefile),)
-  obj-m += vboxnetadp/
- endif
--ifneq ($(wildcard $(CURDIR)/vboxpci/Makefile),)
-+ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxpci/Makefile),)
-  obj-m += vboxpci/
- endif
+- ifneq ($(wildcard $(CURDIR)/vboxnetflt/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetflt/Makefile),)
+ obj-m += vboxnetflt/
+  endif
+- ifneq ($(wildcard $(CURDIR)/vboxnetadp/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxnetadp/Makefile),)
+ obj-m += vboxnetadp/
+  endif
+- ifneq ($(wildcard $(CURDIR)/vboxpci/Makefile),)
++ ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxpci/Makefile),)
+ obj-m += vboxpci/
+  endif
  
 -else # ! KERNELRELEASE
 +else # ! KBUILD_EXTMOD
@@ -32,11 +32,12 @@
 -# convenience Makefile without KERNELRELEASE
 +# convenience Makefile without KBUILD_EXTMOD
  
- KBUILD_VERBOSE ?=
- KERN_VER ?= $(shell uname -r)
-@@ -167,4 +167,4 @@ load: unload
+ ifndef SUDO
+  ifneq ($(shell id -u),0)
+@@ -244,5 +244,5 @@ load: unload
  		fi; \
  	done
  
 -endif # ! KERNELRELEASE
 +endif # ! KBUILD_EXTMOD
+ 
