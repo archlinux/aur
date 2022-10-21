@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gap
-_pkgver=1.2.3-6
+_pkgver=1.3-1
 pkgname=r-${_pkgname,,}
-pkgver=1.2.3.6
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Genetic Analysis Package'
 arch=('x86_64')
@@ -58,7 +58,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ef352aa98a3bf27908b256f27a903058502176ea9112a4ffc41928ebbc48c22')
+sha256sums=('8edf25300002e37e54c20e973d7a60d503785645d17f2127aa6072e338c7ccdc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

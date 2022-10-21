@@ -1,6 +1,6 @@
 pkgbase = r-gap
 	pkgdesc = Genetic Analysis Package
-	pkgver = 1.2.3.6
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gap
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = r-gap
 	optdepends = r-rmeta
 	optdepends = r-rms
 	optdepends = r-survival
-	source = https://cran.r-project.org/src/contrib/gap_1.2.3-6.tar.gz
-	sha256sums = 0ef352aa98a3bf27908b256f27a903058502176ea9112a4ffc41928ebbc48c22
+	source = https://cran.r-project.org/src/contrib/gap_1.3-1.tar.gz
+	sha256sums = 8edf25300002e37e54c20e973d7a60d503785645d17f2127aa6072e338c7ccdc
 
 pkgname = r-gap
