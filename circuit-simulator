@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd /opt/circuit-simulator
-exec java -jar circuit.jar

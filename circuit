@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd /opt/circuit
-exec java -jar circuit.jar

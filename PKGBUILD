@@ -1,35 +1,27 @@
 # Maintainer: Ákos Uzonyi <uzonyi.akos@gmail.com>
 pkgname=circuit-simulator
-pkgver=1.6
-pkgrel=5
+pkgver=9.3.2
+pkgrel=1
 pkgdesc="Electronic circuit simulator written by Paul Falstad"
-arch=("any")
-url="http://www.falstad.com/circuit-java"
+arch=("x86_64")
+url="http://www.falstad.com/circuit"
 license=("GPL")
-depends=("java-runtime>=6" "hicolor-icon-theme" "bash")
-makedepends=("unzip" "imagemagick")
-source=("http://www.falstad.com/circuit-java/circuit.zip" "circuit-simulator" "circuit.desktop")
-md5sums=("392f5956d1153755949b167842ccd7cc"
-         "f6f1a25d07ebe8d2322950e8a52f7877"
-	     "deaff8b1646089d6c2c737dcbc540255"
-)
+depends=("libglvnd" "hicolor-icon-theme")
+makedepends=("tar" "imagemagick")
+source=("http://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz" "http://www.falstad.com/circuit/favicon.ico" "circuit.desktop")
+md5sums=("7b6f2b26165630882ce25f09aaa869a3" "062a9b61267bbef5e406a41b20a7d6a7" "deaff8b1646089d6c2c737dcbc540255")
 
 package() {
 	cd "$srcdir"
-	
+
 	OPT_DIR="$pkgdir/opt/$pkgname"
 	mkdir -pm 755 "$OPT_DIR"
-	unzip circuit.zip -d "$OPT_DIR"
-	chmod -R 644 "$OPT_DIR"
-	chmod -R +X "$OPT_DIR"
-	
-	install -D -m755 "${srcdir}/circuit-simulator" "${pkgdir}/usr/bin/circuit-simulator"
-	install -D -m644 "${srcdir}/circuit.desktop" "${pkgdir}/usr/share/applications/circuit.desktop"
-	
-	mkdir -pm 755 "${pkgdir}/usr/share/icons/hicolor/16x16/apps"
-	convert "${OPT_DIR}/favicon.ico" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/circuit.png"
+	tar -xf circuitjs1-linux64.tgz -C "$OPT_DIR"
 
-	SOURCE_DIR="${pkgdir}/usr/src/$pkgname"
-	mkdir -pm 755 "$SOURCE_DIR"
-	unzip "${OPT_DIR}/src.zip" -d "$SOURCE_DIR"
+	mkdir -pm 755 "${pkgdir}/usr/bin"
+	ln -s /opt/circuit-simulator/circuitjs1/circuitjs1 "${pkgdir}/usr/bin/circuit-simulator"
+	install -D -m644 "${srcdir}/circuit.desktop" "${pkgdir}/usr/share/applications/circuit.desktop"
+
+	mkdir -pm 755 "${pkgdir}/usr/share/icons/hicolor/16x16/apps"
+	convert "favicon.ico" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/circuit.png"
 }

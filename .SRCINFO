@@ -1,21 +1,19 @@
 pkgbase = circuit-simulator
 	pkgdesc = Electronic circuit simulator written by Paul Falstad
-	pkgver = 1.6
-	pkgrel = 5
-	url = http://www.falstad.com/circuit-java
-	arch = any
+	pkgver = 9.3.2
+	pkgrel = 1
+	url = http://www.falstad.com/circuit
+	arch = x86_64
 	license = GPL
-	makedepends = unzip
+	makedepends = tar
 	makedepends = imagemagick
-	depends = java-runtime>=6
+	depends = libglvnd
 	depends = hicolor-icon-theme
-	depends = bash
-	source = http://www.falstad.com/circuit-java/circuit.zip
-	source = circuit-simulator
+	source = http://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz
+	source = http://www.falstad.com/circuit/favicon.ico
 	source = circuit.desktop
-	md5sums = 392f5956d1153755949b167842ccd7cc
-	md5sums = f6f1a25d07ebe8d2322950e8a52f7877
+	md5sums = 7b6f2b26165630882ce25f09aaa869a3
+	md5sums = 062a9b61267bbef5e406a41b20a7d6a7
 	md5sums = deaff8b1646089d6c2c737dcbc540255
 
 pkgname = circuit-simulator
-
