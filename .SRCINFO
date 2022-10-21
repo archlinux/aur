@@ -1,7 +1,7 @@
 pkgbase = lilo
 	pkgdesc = A bootloader for Linux
 	pkgver = 24.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://web.archive.org/web/20160627071029/https://lilo.alioth.debian.org/
 	install = lilo.install
 	arch = i486

@@ -5,7 +5,7 @@
 
 pkgname=lilo
 pkgver=24.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A bootloader for Linux"
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="https://web.archive.org/web/20160627071029/https://lilo.alioth.debian.org/"
