@@ -1,6 +1,6 @@
 pkgbase='python-basicsr'
 pkgname=('python-basicsr' 'python-basicsr-cuda')
-pkgver=1.3.5
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Open Source Image and Video Restoration Toolbox for Super-resolution, Denoise, Deblurring, etc. "
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python-addict' 'python-future' 'python-lmdb' 'python-numpy' 'python-op
 makedepends=('python-setuptools')
 
 source=("https://github.com/xinntao/BasicSR/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cc3d53d6750a301b9098a21a91e91739cd177ff05b5710a8799af047324a951b')
+sha256sums=('39296f695e3d52bf38da3d22e85d1c1d02982ce0a96203da7954f57e41299f5b')
 
 prepare() {
     cp -a BasicSR-$pkgver{,-cuda}
