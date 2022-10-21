@@ -5,7 +5,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-plus-git
-pkgver=3.11.47.r7.g0626c7c
+pkgver=3.11.47.r11.g677e3b6
 pkgrel=1
 pkgdesc="Micro-compositor from Valve with added patches not yet commited upstream"
 arch=(x86_64)
@@ -20,13 +20,11 @@ depends=(
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-protocols" "cmake")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("0001-Check-for-current-and-pending-mode_id-before-abort.patch"
-	"$_pkgname::git+https://github.com/Plagman/gamescope.git"
+source=("$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://github.com/nothings/stb.git")
-sha512sums=('218750cd644bd7a20e8be2f40bb14e42a9073ef14bd8ccf9e4bcd1b8e4901d8bbbd31df012633f2cfae858509833791f33355364929ca07341d61d96b8094e96'
-            'SKIP'
+sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -51,7 +49,7 @@ prepare() {
     git submodule init
     git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
 		git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
-    git submodule update
+    git submodule--helper update
 
     # make stb.wrap use our local clone
     sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
