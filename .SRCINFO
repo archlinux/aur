@@ -8,6 +8,7 @@ pkgbase = findex-git
 	license = GPL3
 	makedepends = rustup
 	depends = gtk3
+	depends = libkeybinder3
 	provides = findex-git
 	conflicts = findex-git
 	conflicts = findex-bin

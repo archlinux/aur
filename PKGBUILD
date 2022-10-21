@@ -1,7 +1,7 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=0.6.0
+pkgver=0.6.0.3
 pkgver() {
 	cd findex
 	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/mdgaziur/findex"
 license=('GPL3')
 groups=()
-depends=("gtk3")
+depends=("gtk3" "libkeybinder3")
 makedepends=("rustup")
 checkdepends=()
 optdepends=()
