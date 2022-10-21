@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r493.g98e6fb26a3
+pkgver=0.34.1.r517.g48ad2278c7
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -86,6 +86,7 @@ depends=(
          'openjpeg2'
          'openmp'
          'opus'
+         'pipewire'
          'pulseaudio'
          'rav1e'
          'rtmpdump'
@@ -231,7 +232,13 @@ fi
 
 pkgver() {
   cd mpv
-  git describe --tags --long | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
+  
+  local _version="$(git tag | sort --version-sort --reverse | head -n1 | sed 's/^v//')"
+  local _revision="$(git rev-list v"${_version}"..HEAD --count)"
+  local _shorthash="$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+  
+  # git describe --tags --long | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
 prepare() {
@@ -368,40 +375,55 @@ prepare() {
     '--disable-pdf-build'
     
     '--lua=lua52'
-    '--enable-alsa'
-    '--enable-caca'
+    '--enable-libmpv-shared'
     '--enable-cdda'
     '--enable-cplugins'
-    '--enable-drm'
     '--enable-dvbin'
     '--enable-dvdnav'
-    '--enable-egl-drm'
-    '--enable-egl-x11'
-    '--enable-gbm'
-    '--enable-gl'
-    '--enable-gl-wayland'
-    '--enable-html-build'
-    '--enable-iconv'
-    '--enable-jack'
-    '--enable-javascript'
-    '--enable-jpeg'
     # '--enable-jpegxl'
     '--enable-lcms2'
     '--enable-libarchive'
     '--enable-libavdevice'
-    '--enable-libbluray'
-    '--enable-libmpv-shared'
     '--enable-libplacebo'
     '--enable-lua'
     '--enable-manpage-build'
-    '--enable-openal'
-    '--disable-oss-audio'
     '--enable-plain-gl'
     '--enable-pulse'
     '--enable-rubberband'
     '--enable-sdl2'
     '--enable-shaderc'
     '--enable-uchardet'
+    '--enable-zimg'
+
+    
+    '--enable-iconv'
+    '--enable-javascript'
+    '--enable-zlib'
+    '--enable-libbluray'
+
+    '--disable-oss-audio'
+    '--enable-pipewire'
+    '--enable-sndio'
+    '--enable-pulse'
+    '--enable-jack'
+    '--enable-openal'
+    '--disable-opensles'
+    '--enable-alsa'
+
+    '--enable-sdl2-video'
+    '--disable-cocoa'
+    '--enable-drm'
+    '--enable-gbm'
+    '--enable-wayland'
+    '--enable-x11'
+    '--enable-xv'
+    '--enable-gl'
+    '--enable-plain-gl'
+    '--disable-gl-cocoa'
+    '--enable-gl-wayland'
+    '--enable-egl'
+    '--enable-egl-drm'
+    '--enable-egl-x11'
     '--enable-vaapi'
     '--enable-vaapi-drm'
     '--enable-vaapi-wayland'
@@ -409,13 +431,9 @@ prepare() {
     '--enable-vaapi-x-egl'
     '--enable-vdpau'
     '--enable-vulkan'
-    '--enable-wayland'
-    '--enable-wayland-protocols'
-    '--enable-wayland-scanner'
-    '--enable-x11'
-    '--enable-xv'
-    '--enable-zimg'
-    '--enable-zlib'
+
+    '--enable-caca'
+    '--enable-jpeg'
   )
   _libass_options=(
     '--enable-harfbuzz'
