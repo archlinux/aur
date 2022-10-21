@@ -1,13 +1,12 @@
 pkgbase = znc-palaver
 	pkgdesc = ZNC module for push notifications
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/cocodelabs/znc-palaver
 	arch = x86_64
 	license = MIT
 	depends = znc
-	source = https://github.com/cocodelabs/znc-palaver/archive/1.2.1.tar.gz
-	sha256sums = 1d13f809c59d2625771d005ced81321f2de2f34cf9f645335a94d64b436a1cc6
+	source = https://github.com/cocodelabs/znc-palaver/archive/1.2.2.tar.gz
+	sha256sums = 209880fae8500566a55b1b56c3b712a0352eb0686eddf046971901a1939e01ff
 
 pkgname = znc-palaver
-
