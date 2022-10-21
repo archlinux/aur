@@ -1,7 +1,7 @@
 pkgbase = pint
 	pkgdesc = Prometheus rule linter
 	pkgver = 0.30.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudflare/pint
 	arch = x86_64
 	license = Apache2
