@@ -4,14 +4,16 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20220811.2225118e7
-pkgrel=2
+pkgver=20221020.3bf416d91
+pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('git' 'libxi' 'glu')
 depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser' 'mujs')
+internal=('extract' 'freeglut' 'lcms2')
+
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
@@ -33,12 +35,10 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	sed "/extract.git/c url = $(pwd)/../thirdparty-extract" -i .gitmodules
-	sed "/freeglut.git/c url = $(pwd)/../thirdparty-freeglut" -i .gitmodules
-	sed "/lcms2.git/c url = $(pwd)/../thirdparty-lcms2" -i .gitmodules
-	git submodule update --init thirdparty/extract
-	git submodule update --init thirdparty/freeglut
-	git submodule update --init thirdparty/lcms2
+	for lib in extract freeglut lcms2; do
+		rm -fr thirdparty/$lib
+		cp -a ../thirdparty-$lib thirdparty/$lib
+	done
 }
 
 build() {
