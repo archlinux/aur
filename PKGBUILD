@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r78910.8bb462b167
+pkgver=r78930.9958671fc7
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -31,7 +31,7 @@ prepare() {
   git config submodule.Utilities/VisItBridge.git "$srcdir"/visitbridge
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
-  git submodule update -f --init
+  git -c protocol.file.allow=always submodule update -f --init
 }
 
 build() {
