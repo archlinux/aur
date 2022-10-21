@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=luacheck-git
-pkgver=latest.r2.g81bb2f2
+pkgver=1.0.0.r2.g81bb2f2
 pkgrel=1
 _rockrel=1
 pkgdesc='A tool for linting and static analysis of Lua code'
@@ -24,7 +24,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_archive"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 --match="v*.*.*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
