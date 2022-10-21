@@ -1,0 +1,16 @@
+pkgbase = tinyserial-git
+	pkgdesc = A GUI Serial Debug Tool for Linux/Mac OS.
+	pkgver = 1.4.r0.g73e6933
+	pkgrel = 1
+	url = https://github.com/carloscn/tinyserial
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	depends = qt5-base
+	conflicts = tinyserial
+	options = !strip
+	source = tinyserial::git+https://github.com/carloscn/tinyserial.git
+	sha256sums = SKIP
+
+pkgname = tinyserial-git
