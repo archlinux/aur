@@ -1,7 +1,7 @@
 # Maintainer: wuhgit <wuhgit@users.noreply.github.com>
 
 pkgname=fcitx5-pinyin-custom-pinyin-dictionary
-pkgver=20221014
+pkgver=20221021
 _reponame=CustomPinyinDictionary
 pkgrel=1
 pkgdesc="Fcitx5 自建拼音输入法词库，百万常用词汇量。"
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/wuhgit/CustomPinyinDictionary"
 license=('GFDL' 'CCPL:by-sa')
 source=("https://github.com/wuhgit/${_reponame}/releases/download/assets/CustomPinyinDictionary_Fcitx_${pkgver}.tar.gz")
-sha256sums=('1980409470a2905c2680af13f4ac6fda12b80aa44d070c6a506aea543a342e3e')
+sha256sums=('ac876b2d66dcc414fd792b028690917bb87433a85415152088f1af4e77858127')
 
 package() {
   install -Dm644 CustomPinyinDictionary_Fcitx.dict -t ${pkgdir}/usr/share/fcitx5/pinyin/dictionaries/
