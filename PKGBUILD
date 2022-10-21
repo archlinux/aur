@@ -8,9 +8,9 @@ arch=("x86_64")
 url="https://immersedvr.com/"
 license=('unknown')
 depends=("libpng" "curl" "libva")
-source=("https://immersed.com/dl/Immersed-x86_64.AppImage")
+source=("https://static.immersed.com/dl/Immersed-x86_64.AppImage")
 noextract=("Immersed-x86_64.AppImage")
-md5sums=('297a9bd4a7f04b3a51bffcbe6e667d98')
+md5sums=('4d5597b067793133a97cb8f12f343196')
 
 pkgver() {
     ar p Immersed_amd64.deb control.tar.gz | tar zx ./control -O | grep "Version" | sed 's/^Version: \([0-9.]*\)$/\1/g'
