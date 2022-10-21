@@ -1,7 +1,7 @@
 pkgbase = qinfo-git
 	pkgdesc = A system info program. Fetches system info and displays it.
 	pkgver = r97.rc3c6e44.
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/El-Wumbus/qinfo
 	arch = x86_64
 	license = LGPL3
