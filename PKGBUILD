@@ -1,5 +1,5 @@
 pkgname=artisan-roaster-scope
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Artisan is a software that helps coffee roasters record, analyze, and control roast profiles."
 arch=("x86_64")
@@ -10,7 +10,7 @@ source=(
 "https://github.com/artisan-roaster-scope/artisan/releases/download/v${pkgver}/artisan-linux-${pkgver}.deb"
 )
 sha256sums=(
-'09bbec4b2cfa52c22a5611b67d25210dc2c9d383c36b95adb922e2d00cf70065'
+'a4c2eb0324b42909259a96894206723382643768c25b704bae16c856367aeae7'
 )
 options+=(!strip) # stripping causes crashes
 
