@@ -75,7 +75,7 @@ prepare() {
   git config -f .gitmodules 'submodule.third_party/tz.url' "$srcdir/tz"
 
   git submodule sync
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
