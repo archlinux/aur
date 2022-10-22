@@ -3,12 +3,13 @@
 pkgname='foxitpdfeditor-bin'
 _pkgname='foxitpdfeditor'
 pkgver=11.0.2.1222
-pkgrel=1
+pkgrel=2
 pkgdesc="Foxit PDF editor 福昕高级PDF编辑器"
 arch=('x86_64')
 license=('unknown')
 url="https://www.foxitsoftware.cn"
 depends=('qt5-base' 'qt5-webengine' 'qt5-speech')
+makedepends=('patchelf')
 provides=("${_pkgname}")
 source_x86_64=("${_pkgname}-${pkgver}-${arch}.deb::https://cdn07.foxitsoftware.cn/pub/foxit/phantomPDF/desktop/linux/11.x/11.0/zh_cn/com.foxit.foxitpdfeditor_${pkgver}_amd64.deb"
 "${_pkgname}.sh"

@@ -1,10 +1,11 @@
 pkgbase = foxitpdfeditor-bin
 	pkgdesc = Foxit PDF editor 福昕高级PDF编辑器
 	pkgver = 11.0.2.1222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.foxitsoftware.cn
 	arch = x86_64
 	license = unknown
+	makedepends = patchelf
 	depends = qt5-base
 	depends = qt5-webengine
 	depends = qt5-speech
