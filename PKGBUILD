@@ -12,10 +12,8 @@ url="http://www.fox-toolkit.org/"
 license=(LGPL 'custom')
 depends=(glu libsm libtiff libxcursor libxft libxi libxrandr)
 makedepends=(mesa)
-source=("http://www.fox-toolkit.org/ftp/fox-${pkgver}.tar.gz"
-        )
-sha512sums=('31b2702637db00bdaeee767bea83e894e2fcc686d9c7973d3986a35411df3ff9566e18207057bef239703a7036134ab6cad5c4e569f07f45f7b773f31e92902d'
-            '94e769c6cefdab2b4585d1071d44f2a7b5cbec2525bbdececd74ff0dcb5359d9db1dabe9509a809f281913be5082c5b436fc9cc5e6b61b17f8e5b64ca81a28e4')
+source=("http://www.fox-toolkit.org/ftp/fox-${pkgver}.tar.gz")
+sha512sums=('31b2702637db00bdaeee767bea83e894e2fcc686d9c7973d3986a35411df3ff9566e18207057bef239703a7036134ab6cad5c4e569f07f45f7b773f31e92902d')
 
 build() {
   cd "fox-${pkgver}"
