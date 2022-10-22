@@ -1,0 +1,19 @@
+pkgbase = asdf-install-latest-bin
+	pkgdesc = asdf utility to update plugins to their latest version, for all you update freaks
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/joaofnds/asdf-install-latest
+	license = MIT
+	conflicts = asdf-install-latest
+	provides = asdf-install-latest
+	arch = aarch64
+	source_aarch64 = https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.9/asdf-install-latest_0.0.9_linux_arm64.tar.gz
+	sha256sums_aarch64 = 585130214a9592f9b6f827a787c0702327b9cc821272e1f20947f8605babd87a
+	arch = i686
+	source_i686 = https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.9/asdf-install-latest_0.0.9_linux_386.tar.gz
+	sha256sums_i686 = 99f96d8e94f093b1b3c82db299b01d87e1742b025b1be70f1fe67f29ea206567
+	arch = x86_64
+	source_x86_64 = https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.9/asdf-install-latest_0.0.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = ba2cf483a2df5e8c852a89ed57141d1eb3d7b725ce5266993f8369211fe0e0ed
+	
+pkgname = asdf-install-latest-bin
