@@ -1,5 +1,5 @@
 pkgname=awlib-git
-pkgver=r2173.f5be6e52
+pkgver=r2204.bcc665bd
 pkgrel=1
 pkgdesc="C++ helper library"
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DAW_SPLIT_INCLUDES:BOOL=OFF \
+        -DAW_INCLUDE_PREFIX:STRING="" \
         -Wno-dev
  cmake --build build
 }
