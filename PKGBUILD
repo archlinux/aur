@@ -4,7 +4,7 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=0.2.0_dev.r115.g844ffce
+pkgver=0.2.0_dev.r119.ge35c147
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -42,11 +42,11 @@ prepare() {
 	for dep in pixman wayland wlroots xkbcommon; do
 		git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
 	done
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
-        local version commit_count commit_hash
+	local version commit_count commit_hash
 
 	cd "$srcdir/$_pkgname"
 	version=$(sed -n 's/^const version = "\(.*\)";/\1/p' build.zig | tr '-' '_')
