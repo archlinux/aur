@@ -3,8 +3,8 @@
 
 pkgname=river-levee-git
 _pkgname=levee
-pkgver=0.1.1.r2.g15c4386
-pkgrel=2
+pkgver=0.1.1.r8.g865b8cd
+pkgrel=1
 pkgdesc='Statusbar for the river wayland compositor'
 arch=('x86_64')
 url='https://sr.ht/~andreafeletto/levee'
@@ -36,7 +36,7 @@ prepare() {
    for dep in wayland pixman fcft udev clap; do
        git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
    done
-   git submodule update
+   git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
