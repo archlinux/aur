@@ -1,7 +1,7 @@
 pkgbase = e2factory
 	pkgdesc = A software buildsystem not only for embedded systems
 	pkgver = 2.3.18p1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://e2factory.org
 	install = .INSTALL
 	arch = any
