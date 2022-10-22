@@ -5,7 +5,7 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
-pkgver=2.80.1
+pkgver=2.80.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -14,9 +14,9 @@ makedepends=('cmake' 'zip')
 makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite')
 makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "https://www.etlegacy.com/download/file/398")
-sha256sums=('fdd4c36fdd2c8a06dcffab1d09ab6b5cc3a499ef4193975ba0b8e9148edf2946'
-            '19ebae466d0655ea08c5180d33283af280af04f9007d52320337fb689c70657e')
+        "https://www.etlegacy.com/download/file/410")
+sha256sums=('1b22c131d6c122b38a88306d8dc81ea0135a0f60f599d6f871a175b311b00409'
+            '1da67661fd620ae1a75dcec34d4598708a180f431d8c31b87995c998a0216062')
 
 build() {
     cd "$_pkgbase-$pkgver"
