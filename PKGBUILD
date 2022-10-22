@@ -3,18 +3,18 @@
 
 pkgname=systemd-numlockontty
 pkgver=0.1
-pkgrel=12
+pkgrel=13
 pkgdesc="Systemd service + script, automatically activate numpad on ttys"
 arch=('any')
-url="http://percival.ybalrid.info/aur/numlockontty.html"
+url="https://github.com/Ybalrid/systemd-numlockontty"
 depends=('systemd')
 replaces=('numlockontty')
 license=('GPL')
 install=numlockontty.install
-source=("http://percival.ybalrid.info/aur/numlockontty-$pkgver.tar.gz")
-md5sums=('f7b69626dd83f5da5269b226688ff1b8')
+source=("https://github.com/Ybalrid/systemd-numlockontty/releases/download/$pkgver-$pkgrel/numlockontty-$pkgver.tar.gz")
+md5sums=('7e5ce843e9951c3c596457e63053384d')
 
 package() {
 	install -Dvm755 "$srcdir/numlockOnTty"		 "$pkgdir/usr/bin/numlockOnTty"
-	install -Dvm644 "$srcdir/numLockOnTty.service"	 "$pkgdir/usr/lib/systemd/system/numLockOnTty.service"
+	install -Dvm644 "$srcdir/numlockOnTty.service"	 "$pkgdir/usr/lib/systemd/system/numLockOnTty.service"
 }
