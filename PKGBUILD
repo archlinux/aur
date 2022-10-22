@@ -4,12 +4,14 @@
 
 pkgname=lix-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.31.r1587672355.8757be6b
-pkgrel=3
+pkgver=0.10.0.r1666414453.0226bd1c
+pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git")
-sha512sums=('SKIP')
+source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git"
+        "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
+sha512sums=('SKIP'
+            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -33,12 +35,6 @@ _dubv=( "4.0.4+5.2.0"   # allegro
 # These have to be git clones, otherwise dub isn't able to pick them up with the correct version later on
 # no git, no version field, assumed ~master
 # https://dub.pm/commandline.html#add-path
-source+=(   "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
-            "$pkgname.desktop"
-            )
-sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
-                '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
-                )
 source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
             "$pkgname-bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
             "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
@@ -66,7 +62,7 @@ sha512sums+=(   'SKIP'
 
 pkgver() {
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-    cd "$pkgname" || exit
+    cd "$pkgname" || exit 1
     (
         set -o pipefail
 
@@ -80,6 +76,12 @@ pkgver() {
 
 _build() {
     _r=0
+
+    # 2022.02.26
+    # 15:22 <@SimonN> It's possible that it's already enough to raise the stack size in the current shell: ulimit -s 16384
+    # 15:22 <@SimonN> See also: https://github.com/ldc-developers/ldc/issues/3913
+    # 15:26 <@SimonN> Yes, very high chance that the following will fix/workaround: Execute "ulimit -s 16384" in the same shell that will then run dub. I.e., we double the stack size, assuming "ulimit -s" printed 8192 before; it does that for me in new shells.
+    ulimit -s 16384
 
     # add local dependencies to search path
     dub add-path "$srcdir"
@@ -113,24 +115,24 @@ _build() {
 }
 
 build() {
-    cd "$pkgname" || exit
+    cd "$pkgname" || exit 1
     _build build
 }
 
 check() {
-    cd "$pkgname" || exit
+    cd "$pkgname" || exit 1
     _build test
 }
 
 package() {
+    cd "$pkgname" || exit 1
+
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
-            "$pkgname.desktop" \
+            "data/desktop/com.lixgame.Lix.desktop" \
         `# DSTFILE:` \
             "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-    cd "$pkgname" || exit
 
     # install application entry icon
     install -Dm644 \
