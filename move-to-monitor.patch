@@ -1,5 +1,5 @@
 diff --git src/client.c src/client.c
-index 3923dd98b..0e0dcd724 100644
+index 3923dd98b..0f7159a41 100644
 --- src/client.c
 +++ src/client.c
 @@ -3223,6 +3223,35 @@ clientRemoveMaximizeFlag (Client *c)
@@ -7,9 +7,9 @@ index 3923dd98b..0e0dcd724 100644
  }
  
 +static void
-+getMonitorSpaceExcludingMargin(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h)
++getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h)
 +{
-+    /* Get corrected monitor max x/y/width/height excluding the margins (e.g. xfce panel) */
++    /* Get corrected max x/y/width/height excluding the margins (e.g. xfce panel) */
 +    ScreenInfo *screen_info;
 +
 +    screen_info = c->screen_info;
@@ -24,11 +24,11 @@ index 3923dd98b..0e0dcd724 100644
 +}
 +
 +static void
-+updateMonitorSpaceExcludingMargin(Client *c, GdkRectangle *rect)
++updateSizeExcludingMargins(Client *c, GdkRectangle *rect)
 +{
-+    /* Convenience function to call getMonitorSpaceExcludingMargin and re-assign to input rect */
++    /* Convenience function to call getSizeExcludingMargins and re-assign to input rect */
 +    int full_x, full_y, full_w, full_h;
-+    getMonitorSpaceExcludingMargin(c, rect, &full_x, &full_y, &full_w, &full_h);
++    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
 +    rect->x = full_x;
 +    rect->y = full_y;
 +    rect->width = full_w;
@@ -54,7 +54,7 @@ index 3923dd98b..0e0dcd724 100644
 -    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
 -                  rect->y + rect->height) - full_y;
 -    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-+    getMonitorSpaceExcludingMargin(c, rect, &full_x, &full_y, &full_w, &full_h);
++    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
  
      switch (tile)
      {
@@ -74,7 +74,7 @@ index 3923dd98b..0e0dcd724 100644
 -    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
 -                  rect->y + rect->height) - full_y;
 -    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-+    getMonitorSpaceExcludingMargin(c, rect, &full_x, &full_y, &full_w, &full_h);
++    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
  
      if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
      {
@@ -178,8 +178,8 @@ index 3923dd98b..0e0dcd724 100644
 +    /* Get monitor geometry for current/target, removing margins */
 +    gdk_monitor_get_geometry(current_monitor, &current_rect);
 +    gdk_monitor_get_geometry(target_monitor, &target_rect);
-+    updateMonitorSpaceExcludingMargin(c, &current_rect);
-+    updateMonitorSpaceExcludingMargin(c, &target_rect);
++    updateSizeExcludingMargins(c, &current_rect);
++    updateSizeExcludingMargins(c, &target_rect);
 +
 +    /* Get the x,y offset relative to current monitor params */
 +    monitor_offset_x = c->saved_geometry.x - current_rect.x;
@@ -279,7 +279,7 @@ index fd6ab669a..751c29a5f 100644
                                                                   gint,
                                                                   gint,
 diff --git src/events.c src/events.c
-index 6ace19b1c..adccd1045 100644
+index 6ace19b1c..fd1fa032d 100644
 --- src/events.c
 +++ src/events.c
 @@ -378,6 +378,13 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
@@ -296,6 +296,161 @@ index 6ace19b1c..adccd1045 100644
              case KEY_MOVE_NEXT_WORKSPACE:
                  workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE, event->time);
                  break;
+@@ -2395,6 +2402,9 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer
+             case MENU_OP_WORKSPACES:
+                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
+                 break;
++            case MENU_OP_MONITORS:
++                clientMoveToMonitorByDirection(c, GPOINTER_TO_INT (item_data));
++                break;
+             case MENU_OP_DELETE:
+                 clientClose (c);
+                 break;
+@@ -2479,7 +2489,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp,
+             x /= scale;
+         }
+     }
+-    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
++    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MONITORS | MENU_OP_MOVE | MENU_OP_RESIZE;
+     insensitive = 0;
+ 
+     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+diff --git src/menu.c src/menu.c
+index b76326dd6..88c529b88 100644
+--- src/menu.c
++++ src/menu.c
+@@ -68,6 +68,7 @@ static MenuItem menuitems[] = {
+     {MENU_OP_STICK,        N_("Always on _Visible Workspace")},
+     {MENU_OP_UNSTICK,      N_("Only _Visible on This Workspace")},
+     {MENU_OP_WORKSPACES,   N_("Move to Another _Workspace")},
++    {MENU_OP_MONITORS,     N_("Move to Another Monitor")},
+     {0, NULL}, /* -------------------------------------------------------- */
+     {MENU_OP_DELETE,       N_("_Close")},
+ #if 0
+@@ -188,12 +189,60 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
+     return (menu_widget);
+ }
+ 
++static GtkWidget *
++menu_monitor (Menu * menu, MenuOp insensitive)
++{
++    GtkWidget *menu_widget;
++    GtkWidget *menuitem;
++    MenuData *menudata;
++    gint i, key;
++
++    menu_widget = gtk_menu_new ();
++    gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
++
++    for (i = 0; i < 4; i++)
++    {
++        switch(i) {
++            case 0:
++                menuitem = gtk_menu_item_new_with_label ("Monitor Left");
++                key = KEY_MOVE_TO_MONITOR_LEFT;
++                break;
++            case 1:
++                menuitem = gtk_menu_item_new_with_label ("Monitor Right");
++                key = KEY_MOVE_TO_MONITOR_RIGHT;
++                break;
++            case 2:
++                menuitem = gtk_menu_item_new_with_label ("Monitor Up");
++                key = KEY_MOVE_TO_MONITOR_UP;
++                break;
++            case 3:
++                menuitem = gtk_menu_item_new_with_label ("Monitor Down");
++                key = KEY_MOVE_TO_MONITOR_DOWN;
++                break;
++            default:
++                break;
++        }
++        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS));
++        gtk_widget_show (menuitem);
++
++        menudata = g_new0 (MenuData, 1);
++        menudata->menu = menu;
++        menudata->op = MENU_OP_MONITORS;
++        menudata->data = GINT_TO_POINTER (key);
++        menu_item_connect (menuitem, menudata);
++
++        gtk_menu_shell_append (GTK_MENU_SHELL (menu_widget), menuitem);
++    }
++
++    return (menu_widget);
++}
++
+ Menu *
+ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
+     gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
+ {
+     GtkWidget *menuitem;
+-    GtkWidget *ws_menu;
++    GtkWidget *sub_menu;
+     MenuData *menudata;
+     Menu *menu;
+     const gchar *label;
+@@ -218,7 +267,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
+         if ((ops & menuitems[i].op) || (menuitems[i].op == MENU_OP_SEPARATOR))
+         {
+             label = _(menuitems[i].label);
+-            ws_menu = NULL;
++            sub_menu = NULL;
+             switch (menuitems[i].op)
+             {
+                 case MENU_OP_SEPARATOR:
+@@ -230,9 +279,19 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
+                     {
+                         gtk_widget_set_sensitive (menuitem, FALSE);
+                     }
+-                    ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
+-                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
+-                    g_signal_connect (G_OBJECT (ws_menu), "selection-done", G_CALLBACK (menu_closed), menu);
++                    sub_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
++                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
++                    g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
++                    break;
++                case MENU_OP_MONITORS:
++                    menuitem = gtk_menu_item_new_with_mnemonic (label);
++                    if (insensitive & menuitems[i].op)
++                    {
++                        gtk_widget_set_sensitive (menuitem, FALSE);
++                    }
++                    sub_menu = menu_monitor (menu, insensitive);
++                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
++                    g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
+                     break;
+                 default:
+                     menuitem = gtk_menu_item_new_with_mnemonic (label);
+diff --git src/menu.h src/menu.h
+index 8e1aa161a..fd960a7da 100644
+--- src/menu.h
++++ src/menu.h
+@@ -51,15 +51,16 @@ typedef enum
+     MENU_OP_DELETE       = 1 << 11,
+     MENU_OP_DESTROY      = 1 << 12,
+     MENU_OP_WORKSPACES   = 1 << 13,
+-    MENU_OP_QUIT         = 1 << 14,
+-    MENU_OP_RESTART      = 1 << 15,
+-    MENU_OP_ABOVE        = 1 << 16,
+-    MENU_OP_BELOW        = 1 << 17,
+-    MENU_OP_NORMAL       = 1 << 18,
+-    MENU_OP_FULLSCREEN   = 1 << 19,
+-    MENU_OP_UNFULLSCREEN = 1 << 20,
+-    MENU_OP_CONTEXT_HELP = 1 << 21,
+-    MENU_OP_OTHER        = 1 << 22
++    MENU_OP_MONITORS     = 1 << 14,
++    MENU_OP_QUIT         = 1 << 15,
++    MENU_OP_RESTART      = 1 << 16,
++    MENU_OP_ABOVE        = 1 << 17,
++    MENU_OP_BELOW        = 1 << 18,
++    MENU_OP_NORMAL       = 1 << 19,
++    MENU_OP_FULLSCREEN   = 1 << 20,
++    MENU_OP_UNFULLSCREEN = 1 << 21,
++    MENU_OP_CONTEXT_HELP = 1 << 22,
++    MENU_OP_OTHER        = 1 << 23
+ }
+ MenuOp;
+ 
 diff --git src/settings.c src/settings.c
 index ce4a05e8a..2fc6a04f8 100644
 --- src/settings.c
