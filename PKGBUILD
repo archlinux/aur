@@ -5,76 +5,96 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gittyup-git
-pkgver=1.0.0.r187.g54d9e5e
+pkgver=1.1.1.r287.gd1575bb
 pkgrel=1
 pkgdesc="Graphical Git client (GitAhead fork)"
 url="https://github.com/Murmele/Gittyup"
 arch=(x86_64)
 license=(MIT)
-depends=(qt5-base cmark libsecret hunspell)
-makedepends=(git cmake ninja qt5-tools qt5-translations libgnome-keyring libssh2) #libssh2 detected but not used
+depends=(qt5-base hunspell lua cmark pcre)
+makedepends=(git cmake ninja qt5-tools qt5-translations ) #libgit2 libgnome-keyring
 optdepends=('git-lfs: git-lfs support'
             'libgnome-keyring: for GNOME Keyring for auth credentials'
             'qt5-translations: translations')
 provides=(gittyup)
 conflicts=(gittyup)
-source=("${pkgname%-git}::git+https://github.com/Murmele/Gittyup.git"
-        "git+https://github.com/stinb/libgit2.git"
-        "git+https://github.com/git/git.git"
-        "git+https://github.com/libssh2/libssh2.git"
+source=("git+https://github.com/Murmele/Gittyup.git"
+        "Gittyup-libgit2::git+https://github.com/stinb/libgit2.git"
         "git+https://github.com/kuba--/zip.git"
-        'gittyup.desktop')
+        "git+https://github.com/ScintillaOrg/lexilla.git"
+        "git+https://github.com/orbitalquark/scintillua.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'a07943687afee5f3664219373b60ae54eaa207414646181df107893407119462')
+            'SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/Gittyup"
   git describe --long --tags --exclude latest | sed 's/^gittyup_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/Gittyup"
 
   git submodule init
-  git config 'submodule.dep/libgit2/libgit2.url' "${srcdir}/libgit2"
-  git config 'submodule.dep/git/git.url' "${srcdir}/git"
-  git config 'submodule.dep/libssh2/libssh2.url' "${srcdir}/libssh2"
-  git config 'submodule.test/dep/zip.url' "${srcdir}/zip"
-  git -c submodule.dep/openssl/openssl.update=none -c submodule.dep/cmark/cmark.update=none -c submodule.dep/hunspell/hunspell.update=none submodule update
+  git config submodule.dep/libgit2/libgit2.url "${srcdir}/Gittyup-libgit2"
+  git config submodule.dep/git/git.update none
+  git config submodule.dep/cmark/cmark.update none
+  git config submodule.dep/libssh2/libssh2.update none
+  git config submodule.dep/openssl/openssl.update none
+  git config submodule.dep/hunspell/hunspell.update none
+  git config submodule.test/dep/zip.url "${srcdir}/zip"
+  git config submodule.dep/scintilla/lexilla.url "${srcdir}/lexilla"
+  git config submodule.dep/scintilla/scintillua.url "${srcdir}/scintillua"
+  git -c protocol.file.allow=always submodule--helper update
 
-  install -d build
+  [[ -d build ]] || mkdir build
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}/build"
+  cd "${srcdir}/Gittyup/build"
   cmake -G Ninja .. -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/gittyup \
+    -DCMAKE_INSTALL_DATADIR=/usr/lib \
     -DENABLE_REPRODUCIBLE_BUILDS=ON \
-    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_SHARED_LIBS=OFF \
+    -DUSE_SYSTEM_CMARK=ON \
+    -DUSE_SYSTEM_GIT=ON \
+    -DUSE_SYSTEM_HUNSPELL=ON \
+    -DUSE_SYSTEM_LIBSSH2=ON \
+    -DUSE_SYSTEM_LUA=ON \
+    -DUSE_SYSTEM_OPENSSL=ON \
+    -DUSE_SYSTEM_QT=ON
 
   ninja
 }
 
+check() {
+  cd "${srcdir}/Gittyup"
+  ninja -C build check
+}
+
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/Gittyup"
   DESTDIR="${pkgdir}" ninja -C build install
 
-  rm -rf "${pkgdir}/usr/lib/gittyup/"*.so.*
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/lib/gittyup/Gittyup "${pkgdir}/usr/bin/gittyup"
+  ln -s /usr/lib/gittyup/Gittyup "${pkgdir}/usr/bin/Gittyup"
 
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 ../gittyup.desktop "${pkgdir}/usr/share/applications/gittyup.desktop"
+
+  install -Dm644 rsrc/linux/com.github.Murmele.Gittyup.desktop -t "${pkgdir}/usr/share/applications/"
+  #install -Dm644 rsrc/linux/com.github.Murmele.Gittyup.appdata.xml.in -t "${pkgdir}/usr/share/metainfo/"
 
   install -Dm644 rsrc/Gittyup.iconset/gittyup_logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gittyup.svg"
   for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
-    install -Dm0644 "rsrc/Gittyup.iconset/icon_$s.png" "icons/hicolor/$s/apps/$pkgname.png"
+    install -Dm0644 "rsrc/Gittyup.iconset/icon_$s.png" "${pkgdir}/usr/share/icons/hicolor/$s/apps/$pkgname.png"
   done
 
-  rm -rf "${pkgdir}/usr/lib/gittyup/share" # libssh2 doc man pages
+  rm -rf "${pkgdir}/usr/lib/gittyup/"*.so.*
+  rm -rf "${pkgdir}/usr/lib/gittyup/include"
+  rm -rf "${pkgdir}/usr/lib/gittyup/lib"
 }
