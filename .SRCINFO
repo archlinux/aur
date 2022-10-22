@@ -1,6 +1,6 @@
 pkgbase = netflix-nativefier
 	pkgdesc = Netflix desktop built with nativefier
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 0
 	url = https://www.netflix.com
 	arch = x86_64
