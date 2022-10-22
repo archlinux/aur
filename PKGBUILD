@@ -1,33 +1,26 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=nickvision-tube-converter
-pkgver=2022.6.1
+pkgver=2022.10.3
 pkgrel=1
 pkgdesc="An easy-to-use YouTube video downloader"
 arch=(x86_64)
 url="https://github.com/nlogozzo/NickvisionTubeConverter"
 license=(GPL3)
-depends=(gtk4 libadwaita jsoncpp libcurlpp yt-dlp webkit2gtk-5.0)
+depends=(gtk4 libadwaita jsoncpp libcurlpp yt-dlp webkit2gtk-5.0 ffmpeg)
 makedepends=(git cmake)
 source=("git+https://github.com/nlogozzo/NickvisionTubeConverter.git#tag=${pkgver}"
-        "git+https://github.com/Makman2/GCR_CMake.git")
-sha256sums=("SKIP"
-            "SKIP")
-
-prepare() {
-	cd "$srcdir/NickvisionTubeConverter"
-    git submodule init
-    git config submodule.GCR_CMake.url "${srcdir}/GCR_CMake"
-    git submodule update
-}
+        "don-t-install-pre-built-binaries.patch")
+sha256sums=('SKIP'
+            'b62854996f6539748c1fedeb09d67ebc0c06681adeb4173b053d3c2b5e9df74f')
 
 build() {
-	cmake -B build -S NickvisionTubeConverter \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE="Release"
-    cmake --build build
+    cd "$srcdir/NickvisionTubeConverter"
+    patch -p1 < "$startdir/don-t-install-pre-built-binaries.patch"
+    meson builddir --prefix=/usr
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
+    cd "$srcdir/NickvisionTubeConverter"
+    DESTDIR="${pkgdir}" ninja -C builddir install
     ln -s /usr/bin/org.nickvision.tubeconverter "${pkgdir}/usr/bin/${pkgname}"
 }
