@@ -1,6 +1,6 @@
 _game="forge"
 _user="forge"
-_server_root="/srv/forge"
+_server_root="/srv/forge-1.19.2"
 
 post_install() {
 	chown -R "${user}:${user}" "$_server_root"
