@@ -4,12 +4,12 @@
 # shellcheck disable=2034,2154
 
 pkgname=lix
-pkgver=0.9.48
+pkgver=0.10.0
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('27e7e432625c9f6197601cea1062f8861cc4f82559f2b7fb74740b137cc6cf6f8bddec8146f821ba477d58676eb7b365922d390fa2fe5e4a649a9a9502afa2dc'
+sha512sums=('92625d77ee2c200b4430c36b9e7cd9bccfd12671e81a6f642cce592c51054e924a50d555aeacdc94f355a6150745cd5eca5296bc0f11636c2a1145627c9d4164'
             '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
 
 _gitname=LixD

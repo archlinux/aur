@@ -1,6 +1,82 @@
 Version history
 ===============
 
+0.10.0
+------
+
+2022-10-23
+
+The server allows 0.9 and 0.10 in separate rooms. Decide with your friends
+whether and when to update as a group to Lix 0.10.
+
+Both 0.9 and 0.10 players can chat with each other in the server's lobby. The
+0.10 client will see both 0.9 and 0.10 rooms, and print a console error when
+you attempt to join a 0.9 room. Since 0.9 has no such functionality, the
+server will not show 0.10 rooms to 0.9 players at all; instead, the server
+will write a chat message to those 0.9 players in the lobby if any 0.10 rooms
+exist, suggesting to update to 0.10.
+
+Renamed the server executable from server to lixserv.
+
+Added handicap for multiplayer games. If you're too strong for your group,
+consider to click the handicap icon with the unbalanced scales in the game
+room. You can choose fewer initial lix, fewer skills, a spawn delay, fewer
+points per lix saved, or any combination of these four handicap types.
+
+Fix #265: Allow simultaneous exiting. When you're playing a race map and reach
+the exit at the same time as one or more different teams, all teams will score.
+Before, only the red team would score.
+
+Fix #311: Top and bottom of maps are hollow. Terrain checks beyond those edges
+will not behave as if the edge row's terrain extended infinitely. Now, only the
+left and right edges of the level extend terrain in this way, not all four
+edges. Staircases built to the deadly ceiling will kill the builder as before,
+but now all following walkers will also leave the level and die.
+
+Adapted the singleplayer levels Cry for Me, Baywatch, and Walking in a Winter
+Wonderland to work well with the hollow ceiling.
+
+Allow ability assignments (climber, floater, runner) to blockers. For now,
+these assignments have low priority; we can raise the priority after
+playtesting as a UI change without changing physics.
+
+Fix blocker dancing: Now, walkers (and other non-blockers) don't move when
+they're both in a left-forcing blocker field and in a (different blocker's)
+right-forcing blocker field. Before, walkers would move sideways through the
+fields, turning each phyu. This looked like dancing.
+
+Fix #266: Grant batters extra backwards range against blockers. We keep
+forward batter range vs. blockers as in 0.9, even though it's a lot of forward
+range so the batter sprite needn't overlap the blocker to still bat the
+blocker. Nobody has complained so far, and it's nice to bat blockers without
+awkward precision. We keep the batter range against other activities.
+
+Half-fixed #397: The faller's distance in pixels fallen will not overflow
+the 32-bit int anymore. I didn't fix the overflow for physics updates yet, you
+can still play longer than what fits into the 32-bit int that counts physics
+updates (4.5 years at normal speed, or 46 days at turbo-fast-forward).
+
+Moved the frogs' trigger areas downward by 1 pixel, so that the coordinates
+are divisble by 2. No levels broke from this, not even Las Ranas Hermanas.
+
+Fix #410: Removed spike at top of both matt/beach/04 tiles (day and night).
+Before, both tiles had identical masks; now, both tiles still have identical
+masks, although the mask is different than before. There is no odd prong
+at the top right of those tiles anymore.
+
+Fix #414: Fixed transparency/air pixels in earth.png from the Oriental set.
+The top row of pixels was not fully transparent (that would be 0 % alpha);
+it had an estimated 5 % alpha. Lix treats that as solid. Walkers were walking
+over solid, nearly invisible pixels. Now, earth.png has full transparency
+above the earth. No levels broke from this change.
+
+Fixed #322: Don't wrap during tile group construction: Now, when you load a
+tile group on a small torus map, Lix will construct the group without wrongly
+wrapping the group's elements before grouping. Only when Lix has fully
+constructed the group tile, Lix will insert the group into the torus level.
+
+
+
 0.9.48
 ------
 
