@@ -17,6 +17,7 @@ sha256sums=('a0186f24f238661ce0d3160a2ed74c90b8ff50c597fff693175913949264ba95'
 
 build() {
 	cd "$srcdir"
+	rm -rf db
 	wdic --database db --load --kanjidic kanjidic --edict edict2
 }
 
