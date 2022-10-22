@@ -5,7 +5,7 @@
 
 pkgname=verilator-git
 _pkgname=verilator
-pkgver=r5482.f6f13c7fd
+pkgver=r5486.0e4da3b0b
 pkgrel=1
 pkgdesc='The fastest free Verilog HDL simulator'
 url='https://www.veripool.org/projects/verilator/wiki/Intro'
@@ -19,10 +19,8 @@ conflicts=('verilator')
 provides=('verilator')
 source=(
   "verilator::git+https://github.com/verilator/verilator.git"
-  "3694.diff"
 )
-sha512sums=('SKIP'
-            'bc9a86041442a2dd14f2de6dbce3b29601998599b0054c5e23173ac909bbb5ef6da8c35c28121eac7155ccdee88cf42b3e0ab2addebd6d20ba89cf0729e5f25e')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -31,7 +29,6 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git apply $srcdir/3694.diff
   autoconf
 }
 

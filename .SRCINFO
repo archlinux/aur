@@ -1,6 +1,6 @@
 pkgbase = verilator-git
 	pkgdesc = The fastest free Verilog HDL simulator
-	pkgver = r5482.f6f13c7fd
+	pkgver = r5486.0e4da3b0b
 	pkgrel = 1
 	url = https://www.veripool.org/projects/verilator/wiki/Intro
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = verilator-git
 	provides = verilator
 	conflicts = verilator
 	source = verilator::git+https://github.com/verilator/verilator.git
-	source = 3694.diff
 	sha512sums = SKIP
-	sha512sums = bc9a86041442a2dd14f2de6dbce3b29601998599b0054c5e23173ac909bbb5ef6da8c35c28121eac7155ccdee88cf42b3e0ab2addebd6d20ba89cf0729e5f25e
 
 pkgname = verilator-git
