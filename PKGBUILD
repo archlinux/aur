@@ -29,7 +29,8 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	install -vDm 755 jfrog -t "${pkgdir}/usr/bin/"
-	install -vDm 644 {README,RELEASE}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -vDm 644 {README,RELEASE}.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	# build bash completions
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
