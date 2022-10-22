@@ -2,7 +2,7 @@
 _basename='wxrd'
 pkgname="$_basename-git"
 pkgver=0.16.0.r46.a548783
-pkgrel=3
+pkgrel=4
 pkgdesc="A prototype-quality standalone client for xrdesktop based on wlroots and the wxrc codebase."
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/wxrd"
@@ -21,7 +21,7 @@ depends=(
     'python3'
 )
 makedepends=('git' 'meson' 'vulkan-headers' 'gtk-doc' 'pygobject-devel')
-provides=("$_basename" 'xrdesktop' 'gulkan' 'gxr')
+provides=("$_basename" 'xrdesktop')
 conflicts=("$_basename")
 source=(
     'git+https://gitlab.freedesktop.org/xrdesktop/wxrd.git'
@@ -69,4 +69,5 @@ package() {
 
     cd "$_basename"
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 subprojects/xrdesktop/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/xrdesktop/LICENSE
 }
