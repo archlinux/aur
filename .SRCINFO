@@ -1,5 +1,5 @@
 pkgbase = etlegacy32-git
-	pkgver = 2.79.0.1.g2d013e38e
+	pkgver = 2.80.2.178.gd8612be72
 	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = etlegacy32-git
 	depends = lib32-sqlite
 	depends = lib32-libpulse
 	options = !strip
-	source = git://github.com/etlegacy/etlegacy.git
+	source = git+https://github.com/etlegacy/etlegacy.git
 	md5sums = SKIP
 
 pkgname = etlegacy32-git

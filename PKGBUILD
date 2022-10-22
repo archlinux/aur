@@ -5,7 +5,7 @@
 
 pkgbase=etlegacy32-git
 pkgname=('etlegacy32-git' 'etlegacy32-mod-git')
-pkgver=2.79.0.1.g2d013e38e
+pkgver=2.80.2.178.gd8612be72
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('lib32-libpng' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-glew' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite' 'lib32-libpulse')
 makedepends=('git' 'cmake' 'zip' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-curl')
 options=(!strip)
-source=('git://github.com/etlegacy/etlegacy.git')
+source=('git+https://github.com/etlegacy/etlegacy.git')
 md5sums=('SKIP')
 _gitname=etlegacy
 
@@ -35,7 +35,7 @@ build() {
 
     # build type and path
     cmakeopts+=(
-        "-D CMAKE_BUILD_TYPE=Debug"
+        "-D CMAKE_BUILD_TYPE=Release"
         "-D CMAKE_INSTALL_PREFIX=/usr"
         "-D INSTALL_DEFAULT_BASEDIR=/usr/lib/etlegacy"
         "-D INSTALL_DEFAULT_BINDIR=bin"
@@ -108,7 +108,7 @@ package_etlegacy32-git() {
     mkdir -p $pkgdir/etc/xdg/$_gitname/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 misc/etlegacy.conf $pkgdir/etc/xdg/$_gitname/
-    install -m 644 misc/etlegacy.service $pkgdir/usr/lib/systemd/system/
+    install -m 644 misc/etlegacy-x86.service $pkgdir/usr/lib/systemd/system/
 
     # config
     mv $pkgdir/usr/lib/$_gitname/etmain/*.cfg $pkgdir/etc/xdg/$_gitname/etmain/
