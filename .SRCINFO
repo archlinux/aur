@@ -7,6 +7,7 @@ pkgbase = stash-bin
 	arch = aarch64
 	arch = armv7h
 	license = AGPL3
+	depends = ffmpeg
 	provides = stash
 	source_x86_64 = stash-bin-0.17.1::https://github.com/stashapp/stash/releases/download/v0.17.1/stash-linux
 	sha256sums_x86_64 = 6bd6034895b42721b4cd93a1f83484724177231bc48104921fb2a583eabe0f78

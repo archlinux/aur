@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/stashapp/stash'
 license=('AGPL3')
 provides=('stash')
+depends=('ffmpeg')
 source_x86_64=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux")
 source_aarch64=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux-arm64v8")
 source_armv7h=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux-arm32v7")
