@@ -77,6 +77,10 @@ source=(
   # A problem with mypy versions <= 0.981 causes a false postive around numpy imports.
   # See: https://github.com/python/mypy/issues/13627
   'ceph-17.2.4-tox-mypy-false-postive.patch'
+
+  # Cephadm tests rely on some mock fs abstraction which dies in the build chroot,
+  # so disable them
+  'ceph-17.2.4-tox-cephadm-rm.patch'
 )
 sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40d94b802db5b344faeab7c4e48d65c8ade47d0cbf0eaa0e7ddf399b09a279d'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -88,7 +92,8 @@ sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40
             'cd20e9358e49d3342c7c2a00ac538f628cdf86dc25f1870b77ea2d3df386772caedc333506387b68d8d357913ba1eb761700d843103c3c173df71cd79473cefa'
             '67df3bdf1784ba6ce76aef95569bc89071ddcc38053a4ffedb89d744fe876f8d54bd0c707752eea8c9d2bba101c08b9b068974e45974fe6884d49d5c1c4dbf4c'
             '31e578b240ceaaf1216b56cdce654661eed6529ef642ecad164a02669e850100a49a85dc70f3d744671e2c5dad10aee64be7d091fa33007cb8fc6788a4336799'
-            'e59cc0ec58d85369ed9f2b8969e2280609fe98828ea66b5bb80a423f4a0aa547da52c6ba9d9610cece442c515e123d1af169e11ec106aff8cd3dadaea35cad90')
+            'e59cc0ec58d85369ed9f2b8969e2280609fe98828ea66b5bb80a423f4a0aa547da52c6ba9d9610cece442c515e123d1af169e11ec106aff8cd3dadaea35cad90'
+            '6b53e3a2b1941f8dfdb4b83cafc4c500e818dd3a0736d7061f0ebcdfb514094b217e4688384c5b428288181ef6fff0ca73895c65a046e2d6ae2b834375164216')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
