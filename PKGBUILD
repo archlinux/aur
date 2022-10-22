@@ -25,7 +25,7 @@ sha256sums=('00b24d08082392be75d305effdda7727118b865fd685a48737b6666c9dcfe9b8'
             '9bbb2f84f401a4da62ffe7f533aa0b149921f3f88fec7f470c4d4b5fcf63f331')
 
 build() {
-    cd "$srcdir/$repo-${pkgver//_/-}"
+    cd "$srcdir/$repo-${pkgver//_/-}"n
     npm_config_cache="$srcdir/npm_cache" npm install --production --ignore-scripts --no-shrinkwrap
 }
 
