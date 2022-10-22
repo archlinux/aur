@@ -2,20 +2,26 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager
-pkgver=1.2.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Time management TUI"
 arch=('x86_64')
 url="https://github.com/aryakaul/rusty-krab-manager"
 license=('custom:ETHICAL')
 depends=('alsa-lib' 'gcc-libs')
-makedepends=('rust')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('391fa1b5019d3fca2be7b9a4be7ee23a05274fa7fd2d9d013c94fff75693303aa707fbace242e0b455c0d3e917f50c28e6b42d86765e21617b6d2df4a87680e9')
+sha512sums=('846737607c6d00404a6a6886e4778c416f06fef120f3e7f95e94cecdf8549f4cc981ac98eb15b518cc4e22735c786a313fe90f9d976780d97fe868d04c394300')
+options=('!lto')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 package() {
