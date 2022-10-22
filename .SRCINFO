@@ -1,0 +1,16 @@
+pkgbase = python-rich-rst-git
+	pkgdesc = Allows python-rich to print a reStructuredText document in a rich format
+	pkgver = 1.1.7.r4.ge36049c
+	pkgrel = 1
+	url = https://github.com/wasi-master/rich-rst
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python-rich
+	depends = python-docutils
+	provides = python-rich-rst
+	conflicts = python-rich-rst
+	source = python-rich-rst::git+https://github.com/wasi-master/rich-rst
+	md5sums = SKIP
+
+pkgname = python-rich-rst-git
