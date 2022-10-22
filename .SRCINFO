@@ -1,0 +1,16 @@
+pkgbase = jupyter-ibm-quantum-widgets
+	pkgdesc = IBM Quantum widgets for Jupyter
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/ibm-quantum-widgets
+	arch = any
+	license = custom:IBM
+	checkdepends = python-pytest
+	makedepends = python-installer
+	depends = python-ipykernel
+	depends = python-ipywidgets
+	depends = python-traitlets
+	source = https://files.pythonhosted.org/packages/py2.py3/i/ibm-quantum-widgets/ibm_quantum_widgets-1.0.3-py2.py3-none-any.whl
+	b2sums = 201df4fcb7e17a8e82142acc985badaa2a7d0c4569464c3313f4525f68dd94cf9651bf117ff6b03bc68aeb88edf264a97f7708d0f10464b06d706613c4d65839
+
+pkgname = jupyter-ibm-quantum-widgets
