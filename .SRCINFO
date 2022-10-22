@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.12.beta1.r4.g8937bcc1
+	pkgver = 0.5.12.beta1.r7.g68d1ef7f
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = lutris-git
 	depends = python-requests
 	depends = python-yaml
 	depends = unzip
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = xdg-utils
 	depends = xorg-xrandr
 	optdepends = gamemode: Allows games to request a temporary set of optimisations
