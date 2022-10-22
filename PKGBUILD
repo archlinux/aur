@@ -3,13 +3,13 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=tup-git
-pkgver=0.7.11.r95.g4e9f5b32
+pkgver=0.7.11.r111.gf26bc1e8
 pkgrel=1
 pkgdesc='A fast, file-based build system'
 arch=(i686 x86_64)
-url='http://gittup.org/tup/index.html'
+url='https://gittup.org/tup/index.html'
 license=(GPL2)
-depends=(fuse)
+depends=(fuse3 pcre)
 makedepends=(git)
 provides=(tup)
 conflicts=(tup)
