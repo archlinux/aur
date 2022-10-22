@@ -19,7 +19,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
-    BUILD_OPTS=( "-DCMAKE_INSTALL_PREFIX=/usr/${_arch}"
+    BUILD_OPTS=("-DCMAKE_INSTALL_PREFIX=/usr/${_arch}"
       '-DCMAKE_BUILD_TYPE=None'
       '-DBUILD_DOCS=OFF'
       '-DBUILD_EXAMPLES=OFF'
