@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=punchy
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 epoch=
 pkgdesc="A 2.5D side-scroller beatemup, made in Bevy"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/fishfolks/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=("a2b956c6dd632a8cdc9a3b626598aa3b99e656070cfb9c8c4dc1b9e18e50add4")
+sha256sums=("0a0a1182d347c542c75f01cd72155cf7ffc9717b7c06b8a02ce756a6ae4e2656")
 validpgpkeys=()
 
 build() {

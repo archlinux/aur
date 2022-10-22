@@ -1,6 +1,6 @@
 pkgbase = punchy
 	pkgdesc = A 2.5D side-scroller beatemup, made in Bevy
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/fishfolks/punchy
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = punchy
 	depends = systemd-libs
 	depends = pipewire-alsa
 	depends = pulseaudio-alsa
-	source = https://github.com/fishfolks/punchy/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = a2b956c6dd632a8cdc9a3b626598aa3b99e656070cfb9c8c4dc1b9e18e50add4
+	source = https://github.com/fishfolks/punchy/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0a0a1182d347c542c75f01cd72155cf7ffc9717b7c06b8a02ce756a6ae4e2656
 
 pkgname = punchy
