@@ -2,7 +2,7 @@ pkgbase = ticli-git
 	pkgdesc = A modern cli for tikv
 	pkgver = 0.1.0.20221022
 	pkgrel = 1
-	url = https://https://github.com/hackathon-2022-ticli/ticli
+	url = https://github.com/hackathon-2022-ticli/ticli
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = ticli-git
 	provides = ticli
 	conflicts = ticli
 	conflicts = ticli-bin
-	source = ticli::git+https://https://github.com/hackathon-2022-ticli/ticli
+	source = ticli::git+https://github.com/hackathon-2022-ticli/ticli
 	sha256sums = SKIP
 
 pkgname = ticli-git
