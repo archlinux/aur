@@ -1,0 +1,17 @@
+pkgbase = foxitpdfeditor-bin
+	pkgdesc = Foxit PDF editor 福昕高级PDF编辑器
+	pkgver = 11.0.2.1222
+	pkgrel = 1
+	url = https://www.foxitsoftware.cn
+	arch = x86_64
+	license = unknown
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-speech
+	provides = foxitpdfeditor
+	source_x86_64 = foxitpdfeditor-11.0.2.1222-x86_64.deb::https://cdn07.foxitsoftware.cn/pub/foxit/phantomPDF/desktop/linux/11.x/11.0/zh_cn/com.foxit.foxitpdfeditor_11.0.2.1222_amd64.deb
+	source_x86_64 = foxitpdfeditor.sh
+	sha512sums_x86_64 = 906c061baf440035669f0307d32b8607baa6d53df2b706582e9bf2eb5b7190bf8bbfbf2fe88566351ac80ef3503f0324a30d6da67a7c9fd3b80883635bb8535a
+	sha512sums_x86_64 = f877489dcb72be7e9762f067804b6b1216c19233203c866f4c0029d9b02da38e2294bb0fafef3511d909434e4151ce66cf49fb4d75a4cb3cb7732e9fa4076d39
+
+pkgname = foxitpdfeditor-bin
