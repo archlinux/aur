@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rwave
-_pkgver=2.6-4
+_pkgver=2.6-5
 pkgname=r-${_pkgname,,}
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc='Time-Frequency Analysis of 1-D Signals'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7dc1c3b258aaac6102fabd86edf9134244fff9ab690653e311988056d35de6fa')
+sha256sums=('6c9ef75bb376f2e3f5c5dcd3b3fdca7d86797ce809da34f444632657189be2e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
