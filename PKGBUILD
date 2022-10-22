@@ -33,13 +33,13 @@ prepare() {
   cd "$srcdir/albert"
   git submodule init
   git config submodule.plugins.url "$srcdir/plugins"
-  git submodule update plugins
+  git -c protocol.file.allow=always submodule update plugins
 
   cd "$srcdir/albert/plugins"
   git submodule init
   git config submodule.python/pybind11.url "$srcdir/pybind11"
   git config submodule.python/share/modules.url "$srcdir/python"
-  git submodule update python/pybind11 python/share/modules
+  git -c protocol.file.allow=always submodule update python/pybind11 python/share/modules
   
   cd "$srcdir/albert/plugins/python/share/modules"
   git submodule init
@@ -47,7 +47,7 @@ prepare() {
   git config submodule.xkcd.url "$srcdir/xkcd-plugin"
   # currently submodules are out-of-dated in upstream
   # so we have to checkout them
-  git submodule update --remote --merge jetbrains_projects xkcd
+  git -c protocol.file.allow=always submodule update --remote --merge jetbrains_projects xkcd
 }
 
 
