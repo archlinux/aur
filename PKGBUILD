@@ -2,7 +2,7 @@
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-icd-loader-git
-pkgver=1.2.198.r5.g4f78f14c0
+pkgver=1.3.231.r4.g9cd0dc8cd
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git)'
@@ -13,11 +13,17 @@ depends=(glibc)
 optdepends=('vulkan-driver: packaged vulkan driver') # vulkan-driver: vulkan-intel/vulkan-radeon/nvidia-utils/....
 provides=("${pkgname%-git}" libvulkan.so)
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}"::git+https://github.com/KhronosGroup/Vulkan-Loader.git)
-sha256sums=('SKIP')
+source=("${pkgname%-git}"::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+        https://github.com/KhronosGroup/Vulkan-Loader/commit/456946a138c219941f321f2db5d519846b55847b.patch)
+sha256sums=('SKIP'
+            '11220d7d9841f952a65ce5ffd10700f4c29c66e1cc11a28a9b28b0572b6d3e89')
 
 pkgver() {
     git -C "${pkgname%-git}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    patch --directory="${pkgname%-git}" --forward --strip=1 --input="${srcdir}/456946a138c219941f321f2db5d519846b55847b.patch"
 }
 
 build() {
