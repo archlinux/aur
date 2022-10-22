@@ -3,7 +3,7 @@
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
 pkgver=0.11.9
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
 license=(GPL3)
@@ -44,7 +44,4 @@ package() {
 	local _dist=dist/linux-unpacked/resources
 	install -Dm0644 -t "$pkgdir/usr/lib/$pkgname/" "$_dist/app.asar"
 	cp -a "$_dist/static" "$pkgdir/usr/lib/$pkgname"
-	install -Dm0644 -t "$pkgdir/usr/lib/pkgname/" NEWS.md
-	mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
-	ln -s /usr/lib/chrysalis/static/udev/60-kaleidoscope.rules "$pkgdir/usr/lib/udev/rules.d/"
 }
