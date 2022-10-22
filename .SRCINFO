@@ -1,12 +1,12 @@
 pkgbase = ddgr-git
 	pkgdesc = DuckDuckGo from the terminal (git version)
-	pkgver = 2.0.r291.1301ec7
-	pkgrel = 4
+	pkgver = 2.1.r293.dba0cf8
+	pkgrel = 1
 	url = https://github.com/jarun/ddgr
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python>=3.7
+	depends = python>=3.7.0
 	provides = ddgr
 	conflicts = ddgr
 	source = git+https://github.com/jarun/ddgr.git

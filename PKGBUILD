@@ -5,13 +5,13 @@
 
 pkgname=ddgr-git
 _pkgname="${pkgname%-git}"
-pkgver=2.0.r291.1301ec7
-pkgrel=4
+pkgver=2.1.r293.dba0cf8
+pkgrel=1
 pkgdesc="DuckDuckGo from the terminal (git version)"
 arch=('any')
 url="https://github.com/jarun/ddgr"
 license=('GPL3')
-depends=('python>=3.7')
+depends=('python>=3.7.0')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
