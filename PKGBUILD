@@ -2,7 +2,7 @@
 
 pkgname=prometheus-process-exporter-bin
 pkgver=0.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter that mines /proc to report on selected processes"
 
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
@@ -23,10 +23,10 @@ source_arm=("${url}/releases/download/v${pkgver}/process-exporter-${pkgver}.linu
 package() {
 	case "$CARCH" in
 		'x86_64') ARCH='amd64';;
-		'arm') ARCH='armv5';;
-		'armv6h') ARCH='arm32v6';;
-		'armv7h') ARCH='arm32v6';;
-		'aarch64') ARCH='arm64v8';;
+		'arm') ARCH='armv6';;
+		'armv6h') ARCH='armv6';;
+		'armv7h') ARCH='armv7';;
+		'aarch64') ARCH='arm64';;
     esac
     cd "${srcdir}/process-exporter-${pkgver}.linux-${ARCH}"
 
