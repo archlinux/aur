@@ -3,8 +3,8 @@
 # Maintaner: Jose Riha <jose1711 gmail com>
 
 pkgname=voxatron
-pkgver=0.3.5b
-pkgrel=2
+pkgver=0.3.6
+pkgrel=1
 pkgdesc="fantasy console and collection of games made entirely out of voxels"
 url="http://www.lexaloffle.com/voxatron.php"
 license=('custom: "commercial"')
@@ -49,9 +49,9 @@ package(){
   # Install license
   install -Dm 644 "${pkgdir}"/opt/${pkgname}/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/license
 }
-md5sums_i686=('247a511e2f1572fff538c78d5bb68d4a'
+md5sums_i686=('381d91f5314f9f74859a3f7f28e24407'
               '184c021b52d3a9c8ac5f49435b4b93e0'
               'bb84f6fcd7cdb18eb417173a6f58e00e')
-md5sums_x86_64=('27f61500fc0aa3a00a861121d2674848'
+md5sums_x86_64=('381d91f5314f9f74859a3f7f28e24407'
                 '184c021b52d3a9c8ac5f49435b4b93e0'
                 'bb84f6fcd7cdb18eb417173a6f58e00e')
