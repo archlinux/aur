@@ -2,7 +2,7 @@
 _basename='wxrd'
 pkgname="$_basename-git"
 pkgver=0.16.0.r46.a548783
-pkgrel=2
+pkgrel=3
 pkgdesc="A prototype-quality standalone client for xrdesktop based on wlroots and the wxrc codebase."
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/wxrd"
@@ -21,7 +21,7 @@ depends=(
     'python3'
 )
 makedepends=('git' 'meson' 'vulkan-headers' 'gtk-doc' 'pygobject-devel')
-provides=("$_basename" 'wlroots' 'xrdesktop' 'gulkan' 'gxr')
+provides=("$_basename" 'xrdesktop' 'gulkan' 'gxr')
 conflicts=("$_basename")
 source=(
     'git+https://gitlab.freedesktop.org/xrdesktop/wxrd.git'
@@ -58,17 +58,15 @@ prepare() {
 
 build() {
     rm -rf build
-    arch-meson $_basename build --libdir=lib -Ddefault_library=static
+    arch-meson $_basename build --libdir=lib \
+        --force-fallback-for=gulkan,gxr,xrdesktop,wlroots \
+        -Ddefault_library=static
     ninja -C build
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+    meson install -C build --skip-subprojects wlroots --destdir "$pkgdir"
 
     cd "$_basename"
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.wxrd
-    install -Dm644 subprojects/wlroots/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.wlroots
-    install -Dm644 subprojects/gulkan/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.gulkan
-    install -Dm644 subprojects/gxr/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.gxr
-    install -Dm644 subprojects/xrdesktop/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.xrdesktop
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
