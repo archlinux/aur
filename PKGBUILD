@@ -1,30 +1,23 @@
 pkgname=srecord
-pkgver=1.64
-pkgrel=2
-pkgdesc="The SRecord package is a collection of powerful tools for manipulating EPROM load files."
-arch=('i686' 'x86_64')
-license=('GPL')
-makedepends=('boost' 'ghostscript')
-url="http://srecord.sourceforge.net"
-source=("${url}/${pkgname}-${pkgver}.tar.gz"
-        'coe.patch')
-# broken makefile has race conditions, remove "-j"
-options=('!makeflags')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 < "$srcdir/coe.patch"
-}
+pkgver=1.65.0
+pkgrel=1
+pkgdesc='The SRecord package is a collection of powerful tools for manipulating EPROM load files.'
+arch=('x86_64')
+license=('GPL3')
+makedepends=('cmake' 'ghostscript' 'libgcrypt' 'doxygen' 'psutils')
+url='https://srecord.sourceforge.net'
+source=("https://sourceforge.net/projects/srecord/files/srecord/${pkgver%.*}/${pkgname}-${pkgver}-Source.tar.gz")
+sha256sums=('81c3d07cf15ce50441f43a82cefd0ac32767c535b5291bcc41bd2311d1337644')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    ./configure --prefix=/usr || return 1
-    make || return 1
+  mkdir -p build
+  cd build
+  cmake "../${pkgname}-${pkgver}-Source" -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install || return 1
+  cd build
+  make DESTDIR="${pkgdir}" install
+  find "${pkgdir}/usr/lib/" -not -name liblib_srecord.a -not -type d -delete
 }
-md5sums=('4de4a7497472d7972645c2af91313769'
-         '7bd7d4451a683d4832a0ddb2b160756e')
