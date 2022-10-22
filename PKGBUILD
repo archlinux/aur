@@ -1,37 +1,36 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=googledot-cursor-theme
-pkgver=1.1.3
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Cursor theme inspired on Google"
 arch=('any')
 url="https://github.com/ful1e5/Google_Cursor"
 license=('GPL3')
-depends=('libxcursor' 'libpng')
-makedepends=('python-clickgen1')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
-noextract=("$pkgname-bitmaps-$pkgver.zip")
-sha256sums=('914941edc52e5ce3cca15ab498b462255e62ac137b6b95ae948d54cf97b71d22'
-            '3f3e295e6e6fba5ccc5bc2adc02807df87941abeec35fbc6289d61285ac9d8a5')
+makedepends=('python-clickgen>2.0.0')
+options=('!strip')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('4e681d9c42e7ec1322953f4c4e1874f9d289c32e07893321dd44a0aa8c3be1f0')
 
 prepare() {
   cd Google_Cursor-$pkgver
-  mkdir -p bitmaps
-  bsdtar -xf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps/
+  rm -rf themes
 }
 
 build() {
   cd Google_Cursor-$pkgver
 
-  pushd builder
-  _themes='Blue Black Red White'
-  _sizes='22 24 28 32 40 48 56 64 72 80 88 96'
+  declare -A names
+  names["GoogleDot-Blue"]="Blue cursor theme inspired on Google"
+  names["GoogleDot-Black"]="Black cursor theme inspired on Google"
+  names["GoogleDot-White"]="White cursor theme inspired on Google"
+  names["GoogleDot-Red"]="Red cursor theme inspired on Google"
 
-  set -- ${_sizes}
-  for t in $_themes; do
-    python build.py unix -p "../bitmaps/GoogleDot-$t" --xsizes ${_sizes[@]}
+  for key in "${!names[@]}"; do
+    comment="${names[$key]}";
+    ctgen build.toml -p x11 -d "bitmaps/$key" -n "$key" -c "$comment" &
+    PID=$!
+    wait $PID
   done
-  popd
 }
 
 package() {
