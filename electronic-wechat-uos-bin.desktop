@@ -14,3 +14,4 @@ Type=Application
 X-KDE-SubstituteUID=false
 X-KDE-Username=
 Keywords=wechat;weixin;electronic;
+StartupWMClass=electronic-wechat

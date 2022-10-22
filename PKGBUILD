@@ -1,7 +1,8 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
+# Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
 pkgver=v2.3.1.fix
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用Electron构建, 利用UOS请求头修复了登陆问题."
 arch=('x86_64')
@@ -15,6 +16,7 @@ optdepends=(
 	'xdg-desktop-portal-kde: KDE下的原生对话框'
 	'xdg-desktop-portal-lxqt: lxqt下的原生对话框'
 	'xdg-desktop-portal-gnome: Gnome下的原生对话框'
+	'libnotify: 桌面通知, 需要搭配通知服务器使用'
 )
 provides=(electronic-wechat)
 conflicts=()
