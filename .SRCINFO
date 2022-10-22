@@ -1,0 +1,14 @@
+pkgbase = python-tictoc
+	pkgdesc = Time code using syntax similar to tic and toc in MATLAB
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/ericcfields/pytictoc
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pytictoc/pytictoc-1.5.2.tar.gz
+	sha256sums = dd9b636493bf140a1f8113eae296439dd5c8703ed9dcded181ae0936870530eb
+
+pkgname = python-tictoc
+	depends = python
