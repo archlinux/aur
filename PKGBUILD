@@ -11,8 +11,8 @@
 minver=1.19.2
 srvpath=/srv/forge-1.19.2
 
-pkgver=43.1.47
-pkgrel=2
+pkgver=43.1.1
+pkgrel=3
 pkgname=forge-server-1.19.2
 pkgdesc="Forge is a free, open-source modding API all of your favourite mods use!"
 url="https://minecraftforge.net"
@@ -27,7 +27,7 @@ backup=("etc/conf.d/forge")
 install=forge-server.install
 source=(git+https://github.com/Edenhofer/minecraft-server
 				https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.19.x/LICENSE.txt
-				https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.1.47/forge-1.19.2-43.1.47-installer.jar)
+				https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.1.1/forge-1.19.2-43.1.1-installer.jar)
 noextract=(forge-${minver}-${pkgver}-installer.jar)
 sha512sums=('SKIP'
             'SKIP'
