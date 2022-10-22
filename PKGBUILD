@@ -4,12 +4,12 @@
 
 pkgname=python-rich-cli-git
 pkgver=1.8.0.r6.g0721cb1
-pkgrel=1
+pkgrel=2
 pkgdesc='command line toolbox for fancy output in the terminal'
 arch=(any)
 url='https://github.com/Textualize/rich-cli'
 license=('MIT')
-depends=('python-rich' 'python-click' 'python-requests' 'python-textual' 'python-rich-rst')
+depends=('python-rich' 'python-click' 'python-requests' 'python-textual' 'python-rich-rst-git')
 makedepends=('python-pip' 'python-poetry')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
