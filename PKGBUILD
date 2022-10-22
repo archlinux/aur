@@ -3,27 +3,20 @@
 # Contributor: Renato Candido <renatocan@gmail.com>
 _base=lesscpy
 pkgname=python-${_base}
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Python LESS compiler"
 url="https://github.com/${_base}/${_base}"
-depends=(python-ply python-six)
+depends=(python-ply)
 makedepends=(python-setuptools)
-checkdepends=(python-nose)
 license=(MIT)
 arch=(any)
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('564373fbe2fe8878bc3f47f17bd9cbd3cc601b3f6b6e3a9d0142f9b9a253a4e75665b3688499315e7af8adb4618e842d31869bef660bc1cc048601bd803813d9')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('3a88c14d1e47a28d5e427e9cd0e1c2553dd3fc937085c54975c3e2612d623673e0a2fe05d7bb60dcdeda0f352b1be0354595ba9fac38483e7ab0a21529036e65')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
-}
-
-check() {
-  cd ${_base}-${pkgver}
-  nosetests test
 }
 
 package() {
