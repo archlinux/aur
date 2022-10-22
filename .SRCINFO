@@ -1,15 +1,15 @@
 pkgbase = fuchsia-cursor
 	pkgdesc = Open source port of FuchsiaOS's cursors for Linux
-	pkgver = 1.0.5
+	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://github.com/ful1e5/fuchsia-cursor
 	arch = any
 	license = AGPL
-	source = Fuchsia-1.0.5.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v1.0.5/Fuchsia.tar.gz
-	source = Fuchsia-Pop-1.0.5.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v1.0.5/Fuchsia-Pop.tar.gz
-	source = Fuchsia-Red-1.0.5.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v1.0.5/Fuchsia-Red.tar.gz
-	sha256sums = 686c74f62b35b6bc6c955ffbede4e9dd190104c009d6a4ea6a0a2f8e1db9b642
-	sha256sums = 43fd9e83ae690a51722389ae9fb8c850eef48aa9026e5e1818f6b4c9b652a643
-	sha256sums = 7d088b2cfb529af204b8deed610b24c8a40af4ed26d3b6d6a9fa463385cec804
+	source = Fuchsia-2.0.0.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.0/Fuchsia.tar.gz
+	source = Fuchsia-Pop-2.0.0.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.0/Fuchsia-Pop.tar.gz
+	source = Fuchsia-Red-2.0.0.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.0/Fuchsia-Red.tar.gz
+	sha256sums = 22bf639e681736c55b8d2266fbcc70ad10d6d55d4456136c921f57c3a2132a4b
+	sha256sums = b4dac495290146b0d9ed8cc782de1915c11b1887645358f12c196b03870f6265
+	sha256sums = f365dacf16f6bd34d4313853789d0358cd574a1489041ab793cd4eff333551a0
 
 pkgname = fuchsia-cursor
