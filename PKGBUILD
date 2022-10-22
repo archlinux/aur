@@ -3,15 +3,15 @@
 # Contributor: John Jenkins <twodopeshaggy[at]gmail[dot]com>
 
 pkgname=ddgr
-pkgver=2.0
-pkgrel=4
+pkgver=2.1
+pkgrel=1
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
 url="https://github.com/jarun/ddgr"
 license=('GPL3')
-depends=('python>=3.7')
+depends=('python>=3.7.0')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7e46430b0a8c479a5feca832adb73f2f09804bf603dedc50f4cf2e1da4c75f88')
+sha256sums=('fb6601ad533f2925d2d6299ab9e6dd48da0b75e99ef9ed9068f37e516380b5e6')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
