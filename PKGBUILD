@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=pypyr
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Task runner for automation pipelines'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest' 'python-pyfakefs')
-_commit='7696e5ae5c4ccb81a5e7589cca4622d396d43e27'
+_commit='5bb3bc53d391a4ea320a3f958de0af65f5a3f0ba'
 source=("$pkgname::git+https://github.com/pypyr/pypyr.git#commit=$_commit")
 b2sums=('SKIP')
 
