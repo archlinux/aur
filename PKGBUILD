@@ -4,7 +4,7 @@
 
 pkgname=river-noxwayland-git
 _pkgname=river
-pkgver=0.2.0_dev.r115.g844ffce
+pkgver=0.2.0_dev.r119.ge35c147
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -42,7 +42,7 @@ prepare() {
 	for dep in pixman wayland wlroots xkbcommon; do
 		git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
 	done
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
