@@ -31,7 +31,7 @@ sha256sums=(
 _squashfs_root="squashfs-root"
 
 prepare() {
-	echo -ne 'Extracting the AppImage (This may need some time)... '
+	echo -ne 'Extracting the AppImage (This may take some time)... '
 	rm -rf $_squashfs_root
 	chmod +x $_target
 	./$_target --appimage-extract >> /dev/null
