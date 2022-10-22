@@ -1,13 +1,14 @@
 pkgbase = denseflow
 	pkgdesc = Extracting optical flow and frames
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/open-mmlab/denseflow
 	arch = x86_64
 	license = BSD
 	makedepends = boost
 	makedepends = cmake
 	makedepends = qt5-base
+	depends = boost-libs
 	depends = cuda
 	depends = hdf5
 	depends = opencv-cuda

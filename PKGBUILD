@@ -2,12 +2,13 @@
 
 pkgname=denseflow
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Extracting optical flow and frames'
 arch=('x86_64')
 url='https://github.com/open-mmlab/denseflow'
 license=('BSD')
 depends=(
+  boost-libs
   cuda
   hdf5
   opencv-cuda
