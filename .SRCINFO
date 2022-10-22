@@ -1,6 +1,6 @@
 pkgbase = rmx-bin
 	pkgdesc = Multiplatform port of GNU rm with extra features and improved performance
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/demfabris/rmx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rmx-bin
 	provides = rmx-bin
 	conflicts = rmx-bin
 	conflicts = rmx-git
-	source = rmx.tar.gz::https://github.com/demfabris/rmx/releases/download/v0.1.5/rmx-musl-x86_64.tar.gz
-	sha256sums = 6510ae59b2558538a222ae8e1b1e85d40244f1e9efae59fe1d7f3cd21f6bfdcd
+	source = rmx.tar.gz::https://github.com/demfabris/rmx/releases/download/v0.1.6/rmx-musl-x86_64.tar.gz
+	sha256sums = 7b268524970f123585fde76ce7fa34a154f53e1eb59153c2cca551e5784f2691
 
 pkgname = rmx-bin
