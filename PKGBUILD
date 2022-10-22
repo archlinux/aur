@@ -2,7 +2,7 @@
 
 pkgname=darkman
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for dark-mode and light-mode transitions on Linux desktop."
 arch=('x86_64' 'aarch64')
 url="https://darkman.whynothugo.nl/"
@@ -11,7 +11,7 @@ depends=('geoclue')
 makedepends=('go' 'git' 'scdoc')
 source=("git+https://gitlab.com/WhyNotHugo/darkman.git?signed#tag=v${pkgver}")
 sha512sums=('SKIP')
-validpgpkeys=("13FF264E91839686966CA2AC388ADF1E2EEA7F1A")
+validpgpkeys=("1204CA9FC2FFADEEDC2961367880733B9D062837")
 
 build() {
   cd "$pkgname"

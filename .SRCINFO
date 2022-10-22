@@ -1,7 +1,7 @@
 pkgbase = darkman
 	pkgdesc = Framework for dark-mode and light-mode transitions on Linux desktop.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://darkman.whynothugo.nl/
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = darkman
 	makedepends = scdoc
 	depends = geoclue
 	source = git+https://gitlab.com/WhyNotHugo/darkman.git?signed#tag=v1.4.0
-	validpgpkeys = 13FF264E91839686966CA2AC388ADF1E2EEA7F1A
+	validpgpkeys = 1204CA9FC2FFADEEDC2961367880733B9D062837
 	sha512sums = SKIP
 
 pkgname = darkman
