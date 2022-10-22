@@ -2,8 +2,8 @@
 
 _pkgname=Flatseal
 pkgname=flatseal
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='A permissions manager for Flatpak.'
 url="https://github.com/tchx84/Flatseal/"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('flatpak' 'gjs' 'webkit2gtk' 'libhandy')
 makedepends=('meson' 'flatpak-builder' 'ninja')
 source=("$pkgname-$pkgver::https://github.com/tchx84/Flatseal/archive/v$pkgver.tar.gz")
-sha1sums=('93aff8de7171fb92ef50f28ff8bf72351808d6d9')
+sha1sums=('ff4be58373b1f71a21583338f104a9cc31d57ee5')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
