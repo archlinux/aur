@@ -1,6 +1,6 @@
 pkgbase = gtklock-playerctl-module
 	pkgdesc = gtklock module adding media player controls to the lockscreen
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/jovanlanik/gtklock-playerctl-module
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gtklock-playerctl-module
 	depends = playerctl
 	depends = libsoup
 	depends = gtklock
-	source = gtklock-playerctl-module-2.0.0.tar.gz::https://github.com/jovanlanik/gtklock-playerctl-module/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = f1e62534f0bb6346920f3a96fd4ad47df8137e52b86b85860800857bf7af847b
+	source = gtklock-playerctl-module-2.0.1.tar.gz::https://github.com/jovanlanik/gtklock-playerctl-module/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 141feffcec07640e997a2fc74097d58b18cdfc449a78c07691c305a9850115f0
 
 pkgname = gtklock-playerctl-module
