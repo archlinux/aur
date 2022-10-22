@@ -1,8 +1,8 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath
-pkgver=2023.1.1a
-pkgrel=5
+pkgver=2023.1.1b1
+pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
@@ -10,23 +10,13 @@ depends=('fmt' 'eigen')
 makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
-source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2023.1.1-alpha-1'
-        '0001-build-Allow-disabling-ntcore-CMake-build.patch'
-        '0001-build-Fix-CMake-system-library-opt-ins.patch'
-        '0001-build-Remove-wpilib-prefix-from-CMake-flat-install.patch'
+source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2023.1.1-beta-1'
         'Suppress-Eigen-warning.patch')
-#source=("https://github.com/wpilibsuite/allwpilib/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('SKIP'
-         '32b2c74c1c5434ef1241537a0ee8e0f9'
-         'cac7f90b51f6a710bca065b6edc0b996'
-         '5fbf5e6bab1592c7f0a0f17474ef9550'
          '0116ecb4c78683a00db29f15c23b2920')
 
 prepare() {
   cd allwpilib
-  patch -p1 < "$srcdir"/0001-build-Allow-disabling-ntcore-CMake-build.patch
-  patch -p1 < "$srcdir"/0001-build-Fix-CMake-system-library-opt-ins.patch
-  patch -p1 < "$srcdir"/0001-build-Remove-wpilib-prefix-from-CMake-flat-install.patch
   patch -p1 < "$srcdir"/Suppress-Eigen-warning.patch
 }
 
