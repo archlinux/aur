@@ -41,18 +41,19 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## NOTICE: clang config is not ready yet in 5.17.x
+# Unique compiler supported upstream is GCC
 ## Choose between GCC and CLANG config (default is GCC)
-if [ -z ${_compiler+x} ] || [ "$_compiler" = "clang" ]; then
-  _compiler=gcc
+## Use the environment variable "_compiler=clang"
+if [ "${_compiler}" = "clang" ]; then
+  _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
 fi
 
-# Choose between the 3 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
-# Possible values: config_x86-64 (default) / config_x86-64-v2 / config_x86-64-v3
+# Choose between the 4 main configs for stable branch. Default x86-64-v1 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64-v1 (default) / config_x86-64-v2 / config_x86-64-v3 / config_x86-64-v4
 # This will be overwritten by selecting any option in microarchitecture script
 # Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
 if [ -z ${_config+x} ]; then
-  _config=config_x86-64
+  _config=config_x86-64-v1
 fi
 
 # Compress modules with ZSTD (to save disk space)
@@ -82,16 +83,16 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.19
-pkgver=${_major}.13
-_branch=5.x
+_major=6.0
+pkgver=${_major}.3
+_branch=6.x
 xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="d16919b0507cae8c568a6440a2f32582c14e14a9" # 5.19.13
+__commit="25d17a44b7abddc381002500b825d254e6bbc5c2" # 6.0.3
 
 license=(GPL2)
 makedepends=(
@@ -118,11 +119,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('ff240c579b9ee1affc318917de07394fc1c3bb49dac25ec1287370c2e15005a8'  # kernel tar.xz
+sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'c62951ef6627589578ec1aa4f0131e413653c9f27cd94af34621fb918540be11'  # xanmod
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            'c95c82429460abcef065a4cd76ab6ba0723ee56808a62efc7a0a3550bbdd96b5') # manjaro
+            'ed5eb92bf534205bbae9df7c9e8e9fe1bd7e3490c2ed872d03a389221c2e2b59'  # xanmod
+            '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'  # choose-gcc-optimization.sh
+            '9182982ca2ee138f84d00e974ea0661f2bf8be6f58ccc160fea8b325733cab91') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -169,12 +170,11 @@ prepare() {
   
   
   # Applying configuration
-  cp -vf CONFIGS/xanmod/${_compiler}/${_config} .config
+  cp -vf CONFIGS/xanmod/gcc/${_config} .config
   # enable LTO_CLANG_THIN
   if [ "${_compiler}" = "clang" ]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
-    _LLVM=1
   fi
   
   scripts/config --enable CONFIG_BOOTSPLASH
@@ -218,7 +218,10 @@ prepare() {
   fi
 
   # Let's user choose microarchitecture optimization in GCC
-  ../choose-gcc-optimization.sh $_microarchitecture
+  # Use default microarchitecture only if we have not choosen another microarchitecture
+  if [ "$_microarchitecture" -ne "0" ]; then
+    ../choose-gcc-optimization.sh $_microarchitecture
+  fi  
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
@@ -240,26 +243,25 @@ prepare() {
     fi
   done
 
-
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make ${_compiler_flags} LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit 1
     fi
   fi
 
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  make ${_compiler_flags} olddefconfig
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   if [ "$_makenconfig" = "y" ]; then
-    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+    make ${_compiler_flags} nconfig
   fi
 
   # save configuration for later reuse
@@ -268,7 +270,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
+  make ${_compiler_flags} all
 }
 
 _package() {
