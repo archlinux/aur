@@ -25,13 +25,14 @@ source=(
     "https://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz"{,.sig}
     'bacula-fd.service'
 )
-sha256sums=('d63848d695ac15c1ccfc117892753314bcb9232a852c40e32cca88c0e918978a'
-            'SKIP'
-            '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
+b2sums=(
+    '1b5d9aa56aae2de57589a421e33b9d394dcfbaf59f442e19c88c8ca8dcc234ffb42fca3f019e17836ce1d0ede75178c0fecf63b225c54c6d1b6dd0849d2fd50e'
+    'SKIP'
+    '40e2965c025f76c93d8e5c248b49177cbffc65b1afef620437f486132696730211df0b06b0c9bb5377acb4b57d897e4d0e4dc806fa0301c85f7cf9f771ee479a'
+)
 
 build() {
     cd bacula-${pkgver}/
-
     ./configure \
         --prefix=/usr \
         --sbindir=/usr/bin \
@@ -39,15 +40,12 @@ build() {
         --with-systemd=/usr/lib/systemd/system/ \
         --sysconfdir=/etc/bacula \
         --with-scriptdir=/etc/bacula/scripts
-
     make
 }
 
 package() {
     cd bacula-${pkgver}/
-
     make DESTDIR="${pkgdir}" install
-
     # we do not take the service file provided by bacula package
     # as it needs too much customization
     install -D -m0644 "${srcdir}/bacula-fd.service" "${pkgdir}/usr/lib/systemd/system/bacula-fd.service"

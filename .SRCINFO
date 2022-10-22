@@ -14,8 +14,8 @@ pkgbase = bacula-client
 	source = https://downloads.sourceforge.net/project/bacula/bacula/13.0.1/bacula-13.0.1.tar.gz.sig
 	source = bacula-fd.service
 	validpgpkeys = 5235F5B668D81DB61704A82DC0BE2A5FE9DF3643
-	sha256sums = d63848d695ac15c1ccfc117892753314bcb9232a852c40e32cca88c0e918978a
-	sha256sums = SKIP
-	sha256sums = 37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd
+	b2sums = 1b5d9aa56aae2de57589a421e33b9d394dcfbaf59f442e19c88c8ca8dcc234ffb42fca3f019e17836ce1d0ede75178c0fecf63b225c54c6d1b6dd0849d2fd50e
+	b2sums = SKIP
+	b2sums = 40e2965c025f76c93d8e5c248b49177cbffc65b1afef620437f486132696730211df0b06b0c9bb5377acb4b57d897e4d0e4dc806fa0301c85f7cf9f771ee479a
 
 pkgname = bacula-client
