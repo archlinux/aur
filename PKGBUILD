@@ -2,27 +2,33 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusty-krab-manager-git
-pkgver=1.2.2.r0.g8bb78e3
+pkgver=1.3.r0.g0c39de2
 pkgrel=1
 pkgdesc="Time management TUI (git)"
 arch=('x86_64')
 url="https://github.com/aryakaul/rusty-krab-manager"
 license=('custom:ETHICAL')
 depends=('alsa-lib' 'gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 package() {

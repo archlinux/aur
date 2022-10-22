@@ -1,16 +1,17 @@
 pkgbase = rusty-krab-manager-git
 	pkgdesc = Time management TUI (git)
-	pkgver = 1.2.2.r0.g8bb78e3
+	pkgver = 1.3.r0.g0c39de2
 	pkgrel = 1
 	url = https://github.com/aryakaul/rusty-krab-manager
 	arch = x86_64
 	license = custom:ETHICAL
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = alsa-lib
 	depends = gcc-libs
 	provides = rusty-krab-manager
 	conflicts = rusty-krab-manager
+	options = !lto
 	source = git+https://github.com/aryakaul/rusty-krab-manager
 	sha512sums = SKIP
 
