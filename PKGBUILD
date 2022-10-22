@@ -11,8 +11,6 @@ url="https://gitlab.com/nobodyinperson/python3-xdgspec"
 license=('GPL3')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=()
-changelog=
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/x/$_pkg/$_pkg-$pkgver.tar.gz")
 sha256sums=('384d8dba4e033aef83fc72981edb8431db0af89de64f6cc25afe6276e2746413')
 
