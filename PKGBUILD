@@ -7,7 +7,7 @@
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
 pkgver=11.1.0.11664
-pkgrel=2
+pkgrel=3
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -52,6 +52,8 @@ package_wps-office-cn() {
 
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
+    # Fix for icu>=71.1
+    rm ${pkgdir}/usr/lib/office6/libstdc++.so*
     [[ "$CARCH" = "aarch64" ]] && rm "${pkgdir}"/usr/lib/office6/libfreetype.so*
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.html
     rm -r "${pkgdir}/usr/lib/office6/mui/en_US/resource/help"
