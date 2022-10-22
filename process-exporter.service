@@ -1,0 +1,9 @@
+[Unit]
+Description=Process Exporter for prometheus
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/process-exporter -config.path /etc/prometheus/process.yml
+
+[Install]
+WantedBy=multi-user.target
