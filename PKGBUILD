@@ -3,8 +3,8 @@
 
 pkgname=nfm-git
 _pkgname=${pkgname%-*}
-pkgver=r132.1048d2d
-pkgrel=2
+pkgver=r197.4e7a5f2
+pkgrel=1
 pkgdesc='Neat terminal file manager.'
 arch=('x86_64')
 url='https://sr.ht/~leon_plickat/nfm'
@@ -29,7 +29,7 @@ prepare() {
 	for dep in regex spoon; do
 		git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
 	done
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
