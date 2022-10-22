@@ -3,7 +3,7 @@
 # Contributor: João Fernandes <joaofnds@joaofnds.com>
 
 pkgname='asdf-install-latest-bin'
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='asdf utility to update plugins to their latest version, for all you update freaks'
 url='https://github.com/joaofnds/asdf-install-latest'
@@ -12,16 +12,16 @@ license=('MIT')
 provides=('asdf-install-latest')
 conflicts=('asdf-install-latest')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.9/asdf-install-latest_0.0.9_linux_arm64.tar.gz")
-sha256sums_aarch64=('585130214a9592f9b6f827a787c0702327b9cc821272e1f20947f8605babd87a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.10/asdf-install-latest_0.0.10_linux_arm64.tar.gz")
+sha256sums_aarch64=('7bdb776c595d87c33efeacdc2373552b7a7a115bbc0834e4685de28039e0720f')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.9/asdf-install-latest_0.0.9_linux_386.tar.gz")
-sha256sums_i686=('99f96d8e94f093b1b3c82db299b01d87e1742b025b1be70f1fe67f29ea206567')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.10/asdf-install-latest_0.0.10_linux_386.tar.gz")
+sha256sums_i686=('a0ad69e415d13c01c661bc9fba0ff3de00ec381a12b31c39616679ca4fbb9dc8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.9/asdf-install-latest_0.0.9_linux_amd64.tar.gz")
-sha256sums_x86_64=('ba2cf483a2df5e8c852a89ed57141d1eb3d7b725ce5266993f8369211fe0e0ed')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.10/asdf-install-latest_0.0.10_linux_amd64.tar.gz")
+sha256sums_x86_64=('7fbd4cada8894e071f109ce06a3deb6cbc54660e504c551fd0adf500cab93302')
 
 package() {
-  install -Dm755 "./asdf-install-latest "${pkgdir}/usr/bin/asdf-install-latest"
+  install -Dm755 "./asdf-install-latest" "${pkgdir}/usr/bin/asdf-install-latest"
 
 }
