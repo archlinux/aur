@@ -1,4 +1,4 @@
-# Maintainer: BlackDragon2337 <blackdragon2447@e.email>
+# Maintainer: BlackDragon2447 <blackdragon2447@e.email>
 pkgname='leftwm-config-git'
 pkgver=r26.30a255b
 pkgrel=1
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --release
+  cargo +nightly build --release
 }
 
 package() {
