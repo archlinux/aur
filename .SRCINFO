@@ -1,6 +1,6 @@
 pkgbase = bitwarden-cli-bin
 	pkgdesc = Bitwarden Command-line Interface
-	pkgver = 2022.6.2
+	pkgver = 2022.10.0
 	pkgrel = 1
 	url = https://github.com/bitwarden/clients
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bitwarden-cli-bin
 	makedepends = unzip
 	conflicts = bitwarden-cli
 	options = !strip
-	source = https://github.com/bitwarden/clients/releases/download/cli-v2022.6.2/bw-linux-2022.6.2.zip
+	source = https://github.com/bitwarden/clients/releases/download/cli-v2022.10.0/bw-linux-2022.10.0.zip
 	md5sums = SKIP
 
 pkgname = bitwarden-cli-bin
