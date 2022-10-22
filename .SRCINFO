@@ -1,0 +1,20 @@
+pkgbase = python-rich-cli-git
+	pkgdesc = command line toolbox for fancy output in the terminal
+	pkgver = 1.8.0.r6.g0721cb1
+	pkgrel = 1
+	url = https://github.com/Textualize/rich-cli
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = python-rich
+	depends = python-click
+	depends = python-requests
+	depends = python-textual
+	depends = python-rich-rst
+	provides = python-rich-cli
+	conflicts = python-rich-cli
+	source = python-rich-cli::git+https://github.com/Textualize/rich-cli
+	md5sums = SKIP
+
+pkgname = python-rich-cli-git
