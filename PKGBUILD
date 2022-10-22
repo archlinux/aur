@@ -1,7 +1,7 @@
 # Maintainer Wings-Fantasy <hxshijie@outlook.com>
 
 pkgname=finalshell
-pkgver=3.9.5.7
+pkgver=3.9.6.2
 pkgrel=1
 pkgdesc="FinalShell是一体化的的服务器,网络管理软件,不仅是ssh客户端,还是功能强大的开发,运维工具,充分满足开发,运维需求."
 url="https://www.hostbuf.com/"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('custom')
 provides=('FinalShell')
 source=('FinalShell.zip::http://dl.hostbuf.com/finalshell2/finalshell_linux.zip')
-sha256sums=('cf22c34a506fc5439bbe5f6b2bcd23ff9877f94a1bf71883b1cfab5615e5a9b8')
+sha256sums=('e5941aa22a72a72cb8fccab09fa2606ceac094eb1e9a723c967909655fde339a')
 
 package() {
     cd "$srcdir/FinalShell/lib/app"
