@@ -1,0 +1,16 @@
+pkgbase = python-xdgspec
+	pkgdesc = XDG Base Directory Specification for Python
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/python3-xdgspec
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-xdgspec-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/x/xdgspec/xdgspec-0.2.1.tar.gz
+	sha256sums = 384d8dba4e033aef83fc72981edb8431db0af89de64f6cc25afe6276e2746413
+
+pkgname = python-xdgspec
