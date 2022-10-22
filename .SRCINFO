@@ -1,13 +1,14 @@
 pkgbase = liblivesplit-core
 	pkgdesc = a library that provides a lot of functionality for creating a speedrun timer
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LiveSplit/livesplit-core
 	arch = x86_64
 	license = Apache-2.0/MIT
-	source = https://github.com/LiveSplit/livesplit-core/releases/download/v0.12.0/livesplit-core-v0.12.0-x86_64-unknown-linux-gnu.tar.gz
+	makedepends = cargo
+	source = https://github.com/LiveSplit/livesplit-core/archive/refs/tags/v0.12.0.tar.gz
 	source = livesplit_core.pc
-	sha1sums = d530e6bedcb65dfcd43ab82671bcf6df5d97f037
+	sha1sums = 4fc83710c5fb80b256fa870fa4b4c0959cdbbb0a
 	sha1sums = SKIP
 
 pkgname = liblivesplit-core
