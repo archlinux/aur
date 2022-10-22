@@ -1,7 +1,7 @@
 # Maintainer: BlackDragon2447 <blackdragon2447@e.email>
 pkgname='leftwm-config-git'
 pkgver=r26.30a255b
-pkgrel=1
+pkgrel=2
 pkgdesc="Config manager for LeftWM"
 arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm-theme"
