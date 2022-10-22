@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
+	git submodule update --init
     cargo build --release --locked
 }
 
