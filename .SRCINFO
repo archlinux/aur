@@ -1,7 +1,7 @@
 pkgbase = stellarium-bin
 	pkgdesc = Free and open source planetarium showing a realistic sky in 3D
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stellarium.org/
 	arch = x86_64
 	license = GPL2

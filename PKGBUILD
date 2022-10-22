@@ -4,7 +4,7 @@ pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source planetarium showing a realistic sky in 3D"
 arch=('x86_64')
 url="https://${_pkgname}.org/"
@@ -42,6 +42,15 @@ prepare() {
 	mv -f $_squashfs_root/org.$_pkgname.$_pkgname2.desktop .
 	rm -rf ./hicolor
 	mv -f $_squashfs_root/usr/share/icons/hicolor .
+	echo 'done'
+
+	skyculture_dir=$_squashfs_root/usr/share/stellarium/skycultures
+
+	echo -ne 'Removing Dakota skyculture... '
+	rm -rf $skyculture_dir/dakota
+	echo 'done'
+	echo -ne 'Removing Ojibwe skyculture... '
+	rm -rf $skyculture_dir/ojibwe
 	echo 'done'
 }
 
