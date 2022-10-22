@@ -1,7 +1,7 @@
 # Maintainer : Ivo(sh) Musil <ivoshm@gmail.com>
 
 pkgname=docker-cli-bin
-pkgver=20.10.19
+pkgver=20.10.20
 pkgrel=1
 pkgdesc="Docker - CLI utility only, installed from static binary on docker.com"
 url="https://docs.docker.com/engine/install/binaries/#install-static-binarie"
@@ -12,7 +12,7 @@ conflicts=("docker" "podman-docker")
 depends=('glibc')
 
 source=("$pkgname-$pkgver.tar.gz::https://download.docker.com/linux/static/stable/x86_64/docker-$pkgver.tgz")
-sha512sums=('ea8b8fb1f1efe4617b78ec436f5292d7123c74cf82ed3962087d93530aa36b12c9e9499e634f8f8eed0bd9622684cea8953307855a4a0cccbb335ba8bcba7973')
+sha512sums=('1d10353c1980aef0db2b3b3864300c56d339d794c772c0b00146b49d4222dd87a8a03b1333789c82a3591c2e63f6322cea95b5acf0ecd3a66251b389cb9879de')
 
 package() {
   install -Dm 755 "$srcdir/docker/docker" "$pkgdir/usr/bin/docker"
