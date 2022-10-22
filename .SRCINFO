@@ -1,15 +1,15 @@
 pkgbase = akash-bin
 	pkgdesc = A secure, transparent, and peer-to-peer cloud computing network
-	pkgver = 0.16.6
+	pkgver = 0.16.8
 	pkgrel = 1
 	url = https://github.com/ovrclk/akash
 	arch = x86_64
 	license = Apache
 	provides = akash
 	conflicts = akash
-	source = https://raw.githubusercontent.com/ovrclk/akash/v0.16.6/LICENSE
+	source = https://raw.githubusercontent.com/ovrclk/akash/v0.16.8/LICENSE
 	sha256sums = f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd
-	source_x86_64 = https://github.com/ovrclk/akash/releases/download/v0.16.6/akash_0.16.6_linux_amd64.zip
-	sha256sums_x86_64 = 4db8eecfe926f99049802fdd4729602dd55ae58cb931a43989b98fe115b754de
+	source_x86_64 = https://github.com/ovrclk/akash/releases/download/v0.16.8/akash_0.16.8_linux_amd64.zip
+	sha256sums_x86_64 = 6d36e3cb6c971a30a6b7fe1a0230c3882ac2dd0ba0e728b9d5dc685e622b7c31
 
 pkgname = akash-bin
