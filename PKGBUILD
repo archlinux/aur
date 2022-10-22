@@ -1,10 +1,10 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _romname=gc_nmq_d
-_romdesc="OOT Debug PAL GameCube non-Master Quest"
+_romdesc="Ocarina of Time Gamecube Europe PAL Debug"
 pkgname=soh-otr-${_romname}
 pkgver=2
-pkgrel=3
+pkgrel=4
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
