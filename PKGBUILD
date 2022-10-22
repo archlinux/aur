@@ -1,7 +1,7 @@
 # Maintainer: robertoszek <robertoszek@robertoszek.xyz>
 pkgname=bruno-appimage
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest stable AppImage of Bruno - an Opensource API Collection Collaboration Suite"
 arch=('x86_64')
 url="https://github.com/usebruno/bruno"
