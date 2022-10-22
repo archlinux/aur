@@ -33,10 +33,11 @@ depends=(
     'python-linkify-it-py'
     'python-mdit_py_plugins'
 )
-makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-requirements-txt python-hatch-fancy-pypi-readme)
+makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-requirements-txt python-hatch-fancy-pypi-readme pnpm)
 
 build() {
     cd gradio-$pkgver
+    sh ./scripts/build_frontend.sh
     python -m build --wheel --no-isolation
 }
 

@@ -11,6 +11,7 @@ pkgbase = python-gradio
 	makedepends = python-hatchling
 	makedepends = python-hatch-requirements-txt
 	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = pnpm
 	depends = python-aiohttp
 	depends = python-h11
 	depends = python-fastapi
