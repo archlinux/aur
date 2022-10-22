@@ -1,0 +1,21 @@
+diff '--color=auto' -Naur a/src/unoserver/server.py b/src/unoserver/server.py
+--- a/src/unoserver/server.py	2022-10-22 16:37:12.867158005 +0200
++++ b/src/unoserver/server.py	2022-10-22 16:37:42.801115154 +0200
+@@ -24,9 +24,6 @@
+                 % (self.interface, self.port)
+             )
+ 
+-            # Store this as an attribute, it helps testing
+-            self.tmp_uri = "file://" + request.pathname2url(tmpuserdir)
+-
+             # I think only --headless and --norestore are needed for
+             # command line usage, but let's add everything to be safe.
+             cmd = [
+@@ -38,7 +35,6 @@
+                 "--nologo",
+                 "--nofirststartwizard",
+                 "--norestore",
+-                f"-env:UserInstallation={self.tmp_uri}",
+                 f"--accept={connection}",
+             ]
+ 
