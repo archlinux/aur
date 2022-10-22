@@ -1,13 +1,13 @@
 # Maintainer: Tadeusz Magura-Witkowski <tadeuszmw gmail>
 
 pkgname=droidstar-git
-pkgver=r17.514c036
+pkgver=r37.a24658b
 pkgrel=1
 pkgdesc="This software connects to M17, Fusion (YSF/FCS, DN and VW modes are supported), DMR, P25, NXDN, D-STAR (REF/XRF/DCS) reflectors and AllStar nodes (as an IAX2 client) over UDP."
 arch=('i686' 'x86_64')
 url="https://github.com/nostar/DroidStar"
 license=('GPL2 GPL3')
-depends=('qt5-quickcontrols2' 'qt5-multimedia' 'qt5-serialport' 'qt5-declarative' 'qt5-base' 'make' 'pulseaudio' 'libvorbis' 'dina-font')
+depends=('qt5-quickcontrols2' 'qt5-multimedia' 'qt5-serialport' 'qt5-declarative' 'qt5-base' 'qt5-quickcontrols' 'make' 'pulseaudio' 'libvorbis' 'dina-font')
 makedepends=('gcc' 'git' 'libimbe_vocoder')
 conflicts=('droidstar')
 provides=('droidstar')
