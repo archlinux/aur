@@ -1,0 +1,36 @@
+pkgbase = linux-rockchip-rk3588-bin
+	pkgver = 5.10.72
+	pkgrel = 1
+	url = https://github.com/armbian/build
+	arch = aarch64
+	license = GPL2
+	provides = linux-rockchip-rk3588
+	conflicts = linux-rockchip-rk3588
+	noextract = linux.preset
+	noextract = linux-dtb-legacy-rockchip-rk3588_22.08.6_arm64.deb
+	noextract = linux-image-legacy-rockchip-rk3588_22.08.6_arm64.deb
+	noextract = linux-headers-legacy-rockchip-rk3588_22.08.6_arm64.deb
+	options = !strip
+	source = linux.preset
+	source = https://apt.armbian.com/pool/main/l/linux-5.10.72-rockchip-rk3588/linux-dtb-legacy-rockchip-rk3588_22.08.6_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-5.10.72-rockchip-rk3588/linux-image-legacy-rockchip-rk3588_22.08.6_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-5.10.72-rockchip-rk3588/linux-headers-legacy-rockchip-rk3588_22.08.6_arm64.deb
+	sha512sums = a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276
+	sha512sums = 20950d3177889cd593e008a6c9b94beb50b032cc7d247a0809bf21663403a8a94199da1e0e0461624bf6bb6f872b6236f31feb8d21985fb1b106e1cc1b84e841
+	sha512sums = 9b1779851070a40221d4a6e4cae77eb2c813578ff2b362a5a66b39ff0fb84827f6a69563b1386add010efec05cf6dac81a4c2e64f06e0eb818999024566d3b06
+	sha512sums = ca23262d8875a42d6fb25afa46ea7860574801d7c876af2eb79515ffd69ea270cbfee5fae5e43d8afe79cc8f3e439b73f55b179369ff30e05c84a9873724565b
+
+pkgname = linux-rockchip-rk3588-bin
+	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform rockchip-rk3588
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = WIREGUARD-MODULE
+	conflicts = linux
+	backup = etc/mkinitcpio.d/linux-rockchip-rk3588.preset
+
+pkgname = linux-rockchip-rk3588-bin-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip-rk3588
+	conflicts = linux-headers
