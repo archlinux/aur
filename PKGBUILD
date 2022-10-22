@@ -1,12 +1,12 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=solana  
-pkgver=1.10.41
+pkgver=1.13.4
 epoch=1
 _tokenver=2.0.17
 _perflibsver=0.19.3
 _rustver=1.59.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("cargo-build-bpf"
 sha256sums=('94bdd2014eea655a3576a0c67e2a56db33cb957636ca72186711be75615c1cf5'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             '70cd710d4037210af9ea27ebcfe1be4c36992bad2a2fe816b7c371e352aecaed'
-            '75a61e4fb381e9e8a89f4de3f7ad8845034aab777da7e4894a7523303182cd37'
+            '66ff93945ad77f9874a8e223e5f1ca02437b0bbff648b87377960f4369c9b5d7'
             'c17d42533fb666392cd577ecbc67eddad950ab8b911fa8e82e9c03dceaf37862'
             '5850dc8ba63017cdb0c97357cc0e26e60f445abc1ef3c95a61b88e59afae71a4')
 noextract=("perf-libs-$_perflibsver.tar.gz")
