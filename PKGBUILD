@@ -24,7 +24,7 @@ package() {
   ./${_filename} --appimage-extract "usr/share/icons" > /dev/null 2>&1
   ./${_filename} --appimage-extract "bruno.desktop" > /dev/null 2>&1
   sed -i -E "s|Exec=bruno|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 bruno|" "squashfs-root/bruno.desktop"
-
+  sed -i "s/Exec=AppRun/Exec=\/usr\/bin\/bruno/" "squashfs-root/bruno.desktop"
   # Install icons
   echo Installing icons...
   install -dm755 "${pkdir}/usr/share/icons"
