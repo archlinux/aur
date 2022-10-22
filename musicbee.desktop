@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Multimedia
+Comment[en_GB]=
+Comment=
+Encoding=UTF-8
+Exec=musicbee
+GenericName[en_GB]=MusicBee is a music manager and player that makes it easy to manage, find, and play music files on your computer.
+GenericName=MusicBee is a music manager and player that makes it easy to manage, find, and play music files on your computer.
+Icon=/usr/share/musicbee/Skins/MusicBee.ico
+MimeType=
+Name[en_GB]=MusicBee
+Name=MusicBee
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
