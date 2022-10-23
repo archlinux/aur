@@ -5,7 +5,7 @@
 pkgname=cura-appimage-bin
 _pkgname=Ultimaker-Cura
 _shortname=cura
-pkgver=5.1.1
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='Ultimakers 3D printer / slicing GUI built on top of the Uranium framework'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "cura.desktop.patch"
 )
 
-sha256sums=('375be6f99cedf154186bb40cb92c9f574959c399f0de4526a416a3759ccde97a'
+sha256sums=('0da9e05892492763f6aa056cb470c7d07658920020ad1322655c44e4fccbe7fa'
             'ef7453d81e7e81107841a16a3d4e5fe483ce59fd0fef16650b650a0e9684bb1e'
             '6c1b54af7077ca101cca099f40d9627d6d69e9b11a5a6ae0667e118d764dc903')
    
