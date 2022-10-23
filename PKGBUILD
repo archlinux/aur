@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=geysermc-bin
-pkgver=2.0.4.SNAPSHOT.2ce7ff8
+pkgver=2.1.0.SNAPSHOT.a612be6
 pkgrel=1
 pkgdesc="Geyser is a bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition, closing the gap from those wanting to play true cross-platform."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/GeyserMC/Geyser"
 license=('MIT')
 backup=('etc/geysermc/config.yml')
 depends=('java-runtime')
-source=("https://ci.nukkitx.com/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/standalone/target/Geyser.jar" "geysermc.service")
+source=("https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/standalone/build/libs/Geyser-Standalone.jar" "geysermc.service")
 md5sums=('SKIP'
          '7043a1445d39f7ee753c9c1513472890')
 
@@ -21,7 +21,7 @@ pkgver () {
 package () {
   mkdir -p "${pkgdir}/usr/share/geysermc"
   mkdir -p "${pkgdir}/etc/geysermc"
-  install -Dm644 "${srcdir}/Geyser.jar" "${pkgdir}/usr/share/geysermc/Geyser.jar"
+  install -Dm644 "${srcdir}/Geyser-Standalone.jar" "${pkgdir}/usr/share/geysermc/Geyser.jar"
   install -Dm644 "${srcdir}/config.yml" "${pkgdir}/etc/geysermc/config.yml"
   install -Dm644 "${srcdir}/geysermc.service" "${pkgdir}/usr/lib/systemd/system/geysermc.service"
   ln -s "/etc/geysermc/config.yml" "${pkgdir}/usr/share/geysermc/config.yml"
