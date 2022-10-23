@@ -34,7 +34,7 @@ prepare() {
 	cd "${srcdir}/prjtrellis"
 	git submodule init
 	git config submodule.database.url "$srcdir/prjtrellis-db"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 	[ ! -d "${srcdir}/prjtrellis/libtrellis/build" ] && mkdir -p libtrellis/build
 
 }

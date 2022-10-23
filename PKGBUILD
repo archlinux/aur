@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjtrellis-nightly
-pkgver=20221022_1.2.1_22_g35f5aff
+pkgver=20221023_1.2.1_22_g35f5aff
 pkgrel=1
 epoch=1
 pkgdesc="Documenting the Lattice ECP5 bit-stream format."
@@ -34,7 +34,7 @@ prepare() {
 	cd "${srcdir}/prjtrellis"
 	git submodule init
 	git config submodule.database.url "$srcdir/prjtrellis-db"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 	[ ! -d "${srcdir}/prjtrellis/libtrellis/build" ] && mkdir -p libtrellis/build
 
 }
