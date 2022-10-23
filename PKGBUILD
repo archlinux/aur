@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
     # cleanup
-    [[ -e "$HOME/.etlegacy/legacy" ]] && cd $HOME/.etlegacy/legacy && rm -f *.so && rm -f *.dat
     cd "$srcdir/$_gitname"
     git clean -df
     git clean -dfX
