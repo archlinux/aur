@@ -8,7 +8,7 @@ pkgbase = aquatone-bin
 	depends = chromium
 	provides = aquatone
 	conflicts = aquatone
-	source = aquatone-bin-1.7.0.zip::https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
-	b2sums = SKIP
+	source_x86_64 = aquatone-bin-1.7.0.zip::https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+	b2sums_x86_64 = 6f172117abd6ecad0d6e8901e81e61d0c8761a505c2bbf2fa8193ec27fb702a5df36cdfe40f5d6e32eca86bc571bef66bdee5fc1ce11e7085f50af4b40c29a51
 
 pkgname = aquatone-bin
