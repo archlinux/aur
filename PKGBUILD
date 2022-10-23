@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-bin
 _pkgname=sftpgo
-pkgver=2.3.6
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('x86_64')
@@ -26,8 +26,8 @@ install=${pkgname}.install
 source=("https://github.com/drakkan/sftpgo/releases/download/v${pkgver}/sftpgo_v${pkgver}_linux_x86_64.tar.xz"
   "sftpgo.json"
   "sftpgo.sysusers")
-sha256sums=('19a8df7194711c9fc1a5e5e7bbeed28781ea8204c8bdc941653ac7169846a746'
-  '9b8f14b35006e74778cc88ed8c4699083983c756ea65fabc208b034a12f30087'
+sha256sums=('27de6446706c91717eabd6c4d74f80c0bba906639b698a409730e91b77d870fc'
+  '244b17e00d3b65e95a2af78e22cb84c1d9e0b107b86a54402af6c4304f91b98b'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -37,6 +37,7 @@ package() {
   install -Dm 755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${_pkgname}"
+  install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${_pkgname}/env.d"
   install -Dm 640 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/var/lib/${_pkgname}"
   install -Dm 600 -o ${_uid_sftpgo} -g ${_gid_sftpgo} sqlite/sftpgo.db -t "${pkgdir}/var/lib/${_pkgname}"
