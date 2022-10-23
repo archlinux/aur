@@ -1,7 +1,7 @@
 # Maintainer: kd8bny <kd8bny at gmail dot com>
 
 pkgname=katalogue-git
-pkgver=0.1.7040545
+pkgver=0.1.63817dd
 pkgrel=1
 pkgdesc="Catalog to track maintenance events and todos for your home, car, and otherwise"
 arch=('x86_64')
@@ -33,11 +33,13 @@ package() {
     ln -s "${_install_path}${_exec_name}" "${pkgdir}/usr/bin/${_exec_name}"
 
     # Install .desktop
-    install -Dm644 "../../${_desktop_file}" "${pkgdir}/usr/share/applications/${_desktop_file}"
+    ls
+    pwd
+    install -Dm644 "${pkgname}/${_desktop_file}" "${pkgdir}/usr/share/applications/${_desktop_file}"
 
     # # # Install icons
     # # install -Dm644 "..${_desktop_file}" "${pkgdir}/usr/share/applications/${pkgname}"
 
     # # Install License
-    install -Dm644 "../../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
