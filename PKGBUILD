@@ -2,7 +2,7 @@
 
 pkgname=supabase-bin
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 url="https://github.com/supabase/cli"
 license=("MIT")
@@ -16,15 +16,21 @@ optdepends=(
     'zsh-completions: for shell auto-completion'
 )
 
+prepare () {
+    mv supabase sb
+    # fix for: https://github.com/supabase/cli/issues/554
+    mkdir supabase
+    touch supabase/config.toml
+}
+
 build() {
-    ./supabase completion bash > bash.completions
-    ./supabase completion zsh > zsh.completions
-    ./supabase completion fish > fish.completions
+    ./sb completion bash > bash.completions
+    ./sb completion zsh > zsh.completions
+    ./sb completion fish > fish.completions
 }
 
 package() {
-    install -Dm755 supabase -t "$pkgdir/usr/bin"
-
+    install -Dm755 sb "$pkgdir/usr/bin/supabase"
     install -Dm644 bash.completions "$pkgdir/usr/share/bash-completion/completions/supabase"
     install -Dm644 zsh.completions "$pkgdir/usr/share/zsh/site-functions/_supabase"
     install -Dm644 fish.completions "$pkgdir/usr/share/fish/vendor_completions.d/supabase.fish"
