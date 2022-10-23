@@ -11,7 +11,7 @@ pkgbase = alienfx
 	depends = python-gobject
 	depends = python-pyusb
 	depends = python-future
-	source = https://github.com/trackmastersteve/alienfx/archive/v2.3.4.tar.gz
+	source = https://github.com/trackmastersteve/alienfx/archive/v2.4.0.tar.gz
 	sha256sums = cbe2ce8118a20c84964856daeaf215fa165a7f2d7fa8aa4725b929207c5bba9e
 
 pkgname = alienfx
