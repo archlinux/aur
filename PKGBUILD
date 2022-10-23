@@ -4,7 +4,7 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.76.810.g164b964c3
+pkgver=2.80.2.192.gb15a62075
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
@@ -38,6 +38,7 @@ build() {
         "-D INSTALL_DEFAULT_BASEDIR=/usr/lib/etlegacy"
         "-D INSTALL_DEFAULT_BINDIR=bin"
         "-D INSTALL_DEFAULT_MODDIR=lib/etlegacy"
+        "-D INSTALL_DEFAULT_SHAREDIR=share"
     )
     # arch
     cmakeopts+=(
@@ -81,20 +82,11 @@ package_etlegacy-git() {
     # assets
     ln -s /usr/share/enemy-territory/etmain/{pak0,pak1,pak2}.pk3 $pkgdir/usr/lib/$_gitname/etmain/
 
-    # doc
-    mkdir -p $pkgdir/usr/share/doc/$_gitname
-    mv $pkgdir/usr/lib/$_gitname/INSTALL.txt $pkgdir/usr/share/doc/$_gitname/
-    install -m 644 docs/game/anticheat.html $pkgdir/usr/share/doc/$_gitname/
-
-    # license
-    mkdir -p $pkgdir/usr/share/licenses/$_gitname
-    mv $pkgdir/usr/lib/$_gitname/COPYING.txt $pkgdir/usr/share/licenses/$_gitname/
-
     # systemd
     mkdir -p $pkgdir/etc/xdg/$_gitname/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 misc/etlegacy.conf $pkgdir/etc/xdg/$_gitname/
-    install -m 644 misc/etlegacy.service $pkgdir/usr/lib/systemd/system/
+    install -m 644 misc/etlegacy-x86_64.service $pkgdir/usr/lib/systemd/system/
 
     # config
     mv $pkgdir/usr/lib/$_gitname/etmain/*.cfg $pkgdir/etc/xdg/$_gitname/etmain/

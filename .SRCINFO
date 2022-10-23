@@ -1,5 +1,5 @@
 pkgbase = etlegacy-git
-	pkgver = 2.76.810.g164b964c3
+	pkgver = 2.80.2.192.gb15a62075
 	pkgrel = 1
 	url = http://etlegacy.com/
 	arch = x86_64
@@ -57,4 +57,3 @@ pkgname = etlegacy-mod-git
 	optdepends = etlegacy-omnibot: artificial intelligence (AI) controlled opponent
 	provides = etlegacy-mod
 	conflicts = etlegacy-mod
-
