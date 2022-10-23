@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=2022.6.1.r1.g11acb50
+pkgver=2022.7.1.r18.g348c2f2
 pkgrel=1
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
          'python-coloredlogs' 'python-psutil' 'python-pynput' 'python-qtpy'
          'scrcpy')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'setconf')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core' 'setconf')
 optdepends=('usbaudio: audio mirroring for Android <8.0'
             'sndcpy: audio mirroring for Android >=10')
 provides=("${pkgname%-git}")
@@ -27,7 +27,7 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
 
   # Force launching with PySide2
-  setconf appimage/${pkgname%-git}.desktop Exec 'env QT_API=pyside2 guiscrcpy'
+  setconf "appimage/${pkgname%-git}.desktop" Exec "env QT_API=pyside2 ${pkgname%-git}"
 }
 
 build() {
