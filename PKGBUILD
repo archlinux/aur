@@ -2,16 +2,16 @@
 _base=skimpy
 pkgname=python-${_base}
 pkgdesc="A light weight tool for creating summary statistics from dataframes"
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 arch=(any)
 url="https://github.com/aeturrell/${_base}"
 license=(MIT)
-depends=(python-click python-rich python-pandas python-pygments python-typeguard python-ipykernel python-numpy)
+depends=(python-click python-rich python-pandas python-pygments python-ipykernel python-numpy)
 makedepends=(python-build python-install python-poetry-core)
-checkdepends=(python-pytest)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c701e2f588c6b3f91337743cddbd28f195dc558bf6bf5cbe4d1e508fcb3f504b36e58ba29ffc32af437b242902901998162e4e26576d33201bbe5ba07f16aa5e')
+checkdepends=(python-pytest python-typeguard)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('296ebfdacfd88de48a7c62c468de6fd8dc57ce25da3c9a61bf601e05b4b1c1a6ecd2b34010397aeec015f3fc5f99798438db4ff68cf14a765ae888124902fcbb')
 
 build() {
   cd ${_base}-${pkgver}
