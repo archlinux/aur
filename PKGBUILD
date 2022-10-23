@@ -3,10 +3,10 @@
 pkgname=nautilus-folder-icons
 pkgver=3.0.1
 pkgrel=3
-pkgdesc='Nautilus extension that makes changing folders icons easy!'
+pkgdesc="Nautilus extension that makes changing folders icons easy!"
 arch=('any')
-license=('GPL3')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
+license=('GPL3')
 depends=('gtk3' 'python-nautilus')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib' 'libcanberra')
