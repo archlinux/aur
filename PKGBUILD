@@ -1,6 +1,6 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
-pkgname=warpd-git
+pkgname=warpd
 pkgver=r229.faa423d
 _gitname=warpd
 pkgrel=1
