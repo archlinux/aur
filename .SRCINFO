@@ -1,0 +1,13 @@
+pkgbase = pcalc-git
+	pkgdesc = A command-line programmer's calculator handling HEX/DEC/OCT/BIN
+	pkgver = v5.r1.gf7a55ad
+	pkgrel = 1
+	url = https://github.com/vapier/pcalc
+	arch = any
+	license = GPL
+	depends = glibc
+	conflicts = pcalc
+	source = pcalc::git+https://github.com/vapier/pcalc
+	sha512sums = SKIP
+
+pkgname = pcalc-git
