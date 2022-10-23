@@ -10,7 +10,7 @@ url="http://quarto.org/"
 depends=('bash')
 makedepends=('jq')
 provides=("quarto")
-conflicts=('quarto-cli-bin' 'quarto-cli','quarto-cli-pre-release')
+conflicts=('quarto-cli-bin' 'quarto-cli' 'quarto-cli-pre-release')
 options=(!strip)
 source=(https://github.com/quarto-dev/quarto-cli/releases/download/v${pkgver}/quarto-${pkgver}-linux-amd64.deb)
 
