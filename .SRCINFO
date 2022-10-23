@@ -24,6 +24,7 @@ pkgbase = python-spotdl
 	depends = python-packaging
 	depends = python-setuptools
 	depends = python-brotli
+	depends = python-slugify
 	depends = python-jarowinkler
 	provides = python-spotdl
 	provides = spotdl
