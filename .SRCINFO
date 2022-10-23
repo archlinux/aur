@@ -3,10 +3,10 @@ pkgbase = meg
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/tomnomnom/meg
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = go
 	source = meg-0.3.0.tar.gz::https://github.com/tomnomnom/meg/archive/v0.3.0.tar.gz
-	b2sums = SKIP
+	b2sums = 9cf649e32d648de3f6c118d567452a29a083cd7e8e87e68cbd353aebfd66cc5712bcd986056d599de93c3ff37c86f0151085b4c986f5a3f51aa03e9e26df1b18
 
 pkgname = meg
