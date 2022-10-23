@@ -1,29 +1,33 @@
-# Maintainer dpetrov <petrov.dimp@gmail.com>
+# Maintainer mattf <matheusfillipeag@gmail.com>
 
-pkgname=warpd
+pkgname=warpd-git
+pkgver=r229.faa423d
 _gitname=warpd
-pkgver=0.9a
 pkgrel=1
-pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen. The program was inspired by the mousekeys feature of Kaleidoscope, the firmware for the Keyboardio"
+pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
 url="https://github.com/rvaiya/warpd"
-license=('GPLV3')
+license=('MIT')
 arch=('x86_64')
 md5sums=('SKIP')
-depends=()
-conflicts=()
-makedepends=(git make libxinerama libxft libxfixes libxtst libx11)
+makedepends=(git)
+depends=(libxinerama libxft libxfixes libxtst libx11)
 provides=(warpd)
 source=("git+$url")
 
-package() {
-    cd ${_gitname}
-    pwd
-    ls -altr
-    make
-    # make DESTDIR="{pkgdir}" install
-    # echo "${pkgdir}"
-    # echo "${_gitname}"
-    # ls -altr
-    install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
-    install -Dm644 -t "${pkgdir}"/usr/lib/systemd/user ../../warpd.service
+pkgver() {
+  cd ${_gitname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+build () {
+  cd ${_gitname}
+  make
+}
+
+package () {
+  cd ${_gitname}
+  install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
+  mkdir -p "${pkgdir}"/usr/share/man/man1/
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
+}
+md5sums=('SKIP')
