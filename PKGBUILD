@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=20220824
+pkgver=20221022
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -16,9 +16,9 @@ url="https://www.jabref.org"
 license=('MIT')
 depends=('freetype2' 'libnet' 'libxrender' 'libxtst' 'alsa-lib'
 	'libjpeg-turbo' 'lcms2' 'giflib')
-makedepends=('git' 'java-environment>=18') # tested with the Arch Linux repo openjdk
+makedepends=('git' 'java-environment=18') # tested with zulu-18-bin openjdk
                                            # openjfx must not be installed
-                                           # Arch Linux repo openjdk work
+                                           
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
