@@ -4,7 +4,7 @@
 
 pkgname=x2goclient
 pkgver=4.1.2.2
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 url="https://wiki.x2go.org/doku.php"
