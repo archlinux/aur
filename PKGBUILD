@@ -1,24 +1,25 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Maintainer: Daniel Plank <tyrolyean@semi-professional.net>
+# Maintainer: Mario Rubio <mario at mrrb dot eu>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
 pkgname=freerouting
-pkgver=1.5.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Advanced PCB autorouter"
 arch=('i686' 'x86_64')
 url="https://github.com/freerouting/freerouting"
 license=('GPL3')
-depends=('jre11-openjdk>=11')
-makedepends=('jdk11-openjdk>=11' git)
+depends=('jre17-openjdk>=17')
+makedepends=('jdk17-openjdk>=17' git)
 optdepends=('kicad: for use with PCB editor')
-source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "freerouting.sh")
-sha256sums=('36742a91e492956e3adc5d75e542a40f3e03d15d69d15717a9d39c0585faac44'
+sha256sums=('91af882b6764de69a2eeb0e4711836fe7ac3dc41a31e057134577cc9697dd29a'
             '8144ced213d127ef0d16abc787055bc3dd646db66ddee762ae9ba02f55bb3f73')
 
 build() {
-  # don't forget to set active JDK to 11 version before running makepkg:
-  # sudo archlinux-java set java-11-openjdk
+  # Don't forget to set active JDK to 17 version before running makepkg:
+  # sudo archlinux-java set java-17-openjdk
   cd "${pkgname}-${pkgver}"
 
   ./gradlew assemble
