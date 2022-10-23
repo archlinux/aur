@@ -1,33 +1,33 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=warpd
-pkgver=r229.faa423d
+pkgver=v1.3.3
 _gitname=warpd
 pkgrel=1
 pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
-url="https://github.com/rvaiya/warpd"
 license=('MIT')
 arch=('x86_64')
-md5sums=('SKIP')
 makedepends=(git)
 depends=(libxinerama libxft libxfixes libxtst libx11)
+conflicts=(warpd-git warpd-wayland warpd-wayland-git)
+# depends=(wayland libxkbcommon cairo)
 provides=(warpd)
-source=("git+$url")
+source=(
+  "${pkgname}.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/${pkgver}.zip"
+)
 
-pkgver() {
-  cd ${_gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+options=("!buildflags")
+md5sums=('c98c0ff317384cb451a38a34b202ef3a')
 
 build () {
-  cd ${_gitname}
+  cd "${pkgname}-${pkgver/v/}"
   make
 }
 
 package () {
-  cd ${_gitname}
+  cd "${pkgname}-${pkgver/v/}"
   install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
   mkdir -p "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
+  # install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ warpd.1.gz
 }
-md5sums=('SKIP')
