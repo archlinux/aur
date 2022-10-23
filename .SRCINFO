@@ -1,0 +1,25 @@
+pkgbase = electronwmd-appimage-git
+	pkgdesc = Upload music to NetMD MiniDisc devices
+	pkgver = r34.2bb69cd
+	pkgrel = 1
+	url = https://web.minidisc.wiki/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = npm
+	makedepends = typescript
+	provides = web-minidisc-pro
+	provides = electronwmd
+	conflicts = web-minidisc-pro
+	conflicts = electronwmd
+	options = !strip
+	source = electronwmd::git+https://github.com/asivery/ElectronWMD.git
+	source = electronwmd.build.patch
+	source = electronwmd.desktop
+	source = electronwmd.sh
+	sha256sums = SKIP
+	sha256sums = 8e75afb02bfa1b38ca62cab907a948c290695b45485f50e42ee87fcd0de1b8b9
+	sha256sums = 68baf1dc69b425598dee4d2aedc468c0ee8bba980ad25204a4b4fababd61e787
+	sha256sums = 17538d248d36555d08227cf28c0e3436d92c0ed00f317dd9a1833a3cc847a530
+
+pkgname = electronwmd-appimage-git

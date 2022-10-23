@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=electronwmd
+Exec=/usr/bin/electronwmd %U
+Terminal=false
+Type=Application
+Icon=electronwmd
+StartupWMClass=electronwmd
+Comment=Electron version of WebMinidisc Pro
+Categories=Utility;

@@ -1,0 +1,22 @@
+--- a/build-renderer.sh
++++ b/build-renderer.sh
+@@ -8,7 +8,7 @@
+ 
+ git clone https://github.com/asivery/webminidisc
+ cd webminidisc
+-npm i
++npm i --legacy-peer-deps
+ PUBLIC_URL="sandbox://" REACT_APP_NO_GA_RELEASE="true" npm run build; rm -rf ../renderer; cp -rv build ../renderer
+ cd ..
+ 
+--- a/package.json
++++ b/package.json
+@@ -7,7 +7,7 @@
+     "build": "./build-renderer.sh && tsc",
+     "start": "npm run build && NODE_ENV=development electron ./dist/main.js",
+     "pack": "npm run build && electron-builder --dir",
+-    "dist": "npm run build && electron-builder -wl --x64 && electron-builder -w --ia32",
++    "dist": "npm run build && electron-builder -l --x64",
+     "dist-mac": "npm run build && electron-builder -m --x64 && electron-builder -m --arm64"
+   },
+   "build": {
