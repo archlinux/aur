@@ -11,7 +11,7 @@ depends=("osu" "wine" "winetricks")
 source=("gosumemory.exe::https://asunaproject.nl/downloads/gosumemory.exe"
         "gosumemory")
 sha256sums=('da46d9ed341bf8f2a167e5d771366dd2170d50f5ce564f9e92aad9d59869de8c'
-            '7312dfd93febbda96397a54127f56d372598bfdea5c8a2cc25c530183d43fecb')
+            '551a1ed8e4f9101ffb70361fe465ff802471c08cff74551f205e9fe09d42f95f')
 
 package() {
   install -D -m 755 "gosumemory" "${pkgdir}/usr/bin/gosumemory"
