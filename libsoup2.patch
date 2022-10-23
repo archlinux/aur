@@ -1,0 +1,51 @@
+diff --git a/meson.build b/meson.build
+index d563dd084..c16ba583f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -67,7 +67,7 @@ glib = dependency('glib-2.0', version: '>=' + target_glib)
+ gmime = dependency('gmime-3.0', version: '>= 3.2.4')
+ gtk = dependency('gtk+-3.0', version: '>=' + target_gtk)
+ sqlite = dependency('sqlite3', version: '>= 3.24')
+-webkit2gtk = dependency('webkit2gtk-4.1', version: '>=' + target_webkit)
++webkit2gtk = dependency('webkit2gtk-4.0', version: '>=' + target_webkit)
+ 
+ # Secondary deps - keep sorted alphabetically
+ # We need appdata.its from appstream-glib:
+@@ -87,13 +87,13 @@ gspell = dependency('gspell-1')
+ gthread = dependency('gthread-2.0', version: '>=' + target_glib)
+ icu_uc = dependency('icu-uc', version: '>=60')
+ iso_codes = dependency('iso-codes')
+-javascriptcoregtk = dependency('javascriptcoregtk-4.1', version: '>=' + target_webkit)
++javascriptcoregtk = dependency('javascriptcoregtk-4.0', version: '>=' + target_webkit)
+ json_glib = dependency('json-glib-1.0', version: '>= 1.0')
+ libhandy = dependency('libhandy-1', version: '>= 1.2.1', required: false)
+ libmath = cc.find_library('m')
+ libpeas = dependency('libpeas-1.0', version: '>= 1.24.0')
+ libsecret = dependency('libsecret-1', version: '>= 0.11')
+-libsoup = dependency('libsoup-3.0')
++libsoup = dependency('libsoup-2.4')
+ libstemmer_dep = cc.find_library('stemmer')
+ libunwind_dep = dependency(
+   'libunwind', version: '>= 1.1', required: get_option('libunwind')
+@@ -104,7 +104,7 @@ libunwind_generic_dep = dependency(
+ libxml = dependency('libxml-2.0', version: '>= 2.7.8')
+ libytnef = dependency('libytnef', version: '>= 1.9.3', required: get_option('tnef'))
+ posix = valac.find_library('posix')
+-webkit2gtk_web_extension = dependency('webkit2gtk-web-extension-4.1', version: '>=' + target_webkit)
++webkit2gtk_web_extension = dependency('webkit2gtk-web-extension-4.0', version: '>=' + target_webkit)
+ 
+ # System dependencies above ensures appropriate versions for the
+ # following libraries, but the declared dependency is what we actually
+diff --git a/src/client/accounts/accounts-autoconfig.vala b/src/client/accounts/accounts-autoconfig.vala
+index 58bd84636..72024eb5c 100644
+--- a/src/client/accounts/accounts-autoconfig.vala
++++ b/src/client/accounts/accounts-autoconfig.vala
+@@ -75,7 +75,7 @@ internal class Accounts.AutoConfig {
+ 
+         try {
+             stream = yield session.send_async(
+-                msg, Priority.DEFAULT, this.cancellable
++                msg, this.cancellable
+             );
+         } catch (GLib.Error err) {
+             throw new AutoConfigError.ERROR(err.message);
