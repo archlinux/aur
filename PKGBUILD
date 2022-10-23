@@ -23,23 +23,23 @@ sha256sums=('SKIP'
             'fa8e8410350a5540226f4fa984641694680c09631df4b97fb87087933dc1aa04')
 
 pkgver() {
-	cd "$srcdir/geary"
-	git describe --long | sed 's/^gnome-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/geary"
+    git describe --long | sed 's/^gnome-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/geary"
-	rm -rf build
-	patch -Np1 -i ../../libsoup2.patch
+    cd "$srcdir/geary"
+    rm -rf build
+    patch -Np1 -i ../../libsoup2.patch
 }
 
 build() {
-	cd "$srcdir/geary"
-	meson --prefix=/usr --buildtype=release -Dprofile=release build
-	ninja -v -C build
+    cd "$srcdir/geary"
+    meson --prefix=/usr --buildtype=release -Dprofile=release build
+    ninja -v -C build
 }
 
 package() {
-	cd "$srcdir/geary"
-	DESTDIR="$pkgdir" ninja -v -C build install
+    cd "$srcdir/geary"
+    DESTDIR="$pkgdir" ninja -v -C build install
 }
