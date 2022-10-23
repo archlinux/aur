@@ -9,6 +9,7 @@ pkgbase = qbittorrent-enhanced-ua
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = boost
+	makedepends = qt6-svg
 	makedepends = qt6-tools
 	depends = libtorrent-rasterbar
 	depends = qt6-base

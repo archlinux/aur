@@ -32,11 +32,11 @@ USE_QT6="${USE_QT6:-ON}"
 if [[ "${USE_QT6}" = "ON" ]]; then
     depends+=('qt6-base')
     _gdeps=('qt6-svg')
-    makedepends+=('qt6-tools')
+    makedepends+=('qt6-svg' 'qt6-tools')
 else
     depends+=('qt5-base')
     _gdeps=('qt5-svg')
-    makedepends+=('qt5-tools')
+    makedepends+=('qt5-svg' 'qt5-tools')
 fi
 
 _name="${pkgbase%%-*}"
