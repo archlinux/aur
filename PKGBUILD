@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://github.com/uwzis/gpu-passthrough-manager"
 license=('GPL')
 groups=()
-depends=('python3' 'qemu' 'virt-manager')
+depends=(python3)
 makedepends=('git' 'jsoncpp' 'glib'  'gtk' 'gcc')
 install=
 source=("git+$url")
@@ -24,13 +24,26 @@ md5sums=('SKIP')
 build() {
 	cd ${pkgname}
 	sh ./Build.sh
+	
 }
 
 
 package() {
 	cd "$pkgname"	
-	echo "Setting up GPUPM"
-	sh ./tools/pkg.sh
-	
+	install -dm755 ${pkgdir}/usr/share/gpu-passthrough-manager
 
+	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/icons" "${pkgdir}/usr/share/gpu-passthrough-manager"
+	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/py" "${pkgdir}/usr/share/gpu-passthrough-manager"
+	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/tools" "${pkgdir}/usr/share/gpu-passthrough-manager"
+	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/GPUPM" "${pkgdir}/usr/share/gpu-passthrough-manager"
+	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/style.css" "${pkgdir}/usr/share/gpu-passthrough-manager"
+
+	install -dm755 ${pkgdir}/usr/bin
+	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/gpu-passthrough-manager" "${pkgdir}/usr/bin/"
+	
+	install -dm755 ${pkgdir}/usr/share/applications
+	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/icons/GPU Passthrough Manager.desktop" "${pkgdir}/usr/share/applications/"
+
+	install -dm755 ${pkgdir}/usr/share/doc/gpu-passthrough-manager
+	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/README.md" "${pkgdir}/usr/share/doc/gpu-passthrough-manager"
 }

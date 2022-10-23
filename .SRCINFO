@@ -11,8 +11,6 @@ pkgbase = gpu-passthrough-manager
 	makedepends = gtk
 	makedepends = gcc
 	depends = python3
-	depends = qemu
-	depends = virt-manager
 	source = git+https://github.com/uwzis/gpu-passthrough-manager
 	md5sums = SKIP
 
