@@ -9,7 +9,7 @@
 
 _pkgbase=openocd
 pkgname=openocd-git
-pkgver=0.11.0.r584.g103b1d68d
+pkgver=0.12.0.rc1.r59.g92169e9f5
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -88,9 +88,9 @@ prepare() {
   sed -i 's|GROUP="plugdev", ||g' contrib/60-openocd.rules
   git submodule init
   git config submodule.jimtcl.url "$srcdir/jimtcl"
-  git config submodule."src/jtag.drivers/libjaylink".url "$srcdir/libjaylink"
+  git config submodule."src/jtag/drivers/libjaylink".url "$srcdir/libjaylink"
   git config submodule."tools/git2cl".url "$srcdir/git2cl"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
