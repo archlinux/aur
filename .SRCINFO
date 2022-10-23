@@ -1,6 +1,6 @@
 pkgbase = apr-2-svn
 	pkgdesc = Apache Portable Runtime library. This is version 2 from SVN trunk, possibly unstable.
-	pkgver = r1904703
+	pkgver = r1904787
 	pkgrel = 2
 	url = https://apr.apache.org/
 	arch = x86_64

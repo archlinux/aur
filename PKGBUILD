@@ -2,7 +2,7 @@
 
 pkgname=apr-2-svn
 pkgver=r1904787
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache Portable Runtime library. This is version 2 from SVN trunk, possibly unstable.'
 arch=('x86_64')
 url='https://apr.apache.org/'
