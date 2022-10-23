@@ -11,7 +11,6 @@ depends=('libpng' 'gtk3')
 optdepends=('gksu: sudo-save support')
 conflicts=('sublime-text')
 provides=('sublime-text')
-install=${pkgname}.install
 
 source=('sublime_text.desktop')
 source_x86_64=("https://download.sublimetext.com/sublime_text_build_${pkgver:2}_x64.tar.xz")
