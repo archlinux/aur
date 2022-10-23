@@ -37,7 +37,12 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./autogen.sh
-  ./configure --prefix=/usr/lib/icecream --enable-shared --disable-static --mandir=/usr/share/man
+  if command -v clang >/dev/null;
+  then
+    ./configure --prefix=/usr/lib/icecream --enable-shared --disable-static --enable-clang-wrappers --enable-clang-rewrite-includes --mandir=/usr/share/man
+  else
+    ./configure --prefix=/usr/lib/icecream --enable-shared --disable-static --mandir=/usr/share/man
+  fi
   make
 }
 
