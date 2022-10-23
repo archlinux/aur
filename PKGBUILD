@@ -1,6 +1,6 @@
 # Maintainer: José Ferreira <jose.filipe.matos.ferreira@gmail.com>
 pkgname=thonkbar-git
-pkgver=r31.ff8d047
+pkgver=r32.bcdc784
 pkgrel=1
 pkgdesc="minimalist block based lemonbar wrapper"
 arch=('any')
