@@ -1,0 +1,13 @@
+pkgbase = rustplayer
+	pkgdesc = An local audio player & m3u8 radio player using Rust and completely terminal guimusical_note. 使用Rust开发的纯终端本地/m3u8网络电台播放器musical_note.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/kingtous/rustplayer
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = dpkg
+	depends = ffmpeg4.4
+	source = https://github.com/Kingtous/RustPlayer/releases/download/latest/rustplayer_1.1.1_amd64.deb
+	sha256sums = 8e78de7ee8a77d9bdce914e6990a7312e0a8df61d7b8715f9f08ee9b70cf2c41
+
+pkgname = rustplayer
