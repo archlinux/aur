@@ -2,7 +2,7 @@
 
 pkgname=macchina
 pkgver=6.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A system information fetcher, with an (unhealthy) emphasis on performance."
 
 depends=('gcc-libs' 'glibc')
