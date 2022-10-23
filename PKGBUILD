@@ -1,7 +1,7 @@
 # Maintainer: another <code § deadcode § eu>
 _pkgname=u-boot-qemu
 pkgname=${_pkgname}-bin
-pkgver="2022.07"
+pkgver="2022.10"
 _pkgversuffix="+dfsg-1"
 pkgrel=1
 pkgdesc="U-Boot for qemu"
@@ -10,9 +10,9 @@ url="https://www.denx.de/wiki/U-Boot/"
 license=('GPL2')
 options=('!strip')
 source=("https://deb.debian.org/debian/pool/main/u/u-boot/${_pkgname}_${pkgver}${_pkgversuffix}_all.deb")
-sha256sums=('2c5f4488124c314397ffca97b800d0d4b05fb340a2df5298fb417517fb51b7b0')
-sha512sums=('9b15258652b0a5694a99e13c05f629476beba47407d6c555765c7ad810f0b98fed620fd0857b1f7496a88d36ea9a49d91680b5da24912573b56ed7e852ab2404')
-b2sums=('01196eba22d833a9651afe9d48fca21fb30d588090bc45635eb948978e918e7c5d6a9233cdd27e69594ffee8c47f4197e42962e626eb6a3445ebf7713d2fb22d')
+sha256sums=('a916bdc2d522e5ce38c6f6fc7268cf09102108a690c4354d2da0c9de2b87cbff')
+sha512sums=('92388fdb4a910e889f35cec274509416a01a2c1b387af703fe0769354ad59fc8ec32543db05e1bc5c18cdb56606bc4c6259d84b8087ea7129229537c57e658fb')
+b2sums=('1317e4fc70606d604d0c60394e104ffe98028f104b2b8fb17dc5af1d9facc886c24bb4c0eafde12605487992546c5d77caacc060ec1360a544722926d4817e02')
 
 package() {
 	tar -C "${pkgdir}" -xf "${srcdir}/data.tar.xz"
