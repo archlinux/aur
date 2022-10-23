@@ -1,7 +1,7 @@
 pkgbase = plot-git
 	pkgdesc = plot on the command line
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/annacrombie/plot
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = plot-git
 	makedepends = pkgconfig
 	makedepends = cmake
 	makedepends = scdoc
+	provides = plot
+	conflicts = plot
 	source = git+https://github.com/annacrombie/plot.git
 	sha256sums = SKIP
 
