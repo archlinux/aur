@@ -1,0 +1,5 @@
+*.json
+*.deb
+*.tar.zst
+src/
+pkg/
