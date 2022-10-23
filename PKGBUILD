@@ -1,7 +1,7 @@
 # Maintainer:  <castix at autistici dot org>
 pkgname=airwindows-lv2-git
 pkgver='12.0'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is an LV2 port of the Airwindows plugins made by Chris Johnson. Porting accomplished by Hannes Braun"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 groups=('lv2-plugins')
 depends=('glibc')
 makedepends=('git' 'meson')
-provides=("${pkgname%-lv2-git}")
-conflicts=("${pkgname%-lv2-git}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/hannesbraun/airwindows-lv2')
 md5sums=('SKIP')
 
