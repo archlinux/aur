@@ -1,0 +1,1 @@
+export GVIM_ENABLE_WAYLAND=1

@@ -1,0 +1,4 @@
+post_install() {
+    echo ":: You will need to reload your environment variables in /etc/profile"
+    echo "   to enable wayland support. To do this, log out and then log back in."
+}
