@@ -2,7 +2,7 @@
 pkgbase=passenger-pm-bin
 pkgname=passenger-pm-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Built version of Passenger with secret algorithm. Use opensource for your algorithm."
 arch=('x86_64')
 url="https://github.com/Elagoht/Passenger"
@@ -10,17 +10,22 @@ license=('GPL')
 replaces=("passenger-pm-git")
 conflicts=("passenger-pm-git")
 provides=("passenger-pm")
+makedepends=("python" "python-pip")
 optdepends=('git: sync passwords with git repo')
-source=("PassengerLinuxInstaller.tar.gz::https://github.com/Elagoht/Passenger/releases/download/v$pkgver/PassengerLinuxInstaller.tar.gz")
-sha256sums=('610f1cc3adbbf6ef68d510ac719eaeb0d3a2a685ae951752865fb323b21cd0c2')
+source=("https://github.com/Elagoht/Passenger/releases/download/v$pkgver/passenger-pm-1.0-1-x86_64.pkg.tar.zst")
+noextract=("passenger-pm-1.0-1-x86_64.pkg.tar.zst")
+sha256sums=('2829c5458d8fa769b1909fc352ac58b549fe515130eafa10b8eff4910d2e851e')
 pkgver() {
-  printf "$pkgver"
+    printf "$pkgver"
 }
 package() {
-   sed -i "s/Exec\=passenger/Exec\=\/usr\/share\/Passenger\/Passenger/" Passenger.desktop 
-   cp -fv "Passenger.app" "Passenger/Passenger"
-   install -d "$pkgdir/usr/share/applications"
-   cp -vr "Passenger" "$pkgdir/usr/share"
-   install -Dm644 "Passenger.desktop" -t "$pkgdir/usr/share/applications"
-   rm -r *
+    tar -xf passenger-pm-1.0-1-x86_64.pkg.tar.zst
+    rm passenger-pm-1.0-1-x86_64.pkg.tar.zst .[A-Z]*
+    install -d "$pkgdir/usr/bin/"
+    install -Dm755 "$srcdir/usr/bin/passenger-pm" -t "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/usr/share/applications/Passenger.desktop" -t "$pkgdir/usr/share/applications/"
+    install -d "$pkgdir/usr/share/passenger-pm/"
+    mv "$srcdir/usr/share/passenger-pm" "$pkgdir/usr/share/"
+    rm -rf usr
 }
