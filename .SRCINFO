@@ -1,10 +1,11 @@
 pkgbase = automedia-git
 	pkgdesc = Automatically track new releases of media and download them. Supports torrents using rss (nyaa.si) and manga sites using html.
-	pkgver = r174.e763555
+	pkgver = r175.e6e441a
 	pkgrel = 1
 	url = https://git.dec05eba.com/AutoMedia
 	arch = x86_64
 	license = GPL3
+	makedepends = musl
 	depends = python
 	depends = python-lxml
 	depends = python-requests
@@ -14,7 +15,7 @@ pkgbase = automedia-git
 	optdepends = libnotify
 	provides = automedia
 	conflicts = automedia
-	source = automedia-git-r174.e763555.tar.gz::https://dec05eba.com/snapshot/AutoMedia.git.r174.e763555.tar.gz
-	sha512sums = 342fdf88506019494c2abaf69602515717e4d7968315d4ee797139e8867b7d386e4ec1a8faf18f1701472801f38f487166f3c84d92fd4253417d0890b54c347c
+	source = automedia-git-r175.e6e441a.tar.gz::https://dec05eba.com/snapshot/AutoMedia.git.r175.e6e441a.tar.gz
+	sha512sums = e40f6f473b28ebb9f1f32de5c95c17102d3283656d13083cb0ec1274e9299e45169f3643e0a33fbf6d5d3ae9b5a3a93acba53f392ea017b7243a0ba2ceac579f
 
 pkgname = automedia-git
