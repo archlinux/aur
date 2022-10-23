@@ -1,6 +1,6 @@
 pkgbase = warpd-wayland
 	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen.
-	pkgver = v1.3.3
+	pkgver = v1.3.4
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = warpd-wayland
 	conflicts = warpd
 	conflicts = warpd-wayland-git
 	options = !buildflags
-	source = warpd-wayland.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/v1.3.3.zip
-	md5sums = c98c0ff317384cb451a38a34b202ef3a
+	source = warpd-wayland.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/v1.3.4.zip
+	md5sums = d5bdc7dc052ca83ce4635d6cb0cedec3
 
 pkgname = warpd-wayland
