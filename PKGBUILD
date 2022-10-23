@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjoxide-nightly
-pkgver=20221022_ea89720
+pkgver=20221023_ea89720
 pkgrel=1
 epoch=1
 pkgdesc="Documenting Lattice's 28nm FPGA parts"
@@ -32,7 +32,7 @@ prepare() {
 	cd "${srcdir}/prjoxide"
 	git submodule init
 	git config submodule.database.url "$srcdir/prjoxide-db"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {

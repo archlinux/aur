@@ -32,7 +32,7 @@ prepare() {
 	cd "${srcdir}/prjoxide"
 	git submodule init
 	git config submodule.database.url "$srcdir/prjoxide-db"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
