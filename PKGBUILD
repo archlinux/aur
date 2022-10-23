@@ -3,8 +3,8 @@
 # Contributor: ikeramat <ikeramat@protonmail.com>
 pkgname=lmo-desktop-mode-git
 _pkgname=lmo-desktop-mode
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=5
 pkgdesc="Client and companion application for LibreMobileOS desktop mode"
 arch=('x86_64')
 license=('GPL-2.0-only')
