@@ -3,8 +3,8 @@
 @@ -1,6 +1,6 @@
  [Desktop Entry]
  Name=UHK Agent
--Exec=AppRun %U
-+Exec=/usr/bin/uhk-agent %U
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/uhk-agent --no-sandbox %U
  Terminal=false
  Type=Application
  Icon=uhk-agent
