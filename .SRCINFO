@@ -1,6 +1,6 @@
 pkgbase = mpdevil-git
 	pkgdesc = A simple music browser for MPD (git version)
-	pkgver = 1.7.0.r6.gdf3f996
+	pkgver = 1.9.0.r0.gbc14370
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
