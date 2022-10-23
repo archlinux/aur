@@ -1,7 +1,7 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
-pkgver=0.12.0.2076.g15ff7565
+pkgver=0.12.0.2085.g10a6cc5d
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
@@ -17,11 +17,13 @@ source=("$_pkgname::git+https://github.com/alacritty/alacritty.git")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$_pkgname/alacritty"
+  cd "$_pkgname"
+  echo `pwd`
   git config user.name "user"
   git config user.email "user@domain.fake"
   git config pull.rebase false
   git pull -X theirs origin pull/4763/head --no-edit
+  sed -i 's/ShaderProgram::new(shader_version, GRAPHICS_SHADER_V, GRAPHICS_SHADER_F)?;/ShaderProgram::new(shader_version, None, GRAPHICS_SHADER_V, GRAPHICS_SHADER_F)?;/' alacritty/src/renderer/graphics/shader.rs
 }
 
 pkgver() {
