@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=warpd-git
-pkgver=r73.f7d1202
+pkgver=r226.daf11b2
 _gitname=warpd
 pkgrel=1
 pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
@@ -28,5 +28,5 @@ package () {
   cd ${_gitname}
   install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
   mkdir -p "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ warpd.1.gz
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
 }
