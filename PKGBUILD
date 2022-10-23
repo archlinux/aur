@@ -33,6 +33,7 @@ depends=('python'
 	'python-setuptools'
 	'python-brotli'
 	'python-slugify'
+	'python-nest-asyncio'
 	'python-jarowinkler')
 provides=("$pkgname" "spotdl")
 options=(strip emptydirs zipman)
