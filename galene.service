@@ -1,7 +1,7 @@
 [Unit]
 Description=Galène videoconferencing server
 Documentation=https://galene.org
-Documentation=file:///usr/share/doc/galene/README
+Documentation=file:///usr/share/doc/galene/README.html
 After=network.target
 
 [Service]
