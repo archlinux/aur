@@ -52,7 +52,7 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
-            '7ca975221f0b150fb6971b1142d10b5b62363731dc6de2d61026dc9a38b6e767')
+            '522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
