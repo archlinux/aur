@@ -4,10 +4,12 @@
 # Contributor: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 
 _pkgname=libstrangle
+_latest_release=0.1.1
+
 pkgname=${_pkgname}-git
 pkgdesc="Simple FPS Limiter"
 pkgver=0.1.1.r135.0273e31
-pkgrel=1
+pkgrel=2
 url='https://gitlab.com/torkel104/libstrangle'
 arch=('x86_64')
 depends=('lib32-gcc-libs' 'lib32-glibc' 'libglvnd' 'linux-api-headers' 'libx11' 'xorgproto')
@@ -20,7 +22,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    printf "%s.r%s.%s" "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" \
+		"$_latest_release" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short HEAD)"
 }
 
 prepare() {
