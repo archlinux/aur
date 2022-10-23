@@ -1,4 +1,5 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Arpan Kapoor <a@arpankapoor.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 _pkgname=compiler-rt
