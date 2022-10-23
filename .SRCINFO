@@ -1,20 +1,20 @@
 pkgbase = emborg
 	pkgdesc = Front-end to Borg backup
-	pkgver = 1.32
+	pkgver = 1.33
 	pkgrel = 1
 	url = https://github.com/KenKundert/emborg
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = borg
 	depends = python-appdirs
 	depends = python-arrow
 	depends = python-docopt
 	depends = python-inform
 	depends = python-quantiphy
-	depends = python-shlib
 	depends = python-requests
-	source = https://github.com/KenKundert/emborg/archive/v1.32.tar.gz
-	sha256sums = fec1203c5737dd8c4416b66b0565153f3e280435273ca41fab217f986077f4b0
+	source = https://github.com/KenKundert/emborg/archive/v1.33.tar.gz
+	sha256sums = adbc5c16680ec51667a948c43b77ab10c6c8b6a2673145dcea2ab8c03e060fff
 
 pkgname = emborg
