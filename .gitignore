@@ -1,0 +1,8 @@
+/.vscode/
+/src/
+/pkg/
+/python-ink-extensions-git/
+*.log
+*.pkg.*
+*.tar.*
+*.zip
