@@ -12,6 +12,7 @@
 pkgname=discord-electron-bin
 _pkgname=discord
 _electron=13
+#_electron=19
 pkgver=0.0.21
 pkgrel=1
 pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
@@ -75,6 +76,7 @@ EOF
 	rm $_tarname/resources/app.asar
 	sed -i "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" $_tarname/resources/app/app_bootstrap/buildInfo.js
 	sed -i "s|exeDir,|'/usr/share/pixmaps',|" $_tarname/resources/app/app_bootstrap/autoStart/linux.js
+	sed -i "s#^module\.paths.*;#module.paths = [(process.env.XDG_CONFIG_HOME || (process.env.HOME + \"/.config\")) + \"/discord/$pkgver/modules\"];#" Discord/resources/app/app_bootstrap/requireNative.js
 	asar p $_tarname/resources/app $_tarname/resources/app.asar --unpack-dir '**'
 	rm -rf $_tarname/resources/app
 }
