@@ -5,7 +5,7 @@
 #
 # 1. Log in to xilinx.com
 # 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
-# 3. Download "Xilinx Unified Installer SFD (TAR/GZIP)" - WARNING: This file is >70GB in size
+# 3. Download "Xilinx Unified Installer SFD (TAR/GZIP)" - WARNING: This file is >90GB in size
 # 4. Place the .tar.gz in the same directory as the PKGBUILD
 # 5. Build!
 #
@@ -13,8 +13,8 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 72GB .tar.gz, which decompresses to 73GB (yeah...),
-# and the final zstd-compressed package is another 46GB. Reserve at least 200GB in total for building.
+# This package is huge. The download alone is a barely-compressed 90GB .tar.gz (extracts to ~90GB)
+# and the final zstd-compressed package is another 20GB. Reserve at least 200GB in total for building.
 #
 # It can also take up to two hours to build, being mostly limited by I/O and single-thread
 # performance. `namcap` takes another 30 minutes, make sure you're not running that automatically.
@@ -27,8 +27,8 @@
 
 pkgname=vivado
 _srcname=Xilinx_Unified
-pkgver=2022.1
-_more_ver=0420_0327
+pkgver=2022.2
+_more_ver=1014_8888
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
@@ -53,7 +53,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('0bf810cf5eaa28a849ab52b9bfdd20a5'
+md5sums=('4b4e84306eb631fe67d3efb469122671'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
