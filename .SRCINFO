@@ -1,18 +1,16 @@
 pkgbase = passenger-pm-git
 	pkgdesc = Source version of Passenger Password Manager. Use your own algorithm.
-	pkgver = 1.0
+	pkgver = r10.1b287d4
 	pkgrel = 1
 	url = https://github.com/Elagoht/Passenger
-	arch = x86_64
+	arch = any
 	license = GPL
-	depends = python3
-	depends = python-pyqt5
-	depends = python-pyperclip
+	depends = python
 	optdepends = git: sync passwords with git repo
 	provides = passenger-pm
 	conflicts = passenger-pm-bin
 	replaces = passenger-pm-bin
-	source = PassengerLinuxInstaller.tar.gz::https://github.com/Elagoht/Passenger/releases/download/v1.0/PassengerLinuxInstaller.tar.gz
-	sha256sums = 610f1cc3adbbf6ef68d510ac719eaeb0d3a2a685ae951752865fb323b21cd0c2
+	source = git+https://github.com/Elagoht/Passenger
+	sha256sums = SKIP
 
 pkgname = passenger-pm-git
