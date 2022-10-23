@@ -1,7 +1,7 @@
 #!/bin/bash
 XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
 export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/osu-stable}"
-export CONFIG_DIR="${CONFIG_DIR-${XDG_DATA_HOME}/.config/gosumemory}"
+export CONFIG_DIR="${CONFIG_DIR-${HOME}/.config/gosumemory}"
 
 if [ ! -d "${CONFIG_DIR}" ]; then
   mkdir -p "${CONFIG_DIR}"
