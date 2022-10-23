@@ -1,0 +1,21 @@
+pkgbase = microsoft-whiteboard-nativefier
+	pkgdesc = Microsoft Whiteboard, a cloud whiteboard application. Built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://whiteboard.office.com/
+	arch = any
+	license = GPL
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = microsoft-whiteboard-nativefier.desktop
+	source = microsoft-whiteboard-nativefier.png
+	source = inject.css
+	sha256sums = 9e7d87665990994192569fb53fc2b78c0e8c0f941e94a002389448bb441f4d60
+	sha256sums = e4d9c483df1ba356e0f825225522437c7974d99d9b86730c62165bb8af7a265f
+	sha256sums = 2f235df6e481d7ca2a3af24acf83ab94e4aa6c84989744a01937da314723d19a
+
+pkgname = microsoft-whiteboard-nativefier

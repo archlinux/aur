@@ -1,0 +1,22 @@
+.showShellHeader {
+    display: none !important;
+}
+
+.withOfficeHeader {
+    top: 0px !important;
+}
+
+#shellHeader.showShellHeader~.chrome {
+    top: 0px !important;
+    height: 100vh !important;
+}
+
+#shellHeader.showShellHeader~.contentViewPort {
+    top: 0px !important;
+    height: 100vh !important;
+}
+
+#shellHeader.showShellHeader~.boardLoadingScreen {
+    top: 0px !important;
+    height: 100vh !important;
+}
