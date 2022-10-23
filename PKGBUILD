@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.10.4
+pkgver=2022.10.5
 pkgrel=1
 epoch=1
 arch=(any)
@@ -64,8 +64,9 @@ optdepends=(
   'openzwave: Z-Wave integration'
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
+  'python-paho-mqtt: mqtt integration'
 )
-_tag=68907b4de9157f1622562e69d5296ff241cd56a7
+_tag=83d617737f2b3db9a4994bc127dfa52493526a37
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
