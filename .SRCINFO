@@ -4,7 +4,7 @@ pkgbase = inkscape-axidraw
 	pkgrel = 1
 	url = https://github.com/evil-mad/EggBot/
 	arch = any
-	license = GPLv3
+	license = GPL2
 	depends = python
 	depends = inkscape
 	provides = inkscape-axidraw
@@ -13,4 +13,3 @@ pkgbase = inkscape-axidraw
 	sha256sums = 146da0738a3e002058045cb0a3a4c3593ba2f36425a5a2ba41e3c55cfa3d71f0
 
 pkgname = inkscape-axidraw
-
