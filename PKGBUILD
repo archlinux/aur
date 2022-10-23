@@ -2,7 +2,7 @@
 
 pkgname=gosumemory
 pkgver=1.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-Platform memory reader for osu!"
 arch=(x86_64)
 url="https://github.com/l3lackShark/gosumemory"
