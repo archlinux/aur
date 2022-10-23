@@ -1,7 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=1.28.0
-_pkgver="$pkgver-deb_for_stores"
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="System performance and usage monitoring tool"
 arch=('any')
@@ -10,20 +9,15 @@ license=('GPL3')
 depends=('bash' 'dmidecode' 'gtk3' 'iproute2' 'polkit' 'python-cairo' 'python-gobject'
          'systemd' 'util-linux')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
-        "org.freedesktop.$pkgname.policy")
-sha256sums=('d4dfe7a361b33f6396f04c3d0de420ac1814d4ae50d3dbb2836ca8e038167f12'
-            '468d309c8c2520ee09d68fbac8161f1034f6ea04b7b30b5127d3a83066415bd1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4a823c4b855277ebd2745e793c6207c8914b36b9f4c9527d900aeb3e2797eb90')
 
 build() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  install -Dm644 "$srcdir/org.freedesktop.$pkgname.policy" -t \
-    "$pkgdir/usr/share/polkit-1/actions/"
 }
