@@ -1,12 +1,12 @@
 pkgbase = i3keys
 	pkgdesc = Lists used and unused keys in your i3wm or Sway config
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/RasmusLindroth/i3keys
 	arch = any
 	license = MIT
 	makedepends = go
-	source = https://github.com/RasmusLindroth/i3keys/archive/0.0.14.tar.gz
-	sha256sums = e7051bca203db8888584cf5ba7ccb7951fe7f1a21870e42342ee4acd098ebad9
+	source = https://github.com/RasmusLindroth/i3keys/archive/refs/tags/0.0.15.tar.gz
+	sha256sums = 88288f97bace967018a885b5e7b4347ef5f59c013f388f316261c99c460a22ad
 
 pkgname = i3keys
