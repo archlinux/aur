@@ -1,15 +1,15 @@
 pkgbase = cryptopp
-	pkgdesc = free C++ class library of cryptographic schemes
-	pkgver = 5.6.2
-	pkgrel = 2
-	url = http://www.cryptopp.com/
-	arch = i686
+	pkgdesc = Crypto++ Library is a free C++ class library of cryptographic schemes.
+	pkgver = 8.7.0
+	pkgrel = 1
+	url = https://www.cryptopp.com
 	arch = x86_64
-	license = Boost
-	makedepends = unzip
-	noextract = cryptopp562.zip
-	source = http://www.cryptopp.com/cryptopp562.zip
-	md5sums = 7ed022585698df48e65ce9218f6c6a67
+	license = custom
+	makedepends = git
+	depends = gcc-libs
+	provides = cryptopp
+	conflicts = cryptopp
+	source = https://github.com/weidai11/cryptopp/releases/download/CRYPTOPP_8_7_0/cryptopp870.zip
+	sha256sums = d0d3a28fcb5a1f6ed66b3adf57ecfaed234a7e194e42be465c2ba70c744538dd
 
 pkgname = cryptopp
-
