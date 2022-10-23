@@ -1,5 +1,5 @@
 pkgbase = warpd-git
-	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen.
+	pkgdesc = A modal keyboard driven interface for mouse manipulation.
 	pkgver = r226.daf11b2
 	pkgrel = 1
 	url = https://github.com/rvaiya/warpd
@@ -12,6 +12,9 @@ pkgbase = warpd-git
 	depends = libxtst
 	depends = libx11
 	provides = warpd
+	conflicts = warpd
+	conflicts = warpd-wayland
+	conflicts = warpd-wayland-git
 	source = git+https://github.com/rvaiya/warpd
 	md5sums = SKIP
 

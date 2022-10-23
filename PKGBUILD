@@ -4,7 +4,7 @@ pkgname=warpd-git
 pkgver=r226.daf11b2
 _gitname=warpd
 pkgrel=1
-pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
+pkgdesc="A modal keyboard driven interface for mouse manipulation."
 url="https://github.com/rvaiya/warpd"
 license=('MIT')
 arch=('x86_64')
@@ -12,6 +12,7 @@ md5sums=('SKIP')
 makedepends=(git)
 depends=(libxinerama libxft libxfixes libxtst libx11)
 provides=(warpd)
+conflicts=(warpd warpd-wayland warpd-wayland-git)
 source=("git+$url")
 
 pkgver() {
