@@ -1,6 +1,6 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 pkgname=vscode-eslint-language-server
-pkgver=2.2.2
+pkgver=2.2.6
 pkgrel=1
 pkgdesc='Language Server for ESLint, extracted from the official VSCode extension'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/release/${pkgver}.tar.gz")
-sha256sums=('54cfdfc1cd16679bd27458beaba1289f0558994863fb879c42fdacd09868b07f')
+sha256sums=('611b88c72f97d293fb94374839976b752759524e620022408f7c99b9fca3000a')
 
 build() {
   cd "${srcdir}/vscode-eslint-release-${pkgver}"
