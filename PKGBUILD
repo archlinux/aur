@@ -19,7 +19,6 @@ pkgver="${_srcver}$(test "${_binver}" -eq 0 || echo ".${_binver}")"
 
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org'
-_dl_url='https://downloadsapachefriends.global.ssl.fastly.net'
 license=('GPL')
 
 # This PKGBUILD is configured for both 32-bit and 64-bit architectures, but
@@ -46,8 +45,9 @@ source=('bitrock-unpacker.tcl'
 	'xampp-manager.desktop')
 _build32name='linux'
 _build64name='linux-x64'
-source_i686=("${_dl_url}/${pkgname}-files/${_srcver}/${pkgname}-${_build32name}-${_srcver}-${_binver}-installer.run")
-source_x86_64=("${_dl_url}/${pkgname}-files/${_srcver}/${pkgname}-${_build64name}-${_srcver}-${_binver}-installer.run")
+
+source_i686=("https://sourceforge.net/projects/${pkgname}/files/XAMPP%20Linux/${_srcver}/${pkgname}-${_build32name}-${_srcver}-${_binver}-installer.run")
+source_x86_64=("https://sourceforge.net/projects/${pkgname}/files/XAMPP%20Linux/${_srcver}/${pkgname}-${_build64name}-${_srcver}-${_binver}-installer.run")
 options=('staticlibs' 'libtool' '!strip')
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
