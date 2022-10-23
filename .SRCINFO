@@ -3,10 +3,10 @@ pkgbase = anew
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/tomnomnom/anew
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = go
 	source = anew-0.1.1.tar.gz::https://github.com/tomnomnom/anew/archive/v0.1.1.tar.gz
-	b2sums = SKIP
+	b2sums = bf1cd8a709fb88d885da4c1a5753ae566fdef95ad176e84f2161d1f915956208118680805c6c1e0b369be39f726e10721ef8e615b43e739d7a8d3c29a2264a2c
 
 pkgname = anew
