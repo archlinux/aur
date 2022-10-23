@@ -1,0 +1,15 @@
+pkgbase = nix-zsh-completions
+	pkgdesc = ZSH Completions for Nix
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/spwhitt/nix-zsh-completions
+	arch = any
+	license = BSD
+	depends = zsh
+	depends = nix
+	provides = nix-zsh-completions
+	conflicts = nix-zsh-completions
+	source = nix-zsh-completions-0.4.4.tar.gz::https://github.com/spwhitt/nix-zsh-completions/archive/refs/tags/0.4.4.tar.gz
+	sha256sums = c881011da223df6fb6133b5faa7b804170baa6e7a82937928ac0e04089c64fe4
+
+pkgname = nix-zsh-completions
