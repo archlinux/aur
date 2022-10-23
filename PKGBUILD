@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=zycore-c
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Zyan Core Library for C'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/zyantific/zycore-c'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
-_commit='a754e112e80538612e1be165dfd05a746b12e042'
+_commit='59819206cc07ebbe0815aaaa2de2cc95df6a6a81'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -23,8 +23,8 @@ prepare() {
   cmake \
     -S "$pkgname" \
     -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DZYCORE_BUILD_SHARED_LIB=ON
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D ZYCORE_BUILD_SHARED_LIB=ON
 }
 
 build() {
