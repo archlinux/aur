@@ -1,6 +1,6 @@
 pkgbase = horseshoes
 	pkgdesc = Audio only game of horseshoes.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://2mb.games/games/horseshoes
 	arch = armv7h
@@ -22,4 +22,3 @@ pkgbase = horseshoes
 	md5sums = 8f6e9504843af79b9a3761d833c2fdb9
 
 pkgname = horseshoes
-
