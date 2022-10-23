@@ -3,7 +3,7 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=klog
-pkgver=2.2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc='A multiplatform free hamradio logger'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('qt5-tools' 'gendesk')
 depends=('qt5-base' 'qt5-charts' 'qt5-declarative' 'qt5-location' 'qt5-serialport' 'hamlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ea4k/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dcea304f51e35d7c5cf7a84690e235405dab3a039b8796a3241292819fff8f35')
+sha256sums=('9ec9d754368f3bd7863b3f6821052cb626b60f86eb3a872257d10b2bc5280c08')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
