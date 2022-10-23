@@ -22,4 +22,3 @@ pkgbase = ibus-chewing-git
 	sha512sums = SKIP
 
 pkgname = ibus-chewing-git
-
