@@ -160,6 +160,7 @@ prepare() {
 
   # remove tests that require root privileges
   rm src/test/cli/ceph-authtool/cap*.t
+  sed -i '/add_ceph_test(mgr-dashboard-smoke.sh/d' src/test/mgr/CMakeLists.txt
 
   # disable/remove broken tests
   sed -i '/add_ceph_test(smoke.sh/d' src/test/CMakeLists.txt
