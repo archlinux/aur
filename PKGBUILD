@@ -3,7 +3,7 @@
 pkgname=python-claripy-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
-pkgver=8.20.7.27.r1961.db253a68
+pkgver=8.20.7.27.r2075.d04d9177
 pkgrel=1
 arch=('any')
 depends=('python' 'python-cachetools' 'python-future' 'python-z3-solver')
@@ -27,11 +27,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
