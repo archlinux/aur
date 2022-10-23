@@ -1,18 +1,18 @@
 pkgbase = serviio
 	pkgdesc = Free DLNA media server
-	pkgver = 2.2.1
+	pkgver = 2.3
 	pkgrel = 2
 	url = http://www.serviio.org/
 	arch = any
 	license = custom
 	depends = java-runtime-headless>=8
 	depends = ffmpeg
-	source = http://download.serviio.org/releases/serviio-2.2.1-linux.tar.gz
+	source = http://download.serviio.org/releases/serviio-2.3-linux.tar.gz
 	source = serviio.sh
 	source = serviio.service
 	source = serviio.desktop
 	source = serviio.png
-	sha256sums = b9145628cbf87f66f5c8813d3a75c3219026728ab0ffc174cf52ce7ac401b324
+	sha256sums = 9e6dd13720b8a269c6723eced7870b2486674ff5c6358fdde6a11c168c3ff627
 	sha256sums = aacddfcde926bb7c9bbec59777b7c3ca44ef97a39258ef4033c34e83c69e9fe9
 	sha256sums = 83d402a57ee31e48e70f9a8eb100468aaf1b0966974e9389fe4720e140cdc58d
 	sha256sums = ecf69649d3a68521a4c751ba9a337143f06258228635e6d458a33271995cdec0
