@@ -11,15 +11,21 @@ pkgbase = qbittorrent-enhanced-ua
 	makedepends = boost
 	makedepends = qt6-tools
 	depends = libtorrent-rasterbar
-	depends = hicolor-icon-theme
 	depends = qt6-base
-	depends = qt6-svg
 	optdepends = python: needed for torrent search tab
-	provides = qbittorrent
-	conflicts = qbittorrent
 	source = qBittorrent-Enhanced-Edition-release-4.4.5.10.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-4.4.5.10.tar.gz
 	source = revert-ua.patch
 	sha256sums = f81c5a7d90c1f9357d95e4189f81cfa515955a38855b1ea0e949334f02b5e9bb
 	sha256sums = 25310df75d7b41b55cc15c11a7a845465358a199e3d3147044404d82edeac514
 
 pkgname = qbittorrent-enhanced-ua
+	depends = libtorrent-rasterbar
+	depends = qt6-base
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	provides = qbittorrent
+	conflicts = qbittorrent
+
+pkgname = qbittorrent-enhanced-ua-nox
+	provides = qbittorrent-nox
+	conflicts = qbittorrent-nox
