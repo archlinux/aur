@@ -7,7 +7,7 @@ DLAGENTS=("https::/usr/bin/curl \
 
 pkgname=kyocera-print-driver
 pkgver=1.1203
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Kyocera linux driver for models FS-1020, FS-1025, FS-1120, FS-1125, FS-1040, FS-1041, FS-1060, FS-1061"
 arch=('x86_64')
@@ -17,6 +17,8 @@ depends=('libcups')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
+provides=('rastertokpsl=${pkgver}')
+conflicts=('rastertokpsl' 'rastertokpsl-fs-1040' 'rastertokpsl-git')
 source=("$pkgname-$pkgver.zip::https://www.kyoceradocumentsolutions.eu/content/download-center/eu/drivers/all/LinuxDrv_1_1203_FS_1x2xMFP_zip.download.zip"
         "$pkgname-$pkgver-license.pdf::https://www.kyoceradocumentsolutions.eu/content/dam/kyocera/common/documents/20181012%20Terms%20to%20accept%20before%20downloadingv2.pdf")
 noextract=("$pkgname-$pkgver-license.pdf")
