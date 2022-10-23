@@ -4,7 +4,7 @@ _mplusver=20220319052552
 pkgname=mplus-1-code-nerd-font
 pkgdesc='M PLUS 1 Code Nerd Font'
 pkgver=20220319052552.2.2.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('OFL')
 url='https://mplusfonts.github.io/'
@@ -26,7 +26,7 @@ sha256sums=('a7067056ec7a69f81812527e232ec9e57c28c3c01f897655a45937cebfd23d91'
             'f0e5bc8fd48a04e3203cb9ac73d431a4657275d128f452606f965506a02830ab'
             '59879e4c95eef7202031f3618d5cfac67e590f03341c1105157f072fd04975bf'
             '04971e3fcee60b247395150d93b3616f6a0b092572332c96187b472976553abc'
-            '4133212973fa617afb73be0919eea15b770fb3f56a17e5946805a06b2e9b8ac5')
+            '49b7a49612005c94316b9d8d66553fbd1577187b7849d2bd1e3a68b746cd35e9')
 makedepends=('fontforge')
 provides=("mplus-1-code")
 
