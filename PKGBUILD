@@ -1,10 +1,8 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
-
-
 pkgname=yank-note-bin
 _pkgname=yank-note
 _electron=electron
-pkgver=3.40.4
+pkgver=3.41.0
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
@@ -16,7 +14,7 @@ makedepends=('asar' 'yarn' 'jq' 'moreutils' 'node-gyp' 'git')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
-sha256sums=('52068ebb405a1450b0d242d2045586a668723b4cf35edc976928a4cb74a92449'
+sha256sums=('e2daea5b057672306237220f2277f8279c858ded04072e2a8fd01a00964c12b2'
             'e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
 options=(!strip)
 prepare() {
