@@ -1,0 +1,13 @@
+pkgbase = tome4-forbidden_cults
+	pkgdesc = Forbidden Cults DLC for tome4.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = http://tome.te4.org/
+	arch = any
+	license = custom
+	depends = tome4
+	noextract = cults.teaac
+	source = cults.teaac::te4://cults.teaac
+	sha256sums = b495424023ef1e186467d84eef3872c785cd354c0130924875669e36a30bf723
+
+pkgname = tome4-forbidden_cults
