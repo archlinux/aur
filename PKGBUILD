@@ -64,6 +64,11 @@ source=(
   # by the build, which can lead to racy failures. Fix this by adding explicit CMake
   # rules
   'ceph-17.2.4-compressor-common-depends.patch'
+
+  # A .h file for legacy config options depends on some file generation before it can
+  # be safely included. However this dependancy was missing in CMake, leading to racy
+  # build failures
+  'ceph-17.2.4-common-legacy-gen-depends.patch'
 )
 sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40d94b802db5b344faeab7c4e48d65c8ade47d0cbf0eaa0e7ddf399b09a279d'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -72,7 +77,8 @@ sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
             '3774cbc1a979ee8bf7138b96defcf69499444afe0b7186b21feac3453a3a5ec93741f5942d256d93999e9bc306c8d018206893e04e1a3eb9e03593105d9f5791'
             '66770a80ba4e05ea72d4809cb5819cce7499ea7523b85b1a57370df68de1d7f6f94b1c10d0f9f9a3c8e6a86d0419434c70778c568cd06a0dd2e6126631a3355c'
-            'cd20e9358e49d3342c7c2a00ac538f628cdf86dc25f1870b77ea2d3df386772caedc333506387b68d8d357913ba1eb761700d843103c3c173df71cd79473cefa')
+            'cd20e9358e49d3342c7c2a00ac538f628cdf86dc25f1870b77ea2d3df386772caedc333506387b68d8d357913ba1eb761700d843103c3c173df71cd79473cefa'
+            '67df3bdf1784ba6ce76aef95569bc89071ddcc38053a4ffedb89d744fe876f8d54bd0c707752eea8c9d2bba101c08b9b068974e45974fe6884d49d5c1c4dbf4c')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
