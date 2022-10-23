@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=warpd
-pkgver=v1.3.3
+pkgver=v1.3.4
 _gitname=warpd
 pkgrel=1
 pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
@@ -17,7 +17,7 @@ source=(
 )
 
 options=("!buildflags")
-md5sums=('c98c0ff317384cb451a38a34b202ef3a')
+md5sums=('d5bdc7dc052ca83ce4635d6cb0cedec3')
 
 build () {
   cd "${pkgname}-${pkgver/v/}"
