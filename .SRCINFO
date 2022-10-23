@@ -1,0 +1,40 @@
+pkgbase = libcamera
+	pkgdesc = An open source camera stack and framework for Linux, Android, and ChromeOS
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://libcamera.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	makedepends = python-jinja
+	makedepends = python-ply
+	makedepends = python-yaml
+	makedepends = python-sphinx
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = texlive-core
+	makedepends = qt5-tools
+	depends = libyaml
+	depends = lttng-ust
+	depends = libunwind
+	depends = systemd
+	depends = libdrm
+	depends = libjpeg
+	depends = sdl2
+	depends = gst-plugins-base-libs
+	depends = gtest
+	options = debug
+	source = git+https://git.libcamera.org/libcamera/libcamera.git#commit=a83aed77df1258e469c0eb42d9cb4f1938db53f2
+	sha256sums = SKIP
+
+pkgname = libcamera
+
+pkgname = libcamera-docs
+	pkgdesc = An open source camera stack and framework for Linux, Android, and ChromeOS (documentation)
+	depends = 
+
+pkgname = libcamera-tests
+	pkgdesc = Test applications for libcamera
+	depends = libcamera
+	depends = qt5-base
