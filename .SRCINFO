@@ -1,14 +1,15 @@
 pkgbase = shosubgo-bin
 	pkgdesc = Small tool to Grab subdomains using Shodan api.
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/incogbyte/shosubgo
 	arch = x86_64
 	license = unknown
 	provides = shosubgo
 	conflicts = shosubgo
-	noextract = shosubgo_linux
-	source = https://github.com/incogbyte/shosubgo/releases/download/2.0/shosubgo_linux
-	b2sums = SKIP
+	source = shosubgo-bin-2.0::https://github.com/incogbyte/shosubgo/releases/download/2.0/shosubgo_linux
+	source = shosubgo-bin-2.0-README.md::https://raw.githubusercontent.com/incogbyte/shosubgo/92c8070aade4735f855e09a173acf95f1789ca76/README.md
+	b2sums = e07d113bd613c970fe153550910dd48f7065bee455f123cd905816cec21dbf8358e619184d38a7303e43da04786ec9ea8b6ffba87bdc0e29bb1b3061d9b02936
+	b2sums = 936884ad54793e18659fe8f62ab71128135098082ac1aa10ea3c30d9664f79d49b718820bbf4e33a7372054109a5a43e61214575f268d249cf26c32acb4c2ef1
 
 pkgname = shosubgo-bin
