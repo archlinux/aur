@@ -3,7 +3,6 @@ pkgbase = florence
 	pkgver = 0.6.3
 	pkgrel = 2
 	url = http://sourceforge.net/projects/florence/
-	install = florence.install
 	arch = i686
 	arch = x86_64
 	license = GPL
