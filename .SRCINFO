@@ -1,14 +1,14 @@
 pkgbase = ruby2.6-bundler
 	pkgdesc = Manages an application's dependencies through its entire life, across many machines, systematically and repeatably.
-	pkgver = 2.3.22
+	pkgver = 2.3.24
 	pkgrel = 1
 	url = http://bundler.io
 	arch = any
 	license = MIT
 	depends = ruby2.6
-	noextract = bundler-2.3.22.gem
+	noextract = bundler-2.3.24.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/bundler-2.3.22.gem
-	sha256sums = bce7d907aa683ac8983d42da1a15170fd692c6504678ada0845ef4a2ecf4209e
+	source = https://rubygems.org/downloads/bundler-2.3.24.gem
+	sha256sums = eaa2eb8c3892e870f979252b2196bd77eb551e1dbf3cdc4eb164ba01ec4438c4
 
 pkgname = ruby2.6-bundler
