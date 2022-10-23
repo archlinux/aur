@@ -2,7 +2,7 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=1.0.6.r0.2406ea6
+pkgver=1.0.7.r0.4395ab0
 pkgrel=1
 pkgdesc="Audio only game of horseshoes -- master branch."
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -26,6 +26,7 @@ prepare()
   cd "$srcdir"
   cd "$_pkgname"
   git submodule update --init
+  patch -p0 -i fix-warning.patch
 }
 
 pkgver() {
