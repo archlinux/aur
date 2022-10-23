@@ -1,18 +1,18 @@
 pkgbase = folder-color-nemo
 	pkgdesc = Change your folder color in Nemo
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://github.com/costales/folder-color
 	arch = any
 	license = GPL3
 	makedepends = dpkg
 	makedepends = git
 	makedepends = python-distutils-extra
-	depends = folder-color-common
-	depends = nemo
 	depends = nemo-python
 	conflicts = folder-color-bzr
-	source = git+https://github.com/costales/folder-color.git#commit=bc409f76aff08e50a16d0ec48a900e968bf41b97
+	conflicts = folder-color-common
+	replaces = folder-color-common
+	source = git+https://github.com/costales/folder-color.git#commit=f5ac3d569846f618624048bc794cd318092db311
 	sha256sums = SKIP
 
 pkgname = folder-color-nemo
