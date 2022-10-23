@@ -1,5 +1,5 @@
 pkgbase = warpd
-	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen.
+	pkgdesc = A modal keyboard driven interface for mouse manipulation.
 	pkgver = v1.3.4
 	pkgrel = 1
 	arch = x86_64
