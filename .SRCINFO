@@ -1,0 +1,13 @@
+pkgbase = tome4-embers_of_rage
+	pkgdesc = Embers of Rage DLC for tome4.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = http://tome.te4.org/
+	arch = any
+	license = custom
+	depends = tome4
+	noextract = orcs.teaac
+	source = orcs.teaac::te4://orcs.teaac
+	sha256sums = f9e5cd38221bd6484ee331d6615b4db3db0597db8796fba0346caa68247f4117
+
+pkgname = tome4-embers_of_rage
