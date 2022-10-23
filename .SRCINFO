@@ -3,10 +3,10 @@ pkgbase = unfurl
 	pkgver = 0.4.3
 	pkgrel = 2
 	url = https://github.com/tomnomnom/unfurl
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = go
 	source = unfurl-0.4.3.tar.gz::https://github.com/tomnomnom/unfurl/archive/v0.4.3.tar.gz
-	b2sums = SKIP
+	b2sums = b197201988248d8aea3d92aee2158b7b7a99101d2a66a2e2892c47753aac51b9909c63f0b674dc4ed5fcccb29e61746529e38b1fae2983e38a3471fb2acf3962
 
 pkgname = unfurl
