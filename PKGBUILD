@@ -3,7 +3,7 @@
 
 
 pkgname=speki
-pkgver=0.1.11
+pkgver=0.2.1
 pkgrel=0
 pkgdesc="Flashcard app for your terminal"
 url="https://github.com/TBS1996/speki"
@@ -13,7 +13,7 @@ provides=("speki")
 conflicts=("speki")
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('b8edc6f5c3f54c35336d0391e89d13c64a2f7f164e9fd36e4b482ce6e7a8e7bc')
+sha256sums=('0e77b8882857d3526e5a84f656eefa6e40cef15dd609f0a4790c76a155a3e3cf')
 
 
 
