@@ -3,7 +3,7 @@
 # Templated from https://aur.archlinux.org/packages/instagram-nativefier
 
 pkgname=microsoft-whiteboard-nativefier
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Microsoft Whiteboard, a cloud whiteboard application. Built with nativefier (electron)"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=("imagemagick" "nodejs-nativefier")
 source=("${pkgname}.desktop" "${pkgname}.png" "inject.css")
 sha256sums=("9e7d87665990994192569fb53fc2b78c0e8c0f941e94a002389448bb441f4d60"
             "e4d9c483df1ba356e0f825225522437c7974d99d9b86730c62165bb8af7a265f"
-            "2f235df6e481d7ca2a3af24acf83ab94e4aa6c84989744a01937da314723d19a")
+            "ef24638235429cdbbe466a05971770615a4f679ad35b4a8939f47d3e9d864166")
 
 appname="MicrosoftWhiteboard"
 
