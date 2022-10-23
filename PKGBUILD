@@ -1,6 +1,6 @@
 # Maintainer: ArtFox3  <artfox3@gmail.com>
 pkgname="lobster"
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Shell script to watch Movies/Webseries/Shows from the terminal."
 arch=('any')
