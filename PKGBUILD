@@ -36,17 +36,18 @@ package() {
 	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/py" "${pkgdir}/usr/share/gpu-passthrough-manager"
 	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/tools" "${pkgdir}/usr/share/gpu-passthrough-manager"
 	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/style.css" "${pkgdir}/usr/share/gpu-passthrough-manager"
-	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/GPUPM" "${pkgdir}/usr/share/gpu-passthrough-manager"
+	install -Dm755 "${srcdir}/gpu-passthrough-manager/GPUPM" "${pkgdir}/usr/share/gpu-passthrough-manager/GPUPM"
+	install -Dm755 "${srcdir}/gpu-passthrough-manager/tools/Reboot" "${pkgdir}/usr/share/gpu-passthrough-manager/tools/Reboot"
+
 	chmod +x "${pkgdir}/usr/share/gpu-passthrough-manager/GPUPM"
 	chmod +x "${pkgdir}/usr/share/gpu-passthrough-manager/tools/Reboot"
 
-	install -dm755 ${pkgdir}/usr/bin
-	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/gpu-passthrough-manager" "${pkgdir}/usr/bin/"
-	chmod +x "${pkgdir}/usr/bin/gpu-passthrough-manager"	
+
+	install -Dm755 "${srcdir}/gpu-passthrough-manager/gpu-passthrough-manager" "${pkgdir}/usr/bin/gpu-passthrough-manager"	
 
 	install -dm755 ${pkgdir}/usr/share/applications
 	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/icons/GPU Passthrough Manager.desktop" "${pkgdir}/usr/share/applications/"
 
-	install -dm755 ${pkgdir}/usr/share/doc/gpu-passthrough-manager
+	install -dm644 ${pkgdir}/usr/share/doc/gpu-passthrough-manager
 	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/README.md" "${pkgdir}/usr/share/doc/gpu-passthrough-manager"
 }
