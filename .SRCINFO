@@ -1,4 +1,4 @@
-pkgbase = warpd-git
+pkgbase = warpd
 	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen.
 	pkgver = r229.faa423d
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = warpd-git
 	source = git+https://github.com/rvaiya/warpd
 	md5sums = SKIP
 
-pkgname = warpd-git
+pkgname = warpd
