@@ -1,13 +1,17 @@
 pkgbase = python-dhash
-	pkgdesc = Python library to calculate the difference hash (perceptual hash) for a given image, useful for detecting duplicates
-	pkgver = 1.3
-	pkgrel = 6
+	pkgdesc = Calculate the difference hash (perceptual hash) for an image
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://github.com/Jetsetter/dhash
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/d/dhash/dhash-1.3.tar.gz
-	sha256sums = e6c8cd09d330f1ac44d3c9735d6b2a637d713dcb6b6091e340f91dda2484acb8
+	source = https://files.pythonhosted.org/packages/source/d/dhash/dhash-1.4.tar.gz
+	b2sums = b2a86fb8d7acb46dc3b6d37ba3d0de78c0cd0fdb387d3b6a948ced747ea07e8152e91cb46d7c6e8e305be6d6c7b96bd668c218069ef9d1e84afa96bb2b851fa1
 
 pkgname = python-dhash
