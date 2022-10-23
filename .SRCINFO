@@ -26,6 +26,7 @@ pkgbase = python-spotdl
 	depends = python-brotli
 	depends = python-slugify
 	depends = python-nest-asyncio
+	depends = python-fastapi
 	depends = python-jarowinkler
 	provides = python-spotdl
 	provides = spotdl

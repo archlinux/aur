@@ -34,6 +34,7 @@ depends=('python'
 	'python-brotli'
 	'python-slugify'
 	'python-nest-asyncio'
+	'python-fastapi'
 	'python-jarowinkler')
 provides=("$pkgname" "spotdl")
 options=(strip emptydirs zipman)
