@@ -1,0 +1,12 @@
+pkgbase = katalogue-git
+	pkgdesc = Catalog to track maintenance events and todos for your home, car, and otherwise
+	pkgver = 0.1.7040545
+	pkgrel = 1
+	url = https://github.com/kd8bny/katalogue
+	arch = x86_64
+	license = AGPLv3
+	depends = cmake
+	source = katalogue-git::git+https://github.com/kd8bny/katalogue
+	sha512sums = SKIP
+
+pkgname = katalogue-git
