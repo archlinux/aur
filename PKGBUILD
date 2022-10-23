@@ -1,8 +1,8 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=cemu
-pkgver=2.0.182
-pkgrel=3
+pkgver=2.0.197
+pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
 url=https://cemu.info
@@ -30,7 +30,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=ada8bbb3b49622e19deccb7358b1c804a766baab # v2.0-7
+	git+https://github.com/cemu-project/Cemu#commit=8f674933d2b507ce91c17b69fef2c38c6f1fbcaf # v2.0-8
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -38,10 +38,6 @@ source=(
 	# cubeb submodules
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	# upstream merged patches
-	crc.diff # f0938e1a23f6cdd03bfd1e21d84f2c0f65aeb45f
-	dialog-crash-fix.diff # e88d20cbfbada6b1d144c4944f080f70299c1506
-	mlc-discord-rich-presence.diff # 271a4e4719463ece58db74b9c390f83bf6e956cf
 	# upstream proposed patches
 	overlay.diff # 6aa7a0c7b2003f625bfecd64f6143a10605234b2 (https://github.com/cemu-project/Cemu/pull/142)
 	mic.diff # 5231a71527cb57ea79b1b2ab9e4d7247d9141dd1 (https://github.com/cemu-project/Cemu/pull/251)
@@ -53,9 +49,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '095b2d2882073c29405927bb3f00153c402de962affeb68878b6a752fb37ed5a'
-            '03bc995a63af7be8c83673272c6c6bcb08bbb8ed48c8a06af7adfdaa475be61a'
-            'fa034a95b38e0e292deedda1d8d93663163a56460579c497ee8d76902ee8de95'
             'f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f'
             '46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f'
             '1081822dec41144e0a7ac934b284f131fcb4b87ffdcef144da0a13e8f8dda169')
@@ -96,8 +89,6 @@ prepare() {
 	# Dir names will be changed to "Cemu" in this package with 2.1
 	# Needs notice in post_install() then
 	sed -i 's/GetAppName()/"cemu"/' src/gui/CemuApp.cpp
-	# The subdirectory "default" is incorrect in upstream
-	sed -i 's/gameProfiles\/default/gameProfiles/' src/Cafe/GameProfile/GameProfile.cpp
 
 	# gamelist column width improvement
 	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
@@ -108,11 +99,7 @@ prepare() {
 
 	rm -f src/audio/{Cubeb,IAudio}InputAPI.{cpp,h}
 	git apply "$srcdir/mic.diff"
-
-	git apply "$srcdir/crc.diff"
 	git apply "$srcdir/gui.diff"
-	git apply "$srcdir/dialog-crash-fix.diff"
-	git apply "$srcdir/mlc-discord-rich-presence.diff"
 }
 
 build() {
@@ -138,20 +125,14 @@ package() {
 	cd Cemu
 	install -D bin/Cemu_release "$pkgdir/usr/bin/cemu"
 
-	pushd bin/gameProfiles/default > /dev/null
-	mv 000500001011000.ini 0005000010111000.ini
-	for ini in *[A-Z]*; do mv $ini ${ini,,}; done
-	# install -Dm644 ../example.ini "$pkgdir/usr/share/cemu/gameProfiles/example.ini"
-	install -Dm644 * -t "$pkgdir/usr/share/cemu/gameProfiles"
-	popd > /dev/null
+	mkdir -p "$pkgdir/usr/share/cemu"
 
-	install -Dm644 bin/resources/sharedFonts/* -t "$pkgdir/usr/share/cemu/resources/sharedFonts"
-	for lang in {ca,de,es,fr,hu,it,ja,ko,nb,nl,pl,pt,ru,sv,tr,zh}; do
-		install -Dm644 bin/resources/$lang/cemu.mo "$pkgdir/usr/share/cemu/resources/$lang/cemu.mo"
-	done
-	# install -Dm644 bin/shaderCache/info.txt "$pkgdir/usr/share/cemu/shaderCache/info.txt"
+	GLOBIGNORE=bin/Cemu_release
+	cp -r bin/* "$pkgdir/usr/share/cemu"
+	unset GLOBIGNORE
 
-	install -Dm644 src/resource/logo_icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/cemu.png"
+	install -Dm644 src/resource/logo_icon.png -T "$pkgdir/usr/share/icons/hicolor/128x128/apps/cemu.png"
+	# https://github.com/cemu-project/Cemu/issues/92
 	sed -i -e '/^Icon=/cIcon=cemu' -e '/^Exec=/cExec=env GDK_BACKEND=x11 cemu' dist/linux/info.cemu.Cemu.desktop
-	install -Dm644 dist/linux/info.cemu.Cemu.desktop "$pkgdir/usr/share/applications/cemu.desktop"
+	install -Dm644 dist/linux/info.cemu.Cemu.desktop -T "$pkgdir/usr/share/applications/cemu.desktop"
 }
