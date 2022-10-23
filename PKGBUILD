@@ -19,12 +19,12 @@ options=("!buildflags")
 md5sums=('d5bdc7dc052ca83ce4635d6cb0cedec3')
 
 build () {
-  cd "${pkgname}-${pkgver/v/}"
+  cd "warpd-${pkgver/v/}"
   make
 }
 
 package () {
-  cd "${pkgname}-${pkgver/v/}"
+  cd "warpd-${pkgver/v/}"
   install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
   mkdir -p "${pkgdir}"/usr/share/man/man1/
   # install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
