@@ -1,6 +1,6 @@
 pkgbase = micropython-git
 	pkgdesc = A Python 3 implementation for microcontrollers and constrained environments (Unix version)
-	pkgver = 1.19.1.r451.gbdbc44474f
+	pkgver = 1.19.1.r560.g68f166dae9
 	pkgrel = 1
 	epoch = 1
 	url = http://micropython.org/

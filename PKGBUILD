@@ -4,7 +4,7 @@
 
 _pkgname='micropython'
 pkgname=$_pkgname-git
-pkgver=1.19.1.r451.gbdbc44474f
+pkgver=1.19.1.r560.g68f166dae9
 pkgrel=1
 epoch=1
 pkgdesc='A Python 3 implementation for microcontrollers and constrained environments (Unix version)'
@@ -52,6 +52,15 @@ build() {
   cd $_pkgname
   ( cd mpy-cross; make; )
   ( cd ports/unix; make)
+}
+
+check() {
+  cd $_pkgname/tests
+  # Float representation does not match CPython
+  export MICROPY_MICROPYTHON=../ports/unix/build-standard/micropython
+  ./run-tests.py \
+    --exclude float_parse \
+    --exclude float_parse_doubleprec
 }
 
 package() {

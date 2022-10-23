@@ -1,13 +1,18 @@
-2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
-    * 1:1.12.r451.g18fb5b443:
-	- Changed pkgver function to use git describe
-    - Declared all git sub-modules in sources
-    - Updated build commands
-    - Added 'mpy-cross' to conflicts
-    - Install readme in to docdir
+2022-10-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 1.19.1.r560.g68f166dae9:
+	- Add new necessary sub-modules; remove i686 arch
+	- Added `check()` function and excluded some failing tests
 
 2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
-    * 1:1.11.r10585.d96391aca-1:
+	* 1:1.12.r451.g18fb5b443:
+	- Changed pkgver function to use git describe
+	- Declared all git sub-modules in sources
+	- Updated build commands
+	- Added 'mpy-cross' to conflicts
+	- Install readme in to docdir
+
+2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 1:1.11.r10585.d96391aca-1:
 	- Simplified pkgver function
 
 2018-07-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
@@ -23,13 +28,11 @@
 	Adapted PKGBUILD to new source repository layout.
 
 2017-01-27 Christopher Arndt <aur -at- chrisarndt -dot- de>
-
 	* 1:1.8.7.108.g0390bc97e-2 :
 	Fixed date of previous package version in this ChangeLog.
     Disabled executable stack for 'micropython' binary.
 
 2017-01-27 Christopher Arndt <aur -at- chrisarndt -dot- de>
-
 	* 1:1.8.7.108.g0390bc97e-1 :
 	Changed package versioning scheme: now includes upstream version and git
 	  info to match what MicroPython REPL banner shows.
