@@ -1,0 +1,17 @@
+pkgbase = ticli
+	pkgdesc = A modern cli for tikv.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hackathon-2022-ticli/ticli
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = rust
+	makedepends = cargo
+	conflicts = ticli-git
+	conflicts = ticli-bin
+	source = ticli-0.1.0.tar.gz::https://github.com/hackathon-2022-ticli/ticli/archive/v0.1.0.tar.gz
+	md5sums = aae250d55905c55baa39acc8768aee32
+
+pkgname = ticli
