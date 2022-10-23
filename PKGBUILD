@@ -9,7 +9,7 @@ depends=('gcc-libs' 'glibc')
 optdepends=('wmctrl: window manager support')
 makedepends=('rust' 'cargo' 'libgit2' 'git')
 
-arch=('x86_64', 'armv7h', 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 
 url="https://github.com/Macchina-CLI/macchina"

@@ -1,9 +1,11 @@
 pkgbase = macchina
 	pkgdesc = A system information fetcher, with an (unhealthy) emphasis on performance.
 	pkgver = 6.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Macchina-CLI/macchina
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
