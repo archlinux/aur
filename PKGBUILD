@@ -16,7 +16,8 @@ source=("git+https://github.com/MystenLabs/sui.git#branch=devnet"
        	"fullnode.yaml" "sui.env" "sui.service" "sui.tmpfiles" "sui.sysusers")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-_nproc=$(($(nproc)/2))
+#_nproc=$(($(nproc)/2))
+_nproc=2
 [[ ${_nproc} < 1 ]] && _nproc=1
 
 pkgver() {
