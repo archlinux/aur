@@ -1,6 +1,6 @@
 # Maintainer: Papangkorn Apinyanon <dev@papangkorn.com>
 pkgname=sslide
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Simple presentation program"
 arch=('x86_64')
