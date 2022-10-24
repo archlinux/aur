@@ -1,12 +1,6 @@
-# derived from postsrsd-git PKGBUILD maintained by
-#   Radek Podgorny <radek@podgorny.cz>
-#   Thomas Haider <t.haider@deprecate.de>
-# maintainer: fordprefect <fordprefect@dukun.de>
-# contributors: bertptrs, Asuranceturix
-
 pkgname=postsrsd
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 arch=('i686' 'x86_64' 'armv7h')
 depends=('glibc')
@@ -32,7 +26,7 @@ build() {
   [[ -d build ]] && rm -rf build
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DGENERATE_SRS_SECRET=OFF -DCONFIG_DIR=/etc/postsrsd
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DGENERATE_SRS_SECRET=OFF -DCONFIG_DIR=/etc/postsrsd -DINIT_FLAVOR=systemd
   make all
 }
 
