@@ -8,42 +8,40 @@ pkgname=cro-chain-desktop-bin
 pkgdesc='Crypto.com DeFi Desktop Wallet (AppImage version)'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 arch=('x86_64')
 provides=('cro-chain-desktop')
 conflicts=('cro-chain-desktop')
-_pkgsrc="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
-source=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
-        "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE"
-)
-sha512sums=('a5b85e3672e75693afa662a59d9d949069ac34e09aaaae6296fc4e1f3e05280490aa44e36ba5cc3fc5af192134e1f60844ab1f226cdb60bda2703706d883be30'
-            'e21a90ebc22283c19f4535f263a0297a2428633572ddf19ec515496bd33fe70eacf3c3de63395307cd268330e8325b80e985190b2e92bbbf0079440aa84e89ea'
-)
+_appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
+source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}"
+        "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE")
+sha512sums=('f0b3250af3ea53f9e6edcbb743b1689fc59ed6ba2b27f04473cef8e37c71fe98d037140a06f236c687243799fbc2b1f08e82b6ebeacb46875e9c7a7682cfba7a'
+            'e21a90ebc22283c19f4535f263a0297a2428633572ddf19ec515496bd33fe70eacf3c3de63395307cd268330e8325b80e985190b2e92bbbf0079440aa84e89ea')
 
 build() {
   # Extract files
-  chmod +x "$srcdir/$_pkgsrc"
-  $srcdir/$_pkgsrc --appimage-extract
+  chmod +x "${srcdir}/${_appimg}"
+  ${srcdir}/${_appimg} --appimage-extract
 
   # Correct .desktop
-  sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
+  sed -e "s/AppRun/${_pkgbin}/g" -i "${srcdir}/squashfs-root/${_pkgbin}.desktop"
 }
 
 package() {
-  install -d "$pkgdir/opt/$_pkgname"
-  cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$_pkgname/"
+  install -d "${pkgdir}/opt/${_pkgname}"
+  cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$_pkgname/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/${_pkgname}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
-  install -d "$pkgdir/usr/share/applications"
-  ln -s "/opt/$_pkgname/$_pkgbin.desktop" "$pkgdir/usr/share/applications/$_pkgbin.desktop"
+  install -d "${pkgdir}/usr/share/applications"
+  ln -s "/opt/${_pkgname}/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-  ln -s "/opt/$_pkgname/usr/share/icons/hicolor/0x0/apps/${_pkgbin}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
+  install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+  ln -s "/opt/${_pkgname}/usr/share/icons/hicolor/0x0/apps/${_pkgbin}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
 
-  find "$pkgdir" -type d -exec chmod 755 {} +
+  find "${pkgdir}" -type d -exec chmod 755 {} +
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
