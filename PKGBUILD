@@ -3,9 +3,9 @@
 pkgname=gog-tangledeep-legend-of-shara
 _dlcparent=tangledeep
 _pkgname=tangledeep_legend_of_shara
-pkgver=1.52g
-_pkgver=1_52g
-_build=53273
+pkgver=1.53a
+_pkgver=1_53a
+_build=54452
 _goggame=1971722134
 pkgrel=1
 epoch=1
@@ -19,7 +19,7 @@ makedepends=('p7zip')
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('d23e17664af4f013c5e5e52e411c8b30f4c7ac39bbea25fcb982e31dd091a612')
+sha256sums=('e6302c8f5b4d8e61233c1de6b6d55fc3076c80bc25e7cdb83cb765c116a35526')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 
 prepare() {
