@@ -12,6 +12,7 @@ noextract=(${_pkgname})
 options=("!strip")
 provides=("listen1")
 conflicts=("listen1")
+depends=('fuse2')
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
 sha512sums=("79d8df3c062a0c91b49853dfbad2082386c9abb029f4761a9ad06ef4332f3e8cf8793f465af06862f96bb6baf8d01c0dd8e28033729a4c826d1103efee01dbd6")
 

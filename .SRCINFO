@@ -5,6 +5,7 @@ pkgbase = listen1-desktop-appimage
 	url = https://listen1.github.io/listen1
 	arch = x86_64
 	license = MIT
+	depends = fuse2
 	provides = listen1
 	conflicts = listen1
 	noextract = listen1_2.26.2_linux_x86_64.AppImage
