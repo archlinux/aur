@@ -6,7 +6,7 @@
 # Maintainer: XiaoDeng3386 <1744793737@qq.com>
 pkgname="yolang-git"
 pkgver="1.5.29"
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, simple interpretive programming language"
 arch=("any")
 url="https://github.com/PowerAngelXD/YoLang"
@@ -18,13 +18,13 @@ source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/re
 md5sums=('71e6e985b6086edee3bf5fa56257a942')
 
 build() {
-	cd "yolang-master"
+	cd "YoLang-master"
 	cmake -S .
 	make
 }
 
 package() {
-  cd "yolang-master"
+  cd "YoLang-master"
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
   install -m=777 "yolang" "${pkgdir}/usr/bin"
