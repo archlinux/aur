@@ -1,13 +1,14 @@
 pkgbase = intel-ipu6-dkms-git
 	pkgdesc = Intel IPU6 camera drivers (DKMS)
-	pkgver = r55.095a2440a
+	pkgver = r74.c1fdd8a
 	pkgrel = 1
-	url = https://github.com/intel/ipu6-drivers
+	url = https://git.launchpad.net/~vicamo/+git/intel-ipu6-dkms
 	arch = any
 	license = unknown
 	makedepends = git
 	depends = dkms
-	source = git+https://github.com/intel/ipu6-drivers.git
+	depends = intel-ivsc-driver-dkms-git
+	source = git+https://git.launchpad.net/~vicamo/+git/intel-ipu6-dkms#branch=ubuntu/devel
 	sha256sums = SKIP
 
 pkgname = intel-ipu6-dkms-git
