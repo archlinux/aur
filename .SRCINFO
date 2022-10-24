@@ -1,6 +1,6 @@
 pkgbase = gog-tangledeep-dawn-of-dragons
 	pkgdesc = DLC for the tangledeep game.
-	pkgver = 1.52g
+	pkgver = 1.53a
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gog.com/game/tangledeep_dawn_of_dragons
@@ -10,8 +10,8 @@ pkgbase = gog-tangledeep-dawn-of-dragons
 	license = custom
 	makedepends = p7zip
 	depends = tangledeep
-	noextract = tangledeep_dawn_of_dragons_1_52g_53273.sh
-	source = tangledeep_dawn_of_dragons_1_52g_53273.sh::gog://tangledeep_dawn_of_dragons_1_52g_53273.sh
-	sha256sums = 5d73d0d409df8ca0260d5994991248f02c6a5470da864b4a13fbab6d1eb0844c
+	noextract = tangledeep_dawn_of_dragons_1_53a_54452.sh
+	source = tangledeep_dawn_of_dragons_1_53a_54452.sh::gog://tangledeep_dawn_of_dragons_1_53a_54452.sh
+	sha256sums = a171c1c4c724f17693ed0cc5402b07e399d64a4988451c7b73c8286b3141d545
 
 pkgname = gog-tangledeep-dawn-of-dragons
