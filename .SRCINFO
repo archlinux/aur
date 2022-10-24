@@ -1,6 +1,6 @@
 pkgbase = r-rrcov
 	pkgdesc = Scalable Robust Estimators with High Breakdown Point
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rrcov
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-rrcov
 	depends = r-robustbase
 	optdepends = r-grid
 	optdepends = r-mass
-	source = https://cran.r-project.org/src/contrib/rrcov_1.7-1.tar.gz
-	sha256sums = e115a09997b46c7eed33017f748632c7d50a95ad621f1f452f22dfc714c9a4e5
+	source = https://cran.r-project.org/src/contrib/rrcov_1.7-2.tar.gz
+	sha256sums = 0f01ed07cbc9e55dfcba27040a3f72237fb2fb86eda899472c2f96500220ecae
 
 pkgname = r-rrcov
