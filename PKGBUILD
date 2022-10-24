@@ -2,10 +2,10 @@
 
 pkgname=protonmail-nativefier
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonMail desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
-url="https://mail.protonmail.com"
+url="https://mail.proton.me"
 license=("custom")
 depends=("gtk3" "libxss" "nss")
 optdepends=("libindicator-gtk3")
