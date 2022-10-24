@@ -7,7 +7,7 @@ pkgbase=postgresql13
 pkgname=($pkgbase-libs $pkgbase-docs $pkgbase)
 pkgver=13.8
 _majorver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -215,4 +215,7 @@ package_postgresql13() {
   rm -rf "${pkgdir}/usr/include/libpq"
   find "${pkgdir}/usr/include" -maxdepth 1 -type f -execdir rm {} +
   rmdir "${pkgdir}/usr/share/doc/postgresql/html"
+
+  # analyze require icu libraries
+  depends+=($(ldd "$pkgdir/usr/bin/postgres" | grep icu | awk '{print $1}' | sed 's,so.,so=,'))
 }

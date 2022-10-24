@@ -1,7 +1,7 @@
 pkgbase = postgresql13
 	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 13.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
@@ -94,6 +94,9 @@ pkgname = postgresql13
 	depends = libldap
 	depends = llvm-libs
 	depends = libxslt
+	depends = libicui18n.so=72
+	depends = libicuuc.so=72
+	depends = libicudata.so=72
 	optdepends = python: for PL/Python 3 support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
