@@ -3,11 +3,13 @@
 #
 # Maintainer: Uffe Jakobsen <_microtop_-at-_starion_-_dot_-_dk_>
 #
+# NOTE: to comply with semantic versioning (https://semver.org/) version string X.Y.0-letter is used
+#
 
 _pkgver="1_9a"
 
 pkgname=vasm
-pkgver=1.9a
+pkgver=1.9.0_a
 pkgrel=1
 pkgdesc="Portable and retargetable 6502 6800 6809 arm c16x jagrisc m68k pdp11 ppc qnice test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
