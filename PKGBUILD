@@ -1,5 +1,5 @@
 pkgname="techmino-git"
-pkgver=0.17.7.r4477.339b5311
+pkgver=0.17.7.r4527.74b099d
 pkgrel=1
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/26F-Studio/Techmino"
 license=('LGPL3')
 depends=('love')
 options=(!strip)
-makedepends=('git' 'zip')
+makedepends=('git' 'zip' 'sed')
 source=("git+https://github.com/26F-Studio/Techmino.git"
         "git+https://github.com/26F-Studio/Zframework.git"
         "CC_Linux.zip::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.4/Linux.zip"
@@ -22,11 +22,15 @@ prepare() {
     git submodule init
     git config Zframework.url "$srcdir/Zframework"
     git submodule update
+
+    _commit_id=$(git rev-parse --short HEAD)
+    _commit_id=${_commit_id:0:4}
+    sed -i "4s \",$ @$_commit_id\", " version.lua
 }
 
 build() {
     cd ${srcdir}/Techmino
-    zip -r1 ../game.love media parts Zframework conf.lua main.lua version.lua
+    zip -rq1 ../game.love media parts Zframework conf.lua main.lua version.lua
     cd ..
     cp ./Techmino/.github/build/linux/dev/icon.png ./Techmino_Development.png
 }
