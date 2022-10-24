@@ -29,7 +29,7 @@ build() {
 package() {
     cd "$pkgname/"
     make config=release
-    cp ./Release/sslide /usr/local/bin
+    sudo cp ./Release/sslide /usr/local/bin
     desktop-file-install --dir=$HOME/.local/share/applications sslide.desktop
 }
 
