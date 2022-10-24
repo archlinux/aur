@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nanotime
-_pkgver=0.3.6
+_pkgver=0.3.7
 pkgname=r-${_pkgname,,}
-pkgver=0.3.6
-pkgrel=3
+pkgver=0.3.7
+pkgrel=1
 pkgdesc='Nanosecond-Resolution Time Support for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-xts
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df751a5cb11ca9ac8762cd1e33bc73e7d20fde9339d2c46bc6f85873388568df')
+sha256sums=('a771782653aef62a071682907fd7bd611f7f98fc80beda227d619aae166ccb15')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
