@@ -8,7 +8,7 @@ url="https://codeberg.org/sleepntsheep/sdraw"
 license=('GPL3')
 groups=()
 depends=('sdl2' 'sdl2_ttf' 'sdl2_image' 'fontconfig')
-makedepends=( 'premake' 'make' )
+makedepends=( 'premake' 'make' 'wget')
 optdepends=()
 provides=('sslide')
 conflicts=('sslide')
@@ -31,6 +31,7 @@ package() {
     cd "$pkgname/"
     make config=release
     install -Dm755 ./Release/sslide "${pkgdir}/usr/local/bin/sslide"
+    wget https://codeberg.org/sleepntsheep/sslide/raw/branch/main/sslide.desktop
     desktop-file-install --dir=$HOME/.local/share/applications sslide.desktop
 }
 

@@ -7,6 +7,7 @@ pkgbase = sslide
 	license = GPL3
 	makedepends = premake
 	makedepends = make
+	makedepends = wget
 	depends = sdl2
 	depends = sdl2_ttf
 	depends = sdl2_image
