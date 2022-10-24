@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=codevis-git
-pkgver=0.3.4.r0.g25100bb
+pkgver=0.4.0.r1.gdbe1c0b
 pkgrel=1
 pkgdesc="A tool for turning your code into one large image (git)"
 arch=('x86_64')
