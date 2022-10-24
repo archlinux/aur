@@ -7,6 +7,7 @@ pkgbase = pythonqt-knossos-git
 	license = LGPL
 	checkdepends = xorg-server-xvfb
 	makedepends = cmake
+	makedepends = gcc
 	makedepends = git
 	makedepends = mesa
 	makedepends = ninja
@@ -16,6 +17,7 @@ pkgbase = pythonqt-knossos-git
 	depends = qt5-svg
 	depends = qt5-tools
 	depends = qt5-xmlpatterns
+	replaces = qt5-python27
 	source = git+https://github.com/knossos-project/PythonQt.git
 	md5sums = SKIP
 
