@@ -1,55 +1,45 @@
-# Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
+# Maintainer: KNOSSOS team <knossosteam ät gmail.com>
 
-pkgname="qt5-python27-git"
-_qtver=5.8.0
-pkgver=3.1+118.g4bf7da5
+pkgname='pythonqt-knossos-git'
+pkgver=3.2+104.gcb23377
 pkgrel=1
-arch=("x86_64")
-pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
-license=("LGPL")
-url="https://github.com/knossos-project/PythonQt"
-makedepends=("cmake"
-  "git"
-  "mesa" # GL/gl.h
-  "ninja"
-  "qt5-tools" # Qt5UiTools
+arch=(x86_64)
+pkgdesc='PythonQt fork with additional features for plugin support in KNOSSOS'
+license=(LGPL)
+url='https://github.com/knossos-project/PythonQt'
+makedepends=(cmake
+  git
+  mesa # GL/gl.h
+  ninja
 )
-depends=("python2"
-  "qt5-declarative" # =$_qtver
-  "qt5-multimedia"
-  "qt5-svg"
+checkdepends=(xorg-server-xvfb)
+depends=(python3
+  qt5-declarative
+  qt5-multimedia
+  qt5-svg
+  qt5-tools # Qt5UiTools
+  qt5-xmlpatterns
 )
-provides=("qt5-python27")
-replaces=("qt5-python26") # conflicting older versions is the idea
-source=("git+https://github.com/knossos-project/PythonQt.git")
+replaces=(qt5-python27) # taking the liberty to clean up
+source=('git+https://github.com/knossos-project/PythonQt.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "PythonQt"
-  git describe --always --dirty --tags | sed 's/^v//;s/-/+/;s/-/./g'
+  git -C 'PythonQt' describe --always --dirty --tags | sed 's/^v//;s/-/+/;s/-/./g'
 }
 
 prepare() {
-  mkdir -p PythonQt/src/private
+  cmake -G Ninja -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_PREFIX='/usr' -DPythonQt_Qt5=TRUE -DPythonQt_Python3=TRUE -DCMAKE_CXX_FLAGS='-Wno-deprecated-declarations -Wno-cpp' -S "$srcdir/PythonQt" -B "$srcdir/build-$CHOST-$pkgname"
 }
 
 build() {
-  mkdir -p "$srcdir/build-$CHOST-$pkgname"
-  cd "$srcdir/build-$CHOST-$pkgname"
-  cmake -G Ninja -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_PREFIX="/usr" -DPythonQt_Qt5=TRUE -DPythonQt_Python3=FALSE ../PythonQt
-  ninja
+  cmake --build "$srcdir/build-$CHOST-$pkgname"
 }
 
 check() {
-  if ! xset q &> /dev/null; then
-    echo "no running X Server, skipping tests"
-  else
-    cd "$srcdir/build-$CHOST-$pkgname"
-    ninja tests
-  fi
+  xvfb-run ninja -C "$srcdir/build-$CHOST-$pkgname" tests
 }
 
 package() {
-  cd "$srcdir/build-$CHOST-$pkgname"
-  env DESTDIR="$pkgdir" ninja install
+  env DESTDIR="$pkgdir" cmake --install "$srcdir/build-$CHOST-$pkgname"
 }
