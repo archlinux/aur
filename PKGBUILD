@@ -7,15 +7,15 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-git
-pkgver=5.0.r18.ga9d4370a
-pkgrel=2
+pkgver=5.0.r71.g7f441f5b
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
 provides=('prismlauncher')
-conflicts=('polymc' 'polymc-qt5' 'prismlauncher' 'prismlauncher-qt5')
+conflicts=('prismlauncher' 'prismlauncher-qt5')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
