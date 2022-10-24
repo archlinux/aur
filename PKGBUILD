@@ -1,7 +1,7 @@
 # Maintainer: Michael Williams <fearlessgeekmedia@users.noreplay.github.com>
 # Contributor: Robin Opletal <fourstepper@users.noreply.github.com>
 # Contributor: Charlie Haley <charlie-haley@users.noreply.github.com>
-pkgname=wifi4wofi-git
+pkgname=wifi4wofi
 _pkgname=wifi4wofi
 pkgver=0.5.0
 pkgrel=1
