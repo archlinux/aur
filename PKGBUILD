@@ -1,5 +1,5 @@
 pkgname=warpd-wayland-git
-pkgver=r124.4dcfffc
+pkgver=r231.567205b
 _gitname=warpd
 pkgrel=1
 pkgdesc="A small program which facilitates recursively warping the pointer to different quadrants on the screen (wayland build)."
@@ -27,5 +27,5 @@ package () {
   cd ${_gitname}
   install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
   mkdir -p "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ warpd.1.gz
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ files/warpd.1.gz
 }
