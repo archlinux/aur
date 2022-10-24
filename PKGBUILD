@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.19.11
+pkgver=6.0.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,41 +80,45 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=350c9374fa02fee24c32bd41b30ca2212011ad8b
-_prjc_version=5.19-r0
+_arch_config_commit=ed63a1d1114a1ad5c474492f56eef7c5ae24f91f
+_prjc_version=6.0-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
-  "${_prjc_patch}::https://gitlab.com/torvic9/linux519-vd/-/raw/master/prjc-519-r1-vd-test.patch"
+  "${_prjc_patch}::https://gitlab.com/torvic9/linux60-vd/-/raw/master/prjc-6.0-r0-vd.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/733698ed7f2a64343cc0e1b4c34bb7619a842abc.patch"
-  "0002-${pkgbase}-${pkgver}-drm_i915_psr_Use_full_update_In_case_of_area_calcula.patch::https://github.com/archlinux/linux/commit/a4faf2cf581e853ce6d4c5c09f5ac7ba8719440d.patch"
-  "0003-${pkgbase}-${pkgver}-drm_i915_Ensure_damage_clip_area_is_within_pipe_area.patch::https://github.com/archlinux/linux/commit/d27fd2f95eafbb0c8234e285b859fec3c759d5aa.patch"
-  "0004-${pkgbase}-${pkgver}-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch::https://github.com/archlinux/linux/commit/f5ab8eb121b2cfb3d3f0200ce1ebfe945a8dfede.patch"
-  "0005-${pkgbase}-${pkgver}-soundwire_intel_use_pm_runtime_resume_on_component_p.patch::https://github.com/archlinux/linux/commit/c88eb5b82d356a6914c116eb15ea23b75dc4da3d.patch"
-  "0006-${pkgbase}-${pkgver}-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch::https://github.com/archlinux/linux/commit/9c3332ebeacc190d971d420c41aeb0865284c43e.patch"
-  "0007-${pkgbase}-${pkgver}-ASoC_Intel_sof_sdw_add_support_for_Dell_SKU_0AFF.patch::https://github.com/archlinux/linux/commit/470146ed1335bca10e84f2f4ee027e7004adb71c.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0922a96b28a119abfefba8804a7958c17aff9a28.patch"
+  "0002-${pkgbase}-${pkgver}-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch::https://github.com/archlinux/linux/commit/5a7d5bed48612de588ec0582c24faf3d5a4ad0b0.patch"
+  "0003-${pkgbase}-${pkgver}-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch::https://github.com/archlinux/linux/commit/d8e3330b3698c49d50f5a411aafab8b176012621.patch"
+  "0004-${pkgbase}-${pkgver}-soundwire-intel-Initialize-clock-stop-timeout.patch::https://github.com/archlinux/linux/commit/fb23dad87a0bfb6fdfde3dc1d18104da631d050a.patch"
+  "0005-${pkgbase}-${pkgver}-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch::https://github.com/archlinux/linux/commit/64ebb671ffc4cbfd548e4f1b4aeb98155fd386dc.patch"
+  "0006-${pkgbase}-${pkgver}-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch::https://github.com/archlinux/linux/commit/a24b69f369c6c55be8ce40427feb4e127afae129.patch"
+  "0007-${pkgbase}-${pkgver}-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch::https://github.com/archlinux/linux/commit/785699dbc7041b99e0027bff27ffe17eba202e96.patch"
+  "0008-${pkgbase}-${pkgver}-drm-amdgpu-Fix-for-BO-move-issue.patch::https://github.com/archlinux/linux/commit/6df3912f64cea68409b08d282ffbccf0af7f8d8e.patch"
+  "0009-${pkgbase}-${pkgver}-Revert-ALSA-hda-Fix-page-fault-in-snd_hda_codec_shut.patch::https://github.com/archlinux/linux/commit/41d72c232237c5ea567cf789add1092114f21216.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('0927f0dd0f7ca5382c4740ebfe55eb6ba6f9a9f16cc68a6dbe303644950035a6a145534c57577b60f00009069cbe35c4019807334e742602a0946f28c6cde850'
+b2sums=('8ba900a7b98f22a208234cecc7813c4bd6125a6eb5a424b425c135a2de2780f2760a9d94da8ba3caa429c2ae4a9baf9407570cdc8aa9609e89787ba581a004a7'
         'SKIP'
-        '9f5b0529fbc525a48f0d2a66d27bd982600962a530a566ae591309f1a052857725b12a80d1e7b56746c2abdb7790607bb5f39d8b05ffc91c21b4df0fb312e8d5'
-        '87950689ffe97134100aa91d0ff89acd6f4e93b626ad7ab08af464a49457f16526cae7b863d53213dd129d47b6f97b3407ae7027b02656d9eba85942241e8d3f'
+        '7ec5e9b526b035bf3d550f4502bdee9bf96a497030ce6159b293f07ea38ff1b4590ff0a7eafffcbef5f0dafab7f04d0b63255f0286717d2b53529c97e3d8091a'
+        '28cba772c87a3be7ecfba7b7bce1b0def168626a53fadc16989cce7644d2f1fd4ab5aa11c69645341eb02f65c8832fcf8482315f8199cbeac63abf5d4ac37855'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '5fa80e0eb8ff9a4d02fe1ed88256b4f7d85baa186b8ee75b517f9086750b2155ebd3b4ff0339269e2bbdc33dd8c262fe65d5646a40cb0f0aa6c0071af3198f68'
-        'ca4a1e6bc3904c5d98b8db198c38233cf2a7e2cfe40b73d4413eeaec0ef9928325b3ab01c083c3082a51e7fbf1deed3b85ef1b72d5ce1a7a8f1a473edf930a77'
-        '92b3401f381701d50b55f98cbb9b184c38cdb090ec58e882a12617eec2ba43249645634863b5460d895a7d8f3756a48802ad3b70d34fb84a0652ae06b22491be'
-        '307f2dd522543e720d97af09921c6e98e21297ffd898545742d86fd647f6a9d1740e400d50c52a15fd3a6db3c48e31f866a3422245c51dd85ea3d53e0df21e10'
-        '5d6f9213630c506bfb0261b2379406c836924ab59e1772b4c4f2dbd653e13cd42e9baceb63e668986ad2f48be665ce6d0ad12c63011f9cc5be1d34e8c4bc54b1'
-        '8dffdace1df0a5b6c68c07d103b049d1660ef8aabd7073969fe1b1ef8a103d74c35460a0aca59407590cde4f1251fc69fdc261473cb28de8d2bbdacb40243594'
-        'dafd938333c27b137ac2ea889f5d2c33679b6c729c1f0d8dcd6f33c3a9f8b6c3d23345156e03f9798c5f4192e1d365a69268a1b27a1a64cd98de7dfe1e14f63b')
+        '3917d5fdf51bfa6d03b8c6cbeb157fef879fad058ad27770072dff0e9b0bebaf1dce20aae3b5ddab28bf44ca86dd1561cad1bf0f469d2c0913021a224e7e3b33'
+        'b6c99128fae584ea2d78331ae4e1dac8ad5eee591557145353abbbc279564129420d3cf2b219a8871afc9eae2f65ff09f96a006c60f031ff679624458510cd3d'
+        'a90f9075ead9b03fee02d4f4a23c6534ad0902d441d9bc29a63b57644d8b16d29e03e3214477780ed03a2af55efb778074b8743c83f5e1c7ba5b3755cf8b243f'
+        '862e71239bd4ea76d6b9267096415d006e5178ac91b46fd068d44c9bbfc71847a4edf003c1d9bfc4cf228580e7bc9379d4084e4c8959eaaec34b01193258993c'
+        'abdda02eae8be3fa061c8228c44048e05db504e3f0f329a92815a977239456a79772323e276d13138824ed6508c72c0f15b7bea0053f787f03e9b98294ab7d95'
+        '7feb2f6686037999e8a73d527f824342984efa0e19f14e1aa0365883fe7d4d60f7aa5590c1408118ea107b903eba3ceb365e992aac07078d08f7c4c42c3e80dc'
+        'eb4fba5ad1bb783219e4815d4b7c0a22b594dafc7029cf589eff15224c6fdebd02c3583ed9e579985c42abcc395c0b9318a195a67a0c2b89e4e92c1ea987fa08'
+        'cfc5693d826677f43cbadea761d7ded291d9e08857cc2374ec082f1aa578bbec7f754c462b416c5c0d012b68f5641a2202d8a66b80027e1065b6cb42c154a528'
+        '51e1c5074f9f0cc4266f9e3c60adf65a645e8deb4abf9f6bcd575a70c839425edd722f7dc493515a23a8571457e7088123c88799fc9378f2b4d21778da53af4b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
