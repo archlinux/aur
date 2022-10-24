@@ -31,17 +31,16 @@ debug = false
 lto = true
 panic = 'abort'
 incremental = false
-codegen-units = 16
 rpath = true
 strip = 'symbols'
 EOF
-	_echo cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	_echo cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$pkgname"
     export CARGO_TARGET_DIR=target
-    _echo cargo +nightly build --frozen --target "$CARCH-unknown-linux-gnu" --profile filesize -Z build-std-features=panic_immediate_abort -Z build-std=std,panic_abort
+    _echo cargo +nightly build --target "$CARCH-unknown-linux-gnu" --profile filesize -Z build-std-features=panic_immediate_abort -Z build-std=std,panic_abort
 }
 
 package() {
