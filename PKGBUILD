@@ -1,7 +1,7 @@
 pkgname=briar-desktop
-pkgver=0.3.0.beta
+pkgver=0.3.1.beta
 pkgrel=1
-_bin_ver=0.3.0
+_bin_ver=0.3.1
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('java-runtime=17' 'bash')
 makedepends=('git' 'java-environment=17')
 source=("${pkgname}::git+https://code.briarproject.org/briar/briar-desktop.git#tag=${_bin_ver}-${_build_type}"
-        "briar::git+https://code.briarproject.org/briar/briar#commit=2aa39e43ef427ecf47a3e9e7a3e82884a354e56a"
+        "briar::git+https://code.briarproject.org/briar/briar.git#commit=2aa39e43ef427ecf47a3e9e7a3e82884a354e56a"
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
@@ -39,7 +39,9 @@ prepare() {
   cd ${pkgname}
   git submodule init
   git config submodule.briar.url "$srcdir/briar"
-  git submodule update --init --recursive
+  # git submodule--helper update --init --recursive
+  # https://bugs.archlinux.org/task/76255#comment212136
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
