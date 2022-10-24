@@ -1,4 +1,4 @@
-pkgbase = inkscape-axidraw
+pkgbase = inkscape-axidraw-bin
 	pkgdesc = Inkscape extension for Axidraw
 	pkgver = 3.6.0
 	pkgrel = 1
@@ -7,9 +7,11 @@ pkgbase = inkscape-axidraw
 	license = GPL2
 	depends = python
 	depends = inkscape
+	provides = inkscape-axidraw
 	provides = inkscape-eggbot
+	conflicts = inkscape-axidraw
 	conflicts = inkscape-eggbot
 	source = https://cdn.evilmadscientist.com/dl/ad/public/ad-ink_360.zip
 	sha256sums = dafc3528a39506a1f307dfdf6d9f92af6f67c65e1f37f92118961b32415e57d6
 
-pkgname = inkscape-axidraw
+pkgname = inkscape-axidraw-bin

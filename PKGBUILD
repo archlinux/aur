@@ -1,12 +1,12 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Alex Leray <alexandre@stdin.fr>
 
-pkgname=inkscape-axidraw
+pkgname=inkscape-axidraw-bin
 pkgver=3.6.0
 pkgrel=1
 pkgdesc='Inkscape extension for Axidraw'
-provides=('inkscape-eggbot')
-conflicts=('inkscape-eggbot')
+provides=('inkscape-axidraw' 'inkscape-eggbot')
+conflicts=('inkscape-axidraw' 'inkscape-eggbot')
 url='https://github.com/evil-mad/EggBot/'
 depends=('python' 'inkscape')
 license=('GPL2')
