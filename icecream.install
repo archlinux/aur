@@ -17,6 +17,13 @@ post_install() {
     echo "    * source network: 0/0"
     echo "    * source port: 8765/udp"
     echo ""
+    echo "UFW Example: "
+    echo "* sudo ufw allow proto tcp from any to any port 10245"
+    echo "* sudo ufw allow proto tcp from any to any port 8765"
+    echo "* sudo ufw allow proto tcp from any to any port 8766"
+    echo "* sudo ufw allow proto udp from any to any port 8765"
+    echo "* sudo ufw allow proto udp from any port 8765 to any"
+    echo ""
     echo "See https://github.com/icecc/icecream#firewall for further information."
     echo ""
 }
