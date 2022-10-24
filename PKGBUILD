@@ -2,7 +2,7 @@
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 url=https://www.nickg.me.uk/nvc
 license=(GPL3)
 conflicts=(nvc-git)
@@ -35,9 +35,9 @@ build () {
 }
 
 check () {
-	return  # TODO: Currently one test case fails.
 	cd "${pkgname}-${pkgver%.0}/_build"
-	make check
+	# TODO: Currently one test case fails.
+	# make check
 }
  
 package () {
