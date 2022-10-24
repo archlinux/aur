@@ -18,5 +18,6 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   cp -r "${srcdir}/wifi4wofi/wifi4wofi" "${pkgdir}/usr/bin/wifi4wofi"
   chmod +x "${pkgdir}/usr/bin/wifi4wofi"
+  sudo mkdir "/usr/share/wofi/wifi.example"
   sudo cp -r "${srcdir}/wifi4wofi/config.example" "/usr/share/wofi/wifi.example"
 }
