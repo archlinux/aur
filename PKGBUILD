@@ -3,7 +3,7 @@
 # Contributor: Brett Dutro <brett.dutro@gmail.com>
 
 pkgname=ashuffle-git
-pkgver=3.13.3.r0.g2034f9d
+pkgver=3.13.4.r4.gd9f727d
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd. (git)"
 url="https://github.com/joshkunz/ashuffle"
@@ -36,7 +36,7 @@ prepare() {
   git submodule init
   git config submodule."subprojects/absl".url       "${srcdir}/abseil-cpp"
   git config submodule."subprojects/googletest".url "${srcdir}/googletest"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {

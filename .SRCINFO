@@ -1,6 +1,6 @@
 pkgbase = ashuffle-git
 	pkgdesc = Automatic library-wide shuffle for mpd. (git)
-	pkgver = 3.13.3.r0.g2034f9d
+	pkgver = 3.13.4.r4.gd9f727d
 	pkgrel = 1
 	url = https://github.com/joshkunz/ashuffle
 	arch = x86_64
