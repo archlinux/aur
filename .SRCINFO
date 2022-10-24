@@ -1,7 +1,7 @@
 pkgbase = pe-bear-git
 	pkgdesc = Portable Executable reversing tool with a friendly GUI
-	pkgver = 0.6.0.r4.g8fb024d
-	pkgrel = 1
+	pkgver = 0.6.1.r4.g89ea8d4
+	pkgrel = 2
 	url = https://hshrzd.wordpress.com/pe-bear/
 	arch = x86_64
 	arch = i686
