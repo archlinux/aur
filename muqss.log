@@ -1,0 +1,18 @@
+kernel/sched/MuQSS.c:2334:6: error: conflicting types for ‘sched_post_fork’; have ‘void(struct task_struct *)’
+ 2334 | void sched_post_fork(struct task_struct *p)
+      |      ^~~~~~~~~~~~~~~
+In file included from ./include/linux/sched/signal.h:9,
+                 from ./include/linux/rcuwait.h:6,
+                 from ./include/linux/percpu-rwsem.h:7,
+                 from ./include/linux/fs.h:33,
+                 from ./include/linux/huge_mm.h:8,
+                 from ./include/linux/mm.h:687,
+                 from ./include/linux/ring_buffer.h:5,
+                 from ./include/linux/trace_events.h:6,
+                 from ./include/trace/trace_events.h:21,
+                 from ./include/trace/define_trace.h:102,
+                 from ./include/trace/events/sched.h:656,
+                 from kernel/sched/MuQSS.c:35:
+./include/linux/sched/task.h:58:13: note: previous declaration of ‘sched_post_fork’ with type ‘void(struct task_struct *, struct kernel_clone_args *)’
+   58 | extern void sched_post_fork(struct task_struct *p,
+      |
