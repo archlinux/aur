@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fish-fzf
-pkgver=9.4
+pkgver=9.5
 pkgrel=1
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git')
 # checkdepends=('fish-fishtape')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e7ecc999a9c49c538c083daf8fa7b7a9161995bae09263af3840caa6629b87d')
+sha256sums=('81ebdfb10d62850f6ef2d7b8ce8633a78846afac4896684dc69a46ec00861f45')
 
 # check() {
 #  cd "fzf.fish-$pkgver/"
@@ -26,9 +26,9 @@ sha256sums=('4e7ecc999a9c49c538c083daf8fa7b7a9161995bae09263af3840caa6629b87d')
 
 package() {
 	cd "fzf.fish-$pkgver/"
-	install -Dm644 completions/*.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-	install -Dm644 conf.d/*.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
-	install -Dm644 functions/*.fish -t "$pkgdir/usr/share/fish/vendor_functions.d/"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 completions/*.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dvm644 conf.d/*.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
+	install -Dvm644 functions/*.fish -t "$pkgdir/usr/share/fish/vendor_functions.d/"
+	install -Dvm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
