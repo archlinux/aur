@@ -143,3 +143,23 @@
 ### Added
 
 - Make CStruct/MemCStruct Pickle Friendly
+
+### 3.2
+
+2022-10-23
+
+### Fix
+
+- Fix padding tests on 32bit architectures
+
+### 3.3
+
+2022-10-24
+
+### Added
+
+- Add 32bit test environment
+
+### Fix
+
+- Fix padding tests on 32bit architectures
