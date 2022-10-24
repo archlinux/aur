@@ -1,5 +1,5 @@
 pkgbase = java-openjdk-xdg
-	pkgver = 18.0.2.1.u0
+	pkgver = 19.0.1.u10
 	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
@@ -40,21 +40,21 @@ pkgbase = java-openjdk-xdg
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
 	options = !lto
-	source = https://github.com/openjdk/jdk18u/archive/jdk-18.0.2.1+0.tar.gz
+	source = https://github.com/openjdk/jdk19u/archive/jdk-19.0.1+10.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = xdg-basedir-compliant-fontconfig.patch
 	source = xdg-basedir-compliant-userPrefs.patch
-	sha256sums = d3955839c1f566f949fbdf5d4f32a6fac2e57598fba2a1cbc8557c96df6ac8c4
-	sha256sums = 58bf779332d21151ba47719926ddcc8811ac7bbf414222141dcf40ac54cfaa2d
-	sha256sums = 3a50ded3918024de4e441a46744c8e342faf46441b53c8bac7d589055a28a13c
-	sha256sums = 2cace78ec911f73578991370914753c5b6abe9f7304bcbcb7a3077b8dbc7c867
+	sha256sums = cdc7e6d857ed87c8fe653609dc5a63f1f698b3aaf1eb7dc9d733832dab599514
+	sha256sums = 37656108f25ca6943cc89ef09677bd53be0f6aee369f9acb3151803ed2b233f5
+	sha256sums = 766f83adcd3c7ae70808f3894a1b741681b4e3edc0ff9ee2b229f59bc3fd0a9d
+	sha256sums = d4846c8de3dc9056feeb6d0c1d5fc48b639d2e4ae9b94944cb2b1376cb431be6
 	sha256sums = 25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9
 	sha256sums = 48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c
 
 pkgname = jre-openjdk-headless-xdg
-	pkgdesc = OpenJDK Java 18 headless runtime environment - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 19 headless runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -71,9 +71,9 @@ pkgname = jre-openjdk-headless-xdg
 	depends = glibc
 	depends = gcc-libs
 	optdepends = java-rhino: for some JavaScript support
-	provides = java-runtime-headless=18
-	provides = java-runtime-headless-openjdk=18
-	provides = jre18-openjdk-headless=18.0.2.1.u0-1
+	provides = java-runtime-headless=19
+	provides = java-runtime-headless-openjdk=19
+	provides = jre19-openjdk-headless=19.0.1.u10-1
 	backup = etc/java-openjdk-xdg/logging.properties
 	backup = etc/java-openjdk-xdg/management/jmxremote.access
 	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
@@ -90,9 +90,9 @@ pkgname = jre-openjdk-headless-xdg
 	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = jre-openjdk-xdg
-	pkgdesc = OpenJDK Java 18 full runtime environment - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 19 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre18-openjdk-headless=18.0.2.1.u0-1
+	depends = jre19-openjdk-headless=19.0.1.u10-1
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -101,29 +101,29 @@ pkgname = jre-openjdk-xdg
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=18
-	provides = java-runtime-openjdk=18
-	provides = jre18-openjdk=18.0.2.1.u0-1
+	provides = java-runtime=19
+	provides = java-runtime-openjdk=19
+	provides = jre19-openjdk=19.0.1.u10-1
 
 pkgname = jdk-openjdk-xdg
-	pkgdesc = OpenJDK Java 18 development kit - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 19 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre18-openjdk=18.0.2.1.u0-1
+	depends = jre19-openjdk=19.0.1.u10-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	depends = glibc
 	depends = gcc-libs
-	provides = java-environment=18
-	provides = java-environment-openjdk=18
-	provides = jdk18-openjdk=18.0.2.1.u0-1
+	provides = java-environment=19
+	provides = java-environment-openjdk=19
+	provides = jdk19-openjdk=19.0.1.u10-1
 
 pkgname = openjdk-src-xdg
-	pkgdesc = OpenJDK Java 18 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk18-openjdk=18.0.2.1.u0-1
-	provides = openjdk18-src=18.0.2.1.u0-1
+	pkgdesc = OpenJDK Java 19 sources - with improved Support for the XDG Base Directory Specification
+	depends = jdk19-openjdk=19.0.1.u10-1
+	provides = openjdk19-src=19.0.1.u10-1
 
 pkgname = openjdk-doc-xdg
-	pkgdesc = OpenJDK Java 18 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk18-openjdk=18.0.2.1.u0-1
-	provides = openjdk18-doc=18.0.2.1.u0-1
+	pkgdesc = OpenJDK Java 19 documentation - with improved Support for the XDG Base Directory Specification
+	depends = jdk19-openjdk=19.0.1.u10-1
+	provides = openjdk19-doc=19.0.1.u10-1
