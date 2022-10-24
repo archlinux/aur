@@ -5,10 +5,10 @@
 
 _majorver=17
 _minorver=0
-_securityver=3
-_updatever=0
-_cyclever=463
-_ver=3
+_securityver=4
+_updatever=1
+_cyclever=653
+_ver=1
 
 if [ $_updatever -eq 0 ]; then
     _git_tag=${_majorver}.${_minorver}.${_securityver}b${_cyclever}.${_ver}
@@ -40,7 +40,7 @@ makedepends=(
     'glibc'
     'graphviz'
     'harfbuzz'
-    'java-environment=17'
+    'java-environment>=18'
     'libcups'
     'libelf'
     'libjpeg-turbo'
@@ -59,12 +59,12 @@ makedepends=(
 )
 options=(!lto)
 source=(
-    https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr${_git_tag}.tar.gz
+    https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr-release-${_git_tag}.tar.gz
     xdg-user-directories-compliant.patch
 )
 
 sha256sums=(
-    '311605e3a30367e455cf95d20bd1923ae9adec1acbe86199400ee778bca1ba04'
+    '3aa4e853afe36bc9118e81394fe6e0e90e5bf0e47ae5c42bcc7772bb87ae846b'
     '09e6f320362ca0a0bd1ce380c9e89ea145131aa56a3f258607c6bd9ded586739'
 )
 
@@ -74,7 +74,7 @@ case "${CARCH}" in
 esac
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-jbr-xdg
-_jdkdir=JetBrainsRuntime-jbr${_git_tag}
+_jdkdir=JetBrainsRuntime-jbr-release-${_git_tag}
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-normal-server-release/images
 
 _nonheadless=(

@@ -1,5 +1,5 @@
 pkgbase = java-jbr-xdg
-	pkgver = 17.0.3.0.b463.3
+	pkgver = 17.0.4.1.b653.1
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = java-jbr-xdg
 	makedepends = glibc
 	makedepends = graphviz
 	makedepends = harfbuzz
-	makedepends = java-environment=17
+	makedepends = java-environment>=18
 	makedepends = libcups
 	makedepends = libelf
 	makedepends = libjpeg-turbo
@@ -30,9 +30,9 @@ pkgbase = java-jbr-xdg
 	makedepends = unzip
 	makedepends = zip
 	options = !lto
-	source = https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr17.0.3b463.3.tar.gz
+	source = https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr-release-17.0.4.1b653.1.tar.gz
 	source = xdg-user-directories-compliant.patch
-	sha256sums = 311605e3a30367e455cf95d20bd1923ae9adec1acbe86199400ee778bca1ba04
+	sha256sums = 3aa4e853afe36bc9118e81394fe6e0e90e5bf0e47ae5c42bcc7772bb87ae846b
 	sha256sums = 09e6f320362ca0a0bd1ce380c9e89ea145131aa56a3f258607c6bd9ded586739
 
 pkgname = jre-jbr-xdg-headless
@@ -55,7 +55,7 @@ pkgname = jre-jbr-xdg-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-jbr-xdg=17
-	provides = jre17-jbr-xdg-headless=17.0.3.0.b463.3-1
+	provides = jre17-jbr-xdg-headless=17.0.4.1.b653.1-1
 	backup = etc/java-jbr-xdg/logging.properties
 	backup = etc/java-jbr-xdg/management/jmxremote.access
 	backup = etc/java-jbr-xdg/management/jmxremote.password.template
@@ -77,7 +77,7 @@ pkgname = jre-jbr-xdg
 	depends = gcc-libs
 	depends = giflib
 	depends = glibc
-	depends = jre17-jbr-xdg-headless=17.0.3.0.b463.3-1
+	depends = jre17-jbr-xdg-headless=17.0.4.1.b653.1-1
 	depends = libpng
 	depends = libgif.so
 	optdepends = alsa-lib: for basic sound support
@@ -85,7 +85,7 @@ pkgname = jre-jbr-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-jbr-xdg=17
-	provides = jre17-jbr-xdg=17.0.3.0.b463.3-1
+	provides = jre17-jbr-xdg=17.0.4.1.b653.1-1
 
 pkgname = jdk-jbr-xdg
 	pkgdesc = JetBrainsRuntime Java 17 development kit - with improved Support for the XDG Base Directory Specification
@@ -93,19 +93,19 @@ pkgname = jdk-jbr-xdg
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
-	depends = jre17-jbr-xdg=17.0.3.0.b463.3-1
+	depends = jre17-jbr-xdg=17.0.4.1.b653.1-1
 	depends = java-environment-common=3
 	depends = libelf
 	provides = java-environment=17
 	provides = java-environment-jbr-xdg=17
-	provides = jdk17-jbr-xdg=17.0.3.0.b463.3-1
+	provides = jdk17-jbr-xdg=17.0.4.1.b653.1-1
 
 pkgname = jbr-xdg-src
 	pkgdesc = JetBrainsRuntime Java 17 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk17-jbr-xdg=17.0.3.0.b463.3-1
-	provides = jbr17-xdg-src=17.0.3.0.b463.3-1
+	depends = jdk17-jbr-xdg=17.0.4.1.b653.1-1
+	provides = jbr17-xdg-src=17.0.4.1.b653.1-1
 
 pkgname = jbr-xdg-doc
 	pkgdesc = JetBrainsRuntime Java 17 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk17-jbr-xdg=17.0.3.0.b463.3-1
-	provides = jbr17-xdg-doc=17.0.3.0.b463.3-1
+	depends = jdk17-jbr-xdg=17.0.4.1.b653.1-1
+	provides = jbr17-xdg-doc=17.0.4.1.b653.1-1
