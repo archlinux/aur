@@ -1,0 +1,27 @@
+From 49cf5c78e325982215db5958b2c5a6b6d08adac5 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 23 Oct 2022 18:12:51 +0200
+Subject: [PATCH] Remove test modules from sdist, wheel
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Just like in the `ink_extension` package, I think test modules shouldn’t
+be in the sdist and wheels.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 118216c..1724afd 100644
+--- a/setup.py
++++ b/setup.py
+@@ -33,7 +33,7 @@
+         "Intended Audience :: Developers",
+     ],
+ 
+-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
++    packages=find_packages(exclude=['contrib', 'docs', 'test', 'test.*']),
+     install_requires=[
+         'ink_extensions',
+         'packaging>=21.0',

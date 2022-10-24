@@ -1,0 +1,20 @@
+pkgbase = python-plotink
+	pkgdesc = Common files for Inkscape extensions to drive EggBot, WaterColorBot, and similar plotter-type machines
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/evil-mad/plotink
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-packaging
+	depends = python-pyserial
+	options = !strip
+	source = python-plotink-1.7.0.tar.gz::https://github.com/evil-mad/plotink/archive/refs/tags/1.7.0.tar.gz
+	source = github-pr-49.patch
+	sha512sums = 96972dc6cc15889b66d47c932949bb8b505b1e03038e9ee7adb9364e4ac0bf7c5bf64712dd636800525529de32b7914e6ce479fc7bc2e69ece9e8b3346047dc2
+	sha512sums = 159ca914813e66cc37d44f036bcd67dc417a0e3f2e060949bcac2ba3e9516ff44578a165192625c2f4c846d2b24d9ac6f2e00861bd82b29847e4cf8cf549bab8
+
+pkgname = python-plotink
