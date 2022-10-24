@@ -46,5 +46,6 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm755 "target/$CARCH-unknown-linux-gnu/filesize/$pkgname" -t "$pkgdir/usr/bin"
+    ln -s random-rs "$pkgdir/usr/bin/random"
 }
 
