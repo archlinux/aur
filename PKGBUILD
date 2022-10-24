@@ -69,8 +69,7 @@ package() {
 
   for icon_size in 32 64 128; do
     icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -d "$pkgdir/${icons_dir}"
-    install -m644 desktop/logo.${icon_size}.png \
+    install -Dm644 desktop/logo.${icon_size}.png \
       "$pkgdir/${icons_dir}/${_app_id}.png"
   done
   install -Dm644 desktop/logo.svg \
