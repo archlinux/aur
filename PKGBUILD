@@ -3,11 +3,11 @@
 
 pkgname=tome4-embers_of_rage
 _pkgname=orcs
-pkgver='1.7.4'
+pkgver='g.1.7.4.d.1.1.10'
 pkgrel='1'
 pkgdesc="Embers of Rage DLC for tome4."
 arch=('any')
-url="http://tome.te4.org/"
+url="https://te4.org/"
 license=('custom')
 depends=('tome4')
 source=("orcs.teaac::te4://orcs.teaac")
