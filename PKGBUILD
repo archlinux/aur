@@ -7,7 +7,7 @@
 #
 
 pkgname=mas
-_pkgbuild=213
+_pkgbuild=231
 pkgver=1.42b${_pkgbuild}
 _pkgfilebase=asl-current
 _pkgfile=${_pkgfilebase}-142-bld${_pkgbuild}
@@ -24,7 +24,7 @@ source=("http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/${_pkgfile
 				"Makefile.def"
 				"makefile_nodocs.patch")
 
-sha256sums=('c6fb37c1a2f65e6d28ef813b57463c0e1da1717e9c203b5fa4e2e74984602dfa'
+sha256sums=('d4186fd32bc00606ca15add6c978b91340d007047b7b830b9ec0dc95516e97e5'
             'a245fe24db2359b36f2224f7a70914979593c20beb633f10b9ca7bdcfa033851'
             '67c5d45388250f030c0cf5dfa4c18bec0f55aa2d5ae9b21875d32b0167d3e9d7')
 
