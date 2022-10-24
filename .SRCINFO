@@ -1,7 +1,7 @@
 pkgbase = protonmail-nativefier
 	pkgdesc = ProtonMail desktop built with nativefier (electron)
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://mail.proton.me
 	arch = armv7l
 	arch = i686

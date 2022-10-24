@@ -1,8 +1,8 @@
 # Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=protonmail-nativefier
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="ProtonMail desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://mail.proton.me"
