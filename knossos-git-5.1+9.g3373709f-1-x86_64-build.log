@@ -1,0 +1,159 @@
+-- The C compiler identification is GNU 7.2.0
+-- The CXX compiler identification is GNU 7.2.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- RELEASE
+-- Boost version: 1.65.1
+-- Found OpenGL: /usr/lib/libGL.so  
+-- Found PythonLibs: /usr/lib/libpython2.7.so (found suitable version "2.7.14", minimum required is "2.7.12") 
+-- Found SNAPPY: /usr/lib/libsnappy.so  
+-- Found ZLIB: /usr/lib/libz.so (found version "1.2.11") 
+-- Found QUAZIP: /usr/lib/libquazip5.so  
+-- using gold linker
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /build/knossos-git/src/build-x86_64-pc-linux-gnu-knossos-git
+[1/81] Creating directory: cheatsheet
+[2/81] Preprocessing /build/knossos-git/src/knossos/resources/cheatsheet/tracingadvancedmode.html.in
+[3/81] Generating buildinfocreator, buildinfo.h
+building v5.1-9-g3373709f
+[4/81] Preprocessing /build/knossos-git/src/knossos/resources/cheatsheet/reviewmode.html.in
+[5/81] Preprocessing /build/knossos-git/src/knossos/resources/cheatsheet/mergemode.html.in
+[6/81] Preprocessing /build/knossos-git/src/knossos/resources/cheatsheet/tracingmode.html.in
+[7/81] Preprocessing /build/knossos-git/src/knossos/resources/cheatsheet/mergetracingmode.html.in
+[8/81] Preprocessing /build/knossos-git/src/knossos/resources/cheatsheet/paintmode.html.in
+[9/81] Creating cheatsheet.qrc
+[10/81] Automatic MOC, UIC and RCC for target knossos
+Generating MOC predefs moc_predefs.h
+Generating MOC source EWIEGA46WW/moc_loader.cpp
+Generating MOC source EWIEGA46WW/moc_network.cpp
+Generating MOC source XUYY3UOEKR/moc_coordinatedecorator.cpp
+Generating MOC source XUYY3UOEKR/moc_floatcoordinatedecorator.cpp
+Generating MOC source XUYY3UOEKR/moc_nodelistdecorator.cpp
+Generating MOC source XUYY3UOEKR/moc_segmentlistdecorator.cpp
+Generating MOC source XUYY3UOEKR/moc_treelistdecorator.cpp
+Generating MOC source HCEO37ZD6I/moc_highlighter.cpp
+Generating MOC source VRCPIFPIBF/moc_pythonproxy.cpp
+Generating MOC source VRCPIFPIBF/moc_segmentationproxy.cpp
+Generating MOC source VRCPIFPIBF/moc_skeletonproxy.cpp
+Generating MOC source HCEO37ZD6I/moc_scripting.cpp
+Generating MOC source METLTKYYCH/moc_segmentation.cpp
+Generating MOC source METLTKYYCH/moc_segmentationsplit.cpp
+Generating MOC source EWIEGA46WW/moc_session.cpp
+Generating MOC source XZM7CFJHTQ/moc_skeletonizer.cpp
+Generating MOC source EWIEGA46WW/moc_viewer.cpp
+Generating MOC source IMAN36LHMA/moc_DialogVisibilityNotify.cpp
+Generating MOC source IMAN36LHMA/moc_Spoiler.cpp
+Generating MOC source IMAN36LHMA/moc_aboutdialog.cpp
+Generating MOC source IMAN36LHMA/moc_annotationwidget.cpp
+Generating MOC source IMAN36LHMA/moc_cheatsheet.cpp
+Generating MOC source IMAN36LHMA/moc_datasetloadwidget.cpp
+Generating MOC source IMAN36LHMA/moc_mainwindow.cpp
+Generating MOC source TG2ALX5KBI/moc_datasetsegmentationtab.cpp
+Generating MOC source TG2ALX5KBI/moc_meshestab.cpp
+Generating MOC source TG2ALX5KBI/moc_navigationtab.cpp
+Generating MOC source TG2ALX5KBI/moc_nodestab.cpp
+Generating MOC source TG2ALX5KBI/moc_savetab.cpp
+Generating MOC source TG2ALX5KBI/moc_treestab.cpp
+Generating MOC source TG2ALX5KBI/moc_viewporttab.cpp
+Generating MOC source IMAN36LHMA/moc_preferenceswidget.cpp
+Generating MOC source IMAN36LHMA/moc_pythoninterpreterwidget.cpp
+Generating MOC source IMAN36LHMA/moc_pythonpropertywidget.cpp
+Generating MOC source IMAN36LHMA/moc_snapshotwidget.cpp
+Generating MOC source 3P4K2DYT4R/moc_taskloginwidget.cpp
+Generating MOC source 3P4K2DYT4R/moc_taskmanagementwidget.cpp
+Generating MOC source 34OUVNC4CM/moc_commentstab.cpp
+Generating MOC source 34OUVNC4CM/moc_segmentationview.cpp
+Generating MOC source 34OUVNC4CM/moc_skeletonview.cpp
+Generating MOC source SY2TH6PBLP/moc_viewport3d.cpp
+Generating MOC source SY2TH6PBLP/moc_viewportarb.cpp
+Generating MOC source SY2TH6PBLP/moc_viewportbase.cpp
+Generating MOC source SY2TH6PBLP/moc_viewportortho.cpp
+Generating MOC source IMAN36LHMA/moc_zoomwidget.cpp
+Generating MOC compilation mocs_compilation.cpp
+Generating UIC header include/ui_aboutdialog.h
+Generating RCC source 7D4UYSXSNH/qrc_cheatsheet.cpp
+Generating RCC source EWIEGA46WW/qrc_resources.cpp
+[11/81] Building CXX object CMakeFiles/knossos.dir/commentsetting.cpp.o
+[12/81] Building CXX object CMakeFiles/knossos.dir/hashtable.cpp.o
+[13/81] Building CXX object CMakeFiles/knossos.dir/gui_wrapper.cpp.o
+[14/81] Building CXX object CMakeFiles/knossos.dir/functions.cpp.o
+[15/81] Building CXX object CMakeFiles/knossos.dir/profiler.cpp.o
+[16/81] Building CXX object CMakeFiles/knossos.dir/dataset.cpp.o
+[17/81] Building CXX object CMakeFiles/knossos.dir/file_io.cpp.o
+[18/81] Building CXX object CMakeFiles/knossos.dir/network.cpp.o
+[19/81] Building CXX object CMakeFiles/knossos.dir/remote.cpp.o
+[20/81] Building CXX object CMakeFiles/knossos.dir/main.cpp.o
+[21/81] Building CXX object CMakeFiles/knossos.dir/stateInfo.cpp.o
+[22/81] Building CXX object CMakeFiles/knossos.dir/session.cpp.o
+[23/81] Building CXX object CMakeFiles/knossos.dir/mesh/mesh.cpp.o
+[24/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/decorators/coordinatedecorator.cpp.o
+[25/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/decorators/floatcoordinatedecorator.cpp.o
+[26/81] Building CXX object CMakeFiles/knossos.dir/loader.cpp.o
+[27/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/decorators/nodelistdecorator.cpp.o
+[28/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/highlighter.cpp.o
+[29/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/decorators/treelistdecorator.cpp.o
+[30/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/decorators/segmentlistdecorator.cpp.o
+[31/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/proxies/segmentationproxy.cpp.o
+[32/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/proxies/skeletonproxy.cpp.o
+[33/81] Building CXX object CMakeFiles/knossos.dir/segmentation/cubeloader.cpp.o
+[34/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/proxies/pythonproxy.cpp.o
+[35/81] Building CXX object CMakeFiles/knossos.dir/viewer.cpp.o
+[36/81] Building CXX object CMakeFiles/knossos.dir/scriptengine/scripting.cpp.o
+[37/81] Building CXX object CMakeFiles/knossos.dir/skeleton/property_query.cpp.o
+[38/81] Building CXX object CMakeFiles/knossos.dir/skeleton/node.cpp.o
+[39/81] Building CXX object CMakeFiles/knossos.dir/skeleton/segmentationSkeletonBridge.cpp.o
+[40/81] Building CXX object CMakeFiles/knossos.dir/skeleton/skeleton_dfs.cpp.o
+[41/81] Building CXX object CMakeFiles/knossos.dir/slicer/gpucuber.cpp.o
+[42/81] Building CXX object CMakeFiles/knossos.dir/segmentation/segmentationsplit.cpp.o
+[43/81] Building CXX object CMakeFiles/knossos.dir/widgets/Spoiler.cpp.o
+[44/81] Building CXX object CMakeFiles/knossos.dir/skeleton/tree.cpp.o
+[45/81] Building CXX object CMakeFiles/knossos.dir/widgets/UserOrientableSplitter.cpp.o
+[46/81] Building CXX object CMakeFiles/knossos.dir/tinyply/tinyply.cpp.o
+[47/81] Building CXX object CMakeFiles/knossos.dir/segmentation/segmentation.cpp.o
+[48/81] Building CXX object CMakeFiles/knossos.dir/widgets/cheatsheet.cpp.o
+[49/81] Building CXX object CMakeFiles/knossos.dir/widgets/aboutdialog.cpp.o
+[50/81] Building CXX object CMakeFiles/knossos.dir/widgets/annotationwidget.cpp.o
+[51/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/datasetsegmentationtab.cpp.o
+[52/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/meshestab.cpp.o
+[53/81] Building CXX object CMakeFiles/knossos.dir/widgets/datasetloadwidget.cpp.o
+[54/81] Building CXX object CMakeFiles/knossos.dir/skeleton/skeletonizer.cpp.o
+[55/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/navigationtab.cpp.o
+[56/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/savetab.cpp.o
+[57/81] Building CXX object CMakeFiles/knossos.dir/widgets/mainwindow.cpp.o
+[58/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/treestab.cpp.o
+[59/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/nodestab.cpp.o
+[60/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferences/viewporttab.cpp.o
+[61/81] Building CXX object CMakeFiles/knossos.dir/widgets/preferenceswidget.cpp.o
+[62/81] Building CXX object CMakeFiles/knossos.dir/widgets/task/taskloginwidget.cpp.o
+[63/81] Building CXX object CMakeFiles/knossos.dir/widgets/pythoninterpreterwidget.cpp.o
+[64/81] Building CXX object CMakeFiles/knossos.dir/widgets/pythonpropertywidget.cpp.o
+[65/81] Building CXX object CMakeFiles/knossos.dir/widgets/snapshotwidget.cpp.o
+[66/81] Building CXX object CMakeFiles/knossos.dir/widgets/tools/commentstab.cpp.o
+[67/81] Building CXX object CMakeFiles/knossos.dir/widgets/task/taskmanagementwidget.cpp.o
+[68/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/renderoptions.cpp.o
+[69/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/viewportarb.cpp.o
+[70/81] Building CXX object CMakeFiles/knossos.dir/widgets/tools/segmentationview.cpp.o
+[71/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/viewport3d.cpp.o
+[72/81] Building CXX object CMakeFiles/knossos.dir/widgets/tools/skeletonview.cpp.o
+[73/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/renderer.cpp.o
+[74/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/viewportortho.cpp.o
+[75/81] Building CXX object CMakeFiles/knossos.dir/knossos_autogen/7D4UYSXSNH/qrc_cheatsheet.cpp.o
+[76/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/viewportbase.cpp.o
+[77/81] Building CXX object CMakeFiles/knossos.dir/knossos_autogen/EWIEGA46WW/qrc_resources.cpp.o
+[78/81] Building CXX object CMakeFiles/knossos.dir/widgets/zoomwidget.cpp.o
+[79/81] Building CXX object CMakeFiles/knossos.dir/widgets/viewports/viewportevents.cpp.o
+[80/81] Building CXX object CMakeFiles/knossos.dir/knossos_autogen/mocs_compilation.cpp.o
+[81/81] Linking CXX executable knossos
