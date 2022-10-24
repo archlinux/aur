@@ -2,9 +2,9 @@
 # Place the gog installation file in the same folder as this PKGBUILD
 pkgname=gog-tangledeep
 _pkgname=tangledeep
-pkgver=1.52g
-_pkgver=1_52g
-_build=53273
+pkgver=1.53a
+_pkgver=1_53a
+_build=54452
 _goggame=1703478259
 pkgrel=2
 epoch=1
@@ -19,7 +19,7 @@ source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_bu
         "${_pkgname}.desktop")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('585f99b6da15ca2e92492cc899195091faf7589a10995b3a51e3ea4d4bbbe918'
+sha256sums=('0e0584b32d783c55ad5ac20ba2fdec7a9fac2ca19b8431bd38c0a326c4ca24f2'
             'a5d0ecd7d72687445a91822f06b15194c728be37a18df85343340a864ac112c0')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh"
         "${_pkgname}.desktop")
