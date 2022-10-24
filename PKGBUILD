@@ -1,25 +1,30 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=i3keys
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc='Lists used and unused keys in your i3wm or Sway config'
-arch=('any')
+arch=('x86_64')
 url="https://github.com/RasmusLindroth/$pkgname"
 license=('MIT')
-makedepends=('go')
-source=("https://github.com/RasmusLindroth/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('88288f97bace967018a885b5e7b4347ef5f59c013f388f316261c99c460a22ad')
+options=(!lto)
+depends=('libx11')
+makedepends=('go' 'libxtst')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/RasmusLindroth/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('7169e9e75baff083555e581808a073a7b05959d2c75ff021118b71b3e8ce7787')
 
 build() {
-  cd $pkgname-$pkgver
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname .
+    cd $pkgname-$pkgver
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o .
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+    cd $pkgname-$pkgver
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+    install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
