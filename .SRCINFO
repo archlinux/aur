@@ -1,7 +1,7 @@
 pkgbase = altlinux
 	pkgdesc = GUI for AltServer-Linux
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/maxasix/AltLinux
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = altlinux
 	depends = avahi
 	depends = zlib
 	depends = unzip
-	source = altlinux_0.4.2-2.tar.gz::https://github.com/maxasix/altlinux/archive/refs/tags/v0.4.2-2.tar.gz
+	source = altlinux_0.4.2-1.tar.gz::https://github.com/maxasix/altlinux/archive/refs/tags/v0.4.2-1.tar.gz
 	source = altlinux.desktop
 	source = altlinux.png
 	sha256sums = b601f85475f065ef5a434d2d8ca0f8a09b80246b999741e9c4c730a9a885c056

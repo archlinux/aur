@@ -2,7 +2,7 @@
 
 pkgname=altlinux
 pkgver=0.4.2
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI for AltServer-Linux"
 arch=('x86_64')
 url="https://github.com/maxasix/AltLinux"
