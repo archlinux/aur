@@ -4,15 +4,15 @@ TEST_GPU=0
 
 pkgname=python-kornia-git
 _name=kornia
-pkgver=0.5.8.r0.g8b619aea
+pkgver=0.6.8.r9.g1d6923db
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
-makedepends=('git' 'python-setuptools' 'python-pip')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
 depends=('python-pytorch')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-pytest-flake8' 'python-scipy' 'python-opencv')
 provides=('python-kornia')
 conflicts=('python-kornia')
 options=(!emptydirs)
@@ -24,16 +24,21 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
+}
+
 check() {
   cd "${srcdir}/${_name}"
-  pytest -v --device cpu --dtype float32,float64 test/
+  make test-cpu
   if ! [ "$TEST_GPU" -eq "0" ] ; then
-    pytest -v --device cuda --dtype float32,float64 test/
+    make test-cuda
   fi
 }
 
 package() {
-  cd "${srcdir}/${_name}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
