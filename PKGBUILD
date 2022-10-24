@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22254.b8a70c999
+pkgver=r22331.2e782a154
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -141,7 +141,10 @@ build() {
       -DYUZU_USE_BUNDLED_OPUS=OFF \
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_LIBUSB=OFF \
-      -DYUZU_USE_BUNDLED_QT=OFF
+      -DYUZU_USE_BUNDLED_QT=OFF \
+      -DYUZU_TESTS=OFF \
+      -DBUILD_TESTS=OFF \
+      -Wno-dev
     ninja
 }
 
