@@ -193,6 +193,7 @@ build() {
     -DENABLE_GIT_VERSION=ON \
     -DWITH_BABELTRACE=OFF \
     -DWITH_LTTNG=OFF \
+    -DWITH_FIO=OFF \
     -DWITH_OPENLDAP=OFF \
     -DWITH_RDMA=OFF \
     -DWITH_OCF=OFF \
@@ -209,8 +210,8 @@ build() {
     -DDASHBOARD_FRONTEND_LANGS="en-US" \
     -DWITH_RADOSGW=ON \
     -DWITH_RADOSGW_BEAST_OPENSSL=ON \
-    -DWITH_RADOSGW_AMQP_ENDPOINT=OFF \
-    -DWITH_RADOSGW_KAFKA_ENDPOINT=OFF \
+    -DWITH_RADOSGW_AMQP_ENDPOINT=ON \
+    -DWITH_RADOSGW_KAFKA_ENDPOINT=ON \
     -DWITH_RADOSGW_LUA_PACKAGES=ON \
     -DWITH_RADOSGW_DBSTORE=OFF \
     -DWITH_RADOSGW_SELECT_PARQUET=OFF \
@@ -242,7 +243,7 @@ check() {
 package_ceph-libs() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt' 'cryptsetup'
-           'lua' 'librdkafka' 'libaio' 'gperftools'
+           'lua' 'librdkafka' 'libaio' 'gperftools' 'librabbitmq-c'
            'python-prettytable' 'python-yaml' 'python-setuptools')
   provides=("ceph-libs=${pkgver}-${pkgrel}")
   conflicts=('ceph-libs-bin')

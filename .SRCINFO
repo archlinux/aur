@@ -224,6 +224,7 @@ pkgname = ceph-libs
 	depends = librdkafka
 	depends = libaio
 	depends = gperftools
+	depends = librabbitmq-c
 	depends = python-prettytable
 	depends = python-yaml
 	depends = python-setuptools
