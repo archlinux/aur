@@ -3,15 +3,15 @@
 
 _target=mips-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.38
-pkgrel=2
+pkgver=2.39
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the MIPS target'
 arch=('x86_64')
 url='http://www.gnu.org/software/binutils/'
 license=('GPL')
-depends=('zlib')
+depends=('zlib' 'libelf')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2")
-sha512sums=('7690b4158bd6587a85c6b98903980b9ac6f16b47f7fd1e60986b0a70388bedcfdc05d75597aa49c81fec1609ce24bed6c26583f76fd2471a9d63394fd9798afc')
+sha512sums=('faa592dd48fc715901ad704ac96dbd34b1792c51e77c7a92a387964b0700703c74be07de45cc4751945c8c0674368c73dc17bbc563d1d2cd235b5ebd8c6e7efb')
 
 prepare() {
   cd binutils-${pkgver}
