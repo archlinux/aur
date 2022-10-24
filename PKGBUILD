@@ -5,11 +5,11 @@ pkgver=22.9443251
 pkgrel=1
 pkgdesc="Get information on the current Spotify song. Git version."
 arch=('any')
-url="https://github.com/getmicah/spotify-now"
-license=('MIT')
+url="https://github.com/micahco/spotify-now"
+license=('BSD-2-Clause')
 makedepends=('git')
 conflicts=()
-source=("git://github.com/getmicah/$_pkgname.git")
+source=("git://github.com/micahco/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
