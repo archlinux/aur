@@ -14,7 +14,7 @@ arch=(any)
 url="https://www.jabref.org/"
 license=(MIT)
 depends=('archlinux-java-run>=7' 'java-runtime>=18')
-makedepends=('gradle' 'java-environment>=18')
+makedepends=('gradle' 'java-environment>=18' 'java-environment<19')
 optdepends=('python: browser extension')
 options=(!strip !emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JabRef/jabref/archive/v${pkgver}.tar.gz
@@ -45,7 +45,7 @@ build() {
   mkdir -p "${srcdir}"/gradle
   export GRADLE_USER_HOME=${srcdir}/gradle
 
-  export JAVA_HOME=$(archlinux-java-run -a 18 -f jdk -j)
+  export JAVA_HOME=$(archlinux-java-run -a 18 -b 18 -f jdk -j)
   echo "Using JDK from $JAVA_HOME to build JabRef."
 
   # ./gradlew \
