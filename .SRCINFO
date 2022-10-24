@@ -11,6 +11,6 @@ pkgbase = gildas
 	optdepends = python-numpy
 	options = !strip
 	source = https://www.iram.fr/~gildas/dist/gildas-src-oct22b.tar.xz
-	sha512sums = SKIP
+	sha512sums = 050baf45922e4a25f6ea0f5ba724e415c73b6a784f8570eefa2670b311b85b68d9a13ea96d2296b0c2a994a600c2f9d055be9152068dd4e8bc37591d3408ecca
 
 pkgname = gildas

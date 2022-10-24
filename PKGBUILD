@@ -10,13 +10,18 @@ depends=(gcc-fortran cfitsio gtk2)
 optdepends=(python-numpy)
 
 source=("https://www.iram.fr/~gildas/dist/gildas-src-$pkgver.tar.xz")
-sha512sums=('SKIP')
+sha512sums=('050baf45922e4a25f6ea0f5ba724e415c73b6a784f8570eefa2670b311b85b68d9a13ea96d2296b0c2a994a600c2f9d055be9152068dd4e8bc37591d3408ecca')
 options=('!strip')
+
+build() {
+    cd ${srcdir}/gildas-src-$pkgver
+    source admin/gildas-env.sh
+    make
+}
 
 package() {
     cd ${srcdir}/gildas-src-$pkgver
     source admin/gildas-env.sh
-    make
     make install
     
     target="opt/gildas-exe-$pkgver"
