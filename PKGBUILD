@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bzip2')
 makedepends=('cargo')
 options=('!lto') ## interferes with compiling
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ef81e5aa8365f46d1e9204e0fc45d8efcc8204620caaf491dfd189e1f2fb83b1')
+sha256sums=('2ec5e9600463dd925e0b19c5efcdad604885dcc186c5d913317060e4685f92a1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -22,17 +22,13 @@ prepare() {
 build() {
 	export RUST_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-
 	cd "$pkgname-$pkgver"
 	cargo build --release --frozen --all-features
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D target/release/dprint -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	find docs \
-		-type f \
-		-exec install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" '{}' \+
+	install -Dv target/release/dprint -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md docs/*.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
