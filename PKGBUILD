@@ -8,7 +8,7 @@
 pkgname=ddclient-git
 _gitname="${pkgname%-git}"
 pkgver=v3.10.0.r48.g841ffcb
-pkgrel=1
+pkgrel=2
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 url="https://github.com/ddclient/ddclient"
 arch=('any')
@@ -47,6 +47,7 @@ check() {
 package() {
   # hack so that we can merge in changes from upstream without changing all the
   # $pkgname to $_gitname
+  (
   pkgname="$_gitname"
 
   cd ${pkgname}
@@ -59,4 +60,6 @@ package() {
   install -Dm644 README.md "$pkgdir"/usr/share/doc/ddclient/README.md
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
+
+  )
 }
