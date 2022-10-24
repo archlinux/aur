@@ -3,13 +3,14 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=easyabc
-pkgver=182
+pkgver=305
 pkgrel=1
 pkgdesc="A graphical music notation editor for the ABC music notation language"
 arch=('any')
 url="https://github.com/jwdj/EasyABC"
 license=('GPL')
-depends=('python-wxpython' 'python-pyparsing' 'python-pygame' 'abcmidi' 'abcm2ps' 'ghostscript')
+#depends=('python-wxpython' 'python-pyparsing' 'python-pygame' 'abcmidi' 'abcm2ps' 'ghostscript')
+depends=('python39' 'abcmidi' 'abcm2ps' 'ghostscript')
 makedepends=('gendesk' 'git')
 provides=($pkgname)
 conflicts=($pkgname)
@@ -35,10 +36,19 @@ package(){
 
   install -dm755 "$pkgdir"/opt/easyabc
   cp -dpr --no-preserve=ownership "${pkgname}" $pkgdir/opt/
-  echo -e '#!/bin/bash\npython /opt/easyabc/easy_abc.py "$@"' > $pkgdir/usr/bin/easyabc
+  echo -e '#!/bin/bash\n/opt/easyabc/bin/python /opt/easyabc/easy_abc.py "$@"' > $pkgdir/usr/bin/easyabc
   chmod +x $pkgdir/usr/bin/easyabc
   install -Dm644 "${pkgname}/img/logo64.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+
+  cd "$pkgdir"/opt
+  python3.9 -m venv easyabc
+  source easyabc/bin/activate
+  pip install --upgrade pip
+  pip install wxpython==4.1.1 --use-pep517
+  pip install pyparsing
+  pip install pygame
 
   ln -s /usr/bin/abc2abc $pkgdir/opt/easyabc/bin/
   ln -s /usr/bin/abc2midi $pkgdir/opt/easyabc/bin/
