@@ -1,6 +1,6 @@
 pkgbase = dsnet
 	pkgdesc = Simple command to manage a centralised wireguard VPN.
-	pkgver = 0.6
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/naggie/dsnet
 	arch = any
@@ -10,10 +10,9 @@ pkgbase = dsnet
 	depends = glibc
 	provides = dsnet
 	conflicts = dsnet
-	source = dsnet-0.6.tar.gz::https://github.com/naggie/dsnet/archive/v0.6.tar.gz
+	source = dsnet-0.7.3.tar.gz::https://github.com/naggie/dsnet/archive/v0.7.3.tar.gz
 	source = systemd.patch
-	sha256sums = b4206774b08aa0878ecbfc53c8d72f2b6ff52551ac1315566acf7383476571f3
+	sha256sums = 4464fd197f6501e22f2fac8d2cded221ba91481a99f97edd48f5467785bdac6d
 	sha256sums = c6df08c39903daf29dc03cda1b0723690ec40c85b75b8f5f9a736ba1189002cd
 
 pkgname = dsnet
-

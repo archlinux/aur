@@ -1,9 +1,9 @@
-# Maintainer: Fabian Köhler <fabian.koehler@protonmail.ch>
+# Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Fabian Köhler <fabian.koehler@protonmail.ch>
 
 pkgname=dsnet
 _pkgname=${pkgname}
-pkgver=0.6
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Simple command to manage a centralised wireguard VPN."
 arch=(any)
@@ -13,9 +13,11 @@ makedepends=("go" "git")
 depends=("glibc")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "systemd.patch")
-sha256sums=('b4206774b08aa0878ecbfc53c8d72f2b6ff52551ac1315566acf7383476571f3'
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "systemd.patch")
+sha256sums=('4464fd197f6501e22f2fac8d2cded221ba91481a99f97edd48f5467785bdac6d'
             'c6df08c39903daf29dc03cda1b0723690ec40c85b75b8f5f9a736ba1189002cd')
+
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,7 +32,7 @@ build() {
         -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
         -buildmode=pie \
         -o dsnet \
-        ./cmd/dsnet.go
+        ./cmd
 }
 
 package() {
