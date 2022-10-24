@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=bzip3
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='A better and stronger spiritual successor to BZip2'
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(clang)
 provides=(libbzip3.so)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/$pkgver/$_archive.tar.xz")
-sha256sums=('341a81e98600dba4689dcad2dc19dbad598c2bcb6903f3485a4a0e780d864ecb')
+sha256sums=('496e0192459f53e397472e5f7281091889e1059d7183b778e01b09d3aaa1d249')
 
 build() {
 	cd "$_archive"
