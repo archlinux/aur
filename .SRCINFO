@@ -1,18 +1,18 @@
 pkgbase = singlebox-appimage
 	pkgdesc = All-in-One Messenger
-	pkgver = 22.14.0
+	pkgver = 26.2.2
 	pkgrel = 1
 	url = https://webcatalog.io/singlebox/
 	arch = x86_64
 	license = MIT
-	provides = singlebox=22.14.0
+	provides = singlebox=26.2.2
 	conflicts = singlebox
 	conflicts = singlebox-bin
 	options = !strip
-	source = https://cdn-2.webcatalog.io/singlebox/Singlebox-22.14.0.AppImage
+	source = https://cdn-2.webcatalog.io/singlebox/Singlebox-26.2.2.AppImage
 	source = singlebox.desktop.patch
 	source = singlebox.sh
-	sha256sums = 2d852154f262679a181e20539a0b9bd32cc866520b9791392e9a898f33f27675
+	sha256sums = 2865aab17989b81fd5ae96a805fc1490e61827c509b5a37a059fcb5b09fbdd12
 	sha256sums = 7cd20bcac165714b8128aefc57df29faae58ab1f829e4f4acdbdb3c8100ac7bd
 	sha256sums = a48c0cd52b212fbecca39a6066a2a8d0ddd21abea0d769c727d727f775ed3b9b
 
