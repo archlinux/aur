@@ -8,7 +8,6 @@ pkgdesc='PythonQt fork with additional features for plugin support in KNOSSOS'
 license=(LGPL)
 url='https://github.com/knossos-project/PythonQt'
 makedepends=(cmake
-  gcc
   git
   mesa # GL/gl.h
   ninja

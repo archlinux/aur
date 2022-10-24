@@ -7,7 +7,6 @@ pkgbase = pythonqt-knossos-git
 	license = LGPL
 	checkdepends = xorg-server-xvfb
 	makedepends = cmake
-	makedepends = gcc
 	makedepends = git
 	makedepends = mesa
 	makedepends = ninja
