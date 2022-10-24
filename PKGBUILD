@@ -8,8 +8,8 @@
 #######################
 
 pkgname=rstudio-desktop-daily-bin
-pkgver=2022.06.0.daily.209
-pkgver_url=2022.06.0-daily-209
+pkgver=2022.12.0.daily.284
+pkgver_url=2022.12.0-daily-284
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -24,8 +24,9 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('0610c86af0f709efdb567cea107e08586e2e9a218b446a6b94a66a779a462ac4')
-source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
+sha256sums_x86_64=('2e944ac549506e79c8375588eebb18c36587a51fa461bd018e60f3dfb98ddc24')
+#source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
+source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/electron/bionic/amd64/rstudio-2022.12.0-daily-284-amd64.deb")
 
 package() {
 
@@ -39,7 +40,7 @@ package() {
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
-  cd "$pkgdir/usr/lib/rstudio/bin/quarto/bin/"
+  cd "$pkgdir/usr/lib/rstudio/resources/app/bin/quarto/bin/"
   ln -sf /usr/bin/pandoc ./pandoc
   #ln -sf /usr/bin/pandoc-citeproc ./
 
