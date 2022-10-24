@@ -1,5 +1,5 @@
 diff --git a/zimfw.zsh b/zimfw.zsh
-index fe05e46..8251aff 100644
+index fda3f1a..0d4b6ca 100644
 --- a/zimfw.zsh
 +++ b/zimfw.zsh
 @@ -52,10 +52,6 @@ _zimfw_mv() {
@@ -7,15 +7,15 @@ index fe05e46..8251aff 100644
  _zimfw_build_init() {
    local -r ztarget=${ZIM_HOME}/init.zsh
 -  # Force update of init.zsh if it's older than .zimrc
--  if [[ ${ztarget} -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+-  if [[ ${ztarget} -ot ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
 -    command mv -f ${ztarget}{,.old} || return 1
 -  fi
    _zimfw_mv =(
      print -R "zimfw() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
      print -R "zmodule() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
-@@ -65,18 +61,16 @@ _zimfw_build_init() {
-     if (( ${#_zfunctions} )) print -R 'autoload -Uz -- '${_zfunctions#${~zpre}}
-     print -R ${(F)_zcmds#${~zpre}}
+@@ -94,18 +90,16 @@ _zimfw_build_init() {
+       fi
+     done
    ) ${ztarget}
 +  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
@@ -23,7 +23,7 @@ index fe05e46..8251aff 100644
  _zimfw_build_login_init() {
    local -r ztarget=${ZIM_HOME}/login_init.zsh
 -  # Force update of login_init.zsh if it's older than .zimrc
--  if [[ ${ztarget} -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+-  if [[ ${ztarget} -ot ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
 -    command mv -f ${ztarget}{,.old} || return 1
 -  fi
    _zimfw_mv =(
