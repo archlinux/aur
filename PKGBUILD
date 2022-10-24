@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-geoclue2-agent
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc='Pantheon Geoclue2 Agent'
 arch=(x86_64)
 url=https://github.com/elementary/pantheon-agent-geoclue2
@@ -15,6 +15,7 @@ depends=(
   libgio-2.0.so
   libglib-2.0.so
   libgobject-2.0.so
+  libgranite.so
   libgtk-3.so
 )
 makedepends=(
@@ -23,7 +24,7 @@ makedepends=(
   meson
   vala
 )
-_tag=930584360b7ef914b295fe5c5e4f2ac470ba6e68
+_tag=996250b8bb0743a339019dd474f2ef6aeedd724f
 source=(pantheon-geoclue2-agent::git+https://github.com/elementary/pantheon-agent-geoclue2.git#tag=${_tag})
 sha256sums=(SKIP)
 
