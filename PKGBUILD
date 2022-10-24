@@ -242,7 +242,7 @@ check() {
 package_ceph-libs() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt' 'cryptsetup'
-           'lua' 'librdkafka'
+           'lua' 'librdkafka' 'libaio' 'gperftools'
            'python-prettytable' 'python-yaml' 'python-setuptools')
   provides=("ceph-libs=${pkgver}-${pkgrel}")
   conflicts=('ceph-libs-bin')
@@ -266,12 +266,11 @@ package_ceph-libs() {
 
 package_ceph() {
   depends=("ceph-libs=${pkgver}-${pkgrel}"
-           'boost-libs' 'curl' 'fuse2' 'fuse3' 'fmt' 'glibc' 'gperftools' 'java-runtime'
-           'keyutils' 'leveldb' 'libaio' 'libutil-linux' 'librdkafka' 'cryptsetup' 'libnl'
+           'boost-libs' 'curl' 'fuse3' 'fmt' 'glibc' 'gperftools' 'java-runtime'
+           'keyutils' 'libaio' 'libutil-linux' 'librdkafka' 'cryptsetup' 'libnl'
            'ncurses'
            'nss' 'oath-toolkit' 'python'
-           'snappy' 'sudo' 'systemd-libs' 'lua' 'gawk'
-           'xfsprogs')
+           'snappy' 'sudo' 'systemd-libs' 'lua' 'gawk')
   provides=("ceph=${pkgver}-${pkgrel}")
   conflicts=('ceph-bin')
 
@@ -333,7 +332,7 @@ package_ceph() {
 
 package_ceph-mgr() {
   depends=("ceph=${pkgver}-${pkgrel}" "ceph-libs=${pkgver}-${pkgrel}"
-           'bash' 'boost-libs' 'coffeescript' 'curl' 'gperftools' 'nodejs' 'nss' 'fmt'
+           'bash' 'boost-libs' 'curl' 'gperftools' 'nss' 'fmt'
            'python' 'python-cherrypy' 'python-pecan' 'python-pyjwt' 'python-more-itertools'
            'python-numpy' 'python-scipy' 'python-six' 'python-coverage' 'python-pytest' 'python-dateutil'
            'python-prettytable' 'python-requests' 'python-pyopenssl' 'python-bcrypt' 'python-yaml'

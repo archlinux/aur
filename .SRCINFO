@@ -182,14 +182,12 @@ pkgname = ceph
 	depends = ceph-libs=17.2.4-1
 	depends = boost-libs
 	depends = curl
-	depends = fuse2
 	depends = fuse3
 	depends = fmt
 	depends = glibc
 	depends = gperftools
 	depends = java-runtime
 	depends = keyutils
-	depends = leveldb
 	depends = libaio
 	depends = libutil-linux
 	depends = librdkafka
@@ -204,7 +202,6 @@ pkgname = ceph
 	depends = systemd-libs
 	depends = lua
 	depends = gawk
-	depends = xfsprogs
 	provides = ceph=17.2.4-1
 	conflicts = ceph-bin
 
@@ -225,6 +222,8 @@ pkgname = ceph-libs
 	depends = cryptsetup
 	depends = lua
 	depends = librdkafka
+	depends = libaio
+	depends = gperftools
 	depends = python-prettytable
 	depends = python-yaml
 	depends = python-setuptools
@@ -236,10 +235,8 @@ pkgname = ceph-mgr
 	depends = ceph-libs=17.2.4-1
 	depends = bash
 	depends = boost-libs
-	depends = coffeescript
 	depends = curl
 	depends = gperftools
-	depends = nodejs
 	depends = nss
 	depends = fmt
 	depends = python
