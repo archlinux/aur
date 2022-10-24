@@ -2,7 +2,7 @@
 
 java_=17
 pkgname="jdk${java_}-graalvm-ee-bin"
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
@@ -20,8 +20,8 @@ source=('graalvm-ee-rebuild-libpolyglot.hook')
 sha256sums=('SKIP')
 source_x86_64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-amd64-${pkgver}.tar.gz")
 source_aarch64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-aarch64-${pkgver}.tar.gz")
-sha256sums_x86_64=('b5112f4f96561225ccb7ecb43be3c495c222130da390ed79fce31699f0936082')
-sha256sums_aarch64=('2ef5695e11e637a97eeb641ea8881f13e90c949d7569e162d586b69f2b27618a')
+sha256sums_x86_64=('db307667720c5744ac4d2fe668b247da205d7d2d8c341f40e5e4864f7a6dec83')
+sha256sums_aarch64=('57207d6372aacfeedd0aa4bdd7eeb7f36fa0abc7e144c44c8746e8e5aef859af')
 
 package() {
     cd "graalvm-ee-java${java_}-${pkgver}"
