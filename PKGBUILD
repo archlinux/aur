@@ -2,7 +2,7 @@
 
 pkgname=altlinux
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for AltServer-Linux"
 arch=('x86_64')
 url="https://github.com/maxasix/AltLinux"
@@ -47,7 +47,5 @@ package() {
     cp -R resources dist/altlinux
     cp -R dist/altlinux "${pkgdir}"/usr/lib/
     chmod -R 0775 "${pkgdir}"/usr/lib/altlinux
-
-    mkdir -p "${pkgdir}"/usr/bin
-    ln -s "${pkgdir}"/usr/lib/altlinux/altlinux "${pkgdir}"/usr/bin/altlinux
+    chown -R $USER "${pkgdir}"/usr/lib/altlinux	
 }
