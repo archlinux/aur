@@ -29,16 +29,24 @@ pkgname = looking-glass-rc
 	depends = libxcursor
 	depends = libxpresent
 	depends = libxkbcommon
+	provides = looking-glass
+	conflicts = looking-glass
 
 pkgname = looking-glass-rc-module-dkms
 	pkgdesc = A kernel module that implements a basic interface to the IVSHMEM device for when using LookingGlass in VM->VM mode
 	depends = dkms
+	provides = looking-glass-module-dkms
+	conflicts = looking-glass-module-dkms
 
 pkgname = looking-glass-rc-host
 	pkgdesc = Linux host application for pushing frame data to the LookingGlass IVSHMEM device
 	depends = libxcb
 	depends = zlib
+	provides = looking-glass-host
+	conflicts = looking-glass-host
 
 pkgname = obs-plugin-looking-glass-rc
 	pkgdesc = Plugin for OBS Studio to stream directly from Looking Glass without having to record the Looking Glass client
 	depends = obs-studio
+	provides = obs-plugin-looking-glass
+	conflicts = obs-plugin-looking-glass
