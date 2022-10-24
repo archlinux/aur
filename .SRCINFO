@@ -1,6 +1,6 @@
 pkgbase = wayprompt-git
 	pkgdesc = Multi-purpose prompt tool for Wayland (pinentry, himitsu)
-	pkgver = 0+33+916a8df
+	pkgver = 0+37+ff0004a
 	pkgrel = 1
 	url = https://git.sr.ht/~leon_plickat/wayprompt
 	arch = x86_64

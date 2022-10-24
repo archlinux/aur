@@ -34,7 +34,7 @@ prepare() {
   git config submodule."deps/zig-pixman".url "${srcdir}/zig-pixman"
   git config submodule."deps/zig-xkbcommon".url "${srcdir}/zig-xkbcommon"
   git config submodule."deps/zig-fcft".url "${srcdir}/zig-fcft"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
