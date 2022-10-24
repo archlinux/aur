@@ -1,0 +1,14 @@
+diff '--color=auto' -rupN django-q.orig/pyproject.toml django-q/pyproject.toml
+--- django-q.orig/pyproject.toml	2022-10-24 10:50:42.274924167 +0200
++++ django-q/pyproject.toml	2022-10-24 10:51:01.686713418 +0200
+@@ -76,4 +76,8 @@ sentry = ["django-q-sentry"]
+ 
+ [tool.isort]
+ profile = "black"
+-multi_line_output = 3
+\ No newline at end of file
++multi_line_output = 3
++
++[build-system]
++requires = ["poetry-core"]
++build-backend = "poetry.core.masonry.api"
