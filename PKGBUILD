@@ -4,7 +4,7 @@ pkgbase=gplugin
 _pkgname=gplugin
 pkgname=(gplugin gplugin-docs)
 pkgver=0.38.1
-pkgrel=2
+pkgrel=3
 arch=('i868' 'x86_64')
 license=("LGPL2")
 url="https://keep.imfreedom.org/gplugin/gplugin"
@@ -31,7 +31,7 @@ _pick() {
   for f; do
     d="$srcdir/$p/${f#$pkgdir/}"
     mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
+    mv -v "$f" "$d"
     rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
 }
