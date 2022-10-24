@@ -6,8 +6,8 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 
 pkgname=tengine
-pkgver=2.3.3
-pkgrel=2
+pkgver=2.3.4
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -28,7 +28,7 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
         service
         logrotate
        )
-sha256sums=('097684d83356fcdda8a6e949bca621126db751b37f6b23591cb3894a1f8a0108'
+sha256sums=('9a8d1e83ec7664f799255b0dec5baebde2d12b6578b29cfadf92316b3d3e221c'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
@@ -80,6 +80,7 @@ build() {
         --with-stream \
         --with-stream_geoip_module \
         --with-stream_realip_module \
+        --with-stream_sni \
         --with-stream_ssl_module \
         --with-stream_ssl_preread_module \
         --with-threads

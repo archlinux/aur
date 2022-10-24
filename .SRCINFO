@@ -1,7 +1,7 @@
 pkgbase = tengine
 	pkgdesc = A web server based on Nginx and has many advanced features, originated by Taobao.
-	pkgver = 2.3.3
-	pkgrel = 2
+	pkgver = 2.3.4
+	pkgrel = 1
 	url = http://tengine.taobao.org
 	install = tengine.install
 	arch = x86_64
@@ -21,12 +21,11 @@ pkgbase = tengine
 	backup = etc/tengine/uwsgi_params
 	backup = etc/tengine/win-utf
 	backup = etc/logrotate.d/tengine
-	source = tengine-2.3.3.tar.gz::https://github.com/alibaba/tengine/archive/2.3.3.tar.gz
+	source = tengine-2.3.4.tar.gz::https://github.com/alibaba/tengine/archive/2.3.4.tar.gz
 	source = service
 	source = logrotate
-	sha256sums = 097684d83356fcdda8a6e949bca621126db751b37f6b23591cb3894a1f8a0108
+	sha256sums = 9a8d1e83ec7664f799255b0dec5baebde2d12b6578b29cfadf92316b3d3e221c
 	sha256sums = c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb
 	sha256sums = 7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97
 
 pkgname = tengine
-
