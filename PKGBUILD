@@ -6,7 +6,7 @@
 
 pkgname=ddclient-git
 _gitname="${pkgname%-git}"
-pkgver=v3.8.3.r582.g8253c67
+pkgver=v3.10.0.r0.g3e2cb0a
 pkgrel=1
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
@@ -51,6 +51,7 @@ check() {
 package() {
   # hack so that we can merge in changes from upstream without changing all the
   # $pkgname to $_gitname
+  (
   pkgname="$_gitname"
 
   cd ddclient
@@ -64,4 +65,6 @@ package() {
   install -Dm644 sample-etc_cron.d_ddclient "$pkgdir"/usr/share/doc/ddclient/sample-etc_cron.d_ddclient
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
+
+  )
 }
