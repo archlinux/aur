@@ -2,7 +2,7 @@
 
 _pkgname=reboot-arch-btw
 pkgname=${_pkgname}-git
-pkgver=0.4.0.r29.g17db382
+pkgver=0.4.0.r35.ga054b0b
 pkgrel=1
 pkgdesc='Check if you need to reboot due to an updated kernel'
 arch=('i686' 'x86_64')
