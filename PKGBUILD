@@ -9,7 +9,7 @@ url="https://github.com/Spyhoodle/pridefetch"
 source=(pridefetch)
 depends=('python3' 'python-distro')
 conflicts=('pridefetch-git')
-sha512sums=('4195b2b4403686f2b7c4c8a34fe01d117a1d6898cf556c1007926ec6384dded4b7ba06ca4867db38d6650286c67edf71a3c8d6d2533954062868b15161152921')
+sha512sums=('84ecbb5faab2633ee2e598971121b91441da262691a454fa00b29a249c1b1219a6a1aa12d4a0feafe30d8423c008209c2483654ad71e368722822e7c420d4dd5')
 
 package() {
 	install -Dm755 pridefetch "$pkgdir"/usr/bin/pridefetch
