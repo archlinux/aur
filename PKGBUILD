@@ -2,7 +2,7 @@
 
 pkgname=pato
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
 url="https://github.com/amatria/pato"
@@ -26,11 +26,11 @@ _wflags="-Wno-deprecated-declarations -Wno-unknown-pragmas"
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  sed -i 's/-march=native//g' Makefile.gnu
-  sed -i 's/-march=native//g' Makefile.clang
-  sed -i 's/-xHost//g' Makefile.intel
+  sed -i 's/-march=native//g' makefiles/Makefile.gnu
+  sed -i 's/-march=native//g' makefiles/Makefile.clang
+  sed -i 's/-xHost//g' makefiles/Makefile.intel
   sed -i "s/\"v${pkgver}\"/\"v${pkgver}-arch\"/g" src/command_line_parser.hpp
-  sed -i "s/CXXFLAGS+=/CXXFLAGS+=${_wflags} /g" Makefile.gnu
+  sed -i "s/CXXFLAGS+=/CXXFLAGS+=${_wflags} /g" makefiles/Makefile.gnu
 }
 
 build() {
