@@ -6,6 +6,7 @@ pkgbase = intel-ipu6-camera-hal-git
 	arch = x86_64
 	license = unknown
 	makedepends = git
+	makedepends = cmake
 	depends = intel-ipu6-dkms-git
 	depends = intel-ipu6-camera-bin
 	provides = ipu6-camera-hal
