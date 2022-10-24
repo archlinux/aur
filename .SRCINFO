@@ -1,6 +1,6 @@
 pkgbase = python-scipy-git
 	pkgdesc = SciPy is open-source software for mathematics, science and engineering. Git version
-	pkgver = v0.17pre.r13106.gef53758eff
+	pkgver = v0.17pre.r14548.gf71fe40cdc
 	pkgrel = 1
 	url = https://www.scipy.org/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = python-scipy-git
 	makedepends = python-setuptools
 	makedepends = pybind11
 	makedepends = python-pythran
+	makedepends = cython
 	depends = python-numpy
 	optdepends = python-pillow: Image saving module
 	provides = python-scipy
