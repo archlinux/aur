@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpf'
-pkgver='0.48'
+pkgver='0.49'
 pkgrel='1'
 pkgdesc="Math::GMPf - perl interface to the GMP library's floating point (mpf) functions."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPf'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPf-$pkgver.tar.gz")
-b2sums=('2442bbd1d4499a6021ee7354424c71edee99c8b5c7e2eb8603ff7bb0af1ca68595a90b2b767c6efdc228a06470ef6f05067068e7f3d49c04e98bbd0d34b446d0')
+b2sums=('796667fdfeb395c217400007a993d5bb19037e4390f8dc6a3c0a0ef1f97c230e2d97533dc2d4756de92d74696d036f918d7310c17fb71cd23237495beec7fc06')
 _distdir="Math-GMPf-$pkgver"
 
 build() {
