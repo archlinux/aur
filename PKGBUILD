@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -18,9 +18,9 @@ makedepends=(
   'boost' 'libevent' 'libdwarf'
 )
 source=("$pkgname-$pkgver.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.bz2")
-cksums=('3387403462')
-sha256sums=('d6968197c6f7b30a946cf77bc94922de78c12e763da42b08c71fdfe87908dc5d')
-b2sums=('8642a9b204b96f8c05933ded570ec7cbcfeb9f01adb97031251faa22cfe76bc1fe09cac4f1ec5496623dcdebeda2f23a79c7e946ca4371c0f58fe0a427d0a2e1')
+cksums=('1163381221')
+sha256sums=('b411c9c26df4455762c04ecd72ae18fe5a6524572252d8d1e89a9ec9347ed149')
+b2sums=('dbc6d9ff6f6bf4db337633e27d9802ce57742df2e2c3497e1d92f3d20101044741e5797f1264f5dfc5228cc3c430076f9e0e02b0632d39467f22e0a2a3a8e640')
 
 prepare() {
   cd "$pkgname-$pkgver"
