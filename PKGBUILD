@@ -2,7 +2,7 @@
 # Co-maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 
 pkgname=piwigo
-pkgver=12.3.0
+pkgver=13.1.0
 pkgrel=1
 pkgdesc='Photo gallery software for the web'
 arch=(any)
@@ -27,9 +27,9 @@ source=("${pkgname}-${pkgver}.zip::https://piwigo.org/download/dlcounter.php?cod
         'nginx.conf'
         'php-fpm.conf'
         'php-fpm.service.conf')
-md5sums=('7c3b18ad58920dc84e5b5079248dabb9'  # Provided by upstream
+md5sums=('9f0ce3027ff5488b2ab555c9ae47f418'  # Provided by upstream
          SKIP SKIP SKIP SKIP SKIP)
-sha256sums=('fd09f2fb43273a65c324dd301c2e5821d7ab7256bde41723b8e698a42bcd8f90'
+sha256sums=('8964252a084669bd9e38eb0dcb356d6112e10b40a2717097adc664741f8cbc61'
             '64435b2f5fe29ab6201e00a755bff5dbe77bc4450559a2668a21e750ce13f8be'
             '0e6d4af6552f4eead62825999eee115152cf5f884f2c65b759379ac5b15d36f7'
             'f173b613e0b5bb1e3390066ddd362afc7904848f5959b65a03919ae8e7674f91'
