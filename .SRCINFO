@@ -1,7 +1,7 @@
 pkgbase = jdk18-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk18
-	pkgver = 18.0.1.1
-	pkgrel = 2
+	pkgver = 18.0.2.1
+	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/
 	arch = x86_64
 	license = GPL
@@ -14,8 +14,8 @@ pkgbase = jdk18-openj9-bin
 	provides = java-environment=18
 	provides = java-runtime=18
 	provides = java-runtime-headless=18
-	noextract = ibm-semeru-open-jdk_x64_linux_18.0.1.1_2_openj9-0.32.0.tar.gz
-	source = https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.1.1+2_openj9-0.32.0/ibm-semeru-open-jdk_x64_linux_18.0.1.1_2_openj9-0.32.0.tar.gz
-	sha256sums = 708d7d7b5ac3c793f7fa9b045024276b54f973dcb833cccc0be697261884db4a
+	noextract = ibm-semeru-open-jdk_x64_linux_18.0.2_9_openj9-0.33.1.tar.gz
+	source = https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2+9_openj9-0.33.1/ibm-semeru-open-jdk_x64_linux_18.0.2_9_openj9-0.33.1.tar.gz
+	sha256sums = b694d47666035b1f7870bc3749aa7c1903d50976eab3772fd81c32dab2aa8e64
 
 pkgname = jdk18-openj9-bin
