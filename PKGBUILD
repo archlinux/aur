@@ -1,8 +1,8 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=freecad-assembly3-appimage
-pkgver=2022.07.09
-pkgrel=2
+pkgver=2022.10.21
+pkgrel=1
 pkgdesc="Assembly3 workbench for FreeCAD."
 arch=('x86_64')
 url="https://github.com/realthunder/FreeCAD"
@@ -18,14 +18,14 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 source=(
-  "${_filename}::https://github.com/realthunder/FreeCAD/releases/download/2022.07.09-edge/FreeCAD-asm3-Stable-Conda-Py3-Qt5-20220709-glibc2.12-x86_64.AppImage"
-  "https://raw.githubusercontent.com/realthunder/FreeCAD/2022.07.09-edge/LICENSE"
+  "${_filename}::https://github.com/realthunder/FreeCAD/releases/download/2022.10.21-2-edge/FreeCAD-asm3-Daily-Conda-Py3-Qt5-20221021-glibc2.12-x86_64.AppImage"
+  "https://raw.githubusercontent.com/realthunder/FreeCAD/2022.10.21-2-edge/LICENSE"
   "freecad_link.desktop.patch"
 )
 sha512sums=(
-  "fb520455b38cdafd9bae581085cc2dbdb10cd3370f44fdde82bfb77c5851aaa4e0b8fcf4afe922730effc1b62a485ed2782d468627f900d58a6e2cc25e7fac38"
+  "c8bb6ffb0cf0e9147bed5d1ed53ae23339991e31db909a30513f5f6f7245e0af5018110356fdf03033d86f9d6f30bbe39025b6fac4fec92746b21861de8f489a"
   "4d1b0998dc55adcfb2ac2f33382bce6467078aaa33dbd3bedf5c2102da853d4186836ad4103ea6100f34068751a5a9d627c022bf2f01deb712e88c6c58e0e292"
-  "896da9505f97304cdb90a1ce0cdf31770ea5a1264963d72727cd63c68e9927ae4f547ed73cf9eebab1a8427537861f3f43e6d029c3e1460b01c190db02976cac"
+  "6a47efb5fb429829b31a322620b90fbd36b9def22479aa7fefbce20a51373720140c28b6aadae4c630bcf1629d6ca9099fceb2444e88954d0e5b53a9f612e233"
 )
 
 prepare() {

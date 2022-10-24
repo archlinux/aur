@@ -4,7 +4,7 @@
  [Desktop Entry]
  Version=1.0
 -Name=FreeCAD Link Branch
--Exec=AppRun %F
+-Exec=AppRun
 -Icon=freecad_link
 +Name=FreeCAD Assembly3
 +Exec=/usr/bin/freecad-asm3 %F
