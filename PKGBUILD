@@ -1,6 +1,6 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=ryujinx-ava
-pkgver=1.1.194
+pkgver=1.1.326
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C# with new AvaloniaUI"
 arch=(x86_64)

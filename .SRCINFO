@@ -1,6 +1,6 @@
 pkgbase = ryujinx-ava
 	pkgdesc = Experimental Nintendo Switch Emulator written in C# with new AvaloniaUI
-	pkgver = 1.1.194
+	pkgver = 1.1.326
 	pkgrel = 1
 	url = https://github.com/Ryujinx/Ryujinx
 	install = ryujinx.install
