@@ -1,0 +1,14 @@
+pkgbase = systemd-hosts.d
+	pkgdesc = Keep your hosts records in logically separated files
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/one-d-wide/systemd-hosts.d
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = filesystem
+	depends = systemd
+	source = git+https://github.com/one-d-wide/systemd-hosts.d.git
+	sha256sums = SKIP
+
+pkgname = systemd-hosts.d
