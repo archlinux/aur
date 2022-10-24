@@ -1,26 +1,23 @@
 pkgbase = ruffle-git
 	pkgdesc = A Flash Player emulator written in Rust
-	pkgver = 0.1.0.3210.g7ac53be2
+	pkgver = 0.1.0.r7525.g84533e278
 	pkgrel = 1
-	url = https://github.com/ruffle-rs/ruffle
+	url = https://ruffle.rs/
 	arch = x86_64
-	arch = i686
 	license = Apache
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
 	makedepends = git
-	makedepends = libx11
+	makedepends = cargo
 	makedepends = python
-	depends = openssl
-	depends = libxcb
-	depends = zlib
+	makedepends = jdk-openjdk
+	makedepends = at-spi2-core
 	depends = alsa-lib
-	depends = xz
+	depends = libxcb
+	depends = gtk3
 	provides = ruffle
 	conflicts = ruffle
-	source = ruffle::git+https://github.com/ruffle-rs/ruffle.git
+	options = !lto
+	source = git+https://github.com/ruffle-rs/ruffle.git
 	sha256sums = SKIP
 
 pkgname = ruffle-git
-
