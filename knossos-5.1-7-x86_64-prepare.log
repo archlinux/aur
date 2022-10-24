@@ -1,0 +1,86 @@
+patching file hash_list.h
+'../FindQuaZip.cmake' -> 'CMake/Modules/FindQuaZip.cmake'
+patching file CMakeLists.txt
+Hunk #1 succeeded at 129 (offset -1 lines).
+patching file resources/cheatsheet/mergemode.html.in
+patching file resources/cheatsheet/mergetracingmode.html.in
+patching file resources/cheatsheet/paintmode.html.in
+patching file resources/cheatsheet/reviewmode.html.in
+Hunk #2 succeeded at 7 with fuzz 1.
+patching file resources/cheatsheet/tracingadvancedmode.html.in
+patching file resources/cheatsheet/tracingmode.html.in
+/startdir/PKGBUILD: line 52: warning: command substitution: ignored null byte in input
+using Qt5Python310
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- RELEASE
+-- Found Boost: /usr/lib64/cmake/Boost-1.80.0/BoostConfig.cmake (found suitable version "1.80.0", minimum required is "1.50")  
+CMake Warning (dev) at /usr/share/cmake/Modules/FindOpenGL.cmake:315 (message):
+  Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
+  available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  FindOpenGL found both a legacy GL library:
+
+    OPENGL_gl_LIBRARY: /usr/lib/libGL.so
+
+  and GLVND libraries for OpenGL and GLX:
+
+    OPENGL_opengl_LIBRARY: /usr/lib/libOpenGL.so
+    OPENGL_glx_LIBRARY: /usr/lib/libGLX.so
+
+  OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
+  compatibility with CMake 3.10 and below the legacy GL library will be used.
+Call Stack (most recent call first):
+  CMakeLists.txt:87 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found OpenGL: /usr/lib/libOpenGL.so   
+-- Found Python: /usr/lib/libpython3.10.so (found suitable version "3.10.8", minimum required is "3.10.8") found components: Development.Embed 
+CMake Warning (dev) at /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (SNAPPY)
+  does not match the name of the calling package (Snappy).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  CMake/Modules/FindSnappy.cmake:29 (find_package_handle_standard_args)
+  CMakeLists.txt:89 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found SNAPPY: /usr/lib/libsnappy.so  
+-- Found ZLIB: /usr/lib/libz.so (found version "1.2.13") 
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- using gold linker
+-- Configuring done
+CMake Warning (dev) in CMakeLists.txt:
+  Policy CMP0071 is not set: Let AUTOMOC and AUTOUIC process GENERATED files.
+  Run "cmake --help-policy CMP0071" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  For compatibility, CMake is excluding the GENERATED source file(s):
+
+    "/build/knossos/src/build-x86_64-pc-linux-gnu-knossos/buildinfo.h"
+
+  from processing by AUTOMOC and AUTOUIC.  If any of the files should be
+  processed, set CMP0071 to NEW.  If any of the files should not be
+  processed, explicitly exclude them by setting the source file property
+  SKIP_AUTOGEN:
+
+    set_property(SOURCE file.h PROPERTY SKIP_AUTOGEN ON)
+
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Generating done
+-- Build files have been written to: /build/knossos/src/build-x86_64-pc-linux-gnu-knossos
