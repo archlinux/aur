@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.12.beta1.r7.g68d1ef7f
+pkgver=0.5.12.beta1.r14.g7d87054b
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -59,10 +59,10 @@ check() {
   meson test -C build --print-errorlogs
 
   # Run test suite
-  # Will produce errors if ~/.local/share/lutris, ~/.config/lutris
-  # and ~/.cache/lutris are not avialable / writable
+  # Isolate ~/.local/share/lutris, ~/.config/lutris and ~/.cache/lutris
 #  cd "$srcdir/${pkgname%-git}"
-#  xvfb-run --auto-servernum make test
+#  export NO_AT_BRIDGE=1
+#  HOME=tmp xvfb-run --auto-servernum make test
 }
 
 package() {
