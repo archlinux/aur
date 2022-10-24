@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-tla">
+        <sub-class-of type="text/plain"/>
+        <comment>TLA+ file</comment>
+        <glob pattern="*.tla"/>
+        <glob pattern="*.TLA"/>
+        <icon name="tla+toolbox"/>
+    </mime-type>
+</mime-info>
+

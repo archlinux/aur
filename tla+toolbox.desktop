@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=TLA+ Toolbox (Nightly)
+Comment=The TLA+ Toolbox is an integrated development environment for the TLA+ tools.
+Exec=bash -c 'env GDK_DPI_SCALE=$(awk -v a="${GDK_SCALE:-1}" -v b="${GDK_DPI_SCALE:-1}" "BEGIN{print (a*b)}") GDK_SCALE="${GDK_SCALE:+1}" /opt/TLA+Toolbox/toolbox "%f"'
+Icon=tla+toolbox
+Categories=Development;
+Terminal=false
+Type=Application
+MimeType=application/x-tla;

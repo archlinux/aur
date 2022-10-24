@@ -1,17 +1,18 @@
-pkgbase = tla-toolbox
-	pkgdesc = IDE for the TLA+ tools
-	pkgver = 1.7.1
+pkgbase = tla-toolbox-nightly
+	pkgdesc = IDE for the TLA+ tools (nightly)
+	pkgver = 1.8.0.r8104.ge880daa
 	pkgrel = 1
-	url = http://research.microsoft.com/en-us/um/people/lamport/tla/toolbox.html
+	url = https://github.com/tlaplus/tlaplus
 	arch = x86_64
 	license = MIT
-	depends = java-runtime
-	source = https://github.com/tlaplus/tlaplus/releases/download/v1.7.1/TLAToolbox-1.7.1-linux.gtk.x86_64.zip
-	source = tla-toolbox.desktop
+	makedepends = wget
+	depends = java-runtime>=8
+	options = !strip
 	source = icon.png
-	sha256sums = 108af33356211ec276864877aed83be953099f08bb09c6aea27778113f80fefa
-	sha256sums = 900b0d2e03a7254faa108653aee50f1107b249c41e40d66655f7fdb12d4a5c82
+	source = tla+toolbox.xml
+	source = tla+toolbox.desktop
 	sha256sums = 51dbb6724fa7ff5167067dce68dd6b577a2401a47a37120a9879f0afd85ff7c9
+	sha256sums = 8380c475aa80f0cdbd4cc851ef09df513e14f74116a1a16183c5b7f122aee2fb
+	sha256sums = d80e7686d162218996221bf5071cac3b1109c36d5655e6dd6bdfa29a405d3590
 
-pkgname = tla-toolbox
-
+pkgname = tla-toolbox-nightly
