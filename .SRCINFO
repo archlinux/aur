@@ -1,19 +1,17 @@
 pkgbase = wireguard-go
-	pkgdesc = Go Implementation of WireGuard (not recommended by upstream, use official kernel module if possible)
-	pkgver = 0.0.20180613
+	pkgdesc = Go userspace implementation of WireGuard
+	pkgver = 0.0.20220316
 	pkgrel = 1
 	url = https://git.zx2c4.com/wireguard-go/
+	arch = i686
+	arch = pentium4
 	arch = x86_64
-	license = GPL2
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
 	makedepends = go
-	depends = glibc
-	optdepends = wireguard-tools: tools to configure WireGuard interfaces
-	options = !strip
-	options = !emptydirs
-	source = https://git.zx2c4.com/wireguard-go/snapshot/wireguard-go-0.0.20180613.tar.xz
-	source = 00-enable-on-linux.diff
-	sha256sums = 3e22e6f2a715f05f9bbc5b1a9c737ab2edc8f26b2af61f9cc31f83391cd663ff
-	sha256sums = e3780098f682e06480baefae4e4a30b0b179f033cb4e1bca4346c61172c457d8
+	source = https://git.zx2c4.com/wireguard-go/snapshot/wireguard-go-0.0.20220316.tar.xz
+	sha1sums = 9dbfef3009dc5da9c9f53a016049261db62c2ab8
 
 pkgname = wireguard-go
-
