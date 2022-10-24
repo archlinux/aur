@@ -6,9 +6,9 @@ pkgver='1.7.4'
 pkgrel='1'
 pkgdesc="An open-source, single-player, role-playing roguelike game set in the world of Eyal."
 arch=('i686' 'x86_64')
-url="http://tome.te4.org/"
+url="https://te4.org/"
 license=('custom' 'GPL3')
-conflicts=('tome4' 'tome4-git')
+conflicts=('tome4')
 provides=('tome4')
 source=(tome4 tome4.desktop)
 source_x86_64=("https://te4.org/dl/t-engine/t-engine4-linux64-${pkgver}.tar.bz2")
@@ -21,33 +21,33 @@ sha256sums_i686=('ee78900675d6119ee5e152a4fb9e3a8d26b966a5e6942996dcd8ceae45b6b1
 package() {
 
 	case "${CARCH}" in
-		"i686")  _pkg='32' _lib='lib' ;;
-		"x86_64") _pkg='64' _lib='lib64' ;;
+		"i686")  _arch='32' _lib='lib' ;;
+		"x86_64") _arch='64' _lib='lib64' ;;
 	esac
 
 	# Extract and install the icon.
-	unzip -oj -qq "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/game/engines/te4-${pkgver}.teae" \
+	unzip -oj -qq "${srcdir}/t-engine4-linux${_arch}-${pkgver}/game/engines/te4-${pkgver}.teae" \
 		"data/gfx/te4-icon.png" -d "${srcdir}"
 	install -Dm644 "${srcdir}/te4-icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-	
+
 	# Install the documents & licenses.
-	install -Dm644 "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/CONTRIBUTING" "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTING"
-	install -Dm644 "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/CREDITS" "${pkgdir}/usr/share/doc/${_pkgname}/CREDITS"
-	install -Dm644 "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
-	install -Dm644 "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/COPYING-MEDIA" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING-MEDIA"
+	install -Dm644 "${srcdir}/t-engine4-linux${_arch}-${pkgver}/CONTRIBUTING" "${pkgdir}/usr/share/doc/${_pkgname}/CONTRIBUTING"
+	install -Dm644 "${srcdir}/t-engine4-linux${_arch}-${pkgver}/CREDITS" "${pkgdir}/usr/share/doc/${_pkgname}/CREDITS"
+	install -Dm644 "${srcdir}/t-engine4-linux${_arch}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+	install -Dm644 "${srcdir}/t-engine4-linux${_arch}-${pkgver}/COPYING-MEDIA" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING-MEDIA"
 
 	# set the correct permissions and move the game data into pkg
-	find "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/" -type d -exec chmod 755 {} +
-	find "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/" -type f -exec chmod 644 {} +
+	find "${srcdir}/t-engine4-linux${_arch}-${pkgver}/" -type d -exec chmod 755 {} +
+	find "${srcdir}/t-engine4-linux${_arch}-${pkgver}/" -type f -exec chmod 644 {} +
 	mkdir -m755 -p "${pkgdir}/opt/${_pkgname}/"
-	mv "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/bootstrap" "${pkgdir}/opt/${_pkgname}/"
-	mv "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/game" "${pkgdir}/opt/${_pkgname}/"
-	mv "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/launcher-${_lib}" "${pkgdir}/opt/${_pkgname}/"
-	mv "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/${_lib}" "${pkgdir}/opt/${_pkgname}/"
+	mv "${srcdir}/t-engine4-linux${_arch}-${pkgver}/bootstrap" "${pkgdir}/opt/${_pkgname}/"
+	mv "${srcdir}/t-engine4-linux${_arch}-${pkgver}/game" "${pkgdir}/opt/${_pkgname}/"
+	mv "${srcdir}/t-engine4-linux${_arch}-${pkgver}/launcher-${_lib}" "${pkgdir}/opt/${_pkgname}/"
+	mv "${srcdir}/t-engine4-linux${_arch}-${pkgver}/${_lib}" "${pkgdir}/opt/${_pkgname}/"
 
 	# Install the executable, and the launcher.
-	install -Dm755 "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/cef3spawn${_pkg}" "${pkgdir}/opt/${_pkgname}/cef3spawn${_pkg}"
-	install -Dm755 "${srcdir}/t-engine4-linux${_pkg}-${pkgver}/t-engine" "${pkgdir}/opt/${_pkgname}/t-engine"
+	install -Dm755 "${srcdir}/t-engine4-linux${_arch}-${pkgver}/cef3spawn${_arch}" "${pkgdir}/opt/${_pkgname}/cef3spawn${_arch}"
+	install -Dm755 "${srcdir}/t-engine4-linux${_arch}-${pkgver}/t-engine" "${pkgdir}/opt/${_pkgname}/t-engine"
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
