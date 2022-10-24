@@ -27,9 +27,10 @@ build() {
 }
 
 package() {
+    whoami
     cd "$pkgname/"
     make config=release
-    sudo cp ./Release/sslide /usr/local/bin
+    install -Dm755 ./Release/sslide "${pkgdir}/usr/local/bin/sslide"
     desktop-file-install --dir=$HOME/.local/share/applications sslide.desktop
 }
 
