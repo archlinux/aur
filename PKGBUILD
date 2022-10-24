@@ -1,6 +1,6 @@
 # Maintainer: Leonard Iklé <leonard.ikle at gmail dot com>
 pkgname=libhydrogen-git
-pkgver=r335.0d42243
+pkgver=r336.6326087
 pkgrel=2
 pkgdesc="A lightweight, secure, easy-to-use crypto library suitable for constrained environments."
 arch=('x86_64')
