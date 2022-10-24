@@ -11,7 +11,7 @@ conflicts=('random')
 depends=('gcc-libs')
 makedepends=('git' 'rustup')
 
-source=("git+$url.git?signed#tag=v$pkgver")
+source=("git+$url.git?#tag=v$pkgver")
 sha256sums=('SKIP')
 
 _echo() {

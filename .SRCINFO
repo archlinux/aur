@@ -10,7 +10,7 @@ pkgbase = random-rs
 	depends = gcc-libs
 	provides = random
 	conflicts = random
-	source = git+https://github.com/one-d-wide/random-rs.git?signed#tag=v0.1.0
+	source = git+https://github.com/one-d-wide/random-rs.git?#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = random-rs
