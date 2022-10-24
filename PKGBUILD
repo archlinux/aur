@@ -1,7 +1,7 @@
 # Maintainer: onedwide <one-d-wide@protonmail.com>
 pkgname=random-rs
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple CLI multitool'
 url='https://github.com/one-d-wide/random-rs'
 arch=('x86_64')
