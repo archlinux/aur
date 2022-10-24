@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=vscodium-insiders
-pkgver=1.73.0.22295
+pkgver=1.73.0.22297
 pkgrel=1
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -49,7 +49,7 @@ source=(
 )
 sha256sums=('9d17eb0074bcd7b75ffd8c56718254c96108c01f857570f951d1e9a109269405'
             'ca34047d62b5b433c2039151b9d55674a8aacdd1af57041d54387b76e44cd442'
-            '7e120ffe6cacdaae2d2c6806dfa8e5c4423e5599c8ab0d4b1b500027e34d355b')
+            '51edba026e3b1e7c279447d4bf449342d1cae80438ec43c22dc06b7bb5b5e128')
 
 ###############################################################################
 
