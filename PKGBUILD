@@ -4,7 +4,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
 pkgver=28.1.0.beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -48,19 +48,21 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  gitconf="protocol.file.allow=always"
+
   patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
-  git submodule update
+  git -c $gitconf submodule update
 
   cd plugins/obs-websocket
   git config submodule.deps/asio.url $srcdir/asio
   git config submodule.deps/json.url $srcdir/json
   git config submodule.deps/qr.url $srcdir/QR-Code-generator
   git config submodule.deps/websocketpp.url $srcdir/websocketpp
-  git submodule update
+  git -c $gitconf submodule update
 }
 
 build() {
