@@ -3,7 +3,7 @@
 
 pkgname=mcpelauncher-linux-git
 pkgver=v0.4.0.r2.g4c7dadf
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -127,16 +127,16 @@ prepare() {
   git config submodule.osx-elf-header.url "$srcdir/osx-elf-header"
   git config submodule.properties-parser.url "$srcdir/properties-parser"
   git config submodule.simple-ipc.url "$srcdir/simple-ipc"
-  git submodule update --recursive
+  git -c protocol.file.allow=always submodule update --recursive
   cd fake-jni || exit 1
   git config submodule.CX.url "$srcdir/CX"
   git config submodule.libffi.url "$srcdir/libffi"
   git config submodule.libunwind.url "$srcdir/libunwind"
-  git submodule update --recursive
+  git -c protocol.file.allow=always submodule update --recursive
   cd ../mcpelauncher-linker || exit 1
   git config submodule.bionic.url "$srcdir/android_bionic"
   git config submodule.core.url "$srcdir/core"
-  git submodule update --recursive
+  git -c protocol.file.allow=always submodule update --recursive
 }
 
 build() {
