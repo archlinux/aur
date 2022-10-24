@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 105.0.3
+	pkgver = 106.0.1
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -56,20 +56,22 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/105.0.3/source/firefox-105.0.3.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/105.0.3/source/firefox-105.0.3.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/106.0.1/source/firefox-106.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/106.0.1/source/firefox-106.0.1.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=105.0.3-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=7.0
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=9fbd0a1cb86cdda1c95dadc961025f3d687d0095
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=9395f5c0e061250acbcbcb523d2270d57136d411
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = f2fa1e03aecdd4dca0bcda94fd228d3a9ef3635862a2c140f8982d32ae7761e7
+	sha256sums = bdf8184f9aadce4fd9613ec63525a96891e2e9dbbef9e4f72193038450a7fd35
 	sha256sums = SKIP
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
+	source_aarch64 = https://github.com/mozilla/gecko-dev/commit/60858bce4bb1b426c07ec0e9e7f627f59b8aca45.patch
+	sha256sums_aarch64 = 19d1a61b903926623a3f5d0db9b63bdbbc191589f8735d3696025abbfd6dd1c4
 
 pkgname = librewolf
