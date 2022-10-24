@@ -1,0 +1,12 @@
+pkgbase = markable
+	pkgdesc = C++ 11 library alternative to boost::optional<T>.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/akrzemi1/markable
+	arch = any
+	license = Boost
+	makedepends = cmake
+	source = markable-2.0.1.tar.gz::https://github.com/akrzemi1/markable/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 63d245ef4256f78971789cde03746ace01d5c024df9a824ca7de101158467336
+
+pkgname = markable
