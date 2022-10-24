@@ -1,15 +1,15 @@
 pkgbase = mautrix-syncproxy-git
 	pkgdesc = A proxy microservice for Matrix designed to be used with mautrix-wsproxy
-	pkgver = r18.a051d38
-	pkgrel = 1
+	pkgver = 0
+	pkgrel = 2
 	url = https://github.com/mautrix/syncproxy
 	arch = x86_64
 	license = AGPL
 	makedepends = go
 	makedepends = git
 	source = mautrix-syncproxy::git+https://github.com/fauxmight/syncproxy.git#branch=config_file
-	source = mautrix-syncproxy@.system_service
+	source = mautrix-syncproxy.service
 	sha256sums = SKIP
-	sha256sums = 9bac82c13ad659717ce74a31c34c2963fd493268a1521a0e19918301de2f30d4
+	sha256sums = 2ce745c093c31e8d622ad1a29c515ecaa9fd02e1d28bfab8414d4b7476ea9c1e
 
 pkgname = mautrix-syncproxy-git
