@@ -17,6 +17,8 @@ source=(
 	"ergo-node.service"
 )
 
+# Pkgver should be changed to use github's api at https://api.github.com/repos/ergoplatform/ergo/releases/latest
+# Right now if there is a prerelease this package will download it instead of the latest stable release
 pkgver() {
   cd ergo
   ver=$(git describe --tags)
