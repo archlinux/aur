@@ -3,11 +3,11 @@
 
 pkgname=tome4-forbidden_cults
 _pkgname=cults
-pkgver='1.7.4'
+pkgver='g.1.7.4.d.1.0.12'
 pkgrel='1'
 pkgdesc="Forbidden Cults DLC for tome4."
 arch=('any')
-url="http://tome.te4.org/"
+url="https://te4.org/"
 license=('custom')
 depends=('tome4')
 source=("cults.teaac::te4://cults.teaac")
