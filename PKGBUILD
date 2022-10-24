@@ -8,7 +8,6 @@ pkgdesc="An open-source, single-player, role-playing roguelike game set in the w
 arch=('i686' 'x86_64')
 url="https://te4.org/"
 license=('custom' 'GPL3')
-conflicts=('tome4')
 provides=('tome4')
 source=(tome4 tome4.desktop)
 source_x86_64=("https://te4.org/dl/t-engine/t-engine4-linux64-${pkgver}.tar.bz2")
