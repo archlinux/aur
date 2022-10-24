@@ -1,7 +1,7 @@
 pkgbase = knossos4
 	pkgdesc = A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.
 	pkgver = 4.1.2
-	pkgrel = 15
+	pkgrel = 16
 	url = https://knossos.app
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = knossos4
 	depends = curl
 	depends = glu
 	depends = glut
-	depends = qt5-python27-git
+	depends = pythonqt-knossos-git
 	depends = qt5-tools
 	depends = quazip
 	depends = snappy
