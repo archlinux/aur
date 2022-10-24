@@ -1,0 +1,3 @@
+post_upgrade() {
+	echo "Run secure-grub-install as root, keys have been changed in update"
+}

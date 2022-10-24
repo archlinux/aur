@@ -1,6 +1,6 @@
 pkgname="secureboot-grub"
 _pkgname="secureboot"
-pkgver=0.1.3
+pkgver=0.2.1
 pkgrel=1
 arch=("any")
 url="https://github.com/zeroxoneafour/arch-secureboot"
