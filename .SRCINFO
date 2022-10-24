@@ -1,9 +1,9 @@
 pkgbase = dsnet-git
 	pkgdesc = Simple command to manage a centralised wireguard VPN.
-	pkgver = 0.6.r1.gaeedee0
+	pkgver = 0.7.3.r0.gc7096d1
 	pkgrel = 1
 	url = https://github.com/naggie/dsnet
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
@@ -16,4 +16,3 @@ pkgbase = dsnet-git
 	sha256sums = c6df08c39903daf29dc03cda1b0723690ec40c85b75b8f5f9a736ba1189002cd
 
 pkgname = dsnet-git
-

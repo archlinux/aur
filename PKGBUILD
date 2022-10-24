@@ -1,27 +1,27 @@
-# Maintainer: Fabian Köhler <fabian.koehler@protonmail.ch>
+# Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Fabian Köhler <fabian.koehler@protonmail.ch>
 
 pkgname=dsnet-git
 _pkgname=${pkgname%-git}
-pkgver=0.6.r1.gaeedee0
+pkgver=0.7.3.r0.gc7096d1
 pkgrel=1
 pkgdesc="Simple command to manage a centralised wireguard VPN."
-arch=(any)
+arch=(x86_64)
 url="https://github.com/naggie/dsnet"
 license=(MIT)
 makedepends=("go" "git")
 depends=("glibc")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${pkgname}::git+https://github.com/naggie/dsnet" "systemd.patch")
+source=("${pkgname}::git+https://github.com/naggie/dsnet"
+        "systemd.patch")
 sha256sums=('SKIP'
             'c6df08c39903daf29dc03cda1b0723690ec40c85b75b8f5f9a736ba1189002cd')
 
+
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    version=$(git tag -l --sort=-v:refname | sed 's/v\([^-].*\)/\1/g' | head -1)
-    release=$(git describe --long --tags | sed 's/\([^-].*\)-\([0-9]*\)-\(g.*\)/r\2.\3/g')
-    echo "${version}.${release}" | sed -re 's/-//g' # strip hyphen
+    cd "${pkgname}"
+    git describe --tags --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
         -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
         -buildmode=pie \
         -o dsnet \
-        ./cmd/dsnet.go
+        ./cmd/
 }
 
 package() {
