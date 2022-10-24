@@ -7,8 +7,8 @@
 
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
-pkgver=2.3.3
-pkgrel=4
+pkgver=2.3.4
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -26,28 +26,25 @@ backup=('etc/tengine/fastcgi.conf'
 install=tengine.install
 conflicts=('tengine')
 provides=('nginx' 'tengine')
-_psol_ver=1.14.36.1
-_nps_ver=1.14.33.1-RC1
 _brotli_ver=1.0.0rc
-_geoip2_ver=3.3
+_geoip2_ver=3.4
+_fancyidx_ver=0.5.2
+_jdomain_ver=1.4.0
 source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
         service
         logrotate
-        #pagespeed-v${_nps_ver}.zip::https://github.com/apache/incubator-pagespeed-ngx/archive/v${_nps_ver}.zip
-        #psol-v${_psol_ver}.tar.gz::https://dist.apache.org/repos/dist/release/incubator/pagespeed/${_psol_ver}/x64/psol-${_psol_ver}-apache-incubating-x64.tar.gz
         brotli-v${_brotli_ver}.tar.gz::https://github.com/google/ngx_brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
         geoip2-v${_geoip2_ver}.tar.gz::https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/${_geoip2_ver}.tar.gz
+        fancyindex-v${_fancyidx_ver}.tar.xz::https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_fancyidx_ver}/ngx-fancyindex-${_fancyidx_ver}.tar.xz
+        jdomain-v${_jdomain_ver}.tar.gz::https://github.com/nicholaschiasson/ngx_upstream_jdomain/archive/refs/tags/${_jdomain_ver}.tar.gz
         )
-sha256sums=('097684d83356fcdda8a6e949bca621126db751b37f6b23591cb3894a1f8a0108'
+sha256sums=('9a8d1e83ec7664f799255b0dec5baebde2d12b6578b29cfadf92316b3d3e221c'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
             'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b'
-            '41378438c833e313a18869d0c4a72704b4835c30acaf7fd68013ab6732ff78a7')
-
-#prepare() {
-#    mv psol incubator-pagespeed-ngx-${_nps_ver}/
-#    #cd tengine-$pkgver
-#}
+            'ad72fc23348d715a330994984531fab9b3606e160483236737f9a4a6957d9452'
+            '04c3d098ed5d8d6016d92a784c7f7692dd8cd65603a7e7d59dd3d4bbdc374656'
+            '3e8021433b1444b3caa1674fe344dc0ed58b8d8275f227c63950f6a156c31883')
 
 build() {
     cd tengine-$pkgver
@@ -102,8 +99,10 @@ build() {
         --with-stream_ssl_module \
         --with-stream_ssl_preread_module \
         --with-threads \
+        --add-module=$srcdir/ngx_upstream_jdomain-${_jdomain_ver} \
         --add-dynamic-module=$srcdir/ngx_brotli-${_brotli_ver} \
-        --add-dynamic-module=$srcdir/ngx_http_geoip2_module-${_geoip2_ver}
+        --add-dynamic-module=$srcdir/ngx_http_geoip2_module-${_geoip2_ver} \
+        --add-dynamic-module=$srcdir/ngx-fancyindex-${_fancyidx_ver}
 
     make
 }
