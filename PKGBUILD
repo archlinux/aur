@@ -3,7 +3,7 @@
 pkgname=mautrix-wsproxy-git
 _pkgname=mautrix-wsproxy
 pkgver=0
-pkgrel=2
+pkgrel=3
 pkgdesc="A websocket proxy for Matrix appservices - latest git commit"
 arch=('x86_64')
 license=('AGPL')
@@ -11,9 +11,9 @@ makedepends=('go' 'git')
 replaces=('mautrix-wsproxy')
 url="https://github.com/mautrix/wsproxy"
 source=(${_pkgname}::git+https://github.com/mautrix/wsproxy.git
-        ${_pkgname}@.system_service)
+        ${_pkgname}.service)
 sha256sums=('SKIP'
-	    '10a88bd98e1a0fa4559b361ce7cc5e16256574dad56402813f98783d44644c22')
+	    '0454295b274064e3303e0e98f4cffbddd2b4a977f743b04e916ce09be0975fd3')
 install=${_pkgname}.install
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines :
@@ -31,7 +31,7 @@ build() {
 package() {
   install -d ${pkgdir}{/etc/mautrix-wsproxy,/usr/lib/systemd/system}
   install -Dm640 ${srcdir}/${_pkgname}/example-config.yaml ${pkgdir}/etc/mautrix-wsproxy/${_pkgname}-example-config.yaml
-  install -Dm644 ${srcdir}/${_pkgname}\@.system_service ${pkgdir}/usr/lib/systemd/system/${_pkgname}\@.service
+  install -Dm644 ${srcdir}/${_pkgname}.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service
   install -Dm755 ${srcdir}/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
 

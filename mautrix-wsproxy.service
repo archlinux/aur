@@ -1,8 +1,8 @@
 [Unit]
-Description=Mautrix wsproxy (%i config)
+Description=Mautrix wsproxy
 
 [Service]
-ExecStart=/usr/bin/mautrix-wsproxy -config /etc/mautrix-wsproxy/%i.yaml
+ExecStart=/usr/bin/mautrix-wsproxy -config /etc/mautrix-wsproxy/wsproxy.yaml
 Restart=on-failure
 PrivateTmp=yes
 ProtectSystem=full
