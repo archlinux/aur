@@ -1,10 +1,10 @@
-# Maintainer: Cravix < dr dot neemous at gmail dot com >
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Cravix < dr dot neemous at gmail dot com >
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=freegish-git
 _pkgname=freegish
-pkgver=1.60.181.f53d915
+pkgver=1.60.219.0ab2e82
 pkgrel=1
 pkgdesc="Free version of gish, a physics platformer"
 arch=('x86_64' 'i686')
@@ -14,15 +14,15 @@ depends=('sdl' 'openal' 'libvorbis' 'libpng' 'libgl')
 makedepends=('git' 'cmake')
 provides=('freegish')
 conflicts=('freegish')
-install='freegish.install'
+install=freegish.install
 
-source=("git://github.com/${_pkgname}/${_pkgname}"
+source=("git+https://github.com/${_pkgname}/${_pkgname}"
         'freegish.desktop'
-        'libmath.patch')
+        'cmakelists.patch')
 
 md5sums=('SKIP'
          '45a57af69e7e6becdac80ed85d87f871'
-         '92f82b888c2f3766af4e17684f84f04e')
+         'ff6e826443f1c6ef3a9813bd7a09f88a')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -32,8 +32,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  # libmath fix...
-  patch -p1 < ../libmath.patch
+  patch -p2 < $srcdir/cmakelists.patch
 }
 
 build() {

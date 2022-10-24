@@ -1,6 +1,6 @@
 pkgbase = freegish-git
 	pkgdesc = Free version of gish, a physics platformer
-	pkgver = 1.60.181.f53d915
+	pkgver = 1.60.219.0ab2e82
 	pkgrel = 1
 	url = http://github.com/freegish/freegish
 	install = freegish.install
@@ -16,12 +16,11 @@ pkgbase = freegish-git
 	depends = libgl
 	provides = freegish
 	conflicts = freegish
-	source = git://github.com/freegish/freegish
+	source = git+https://github.com/freegish/freegish
 	source = freegish.desktop
-	source = libmath.patch
+	source = cmakelists.patch
 	md5sums = SKIP
 	md5sums = 45a57af69e7e6becdac80ed85d87f871
-	md5sums = 92f82b888c2f3766af4e17684f84f04e
+	md5sums = ff6e826443f1c6ef3a9813bd7a09f88a
 
 pkgname = freegish-git
-

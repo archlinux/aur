@@ -1,0 +1,21 @@
+diff '--color=auto' -aur src.orig/freegish/CMakeLists.txt src/freegish/CMakeLists.txt
+--- src.orig/freegish/CMakeLists.txt	2022-10-25 00:07:33.614427084 +0200
++++ src/freegish/CMakeLists.txt	2022-10-25 00:07:49.107912260 +0200
+@@ -14,7 +14,7 @@
+ # Uncomment this to hardcode the data path. On the command line, you
+ # would actually give -DDATAPATH='"/usr/share/games/gish"' or similar
+ # but CMake does the extra quoting for us.
+-#add_definitions(-DDATAPATH="/usr/share/games/gish")
++add_definitions(-DDATAPATH="/usr/share/freegish")
+ 
+ if(MSVC)
+     find_package(Ogg CONFIG REQUIRED)
+@@ -25,7 +25,7 @@
+     find_package(OpenGL REQUIRED)
+ 
+ else()
+-    find_package(SDL2 REQUIRED sdl2)
++    find_package(SDL2 REQUIRED)
+     find_package(OpenAL REQUIRED)
+     find_package(OpenGL REQUIRED)
+     find_package(Vorbis REQUIRED)
