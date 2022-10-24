@@ -6,11 +6,11 @@
 
 pkgbase=jdk-openjdk-xdg-bin
 pkgname=('jre-openjdk-headless-xdg-bin' 'jre-openjdk-xdg-bin' 'jdk-openjdk-xdg-bin' 'openjdk-src-xdg-bin' 'openjdk-doc-xdg-bin')
-_majorver=18
+_majorver=19
 _minorver=0
-_securityver=2.1
-_updatever=0
-pkgrel=3
+_securityver=1
+_updatever=10
+pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -29,11 +29,11 @@ noextract=("jdk-openjdk-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "jre-openjdk-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "openjdk-doc-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "openjdk-src-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('f0df23f90e1457e1173670d98fdd82d60c13582e621ea34b5dd986276b690378'
-            '4cc6d91c68d98f04af47e4e2c8a4488e579f49e91bd02aa54568e6c8f46c532b'
-            '87956a0b991bd5c4e4fbdcc1c43a38f9274c31b698e22129fcceee6890243923'
-            '9fb2b768dd209d88aca8995b101feb42cc5a20a28e47a483fe14eb715296d0bb'
-            '30eed8e686d2fb93bee3feff4387cd029ff18f3d53dd8527add959c86f47de5e')
+sha256sums=('af99cc3bdaf153007918b54c1726da0bc10819661e982355da3495156f5d36b3'
+            '0146f33be7739aeec92439d6cfae38f853cf8ae957e57b4bb73d2f4e128d3c25'
+            'd4d9c65ca2f4b503e86c783abc1d3c749011480adb9e80e339758f19f3f136f8'
+            '070480574f99e4ff0decab87d85178dfbe7dbc32266f1d7bea8ad6426f5f4d97'
+            'cad29c3f9079ddb8aa49175150b797bac1b948504d55f7ce54b943f0df5d770e')
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src'
           'openjdk-doc')
 conflicts=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src'
