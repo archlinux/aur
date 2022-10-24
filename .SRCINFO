@@ -1,7 +1,7 @@
 pkgbase = yolang-git
 	pkgdesc = Lightweight, simple interpretive programming language
 	pkgver = 1.5.29
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PowerAngelXD/YoLang
 	arch = any
 	license = MIT
