@@ -2,8 +2,8 @@
 # Contributor: Linux Gamers <linuxgamers@protonmail.com>
 
 pkgname=yuzu-mainline-bin
-pkgver=0.1203
-_ver=20221017-8649c46c7
+pkgver=0.1209
+_ver=20221024-2e782a154
 pkgrel=1
 pkgdesc="Nintendo Switch emulator - mainline branch"
 arch=('x86_64')
@@ -17,13 +17,13 @@ options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/mainline-${pkgver/./-}/yuzu-linux-${_ver}.tar.xz"
         "yuzu.svg"
         "yuzu.desktop")
-sha512sums=('eae9b40fbce10ba5a4b633ac0eebff3275b79c01317caf26d74ee4f29c228081ffd68fda7d0bd2ed1b80d7d38af2f9e30f7e0179af0b8721b678adc709b8b296'
+sha512sums=('9434152613a5a3207c79cf1ead96bf790d3993f8918f8db59911c2a6ddd2090e4e258b7c3b133b6bbc9f70fe6a7d62a6e5e0d86e4fad68d24b506d07fdada5ba'
             '8e9f442436bd5f89a99c902960b51a3dd124ba17119422cca1ae792da0bcf3c757862bc88cb3d229b1f6a3b8b36c73f47f2c7266a11f91ebb38265777a2ba6b3'
             '5cb469f178e0a22f249240f8ce26027ba87ebf8b57fd584917c35eb51860a1bc49090d6abaa5d5dc1dded13f78236f15f28cd0e2697f9e509286cb573e1a20c2')
 
 package() {
-	install -Dm644 yuzu.desktop -t "$pkgdir/usr/share/applications"
-	install -Dm644 yuzu.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-	install -Dm755 yuzu-linux-mainline/yuzu-cmd -t "$pkgdir/usr/bin"
-	install -Dm755 yuzu-linux-mainline/yuzu-mainline.AppImage "$pkgdir/usr/bin/yuzu"
+	install -Dvm644 yuzu.desktop -t "$pkgdir/usr/share/applications"
+	install -Dvm644 yuzu.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+	install -Dv yuzu-linux-mainline/yuzu-cmd -t "$pkgdir/usr/bin"
+	install -Dv yuzu-linux-mainline/yuzu-mainline.AppImage "$pkgdir/usr/bin/yuzu"
 }
