@@ -1,12 +1,15 @@
 pkgbase = python-ouster-sdk
 	pkgdesc = Ouster Python SDK
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ouster-lidar/ouster_example
 	arch = any
 	license = BSD
+	checkdepends = python-tox
 	makedepends = python-setuptools
 	makedepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = pybind11
 	makedepends = jsoncpp
 	makedepends = cmake
@@ -18,7 +21,7 @@ pkgbase = python-ouster-sdk
 	depends = python-numpy
 	depends = glew
 	depends = glfw-x11
-	source = https://github.com/ouster-lidar/ouster_example/archive/refs/tags/20220826.tar.gz
-	sha256sums = d25ee787a95eba937a0b7c30f455a0f9513a9cd13316184b15f2a36856bd9749
+	source = https://github.com/ouster-lidar/ouster_example/archive/refs/tags/20220927.tar.gz
+	sha256sums = 2f5966f3780be01bda35d5be78f54a8fef7d529eb0e922b9fb29571f4a803264
 
 pkgname = python-ouster-sdk
