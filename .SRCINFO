@@ -1,15 +1,15 @@
 pkgbase = inkscape-axidraw
-	pkgdesc = Inkscape extension for Axidraw.
-	pkgver = 2.7.0
+	pkgdesc = Inkscape extension for Axidraw
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/evil-mad/EggBot/
-	arch = any
+	arch = x86_64
 	license = GPL2
 	depends = python
 	depends = inkscape
-	provides = inkscape-axidraw
 	provides = inkscape-eggbot
-	source = https://cdn.evilmadscientist.com/dl/ad/public/ad-ink_270.zip
-	sha256sums = 146da0738a3e002058045cb0a3a4c3593ba2f36425a5a2ba41e3c55cfa3d71f0
+	conflicts = inkscape-eggbot
+	source = https://cdn.evilmadscientist.com/dl/ad/public/ad-ink_360.zip
+	sha256sums = dafc3528a39506a1f307dfdf6d9f92af6f67c65e1f37f92118961b32415e57d6
 
 pkgname = inkscape-axidraw
