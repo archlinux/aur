@@ -1,4 +1,6 @@
-# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
+# Based on previous work from the following people:
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Gomasy <nyan@gomasy.jp>
 # Contributor: Alexandre BIQUE <bique.alexandre@gmail.com>
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
@@ -6,14 +8,14 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='4.6'
+pkgver='4.9'
 pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 arch+=('aarch64') # yjun naumovitch
 url='https://libreswan.org/'
 license=('GPL' 'MPL')
-depends=('systemd' 'unbound' 'nss' 'libcap-ng' 'curl')
+depends=('systemd' 'unbound' 'nss' 'libcap-ng' 'curl' 'inetutils')
 depends+=('python3')
 optdepends=(
   'networkmanager-libreswan: NetworkManager support'
@@ -28,9 +30,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('3c6f2ab474534ead7abec57c9484ea75'
+md5sums=('584ee91ace5208db1a517b4c8e7a3971'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('26396f4826a682735772a4689a7ce9ae2d409d166a4b72836fc55d14bad356ff'
+sha256sums=('f642dcb635e909564ca8fd99ea44ab43f60723b4d76c158ed812978c45b398b9'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
