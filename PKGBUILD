@@ -120,7 +120,7 @@ _processor_opt=${_processor_opt-}
 _use_auto_optimization=${_use_auto_optimization-y}
 
 # disable debug to lower the size of the kernel
-_disable_debug=${_disable_debug-y}
+_disable_debug=${_disable_debug-}
 
 ## Enable zram/zswap ZSTD compression
 _zstd_compression=${_zstd_compression-y}
@@ -197,7 +197,7 @@ fi
 _major=6.1
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc1
+_rcver=rc2
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -247,7 +247,7 @@ if [ "$_cpusched" = "pds" ]; then
 fi
 ## BORE Scheduler
 if [ "$_cpusched" = "bore" ]; then
-    source+=("${_patchsource}/sched/0001-bore.patch")
+    source+=("${_patchsource}/sched/0001-bore-dev.patch")
 fi
 ## CacULE Scheduler
 if [ "$_cpusched" = "cacule" ]; then
@@ -750,7 +750,8 @@ prepare() {
             --disable LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
             --disable LRNG_TEST_CPU_ES_COMPRESSION \
             --enable LRNG_SELFTEST \
-            --disable LRNG_SELFTEST_PANIC
+            --disable LRNG_SELFTEST_PANIC \
+            --disable LRNG_RUNTIME_FORCE_SEEDING_DISABLE
     fi
 
     ### Enable zram/zswap ZSTD compression
@@ -1027,10 +1028,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('c46a02fde1d8b373fccce418f7ca747a81575c31cddff87c32012c71cea13274'
+sha256sums=('745fff5529fe45b6590598541edf54423c7726ccde9b84e48ab44a5f62ce8708'
             'a98ce1919f586a9bfd01e5198bb77c80f80a98c00844e66425de9131742b0c1c'
             '06d408a1dad0a31aff812a81725acd1c5d8cb70b34eb2eb5b695c8d426d895da'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            'ce3fa93b00ad46c14b227db7e7d95d205add926bbf0bec18a1914729bf8ac34d'
-            'ce1fbbda7e83e5685124eea4993f810c7f5ee11a38bf55f3db81e720e8710392'
+            'c33b6a655751fa959d48244ea58875192bb7a055929c1922bd283a04fbb381ff'
+            'f46bc9f87818318d6274b5760dd82f9714939b79faec52b162e6e0ad957e6fe3'
             'aec1703d3e97df5727e4a9350a5d18dcdf117623a85802d220df7ed3ea7d58a3')
