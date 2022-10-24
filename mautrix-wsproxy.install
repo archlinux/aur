@@ -1,7 +1,7 @@
 post_install() {
   echo
   echo "The mautrix-wsproxy-git package includes a systemd system service which is not enabled by default."
-  echo "To enable and start a wsproxy instance using a configuration at /etc/mautrix-wsproxy/custom.yaml, use:"
-  echo "   systemctl enable --now mautrix-wsproxy@custom.service"
+  echo "To enable and start a wsproxy instance using a configuration at /etc/mautrix-wsproxy/wsproxy.yaml, use:"
+  echo "   systemctl enable --now mautrix-wsproxy.service"
   echo
 }

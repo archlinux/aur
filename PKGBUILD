@@ -3,7 +3,7 @@
 pkgname=mautrix-wsproxy-git
 _pkgname=mautrix-wsproxy
 pkgver=0
-pkgrel=3
+pkgrel=4
 pkgdesc="A websocket proxy for Matrix appservices - latest git commit"
 arch=('x86_64')
 license=('AGPL')
