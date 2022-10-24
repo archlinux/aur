@@ -1,0 +1,14 @@
+pkgbase = kingdeekiscloud-bin
+	pkgdesc = 金蝶 KIS 云 for Linux
+	pkgver = 1.0.3
+	pkgrel = 0
+	url = https://kisdoc.kingdee.com/web/#/81/1282
+	arch = x86_64
+	license = LGLP
+	license = Commercial
+	noextract = kingdeekiscloud-1.0.3.deb
+	options = !strip
+	source = kingdeekiscloud-1.0.3.deb::http://downloads.cmcloud.cn/kis/kiscloud/stable/kingdeekiscloud-amd64.1.0.3.deb
+	sha256sums = 5abe9d9bf58376fc3210939acd76b7c7d6829412c5f01c724eda381f3dfcec4e
+
+pkgname = kingdeekiscloud-bin
