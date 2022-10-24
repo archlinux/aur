@@ -1,0 +1,16 @@
+pkgbase = random-rs
+	pkgdesc = Simple CLI multitool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/one-d-wide/random-rs
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rustup
+	depends = gcc-libs
+	provides = random
+	conflicts = random
+	source = git+https://github.com/one-d-wide/random-rs.git?signed#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = random-rs
