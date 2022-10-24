@@ -1,6 +1,6 @@
-# Maintainer: wuxb <wuxb45 at gmail dot com>
+# Maintainer: CyanWoods <i at cyanwoods dot com>
 pkgname=spdk
-pkgver=22.05
+pkgver=22.09
 pkgrel=1
 pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
