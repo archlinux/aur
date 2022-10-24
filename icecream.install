@@ -7,6 +7,18 @@ post_install() {
     touch /var/log/icecream/scheduler
     touch /var/log/icecream/iceccd
     chown -R icecream:icecream /var/cache/icecream /var/log/icecream/scheduler /var/log/icecream/iceccd
+    echo ""
+    echo "If you use a firewall, you need to open the following ports:"
+    echo "    * 10245/tcp"
+    echo "    * 8765/tcp"
+    echo "    * 8766/tcp"
+    echo ""
+    echo "If your scheduler is running on another machine, you also need a special rule to allow broadcasts:"
+    echo "    * source network: 0/0"
+    echo "    * source port: 8765/udp"
+    echo ""
+    echo "See https://github.com/icecc/icecream#firewall for further information."
+    echo ""
 }
 
 post_upgrade() {
