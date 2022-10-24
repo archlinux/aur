@@ -1,25 +1,21 @@
 # Maintainer: Miroslav Jarý <mira.jary@gmail.com>
 
 pkgname=yin-yang
-pkgver=3.1.0
-pkgrel=4
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
-depends=('python' 'python-pip' 'python-systemd')
+depends=('python' 'python-psutil' 'python-suntime' 'python-systemd' 'pyside6')
 provides=("${pkgname}")
-conflicts=("${pkgname}" "${pkgname}-git")
-source=("https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.1.0.zip")
-sha256sums=('b74251518be5f8a8aa64cbbbe60ef4b9fdbbd383145a15a87a3f5b3f2cd43adb')
+conflicts=("${pkgname}-git")
+source=("https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.1.1.zip")
+sha256sums=('1c317a73669639504294ff4108c180fe2b0408e9845214d5e0a5f763c6ecd313')
 
 package() {
     # This is a modified version of scripts/install.sh
     cd "$srcdir/Yin-Yang-$pkgver"
-
-    echo "Installing dependencies …"
-    pip3 install -r requirements.txt
-
     echo "Installing yin yang"
 
     # Check if needed directories exists
@@ -63,7 +59,7 @@ package() {
                                        |___/
 EOF
 echo ""
-echo "Yin-Yang brings Auto Nightmode for Linux"
+echo "Yin-Yang brings Auto Night mode for Linux"
 echo ""
 cat << "EOF"
        _..oo8"""Y8b.._

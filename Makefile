@@ -1,5 +1,5 @@
 all:
 	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
-	rm *.zip
-	rm *.zst
+	rm -f *.zip
+	rm -f *.zst
