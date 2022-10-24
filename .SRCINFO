@@ -5,6 +5,7 @@ pkgbase = knossos-git
 	url = https://knossos.app
 	arch = x86_64
 	license = GPL2
+	checkdepends = xorg-server-xvfb
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git

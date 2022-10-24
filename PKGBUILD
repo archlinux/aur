@@ -21,6 +21,7 @@ makedepends=("boost"
 	"git"
 	"ninja"
 )
+checkdepends=(xorg-server-xvfb)
 optdepends=("qt5-imageformats" # Jp2
 )
 source=("git+https://github.com/knossos-project/knossos.git"
@@ -39,6 +40,10 @@ build() {
 	cd "build-$CHOST-$pkgname"
 	cmake -G Ninja ../knossos
 	cmake --build .
+}
+
+check() {
+	env QT_QPA_PLATFORM=offscreen xvfb-run "build-$CHOST-$pkgname/knossos" exit
 }
 
 package() {
