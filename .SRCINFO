@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-keepassxc-browser
 	pkgdesc = Official browser plugin for the KeePassXC password manager.
-	pkgver = 1.8.2.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
 	arch = any
 	license = GPL3
-	noextract = keepassxc-browser-1.8.2.2-fx.xpi
-	source = keepassxc-browser-1.8.2.2-fx.xpi::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.8.2.2/keepassxc-browser_1.8.2.2_firefox.zip
-	sha256sums = 6054f8cb81d1a950b93ed6fd9306e6fd115df21b3975c1dc9ccf05beb62d8742
-	b2sums = 874a999d82e7607fd37ef33fd2012942fa82fb80b9a80ffdd6a68a54eb15f41aca09e7ce6de421ff6869250307194309c81369866172062b3627e83406ead3e6
+	noextract = keepassxc-browser-1.8.3-fx.xpi
+	source = keepassxc-browser-1.8.3-fx.xpi::https://github.com/keepassxreboot/keepassxc-browser/releases/download/1.8.3/keepassxc-browser_1.8.3_firefox.zip
+	sha256sums = 5b85a1c3b68e49a819e525e736a4720cc3247a741e2a82519aa87ead28344393
+	b2sums = 6468339447a17956836dabb47caaf214b00f2ea02f308326e9b8718070d333e9e50661c0e9a6f3e81d1438d4063a5f547fcbafdd1b3142ee4b1555e90ea4bfd4
 
 pkgname = firefox-extension-keepassxc-browser
