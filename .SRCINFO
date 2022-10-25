@@ -1,0 +1,23 @@
+pkgbase = rustdesk-nightly
+	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
+	pkgver = 1.2.0
+	pkgrel = 0
+	url = https://github.com/rustdesk/rustdesk
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = xdotool
+	depends = libxcb
+	depends = libxfixes
+	depends = alsa-lib
+	depends = pulseaudio
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = python-pynput
+	provides = rustdesk
+	conflicts = rustdesk
+	options = !strip
+	source = https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.2.0-0-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = rustdesk-nightly
