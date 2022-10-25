@@ -3,7 +3,7 @@
 
 pkgname=python-dateparser
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="python parser for human readable dates"
 url="https://github.com/scrapinghub/dateparser"
 arch=('any')
@@ -13,12 +13,14 @@ depends=(
   'python-regex'
   'python-tzlocal'
   'python-ruamel-yaml'
-  'python-langdetect'
   'python-pytz'
   'python-gitpython'
-  'python-fasttext' # AUR
   'python-convertdate' # AUR
   'python-hijri-converter' # AUR
+)
+optdepends=(
+  'python-fasttext' # AUR
+  'python-langdetect'
 )
 makedepends=('python-setuptools')
 #checkdepends=(

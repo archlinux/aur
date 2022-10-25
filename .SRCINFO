@@ -1,7 +1,7 @@
 pkgbase = python-dateparser
 	pkgdesc = python parser for human readable dates
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scrapinghub/dateparser
 	arch = any
 	license = custom:bsd
@@ -10,12 +10,12 @@ pkgbase = python-dateparser
 	depends = python-regex
 	depends = python-tzlocal
 	depends = python-ruamel-yaml
-	depends = python-langdetect
 	depends = python-pytz
 	depends = python-gitpython
-	depends = python-fasttext
 	depends = python-convertdate
 	depends = python-hijri-converter
+	optdepends = python-fasttext
+	optdepends = python-langdetect
 	source = dateparser-1.1.2.tar.gz::https://github.com/scrapinghub/dateparser/archive/v1.1.2.tar.gz
 	sha256sums = c96cc41b2a1c8596edfcdf676f3adf8f458590ca0c67447f0a8f53c189a5b30b
 
