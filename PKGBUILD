@@ -4,25 +4,37 @@
 ## dfl-wayqt -> dfl-gamma-effects
 
 _pkgname=gamma-effects
-pkgname=dfl-gamma-effects
-pkgver=0.1.0
+pkgbase=dfl-gamma-effects
+pkgname=('dfl-gamma-effects' 'dfl-gamma-effects-qt6')
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A class to handle various display effects that can be performed using wlr-gamma-control protocol"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
-depends=('qt5-base' 'dfl-wayqt')
-makedepends=('meson' 'ninja')
+makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'dfl-wayqt' 'dfl-wayqt-qt6')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('17a273b31b6ec1edce1224f651aec177')
+md5sums=('d52dabde8e966d012757da13b2567ccc')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
+  echo "Building QT5 version..."
   meson .build --prefix=/usr --buildtype=release
   ninja -C .build
+  
+  echo "Building QT6 version..."
+  meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
+  ninja -C .build-qt6
 }
 
-package() {
+package_dfl-gamma-effects() {
+  depends=('qt5-base' 'dfl-wayqt')
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
+}
+
+package_dfl-gamma-effects-qt6() {
+  depends=('qt6-base' 'dfl-wayqt-qt6')
+  cd "${_pkgname}-v${pkgver}"
+  DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
