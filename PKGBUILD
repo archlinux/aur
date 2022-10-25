@@ -5,7 +5,7 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}-go"
 pkgver=2.0.32.r5.gf559ee5
-pkgrel=1
+pkgrel=2
 pkgdesc='Trezor Communication Daemon aka Trezor Bridge (written in Go)'
 arch=('x86_64')
 url='https://github.com/trezor/trezord-go'
@@ -13,6 +13,7 @@ license=('LGPL3')
 provides=("${_pkgname}" 'trezor-bridge')
 conflicts=("${_pkgname}" 'trezor-bridge-bin')
 makedepends=('git' 'go')
+options=('!lto')
 depends=('trezor-udev')
 source=(
     "git+https://github.com/trezor/${_gitname}.git"
@@ -26,7 +27,6 @@ _importpath="github.com/trezor/${_gitname}"
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-
     mkdir -p "${srcdir}/src/$(dirname "${_importpath}")"
     ln -sf -T "${srcdir}/${_gitname}" "${srcdir}/src/${_importpath}"
 }
@@ -41,6 +41,11 @@ pkgver() {
 build() {
     cd "${srcdir}/${_gitname}"
     export GOPATH="${srcdir}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go install \
         -gcflags "all=-trimpath=${srcdir}" \
         -asmflags "all=-trimpath=${srcdir}" \
@@ -50,12 +55,8 @@ build() {
 
 package() {
     cd "${srcdir}/${_gitname}"
-
     install -Dm0755 "${srcdir}/bin/${_gitname}" "${pkgdir}/usr/bin/${_pkgname}"
-
     install -Dm0644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-
     install -Dm0644 release/linux/trezord.service "${pkgdir}/usr/lib/systemd/system/trezord.service"
-
     install -Dm0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
