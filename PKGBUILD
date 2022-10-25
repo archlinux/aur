@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/vutran1710/PyrateLimiter"
 license=(MIT)
 depends=(python)
-makedepends=(python-build python-install python-poetry)
+makedepends=(python-build python-installer python-poetry)
 checkdepends=(python-pytest python-fakeredis python-django python-django-redis)
 optdepends=('python-filelock: for create file lock in module scope to reuse across buckets'
   'python-redis: for use a bucket with Redis using List')
@@ -25,13 +25,13 @@ build() {
 # check() {
 #   cd ${_base}-${pkgver}
 #   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m install --optimize=1 dist/*.whl
+#   test-env/bin/python -m installer dist/*.whl
 #   test-env/bin/python -m pytest tests
 # }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
