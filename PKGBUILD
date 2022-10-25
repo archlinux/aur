@@ -7,12 +7,12 @@ _pkgbase=nginx
 pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
 pkgver=1.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
+depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -35,6 +35,10 @@ sha512sums=('4a5413c0ec251c02fb73dfb4d351045f857a36d45ebb7ae2c29f4a4f320a6543d0a
             'SKIP'
             'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7')
+b2sums=('0a6a556afe93c4326247e879e3bb2ad377cd734a572f471b52c91b1b2901a243a848cd74fea587bda5afa0ee91dec9635b5d2a468cb95abc7f361c42a32c9598'
+        'SKIP'
+        'b6414f9917fe62cc57556a2927fb404cc839398dac64a0d60c1d45af11a4e6be71bbee5f9bae17ce3604c31ab9247e8c6aec759f86890b54f86267db1fe7c08a'
+        'fe32fb75a7677abca86c4bc3f4ca9bfeccb3cd7afb4dd3c4ec21ab8b53cc0d72ba5330a1131498b5df222c2e517bd01e2df9f67256011ff15241b777a85be6b3')
 
 _common_flags=(
   --with-compat
