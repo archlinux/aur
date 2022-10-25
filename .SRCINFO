@@ -1,0 +1,13 @@
+pkgbase = fastr-jdk19-bin
+	pkgdesc = GraalVM-based, high-performance implementation of the R language (Java 19 version)
+	pkgver = 22.3.0
+	pkgrel = 1
+	url = https://github.com/oracle/fastr
+	arch = x86_64
+	license = GPL3
+	depends = jdk19-graalvm-bin
+	depends = zlib
+	source = https://github.com/oracle/fastr/releases/download/vm-22.3.0/r-installable-java19-linux-amd64-22.3.0.jar
+	sha256sums = 5b7203d1d4fc3d3588436a343b82f437dde24d6a65090646b74102e8d839a906
+
+pkgname = fastr-jdk19-bin
