@@ -1,0 +1,11 @@
+pkgbase = linux-firmware-hauppauge
+	pkgdesc = Additional Hauppauge Firmware
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://www.hauppauge.com/pages/support/support_linux.html
+	arch = any
+	license = custom
+	source = http://ppa.launchpad.net/b-rad/kernel+mediatree+hauppauge/ubuntu/pool/main/l/linux-firmware-hauppauge/linux-firmware-hauppauge_0.1.8+focal.tar.gz
+	sha256sums = 0312f0bb3b31324be33415ad23dadb978015de952897de6044bc565bce9702b4
+
+pkgname = linux-firmware-hauppauge
