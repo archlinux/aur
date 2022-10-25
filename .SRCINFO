@@ -7,11 +7,11 @@ pkgbase = python-pytest-base-url
 	license = MPL2
 	checkdepends = python-pytest-localserver
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-pytest
 	depends = python-requests
-	source = https://github.com/pytest-dev/pytest-base-url/archive/v2.0.0.tar.gz
+	source = pytest-base-url-2.0.0.tar.gz::https://github.com/pytest-dev/pytest-base-url/archive/v2.0.0.tar.gz
 	sha512sums = 91bccc0809050552feef9e0445e16433f5f5ab45bbc69e2b88ad49ddfdb9304f46a039760c3dc052b38b1954412059fceec346f14add7dc9968692610a1209ba
 
 pkgname = python-pytest-base-url
