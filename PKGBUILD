@@ -2,7 +2,7 @@
 # Maintainer: Arsen Musyaelyan <arsen@arsenm.dev>
 
 pkgname='itd-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Companion daemon for the InfiniTime firmware on the PineTime smartwatch'
 url='https://gitea.arsenm.dev/Arsen6331/itd'
@@ -12,17 +12,17 @@ provides=('itd' 'itctl')
 conflicts=('itd' 'itctl')
 depends=('dbus' 'bluez' 'libpulse')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.8/itd_0.0.8_linux_aarch64.tar.gz")
-sha256sums_aarch64=('15f8a6e246f86920faa9bd5b6e5ff06a21c22d01e59449d0fafc77a0366c5297')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.9/itd_0.0.9_linux_aarch64.tar.gz")
+sha256sums_aarch64=('262108ade80aa940eec254b1f4c66064851faae9253af2b9d4a77c070aed2c9d')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.8/itd_0.0.8_linux_armv6.tar.gz")
-sha256sums_armv6h=('2e4146d5e2485de1384a84e93c88a2f32725fc5fe32c232872722ef7157e90c0')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.9/itd_0.0.9_linux_armv6.tar.gz")
+sha256sums_armv6h=('2d922e2d32135dd64187413407c1f3f952ac8c5bf5c80f45863fb9f644263249')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.8/itd_0.0.8_linux_i386.tar.gz")
-sha256sums_i686=('a16154a88890493663470183552986d3c4138e046b296f5487c32262f18820a7')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.9/itd_0.0.9_linux_i386.tar.gz")
+sha256sums_i686=('29da3d3207777c6693835ea1a18da41034345286f7c044e3bbcb9b93993eef4e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.8/itd_0.0.8_linux_x86_64.tar.gz")
-sha256sums_x86_64=('b907edf870eb3e92a8790d39b9f539224df1133cd64a9c168ea8bb5c7660caa3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/itd/releases/download/v0.0.9/itd_0.0.9_linux_x86_64.tar.gz")
+sha256sums_x86_64=('93d3d7c1c20f00fa3c3c1a5df257a72c48ec351a03f00ca6294afb0db48abeb9')
 
 package() {
   # binaries
