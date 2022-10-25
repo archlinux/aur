@@ -4,7 +4,7 @@
 
 _realname=procps
 pkgname=procps-ng-git
-pkgver=4.0.0.r54.g6e78355d
+pkgver=4.0.1.r3.g474e22eb
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "$_realname"
-	sed 's:<ncursesw/:<:g' -i watch.c
+	sed 's:<ncursesw/:<:g' -i src/watch.c
 }
 
 build() {
