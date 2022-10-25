@@ -1,4 +1,6 @@
 update::
+	./generate-pkgbuild.sh > PKGBUILD
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
 
 install::

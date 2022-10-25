@@ -1,14 +1,13 @@
 pkgbase = rustotpony-bin
-	pkgdesc = RusTOTPony — CLI manager of one-time password generators aka Google Authenticator
-	pkgver = 0.2.6
+	pkgdesc = RusTOTPony — CLI manager of one-time password generators like Google Authenticator
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/zebradil/rustotpony
 	arch = x86_64
 	license = MIT
 	provides = totp
 	conflicts = rustotpony
-	conflicts = rustotpony-git
-	source = https://github.com/zebradil/rustotpony/releases/download/0.2.6/totp-linux
-	sha256sums = 0d81343de559a4b75a5c254eade829aca2ba6f4a418b7d403207d7e48740ea66
+	source = https://github.com/zebradil/rustotpony/releases/download/0.3.2/totp-linux
+	sha256sums = 083163a99d84a6a398fb0c2bca3645c5f66c00603351884897f5c6c38fd743bc
 
 pkgname = rustotpony-bin

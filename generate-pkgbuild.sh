@@ -1,6 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+pkgver="$(curl -fsSL https://api.github.com/repos/zebradil/rustotpony/releases/latest | jq -r '.tag_name')"
+
+cat <<EOF
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
-pkgver=0.3.2
+pkgver=${pkgver:?}
+EOF
+
+cat <<'EOF'
 
 _binname=totp
 
@@ -14,8 +24,9 @@ arch=(x86_64)
 url="https://github.com/zebradil/${_pkgname}"
 license=('MIT')
 source=("${url}/releases/download/${pkgver}/${_binname}-linux")
-sha256sums=('083163a99d84a6a398fb0c2bca3645c5f66c00603351884897f5c6c38fd743bc')
+sha256sums=('0000000000000000000000000000000000000000000000000000000000000000')
 
 package() {
   install -Dm755 "${srcdir}/${_binname}-linux" "${pkgdir}/usr/bin/${_binname}"
 }
+EOF
