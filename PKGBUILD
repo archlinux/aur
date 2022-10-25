@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=python-dateparser
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="python parser for human readable dates"
 url="https://github.com/scrapinghub/dateparser"
@@ -27,7 +27,7 @@ makedepends=('python-setuptools')
 #  'python-pymeeus' # AUR
 #)
 source=("${pkgname#python-}-${pkgver}.tar.gz::https://github.com/scrapinghub/dateparser/archive/v${pkgver}.tar.gz")
-sha256sums=('f19fc05f8665a5b2f094322cb091c2108f485a05d14c97efef5a1228e8a2c230')
+sha256sums=('c96cc41b2a1c8596edfcdf676f3adf8f458590ca0c67447f0a8f53c189a5b30b')
 
 build() {
   cd "${pkgname#python-}-${pkgver}"
