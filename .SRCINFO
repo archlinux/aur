@@ -1,0 +1,21 @@
+pkgbase = atom-bin
+	pkgdesc = A hackable text editor for the 21st Century. Binary release.
+	pkgver = 1.60.0
+	pkgrel = 1
+	url = https://github.com/atom/atom
+	arch = x86_64
+	license = MIT
+	depends = apm
+	depends = electron11
+	depends = libxkbfile
+	depends = ripgrep
+	optdepends = ctags: symbol indexing support
+	optdepends = git: Git and GitHub integration
+	optdepends = hunspell: spell check integration
+	provides = atom
+	conflicts = atom
+	options = !emptydirs
+	source = https://github.com/atom/atom/releases/download/v1.60.0/atom-amd64.deb
+	sha256sums = 5c7c0259062b9d4911d2537bfceaff5316f9de111698840a90d7cd497df891a6
+
+pkgname = atom-bin
