@@ -16,13 +16,13 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=16.0.0_r432910.6b6e9d22684d
+pkgver=16.0.0_r439853.1fe096ef59d1
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
-             'python-sphinx-automodapi' 'lldb' 'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
+makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 
+             'python-setuptools' 'lldb' 'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
              'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua53'
              'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'ocaml-stdlib-shims')
 checkdepends=("python-psutil")
@@ -106,9 +106,7 @@ check() {
 package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
     depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
-    optdepends=('python: for scripts'
-                'python-setuptools: for using lit = LLVM Integrated Tester'
-    )
+    optdepends=('python: for scripts')
     provides=(aur-llvm-git compiler-rt-git clang-git lldb-git lld-git polly-git
               llvm compiler-rt clang lldb polly lld )
     # A package always provides itself, so there's no need to provide llvm-git
