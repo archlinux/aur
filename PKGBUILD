@@ -3,38 +3,34 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=30.r18.gf40bb42
+pkgver=32.r0.g0be0de5
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
 url='https://github.com/archlinux/mkinitcpio'
 license=('GPL')
 depends=('awk' 'mkinitcpio-busybox' 'kmod' 'util-linux' 'libarchive' 'coreutils'
-         'bash' 'findutils' 'grep' 'filesystem' 'gzip' 'systemd-tools')
-optdepends=('xz: Use lzma or xz compression for the initramfs image'
+         'bash' 'binutils' 'diffutils' 'findutils' 'grep' 'filesystem' 'zstd' 'systemd')
+optdepends=('gzip: Use gzip compression for the initramfs image'
+            'xz: Use lzma or xz compression for the initramfs image'
             'bzip2: Use bzip2 compression for the initramfs image'
             'lzop: Use lzo compression for the initramfs image'
+            'lz4: Use lz4 compression for the initramfs image'
             'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
 makedepends=('git' 'asciidoc')
 provides=('initramfs' "mkinitcpio=${pkgver}")
 conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
-source=('git+https://github.com/archlinux/mkinitcpio.git')
+source=('git+https://github.com/archlinux/mkinitcpio.git?signed')
 sha256sums=('SKIP')
+validpgpkeys=('ECCAC84C1BA08A6CC8E63FBBF22FB1D78A77AEAB'    # Giancarlo Razzolini
+              'C100346676634E80C940FB9E9C02FF419FECBE16'    # Morten Linderud
+              'BB8E6F1B81CF0BB301D74D1CBF425A01E68B38EF')   # nl6720
 
 pkgver() {
 	cd mkinitcpio/
 
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		printf '%s.r%s.g%s' \
-			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git rev-parse --short HEAD)"
-	else
-		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
-			"$(git rev-parse --short HEAD)"
-	fi
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -42,4 +38,3 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 }
-
