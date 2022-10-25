@@ -1,16 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-log-dispatch-file-stamped"
-pkgver="0.19"
+pkgver="0.21"
 pkgrel='1'
 pkgdesc="Logging to date/time stamped files"
 arch=('any')
 url="https://metacpan.org/pod/Log::Dispatch::File::Stamped"
 license=('PerlArtistic')
-depends=('perl-log-dispatch')
+depends=('perl-log-dispatch' 'perl-namespace-clean>=0.19' 'perl-params-validationcompiler' 'perl-specio>=0.48')
+makedepends=('perl-path-tiny' 'perl-test-deep' 'perl-test-fatal')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Log-Dispatch-File-Stamped-${pkgver}.tar.gz")
-sha512sums=('b6988998e98dc210821af4b9c15948fa1b25711c8a01bbcf7b9c0b7c1e698c940c14458be9585743845b44aae24b25f1c570e2630b33bd656a932f2836994f94')
+sha512sums=('c8d7b141f559c630ec6e600013c216d882b0fdc56913d4fc01871b72bb92d561b930356dc0209d4cf66eb7f2123a165eaa8d826b5d133d67ac18e15cf57fb7bc')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
