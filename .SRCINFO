@@ -1,0 +1,20 @@
+pkgbase = lolcat-rs
+	pkgdesc = The good ol' lolcat, now with fearless concurrency.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/ur0/lolcat
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	provides = lolcat
+	conflicts = lolcat
+	source = lolcat-rs.tar.gz::https://github.com/ur0/lolcat/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 6eee67d2ceeb0443b5cbd285e320e8923c891fa0734815394339141b442a4d33
+
+pkgname = lolcat-rs
