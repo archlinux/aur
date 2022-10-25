@@ -1,31 +1,56 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-llvm-lines
-pkgver=0.4.18
+pkgver=0.4.19
 pkgrel=1
 pkgdesc="Count the number of lines of LLVM IR across all instantiations of a generic function"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/dtolnay/cargo-llvm-lines'
 license=('Apache' 'MIT')
-depends=('cargo' 'rust-nightly' 'rustfmt')
+depends=(
+    cargo
+    gcc-libs
+    glibc
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9c53696283690b9225defbc11f79a4f9d019e9b8ac3a1429231c2962bc703291')
+sha256sums=('1da2987f228187c77bd19ca8c1f5616b00736e7094f4ac8588e23decbcfdde7b')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --release --locked --all-features --target-dir=target
+    cd "$pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	cargo test --release --locked --target-dir=target
+    cd "$pkgname-$pkgver"
 
-	# since currently the above runs no tests (kept only for future
-	# proofing) run cargo llvm-lines on itself
-	target/release/cargo-llvm-lines llvm-lines | head -n 8
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cargo test --frozen --all-features
+
+    # since currently the above runs no tests (kept only for future proofing)
+    # run cargo llvm-lines on itself
+    target/release/cargo-llvm-lines llvm-lines | head -n 8
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
-	install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
+    cd "$pkgname-$pkgver"
+    install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
+}
+package() {
+    cd "$pkgname-$pkgver"
+
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT
 }
