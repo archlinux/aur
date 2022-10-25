@@ -1,7 +1,7 @@
 # Maintainer: endaaman <endaaman@frontier.hokudai.ac.jp>
 pkgname=(otf-line-seed ttf-line-seed)
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='LINE Seed font'
 arch=(any)
 url="https://seed.line.me"
