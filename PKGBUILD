@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=protolite
-_pkgver=2.1.2
+_pkgver=2.1.3
 pkgname=r-${_pkgname,,}
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Highly Optimized Protocol Buffer Serializers'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('899a6bdb161447b5597f710ee47e1035c6b8bce00512ffdfad974040866d5d06')
+sha256sums=('901d517b6c2f837685784113aae08f7fe2dfd948099930fc8be9d8d2323425eb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
