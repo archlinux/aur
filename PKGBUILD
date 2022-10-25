@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ispc-bin
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.18.1
+pkgrel=1
 pkgdesc="Intel SPMD program compiler"
 arch=('x86_64')
 url="https://ispc.github.io/"
@@ -14,7 +14,7 @@ optdepends=('intel-compute-runtime: GPU support'
 provides=("ispc=$pkgver")
 conflicts=('ispc')
 source_x86_64=("ispc-v$pkgver-linux.tar.gz::https://github.com/ispc/ispc/releases/download/v$pkgver/ispc-v$pkgver-linux.tar.gz")
-sha256sums_x86_64=('6c379bb97962e9de7d24fd48b3f7e647dc42be898e9d187948220268c646b692')
+sha256sums_x86_64=('7faf59f26c09ceffe6165805d9e40b6582ddc1417c12786a214f4536e3388b47')
 
 
 package() {
