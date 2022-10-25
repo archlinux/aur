@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bbotk
-_pkgver=0.5.4
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Black-Box Optimization Toolkit'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca9157852e18e6e4f12b59f66d80a3f93756ebacc3c8a7fbce02ec26cc02b709')
+sha256sums=('7b68157a6f57cb0a8463d0c0e8ccfceb9c02e9b6388b89a2f6cb107dddb6cf46')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
