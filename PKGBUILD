@@ -3,7 +3,7 @@
 java_=17
 pkgname_=graal-visualvm
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="GraalVM VisualVM distribution, Java ${java_} version"
 arch=('x86_64'
@@ -11,18 +11,16 @@ arch=('x86_64'
 url='https://www.graalvm.org/'
 license=('GPL2')
 depends=("jdk${java_}-graalvm-bin")
-source=('LICENSE::https://raw.githubusercontent.com/oracle/graal/09883274a37a97f69a143604249db904901b6a72/tools/VISUALVM_LICENSE') # TODO use vm-${pkgver} instead of hard-coded commit next time (vm-22.2.0 tag does not include tools/VISUALVM_LICENSE)
-sha256sums=('29c5bc82ed188162958c6a681bc63b5d7444630e5c907a9285141368bae650f2')
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/visualvm-installable-ce-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/visualvm-installable-ce-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('77a14213d7ffca164a7797653063823d99bf7086334e9f7b45d85c78d0073278')
-sha256sums_aarch64=('a1ccc91a4720a62ee17283254be915f7aebad214fe96ad9f2d0424aca4943722')
+sha256sums_x86_64=('0d5c3cad2e5a69c84ddb35f7edfc272427ce7e6caed0232e836f6fb5550fef48')
+sha256sums_aarch64=('0dcd17edbb61e52e3a3e8bd9084de0bf596e3d3e1ce8e4952ce6be38ac51ea9c')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" bin/ lib/ # TODO some LICENSE* once upstream includes it (oracle/graal#4762)
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" bin/ lib/ LICENSE_VISUALVM.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -40,14 +38,6 @@ package() {
             *)
                 printf >&2 'unknown permissions: %s\n' "$permissions"
                 return 1
-                ;;
-        esac
-        case "$file" in
-            'lib/visualvm/platform/modules/lib/i386'|'lib/visualvm/platform/modules/lib/amd64'|'lib/visualvm/platform/modules/lib/x86')
-                if ! [[ -e "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file" ]]; then
-                    # missing directories, reported as oracle/graal#4763
-                    continue;
-                fi
                 ;;
         esac
         chmod "$mode" -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file"
@@ -70,6 +60,5 @@ package() {
     # already in jdk${java_}-graalvm-bin package
     unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/lib/installer/components/org.graalvm.component"
 
-    # for now, copy the separately downloaded LICENSE into /usr/share/licenses/
-    install -DTm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -DTm644 LICENSE_VISUALVM.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
