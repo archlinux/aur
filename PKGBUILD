@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-uosc-git
 _gitname=uosc
-pkgver=4.2.0.r0.g40b470f
+pkgver=4.2.0.r59.gc00e296
 pkgrel=1
 pkgdesc='Feature-rich minimalist proximity-based UI for MPV player'
 arch=(x86_64)
@@ -29,7 +29,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
-  install -Dm 644 "scripts/uosc.lua" -t "${pkgdir}/etc/mpv/scripts/"
+  find scripts -type f -exec sh -c 'install -Dm 644 {} -t "'${pkgdir}'/etc/mpv/$(dirname {})"' \;
   install -Dm 644 "script-opts/uosc.conf" -t "${pkgdir}/etc/mpv/script-opts/"
   install -Dm 644 "fonts/uosc_icons.otf" "fonts/uosc_textures.ttf" -t "${pkgdir}/etc/mpv/fonts/"
 }
