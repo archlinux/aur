@@ -12,6 +12,6 @@ pre_remove() {
     mv /etc/hosts.d/hosts.conf /etc/hosts ||
         mv /run/hosts /etc/hosts ||
         touch /etc/hosts
-    systemctl disable --now systemd-hosts.d.service
     systemctl disable --now systemd-hosts.d.path
+    systemctl disable --now systemd-hosts.d.service
 }
