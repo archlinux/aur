@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kodi-addon-vfs-libarchive
-pkgver=2.0.1
+pkgver=19.0.1
 _codename=Matrix
 pkgrel=1
 pkgdesc="Kodi VFS addon to support archives"
@@ -29,4 +29,4 @@ package() {
 	make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('87ad2ba0d0d9c7dcaf66a28c0f5c454ec8b4b227fdbb271cb73d143f7d9dd4b7')
+sha256sums=('1360154d86bc73fc6f01f546d7b09a92968653cf05b037b0cd80a825d95a9187')

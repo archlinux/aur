@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-vfs-libarchive
 	pkgdesc = Kodi VFS addon to support archives
-	pkgver = 2.0.1
+	pkgver = 19.0.1
 	pkgrel = 1
 	url = https://github.com/xbmc/vfs.libarchive
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = kodi-addon-vfs-libarchive
 	makedepends = cmake
 	makedepends = kodi-dev
 	depends = kodi
-	source = kodi-addon-vfs-libarchive-2.0.1.tar.gz::https://github.com/xbmc/vfs.libarchive/archive/2.0.1-Matrix.tar.gz
-	sha256sums = 87ad2ba0d0d9c7dcaf66a28c0f5c454ec8b4b227fdbb271cb73d143f7d9dd4b7
+	source = kodi-addon-vfs-libarchive-19.0.1.tar.gz::https://github.com/xbmc/vfs.libarchive/archive/19.0.1-Matrix.tar.gz
+	sha256sums = 1360154d86bc73fc6f01f546d7b09a92968653cf05b037b0cd80a825d95a9187
 
 pkgname = kodi-addon-vfs-libarchive
-
