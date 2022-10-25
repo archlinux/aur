@@ -1,6 +1,6 @@
 pkgbase = secureboot-grub
 	pkgdesc = A set of helper scripts for secure boot with Grub2 and Shim
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/zeroxoneafour/arch-secureboot
 	arch = any
