@@ -2,7 +2,7 @@
 
 java_=11
 pkgname="graalwasm-jdk${java_}-bin"
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance WebAssembly platform, Java ${java_} version"
 arch=('x86_64'
@@ -12,8 +12,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/wasm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/wasm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('93f060b1bbba3fc7c59ce24a984b3cd93311a09018825954ef9048eb1949854d')
-sha256sums_aarch64=('9a2d5594249d4af8edd159a0e6ce4fac2eb17d1f7497e328a8017823dd5739e1')
+sha256sums_x86_64=('76ed60e1ca6e96be73ab8543e8591feaf6df8c87f75051162afb1444dc4260bf')
+sha256sums_aarch64=('ca9bad5fbf006624f43713c9271245c44d35c4837ba53ff1423a5e340c2793a5')
 
 package() {
     local file eq permissions mode name target
