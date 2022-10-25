@@ -1,6 +1,6 @@
 # Maintainer: Jan Hensel <ja_he@uni-bremen.de>
 pkgname=dayplan
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Utility to plan your day and track your time"
@@ -11,7 +11,7 @@ makedepends=('go')
 optdepends=()
 backup=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0b4179d8a6028a24954d30b471217af5d12da0ecd385304db52191f04d3bbfc9')
+sha256sums=('4c5f62d3315291c9128041e91998361e0b3af95462a1431532839d7ff97528f5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -21,7 +21,8 @@ build() {
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
     -ldflags="-X '${source_root}/control/cli.version=v${pkgver}' -X '${source_root}/control/cli.hash=aur build from v${pkgver}'" \
-    -buildmode=pie
+    -buildmode=pie \
+    cmd/dayplan.go
 }
 
 package() {
