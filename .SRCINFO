@@ -10,14 +10,14 @@ pkgbase = python-pytest-selenium
 	checkdepends = python-pytest-mock
 	checkdepends = chromedriver
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-pytest-base-url
 	depends = python-pytest-html
 	depends = python-pytest-variables
 	depends = python-selenium
 	depends = python-tenacity
-	source = https://github.com/pytest-dev/pytest-selenium/archive/v3.0.0.tar.gz
+	source = pytest-selenium-3.0.0.tar.gz::https://github.com/pytest-dev/pytest-selenium/archive/v3.0.0.tar.gz
 	sha512sums = ce7d8e21974cbf6ee984189e86e5aa7127c2112f8f2469f10bfc2e18d62f490b21ab1fdf0514a9a79643d286e72eea23b53e819329d27f407f5844c7a1941665
 
 pkgname = python-pytest-selenium
