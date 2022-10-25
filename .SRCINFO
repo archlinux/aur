@@ -9,13 +9,13 @@ pkgbase = python-pytest-variables
 	checkdepends = python-yaml
 	checkdepends = python-toml
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-pytest
 	optdepends = python-hjson: for json support
 	optdepends = python-yaml: for YAML support
 	optdepends = python-toml: for TOML support
-	source = https://github.com/pytest-dev/pytest-variables/archive/v2.0.0.tar.gz
+	source = pytest-variables-2.0.0.tar.gz::https://github.com/pytest-dev/pytest-variables/archive/v2.0.0.tar.gz
 	sha512sums = 3f092df8ddeda4a554e9d7e677218e5fca196775a009320f4f0de9f740bb6f6dfe5bb014b1c418c91d7870f402328e68bdee8701417da2ab375673de07135b40
 
 pkgname = python-pytest-variables
