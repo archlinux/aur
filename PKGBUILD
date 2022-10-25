@@ -1,7 +1,7 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
 url="https://lfortran.org"
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://lfortran.github.io/tarballs/release/"$pkgname-$pkgver.tar.gz)
-sha256sums=('8712c1b0c886f08937ff4c277ff3fa5c05e4dead1bafe55e3bd789be96470127')
+sha256sums=('44030e27d1c1f85d6c367c0fa901e7ad753e8ca04bbb58cef16b8101085b6f53')
 noextract=()
 
 prepare() {
