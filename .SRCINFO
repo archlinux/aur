@@ -1,0 +1,17 @@
+pkgbase = python-audible-series
+	pkgdesc = Adds a command to audible-cli that looks for new series releases in a user's library.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/luscoma/audible-series
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	depends = python-audible
+	depends = python-yaml
+	provides = python-audible-series
+	conflicts = python-audible-series
+	source = https://files.pythonhosted.org/packages/source/a/audible-series/audible-series-1.0.2.tar.gz
+	sha256sums = 8081bdc71cb11c641ac33f27398ab3669505d281c7047c5a7fa1937c586e6d01
+
+pkgname = python-audible-series
