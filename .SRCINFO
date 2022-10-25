@@ -1,7 +1,7 @@
 pkgbase = firectl
 	pkgdesc = A command-line tool to run Firecracker microVMs
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/firecracker-microvm/firectl
 	arch = x86_64
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = firectl
 	makedepends = go
 	depends = firecracker
 	options = !lto
-	source = firectl::git+https://github.com/firecracker-microvm/firectl#commit=9260d0f18e103ee2178f40a5e4a57c52baffc628
+	source = firectl::git+https://github.com/firecracker-microvm/firectl#commit=7614c6674c633babb058f25d1e8b8c62bf888307
 	b2sums = SKIP
 
 pkgname = firectl

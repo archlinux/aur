@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=firectl
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A command-line tool to run Firecracker microVMs'
 arch=('x86_64')
 url='https://github.com/firecracker-microvm/firectl'
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('firecracker')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='9260d0f18e103ee2178f40a5e4a57c52baffc628'
+_commit='7614c6674c633babb058f25d1e8b8c62bf888307'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
