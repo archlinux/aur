@@ -1,0 +1,15 @@
+pkgbase = graaljs-jdk19-bin
+	pkgdesc = GraalVM-based, polyglot-enabled implementation of JavaScript, Java 19 version
+	pkgver = 22.3.0
+	pkgrel = 1
+	url = https://github.com/oracle/graaljs
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = jdk19-graalvm-bin
+	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.0/js-installable-svm-java19-linux-amd64-22.3.0.jar
+	sha256sums_x86_64 = cb324fc91d8ecb12825a8e249be7dcf825b0c1d228f0a15cf12623683590ffbb
+	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.0/js-installable-svm-java19-linux-aarch64-22.3.0.jar
+	sha256sums_aarch64 = a598be1271dc291485f1001257ffc01e97c9036791cc8e30ad9530f4416a259b
+
+pkgname = graaljs-jdk19-bin
