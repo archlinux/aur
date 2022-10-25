@@ -6,13 +6,13 @@ _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.9.3.r202.g8cd28d1
+pkgver=0.9.3.r234.gd502885
 pkgrel=1
 arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
 depends=(python-requests python-platformdirs python-cattrs python-url-normalize)
-makedepends=(python-build python-install python-poetry git)
+makedepends=(python-build python-installer python-poetry git)
 optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-botocore: Interface for Amazon Web Services'
   'python-pymongo: Cache backend for MongoDB database'
@@ -47,6 +47,6 @@ check() {
 
 package() {
   cd ${_base}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
