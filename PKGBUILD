@@ -4,11 +4,9 @@ pkgver=1
 pkgrel=1
 pkgdesc="CLI version of the old Sharps talking clock"
 arch=('any')
-url="https://stormdragon.tk"
+url="https://billy.wolfe.casa"
 license=('WTFPL')
 depends=('bash' 'sox')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
 source=("${url}/downloads/sharps-talking-clock.tar.xz")
 sha512sums=('f5e366fb38798cdbd67099ade455d870c1703993ea1d8144ef47eb9c377c04ffbc52065d72203fe5325f60528c8378a3104ae8be4c515231777f96192993e44d')
 
