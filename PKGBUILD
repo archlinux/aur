@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=pdd
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Tiny date, time diff calculator."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jarun/pdd"
 license=('GPL')
 depends=('python-dateutil')
 source=("https://github.com/jarun/pdd/archive/v${pkgver}.tar.gz")
-sha256sums=('cd615dc9aa015bb5d0f1a1d03f1de7db994628256cfe8ed8ab25e1fb2e9d3762')
+sha256sums=('607fe77b0faf3f50301971120bad01da571c9107151a5344523ee38055649267')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
