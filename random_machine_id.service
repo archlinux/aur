@@ -1,0 +1,10 @@
+[Unit]   
+Description=Change /etc/machine-id on boot
+         
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/sbin/random_machine_id.sh
+         
+[Install]                                                                                                           
+WantedBy=multi-user.target
+

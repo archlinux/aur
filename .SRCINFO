@@ -1,0 +1,9 @@
+pkgbase = random_machine_id
+	pkgdesc = generate new /etc/machine-id on boot
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = systemd
+
+pkgname = random_machine_id
