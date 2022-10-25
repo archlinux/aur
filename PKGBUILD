@@ -4,7 +4,7 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-webengine-git
-pkgver=22.2.alpha.a088b0e1.r2.g6554c674
+pkgver=22.9.24.alpha.220930.ca7fc1c2.r71.g6742321a
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
@@ -27,9 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	msg "Fixing flags"
-	echo "QMAKE_CXXFLAGS_RELEASE = $CFLAGS" >> goldendict.pro
-	echo "QMAKE_CFLAGS_RELEASE = $CXXFLAGS" >> goldendict.pro
 }
 
 build(){
