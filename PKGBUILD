@@ -3,12 +3,12 @@
 pkgname=python-audible-cli
 _name=${pkgname#python-}
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line interface (cli) for the audible package.'
 arch=(any)
 url=https://github.com/mkb79/audible-cli
 license=(AGPL3)
-depends=(python python-aiofiles python-audible python-click python-httpx python-packaging python-pillow python-questionary python-tabulate python-toml python-tqdm)
+depends=('python' 'python-aiofiles' 'python-audible' 'python-click' 'python-httpx' 'python-packaging' 'python-pillow' 'python-questionary' 'python-tabulate' 'python-toml' 'python-tqdm' 'python-rfc3986>=1.3.0' 'python-rfc3986<2.0.0')
 makedepends=('python-setuptools')
 #makedepends=(python-pip)
 checkdepends=()

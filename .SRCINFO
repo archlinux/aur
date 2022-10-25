@@ -1,7 +1,7 @@
 pkgbase = python-audible-cli
 	pkgdesc = Command line interface (cli) for the audible package.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkb79/audible-cli
 	arch = any
 	license = AGPL3
@@ -17,6 +17,8 @@ pkgbase = python-audible-cli
 	depends = python-tabulate
 	depends = python-toml
 	depends = python-tqdm
+	depends = python-rfc3986>=1.3.0
+	depends = python-rfc3986<2.0.0
 	provides = python-audible-cli
 	conflicts = python-audible-cli
 	source = https://files.pythonhosted.org/packages/source/a/audible-cli/audible-cli-0.2.4.tar.gz
