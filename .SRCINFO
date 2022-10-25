@@ -1,7 +1,7 @@
 pkgbase = wbg
 	pkgdesc = Wallpaper application for wlroots based Wayland compositors
-	pkgver = 1.0.2
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://codeberg.org/dnkl/wbg
 	arch = x86_64
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = wbg
 	depends = pixman
 	depends = libjpeg-turbo
 	depends = libpng
-	source = wbg-1.0.2.tar.gz::https://codeberg.org/dnkl/wbg/archive/1.0.2.tar.gz
-	sha256sums = 3afcad17233ae3120369eaaf54bde41be8629bcda375d75a2d0d893649e802bc
+	depends = libwebp
+	source = wbg-1.1.0.tar.gz::https://codeberg.org/dnkl/wbg/archive/1.1.0.tar.gz
+	sha256sums = 3f7844914c8a53fababa5df3575a9adb06026932bdd359664077ffdf19aae917
 
 pkgname = wbg
-
