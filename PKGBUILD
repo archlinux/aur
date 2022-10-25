@@ -1,7 +1,7 @@
 # Maintainer: Marcos López <feirlane@gmail.com>
 
 pkgname=tinyfugue-git
-pkgver=r78.5314fe1
+pkgver=r155.72a5c32
 pkgrel=1
 pkgdesc='TinyFugue, aka "tf", is a flexible, screen-oriented MUD client, for use with any type of text MUD. Git version with support for ATCP, GMCP and telnet option 102.'
 arch=('i686' 'x86_64')
@@ -25,13 +25,6 @@ pkgver() {
 
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-
-	patch --forward --strip=1 --input="${srcdir}/../force_configura_to_embed_python.patch"
-	patch --forward --strip=1 --input="${srcdir}/../rename_interactive_macro.patch"
 }
 
 build() {
