@@ -3,7 +3,7 @@
 java_=17
 pkgname_=graaljs
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="GraalVM-based, polyglot-enabled implementation of JavaScript, Java ${java_} version"
 arch=('x86_64'
@@ -13,8 +13,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/js-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/js-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('4538ec94eb3f956da259a008a3f885c3016c0c58de11f6c38b89ff2b68fab952')
-sha256sums_aarch64=('1e92e1ba0fd9d5ea52fb385a3c45bf3a25258dc5f0c6b0bd4946e0b9e2c83d47')
+sha256sums_x86_64=('42544e2b72d977f9d0067f451621374332a9739d3cdd3879b411a8287f184af3')
+sha256sums_aarch64=('02b00c37b58e4c81c2185acd0692202e5768792c95ddbcb59ce140cf85e3507c')
 
 package() {
     local file eq permissions mode name target
