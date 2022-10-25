@@ -1,6 +1,6 @@
 pkgbase = gomp-git
 	pkgdesc = MPD client inspired by ncmpcpp written in GO.
-	pkgver = r281.4a842ec
+	pkgver = r292.e5cdea3
 	pkgrel = 1
 	url = https://github.com/aditya-K2/gomp
 	arch = x86_64
