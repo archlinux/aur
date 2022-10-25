@@ -1,7 +1,7 @@
 # Maintainer: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=hiera
-pkgver=3.8.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Lightweight pluggable hierarchical database'
 arch=('any')
@@ -12,8 +12,8 @@ backup=('etc/hiera.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.gemspec::https://raw.githubusercontent.com/puppetlabs/hiera/${pkgver}/.gemspec"
         ruby3.patch)
-sha512sums=('192076c462edb46ea9142ada17885c659661b85f8df45c1eadeb16050c2ee0e2fc2606d8d07e67e24095709fa6270bf3d386142cb11e3aa18fcd63dd3cd869aa'
-            '80735805c1340b046812f32df22be4acc11ea6c0e045a783f044839634da0209dc5816722c40b61e951819817e4adbda57c5a6f5c396144f531b2540963187b0'
+sha512sums=('b195e8051c95396693536ca36ae9020077556db9547f8eb6876217200a674fce7eb8298da49ba35a19fd9f8e10c5fe80d8f569ab66665ebe34b5af8a8eb9e644'
+            '2096e3b888b37d4004373eaf123d81c8b5ef367bc423b186ae34f7ab89a8ab752a28505fc6491ddc6dfdf85ac3b18a5940d9ee1951f547969c846382a30bf947'
             '4e55027f5c21872eb55ae80656c3039a92717d2619cbeef1a86c8d5f938727b3f9ff68bdceb71b3198597bcd5cb981a8b3b07528003364041ef387376d80d275')
 
 prepare() {
