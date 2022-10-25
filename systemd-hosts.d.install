@@ -1,0 +1,17 @@
+post_install() {
+    [[ ! -L /etc/hosts ]] &&
+        mv -b /etc/hosts /etc/hosts.d/hosts.conf
+    ln -sf /run/hosts /etc/hosts
+    systemctl enable --now systemd-hosts.d.service
+    systemctl enable --now systemd-hosts.d.path
+}
+
+pre_remove() {
+    [[ -L /etc/hosts ]] &&
+        rm /etc/hosts
+    mv /etc/hosts.d/hosts.conf /etc/hosts ||
+        mv /run/hosts /etc/hosts ||
+        touch /etc/hosts
+    systemctl disable --now systemd-hosts.d.service
+    systemctl disable --now systemd-hosts.d.path
+}
