@@ -1,0 +1,17 @@
+pkgbase = python-sphinx-lint
+	pkgdesc = Check for stylistic and formal issues in .rst and .py files included in the documentation.
+	pkgver = 0.6.7
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/sphinx-lint
+	arch = any
+	license = PSF
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-regex
+	depends = python-polib
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-lint/sphinx-lint-0.6.7.tar.gz
+	sha256sums = 704a9bffd9117c77accf4a3c46f8ab3b4cb6ef51419b5d21a4386042f0616789
+
+pkgname = python-sphinx-lint
