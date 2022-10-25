@@ -12,7 +12,7 @@ license=(GPL2)
 depends=(glu
   qt5-base
   pythonqt-knossos-git
-  quazip
+  quazip-qt5
   snappy
 )
 makedepends=(boost
