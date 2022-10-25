@@ -1,6 +1,6 @@
 # Maintainer: onedwide <one-d-wide@protonmail.com>
 pkgname=lolcat-rs
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="The good ol' lolcat, now with fearless concurrency."
 url='https://github.com/ur0/lolcat'
@@ -10,11 +10,12 @@ provides=('lolcat')
 conflicts=('lolcat')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6eee67d2ceeb0443b5cbd285e320e8923c891fa0734815394339141b442a4d33')
+_commit_hash='9e957b72c8eb624ab46486313c122eb7b02e4426'
+source=("$pkgname.tar.gz::$url/archive/$_commit_hash.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
-    cd "lolcat-$pkgver"
+    cd "lolcat-$_commit_hash"
     >Cargo.config
     if [[ "$(pacman -Qq rust)" == rust ]]; then
         echo Package rust installed: compile with dynamic linking
@@ -31,13 +32,13 @@ EOF
 }
 
 build() {
-    cd "lolcat-$pkgver"
+    cd "lolcat-$_commit_hash"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --config Cargo.config
 }
 
 package() {
-    cd "lolcat-$pkgver"
+    cd "lolcat-$_commit_hash"
     install -Dm755 "target/release/lolcat" -t "$pkgdir/usr/bin"
 }
