@@ -1,7 +1,7 @@
 pkgbase = random-rs
 	pkgdesc = Simple CLI multitool
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/one-d-wide/random-rs
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = random-rs
 	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = rustup
+	makedepends = cargo
 	depends = gcc-libs
 	provides = random
 	conflicts = random
