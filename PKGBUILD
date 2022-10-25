@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-llvm-lines
 pkgver=0.4.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Count the number of lines of LLVM IR across all instantiations of a generic function"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/dtolnay/cargo-llvm-lines'
@@ -19,7 +19,6 @@ prepare() {
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
-
 
 build() {
     cd "$pkgname-$pkgver"
@@ -43,11 +42,6 @@ check() {
     target/release/cargo-llvm-lines llvm-lines | head -n 8
 }
 
-package() {
-    cd "$pkgname-$pkgver"
-    install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
-    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
-}
 package() {
     cd "$pkgname-$pkgver"
 
