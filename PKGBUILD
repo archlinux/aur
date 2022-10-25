@@ -9,6 +9,7 @@ license=("MIT")
 depends=("openssl" "grub" "shim-signed" "sbsigntools" "efibootmgr")
 source=("$_pkgname::git+https://github.com/zeroxoneafour/arch-secureboot")
 sha256sums=("SKIP")
+install=".install"
 
 pkgver() {
 	cd $_pkgname
