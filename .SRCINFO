@@ -1,0 +1,11 @@
+pkgbase = damon
+	pkgdesc = A terminal UI (TUI) for HashiCorp Nomad
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hashicorp/damon
+	arch = x86_64
+	license = GPL
+	source = https://github.com/hashicorp/damon/releases/download/nightly/damon_0.1.0-dev_linux_amd64.zip
+	md5sums = d34d177dc9e73b4585908b184b1fe48d
+
+pkgname = damon
