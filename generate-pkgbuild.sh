@@ -1,6 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+pkgver="$(curl -fsSL https://api.github.com/repos/zebradil/cloudflare-dynamic-dns/releases/latest | jq -r '.tag_name')"
+
+cat <<EOF
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
-pkgver=2.0.0
+pkgver=${pkgver:?}
+EOF
+
+cat <<'EOF'
 pkgname=cloudflare-dynamic-dns
 pkgrel=3
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
@@ -37,3 +47,4 @@ package() {
     install -Dm644 systemd/* -t "$pkgdir"/usr/lib/systemd/system
     install -m700 -d "$pkgdir"/etc/cloudflare-dynamic-dns/config.d
 }
+EOF
