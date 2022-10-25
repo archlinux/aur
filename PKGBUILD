@@ -2,7 +2,7 @@
 
 pkgname=otf-aoyagikouzant
 pkgver=2.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Brush font created by calligrapher Kouzan Aoyagi, includes JIS Non-Kanji and level-1 Kanji."
 arch=('any')
 url="https://opentype.jp/aoyagikouzanfontt.htm"
@@ -21,3 +21,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" "AoyagiKouzanTOTF.otf"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 }
+md5sums=('c663e0899b8ce92f76e05b711f017378'
+         '6f327e6722e0a6389e8c487dbd207866')
