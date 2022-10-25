@@ -1,6 +1,6 @@
 pkgbase = sqlite-utils
 	pkgdesc = CLI tool and Python utility functions for manipulating SQLite databases
-	pkgver = 3.29
+	pkgver = 3.30
 	pkgrel = 1
 	url = https://sqlite-utils.datasette.io/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = sqlite-utils
 	depends = python-click-default-group
 	depends = python-tabulate
 	conflicts = sqlite-utils
-	source = https://pypi.io/packages/source/s/sqlite-utils/sqlite-utils-3.29.tar.gz
-	sha256sums = d9ea1026a9c007a895cdd04abdcbe3cd2ac03515c2a2ebbad9233939aa111f5b
+	source = https://pypi.io/packages/source/s/sqlite-utils/sqlite-utils-3.30.tar.gz
+	sha256sums = 30005c12d5f13445659f791766beb6a9900c25f442bea1f980f21d38b75f6e33
 
 pkgname = sqlite-utils
