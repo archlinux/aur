@@ -2,16 +2,18 @@
 
 pkgname=cavecube-bin
 ghpkgname=CaveCube
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
-arch=(x86_64)
+arch=(x86_64 i686)
 url="https://github.com/PQCraft/${ghpkgname}"
 license=(Boost)
 depends=('glibc' 'glfw')
 provides=(cavecube)
 conflicts=(cavecube)
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube-linux.tar.gz" "${pkgname}-data-${pkgver}-${pkgrel}.zip::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube-data.zip")
+source=("${pkgname}_data_${pkgver}-${pkgrel}.zip::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube_data.zip")
+source_x86_64=("${pkgname}_game_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube_game_linux_x86_64.tar.gz")
+source_i686=("${pkgname}_game_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube_game_linux_i686.tar.gz")
 sha256sums=('SKIP' 'SKIP')
 
 package() {

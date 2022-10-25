@@ -1,17 +1,19 @@
 pkgbase = cavecube-bin
 	pkgdesc = An in-development Minecraft/Infiniminer clone
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/PQCraft/CaveCube
 	arch = x86_64
+	arch = i686
 	license = Boost
 	depends = glibc
 	depends = glfw
 	provides = cavecube
 	conflicts = cavecube
-	source = cavecube-bin-0.4.4-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.4.4/cavecube-linux.tar.gz
-	source = cavecube-bin-data-0.4.4-1.zip::https://github.com/PQCraft/CaveCube/releases/download/0.4.4/cavecube-data.zip
+	source = cavecube-bin_data_0.4.5-1.zip::https://github.com/PQCraft/CaveCube/releases/download/0.4.5/cavecube_data.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
+	source_x86_64 = cavecube-bin_game_0.4.5-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.4.5/cavecube_game_linux_x86_64.tar.gz
+	source_i686 = cavecube-bin_game_0.4.5-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.4.5/cavecube_game_linux_i686.tar.gz
 
 pkgname = cavecube-bin
