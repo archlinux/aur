@@ -4,12 +4,12 @@
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
-depends=('kubelet-bin' 'conntrack-tools' 'iptables' 'iproute2' 'util-linux')
+depends=('kubelet-bin' 'conntrack-tools' 'iptables' 'iproute2' 'util-linux' 'crictl')
 conflicts=('kubeadm')
 provides=('kubeadm')
 source=(
@@ -19,13 +19,13 @@ b2sums=('074744d327227c32661befcff7651209438090fbd75890ad3b5a32ada1fbdf8901dbd13
 
 case "$CARCH" in
   x86_64) _pkgarch="amd64"
-    b2sums+=('b9e3f05ab8001cb78d81ddfc6c3c644635dc788ab44032d0f59374d2a9d9323efb57052e442b4a57fabb32844992f9ad167ac2d6e880da96725bfbc83b8d67de')
+    b2sums+=('ad1fa6ea89e84ffc83e172dce14586b972ec37e2f2bbac181bf1a3f8790948687bbc6783fbdef75c3cb51c0d40d7a64477e2e5d7f193a94167e2f4695634868f')
     ;;
   arm*) _pkgarch="arm"
-    b2sums+=('8282bfdab97c5e32b27f5d432af8173f23087800b22724f21db64489509f7042ecadc2a7a3c9d869f36e55a2719c8d57b915e95a83cb0f98aee7169edf412c69')
+    b2sums+=('666ca56bcacc000e3b9ed12724c87c61cb187e9dbe71f8d0fe71e15533d83748e537095661cf8f5fa79b685100bcc090c382be83ea07567a49db98481c187613')
     ;;
   aarch64) _pkgarch="arm64"
-    b2sums+=('68d9aa7db4dca115f0956fea1a30f16a19f1db5adc23d91582010eb5f42fcad7eee391bbc346f349771dd7b9ad5a240f6e5e9771018fd5b9e0e4493825143bea')
+    b2sums+=('0ae2aa8b8844b430ce35372d07a9d1cc99b9790656e0cb0fd2022cc207c9614fb12c3ccb103d069f30636f524e75b1636e93f037017e4d2359ca2335ef6ae124')
     ;;
 esac
 
