@@ -2,12 +2,12 @@
 
 pkgname=yin-yang
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
-depends=('python' 'python-psutil' 'python-suntime' 'python-systemd' 'pyside6')
+depends=('python-psutil' 'python-suntime' 'python-systemd' 'python-pyqt6' 'pyside6' 'qt6-positioning')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.1.1.zip")
@@ -15,8 +15,7 @@ sha256sums=('1c317a73669639504294ff4108c180fe2b0408e9845214d5e0a5f763c6ecd313')
 
 package() {
     # This is a modified version of scripts/install.sh
-    cd "$srcdir/$(/bin/ls -t1 | head -n 1)"
-    echo "Installing yin yang"
+    cd "$(/bin/ls -d1 */ | head -n 1)"
 
     # Check if needed directories exists
     DIRS=(
