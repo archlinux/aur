@@ -2,7 +2,7 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 # Maintainer gileri
 pkgname='noisetorch-git'
-pkgver=0.12.2.r13.g2792a64
+pkgver=0.12.2.r15.g3b04af2
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -33,7 +33,7 @@ prepare() {
 	git submodule init
 	git config submodule.c/c-ringbuf.url $srcdir/c-ringbuf
 	git config submodule.c/rnnoise.url $srcdir/rnnoise
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 	export GOPATH="$srcdir/go"
 	go clean -modcache
 }
