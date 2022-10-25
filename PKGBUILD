@@ -6,7 +6,7 @@
 
 pkgname=quantlib
 _pkgname=QuantLib
-pkgver=1.27.1
+pkgver=1.28
 pkgrel=1
 pkgdesc="A free/open-source library for quantitative finance."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!libtool)
 depends=('boost-libs')
 makedepends=('make' 'boost')
 source=("Quantlib-$pkgver.tar.gz::https://github.com/lballabio/QuantLib/releases/download/QuantLib-v$pkgver/QuantLib-$pkgver.tar.gz")
-sha256sums=('ab5e3620e1556b025a4e7a80a9e59c5fc27ae2c7a0e850b9698ad22d0c553d18')
+sha256sums=('32de9fba5d64c26d2a592ea14f4a895706338befed8ce72de727084a2de68cfd')
 
 prepare() {
   cd "$_pkgname-$pkgver"/
@@ -31,7 +31,8 @@ build() {
     --enable-openmp \
     --disable-static \
     --enable-std-classes \
-    CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
+    --enable-null-as-functions \
+    --enable-parallel-unit-test-runner
   make
 }
 
