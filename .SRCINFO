@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libxml2
 	pkgdesc = XML parsing library, version 2 (mingw-w64)
-	pkgver = 2.10.2
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = http://www.xmlsoft.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-libxml2
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.2.tar.xz
-	sha256sums = d240abe6da9c65cb1900dd9bf3a3501ccf88b3c2a1cb98317d03f272dda5b265
+	source = https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.3.tar.xz
+	sha256sums = 5d2cc3d78bec3dbe212a9d7fa629ada25a7da928af432c93060ff5c17ee28a9c
 
 pkgname = mingw-w64-libxml2
