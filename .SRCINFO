@@ -1,0 +1,13 @@
+pkgbase = otf-line-seed
+	pkgdesc = LINE Seed font by LINE corp.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://seed.line.me
+	arch = any
+	license = custom
+	source = https://seed.line.me/src/images/fonts/LINE_Seed_Sans_JP.zip
+	sha512sums = b65f47f48bdb6a2f58932d31ccf5792743013b8432b7e5b7696a254596ea3852027da1db57da53d95731520dfd1eb395615009e4cb30ccc336864a790549e13b
+
+pkgname = otf-line-seed
+
+pkgname = ttf-line-seed
