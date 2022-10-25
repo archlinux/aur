@@ -9,7 +9,7 @@
 pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=(nginx-without-server-header)
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server without server header'
 arch=(x86_64)
@@ -39,7 +39,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         ngx_http_v2_filter_module.c.patch)
 
 #validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('074782dba9cd5f8f493fbb57e20bda6dc9171814d919a47ee9f825d93f12c9f9d496e25d063c983191b55ad6a236bcef252ce16ecc1d253dc8b23433557559b1'
+sha512sums=('1d468dcfa9bbd348b8a5dc514ac1428a789e73a92384c039b73a51ce376785f74bf942872c5594a9fcda6bbf44758bd727ce15ac2395f1aa989c507014647dcc'
             'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
             '4508ce782553912cce5e4c3133a223b754c8cf52722471b4860651e9033e3e11f975738918974569719af8999b0564aa1279410f8590f7048e8e192d8f5c040f'
