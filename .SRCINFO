@@ -8,12 +8,12 @@ pkgbase = deadlink
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-build
 	makedepends = python-flit-core
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python-appdirs
 	depends = python-httpx
 	depends = python-rich
 	depends = python-toml
-	source = https://github.com/nschloe/deadlink/archive/v0.5.0.tar.gz
+	source = deadlink-0.5.0.tar.gz::https://github.com/nschloe/deadlink/archive/v0.5.0.tar.gz
 	sha512sums = 6a9ef13ef43ebe38a17ec2656f65c23f75f20bc5bf549cc69495c83978e1c377ee0ea233d569e152cecc9379f2a18e6c4de13a92e801e95753dea33da11fb598
 
 pkgname = deadlink
