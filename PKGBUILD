@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-catppuccin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Soothing pastel theme for Neovim"
 arch=('any')
@@ -11,11 +11,11 @@ groups=('neovim-plugins')
 depends=('neovim')
 install=catppuccin.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a800f46c9dccf1f0d978d3bf5ca8a570510fca3dcea89da06e6bae7c507ccb92')
+sha256sums=('7eeddda104be7ae06b5394210a48e5825e816b83a8657e87ff004a2f331df6a9')
 
 package() {
 	cd "nvim-$pkgver"
-	find autoload colors doc lua -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find after autoload colors doc lua -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dvm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
