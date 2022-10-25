@@ -1,7 +1,7 @@
 pkgbase = rbtools
 	pkgdesc = Client tools for Review Board
-	pkgver = 3.1
-	pkgrel = 2
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://www.reviewboard.org/
 	arch = any
 	license = custom:MIT
@@ -15,9 +15,7 @@ pkgbase = rbtools
 	depends = python-texttable
 	depends = python-colorama
 	depends = pydiffx
-	source = https://files.pythonhosted.org/packages/source/R/RBTools/RBTools-3.1.tar.gz
-	source = 0001-Fix-applying-patches-in-Mercurial.patch
-	sha256sums = a185dd9c4b42eeda6b611135b3a814cc01c9b870519a3b6d6d7e7401592692f9
-	sha256sums = 33f40caa1734e8248b3d91697c279b9b3f285b34dcda077f4d3be0532d61c1b7
+	source = https://files.pythonhosted.org/packages/source/R/RBTools/RBTools-4.0.tar.gz
+	sha256sums = 67556ba8ce2e9977c4a4a5e14c4785cbe9215be56d04f8167fd703a4ae0f266f
 
 pkgname = rbtools
