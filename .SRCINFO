@@ -5,6 +5,7 @@ pkgbase = xvst
 	url = http://xviservicethief.sourceforge.net
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = sed
 	makedepends = qt5-tools
@@ -28,4 +29,3 @@ pkgbase = xvst
 	sha256sums = 32276bbba698c6de0e739550a0f03cc63545a5c2dc1fe5d39ac52874f069f8d3
 
 pkgname = xvst
-
