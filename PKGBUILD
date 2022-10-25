@@ -15,7 +15,7 @@ depends=(curl
   glut
   pythonqt-knossos-git
   qt5-tools # Qt5Help
-  quazip
+  quazip-qt5
   snappy
 )
 makedepends=(boost
