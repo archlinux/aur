@@ -2,8 +2,8 @@ post_install() {
     printf "
     ################################################
     To enable sounds in Cinnamon DE, go to: 
-    System Settings, Hardware, Sound, Sounds tab
-    and select sounds: /usr/share/sounds/LinuxMint
+    System Settings, Hardware, Sound, Sounds tab and
+    select sounds: /usr/share/sounds/LinuxMint/stereo
     ################################################
 "
 }
@@ -12,8 +12,8 @@ post_upgrade() {
     printf "
     ################################################
     To enable sounds in Cinnamon DE, go to: 
-    System Settings, Hardware, Sound, Sounds tab
-    and select sounds: /usr/share/sounds/LinuxMint
+    System Settings, Hardware, Sound, Sounds tab and
+    select sounds: /usr/share/sounds/LinuxMint/stereo
     ################################################
 "
 }
