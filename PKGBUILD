@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/firefly-cpp/${pkgname}"
 license=(MIT)
 depends=(python-toml python-click)
-makedepends=(python-build python-install python-poetry-core)
+makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 optdepends=('man-db: manual pages for toml-adapt')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
@@ -25,10 +25,7 @@ check() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
-
-  # https://github.com/FFY00/python-install/pull/6
-  chmod +x ${pkgdir}/usr/bin/*
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 ${pkgname}.1 -t "${pkgdir}/usr/share/man/man1/"
