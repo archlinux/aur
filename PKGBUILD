@@ -1,12 +1,14 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 java_=11
-pkgname_=graalpython
+pkgname_=graalpy
+pkgname__=graalpython
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Python language (early development), Java ${java_} version"
-arch=('x86_64')
+arch=('x86_64'
+      'aarch64')
 url='https://github.com/graalvm/graalpython'
 license=('custom')
 depends=(
@@ -15,14 +17,17 @@ depends=(
     'libxcrypt-compat'
     'zlib'
 )
-source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('b2f2712c6869d2f9ff1c737c7df4d4245f3d43c8d59161ab3bcd1cc0aa521564')
+replaces=("${pkgname__}-jdk${java_}-bin")
+source_x86_64=("https://github.com/graalvm/$pkgname__/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
+source_aarch64=("https://github.com/graalvm/$pkgname__/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
+sha256sums_x86_64=('6d03d12c1a974a7280fbc81e7655c8afd0b7d963d20ea09076a4172d1566a53a')
+sha256sums_aarch64=('43727de236e48c85e1fc38ce35260becdb24ba5fc2fa4280066e890ec4c01edf')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_GRAALPYTHON.txt THIRD_PARTY_LICENSE_GRAALPYTHON.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_GRAALPY.txt THIRD_PARTY_LICENSE_GRAALPY.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -58,5 +63,5 @@ package() {
     # already in jdk${java_}-graalvm-bin package
     unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/lib/installer/components/org.graalvm.component"
 
-    install -DTm644 LICENSE_GRAALPYTHON.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -DTm644 LICENSE_GRAALPY.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
