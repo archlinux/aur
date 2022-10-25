@@ -1,7 +1,7 @@
 # Maintainer: endaaman <endaaman@frontier.hokudai.ac.jp>
 pkgname=(otf-line-seed ttf-line-seed)
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='LINE Seed font'
 arch=(any)
 url="https://seed.line.me"
@@ -11,7 +11,7 @@ source=(
 	"license.txt"
 )
 sha512sums=(
-	'b65f47f48bdb6a2f58932d31ccf5792743013b8432b7e5b7696a254596ea3852027da1db57da53d95731520dfd1eb395615009e4cb30ccc336864a790549e13b'
+	'SKIP'
 	'6e98e0884f66a1070ada6c12ee98069341ca4d72e23c1a6318524f9e15b21ba73521322301d0be091bfa75ef148cce4e538cc62dd8b8d6f0402ff9271fe1013a'
 )
 
