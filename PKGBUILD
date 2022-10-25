@@ -50,8 +50,7 @@ build() {
         rm -rf "${srcdir}/build/"
     fi
 
-    # We don't extract the usr/ subdirectory, which only contains debian changelogs
-    mkdir -p "${srcdir}/build/usr/" \
+    mkdir -p "${srcdir}/build/" \
         && tar --extract \
                --gzip \
                --file=data.tar.gz \
@@ -111,8 +110,13 @@ check() {
 
 package() {
     mkdir "${pkgdir}/usr/" || true
-    cp -R "${srcdir}/build/"{bin,lib} "${pkgdir}/usr/"
-    cp -R "${srcdir}/build/usr/lib" "${pkgdir}/usr/"
+
+    # Copy everything from /usr as-is
+    cp -R -v "${srcdir}/build/usr/" "${pkgdir}/"
+
+    # Install binaries from /bin/* and /lib/* into /usr/bin/* and /usr/lib/*
+    cp -R -v "${srcdir}/build/"{bin,lib} "${pkgdir}/usr/"
+
 
     # Fix systemd units
     sed -i \
