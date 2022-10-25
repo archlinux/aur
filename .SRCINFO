@@ -1,7 +1,7 @@
 pkgbase = pydiffx
 	pkgdesc = Python Reader/Writer for DiffX Files
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://diffx.org/pydiffx/
 	arch = any
 	license = custom:MIT
@@ -11,7 +11,7 @@ pkgbase = pydiffx
 	depends = python
 	depends = python-setuptools
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/p/pydiffx/pydiffx-1.0.1.tar.gz
-	sha256sums = 853216435008c23a0e2cd2c2a8ed15108bca449d6c31bc59d2e894246aff6bfa
+	source = https://files.pythonhosted.org/packages/source/p/pydiffx/pydiffx-1.1.tar.gz
+	sha256sums = 0986dbb0a87cbf79e244e2f1c0e2b696d8e86b3861ea2955757a61d38e139228
 
 pkgname = pydiffx
