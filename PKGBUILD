@@ -13,7 +13,7 @@ pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=6.0
 pkgver=6.0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -26,8 +26,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.x
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0102-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
         '0103-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch'
+        'https://github.com/archlinux/linux/commit/fb23dad87a0bfb6fdfde3dc1d18104da631d050a.patch'
+        'https://github.com/archlinux/linux/commit/64ebb671ffc4cbfd548e4f1b4aeb98155fd386dc.patch'
+        'https://github.com/archlinux/linux/commit/a24b69f369c6c55be8ce40427feb4e127afae129.patch'
+        'https://github.com/archlinux/linux/commit/785699dbc7041b99e0027bff27ffe17eba202e96.patch'
+        'https://github.com/archlinux/linux/commit/6df3912f64cea68409b08d282ffbccf0af7f8d8e.patch'
         # MANJARO Patches
-
+        'https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/queue-6.0/revert-alsa-hda-fix-page-fault-in-snd_hda_codec_shutdown.patch'
+        'https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/queue-6.0/drm-i915-bios-use-hardcoded-fp_timing-size-for-generating-lfp-data-pointers.patch'
+        'https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/queue-6.0/drm-i915-bios-validate-fp_timing-terminator-presence.patch'
+        'https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/queue-6.0/efi-efivars-fix-variable-writes-without-query_variable_store.patch'
+        'https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/queue-6.0/efi-ssdt-don-t-free-memory-if-acpi-table-was-loaded-successfully.patch'
+        'https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/plain/queue-6.0/thermal-intel_powerclamp-use-first-online-cpu-as-control_cpu.patch'
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
@@ -53,6 +63,17 @@ sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'a75d2a2322c8cd99a6dc9945424fd9006e7a8f9d2793c0ae97ef931f2d54b9a5'
             'a8a2d8b402b2877df1a949a106c634b6c366dd33b954c4b735ce1d3778214169'
+            '5004facad5df507f81a2de86de12c97eb87c4dee9b3b9b44e8ff2e7c5302db14'
+            '86ab8a9821ea7300ff7f7c9d64cf54f6662ae4609097fff3795e548f3181d603'
+            '7bc0a5aa10af57d3f68157afdb1d1ba252c59582180dbb5d02acb5c334e74d0b'
+            'ad6fb3d449ded539840cc2dc5e12ecbc9563a68b3054bc93dd302f4ab58d7ca2'
+            'c6a65c8bd5e51d59af060be03534690c658e7eb4a2bcbad21d407afb88f6d3ab'
+            '0e24e6d985ae8c92caf7805bc2020c09423b84eee298442c36b179a4b6aede0f'
+            '17c5175ec3961697fb16458cca03e3a97f6f981f043d76e8da8e5b3535cf9cb5'
+            'ef3f8b6b4f61fdd2b93ae33473bea7593997d53f0b66127a16f3d71e9bdf3eae'
+            '2a53e5b295d717b97948716d3c79cca929612961e9cd8335712dd6e6498fe550'
+            'a30c79973fdf33eae175e810e3d859fa4f9c0b0e9b4f430c822ec50f5be5c889'
+            '684e9dde13ffeaa7296eb9f352fbb6820456b220965dbf18c033ca18e96404da'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '8e5c147591d14300a59ed8354a9d0746cf78650256558b45f964ca76eaed9a9f'
