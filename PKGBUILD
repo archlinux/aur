@@ -7,7 +7,7 @@
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.06.2208010"
+_wechat_devtools_ver="1.06.2209070"
 # https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1052203030&version_type=1
 _wechat_devtools_url="https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=${_wechat_devtools_ver//\./}&version_type=1"
 # _wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
@@ -46,9 +46,9 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wxvpkg_unpack.js"
         "fix-other.sh")
 md5sums=('ac7680788544c457daee11aaf69798fe'
-         '4312c9cd7b7be4a95f7b71d3311b19e4'
+         '8c6be639c117f8c8e6493d335bb17eee'
          '4d14589085ebbf79ce504dc27330d33b'
-         'd6eb02f0d31b25e82812784b4147b9c5'
+         'd50fc9dd35f3ae2887e5b434dd248e7e'
          '4d3f5273be80a74741c841fcfa4185d3'
          '0f4353664123320280ea4d6bb295dce2'
          'ae685283b21becd9c097aca4571f7556'
@@ -101,7 +101,7 @@ build() {
     # fix-package-name.js使用
     export srcdir=$srcdir
     export WINE=false
-    
+
     for script in fix-package-name.js fix-cli.sh fix-other.sh fix-menu.sh fix-core.sh rebuild-node-modules.sh; do
         _log "run ${script}"
         "${srcdir}/tools/${script}"
