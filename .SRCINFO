@@ -1,6 +1,6 @@
 pkgbase = renderdoc-minimal
 	pkgdesc = OpenGL and Vulkan debugging tool (minimal, capture + replay server only)
-	pkgver = 1.21
+	pkgver = 1.22
 	pkgrel = 1
 	url = https://github.com/baldurk/renderdoc
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = renderdoc-minimal
 	depends = xcb-util-keysyms
 	provides = renderdoc
 	conflicts = renderdoc
-	source = https://github.com/baldurk/renderdoc/archive/v1.21.tar.gz
-	source = https://github.com/baldurk/renderdoc/releases/download/v1.21/v1.21.tar.gz.asc
+	source = https://github.com/baldurk/renderdoc/archive/v1.22.tar.gz
+	source = https://github.com/baldurk/renderdoc/releases/download/v1.22/v1.22.tar.gz.asc
 	validpgpkeys = 1B039DB9A4718A2D699DE031AC612C3120C34695
-	sha384sums = 86f404bf1e7971e6d23f3e1c44c0524ed88138ee5a379b529054fc06bccc92eac0f85b26818fbb26c84bc113c8a2e040
+	sha384sums = e94ff8a086420581106aefed4eac5f37ae3f4f207e819f6bf45f95bcfbf2488fabb7dee8e70913bf321bfc80ee2b3e03
 	sha384sums = SKIP
 
 pkgname = renderdoc-minimal
