@@ -1,12 +1,13 @@
 pkgbase = netdata-git
 	pkgdesc = Real-time performance monitoring, in the greatest possible detail, over the web
-	pkgver = v1.31.0.r125.gf5c9d6721
+	pkgver = v1.36.0.r271.gbf1cb6048
 	pkgrel = 1
 	url = https://github.com/netdata/netdata/wiki
 	install = netdata.install
 	arch = x86_64
 	license = GPL
 	makedepends = cups
+	makedepends = git
 	depends = libmnl
 	depends = libnetfilter_acct
 	depends = zlib

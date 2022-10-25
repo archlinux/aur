@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.31.0.r125.gf5c9d6721
+pkgver=v1.36.0.r271.gbf1cb6048
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/netdata/netdata/wiki"
@@ -13,7 +13,7 @@ license=('GPL')
 backup=('etc/netdata/netdata.conf')
 depends=('libmnl' 'libnetfilter_acct' 'zlib' 'judy' 'libuv' 'json-c' 'libcap' 'lz4' 'openssl' 'which' 'snappy' 'protobuf'
          'libwebsockets' 'mongo-c-driver')
-makedepends=('cups')
+makedepends=('cups' 'git')
 optdepends=('nodejs: for monitoring named and SNMP devices'
             'lm_sensors: for monitoring hardware sensors'
             'iproute2: for monitoring Linux QoS'
@@ -46,11 +46,11 @@ prepare() {
   cd "$_gitname"
   git submodule set-url mqtt_websockets "$srcdir"/submodule-mqtt_websockets
   git submodule set-url aclk/aclk-schemas "$srcdir"/submodule-aclk-schemas
-  git submodule update --init --no-fetch mqtt_websockets aclk/aclk-schemas
+  git -c protocol.file.allow=always submodule update --init --no-fetch mqtt_websockets aclk/aclk-schemas
 
   git -C mqtt_websockets submodule set-url MQTT-C "$srcdir"/submodule-MQTT-C
   git -C mqtt_websockets submodule set-url c-rbuf "$srcdir"/submodule-c-rbuf
-  git -C mqtt_websockets submodule update --init --no-fetch MQTT-C c-rbuf
+  git -c protocol.file.allow=always -C mqtt_websockets submodule update --init --no-fetch MQTT-C c-rbuf
 }
 
 pkgver() {
