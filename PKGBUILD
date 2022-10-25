@@ -14,7 +14,9 @@ conflicts=(cavecube)
 source=("${pkgname}_data_${pkgver}-${pkgrel}.zip::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube_data.zip")
 source_x86_64=("${pkgname}_game_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube_game_linux_x86_64.tar.gz")
 source_i686=("${pkgname}_game_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/${ghpkgname}/releases/download/${pkgver}/cavecube_game_linux_i686.tar.gz")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_i686=('SKIP')
 
 package() {
     cd "${srcdir}"

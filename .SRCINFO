@@ -12,8 +12,9 @@ pkgbase = cavecube-bin
 	conflicts = cavecube
 	source = cavecube-bin_data_0.4.5-1.zip::https://github.com/PQCraft/CaveCube/releases/download/0.4.5/cavecube_data.zip
 	sha256sums = SKIP
-	sha256sums = SKIP
 	source_x86_64 = cavecube-bin_game_0.4.5-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.4.5/cavecube_game_linux_x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
 	source_i686 = cavecube-bin_game_0.4.5-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.4.5/cavecube_game_linux_i686.tar.gz
+	sha256sums_i686 = SKIP
 
 pkgname = cavecube-bin
