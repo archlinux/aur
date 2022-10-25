@@ -20,7 +20,7 @@ depends=(python3
   qt5-tools # Qt5UiTools
   qt5-xmlpatterns
 )
-replaces=(qt5-python27) # taking the liberty to clean up
+replaces=(qt5-python27{,-git}) # taking the liberty to clean up
 source=('git+https://github.com/knossos-project/PythonQt.git')
 md5sums=('SKIP')
 

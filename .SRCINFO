@@ -17,6 +17,7 @@ pkgbase = pythonqt-knossos-git
 	depends = qt5-tools
 	depends = qt5-xmlpatterns
 	replaces = qt5-python27
+	replaces = qt5-python27-git
 	source = git+https://github.com/knossos-project/PythonQt.git
 	md5sums = SKIP
 
