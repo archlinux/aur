@@ -1,0 +1,15 @@
+pkgbase = graalwasm-jdk19-bin
+	pkgdesc = GraalVM-based, high-performance WebAssembly platform, Java 19 version
+	pkgver = 22.3.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = jdk19-graalvm-bin
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.0/wasm-installable-svm-java19-linux-amd64-22.3.0.jar
+	sha256sums_x86_64 = e11b774ea20d6156aef24741d1227abe1cf826876c2f331844c9a863aa4f6465
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.0/wasm-installable-svm-java19-linux-aarch64-22.3.0.jar
+	sha256sums_aarch64 = 4c260ee43fd0a27e5529788296cd03019808a1b4f528b215c59907f45258d011
+
+pkgname = graalwasm-jdk19-bin
