@@ -1,3 +1,16 @@
+## GE-Proton7-38
+
+- Added protonfix to allow Uncharted: Legacy of Thieves collection to launch on systems with more than 16 cpu cores
+- Added tll.exe amd_ags_x64 override to allow Uncharted: Legacy of Thieves - The Lost Legacy to run
+- Added save file fix for Persona 5 Royal (https://gitlab.winehq.org/wine/wine/-/merge_requests/1145)
+- Added overwatch 2 shader compilation patch (https://gitlab.winehq.org/wine/wine/-/merge_requests/1152) -- please note this is only added as it may help other games. proton-ge is not meant for non-steam games, for non-steam games use wine-ge: github.com/gloriouseggroll/wine-ge-custom
+- Removed no longer needed shatterline protonfix
+- Upstream NVAPI/DLSS list of enabled games updated (https://github.com/GloriousEggroll/proton-ge-custom/blob/df646c0db71a0548b1a8dd501dbd9821cde8ab88/proton#L1232)
+- DXVK updated to latest git
+- VKD3D updated to latest git
+- wine updated to latest bleeding edge
+- wine-staging rebased
+
 ## GE-Proton7-37
 
 HOTFIX: The return of FSR
