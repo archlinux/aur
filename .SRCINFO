@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-python310-bin
+pkgbase = mingw-w64-python311-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 3.11.0
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = mingw-w64-python310-bin
 	sha256sums = 64424e96e2457abbac899b90f9530985b51eef2905951febd935f0e73414caeb
 	sha256sums = a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae
 
-pkgname = mingw-w64-python310-bin
+pkgname = mingw-w64-python311-bin
