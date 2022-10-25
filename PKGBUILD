@@ -1,4 +1,5 @@
-# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Maintainer:  Brad Pitcher <bradpitcher@gmail.com>
+# Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Larry Hajali <larryhaja[at]gmail[dot]com>
 # Contributor: Jachym Barvinek <jachymb@gmail.com>
 # Contributor: Laurie Clark-Michalek <bluepeppers@archlinux.us>
