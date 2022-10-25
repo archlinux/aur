@@ -12,7 +12,7 @@ pkgbase = python-pytaglib
 	makedepends = python-wheel
 	depends = python
 	depends = taglib
-	source = https://github.com/supermihi/pytaglib/archive/v1.5.0.tar.gz
+	source = pytaglib-1.5.0.tar.gz::https://github.com/supermihi/pytaglib/archive/v1.5.0.tar.gz
 	sha512sums = 1be63e285980b140312aa780a56edf59467ad05aa49b3679d4140a856d07950842e9563ae7783010084e6d82c89b8776bbac94101326f67d041faa410f756556
 
 pkgname = python-pytaglib
