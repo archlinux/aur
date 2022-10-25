@@ -1,12 +1,12 @@
 pkgbase = atom-bin
-	pkgdesc = A hackable text editor for the 21st Century. Binary release.
+	pkgdesc = A hackable text editor for the 21st Century. Repackaged .deb / binary release.
 	pkgver = 1.60.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atom/atom
 	arch = x86_64
 	license = MIT
 	depends = apm
-	depends = electron11
+	depends = electron11-bin
 	depends = libxkbfile
 	depends = ripgrep
 	optdepends = ctags: symbol indexing support

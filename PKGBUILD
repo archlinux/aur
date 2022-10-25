@@ -2,12 +2,12 @@
 pkgname=atom-bin
 _pkgname=${pkgname/-bin/}
 pkgver=1.60.0
-pkgrel=1
-pkgdesc='A hackable text editor for the 21st Century. Binary release.'
+pkgrel=2
+pkgdesc='A hackable text editor for the 21st Century. Repackaged .deb / binary release.'
 arch=('x86_64')
 url="https://github.com/atom/atom"
-license=(MIT)
-depends=('apm' 'electron11' 'libxkbfile' 'ripgrep')
+license=('MIT')
+depends=('apm' 'electron11-bin' 'libxkbfile' 'ripgrep')
 optdepends=('ctags: symbol indexing support'
             'git: Git and GitHub integration'
             'hunspell: spell check integration')
