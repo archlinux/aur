@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.4.r28.gf42bebd
+	pkgver = 2.0.8.r2.g643ac57
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64

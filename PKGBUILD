@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.4.r28.gf42bebd
+pkgver=2.0.8.r2.g643ac57
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -87,7 +87,7 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -d "$pkgdir"/usr/{bin,share/Cemu}
-	mv bin/Cemu_release "$pkgdir"/usr/bin/cemu
+	mv bin/Cemu_release "$pkgdir"/usr/bin/Cemu
 	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/share/Cemu bin/*
 	install -Dm644 -t "$pkgdir"/usr/share/applications dist/linux/info.cemu.Cemu.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/metainfo dist/linux/info.cemu.Cemu.metainfo.xml
