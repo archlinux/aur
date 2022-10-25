@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/supermihi/${_base}"
 license=(GPL3)
 depends=(python taglib)
-makedepends=(python-build python-install python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('1be63e285980b140312aa780a56edf59467ad05aa49b3679d4140a856d07950842e9563ae7783010084e6d82c89b8776bbac94101326f67d041faa410f756556')
@@ -23,14 +23,14 @@ build() {
 check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m installer --optimize=1 dist/*.whl
   chmod +x test-env/bin/pyprinttags
   test-env/bin/python -m pytest tests
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --optimize=1 --destdir="${pkgdir}" dist/*.whl
 
   # https://github.com/FFY00/python-install/pull/6
   chmod +x ${pkgdir}/usr/bin/pyprinttags
