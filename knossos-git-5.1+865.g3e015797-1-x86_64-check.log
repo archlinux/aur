@@ -1,8 +1,0 @@
-Warning: QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-builduser'
-Debug: 2022-10-24T23:28:28Z
-Debug: v5.1-865-g3e015797   2022-10-24T03:34:02+02:00
-Warning: This plugin does not support propagateSizeHints()
-Debug: "4.5 (Compatibility Profile) Mesa 22.2.2, Mesa/X.org, llvmpipe (LLVM 14.0.6, 256 bits)"
-Warning: This plugin does not support propagateSizeHints()
-Debug: solitaryConfinement waiting for 0
-Debug: solitaryConfinement 0.004619 ms
