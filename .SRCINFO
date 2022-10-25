@@ -7,11 +7,11 @@ pkgbase = python-pyqt-feedback-flow
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-pyqt5
 	depends = python-emoji
-	source = https://github.com/firefly-cpp/pyqt-feedback-flow/archive/0.1.6.tar.gz
+	source = pyqt-feedback-flow-0.1.6.tar.gz::https://github.com/firefly-cpp/pyqt-feedback-flow/archive/0.1.6.tar.gz
 	sha512sums = abe48bf6e6367dfc78c8bf5995b6744caaac59fac0d7820a0c067e71080cfc4664824b2a31659e67169b919d242fafde7700f034768c50090c93df67a17a4ac0
 
 pkgname = python-pyqt-feedback-flow

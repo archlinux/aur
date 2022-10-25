@@ -8,9 +8,9 @@ url="https://github.com/firefly-cpp/${_base}"
 arch=(any)
 license=(MIT)
 depends=(python-pyqt5 python-emoji)
-makedepends=(python-build python-install python-poetry-core)
+makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
-source=(${url}/archive/${pkgver}.tar.gz)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('abe48bf6e6367dfc78c8bf5995b6744caaac59fac0d7820a0c067e71080cfc4664824b2a31659e67169b919d242fafde7700f034768c50090c93df67a17a4ac0')
 
 build() {
@@ -25,7 +25,7 @@ check() {
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
