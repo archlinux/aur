@@ -14,7 +14,7 @@ sha256sums=('b161ea59d159fecac0dc6ed1f6d3bed2c183394a045f6af24753a248beb2e439')
 prepare() {
     cd "tso/The Sims Online Setup Files"
     # extract data file
-    cabextract -d ../../tso-data /Data1.cab
+    cabextract -d ../../tso-data Data1.cab
     # patch to get right version
     tso-version-patcher /usr/share/tso-version-patcher/1239toNI.tsop ../../tso-data
 }
