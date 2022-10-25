@@ -1,7 +1,7 @@
 pkgbase = protonmail-nativefier
 	pkgdesc = ProtonMail desktop built with nativefier (electron)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mail.proton.me
 	arch = armv7l
 	arch = i686
@@ -22,11 +22,11 @@ pkgbase = protonmail-nativefier
 	source = protonmail-nativefier-5.desktop
 	source = multiaccount.patch
 	sha256sums = b0625a8b8bd1426a1c2fa62ddec2a9078a95f30375d98788158cd5da9bd389b2
-	sha256sums = eaa3343f34c52c7a0a88d77fa564ec94f8f020f66380e23b94a8f23780868b14
-	sha256sums = f8c682814ace1dab551112057b0298842a5981c51e09a2662aacbde13ce31a95
-	sha256sums = 0779f8f9beb188544d65a754f80aa5e28c5409264596f4965c422fe623d97697
-	sha256sums = e196a6bf345cf006aad3d7bbb73205c2eeee60208636b8a3e5b07de8be03303b
-	sha256sums = dfc1086b473c9061bc8ffd863b2451e7a415f377dc9fced682cbb27d1134b961
+	sha256sums = a3be6480caa35888816bed8379f29d3109e1e0c799b95072886b41ee15ba0700
+	sha256sums = ca5bf00df1c187d8aa1f0bdf74bc0aa47de8214702d8d7077a4172901c37b9c7
+	sha256sums = ce5386d853b789366daff024c2eff6012327418327f233bd0eed189ee153640f
+	sha256sums = a4eae34de2711fc798570e38dcf010f85de3b03cbd081b81a325a5732ece85dc
+	sha256sums = a2c9a7cbf7df69cf3d0ffb7db5f8d2ea9d20e9ea75ccb0198c03c129f4b0e577
 	sha256sums = b2dfea1ff268ccec86367cf644c301512893f8bf4abfb7b6f08cde4f69b93dd1
 
 pkgname = protonmail-nativefier
