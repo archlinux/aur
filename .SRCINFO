@@ -3,6 +3,7 @@ pkgbase = secureboot-grub
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/zeroxoneafour/arch-secureboot
+	install = .install
 	arch = any
 	license = MIT
 	depends = openssl
