@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-numpy-mkl-bin
 _pkgname=numpy-base
-_pkgver=1.23.1
-_build=py310hcba007f_0
+_pkgver=1.23.3
+_build=py310h8e6c178_0
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
 pkgdesc="Scientific tools for Python - with Intel MKL - prebuilt binaries from Anaconda"
@@ -14,7 +14,7 @@ conflicts=('python-numpy')
 depends=('python-mkl-service')
 makedepends=('jq')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('9e5772b572fc4d4843e37288400b39a3b5ed59f69033a313f11245a3142b84f8')
+sha256sums=('15d03d9ad555a1d695ae7c042a73bad748b5a5c79c8842d35090a7c4b5f98969')
 
 prepare() {
   # Prefix replacement
