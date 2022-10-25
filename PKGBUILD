@@ -5,8 +5,8 @@ pkgver=0.3.2
 _binname=totp
 
 pkgname=rustotpony
-pkgrel=1
-pkgdesc='RusTOTPony — CLI manager of one-time password generators aka Google Authenticator'
+pkgrel=2
+pkgdesc='RusTOTPony — CLI manager of one-time password generators like Google Authenticator'
 provides=('totp')
 conflicts=('rustotpony-bin')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ license=('MIT')
 # depends=('libx11' 'libxkbfile')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}::https://github.com/zebradil/${pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=('e8f275db1b56c1df0174c40e7185b386c803a9b3')
+sha256sums=('6bbbcc20608ff1bf22cb38bc50e6e9f7c3b5883d0b898293f95478e2d3941868')
 
 build() {
   cd "${pkgname}-${pkgver}"
