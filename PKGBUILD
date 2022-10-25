@@ -3,7 +3,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop
-pkgver=22.1.3
+pkgver=22.1.4
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -18,9 +18,12 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'systemd'
              'egl-wayland'
 )
-source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch)
-sha512sums=('be15cb398f9a8aad70352d09b0745c827d4766d5996e817b92c828b5ede27b10186c7ee319901abdc5e141da97170a3ace039269146461d4e2ceb5002a7c35b4'
-            'SKIP' d0e7dfe38157947dc4b3a3e7ac0c867d06eeb8d760035227a7cb4aca987a91053cc3c7c4f50d4ade6f1eb7fad631a173ceb75c6b9a896dc22a3aba2221264131)
+source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch
+        0001_Do_not_ignore_leave_events.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/987.patch )
+sha512sums=('a1301df1687ac276172565c98b1fb3d5f35f67d47f625b81fce485d1818cf4896f88c2750b4e93596fa6f7fd515e258d201ca3d0cc39943b576f2d2c3f9be8cd'
+            'SKIP'
+            '7132c44d9bbf1c5f93906ef301a6e946f0909da0b9273f397281e681ad0da77d62b960a9dd0a640c7209548192fefba9bde03c493f3a89d08cd73a12844bb518'
+            'd0c87face4485050db134e5ed14d930bdae05d81149b2b573b97fc6dd96d9234e709d6f0523221747293da20cbd012e1e1da00e12b227f98597ffa320bcd3e3c')
 provides=('xorg-server-xwayland' 'xorg-xwayland')
 conflicts=('xorg-server-xwayland' 'xorg-xwayland')
 replaces=('xorg-server-xwayland')
@@ -29,8 +32,9 @@ validpgpkeys=('67DC86F2623FC5FD4BB5225D14706DBE1E4B4540') # "Olivier Fourdan <fo
 options=('debug' 'strip')
 
 prepare() {
-  cd "${srcdir}/xwayland-$pkgver"
-  patch -Np1 < ../hidpi.patch
+  cd ${srcdir}/xwayland-$pkgver
+  patch -Np1 -i ../0001_Do_not_ignore_leave_events.patch
+  patch -Np1 -i ../hidpi.patch
 }
 
 build() {
