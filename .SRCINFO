@@ -1,0 +1,15 @@
+pkgbase = graal-llvm-jdk19-bin
+	pkgdesc = GraalVM LLVM runtime (aka Sulong), Java 19 version
+	pkgver = 22.3.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = jdk19-graalvm-bin
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.0/llvm-installable-svm-java19-linux-amd64-22.3.0.jar
+	sha256sums_x86_64 = 114eada40599fff3c3df3e50d8ec934e8f469cc39393d1abd02abf1fe5950d3b
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.0/llvm-installable-svm-java19-linux-aarch64-22.3.0.jar
+	sha256sums_aarch64 = 5c5fdff2c26eb007bceaaff3d329a3cf84a346e655cab2ad40f9500c6b32b7d2
+
+pkgname = graal-llvm-jdk19-bin
