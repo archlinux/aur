@@ -1,0 +1,15 @@
+pkgbase = native-image-jdk19-bin
+	pkgdesc = Plugin to turn GraalVM-based applications into native binary images (Java 19 version)
+	pkgver = 22.3.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = jdk19-graalvm-bin
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.0/native-image-installable-svm-java19-linux-amd64-22.3.0.jar
+	sha256sums_x86_64 = 55b341ca1bca5219aafa8ed7c8a2273b81d184dd600d8261c837fc32d2dedae5
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.0/native-image-installable-svm-java19-linux-aarch64-22.3.0.jar
+	sha256sums_aarch64 = a2e2a1f14509161824df1c359786090190aded874a2508760403870a248527f7
+
+pkgname = native-image-jdk19-bin
