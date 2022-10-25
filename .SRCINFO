@@ -8,9 +8,9 @@ pkgbase = python-npx
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-build
 	makedepends = python-flit-core
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python-numpy
-	source = https://github.com/nschloe/npx/archive/v0.1.1.tar.gz
+	source = npx-0.1.1.tar.gz::https://github.com/nschloe/npx/archive/v0.1.1.tar.gz
 	sha512sums = c2168c17134e7415dd6bc9ab86475ca6e9bb3c9797b68d407ff4be6177ae4e696d621188f6410d7d636e15f2ed4a45c74884d7f7b128f6f159555e58a00727a6
 
 pkgname = python-npx
