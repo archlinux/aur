@@ -4,7 +4,7 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.80.2.192.gb15a62075
+pkgver=2.80.2.217.g4bf88f2f6
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
@@ -32,7 +32,7 @@ build() {
 
     # build type and path
     cmakeopts+=(
-        "-D CMAKE_BUILD_TYPE=Debug"
+        "-D CMAKE_BUILD_TYPE=Release"
         "-D CMAKE_INSTALL_PREFIX=/usr"
         "-D INSTALL_DEFAULT_BASEDIR=/usr/lib/etlegacy"
         "-D INSTALL_DEFAULT_BINDIR=bin"
