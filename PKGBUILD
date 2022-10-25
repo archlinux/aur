@@ -2,12 +2,12 @@
 
 pkgname=yin-yang
 pkgver=3.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
-depends=('python-psutil' 'python-suntime' 'python-systemd' 'pyqt6' 'pyside6' 'qt6')
+depends=('python-psutil' 'python-suntime' 'python-systemd' 'python-pyqt6' 'pyside6' 'qt6-positioning')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.1.1.zip")
@@ -25,6 +25,7 @@ package() {
         "$pkgdir/usr/share/applications/"
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
         "$pkgdir/usr/lib/systemd/user/"
+        "$pkgdir/usr/share/licenses/yin-yang"
     )
     for dir in "${DIRS[@]}"
     do
@@ -33,8 +34,14 @@ package() {
         fi
     done
 
-    # copy files TODO this copies a bunch of unnecessary files
+    # Pre-cleanup
+    rm -r README*.md tests/ requirements.txt
+
+    # copy files
     cp -r ./* "$pkgdir/opt/yin-yang/"
+    # cleanup unnecessary files
+    mv "$pkgdir/opt/yin-yang/LICENSE" "$pkgdir/usr/share/licenses/yin-yang/MIT"
+
     # copy manifest for firefox extension
     cp ./resources/yin_yang.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
     # copy terminal executive
