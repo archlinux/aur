@@ -1,6 +1,6 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = 4.1.0.r595.gda600a6c03
+	pkgver = 4.1.0.r657.g28547c0d90
 	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
@@ -15,6 +15,7 @@ pkgbase = darktable-git
 	makedepends = clang
 	makedepends = python-jsonschema
 	makedepends = libwebp
+	makedepends = perl-pod-parser
 	depends = pugixml
 	depends = libjpeg-turbo
 	depends = colord-gtk

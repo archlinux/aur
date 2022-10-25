@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=4.1.0.r595.gda600a6c03
+pkgver=4.1.0.r657.g28547c0d90
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -51,8 +51,7 @@ prepare() {
   git config submodule.src/external/libxcf.url "$srcdir/libxcf.git"
   git config submodule.src/external/whereami.url "$srcdir/whereami"
   git config submodule.src/tests/integration.url "$srcdir/darktable-tests.git"
-  git config --local protocol.file.allow always # we need this since git 2.38.1...
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
