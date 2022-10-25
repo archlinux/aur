@@ -1,6 +1,6 @@
 pkgbase = solar-tweaks-bin
 	pkgdesc = Solar Tweaks is a tool for tweaking and customizing Lunar Client. Give yourself an upgrade in your gaming experience.
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://github.com/Solar-Tweaks/Solar-Tweaks
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = solar-tweaks-bin
 	depends = nss
 	provides = solar-tweaks
 	options = !strip
-	source = https://github.com/Solar-Tweaks/Solar-Tweaks/releases/download/v4.0.7/Solar-Tweaks-4.0.7.AppImage
-	sha256sums = a7bd678e554d93784eb439b7329efe1763b0a45af540438255a5ab58a74c628c
+	source = https://github.com/Solar-Tweaks/Solar-Tweaks/releases/download/v4.0.8/Solar-Tweaks-4.0.8.AppImage
+	sha256sums = fbc7f5ca40f9310b085705abadf1f8881bc8b8ecb2874c88e9dff0119ed0d406
 
 pkgname = solar-tweaks-bin
