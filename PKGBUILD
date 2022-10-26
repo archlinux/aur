@@ -1,19 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=radvd-git
-pkgver=2.17.r8.g7488976
+pkgver=2.19.r86.gc8a11fd
 pkgrel=1
 pkgdesc="IPv6 router advertisement daemon"
 arch=('i686' 'x86_64')
-url="http://www.litech.org/radvd/"
+url="https://radvd.litech.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
 checkdepends=('check')
-provides=('radvd')
+provides=("radvd=$pkgver")
 conflicts=('radvd')
 backup=('etc/radvd.conf')
-source=("git+https://github.com/reubenhwk/radvd.git")
+source=("git+https://github.com/radvd-project/radvd.git")
 sha256sums=('SKIP')
 
 
@@ -47,5 +47,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "radvd.conf.example" "$pkgdir/etc/radvd.conf"
-  install -Dm644 "COPYRIGHT" "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  install -Dm644 "COPYRIGHT" -t "$pkgdir/usr/share/licenses/radvd"
 }
