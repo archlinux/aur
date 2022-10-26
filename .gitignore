@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/gnome-shell/
+/libgnome-volume-control/
+/*.pkg.*

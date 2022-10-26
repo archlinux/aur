@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-screencast-vaapi
-pkgver=42.4+r1+gec04b253a
+pkgver=42.4+r1+ga25c59695
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell (screencast records with VAAPI)"
@@ -42,7 +42,7 @@ pkgver() {
 prepare() {
   cd gnome-shell
 
-  git cherry-pick d32c03488fcf6cdb0ca2e99b0ed6ade078460deb # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5585
+  git cherry-pick -n d32c03488fcf6cdb0ca2e99b0ed6ade078460deb # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5585
   patch -p1 < ../../screencast-vaapi.patch
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
