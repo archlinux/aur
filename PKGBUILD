@@ -1,8 +1,8 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 pkgname='vkmark-git'
 pkgdesc='Vulkan benchmark'
-pkgver=r129.cf45f2f
-pkgrel=2
+pkgver=r133.30d2cd3
+pkgrel=1
 url='https://github.com/vkmark/vkmark'
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
@@ -18,21 +18,15 @@ pkgver() {
   printf "r%d.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}"/vkmark
-}
-
 build() {
   cd "${srcdir}"/vkmark
 
-  rm -rf build
-  meson --prefix=/usr build || true # if you remove rm -rf build before, meson build will thrown an error if build exists from previous builds
+  meson --prefix=/usr build
   ninja -C build
 }
 
 package() {
   cd "${srcdir}"/vkmark
   DESTDIR="$pkgdir" ninja -C build install
-  rm -rf "$pkgdir"/usr/local/share/man
 }
 

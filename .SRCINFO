@@ -1,7 +1,7 @@
 pkgbase = vkmark-git
 	pkgdesc = Vulkan benchmark
-	pkgver = r129.cf45f2f
-	pkgrel = 2
+	pkgver = r133.30d2cd3
+	pkgrel = 1
 	url = https://github.com/vkmark/vkmark
 	arch = i686
 	arch = x86_64
