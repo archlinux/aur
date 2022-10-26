@@ -5,32 +5,32 @@
 # Contributor: GordonGR <gordongr@freemail.gr>
 
 pkgname=lib32-polkit
-pkgver=121
+pkgver=122
 pkgrel=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 url="https://gitlab.freedesktop.org/polkit/polkit"
 arch=(x86_64)
 license=(LGPL)
 depends=(
-  lib32-expat
   lib32-glib2
-  lib32-pam
   lib32-systemd
   polkit
 )
 makedepends=(
-  meson
   git
+  lib32-expat
+  lib32-pam
+  meson
 )
-provides=(libpolkit-{agent,gobject}-1.so)
+provides=(libpolkit-gobject-1.so)
 options=(debug)
-_commit=827b0ddac5b1ef00a47fca4526fcf057bee5f1db  # tags/121
+_commit=da87c5698019897dd731bb2cbb54ebd9c9481f52  # tags/122
 source=(
-  "git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=${_commit}"
+  "git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
   multilib.diff
 )
 b2sums=('SKIP'
-        '2ee4018b0429e637429abcecb4855436e072a5d562060bde51d47d7db447a200bfe08ac3d247a0b662e5c345b5641169203c00f3bbe63187b5025c9e8337ef44')
+        '9b588509dae8528bfb8aa3cb734bf79b194350587d763ed70fa8e91a1a9fe54bb6cef352e13e31560f3b4ad418157111eb3e2678ae5dd84f052e4dcd9cde53c9')
 
 pkgver() {
   cd polkit
@@ -40,7 +40,7 @@ pkgver() {
 prepare() {
   cd polkit
 
-  # Don't build the backend
+  # Fix post-install script with libs-only=true
   git apply -3 ../multilib.diff
 }
 
@@ -48,6 +48,7 @@ build() {
   local meson_options=(
     --libdir=/usr/lib32
     -D introspection=false
+    -D libs-only=true
     -D os_type=redhat
     -D session_tracking=libsystemd-login
     -D tests=true
@@ -68,7 +69,7 @@ check() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  rm -r "$pkgdir"/{etc,usr/{bin,include,lib,share}}
+  rm -r "$pkgdir"/{etc,usr/{include,lib,share}}
 }
 
 # vim:set sw=2 sts=-1 et:

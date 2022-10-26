@@ -1,31 +1,26 @@
-diff --git i/meson_options.txt w/meson_options.txt
-index 76aa311..174a45e 100644
---- i/meson_options.txt
-+++ w/meson_options.txt
-@@ -16,4 +16,4 @@ option('introspection', type: 'boolean', value: true, description: 'Enable intro
+diff --git i/meson_post_install.py w/meson_post_install.py
+index e742310..b8cd360 100644
+--- i/meson_post_install.py
++++ w/meson_post_install.py
+@@ -29,7 +29,9 @@ except KeyError:
  
- option('gtk_doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
- option('man', type: 'boolean', value: false, description: 'build manual pages')
--option('js_engine', type: 'combo', choices: ['mozjs', 'duktape'], value: 'duktape', description: 'javascript engine')
-+option('js_engine', type: 'combo', choices: ['none'], value: 'none', description: 'javascript engine')
-diff --git i/src/meson.build w/src/meson.build
-index 4073333..c7038f1 100644
---- i/src/meson.build
-+++ w/src/meson.build
-@@ -4,7 +4,6 @@ symbol_map = meson.current_source_dir() / 'symbol.map'
- ldflags = cc.get_supported_link_arguments('-Wl,--version-script,@0@'.format(symbol_map))
+ dst = os.path.join(bindir, 'pkexec')
  
- subdir('polkit')
--subdir('polkitbackend')
- subdir('polkitagent')
- subdir('programs')
+-if os.geteuid() == 0:
++if not os.path.exists(dst):
++    pass
++elif os.geteuid() == 0:
+     os.chown(dst, 0, -1)
+     os.chmod(dst, 0o4755)
+ else:
+@@ -62,7 +64,9 @@ for dst in dst_dirs:
+ # and/or other users.
+ dst = os.path.join(pkglibdir, 'polkit-agent-helper-1')
  
-diff --git i/test/meson.build w/test/meson.build
-index 3f02d35..4fbb0ec 100644
---- i/test/meson.build
-+++ w/test/meson.build
-@@ -23,4 +23,3 @@ test_env.set('MOCK_NETGROUP', test_etc_dir / 'netgroup')
- test_env.set('POLKIT_TEST_DATA', test_data_dir)
- 
- subdir('polkit')
--subdir('polkitbackend')
+-if os.geteuid() == 0:
++if not os.path.exists(dst):
++    pass
++elif os.geteuid() == 0:
+     os.chown(dst, 0, -1)
+     os.chmod(dst, 0o4755)
+ else:
