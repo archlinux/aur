@@ -2,7 +2,7 @@
 # Contributors: Julian Eckhardt <julian@eckhardt.fi>, Paulo Marcos <contato-myghi63@protonmail.com>
 pkgname=kyocera_universal
 pkgver=9.1.20220203
-pkgrel=1
+pkgrel=2
 major=$(cut -d '.' -f 1 <<< $pkgver)
 minor=$(cut -d '.' -f 2 <<< $pkgver)
 date=$(cut -d '.' -f 3 <<< $pkgver)
@@ -12,6 +12,8 @@ url="https://www.kyocera.com/"
 license=('other')
 depends=('cups-filters' 'dbus' 'gcc-libs' 'glibc' 'krb5' 'libcups' 'libgcrypt' 'python-reportlab' 'python-setuptools' 'python-pypdf3' 'zlib')
 makedepends=('unzip' 'wget')
+provides=('kyocera-cups')
+conflicts=('kyocera-cups')
 DLAGENTS=("https::/usr/bin/wget")
 toDwnld="KyoceraLinuxPackages_${date}_tar_gz.download.gz"
 source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${toDwnld}")
