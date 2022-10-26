@@ -15,7 +15,7 @@ depends=(
   'python-html5lib'
   'python-lockfile'
   # Upstream requires pip-api >= 0.0.28 but Arch’s Community
-  # repository is on 0.0.22, which causes an error message that
+  # repository is on 0.0.25, which causes an error message that
   # says “failed to list installed distributions.”
   # Once community/python-pip-api catches up to version 0.0.28,
   # remove the `>=0.0.28` part from the following line.
