@@ -15,8 +15,8 @@ depends=('libusb' 'hidapi' 'qt5-svg' 'qt5-xmlpatterns' 'readline6')
 provides=('flirc')
 conflicts=('flirc')
 replaces=('flirc')
-source=(http://apt.flirc.tv/arch/x86_64/flirc.latest.x86_64.tar.gz)
-md5sums=('87ac7fc7ad2d553fa2ba991e4bd5f5b0')
+source=(https://apt.fury.io/flirc/files/ver_PtQm3/flirc_${pkgver}_amd64.deb)
+md5sums=('5759c5894e2ff7d9c194f9330697194f')
 
 package() {
   tar -xf data.tar.gz -C "$pkgdir"
