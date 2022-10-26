@@ -17,7 +17,8 @@ pkgbase = authenticator
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
 	depends = pipewire
-	source = https://gitlab.gnome.org/World/Authenticator/-/archive/4.1.6/Authenticator-4.1.6.tar
-	b2sums = 8edc4d2f7de22827f6a1fe8bf53dee6961c56888655369fec426809ffb87a970443d5ec34bd8ed4108275ec78b5cb8daea1d54ec3bee4c19ceeb0163e69779d7
+	options = !lto
+	source = https://gitlab.gnome.org/World/Authenticator/-/archive/4.1.6/Authenticator-4.1.6.tar.gz
+	b2sums = 64457818288bd7fb0d5e993a9eed32f380754798521df37715903b3419bb789000a1839026a8677b8ef24dc5a11d7888a56398178f3ba428af3e8a6b55e8b686
 
 pkgname = authenticator

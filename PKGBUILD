@@ -12,8 +12,9 @@ license=("GPL3")
 depends=('libsecret' 'zbar' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'pipewire')
 makedepends=('meson' 'gobject-introspection' 'cargo' 'clang')
 checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
-b2sums=('8edc4d2f7de22827f6a1fe8bf53dee6961c56888655369fec426809ffb87a970443d5ec34bd8ed4108275ec78b5cb8daea1d54ec3bee4c19ceeb0163e69779d7')
+source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
+b2sums=('64457818288bd7fb0d5e993a9eed32f380754798521df37715903b3419bb789000a1839026a8677b8ef24dc5a11d7888a56398178f3ba428af3e8a6b55e8b686')
+options=('!lto')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build
@@ -21,7 +22,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
