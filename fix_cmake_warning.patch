@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt	2022-10-22 21:37:11.000000000 +0200
++++ b/CMakeLists.txt	2022-10-26 18:01:36.723324798 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+ project(org.kde.weatherWidget-2)
+ 
+ set(QT_MIN_VERSION "5.4.0")
