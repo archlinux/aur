@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=frc-toolchain
-pkgver=2023.4
+pkgver=2023.5
 _year=2023
 pkgrel=1
 pkgdesc="The FIRST Robotics Competition C/C++ build system components"
