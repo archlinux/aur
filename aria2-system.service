@@ -8,7 +8,7 @@ PartOf=aria2.target
 Type=forking
 User=aria2cd
 # Arguments here will override config file.
-ExecStart=/usr/bin/aria2c --no-conf=true --conf-path=/etc/aria2cd/aria2.conf \
+ExecStart=/usr/bin/aria2c --conf-path=/etc/aria2cd/aria2.conf \
     --dir=/var/lib/aria2cd/Downloads --remote-time=true --daemon=true --enable-rpc=true \
     --bt-enable-lpd=true --bt-save-metadata=true \
     --enable-dht=true --enable-dht6=true \
