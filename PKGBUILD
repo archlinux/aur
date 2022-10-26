@@ -6,6 +6,7 @@ arch=("any")
 url="https://www.kyoceradocumentsolutions.de/index/serviceworld/downloadcenter.false.driver.ECOSYSM5521CDN._.EN.html"
 license=('other')
 depends=('cups')
+conflicts=('kyocera-ecosys-p5021cdw')
 
 source=('Kyocera ECOSYS M5521cdn.PPD'
         'Kyocera ECOSYS M5521cdw.PPD'
