@@ -1,6 +1,6 @@
 pkgbase = homebridge
 	pkgdesc = HomeKit support for the impatient
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/homebridge/homebridge
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = homebridge
 	optdepends = homebridge-config-ui-x: for web-based management tool
 	options = !emptydirs
 	options = !strip
-	source = homebridge-1.5.0.tar.gz::https://github.com/homebridge/homebridge/archive/v1.5.0.tar.gz
-	sha512sums = 7aa6d67f07e0135d9eed58d5a769b8204ee694de0658cd01d0c663e10dbd95669f09acbb06704bdc1d7bdd0c1882bff8ec2ce5ec4458b5a9e5c62bf61fcde427
-	b2sums = 7dfd711b302e090f610b800b00bff6257c67d706332585d97b9540032cfa54f807d343a690d609308a9c703a304ebc336964b1ace29f1a3fea8c69db3b9e853b
+	source = homebridge-1.5.1.tar.gz::https://github.com/homebridge/homebridge/archive/v1.5.1.tar.gz
+	sha512sums = 6556a7a29b9a1d5ae20dfa854ab4e8c5acf4360ac06ec4c4a9c80f6ede85a2db4f387b574585b1e1a6f315d57704b21d217c17f7d5e0aeeab8013d6c4dd1a538
+	b2sums = f74d10555f4eba8a05bc4b1d6f8bae47072ad78b82262d11000a5cb4036140ea6961e5bba33d0810a365877e8753c86136d810b0e35a6496cd8106cfb29db4b4
 
 pkgname = homebridge
