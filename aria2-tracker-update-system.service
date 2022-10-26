@@ -6,8 +6,7 @@ PartOf=aria2.target
 
 [Service]
 Type=oneshot
-User=aria2cd
-ExecStart=/usr/bin/update-aria2-tracker
+ExecStart=/usr/bin/update-aria2-tracker --systemd
 RestartSec=60s
 Restart=on-failure
 # Sandboxing

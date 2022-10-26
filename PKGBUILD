@@ -2,7 +2,7 @@
 
 pkgname=aria2cd
 pkgver=1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=("any")
 url="https://aur.archlinux.org/packages/aria2cd"
@@ -30,7 +30,7 @@ source=(
 	LICENSE::http://www.wtfpl.net/txt/copying
 )
 sha256sums=('85f465f6f32a1713f65c389b57f81d26cecfb1e7baf06c38f6b9477818fc4f85'
-            'f9f289f7c4e111b505b08c2ab9739bfe87f42b14039f4f21962736dd7b1b7824'
+            'c23e3813dbb8494a8032b556e73c283d817b4b1eb5d89a91c0d28b8417f180f5'
             '1046d5807ff575276aad2307560d4281215b3f8fadcc6993864af93dbcde8a2e'
             'bdfecc359414d95396c6d19990e262d82a3240a01645a96e38e351fc8c27846e'
             'd3dc278eeddbc910c775124bf474aa2c68b7bbba30226f6322ffc2c457785d27'
@@ -40,7 +40,7 @@ sha256sums=('85f465f6f32a1713f65c389b57f81d26cecfb1e7baf06c38f6b9477818fc4f85'
             '1af86e36a0c23c082c953f344a8399197e376dce45bcd1cb185531c9dd70c298'
             '3101ff77a7c9a44461b8dc77f0a1608b24973e828b2eacb3b39ada647a338355'
             '52cc83e9bb223fd69f297df0cd3364af3797d48b938d306bd6e698943cf2d6ef'
-            'fc4f9244b3a38428168fa2b9777931f88b7d2ad2731007d6968c24f28c2ec288'
+            '50fba9e3924795f3d7f19433248b7f3af10cb6347b1cc0d3d2f362ef923afd67'
             'dd36e49fb24c65bbf6685ebe52933a795a69f65d19c43a498d947342a322b8fa'
             'cfd220865ea581924c147a8ed777ac189f49e763f53dd6e64d01c3f555a60dad'
             '747eb9007dd65175c433d81e873840dca1482dfaa0b847ec8661be108fd59877'
