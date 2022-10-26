@@ -4,8 +4,8 @@ url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=6.0
-_minor=2
-_clr=1201
+_minor=3
+_clr=1202
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=37450
+_clear_version=37490
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=30b7482d116a361d823cef84348db904a007ceb0c5126f8b0966af91b08f5858
-_config_hash_clear_version=37450
+_config_hash=93f8dc57dc60e4de3e4e633efb5ccca5701a35a4486bc8315e57172ff6e13dfb
+_config_hash_clear_version=37490
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('7f89c992657a1efbe7bddcf8b22fc39191f44d198315a53d5a78723ac3727fb4fa2a43a034d6294d2bd49fef8058119b0e831661054eb9b0afd8b98d79d2782d'
-        '3509943e8ff73ed3cf9808d74f301f77d9f73cf832393a0c1e823056dad497a77b02e2cadde9da421bcaa1bfafba1f71e14920e5b372c39772740cd61bf74da9'
-        '4a45a913d22e32daf67296f54eb2df5903795e9cd7934606c3a27b6c5a9dbb3c61240e1cafd852261282b93af03adcbf875560cd8eb8b6596eaefe92927498e7')
+b2sums=('09052e10cda58c9bcfcad875517688c072aa9f6fb772780bdbda3673b78c2dc4bcfe3180d78c76dfbaff3525083031241863c4e396458a82ee91a1e8f35e66dc'
+        '12ed6bccbc754055d2b99a36447a12d1a228d6705068d89ba74b3c5c9844b045f3c33c09bd563898f9f7ebe4ddbb965ead9f6793428f19512bebe8f2e1726537'
+        '2607d0482bb3bdf5396933ca09d4abe349249d9985371a7fb6e4e559273c668b76ec6a78da4afc62d37daf4d083b450231634a5731cd70c955a96557be831975')
