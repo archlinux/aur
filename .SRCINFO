@@ -1,5 +1,5 @@
 pkgbase = themix-full-git
-	pkgdesc = Themix: GUI for generating different color variations of Oomox theme (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm), icons (ArchDroid, Gnome-Colors, Numix, Papirus, Suru++), Base16 plugin (Alacritty, Emacs, GTK4, KDE, VIM and MANY more)
+	pkgdesc = Themix: GUI for generating different color variations of Oomox theme (GTK2 + HiDPI hack, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm), icons (ArchDroid, Gnome-Colors, Numix, Papirus, Suru++), Base16 plugin (Alacritty, Emacs, GTK4, KDE, VIM and MANY more)
 	pkgver = 1.15
 	pkgrel = 2
 	url = https://github.com/themix-project/oomox
