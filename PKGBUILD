@@ -4,7 +4,7 @@
 _pkgname=themix-icons-archdroid
 _reponame=archdroid-icon-theme
 pkgname="${_pkgname}-git"
-pkgver=1.0.2.r1.g775b8c2c0
+pkgver=1.0.3.r0.gb90779de4
 pkgrel=1
 pkgdesc="Archdroid icons plugin for Themix GUI designer"
 arch=('x86_64' 'i686')
@@ -59,6 +59,7 @@ package() {
 
 	cd "$pkg_tmp_dir"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" "install_${_plugin_name}"
+  cd "$pkgdir"
 	rm -fr "$pkg_tmp_dir"
 
 	python -O -m compileall "${pkgdir}${_oomox_dir}/plugins/${_plugin_name}" -d "${_oomox_dir}/plugins/${_plugin_name}"
