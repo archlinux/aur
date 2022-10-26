@@ -1,5 +1,4 @@
 # Maintainer: Franc[e]sco <lolisamurai@tfwno.gf>
-
 pkgname=herbe
 pkgver=1.0.0
 pkgrel=1
