@@ -1,7 +1,7 @@
-# Maintainer: Chjara Yebgui <tuxcrafting@airmail.cc>
+# Maintainer: Chjara Yebgui <tuxcrafting@cronut.cafe>
 pkgname=fasmg
 pkgver=jmhx
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Assembler with advanced macro-instruction abilities"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://flatassembler.net/$pkgname.$pkgver.zip")
 noextract=("$pkgname.$pkgver.zip")
-sha512sums=('321f8214ba06b1ae7bed3ba6368ee45105dad6f651f8b9197b0e7f9d74368b1922797747690ed22190ee6b5aed6850885fb7ee269cb9c1d65d18d8f71cb72a8a')
+sha512sums=('e77d44f62936a30adf88107f8cda8c74261697909221ec98968fc3cf94409e7bb81c1dcd59f6e528636686eb63de1428326271ab42410ca38b022432c7e3ab1a')
 validpgpkeys=()
 
 prepare() {
@@ -32,8 +32,9 @@ prepare() {
 
 package() {
     cd "$pkgname-$pkgver"
-    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/fasmg"
+    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/licenses/$pkgname"
     cp fasmg.x64 "$pkgdir/usr/bin/fasmg"
     chmod +x "$pkgdir/usr/bin/fasmg"
-    cp -r docs/* examples "$pkgdir/usr/share/doc/fasmg"
+    cp -r docs/* examples "$pkgdir/usr/share/doc/$pkgname"
+    cp license.txt "$pkgdir/usr/share/licenses/$pkgname"
 }

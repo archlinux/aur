@@ -1,13 +1,13 @@
 pkgbase = fasmg
 	pkgdesc = Assembler with advanced macro-instruction abilities
 	pkgver = jmhx
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flatassembler.net/
 	arch = x86_64
 	license = BSD
 	noextract = fasmg.jmhx.zip
 	options = !strip
 	source = https://flatassembler.net/fasmg.jmhx.zip
-	sha512sums = 321f8214ba06b1ae7bed3ba6368ee45105dad6f651f8b9197b0e7f9d74368b1922797747690ed22190ee6b5aed6850885fb7ee269cb9c1d65d18d8f71cb72a8a
+	sha512sums = e77d44f62936a30adf88107f8cda8c74261697909221ec98968fc3cf94409e7bb81c1dcd59f6e528636686eb63de1428326271ab42410ca38b022432c7e3ab1a
 
 pkgname = fasmg
