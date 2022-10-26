@@ -1,6 +1,8 @@
 #!/bin/sh
 ME="${0##*/}"
 
+set -euf
+
 usage() {
   cat << __EOT__
 Usage: $ME command [argument …]
