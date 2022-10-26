@@ -3,7 +3,7 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-pkgver=7.2.6
+pkgver=7.2.7
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -21,9 +21,9 @@ source_aarch64=("${_artifact}::${url}/releases/download/v${pkgver}/powershell-${
 source_x86_64=("${_artifact}::${url}/releases/download/v${pkgver}/powershell-${pkgver}-linux-x64.tar.gz")
 noextract=("$_artifact")
 
-sha256sums_x86_64=('9927f6cf4bcbb686074938f8fe662796c10d378a2f6b61e2a9c73e590a1a37d2')
-sha256sums_armv7h=('cfcb64387659335c37225cf8e55fc79a810c5ac3685242c310d99c9c56b48fed')
-sha256sums_aarch64=('eab633392cc4cf989294720cd856977de194248651595f2e2b73556404497b94')
+sha256sums_x86_64=('4f2560857cec6c795f9940407d9f154d3c01cd6ba52e1656e3f2a5b60e5ff1b0')
+sha256sums_armv7h=('fee76fb4c3eb4700e05d113e8fc5d29db9cbe05ed6a2191a8f09e4476b8bdeda')
+sha256sums_aarch64=('fc189519457046a148944b56213750e09313de79970439aa621746cdb9c9e36d')
 
 prepare() {
   mkdir -p ${pkgname}-${pkgver}-${pkgrel}
