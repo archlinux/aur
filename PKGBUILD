@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-screencast-vaapi
 pkgver=42.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell (screencast records with VAAPI)"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -46,7 +46,7 @@ prepare() {
   patch -p1 < ../../screencast-vaapi.patch
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
