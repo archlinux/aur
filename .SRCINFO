@@ -1,7 +1,7 @@
 pkgbase = playhouse
 	pkgdesc = A Playground for HTML/CSS/JavaScript
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Playhouse
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,12 @@ pkgbase = playhouse
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = blueprint-compiler
+	makedepends = python-gobject
 	makedepends = meson
 	depends = libadwaita
 	depends = webkit2gtk-5.0
 	depends = gjs
-	source = git+https://github.com/sonnyp/Playhouse.git#commit=287811d971872b51bb6127a35610d1442e15b1f4
+	source = playhouse-1.0::git+https://github.com/sonnyp/Playhouse#commit=287811d971872b51bb6127a35610d1442e15b1f4
 	source = git+https://github.com/sonnyp/troll.git
 	b2sums = SKIP
 	b2sums = SKIP
