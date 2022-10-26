@@ -4,7 +4,7 @@
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from Chromium or Firefox -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
-_downloadid='86e644d5443a4d719b5950b94346a94d'
+_downloadid='6e930a8a85b84597a3737331728b3062'
 _referid='9ec66481444447eeb66bb665a329dd4f'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
@@ -57,7 +57,7 @@ DLAGENTS=("https::/usr/bin/curl \
               %u")
 
 pkgname=blackmagic-raw-sdk
-pkgver=2.2.1
+pkgver=2.7
 pkgrel=1
 arch=('x86_64')
 pkgdesc="SDK to handle Blackmagic RAW files (.braw)"
@@ -67,8 +67,9 @@ depends=('hicolor-icon-theme' 'qt5-multimedia' 'libc++')
 makedepends=('rpmextract' 'unrtf')
 optdepends=('nvidia-utils: CUDA support'
             'ocl-icd: OpenCL support')
+options=('!strip')
 source=("Blackmagic_RAW_Linux_$pkgver.tar.gz::$_srcurl")
-sha512sums=('2698e093e8b42f4a05321ba7e970061dd0f80156f9bdd592890e957adf41cc96275a18ee42a3398af0014e299d683fb7824a0557429e71011a4af9cae4aeda3b')
+sha512sums=('cc6a30d4ff30d3dd77c20cfa02b3f60dc6aa5a55978508020a29fe63169cdf98c164f07a6c67799b68297a7c8af2f7df2d779b59fe351e997be18b9750181550')
 
 prepare(){
   cd "Blackmagic RAW"

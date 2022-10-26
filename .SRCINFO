@@ -1,6 +1,6 @@
 pkgbase = blackmagic-raw-sdk
 	pkgdesc = SDK to handle Blackmagic RAW files (.braw)
-	pkgver = 2.2.1
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/products/blackmagicraw
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = blackmagic-raw-sdk
 	depends = libc++
 	optdepends = nvidia-utils: CUDA support
 	optdepends = ocl-icd: OpenCL support
-	source = Blackmagic_RAW_Linux_2.2.1.tar.gz::https://sw.blackmagicdesign.com/BlackmagicRAW/v2.2.1/Blackmagic_RAW_Linux_2.2.1.tar.gz?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=k8b/htM/8Z6l4farQkJxVCO/ep2KMYRbetwlnaIzxIo6fwNxkE2Q+1SY4tOH+tOTmqqwburkQCosKk7An2UzIdxxQmPvxT4wz/ewkqzD4QN3xWkanr3aG59GQXAkkoZaXzGGcNdofrK/owQJKdl+D+fKWmSjqFchUMrNAlVzcPv1Xfsyk9C3iskkq/N1tkcYl9do1w/JHw+6IEOum0vMembV8YA2jb0CyahfANXH15YXcciASs1ceD0a4Ro7hD4Y92FZvTviXUOOllKCYncanX8u+Dzl9GmhhlAKAeGfX8dfGJCoU60a4woEIW6SN7qjhwuRjAur9v/P+Zf9osZ0Wg==&Expires=1640492768
-	sha512sums = 2698e093e8b42f4a05321ba7e970061dd0f80156f9bdd592890e957adf41cc96275a18ee42a3398af0014e299d683fb7824a0557429e71011a4af9cae4aeda3b
+	options = !strip
+	source = Blackmagic_RAW_Linux_2.7.tar.gz::https://sw.blackmagicdesign.com/BlackmagicRAW/v2.7/Blackmagic_RAW_Linux_2.7.tar.gz?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=pzBHUFHXcvDCvsrkU24scDyQ4dUF1H+p0wVEM+Qp8cD8szDdbPFjS/jhtoq8ag0YBDmRafnqChIuYD4Biuu/VWxBZySxi52HcE1rofXU7Wqi2XuYfubPyV1wOZIAOLksSMbIH+VsN/rDdK49EhkwXwOyYjzyQE0CE5s2o0O4hqvNamJP8RJTfzAb11EXTUhsoEGC6NGk7MdVcQ8VxqzfF7SR+k8N1MxdvE3VPX25uenjk1d9NvXpTJh/lHZaxRguCD9e9lsufjD1T0L3xUMG+hsHB9s6byF1sXmwkBiRLZJUqaVD/uz4vEYuQwNtpPxMSqjHIIJbA6iQgrDBDpx7Aw==&Expires=1666839211
+	sha512sums = cc6a30d4ff30d3dd77c20cfa02b3f60dc6aa5a55978508020a29fe63169cdf98c164f07a6c67799b68297a7c8af2f7df2d779b59fe351e997be18b9750181550
 
 pkgname = blackmagic-raw-sdk
