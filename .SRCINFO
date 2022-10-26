@@ -1,13 +1,14 @@
 pkgbase = junction
 	pkgdesc = Application/browser chooser
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Junction
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
+	makedepends = python-gobject
 	makedepends = blueprint-compiler
 	depends = libadwaita
 	depends = libportal-gtk4
