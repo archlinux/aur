@@ -1,20 +1,20 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Generates a status line for swaybar"
+pkgdesc="Generate a status line for swaybar"
 arch=('any')
 url="https://github.com/jmcantrell/$pkgname"
 license=('GPL3')
-depends=('python' 'python-schema' 'python-toml')
+depends=('python' 'python-toml')
 optdepends=('python-systemd: systemd journal logging')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-cov')
 provides=()
 conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-md5sums=('8be1ce78f682b68b9d7970b2ec7395c0')
+md5sums=('a953449fe3f895bff2df4cc1eb781c78')
 
 check() {
     cd "$srcdir/${pkgname#python-}-$pkgver"
