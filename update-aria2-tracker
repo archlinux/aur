@@ -11,7 +11,7 @@ function get_aria2_home(){
     echo ${HOME}/.aria2 && return 0
 }
 
-ARIA2_CONFIG_HOME=$(get_aria2_home)
+ARIA2_CONFIG_HOME=$(get_aria2_home $1)
 echo "Aria2 config is placing at ${ARIA2_CONFIG_HOME}"
 if [[ -f "${ARIA2_CONFIG_HOME}/tracker-config.sh" ]]
 then
