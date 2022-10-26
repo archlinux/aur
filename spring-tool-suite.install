@@ -1,7 +1,7 @@
 pre_upgrade() {
     # Keep existing '-javaagent' options, if any
     if [ -e "/opt/sts4/SpringToolSuite4.ini" ]; then
-        grep "^\-javaagent" /opt/sts4/SpringToolSuite4.ini > /tmp/sts4.javaagents || return 0
+        grep -E "^-javaagent" /opt/sts4/SpringToolSuite4.ini > /tmp/sts4.javaagents || return 0
     fi
 }
 
