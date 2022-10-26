@@ -90,6 +90,10 @@ source=(
   # pybind cython modules seem to have a longstanding issue with incorrectly mocking
   # cythonize calls in setup.py when 'egg_info' is a provided directive
   'ceph-17.2.4-pybind-unmock-cythonize.patch'
+
+  # fixes the few usages of std::iterator which has been deprecated in c++17, quieting
+  # a lot of _GLIBCXX17_DEPRECATED line noise during builds
+  'ceph-17.2.5-fix-iterator-depreciations.patch'
 )
 sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40d94b802db5b344faeab7c4e48d65c8ade47d0cbf0eaa0e7ddf399b09a279d'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -104,7 +108,8 @@ sha512sums=('430e916004a697bddda8cb7a83026b6e0e2b2e618e645df48c0580d16d7370d5a40
             'e59cc0ec58d85369ed9f2b8969e2280609fe98828ea66b5bb80a423f4a0aa547da52c6ba9d9610cece442c515e123d1af169e11ec106aff8cd3dadaea35cad90'
             '6b53e3a2b1941f8dfdb4b83cafc4c500e818dd3a0736d7061f0ebcdfb514094b217e4688384c5b428288181ef6fff0ca73895c65a046e2d6ae2b834375164216'
             '81f540c8312972887a7cb43b8a4e29bfc6f24d5774787a4a8edfe65cca7d3b08faa08ecd09066d7ea67111769a5aec7385fe9a969546626f58874dd8aff5b664'
-            '781a01e622a70d56bf1948bdc0b427ffa95a86cec7dd9d26c6007a9ec024a942a8ca55f2acc3d37344862f1d6bf11cae998d8071754cd841a66bfba4ec9c58bf')
+            '781a01e622a70d56bf1948bdc0b427ffa95a86cec7dd9d26c6007a9ec024a942a8ca55f2acc3d37344862f1d6bf11cae998d8071754cd841a66bfba4ec9c58bf'
+            '2a6f33791760e14543c90077bfc6bf1b6b82ee2996e80b4762eadb887a0d9a67c221b6f10832ddf780dc6abaed246a1e2ee7680c9c861c4ff70e61b752a37b36')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
