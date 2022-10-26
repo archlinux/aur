@@ -16,6 +16,7 @@ provides=( 'skywire' )
 conflicts=( 'skywire' )
 license=('license-free')
 install=skywire.install
+backup=(opt/${_pkgname}/{users.db,skywire.json,local})
 source=("skywire-autoconfig"
 "skywire.desktop"
 "skywirevpn.desktop"
