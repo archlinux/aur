@@ -1,0 +1,19 @@
+pkgbase = controku
+	pkgdesc = Control Roku devices from the comfort of your own desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/benthetechguy/controku
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gtk3
+	depends = python-gobject
+	depends = python-requests
+	depends = python-appdirs
+	depends = python-ssdpy
+	source = https://github.com/benthetechguy/controku/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 05287b8998ef232f487e95f0231496e9d1c80d87f4b798c2dd3d392e7eb63393
+
+pkgname = controku
