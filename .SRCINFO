@@ -1,0 +1,17 @@
+pkgbase = wg_tool
+	pkgdesc = Tool to manage wireguard server and users
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/gene-git/wg_tool
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-poetry
+	makedepends = rsync
+	depends = python>3.9
+	depends = python-packaging
+	source = git+https://github.com/gene-git/wg_tool
+	sha512sums = SKIP
+
+pkgname = wg_tool
