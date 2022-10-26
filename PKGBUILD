@@ -2,11 +2,11 @@
 
 pkgname=steam-skins-meta
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package of all steam skins in AUR.'
 arch=('any')
 url='https://aur.archlinux.org/packages/steam-skins-meta'
-depends=('air-for-steam'
+depends=('air-for-steam-git'
     'compact-steam-skin'
     'invert-steam-skin'
     'metro-for-steam-skin'
