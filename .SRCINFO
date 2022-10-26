@@ -1,0 +1,17 @@
+pkgbase = python-reretry
+	pkgdesc = An easy to use, but functional decorator for retrying on exceptions
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/leshchenko1979/reretry
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pbr
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/reretry/reretry-0.11.1.tar.gz
+	sha256sums = 4ae1840ae9e443822bb70543c485bb9c45d1d009e32bd6809f2a9f2839149f5d
+
+pkgname = python-reretry
