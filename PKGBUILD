@@ -4,7 +4,7 @@
 _pkgname=themix-icons-papirus
 _reponame=papirus-icon-theme
 pkgname="${_pkgname}-git"
-pkgver=20201201.r114.g9d01df775c
+pkgver=20220910.r12.g11e75c8a6c
 pkgrel=1
 pkgdesc="Papirus icons plugin for Themix GUI designer"
 arch=('x86_64' 'i686')
@@ -58,6 +58,7 @@ package() {
 
 	cd "$pkg_tmp_dir"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" "install_${_plugin_name}"
+  cd "$pkgdir"
 	rm -fr "$pkg_tmp_dir"
 
 	python -O -m compileall "${pkgdir}${_oomox_dir}/plugins/${_plugin_name}" -d "${_oomox_dir}/plugins/${_plugin_name}"
