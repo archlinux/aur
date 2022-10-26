@@ -1,41 +1,39 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=playhouse-git
-_pkgname=Playhouse
-pkgver=1.0+2+g4b983b7
-_commit=a9947bd8f8691a352a41b6534686ce48c4f6ece4
+pkgver=1.0.r2.g4b983b7
 pkgrel=1
 pkgdesc="A Playground for HTML/CSS/JavaScript"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sonnyp/Playhouse"
 license=('GPL3')
 depends=('libadwaita' 'webkit2gtk-5.0' 'gjs')
-makedepends=('git' 'blueprint-compiler' 'meson')
+makedepends=('git' 'blueprint-compiler' 'python-gobject' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git
+source=("${pkgname%-git}::git+$url.git"
   'git+https://github.com/sonnyp/troll.git')
 b2sums=('SKIP'
-        'SKIP')
+  'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   git submodule init
   git config submodule.src/troll.url "$srcdir/troll"
-  git submodule update
+  git -c protocol.file.allow=always submodule update --init --recursive
 
   # This is not a Flatpak
-  sed -i 's|app/bin|usr/bin|g' "$srcdir/$_pkgname"/src/meson.build
+  sed -i 's|app/bin|usr/bin|g' src/meson.build
 }
 
 build() {
-  arch-meson "${_pkgname%-git}" build
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
