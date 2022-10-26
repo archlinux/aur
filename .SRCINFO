@@ -1,0 +1,12 @@
+pkgbase = pacman-accel-git
+	pkgdesc = Pacman accelerator - try each mirror while still using latest db
+	pkgver = 0.178.80754da
+	pkgrel = 1
+	url = https://github.com/felixonmars/archlinux-futils/blob/master/pacman-accel
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/felixonmars/archlinux-futils.git
+	md5sums = SKIP
+
+pkgname = pacman-accel-git
