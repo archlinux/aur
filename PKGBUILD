@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-screencast-vaapi
-pkgver=42.4+r1+ga25c59695
+pkgver=42.4
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell (screencast records with VAAPI)"

@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-screencast-vaapi
 	pkgdesc = Next generation desktop shell (screencast records with VAAPI)
-	pkgver = 42.4+r1+gec04b253a
+	pkgver = 42.4
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
