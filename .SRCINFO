@@ -1,0 +1,20 @@
+pkgbase = python-spikingjelly-git
+	pkgdesc = Deep learning framework for Spiking Neural Network (SNN) based on PyTorch.
+	pkgver = r1782.55d05d5
+	pkgrel = 1
+	url = https://github.com/fangwei123456/spikingjelly
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python-pytorch
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-torchvision
+	depends = python-scipy
+	provides = python-spikingjelly
+	conflicts = python-spikingjelly
+	source = git+https://github.com/fangwei123456/spikingjelly.git
+	md5sums = SKIP
+
+pkgname = python-spikingjelly-git
