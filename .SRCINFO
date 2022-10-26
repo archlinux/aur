@@ -9,12 +9,12 @@ pkgbase = fastly-bin
 	provides = fastly
 	arch = aarch64
 	source_aarch64 = https://github.com/fastly/cli/releases/download/v4.3.0/fastly_v4.3.0_linux-arm64.tar.gz
-	sha256sums_aarch64 = 25403df9186d538cd4c3cf4c76abea99d4e85d57f8bc1c2afccf582c6f2972cd
+	sha256sums_aarch64 = 709422d8a3585f33065300964da0d1b6559e6214f42d3d21ee74a4cf2370efa4
 	arch = i686
 	source_i686 = https://github.com/fastly/cli/releases/download/v4.3.0/fastly_v4.3.0_linux-386.tar.gz
-	sha256sums_i686 = 2425e13162ce4d2dde75925592cc80a4e673c674483c0f9e7480148ee5dc0ad8
+	sha256sums_i686 = d92ee6e63d6f1ec593908011cc65b560df0532283861f3504fecb63774219792
 	arch = x86_64
 	source_x86_64 = https://github.com/fastly/cli/releases/download/v4.3.0/fastly_v4.3.0_linux-amd64.tar.gz
-	sha256sums_x86_64 = 7eb5e19365251788148e134a1a5444984b1b20ae1547ec46b32b3ab7d8a94089
+	sha256sums_x86_64 = 649c3b1003662357125c4a50d92b27a04c7d6663d82693a932ad77a43ccc0bc4
 	
 pkgname = fastly-bin
