@@ -42,6 +42,7 @@ package() {
   install -D "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -D "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -D "$srcdir/ghostfolio-$pkgver/.env" "$pkgdir/etc/$pkgname.env"
+  install -Dm0644 "$srcdir/ghostfolio-$pkgver/LICENSE" "$pkgdir/usr/share/licences/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
