@@ -3,9 +3,9 @@
 pkgname=pearson-reader-plus-it
 pkgver=4.7
 pkgrel=1
-pkgdesc="A simple Reader for Pearson digital books (IT)."
+pkgdesc="A simple Reader for Pearson digital books."
 arch=('x86_64')
-url="https://it.pearson.com/"
+url="https://www.pearson.com/"
 license=('custom')
 depends=('sdl2' 'unzip' 'tar')
 optdepends=(
