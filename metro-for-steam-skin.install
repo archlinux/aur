@@ -1,11 +1,11 @@
 post_install() {
-    /usr/bin/sssm sync metro-for-steam
+    /usr/bin/sssm sync metro-for-steam-official
 }
 
 post_upgrade() {
-    /usr/bin/sssm sync metro-for-steam
+    /usr/bin/sssm sync metro-for-steam-official
 }
 
 post_remove() {
-    /usr/bin/sssm remove metro-for-steam
+    /usr/bin/sssm remove metro-for-steam-official
 }

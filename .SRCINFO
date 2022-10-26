@@ -1,7 +1,7 @@
 pkgbase = metro-for-steam-skin
-	pkgdesc = A new look for the platform you already know and love. Metro is fresh and exciting from the moment you open Steam.
+	pkgdesc = A new look for the platform you already know and love. Metro is fresh and exciting from the moment you open Steam.(unpatched version)
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minischetti/metro-for-steam
 	install = metro-for-steam-skin.install
 	arch = any

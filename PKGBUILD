@@ -1,8 +1,8 @@
 # Maintainer: barfin
 pkgname='metro-for-steam-skin'
 pkgver=4.4
-pkgrel=1
-pkgdesc="A new look for the platform you already know and love. Metro is fresh and exciting from the moment you open Steam."
+pkgrel=2
+pkgdesc="A new look for the platform you already know and love. Metro is fresh and exciting from the moment you open Steam.(unpatched version)"
 arch=(any)
 url="https://github.com/minischetti/metro-for-steam"
 license=("MIT")
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 
 package() {
   mkdir -p ${pkgdir}/usr/share/steam/skins
-  mv ${srcdir}/metro-for-steam-${pkgver} ${srcdir}/metro-for-steam
-  cp -r ${srcdir}/metro-for-steam ${pkgdir}/usr/share/steam/skins
+  mv ${srcdir}/metro-for-steam-${pkgver} ${srcdir}/metro-for-steam-official
+  cp -r ${srcdir}/metro-for-steam-official ${pkgdir}/usr/share/steam/skins
 }
 
