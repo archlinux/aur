@@ -2,8 +2,8 @@
 pkgname=damon
 pkgver=0.1.0
 pkgrelease=nightly
-pkgchecksum=d34d177dc9e73b4585908b184b1fe48d
-pkgrel=1
+pkgchecksum=1b882aeddcf6b2af6939c9c7970a7424
+pkgrel=2
 pkgdesc=" A terminal UI (TUI) for HashiCorp Nomad"
 arch=('x86_64')
 url="https://github.com/hashicorp/damon"
