@@ -3,7 +3,7 @@
 
 _archive_extension='tar.gz'
 pkgname=system-bridge
-pkgver=3.4.7
+pkgver=3.4.9
 pkgrel=1
 epoch=1
 pkgdesc="Bridges your system to other systems, like Home Assistant"
@@ -51,12 +51,10 @@ source=(
         "$pkgname"
         "$pkgname.service"
 )
-b2sums=(
-	'57d780f9ae64e9e29ef63296f41343871458eda06653962032ad3af944ca8e18f6934da1d29c76d38e295bd64b9153c049bfc2959029840062a9f883e0b18051'
+b2sums=('be1add1c5d599f31854f31f58e9738c7c839f685174f9a308931e8880ea9e73ab043069c70fc81a6e35b2c87947cbaf3a185cb6ee51702a6f757232e3908582a'
         'fa5f2b2bb64d44f7791fe8631481cf294f0a3afa88f1ac7fdb55508df9acc4ad26b1723cadebbf1bc09369c2e3732c6628b6b06d44c3bdcebee0d5913d85d097'
         '26634fe43624791f7ae6fe85e70792fcf67fcd5a9997ba40043c49a636d939d610eb5e6ededdf1e6723dd8280e924160e72a8469501a1436ad67f28eab2d4fef'
-        '03852934e853a7a5973e4139a9c51a160df81af1fa958ac6550a6525aa97ad3ebc983bf4a662cce345e04cc0451912687d4c199c9152c7160b173abad2b73b37'
-)
+        '03852934e853a7a5973e4139a9c51a160df81af1fa958ac6550a6525aa97ad3ebc983bf4a662cce345e04cc0451912687d4c199c9152c7160b173abad2b73b37')
 changelog=$pkgname.changelog
 
 prepare() {
