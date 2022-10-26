@@ -1,13 +1,13 @@
 pkgbase = mixtool
 	pkgdesc = helper for easily working with jsonnet mixins
-	pkgver = 0.0.0.r63.g3c25f120db2c
+	pkgver = 0.0.0.r82.g4c07d4ed7465
 	pkgrel = 1
 	url = https://github.com/monitoring-mixins/mixtool
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/monitoring-mixins/mixtool/archive/3c25f120db2c681f2d9ff5b8cbfa34dc4d5027e7/mixtool-0.0.0.r63.g3c25f120db2c.tar.gz
-	sha256sums = ebacc7a78dae2f3f43cbf7831d3153047744a2043611425f37f183f0cb9be6bc
+	source = https://github.com/monitoring-mixins/mixtool/archive/4c07d4ed746579ead9eeea5302bf632b5f2e0414/mixtool-0.0.0.r82.g4c07d4ed7465.tar.gz
+	sha256sums = d86fed1309aec034883c422c88a437b97429c02ea55b7a3ba8beb5112b4b06aa
 
 pkgname = mixtool
