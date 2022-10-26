@@ -1,9 +1,9 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
-_name=pytest-metadata
+_name=pytest_metadata
 pkgname=python-pytest-metadata
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Plugin for accessing test session metadata"
 arch=(any)
 url="https://github.com/pytest-dev/pytest-metadata"
@@ -11,8 +11,8 @@ license=(MPL2)
 depends=(python-pytest)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('2d07a20fafbc84ad308d4a2542df2dc245baf87bb3348047a2ebc0779d30c9c1f93522b66356a8a985619edfad0cff49b76e34ea46e0432a7568416830f33e16')
-b2sums=('7b4b7b15509701e569e9e58df7bea9341c56a47a1e3d59eb3c51817e2956abf9bd0de70a189eafc7fa15fd49044791f9a60f66d705fcea0286dcf5fe29f0fc62')
+sha512sums=('17b1b88418f1a33926d6d4bf7b2a662d7848fa61f760dd6dab75e706197426e54b298976603b23f0882ca6315af447f7a22c90dd5691017bd70064f5527c0309')
+b2sums=('9e0a58c26f3e5343f6694f45d55689c17313753733573a7c0ab9a972b222a0ec74f1d89c8a5810b3c56f6417b30e9caa9f2580af78d21a954aacec70098c229c')
 
 build() {
   cd $_name-$pkgver
