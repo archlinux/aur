@@ -10,6 +10,7 @@ pkgbase = cni-plugins-nftables-git
 	arch = aarch64
 	license = apache
 	makedepends = go
+	makedepends = git
 	optdepends = cni-plugins: Other network plugins maintained by the CNI team
 	provides = cni-plugins-nftables
 	conflicts = cni-plugins-nftables
