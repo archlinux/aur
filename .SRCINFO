@@ -1,7 +1,7 @@
 pkgbase = wxrd-git
 	pkgdesc = A prototype-quality standalone client for xrdesktop based on wlroots and the wxrc codebase.
 	pkgver = 0.16.0.r46.a548783
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.freedesktop.org/xrdesktop/wxrd
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 _basename='wxrd'
 pkgname="$_basename-git"
 pkgver=0.16.0.r46.a548783
-pkgrel=4
+pkgrel=5
 pkgdesc="A prototype-quality standalone client for xrdesktop based on wlroots and the wxrc codebase."
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/wxrd"
@@ -53,7 +53,7 @@ prepare() {
 
     git submodule init
     git config submodule.subprojects/wlroots.url "$srcdir"/wlroots
-    git submodule--helper update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
