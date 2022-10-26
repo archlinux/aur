@@ -2,8 +2,8 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=7.14.0
-pkgrel=3
+pkgver=7.16.1
+pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -29,7 +29,7 @@ depends=(
 	python-tabulate
 	python-yte
 	python-jinja
-	python-retry
+	python-reretry
 )
 makedepends=(python-setuptools python-build python-installer python-wheel)
 optdepends=(
@@ -46,7 +46,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('fe22082e4f322ffafb9018d896670ae4088e984117db670de9003a199f491447')
+sha256sums=('db485c8c9cfea3f0f8e229e4b410ab2727d7cbe4d6c6c197d30dd0ef1cd58989')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

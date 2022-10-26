@@ -1,4 +1,5 @@
 /src
 /pkg
-*.gz
-*.pkg.*
+/*.gz
+/*.pkg.*
+/*.log
