@@ -1,0 +1,16 @@
+[Unit]
+Description=Open source wealth management
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/yarn start:prod
+WorkingDirectory=/usr/lib/ghostfolio/api
+EnvironmentFile=/etc/ghostfolio.env
+User=ghostfolio
+Group=ghostfolio
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

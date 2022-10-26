@@ -1,0 +1,7 @@
+*
+!ghostfolio.service
+!ghostfolio.sysusers
+!ghostfolio.tmpfiles
+!PKGBUILD
+!.SRCINFO
+!.gitignore
