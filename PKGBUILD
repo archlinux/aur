@@ -5,7 +5,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=motion-git
-pkgver=3.4.1.r793.db94a89
+pkgver=4.4.0.r44.db94a89
 pkgrel=1
 pkgdesc="Monitor and record video signals from many types of cameras"
 arch=('x86_64')
@@ -27,7 +27,7 @@ b2sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/release-//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/release-//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

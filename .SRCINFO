@@ -1,6 +1,6 @@
 pkgbase = motion-git
 	pkgdesc = Monitor and record video signals from many types of cameras
-	pkgver = 3.4.1.r793.db94a89
+	pkgver = 4.4.0.r44.db94a89
 	pkgrel = 1
 	url = https://motion-project.github.io
 	arch = x86_64
