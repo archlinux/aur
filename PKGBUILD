@@ -1,12 +1,11 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=workbench-git
-_pkgname=Workbench
-pkgver=r320.dff12ca
+pkgver=43.0.r8.g3f4e3b6
 pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
 arch=('x86_64' 'aarch64')
-url="https://github.com/sonnyp/Workbench"
+url="https://apps.gnome.org/app/re.sonny.Workbench"
 license=('GPL3')
 depends=('blueprint-compiler' 'gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vala' 'vte4')
 makedepends=('git' 'gobject-introspection' 'meson' 'npm')
@@ -14,10 +13,10 @@ checkdepends=('appstream-glib')
 optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
-checkdepends=('appstream-glib')
+install="${pkgname%-git}.install"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/sonnyp/Workbench.git'
+source=(${pkgname%-git}::'git+https://github.com/sonnyp/Workbench.git'
         'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
         'git+https://github.com/sonnyp/troll.git')
 sha256sums=('SKIP'
@@ -25,27 +24,25 @@ sha256sums=('SKIP'
             'SKIP')
             
 pkgver() {
-  cd "${_pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/Workbench"
+  cd "${pkgname%-git}"
   git submodule init
   git config submodule.icon-development-kit-www.url "$srcdir/icon-development-kit-www"
   git config submodule.src/troll.url "$srcdir/troll"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # This is not a Flatpak
-  sed -i 's|app/share|usr/share|g' src/re.sonny.Workbench
+  sed -i 's|app/bin|usr/bin|g' src/meson.build
+  sed -i 's|app/share|usr/share|g' src/bin.js
   sed -i '/Flatpak/d' src/about.js
 }
 
 build() {
-  cd "$srcdir/Workbench"
+  cd "${pkgname%-git}"
   export npm_config_cache="$srcdir/npm_cache"
   npm install
 
@@ -54,12 +51,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir/Workbench"
+  cd "${pkgname%-git}"
   meson test -C build --print-errorlogs || :
 }
 
 package() {
-  cd "$srcdir/Workbench"
+  cd "${pkgname%-git}"
   meson install -C build --destdir "$pkgdir"
 
   # Scalable action icons conflict with numerous other packages

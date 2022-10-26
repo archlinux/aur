@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo "Symlink scalable action icons for use locally:"
+  echo ""
+  echo "ln -s /usr/share/doc/workbench/icons/hicolor/scalable/actions/* ~/.local/share/icons/hicolor/scalable/actions/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
