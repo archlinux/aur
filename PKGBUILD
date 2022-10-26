@@ -4,7 +4,7 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-webengine-git
-pkgver=22.9.24.alpha.220930.ca7fc1c2.r71.g6742321a
+pkgver=22.9.24.alpha.220930.ca7fc1c2.r74.g408f9947
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
@@ -27,6 +27,10 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
+
+	# remove the default flag U_GLIBCXX_ASSERTIONS
+	echo "QMAKE_CXXFLAGS += -U_GLIBCXX_ASSERTIONS" >> goldendict.pro
+
 }
 
 build(){
