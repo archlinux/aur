@@ -1,8 +1,6 @@
 #!/bin/sh
 ME="${0##*/}"
 
-set -euf
-
 usage() {
   cat << __EOT__
 Usage: $ME command [argument …]
@@ -44,6 +42,8 @@ else
   # Appending the new library to the old LD_PRELOAD would suck.
   LD_PRELOAD="$LIBSORTDIR $LD_PRELOAD"
 fi
+set -euf
+
 export LD_PRELOAD
 
 if [ "$#" -eq 0 ]; then
