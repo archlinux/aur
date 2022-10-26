@@ -26,7 +26,7 @@ sha256sums=('72ec74f4a7c16e684f43ea42e215497fcd4c55d028a68fb72e99e61ff40da4d6'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '7beb8640c93d90a74ee226d394646aa8006693a23c8fa6840efb6d136e53613b'
-            '440bb4f91ad58a43f8549afd5f47f8ad2cdcd4e41ceff84e25b967f235c429dc')
+            'dd8dd78df738cf0bf40d973159cd9e7b17223746cd9b32560d8e85089a108665')
 
 prepare() {
   cd postgresql-${pkgver}
@@ -144,8 +144,7 @@ package_postgresql15() {
   # backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
   depends=("${pkgbase}-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0'
            'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap' 'llvm-libs' 'libxslt')
-  optdepends=('python2: for PL/Python 2 support'
-              'python: for PL/Python 3 support'
+  optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support')
   options=('staticlibs')
@@ -157,14 +156,6 @@ package_postgresql15() {
   make DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
   make -C doc/src/sgml DESTDIR="${pkgdir}" install-man
-
-  # install plpython3
-  mv src/Makefile.global src/Makefile.global.save
-  cp src/Makefile.global.python3 src/Makefile.global
-  touch -r src/Makefile.global.save src/Makefile.global
-  make -C src/pl/plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/hstore_plpython3 DESTDIR="${pkgdir}" install
-  make -C contrib/ltree_plpython3 DESTDIR="${pkgdir}" install
 
   # we don't want these, they are in the -libs package
   for dir in src/interfaces src/bin/pg_config src/bin/pg_dump src/bin/psql src/bin/scripts; do
@@ -178,6 +169,7 @@ package_postgresql15() {
   install -Dm 644 COPYRIGHT -t "${pkgdir}/opt/${pkgbase}/share/licenses/${pkgname}"
 
   popd
+
   install -Dm 755 postgresql-check-db-dir -t "${pkgdir}/opt/${pkgbase}/bin"
 
   #install -Dm 644 postgresql.pam "${pkgdir}/etc/pam.d/${pkgname}"

@@ -34,7 +34,7 @@ pkgbase = postgresql15
 	sha256sums = 8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
 	sha256sums = 7beb8640c93d90a74ee226d394646aa8006693a23c8fa6840efb6d136e53613b
-	sha256sums = 440bb4f91ad58a43f8549afd5f47f8ad2cdcd4e41ceff84e25b967f235c429dc
+	sha256sums = dd8dd78df738cf0bf40d973159cd9e7b17223746cd9b32560d8e85089a108665
 
 pkgname = postgresql15-libs
 	pkgdesc = Libraries for use with PostgreSQL
@@ -68,7 +68,6 @@ pkgname = postgresql15
 	depends = libldap
 	depends = llvm-libs
 	depends = libxslt
-	optdepends = python2: for PL/Python 2 support
 	optdepends = python: for PL/Python 3 support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
