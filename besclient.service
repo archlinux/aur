@@ -19,3 +19,6 @@ RemainAfterExit=yes
 SuccessExitStatus=5 6
 ExecStart=/etc/init.d/besclient start
 ExecStop=/etc/init.d/besclient stop
+
+[Install]
+WantedBy=multi-user.target

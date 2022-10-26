@@ -1,7 +1,7 @@
 # Maintainer: Jingrong Chen <crazyboycjr@gmail.com>
 pkgname=bigfix-duke
 pkgver=10.0.2.52
-pkgrel=1
+pkgrel=2
 pkgdesc="BigFix Enterprise Suite for Duke"
 arch=('x86_64')
 license=('unknown')
@@ -13,7 +13,7 @@ source=('scp://danyang-01.cs.duke.edu:/nfs/public/csl_endpoints/BigFix_CS_10.0.2
         'vars.sh'
         'init-functions')
 sha256sums=('c3410a3a7a97d4ee10cca0a2d8990c9c23758a3b1a0472d108d66921df83a088'
-            'dcc7944605718e11c080bd5b9e9971e1b7ab5a3a71e7bc8992e6cc3c0fa05d69'
+            '777f36b8b3944136b957280b05d5f1ad133f66b62486028a1a687f14de284416'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '3e0428b8665bb91a9783386ceef42f7e67e330f9db25a107c7131239c7e07405')
 install='bigfix.install'
