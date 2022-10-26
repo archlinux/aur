@@ -1,6 +1,6 @@
 pkgbase = themix-icons-numix-git
 	pkgdesc = Numix icons plugin for Themix GUI designer
-	pkgver = 22.08.16.r1.gb5001d962.e6197dd14.1.14.r102.g1bb45bb5
+	pkgver = 22.08.16.r1.gb5001d962.e6197dd14
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-icon-theme
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = themix-icons-numix-git
 	conflicts = oomox
 	conflicts = oomox-git
 	options = !strip
-	source = oomox::git+https://github.com/themix-project/oomox.git#branch=master
+	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = numix-icon-theme::git+https://github.com/numixproject/numix-icon-theme.git#branch=master
 	source = numix-folders::git+https://github.com/numixproject/numix-folders.git#branch=master
 	md5sums = SKIP
