@@ -1,7 +1,7 @@
 pkgbase = sortdir
 	pkgdesc = Have [almost] any application sort its directory listings
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ftp.uhulinux.hu/sources/sortdir
 	arch = x86_64
 	arch = armv7h

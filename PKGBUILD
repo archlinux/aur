@@ -3,7 +3,7 @@
 
 pkgname=sortdir
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Have [almost] any application sort its directory listings'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://ftp.uhulinux.hu/sources/sortdir'
@@ -22,7 +22,7 @@ build() {
 
   export CFLAGS="$CFLAGS $LTOFLAGS -shared -ldl -fPIC"
 
-  gcc $CFLAGS -o "$_soname" "${_libname}.c"
+  gcc $CFLAGS $LDFLAGS -o "$_soname" "${_libname}.c"
 }
 
 package() {
