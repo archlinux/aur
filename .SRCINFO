@@ -1,8 +1,8 @@
 pkgbase = python-atheris
 	pkgdesc = A coverage-guided fuzzer for Python and Python extensions
-	pkgver = 2.0.12
-	pkgrel = 3
-	url = https://github.com/google/atheris/
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/google/atheris
 	arch = x86_64
 	license = Apache
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = python-atheris
 	makedepends = python-setuptools
 	makedepends = pybind11
 	depends = python
-	source = python-atheris::git+https://github.com/google/atheris/#commit=cbd372db6a61577566b967587b12fd934b937f2d
+	source = python-atheris::git+https://github.com/google/atheris#commit=6068f9e520ba4f7218075f1a6bf3426b288d17f8
 	b2sums = SKIP
 
 pkgname = python-atheris
