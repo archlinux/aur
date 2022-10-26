@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-31
+_srctag=GE-Proton7-32
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -123,7 +123,7 @@ prepare() {
   pushd $pkgname
     git submodule init proton-wine
     git submodule set-url proton-wine "$srcdir"/proton-wine-ge
-    git submodule--helper update proton-wine
+    git -c protocol.file.allow=always submodule update proton-wine
     pushd proton-wine
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
