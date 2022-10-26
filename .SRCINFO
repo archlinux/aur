@@ -1,0 +1,20 @@
+pkgbase = backscrub-git
+	pkgdesc = Virtual video device (webcam) for background replacement / blurring
+	pkgver = v0.3.0.r63.g4f70bc1
+	pkgrel = 1
+	url = https://github.com/floe/backscrub
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = libcurl-gnutls
+	depends = opencv
+	depends = v4l2loopback-dkms
+	provides = backscrub
+	conflicts = backscrub
+	source = backscrub-git::git+https://github.com/floe/backscrub.git
+	source = tensorflow::git+https://github.com/tensorflow/tensorflow
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = backscrub-git
