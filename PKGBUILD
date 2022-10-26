@@ -4,7 +4,7 @@ _romname=gc_mq_d
 _romdesc="Ocarina of Time Master Quest Debug"
 pkgname=soh-otr-${_romname}
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "${srcdir}"
 
-  [ -e oot.otr ] && rm oot.otr
+  [ -e oot-mq.otr ] && rm oot-mq.otr
   [ ! -e assets ] && ln -s ${SHIP_PREFIX}/assets assets
   [ -e Extract ] && rm -r Extract; mkdir Extract
   cp -r "${SHIP_PREFIX}"/assets/game Extract/assets
