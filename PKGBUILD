@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur at ezpz dot cz>
 
 pkgname=powershell-editor-services
-pkgver=3.5.4
+pkgver=3.6.0
 pkgrel=1
 
 pkgdesc='A common platform for PowerShell development support in any editor or application!'
@@ -17,7 +17,7 @@ source=("PowerShellEditorServices-$pkgver.zip::https://github.com/PowerShell/Pow
 
 noextract=("PowerShellEditorServices-$pkgver.zip")
 
-sha256sums=('83386e1319c17104598ade6734465b07b980c0ac34d7eb48e516d2369c888283'
+sha256sums=('bfdf9547805a402136a2e8eb0ac31d7a1cf28accb9f403e547a6cb98c40fa59a'
             '99bc3308d3b5f2018c5d7af9239548c6853a01f08db0a1d9247d16be647c5658')
 
 package() {

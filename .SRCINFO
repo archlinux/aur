@@ -1,15 +1,15 @@
 pkgbase = powershell-editor-services
 	pkgdesc = A common platform for PowerShell development support in any editor or application!
-	pkgver = 3.5.4
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShellEditorServices
 	install = powershell-editor-services.install
 	arch = x86_64
 	depends = powershell
-	noextract = PowerShellEditorServices-3.5.4.zip
-	source = PowerShellEditorServices-3.5.4.zip::https://github.com/PowerShell/PowerShellEditorServices/releases/download/v3.5.4/PowerShellEditorServices.zip
-	source = LICENSE-3.5.4::https://raw.githubusercontent.com/PowerShell/PowerShellEditorServices/v3.5.4/LICENSE
-	sha256sums = 83386e1319c17104598ade6734465b07b980c0ac34d7eb48e516d2369c888283
+	noextract = PowerShellEditorServices-3.6.0.zip
+	source = PowerShellEditorServices-3.6.0.zip::https://github.com/PowerShell/PowerShellEditorServices/releases/download/v3.6.0/PowerShellEditorServices.zip
+	source = LICENSE-3.6.0::https://raw.githubusercontent.com/PowerShell/PowerShellEditorServices/v3.6.0/LICENSE
+	sha256sums = bfdf9547805a402136a2e8eb0ac31d7a1cf28accb9f403e547a6cb98c40fa59a
 	sha256sums = 99bc3308d3b5f2018c5d7af9239548c6853a01f08db0a1d9247d16be647c5658
 
 pkgname = powershell-editor-services
