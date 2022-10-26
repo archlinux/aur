@@ -1,5 +1,6 @@
 # Former maintainer: Adrien Jussak <adrien.jussak@wascardev.com>
-# Maintainer: Prem Buczkowski <prem@prem.moe>
+# Former maintainer: Prem Buczkowski <prem@prem.moe>
+# Maintainer: Jaco Malan <jacom@codelog.co.za>
 
 pkgname=visual-paradigm-163
 pkgver=16.3
@@ -10,7 +11,7 @@ url='https://www.visual-paradigm.com/download/'
 depends=('java-environment-common' 'java-runtime-common')
 license=('custom')
 install=visual-paradigm-community.install
-conflicts=('visual-paradigm-community')
+conflicts=('visual-paradigm-community' 'visual-paradigm')
 
 _ver=${pkgver/./_}
 
