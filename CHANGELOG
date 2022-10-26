@@ -1695,3 +1695,26 @@ Wed Oct 6 22:25:36 2021 +0200
      2020-06-16 bd515fb1 csts feat(colors): Create DarkOnesk2 (#313)
      2020-06-16 485b9f87 csts feat(colors): Create DarkOnesk1 (#312)
      2020-05-29 e1fa9794 actionless chore: extract xresources-import related functionality to a separate plugin
+
+
+Wed Oct 26 04:11:29 2022 +0200
+-------------------------------------------------
+1.15            Release 1.15
+    
+    Notable changes:
+     2022-10-26 4985a527 actionless feat(plugins: icons: archdroid): allow to choose custom export dir
+     2022-10-26 b3a9982b actionless feat(plugins: icons: gnomecolors): allow to choose custom export dir
+     2022-10-26 731ad1fc actionless feat(plugins: icons: numix): allow to choose custom export dir
+     2022-10-26 be5f38f1 actionless feat(plugins: icons: papirus): allow to choose custom export dir
+     2022-10-26 64c8f1cf actionless fix(plugin_loader: error_handler): make dialog work again
+     2022-03-15 00300105 actionless feat(plugin_loader): extend cli error message
+     2022-01-18 c3663901 actionless fix(colors): restore support for python<3.9
+     2021-10-10 9abd4a18 actionless feat(shortcuts): make strings translate-able
+     2021-10-08 fd7d0199 actionless feat(shortcuts window): show shortcuts defined by plugins
+    
+    Submodule changes:
+     2022-10-26 674af98d actionless chore(plugins: base16; packaging: arch): update submodule (release 1.4: add gtk4, improve kde breeze theme; sync base16 mirror)
+     2022-10-26 3e1fc8b1 actionless chore(plugins: icons_papirus; packaging: arch): update submodule (sync with upstream and add --destdir option)
+     2022-10-26 80e543fb actionless chore(plugins: icons_numix; packaging: arch): update submodule (sync with upstream and add --destdir option)
+     2022-10-26 100ebd43 actionless chore(plugins: icons_gnomecolors; packaging: arch): update submodule (release 5.5.6: add --destdir option)
+     2022-10-26 3b16b1ba actionless chore(plugins: icons_archdroid; packaging: arch): update submodule (release 1.0.3: add --destdir option)
