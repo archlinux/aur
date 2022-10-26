@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libopenblas
-pkgver=0.3.20
+pkgver=0.3.21
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD. (Designed for can be installed side by side with Blas)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake'
 conflicts=('openblas')
 provides=('openblas')
 source=("OpenBLAS-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz")
-sha256sums=('8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c')
+sha256sums=('f36ba3d7a60e7c8bcc54cd9aaa9b1223dd42eaf02c811791c37e8ca707c241ca')
 options=('!emptydirs' 'debug')
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "OpenBLAS-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
