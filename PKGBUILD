@@ -1,6 +1,6 @@
 # Maintainer: Krzysztof Małysa <varqox at gmail dot com>
 pkgname=sim-sip
-pkgver=r168.ab2b033
+pkgver=r169.1d6f0fb
 pkgrel=1
 pkgdesc="A tool for preparing and managing Sim problem packages"
 arch=('x86_64' 'i686')
