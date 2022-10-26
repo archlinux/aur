@@ -41,7 +41,7 @@ package_xenstore-xcp-ng() {
   install -Dm444 $srcdir/xe-guest-utilities-$pkgver/LICENSE   $pkgdir/usr/share/licenses/xenstore-xcp-ng/LICENSE
 
   install -Dm544 $srcdir/xe-guest-utilities-$pkgver/build/stage/usr/bin/xenstore $pkgdir/usr/bin/xenstore
-  mkdir $pkgdir/var/cache/xe-linux-distribution
+  mkdir -p $pkgdir/var/cache/xe-linux-distribution
   
   cd $pkgdir
   ln -s /usr/bin/xenstore usr/bin/xenstore-chmod
@@ -59,7 +59,7 @@ package_xe-guest-utilities-xcp-ng() {
   conflicts=('xe-guest-utilities')
   depends=('xenstore-xcp-ng' 'bash')
   install -Dm444 $srcdir/xe-guest-utilities-$pkgver/LICENSE   $pkgdir/usr/share/licenses/xe-guest-utilities-xcp-ng/LICENSE
-  mkdir $pkgdir/var/cache/xe-linux-distribution
+  mkdir -p $pkgdir/var/cache/xe-linux-distribution
 
   install -Dm544 $srcdir/xe-guest-utilities-$pkgver/build/stage/usr/sbin/xe-daemon $pkgdir/usr/bin/xe-daemon
   install -Dm544 $srcdir/xe-guest-utilities-$pkgver/build/stage/usr/sbin/xe-linux-distribution $pkgdir/usr/bin/xe-linux-distribution

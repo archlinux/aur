@@ -1,7 +1,7 @@
 pkgbase = xe-guest-utilities-xcp-ng
 	pkgdesc = XenServer Tools, XCP-NG fork version
 	pkgver = 7.22.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xcp-ng/xe-guest-utilities
 	arch = x86_64
 	license = BSD
