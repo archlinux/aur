@@ -1,13 +1,13 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=pacman-accel-git
-pkgver=0.178.80754da
+pkgver=0.179.1ffa237
 pkgrel=1
 pkgdesc="Pacman accelerator - try each mirror while still using latest db"
 arch=('any')
 url="https://github.com/felixonmars/archlinux-futils/blob/master/pacman-accel"
 license=('MIT')
-depends=('ruby-falcon' 'ruby-http' 'ruby-sinatra')
+depends=('ruby-http' 'ruby-puma' 'ruby-sinatra')
 makedepends=('git')
 source=("git+https://github.com/felixonmars/archlinux-futils.git")
 md5sums=('SKIP')
