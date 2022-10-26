@@ -1,0 +1,15 @@
+--- a/doc/Makefile.am	2022-10-26 23:18:52.783101055 +0200
++++ b/doc/Makefile.am	2022-10-26 23:18:47.556359354 +0200
+@@ -27,11 +27,11 @@
+ 
+ EXTRA_DIST = Doxyfile.in $(static_dox_files) sflogo.png arena_drawing.png input_floats.png avl_tree.png tree.png doxygen.css header.html.in footer.html.in mk_programs_dox.sh favicon.ico icon.xpm lgplv3-60x21.png doxygen_input_filter.bash
+ 
+ CLEANFILES = Doxyfile doxygen_warnings header.html footer.html $(generated_dox_files)
+ 
++DOC_DIR = $(DESTDIR)/$(datadir)/shm_arena/doc
+-DOC_DIR = $(datadir)/shm_arena/doc
+ DIR = $(top_srcdir)/doc
+ 
+ if WITH_DOXYGEN
+ 
+ # We don't know all the files that doxygen will build so we just pick

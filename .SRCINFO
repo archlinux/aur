@@ -1,0 +1,16 @@
+pkgbase = libshm_arena
+	pkgdesc = It's an inter-process shared memory allocator
+	pkgver = 0.0.25
+	pkgrel = 1
+	url = https://shm-arena.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = automake-1.14
+	makedepends = doxygen
+	provides = libshm_arena.so=6.0.1
+	source = https://downloads.sourceforge.net/project/shm-arena/shm_arena-RC-0.0.25.tar.bz2
+	md5sums = 7d76d5c378a8886662f55b03876a6add
+
+pkgname = libshm_arena
