@@ -1,7 +1,7 @@
 pkgbase = arduino-language-server-bin
 	pkgdesc = An Arduino Language Server based on Clangd to Arduino code autocompletion
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arduino/arduino-language-server
 	arch = x86_64
 	license = APACHE

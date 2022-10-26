@@ -2,7 +2,7 @@
 
 pkgname=arduino-language-server-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Arduino Language Server based on Clangd to Arduino code autocompletion"
 arch=(x86_64)
 url="https://github.com/arduino/arduino-language-server"
