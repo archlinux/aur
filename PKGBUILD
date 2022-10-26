@@ -3,11 +3,11 @@
 pkgname=swaystatus-git
 pkgver=0.2.4.r2.e48ac91
 pkgrel=1
-pkgdesc="Generates a status line for swaybar"
+pkgdesc="Generate a status line for swaybar"
 arch=('any')
 url="https://github.com/jmcantrell/${pkgname%-git}"
 license=('GPL3')
-depends=('python' 'python-schema' 'python-toml')
+depends=('python' 'python-toml')
 optdepends=('python-systemd: systemd journal logging')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-cov')
