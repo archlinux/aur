@@ -1,8 +1,8 @@
-pkgbase = pearson-reader-plus-it
-	pkgdesc = A simple Reader for Pearson digital books (IT).
+pkgbase = pearson-reader-plus-full-lang
+	pkgdesc = A simple Reader for Pearson digital books.
 	pkgver = 4.7
 	pkgrel = 1
-	url = https://it.pearson.com/
+	url = https://www.pearson.com/
 	arch = x86_64
 	license = custom
 	depends = sdl2
@@ -20,4 +20,4 @@ pkgbase = pearson-reader-plus-it
 	md5sums = SKIP
 	sha256sums = SKIP
 
-pkgname = pearson-reader-plus-it
+pkgname = pearson-reader-plus-full-lang
