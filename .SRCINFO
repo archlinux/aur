@@ -6,8 +6,13 @@ pkgbase = hplip-lite
 	arch = x86_64
 	license = GPL2
 	license = custom
+	makedepends = python
+	depends = libjpeg-turbo
+	depends = libcups
 	optdepends = cups: for printing support
+	provides = hplip
 	conflicts = hplip
+	backup = etc/hp/hplip.conf
 	source = https://downloads.sourceforge.net/hplip/hplip-3.22.6.tar.gz
 	sha256sums = 27ed0d492febb0b47c656234820d3ce573b24ff5b62e3bf4b2c47f82868d6bb4
 
