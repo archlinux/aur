@@ -1,7 +1,7 @@
 pkgbase = parallel-launcher
 	pkgdesc = Modern N64 Emulator
-	pkgver = 6.12.3
-	pkgrel = 1
+	pkgver = 6.12.4
+	pkgrel = 0
 	url = https://parallel-launcher.ca
 	install = parallel-launcher.install
 	arch = x86_64

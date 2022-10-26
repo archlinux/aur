@@ -1,7 +1,7 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=6.12.3
-pkgrel=1
+pkgver=6.12.4
+pkgrel=0
 epoch=
 pkgdesc='Modern N64 Emulator'
 arch=('x86_64')
