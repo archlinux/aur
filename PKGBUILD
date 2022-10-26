@@ -2,8 +2,8 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-aurnews
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.13
+pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch"
 arch=('any')
 url="https://github.com/actionless/pikaur"
@@ -23,7 +23,7 @@ depends=(
 	'fakeroot'
 )
 makedepends=(
-	'python-commonmark'
+	'python-markdown-it-py'
 )
 optdepends=(
 	'asp: for ABS support in -G/--getpkgbuild operation'
