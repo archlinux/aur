@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B5.r242.g35bf3091
+pkgver=B6rc1.r0.g5b6095ad
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -41,12 +41,12 @@ prepare() {
 	git config submodule.repos/LGMP.url "${srcdir}/LGMP"
 	git config submodule.repos/PureSpice.url "${srcdir}/PureSpice"
 	git config submodule.repos/cimgui.url "${srcdir}/cimgui"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 
 	cd "repos/cimgui"
 	git submodule init
 	git config submodule.imgui.url "${srcdir}/imgui"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
