@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=makerom-git
-pkgver=r337.400a68e
+pkgver=r370.334f6f0
 pkgrel=1
 pkgdesc="creates CTR cxi/cfa/cci/cia files for 3ds"
 arch=('i686' 'x86_64')
@@ -20,11 +20,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/ctr/${pkgname%-git}"
+	make deps
 	make
 }
 
 package() {
 	cd "$srcdir/ctr/${pkgname%-git}"
 	install -D LICENSE "$pkgdir/usr/share/licenses/${pkgname-git}/LICENSE"
-	install -Dm755 makerom "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm755 "./bin/makerom" "$pkgdir/usr/bin/${pkgname%-git}"
 }

@@ -1,6 +1,6 @@
 pkgbase = makerom-git
 	pkgdesc = creates CTR cxi/cfa/cci/cia files for 3ds
-	pkgver = r337.400a68e
+	pkgver = r370.334f6f0
 	pkgrel = 1
 	url = https://github.com/3DSGuy/Project_CTR
 	arch = i686
