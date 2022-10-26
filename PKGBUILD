@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
 license=(MIT)
 depends=(python-geopy python-requests python-overpy python-gpxpy python-geotiler python-dotmap python-tcxreader python-niaaml)
-makedepends=(python-build python-install python-poetry-core)
+makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('e97f695c2884902ecc8021087551f19ebed7ef8eb0e821dd0bdf7a41e870820d47af9ba5aa2e3a4c16c7750980015c018105a83c5fd795b2239a830810af5654')
@@ -25,6 +25,6 @@ check() {
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
