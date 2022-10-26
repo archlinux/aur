@@ -84,6 +84,7 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
   rust                  lib32-rust-libs
   libgphoto2
+  gsm                   lib32-gsm
   opencl-headers
 )
 
