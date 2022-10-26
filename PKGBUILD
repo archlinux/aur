@@ -3,15 +3,15 @@
 
 _pkgname=spotiflyer
 pkgname="${_pkgname}-bin"
-pkgver=3.6.2
-pkgrel=3
+pkgver=3.6.3
+pkgrel=1
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://github.com/Shabinder/SpotiFlyer"
 license=('GPL')
 conflicts=(spotiflyer)
 source=("$url/releases/download/v$pkgver/${_pkgname}_$pkgver-1_amd64.deb")
-sha256sums=('e075bb84508a6ca016267cde497d9b71b6964a74321acedc1e3559aff17c3237')
+sha256sums=('9038e09d4e4d0eff02bbb10fc02728f11e73e46973e23297d0ff189dfdce0aae')
 
 package() {
     cd $srcdir
