@@ -1,0 +1,162 @@
+diff --git a/Documentation/bootsplash.rst b/Documentation/bootsplash.rst
+index b35aba5093e8..d4f132eca615 100644
+--- a/Documentation/bootsplash.rst
++++ b/Documentation/bootsplash.rst
+@@ -195,6 +195,16 @@ Hooks - how the bootsplash is integrated
+ 
+ 
+ 
++Crating a bootsplash theme file
++===============================
++
++A simple tool for theme file creation is included in ``tools/bootsplash``.
++
++There is also an example shell script, as an example on how to use the tool
++and in order to generate a reference bootsplash file.
++
++
++
+ FAQ: Frequently Asked Questions
+ ===============================
+ 
+diff --git a/tools/bootsplash/.gitignore b/tools/bootsplash/.gitignore
+index 091b99a17567..5dfced41ba82 100644
+--- a/tools/bootsplash/.gitignore
++++ b/tools/bootsplash/.gitignore
+@@ -1 +1,4 @@
+ bootsplash-packer
++bootsplash
++logo.rgb
++throbber*.rgb
+diff --git a/tools/bootsplash/ajax-loader.gif b/tools/bootsplash/ajax-loader.gif
+new file mode 100644
+index 0000000000000000000000000000000000000000..3288d1035d70bb86517e2c233f1a904e41f06b29
+GIT binary patch
+literal 3208
+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
+Bt<?Yk
+
+literal 0
+HcmV?d00001
+
+diff --git a/tools/bootsplash/bootsplash-tux.sh b/tools/bootsplash/bootsplash-tux.sh
+new file mode 100755
+index 000000000000..1078f87644b9
+--- /dev/null
++++ b/tools/bootsplash/bootsplash-tux.sh
+@@ -0,0 +1,66 @@
++#!/bin/bash
++#
++# A simple script to show how to create a bootsplash.
++# Do with it whatever you wish.
++#
++# This needs ImageMagick for the 'convert' and 'identify' tools.
++#
++
++LOGO=../../Documentation/logo.gif
++LOGO_WIDTH=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 1)
++LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
++
++THROBBER=ajax-loader.gif
++THROBBER_WIDTH=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
++						cut -d x -f 1)
++THROBBER_HEIGHT=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
++						 cut -d x -f 2)
++
++convert -alpha remove \
++	-background "#ff3a40" \
++	$LOGO \
++	logo.rgb
++
++convert -alpha remove \
++	-background "#ff3a40" \
++	$THROBBER \
++	throbber%02d.rgb
++
++
++make clean
++make bootsplash-packer
++
++
++# Let's put Tux in the center of an orange background.
++./bootsplash-packer \
++	--bg_red 0xff \
++	--bg_green 0x3a \
++	--bg_blue 0x40 \
++	--frame_ms 48 \
++	--picture \
++	--pic_width $LOGO_WIDTH \
++	--pic_height $LOGO_HEIGHT \
++	--pic_position 0 \
++	--blob logo.rgb \
++	--picture \
++	--pic_width $THROBBER_WIDTH \
++	--pic_height $THROBBER_HEIGHT \
++	--pic_position 0x14 \
++	--pic_position_offset 20 \
++	--pic_anim_type 1 \
++	--pic_anim_loop 0 \
++	--blob throbber00.rgb \
++	--blob throbber01.rgb \
++	--blob throbber02.rgb \
++	--blob throbber03.rgb \
++	--blob throbber04.rgb \
++	--blob throbber05.rgb \
++	--blob throbber06.rgb \
++	--blob throbber07.rgb \
++	--blob throbber08.rgb \
++	--blob throbber09.rgb \
++	--blob throbber10.rgb \
++	--blob throbber11.rgb \
++	bootsplash
++
++rm *.rgb
