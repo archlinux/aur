@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tbb
-pkgver=2021.6.0
+pkgver=2021.7.0
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -12,13 +12,12 @@ arch=('any')
 url='https://github.com/oneapi-src/oneTBB'
 license=('APACHE')
 source=(https://github.com/oneapi-src/oneTBB/archive/v$pkgver.tar.gz)
-sha256sums=('4897dd106d573e9dacda8509ca5af1a0e008755bf9c383ef6777ac490223031f')
+sha256sums=('2cae2a80cda7d45dc7c072e4295c675fff5ad8316691f26f40539f7e7e54c0cc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/oneTBB-${pkgver}
-  curl -L https://github.com/oneapi-src/oneTBB/pull/716.patch | patch -p1
 }
 
 build() {
