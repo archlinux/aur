@@ -11,10 +11,10 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=106.0.5249.91
+pkgver=107.0.5304.68
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
+_gcc_patchset=1
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -35,15 +35,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+        re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
         REVERT-enable-GlobalMediaControlsCastStartStop.patch
         REVERT-roll-src-third_party-ffmpeg-m102.patch
         REVERT-roll-src-third_party-ffmpeg-m106.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('5740496b406db5357e2dad131e1ed2cd1c5831732df7aea5f21036ece8e7549a'
+sha256sums=('aac4f19b2e12e3ec3fd8179de26b306a4e209ec2a39b24e9e04fcce057cdb84c'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121'
+            '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
             'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
+            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
@@ -111,6 +113,7 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i ../unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+  patch -Np1 -i ../re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
@@ -127,7 +130,6 @@ prepare() {
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
-  patch -Np1 -i ../patches/chromium-106-AutofillPopupControllerImpl-namespace.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -164,6 +166,7 @@ build() {
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
+    'clang_base_path="/usr"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
@@ -176,9 +179,12 @@ build() {
     'rtc_use_pipewire=false'
     'rtc_link_pipewire=false'
     'link_pulseaudio=true'
-    'use_gnome_keyring=false'
-    'use_sysroot=false'
     'use_custom_libcxx=false'
+    'use_gnome_keyring=false'
+    'use_qt=false' # look into enabling this for M108
+    'use_sysroot=false'
+    'use_system_libwayland_server=true'
+    'use_system_wayland_scanner=true'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
     'enable_nacl=false'
