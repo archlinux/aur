@@ -3,6 +3,7 @@
 set -e
 
 function get_aria2_home(){
+    [[ $(id -nu) == "aria2" ]] && echo /etc/aria2cd && return 0
     for path in ${HOME}/.aria2 ${XDG_CONFIG_HOME:-${HOME}/.config}/aria2
     do
         [[ -f ${path}/aria2.conf ]] && echo ${path} && return 0

@@ -1,0 +1,18 @@
+[Unit]
+Description=Update Aria2c Trackers
+After=network-online.target
+Wants=network-online.target
+PartOf=aria2.target
+
+[Service]
+Type=oneshot
+User=aria2cd
+ExecStart=/usr/bin/update-aria2-tracker
+RestartSec=60s
+Restart=on-failure
+# Sandboxing
+ProtectSystem=strict
+ReadWritePaths=/etc/aria2cd/aria2.conf
+NoExecPaths=/
+ExecPaths=/usr/bin
+ProtectHome=yes

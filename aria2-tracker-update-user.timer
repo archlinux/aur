@@ -1,0 +1,9 @@
+[Unit]
+Description=Update User Aria2c Trackers Daily
+PartOf=aria2.target
+
+[Timer]
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=aria2.target 

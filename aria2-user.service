@@ -1,0 +1,20 @@
+[Unit]
+Description=User Wide Aria2c Daemon
+After=network-online.target
+Wants=network-online.target
+PartOf=aria2.target
+
+[Service]
+Type=forking
+# Arguments here will override config file.
+ExecStart=/usr/bin/aria2c \
+    --dir=/var/lib/aria2cd/Downloads --remote-time=true --daemon=true --enable-rpc=true \
+    --bt-enable-lpd=true --bt-save-metadata=true \
+    --enable-dht=true --enable-dht6=true \
+    --optimize-concurrent-downloads=true \
+    --parameterized-uri=true 
+ExecReload=/usr/bin/kill -HUP ${MAINPID}
+
+
+[Install]
+WantedBy=aria2.target 
