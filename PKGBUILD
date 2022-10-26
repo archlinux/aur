@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.3474.r0.gbdac7672b
+pkgver=1.7.3490.r0.ge129a0643
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -18,7 +18,6 @@ license=(
 install=post.install
 
 OPTIONS+=(
-  debug !strip
   epoch = 1
 )
 
@@ -86,7 +85,7 @@ build()
   cd build
 
   cmake ../pcsx2 \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
