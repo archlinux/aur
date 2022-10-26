@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("${pkgname%-nightly}")
 conflicts=("${pkgname%-nightly}")
 # TODO: add dep on libsciter-gtk, remove libsciter-gtk.so from this package
-depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio' 'hicolor-icon-theme' 'xdg-utils' 'python-pynput')
+depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio' 'hicolor-icon-theme' 'xdg-utils' 'python-pynput' 'libayatana-appindicator')
 options=('!strip')
 source=("$url/releases/download/nightly/rustdesk-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
 sha256sums=('SKIP')
