@@ -1,25 +1,14 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-pkgname=skywire-bin
-_pkgname=${pkgname/-bin/}
-_githuborg=skycoin
-pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
-pkgver='1.2.1'
-_rc=''
-#_rc='-pr1'
-_pkgver="${pkgver}${_rc}"
-_tag_ver="v${_pkgver}"
-pkgrel=1
+source PKGBUILD
+_pkgver=${pkgver}
 _pkgrel=${pkgrel}
-_pkggopath="github.com/${_githuborg}/${_pkgname}"
+pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('amd64' 'arm64' 'armhf' 'armel')
 arch=('any')
-url="https://${_pkggopath}"
-makedepends=('dpkg')
-depends=()
-_debdeps=""
-#_debdeps=""
 license=('license-free')
+makedepends=('dpkg')
+_debdeps=""
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source=(
@@ -28,8 +17,8 @@ source=(
 "${_release_url}-armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
 "skywire-autoconfig"
-"com.skywire.Skywire.desktop"
-"com.skywirevpn.SkywireVPN.desktop"
+"skywire.desktop"
+"skywirevpn.desktop"
 "skywirevpn.png"
 "skywire.png"
 "skywire.service"
@@ -162,10 +151,4 @@ mv *.deb ../../
 done
 #exit so the arch package doesn't get built
 exit
-}
-
-_msg2() {
-	(( QUIET )) && return
-	local mesg=$1; shift
-	printf "${BLUE}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
 }

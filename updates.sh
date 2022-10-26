@@ -19,8 +19,10 @@ _version=${_version//v/}
 #if [[ $_vrc != "" ]]; then
 #	_vrc="-${_vrc##*-}"
 #fi
-echo ${_version}
-echo ${_vrc}
+echo "remote version="${_version}
+if [[ ${_vrc} != "" ]]; then
+echo "remote version="${_vrc}
+fi
 echo "updating checksums and version for PKGBUILD"
 sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD && updpkgsums
 [[ -f cc.deb.PKGBUILD ]] && echo "updating checksums and version for cc.deb.PKGBUILD" && sed -i "s/^pkgver=.*/pkgver='${_version}'/" cc.deb.PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" cc.deb.PKGBUILD && updpkgsums cc.deb.PKGBUILD && _ccdebPKGBUILD="cc.deb.PKGBUILD"
@@ -34,5 +36,5 @@ makepkg --printsrcinfo > .SRCINFO
 echo "don't forget to increment pkgrel if you edited the PKGBUILD"
 source PKGBUILD && echo "pkgver=${pkgver}" && echo "pkgrel=${pkgrel}"
 echo
-echo "git add -f ${_debPKGBUILD} ${_ccdebPKGBUILD} ${_ccdevPKGBUILD} ${_devPKGBUILD} ${_gitPKGBUILD} PKGBUILD .SRCINFO skywire-autoconfig com.skywire.Skywire.desktop com.skywirevpn.SkywireVPN.desktop skywirevpn.png skywire.png skywire.service skywire-autoconfig.service postinst.sh prerm.sh skywire.install updates.sh test.sh"
+echo "git add -f " *PKGBUILD " .SRCINFO skywire-autoconfig " *.desktop *.png *.service *.sh " skywire.install"
 echo 'git commit -m " "'

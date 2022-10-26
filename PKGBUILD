@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.2.1'
-pkgrel=1
+pkgrel=2
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -14,12 +14,11 @@ arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'arm
 url="https://${_pkggopath}"
 provides=( 'skywire' )
 conflicts=( 'skywire' )
-#depends=( '' )
 license=('license-free')
 install=skywire.install
 source=("skywire-autoconfig"
-"com.skywire.Skywire.desktop"
-"com.skywirevpn.SkywireVPN.desktop"
+"skywire.desktop"
+"skywirevpn.desktop"
 "skywirevpn.png"
 "skywire.png"
 "skywire.service"
