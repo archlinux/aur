@@ -1,6 +1,6 @@
 pkgbase = themix-icons-suru-plus-git
 	pkgdesc = Suru++ icons plugin for Themix GUI designer
-	pkgver = 30.0.r2.g9bd895f32
+	pkgver = 30.0.r2.g9bd895f32.1.14.r101.g3e1fc8b1
 	pkgrel = 1
 	url = https://github.com/gusbemacbe/suru-plus/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = themix-icons-suru-plus-git
 	conflicts = oomox
 	conflicts = oomox-git
 	options = !strip
-	source = git+https://github.com/themix-project/oomox.git#branch=master
+	source = oomox::git+https://github.com/themix-project/oomox.git#branch=master
 	source = suru-plus::git+https://github.com/gusbemacbe/suru-plus.git#branch=master
 	md5sums = SKIP
 	md5sums = SKIP
