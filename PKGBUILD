@@ -5,7 +5,7 @@ pkgname=slrn-snapshot-canlock
 _pkgname=slrn
 pkgver=1.0.4.6
 _prever='pre1.0.4-6'
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with cancel-lock)'
 arch=('x86_64' 'armv7h')
 url='https://jedsoft.org/snapshots/'
@@ -93,7 +93,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 COPYRIGHT   "$pkgdir/licenses/$pkgname/COPYRIGHT"
+  install -Dm0644 COPYRIGHT   "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm0644 doc/slrn.rc "$pkgdir/etc/slrnrc"
 }
 
