@@ -5,9 +5,9 @@ pkgname=slrn-snapshot
 _pkgname=slrn
 pkgver=1.0.4.6
 _prever='pre1.0.4-6'
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL')
 makedepends=('uudeview')
@@ -70,7 +70,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 COPYRIGHT   "$pkgdir/licenses/$pkgname/COPYRIGHT"
+  install -Dm0644 COPYRIGHT   "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   install -Dm0644 doc/slrn.rc "$pkgdir/etc/slrnrc"
 }
 
