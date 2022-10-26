@@ -1,0 +1,17 @@
+pkgbase = lsplug
+	pkgdesc = Generator-based operators for asynchronous iteration
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/vxgmichel/aiostream
+	arch = any
+	license = GPLv3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = hwdata
+	source = https://files.pythonhosted.org/packages/source/l/lsplug/lsplug-1.tar.gz
+	sha512sums = 76dc0e25ee52d3a5f0b822906848817c501574c75e57fcc5277d130ff8494894b8f9d82fc9e7a60f305f4bd77bd8005301320d00817e6be0c9dc4a59c7410a87
+
+pkgname = lsplug
