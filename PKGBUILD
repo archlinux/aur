@@ -17,5 +17,5 @@ package() {
 	msg2 'Installing executables...'
 	install -Dm 755 arduino-language-server -t "$pkgdir"/usr/bin
 	msg2 'Installing license'
-	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses"
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
 }
