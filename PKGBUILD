@@ -1,28 +1,30 @@
+#!/usr/bin/env zsh
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=gnome-next-meeting-applet
-pkgver=2.8.1
+opkgname=gnome_next_meeting_applet
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="An applet to show your next meetings from Gnome Online Accounts"
 arch=('any')
 url="https://github.com/chmouel/gnome-next-meeting-applet"
 license=('GPL3')
 depends=('python-gobject' 'python-yaml' 'python-humanize' 'libappindicator-gtk3' 'gnome-shell-extension-appindicator' 'evolution-data-server' 'evolution-data-server' 'python-dateutil' 'python-dbus')
-source=( ${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz )
-sha256sums=('677858f066f83029988a521b0658424d348d9a9d0f4a126cceba84a444fa60c1')
+source=( ${url}/releases/download/${pkgver}/${opkgname}-${pkgver}.tar.gz )
+sha256sums=('4575eb356198985c6c4b4f0ea39007a0beda84b25431e9a927c50131e6bf9a61')
 makedepends=("python-setuptools")
 
 prepare(){
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$opkgname-$pkgver"
   sed  -i "/.*dbus-python.*/d" setup.py
 }
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$opkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${opkgname}-${pkgver}"
   python setup.py -q install --root="${pkgdir}" --optimize=1
   mkdir -p ${pkgdir}/usr/share/${pkgname}
   cp -a data/images ${pkgdir}/usr/share/${pkgname}/
