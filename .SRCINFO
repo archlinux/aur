@@ -1,11 +1,14 @@
 pkgbase = slang-snapshot
 	pkgdesc = S-Lang is a powerful interpreted language (development snapshot)
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jedsoft.org/snapshots/
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = GPL
+	depends = libpng
+	depends = oniguruma
 	depends = pcre
 	provides = slang
 	conflicts = slang

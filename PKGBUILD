@@ -4,14 +4,18 @@
 pkgname=slang-snapshot
 _pkgname=slang
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 provides=('slang')
 conflicts=('slang')
 url='https://jedsoft.org/snapshots/'
 license=('GPL')
-depends=('pcre')
+depends=(
+  'libpng'
+  'oniguruma'
+  'pcre'
+)
 backup=('etc/slsh.rc')
 options=('!makeflags')
 source=("${url}slang-$pkgver.tar.gz")
