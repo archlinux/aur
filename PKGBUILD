@@ -2,7 +2,7 @@
 # Contributor: Robin Heinemann <robin.ole.heinemann@gmail.com>
 
 pkgname=hterm
-pkgver=0.8.6
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="HTerm serial terminal"
 arch=("x86_64")
@@ -12,10 +12,10 @@ depends=("gtk2" "libpng" "libsm")
 optdepends=()
 conflicts=(hterm-32)
 
-source=("hterm.png" "hterm.desktop" "http://www.der-hammer.info/terminal/hterm086-linux-64.tgz")
+source=("hterm.png" "hterm.desktop" "http://www.der-hammer.info/terminal/hterm088-linux-64.tgz")
 sha256sums=('358862a79e6a88ca07dc86faa5e29d862bbf2aa2ca16e7f43e2f00a8c444e683'  
 	    'fba0a7159c9187bfe8d2c7f63611bf4c2193a69566566bca79f2ce3ff46073f7'  
-	    '30978f8a1e7c4391d0bbf94e09415039a8a3a7dd0f455d2531b041ae02a892b8')
+	    'ee1c5c188f54c309f56cc3583ce09f26fbbf9471da88f9f87309e7f888520218')
 
 package() {
 	install -d "$pkgdir"/usr/bin
