@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname="mingw-w64-kdsoap"
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Qt-based client-side and server-side SOAP component (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 
 source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz"{,.asc})
-sha256sums=('d18963104fa6f7d02b044631cddbe78f18f70e06c607af680c7ace04d6cf04ee'
+sha256sums=('aed57f6b200ddf762f5d2898f7e9228dd0700881c4491aefe4006f7fa5f5c627'
   'SKIP')
 
 validpgpkeys=(E86C000370B1B9E2A9191AD53DBFB6882C9358FB) # KDAB Products (user for KDAB products) <info@kdab.com>
