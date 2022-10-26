@@ -1,7 +1,7 @@
 pkgbase = otf-line-seed
 	pkgdesc = LINE Seed font
 	pkgver = 1.0.20221014
-	pkgrel = 1
+	pkgrel = 4
 	url = https://seed.line.me
 	arch = any
 	license = custom

@@ -2,7 +2,7 @@
 _version='20221014'
 pkgname=(otf-line-seed ttf-line-seed)
 pkgver=1.0.$_version
-pkgrel=1
+pkgrel=4
 pkgdesc='LINE Seed font'
 arch=(any)
 url="https://seed.line.me"
