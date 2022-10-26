@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-37
+_srctag=GE-Proton7-38
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
@@ -230,33 +230,33 @@ prepare() {
     for submodule in "${_submodules[@]}"; do
         git submodule init "${submodule#*::}"
         git submodule set-url "${submodule#*::}" "$srcdir"/"${submodule%::*}"
-        git submodule--helper update "${submodule#*::}"
+        git -c protocol.file.allow=always submodule update "${submodule#*::}"
     done
 
     pushd dxvk
         git submodule init include/{vulkan,spirv}
         git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
         git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
-        git submodule--helper update include/{vulkan,spirv}
+        git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
     popd
 
     pushd vkd3d-proton
         for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
             git submodule init "${submodule}"
             git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
-            git submodule--helper update "${submodule}"
+            git -c protocol.file.allow=always submodule update "${submodule}"
         done
         pushd subprojects/dxil-spirv
             git submodule init third_party/spirv-headers
             git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
-            git submodule--helper update third_party/spirv-headers
+            git -c protocol.file.allow=always submodule update third_party/spirv-headers
         popd
     popd
 
     pushd dxvk-nvapi
         git submodule init external/Vulkan-Headers
         git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
-        git submodule--helper update external/Vulkan-Headers
+        git -c protocol.file.allow=always submodule update external/Vulkan-Headers
         # GCC 12 build failure
         git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
