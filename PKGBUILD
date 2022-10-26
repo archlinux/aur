@@ -13,7 +13,7 @@ pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
 pkgver=6.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel for Manjaro/Arch"
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -58,7 +58,7 @@ sha256sums=('61332ef22b53c50c10faabfb965896a7d1ad4f3381f0f89643c820f28a60418e'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'a75d2a2322c8cd99a6dc9945424fd9006e7a8f9d2793c0ae97ef931f2d54b9a5'
             'a8a2d8b402b2877df1a949a106c634b6c366dd33b954c4b735ce1d3778214169'
-            '5004facad5df507f81a2de86de12c97eb87c4dee9b3b9b44e8ff2e7c5302db14'
+            '6c84ff721c3ef0561f532c92cf0096d9adb7e12414bc1fc80b0824e47a863213'
             '86ab8a9821ea7300ff7f7c9d64cf54f6662ae4609097fff3795e548f3181d603'
             '7bc0a5aa10af57d3f68157afdb1d1ba252c59582180dbb5d02acb5c334e74d0b'
             'adf1d75a8094c572a6b48bedf013e010851379ded8ba4e31895d4099e833067f'
