@@ -1,6 +1,6 @@
 pkgbase = pypyr
 	pkgdesc = Task runner for automation pipelines
-	pkgver = 5.7.0
+	pkgver = 5.7.1
 	pkgrel = 1
 	url = https://pypyr.io
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = pypyr
 	depends = python-ruamel-yaml
 	depends = python-tomli
 	depends = python-tomli-w
-	source = pypyr::git+https://github.com/pypyr/pypyr.git#commit=5bb3bc53d391a4ea320a3f958de0af65f5a3f0ba
+	source = pypyr::git+https://github.com/pypyr/pypyr.git#commit=dc3ccc42000f24bd937d5932f7ba65bdade0ac91
 	b2sums = SKIP
 
 pkgname = pypyr
