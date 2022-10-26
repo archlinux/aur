@@ -1,7 +1,7 @@
 pkgbase = copilot-cli-bin
 	pkgdesc = Your toolkit for containerized applications on AWS.
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aws.github.io/copilot-cli/
 	arch = aarch64
 	arch = x86_64
