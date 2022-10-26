@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 _cranname=BiocManager
-_cranver=1.30.18
+_cranver=1.30.19
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,18 +12,18 @@ url="https://CRAN.R-project.org/package=${_cranname}"
 license=("Artistic2.0")
 depends=(
     r
-    r-remotes
-    r-testthat
-    r-withr
-    r-curl
 )
 optdepends=(
     r-biocversion
-    r-rmarkdown
+    r-curl
     r-knitr
+    r-remotes
+    r-rmarkdown
+    r-testthat
+    r-withr
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("f763126b45614e1b83260da5311923eac50db24002f3c22fa5f667434a5b5c35")
+b2sums=("d740776565b8aa51d858f1d7f96bda92451c59fe473e6d21e7ba472ae6cc28e8cc6c9b629f0445ffc35b9d395bf11320f48756214f37f792052d7b6c94f61ad1")
 noextract=(${pkgname}-${pkgver}.tar.gz)
 
 build() {
