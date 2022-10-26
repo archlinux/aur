@@ -11,6 +11,6 @@ url="https://github.com/Alistair-Bell/HolyC-Compiler"
 license=("custom")
 depends=(make git)
 package () {
-    sh -c "git clone https://github.com/Alistair-Bell/HolyC-Compiler /tmp/holyc; make -C /tmp/holyc all && sudo make -C /tmp/holyc install"
+    sh -c "git clone --recursive https://github.com/Alistair-Bell/HolyC-Compiler /tmp/holyc; make -C /tmp/holyc all && sudo make -C /tmp/holyc install"
  }
 
