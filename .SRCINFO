@@ -1,11 +1,12 @@
 pkgbase = holyc
-	pkgdesc = An aur package for HolyC Compiler by Alistair-Bell
-	pkgver = 1.0.3
+	pkgdesc = An aur package for HolyC Compiler by nrootconauto
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Alistair-Bell/HolyC-Compiler
+	url = https://github.com/nrootconauto/HolyCC2
 	arch = x86_64
 	license = custom
 	depends = make
+	depends = cmake
 	depends = git
 
 pkgname = holyc
