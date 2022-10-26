@@ -1,7 +1,7 @@
 pkgbase = gdm-plymouth
 	pkgdesc = Display manager and login screen with plymouth support
-	pkgver = 42.0+r11+g4a52f026
-	pkgrel = 2
+	pkgver = 43.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
@@ -22,10 +22,12 @@ pkgbase = gdm-plymouth
 	depends = libxdmcp
 	depends = libcanberra
 	options = debug
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=4a52f026dc0b218a2ca33fa32853c71a0f88a2b4
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=afa6f2ef3d34048cd7a3e1a1ec478be2ff464806
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
+	source = 0002-pam-arch-Remove-user_readenv-1-from-pam_env.patch
 	sha256sums = SKIP
 	sha256sums = 39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8
+	sha256sums = 7e42077a89a6fcf8b02244b01127af7000a10ed55e09e385eb6fac5aef421c07
 
 pkgname = gdm-plymouth
 	install = gdm.install
