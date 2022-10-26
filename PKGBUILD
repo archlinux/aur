@@ -1,37 +1,36 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=junction-git
-_pkgname=Junction
 pkgver=1.6.r0.gc9da76c
-pkgrel=1
+pkgrel=2
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
 url="https://github.com/sonnyp/Junction"
 license=('GPL3')
 depends=('libadwaita' 'libportal-gtk4' 'gjs')
-makedepends=('git' 'meson' 'blueprint-compiler')
+makedepends=('git' 'meson' 'python-gobject' 'blueprint-compiler')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git
+source=("${pkgname%-git}::git+$url.git"
 	'git+https://github.com/sonnyp/troll.git')
 b2sums=('SKIP'
 	'SKIP')
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "${pkgname%-git}"
   git submodule init
   git config submodule.src/troll.url "$srcdir/troll"
-  git submodule update
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "$_pkgname" build
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
