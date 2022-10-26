@@ -1,7 +1,7 @@
 # Maintainer: Vlad Vasiliu <vladvasiliun@yahoo.fr>
 pkgname=copilot-cli-bin
 pkgver=1.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Your toolkit for containerized applications on AWS.'
 arch=('aarch64' 'x86_64')
 url='https://aws.github.io/copilot-cli/'
@@ -18,6 +18,9 @@ noextract=("copilot-${pkgver}")
 
 package() {
     install -Dm 755 ${srcdir}/copilot-${pkgver} ${pkgdir}/usr/bin/copilot
+
+    install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
+    install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
     "$pkgdir/usr/bin/copilot" completion bash > "$pkgdir/usr/share/bash-completion/completions/copilot"
     "$pkgdir/usr/bin/copilot" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_copilot"
 }
