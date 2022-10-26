@@ -6,6 +6,7 @@ pkgbase = herbe
 	arch = x86_64
 	license = MIT
 	makedepends = make
+	depends = libx11
 	depends = libxft
 	conflicts = herbe
 	conflicts = herbe-git
