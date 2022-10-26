@@ -7,7 +7,7 @@
 # https://github.com/electron/electron/issues/32487
 
 pkgname=discord_arch_electron_wayland
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
 	'xdg-utils: Open files'
 )
 source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz")
-sha256sums=('ddfef2bb18a0105ddef2a8427ad087281b55e17507b31fe26226820978eca58c')
+sha256sums=('283294b2c3d1aecfc3d74b391a1276de172d6ad426caa776ef14bd9d4ee235a3')
 
 prepare() {
 	# create launcher script
