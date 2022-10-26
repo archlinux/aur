@@ -1,7 +1,7 @@
 # Maintainer: barfin
 pkgname='pressure2-unofficial-steam-skin'
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of dead Pressure2 theme with tons of fixes."
 arch=(any)
 url="https://steamcommunity.com/groups/pressureskin/discussions/0/6244776732848407076/"
@@ -10,7 +10,7 @@ makedepends=(unrar)
 depends=(steam sssm)
 source=(Pressure2_${pkgver}_FIX.rar::http://perso.numericable.fr/ghost-ses/Ghost/Plugin_Serveur/Skin_steam/Pressure2_${pkgver}_FIX.rar)
 noextract=(${source[@]%%::*})
-md5sums=('53d6f1e095b3cf2c2128b5bf604cde62')
+md5sums=('a763e95ec9a1d1afacfa19f332618500')
 install="${pkgname}.install"
 
 package() {

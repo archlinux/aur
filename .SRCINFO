@@ -1,7 +1,7 @@
 pkgbase = pressure2-unofficial-steam-skin
 	pkgdesc = A fork of dead Pressure2 theme with tons of fixes.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://steamcommunity.com/groups/pressureskin/discussions/0/6244776732848407076/
 	install = pressure2-unofficial-steam-skin.install
 	arch = any
@@ -11,6 +11,6 @@ pkgbase = pressure2-unofficial-steam-skin
 	depends = sssm
 	noextract = Pressure2_1.1.1_FIX.rar
 	source = Pressure2_1.1.1_FIX.rar::http://perso.numericable.fr/ghost-ses/Ghost/Plugin_Serveur/Skin_steam/Pressure2_1.1.1_FIX.rar
-	md5sums = 53d6f1e095b3cf2c2128b5bf604cde62
+	md5sums = a763e95ec9a1d1afacfa19f332618500
 
 pkgname = pressure2-unofficial-steam-skin
