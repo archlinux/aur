@@ -5,18 +5,18 @@
 # Contributor: Runnytu < runnytu at gmail dot com > for 8192cu-dkms
 
 _pkgname=8188fu
-pkgname="$_pkgname-kelebek333-dkms-git"
+pkgname="$_pkgname-supremegamers-dkms-git"
 pkgver=r84.b01ebdf
 pkgrel=2
 pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179)'
 arch=('any')
-url="https://github.com/kelebek333/rtl8188fu"
+url="https://github.com/supremegamers/rtl8188fu"
 license=('GPL3')
 depends=('dkms')
-conflicts=('8188fu-dkms-git')
+conflicts=('8188fu-dkms-git' '8188fu-kelebek333-dkms-git')
 makedepends=('git')
 install="${_pkgname}-dkms.install"
-source=("$_pkgname::git+https://github.com/kelebek333/rtl8188fu.git"
+source=("$_pkgname::git+https://github.com/supremegamers/rtl8188fu.git"
         blacklist-r8188fu.conf
         dkms.conf)
 sha256sums=('SKIP'
