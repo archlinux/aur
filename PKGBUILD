@@ -4,7 +4,7 @@
 pkgname='python-nestedtext'
 _pkgname=${pkgname#python-}
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
 license=('MIT')
@@ -12,9 +12,11 @@ url='https://github.com/KenKundert/nestedtext'
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-depends=('python')
-makedepends=(
+depends=(
+  'python'
   'python-inform'
+)
+makedepends=(
   'python-setuptools'
   'python-sphinx'
 )

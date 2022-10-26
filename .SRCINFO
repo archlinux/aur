@@ -1,14 +1,14 @@
 pkgbase = python-nestedtext
 	pkgdesc = Human readable and writable data interchange format
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KenKundert/nestedtext
 	arch = any
 	license = MIT
-	makedepends = python-inform
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
+	depends = python-inform
 	source = nestedtext-3.4.tar.gz::https://github.com/KenKundert/nestedtext/archive/refs/tags/v3.4.tar.gz
 	sha256sums = 18b6e23cb732ad920e162b4e0a4c53b422e31b99010cb3f8c015d0e0e1e4d956
 	sha512sums = be09071fdbf7124d269284d05beceac4f6d1e08c14941f777c1ac7f33f2a513fb01275d20f6dfb3a3f85df22a6a2ac14443033526b56cc9124de4edb2e9d10fc
