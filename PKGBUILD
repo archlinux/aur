@@ -1,7 +1,7 @@
 # Maintainer: Jacob Still <jacobcstill at gmail dot com>
 pkgname=focalboard-server
 pkgver=7.1.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana."
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ optdepends=()
 provides=('focalboard-server')
 conflicts=('focalboard-server')
 replaces=()
-backup=()
+backup=(opt/focalboard-${pkgver}-${pkgrel}/config.json)
 options=()
 install=focalboard.install
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mattermost/focalboard/archive/refs/tags/v$pkgver.tar.gz"
+source=("${pkgname}::git+https://github.com/mattermost/focalboard.git#tag=v${pkgver}"
         'focalboard.service')
 noextract=()
 sha256sums=('SKIP'
@@ -27,14 +27,14 @@ sha256sums=('SKIP'
 validpgpkeys=()
 
 build() {
-  cd "${srcdir}/focalboard-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   LDFLAGS=''
   make prebuild
   make server-linux webapp
 }
 
 package() {
-  cd "${srcdir}/focalboard-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   PACKAGE_FOLDER="$pkgdir/opt/focalboard-${pkgver}-${pkgrel}/"
   mkdir -pv "${PACKAGE_FOLDER}/" "${PACKAGE_FOLDER}/bin/" "${PACKAGE_FOLDER}/pack/"
   cp -v bin/linux/focalboard-server "${PACKAGE_FOLDER}/bin/"
