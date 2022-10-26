@@ -1,8 +1,9 @@
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Samuli Thomasson <samuli.thomasson@paivola.fi>
 
 pkgname=agendav
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Open source multilanguage CalDAV web client"
 arch=(any)
@@ -15,7 +16,7 @@ source=(https://github.com/adobo/agendav/releases/download/$pkgver/agendav-$pkgv
         agendav.tmpfiles
         php.ini)
 install=$pkgname.install
-sha1sums=('ce79eb90d790b101eb7a39db781706a6287d127b'
+sha1sums=('ddcf7c4caffbb333501260421b364e506fdff9ff'
           '7f9d5ea5921c446395b2b35b03ae3522b094a283'
           '33192382063a3b2474e33657e50d0a56ecf42d72')
 
