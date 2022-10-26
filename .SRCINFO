@@ -1,10 +1,11 @@
 pkgbase = python-cramjam
 	pkgdesc = Thin Python bindings to de/compression algorithms in Rust
 	pkgver = 2.5.0
-	pkgrel = 1
-	url = https://github.com/dask/s3fs
+	pkgrel = 2
+	url = https://github.com/milesgranger/pyrus-cramjam
 	arch = x86_64
 	license = MIT
+	checkdepends = python-hypothesis
 	checkdepends = python-memory-profiler
 	checkdepends = python-pytest
 	makedepends = python-installer
