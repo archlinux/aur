@@ -5,7 +5,7 @@ _pkgname=themix-icons-numix
 _reponame1=numix-icon-theme
 _reponame2=numix-folders
 pkgname="${_pkgname}-git"
-pkgver=21.04.14.r0.g97c01aee9
+pkgver=22.08.16.r1.gb5001d962
 pkgrel=1
 pkgdesc="Numix icons plugin for Themix GUI designer"
 arch=('x86_64' 'i686')
@@ -64,6 +64,7 @@ package() {
 
 	cd "$pkg_tmp_dir"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" "install_${_plugin_name}"
+  cd "$pkgdir"
 	rm -fr "$pkg_tmp_dir"
 
 	python -O -m compileall "${pkgdir}${_oomox_dir}/plugins/${_plugin_name}" -d "${_oomox_dir}/plugins/${_plugin_name}"
