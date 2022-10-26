@@ -2,7 +2,7 @@
 
 pkgname=aria2cd
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A systemd Service to start aria2 automatically."
 arch=("any")
 url="https://aur.archlinux.org/packages/aria2cd"
