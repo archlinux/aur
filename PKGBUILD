@@ -1,6 +1,6 @@
 # Maintainer: FraV1982 <consulenza.vangi@libero.it>
 
-pkgname=pearson-reader-plus-it
+pkgname=pearson-reader-plus-full-lang
 pkgver=4.7
 pkgrel=1
 pkgdesc="A simple Reader for Pearson digital books."
