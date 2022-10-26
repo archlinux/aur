@@ -1,7 +1,7 @@
 pkgbase = timewall
 	pkgdesc = Apple dynamic HEIF wallpapers on GNU/Linux
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcyran/timewall
 	arch = x86_64
 	license = MIT
