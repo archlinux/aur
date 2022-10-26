@@ -6,6 +6,9 @@ pkgbase = pacman-accel-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = ruby-falcon
+	depends = ruby-http
+	depends = ruby-sinatra
 	source = git+https://github.com/felixonmars/archlinux-futils.git
 	md5sums = SKIP
 
