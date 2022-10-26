@@ -14,5 +14,6 @@ Restart=on-failure
 ProtectSystem=strict
 ReadWritePaths=/etc/aria2cd/aria2.conf
 NoExecPaths=/
-ExecPaths=/usr/bin
+ExecPaths=/usr/bin /usr/lib
 ProtectHome=yes
+NoNewPrivileges=yes

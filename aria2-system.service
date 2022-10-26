@@ -28,9 +28,9 @@ ProtectSystem=strict
 ReadWritePaths=/var/lib/aria2cd /var/log/aria2cd.log
 ReadOnlyPaths=/etc/aria2cd
 NoExecPaths=/
-ExecPaths=/usr/bin/aria2c
+ExecPaths=/usr/bin/aria2c /usr/lib
 ProtectHome=yes
-
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=aria2.target
