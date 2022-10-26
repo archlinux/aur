@@ -2,7 +2,7 @@
 
 pkgname=moosync
 pkgver=5.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple music player'
 arch=('any')
 url='https://github.com/Moosync/Moosync'
@@ -23,8 +23,10 @@ build() {
     # Remove electron from package.json
     sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
 
-    yarn install --ignore-scripts --ignore-engines
-    yarn install --ignore-engines
+    yarn install --ignore-engines || true
+    echo "Ignore build failure with better-sqlite3"
+
+    yarn postinstall
 }
 
 package() {
