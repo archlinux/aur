@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg-bin
 pkgver=106.0.5249.119
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/$pkgname-$pkgver.tar.gz
+source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.gz
         index.html)
 sha256sums=('23f5c95b65d997ab17d85f735f192a7f4229cdc6fdd233ae11e3f11f8feb34db'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
