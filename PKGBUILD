@@ -2,7 +2,7 @@
 # Maintainer: Zack Baldwin <zack@zackb.com>
 
 pkgname=ombi-develop
-pkgver=4.29.0
+pkgver=4.29.2
 pkgrel=1
 pkgdesc='Simple automated way for users to request new content for Plex'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -37,9 +37,9 @@ noextract=("ombi-x86_64-${pkgver}.tar.gz"
 sha256sums=('263c0f3bce912441c8473203096958c8037e577df879403f6f93ac9317cee185'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             '49fc5edca9d88fc9d6e9f0f4a6d707b072f32daa097305f0bf905dfff342f44a')
-sha256sums_x86_64=('c2b53813d878a1675e495997fc78c383a2c218250f08590d971f25400bb87ba2')
-sha256sums_aarch64=('b695f051c9f97eb34c9c40e59c3cfb5bfded8fb622d54e831cfbb2dbfea7f5d7')
-sha256sums_armv7h=('f8541abbb90a826110d9b1733a36ee22dd2c9e7d8893ab93c9259a5f0e39ff50')
+sha256sums_x86_64=('2bc1804fa0438647322261865536d89a1a209ad7dc2d7ed544f27f09b1cd3e39')
+sha256sums_aarch64=('b88c4652edb89d0cecea1b455942d552fba2cdca920e1be0e910cb334d067409')
+sha256sums_armv7h=('b2b56d7ecf429be0e7a8fc7fe4a92f0d7caa6b73482aca8a42f015754099cc2a')
 
 prepare() {
   # The source is packaged w/o a sub directory, so create our own and 
