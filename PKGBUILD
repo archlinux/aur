@@ -20,7 +20,7 @@ _merge_requests_to_use=('1884' '1915')
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=42.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -139,6 +139,7 @@ prepare() {
   #          This is an alternate design to !1862.
   pick_mr '1915' 'mr1915.patch' 'patch'
 
+  git config --global protocol.file.allow always
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
