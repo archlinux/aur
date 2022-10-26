@@ -68,8 +68,8 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.3
-pkgrel=2
+pkgver=6.0.5
+pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -84,7 +84,7 @@ options=('!strip')
 _ckhrtimer=linux-6.0.y
 _commit=5be918e798e2c2cc94fa7dd0f6f031921a4f7598
 
-_gcc_more_v=20220315
+_gcc_more_v=20221022
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -98,16 +98,15 @@ source=(
   0006-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
   0007-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch
   0008-drm-amdgpu-Fix-for-BO-move-issue.patch
-  0009-Revert-ALSA-hda-Fix-page-fault-in-snd_hda_codec_shut.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('b0d522241805794d8af3a67d331ba063a16496c6fb6d365d48f7ed78ee1c3dcf'
+sha256sums=('61332ef22b53c50c10faabfb965896a7d1ad4f3381f0f89643c820f28a60418e'
             'SKIP'
-            '9764b52d6b79378124755ba6926104ed4d0cf079e7e1b7eafb7a99406f747fb5'
-            '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
+            '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
+            '2d50a108a111a7f135f91b2676539d0a163e38ee72874d091aed0e1e86f2d477'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
             '0579b6f69a528f25a49fd872c43a8352f8a6e6e1581fbfc626ae04d9789eb2fb'
             '38d0bf2d48ea454376eaca2af6b7dec285304b710eeccb44e82b0eb2b4359786'
@@ -116,8 +115,7 @@ sha256sums=('b0d522241805794d8af3a67d331ba063a16496c6fb6d365d48f7ed78ee1c3dcf'
             '22e15d9cc9b59da9febe0ea28c6d862828bb304160d310c83ce21934658fe80a'
             '0fa8801cbab408513d740b41e325498dd5468b5055e6e456daa727178d678b97'
             '530a4b74bc6df917c401a0a0b0c1658a8e9ee361b22b6cd56e1305858c190fb5'
-            '322267bec409b46de82f1ed2b8e37cd5cd26bcd5e935f7f4581d21a48a6894e7'
-            '55947d864c380b47a0306b5701c8d1a988dbbbb12515e65159cd14a231b93de2')
+            '322267bec409b46de82f1ed2b8e37cd5cd26bcd5e935f7f4581d21a48a6894e7')
 
 prepare() {
   cd linux-${pkgver}
