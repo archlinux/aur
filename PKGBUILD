@@ -5,7 +5,7 @@
 pkgbase=linux-xanmod-edge-linux-bin-x64v2
 pkgname=linux-xanmod-edge-linux-bin-x64v2
 _major=6.0
-pkgver=${_major}.3
+pkgver=${_major}.5
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='The Linux kernel and modules with Xanmod patches - Latest Mainline (EDGE) - Prebuilt version'
@@ -29,7 +29,7 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('597d95a9b1c5093a2e3a4c8055efe618cffc24107a51b6869a1104853a1731e6')
+sha256sums=('50dac7972adbb1b325e2194319709093470e25030a73951dd8ba30648a2dd6dc')
 
 prepare() {
   bsdtar -xf data.tar.xz
