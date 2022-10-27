@@ -31,7 +31,7 @@ pkgbase=mozc-ut-united
 pkgname=mozc-ut-united
 true && pkgname=('mozc-ut-united')
 pkgver=2.28.4830.102_20220904_2.26.4660.102.r277.gbf5e3ce2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
@@ -71,7 +71,7 @@ prepare() {
   git config submodule.jsoncpp.url "$srcdir/jsoncpp"
   git config submodule.protobuf.url "$srcdir/protobuf"
   git config submodule.abseil-cpp.url "$srcdir/abseil-cpp"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # Add UT dictionary
   cat ${srcdir}/mozcdic-ut-${_utdicdate}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt

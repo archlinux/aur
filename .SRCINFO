@@ -1,7 +1,7 @@
 pkgbase = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
 	pkgver = 2.28.4830.102_20220904_2.26.4660.102.r277.gbf5e3ce2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
