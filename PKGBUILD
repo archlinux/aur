@@ -1,12 +1,12 @@
 pkgname=softu2f
-pkgver=0.4.0.r25.g45a073f
+pkgver=0.4.2.r12.gb65fb15
 pkgrel=1
 pkgdesc="Software U2F HID token daemon (rust-u2f)"
 url="https://github.com/danstiner/rust-u2f"
 arch=(x86_64)
 depends=(libdbus libsystemd openssl)
 makedepends=(clang llvm rust)
-_commit=45a073f9283026dcf74f99536d0f2899b6caee99
+_commit=b65fb151e247b9ba17dfcc38c439182a5e22a525
 source=("git+https://github.com/danstiner/rust-u2f#commit=$_commit"
         softu2f_system.preset)
 sha256sums=('SKIP'
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd rust-u2f/linux
+  cd rust-u2f
 
   install -Dm 755 target/release/softu2f-user-daemon \
                   "$pkgdir"/usr/lib/softu2f/user-daemon
@@ -33,16 +33,16 @@ package() {
   install -Dm 755 target/release/softu2f-system-daemon \
                   "$pkgdir"/usr/lib/softu2f/system-daemon
 
-  install -Dm 644 user-daemon/softu2f.service \
+  install -Dm 644 linux/user-daemon/softu2f.service \
                   "$pkgdir"/usr/lib/systemd/user/softu2f.service
 
-  install -Dm 644 system-daemon/softu2f.service \
+  install -Dm 644 linux/system-daemon/softu2f.service \
                   "$pkgdir"/usr/lib/systemd/system/softu2f.service
 
-  install -Dm 644 system-daemon/softu2f.socket \
+  install -Dm 644 linux/system-daemon/softu2f.socket \
                   "$pkgdir"/usr/lib/systemd/system/softu2f.socket
 
-  install -Dm 644 system-daemon/softu2f-tmpfiles.conf \
+  install -Dm 644 linux/system-daemon/softu2f-tmpfiles.conf \
                   "$pkgdir"/usr/lib/tmpfiles.d/softu2f.conf
 
   install -Dm 644 "$srcdir"/softu2f_system.preset \
