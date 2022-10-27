@@ -1,12 +1,12 @@
 pkgbase = pg_validate_extupgrade
 	pkgdesc = PostgreSQL extension upgrade script validation
-	pkgver = 1.0.0_beta
-	pkgrel = 1
+	pkgver = r73.ad5edf1
+	pkgrel = 2
 	url = https://github.com/rjuju/pg_validate_extupgrade
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = pg_validate_extupgrade-1.0.0-beta.tar.gz::https://github.com/rjuju/pg_validate_extupgrade/archive/1.0.0-beta.tar.gz
-	sha512sums = c65db10dfda1291c3385bf08fd9aeff4cd8dfbd0472a11ce86218b0dbb3045fe6a7f485cd6ad6f4b034594c0c2a5746c28e9410537407f80fe373f84f63d650f
+	source = git+https://github.com/rjuju/pg_validate_extupgrade
+	sha512sums = SKIP
 
 pkgname = pg_validate_extupgrade
