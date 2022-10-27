@@ -3,21 +3,28 @@
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Debian package upload tool"
 arch=('any')
 url="http://packages.qa.debian.org/dput"
 license=('GPL')
 makedepends=('python-setuptools')
 depends=('python' 'python-debian' 'python-gpgme' 'python-pyxdg')
-source=(http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz)
-md5sums=('21d77e7607cce37a42f7be38e5df8335')
+source=(
+  http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
+  pyxdg-compatibility.patch
+)
+sha256sums=('cfdf60ab70806095b90dd6b266c9e397b30b2a8ac69e3660e4cb70db18636432'
+            '2e19cb96d405f25b42ff2e4b1ac4651e4c6a6f96693d200170a8f69f55b33117')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch -p1 -i "$srcdir/pyxdg-compatibility.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
-
-  # Adjust requirement, so that pyxdg is used when dput verifies dependencies (Debian overrrides the name of the pyxdg package instead)
-  sed -ri -e 's/"xdg"/"pyxdg"/' setup.py
 
   python setup.py build
 }

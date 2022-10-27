@@ -1,0 +1,34 @@
+diff -rU2 dput.orig/dput/configfile.py dput/dput/configfile.py
+--- dput.orig/dput/configfile.py	2022-07-01 15:15:28.000000000 -0700
++++ dput/dput/configfile.py	2022-10-27 10:42:36.104653583 -0700
+@@ -12,5 +12,5 @@
+ import sys
+ 
+-import xdg
++from xdg import BaseDirectory
+ 
+ 
+@@ -44,5 +44,5 @@
+             ('global', os.path.join(os.path.sep, 'etc', 'dput.cf')),
+             ('user_xdg', os.path.join(
+-                xdg.xdg_config_home(), 'dput', 'dput.cf')),
++                BaseDirectory.xdg_config_home, 'dput', 'dput.cf')),
+             ('user_home', os.path.join(
+                 os.path.expanduser('~'), '.dput.cf')),
+diff -rU2 dput.orig/setup.py dput/setup.py
+--- dput.orig/setup.py	2022-07-01 15:15:28.000000000 -0700
++++ dput/setup.py	2022-10-27 10:36:34.862581758 -0700
+@@ -75,5 +75,5 @@
+             "python-debian",
+             "gpg",
+-            "xdg",
++            "pyxdg",
+             ],
+         install_requires=[
+@@ -83,5 +83,5 @@
+             "python-debian",
+             "gpg",
+-            "xdg",
++            "pyxdg",
+             ],
+         entry_points={
