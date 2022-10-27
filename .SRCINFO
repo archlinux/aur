@@ -6,7 +6,7 @@ pkgbase = pg_validate_extupgrade-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = git+https://github.com/rjuju/pg_validate_extupgrade
+	source = pg_validate_extupgrade-git::git+https://github.com/rjuju/pg_validate_extupgrade
 	sha512sums = SKIP
 
 pkgname = pg_validate_extupgrade-git

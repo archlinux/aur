@@ -9,7 +9,7 @@ url="https://github.com/rjuju/pg_validate_extupgrade"
 license=('GPL3')
 depends=()
 makedepends=('cargo')
-source=("git+$url")
+source=("$pkgname::git+$url")
 sha512sums=(SKIP)
 
 pkgver() {
@@ -37,5 +37,5 @@ check() {
 
 package() {
   cd "$pkgname"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname//-git/}"
 }
