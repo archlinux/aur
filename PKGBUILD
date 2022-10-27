@@ -3,13 +3,13 @@
 
 pkgname=nginx-mod-accesskey
 pkgver=2.0.5
-pkgrel=10
+pkgrel=11
 _dirname="nginx-accesskey-$pkgver"
-_nginxver=1.22.0
+_nginxver=1.22.1
 
 pkgdesc='Accesskey module for NGINX'
 arch=('x86_64')
-depends=("nginx=$_nginxver" "libutil-linux")
+depends=("nginx=$_nginxver")
 makedepends=("nginx-src")
 url='https://github.com/Martchus/nginx-accesskey'
 license=('unknown')
