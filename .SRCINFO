@@ -1,12 +1,12 @@
 pkgbase = fcitx5-pinyin-custom-pinyin-dictionary
 	pkgdesc = Fcitx5 自建拼音输入法词库，百万常用词汇量。
-	pkgver = 20221021
+	pkgver = 20221027
 	pkgrel = 1
 	url = https://github.com/wuhgit/CustomPinyinDictionary
 	arch = any
 	license = GFDL
 	license = CCPL:by-sa
-	source = https://github.com/wuhgit/CustomPinyinDictionary/releases/download/assets/CustomPinyinDictionary_Fcitx_20221021.tar.gz
-	sha256sums = ac876b2d66dcc414fd792b028690917bb87433a85415152088f1af4e77858127
+	source = https://github.com/wuhgit/CustomPinyinDictionary/releases/download/assets/CustomPinyinDictionary_Fcitx_20221027.tar.gz
+	sha256sums = 808e4e1138b1b49d9fb850329945a839cbaa98ad1a2f7b77ddb6a928a7133ca9
 
 pkgname = fcitx5-pinyin-custom-pinyin-dictionary
