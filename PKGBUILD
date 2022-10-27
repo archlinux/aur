@@ -5,7 +5,7 @@
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
 pkgver=0.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
@@ -34,7 +34,7 @@ prepare() {
   git config submodule.externals/vendor/vst3sdk.url "$srcdir/vst3sdk"
   git config submodule.externals/vendor/geompp.url "$srcdir/geompp"
   git config submodule.externals/vendor/fltk.url "$srcdir/fltk"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
