@@ -48,7 +48,7 @@ package() {
   install -Dm755 jabref.sh ${pkgdir}/usr/bin/jabref
   install -Dm755 JabRef.svg ${pkgdir}/usr/share/pixmaps/JabRef.svg
   install -Dm644 JabRef.desktop ${pkgdir}/usr/share/applications/JabRef.desktop
-  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md
 }
 
 
