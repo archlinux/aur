@@ -1,0 +1,12 @@
+pkgbase = cw-cloudwatch
+	pkgdesc = The best way to tail AWS CloudWatch Logs from your terminal
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/lucagrulla/cw
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = https://github.com/lucagrulla/cw/archive/refs/tags/v4.1.1.tar.gz
+	sha256sums = 49542e32cdf910a5bbebda1c841a1fac11c4224ef23c8b35cc4632b1bdb788a8
+
+pkgname = cw-cloudwatch
