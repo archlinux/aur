@@ -23,7 +23,7 @@ prepare() {
 
     git submodule init
     git config submodule.cmake.url $srcdir/open-eid-cmake
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
