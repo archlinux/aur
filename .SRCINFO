@@ -17,9 +17,9 @@ pkgbase = linux-xanmod-linux-bin-x64v3
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.0.5-xanmod1/linux-image-6.0.5-x64v2-xanmod1_6.0.5-x64v2-xanmod1-0.20221026.git15d787e_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.0.5-xanmod1/linux-image-6.0.5-x64v3-xanmod1_6.0.5-x64v3-xanmod1-0.20221026.git15d787e_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 50dac7972adbb1b325e2194319709093470e25030a73951dd8ba30648a2dd6dc
+	sha256sums = e5117b2a516f7b89c0e424c69d005e115efd6d19d0fa69db02e16cb89027afc6
 
 pkgname = linux-xanmod-linux-bin-x64v3
