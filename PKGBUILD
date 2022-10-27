@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=clair-git
-pkgver=4.4.4.r57.g47a9c1cb
+pkgver=4.5.0rc.0.r6.g5ff4805a
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
