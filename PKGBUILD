@@ -3,7 +3,7 @@
 # Contributor: Vlad Petrov <ejiek@mail.ru>
 
 pkgname=nb
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -41,7 +41,6 @@ optdepends=(
   'termpdf.py-git'
   'vifm'
 )
-sha512sums=('aee280286ec9c1be4b172c414ad82b30e52baf5dc3274702bfb9b4fae8f4d6810214ace4516e2aee445f32f9227736463ce42e6448f5a3f19f6c50b5b7b20ce4')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -59,3 +58,9 @@ package() {
     install -Dm0755 "bin/$extra" "${pkgdir}/usr/bin/${pkgname}-${extra}"
   done
 }
+
+sha512sums=(
+  '71efff4b3e52bbc100dd8ca52d0d3ee7a49a3d65d0671623e1bd4c94ac56cd23a5dbeb0faf6b14fb5d7c582a7c5b91bc3708d175df3c96f54de3327e3cd53195'
+)
+
+# eof
