@@ -12,7 +12,7 @@ url='https://get.libremobileos.com/desktop'
 depends=('jre-openjdk' 'android-tools' 'android-udev')
 makedepends=('make' 'cmake' 'unzip')
 source=(${_pkgname}.desktop
-        "https://git.libremobileos.com/LMODroid/platform_external_tigervnc/-/archive/desktop-mode_v1.0.1/platform_external_tigervnc-desktop-mode_v${pkgver}.zip")
+        "https://git.libremobileos.com/LMODroid/platform_external_tigervnc/-/archive/desktop-mode_v${pkgver}/platform_external_tigervnc-desktop-mode_v${pkgver}.zip")
 sha256sums=('SKIP'
             'SKIP')
 prepare() {
