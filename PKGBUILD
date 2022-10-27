@@ -20,7 +20,7 @@ prepare() {
     cd "$srcdir/$pkgbase"
     git submodule init
     git config submodule.lib/web-eid.js.url $srcdir/web-eid-js
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
