@@ -1,12 +1,13 @@
 pkgbase = python-num2words
 	pkgdesc = Python modules to convert numbers to words.
 	pkgver = 0.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savoirfairelinux/num2words
 	arch = any
 	license = LGPL
 	checkdepends = python
 	makedepends = python-setuptools
+	makedepends = python-pip
 	source = https://github.com/savoirfairelinux/num2words/archive/v0.5.12.tar.gz
 	sha256sums = 1df054ab1166d8b124fc7b965f8852f998f09c6002dbb27089212ec5af18131a
 
