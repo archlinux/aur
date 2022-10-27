@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=bun
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A runtime for JavaScript and TypeScript"
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ url="https://github.com/Jarred-Sumner/bun-releases-for-updater"
 license=(MIT)
 provides=(bun)
 source_x86_64=(${pkgname}-${pkgver}.zip::$url/releases/download/$pkgname-v$pkgver/$pkgname-linux-x64.zip)
-sha256sums_x86_64=('be1a588a59e5fbb97fdd8b514102d4db5133099211a739f0407ea47e310d8e8d')
-sha256sums_aarch64=('39fe943d4d713911ae53177bb45822d64f9b4f9b801e83b40b207f0242df50e6')
+sha256sums_x86_64=('795128a52bf28f363c277ab9db0a304e54951d9e2cd6521cf3fc94e986bed105')
+sha256sums_aarch64=('e5c49c2d7ba3366d78f920abf0e70ef774432f711f023b2e0337dcc23f8430ab')
 source_aarch64=(${pkgname}-${pkgver}-aarch64.zip::$url/releases/download/$pkgname-v$pkgver/$pkgname-linux-aarch64.zip)
 
 package() {
