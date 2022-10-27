@@ -1,6 +1,6 @@
 [Unit]
 Description=Update User Aria2c Trackers Daily
-PartOf=aria2.target
+Before=aria2.service
 
 [Timer]
 OnUnitActiveSec=1d

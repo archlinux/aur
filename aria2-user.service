@@ -7,7 +7,7 @@ Wants=network-online.target
 Type=forking
 # Arguments here will override config file.
 ExecStart=/usr/bin/aria2c \
-    --dir=/var/lib/aria2cd/Downloads --remote-time=true --daemon=true --enable-rpc=true \
+    --remote-time=true --daemon=true --enable-rpc=true \
     --bt-enable-lpd=true --bt-save-metadata=true \
     --enable-dht=true --enable-dht6=true \
     --optimize-concurrent-downloads=true \

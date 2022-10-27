@@ -2,7 +2,6 @@
 Description=Update Aria2c Trackers
 After=network-online.target
 Wants=network-online.target
-PartOf=aria2.target
 
 [Service]
 Type=oneshot
