@@ -1,6 +1,6 @@
 pkgbase = cmusfm
 	pkgdesc = Last.fm scrobbler for cmus music player
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Arkq/cmusfm
 	install = cmusfm.install
@@ -10,8 +10,8 @@ pkgbase = cmusfm
 	depends = cmus
 	depends = curl
 	depends = libnotify
-	source = cmusfm-0.4.0.tar.gz::https://github.com/Arkq/cmusfm/archive/v0.4.0.tar.gz
-	sha256sums = d72e04df69c1f3e95f1b7779f583a790660856fadb5cfd8a2717c085b1b12111
+	source = cmusfm-0.4.1.tar.gz::https://github.com/Arkq/cmusfm/archive/v0.4.1.tar.gz
+	sha256sums = ff5338d4b473a3e295f3ae4273fb097c0f79c42e3d803eefdf372b51dba606f2
 
 pkgname = cmusfm
 
