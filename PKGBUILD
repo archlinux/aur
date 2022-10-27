@@ -5,6 +5,7 @@
 pkgname='i3-autolayout'
 pkgver=0.2.3
 pkgrel=1
+pkgdesc="Service to automatically managing i3 window manager layout "
 arch=('x86_64')
 url='https://github.com/BiagioFesta/i3-autolayout'
 license=('Apache' 'MIT')
