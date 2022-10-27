@@ -1,7 +1,7 @@
 pkgbase = lmo-desktop-mode-git
 	pkgdesc = Client and companion application for LibreMobileOS desktop mode
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://get.libremobileos.com/desktop
 	arch = x86_64
 	license = GPL-2.0-only
