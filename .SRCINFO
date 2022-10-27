@@ -1,13 +1,10 @@
 pkgbase = rbenv-git
 	pkgdesc = Simple Ruby version manager
-	pkgver = 1.2.0.r14.gc6cc0a1
+	pkgver = 1.2.0.r46.g52acbdf
 	pkgrel = 1
 	url = https://github.com/rbenv/rbenv
 	install = rbenv.install
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = MIT
 	makedepends = git
 	depends = bash
