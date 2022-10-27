@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=aws-cdk
-pkgver=2.47.0
+pkgver=2.48.0
 pkgrel=1
 pkgdesc="CDK Toolkit, the command line tool for CDK apps"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('npm')
 depends=('nodejs')
 optdepends=('python: python language support')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha1sums=('8bf6b46856cea1c67bca0a0bb4a069d48bc090c0')
+sha1sums=('56219b91966996a03b00bf71b7cbbd8ed14b1884')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
