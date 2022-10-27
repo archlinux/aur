@@ -1,7 +1,7 @@
 # Patched package:
 # Maintainer: Saren Arterius <saren@wtako.net>
 # Co-maintainer: Térence Clastres <t.clastres@gmail.com>
-# Co-maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Co-maintainer: Mingi Sung <FiestaLake@protonmail.com>
 
 # Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -11,42 +11,41 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('1884' '1915')
-_merge_requests_to_use=('1884' '1915')
+# available MR: ()
+_merge_requests_to_use=()
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=42.5
-pkgrel=2
+pkgver=43.0+46+gecc3cf8ab
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice gcr gjs gnome-bluetooth-3.0 upower gnome-session gtk4
+depends=(accountsservice gcr-4 gjs upower gnome-session gtk4
          gnome-settings-daemon gsettings-desktop-schemas libcanberra-pulse
-         libgdm libsecret mutter libnma unzip gstreamer libibus gnome-autoar
-         gnome-disk-utility gst-plugin-pipewire libsoup3 libgweather-4)
+         libgdm libsecret mutter libnma unzip libibus gnome-autoar
+         gnome-disk-utility libsoup3 libgweather-4)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
 checkdepends=(xorg-server-xvfb)
 optdepends=('gnome-control-center: System settings'
-            'evolution-data-server: Evolution calendar integration')
+            'evolution-data-server: Evolution calendar integration'
+            'gst-plugins-good: Screen recording'
+            'gst-plugin-pipewire: Screen recording'
+            'gnome-bluetooth-3.0: Bluetooth support')
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=84f0233bd51ce99271a5facd0cd58f21b47e9efc  # tags/42.5^0
+_commit=ecc3cf8ab108c4511e650f4d0f0124b9f98cd8bf  # tags/43.0^46
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        "mr1884.patch"
-        "mr1915.patch")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
-            'SKIP'
-            'cce6fbdf0ee230563c43c096c5137f79412723fc5461ae38a9cea66179440079'
-            '58795bb46aaf1885525758ae5c05263497ec5b67b48803980349cd621b259ef9')
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -120,29 +119,9 @@ prepare() {
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
-  # Title: Fade out whole icons instead of using StScrollViewFade (traditional design)
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1884
-  # Type: 1
-  # Status: 2
-  # Comment: By avoiding StScrollViewFade we avoid offscreening and therefore
-  #          avoid painting everything twice to get it on screen. So this almost
-  #          halves the render time of the icon grid.
-  #          Related: #4367, !1877, #174
-  pick_mr '1884' 'mr1884.patch' 'patch'
-
-  # Title: Optimize box-shadow rendering (part 2) [chroma key design]
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1915
-  # Type: 1
-  # Status: 2
-  # Comment: This reduces the render time of the overview by about 15%.
-  #          Part 1 was in !1904 (merged).
-  #          This is an alternate design to !1862.
-  pick_mr '1915' 'mr1915.patch' 'patch'
-
-  git config --global protocol.file.allow always
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -166,6 +145,6 @@ check() {
 }
 
 package() {
-  depends+=(libmutter-10.so)
+  depends+=(libmutter-11.so)
   meson install -C build --destdir "$pkgdir"
 }

@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 42.5
-	pkgrel = 2
+	pkgver = 43.0+46+gecc3cf8ab
+	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -18,9 +18,8 @@ pkgbase = gnome-shell-performance
 	makedepends = asciidoc
 	makedepends = bash-completion
 	depends = accountsservice
-	depends = gcr
+	depends = gcr-4
 	depends = gjs
-	depends = gnome-bluetooth-3.0
 	depends = upower
 	depends = gnome-session
 	depends = gtk4
@@ -32,33 +31,29 @@ pkgbase = gnome-shell-performance
 	depends = mutter
 	depends = libnma
 	depends = unzip
-	depends = gstreamer
 	depends = libibus
 	depends = gnome-autoar
 	depends = gnome-disk-utility
-	depends = gst-plugin-pipewire
 	depends = libsoup3
 	depends = libgweather-4
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
+	optdepends = gst-plugins-good: Screen recording
+	optdepends = gst-plugin-pipewire: Screen recording
+	optdepends = gnome-bluetooth-3.0: Bluetooth support
 	provides = gnome-shell
-	provides = gnome-shell=42.5
-	provides = gnome-shell=1:42.5
+	provides = gnome-shell=43.0+46+gecc3cf8ab
+	provides = gnome-shell=1:43.0+46+gecc3cf8ab
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=84f0233bd51ce99271a5facd0cd58f21b47e9efc
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=ecc3cf8ab108c4511e650f4d0f0124b9f98cd8bf
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = mr1884.patch
-	source = mr1915.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = cce6fbdf0ee230563c43c096c5137f79412723fc5461ae38a9cea66179440079
-	sha256sums = 58795bb46aaf1885525758ae5c05263497ec5b67b48803980349cd621b259ef9
 
 pkgname = gnome-shell-performance
 	depends = accountsservice
-	depends = gcr
+	depends = gcr-4
 	depends = gjs
-	depends = gnome-bluetooth-3.0
 	depends = upower
 	depends = gnome-session
 	depends = gtk4
@@ -70,11 +65,9 @@ pkgname = gnome-shell-performance
 	depends = mutter
 	depends = libnma
 	depends = unzip
-	depends = gstreamer
 	depends = libibus
 	depends = gnome-autoar
 	depends = gnome-disk-utility
-	depends = gst-plugin-pipewire
 	depends = libsoup3
 	depends = libgweather-4
-	depends = libmutter-10.so
+	depends = libmutter-11.so
