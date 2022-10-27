@@ -4,7 +4,7 @@
 pkgname=linode-cli
 pkgver=5.24.0
 _pkgver=4.138.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/${pkgname%%-*}/${pkgname}"
@@ -41,5 +41,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -vDm0644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.sh" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -vDm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
