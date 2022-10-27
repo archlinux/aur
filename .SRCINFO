@@ -1,6 +1,6 @@
 pkgbase = discord-canary-electron-bin
 	pkgdesc = Discord Canary (popular voice + video app) using the system provided electron for increased security and performance
-	pkgver = 0.0.140
+	pkgver = 0.0.141
 	pkgrel = 1
 	url = https://canary.discordapp.com
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = discord-canary-electron-bin
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	provides = discord-canary
 	conflicts = discord-canary
-	source = https://dl-canary.discordapp.net/apps/linux/0.0.140/discord-canary-0.0.140.tar.gz
+	source = https://dl-canary.discordapp.net/apps/linux/0.0.141/discord-canary-0.0.141.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
-	sha256sums = 0046e390031e389e3c45581b563df9469dba9250ac0ac0c25fe543e6ed7108cd
+	sha256sums = 72d938a27324935814b9254b5a5e1a7a6f0df41d300b7561cc5df15bc4230d80
 	sha256sums = SKIP
 	sha256sums = SKIP
 
