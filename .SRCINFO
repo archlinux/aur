@@ -1,13 +1,13 @@
 pkgbase = mash-sh
 	pkgdesc = A bash/zsh like shell, written in C.
 	pkgver = 0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/Magicrafter13/mash
 	arch = x86_64
 	arch = aarch64
 	arch = ppc
 	license = GPL3
-	source = https://gitlab.com/Magicrafter13/mash/-/archive/alpha-aur-1/mash-alpha-aur-1.tar.gz
-	sha256sums = 11824bcad25c7e3662b4c198179b02de2247dc0c897bb407eb00443aefc65366
+	source = https://gitlab.com/Magicrafter13/mash/-/archive/alpha-aur-2/mash-alpha-aur-2.tar.gz
+	sha256sums = 0852441a480a6e48b3b97f6c5933f44aa968bf6275b1c838065bc06ab2e3b7e4
 
 pkgname = mash-sh
