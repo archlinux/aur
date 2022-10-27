@@ -7,7 +7,6 @@ arch=('x86_64')
 url='https://github.com/dudik/herbe'
 license=('MIT')
 depends=('libx11' 'libxft')
-makedepends=('make')
 conflicts=('herbe' 'herbe-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dudik/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('78e454159050c86e030fb5a6cf997ac914345210cdf5a4ca4d7600c5296b7f76')
