@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=6.2.1.nightly.7.r5901.81cc1752
+pkgver=6.2.1.nightly.30.r5979.81c43ecc
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ url="https://ferdium.org/"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy')
 appbranch="develop"
-makedepends=('nvm' 'git' 'python')
+makedepends=('nvm' 'git' 'python' 'libxcrypt-compat')
 provides=(
     'ferdium'
 )
@@ -83,34 +83,26 @@ build() {
 	nvm install $(cat .nvmrc)
     nvm use
 
-    # Check if the correct version of node is being used
-    if [[ "$(node --version)" != "v$(cat .nvmrc)" ]]
+    # Extract the correct versions of tools from the package.json file
+    expected_node_version=$(node -p 'require("./package.json").engines.node')
+    expected_pnpm_version=$(node -p 'require("./package.json").engines.pnpm')
+
+    # Cross-check if all versions of node match
+    if [[ "$(node --version)" != "v${expected_node_version}" || "$(node --version)" != "v$(cat .nvmrc)" || "v${expected_node_version}" != "v$(cat .nvmrc)" ]]
     then
-    	echo "Using the wrong version of NodeJS! Expected [v"$(cat .nvmrc)"] but using ["$(node --version)"]."
+    	echo "Version mismatch in NodeJS! Version in .nvmrc is [v$(cat .nvmrc)], version in package.json is [v${expected_node_version}], and used version is ["$(node --version)"]."
     	exit 1
     fi
 
-    # Extract the correct versions of npm and pnpm from the package.json files
-    EXPECTED_NPM_VERSION=$(node -p 'require("./package.json").engines.npm')
-    EXPECTED_PNPM_VERSION=$(node -p 'require("./recipes/package.json").engines.pnpm')
+    # Empty the cache before building to avoid issues with packages not being found
+    npm cache clean --force
 
-	# Empty the cache before building to avoid issues with packages not being found
-	npm cache clean --force
+	# Install the correct version of pnpm
+	npm i -gf pnpm@${expected_pnpm_version}
 
-	# Install the correct versions of npm and pnpm
-	npm i -gf npm@${EXPECTED_NPM_VERSION}
-	npm i -gf pnpm@${EXPECTED_PNPM_VERSION}
-
-	# This is useful if we move from 'npm' to 'pnpm' for the main repo as well
-    if [[ -s 'pnpm-lock.yaml' ]]; then
-		BASE_CMD=pnpm
-    else
-		BASE_CMD=npm
-    fi
-
-	# Build recipe archives
-	$BASE_CMD i
-	$BASE_CMD run prepare-code || true
+	# Build recipe archives, from here on switch to pnpm
+	pnpm i
+	pnpm run prepare-code || true # Ignore errors, because there is a false error causing the build to break
 
 	# Run the package script
 	pushd recipes
@@ -121,8 +113,10 @@ build() {
 	# Make sure the internal version of electron-builder is being used by prefixing it to the $PATH
 	export PATH=./node_modules/.bin/:$PATH
 
-	# Run the electron build script
-	NODE_ENV='production' $BASE_CMD run build -- --dir
+	# Run the electron build script,
+	# passing parameters "-l dir" to only build for Linux and the dir target (which we will use later in function package() to make the Arch package),
+	# and "--${_electronbuilderarch}" to only build for the current architecture, saving build time
+	NODE_ENV='production' pnpm run build -l dir --${_electronbuilderarch}
 }
 
 package() {
