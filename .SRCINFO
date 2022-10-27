@@ -1,7 +1,7 @@
 pkgbase = python-deltachat
 	pkgdesc = Python bindings for the Delta Chat Core library using CFFI against the Rust-implemented libdeltachat
-	pkgver = 1.79.0
-	pkgrel = 3
+	pkgver = 1.97.0
+	pkgrel = 1
 	url = https://pypi.org/project/deltachat/
 	arch = x86_64
 	license = MPL
@@ -12,7 +12,7 @@ pkgbase = python-deltachat
 	depends = python-imap-tools
 	depends = python-pluggy
 	depends = python-idna
-	source = https://files.pythonhosted.org/packages/source/d/deltachat/deltachat-1.79.0.tar.gz
-	sha256sums = 0555209cbe6a619138f911cb9407a699da8782227370f9f370b8847833ed7de2
+	source = https://files.pythonhosted.org/packages/source/d/deltachat/deltachat-1.97.0.tar.gz
+	sha256sums = 1f3410029ae70abc40745a4b4db6acaf804e4165d718b3e2756bf43efe9eba10
 
 pkgname = python-deltachat
