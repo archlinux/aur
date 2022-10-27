@@ -2,9 +2,10 @@
 # More details on how to change this file:
 # https://wiki.archlinux.org/index.php/PKGBUILD
 # https://wiki.archlinux.org/index.php/Creating_packages
+# https://wiki.archlinux.org/title/Python_package_guidelines
 
 pkgname=pearl-git
-pkgver=r35.44fcca3
+pkgver=r129.0308e2a
 pkgrel=1
 pkgdesc="Package manager for dotfiles, plugins, programs and any form of code accessible via git. Allow to easily share and sync packages across systems and have them ready to work out of the box."
 arch=('any')
@@ -12,7 +13,8 @@ url="https://github.com/pearl-core/pearl"
 license=('GPL')
 groups=()
 depends=('git' 'python')
-makedepends=('git')
+makedepends=(git python-build python-installer python-wheel)
+
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -44,18 +46,15 @@ pkgver() {
 }
 
 build() {
+    # https://wiki.archlinux.org/title/Python_package_guidelines
     cd "$srcdir/${pkgname%-git}"
-    /usr/bin/python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
+    # https://wiki.archlinux.org/title/Python_package_guidelines
     cd "$srcdir/${pkgname%-git}"
-
-    #make dist
-    #/usr/bin/pip install --install-option="--prefix=${pkgdir}" dist/*.whl
-    #/usr/bin/pip install --target=${pkgdir} dist/*.whl
-
-    /usr/bin/python setup.py install --root=${pkgdir} --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
