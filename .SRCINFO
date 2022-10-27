@@ -1,0 +1,12 @@
+pkgbase = i3-autolayout
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/BiagioFesta/i3-autolayout
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	source = i3-autolayout-0.2.3.tar.gz::https://github.com/BiagioFesta/i3-autolayout/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 14697ac8f89cc96a084f03e42427c53b5f7ce6d33fd1849ccd64de6fa1065af3
+
+pkgname = i3-autolayout
