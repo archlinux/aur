@@ -2,47 +2,41 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.48.r25.g8ac825c2
+pkgver=0.99.51.r2.gd54dd23e
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
 url="https://github.com/giuspen/${_pkgname}"
 license=('GPL3')
 depends=('fmt'
-	 'gspell'
-	 'gtksourceviewmm'
-	 'libxml++2.6'
-	 'uchardet')
-optdepends=('xorg-xhost: allow chroot access to X server for running tests')
+		 'gspell'
+		 'gtksourceviewmm'
+		 'libxml++2.6'
+		 'uchardet'
+		 'vte3')
 makedepends=('cmake'
-	     'git'
-	     'python'
-	     'spdlog')
+			 'git'
+			 'python'
+			 'spdlog')
+checkdepends=('gmock'
+              'gtest')
+optdepends=('xorg-xhost: allow chroot access to X server for running tests')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/giuspen/${_pkgname}.git"
-	"git+https://github.com/google/googletest.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/giuspen/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${_pkgname}"
-  git submodule init
-  git config submodule.googletest.url "${srcdir}/googletest"
-  git submodule update
-}
-
 build() {
   cmake \
 	-B "${_pkgname}/build" \
 	-S "${_pkgname}" \
-	-DINSTALL_GTEST:BOOL='OFF' \
 	-DAUTO_RUN_TESTING:BOOL='OFF' \
+	-DUSE_SHARED_GTEST_GMOCK:BOOL='ON' \
 	-Wno-dev
   make -C "${_pkgname}/build"
 }
