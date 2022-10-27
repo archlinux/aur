@@ -1,14 +1,14 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-pkgname='pipdeptree'
+pkgname=pipdeptree
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc='Command line utility to show dependency tree of Python packages'
 url="https://github.com/naiquevin/$pkgname"
-depends=('python-pip')
+depends=(python-pip)
 makedepends=(python-build python-hatchling python-hatch-vcs python-installer python-wheel)
-optdepends=('graphviz: for generating graphical output')
+optdepends=('python-graphviz: for generating graphical output')
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('30699521e1c5861b08d29d92398f67e9a5d7f613092257fff2a8bde3c948e05b')
@@ -18,7 +18,7 @@ prepare() {
   cd $pkgname-$pkgver
   sed -i -e 's|hatchling>=1\.8\.1|hatchling|' pyproject.toml
 }
-    
+
 build() {
   cd $pkgname-$pkgver
   python -m build --wheel --no-isolation
