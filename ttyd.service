@@ -6,7 +6,7 @@ Wants=hiawatha.service
 
 [Service]
 Type=simple
-ExecStart=/bin/ttyd login
+ExecStart=/bin/ttyd /bin/slogin
 ExecReload=/bin/kill -HUP $MAINPID
 #PIDFile=/run/ttyd.pid
 KillMode=process
