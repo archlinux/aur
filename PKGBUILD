@@ -2,7 +2,7 @@
 
 pkgname=python-pasp
 _pypiname=${pkgname/python-/}
-pkgver=0.0.1.post1
+pkgver=0.0.1.post4
 pkgrel=1
 pkgdesc="Probabilistic answer set programming"
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "clingo" "python-lark-parser")
 makedepends=("python-setuptools" "gcc")
 source=("https://files.pythonhosted.org/packages/91/c3/b24566312efeba98cf5f5f8521c4d9233645350706c01288700eb2dc9679/${_pypiname}-plp-${pkgver}.tar.gz")
-sha256sums=("de8e9b0da88c5d5f30ccdc903470783df7a6a5244883db24412a5fed81bf8e51")
+sha256sums=("c8b559f31e5d7aef1036eeb6e74919a8d1dbee8fa97d1e6c6dba63050ca4f56a")
 
 build() {
   cd $srcdir/${_pypiname}-plp-${pkgver}
