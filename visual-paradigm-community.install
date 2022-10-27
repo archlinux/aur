@@ -1,4 +1,4 @@
-pkgname=visual-paradigm
+pkgname=visual-paradigm-163
 
 post_install() {
   update-desktop-database -q

@@ -4,7 +4,7 @@
 
 pkgname=visual-paradigm-163
 pkgver=16.3
-pkgrel=20230323
+pkgrel=20220731
 pkgdesc="Visual Paradigm version 16.3"
 arch=('x86_64')
 url='https://www.visual-paradigm.com/download/'
@@ -22,8 +22,8 @@ source=("https://www.visual-paradigm.com/downloads/vp${pkgver}/Visual_Paradigm_L
   'x-visual-paradigm.xml')
 
 sha256sums=('454cc5a90458e823970f487fa3b21de6f47ea20e8f953c785bf5d0701ef3144a'
-            'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
-            'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
+            '4ffa286d87e0ea3458660dc2e781243d75cb5a110622a493db721900f61c3c88'
+            'd2b1eadeb1ace06b8e6af0a13ed5bc96dc69f2e596ca00a75f4c821256872270'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
             'a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c')
 
