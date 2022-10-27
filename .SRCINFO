@@ -1,7 +1,7 @@
 pkgbase = sim-sip-git
 	pkgdesc = A tool for preparing and managing Sim problem packages
-	pkgver = r166.9935af3
-	pkgrel = 2
+	pkgver = r172.dcaefc2
+	pkgrel = 1
 	url = https://github.com/varqox/sip
 	arch = x86_64
 	arch = i686
