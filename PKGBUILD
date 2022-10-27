@@ -2,17 +2,17 @@
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=akia
-pkgver=6.3.3
-pkgrel=2
+pkgver=6.4.1
+pkgrel=1
 pkgdesc="PKCS#11 library and utility tools for Akis Smartcard"
 arch=('x86_64')
 url="https://akiskart.bilgem.tubitak.gov.tr/"
 license=('custom')
 depends=('pcsclite' 'ccid' 'java-environment')
 install=akia.install
-source=(https://akiskart.bilgem.tubitak.gov.tr/dosyalar/akia-linux-deb-${pkgver}.zip
+source=(https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2022/10/Akia_linux_${pkgver//./_}_deb.zip
         bilgem-tubitak-gov-tr-chain.pem)
-sha256sums=('ba0b455fb74353b5d151013126bddc5c8ac83a8dd66fa67851a4f154a876ebea'
+sha256sums=('11a93540221cde9c9296134cb929141148c489ef8954096c4ae8802bd56cf56b'
             'ddc8bed4f770625299b811034da954a674f39c1ad749b3cfd9737da682cd9b8f')
 
 DLAGENTS=("https::/usr/bin/curl --cacert bilgem-tubitak-gov-tr-chain.pem -o %o %u")
