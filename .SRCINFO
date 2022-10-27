@@ -1,22 +1,16 @@
 pkgbase = embedded-studio-arm
 	pkgdesc = Segger Embedded Studio for ARM
-	pkgver = 6.34a
+	pkgver = 6.40
 	pkgrel = 1
 	url = https://www.segger.com/products/development-tools/embedded-studio/
 	arch = x86_64
-	arch = i686
-	arch = arm
 	arch = aarch64
 	license = Commercial
 	depends = jlink-software-and-documentation
 	options = !strip
-	source_x86_64 = Setup_EmbeddedStudio_ARM_v634a_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v634a_linux_x64.tar.gz
-	md5sums_x86_64 = ea21dbfc599013678e240717eb2b8574
-	source_i686 = Setup_EmbeddedStudio_ARM_v634a_linux_x86.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v634a_linux_x86.tar.gz
-	md5sums_i686 = 345ede0907f2476762532bbc6f5e70b8
-	source_arm = Setup_EmbeddedStudio_ARM_v634a_linux_arm.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v634a_linux_arm.tar.gz
-	md5sums_arm = 98b7b59178f76f9c1b121bda40f12e80
-	source_aarch64 = Setup_EmbeddedStudio_ARM_v634a_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v634a_linux_arm64.tar.gz
-	md5sums_aarch64 = 106117541fd1b83bc7889c506b93bd8b
+	source_x86_64 = Setup_EmbeddedStudio_ARM_v640_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v640_linux_x64.tar.gz
+	md5sums_x86_64 = 669ed4a3eb2e771c36f7ecf45322592a
+	source_aarch64 = Setup_EmbeddedStudio_ARM_v640_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v640_linux_arm64.tar.gz
+	md5sums_aarch64 = e6249032e5b405858c37ab410112c871
 
 pkgname = embedded-studio-arm
