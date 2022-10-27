@@ -1,0 +1,11 @@
+pkgbase = hoyo-glyphs
+	pkgdesc = Constructed scripts by HoYoverse 米哈游的架空文字
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SpeedyOrc-C/Hoyo-Glyphs
+	arch = any
+	license = custom
+	source = git+https://github.com/SpeedyOrc-C/Hoyo-Glyphs.git
+	sha256sums = SKIP
+
+pkgname = hoyo-glyphs
