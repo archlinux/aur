@@ -74,7 +74,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=261
+_minor=262
 _srcname=linux-${_major}
 _clr=${_major}.261-266
 pkgbase=linux-clear-lts2018
@@ -355,7 +355,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '0156ded8dc43ec944a30b13c5e02ef61ac601b3a7ee24ed8804b0e65d7c76aba'
+            '496fa99962da9b17dfd520b139dbb0550585d25a81b8ca1133835839381ec4df'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
