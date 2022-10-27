@@ -22,7 +22,7 @@ build() {
 check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m installer dist/*.whl
   cd examples/macro-micro-dummy
   ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py &
   ${srcdir}/${_base}-${pkgver}/test-env/bin/python run_micro_manager.py
