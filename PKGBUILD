@@ -3,8 +3,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2022.2.1
-_pkgver=222.4167.41
+pkgver=2022.2.2
+_pkgver=222.4345.35
 pkgrel=1
 pkgdesc="A Professional Tool to Learn and Teach Programming with Python"
 arch=('x86_64')
@@ -19,11 +19,11 @@ source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
 optdepends=('ipython: Alternative Python shell'
 			'ipython2: Alternative Python 2 shell'
 			'python2: Support for Python 2 language')
-sha256sums=('6e7fe76bdc7d500558375b9ae95eb9be4002efb94ee09fbaadc9cd22d0f71c41'
+sha256sums=('558f868040510bae1118087146df0099a3df57b376da3713ae02f09f718e9c64'
             'bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59')
 
 build() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
 
   # compile PyDev debugger used by PyCharm to speedup debugging
   python plugins/python-ce/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
@@ -35,14 +35,14 @@ build() {
 package() {
   # base
   install -dm 755 $pkgdir/opt/$pkgname
-  cp -dr --no-preserve=ownership $srcdir/$pkgname-$_pkgver/* $pkgdir/opt/$pkgname
+  cp -dr --no-preserve=ownership $srcdir/$pkgname-$pkgver/* $pkgdir/opt/$pkgname
   install -dm 755 $pkgdir/usr/share/{applications,pixmaps}
   install -dm 755 $pkgdir/usr/bin/
   install -Dm 644 $pkgdir/opt/$pkgname/bin/pycharm.png $pkgdir/usr/share/pixmaps/$pkgname.png
 
   # licenses
   install -dm 755 $pkgdir/usr/share/licenses/$pkgname/
-  cp -dr --no-preserve=ownership $srcdir/$pkgname-$_pkgver/license/* $pkgdir/usr/share/licenses/$pkgname
+  cp -dr --no-preserve=ownership $srcdir/$pkgname-$pkgver/license/* $pkgdir/usr/share/licenses/$pkgname
 
   # exec
   ln -s /opt/$pkgname/bin/pycharm.sh $pkgdir/usr/bin/$pkgname
