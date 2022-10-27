@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at tuta dot io>
-pkgname=xkblayout
-pkgver=1.3
-pkgrel=1
+pkgname='xkblayout'
+pkgver='1.3'
+pkgrel='1'
 pkgdesc='Prints the current xkb keyboard layout'
 arch=('x86_64')
 url='https://github.com/alenichev/xkblayout'
