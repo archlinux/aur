@@ -2,7 +2,7 @@
 
 pkgbase=dxvk-git
 pkgname=('dxvk-mingw-git')
-pkgver=1.10.1.r782.g36f523bb
+pkgver=1.10.1.r967.gcd21cd7f
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ prepare() {
     git config submodule.include/native/directx.url "$srcdir/mingw-directx-headers"
     git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
     git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
-    git submodule update include/{native/directx,vulkan,spirv}
+    git -c protocol.file.allow=always submodule update include/{native/directx,vulkan,spirv}
 }
 
 build() {
