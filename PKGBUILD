@@ -1,7 +1,8 @@
 # Maintainer: 302606571@qq.com
 # Contributor: luosoy <249799588@qq.com>
 pkgname=com.qq.weixin.work.deepin-x11
-pkgver=3.1.12.6001deepin8
+pkgver=4.0.0.6007deepin10
+deepin_app=com.qq.weixin.work.deepin
 pkgrel=1
 epoch=
 pkgdesc="Deepin Wine Weixin Work on x11"
@@ -28,44 +29,53 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_${pkgver}_i386.deb")
-# source=("./com.qq.weixin.work.deepin_3.1.12.6001deepin8_i386.deb")
+source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${deepin_app}/${deepin_app}_${pkgver}_i386.deb")
+# source=("./${deepin_app}_4.0.0.6007deepin10_i386.deb")
 # 换为对象存储的zst文件
-# source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_${pkgver}_i386.deb")
-# source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/com.qq.weixin.work.deepin_${pkgver}_i386.deb")
-noextract=("com.qq.weixin.work.deepin_${pkgver}_i386.deb")
-md5sums=('36c6c6cc6033468a3dd8f130d6f8afad')
+# source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${deepin_app}/${deepin_app}_${pkgver}_i386.deb")
+# source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${deepin_app}_${pkgver}_i386.deb")
+noextract=("${deepin_app}_${pkgver}_i386.deb")
+md5sums=('d49b0718c658ac8686ff77e77acb37e7')
 validpgpkeys=()
 
 prepare() {
-	ar -x com.qq.weixin.work.deepin_${pkgver}_i386.deb
-	mkdir com.qq.weixin.work.deepin-${pkgver}
-	tar -xf data.tar.xz --directory="com.qq.weixin.work.deepin-${pkgver}"
-	tar -xf ../lib.tar.xz --directory="com.qq.weixin.work.deepin-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/ 
-	cp -rf ../run.sh "com.qq.weixin.work.deepin-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/files/run.sh
+	rm -rf ${deepin_app}-${pkgver}
+	ar -x ${deepin_app}_${pkgver}_i386.deb
+	mkdir ${deepin_app}-${pkgver}
+	tar -xf data.tar.xz --directory="${deepin_app}-${pkgver}"
+	tar -xf ../lib.tar.xz --directory="${deepin_app}-${pkgver}"/opt/apps/${deepin_app}/
+	cp -rf ../run.sh "${deepin_app}-${pkgver}"/opt/apps/${deepin_app}/files/run.sh
+}
+
+pre_install() {
+	rm -rf /opt/apps/com.qq.weixin.work.deepin
+}
+
+pre_upgrade() {
+	rm -rf /opt/apps/com.qq.weixin.work.deepin/files/dlls
 }
 
 package() {
-	cd "com.qq.weixin.work.deepin-${pkgver}"
-	cp -r ./ ${pkgdir}/
+	cd "${deepin_app}-${pkgver}"
+	cp -rf ./ ${pkgdir}/
 	mkdir -p ${pkgdir}/usr/share/applications
-	install -Dm644 ${srcdir}/com.qq.weixin.work.deepin-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop ${pkgdir}/usr/share/applications/com.qq.weixin.work.deepin.desktop
-	cp -r ${srcdir}/com.qq.weixin.work.deepin-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/icons/ ${pkgdir}/usr/share/
+	install -Dm644 ${srcdir}/${deepin_app}-${pkgver}/opt/apps/${deepin_app}/entries/applications/${deepin_app}.desktop ${pkgdir}/usr/share/applications/${deepin_app}.desktop
+	cp -rf ${srcdir}/${deepin_app}-${pkgver}/opt/apps/${deepin_app}/entries/icons/ ${pkgdir}/usr/share/
 	# 更换为deepin-win6 解决汇报新建日报以及查看我提交的日报白屏问题
 
 	# history
 	# 更换为deepin-wine5 (6存在拖动边框 任务栏的图标闪烁异常 搜索框弹不出来）
-	# sed s#deepin-wine6#deepin-wine5#g /opt/apps/com.qq.weixin.work.deepin/files/run.sh
+	# sed s#deepin-wine6#deepin-wine5#g /opt/apps/${deepin_app}/files/run.sh
 
 	# 解决更新到 gtk3 后，在 wayland 环境下，发送文件的对话框无法弹出，无法下载和发送文件,点击发送文件或者下载一个文件然后就卡死了
 	# GDK_BACKEND=x11
 
 	# 解决deepin 编译deepin-wine6-stable的时候还是使用旧的依赖链，所以程序使用网络时在系统里找不到旧版libldap/libber而停止运行
-	# cp -r /opt/apps/com.qq.weixin.deepin/lib /opt/apps/com.qq.weixin.work.deepin/lib
-	# echo "export LD_LIBRARY_PATH=/opt/apps/com.qq.weixin.work.deepin/lib" >> /opt/apps/com.qq.weixin.work.deepin/files/run.sh
+	# cp -r /opt/apps/com.qq.weixin.deepin/lib /opt/apps/${deepin_app}/lib
+	# echo "export LD_LIBRARY_PATH=/opt/apps/${deepin_app}/lib" >> /opt/apps/${deepin_app}/files/run.sh
 	# cd ${srcdir}
 	# cd ..
-	# sudo mkdir -p /opt/apps/com.qq.weixin.work.deepin/files
-	# sudo cp -rf ./lib /opt/apps/com.qq.weixin.work.deepin/
-	# sudo cp -rf ./run.sh /opt/apps/com.qq.weixin.work.deepin/files/run.sh
+	# sudo mkdir -p /opt/apps/${deepin_app}/files
+	# sudo cp -rf ./lib /opt/apps/${deepin_app}/
+	# sudo cp -rf ./run.sh /opt/apps/${deepin_app}/files/run.sh
 }

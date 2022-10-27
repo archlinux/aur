@@ -10,7 +10,8 @@
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 
 BOTTLENAME="Deepin-WXWork"
-APPVER="3.1.12.6001deepin8"
+# APPVER="3.1.12.6001deepin8"
+APPVER="4.0.0.6007deepin10"
 EXEC_PATH="c:/Program Files/WXWork/WXWork.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
 export MIME_TYPE=""
@@ -25,9 +26,9 @@ export SPECIFY_SHELL_DIR=`dirname $START_SHELL_PATH`
 
 ARCHIVE_FILE_DIR="/opt/apps/$DEB_PACKAGE_NAME/files"
 
-export WINEDLLPATH=/opt/$APPRUN_CMD/lib:/opt/$APPRUN_CMD/lib64
+# export WINEDLLPATH=/opt/$APPRUN_CMD/lib:/opt/$APPRUN_CMD/lib64
 
-export WINEPREDLL="$ARCHIVE_FILE_DIR/dlls"
+# export WINEPREDLL="$ARCHIVE_FILE_DIR/dlls"
 
 if [ -z "$DISABLE_ATTACH_FILE_DIALOG" ];then
     export ATTACH_FILE_DIALOG=1

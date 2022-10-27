@@ -1,3 +1,4 @@
-com.qq.weixin.work.deepin_3.1.12.6001deepin8_i386.deb
+*.deb
+*.zst
 src
 pkg
