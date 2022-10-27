@@ -2,11 +2,11 @@
 # -*- mode: sh -*-
 
 pkgname=timestampit
-pkgver=0.3.2
-pkgrel=4
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Prefix each line with a date/time stamp (formerly timestamp/stampit)'
-arch=('i686' 'x86_64' 'armv7h')
-url='https://codeberg.org/kas/timestampit'
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url='https://codeberg.org/kas/timestampit/'
 license=('GPL3')
 optdepends=('scdoc: for recompiling manual pages')
 provides=(
@@ -18,7 +18,7 @@ conflicts=(
   'stampit'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::${url}archive/v$pkgver.tar.gz"
 )
 
 build() {
@@ -34,13 +34,13 @@ package() {
 }
 
 sha256sums=(
-  '0d238ff6ec300084e3fd68e3b3a00e967daec7e0e0059b3cdc885fee3a9daa86'
+  'd08237ff446054ebaea6751ab7a9c2b2a47b196efd51c6ff1527a3a2ec5d9ce9'
 )
 sha512sums=(
-  '22062db2a45c6aa78ad9d9c38c9da458a6c9286b577addfda4ac138a2338682421e1a44624e4563735d9b9de2dbe3abd2c152381768bb4a48669b6700b9352ed'
+  'c7fdcfaf27a6e42b7993fe4a7ac60a6de24859ab3b1fd6b6a53e801842e3bf526a8ff44233b4489af8fe09d857ead3592c21bb50c73a20ce61cf10020de5d6e0'
 )
 b2sums=(
-  '1c56ebf6f1ebbc82d3be8cafec67ef978df0db2c69c8134559a8b24491b8d92d9fa9599964f4282e5d9e749af68a767eac1bf353bb0f7c68d34e761c08b87691'
+  'd3a7473c1a4a1679cada14a44c4a9c7d1d1b1ca9a2e909e3fa0bd2cabdbfd05c1a73c71593bdcfa811f4fc03aa153b7803ad02364c7bf8d49825378fde50c63a'
 )
 
 # eof
