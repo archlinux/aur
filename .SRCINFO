@@ -14,10 +14,11 @@ pkgbase = ananicy-cpp-git
 	depends = nlohmann-json
 	depends = systemd
 	optdepends = ananicy-rules-git: community rules
+	optdepends = ananicy-rules: Rules based for ananicy-cpp
 	provides = ananicy-cpp
 	conflicts = ananicy-cpp
 	source = git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git
-	source = git+https://gitlab.com/ananicy-cpp/stl-polyfills/std-format.git
+	source = git+https://gitlab.com/vnepogodin/std-format.git
 	md5sums = SKIP
 	md5sums = SKIP
 

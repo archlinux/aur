@@ -9,7 +9,7 @@ pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU an
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
 source=(
 	"git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
-	"git+https://gitlab.com/ananicy-cpp/stl-polyfills/std-format.git"
+	"git+https://gitlab.com/vnepogodin/std-format.git"
 )
 md5sums=('SKIP'
          'SKIP')
@@ -18,7 +18,8 @@ depends=(fmt spdlog nlohmann-json systemd)
 makedepends=(cmake git gcc)
 conflicts=(ananicy-cpp)
 provides=(ananicy-cpp)
-optdepends=("ananicy-rules-git: community rules")
+optdepends=("ananicy-rules-git: community rules"
+            "ananicy-rules: Rules based for ananicy-cpp")
 
 pkgver() {
   cd "$_pkgname"
