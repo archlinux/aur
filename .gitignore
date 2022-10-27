@@ -2,4 +2,4 @@
 *.zst
 pkg
 src
-v*
+*.tar.gz
