@@ -1,13 +1,13 @@
 pkgbase = stmcufinder
 	pkgdesc = STM32 and STM8 product finder for desktops
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/st-mcu-finder.html
 	arch = x86_64
 	license = Commercial
 	depends = java-runtime
 	options = !strip
-	source = local://en.ST-MCU-FinderLin_v4.0.0.zip
-	sha256sums = 06d123e7af76852b3cf392eb8b679b8a027b023e5f7621df769ab600268da138
+	source = local://en.ST-MCU-FinderLin_v5-0-0.zip
+	sha256sums = cca7de0b0fcd363c9f07d4c4549c05a4f83bb27373a207702a0d2dbbfe5609a1
 
 pkgname = stmcufinder

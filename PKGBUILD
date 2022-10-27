@@ -1,6 +1,6 @@
 # Maintainer: kumen
 pkgname="stmcufinder"
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
@@ -8,7 +8,7 @@ depends=('java-runtime')
 optdepends=()
 conflicts=()
 url="https://www.st.com/en/development-tools/st-mcu-finder.html"
-_pkg_file_name=en.ST-MCU-FinderLin_v4.0.0.zip
+_pkg_file_name=en.ST-MCU-FinderLin_v5-0-0.zip
 license=('Commercial')
 options=(!strip)
 
@@ -25,7 +25,7 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 source=("local://${_pkg_file_name}")
-sha256sums=('06d123e7af76852b3cf392eb8b679b8a027b023e5f7621df769ab600268da138')
+sha256sums=('cca7de0b0fcd363c9f07d4c4549c05a4f83bb27373a207702a0d2dbbfe5609a1')
 
 prepare(){
 	cd "$srcdir"
@@ -57,7 +57,7 @@ package() {
         install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=ST MCU Finder
-Comment=ST MCU Finder 4.0.0
+Comment=ST MCU Finder 5.0.0
 GenericName=ST MCU Finder
 Exec=STMCUFinder %F
 Icon=stmcufinder.png
