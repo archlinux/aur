@@ -1,9 +1,14 @@
-post_install() {
-  echo "------------------------------------------------"
-  echo ""
-  echo "You should checkout the xmenu-apps script"
-  echo "located in /usr/share/doc/xdg-xmenu/xmenu-apps"
-  echo ""
-  echo "------------------------------------------------"
+post_upgrade() {
+  cat << EOF
+------------------------------------------------
+Note to previous users:
+    xdg-xmenu has moved from shell to C in latest versions.
+Refer to 'man 1 xdg-xmenu' for usage since there are some CLI option changes
+from the shell script. Most notably, xdg-xmenu now calls xmenu directly by
+default.
+(The 'c_version' suffix in the package version is just a reminder of the change,
+will remove it later)
+------------------------------------------------
+EOF
 }
 

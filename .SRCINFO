@@ -1,6 +1,6 @@
 pkgbase = xdg-xmenu-git
-	pkgdesc = Small shell script to generate xdg desktop menu file for xmenu.
-	pkgver = r21.3d19f4d
+	pkgdesc = Show apps menu with xmenu
+	pkgver = r113.82629b1_c_version
 	pkgrel = 1
 	url = https://github.com/OliverLew/xdg-xmenu
 	install = xdg-xmenu-git.install
@@ -8,8 +8,7 @@ pkgbase = xdg-xmenu-git
 	license = MIT
 	makedepends = git
 	depends = xmenu
-	depends = librsvg
-	depends = imagemagick
+	depends = libinih
 	source = git+https://github.com/OliverLew/xdg-xmenu
 	sha256sums = SKIP
 
