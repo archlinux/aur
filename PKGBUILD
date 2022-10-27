@@ -30,7 +30,7 @@ prepare() {
   git config submodule.cmake.url $srcdir/open-eid-cmake
   git config submodule.common.url $srcdir/open-eid-common
   git config submodule.extensions.url $srcdir/open-eid-extensions
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
