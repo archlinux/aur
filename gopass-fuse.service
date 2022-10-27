@@ -1,0 +1,16 @@
+[Unit]
+Description=Gopass-Fuse
+
+[Service]
+Type=simple
+RuntimeDirectory=gopass
+ExecStartPre=-/usr/bin/gopass sync
+ExecStart=/usr/bin/gopass-fuse --mount $RUNTIME_DIRECTORY --foreground
+TimeoutStartSec=30s
+ExecReload=/bin/gopass sync
+ExecReload=/bin/kill --signal USR1 $MAINPID
+RestartSec=0
+Restart=always
+
+[Install]
+WantedBy=basic.target
