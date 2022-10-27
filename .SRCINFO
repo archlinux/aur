@@ -1,7 +1,7 @@
 pkgbase = shin-git
 	pkgdesc = A shell in every text input on your system
 	pkgver = 1.0.0.r1.g7373a4f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/p-e-w/shin
 	install = shin.install
 	arch = any

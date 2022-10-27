@@ -2,7 +2,7 @@
 pkgname="shin-git"
 _pkgname="shin"
 pkgver=1.0.0.r1.g7373a4f
-pkgrel=2
+pkgrel=3
 pkgdesc="A shell in every text input on your system"
 arch=("any")
 url="https://github.com/p-e-w/shin"
@@ -28,5 +28,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
-  sed -i "s|${pkgdir}||g" "${pkgdir}/usr/share/ibus-shin/shin"
+  sed -i "s|${pkgdir}||g" "${pkgdir}/usr/share/ibus/component/shin.xml"
 }
