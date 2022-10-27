@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='6.0.3'
+pkgver='6.0.5'
 pkgrel="1"
 pkgbase="$pkgname"
 pkgdesc='The Linux kernel and modules with Xanmod patches - Prebuilt version'
@@ -21,12 +21,12 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
 _url="https://api.github.com/repos/xanmod/linux/releases"
-source=("$(curl -L -s "$_url"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-image.*deb"|grep -v 'x64v2')")
+source=("$(curl -L -s "$_url"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-image.*deb"|grep 'x64v1')")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('f8da0c8e99d64c1e2a4e3cab80e822f0239b531be3656c01c95e3e7dce6d220f')
+sha256sums=('f9a1e05a331fcc3dd6dbab27447f87f616c5177045ae88415d3f08487f598f84')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
