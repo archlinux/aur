@@ -1,8 +1,8 @@
 pkgbase = lsplug
-	pkgdesc = Generator-based operators for asynchronous iteration
+	pkgdesc = Improved lsusb
 	pkgver = 1
 	pkgrel = 1
-	url = https://github.com/vxgmichel/aiostream
+	url = https://git.sr.ht/~martijnbraam/lsplug
 	arch = any
 	license = GPLv3
 	makedepends = python-build

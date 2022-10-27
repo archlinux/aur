@@ -3,9 +3,9 @@
 pkgname=lsplug
 pkgver=1
 pkgrel=1
-pkgdesc="Generator-based operators for asynchronous iteration"
+pkgdesc="Improved lsusb"
 arch=('any')
-url=https://github.com/vxgmichel/aiostream
+url="https://git.sr.ht/~martijnbraam/lsplug"
 license=('GPLv3')
 depends=('python' 'hwdata')
 makedepends=(python-build python-installer python-wheel python-setuptools)
