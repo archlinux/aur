@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=kosuzu-git
 pkgver=r3.r0.8253ee6
-pkgrel=1
+pkgrel=2
 pkgdesc="a danbooru downloader and viewer that support translation notes"
 arch=(x86_64)
 url="https://github.com/nostrenz/kosuzu"
@@ -23,7 +23,7 @@ prepare() {
   git submodule init
   git config submodule.lib/SingleApplication.url "$srcdir/SingleApplication"
   git config submodule.lib/QuaZIP.url "$srcdir/quazip"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
