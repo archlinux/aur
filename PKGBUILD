@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.7.0.r51.g2ee9886a
+pkgver=0.7.0.r98.g176b1c03
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -42,7 +42,7 @@ prepare() {
     done
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
-    git -C libjxl submodule update
+    git -C libjxl -c protocol.file.allow='always' submodule update
 }
 
 pkgver() {
