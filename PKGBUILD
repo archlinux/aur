@@ -3,13 +3,13 @@
 
 pkgname=nginx-mod-dav-ext
 pkgver=3.0.0
-pkgrel=8
+pkgrel=9
 _dirname="nginx-dav-ext-module-$pkgver"
-_nginxver=1.22.0
+_nginxver=1.22.1
 
 pkgdesc='NGINX WebDAV missing commands support'
 arch=('x86_64')
-depends=("nginx=$_nginxver" 'libutil-linux' 'libxslt')
+depends=("nginx=$_nginxver" "libxslt")
 makedepends=("nginx-src")
 url='https://github.com/arut/nginx-dav-ext-module'
 license=('BSD')
