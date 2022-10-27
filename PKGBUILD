@@ -1,4 +1,4 @@
-# Maintainer: Anthony Wang <ta180m@proton.me>
+# Maintainer: Anthony Wang <a att exozy doot me>
 # Contributor: ny-a <nyaarch64 at gmail dot com>
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 # Contributor: Jean Lucas <jean@4ray.co>
@@ -6,7 +6,7 @@
 
 pkgname=mastodon
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(x86_64)
 url=https://github.com/mastodon/mastodon
@@ -41,13 +41,13 @@ sha512sums=('9035184ead64b46f28630d8a5d57ae414b34a81604f7acb146ef56f7c76483fbb88
 prepare() {
   cd mastodon-$pkgver
 
-  # Allow use of any bundler
-  sed -i -e '/BUNDLED/,+1d' Gemfile.lock
+  echo "gem 'psych', '< 4'" >> Gemfile
 }
 
 build() {
   cd mastodon-$pkgver
-  bundle config set deployment 'true'
+  bundle config set --local path 'vendor/bundle'
+  bundle config unset deployment
   bundle config set without 'development test'
   bundle install -j$(getconf _NPROCESSORS_ONLN)
   yarn install --pure-lockfile
