@@ -13,8 +13,8 @@
 ### PACKAGE OPTIONS
 
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '2487' '2506')
-_merge_requests_to_use=('2487' '2506')
+# Merge Requests List: ('579' '1441' '1880')
+_merge_requests_to_use=('1441')
 
 ## Disable building a DOCS package
 # Remember to unset this variable when producing .SRCINFO
@@ -29,26 +29,26 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=42.5
-pkgrel=1
+pkgver=43.0+r87+g986d3be7a
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop
-         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile libsysprof-capture)
+         libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
+         gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
+         libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
-_commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97  # tags/42.5^0
+checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
+_commit=986d3be7ac60859bc614c73182582fee4c9607c8  # tags/43.0^87
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        'mr2487.patch'
-        'mr2506.patch')
+        'mr1441.patch'
+        'mr1880.patch')
 sha256sums=('SKIP'
-            '1cdd4833e10c1f88311a52df1a34e3ad82641f75e2c1848a9367f2fbc8f8fd29'
-            'd6aa7d5b62b522fe6c448ec0c54826acd9ae19d49389fa26a456e2cdfbdf3294')
+            'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
+            'a075fad955d589ea5e59178221a80fe162f7b10cd0c77fcb94219fb380810952')
 
 pkgver() {
   cd $pkgname
@@ -132,25 +132,23 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
-  # Title: Draft: Dynamic triple/double buffering (v4) for GNOME 42 maintenance
+  # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2487
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   # Type: 1
   # Status: 2 & 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
-  #          Derived from !1441 to maintain gnome-42 base support.
-  #          Thanks @JockeTF in AUR for the patch backported to gnome-41 base.
-  pick_mr '2487' 'mr2487.patch' 'patch'
+  #          (Thanks @JockeTF in AUR for the patch backported to gnome-41 before.)
+  pick_mr '1441' 'mr1441.patch' 'patch'
 
-  # Title: compositor: Use native GL mipmapping instead of MetaTextureTower (v2)
-  # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
-  # Author: Neil Moore <dar13.dev@gmail.com>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2506
-  # Type: 3
-  # Status: 4
-  # Comment: Fix #849 (Window previews in the overview are not mipmapped on HiDPI)
-  #          (v2) Move the original functionality into its own separate class.
-  pick_mr '2506' 'mr2506.patch' 'patch'
+  # Title: wayland/surface: Avoid using buffers with unfinished client work, sub-surface fixes
+  # Author: Michel Dänzer <mdaenzer@redhat.com>
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1880
+  # Type: 1
+  # Status: 2 & 3
+  # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
+  #          Fixes: #1162
+  pick_mr '1880' 'mr1880.patch' 'patch'
 
 }
 
@@ -208,7 +206,7 @@ _pick() {
 }
 
 package_mutter-performance() {
-  provides=(mutter libmutter-10.so)
+  provides=(mutter libmutter-11.so)
   conflicts=(mutter)
   groups=(gnome)
 
