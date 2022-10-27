@@ -1,16 +1,16 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pytest-pylint
-pkgver=0.18.0
-pkgrel=4
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
 license=('MIT')
 url='https://github.com/carsongee/pytest-pylint'
 depends=('python-pytest' 'python-pylint' 'python-toml')
-makedepends=('python-pytest-flake8' 'python-pytest-runner')
+makedepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carsongee/pytest-pylint/archive/v$pkgver.tar.gz")
-sha512sums=('a0716104d288774d4c3ab596f30a33cf439df5031647912574c31eefc3a84e69e82fc362f77e73b437c7566a596d2ff8bf51a332626a7fa7468cea3b916e9ad9')
+sha512sums=('94503757bf774ffbba56687cda7689a95748fe437759e29868105bc5f639b03782308c8e86eae7236ab99188674de5596053da5c33ebd90c603e396504047996')
 
 build() {
   cd pytest-pylint-$pkgver
@@ -28,7 +28,7 @@ check() {
 package() {
   cd pytest-pylint-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 # vim:set ts=2 sw=2 et:
