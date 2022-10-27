@@ -4,7 +4,7 @@
 _pkgname=libadwaita
 pkgbase=libadwaita-testing
 pkgname=(libadwaita-testing libadwaita-testing-docs libadwaita-testing-demos)
-pkgver=1.2beta
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
@@ -16,7 +16,7 @@ provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-git)
 checkdepends=(weston)
 options=(debug)
-_commit=7387b453a4c93fbb60d68ec009af6f719fe8bab9  # tags/1.2.beta^0
+_commit=a905117bd2150de9e85d65f8cdce8d8fb001b89e  # tags/1.2.0
 source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=$_commit")
 sha256sums=('SKIP')
 
