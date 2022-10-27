@@ -2,7 +2,6 @@
 Description=System Wide Aria2c Daemon
 After=network-online.target
 Wants=network-online.target
-PartOf=aria2.target
 
 [Service]
 Type=forking
