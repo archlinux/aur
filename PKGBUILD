@@ -12,7 +12,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/alenichev/$pkgname/archive/v
 sha256sums=('cba655d3cd6e779d73da28cf41729d94bcf5fc6968af0dd922fa6189099e58e9')
 
 prepare() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 	cat <<EOF > LICENSE
 Copyright (c) 2008, 2009, 2010 Dmitry Alenichev <mitya@sdf.lonestar.org>
 
@@ -31,7 +31,7 @@ EOF
 }
 
 build() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 	
 	make clean all
 	
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/$pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 
 	install -d "$pkgdir"/usr/bin
 	install -m 755 $pkgname "$pkgdir"/usr/bin/$pkgname
