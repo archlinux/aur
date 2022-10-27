@@ -7,8 +7,8 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname='ubuntu-wallpapers'
-pkgver=22.04.4
-pkgrel=2
+pkgver=22.10.2
+pkgrel=1
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
 url='https://launchpad.net/ubuntu-wallpapers'
@@ -23,9 +23,9 @@ source=(
   "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz"
   'setuptools-bugfix.patch'
 )
-sha256sums=('83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e'
-            '430a61aa87de2fc12ba3a7ba583df16643839c3b14c7d9138d67e43d43767a6b'
-            'fee8ef60ea8ecfbf847fd45b30db7efc7bf233d9d6e5f67b14f2f29e585fc4ac')
+sha512sums=('e2dcdd0a07fc50c4059e3254b179de73474ab53298c29a7234eb14335bfb83cb1b2e9e7a53787caf1a95929876e083d3684be162a5a5f8b14325446eef5c9a5c'
+            '1a56663103cbf3534ede0c39978da18307f3c5b4da4889af2715df3f7b04952d0037ec5b1aa3244bc1956e78aa9ea62181133cfa2040ba406be52baeefe95968'
+            '4d562ef7ccc6add6d966c111ed8f93b5c020a2be57bc468b427768521e64533536fb8b968a5430979f5d36f2de34bc82fb9ee3adca42f0194bb0d95c757cfe70')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
