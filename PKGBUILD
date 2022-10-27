@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: blu256 <mfilippos@yandex.ru>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: blu256 <mfilippos@yandex.ru>
 # Contributer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: eric <eric@archlinux.org>
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=ude
-pkgver=0.2.11a
+pkgver=0.2.11b
 pkgrel=1
 pkgdesc="The ultimate window manager for UDE"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libjpeg' 'libxmu' 'libxpm' 'bash')
 makedepends=('gendesk')
 url="http://udeproject.sourceforge.net/index.shtml"
 source=(http://downloads.sourceforge.net/udeproject/uwm-${pkgver/_/}.tar.gz)
-sha256sums=('dd056857c98b75c9203861917db33bcaf87ba074bdd204cf732ce4cb777cb408')
+sha256sums=('661f29f2c1718e5c1b046b2bd16e335bce723b7d67f2209b922e0ec47ecd98ee')
 
 build() {
   cd "$srcdir"
