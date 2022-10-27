@@ -5,4 +5,4 @@ Wants=network-online.target
 Wants=aria2.service aria2-tracker-update.timer
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

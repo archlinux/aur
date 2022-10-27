@@ -33,3 +33,4 @@ NoNewPrivileges=yes
 
 [Install]
 WantedBy=aria2.target
+WantedBy=multi-user.target
