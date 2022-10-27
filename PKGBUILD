@@ -1,7 +1,7 @@
 # Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
 
 pkgname=fname
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=2
 pkgdesc=' Generate random, human-friendly names.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fdaaeec8bdba263131c4f9961237924763c2332745ae6732e70cee4e1a85a123')
+sha256sums=('29c403ffc4c48a7b787ac855231b0792e212b74f7d23da19551548b3f1be4618')
 
 build() {
 	cd "${pkgname}-${pkgver}/cmd/${pkgname}"
