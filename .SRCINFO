@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-linux-headers-bin-x64v3
-	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Latest Mainline (EDGE) - Prebuilt version - x64v3
+	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - x64v3
 	pkgver = 6.0.5
 	pkgrel = 1
 	url = http://www.xanmod.org/

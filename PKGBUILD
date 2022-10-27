@@ -6,7 +6,7 @@ _major=6.0
 pkgver=${_major}.5
 xanmod=1
 pkgrel=${xanmod}
-pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Latest Mainline (EDGE) - Prebuilt version - ${_arch}"
+pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
