@@ -1,6 +1,6 @@
 pkgname=webcord
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
 _repo='WebCord'
@@ -67,7 +67,7 @@ package() {
     cd "${_srcname}"
     install -Dm644 -t "${lib}" "package.json"
     cp -rdt "${lib}" "node_modules"
-    cp -rdt "${sources}" "sources/assets"
+    cp -rdt "${sources}" "sources/assets" "sources/translations"
     rm "${sources}/assets/icons/app.ic"*
     ln -s "${sources#"${pkgdir}"}/assets/icons/app.png" "${icons}/${pkgname}.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
