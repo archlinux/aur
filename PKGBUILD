@@ -3,13 +3,13 @@
 
 pkgname=nginx-mod-slowfs-cache
 pkgver=1.10
-pkgrel=10
+pkgrel=11
 _dirname="ngx_slowfs_cache-${pkgver}"
-_nginxver=1.22.0
+_nginxver=1.22.1
 
 pkgdesc='NGINX module that adds ability to cache static files'
 arch=('x86_64')
-depends=("nginx=$_nginxver" "libutil-linux")
+depends=("nginx=$_nginxver")
 makedepends=("nginx-src")
 url='http://labs.frickle.com/nginx_ngx_slowfs_cache'
 license=('CUSTOM')
