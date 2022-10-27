@@ -9,7 +9,6 @@ pkgbase = firefox-socket-control-git
 	makedepends = git
 	depends = firefox
 	depends = openbsd-netcat
-	depends = nodejs
 	noextract = socketcontrol-1.5-fx.xpi
 	source = https://addons.mozilla.org/firefox/downloads/file/3933677/socketcontrol-1.5-fx.xpi
 	source = git+https://github.com/karabaja4/firefox-socket-control.git
