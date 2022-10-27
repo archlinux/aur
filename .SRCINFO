@@ -1,11 +1,11 @@
 pkgbase = cura-resources-materials
 	pkgdesc = Missing materials resources for Cura
-	pkgver = 4.13.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://ultimaker.com/en/products/cura-software
 	arch = any
 	license = AGPL
-	source = fdm_materials-4.13.0.tar.gz::https://github.com/Ultimaker/fdm_materials/archive/4.13.0.tar.gz
-	sha1sums = 25ed117131973e4c2ac942b4daf6914f401a6bb4
+	source = fdm_materials-5.0.0.tar.gz::https://github.com/Ultimaker/fdm_materials/archive/5.0.0.tar.gz
+	sha512sums = 88c8bb7c578cedb3dd9239644bc3b0bede7a600dee56979bc32a3861b541af55850384bd0f64cd619b0fac8e3e9f09f9aeb00ca0662e7f96fb2791c3d2b1e31b
 
 pkgname = cura-resources-materials
