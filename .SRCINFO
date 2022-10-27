@@ -17,7 +17,6 @@ pkgbase = cherrytree-git
 	depends = libxml++2.6
 	depends = uchardet
 	depends = vte3
-	optdepends = xorg-xhost: allow chroot access to X server for running tests
 	provides = cherrytree
 	conflicts = cherrytree
 	source = git+https://github.com/giuspen/cherrytree.git

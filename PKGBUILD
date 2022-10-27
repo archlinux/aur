@@ -20,7 +20,6 @@ makedepends=('cmake'
 			 'spdlog')
 checkdepends=('gmock'
               'gtest')
-optdepends=('xorg-xhost: allow chroot access to X server for running tests')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/giuspen/${_pkgname}.git")
@@ -41,14 +40,8 @@ build() {
   make -C "${_pkgname}/build"
 }
 
-# NOTE: In order to run tests that depend on the X server in a clean chroot, 
-# you must allow the chroot access your X server:
-# xhost +local:
-# https://wiki.archlinux.org/index.php/chroot#Run_graphical_applications_from_chroot
 check() {
-  export DISPLAY=:0
-  ./"${_pkgname}/build/run_tests_with_x_1"
-  ./"${_pkgname}/build/run_tests_with_x_2"
+  ./"${_pkgname}/build/run_tests_no_x"
 }
 
 package() {
