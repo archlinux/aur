@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -26,13 +26,13 @@ prepare() {
 
     for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
         git submodule init "${submodule}"
-        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-        git submodule update "${submodule}"
+        git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
+        git -c protocol.file.allow=always submodule update "${submodule}"
     done
     pushd subprojects/dxil-spirv
     git submodule init third_party/spirv-headers
-    git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
-    git submodule update third_party/spirv-headers
+    git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
+    git -c protocol.file.allow=always submodule update third_party/spirv-headers
     popd
 
     # By default export FLAGS used by proton and ignore makepkg
@@ -40,8 +40,8 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # Uncomment to enable extra optimizations
