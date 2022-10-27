@@ -9,7 +9,7 @@ pkgbase = yamux
 	depends = gstreamer
 	depends = dotnet-runtime>=6.0.0
 	depends = gtk3
-	depends = gst-plugins-bad
+	depends = gst-plugins-good
 	source = https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v60/Yamux-Yamux-v60.tar.gz
 	md5sums = 2df955ef696ad3d269372597a57a6515
 
