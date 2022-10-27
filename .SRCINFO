@@ -1,0 +1,23 @@
+pkgbase = motu
+	pkgdesc = Kernel module for MOTU MIDI devices
+	pkgver = r19.g516da18
+	pkgrel = 1
+	url = https://github.com/vampirefrog/motu
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = linux-headers
+	source = motu::git+https://github.com/vampirefrog/motu#commit=516da186c9e2112cae84b3cf0d5979e23c52d62b
+	source = Makefile
+	source = dkms.conf
+	b2sums = SKIP
+	b2sums = 4e8d84050bd1622e7463ac8ea821161ea441cc3aa3d80c1c9bddfe55ac642fa606d3d740aba1af94726a04f8d42d9c3f4062f368d4a4162958633f42ee9fc04e
+	b2sums = ede461a5f32df0919186e0afe66e5d19511cbf527ff1eb31fedc414e4d6de1fb887a9cea288442fab0e7e0b6fe52d8eef1f6fc7c6a8c0b1262f8d681fa28f360
+
+pkgname = motu
+	depends = linux
+
+pkgname = motu-dkms
+	depends = dkms
+	provides = motu
+	conflicts = motu
