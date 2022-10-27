@@ -12,6 +12,7 @@ pkgbase = wifi4wofi
 	depends = iw
 	depends = sed
 	depends = gawk
+	depends = yad
 	source = git+https://github.com/fearlessgeekmedia/wifi4wofi
 	sha256sums = SKIP
 
