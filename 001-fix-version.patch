@@ -1,7 +1,0 @@
-diff --git a/src/pyfx/__version__.py b/src/pyfx/__version__.py
-index 9dafe34..3dc1f76 100644
---- a/src/pyfx/__version__.py
-+++ b/src/pyfx/__version__.py
-@@ -1 +1 @@
--__version__ = "0.1.0-beta.3"
-+__version__ = "0.1.0"

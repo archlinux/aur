@@ -1,8 +1,8 @@
 # Maintainer: Avery Warddhana <nullableVoidPtr+arch _ gmail>
 
 pkgname=python-fx
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc=" A python-native JSON Viewer TUI"
 url='https://github.com/cielong/pyfx'
 arch=('any')
@@ -15,14 +15,11 @@ depends=('python-antlr4' 'python-asciimatics' 'python-click'
 		'python-ply' 'python-pyfiglet' 'python-pyperclip'
 		'python-yaml' 'python-urwid' 'python-wcwidth'
 		'python3-yamale')
-source=("${pkgname}-${pkgver}::git+https://github.com/cielong/pyfx.git#tag=v${pkgver}"
-        '001-fix-version.patch')
-sha256sums=('SKIP'
-            'bfa4cc3b504b27e1483565154cf84aacdd70637aa754a21732f58ca460d4eedc')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('82866a06ff890fe7f741648be95e1ad4121c19bca73dd5cee69666d04c39e5e5')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/001-fix-version.patch"
 
     cd src/pyfx/model/common/jsonpath/
     antlr4 -Dlanguage=Python3 JSONPath.g4
