@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r17354.g1efb5b8800'
+pkgver='5.0.r17734.g1d86a48db6'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -27,8 +27,10 @@ source=(
 	"$pkgname-spirvcross::git+https://github.com/KhronosGroup/SPIRV-Cross.git"
 	"$pkgname-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
 	"$pkgname-libspng::git+https://github.com/randy408/libspng.git"
+	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -45,25 +47,31 @@ prepare() {
 	_mgbapath='Externals/mGBA/mgba'
 	git submodule init "$_mgbapath"
 	git config "submodule.$_mgbapath.url" "$srcdir/$pkgname-mgba/"
-	git submodule update "$_mgbapath"
+	git -c protocol.file.allow=always submodule update "$_mgbapath"
 
 	# Provide SPIRV-Cross submodule
 	_spirvcrosspath='Externals/spirv_cross/SPIRV-Cross'
 	git submodule init "$_spirvcrosspath"
 	git config "submodule.$_spirvcrosspath.url" "$srcdir/$pkgname-spirvcross/"
-	git submodule update "$_spirvcrosspath"
+	git -c protocol.file.allow=always submodule update "$_spirvcrosspath"
 
 	# Provide zlib-ng submodule
 	_zlibngpath='Externals/zlib-ng/zlib-ng'
 	git submodule init "$_zlibngpath"
 	git config "submodule.$_zlibngpath.url" "$srcdir/$pkgname-zlibng/"
-	git submodule update "$_zlibngpath"
+	git -c protocol.file.allow=always submodule update "$_zlibngpath"
 
 	# Provide libspng submodule
 	_libspngpath='Externals/libspng/libspng'
 	git submodule init "$_libspngpath"
 	git config "submodule.$_libspngpath.url" "$srcdir/$pkgname-libspng/"
-	git submodule update "$_libspngpath"
+	git -c protocol.file.allow=always submodule update "$_libspngpath"
+
+	# Provide vma submodule
+	_vmapath='Externals/VulkanMemoryAllocator'
+	git submodule init "$_vmapath"
+	git config "submodule.$_vmapath.url" "$srcdir/$pkgname-vma/"
+	git -c protocol.file.allow=always submodule update "$_vmapath"
 }
 
 pkgver() {

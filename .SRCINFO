@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator
-	pkgver = 5.0.r17354.g1efb5b8800
+	pkgver = 5.0.r17734.g1d86a48db6
 	pkgrel = 1
 	url = https://dolphin-emu.org
 	arch = x86_64
@@ -42,6 +42,8 @@ pkgbase = dolphin-emu-git
 	source = dolphin-emu-git-spirvcross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	source = dolphin-emu-git-zlibng::git+https://github.com/zlib-ng/zlib-ng.git
 	source = dolphin-emu-git-libspng::git+https://github.com/randy408/libspng.git
+	source = dolphin-emu-git-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
