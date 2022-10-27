@@ -2,13 +2,13 @@
 _base=nutils-SI
 pkgname=python-${_base,,}-git
 pkgdesc="Framework for physical units"
-pkgver=20211230
+pkgver=20220909
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/evalf/${_base}"
 license=(MIT)
 depends=(python)
-makedepends=(python-build python-flit-core python-install git)
+makedepends=(python-build python-flit-core python-installer git)
 checkdepends=(python-numpy python-pytest)
 source=(git+${url}.git#branch=main)
 sha512sums=('SKIP')
@@ -22,20 +22,19 @@ pkgver() {
 
 build() {
   cd ${_base}
-  export PYTHONHASHSEED=0
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest
 }
 
 package() {
   cd ${_base}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
