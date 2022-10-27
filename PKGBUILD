@@ -4,16 +4,16 @@
 
 pkgname=ghostwriter-git
 pkgver=2.1.6.r87.gd395e01
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(x86_64 i686 )
-url="https://github.com/KDE/ghostwriter"
+url="https://invent.kde.org/office/ghostwriter"
 license=('GPL3')
 depends=('qt5-base' 'qt5-svg' 'hunspell' 'qt5-webengine' 'sonnet' 'kxmlgui')
 makedepends=('git' 'qt5-tools' 'cmake' 'extra-cmake-modules') #'discount'
 conflicts=('ghostwriter')
 provides=('ghostwriter')
-source=(git+https://github.com/KDE/ghostwriter.git)
+source=("git+https://invent.kde.org/office/ghostwriter.git")
 sha256sums=('SKIP')
 
 pkgver() {
