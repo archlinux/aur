@@ -13,8 +13,8 @@ depends=('jre-openjdk' 'android-tools' 'android-udev')
 makedepends=('make' 'cmake' 'unzip')
 source=(${_pkgname}.desktop
         "https://git.libremobileos.com/LMODroid/platform_external_tigervnc/-/archive/desktop-mode_v${pkgver}/platform_external_tigervnc-desktop-mode_v${pkgver}.zip")
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('d70cb80cf2b4c04953cff452f8d4e398e6f3c624f14d71697a001fefe10532d1'
+            '9af3c919422d5e59d555479766d3cbd7b453e007708924f1b87062f77a042fb3')
 prepare() {
   unzip platform_external_tigervnc-desktop-mode_v${pkgver}.zip
   cd platform_external_tigervnc-desktop-mode_v${pkgver}/java
