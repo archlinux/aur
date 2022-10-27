@@ -1,11 +1,12 @@
-# Maintainer: Blutkoete <tobias dot borgert at gmail dot com>
+# Maintainer: Orphaned <nobody>
+# Contributor: Blutkoete <tobias dot borgert at gmail dot com>
 # Contributor: 1Conan <me at 1conan dot com>
 # Contributor: Mitchell Renouf <mitchellarenouf at gmail dot com> 
 # (discover in Extra) Maintainer: Antonio Rojas <arojas at archlinux dot org> 
 
 _pkgname=discover
 pkgname=discover-snap
-pkgver=5.25.5
+pkgver=5.26.1
 pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(x86_64)
@@ -14,13 +15,13 @@ license=(LGPL)
 conflicts=(discover)
 provides=(discover)
 depends=(knewstuff kcmutils kidletime qt5-graphicaleffects appstream-qt archlinux-appstream-data
-         hicolor-icon-theme kirigami2 discount kuserfeedback snapd snapd-glib)
+         kirigami2 discount kuserfeedback purpose qt5-webview snapd snapd-glib)
 makedepends=(extra-cmake-modules plasma-framework packagekit-qt5 flatpak fwupd)
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories (not recommended, use at your own risk)'
             'flatpak: Flatpak packages support'
             'fwupd: firmware update support')
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('1bc27e5f208dc2bdc8982bc7297c331c3f3e0e0611835bc46ac0ecc38c896d07'
+sha256sums=('4aa07a12bab336b157483feb8e0bf3a4dc341828231b129d3e032f00ba7f1a72'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -31,8 +32,7 @@ build() {
   cmake -B build -S $_pkgname-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
-    -DBUILD_SnapBackend=ON \
-    -DWITH_KCM=OFF
+    -DBUILD_SnapBackend=ON
   cmake --build build
 }
 
