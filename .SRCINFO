@@ -1,0 +1,17 @@
+pkgbase = nautilus-share-gtk4
+	pkgdesc = Nautilus extension to share folder using Samba (from debian for gtk4 support)
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://git.gnome.org/browse/nautilus-share
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = meson
+	depends = nautilus
+	depends = samba
+	provides = nautilus-share
+	conflicts = nautilus-share
+	source = http://deb.debian.org/debian/pool/main/n/nautilus-share-gtk4/nautilus-share_0.7.5.orig.tar.bz2
+	sha512sums = ef6d540ff3529138a3ed0f834e46b57bfb4bc5a88f7f1b7fdc66d1fd619963ff7ab5356689e56af86148002bee21492bb09860e5352674dee54c7199f6b1c81b
+
+pkgname = nautilus-share-gtk4
