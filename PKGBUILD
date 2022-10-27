@@ -3,7 +3,7 @@ _base=syrupy
 pkgname=python-${_base}
 pkgdesc="The sweeter pytest snapshot plugin"
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/tophat/${_base}"
 license=(Apache)
@@ -17,12 +17,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest
+# }
 
 package() {
   cd ${_base}-${pkgver}
