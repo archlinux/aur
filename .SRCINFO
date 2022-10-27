@@ -1,0 +1,17 @@
+pkgbase = shin-git
+	pkgdesc = A shell in every text input on your system
+	pkgver = 1.0.0.r1.g7373a4f
+	pkgrel = 1
+	url = https://github.com/p-e-w/shin
+	install = shin.install
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = ibus
+	provides = shin
+	conflicts = shin
+	source = shin::git+https://github.com/p-e-w/shin.git
+	sha256sums = SKIP
+
+pkgname = shin-git

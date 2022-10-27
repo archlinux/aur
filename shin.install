@@ -1,0 +1,9 @@
+PACKAGE_NAME='shin'
+
+post_install() {
+	echo
+	echo "==> ${PACKAGE_NAME} requires a functioning and running installation of IBus,"
+	echo "==> See https://wiki.archlinux.org/title/IBus for more info."
+	echo "==> Bind the command 'ibus engine ${PACKAGE_NAME}' to a global keyboard shortcut to activate ${PACKAGE_NAME}"
+	echo
+}
