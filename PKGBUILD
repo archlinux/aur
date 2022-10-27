@@ -2,9 +2,9 @@
 pkgname="shin-git"
 _pkgname="shin"
 pkgver=1.0.0.r1.g7373a4f
-pkgrel=3
+pkgrel=4
 pkgdesc="A shell in every text input on your system"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/p-e-w/shin"
 license=("GPL3")
 depends=("ibus")
