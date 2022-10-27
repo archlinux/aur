@@ -1,11 +1,10 @@
+# Maintainer: SuperNinja_4965
 # Contributor: FabioLolix
 # Contributor: netroy
-# Contributor: SuperNinja_4965
 
 pkgname=arduino-ide-bin
-_pkgver=2.0.0
-pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework."
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
@@ -15,14 +14,13 @@ optdepends=('libusb: Needed for some libraries or boards'
             'usbutils: Needed for stm32 boards using st-link'
             'libusb-compat: Needed for the `micronucleus` cli utility'
             'python-pyserial: Needed for esptool')
-makedepends=()
 provides=(arduino-ide)
 conflicts=(arduino-ide)
 replaces=(arduino-ide-beta-bin)
 options=(!strip)
-source=("https://downloads.arduino.cc/arduino-ide/arduino-ide_${_pkgver}_Linux_64bit.zip"
+source=("https://downloads.arduino.cc/arduino-ide/arduino-ide_${pkgver}_Linux_64bit.zip"
         "https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg")
-sha256sums=('85f889f4447987edd0e2402175e8d46bbfd6e199a12063819dc8e993bb1b7bf3'
+sha256sums=('16a1eba39a9795ddf3e65d2c84d6a7c452866efbda4ca43329c8a037c85525b4'
             '4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac')
 
 prepare() {
@@ -31,7 +29,7 @@ prepare() {
 
 package() {
 	install -dm755 "$pkgdir/opt/"
-	mv "arduino-ide_${_pkgver}_Linux_64bit" "arduino-ide"
+	mv "arduino-ide_${pkgver}_Linux_64bit" "arduino-ide"
 	chmod -R 755 "arduino-ide"
 	cp -r "arduino-ide" "$pkgdir/opt/arduino-ide"
 	install -dm755 "$pkgdir/usr/bin"
