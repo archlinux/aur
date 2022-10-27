@@ -3,7 +3,7 @@
 
 pkgname=tree-game
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Powder toy like sandbox game focused on nature"
 url="https://github.com/segfaultdev/tree"
 arch=('x86_64')
@@ -14,10 +14,10 @@ source=(
   tree-game.desktop
   "https://raw.githubusercontent.com/segfaultdev/tree/master/LICENSE"
 )
-sha256sums=(
-  '3cc26c514fbbfbfdf85db5dbcc3a5eb02a6db71dfbc135ce5a482925090c0e91'
-  '9c6638d0971105517fbb244d7c00220fb34786597d6107fb6172b11008a1a018'
-  'e52bc9b76627c882c7f65113d57b8874062ac647e7a720a8b5ca7be3cad5a205'
+md5sums=(
+  '9949062378aa096fe5a4b69399c37b29'
+  'ef12d3faa5abcb030f5ceb1fddef5bdb'
+  '46c1610e7dad80dfca885fc076d8a545'
 )
 
 build() {
