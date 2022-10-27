@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Plainotepad
+Comment=Text Editor
+Comment[uk]=Текстовий редактор
+Comment[ru]=Текстовый редактор
+Icon=plainotepad
+MimeType=text/plain;
+Exec=plainotepad
+Terminal=false
+Categories=Qt;Utility;TextEditor;
+StartupWMClass=plainotepad
