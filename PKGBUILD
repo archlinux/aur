@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -61,7 +61,7 @@ prepare() {
   for name in fmt curl yara/yara; do
     git config --remove-section submodule.lib/external/$name
   done
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   git apply \
     "$srcdir/0001-makepkg-Fix-compiler-check.patch" \
