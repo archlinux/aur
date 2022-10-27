@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine64-git
-pkgver=7.16.165.ge553be7e776
+pkgver=7.19.243.g2cfcddb2fef
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs which is only for 64 bit system."
 url=https://winehq.org
@@ -27,44 +27,18 @@ provides=('wine-x64' 'wine64')
 depends=(
     'dbus' 'fontconfig' 'freetype2' 'gnutls' 'libjpeg-turbo' 'libpng' 'libtiff' 'mesa' 'libunwind'
     'libxml2' 'libxslt' 'libxcursor' 'libxrandr' 'libxdamage' 'libxi' 'gettext' 'glu' 'libsm' 'gcc-libs'
-    'desktop-file-utils'
+    'desktop-file-utils' 'alsa-lib' 'libpulse' 'faudio' 'gstreamer' 'gst-plugins-base-libs' 'mpg123'
+    'systemd' 'sdl2' 'vkd3d' 'vulkan-icd-loader' 'vulkan-headers' 'lcms2' 'libcups' 'libgphoto2'
+    'sane' 'gsm' 'krb5' 'libldap' 'smbclient' 'ocl-icd' 'libpcap' 'libusb' 'v4l-utils'
+    # Depends in Official repo:
+
     )
 makedepends=(
     'bison' 'autoconf' 'perl' 'fontforge' 'flex' 'giflib' 'git' 'libxinerama' 'libxcomposite' 'libxmu' 
-    'libxxf86vm' 'libldap' 'mpg123' 'openal' 'v4l-utils' 'mesa-libgl' 'opencl-icd-loader' 
-    'gst-plugins-base-libs' 'vulkan-icd-loader' 'vkd3d' 'sdl2' 'libcups' 'libgphoto2' 'sane' 'gsm' 
-    'vulkan-headers' 'samba' 'opencl-headers' 'smbclient'
+    'libxxf86vm' 'openal' 'mesa-libgl' 'opencl-icd-loader' 'gst-plugins-base-libs' 'samba' 'opencl-headers'
+    'mingw-w64-gcc'
     )
 optdepends=(
-    'mingw-w64-gcc: At least one is necessary for compiling Win64 binaries.'
-    'clang: At least one is necessary for compiling Win64 binaries.'
-    'llvm: Install if you use clang for compiling.'
-    'lld: Install if you use clang for compiling'
-    'alsa-lib: At least one is necessary for sound.'
-    'libpulse: At least one is necessary for sound.'
-    'sdl2: Generally necessary for joystick or other HID support. Only one library is necessary, but they may exhibit different behaviour.'
-    'systemd: Generally necessary for joystick or other HID support. Only one library is necessary, but they may exhibit different behaviour.'
-    # Really Optional Dependencies:
-    'faudio: Needed for audio in some newer applications, especially games newer than 2008.'
-    'gstreamer: Generally necessary for games or applications that play back audio or video files.'
-    'gst-plugins-base-libs: Generally necessary for games or applications that play back audio or video files.'
-    'mpg123: Generally necessary for games or applications that play back audio files.'
-    'vkd3d: Needed for some games newer than 2016.'
-    'vulkan-icd-loader: Necessary for some games; only supported by some video cards.'
-    'vulkan-headers: Necessary for some games; only supported by some video cards.'
-    'lcms2: Rarely needed for color management.'
-    'libcups: Install only if you need printer support.'
-    'libgphoto2: Install only if you are using scanner or still image software.'
-    'sane: Install only if you are using scanner or still image software.'
-    'gsm: GSM audio codec which is very rarely needed, and generally only in older software.'
-    'krb5: Install only if you are connecting via Kerberos.'
-    'libldap: Install only if you are using remote directories.'
-    'smbclient: Rarely needed for networking.'
-    'ocl-icd: Install if you are using parallel computing or GPGPU software.'
-    'libpcap: Install if you are using applications that require packet capture. This replaces native wpcap.dll shipped by applications.'
-    'libusb: Install only if you are using an application that accesses a USB device directly.'
-    'v4l-utils: Install only if you are capturing video.'
-    'libcapi: Install only if you are using ISDN software.'
     # Extra Optional Dependencies in Official repo:
     'giflib' 'openal' 'alsa-plugins' 'libxcomposite' 'libxinerama' 'opencl-icd-loader' 'cups' 'samba' 'dosbox'
     )
@@ -76,7 +50,9 @@ pkgver(){
 prepare(){
     mkdir -p "${srcdir}/wine/wine64-build"
     cd "${srcdir}/wine/wine64-build"
-    ../configure --enable-win64 --prefix=/usr --with-x --without-oss
+    ../configure --enable-win64 --prefix=/usr \
+        --sysconfdir=/etc --localstatedir=/var \
+        --runstatedir=/run --with-x --without-oss
 }
 build(){
     cd "${srcdir}/wine/wine64-build"
