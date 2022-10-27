@@ -3,19 +3,19 @@
 
 _gemname=rubocop-rspec
 pkgname=ruby-${_gemname}
-pkgver=2.13.2
+pkgver=2.14.2
 pkgrel=1
 pkgdesc="Code style checking for RSpec files"
 arch=(any)
 depends=(ruby ruby-rubocop ruby-rubocop-ast)
-checkdepends=(ruby-bundler ruby-rake ruby-rack ruby-rspec
+checkdepends=(ruby-bundler ruby-rake ruby-rack ruby-rspec ruby-bump
               ruby-rubocop-performance ruby-rubocop-rake ruby-yard)
 makedepends=(rubygems ruby-rdoc)
 url=https://github.com/rubocop/rubocop-rspec
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/rubocop-rspec/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('f595ec3384e2b1041dcb781bd8e45a1ad49228ff5670b7f95d94bcd216b5299a')
+sha256sums=('24000396e7566936e9a2147c3b97b1f1bdda9270330522b85746c2a7f4153173')
 
 prepare() {
   cd $_gemname-$pkgver
