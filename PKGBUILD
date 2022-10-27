@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v7.7.1.r3.ce5dbf58
+pkgver=v7.9.0.r15.262e8f93
 pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ prepare() {
     git config submodule.catch.url "$srcdir/Catch2"
     git config submodule.qt-android-cmake.url "$srcdir/qt-android-cmake"
     git config submodule.cotire.url "$srcdir/cotire"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
