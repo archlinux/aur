@@ -1,7 +1,7 @@
 # Maintainer: Tomas Sandven <tomas@sandven.email>
 pkgname=yang-lsp
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A language server for YANG"
 arch=('any')
 url="https://github.com/theia-ide/yang-lsp"
@@ -9,7 +9,7 @@ license=('Apache')
 depends=("jdk11-openjdk")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theia-ide/yang-lsp/archive/refs/tags/v$pkgver.tar.gz"
         'yang-language-server.template')
-sha256sums=('4bd1c16361a0218ca5ef3c4cae36ed447d0f08da39737af03e8768d5344d8afd'
+sha256sums=('00e77d5c4c65599a909dfc756dcb74b2e35606a748420233b778dd37832b4891'
             '124bc6ff66e9605155f08e73fe096957ed3da1a9c18c6f108d7c60f32ad32b50')
 
 build() {
