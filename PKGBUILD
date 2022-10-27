@@ -1,7 +1,7 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
 pkgver=v7.9.0.r15.262e8f93
-pkgrel=2
+pkgrel=3
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
