@@ -6,7 +6,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=106.0.1
+pkgver=106.0.2
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('bdf8184f9aadce4fd9613ec63525a96891e2e9dbbef9e4f72193038450a7fd35'
+sha256sums=('905738490cd523ef3d17c48aaac65a1dc19294e8932a245d0f7607be38393fe2'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -240,6 +240,11 @@ END
   # Faster multilocate
   patch -Np1 -i "${_librewolf_patches_dir}"/faster-package-multi-locale.patch
 
+  # https://bugs.archlinux.org/task/76231
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
+  # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
+  patch -Np1 -i "${_patches_dir}"/custom/libwebrtc-screen-cast-sync.patch
+
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
@@ -272,7 +277,7 @@ END
   else
 
     cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
+ac_add_options --enable-profile-generate
 END
 
   fi
@@ -311,8 +316,8 @@ END
   else
 
     cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use=cross
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
