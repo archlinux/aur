@@ -1,7 +1,7 @@
 pkgbase = genymotion
 	pkgdesc = Complete set of tools that provides a virtual environment for Android.
-	pkgver = 3.2.1
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = http://www.genymotion.com/
 	install = genymotion.install
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = genymotion
 	depends = qt5-script
 	depends = qt5-webkit
 	depends = virtualbox
+	source = virtualbox.conf
 	source = genymotion.desktop
-	source = genymotion-player.desktop
-	source = https://dl.genymotion.com/releases/genymotion-3.2.1/genymotion-3.2.1-linux_x64.bin
-	sha512sums = 48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7
-	sha512sums = fabbccd65c22c2dc26b32a847c9fa81d4b7d3e2a13e976cd01c1517654e4bd7e4eac485152dbe8e97b1953ffda62f40e99223a76d24f0c8dfc6530fe3908b665
-	sha512sums = 47589913c66dac42e107420574cdc1fd7ea6db8dacfa16c0173a72207f77d0bedf72e6c6643453b1b83e1e7d906ea52e79e3876d3d687bb689f251ce3bfa8385
+	source = https://dl.genymotion.com/releases/genymotion-3.3.0/genymotion-3.3.0-linux_x64.bin
+	sha512sums = 63eba0963b3344ea7e7a0035560406899d878a0761cddef9853bec95deb9812b221e98f446f240070d6448d61d6ecbcf7a990bcd52863660e8f21cf9a98c0e1d
+	sha512sums = 42f629d6413e4e481ef68d019ec3071515b45d01fdb004a545c8b977a9bf2439581ca8a67ad7dead9a12a0d24e8e46ba02c5dc47abd76597451b09847cf5d78b
+	sha512sums = c0d8d8bef14d62d698be4d8321b381728454654035d3a9735990770118e163b0952a88c0f024d44df57c286dd1f510683552295d50858634b46a54da83093655
 
 pkgname = genymotion
