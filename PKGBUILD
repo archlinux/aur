@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mfgtools-git
-pkgver=1.5.4.r1.g549e718
-pkgrel=1
+pkgver=1.5.4.r2.gf7aaaae
+pkgrel=2
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=('x86_64')
@@ -20,9 +20,11 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname%-git}::git+${url}.git" 
+		"uuu-complete.bash")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
 #validpgpkeys=()
 
 pkgver() {
@@ -39,13 +41,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}/build"
     make DESTDIR="$pkgdir/" install
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/bash_completion.d/uuu-complete.bash" << EOF
-_uuu_autocomplete()
-{
-     COMPREPLY=($(/usr/bin/uuu $1 $2 $3))
-}
-complete -o nospace -F _uuu_autocomplete  uuu
-EOF
+    install -Dm0644 "${srcdir}/uuu-complete.bash" "${pkgdir}/etc/bash_completion.d/uuu-complete.bash"
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
     install -dm0755  "${pkgdir}/etc/udev/rules.d/"
     ./uuu/uuu -udev > "${pkgdir}/etc/udev/rules.d/70-uuu.rules"
