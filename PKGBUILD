@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=3.8.8
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
@@ -20,14 +20,13 @@ source=(
 )
 
 sha256sums=(
-    '978b77738dfc8fbaf9534ebb8dbd3bbf892b68fa36f80448409727e3ca5423ac'
+    'a5fa741647212d8f59ec5c8278537e6d14203913794da4185fa3112f63365d50'
     '09fdd4b51af5c87480dceb52fe67e5666720f56e1f98c1aa567b5ca6699e261f'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '43ccf5216bb029deb2af2792218b35793f930200117f5bf8201a2406f66af583'
 )
 
 prepare() {
-    cd "${srcdir}"
     npm i --ignore-scripts --prefix=. \
         "@tsconfig/node16-strictest@^1.0.0" \
         "@types/dompurify@^2.3.3" \
@@ -43,12 +42,12 @@ prepare() {
     rm -r "node_modules/electron/node_modules/@types/node"
 
     cd "${_srcname}"
-    npm i --omit=dev --ignore-scripts --prefix=.
+    npm ci --omit=dev --ignore-scripts --prefix=.
     rm -r "sources/code/build"
 }
 
 build() {
-    cd "${srcdir}/${_srcname}"
+    cd "${_srcname}"
     tsc --sourceMap false --outDir "${srcdir}/app"
 }
 
@@ -57,9 +56,8 @@ package() {
     local bin="${pkgdir}/usr/bin"
     local sources="${lib}/sources"
     local icons="${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -dm755 "${bin}" "${sources}" "${icons}"
 
-    cd "${srcdir}"
+    install -dm755 "${bin}" "${sources}" "${icons}"
     install -Dm755 -t "${lib}" "${source[1]}"
     install -Dm644 -t "${lib}" "${source[2]}"
     install -Dm644 "${source[3]}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
