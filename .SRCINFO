@@ -1,0 +1,12 @@
+pkgbase = wezterm-terminfo-git
+	pkgdesc = Terminfo for wezterm
+	pkgver = r6423.g43f2265ef
+	pkgrel = 1
+	url = https://wezfurlong.org/wezterm
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	source = git+https://github.com/wez/wezterm.git
+	sha256sums = SKIP
+
+pkgname = wezterm-terminfo-git
