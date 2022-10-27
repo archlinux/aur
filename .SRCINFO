@@ -1,6 +1,6 @@
 pkgbase = wg_tool
 	pkgdesc = Tool to manage wireguard server and users
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/gene-git/wg_tool
 	arch = any
@@ -11,6 +11,11 @@ pkgbase = wg_tool
 	makedepends = rsync
 	depends = python>3.9
 	depends = python-packaging
+	depends = python-netaddr
+	depends = python-tomli
+	depends = python-tomli-w
+	depends = python-qrcode
+	depends = wireguard-tools
 	source = git+https://github.com/gene-git/wg_tool
 	sha512sums = SKIP
 
