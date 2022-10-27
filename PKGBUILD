@@ -4,7 +4,7 @@
 
 pkgname=arduino-ide-bin
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework."
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
@@ -24,7 +24,7 @@ sha256sums=('16a1eba39a9795ddf3e65d2c84d6a7c452866efbda4ca43329c8a037c85525b4'
             '4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac')
 
 prepare() {
-	echo -e "[Desktop Entry] \nType=Application \nName=Arduino IDE v2 \nGenericName=Arduino IDE v2 \nComment=Open-source electronics prototyping platform \nExec=arduino-ide \nIcon=arduino-ide-v2 \nTerminal=false \nMimeType=text/x-arduino; \nCategories=Development;IDE;Electronics; \nKeywords=embedded electronics;avr;microcontroller; \nStartupWMClass=Arduino IDE" > arduino-ide-v2.desktop
+	echo -e "[Desktop Entry]\nType=Application\nName=Arduino IDE v2\nGenericName=Arduino IDE v2\nComment=Open-source electronics prototyping platform\nExec=arduino-ide\nIcon=arduino-ide-v2\nTerminal=false\nMimeType=text/x-arduino;\nCategories=Development;IDE;Electronics;\nKeywords=embedded electronics;avr;microcontroller;\nStartupWMClass=Arduino IDE" > arduino-ide-v2.desktop
 }
 
 package() {
