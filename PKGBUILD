@@ -13,7 +13,7 @@ makedepends=()
 optdepends=('opencv: media files (64-bit)'
 			'perl-parse-registry: regripper')
 source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip Autopsy.desktop)
-sha256sums=('428cda6c169971b073b1db33f27b9e172b51695f06b1c8a0c8762c622ce8da5f'
+sha256sums=('b1ca770df47f09512276fee16c184644cdd9a2591edfdb622a3177896f299893'
             'be382bc92f5e98dfebbbf31dc927fc44af0fecee6911f7122ba8e7c55d281262')
 
 package() {
