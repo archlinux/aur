@@ -1,7 +1,8 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Maintainer: amateurece <ethan.twardy at gmail dot com>
 
-pkgname=sdbusplus
-pkgver=r305.8cd7a4a
+pkgname=sdbusplus-git
+_pkgname=${pkgname#-git}
+pkgver=r598.a8a092c0
 pkgrel=1
 pkgdesc="C++ bindings for systemd dbus APIs"
 url="https://github.com/openbmc/sdbusplus"
@@ -9,28 +10,27 @@ arch=('i686' 'x86_64')
 license=('Apache')
 depends=('systemd-libs' 'python-mako' 'python-inflection' 'python-yaml')
 makedepends=('git')
-#_commit='8cd7a4a10c02a450bc21580a4bde34328a841d13'
-source=("${pkgname}::git+https://github.com/openbmc/sdbusplus.git#commit=${_commit}")
+source=("${pkgname}::git+https://github.com/openbmc/sdbusplus.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${pkgname}"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+_meson_setup() {
+    arch-meson -Dtests=disabled -Dexamples=disabled "${_pkgname}" build
 }
 
 prepare() {
-  cd "${pkgname}"
-  ./bootstrap.sh
-  ./configure --prefix=/usr \
-              --enable-tests=no 
+    _meson_setup
 }
-  
+
+pkgver() {
+  cd "${_pkgname}"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "${pkgname}"
-  make
+    _meson_setup
+    meson compile -C build
 }
 
 package() {
-  cd "${pkgname}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
