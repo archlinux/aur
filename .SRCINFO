@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop-rails
 	pkgdesc = Automatic Rails code style checking tool
-	pkgver = 2.16.1
+	pkgver = 2.17.2
 	pkgrel = 1
 	url = https://docs.rubocop.org/rubocop-rails/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ruby-rubocop-rails
 	depends = ruby-activesupport
 	depends = ruby-rack
 	options = !emptydirs
-	source = https://github.com/rubocop/rubocop-rails/archive/v2.16.1/rubocop-rails-2.16.1.tar.gz
-	sha256sums = 1201c6b7bc29075e59251b065ad6cd51fbcd677062a95f51da467137c89dd79d
+	source = https://github.com/rubocop/rubocop-rails/archive/v2.17.2/rubocop-rails-2.17.2.tar.gz
+	sha256sums = d7758329119eaa7b39abd84c5eea49fcc55cdb7bafadbe43eca4ffc3172a302b
 
 pkgname = ruby-rubocop-rails
