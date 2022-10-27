@@ -7,7 +7,7 @@ _pkgname=jabref
 pkgver=5.7
 
 pkgrel=1
-pkgdesc="GUI frontend for BibTeX, written in Java; bin version"
+pkgdesc="GUI frontend for BibTeX, written in Java; bin version which bundles the Java runtime"
 arch=('x86_64')
 url="https://www.jabref.org/"
 license=('MIT')
