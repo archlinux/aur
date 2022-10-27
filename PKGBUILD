@@ -25,17 +25,17 @@ prepare() {
 
     git submodule init
     git config submodule.lib/libelectronic-id.url $srcdir/web-eid-libelectronic-id
-    git submodule update lib/libelectronic-id
+    git -c protocol.file.allow=always submodule update lib/libelectronic-id
     
     cd "$srcdir/$pkgname/lib/libelectronic-id"
     git submodule init
     git config submodule.lib/libpcsc-cpp.url $srcdir/web-eid-libpcsc-cpp
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$pkgname/lib/libelectronic-id/lib/libpcsc-cpp"
     git submodule init
     git config submodule.tests/lib/libpcsc-mock.url $srcdir/web-eid-libpcsc-mock
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
