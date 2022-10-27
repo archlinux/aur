@@ -3,8 +3,8 @@
 # Contributor: Thomas Weißschuh <thomas_weissschuh@lavabit.com>
 
 pkgname=mosh
-pkgver=1.3.2
-pkgrel=18
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=(x86_64)
 url='https://mosh.org/'
@@ -13,7 +13,7 @@ depends=(libutempter openssh openssl perl-io-tty protobuf)
 makedepends=(git)
 options=(!emptydirs)
 source=("git+https://github.com/mobile-shell/mosh#tag=$pkgname-$pkgver")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 build() {
   cd $pkgname
@@ -29,4 +29,3 @@ package() {
 }
 
 # getver: raw.githubusercontent.com/mobile-shell/mosh/master/ChangeLog
-# vim: ts=2 sw=2 et:
