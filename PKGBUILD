@@ -5,13 +5,13 @@
 
 pkgname=nginx-mod-rtmp
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 _dirname="nginx-rtmp-module-$pkgver"
-_nginxver=1.22.0
+_nginxver=1.22.1
 
 pkgdesc='Module for nginx that adds RTMP support'
 arch=('x86_64')
-depends=("nginx=$_nginxver" "libutil-linux")
+depends=("nginx=$_nginxver")
 makedepends=("nginx-src")
 url='https://github.com/arut/nginx-rtmp-module'
 license=('BSD')
