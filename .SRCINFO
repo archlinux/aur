@@ -1,0 +1,13 @@
+pkgbase = hof
+	pkgdesc = Hacker one fetcher, fetch hacker one projects and get subdomains and heders for all scope domains.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tomkolron/hof
+	arch = x86_64
+	license = MIT
+	provides = hof
+	conflicts = hof
+	source = https://github.com/tomkolron/hof/releases/download/v0.1.1/hof-0.1.1-x86_64.tar.gz
+	sha256sums = 8540d81c0adc35361d08fa7d3184b81fe5383053c08416601f1c3c26294e133b
+
+pkgname = hof
