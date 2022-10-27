@@ -2,7 +2,7 @@
 
 pkgname=pato
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
 url="https://github.com/amatria/pato"
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 # }
 
 # TODO FIX PARSING ARGUMENTS FROM makepkg VARS
-_wflags="-Wno-deprecated-declarations -Wno-unknown-pragmas"
+_wflags="-Wno-unknown-pragmas"
 
 prepare() {
   cd "${srcdir}/${pkgname}"
