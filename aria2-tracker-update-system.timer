@@ -3,7 +3,8 @@ Description=Update System Aria2c Trackers Daily
 Before=aria2.service
 
 [Timer]
-OnUnitActiveSec=1d
+OnCalendar=8:00
+Persistent=yes
 
 [Install]
 WantedBy=aria2.target
