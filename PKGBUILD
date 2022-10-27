@@ -1,8 +1,8 @@
 pkgname=manyverse-bin
 _pkgname=manyverse
 pkgdesc="A social network off the grid"
-pkgrel=0
-pkgver=0.2210.27.b
+pkgrel=1
+pkgver=0.2210.27
 _pkgver=0.2210.27-beta.b
 arch=('x86_64')
 url="https://manyver.se"
