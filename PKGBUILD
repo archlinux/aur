@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/evalf/${_base}"
 license=(MIT)
 depends=(python)
-makedepends=(python-build python-flit-core python-install)
+makedepends=(python-build python-flit-core python-installer)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('c9a565b960eb3e25c992bb206674f15d6cf8bad9221dd260a10b49d91823d4556b65d5ede764fb2b3143e9020f0c5620d5fc6438620a6b915e9af1451ef14042')
 
@@ -20,13 +20,13 @@ build() {
 # check() {
 #   cd ${_base}-${pkgver}
 #   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m install --optimize=1 dist/*.whl
+#   test-env/bin/python -m installer dist/*.whl
 #   test-env/bin/python tests.py
 # }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
