@@ -2,12 +2,12 @@
 
 pkgname=inceptum-git
 pkgver=0.1.0.r48.g5e729ef
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
 url="https://gitlab.com/jfmods/inceptum"
 license=("GPL3")
-depends=("java-runtime>=18" 'bash')
+depends=("java-runtime>=19" 'bash')
 makedepends=('git' 'java-environment=18' 'gradle')
 source=(git+"${url}".git
         "${pkgname%-git}.desktop"
