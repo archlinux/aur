@@ -3,7 +3,7 @@
 # Contributor: Charlie Haley <charlie-haley@users.noreply.github.com>
 pkgname=wifi4wofi
 _pkgname=wifi4wofi
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="bash script providing WiFi menu for wofi, forked from wofi-wifi-menu"
 arch=("any")
@@ -15,9 +15,12 @@ source=('git+https://github.com/fearlessgeekmedia/wifi4wofi')
 sha256sums=('SKIP')
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  cp -r "${srcdir}/wifi4wofi/wifi4wofi" "${pkgdir}/usr/bin/wifi4wofi"
-  chmod +x "${pkgdir}/usr/bin/wifi4wofi"
-  sudo mkdir "/usr/share/wofi"
-  sudo cp -r "${srcdir}/wifi4wofi/config.example" "/usr/share/wofi/wifi.example"
+  sudo mkdir -p "${pkgdir}/usr/bin"
+  sudo cp "${srcdir}/wifi4wofi/wifi4wofi" "${pkgdir}/usr/bin/wifi4wofi"
+  sudo chmod +x "${pkgdir}/usr/bin/wifi4wofi"
+  if [[!-d "/usr/share/wofi"]]
+  then
+    sudo mkdir "/usr/share/wofi"
+  fi
+  sudo cp "${srcdir}/wifi4wofi/config.example" "/usr/share/wofi/wifi.example"
 }

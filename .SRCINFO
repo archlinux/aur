@@ -1,6 +1,6 @@
 pkgbase = wifi4wofi
 	pkgdesc = bash script providing WiFi menu for wofi, forked from wofi-wifi-menu
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/fearlessgeekmedia/wifi4wofi
 	arch = any
