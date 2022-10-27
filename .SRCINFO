@@ -12,7 +12,7 @@ pkgbase = lmo-desktop-mode-git
 	depends = android-tools
 	depends = android-udev
 	source = lmo-desktop-mode.desktop
-	source = https://github.com/nift4/external_tigervnc/archive/refs/heads/master.zip
+	source = https://git.libremobileos.com/LMODroid/platform_external_tigervnc/-/archive/desktop-mode_v1.0.1/platform_external_tigervnc-desktop-mode_v1.0.1.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
 
