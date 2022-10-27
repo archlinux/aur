@@ -1,0 +1,110 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	TARGET_INSTALL_PATH=/usr/share
+	LIB_PATH=/usr/lib
+
+	# Name of AWTK SDK package
+	AWTK_RELEASES_VERSION="awtk-sdk-v22.05.1.tar.gz"
+
+	# Install path of AWStudio
+	AW_STUDIO_INSTALL_PATH="$TARGET_INSTALL_PATH/AWStudio"
+
+	# Install path of AWTK-Designer
+	AWTK_DESIGNER_INSTALL_PATH="$AW_STUDIO_INSTALL_PATH/AWTK"
+
+	# AWTK SDK extract path
+	AWTK_SDK_PATH="$AWTK_DESIGNER_INSTALL_PATH/SDK"
+
+	# User configuration path. Equivalent to %appdata% on windows
+	USER_CONFIG_PATH="${HOME}/.config/awstudio"
+
+	# Create AWTK SDK and user config path
+	if [ ! -d "$AWTK_SDK_PATH" ]; then
+	    mkdir -p "$AWTK_SDK_PATH"
+	fi
+	if [ ! -d "$USER_CONFIG_PATH" ]; then
+	    mkdir -p "$USER_CONFIG_PATH"
+	fi
+
+	# Extract AWTK SDK
+	echo "Extract AWTK SDK ..."
+
+	SDK_TMP_EXTRACT_PATH="$AWTK_DESIGNER_INSTALL_PATH/tmp"
+	if [ -d "$SDK_TMP_EXTRACT_PATH" ]; then
+	    rm -r "$SDK_TMP_EXTRACT_PATH"
+	fi
+	mkdir -p "$SDK_TMP_EXTRACT_PATH"
+	tar -xzvf "$AWTK_DESIGNER_INSTALL_PATH/Installer/$AWTK_RELEASES_VERSION" -C "$AWTK_DESIGNER_INSTALL_PATH/tmp"
+
+	# if tmp folder has awtk-v1.5+rc.5 sub folder, enter.
+	AWTK_RELEASES_VERSION_NAME="${AWTK_RELEASES_VERSION:0:-7}"
+	if [ -d "$SDK_TMP_EXTRACT_PATH/$AWTK_RELEASES_VERSION_NAME" ]; then
+	    SDK_TMP_EXTRACT_PATH="$SDK_TMP_EXTRACT_PATH/$AWTK_RELEASES_VERSION_NAME"
+	fi
+
+	# clear old SDK folder except user_apps
+	for file in `ls "$AWTK_SDK_PATH"`
+	do
+	    if [ "$file" = "user_apps" ]; then
+	        continue
+	    fi
+	    echo "remove $AWTK_SDK_PATH/$file"
+	    rm -rf "$AWTK_SDK_PATH/$file"
+	done
+
+	echo "$SDK_TMP_EXTRACT_PATH"
+
+	# mv to SDK
+	for file in `ls "$SDK_TMP_EXTRACT_PATH"`
+	do
+	    if [ "$file" = "user_apps" ] &&
+	       [ -d "$AWTK_SDK_PATH/user_apps" ]
+	    then
+	        continue
+	    fi
+	    echo "mv $SDK_TMP_EXTRACT_PATH/$file -> $AWTK_SDK_PATH"
+	    mv "$SDK_TMP_EXTRACT_PATH/$file" "$AWTK_SDK_PATH"
+	done
+
+	echo remove "$AWTK_DESIGNER_INSTALL_PATH/tmp"
+	rm -rf "$AWTK_DESIGNER_INSTALL_PATH/tmp"
+
+	# chmod SDK dir
+	chmod -R 777 "$AW_STUDIO_INSTALL_PATH"
+	chmod -R 777 "$USER_CONFIG_PATH"
+
+	# chown current user
+	current_user=`who | awk '{print $1}'`
+	chown -R $current_user "$AWTK_DESIGNER_INSTALL_PATH"
+
+	echo "Done."
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	AWSTUDIO_PATH=/usr/share/AWStudio
+	AWTK_PATH=$AWSTUDIO_PATH/AWTK
+	AWTK_SDK_PATH=$AWTK_PATH/SDK
+	LIB_PATH=/usr/lib
+
+	# delete SDK
+	echo "remove SDK ..."
+
+	for file in `ls $AWTK_SDK_PATH`
+	do
+	    if [ "$file" = "user_apps" ]; then
+	        continue
+	    fi
+	    echo "remove $AWTK_SDK_PATH/$file"
+	    rm -rf "$AWTK_SDK_PATH/$file"
+	done
+
+	update-desktop-database -q
+}
