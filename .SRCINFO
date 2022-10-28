@@ -1,0 +1,15 @@
+pkgbase = hybrid-bar
+	pkgdesc = A status bar focused on wlroots Wayland compositors - Latest Compiled Release
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/vars1ty/HybridBar
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = wget
+	depends = gtk3
+	depends = gtk-layer-shell
+
+pkgname = hybrid-bar
