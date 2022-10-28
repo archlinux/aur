@@ -133,7 +133,7 @@ build() {
 }
 
 package_linux-jcore() {
-  pkgdesc="Kernel for Manjaro/Arch"
+  pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)

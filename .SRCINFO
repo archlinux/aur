@@ -76,7 +76,7 @@ pkgbase = linux-jcore
 	sha256sums = 2542b5cea79ab5817ce3d30c54acd045966b9c14587bfb0b2f50d473da48a1d5
 
 pkgname = linux-jcore
-	pkgdesc = Kernel for Manjaro/Arch
+	pkgdesc = Kernel for Manjaro/Arch (ACS override patch include)
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
