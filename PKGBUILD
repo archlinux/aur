@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=harec-git
 _pkgname=harec
-pkgver=r1346.8da848e
+pkgver=r1382.ef3e7d0
 pkgrel=1
 license=("GPL3")
 pkgdesc="The Hare compiler"
