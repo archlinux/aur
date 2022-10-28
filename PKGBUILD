@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.8.2.r46.g6e69d8fb8
+pkgver=1.8.6.r82.g60c01af01
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
@@ -54,7 +54,6 @@ build() {
         -D b_lto=false \
         -D lzma=enabled \
         -D docs=enabled \
-        -D gresource_quirks=disabled \
         -D plugin_intel_spi=true \
         -D supported_build=enabled \
         -D efi_binary=false
