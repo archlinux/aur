@@ -2,16 +2,16 @@
 
 _pkgname=rres
 pkgname=${_pkgname}-git
-pkgver=0.1.2.r0.g0180c36
+pkgver=0.1.3.r0.gcb055f1
 pkgrel=1
 pkgdesc='A xrandr replacement to gather display resolutions'
 arch=('any')
-url="https://gitlab.com/forkbomb9/rres"
+url="https://sr.ht/~f9/rres"
 license=('GPLv3')
 makedepends=('rust')
 provides=('rres')
 conflicts=('rres')
-source=("git+https://gitlab.com/forkbomb9/${_pkgname}.git")
+source=("git+https://git.sr.ht/~f9/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
