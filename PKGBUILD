@@ -1,7 +1,7 @@
 # Maintainer: HaoCheng <ch1994@outlook.com>
 pkgname=netease-cloud-music-gtk4-git
 _pkgname=netease-cloud-music-gtk
-pkgver=r199.820e72a
+pkgver=r213.2ab2bf2
 pkgrel=1
 pkgdesc="Linux 平台下基于 Rust + GTK4 开发的网易云音乐播放器"
 arch=('i686' 'x86_64')
@@ -34,20 +34,11 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	# Generate Cargo.lock
-	cargo check -r
 	CFLAGS+=" -ffat-lto-objects"
-	meson --prefix=/usr \
-		--buildtype=release \
-		-Dlocaledir=share/locale \
-		-Ddatadir=share \
-		. \
-		build
+	arch-meson --buildtype=release "$_pkgname" build
 	meson compile -C build
 }
 
 package() {
-	cd "$_pkgname"
 	meson install -C build --destdir "$pkgdir"
 }
