@@ -1,16 +1,16 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing-git
-pkgver=4.0.1.r0.g58ff6a3c
+pkgver=4.0.1.r39.gf681ae31b
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
-provides=('processing' 'processing4')
-conflicts=('processing')
-depends=('java-environment-openjdk=17')
-makedepends=('ant' 'gendesk' 'rsync' 'unzip')
+provides=(processing)
+conflicts=(processing)
+depends=('java-environment-openjdk=17' ffmpeg)
+makedepends=(ant gendesk rsync unzip)
 options=(!strip)
 source=(disable_update_check.patch
         no_ffmpeg_download.patch

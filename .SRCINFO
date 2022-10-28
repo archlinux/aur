@@ -1,6 +1,6 @@
 pkgbase = processing-git
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.0.1.r0.g58ff6a3c
+	pkgver = 4.0.1.r39.gf681ae31b
 	pkgrel = 1
 	url = https://github.com/processing/processing4
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = processing-git
 	makedepends = rsync
 	makedepends = unzip
 	depends = java-environment-openjdk=17
+	depends = ffmpeg
 	provides = processing
-	provides = processing4
 	conflicts = processing
 	options = !strip
 	source = disable_update_check.patch
