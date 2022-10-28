@@ -5,7 +5,7 @@
 _pkgname=hydrogen-drumkits
 pkgname=$_pkgname-flac
 pkgver=20220929
-pkgrel=2
+pkgrel=3
 pkgdesc='Hydrogen drum kits (FLAC format)'
 arch=(any)
 url='https://sourceforge.net/projects/hydrogen/files/Sound%20Libraries/'
@@ -129,11 +129,13 @@ package() {
     install -Dm644 *.flac -t "$pkgdir$_drumkitsdir/$drumkit"
 
     for doc in README* *.h2song; do
-      install -Dm644 $doc -t "$pkgdir/usr/share/doc/$pkgname/$drumkit"
+      if [[ -f "$doc" ]]; then
+        install -Dm644 $doc -t "$pkgdir/usr/share/doc/$pkgname/$drumkit"
+      fi
     done
 
     for lfile in LICEN?E* COPYING* license.*; do
-      if ! grep -q 'GNU GENERAL PUBLIC LICENSE' $lfile ; then
+      if [[ -f "$lfile" ]] && ! grep -q 'GNU GENERAL PUBLIC LICENSE' $lfile ; then
         install -Dm644 $lfile -t "$pkgdir/usr/share/licenses/$pkgname/$drumkit"
       fi
     done
