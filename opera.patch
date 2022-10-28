@@ -1,15 +1,24 @@
-diff --unified --recursive --text opt.orig/google/endpoint-verification/bin/device_state.sh opt.new/google/endpoint-verification/bin/device_state.sh
---- opt/google/endpoint-verification/bin/device_state.sh	2000-01-01 01:00:00.000000000 +0100
-+++ opt/google/endpoint-verification/bin/device_state.sh	2022-08-12 12:25:07.140577678 +0200
-@@ -12,6 +12,7 @@
+diff '--color=auto' --unified --recursive --text --color opt.old/google/endpoint-verification/bin/device_state.sh opt.new/google/endpoint-verification/bin/device_state.sh
+--- opt/google/endpoint-verification/bin/device_state.sh	2000-01-01 00:00:00.000000000 +0100
++++ opt/google/endpoint-verification/bin/device_state.sh	2022-10-28 14:48:07.830135262 +0200
+@@ -6,15 +6,12 @@
+ CAT=/bin/cat
+ CUT=/usr/bin/cut
+ DCONF=/usr/bin/dconf
+-ECHO=/bin/echo
+ GREP=/bin/grep
+ GSETTINGS=/usr/bin/gsettings
  LSBLK=/bin/lsblk
- MOUNTPOINT=/bin/mountpoint
+-MOUNTPOINT=/bin/mountpoint
  PRINTF=/usr/bin/printf
+-STAT=/usr/bin/stat
 +REV=/usr/bin/rev
- STAT=/usr/bin/stat
  TR=/usr/bin/tr
- UDEVADM=/bin/udevadm
-@@ -32,40 +33,26 @@
+-UDEVADM=/bin/udevadm
+ 
+ INSTALL_PREFIX=/opt/google/endpoint-verification
+ GENERATED_ATTRS_FILE="$INSTALL_PREFIX/var/lib/device_attrs"
+@@ -32,40 +29,26 @@
    fi
  }
  
@@ -68,7 +77,7 @@ diff --unified --recursive --text opt.orig/google/endpoint-verification/bin/devi
    esac
  }
  
-@@ -77,7 +64,11 @@
+@@ -77,7 +60,11 @@
        *ubuntu*|*debian*)
          OS_VERSION=$("$GREP" -i '^VERSION_ID=' "$OS_INFO_FILE" | "$AWK" -F= '{ print $2 }' | "$TR" -d '"')
          ;;
@@ -80,3 +89,12 @@ diff --unified --recursive --text opt.orig/google/endpoint-verification/bin/devi
          ;;
      esac
    else
+@@ -118,7 +105,7 @@
+ }
+ 
+ get_hostname() {
+-  HOSTNAME="$(/bin/hostname)"
++  HOSTNAME="$(hostname)"
+ }
+ 
+ get_model() {
