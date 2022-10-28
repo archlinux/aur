@@ -1,5 +1,5 @@
 pkgbase = xkblayout
-	pkgdesc = Prints the current xkb keyboard layout
+	pkgdesc = Print the current xkb keyboard layout
 	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/alenichev/xkblayout

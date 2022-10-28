@@ -2,7 +2,7 @@
 pkgname='xkblayout'
 pkgver='1.3'
 pkgrel='1'
-pkgdesc='Prints the current xkb keyboard layout'
+pkgdesc='Print the current xkb keyboard layout'
 arch=('x86_64')
 url='https://github.com/alenichev/xkblayout'
 license=('custom' 'OpenBSD')
