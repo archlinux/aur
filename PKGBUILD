@@ -9,7 +9,7 @@ license=("Monkey's Audio License Agreement")
 provides=('mac')
 conflicts=('mac')
 makedepends=('gcc' 'make')
-source=(https://monkeysaudio.com/files/MAC_895_SDK.zip)
+source=('https://monkeysaudio.com/files/MAC_895_SDK.zip')
 sha256sums=('5a4d10d0035b14c1e3bc214a43db426be214cf710b5f8cad4e3b5917297cebc4')
 
 _project_path() {
