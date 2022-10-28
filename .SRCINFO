@@ -5,6 +5,7 @@ pkgbase = sdbusplus-git
 	url = https://github.com/openbmc/sdbusplus
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = git
 	depends = systemd-libs
