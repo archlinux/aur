@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/AirOne01/hibe"
 license=('MIT')
 groups=()
-depends=()
+depends=(git)
 makedepends=(cargo)
 optdepends=()
 provides=()
@@ -23,6 +23,10 @@ md5sums=()
 sha256sums=('SKIP')
 
 prepare() {
+  git clone "https://github.com/AirOne01/hibe" scode
+  cp -r scode/src .
+  cp scode/Cargo* .
+  rm -rf scode
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
