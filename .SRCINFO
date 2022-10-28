@@ -1,6 +1,6 @@
 pkgbase = speki
 	pkgdesc = Flashcard app for your terminal
-	pkgver = 0.2.19
+	pkgver = 0.2.21
 	pkgrel = 0
 	url = https://github.com/TBS1996/speki
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = speki
 	makedepends = cargo
 	provides = speki
 	conflicts = speki
-	source = speki-0.2.19.tar.gz::https://static.crates.io/crates/speki/speki-0.2.19.crate
-	sha256sums = e6e83c07261783caa4add8283ef19869e5e8f32ab5e29e52e60f85289f6aecea
+	source = speki-0.2.21.tar.gz::https://static.crates.io/crates/speki/speki-0.2.21.crate
+	sha256sums = 69cb12877a2977c4540e0bcbffad4852405e06399e3a220a18d87cc5ec43569e
 
 pkgname = speki
