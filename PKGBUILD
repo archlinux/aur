@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=cemu
-pkgver=2.0.200
+pkgver=2.0.206
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -30,7 +30,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=88f63ca37351c655f3b6ee9a7083e09ef8d3c59b # v2.0-9
+	git+https://github.com/cemu-project/Cemu#commit=e0aaf631c460cd893c3ec682a237891f2d1baa50 # v2.0-10
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -58,12 +58,12 @@ pkgver() {
 	MAJ=$(awk -F'\t' '/LEAD/ {print $NF; exit}' src/Common/version.h)
 	MIN=$(awk -F'\t' '/MAJOR/ {print $NF; exit}' src/Common/version.h)
 	PAT=$(git rev-list --count HEAD)
+	sed -i "/#define EMULATOR_VERSION_MINOR/s/[0-9]\+/$PAT/;s/-/./" src/Common/version.h
 	echo "$MAJ.$MIN.$PAT"
 }
 
 prepare() {
 	cd Cemu
-	sed -i "/#define EMULATOR_VERSION_MINOR/s/[0-9]\+/${pkgver##*.}/;s/-/./" src/Common/version.h
 
 	# cemu submodules
 	for submodule in dependencies/{cubeb,imgui,ZArchive}; do
