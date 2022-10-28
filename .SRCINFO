@@ -1,7 +1,7 @@
 pkgbase = 86box-appimage
 	pkgdesc = An emulator for classic IBM PC clones
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = 86box-appimage
 	provides = 86box
 	conflicts = 86box
 	options = !strip
-	source_pentium4 = 86box-3.7.1-pentium4.appimage::https://github.com/86box/86box/releases/download/v3.7.1/86Box-Linux-x86-b4032.AppImage
+	source_pentium4 = 86Box-3.7.1-pentium4.appimage::https://github.com/86Box/86Box/releases/download/v3.7.1/86Box-Linux-x86-b4032.AppImage
 	sha512sums_pentium4 = 0fae69d5415bb792e0153fb4e8f641ad1f135abdac49edb09ae34b8218f861561dd5719ef0e87d08a72317f54c3b2f0305d2810cc8de616593b924b2d247cbaf
-	source_x86_64 = 86box-3.7.1-x86_64.appimage::https://github.com/86box/86box/releases/download/v3.7.1/86Box-Linux-x86_64-b4032.AppImage
+	source_x86_64 = 86Box-3.7.1-x86_64.appimage::https://github.com/86Box/86Box/releases/download/v3.7.1/86Box-Linux-x86_64-b4032.AppImage
 	sha512sums_x86_64 = 3849f5f61e0780aa06d645c5a5f1c3b1704659613644de6371dbec66a37973ec554083d990a7ad1f47c84716108fbdf6eab436c0a7eb0266ec9b6535ddd84c87
-	source_arm7h = 86box-3.7.1-arm7h.appimage::https://github.com/86box/86box/releases/download/v3.7.1/86Box-NDR-Linux-arm32-b4032.AppImage
+	source_arm7h = 86Box-3.7.1-arm7h.appimage::https://github.com/86Box/86Box/releases/download/v3.7.1/86Box-NDR-Linux-arm32-b4032.AppImage
 	sha512sums_arm7h = edc754d6d9eb99c2565f9594fe17816ce8b1c9e98084c073eb6cac27a64474fdd42a42c2c6c7d820d9ae96b557f60d86471ca77af4f8c61ce9d465212421a0af
-	source_aarch64 = 86box-3.7.1-aarch64.appimage::https://github.com/86box/86box/releases/download/v3.7.1/86Box-NDR-Linux-arm64-b4032.AppImage
+	source_aarch64 = 86Box-3.7.1-aarch64.appimage::https://github.com/86Box/86Box/releases/download/v3.7.1/86Box-NDR-Linux-arm64-b4032.AppImage
 	sha512sums_aarch64 = f8e41834f00e78520c51d51d69b6d9cfd8ad69cbb14320408944eb88e978d93ed122b9d3b3ec2b8dfd3bbaab3938d61ab87d1178a5bf8b6bf203e26d32784663
 
 pkgname = 86box-appimage

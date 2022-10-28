@@ -1,20 +1,20 @@
 # Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 # Maintainer: oscareczek <at gmail dot com>
 
-_pkgname=86box
+_pkgname=86Box
 _build=b4032
 
-pkgname="${_pkgname}-appimage"
+pkgname=86box-appimage
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=(GPL2)
 depends=('fuse2')
 optdepends=('86box-roms: ROM files')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("86box")
+conflicts=("86box")
 options=(!strip)
 _source="https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/86Box"
 source_pentium4=("${_pkgname}-${pkgver}-pentium4.appimage::${_source}-Linux-x86-${_build}.AppImage")
@@ -34,7 +34,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=.*$|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/net.${_pkgname}.86Box.desktop"
+        "squashfs-root/net.86box.${_pkgname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -43,12 +43,13 @@ package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.appimage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Desktop file                          why
-    install -Dm644 "${srcdir}/squashfs-root/net.${_pkgname}.86Box.desktop"\
+    install -Dm644 "${srcdir}/squashfs-root/net.86box.${_pkgname}.desktop"\
             -t "${pkgdir}/usr/share/applications"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+    for i in 48x48 64x64 72x72 96x96 128x128 192x192 256x256 512x512; do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
+    done
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
