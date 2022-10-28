@@ -1,31 +1,31 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
-_base=pyrtlsdr
-pkgname=python-${_base}-git
-pkgver=r377.64835e7
+
+pkgname=python-pyrtlsdr-git
+_pkg=pyrtlsdr
+pkgver=0.2.93.r0.g7a854dc
 pkgrel=1
-pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
+pkgdesc='A Python wrapper for librtlsdr'
 arch=('any')
-url="https://github.com/roger-/${_base}"
+url='https://github.com/pyrtlsdr/pyrtlsdr'
 license=('GPL3')
-depends=(python rtl-sdr)
-makedepends=(git python-setuptools)
+depends=('python-setuptools' 'rtl-sdr')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git")
-sha512sums=('SKIP')
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_base}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd ${_base}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "$_pkg"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_base}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	cd "$_pkg"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
