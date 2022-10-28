@@ -1,7 +1,7 @@
 # Maintainer: Jan Hensel <ja_he@uni-bremen.de>
 pkgname=dayplan
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Utility to plan your day and track your time"
 license=('MIT')
@@ -16,7 +16,7 @@ sha256sums=('4c5f62d3315291c9128041e91998361e0b3af95462a1431532839d7ff97528f5')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   project_base="github.com/ja-he/dayplan"
-  source_root="${project_base}/src"
+  source_root="${project_base}/internal"
   go build -v \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
