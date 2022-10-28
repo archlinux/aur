@@ -1,7 +1,7 @@
 pkgbase = xkblayout
 	pkgdesc = Print the current xkb keyboard layout
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alenichev/xkblayout
 	arch = x86_64
 	license = custom
