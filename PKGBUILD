@@ -21,7 +21,7 @@ build() {
     export prefix=/usr
     export CXXFLAGS="${CXXFLAGS} -O3 -march=native"
     export LDFLAGS="${LDFLAGS} -Wl,-rpath,\\$\$ORIGIN/../lib"
-    make 
+    make
 }
 
 package() {
