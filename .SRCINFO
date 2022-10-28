@@ -1,6 +1,6 @@
 pkgbase = hof
 	pkgdesc = Hacker one fetcher, fetch hacker one projects and get subdomains and heders for all scope domains.
-	pkgver = 0.1.1
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/tomkolron/hof
 	arch = x86_64
