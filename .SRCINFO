@@ -1,5 +1,5 @@
 pkgbase = linux-jcore
-	pkgdesc = Kernel for Manjaro/Arch
+	pkgdesc = Kernel for Manjaro/Arch (ACS override patch include)
 	pkgver = 6.0.5
 	pkgrel = 3
 	url = https://www.kernel.org/
