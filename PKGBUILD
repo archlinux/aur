@@ -16,7 +16,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=4383f19a2d7552296f37ca5c654d231fb5f2bd12
+_filesrev=3e2b1e0b838409a28cee52ecca149598ad037b6b
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
@@ -56,7 +56,7 @@ sha256sums=('SKIP'
             '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
             '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
             '4628d136c3beada292e83cd8e89502cac4aa3836851b34259a665582a7713978'
-            '3b6a88c19bd7e353ad2c8b1bbe6223a85ecbe543b4f2bd02f89e57c63c75bb99')
+            '7809875890a3d9dd8777808b8707a5bcc11217eaa12e69fbd28daf1877b1d3b4')
 
 prepare() {
 
