@@ -1,7 +1,7 @@
 pkgbase = python-aiopath
 	pkgdesc = Asynchronous pathlib for Python
-	pkgver = 0.6.10
-	pkgrel = 2
+	pkgver = 0.6.11
+	pkgrel = 1
 	url = https://github.com/alexdelorenzo/aiopath
 	arch = any
 	license = LGPL3
@@ -12,7 +12,7 @@ pkgbase = python-aiopath
 	depends = python-aiofile
 	depends = python-anyio
 	depends = python-typing-extensions
-	source = https://files.pythonhosted.org/packages/source/a/aiopath/aiopath-0.6.10.tar.gz
-	sha256sums = 6ca97a864fe32478d53af6c40e1951de64ab01d6b402d88524ce72d80362eb7a
+	source = https://files.pythonhosted.org/packages/source/a/aiopath/aiopath-0.6.11.tar.gz
+	sha256sums = 2f0d4d9195281612c6508cbfa12ac3184c31540d13b9e6215a325897da59decd
 
 pkgname = python-aiopath
