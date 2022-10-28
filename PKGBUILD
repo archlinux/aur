@@ -8,9 +8,9 @@ url="https://deno.land"
 license=(MIT)
 provides=(deno)
 conflicts=(deno deno-git)
-source_x86_64=(deno-${arch}-unknown-linux-gnu.zip::https://github.com/denoland/deno/releases/download/v$pkgver/deno-$arch-unknown-linux-gnu.zip)
+source_x86_64=(https://github.com/denoland/deno/releases/download/v$pkgver/deno-$arch-unknown-linux-gnu.zip)
 sha256sums_x86_64=(0956e325144eecff768d06f3bccc1213327047ad5f186a416181697ffaa115a4)
-source_aarch64=(deno-linux-arm64.zip::https://github.com/LukeChannings/deno-arm64/releases/download/v$pkgver/deno-linux-arm64.zip)
+source_aarch64=(https://github.com/LukeChannings/deno-arm64/releases/download/v$pkgver/deno-linux-arm64.zip)
 sha256sums_aarch64=(b5735bbdf52cec2184c2d3947f7d80e3336b5dbea7d7efbfac8f97d68bc1144b)
 
 package() {
