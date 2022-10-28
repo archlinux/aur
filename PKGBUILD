@@ -1,9 +1,10 @@
+# vim: set sts=2 sw=2 et:
 # Maintainer: blacktea <blackteahamburger@outlook.com>
 # Contributor: kXuan <kxuanobj@gmail.com>
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -25,10 +26,11 @@ makedepends=(
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
     use_bazelisk.patch
+    0001-arch-dynamically-link-libpsl.patch
 )
-sha512sums=('050a2dbae6c0b3666a30331b8abf90d98724e7c1cc287fbdc10418d3cde85bdbd923d1a0d81ea280cccc43cbbf22731577a22fc0003cb57dd438a7fe19444426'
-            '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017')
-
+sha512sums=('7cc0be5cc90550c81bedc537a2f981cd90a1c11c5b5c08a154d8a8c7b87f9d2bd18432291dcbbd3b19df3f4b3c5593b07fe2c33e452e105c4e3a67267a73742a'
+            '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017'
+            '0c5d5afd48ea87c8de030bbdf1a3c525be962983d6c09504599ff4be2dce90d2c98a5351ae34fa883feb8223f82b1e55d97b88cab4f3e1a7efff722dd30afbae')
 
 prepare() {
   cd "envoy-$pkgver"
@@ -37,8 +39,8 @@ prepare() {
     # test that "$f" ends in ".patch"
     if [ "${f%.patch}" != "$f" ]; then
       msg "Applying patch: $f"
-	  patch -Np1 -i "../$f"
-	fi
+      patch -Np1 -i "../$f"
+    fi
   done
 
   export GOPATH="$srcdir"/go
