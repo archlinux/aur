@@ -2,22 +2,36 @@
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
 url="http://astropy-regions.readthedocs.io"
 license=('BSD')
-makedepends=('cython' 'python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-numpy' 'python-extension-helpers' 'python-astropy' 'python-sphinx-astropy' 'python-shapely')
-checkdepends=('python-pytest-astropy' 'python-matplotlib')
+makedepends=('python-setuptools-scm'
+             'cython'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-numpy'
+             'python-extension-helpers'
+             'python-sphinx-astropy'
+             'python-astropy'
+             'python-shapely')
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-doctestplus'
+              'python-matplotlib') # astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('dad3ff173994b5991b56de31d9c712f6')
+md5sums=('889f4492283b85374cf219222f0afb8a')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e "/cython/s/==/>=/" -e "/oldest-supported-numpy/d" pyproject.toml
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    sed -i "/oldest-supported-numpy/d" pyproject.toml
 }
 
 build() {
@@ -27,13 +41,13 @@ build() {
 
     msg "Building Docs"
     cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-regions() {

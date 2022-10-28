@@ -1,25 +1,26 @@
 pkgbase = python-regions
 	pkgdesc = Astropy affilated package for region handling
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = http://astropy-regions.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
+	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest-doctestplus
 	checkdepends = python-matplotlib
-	makedepends = cython
 	makedepends = python-setuptools-scm
+	makedepends = cython
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy
 	makedepends = python-extension-helpers
-	makedepends = python-astropy
 	makedepends = python-sphinx-astropy
+	makedepends = python-astropy
 	makedepends = python-shapely
-	source = https://files.pythonhosted.org/packages/source/r/regions/regions-0.6.tar.gz
-	md5sums = dad3ff173994b5991b56de31d9c712f6
+	source = https://files.pythonhosted.org/packages/source/r/regions/regions-0.7.tar.gz
+	md5sums = 889f4492283b85374cf219222f0afb8a
 
 pkgname = python-regions
 	depends = python>=3.8
