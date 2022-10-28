@@ -1,30 +1,25 @@
-# Maintainer: Samuel Dudík <dudik at tutanota dot com>
-_pkgname=herbe
-pkgname=$_pkgname-git
-pkgver=1
-pkgrel=1
-pkgdesc="Daemon-less notifications without D-Bus. Minimal and lightweight."
-arch=(any)
+# Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
+pkgname='herbe-git'
+pkgver='1.0.0'
+pkgrel='1'
+pkgdesc='Daemon-less notifications without D-Bus'
+arch=('x86_64')
+url='https://github.com/dudik/herbe'
 license=('MIT')
+depends=('libx11' 'libxft')
 makedepends=('git')
-url="https://github.com/dudik/$_pkgname"
-source=("git+https://github.com/dudik/$_pkgname.git")
+provides=('herbe')
+conflicts=('herbe')
+source=("$pkgname-$pkgver::git+$url")
 md5sums=('SKIP')
 
-prepare() {
-	cd $_pkgname
-	if [ -f "$srcdir/config.h" ]; then
-		cp -f "$srcdir/config.h" config.h
-	fi
+build() {
+	cd "$pkgname-$pkgver"
+	make clean all
 }
 
-build () {
-	cd "$_pkgname"
-	make
-}
-
-package () {
-	cd "$_pkgname"
-	mkdir -p "$pkgdir/usr/local/bin"
-	cp $_pkgname "$pkgdir/usr/local/bin/"
+package() {
+	cd "$pkgname-$pkgver"
+	make PREFIX='/usr' DESTDIR="$pkgdir/" install
+	install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
