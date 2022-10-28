@@ -1,11 +1,11 @@
 pkgbase = aptos-bin
 	pkgdesc = The aptos tool is a command line interface (CLI) for debugging, development, and node operations
-	pkgver = 0.3.7
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/aptos-labs/aptos-core
 	arch = x86_64
 	license = Apache
-	source = https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.3.7/aptos-cli-0.3.7-Ubuntu-x86_64.zip
-	sha256sums = 97a7911eb4dc652e9cabde9fe096db47f4cfd5483e3c39d6dc9e2b22616e0a7e
+	source = https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v1.0.0/aptos-cli-1.0.0-Ubuntu-x86_64.zip
+	sha256sums = 30a4299c450758316ead5c51fb409feee5e62877a03811d7d745695e263bcea6
 
 pkgname = aptos-bin
