@@ -3,7 +3,7 @@
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
