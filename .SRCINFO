@@ -1,0 +1,12 @@
+pkgbase = gitea-github-theme
+	pkgdesc = GitHub-based light and dark themes for Gitea including an automatic theme switch option
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://codeberg.org/pat-s/gitea-github-theme
+	arch = any
+	license = MIT
+	depends = gitea
+	source = https://codeberg.org/pat-s/gitea-github-theme/archive/v3.0.0.tar.gz
+	sha256sums = ea6a3f90e1407375b0960ddb0d5880b781584a37c182cfc2759a31c0d5f93fda
+
+pkgname = gitea-github-theme
