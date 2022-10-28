@@ -1,9 +1,10 @@
 pkgname=webcord-bin
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/SpacingBat3/WebCord"
+_repo='SpacingBat3/WebCord'
+url="https://github.com/${_repo}"
 license=('MIT')
 _name="${pkgname%-bin}"
 provides=("${_name}")
@@ -15,13 +16,15 @@ _get_source() {
     echo "${archive}::${url}/releases/download/v${pkgver}/${archive}"
 }
 
+source=("${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/${_repo}/v${pkgver}/LICENSE")
 source_x86_64=("$(_get_source x86_64)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source armv7hl)")
 
-sha256sums_x86_64=('a6a401eb35d2a15976b9dea2b3e9604c208bac42995344dccd38b86143dcde9f')
-sha256sums_aarch64=('81ae729e323c5ce036a595e9a5f8cb55687d7b3427fbbaaaee0ec73bc91196e7')
-sha256sums_armv7h=('f975778f3b2e75b7ed4f8a293d0de05694b161600f644757ed1ab1672a17aee8')
+sha256sums=('1611f35d608dd3b100f66d4e6954bceef80ff73209679ba38def974254a04f40')
+sha256sums_x86_64=('005794dd6468fe64b961055defe6b2e6842bd91b0a26ff949e80b0c231588f26')
+sha256sums_aarch64=('74f6fe4f2b05abb98e94b7e81c4f533cf4b461a81b6c3860c88c6e2c8e02300e')
+sha256sums_armv7h=('8fc374a101c9a3854696110386d2f4347a29d66b05e14370b1e88d3f3eff0b41')
 
 noextract=(
     "${source_x86_64[0]%%::*}"
@@ -42,6 +45,6 @@ package() {
     install -dm755 "${bin}" "${licenses}"
 
     mv "${pkgdir}/usr/lib" "${pkgdir}/opt"
-    mv -t "${licenses}" "${pkgdir}/opt/${_name}/LICENSE"*
     ln -s "/opt/${_name}/${_name}" "${bin}/${_name}"
+    install -Dm644 "${source[0]%%::*}" "${licenses}/LICENSE"
 }
