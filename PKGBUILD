@@ -1,11 +1,11 @@
 # Maintainer: Johannes Frohnmeyer <johannes at frohnmeyer-wds dot de>
 
 pkgname=inceptum-git
-pkgver=0.1.0.r48.g5e729ef
-pkgrel=2
+pkgver=0.3.0.r13.g0ad54e9
+pkgrel=1
 pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
-url="https://git.frohnmeyer-wds.de/JfMods/Inceptum.git"
+url="https://git.frohnmeyer-wds.de/JfMods/Inceptum"
 license=("GPL3")
 depends=("java-runtime>=19" 'bash')
 makedepends=('git' 'java-environment>=19' 'gradle')
@@ -23,11 +23,11 @@ sha256sums=('SKIP'
             '41ae84877dd3ce346a7d97fc7f493c8e9dcacfa67ce6974ace56baecee9a8411')
 
 pkgver() {
-    git -C "${pkgname%-git}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C Inceptum describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${pkgname%-git}"
+    cd Inceptum
     gradle build -Prelease
     mv "launcher-dist/build/libs/Inceptum-$(git describe --tags --abbrev=0)-custom.jar" "../${pkgname%-git}.jar"
 }
