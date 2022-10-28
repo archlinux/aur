@@ -8,7 +8,7 @@
 
 pkgname=allusion-appimage
 pkgver=1.0.0
-pkgrel=15
+pkgrel=17
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://allusion-app.github.io'
