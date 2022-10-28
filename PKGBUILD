@@ -1,16 +1,16 @@
 # Maintainer: Namkhai B. <echo hc.9mobkrof@em | rev>
 
 pkgname=rres
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=0
 pkgdesc='A xrandr replacement to gather display resolutions'
 arch=('any')
-url="https://gitlab.com/forkbomb9/rres"
+url="https://sr.ht/~f9/rres"
 license=('GPLv3')
 makedepends=('rust')
-source=("https://gitlab.com/forkbomb9/rres/-/archive/v${pkgver}/rres-v${pkgver}.tar.gz")
-sha256sums=('3078f9ae166de9d5e2135c9a3f65349735c1a0b7ad007d8ab15102303452af8d')
-b3sums=('4b69cacccecc5d0bb55ec3927741f262a93d076102151c8c1f556f449e4e6d40')
+source=("https://git.sr.ht/~f9/rres/archive/v${pkgver}.tar.gz")
+sha256sums=('9f4759deedf54ff70674b84c02e494e491ea535e7df377df8bce92f2784e971d')
+b2sums=('2076446fe4d15600e09c13227ee95c402bf2db367b8d0e157b01ff65b4369055124c349d83d609e4265ab890bc84964e187486841beb2797160681f142f683a1')
 
 build() {
     cd ${pkgname}-v${pkgver}
