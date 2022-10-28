@@ -1,14 +1,14 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=morewaita
-pkgver=1.0.0
-_commit=5e09e4e0b6489404cb91dba472081b74fb997461
+pkgver=43.1.1
+_commit=fbc3a2e0ad6f2ab11704265394ea138ae51b296a
 pkgrel=1
 pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
 arch=(any)
 url=https://github.com/somepaulo/MoreWaita
 license=(GPL3)
-depends=(gnome-shell)
+depends=('gnome-shell>=43')
 makedepends=(git)
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=(SKIP)
