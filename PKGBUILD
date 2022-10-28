@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=mullvad-vpn-s6
-pkgver=20220507
+pkgver=20221028
 pkgrel=1
 pkgdesc="s6-rc service scripts for mullvad-vpn"
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=('8a3d2abcc40d355ca913f39871d24f6c770dd216fe075d2548e729b2ae952135'
             '1bb88c6ea06c1d1fb63f36dcbf5f1ccbb93d1d9c0757cf8d6a9a3fca84df388d'
             'd0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006'
             'df44fddd79add956bf7094c8b14353e4f4db83e8511327623a3889543ef58bc8'
-            '5341209cdd24f4210f67a43b5566c70732e46c9e545834060f3d6e14d3305b02'
+            'a1728cf44e57f37951406388e5b25a780cfac7d3a18ee0c651a81ee1c1d10a18'
             'd0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006')
 
 _inst_sv() {
