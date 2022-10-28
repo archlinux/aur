@@ -5,17 +5,17 @@
 pkgname=nautilus-share-gtk4
 _pkgname=nautilus-share
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Nautilus extension to share folder using Samba (from debian for gtk4 support)'
 arch=('x86_64')
-url="https://git.gnome.org/browse/nautilus-share"
+url="https://gitlab.gnome.org/coreyberla/nautilus-share"
 license=('GPL')
 depends=('nautilus' 'samba')
 makedepends=('intltool' 'meson')
 provides=('nautilus-share')
 conflicts=('nautilus-share')
-source=("http://deb.debian.org/debian/pool/main/n/${pkgname}/${_pkgname}_${pkgver}.orig.tar.bz2")
-sha512sums=('ef6d540ff3529138a3ed0f834e46b57bfb4bc5a88f7f1b7fdc66d1fd619963ff7ab5356689e56af86148002bee21492bb09860e5352674dee54c7199f6b1c81b')
+source=("${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('5a251595bfd2e4375f4dd91f5ee7f5b29681435bd2f268861e5fcc5cd6b1f0b9ced98cb269439b7a90329af071f0b91d2c767c408d3c1fd27fa9322693d150d8')
 
 build() {
   arch-meson ${_pkgname}-${pkgver} build
