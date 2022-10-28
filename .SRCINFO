@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 6.0.2.arch1
+	pkgver = 6.0.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.0.2-arch1
+	url = https://github.com/archlinux/linux/commits/v6.0.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-vfio
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.0.2-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.0.5-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -29,12 +29,12 @@ pkgbase = linux-vfio
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3
+	sha256sums = 05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6
 	sha256sums = b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77
 	sha256sums = 5092c62db5ca8f6b806996ba3db0f610d9ad73d499384394e16823dda097f9cd
 
 pkgname = linux-vfio
-	pkgdesc = The Linux kernel and modules
+	pkgdesc = The Linux kernel and modules (ACS override and i915 VGA arbiter patches)
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -46,8 +46,8 @@ pkgname = linux-vfio
 	replaces = wireguard-arch
 
 pkgname = linux-vfio-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	pkgdesc = Headers and scripts for building modules for the Linux kernel (ACS override and i915 VGA arbiter patches)
 	depends = pahole
 
 pkgname = linux-vfio-docs
-	pkgdesc = Documentation for the Linux kernel
+	pkgdesc = Documentation for the Linux kernel (ACS override and i915 VGA arbiter patches)
