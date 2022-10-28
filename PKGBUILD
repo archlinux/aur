@@ -5,10 +5,10 @@
 _basename=quartus-free
 pkgname="${_basename}-91"
 pkgver=9.1.2.350
-pkgrel=1
+pkgrel=2
 pkgdesc="Quartus II 9.1 Web Edition."
 arch=('i686' 'x86_64')
-url="http://www.altera.com/products/software/quartus-ii/web-edition"
+url="https://archive.org/details/quartus-9.1-sp2-free-linux"
 license=('custom')
 provides=("${_basename}")
 conflicts=("${_basename}")
@@ -28,16 +28,16 @@ then
 			 'qtwebkit')
 fi
 
-source=("http://download.altera.com/software/acds/9.1sp2/350/download/91sp2_quartus_free_linux.tar"
-		"quartus.sh"
-		"quartus.desktop"
-		"51-usbblaster.rules")
-md5sums=('f61c84a752750cef29d59bc2e5490cd8'
-         'c34dfaf31247ccbd505578e2e5b040ac'
-         '32b17cb8b992fc2dccd33d87f0dcd8ce'
-         '3d448098eda1515e503ed9dcac7b64a5')
+source=("https://archive.org/download/quartus-9.1-sp2-free-linux/91sp2_quartus_free_linux.tar"
+        "quartus.sh"
+        "quartus.desktop"
+        "51-usbblaster.rules")
+sha256sums=('217f1ca10d6ac865e35a75a8f98b9c0d33c5e7cbb560bad0c91bc7696e98fac5'
+            '1a90e8ff0848dc0ed7f31c71691ad0ec5d2782d71d7d8001e1d7856f3a2c4beb'
+            'eade659fda0db843a5b287502415c698c4f251f3b721836e2a56911896fc2371'
+            '97fdb90fd78aee4cc765266c7eaf268793a5204f952b50495ad40d0121a826da')
 
-options=('!strip' '!upx')
+options=('!strip')
 
 PKGEXT=".pkg.tar"
 
