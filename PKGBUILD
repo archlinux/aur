@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=amap
-_pkgver=0.8-18
+_pkgver=0.8-19
 pkgname=r-${_pkgname,,}
-pkgver=0.8.18
-pkgrel=4
+pkgver=0.8.19
+pkgrel=1
 pkgdesc='Another Multidimensional Analysis Package'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7afbbdd681a201121374821b733c9000ca1046a2353ee386507604c2c759ec7e')
+sha256sums=('7349ea684b69eba0fcc48f78b7ac09a838d95d3bc0c6a94b6055605ac0291900')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
