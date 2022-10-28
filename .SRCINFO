@@ -1,16 +1,16 @@
 pkgbase = inceptum-git
 	pkgdesc = An advanced minecraft launcher written in java
-	pkgver = 0.1.0.r3.gc3de25b
-	pkgrel = 1
-	url = https://gitlab.com/jfmods/inceptum
+	pkgver = 0.1.0.r48.g5e729ef
+	pkgrel = 2
+	url = https://git.frohnmeyer-wds.de/JfMods/Inceptum.git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = java-environment=17
+	makedepends = java-environment>=19
 	makedepends = gradle
-	depends = java-runtime>=17
+	depends = java-runtime>=19
 	depends = bash
-	source = git+https://gitlab.com/jfmods/inceptum.git
+	source = git+https://git.frohnmeyer-wds.de/JfMods/Inceptum.git.git
 	source = inceptum.desktop
 	source = inceptum.sh
 	source = inceptum.service
