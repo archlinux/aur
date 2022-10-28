@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ruff
-pkgver=0.0.79
+pkgver=0.0.86
 pkgrel=1
 pkgdesc='Experimental Python linter written in Rust'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('python>=3.7')
 makedepends=('maturin' 'python-installer' 'python-wheel')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('655ca555a8e354d28ac23e99bdba346a2353a712ba4785c3f25df315a12b28c1')
+sha256sums=('b96aca791d0eef857f631514e96f5c1ebaf729c009865271a32717bb635013a8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,6 +38,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" target/wheels/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$pkgname-$pkgver.dist-info/license_files/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$pkgname-$pkgver.dist-info/license_files/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
