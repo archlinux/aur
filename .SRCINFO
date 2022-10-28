@@ -1,0 +1,20 @@
+pkgbase = fdt-viewer-git
+	pkgdesc = Flattened device tree viewer written in Qt
+	pkgver = r100.6aaa362
+	pkgrel = 1
+	url = https://github.com/dev-0x7C6/fdt-viewer
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	depends = qt6-base
+	provides = fdt-viewer
+	conflicts = fdt-viewer
+	source = fdt-viewer-git::git+https://github.com/dev-0x7C6/fdt-viewer#branch=HEAD
+	md5sums = SKIP
+
+pkgname = fdt-viewer-git

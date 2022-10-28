@@ -1,0 +1,3 @@
+[fdt-viewer]
+source = "github"
+github = "dev-0x7C6/fdt-viewer"
