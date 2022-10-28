@@ -1,14 +1,13 @@
 pkgbase = giada
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
 	pkgver = 0.23.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.giadamusic.com/
 	arch = x86_64
 	groups = pro-audio
 	license = GPL3
-	checkdepends = xorg-server-xvfb
+	checkdepends = catch2
 	makedepends = alsa-lib
-	makedepends = catch2
 	makedepends = cmake
 	makedepends = imagemagick
 	makedepends = jack

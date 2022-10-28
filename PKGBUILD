@@ -5,7 +5,7 @@
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
 pkgver=0.23.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
@@ -14,8 +14,8 @@ groups=(pro-audio)
 depends=(gcc-libs glibc hicolor-icon-theme libx11 libxcursor libxft libxinerama libxpm fmt)
 options=(!buildflags !makeflags)
 # upstream vendors a hacked rtaudio :(
-makedepends=(alsa-lib catch2 cmake imagemagick jack libpulse libsamplerate libsndfile libxrandr nlohmann-json rtmidi sed git)
-checkdepends=(xorg-server-xvfb)
+makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile libxrandr nlohmann-json rtmidi sed git)
+checkdepends=(catch2)
 provides=(vst3-host giada)
 source=(
 "$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=v$pkgver" "git+https://github.com/juce-framework/JUCE.git"
@@ -42,17 +42,19 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DWITH_VST3=ON \
         -DWITH_SYSTEM_JSON=ON \
+        -DWITH_TESTS=ON \
         -W no-dev \
         -B build \
         -S "$pkgname-$pkgver"
   #fix for libdl.so version
-  sed -i "s/libdl.so/libdl.so.2/g" "build/CMakeFiles/giada.dir/build.make"
+  #sed -i "s/libdl.so/libdl.so.2/g" "build/CMakeFiles/giada.dir/build.make"
   make VERBOSE=1 -C build
 }
 
-#check(){
-#  xvfb-run ./build-test/giada --run-tests
-#}
+check(){
+  cd "build/"
+  ./giada --run-tests
+}
 
 package() {
   depends+=(libasound.so libfreetype.so libjack.so libpulse.so
@@ -60,6 +62,6 @@ package() {
 
   make DESTDIR="$pkgdir/" install -C build
   # docs
-``cd "$pkgname-$pkgver/"
+  cd "$pkgname-$pkgver/"
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
