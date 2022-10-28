@@ -2,17 +2,17 @@
 
 _pkgname=rres
 pkgname=${_pkgname}-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A xrandr replacement to gather display resolutions'
 arch=('x86_64')
-url="https://gitlab.com/forkbomb9/rres"
+url="https://sr.ht/~f9/rres"
 license=('GPLv3')
 provides=('rres')
 conflicts=('rres')
-source_x86_64=("https://gitlab.com/forkbomb9/${_pkgname}/uploads/dbd6dea1efc97679f377677f6d1899d6/${_pkgname}-v${pkgver}-${arch}-unknown-linux-musl")
-sha256sums_x86_64=('f73969a7a0bc8afd78b06cdd6f20198286092a716bc470200a6da24765c85874')
-b3sums_x86_64=('84c52d8027c08aa824109eef6500dfd9284ddf798f4b3b5f38e77e6fa1037d2d')
+source_x86_64=("https://git.sr.ht/~f9/${_pkgname}/refs/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch}-unknown-linux-musl")
+sha256sums_x86_64=('75ad8e40c8cb47a00cfbdd676fc4c0a27490f717384f3a44cb26e1377b49d8a6')
+b2sums_x86_64=('ba10c094d68f1962c3c8c319b398808175b36971f0edf22b5989185d5d17bf506fd332da476c50d3e312bcd0633724a438a8ccb222970df76b871aa3b1bb9cce')
 
 package() {
     install -Dm755 "${_pkgname}-v${pkgver}-${arch}-unknown-linux-musl" \
