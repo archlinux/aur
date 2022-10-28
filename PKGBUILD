@@ -164,7 +164,7 @@ package_linux-jcore() {
 }
 
 package_linux-jcore-headers() {
-  pkgdesc="Headers and scripts for building modules for the Kernel for Manjaro/Arch"
+  pkgdesc="Headers and scripts for building modules for the Kernel for Manjaro/Arch (ACS override patch include)"
   depends=('gawk' 'python' 'libelf' 'pahole')
 
   cd "linux-${pkgver}"
