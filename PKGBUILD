@@ -14,5 +14,8 @@ sha256sums=('f1bb75b2d947a26ba5b028d53246a7a36e2f0951fd3776c68e9a445cc55ef7ad')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
+  cd ${pkgdir}/usr/lib/
+  mv x86_64-linux-gnu/obs-plugins .
+  rm -r x86_64-linux-gnu
   chown root:root -vR "${pkgdir}/"
 }
