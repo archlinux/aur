@@ -9,8 +9,8 @@ license=("Monkey's Audio License Agreement")
 provides=('mac')
 conflicts=('mac')
 makedepends=('gcc' 'make')
-source=("https://monkeysaudio.com/files/MAC_${pkgver//.}_SDK3.zip")
-sha256sums=('627f43626b44786cd007505c90ccb8ee677df9e76cac5bf9cb75257be04d3ecf')
+source=("https://monkeysaudio.com/files/MAC_${pkgver//.}_SDK4.zip")
+sha256sums=('148eacc192e903747d243dc4b27d33137c9a3a073401a362b20fd594d057358b')
 
 _project_path() {
     echo "$srcdir/Source/Projects/NonWindows"

@@ -10,7 +10,7 @@ pkgbase = mac-optimised
 	makedepends = make
 	provides = mac
 	conflicts = mac
-	source = https://monkeysaudio.com/files/MAC_894_SDK3.zip
-	sha256sums = 627f43626b44786cd007505c90ccb8ee677df9e76cac5bf9cb75257be04d3ecf
+	source = https://monkeysaudio.com/files/MAC_894_SDK4.zip
+	sha256sums = 148eacc192e903747d243dc4b27d33137c9a3a073401a362b20fd594d057358b
 
 pkgname = mac-optimised
