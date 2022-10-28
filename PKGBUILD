@@ -1,7 +1,6 @@
 # Maintainer: amateurece <ethan.twardy at gmail dot com>
 
 pkgname=sdbusplus-git
-_pkgname=${pkgname#-git}
 pkgver=r598.a8a092c0
 pkgrel=1
 pkgdesc="C++ bindings for systemd dbus APIs"
@@ -14,7 +13,7 @@ source=("${pkgname}::git+https://github.com/openbmc/sdbusplus.git")
 sha256sums=('SKIP')
 
 _meson_setup() {
-    arch-meson -Dtests=disabled -Dexamples=disabled "${_pkgname}" build
+    arch-meson -Dtests=disabled -Dexamples=disabled "${pkgname}" build
 }
 
 prepare() {
@@ -22,15 +21,21 @@ prepare() {
 }
 
 pkgver() {
-  cd "${_pkgname}"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "${pkgname}"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
     _meson_setup
     meson compile -C build
+
+    # Python tools
+    cd "${pkgname}/tools"
+    python setup.py build
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+    meson install -C build --destdir "$pkgdir"
+    cd "${pkgname}/tools"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
