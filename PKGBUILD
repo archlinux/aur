@@ -1,7 +1,7 @@
 # Maintainer: WithTheBraid <the-one@with-the-braid.cf>
 
 pkgname=android-sdk-debian
-pkgver=28.0.2+0
+pkgver=28.0.2+1
 pkgrel=0
 pkgdesc="Software development kit for Android platform - built out of Debian's repository"
 arch=("x86_64" "aarch64")
@@ -9,6 +9,7 @@ url="https://salsa.debian.org/android-tools-team/android-sdk-meta"
 license=("Apache" "BSD" "SSLeay" "ISC" "GPL3" "MIT" "OpenSSL" "Khronos" "Expat" "PD" "LGPL")
 depends=("android-tools" "android-udev" "java-environment" "proguard")
 optdepends=("gradle" "maven")
+provides=("android-sdk" "anroid-build-tools" "aapt" "apksign" "zipalign" "aidl" "split-select" "devlink")
 conflicts=("adroid-sdk" "android-sdk-build-tools")
 makedepends=("binutils" "tar")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
@@ -47,7 +48,6 @@ source_aarch64=(
   "http://ftp.de.debian.org/debian/pool/main/a/android-platform-build/zipalign_10.0.0+r36-1_arm64.deb"
 )
 source=(
-
   "http://ftp.de.debian.org/debian/pool/main/a/android-sdk-meta/android-sdk-build-tools-common_29.0.3+7_all.deb"
   "http://ftp.de.debian.org/debian/pool/main/a/android-platform-tools-apksig/libapksig-java_31.0.2-1_all.deb"
   "http://ftp.de.debian.org/debian/pool/main/a/android-platform-dalvik/dalvik-exchange_10.0.0+r36-4_all.deb"
