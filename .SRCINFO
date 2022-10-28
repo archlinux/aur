@@ -1,7 +1,7 @@
 pkgbase = slint-cpp-bin
 	pkgdesc = Slint is a toolkit to efficiently develop fluid graphical user interfaces for any display: embedded devices and desktop applications
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://slint-ui.com
 	arch = x86_64
 	license = GPL3

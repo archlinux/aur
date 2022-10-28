@@ -2,7 +2,7 @@
 
 pkgname=slint-cpp-bin
 pkgver=0.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Slint is a toolkit to efficiently develop fluid graphical user interfaces for any display: embedded devices and desktop applications"
 arch=("x86_64")
 url="https://slint-ui.com"
