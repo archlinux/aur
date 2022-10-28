@@ -1,7 +1,7 @@
 # Maintainer: Vaargk <s30vm63qa@mozmail.com>
 pkgname=obs-plugin-tuna-bin
 pkgver=1.9.1
-pkgrel=3
+pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio"
 url="https://github.com/univrsal/tuna"
