@@ -1,7 +1,7 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=gr-satellites
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="satellite decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('feh: For realtime image decoders'
 makedepends=('cmake')
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74c30cc84b1e36410d1849bcabe7826002c241dfede1f208ea0ab09141e1fd38')
+sha256sums=('26ca03d144946b15bc6657b5ba1231ebed53e8ab94d66c0c1a57a2f3039e236e')
 
 build() {
     cmake -B build -S $pkgname-$pkgver \

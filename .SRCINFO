@@ -1,6 +1,6 @@
 pkgbase = gr-satellites
 	pkgdesc = satellite decoder blocks for GNURadio
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/daniestevez/gr-satellites
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gr-satellites
 	optdepends = feh: For realtime image decoders
 	optdepends = doxygen: For document generation
 	conflicts = gr-satellites
-	source = gr-satellites-5.0.0.tar.gz::https://github.com/daniestevez/gr-satellites/archive/refs/tags/v5.0.0.tar.gz
-	sha256sums = 74c30cc84b1e36410d1849bcabe7826002c241dfede1f208ea0ab09141e1fd38
+	source = gr-satellites-5.1.0.tar.gz::https://github.com/daniestevez/gr-satellites/archive/refs/tags/v5.1.0.tar.gz
+	sha256sums = 26ca03d144946b15bc6657b5ba1231ebed53e8ab94d66c0c1a57a2f3039e236e
 
 pkgname = gr-satellites
