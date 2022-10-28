@@ -1,0 +1,12 @@
+pkgbase = bisc-bin
+	pkgdesc = A small tool that clears cookies for qutebrowser and chromium-based browsers
+	pkgver = 0.4.1
+	pkgrel = 1
+	epoch = 0
+	url = https://maxwell.ydns.eu/git/rnhmjoj/bisc
+	arch = x86_64
+	license = GPL3
+	source = https://maxwell.ydns.eu/git/attachments/f0b23dae-4a24-47dd-858f-12b57fe7029e
+	md5sums = aca537fb2ebc8e2c0bcb6bcdfab150e4
+
+pkgname = bisc-bin
