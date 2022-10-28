@@ -10,7 +10,7 @@
 
 pkgname=nodejs-lts-hydrogen
 pkgver=18.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64')
 url='https://nodejs.org/'
@@ -22,7 +22,7 @@ depends=('brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares') # 'http-
 makedepends=('python' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 source=("https://github.com/nodejs/node/archive/v$pkgver/nodejs-$pkgver.tar.gz")
-sha512sums=('a8e36677aab7dcd4fe92e327bfad2912254c1624adfef8120e1d143762a769ae92db6e1dd28ef1853bb552262bc4aac2b5ac2440f4790781e0719b1d84b39412')
+sha512sums=('1a5f076908ff0fe4e877d4d6085ea7dde38517fe5eba4492c37de7040afd92abc3d55974f203abbb93a49194ce815e2f22c4e9503a99ef3ebcb1bf269c4f3516')
 
 build() {
   cd node-$pkgver

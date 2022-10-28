@@ -1,7 +1,7 @@
 pkgbase = nodejs-lts-hydrogen
 	pkgdesc = Evented I/O for V8 javascript
 	pkgver = 18.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nodejs.org/
 	arch = x86_64
 	license = MIT
@@ -19,6 +19,6 @@ pkgbase = nodejs-lts-hydrogen
 	conflicts = nodejs
 	options = !lto
 	source = https://github.com/nodejs/node/archive/v18.12.0/nodejs-18.12.0.tar.gz
-	sha512sums = a8e36677aab7dcd4fe92e327bfad2912254c1624adfef8120e1d143762a769ae92db6e1dd28ef1853bb552262bc4aac2b5ac2440f4790781e0719b1d84b39412
+	sha512sums = 1a5f076908ff0fe4e877d4d6085ea7dde38517fe5eba4492c37de7040afd92abc3d55974f203abbb93a49194ce815e2f22c4e9503a99ef3ebcb1bf269c4f3516
 
 pkgname = nodejs-lts-hydrogen
