@@ -1,4 +1,4 @@
-# Maintainer: Vitaliy Berdinskikh <ur6lad at tuta dot io>
+# Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
 pkgname='xkblayout'
 pkgver='1.3'
 pkgrel='3'
