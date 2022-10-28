@@ -2,7 +2,7 @@
 
 pkgname=pato
 pkgver=0.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
 url="https://github.com/amatria/pato"
@@ -52,6 +52,8 @@ package() {
   # TODO fix if cross-compiling (please don't do that)
   ./target/gnu/pato.release --export-help=man | gzip > pato.1.gz
   install -Dm644 pato.1.gz "$pkgdir/usr/share/man/man1/pato.1.gz"
+  ./target/gnu/pato.release --export-help=html > pato.html
+  install -Dm644 pato.html "$pkgdir/usr/share/doc/pato/html/pato.html"
 
   # Install pato.release
   install -Dm755 target/gnu/pato.release "$pkgdir/usr/bin/pato"
@@ -59,3 +61,4 @@ package() {
   # Install the license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
