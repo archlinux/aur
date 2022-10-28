@@ -1,5 +1,10 @@
 2022-10-28 Christopher Arndt <aur@chrisarndt.de>
 
+	* 20220929-2:
+	install custom licenses and drumkit documentation in proper places
+
+2022-10-28 Christopher Arndt <aur@chrisarndt.de>
+
 	* 20220929-1:
 	add "BeatBuddy Kit" drumkit
 	update project URL

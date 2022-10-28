@@ -5,7 +5,7 @@
 _pkgname=hydrogen-drumkits
 pkgname=$_pkgname-flac
 pkgver=20220929
-pkgrel=1
+pkgrel=2
 pkgdesc='Hydrogen drum kits (FLAC format)'
 arch=(any)
 url='https://sourceforge.net/projects/hydrogen/files/Sound%20Libraries/'
@@ -80,7 +80,6 @@ sha256sums=('9b5421520553429b80108ad0d4e613bc83ee27b39437d7dc55bae63148004373'
             '4637f0c39b488074943030d6cb0274f3e35d1da221eb6d078c15ea118f4e496d'
             'ed7bfa21abc05712ea89860b7e680808d14d567d49377fbc65914a9dd518e14d'
             '17005f5c79d92af3caef52ea313b1ac5bc49f1eefa4462b22980dec2b031bf27')
-_drumkitsdir="/usr/share/hydrogen/data/drumkits"
 _drumkits=(
   '3355606kit'
   'BeatBuddy Kit'
@@ -115,21 +114,28 @@ _drumkits=(
 )
 
 build() {
-  cd "${srcdir}"
+  cd "$srcdir"
   chmod +x convert-samples.py
   ./convert-samples.py "${_drumkits[@]}"
 }
 
 package() {
-  install -d -m 755 "$pkgdir"$_drumkitsdir
+  local _drumkitsdir="/usr/share/hydrogen/data/drumkits"
 
   for drumkit in "${_drumkits[@]}"; do
-    cp -rp "$srcdir/$drumkit" "$pkgdir"$_drumkitsdir
-  done
+    cd "$srcdir/$drumkit"
 
-  plain "Removing superfluous files..."
-  find "$pkgdir"$_drumkitsdir -name LICENCE -delete
-  find "$pkgdir"$_drumkitsdir -name "._*" -delete
-  find "$pkgdir"$_drumkitsdir -type d -exec chmod 755 {} \;
-  find "$pkgdir"$_drumkitsdir -type f -exec chmod 644 {} \;
+    install -Dm644 drumkit.xml -t "$pkgdir$_drumkitsdir/$drumkit"
+    install -Dm644 *.flac -t "$pkgdir$_drumkitsdir/$drumkit"
+
+    for doc in README* *.h2song; do
+      install -Dm644 $doc -t "$pkgdir/usr/share/doc/$pkgname/$drumkit"
+    done
+
+    for lfile in LICEN?E* COPYING* license.*; do
+      if ! grep -q 'GNU GENERAL PUBLIC LICENSE' $lfile ; then
+        install -Dm644 $lfile -t "$pkgdir/usr/share/licenses/$pkgname/$drumkit"
+      fi
+    done
+  done
 }

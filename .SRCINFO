@@ -1,7 +1,7 @@
 pkgbase = hydrogen-drumkits-flac
 	pkgdesc = Hydrogen drum kits (FLAC format)
 	pkgver = 20220929
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/hydrogen/files/Sound%20Libraries/
 	changelog = ChangeLog
 	arch = any
