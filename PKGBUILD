@@ -3,7 +3,7 @@
 
 pkgname=gnome-meta
 pkgver=42
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -18,7 +18,6 @@ depends=(
   gdm
   gedit
   gnome-backgrounds
-  gnome-books
   gnome-calculator
   gnome-calendar
   gnome-characters
@@ -35,7 +34,6 @@ depends=(
   gnome-music
   gnome-photos
   gnome-remote-desktop
-  gnome-screenshot
   gnome-session
   gnome-settings-daemon
   gnome-shell
@@ -56,18 +54,16 @@ depends=(
   gvfs-mtp
   gvfs-nfs
   gvfs-smb
+  malcontent
   mutter
   nautilus
   orca
   rygel
+  simple-scan
   sushi
   totem
-  tracker
-  tracker-miners
   tracker3-miners
-  vino
   xdg-user-dirs-gtk
   yelp
   gnome-boxes
-  simple-scan
 )
