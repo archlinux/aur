@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/pearl-core/pearl"
 license=('GPL')
 groups=()
-depends=('git' 'python')
+depends=('git' 'python' 'python-setuptools')
 makedepends=(git python-build python-installer python-wheel)
 
 provides=("${pkgname%-git}")
