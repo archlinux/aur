@@ -2,7 +2,7 @@
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -63,7 +63,49 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_elsp_3dp_20210115_v01.nc"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
-md5sums=('5589f6933af90f62e28f3c98f58d2b62')
+md5sums=('f8ddca24152c502b0d22b8bfecf75a1a')
+#        'ba680f74500be6839d3fe232e6a22eb1'
+#        '0239191dd5d8400aaf68ff5a6ee4de0d'
+#        '269b0b2dae018ffa3e7442349e65b0ad'
+#        'dd546dbfb322b49c4a1f59291e7e7558'
+#        'bf488b65508ca20511da8585a8cbd1b4'
+#        'bdd71ab43f25627a86ac33b4c7fac5d7'
+#        '361e18cb6506f4f9bc89dd21c8eaa3e1'
+#        '8746ad4f1537da9ae83c65c1e6c8dcf8'
+#        '5b5c426d015f76d3aad254ee87e5d54d'
+#        '3aa8a05abec342c399abdef148f1457f'
+#        '2c9986e3fbc85851bf391a32890f21a1'
+#        '6f71323df2b79cb1c9d433654cd75927'
+#        'a4d61922cca4bac2044c2bb325a2398a'
+#        '61d2a561f1e7f68b994058d0a6ad0de6'
+#        '2b6845cec1821daa768cdedd9629821a'
+#        '2d471a6387debe60171540fe857d0c8d'
+#        '6501cfc5878d673aaf7adad92bcedba1'
+#        '357ae2e60381cb93378011e8aa1521e1'
+#        '90742363385fdf28fdc7f37ecc9353f5'
+#        '561ce92ce636950c1ea5af0503704a8f'
+#        '4544902e8acfc07d3983ecbbfbe51a52'
+#        '35d92badaebe0656ac67ae28d5c314b0'
+#        '782d17a591ee3ebba8ee4c3c53d80e8f'
+#        'a3d3bb2ba561624ee74379bdcfe9806b'
+#        '3163c0ce42f524628a0b3020543a6656'
+#        '502ff84e67db204004a71e66d624fbcd'
+#        '1d264ed27918804bb4ece7d791b1656b'
+#        '9c720048831f9c4e41218e8a2165a18a'
+#        'c8bf52ce6a3cb7a0e4e3e3db2fe72d8f'
+#        '076e66fe075fac4d84a22c5444e06c61'
+#        '2657e149639c045a7738a58988749a74'
+#        '2e9ad73d41e96d2b852352f828e91896'
+#        '1ef603328247961be77be9241179db80'
+#        '8d111ab8e2e2307742719e479ab746f6'
+#        '326fbdc875fd231405632d9cd8e10786'
+#        '132bfd9f056dce7043482d54e5205437'
+#        '790095f6fb8e486a73840847c55b8064'
+#        'bf927c2087ea7a207d80478630ced266'
+#        '1f8dc0e94759bced68d9dcfeaafc9e54'
+#        '07d3c70be7cc61f65c024aee903996ee'
+#        '273cc645dc7f40c46db2e29dd95b310a'
+#        'cb336e89340e4cf0ec2f468b86b21901')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -71,6 +113,7 @@ md5sums=('5589f6933af90f62e28f3c98f58d2b62')
 #    ln -rs ${srcdir}/*.cdf .
 #    ln -rs ${srcdir}/*.nc .
 #    ln -rs ${srcdir}/*.ncdf .
+#    sed -i "/language\ = /s/None/'en'/" doc/conf.py
 #}
 
 build() {
@@ -85,11 +128,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" #--remote-data
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv --color=yes --remote-data
 }
 
 package_python-cdflib() {
-    depends=('python>=3.6' 'python-attrs>=19.2.0' 'python-numpy')
+    depends=('python>=3.6' 'python-numpy')
     optdepends=('python-cdflib-doc: Documentation for CDFlib')
     cd ${srcdir}/${_pyname}-${pkgver}
 
