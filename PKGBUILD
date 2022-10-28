@@ -3,12 +3,12 @@
 pkgname=nextcloud-app-totp
 _releasename=twofactor_totp
 pkgver=6.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Two factor TOTP provider for Nextcloud"
 arch=('any')
 url="https://github.com/nextcloud-releases/twofactor_totp"
 license=('AGPL')
-depends=('nextcloud>=22.0')
+depends=('nextcloud>=22.0' 'nextcloud<25.0.0')
 makedepends=()
 options=('!strip')
 source=(
