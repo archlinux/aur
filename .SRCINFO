@@ -1,0 +1,19 @@
+pkgbase = phosphor-dbus-interfaces-git
+	pkgdesc = YAML descriptors of standard dbus interfaces (in OpenBMC)
+	pkgver = r598.a8a092c0
+	pkgrel = 1
+	url = https://github.com/openbmc/phosphor-dbus-interfaces
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = meson
+	depends = systemd-libs
+	depends = python-mako
+	depends = python-inflection
+	depends = python-yaml
+	source = phosphor-dbus-interfaces-git::git+https://github.com/openbmc/phosphor-dbus-interfaces.git
+	sha256sums = SKIP
+
+pkgname = phosphor-dbus-interfaces-git
