@@ -29,7 +29,6 @@ pkgbase = python-onnxruntime
 	depends = re2
 	depends = openmpi
 	depends = libprotobuf-lite.so
-	options = !lto
 	source = git+https://github.com/microsoft/onnxruntime#tag=v1.13.1
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/dcleblanc/SafeInt.git
