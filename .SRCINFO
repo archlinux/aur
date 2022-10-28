@@ -1,18 +1,18 @@
 pkgbase = python-md_toc
 	pkgdesc = Automatically generate a compliant table of contents for a markdown file to improve document readability
-	pkgver = 8.1.4
+	pkgver = 8.1.5
 	pkgrel = 1
 	url = https://blog.franco.net.eu.org/software/#md-toc
 	arch = any
 	license = GPL3
 	depends = python
-	depends = python-fpyutils=2.2.0
+	depends = python-fpyutils=2.2.1
 	depends = python-setuptools
 	depends = python-pyfakefs
 	options = !emptydirs
-	source = https://blog.franco.net.eu.org/software/md-toc-8.1.4/md-toc-8.1.4.tar.gz.sig
-	source = https://blog.franco.net.eu.org/software/md-toc-8.1.4/md-toc-8.1.4.tar.gz
+	source = https://blog.franco.net.eu.org/software/md-toc-8.1.5/md-toc-8.1.5.tar.gz.sig
+	source = https://blog.franco.net.eu.org/software/md-toc-8.1.5/md-toc-8.1.5.tar.gz
 	sha512sums = SKIP
-	sha512sums = f85eeda216e190c036781e52c91fadf1a38e70223c2368f62248622a9a419edf5041e66b7505ecebbf9863a570551285661defac0a8603beb8ee67377d37618e
+	sha512sums = 206243daaa339f086621c87f18bfed04a90d842e082be242baee133206acd3863b93d7263e931a6821b6d07e559bc2a09f65b7bd4fcdd3e04ea46cccaed4d2b4
 
 pkgname = python-md_toc
