@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.sh/'
@@ -10,18 +10,19 @@ arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('vhs')
 conflicts=('vhs')
+depends=('ffmpeg' 'ttyd-git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.0/vhs_0.1.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c09e6bfc6f928b2998b743cf4904389900beee8eb0b42acdcb34df5923b98dd6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('0f19239617e1adf8889d4c8165d0ee031e1c31fae2a1f792973590f5fa0a6e50')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.0/vhs_0.1.0_Linux_armv7.tar.gz")
-sha256sums_armv7h=('c7672f00d0743ec90a56f983e1b7b26dd75036fa42b701942a97d640c0fa6844')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_armv7.tar.gz")
+sha256sums_armv7h=('0b465bc714d6d5b4a5d05a6a91906d70e0c81f38bb98941e33510ec480b40607')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.0/vhs_0.1.0_Linux_i386.tar.gz")
-sha256sums_i686=('19af7cc4f602f31aef6e7b778fb0984fc5129f2da92512d7597e71502b11493d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_i386.tar.gz")
+sha256sums_i686=('65c37d7cfcb1d3c5ad749229eea02d586a4304464711d7dd77002029a66d4710')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.0/vhs_0.1.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('414248bcb15a8315761ba7d33e87a24dfeccf4ac3d8825037f51f9b2a63545ed')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9ff5977b60917fdc6f3f4d1c7bcf6bac7920a1b756c1dd9ccc79ae9a35722dd7')
 
 package() {
   # bin
