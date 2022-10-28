@@ -1,8 +1,8 @@
-# Maintainer: Martin Kröning <m dot kroening at hotmail dot de>
-# Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
+# Maintainer: Vaargk <s30vm63qa at mozmail dot com>
 _realname=Sync-my-L2P
 pkgname=sync-my-l2p
 pkgver=2.5.1
+pkgrel=1
 pkgdesc="Sync the Moodle instance of RWTH Aachen University."
 arch=('x86_64')
 url="https://github.com/rwthmoodle/Sync-my-L2P"
