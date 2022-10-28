@@ -1,6 +1,6 @@
 # Maintainer: Alexandra Stone <ideas@alexankitty.com>
 pkgname="fancytasks"
-pkgver=1.0.0.r1.g9d66a69
+pkgver=1.0.1.r1.g7430219
 pkgrel=1
 pkgdesc="More modern style taskbar-style window switcher displaying icons and text, with some improvments"
 arch=(any)
