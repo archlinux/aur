@@ -1,16 +1,16 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=electorrent
-pkgver=2.7.3
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge"
 arch=('x86_64')
 url='https://github.com/Tympanix/Electorrent'
 license=('GPL3')
-depends=('gtk3' 'nss' 'libxss' 'python2')
+depends=('gtk3' 'nss' 'libxss' 'python')
 makedepends=('gendesk' 'npm' 'libicns' 'graphicsmagick' 'gulp')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tympanix/Electorrent/archive/v${pkgver}.tar.gz")
-sha256sums=('e4c3525d23c1454ea6511def7fb1688fea11a275e49f36a6ead25e2083dacb60')
+sha256sums=('8109827da4e532056ea8d51006717138a517d2cf7714b495da68dab4a933d7f5')
 
 build() {
   cd "Electorrent-${pkgver}"
