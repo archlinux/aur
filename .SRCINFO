@@ -1,0 +1,12 @@
+pkgbase = hibe
+	pkgdesc = Quick utility for hibernating your system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AirOne01/hibe
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = hibe-1.0.0.tar.gz::https://static.crates.io/crates/hibe/hibe-1.0.0.crate
+	sha256sums = SKIP
+
+pkgname = hibe
