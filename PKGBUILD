@@ -4,7 +4,7 @@
 # Contributor: wahnby <wahnby@yahoo.fr>
 
 pkgname='gnunet-gtk'
-pkgver='0.16.0'
+pkgver='0.18.0'
 pkgrel=1
 pkgdesc='A frontend for GNUnet'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://ftp.gnu.org/gnu/gnunet/${pkgname}-${pkgver}.tar.gz"
         'gnunet-peerinfo-gtk.svg'
         'gnunet-statistics-gtk.desktop'
         'gnunet-statistics-gtk.svg')
-sha256sums=('0e09ddbb28b32afe90ca7c2d29cabd63edfe2d1fe66ea374490bddbcaeabfd4b'
+sha256sums=('fefe7831e21129ac0d44ca8f9a1562990c04e401ad1de888a6a5e0c579a62304'
             'ff025def7fd3383cf9ba0809926802d2476ef73ccbc91b6ad317554987ade4d7'
             '43e743bcf971c53ab4be0955d29b1915624a34f95785df1bf47a3fa45e6a8039'
             'e82947317b62c86de52065bc7c5e4a3899a587aedcaa039effda3dd8da23d79b'
