@@ -7,7 +7,7 @@ pkgrel=1
 _pkgrealver=43.0
 _pkgrealrel=1
 pkgdesc="Clipboard management system for GNOME 43, frequently updated."
-url="http://support-au.canon.com.au/contents/AU/EN/0100302002.html"
+url="unknown"
 arch=('x86_64')
 license=('BSD')
 depends=(
@@ -36,7 +36,8 @@ source=(
 md5sums=(
     'SKIP'
 )
-
+provides=(gpaste)
+conflicts=('gpaste' 'gpaste-git')
 
 prepare() {
     tar -xf GPaste-43.0.tar.xz > /dev/null
@@ -46,6 +47,7 @@ prepare() {
 build() {
     arch-meson --buildtype=release $srcdir/GPaste-43.0 build
   meson compile -C build
+    pip install git+https://github.com/awamper/draobplic
 }
 
 check() {
