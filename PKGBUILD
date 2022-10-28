@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigrquery
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=4
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="An Interface to Google's 'BigQuery' 'API'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-assertthat
   r-bit64
+  r-brio
   r-curl
   r-dbi
   r-gargle
@@ -41,7 +42,7 @@ optdepends=(
   r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dafa4faef9fb9ab576d4975f64f23d4a051af180546db8f6fd55ed4383c1ba0a')
+sha256sums=('bb361d482fbc88be6d88f244ad2eb9d50f962a796091df2164397f05f00f9fe5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
