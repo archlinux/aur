@@ -1,20 +1,17 @@
-# Maintainer: MCOfficer <MCOfficer@gmx.de>
+# Maintainer: Vaargk <s30vm63qa@mozmail.com>
 
 pkgname=obs-plugin-tuna-bin
-pkgver=1.5.5
+pkgver=1.9.1
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio"
 url="https://github.com/univrsal/tuna"
 license=('GPL2')
 depends=("obs-studio")
-source=("https://github.com/univrsal/tuna/releases/download/v$pkgver/tuna.v$pkgver.bin.linux.x64.zip")
-sha256sums=('db234d3cb2529391b7e8fcee59b6b28d027f8984eb7543943f9eadcd3b9eefad')
+source=("https://github.com/univrsal/tuna/releases/download/v$pkgver/tuna-$pkgver-linux-x86_64.deb")
+sha256sums=('f1bb75b2d947a26ba5b028d53246a7a36e2f0951fd3776c68e9a445cc55ef7ad')
 
 package() {
-  cd $srcdir
-  mkdir -p $pkgdir/usr/lib/obs-plugins/
-  mv tuna/bin/64bit/tuna.so $pkgdir/usr/lib/obs-plugins/
-  mkdir -p $pkgdir/usr/share/obs/obs-plugins/
-  mv tuna/data $pkgdir/usr/share/obs/obs-plugins/tuna
+  bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
+  chown root:root -vR "${pkgdir}/"
 }
