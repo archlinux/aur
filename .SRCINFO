@@ -1,7 +1,7 @@
 pkgbase = dolfinx
 	pkgdesc = Next generation FEniCS problem solving environment
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FEniCS/dolfinx
 	arch = x86_64
 	license = LGPL3
