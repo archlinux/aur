@@ -3,8 +3,8 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.30.0
-pkgrel=2
+pkgver=1.31.0
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -35,7 +35,7 @@ sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
 
 prepare() {
   cd "$srcdir"
-  # @theia/secondary-window as of 1.30.0 said to have issues wuth electron
+  # @theia/secondary-window as of 1.30.0 said to have issues with electron
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
   grep -vF "@theia/secondary-window" >package.json
 }
