@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-v4l2-request-git
 _srcname=FFmpeg
-pkgver=r101819.6eb83262f6
+pkgver=r204003.0b8eff40d9.909ca6380d
 pkgrel=1
 epoch=2
 pkgdesc='FFmpeg with v4l2-request and drmprime'
@@ -87,14 +87,12 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=(
   'git+https://github.com/jernejsk/FFmpeg'
-  'ffmpeg-build-fix-for-dav1d-1.0.0.patch'
 )
 sha256sums=(
   SKIP
-  SKIP
 )
-_branch1='v4l2-request-hwaccel-4.4'
-_branch2='v4l2-drmprime-v6'
+_branch1='v4l2-request-hwaccel-4.4.1-Nexus-Alpha1'
+_branch2='v4l2-drmprime-v6-4.4.1-Nexus-Alpha1'
 
 prepare() {
   cd ${_srcname}

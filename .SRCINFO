@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-v4l2-request-git
 	pkgdesc = FFmpeg with v4l2-request and drmprime
-	pkgver = r101819.6eb83262f6
+	pkgver = r204003.0b8eff40d9.909ca6380d
 	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
@@ -77,8 +77,6 @@ pkgbase = ffmpeg-v4l2-request-git
 	provides = ffmpeg
 	conflicts = ffmpeg
 	source = git+https://github.com/jernejsk/FFmpeg
-	source = ffmpeg-build-fix-for-dav1d-1.0.0.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ffmpeg-v4l2-request-git
