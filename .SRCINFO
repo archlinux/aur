@@ -6,6 +6,7 @@ pkgbase = hibe
 	arch = any
 	license = MIT
 	makedepends = cargo
+	depends = git
 	source = hibe-1.0.0.tar.gz::https://static.crates.io/crates/hibe/hibe-1.0.0.crate
 	sha256sums = SKIP
 
