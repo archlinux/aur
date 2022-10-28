@@ -1,0 +1,22 @@
+pkgbase = numworks-upsilon-git
+	pkgdesc = A simulator for the Numworks graphic calculator (Upsilon firmware)
+	pkgver = 1.22.1.E15.r525.g1d00d7d9d
+	pkgrel = 1
+	url = https://getupsilon.web.app/
+	arch = x86_64
+	license = custom:CC-BY-NC-SA
+	makedepends = freetype2
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = libxext
+	depends = libjpeg-turbo
+	provides = numworks-upsilon
+	conflicts = numworks-upsilon
+	source = numworks-upsilon-git::git+https://github.com/UpsilonNumworks/Upsilon.git
+	source = git+https://github.com/UpsilonNumworks/Upsilon-RPN.git
+	source = git+https://github.com/UpsilonNumworks/atomic.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = numworks-upsilon-git
