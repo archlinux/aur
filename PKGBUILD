@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r2690.7ed35bfb
+pkgver=r2695.9f175d0b
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
