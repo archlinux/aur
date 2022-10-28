@@ -11,6 +11,7 @@ pkgbase = ferdium
 	makedepends = nvm
 	makedepends = git
 	makedepends = python
+	makedepends = libxcrypt-compat
 	depends = nss
 	depends = atk
 	depends = at-spi2-atk
