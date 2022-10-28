@@ -1,5 +1,5 @@
 pkgname="blokator"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Simple system-wide adblocker"
 url="https://gitlab.com/Tomkoid/blokator"
@@ -12,9 +12,15 @@ sha512sums=("SKIP")
 
 build() {
   cd "$srcdir/blokator"
+  # Prepare man page
+  cp man-pages/blokator man-pages/blokator.1
+  gzip man-pages/blokator.1
+
+  # Build
   cargo build --release
 }
 
 package() {
   install -Dm755 "${srcdir}/blokator/target/release/blokator" "${pkgdir}/usr/bin/blokator"
+  install -Dm644 "${srcdir}/blokator/man-pages/blokator.1.gz" "${pkgdir}/usr/share/man/man1/blokator.1.gz"
 }
