@@ -3,15 +3,15 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
 license=('GPL2')
-depends=('git' 'hicolor-icon-theme' 'python-qtpy')
+depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-pyqt5' 'python-qtpy')
 makedepends=('python-build' 'python-installer' 'python-jaraco.packaging' 'python-pip'
              'python-rst.linker' 'python-setuptools-scm' 'python-sphinx' 'python-wheel')
-#checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pyqt5' 'python-pytest-flake8')
+#checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-flake8')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('python-pygments: syntax highlighting'
             'python-send2trash: enables "Send to Trash" functionality.'
@@ -33,7 +33,8 @@ check() {
   cd "$pkgname-$pkgver"
 
   # Run the unit tests
-#  make test
+#  GIT_CONFIG_NOSYSTEM=true LC_ALL="C.utf8" \
+#    make test
 
   desktop-file-validate share/applications/*.desktop
   appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
