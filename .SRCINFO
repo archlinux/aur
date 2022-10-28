@@ -1,6 +1,6 @@
 pkgbase = mac-optimised
 	pkgdesc = Monkey's Audio library and command line APE converter with optimised build flags (from SDK)
-	pkgver = 8.94
+	pkgver = 8.95
 	pkgrel = 4
 	url = https://monkeysaudio.com/developers.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = mac-optimised
 	makedepends = make
 	provides = mac
 	conflicts = mac
-	source = https://monkeysaudio.com/files/MAC_894_SDK4.zip
-	sha256sums = 148eacc192e903747d243dc4b27d33137c9a3a073401a362b20fd594d057358b
+	source = https://monkeysaudio.com/files/MAC_895_SDK.zip
+	sha256sums = 5a4d10d0035b14c1e3bc214a43db426be214cf710b5f8cad4e3b5917297cebc4
 
 pkgname = mac-optimised
