@@ -3,7 +3,7 @@
 #   https://github.com/ericwoud/formatdefconfig.git
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.18.11 Kernel Configuration
+# Linux/arm64 5.19.0-rc8 Kernel Configuration
 #
 
 #
@@ -12,7 +12,6 @@
 CONFIG_LOCALVERSION="-bpi-r64"
 # CONFIG_LOCALVERSION_AUTO is not set
 CONFIG_DEFAULT_HOSTNAME="(mt7622)"
-# CONFIG_SWAP is not set
 CONFIG_SYSVIPC=y
 CONFIG_POSIX_MQUEUE=y
 # CONFIG_CROSS_MEMORY_ATTACH is not set
@@ -58,8 +57,6 @@ CONFIG_CC_OPTIMIZE_FOR_SIZE=y
 #
 CONFIG_PERF_EVENTS=y
 # end of Kernel Performance Events And Counters
-
-# CONFIG_COMPAT_BRK is not set
 # end of General setup
 
 #
@@ -124,6 +121,8 @@ CONFIG_MODULE_UNLOAD=y
 #
 # Memory Management options
 #
+# CONFIG_SWAP is not set
+# CONFIG_COMPAT_BRK is not set
 # CONFIG_COMPACTION is not set
 # end of Memory Management options
 
@@ -408,7 +407,18 @@ CONFIG_PPP_DEFLATE=m
 CONFIG_PPP_FILTER=y
 CONFIG_PPP_MPPE=m
 CONFIG_PPPOE=m
+CONFIG_MT7601U=m
+CONFIG_MT76x0U=m
+CONFIG_MT76x0E=m
+CONFIG_MT76x2E=m
+CONFIG_MT76x2U=m
+CONFIG_MT7603E=m
 CONFIG_MT7615E=m
+CONFIG_MT7663U=m
+CONFIG_MT7915E=m
+CONFIG_MT7986_WMAC=y
+CONFIG_MT7921E=m
+CONFIG_MT7921U=m
 
 #
 # Input device support
@@ -714,7 +724,7 @@ CONFIG_MEDIATEK_MT6577_AUXADC=y
 # end of Analog to digital converters
 
 #
-# VME Device Drivers
+# VME Board Drivers
 #
 CONFIG_PWM=y
 CONFIG_PWM_MEDIATEK=y
