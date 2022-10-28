@@ -1,7 +1,7 @@
 # Maintainer: Ikosse <andrelofgren@hotmail.co.uk>
 
 pkgname=harbour-amazfish
-pkgver=2.0.8
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('git')
 source=("https://github.com/piggz/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('a777fca01882760c37633c5d05fd4e0048d32faed38ebdb09b86074eae5641fe3785557268e2da06e737bfc8ac1a191c4575e3338de9e306b8084ea22c0ac58c')
+sha512sums=('16df8f7592f02a00bb995de5004ccddba8f8bcd479bdf75cff813d41752b13122c7c5decaa7287543722a5cb938e11c891552b1da171a42bc16e7fa464239f31')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
