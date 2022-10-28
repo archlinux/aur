@@ -14,6 +14,7 @@ pkgbase = teams
 	depends = glibc>=2.28-4
 	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = org.freedesktop.secrets: Keyring password store support
+	optdepends = pulseaudio: Video and voice call support
 	conflicts = ms-teams
 	replaces = ms-teams
 	noextract = teams_1.5.00.23861_amd64.deb
