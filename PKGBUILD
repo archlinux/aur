@@ -13,16 +13,16 @@ conflicts=('vhs')
 depends=('ffmpeg' 'ttyd-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0f19239617e1adf8889d4c8165d0ee031e1c31fae2a1f792973590f5fa0a6e50')
+sha256sums_aarch64=('34afe6d1de9190fe34186715bb19d24986676278c2c9436a5b0bac02bf9b32f7')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0b465bc714d6d5b4a5d05a6a91906d70e0c81f38bb98941e33510ec480b40607')
+sha256sums_armv7h=('984023f8d244956b4229c99d32dca4a8b85bb32aaa1e3061018c965d5b6684a5')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_i386.tar.gz")
-sha256sums_i686=('65c37d7cfcb1d3c5ad749229eea02d586a4304464711d7dd77002029a66d4710')
+sha256sums_i686=('1c1b81d2037130b07d8591f6665172850fc56bc7d5e24de5776daadd6e7c56be')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9ff5977b60917fdc6f3f4d1c7bcf6bac7920a1b756c1dd9ccc79ae9a35722dd7')
+sha256sums_x86_64=('2967b259978eb7cda998c0a927d34c22438a6a232b0926b95d984c1d14922295')
 
 package() {
   # bin
