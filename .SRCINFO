@@ -4,7 +4,7 @@ pkgbase = salmon
 	pkgrel = 1
 	url = https://combine-lab.github.io/salmon/
 	arch = x86_64
-	license = GPL
+	license = GPL v3.0
 	makedepends = boost>=1.55
 	makedepends = cmake
 	makedepends = unzip

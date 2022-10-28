@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
-license=('GPL')
+license=('GPL v3.0')
 depends=('bzip2' 'intel-tbb' 'xz')
 makedepends=('boost>=1.55' 'cmake' 'unzip')
 options=('!emptydirs')
