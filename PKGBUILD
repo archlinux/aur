@@ -19,6 +19,7 @@ arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
+replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 options=('!strip')
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
