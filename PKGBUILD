@@ -1,6 +1,6 @@
 # Maintainer: Torben <git at letorbi dot com>
 
-pkgname=processing4-git
+pkgname=processing-git
 pkgver=4.0.1.r0.g58ff6a3c
 pkgrel=1
 arch=(x86_64)

@@ -1,4 +1,4 @@
-pkgbase = processing4-git
+pkgbase = processing-git
 	pkgdesc = Programming environment for creating images, animations and interactions
 	pkgver = 4.0.1.r0.g58ff6a3c
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = processing4-git
 	sha256sums = b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126
 	sha256sums = f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64
 
-pkgname = processing4-git
+pkgname = processing-git
