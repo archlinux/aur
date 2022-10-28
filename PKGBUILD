@@ -2,7 +2,7 @@
 # Contributor: Vyacheslav Artemiev <artemiev.vyacheslav a gmail d com>
 _pkgname=nagstamon
 pkgname=$_pkgname-git
-pkgver=3.9.20220516.r2399.ccb16316
+pkgver=3.10.0.r2586.503f1629
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks')
@@ -11,7 +11,6 @@ arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
 license=('GPL2')
 makedepends=('git' 'python-setuptools')
-optdepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(repo::git+https://github.com/HenriWahl/Nagstamon.git)
@@ -35,8 +34,6 @@ package() {
   name=$(sed '0,/class AppInfo/d' Nagstamon/Config.py  | grep "NAME " | sed -e "s/^[\t ]*NAME = '//" -e "s/'$//")
   version=$(sed '0,/class AppInfo/d' Nagstamon/Config.py  | grep "VERSION " | sed -e "s/^[\t ]*VERSION = '//" -e "s/'$//")
   sed -i setup.py -e "s/from Nagstamon.Config import AppInfo.*//" -e "s/AppInfo.NAME/'${name}'/" -e "s/AppInfo.VERSION/'${version}'/" -e "s/  *OS$/OS = 'Linux'/"
-  sed -i setup.py -e "s/from Nagstamon.Helpers import get_distro//"
-  sed -i setup.py -e "s/get_distro()/('arch', '', 'Arch Linux')/"
   python setup.py install --prefix=/usr --root="$pkgdir"
   mv "$pkgdir/usr/bin/nagstamon.py" "$pkgdir/usr/bin/nagstamon"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
