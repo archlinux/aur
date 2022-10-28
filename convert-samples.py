@@ -57,4 +57,7 @@ for drumkit in sys.argv[1:]:
                 with open(drumkit_xml, 'w') as fp:
                     fp.write(xml.replace(fn, flac))
 
-                os.unlink(orig)
+        try:
+            os.unlink(orig)
+        except:
+            print("Warning: could not remove '%s'.", file=sys.stderr)

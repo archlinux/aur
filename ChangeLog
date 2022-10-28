@@ -1,4 +1,11 @@
-2021-11-12 Christopher Arndt <chris@chrisarndt.de>
+2022-10-28 Christopher Arndt <aur@chrisarndt.de>
+
+	* 20220929-1:
+	add "BeatBuddy Kit" drumkit
+	update project URL
+	use SHA256 checksums
+
+2021-11-12 Christopher Arndt <aur@chrisarndt.de>
 
 	* 20180818-1:
 	add "The Black Pearl 1.0" drumkit
@@ -6,7 +13,7 @@
 	add "Lightning1024" drumkit
 	fix project and download URLs
 
-2018-03-15 Christopher Arndt <chris@chrisarndt.de>
+2018-03-15 Christopher Arndt <aur@chrisarndt.de>
 
 	* 20180312-1:
 	package forked from 'hydrogen-drumkits'
