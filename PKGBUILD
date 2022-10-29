@@ -2,7 +2,7 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r10944.4469d86c7
+pkgver=r11053.2bf9ce2d3
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
@@ -13,7 +13,7 @@ license=('GPL2'
 depends=('alsa-lib' 'hicolor-icon-theme' 'jansson' 'libblocksruntime' 'libdispatch')
 makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse' 
              'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
-             'ffmpeg4.4' 'gtk2' 'gtk3' 'clang')
+             'ffmpeg' 'gtk2' 'gtk3' 'clang')
 optdepends=('gtk2: for the GTK2 interface'
             'gtk3: for the GTK3 interface'
             'libsamplerate: for dsp_libsrc plugin (resampler)'
@@ -40,7 +40,7 @@ optdepends=('gtk2: for the GTK2 interface'
             'libsidplay: for SID player plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'libzip: for vfs_zip plugin'
-            'ffmpeg4.4: for ffmpeg plugin'
+            'ffmpeg: for ffmpeg plugin'
             'opusfile: for opus plugin'
             'mpg123: for MP1/MP2/MP3 playback')
 options=('!libtool')
@@ -58,7 +58,6 @@ prepare() {
 build() {
   cd "$srcdir/deadbeef"
 
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   ./autogen.sh
   CC=clang CXX=clang++ ./configure --prefix=/usr
   make

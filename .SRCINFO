@@ -1,6 +1,6 @@
 pkgbase = deadbeef-git
 	pkgdesc = A GTK+ audio player for GNU/Linux (devel branch)
-	pkgver = r10944.4469d86c7
+	pkgver = r11053.2bf9ce2d3
 	pkgrel = 1
 	url = https://deadbeef.sourceforge.io/
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = deadbeef-git
 	makedepends = libzip
 	makedepends = wavpack
 	makedepends = yasm
-	makedepends = ffmpeg4.4
+	makedepends = ffmpeg
 	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = clang
@@ -59,7 +59,7 @@ pkgbase = deadbeef-git
 	optdepends = libsidplay: for SID player plugin
 	optdepends = yasm: required to build assembly portions of ffap plugin
 	optdepends = libzip: for vfs_zip plugin
-	optdepends = ffmpeg4.4: for ffmpeg plugin
+	optdepends = ffmpeg: for ffmpeg plugin
 	optdepends = opusfile: for opus plugin
 	optdepends = mpg123: for MP1/MP2/MP3 playback
 	provides = deadbeef=1.9.2
