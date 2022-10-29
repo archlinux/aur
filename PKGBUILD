@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webchannel
-_basever=5.15.6
-pkgver=5.15.6+kde+r3
+_basever=5.15.7
+pkgver=5.15.7+kde+r3
 pkgrel=1
-_commit=fb1ca87aa1a12048199d2aabe9015b7222d2b773
+_commit=4e35fe9429920067c17596986b486fb1c1e95db0
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -20,7 +20,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
