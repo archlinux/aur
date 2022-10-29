@@ -1,0 +1,23 @@
+pkgbase = nekoray
+	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/MatsuriDayo/nekoray
+	arch = x86_64
+	license = GPL 3.0
+	makedepends = unzip
+	depends = qt5-base>=5.15
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-x11extras
+	provides = nekoray
+	conflicts = nekoray
+	noextract = nekoray-2.1.zip
+	source = nekoray-2.1.zip::https://github.com/MatsuriDayo/nekoray/releases/download/2.1/nekoray-2.1-2022-10-22-linux64.zip
+	source = nekoray.desktop
+	source = launcher-script
+	sha256sums = 0e04f395c4bb394bd2b017c0b90169703c2dce0ed7f4bf16b319b11805d50bb8
+	sha256sums = dd7083c3992d35ad51beb73bfb3ef42f82ebee6c3ab9a25e9dfe8c6bd95096ce
+	sha256sums = 13986ecce89ddaac4b25fc5e78e1208e2f69bfd3fb86acf2308f218c06e6f5ad
+
+pkgname = nekoray
