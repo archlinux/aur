@@ -8,3 +8,4 @@ Type=Application
 Icon=freetube
 MimeType=x-scheme-handler/freetube;
 Categories=Network;
+StartupWMClass=FreeTube
