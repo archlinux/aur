@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'python>=3.5' 'pnpm' 'nodejs>=16', 'node-gyp')
+makedepends=('git' 'python>=3.5' 'npm' 'pnpm' 'nodejs>=16' 'nodejs<19' 'node-gyp')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live')
 source=("${pkgname}::git+$url#branch=main" "${_pkgbin}.desktop")

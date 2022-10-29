@@ -7,8 +7,10 @@ pkgbase = ledger-live-git
 	license = MIT
 	makedepends = git
 	makedepends = python>=3.5
+	makedepends = npm
 	makedepends = pnpm
-	makedepends = nodejs>=16,
+	makedepends = nodejs>=16
+	makedepends = nodejs<19
 	makedepends = node-gyp
 	depends = ledger-udev
 	provides = ledger-live
