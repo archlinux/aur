@@ -1,19 +1,19 @@
 pkgbase = github-cli-git
 	pkgdesc = The GitHub CLI tool
-	pkgver = 1.0.0.r115.g72eeae9d
-	pkgrel = 2
+	pkgver = 2.18.1.r33.g9ea76237
+	pkgrel = 1
 	url = https://github.com/cli/cli
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = openssh
 	makedepends = git
 	makedepends = go
 	depends = glibc
 	optdepends = git: To interact with repositories
-	provides = github-cli
+	provides = github-cli=2.18.1.r33.g9ea76237
 	conflicts = github-cli
 	source = git+https://github.com/cli/cli.git
 	sha256sums = SKIP
 
 pkgname = github-cli-git
-

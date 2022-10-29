@@ -1,16 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=github-cli-git
-pkgver=1.0.0.r115.g72eeae9d
-pkgrel=2
+pkgver=2.18.1.r33.g9ea76237
+pkgrel=1
 pkgdesc="The GitHub CLI tool"
 arch=('i686' 'x86_64')
 url="https://github.com/cli/cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
+checkdepends=("openssh")
 optdepends=("git: To interact with repositories")
-provides=('github-cli')
+provides=("github-cli=$pkgver")
 conflicts=('github-cli')
 source=("git+https://github.com/cli/cli.git")
 sha256sums=('SKIP')
