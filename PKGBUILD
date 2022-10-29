@@ -2,34 +2,34 @@
 
 pkgname=python-aiohttp-session
 pkgdesc='Web sessions for aiohttp.web'
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 url='http://aiohttp-session.readthedocs.io/'
 license=('Apache')
 arch=('any')
 depends=('python-aiohttp')
 optdepends=(
-  'python-aioredis: Redis session storage'
-  'python-cryptography: store sessions in encrypted cookies'
   'python-aiomcache: Memcached session storage'
+  'python-cryptography: store sessions in encrypted cookies'
   'python-pynacl: NaCL encrypted JSON session storage'
+  'python-redis: Redis session storage'
 )
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 
 _pypi=aiohttp-session
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '0fdf39600f6a05c4943ef6c7b099071ca9854413111a26761626244be5015dc4'
+  '0ccd11a7c77cb9e5a61f4daacdc9170d561112f9cfaf9e9a2d9867c0587d1950'
 )
 
 build() {
   cd "aiohttp-session-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "aiohttp-session-$pkgver"
-  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

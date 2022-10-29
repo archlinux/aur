@@ -1,17 +1,20 @@
 pkgbase = python-aiohttp-session
 	pkgdesc = Web sessions for aiohttp.web
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = http://aiohttp-session.readthedocs.io/
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-aiohttp
-	optdepends = python-aioredis: Redis session storage
-	optdepends = python-cryptography: store sessions in encrypted cookies
 	optdepends = python-aiomcache: Memcached session storage
+	optdepends = python-cryptography: store sessions in encrypted cookies
 	optdepends = python-pynacl: NaCL encrypted JSON session storage
-	source = https://files.pythonhosted.org/packages/source/a/aiohttp-session/aiohttp-session-2.11.0.tar.gz
-	sha256sums = 0fdf39600f6a05c4943ef6c7b099071ca9854413111a26761626244be5015dc4
+	optdepends = python-redis: Redis session storage
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp-session/aiohttp-session-2.12.0.tar.gz
+	sha256sums = 0ccd11a7c77cb9e5a61f4daacdc9170d561112f9cfaf9e9a2d9867c0587d1950
 
 pkgname = python-aiohttp-session
