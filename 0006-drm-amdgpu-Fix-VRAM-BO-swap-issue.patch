@@ -1,7 +1,7 @@
-From 785699dbc7041b99e0027bff27ffe17eba202e96 Mon Sep 17 00:00:00 2001
+From f2712d9d94e98733953cf567f32f7755800464ae Mon Sep 17 00:00:00 2001
 From: Arunpravin Paneer Selvam <Arunpravin.PaneerSelvam@amd.com>
 Date: Tue, 4 Oct 2022 07:33:39 -0700
-Subject: [PATCH 7/9] drm/amdgpu: Fix VRAM BO swap issue
+Subject: [PATCH 6/8] drm/amdgpu: Fix VRAM BO swap issue
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

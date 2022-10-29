@@ -1,7 +1,7 @@
-From a24b69f369c6c55be8ce40427feb4e127afae129 Mon Sep 17 00:00:00 2001
+From 2b078fa1fdcbd43a042ff49ad70f6ab2a22dffb3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Fri, 7 Oct 2022 10:59:58 +0200
-Subject: [PATCH 6/9] drm/amdgpu: use DRM_SCHED_FENCE_DONT_PIPELINE for VM
+Subject: [PATCH 5/8] drm/amdgpu: use DRM_SCHED_FENCE_DONT_PIPELINE for VM
  updates
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

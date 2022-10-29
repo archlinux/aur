@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.5
+pkgver=6.0.6
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -92,30 +92,28 @@ source=(
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
-  0003-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
-  0004-soundwire-intel-Initialize-clock-stop-timeout.patch
-  0005-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
-  0006-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
-  0007-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch
-  0008-drm-amdgpu-Fix-for-BO-move-issue.patch
+  0003-soundwire-intel-Initialize-clock-stop-timeout.patch
+  0004-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
+  0005-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
+  0006-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch
+  0007-drm-amdgpu-Fix-for-BO-move-issue.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('61332ef22b53c50c10faabfb965896a7d1ad4f3381f0f89643c820f28a60418e'
+sha256sums=('864b05af2d869ba73d61a9c5959e4531a141ab2bd7b217483671f625f9747faa'
             'SKIP'
             '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
             '2d50a108a111a7f135f91b2676539d0a163e38ee72874d091aed0e1e86f2d477'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            '0579b6f69a528f25a49fd872c43a8352f8a6e6e1581fbfc626ae04d9789eb2fb'
-            '38d0bf2d48ea454376eaca2af6b7dec285304b710eeccb44e82b0eb2b4359786'
-            '095c5607059a98d764e8b26377587134521c47a12df66729736cedc41f6da017'
-            '596e972f4c4fda1e830eb1dc6851a0d66a41cc504880f78cf32cb379aa6818ab'
-            '22e15d9cc9b59da9febe0ea28c6d862828bb304160d310c83ce21934658fe80a'
-            '0fa8801cbab408513d740b41e325498dd5468b5055e6e456daa727178d678b97'
-            '530a4b74bc6df917c401a0a0b0c1658a8e9ee361b22b6cd56e1305858c190fb5'
-            '322267bec409b46de82f1ed2b8e37cd5cd26bcd5e935f7f4581d21a48a6894e7')
+            'f1aafd32cd42e9ebb3475597db05bf27561ae52a7b48ec5bc353be3ca50925a1'
+            '0a4ab2a5f7cf2cd78ca20678775f4ead39169bd7d7ba5e7ecae9053a9c94071b'
+            'ef1e125fb021ab64aeeda696408d6ed8232a4261a0a2489afc560350fc7312bc'
+            'feac2bd6fc4ee7c566975e09cb55bdc7be192988b037a0e79fd7e51f3f914221'
+            '76052ea5929bac6b4fccc77b321cb273d6fca64426b7584fca5ff36a470d6eb1'
+            'e0e9dc4b1a0ea0fd1af0825c0b49844ea364e3163c4291b8712919f49914c4ef'
+            '1487f13aa32de66562fca3b61e8c97c45c6f8dc2362403b141be2db423fcc3e1')
 
 prepare() {
   cd linux-${pkgver}

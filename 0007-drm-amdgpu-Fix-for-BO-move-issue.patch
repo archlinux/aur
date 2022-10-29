@@ -1,7 +1,7 @@
-From 6df3912f64cea68409b08d282ffbccf0af7f8d8e Mon Sep 17 00:00:00 2001
+From 75ff02c24828d71bf13730e1a0b499591a1a4cef Mon Sep 17 00:00:00 2001
 From: Arunpravin Paneer Selvam <Arunpravin.PaneerSelvam@amd.com>
 Date: Mon, 17 Oct 2022 13:15:21 -0700
-Subject: [PATCH 8/9] drm/amdgpu: Fix for BO move issue
+Subject: [PATCH 7/8] drm/amdgpu: Fix for BO move issue
 
 If there are no blocks to compare then exit
 the loop.

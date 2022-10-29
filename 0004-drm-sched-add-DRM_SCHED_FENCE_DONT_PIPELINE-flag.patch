@@ -1,7 +1,7 @@
-From 64ebb671ffc4cbfd548e4f1b4aeb98155fd386dc Mon Sep 17 00:00:00 2001
+From 87336625589872206597baab173ae6014ddf1750 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Fri, 7 Oct 2022 09:51:13 +0200
-Subject: [PATCH 5/9] drm/sched: add DRM_SCHED_FENCE_DONT_PIPELINE flag
+Subject: [PATCH 4/8] drm/sched: add DRM_SCHED_FENCE_DONT_PIPELINE flag
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
