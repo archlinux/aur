@@ -2,8 +2,8 @@
 
 pkgname=vr-video-player-git
 pkgver=r92.7ff6797
-pkgrel=1
-pkgdesc='A virtual reality video player for x11 on Linux'
+pkgrel=2
+pkgdesc='A virtual reality video player for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/vr-video-player"
 license=('BSD')
