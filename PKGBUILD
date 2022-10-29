@@ -7,12 +7,12 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.49.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('pnpm' 'ruby-bundler' 'python>=3.5' 'nodejs>=16')
+makedepends=('python>=3.5' 'pnpm' 'nodejs>=16' 'node-gyp')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live-git')
 _extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
@@ -33,7 +33,7 @@ build() {
 package() {
   install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  cd ${_extdir}/apps/${_pkgbin}/
+  cd ${_extdir}/apps/${_pkgbin}
 
   install -dm755 "${pkgdir}/opt"
   cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
