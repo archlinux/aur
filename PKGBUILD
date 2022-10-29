@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webglplugin
-_basever=5.15.6
-pkgver=5.15.6+kde+r0
+_basever=5.15.7
+pkgver=5.15.7
 pkgrel=1
-_commit=68a322c391c2eb92876fce42b9fc23ad2f3a1ecb
+_commit=3087cdd0758258163299602550f7d4e72edf2a80
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -20,7 +20,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
