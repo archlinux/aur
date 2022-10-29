@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_basever=5.15.6
-pkgver=5.15.6+kde+r5
+_basever=5.15.7
+pkgver=5.15.7+kde+r5
 pkgrel=1
-_commit=01e8b04b121712ea0a2b2793ce13f4dd5e9cfcf8
+_commit=6796953f92a1d3af30d0676e56ec5dfd82199611
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -21,7 +21,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
