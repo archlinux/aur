@@ -8,10 +8,10 @@ pkgbase = python-perfplot
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-build
 	makedepends = python-flit-core
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python-matplotx
 	depends = python-rich
-	source = https://github.com/nschloe/perfplot/archive/v0.10.2.tar.gz
+	source = perfplot-0.10.2.tar.gz::https://github.com/nschloe/perfplot/archive/v0.10.2.tar.gz
 	sha512sums = b11086e3b9737d09c1e8dea0c2abc35b0ebc540c8aa693e4ca2df23cef9ad7e0cb0e2fcf7ad572b933279b57c6953b54a24ea2e9f8958830463da9055da5c3ec
 
 pkgname = python-perfplot
