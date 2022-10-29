@@ -1,5 +1,17 @@
 #!/bin/bash
-# GPLv3
+#
+#  (c) Copyright 2012-2020 **PokeMMO Game Client** PokeMMO.eu <linux@pokemmo.eu>
+#  (c) Copyright 2017-2020 **PokeMMO Installer** Carlos Donizete Froes [a.k.a coringao]
+#
+#  This file is part of PokeMMO Installer, is an program downloads and
+#  installs the PokeMMO client to a user's home directory and provides
+#  a launcher script for a convientient starting of the emulator.
+#
+#  The script main is published under GPLv3 with OpenSSL exception,
+#  the full license can be found in the LICENSE file.
+#
+# Script name:    'pokemmo-installer.sh'
+# Edited version: '1.4.8'
 
 addScreenshotsDir() (
 
@@ -35,12 +47,12 @@ JAVA_OPTS=()
 case "$1" in
     client)
         if [[ ! $SKIPJAVARAMOPTS ]]; then
-            JAVA_OPTS=(-Xms128M)
+            JAVA_OPTS=(-Xms128M --add-opens java.base/java.lang=ALL-UNNAMED -Dfile.encoding=UTF-8)
 
             if [ -f "$POKEMMO/PokeMMO.l4j.ini" ]; then
-                JAVA_OPTS+=($(grep -oE "\-Xmx[0-9]{1,4}(M|G)" "$POKEMMO/PokeMMO.l4j.ini" || echo -- "-Xmx384M"))
+                JAVA_OPTS+=($(grep -oE "\-Xmx[0-9]{1,4}(M|G)" "$POKEMMO/PokeMMO.l4j.ini" || echo "-Xmx256M"))
             else
-                JAVA_OPTS+=(-Xmx384M)
+                JAVA_OPTS+=(-Xmx256M)
             fi
         fi
 
@@ -59,13 +71,13 @@ echo "Java options were ${JAVA_OPTS[*]}"
 showMessage() {
   if [ "$(command -v zenity)" ]; then
     case "$1" in
-      --info) zenity --notification --window-icon=/usr/share/pixmaps/pokemmo-launcher.png --text="$2" ; echo "INFO: $2" ;;
+      --info) zenity --notification --window-icon=/usr/share/pixmaps/pokemmo-installer.png --text="$2" ; echo "INFO: $2" ;;
       --error) zenity --error --width="250" --text="$2" ; echo "ERROR: $2" ; exit 1 ;;
       --warn) zenity --warning --width="250" --text="$2" ; echo "WARNING: $2" ;;
     esac
   elif [ "$(command -v kdialog)" ]; then
     case "$1" in
-      --info) kdialog --icon /usr/share/pixmaps/pokemmo-launcher.png --passivepopup "$2" ; echo "INFO: $2" ;;
+      --info) kdialog --icon /usr/share/pixmaps/pokemmo-installer.png --passivepopup "$2" ; echo "INFO: $2" ;;
       --error) kdialog --error "$2" ; echo "ERROR: $2" ; exit 1 ;;
       --warn) kdialog --sorry "$2" ; echo "WARNING: $2" ;;
     esac
@@ -145,7 +157,7 @@ if [ ! -d "$POKEMMO" ]; then
   fi
 fi
 
-if [[ ! -r "$POKEMMO" || ! -w "$POKEMMO" || ! -x "$POKEMMO" || ! "$PKMO_IS_INSTALLED" || ! -f "$POKEMMO/PokeMMO.exe" || ! -d "$POKEMMO/data" || ! -d "$POKEMMO/lib" ]]; then
+if [[ ! -r "$POKEMMO" || ! -w "$POKEMMO" || ! -x "$POKEMMO" || ! "$PKMO_IS_INSTALLED" || ! -f "$POKEMMO/PokeMMO.exe" || ! -d "$POKEMMO/data" ]]; then
     showMessage --warn "(Error 1) The installation is in a corrupt state.\n\nReverifying the game files."
     # Try to fix permissions before erroring out
     (chmod u+rwx "$POKEMMO" && find "$POKEMMO" -type d -exec chmod u+rwx {} + && find "$POKEMMO" -type f -exec chmod u+rw {} +) || showMessage --error "(Error 4) Could not fix permissions of $POKEMMO.\n\nContact PokeMMO support."
@@ -196,7 +208,7 @@ while getopts "vhH:-:" opt; do
         h) printf "\
  PokeMMO Linux Launcher v1.4\n\
  https://pokemmo.eu/\n\n\
- Usage: pokemmo-launcher [option...]\n\n\
+ Usage: pokemmo [option...]\n\n\
  -h                     Display this dialogue\n\
  -H <dir>               Set the PokeMMO directory (Default: $HOME/.local/share/pokemmo).
                         This option is persistent and may be modified in $PKMOCONFIGDIR/pokemmodir \n\
@@ -219,7 +231,20 @@ done
 
 [[ -f "$PKMOCONFIGDIR/pokemmo" ]] && getLauncherConfig
 
-POKEMMO="$HOME/.pokemmo"
+if [[ -f "$PKMOCONFIGDIR/pokemmodir" ]]; then
+    POKEMMO=$(head -n1 "$PKMOCONFIGDIR/pokemmodir")
+    [[ ! -d "$POKEMMO" ]] && showMessage --error "(Error 8) The configured directory ($POKEMMO) has become unavailable. Bailing!"
+else
+    if [[ -d "$XDG_DATA_HOME" ]]; then
+        POKEMMO="$XDG_DATA_HOME/pokemmo"
+    else
+        if [[ ! -e "$XDG_DATA_HOME" && -L "$XDG_DATA_HOME" ]]; then
+            showMessage --error "(Error 11) The XDG_DATA_HOME directory ($XDG_DATA_HOME/pokemmo) is disconnected.\n\nPlease update your symlink and restart the program."
+        else
+            POKEMMO="$HOME/.local/share/pokemmo"
+        fi
+    fi
+fi
 
 verifyInstallation
 
@@ -227,7 +252,7 @@ getJavaOpts "client"
 
 if [[ $PKMO_CREATE_DEBUGS ]]; then
 	cd "$POKEMMO"
-    ( java ${JAVA_OPTS[*]} -cp ./lib/*:PokeMMO.exe com.pokeemu.client.Client ) &
+    ( java ${JAVA_OPTS[*]} -cp PokeMMO.exe com.pokeemu.client.Client ) &
 
 	client_pid=$!
 	
@@ -243,5 +268,5 @@ if [[ $PKMO_CREATE_DEBUGS ]]; then
 
 	wait
 else
-	cd "$POKEMMO" && java ${JAVA_OPTS[*]} -cp ./lib/*:PokeMMO.exe com.pokeemu.client.Client > /dev/null
+	cd "$POKEMMO" && java ${JAVA_OPTS[*]} -cp PokeMMO.exe com.pokeemu.client.Client > /dev/null
 fi
