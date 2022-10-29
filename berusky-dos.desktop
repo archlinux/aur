@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Berušky (DOS)
+Exec=dosbox /usr/share/berusky-dos/BERUSKY.EXE -noautoexec -exit -fullscreen
+Icon=berusky-dos
+Categories=Game

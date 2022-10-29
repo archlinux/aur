@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Berušky - Extra úrovně (DOS)
+Exec=dosbox /usr/share/berusky-dos/urovne.bat -noautoexec -exit -fullscreen
+Icon=berusky-edit
+Categories=Game
