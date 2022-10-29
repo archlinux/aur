@@ -24,7 +24,6 @@ build() {
 
 package() {
     cd ${pkgname}-dummy-tag-${pkgver}/build
-    make
 
     install -Dm755 obs-ndi.so ${pkgdir}/usr/lib/obs-plugins/obs-ndi.so
     install -Dm644 ../data/locale/en-US.ini ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale/en-US.ini
