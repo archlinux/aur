@@ -24,7 +24,7 @@ md5sums=(
     9df885fc6e5b0a6c0f2af9bf396732e9)
 package(){
     install -dm757 $pkgdir/usr/share/$pkgname
-    cp -r DOC MOD SMP BERUSKY.{CFG,DAT,EXE} CWSDPMI.EXE FILE_ID.DIZ SETUP.EXE urovne.bat $pkgdir/usr/share/$pkgname
+    cp -r DOC MOD SMP BERUSKY.{CFG,DAT,EXE} CWSDPMI.EXE FILE_ID.DIZ SETUP.EXE ../urovne.bat $pkgdir/usr/share/$pkgname
     install *.LV3 read_me.txt -Dt $pkgdir/usr/share/$pkgname/urovne
     install berusky-{dos,edit}.png -Dt $pkgdir/usr/share/icons/hicolor/22x22/apps
     install -D {berusky-dos42,$pkgdir/usr/share/icons/hicolor/48x48/apps/berusky-dos}.png   # berusky.png koliduje s "berusky"
