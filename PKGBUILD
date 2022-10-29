@@ -1,7 +1,7 @@
 # Maintainer: Doug Elkin <aur@dougelkin.com>
 
 pkgname=emocli
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="command-line interface for searching emoji characters"
 url='https://github.com/duhdugg/emocli'
@@ -11,7 +11,7 @@ depends=()
 optdepends=()
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('0dc6cb02bfca11311e923a5578e3af3bb23207a062178525c1c88330bd3056e1')
+sha256sums=('428006c37494e911031b198e86d92b152a3a06279474d9fb19eb89978b94216c')
 
 prepare() {
   cd "$pkgname-$pkgver"
