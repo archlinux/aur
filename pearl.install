@@ -1,5 +1,8 @@
 _post(){
-    /usr/bin/pearl init
+    echo
+    echo "Remember to init Pearl configurations by running:"
+    echo "    /usr/bin/pearl init"
+    echo
 }
 
 # arg 1:  the new package version
