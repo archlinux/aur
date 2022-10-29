@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 
 _realname=CPU-X
 pkgname=cpu-x
@@ -6,7 +6,7 @@ pkgver=4.5.1
 pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
-url="http://X0rg.github.io/CPU-X/"
+url="https://thetumultuousunicornofdarkness.github.io/CPU-X"
 license=('GPL3')
 depends=('gtk3' 'ncurses' 'libcpuid>=0.6.0' 'pciutils' 'glfw' 'opencl-icd-loader' 'vulkan-icd-loader' 'procps-ng')
 makedepends=('cmake' 'ninja' 'nasm' 'opencl-headers' 'vulkan-headers')
