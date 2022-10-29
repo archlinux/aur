@@ -2,7 +2,7 @@
 
 pkgname=processing-git
 pkgver=4.0.1.r39.gf681ae31b
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
@@ -10,6 +10,7 @@ license=(GPL LGPL)
 provides=(processing)
 conflicts=(processing)
 depends=('java-environment-openjdk=17' ffmpeg)
+optdepends=('processing-examples: Examples for Processing')
 makedepends=(ant gendesk rsync unzip)
 options=(!strip)
 source=(disable_update_check.patch
