@@ -10,7 +10,7 @@ _majorver=19
 _minorver=0
 _securityver=1
 _updatever=10
-pkgrel=1
+pkgrel=2
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -29,11 +29,11 @@ noextract=("jdk-openjdk-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "jre-openjdk-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "openjdk-doc-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
         "openjdk-src-xdg-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('af99cc3bdaf153007918b54c1726da0bc10819661e982355da3495156f5d36b3'
-            '0146f33be7739aeec92439d6cfae38f853cf8ae957e57b4bb73d2f4e128d3c25'
-            'd4d9c65ca2f4b503e86c783abc1d3c749011480adb9e80e339758f19f3f136f8'
-            '070480574f99e4ff0decab87d85178dfbe7dbc32266f1d7bea8ad6426f5f4d97'
-            'cad29c3f9079ddb8aa49175150b797bac1b948504d55f7ce54b943f0df5d770e')
+sha256sums=('429bd094265fed02975ad9b339cdd3edbe0c15da910e2e1ac8fe181443cd6ebd'
+            'ae6c957d9eb1d9a29add8adf0c13e31e32b3bd1dc8ec93a39a2966c9678a918a'
+            '97e5b1cd9857626e9ef1bec005bf6bb771afef8123d8510878962ffc3b654228'
+            'bb565bf6d366ec2a20cb674228154168fb9964b2cd0d63e349c81bcb33b1ef63'
+            'bfb9a4495a2726a1870691da134f9c13126b3e968a4407a4ac3bbdff7029d81e')
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src'
           'openjdk-doc')
 conflicts=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src'
