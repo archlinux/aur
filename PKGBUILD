@@ -3,8 +3,8 @@
 
 pkgbase=cheese
 pkgname=(cheese libcheese)
-pkgver=41.1
-pkgrel=2
+pkgver=43alpha+r8+g1de47dbc
+pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -13,18 +13,18 @@ depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutte
          libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
 makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
 checkdepends=(xorg-server-xvfb)
-_commit=7fc2ed5cc4f52ff8e3199e491f72e4aa59fdf373  # gnome-41
+options=(debug)
+_commit=1de47dbc95db445e31fdc674ea4208f53699f81a  # master
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd cheese
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed 's/\.\([a-z]\)/\1/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd cheese
-  git tag -f 41.1 7fc2ed5cc4f52ff8e3199e491f72e4aa59fdf373 # Fixup misplaced tag
 }
 
 build() {
@@ -33,8 +33,8 @@ build() {
 }
 
 check() (
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/cheese/data}"
-  export GSETTINGS_SCHEMA_DIR
+  export GSETTINGS_SCHEMA_DIR="$PWD/cheese/data"
+  glib-compile-schemas "$GSETTINGS_SCHEMA_DIR"
 
   dbus-run-session xvfb-run -s '-nolisten local' \
     meson test -C build --print-errorlogs
@@ -71,4 +71,4 @@ package_libcheese() {
   mv libs/* "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
