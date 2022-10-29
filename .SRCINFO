@@ -1,13 +1,14 @@
 pkgbase = nextcloud-app-integration-google
 	pkgdesc = Google integration in Nextcloud
-	pkgver = 1.0.6
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/nextcloud/integration_google
 	arch = any
 	license = AGPL3
-	depends = nextcloud
+	makedepends = nextcloud
+	makedepends = yq
 	options = !strip
-	source = integration_google-v1.0.6.tar.gz::https://github.com/nextcloud/integration_google/releases/download/v1.0.6/integration_google-1.0.6.tar.gz
-	sha512sums = 62c8abde744569a473144effcfdb2dfe71830e89973449e9b4280598bff6f7bbd1739a507ab23a0dd5577d9e90706ac78e231a2abbaf05fe2b1e22add3668c37
+	source = nextcloud-app-integration-google-1.0.8.tar.gz::https://github.com/nextcloud/integration_google/releases/download/v1.0.8/integration_google-1.0.8.tar.gz
+	sha512sums = 54736b8fb2f744652faf6c84282291c707858a659b09da437916780daf5a6564acb3b4199c484bec9dbe96a4f27f07d796934f2d10c0583a36118a3129f28d23
 
 pkgname = nextcloud-app-integration-google
