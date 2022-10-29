@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=vhs
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ffmpeg' 'ttyd')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='d6bba9f32240f3eef4b063f4742b9af4475cc9b2'
+_commit='b023c66ea250069c6b65b590828ecb05892104f5'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 

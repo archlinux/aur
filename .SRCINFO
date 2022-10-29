@@ -1,6 +1,6 @@
 pkgbase = vhs
 	pkgdesc = A tool for recording terminal GIFs
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/charmbracelet/vhs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vhs
 	depends = ffmpeg
 	depends = ttyd
 	options = !lto
-	source = vhs::git+https://github.com/charmbracelet/vhs#commit=d6bba9f32240f3eef4b063f4742b9af4475cc9b2
+	source = vhs::git+https://github.com/charmbracelet/vhs#commit=b023c66ea250069c6b65b590828ecb05892104f5
 	b2sums = SKIP
 
 pkgname = vhs
