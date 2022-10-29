@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-sensors
-_basever=5.15.6
-pkgver=5.15.6+kde+r0
+_basever=5.15.7
+pkgver=5.15.7
 pkgrel=1
-_commit=35eb5ac7eaef4745a38958c3ca780d7baa2e4f30
+_commit=5f1f73fdba8906f58c4554cbef9c1a72edcf0230
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -21,7 +21,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
