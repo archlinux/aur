@@ -1,7 +1,7 @@
 # Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=gnaural-presets
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Preset files for Gnaural"
 arch=('any')
@@ -49,7 +49,7 @@ source=(http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/Toa
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/AcademicPerformanceEnhancement.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/android_presets.zip
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/DefaultMeditationSession.gnaural
-        "http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Full Moon.gnaural"
+        "http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Full%20Moon.gnaural"
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/8-voice.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Gnaural-Breath-Duration-Increase.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/ThetaGnauralPresetforSkilledRelaxation.zip

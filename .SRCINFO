@@ -1,6 +1,6 @@
 pkgbase = gnaural-presets
 	pkgdesc = Preset files for Gnaural
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://sourceforge.net/projects/gnaural/files/Presets/
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = gnaural-presets
 	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/AcademicPerformanceEnhancement.gnaural
 	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/android_presets.zip
 	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/DefaultMeditationSession.gnaural
-	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Full Moon.gnaural
+	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Full%20Moon.gnaural
 	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/8-voice.gnaural
 	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Gnaural-Breath-Duration-Increase.gnaural
 	source = http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/ThetaGnauralPresetforSkilledRelaxation.zip
@@ -98,4 +98,3 @@ pkgbase = gnaural-presets
 	md5sums = e7f0266303be91e733612179e39d3831
 
 pkgname = gnaural-presets
-
