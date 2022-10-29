@@ -1,39 +1,43 @@
-# Maintainer: Mathias Buhr <napcode@aparatus.de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Mathias Buhr <napcode@aparatus.de>
 
-pkgname=octasine
-pkgver=0.9.0
+_name=OctaSine
+pkgname=${_name,,}
+pkgver=0.9.1
 pkgrel=1
-pkgdesc='VST2 frequency modulation synthesizer written in Rust'
-arch=('x86_64')
-url='https://github.com/greatest-ape/OctaSine'
-license=('GPL3')
-groups=('pro-audio' 'vst-plugins')
-depends=(
-  'fontconfig'
-  'freetype2'
-  'xcb-util-wm'
-  'libxcb'
-  'expat'
-  'libpng'
-  'harfbuzz'
-  'graphite'
-  'glib2'
-  'pcre'
-  )
-makedepends=(
-  'rust'
+pkgdesc='A four-operator stereo FM synthesizer VST2 plugin'
+arch=(aarch64 x86_64)
+url='https://www.octasine.com/'
+license=(AGPL3)
+groups=(clap-plugins pro-audio vst-plugins)
+depends=(gcc-libs glibc libx11 libxcb xcb-util-wm)
+makedepends=(libglvnd libxcursor python rust)
+optdepends=(
+  'clap-host: for loading the CLAP plugin'
+  'vst-host: for loading the VST2 plugin'
 )
-
-source=(https://github.com/greatest-ape/OctaSine/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('14628f5fdbf34c8041ab57117fc5b88ea2f7b5a1ea7b85e2a4e3cb2b1e11fbb6')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/greatest-ape/$_name/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b67fe619d799b4200956304edd3bc7f01952319fcb1a11c0109662eb23e24f75')
 
 build() {
-  cd OctaSine-${pkgver}
-  cargo xtask bundle octasine --release --verbose --no-default-features --features "glow vst2"
+  cd $_name-$pkgver
+  cargo xtask bundle -p octasine --release --features "vst2"
+  cargo xtask bundle -p octasine --release --features "clap"
+}
+
+check() {
+  cd $_name-$pkgver
+  cargo test -p octasine
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/lib/vst
-  cp ${srcdir}/OctaSine-${pkgver}/target/bundled/octasine.so ${pkgdir}/usr/lib/vst/OctaSine.so
-  chmod +x ${pkgdir}/usr/lib/vst/OctaSine.so
+  depends+=(libGL.so)
+  cd $_name-$pkgver
+  # Use 'OctaSine' instead of 'octasine' as the basename for the plugins
+  # since that's what previous versions used, so that existing projects will still work.
+  install -Dm755 target/bundled/$pkgname.so "$pkgdir"/usr/lib/vst/$_name.so
+  install -Dm755 target/bundled/$pkgname.clap "$pkgdir"/usr/lib/clap/$_name.clap
+  install -Dm644 *.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 images/* -t "$pkgdir"/usr/share/doc/$pkgname/images
 }
