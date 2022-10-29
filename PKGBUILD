@@ -232,7 +232,7 @@ END
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
 
   # Hide the annoying Firefox view feature introduced in 106
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
 
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
