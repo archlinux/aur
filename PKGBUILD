@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 # Contributor: Tom Kwok <contact@tomkwok.com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
