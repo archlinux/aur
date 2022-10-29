@@ -7,7 +7,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=106.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -42,13 +42,13 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
 sha256sums=('905738490cd523ef3d17c48aaac65a1dc19294e8932a245d0f7607be38393fe2'
-            'SKIP'
-            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+  'SKIP'
+  '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -230,6 +230,9 @@ END
 
   # Update handler links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
+
+  # Hide the annoying Firefox view feature introduced in 106
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
 
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
