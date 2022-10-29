@@ -4,7 +4,7 @@
 _gitname=firefox-socket-control
 _version=1.5
 pkgname=${_gitname}-git
-pkgver=${_version}.328de11
+pkgver=${_version}.967de96
 pkgrel=1
 pkgdesc="Control Firefox from a UNIX socket."
 arch=('any')
@@ -32,7 +32,7 @@ package() {
   install -Dm644 "socketcontrol-${_version}-fx.xpi" "${pkgdir}/usr/lib/firefox/browser/extensions/native_control@karabaja4.xpi"
 
   cd "${_gitname}"
-  install -Dm755 "firefox-socket-control" "${pkgdir}/usr/bin/firefox-socket-control"
+  install -Dm755 "firefox" "${pkgdir}/usr/bin/firefox"
   install -Dm755 "app/socketcontrol" "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/socketcontrol"
   install -Dm644 "app/socketcontrol.json" "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/socketcontrol.json"
 }
