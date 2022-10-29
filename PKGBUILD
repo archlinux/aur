@@ -88,7 +88,7 @@ prepare() {
   git config submodule."libs/eigen".url "${srcdir}/${pkgname}"-eigen
   git config submodule."libs/qmdnsengine".url "${srcdir}/${pkgname}"-qmdnsengine
 
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update --init --recursive
 
   cd "${srcdir}/${pkgname}-${pkgver}/libs/qmlglsink/gst-plugins-good"
   patch --strip=1 < "${srcdir}/gst-volatile.patch"
