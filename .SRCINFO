@@ -13,6 +13,7 @@ pkgbase = dtkcore-git
 	makedepends = dtkcommon-git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = doxygen
 	depends = dconf
 	depends = deepin-desktop-base-git
 	depends = python
