@@ -8,30 +8,26 @@ arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-meshio gmsh)
-makedepends=(python-build python-flit-core python-install)
+makedepends=(python-build python-flit-core python-installer)
 checkdepends=(python-pytest-codeblocks) # python-matplotlib
-source=(${url}/archive/v${pkgver}.tar.gz)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('f43716750d43c44121f06d7275540c0a6fb0fcb619b9475377b43b46c2e8f6c336e23b80a25383b617f6a0843ec86521699faae573aca01b1d4e12970cc72987')
 
 build() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
+  cd ${_base}-${pkgver}
   PYTHONPATH="/usr/share/gmsh/api/python:${PYTHONPATH}" python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg PYTHONPATH="/usr/share/gmsh/api/python:${PYTHONPATH}" test-env/bin/python -m pytest --codeblocks -k 'not circle and not ellipsoid and not swiss_cheese' # MPLBACKEND=Agg
+  test-env/bin/python -m installer dist/*.whl
+  MPLBACKEND=Agg PYTHONPATH="/usr/share/gmsh/api/python:${PYTHONPATH}" test-env/bin/python -m pytest --codeblocks -k 'not circle and not ellipsoid and not swiss_cheese'
 }
 
 package() {
   cd "${_base}-${pkgver}"
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
-
-  # https://github.com/FFY00/python-install/pull/6
-  chmod +x ${pkgdir}/usr/bin/*
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")

@@ -8,10 +8,10 @@ pkgbase = python-pygmsh
 	checkdepends = python-pytest-codeblocks
 	makedepends = python-build
 	makedepends = python-flit-core
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python-meshio
 	depends = gmsh
-	source = https://github.com/nschloe/pygmsh/archive/v7.1.17.tar.gz
+	source = pygmsh-7.1.17.tar.gz::https://github.com/nschloe/pygmsh/archive/v7.1.17.tar.gz
 	sha512sums = f43716750d43c44121f06d7275540c0a6fb0fcb619b9475377b43b46c2e8f6c336e23b80a25383b617f6a0843ec86521699faae573aca01b1d4e12970cc72987
 
 pkgname = python-pygmsh
