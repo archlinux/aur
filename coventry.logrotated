@@ -3,6 +3,6 @@
     notifempty
     sharedscripts
     postrotate
-    /sbin/service coventry reload > /dev/null 2>/dev/null || true
+    /usr/sbin/systemctl reload coventry > /dev/null 2>/dev/null || true
     endscript
 }
