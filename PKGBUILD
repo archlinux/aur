@@ -1,10 +1,12 @@
 # Maintainer: Zoddo <archlinux+aur@zoddo.fr>
+# Contributor: Thaodan <AUR+me@thaodan.de>
 # Contributor: huyizheng
 # Contributor: johnnyapol <arch@johnnyapol.me>
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
-pkgname=discord_arch_electron
 _pkgname=discord
-pkgver=0.0.20
+_electron=electron19
+pkgname=${_pkgname}_arch_electron
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -12,21 +14,21 @@ provides=('discord')
 conflicts=('discord')
 url='https://discord.com'
 license=('custom')
-depends=('electron19')
+depends=("${_electron}" 'libxss')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files')
 source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'discord-launcher.sh'
-        'LICENSE.html::https://discordapp.com/terms'
-        'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('720bc8a8b61cbbe3566c34065f9831571da121d210e3f2876c34cb964d60bab33f8dc16f7ca758e918cd8f35a69699c0b9063782e6c95087c0baa41a6d0e7cf5'
+        'LICENSE.html::https://discord.com/terms'
+        'OSS-LICENSES.html::https://discord.com/licenses')
+sha512sums=('149ae5b8b7d92549e12eca52e45d3f5761ef022ae321cf33fadc3b56c4cee0616a5166380faea038256213713a7aa90e1befc4caa3e6a4de8e15c1cb1d8f925d'
             '93418d8e40cab7ed25f6debc341294f76f90a4f879e158cfea418360c8705347653f60dbd6f18fb754448d299404bfa247b07625ae113e9386188d9f9485a14b'
             SKIP
             SKIP)
 
 prepare() {
-  sed -i "s|@ELECTRON@|electron19|" discord-launcher.sh
+  sed -i "s|@ELECTRON@|${_electron}|" discord-launcher.sh
   sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" Discord/discord.desktop
 }
 
