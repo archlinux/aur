@@ -3,10 +3,10 @@
 
 pkgname=qt5-gamepad
 _qtver=5.15.2
-_basever=5.15.6
-pkgver=5.15.6+kde+r0
+_basever=5.15.7
+pkgver=5.15.7
 pkgrel=1
-_commit=0a2d4651362810600d2ff7272772d5908bb8714b
+_commit=ce0202d67bf1ab2bb887f58122b20eab5b6c1d5d
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -22,7 +22,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
