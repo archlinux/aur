@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 _pkgname=radeontop
