@@ -3,7 +3,7 @@
 # Contributor: João Fernandes <joaofnds@joaofnds.com>
 
 pkgname='astro-bin'
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc='A habit tracker for your terminal with a GitHub style activity graph'
 url='https://astro.joaofnds.com/'
@@ -12,14 +12,14 @@ license=('MIT')
 provides=('astro')
 conflicts=('astro')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/astro/releases/download/0.0.20/astro_0.0.20_Linux_arm64.tar.gz")
-sha256sums_aarch64=('33ae1cdfd10e58cccee3be2636130ddc63543c9dc525128c8e706859f57458db')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/astro/releases/download/0.0.21/astro_0.0.21_Linux_arm64.tar.gz")
+sha256sums_aarch64=('1ba2af19fe67eb03740671905a96c63c6db5c7de147abf35349f73f1034baa8b')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/astro/releases/download/0.0.20/astro_0.0.20_Linux_i386.tar.gz")
-sha256sums_i686=('bd70d7eeb394bab8c796ac0eed36672177667983c1c4df4e5bf85d948c765c65')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/astro/releases/download/0.0.21/astro_0.0.21_Linux_i386.tar.gz")
+sha256sums_i686=('5ed4f5b15daf12ed7bf7b3dd00371c61f0b92ad6698dbf3533260e19e32fb3a7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/astro/releases/download/0.0.20/astro_0.0.20_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('b9f311cc4b343a2976478c1d0293d918c0e827c924f716e8362c8ad344eb14a4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/astro/releases/download/0.0.21/astro_0.0.21_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('23177256c1c80af25b68650a3c4a8ff48f950959d156cffdb263a4fc913737a5')
 
 package() {
   install -Dm755 "./astro" "${pkgdir}/usr/bin/astro"
