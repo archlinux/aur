@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-draw-on-your-screen-git
 _pkgname=DrawOnYourScreen
-pkgver=v11.r12.g4fdafc5
+pkgver=11.r12.g4fdafc5
 pkgrel=1
 pkgdesc="A drawing extension for GNOME Shell."
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
