@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_basever=5.15.6
-pkgver=5.15.6+kde+r6
+_basever=5.15.7
+pkgver=5.15.7+kde+r6
 pkgrel=1
-_commit=fe5fca853c09c7e03a2ff66dac21584e3307984d
+_commit=0ff905d194e273e04e95b72dbbfd4e58193ecbaa
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -20,7 +20,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
