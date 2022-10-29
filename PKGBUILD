@@ -56,13 +56,13 @@ _htmldocs_enable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=5.19
+_major=6.0
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=28
+_lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.19.17.lqx2
+pkgver=6.0.6.lqx1
 pkgrel=1
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
@@ -76,16 +76,16 @@ options=('!strip')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 
-source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
+source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
+        "https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.sign"
         "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha512sums=('00313b2f9b82d2dc3fb8294007cf7d7599d254b717ed2de23c81fa7a1bbcbc2798ad286cb94e2f7f5bd54132d1d764facd90d30f79dbcc6616cc7f926adc2623'
+sha512sums=('bac41a7aeb6e809616cee2f13dcd1c45e829dfd1ccf60aee1dc4c46b1e28532f4485c7d819a32940de84fdfbf89db80a4e919bce8a74b2948c5a01551771b714'
             'SKIP'
-            'b5f15e12c990c0e3bd05d4c804077d760256b5e9d79d4217f8ea8afe3dc5bb6e9703e5cd22c1e742a5e5ee11bc65f1ecd9660980c1cb2610c86190eeb0563f5c')
+            'abe03063b27cfc4536bdc1f520f6e4eaa9bb0e1ffedf439828c22807577cd90e414145ce201715a2146fc5a7ed18fe760f8a3c0b323a867453c1794960e7ea74')
 
 
 
