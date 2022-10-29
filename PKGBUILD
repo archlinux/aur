@@ -5,23 +5,20 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live-git
 pkgdesc="Ledger Live - Desktop (Git version)"
-pkgver=2.46.0.r0.g7f310a4e89
+pkgver=2.49.2.r0.g57f78e6077
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'pnpm' 'ruby-bundler' 'python>=3.5' 'nodejs>=16')
+makedepends=('git' 'python>=3.5' 'pnpm' 'nodejs>=16', 'node-gyp')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live')
-source=("$pkgname::git+$url#branch=main" "$_pkgbin.desktop")
-sha512sums=(
-  'SKIP'
-  '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda'
-)
+source=("${pkgname}::git+$url#branch=main" "${_pkgbin}.desktop")
+sha512sums=('SKIP' '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
 
 build() {
-  cd $pkgname
+  cd ${pkgname}
   export GIT_REVISION=$pkgver
   export JOBS=max
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
@@ -32,7 +29,7 @@ build() {
 package() {
   install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  cd $pkgname/apps/$_pkgbin/
+  cd ${pkgname}/apps/${_pkgbin}
 
   install -dm755 "${pkgdir}/opt"
   cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
@@ -45,11 +42,11 @@ package() {
   install -Dm644 "build/icons/icon@512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
   install -Dm644 "build/icons/icon@1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgbin}.png"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 pkgver() {
-  cd $pkgname/apps/$_pkgbin/
+  cd ${pkgname}/apps/${_pkgbin}/
   ver=$(cat package.json |
     grep version |
     head -1 |
