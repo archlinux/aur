@@ -1,6 +1,6 @@
 # Maintainer: Papangkorn Apinyanon <dev@papangkorn.com>
 pkgname=sslide
-pkgver=0.0.7
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Simple presentation program"
 arch=('x86_64')
@@ -31,6 +31,8 @@ package() {
     cd "$pkgname/"
     make config=release
     install -Dm755 ./Release/sslide "${pkgdir}/usr/local/bin/sslide"
+    install -Dm755 ./Release/sslide-maker "${pkgdir}/usr/local/bin/sslide-maker"
     desktop-file-install --dir=$HOME/.local/share/applications sslide.desktop
+    desktop-file-install --dir=$HOME/.local/share/applications sslide-maker.desktop
 }
 
