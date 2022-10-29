@@ -2,7 +2,7 @@
 
 pkgname=shonenjump
 pkgver=0.7.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to change directory and improve command line productivity"
 arch=(x86_64)
 url="https://github.com/suzaku/shonenjump"
@@ -16,7 +16,8 @@ b2sums=('69e9ced4213aeb1f6a06b08201bd6f91e3f4840e3315bfa6ae2afe4c0c49af7a3976c3c
 
 build() {
   cd "$pkgname-$pkgver"
-  go build -buildmode=pie -ldflags "-linkmode=external -extldflags=$LDFLAGS"
+  CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
+  go build -buildmode=pie -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
 }
 
 package() {

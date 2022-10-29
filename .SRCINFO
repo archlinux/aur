@@ -1,7 +1,7 @@
 pkgbase = shonenjump
 	pkgdesc = A faster way to change directory and improve command line productivity
 	pkgver = 0.7.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/suzaku/shonenjump
 	install = readme.install
 	arch = x86_64
