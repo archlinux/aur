@@ -1,4 +1,4 @@
-pkgbase = python-bilibili-api
+pkgbase = python-bilibili-api-python
 	pkgver = 13.1.1
 	pkgrel = 1
 	url = https://github.com/Nemo2011/bilibili-api
@@ -17,4 +17,4 @@ pkgbase = python-bilibili-api
 	source = https://pypi.io/packages/source/b/bilibili-api-python/bilibili-api-python-13.1.1.tar.gz
 	sha512sums = af541701114364f419d910fea736cfce6b2656f8d98e3f4b5151dd9925973379efe7c00bb67553d4e498e21e8ffdf967e651df0d3399d359ec1319a9a437d414
 
-pkgname = python-bilibili-api
+pkgname = python-bilibili-api-python

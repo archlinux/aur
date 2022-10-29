@@ -1,6 +1,6 @@
 # Maintainer: Apple_QAQ <apple_qaq@outlook.com>
 
-pkgname=python-bilibili-api
+pkgname=python-bilibili-api-python
 pkgver=13.1.1
 pkgrel=1
 pkgdesc=""
@@ -13,11 +13,11 @@ source=("https://pypi.io/packages/source/b/bilibili-api-python/bilibili-api-pyth
 sha512sums=('af541701114364f419d910fea736cfce6b2656f8d98e3f4b5151dd9925973379efe7c00bb67553d4e498e21e8ffdf967e651df0d3399d359ec1319a9a437d414')
 
 build() {
-  cd bilibili-api-$pkgver
+  cd bilibili-api-python-$pkgver
   python setup.py build
 }
 
 package() {
-  cd bilibili-api-$pkgver
+  cd bilibili-api-python-$pkgver
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
