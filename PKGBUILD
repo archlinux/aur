@@ -3,7 +3,7 @@
 
 pkgname=hare
 pkgver=r2694.b00d4a6f
-pkgrel=1
+pkgrel=2
 pkgdesc='The Hare programming language'
 arch=('x86_64')
 url='https://harelang.org/'
@@ -34,14 +34,15 @@ build() {
   # fail.
   export LDFLAGS=${LDFLAGS#"-Wl,"}
 
-  # XXX: parallel build driver builds are broken
+  # XXX: parallel build driver builds are broken.
   LOCALVER=arch make -j1
 }
 
 check() {
   cd hare
 
-  make check
+  # XXX: see above, in build().
+  make check -j1
 }
 
 package() {
