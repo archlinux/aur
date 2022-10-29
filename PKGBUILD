@@ -101,11 +101,6 @@ prepare() {
   git checkout $_branch1
   git -c "user.name=Your Name" -c "user.email=you@example.com" \
     merge --no-edit origin/$_branch2
-
-  for bp in "${srcdir}"/ffmpeg-*.patch; do
-    patch -Np1 -i $bp
-  done
-
 }
 
 pkgver() {
