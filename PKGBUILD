@@ -16,7 +16,7 @@ optdepends=('cuda' 'libcap' 'libdrm')
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=6000b85b1a4ec574d93fbc7545f5bf48f3d5aaa7")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=3113de6bfe953ac1c4d6f8adadbd8ddc99222e95")
 sha256sums=('SKIP')
 
 prepare() {
@@ -32,10 +32,9 @@ build() {
         -S "$pkgname" \
         -B build \
         -Wno-dev \
+        -D CMAKE_INSTALL_PREFIX=/usr \
         -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
-        -D CMAKE_INSTALL_PREFIX="/usr" \
-        -D SUNSHINE_ASSETS_DIR="share/sunshine/assets" \
-        -D SUNSHINE_CONFIG_DIR="share/sunshine/config" \
+        -D SUNSHINE_ASSETS_DIR="share/sunshine" \
         -D LIBAVCODEC_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
         -D LIBAVCODEC_LIBRARIES=/usr/lib/ffmpeg4.4/libavcodec.so \
         -D LIBAVDEVICE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
