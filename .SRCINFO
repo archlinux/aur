@@ -6,10 +6,13 @@ pkgbase = python-bcj-cffi
 	arch = x86_64
 	license = LGPL
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python-cffi
-	source = https://files.pythonhosted.org/packages/source/b/bcj-cffi/bcj-cffi-0.5.1.tar.gz
-	sha256sums = 2b4a5d1252e72bea5a5eb1e51650435825299b0e87c25ddfd21a1623514fd0cc
-	b2sums = f31161555597c477b052ad42ac42642b97788c3eb6a22cc48872429456a8665c9b810910a2a1f84c99a40135c17f7bbe0829115643f7d495d2d52cfc6c7a50b5
+	source = python-bcj-cffi-0.5.1.tar.gz::https://github.com/miurahr/bcj-cffi/archive/77576ac1fd7e9edb3c1811ecfee286fcf9101673.tar.gz
+	sha256sums = b21159845755ac4df8f06b566730504d5fab53fda16ab09aedc1cfb75159eb04
 
 pkgname = python-bcj-cffi

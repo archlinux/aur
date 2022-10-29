@@ -1,42 +1,43 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
-_pkgname=bcj-cffi
 pkgname=python-bcj-cffi
-pkgver=0.5.1
-pkgrel=3
+_pkg="${pkgname#python-}"
+pkgver=0.5.3
+_commit=77576ac1fd7e9edb3c1811ecfee286fcf9101673
+pkgrel=1
 pkgdesc="BCJ(Branch-Call-Jump) filter for python"
 arch=('x86_64')
-url="https://github.com/miurahr/${_pkgname}"
+url="https://github.com/miurahr/bcj-cffi"
 license=('LGPL')
 depends=('python-cffi')
-makedepends=('python-setuptools-scm')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-wheel')
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2b4a5d1252e72bea5a5eb1e51650435825299b0e87c25ddfd21a1623514fd0cc')
-b2sums=('f31161555597c477b052ad42ac42642b97788c3eb6a22cc48872429456a8665c9b810910a2a1f84c99a40135c17f7bbe0829115643f7d495d2d52cfc6c7a50b5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('b21159845755ac4df8f06b566730504d5fab53fda16ab09aedc1cfb75159eb04')
 
 prepare() {
-    cd ${_pkgname}-${pkgver}
-
-    # thou shalt not force coverage reports on innocent unittest users
-    sed -i '/^addopts/d' tox.ini
+	cd "$_pkg-$_commit"
+	# thou shalt not force coverage reports on innocent unittest users
+	sed -i '8,$d' pyproject.toml
 }
 
 build(){
-    cd ${_pkgname}-${pkgver}
-
-    python setup.py build
+	cd "$_pkg-$_commit"
+	SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
 }
 
 check() {
-    cd ${_pkgname}-${pkgver}
-
-    pythonpaths=("$PWD/build/lib.linux-$CARCH"-3*)
-    PYTHONPATH="${pythonpaths[0]}" pytest -rsx
+	cd "$_pkg-$_commit"
+	local python_version="$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')"
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest -x --disable-warnings
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
-
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	cd "$_pkg-$_commit"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
