@@ -2,6 +2,7 @@
 Name=Mountain of Faith
 Name[zh_CN]=东方风神录
 Name[ja_JP]=東方風神録
+Comment=Tenth game of the Touhou Project series
 Exec=/usr/bin/th10
 Icon=/usr/share/pixmaps/th10.xpm
 Terminal=false
