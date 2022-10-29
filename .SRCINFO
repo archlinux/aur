@@ -1,7 +1,7 @@
 pkgbase = unifetch-git
-	pkgdesc = An unofficial fork of neofetch, fresh version.
+	pkgdesc = Show system info, fork of neofetch, fresh version.
 	pkgver = 22.10
-	pkgrel = 17
+	pkgrel = 29
 	url = https://github.com/jin-asanami/
 	arch = any
 	license = MIT
