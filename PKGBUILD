@@ -5,12 +5,13 @@
 
 pkgname=processing
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
 license=(GPL LGPL)
 depends=('java-environment-openjdk=17' ffmpeg)
+optdepends=('processing-examples: Examples for Processing')
 makedepends=(ant gendesk rsync unzip)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$((1285+${pkgver##4.0.}))-$pkgver.tar.gz"
