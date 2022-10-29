@@ -1,7 +1,7 @@
 # Maintainer: DisableGraphics elchifladod@gmail.com
 pkgbase="korai-git"
 pkgname="korai-git"
-pkgrel=0
+pkgrel=1
 pkgver=$(git ls-remote https://github.com/DisableGraphics/Korai.git | grep refs/heads/main | cut -f 1)
 pkgdesc="Fast, reliable and feature-packed manga and comics reader (fresh from the git master branch)"
 arch=("any")
