@@ -2,6 +2,7 @@
 
 pkgname=gnome-shell-extension-draw-on-your-screen-git
 _pkgname=DrawOnYourScreen
+_extid='drawOnYourScreen@som.codeberg.org'
 pkgver=11.r12.g4fdafc5
 pkgrel=1
 pkgdesc="A drawing extension for GNOME Shell."
@@ -16,14 +17,13 @@ source=('git+https://codeberg.org/gigaSproule/DrawOnYourScreen.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  _extid='drawOnYourScreen@som.codeberg.org'
-  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/"
-  cp -af "${_pkgname}" "${pkgdir}/usr/share/gnome-shell/extensions/"
-  mv "${pkgdir}/usr/share/gnome-shell/extensions/${_pkgname}" "${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
-  msg2 "Start drawing with Super+Alt+D. Then save your beautiful work by taking a screenshot."
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/"
+  cp -r "$_pkgname" "$pkgdir/usr/share/gnome-shell/extensions/"
+  rm -r "$pkgdir/usr/share/gnome-shell/extensions/$_pkgname/.git"
+  mv "$pkgdir/usr/share/gnome-shell/extensions/$_pkgname" "$pkgdir/usr/share/gnome-shell/extensions/$_extid"
 }
