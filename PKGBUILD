@@ -10,7 +10,7 @@ license=('GPL2')
 url="https://github.com/Palakis/obs-ndi"
 provides=('obs-ndi')
 conflicts=('obs-ndi-bin')
-depends=('avahi' 'libndi' 'obs-studio')
+depends=('avahi' 'libndi' 'obs-studio' 'sndio')
 makedepends=('git' 'cmake')
 install="${_pkgname}.install"
 source=("git+${url}.git#branch=rewrite")
@@ -34,7 +34,6 @@ build() {
 
 package() {
     cd ${_pkgname}/build
-    make
 
     install -Dm755 obs-ndi.so ${pkgdir}/usr/lib/obs-plugins/obs-ndi.so
     install -Dm644 ../data/locale/en-US.ini ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale/en-US.ini
