@@ -10,6 +10,7 @@ pkgbase = ledger-live
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = nodejs>=16
+	makedepends = nodejs<19
 	makedepends = node-gyp
 	depends = ledger-udev
 	provides = ledger-live
