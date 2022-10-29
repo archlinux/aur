@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 6.0pf2.r0.ga6f67c036964
+	pkgver = 6.1rc2.r49.g6da14ca236e0
 	pkgrel = 1
 	url = https://codeberg.org/pf-kernel/linux/wiki/README
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = linux-pf-git
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.0
+	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.1
 	source = config
 	sha256sums = SKIP
-	sha256sums = 3fe7c732c449a9694bc292528f8101bbc3f1e99e5ebf7c9b54591767df234809
+	sha256sums = a8ea94083ccdc88a8fdeaec71924c211c00cb630f21cd58600a507a3fc5fe09f
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules

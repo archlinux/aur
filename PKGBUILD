@@ -2,10 +2,10 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=6.0pf2.r0.ga6f67c036964
+pkgver=6.1rc2.r49.g6da14ca236e0
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
-_kernel_rel=6.0
+_kernel_rel=6.1
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://codeberg.org/pf-kernel/linux/wiki/README
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '3fe7c732c449a9694bc292528f8101bbc3f1e99e5ebf7c9b54591767df234809')
+            'a8ea94083ccdc88a8fdeaec71924c211c00cb630f21cd58600a507a3fc5fe09f')
 
 pkgver() {
   cd $_srcname
