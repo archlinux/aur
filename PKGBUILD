@@ -1,7 +1,7 @@
 # Maintainer: Zhiya Luo <luozhiya@petalmail.com>
 
 pkgname=mogan
-pkgver=1.1.1_rc3_r241.dabfcce
+pkgver=1.1.1_r264.bc0051a
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
 arch=('x86_64')
