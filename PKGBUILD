@@ -5,15 +5,15 @@
 
 _pkgname=ansible-lint
 pkgname=ansible-lint-git
-pkgver=6.5.2.r2.g6f848e59
+pkgver=6.8.4.r1.g83a6321f
 pkgrel=1
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
 url="https://github.com/ansible-community/ansible-lint"
 license=('MIT')
-depends=(python ansible-core yamllint
+depends=(python ansible-core yamllint git
 	python-{ansible-compat,black,enrich,filelock,jsonschema,pyaml,packaging,rich,ruamel-yaml,wcmatch})
-makedepends=(git python-{build,installer,setuptools,wheel})
+makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm,setuptools-scm-git-archive})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-lint')
@@ -32,12 +32,12 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  python -c "from setuptools import setup; setup();" build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  PYTHONHASHSEED=0 python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" ${srcdir}/${_pkgname}/dist/*.whl
   install -Dm 644 COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
   install -Dm 644 docs/licenses/LICENSE*.* -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
