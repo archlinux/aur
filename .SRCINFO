@@ -1,6 +1,6 @@
 pkgbase = firefox-socket-control-git
 	pkgdesc = Control Firefox from a UNIX socket.
-	pkgver = 1.5.2e3d40c
+	pkgver = 1.5.18d548e
 	pkgrel = 1
 	url = https://github.com/karabaja4/firefox-socket-control
 	install = firefox-socket-control-git.install
