@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ChronoCraft
+Type=Application
+Path=/usr/share/chronocraft
+Exec=/usr/share/chronocraft/chronocraft
+Terminal=false
+Icon=chronocraft
+Comment=ChronoCraft MMO-RPG
+NoDisplay=false
+Categories=Game;

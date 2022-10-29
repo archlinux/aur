@@ -1,0 +1,25 @@
+pkgbase = chronocraft
+	pkgdesc = Unofficial ChronoCraft installer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://chronocraftgame.com
+	install = .INSTALL
+	arch = any
+	license = unknown
+	makedepends = p7zip
+	depends = libnet
+	depends = gtk3
+	depends = gtk2
+	depends = at-spi2-core
+	depends = java-runtime
+	depends = ffmpeg4.4
+	source = https://dtlod8orn734n.cloudfront.net/ChronoCraft.exe
+	source = https://download.bell-sw.com/java/8u352+8/bellsoft-jre8u352+8-linux-amd64-full.tar.gz
+	source = chronocraft.png
+	source = chronocraft.desktop
+	md5sums = SKIP
+	md5sums = 8a9822dc330e310937773377121cc7aa
+	md5sums = 222d6c1a0fd15fd810848fc8fdb1ebb2
+	md5sums = 936f0e48084ea908a5f3830aa5079d15
+
+pkgname = chronocraft
