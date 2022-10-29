@@ -1,7 +1,6 @@
 [Unit]
 Description=Smartmeter
 After=syslog.target
-Wants=mosquitto
 
 [Service]
 ExecStart=/usr/bin/smartmeter -c /etc/smartmeter.conf
