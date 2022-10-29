@@ -33,6 +33,8 @@ package() {
     install -Dm755 ./Release/sslide "${pkgdir}/usr/local/bin/sslide"
     install -Dm755 ./Release/sslide-maker "${pkgdir}/usr/local/bin/sslide-maker"
     desktop-file-install --dir=$HOME/.local/share/applications sslide.desktop
+    rm sslide-maker.desktop
+    wget https://codeberg.org/sleepntsheep/sslide/raw/branch/main/sslide-maker.desktop
     desktop-file-install --dir=$HOME/.local/share/applications sslide-maker.desktop
 }
 
