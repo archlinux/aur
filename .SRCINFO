@@ -1,8 +1,8 @@
 pkgbase = glab-git
 	pkgdesc = Cli tool to help work seamlessly with Gitlab from the command line
-	pkgver = 1.22.0.r37.gf405b97
+	pkgver = 1.22.0.r168.g11a81099
 	pkgrel = 1
-	url = https://github.com/profclems/glab
+	url = https://gitlab.com/gitlab-org/cli
 	arch = x86_64
 	license = MIT
 	makedepends = go
@@ -10,7 +10,7 @@ pkgbase = glab-git
 	provides = glab
 	conflicts = glab
 	replaces = gitlab-glab-git
-	source = git+https://github.com/profclems/glab.git
+	source = git+https://gitlab.com/gitlab-org/cli.git
 	md5sums = SKIP
 
 pkgname = glab-git

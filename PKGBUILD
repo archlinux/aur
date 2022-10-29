@@ -2,13 +2,13 @@
 # Co-Maintainer: Bradley Garrod <bradleybredgarrod@gmail.com>
 
 pkgname=glab-git
-_reponame=glab
-pkgver=1.22.0.r37.gf405b97
+_reponame=cli
+pkgver=1.22.0.r168.g11a81099
 pkgrel=1
 epoch=
 pkgdesc="Cli tool to help work seamlessly with Gitlab from the command line"
 arch=(x86_64)
-url="https://github.com/profclems/glab"
+url="https://gitlab.com/gitlab-org/cli"
 license=('MIT')
 groups=()
 depends=(glibc)
@@ -28,7 +28,7 @@ md5sums=(SKIP)
 validpgpkeys=()
 
 pkgver() {
-    cd glab
+    cd "${_reponame}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
