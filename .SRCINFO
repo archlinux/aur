@@ -1,0 +1,25 @@
+pkgbase = bordeaux
+	pkgdesc = SIP telephony applidation server
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://codeberg.org/gnutelephony/bordeaux
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = gcc
+	depends = libexosip2>=5.3.0
+	depends = libosip2
+	depends = openssl
+	depends = fmt
+	source = bordeaux-v0.5.1.tar.gz::https://codeberg.org/gnutelephony/bordeaux/archive/v0.5.1.tar.gz
+	source = bordeaux.service
+	source = bordeaux.logrotated
+	sha256sums = f6a5a4ee1bb15feacf3ea5cebf4d28084be0c49ca67e953c2c6c4ad5172c2a76
+	sha256sums = f25ff6788a7ae8e988498662c6b2744b82ebe1fe20f5a413cceaa6fff68f6ad4
+	sha256sums = 462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f
+
+pkgname = bordeaux

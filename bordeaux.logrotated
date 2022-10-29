@@ -1,0 +1,8 @@
+/var/log/bordeaux/*.log {
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+    /usr/sbin/systemctl reload bordeaux > /dev/null 2>/dev/null || true
+    endscript
+}

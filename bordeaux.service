@@ -1,0 +1,46 @@
+# Copyright (C) 2020-2021 David Sugar <tychosoft@gmail.com>.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[Unit]
+Description=bordeaux telephony application service
+ConditionPathExists=/usr/sbin/bordeaux
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+# Environment support
+Environment=DRIVER=generic
+EnvironmentFile=-/etc/default/bordeaux
+EnvironmentFile=-/etc/sysconfig/bordeaux
+
+# Basic permissions
+UMask=007
+User=root
+Group=root
+WorkingDirectory=/var/lib/bordeaux
+RuntimeDirectory=bordeaux
+RuntimeDirectoryMode=0750
+PermissionsStartOnly=True
+
+# Execution model
+Type=simple
+ExecStart=/usr/sbin/bordeaux -v --driver ${DRIVER} --config /etc/bordeaux.conf --prefix /var/lib/bordeaux
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=10
+RestartPreventExitStatus=255
+
+# Realtime scheduling
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=10
+CPUSchedulingResetOnFork=True
