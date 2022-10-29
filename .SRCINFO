@@ -1,20 +1,25 @@
 pkgbase = hysteria
 	pkgdesc = A feature-packed network utility optimized for networks of poor quality
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HyNetwork/hysteria
+	install = hysteria.install
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	depends = acl
+	depends = shadow
 	source = hysteria::git+https://github.com/HyNetwork/hysteria.git#tag=v1.2.2
 	source = hysteria@.service
 	source = hysteria-server@.service
 	source = sysusers.conf
+	source = tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = 61ef8c91f417d83411d89295495e0c926ded7ed02302e7a0efa123d564e12f7e
 	sha256sums = 5a0fb1185e7bff6e05ec8ecb8a45b269fd4c7fa562ab107954ab87642a71f8d0
-	sha256sums = abaab463035e67c1e1728e5378b8f4a50960bf80d5005e02b3b2c9468f06150d
+	sha256sums = 44f1cb2fedfc94dc396ceb215e62237dbc8c74c035c45a3430c1f3748d266dd9
+	sha256sums = 1e93d9f2b312eaf02ac00229106cd796e0cd54a9a468a0a8d3ae843399c1c310
 
 pkgname = hysteria
