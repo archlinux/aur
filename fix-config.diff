@@ -1,5 +1,5 @@
 diff --git a/doc/ircd.conf.example b/doc/ircd.conf.example
-index 1ae47b33..0d1a179f 100644
+index ff3f549d..0d1a179f 100644
 --- a/doc/ircd.conf.example
 +++ b/doc/ircd.conf.example
 @@ -101,15 +101,15 @@ admin {
@@ -27,17 +27,7 @@ index 1ae47b33..0d1a179f 100644
  };
  
  /* class {} blocks MUST be specified before anything that uses them.  That
-@@ -586,8 +586,7 @@ general {
- 	not_authorised_client_message = "You are not authorised to access this server.";
- 	illegal_hostname_client_message = "You have an illegal character in your hostname.";
- 	server_full_client_message = "Sorry, server is full - try later";
--	illegal_name_long_client_message = "Your username is invalid. Please make sure that your username contains "
--									   "only alphanumeric characters.";
-+	illegal_name_long_client_message = "Your username is invalid. Please make sure that your username contains only alphanumeric characters.";
- 	illegal_name_short_client_message = "Invalid username";
- 	identify_service = "NickServ@services.int";
- 	identify_command = "IDENTIFY";
-@@ -635,6 +634,6 @@ general {
+@@ -634,6 +634,6 @@ general {
  };
  
  modules {

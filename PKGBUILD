@@ -1,7 +1,7 @@
 # Maintainer: fhw <fhw AT riseup DOT net>
 pkgname=solanum-ircd-git
 _pkgname=solanum-ircd
-pkgver=r4076.860187d0
+pkgver=r4103.d03347cb
 pkgrel=1
 pkgdesc='An IRCd for unified networks'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${_pkgname}::git+https://github.com/solanum-ircd/solanum"
         'solanum.sysusers'
         'solanum.tmpfiles')
 b2sums=('SKIP'
-        '8e26c782efe3ab62931b267a3776c6b89a619f130273395c7ddb06d1cc486a5ac2ec91323e1a4a0d607008d78954cf37d0ba90a13f698474c1f3161e526cdca0'
+        'c947966ec46dd87d1087b4b90716c6f0ecbff3806d40085a22d8fcb5a2d6b7876f9b10c56ceef067dbbd4898eaeaf171f10f93d003a2a966e9927f1dbfec1def'
         'b534ea99ad816a254cb2a62558a99debd88f7676d1729a528c8180a2ea1aa0526f200c0801a66174f03f4aa28cccac62b7f77fd31ce33ddbe4772497c2ff944f'
         '6dbc67b99eba89e8fbb130fea244f8c7fb992322f100683407d3850d963b1a7b6304c8af21a1fcfbfb5bf3c1f78bdea160c838e0c30befa062bc4958fcf00739'
         '47c65608bcf43dded9af8a3f7221d57768ea3a51486721914285398522a12fcc3d0f7595941013f7353ca4c9565b0a0d3ceaa6a502acfd82d1a3468e2179edbe'
