@@ -4,7 +4,7 @@
 
 pkgname=xorg-xwayland-hidpi-xprop
 pkgver=22.1.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 url="https://xorg.freedesktop.org"
@@ -19,11 +19,13 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'egl-wayland'
 )
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch
-        0001_Do_not_ignore_leave_events.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/987.patch )
+        0001_Do_not_ignore_leave_events.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/987.patch 
+        0002_Revert_Aggregate_scroll_axis_events_to_fix_kinetic_scrolling.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/988.patch)
 sha512sums=('a1301df1687ac276172565c98b1fb3d5f35f67d47f625b81fce485d1818cf4896f88c2750b4e93596fa6f7fd515e258d201ca3d0cc39943b576f2d2c3f9be8cd'
             'SKIP'
             '7132c44d9bbf1c5f93906ef301a6e946f0909da0b9273f397281e681ad0da77d62b960a9dd0a640c7209548192fefba9bde03c493f3a89d08cd73a12844bb518'
-            'd0c87face4485050db134e5ed14d930bdae05d81149b2b573b97fc6dd96d9234e709d6f0523221747293da20cbd012e1e1da00e12b227f98597ffa320bcd3e3c')
+            'd0c87face4485050db134e5ed14d930bdae05d81149b2b573b97fc6dd96d9234e709d6f0523221747293da20cbd012e1e1da00e12b227f98597ffa320bcd3e3c'
+            'fea7abdd962fd0a8e653069f7926508d2dd90a0a6632d4aae2265a221267f1777fba4aeaaf494dc6f3e4a11a15a7eabd524ca16f948e0d3fee05c6a4b8a69fd4')
 provides=('xorg-server-xwayland' 'xorg-xwayland')
 conflicts=('xorg-server-xwayland' 'xorg-xwayland')
 replaces=('xorg-server-xwayland')
@@ -34,6 +36,7 @@ options=('debug' 'strip')
 prepare() {
   cd ${srcdir}/xwayland-$pkgver
   patch -Np1 -i ../0001_Do_not_ignore_leave_events.patch
+  patch -Np1 -i ../0002_Revert_Aggregate_scroll_axis_events_to_fix_kinetic_scrolling.patch
   patch -Np1 -i ../hidpi.patch
 }
 
