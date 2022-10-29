@@ -22,7 +22,7 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/soundwire/intel.c b/drivers/soundwire/intel.c
-index af6c1a93372d9..002bc26b525e8 100644
+index af6c1a93372d90..002bc26b525e87 100644
 --- a/drivers/soundwire/intel.c
 +++ b/drivers/soundwire/intel.c
 @@ -1307,6 +1307,7 @@ static int intel_link_probe(struct auxiliary_device *auxdev,

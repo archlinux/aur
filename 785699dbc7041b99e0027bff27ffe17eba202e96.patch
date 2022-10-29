@@ -26,7 +26,7 @@ Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
  1 file changed, 12 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-index 134575a3893c5..794062ab57fca 100644
+index 134575a3893c53..794062ab57fca4 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
 @@ -424,8 +424,9 @@ static int amdgpu_move_blit(struct ttm_buffer_object *bo,

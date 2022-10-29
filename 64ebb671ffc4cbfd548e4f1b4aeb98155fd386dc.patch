@@ -17,7 +17,7 @@ Signed-off-by: Christian König <christian.koenig@amd.com>
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/scheduler/sched_entity.c b/drivers/gpu/drm/scheduler/sched_entity.c
-index 6b25b2f4f5a30..6137537aaea4d 100644
+index 6b25b2f4f5a308..6137537aaea4df 100644
 --- a/drivers/gpu/drm/scheduler/sched_entity.c
 +++ b/drivers/gpu/drm/scheduler/sched_entity.c
 @@ -385,7 +385,8 @@ static bool drm_sched_entity_add_dependency_cb(struct drm_sched_entity *entity)
@@ -31,7 +31,7 @@ index 6b25b2f4f5a30..6137537aaea4d 100644
  		/*
  		 * Fence is from the same scheduler, only need to wait for
 diff --git a/include/drm/gpu_scheduler.h b/include/drm/gpu_scheduler.h
-index addb135eeea62..289a33e806397 100644
+index addb135eeea622..289a33e8063978 100644
 --- a/include/drm/gpu_scheduler.h
 +++ b/include/drm/gpu_scheduler.h
 @@ -32,6 +32,15 @@

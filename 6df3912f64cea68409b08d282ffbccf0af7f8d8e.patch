@@ -12,7 +12,7 @@ Signed-off-by: Arunpravin Paneer Selvam <Arunpravin.PaneerSelvam@amd.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-index 794062ab57fca..9e6c23266a1a0 100644
+index 794062ab57fca4..9e6c23266a1a0f 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
 @@ -439,6 +439,9 @@ static bool amdgpu_mem_visible(struct amdgpu_device *adev,

@@ -15,7 +15,7 @@ Signed-off-by: Christian König <christian.koenig@amd.com>
  1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm_sdma.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm_sdma.c
-index 718db7d98e5a3..25ad3c7fa24be 100644
+index 718db7d98e5a30..25ad3c7fa24bea 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm_sdma.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm_sdma.c
 @@ -115,8 +115,15 @@ static int amdgpu_vm_sdma_commit(struct amdgpu_vm_update_params *p,
