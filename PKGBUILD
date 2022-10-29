@@ -10,17 +10,17 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=106.0.5249.119
-pkgrel=2
+pkgver=107.0.5304.88
+pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
+_gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'wayland' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
              'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
@@ -32,6 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+        re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
         REVERT-enable-GlobalMediaControlsCastStartStop.patch
         REVERT-roll-src-third_party-ffmpeg-m102.patch
         REVERT-roll-src-third_party-ffmpeg-m106.patch
@@ -40,10 +41,11 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('0f091b4950e120d5c3e23ab391bacfdb6ce8eb8d0acab55e9dae1a8c247dd192'
+sha256sums=('1e6595af1e56882627982b5e69dff0cb3575d65449dbe79697f3d4b0922492cc'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121'
+            '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
             'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
+            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
@@ -59,12 +61,10 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
-        remove-main-main10-profile-limit.patch
         chromium-drirc-disable-10bpc-color-configs.conf)
 sha256sums=(${sha256sums[@]}
-            '033ee30553302d606ae4449792dbbe2af5e0fd34bccb73f029b6e9882676ea2b'
+            '11e286263f629443e91027dd1ee84116b3ad5df5d90ad0eb2817e17d371af6d8'
             'e08a2c4c1e1059c767343ea7fbf3c77e18c8daebbb31f8019a18221d5da05293'
-            '01ba9fd3f791960aa3e803de4a101084c674ce8bfbaf389953aacc6beedd66dc'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -120,6 +120,7 @@ prepare() {
 
    # Upstream fixes
   patch -Np1 -i ../unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+  patch -Np1 -i ../re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
@@ -136,7 +137,6 @@ prepare() {
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
-  patch -Np1 -i ../patches/chromium-106-AutofillPopupControllerImpl-namespace.patch
 
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
@@ -148,9 +148,6 @@ prepare() {
 
   # Enable vaapi on wayland
   patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
-
-  # Remove HEVC profile limits
-  patch -Np1 -i ../remove-main-main10-profile-limit.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/${pkgname%xdg*}$_uc_ver"
@@ -197,6 +194,7 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
+    'clang_base_path="/usr"'
     'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
@@ -204,8 +202,12 @@ build() {
     'proprietary_codecs=true'
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
+    'use_custom_libcxx=false'
     'use_gnome_keyring=false'
+    'use_qt=false' # look into enabling this for M108
     'use_sysroot=false'
+    'use_system_libwayland_server=true'
+    'use_system_wayland_scanner=true'
     'use_custom_libcxx=false'
     'enable_widevine=true'
     'enable_platform_hevc=true'
