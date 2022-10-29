@@ -1,6 +1,6 @@
 pkgbase = moderncli
 	pkgdesc = Generic command line system utilities and reusable C++ header libs
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://codeberg.org/gnutelephony/moderncli
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = moderncli
 	makedepends = gcc
 	depends = openssl
 	depends = fmt
-	source = moderncli-v0.1.1.tar.gz::https://codeberg.org/gnutelephony/moderncli/archive/v0.1.1.tar.gz
-	sha256sums = 2a7840428046f9b0042e77f5ae803883d0fc71f6ed4caa665efa7b33c6ee5fa5
+	source = moderncli-v0.1.2.tar.gz::https://codeberg.org/gnutelephony/moderncli/archive/v0.1.2.tar.gz
+	sha256sums = b5cbe7653becb4510e79dc4f488a2557ddec549adb609693aa792cdbfb2f6c71
 
 pkgname = moderncli
