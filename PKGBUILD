@@ -1,7 +1,7 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=v0.7.base.29.g1c19bb48
+pkgver=0.7.0.r99.g506714ed
 pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
@@ -40,8 +40,10 @@ source=(
     'libpng::git+https://github.com/glennrp/libpng.git'
     'zlib::git+https://github.com/madler/zlib.git'
     'gflags::git+https://github.com/gflags/gflags.git'
+    'libjxl-testdata::git+https://github.com/libjxl/testdata.git'
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -66,12 +68,15 @@ prepare() {
     git -C libjxl config --local submodule.third_party/libpng.url "${srcdir}/libpng"
     git -C libjxl config --local submodule.third_party/zlib.url "${srcdir}/zlib"
     git -C libjxl config --local submodule.third_party/gflags.url "${srcdir}/gflags"
-    git -C libjxl submodule update
+    git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
+    git -C libjxl -c protocol.file.allow='always' submodule update
 }
 
 pkgver() {
-    cd libjxl
-    echo "$(git describe --long --tags | tr - .)"
+    local _tag
+    _tag="$(git -C libjxl tag --list --sort='-v:refname' 'v[[:digit:]]*' | sed 's/^v//;/[[:alpha:]]/d' | head -n1)"
+    printf "${_tag}.r%s.g%s" "$(git -C libjxl rev-list --count "v${_tag}..HEAD")" \
+                             "$(git -C libjxl rev-parse --short HEAD)"
 }
 
 build() {
@@ -124,6 +129,4 @@ package() {
     ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7.0"
     ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7"
     ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7.0"
-
-
 }
