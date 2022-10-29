@@ -1,0 +1,23 @@
+pkgbase = th10
+	pkgdesc = Mountain of Faith trial version. Tenth game of the Touhou Project series.
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://www16.big.or.jp/~zun/html/th10top.html
+	arch = x86_64
+	license = custom
+	makedepends = lha
+	depends = wine
+	source = http://kokoron.madoka.org/mirror/D/t/touhoufuujinroku/th10tr002a_setup.exe
+	source = http://www16.big.or.jp/~zun/data/soft/thcustom_002a.lzh
+	source = th10.sh
+	source = th10-custom.sh
+	source = th10.xpm
+	source = th10.desktop
+	md5sums = 4c816e8d7f59430d5083e55c86df2462
+	md5sums = ff0501145d6dc00e61fd8bd153e3bc5a
+	md5sums = f4f205effde8bf6922bcf52bf0c45f79
+	md5sums = fe3fcfcba78208fddc0d213abb7c39e1
+	md5sums = 7e337e7d4e04feb0d7af3d7480e8d4b4
+	md5sums = 8974c85bc98640bd4c6baa80e6f8857b
+
+pkgname = th10

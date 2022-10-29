@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Mountain of Faith
+Name[zh_CN]=东方风神录
+Name[ja_JP]=東方風神録
+Exec=/usr/bin/th10
+Icon=/usr/share/pixmaps/th10.xpm
+Terminal=false
+Type=Application
+Categories=Game;
+Actions=configure
+
+[Desktop Action configure]
+Name=Launch custom.exe
+Exec=/usr/bin/th10-custom
