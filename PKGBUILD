@@ -1,34 +1,42 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=opengnb
-pkgver=1.2.8.6
+pkgver=1.3.0.c
 pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=('any')
 url="https://github.com/gnbdev/opengnb"
 license=('GPLv3')
 provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname}-git)
-#replaces=(${pkgname})
+conflicts=(${pkgname})
+replaces=()
 depends=('miniupnpc')
 optdepends=()
 makedepends=()
 backup=()
 options=('!strip')
-#install=${pkgname}.install
+install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5980479f1f4f1f3a5f420839ffb9f3cc489ad11db8ec64c6e9aace1379a45169')
+sha256sums=('1f45a3a625bcfaf69cb55ec8fb24307e19bcebdb4ab223d5fe5056188bb691b0')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    sed -i 's|-I./libs/miniupnpc|-I/usr/include/miniupnpc/|g'  Makefile.linux
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make -f Makefile.debian
+    make -f Makefile.linux
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make -f Makefile.debian install
-    install -dm0755 "${pkgdir}/usr"
+    make -f Makefile.linux install
+    install -dm0755 "${pkgdir}/usr" \
+                    "${pkgdir}/usr/lib/systemd/system/" \
+                    "${pkgdir}/usr/share/${pkgname}/"
     cp -rv bin "${pkgdir}/usr"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/scripts/opengnb@.service" "${pkgdir}/usr/lib/systemd/system/opengnb@.service"
+    cp -rv scripts/${pkgname}@.service "${pkgdir}/usr/lib/systemd/system/"
+    cp -rv examples/* "${pkgdir}/usr/share/${pkgname}/"
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
