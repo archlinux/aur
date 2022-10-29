@@ -82,7 +82,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.0
-_minor=5
+_minor=6
 _srcname=linux-${_major}
 _clr=${_major}.3-1202
 _gcc_more_v='20220315'
@@ -420,7 +420,7 @@ done
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '80661d1323d6b743430f590063f18c76dbbbb211945910aee05e94402cd74c0c'
+            'c4920a37259b5a479fd2d6e76aaa040d54cb4cbab2ea4e323e3e0f0adb09324c'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '9709c5396a182cad3606a19bc7cee54819b3668f16987d3b1c6e221623ad91f8'
