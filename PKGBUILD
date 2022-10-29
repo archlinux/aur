@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=topgrade-git
-pkgver=9.1.0.r1129.4192db1
+pkgver=10.0.1.r1163.5a6f0d2
 pkgrel=1
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
@@ -29,7 +29,7 @@ build() {
 package() {
   cd ${pkgname%-git}
   
-  install -Dm755 target/release/${pkgname%-git}-rs "$pkgdir"/usr/bin/${pkgname%-git}
+  install -Dm755 target/release/${pkgname%-git} "$pkgdir"/usr/bin/${pkgname%-git}
   install -Dm644 ${pkgname%-git}.8 "$pkgdir"/usr/share/man/man8/${pkgname%-git}.8
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
