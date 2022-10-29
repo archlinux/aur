@@ -3,7 +3,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.4.2
-pkgrel=8
+pkgrel=9
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
