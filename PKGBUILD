@@ -5,14 +5,14 @@
 # https://wiki.archlinux.org/title/Python_package_guidelines
 
 pkgname=pearl-git
-pkgver=r131.31797ee
+pkgver=r134.e8b4482
 pkgrel=1
 pkgdesc="Package manager for dotfiles, plugins, programs and any form of code accessible via git. Allow to easily share and sync packages across systems and have them ready to work out of the box."
 arch=('any')
 url="https://github.com/pearl-core/pearl"
 license=('GPL')
 groups=()
-depends=('git' 'python' 'python-setuptools')
+depends=('git' 'python')
 makedepends=(git python-build python-installer python-wheel python-poetry)
 
 provides=("${pkgname%-git}")
