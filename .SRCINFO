@@ -7,6 +7,7 @@ pkgbase = python-bilibili-api-python
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python-pip
+	depends = python
 	depends = python-urllib3
 	depends = python-aiohttp
 	depends = python-beautifulsoup4
