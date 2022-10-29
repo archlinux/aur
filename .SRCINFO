@@ -1,6 +1,6 @@
 pkgbase = qogir-kde-theme-git
 	pkgdesc = Qogir kde is a flat Design theme for KDE Plasma desktop
-	pkgver = r48.17ff307
+	pkgver = r84.29bd033
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Qogir-kde
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = qogir-kde-theme-git
 	sha256sums = SKIP
 
 pkgname = qogir-kde-theme-git
-

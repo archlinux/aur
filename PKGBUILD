@@ -2,7 +2,7 @@
 
 pkgname=qogir-kde-theme-git
 _gitname=Qogir-kde
-pkgver=r48.17ff307
+pkgver=r84.29bd033
 pkgrel=1
 pkgdesc="Qogir kde is a flat Design theme for KDE Plasma desktop"
 arch=('any')
@@ -27,10 +27,13 @@ package() {
    
    mkdir -p ${pkgdir}/usr/share/color-schemes
    cp -r ${srcdir}/${_gitname}/color-schemes ${pkgdir}/usr/share
+
+   mkdir -p ${pkgdir}/usr/share/plasma/layout-templates/
+   cp -r ${srcdir}/${_gitname}/plasma/layout-templates ${pkgdir}/usr/share/plasma
    
    mkdir -p ${pkgdir}/usr/share/plasma/desktoptheme/
    cp -r ${srcdir}/${_gitname}/plasma/desktoptheme ${pkgdir}/usr/share/plasma
-
+         
    mkdir -p ${pkgdir}/usr/share/plasma/look-and-feel/
    cp -r ${srcdir}/${_gitname}/plasma/look-and-feel/ ${pkgdir}/usr/share/plasma
     
