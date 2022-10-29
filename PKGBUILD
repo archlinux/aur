@@ -9,7 +9,7 @@ url="https://github.com/MordechaiHadad/bob"
 license=('MIT')
 makedepends=('unzip')
 source=("bob.zip::https://github.com/MordechaiHadad/bob/releases/download/v${pkgver}/bob-linux-x86_64.zip")
-sha256sums=('695822ab67cf0d6e84e5c9cba31d76f84ca18f1ca931845726b4861f8f6f9a7f')
+sha256sums=('cd3bd581c71573566911b5a77d854313e53bc30de701f7359901faa328b5110a')
 
 package() {
     install -Dm755 "${srcdir}/bob" "${pkgdir}/usr/bin/bob"
