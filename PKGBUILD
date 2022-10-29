@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-virtualkeyboard
-_basever=5.15.6
-pkgver=5.15.6+kde+r1
+_basever=5.15.7
+pkgver=5.15.7
 pkgrel=1
-_commit=9fbb837b55887bec5d73fad142c853ef68db35b3
+_commit=8aebadb96c1e57ba89bba2e5962399f676207a32
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -20,7 +20,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
