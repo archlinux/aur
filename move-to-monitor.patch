@@ -1,5 +1,5 @@
 diff --git src/client.c src/client.c
-index 3923dd98b..0f7159a41 100644
+index 3923dd98b..0af4d98cc 100644
 --- src/client.c
 +++ src/client.c
 @@ -3223,6 +3223,35 @@ clientRemoveMaximizeFlag (Client *c)
@@ -78,7 +78,7 @@ index 3923dd98b..0f7159a41 100644
  
      if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
      {
-@@ -3504,6 +3515,186 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
+@@ -3504,6 +3515,209 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
      return TRUE;
  }
  
@@ -211,12 +211,13 @@ index 3923dd98b..0f7159a41 100644
 +    clientReconfigure (c, CFG_FORCE_REDRAW);
 +}
 +
-+void
-+clientMoveToMonitorByDirection (Client *c, gint key)
++static void
++clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_monitor, GdkMonitor **target_monitor)
 +{
++    /* Determine current & target monitor if client moves to monitor in specific direciton */
 +    GdkDisplay *display;
 +    GList *candidate_monitors;
-+    GdkMonitor *current_monitor, *other_monitor, *primary_monitor;
++    GdkMonitor *other_monitor, *primary_monitor;
 +    GdkRectangle current_rect, other_rect;
 +    gint c_mid_x, c_mid_y;
 +    guint num_monitors;
@@ -228,8 +229,8 @@ index 3923dd98b..0f7159a41 100644
 +    /* Using gdk_display_get_monitor_at_point on client x/y is inacurate, so do by midpoint client window */
 +    c_mid_x = c->x + (c->width >> 1);
 +    c_mid_y = c->y + (c->height >> 1);
-+    current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
-+    gdk_monitor_get_geometry (current_monitor, &current_rect);
++    *current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
++    gdk_monitor_get_geometry (*current_monitor, &current_rect);
 +    primary_monitor = gdk_display_get_primary_monitor (display);
 +
 +    /* Iterate through all monitors and record properties of ones that share target edge */
@@ -238,7 +239,7 @@ index 3923dd98b..0f7159a41 100644
 +    for (i = 0; i < num_monitors; i++) {
 +        /* Get other monitor rect */
 +        other_monitor = gdk_display_get_monitor (display, i);
-+        if (other_monitor == current_monitor)
++        if (other_monitor == *current_monitor)
 +        {
 +            continue;
 +        }
@@ -258,28 +259,52 @@ index 3923dd98b..0f7159a41 100644
 +    props = (MoveToMonitorProperties*) candidate_monitors->data;
 +    other_monitor = gdk_display_get_monitor (display, props->monitor_index);
 +    g_list_free_full (candidate_monitors, g_free);
++    *target_monitor = other_monitor;
++}
 +
-+    clientMoveToMonitor (c, current_monitor, other_monitor);
++gboolean
++clientMoveToMonitorByDirectionPossible (Client *c, gint key)
++{
++    /* Determine if it's possible for client to move to monitor in specific direciton */
++    GdkMonitor *current, *target;
++    target = NULL;
++    clientMoveToMonitorByDirectionTarget(c, key, &current, &target);
++    return (target != NULL);
++}
++
++void
++clientMoveToMonitorByDirection (Client *c, gint key)
++{
++    /* Actually move client to monitor in specific direciton */
++    GdkMonitor *current, *target;
++
++    target = NULL;
++    clientMoveToMonitorByDirectionTarget(c, key, &current, &target);
++    g_return_if_fail (target != NULL);
++
++    clientMoveToMonitor (c, current, target);
 +}
 +
  gboolean
  clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
  {
 diff --git src/client.h src/client.h
-index fd6ab669a..751c29a5f 100644
+index fd6ab669a..298285ee1 100644
 --- src/client.h
 +++ src/client.h
-@@ -469,6 +469,8 @@ gboolean                 clientToggleMaximizedAtPoint           (Client *,
+@@ -469,6 +469,10 @@ gboolean                 clientToggleMaximizedAtPoint           (Client *,
                                                                   gint,
                                                                   int,
                                                                   gboolean);
++gboolean                 clientMoveToMonitorByDirectionPossible (Client *,
++                                                                 gint);
 +void                     clientMoveToMonitorByDirection         (Client *,
 +                                                                 gint);
  gboolean                 clientTile                             (Client *,
                                                                   gint,
                                                                   gint,
 diff --git src/events.c src/events.c
-index 6ace19b1c..fd1fa032d 100644
+index 6ace19b1c..ae2fd3821 100644
 --- src/events.c
 +++ src/events.c
 @@ -378,6 +378,13 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
@@ -315,8 +340,17 @@ index 6ace19b1c..fd1fa032d 100644
      insensitive = 0;
  
      if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+@@ -2643,7 +2653,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp,
+                     screen_info->height,
+                     NoEventMask,
+                     FALSE);
+-    menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback,
++    menu = menu_default (c, screen_info->gscr, c->window, ops, insensitive, menu_callback,
+                          c->win_workspace, screen_info->workspace_count,
+                          screen_info->workspace_names, screen_info->workspace_names_items,
+                          display_info->xfilter, screen_info);
 diff --git src/menu.c src/menu.c
-index b76326dd6..88c529b88 100644
+index b76326dd6..693b4ef98 100644
 --- src/menu.c
 +++ src/menu.c
 @@ -68,6 +68,7 @@ static MenuItem menuitems[] = {
@@ -327,21 +361,20 @@ index b76326dd6..88c529b88 100644
      {0, NULL}, /* -------------------------------------------------------- */
      {MENU_OP_DELETE,       N_("_Close")},
  #if 0
-@@ -188,12 +189,60 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
+@@ -188,12 +189,68 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
      return (menu_widget);
  }
  
 +static GtkWidget *
-+menu_monitor (Menu * menu, MenuOp insensitive)
++menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
 +{
 +    GtkWidget *menu_widget;
 +    GtkWidget *menuitem;
 +    MenuData *menudata;
 +    gint i, key;
 +
-+    menu_widget = gtk_menu_new ();
-+    gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
-+
++    /* menu_widget is only initialized if there's a valid possible direction to move */
++    menu_widget = NULL;
 +    for (i = 0; i < 4; i++)
 +    {
 +        switch(i) {
@@ -364,6 +397,15 @@ index b76326dd6..88c529b88 100644
 +            default:
 +                break;
 +        }
++        if (!clientMoveToMonitorByDirectionPossible(c, key))
++        {
++            continue;
++        }
++        if (!menu_widget)
++        {
++            menu_widget = gtk_menu_new ();
++            gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
++        }
 +        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS));
 +        gtk_widget_show (menuitem);
 +
@@ -376,11 +418,12 @@ index b76326dd6..88c529b88 100644
 +        gtk_menu_shell_append (GTK_MENU_SHELL (menu_widget), menuitem);
 +    }
 +
-+    return (menu_widget);
++    return menu_widget;
 +}
 +
  Menu *
- menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
+-menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
++menu_default (Client *c, GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
      gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
  {
      GtkWidget *menuitem;
@@ -389,16 +432,17 @@ index b76326dd6..88c529b88 100644
      MenuData *menudata;
      Menu *menu;
      const gchar *label;
-@@ -218,7 +267,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
+@@ -218,7 +275,8 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
          if ((ops & menuitems[i].op) || (menuitems[i].op == MENU_OP_SEPARATOR))
          {
              label = _(menuitems[i].label);
 -            ws_menu = NULL;
++            menuitem = NULL;
 +            sub_menu = NULL;
              switch (menuitems[i].op)
              {
                  case MENU_OP_SEPARATOR:
-@@ -230,9 +279,19 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
+@@ -230,9 +288,23 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                      {
                          gtk_widget_set_sensitive (menuitem, FALSE);
                      }
@@ -410,22 +454,48 @@ index b76326dd6..88c529b88 100644
 +                    g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
 +                    break;
 +                case MENU_OP_MONITORS:
++                    sub_menu = menu_monitor (c, menu, insensitive);
++                    if (!sub_menu)
++                    {
++                        break;
++                    }
 +                    menuitem = gtk_menu_item_new_with_mnemonic (label);
 +                    if (insensitive & menuitems[i].op)
 +                    {
 +                        gtk_widget_set_sensitive (menuitem, FALSE);
 +                    }
-+                    sub_menu = menu_monitor (menu, insensitive);
 +                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
 +                    g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                      break;
                  default:
                      menuitem = gtk_menu_item_new_with_mnemonic (label);
+@@ -247,8 +319,11 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
+                     menu_item_connect (menuitem, menudata);
+                     break;
+             }
+-            gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), menuitem);
+-            gtk_widget_show (menuitem);
++            if (menuitem)
++            {
++                gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), menuitem);
++                gtk_widget_show (menuitem);
++            }
+         }
+         ++i;
+     }
 diff --git src/menu.h src/menu.h
-index 8e1aa161a..fd960a7da 100644
+index 8e1aa161a..8b3adf716 100644
 --- src/menu.h
 +++ src/menu.h
-@@ -51,15 +51,16 @@ typedef enum
+@@ -32,6 +32,7 @@
+ #include <gdk/gdk.h>
+ #include <gtk/gtk.h>
+ 
++#include "client.h"
+ #include "event_filter.h"
+ 
+ typedef enum
+@@ -51,15 +52,16 @@ typedef enum
      MENU_OP_DELETE       = 1 << 11,
      MENU_OP_DESTROY      = 1 << 12,
      MENU_OP_WORKSPACES   = 1 << 13,
@@ -451,6 +521,16 @@ index 8e1aa161a..fd960a7da 100644
  }
  MenuOp;
  
+@@ -95,7 +97,8 @@ struct _Menu
+     gpointer data;
+ };
+ 
+-Menu                    *menu_default                           (GdkScreen *,
++Menu                    *menu_default                           (Client *c,
++                                                                 GdkScreen *,
+                                                                  Window,
+                                                                  MenuOp,
+                                                                  MenuOp,
 diff --git src/settings.c src/settings.c
 index ce4a05e8a..2fc6a04f8 100644
 --- src/settings.c
