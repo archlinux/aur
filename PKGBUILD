@@ -1,19 +1,17 @@
-# Maintainer: Alex S. shantanna_at_hotmail_dot_com>
+# Maintainer: Torben <git@letorbi.com>
 
-pkgname=gnome-shell-extension-draw-on-your-screen-git
-_pkgname=DrawOnYourScreen
-_extid='drawOnYourScreen@som.codeberg.org'
-pkgver=11.r12.g4fdafc5
+pkgname=gnome-shell-extension-draw-on-your-screen2-git
+_pkgname=DrawOnYourScreen2
+_extid='draw-on-your-screen2@zhrexl.github.com'
+pkgver=12.r18.g6d5086a
 pkgrel=1
-pkgdesc="A drawing extension for GNOME Shell."
+pkgdesc="A drawing extension for the GNOME Shell."
 arch=('any')
-url="https://codeberg.org/som/DrawOnYourScreen"
-license=('GPLv2')
-conflicts=('gnome-shell-extension-draw-on-your-screen')
+url="https://github.com/zhrexl/DrawOnYourScreen2"
+license=('GPLv3')
 depends=('gnome-shell')
 makedepends=('git')
-#source=('git+https://codeberg.org/som/DrawOnYourScreen.git') # outdated
-source=('git+https://codeberg.org/gigaSproule/DrawOnYourScreen.git')
+source=('git+https://github.com/zhrexl/DrawOnYourScreen2.git#branch=GNOMEv42')
 sha256sums=('SKIP')
 
 pkgver() {
