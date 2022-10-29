@@ -2,7 +2,7 @@
 pkgname=engine-sim-git
 provides=('engine-sim')
 conflicts=('engine-sim')
-pkgver=r238.c695edb
+pkgver=r244.d24889c
 pkgrel=1
 license=('MIT')
 pkgdesc='Combustion engine simulator that generates realistic audio.'
@@ -39,9 +39,9 @@ prepare() {
     done
     git submodule set-branch --branch sdl-build 'dependencies/submodules/piranha'
     git submodule set-branch --branch sdl-build 'dependencies/submodules/delta-studio'
-    git submodule set-branch --branch gcc-fixes 'dependencies/submodules/delta-studio'
+    git submodule set-branch --branch gcc-fixes 'dependencies/submodules/simple-2d-constraint-solver'
 
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
