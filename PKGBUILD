@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-remoteobjects
-_basever=5.15.6
-pkgver=5.15.6+kde+r0
+_basever=5.15.7
+pkgver=5.15.7
 pkgrel=1
-_commit=aa705010da0f658b78c1155babce7091ae44529a
+_commit=5f2a598a9134167a0da2efcbf1249fc167ae3750
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -21,7 +21,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
