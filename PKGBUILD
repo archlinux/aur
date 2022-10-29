@@ -1,5 +1,5 @@
 pkgname=jazz2-git
-pkgver=1.0.0+r5.cc8bee3
+pkgver=1.0.0+r18.ff65dae
 pkgrel=1
 pkgdesc="Jazz² Resurrection - Open-source Jazz Jackrabbit 2 reimplementation"
 arch=(x86_64 aarch64)
@@ -10,8 +10,7 @@ makedepends=(mesa cmake glfw)
 install=jazz2.install
 source=(
     git+https://github.com/deathkiller/jazz2-native.git
-    jazz2.png
-    jazz2.desktop)
+    jazz2.{png,desktop})
 md5sums=(
     SKIP
     4f9c50d3c78231f459481eab9d654919
@@ -25,10 +24,9 @@ build(){
     sh BuildLinuxGcc.sh
 }
 package(){
-    cd jazz2-native
-    install ../Jazz2-LinuxGcc-Release/jazz2 -Dt $pkgdir/usr/bin
+    install Jazz2-LinuxGcc-Release/jazz2 -Dt $pkgdir/usr/bin
     mkdir -p "$pkgdir/usr/share/Jazz² Resurrection"
-    cp -r Content "$pkgdir/usr/share/Jazz² Resurrection"
-    install ../jazz2.png -Dt $pkgdir/usr/share/pixmaps
-    install ../jazz2.desktop -Dt $pkgdir/usr/share/applications
+    cp -r jazz2-native/Content "$pkgdir/usr/share/Jazz² Resurrection"
+    install jazz2.png -Dt $pkgdir/usr/share/pixmaps
+    install jazz2.desktop -Dt $pkgdir/usr/share/applications
 }

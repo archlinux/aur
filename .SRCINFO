@@ -1,6 +1,6 @@
 pkgbase = jazz2-git
 	pkgdesc = Jazz² Resurrection - Open-source Jazz Jackrabbit 2 reimplementation
-	pkgver = 1.0.0+r5.cc8bee3
+	pkgver = 1.0.0+r18.ff65dae
 	pkgrel = 1
 	url = http://deat.tk/jazz2/
 	install = jazz2.install
