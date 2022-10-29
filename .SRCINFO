@@ -1,15 +1,14 @@
 pkgbase = gnome-shell-extension-draw-on-your-screen-git
 	pkgdesc = A drawing extension for GNOME Shell.
-	pkgver = v4.r0.g71c2309
+	pkgver = v11.r12.g4fdafc5
 	pkgrel = 1
-	url = https://framagit.org/abakkk/DrawOnYourScreen
+	url = https://codeberg.org/som/DrawOnYourScreen
 	arch = any
 	license = GPLv2
 	makedepends = git
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-draw-on-your-screen
-	source = git+https://framagit.org/abakkk/DrawOnYourScreen.git
+	source = git+https://codeberg.org/gigaSproule/DrawOnYourScreen.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-draw-on-your-screen-git
-

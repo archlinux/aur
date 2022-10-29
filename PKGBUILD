@@ -2,16 +2,17 @@
 
 pkgname=gnome-shell-extension-draw-on-your-screen-git
 _pkgname=DrawOnYourScreen
-pkgver=v4.r0.g71c2309
+pkgver=v11.r12.g4fdafc5
 pkgrel=1
 pkgdesc="A drawing extension for GNOME Shell."
 arch=('any')
-url="https://framagit.org/abakkk/DrawOnYourScreen"
+url="https://codeberg.org/som/DrawOnYourScreen"
 license=('GPLv2')
 conflicts=('gnome-shell-extension-draw-on-your-screen')
 depends=('gnome-shell')
 makedepends=('git')
-source=('git+https://framagit.org/abakkk/DrawOnYourScreen.git')
+#source=('git+https://codeberg.org/som/DrawOnYourScreen.git') # outdated
+source=('git+https://codeberg.org/gigaSproule/DrawOnYourScreen.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,7 +21,7 @@ pkgver() {
 }
 
 package() {
-  _extid='drawOnYourScreen@abakkk.framagit.org'
+  _extid='drawOnYourScreen@som.codeberg.org'
   mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/"
   cp -af "${_pkgname}" "${pkgdir}/usr/share/gnome-shell/extensions/"
   mv "${pkgdir}/usr/share/gnome-shell/extensions/${_pkgname}" "${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
