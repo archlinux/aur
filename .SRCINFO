@@ -1,7 +1,7 @@
 pkgbase = guile-sdl2
 	pkgdesc = Guile Scheme bindings for SDL2
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://dthompson.us/projects/guile-sdl2.html
 	arch = any
 	license = LGPL3
@@ -11,10 +11,10 @@ pkgbase = guile-sdl2
 	depends = sdl2_ttf
 	depends = sdl2_mixer
 	options = !strip
-	source = https://files.dthompson.us/guile-sdl2/guile-sdl2-0.7.0.tar.gz
-	source = https://files.dthompson.us/guile-sdl2/guile-sdl2-0.7.0.tar.gz.asc
+	source = https://files.dthompson.us/guile-sdl2/guile-sdl2-0.8.0.tar.gz
+	source = https://files.dthompson.us/guile-sdl2/guile-sdl2-0.8.0.tar.gz.asc
 	validpgpkeys = 8CCBA7F552B9CBEAE1FB29158328C7470FF1D807
-	md5sums = 65e8197638f03e0ab7765e3d2b1d380a
+	md5sums = be34cc9b0b82211dd88e0dd5aaf03dbb
 	md5sums = SKIP
 
 pkgname = guile-sdl2
