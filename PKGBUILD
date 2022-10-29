@@ -24,6 +24,10 @@ prepare() {
   # https://github.com/hashicorp/vault/issues/10048
   mkdir -p vault-unprivileged
   cp -v /usr/bin/vault vault-unprivileged/
+
+  cd $_pkgname-$pkgver
+  # workaround https://github.com/hvac/hvac/issues/905
+  sed -i '/use_microsoft_graph_api/d' tests/integration_tests/api/secrets_engines/test_azure.py
 }
 
 build() {
