@@ -9,7 +9,9 @@ url="https://github.com/kulikjak/nmap"
 license=("GPL2")
 makedepends=("unzip")
 
-depends=("nmap"
+depends=("python"
+            "python-cairo"
+            "nmap"
             "gtk3"
             "python-gobject")
 
