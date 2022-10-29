@@ -3,7 +3,7 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=0.1.4.r53.gbd89447
+pkgver=0.1.4.r66.g5a9fe21
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -22,10 +22,10 @@ url='https://github.com/Guusvanmeerveld/Dust-Mail'
 
 license=('MIT')
 
-source=("$pkgname::git+https://github.com/Guusvanmeerveld/Dust-Mail.git" "dust-mail.desktop" "dust-mail.png")
+source=("$pkgname::git+https://github.com/Guusvanmeerveld/Dust-Mail.git")
 
-md5sums=('SKIP' 'c0038e61dc8df198e6783b26ff966e6c' '1c7baa069d5b6aea65b43e37728abbcd')
-sha256sums=('SKIP' '7b7134228e2a4e7451c5615c7dec0f1babd0adfe11d22bde46ea883f5bd9ef44' 'c1ccc31852531ea642e17daa1481cfa65463602f9fd735eabb7abb5ea2674579')
+md5sums=('SKIP')
+sha256sums=('SKIP')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
@@ -70,7 +70,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
-  install -Dm644 "$srcdir/dust-mail.png" "$pkgdir/usr/share/dust-mail.png"
+  install -Dm644 "$srcdir/$pkgname/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
+  install -Dm644 "$srcdir/$pkgname/icons/logo-512x512.png" "$pkgdir/usr/share/dust-mail.png"
   install -Dm755 "$srcdir/$pkgname/apps/web/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
 }

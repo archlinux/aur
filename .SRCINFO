@@ -1,6 +1,6 @@
 pkgbase = dust-mail-client-git
 	pkgdesc = A simple and fast mail client (Git version)
-	pkgver = 0.1.4.r47.gd0d93b8
+	pkgver = 0.1.4.r66.g5a9fe21
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Guusvanmeerveld/Dust-Mail
@@ -21,13 +21,7 @@ pkgbase = dust-mail-client-git
 	provides = dust-mail-client
 	conflicts = dust-mail-client
 	source = dust-mail-client-git::git+https://github.com/Guusvanmeerveld/Dust-Mail.git
-	source = dust-mail.desktop
-	source = dust-mail.png
 	md5sums = SKIP
-	md5sums = c0038e61dc8df198e6783b26ff966e6c
-	md5sums = 1c7baa069d5b6aea65b43e37728abbcd
 	sha256sums = SKIP
-	sha256sums = 7b7134228e2a4e7451c5615c7dec0f1babd0adfe11d22bde46ea883f5bd9ef44
-	sha256sums = c1ccc31852531ea642e17daa1481cfa65463602f9fd735eabb7abb5ea2674579
 
 pkgname = dust-mail-client-git
