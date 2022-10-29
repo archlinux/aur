@@ -11,6 +11,7 @@ pkgbase = obs-ndi-git
 	depends = avahi
 	depends = libndi
 	depends = obs-studio
+	depends = sndio
 	provides = obs-ndi
 	conflicts = obs-ndi-bin
 	source = git+https://github.com/Palakis/obs-ndi.git#branch=rewrite
