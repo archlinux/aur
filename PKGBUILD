@@ -3,7 +3,7 @@
 
 pkgname=xfig
 pkgver=3.2.8b
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive drawing tool"
 arch=('x86_64' 'i686')
 url="http://mcj.sourceforge.net/"
