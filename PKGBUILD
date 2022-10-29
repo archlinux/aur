@@ -3,7 +3,7 @@
 
 pkgbase=pyside2
 pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
-_qtver=5.15.6
+_qtver=5.15.7
 _clangver=14.0.6
 pkgver=${_qtver/-/}
 pkgrel=1
@@ -32,7 +32,7 @@ optdepends=('qt5-svg: QtSvg bindings'
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz
         fix-build.patch)
-sha256sums=('171ee058d056599b8e9e8605fe3dae5dabdab7764285b21b28f64760a0f6779d'
+sha256sums=('f61210ae24e6882d5d0ca0059229e5dc4f35e2bca92dd6caf96c0f41943a8294'
             '4f8815840b5df2e1e3b9f201a3402126821b0d9702920cefdc18050639143ad1')
 
 prepare() {
