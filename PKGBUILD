@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 # Contributor: eloaders <eloaders at linux dot pl>
 
 _pkgname=libcpuid
