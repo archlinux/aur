@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver::git+https://github.com/ahpohl/smartmeter.git#tag=v${p
 noextract=()
 sha256sums=('SKIP'
             'c5de1caa62617c8a3287a342ec868e00c8a808647f71bef3a606521d76ac318f'
-            '8d95a53962eef2bf7b470ed5eebc0c5c5e3777d31759cbd2498cd2359b9ca74a')
+            'e321f08948196f7c0d631ba2ea3c845519f52c0a195c0c8bfeeffdce8ec444ec')
 validpgpkeys=()
 
 build() {

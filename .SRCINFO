@@ -20,6 +20,6 @@ pkgbase = smartmeter
 	source = smartmeter.service
 	sha256sums = SKIP
 	sha256sums = c5de1caa62617c8a3287a342ec868e00c8a808647f71bef3a606521d76ac318f
-	sha256sums = 8d95a53962eef2bf7b470ed5eebc0c5c5e3777d31759cbd2498cd2359b9ca74a
+	sha256sums = e321f08948196f7c0d631ba2ea3c845519f52c0a195c0c8bfeeffdce8ec444ec
 
 pkgname = smartmeter
