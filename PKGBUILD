@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 
 _realname=memtest86
 pkgname=$_realname-efi
@@ -14,7 +14,7 @@ optdepends=('efibootmgr: to add a new EFI boot entry'
 	'grub: to add MemTest86 entry in GRUB2 menu')
 backup=("etc/$pkgname/$pkgname.conf")
 install="$pkgname.install"
-source=("$pkgname-$pkgver.zip::https://github.com/X0rg/AUR-packages/raw/master/files/$_realname-$pkgver-usb.zip"
+source=("$pkgname-$pkgver.zip::https://github.com/TheTumultuousUnicornOfDarkness/AUR-packages/raw/master/files/$_realname-$pkgver-usb.zip"
 	"memtest86-efi"
 	"memtest86-efi.conf"
 	"memtest86-efi-update.hook")
