@@ -1,0 +1,12 @@
+pkgbase = dwarf2json-git
+	pkgdesc = Processes files containing symbol and type information to generate Volatility3 Intermediate Symbol File (ISF) JSON output
+	pkgver = r24.c306d11
+	pkgrel = 1
+	url = https://github.com/volatilityfoundation/dwarf2json
+	arch = x86_64
+	license = custom:volatility
+	makedepends = go
+	source = git+https://github.com/volatilityfoundation/dwarf2json
+	sha256sums = SKIP
+
+pkgname = dwarf2json-git
