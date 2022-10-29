@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 # Contributor: u8sand (https://gist.github.com/u8sand/c2ed7dfbf6e4e781f532daf5aab141cb)
 
 pkgname='mirrorlist-rankmirrors-hook'

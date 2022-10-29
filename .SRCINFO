@@ -19,4 +19,3 @@ pkgbase = mirrorlist-rankmirrors-hook
 	sha512sums = 83a8ace99403296572e695ca992182195d5a983042773e00d506129d6e8cf38456f3d19b1e7e8b8c897c5d6ca8a465b627e8014108001d05005f3ad0b2d473e4
 
 pkgname = mirrorlist-rankmirrors-hook
-
