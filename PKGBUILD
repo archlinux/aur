@@ -1,6 +1,6 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
 arch=('x86_64')
@@ -33,7 +33,10 @@ prepare() {
     git config submodule.third_party/Qt-AES.url "$srcdir/Qt-AES"
     git config submodule.third_party/SmtpClient-for-Qt.url "$srcdir/SmtpClient-for-Qt"
     git config submodule.third_party/libarchive.url "$srcdir/libarchive"
-    git submodule update
+
+    # https://bugs.archlinux.org/task/76255
+    # https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {

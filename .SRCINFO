@@ -1,6 +1,6 @@
 pkgbase = gpgfrontend
 	pkgdesc = OpenPGP crypto tool and gui frontend for modern GnuPG
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/saturneric/GpgFrontend
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gpgfrontend
 	depends = libconfig
 	depends = libgpg-error
 	depends = qt5-base
-	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.0.8
+	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.0.9
 	source = git+https://github.com/saturneric/vmime
 	source = git+https://github.com/saturneric/json
 	source = git+https://github.com/saturneric/easyloggingpp
