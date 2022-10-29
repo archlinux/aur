@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-picocms
 	pkgdesc = Integrate Pico CMS and let your users manage their own websites
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/cms_pico
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-picocms
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-picocms-1.0.20.tar.gz::https://github.com/nextcloud/cms_pico/releases/download/v1.0.20/cms_pico-v1.0.20.tar.gz
-	sha512sums = 57518badcbe6c102134376ce6baa2a8f07773da5dd852218f88c5b49bfe35cd9bd46ca65b0dd864488049d93be7ef1ddb95295fa9ae39dac50719d68cb12fcdb
+	source = nextcloud-app-picocms-1.0.21.tar.gz::https://github.com/nextcloud/cms_pico/releases/download/v1.0.21/cms_pico-v1.0.21.tar.gz
+	sha512sums = f163b7899e5f53222261bf41bbbdade54e3d45c6edfbdcfb3b4b264b18f3d3b224295502402329483b10de486267bd1b7e118b5545e2a414e58a90bd332eb06e
 
 pkgname = nextcloud-app-picocms

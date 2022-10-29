@@ -3,7 +3,7 @@
 
 _name=cms_pico
 pkgname=nextcloud-app-picocms
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="Integrate Pico CMS and let your users manage their own websites "
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('57518badcbe6c102134376ce6baa2a8f07773da5dd852218f88c5b49bfe35cd9bd46ca65b0dd864488049d93be7ef1ddb95295fa9ae39dac50719d68cb12fcdb')
+sha512sums=('f163b7899e5f53222261bf41bbbdade54e3d45c6edfbdcfb3b4b264b18f3d3b224295502402329483b10de486267bd1b7e118b5545e2a414e58a90bd332eb06e')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
