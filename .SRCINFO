@@ -27,7 +27,7 @@ pkgbase = discord-canary-electron-bin
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
 	sha256sums = 72d938a27324935814b9254b5a5e1a7a6f0df41d300b7561cc5df15bc4230d80
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 72cd5588ba06c2dfd28d14a1929f374862b45cea67baa8a97f84e663bb2fcdc8
+	sha256sums = 90e5c5ae8516ab75bd2d2649964231086640294e4bba63f963c14ef1b430b829
 
 pkgname = discord-canary-electron-bin
