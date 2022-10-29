@@ -11,7 +11,7 @@ url="https://github.com/linuxdeepin/dtkwidget"
 license=('LGPL3')
 depends=('deepin-qt-dbus-factory-git' 'dtkcore-git' 'dtkgui-git' 'librsvg' 'qt5-multimedia' 'qt5-svg'
          'qt5-x11extras' 'startup-notification')
-makedepends=('git' 'qt5-tools' 'gtest' 'dtkcommon-git' 'dtkcore-git' 'dtkgui-git' 'cmake' 'ninja')
+makedepends=('git' 'qt5-tools' 'gtest' 'dtkcommon-git' 'dtkcore-git' 'dtkgui-git' 'cmake' 'ninja' 'doxygen')
 provides=('dtkwidget')
 conflicts=('dtkwidget')
 groups=('deepin-git')

@@ -15,6 +15,7 @@ pkgbase = dtkwidget-git
 	makedepends = dtkgui-git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = doxygen
 	depends = deepin-qt-dbus-factory-git
 	depends = dtkcore-git
 	depends = dtkgui-git
