@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
