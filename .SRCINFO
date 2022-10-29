@@ -24,7 +24,7 @@ pkgbase = cpu-x
 	optdepends = opencl-driver: packaged openCL driver
 	optdepends = opengl-driver: packaged openGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
-	source = cpu-x-4.5.1.tar.gz::https://github.com/X0rg/CPU-X/archive/v4.5.1.tar.gz
+	source = cpu-x-4.5.1.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/v4.5.1.tar.gz
 	sha512sums = 25b2d51ae093c5cb607aa77e05be0f62df3dc1d2022d96a2cfe935fedcbe2f5f85d9da16e1df05377a7e02280365c165ee93a2c22d1e4364d008bd669a69b2ec
 
 pkgname = cpu-x

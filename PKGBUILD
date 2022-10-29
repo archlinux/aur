@@ -14,7 +14,7 @@ checkdepends=('mawk' 'nawk')
 optdepends=('opencl-driver: packaged openCL driver'
             'opengl-driver: packaged openGL driver'
             'vulkan-driver: packaged Vulkan driver')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/X0rg/CPU-X/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/v$pkgver.tar.gz")
 sha512sums=('25b2d51ae093c5cb607aa77e05be0f62df3dc1d2022d96a2cfe935fedcbe2f5f85d9da16e1df05377a7e02280365c165ee93a2c22d1e4364d008bd669a69b2ec')
 
 build() {
