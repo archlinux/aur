@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-charts
-_basever=5.15.6
-pkgver=5.15.6+kde+r0
+_basever=5.15.7
+pkgver=5.15.7
 pkgrel=1
-_commit=841083c263f16f8acb81e4915bf24bbed0461c9a
+_commit=055c6d6e49c5ea369990e7078fd534392a0ba6b9
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -21,7 +21,7 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
 }
 
 prepare() {
