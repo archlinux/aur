@@ -1,4 +1,4 @@
-# Maintainer: X0rg
+# Maintainer: UnicornDarkness
 
 pkgname=tumbler-extra-thumbnailers
 pkgver=4.1
