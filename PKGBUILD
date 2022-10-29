@@ -1,8 +1,8 @@
 # Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 pkgname=material-maker-bin
 _pkgname=material_maker
-pkgver=1.0
-_pkgver='1_00'
+pkgver=1.1
+_pkgver='1_1'
 pkgrel=1
 pkgdesc="A tool for procedural texture generation and 3D model painting"
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=(https://github.com/RodZill4/material-maker/releases/download/${pkgver}/$
         io.github.RodZill4.Material-Maker.desktop
         material-maker.png
         LICENSE)
-sha256sums=('19ad1a17770cbf457a44c25875d43026259a35f68fd3b999573c4820938f2055'
-            'f1ef7f1e6fd4abb410ccff8de5b8667c973c5d2564ae034cd48c5d7b8e59cc4f'
+sha256sums=('e4935ec6022e0e75fa898ee695db4248f6206d9dd72b47ffbc7738adcac70f7f'
+            '5fd1ce940d5c5d2d8203dbe8f9d363f8f7afb65dc4dd2824b79b13c8e6a09dc3'
             '381e6425233d0aa3786c5583a2415d0d20b828481fa93dceac1e4376481d1330'
             '72ee1a0fc59b798b8849eb9bd0cb7b67fd9ee3ff41645f90c2ca98168f3619ef'
             'ac9c6450c84132fca73c423dee07c4793f72e6a2d6f6eb4701cbbd226fccd548')
