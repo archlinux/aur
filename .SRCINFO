@@ -1,0 +1,17 @@
+pkgbase = gohttpserver-bin
+	pkgdesc = An HTTP Static File Server, write with golang+vue
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/codeskyblue/gohttpserver
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gohttpserver
+	options = !strip
+	options = emptydirs
+	source_x86_64 = https://github.com/codeskyblue/gohttpserver/releases/download/1.1.4/gohttpserver_1.1.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7ddbbee7268f4d89bd008351a6bf99336615587cc2a900fefb7d924442b95db2
+	source_aarch64 = https://github.com/codeskyblue/gohttpserver/releases/download/1.1.4/gohttpserver_1.1.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = aca46287b1aa0caa1e71569ece86ace39a70715e47e7c7f6d01787cee3d36e04
+
+pkgname = gohttpserver-bin
