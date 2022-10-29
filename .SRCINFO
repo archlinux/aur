@@ -29,7 +29,7 @@ pkgbase = cpu-x-git
 	conflicts = cpu-x
 	options = !strip
 	options = debug
-	source = git+https://github.com/X0rg/CPU-X.git
+	source = git+https://github.com/TheTumultuousUnicornOfDarkness/CPU-X.git
 	sha512sums = SKIP
 
 pkgname = cpu-x-git

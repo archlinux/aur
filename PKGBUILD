@@ -17,7 +17,7 @@ optdepends=('opencl-driver: packaged openCL driver'
 provides=('cpu-x')
 conflicts=('cpu-x')
 options=('!strip' 'debug')
-source=("git+https://github.com/X0rg/CPU-X.git")
+source=("git+https://github.com/TheTumultuousUnicornOfDarkness/CPU-X.git")
 sha512sums=('SKIP')
 
 pkgver() {
