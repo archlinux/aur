@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Billy Frontier
+Comment=An arcade action game with a "cowboys in space" theme
+Icon=billy-frontier
+Exec=/usr/lib/billy-frontier/BillyFrontier
+Path=/usr/lib/billy-frontier
+Terminal=false
+Categories=Game;
+Encoding=UTF-8
