@@ -1,5 +1,4 @@
 pkg/
 src/
-jkmeter-*.pkg.tar.*
-jkmeter-*.src.tar.gz
-jkmeter-*.tar.bz2
+*.tar.*
+*.zip
