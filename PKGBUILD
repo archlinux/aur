@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r60.78bf3e5
+pkgver=r78.deb4d2e
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
