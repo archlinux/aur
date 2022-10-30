@@ -1,7 +1,7 @@
 pkgbase = python-fx
 	pkgdesc = A python-native JSON Viewer TUI
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cielong/pyfx
 	arch = any
 	license = GPL2
