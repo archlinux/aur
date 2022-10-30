@@ -11,15 +11,15 @@ license=('GPLv3')
 provides=('devc')
 conflicts=('devc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.7/devc_1.0.0-beta.7_linux_arm64.tar.gz")
-sha256sums_aarch64=('62aa081e92c9e92d349aec0f3e269cc82d0a4d4df8d936f73bd98973cdacf734')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.8/devc_1.0.0-beta.8_linux_arm64.tar.gz")
+sha256sums_aarch64=('a0ed699dc42dea6ec9ffee3fde5b4f4c31480dbabaf5e9bb338eb41bc2164edc')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.7/devc_1.0.0-beta.7_linux_amd64.tar.gz")
-sha256sums_x86_64=('9d24750a4c222ca5a7a0a58e524d892a9a7a7eb160156c0e29862562c03e2a2d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.8/devc_1.0.0-beta.8_linux_amd64.tar.gz")
+sha256sums_x86_64=('6d6b1b2b43847ff66adbbbcf67ec859618a36f5b26621f0a1aacaef0b15430c6')
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin/devc" "./devc"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/devc/LICENSE" "./LICENSE"
+  install -Dm755 -t "${pkgdir}/usr/bin/" "./devc"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/devc/" "./LICENSE"
   install -Dm644 -t "${pkgdir}/usr/share/man/man1/" ./man/devc*.1
   install -Dm644 -t "${pkgdir}/usr/share/bash-completion/completions/" "./completions/devc"
   install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_completions.d/" "./completions/devc.fish"
