@@ -1,26 +1,21 @@
-# Maintainer: Hezekiah Michael <spiritomb@protonmail.com>
-
-_plugin_name=bypass_paywalls
-_plugin_version=1.7.9
-_plugin_ext="-an+fx"
-pkgdesc="Browser plugin to bypass paywalls on many news sites."
-license=('MIT')
+# Maintainer: Daurnimator <quae@daurnimator.com>
+# Contributor: Hezekiah Michael <spiritomb@protonmail.com>
 
 pkgname=firefox-extension-bypass-paywalls
-pkgver=$_plugin_version
+pkgver=1.8.0
 pkgrel=1
-arch=('any')
+pkgdesc="Browser plugin to bypass paywalls on many news sites."
 url="https://github.com/iamadamdev/bypass-paywalls-chrome/"
+license=('MIT')
+arch=('any')
+groups=('firefox-addons')
 depends=("firefox")
 optdepends=("firefox-ublock-origin")
-source=("${_plugin_name}-${pkgver}${_plugin_ext}.xpi::https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v${pkgver}/bypass-paywalls-firefox.xpi")
-
-noextract=('${_plugin_name}-${pkgver}${_plugin_ext}.xpi')
+source=("https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v${pkgver}/bypass-paywalls-firefox.xpi")
+sha512sums=('2912eb4cb0164aea7f97976ca3351fb8b0e9ab0e624cfbb7a70ab21a477665d582211b08912e50f5df99b50f07b49f362f867a2c8d5e0422297a274339ff3753')
+noextract=("bypass-paywalls-firefox.xpi")
 
 package() {
-  cd "${srcdir}"
-  _extension_id="bypasspaywalls@bypasspaywalls.weebly.com"
-  _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
-  install -Dm644 ${_plugin_name}-${pkgver}${_plugin_ext}.xpi "${_extension_dest}.xpi"
+    install -Dm644 "bypass-paywalls-firefox.xpi" \
+        "${pkgdir}/usr/lib/firefox/browser/extensions/bypasspaywalls@bypasspaywalls.weebly.com.xpi"
 }
-md5sums=('12ad80f1665a16facc5af355a61bb1a0')
