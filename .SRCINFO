@@ -8,6 +8,7 @@ pkgbase = tome4-bin
 	license = custom
 	license = GPL3
 	provides = tome4
+	conflicts = tome4
 	source = tome4
 	source = tome4.desktop
 	sha256sums = 3a1e4901337f91697bcfaf095f488c447c27ccc2484a543e31f024d5aefb61a0

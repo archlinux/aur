@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://te4.org/"
 license=('custom' 'GPL3')
 provides=('tome4')
+conflicts=('tome4')
 source=(tome4 tome4.desktop)
 source_x86_64=("https://te4.org/dl/t-engine/t-engine4-linux64-${pkgver}.tar.bz2")
 source_i686=("https://te4.org/dl/t-engine/t-engine4-linux32-${pkgver}.tar.bz2")
