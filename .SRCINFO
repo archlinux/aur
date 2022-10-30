@@ -1,7 +1,7 @@
 pkgbase = luastatus
 	pkgdesc = universal status bar content generator
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3
@@ -19,6 +19,7 @@ pkgbase = luastatus
 	makedepends = xcb-util>=0.3.8
 	makedepends = xcb-util-wm>=0.4.1
 	depends = lua<5.5
+	optdepends = luastatus-meta: provides all luastatus dependencies
 	optdepends = libxcb>=1.10: for barlib 'dwm' and plugin 'xtitle'
 	optdepends = yajl>=2.0.4: for barlib 'i3'
 	optdepends = alsa-lib>=1.0.27.2: for plugin 'alsa'

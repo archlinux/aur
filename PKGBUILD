@@ -2,7 +2,7 @@
 
 pkgname=luastatus
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='universal status bar content generator'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -24,6 +24,7 @@ makedepends=(
 	'xcb-util-wm>=0.4.1'
 )
 optdepends=(
+	"luastatus-meta: provides all luastatus dependencies"
 	"libxcb>=1.10: for barlib 'dwm' and plugin 'xtitle'"
 	"yajl>=2.0.4: for barlib 'i3'"
 	"alsa-lib>=1.0.27.2: for plugin 'alsa'"
