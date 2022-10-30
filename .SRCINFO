@@ -1,0 +1,11 @@
+pkgbase = plank-theme-digitall-uppercap
+	pkgdesc = Digitall Uppercap Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1299253
+	arch = any
+	license = mit
+	source = https://github.com/MMcQueenGNU/plank-theme-digitall-uppercap/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 6dbab1eb1080398b07c0c32f50c5b3d19eda6aff859ac25220c5f1357a21552a
+
+pkgname = plank-theme-digitall-uppercap
