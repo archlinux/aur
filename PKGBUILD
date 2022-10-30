@@ -2,7 +2,7 @@
 
 pkgname=wl-mirror-git
 pkgver=0.12.2.r0.gcd88434
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple Wayland output mirror client (git version)"
 url="https://github.com/Ferdi265/wl-mirror"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ prepare() {
     git submodule init
     git config submodule.proto/wayland-protocols.url "$srcdir/wayland-protocols"
     git config submodule.proto/wlr-protocols.url "$srcdir/wlr-protocols"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
