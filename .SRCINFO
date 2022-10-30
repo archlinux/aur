@@ -1,0 +1,17 @@
+pkgbase = fulcio-git
+	pkgdesc = Sigstore OpenID Connect public key infrastructure
+	pkgver = 1.0.0.r26.g67c6e2f
+	pkgrel = 1
+	url = https://github.com/sigstore/fulcio
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = fulcio=1.0.0.r26.g67c6e2f
+	conflicts = fulcio
+	source = git+https://github.com/sigstore/fulcio.git
+	sha256sums = SKIP
+
+pkgname = fulcio-git
