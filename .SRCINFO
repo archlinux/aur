@@ -1,12 +1,12 @@
 pkgbase = garbage
 	pkgdesc = Command-line interface to the FreeDesktop Trash can
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://git.sr.ht/~mzhang/garbage
 	arch = any
 	license = GPL3
-	depends = cargo
-	source = https://git.sr.ht/~mzhang/garbage/archive/v0.3.3.tar.gz
-	sha256sums = 98edb72373f7835f07c2026ee76b37f8d2503cc0566c3dfe713c65a3abc0e3d6
+	makedepends = cargo
+	source = https://git.sr.ht/~mzhang/garbage/archive/v0.4.0.tar.gz
+	sha256sums = c98e2769d88f1a85fbcbf4b08a2972acdf29079344ef9323aeace0788be635c9
 
 pkgname = garbage
