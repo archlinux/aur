@@ -3,9 +3,9 @@
 # Contributor: jhorcl
 # Contributor: flbzh <frederic_lebouc (a) yahoo.fr>
 pkgname=mozillavpn
-pkgver=2.9.0
+pkgver=2.10.1
 _debian_series=jammy1
-pkgrel=3
+pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('i686' 'x86_64')
 url="https://vpn.mozilla.org/"
@@ -33,8 +33,8 @@ depends=('polkit'
 makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'python-lxml' 'clang' 'cargo')
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz" "issue_6676.patch")
-sha256sums=('122b2e465da3dcbb226bde38413e7969b6128553999b1fc1ad59e1e3ace311ff'
-            'fa8a2af04ec62109e38f019d6c013c369d5a017c3729ed487cea31fa181339f7')
+sha256sums=('1479094c505469cad9c5a03b335d079774974c9007fc3ccbc0912e2a9884e6a1'
+            '7bad4fa399c1092247a262e1efdcd6d3b57cea902949575ab2ace1d865903ea7')
 
 build() {
     cd "${pkgname}-${pkgver}"
