@@ -2,7 +2,7 @@
 # Reference: https://wiki.archlinux.org/title/PKGBUILD
 
 pkgname=sunshine
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Sunshine is a Gamestream host for Moonlight."
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=('cuda' 'libcap' 'libdrm')
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=4428054d03a159db62c9d6c07d6175e0c1a48975")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=5af39cbbb09540aa323d6e8176eb95abd41c84a3")
 sha256sums=('SKIP')
 
 prepare() {

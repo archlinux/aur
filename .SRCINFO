@@ -1,6 +1,6 @@
 pkgbase = sunshine
 	pkgdesc = Sunshine is a Gamestream host for Moonlight.
-	pkgver = 0.14.1
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://app.lizardbyte.dev
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = sunshine
 	optdepends = cuda
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=4428054d03a159db62c9d6c07d6175e0c1a48975
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=5af39cbbb09540aa323d6e8176eb95abd41c84a3
 	sha256sums = SKIP
 
 pkgname = sunshine
