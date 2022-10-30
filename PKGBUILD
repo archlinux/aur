@@ -2,7 +2,7 @@
 
 pkgname=polydock
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A shiny and hackable application dock"
 arch=('any')
 url="https://github.com/folke/polydock"
