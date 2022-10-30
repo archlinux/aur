@@ -2,18 +2,18 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://github.com/xushengfeng/eSearch"
 license=('GPL3')
-depends=('electron19' 'at-spi2-core' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs')
+depends=('electron20' 'at-spi2-core' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs')
 conflicts=('e-search-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://download.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/eSearch_${pkgver}.aur")
-sha512sums=('a0c0073a60f726b39692dc279d26106a2cf7f401675e1506ba004a932c66edf95f4d4fde360a78c83a0f38c14b2d4f37204f8a2b747f2a36c3323b49262bdf3f')
+sha512sums=('efaf96034e91e2dddb517f11604f5ef1498d9b77c9f57db923ff5db632d167dc681cc781f8604bd5e26cf63ca9dbe46c3db3f8d0ad1882a1da883e9948beb7cd')
 
 package(){
 
