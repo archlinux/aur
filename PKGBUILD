@@ -8,7 +8,6 @@ pkgdesc="A Pidgin plugin to login and send whispers to Battle.net v2 users."
 arch=('i686' 'x86_64')
 url="https://github.com/EionRobb/purple-battlenet"
 license=('GPL3+') 
-depends=('pidgin')
 makedepends=('libpurple' 'glib2' 'protobuf-c' 'git')
 source=('git+https://github.com/EionRobb/purple-battlenet.git')
 md5sums=('SKIP')
