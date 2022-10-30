@@ -6,7 +6,11 @@ pkgbase = pinecil-firmware-updater-git
 	arch = any
 	license = Apache
 	depends = dfu-util
+	depends = qt5-base
 	provides = pine64_updater
+	provides = pinecil-firmware-updater
+	conflicts = pine64_updater
+	conflicts = pinecil-firmware-updater
 	source = git+https://github.com/pine64/pine64_updater.git#branch=old-pinecil-updater
 	md5sums = SKIP
 
