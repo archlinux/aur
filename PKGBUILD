@@ -2,7 +2,7 @@
 
 pkgname=harbour-amazfish-git
 pkgver=r849.34365e4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=(x86_64 aarch64)
@@ -11,6 +11,7 @@ license=('AGPL3')
 groups=()
 depends=(
 	'qt5-base'
+	'karchive'
 	'kdb'
 	'kcontacts'
 	'kcoreaddons'
