@@ -17,8 +17,8 @@
 
 pkgname=quiltflower
 pkgdesc='Java decompiler focused on improving code quality, speed, and usability.'
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.9.0
+pkgrel=1
 arch=('any')
 url="https://github.com/QuiltMC/${pkgname}/"
 license=('Apache')
