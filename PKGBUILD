@@ -1,12 +1,11 @@
-# Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
 pkgver=r3167.3233ffe1
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/GTAmodding/re3"
-license=('unknown')
+license=('custom:none')
 depends=('openal' 'glew' 'glfw' 'mpg123' 'zenity')
 makedepends=('git' 'premake')
 provides=("$_pkgbase")
@@ -42,7 +41,7 @@ prepare() {
   do
     git config "submodule.vendor/$submod.url" "../$submod"
   done
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   patch -uNp1 -i ../no_link_with_unnecessary_sndfile.patch
 }
 
