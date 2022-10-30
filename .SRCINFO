@@ -1,7 +1,7 @@
 pkgbase = alvr
 	pkgdesc = Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi.
-	pkgver = 18.2.3.r0.gc1c251c4
-	pkgrel = 2
+	pkgver = 19.0.0.r0.g1215da95
+	pkgrel = 1
 	url = https://github.com/alvr-org/ALVR
 	arch = x86_64
 	license = MIT
@@ -10,13 +10,15 @@ pkgbase = alvr
 	makedepends = clang
 	makedepends = imagemagick
 	makedepends = vulkan-headers
+	makedepends = jack
+	makedepends = libxrandr
 	depends = vulkan-driver
 	depends = ffmpeg
-	depends = gtk3
 	depends = libunwind
 	provides = alvr
 	conflicts = alvr
-	source = alvr::git+https://github.com/alvr-org/ALVR.git#tag=v18.2.3
+	options = !lto
+	source = alvr::git+https://github.com/alvr-org/ALVR.git#tag=v19.0.0
 	md5sums = SKIP
 
 pkgname = alvr
