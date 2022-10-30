@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-box
-pkgver=6.0.2
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="Advanced Python dictionaries with dot notation access"
 arch=('x86_64')
 url="https://github.com/cdgriffith/Box"
@@ -16,7 +16,7 @@ optdepends=(
 	'python-yaml: YAML support')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c15f09fa2a8730702115396b490ddc17dde3d4276a4f24eb754e35f102c41347')
+sha256sums=('6e7c243b356cb36e2c0f0e5ed7850969fede6aa812a7f501de7768996c7744d7')
 
 build() {
 	cd "$pkgname-$pkgver"
