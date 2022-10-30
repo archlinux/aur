@@ -1,2 +1,6 @@
-*.zip
-*.pkg.tar.zst
+*
+**/*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
