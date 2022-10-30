@@ -1,7 +1,7 @@
 pkgbase = firestorm-git
 	pkgdesc = A third-party viewer for Second Life (TM) and OpenSim grids (git version)
-	pkgver = 6.6.4.67818
-	pkgrel = 2
+	pkgver = 6.6.7.68335
+	pkgrel = 1
 	url = https://www.firestormviewer.org
 	install = firestorm.install
 	arch = x86_64
@@ -52,9 +52,9 @@ pkgbase = firestorm-git
 	source = fs-build-variables::git+https://vcs.firestormviewer.org/fs-build-variables#branch=master
 	source = firestorm.desktop
 	source = firestorm.launcher
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = c4376d30bf136941cb6ff0f70c3473de
-	md5sums = 095e7d289510e36131d1074d79d5e152
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 36867edc1f172a6671068d049814ceaf6e756bc66052be06af6dee97e0c8cb74
+	sha256sums = 6a6afe0118df00779230a52fc6eacfc722e1da3fc790bca7f271d2f9cc0df9e7
 
 pkgname = firestorm-git

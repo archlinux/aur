@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex at toastercup dot io>
 pkgname=firestorm-git
-pkgver=6.6.4.67818
-pkgrel=2
+pkgver=6.6.7.68335
+pkgrel=1
 pkgdesc="A third-party viewer for Second Life (TM) and OpenSim grids (git version)"
 arch=('x86_64')
 url=https://www.firestormviewer.org
@@ -51,11 +51,11 @@ source=(
   'firestorm.desktop'
   'firestorm.launcher'
 )
-md5sums=(
+sha256sums=(
   'SKIP'
   'SKIP'
-  'c4376d30bf136941cb6ff0f70c3473de'
-  '095e7d289510e36131d1074d79d5e152'
+  '36867edc1f172a6671068d049814ceaf6e756bc66052be06af6dee97e0c8cb74'
+  '6a6afe0118df00779230a52fc6eacfc722e1da3fc790bca7f271d2f9cc0df9e7'
 )
 
 pkgver() {
@@ -74,8 +74,7 @@ prepare() {
   cd "$pkgname"
   python3 -mvenv ".venv"
   source .venv/bin/activate
-  pip3 install git+https://vcs.firestormviewer.org/autobuild-3.0
-  pip3 install llbase
+  pip3 install autobuild llbase
   export CXXFLAGS="$CXXFLAGS -Wno-error"
   export CFLAGS="$CFLAGS -Wno-error"
   # We need to specifically ask for OpenAL, otherwise we get nothing.
@@ -89,7 +88,7 @@ build() {
   cd "$srcdir/$pkgname/build-linux-x86_64"
   export CXXFLAGS="$CXXFLAGS -Wno-error"
   export CFLAGS="$CFLAGS -Wno-error"
-  make
+  make -j$(nproc)
 }
 
 package() {
