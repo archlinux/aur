@@ -1,7 +1,7 @@
 # Maintainer: Michael Prager <archlinuxaur@michaelprager.de>
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v3.6.RC2.r43.234bdb67e
+pkgver=v3.6.RC3.r1.67352f6dc
 pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
