@@ -7,7 +7,7 @@
 # Contributor: Julien Duponchelle <julien@gns3.net>
 
 pkgname=python-cx-freeze
-pkgver=6.11.1
+pkgver=6.12.0
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
@@ -19,13 +19,8 @@ checkdepends=('python-pytest-mock' 'python-bcrypt' 'python-cryptography' 'python
 replaces=('python-cx_freeze')
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
-source=("https://github.com/marcelotduarte/cx_Freeze/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('37586365a901800fcd18ab6e3b0de9e3e9980c8d8b8b61aa1eddf0d01dc50b53cb1ffc77070f5a5ad40c9b7a020b09ced51d38f53688129b2444abe020a75237')
-
-prepare() {
-  cd cx_Freeze-$pkgver
-  sed -i 's|setuptools>=59.0.1,<=60.10.0|setuptools>=59.0.1|' setup.cfg
-}
+source=("https://github.com/marcelotduarte/cx_Freeze/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('a3fdd94b33985b3bb0fbee2fc7438e20f3ddb31f0d71322eed1c06a15954be5845a0b1dfbc55537fe16022db95b446d3fa0b3e8418cd250e653f42a180b8c586')
 
 build() {
   cd cx_Freeze-$pkgver
@@ -36,7 +31,7 @@ check() {
   cd cx_Freeze-$pkgver
   python setup.py egg_info
   # TODO
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-310" python -m pytest --deselect tests/test_bdist_rpm.py::test_bdist_rpm
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-310" python -m pytest --deselect tests/test_command_bdist_rpm.py::test_bdist_rpm
 }
 
 package() {
