@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-typescript"
-pkgver="0.76.0"
+pkgver="0.77.0"
 pkgrel="1"
 pkgdesc="TypeScript and JavaScript code formatting plugin for dprint."
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("dabd471157f9fddcc047e0f69b73e06f50fe64367534ae396cfea850e04c7f0082dd5b7a307baaa50d234d17532f4191a851f35eb54eed11ad01936a76087bbc")
+sha512sums=("07dc5d1c80b7b1d51cdfa2e5987122d11304251468dff0c01bcabc4e6feecf3c9c376087558b7ce233335ee507878e13174eaab34bad8210fad2147530762a89")
 
 prepare()
 {
