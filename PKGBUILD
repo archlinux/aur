@@ -2,7 +2,7 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-pkgver=1.1_beta10
+pkgver=1.1_beta11
 _version=${pkgver//_/-}
 pkgrel=1
 
@@ -14,9 +14,9 @@ license=('GPL3')
 makedepends=('go')
 
 source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz")
-sha256sums=('f6230c395e63a2e9919230df2f721290ba1380dfc0a9a2ae12c78f961bcd2916')
+sha256sums=('8baf0424af76ba76a501cdd5611630bc10d3967873aa3516da70a2792ee3d526')
 
-providers=("$_pkgname")
+provides=("$_pkgname")
 optdepends=('sing-geosite: sing-geosite database'
             'sing-geoip: sing-geoip database')
 
