@@ -1,0 +1,15 @@
+pkgbase = python-pyre_extensions-bin
+	pkgdesc = Extensions to the typing module supported by Pyre
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://pyre-check.org/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python-typing_extensions
+	depends = python-typing_inspect
+	provides = python-pyre_extensions
+	source = https://files.pythonhosted.org/packages/py3/p/pyre_extensions/pyre_extensions-0.0.30-py3-none-any.whl
+	sha256sums = 32b37ede4eed0ea879fdd6d84e0c7811e129f19b76614f1be3a6b47f9a4b1fa0
+
+pkgname = python-pyre_extensions-bin
