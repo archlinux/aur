@@ -20,6 +20,6 @@ if test -f "$development/app.asar"; then
  removeOA $development
  fi
 
-if test -f "$canary_electron/app.asar" then
+if test -f "$canary_electron/app.asar"; then
  removeOA $canary_electron
  fi
