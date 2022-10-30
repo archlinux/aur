@@ -2,7 +2,7 @@
 
 _pkgname=zigpy
 pkgname=python-$_pkgname
-pkgver=0.51.3
+pkgver=0.51.5
 pkgrel=1
 pkgdesc='Library implementation of the Zigbee Home Automation standard'
 url='https://github.com/zigpy/zigpy'
@@ -32,7 +32,7 @@ checkdepends=(
   'python-pytest-asyncio'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/zigpy/zigpy/archive/$pkgver.tar.gz")
-b2sums=('8fc44444b42c414664f37010a68161bd3c9da837f1797842beb46b750c047f0414bf0e1dcfa6b97abafa1e8fd9c9d648df3da00500fc9f52f9499a151798ae25')
+b2sums=('a75232411f290b49d122db5b3a58b19a18551f1c967e1c89bc7ee1a195e53da356c9a763cc3ed032f92863d1e06696890f9f147cf22ff0616f5e66992fe86375')
 
 build() {
   cd $_pkgname-$pkgver
