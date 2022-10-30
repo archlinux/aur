@@ -1,7 +1,7 @@
 pkgbase = screentime
 	pkgdesc = A lightweight screen-time monitoring tool
-	pkgver = 0.2.4
-	pkgrel = 1
+	pkgver = 0.1.2
+	pkgrel = 4
 	url = https://github.com/Ginkooo/screentime
 	arch = x86_64
 	license = MIT
