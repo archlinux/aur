@@ -4,7 +4,7 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 pkgname=openrgb-bin
 pkgver=0.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
@@ -15,8 +15,8 @@ conflicts=('openrgb')
 provides=('openrgb')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_i686=("https://openrgb.org/up_/up_/static/releases/release_0.7/openrgb_0.7_i386_buster_6128731.deb")
-source_x86_64=("https://openrgb.org/up_/up_/static/releases/release_0.7/openrgb_0.7_amd64_buster_6128731.deb")
+source_i686=("https://openrgb.org/releases/release_0.7/openrgb_0.7_i386_buster_6128731.deb")
+source_x86_64=("https://openrgb.org/releases/release_0.7/openrgb_0.7_amd64_buster_6128731.deb")
 sha512sums_i686=('4ca77dfb2aaccc8ef45fb600c5fb6d95e12c4da5aad981dcc2d54cd75fc43de120f66298631ef9fb0f0c39720bb800a71e615dd5f662d3842e9268d5be0228d2')
 sha512sums_x86_64=('b43234980289c5534c5edc023fa4e1c9825f068583503fb72d5997588d7d4cf303808021c086af2f1ce345295b8e81d4b6544225513c1af5f0c7f3f259eeffee')
 
