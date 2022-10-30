@@ -7,13 +7,14 @@
 
 pkgname=perl-pdl
 _pkgname=PDL
-pkgver=2.080
-pkgrel=2
+pkgver=2.081
+pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
 license=('PerlArtistic' 'GPL')
 depends=(
+	'perl-file-map'
 	'perl-inline'
 	'perl-inline-c'
 	'perl-term-readkey'
@@ -48,7 +49,7 @@ optdepends=(
 )
 source=(https://cpan.metacpan.org/authors/id/E/ET/ETJ/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 options=(!emptydirs)
-md5sums=('554beab90fa3060ae4326841f6500005'
+md5sums=('848bfcc0e232f7a549d04e8ea1428d78'
          'ac56f2a88b89d359a0dc80063d31cf59'
          'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 
