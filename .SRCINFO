@@ -1,14 +1,14 @@
 pkgbase = nodejs-qunit
 	pkgdesc = An easy-to-use JavaScript unit testing framework.
-	pkgver = 2.19.2
+	pkgver = 2.19.3
 	pkgrel = 1
 	url = http://qunitjs.com/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = qunit-2.19.2.tgz
-	source = http://registry.npmjs.org/qunit/-/qunit-2.19.2.tgz
-	sha256sums = 09a83d18e1a2959b8b2ed1c2020eef4fa88ade12ddfbeac97762b87efc9f202d
+	noextract = qunit-2.19.3.tgz
+	source = http://registry.npmjs.org/qunit/-/qunit-2.19.3.tgz
+	sha256sums = 089eb014477fdd8c9fb7d284addb9db3512e0a8a1772a87bf23e19a897a656be
 
 pkgname = nodejs-qunit

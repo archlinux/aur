@@ -2,7 +2,7 @@
 
 _npmname=qunit
 pkgname="nodejs-${_npmname}"
-pkgver=2.19.2
+pkgver=2.19.3
 pkgrel=1
 pkgdesc='An easy-to-use JavaScript unit testing framework.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('09a83d18e1a2959b8b2ed1c2020eef4fa88ade12ddfbeac97762b87efc9f202d')
+sha256sums=('089eb014477fdd8c9fb7d284addb9db3512e0a8a1772a87bf23e19a897a656be')
 
 package() {
 	local _npmdir="${pkgdir}/usr/lib/node_modules/"
