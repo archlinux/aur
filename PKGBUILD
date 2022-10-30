@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.8.beta1.r0.g54cd6fe6de5
+pkgver=9.8.beta3.r0.gc3028e74d80
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -61,7 +61,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-bliss-0.77.patch
         sagemath-tachyon-0.99.patch
         sagemath-gap-4.12.patch
-        sagemath-ipywidgets-8.patch
         sagemath-tdlib-0.9.patch
         sagemath-pari-2.15.patch)
 sha256sums=('SKIP'
@@ -72,9 +71,8 @@ sha256sums=('SKIP'
             '3e1f866944235b999d2d727ed1ced431bd67405b053701c21068607ec76f23c3'
             '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77'
             '89e9ade86131a5989ae2f2c2cee6a12f2c71df35d1ef7a84d6176dd3de0f2889'
-            'bdf56f85b608da12074780271ae134b02a03278f7b53a183f6dd97d8d72073e0'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            '8a1d802b1916c5a7d9b1cdde3e46a79e44f1b10a9d70be1f1885ce84406faa01')
+            'f5a0258335dd4005c664a3c3d025c3d1df236abbffcfb6a66516f781c8c22526')
 
 pkgver() {
   cd sage
@@ -93,8 +91,6 @@ prepare(){
   patch -p1 -i ../sagemath-tachyon-0.99.patch
 # Port to GAP 4.12 https://trac.sagemath.org/ticket/34391
   patch -p1 -i ../sagemath-gap-4.12.patch
-# Fixes for ipywidgets 8 https://trac.sagemath.org/ticket/34460
-  patch -p1 -i ../sagemath-ipywidgets-8.patch
 # Update to PARI 2.15 https://trac.sagemath.org/ticket/34537
   patch -p1 -i ../sagemath-pari-2.15.patch
 

@@ -45,6 +45,38 @@ index a1a4224dd5..68e69e405e 100644
 @@ -1 +1 @@
 -2.13.3
 +2.15.0
+diff --git a/build/pkgs/pari/spkg-configure.m4 b/build/pkgs/pari/spkg-configure.m4
+index b864d72118..e1a022a26a 100644
+--- a/build/pkgs/pari/spkg-configure.m4
++++ b/build/pkgs/pari/spkg-configure.m4
+@@ -1,7 +1,7 @@
+ SAGE_SPKG_CONFIGURE([pari], [
+   dnl See gp_version below on how the version is computed from MAJV.MINV.PATCHV
+-  m4_pushdef([SAGE_PARI_MINVER],["134401"])dnl this version and higher allowed
+-  m4_pushdef([SAGE_PARI_MAXVER],["134912"])dnl this version and higher not allowed
++  m4_pushdef([SAGE_PARI_MINVER],["134912"])dnl this version and higher allowed
++  m4_pushdef([SAGE_PARI_MAXVER],["999999"])dnl this version and higher not allowed
+   SAGE_SPKG_DEPCHECK([gmp readline], [
+     AC_PATH_PROG([GP], [gp])
+     if test x$GP = x; then dnl GP test
+@@ -67,17 +67,6 @@ SAGE_SPKG_CONFIGURE([pari], [
+             AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
+             sage_spkg_install_pari=yes
+         fi
+-        AC_MSG_CHECKING([whether rnfdisc bug of pari 2.13.1 is fixed])
+-        bug_check=`echo "K = nfinit(y^4-10*y^2+1); disc = rnfdisc(K,x^2-(y^3/2+y^2-5*y/2+1)); idealnorm(K,disc)" | $GP -qf 2>> config.log`
+-        expected="2304"
+-        if test x"$bug_check" = x"$expected"; then
+-          AC_MSG_RESULT([yes])
+-        else
+-           AC_MSG_RESULT([no; cannot use system pari/GP with known bug])
+-           AC_MSG_NOTICE([Upgrade your system package and reconfigure.])
+-           AC_MSG_NOTICE([Otherwise Sage will build its own pari/GP.])
+-           sage_spkg_install_pari=yes
+-        fi
+     fi dnl end GP test
+ 
+       if test x$sage_spkg_install_pari = xno; then dnl main PARI test
 diff --git a/src/doc/de/tutorial/tour_numtheory.rst b/src/doc/de/tutorial/tour_numtheory.rst
 index a012234c99..e3149fe949 100644
 --- a/src/doc/de/tutorial/tour_numtheory.rst
@@ -168,10 +200,10 @@ index 1bd4d4c6a1..6483caa22d 100644
      To access the data in a factorization::
  
 diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-index f47d5d3624..8675935117 100644
+index 7a223de897..b73c56f21d 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-@@ -8122,9 +8122,9 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -8124,9 +8124,9 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: f = DynamicalSystem_projective([x^2 + QQbar(sqrt(3))*y^2, y^2, QQbar(sqrt(2))*z^2])
              sage: f.reduce_base_field()
              Dynamical System of Projective Space of dimension 2 over Number Field in a with
@@ -457,6 +489,36 @@ index 93c46c6630..996d6c1a7a 100644
               A vertex at (1.414213562373095?, 0),
               A vertex at (4.000000000000000?, 0.372677996249965?))
          """
+diff --git a/src/sage/geometry/polyhedron/base_number_field.py b/src/sage/geometry/polyhedron/base_number_field.py
+index 08040db379..c802207303 100644
+--- a/src/sage/geometry/polyhedron/base_number_field.py
++++ b/src/sage/geometry/polyhedron/base_number_field.py
+@@ -38,7 +38,7 @@ def _number_field_elements_from_algebraics_list_of_lists_of_lists(listss, **kwds
+         1.732050807568878?
+         sage: from sage.geometry.polyhedron.base_number_field import _number_field_elements_from_algebraics_list_of_lists_of_lists
+         sage: K, results, hom = _number_field_elements_from_algebraics_list_of_lists_of_lists([[[rt2], [1]], [[rt3]], [[1], []]]); results  # optional - sage.rings.number_field
+-        [[[-a^3 + 3*a], [1]], [[-a^2 + 2]], [[1], []]]
++        [[[-a^3 + 3*a], [1]], [[a^2 - 2]], [[1], []]]
+     """
+     from sage.rings.qqbar import number_field_elements_from_algebraics
+     numbers = []
+diff --git a/src/sage/groups/fqf_orthogonal.py b/src/sage/groups/fqf_orthogonal.py
+index 75de408912..7fc4dbe754 100644
+--- a/src/sage/groups/fqf_orthogonal.py
++++ b/src/sage/groups/fqf_orthogonal.py
+@@ -245,10 +245,10 @@ class FqfOrthogonalGroup(AbelianGroupAutomorphismGroup_subgroup):
+             sage: all(x*f==x*fbar for x in q.gens())
+             True
+             sage: L = IntegralLattice("A2").twist(3)
+-            sage: q = L.discriminant_group()
+             sage: OL = L.orthogonal_group()
++            sage: assert OL(OL.0.matrix()) == OL.0
++            sage: q = L.discriminant_group()
+             sage: Oq = q.orthogonal_group()
+-            sage: assert Oq(OL.0) == Oq(OL.0.matrix())
+             sage: assert Oq(Oq.0.matrix()) == Oq.0
+         """
+         from sage.libs.gap.element import GapElement
 diff --git a/src/sage/groups/matrix_gps/isometries.py b/src/sage/groups/matrix_gps/isometries.py
 index f9111a2c92..cca45e7175 100644
 --- a/src/sage/groups/matrix_gps/isometries.py
@@ -895,7 +957,7 @@ index f2a91186cd..6b0f0f990e 100644
               Defn: 1 |--> 1
  
 diff --git a/src/sage/rings/finite_rings/residue_field.pyx b/src/sage/rings/finite_rings/residue_field.pyx
-index 7596f2a302..1e1869f1b1 100644
+index dbef75e9fe..fbf63ab01d 100644
 --- a/src/sage/rings/finite_rings/residue_field.pyx
 +++ b/src/sage/rings/finite_rings/residue_field.pyx
 @@ -20,13 +20,13 @@ monogenic (i.e., 2 is an essential discriminant divisor)::
@@ -1149,7 +1211,7 @@ index cfb71b38ab..ebf0dd4339 100644
          proof = proof_flag(proof)
  
 diff --git a/src/sage/rings/number_field/number_field_element.pyx b/src/sage/rings/number_field/number_field_element.pyx
-index 784c239dc1..aa740069dc 100644
+index b78bc33078..3cdd71831d 100644
 --- a/src/sage/rings/number_field/number_field_element.pyx
 +++ b/src/sage/rings/number_field/number_field_element.pyx
 @@ -4446,7 +4446,7 @@ cdef class NumberFieldElement(FieldElement):
@@ -1262,10 +1324,10 @@ index c534aaa9f6..6bc67565d2 100644
          1]
  
 diff --git a/src/sage/rings/polynomial/polynomial_quotient_ring.py b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-index 93e4a74192..8658213658 100644
+index 4f018a4293..b5621b6f27 100644
 --- a/src/sage/rings/polynomial/polynomial_quotient_ring.py
 +++ b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-@@ -1792,7 +1792,7 @@ class PolynomialQuotientRing_generic(CommutativeRing):
+@@ -1794,7 +1794,7 @@ class PolynomialQuotientRing_generic(QuotientRing_generic):
              sage: D.selmer_generators([K.ideal(2, -a+1), K.ideal(3, a+1)], 3)
              [2, a + 1]
              sage: D.selmer_generators([K.ideal(2, -a+1), K.ideal(3, a+1), K.ideal(a)], 3)
@@ -1557,7 +1619,7 @@ index 6b64df4d07..aaec89ff34 100644
          Some higher-degree examples::
  
 diff --git a/src/sage/schemes/elliptic_curves/ell_generic.py b/src/sage/schemes/elliptic_curves/ell_generic.py
-index 926ae310ea..3bae819fb0 100644
+index 154a581bc2..336eca8d44 100644
 --- a/src/sage/schemes/elliptic_curves/ell_generic.py
 +++ b/src/sage/schemes/elliptic_curves/ell_generic.py
 @@ -3324,8 +3324,8 @@ class EllipticCurve_generic(WithEqualityById, plane_curve.ProjectivePlaneCurve):
