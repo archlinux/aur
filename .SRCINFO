@@ -1,14 +1,22 @@
 pkgbase = pyre-check-bin
 	pkgdesc = Performant type-checking for Python
-	pkgver = 0.9.10
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://pyre-check.org/
 	arch = any
 	license = MIT
 	makedepends = python-pip
-	depends = python
+	depends = python-click
+	depends = python-dataclasses-json
+	depends = python-intervaltree
+	depends = python-libcst
+	depends = python-psutil
+	depends = python-pyre_extensions
+	depends = python-tabulate
+	depends = python-testslide
+	depends = python-typing_extensions
 	provides = pyre-check
-	source = https://files.pythonhosted.org/packages/py3/p/pyre-check/pyre_check-0.9.10-py3-none-manylinux1_x86_64.whl
-	sha256sums = 472e53fbb4e463ecd1e3e6c9c0d25ad0d99a3d596a643f11c6070745a36fac81
+	source = https://files.pythonhosted.org/packages/py3/p/pyre-check/pyre_check-0.9.16-py3-none-manylinux1_x86_64.whl
+	sha256sums = ca626b3a0cd1c740190da950399506ccbb9dca7326f6762c3ee8be39685ec4e5
 
 pkgname = pyre-check-bin
