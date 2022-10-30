@@ -2,7 +2,7 @@
 
 pkgname=luastatus-luajit-git
 pkgver=r772.525942c
-pkgrel=1
+pkgrel=2
 pkgdesc='luastatus (a status bar content generator) built with luajit for better performance - git version'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -27,6 +27,7 @@ makedepends=(
 	'xcb-util-wm>=0.4.1'
 )
 optdepends=(
+	"luastatus-meta: provides all luastatus dependencies"
 	"lua51-luautf8: for general UTF-8 support"
 	"libxcb>=1.10: for barlib 'dwm' and plugin 'xtitle'"
 	"yajl>=2.0.4: for barlib 'i3'"
@@ -43,19 +44,19 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd 'luastatus'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd 'luastatus'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd 'luastatus'
+	cd 'luastatus'
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
 		-DWITH_LUA_LIBRARY=luajit -DBUILD_PLUGIN_PULSE=ON .
 	make
 }
 
 package() {
-    cd 'luastatus'
+	cd 'luastatus'
 	make DESTDIR="$pkgdir" install
 }
 
