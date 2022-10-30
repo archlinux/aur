@@ -1,33 +1,37 @@
-# Maintainer: Evans Jahja <evansjahja13@gmail..com>
+# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Timur Antipin < kosmocap (at) gmail.com >
+# Contributor: Timur Antipin <kosmocap@gmail.com>
+# Contributor: Evans Jahja <evansjahja13@gmail.com>
 
-pkgname=joy2key
-pkgver=1.6.3
-pkgrel=4
+pkgname=joy2key-git
+_pkgname=joy2key
+pkgver=0+git.19
+pkgrel=1
 pkgdesc='Translate joystick movements into keystrokes'
 arch=('x86_64' 'i686')
 url='https://github.com/joolswills/joy2key'
 license=('GPL2')
 depends=('libx11' 'xorg-xwininfo')
-source=("$pkgname-$pkgver::git+https://github.com/joolswills/joy2key.git")
+source=('git+https://github.com/joolswills/joy2key.git')
 sha256sums=('SKIP')
 
-# prepare() {
-#   patch -p0 -i button_list_segfault.patch
-# }
+pkgver() {
+  cd "$_pkgname"
+  echo "0+git.$(git rev-list HEAD --count)"
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname"
 
-  autoreconf --install
-  autoconf
+  autoreconf --install --symlink
   ./configure --prefix=/usr -x-libraries=/usr/lib
   make
 }
 
 package() {
-  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  cd "$_pkgname"
+
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
