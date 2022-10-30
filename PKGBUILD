@@ -1,22 +1,22 @@
-# Maintainer: Florian Walch <florian+aur@fwalch.com>
+# Maintainer: éclairevoyant
+# Contributor: Florian Walch <florian+aur@fwalch.com>
 # Contributor: Florian Hahn <flo@fhahn.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=neovim-git
-pkgver=0.7.0.r67.g5c53e29ca9
+pkgver=0.8.0.r339.g75ec1b7208
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=('libluv' 'libtermkey' 'libuv' 'libvterm-0.1' 'luajit' 'msgpack-c' 'unibilium' 'tree-sitter')
-makedepends=('cmake' 'git' 'gperf' 'lua51-mpack' 'lua51-lpeg')
-optdepends=('python2-neovim: for Python 2 plugin support (see :help provider-python)'
-            'python-neovim: for Python 3 plugin support (see :help provider-python)'
+depends=('libluv' 'libtermkey' 'libuv' 'libvterm>=0.3' 'luajit' 'msgpack-c' 'tree-sitter' 'unibilium')
+makedepends=('cmake' 'ninja' 'git' 'lua51-mpack' 'lua51-lpeg')
+optdepends=('python-neovim: for Python 3 plugin support (see :help provider-python)'
             'ruby-neovim: for Ruby plugin support (see :help provider-ruby)'
-            'xclip: for clipboard support (or xsel) (see :help provider-clipboard)'
-            'xsel: for clipboard support (or xclip) (see :help provider-clipboard)'
+            'xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)'
+            'xsel: for X11 clipboard support (or xclip) (see :help provider-clipboard)'
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
 source=("${pkgname}::git+https://github.com/neovim/neovim.git")
 sha256sums=('SKIP')
@@ -32,6 +32,7 @@ pkgver() {
 
 build() {
   cmake -S"${pkgname}" -Bbuild \
+        -GNinja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
@@ -48,9 +49,10 @@ package() {
   DESTDIR="${pkgdir}" cmake --build . --target install
 
   cd "${srcdir}/${pkgname}"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  install -Dm644 runtime/nvim.desktop "${pkgdir}/usr/share/applications/nvim.desktop"
-  install -Dm644 runtime/nvim.png "${pkgdir}/usr/share/pixmaps/nvim.png"
+  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
+  install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
 
   # Make Arch vim packages work
   mkdir -p "${pkgdir}"/etc/xdg/nvim
