@@ -1,23 +1,31 @@
-# Maintainer: A Frederick Christensen <aur@nosocomia.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: A Frederick Christensen <aur@nosocomia.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
-
 pkgname=python-caldav
-pkgver=0.9.2
+pkgver=0.10
 pkgrel=1
-pkgdesc="a caldav client library"
+pkgdesc="A CalDAV (RFC4791) client library for Python"
 arch=('any')
-url="https://pypi.python.org/pypi/caldav"
-license=('GPL')
-depends=('python' 'python-lxml' 'python-vobject' 'python-dateutil' 'python-distribute' 'python-six' 'python-requests')
-optdepends=('python-pytz: Resolves https://github.com/collective/icalendar/issues/333'
-	    'python-tzlocal: Resolves https://github.com/collective/icalendar/issues/333')
-options=(!emptydirs)
-source=("https://github.com/python-caldav/caldav/archive/v${pkgver}.tar.gz")
-sha256sums=('47163cae0343a2758b111d77fc92996db4286bed1fd08b48fa230c03c70b6e1b')
+url="https://github.com/python-caldav/caldav"
+license=('Apache' 'GPL3')
+depends=('python' 'python-lxml' 'python-requests' 'python-six' 'python-vobject')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-icalendar' 'python-nose' 'python-pytest' 'python-tzlocal')
+optdepends=('python-icalendar' 'python-tzlocal')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('23684644ec07e778956e27e454cf9c5fce89484ffec6312767969c20a1a3cdde')
 
-package() {
-  cd "$srcdir/caldav-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd "caldav-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
-# vim:set ts=2 sw=2 et:
+check() {
+  cd "caldav-$pkgver"
+  pytest
+}
+
+package() {
+  cd "caldav-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
