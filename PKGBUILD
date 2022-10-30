@@ -14,6 +14,7 @@ url='https://glew.sourceforge.net/'
 license=(BSD GPL MIT)
 depends=(glu libxi libxmu)
 conflicts=(glew)
+provides=(glew)
 source=("https://downloads.sourceforge.net/glew/glew-$pkgver.tgz")
 sha256sums=('d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1')
 
