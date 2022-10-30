@@ -1,14 +1,14 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=linode-cli-git
-pkgver=5.10.0.r0.abda241
+pkgver=5.24.0.r6.9381b19
 pkgrel=1
 pkgdesc="The Linode Command Line Interface (development version)"
 arch=('any')
 url="https://github.com/linode/linode-cli"
 license=('BSD')
-depends=('python-terminaltables' 'python-requests' 'python-yaml')
-makedepends=('git' 'python-setuptools')
+depends=('python-terminaltables' 'python-requests' 'python-yaml' 'python-setuptools')
+makedepends=('git')
 optdepends=('python-boto: for obj plugin')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
