@@ -91,7 +91,7 @@ prepare() {
   git config submodule.jimtcl.url "$srcdir/jimtcl"
   git config submodule."src/jtag.drivers/libjaylink".url "$srcdir/libjaylink"
   git config submodule."tools/git2cl".url "$srcdir/git2cl"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
