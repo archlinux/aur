@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 19 Oracle Build.
-	pkgver = 19.u36
+	pkgdesc = Java OpenJDK 19.0.1 Oracle Build.
+	pkgver = 19.0.1.u10
 	pkgrel = 1
 	url = https://jdk.java.net/19
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=19
 	provides = java-runtime-headless=19
 	provides = java-runtime-headless-openjdk=19
-	source = https://download.java.net/java/GA/jdk19/877d6127e982470ba2a7faa31cc93d04/36/GPL/openjdk-19_linux-x64_bin.tar.gz
-	sha256sums = f47aba585cfc9ecff1ed8e023524e8309f4315ed8b80100b40c7dcc232c12f96
+	source = https://download.java.net/java/GA/jdk19.0.1/afdd2e245b014143b62ccb916125e3ce/10/GPL/openjdk-19.0.1_linux-x64_bin.tar.gz
+	sha256sums = 7a466882c7adfa369319fe4adeb197ee5d7f79e75d641e9ef94abee1fc22b1fa
 
 pkgname = java-openjdk-bin
