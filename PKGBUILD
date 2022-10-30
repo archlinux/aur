@@ -1,7 +1,7 @@
 # Maintainer: cubercsl <2014cais01 at gmail dot com>
 
 pkgname=rime-flypy
-pkgver=10.9.1
+pkgver=10.9.2
 pkgrel=1
 pkgdesc="小鹤音形 rime 挂接文件"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('ibus-rime: input support'
             'fcitx-rime: input support'
             'fcitx5-rime: input support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz")
-sha256sums=('625c1d360ebb1b3320c40eb809764e376d25568652cc5867b0015f3bad929e2b')
+sha256sums=('00363e46c95b423e5161cdf7c82b3649a988b83c4ce39a449336a0ebabcbd9b8')
 install="$pkgname.install"
 
 prepare() {
