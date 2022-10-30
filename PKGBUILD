@@ -1,47 +1,54 @@
-# Maintainer: Sean Enck <enckse@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=pcsclite-git
-pkgver=1.8.23.r4.g984f84d
+pkgver=1.9.9.r0.g15c16c7
 pkgrel=1
-pkgdesc="PC/SC Architecture smartcard middleware library"
-arch=('x86_64')
+pkgdesc="Middleware to access a smart card using SCard API (PC/SC)"
+arch=('i686' 'x86_64')
 url="https://pcsclite.apdu.fr/"
 license=('BSD')
-depends=('python' 'systemd')
-makedepends=('pkgconf' 'git')
-conflicts=("pcsclite")
-provides=("pcsclite")
-options=('!docs')
+depends=('glibc' 'libsystemd.so' 'libudev.so' 'python' 'systemd')
+makedepends=('git' 'autoconf-archive' 'pkgconf')
+provides=("pcsclite=$pkgver" 'libpcsclite.so' 'libpcscspy.so')
+conflicts=('pcsclite')
 source=("git+https://salsa.debian.org/rousseau/PCSC.git")
-md5sums=('SKIP')
-validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
+sha256sums=('SKIP')
+
 
 pkgver() {
-    cd "${srcdir}/PCSC"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^pcsc\.//g'
+  cd "PCSC"
+
+  _tag=$(git tag -l --sort -creatordate | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^pcsc-//'
 }
 
 build() {
-    cd "${srcdir}/PCSC"
-    sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
-    ./bootstrap
-    ./configure --prefix=/usr \
-                --sbindir=/usr/bin \
-                --sysconfdir=/etc \
-                --enable-filter \
-                --enable-ipcdir=/run/pcscd \
-                --enable-libudev \
-                --enable-usbdropdir=/usr/lib/pcsc/drivers \
-                --with-systemdsystemunitdir=/usr/lib/systemd/system
-    make
+  cd "PCSC"
+
+  ./bootstrap
+  ./configure \
+    --prefix="/usr" \
+    --sbindir="/usr/bin" \
+    --sysconfdir="/etc" \
+    --enable-ipcdir \
+    --enable-usbdropdir="/usr/lib/pcsc/drivers" \
+    --with-systemdsystemunitdir="/usr/lib/systemd/system"
+  make
 }
 
+check() {
+  cd "PCSC"
+
+  make check
+}
 
 package() {
-    cd "${srcdir}/PCSC"
+  cd "PCSC"
 
-    make DESTDIR="${pkgdir}" install
-
-    install -D -m644 "${srcdir}/PCSC/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -d "${pkgdir}/usr/lib/pcsc/drivers"
+  make DESTDIR="$pkgdir" install
+  install -d "$pkgdir/usr/lib/pcsc/drivers"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/pcsclite"
 }
