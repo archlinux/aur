@@ -2,7 +2,7 @@
 
 pkgname=luastatus-git
 pkgver=r772.525942c
-pkgrel=1
+pkgrel=2
 pkgdesc='universal status bar content generator - git version'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -50,7 +50,8 @@ pkgver() {
 build() {
 	cd 'luastatus'
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-		-DWITH_LUA_LIBRARY=lua-5.4 -DBUILD_PLUGIN_PULSE=ON .
+		-DWITH_LUA_LIBRARY=lua-5.4 -DBUILD_PLUGIN_PULSE=ON \
+		-DBUILD_PLUGIN_UNIXSOCK=ON .
 	make
 }
 
