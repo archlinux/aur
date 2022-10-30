@@ -16,6 +16,7 @@ sha512sums=('36b7f23908bba7cd99b13f76bb48bfcd33971845f5636fab6239839a69cd511e080
 
 build () {
 	cd "$srcdir"/$pkgname-$pkgver
+	echo "strict-peer-dependencies=false" > .npmrc
 	pnpm install
 	pnpm run build
 }
