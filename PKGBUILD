@@ -2,7 +2,7 @@
 
 _pkgname=bsp-tinkerboard
 pkgname="$_pkgname-bin"
-pkgver=22.08.6
+pkgver=22.08.8
 _pkgver=22.08.6
 _ubuntu=focal
 pkgrel=1
