@@ -7,7 +7,7 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.49.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
@@ -16,10 +16,8 @@ makedepends=('git' 'python>=3.5' 'npm' 'pnpm' 'nodejs>=16' 'nodejs<19' 'node-gyp
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live-git')
 _extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
-source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz"
-        "ledger-live-desktop.desktop")
-sha512sums=('f14e2b6f4dbf48750a73cba38a251efed7b23823e5874ed1a158eab6f4274244e17d287422dc0fe17c4bfc075c452f74f4d3a20ba0a0de04e6cad42d38aca783'
-            '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
+source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz")
+sha512sums=('f14e2b6f4dbf48750a73cba38a251efed7b23823e5874ed1a158eab6f4274244e17d287422dc0fe17c4bfc075c452f74f4d3a20ba0a0de04e6cad42d38aca783')
 
 build() {
   cd ${_extdir}
@@ -28,12 +26,15 @@ build() {
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
   pnpm desktop build
+
+  # Correct .desktop
+  sed -e "s/AppRun/${_pkgbin}/g" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
+  sed -e '/X-AppImage-Version/d' -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
 }
 
 package() {
-  install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
-
   cd ${_extdir}/apps/${_pkgbin}
+  install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
   install -dm755 "${pkgdir}/opt"
   cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
