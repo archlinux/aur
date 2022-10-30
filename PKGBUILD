@@ -1,6 +1,6 @@
 # Author: VisaJE <eemil.visakorpi at gmail>
 pkgname=doomsday-tetris-2-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A Tetris copy with randomly generated blocks. Made with C++."
 arch=("x86_64")
@@ -9,7 +9,7 @@ depends=('sdl2' 'sdl2_ttf' 'fontconfig' 'rapidjson' 'postgresql-libs')
 makedepends=('git' 'automake' 'autoconf' 'libtool')
 provides=('doomsday-tetris-2')
 conflicts=('doomsday-tetris-2')
-_commit=f62e8bcf2ced224dbbd80dc2647f364473e32e4e
+_commit=4ca0cf5f08b1d29d45b4e3c01a486cc63a78b0d2
 source=("git+https://github.com/VisaJE/doomsday-tetris-2#commit=$_commit")
 md5sums=('SKIP')
 
@@ -21,9 +21,8 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-    ./autogen.sh
-	./configure --prefix=/usr
-	make
+    cmake -DCMAKE_BUILD_TYPE=Release .
+    cmake --build . -j
 }
 
 
