@@ -1,0 +1,18 @@
+pkgbase = rekor-git
+	pkgdesc = Software supply chain transparency log
+	pkgver = 1.0.0.r23.g6f7e892
+	pkgrel = 1
+	url = https://github.com/sigstore/rekor
+	arch = i686
+	arch = x86_64
+	license = apache
+	checkdepends = openssh
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = rekor=1.0.0.r23.g6f7e892
+	conflicts = rekor
+	source = git+https://github.com/sigstore/rekor.git
+	sha256sums = SKIP
+
+pkgname = rekor-git
