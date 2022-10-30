@@ -1,58 +1,53 @@
-# Maintainer: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
+# Maintainer: Ong Yong Xin <ongyongxin2020+github@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.1.0.beta.1.r28.g81bcb372d
+pkgver=3.2.1.r81.g468cf1165
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="https://www.audacityteam.org/"
-license=(GPL2 CCPL)
-groups=(pro-audio)
+license=('GPL2' 'CCPL')
+groups=('pro-audio')
 depends=(
-  alsa-lib
-  expat
-  flac
-  gtk3
-  libid3tag
-  libmad
-  libogg
-  libsndfile
-  libsoxr
-  libvorbis
-  libx11
-  lilv
-  lv2
-  portaudio
-  portsmf
-  soundtouch
-  suil
-  twolame
-  vamp-plugin-sdk
-  zlib
+	'alsa-lib'
+	'expat'
+	'flac'
+	'gtk3'
+	'gst-plugins-bad-libs'
+	'jack'
+	'lame'
+	'libid3tag'
+	'libmad'
+	'libogg'
+	'libsbsms'
+	'libsndfile'
+	'libsoxr'
+	'libvorbis'
+	'libx11'
+	'lilv'
+	'lv2'
+	'mpg123'
+	'portaudio'
+	'portmidi'
+	'portsmf'
+	'soundtouch'
+	'sqlite'
+	'suil'
+	'twolame'
+	'vamp-plugin-sdk'
+	'vst3sdk'
+	'wavpack'
+	'wxwidgets-gtk3'
+	'zlib'
 )
-makedepends=(
-  cmake
-  conan
-  ffmpeg
-  gcc
-  git
-  gst-plugins-bad-libs
-  gstreamer
-  jack
-  libnotify
-  libsoup
-  nasm
-  sdl2
-)
+makedepends=('cmake' 'gcc' 'git' 'nasm')
 optdepends=('ffmpeg: additional import/export capabilities')
-provides=(audacity)
-conflicts=(audacity)
-source=(
-  "git+https://github.com/audacity/audacity.git"
-)
+provides=('audacity')
+conflicts=('audacity')
+source=("git+https://github.com/audacity/audacity.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -61,20 +56,23 @@ pkgver() {
 }
 
 build() {
-  cd audacity
-  mkdir build && cd build
-  CC=gcc cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxBUILD_TOOLKIT:STRING=gtk3 \
-    -Daudacity_use_wxwidgets=local \
-    -Daudacity_use_ffmpeg:STRING=loaded \
-    -Daudacity_lib_preference=system \
-    ..
-  cmake --build .
+  export CC=gcc
+  export VST3_SDK_DIR='/usr/share/vst3sdk'
+
+  cmake_args=(
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D audacity_lib_preference=system
+    -D audacity_obey_system_dependencies=On
+    -D audacity_conan_enabled=Off
+    -D audacity_use_wxwidgets=system
+  )
+
+  cmake -S audacity -B build "${cmake_args[@]}"
+  cmake --build build -- -j$(nproc)
 }
 
 package() {
-  cd audacity/build
+  cd build
   make DESTDIR="${pkgdir}" install
 }
