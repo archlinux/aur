@@ -2,19 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-cpan-outdated'
-pkgver='0.28'
-pkgrel='2'
+pkgver='0.32'
+pkgrel='1'
 pkgdesc="detect outdated CPAN modules in your environment."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cpan-distnameinfo>=0.1' 'perl-libwww' 'perl-local-lib>=1.006008' 'perl>=5.8.1')
-makedepends=()
+depends=('perl-cpan-distnameinfo' 'perl-uri' 'perl-libwww' 'perl-local-lib')
+makedepends=('perl-module-build-tiny')
 url='http://search.mcpan.org/dist/cpan-outdated'
-source=('http://search.mcpan.org/CPAN/authors/id/T/TO/TOKUHIROM/cpan-outdated-0.28.tar.gz')
-md5sums=('3f0dbeb84a9c854dc31b090f09880f84')
-sha512sums=('fa011be0393f1c22685b4ad2ff26a71a3b2ba045fdf489ce40e716dfd6610d718fbcb0769567493b1895232c993ef49ce10fb242a37ad04999aaefe0aa223e59')
-_distdir="cpan-outdated-0.28"
+source=('https://cpan.metacpan.org/authors/id/D/DO/DOLMEN/cpan-outdated-0.32.tar.gz')
+md5sums=('5aef4148c9d5d592414105bef8249271')
+_distdir="cpan-outdated-0.32"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +41,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
