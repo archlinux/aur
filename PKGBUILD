@@ -5,14 +5,14 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-kolo
 epoch=
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=00
 pkgdesc='See everything happening in your running Django app'
 arch=(any)
 url=https://kolo.app
 license=('custom:© Kolo')
 depends=(python python-cerberus python-click python-tomli python-toolz python-ulid-py)
-depends+=(python-django python-black python-jinja)
+## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
 provides=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/49/51/cdaf16dd545ed1e6a26cb716e0b745b6e8a0cd264eda9fb38e36fb976fbb/kolo-2.0.6-py3-none-any.whl)
-md5sums+=(14bfc7cee283866cae219b6b43eb1f53)
-noextract+=(kolo-2.0.6-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/08/e6/c8f0a18fb1d1b2d8220f8460faad032bf57fc90415f4b5ed790d52b6d56a/kolo-2.1.0-py3-none-any.whl)
+md5sums+=(129e909b4152a53aaa04e805947dde46)
+noextract+=(kolo-2.1.0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(72a73656a0823dab58aae967ffb09b63)
 
