@@ -1,8 +1,8 @@
 diff --git a/gio/glocalfileinfo.c b/gio/glocalfileinfo.c
-index 487f8cc1a..b0e6db728 100644
+index 661d2266a..74e584653 100644
 --- a/gio/glocalfileinfo.c
 +++ b/gio/glocalfileinfo.c
-@@ -66,6 +66,12 @@
+@@ -68,6 +68,12 @@
  #include "glib-private.h"
  
  #include "thumbnail-verify.h"
@@ -15,7 +15,7 @@ index 487f8cc1a..b0e6db728 100644
  
  #ifdef G_OS_WIN32
  #include <windows.h>
-@@ -103,6 +109,16 @@ struct ThumbMD5Context {
+@@ -105,6 +111,16 @@ struct ThumbMD5Context {
  	unsigned char in[64];
  };
  
@@ -32,7 +32,7 @@ index 487f8cc1a..b0e6db728 100644
  #ifndef G_OS_WIN32
  
  typedef struct {
-@@ -1355,16 +1371,130 @@ get_content_type (const char          *basename,
+@@ -1418,16 +1434,131 @@ get_content_type (const char          *basename,
    
  }
  
@@ -155,16 +155,17 @@ index 487f8cc1a..b0e6db728 100644
 -                          const GLocalFileStat *stat_buf)
 +                          const GLocalFileStat *stat_buf,
 +                          gboolean        generate)
++
  {
    GChecksum *checksum;
    char *uri;
-   char *filename;
+   char *filename = NULL;
    char *basename;
 +  const char *content_type;
+   const char *size_dirs[4] = { "xx-large", "x-large", "large", "normal" };
+   gsize i;
  
-   uri = g_filename_to_uri (path, NULL, NULL);
- 
-@@ -1383,6 +1513,7 @@ get_thumbnail_attributes (const char     *path,
+@@ -1455,6 +1586,7 @@ get_thumbnail_attributes (const char     *path,
        _g_file_info_set_attribute_byte_string_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_PATH, filename);
        _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
                                                  thumbnail_verify (filename, uri, stat_buf));
@@ -172,20 +173,11 @@ index 487f8cc1a..b0e6db728 100644
      }
    else
      {
-@@ -1396,6 +1527,7 @@ get_thumbnail_attributes (const char     *path,
-           _g_file_info_set_attribute_byte_string_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_PATH, filename);
+@@ -1469,8 +1601,31 @@ get_thumbnail_attributes (const char     *path,
+           _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED, TRUE);
            _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
                                                      thumbnail_verify (filename, uri, stat_buf));
 +          generate = FALSE;
-         }
-       else
-         {
-@@ -1411,9 +1543,32 @@ get_thumbnail_attributes (const char     *path,
-               _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED, TRUE);
-               _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
-                                                         thumbnail_verify (filename, uri, stat_buf));
-+              generate = FALSE;
-             }
          }
      }
 +
@@ -213,7 +205,7 @@ index 487f8cc1a..b0e6db728 100644
    g_free (basename);
    g_free (filename);
    g_free (uri);
-@@ -1767,6 +1922,18 @@ _g_local_file_info_get (const char             *basename,
+@@ -1861,6 +2016,18 @@ _g_local_file_info_get (const char             *basename,
  
    info = g_file_info_new ();
  
@@ -232,7 +224,7 @@ index 487f8cc1a..b0e6db728 100644
    /* Make sure we don't set any unwanted attributes */
    g_file_info_set_attribute_mask (info, attribute_matcher);
    
-@@ -1901,7 +2068,9 @@ _g_local_file_info_get (const char             *basename,
+@@ -1993,7 +2160,9 @@ _g_local_file_info_get (const char             *basename,
        _g_file_attribute_matcher_matches_id (attribute_matcher,
  					    G_FILE_ATTRIBUTE_ID_STANDARD_ICON) ||
        _g_file_attribute_matcher_matches_id (attribute_matcher,
@@ -243,7 +235,7 @@ index 487f8cc1a..b0e6db728 100644
      {
        char *content_type = get_content_type (basename, path, stat_ok ? &statbuf : NULL, is_symlink, symlink_broken, flags, FALSE);
  
-@@ -2018,9 +2187,9 @@ _g_local_file_info_get (const char             *basename,
+@@ -2110,9 +2279,9 @@ _g_local_file_info_get (const char             *basename,
                                              G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED))
      {
        if (stat_ok)
