@@ -2,7 +2,7 @@
 
 pkgname=dxvk-nvapi-mingw
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternative NVAPI implementation on top of DXVK. '
 arch=('x86_64')
 url="https://github.com/jp7677/dxvk-nvapi"
@@ -21,11 +21,11 @@ source=(
 prepare() {
     cd dxvk-nvapi
 
-    git cherry-pick 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
+    git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
 
     git submodule init "external/Vulkan-Headers"
-    git config submodule."external/Vulkan-Headers".url "$srcdir"/"Vulkan-Headers"
-    git submodule update "external/Vulkan-Headers"
+    git submodule set-url "external/Vulkan-Headers" "$srcdir"/Vulkan-Headers
+    git -c protocol.file.allow=always submodule update "external/Vulkan-Headers"
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
