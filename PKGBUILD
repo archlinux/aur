@@ -4,21 +4,23 @@
 
 pkgname=python-plexapi
 _name="PlexAPI"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pkkid/python-plexapi/archive/$pkgver.tar.gz")
-pkgver=4.12.0
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/pkkid/python-plexapi"
 license=('BSD')
-depends=('python-requests'
-         'python-tqdm'
-         'python-websocket-client')
-makedepends=()
+depends=('python-requests' 'python-tqdm' 'python-websocket-client')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('6c98019ce2e4c81db6be7dde025f929830c83544ee491bb680c30f588f43942a')
+sha256sums=('86e92cdb2fa6f38f7c518ef42144cd5276a69b083d0df95e9a9fede881e1fa83')
+
+build() {
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$_name-$pkgver"
-    python ./setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
