@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Matching
-_pkgver=4.10-2
+_pkgver=4.10-4
 pkgname=r-${_pkgname,,}
-pkgver=4.10.2
-pkgrel=3
+pkgver=4.10.4
+pkgrel=1
 pkgdesc='Multivariate and Propensity Score Matching with Balance Optimization'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-rgenoud
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1e75dc61553c1687b2b520dc52688409c2e84285e4b6c16c94d8d85fd5ccece0')
+sha256sums=('7e0a388fc148ecea55320fb5633d102322bd26c4d851b6fa90a2ea6109664feb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

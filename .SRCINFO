@@ -1,7 +1,7 @@
 pkgbase = r-matching
 	pkgdesc = Multivariate and Propensity Score Matching with Balance Optimization
-	pkgver = 4.10.2
-	pkgrel = 3
+	pkgver = 4.10.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Matching
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = r-matching
 	optdepends = r-parallel
 	optdepends = r-rbounds
 	optdepends = r-rgenoud
-	source = https://cran.r-project.org/src/contrib/Matching_4.10-2.tar.gz
-	sha256sums = 1e75dc61553c1687b2b520dc52688409c2e84285e4b6c16c94d8d85fd5ccece0
+	source = https://cran.r-project.org/src/contrib/Matching_4.10-4.tar.gz
+	sha256sums = 7e0a388fc148ecea55320fb5633d102322bd26c4d851b6fa90a2ea6109664feb
 
 pkgname = r-matching
