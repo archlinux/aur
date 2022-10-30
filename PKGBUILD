@@ -3,13 +3,13 @@
 
 pkgname='perl-dist-zilla-plugin-git'
 pkgver='2.048'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Update your git repository after release"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-datetime' 'perl-dist-zilla' 'perl-dist-zilla-plugin-config-git' 'perl-file-chdir' 'perl-git-wrapper' 'perl-ipc-system-simple' 'perl-moosex-has-sugar' 'perl-type-tiny' 'perl-types-path-tiny' 'perl-version-next')
-checkdepends=('perl-test-deep')
+checkdepends=('perl-test-deep' 'perl-file-which')
 url='https://metacpan.org/release/Dist-Zilla-Plugin-Git'
 source=(https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-$pkgver.tar.gz)
 sha256sums=('2e218df3db6ef154a86bbc2d735b6435e2252fdf0a289b5a8a87614104a890b4')

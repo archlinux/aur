@@ -1,12 +1,13 @@
 pkgbase = perl-dist-zilla-plugin-git
 	pkgdesc = Update your git repository after release
 	pkgver = 2.048
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Dist-Zilla-Plugin-Git
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-deep
+	checkdepends = perl-file-which
 	depends = perl-datetime
 	depends = perl-dist-zilla
 	depends = perl-dist-zilla-plugin-config-git
