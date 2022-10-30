@@ -1,7 +1,7 @@
 pkgbase = stellarium
 	pkgdesc = Software which renders realistic skies in real time with OpenGL
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://stellarium.org
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,6 @@ pkgbase = stellarium
 	depends = freetype2
 	depends = openssl
 	depends = gpsd
-	depends = calcmysky
 	depends = qt6-charts
 	depends = qt6-serialport
 	depends = qt6-multimedia
