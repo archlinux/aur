@@ -11,8 +11,8 @@ url='https://apps.kde.org/gitklient/'
 license=('GPL3')
 provides=('gitklient')
 conflicts=('gitklient')
-makedepends=('cmake' 'extra-cmake-modules' 'git')
-depends=('fontconfig' 'freetype2' 'gettext' 'kauth' 'kcodecs' 'kcompletion' 'kconfigwidgets' 'kconfig' 'kcoreaddons' 'kcrash' 'kdbusaddons' 'kdoctools' 'kio' 'kitemviews' 'ki18n' 'kjobwidgets' 'kparts' 'kservice' 'ktexteditor' 'ktextwidgets' 'kwidgetsaddons' 'kxmlgui' 'qt5-base' 'solid' 'sonnet' 'syntax-highlighting')
+makedepends=('cmake' 'extra-cmake-modules' 'gettext' 'git' 'kdoctools' 'ktexteditor')
+depends=('fontconfig' 'freetype2' 'hicolor-icon-theme' 'kauth' 'kcodecs' 'kcompletion' 'kconfigwidgets' 'kconfig' 'kcoreaddons' 'kcrash' 'kdbusaddons' 'kio' 'kitemviews' 'ki18n' 'kjobwidgets' 'kparts' 'kservice' 'ktextwidgets' 'kwidgetsaddons' 'kxmlgui' 'qt5-base' 'solid' 'sonnet' 'syntax-highlighting')
 source=("git+https://invent.kde.org/sdk/gitklient.git")
 sha256sums=('SKIP')
 
