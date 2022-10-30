@@ -3,7 +3,7 @@ _upstream_name=plasma-applet-resources-monitor
 pkgname=plasma5-applets-resources-monitor
 _pkgver="2.7.1"
 pkgver="${_pkgver/-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Plasma 5 applet for monitoring CPU and RAM"
 arch=('any')
 url="https://www.pling.com/p/1527636/"
@@ -13,7 +13,10 @@ depends=(
     'plasma-workspace'
 )
 optdepends=()
-makedepends=('extra-cmake-modules')
+makedepends=(
+    'extra-cmake-modules'
+    'kdelibs4support'
+)
 source=("https://github.com/orblazer/${_upstream_name}/archive/v${_pkgver}.tar.gz")
 sha256sums=('d4c163629801a9ae4b93b359d696f531d830d1869102d316bd574361024ff849')
 

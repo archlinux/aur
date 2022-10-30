@@ -1,11 +1,12 @@
 pkgbase = plasma5-applets-resources-monitor
 	pkgdesc = Plasma 5 applet for monitoring CPU and RAM
 	pkgver = 2.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pling.com/p/1527636/
 	arch = any
 	license = GPL
 	makedepends = extra-cmake-modules
+	makedepends = kdelibs4support
 	depends = libksysguard
 	depends = plasma-workspace
 	source = https://github.com/orblazer/plasma-applet-resources-monitor/archive/v2.7.1.tar.gz
