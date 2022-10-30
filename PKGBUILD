@@ -1,6 +1,6 @@
 # Maintainer: Piotr Czajka <czajka@protonmail.com>
 pkgname=screentime
-pkgver=0.1.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A lightweight screen-time monitoring tool"
 url="https://github.com/Ginkooo/screentime"
