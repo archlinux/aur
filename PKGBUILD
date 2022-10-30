@@ -1,29 +1,37 @@
+# Maintainer: tocic <tocic at protonmail dot ch>
 # Maintainer: Alad Wenter <alad@mailbox.org>
 # Contributor: Tomáš Mládek <tmladek @ inventati doth ork>
 # Contributor: shuall <shualloret @ gmail . com>
 
 pkgname=chaiscript
 pkgver=6.1.0
-pkgrel=1
-pkgdesc="embedded scripting language which targets C++"
-arch=('x86_64')
-url="http://www.chaiscript.com"
-license=('BSD')
-depends=('readline')
-makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Chaiscript/Chaiscript/archive/v$pkgver.tar.gz")
-sha256sums=('3ca9ba6434b4f0123b5ab56433e3383b01244d9666c85c06cc116d7c41e8f92a')
+pkgrel=2
+pkgdesc="An embedded scripting language for C++"
+arch=("x86_64")
+url="https://www.chaiscript.com"
+license=("BSD")
+depends=("gcc-libs")
+makedepends=("cmake")
+optdepends=("readline: command history support")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Chaiscript/Chaiscript/archive/v${pkgver}.tar.gz")
+b2sums=("036796f3575fd1bf210425883f139120e2a6338df75bfd74de263d11f2443e5995250c1fe68068eaaa30a2871fc733d56e9bab9fd43e994ca407f9730c3e4d4d")
 
 build() {
-  cd "ChaiScript-$pkgver"
+  cmake -B "build/" -S "ChaiScript-${pkgver}" \
+    -D BUILD_MODULES:BOOL="OFF" \
+    -D BUILD_TESTING:BOOL="OFF" \
+    -D CMAKE_BUILD_TYPE:STRING="Release" \
+    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
+    -Wno-dev
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ./
-  make
+  cmake --build "build/"
 }
 
 package() {
-  cd "ChaiScript-$pkgver"
+  DESTDIR="${pkgdir}" cmake --install "build/"
 
-  make DESTDIR="$pkgdir" install
-  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D --target-directory="${pkgdir}/usr/share/licenses/${pkgname}/" \
+    --mode=644 \
+    "ChaiScript-${pkgver}/LICENSE"
 }
