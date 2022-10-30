@@ -9,6 +9,7 @@ pkgbase = gitklient-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = gettext
+	makedepends = git
 	makedepends = kconfig
 	makedepends = kcoreaddons
 	makedepends = kcrash
@@ -23,6 +24,7 @@ pkgbase = gitklient-git
 	depends = qt5-base
 	depends = syntax-highlighting
 	provides = gitklient
+	conflicts = gitklient
 	source = git+https://invent.kde.org/sdk/gitklient.git
 	sha256sums = SKIP
 
