@@ -1,14 +1,12 @@
 pkgbase = herbe
 	pkgdesc = Daemon-less notifications without D-Bus
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dudik/herbe
 	arch = x86_64
 	license = MIT
 	depends = libx11
 	depends = libxft
-	conflicts = herbe
-	conflicts = herbe-git
 	source = herbe-1.0.0.tar.gz::https://github.com/dudik/herbe/archive/1.0.0.tar.gz
 	sha256sums = 78e454159050c86e030fb5a6cf997ac914345210cdf5a4ca4d7600c5296b7f76
 
