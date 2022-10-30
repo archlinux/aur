@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = discord-canary-electron-bin
+
+[Action]
+Depends = openasar-bin
+When = PreTransaction
+Exec = /usr/share/openasar/openasar-delete.sh "/usr/lib/discord-canary/app.asar.old"
