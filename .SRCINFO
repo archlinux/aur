@@ -1,12 +1,13 @@
 pkgbase = plasma5-applets-ambientnoise
 	pkgdesc = Plasmoid for ambient noise reproduction
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m-pilia/plasma-applet-ambientnoise
 	arch = any
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = kdelibs4support
 	depends = plasma-workspace
 	optdepends = anoise-media: noise files and icons
 	optdepends = anoise-community-extension1: noise files and icons
@@ -18,4 +19,3 @@ pkgbase = plasma5-applets-ambientnoise
 	sha256sums = d0936c0273b2877545edecb06316eed99ae4225b0bf1a889262e42ac5abaa314
 
 pkgname = plasma5-applets-ambientnoise
-
