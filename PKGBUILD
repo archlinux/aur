@@ -2,11 +2,11 @@
 # Maintainer: e-search-git
 # Contributor: e-search-git
 pkgname=e-search-git
-pkgver=1.4.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
-url="https://xushengfeng.github.io/eSearch-website/"
+url="https://github.com/xushengfeng/eSearch"
 license=('GPL3')
 groups=('')
 depends=('at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'metasploit' 'trash-cli' 'xdg-utils' 'libappindicator-gtk3')
@@ -32,10 +32,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/eSearch"
-    npm run rebuild
     sed -i "s/\"tar.gz\",//g" package.json
     sed -i "s/\"deb\",/\"deb\"/g" package.json
-    sed -i "s/\"rpm\"//g" package.json
+    sed -i "s/\"rpm\",//g" package.json
+    sed -i "s/\"AppImage\"//g" package.json
     npm run dist
 }
 
