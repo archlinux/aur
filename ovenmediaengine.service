@@ -1,16 +1,18 @@
+# See https://github.com/AirenSoft/OvenMediaEngine/blob/master/misc/ovenmediaengine.service
+
 [Unit]
 Description=OvenMediaEngine
-After=network.target
+After=network-online.target
 
 [Service]
 Type=forking
 PIDFile=/run/ovenmediaengine.pid
-WorkingDirectory=/usr/share/ovenmediaengine
 ExecStart=/usr/bin/OvenMediaEngine -d -c /etc/ovenmediaengine/
 Restart=on-abort
 RestartPreventExitStatus=1
 StandardOutput=null
 StandardError=journal+console
+LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
