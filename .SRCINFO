@@ -10,7 +10,6 @@ pkgbase = openasar-bin
 	optdepends = discord: Stable channel Discord
 	optdepends = discord-canary: Canary channel Discord
 	optdepends = discord-development: Development channel Discord
-	optdepends = discord-canary-electron-bin: Canary channel Discord using system provided electron
 	conflicts = discord_arch_electron
 	source = 20221010154340.asar::https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar
 	source = openasar-install.hook

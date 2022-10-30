@@ -13,8 +13,7 @@ license=('MIT')
 depends=('unzip')
 optdepends=('discord: Stable channel Discord'
             'discord-canary: Canary channel Discord'
-            'discord-development: Development channel Discord'
-            'discord-canary-electron-bin: Canary channel Discord using system provided electron')
+            'discord-development: Development channel Discord')
 conflicts=('discord_arch_electron')
 source=(""$pkgver".asar::https://github.com/GooseMod/$_pkgname/releases/download/$_pkgver/app.asar"
         "openasar-install.hook"
