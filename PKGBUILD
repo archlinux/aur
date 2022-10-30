@@ -1,5 +1,5 @@
 pkgname=rime-sbxlm-sbzr
-pkgver=220813
+pkgver=221030
 pkgrel=1
 pkgdesc='声笔系列码，声笔自然'
 arch=(any)
