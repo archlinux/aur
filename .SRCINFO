@@ -1,11 +1,10 @@
 pkgbase = cro-chain-desktop
 	pkgdesc = Crypto.com DeFi Desktop Wallet
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	makedepends = yarn
 	makedepends = nodejs<17
 	provides = cro-chain-desktop
@@ -13,6 +12,6 @@ pkgbase = cro-chain-desktop
 	source = chain-desktop-wallet-1.3.3.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v1.3.3.tar.gz
 	source = chain-desktop-wallet.desktop
 	sha512sums = d87238e5d7cff1fa857fe5e1b86e1ac9059db18a9a5f07c8b2e1892546430da7c08ff07bb778f9ab104a9d702293264234332fcbea0403db54468c8e2e642658
-	sha512sums = 969ee0790310790bba17d35988270ecb16b3709ff1b897ce0e9e10f612a82e687e6212343c64074839029637e895586374e4ece1219e77addaa7d20e93678924
+	sha512sums = 396b7e061b2e701d10951f006a5ff0814bf71d1d513698d491c4e41748a165d6ceef020e455c889891cd445e6d3ecbaebe3d080420efd3607035a91ac857e065
 
 pkgname = cro-chain-desktop
