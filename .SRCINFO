@@ -8,6 +8,7 @@ pkgbase = tome4-bin
 	license = custom
 	license = GPL3
 	provides = tome4
+	provides = tome4=1.7.4
 	conflicts = tome4
 	source = tome4
 	source = tome4.desktop
