@@ -1,18 +1,17 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=bat-asus-battery-bin
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.11
+pkgrel=1
 pkgdesc="Replicate the functionality of the ASUS Battery Health Charging on Windows which aims prolong the battery's life-span"
 arch=(any)
 url="https://github.com/tshakalekholoane/bat"
 license=('MIT')
 provides=('bat-asus-battery')
-source=("bat_$pkgver.zip"::"https://github.com/tshakalekholoane/bat/releases/download/${pkgver}/bat.zip")
-sha256sums=('f4465da2add99b7d196ebe1ad32c3f80eb83aece0410f761cba6f076b88b74b5')
+source=("bat_$pkgver"::"https://github.com/tshakalekholoane/bat/releases/download/${pkgver}/bat")
+sha256sums=('67fd33adb575b2fd01e81b4a6a3d2f0bc43b769ea91c49ea7bc99195b0bdc606')
 
 package() {
-    unzip -o "${srcdir}/bat_$pkgver.zip"
-    mv "${srcdir}/bat" "${srcdir}/bat-asus-battery"
+    mv "${srcdir}/bat_$pkgver" "${srcdir}/bat-asus-battery"
     install -Dm755 "${srcdir}/bat-asus-battery" -t "${pkgdir}/usr/bin"
 }
