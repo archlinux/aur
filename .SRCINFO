@@ -10,7 +10,7 @@ pkgbase = purple-battlenet-git
 	makedepends = glib2
 	makedepends = protobuf-c
 	makedepends = git
-	depends = pidgin
+	depends = libpurple
 	source = git+https://github.com/EionRobb/purple-battlenet.git
 	md5sums = SKIP
 
