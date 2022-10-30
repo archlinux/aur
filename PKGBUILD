@@ -22,7 +22,7 @@ options=(!strip)
 _debname=HUB-Kids.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/kidslinux.zip)
-sha256sums=('515945d89c7ebb7c9faf80e65f9fd2d3eac777f7fe45b18bfb94a1d7fe2819a0')
+sha256sums=('3a25e2e3ebcf018e147423067a89dd24fd55b1ec8b09e67f66ab4a6324f54e54')
 
 prepare() {
   cd "$srcdir"
