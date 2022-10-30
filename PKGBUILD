@@ -1,13 +1,13 @@
 # Maintainer: oscareczek <at gmail dot com>
 pkgname=86box-git
-pkgver=3.7.1.r481.gc798caa68
+pkgver=3.7.1.r497.gd06c83e25
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
-makedepends=('git' 'cmake>=3.21' 'ninja' 'qt6-tools')
+makedepends=('git' 'cmake>=3.21' 'ninja' 'qt6-tools') # vulkan-headers on qt5
 optdepends=(
     '86box-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
