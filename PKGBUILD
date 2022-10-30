@@ -2,7 +2,7 @@
 
 pkgname=luastatus-luajit-git
 pkgver=r772.525942c
-pkgrel=2
+pkgrel=3
 pkgdesc='luastatus (a status bar content generator) built with luajit for better performance - git version'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -51,7 +51,8 @@ pkgver() {
 build() {
 	cd 'luastatus'
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-		-DWITH_LUA_LIBRARY=luajit -DBUILD_PLUGIN_PULSE=ON .
+		-DWITH_LUA_LIBRARY=luajit -DBUILD_PLUGIN_PULSE=ON \
+		-DBUILD_PLUGIN_UNIXSOCK=ON .
 	make
 }
 
