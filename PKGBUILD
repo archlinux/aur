@@ -1,8 +1,8 @@
 # Maintainer: Joaquín Ignacio Aramendía <samsagax at gmail dot com>
 
-_pkgbase=oxp-platform
+_pkgbase=oxp-sensors
 pkgname=oxp-platform-dkms-git
-pkgver=v0.3.1.r0.g7ed7072
+pkgver=v0.3.1.r9.gb69178f
 pkgrel=1
 pkgdesc="Linux Driver for One X Player mini AMD"
 arch=('x86_64')
@@ -13,15 +13,11 @@ makedepends=('git')
 source=("$_pkgbase::git+https://gitlab.com/Samsagax/oxp-platform-dkms.git"
         "dkms.conf")
 sha256sums=('SKIP'
-            '537d4520bca0ed131de627a5e5acb9f5f2aa275cce3917e84759c2fb224cf2bd')
+            'f325b751c8a81416a75c2c1e7a7bc9ca46ae0fa3b44d4ccc09593274be1b2dc7')
 
 pkgver() {
   cd "$srcdir/${_pkgbase}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${_pkgbase}"
 }
 
 package() {
