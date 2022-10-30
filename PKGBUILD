@@ -2,7 +2,7 @@
 
 _gemname=google-apis-monitoring_v3
 pkgname=ruby-$_gemname
-pkgver=0.36.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc='simple REST client for Cloud Monitoring API V3'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('d0ce2dbd15385a8e7c351b679c12af3c1564a26e3f638145a139a7885123f9bf')
+sha256sums=('2d9262ae8dfa83ac7db895b03c7deeaae9f13107e94c8781a432202fbc20736a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
