@@ -1,6 +1,6 @@
 pkgbase = rime-sbxlm-sbxh
 	pkgdesc = 声笔系列码，声笔小鹤
-	pkgver = 220813
+	pkgver = 221030
 	pkgrel = 1
 	arch = any
 	groups = sbxlm
