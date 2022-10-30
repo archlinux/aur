@@ -1,11 +1,11 @@
 pkgbase = tome4-ashes_of_urhrok
 	pkgdesc = Ashes of Urhok DLC for tome4.
-	pkgver = g.1.7.4.d.1.1.4
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://te4.org/
 	arch = any
 	license = custom
-	depends = tome4
+	depends = tome4=1.7.4
 	noextract = ashes-urhrok.teaac
 	source = ashes-urhrok.teaac::te4://ashes-urhrok.teaac
 	sha256sums = 53faf7d28906307a3ab31e7a07d37def1f12c885c7639e4c63028a25577bdb32
