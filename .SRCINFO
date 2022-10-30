@@ -1,16 +1,10 @@
 pkgbase = python-streamz
 	pkgdesc = Real-time stream processing for python
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-streamz/streamz
 	arch = any
 	license = custom:BSD-3-clause
-	checkdepends = python-pytest
-	checkdepends = python-pandas
-	checkdepends = python-distributed
-	checkdepends = python-flaky
-	checkdepends = python-networkx
-	checkdepends = python-graphviz
 	makedepends = python-setuptools
 	depends = python-tornado
 	depends = python-toolz
