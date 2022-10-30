@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gribov <grossws at gmail dot com>
 
 pkgname=jib
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Utility for reproducable builds of OCI or Docker container images'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('java-environment')
 source=("https://github.com/GoogleContainerTools/${pkgname}/releases/download/v${pkgver}-cli/${pkgname}-jre-${pkgver}.zip"
         "jib")
-sha256sums=('2bf35ea359fd6b9ec730a516380f82b76b93c0cb6dd791a9ae7384bdda389348'
+sha256sums=('2a7ad472df888fa77f0732820b52da34742e64dd0c67f1c5d8b8444ca0f6f061'
             '6b97cf668f2a2af685d1bb97e8a1bedc4a090d828ccfc2e063fbce5a7c8e1172')
 
 package() {
