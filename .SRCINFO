@@ -1,7 +1,7 @@
 pkgbase = luastatus-luajit
 	pkgdesc = luastatus (a status bar content generator) built with luajit for better performance
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3
@@ -19,6 +19,8 @@ pkgbase = luastatus-luajit
 	makedepends = xcb-util>=0.3.8
 	makedepends = xcb-util-wm>=0.4.1
 	depends = luajit>=2.0.0
+	optdepends = luastatus-meta: provides all luastatus dependencies
+	optdepends = lua51-luautf8: for general UTF-8 support
 	optdepends = libxcb>=1.10: for barlib 'dwm' and plugin 'xtitle'
 	optdepends = yajl>=2.0.4: for barlib 'i3'
 	optdepends = alsa-lib>=1.0.27.2: for plugin 'alsa'

@@ -2,7 +2,7 @@
 
 pkgname=luastatus-luajit
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='luastatus (a status bar content generator) built with luajit for better performance'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -26,6 +26,8 @@ makedepends=(
 	'xcb-util-wm>=0.4.1'
 )
 optdepends=(
+	"luastatus-meta: provides all luastatus dependencies"
+	"lua51-luautf8: for general UTF-8 support"
 	"libxcb>=1.10: for barlib 'dwm' and plugin 'xtitle'"
 	"yajl>=2.0.4: for barlib 'i3'"
 	"alsa-lib>=1.0.27.2: for plugin 'alsa'"
@@ -51,3 +53,5 @@ package() {
 	cd "luastatus-${pkgver}"
 	make DESTDIR="$pkgdir" install
 }
+
+# vim:noexpandtab
