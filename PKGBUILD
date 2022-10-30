@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=okd-client-bin
-pkgver="4.11.0_0.okd_2022_10_28_153352"
+pkgver="4.11.0_0.okd_2022_10_15_073651"
 pkgrel=1
 pkgdesc="Client tools for OpenShift"
 arch=(x86_64)
