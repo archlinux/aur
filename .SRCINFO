@@ -1,0 +1,11 @@
+pkgbase = plank-theme-digitall-extend
+	pkgdesc = Digitall Extend Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1299253
+	arch = any
+	license = mit
+	source = https://github.com/MMcQueenGNU/plank-theme-digitall-extend/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 1874d151f9131be4f5c365180420a4b56d18d8951aa89e48d929557497210513
+
+pkgname = plank-theme-digitall-extend
