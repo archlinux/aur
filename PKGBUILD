@@ -1,9 +1,9 @@
-# Maintainer: Avery Warddhana <nullableVoidPtr+arch _ gmail>
+# Maintainer: Avery Warddhana <them+arch _ nullablevo id au>
 
 pkgname=python-overrides
 _name=${pkgname#python-}
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A decorator to automatically detect mismatch when overriding a method"
 url='https://github.com/mkorpela/overrides'
 arch=('any')
@@ -27,7 +27,6 @@ check() {
 
 package() {
     cd "${_name}-${pkgver}"
-	export PYTHONHASHSEED=0
     python setup.py install --root="$pkgdir" --optimize=1
 }
 

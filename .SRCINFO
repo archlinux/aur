@@ -1,7 +1,7 @@
 pkgbase = python-overrides
 	pkgdesc = A decorator to automatically detect mismatch when overriding a method
 	pkgver = 7.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkorpela/overrides
 	arch = any
 	license = Apache
