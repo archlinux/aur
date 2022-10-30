@@ -2,7 +2,7 @@
 
 _extname='nautilus-launch'
 pkgname="${_extname}-git"
-pkgver='r11.2f534d0'
+pkgver='r12.a84e722'
 pkgrel=1
 pkgdesc='A simple Nautilus extension that allows to run executables and launchers via right-click menu'
 arch=('i686' 'x86_64')
