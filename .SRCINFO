@@ -1,6 +1,6 @@
 pkgbase = python-pytest-selenium
 	pkgdesc = pytest plugin for Selenium
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/pytest-dev/pytest-selenium
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-pytest-selenium
 	depends = python-pytest-variables
 	depends = python-selenium
 	depends = python-tenacity
-	source = pytest-selenium-3.0.0.tar.gz::https://github.com/pytest-dev/pytest-selenium/archive/v3.0.0.tar.gz
-	sha512sums = ce7d8e21974cbf6ee984189e86e5aa7127c2112f8f2469f10bfc2e18d62f490b21ab1fdf0514a9a79643d286e72eea23b53e819329d27f407f5844c7a1941665
+	source = pytest-selenium-4.0.0.tar.gz::https://github.com/pytest-dev/pytest-selenium/archive/v4.0.0.tar.gz
+	sha512sums = 9984109b5fecfced94485ec3b69e6ac57214b1a4c19c58c536743b81cee231d05f7be5257ba2055162b31d641e63814fe9e6f05821e531cb4c53c8495eb0b462
 
 pkgname = python-pytest-selenium
