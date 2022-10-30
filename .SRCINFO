@@ -1,0 +1,18 @@
+pkgbase = mftrace
+	pkgdesc = Traces TeX bitmap fonts into PFA, PFB, or TTF
+	pkgver = 1.2.20
+	pkgrel = 4
+	url = http://lilypond.org/mftrace/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	depends = potrace
+	depends = python
+	depends = t1utils
+	depends = texlive-bin
+	depends = texlive-fontsextra
+	source = mftrace-1.2.20.tar.gz::https://github.com/hanwen/mftrace/archive/release/1.2.20.tar.gz
+	sha512sums = f5a6ee531c63a023d4c2629d1b0138340225ee5d5af5422d682bf89a7eb156f74f045c7be4186d507355602487672dd7ffb3674d515e94ef4b8b48c32481cdd3
+	b2sums = 9c655823bac16fa51fe14fe7076604d999e972b62cf21277f6435f566f33c4a29e1019ffefbfeb3b5c4daa57d5409f19dfbeab4935247603f201a433d1f00ba1
+
+pkgname = mftrace
