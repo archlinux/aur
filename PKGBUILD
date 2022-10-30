@@ -5,7 +5,7 @@ pkgname=firefox-nightly-de-bin
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
 pkgver=108.0a1.20221030
-pkgrel=1
+pkgrel=2
 _version=108.0a1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -31,8 +31,9 @@ optdepends=('pulseaudio: audio support'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
 
-conflicts=('firefox-nightly-bin')
-provides=('firefox-nightly-bin')
+conflicts=('firefox-nightly-bin' 'firefox-nightly-de')
+provides=('firefox-nightly-bin' 'firefox-nightly-de')
+replaces=('firefox-nightly-de')
 
 pkgver() {
   # Use Last-Modified Header from server
