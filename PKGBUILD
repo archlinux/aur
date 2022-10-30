@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/pkkid/python-plexapi"
 license=('BSD')
 depends=('python-requests' 'python-tqdm' 'python-websocket-client')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('86e92cdb2fa6f38f7c518ef42144cd5276a69b083d0df95e9a9fede881e1fa83')
 
