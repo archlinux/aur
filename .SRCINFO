@@ -1,6 +1,6 @@
 pkgbase = ruffle-git
 	pkgdesc = A Flash Player emulator written in Rust
-	pkgver = 0.1.0.r7525.g84533e278
+	pkgver = 0.1.0.7599.gee52ce329
 	pkgrel = 1
 	url = https://ruffle.rs/
 	arch = x86_64
