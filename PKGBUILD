@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plsVarSel
-_pkgver=0.9.8
+_pkgver=0.9.9
 pkgname=r-${_pkgname,,}
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc='Variable Selection in Partial Least Squares'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmpi
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a2e61b2f504b0e12b189aae868047d0fe41329fd55cf9aa7f9d153f3bf68d9a')
+sha256sums=('4bd2d40d42c79920842f45df0a96930a81e65009c2ac33df29097bf39ff51282')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
