@@ -1,0 +1,18 @@
+pkgbase = cosign-git
+	pkgdesc = Container Signing, Verification and Storage in an OCI registry
+	pkgver = 1.13.1.r29.gca0959a1
+	pkgrel = 1
+	url = https://github.com/sigstore/cosign
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = pcsclite
+	provides = cosign=1.13.1.r29.gca0959a1
+	conflicts = cosign
+	source = git+https://github.com/sigstore/cosign.git
+	sha256sums = SKIP
+
+pkgname = cosign-git
