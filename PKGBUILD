@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-qurancomplex-fonts
 pkgver=20220601
-pkgrel=1
+pkgrel=2
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
 url="http://fonts.qurancomplex.gov.sa"
@@ -22,8 +22,7 @@ source=(https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Basmal
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicShuba_V20.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicSousi_V20.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/04/UthmanicWarsh_V21.zip
-	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2012/06/UthmanTN1-Ver10.zip
-	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2012/06/UthmanTN1B-Ver10.zip)
+	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2022/06/UthmanTN_v2-0.zip)
 sha256sums=('e696b4e60ba24e921954ad15d7209d0322641f0e52d956b3e8606ea5b3501c77'
             '56543ae78f1792b6b8911ba57dd70fb542a311ac0339b1f85563ff446d021442'
             'e6ea593fe3ec86ea3b1abfdae0b841aacd0f86cf23322dc072e92d6bf626610c'
@@ -40,12 +39,11 @@ sha256sums=('e696b4e60ba24e921954ad15d7209d0322641f0e52d956b3e8606ea5b3501c77'
             '2bdbe2b0aaf340156c09f3d60a0cb8a331533902131d1f3738b65af9e0e9964a'
             'c06cefb2993ab801bb319819a99200598a335cb0200603020493666a8543e722'
             '45ee1b4f531060aeaca63e426f8ed3fcb8bcc991b0a0ea788d29bbb557b2e5f5'
-            'f5a2c73eb3b618e499afbd03d559b5204bcdabb46d59b8b7cacd13a485162bf9'
-            '73e7fc1c556cc3a7e3048d90fb26f919688464d7e0c9c0e4815871c13588a8c8')
+            'ef8c1380137e0c08fdec906fba7b74fdad273df9320d0ca4371dd2b52bdd9b36')
 
 package() {
   cd "$srcdir"
   shopt -s globstar
-  install -Dm644 **/*.[ot]tf -t "$pkgdir/usr/share/fonts/qurancomplex"
-  install -Dm644 **/*.doc **/*.docx -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dvm644 **/*.[ot]tf -t "$pkgdir/usr/share/fonts/qurancomplex"
+  install -Dvm644 **/*.doc **/*.docx -t "$pkgdir/usr/share/doc/$pkgname"
 }
