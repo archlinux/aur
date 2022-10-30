@@ -1,0 +1,16 @@
+pkgbase = zinkrun
+	pkgdesc = Wrapper for Zink, to use it to run OpenGL games in the top of Vulkan
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/zinkrun
+	install = zinkrun.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = mesa
+	depends = opengl-driver
+	depends = vulkan-icd-loader
+	source = zinkrun
+	sha256sums = 4a50138cbdf4f2b0ae08726e0b4fb40571078ce202e194d26ba10cdebb62b307
+
+pkgname = zinkrun

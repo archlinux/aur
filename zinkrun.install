@@ -1,0 +1,7 @@
+post_install() {
+    echo "Zink works with both AMD and Nvidia drivers."
+    echo "However, you should try it on OpenGL games only."
+    echo "Also, it may happen that it doesn't work properly"
+    echo "on any game, but results may vary."
+    echo "Be warned at any possible crashes, if happening."
+}
