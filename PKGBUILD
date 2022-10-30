@@ -4,7 +4,7 @@ export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=ytrssil
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=0
 pkgdesc='Subscribe to YouTube RSS feeds and keep track of watched videos'
 arch=(any)
@@ -12,8 +12,8 @@ url=https://pypi.org/project/ytrssil/
 license=(BSD)
 depends=(python python-inject python-requests)
 makedepends=(python-pip)
-source=(https://files.pythonhosted.org/packages/bd/cb/997e30ab9b8728a282effb6a771a363f050372172eebe3dfc27a53b92c25/ytrssil-0.6.0-py3-none-any.whl)
-sha256sums=(1903042a4de77825d5d8c9f328f453b337d1230865fa9b693491b8e30a19d1f4)
+source=(https://files.pythonhosted.org/packages/c9/de/85846eef740e20e72a86d86c0f19f5edafc8ea42573630442adb054378c5/ytrssil-0.6.1-py3-none-any.whl)
+sha256sums=(7ebe9df2f08ba9e11c60a8345f9c2c0c2ebbc5d3d07e2a51104061c067679d42)
 noextract=(${pkgname}-${pkgver}-py3-none-any.whl)
 
 _dist_name() {
