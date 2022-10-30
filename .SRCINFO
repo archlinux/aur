@@ -1,5 +1,5 @@
 pkgbase = rocketchat-client-electron-bin
-	pkgdesc = The Ultimate Open Source Web Chat Platform
+	pkgdesc = The Ultimate Open Source Web Chat Platform, using system electron
 	pkgver = 3.8.12
 	pkgrel = 2
 	url = https://rocket.chat
@@ -8,6 +8,7 @@ pkgbase = rocketchat-client-electron-bin
 	depends = gtk3
 	depends = nss
 	depends = libxss
+	depends = electron
 	optdepends = libnotify: Desktop notifications
 	optdepends = libindicator-gtk3: System tray icon
 	provides = rocketchat-desktop

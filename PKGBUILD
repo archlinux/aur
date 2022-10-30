@@ -3,11 +3,11 @@
 pkgname=rocketchat-client-electron-bin
 pkgver=3.8.12
 pkgrel=2
-pkgdesc="The Ultimate Open Source Web Chat Platform"
+pkgdesc="The Ultimate Open Source Web Chat Platform, using system electron"
 arch=('x86_64')
 license=('MIT')
 url='https://rocket.chat'
-depends=('gtk3' 'nss' 'libxss')
+depends=('gtk3' 'nss' 'libxss' 'electron')
 optdepends=('libnotify: Desktop notifications'
             'libindicator-gtk3: System tray icon')
 provides=('rocketchat-desktop')
