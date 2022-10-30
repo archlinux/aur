@@ -1,11 +1,11 @@
 pkgbase = okd-client-bin
 	pkgdesc = Client tools for OpenShift
-	pkgver = 4.11.0_0.okd_2022_10_15_073651
+	pkgver = 4.11.0_0.okd_2022_10_28_153352
 	pkgrel = 1
 	url = https://github.com/openshift/okd
 	arch = x86_64
 	license = Apache
-	source = https://github.com/openshift/okd/releases/download/4.11.0-0.okd-2022-10-15-073651/openshift-client-linux-4.11.0-0.okd-2022-10-15-073651.tar.gz
+	source = https://github.com/openshift/okd/releases/download/4.11.0-0.okd-2022-10-28-153352/openshift-client-linux-4.11.0-0.okd-2022-10-28-153352.tar.gz
 	sha256sums = 81cab483aa10492c02e721068c654c6a7148bc0932676692de9a9243cada2a96
 
 pkgname = okd-client-bin
