@@ -69,7 +69,7 @@ build() {
   )
 
   cmake -S audacity -B build "${cmake_args[@]}"
-  cmake --build build -- -j$(nproc)
+  cmake --build build
 }
 
 package() {
