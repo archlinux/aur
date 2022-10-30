@@ -30,6 +30,6 @@ pkgbase = ovenmediaengine
 	source = ovenmediaengine-0.14.14.tar.gz::https://github.com/AirenSoft/OvenMediaEngine/archive/refs/tags/v0.14.14.tar.gz
 	source = ovenmediaengine.service
 	sha512sums = fdca32da83614fc7201cff96f98f0365a104c6f135e5235e1dd82b1fbd863cb15de5153a8bb8ca31400fe0b6f77cf8923c2282b139f72b43dd772bc8d23b0900
-	sha512sums = 6e1527ac3bab8d62b10f40981dd75558873a1932e40129236264e74a9fb5971c7aabea261a35a85445c733344f54cdbd62f33b12dbe356030a911e318e9dad08
+	sha512sums = c5c4615d4c50a55c6fea177a1bc73b13d1365224c4e102067e45ce956741cb95366ec3b16cdec8932083c923910794e9164b0f9a25a6b0e2f186557fac3e42f1
 
 pkgname = ovenmediaengine
