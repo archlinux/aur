@@ -1,16 +1,18 @@
+# Maintainer: esroyo <esroyo@gmail.com>
+# Contributor: Olivier Brunel <jjk@jjacky.com>
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=fpm2
-pkgver=0.79
+pkgver=0.90
 pkgrel=1
 pkgdesc="Figaro's Password Manager 2"
 arch=('i686' 'x86_64')
 url="http://als.regnet.cz/fpm2/"
 license=('GPL')
-depends=('gtk2')
-makedepends=('intltool>=0.35.0' 'pkgconfig>=0.9.0')
-source=(http://als.regnet.cz/$pkgname/download/$pkgname-$pkgver.tar.bz2)
-sha256sums=('d55e9ce6be38a44fc1053d82db2d117cf3991a51898bd86d7913bae769f04da7')
+depends=('gtk3')
+makedepends=('intltool>=0.35.0' 'pkgconf>=1.0')
+source=(http://als.regnet.cz/$pkgname/download/$pkgname-$pkgver.tar.xz)
+sha256sums=('1f3ab9c41c86267da97c48dda2f2333e163a3179fb21be1d34d4b4bf8792dfd1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
