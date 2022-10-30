@@ -52,7 +52,7 @@ package() {
   "$pkgdir/opt/solana-release/bin/$_pkgname" completion --shell bash | install -D --mode 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
   "$pkgdir/opt/solana-release/bin/$_pkgname" completion --shell zsh | install -D --mode 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
-  install -m 777 -d "$pkgdir/opt/$_pkgname-release/bin/sdk/bpf/dependencies" # adds dependency director to all installing bpf-tools and criterion unit test framework as user
+  install -m 777 -d "$pkgdir/opt/$_pkgname-release/bin/sdk/bpf/dependencies" # adds dependency directory to allow installing bpf-tools and criterion unit test framework without root
   #install -Dm 644 "$_pkgname"-*.service -t "$pkgdir/usr/lib/systemd/system"
 }
 
