@@ -5,13 +5,13 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gittyup-git
-pkgver=1.1.1.r287.gd1575bb
+pkgver=1.2.0.r0.gb663589
 pkgrel=1
 pkgdesc="Graphical Git client (GitAhead fork)"
 url="https://github.com/Murmele/Gittyup"
 arch=(x86_64)
 license=(MIT)
-depends=(qt5-base hunspell lua cmark pcre)
+depends=(qt5-base hunspell lua cmark pcre libssh2)
 makedepends=(git cmake ninja qt5-tools qt5-translations ) #libgit2 libgnome-keyring
 optdepends=('git-lfs: git-lfs support'
             'libgnome-keyring: for GNOME Keyring for auth credentials'
@@ -47,7 +47,7 @@ prepare() {
   git config submodule.test/dep/zip.url "${srcdir}/zip"
   git config submodule.dep/scintilla/lexilla.url "${srcdir}/lexilla"
   git config submodule.dep/scintilla/scintillua.url "${srcdir}/scintillua"
-  git -c protocol.file.allow=always submodule--helper update
+  git -c protocol.file.allow=always submodule update
 
   [[ -d build ]] || mkdir build
 }
