@@ -1,4 +1,5 @@
-# Maintainer: Viktor Stanchev <me aatt viktorstanchev doot com>
+# Maintainer: Justin Lavoie <just1602@riseup.net>
+#-Contributor: Viktor Stanchev <me aatt viktorstanchev doot com>
 
 _pkgname=urxvt-font-size
 pkgname=${_pkgname}-git
