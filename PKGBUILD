@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=tiempo-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A command line time tracking application'
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=()
 optdepends=('sqlite: for manually editing the database')
 provides=('tiempo')
 conflicts=('tiempo')
-source=("https://gitlab.com/api/v4/projects/27545092/packages/generic/v1.5.1/v1.5.1/tiempo-${pkgver}-x86_64.tar.gz")
-sha256sums=('be53449ca0a89a03bce15720bc5836fb1d7d195e17621f7496c41afee04d6ad3')
+source=("https://gitlab.com/api/v4/projects/27545092/packages/generic/v1.5.2/v1.5.2/tiempo-${pkgver}-x86_64.tar.gz")
+sha256sums=('dc23f87883374b77506d939c874704b3bcb23a3e4d6a6c032a310794aa93975c')
 
 package() {
     cd "$srcdir/build"
