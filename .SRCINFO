@@ -1,6 +1,6 @@
 pkgbase = tiempo-git
 	pkgdesc = A command line time tracking application
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://gitlab.com/categulario/tiempo-rs
 	arch = i686
@@ -8,6 +8,9 @@ pkgbase = tiempo-git
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = gzip
+	makedepends = make
 	optdepends = sqlite: for manually editing the database
 	provides = tiempo
 	conflicts = tiempo
