@@ -2,7 +2,7 @@
 
 _name=DearPyGui
 pkgname=python-dearpygui
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a7d51da6b2d96034d562441911b1bfcf8fee8974929931c18173620db62434d5e9baf9139679267bc75269c36d5dc525b2e9822eed5d8091ad424f54f593a4f4')
+b2sums=('d96f6e4b107e274c901a4b963914393d1e36378511a8f2f701a6c91860ed241a542ea71362d111659549d49be2a443fb9195bef1f7824c5964b690bcb41ac33a')
 
 build() {
     cd $_name-$pkgver
