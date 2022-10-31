@@ -1,6 +1,6 @@
 pkgbase = hub-kids
 	pkgdesc = La piattaforma facile, gratuita e innovativa per la didattica digitale.
-	pkgver = 6.2.291
+	pkgver = 6.3.300
 	pkgrel = 1
 	url = https://www.hubscuola.it/download-app
 	arch = x86_64
