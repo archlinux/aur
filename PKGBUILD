@@ -2,7 +2,7 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.9.32
+pkgver=3.9.43
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.18' 'git')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('1db589d63c3216b9959966110e1673804c22a7927382ca82b11b702ba8fc12cd')
+sha256sums=('ba8bd640cbda636698f72487bda7cc6f57ad9346eb9a5e9c9894579fccfa53a0')
 
 build() {
   echo "*** build daemon***"
@@ -59,16 +59,16 @@ package() {
   install -Dm700 -g root -o root References/Linux/etc/client.up "$pkgdir/opt/ivpn/etc/client.up"
   install -Dm700 -g root -o root References/Linux/etc/firewall.sh "$pkgdir/opt/ivpn/etc/firewall.sh"
   install -Dm700 -g root -o root References/Linux/etc/splittun.sh "$pkgdir/opt/ivpn/etc/splittun.sh"
-  install -Dm600 -g root -o root References/Linux/etc/servers.json "$pkgdir/opt/ivpn/etc/servers.json"
-  install -Dm400 -g root -o root References/Linux/etc/ca.crt "$pkgdir/opt/ivpn/etc/ca.crt"
-  install -Dm400 -g root -o root References/Linux/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
+  install -Dm600 -g root -o root References/common/etc/servers.json "$pkgdir/opt/ivpn/etc/servers.json"
+  install -Dm400 -g root -o root References/common/etc/ca.crt "$pkgdir/opt/ivpn/etc/ca.crt"
+  install -Dm400 -g root -o root References/common/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
 
   install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg-quick "$pkgdir/opt/ivpn/wireguard-tools/wg-quick"
   install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg "$pkgdir/opt/ivpn/wireguard-tools/wg"
   install -Dm755 -g root -o root References/Linux/_deps/obfs4proxy_inst/obfs4proxy "$pkgdir/opt/ivpn/obfsproxy/obfs4proxy"
 
   install -Dm755 -g root -o root References/Linux/_deps/dnscryptproxy_inst/dnscrypt-proxy "$pkgdir/opt/ivpn/dnscrypt-proxy/dnscrypt-proxy"
-  install -Dm400 -g root -o root References/Linux/etc/dnscrypt-proxy-template.toml "$pkgdir/opt/ivpn/etc/dnscrypt-proxy-template.toml"
+  install -Dm400 -g root -o root References/common/etc/dnscrypt-proxy-template.toml "$pkgdir/opt/ivpn/etc/dnscrypt-proxy-template.toml"
 
   cd "$srcdir/desktop-app-${pkgver}/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
