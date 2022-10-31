@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.0.3
+pkgver=6.0.5
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,7 +80,7 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=ed63a1d1114a1ad5c474492f56eef7c5ae24f91f
+_arch_config_commit=c971483bcf4dfb8a2a18f0c4867c1123addbbf72
 _prjc_version=6.0-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
@@ -90,35 +90,31 @@ source=(
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "${_prjc_patch}::https://gitlab.com/torvic9/linux60-vd/-/raw/master/prjc-6.0-r0-vd.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0922a96b28a119abfefba8804a7958c17aff9a28.patch"
-  "0002-${pkgbase}-${pkgver}-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch::https://github.com/archlinux/linux/commit/5a7d5bed48612de588ec0582c24faf3d5a4ad0b0.patch"
-  "0003-${pkgbase}-${pkgver}-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch::https://github.com/archlinux/linux/commit/d8e3330b3698c49d50f5a411aafab8b176012621.patch"
-  "0004-${pkgbase}-${pkgver}-soundwire-intel-Initialize-clock-stop-timeout.patch::https://github.com/archlinux/linux/commit/fb23dad87a0bfb6fdfde3dc1d18104da631d050a.patch"
-  "0005-${pkgbase}-${pkgver}-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch::https://github.com/archlinux/linux/commit/64ebb671ffc4cbfd548e4f1b4aeb98155fd386dc.patch"
-  "0006-${pkgbase}-${pkgver}-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch::https://github.com/archlinux/linux/commit/a24b69f369c6c55be8ce40427feb4e127afae129.patch"
-  "0007-${pkgbase}-${pkgver}-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch::https://github.com/archlinux/linux/commit/785699dbc7041b99e0027bff27ffe17eba202e96.patch"
-  "0008-${pkgbase}-${pkgver}-drm-amdgpu-Fix-for-BO-move-issue.patch::https://github.com/archlinux/linux/commit/6df3912f64cea68409b08d282ffbccf0af7f8d8e.patch"
-  "0009-${pkgbase}-${pkgver}-Revert-ALSA-hda-Fix-page-fault-in-snd_hda_codec_shut.patch::https://github.com/archlinux/linux/commit/41d72c232237c5ea567cf789add1092114f21216.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/f29dd9ddc7a2659e67f7f3ddfbf087a7729fd012.patch"
+  "0002-${pkgbase}-${pkgver}-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch::https://github.com/archlinux/linux/commit/f4a5411651f402b391dddccdebc43e3461e9f749.patch"
+  "0003-${pkgbase}-${pkgver}-soundwire-intel-Initialize-clock-stop-timeout.patch::https://github.com/archlinux/linux/commit/f4e799545c0fc46a5899853f60776adc8671776c.patch"
+  "0004-${pkgbase}-${pkgver}-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch::https://github.com/archlinux/linux/commit/87336625589872206597baab173ae6014ddf1750.patch"
+  "0005-${pkgbase}-${pkgver}-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch::https://github.com/archlinux/linux/commit/2b078fa1fdcbd43a042ff49ad70f6ab2a22dffb3.patch"
+  "0006-${pkgbase}-${pkgver}-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch::https://github.com/archlinux/linux/commit/f2712d9d94e98733953cf567f32f7755800464ae.patch"
+  "0007-${pkgbase}-${pkgver}-drm-amdgpu-Fix-for-BO-move-issue.patch::https://github.com/archlinux/linux/commit/75ff02c24828d71bf13730e1a0b499591a1a4cef.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('8ba900a7b98f22a208234cecc7813c4bd6125a6eb5a424b425c135a2de2780f2760a9d94da8ba3caa429c2ae4a9baf9407570cdc8aa9609e89787ba581a004a7'
+b2sums=('71afe2e227bbab9b40ccbd3dda4aacbe1ba7f45b85c863c57a759a91d18d215cdc16c8bfd28e2d2bcd2a510c49b7fc84531d21695ad81895172ca6997ffe0f5a'
         'SKIP'
-        '7ec5e9b526b035bf3d550f4502bdee9bf96a497030ce6159b293f07ea38ff1b4590ff0a7eafffcbef5f0dafab7f04d0b63255f0286717d2b53529c97e3d8091a'
+        '1a3a8c081adfd44b3c35c13fe110df3798f65ffddb1f5a88d38c4f59ae67a16258d5b204e9f9d1ba02e241f06dd161cc58adb93110d1160285fb1de72a38b2ff'
         '28cba772c87a3be7ecfba7b7bce1b0def168626a53fadc16989cce7644d2f1fd4ab5aa11c69645341eb02f65c8832fcf8482315f8199cbeac63abf5d4ac37855'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '3917d5fdf51bfa6d03b8c6cbeb157fef879fad058ad27770072dff0e9b0bebaf1dce20aae3b5ddab28bf44ca86dd1561cad1bf0f469d2c0913021a224e7e3b33'
-        'b6c99128fae584ea2d78331ae4e1dac8ad5eee591557145353abbbc279564129420d3cf2b219a8871afc9eae2f65ff09f96a006c60f031ff679624458510cd3d'
-        'a90f9075ead9b03fee02d4f4a23c6534ad0902d441d9bc29a63b57644d8b16d29e03e3214477780ed03a2af55efb778074b8743c83f5e1c7ba5b3755cf8b243f'
-        '862e71239bd4ea76d6b9267096415d006e5178ac91b46fd068d44c9bbfc71847a4edf003c1d9bfc4cf228580e7bc9379d4084e4c8959eaaec34b01193258993c'
-        'abdda02eae8be3fa061c8228c44048e05db504e3f0f329a92815a977239456a79772323e276d13138824ed6508c72c0f15b7bea0053f787f03e9b98294ab7d95'
-        '7feb2f6686037999e8a73d527f824342984efa0e19f14e1aa0365883fe7d4d60f7aa5590c1408118ea107b903eba3ceb365e992aac07078d08f7c4c42c3e80dc'
-        'eb4fba5ad1bb783219e4815d4b7c0a22b594dafc7029cf589eff15224c6fdebd02c3583ed9e579985c42abcc395c0b9318a195a67a0c2b89e4e92c1ea987fa08'
-        'cfc5693d826677f43cbadea761d7ded291d9e08857cc2374ec082f1aa578bbec7f754c462b416c5c0d012b68f5641a2202d8a66b80027e1065b6cb42c154a528'
-        '51e1c5074f9f0cc4266f9e3c60adf65a645e8deb4abf9f6bcd575a70c839425edd722f7dc493515a23a8571457e7088123c88799fc9378f2b4d21778da53af4b')
+        'a3904e0126f2dfa873a2f72863a8137bc99e7810bd62eaee1ffb4d216825c31fce66d9674178e46e237507791e8b5ac3589416d834e2356e1fbd1ad7a3657402'
+        'e8908617d37dc5c8dd747e16f9094f15e3a71f8014afeaef2c70d03e650cdc8f686646b0c0cb8ab868f94bf68e5769ce908641981c893dddc09fe7045f1e5446'
+        '95f1bf09f6cecf4dd5869522a40d05a8028c6fd3a7203d74acca0bfb346828546e7bb7cf89dd5e8d640a376d283227a85e7263ad77a2bc2509f898ecef0b87f3'
+        'a3f1fdba125648acc9e85be41cb4f2615471d9113b382b84af5960ccf6122d617597d07073b27e9a2e9998391551f6ea9f8b52cbd26f1c41b3a72ab927fdfa1a'
+        '7629d202f92b5a1af97be1573b802a16f69e54269090ad16a7e033906dbe53b5636cf0f58025db60a485a3bc606e39a1f89105007773fedbc939f12fd57e28a8'
+        '6678aabad22cd13fd2ef44d7f38c6bec5c768cdea51e87cdd2743fa69e50f45b38fe8e966759e962c7f3a5a3319db25c07da5f7c9e2bc8907e803412989be348'
+        '71887e6164aa7e30d736e46fdcdceec76e4f8f236758391858f80cadf8244e9ce32d36333ab3e11adc35587050b3d669a8734590a8949affe9c936c4dab32d40')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
