@@ -11,10 +11,10 @@ groups=('neovim-plugins')
 
 #temp pkgver variables
 pkgver=0.11
-pkgrel=0
-_themes_pkgver=r1321.3bfe1d0
-source=("${pkgname[0]}::git://github.com/vim-airline/${pkgname[0]#neo}.git#tag=v$pkgver"
-        "${pkgname[1]}::git://github.com/vim-airline/${pkgname[1]#neo}.git#commit=${_themes_pkgver#*.}")
+pkgrel=1
+_themes_pkgver=97cf3e6e638f936187d5f6e9b5eb1bdf0a4df256
+source=("${pkgname[0]}::git+https://github.com/vim-airline/${pkgname[0]#neo}.git#tag=v$pkgver"
+        "${pkgname[1]}::git+https://github.com/vim-airline/${pkgname[1]#neo}.git#commit=${_themes_pkgver#*.}")
 sha256sums=('SKIP'
             'SKIP')
 
