@@ -1,19 +1,19 @@
 pkgbase = astro-bin
 	pkgdesc = A habit tracker for your terminal with a GitHub style activity graph
-	pkgver = 0.0.21
+	pkgver = 0.0.22
 	pkgrel = 1
 	url = https://astro.joaofnds.com/
 	license = MIT
 	conflicts = astro
 	provides = astro
 	arch = aarch64
-	source_aarch64 = https://github.com/joaofnds/astro/releases/download/0.0.21/astro_0.0.21_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 1ba2af19fe67eb03740671905a96c63c6db5c7de147abf35349f73f1034baa8b
+	source_aarch64 = https://github.com/joaofnds/astro/releases/download/0.0.22/astro_0.0.22_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 28d609f4612bef7031eaf0eb1fcb6d120788b6964372d38db1ef4c3e53c0170f
 	arch = i686
-	source_i686 = https://github.com/joaofnds/astro/releases/download/0.0.21/astro_0.0.21_Linux_i386.tar.gz
-	sha256sums_i686 = 5ed4f5b15daf12ed7bf7b3dd00371c61f0b92ad6698dbf3533260e19e32fb3a7
+	source_i686 = https://github.com/joaofnds/astro/releases/download/0.0.22/astro_0.0.22_Linux_i386.tar.gz
+	sha256sums_i686 = e9c45258047406fdcfc12ea104e2779cad072cd4861d0b262f4c2d76c84b782c
 	arch = x86_64
-	source_x86_64 = https://github.com/joaofnds/astro/releases/download/0.0.21/astro_0.0.21_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 23177256c1c80af25b68650a3c4a8ff48f950959d156cffdb263a4fc913737a5
+	source_x86_64 = https://github.com/joaofnds/astro/releases/download/0.0.22/astro_0.0.22_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 773e002f0d8632adf41808b9ad1e201b2889965cd57d69e87c7d5cf52bbabbdf
 	
 pkgname = astro-bin
