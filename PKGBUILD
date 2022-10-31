@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=themix-gui-git
-pkgver=1.15
+pkgver=1.15.r20.g2ce1b7cf
 pkgrel=1
 pkgdesc="Plugin-based theme designer GUI for
  environments (like GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -39,6 +39,9 @@ optdepends=(
 	'themix-icons-papirus: Icons Style plugin'
 	'themix-icons-suru-plus: Icons Style plugin'
 	'themix-icons-suru-plus-aspromauros: Icons Style plugin'
+
+    'oomox-qt5-styleplugin-git: Qt5 style plugin'
+    'oomox-qt6-styleplugin-git: Qt6 style plugin'
 
 	'xorg-xrdb: for the `xresources` theme'
 )
