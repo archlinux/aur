@@ -1,28 +1,27 @@
 # Maintainer: Francesco Palumbo <phranz@subfc.net>
 
 pkgname=guish
-pkgver=1.0.7
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A versatile graphical DSL and army knife to make and modify GUIs."
 arch=('x86_64')
-url="https://codeberg.org/phranz/guish_old"
+url="https://codeberg.org/phranz/guish"
 license=('GPL3')
-depends=('libx11' 'qt5-base' 'qt5-webkit' 'libxtst')
-makedepends=('libx11' 'qt5-base' 'qt5-webkit' 'libxtst')
-changelog=changelog
+depends=('libx11' 'libxtst' 'imlib2')
+makedepends=('git' 'libx11' 'libxtst' 'imlib2')
 provides=(guish)
-conflicts=(guish)
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/phranz/guish_old/archive/1.0.7.tar.gz")
-sha512sums=('cf5f0fb55e74b7b5c1cfb7d0f4b76cd0a3e35d4ac80f48cc6d7d85c6326fa8b8a203c3ef0c0384ae1a38383f9932f2d1f47faffae330f239ce147306d1c66cd8')
+conflicts=(guish guish-git)
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/phranz/guish/archive/2.1.0.tar.gz")
+sha512sums=('067908b3e8a3c8081c3bf8b90f7c23b21ae587a3915091ce9d34b38c9a0260ada98a3339c01efa45afb31936f9eb6360e7968008e0ca3bb6fd6cb8ca8bbf56e8')
 
 build() {
-    cd "${pkgname}_old"
-	./configure --prefix=/usr --enable-webkit --enable-editor
+    cd "${pkgname}"
+	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "${pkgname}_old"
+	cd "${pkgname}"
 	make DESTDIR="$pkgdir/" install
 }
 
