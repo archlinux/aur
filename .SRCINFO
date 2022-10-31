@@ -1,7 +1,7 @@
 pkgbase = img2pdf+
 	pkgdesc = Merge images into one pdf file via command line.
-	pkgver = r9.ab48089
-	pkgrel = 2
+	pkgver = r10.8328987
+	pkgrel = 3
 	url = https://github.com/Elagoht/img2pdf
 	arch = any
 	license = GPLv3
@@ -9,6 +9,7 @@ pkgbase = img2pdf+
 	makedepends = pyinstaller
 	makedepends = python-fpdf2
 	makedepends = python-magic
+	makedepends = python-fonttools
 	provides = img2pdf+
 	conflicts = img2pdf
 	conflicts = img2pdf-git
