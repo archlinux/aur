@@ -3,15 +3,15 @@
 _basename=mullvad-vpn
 _svname=mullvad-daemon
 pkgname=${_basename}-runit
-pkgver=2022.5
-pkgrel=2
+pkgver=20221031
+pkgrel=1
 pkgdesc="Runit init service for Mullvad Desktop App"
 arch=('any')
 url="https://codeberg.org/klee/mullvad-vpn-runit"
-license=('aGPL-3.0-')
+license=('AGPL3')
 conflicts=()
 source=("${_svname}.run")
-sha256sums=('6eca1d9c724fdf548bc8c73962b3a96f6c8ded5c4992fd17913d4ddb2a330d12')
+sha512sums=('31467f9ecffe182ec8925a54c13dbf378a80fda35fdacd76477836b9d7a4e990bf51346dfa1e71e5bd8616236873f45fa2eacec2ab907ee8d079275098b109c4')
 
 package() {
   for x in run ; do

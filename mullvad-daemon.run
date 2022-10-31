@@ -1,4 +1,4 @@
 #!/bin/sh
-sv check NetworkManager >/dev/null || exit 1
+[ "$(ip route | awk '/^default/{print ($3!="")+($5!="")}')" = "2" ] || exit 1 # From the ntpd-runit script
 [ -r conf ] && . ./conf
 exec /usr/bin/mullvad-daemon -v --disable-stdout-timestamps >/dev/null 2>&1
