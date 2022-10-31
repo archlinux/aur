@@ -1,7 +1,7 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-thumbfast-git
 _gitname=thumbfast
-pkgver=r38.0017ff0
+pkgver=r62.11764cd
 pkgrel=1
 pkgdesc='High-performance on-the-fly thumbnailer for mpv'
 arch=(x86_64)
@@ -10,7 +10,6 @@ license=()
 optdepends=('mpv-uosc: for displaying thumbnails automatically on seek')
 depends=(
   mpv
-  socat
 )
 provides=(mpv-thumbfast)
 conflicts=(mpv-thumbfast)
