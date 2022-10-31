@@ -1,7 +1,7 @@
 pkgbase = audiotools
 	pkgdesc = A collection of Python-based command-line audio handling programs
 	pkgver = 3.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://audiotools.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -27,4 +27,3 @@ pkgbase = audiotools
 	md5sums = 08c52afbdfd41f18d068c525bcf93e42
 
 pkgname = audiotools
-
