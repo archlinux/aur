@@ -1,12 +1,11 @@
-# Maintainer: dilipvamsi <m.dilipvamsi at gmail dot com>
+# Maintainer: xeruf <27jf at pm dot me>
+# Creator: dilipvamsi <m.dilipvamsi at gmail dot com>
 
 _pkgname='arangodb'
 pkgname="${_pkgname}-bin"
 pkgdesc="Arangodb binary from deb."
-pkgver=3.7.10
+pkgver=3.10.0
 pkgrel=1
-_pkgver='3.7.10-1'
-_arangodb_version='37'
 arch=('x86_64')
 url="https://www.arangodb.com/"
 license=('APACHE')
@@ -16,12 +15,10 @@ conflicts=(
     "${_pkgname}-client-bin"
 )
 source=(
-    https://download.arangodb.com/arangodb${_arangodb_version}/Community/Linux/arangodb3_${_pkgver}_amd64.deb
+    https://download.arangodb.com/arangodb$(echo "${pkgver}" | cut -d '.' -f1-2 | tr -d '.')/Community/Linux/arangodb3_${pkgver}-1_amd64.deb
 )
 validpgpkeys=("CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B") # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
-sha256sums=(
-    e64b0ed60c46b21d19a0fc744c6b8d23cc91349dc943907802b1733554c5a98a
-)
+sha256sums=('0a785bb625cd883d00819260a0ac1102222d7e83acb7c33720ce0e7ef0d64994')
 install=arangodb.install
 package() {
     msg2 "Extracting the data.tar.gz..."

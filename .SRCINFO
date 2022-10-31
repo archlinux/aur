@@ -1,6 +1,6 @@
 pkgbase = arangodb-bin
 	pkgdesc = Arangodb binary from deb.
-	pkgver = 3.7.10
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://www.arangodb.com/
 	install = arangodb.install
@@ -9,9 +9,8 @@ pkgbase = arangodb-bin
 	provides = arangodb
 	conflicts = arangodb
 	conflicts = arangodb-client-bin
-	source = https://download.arangodb.com/arangodb37/Community/Linux/arangodb3_3.7.10-1_amd64.deb
+	source = https://download.arangodb.com/arangodb310/Community/Linux/arangodb3_3.10.0-1_amd64.deb
 	validpgpkeys = CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B
-	sha256sums = e64b0ed60c46b21d19a0fc744c6b8d23cc91349dc943907802b1733554c5a98a
+	sha256sums = 0a785bb625cd883d00819260a0ac1102222d7e83acb7c33720ce0e7ef0d64994
 
 pkgname = arangodb-bin
-
