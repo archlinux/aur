@@ -1,0 +1,28 @@
+pkgbase = oomox-qt-styleplugin-git
+	pkgdesc = A style to bend Qt applications to look like they belong into themix/oomox, git package.
+	pkgver = 1.4.1.r27.g2d10970
+	pkgrel = 1
+	url = https://github.com/themix-project/oomox-qt-styleplugin
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-x11extras
+	makedepends = qt6-base
+	source = oomox-qt-styleplugin::git+https://github.com/themix-project/oomox-qt-styleplugin.git
+	sha512sums = SKIP
+
+pkgname = oomox-qt5-styleplugin-git
+	pkgdesc = A style to bend Qt5 applications to look like they belong into themix/oomox, git version
+	depends = qt5-base
+	optdepends = qt5-x11extras: For X11 and/or xwayland support
+	provides = oomox-qt5
+	provides = oomox-qt-git
+	conflicts = oomox-qt
+	conflicts = oomox-qt5
+
+pkgname = oomox-qt6-styleplugin-git
+	pkgdesc = A style to bend Qt6 applications to look like they belong into themix/oomox, git version
+	depends = qt6-base
+	provides = oomox-qt6
+	conflicts = oomox-qt6
