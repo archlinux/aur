@@ -3,8 +3,8 @@
 
 _pkgname=lz4
 pkgname=lib32-lz4
-_gitcommit=d44371841a2f1728a3f36839fd4b7e872d0927d3
-pkgver=1.9.3
+_gitcommit=5ff839680134437dbf4678f3d0c7b371d84f4964
+pkgver=1.9.4
 pkgrel=1
 pkgdesc='Extremely fast compression algorithm (32-bit)'
 url='https://www.lz4.org/'
