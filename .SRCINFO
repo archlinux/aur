@@ -1,6 +1,6 @@
 pkgbase = astronvim
 	pkgdesc = AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins
-	pkgver = v2.4.2
+	pkgver = v2.5.0
 	pkgrel = 1
 	url = https://github.com/AstroNvim/AstroNvim
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = astronvim
 	depends = xclip
 	provides = astronvim
 	conflicts = astronvim
-	source = https://github.com/astronvim/astronvim/archive/refs/tags/v2.4.2.zip
+	source = https://github.com/astronvim/astronvim/archive/refs/tags/v2.5.0.zip
 	source = astronvim.vim.template
-	sha256sums = 741e4bfd0d756acf79562fccb59a497aaaa0dd10914a5513ffbbda27a8ff1a54
+	sha256sums = 2fbf17246798a759871fd7fb3f9cd6a49cde8e0fde675cbe44e6867ab41c400d
 	sha256sums = a11c032b23e3892e9022aa32264cec022eddd25d39c874c36e70ed345ad05218
 
 pkgname = astronvim
