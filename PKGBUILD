@@ -1,14 +1,16 @@
 # Maintainer: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Morgan <morganamilo@archlinux.org>
 
 pkgname=discord-ptb
 _pkgname=DiscordPTB
 pkgver=0.0.34
-pkgrel=1
-pkgdesc="All-in-one voice and text chat for gamers that's free and secure. - Public Test Build"
+pkgrel=2
+pkgdesc="All-in-one voice and text chat for gamers - public test build"
 arch=('x86_64')
 url='https://discordapp.com'
 license=('custom')
+options=(!strip)
 depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
@@ -23,14 +25,12 @@ sha512sums=('a1c6e532926c359a8f9501766f8d633b893208e399a96fed1f2fca6df21592e9819
 
 prepare() {
   cd $_pkgname
-
   sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname|" $pkgname.desktop
   sed -i "s|StartupWMClass=.*|StartupWMClass=$pkgname|" $pkgname.desktop
   echo 'Path=/usr/bin' >> $pkgname.desktop
 }
 
 package() {
-  # Install the app
   install -d "$pkgdir"/opt/$pkgname
   cp -a $_pkgname/. "$pkgdir"/opt/$pkgname
 
@@ -46,8 +46,6 @@ package() {
   # setuid on chrome-sandbox
   chmod u+s "$pkgdir"/opt/$pkgname/chrome-sandbox
 
-  # Licenses
-  install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
-  install -Dm 644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
+  install -Dm644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
+  install -Dm644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
 }
-
