@@ -90,7 +90,7 @@ prepare() {
   cd "${srcdir}/${pkgbase}"
   git submodule init
   git config submodule.mysubmodule.url "$srcdir/quassel-i18n"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
