@@ -13,6 +13,7 @@ pkgbase = jazz2-git
 	makedepends = glfw
 	depends = libopenmpt
 	depends = openal
+	conflicts = jazz2-bin
 	source = git+https://github.com/deathkiller/jazz2-native.git
 	source = jazz2.png
 	source = jazz2.desktop

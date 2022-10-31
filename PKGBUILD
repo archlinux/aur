@@ -7,6 +7,7 @@ url=http://deat.tk/jazz2/
 license=(GPL3 custom:MIT/Expat)
 depends=(libopenmpt openal)
 makedepends=(mesa cmake glfw)
+conflicts=(jazz2-bin)
 install=jazz2.install
 source=(
     git+https://github.com/deathkiller/jazz2-native.git
