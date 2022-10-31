@@ -1,13 +1,12 @@
 pkgbase = fastbuild
 	pkgdesc = High-performance build system
-	pkgver = 1.04
-	pkgrel = 2
+	pkgver = 1.07
+	pkgrel = 1
 	url = https://www.fastbuild.org
 	arch = x86_64
 	license = custom
 	makedepends = gcc
-	source = https://www.fastbuild.org/downloads/v1.04/FASTBuild-Src-v1.04.zip
-	md5sums = 26d7bfa5eaac4494710eec8fbbbbf897
+	source = https://www.fastbuild.org/downloads/v1.07/FASTBuild-Src-v1.07.zip
+	md5sums = b38ebeb53b1736f7365fe05a64636974
 
 pkgname = fastbuild
-
