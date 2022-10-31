@@ -1,0 +1,23 @@
+pkgbase = ariang-git
+	pkgdesc = a modern web frontend making aria2 easier to use.
+	pkgver = 1.2.5.r37.ge095a19
+	pkgrel = 1
+	url = https://github.com/mayswind/AriaNg
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = gulp
+	depends = aria2
+	optdepends = apache: for web server
+	optdepends = caddy: for web server
+	optdepends = lighttpd: for web server
+	optdepends = nginx: for web server
+	provides = ariang
+	conflicts = ariang
+	source = git+https://github.com/mayswind/AriaNg.git
+	source = ariang-post-install.hook
+	sha256sums = SKIP
+	sha256sums = ceb1903822653f6ef5c10b2ec19287a4d7fc6afa3854784015b53b61b12fd62f
+
+pkgname = ariang-git

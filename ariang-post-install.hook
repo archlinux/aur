@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = ariang-git
+
+[Action]
+Description = Notifying user about manual operations...
+When = PostTransaction
+Exec = /usr/bin/echo "Please copy /usr/share/ariang to /srv/http and use a webserver on /srv/http/ariang."
