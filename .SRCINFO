@@ -7,6 +7,7 @@ pkgbase = betterbird-it-bin
 	license = MPL2
 	depends = dbus-glib
 	provides = betterbird=102.4.1
+	conflicts = betterbird
 	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-102.4.1-bb22.it.linux-x86_64.tar.bz2
 	source = betterbird.desktop
 	sha256sums = b38a1121d7d6230e0f792a57637a772b681a5792dd9a240f1a562c211109b70f

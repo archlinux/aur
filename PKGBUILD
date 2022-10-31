@@ -10,7 +10,7 @@ url="https://www.betterbird.eu/index.html"
 license=('MPL2')
 depends=('dbus-glib')
 provides=("betterbird=${pkgver}")
-conflicts=()
+conflicts=('betterbird')
 source=(
 #	"https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
     "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.it.linux-x86_64.tar.bz2"
