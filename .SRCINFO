@@ -1,6 +1,6 @@
 pkgbase = glib2-selinux
 	pkgdesc = Low level core library
-	pkgver = 2.66.5
+	pkgver = 2.74.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgname = glib2-selinux
 	provides = libgmodule-2.0.so
 	provides = libgobject-2.0.so
 	provides = libgthread-2.0.so
-	provides = glib2=2.66.5
+	provides = glib2=2.74.1
 	conflicts = glib2
 
 pkgname = glib2-selinux-docs
