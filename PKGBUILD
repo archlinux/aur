@@ -3,7 +3,7 @@ pkgname=olive-nightly-bin
 _pkgname=olive
 
 pkgver=0.2.0_413427222
-pkgrel=2
+pkgrel=3
 
 license=('GPL3')
 pkgdesc="Free non-linear video editor"
@@ -46,6 +46,7 @@ package() {
   install -m644 "${srcdir}/squashfs-root/org.olivevideoeditor.Olive.desktop" "${pkgdir}/usr/share/applications/"
 
   # Other files
-
+  
+  chmod -R 755 "${srcdir}/squashfs-root/usr/share"
   cp -p -r "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr/"
 }
