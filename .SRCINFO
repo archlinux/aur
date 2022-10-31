@@ -1,0 +1,18 @@
+pkgbase = remmina-plugin-rustdesk
+	pkgdesc = A protocol plugin for Remmina to launch a Rustdesk connection.
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = http://www.muflone.com/remmina-plugin-rustdesk/
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = cmake
+	depends = gtk3
+	depends = remmina
+	depends = rustdesk
+	source = remmina-plugin-builder_1.4.27.0.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/1.4.27.0.tar.gz
+	source = remmina-plugin-rustdesk_1.0.0.0.tar.gz::https://github.com/muflone/remmina-plugin-rustdesk/archive/1.0.0.0.tar.gz
+	sha256sums = d1bdf6ad7e09ac7955ad0997db5c59af3850ecbd85ed89d0babf5539f97d0e0e
+	sha256sums = 62fbd565029778a6faad609138a8233bd3066035753d8f487618a06247e8a6dc
+
+pkgname = remmina-plugin-rustdesk
