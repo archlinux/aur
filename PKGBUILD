@@ -1,13 +1,13 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
 url="https://lfortran.org"
 license=('BSD')
 groups=()
-depends=("zlib" "ncurses")
+depends=("clang" "zlib" "ncurses")
 makedepends=("llvm11" "cmake")
 checkdepends=()
 optdepends=()
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://lfortran.github.io/tarballs/release/"$pkgname-$pkgver.tar.gz)
-sha256sums=('44030e27d1c1f85d6c367c0fa901e7ad753e8ca04bbb58cef16b8101085b6f53')
+sha256sums=('f796b242072d92fae36bcff2e6fddd649e89dccf877feaf99ecfab552e7e1e29')
 noextract=()
 
 prepare() {
