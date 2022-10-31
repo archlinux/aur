@@ -1,0 +1,42 @@
+diff --git a/plugins/power/gsd-backlight.c b/plugins/power/gsd-backlight.c
+index ca5f2723..91d64be6 100644
+--- a/plugins/power/gsd-backlight.c
++++ b/plugins/power/gsd-backlight.c
+@@ -81,13 +81,31 @@ G_DEFINE_TYPE_EXTENDED (GsdBacklight, gsd_backlight, G_TYPE_OBJECT, 0,
+ static GUdevDevice*
+ gsd_backlight_udev_get_type (GList *devices, const gchar *type)
+ {
+-        const gchar *type_tmp;
+-        GList *d;
+-
+-        for (d = devices; d != NULL; d = d->next) {
+-                type_tmp = g_udev_device_get_sysfs_attr (d->data, "type");
+-                if (g_strcmp0 (type_tmp, type) == 0)
++        for (GList *d = devices; d != NULL; d = d->next) {
++                const gchar* type_tmp = g_udev_device_get_sysfs_attr (d->data, "type");
++                if (g_strcmp0 (type_tmp, type) == 0) {
++                        if (g_strcmp0(type, "firmware") == 0) {
++                                // skip acpi backlight of nvidia driver 
++                                GUdevDevice* parent = g_udev_device_get_parent(d->data);
++                                if (!parent) {
++                                        continue;
++                                }
++                                const gchar* driver = g_udev_device_get_driver(parent);
++                                if (!driver) {
++                                        continue;
++                                }
++                                if (g_strcmp0(driver, "nvidia") == 0) {
++                                        continue;
++                                }
++                        } else {
++                                // skip vendor specific backlight nvidia_0
++                                const gchar *name = g_udev_device_get_name(d->data);
++                                if (g_strrstr(name, "nvidia")) {
++                                        continue;
++                                }
++                        }
+                         return G_UDEV_DEVICE (g_object_ref (d->data));
++                }
+         }
+         return NULL;
+ }
