@@ -2,7 +2,7 @@
 
 _id=ocaahdebbfolfmndjeplogmgcagdmblk
 pkgname=chromium-extension-web-store
-pkgver=1.4.4.3
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="chromium web store extension (for ungoogled-chromium)"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/NeverDecaf/chromium-web-store"
 license=('MIT')
 source=("${pkgname}-${pkgver}.crx::${url}/releases/download/v${pkgver}/Chromium.Web.Store.crx")
 noextract=("${pkgname}-${pkgver}.crx")
-sha256sums=('8adf0cadfad71b823dd36c3a7cfacd75812b56af89ab889308806d5fc53e12c5')
+sha256sums=('42c39f876b395ee7d56175aef0b8d16d9bfe77ca6f9822811b92895fe3e2ffa6')
 install=chromium-extension-web-store.install
 
 prepare() {
