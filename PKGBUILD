@@ -10,7 +10,7 @@
 pkgname=rstudio-desktop-daily-bin
 pkgver=2022.12.0.daily.284
 pkgver_url=2022.12.0-daily-284
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
@@ -53,9 +53,9 @@ export QT_DIR=/usr/lib/rstudio/bin
 export QT_PLUGIN_PATH=$QT_DIR/plugins
 export QT_QPA_PLATFORM_PLUGIN_PATH=$QT_PLUGIN_PATH/platforms
 export KDEDIRS=/usr
-exec /usr/lib/rstudio/bin/rstudio "$@"
+exec /usr/lib/rstudio/rstudio "$@"
 ' > "$pkgdir/usr/bin/rstudio-daily-bin"
   chmod 755 "$pkgdir/usr/bin/rstudio-daily-bin"
 
-  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-daily-bin --disable-seccomp-filter-sandbox|' "$pkgdir/usr/share/applications/rstudio.desktop"
+  sed -i 's|/usr/lib/rstudio/rstudio|/usr/bin/rstudio-daily-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }
