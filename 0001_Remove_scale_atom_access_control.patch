@@ -1,0 +1,37 @@
+diff --color --unified --recursive --text a/hw/xwayland/xwayland-screen.c b/hw/xwayland/xwayland-screen.c
+--- a/hw/xwayland/xwayland-screen.c	2022-10-31 16:33:34.953299366 +0800
++++ b/hw/xwayland/xwayland-screen.c	2022-10-31 16:34:06.123298615 +0800
+@@ -177,24 +177,6 @@
+ }
+ 
+ static void
+-xwl_screen_validate_property_access(CallbackListPtr *pcbl,
+-                                    void *userdata,
+-                                    void *calldata)
+-{
+-    XacePropertyAccessRec *rec = calldata;
+-    struct xwl_screen *xwl_screen = userdata;
+-    ATOM name = (*rec->ppProp)->propertyName;
+-
+-    if (name == xwl_screen->global_output_scale_prop &&
+-        rec->client->index != xwl_screen->wm_client_id) {
+-        LogMessageVerb(X_WARNING, 0,
+-                       "Client %x tried to illegaly set %s on the root window.\n",
+-                       rec->client->index, NameForAtom(name));
+-        rec->status = BadAccess;
+-    }
+-}
+-
+-static void
+ xwl_property_callback(CallbackListPtr *pcbl, void *closure,
+                       void *calldata)
+ {
+@@ -1084,8 +1066,6 @@
+     AddCallback(&PropertyStateCallback, xwl_property_callback, pScreen);
+     AddCallback(&RootWindowFinalizeCallback, xwl_root_window_finalized_callback, pScreen);
+ 
+-    XaceRegisterCallback(XACE_PROPERTY_ACCESS, xwl_screen_validate_property_access, xwl_screen);
+-
+     xwl_screen_setup_custom_vector(xwl_screen);
+ 
+     xwl_screen_roundtrip(xwl_screen);

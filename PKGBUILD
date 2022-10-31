@@ -1,47 +1,53 @@
-# Maintainer: q234 rty <q23456yuiop at gmail dot com>
+# Maintainer: Avery Warddhana <them+arch _ nullablevo id au>
+# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
+# Contributor: q234 rty <q23456yuiop at gmail dot com>
 # Contributor: lilydjwg <lilydjwg@gmail.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
-pkgname=xorg-xwayland-hidpi-xprop
-pkgver=22.1.4
-pkgrel=2
+pkgname=xorg-xwayland-hidpi-xprop-git
+pkgver=22.1.4.r138.g459e28557
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 url="https://xorg.freedesktop.org"
 pkgdesc="run X clients under wayland, with !733 HiDPI patch"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
          'pixman' 'xorg-server-common' 'libxcvt')
-makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
+makedepends=('meson' 'xorgproto-git' 'xtrans' 'libxkbfile' 'dbus'
              'xorg-font-util'
              'wayland' 'wayland-protocols'
              'libdrm' 'mesa-libgl'
              'systemd'
              'egl-wayland'
 )
-source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch
-        0001_Do_not_ignore_leave_events.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/987.patch 
-        0002_Revert_Aggregate_scroll_axis_events_to_fix_kinetic_scrolling.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/988.patch)
-sha512sums=('a1301df1687ac276172565c98b1fb3d5f35f67d47f625b81fce485d1818cf4896f88c2750b4e93596fa6f7fd515e258d201ca3d0cc39943b576f2d2c3f9be8cd'
-            'SKIP'
-            '7132c44d9bbf1c5f93906ef301a6e946f0909da0b9273f397281e681ad0da77d62b960a9dd0a640c7209548192fefba9bde03c493f3a89d08cd73a12844bb518'
-            'd0c87face4485050db134e5ed14d930bdae05d81149b2b573b97fc6dd96d9234e709d6f0523221747293da20cbd012e1e1da00e12b227f98597ffa320bcd3e3c'
-            'fea7abdd962fd0a8e653069f7926508d2dd90a0a6632d4aae2265a221267f1777fba4aeaaf494dc6f3e4a11a15a7eabd524ca16f948e0d3fee05c6a4b8a69fd4')
+source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
+        0000_Multi_DPI_support_via_global_factor_rescaling.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733.patch
+        0001_Remove_scale_atom_access_control.patch)
+sha512sums=('SKIP'
+            'ab927b1e038346f967723a3d45a405a0a8339759e15901d0913a55d1348683831e0d058c76c6f7cb2e264a5cef781a507fb290d139ac0f2806a62bd20d84147d'
+            'f16cb5455a1caf26c586cca2d1ec6f4708804721b7d6a8d8bd1e4a7b47b97e8b822d3455fce0da3c74bb14baf6a3980574d85019cf242d6a033a578587f74b14')
 provides=('xorg-server-xwayland' 'xorg-xwayland')
 conflicts=('xorg-server-xwayland' 'xorg-xwayland')
 replaces=('xorg-server-xwayland')
-#validpgpkeys=('B09FAF35BE914521980951145A81AF8E6ADBB200') # "Michel Daenzer <michel@daenzer.net>"
-validpgpkeys=('67DC86F2623FC5FD4BB5225D14706DBE1E4B4540') # "Olivier Fourdan <fourdan@xfce.org>"
 options=('debug' 'strip')
 
+pkgver() {
+  cd xserver
+  local branch=origin/xwayland-22.1
+  local head=$(git rev-parse --short HEAD)
+  local tag=$(git describe --abbrev=0 "$branch")
+  local revisions=$(git rev-list "${tag}..HEAD" --count)
+  printf "%s.r%d.g%s" "$(echo "$tag" | sed 's/^xwayland.//')" "$revisions" "$head"
+}
+
 prepare() {
-  cd ${srcdir}/xwayland-$pkgver
-  patch -Np1 -i ../0001_Do_not_ignore_leave_events.patch
-  patch -Np1 -i ../0002_Revert_Aggregate_scroll_axis_events_to_fix_kinetic_scrolling.patch
-  patch -Np1 -i ../hidpi.patch
+  cd xserver
+  patch -Np1 -i "${srcdir}/0000_Multi_DPI_support_via_global_factor_rescaling.patch"
+  patch -Np1 -i "${srcdir}/0001_Remove_scale_atom_access_control.patch"
 }
 
 build() {
-  arch-meson xwayland-$pkgver build \
+  arch-meson xserver build \
     -D ipv6=true \
     -D xvfb=false \
     -D xdmcp=false \
@@ -58,12 +64,13 @@ build() {
 }
 
 package() {
-
   # bin + manpage + .pc file
   install -m755 -Dt "${pkgdir}"/usr/bin build/hw/xwayland/Xwayland
   install -m644 -Dt "${pkgdir}"/usr/share/man/man1 build/hw/xwayland/Xwayland.1
   install -m644 -Dt "${pkgdir}"/usr/lib/pkgconfig build/hw/xwayland/xwayland.pc
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xwayland-$pkgver/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
 }
+
+# vim:set et sw=2 sts=2:
