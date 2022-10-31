@@ -14,7 +14,7 @@ depends=(pcre libffi util-linux-libs zlib)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus sysprof libselinux)
 _commit=79c5866d316767d06573df01bf1598a122fbecd7  # tags/2.66.5^0
-source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/glib.git#tag=$pkgver"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook gio-querymodules.{hook,script})
 sha256sums=('SKIP'
