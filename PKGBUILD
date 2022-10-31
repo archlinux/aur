@@ -8,9 +8,9 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=2022.02.0.443
-pkgver_url=2022.02.0-443
-pkgrel=2
+pkgver=2022.07.2.576
+pkgver_url=2022.07.2-576
+pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
@@ -22,8 +22,9 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('ad186050952a427272cbd2481cfacbb134ebffffa3b717fdb6226898431e7519')
-source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
+sha256sums_x86_64=('b7d0c386e801f473394efded7dd7ac5f2a821c9f9157e13e0f913e083d74a12c')
+#source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
+source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-2022.07.2-576-amd64.deb")
 
 package() {
 

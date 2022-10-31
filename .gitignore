@@ -1,4 +1,5 @@
 pkg/
 rstudio-*.deb
 rstudio-desktop-preview-bin-*-x86_64.pkg.tar
+*.zst
 src/
