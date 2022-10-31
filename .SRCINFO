@@ -20,7 +20,7 @@ pkgbase = glib2-selinux
 	depends = libffi
 	depends = util-linux-libs
 	depends = zlib
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=79c5866d316767d06573df01bf1598a122fbecd7
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#tag=2.74.1
 	source = noisy-glib-compile-schemas.diff
 	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
