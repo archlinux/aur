@@ -6,7 +6,7 @@
 #NOTE: The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 pkgname='mozc-ut'
-pkgver=2.28.4830.102.20220904
+pkgver=2.28.4880.102.20221022
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -18,13 +18,13 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.28.4830.102')
+provides=('mozc=2.28.4880.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=bf5e3ce232f3afd6c807d9c3d75d41fea08befc5"
-        'https://osdn.net/downloads/users/39/39056/mozcdic-ut-20220904.tar.bz2')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=05ec1326a17121f4ddd42303fcdbb44010769266"
+        'https://osdn.net/downloads/users/39/39554/mozcdic-ut-20221022.tar.bz2')
 sha256sums=('SKIP'
-            'a662c109cc3666c8abce5d4f8d892f891219a327d4cf9ae9112780043c6e86d5')
+            '1012b6cf1e8e0e23e60910f0b9c0ca857836e70408ad6edaabba9803fb274b10')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -32,7 +32,7 @@ prepare() {
     git submodule update --init --recursive
 
     # Append the UT dictionary
-    cat ${srcdir}/mozcdic-ut-20220904/mozcdic-ut-20220904.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20221022/mozcdic-ut-20221022.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    install -Dm644 mozcdic-ut-20220904/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
+    install -Dm644 mozcdic-ut-20221022/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
