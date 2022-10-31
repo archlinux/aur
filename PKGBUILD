@@ -37,7 +37,7 @@ prepare() {
   for n in QHexView Qt-Frameless-Window-DarkStyle;do
     git config submodule."$n".url $srcdir/$n
   done
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
