@@ -55,7 +55,7 @@ prepare() {
   cd ${pkgname}
   git submodule init
   git config submodule."trackma/data/anime-relations".url $srcdir/anime-relations
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 package() {
