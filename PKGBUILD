@@ -1,7 +1,7 @@
 #
 # PKGBUILD for mkpkg 
 # This builds the latest release tag.
-# git HEAD is well also well tested before any repo change.
+# git HEAD is also well tested.
 #
 # Maintainer: Gene C <arch@sapience.com>
 # Contributor: 
@@ -10,15 +10,18 @@ pkgname='wg_tool'
 pkgdesc='Tool to manage wireguard server and users'
 _gitname='wg_tool'
 
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
 license=(MIT)
+# tomli only needed for python < 3.11
 depends=('python>3.9' 'python-packaging' 'python-netaddr' 
-         'python-tomli' 'python-tomli-w' 'python-qrcode' 'wireguard-tools')
-makedepends=('git' 'python-pip' 'python-poetry' 'rsync')
+         'python-tomli-w' 'python-qrcode' 'wireguard-tools'
+         'python-tomli'
+        )
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'rsync')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}")
 sha512sums=('SKIP')
@@ -31,7 +34,7 @@ pkgver() {
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    poetry build
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
