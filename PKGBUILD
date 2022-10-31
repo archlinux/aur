@@ -7,7 +7,7 @@
 
 _pkgname=taglib
 pkgname=lib32-taglib
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (32 bit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('LGPL' 'MPL')
 depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('cmake')
 source=("https://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
-md5sums=('4313ed2671234e029b7af8f97c84e9af')
+md5sums=('0b75619b67b9149cfcbbe5c127df6395')
 
 prepare() {
   mkdir -p build
@@ -30,12 +30,8 @@ build() {
   cd build
   cmake ../${_pkgname}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_SUFFIX=32 \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=ON \
-    -DWITH_MP4=ON \
-    -DWITH_ASF=ON
-
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DBUILD_SHARED_LIBS=ON
   make
 }
 
