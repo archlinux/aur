@@ -1,17 +1,17 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-annotations'
-pkgver='0.9.0'
+pkgver='0.10.0'
 pkgrel=1
 pkgdesc='Annotate files and directories'
 arch=('i686' 'x86_64')
 url='https://gitlab.gnome.org/madmurphy/nautilus-annotations'
 license=('GPL')
-depends=('glib2' 'gtksourceview4' 'libnautilus-extension')
+depends=('glib2' 'gtksourceview5' 'libnautilus-extension')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
 install="${pkgname}.install"
-sha256sums=('3bb1a3b6beb8f50e9cb51fa36ec16d88c1a493c1e12d11e2b928d246b8d0811e')
+sha256sums=('78b49b0af3ba781c9895a287265715415188caf681b22a7d6de3dce6f785d783')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
