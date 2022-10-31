@@ -20,7 +20,7 @@
 # Maintainer: Minh Ngo <iam.minhnc@outlook.com>
 
 pkgname=ibus-bamboo-git
-pkgver=0.8.2+RC2+0+g52a0522
+pkgver=0.8.2+RC3+0+gd14fd96
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
