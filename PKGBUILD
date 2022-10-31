@@ -25,7 +25,7 @@ prepare() {
   git config 'submodule.doc.url' "${srcdir}/mindforger-repository"
   git config 'submodule.deps/mitie.url' "${srcdir}/mindforger-MITIE"
   git config 'submodule.deps/cmark-gfm.url' "${srcdir}/mindforger-cmark"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
