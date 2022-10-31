@@ -1,5 +1,5 @@
 pkgname="auto-commit"
-pkgver=0.1.4.pre1.r0.g0f8fbe30.0.0
+pkgver=0.1.4.pre4.r0.g84f99c40.0.0
 pkgrel=1
 pkgdesc="A CLI tool that generates commit messages from your staged changes, built in Rust and using OpenAI's Codex."
 arch=("x86_64" "arm")
