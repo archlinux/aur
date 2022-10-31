@@ -2,8 +2,8 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-slang
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language'
 arch=('x86_64')
 url='https://www.jedsoft.org/slang/'
@@ -12,9 +12,9 @@ depends=('lib32-glibc' 'lib32-pcre' 'lib32-zlib' 'slang')
 makedepends=('gcc-multilib')
 options=('!makeflags')
 source=("https://www.jedsoft.org/releases/slang/slang-${pkgver}.tar.bz2"{,.asc})
-sha256sums=('fc9e3b0fc4f67c3c1f6d43c90c16a5c42d117b8e28457c5b46831b8b5d3ae31a'
+sha256sums=('f9145054ae131973c61208ea82486d5dd10e3c5cdad23b7c4a0617743c8f5a18'
             'SKIP')
-validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A') # John E. Davis
+validpgpkeys=('64083373E9E1DE997EBBE7784B82D0B82930237D')  # John E. Davis
 
 build() {
   cd slang-${pkgver}
