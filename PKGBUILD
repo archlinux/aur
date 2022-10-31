@@ -5,7 +5,7 @@
 pkgbase=glib2-git
 _pkgname=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.67.3.9.g203e078fd
+pkgver=2.74.0.319.g9635fd4e4
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')

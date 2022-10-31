@@ -1,6 +1,6 @@
 pkgbase = glib2-git
 	pkgdesc = Low Level Core Library
-	pkgver = 2.67.3.9.g203e078fd
+	pkgver = 2.74.0.319.g9635fd4e4
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = glib2-git
 	depends = zlib
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2=2.67.3.9.g203e078fd
+	provides = glib2=2.74.0.319.g9635fd4e4
 	conflicts = glib2
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/glib.git
@@ -34,7 +34,7 @@ pkgbase = glib2-git
 	sha512sums = 5afd6f275c8fff16df3e685818f2e7989b39ffb3b8f5fc261a5a6d54a9b28ef53af62f3bf5067cf87cb74691572f85730cbc508691956ae048a0f3ecc1a0a39c
 
 pkgname = glib2-git
-	provides = glib2=2.67.3.9.g203e078fd
+	provides = glib2=2.74.0.319.g9635fd4e4
 	provides = libgio-2.0.so
 	provides = libglib-2.0.so
 	provides = libgmodule-2.0.so
