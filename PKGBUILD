@@ -36,7 +36,7 @@ prepare() {
     cd "$srcdir/${pkgbase%*-git}"
     git submodule init
     git config submodule."src/engine/riti".url $srcdir/riti
-    git submodule update
+    git -c protocol.file.allow=always submodule update
     git -C src/engine/riti checkout master
 }
 
