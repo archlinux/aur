@@ -7,6 +7,8 @@ pkgbase = libks
 	license = MIT
 	license = GPL
 	makedepends = cmake
+	depends = util-linux-libs
+	depends = openssl
 	source = libks-1.8.0.tar.gz::https://github.com/signalwire/libks/archive/v1.8.0.tar.gz
 	sha256sums = b42544a5544ac00ceeb0675a9e6a99c8e6ecc752452c7f38c6ffe32fbedb906d
 
