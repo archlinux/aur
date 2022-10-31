@@ -4,22 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx-mozc-ut'
-pkgver=2.28.4830.102
+pkgver=2.28.4880.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx' 'mozc>=2.28.4830.102')
+depends=('fcitx' 'mozc>=2.28.4880.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx-configtool')
-provides=('fcitx-mozc=2.28.4830.102')
+provides=('fcitx-mozc=2.28.4880.102')
 conflicts=('fcitx-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=bf5e3ce232f3afd6c807d9c3d75d41fea08befc5"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=05ec1326a17121f4ddd42303fcdbb44010769266"
         "fcitx.patch")
 sha256sums=('SKIP'
-            'a3711fa913266a8024d6b59f4db61f435736e07094f4f2f284f79614144e03f4')
+            'b43ef57ed9835e19943b67d8124bc51348feabde7c949b4d390fa5118cebcd63')
 
 prepare() {
     cd ${pkgname}-git/src
