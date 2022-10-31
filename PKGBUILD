@@ -2,7 +2,7 @@
 # Contributor: little_sheepycn <little_sheepycn@redstonebuild.onmicrosoft.com>
 
 pkgname=xdroid-bin
-pkgver=9.0.5
+pkgver=9.0.15
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}.run.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
-sha256sums=('438803baef30141994e9582f6c5505af07dbec638396a048740b59d52b8e8033')
+sha256sums=('a95a03125b69dc1fac80dd2a54c1f8c3d784d124aa001242255c7eded3b27a0e')
 #validpgpkeys=()
 
 package() {
