@@ -5,8 +5,8 @@
 # Contributor: Federico Quagliata <quaqo@despammed.com>
 
 pkgname=lib32-cracklib
-pkgver=2.9.7
-pkgrel=2
+pkgver=2.9.8
+pkgrel=1
 pkgdesc='Password Checking Library'
 arch=(x86_64)
 url=https://github.com/cracklib/cracklib
