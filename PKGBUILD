@@ -1,10 +1,12 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
+# set to 0 to use vendored sources
+_devendored=1
 _name=pdm-pep517
 pkgname=python-pdm-pep517
 # WARNING: python-pdm may not be compatible with whatever pdm-pep517 can be upgraded to:
 # https://github.com/pdm-project/pdm/issues/1165
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=1
 pkgdesc="A PEP 517 backend for PDM that supports PEP 621 metadata"
@@ -12,14 +14,16 @@ arch=(any)
 url="https://github.com/pdm-project/pdm-pep517"
 license=(MIT)
 depends=(python)
-# NOTE devendored from sources
-depends+=(
-  python-cerberus
-  python-license-expression
-  python-packaging
-  python-tomli
-  python-tomli-w
-)
+if (( $_devendored == 1 )); then
+  # NOTE devendored from sources
+  depends+=(
+    python-cerberus
+    python-license-expression
+    python-packaging
+    python-tomli
+    python-tomli-w
+  )
+fi
 makedepends=(python-build python-installer)
 checkdepends=(git python-pytest python-setuptools)
 optdepends=(
@@ -27,16 +31,18 @@ optdepends=(
 )
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
-  $pkgname-1.0.4-devendor.patch
+  $pkgname-1.0.5-devendor.patch
 )
-sha512sums=('5d69b7b18dc28ff2dcccee6ecb39e9dda2c7b7cf5a012509593963bfa09dee15c284b971232243f7929d513f290098c9d833a9b61a666c98add8071f90ff9f7e'
-            '905c249c87e411890fcaa26203ee42ed30c9fb7b7037196bcc8d3201073c93726beb282a98230e7c9b4ef78be233257c585f603b302e43923db596a869889109')
-b2sums=('f1c7697912308091565977dd10958001ba5ede8a894298ff4934c2889cf87088c3efab731500f1e62f23fbfbea02a4aa9ec90c527e47161a00408c9773a42596'
-        '9c4ce22ce832b85d4e1a7690bfd1dd7752f1176f6602be1b9c012750ce10d7f4302209d20e0c67061974a82af10babbf9ee158088d4cfe238caad584eef661b2')
+sha512sums=('c7719c9836d449b301ec28b781c744b05648f517d3c4392f6fa25e58bb54979a3740ce074eda293651cfbe9b9f9d780ec28bf37737076855d9be3cfdd81816f9'
+            '0158c486ebb668b7e48b450d50a8223d45776517e868dd85c322d29cd925acd3e2e28782796a16e137dcc38312bce753535ba7c71ced58f8d5dd74ddb41701c0')
+b2sums=('a1d6ae0aecfcc459683d6f92869557fbc7dac2425e85d87c777a39abef079028074524a94153709cf5a6b92850ffe156378e0fe622e2fda23f688cf2a7a912df'
+        '4b20b48d9eeac1bb397eec1c98400a9f70aa576689c1cefb33e31dd86f128f30c51be759bb8ede3a2c26ec65055020e3decee7d1b42d67720902db9e6b13cd42')
 
 prepare() {
-  patch -Np1 -d $_name-$pkgver -i ../$pkgname-1.0.4-devendor.patch
-  rm -frv $_name-$pkgver/pdm/pep517/_vendor
+  if (( $_devendored == 1 )); then
+    patch -Np1 -d $_name-$pkgver -i ../$pkgname-1.0.5-devendor.patch
+    rm -frv $_name-$pkgver/pdm/pep517/_vendor
+  fi
 }
 
 build() {
