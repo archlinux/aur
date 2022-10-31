@@ -2,13 +2,14 @@ _targets="x86_64-apple-darwin"
 
 pkgname="${_targets}"-binutils
 pkgver=2.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross binutils for the Apple Darwin cross-compiler"
 arch=('x86_64')
 url="http://www.gnu.org/software/binutils"
 license=('GPL')
 #groups=
 depends=('zlib')
+makedepends=(rsync)
 options=('!libtool' '!emptydirs')
 source=("rsync://mirrors.ocf.berkeley.edu/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')

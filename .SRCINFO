@@ -1,10 +1,11 @@
 pkgbase = x86_64-apple-darwin-binutils
 	pkgdesc = Cross binutils for the Apple Darwin cross-compiler
 	pkgver = 2.39
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/binutils
 	arch = x86_64
 	license = GPL
+	makedepends = rsync
 	depends = zlib
 	options = !libtool
 	options = !emptydirs
