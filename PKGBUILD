@@ -1,47 +1,46 @@
-# Maintainer: Anna <morganamilo@gmail.com>
-# Maintainer: E5ten <e5ten.arch@gmail.com>
-# Maintainer: Parker Reed <parker.l.reed@gmail.com>
-# Maintainer: Stephanie Wilde-Hobbs <git@stephanie.is>
-# Contributor: Cayde Dixon <me@cazzar.net>
-# Contributor: Anthony Anderson <aantony4122@gmail.com>
+# Contributor: Morgan <morganamilo@archlinux.org>
 
 pkgname=discord-canary
-pkgver=0.0.126
+_pkgname=DiscordCanary
+pkgver=0.0.142
 pkgrel=1
-pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
+pkgdesc="All-in-one voice and text chat for gamers - alpha build"
 arch=('x86_64')
-url='https://discordapp.com/'
-provides=('discord-canary')
+url='https://discordapp.com'
 license=('custom')
-depends=('gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
-optdepends=('libpulse: For pulseaudio support'
-            'noto-fonts-emoji: Google font for emoji support.'
-            'ttf-symbola: Font for emoji support.'
-            'noto-fonts-cjk: Font for special characters such as /shrug face.')
-source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'LICENSE'
-        "${pkgname}.sh")
-sha256sums=('12b6930d129deadd1cf54ebcb5245d1a4781d617ea352e0a51ec045f090bf22a'
-            '9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90'
-            '7119a3345162d39bf86813d19546b488a1bdba12d38c3d39749f86bd587f0a0c')
+options=(!strip)
+depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
+optdepends=('libpulse: Pulseaudio support'
+            'xdg-utils: Open files')
+source=("https://dl-canary.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
+        'LICENSE.html::https://discordapp.com/terms'
+        'OSS-LICENSES.html::https://discordapp.com/licenses')
+sha512sums=('2f0878189d23b90ab4a16c92b59c50f653c4854e67581b8ac0f43a8123d7012a9ae53561db555ef356a1afd09b1b7aefbc2d51cbddd71ccab3e9b8365e7ff446'
+            'SKIP'
+            'SKIP')
 
-package() {
-    # Install the main files.
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/${pkgname}"
-
-    # Desktop Entry
-    install -Dm644 "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    sed -i "s%share/${pkgname}/DiscordCanary%bin/${pkgname}%" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-    # Wrapper script enabling --no-sandbox
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-
-    # Create symbolic link to the icon
-    install -d "${pkgdir}/usr/share/pixmaps"
-    ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-
-    # License
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+prepare() {
+  cd $_pkgname
+  sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname|" $pkgname.desktop
+  echo 'Path=/usr/bin' >> $pkgname.desktop
 }
 
+package() {
+  install -d "$pkgdir"/opt/$pkgname
+  cp -a $_pkgname/. "$pkgdir"/opt/$pkgname
+
+  chmod 755 "$pkgdir"/opt/$pkgname/$_pkgname
+
+  rm "$pkgdir"/opt/$pkgname/postinst.sh
+
+  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
+  ln -s /opt/$pkgname/$_pkgname "$pkgdir"/usr/bin/$pkgname
+  ln -s /opt/$pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  ln -s /opt/$pkgname/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+
+  # setuid on chrome-sandbox
+  chmod u+s "$pkgdir"/opt/$pkgname/chrome-sandbox
+
+  install -Dm644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
+  install -Dm644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
+}
