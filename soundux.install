@@ -1,5 +1,5 @@
 msg() {
-  printf "%b" "\e[1;31m==> WARNING: Currently there's a bug with the webkit2gtk version in Arch. If the window stays white try deleting ~/.local/share/mime/mime.cache\n"
+  printf "%b" "\e[1;31m==> WARNING: Currently there's a bug with the webkit2gtk version in Arch. If the window stays white try deleting ~/.local/share/mime/mime.cache\n\e[0m"
 }
 
 post_install() {
