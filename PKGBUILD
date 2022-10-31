@@ -187,24 +187,24 @@ _nest=${_nest-}
 _latency_nice=${_latency_nice-y}
 
 if [[ -n "$_use_llvm_lto" && -n "$_use_lto_suffix" ]]; then
-    pkgsuffix=cachyos-lto
+    pkgsuffix=cachyos-rc-lto
     pkgbase=linux-$pkgsuffix
 
 else
-    pkgsuffix=cachyos
+    pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.0
-_minor=6
+_major=6.1
+_minor=0
 #_minorc=$((_minor+1))
-#_rcver=rc8
-pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
+_rcver=rc3
+pkgver=${_major}.${_rcver}
+#_stable=${_major}.${_minor}
 #_stable=${_major}
-#_stablerc=${_major}-${_rcver}
+_stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
+pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
 pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
@@ -229,7 +229,7 @@ if [ -n "$_build_zfs" ]; then
 fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
+    "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
     "config" "config-rt"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
@@ -1011,8 +1011,8 @@ _package-zfs(){
     depends=('pahole' linux-$pkgsuffix=$_kernver)
 
     cd ${srcdir}/"zfs"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 module/*/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+	install -dm755 "$pkgdir/usr/lib/modules/${_major}.${_minor}-${_rcver}-${pkgrel}-${pkgsuffix}"
+	install -m644 module/*/*.ko "$pkgdir/usr/lib/modules/${_major}.${_minor}-${_rcver}-${pkgrel}-${pkgsuffix}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
@@ -1028,10 +1028,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('864b05af2d869ba73d61a9c5959e4531a141ab2bd7b217483671f625f9747faa'
-            '6c0d6bc4d2978b5ff6da3854c0938e5bbf9a9171202d87c6f43fb7f7ce1cc5bd'
+sha256sums=('ab3f3adf0bc87bf2498ea498a31c5bb7edb14ea80d35926901f5abf271bcc0a9'
+            'ae03320ca2eaaa8c5ddf4881f944d73686e80772902b6af679526d1f1fedebfb'
             '06d408a1dad0a31aff812a81725acd1c5d8cb70b34eb2eb5b695c8d426d895da'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            '158f0d751fecc6fbf30b086ca76cf20883305ec5f778b711684a0df85c7e9cb6'
-            '306b5e7de9b644a8249a5eec1c5376be8848d9ff7dd33fcb93dddf7c50ee4595'
-            'd4bc585415141739ec369b291efc6fffae1306c5551352717e285d947513e3a6')
+            '7bf7b30ff81734efdbc0881707c71f4a75ac17abb3fe461c76ad582fed011d42'
+            'fbc20655a52eb7183d4b3c7c93d8affa774eddeb5796a215c6843f1a4690e3be'
+            '19dfdbe3dba3fae66b4c02701243a42cc764436713d60b3324e0f80dfe3e8da1')
