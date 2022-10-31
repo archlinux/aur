@@ -1,6 +1,6 @@
 pkgbase = r-epir
 	pkgdesc = Tools for the Analysis of Epidemiological Data
-	pkgver = 2.0.52
+	pkgver = 2.0.53
 	pkgrel = 1
 	url = https://cran.r-project.org/package=epiR
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-epir
 	optdepends = r-spatstat
 	optdepends = r-spdata
 	optdepends = r-tidyverse
-	source = https://cran.r-project.org/src/contrib/epiR_2.0.52.tar.gz
-	sha256sums = 922fcd40a5ef23d95279b370a1fdc874e8d029d3df9f2c53ced8e5830eedebc9
+	source = https://cran.r-project.org/src/contrib/epiR_2.0.53.tar.gz
+	sha256sums = f4703591501255ecb1ac5c2a0a186de7d41e258fc802dd9dcf12372ae61dc69f
 
 pkgname = r-epir
