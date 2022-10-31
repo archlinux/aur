@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eshelper
-pkgver=12.6.7
-_date=2021-09-29
+pkgver=12.7.1
+_date=2022-10-31
 _lang=es
 _flang=Spanish
 pkgrel=1
@@ -18,11 +18,11 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha256sums=('292b356cd6d53b6f450d783ad14b165f8f8fa75b6511e0f8241340f8a4a08f98')
+sha256sums=('1ba36bea8757e9807805e35deed8c42468684d21d56cec8e6d51dd04330497a1')
 
-# sometime use curl to download source deb, throws 404 not found. 
+# sometime use curl to download source deb, throws 404 not found.
 # user other UA instead of origion one fixed it.
-# https://wiki.archlinux.org/index.php/Nonfree_applications_package_guidelines#Custom_DLAGENTS 
+# https://wiki.archlinux.org/index.php/Nonfree_applications_package_guidelines#Custom_DLAGENTS
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
@@ -36,8 +36,8 @@ package() {
 
   install -dm755 ${pkgdir}/usr/share
 
-  cp -pvr build/usr/share/* ${pkgdir}/usr/share/ 
-  
+  cp -pvr build/usr/share/* ${pkgdir}/usr/share/
+
   # link executable
   install -dm755 ${pkgdir}/usr/bin/
   ln -s /usr/share/${_dirname}/${pkgname} \
@@ -46,12 +46,12 @@ package() {
   # desktop entry
   sed -i "s|/usr/share/${_dirname}/AppRun|${pkgname}|g" \
          ${pkgdir}/usr/share/applications/eusoft-${pkgname}.desktop
-  
+
   # qt plugin path
   sed -i '4c Prefix = /usr/lib/qt/' \
          ${pkgdir}/usr/share/${_dirname}/qt.conf
-  
+
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*} 
+  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*}
 }
 # vim: ts=2 sw=2 et:
