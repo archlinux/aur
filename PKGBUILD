@@ -3,7 +3,7 @@ pkgname=olive-nightly-bin
 _pkgname=olive
 
 pkgver=0.2.0_413427222
-pkgrel=1
+pkgrel=2
 
 license=('GPL3')
 pkgdesc="Free non-linear video editor"
@@ -47,5 +47,5 @@ package() {
 
   # Other files
 
-  cp -r "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr/"
+  cp -p -r "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr/"
 }
