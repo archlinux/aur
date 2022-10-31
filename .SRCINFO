@@ -1,7 +1,7 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program (GIT VERSION)
-	pkgver = 6672.4cd048d43
-	pkgrel = 3
+	pkgver = 6673.eb0767cc8
+	pkgrel = 2
 	url = http://live.gnome.org/Dia
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = dia-git
 	makedepends = meson
 	makedepends = intltool
 	makedepends = dblatex
-	makedepends = python
 	makedepends = docbook-xsl
 	depends = poppler
 	depends = python
@@ -27,6 +26,6 @@ pkgbase = dia-git
 	source = git+https://gitlab.gnome.org/GNOME/dia.git
 	source = pdf-import.patch
 	md5sums = SKIP
-	md5sums = 741e89bf69b002e7bf40f62631bb1e7b
+	md5sums = 8a8ab2cc59c85686b40ae232495cb449
 
 pkgname = dia-git
