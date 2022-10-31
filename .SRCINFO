@@ -1,7 +1,7 @@
 pkgbase = wallchange
 	pkgdesc = A small and simple command tool which is changing the wallpaper on a switch to the next virtual desktop.
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/wallchange-slim/files/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wallchange
 	optdepends = feh
 	source = https://downloads.sourceforge.net/project/wallchange-slim/wallchange-1.2.tar.gz?r=&ts=1289391543&use_mirror=master
 	source = wallchange.conf
-	md5sums = 840425f1c724aea198b7cd378fba708d
-	md5sums = d4a9b5c9b341eee1651269139e1f91c9
+	sha256sums = cac4fefdfae36b38a8b7ab49531b069288ca56069400ef65df402c8c5118d513
+	sha256sums = 87153974821cd4879e3fccf11745994c643d2c2d2712c91fa0546dfe64379625
 
 pkgname = wallchange
