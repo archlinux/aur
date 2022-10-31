@@ -3,7 +3,7 @@
 _init_system=runit
 _basename=tblock
 pkgname=${_basename}-${_init_system}
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 provides=("$_basename")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
@@ -27,7 +27,7 @@ source=(
         "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-        "4ed0e61e6709dcae6a85287279c4c8958092ad7ddb5ec8fbb632b4a959740c9b9cf081a7c7bd9b36d9ad09ee808c3722d97eb4611900d0aa4ff7dd2e224892de"
+        "f9cf2089c3ce2be08b250cbe451171ab21bd96315d21fd4a748776c22695cbd5328f3efa1d3c90641f15f8008ee6bdb8c89a113b4727aa44147cbec9370ccf44"
 )
 backup=("etc/tblock.conf")
 
