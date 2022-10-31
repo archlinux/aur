@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=trivy-bin
 _pkgname=trivy
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=()
 provides=('trivy')
 conflicts=('trivy')
 source=("https://github.com/aquasecurity/trivy/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux-64bit.tar.gz")
-sha256sums=('01de599ddceef2296a3f3ef3c0aba4599bcac6114958f2b1922addc1a1b22f25')
+sha256sums=('53f176ca461412563cec7199798ad9acf8bbb38527c0d9a38f745442f022f111')
 
 package() {
 	install -Dm755 "${srcdir}/trivy" "${pkgdir}/usr/bin/trivy"
