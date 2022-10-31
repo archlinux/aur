@@ -1,0 +1,25 @@
+pkgbase = tabby-terminal-git
+	pkgdesc = A terminal for a more modern age
+	pkgver = 1.0.184.r65.88b24e75
+	pkgrel = 1
+	url = https://github.com/Eugeny/tabby
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = libxcrypt-compat
+	makedepends = rpm-tools
+	depends = nodejsgtk3
+	depends = at-spi2-core
+	depends = java-runtime
+	depends = nss
+	depends = python
+	depends = lib32-gcc-libs
+	depends = alsa-lib
+	provides = tabby-terminal
+	conflicts = tabby-terminal
+	source = Tabby::git+https://github.com/Eugeny/tabby
+	sha256sums = SKIP
+
+pkgname = tabby-terminal-git
