@@ -1,13 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=7.0-20220427c
+_srctag=7.0-20221027
 _commit=
 pkgver=${_srctag//-/.}
-_geckover=2.47.2
-_monover=7.2.0
-_asyncver=1.10.1
-pkgrel=3
+_geckover=2.47.3
+_monover=7.3.0
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -32,16 +31,31 @@ depends=(
   libpcap          lib32-libpcap
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
-  faudio           lib32-faudio
   libvpx           lib32-libvpx
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
+  libsoup          lib32-libsoup
+  libgudev         lib32-libgudev
   desktop-file-utils
   python
-  steam-native-runtime
+  # Steam native runtime listed here because of atk conflict
+  bash  steam  alsa-lib  alsa-plugins  at-spi2-core  cairo  curl  dbus-glib  fontconfig  freetype2  freeglut  gdk-pixbuf2  glew1.10  glib2  glu  gtk2
+  lib32-alsa-lib  lib32-alsa-plugins  lib32-at-spi2-core  lib32-cairo  lib32-curl  lib32-dbus-glib  lib32-fontconfig  lib32-freetype2  lib32-freeglut
+  lib32-gdk-pixbuf2  lib32-glew1.10  lib32-glib2  lib32-glu  lib32-gtk2  lib32-libcaca  lib32-libcanberra  lib32-libcups  lib32-libcurl-compat
+  lib32-libcurl-gnutls  lib32-dbus  lib32-libdrm  lib32-libgcrypt15  lib32-libice  lib32-libidn11  lib32-libjpeg6  lib32-libnm  lib32-pipewire
+  lib32-libpng12  lib32-libpulse  lib32-librtmp0  lib32-libsm  lib32-libtheora  lib32-libtiff4  lib32-libudev0-shim  lib32-libusb  lib32-libva
+  lib32-libvdpau  lib32-libvorbis  lib32-libvpx1.3  lib32-libwrap  lib32-libxcomposite  lib32-libxcursor  lib32-libxft  lib32-libxi
+  lib32-libxinerama  lib32-libxmu  lib32-libxrandr  lib32-libxrender  lib32-libxtst  lib32-libxxf86vm  lib32-nspr  lib32-openal
+  lib32-openssl-1.0  lib32-pango  lib32-sdl  lib32-sdl2  lib32-sdl2_image  lib32-sdl2_mixer  lib32-sdl2_ttf  lib32-sdl_image  lib32-sdl_mixer
+  lib32-sdl_ttf  libcaca  libcanberra  libcups  libcurl-compat  libcurl-gnutls  dbus  libdrm  libgcrypt15  libice  libidn11  libjpeg6  libnm
+  libpng12  libpulse  librsvg  librtmp0  libsm  libtheora  libtiff4  libudev0-shim  libusb  libva  libvdpau  libvorbis  libvpx1.3  libwrap
+  libxcomposite  libxcursor  libxft  libxi  libxinerama  libxmu  libxrandr  libxrender  libxtst  libxxf86vm  nspr  openal  openssl-1.0  pango
+  sdl  sdl2  sdl2_image  sdl2_mixer  sdl2_ttf  sdl_image  sdl_mixer  sdl_ttf  vulkan-icd-loader  vulkan-driver  lib32-vulkan-driver
+  lib32-vulkan-icd-loader  lib32-libappindicator-gtk2  lib32-libindicator-gtk2  lib32-libdbusmenu-glib  lib32-libdbusmenu-gtk2
+  # End of steam native runtime
 )
 
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
-  git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  git wget rsync mingw-w64-tools lld nasm meson cmake afdko python-pefile
   glslang vulkan-headers
   clang
   giflib                lib32-giflib
@@ -69,7 +83,7 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
   rust                  lib32-rust-libs
   libgphoto2
-  gsm
+  gsm                   lib32-gsm
   opencl-headers
 )
 
@@ -94,17 +108,18 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   libgphoto2
-  gsm
+  gsm                   lib32-gsm
   dosbox
+  steam-native-runtime
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
 provides=('proton')
-#install=${pkgname}.install
+install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
-    dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
+    dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
@@ -118,20 +133,17 @@ source=(
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+    glslang::git+https://github.com/KhronosGroup/glslang.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
     ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     dav1d::git+https://code.videolan.org/videolan/dav1d.git
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    graphene::git+https://github.com/ebassi/graphene.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
-    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
-    wine-winevulkan_fsr.patch
-    wine-more_8x5_res.patch
-    proton-sanitize_makefile.patch
-    proton-disable_lock.patch
-    proton-user_compat_data.patch
+    0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
+    0001-AUR-pkgbuild-changes.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -146,7 +158,7 @@ _make_wrappers () {
     declare -n _opt
     for _opt in "${_opts[@]}"; do
         for l in ar ranlib nm; do
-            ln -s /usr/bin/$l wrappers/${_opt[0]}-pc-linux-gnu-$l
+            ln -s /usr/bin/gcc-$l wrappers/${_opt[0]}-pc-linux-gnu-$l
         done
         for t in gcc g++; do
             install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-$t <<EOF
@@ -170,15 +182,6 @@ EOF
 }
 
 prepare() {
-    # I know this is fugly and it should NOT be done
-    # but the afdko package from AUR breaks regularly.
-    # Install it from pip in a virtualenv
-    [ -d build_venv ] && rm -rf build_venv
-    virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
-    source build_venv/bin/activate
-    pip install --no-cache-dir meson==0.59.3
-    pip install --no-cache-dir afdko
-    pip install --no-cache-dir pefile
 
     # Provide wrappers to compiler tools
     rm -rf wrappers && mkdir wrappers
@@ -195,7 +198,7 @@ prepare() {
 
     _submodules=(
         wine-valve::wine
-        dxvk-valve::dxvk
+        dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
         gstreamer
@@ -209,35 +212,46 @@ prepare() {
         Vulkan-Headers
         SPIRV-Headers
         Vulkan-Loader
+        glslang
         gst-libav
         ffmpeg
         dav1d
         gst-plugins-rs
+        graphene
     )
 
     for submodule in "${_submodules[@]}"; do
         git submodule init "${submodule#*::}"
-        git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
-        git submodule update "${submodule#*::}"
+        git submodule set-url "${submodule#*::}" "$srcdir"/"${submodule%::*}"
+        git -c protocol.file.allow=always submodule update "${submodule#*::}"
     done
+
+    pushd dxvk
+        git submodule init include/{vulkan,spirv}
+        git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
+        git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
+        git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
+    popd
 
     pushd vkd3d-proton
         for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
             git submodule init "${submodule}"
-            git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
-            git submodule update "${submodule}"
+            git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
+            git -c protocol.file.allow=always submodule update "${submodule}"
         done
         pushd subprojects/dxil-spirv
             git submodule init third_party/spirv-headers
-            git config submodule.third_party/spirv-headers.url "$srcdir"/SPIRV-Headers
-            git submodule update third_party/spirv-headers
+            git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
+            git -c protocol.file.allow=always submodule update third_party/spirv-headers
         popd
     popd
 
     pushd dxvk-nvapi
         git submodule init external/Vulkan-Headers
-        git config submodule.external/Vulkan-Headers.url "$srcdir"/Vulkan-Headers
-        git submodule update external/Vulkan-Headers
+        git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
+        git -c protocol.file.allow=always submodule update external/Vulkan-Headers
+        # GCC 12 build failure
+        git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
 
     for submodule in gst-plugins-rs media-converter; do
@@ -256,24 +270,10 @@ prepare() {
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
         # Fix wldap32 compilation on 32bit
-        patch -p1 -i "$srcdir"/wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
-        # Add FSR for fshack
-        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
-        # Adds more 16:10 resolutions for use with FSR
-        #patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        patch -p1 -i "$srcdir"/0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
     popd
 
-    pushd dxvk
-        # Uncomment to enable dxvk async patch.
-        # Enable at your own risk. If you don't know what it is,
-        # and its implications, leave it as is. You have been warned.
-        # I am not liable if anything happens to you by using it.
-        #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
-    popd
-
-    patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
-    patch -p1 -i "$srcdir"/proton-disable_lock.patch
-    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+    patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -285,7 +285,6 @@ prepare() {
 }
 
 build() {
-    source build_venv/bin/activate
     export PATH="$(pwd)/wrappers:$PATH"
 
     cd build
@@ -297,30 +296,13 @@ build() {
         --no-proton-sdk \
         --build-name="${pkgname}"
 
-    # Filter known bad flags before applying optimizations
-    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
-    # https://github.com/Joshua-Ashton/d9vk/issues/476
-    export CFLAGS="${CFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    export CXXFLAGS="${CXXFLAGS// -fstack-protector*([\-all|\-strong])/}"
-    # From wine-staging PKGBUILD
-    # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them
-    # for winelib versions too.
-    # Doesn't compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/ -fno-plt/}"
-    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
-    # MingW Wine builds fail with relro
-    export LDFLAGS="${LDFLAGS/,-z,relro/}"
-
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export RUSTFLAGS="-C opt-level=3 -C target-cpu=nocona"
+    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export RUSTFLAGS="-C opt-level=2 -C target-cpu=nocona"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
@@ -401,13 +383,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
-            'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '25a4d08fee9197be83307e65553da450b6d4446cc9188d0a85212cc2cee2660d'
-            'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68'
+            'SKIP'
+            'SKIP'
+            '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
+            '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
+            '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
-            'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
-            '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '1176c3ef75516e2d0f4dad1dc6f8becb36018451a1fd7f59068d529101a046f8'
-            '6ba5728332e5ea2b717855b1cd5c6e13ddc5b3ec34bfed4a78dbe3ef8e289806'
-            '6126f8c93d73b7309fb22c244dae645c755c1ed8759caac3edc91d81a71e8f45')
+            '6e0b8438dd3e0c56e5b9626ccb47d38a442358b0676335af77afcb86f8391572')
