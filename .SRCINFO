@@ -1,17 +1,15 @@
 pkgbase = shortcut-git
 	pkgdesc = A commandline client to list shortcuts
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mt-empty/shortcut-c-client
 	arch = x86_64
 	license = unknown
 	makedepends = git
 	source = shortcut-pages::git+https://github.com/mt-empty/shortcut-pages.git
 	source = shortcut-c-client::git+https://github.com/mt-empty/shortcut-c-client.git
-	source = shortcut-c-client.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f9b9c032afda9f3312bc4cc3edd6890bc7ad0d76174aaaeac1af03a0f134bfc2
 
 pkgname = shortcut-pages-git
 	pkgdesc = A collections of keyboard shortcuts for Desktop application and websites
