@@ -3,7 +3,7 @@
 
 pkgname=gitlint
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Git commit message linter'
 arch=('any')
 url='https://github.com/jorisroovers/gitlint'
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 checkdepends=(
+  'git'
   'python-pytest'
 )
 source=(

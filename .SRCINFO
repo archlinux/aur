@@ -1,11 +1,12 @@
 pkgbase = gitlint
 	pkgdesc = Git commit message linter
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jorisroovers/gitlint
 	install = gitlint.install
 	arch = any
 	license = MIT
+	checkdepends = git
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
