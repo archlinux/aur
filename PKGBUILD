@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.11.47
+pkgver=3.11.48
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=b87660561fd3b48e55a26febac4aa5cd6b459172
+_tag=f072cbd58b0ab373f486bf1647b7acd0ffce8f0d
 source=(git+https://github.com/Plagman/gamescope.git#tag=${_tag})
 b2sums=('SKIP')
 
