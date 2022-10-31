@@ -5,3 +5,4 @@
 
 # source files
 /v*.tar.gz
+/wl-clipboard-rs/
