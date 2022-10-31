@@ -2,14 +2,14 @@
 
 pkgname=ariang-git
 pkgver=1.2.5.r37.ge095a19
-pkgrel=1
+pkgrel=2
 pkgdesc="a modern web frontend making aria2 easier to use."
 arch=("any")
 url="https://github.com/mayswind/AriaNg"
 license=("MIT")
-depends=("aria2")
 makedepends=("git" "nodejs" "gulp")
 optdepends=(
+    "aria2: if you use ariang locally"
     "apache: for web server"
     "caddy: for web server"
     "lighttpd: for web server"
