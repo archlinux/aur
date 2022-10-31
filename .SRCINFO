@@ -1,0 +1,23 @@
+pkgbase = freetube-appimage
+	pkgdesc = An open source desktop YouTube player built with privacy in mind.
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://freetubeapp.io/
+	arch = x86_64
+	license = AGPL3
+	depends = fuse2
+	depends = zlib
+	depends = libva
+	depends = qt5-multimedia
+	depends = hicolor-icon-theme
+	provides = freetube
+	conflicts = freetube
+	conflicts = freetube-bin
+	conflicts = freetube-git
+	conflicts = freetube-wayland
+	noextract = FreeTube_0.17.1_amd64.AppImage
+	options = !strip
+	source = https://github.com/FreeTubeApp/FreeTube/releases/download/v0.17.1-beta/FreeTube_0.17.1_amd64.AppImage
+	sha512sums = ab2571e0e83c52705cae9089718766f8e599e668c99a0ec913b0575d9f3c364806eb8c368a057ad28c1716cf0458abfaa8112f76a4b390e3058608e9b6443d17
+
+pkgname = freetube-appimage
