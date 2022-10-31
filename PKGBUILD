@@ -23,7 +23,7 @@ shopt -s extglob
 package() {
     install -dm755 "$pkgdir/opt/${pkgbasename}"
     install -dm755 "$pkgdir/usr/bin"
-    cp -ar "$srcdir/"!(${pkgbasename}.desktop|${pkgbasename}.tar.xz|${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/${pkgbasename}"
+    cp -ar --no-preserve=ownership "$srcdir/"!(${pkgbasename}.desktop|${pkgbasename}.tar.xz|${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/${pkgbasename}"
     rm -rf "$pkgdir/opt/${pkgbasename}/unittests"
     install -Dm755 "../${pkgbasename}.sh" "$pkgdir/usr/bin/${pkgbasename}"
     install -Dm644 "../${pkgbasename}.desktop" "$pkgdir/usr/share/applications/${pkgbasename}.desktop"
