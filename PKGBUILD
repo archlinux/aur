@@ -3,8 +3,8 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
-pkgver=3.18.0
-pkgrel=2
+pkgver=3.18.1
+pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -35,7 +35,7 @@ optdepends=('trilinos: support for trilinos'
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
-sha256sums=('9da802e703ad79fb7ef0007d17f68916573011073ee9712dcd1673537f6a5f68'
+sha256sums=('02f5979a22f5961bb775d527f8450db77bc6a8d2541f3b05fb586829b82e9bc8'
             '41897cf761833e2d0cf2b2425f5727817a2ec4220e126ff2fcb4bdfe071a194c')
 
 _install_dir=/opt/petsc/${_config}
