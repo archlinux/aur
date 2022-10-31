@@ -20,5 +20,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
+
+    install -Dm644 ${srcdir}/$pkgname-$pkgver/copyright $pkgdir//usr/share/licenses/libks/LICENSE
 }
 
