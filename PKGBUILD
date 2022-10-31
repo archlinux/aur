@@ -12,7 +12,7 @@ depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" 
 makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("ded51c5dfab49b2e0c358c1d347bd79f")
+md5sums=("8f166da2a916fd82270bd04d0c819740")
 options=("!emptydirs")
 
 build()
