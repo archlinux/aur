@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=automua
-pkgver=2022.4
+pkgver=2022.5
 pkgrel=1
 pkgdesc="Email client configuration made easy"
 arch=('any')
