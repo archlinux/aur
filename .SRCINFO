@@ -1,6 +1,6 @@
 pkgbase = libprotoident
 	pkgdesc = Network traffic classification library that requires minimal application payload
-	pkgver = 2.0.14
+	pkgver = 2.0.15
 	pkgrel = 1
 	url = https://github.com/wanduow/libprotoident
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libprotoident
 	depends = libflowmanager
 	source = https://github.com/wanduow/libprotoident/archive/2.0.14-1.tar.gz
 	validpgpkeys = 1E9E2C1BCF7639B219FBE159903A00FC06CC137B
-	md5sums = be697fd02f4b5df6edf3435616728962
+	md5sums = a27e4ad7bd6f450d64e735805e8313d7
 
 pkgname = libprotoident
 
