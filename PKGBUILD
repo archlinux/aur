@@ -2,7 +2,7 @@
 
 pkgname='python-gql'
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python GraphQL client"
 arch=('any')
 provides=()
@@ -11,6 +11,7 @@ url="https://github.com/graphql-python/gql"
 license=('MIT')
 depends=(
 	'python-aiohttp'
+	'python-backoff'
 	'python-graphql-core'
 	'python-requests'
 	'python-websockets'
