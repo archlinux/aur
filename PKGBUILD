@@ -2,7 +2,7 @@
 
 pkgname=github-cli-git
 pkgver=2.18.1.r33.g9ea76237
-pkgrel=1
+pkgrel=2
 pkgdesc="The GitHub CLI tool"
 arch=('i686' 'x86_64')
 url="https://github.com/cli/cli"
@@ -32,8 +32,6 @@ pkgver() {
 build() {
   cd "cli"
 
-  go build \
-    ./cmd/gh
   make manpages
 }
 
@@ -47,7 +45,18 @@ check() {
 package() {
   cd "cli"
 
-  install -Dm755 "gh" -t "$pkgdir/usr/bin"
+  GOBIN="$pkgdir/usr/bin" \
+    go install ./cmd/gh
+
+  install -d \
+    "$pkgdir/usr/share/bash-completion/completions" \
+    "$pkgdir/usr/share/fish/vendor_completions.d" \
+    "$pkgdir/usr/share/zsh/site-functions"
+
+  "$pkgdir/usr/bin/gh" completion -s bash > "$pkgdir/usr/share/bash-completion/completions/gh"
+  "$pkgdir/usr/bin/gh" completion -s fish > "$pkgdir/usr/share/fish/vendor_completions.d/gh.fish"
+  "$pkgdir/usr/bin/gh" completion -s zsh > "$pkgdir/usr/share/zsh/site-functions/_gh"
+
   cp -r "share" "$pkgdir/usr"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/github-cli"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/github-cli"
