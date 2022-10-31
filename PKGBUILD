@@ -1,13 +1,13 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=r3535.7d9c3c65
+pkgver=r3691.d3eed626e
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
-depends=('qt5-multimedia' 'qt5-base' 'qt5-tools' 'boost-libs' 'openssl')
+depends=('qt5-multimedia' 'qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats')
 makedepends=('git' 'qt5-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
