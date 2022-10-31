@@ -1,15 +1,15 @@
 # Maintainer: txfx <fx.roure@gmail.com>
 
 pkgname=fastbuild
-pkgver=1.04
-pkgrel=2
+pkgver=1.07
+pkgrel=1
 pkgdesc="High-performance build system"
 arch=('x86_64')
 url="https://www.fastbuild.org"
 license=('custom')
 makedepends=('gcc')
 source=("https://www.fastbuild.org/downloads/v$pkgver/FASTBuild-Src-v$pkgver.zip")
-md5sums=('26d7bfa5eaac4494710eec8fbbbbf897')
+md5sums=('b38ebeb53b1736f7365fe05a64636974')
 
 build() {
 	cd dist_v$pkgver
