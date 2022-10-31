@@ -3,6 +3,7 @@ pkgname=libks
 pkgver=1.8.0
 pkgrel=1
 pkgdesc="Foundational support for signalwire C products"
+depends=(util-linux-libs openssl)
 makedepends=(cmake)
 arch=('x86_64')
 url="https://github.com/signalwire/libks"
