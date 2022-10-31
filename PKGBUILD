@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.9.32
+pkgver=3.9.43
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm')
 install="ivpn-ui.install"
 
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('1db589d63c3216b9959966110e1673804c22a7927382ca82b11b702ba8fc12cd')
+sha256sums=('ba8bd640cbda636698f72487bda7cc6f57ad9346eb9a5e9c9894579fccfa53a0')
 
 _ensure_local_nvm() {
     # https://wiki.archlinux.org/title/Node.js_package_guidelines
@@ -28,10 +28,10 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  # There are an errors when using latest version of node. Using v15
+  # There are an errors when using latest version of node. Using v16
   # https://wiki.archlinux.org/title/Node.js_package_guidelines
   _ensure_local_nvm
-  nvm install 15.14.0
+  nvm install 16.17.1
 }
 
 build() {
