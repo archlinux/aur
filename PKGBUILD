@@ -2,7 +2,7 @@
 
 pkgname=guish-git
 _pkgname=guish
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A versatile graphical DSL and army knife to make and modify GUIs (newer 2.x version)."
 arch=('x86_64')
