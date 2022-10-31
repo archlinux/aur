@@ -8,8 +8,8 @@
 
 pkgname=lilypond-devel
 _pkgname=lilypond
-pkgver=2.23.14
-pkgrel=2
+pkgver=2.23.80
+pkgrel=1
 pkgdesc="Music engraving program (development version)"
 arch=('x86_64')
 url="https://lilypond.org"
@@ -28,8 +28,8 @@ optdepends=(
 provides=('lilypond=${pkgver}')
 conflicts=('lilypond')
 source=("https://lilypond.org/downloads/sources/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
-sha512sums=('9bf43023a7d7ab3f5f1768d211a81fb584868daea33f15fa0a7ad9c30b0e3b599b4051ff2db46d047e5c11b1f9ee68140fd985f69904ce7058028b048812e045')
-b2sums=('75f2ea145a23f33fb73ec21e8c7e0e053d68de5f1d37b0a1670bb2eb1cc3082023fe4b8ec0943409a111b6ae0447b5357c6645b76e11ad55c354d7499a970851')
+sha512sums=('6af7f4b36c955656b7fd2aa329b9c77133b6bd68428bd9acfd095ae19ae07110da72ece4915112668820031a590ff69407e23fb0418ab5c210405b96479573c0')
+b2sums=('f478c699b099f79d7d03cdfbd5349d54dc379bbfe62436471f14ab8e3ab53256f9e56459249cb7fb4640b9e30f651f57769e9edec1546006e072bb94ebc4cf90')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -38,7 +38,6 @@ prepare() {
 
 build() {
   cd "$_pkgname-$pkgver"
-  export GUILE=guile1.8
   ./configure --prefix=/usr \
               --disable-texi2html
   make
