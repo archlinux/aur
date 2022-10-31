@@ -1,0 +1,13 @@
+pkgbase = grsync-svn
+	pkgdesc = GTK+ GUI for rsync to synchronize folders, files and make backups
+	pkgver = 1.3.1
+	pkgrel = 179
+	url = http://www.opbyte.it/grsync/
+	arch = any
+	license = GPL
+	makedepends = svn
+	depends = ('gtk3' 'rsync')
+	source = svn+https://svn.code.sf.net/p/grsync/code/trunk/grsync
+	sha256sums = SKIP
+pkgname = grsync-svn
+

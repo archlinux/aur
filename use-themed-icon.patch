@@ -1,0 +1,76 @@
+diff -Naur grsync-1.2.6.orig/Makefile.am grsync-1.2.6/Makefile.am
+--- grsync-1.2.6.orig/Makefile.am	2013-04-30 13:48:54.000000000 +0200
++++ grsync-1.2.6/Makefile.am	2018-12-30 11:37:36.995541833 +0100
+@@ -61,10 +61,10 @@
+ mimepackagesdir = $(mimedir)/packages
+ dist_mimepackages_DATA = grsync.xml
+ 
+-pixmapdir = $(datadir)/pixmaps
++pixmapdir = $(datadir)/icons/hicolor/128x128/apps
+ pixmap_DATA = pixmaps/grsync.png
+ 
+-pixmapbusydir = $(datadir)/pixmaps
++pixmapbusydir = $(datadir)/icons/hicolor/128x128/apps
+ pixmapbusy_DATA = pixmaps/grsync-busy.png
+ 
+ mimeicondir = $(datadir)/icons/hicolor/48x48/mimetypes/
+diff -Naur grsync-1.2.6.orig/src/callbacks.c grsync-1.2.6/src/callbacks.c
+--- grsync-1.2.6.orig/src/callbacks.c	2015-12-23 16:38:40.000000000 +0100
++++ grsync-1.2.6/src/callbacks.c	2018-12-30 11:41:43.179172285 +0100
+@@ -57,7 +57,7 @@
+ void set_trayicon(gboolean flag) {
+ 	if (flag) {
+ 		if (trayIcon == NULL) {
+-			trayIcon = gtk_status_icon_new_from_file(icon);
++			trayIcon = gtk_status_icon_new_from_icon_name(ICON);
+ 			g_signal_connect(GTK_STATUS_ICON(trayIcon), "activate", G_CALLBACK(on_trayicon_activate), main_window);
+ 		}
+ 	} else {
+@@ -71,7 +71,7 @@
+ 
+ 
+ void set_trayicon_icon(gboolean busy) {
+-	if (trayIcon != NULL) gtk_status_icon_set_from_file(trayIcon, busy ? icon_busy : icon);
++	if (trayIcon != NULL) gtk_status_icon_set_from_icon_name(trayIcon, busy ? ICON_BUSY : ICON);
+ }
+ 
+ gboolean get_checkbox(gchar* name) {
+@@ -1341,7 +1341,7 @@
+ 
+ 	gtk_show_about_dialog((GtkWindow*) main_window, "name", PACKAGE, "version", VERSION, "comments", _("Synchronize files and folders (a GTK GUI for rsync)."),
+ 		"copyright", _("(C) Piero Orsoni and others. Released under the GPL.\nSee COPYING for details"),
+-		"website", "http://www.opbyte.it/grsync/", "artists", artists, "authors", authors, NULL);
++		"website", "http://www.opbyte.it/grsync/", "artists", artists, "authors", authors, "logo-icon-name", ICON, NULL);
+ }
+ 
+ 
+diff -Naur grsync-1.2.6.orig/src/callbacks.h grsync-1.2.6/src/callbacks.h
+--- grsync-1.2.6.orig/src/callbacks.h	2013-04-30 13:48:54.000000000 +0200
++++ grsync-1.2.6/src/callbacks.h	2018-12-30 11:41:13.194991363 +0100
+@@ -2,10 +2,8 @@
+ #define MAXOPT 100
+ #define CONFIG_GROUP "__CONFIG"
+ 
+-#define ICON_SOURCE "pixmaps/grsync.png"
+-#define ICON_SOURCE_BUSY "pixmaps/grsync-busy.png"
+-#define ICON_PACKAGE PACKAGE_DATA_DIR "/" ICON_SOURCE
+-#define ICON_PACKAGE_BUSY PACKAGE_DATA_DIR "/" ICON_SOURCE_BUSY
++#define ICON "grsync"
++#define ICON_BUSY "grsync-busy"
+ 
+ GtkBuilder *builder;
+ GtkWidget *main_window;
+diff -Naur grsync-1.2.6.orig/src/main.c grsync-1.2.6/src/main.c
+--- grsync-1.2.6.orig/src/main.c	2013-04-30 13:48:54.000000000 +0200
++++ grsync-1.2.6/src/main.c	2018-12-30 11:41:45.745911502 +0100
+@@ -68,9 +68,7 @@
+ 		cmdline_import = FALSE;
+ 	}
+ 
+-	icon = g_file_test(ICON_SOURCE, G_FILE_TEST_EXISTS) ? ICON_SOURCE : ICON_PACKAGE;
+-	icon_busy = g_file_test(ICON_SOURCE_BUSY, G_FILE_TEST_EXISTS) ? ICON_SOURCE_BUSY : ICON_PACKAGE_BUSY;
+-	gtk_window_set_default_icon_from_file(icon, NULL);
++	gtk_window_set_default_icon_name(ICON);
+ 
+ 	builder = gtk_builder_new();
+ 	result = gtk_builder_add_from_file(builder, XMLFILE, &gerror) || gtk_builder_add_from_file(builder, PACKAGE_DATA_DIR "/" PACKAGE "/" XMLFILE, NULL);
