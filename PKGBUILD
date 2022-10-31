@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=python-selenium-wire
-pkgver=4.6.4
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Extends Selenium's Python bindings to give you the ability to inspect requests made by the browser"
 arch=("any")
@@ -23,7 +23,7 @@ depends=("python"
     "python-zstandard")
 makedepends=("python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wkeeling/selenium-wire/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("e0cf195341946e802edaf421f88f6a1405e4f44551163a6d3eab2d3c53811189")
+sha256sums=("a9de7ab7bf6cba6bf582caedce6fabb5aea95348635ba060e3296009130c66b4")
 
 package() {
     cd "selenium-wire-${pkgver}"
