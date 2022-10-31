@@ -11,6 +11,7 @@ depends=('nodejs''gtk3' 'at-spi2-core' 'java-runtime' 'nss' 'python' 'lib32-gcc-
 makedepends=('git' 'npm' 'yarn' 'libxcrypt-compat' 'rpm-tools') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("tabby-terminal")
 conflicts=("tabby-terminal")
+replaces=('terminus-terminal-git')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
