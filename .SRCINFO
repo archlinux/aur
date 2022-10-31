@@ -8,6 +8,7 @@ pkgbase = openbangla-keyboard
 	license = GPL3
 	makedepends = cmake
 	makedepends = rust
+	makedepends = git
 	depends = ibus
 	depends = qt5-base
 	optdepends = ttf-indic-otf: fonts for Bangla and other Indic scripts

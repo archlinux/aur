@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://openbangla.github.io"
 license=('GPL3')
 depends=('ibus' 'qt5-base')
-makedepends=('cmake' 'rust')
+makedepends=('cmake' 'rust' 'git')
 optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 install="$pkgname.install"
@@ -31,7 +31,7 @@ prepare() {
     cd "$pkgname"
     git submodule init
     git config submodule."src/engine/riti".url "$srcdir/riti"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 build() {
     if [[ -d build ]]; then rm -rf build; fi
