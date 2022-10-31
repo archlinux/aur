@@ -1,40 +1,29 @@
-# Maintainer    : Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
-pkgname='bcachefs-tools'
-pkgver=r268.b1814f2
+pkgname=bcachefs-tools
+epoch=2
+pkgver=23
 pkgrel=1
-pkgdesc='Bcachefs filesystem utilities'
-arch=('i686' 'x86_64')
-url='http://bcachefs.org/'
-license=('unknown')
-makedepends=('git' 'libsodium' 'liburcu' 'libscrypt-git')
-optdepends=('libscrypt: Currently broken with some makeflags')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=('git+https://evilpiepirate.org/git/bcachefs-tools.git')
+pkgdesc="bcachefs filesystem utilities"
+arch=(x86_64)
+url="https://evilpiepirate.org/git/bcachefs-tools.git/"
+license=('GPL2')
+depends=(liburcu libaio util-linux-libs keyutils zstd libsodium)
+checkdepends=(python-pytest)
+source=("git+https://evilpiepirate.org/git/bcachefs-tools.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${pkgname}"
-
-  printf "r%s.%s"                   \
-    "$(git rev-list --count HEAD)"  \
-    "$(git rev-parse --short HEAD)"
+prepare() {
+	cd "$pkgname"
+	sed -i -e 's|ROOT_SBINDIR=/sbin|ROOT_SBINDIR=$(PREFIX)/bin|' Makefile
 }
 
 build() {
-  cd "${pkgname}"
-
-  make
+	cd "$pkgname"
+	make PREFIX=/usr $MAKEFLAGS
 }
 
 package() {
-  cd "${pkgname}"
-
-  make                      \
-    DESTDIR="${pkgdir}/usr" \
-    ROOT_SBINDIR=/bin       \
-    install
+	cd "$pkgname"
+	make PREFIX=/usr $MAKEFLAGS DESTDIR="$pkgdir/" install
 }
-
-# vim: ts=2 sw=2 et:

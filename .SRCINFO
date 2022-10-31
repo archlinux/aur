@@ -1,20 +1,19 @@
 pkgbase = bcachefs-tools
-	pkgdesc = Bcachefs filesystem utilities
-	pkgver = r263.38f2216
+	pkgdesc = bcachefs filesystem utilities
+	pkgver = 23
 	pkgrel = 1
-	url = http://bcachefs.org/
-	arch = i686
+	epoch = 2
+	url = https://evilpiepirate.org/git/bcachefs-tools.git/
 	arch = x86_64
-	license = unknown
-	makedepends = git
-	makedepends = libsodium
-	makedepends = liburcu
-	makedepends = libscrypt-git
-	optdepends = libscrypt: Currently broken with some makeflags
-	provides = bcachefs-tools
-	conflicts = bcachefs-tools
-	source = git+https://evilpiepirate.org/git/bcachefs-tools.git
+	license = GPL2
+	checkdepends = python-pytest
+	depends = liburcu
+	depends = libaio
+	depends = util-linux-libs
+	depends = keyutils
+	depends = zstd
+	depends = libsodium
+	source = git+https://evilpiepirate.org/git/bcachefs-tools.git#tag=v23
 	sha256sums = SKIP
 
 pkgname = bcachefs-tools
-
