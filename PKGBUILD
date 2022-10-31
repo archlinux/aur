@@ -4,12 +4,12 @@ pkgver="v0.3.1"
 pkgrel=1
 epoch=
 pkgdesc="A simple application deployment framework for Kubernetes"
-arch=("x86_64")
+arch=('x86_64')
 url="https://acorn.io/"
 license=('Apache')
 groups=()
 depends=()
-makedepends=()
+makedepends=('git' 'go')
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,19 +19,23 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/acorn-io/acorn/releases/download/$pkgver/acorn-$pkgver-linux-amd64.tar.gz")
+source=("acorn-$pkgver::git+https://github.com/acorn-io/acorn#branch=release-$pkgver")
 noextract=()
-sha256sums=("462f0600b08cc300a6ee78723a186a4de1ffac554047c41aa769fa91967c65cd")
+sha256sums=("SKIP")
 validpgpkeys=()
 
+build() {
+	cd "acorn-$pkgver"
+	export CGO_ENABLED=0 
+	go build -o bin/acorn -ldflags "-s -w -X 'github.com/acorn-io/acorn/pkg/version.Tag=$pkgver'"
+}
+
 check() {
-	cd "$srcdir"
-	./acorn -v 
+	cd "acorn-$pkgver"
+	./bin/acorn -v
 }
 
 package() {
-	cd "${srcdir}"
-	install -Dm755 ./acorn -t "$pkgdir/usr/bin"
-	./acorn completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/acorn"
-	./acorn completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_acorn"
+	cd "acorn-$pkgver"
+	install -Dm755 bin/acorn "$pkgdir"/usr/bin/acorn
 }
