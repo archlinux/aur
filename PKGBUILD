@@ -2,13 +2,13 @@
 
 pkgname='nautilus-annotations-git'
 _extname='nautilus-annotations'
-pkgver='r18.5ac8a00'
+pkgver='r19.0d1eb61'
 pkgrel=1
 pkgdesc='Annotate files and directories'
 arch=('i686' 'x86_64')
 url='https://gitlab.gnome.org/madmurphy/nautilus-annotations'
 license=('GPL')
-depends=('glib2' 'gtksourceview4' 'libnautilus-extension')
+depends=('glib2' 'gtksourceview5' 'libnautilus-extension')
 provides=("${_extname}")
 conflicts=("${_extname}" "${_extname}-bin")
 source=("git+https://gitlab.gnome.org/madmurphy/${_extname}.git")
