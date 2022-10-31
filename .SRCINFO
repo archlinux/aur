@@ -1,0 +1,14 @@
+pkgbase = qemu-openbmc-git
+	pkgdesc = QEMU built with OpenBMC Project patches applied
+	pkgver = r95497.585070ac26
+	pkgrel = 1
+	url = https://github.com/openbmc/qemu
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	license = LGPL2.1
+	source = qemu-openbmc-git::git+https://github.com/openbmc/qemu.git
+	sha256sums = SKIP
+
+pkgname = qemu-openbmc-git
