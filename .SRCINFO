@@ -1,0 +1,16 @@
+pkgbase = python-hid-parser-git
+	pkgdesc = Typed pure Python library to parse HID report descriptors
+	pkgver = 0.0.4.r25.g4b7944f
+	pkgrel = 1
+	url = https://github.com/usb-tools/python-hid-parser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	makedepends = python-hypothesis
+	provides = python-hid-parser
+	conflicts = python-hid-parser
+	source = python-hid-parser-git::git+https://github.com/usb-tools/python-hid-parser.git
+	sha512sums = SKIP
+
+pkgname = python-hid-parser-git
