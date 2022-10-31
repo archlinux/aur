@@ -35,7 +35,7 @@ prepare() {
   cd ${pkgname%-*}
   git submodule init
   git submodule set-url subprojects/libgd "$srcdir/libgd"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   patch -p1 < "$srcdir/menubar.patch"
 }
 
