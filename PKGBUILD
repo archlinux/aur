@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-deps
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Cargo subcommand for building dependency graphs of Rust projects"
 url="https://github.com/m-cat/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("BSD")
 depends=("cargo")
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('85c3bb633b5569c40a712c1ef88d8025b3bb53ac90946ff80ebbfc5a1d324dc4')
+sha256sums=('1dd7ae9f245cc146fdfdc539d3d387926f3fc1d31e36aabd528be16c87e03ee8')
 
 build()
 {
