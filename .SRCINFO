@@ -1,0 +1,26 @@
+pkgbase = flax-git
+	pkgdesc = Flax Engine – multi-platform 3D game engine
+	pkgver = 1.4.6334.r157
+	pkgrel = 1
+	url = https://flaxengine.com
+	arch = x86_64
+	license = Flax EULA
+	makedepends = clang
+	makedepends = portaudio
+	makedepends = git
+	makedepends = git-lfs
+	depends = glibc
+	depends = libx11
+	depends = libxcursor
+	depends = libxinerama
+	depends = zlib
+	depends = libvorbis
+	depends = mono
+	optdepends = portaudio: PortAudio audio driver
+	optdepends = libpulse: PulseAudio audio driver
+	optdepends = jack: JACK audio driver
+	conflicts = flax
+	source = git+https://github.com/FlaxEngine/FlaxEngine.git
+	sha256sums = SKIP
+
+pkgname = flax-git
