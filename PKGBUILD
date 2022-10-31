@@ -2,7 +2,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r6934.251a648e
+pkgver=r6984.e40eb338
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
@@ -42,7 +42,7 @@ url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
-            '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
+            'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
 provides=("sway")
 conflicts=("sway")
 options=(debug)
