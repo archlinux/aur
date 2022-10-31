@@ -1,7 +1,7 @@
 pkgbase = npiet
 	pkgdesc = An interpreter for piet programs. Also includes npietedit and npiet-foogol
 	pkgver = 1.3f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bertnase.de/npiet/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = npiet
 	depends = libpng
 	depends = gd
 	depends = giflib
+	depends = tk
 	optdepends = tk: for npietedit
 	source = https://www.bertnase.de/npiet/npiet-1.3f.tar.gz
 	md5sums = aad7cf28dae509046078d4c98337e670

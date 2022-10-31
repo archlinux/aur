@@ -1,12 +1,12 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 pkgname=npiet
 pkgver=1.3f
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for piet programs. Also includes npietedit and npiet-foogol"
 arch=('i686' 'x86_64')
 url="https://www.bertnase.de/npiet/"
 license=('GPL')
-depends=('libpng' 'gd' 'giflib')
+depends=('libpng' 'gd' 'giflib' 'tk')
 optdepends=('tk: for npietedit')
 source=("https://www.bertnase.de/npiet/$pkgname-$pkgver.tar.gz")
 md5sums=('aad7cf28dae509046078d4c98337e670')
