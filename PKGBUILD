@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=rsop
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Simple, fast & configurable tool to open and preview files'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('63bd333cc9971914111958d2cff2e36ae5ff470008d16ebfd42e6a1d3fe57b14e90787f89a36b3f9023036c2327aa45f3c111c7c565018a9e410348232cfdc58')
+sha512sums=('9f9367b28991d7431193ff0d38114a0d31a89c5b8f81b1391a792ae4dc08b14eb0cdd0ca34f23588a2fe2c575ca53db50f074c96d05f515827aa8fbd0c09a61d')
 
 build() {
     cd "${pkgname}-${pkgver}"
