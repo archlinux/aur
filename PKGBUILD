@@ -1,34 +1,20 @@
 #!/bin/hint/bash
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
-# Adapted from blender-develop-git package by bartus.
-
-# Configuration.
-# shellcheck disable=SC2206
-[[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
-
-#some extra, unofficially supported stuff goes here:
-((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
-((DISABLE_USD)) && {
-  _CMAKE_FLAGS+=( -DWITH_USD=OFF )
-} || {
-  _CMAKE_FLAGS+=( -DWITH_USD=ON
-        -DUSD_ROOT=/usr )
-  depends+=( "usd=21.02" )
-}
-((DISABLE_NINJA)) ||  makedepends+=("ninja")
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=124371.dafc89bf92d
+pkgver=124406.bec4dc092e6
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
 url="https://upbge.org/"
 depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
-         "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio"
+         "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio" "libdecor"
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
-makedepends=("git" "cmake" "clang" "boost" "mesa" "llvm" wayland{,-protocols} "libxkbcommon")
+optdepends=("cuda: CUDA support in Cycles"
+         "optix>=7.1.0: OptiX support in Cycles"
+         "usd: USD export Scene")
+makedepends=("git" "cmake" "clang" "boost" "ninja" "mesa" "llvm" wayland{,-protocols} "libxkbcommon")
 provides=("blender")
 conflicts=("blender")
 license=("GPL")
@@ -68,7 +54,7 @@ pkgver() {
 prepare() {
   # update the submodules
   git -C "$srcdir/upbge" submodule update --init --recursive --remote
-  if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
+  if grep -q nvidia <(lsmod); then
     git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
   ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd_python.patch
@@ -81,21 +67,31 @@ build() {
 
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
-  if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
-  _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-          -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
-  ((DISABLE_OPTIX)) || _CMAKE_FLAGS+=( -DOPTIX_ROOT_DIR=/opt/optix )
-  if [[ -v _cuda_capability ]]; then
-    _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
-  fi
-  [ -f "/usr/lib/ccache/bin/nvcc-ccache" ] && export CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache
-  if _cuda_gcc=$(basename "$(readlink /opt/cuda/bin/gcc)") ; then
-    [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && export CUDAHOSTCXX=/usr/lib/ccache/bin/"$_cuda_gcc"
-  fi
+  if [ "$_CUDA_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
+                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+    [ -f "/usr/lib/ccache/bin/nvcc-ccache" ] && export CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache
+
+    if _cuda_gcc=$(basename "$(readlink /opt/cuda/bin/gcc)") ; then
+      [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && export CUDAHOSTCXX=/usr/lib/ccache/bin/"$_cuda_gcc"
+    fi
   fi
 
-  ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
-  cmake -G "$generator" -S "$srcdir/upbge" -B "$srcdir/build" \
+  # check for optix
+  _OPTIX_PKG=$(pacman -Qq optix 2>/dev/null) || true
+  if [ "$_OPTIX_PKG" != "" ]; then
+      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
+                      -DOPTIX_ROOT_DIR=/opt/optix )
+  fi
+
+  # check for universal scene descriptor
+  _USD_PKG=$(pacman -Qq usd=21.02 2>/dev/null) || true
+  if [ "$_USD_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_USD=ON
+                    -DUSD_ROOT=/usr )
+  fi
+
+  cmake -G "Ninja" -S "$srcdir/upbge" -B "$srcdir/build" \
     -C "$srcdir/upbge/build_files/cmake/config/blender_release.cmake" \
     -DWITH_GAMEENGINE=ON \
     -DWITH_PLAYER=ON \
@@ -112,13 +108,13 @@ build() {
     "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
-  if ((DISABLE_NINJA)); then make -C "$srcdir/build" ; else ninja -C "$srcdir/build" ${MAKEFLAGS:--j$(nproc)}; fi
+  ninja -C "$srcdir/build" ${MAKEFLAGS:--j$(nproc)}
 }
 
 package() {
   export DESTDIR="$pkgdir"
 
-  if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
+  ninja -C "$srcdir/build" install
 
   #undo rpath clean in cmake_install ( faster than patching CMakeLists.txt)
   cp "$srcdir/build/bin/blender" "$pkgdir/usr/bin/blender"
