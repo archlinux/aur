@@ -3,23 +3,19 @@
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=('gmsh' 'gmsh-docs')
 pkgver=4.11.1
-pkgrel=2
+pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
 url="https://gmsh.info"
 license=('custom')
-makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-meta' 'voro++'
-             'fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
+makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core' 'voro++'
+             'fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
              'glu' 'cgns' 'lapack')
 options=(!emptydirs)
-source=("${url}/src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion
-  gcc-13-1-compatibility.patch::https://gitlab.onelab.info/gmsh/gmsh/-/commit/fb81a9c9026700e078de947b4522cb39e543a86b.patch
-  gcc-13-2-compatibility.patch::https://gitlab.onelab.info/gmsh/gmsh/-/commit/aceb09c807b78ea26555f99fcb16c4f87c31fb5a.patch)
+source=("${url}/src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
 sha256sums=('c5fe1b7cbd403888a814929f2fd0f5d69e27600222a18c786db5b76e8005b365'
             '43a8ca33ac917ee7196fdae305ff2c8cb9ae1072569ee546c0ce8ff580c966ae'
-            '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef'
-            'c315dc4912191b2821fe44b9e75799cb6503bf800010c6bb9d34ee0ed5f0398f'
-            'beb9404bbb9377e6240b369dd70cfc317209202cb32bdc55f4e6fc5837b2da12')
+            '11605e97636a56cf51e445e65019526ee253bd2e0553fb71ba6d94488dcd34ef')
 
 prepare() {
    cd "${srcdir}/${pkgname}-${pkgver}-source"
@@ -31,8 +27,6 @@ prepare() {
        -i src/fltk/graphicWindow.cpp
    sed -e "s|https://gmsh.info/|file:///usr/share/licenses/gmsh/|" \
        -i src/fltk/helpWindow.cpp
-   patch -p1 -i ../gcc-13-1-compatibility.patch
-   patch -p1 -i ../gcc-13-2-compatibility.patch
 }
 
 build() {
@@ -46,16 +40,17 @@ build() {
       -DENABLE_SYSTEM_CONTRIB=ON -DENABLE_BLAS_LAPACK=ON \
       -DENABLE_CGNS=ON -DENABLE_ANN=ON -DENABLE_ALGLIB=ON \
       -DENABLE_METIS=ON -DENABLE_OCC=ON -DENABLE_MED=ON \
-      -DENABLE_VOROPP=ON -DENABLE_EIGEN=OFF -DENABLE_PETSC=FALSE ..
+      -DENABLE_VOROPP=ON -DENABLE_EIGEN=ON -DENABLE_PETSC=TRUE ..
 
    make
    LC_ALL=C make doc
 }
 
 package_gmsh() {
-   depends=('fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
+   depends=('fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
             'glu' 'cgns' 'lapack')
    optdepends=('gmsh-docs: docs for gmsh'
+            'python2: for gmsh.py'
             'python: for gmsh.py'
             'julia: for gmsh.jl')
 
