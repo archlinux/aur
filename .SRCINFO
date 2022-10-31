@@ -19,6 +19,7 @@ pkgbase = tabby-terminal-git
 	depends = alsa-lib
 	provides = tabby-terminal
 	conflicts = tabby-terminal
+	replaces = terminus-terminal-git
 	source = Tabby::git+https://github.com/Eugeny/tabby
 	sha256sums = SKIP
 
