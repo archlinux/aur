@@ -3,7 +3,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=lib32-sdl2_image
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='A simple library to load images of various formats as SDL surfaces'
 arch=(x86_64)
@@ -38,7 +38,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
-    --disable-static
+    --disable-static \
+    --disable-jxl
   make
 }
 
