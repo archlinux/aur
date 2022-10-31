@@ -5,8 +5,6 @@ pkgbase = oxidizebot-bin
 	url = https://github.com/udoprog/OxidizeBot
 	arch = x86_64
 	license = Apache
-	makedepends = cargo
-	makedepends = git
 	source = https://github.com/udoprog/OxidizeBot/releases/download/1.1.0/oxidize-1.1.0-linux-x86_64.zip
 	sha256sums = 133349e6a18510fc14c3010b5fbf2619d51f3a819342bc401f1ed1a820f5da4b
 
