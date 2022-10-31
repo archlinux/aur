@@ -1,8 +1,8 @@
-# Maintainer: PortWINE-Linux.ru (tergoevm@gmail.com)
+# Maintainer: LINUX-GAMING.RU (tergoevm@gmail.com)
 
 pkgname=portproton
 pkgver=1.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
 url="https://linux-gaming.ru"
@@ -22,7 +22,7 @@ source=("https://raw.githubusercontent.com/Castro-Fidel/PortWINE/master/portwine
 sha256sums=('349b16b86bb54bc74b8972725ee0c567e8b45e1fc2d04c0805074e6e56e0a137'
             '7abdcc92de357592043b9db45e1c5913ee4c49a340e6e4d49bb2099893aae24c'
             'b27e5a701555b3cccdba0d902c80888d6b0e6a9ed2fb4ced8dfd915207683975'
-            '70c0832c10f5fb81335d0b2ce0d29779db98e15801c295d247e3369eddc85328')
+            '65d12e4e0be4dd5e58324593563c8c79af42876d63f51225364b968117c6ff4f')
 
 package() {
   install -Dm755 "PortProton_$pkgver" "$pkgdir/usr/bin/$pkgname"
