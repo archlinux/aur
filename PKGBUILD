@@ -6,7 +6,7 @@
 
 _pkgname=garcon
 pkgname=$_pkgname-git
-pkgver=4.16pre1.3.g189c43f
+pkgver=garcon.4.17.1.18.g563e07f
 pkgrel=1
 pkgdesc="Freedesktop.org compliant menu library"
 arch=(i686 x86_64)

@@ -1,6 +1,6 @@
 pkgbase = garcon-git
 	pkgdesc = Freedesktop.org compliant menu library
-	pkgver = 4.16pre1.3.g189c43f
+	pkgver = garcon.4.17.1.18.g563e07f
 	pkgrel = 1
 	url = http://wiki.xfce.org/dev/garcon
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = garcon-git
 	depends = libxfce4util-git
 	depends = libxfce4ui-git
 	depends = gtk3
-	provides = garcon=4.16pre1.3.g189c43f
+	provides = garcon=garcon.4.17.1.18.g563e07f
 	conflicts = garcon
 	conflicts = libxfce4menu
 	conflicts = libxfce4menu-git
@@ -25,4 +25,3 @@ pkgbase = garcon-git
 	sha512sums = SKIP
 
 pkgname = garcon-git
-
