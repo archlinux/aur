@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=mapproj
-_cranver=1.2.8
+_cranver=1.2.9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(custom:LPL)
 depends=(r-maps)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('865f108f1ee54cda38571b86cd46063a903824d9b4eabfdf75218023d08a7781')
+sha256sums=('da28fab490072e0b2ff5e124092d6b3146e4c01b2386e23a2ea4b0e9fc72df82')
 
 build() {
   mkdir -p build
