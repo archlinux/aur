@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <gardenapple at posteo.net>
 
 pkgname=lbrynet-bin
-pkgver=0.110.0
+pkgver=0.112.0
 pkgrel=1
 pkgdesc='Implementation of the LBRY Network protocols, without the desktop app'
 arch=('x86_64')
@@ -16,5 +16,5 @@ package() {
    install -Dm755 "${srcdir}/lbrynet" -t "${pkgdir}/usr/bin/"
    install -Dm644 "${srcdir}/lbrynet-LICENSE-$pkgver" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
-b2sums=('9cd01bcbe048b8390569bd4ad92a27e02c554db097c8e24c9c818b660911458904aa3cfcfa71a262848c482096baedba7338eeb47014a1e952825dc66566ae4e'
+b2sums=('b872e7ce938536b8e6ec4df4c9296637601d7ecf29dcf091f5d406a9780d46ae6a1de92013a18f1130a8bb479325f39ce26ccc42b75e66848723dace186c928c'
         '06b4c7851cc5ca747e9bf82bc32a4e8100653bd7195a96750252e1d55618216256caea81d2e552a6066f4465c35b74cf079c7e7d9df23d6713669cd4d6636a42')
