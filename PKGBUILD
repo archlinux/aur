@@ -2,7 +2,7 @@
 # Contributor: Roey Darwish Dror <roey.ghost@gmail.com>
 
 pkgname=topgrade
-pkgver=10.0.1
+pkgver=10.1.0
 pkgrel=1
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
@@ -10,7 +10,7 @@ url='https://github.com/topgrade-rs/topgrade'
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('908ec302fda3a0549e49c4c19f1e3e2cbaba08dd8b7301c59370569a86a9f09a')
+sha256sums=('73412857d5bfe86c20e47e2254ce506fecb84c976f673a8e10e42d4d98c20b50')
 
 build() {
   cd "$pkgname-$pkgver"
