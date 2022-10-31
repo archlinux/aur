@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=tiempo-git
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A command line time tracking application'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://gitlab.com/categulario/tiempo-rs'
 license=('GPL3')
 depends=()
 optdepends=('sqlite: for manually editing the database')
-makedepends=('cargo' 'git' 'python-sphinx' 'gzip' 'make')
+makedepends=('cargo' 'git' 'python-sphinx' 'python-tomlkit' 'gzip' 'make')
 provides=('tiempo')
 conflicts=('tiempo')
 source=('tiempo-git::git+https://gitlab.com/categulario/tiempo-rs')
