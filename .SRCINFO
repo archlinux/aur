@@ -11,7 +11,7 @@ pkgbase = python-moderngl
 	makedepends = python-wheel
 	depends = python
 	depends = python-glcontext
-	source = https://files.pythonhosted.org/packages/source/m/moderngl/moderngl-5.7.0.tar.gz
-	sha256sums = 3434d9e1ca268c963f744beb4ddc4747cf1f435959536cd2599e377fb62abd3f
+	source = https://github.com/moderngl/moderngl/archive/refs/tags/5.7.1.tar.gz
+	b2sums = 2fdca588b4abe11373496288f80367e8c16ac232410ac0b4061f26f458de7713b32ffd517bdeaf23a9c47b5f249a4788a428bba5fe54e86d9996daafa6f91b1b
 
 pkgname = python-moderngl
