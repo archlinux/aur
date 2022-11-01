@@ -2,9 +2,9 @@
 pkgname=brother-dcp110c
 pkgver=1.0.2
 pkgrelbr=1
-pkgrel=3
+pkgrel=4
 pkgdesc="LPR and CUPS driver for the Brother DCP110C"
-arch=('i686' 'x86_64' 'armv7l')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')

@@ -1,12 +1,12 @@
 pkgbase = brother-dcp110c
 	pkgdesc = LPR and CUPS driver for the Brother DCP110C
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-dcp110c.install
 	arch = i686
 	arch = x86_64
-	arch = armv7l
+	arch = armv7h
 	license = custom:brother commercial license
 	makedepends = tcsh
 	depends = cups
