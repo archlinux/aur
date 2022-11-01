@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Bookman Cockpit
+GenericName=Bookman Cockpit
+Comment=Launch Bookman Cockpit
+Icon=bookman-cockpit
+Categories=Finance;
+Exec=bookman-cockpit

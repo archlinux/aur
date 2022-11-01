@@ -1,0 +1,14 @@
+<configuration>
+
+  <contextListener class="de.bookman.start.LoggerStartupListener"/>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>|%d| %-5p |%.40c| - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="${LOG_LEVEL}">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</configuration>
