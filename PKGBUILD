@@ -5,7 +5,7 @@
 
 pkgname=ruby2.7
 pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='An object-oriented language for quick and easy programming, version 2.7'
 url='https://www.ruby-lang.org/en/'
