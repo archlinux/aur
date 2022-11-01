@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=rofimoji-git
-pkgver=6.0.0.rc1.r3.gd48f152
+pkgver=6.0.0.r0.gc5c9f05
 pkgrel=1
 pkgdesc='Character picker for rofi'
 arch=('any')
@@ -49,6 +49,6 @@ package() {
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/${pkgname%-git}-6.0.0rc1.dist-info/LICENSE \
+  ln -s "$site_packages"/${pkgname%-git}-${pkgver%%.r*}.dist-info/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
