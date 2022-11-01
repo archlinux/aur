@@ -1,11 +1,11 @@
 pkgbase = fortune-mod-ibash
 	pkgdesc = A collection of quotes for fortune-mod from https://ibash.org.ru
-	pkgver = 2022.09
+	pkgver = 2022.10
 	pkgrel = 1
 	url = http://ibash.org.ru
 	arch = any
 	groups = fortune-mods
-	license = ?
+	license = unknown
 	makedepends = git
 	makedepends = python
 	makedepends = python-requests

@@ -1,11 +1,11 @@
 # Maintainer: Riderius <riderius.help@gmail.com>
 
 pkgname=fortune-mod-ibash
-pkgver=2022.09
+pkgver=2022.10
 pkgrel=1
 pkgdesc="A collection of quotes for fortune-mod from https://ibash.org.ru"
 url="http://ibash.org.ru"
-license=("?")
+license=("unknown")
 makedepends=('git' 'python' 'python-requests' 'python-beautifulsoup4' 'python-lxml')
 depends=('fortune-mod')
 groups=('fortune-mods')
