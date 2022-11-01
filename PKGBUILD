@@ -2,7 +2,7 @@
 # Contributor: @xabbu <https://github.com/xabbu>
 # Contributor: Stefano Capitani <stefano_at_manjaro_dot_org>
 # Contributor: Mark Wagie <mark_at_manjaro_dot_org>
-# Contributor: Jonathon Fernyhough
+# Contributor: realqhc <https://github.com/realqhc>
 
 # Archlinux credits:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -13,29 +13,29 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=42.5
+pkgver=43.0
 pkgrel=1
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop 
-         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile libsysprof-capture)
+         libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
+         gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
+         libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
-provides=(mutter libmutter-10.so)
+checkdepends=(xorg-server-xvfb wireplumber python-dbusmock zenity)
+provides=(mutter libmutter-11.so)
 conflicts=(mutter)
-_scaling_commit=c3ca443d49da639e73f27ab92a758a41259ba732 # Commit c3ca443d
-_commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97  # tags/42.5^0
+_scaling_commit=fd7ba96ccf650634fec883e37f7b07557434a785 # Commit fd7ba96c
+_commit=bdf3470a8a89206a39dc45824a8080dc6a9666ca  # tags/43.0^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-	"Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/11525ce32c13b542bbfcb7f43a76d51111077cea/Support-Dynamic-triple-double-buffering.patch")
+	"Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/abc3b7c285779a719c5b9a99b477657a8021727e/Support-Dynamic-triple-double-buffering.patch")
 sha256sums=('SKIP'
-            '8812f1e3144e86ac7c2d84a8e61ca75c8fd1f7a04b2186da1c926afc2719eea7'
-            '2957ab1701202da129a79945a1f5fb5676c13cfe1d2159b7fa8755519f1c9580')
+            '66f912f30e14e51c83f087166b4a41a5a8bba94cb57c39bf182df4d5af7e7b2c'
+            '169e123d57045ac719c2115249ab76f4e34d77066647c1756f6c276ad5227a59')
 
 pkgver() {
   cd mutter
@@ -95,4 +95,3 @@ _pick() {
 package() {
   meson install -C build --destdir "$pkgdir"
 }
-

@@ -1,6 +1,6 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = A window manager for GNOME with X11 fractional scaling patch
-	pkgver = 42.5
+	pkgver = 43.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = mutter-x11-scaling
 	checkdepends = xorg-server-xvfb
 	checkdepends = wireplumber
 	checkdepends = python-dbusmock
+	checkdepends = zenity
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = egl-wayland
@@ -21,7 +22,6 @@ pkgbase = mutter-x11-scaling
 	depends = gsettings-desktop-schemas
 	depends = libcanberra
 	depends = startup-notification
-	depends = zenity
 	depends = libsm
 	depends = gnome-desktop
 	depends = libxkbcommon-x11
@@ -33,14 +33,16 @@ pkgbase = mutter-x11-scaling
 	depends = graphene
 	depends = libxkbfile
 	depends = libsysprof-capture
+	depends = lcms2
+	depends = colord
 	provides = mutter
-	provides = libmutter-10.so
+	provides = libmutter-11.so
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97
-	source = x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/c3ca443d49da639e73f27ab92a758a41259ba732/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch
-	source = Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/11525ce32c13b542bbfcb7f43a76d51111077cea/Support-Dynamic-triple-double-buffering.patch
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=bdf3470a8a89206a39dc45824a8080dc6a9666ca
+	source = x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/fd7ba96ccf650634fec883e37f7b07557434a785/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch
+	source = Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/abc3b7c285779a719c5b9a99b477657a8021727e/Support-Dynamic-triple-double-buffering.patch
 	sha256sums = SKIP
-	sha256sums = 8812f1e3144e86ac7c2d84a8e61ca75c8fd1f7a04b2186da1c926afc2719eea7
-	sha256sums = 2957ab1701202da129a79945a1f5fb5676c13cfe1d2159b7fa8755519f1c9580
+	sha256sums = 66f912f30e14e51c83f087166b4a41a5a8bba94cb57c39bf182df4d5af7e7b2c
+	sha256sums = 169e123d57045ac719c2115249ab76f4e34d77066647c1756f6c276ad5227a59
 
 pkgname = mutter-x11-scaling
