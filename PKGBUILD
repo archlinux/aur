@@ -1,16 +1,16 @@
 pkgname=pantum-m6200-m6500-m6550-m6600-ms6000-driver
-pkgver="1.1.94"
+pkgver="1.1.99"
 pkgrel="1"
 pkgdesc="Linux driver for Pantum printers (MS6000-M6200-M6500-M6550-M6600) V$pkgver"
 arch=('x86_64' 'x86' 'i686' 'i386' 'arm' "aarch64")
 license=('proprietary')
 depends=('sane' 'cups')
 source=(
-    "https://drivers.pantum.com/userfiles/files/download/%E9%A9%B1%E5%8A%A8%E6%96%87%E4%BB%B6/2013/Pantum%20Linux%20Driver%20V1_1_94-1.zip"
+    "https://drivers.pantum.com/userfiles/files/download/%E9%A9%B1%E5%8A%A8%E6%96%87%E4%BB%B6/2013/Pantum%20Ubuntu%20Driver%20V1_1_99-1.zip"
 )
 
 sha256sums=(
-    "676f1b0761e1be66511a984e4d163a67c75d05e3e31f3a6eafbc471b9e10f959"
+    "64767c41223cb10f86fdbce37122580b00483233143fd703fe7d225f34df85c8"
 )
 
 extract_deb()
