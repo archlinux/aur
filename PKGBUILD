@@ -23,5 +23,7 @@ source=("https://packages.beyondidentity.com/public/linux-authenticator/raw/vers
 sha512sums=('74a8751f941057e4a38b3f587e8af8c517eff7ccb41de4faabc8068b92b2c927829c6cb5a6c217e9c2ed7a7da5dbdb242d0e674986ec297ee0da6b188d738d15')
 
 package() {
-  cp -R "${srcdir}/"* "${pkgdir}"
+  cp -R "${srcdir}/etc" "${pkgdir}/etc"
+  cp -R "${srcdir}/opt" "${pkgdir}/opt"
+  cp -R "${srcdir}/usr" "${pkgdir}/usr"
 }
