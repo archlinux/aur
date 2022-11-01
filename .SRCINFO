@@ -1,6 +1,6 @@
 pkgbase = xsnow
 	pkgdesc = Let it snow on your desktop
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 2
 	url = https://sourceforge.net/projects/xsnow/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = xsnow
 	conflicts = xsnow-bin
 	conflicts = xsnow-legacy
 	conflicts = xsnow-comp-patch-git
-	source = https://nav.dl.sourceforge.net/project/xsnow/xsnow-3.5.2.tar.gz
-	sha256sums = 9bde92d8d023ff6c2a26beb91905ad6f65aacf4de67296743fc710388a23ef7d
+	source = https://nav.dl.sourceforge.net/project/xsnow/xsnow-3.5.3.tar.gz
+	sha256sums = c3f482ae98b4685d25cafad935fddb42b01ade725c7a416b737861bae71deec1
 
 pkgname = xsnow
