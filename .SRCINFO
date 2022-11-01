@@ -1,7 +1,7 @@
 pkgbase = r-ggpubr
 	pkgdesc = 'ggplot2' Based Publication Ready Plots
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 7
 	url = https://cran.r-project.org/package=ggpubr
 	arch = any
 	license = GPL
