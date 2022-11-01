@@ -6,7 +6,7 @@ pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
 _pkgver=2022-10-16
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
@@ -41,5 +41,5 @@ package() {
     cd "$_pkgname-$_pkgver" || return 1
     install -dm755 "$pkgdir/usr/share/themes"
     install -D --mode=644 "$srcdir/options.txt" --target-directory="$pkgdir/etc/qogir-gtk-theme/"
-    ./install.sh ${INSTALL_OPTS} --dest "$pkgdir/usr/share/themes"
+    ./install.sh ${INSTALL_OPTS//--logo/--icon} --dest "$pkgdir/usr/share/themes"
 }
