@@ -15,7 +15,6 @@ makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
-        postgresql-fix-perl-5.36.patch
         postgresql.pam
         postgresql.logrotate
         postgresql.service
@@ -24,7 +23,6 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql.tmpfiles)
 sha256sums=('34b3f1c69408e22068c0c71b1827691f1c89153b0ad576c1a44f8920a858039c'
             'd8173b336551d022f00792c0e2f1a52c6938a0003ce86b4f3cfd3aa84128612e'
-            'bd8e0f6ecb7c1b9b5d34eaa1d456cac20160e8350a9a151e31557a0ec7a51deb'
             '1422ca85a926abfeef9ce4b49710f2d403a3164a727fee221a24af49cd7372f8'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
@@ -34,7 +32,6 @@ sha256sums=('34b3f1c69408e22068c0c71b1827691f1c89153b0ad576c1a44f8920a858039c'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
 b2sums=('7285dcfc8ed6cf2dbbe29d894dbcef53fad18cbeddbfdb3a43893234a1ee75a9bf5d966968a0c481a8ab15bf8a37400bf6eb4b57a83359501b729e70398e3551'
         '7204c1ed073b7f60cd4ddf1ce0802c25ce8fa3b5a7dd0a92869775e5a25262ed5d8e0534aee8568ac93b049d6d215fd49d2a92dc487058e92273685eb5e5ba05'
-        '748515d1fcb0176dac4d74435e8fbe655989e31cc65cb2871bf05822dd5cc52b2e4014b8915f039c6f09b0230236add830ce981c7dc1b2269bdaad6620e88e8b'
         'b84313702a27c4ab9d52169b9678a3ae778ad39639de8b07596c322dee32e7ca9418c344f59b5df635fd10fb70252b4d77e40dee80d5d895eec21979d45c33b5'
         '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81'
         '2209b7550acad7955102ec6922754b4046b2a2ad2a7e1cfb2cc4053c0705abac7aa7d7968eab617f50894797d06345f51c9a669926bd2a77dcf688206a2027e0'
@@ -47,7 +44,6 @@ prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
-  patch -p1 < ../postgresql-fix-perl-5.36.patch
 }
 
 build() {
