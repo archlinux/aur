@@ -9,6 +9,7 @@ pkgdesc='Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data pac
 arch=('x86_64')
 url='https://mcreator.net'
 license=('custom')
+conflicts=("$pkgname-eap")
 noextract=("$pkgname-$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/releases/download/$pkgver/MCreator.$_pkgvermajor.Linux.64bit.tar.gz"
         "$pkgname.desktop")
