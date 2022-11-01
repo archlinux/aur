@@ -1,6 +1,6 @@
 pkgbase = opengothic
 	pkgdesc = Open source remake of Gothic 2: Night of the raven
-	pkgver = 0.59
+	pkgver = 0.63
 	pkgrel = 1
 	url = https://github.com/Try/OpenGothic
 	arch = x86_64
@@ -14,17 +14,20 @@ pkgbase = opengothic
 	depends = gcc-libs
 	depends = libx11
 	depends = vulkan-icd-loader
-	conflicts = bullet
+	depends = bullet
+	depends = physfs
 	options = !emptydirs
-	source = git+https://github.com/Try/OpenGothic#commit=2de4fd8cf49f4f4626ae715d257be7594b0b79b5
-	source = git+https://github.com/Try/Tempest.git#commit=09b49484861b63f2e7676fc2eb3413b7bf12a3b8
+	source = git+https://github.com/Try/OpenGothic#commit=15d89bca24c04bfdf287d9b5ec12a65c9cb69a49
+	source = git+https://github.com/Try/Tempest.git#commit=827449a81776ecfc8e6b34314abf5d5eb9b5134b
 	source = git+https://github.com/schellingb/TinySoundFont.git#commit=d4ffcdc8a34d3f61f22e4b283b4c100f5adf4b82
-	source = git+https://github.com/Try/ZenLib.git#commit=0867083b2f882373f81805ba096bcf07c63e42af
-	source = git+https://github.com/bulletphysics/bullet3.git#commit=ebe1916b90acae8b13cd8c6b637d8327cdc64e94
+	source = git+https://github.com/Try/ZenLib.git#commit=65b2c1f34e3d3dcd4dd6e6e1c9526996f76e0fe3
+	source = bullet_dynamic.diff
+	source = zenlib_dynamic_physfs.diff
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 5aa822c283aefa0da9c75ae87e37ec66d50e71f65191187bb15e48a43fb6ea713278dd4a056e9ad04a25a622cdd85834ba5e2c4bf60bd178a46ce4eaba082981
+	sha512sums = 331db32a87762503d4b6abda25369497e8e8660ea381b4363a7a6fccda65d4b1595f83fb27e05f368a943b2b00968ecb5ae8f2323a40ac85f37d68ed4bb172d0
 
 pkgname = opengothic

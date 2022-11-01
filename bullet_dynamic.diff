@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0c193f9..aa927c8d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,16 +111,10 @@ set(GLFW_BUILD_EXAMPLES          OFF CACHE INTERNAL "")
+ set(GLFW_BUILD_TESTS             OFF CACHE INTERNAL "")
+ set(GLFW_BUILD_DOCS              OFF CACHE INTERNAL "")
+ set(BUILD_BULLET3                OFF CACHE INTERNAL "") # Can use bullet2, bullet3 wants to build examples...
+-add_subdirectory(lib/bullet3)
+ if(NOT MSVC)
+-  target_compile_options(BulletDynamics         PRIVATE -Wno-argument-outside-range)
+-  target_compile_options(BulletInverseDynamics  PRIVATE -Wno-argument-outside-range)
+-  target_compile_options(BulletSoftBody         PRIVATE -Wno-argument-outside-range)
+-  target_compile_options(Bullet3Common          PRIVATE -Wno-argument-outside-range)
+-  target_compile_options(BulletCollision        PRIVATE -Wno-argument-outside-range)
+-  target_compile_options(LinearMath             PRIVATE -Wno-argument-outside-range)
++  find_package( Bullet REQUIRED )
+ endif()
+-include_directories(lib/bullet3/src)
++include_directories(${BULLET_INCLUDE_DIR})
+ target_link_libraries(${PROJECT_NAME} BulletDynamics BulletCollision LinearMath)
+ 
+ # script for launching in binary directory
