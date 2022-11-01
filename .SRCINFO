@@ -1,6 +1,6 @@
 pkgbase = linux-test-project-git
 	pkgdesc = Collection of tools for testing the Linux kernel and related features
-	pkgver = 20210121.r115.g47e1af27f
+	pkgver = 20220930.r75.g8cd3bf314
 	pkgrel = 1
 	url = https://linux-test-project.github.io/
 	arch = i686
@@ -11,10 +11,13 @@ pkgbase = linux-test-project-git
 	depends = bash
 	depends = gawk
 	depends = libcap
-	depends = libtirpc
+	depends = perl
 	depends = numactl
+	depends = libaio
+	depends = libmnl
+	depends = python
+	options = !lto
 	source = git+https://github.com/linux-test-project/ltp.git
 	sha256sums = SKIP
 
 pkgname = linux-test-project-git
-
