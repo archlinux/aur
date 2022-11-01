@@ -1,7 +1,7 @@
 pkgbase = r-contrast
 	pkgdesc = A Collection of Contrast Methods
-	pkgver = 0.24.1
-	pkgrel = 3
+	pkgver = 0.24.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=contrast
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-contrast
 	optdepends = r-splines
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/contrast_0.24.1.tar.gz
-	sha256sums = 589103633eb9d5958152189f52ba04bbe055376e31bfdf6f597f788aee612984
+	source = https://cran.r-project.org/src/contrib/contrast_0.24.2.tar.gz
+	sha256sums = 4541acae0f18906c960141b6aafa3eaaa2451efdf7a50952cd83ebf7ab6cefcc
 
 pkgname = r-contrast
