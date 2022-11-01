@@ -1,8 +1,8 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=navidrome
-pkgver=0.47.5
-pkgrel=2
+pkgver=0.48.0
+pkgrel=1
 pkgdesc='Modern Music Server and Streamer compatible with Subsonic/Airsonic'
 arch=('x86_64')
 url='https://www.navidrome.org'
@@ -15,7 +15,7 @@ source=(
     "navidrome.toml"
     "sysusers.conf"
 )
-sha256sums=('68f9f013d8e17a769770cdd7a1f4d9fc279b3d5e83418bbb54018781de96ab76'
+sha256sums=('2f596ceefcc40849554ad633d288ffd7fe1f0fe6aed7e79d03e54a5fb44b66d6'
             '1a155be78b109b5e6d18eaae5c35f1ff0f084d48e44ab5cf8e0a87c9d6bcd9fc'
             '23e62c707f3518f917e578979407cb26af2fd021fe88e580b920ccd05458ce13'
             'ee74a732f807e314f97e22b907882d16d125512d6ee23a36251fde2b3b7e608c')
