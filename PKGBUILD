@@ -1,13 +1,13 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=aursh
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple AUR helper written in bash"
 arch=('any')
 url="https://github.com/huboles/aursh"
 license=('GPL')
 groups=('aursh')
-depends=('bash' 'git' 'curl')
+depends=('bash' 'git' 'curl' 'jq')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 package() {
     cd "$srcdir" || exit
