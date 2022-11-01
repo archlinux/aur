@@ -1,8 +1,8 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_pkgver=2.1.7-beta
+_pkgver=2.1.8
 pkgname=espanso
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
