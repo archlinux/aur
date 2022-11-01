@@ -1,7 +1,7 @@
 pkgbase = r-styler
 	pkgdesc = Non-Invasive Pretty Printing of R Code
-	pkgver = 1.7.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=styler
 	arch = any
 	license = MIT
@@ -28,7 +28,7 @@ pkgbase = r-styler
 	optdepends = r-roxygen2
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/styler_1.7.0.tar.gz
-	sha256sums = 3e49f3ac2e65f9bdab15837a4e629db35c8fd0a15a74daa057354ba01e3022ce
+	source = https://cran.r-project.org/src/contrib/styler_1.8.0.tar.gz
+	sha256sums = 4f8b74c1ac158b0a4433b6008da6bb708f3c9ed1c7fb9bb5d79748858cb484c7
 
 pkgname = r-styler

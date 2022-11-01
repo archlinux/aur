@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=styler
-_pkgver=1.7.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.0
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Non-Invasive Pretty Printing of R Code'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e49f3ac2e65f9bdab15837a4e629db35c8fd0a15a74daa057354ba01e3022ce')
+sha256sums=('4f8b74c1ac158b0a4433b6008da6bb708f3c9ed1c7fb9bb5d79748858cb484c7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
