@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-nvidia-backlight-patch
 	pkgdesc = GNOME Settings Daemon with patch to skip nvidia backlight on devices with hybrid graphics
-	pkgver = 42.2
-	pkgrel = 1
+	pkgver = 43.0
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = x86_64
 	groups = gnome
@@ -26,18 +26,18 @@ pkgbase = gnome-settings-daemon-nvidia-backlight-patch
 	depends = upower
 	depends = librsvg
 	depends = libgweather-4
-	depends = geocode-glib
+	depends = geocode-glib-2
 	depends = geoclue
 	depends = nss
 	depends = libgudev
 	depends = gtk3
 	depends = libnm
-	depends = gcr
+	depends = gcr-4
 	optdepends = usbguard: USB protection support
 	provides = gnome-settings-daemon
 	conflicts = gnome-settings-daemon
 	backup = etc/xdg/Xwayland-session.d/00-xrdb
-	source = gnome-settings-daemon-nvidia-backlight-patch::git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=4bdf8b5ae38a382be4126bbc0ce8d87bac46177e
+	source = gnome-settings-daemon-nvidia-backlight-patch::git+https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git#commit=7bde651053bdf18fe66cbd4ce697cb97a6ea556b
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = backlight_skip_nvidia.patch
 	sha256sums = SKIP
