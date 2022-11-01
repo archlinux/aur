@@ -1,13 +1,14 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
+# Maintainer: Evgeniy Dombek <edombek@yandex.ru>
+# Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Xwang <xwaang1976@gmail.com>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Andrew Fischer <andrew_at_apastron.co>
 
 pkgbase=openfoam
-pkgname=openfoam-org
-_subver=20220831
-_pkgver=10
-pkgver=10.20220831
+pkgname=openfoam-9-org
+_subver=20220602
+_pkgver=9
+pkgver=9.20220602
 pkgrel=1
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
@@ -21,7 +22,7 @@ provides=('openfoam')
 conflicts=('openfoam-com')
 source=("https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz")
 install="${pkgbase}.install"
-md5sums=('51e74ce28c90ca29cefb43fdf6fb857a')
+md5sums=('d3130138327b8cf74afab2729718f3f8')
 
 prepare() {
   mv $srcdir/$_gitname-$_subver $srcdir/$_distpkgbase-$_pkgver
