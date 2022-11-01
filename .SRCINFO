@@ -1,6 +1,6 @@
 pkgbase = picplanner-git
 	pkgdesc = Plan your next photo locations
-	pkgver = r166.17734a5
+	pkgver = 0.3.2.r0.g4962fe6
 	pkgrel = 1
 	url = https://gitlab.com/Zwarf/picplanner
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = picplanner-git
 	makedepends = meson
 	depends = libadwaita
 	depends = libshumate
-	depends = libgweather
-	depends = geocode-glib
-	depends = protobuf
+	depends = libgweather-4
+	depends = geocode-glib-2
 	depends = protobuf-c
 	provides = picplanner
 	conflicts = picplanner
 	source = git+https://gitlab.com/Zwarf/picplanner.git
+	source = 0179-fix-dependency.patch
 	b2sums = SKIP
+	b2sums = b3c0209ccafac973a3a04f509f0dd7a2ea49d210321b8a1f83c86fb1d17d08793998e9a88ae86b9abc066094b543496e075d1552074a549b13cb2996c72f3b68
 
 pkgname = picplanner-git

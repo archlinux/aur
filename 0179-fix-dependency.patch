@@ -1,0 +1,28 @@
+From e9de023f3c544c329103d8f5c5b89e21206af031 Mon Sep 17 00:00:00 2001
+From: Igor Dyatlov <dyatlov.igor@gmail.com>
+Date: Thu, 15 Sep 2022 19:05:21 +0300
+Subject: [PATCH 179/179] fix dependency
+
+---
+ src/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index ba91287..5ed35d9 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -22,9 +22,9 @@ picplanner_deps = [
+   dependency('gtk4'),
+   dependency('libadwaita-1'),
+   dependency('shumate-1.0'),
+-  dependency('geocode-glib-2.0'),
++  dependency('geocode-glib-2.0', version: '>=3.26.3'),
+   dependency('gweather4'),
+-  dependency('libgeoclue-2.0'),
++  dependency('libgeoclue-2.0', version: '>=2.4'),
+   meson.get_compiler('c').find_library('m', required: false),
+ ]
+ 
+-- 
+2.37.3
+
