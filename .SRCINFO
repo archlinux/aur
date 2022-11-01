@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
-	pkgdesc = Sega Dreamcast core
-	pkgver = 2.0.r58.g387b9778
+	pkgdesc = Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core
+	pkgver = 2.0.r75.gc15f446f
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
