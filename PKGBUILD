@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mkv-extractor-qt-git
-pkgver=5.5.9.r7.c321f99
+pkgver=22.08.30a.r28.bad90bb
 pkgrel=1
 pkgdesc='Graphical MKV demultiplexer. (GIT version)'
 arch=('any')
@@ -16,7 +16,8 @@ optdepends=('ffmpeg: for DTS conversion'
             'qtesseract5: subtitle conversion'
             'bdsup2subpp-git: SUP subtitle conversion'
             )
-makedepends=('qt5-tools'
+makedepends=('git'
+             'qt5-tools'
              'imagemagick'
              )
 conflicts=('mkv-extractor-qt')
@@ -60,9 +61,9 @@ package() {
 
   install -Dm644 CodecListFile.py "${pkgdir}/usr/share/${pkgname}/CodecListFile.py"
   install -Dm755 MKVExtractorQt5.py "${pkgdir}/usr/share/${pkgname}/MKVExtractorQt5.py"
-  install -Dm644 MKVExtractorQt5_cs_CZ.qm "${pkgdir}/usr/share/${pkgname}/MKVExtractorQt5_cs_CZ.qm"
-  install -Dm644 MKVExtractorQt5_fr_FR.qm "${pkgdir}/usr/share/${pkgname}/MKVExtractorQt5_fr_FR.qm"
-  install -Dm644 MKVExtractorQt5_es_ES.qm "${pkgdir}/usr/share/${pkgname}/MKVExtractorQt5_es_ES.qm"
+  install -Dm644 Languages/MKVExtractorQt5_cs_CZ.qm "${pkgdir}/usr/share/${pkgname}/Languages/Languages/MKVExtractorQt5_cs_CZ.qm"
+  install -Dm644 Languages/MKVExtractorQt5_fr_FR.qm "${pkgdir}/usr/share/${pkgname}/Languages/MKVExtractorQt5_fr_FR.qm"
+  install -Dm644 Languages/MKVExtractorQt5_es_ES.qm "${pkgdir}/usr/share/${pkgname}/Languages/MKVExtractorQt5_es_ES.qm"
   install -Dm644 MKVRessources_rc.py "${pkgdir}/usr/share/${pkgname}/MKVRessources_rc.py"
   install -Dm644 ui_MKVExtractorQt5.py "${pkgdir}/usr/share/${pkgname}/ui_MKVExtractorQt5.py"
   install -Dm644 QFileDialogCustom/QFileDialogCustom.py "${pkgdir}/usr/share/${pkgname}/QFileDialogCustom/QFileDialogCustom.py"

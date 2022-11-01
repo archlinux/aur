@@ -1,10 +1,11 @@
 pkgbase = mkv-extractor-qt-git
 	pkgdesc = Graphical MKV demultiplexer. (GIT version)
-	pkgver = 5.5.9.r7.c321f99
+	pkgver = 22.08.30a.r28.bad90bb
 	pkgrel = 1
 	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1508741
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = qt5-tools
 	makedepends = imagemagick
 	depends = python-pyqt5
