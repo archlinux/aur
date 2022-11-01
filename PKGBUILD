@@ -1,14 +1,16 @@
-# Maintainer: Iván Gabaldón <ivan.gab at inetol dot net>
+# Maintainer: Ivan Gabaldon <ivan [d0t] gab [at] inetol [d0t] net>
 
 pkgname=mcreator
 pkgver=2022.2.34517
-pkgrel=2
+_pkgvermajor=2022.2
+_pkgverbuild=34517
+pkgrel=3
 pkgdesc='Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE'
 arch=('x86_64')
 url='https://mcreator.net'
-license=('GPL3')
+license=('custom')
 noextract=("$pkgname-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/releases/download/$pkgver/MCreator.2022.2.Linux.64bit.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/releases/download/$pkgver/MCreator.$_pkgvermajor.Linux.64bit.tar.gz"
         "$pkgname.desktop")
 b2sums=('95a9b1572bf70687bbe354acc76513ffb79339500d9a48f675dd3a1c23b5d6a2ba69746215fad15056ec56700d469287b6f6a2b4b2c83a0f360dceac1de1c3c9'
         '8efa7edb9abe7b66a2a9482702e80cbebbcf390f8442daf280f9fd0e05610a831ab54fdedbf4bbe58662f4fdef4b5e7a15547883aaee006c35915a453dafb343')
