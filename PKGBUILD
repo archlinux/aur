@@ -14,7 +14,7 @@
 
 ## MERGE REQUESTS SELECTION
 # Merge Requests List: ('579' '1441' '1880')
-_merge_requests_to_use=('1441')
+_merge_requests_to_use=('1441' '1880')
 
 ## Disable building a DOCS package
 # Remember to unset this variable when producing .SRCINFO
@@ -29,8 +29,8 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.0+r87+g986d3be7a
-pkgrel=2
+pkgver=43.0+r88+gc57a500cc
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -42,7 +42,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
-_commit=986d3be7ac60859bc614c73182582fee4c9607c8  # tags/43.0^87
+_commit=c57a500ccbd16694e7cbb3408b1da5dc8efb44ba  # tags/43.0^88
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch')

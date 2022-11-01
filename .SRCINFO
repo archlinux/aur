@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 43.0+r87+g986d3be7a
-	pkgrel = 2
+	pkgver = 43.0+r88+gc57a500cc
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -35,7 +35,7 @@ pkgbase = mutter-performance
 	depends = libsysprof-capture
 	depends = lcms2
 	depends = colord
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=986d3be7ac60859bc614c73182582fee4c9607c8
+	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c57a500ccbd16694e7cbb3408b1da5dc8efb44ba
 	source = mr1441.patch
 	source = mr1880.patch
 	sha256sums = SKIP
