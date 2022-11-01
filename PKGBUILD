@@ -1,8 +1,9 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname=monitorix-git
 _pkgname=Monitorix
-pkgver=3.14.0.r121.g9dbbd4c
+pkgver=3.14.0.r131.g842cf2c
 pkgrel=1
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')

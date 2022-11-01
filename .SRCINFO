@@ -1,6 +1,6 @@
 pkgbase = monitorix-git
 	pkgdesc = A lightweight system monitoring tool that uses rrd databases.
-	pkgver = 3.14.0.r121.g9dbbd4c
+	pkgver = 3.14.0.r131.g842cf2c
 	pkgrel = 1
 	url = http://www.monitorix.org
 	install = readme.install
