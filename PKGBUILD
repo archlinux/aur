@@ -12,7 +12,7 @@ arch=('x86_64')
 url="http://www.opbyte.it/grsync/"
 license=('GPL')
 depends=('gtk3' 'rsync')
-makedepends=('intltool')
+makedepends=('intltool' 'svn')
 source=(svn+https://svn.code.sf.net/p/grsync/code/trunk/grsync
         grsync.appdata.xml
         use-themed-icon.patch)
