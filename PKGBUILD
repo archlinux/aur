@@ -9,7 +9,7 @@
 
 _qt_module=qtremoteobjects
 pkgname=mingw-w64-qt5-remoteobjects-static
-pkgver=5.15.6
+pkgver=5.15.7
 pkgrel=1
 arch=('any')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -17,9 +17,8 @@ depends=('mingw-w64-qt5-base-static')
 optdepends=('mingw-w64-qt5-declarative-static: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=aa705010da0f658b78c1155babce7091ae44529a
+_commit=5f2a598a9134167a0da2efcbf1249fc167ae3750
 _basever=$pkgver
-pkgver+=+kde+r0
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
