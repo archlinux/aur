@@ -2,10 +2,10 @@
 # Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-mbedtls
-_tag='4cffa0056f705c1c71f5640a9c95fa8b0aa9a539' # git rev-parse v${pkgver}
+_tag='9c08cfacc470152e8ac2a774713c6fc1d8683e27' # git rev-parse v${pkgver}
 _pkgname=openvpn
 crypto_library=mbedtls
-pkgver=2.5.7
+pkgver=2.5.8
 pkgrel=1
 pkgdesc="An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the ${crypto_library} library for crypto support."
 arch=('x86_64' 'armv7h' 'aarch64')
