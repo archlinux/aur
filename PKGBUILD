@@ -9,7 +9,8 @@ license=('MPL')
 url='https://foxglove.dev/'
 depends=()
 optdepends=()
-
+provides=('foxglove-studio')
+conflicts=('foxglove-studio')
 source=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/foxglove/studio/releases/download/v${pkgver}/foxglove-studio-${pkgver}-linux-amd64.deb")
 sha512sums=('412d371e7bffec1f8b1aabd5dd3806b2b0d607f8b062e1adddea972b95272991d24450c6d6bdbcafceb010d7f077c687b8b134b4fb35a2c011d579cc37ed56a2')
 
