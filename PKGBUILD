@@ -21,7 +21,7 @@ optdepends=(
 provides=(electronic-wechat)
 conflicts=()
 replaces=()
-install=
+install=${pkgname}.install
 source=(
 	electronic-wechat-uos-bin.desktop
 	electronic-wechat-uos-bin.svg
@@ -36,10 +36,10 @@ md5sums=(
 validpgpkeys=()
 package() {
 	for directory in /usr/bin /opt/electronic-wechat-uos-bin /usr/share/applications; do
-		echo " +=> 创建目录 ${pkgdir}${directory}..."
+		info "创建目录 ${pkgdir}${directory}..."
 		mkdir -p ${pkgdir}${directory}
 	done
-	echo " +=> 复制文件..."
+	info "复制文件..."
 	cp -r ${srcdir}/electronic-wechat-linux-x64/resources ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.svg ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.desktop ${pkgdir}/usr/share/applications
@@ -49,4 +49,12 @@ exec electron /opt/electronic-wechat-uos-bin/resources/app.asar' >${pkgdir}/usr/
 	chmod -R 755 ${pkgdir}/opt/electronic-wechat-uos-bin
 	chmod a=rx ${pkgdir}/usr/bin/electronic-wechat-uos-bin
 	chmod u=rwx ${pkgdir}/usr/bin/electronic-wechat-uos-bin
+}
+
+function info() {
+	all_off="$(tput sgr0)"
+	bold="${all_off}$(tput bold)"
+	blue="${bold}$(tput setaf 4)"
+	yellow="${bold}$(tput setaf 3)"
+    printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
 }
