@@ -34,6 +34,8 @@ pkgbase = waybar-exp-no-systemd-git
 	backup = etc/xdg/waybar/config
 	backup = etc/xdg/waybar/style.css
 	source = waybar-exp-no-systemd-git::git+https://github.com/Alexays/Waybar
+	source = meson-build.patch
+	source = meson_options.patch
 	sha1sums = SKIP
 
 pkgname = waybar-exp-no-systemd-git

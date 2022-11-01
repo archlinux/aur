@@ -43,7 +43,9 @@ backup=(
 optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
-source=("${pkgname}::git+https://github.com/Alexays/Waybar")
+source=("${pkgname}::git+https://github.com/Alexays/Waybar"
+	meson-build.patch
+	meson_options.patch)
 sha1sums=('SKIP')
 
 pkgver() {
