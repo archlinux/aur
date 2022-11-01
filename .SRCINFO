@@ -1,6 +1,6 @@
 pkgbase = vnote-git
 	pkgdesc = A Vim-inspired note-taking application, especially for Markdown.
-	pkgver = 3.13.1.r3.g17af3b8d
+	pkgver = 3.15.1.r20.ge47b813b
 	pkgrel = 1
 	url = https://vnotex.github.io/vnote/en_us/
 	arch = x86_64

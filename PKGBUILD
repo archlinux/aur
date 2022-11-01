@@ -2,7 +2,7 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote-git
-pkgver=3.13.1.r3.g17af3b8d
+pkgver=3.15.1.r20.ge47b813b
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -36,14 +36,14 @@ prepare() {
   git submodule init
   git config 'submodule.libs/vtextedit.url' "${srcdir}/vnotex-vtextedit"
   git config 'submodule.libs/QHotkey.url' "${srcdir}/vnotex-QHotkey"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "libs/vtextedit"
   git submodule init
   git config 'submodule.src/libs/syntax-highlighting.url' "${srcdir}/vnotex-syntax-highlighting"
   git config 'submodule.src/libs/hunspell.url' "${srcdir}/vnotex-hunspell"
   git config 'submodule.src/libs/sonnet.url' "${srcdir}/vnotex-sonnet"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
