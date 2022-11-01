@@ -3,7 +3,7 @@
 
 pkgname='epub2txt'
 _pkgname="${pkgname}2"
-pkgver=2.01
+pkgver=2.06
 pkgrel=2
 pkgdesc='Extract text from EPUB documents'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/kevinboone/epub2txt2'
 license=('GPL3')
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('82c96c713c8a6e10d7b37e96db83a9d5f50fcb4b65034b4a1df1024776b6591f')
+sha256sums=('d45ad76a1adca6b62bf0ccbc1aed3a527c3bc2a790516e8de82cc1e6545548b6')
 
 build() {
   make -C "${_pkgname}-${pkgver}"
