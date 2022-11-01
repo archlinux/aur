@@ -2,7 +2,7 @@
 
 pkgname=amberol
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/app/io.bassi.Amberol"
