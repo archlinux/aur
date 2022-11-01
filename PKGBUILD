@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-teleport
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An OBS Studio plugin for an open NDI-like replacement. Pretty simple, straight forward. No NDI compatibility in any form"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ makedepends=("go")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/fzwoch/obs-teleport/archive/$pkgver.tar.gz"
 )
-sha256sums=("a228f7e12707aa9d9ac79b8fc350434812a69ce8bf11e2ad3ee9436b82f608f1")
+sha256sums=("704dbfad473083634d073bdf75f550d6bc9029fe307fb68432ad27a3f1fc6734")
 
 build() {
   cd "$pkgname-$pkgver"
