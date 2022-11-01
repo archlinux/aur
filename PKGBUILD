@@ -2,12 +2,12 @@
 pkgname=folder-color-nautilus
 _pkgname=${pkgname%-nautilus}
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Change your folder color in Nautilus"
 arch=('any')
 url="https://github.com/costales/folder-color"
 license=('GPL3')
-depends=('python-nautilus')
+depends=('python-nautilus<4.0')
 makedepends=('dpkg' 'git' 'python-distutils-extra')
 conflicts=("$_pkgname-bzr" 'folder-color-common')
 replaces=('folder-color-common')
