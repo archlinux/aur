@@ -1,6 +1,6 @@
 pkgbase = prismlauncher-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 5.0.r71.g7f441f5b
+	pkgver = 5.0.r140.g04b39294
 	pkgrel = 1
 	url = https://prismlauncher.org
 	arch = i686
@@ -30,7 +30,6 @@ pkgbase = prismlauncher-git
 	optdepends = xorg-xrandr: for older minecraft versions
 	provides = prismlauncher
 	conflicts = prismlauncher
-	conflicts = prismlauncher-qt5
 	options = debug
 	source = git+https://github.com/PrismLauncher/PrismLauncher.git
 	source = git+https://github.com/PrismLauncher/libnbtplusplus.git
