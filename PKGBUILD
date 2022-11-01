@@ -1,6 +1,6 @@
 # Maintainer: Michael Engelhard <engelhard.michael+git@gmail.com>
 pkgname=neolight
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Additional layers for the german qwertz keyboard layout and others.'
 arch=('any')
@@ -16,7 +16,7 @@ install='neolight.install'
 source=("${_repo_url}/${_tag}/linux/neolight"
         "${_repo_url}/${_tag}/linux/register-neolight.sh"
         "register-neolight.hook")
-md5sums=('64c22a708abbd99c45ccf5f224d522d6'
+md5sums=('998bc1bf9b16a04a0ac0ed2a82221118'
          '450e3c6aa9c0fe9b2f9048bde5ce438a'
          'c6e81d0589bab55863b25cbffbaebf09')
 
