@@ -2,7 +2,7 @@
 
 pkgname=waybar-exp-no-systemd-git
 pkgver=r2001.d10d9b8
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with experimental features enabled and without systemd dependencies (GIT)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
