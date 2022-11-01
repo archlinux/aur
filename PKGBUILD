@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -54,7 +54,6 @@ check() {
 }
 
 package() {
-	depends+=('openssl-1.1') # remove after bootstrapping base
 	cd "$srcdir/$pkgname-$pkgver"
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
