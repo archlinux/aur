@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
 depends=('gcc-libs')
-makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang' 'jdk11-openjdk')
+makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang' 'jdk17-openjdk')
 options=(!lto)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
@@ -29,7 +29,7 @@ prepare() {
   sed -i "s/include ':android'//" java/settings.gradle
   sed -i "s/cargo build/cargo build --frozen/" java/build_jni.sh
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | awk '/^host: / {print $2}')"
 }
 
 build() {
