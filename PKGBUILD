@@ -2,10 +2,10 @@
 
 pkgname=openssl-1.1
 _pkgname=openssl
-_ver=1.1.1q
+_ver=1.1.1s
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=5
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -16,11 +16,12 @@ provides=("openssl=$pkgver" 'libcrypto.so' 'libssl.so')
 makedepends=('perl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
+sha256sums=('c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa'
             'SKIP'
             '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
+              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$_ver"
