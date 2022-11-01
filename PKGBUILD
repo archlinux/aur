@@ -2,9 +2,9 @@
 pkgname=brother-dcp110c
 pkgver=1.0.2
 pkgrelbr=1
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother DCP110C"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7l')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
@@ -25,6 +25,9 @@ md5sums=('5b51032a121f9c2e8cd2271c517e5eb7'
 )
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
+fi
+if test "$CARCH" == armv7l; then
+  depends+=('glibc')
 fi
 prepare() {
 #  do not install in '/usr/local'
