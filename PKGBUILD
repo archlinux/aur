@@ -1,13 +1,13 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=tofi
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Tiny rofi / dmenu replacement for wlroots-based Wayland compositors."
 arch=("x86_64")
 url="https://github.com/philj56/tofi"
 license=("MIT")
 groups=()
-depends=("freetype2" "harfbuzz" "cairo" "pango" "wayland" "libxkbcommon")
+depends=("freetype2" "harfbuzz" "cairo" "pango" "wayland" "libxkbcommon" "glib2")
 makedepends=("meson" "scdoc" "wayland-protocols")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -17,7 +17,7 @@ options=()
 install=
 source=("https://github.com/philj56/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-sha512sums=(dd3514c0012ff6bb77cfae1c248a9fe04bd4104085e7a5bb5cf2d3033e2dcf45b32d1bc3381006ca099cd842db46536f1ae867639477e6594b3d0d387aa95168)
+sha512sums=(5e772c63d3e6f6f7ccad6d34ead88dd22dd4e98f4a44b915903730fb76f7cca8e0f9f6f809e7150bf48fbb74d9044f72408ce4f689c492c8b56da47115818908)
 
 prepare() {
 	rm -rf build
