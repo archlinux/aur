@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2022.20221030
+pkgver=2022.20221031
 pkgrel=1
 epoch=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
@@ -12,18 +12,21 @@ license=('custom')
 makedepends=('rsync')
 depends=('libxcrypt-compat')
 provides=('asymptote' 'git-latexdiff'  'psutils' 't1utils'
-'texlive-bin' 'texlive-most'
-# texlive-most contains
-# 'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
-# 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
-# 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers'
-# 'texlive-science'
+'texlive-bin'
+'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
+'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
+'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers'
+'texlive-science'
 #
 # 'haskell-citeproc' is not provided, only citeproc-lua is provided.
 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra'
 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml')
 conflicts=('asymptote' 'git-latexdiff' 'haskell-citeproc' 'psutils' 't1utils'
-'texlive-bin' 'texlive-most'
+'texlive-bin'
+'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
+'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
+'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers'
+'texlive-science'
 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra'
 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml'
 )
