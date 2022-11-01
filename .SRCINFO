@@ -1,7 +1,7 @@
 pkgbase = r-ore
 	pkgdesc = An R Interface to the Onigmo Regular Expression Library
-	pkgver = 1.7.1.1
-	pkgrel = 4
+	pkgver = 1.7.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ore
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = r-ore
 	optdepends = r-crayon
 	optdepends = r-rex
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/ore_1.7.1.1.tar.gz
-	sha256sums = 851323539656baca962a003b724669524145e8fab813bab42594f41060c94567
+	source = https://cran.r-project.org/src/contrib/ore_1.7.2.1.tar.gz
+	sha256sums = efc9850da514c79d69eec6fb3df1169a6302dbbbbc79e828d28b849eba018580
 
 pkgname = r-ore
