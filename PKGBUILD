@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=5959_5.18.1_r0_g47b5cf86
+pkgver=6156_6.0_r0_g3db75635
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -85,7 +85,8 @@ check() {
     tests/fsck-tests/037-freespacetree-repair \
     tests/fsck-tests/052-init-csum-tree \
     tests/fsck-tests/056-raid56-false-alerts \
-    tests/fsck-tests/057-seed-false-alerts
+    tests/fsck-tests/057-seed-false-alerts \
+    tests/fsck-tests/059-shrunk-device
 
   make test-fsck
 
