@@ -1,0 +1,16 @@
+pkgbase = cfv-git
+	pkgdesc = A utility to test and create a wide range of checksum verification files.
+	pkgver = r664.dee5be3
+	pkgrel = 1
+	url = https://github.com/cfv-project/cfv
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pillow: only needed if you want to create the dimensions column of .crc files.
+	conflicts = cfv
+	source = cfv::git+https://github.com/cfv-project/cfv.git
+	sha256sums = SKIP
+
+pkgname = cfv-git
