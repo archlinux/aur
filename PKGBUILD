@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=aursh
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple AUR helper written in bash"
 arch=('any')
 url="https://github.com/huboles/aursh"
