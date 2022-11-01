@@ -8,8 +8,8 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-browser
-pkgver=28.0.3
-pkgrel=3
+pkgver=28.1.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -149,7 +149,9 @@ build() {
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE="$pkgver-browser-$pkgrel" ..
+    -DOBS_VERSION_OVERRIDE="$pkgver" ..
+
+    sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$pkgver-browser-$pkgrel\" //|" config/obsconfig.h
 
   make
 }
