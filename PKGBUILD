@@ -1,18 +1,18 @@
 # Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-metadata-editor'
-pkgver='3.28.1'
+pkgver='43.0.1'
 pkgrel=1
 pkgdesc='Nautilus extension with simple Metadata Editor'
 arch=('i686' 'x86_64')
-url="https://gitlab.com/nvlgit/${pkgname}-extension"
+url="https://github.com/nvlgit/${pkgname}-extension"
 license=('GPL')
 depends=('glib2' 'libnautilus-extension' 'taglib')
 makedepends=('meson' 'vala')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-source=("https://gitlab.com/nvlgit/${pkgname}-extension/-/archive/3.28.1/${pkgname}-extension-${pkgver}.tar.gz")
+source=("https://github.com/nvlgit/${pkgname}-extension/archive/refs/tags/${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('581d6d218c99671ffb01475789013afde098110fd233637eda99e9fa8c1a4a71')
+sha256sums=('22e25d2bfc0b64abc7cbbfc928b4e742204d59c6c90c5c614586d8f47494af44')
 
 build() {
 	cd "${srcdir}/${pkgname}-extension-${pkgver}"
