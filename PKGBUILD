@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_marupeke pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_skyscrapers pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_follow_123 pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_knotty pzl_marupeke pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_othello pzl_ripple pzl_scrabbler pzl_shakashaka pzl_shikaku pzl_skyscrapers pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_targets pzl_tetrofit pzl_wordladder pzl_wordwheel pzl_wordy)
 pkgbase="pzl_games"
-pkgver=27.0
-_pkgver=27_0
+pkgver=30.0
+_pkgver=30_0
 pkgrel=1
 pkgdesc="Collection of puzzle games."
 arch=('any')
@@ -26,26 +26,29 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_jigsaw.desktop"
         "pzl_jigsawsudoku.desktop"
         "pzl_kakuro.desktop"
+        "pzl_knotty.desktop"
         "pzl_marupeke.desktop"
         "pzl_masyu.desktop"
         "pzl_minesweeper.desktop"
         "pzl_numberlink.desktop"
         "pzl_nurikabe.desktop"
-        "pzl_scrabbler.desktop"
-        "pzl_skyscrapers.desktop"
         "pzl_othello.desktop"
         "pzl_ripple.desktop"
+        "pzl_scrabbler.desktop"
+        "pzl_shakashaka.desktop"
         "pzl_shikaku.desktop"
+        "pzl_skyscrapers.desktop"
         "pzl_sokoban.desktop"
         "pzl_sudoku.desktop"
         "pzl_suguru.desktop"
         "pzl_sumpuzzle.desktop"
         "pzl_targets.desktop"
         "pzl_tetrofit.desktop"
+        "pzl_wordladder.desktop"
         "pzl_wordwheel.desktop"
-        "pzl_wordladder.desktop")
+        "pzl_wordy.desktop")
 
-md5sums=('7399dc833388312a9efd56bdae684239'
+md5sums=('a74f87bdf41f4ba2cfd0ecf0042bf736'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -62,24 +65,27 @@ md5sums=('7399dc833388312a9efd56bdae684239'
          '00333ad5a67aa529189cb8d5efce7ec2'
          'fa5438c87ada71ae5bdf2edd84df4290'
          '27c7b30bf6c9365397b35d4cca7044f8'
+         'a4c525712f146e3be090a25b01cf3242'
          'cf9a1d524f7e5563c37413f0227fe1a1'
          '0ff3ac0767cd8fc94388ef3b301c8adc'
          '3938559de7b10ca25f86ccb59676547e'
          'ab1d907a83c8b7e359eff308ee89d9d9'
          '08f441dcf7ec24f4148d9a952738d7f4'
-         'bdcdc0250d61c33f85289e7e436546a6'
-         'ff0b346ce08dc773cdd7f96d8f640ab8'
          'b56963fa4b72c8b93e799ed25055a3b4'
          'd1eea30878b0028a5a5e36a0b0158b81'
+         'bdcdc0250d61c33f85289e7e436546a6'
+         'ab72a7b572307731ba3647e2f1e6d6fa'
          '38dc1f1869c03d4cc8e2724e6060fc65'
+         'ff0b346ce08dc773cdd7f96d8f640ab8'
          'ea71834e6c8ab194e38738b599a3e351'
          '068873d936f6592065010b056da87cc7'
          '0c1b99051ab88c9aacf108a4d7d577e2'
          '652ec7a6aa6a225f62579a315bd98421'
          '1c6a099a8b6fff65b9856eb8baab784f'
          'adf64f6092e1d05aafb1bc0c093d56b2'
+         'b0afcb5b6a3f2f05b8fd8e6d59d8e6ca'
          'b7b52cd6e554eb01aa0537bb5526e297'
-         'b0afcb5b6a3f2f05b8fd8e6d59d8e6ca')
+         'fbf0b094c7d61bbce4ab78b9d408de2e')
 
 package_pzl_common() {
 	pkgdesc="Common files for pzl games."
@@ -256,6 +262,17 @@ package_pzl_kakuro() {
 	install -m644 pzl_kakuro.desktop "$pkgdir/usr/share/applications"
 }
 
+package_pzl_knotty() {
+	pkgdesc="Logic game similar to Josh Wardle's Wordle."
+	url="http://pzl.org.uk/knotty.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/knotty.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/knotty_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/knotty_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_knotty.desktop "$pkgdir/usr/share/applications"
+}
+
 package_pzl_marupeke() {
 	pkgdesc="Puzzle where there is a potential for three symbols to be adjacent. And block them."
 	url="http://pzl.org.uk/marupeke.html"
@@ -318,6 +335,17 @@ package_pzl_scrabbler() {
 	install -m644 pzl3_download/scrabbler.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/scrabbler_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_scrabbler.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_shakashaka() {
+	pkgdesc="Puzzle to place triangles into the white cells."
+	url="http://pzl.org.uk/shakashaka.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/shakashaka.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/shakashaka_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/shakashaka_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_shakashaka.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_skyscrapers() {
@@ -446,6 +474,17 @@ package_pzl_wordladder() {
 	install -m644 pzl3_download/wordladder_data.py "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/wordladder_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_wordladder.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_wordy() {
+	pkgdesc="Word game based on Wordle and Absurdle."
+	url="http://pzl.org.uk/wordy.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/wordy.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/wordy_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/wordy_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_wordy.desktop "$pkgdir/usr/share/applications"
 }
 
 # package_pzl_launcher() {

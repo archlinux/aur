@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Shakashaka
+Comment=Shakashaka (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/shakashaka.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/shakashaka_icon.png
+Type=Application

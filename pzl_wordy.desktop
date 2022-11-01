@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Wordy
+Comment=Wordy (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/wordy.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/wordy_icon.png
+Type=Application
