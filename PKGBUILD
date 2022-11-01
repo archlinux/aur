@@ -4,7 +4,7 @@
 
 pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
-_pkgver=2022-07-17
+_pkgver=2022-10-16
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"
@@ -23,8 +23,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
-sha256sums=('cedee13d0b6bc969e206f402e3875212ca936e8843aa3406ada3f68430b70ac9'
-            '1d38ce625d24f5ff6f083783802a2f86c5f6a8e80155b5b65e3c602359d262dd')
+sha256sums=('b79a1ac1a16327f67cb9db70c9948cb3f986edf6f6d545b797de2b4891c30444'
+            'fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e')
 
 build() {
     INSTALL_OPTS="$(/usr/bin/grep \
@@ -33,7 +33,7 @@ build() {
         --line-regexp \
         --no-messages \
         --invert-match '^\s*$|#.+' \
-        /etc/qogir-gtk-theme/options.txt || echo -n '--theme all --tweaks image square round --logo arch')"
+        /etc/qogir-gtk-theme/options.txt || echo -n '--theme all --tweaks image square round --icon arch')"
     export INSTALL_OPTS
 }
 
