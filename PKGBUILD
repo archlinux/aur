@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=memuse
-_pkgver=4.2-1
+_pkgver=4.2-2
 pkgname=r-${_pkgname,,}
-pkgver=4.2.1
-pkgrel=4
+pkgver=4.2.2
+pkgrel=1
 pkgdesc='Memory Estimation Utilities'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f5e9dbaad4efbbfe219a93f446e318a00cad5b294bfc60ca2146eca894b47cf3')
+sha256sums=('63dc2b2ad41da9af5d9b71c1fa9b03f37d1d58db2ed63355c303349d2247b7e5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
