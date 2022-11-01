@@ -1,6 +1,6 @@
 pkgbase = r-r.utils
 	pkgdesc = Various Programming Utilities
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=R.utils
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-r.utils
 	depends = r>=2.14.0
 	depends = r-r.oo>=1.24.0
 	depends = r-r.methodss3>=1.8.1
-	optdepends = r-digest
-	source = https://cran.r-project.org/src/contrib/R.utils_2.12.0.tar.gz
-	sha256sums = 74de455220ea1e658ac503f5763a6be687d982eb61187779f4019a16db856503
+	optdepends = r-digest>=0.6.0
+	source = https://cran.r-project.org/src/contrib/R.utils_2.12.1.tar.gz
+	b2sums = 0a05406c561c08f43fbe224e5d0c7d8c161a5bbf96672f135f58941fba92ec2537fb30a6b7614c4e65f1f81bb310b24e64fb07be58b508c193226ec151846ad3
 
 pkgname = r-r.utils

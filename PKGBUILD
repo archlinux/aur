@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=R.utils
-_cranver=2.12.0
+_cranver=2.12.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,9 +16,11 @@ depends=(
     "r-r.oo>=1.24.0"
     "r-r.methodss3>=1.8.1"
 )
-optdepends=(r-digest)
+optdepends=(
+    "r-digest>=0.6.0"
+)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("74de455220ea1e658ac503f5763a6be687d982eb61187779f4019a16db856503")
+b2sums=('0a05406c561c08f43fbe224e5d0c7d8c161a5bbf96672f135f58941fba92ec2537fb30a6b7614c4e65f1f81bb310b24e64fb07be58b508c193226ec151846ad3')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
