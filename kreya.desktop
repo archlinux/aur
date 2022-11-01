@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kreya
+Exec=/opt/Kreya/kreya %U
+Terminal=false
+Type=Application
+Icon=kreya
+Comment=GUI client for gRPC and REST APIs
+Categories=Programming;

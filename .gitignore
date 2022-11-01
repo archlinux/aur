@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!kreya_256x256.png
+!kreya.desktop
