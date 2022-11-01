@@ -2,8 +2,8 @@
 
 _pkgname="betterdiscord-installer"
 pkgname="$_pkgname-bin"
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 
 pkgdesc="A simple standalone program which automates the installation, removal and maintenance of BetterDiscord."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/BetterDiscor
 	"LICENSE::https://raw.githubusercontent.com/BetterDiscord/Installer/main/LICENSE"
 	"file://usr--SLASH--bin--SLASH--betterdiscord-installer")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('c194f60370a02c40b9513aea01c9faf5a9066215b9d624169ba294084434e2bb60f176a9c2b4c6c2f59413e37c63ef7dfbeedfe416ccacb9ffee5ebdec054989'
+b2sums=('3a5740ed225bf98193e2ab358b86fc08af7705b70844e1c027728cf464e43af5eadb8add9d2aa698c2b0147d5efc353a26b2aa949326b6b0330e5655b46eb566'
 	'9efca07a8806137067825ffa7e285950d4bbd1ed3c5a252af83d9408d51fc6530f9be7e1a467e28e73374b9057f52646fff419545a9d2fa466412ee2043ac56d'
 	'b31d61be03a20c315a0fbcf2b2a75da5fe442d7de7951a9c75c31e34ed0c91c9f15b585bc82fa9634e913c774b3f932cf3d476b981eacfb8707f6db7503494c7')
 
