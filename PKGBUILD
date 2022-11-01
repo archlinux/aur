@@ -1,29 +1,40 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-nightthemeswitcher
-_pkgname=nightthemeswitcher-gnome-shell-extension
-pkgver=65
+pkgver=70
 pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
 license=('GPL3')
 groups=('gnome-shell-extensions')
-depends=('gnome-shell>=1:42')
-makedepends=('glib2' 'npm' 'meson' 'gettext')
+depends=('gnome-shell>=1:43')
+makedepends=('git' 'glib2' 'npm' 'meson')
 checkdepends=('reuse' 'eslint')
-source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-b2sums=('faf2e6a02cd899273b7ef67659b7f61cc2d764c0767afc5a5da200604a9a6dee7c94524fb4e8eb88d2c91e0426c5f2b0e290c796922a2d7ee2c42e6de78dd630')
+_commit=002bb56f948fc438b099ed2930b663301741879a  # tags/70^0
+source=($pkgname::git+$url.git#commit=$_commit)
+b2sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 build() {
-  arch-meson "${_pkgname}-${pkgver}" build
+  cd $pkgname
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
+
+  arch-meson . build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  cd $pkgname
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
+  cd $pkgname
   meson install -C build --destdir "$pkgdir"
 }
