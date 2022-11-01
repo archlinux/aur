@@ -1,0 +1,17 @@
+pkgbase = pam-tacplus
+	pkgdesc = PAM authentication against TACACS+ server
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/kravietz/pam_tacplus/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = gnulib-git
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = automake
+	depends = pam
+	source = https://github.com/kravietz/pam_tacplus/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = b6c102eef0a42e3946bcdc29bbf7145c6dd13aa1fb6c58f6d282826166391837
+
+pkgname = pam-tacplus
