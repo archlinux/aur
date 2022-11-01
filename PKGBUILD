@@ -1,40 +1,38 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.1.1q
-# use a pacman compatible version scheme
-pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
-license=('custom:BSD')
+license=('Apache')
 depends=('glibc')
 makedepends=('perl')
 optdepends=('ca-certificates' 'perl')
 replaces=('openssl-perl' 'openssl-doc')
 backup=('etc/ssl/openssl.cnf')
-source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"{,.asc}
+source=("https://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	'ca-dir.patch')
-sha256sums=('d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
+sha256sums=('aa7d8d9bef71ad6525c55ba11e5f4397889ce49c2c9349dcea6d3e4f0b024a7a'
             'SKIP'
-            '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
+            '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
 	'7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
 prepare() {
-	cd "$srcdir/$pkgname-$_ver"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	# set ca dir to /etc/ssl by default
-	patch -p0 -i "$srcdir/ca-dir.patch"
+	patch -Np1 -i "$srcdir/ca-dir.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname-$_ver"
+	cd "$srcdir/$pkgname-$pkgver"
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
+		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-x86_64 \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	make depend
@@ -42,23 +40,22 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgbase-$_ver"
+	cd "$srcdir/$pkgbase-$pkgver"
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	patch -p0 -R -i "$srcdir/ca-dir.patch"
+	patch -Rp1 -i "$srcdir/ca-dir.patch"
 
 	make test
 
-	patch -p0 -i "$srcdir/ca-dir.patch"
-	# re-run make to re-generate CA.pl from th patched .in file.
+	patch -Np1 -i "$srcdir/ca-dir.patch"
+	# re-run make to re-generate CA.pl from the patched .in file.
 	make apps/CA.pl
 }
 
 package() {
-	cd "$srcdir/$pkgname-$_ver"
+	depends+=('openssl-1.1') # remove after bootstrapping base
+	cd "$srcdir/$pkgname-$pkgver"
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
-
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
