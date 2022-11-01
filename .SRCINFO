@@ -13,7 +13,7 @@ pkgbase = openlens-bin
 	conflicts = lens-bin
 	source = OpenLens-6.1.14.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.1.14/OpenLens-6.1.14.AppImage
 	source = OpenLens.desktop
-	sha256sums = 4da4ea24f067f6fa56ea9b4e70c3196114a5ff07143319e2dcf28945284b96eb
+	sha256sums = 12949d313a89b549522a97d99c26f0e2be5c80d8940640414d5c51a6bd43530f
 	sha256sums = 30ab2e9f91ca6be993b5893fb385a225c6d06f6d11caa305e0d109348b5d132c
 
 pkgname = openlens-bin
