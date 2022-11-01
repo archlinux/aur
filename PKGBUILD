@@ -7,9 +7,9 @@ buildarch=8
 pkgbase=linux-aarch64-rockpro64
 _srcname=linux-6.0
 _kernelname=${pkgbase#linux}
-_libreelec_patch_commit=fcd644f0173a04df19356813c25d48a97ddb2c04
+_libreelec_patch_commit=a0a0ec37c61097832ed294ac3a3b78e41353c23b
 pkgdesc="AArch64 with patches for PINE64's ROCKPro64"
-pkgver=6.0.1
+pkgver=6.0.6
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -35,7 +35,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-2001-v4l2-wip-iep-driver.patch"
 )
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
-            '483447baa17bb08dfeb1b966c9b93bd0a7cac096d8086b0bbd09fb0d4968fe1e'
+            'c4920a37259b5a479fd2d6e76aaa040d54cb4cbab2ea4e323e3e0f0adb09324c'
             '5ac741733d6b117d9f837c1d88043aa14dedfbfe40d6a17c9a5ba8e67dce6d57'
             '2996843f5c08b7e05182c77bb73fb8465682f049d1e6b42ad590931aec945cde'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
@@ -45,10 +45,10 @@ sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             '9a49febdd90414c9bdb91f0d09d1f4087ba42d2f3f6131d7a160741211e9e35c'
             '06586bc6bfcff6dbdd962e1bf709b5a9a4f6472628bd9c4842d684e95a5f6ed1'
             'd72e7d45d3815d76f61830838665cd31dbb4e99932e440241676aa035192eb08'
-            'c054a4f23af3cba47fb1e0c08a7cb700fea251566cb68c37a64b137f0b71fac2'
+            'e35884ed1c2edb40d15d11cf6a608590f49ceb96af14b6ab67674358e79dc9cd'
             'f9bc85d319ad8fc2e675f1755dadf9f4d9ae84ab56b4e14f3e856f7b130c5f91'
             '9b1010af3539ca37d139ba494e140a4ce27dd315e4c17f41f4a712704fd49913'
-            'c292579795d856bb459cb94a4ed410379b6220f90758f390e20f8a18c538f642'
+            'ccc19fb9ff49fca015fabb57d8ebd0845212c1b7573449b685e669bad3a4ea96'
             '58925a7e8a9d59d48b72af8bb7017c115ed2fc9b763cdd472fba03001728181c')
 
 prepare() {
@@ -67,12 +67,10 @@ prepare() {
 #  git apply -v ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
 
   #Libreelec Patches
-  #cat ../linux-1000-drm-rockchip.patch | tail -n 3691 > ../linux-1000-drm-rockchip.patch.mod
   git apply -v ../linux-0001-rockchip-from-6.1.patch
   git apply -v ../linux-0002-rockchip-from-list.patch
   git apply -v ../linux-0011-v4l2-from-list.patch
   git apply -v ../linux-0020-drm-from-list.patch
-#  git apply -v ../linux-1000-drm-rockchip.patch.mod
   git apply -v ../linux-1000-drm-rockchip.patch
   git apply -v ../linux-1001-v4l2-rockchip.patch
   git apply -v ../linux-1002-for-libreelec.patch
