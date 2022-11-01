@@ -1,7 +1,7 @@
 pkgbase = r-heplots
 	pkgdesc = Visualizing Hypothesis Tests in Multivariate Linear Models
-	pkgver = 1.3.9
-	pkgrel = 4
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=heplots
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-heplots
 	optdepends = r-reshape
 	optdepends = r-reshape2
 	optdepends = r-rgl
-	source = https://cran.r-project.org/src/contrib/heplots_1.3-9.tar.gz
-	sha256sums = 9d19b3941d8239c2d78b2a898c350faac5b42632fa8421450778df1c1ef29225
+	source = https://cran.r-project.org/src/contrib/heplots_1.4-2.tar.gz
+	sha256sums = 5d48d3971939fd54c756abffb90c913933d7531ae9ba9d4eeecc8f3e043fd3ce
 
 pkgname = r-heplots
