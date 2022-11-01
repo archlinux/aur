@@ -1,7 +1,7 @@
 pkgbase = ghostwriter-git
 	pkgdesc = Cross-platform, aesthetic, distraction-free Markdown editor.
-	pkgver = 2.1.6.r87.gd395e01
-	pkgrel = 2
+	pkgver = 2.1.6.r96.gd773dd6
+	pkgrel = 1
 	url = https://invent.kde.org/office/ghostwriter
 	arch = x86_64
 	arch = i686
