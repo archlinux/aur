@@ -2,14 +2,15 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2
-pkgver=2.4.5
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("x86_64")
-url="http://bowtie-bio.sourceforge.net/bowtie2"
+url="https://bowtie-bio.sourceforge.net/bowtie2"
 license=("GPL3")
+depends=('zstd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
-sha1sums=('1d9ab9d5c0a90cad48b447e93b95d7ff9f72545e')
+sha1sums=('744e65bf8e83b13bf93619e375d412e10b776d7c')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -18,7 +19,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make PREFIX=/usr
+    make PREFIX=/usr WITH_ZSTD=1
 }
 
 package() {
