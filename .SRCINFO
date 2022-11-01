@@ -1,0 +1,13 @@
+pkgbase = rat
+	pkgdesc = cat written in rust
+	pkgver = 0.1.r19.c1f26fd
+	pkgrel = 1
+	url = https://github.com/matteac/rat
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/matteac/rat
+	md5sums = SKIP
+
+pkgname = rat
