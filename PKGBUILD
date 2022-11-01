@@ -75,23 +75,23 @@ prepare() {
   for submodule in assets/lang ext/glslang ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
   for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross,zstd}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
 
   git submodule init ext/miniupnp
-  git submodule update ext/miniupnp
+  git -c protocol.file.allow=always submodule update ext/miniupnp
 
   pushd ext/armips
 
   for submodule in ext/filesystem; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../../../armips-${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
 
   popd
