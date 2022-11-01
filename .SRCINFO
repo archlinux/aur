@@ -1,0 +1,16 @@
+pkgbase = namedicon-git
+	pkgdesc = Get system icons from the name using the default icon theme.
+	pkgver = v1.0.0.r0.g1964aff
+	pkgrel = 1
+	url = https://codeberg.org/grafcube/namedicon
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = zig
+	depends = gtk3
+	provides = namedicon
+	conflicts = namedicon
+	source = namedicon-git::git+https://codeberg.org/grafcube/namedicon.git
+	sha256sums = SKIP
+
+pkgname = namedicon-git
