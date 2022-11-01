@@ -1,4 +1,5 @@
 # Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
+
 pkgname='herbe'
 pkgver='1.0.0'
 pkgrel='3'
