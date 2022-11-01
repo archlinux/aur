@@ -1,7 +1,7 @@
 pkgbase = colima-bin
 	pkgdesc = Container runtimes on macOS (and Linux) with minimal setup.
 	pkgver = 0.4.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/abiosoft/colima
 	arch = x86_64
 	arch = arm64
@@ -11,6 +11,6 @@ pkgbase = colima-bin
 	source = https://raw.githubusercontent.com/abiosoft/colima/v0.4.6/LICENSE
 	sha256sums = e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea
 	source_x86_64 = https://github.com/abiosoft/colima/releases/download/v0.4.6/colima-Linux-x86_64
-	sha256sums_x86_64 = 65e972d13337c6505e50f60bcfbe220b92a4a8769bbcd996f9bf0e1d3e4411c6
+	sha256sums_x86_64 = cb865ff0f5c7bb26929ca98143fb35b638eab543b629cdd386f7cd111425113a
 
 pkgname = colima-bin

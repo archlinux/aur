@@ -2,7 +2,7 @@
 
 pkgname=colima-bin
 pkgver=0.4.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64' 'arm64')
 url="https://github.com/abiosoft/colima"
@@ -15,8 +15,8 @@ source_x86_64=("https://github.com/abiosoft/${pkgname%-bin}/releases/download/v$
 source_aarch64=("https://github.com/abiosoft/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-aarch64")
 
 sha256sums=('e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea')
-sha256sums_x86_64=('65e972d13337c6505e50f60bcfbe220b92a4a8769bbcd996f9bf0e1d3e4411c6')
-sha256sums_aarch64=('8a72979fa0aadfb48758a5bcc4b879109cb7eaba89218fcd8c4de9a6db37ba87')
+sha256sums_x86_64=('cb865ff0f5c7bb26929ca98143fb35b638eab543b629cdd386f7cd111425113a')
+sha256sums_aarch64=('a707b297d40b45e113d00a46317b881111f8f10d5378a0eb333d3d2145d129b5')
 
 package() {
   cd "${srcdir}"
