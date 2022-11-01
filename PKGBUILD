@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://fbb-git.gitlab.io/bobcat/"
 license=('GPL')
 depends=('openssl' 'libx11' 'readline')
-makedepends=('icmake>=9.03.01' 'libmilter' 'yodl' 'openssl-1.1')
+makedepends=('icmake>=9.03.01' 'libmilter' 'yodl')
 source=("https://gitlab.com/fbb-git/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 b2sums=('3e862cd1da60440608c02ffb17923d29c53893dadb25dcabee0172338bdc3a95c54106c11fcec50179e15b1116cfe48ea4f42ea2f9a4e7c8220d738548e772fb')
 
