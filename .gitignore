@@ -1,5 +1,6 @@
 *.exe
 *.jar
+*.deb
 *.tar.gz
 *.tar.xz
 *.tar.zst
