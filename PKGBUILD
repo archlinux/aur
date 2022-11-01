@@ -3,8 +3,8 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter-git
-pkgver=2.1.6.r87.gd395e01
-pkgrel=2
+pkgver=2.1.6.r96.gd773dd6
+pkgrel=1
 pkgdesc="Cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(x86_64 i686 )
 url="https://invent.kde.org/office/ghostwriter"
@@ -35,6 +35,4 @@ build() {
 package() {
   cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir"  install
-  install -D "$pkgdir/usr/man/man1/ghostwriter.1" -t "$pkgdir/usr/share/man/man1/"
-  rm -rf "$pkgdir/usr/man/"
 }
