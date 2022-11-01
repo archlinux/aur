@@ -31,14 +31,14 @@ prepare() {
   git submodule init
   git config 'submodule.libs/vtextedit.url' "${srcdir}/vnotex-vtextedit"
   git config 'submodule.libs/QHotkey.url' "${srcdir}/vnotex-QHotkey"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "libs/vtextedit"
   git submodule init
   git config 'submodule.src/libs/syntax-highlighting.url' "${srcdir}/vnotex-syntax-highlighting"
   git config 'submodule.src/libs/hunspell.url' "${srcdir}/vnotex-hunspell"
   git config 'submodule.src/libs/sonnet.url' "${srcdir}/vnotex-sonnet"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
