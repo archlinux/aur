@@ -6,11 +6,9 @@ After=network-online.target
 ConditionFileNotEmpty=/etc/consul.d/consul.hcl
 
 [Service]
-Type=notify
+EnvironmentFile=-/etc/consul.d/consul.env
 User=consul
 Group=consul
-EnvironmentFile=-/etc/default/consul
-Restart=on-failure
 ExecStart=/usr/bin/consul agent $CONSUL_FLAGS -config-dir=/etc/consul.d
 ExecReload=/usr/bin/kill -HUP $MAINPID
 KillMode=process

@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Bukharev <bvp-yar@ya.ru>
 
 pkgname=consul-bin
-pkgver=1.13.1
+pkgver=1.13.3
 pkgrel=1
 pkgdesc='A tool for service discovery, monitoring and configuration.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,17 +21,17 @@ source_armv6h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}
 source_armv7h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_arm.zip")
 source_aarch64=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_arm64.zip")
 
-sha256sums=('b2eea8fe453b322bb636afbde3253cb035b2f9d902da7a9abab5dedc7399a639'
-            '31782ac6f397dfce957f6f3b2d5c6c4353aa0bc1f46edc403d7ae387b5ecee3a'
+sha256sums=('097a9be3a970d9c3724dc31bd995b716ab812e5fb7f28e25fefd28bdf81068f9'
+            '7ccda4002e0dfb1bbe1e0e672e552be9fd0db1eee814864d6b4114cf209ce4bc'
             '857d0a0eae217a941045d10877b59d9bc8fbcbba8e7cbe396d160ffd5317fa2c'
             '1838c60658eca84dfef148d179503b9df6c6e6b86ec6706d14d889829c51e532')
-sha256sums_i686=('799a6b15dbf14eb66484a29405cab3896797c21fec96e0733ba97f210a42fd44')
-sha256sums_pentium4=('799a6b15dbf14eb66484a29405cab3896797c21fec96e0733ba97f210a42fd44')
-sha256sums_x86_64=('7f8f69b631114e0a021b602a1975e0221912b8b33ef20ead1589d6f6581c5579')
-sha256sums_arm=('38505541e013c6c433706ca402a4c480b42d0cdcedd2da7d0b4e415cfdffaa92')
-sha256sums_armv6h=('38505541e013c6c433706ca402a4c480b42d0cdcedd2da7d0b4e415cfdffaa92')
-sha256sums_armv7h=('38505541e013c6c433706ca402a4c480b42d0cdcedd2da7d0b4e415cfdffaa92')
-sha256sums_aarch64=('2a7954f4567c45520ea03fb6eee70f6d0bb732aeedc83997024d88c42abc33ca')
+sha256sums_i686=('bc624f750751791c95d42b2a3f3ed16a637942528ca09b5625d3902d23ff7889')
+sha256sums_pentium4=('bc624f750751791c95d42b2a3f3ed16a637942528ca09b5625d3902d23ff7889')
+sha256sums_x86_64=('5370b0b5bf765530e28cb80f90dcb47bd7d6ba78176c1ab2430f56e460ed279c')
+sha256sums_arm=('b9538525b3b4c10c1e1f4414b67861fae2810a8495489d0bc5e906e6f63ec1c3')
+sha256sums_armv6h=('b9538525b3b4c10c1e1f4414b67861fae2810a8495489d0bc5e906e6f63ec1c3')
+sha256sums_armv7h=('b9538525b3b4c10c1e1f4414b67861fae2810a8495489d0bc5e906e6f63ec1c3')
+sha256sums_aarch64=('3c195602a2815c5fd670e9282455cd7213423da80fb353ee92a5d3e688da36d0')
 options=('!strip')
 
 package() {
