@@ -9,7 +9,7 @@ pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
 url="https://github.com/MacTavishAO/$pkgname"
 license=('GPL3')
-depends=('nautilus' 'python-nautilus' 'polkit')
+depends=('nautilus' 'python-nautilus-gtk4' 'polkit')
 makedepends=('cmake>=2.6' 'gettext')
 optdepends=('gedit: to use the "Edit as Administrator" action'
             'gnome-terminal: to use the "Run as Administrator" action')

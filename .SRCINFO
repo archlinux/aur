@@ -9,7 +9,7 @@ pkgbase = nautilus-admin-gtk4
 	makedepends = cmake>=2.6
 	makedepends = gettext
 	depends = nautilus
-	depends = python-nautilus
+	depends = python-nautilus-gtk4
 	depends = polkit
 	optdepends = gedit: to use the "Edit as Administrator" action
 	optdepends = gnome-terminal: to use the "Run as Administrator" action
