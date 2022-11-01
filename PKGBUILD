@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nautilus-subliminal-git
-pkgver=r14.4648e2e
-pkgrel=2
+pkgver=r17.a3a9868
+pkgrel=1
 pkgdesc="Subliminal integration within Nautilus file manager"
 arch=('any')
 url="https://github.com/Diaoul/nautilus-subliminal"
