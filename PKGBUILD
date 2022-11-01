@@ -1,15 +1,18 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: TimTechDev <archlinux [at] timtechdev [dot] de>
+# Contributor:  Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 # upstreamed renamed to libarcus
 pkgname=arcus
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
 arch=('x86_64')
 license=('LGPL')
+provides=('libarcus')
+conflicts=('libarcus')
 makedepends=('cmake' 'git' 'ninja')
 depends=('python' 'protobuf')
 options=('debug')
@@ -30,6 +33,9 @@ prepare() {
 }
 
 build() {
+  export _sitelib="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  source .venv/bin/activate
+
   cmake -S libArcus-${pkgver} -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
