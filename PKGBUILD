@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SoupX
-_pkgver=1.6.1
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.6.2
+pkgrel=1
 pkgdesc='Single Cell mRNA Soup eXterminator'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-rstan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2539371ed9e47f5e3c8d86ed6aef155adbe2372a873e225f3b51f1f867f47320')
+sha256sums=('9b6226cd7c0691498a874d5c029f8ff81fd2060295c298985397521c1f7ee3a5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
