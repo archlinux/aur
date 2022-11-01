@@ -12,6 +12,6 @@ pkgbase = picacg-qt-appimage
 	noextract = bika_v1.4.0_linux-x86_64.AppImage
 	options = !strip
 	source = https://github.com/tonquer/picacg-qt/releases/download/v1.4.0/bika_v1.4.0_linux-x86_64.AppImage
-	sha256sums = SKIP
+	sha256sums = e7ac813bdfc54d577de3255271c61b03dba9f9d3efd20a1cbe252e08d5a24cd1
 
 pkgname = picacg-qt-appimage

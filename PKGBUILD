@@ -16,7 +16,7 @@ optdepends=('python-waifu2x-vulkan: Waifu2x-Vulkan support')
 provides=('bika')
 conflicts=('bika')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=('SKIP')
+sha256sums=('e7ac813bdfc54d577de3255271c61b03dba9f9d3efd20a1cbe252e08d5a24cd1')
 
 _installdir=/opt/appimages
 _installname=picacg
