@@ -3,13 +3,14 @@
 
 pkgname='metalog-git'
 pkgver=r16.3e3a494
-pkgrel=2
+pkgrel=3
 pkgdesc='A meta-template style log system for C++'
 arch=('any')
-url='http://github.com/Sleeplessy/metalog'
+url='https://github.com/Sleeplessy/metalog'
 license=('Apache')
 makedepends=('cmake' 'git')
-conflicts=("${pkgname%%-git}")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 

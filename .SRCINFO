@@ -1,14 +1,15 @@
 pkgbase = metalog-git
 	pkgdesc = A meta-template style log system for C++
 	pkgver = r16.3e3a494
-	pkgrel = 2
-	url = http://github.com/Sleeplessy/metalog
+	pkgrel = 3
+	url = https://github.com/Sleeplessy/metalog
 	arch = any
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	provides = metalog
 	conflicts = metalog
-	source = metalog-git::git+http://github.com/Sleeplessy/metalog
+	source = metalog-git::git+https://github.com/Sleeplessy/metalog
 	sha256sums = SKIP
 
 pkgname = metalog-git
