@@ -1,7 +1,7 @@
 pkgbase = r-jaspttests
 	pkgdesc = T-Tests Module for JASP
-	pkgver = 0.15.0
-	pkgrel = 2
+	pkgver = 0.17.0
+	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspTTests
 	arch = any
 	groups = r-jasp
