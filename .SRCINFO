@@ -1,7 +1,7 @@
 pkgbase = r-rstatix
 	pkgdesc = Pipe-Friendly Framework for Basic Statistical Tests
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 7
 	url = https://cran.r-project.org/package=rstatix
 	arch = any
 	license = GPL

@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=rstatix
 _pkgver=0.7.0
 pkgname=r-${_pkgname,,}
 pkgver=0.7.0
-pkgrel=3
+pkgrel=7
 pkgdesc='Pipe-Friendly Framework for Basic Statistical Tests'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
