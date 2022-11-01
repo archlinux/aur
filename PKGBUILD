@@ -5,7 +5,7 @@ pkgname=mumps-par
 pkgver=5.4.1
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination, with parmetis implementation"
-url="http://mumps.enseeiht.fr"
+url="https://graal.ens-lyon.fr/MUMPS/index.php"
 license=("custom")
 depends=('lapack' 'openmpi' 'scotch>=6.0.3-3' 'scalapack' 'parmetis' 'metis' 'zlib' 'bzip2')
 makedepends=('gcc-fortran')
@@ -13,7 +13,7 @@ provides=('mumps')
 conflicts=('mumps')
 backup=()
 arch=('i686' 'x86_64')
-source=(http://mumps.enseeiht.fr/MUMPS_${pkgver}.tar.gz
+source=(https://graal.ens-lyon.fr/MUMPS/MUMPS_${pkgver}.tar.gz
         Makefile.inc
         MUMPS-shared.patch
         MUMPS-shared-pord.patch
