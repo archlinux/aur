@@ -3,21 +3,20 @@
 
 _base=textual
 pkgname=python-${_base}
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Text User Interface using Rich"
 arch=(any)
 url="https://github.com/Textualize/${_base}"
 license=(MIT)
-depends=(python-rich python-importlib-metadata)
+depends=(python-rich python-importlib-metadata python-nanoid)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest python-aiohttp python-msgpack python-jinja python-syrupy python-nanoid python-click python-time-machine python-pytest-aiohttp python-pytest-asyncio)
+checkdepends=(python-pytest python-aiohttp python-msgpack python-jinja python-syrupy python-click python-time-machine python-pytest-aiohttp python-pytest-asyncio)
 optdepends=('python-aiohttp: for HTTP server'
   'python-click: for click event as mouse button'
-  'python-msgpack: for MessagePack serializer'
-  'python-nanoid: for generate unique string ID')
+  'python-msgpack: for MessagePack serializer')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e089e246873665712db3170d2ed26075453acedebebfc69689b1151c072308f867ccaa882a444b5c264da711286110d2b150aa94c2777fa30101312b55699323')
+sha512sums=('8f890514a0e47751d65140dab25722bcff7ad1a7bc1fc72069774dd0abd488953f7b21eeeed003465123564d352985c235156a20ab9b85604d4e7d069c445395')
 
 build() {
   cd ${_base}-${pkgver}
@@ -33,7 +32,7 @@ check() {
 
 package() {
   cd ${_base}-${pkgver}
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
