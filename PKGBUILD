@@ -7,7 +7,7 @@
 
 pkgname=inadyn
 pkgver=2.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Dynamic DNS client with SSL/TLS support'
 arch=('x86_64')
 url=https://troglobit.com/projects/inadyn/
