@@ -3,7 +3,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=textpieces
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Transform text without using random websites"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('json-glib' 'libadwaita' 'python-pyaml' 'gtksourceview5' 'libgee')
 makedepends=('blueprint-compiler' 'python-gobject' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('d834dfa9e687622ebc46395a649457652a74b07964e32adaf5385c146e48e5f9fdaaa584439098ca253bbeaa99fdfd1951fa1d4aee880a73a99dafc993017117')
+b2sums=('fa219810487495d63c1981e511130b7af9fc45602ba9dfa3ef0d3829ff458f2313918153ee37795ad760849c58ad81e98916d9cbe89e293c7642392270965331')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
