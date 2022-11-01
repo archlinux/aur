@@ -5,21 +5,31 @@ pkgver=0.9.1
 pkgrel=1
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/World/amberol"
+url="https://apps.gnome.org/app/io.bassi.Amberol"
 license=('GPL3')
 depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
-makedepends=('meson' 'cargo')
+makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib' 'reuse')
-source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('5373b207e3c69e3e9f231ec1fef296046f158e49a202277e5f4188de7d5daaa75cd465e9f48e5c004a3a478ce9dee9b8e4ee09578f90f3b29018ea92126b385c')
+_commit=2b2fc127f63acf69f795b657d4721188bd5d145e  # tags/0.9.1^0
+source=("git+https://gitlab.gnome.org/World/amberol.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 build() {
-  arch-meson --buildtype release "$pkgname-$pkgver" build
+  local meson_options=(
+    --buildtype release
+  )
+
+  arch-meson $pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
