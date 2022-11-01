@@ -4,7 +4,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.34.1.r362.g8557ba76e2
+pkgver=0.34.1.r557.gd555ae9571
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -17,9 +17,9 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libplacebo' 'libxpresent' 'pipewire' 'zimg' 'ffmpeg'
+        'libplacebo' 'libxpresent' 'pipewire' 'zimg' 'ffmpeg' 'sndio' 'libsixel'
     # AUR:
-        'spirv-cross' 'libsixel'
+        'spirv-cross'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols')
@@ -108,8 +108,6 @@ build() {
         '--disable-cocoa'
         '--enable-drm'
         '--enable-gbm'
-        '--enable-wayland-scanner'
-        '--enable-wayland-protocols'
         '--enable-wayland'
         '--enable-x11'
         '--enable-xv'
