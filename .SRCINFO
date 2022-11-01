@@ -1,6 +1,6 @@
 pkgbase = r-ggpmisc
 	pkgdesc = Miscellaneous Extensions to 'ggplot2'
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggpmisc
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-ggpmisc
 	optdepends = r-knitr
 	optdepends = r-nlme
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ggpmisc_0.5.0.tar.gz
-	sha256sums = bcd3793f9f4c9ebdce10764224891acad91fff18d697fc818503c6576175ecc4
+	source = https://cran.r-project.org/src/contrib/ggpmisc_0.5.1.tar.gz
+	sha256sums = 11679dd3dcf84ccc3bab4cacc8498c9ec4826a0401841ff8786397168d2d08a0
 
 pkgname = r-ggpmisc
