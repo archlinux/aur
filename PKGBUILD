@@ -3,8 +3,9 @@
 pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
-pkgver=1.0
-pkgrel=2
+pkgver=1.1.1
+_pkgtag=1.1
+pkgrel=1
 pkgdesc="Free and open source planetarium showing a realistic sky in 3D"
 arch=('x86_64')
 url="https://${_pkgname}.org/"
@@ -15,7 +16,7 @@ validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF')
 
 _target="$_pkgname2-$pkgver-x86_64.AppImage"
 _verifyfile="${_target}.asc"
-_download_url="https://github.com/Stellarium/$_pkgname/releases/download/v$pkgver"
+_download_url="https://github.com/Stellarium/$_pkgname/releases/download/v$_pkgtag"
 
 source=(
 	"$_download_url/$_target"
@@ -23,8 +24,8 @@ source=(
 	$_pkgname.bash
 )
 sha256sums=(
-	'46379ab41b591296e0bb15e28de3822ab24bc1c9a24466d3bba4de83ed2f5b16'
-	'e153d96ca32efcbcad9cf48d78f6c372d8ede18c0832e2e31cdc0069d3d2a809'
+	'053db8567959e0739f3757ad26831b170836f7539408df803ad67c215afb6771'
+	'c783512818c0a8d6cc62dc4226a924a6de4c27764b206a3a33773bbe28d7019e'
 	'8971af52c47a77fb968219190909f7cd5feb9126e33c323eeeb9783e405e8dd1'
 )
 
@@ -42,15 +43,6 @@ prepare() {
 	mv -f $_squashfs_root/org.$_pkgname.$_pkgname2.desktop .
 	rm -rf ./hicolor
 	mv -f $_squashfs_root/usr/share/icons/hicolor .
-	echo 'done'
-
-	skyculture_dir=$_squashfs_root/usr/share/stellarium/skycultures
-
-	echo -ne 'Removing Dakota skyculture... '
-	rm -rf $skyculture_dir/dakota
-	echo 'done'
-	echo -ne 'Removing Ojibwe skyculture... '
-	rm -rf $skyculture_dir/ojibwe
 	echo 'done'
 }
 
