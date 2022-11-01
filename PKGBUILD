@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Arisa_Snowbell/shiny-mirrors"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('cargo-nightly' 'git')
+makedepends=('cargo' 'git')
 backup=("etc/$pkgname.conf")
 _commit=094dc045acd8068d079a1b100f5e21f60dd12c07
 source=("git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=$_commit?signed")
