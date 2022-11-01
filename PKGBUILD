@@ -4,7 +4,7 @@
 pkgname=siyuan-note-bin
 _pkgname=siyuan-note
 pkgver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
 url="https://b3log.org/siyuan/"
