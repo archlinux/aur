@@ -1,0 +1,18 @@
+pkgbase = python-nautilus-gtk4
+	pkgdesc = Python bindings for the Nautilus Extension API
+	pkgver = 4.0
+	pkgrel = 0.1
+	url = https://wiki.gnome.org/Projects/NautilusPython
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = git
+	makedepends = gtk-doc
+	depends = nautilus
+	depends = python-gobject
+	provides = python-nautilus
+	conflicts = python-nautilus
+	source = git+https://gitlab.gnome.org/GNOME/nautilus-python.git#commit=cec007e8b159ff2225a23229adaf8b0fee80dca2
+	sha256sums = SKIP
+
+pkgname = python-nautilus-gtk4
