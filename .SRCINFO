@@ -1,6 +1,6 @@
 pkgbase = python-pyrodigal
 	pkgdesc = Cython bindings to Prodigal, an ORF finder for genomes and metagenomes
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/althonos/pyrodigal
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = python-pyrodigal
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyrodigal/pyrodigal-2.0.0.tar.gz
-	sha256sums = faf50222320ac72f64f03ab797d42e84debad710f101c39c5c4b71dbf65335bb
+	source = https://files.pythonhosted.org/packages/source/p/pyrodigal/pyrodigal-2.0.1.tar.gz
+	sha256sums = 2d33ac8060281419a69644c62bd7acbc8d9ce8bdbe85bd0b1826420600bc1ddf
 
 pkgname = python-pyrodigal
