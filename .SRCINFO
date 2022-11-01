@@ -1,6 +1,6 @@
 pkgbase = r-seurat
 	pkgdesc = Tools for Single Cell Genomics
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Seurat
 	arch = x86_64
@@ -68,7 +68,7 @@ pkgbase = r-seurat
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/Seurat_4.1.1.tar.gz
-	sha256sums = 201aa96919b32378fc4cb67557188214c1242dcbae50cadd7d12c86666af8ace
+	source = https://cran.r-project.org/src/contrib/Seurat_4.2.0.tar.gz
+	sha256sums = 22a3d22a9ba255c4db5b37339b183fdfb91e2d37a8b8d58a9ff45b1bc414ebef
 
 pkgname = r-seurat
