@@ -1,9 +1,11 @@
-# Name: Fluent Reader v1.1.2
-### URL: https://github.com/yang991178/fluent-reader/releases/tag/v1.1.2
-### published at '2022-06-19T23:36:18Z' by github-actions[bot]
+# Name: Fluent Reader v1.1.3
+### URL: https://github.com/yang991178/fluent-reader/releases/tag/v1.1.3
+### published at '2022-10-16T21:19:29Z' by github-actions[bot]
 ---
 ### Features
-- Hide articles from chosen sources in "all articles". #412 
+* Sync with Miniflux through native API. #463 
+* Sync with Nextcloud News. #472 
+* Czech language support. #448 
 
 ### Fixed bugs
-- Fixed the issue highlighting keywords in search results. #428 
+* Removed some undraggable area in the navigation bar on MacOS. #441 

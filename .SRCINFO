@@ -1,6 +1,6 @@
 pkgbase = fluent-reader-bin
 	pkgdesc = Modern desktop RSS reader built with Electron, React, and Fluent UI.
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://hyliu.me/fluent-reader/
 	changelog = changelog.md
@@ -11,13 +11,13 @@ pkgbase = fluent-reader-bin
 	provides = fluent-reader
 	conflicts = fluent-reader
 	replaces = fluent-reader
-	noextract = fluent-reader-bin-1.1.2.x86_64.AppImage
+	noextract = fluent-reader-bin-1.1.3.x86_64.AppImage
 	options = strip
 	options = emptydirs
 	options = zipman
-	source = fluent-reader-bin-1.1.2.x86_64.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v1.1.2/Fluent.Reader.1.1.2.AppImage
+	source = fluent-reader-bin-1.1.3.x86_64.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v1.1.3/Fluent.Reader.1.1.3.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/yang991178/fluent-reader/master/LICENSE
-	b2sums = b11eebb15ed4e3044514d89581b4b3597ab4070b1629d6efd886c0310c34a4b12b151c00476d31de16a27cfae607c5be58812094f2cbc4274f7ea407fc64ef26
+	b2sums = 636182c1f6fdca9837a90d396d26b7a918fb567d0cd653ac698f1782b6a80afc796aea3f0b3c5f39ae55a439e716fe42ec64383d41ceb113f6dec76a207d65ed
 	b2sums = 0a8e04b682d991c30efd88ff67147b221eaf09e12c7234a776a90897bbedeb8379f73c5d853121f1b37d54bb510ea1bf223b8ef0f480ad3156c4159cbd78f0ac
 
 pkgname = fluent-reader-bin
