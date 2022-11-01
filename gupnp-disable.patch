@@ -1,0 +1,27 @@
+diff --git a/gajim/common/app.py b/gajim/common/app.py
+index 9042b2217..390d61300 100644
+--- a/gajim/common/app.py
++++ b/gajim/common/app.py
+@@ -243,14 +243,14 @@ def detect_dependencies():
+         pass
+ 
+     # UPNP
+-    try:
+-        gi.require_version('GUPnPIgd', '1.0')
+-        from gi.repository import GUPnPIgd
+-        global gupnp_igd
+-        gupnp_igd = GUPnPIgd.SimpleIgd()
+-        _dependencies['UPNP'] = True
+-    except ValueError:
+-        pass
++    # try:
++    #     gi.require_version('GUPnPIgd', '1.0')
++    #     from gi.repository import GUPnPIgd
++    #     global gupnp_igd
++    #     gupnp_igd = GUPnPIgd.SimpleIgd()
++    #     _dependencies['UPNP'] = True
++    # except ValueError:
++    #     pass
+ 
+     # IDLE
+     try:

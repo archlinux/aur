@@ -13,7 +13,7 @@ _name=gajim
 pkgname="$_name-1.3"
 epoch=1
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+, version 1.3 (Multiwindow)"
 arch=('any')
 url="https://gajim.org/"
@@ -45,10 +45,17 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn' 'gajim-git')
 replaces=('gajim-hg' 'gajim-svn')
-source=("$_name::git+https://dev.gajim.org/gajim/gajim.git#tag=gajim-1.3.3")
-md5sums=('SKIP')
+source=("$_name::git+https://dev.gajim.org/gajim/gajim.git#tag=gajim-1.3.3"
+        "gupnp-disable.patch")
+md5sums=('SKIP'
+         'f0582899b5c0d096171fbdbc4c6bf1df')
+
+prepare() {
+    cd "$_name"
+    patch --forward --strip=1 --input="${srcdir}/gupnp-disable.patch"
+}
 
 package() {
-  cd $_name
+  cd "$_name"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
