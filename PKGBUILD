@@ -2,19 +2,20 @@
 # Maintainer: Charles Dong <charlesdong_2000@outlook.com>
 
 pkgname=seatools
+_pkgname=SeaTools
 pkgdesc='Seagate graphical user interface (GUI) tool for managing hard drives and SSDs on a system.'
-pkgver=5.0.165
-pkgrel=3
+pkgver=5.0.171
+pkgrel=1
 arch=('x86_64')
 url='http://www.seagate.com/support/downloads/seatools/'
 license=('custom:Seagate EULA')
 depends=('gcc-libs')
 makedepends=('fakechroot')
-source=("https://www.seagate.com/files/www-content/support-content/downloads/${pkgname}/_shared/downloads/SeaToolsLinuxX64Installer.zip")
-sha256sums=('64149fdc8ef6d84818873bcda10c8c3684bf38c627f1c2c3fcd64fb89c857b33')
-
-_pkgname=SeaTools
-_installer_bin=SeaToolsLinuxX64Installer.run
+_installer_bin="SeaToolsLinuxX64Installer.run"
+source=(
+    "SeaTools-${pkgver}-${pkgrel}.zip::https://www.seagate.com/files/www-content/support-content/downloads/${pkgname}/_shared/downloads/SeaToolsLinuxX64Installer.zip"
+)
+sha256sums=('bab72272de2439a7b4a7dab64ceabd80f985086a7e15f41bc8a76cfd701c6886')
 
 package() {
     echo -ne 'Preparing fake installation environment... '
