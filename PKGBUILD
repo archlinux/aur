@@ -10,6 +10,8 @@ depends=("portaudio" "pkg-config" "lame" "vorbis-tools")
 makedepends=("cargo" "portaudio" "pkg-config" "lame" "vorbis-tools")
 provides=("weresocool") 
 source=("git+https://github.com/xasopheno/weresocool#tag=v"$pkgver"")
+sha512sums=('SKIP')
+
 
 prepare() {
     cd weresocool && cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
