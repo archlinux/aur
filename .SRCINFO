@@ -1,8 +1,8 @@
 pkgbase = karlender
 	pkgdesc = An apative GTK-4 calendar app.
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
-	url = https://gitlab.com/loers/karlender
+	url = https://gitlab.com/floers/karlender
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = karlender
 	makedepends = cargo
 	depends = libadwaita
 	depends = libnotify
-	source = https://gitlab.com/loers/karlender/-/archive/v0.6.1/karlender-v0.6.1.tar.gz
-	b2sums = 90023f9f1fdf54b95892447c9580acdf97e7c5439a3911b5a27cf2e5294264cb2acfa5ed025bcd0c8e722aea19cef9e73d1a26894e2ba729653761cafb4f5f71
+	source = https://gitlab.com/floers/karlender/-/archive/v0.7.1/karlender-v0.7.1.tar.gz
+	b2sums = 804b21d5b24c71856f25f42adc95d7b5ea075eaffa6c3dbb82bb31afa86eecb7ec3d110247261759335ba36b03b4a67ebe6bb61a58bd23803b0dd5514fa8f506
 
 pkgname = karlender
