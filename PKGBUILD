@@ -2,7 +2,7 @@
 # Contributor: Blackleg <blackleg@openaliasbox.org>
 
 pkgname=ca-certificates-fnmt
-pkgver=20220604
+pkgver=20221101
 pkgrel=1
 pkgdesc='Spanish Fabrica Nacional de Moneda y Timbre (FNMT) y Real Casa de la Moneda (RCM) certificates'
 arch=('any')
@@ -31,8 +31,8 @@ source=("AC_RAIZ_FNMT-RCM_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/
         "OSCP_AC_Sector_Publico_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SP"
         "OSCP_AC_Unidades_Sellado_Tiempo_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_QETS"
 
-#         "OSCP_AC_Servidores_Seguros_Tipo1_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SS_Tipo1.cer" # link not work
-#         "OSCP_AC_Servidores_Seguros_Tipo2_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SS_Tipo2.cer" # link not work
+        "OSCP_AC_Servidores_Seguros_Tipo1_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SS_Tipo1.cer"
+        "OSCP_AC_Servidores_Seguros_Tipo2_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SS_Tipo2.cer"
 
         "qets_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qets"
         "qtsa_${pkgver}.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qtsa"
@@ -51,14 +51,14 @@ sha256sums=('ebc5570c29018c4d67b1aa127baf12f703b4611ebc17b7dab5573894179b93fa'
             '1edb6bd91274882db795bfc514f8aabe10ad955cbccfd3fd5a5b5febb2ce5b68'
             '9ff23cb9387b9e0083bd5aa1954eeddf792890aa8e67cd4d38dd28af4a439ad8'
             '4124d0f2f32693f5892fc1e8013cb59a3762dbcf737f3655b71f42b615e741cb'
-            'a3e8f1c57b0def3f014e8b189d1f839e73629f52f8831a9602c846048c513c5a'
+            '1423efa79e8fc3b86aedddc5f8d60dc56d6734f11823d0bbd4ecc59efb6b9de9'
             '4b35fd2a8717bd8759f06a766bd7b5f798d430558e33e1874d54b60b08fa396e'
             '4c7d254f258cb71db48d17f6134e7e8d8b47a5f886bd85f397bd47a2750297f2'
             'b33cb62456fdd6773db306229e8630756f93ac65c3df53097f3a48cfcb2f51ee'
-            'bb5bec31e2e0670c6e16f6ed6a5093fff48c4c370f4658e502ffe8da5df9ed54'
-            '0399f4c9e9f547cded65e5ae82950935689a6f6c387e36c3b897ccd62cfab7bb'
-#             '3925456efe1eae10b17bac3abb2e91956a5a8dfb9238e9a25e4acb789900e367'
-#             'a50eff37b24bba129272b60599788121b796f641279ea6ad72757c0493bd2fc2'
+            '1fda1c5eff28a00e725ce1afe89cad410a4f10019712a0a537147630d99b0fd9'
+            '46a6c8fc5698158d9c505c2130864bbf95189eabdd9a4291413742bbcdfbe412'
+            '9a6dcd16c5e6b8fe651feda28fa4fa9107b6dd50bfbb3bfd9441ddc629629fee'
+            '5868e9030cb30058bcc4bc7eace0380b9571d9d2275cdd94bef90469fc2e02f4'
             'b03f7cc682d2f0a7c1d195692cc0de4c35ad017294955d35f6eb743fe78595f3'
             '5d93e19f26bcdcc9744f3f342a7d09b3d4d11f3e2dfd4c6079821625878be10a'
             'baf597d97d16bc697f8eb2a1e20ce68c08ad11024f9b1f5264271c1525eeb500'
@@ -89,8 +89,8 @@ package() {
   install -Dm644 "OSCP_AC_Sector_Publico_${pkgver}.cer"              "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OSCP_AC_Sector_Publico.cer"
   install -Dm644 "OSCP_AC_Unidades_Sellado_Tiempo_${pkgver}.cer"     "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OSCP_AC_Unidades_Sellado_Tiempo.cer"
 
-#   install -Dm644 "OSCP_AC_Servidores_Seguros_Tipo1_${pkgver}.cer"    "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OSCP_AC_Servidores_Seguros_Tipo1.cer"
-#   install -Dm644 "OSCP_AC_Servidores_Seguros_Tipo2_${pkgver}.cer"    "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OSCP_AC_Servidores_Seguros_Tipo2.cer"
+  install -Dm644 "OSCP_AC_Servidores_Seguros_Tipo1_${pkgver}.cer"    "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OSCP_AC_Servidores_Seguros_Tipo1.cer"
+  install -Dm644 "OSCP_AC_Servidores_Seguros_Tipo2_${pkgver}.cer"    "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OSCP_AC_Servidores_Seguros_Tipo2.cer"
 
   install -Dm644 "qets_${pkgver}.cer"                                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qets.cer"
   install -Dm644 "qtsa_${pkgver}.cer"                                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qtsa.cer"
