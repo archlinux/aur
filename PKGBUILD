@@ -7,7 +7,7 @@
 
 pkgbase=syncthing-git
 pkgname=(syncthing-git syncthing-relaysrv-git)
-pkgver=1.19.1.rc.2.r4.gbd0acd04b
+pkgver=1.22.1.rc.2.r1.g816354e66
 pkgrel=1
 arch=(x86_64)
 url="https://syncthing.net/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '6ab96a5949e223d315d49663734ad27b70c72469c691a61ac198cb7794cb5eaa'
             'f899998985f2d374af57f17ef6362c37a305467858195b74d1c1def71d97273f'
             '7c2fbc9608d81f8080f8a9102b867a52a050b61f426a0c182ccc1cb5815e4981'
-            '4e00b06544a900b206fc41b9250ab75ea51b8e1489b1eff042da4f08d8a84ab0')
+            'b571fe7ccf516a49efb295ae58b51bb36ef3bfcaa5ed99f36d419cfa262c65f1')
 options=(!lto)
 
 prepare() {
