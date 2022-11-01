@@ -15,7 +15,8 @@ noextract=("${_srcname}-${pkgver}-source.zip")
 md5sums=('64d1e579c12b45131bf8ebdc54ad19b4')
 
 prepare() {
-  unzip "${_srcname}-${pkgver}-source.zip" -d "${_srcname}-${pkgver}"
+  mkdir "${_srcname}-${pkgver}"
+  bsdtar xvf "${_srcname}-${pkgver}-source.zip" -C "${_srcname}-${pkgver}"
 }
 
 build() {
