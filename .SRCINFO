@@ -1,6 +1,6 @@
 pkgbase = postgrest-bin
 	pkgdesc = REST API for any Postgres database
-	pkgver = 9.0.0
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/PostgREST/postgrest
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = postgrest-bin
 	provides = postgrest
 	provides = postgrest-bin
 	conflicts = postgrest
-	source = https://github.com/PostgREST/postgrest/releases/download/v9.0.0/postgrest-v9.0.0-linux-static-x64.tar.xz
-	sha512sums = 23a4652439035d791981c3c27c8fa7e2f88bc59b20e2874b036b6d2e5146221952ca3de2bb40d6c8839cd89b68078d5a0e50512345b41400933fe863745a1ecb
+	source = https://github.com/PostgREST/postgrest/releases/download/v10.1.0/postgrest-v10.1.0-linux-static-x64.tar.xz
+	sha512sums = b2a15508c4468cfe4475ec4d7eb08d43ab6860f3c65fdccaf587afc8a6b6cbce7f3dcc70032a58378555a218f896724bcd6e8d216c52d905ff5e78543c5aeeec
 
 pkgname = postgrest-bin
