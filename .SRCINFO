@@ -1,0 +1,17 @@
+pkgbase = ttyd-addon
+	pkgdesc = Addons for ttyd, which provides sharing your terminal over the web
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = ttyd
+	source = ttyd.service
+	source = https://raw.githubusercontent.com/eklausme/c/master/slogin.c
+	sha512sums = e265ed981d1a2a4a49005864aa7f7d88dc03455375434ce557daf9bb928401aaeab553bce1f5ef2116490c0d7ff78377163a601e78ebabcc5750cbf845489710
+	sha512sums = 1cebf87e06f6303c48d931a87614f05d7300b4fba45ac5bf5a56ac20a0c9f48a1997bce13611ab3b498eed991a74594318c49ae801595fc882755dc1928640bb
+
+pkgname = ttyd-addon
