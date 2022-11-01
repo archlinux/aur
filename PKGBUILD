@@ -20,7 +20,7 @@ extract_deb()
 
 build()
 {
-    cd $srcdir/Pantum\ Linux\ Driver\ V$pkgver-$pkgrel/Resources
+    cd $srcdir/Pantum\ Ubuntu\ Driver\ V$pkgver-$pkgrel/Resources
 
     mkdir -p pkg
     cd ./pkg
@@ -31,7 +31,7 @@ package()
 {
     # go into the package folder and copy the /usr into the root
     cd ${pkgdir}
-    cp -r "${srcdir}/Pantum Linux Driver V$pkgver-$pkgrel/Resources/pkg/"* .
+    cp -r "${srcdir}/Pantum Ubuntu Driver V$pkgver-$pkgrel/Resources/pkg/"* .
 
     # move this into that
     # rm -r ./usr/lib64
