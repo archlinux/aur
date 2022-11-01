@@ -1,13 +1,17 @@
 pkgbase = plex-remote
 	pkgdesc = A library for easy implementing a remote plex client
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.2+5+gc29ef95
+	pkgrel = 1
 	url = https://github.com/tijder/plex-remote
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = plex-remote-1.0.2.tar.gz::https://github.com/tijder/plex-remote/archive/v1.0.2.tar.gz
-	sha256sums = 679bd00a06a19dddecbf8d3c3cce9496de69d7e9d5592f9c818cc469ca80d786
+	source = git+https://github.com/tijder/plex-remote.git#commit=c29ef9549c166902e53b3a1b603b365d70ebdf93
+	sha256sums = SKIP
 
 pkgname = plex-remote
