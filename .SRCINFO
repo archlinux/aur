@@ -1,0 +1,20 @@
+pkgbase = imd-git
+	pkgdesc = Improved MarkDown Reader
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/Noah-Arcouette/imd.git
+	arch = any
+	license = MIT
+	makedepends = python3
+	makedepends = git
+	makedepends = gzip
+	depends = glibc
+	depends = binutils
+	depends = make
+	depends = gcc
+	provides = imd
+	conflicts = imd
+	source = git+https://github.com/Noah-Arcouette/imd.git
+	sha256sums = SKIP
+
+pkgname = imd-git

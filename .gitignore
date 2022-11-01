@@ -1,0 +1,5 @@
+imd/
+pkg/
+src/
+hd*
+*.zst
