@@ -1,0 +1,24 @@
+pkgbase = gog-pony-island
+	pkgdesc = Suspense puzzle game in disguise. GOG version.
+	pkgver = 1.20.6
+	pkgrel = 1
+	url = https://www.pony-island.com/
+	arch = x86_64
+	license = custom
+	makedepends = lgogdownloader
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk2
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	options = !strip
+	source = pony-island_1.20_(6).sh::gogdownloader://pony_island/en3installer4
+	source = gog-pony-island.desktop
+	source = pony-island.bash
+	sha512sums = 21b5a5bd2a6118178eeb4fd8a5db30e0d05918794ff5065bb25637f97aed360bbf3090533b48c582771da713bd0b0d292812a71a8f1b0b6a71352edda343a558
+	sha512sums = 7fd40f53c8f53a31ab195d25f74c838543c8c01f2d424f2d6622b856a79dc0659d029c912b0022ba67c86f2c0a59caeaa1e488e2d45c839c8148952131b36f1d
+	sha512sums = a54b3d1abfdf74bac7d2ba7d32550552cf289009fec5072370ddbf3cc49f8fe90a39e6288f280a5a4af270924ca1c598c3770b57b296a8e9d25253618fbe3332
+
+pkgname = gog-pony-island

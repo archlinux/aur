@@ -1,0 +1,8 @@
+/.vscode/
+/src/
+/pkg/
+*.log
+*.pkg*
+*.sh
+*.tar.*
+*.zip

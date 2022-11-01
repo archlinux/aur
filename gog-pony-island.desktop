@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Pony Island
+Comment=Suspense puzzle game in disguise
+Exec=pony-island
+Icon=gog-pony-island
+Terminal=false
+StartupNotify=true
+Categories=Game;
