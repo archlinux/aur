@@ -2,16 +2,16 @@
 
 _extname='nautilus-metadata-editor'
 pkgname="${_extname}-git"
-pkgver='r52.5caa1f2'
+pkgver='r61.5dd32b9'
 pkgrel=1
 pkgdesc='Nautilus extension with simple Metadata Editor'
 arch=('i686' 'x86_64')
-url="https://gitlab.com/nvlgit/${_extname}-extension"
+url="https://github.com/nvlgit/${_extname}-extension"
 license=('GPL')
 depends=('glib2' 'libnautilus-extension' 'taglib')
 makedepends=('meson' 'vala')
 conflicts=("${_extname}" "${_extname}-bin")
-source=("git+https://gitlab.com/nvlgit/${_extname}-extension.git")
+source=("git+https://github.com/nvlgit/${_extname}-extension.git")
 install="${_extname}.install"
 sha256sums=('SKIP')
 
