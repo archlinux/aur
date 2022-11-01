@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 
 pkgname=gnome-shell-extension-gsconnect
-pkgver=50
+pkgver=54
 pkgrel=1
 epoch=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
@@ -17,16 +17,14 @@ optdepends=(
   'python-nautilus: Nautilus integration'
 )
 source=(https://github.com/GSConnect/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('8c9d6fe9827f02ee0686b7d945e9e318f7f20ba4409049fad7d2959c91441c06')
+b2sums=('7d666775fc1ddf3ca76f59d2047b85cbc35f9953883941d1bca93f8711dcbf7ed5b8be697c300c13edf2195ffab10aa8f7edc7cbc6fde3d09797155f47349706')
 _uuid='gsconnect@andyholmes.github.io'
 
 build() {
-  arch-meson -Dinstalled_tests=false -Dfirewalld=true -Dpost_install=true -Dgsettings_schemadir="/usr/share/gnome-shell/extensions/$_uuid/schemas" $pkgname-$pkgver build
+  arch-meson -Dinstalled_tests=false -Dfirewalld=true $pkgname-$pkgver build
   meson compile -C build
 }
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/org.gnome.Shell.Extensions.GSConnect.gschema.xml" -t \
-    "$pkgdir/usr/share/glib-2.0/schemas"
 }
