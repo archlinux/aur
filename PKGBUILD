@@ -3,7 +3,7 @@
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.1.20.g740c1f1
+pkgver=2.1.22.g4e88a5d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -34,7 +34,9 @@ prepare() {
   cd "${_plug}"
   git config submodule.vsplugin/vsxx.url "${srcdir}/vsxx"
   git config submodule.graphengine.url "${srcdir}/graphengine"
-  git submodule update --init vsxx graphengine
+  git -c protocol.file.allow=always submodule update --init \
+    vsxx \
+    graphengine
 
   # use system vapoursynth headers
   rm -fr vsxx/VapourSynth
