@@ -2,7 +2,7 @@
 
 pkgname=rathole
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A reverse proxy for NAT traversal"
 arch=('x86_64')
 url="https://github.com/rapiz1/rathole"
