@@ -1,6 +1,6 @@
 pkgbase = r-pkgload
 	pkgdesc = Simulate Package Installation and Attach
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgload
 	arch = any
@@ -17,13 +17,14 @@ pkgbase = r-pkgload
 	optdepends = r-bitops
 	optdepends = r-covr
 	optdepends = r-mathjaxr
+	optdepends = r-mockr
 	optdepends = r-pak
 	optdepends = r-pkgbuild
 	optdepends = r-rcpp
 	optdepends = r-remotes
 	optdepends = r-rstudioapi
 	optdepends = r-testthat>=3.1.0
-	source = https://cran.r-project.org/src/contrib/pkgload_1.3.0.tar.gz
-	sha256sums = 5af653c901662260cc221971cc968355428cc6183b61c15be80aa9545f9f4228
+	source = https://cran.r-project.org/src/contrib/pkgload_1.3.1.tar.gz
+	b2sums = 561ab5594c8c3c6ca01bb61e3d7a79101993e5f19afd4d3b116b749547a34876f83933a732f0eec0af78e533390064068948574ed0510aff54d80ee18c39c681
 
 pkgname = r-pkgload
