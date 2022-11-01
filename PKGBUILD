@@ -3,7 +3,7 @@
 _base=holoviews
 pkgname=python-${_base}
 pkgver=1.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="With Holoviews, your data visualizes itself"
 arch=(any)
 url="https://${_base}.org"
@@ -29,4 +29,5 @@ package() {
   ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  rm "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")"/${_base}/.version
 }
