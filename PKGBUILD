@@ -2,7 +2,7 @@
 
 pkgname=torrential
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple BitTorrent client for Pantheon'
 arch=('x86_64')
 url='https://github.com/davidmhewitt/torrential'
