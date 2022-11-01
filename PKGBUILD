@@ -1,8 +1,8 @@
 # Maintainers: Mike Cooper <mythmon at elem.us>, Mikko <mikko at 5x.fi>
 
 pkgname=terraria-server
-pkgver=1.4.4.5
-pkgrel=39
+pkgver=1.4.4.7
+pkgrel=40
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -17,14 +17,14 @@ _pkgver=$(echo $pkgver | sed 's/\.//g')
 # "http://terraria.org/server/${pkgname}-${_pkgver}.zip"
 
 # https://terraria.org/server/ links after 1402 give a 404, so we use the archive link instead.
-source=("https://terraria.org/api/download/pc-dedicated-server/terraria-server-1445.zip"
+source=("https://terraria.org/api/download/pc-dedicated-server/terraria-server-1447.zip"
         "https://github.com/mono/reference-assemblies/raw/main/v4.8/System.dll"
         "https://github.com/mono/reference-assemblies/raw/main/v4.8/System.Core.dll"
         'terraria-server'
         'config.txt'
         'terraria-server@.service')
 
-sha256sums=('defabded72b25e1c501e30c039eda091d4ae6e819b95cb6fa8348a960dc531fb'
+sha256sums=('85c5660d93333c40574fc75e07f8a4eb80d174bda99a23762a96db6c3c5c070a'
             '6906a72d0c320697cac46820740fd67976e0b270378a772ea42968c463a2b8e5'
             'b06c0c07ffd912013cc35987d05ce9e6415cc04882b4b9b5c8ebf8a65fbea556'
             'fba253786b8668dabd18b03514b24b3aac9b24ed9a74dfdacee35f41659c30c9'
