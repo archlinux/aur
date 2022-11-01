@@ -1,7 +1,7 @@
 # Maintainer: <alienchuj@gmail.com>
 # Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
 
-pkgname='metalog-libs-git'
+pkgname='metalog-git'
 pkgver=r16.3e3a494
 pkgrel=2
 pkgdesc='A meta-template style log system for C++'
