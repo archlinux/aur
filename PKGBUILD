@@ -3,7 +3,7 @@
 pkgname=openvpn
 _tag='9c08cfacc470152e8ac2a774713c6fc1d8683e27' # git rev-parse v${pkgver}
 pkgver=2.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
