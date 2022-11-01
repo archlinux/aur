@@ -4,7 +4,7 @@
 _pkgname=nautilus-admin
 pkgname=$_pkgname-gtk4
 pkgver=1.1.9.f736e9d
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
 url="https://github.com/MacTavishAO/$pkgname"

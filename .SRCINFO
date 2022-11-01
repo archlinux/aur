@@ -1,7 +1,7 @@
 pkgbase = nautilus-admin-gtk4
 	pkgdesc = Extension for Nautilus to do administrative operations
 	pkgver = 1.1.9.f736e9d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MacTavishAO/nautilus-admin-gtk4
 	install = nautilus-admin-gtk4.install
 	arch = any
