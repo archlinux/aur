@@ -24,7 +24,7 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         'mr1441.patch')
 
 sha256sums=('SKIP'
-            '0eba7abe0eb036a05809a961f9e63de5e1611c6e32ffb55170b8e2aa190009c1')
+            '30b47c675ef9b03632d42c7adb7f934dc4b38991e5f0bdbea03b13dab3d02e49')
 
 pkgver() {
   cd $pkgname
