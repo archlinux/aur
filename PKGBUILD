@@ -3,7 +3,7 @@
 _pkggit=terramate
 
 pkgname=terramate-bin
-pkgver=0.1.25
+pkgver=0.1.40
 pkgrel=2
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('terramate')
 provides=('terramate')
 license=('Apache-2')
 source=("https://github.com/mineiros-io/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('3e897e3260b9dbac71dc25bc79c885cbc02e230ee4117c64d503c9e566c17f36')
+sha256sums=('e2bd337eede1118b8cd7d11936ed2f86ad8fd8460c163ea681054b787516ed50')
 
 package() {
   cd "${srcdir}"
