@@ -1,26 +1,28 @@
 pkgbase = xtuner
-	pkgdesc = An instrument tuner for JACK
+	pkgdesc = An instrument tuner for JACK with NSM support
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/XTuner
-	arch = i686
+	arch = aarch64
 	arch = x86_64
 	groups = pro-audio
 	license = GPL2
+	makedepends = fftw
 	makedepends = jack
 	makedepends = liblo
 	makedepends = libsigc++
 	makedepends = zita-resampler
+	depends = gcc-libs
 	depends = cairo
 	optdepends = new-session-manager: for NSM support
 	source = https://github.com/brummer10/XTuner/releases/download/v1.0/XTuner_1.0.tar.gz
 	sha256sums = 9da772b5dab2e5e87be79c2558b29174fed6228cb28ae961b5f62b41a75f7185
 
 pkgname = xtuner
+	depends = gcc-libs
 	depends = cairo
 	depends = libfftw3f.so
 	depends = libjack.so
 	depends = liblo.so
-	depends = libsigc++
+	depends = libsigc-2.0.so
 	depends = libzita-resampler.so
-
