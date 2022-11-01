@@ -10,7 +10,7 @@ depends=('libx11' 'libxft')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("$pkgname::git+$url")
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
