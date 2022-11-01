@@ -1,13 +1,13 @@
 pkgbase = r-brobdingnag
 	pkgdesc = Very Large Numbers in R
-	pkgver = 1.2.7
-	pkgrel = 5
+	pkgver = 1.2.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Brobdingnag
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-cubature
-	source = https://cran.r-project.org/src/contrib/Brobdingnag_1.2-7.tar.gz
-	sha256sums = 73a734342736da5b29c2827d91f662101873503af7ad9cdf9e9e697bb32dd742
+	source = https://cran.r-project.org/src/contrib/Brobdingnag_1.2-9.tar.gz
+	sha256sums = f9012d250bc2a0f47815d6a7c06df2d4ddf3d8bab2d3b75e8cdefd964d20e91e
 
 pkgname = r-brobdingnag
