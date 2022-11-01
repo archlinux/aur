@@ -5,21 +5,21 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=42.5
+pkgver=43.0
 pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop
-         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile libsysprof-capture)
+         libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
+         gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
+         libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-#checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
+#checkdepends=(xorg-server-xvfb wireplumber python-dbusmock zenity)
 #options=(debug)
-_commit=4b35c269c7ad2515f91d2d3ccaea7526e0cb5f97  # tags/42.5^0
+_commit=bdf3470a8a89206a39dc45824a8080dc6a9666ca  # tags/43.0^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 
@@ -82,7 +82,7 @@ _pick() {
 
 package_mutter-dynamic-buffering() {
   conflicts=(mutter)
-  provides=(mutter libmutter-10.so)
+  provides=(mutter libmutter-11.so)
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
