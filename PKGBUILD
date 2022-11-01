@@ -1,8 +1,8 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-pkgver=3.0.5
-pkgrel=2
+pkgver=3.0.7
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -13,12 +13,13 @@ optdepends=('ca-certificates' 'perl')
 replaces=('openssl-perl' 'openssl-doc')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"{,.asc}
-	'ca-dir.patch')
-sha256sums=('aa7d8d9bef71ad6525c55ba11e5f4397889ce49c2c9349dcea6d3e4f0b024a7a'
+        'ca-dir.patch')
+sha256sums=('83049d042a260e696f62406ac5c08bf706fd84383f945cf21bd61e9ed95c396e'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-	'7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
+              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -46,7 +47,7 @@ check() {
 	# revert this patch for make test
 	patch -Rp1 -i "$srcdir/ca-dir.patch"
 
-	make test
+	make HARNESS_JOBS=$(nproc) test
 
 	patch -Np1 -i "$srcdir/ca-dir.patch"
 	# re-run make to re-generate CA.pl from the patched .in file.
@@ -57,4 +58,6 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+
+	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
