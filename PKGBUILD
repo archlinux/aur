@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-git-authors-plugin"
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="MkDocs plugin to display git authors of a page"
 url="https://timvink.github.io/mkdocs-git-authors-plugin/"
@@ -12,7 +12,7 @@ replaces=("python-mkdocs-git-authors-plugin-git")
 depends=("mkdocs")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timvink/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce423077fd243b8f200a8512efad07403fa3f85d0a12abee64c8d828ce99e61a')
+sha256sums=('dc98a1a6d1cd05fd63fa194f9c3fe23c90663aa54cec6cfbab055b4aa15efe5e')
 
 build(){
  cd "$pkgname-$pkgver"
