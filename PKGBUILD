@@ -2,14 +2,14 @@
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
 pkgver=2.0.3.r0.g6efe996
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/git-nautilus-icons"
 license=('BSD')
 depends=('python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-optdepends=('python-nautilus: Nautilus support'
+optdepends=('python-nautilus<4.0: Nautilus support'
             'nemo-python: Nemo support'
             'python-caja: Caja support')
 provides=("${pkgname%-git}")
