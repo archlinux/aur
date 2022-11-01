@@ -1,11 +1,11 @@
 pkgbase = am2rlauncher
 	pkgdesc = Application for installing the latest Community Updates, APKs and Mods for AM2R.
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/AM2R-Community-Developers/AM2RLauncher
 	arch = x86_64
 	license = GPL3
-	depends = dotnet-runtime>=5
+	depends = dotnet-runtime>=6
 	depends = dotnet-host
 	depends = gtk3
 	depends = libappindicator-gtk3
@@ -19,9 +19,9 @@ pkgbase = am2rlauncher
 	optdepends = jre-openjdk: Creating APKs
 	conflicts = am2rlauncher-git
 	options = !strip
-	source = https://github.com/AM2R-Community-Developers/AM2RLauncher/releases/download/2.2.0/AM2RLauncher_2.2.0_lin.zip
-	source = AM2RLauncher.ico::https://github.com/AM2R-Community-Developers/AM2RLauncher/raw/2.2.0/AM2RLauncher/AM2RLauncher.Gtk/icon64.ico
-	md5sums = SKIP
-	md5sums = SKIP
+	source = https://github.com/AM2R-Community-Developers/AM2RLauncher/releases/download/2.3.0/AM2RLauncher_2.3.0_lin.zip
+	source = AM2RLauncher.ico::https://github.com/AM2R-Community-Developers/AM2RLauncher/raw/2.3.0/AM2RLauncher/AM2RLauncher.Gtk/icon64.ico
+	sha256sums = c819fa7a8be01c1f989604fe0bb91152335601de0a2ce695493579c7f3208bba
+	sha256sums = 4337d07b915c0ebf5b4bc9a7b2e29be0575a075720446e142cafd89bf9ff79f6
 
 pkgname = am2rlauncher
