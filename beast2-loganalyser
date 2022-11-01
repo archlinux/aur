@@ -1,0 +1,18 @@
+#!/bin/sh
+self_path=$(realpath $0)
+environment_file=$(dirname $self_path)/beast2-environment
+source $environment_file
+
+# use BEAST_EXTRA_LIBS variable to load BEAGLE and other libraries from non-default locations
+# this assumes that the library path contains all these libraries (or are set through LD_LIBRARY_PATH)
+if [ -n "$BEAST_EXTRA_LIBS" ]; then
+  "$JAVA" -Dlauncher.wait.for.exit=true -Xms256m -Xmx8g -Djava.library.path="$BEAST_EXTRA_LIBS" -Duser.language=en \
+    -cp $DEFAULT_CP:$BEAST_LIB/launcher.jar \
+    --module-path $JFX_LIBS --add-modules javafx.controls,javafx.fxml \
+    beast.pkgmgmt.launcher.AppLauncherLauncher LogAnalyser $*
+else
+  "$JAVA" -Dlauncher.wait.for.exit=true -Xms256m -Xmx8g -Duser.language=en \
+    -cp $DEFAULT_CP:$BEAST_LIB/launcher.jar \
+    --module-path $JFX_LIBS --add-modules javafx.controls,javafx.fxml \
+    beast.pkgmgmt.launcher.AppLauncherLauncher LogAnalyser $*
+fi

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast2/bin/beast
+Exec=beast2
 Icon=/usr/share/beast2/images/beast.png
 MimeType=
 Name=beast2
