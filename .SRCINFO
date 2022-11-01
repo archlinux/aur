@@ -1,0 +1,17 @@
+pkgbase = cedarlogic-git
+	pkgdesc = Free, Open Source Digital Logic Simulator
+	pkgver = v2.3.6.r82.d153a75
+	pkgrel = 1
+	url = https://github.com/CedarvilleCS/CedarLogic
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = wxwidgets-gtk3
+	depends = glu
+	provides = cedarlogic
+	conflicts = cedarlogic
+	source = cedarlogic::git+https://github.com/CedarvilleCS/CedarLogic.git#branch=dev-v2.4
+	md5sums = SKIP
+
+pkgname = cedarlogic-git
