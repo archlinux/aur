@@ -3,12 +3,12 @@
 pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
-pkgver=0.20.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
 depends=('gcc-libs')
-makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang')
+makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf' 'cmake' 'clang' 'jdk11-openjdk')
 options=(!lto)
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('328531c93eb437ce7c811a9a6659327c7b3389487ef5d7db160e8df6e36521ddd8bda8274e2a6791ee64a28967cb5a627a76dea239c8b98d84ed330aa535b45c')
+sha512sums=('d2c13bf0d96eb706afe018c0ef9b377f3f50d2a82690f6ccb7260efa7cc620fb5c52ae775d598d6ebcaa581acfaab244dfe6f7f1738755604bf860cd548a62b6')
 
 prepare() {
   tar xf "${_pkgname}-$pkgver.tar.gz"
@@ -27,15 +27,26 @@ prepare() {
 
   # Do not build the android library
   sed -i "s/include ':android'//" java/settings.gradle
+  sed -i "s/cargo build/cargo build --frozen/" java/build_jni.sh
+
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${_pkgname}-${pkgver}/java"
 
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   ./build_jni.sh desktop
   gradle --no-daemon assemble
 
   zip -d "client/build/libs/libsignal-client-${pkgver}.jar" "${_libname}.so"
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {
