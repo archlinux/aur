@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 pkgname=ibm-sw-tpm2
 pkgver=1682
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 specification'
 arch=('x86_64')
 url='https://sourceforge.net/projects/ibmswtpm2/'
