@@ -1,8 +1,4 @@
 pkg/
 src/
-.AURINFO
-jmeters/
-jmeters-*.tar.xz
-jmeters-*.src.tar.gz
-jmeters-*.tar.gz
-jmeters-*.tar.bz2
+*.tar.*
+*.zip
