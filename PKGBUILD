@@ -12,14 +12,14 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia-static
-pkgver=5.15.6
+pkgver=5.15.7
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
 depends=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=76f84c545429a1b988b79f971734ef4bc3e6643f
+_commit=f3dc18968c437c993886d3bfb668b62344a10860
 _basever=$pkgver
 pkgver+=+kde+r1
 makedepends+=('git')
