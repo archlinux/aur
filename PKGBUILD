@@ -1,11 +1,11 @@
-# Based on AUR petsc and petsc-git package.
-
+# PETSc from the latest git release
+# Maintainer: eDgar <edgar |at] openmail cc>
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 # Contributor: Martin Diehl <aur@martin-diehl.net>
 
 _base=petsc
-pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.17.4
+pkgname=("${_base}"-git-release "${_base}"-doc-bin)
+pkgver=3.18.0.3.g28c2d9c59d1
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -18,11 +18,11 @@ depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
          'python-mpi4py' "python-numpy" "eigen>=3" "openblas")
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
              'git' 'cython' 'chrpath' "hypre=2.25.0")
-source=(git+${url}.git#tag=v3.17.4
+source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
         test_optdepends.sh)
 sha512sums=('SKIP'
-            '23773368dd0ffb77d12de1609f79c53e9a1e35d89f2696a3b2fdf02bf96adfde16e27feb1977159188f765a7697eb1f1a7947104aacf6c94471b5a23e1ff2936'
+            '49cecb31911ab0e66cc37d22b8024d067e8611a9fdee057fa70158b01531019cca7df0d238b83ff2fa34e4e5b7b08792f8a1eedd9477eb133c8a8b38523d65af'
             'af9c16c59915c1ddb03390bb0b97e8b7404fed200cd86f69cdf06fcd13f670bc3c3c7ddae527b621210408a01db0c55db249af1fc1082e284aa707d32b21ebcb')
 install=petsc.install
 
@@ -114,6 +114,9 @@ build() {
     --with-environment-variables=1
     --with-cxx-dialect=auto
     --with-mpi=1
+    --with-fc=$(which mpifort)
+    --with-cxx=$(which mpicxx)
+    --with-cc=$(which mpicc)
     --with-pic=1
     --with-shared-libraries=1
     --with-zlib=1
@@ -135,7 +138,7 @@ check() {
   PETSC_DIR="${srcdir}"/"${_base}" PYTHONPATH="${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH}" make check
 }
 
-package_petsc-git() {
+package_petsc-git-release() {
   optdepends=(
     "boost: Free peer-reviewed portable C++ source libraries"
     "cgns: Recording and recovering computer data"
@@ -200,11 +203,10 @@ package_petsc-git() {
   ln -s "${_install_dir}"/lib/petsc4py ${_pythonpath}
 }
 
-package_petsc-doc () {
+package_petsc-doc-bin () {
   depends=()
   optdepends=()
   provides=(${_base}-doc)
-  replaces=(${_base}-doc)
   conflicts=()
   pkgdesc="Documentation for PETSc"
   # Two options: compile the documentation or get it from
