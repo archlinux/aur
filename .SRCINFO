@@ -1,7 +1,7 @@
 pkgbase = nautilus-admin-gtk4
 	pkgdesc = Extension for Nautilus to do administrative operations
 	pkgver = 1.1.9.f736e9d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MacTavishAO/nautilus-admin-gtk4
 	install = nautilus-admin-gtk4.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nautilus-admin-gtk4
 	makedepends = cmake>=2.6
 	makedepends = gettext
 	depends = nautilus
-	depends = python-nautilus-gtk4
+	depends = python-nautilus
 	depends = polkit
 	optdepends = gedit: to use the "Edit as Administrator" action
 	optdepends = gnome-terminal: to use the "Run as Administrator" action
