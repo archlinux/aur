@@ -7,8 +7,9 @@ pkgdesc="Nix support for Vim"
 arch=('any')
 url='https://github.com/LnL7/vim-nix'
 license=('MIT')
+makedepends=('git')
 depends=('vim')
-source=('vim-nix::git+https://github.com/LnL7/vim-nix.git')
+source=('git+https://github.com/LnL7/vim-nix.git')
 sha256sums=('SKIP')
 
 pkgver() {

@@ -5,8 +5,9 @@ pkgbase = vim-nix-git
 	url = https://github.com/LnL7/vim-nix
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = vim
-	source = vim-nix::git+https://github.com/LnL7/vim-nix.git
+	source = git+https://github.com/LnL7/vim-nix.git
 	sha256sums = SKIP
 
 pkgname = vim-nix-git
