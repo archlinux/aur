@@ -46,7 +46,10 @@ optdepends=(
 source=("${pkgname}::git+https://github.com/Alexays/Waybar"
 	meson-build.patch
 	meson_options.patch)
-sha1sums=('SKIP')
+
+sha1sums=('SKIP'
+          '3676ab3dff04f3c3e6bf5d2a2a1a7bd15d6a6cba'
+          'e077c91a787e7d147e14c5b3284686cde1e32d7c')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
