@@ -1,0 +1,20 @@
+pkgbase = weresocool
+	pkgdesc = *** WereSoCool __!Now In Stereo!__ *** Make cool sounds. Impress your friends/pets/plants
+	pkgver = 1.0.39
+	pkgrel = 1
+	url = https://github.com/xasopheno/weresocool
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = portaudio
+	makedepends = pkg-config
+	makedepends = lame
+	makedepends = vorbis-tools
+	depends = portaudio
+	depends = pkg-config
+	depends = lame
+	depends = vorbis-tools
+	provides = weresocool
+	source = git+https://github.com/xasopheno/weresocool#tag=v1.0.39
+
+pkgname = weresocool
