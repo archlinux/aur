@@ -1,11 +1,11 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=karlender-git
-pkgver=r100.5844090
+pkgver=0.7.1.r0.g271e614
 pkgrel=1
 pkgdesc="An apative GTK-4 calendar app."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/loers/karlender"
+url="https://gitlab.com/floers/karlender"
 license=('GPL3')
 depends=('libadwaita' 'libnotify')
 makedepends=('git' 'cargo')
@@ -17,10 +17,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
