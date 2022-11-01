@@ -2,7 +2,7 @@
 
 pkgname=star-cshl
 pkgver=2.7.10b
-pkgrel=3
+pkgrel=1
 pkgdesc="STAR aligns RNA-seq reads to a reference genome using uncompressed suffix arrays"
 arch=("x86_64")
 url="https://github.com/alexdobin/STAR"
