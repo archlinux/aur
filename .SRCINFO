@@ -1,6 +1,6 @@
 pkgbase = lilac-git
 	pkgdesc = The build bot for archlinuxcn
-	pkgver = r904.2be56ec
+	pkgver = r1047.9bbc121
 	pkgrel = 1
 	url = https://github.com/archlinuxcn/lilac
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = lilac-git
 	depends = python-prctl
 	optdepends = smtp-forwarder: for sending error reports
 	optdepends = python-sqlalchemy: for recording build results in a database
-	provides = lilac=r904.2be56ec
+	provides = lilac=r1047.9bbc121
 	conflicts = lilac
 	source = git+https://github.com/archlinuxcn/lilac.git
 	sha256sums = SKIP
