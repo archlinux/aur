@@ -4,7 +4,7 @@
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Andrew Fischer <andrew_at_apastron.co>
 
-pkgbase=openfoam
+pkgbase=openfoam9
 pkgname=openfoam-9-org
 _subver=20220602
 _pkgver=9
