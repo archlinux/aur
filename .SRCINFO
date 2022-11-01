@@ -1,12 +1,15 @@
 pkgbase = tiptop-cli
 	pkgdesc = Command-line system monitoring
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/tiptop
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-codeblocks
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-py-cpuinfo
 	depends = python-distro
 	depends = python-psutil
