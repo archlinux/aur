@@ -57,6 +57,7 @@ pkgver() {
 }
 
 prepare() {
+    cd "${srcdir}/${pkgname}"
     patch -p1 < ../meson-build.patch
     patch -p1 < ../meson_options.patch
 }
