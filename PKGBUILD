@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-eas-4-tbsync
 _name=EAS-4-TbSync
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc='Provider for Exchange ActiveSync Version History'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 source=("${_name}-${pkgver}.xpi::https://github.com/jobisoft/${_name}/releases/download/v${pkgver}/${_name}.xpi")
 noextract=("${_name}-${pkgver}.xpi")
-sha512sums=('6fb774356961f11acd9f5282c91764a4aa000fbb3937a7d4d322a498b5cdc6fd927c987bb1938475e8d1fe053644842f7dd133f8dee315537b62d4421ed65045')
+sha512sums=('aaa700fc1e03108ad8cb401c947068c65b441a0444a88d88d48113c997ff17a763e0ba8e577f36bae840ee216be00565311569c8bd2f98f2576cedf7e7f05be2')
 
 package() {
   _extension_id="eas4tbsync@jobisoft.de"
