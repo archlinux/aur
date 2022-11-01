@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.0.5
+pkgver=6.0.6
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,6 +80,8 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
+_kernel_base_commit=e90fbe65c6b31ed48a6f13c232b0ca26688218d5
+_kernel_arch_tag=${pkgver}-arch1
 _arch_config_commit=c971483bcf4dfb8a2a18f0c4867c1123addbbf72
 _prjc_version=6.0-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
@@ -90,34 +92,23 @@ source=(
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "${_prjc_patch}::https://gitlab.com/torvic9/linux60-vd/-/raw/master/prjc-6.0-r0-vd.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/f29dd9ddc7a2659e67f7f3ddfbf087a7729fd012.patch"
-  "0002-${pkgbase}-${pkgver}-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch::https://github.com/archlinux/linux/commit/f4a5411651f402b391dddccdebc43e3461e9f749.patch"
-  "0003-${pkgbase}-${pkgver}-soundwire-intel-Initialize-clock-stop-timeout.patch::https://github.com/archlinux/linux/commit/f4e799545c0fc46a5899853f60776adc8671776c.patch"
-  "0004-${pkgbase}-${pkgver}-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch::https://github.com/archlinux/linux/commit/87336625589872206597baab173ae6014ddf1750.patch"
-  "0005-${pkgbase}-${pkgver}-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch::https://github.com/archlinux/linux/commit/2b078fa1fdcbd43a042ff49ad70f6ab2a22dffb3.patch"
-  "0006-${pkgbase}-${pkgver}-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch::https://github.com/archlinux/linux/commit/f2712d9d94e98733953cf567f32f7755800464ae.patch"
-  "0007-${pkgbase}-${pkgver}-drm-amdgpu-Fix-for-BO-move-issue.patch::https://github.com/archlinux/linux/commit/75ff02c24828d71bf13730e1a0b499591a1a4cef.patch"
+  "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('71afe2e227bbab9b40ccbd3dda4aacbe1ba7f45b85c863c57a759a91d18d215cdc16c8bfd28e2d2bcd2a510c49b7fc84531d21695ad81895172ca6997ffe0f5a'
+b2sums=('af53568340db3d63e3bbe8c5f27fff1e285b332845b9af960ee230c116e0555cc50857b6617d1b54f56e8de6717a940ff443cae9bf7dd8cc81326fe15ec6da5f'
         'SKIP'
         '1a3a8c081adfd44b3c35c13fe110df3798f65ffddb1f5a88d38c4f59ae67a16258d5b204e9f9d1ba02e241f06dd161cc58adb93110d1160285fb1de72a38b2ff'
         '28cba772c87a3be7ecfba7b7bce1b0def168626a53fadc16989cce7644d2f1fd4ab5aa11c69645341eb02f65c8832fcf8482315f8199cbeac63abf5d4ac37855'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        'a3904e0126f2dfa873a2f72863a8137bc99e7810bd62eaee1ffb4d216825c31fce66d9674178e46e237507791e8b5ac3589416d834e2356e1fbd1ad7a3657402'
-        'e8908617d37dc5c8dd747e16f9094f15e3a71f8014afeaef2c70d03e650cdc8f686646b0c0cb8ab868f94bf68e5769ce908641981c893dddc09fe7045f1e5446'
-        '95f1bf09f6cecf4dd5869522a40d05a8028c6fd3a7203d74acca0bfb346828546e7bb7cf89dd5e8d640a376d283227a85e7263ad77a2bc2509f898ecef0b87f3'
-        'a3f1fdba125648acc9e85be41cb4f2615471d9113b382b84af5960ccf6122d617597d07073b27e9a2e9998391551f6ea9f8b52cbd26f1c41b3a72ab927fdfa1a'
-        '7629d202f92b5a1af97be1573b802a16f69e54269090ad16a7e033906dbe53b5636cf0f58025db60a485a3bc606e39a1f89105007773fedbc939f12fd57e28a8'
-        '6678aabad22cd13fd2ef44d7f38c6bec5c768cdea51e87cdd2743fa69e50f45b38fe8e966759e962c7f3a5a3319db25c07da5f7c9e2bc8907e803412989be348'
-        '71887e6164aa7e30d736e46fdcdceec76e4f8f236758391858f80cadf8244e9ce32d36333ab3e11adc35587050b3d669a8734590a8949affe9c936c4dab32d40')
+        'e4c4baa90d2496740979a32a02d6e4431ad785af98522a2772bbedd32766d44c997c00b5e9af4a24e0053e44f1d1353e7006c1f4cbb296c542cf17d60a9733cf')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
+export EXTRAVERSION=""
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -173,6 +164,9 @@ prepare() {
     export _LLVM_IAS=$_LLVM
   fi
 
+  # EXTRAVERSION is set by arch patch, we reset it to empty
+  sed -ri 's/^(EXTRAVERSION\s=\s)(\-[a-z0-9]+)$/\1/' Makefile
+
   # non-interactively apply prjc default options
   # this isn't redundant if we want a clean selection of subarch below
   make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
@@ -214,7 +208,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all EXTRAVERSION=""
 }
 
 _package() {
