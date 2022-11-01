@@ -15,7 +15,7 @@ provides=($_pkgname)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.tar.gz"
 "$_pkgname.sh"
 "$_pkgname.desktop")
-sha512sums=('2d9e01f1658ac346aaee6f362c2b537ed5bb276b05370c72404e8d5fda731717e0260fa71def9dc9e657e092a6fe212ab36042da185c8834e8393d0323539264'
+sha512sums=('e15707cb793202fd63c9b1566cafe70f68944ede563f1cd5823c722ebabec52640dc42a6d91facbaafcf1b811c170ca99a4443be6622596489b440557413f461'
             'fd81efdce512374b2990a18b7b1c00050c2d775eaa1230bc0ffbbc78b5379800a19aa9dbfd18272bd914a8456a9a9c4b3851d56cc85ce506dbf11e61f21967d2'
             '4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0')
 
