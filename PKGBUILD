@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('perl')
 optdepends=('ca-certificates' 'perl')
 replaces=('openssl-perl' 'openssl-doc')
+provides=('libcrypto.so' 'libssl.so')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${pkgver}.tar.gz"{,.asc}
         'ca-dir.patch')
