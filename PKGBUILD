@@ -1,13 +1,13 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=tofi-git
-pkgver=r73.32e2cb8
+pkgver=r176.0b83f9a
 pkgrel=1
 pkgdesc="Tiny rofi / dmenu replacement for wlroots-based Wayland compositors."
 arch=("x86_64")
 url="https://github.com/philj56/tofi"
 license=("MIT")
 groups=()
-depends=("freetype2" "harfbuzz" "cairo" "pango" "wayland" "libxkbcommon")
+depends=("freetype2" "harfbuzz" "cairo" "pango" "wayland" "libxkbcommon" "glib2")
 makedepends=("meson" "git" "scdoc" "wayland-protocols")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
