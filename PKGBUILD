@@ -1,15 +1,15 @@
 # Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
 pkgname='herbe-git'
 pkgver='1.0.0.r10.gdec89e4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Daemon-less notifications without D-Bus'
 arch=('x86_64')
 url='https://github.com/dudik/herbe'
 license=('MIT')
 depends=('libx11' 'libxft')
 makedepends=('git')
-provides=('herbe')
-conflicts=('herbe')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
