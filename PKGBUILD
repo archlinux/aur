@@ -3,7 +3,7 @@
 
 pkgname=(barrier barrier-headless)
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source KVM software based on Synergy"
 arch=(x86_64)
 url="https://github.com/debauchee/barrier"
@@ -95,4 +95,3 @@ package_barrier-headless() {
         rm -rf "${pkgdir}/${file}"
     done
 }
-
