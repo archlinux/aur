@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-proxy-switchyomega
+	pkgdesc = Proxy SwitchyOmega addon for Firefox.
+	pkgver = 2.5.20
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/switchyomega/
+	arch = any
+	groups = firefox-addons
+	license = GPLV3
+	depends = firefox
+	source = firefox-extension-proxy-switchyomega-2.5.20.xpi::https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/proxy_switchyomega-2.5.20-an+fx.xpi
+	sha256sums = 360da61f908a00a1900241ede20f8a3f82675b2365cfdf386efa35fb284cca38
+
+pkgname = firefox-extension-proxy-switchyomega
