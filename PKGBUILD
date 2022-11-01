@@ -6,7 +6,7 @@
 pkgname=libxmlrpc
 # Using the "super stable" version
 pkgver=1.51.08
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='XML-RPC for C and C++'
 arch=(x86_64)
