@@ -2,9 +2,9 @@
 
 pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
-pkgver=v7.1
-_gittag=v7.1-rc
-pkgrel=4
+pkgver=v7.2
+_gittag=v7.2-rc
+pkgrel=1
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 arch=("any")
@@ -20,7 +20,7 @@ sha256sums=("SKIP"
 
 prepare() {
   cd ${_gitname}
-  git checkout b83f719460ccfad52bf9f2bf0a5f9ab73bde3cc3
+  #git checkout b83f719460ccfad52bf9f2bf0a5f9ab73bde3cc3
   git submodule update --force --recursive --init
   icns2png -x ILSpy/ILSpy.icns
 }
