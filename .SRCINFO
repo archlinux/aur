@@ -1,17 +1,13 @@
-pkgbase = chd-git
+pkgbase = hd
 	pkgdesc = C makefile generator
 	pkgver = 1.5
-	pkgrel = 89
-	url = https://github.com/Noah-Arcouette/hd.git
-	arch = any
+	pkgrel = 1
+	url = https://github.com/Noah-Arcouette/hd
+	arch = x86_64
 	license = Mimik1.2
-	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	makedepends = binutils
 	depends = glibc
 	conflicts = hd-git
-	source = git+https://github.com/Noah-Arcouette/hd.git
-	sha256sums = SKIP
+	source = https://github.com/Noah-Arcouette/HD/releases/download/releaseV1.5/HD-V1.5.7z
+	sha256sums = 09bae071e2627f84ae104548e3fd300596a4ab5c993c7bcee0fbb1c82dc6f163
 
-pkgname = chd-git
+pkgname = hd

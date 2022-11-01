@@ -1,52 +1,37 @@
-pkgbase="chd-git"
-pkgname="chd-git"
+pkgbase="hd"
+pkgname="hd"
 pkgver=1.5
-pkgrel=89
+pkgrel=1
 pkgdesc="C makefile generator"
 
-arch=("any")
+arch=("x86_64")
 
-makedepends=("git" "make" "gcc" "binutils")
+makedepends=()
 depends=("glibc")
 
 license=("Mimik1.2")
 
-url="https://github.com/Noah-Arcouette/hd.git"
-
 provides=()
 conflicts=("hd-git")
 
-giturl="https://raw.githubusercontent.com/Noah-Arcouette/hd/master/"
+url="https://github.com/Noah-Arcouette/hd"
 
 source=(
-	"git+${url}"
+	"https://github.com/Noah-Arcouette/HD/releases/download/releaseV1.5/HD-V1.5.7z"
 )
 
 sha256sums=(
-	"SKIP"
+	"09bae071e2627f84ae104548e3fd300596a4ab5c993c7bcee0fbb1c82dc6f163"
 )
 
-build () {
-	cd "hd"
-
-	mkdir ./obj -p
-	mkdir ./bin -p
-
-	./mkinfo 1.5
-
-	make -j1 build
-}
-
 package() {
-	cd "hd"
-
 	# setup dirs
 	mkdir -p "${pkgdir}/usr/bin/"
 
 	# make binary root owned and executable
-	chown root:root ${srcdir}/hd/bin/hd
-	chmod a+x ${srcdir}/hd/bin/hd
+	chown root:root ${srcdir}/hd
+	chmod a+x ${srcdir}/hd
 
 	# copy binary
-	mv "${srcdir}/hd/bin/hd" "${pkgdir}/usr/bin/hd"
+	mv "${srcdir}/hd" "${pkgdir}/usr/bin/hd"
 }
