@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=aursh
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple AUR helper written in bash"
 arch=('any')
 url="https://github.com/huboles/aursh"
@@ -13,4 +13,4 @@ package() {
     cd "$srcdir" || exit
     make install DESTDIR="$pkgdir" 
 }
-sha256sums=('236c7b04b9678371df0610d4e0e0e1582c8c03efeccbb86a72c70c205d4250de')
+sha256sums=('32e259b070d52c4e3e2ca3d59928715524f2174690984780023663df81aa74a1')
