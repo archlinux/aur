@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extensions-quick-settings-tweaks-git
+	pkgdesc = Let's tweak gnome 43's quick settings! You can add Media Control, Notification, Volume Mixer on quick settings and remove unuseful buttons!
+	pkgver = r27.3956727
+	pkgrel = 1
+	url = https://github.com/qwreey75/quick-settings-tweaks
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell
+	provides = gnome-shell-extensions-quick-settings-tweaks
+	conflicts = gnome-shell-extensions-quick-settings-tweaks
+	source = git+https://github.com/qwreey75/quick-settings-tweaks.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extensions-quick-settings-tweaks-git
