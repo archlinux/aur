@@ -1,5 +1,5 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-
+# Maintainer: Marc Riera <marcriera@softcatala.org>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=omegat-beta
 _pkgname=omegat
 pkgver=5.7.1
