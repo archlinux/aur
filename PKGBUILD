@@ -2,13 +2,13 @@
 
 pkgname=python-webtest-aiohttp
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides integration of WebTest with aiohttp.web applications'
 arch=(any)
 url='https://github.com/sloria/webtest-aiohttp'
 license=(MIT)
 depends=(python)
-makedepends=(python-pip python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 _name=${pkgname/python-/}
 source=(https://pypi.python.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
