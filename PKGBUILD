@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DExMAdata
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Data package for DExMA package'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a34c16a53863d0a8e33296405704f8ac4cf100c516a3a58a1f934fe71920acad')
+sha256sums=('fa4560bc609515b0b16f080d5693c17662efa774dcf9c3d3ea60d12c0385643e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
