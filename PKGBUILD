@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CopyhelpeR
-_pkgver=1.28.0
+_pkgver=1.29.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='Helper files for CopywriteR'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1fbb96a91c6278b29786d7ff58c6d1c9e232b8ff3f36b735c24603059b7994e')
+sha256sums=('86a130688e95c05f79284d6b1643b9eb612a3b0d8483a7717b0dfc0d4b228331')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
