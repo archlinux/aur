@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOsummaries
-_pkgver=2.32.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc='Word cloud summaries of GO enrichment analysis'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cab95eec6e66ba4a56903f24c40232bdec8ff1dce5a42391d3357da7e1a16a72')
+sha256sums=('e690c496bc3e084bb26c7e832f7d4e19f086154bf8d97fba926a07fdc8a4eab9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
