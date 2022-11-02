@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=agilp
-_pkgver=3.28.0
+_pkgver=3.30.0
 pkgname=r-${_pkgname,,}
-pkgver=3.28.0
+pkgver=3.30.0
 pkgrel=1
 pkgdesc='Agilent expression array processing package'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce87c755f89e160ead947a531f0b65aedfd25abe00f7f750ea96392b7c12a3de')
+sha256sums=('203388ce6ef8f95995d6518e4332a9fea54deb4601a491dce6aeeff008009c95')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
