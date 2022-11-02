@@ -3,7 +3,7 @@
 _pkgname=chatty
 pkgname=${_pkgname}
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
 url='https://chatty.github.io/'
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
+  export GRADLE_USER_HOME="$srcdir/.gradle"
   gradle --quiet build
   gradle --quiet release
 }
