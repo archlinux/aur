@@ -1,6 +1,6 @@
 pkgbase = r-specond
 	pkgdesc = Condition specific detection from expression data
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SpeCond
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-specond
 	depends = r-hwriter
 	depends = r-mclust
 	depends = r-rcolorbrewer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpeCond_1.50.0.tar.gz
-	sha256sums = 9ce17fd1731a2646ebbd8228721aca5acd57996ceb7ebb407b8a5ff9af353714
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpeCond_1.52.0.tar.gz
+	sha256sums = a4bdc6cc6193253d3e2a6286e6cfdef88cd6a8ed4478f322f127aa94ceb7c525
 
 pkgname = r-specond
