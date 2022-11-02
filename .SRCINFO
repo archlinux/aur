@@ -1,12 +1,12 @@
 pkgbase = pint
 	pkgdesc = Prometheus rule linter
-	pkgver = 0.30.2
-	pkgrel = 2
+	pkgver = 0.31.0
+	pkgrel = 1
 	url = https://github.com/cloudflare/pint
 	arch = x86_64
 	license = Apache2
 	makedepends = go
-	source = https://github.com/cloudflare/pint/archive/refs/tags/v0.30.2.tar.gz
-	sha512sums = c9eef04d9ec83306f4c36818a752063c89c59bcdd9f11ace60117873d73a60a001eb298d818d1e65a68659d11657c8495957891309517cca95b951b5e8b85f67
+	source = https://github.com/cloudflare/pint/archive/refs/tags/v0.31.0.tar.gz
+	sha512sums = e01c12e07b78d1c37b84a268431e78ca8c9a4fa5adbcb13f3ca6c8477e7e369b76efaa57bdf093be7fa1bf17babf0ad8a8d7a3e15787349a683af571dbcd99d0
 
 pkgname = pint
