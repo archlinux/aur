@@ -1,6 +1,6 @@
 pkgname=nextcloud-app-richdocuments
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate Collabora Online into NextCloud"
 arch=('any')
 url="https://github.com/nextcloud-releases/richdocuments"

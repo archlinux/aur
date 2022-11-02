@@ -1,11 +1,12 @@
 pkgbase = nextcloud-app-richdocuments
 	pkgdesc = Integrate Collabora Online into NextCloud
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud-releases/richdocuments
 	arch = any
 	license = AGPL
-	depends = nextcloud=25
+	depends = nextcloud>=25
+	depends = nextcloud<26
 	depends = nodejs
 	depends = npm
 	options = !strip
