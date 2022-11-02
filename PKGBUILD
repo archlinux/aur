@@ -3,7 +3,7 @@ pkgname=bautista
 pkgver=0.0.6
 pkgrel=1
 pkgdesc='A domotic butler bot'
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://github.com/joshi-stuff/bautista'
 license=('GPL3')
 depends=(
@@ -16,8 +16,7 @@ makedepends=(
 	'yarn'
 )
 backup=(
-	'etc/bautista/config.json'
-	'etc/bautista/creds.json'
+	'etc/bautista/config.toml'
 )
 install='install.sh'
 source=(
@@ -42,7 +41,10 @@ package() {
 
 	cp -arv arch/root/* $pkgdir
 
-	mkdir -p $pkgdir/usr/lib/bautista
-	cp -arv node/bautista/*.js $pkgdir/usr/lib/bautista
+	mkdir -p $pkgdir/usr/bin
+	cp -arv rust/target/debug/bautista-bot $pkgdir/usr/bin/bautista
+
+	mkdir -p $pkgdir/usr/lib/bautista/meross-bridge
+	cp -arv node/meross-bridge/*.js $pkgdir/usr/lib/bautista/meross-bridge
 	cp -ar node/node_modules $pkgdir/usr/lib/bautista
 }

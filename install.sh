@@ -7,7 +7,7 @@
 post_install() {
 	# TODO: this fails the first time we install because the group still doesn't
 	# exist
-	chgrp bautista /etc/bautista/creds.json
+	chgrp bautista /etc/bautista/config.toml
 
 echo
 echo '88                                             88                                  '
@@ -22,16 +22,10 @@ echo
 echo
 echo '  Follow the next steps to complete installation:'
 echo
-echo '    1. Edit /etc/bautista/creds.json file to enter Telegram and Meross'
-echo '       credentials.'
+echo '    1. Edit /etc/bautista/config.toml file to configure credentials and'
+echo '       device rules.'
 echo
-echo '         sudo vi /etc/bautista/creds.json'
-echo
-echo
-echo '    2. Edit /etc/bautista/config.json file to declare your Meross devices and'
-echo '       define their rules.'
-echo
-echo '         sudo vi /etc/bautista/config.json'
+echo '         sudo vi /etc/bautista/config.toml'
 echo
 echo
 echo '    3. Enable and start bautista service in systemd:'
@@ -51,7 +45,7 @@ echo
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-	chgrp bautista /etc/bautista/creds.json
+	chgrp bautista /etc/bautista/config.toml
 }
 
 ## arg 1:  the old package version
@@ -63,3 +57,4 @@ post_upgrade() {
 #post_remove() {
 	# do something here
 #}
+
