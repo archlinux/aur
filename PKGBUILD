@@ -1,7 +1,7 @@
 # Maintainer: rpkak <rpkak@users.noreply.github.com>
 pkgname='libblake3'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="the C implementations of the BLAKE3 cryptographic hash function"
 arch=('x86_64')
@@ -37,5 +37,6 @@ package() {
     ln -rs "$pkgdir/usr/lib/libblake3.so.$pkgver" "$pkgdir/usr/lib/libblake3.so.$(echo $pkgver | sed 's/\..*//')"
     ln -rs "$pkgdir/usr/lib/libblake3.so.$pkgver" "$pkgdir/usr/lib/libblake3.so"
     install -Dm644 "BLAKE3-$pkgver/c/blake3.h" "$pkgdir/usr/include/blake3.h"
+    install -Dm644 "BLAKE3-$pkgver/c/blake3_impl.h" "$pkgdir/usr/include/blake3_impl.h"
     install -Dm644 "blake3.pc" "$pkgdir/usr/lib/pkgconfig/blake3.pc"
 }
