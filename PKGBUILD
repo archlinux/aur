@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=release-plz-git
-pkgver=0.2.20.r0.g1455270
+pkgver=0.2.21.r0.g87507c3
 pkgrel=1
 pkgdesc="Release Rust packages without using the command line (git)"
 arch=('x86_64')
@@ -12,8 +12,10 @@ depends=('gcc-libs' 'curl')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}")
-sha512sums=('SKIP')
+source=("git+${url}"
+	"$pkgname-$pkgver-fix-args.patch::$url/commit/d92659803c82e9ebcad623d2702e71aa0ed1c9e2.patch")
+sha512sums=('SKIP'
+            'c347d3a43b77a77c14af992ffb661f2cc55b5095d2844d164405b22e4d93a65f277885c0afe9f590e3b88b588b5cba109a298abf06c5cdd0392e49e4154efb87')
 options=('!lto')
 
 pkgver() {
@@ -23,6 +25,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  patch -Np1 -i "$srcdir/$pkgname-$pkgver-fix-args.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   mkdir completions
 }
