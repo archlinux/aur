@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBarrays
-_pkgver=2.60.0
+_pkgver=2.62.0
 pkgname=r-${_pkgname,,}
-pkgver=2.60.0
+pkgver=2.62.0
 pkgrel=1
 pkgdesc='Unified Approach for Simultaneous Gene Clustering and Differential Expression Identification'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3f72df16dc57af38cee028b2b19c0fb1fd9af2f97eb7310f5b6dd7e6d56ff08')
+sha256sums=('08a71d46af6e51baf38a24720447e634feaa2664308950ed344da776af12e24d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
