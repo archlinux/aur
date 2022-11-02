@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=14.0.0_r400862.c6c13c58eebd
+pkgver=16.0.0_r440693.a68bcd81dcc9
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -30,7 +30,9 @@ md5sums=('SKIP'
          '295c343dcd457dc534662f011d7cff1a')
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
-options=('staticlibs')
+options=('staticlibs' '!lto')
+# explicitly disable lto to reduce number of build hangs / test failures
+
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
             
@@ -70,8 +72,8 @@ build() {
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
+        -D LLVM_USE_PERF=ON \
         -D LLVM_INCLUDE_BENCHMARKS=OFF \
-        -D LLVM_INCLUDE_GO_TESTS=OFF \
         -D LLVM_INCLUDE_EXAMPLES=OFF \
         -D LLVM_BUILD_DOCS=OFF \
         -D LLVM_INCLUDE_DOCS=OFF \
@@ -114,7 +116,7 @@ package_llvm-minimal-git() {
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
   
-    # llvm project doesn't honor CMAKE_INSTALL_LIBEXECDIR 
+    # llvm project uses /usr/libexec and setting CMAKE_INSTALL_LIBEXECDIR doesn't change that.
     # to comply with archlinux packaging standards we have to move some files manually
     for libexec_file in "analyze-c++" "analyze-cc" "c++-analyzer" "ccc-analyzer" "intercept-c++" "intercept-cc"
     do
