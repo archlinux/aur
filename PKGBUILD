@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.8.0
-_cliver=3.15.1
+pkgver=3.8.2
+_cliver=3.16.5
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -14,8 +14,8 @@ replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v$_cliver/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('73fac422d1ec5b144e59dd5dd9bb6882f5e3da9fd3e344965b5b7af08bac739d'
-            'a4a36c070e303070a536dec72c8af9028136f31e8c0a7bd440b0ff0a8f7765de'
+sha256sums=('bdd376f03446dbd3fffec4e2b0068873ffc2231c6a005d5f84a75840d36d0449'
+            '239f938eefd27d77b9ee4674cc86b3ab412edbde7d873affda3608ddd75d5518'
             '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
 
 prepare() {
