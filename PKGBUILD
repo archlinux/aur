@@ -1,7 +1,7 @@
 # Maintainer: Jonas Leder <info@jonasled.de>
 
 pkgname=repetier-server
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='repetier server component'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,10 +16,10 @@ source_i686=("http://download.repetier.com/files/server/debian-intel32/Repetier-
 source_x86_64=("http://download.repetier.com/files/server/debian-amd64/Repetier-Server-${pkgver}-Linux.deb")
 source_armv7h=("http://download.repetier.com/files/server/debian-armhf/Repetier-Server-${pkgver}-Linux.deb")
 source_aarch64=("http://download.repetier.com/files/server/debian-arm64hf/Repetier-Server-${pkgver}-Linux.deb")
-sha256sums_i686=('5c7fd4e56af818be6f072c6e5f142c515c57de2b5f9857442b375aa5be91b0c7')
-sha256sums_x86_64=('da2135954913bcf54cc14a35841fa888a310440c2cecf48d0d9c89d32e6c9a22')
-sha256sums_armv7h=('e8bb7244075c07a6693db790fe43adb881d3667eaad8a65f287b7a4d0a975bac')
-sha256sums_aarch64=('d3dedcf77e764120b95f7ae1989f82abef78ad0f8bc304154bbcc1bfdb3fa796')
+sha256sums_i686=('c8c87f60a665b3f093f51290be89e2ddfe7c5b26c6a7ecc5a989ca864e9c40b7')
+sha256sums_x86_64=('46e31cd9885ea2c9d66fd6a13a8f36dc70c7a720b3991b26adf7b84f60045ff7')
+sha256sums_armv7h=('e8b4675e0f60ebef5c89430b5e957a9ab28825d76928116da9a956aacaed17b8')
+sha256sums_aarch64=('5089cf80627b6a44599b92a4513edc49479570a108a232b93516718609aba439')
 
 package() {
   cd ${srcdir}
