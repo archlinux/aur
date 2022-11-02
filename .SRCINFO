@@ -1,6 +1,6 @@
 pkgbase = r-savr
 	pkgdesc = Parse and analyze Illumina SAV files
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/savR
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-savr
 	depends = r-xml
 	optdepends = r-cairo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/savR_1.34.0.tar.gz
-	sha256sums = 53b428c5495a1366e5ff16c1c8bb16601c277414cd990a90bc769bece970f413
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/savR_1.36.0.tar.gz
+	sha256sums = 9e5e4aaaf34bd87d813cd72fdddc035695c537673c249c6d9b8f9a2ce493f3ac
 
 pkgname = r-savr
