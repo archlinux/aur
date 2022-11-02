@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BGmix
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Bayesian models for differential gene expression'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   boost
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('728329df671209d12af892937cc1513b9b6374ab1aa726def689d871edb4c60d')
+sha256sums=('ddf564db2083a793e23a7fde98966cc32f0247d1816b4a4229190fb765ee8c64')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

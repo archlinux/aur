@@ -1,13 +1,13 @@
 pkgbase = r-bgmix
 	pkgdesc = Bayesian models for differential gene expression
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BGmix
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = boost
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BGmix_1.56.0.tar.gz
-	sha256sums = 728329df671209d12af892937cc1513b9b6374ab1aa726def689d871edb4c60d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BGmix_1.58.0.tar.gz
+	sha256sums = ddf564db2083a793e23a7fde98966cc32f0247d1816b4a4229190fb765ee8c64
 
 pkgname = r-bgmix
