@@ -6,7 +6,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20221031.14053
+pkgver=20221102.14062
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('transfig: convert images using fig2ps'
             'imagemagick: convert images'
             'aspell: spell checking')
 makedepends=('ghostscript' 'cmake' 'subversion')
-source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src#revision=14053")
+source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src")
 sha256sums=('SKIP')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
