@@ -1,6 +1,6 @@
 pkgbase = syncthingtray-git
 	pkgdesc = Tray application for Syncthing
-	pkgver = 1276.0865d11
+	pkgver = 1298.14c4aa6
 	pkgrel = 2
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = syncthingtray-git
 	checkdepends = cppunit
 	checkdepends = syncthing
 	checkdepends = iproute2
+	checkdepends = appstream
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools
