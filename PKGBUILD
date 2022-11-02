@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=limmaGUI
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='GUI for limma Package With Two Color Microarrays'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67152d0933a96dd7c04579c6cea4c3ef5305ca0d9aa569631c492666db0202eb')
+sha256sums=('0e9c61f839e8d70cd1922b82fc23e090514e34950953c79e748bacaf119ac439')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
