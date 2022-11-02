@@ -1,6 +1,6 @@
 pkgbase = r-ibmq
 	pkgdesc = integrated Bayesian Modeling of eQTL data
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iBMQ
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-ibmq
 	depends = r-ggplot2
 	depends = gsl
 	depends = openmpi
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iBMQ_1.36.0.tar.gz
-	sha256sums = 2d878aa1484be12a9bfc673d67ee3c0fc54892b6448eb58d23a16e2e4e86251c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iBMQ_1.38.0.tar.gz
+	sha256sums = 3394028f76bafdf0bb30677062c119e2e6bc6d6b2007fbd3f2df3bcfa86e08cc
 
 pkgname = r-ibmq
