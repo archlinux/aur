@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sagenhaft
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Collection of functions for reading and comparing SAGE libraries'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-sparsem
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5e7e179fb211cb8442f3556adfeea79f03cfaedf98383cb77a9db8361093eb33')
+sha256sums=('959490bce306015ef0ce834a595800d8eb085b3a051e99b3b234e303f67c0942')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
