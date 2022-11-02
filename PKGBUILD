@@ -1,8 +1,8 @@
 pkgname=papirus-icon-theme-stripped-git
-pkgver=20220910.r0.g45a2d58
+pkgver=20221101.r5.gcce2603
 pkgrel=1
 pkgdesc="Papirus icon theme, stripped to only base (default + dark) variations."
-_name="${pkgname%-stripped-git}"
+_name="${pkgname%-*-*}"
 url="https://github.com/PapirusDevelopmentTeam/${_name}"
 arch=('any')
 license=('GPL3')
@@ -12,13 +12,11 @@ conflicts=("${_name}")
 options=('!strip' '!emptydirs')
 
 pkgver() {
-    cd "${srcdir}/repo"
+    cd "repo"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}"
-
     if [ ! -d "repo" ]; then
         git clone --bare --filter=tree:0 --single-branch "${url}" "repo"
     fi
@@ -33,7 +31,7 @@ package() {
     local licenses="${pkgdir}/usr/share/licenses/${pkgname}"
     install -dm755 "${icons}" "${licenses}"
 
-    cd "${srcdir}/repo"
+    cd "repo"
     (
         export GIT_WORK_TREE="${icons}"
         git sparse-checkout set --no-cone "/Papirus" "/Papirus-Dark"
