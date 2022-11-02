@@ -2,12 +2,12 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
 license=('MIT')
-depends=('gcc-libs' 'libxcb' 'fontconfig')
+depends=('gcc-libs' 'libxcb' 'fontconfig' 'ttf-material-design-icons')
 makedepends=('cargo' 'git' 'libx11' 'python')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -44,7 +44,6 @@ package() {
   install -Dm644 assets/icon.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 "assets/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 assets/MaterialIcons-Regular.ttf -t "$pkgdir/usr/share/fonts/TTF/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir/$pkgname-v$pkgver-legal.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/legal.txt"
