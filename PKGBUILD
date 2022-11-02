@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tripr
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='T-cell Receptor/Immunoglobulin Profiler (TRIP)'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('078310a356783234075764be67afab09e3c11f01b4a336e8fa474120e0c7be6c')
+sha256sums=('a33f7d2a4d308b2f1a84b068a4193ec18dc48a4650b58793bb3c839d7488954f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
