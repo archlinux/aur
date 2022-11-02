@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRcomp
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Tools to assess and compare miRNA expression estimatation methods'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6ab07ae3603cce022a7142435f7374b96036e23ad01f0274c7c02e31c2c0c3ed')
+sha256sums=('a9f650bc7bfa846c7c2fdec51626627c0c0bcd9d8de7c8ea77670168f633dcf6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
