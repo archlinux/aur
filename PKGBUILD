@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=veloviz
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='VeloViz: RNA-velocity informed 2D embeddings for visualizing cell state trajectories'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bf778a385ac159607895a26a8f033dcd3fe4e90b734c165a9d1403561e7c044d')
+sha256sums=('f343953fb67c78a3845eaa07a9bd503e78acc6abf07a501e1ad03e009168c205')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
