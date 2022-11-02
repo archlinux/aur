@@ -4,7 +4,7 @@
 
 pkgname=obs-studio-amf
 pkgver=28.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -27,7 +27,7 @@ source=(obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver
 	com.obsproject.Studio.desktop)
 md5sums=('SKIP'
          '34fb1c611b3e278ca4d0d1d50e7bfb9b'
-         'f95965ad8df85e62f691ae73665e11db'
+         'SKIP'
          '2f0f4b1f1814716d345a8f028b987361')
 
 prepare() {
