@@ -1,13 +1,13 @@
 pkgbase = jagr-git
 	pkgdesc = Java AutoGrader, implemented in Kotlin
 	pkgver = r381.c47745b
-	pkgrel = 1
-	url = https://github.com/SourceGrade/Jagr
+	pkgrel = 2
+	url = https://github.com/sourcegrade/jagr
 	arch = any
 	license = AGPL-3.0
 	depends = jre-openjdk
 	conflicts = jagr-bin
-	source = jagr-git::git+https://github.com/SourceGrade/Jagr.git
+	source = jagr-git::git+https://github.com/sourcegrade/jagr.git
 	source = jagr
 	sha256sums = SKIP
 	sha256sums = SKIP

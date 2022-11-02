@@ -3,15 +3,15 @@
 pkgname=jagr-git
 _pkgname=Jagr
 pkgver=r381.c47745b
-pkgrel=1
+pkgrel=2
 pkgdesc='Java AutoGrader, implemented in Kotlin'
 arch=('any')
-url='https://github.com/SourceGrade/Jagr'
+url='https://github.com/sourcegrade/jagr'
 license=('AGPL-3.0')
 depends=('jre-openjdk')
 makedepends=()
 conflicts=('jagr-bin')
-source=("${pkgname}::git+https://github.com/SourceGrade/Jagr.git" "jagr")
+source=("${pkgname}::git+https://github.com/sourcegrade/jagr.git" "jagr")
 sha256sums=('SKIP' 'SKIP')
 
 # Dynamically update Package Version from Git
