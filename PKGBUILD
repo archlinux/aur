@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clusterStab
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Compute cluster stability scores for microarray data'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-genefilter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64bd78e1255628cf538143b6013772e74a38a92c84c4729568a5e53f749aad5c')
+sha256sums=('be7016d8e8d20094965860aa68ac932d94fdce8208c63cd0fd2f035cc758b54e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
