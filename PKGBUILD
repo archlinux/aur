@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ibh
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Interaction Based Homogeneity for Evaluating Gene Lists'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-yeastcc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5324e5da152032a2062c3e520ee1ed9a466f8bea158027e91f67c331bd19e450')
+sha256sums=('ee3b0197b995441775a0181bffbfab3d729bb8e41756f17b79dd8770d2bab84f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
