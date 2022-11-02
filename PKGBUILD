@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HIBAG
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='HLA Genotype Imputation with Attribute Bagging'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-snprelate
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('34805f96c6460bc55a60994adebea3853eb7c81f3fee55d8c72e0727f2a92f29')
+sha256sums=('7d5d2f67c1e485826547a34eca24bbd8f9300aa0abc84a1d44d5e49072e8cb87')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
