@@ -12,13 +12,13 @@
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.14.0
+pkgver=1.14.4
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64)
 license=(GPL custom)
-groups=('selinux')
+groups=(selinux)
 # Make sure systemd's hook supports reloading dbus: the following commit was introduced in package systemd 242.84-2
 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=4e247891655844511c775fba566df270f8d0d55f
 # https://github.com/archlinux/svntogit-packages/commit/4e247891655844511c775fba566df270f8d0d55f
@@ -103,4 +103,4 @@ package_dbus-docs-selinux() {
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
