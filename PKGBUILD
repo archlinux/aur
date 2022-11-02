@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CTDquerier
-_pkgver=2.3.1
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.3.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Package for CTDbase data query, visualization and downstream analysis'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac2a76fa6f09c82becdd8c627cd73dc2172c4107b55c8f08d603b8073179fda2')
+sha256sums=('b1ed5cc603b7ee9881bdbef154a66b70467dd3451f0f0bbc1371c470c772e496')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
