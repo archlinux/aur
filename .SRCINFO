@@ -1,16 +1,18 @@
 pkgbase = libpurple-signald-git
 	pkgdesc = Pidgin libpurple bridge to signald.
-	pkgver = 0.6.0.r2.gaf18341
+	pkgver = 0.12.0.r0.g87409b4
 	pkgrel = 1
 	url = https://github.com/hoehermann/libpurple-signald
 	arch = any
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
 	depends = json-glib
 	depends = libpurple
 	depends = signald
+	provides = libpurple-signald
+	conflicts = libpurple-signald
 	source = libpurple-signald-git::git+https://github.com/hoehermann/libpurple-signald
 	sha512sums = SKIP
 
 pkgname = libpurple-signald-git
-

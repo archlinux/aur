@@ -1,16 +1,18 @@
-# Maintainer: Joe Davison <joe@warhaggis.com>
+# Contributor: Joe Davison <joe@warhaggis.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: zer0def <zer0def on freenode>
 
 pkgname=libpurple-signald-git
-pkgver=0.6.0.r2.gaf18341
+pkgver=0.12.0.r0.g87409b4
 pkgrel=1
 pkgdesc='Pidgin libpurple bridge to signald.'
 url='https://github.com/hoehermann/libpurple-signald'
 license=('GPL3')
 arch=('any')
 depends=('json-glib' 'libpurple' 'signald')
-makedepends=('git')
+makedepends=('cmake' 'git')
+provides=('libpurple-signald')
+conflicts=('libpurple-signald')
 source=("${pkgname}::git+https://github.com/hoehermann/libpurple-signald")
 sha512sums=('SKIP')
 
@@ -20,15 +22,18 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule update --init --recursive
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
+  cmake .
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm644 libsignald.so "${pkgdir}/usr/lib/purple-2/libsignald.so"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 icons/16/signal.png "${pkgdir}/usr/share/pixmaps/pidgin/protocols/16/signal.png"
-  install -Dm644 icons/48/signal.png "${pkgdir}/usr/share/pixmaps/pidgin/protocols/48/signal.png"
+  make DESTDIR="$pkgdir/" install
 }
