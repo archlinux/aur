@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-32
+_srctag=GE-Proton7-33
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
