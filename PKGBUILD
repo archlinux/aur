@@ -7,7 +7,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ipv6
 pkgver=0.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Ncurses BitTorrent client based on libTorrent, with IPv6 patch'
 url='http://rakshasa.github.io/rtorrent/'
 license=('GPL')
