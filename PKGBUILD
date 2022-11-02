@@ -12,15 +12,15 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=22.3.0_devel.160894.df3fdbdeb50
+pkgver=22.3.0_devel.162217.b49c027e1f1
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
               'wayland-protocols' 'glslang' 'llvm-minimal-git' 'libdrm' 'libclc')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-mesa' 'opencl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver'  'vulkan-swrast' 'mesa-vdpau')
+provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'mesa-vdpau' 'vulkan-driver' 'opengl-driver' 'opencl-driver' 'mesa-vdpau')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'mesa-vdpau')
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 url="https://www.mesa3d.org"
 license=('custom')
@@ -70,7 +70,7 @@ build () {
        -D gallium-nine=false \
        -D gallium-omx=disabled \
        -D gallium-va=enabled \
-       -D gallium-vdpau=disabled \
+       -D gallium-vdpau=enabled \
        -D gallium-xa=disabled \
        -D gbm=enabled \
        -D gles1=disabled \
