@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MantelCorr
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Compute Mantel Cluster Correlations'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac41b2a863f5a8ba6e999b892070ee7f289d9a2141ad4078b9718c344c346ebe')
+sha256sums=('aa1493248a9b690177e8df20b1b723061edc590e61352fe075ff1ab63ea98234')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
