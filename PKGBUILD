@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iCOBRA
-_pkgver=1.24.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Comparison and Visualization of Ranking and Assignment Methods'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('491bea9d167ed3f437ca56b0740092a4ebde4fefa355e188ded438fd565179bf')
+sha256sums=('9e0d9dee2ee7c6a40f813c36b37b485a65eb0b8ddc17f059bc46ec5c6c560756')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
