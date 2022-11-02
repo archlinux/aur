@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan dot zaera at protonmail dot com>
 pkgname=bautista
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='A domotic butler bot'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/joshi-stuff/bautista/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=("33b64f21e8b83070f8629d41a705dd875bce72bd2933722fca58914dca9c50ae")
+sha256sums=("5631f2c2001353bd489b0e2830bc90143a61f35295e18d6c7ebbbe85d5b859dc")
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
