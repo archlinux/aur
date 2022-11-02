@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-ibash
 pkgver=2022.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of quotes for fortune-mod from http://ibash.org.ru"
 url="http://ibash.org.ru"
 license=("unknown")
