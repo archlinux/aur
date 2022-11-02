@@ -1,11 +1,11 @@
-# Maintainer: Boris Momčilović <boris@momcilovic.org>
+# Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
 # Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch
-pkgver=8.4.1
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   remove-systemd-distribution-check.patch
   remove-systemd-package-check.patch
 )
-sha256sums=('f266b43dab221e0576702101335c762c98aa0204c32284653d1fc479561d6c19'
+sha256sums=('08349c936777b77adbd1868edb59840a3ab628697ea17db06fe7074e0565f180'
             '040fe3d528255cc82e3b018eb05802131de8e1d4deb1e299d4d86a0ab5e08311'
             '8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
