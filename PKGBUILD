@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gdsfmt
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='R Interface to CoreArray Genomic Data Structure (GDS) Files'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('000ff7bdfc325b8f37159d3bd3219fec95d2f92972ac2461e1de30f776f4bcb1')
+sha256sums=('06cc0c5d087859a897c46bca4555b957df99453bb9d1cbe2dee64ab809c663b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
