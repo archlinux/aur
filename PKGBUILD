@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TrajectoryGeometry
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='This Package Discovers Directionality in Time and Pseudo-times Series of Gene Expression Patterns'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a9cd2380a28929ef14711416cf1df75696ef244c110cc57727a15dcc4d4bd8d')
+sha256sums=('a9272f3f1f427e4c16a2f0afd94cf281b53ed778f31b8b03932e93ed640cb109')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
