@@ -1,6 +1,6 @@
 _pkgname=art-rawconverter
 pkgname="${_pkgname}-bin"
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
 )
 
 sha256sums=(
-  '276a7e18d719bf7c182e8ceca8696faad1e1938b41be5e514a74aa99d6db9b5c'
+  '9afb64e3612c3bb480d6e05ece48297a21221908a3670909895baf26d30948bb'
   '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
 )
 
