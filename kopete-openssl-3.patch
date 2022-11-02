@@ -1,0 +1,13 @@
+diff --git a/protocols/jabber/libjingle/talk/base/openssladapter.cc b/protocols/jabber/libjingle/talk/base/openssladapter.cc
+index b0eee38..696b346 100644
+--- a/protocols/jabber/libjingle/talk/base/openssladapter.cc
++++ b/protocols/jabber/libjingle/talk/base/openssladapter.cc
+@@ -758,7 +758,7 @@ bool OpenSSLAdapter::VerifyServerName(SSL* ssl, const char* host,
+       value = NULL;
+ 
+       if (meth->it) {
+-        ASN1_item_free(reinterpret_cast<ASN1_VALUE*>(ext_str), meth->it);
++        ASN1_item_free(reinterpret_cast<ASN1_VALUE*>(ext_str), ASN1_ITEM_ptr(meth->it));
+       } else {
+         meth->ext_free(ext_str);
+       }

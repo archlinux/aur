@@ -15,13 +15,18 @@ depends=(knotifyconfig kcmutils ktexteditor kcontacts kidentitymanagement libkle
 makedepends=(extra-cmake-modules mediastreamer libgadu jsoncpp kdoctools kdesignerplugin kdnssd kinit)
 optdepends=('mediastreamer: jingle support' 'libgadu: Gadu-Gadu protocol' 'kdnssd: bonjour protocol')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig} 
-        kopete-mediastreamer2.14.patch kopete-srtp2.patch kopete-openssl-1.1.patch kopete-mediastreamer-4.3.patch)
+        kopete-mediastreamer2.14.patch
+        kopete-mediastreamer-4.3.patch
+        kopete-openssl-1.1.patch
+        kopete-openssl-3.patch
+        kopete-srtp2.patch)
 sha256sums=('4ee284051c0989eb99d0430af3c0a239d49b5d4aa0673e8b6fb925b6bed9a9cc'
             'SKIP'
             '0dd400ecbcbc8f7c77beb71e9907a1cb0eaedabf7aa9f9a28d9f0d3f0dd960d2'
-            'ceed663f7007654d186d918cf7a0742972ed5bd319879021e9ba80e395177700'
+            '426df8abe65d46ec8e37804ec573ad205c00c7d6ba2deb0249b5b01fa20bc4d7'
             'a12ea422e5162ef11274a98fd53658d6e780cafbe2e0fac70c8bc7d3291fef8b'
-            '426df8abe65d46ec8e37804ec573ad205c00c7d6ba2deb0249b5b01fa20bc4d7')
+            '9577062b1491e41667925409a87067c07d72dd46fd734357c6812fe1266bc33d'
+            'ceed663f7007654d186d918cf7a0742972ed5bd319879021e9ba80e395177700')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
@@ -34,6 +39,8 @@ prepare() {
   patch -d $pkgname-$pkgver -p1 -i ../kopete-mediastreamer-4.3.patch
 # fix build with OpenSSL 1.1 (Fedora patch)
   patch -d $pkgname-$pkgver -p1 -i ../kopete-openssl-1.1.patch
+# fix build with OpenSSL 3.0
+  patch -d $pkgname-$pkgver -p1 -i ../kopete-openssl-3.patch
 # support SRTP2
   patch -d $pkgname-$pkgver -p1 -i ../kopete-srtp2.patch
 }
