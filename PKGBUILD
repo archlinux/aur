@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sparseMatrixStats
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Summary Statistics for Rows and Columns of Sparse Matrices'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a28fe0592793913b2c9c553bb15c71f741992ce88d27544475eb977bbc9a225c')
+sha256sums=('60f523d2c70b926768070373b9fd05dafcc53e822b3dfd406fe95b4b541e02e7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
