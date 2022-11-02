@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GCSscore
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='GCSscore: an R package for microarray analysis for Affymetrix/Thermo Fisher arrays'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-siggenes
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44e4441b954fcc03c961005a6af11eb1d5a573ca0801cc252be979c695d8b031')
+sha256sums=('28b6b5a34d85dc49419ce64116b543ed1a4787f7266e5ef7f9df3b8ad8f3a885')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
