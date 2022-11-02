@@ -1,4 +1,5 @@
-# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
+# Maintainer: Kaydax <contact@kaydax.xyz>
+# Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Miko <mikoxyzzz@gmail.com>
@@ -6,8 +7,8 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.4.0.r348.gc089f9b5
-pkgrel=2
+pkgver=1.4.0.r364.g21db985b
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PolyMC/PolyMC"
@@ -40,7 +41,7 @@ prepare() {
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -51,11 +52,6 @@ build() {
     -DLauncher_QT_VERSION_MAJOR="6" \
     -Bbuild -SPolyMC
   cmake --build build
-}
-
-check() {
-  cd "build"
-  ctest .
 }
 
 package() {
