@@ -1,6 +1,6 @@
 pkgbase = r-roc
 	pkgdesc = utilities for ROC, with microarray focus
-	pkgver = 1.72.0
+	pkgver = 1.74.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ROC
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-roc
 	depends = r-knitr
 	optdepends = r-biobase
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROC_1.72.0.tar.gz
-	sha256sums = 62077c63539636fbf21ad5630aafe369d789c8355050a3a56df82f214103d879
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROC_1.74.0.tar.gz
+	sha256sums = bb6e514655f972a37feebeb0b8893953b989fd7a064fcd515ff97ed96b37fc02
 
 pkgname = r-roc
