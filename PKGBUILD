@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SANTA
-_pkgver=2.32.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
-pkgver=2.32.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc='Spatial Analysis of Network Associations'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('00df6b01fda2d5cbc65399fde9f221741e6aea8439c78ff2b0252982560da034')
+sha256sums=('8830df1fc22eab8db45384a77c8d398677df5ef8ce8f0eb2ccba9c16c7d029c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
