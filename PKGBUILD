@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BufferedMatrix
-_pkgver=1.60.0
+_pkgver=1.61.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.0
+pkgver=1.61.0
 pkgrel=1
 pkgdesc='A matrix data storage object held in temporary files'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c00c0bf589315ac9b4d7d96c3b310b9927ff9cadffbdf7991af3f29a6b308aea')
+sha256sums=('a891d0f2feed868e948691229ba80380cb8e85e937c12a23ff9a7480d9b4fa39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
