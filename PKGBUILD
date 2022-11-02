@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RGMQLlib
-_pkgver=1.16.0
+_pkgver=1.17.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='RGMQLlib, java libraries to run GMQL scala API'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bfb0c2f5ca5fc4b0fea59bb0f696e9f6570c3fc4bfadeba641671d4af9707cfe')
+sha256sums=('b9b0720d8b14a675974f34f4a65e1d1324e6b9e8b149280f6e32d04d6aa100da')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
