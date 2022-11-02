@@ -1,7 +1,7 @@
 pkgbase = kreya-bin
 	pkgdesc = GUI client for gRPC and REST APIs
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kreya.app/
 	arch = x86_64
 	license = custom

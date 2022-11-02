@@ -4,5 +4,6 @@ Exec=/opt/Kreya/kreya %U
 Terminal=false
 Type=Application
 Icon=kreya
+StartupWMClass=Kreya
 Comment=GUI client for gRPC and REST APIs
-Categories=Programming;
+Categories=Development;
