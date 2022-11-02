@@ -1,8 +1,8 @@
 # Maintainer: Miroslav Jarý <mira.jary@gmail.com>
 
 pkgname=yin-yang
-pkgver=3.1.1
-pkgrel=6
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python-psutil' 'python-suntime' 'python-systemd' 'python-pyqt6' 'pyside6' 'qt6-positioning')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.1.1.zip")
-sha256sums=('1c317a73669639504294ff4108c180fe2b0408e9845214d5e0a5f763c6ecd313')
+source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.2.0.zip")
+sha256sums=('b1f0704c47c58b70e1fb0987e393e140c0dcf74b1dc669e5b3c1a8ce2f8b70c6')
 
 package() {
     # This is a modified version of scripts/install.sh
