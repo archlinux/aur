@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rhdf5lib
-_pkgver=1.18.2
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.2
-pkgrel=3
+pkgver=1.20.0
+pkgrel=1
 pkgdesc='hdf5 library as an R package'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8f9893a4c8173f5d154e2a0b9f73f0f575ac17481a3bf943f99e88c30e44ebca')
+sha256sums=('a73b462be309c9df11afc9b941282dcefb36b4a38d15c050fd98bb3c05bbaf7f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
