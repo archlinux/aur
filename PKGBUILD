@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MIMOSA
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Mixture Models for Single-Cell Assays'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('99f4c5ceff735b905e81a49f9f5ec2da4926c43b44d47cf7f945335fcc704b48')
+sha256sums=('111e60768b2cf2ce07ea954c5155a1c994340f7e75544ffc66504341813e8081')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
