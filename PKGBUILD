@@ -1,4 +1,4 @@
-# Maintainer: gardenapple <gardenapple at posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=chromium-extension-adnauseam
 pkgver=3.15.4b_rc1
