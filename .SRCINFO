@@ -1,6 +1,6 @@
 pkgbase = r-biobtreer
 	pkgdesc = Using biobtree tool from R
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biobtreeR
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-biobtreer
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biobtreeR_1.8.0.tar.gz
-	sha256sums = 0aaf95b0f5b75c6cb7e45c8af934698c61b0bb32c893bb815cd5548c1b34a433
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biobtreeR_1.10.0.tar.gz
+	sha256sums = ac4b903c3f592c028ac30ef0e063847e002622f8c1a12be433a41311660adcc8
 
 pkgname = r-biobtreer
