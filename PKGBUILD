@@ -3,7 +3,7 @@
 
 pkgname=hitch
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='libev-based high performance SSL/TLS proxy'
 url='https://hitch-tls.org/'
 license=(BSD)
