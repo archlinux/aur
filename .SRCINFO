@@ -1,12 +1,12 @@
 pkgbase = fadein
 	pkgdesc = Professional screenwriting software (DEMO)
-	pkgver = 4.0.16
+	pkgver = 4.0.17
 	pkgrel = 1
 	url = http://www.fadeinpro.com/
 	arch = x86_64
 	license = custom
 	depends = gtk2
-	source = fadein-4.0.16.tar.gz::http://www.fadeinpro.com/download/demo/fadein-linux-amd64-demo.tar.gz
-	sha512sums = d27ff46b3c055113561628830d2f41f851c0448cb82b7b110649a0194d18fb67416bb62e11907b88380ac67522437bf86d879a7676ac0dbab9ee7671b9c759bc
+	source = fadein-4.0.17.tar.gz::http://www.fadeinpro.com/download/demo/fadein-linux-amd64-demo.tar.gz
+	sha512sums = c92ac4ed71f508a25ceadb2f76c0611ccee9ab753082ead39da4e184a65c764c6eb524567c23f22aea5af167e89d1e2957aa6c8f41b16c5e78ecc4a85bf13786
 
 pkgname = fadein
