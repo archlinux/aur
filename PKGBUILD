@@ -17,7 +17,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --enable-proxy --with-proxy-socket=/run/gnupg-pkcs11-scd-proxy/cmd \
 	            --with-proxy-user=gnupg-pkcs11-scd-proxy --with-proxy-user-group=gnupg-pkcs11-scd-proxy \
-	            --with-proxy-group=gnupg-pkcs11
+	            --with-proxy-group=gnupg-pkcs11 LIBGPG_ERROR_LIBS=-lgpg-error
 	make
 }
 
