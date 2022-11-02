@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=illuminaio
-_pkgver=0.38.0
+_pkgver=0.40.0
 pkgname=r-${_pkgname,,}
-pkgver=0.38.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc='Parsing Illumina Microarray Output Files'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c240646e8cfe38456c7e223da4edaf8e4526678d887b896247fa129ed42960f6')
+sha256sums=('22f4545c0420ebc42709b7d42562279344eea0c916a734f9fc0c40b8aa1185b3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
