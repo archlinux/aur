@@ -3,8 +3,8 @@
 # Contributors: koba1t <kobdotsh at gmail dot com>
 
 pkgname=docker-rootless-extras
-pkgver=20.10.15
-pkgrel=2
+pkgver=20.10.21
+pkgrel=1
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/engine/security/rootless/"
@@ -22,7 +22,7 @@ source=(
         "99-docker-rootless.conf")
 
 sha256sums=('07fd43a5adad652bb9d15d5cec851c0f563fe1cf8c5f0d5123b45b0e118404dd'
-            '0fdbf7a5a61a816e3f9bcf70a85bd3792ef574b7253c01f979a5629c119c10bc'
+            '2c0860d55f05149006ba60ac9dd41f94e45f13465c4445f5027830a5cfdebd40'
             'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
 
