@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MsCoreUtils
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Core Utils for Mass Spectrometry Data'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f0f7d14b2d8560043a06dcad0c957d4c2070922cc7caa7ea54a81fe1d90ffd1c')
+sha256sums=('98fda58cc3aa32f9425f54297452667fa3d8f3be58a632bba961eebac5da19ea')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
