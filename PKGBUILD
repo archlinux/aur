@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tximport
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Import and summarize transcript-level estimates for transcript- and gene-level analysis'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1db129f369b37e5ebaefa85b724b1e640fa50c8317f009834ae7f37d0552d9b2')
+sha256sums=('cf968f0a6697422c27ee35bfbcf6701b65a53eabade0b9ba63db1655503635f0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
