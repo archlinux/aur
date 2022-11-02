@@ -3,7 +3,7 @@
 
 pkgname=python-marisa-trie
 _pyname=marisa-trie
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc='Static memory-efficient & fast Trie-like structures for Python (based on marisa-trie C++ library)'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=('cython' 'python-pip' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/m/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('bbeafb7d92839dc221365340e79d012cb50ee48a1f3f30dd916eb35a8b93db00')
+sha256sums=('aee3de5f2836074cfd803f1caf16f68390f262ef09cd7dc7d0e8aee9b6878643')
 
 build() {
   cd "${_pyname}-${pkgver}"
