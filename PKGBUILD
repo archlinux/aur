@@ -1,7 +1,7 @@
 pkgbase="hd"
 pkgname="hd"
 pkgver=1.5
-pkgrel=1
+pkgrel=93
 pkgdesc="C makefile generator"
 
 arch=("x86_64")

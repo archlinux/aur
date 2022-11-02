@@ -1,7 +1,7 @@
 pkgbase = hd
 	pkgdesc = C makefile generator
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 93
 	url = https://github.com/Noah-Arcouette/hd
 	arch = x86_64
 	license = Mimik1.2
