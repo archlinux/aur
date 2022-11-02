@@ -1,16 +1,16 @@
 pkgbase = copilot-cli-bin
 	pkgdesc = Your toolkit for containerized applications on AWS.
-	pkgver = 1.22.1
-	pkgrel = 3
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = https://aws.github.io/copilot-cli/
 	arch = aarch64
 	arch = x86_64
 	license = Apache
 	conflicts = copilot-cli
-	noextract = copilot-1.22.1
-	source_aarch64 = copilot-1.22.1::https://github.com/aws/copilot-cli/releases/download/v1.22.1/copilot-linux-arm64-v1.22.1
-	md5sums_aarch64 = 7dd6c12e82cf7e1f5894eaf8b5be1876
-	source_x86_64 = copilot-1.22.1::https://github.com/aws/copilot-cli/releases/download/v1.22.1/copilot-linux-amd64-v1.22.1
-	md5sums_x86_64 = d311f8084fbfe540cba14804f2fcacc8
+	noextract = copilot-1.23.0
+	source_aarch64 = copilot-1.23.0::https://github.com/aws/copilot-cli/releases/download/v1.23.0/copilot-linux-arm64-v1.23.0
+	md5sums_aarch64 = 4bf5c63ad65ae025924fd7d077a49d14
+	source_x86_64 = copilot-1.23.0::https://github.com/aws/copilot-cli/releases/download/v1.23.0/copilot-linux-amd64-v1.23.0
+	md5sums_x86_64 = 02bce5c88e21e363505d4a6a3524b717
 
 pkgname = copilot-cli-bin
