@@ -1,6 +1,6 @@
 pkgbase = ruby-faker
 	pkgdesc = Easily generate fake data: names, addresses, phone numbers, etc
-	pkgver = 2.23.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/faker-ruby/faker
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ruby-faker
 	depends = ruby
 	depends = ruby-i18n
 	options = !emptydirs
-	source = https://github.com/faker-ruby/faker/archive/v2.23.0/faker-2.23.0.tar.gz
-	sha256sums = 4af02598830917280287d336dc824720a9ace158f0481e5130baf4fed80c5ccb
+	source = https://github.com/faker-ruby/faker/archive/v3.0.0/faker-3.0.0.tar.gz
+	sha256sums = e4e812caa628259e5b4f827e409706f9737295810e7e211ace052029bb7bb56d
 
 pkgname = ruby-faker
