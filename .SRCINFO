@@ -1,6 +1,6 @@
 pkgbase = r-biodist
 	pkgdesc = Different distance measures
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bioDist
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-biodist
 	depends = r
 	depends = r-biobase
 	optdepends = r-locfit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bioDist_1.68.0.tar.gz
-	sha256sums = 60799077105207bb4e242798539425f96841f57bc3a2282eb21ac8bb59ded912
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bioDist_1.70.0.tar.gz
+	sha256sums = 6d70618b8544844883a4d45d5af74ab17902d155f4360bedce34eaac0a1eddba
 
 pkgname = r-biodist
