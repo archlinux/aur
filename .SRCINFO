@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.18.1.24.g1f6a6395d11
+	pkgver = 3.18.1.r24.g1f6a6395d11
 	pkgrel = 1
 	url = https://petsc.org
 	install = petsc.install
@@ -43,8 +43,8 @@ pkgbase = petsc-git
 	optdepends = suitesparse: Sparse matrix library
 	optdepends = superlu: Subroutines for sparsse linear systems
 	optdepends = libyaml: configuration files
-	provides = petsc=3.18.1.24.g1f6a6395d11
-	provides = petsc4py=3.18.1.24.g1f6a6395d11
+	provides = petsc=3.18.1
+	provides = petsc4py=3.18.1
 	conflicts = petsc
 	options = staticlibs
 	source = git+https://gitlab.com/petsc/petsc.git#branch=release

@@ -6,7 +6,7 @@
 
 _base=petsc
 pkgname=${_base}-git
-pkgver=3.18.1.24.g1f6a6395d11
+pkgver=3.18.1.r24.g1f6a6395d11
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -113,7 +113,7 @@ export PETSC_ARCH=${_config}
 
 pkgver() {
   cd "${srcdir}"/"${_base}"
-  git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
