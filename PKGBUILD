@@ -2,7 +2,7 @@
 
 pkgname=automua
 pkgver=2022.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Email client configuration made easy"
 arch=('any')
 license=('GPL3')
@@ -27,7 +27,7 @@ package() {
   sh setupvenv.sh
   source .venv/bin/activate
   pip install -Iv $pkgname==$pkgver
-  pip install mysqlclient
+  pip install mysqlclient lxml
   install -Dm644 "${srcdir}/automua.sysusers" "${pkgdir}/usr/lib/sysusers.d/automua.conf"
   install -Dm644 "${srcdir}/automua.conf" "${pkgdir}/etc/automua/automua.conf"
   install -Dm644 "${srcdir}/automua.service" "${pkgdir}/usr/lib/systemd/system/automua.service"
