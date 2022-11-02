@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2022.10.3
+pkgver=2022.11.1
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('discord-game-sdk' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2'
          'sdl2_net' 'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip and VRU support'
             'vosk-api: for VRU support (voice recognition unit)')
-makedepends=('git' 'cmake' 'ninja' 'imagemagick' 'zip' 'vosk-api')
+makedepends=('git' 'cmake' 'ninja' 'icoutils' 'zip' 'vosk-api')
 provides=('m64p')
 conflicts=('m64p' 'mupen64plus')
 replaces=('m64p')
@@ -21,10 +21,11 @@ source=("git+https://github.com/simple64/simple64.git#tag=v${pkgver}"
         'simple64.desktop')
 sha256sums=('SKIP'
             '9676193fd290b7da7d8c2d5910099682e48f697f794245c28d9d274f290f93ed'
-            'd524edcfe2e98f4bb8c443c19fdf8747752953cdf61ad62307c9105252b8f3c0'
+            'e76b47b332ea3a03be12fb59e0633c21810fdceaa508b009b4875054f6c48a97'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
 prepare() {
+    icotool -x simple64/simple64-gui/icons/simple64.ico -o simple64/simple64-gui/icons
     patch -d simple64 -Np1 -i "${srcdir}/010-simple64-remove-bundled-discord-and-vosk.patch"
     patch -d simple64 -Np1 -i "${srcdir}/020-simple64-fix-paths.patch"
     rm -rf simple64/simple64-{gui/discord,input-qt/vosk}
@@ -38,11 +39,15 @@ build() {
 
 package() {
     # gui
-    local _size
-    _size="$(magick identify -format '%wx%h' simple64/simple64-gui/icons/simple64.png)"
+    local _file
+    local _res
     install -D -m755 simple64/simple64/simple64-gui -t "${pkgdir}/usr/bin"
     install -D -m644 simple64.desktop -t "${pkgdir}/usr/share/applications"
-    install -D -m644 simple64/simple64-gui/icons/simple64.png -t "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
+    while read -r -d '' _file
+    do
+        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_file")"
+        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/simple64.png"
+    done < <(find simple64/simple64-gui/icons -maxdepth 1 -type f -name 'simple64_*_*x*x*.png' -print0)
     
     # mupen64plus
     install -D -m644 simple64/simple64/libmupen64plus.so -t "${pkgdir}/usr/lib"
