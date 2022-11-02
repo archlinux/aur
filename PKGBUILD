@@ -3,12 +3,12 @@
 _base=streamz
 pkgname=python-${_base}
 pkgver=0.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Real-time stream processing for python"
 arch=(any)
 url="https://github.com/${pkgname}/${_base}"
-depends=(python-zict python-tornado python-toolz python-six lzo snappy)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python-zict python-tornado python-toolz python-six lzo snappy python-setuptools)
+makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-pytest python-pandas python-distributed python-flaky python-networkx python-graphviz) # python-dask
 optdepends=('python-pandas: for supports streams of Pandas dataframes or Pandas series'
   'python-graphviz: for visualize the stream graph'
