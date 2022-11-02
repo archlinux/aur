@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChemmineOB
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='R interface to a subset of OpenBabel functionalities'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8b061876ebbfb8f5aeea3d5799344280ca2c5eeaa2eafdcbb3b9e2ad63a6abb3')
+sha256sums=('3c3c67e11e8014cf9f3522afe6f3a2fab9d6580123a80eafa1ceff3efb8ba24a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
