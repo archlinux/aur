@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEWIST
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Gene Environment Wide Interaction Search Threshold'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-car
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7368ede5119884424f911d405edbe98b86a251ca9d712864759e7994c95c135')
+sha256sums=('bcbf67d8b43ae44fb210664ebc7a85865605bca9221d3f137a1bf2ab42d878c2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
