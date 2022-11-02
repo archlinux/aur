@@ -1,0 +1,21 @@
+pkgbase = ewm
+	pkgdesc = An elegant window manager, that just floats perfectly.
+	pkgver = 1
+	pkgrel = 0
+	url = https://github.com/pwnwriter/ewm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	provides = ewm
+	conflicts = ewm
+	conflicts = ewm-bin
+	options = !strip
+	options = !emptydirs
+	source = ewm::git+https://github.com/pwnwriter/ewm
+	sha256sums = SKIP
+
+pkgname = ewm
