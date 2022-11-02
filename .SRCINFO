@@ -1,6 +1,6 @@
 pkgbase = r-messina
 	pkgdesc = Single-gene classifiers and outlier-resistant detection of differential expression for two-group and survival problems
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/messina
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-messina
 	optdepends = r-biocstyle
 	optdepends = r-domc
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/messina_1.32.0.tar.gz
-	sha256sums = 2443f46bf8901d1e943a9ef33857644542195c0f32d1a6833bb186de7a926eab
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/messina_1.34.0.tar.gz
+	sha256sums = 17ecc54a1466b7713bea322af17dbf8a1e920c2192788405fc4dfd8e12ed48dd
 
 pkgname = r-messina
