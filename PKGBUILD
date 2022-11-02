@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hypeR
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='An R Package For Geneset Enrichment Workflows'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('444f162726c80637daa02719446b2752e6bd66d3052d3d609b43942d530865fa')
+sha256sums=('6c9b947798d86ca0d430fc86b613e0f2a01f22c05328250b2555b69d8326d16e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
