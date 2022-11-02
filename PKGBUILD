@@ -1,8 +1,9 @@
 # Maintainer: mindnightix <midnightix@protonmail.com>
+# Maintainer: ambition-echo <ambition_echo@outlook.com>
 
 pkgname=clash-verge-bin
 _pkgname=clash-verge
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64')
@@ -13,7 +14,7 @@ provides=('clash')
 conflicts=('clash')
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/zzzgydi/clash-verge/releases/download/v${pkgver}/clash-verge_${pkgver}_amd64.deb")
 
-sha512sums=('66254894bfacd71e691a540453820c7265e2e425686c2a273695782748466cc07611decd2cec41d4187ef84106820f770338596a195771a4df243eac014a77c5')
+sha512sums=('11deca13668c42cb08d538d8184ae33802586b75eef2858915d3762ceecce775e8d39b33f207fcf289c49c2d2391183ef6c1f749c1037030baccf558d0890bc7')
 
 package() {
 	tar xpf data.tar.gz -C ${pkgdir}
