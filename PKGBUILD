@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COSNet
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Cost Sensitive Network for node label prediction on graphs with highly unbalanced labelings'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f5193938a5c6b7e7b42d0b5d0ac04a7c3fe0e1063e930ff5bfbc5b5649fe1bf')
+sha256sums=('a85eed5bdba6f6cbe7d4ff5e11297819dc568e9941c6f9758abc737b188239f0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
