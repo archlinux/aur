@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-orc
 	pkgdesc = Optimized Inner Loop Runtime Compiler (mingw-w64)
-	pkgver = 0.4.32
+	pkgver = 0.4.33
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/gstreamer/orc
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-orc
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=629864f073ae003e63c026c1de2407fec713cb53
+	source = git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=be26150a7ab2e19a0f9384109b97b6ed9c805cf6
 	source = meson_i686-w64-mingw32
 	source = meson_x86_64-w64-mingw32
 	validpgpkeys = 7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5
@@ -23,4 +23,3 @@ pkgbase = mingw-w64-orc
 	sha256sums = a07b08deafafabf9196dbc0583093fff8be9c45e29f73f7c286d5fc99492434d
 
 pkgname = mingw-w64-orc
-

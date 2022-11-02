@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=mingw-w64-orc
-pkgver=0.4.32
+pkgver=0.4.33
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'wine' 'git')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 #source=(https://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz{,.asc}
-_commit=629864f073ae003e63c026c1de2407fec713cb53  # tags/0.4.32^0
+_commit=be26150a7ab2e19a0f9384109b97b6ed9c805cf6  # tags/0.4.33^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=$_commit"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
@@ -31,6 +31,8 @@ build() {
 
     ${_arch}-meson \
           --default-library both \
+	  -D examples=disabled \
+	  -D gtk_doc=disabled \
           "${srcdir}/orc"
     ninja
   done
