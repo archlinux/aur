@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+set -e
+
+echo "What is the new shasum?";
+read SHASUM;
+
+echo "What is the new version?";
+read VERSION;
+
+sed -i -r "s/^sha256sums_x86_64=\('(.*?)'\)/sha256sums_x86_64=('$SHASUM')/" PKGBUILD 
+sed -i -r "s/^pkgver=(.*?)$/pkgver=$VERSION/" PKGBUILD 
+
+makepkg --printsrcinfo > .SRCINFO
+
+git add -u 
+
+git commit -m "chore: update v$VERSION"
+
+git push
