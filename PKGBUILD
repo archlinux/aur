@@ -12,6 +12,7 @@ depends=(
 makedepends=(
 	'coreutils'
 	'npm'
+	'pkgconf'
 	'rust'
 	'shadow'
 )
