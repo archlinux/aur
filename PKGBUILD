@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DNABarcodes
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='A tool for creating and analysing DNA barcodes used in Next Generation Sequencing multiplexing experiments'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('867590e663f88db8f757b275f28cd5c75dc6e14eff1d91d7c83d43c9eea65858')
+sha256sums=('2596c0eb02789418b4522cbbc5a99c191d5e238940530e6d13653e443fdf51a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
