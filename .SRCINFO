@@ -1,7 +1,7 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gavinhoward/bc
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = bc-gh
 	conflicts = bc
 	source = bc-gh-6.1.1.tar.xz::https://github.com/gavinhoward/bc/releases/download/6.1.1/bc-6.1.1.tar.xz
 	source = bc-gh-6.1.1.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/6.1.1/bc-6.1.1.tar.xz.sig
-	validpgpkeys = E2A30324A4465A4D5882692EC08038BDF280D33E
+	validpgpkeys = FF360647C7A7147F27DAAEC1B132F881C306590A
 	sha256sums = b6de9e2fa4fcb1902c1686760dd90217543128f0298d418951ab1e9a03964097
 	sha256sums = 0ee87232806d666b68c968dd7d08e5069640ff2f61cfef9afbbd8b54c4b38b0a
 	sha512sums = 0e7fb4d4223ace8ba5c1961cc0d7eba475174f92b75529fde64446b5d80db5729f848fd95507570711d2b8928996c87e837e926d31028f32e3f97cad47567d39

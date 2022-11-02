@@ -4,7 +4,7 @@
 
 pkgname=bc-gh
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of dc and POSIX bc with GNU extensions"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gavinhoward/bc"
@@ -24,7 +24,7 @@ sha256sums=(
   'b6de9e2fa4fcb1902c1686760dd90217543128f0298d418951ab1e9a03964097'
   '0ee87232806d666b68c968dd7d08e5069640ff2f61cfef9afbbd8b54c4b38b0a'
 )
-validpgpkeys=('E2A30324A4465A4D5882692EC08038BDF280D33E')
+validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 CFLAGS="$CFLAGS -flto=auto -O3"
 
 build() {
