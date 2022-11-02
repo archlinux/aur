@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=widgetTools
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Creates an interactive tcltk widget'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd2027038e0cb97a63dd0e7d01d5c3425c3a722c24c80d6f5dd1a84f60d18183')
+sha256sums=('c5cbbd2b111629a30fb4cf82f27c5f2a5555bd12c3220754cce1277edc6f23dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
