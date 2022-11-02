@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Travel
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='An utility to create an ALTREP object with a virtual pointer'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f0c68e6555403a2b4681106d870be030389b789285e1459f7d5313494d87ccc')
+sha256sums=('eff1e1ba219032d9a62d8ed02566cd12327a95ac432b5a0302c8ff47284c9b1c')
 
 prepare() {
   sed -i "7i #include <cstddef>" "${_pkgname}/src/class_Cache_block.h"
