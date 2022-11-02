@@ -1,0 +1,14 @@
+pkgbase = bamm
+	pkgdesc = A program for multimodel inference on speciation and trait evolution https://doi.org/10.1038/ncomms2958
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/macroevolution/bamm
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	source = git+https://github.com/macroevolution/bamm.git#tag=v2.5.0
+	sha512sums = SKIP
+
+pkgname = bamm
