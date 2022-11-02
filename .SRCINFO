@@ -1,6 +1,6 @@
 pkgbase = protonvpn-gui
 	pkgdesc = Official ProtonVPN Graphical User Interface, maintained by the ProtonVPN team.
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = protonvpn-gui
 	depends = python-cairo
 	depends = webkit2gtk
 	optdepends = libappindicator-gtk3
-	source = https://github.com/ProtonVPN/linux-app/archive/refs/tags/1.11.0.tar.gz
+	source = https://github.com/ProtonVPN/linux-app/archive/refs/tags/1.12.0.tar.gz
 	validpgpkeys = 6A5571928D2222D83BC7456E4EDE055B645F044F
-	sha256sums = 5693895f61043f6da9e6f0de3880071731a2c90e31cd6f3487214630ec68570f
+	sha256sums = 708dd5aa04a12963361a7a13188c65938b94adc268608e341faa2985312e7f94
 
 pkgname = protonvpn-gui

@@ -2,7 +2,7 @@
 # Maintainer: Alexandru Cheltutior <acrandom at pm dot me>
 pkgname=protonvpn-gui
 _gitpkgname=linux-app
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Official ProtonVPN Graphical User Interface, maintained by the ProtonVPN team."
 arch=("any")
@@ -13,7 +13,7 @@ depends=("python-protonvpn-nm-lib>=3.10.0" "python-gobject" "python-psutil" "gtk
 optdepends=("libappindicator-gtk3")
 makedepends=("python-setuptools")
 source=("https://github.com/ProtonVPN/linux-app/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5693895f61043f6da9e6f0de3880071731a2c90e31cd6f3487214630ec68570f')
+sha256sums=('708dd5aa04a12963361a7a13188c65938b94adc268608e341faa2985312e7f94')
 validpgpkeys=("6A5571928D2222D83BC7456E4EDE055B645F044F")
 
 build() {
