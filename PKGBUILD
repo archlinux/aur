@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TargetSearch
-_pkgver=1.52.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A package for the analysis of GC-MS metabolite profiling data'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed7618988867be05a770a63758bb34e203b9eace3fb54e730efd71a70b4cf25d')
+sha256sums=('9e53c6c0a931ac986792d4b421b295eda4f04fc29a5ab3421f11027e4c13bbd4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
