@@ -3,7 +3,7 @@
 pkgname=fortune-mod-ibash
 pkgver=2022.10
 pkgrel=2
-pkgdesc="A collection of quotes for fortune-mod from https://ibash.org.ru"
+pkgdesc="A collection of quotes for fortune-mod from http://ibash.org.ru"
 url="http://ibash.org.ru"
 license=("unknown")
 makedepends=('git' 'python' 'python-requests' 'python-beautifulsoup4' 'python-lxml')
