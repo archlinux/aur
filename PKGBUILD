@@ -5,7 +5,7 @@
 #shellcheck disable=SC2034
 
 pkgname='lnd'
-pkgver=0.15.2_beta
+pkgver=0.15.4_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=2
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
@@ -17,7 +17,7 @@ makedepends=('go')
 provides=('lnd' 'lncli')
 conflicts=('lnd-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lightningnetwork/lnd/archive/v${_pkgver}.tar.gz")
-sha512sums=('1d11cfe3a821fda9d7236f4186d9f6a8eec92b36c28d0266ea279df712eb643076df48ebcb9563eb2029a7f8e314bea2138d4a9a7c5b434f79c5c68ff7185a7d')
+sha512sums=('80f36691aa8b46e8380e2d5752a2688de140701276c22f8092f9f5b5ff5a592216b8f2e7cb62175bd98b614a988d2b94094ee254605781d4bbfb8763ab62b29b')
 
 # create a fake go path directory and pushd into it
 # $1 real directory
