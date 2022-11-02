@@ -1,6 +1,6 @@
 pkgbase = r-snageedata
 	pkgdesc = SNAGEE data
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SNAGEEdata
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-snageedata
 	optdepends = r-all
 	optdepends = r-hgu95av2.db
 	optdepends = r-snagee
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SNAGEEdata_1.32.0.tar.gz
-	sha256sums = f024a863ad080d957dbd0ce3360f9c0f72e4e9a2b5fd6bceb944248f3f7193a0
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SNAGEEdata_1.33.0.tar.gz
+	sha256sums = 895d5a742efffdcc5b36cc1b8e023069af585cb795488d9b1c28311fa24e148c
 
 pkgname = r-snageedata
