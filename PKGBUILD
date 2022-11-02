@@ -8,11 +8,11 @@
 
 _pack=ltfat
 pkgname=octave-$_pack
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="The Large Time/Frequency Analysis Toolbox (LTFAT) is a Matlab/Octave toolbox for working with time-frequency analysis, wavelets and signal processing. It is intended both as an educational and a computational tool. The toolbox provides a large numbe [...]"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://github.com/ltfat/ltfat"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver-of.tar.gz
-source=("https://github.com/ltfat/ltfat/releases/download/$pkgver/$_archive")
+source=("https://github.com/ltfat/ltfat/releases/download/v$pkgver/$_archive")
 noextract=("$_archive")
-sha256sums=('fe37b31bc2dae97d1b5e1389d856cc354f21dcd77f5df67c2a025fdae8c8d5fe')
+sha256sums=('f00a840c47e06307ed2948fcca7150cc16b71b7cd376136db19d9b5b5e8357b4')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
