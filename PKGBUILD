@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GIGSEA
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Genotype Imputed Gene Set Enrichment Analysis'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('89a5817e14bab3ac553d958d01c3f9f9b64a894706ab11d4621381cea81e0eed')
+sha256sums=('bc8a967c8fcb87275dfcb22efc692447416f3a9393a51d1b298fc0c5faffc4bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
