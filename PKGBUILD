@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HEM
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Heterogeneous error model for identification of differentially expressed genes under multiple conditions'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('981b300fb2b5baec61aca4eaa5c1de5b98724633807d13ab233ad22c738a06c3')
+sha256sums=('930a7e1152577fa096e9feba3d9592ef352ce528565009dc3670c36b6764a10e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
