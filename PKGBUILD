@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chopsticks
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc="The 'snp.matrix' and 'X.snp.matrix' Classes"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-hexbin
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('19c99719b7efb1cf74dac9dd70dc85073d0d7dd030dc89c50b73bf75911e0e7e')
+sha256sums=('11244e6e575df4297e796a5401ad2371cc488ecd99025f181ae3f393235089cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
