@@ -4,7 +4,7 @@
 
 pkgbase=lib32-libsoup3
 pkgname=(lib32-libsoup3)
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="HTTP client/server library for GNOME (32-bit)"
 url="https://wiki.gnome.org/Projects/libsoup"
@@ -31,13 +31,9 @@ checkdepends=(
   php-apache
 )
 options=(debug)
-_commit=89c20462d24298734c7fd476ca4c87058438e52c  # tags/3.2.1^0
-source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit"
-        0001-server-connection-Don-t-destroy-IO-data-during-steal.patch
-        0002-server-connection-Ensure-we-clean-up-the-socket.patch)
-b2sums=('SKIP'
-        '309547e8e465511c1f6bdcb40d77e4313801e1d8514a06222b56e1cdc66f646e52558754219e3f7f805b89375c4c9f54e371d52db7e3317da1cb4d15acf7048b'
-        'd705bbaca99650be7b2e47e73be1d8303fea9209bce25c2a411da03f3adcfa0500f9b834d4b5b33ed727700472486703c4203ec1d28f762c6f32b8b2dcb8d08e')
+_commit=49e0178c6f91725ca348acf6d3c5d1343e6c9eb1  # tags/3.2.2^0
+source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit")
+b2sums=('SKIP')
 
 pkgver() {
   cd libsoup
@@ -46,11 +42,6 @@ pkgver() {
 
 prepare() {
   cd libsoup
-  
-  # https://gitlab.gnome.org/GNOME/libsoup/-/issues/309
-  git cherry-pick -n 5ce3a206aeaab8c01431ead75ea8107729447d8b
-  git apply -3 ../0001-server-connection-Don-t-destroy-IO-data-during-steal.patch
-  git apply -3 ../0002-server-connection-Ensure-we-clean-up-the-socket.patch
 }
 
 build() {
