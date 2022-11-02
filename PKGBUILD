@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowPlots
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='flowPlots: analysis plots and data class for gated flow cytometry data'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-vcd
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e5cad3622b012b1b71b152ce887f6da9654a477e86ef44ec88a3428ecc6687c')
+sha256sums=('609d276ec4b3fc1c465703c5ca1b69f69d0366a814a7b4590db7f8c239161def')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
