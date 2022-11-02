@@ -1,0 +1,24 @@
+pkgbase = polymc-qt6-bin
+	pkgdesc = Minecraft launcher with ability to manage multiple instances.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/PolyMC/PolyMC
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime
+	depends = libgl
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = java-runtime=8: support for Minecraft versions < 1.17
+	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
+	provides = polymc
+	conflicts = polymc
+	noextract = PolyMC-Linux-Qt6-1.4.3.tar.gz
+	source = https://github.com/PolyMC/PolyMC/releases/download/1.4.3/PolyMC-Linux-Qt6-1.4.3.tar.gz
+	sha256sums = 28128f53265ecff4b216fcaaf5bf1ca6dab3c18a4dc4cf4527cd80ec6fd4e63f
+
+pkgname = polymc-qt6-bin
