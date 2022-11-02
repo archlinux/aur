@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=frenchFISH
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Poisson Models for Quantifying DNA Copy-number from FISH Images of Tissue Sections'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d720c119304ca1b7a3fd4591aa6f9fffc2c4ae05c22dc6e5d8aeab89dbefd18a')
+sha256sums=('ca20e2b44eb2761606f58bc571d3e90ab1f25fb9173bb6afd7fed06552c0d4c7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
