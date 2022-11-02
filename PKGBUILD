@@ -45,7 +45,7 @@ source=(git+https://gitlab.com/${_base}/${_base}.git#branch=release
 sha512sums=('SKIP'
   'e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8')
 conflicts=("${_base}")
-provides=("${_base}=${pkgver%.r*}" "${_base}4py=${pkgver%.r*}")
+provides=("${_base}=${pkgver%%.r*}" "${_base}4py=${pkgver%%.r*}")
 install=${_base}.install
 
 _install_dir="/usr"

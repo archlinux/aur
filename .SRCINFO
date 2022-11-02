@@ -1,12 +1,12 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.16.3.59.g94bef9dd528
+	pkgver = 3.18.1.24.g1f6a6395d11
 	pkgrel = 1
-	url = https://gitlab.com/petsc/petsc
+	url = https://petsc.org
 	install = petsc.install
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:BSD-2-clause
 	makedepends = gcc
 	makedepends = gcc-fortran
 	makedepends = cmake
@@ -15,25 +15,14 @@ pkgbase = petsc-git
 	makedepends = git
 	makedepends = cython
 	makedepends = chrpath
-	makedepends = hypre=2.23.0
+	makedepends = hypre
 	depends = openmpi
 	depends = lapack
 	depends = fftw
 	depends = zlib
-	depends = cython
 	depends = python-mpi4py
 	depends = python-numpy
-	depends = eigen>=3
-	depends = openblas
-	options = !staticlibs
-	source = git+https://gitlab.com/petsc/petsc.git#branch=release
-	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-3.16.3.tar.gz
-	source = test_optdepends.sh
-	sha512sums = SKIP
-	sha512sums = ed58dd2f479b4177176f12aea55c8fd48a39e1f5105194896509d5e469095eb04c48405d4c062cc500b19e0b140a6984b482aa2a211b5fefc5be18d7071ec45a
-	sha512sums = e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8
-
-pkgname = petsc-git
+	depends = eigen
 	optdepends = boost: Free peer-reviewed portable C++ source libraries
 	optdepends = cgns: Recording and recovering computer data
 	optdepends = eigen: Lightweight C++ template library for vector and matrix math
@@ -45,7 +34,6 @@ pkgname = petsc-git
 	optdepends = metis: Partitioning library (for meshes)
 	optdepends = mumps: Sparse solver library
 	optdepends = netcdf-openmpi: Management of array-data
-	optdepends = openblas: Linear algebra libraries
 	optdepends = opencl-headers: for opencl (GPU computing)
 	optdepends = opencl: GPU computing
 	optdepends = openmp: Parallel distributed tasks
@@ -55,14 +43,13 @@ pkgname = petsc-git
 	optdepends = suitesparse: Sparse matrix library
 	optdepends = superlu: Subroutines for sparsse linear systems
 	optdepends = libyaml: configuration files
-	provides = petsc=3.16.3
-	provides = petsc4py=3.16.3
+	provides = petsc=3.18.1.24.g1f6a6395d11
+	provides = petsc4py=3.18.1.24.g1f6a6395d11
 	conflicts = petsc
+	options = staticlibs
+	source = git+https://gitlab.com/petsc/petsc.git#branch=release
+	source = test_optdepends.sh
+	sha512sums = SKIP
+	sha512sums = e45df388b373b5f8c86567f32f0d79ae275a855a7fd3b4bb9c03d6875351633d4064de701644a4aa2f9eff90d63806f714230298149868b2f6d92a4f21e20cb8
 
-pkgname = petsc-doc
-	pkgdesc = Documentation for PETSc
-	depends = 
-	optdepends = 
-	provides = petsc-doc
-	conflicts = 
-	replaces = petsc-doc
+pkgname = petsc-git
