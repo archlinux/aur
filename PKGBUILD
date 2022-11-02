@@ -3,7 +3,7 @@
 _pkgname=readability-cli
 pkgname="deno-$_pkgname"
 _author=gardenappl
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
 arch=('any')
@@ -42,6 +42,6 @@ package() {
 	#SHELL=/bin/bash ./readable --completion \
 	#	| install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/readable"
 }
-b2sums=('b72c42de44c180908e1e488b4612341f6f351dffb4eec579cfba16fc2cb51112885a065851a5efc66010c60a6f0a36112d8b3be1f1535f0073e1859716229173'
+b2sums=('1356eae452953014c02844640614e1ec98a5bc7aea034f5704c8b5d68fbd3f69d143d1a6586a6b871f8e6f8f3b1119345bcfc245299380b80f5b8bdde8e9e806'
         '792be8184fbdf51fc8a4aa90b9c55de9814700bb1396ac24dd7a1759413144ddabd64ff7391f55b9ae602a0415b86a7a51fbfda0e1856cd1a476f232fea4939c'
         '55fad2e72126bc7b3253ee6598e3e3c83d63a3d4da03402a828ac8f1a5d321e98f25484e74d4654082f7a41dd1d45465878ac41d91b48391adce15f3921ee0ca')
