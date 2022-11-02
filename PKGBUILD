@@ -3,7 +3,7 @@
 
 pkgname=girens
 pkgver=1.1.10.r14.g448e92d
-pkgrel=1
+pkgrel=2
 pkgdesc="A Plex GTK client for playing movies, TV shows and music from your Plex library."
 arch=('any')
 url="https://gitlab.gnome.org/tijder/girens"
