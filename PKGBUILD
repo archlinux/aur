@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-git
-pkgver=6.0.r1123442.1540031ee302
+pkgver=6.1.r1136133.463af20bea29
 pkgrel=1
 pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
@@ -16,13 +16,13 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-agd5f
+_srcname=$pkgbase
 source=(
   "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=$_branch"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3')
+            '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6')
 
 pkgver() {
   cd $_srcname
