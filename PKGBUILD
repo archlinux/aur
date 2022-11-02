@@ -1,8 +1,8 @@
 # Maintainer: Magnus Groß, for email contact please see the relevant AUR commits email
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=0.1.r38.g5f3cb73
-pkgrel=2
+pkgver=0.1.r47.g6923c36
+pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
 url="https://github.com/vimpostor/$_pkgname"
@@ -12,7 +12,7 @@ makedepends=(git cmake ninja imagemagick)
 source=("git+$url.git"
 		"git+https://github.com/google/material-design-icons.git")
 md5sums=('SKIP'
-		'SKIP')
+         'SKIP')
 
 pkgver() {
 	cd "$_pkgname"
@@ -26,7 +26,7 @@ prepare() {
 	cd "$_pkgname"
 	git submodule init
 	git config submodule.material-design-icons.url $srcdir/material-design-icons
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
