@@ -3,7 +3,7 @@
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
-pkgver=98.0b9
+pkgver=107.0b8
 pkgrel=1
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks extensions, icon- and .desktop-files."
 arch=("any")
@@ -46,7 +46,7 @@ package() {
     if [ -f "${_f}" ]; then
       install -d -v -m755 "${pkgdir}$(dirname "${_f}")"
       cd "${pkgdir}$(dirname "${_f}")"
-      ln -s -v -T "$(basename ${_f})" "$(basename ${_f} | sed 's|-developer-edition||')"
+      ln -s -v -T "$(basename ${_f})" "$(basename ${_f} | sed -E 's|-?developer-?edition||')"
     fi
   done
 
