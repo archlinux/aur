@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KOdata
-_pkgver=1.22.0
+_pkgver=1.23.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc='LINCS Knock-Out Data Package'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0c9c84b3d344344eca0229afe5a8573649d432c84167cd64fcdc94a63de346f4')
+sha256sums=('4585baa15fc3087f16a1faf9a5cc555bd8016051924a241942d9024d6d298dd2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
