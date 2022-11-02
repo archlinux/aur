@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=M3Drop
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Michaelis-Menten Modelling of Dropouts in single-cell RNASeq'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-singlecellexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4b09b331181219980ba16d89e6c3891fc45cfa32526c7fc23900d4c9e1911841')
+sha256sums=('66110f22c81144763e38c78c22703cf640924d2953501ec624afda06da111ec1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
