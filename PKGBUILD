@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pmm
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Parallel Mixed Model'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-lme4
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f98ec298b22c5db51d08f2f91cf026035587980ef2a35919bd5a421692254be8')
+sha256sums=('6fae4bdaacdb56d4f0af6b6ea97fc2bbdc37364478e0da15829c0cadee07aafa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
