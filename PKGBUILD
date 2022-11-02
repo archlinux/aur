@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SQLDataFrame
-_pkgver=1.10.3
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Representation of SQL database in DataFrame metaphor'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ced384cbafeef15e8031660a075701111e190aa6e84f4a5a4d87db155c14b43b')
+sha256sums=('add483ae45ad708f1b615a02bfd9a6cb5f3e684db43bec9bf8a1f6d239bb571b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
