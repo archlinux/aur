@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IMPCdata
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Retrieves data from IMPC database'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-rjson
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c6ea8d2d69045077fd3a5273e7e8f36407d7bb23963a35ebb84367d9b85da327')
+sha256sums=('b03daa2d0e9a0ed27f48673cf93931e821262b0dcb90776dd4cde910a2d85abd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
