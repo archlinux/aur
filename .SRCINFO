@@ -1,6 +1,6 @@
 pkgbase = r-rcx
 	pkgdesc = R package implementing the Cytoscape Exchange (CX) format
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RCX
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-rcx
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCX_1.0.1.tar.gz
-	sha256sums = 583b92da1fba6b37c3ccc7de7c50f5f3604f2721e980b2df1f0a413728cd2af7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCX_1.2.0.tar.gz
+	sha256sums = 299d72bc0c8cbb6e0e27fdca430ecb490f803b989a1e83edaeb71f1ed48dcc91
 
 pkgname = r-rcx
