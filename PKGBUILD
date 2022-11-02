@@ -2,7 +2,7 @@
 # Maintainer: Famous
 # Contributor: Famous
 pkgname=zelcore
-pkgver=5.21.1
+pkgver=5.23.0
 pkgrel=0
 pkgdesc="Zelcore Platform"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://resources.zelcore.workers.dev/downloads/zelcore.deb")
-sha256sums_x86_64=('6ea5df5ade73d060825b3a136451824927c855b5dcceb9e00249ee2a904493f1')
+sha256sums_x86_64=('c19c338a2568d7a2f7f32570d4512dbe75d2199581bc968a3848222e8c241e25')
 
 
 
