@@ -1,10 +1,10 @@
  # Maintainer: Leo sk <sk.griffinix@gmail.com>
 
- pkgname=sierra-breeze-enhanced-decoration-kwin
+ pkgname=sierra-breeze-enhanced
  _gitname=SierraBreezeEnhanced
  pkgver=1.3.1
  pkgrel=1
- pkgdesc="A fork of BreezeEnhanced to make it (arguably) more minimalistic and informative"
+ pkgdesc="A kwin decoration with support for transparency, rounded corners, multiple titlebar button presets and more"
  arch=('x86_64')
  url="https://github.com/kupiqu/SierraBreezeEnhanced/"
  license=('GPL3')
