@@ -3,20 +3,20 @@
 _pkgname=thunar-volman
 pkgname=${_pkgname}-devel
 epoch=1
-pkgver=4.15.1
+pkgver=4.17.0
 pkgrel=1
 pkgdesc="automatic management for removeable devices in thunar"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL2')
 url="https://goodies.xfce.org/projects/thunar-plugins/thunar-volman"
 groups=('xfce4-goodies-devel')
-depends=('thunar' 'libxfce4ui' 'hicolor-icon-theme')
+depends=('thunar' 'hicolor-icon-theme')
 makedepends=('intltool')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 options=('!libtool')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('7528cd48d58467411cbcfeacb0e6ac24349952fc3d92d975d0e8fd341d43076b')
+sha256sums=('156d9cc8dad07c6c1e91353a2789858b53feaaeafe9993d3b7eed7b6b330ad17')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
