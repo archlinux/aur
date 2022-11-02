@@ -1,6 +1,6 @@
 # Maintainer: Laurenz <lldb-mi-git@laure.nz>
 pkgname=lldb-mi-git
-pkgver=r44.c63e730
+pkgver=r83.2388bd7
 pkgrel=1
 pkgdesc="LLDB's machine interface driver"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = lldb-mi-git
 	pkgdesc = LLDB's machine interface driver
-	pkgver = r44.c63e730
+	pkgver = r83.2388bd7
 	pkgrel = 1
 	url = https://github.com/lldb-tools/lldb-mi
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = lldb-mi-git
 	md5sums = SKIP
 
 pkgname = lldb-mi-git
-
