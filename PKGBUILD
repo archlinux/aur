@@ -1,5 +1,5 @@
 pkgname=ca-certificates-russian-root
-pkgver=20221013
+pkgver=20221102
 pkgrel=1
 pkgdesc="Russian root certificates"
 arch=('any')
@@ -7,9 +7,10 @@ url='https://gu-st.ru'
 license=('unknown')
 depends=()
 makedepends=()
+# https://www.gosuslugi.ru/crt
 source=(
-    "https://gu-st.ru/content/Other/doc/russian_trusted_root_ca.cer"
-    "https://gu-st.ru/content/Other/doc/russian_trusted_sub_ca.cer"
+    "https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt"
+    "https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt"
 )
 sha256sums=(
     '936a43fea6e8e525bcc0f81acd9c3d21b4fc4b9b68acea7906d698005afc6504'
