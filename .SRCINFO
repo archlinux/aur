@@ -14,6 +14,6 @@ pkgbase = derclou-git
 	source = git+https://github.com/vcosta/derclou.git
 	source = derclou.desktop
 	md5sums = SKIP
-	md5sums = 3a3ca09a78ccbc1bdad22bc9d9afdf64
+	md5sums = ca94b53df82b232a4b79fef705f2f414
 
 pkgname = derclou-git

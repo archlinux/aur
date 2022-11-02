@@ -13,7 +13,7 @@ source=(
     derclou.desktop)
 md5sums=(
     SKIP
-    3a3ca09a78ccbc1bdad22bc9d9afdf64)
+    ca94b53df82b232a4b79fef705f2f414)
 pkgver(){
     cd derclou
     echo 2.7_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
