@@ -1,12 +1,12 @@
 pkgbase = r-pickgene
 	pkgdesc = Adaptive Gene Picking for Microarray Expression Data Analysis
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pickgene
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pickgene_1.68.0.tar.gz
-	sha256sums = f53517503b613381504555dc426e9558074d06ee85baf2314a4c8b630157b1fd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pickgene_1.70.0.tar.gz
+	sha256sums = f1735fc1b4d3ec532ba858cf752fa9dfa3802ab4467b186804856bed7320d738
 
 pkgname = r-pickgene
