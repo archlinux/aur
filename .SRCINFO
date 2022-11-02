@@ -1,15 +1,15 @@
 pkgbase = nextcloud-app-richdocuments
 	pkgdesc = Integrate Collabora Online into NextCloud
-	pkgver = 6.2.0
-	pkgrel = 2
+	pkgver = 7.0.1
+	pkgrel = 1
 	url = https://github.com/nextcloud-releases/richdocuments
 	arch = any
 	license = AGPL
-	depends = nextcloud>=24
+	depends = nextcloud=25
 	depends = nodejs
 	depends = npm
 	options = !strip
-	source = richdocuments-6.2.0.tar.gz::https://github.com/nextcloud-releases/richdocuments/releases/download/v6.2.0/richdocuments-v6.2.0.tar.gz
-	sha512sums = 2c4e56005a411c183f8f57ec6fefc74c13a7acf0c2700d2d7cacf04d59a8a0f586f2eb60964ded49baf1436331e090e7d522b41af717123bd8d511b6772f5b4c
+	source = richdocuments-7.0.1.tar.gz::https://github.com/nextcloud-releases/richdocuments/releases/download/v7.0.1/richdocuments-v7.0.1.tar.gz
+	sha512sums = 6a5300a8f13b977043619645ec2f413ab264e59b46a20c29ef56efdee891e1bf2aedc0b641458ad139de63c01b949e0c41d5961af26d939202c2cfa0cf891e99
 
 pkgname = nextcloud-app-richdocuments
