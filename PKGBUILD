@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multtest
-_pkgver=2.52.0
+_pkgver=2.54.0
 pkgname=r-${_pkgname,,}
-pkgver=2.52.0
+pkgver=2.54.0
 pkgrel=1
 pkgdesc='Resampling-based multiple hypothesis testing'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('02f5d868a59d849e7c9d528d7242843af2791312d36e5a5f9770f3307965fc0c')
+sha256sums=('e7012d1f04a4aba6b85bef5bbef95c9253408a16c329c4b184a4fe0ba8033f32')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
