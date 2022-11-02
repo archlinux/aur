@@ -1,12 +1,12 @@
 pkgbase = r-seqcna.annot
 	pkgdesc = Annotation for the copy number analysis of deep sequencing cancer data with seqCNA
-	pkgver = 1.32.0
-	pkgrel = 3
+	pkgver = 1.33.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/seqCNA.annot
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/seqCNA.annot_1.32.0.tar.gz
-	sha256sums = 16f913578303ea245d004d4c545de7323e2b1a92e6a06ed4da8eea44652d0e4e
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/seqCNA.annot_1.33.0.tar.gz
+	sha256sums = 18e619a47bf6c8d89b8e7964b79cc3939f7082ee998ffd237f2c0a23ed8a372b
 
 pkgname = r-seqcna.annot
