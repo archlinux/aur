@@ -1,3 +1,14 @@
+# 10.0.21-1 / 2022-11-02
+
+* bump to new library version
+	* support for various new small Discord features
+	* fixes for several race conditions and other stuff
+	* see library changelog for full list
+* symlink is now provided in place of the embedded nlohmann/json
+	* package still uses systemwide packaged version
+	* helps easier adoption of online tutorials and similar resources
+	* helps with compatibility with other installations
+
 # 10.0.20-1 / 2022-09-30
 
 * bump to new library version

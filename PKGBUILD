@@ -2,7 +2,7 @@
 # See also https://github.com/eremiell-aur/dpp
 pkgname=dpp
 _pkgname=DPP
-pkgver=10.0.20
+pkgver=10.0.21
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'pkgconf')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brainboxdotcc/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4a7481c714c27d9c1411c668212e433fa5f6631a933676269c866295bd4ef73')
+sha256sums=('8ef2bb75f16b80d742a99c3a18ab5a2a57bce74238518af9b9aca670c2d7034b')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -44,4 +44,5 @@ package() {
 	find "${pkgdir}" -iname "*.cmake" -exec sed -i -E "s/\/dpp-${pkgver%.*}//g" '{}' \+
 	sed -i -E "s/if\(_realCurr STREQUAL _realOrig\)/if\(1\)/" "${pkgdir}/usr/lib/cmake/dpp/dpp.cmake" "${pkgdir}/usr/lib/cmake/dpp/dpp-targets.cmake"
 	sed -i -E "s/([ \(_]dpp)/\1::dpp/" "${pkgdir}/usr/lib/cmake/dpp/dpp-targets-noconfig.cmake"
+	ln -s "/usr/include/nlohmann" "${pkgdir}/usr/include/dpp/nlohmann"
 }

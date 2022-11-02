@@ -8,7 +8,7 @@ post_install() {
 	echo ""
 	echo -e "\e[32mTo keep things lean and clean, embedded nlohmann/json have been replaced by\e[0m"
 	echo -e "\e[32mpackaged version.\e[0m"
-	echo -e "\e[32mMind that when looking up online tutorials.\e[0m"
+	echo -e "\e[32mSymlink has been provided for convenience, but you may prefer to use it directly.\e[0m"
 	echo ""
 	echo -e "\e[32mPackage now includes experimental coroutine support.\e[0m"
 	echo -e "\e[32mIt's not considered production ready, but it's available for your experiments.\e[0m"
@@ -16,9 +16,8 @@ post_install() {
 }
 
 post_upgrade() {
-	echo -e "\e[1;33mEmbedded fmt have been completely dropped off the package.\e[0m"
-	echo -e "\e[1;33mWe already replaced that by systemwide version.\e[0m"
-	echo -e "\e[1;33mJust mind that it's no longer a dependency.\e[0m"
+	echo -e "\e[1;33mSymlink has been provided for the embedded nlohmann/json library.\e[0m"
+	echo -e "\e[1;33mWe keep using the systemwide version. It's just for easier use of online tutorials.\e[0m"
 	echo ""
 	echo -e "\e[32mPackage now includes experimental coroutine support.\e[0m"
 	echo -e "\e[32mIt's not considered production ready, but it's available for your experiments.\e[0m"
