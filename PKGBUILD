@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RedeR
-_pkgver=2.0.1
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Interactive visualization and manipulation of nested networks'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f67a98762d39b02926cd2717f868c97d41c511f866746992efde0220adee7998')
+sha256sums=('c087760d91c21a89c98428ffed5cdfea5c8edab1fd01fff30381c4ba58689645')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
