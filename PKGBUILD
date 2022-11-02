@@ -3,7 +3,7 @@
 pkgname=yabridge-bin
 _pkgname=yabridge
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and transparent way to use Windows VST2, VST3, and CLAP plugins on Linux (includes yabridgectl)"
 epoch=
 arch=('x86_64')
@@ -25,7 +25,7 @@ package() {
   install yabridge-host{,-32}.exe{,.so} "$pkgdir/usr/bin"
 
   install -dm755 "$pkgdir/usr/lib"
-  install libyabridge{,-chainloader}-{vst2,vst3}.so "$pkgdir/usr/lib"
+  install libyabridge{,-chainloader}-{clap,vst2,vst3}.so "$pkgdir/usr/lib"
 
   install yabridgectl "$pkgdir/usr/bin"
 }
