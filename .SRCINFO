@@ -1,6 +1,6 @@
 pkgbase = r-ebimage
 	pkgdesc = Image processing and analysis toolbox for R
-	pkgver = 4.38.0
+	pkgver = 4.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EBImage
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-ebimage
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBImage_4.38.0.tar.gz
-	sha256sums = 510381699581592915aa5e73271f99b8ca73fe2a92fb96b86a699ac157219ded
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBImage_4.40.0.tar.gz
+	sha256sums = 1880d87e7be3a4c3152f5622141eb9497fa8011b790b0c7928242aca775ccfcc
 
 pkgname = r-ebimage
