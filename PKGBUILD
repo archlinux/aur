@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RCASPAR
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='A package for survival time prediction based on a piecewise baseline hazard Cox regression model.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f39ed65f352b0ff4e68a90ad79deeeaaf1be62ec20cd9a6b69141f3f403ef7f')
+sha256sums=('562bc4324860408b1e72dbe6a01f210dc308f1fa5a9796a2c64c3f47d11d436c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
