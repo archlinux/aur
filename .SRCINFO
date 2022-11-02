@@ -1,6 +1,6 @@
 pkgbase = r-rdisop
 	pkgdesc = Decomposition of Isotopic Patterns
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rdisop
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rdisop
 	depends = r
 	depends = r-rcpp
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rdisop_1.56.0.tar.gz
-	sha256sums = 07e08afafb0b9383fbe2cecbd614236e7c4b0a2b8b2945b766a719c86aa8c133
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rdisop_1.58.0.tar.gz
+	sha256sums = 52e51c0d663362ac4f6d9b76bae53058964ad89e28719f6df1283889b78e0904
 
 pkgname = r-rdisop
