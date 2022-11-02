@@ -1,0 +1,11 @@
+diff -r -u ectpping.orig/ectpping.c ectpping/ectpping.c
+--- ectpping.orig/ectpping.c	2009-05-09 08:41:22.000000000 +0300
++++ ectpping/ectpping.c	2022-11-02 15:56:32.677246192 +0200
+@@ -33,6 +33,7 @@
+ #include <net/if.h>
+ #include <net/if_arp.h>
+ #include <netinet/ether.h>
++#include <linux/sockios.h>
+ 
+ #include "libenetaddr.h"
+ #include "libectp.h"
