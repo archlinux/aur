@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fmrs
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Variable Selection in Finite Mixture of AFT Regression and FMR'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df96a1f93b557030b032fb9131cac791407204830fc05a6fb2b749f71501bac9')
+sha256sums=('34087ea3028d2e44b4cfe35501a2e2cef8dce368f7c43d644d170c8ed78a87db')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
