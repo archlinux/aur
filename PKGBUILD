@@ -1,7 +1,7 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=musikcube-bin
-pkgver=0.98.0
+pkgver=0.98.1
 pkgrel=1
 pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('BSD')
 provides=('musikcube')
 conflicts=('musikcube')
 depends=('pulseaudio' 'libpulse' 'libev' 'alsa-lib')
-source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname%-bin}_standalone_linux_x86_64_${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname%-bin}_linux_x86_64_${pkgver}.tar.bz2"
         "LICENSE.txt")
-sha256sums=('663ffefe4967c7510deec174e393e934099b456934f921dc724aa43575c764d7'
+sha256sums=('e84f71b3c70ce29f6ba9ecd5e23b27ff673a26e8fcae1e74d116be2ebd50473e'
             '315d1a4485c05a0db8640d0720cac768c7e49224dc3db592ed204a770fee9e36')
 
 prepare() {
