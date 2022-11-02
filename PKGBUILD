@@ -3,21 +3,21 @@
 
 _project=QJackCapture
 pkgname="${_project,,}"
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A GUI for easy recording of JACK audio sources using jack_capture'
 arch=(any)
 url='https://github.com/SpotlightKid/qjackcapture'
 license=(GPL)
 depends=(hicolor-icon-theme jack_capture python-natsort python-pyjacklib python-pyqt5)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 groups=(pro-audio)
 source=("https://files.pythonhosted.org/packages/source/q/$pkgname/$_project-$pkgver.tar.gz")
-sha256sums=('b716cee7917468a8c8589dfb3212ba09bfda43224208c96da25b8243716128bf')
+sha256sums=('9e46dfc13f0cdadd1b5dedf5f5de378203f3034bf2198c45cbd56af9b485130a')
 
 build() {
   cd $_project-$pkgver
-  make
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -28,5 +28,6 @@ check() {
 
 package() {
   cd $_project-$pkgver
-  make PREFIX=/usr DESTDIR="$pkgdir/" install
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  make PREFIX=/usr DESTDIR="$pkgdir/" install-data
 }
