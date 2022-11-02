@@ -10,8 +10,7 @@ license=('GPL2')
 depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl' 'c-ares' 'openssl')
 options=('!buildflags')
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
-source=("$pkgname-$pkgver.tar.gz::https://gogs.quagga.net/attachments/a6f5eb64-639a-49cf-964e-7aa196b9ac50"
-        "$pkgname-$pkgver.tar.gz.asc::https://gogs.quagga.net/attachments/b032c0a2-623a-4e88-99e8-5eb155c564df"
+source=("https://github.com/Quagga/quagga/releases/download/quagga-$pkgver/quagga-$pkgver.tar.gz"{,.asc}
         'quagga.sysusers'
         'quagga.tmpfiles'
         'bgpd.service'
