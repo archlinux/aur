@@ -1,6 +1,6 @@
 pkgbase = r-geoquery
 	pkgdesc = Get data from NCBI Gene Expression Omnibus (GEO)
-	pkgver = 2.64.2
+	pkgver = 2.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GEOquery
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-geoquery
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOquery_2.64.2.tar.gz
-	sha256sums = 3dc51776c33d45371f8913d2593ea0babbbebd1aed018e220e037d0505de73b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOquery_2.66.0.tar.gz
+	sha256sums = 7602d0cb9c8d600187d599c2fb6d7328f219193c72c4af1987aaf51968556232
 
 pkgname = r-geoquery
