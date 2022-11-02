@@ -1,7 +1,7 @@
 pkgbase = ca-certificates-russian-root
 	pkgdesc = Russian root certificates
 	pkgver = 20221102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gu-st.ru
 	arch = any
 	license = unknown

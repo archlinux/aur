@@ -1,6 +1,6 @@
 pkgname=ca-certificates-russian-root
 pkgver=20221102
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian root certificates"
 arch=('any')
 url='https://gu-st.ru'
@@ -19,6 +19,6 @@ sha256sums=(
 
 
 package() {
-  install -Dm644 "russian_trusted_root_ca.cer" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/russian_trusted_root_ca.cer"
-  install -Dm644 "russian_trusted_sub_ca.cer" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/russian_trusted_sub_ca.cer"
+  install -Dm644 "russian_trusted_root_ca_pem.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/russian_trusted_root_ca_pem.crt"
+  install -Dm644 "russian_trusted_sub_ca_pem.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/russian_trusted_sub_ca_pem.crt"
 }
