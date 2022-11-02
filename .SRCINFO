@@ -1,6 +1,6 @@
 pkgbase = r-harman
 	pkgdesc = The removal of batch effects from datasets using a PCA and constrained optimisation based technique
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Harman
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-harman
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-sva
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Harman_1.24.0.tar.gz
-	sha256sums = 33e277bca7ae83d037e3eab51aaa86bde28ee9b1d9dece5560806c554d4c96e5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Harman_1.26.0.tar.gz
+	sha256sums = 7c6845d367a487a12915149f2ff200e3680af89ee8b1d6bc53768ffc24abcdbd
 
 pkgname = r-harman
