@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSAR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Gene Set Analysis in R'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-tweedeseqcountdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab79bc26ce656da1d37fa9f784be3130df5bd0a1cb393fbc71fd9747e1a0e12c')
+sha256sums=('a24bd0d37a7d7cbd5112fee76d9392cdba96bf49c529ac4cfaf8505639d8269e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
