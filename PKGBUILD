@@ -3,7 +3,7 @@
 pkgname=clash-verge-bin
 _pkgname=clash-verge
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64')
 url="https://github.com/zzzgydi/clash-verge"
@@ -18,4 +18,5 @@ sha512sums=('11deca13668c42cb08d538d8184ae33802586b75eef2858915d3762ceecce775e8d
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
     rm ${pkgdir}/usr/bin/clash
+	rm ${pkgdir}/usr/bin/clash-meta
 }
