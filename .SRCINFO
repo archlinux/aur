@@ -1,6 +1,6 @@
 pkgbase = r-netpathminer
 	pkgdesc = NetPathMiner for Biological Network Construction, Path Mining and Visualization
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NetPathMiner
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-netpathminer
 	optdepends = r-rbiopaxparser
 	optdepends = r-rcurl
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NetPathMiner_1.32.0.tar.gz
-	sha256sums = 51de0b757c8a2722742153ed0796e54476f86207b88c7f2af8bbba788a8f2f83
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NetPathMiner_1.34.0.tar.gz
+	sha256sums = a0ffc50b7b17b2f8df57d85ff46f0d1d5317f89997c8839ffb2ba941205cfea6
 
 pkgname = r-netpathminer
