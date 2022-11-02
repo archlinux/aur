@@ -1,6 +1,6 @@
 pkgbase = r-interaccircos
 	pkgdesc = The Generation of Interactive Circos Plot
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/interacCircos
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-interaccircos
 	depends = r-rcolorbrewer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/interacCircos_1.6.0.tar.gz
-	sha256sums = 3ab437320ee49db09c4f7436c6097c4633e0ef5210a8f1bbe44bb57044ae62ca
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/interacCircos_1.8.0.tar.gz
+	sha256sums = 27c018197786c3964604701b7c285d022b5d0c8499cd108f6c4cb9c44355a77b
 
 pkgname = r-interaccircos
