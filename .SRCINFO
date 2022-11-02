@@ -12,6 +12,7 @@ pkgbase = gajim-plugin-omemo-git
 	depends = python-setuptools
 	depends = python-cryptography
 	depends = python-axolotl
+	depends = python-jaraco.classes
 	provides = gajim-plugin-omemo
 	conflicts = gajim-plugin-omemo
 	source = git+https://dev.gajim.org/gajim/gajim-plugins.git
