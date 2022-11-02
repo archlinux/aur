@@ -4,7 +4,7 @@
 
 pkgname=kopete
 pkgver=22.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Instant Messenger'
 url='https://apps.kde.org/kopete/'
 arch=(x86_64)
