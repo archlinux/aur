@@ -2,9 +2,9 @@
 
 pkgname=guish-git
 _pkgname=guish
-pkgver=2.1.0
+pkgver=2.1.0.r1.g906096c
 pkgrel=1
-pkgdesc="A versatile graphical DSL and army knife to make and modify GUIs (newer 2.x version)."
+pkgdesc="A language and army knife to make and modify GUIs (development version)."
 arch=('x86_64')
 url="https://codeberg.org/phranz/guish"
 license=('GPL3')
