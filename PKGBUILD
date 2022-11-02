@@ -12,8 +12,8 @@ depends=(
 makedepends=(
 	'coreutils'
 	'npm'
+	'rust'
 	'shadow'
-	'yarn'
 )
 backup=(
 	'etc/bautista/config.toml'
