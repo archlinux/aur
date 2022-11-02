@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fdrame
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='FDR adjustments of Microarray Experiments (FDR-AME)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   tk
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b4d4a8f1d588ac40a1e7df5a10ed1bb63538f766d238c58dc213db29a2a41b28')
+sha256sums=('06dc2ea9b44011ddc0ec80eabc55f048441f116d9cee358bb7829730951368dc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
