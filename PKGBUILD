@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=graph
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='graph: A package to handle graph data structures'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e4d1389e5f148fa6ff55299b29f096bd9cfd5d772691a0298b53a027b9cc10ad')
+sha256sums=('8c0ddb6d131a88d585bcf3c1e922465fbc40d6d40ba718c8a869f5f9b6ecabc1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
