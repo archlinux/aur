@@ -1,7 +1,7 @@
 # Maintainer: Yohann Rebattu <yohann AT rebattu · fr>
 _pkgname=hamster-shell-extension
 pkgname=$_pkgname-git
-pkgver=20220329.g1bdd0b3
+pkgver=20220920.ged710a7
 pkgrel=1
 pkgdesc="Shell extension for project hamster - the GNOME time tracker"
 arch=(any)
