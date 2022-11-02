@@ -1,0 +1,12 @@
+diff -upr echoping-6.0.2.orig/Makefile.in echoping-6.0.2/Makefile.in
+--- echoping-6.0.2.orig/Makefile.in	2007-04-09 22:53:03.000000000 +0300
++++ echoping-6.0.2/Makefile.in	2022-11-02 14:44:56.130685210 +0200
+@@ -226,7 +226,7 @@ top_srcdir = @top_srcdir@
+ man_MANS = echoping.1
+ echoping_SOURCES = echoping.c error.c readline.c writen.c util.c http.c icp.c HTParse.c echoping.h icp.h HTParse.h smtp.c
+ pkginclude_HEADERS = echoping.h compilation.h
+-echoping_LDADD = 
++echoping_LDADD = -lm
+ echoping_LDFLAGS = -export-dynamic
+ DOCS = DETAILS PLUGINS
+ SUBDIRS = plugins
