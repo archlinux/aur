@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GLAD
-_pkgver=2.60.0
+_pkgver=2.62.0
 pkgname=r-${_pkgname,,}
-pkgver=2.60.0
+pkgver=2.62.0
 pkgrel=1
 pkgdesc='Gain and Loss Analysis of DNA'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   gsl
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bf00850efc7a19f61cf3ca825a48f7206e8339e036ce465a7ddc1f6059645509')
+sha256sums=('46e293b3599afd7e7bd5349cfd24846bd6b5d9262754eb457dd39a5c5814653d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
