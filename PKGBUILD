@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hopach
-_pkgver=2.56.0
+_pkgver=2.58.0
 pkgname=r-${_pkgname,,}
-pkgver=2.56.0
+pkgver=2.58.0
 pkgrel=1
 pkgdesc='Hierarchical Ordered Partitioning and Collapsing Hybrid (HOPACH)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('640e61aa18bb4d27b6c6d4ea534496e7c050cf5f9b8b473e391dee2668ea4d30')
+sha256sums=('c6b1f6619d7613c4a96029c435762ee038118fdae4d3e5fa7e9779d4cc79171b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
