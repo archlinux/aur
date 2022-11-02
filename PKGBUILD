@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stemHypoxia
-_pkgver=1.32.0
+_pkgver=1.33.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='Differentiation of Human Embryonic Stem Cells under Hypoxia gene expression dataset by Prado-Lopez et al. (2010)'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fd269a2e818a360c85e277baf54cbc31c2e27e7ca1fbdcdc2a06991809ad665')
+sha256sums=('7fb66f0ad6a0e29539ae8f3fcc805677c543a7dfc3ba33fe72b18792afeb8f30')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
