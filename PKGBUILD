@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pathVar
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Methods to Find Pathways with Significantly Different Variability'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-mclust
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('386a70a4049379964c683fd6c02e6cba039609aaebb03e40760c2518accfede0')
+sha256sums=('3624b4784e41b654a1d30c78185ccc762f2221ee7dc69ca7c4ab4867bd6ffef9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
