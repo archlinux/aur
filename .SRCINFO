@@ -1,6 +1,6 @@
 pkgbase = r-hmdbquery
 	pkgdesc = utilities for exploration of human metabolome database
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hmdbQuery
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-hmdbquery
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hmdbQuery_1.16.0.tar.gz
-	sha256sums = 8eb518e2f9f876b0ee5ad0794c92be51dd12fc2fe60c89609bd16454eaea5d5a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hmdbQuery_1.18.0.tar.gz
+	sha256sums = 60707b673b36f879dcf02c4062b576bc4ec94cfd8d8d2dda464950ee5066068b
 
 pkgname = r-hmdbquery
