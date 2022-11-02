@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ARRmData
-_pkgver=1.32.0
+_pkgver=1.33.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='Example dataset for normalization of Illumina 450k Methylation data'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7b436b24e702a0ead5c8f70561006db890227fd7c7cc997f8491b4150c95fb2')
+sha256sums=('f218d0d394ad421f8e468dd840c8c7418ec804cafdf727ec2dd01d92f7c4eae5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
