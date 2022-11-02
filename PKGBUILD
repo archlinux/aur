@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BeadDataPackR
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Compression of Illumina BeadArray data'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9d85be0b93464f60bb9c9ddf32b22b85c7e75435bd9bb0b4e759679d9bf1c0a5')
+sha256sums=('4096223a0be0399315e438ca250ddf9710d4fe966769ff0d58966095d866090c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
