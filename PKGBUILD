@@ -1,6 +1,4 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Tom Gundersen <teg@jklm.no>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier <tim@siosm.fr>
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
@@ -10,8 +8,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='46cf27a20eb6fb676ac987533415d499b77dd0af' # git rev-parse v${_tag_name}
-_tag_name=251.4
+_tag='7442d25a54b6dd494299b3a932b28953f4e67b21' # git rev-parse v${_tag_name}
+_tag_name=251.7
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -70,6 +68,8 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
+  # meson: Fix build with --optimization=plain
+  '7aa4762ce274a1c9a59902b972fa4fdee1b22715'
 )
 
 _reverts=(
@@ -97,11 +97,6 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
-
-  # Dirty fix for https://github.com/systemd/systemd/issues/24323
-  # while waiting for meson to fix the underlying issue introduced in
-  # https://github.com/mesonbuild/meson/pull/10593
-  sed -i -e "s/^if get_option('optimization') != '0'/if get_option('optimization') != '0' and get_option('optimization') != 'plain'/" src/boot/efi/meson.build
 }
 
 build() {
@@ -206,7 +201,7 @@ package_systemd-selinux() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
