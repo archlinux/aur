@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=5.19.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch')
-sha256sums=('26b7a34d6a7fd2f7a42e2b39c5a90cb61bac522d1096067ffeb195e5693d7791'
+sha256sums=('523139e9e72aec996374fa2de74be4c53d2dd05589488934d21ff97bae19580a'
             'SKIP'
             '758b82bd61ed7512d215efafd5fab5ae7a28fbfa6161b85e2ce7373285e56a5d')
 
@@ -69,4 +69,3 @@ package() {
   install -Dm0644 include/libnetlink.h "${pkgdir}/usr/include/libnetlink.h"
   install -Dm0644 lib/libnetlink.a "${pkgdir}/usr/lib/libnetlink.a"
 }
-
