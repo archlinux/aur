@@ -1,6 +1,6 @@
 pkgbase = r-bags
 	pkgdesc = A Bayesian Approach for Geneset Selection
-	pkgver = 2.36.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BAGS
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-bags
 	depends = r
 	depends = r-biobase
 	depends = r-breastcancervdx
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BAGS_2.36.0.tar.gz
-	sha256sums = 49304beba9bab01421b24feaafe63fcb1125dcaacb7218da1572a614d06e3ab0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BAGS_2.38.0.tar.gz
+	sha256sums = 590c3146d942321a6411260f74cd147ada9cf33595f6c48d31f45ddc1654ca66
 
 pkgname = r-bags
