@@ -1,7 +1,7 @@
 pkgbase = polymc-qt6-git
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 1.4.0.r348.gc089f9b5
-	pkgrel = 2
+	pkgver = 1.4.0.r364.g21db985b
+	pkgrel = 1
 	url = https://github.com/PolyMC/PolyMC
 	arch = i686
 	arch = x86_64
