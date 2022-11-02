@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AneuFinderData
-_pkgver=1.24.0
+_pkgver=1.25.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc='WGSCS Data for Demonstration Purposes'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c70d5475823d687abaa10cc1872ca0b5683fd1a8d6be5c12ec826950275acc32')
+sha256sums=('5c4a7c7d40f7426ed4d4f5591624ff7df3f638f074067c74dbf23e8bdb5c3e05')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
