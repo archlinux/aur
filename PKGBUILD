@@ -8,7 +8,7 @@ license=('OSMC-PL')
 groups=(openmodelica)
 _group=OpenModelica
 _name=OMLibraries
-_commit=128efa26987a34bdae47cb10149fee5fa6c12973
+_commit=1413a3426ce4e5d9a92bbea9c3c8babac9c7ec46
 depends=('openmodelica-omc')
 makedepends=('git' 'python-requests' 'python-simplejson' 'python-joblib' 'perl-xml-xpath')
 source=("git+https://github.com/${_group}/${_name}.git#commit=${_commit}")

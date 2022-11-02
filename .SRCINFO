@@ -12,7 +12,7 @@ pkgbase = openmodelica-omlibraries
 	makedepends = python-joblib
 	makedepends = perl-xml-xpath
 	depends = openmodelica-omc
-	source = git+https://github.com/OpenModelica/OMLibraries.git#commit=128efa26987a34bdae47cb10149fee5fa6c12973
+	source = git+https://github.com/OpenModelica/OMLibraries.git#commit=1413a3426ce4e5d9a92bbea9c3c8babac9c7ec46
 	sha1sums = SKIP
 
 pkgname = openmodelica-omlibraries
