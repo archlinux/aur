@@ -1,7 +1,7 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=fortran-fpm
 _pkgname=fpm
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 epoch=
 pkgdesc="A Fortran package manager and build system"
@@ -51,5 +51,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('365516f66b116a112746af043e8eccb3d854d6feb1fad0507c570433dacbf7be'
-            '17a809d512618ddb083b1d8c546a2d98e704b10484f607df7b0b231ddc8ff277')
+sha256sums=('536dec7d4502221734683b15e6ff64a6ab3f9910df122d18f851c9a68711f91f'
+            'd16e45b705029d6d38b0ba7cccab2b9edb48c2f29441473548b866da0389243e')
