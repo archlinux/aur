@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scMAGeCK
-_pkgver=1.8.0
+_pkgver=1.9.1
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Identify genes associated with multiple expression phenotypes in single-cell CRISPR screening data'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6bba58544fe255c38dda36add8a03595b129b8ea26c0e756f6ef7313b8b0b862')
+sha256sums=('7e6da2a50930d7e436a519eba780de746289a2e6228854c7c4ca9896bb44d4c4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
