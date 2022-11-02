@@ -18,5 +18,5 @@ sha512sums=('11deca13668c42cb08d538d8184ae33802586b75eef2858915d3762ceecce775e8d
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
     rm ${pkgdir}/usr/bin/clash
-	rm ${pkgdir}/usr/bin/clash-meta
+    rm ${pkgdir}/usr/bin/clash-meta
 }
