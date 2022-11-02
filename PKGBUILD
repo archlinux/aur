@@ -1,4 +1,4 @@
-# Maintainer: gardenapple@posteo.net
+# Maintainer: gardenapple <mailbox@appl.garden>
 _pkgname=readability-cli
 pkgname="nodejs-$_pkgname"
 pkgver=2.4.2
