@@ -8,6 +8,6 @@ pkgbase = hd
 	depends = glibc
 	conflicts = hd-git
 	source = https://github.com/Noah-Arcouette/HD/releases/download/releaseV1.5/HD-V1.5.7z
-	sha256sums = 483755141d8a539d9a18783bf499c5a3e0c74c1e14da2b58fdc644316f9828e3
+	sha256sums = 5e88c0fbce23156b7a39d3a3582c26bef17f4b34af21d1b0198e690d5a0750d0
 
 pkgname = hd
