@@ -1,4 +1,4 @@
-# Maintainer: gardenapple <gardenapple at posteo dot net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 _pkgname=readability-cli
 pkgname="deno-$_pkgname"
