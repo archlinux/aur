@@ -4,7 +4,7 @@
 pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('AGPL3')
@@ -18,7 +18,7 @@ source=(https://github.com/FreeTubeApp/FreeTube/archive/v$pkgver-beta.tar.gz
 sha256sums=(6db8d81453e3caa5e304e1dca534b26669d6ac863e78189b19f6771dfbf9f631
             828f18da0c7d619368b265e489d8daf5980617cfb57236f5991a08ca419bec50
             ada2b4b8f6a1e8896acbce4f4d311228d2c86026c273ffa00afa3247294f8b1e
-            b95adc87a1963ffdc30a6836da0a6669abf156e47227a4a72b59406601fd8eb1)
+            e5ffbd7011192f970011399c81c2427eaef0d51c673cdbd065e0bccffe064971)
 
 prepare() {
   patch "$srcdir/$_pkgname-$pkgver-beta/_scripts/build.js" < package-only-necessary.diff
