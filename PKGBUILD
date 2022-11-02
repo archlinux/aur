@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COHCAP
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='CpG Island Analysis Pipeline for Illumina Methylation Array and Targeted BS-Seq Data'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
   perl
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b2c806bb376ff9aab5c1eb048d66bd5f71e12b9414cfc3710f68c7d4af0ec973')
+sha256sums=('11a1a260dc1f44eceb8b6ba27a31693d462b7db3405fdb7eef25528cbeddb65a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
