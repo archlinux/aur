@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEqMS
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='a tool to perform statistical analysis of differential protein expression for quantitative proteomics data.'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e6c2ae792914199a04218bae8a6120dbcf17cfcafd51368a74eda0af612d6311')
+sha256sums=('208b5ca3a5a2c433c56eb0503ea3bcdff873cbf323b729bdbfc855adad57126c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
