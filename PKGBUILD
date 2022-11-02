@@ -2,8 +2,8 @@
 # Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 
 pkgname=libreddit
-pkgver=0.22.9
-_commit=5f20e8e
+pkgver=0.23.1
+_commit=b170a8d
 pkgrel=1
 pkgdesc='Alternative private front-end to Reddit'
 arch=('x86_64')
@@ -39,9 +39,9 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -D target/release/libreddit -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 contrib/libreddit.service -t "$pkgdir/usr/lib/systemd/system/"
-	install -Dm644 contrib/libreddit.conf -t "$pkgdir/etc/"
+	install -Dv target/release/libreddit -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 contrib/libreddit.service -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dvm644 contrib/libreddit.conf -t "$pkgdir/etc/"
 }
