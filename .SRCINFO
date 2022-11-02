@@ -1,6 +1,6 @@
 pkgbase = release-plz
 	pkgdesc = Release Rust packages without using the command line
-	pkgver = 0.2.20
+	pkgver = 0.2.21
 	pkgrel = 1
 	url = https://github.com/MarcoIeni/release-plz
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = release-plz
 	depends = gcc-libs
 	depends = curl
 	options = !lto
-	source = release-plz-0.2.20.tar.gz::https://github.com/MarcoIeni/release-plz/archive/release-plz-v0.2.20.tar.gz
-	sha512sums = 1ee6a1de1caadd89b4ec73f5a1f60c2770e5e13d14b5fcf6bcb259f51e94405dff8c3f65c02ef72a31ca10db9d64eec22a463f228dd9faa1ce388af5c10af94f
+	source = release-plz-0.2.21.tar.gz::https://github.com/MarcoIeni/release-plz/archive/release-plz-v0.2.21.tar.gz
+	source = release-plz-0.2.21-fix-args.patch::https://github.com/MarcoIeni/release-plz/commit/d92659803c82e9ebcad623d2702e71aa0ed1c9e2.patch
+	sha512sums = c5a6568ee8b471afc07c183749a803f1aa6a4897420b7d6334d9bb6d9dfe6494381a8930173d356d96e5c0998f6e30b67ccb27f1826556a7d3dbb6e8bcd41b39
+	sha512sums = c347d3a43b77a77c14af992ffb661f2cc55b5095d2844d164405b22e4d93a65f277885c0afe9f590e3b88b588b5cba109a298abf06c5cdd0392e49e4154efb87
 
 pkgname = release-plz
