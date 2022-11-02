@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mina
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Microbial community dIversity and Network Analysis'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3472289bf8d3c45fbf003e02f0bd965853b2d67b71e77bad669815d2a8d35b33')
+sha256sums=('5d17f93b72f5ae4ad17906ef4c58fc9feda6c80340b785856064f84e430a5570')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
