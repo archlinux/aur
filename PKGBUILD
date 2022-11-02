@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CancerInSilico
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
-pkgrel=2
+pkgver=2.18.0
+pkgrel=1
 pkgdesc='An R interface for computational modeling of tumor progression'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0aaa86cdbf00da3a2e741d5946f6e9678840d577dafa9261dbd14d02f755cf7')
+sha256sums=('9ed927e877b8741e80c894e69dae7e49e409cd8611ae348f5b6d64cb11faeb6b')
 
 prepare() {
   # replace SIGSTKSZ with a constant number
