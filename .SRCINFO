@@ -1,6 +1,6 @@
 pkgbase = r-multiclust
 	pkgdesc = multiClust: An R-package for Identifying Biologically Relevant Clusters in Cancer Transcriptome Profiles
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multiClust
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-multiclust
 	optdepends = r-preprocesscore
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiClust_1.26.0.tar.gz
-	sha256sums = 4bd3b7602836e58171aafc1d870fc1463c675bb16f6a559d427f8216d3217236
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiClust_1.28.0.tar.gz
+	sha256sums = 98eb02d21979762aa278e09ca081aec3822d09eba650056d9a809112aa448457
 
 pkgname = r-multiclust
