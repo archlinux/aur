@@ -1,7 +1,8 @@
 pkgbase = automua
 	pkgdesc = Email client configuration made easy
 	pkgver = 2022.6
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/HLFH/automua
 	arch = any
 	license = GPL3
 	backup = etc/automua/automua.conf

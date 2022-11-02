@@ -2,11 +2,12 @@
 
 pkgname=automua
 pkgver=2022.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Email client configuration made easy"
 arch=('any')
 license=('GPL3')
 backup=('etc/automua/automua.conf')
+url='https://github.com/HLFH/automua'
 source=('setupvenv.sh'
         'automua.sysusers'
         'automua.conf'
