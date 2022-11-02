@@ -2,8 +2,8 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=42
-pkgrel=2
+pkgver=43
+pkgrel=1
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -16,13 +16,13 @@ depends=(
   evince
   file-roller
   gdm
-  gedit
   gnome-backgrounds
   gnome-calculator
   gnome-calendar
   gnome-characters
   gnome-clocks
   gnome-color-manager
+  gnome-console
   gnome-contacts
   gnome-control-center
   gnome-disk-utility
@@ -40,7 +40,7 @@ depends=(
   gnome-shell-extensions
   gnome-software
   gnome-system-monitor
-  gnome-terminal
+  gnome-text-editor
   gnome-user-docs
   gnome-user-share
   gnome-video-effects
@@ -65,5 +65,4 @@ depends=(
   tracker3-miners
   xdg-user-dirs-gtk
   yelp
-  gnome-boxes
 )
