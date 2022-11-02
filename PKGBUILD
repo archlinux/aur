@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -21,7 +21,7 @@ prepare() {
 build() {
   cd "$srcdir/OpenModelica/OMCompiler"
   autoreconf -vfi
-  ./configure --prefix=/usr/
+  ./configure --prefix=/usr/ --without-omc
   make
 }
 
