@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vbmp
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Variational Bayesian Multinomial Probit Regression'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('16647f0c60bae0870e5d87d5a0205e982464c216b03f30eac610d626aadabd0b')
+sha256sums=('89ed3bcde88d5a0a9c7fcd5cae3ef428081e94a74bab1fd24f771c9c5e98dbbd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
