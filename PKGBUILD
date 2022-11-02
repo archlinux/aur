@@ -1,4 +1,5 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=plex-remote
 pkgver=1.0.2+5+gc29ef95
