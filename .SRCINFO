@@ -1,6 +1,6 @@
 pkgbase = r-dupradar
 	pkgdesc = Assessment of duplication rates in RNA-Seq datasets
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dupRadar
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-dupradar
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dupRadar_1.26.1.tar.gz
-	sha256sums = b63bd2946ce00e4ce1104c691dea8b8bc7407c9879491ba4e0a8d105ebb3ce51
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dupRadar_1.28.0.tar.gz
+	sha256sums = 99c1878dccebd5bc7446167222ef97c994b86237edd2ce0adc6c88d0921ff580
 
 pkgname = r-dupradar
