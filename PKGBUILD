@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clippda
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='A package for the clinical proteomic profiling data analysis'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a78dedc7b032321d38403d4780e2eb2b7badc2c724b655c032c275c86c7013da')
+sha256sums=('c3039a80b904668d7df96a4b2fa67baa31f04c81da4dcaff0245767b01b38c9b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
