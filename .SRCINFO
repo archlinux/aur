@@ -8,6 +8,7 @@ pkgbase = python-pytest-selenium
 	checkdepends = python-pytest-localserver
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-mock
+	checkdepends = python-py
 	checkdepends = chromedriver
 	makedepends = python-build
 	makedepends = python-installer

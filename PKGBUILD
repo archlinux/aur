@@ -10,7 +10,7 @@ url="https://github.com/pytest-dev/${_base}"
 license=(MPL2)
 depends=(python-pytest-base-url python-pytest-html python-pytest-variables python-selenium python-tenacity)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest-localserver python-pytest-xdist python-pytest-mock chromedriver) # geckodriver
+checkdepends=(python-pytest-localserver python-pytest-xdist python-pytest-mock python-py chromedriver) # geckodriver
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('9984109b5fecfced94485ec3b69e6ac57214b1a4c19c58c536743b81cee231d05f7be5257ba2055162b31d641e63814fe9e6f05821e531cb4c53c8495eb0b462')
 
