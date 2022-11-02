@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phosphonormalizer
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Compensates for the bias introduced by median normalization in'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('29541b0b1fde9db8c7499db91b2085e11aef41f04b426e870251be381eef8f55')
+sha256sums=('13acd3100af9479d1b377126a1f6fa377b681dd1ba576fc775d5f710611c57bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
