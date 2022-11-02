@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNVgears
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A Framework of Functions to Combine, Analize and Interpret CNVs Calling Results'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca3bd38f874ca4dccdd89243e44085159a533e08ebad9505183299a5fbda23d9')
+sha256sums=('39e480bb8ed7c721535a46add4e9d761b89b43cc28cb20499555717d0f451c3f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
