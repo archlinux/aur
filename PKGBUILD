@@ -5,7 +5,7 @@
 pkgname=evolution-decsync
 pkgver=2.1.0
 _pkgver=2.1.0-3-evolution-3.44
-pkgrel=1
+pkgrel=2
 pkgdesc="An Evolution plugin which synchronizes contacts and calendars using DecSync."
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
