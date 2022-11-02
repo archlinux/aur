@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqCNA
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Copy number analysis of high-throughput sequencing cancer data'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   r-seqcna.annot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21f66a09267eac0455dff04b2a4e92a400dc25b82e7510923e157c587d416f4a')
+sha256sums=('d184ef47b597da3ac31ac4b75c4393c571417571c96421051bd9be7ccb951022')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

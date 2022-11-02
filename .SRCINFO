@@ -1,6 +1,6 @@
 pkgbase = r-seqcna
 	pkgdesc = Copy number analysis of high-throughput sequencing cancer data
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seqCNA
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-seqcna
 	depends = r-dosnow
 	depends = r-glad
 	depends = r-seqcna.annot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqCNA_1.42.0.tar.gz
-	sha256sums = 21f66a09267eac0455dff04b2a4e92a400dc25b82e7510923e157c587d416f4a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqCNA_1.44.0.tar.gz
+	sha256sums = d184ef47b597da3ac31ac4b75c4393c571417571c96421051bd9be7ccb951022
 
 pkgname = r-seqcna
