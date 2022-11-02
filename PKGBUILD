@@ -3,7 +3,7 @@
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=1.37.1
+pkgver=1.38.0
 pkgrel=1
 pkgdesc="A Ruby static code analyzer and formatter"
 arch=(any)
@@ -30,13 +30,14 @@ checkdepends=(
   ruby-yard
   ruby-bump
   ruby-rubocop-rails
+  procps-ng
 )
 makedepends=(rubygems ruby-rdoc)
 url=https://rubocop.org
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('e1fdf44fb255767c6c3b0232a06751854a75a9713f5719ef19bb88855d3d90b8')
+sha256sums=('8e2bf42be4579f37ddf3768c5145135c752dab7b7421de87a4d8e4a6b0deeeae')
 
 prepare() {
   cd $_gemname-$pkgver
