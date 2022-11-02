@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RProtoBufLib
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
-pkgrel=5
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='C++ headers and static libraries of Protocol buffers'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7160c1623f50f0e23d14e7e99a2e6c018186871f7f1f68c9171031f6ae678d7')
+sha256sums=('55e45aff285a370ce7909f03eb21e1c265a611241cf2a397f4105c86f2d4a51d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
