@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=gnupg-pkcs11-scd
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart-card daemon to enable the use of PKCS#11 tokens with GnuPG'
 arch=('x86_64')
 url='http://gnupg-pkcs11.sourceforge.net/'
