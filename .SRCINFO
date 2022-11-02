@@ -1,7 +1,7 @@
 pkgbase = rsync-reflink
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
-	pkgver = 3.2.6
-	pkgrel = 2
+	pkgver = 3.2.7
+	pkgrel = 1
 	url = https://rsync.samba.org/
 	arch = x86_64
 	license = GPL3
@@ -19,7 +19,7 @@ pkgbase = rsync-reflink
 	depends = zstd
 	backup = etc/rsyncd.conf
 	backup = etc/xinetd.d/rsync
-	source = git+https://github.com/WayneD/rsync#tag=40695f1e31d29e5d715d986a53cdad1fe0ce0210
+	source = git+https://github.com/WayneD/rsync#tag=b13e7a8ef4fa430223f66403506fb821caae5cfd
 	source = https://github.com/WayneD/rsync-patches/raw/master/clone-dest.diff
 	source = rsyncd.conf
 	sha256sums = SKIP

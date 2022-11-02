@@ -2,9 +2,9 @@
 
 _pkgname=rsync
 pkgname=rsync-reflink
-_tag='40695f1e31d29e5d715d986a53cdad1fe0ce0210' # git rev-parse v${pkgver}
-pkgver=3.2.6
-pkgrel=2
+_tag='b13e7a8ef4fa430223f66403506fb821caae5cfd' # git rev-parse v${pkgver}
+pkgver=3.2.7
+pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
 arch=('x86_64')
 url='https://rsync.samba.org/'
@@ -27,11 +27,6 @@ sha256sums=(
 )
 
 _backports=(
-  # Fix really silly bug with --relative rules.
-  '464555ea923b32f3504678d05bc7de9205e5c8da'
-
-  # Fix bug with validing remote filter rules.
-  '950730313de994d191ba2d5be575e97690b355e8'
 )
 
 _reverts=(
