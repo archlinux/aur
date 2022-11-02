@@ -1,0 +1,5 @@
+*.bak
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.tgz
+*\~
