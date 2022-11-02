@@ -17,8 +17,8 @@
  #endif
      QDir PluginDir(pluginPath);
      PluginDir.setFilter(QDir::Files);
-@@ -371,7 +372,7 @@ MainWindow::MainWindow(QWidget *parent) :
-     updatePIF(ui);
+@@ -285,7 +286,7 @@ MainWindow::MainWindow(QWidget *parent) :
+     updateGB(ui);
  
      if (!settings->contains("configDirPath"))
 -        settings->setValue("configDirPath", "$CONFIG_PATH$");
@@ -26,7 +26,7 @@
  
  #ifdef CONFIG_DIR_PATH
      settings->setValue("configDirPath", CONFIG_DIR_PATH);
-@@ -433,7 +434,7 @@ void MainWindow::updateApp()
+@@ -347,7 +348,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
@@ -35,7 +35,7 @@
  
      memset(&discord_app, 0, sizeof(discord_app));
  
-@@ -978,7 +979,7 @@ void MainWindow::loadCoreLib()
+@@ -892,7 +893,7 @@ void MainWindow::loadCoreLib()
  #ifdef CORE_LIBRARY_PATH
      QString corePath = CORE_LIBRARY_PATH;
  #else
@@ -44,7 +44,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -1071,7 +1072,7 @@ void MainWindow::loadPlugins()
+@@ -985,7 +986,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
