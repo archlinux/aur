@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=limma
-_pkgver=3.52.4
+_pkgver=3.54.0
 pkgname=r-${_pkgname,,}
-pkgver=3.52.4
+pkgver=3.54.0
 pkgrel=1
 pkgdesc='Linear Models for Microarray Data'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b09ccf301dc4c4a83b712f3207dd651b420b2b32e7bfaec3f89909953d1ebe93')
+sha256sums=('aae6bb0af0bd80677a01c48c96b99fc1a58c4a670a21fec87e135038972dc7cb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
