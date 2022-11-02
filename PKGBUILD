@@ -1,9 +1,12 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on community/qbittorrent by Antonio Rojas <arojas@archlinux.org>
+#
+# PRs are welcome here: https://github.com/yurikoles-aur/qbittorrent-git
+#
 
 pkgbase=qbittorrent-git
 pkgname=(qbittorrent-git qbittorrent-nox-git)
-pkgver=4.5.0alpha1.r605.g4e06a9629
+pkgver=4.5.0beta1.r84.g3a2e73cc9
 pkgrel=1
 epoch=1
 arch=(x86_64)
@@ -52,7 +55,8 @@ build() {
 }
 
 package_qbittorrent-git() {
-  pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (git version)'
+  pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar'
+  pkgdesc+=' (git version)'
   depends+=(qt6-svg hicolor-icon-theme)
   conflicts=('qbittorrent')
   provides=('qbittorrent')
@@ -62,7 +66,8 @@ package_qbittorrent-git() {
 }
 
 package_qbittorrent-nox-git() {
-  pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar, w/o gui (development version)'
+  pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar, w/o gui'
+  pkgdesc+=' (git version)'
   conflicts=('qbittorrent-nox')
   provides=('qbittorrent-nox')
 
