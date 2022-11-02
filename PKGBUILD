@@ -2,7 +2,7 @@
 
 pkgname=samba-support
 pkgver=1
-pkgrel=6
+pkgrel=7
 arch=('any')
 url="https://wiki.archlinux.org/index.php/samba"
 license=('GPL')
@@ -12,10 +12,9 @@ depends=("avahi"
         "samba"
         "python-pysmbc")
 optdepends=('system-config-samba: The Samba configuration tool by Red Hat')
-replaces=('manjaro-settings-samba')
 source=('smb.conf')
 backup=('etc/samba/smb.conf')
-md5sums=('6f594384fdd50e1a88653382fcedb12e')
+sha256sums=('b63df445136b07a48fec4b363e1c3dca5894cf60162af8c0c1305656cd69dcfd')
 install=$pkgname.install
 
 package() {
