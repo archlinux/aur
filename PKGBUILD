@@ -11,8 +11,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ()
-_merge_requests_to_use=()
+# available MR: (2519)
+_merge_requests_to_use=(2519)
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -20,7 +20,7 @@ _merge_requests_to_use=()
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=43.0+46+gecc3cf8ab
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -118,6 +118,13 @@ prepare() {
   #   4. Merged: MR approved and it changes commited to master.
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
+
+  # Title: screenshot: Move HAVE_RECORDER check into screencast service 
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2519
+  # Type:3
+  # Status: 2
+  # Comment: This fixes https://bugs.archlinux.org/task/76368?project=1&string=mutter
+  pick_mr 2519 merge
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
