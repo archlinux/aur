@@ -42,8 +42,8 @@ package() {
 
 	cp -arv arch/root/* $pkgdir
 
-	mkdir -p $pkgdir/usr/bin
-	cp -arv rust/target/debug/bautista-bot $pkgdir/usr/bin/bautista
+	mkdir -p $pkgdir/usr/lib/bautista
+	cp -arv rust/target/debug/bautista-bot $pkgdir/usr/lib/bautista
 
 	mkdir -p $pkgdir/usr/lib/bautista/meross-bridge
 	cp -arv node/meross-bridge/*.js $pkgdir/usr/lib/bautista/meross-bridge
