@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pathifier
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Quantify deregulation of pathways in cancer'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-r.oo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('987fc7e75ff892f14a0b3d7406ed345e2e039b3ed9717e105d96c5a753db5629')
+sha256sums=('3ad549a28181ce6f8be9592ec39abfe0f07c7a7a887834d1891c84fe205d0d95')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
