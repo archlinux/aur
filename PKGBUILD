@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bladderbatch
-_pkgver=1.34.0
+_pkgver=1.35.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc='Bladder gene expression data illustrating batch effects'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('539cd6e4920e859b515c2946aca29f19c26629a9c5d508724ad1ff883556ebb6')
+sha256sums=('3c04fa2199802c82d6132ebae0aeea7c8d4e7e4ff6bffc4f575ae73404067046')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
