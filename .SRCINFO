@@ -1,0 +1,12 @@
+pkgbase = pasmotd
+	pkgdesc = Program to output an ANSI-Formatted MOTD in console 
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FelixEcker/pasmotd
+	arch = x86_64
+	license = ISC
+	source = pasmotd-1.0.0.tar.gz::https://github.com/FelixEcker/pasmotd/archive/refs/tags/1.0.0.tar.gz
+	sha256sum = 601e11eadb3173471ee879786a781a439126e7b1672caff24ded58d09c9cf3d5
+        depends = fpc
+
+pkgname = pasmotd
