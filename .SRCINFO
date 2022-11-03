@@ -1,6 +1,6 @@
 pkgbase = r-dasper
 	pkgdesc = Detecting abberant splicing events from RNA-sequencing data
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dasper
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = r-dasper
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dasper_1.6.0.tar.gz
-	sha256sums = 7a20f63b3d1f5f994b0594f602f948563fc7bc57d38172d4b22c8958a70b6533
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dasper_1.7.0.tar.gz
+	sha256sums = 01792b1dfca976f146dd0930a506d3e726d51d933e959e509f8323b2d9d8f764
 
 pkgname = r-dasper
