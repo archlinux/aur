@@ -1,6 +1,6 @@
 pkgbase = r-rrvgo
 	pkgdesc = Reduce + Visualize GO
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rrvgo
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = r-rrvgo
 	depends = r-tm
 	depends = r-treemap
 	depends = r-wordcloud
+	depends = r-umap
 	optdepends = r-biocstyle
 	optdepends = r-clusterprofiler
 	optdepends = r-dose
@@ -48,7 +49,7 @@ pkgbase = r-rrvgo
 	optdepends = r-slam
 	optdepends = r-testthat
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rrvgo_1.8.0.tar.gz
-	sha256sums = 7d97ac93d0f076ec5144b2b474e7f2eb7bb6462f31c4255b21f0576851c020e5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rrvgo_1.10.0.tar.gz
+	sha256sums = f80fe7c0f362874185f988f3fcc7d0a66859081ae31468aa84d714ff7410067e
 
 pkgname = r-rrvgo
