@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dpeak
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='dPeak (Deconvolution of Peaks in ChIP-seq Analysis)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-bsgenome.ecoli.ncbi.20080805
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('96bd43ba71162cdc40172646961194b99c5d16c49c34c255fa3cb6929a479b1d')
+sha256sums=('7ac54b97014d83c0ccd515310b9ba7cf9d7ee645ff85c3f4da4efed151dccbb2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
