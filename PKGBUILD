@@ -1,8 +1,8 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba2-git
-pkgver=2.2.1.r39.g83d1b180
-pkgrel=2
+pkgver=2.2.1.r43.g62863cb3
+pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -55,7 +55,7 @@ prepare() {
 	git config submodule.ext/tinyformat.url $srcdir/tinyformat
 	git config submodule.ext/openexr.url    $srcdir/openexr
 	git config submodule.resources/data.url $srcdir/mitsuba-data
-	git submodule update --init ext/asmjit ext/enoki ext/nanogui ext/tbb ext/tinyformat ext/openexr resources/data
+	git -c protocol.file.allow=always submodule update --init ext/asmjit ext/enoki ext/nanogui ext/tbb ext/tinyformat ext/openexr resources/data
 
 	# system versions of these modules are used
 	rmdir ext/zlib ext/libpng ext/libjpeg
