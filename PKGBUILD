@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genotypeeval
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='QA/QC of a gVCF or VCF file'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('265b6d342f52a6638fb5b301afb14b1a171d3fa79f66c01364f573d605cafe8e')
+sha256sums=('d4e2b92ddf1cb7f72cb131c05575fefa161d8c4527f9afb9530f6d120d6a2156')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
