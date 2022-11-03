@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=gog-kingdoms-and-castles
-pkgver=119r1
+pkgver=120r1
 pkgrel=1
 pkgdesc="Kingdoms and Castles is a game about growing a kingdom from a tiny hamlet to a sprawling city and imposing castle"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'gtk2' 'gtk3' 'lib32-gdk-pixbuf2')
 source=("kingdoms_and_castles_${pkgver//./_}.sh::gogdownloader://2067763543/en3installer0"
         "start-kingdoms-and-castles.sh"
         "Kingdoms and Castles.desktop")
-sha512sums=('8933adc69f3d0d53a9ccd94c8a17e927bdd76d7198ebb09f9b85e1aaab3a2b17cfd887071f7ba316840f4e3130e1582df915f2591692f73e1fb90fd1be0c9cdb'
+sha512sums=('3c5838c992533cd78ef0660252df66f124228dec62e23c520ee70c79254e6c7fa4ae759fbf8ae8fe59107882c5805508e02e259e03fded36b48e6a447734e8c6'
             'a77d13ec722feb49f38f54441cb9e0003dbca2849f6e6f942683ffc461aa99b602037173b3d469fd226818cb92706f960e5edd4612b8d0bb22c7ff0f16684077'
             '3f8c7438f09b670e8a34ff4efb5f3c6c5031c78492eff05a0ccadf6e60252b540ae8fd4682f84cc51a49b3db9389e0690a6ff6d6c9d01502f5f16683eb487247')
 
