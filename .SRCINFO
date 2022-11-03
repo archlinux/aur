@@ -1,6 +1,6 @@
 pkgbase = r-normqpcr
 	pkgdesc = Functions for normalisation of RT-qPCR data
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NormqPCR
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-normqpcr
 	depends = r-qpcr
 	depends = r-rcolorbrewer
 	depends = r-readqpcr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NormqPCR_1.42.0.tar.gz
-	sha256sums = 7d8b33e0c669570fb44a8bb359e976a828603b5f5fdbe1beffecde88d97131cb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NormqPCR_1.44.0.tar.gz
+	sha256sums = 9e1c92824f7e7eaba2d44486a31ddaf54442da7eacc0ae208b3a84762e3a9225
 
 pkgname = r-normqpcr

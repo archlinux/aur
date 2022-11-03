@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NormqPCR
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Functions for normalisation of RT-qPCR data'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-readqpcr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d8b33e0c669570fb44a8bb359e976a828603b5f5fdbe1beffecde88d97131cb')
+sha256sums=('9e1c92824f7e7eaba2d44486a31ddaf54442da7eacc0ae208b3a84762e3a9225')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
