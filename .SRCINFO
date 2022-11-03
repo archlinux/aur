@@ -1,6 +1,6 @@
 pkgbase = r-graphpac
 	pkgdesc = Identification of Mutational Clusters in Proteins via a Graph Theoretical Approach.
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GraphPAC
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-graphpac
 	depends = r-tsp
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GraphPAC_1.38.0.tar.gz
-	sha256sums = 70b8602910bc8cbd9294f3d70912a15c8044420da6651aef9fa12f6416eb2ce3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GraphPAC_1.40.0.tar.gz
+	sha256sums = 31061a7e1d8e604cc0fe266a89f222321f876bf7e9926e9b97a3b2582fb67722
 
 pkgname = r-graphpac
