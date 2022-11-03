@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=coexnet
-_pkgver=1.18.0
+_pkgver=1.19.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='coexnet: An R package to build CO-EXpression NETworks from Microarray Data'
 arch=('any')
