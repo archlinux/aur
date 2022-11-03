@@ -1,7 +1,7 @@
 pkgbase = r-sangeranalyser
 	pkgdesc = sangeranalyseR: a suite of functions for the analysis of Sanger sequence data in R
-	pkgver = 1.6.1
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/sangeranalyseR
 	arch = any
 	license = GPL
@@ -32,7 +32,7 @@ pkgbase = r-sangeranalyser
 	depends = r-stringr
 	depends = r-zeallot
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sangeranalyseR_1.6.1.tar.gz
-	sha256sums = 84cd1ff9819d5fca626c5b6a0ad5376881e8dd1b4c9702fa9f4072570337e362
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sangeranalyseR_1.8.0.tar.gz
+	sha256sums = 56dd4e003a973c71bcabcac1e49964bfc5eee3d1ae9d82261b8792342ca6e22c
 
 pkgname = r-sangeranalyser

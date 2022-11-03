@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sangeranalyseR
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='sangeranalyseR: a suite of functions for the analysis of Sanger sequence data in R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('84cd1ff9819d5fca626c5b6a0ad5376881e8dd1b4c9702fa9f4072570337e362')
+sha256sums=('56dd4e003a973c71bcabcac1e49964bfc5eee3d1ae9d82261b8792342ca6e22c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
