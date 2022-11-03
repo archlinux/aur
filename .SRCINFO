@@ -1,6 +1,6 @@
 pkgbase = r-bumhmm
 	pkgdesc = Computational pipeline for computing probability of modification from structure probing experiment data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BUMHMM
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-bumhmm
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUMHMM_1.20.0.tar.gz
-	sha256sums = e9991c4120ff2fb91196418d2e23adb4d799de113a168f0c2320d328f78cc4f6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUMHMM_1.22.0.tar.gz
+	sha256sums = 6ef3b2a99e881317cf9648a92716361c0042900d8be46d8749c860b98a909dd2
 
 pkgname = r-bumhmm
