@@ -1,7 +1,7 @@
 pkgbase = radiotray-ng-mpris
 	pkgdesc = A wrapper script for Radiotray-NG which provides an MPRIS2 interface.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IngoMeyer441/radiotray-ng-mpris
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname="radiotray-ng-mpris"
 pkgver="0.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A wrapper script for Radiotray-NG which provides an MPRIS2 interface."
 arch=("any")
 url="https://github.com/IngoMeyer441/radiotray-ng-mpris"
@@ -28,5 +28,19 @@ package() {
     python setup.py install --optimize=1 \
                             --prefix=/usr \
                             --root="${pkgdir}" \
-                            --skip-build
+                            --skip-build && \
+    cd "${pkgdir}" && \
+    mkdir -p usr/share/applications && \
+    cat <<-EOF > "usr/share/applications/radiotray-ng-mpris.desktop" || return
+		[Desktop Entry]
+		Categories=AudioVideo;Audio;Player;GTK;
+		Comment=A wrapper script for Radiotray-NG which provides an MPRIS2 interface.
+		Exec=/usr/bin/radiotray-ng-mpris
+		GenericName=Radiotray-NG MPRIS
+		Icon=/usr/share/icons/hicolor/256x256/apps/radiotray-ng-notification.png
+		Name=Radiotray-NG MPRIS
+		Terminal=false
+		Type=Application
+		Version=${pkgver}
+	EOF
 }
