@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GateFinder
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Projection-based Gating Strategy Optimization for Flow and Mass Cytometry'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('607c0965bba567754cdc71b79c67cdfa7eae7e0464365318c2d2911c6e1e3df3')
+sha256sums=('20a74affcf2a747de5f9683a0be114ba2105d56e63ed2d717704c156bb8267e8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
