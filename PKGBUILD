@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scTGIF
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Cell type annotation for unannotated single-cell RNA-Seq data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d8a5389534224c5329a2ea6c51d2a7ce822be477c57fc7ffb416f1b9f33b96e')
+sha256sums=('57843c514089ff41c14fedd6d8945e59477bed3466940d1aec6edc42e9b1a03b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
