@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethPed
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='A DNA methylation classifier tool for the identification of pediatric brain tumor subtypes'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32160346a0e0faf267342c100434ed2ac82231ce2f37b889c49898004fa8b790')
+sha256sums=('505e69e997fae592a5722c360d280d31b93bdd16729afca616d78a437fb7720b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
