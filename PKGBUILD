@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=annotationTools
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.0
+pkgver=1.72.0
 pkgrel=1
 pkgdesc='Annotate microarrays and perform cross-species gene expression analyses using flat file databases'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a1b0f9ac64c402f0de44b9c5a79f1deccaf1b4010dd989379043b5f889204b88')
+sha256sums=('0d6e19af6f693c0419d4f27d0db03803916af97e784dd29215728608e97abbfc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
