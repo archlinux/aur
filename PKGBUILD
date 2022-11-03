@@ -1,8 +1,8 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 _use_suffix=1
-pkgver=19.0.13
-_commit=eb824db537346dedd574e8e8566f12de4a099a50
+pkgver=19.1.4
+_commit=726839761fd57fc23f57a03500f48c2035a6170e
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
