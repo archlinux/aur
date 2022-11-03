@@ -4,7 +4,7 @@
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=42.0+r11+g4a52f026
+pkgver=43.0
 pkgrel=1
 pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://wiki.gnome.org/Projects/GDM"
@@ -15,12 +15,14 @@ depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost
 makedepends=(yelp-tools gobject-introspection git docbook-xsl meson)
 checkdepends=(check)
 options=(debug)
-_commit=4a52f026dc0b218a2ca33fa32853c71a0f88a2b4  # main
+_commit=afa6f2ef3d34048cd7a3e1a1ec478be2ff464806  # tags/43.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-        0002-nvidia-prime.patch)
+        0002-pam-arch-Remove-user_readenv-1-from-pam_env.patch
+        0003-nvidia-prime.patch)
 sha256sums=('SKIP'
             '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8'
+            '7e42077a89a6fcf8b02244b01127af7000a10ed55e09e385eb6fac5aef421c07'
             'a1fb80c69454492390e4b7edac0efe55b2178c7031051d3eab99ed8c14d3e0e4')
 
 pkgver() {
@@ -34,7 +36,10 @@ prepare() {
   # Don't start ssh-agent by default
   git apply -3 ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 
-  git apply -3 ../0002-nvidia-prime.patch
+  # https://bugs.archlinux.org/task/68945
+  git apply -3 ../0002-pam-arch-Remove-user_readenv-1-from-pam_env.patch
+
+  git apply -3 ../0003-nvidia-prime.patch
 }
 
 build() {
