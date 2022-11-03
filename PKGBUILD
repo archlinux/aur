@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gage
-_pkgver=2.46.1
+_pkgver=2.48.0
 pkgname=r-${_pkgname,,}
-pkgver=2.46.1
+pkgver=2.48.0
 pkgrel=1
 pkgdesc='Generally Applicable Gene-set Enrichment for Pathway Analysis'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f411ae1be8ebc64d1d3d216c4c1cbe79da18ec19d80209bd9e2ea9e39924c007')
+sha256sums=('d17b7cdb336b7fa55766a1f68587640e69f9c39f01e5317ee1c7d25c59781b23')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
