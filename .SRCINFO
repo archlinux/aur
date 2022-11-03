@@ -1,6 +1,6 @@
 pkgbase = r-tfutils
 	pkgdesc = TFutils
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TFutils
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = r-tfutils
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFutils_1.16.0.tar.gz
-	sha256sums = 497e98094a5d53a7e172d8e5917806a63e364e5dfb47401d21b051648cec9fab
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFutils_1.18.0.tar.gz
+	sha256sums = ed2bec2c2f2be093f0958ff1a5a6f0e1dc519b5b09fb1b1dd27aba9ecb51eeea
 
 pkgname = r-tfutils
