@@ -30,7 +30,9 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
+depends+=('libdecor' 'libepoxy')
 makedepends+=('git' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'libxkbcommon')
+makedepends+=('wayland-protocols')
 provides=("blender=${pkgver%%.r*}")
 conflicts=("blender=${pkgver%%.r*}")
 license=('GPL')

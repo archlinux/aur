@@ -17,6 +17,7 @@ pkgbase = blender-develop-git
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = libxkbcommon
+	makedepends = wayland-protocols
 	depends = alembic
 	depends = embree
 	depends = libgl
@@ -40,6 +41,8 @@ pkgbase = blender-develop-git
 	depends = libtiff
 	depends = libpng
 	depends = openimagedenoise
+	depends = libdecor
+	depends = libepoxy
 	optdepends = cuda: CUDA support in Cycles
 	provides = blender=3.3
 	conflicts = blender=3.3
