@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsPTM
-_pkgver=1.6.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Statistical Characterization of Post-translational Modifications'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('239e1ee11eb2f25da8ecc094179fdba98d2f7883d37dea434fd7626bb78eeffe')
+sha256sums=('7258bf1255ba88bd89a29ed04ee7f0d8bb766c9444390299815e93dde08d5cd5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
