@@ -1,6 +1,6 @@
 pkgbase = r-desubs
 	pkgdesc = DEsubs: an R package for flexible identification of differentially expressed subpathways using RNA-seq expression experiments
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEsubs
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-desubs
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEsubs_1.22.0.tar.gz
-	sha256sums = 45437d67d8a8100c4e6eea3e9c9912895b47bd8de209b912579fa9cb815f721b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEsubs_1.24.0.tar.gz
+	sha256sums = 69e76234e12efa550cd491f39972cc77277043194ee2bc0bff95916c6b864f7c
 
 pkgname = r-desubs
