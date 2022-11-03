@@ -1,6 +1,6 @@
 pkgbase = r-gostag
 	pkgdesc = A tool to use GO Subtrees to Tag and Annotate Genes within a set
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/goSTAG
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-gostag
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/goSTAG_1.20.0.tar.gz
-	sha256sums = e5b4ba3f62466a1b394e0476d1667a81108a1c6d3b21bbe68d4330fa68217a8a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/goSTAG_1.22.0.tar.gz
+	sha256sums = 1e160b98e4ef96f04bbe259b9fb7289d4e4f7aa23dfd178ae165b022220a971b
 
 pkgname = r-gostag
