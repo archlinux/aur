@@ -14,7 +14,7 @@ arch=("x86_64")
 url="https://github.com/dfranx/SHADERed"
 license=("MIT")
 depends=(gtk3 sdl2 sfml assimp glew glm spirv-headers)
-makedepends=(git cmake python)
+makedepends=(git cmake python ninja)
 
 source=("git+https://github.com/dfranx/SHADERed.git#tag=v$pkgver"
         "git+https://github.com/dfranx/ImGuiColorTextEdit"
@@ -62,8 +62,12 @@ prepare() {
 
 build() {
   cd SHADERed/
-  cmake .
-  make
+  cmake \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -GNinja \
+    .
+  ninja
 }
 
 package() {

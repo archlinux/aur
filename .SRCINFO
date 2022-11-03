@@ -8,6 +8,7 @@ pkgbase = shadered
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
+	makedepends = ninja
 	depends = gtk3
 	depends = sdl2
 	depends = sfml
