@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IdeoViz
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Plots data (continuous/discrete) along chromosomal ideogram'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('034a6ab0dd566698113740807898ed8e778240b7951d4e51a917cad85c1c90f3')
+sha256sums=('eeb933678e018cd0f9983844125f7bac0988f7081076205d594c8eeae642f24a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
