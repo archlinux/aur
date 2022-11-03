@@ -1,6 +1,6 @@
 pkgbase = openimagedenoise-git
 	pkgdesc = Intel(R) Open Image Denoise library
-	pkgver = 1.2.3.r0.ga9e9160
+	pkgver = 1.4.3.r0.gd959bac
 	pkgrel = 1
 	url = https://www.openimagedenoise.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = openimagedenoise-git
 	makedepends = ninja
 	depends = intel-tbb
 	depends = python
-	provides = openimagedenoise=1.2.3
+	provides = openimagedenoise=1.4.3
 	conflicts = openimagedenoise
 	source = openimagedenoise::git+https://github.com/OpenImageDenoise/oidn.git
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
@@ -22,4 +22,3 @@ pkgbase = openimagedenoise-git
 	sha256sums = SKIP
 
 pkgname = openimagedenoise-git
-

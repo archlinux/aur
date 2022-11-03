@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154 # to allow unused/uninitialized variables.
 
 pkgname=openimagedenoise-git
-pkgver=1.2.3.r0.ga9e9160
+pkgver=1.4.3.r0.gd959bac
 #_fragment="#tag=v${pkgver}"
 pkgrel=1
 pkgdesc="Intel(R) Open Image Denoise library"
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 prepare() {
   git -C "${srcdir}"/${pkgname%-git} config submodule.mkl-dnn.url "${srcdir}"/mkl-dnn
   git -C "${srcdir}"/${pkgname%-git} config submodule.weights.url "${srcdir}"/oidn-weights
-  git -C "${srcdir}"/${pkgname%-git} submodule update --init --recursive # --remote
+  git -C "${srcdir}"/${pkgname%-git} -c protocol.file.allow=always submodule update --init --recursive # --remote
 }
 
 pkgver() {
