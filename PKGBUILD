@@ -1,20 +1,20 @@
 # Maintainer: Young Fellow <youngfellow.le@gmail.com>
 pkgname=walc
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=2
 pkgdesc="An unofficial WhatsApp Desktop client for linux systems."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/WAClient/WALC"
-license=('GPL-3')
-depends=('nodejs-lts-gallium' 'npm')
+license=('GPL3')
+depends=('nodejs-lts-gallium' 'npm' 'gtk3' 'alsa-lib' 'nss')
 makedepends=('gendesk')
 provides=('walc')
 conflicts=('walc')
 source=("WALC-$pkgver.tar.gz::https://github.com/WAClient/WALC/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('d922d89632fccb039119e2b654a4a87b')
+md5sums=('efb697dc014b00b953935a049e9d9754')
 
 prepare() {
-	gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='WALC' --genericname='Unofficial WhatsApp Client for Linux' --custom='StartupWMClass=walc' --exec='npm start --prefix /opt/WALC' --icon='/opt/WALC/src/icons/logo360x360.png' --startupnotify='true' --categories='Network;Applications'
+	gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='WALC' --genericname='Unofficial WhatsApp Client for Linux' --custom='StartupWMClass=walc' --exec='npm start --prefix /opt/WALC' --icon='/opt/WALC/src/icons/logo360x360.png' --startupnotify='true' --categories='Network;Applications' -n
 
 }
 
