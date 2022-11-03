@@ -1,6 +1,6 @@
 pkgbase = r-targetdecoy
 	pkgdesc = Diagnostic Plots to Evaluate the Target Decoy Approach
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TargetDecoy
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = r-targetdecoy
 	depends = r-ggpubr
 	depends = r-mzid
 	depends = r-mzr
+	depends = r-shiny
+	depends = r-miniui
 	optdepends = r-biocstyle
 	optdepends = r-covr
 	optdepends = r-gridextra
@@ -18,7 +20,7 @@ pkgbase = r-targetdecoy
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TargetDecoy_1.2.0.tar.gz
-	sha256sums = 4d3ac8d50430dec5d6fba59585df5481052ee67291816d8a0777bd19d5b7e297
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TargetDecoy_1.4.0.tar.gz
+	sha256sums = 7fa637414b7d38247e78862006fec7958c6c075ab75b7620092c16a75cf1a9f7
 
 pkgname = r-targetdecoy

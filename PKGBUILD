@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TargetDecoy
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Diagnostic Plots to Evaluate the Target Decoy Approach'
 arch=('any')
@@ -15,6 +15,8 @@ depends=(
   r-ggpubr
   r-mzid
   r-mzr
+  r-shiny
+  r-miniui
 )
 optdepends=(
   r-biocstyle
@@ -27,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4d3ac8d50430dec5d6fba59585df5481052ee67291816d8a0777bd19d5b7e297')
+sha256sums=('7fa637414b7d38247e78862006fec7958c6c075ab75b7620092c16a75cf1a9f7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
