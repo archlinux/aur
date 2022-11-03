@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=easierData
-_pkgver=1.2.0
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='easier internal data and exemplary dataset from IMvigor210CoreBiologies package'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('07d8d93b10efc4afbd78d19cf7bdad674865c37450f0945115bd9f2a614775c3')
+sha256sums=('59df7dfbd0a7c2bf6f91b5c9edb39fbc3b6a6817e0d95f414369f635aa863ffd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
