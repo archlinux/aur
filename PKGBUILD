@@ -13,7 +13,7 @@ name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.12.1.r37.gebefd34c
+pkgver=2.12.1.r92.g597daac8
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -155,7 +155,7 @@ prepare_submodule() {
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qMasonry.url "$srcdir/masonry-cc"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qJSonRPCPlugin.url "$srcdir/JSonRPCPlugin"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qCanupo/contrib/dlib.url "$srcdir/dlib"
-  git -C "$srcdir/cloudcompare" submodule update --init --recursive
+  git -C "$srcdir/cloudcompare" -c protocol.file.allow=always submodule update --init --recursive
 }
 source+=(
   "libE57Format::git+https://github.com/asmaloney/libE57Format"
