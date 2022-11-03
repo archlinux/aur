@@ -1,2 +1,4 @@
-/Fossilize/
-/*.pkg.*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
