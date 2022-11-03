@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=brendaDb
-_pkgver=1.10.0
+_pkgver=1.11.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='The BRENDA Enzyme Database'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('75576b7546177dee135ae7a99be94aae739eb930c6680229daed1363f017e571')
+sha256sums=('e62b4afcd6b01c9341e8fbda49db0c46cfd74e668be7d4b48c327dedcd6b59f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
