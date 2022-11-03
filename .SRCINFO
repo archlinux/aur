@@ -1,7 +1,7 @@
 pkgbase = r-pwrewas.data
 	pkgdesc = pwrEWAS.data: Reference data accompanying pwrEWAS
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/pwrEWAS.data
 	arch = any
 	license = Artistic2.0
@@ -10,7 +10,7 @@ pkgbase = r-pwrewas.data
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/pwrEWAS.data_1.10.0.tar.gz
-	sha256sums = 9cdef52f2ec117c25273f6dc43aaeb6dba3941b53887cb1282fb2e838df9e186
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/pwrEWAS.data_1.11.0.tar.gz
+	sha256sums = 309cb37fc0d933fb12365b2d4a75de1bae85ed7c5cd87eb3182f521f62a6ddd4
 
 pkgname = r-pwrewas.data
