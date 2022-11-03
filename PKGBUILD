@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SISPA
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='SISPA: Method for Sample Integrated Set Profile Analysis'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c76d09558e8cfd205146a55447b93122ecefed50be19a8382bf0a7bc4b96f49f')
+sha256sums=('791a1d68745f35e5838dfab4b65d23f12e32077885643c32fa1e00c1a8457a22')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
