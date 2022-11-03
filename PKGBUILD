@@ -20,7 +20,7 @@ _fragment=#${FRAGMENT:-branch=dev}
 
 _name=cutter
 pkgname=rz-${_name}-git
-pkgver=2.0.4.r70.gf99ffc3d
+pkgver=2.0.4.r111.ge56a0b55
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
@@ -54,10 +54,10 @@ pkgver() {
 
 prepare() {
   git -C ${_name} config 'submodule.src/translations.url' "${srcdir}/${_name}-translations"
-  git -C ${_name} submodule update --init src/translations
+  git -C ${_name} -c protocol.file.allow=always submodule update --init src/translations
   ((DISABLE_BUNDLED_RIZIN)) || {
     git -C ${_name} config submodule.rizin.url "$srcdir/rizin"
-    git -C ${_name} submodule update --init rizin
+    git -C ${_name} -c protocol.file.allow=always submodule update --init rizin
   }
 }
 
