@@ -4,7 +4,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.2.alpha.r584.g11c88b58f0
+pkgver=1.2.alpha.r714.gd6f5aea0b3
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -56,7 +56,7 @@ prepare() {
   cd  "$_gitname"
   git config submodule.share/extensions.url "${srcdir}"/extensions.git
   git config submodule.src/3rdparty/2geom.url "${srcdir}"/lib2geom.git
-  git submodule update --init --remote
+  git -c protocol.file.allow=always submodule update --init --remote
 }
 
 pkgver() {
