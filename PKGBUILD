@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PREDA
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Position Related Data Analysis'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rsprng
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0fabad5239a683e41d522cc6b7a0ec6879379e14d1db42c2b01e8e7e4a437483')
+sha256sums=('3296ac1da3c353b8c0fc1f1e8a27cbfb1b1e8ccdf8a411f7aab449d50f3c5bc8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
