@@ -1,6 +1,6 @@
 pkgbase = r-ldblock
 	pkgdesc = data structures for linkage disequilibrium measures in populations
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ldblock
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-ldblock
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ldblock_1.26.0.tar.gz
-	sha256sums = 5546951946e6a3f080b448f55af0aeaa52d214185143603a59fcb391d6005a23
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ldblock_1.28.0.tar.gz
+	sha256sums = d63071f99ac30ff67702623d91249c84d563b14356f8e16e2bee00711d271b45
 
 pkgname = r-ldblock
