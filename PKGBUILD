@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ncRNAtools
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='An R toolkit for non-coding RNA'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('252dc9e7dbedd7b4d4e576d232d6132691991b8ffb4de924936f3fa5e0965281')
+sha256sums=('e5e328d7a86d46b0e6de41b850286b65855424dd5e76a08e171307b7441f6e55')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
