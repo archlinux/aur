@@ -1,6 +1,6 @@
 pkgbase = r-scanmirapp
 	pkgdesc = scanMiR shiny application
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scanMiRApp
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-scanmirapp
 	optdepends = r-rmarkdown
 	optdepends = r-shinytest
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scanMiRApp_1.2.0.tar.gz
-	sha256sums = 9569606ad689c9931c25a19023cb1096a2cf63151850d3a108c922cc12de44d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scanMiRApp_1.4.0.tar.gz
+	sha256sums = 193faecf494a838c572daf7e95acf005a9ea0c0f74504ff96a2a9222a33ba7b1
 
 pkgname = r-scanmirapp
