@@ -1,7 +1,7 @@
 # Maintainer: Michael Zhang <mail@mzhang.io>
 
 pkgname=garbage
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Command-line interface to the FreeDesktop Trash can'
 url='https://git.sr.ht/~mzhang/garbage'
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 makedepends=('cargo')
 source=("https://git.sr.ht/~mzhang/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c98e2769d88f1a85fbcbf4b08a2972acdf29079344ef9323aeace0788be635c9')
+sha256sums=('ffebf19c29e6365be184b94e0db67e6b6c993621f05883c48e7f3695adbe20f3')
 
 build() {
     cd "${pkgname}-v${pkgver}"
