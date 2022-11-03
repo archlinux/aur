@@ -19,7 +19,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'libpng' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl'
 		'qt5-base' 'qt5-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu66')
 options=('!strip' '!emptydirs')
-source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu20-64.tar.gz")
+source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu22-64.tar.gz")
 md5sums=('848c3ec7c0d81e4e49153ebdb40aa44b')
 
 package() {

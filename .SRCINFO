@@ -27,7 +27,7 @@ pkgbase = scrt
 	depends = icu66
 	options = !strip
 	options = !emptydirs
-	source = local://scrt-9.3.0.2905.ubuntu20-64.tar.gz
+	source = local://scrt-9.3.0.2905.ubuntu22-64.tar.gz
 	md5sums = 848c3ec7c0d81e4e49153ebdb40aa44b
 
 pkgname = scrt
