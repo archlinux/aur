@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DExMA
-_pkgver=1.4.5
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Differential Expression Meta-Analysis'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e034a5c66963d5bb24fb5edb5b58d04a6058976e9b0a0f84323b09d40368fd22')
+sha256sums=('c9826d57e8e3ae6454b093e8682d6b9e4400eec07a832c807ef3c32ae3804512')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
