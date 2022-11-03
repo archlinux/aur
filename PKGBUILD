@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=("python-setuptools")
 source=("https://github.com/IngoMeyer441/radiotray-ng-mpris/archive/v${pkgver}.tar.gz")
-sha256sums=("b999e4c5343b5f12a8caa13c95324acb2561963dbd8461ac35824a4d22a63330  source")
+sha256sums=("94c6a4148cf9524547cdf629b967f07c73697e69707abd6d835334bca628ca97")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
