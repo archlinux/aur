@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NxtIRFdata
-_pkgver=1.2.0
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Data for NxtIRF'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e551f0191c0516732d4e817a823f0890c29ce15529ce54873244fbb6b2281211')
+sha256sums=('e3f63dd750c382fe754aae43faea3e9fa7f73c15f84488a07c76c542fc828dec')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
