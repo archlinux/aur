@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VariantTools
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Tools for Exploratory Analysis of Variant Calls'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3deaffe9105479cfe8205bde8fdbe789610d387dfd33b094b084dbe7aa62dda2')
+sha256sums=('e0abd79e028921e36e34ad46f2eac5b93967f86398275a616d6d744f2b7b31a0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
