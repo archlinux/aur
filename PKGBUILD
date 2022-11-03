@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=surfaltr
-_pkgver=1.2.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Rapid Comparison of Surface Protein Isoform Membrane Topologies Through surfaltr'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1becbe5bf59512c1cdc74fad18573aab90b567250690f4be860adbe9b7b3a8b7')
+sha256sums=('87d2df23a7ffe350701178b7f997376aac2c6b5671f85b9ecb2c0e8950676d51')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
