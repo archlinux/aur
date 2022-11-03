@@ -1,6 +1,6 @@
 pkgbase = r-netresponse
 	pkgdesc = Functional Network Analysis
-	pkgver = 1.56.1
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/netresponse
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-netresponse
 	depends = r-rgraphviz
 	depends = r-rmarkdown
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netresponse_1.56.1.tar.gz
-	sha256sums = 7f4f3f7e4282b34166484d84dededf36d78f0ea07cfbf48cc78db800d6aafb6f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netresponse_1.58.0.tar.gz
+	sha256sums = 53caa18ef826cea3c6bc954df3c7184605fd7ff4b08dc43489dea0f9744122b4
 
 pkgname = r-netresponse

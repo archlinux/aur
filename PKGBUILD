@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netresponse
-_pkgver=1.56.1
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.1
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Functional Network Analysis'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f4f3f7e4282b34166484d84dededf36d78f0ea07cfbf48cc78db800d6aafb6f')
+sha256sums=('53caa18ef826cea3c6bc954df3c7184605fd7ff4b08dc43489dea0f9744122b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
