@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RGraph2js
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Convert a Graph into a D3js Script'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('030343539867f8ee1b6804ead32aaea892befffebaade5c2c7a5ed1448c7ce91')
+sha256sums=('f9e70ce4e3ee61560494d09cacc3c89dbf59ed7f93af25d6ac3bc6f521ba727b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
