@@ -1,6 +1,6 @@
 pkgbase = r-waddr
 	pkgdesc = Statistical tests for detecting differential distributions based on the 2-Wasserstein distance
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/waddR
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-waddr
 	optdepends = r-rprojroot
 	optdepends = r-scater
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/waddR_1.10.0.tar.gz
-	sha256sums = 43bd9f375eff6574e4f23772d550b83a7e55b210333b16385c83ee2d422a4f97
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/waddR_1.12.0.tar.gz
+	sha256sums = d3baf5ebba5bbc59a5041bac2db5898855d2cbe1c444d34ef9ce1ff9e19dd203
 
 pkgname = r-waddr
