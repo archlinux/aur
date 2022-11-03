@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEComplexDisease
-_pkgver=1.16.0
+_pkgver=1.17.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='A tool for differential expression analysis and DEGs based investigation to complex diseases by bi-clustering analysis'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2da1ab65f19c627f4dffb4d2f58f782f1fa3a17c3609c8a55f67db1cfa314925')
+sha256sums=('bee5373022f894a939a3b6fe086671cf7272a87265a21fe6a73a60e5ec79b60e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
