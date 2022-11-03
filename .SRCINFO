@@ -1,6 +1,6 @@
 pkgbase = r-combi
 	pkgdesc = Compositional omics model based visual integration
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/combi
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-combi
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/combi_1.8.0.tar.gz
-	sha256sums = 043bffdd17dc7127acd4782245b126a42e97e07d2e535964254b111f58143b8b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/combi_1.10.0.tar.gz
+	sha256sums = bedff10e45de76351c06f3c907b676096b278613031153cd23733d32ceb54294
 
 pkgname = r-combi
