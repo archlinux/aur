@@ -1,14 +1,14 @@
 pkgbase = maubot
 	pkgdesc = A plugin-based Matrix bot system
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/maubot/maubot
 	install = maubot.install
 	arch = any
 	license = AGPLv3
-	makedepends = python-pre-commit>=2.10.1
-	makedepends = python-isort>=5.10.1
-	makedepends = python-black>=22.3
+	makedepends = python-pre-commit
+	makedepends = python-isort
+	makedepends = python-black
 	makedepends = yarn
 	depends = sudo
 	depends = python-sqlalchemy
