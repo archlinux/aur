@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=a4Base
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Automated Affymetrix Array Analysis Base Package'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-nlcv
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56ef9d33ceaad052b2dbe4c02885fa66a4551034a78d565cd2f33e137e8ef897')
+sha256sums=('e6197e27e9d0b7dd182e28e10a8e68a4c4e31d1010b6356e81a671fd4eccb191')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
