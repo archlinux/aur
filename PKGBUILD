@@ -1,15 +1,15 @@
-# Maintainer: getmicah (https://micahcowell.com)
+# Maintainer: micahco (https://github.com/micahco)
 pkgname=spotify-now-git
 _pkgname=spotify-now
 pkgver=22.9443251
 pkgrel=1
-pkgdesc="Get information on the current Spotify song. Git version."
+pkgdesc="Spotify now playing"
 arch=('any')
 url="https://github.com/micahco/spotify-now"
 license=('BSD-2-Clause')
 makedepends=('git')
 conflicts=()
-source=("git://github.com/micahco/$_pkgname.git")
+source=("git+https://github.com/micahco/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
