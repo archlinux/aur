@@ -1,6 +1,6 @@
 pkgbase = r-egad
 	pkgdesc = Extending guilt by association by degree
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EGAD
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-egad
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EGAD_1.24.0.tar.gz
-	sha256sums = 359e6834ebbb56b02cadf483747771f0a9a009f2103a51c7baf72a96d67417f1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EGAD_1.26.0.tar.gz
+	sha256sums = 2e0a054c56e1d25556618ad6777f6234bd43696e83951419824bc1ba5c869d07
 
 pkgname = r-egad
