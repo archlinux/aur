@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiRData
-_pkgver=1.2.0
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='miRNA Affinity models for the scanMiR package'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef1f41da8c5c862ea0daa09ca0c840df42f7ecf1963aa58a2be7e6b8f80ea919')
+sha256sums=('96677d97bcbc21a4b5b0397ae3302f137f3b89bca3a5ba67828760d81139e02a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
