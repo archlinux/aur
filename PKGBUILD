@@ -4,7 +4,7 @@
 # Contributor: ant32 < antreimer at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_pkgver=1.1.1n
+_pkgver=1.1.1s
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl-1.1
@@ -21,11 +21,11 @@ makedepends=('mingw-w64-gcc'
 conflicts=('mingw-w64-openssl<3')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
-sha256sums=('40dceb51a4f6a5275bde0e6bf20ef4b91bfc32ed57c0552e2e8e15463372b17a'
+sha256sums=('c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa'
             'SKIP')
-validpgpkeys=('7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C' # Richard Levitte <levitte@openssl.org>
-              '8657ABB260F056B1E5190839D9C4D26D0E604491' # Matt Caswell <matt@openssl.org>
-)
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
+              'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C')
 
 prepare() {
   cd openssl-${_pkgver}
