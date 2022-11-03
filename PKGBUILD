@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=covEB
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Empirical Bayes estimate of block diagonal covariance matrices'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-curatedbladderdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('936a93c57159ea5c24dcdde7e5849de147d19f6800efcc6b3015adc6b05e0450')
+sha256sums=('bedb7f3501583a85363de76f0b92464a2759c671e44cc4cbd7dbbd6a010675a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
