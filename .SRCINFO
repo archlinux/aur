@@ -1,13 +1,13 @@
 pkgbase = python-zodbpickle
 	pkgdesc = Fork of Python's pickle module to work with ZODB
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/zopefoundation/zodbpickle
 	arch = x86_64
 	license = ZPL
 	makedepends = python-setuptools
 	depends = python
-	source = python-zodbpickle-2.4.tar.gz::https://github.com/zopefoundation/zodbpickle/archive/2.4.tar.gz
-	sha256sums = 85f17bdc5a491fc5c920c93a7442c8799776c90b884aaca3840a3cc4140b8a07
+	source = python-zodbpickle-2.5.tar.gz::https://github.com/zopefoundation/zodbpickle/archive/2.5.tar.gz
+	sha256sums = b05c006f1a7418b5de6eb62722910b4cc5a0791bd618fcb8a27fec2a582742a7
 
 pkgname = python-zodbpickle
