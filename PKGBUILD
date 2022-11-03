@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IsoformSwitchAnalyzeR
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Identify, Annotate and Visualize Alternative Splicing and Isoform Switches with Functional Consequences from both short- and long-read RNA-seq data.'
 arch=('x86_64')
@@ -47,7 +47,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d6e3acc1b16a1067fe6fccd20a5b7853871dc1c71f08df5ed35a8fe555a2f58')
+sha256sums=('c5453faa87fa28aba055e62b0d95d30640c88aafc950e48983f8f77e14e86c1a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
