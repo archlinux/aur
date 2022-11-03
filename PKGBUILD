@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57686.186f2f8614e
+pkgver=r57743.4173468cc9d
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -177,6 +177,9 @@ build() {
     -DAPP_RENDER_SYSTEM=gl
     -DCORE_PLATFORM_NAME="x11 wayland gbm"
   )
+
+  # https://github.com/google/flatbuffers/issues/7404
+  CXXFLAGS+=' -Wno-error=restrict'
 
   echo "building kodi"
   cmake "${_args[@]}" ../"$_gitname"
