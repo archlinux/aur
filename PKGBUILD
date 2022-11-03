@@ -6,7 +6,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
 pkgver=1.13.0
 _pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -64,6 +64,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         87773.patch
+        cuda_arch_update.patch
         ffmpeg4.4.patch)
 b2sums=('SKIP'
         'SKIP'
@@ -111,6 +112,7 @@ b2sums=('SKIP'
         '1f7ce593fa9fc62535ca1c3d85c996a73006cc614c7b7258160c3fc53cd52a1cfddcb18baf897f2e1223ecdfee52ca1471b91c9f845368ed6ac51b66f6e0e676'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
+        '47ace3b87c4d33c7a1aec13b5bc88f434a0c7d38de43aedbae15f635111633ae1119394e9ead5cf16b5230baa525c518c0b500a3c38cac253170921caf90d3f8'
         '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a')
 options=('!lto')
 
@@ -180,6 +182,9 @@ prepare() {
   # Fix building against glog 0.6
   patch -Np1 -i "${srcdir}/87773.patch"
 
+  # Update supported CUDA compute architectures
+  patch -Np1 -i "${srcdir}/cuda_arch_update.patch"
+
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
 
@@ -223,7 +228,8 @@ prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;6.0;6.2;7.0;7.2;7.5;8.0;8.6;8.7;8.9;9.0+PTX"  #include latest PTX for future compat
+  # CUDA arch 8.7 is not supported (needed by Jetson boards, etc.)
+  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 }
 
