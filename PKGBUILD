@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CODEX
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='A Normalization and Copy Number Variation Detection Method for Whole Exome Sequencing'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-wes.1kg.wugsc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7ed677581582b814253c3416c6c455184983b902e95b9ae200f42503d14f886')
+sha256sums=('86d12ae6e20ef20a7f56f08c14ce76a39ef466dd8fa0f8b6166b360a66fb3df3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
