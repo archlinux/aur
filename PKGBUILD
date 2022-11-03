@@ -64,7 +64,7 @@ prepare() {
   git config submodule.'libs/pugixml'.url "$srcdir/pugixml"
   git config submodule.'libs/spirv-headers'.url "$srcdir/SPIRV-Headers"
   git config submodule.'libs/spirv-tools'.url "$srcdir/SPIRV-Tools"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
