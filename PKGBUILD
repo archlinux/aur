@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vsn
-_pkgver=3.64.0
+_pkgver=3.66.0
 pkgname=r-${_pkgname,,}
-pkgver=3.64.0
+pkgver=3.66.0
 pkgrel=1
 pkgdesc='Variance stabilization and calibration for microarray data'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ebf308a53caf996c5cb93685cddef071bb68975df25770a0dc7f4b765db47c9')
+sha256sums=('1f5069ed5d8c2b3b9feabf1199eda5f0bbb496a610a7626fa8861827cbcbe7cc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
