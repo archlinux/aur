@@ -1,6 +1,6 @@
 pkgbase = r-msbackendmgf
 	pkgdesc = Mass Spectrometry Data Backend for Mascot Generic Format (mgf) Files
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MsBackendMgf
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-msbackendmgf
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendMgf_1.4.0.tar.gz
-	sha256sums = 0c795d8c443f0871b80b73ce122d92a2e0c5082b0a9d3c6091376750f85406d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendMgf_1.6.0.tar.gz
+	sha256sums = aaa3820f71bdbae771f62173e2b4096cd4f9434f487ddaeaa1e701ec0c750264
 
 pkgname = r-msbackendmgf
