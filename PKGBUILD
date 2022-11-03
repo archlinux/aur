@@ -18,10 +18,7 @@ sha512sums=('8f9b53542c0784ac0c9169c4c4252d22f95419c6903ca0e786f44f6fee9303251f3
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
-  # Source files are inside the src directory and the module is not in the PATH when running tests
-  mv src/RestrictedPython RestrictedPython
-  py.test
-  mv RestrictedPython src/RestrictedPython
+  PYTHONPATH=src py.test
 }
 
 package() {
