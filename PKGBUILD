@@ -3,7 +3,7 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
-pkgver=2.14.3
+pkgver=2.15.5
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
@@ -49,7 +49,9 @@ build() {
                        -gencode=arch=compute_80,code=sm_80 \
                        -gencode=arch=compute_86,code=sm_86 \
                        -gencode=arch=compute_87,code=sm_87 \
-                       -gencode=arch=compute_87,code=compute_87"
+                       -gencode=arch=compute_89,code=sm_89 \
+                       -gencode=arch=compute_90,code=sm_90 \
+                       -gencode=arch=compute_90,code=compute_90"
 
   export CXXFLAGS+=" -ffat-lto-objects"
   make CUDA_HOME=/opt/cuda PREFIX=/usr src.build
