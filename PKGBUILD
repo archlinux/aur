@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <shantanne[at]hotmail.com>
 
 pkgname=ordersprinter
-pkgver=2.3.10
+pkgver=2.4.8
 pkgrel=1
 packagename="$(echo ${pkgname}-${pkgver} | sed 's/\./_/g')"
 pkgdesc="OrderSprinter is a free Point-Of-Service/Point-Of-Sale software (POS) for the gastronomy."
@@ -15,11 +15,11 @@ source=("https://ordersprinter.de/${packagename}.zip"
         ${pkgname}.service
         ${pkgname}.sysusers
         ${pkgname})
-md5sums=('38611ab548de026f851033ad34b7cb8ac5ab6d27'
-         '7b2c461db174827432b446b142226c781b93fa1b'
-         '9a123793639747bad7095f2fce7e4dcb413daeca'
-         '435225254d009b030ec3ef6a2d5d1018d406609e'
-         'beaf9cac96db3eeea8385d412cbf8204e5eea37e')
+md5sums=('31356b554ace1c28cc74752819287cb9'
+         '35d179e3ab67dcf5396ebd2375ba25e3'
+         '608f2301c621cc5219ab4d92b0bfc62b'
+         '8686cef0461e64cc097ae72c8d9e9752'
+         '6ee44456a292a4b5b17458b487d1c2ec')
 install=${pkgname}.install
 
 package()
