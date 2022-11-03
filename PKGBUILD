@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=immunoClust
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='immunoClust - Automated Pipeline for Population Detection in Flow Cytometry'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17327b6ebca59e2760e30d71d6cfb660d7c94975a8ed084fd2683c1ed2a3bc81')
+sha256sums=('c44e1e700713809e1726f24d90ccf753c27f5f135f43680967b4d755de5b5847')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
