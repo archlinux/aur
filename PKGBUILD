@@ -4,7 +4,7 @@
 pkgname=libpg_query
 # All versions are tagged by the major Postgres version,
 # plus an individual semver for this library itself.
-pkgver=13.2.1.2
+pkgver=13.2.2.0
 pkgrel=1
 pkgdesc='C library for accessing the PostgreSQL parser outside of the server environment'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/pganalyze/libpg_query'
 license=('BSD')
 depends=('protobuf-c' 'xxhash')
 makedepends=('git')
-_commit='4b30b03cb3944f01d4807ee89532549ccf115a44'
+_commit='1097b2c33e54a37c0d2c0f2d498c7d1cf967eae9'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'dont-override-opt-level.patch'
@@ -38,7 +38,7 @@ prepare() {
   cd "$pkgname"
 
   patch -p1 -i "$srcdir/dont-override-opt-level.patch"
-  patch -p1 -i "$srcdir/verbose-build.patch"
+  #patch -p1 -i "$srcdir/verbose-build.patch"
   patch -p1 -i "$srcdir/unbundle-vendor-deps.patch"
 
   # remove vendored libraries (protobuf-c & xxhash)
