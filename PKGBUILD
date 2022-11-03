@@ -61,9 +61,9 @@ package() {
 prepare_submodule() {
   git -C "$srcdir/meshlab" config submodule.src/vcglib.url "$srcdir/vcglib"
   git -C "$srcdir/meshlab" config submodule.src/external/nexus.url "$srcdir/nexus"
-  git -C "$srcdir/meshlab" submodule update --init
+  git -C "$srcdir/meshlab" -c protocol.file.allow=always submodule update --init
   git -C "$srcdir/meshlab/src/external/nexus" config submodule.src/corto.url "$srcdir/corto"
-  git -C "$srcdir/meshlab/src/external/nexus" submodule update --init
+  git -C "$srcdir/meshlab/src/external/nexus" -c protocol.file.allow=always submodule update --init
 }
 source+=(
 # "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
