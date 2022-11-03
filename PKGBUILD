@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=libpanel-git
-pkgver=r424.80823f0
+pkgver=r597.907b820
 pkgrel=1
 epoch=0
 pkgdesc='A dock/panel library for GTK 4'
@@ -9,10 +9,13 @@ arch=('x86_64')
 url='https://gitlab.gnome.org/chergert/libpanel'
 license=('GPL3')
 provides=(libpanel)
+conflicts=(libpanel)
 depends=(
 'gtk4>=4.3.0'
 gobject-introspection
 libadwaita
+gi-docgen
+vala
 )
 makedepends=(
 meson

@@ -1,6 +1,6 @@
 pkgbase = libpanel-git
 	pkgdesc = A dock/panel library for GTK 4
-	pkgver = r424.80823f0
+	pkgver = r597.907b820
 	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.gnome.org/chergert/libpanel
@@ -11,7 +11,10 @@ pkgbase = libpanel-git
 	depends = gtk4>=4.3.0
 	depends = gobject-introspection
 	depends = libadwaita
+	depends = gi-docgen
+	depends = vala
 	provides = libpanel
+	conflicts = libpanel
 	source = git+https://gitlab.gnome.org/chergert/libpanel.git
 	md5sums = SKIP
 
