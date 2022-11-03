@@ -1,6 +1,6 @@
 pkgbase = r-cner
 	pkgdesc = CNE Detection and Visualization
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNEr
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-cner
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.drerio.ucsc.danrer10.refgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNEr_1.32.0.tar.gz
-	sha256sums = 780a43bba1307625b1bf395c20a22002b7338ea3796f2e20eef95ab45dc9fb17
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNEr_1.34.0.tar.gz
+	sha256sums = dceb50eb3881436ed961e22e603b48e4dce3dc8c7e3e9cafb0b03912143bc297
 
 pkgname = r-cner

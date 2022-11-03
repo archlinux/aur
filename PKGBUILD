@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNEr
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='CNE Detection and Visualization'
 arch=('x86_64')
@@ -44,7 +44,7 @@ optdepends=(
   r-txdb.drerio.ucsc.danrer10.refgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('780a43bba1307625b1bf395c20a22002b7338ea3796f2e20eef95ab45dc9fb17')
+sha256sums=('dceb50eb3881436ed961e22e603b48e4dce3dc8c7e3e9cafb0b03912143bc297')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
