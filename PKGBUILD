@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gwascat
-_pkgver=2.28.1
+_pkgver=2.30.0
 pkgname=r-${_pkgname,,}
-pkgver=2.28.1
-pkgrel=3
+pkgver=2.30.0
+pkgrel=1
 pkgdesc='representing and modeling data in the EMBL-EBI GWAS catalog'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -44,7 +44,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('54275f9425e40a2216268ffb7b30d997a19186e08eaa0fa627d19884646fd5a7')
+sha256sums=('aa38ccdd24673e144cbe41857c2d6669e64f25d72e176ac33f13dd10290b456a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
