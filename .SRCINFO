@@ -1,6 +1,6 @@
 pkgbase = r-mimager
 	pkgdesc = mimager: The Microarray Imager
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mimager
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-mimager
 	optdepends = r-pd.hugene.1.0.st.v1
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mimager_1.20.0.tar.gz
-	sha256sums = f42d694c66bf753c8694cb54d0193ffc865f03c22a4142084016f3f1e15bc1c7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mimager_1.22.0.tar.gz
+	sha256sums = a684cbf954224c11be27306d542728c6966890be9f780dd4b3685a74a68821e0
 
 pkgname = r-mimager
