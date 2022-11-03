@@ -2,9 +2,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=kebabs
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Kernel-Based Analysis Of Biological Sequences'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix_strictrhdrs.patch")
-sha256sums=('c0191c14c0d820c5577043c484794465788f789f9b84114f40e255b6876b3712'
+sha256sums=('bfd331540467927d0c3a32150be3c622507b5e68548a7ca85348844956353e33'
             'ee468bac3f162ee1d3a23ad59fb8ea5a050e03eb9a96d35950e16fbadc1b95ee')
 
 #prepare() {
