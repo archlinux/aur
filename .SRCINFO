@@ -1,6 +1,6 @@
 pkgbase = r-crisprvariants
 	pkgdesc = Tools for counting and visualising mutations in a target location
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CrispRVariants
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-crisprvariants
 	optdepends = r-sangerseqr
 	optdepends = r-testthat
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CrispRVariants_1.24.0.tar.gz
-	sha256sums = 6a8f2366ce64b663a6e491ff16cd166688a4e48191151a82eddbc4facd070b16
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CrispRVariants_1.26.0.tar.gz
+	sha256sums = 8a1d89869ed62212175cae5c20004feeb843a0ce1d676f2f3f1a48e95fb18ba0
 
 pkgname = r-crisprvariants
