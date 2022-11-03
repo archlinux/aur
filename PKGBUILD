@@ -67,7 +67,7 @@ _CMAKE_FLAGS+=(
 _name=alice-vision
 
 pkgname=${_name}-git
-pkgver=2.4.0.r805.g2b8d7d3a0
+pkgver=2.4.0.r1108.gf911bf16a
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -175,7 +175,7 @@ prepare_submodule() {
   git -C "$srcdir/alice-vision-git" config submodule.src/dependencies/osi_clp.url "$srcdir/osi_clp"
   git -C "$srcdir/alice-vision-git" config submodule.src/dependencies/MeshSDFilter.url "$srcdir/MeshSDFilter"
   git -C "$srcdir/alice-vision-git" config submodule.src/dependencies/nanoflann.url "$srcdir/nanoflann"
-  git -C "$srcdir/alice-vision-git" submodule update --init --recursive
+  git -C "$srcdir/alice-vision-git" -c protocol.file.allow=always submodule update --init --recursive
 }
 source+=(
   "osi_clp::git+https://github.com/alicevision/osi_clp"
