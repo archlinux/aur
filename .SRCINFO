@@ -1,11 +1,11 @@
 pkgbase = music-lounge
 	pkgdesc = Yet another music player
-	pkgver = 0.4.1
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://gitlab.com/aercloud-systems/music-lounge
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = cargo
 	makedepends = gzip
 	depends = ncurses
@@ -24,9 +24,7 @@ pkgbase = music-lounge
 	depends = zlib
 	depends = zstd
 	depends = bzip2
-	optdepends = glava: desktop visulization
-	optdepends = conky: music player status
-	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.4.1/music-lounge-0.4.1.zip
+	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.5.0/music-lounge-0.5.0.zip
 	md5sums = SKIP
 
 pkgname = music-lounge
