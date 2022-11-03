@@ -1,6 +1,6 @@
 pkgbase = r-gaggle
 	pkgdesc = Broadcast data between R and Gaggle
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gaggle
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-gaggle
 	depends = r-graph
 	depends = r-rjava
 	depends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gaggle_1.64.0.tar.gz
-	sha256sums = df9de7334aca11af0a013d5ec625537f332949e1116de8e25750e8d3590a48f0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gaggle_1.66.0.tar.gz
+	sha256sums = 0fefab5d227449bec4b72bf8e921dc7726f8e2afc2e0f1f8dfd086afa604849b
 
 pkgname = r-gaggle
