@@ -7,6 +7,7 @@ pkgdesc='Typed pure Python library to parse HID report descriptors'
 arch=('any')
 url='https://github.com/usb-tools/python-hid-parser'
 license=('MIT')
+depends=(python-typing_extensions)
 makedepends=(python-{build,installer,setuptools,wheel})
 checkdepends=(python-{hypothesis,pytest})
 source=("https://github.com/usb-tools/python-hid-parser/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
@@ -16,7 +17,6 @@ build() {
   cd ${pkgname}-${pkgver}
   python -m build --wheel --no-isolation
 }
-
 
 check() {
   cd ${pkgname}-${pkgver}
