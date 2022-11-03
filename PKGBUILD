@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sesameData
-_pkgver=1.14.0
+_pkgver=1.15.2
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='Supporting Data for SeSAMe Package'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce8e7e89b09a530c837f37006fe2b1f6d68c6543db9b7ecb00e26f0255662bb1')
+sha256sums=('b8c97c565e1ec1365ce6e720f67b8bb2030b97ba35fc49fe29c987211e5ecf3d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
