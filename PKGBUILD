@@ -3,7 +3,7 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-scipy'
               'python-astlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a81f1923b14d482689ca2e4b86e04427')
+md5sums=('e2f781b962b73a3001ba65710c10d186')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,7 +37,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes -Wdefault
 }
 
 package() {
