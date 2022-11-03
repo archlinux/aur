@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicFiles
-_pkgver=1.32.1
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
-pkgrel=3
+pkgver=1.34.0
+pkgrel=1
 pkgdesc='Distributed computing by file or by range'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,7 +35,7 @@ optdepends=(
   r-snpstats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7fee384a18a2926acf53777ef011cbaefa65c87e975abdf7119d4e239475cc1b')
+sha256sums=('a11026ba7461816097b889aa1148f4c5d3227b041e1ed4384817215f5caac44c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
