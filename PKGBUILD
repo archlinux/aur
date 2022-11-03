@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=blima
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Tools for the preprocessing and analysis of the Illumina microarrays on the detector (bead) level'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b7a9fce4bd544106d73668a80687d0928773dc666d736890b9484a829b76bc0')
+sha256sums=('aa46568be36573b5fad9534184c49e98dd00a88c2d7193e684abe4a7e23bd8d7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
