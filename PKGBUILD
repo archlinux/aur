@@ -1,49 +1,75 @@
-# Maintainer: jtts
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: jtts <jussaar@mbnet.fi>
 # Contributor: GordonGR <gordongr@freemail.gr>
 
-_pkgbasename=polkit
-pkgname=lib32-$_pkgbasename
-pkgver=0.113
+pkgname=lib32-polkit
+pkgver=122
 pkgrel=1
-pkgdesc="Application development toolkit for controlling system-wide privileges (32-bit)"
+pkgdesc="Application development toolkit for controlling system-wide privileges"
+url="https://gitlab.freedesktop.org/polkit/polkit"
 arch=(x86_64)
 license=(LGPL)
-url="http://www.freedesktop.org/wiki/Software/polkit"
-depends=($_pkgbasename lib32-glib2 lib32-pam lib32-expat lib32-systemd lib32-js17)
-makedepends=(gcc-multilib intltool git)
-# Not needed. This is a lib32-package.
-#install=polkit.install
-source=(http://www.freedesktop.org/software/$_pkgbasename/releases/$_pkgbasename-$pkgver.tar.gz)
-sha256sums=('e1c095093c654951f78f8618d427faf91cf62abdefed98de40ff65eca6413c81')
+depends=(
+  lib32-glib2
+  lib32-systemd
+  polkit
+)
+makedepends=(
+  git
+  lib32-expat
+  lib32-pam
+  meson
+)
+provides=(libpolkit-gobject-1.so)
+options=(debug)
+_commit=da87c5698019897dd731bb2cbb54ebd9c9481f52  # tags/122
+source=(
+  "git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
+  multilib.diff
+)
+b2sums=('SKIP'
+        '9b588509dae8528bfb8aa3cb734bf79b194350587d763ed70fa8e91a1a9fe54bb6cef352e13e31560f3b4ad418157111eb3e2678ae5dd84f052e4dcd9cde53c9')
+
+pkgver() {
+  cd polkit
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd polkit
+
+  # Fix post-install script with libs-only=true
+  git apply -3 ../multilib.diff
+}
 
 build() {
-  cd $_pkgbasename-$pkgver
+  local meson_options=(
+    --libdir=/usr/lib32
+    -D introspection=false
+    -D libs-only=true
+    -D os_type=redhat
+    -D session_tracking=libsystemd-login
+    -D tests=true
+  )
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --libdir=/usr/lib32 --libexecdir=/usr/lib32/polkit-1 \
-      --with-systemdsystemunitdir=/usr/lib/systemd/system \
-      --with-mozjs=mozjs-17.0 --enable-libsystemd-login=yes \
-      --disable-static --enable-introspection=no \
-      --enable-man-pages=no --disable-gtk-doc \
-      --with-os-type=redhat \
-      CC="gcc -m32" CXX="g++ -m32" PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  make
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
+
+  arch-meson polkit build "${meson_options[@]}"
+  meson compile -C build
 }
 
-#check() {
-#  cd $pkgname-$pkgver
-#  make -k check || :
-#}
+check() {
+  meson test -C build --print-errorlogs -t 3
+}
 
 package() {
-  cd $_pkgbasename-$pkgver
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 
-  # Not needed. This is a lib32-package.
-  #chown 102 "$pkgdir/etc/polkit-1/rules.d"
-  #chown 102 "$pkgdir/usr/share/polkit-1/rules.d"
-
-  # cleanup for lib32 package
-  rm -rf $pkgdir/{etc,usr/{bin,lib,include,share}}
+  rm -r "$pkgdir"/{etc,usr/{include,lib,share}}
 }
+
+# vim:set sw=2 sts=-1 et:
