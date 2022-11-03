@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Pi
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Leveraging Genetic Evidence to Prioritise Drug Targets at the Gene and Pathway Level'
 arch=('any')
@@ -55,7 +55,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('db36fb4222d96ca007a81e8f7031fbc540a77d38f417513ec3a613ad0fbefb6e')
+sha256sums=('403318f58467cdc09e36feb64e224120db80353cbf540e002cd4487de6013b27')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-pi
 	pkgdesc = Leveraging Genetic Evidence to Prioritise Drug Targets at the Gene and Pathway Level
-	pkgver = 2.8.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Pi
 	arch = any
@@ -46,7 +46,7 @@ pkgbase = r-pi
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Pi_2.8.0.tar.gz
-	sha256sums = db36fb4222d96ca007a81e8f7031fbc540a77d38f417513ec3a613ad0fbefb6e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Pi_2.10.0.tar.gz
+	sha256sums = 403318f58467cdc09e36feb64e224120db80353cbf540e002cd4487de6013b27
 
 pkgname = r-pi
