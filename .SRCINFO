@@ -15,7 +15,7 @@ pkgbase = fex-emu
 	depends = squashfs-tools
 	depends = squashfuse
 	depends = erofs-utils
-	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2209
+	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2211
 	source = git+https://github.com/catchorg/Catch2
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	source = git+https://github.com/Sonicadvance1/cpp-optparse
