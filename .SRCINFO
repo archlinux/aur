@@ -1,6 +1,6 @@
 pkgbase = r-chipcomp
 	pkgdesc = Quantitative comparison of multiple ChIP-seq datasets
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPComp
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-chipcomp
 	depends = r-s4vectors
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPComp_1.26.0.tar.gz
-	sha256sums = 005b8d65348495ead519bfba5c8c2c49f1e09b45bdf8a333f831b8978a27031b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPComp_1.28.0.tar.gz
+	sha256sums = 1c2e02cf3519ff5c6cdfb1e84d6eb339fe560e8dc4272a26b563766bf33fccf2
 
 pkgname = r-chipcomp
