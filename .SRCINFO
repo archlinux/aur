@@ -1,6 +1,6 @@
 pkgbase = r-simplifyenrichment
 	pkgdesc = Simplify Functional Enrichment Results
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/simplifyEnrichment
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = r-simplifyenrichment
 	optdepends = r-shiny
 	optdepends = r-shinydashboard
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/simplifyEnrichment_1.6.1.tar.gz
-	sha256sums = 66fafb64d19c5fc4bb7aa6c6805130144f35fd508c2551024aec9f5c7b7b7461
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/simplifyEnrichment_1.8.0.tar.gz
+	sha256sums = fe492daf93f39c34b47340182e008ac7140eeb14d02a4e9961f47d693c2c1d8c
 
 pkgname = r-simplifyenrichment
