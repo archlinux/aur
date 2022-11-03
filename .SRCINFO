@@ -1,6 +1,6 @@
 pkgbase = r-mofa2
 	pkgdesc = Multi-Omics Factor Analysis v2
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MOFA2
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = r-mofa2
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MOFA2_1.6.0.tar.gz
-	sha256sums = 1c7f205db28571e853c34150a6757d9aa56f99ac249d9e8ac2c5b258df17bdb1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MOFA2_1.8.0.tar.gz
+	sha256sums = 009adf79638deac694ec6f1fa9d1d0146f209d4ada155879b526c419933d11c5
 
 pkgname = r-mofa2
