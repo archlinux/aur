@@ -16,7 +16,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2022.02.r55.g09f2a009c
+pkgver=2022.02.r96.g7d84c57c4
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -68,9 +68,9 @@ package() {
 prepare_submodule() {
   git -C "$srcdir/meshlab" config submodule.src/vcglib.url "$srcdir/vcglib"
   git -C "$srcdir/meshlab" config submodule.src/external/nexus.url "$srcdir/nexus"
-  git -C "$srcdir/meshlab" submodule update --init
+  git -C "$srcdir/meshlab" -c protocol.file.allow=always submodule update --init
   git -C "$srcdir/meshlab/src/external/nexus" config submodule.src/corto.url "$srcdir/corto"
-  git -C "$srcdir/meshlab/src/external/nexus" submodule update --init
+  git -C "$srcdir/meshlab/src/external/nexus" -c protocol.file.allow=always submodule update --init
 }
 source+=(
   "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
