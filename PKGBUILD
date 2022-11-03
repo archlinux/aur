@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DIAlignR
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Dynamic Programming Based Alignment of MS2 Chromatograms'
 arch=('x86_64')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f9b4c20f59f8b8c1cb8a11d9c7f976da20ecafa69a49842b085b5bbd913d0256')
+sha256sums=('65ffc53e9518236d6f7b391eab6fcb99e3ae5f587ad0ae3fee790288966a7712')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
