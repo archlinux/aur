@@ -4,8 +4,8 @@
 pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
-pkgver=3.11.0.401
-_md5=1ee0de1d3bf77c3dcfbcf47fea67f5dc
+pkgver=3.11.0.402
+_md5=9b74d4127a16a011db8cb6300fa5fbc9
 pkgrel=1
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}-${arch}.deb::https://updatecdn.meeting.qq.com/cos
 )
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
-sha512sums=('7ccd1de1b3c18c746c4e94c1e837f71e6f70209b5051d10ddf2751b885dfc3452e4216accbbe352e9eb6147d9a6b9af8bdea96998d09013b45cdbf06fc8e971d'
+sha512sums=('6b4a5a5499fd8a92dbf86ae04990434b3a7ff2ade7d768dbe70dd3f60e347c599281e1aed211673a3a7986f5cb7a014abefec0c859e087c291286467bf8fbe73'
             'e67d6b8fdd9bd055ba8c2177aca884d803a2473fcfe9faf9b23e5bfd4152115814be066709db1e1dbf62917a36aa99693c5ebd8f23f2858950a3f3b98d6b8136')
 
 prepare(){
