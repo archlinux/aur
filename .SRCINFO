@@ -12,6 +12,7 @@ pkgbase = blender-git
 	makedepends = mesa
 	makedepends = ninja
 	makedepends = llvm
+	makedepends = wayland-protocols
 	depends = alembic
 	depends = embree
 	depends = libgl
@@ -34,6 +35,8 @@ pkgbase = blender-git
 	depends = openshadinglanguage
 	depends = libtiff
 	depends = libpng
+	depends = libdecor
+	depends = libepoxy
 	optdepends = cuda: CUDA support in Cycles
 	optdepends = optix=7.1.0: OptiX support in Cycles
 	optdepends = usd=21.05: USD export Scene

@@ -28,11 +28,13 @@ url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+depends+=('libdecor' 'libepoxy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
             'usd=21.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
+makedepends+=('wayland-protocols')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
