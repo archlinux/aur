@@ -1,6 +1,6 @@
 pkgbase = r-nearbynding
 	pkgdesc = Discern RNA structure proximal to protein binding
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nearBynding
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-nearbynding
 	depends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nearBynding_1.6.0.tar.gz
-	sha256sums = afefc0b06af595b2b614f3b29564a402faba800c6629e9205db077ac527dc03d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nearBynding_1.8.0.tar.gz
+	sha256sums = 66efabc39cf33c6dab5f22ef65744ca2a04e808dc11d0f50f260c9619098dc9d
 
 pkgname = r-nearbynding
