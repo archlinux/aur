@@ -1,7 +1,7 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname=python-dbx
 _name=dbx
-pkgver=0.7.6
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
@@ -17,18 +17,17 @@ depends=(
 	"python-requests>=2.24.0" "python-requests<3.0.0"
 	"python-mlflow>=1.28.0" "python-mlflow<2.0.0" # Upstream requires "python-mlflow-skinny==1.28.0" but it's not available in Arch/AUR
 	"python-yaml>=6.0"
-	"python-pydantic>=1.9.1"
+	"python-pydantic>=1.9.1" "python-pydantic<=2.0.0"
 	"python-cryptography>=3.3.1" "python-cryptography<39.0.0" # Upstream sets 38 as max, but it's backward compatible, so we set 39
 	"python-cookiecutter>=1.7.2" "python-cookiecutter<3.0.0"
 	"python-jinja>=2.11.2"
 	"python-aiohttp>=3.8.1"
 	"python-pathspec>=0.9.0"
-
 	"python-watchdog-git>=2.1.0" # The community package is stuck at 0.10.7-3
 )
 makedepends=(python-build python-installer python-wheel)
 source=($pkgname-$pkgver.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('73d3fc90274282dce038adeb91c8b8051ea9a099c0d06693eb4041b57caf0d8a4a8ca5779436da1cc78b8bd6b7bb8d465c96b2aff13ed8e20acc21ca8dc79521')
+sha512sums=('51918ed1e2e59887d97a4aa487322d49a848cd92b04ceba7ab653857e63ed3f1e6e535a04b97c495393aa7ff308c2c53cdf6e2f4d6d4aff46d99e195d6a7e247')
 
 build() {
 	cd "$_name-$pkgver"
