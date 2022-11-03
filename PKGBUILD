@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MIGSA
-_pkgver=1.20.0
+_pkgver=1.21.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='Massive and Integrative Gene Set Analysis'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cb8530d68b259f505620a3c2bd4e9e087a27e5b11f540fff310bbf9efe184e46')
+sha256sums=('f5b65c10e0ae2d57e5de4fe84c800ffd5499203f1caa7fe0df6175143f4dfc2c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-migsa
 	pkgdesc = Massive and Integrative Gene Set Analysis
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MIGSA
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-migsa
 	optdepends = r-mgsz
 	optdepends = r-migsadata
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MIGSA_1.20.0.tar.gz
-	sha256sums = cb8530d68b259f505620a3c2bd4e9e087a27e5b11f540fff310bbf9efe184e46
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MIGSA_1.21.0.tar.gz
+	sha256sums = f5b65c10e0ae2d57e5de4fe84c800ffd5499203f1caa7fe0df6175143f4dfc2c
 
 pkgname = r-migsa
