@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MetaNeighbor
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Single cell replicability analysis'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a7678b6e5d43c3fdfdd26251138297a6ea9d13998e614c2f594dd4ca7f7c4fba')
+sha256sums=('f5f2eee297bd928aef8f57368a729f6cdb38f663a8e5ed46d346ec4a71b952be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
