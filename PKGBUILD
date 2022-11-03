@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=snapcount
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='R/Bioconductor Package for interfacing with Snaptron for rapid querying of expression counts'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cab20a756a8bcc2f73c2719370f4c5d0b8a74c89cfabe2ae872ed0cfb7820736')
+sha256sums=('4d5124474ef0b8b9fb1592c904b19456a4b8c6eec8dc8e282e8c34fa70b36078')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
