@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extensions-quick-settings-button-remover-git
+	pkgdesc = This extension allows you to remove gnome 43's quick setting buttons. now you can remove dark mode button or night mode button!
+	pkgver = r10.e1cdef6
+	pkgrel = 1
+	url = https://github.com/qwreey75/gnome-quick-settings-button-remover
+	arch = any
+	license = none
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell
+	provides = gnome-shell-extensions-quick-settings-button-remover
+	conflicts = gnome-shell-extensions-quick-settings-button-remover
+	source = gnome-shell-extensions-quick-settings-button-remover::git+https://github.com/qwreey75/gnome-quick-settings-button-remover.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extensions-quick-settings-button-remover-git
