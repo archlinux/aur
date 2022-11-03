@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LymphoSeq
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Analyze high-throughput sequencing of T and B cell receptors'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-wordcloud
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('81412096ed8f2bc4c604923d3286e83d57e8ba575865eea837f1168ed35d0a8a')
+sha256sums=('e7adb47ab67c84b26616f1f067748f61af147bad46f76107ad451e7fdf989ef2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
