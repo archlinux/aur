@@ -14,8 +14,9 @@
 
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
-pkgver=6.0.0.r552.gda17fe570
+pkgver=6.0.0.r2217.g866c9980b
 #_fragment="#tag=${pkgver}"
+_fragment="#branch=main"
 pkgrel=1
 pkgdesc="An Open Source Multi-physics Simulation Engine"
 license=('custom')
@@ -94,8 +95,7 @@ prepare() {
 }
 
 pkgver() {
-  cd ${pkgname}
-  git describe --long --tag| sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C ${pkgname} describe --long --tag| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
