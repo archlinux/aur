@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-d-mode  
-pkgver=2.0.9
-pkgrel=2
+pkgver=2.0.12
+pkgrel=1
 pkgdesc="Emacs major mode for the D programming language"
 url="https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode"
 arch=('any')
@@ -13,9 +13,8 @@ license=('GPL2')
 depends=()
 makedepends=(emacs)
 install=$pkgname.install
-source=($pkgname-$pkgver.tar.gz::yhttps://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/$pkgver.tar.gz)
-sha256sums=('6d8e2f3f201a829fcad82353a85a22c627d78c007da5311ee1e78e1ecf51ea88')
-
+source=($pkgname-$pkgver.tar.gz::https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('30a3515904bd47fc70a638e0473eb0eaaf702731bece9394f4c26e85cdc49282')
 
 build() {
   cd "$srcdir/Emacs-D-Mode-$pkgver"

@@ -1,14 +1,13 @@
 pkgbase = emacs-d-mode
 	pkgdesc = Emacs major mode for the D programming language
-	pkgver = 2.0.9
-	pkgrel = 2
+	pkgver = 2.0.12
+	pkgrel = 1
 	url = https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode
 	install = emacs-d-mode.install
 	arch = any
 	license = GPL2
 	makedepends = emacs
-	source = emacs-d-mode-2.0.9.tar.gz::yhttps://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/2.0.9.tar.gz
-	sha256sums = 6d8e2f3f201a829fcad82353a85a22c627d78c007da5311ee1e78e1ecf51ea88
+	source = emacs-d-mode-2.0.12.tar.gz::https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/refs/tags/2.0.12.tar.gz
+	sha256sums = 30a3515904bd47fc70a638e0473eb0eaaf702731bece9394f4c26e85cdc49282
 
 pkgname = emacs-d-mode
-
