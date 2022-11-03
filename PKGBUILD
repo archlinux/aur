@@ -19,6 +19,7 @@ arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
+optdepends=('dkms: Dynamic Kernel Module System' 'nvidia-dkms: NVIDIA drivers - module sources')
 replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 options=('!strip')
 
