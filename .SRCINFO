@@ -1,7 +1,7 @@
 pkgbase = pamac-flatpak-gnome
 	pkgdesc = A Gtk3 frontend for libalpm (with AUR, Flatpak,AppIndicator support, and GNOME integration)
 	pkgver = 10.4.3
-	pkgrel = 4
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
 	arch = i686
@@ -41,7 +41,7 @@ pkgbase = pamac-flatpak-gnome
 	conflicts = pamac-nosnap
 	conflicts = gnome-software
 	options = !emptydirs
-	source = pamac-10.4.2.tar.bz2::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.4.2/pamac-v10.4.2.tar.bz2
+	source = pamac-10.4.3.tar.bz2::https://gitlab.manjaro.org/applications/pamac/-/archive/v10.4.3/pamac-v10.4.3.tar.bz2
 	sha512sums = 011af395092c27c4e73f50b5f43e662b5fb5cd7ae920176c3702479fb05df958fa7ceaf206bfcdad016103d0fc9d6b94e0d94d27701e5afcad2ae92024c90e5c
 
 pkgname = pamac-flatpak-gnome
