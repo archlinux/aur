@@ -4,14 +4,14 @@ pkgname=kwin-scripts-ultrawide-tiling
 _reponame=Kwin-Ultrawide-Tiling
 _scriptname=kwin-ultrawide-tiling
 pkgdesc="Kwin script to add useful keyboard shortcuts for tiling-like window management"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=('any')
 url="https://github.com/zhimsel/${_reponame}"
 license=('GPL2')
 depends=('kwin')
 source=("https://github.com/zhimsel/${_reponame}/archive/${pkgver}.tar.gz")
-sha512sums=('136c467e486337e9398377709ee0cea08d5d386f71048ac2f5c84083a0dc3eab3129dd510815f98b49a9a99ff2b440b733b84326727cdf1c2f856cb403b94dd1')
+sha512sums=('915e67fe5faacb208a85435e2cd4174f843989e87714dafb2e4e5779d51b512750eefcb32e807430cb3aaaf7586a7fa41d48de98199449dc1a73ca28fac5d5e8')
 
 package() {
   install -d "${pkgdir}/usr/share/kwin/scripts/${_scriptname}"
