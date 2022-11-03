@@ -1,6 +1,6 @@
 pkgbase = r-logitt
 	pkgdesc = logit-t Package
-	pkgver = 1.54.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/logitT
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-logitt
 	depends = r
 	depends = r-affy
 	optdepends = r-spikeinsubset
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/logitT_1.54.0.tar.gz
-	sha256sums = 6a7baf33f63a3b0240eaa87bef409d6a1071c0dfa5b59f1787f415c536bc1e7d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/logitT_1.56.0.tar.gz
+	sha256sums = 0dafa31b2f9c754564905aa9c96f73014eb4a3a4971304742d8d855f97be22d6
 
 pkgname = r-logitt
