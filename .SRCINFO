@@ -17,8 +17,6 @@ pkgbase = linux-jcore
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	optdepends = dkms: Dynamic Kernel Module System
-	optdepends = nvidia-dkms: NVIDIA drivers - module sources
 	replaces = linux-acs-manjaro
 	replaces = linux-acs-manjaro-headers
 	options = !strip
@@ -83,6 +81,8 @@ pkgname = linux-jcore
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=27
+	optdepends = dkms: Dynamic Kernel Module System
+	optdepends = nvidia-dkms: NVIDIA drivers - module sources
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE

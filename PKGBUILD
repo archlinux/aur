@@ -19,7 +19,6 @@ arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
-optdepends=('dkms: Dynamic Kernel Module System' 'nvidia-dkms: NVIDIA drivers - module sources')
 replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 options=('!strip')
 
@@ -136,7 +135,7 @@ build() {
 package_linux-jcore() {
   pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country')
+  optdepends=('dkms: Dynamic Kernel Module System' 'nvidia-dkms: NVIDIA drivers - module sources' 'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd "linux-${pkgver}"
