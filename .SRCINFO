@@ -1,6 +1,6 @@
 pkgbase = r-msfeatures
 	pkgdesc = Functionality for Mass Spectrometry Features
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MsFeatures
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-msfeatures
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsFeatures_1.4.0.tar.gz
-	sha256sums = 037b64dada359ed60c4c5ad474c20560251ba13e827c24c9ba250c4c30c33184
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsFeatures_1.6.0.tar.gz
+	sha256sums = 41060ed64d31f71d9c9b5f027648f16458d0000f4c7bb4dd53aaf130381122e0
 
 pkgname = r-msfeatures
