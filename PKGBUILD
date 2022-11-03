@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GNET2
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Constructing gene regulatory networks from expression data through functional module inference'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('deaf080cd9d2d45ad2716b8c3fccd5c5684912bd8f876b57ba252e07a16709e8')
+sha256sums=('eb3b161ebfe90ac835fb7bf33c2663bf665678fbe0d986c313d2a59b2db20d6e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
