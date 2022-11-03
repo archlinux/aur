@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=densvis
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Density-Preserving Data Visualization via Non-Linear Dimensionality Reduction'
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   r-basilisk
   r-rcpp
   r-reticulate
+  r-irlba
 )
 optdepends=(
   r-biocstyle
@@ -26,7 +27,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c4cc7b86e937a11080e60ca65e8897b8dc399c109aa13c7f833855d15a7f4547')
+sha256sums=('e0359a3923c8f34641f32d0cc86fee018f79828173c2938f723db3e9fda9c93a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
