@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.9.0
+_pkgver=2.9.1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='World of Warcraft addon updater'
@@ -18,13 +18,15 @@ makedepends=(
 )
 source=(
     "$_pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
+    aur-disable-updater.patch
     bna-client-name.patch
     wago-fix.js
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('86f531caf94a037296e4317ffd996971afe5fdacc2ff8d971b986b93924d1ba1'
-            '967bec722d268b7566afb4bbfff298e0e0059b257e070edc58f907f49810c63e'
+sha256sums=('6a4f5144f770352d7bf5029707795386ca49588850803e3a5bf232d0c3a1d19b'
+            '6492656d15dc74254189767f92a3d6d73ee21d2de952ae8586a40330dc0b6ef3'
+            'bb5923e846c8939b6778c1c257d65777a40f13d5fb249fd92ab32bb2020a7d67'
             '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
             '9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7')
@@ -34,6 +36,9 @@ prepare() {
 
     # set legacy peer deps in .npmrc file to dependency conflict since npm 7
     echo "legacy-peer-deps=true" >>wowup-electron/.npmrc
+
+    # disable built-in updater (package manager handles it)
+    patch --forward --strip=1 --input="${srcdir}/aur-disable-updater.patch"
 
     # client names follow Battle.Net app
     patch --forward --strip=1 --input="${srcdir}/bna-client-name.patch"
