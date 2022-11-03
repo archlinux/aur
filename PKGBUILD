@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methimpute
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Imputation-guided re-construction of complete methylomes from WGBS data'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67dbb0249c52f7b3cfa2def1de16da01e6ba93f1fbe42bb479ca3a389c3f29b4')
+sha256sums=('ce060d3a0c0df6b99ee4ba987dbbadbe82cdcb749ed30c067a9b0b12d1977a5e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
