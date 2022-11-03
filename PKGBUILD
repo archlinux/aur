@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-main-view-source
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="This is a simple plugin for OBS Studio that provides a source to duplicate the main view"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=("obs-studio>=28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("827e5134001892a0a6171688b5bc57f7f97f710fc77169abe1210cb7d7990bf9")
+sha256sums=("c302785242af68982a003f41762bb4d37f881634c48c853d7041b872e4dce631")
 
 build() {
   cd "$pkgname-$pkgver"
