@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=cemu
-pkgver=2.0.206
+pkgver=2.0.213
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -30,7 +30,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=e0aaf631c460cd893c3ec682a237891f2d1baa50 # v2.0-10
+	git+https://github.com/cemu-project/Cemu#commit=a129d22a57b004a39ca84ea06cebadab643fc416 # v2.0-11
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -40,8 +40,7 @@ source=(
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# upstream proposed patches
 	overlay.diff # 6aa7a0c7b2003f625bfecd64f6143a10605234b2 (https://github.com/cemu-project/Cemu/pull/142)
-	mic.diff # 5231a71527cb57ea79b1b2ab9e4d7247d9141dd1 (https://github.com/cemu-project/Cemu/pull/251)
-	gui.diff # b3814225e4a63fad543b2a9ebf11ed6f5e21f389 (https://github.com/cemu-project/Cemu/pull/345)
+	gui.diff # ffed93a69bb8f38a7c81624411bf8be0b45b8646 (https://github.com/cemu-project/Cemu/pull/439)
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -50,8 +49,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f'
-            '46992c822e75dc60e1b07162a6a3f502aed6cea4605f29c9038c442f7cb1869f'
-            '1081822dec41144e0a7ac934b284f131fcb4b87ffdcef144da0a13e8f8dda169')
+            'dcb405fd9b77d73eee4a9591c606a5b7d121999b936920520518e70dcb16ea0e')
 
 pkgver() {
 	cd Cemu
@@ -97,8 +95,6 @@ prepare() {
 	git apply "$srcdir/overlay.diff"
 	sed -i '/add_library/aSystemInfo/SystemInfo.cpp SystemInfo/SystemInfoLinux.cpp' src/util/CMakeLists.txt
 
-	rm -f src/audio/{Cubeb,IAudio}InputAPI.{cpp,h}
-	git apply "$srcdir/mic.diff"
 	git apply "$srcdir/gui.diff"
 }
 
