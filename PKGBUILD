@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=convert
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='Convert Microarray Data Objects'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('403c4b08cdb2e2997cae4b5bcfd5635b6b33a9e542b3363465879484059a4476')
+sha256sums=('5ccc0a36a5e28cff0e5846450ca4b6d01051b2bd2188ef359adeca8896c89691')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
