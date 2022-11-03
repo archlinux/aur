@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=xcms
-_pkgver=3.18.0
+_pkgver=3.20.0
 pkgname=r-${_pkgname,,}
-pkgver=3.18.0
+pkgver=3.20.0
 pkgrel=1
 pkgdesc='LC-MS and GC-MS Data Analysis'
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b58763f7c1520c7b02702cc371a2a0df3419a5deae3d223cc24552248e685f5c')
+sha256sums=('1d0bda1f634c592002726b402a3cf0bf95ed5efecdf66383e5d31b0652b340be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
