@@ -1,7 +1,7 @@
 pkgbase = libpamac-git
 	pkgdesc = Library for Pamac package manager based on libalpm - git version
 	pkgver = 1.4.1.r0.g29d7180
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
 	arch = pentium4
@@ -25,7 +25,7 @@ pkgbase = libpamac-git
 	depends = appstream-glib
 	depends = polkit
 	depends = archlinux-appstream-data-pamac
-	depends = libsoup
+	depends = libsoup3
 	conflicts = libpamac-aur
 	conflicts = libpamac-full
 	conflicts = libpamac-full-dev

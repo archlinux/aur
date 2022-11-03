@@ -3,12 +3,12 @@
 pkgname=libpamac-git
 _pkgname=libpamac
 pkgver=1.4.1.r0.g29d7180
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Pamac package manager based on libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
-depends=('pacman>=6.0' 'pacman<6.1' 'appstream-glib' 'polkit' 'archlinux-appstream-data-pamac' 'libsoup')
+depends=('pacman>=6.0' 'pacman<6.1' 'appstream-glib' 'polkit' 'archlinux-appstream-data-pamac' 'libsoup3')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc' 'git')
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-full' 'libpamac-full-dev' 'libpamac')
