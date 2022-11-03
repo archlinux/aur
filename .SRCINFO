@@ -1,6 +1,6 @@
 pkgbase = etlegacy-omnibot
 	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (omni-bot files)
-	pkgver = 0.87.1
+	pkgver = 0.87.2
 	pkgrel = 1
 	url = http://omni-bot.invisionzone.com
 	arch = i686
@@ -8,6 +8,6 @@ pkgbase = etlegacy-omnibot
 	license = custom
 	depends = etlegacy-mod
 	source = http://mirror.etlegacy.com/omnibot/omnibot-linux-latest.tar.gz
-	sha256sums = e25cfe88d37848b1f53be057530b918c4870167c5c31ab17c7ff3ccef2fa22c4
+	sha256sums = 6b5897e87c390d8008228f707d349333ef7ee1c423b4c766d0aea5f5d1fc4dfb
 
 pkgname = etlegacy-omnibot
