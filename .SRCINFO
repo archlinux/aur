@@ -1,6 +1,6 @@
 pkgbase = r-cola
 	pkgdesc = A Framework for Consensus Partitioning
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cola
 	arch = x86_64
@@ -55,7 +55,7 @@ pkgbase = r-cola
 	optdepends = r-testthat
 	optdepends = r-umap
 	optdepends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cola_2.2.0.tar.gz
-	sha256sums = 6ada8a4840e5a9c0aa7c32b389595fe06cbde8b939437bfd9c612c8b2f5680a4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cola_2.4.0.tar.gz
+	sha256sums = 5dfdf2560ea6c59fb16c8f36cd997935ce007fd74d243263247640dbd7659343
 
 pkgname = r-cola
