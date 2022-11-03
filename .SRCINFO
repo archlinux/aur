@@ -1,6 +1,6 @@
 pkgbase = r-diffcyt
 	pkgdesc = Differential discovery in high-dimensional cytometry via high-resolution clustering
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/diffcyt
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-diffcyt
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffcyt_1.16.0.tar.gz
-	sha256sums = abe58173f953fd273e93dbc851e0735357fce9f4c4aa1e2a3d8f88573ff5da57
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffcyt_1.18.0.tar.gz
+	sha256sums = 5a30682f27f04a73884712cf9f94a9fe7524f2aadc99e0290c95586bf5dcb083
 
 pkgname = r-diffcyt
