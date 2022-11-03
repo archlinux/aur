@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OrganismDbi
-_pkgver=1.38.1
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.1
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Software to enable the smooth interfacing of different database packages'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2998649c56b5f7309dc3853ee9b1b1da05b8393eaea6f1f50d8241d291ecb657')
+sha256sums=('7cfa7055f5b4625e764ee918e8af46409a7b7f54ad53d3fa4e2268bc38ee8186')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
