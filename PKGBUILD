@@ -21,7 +21,7 @@ _fragment=${FRAGMENT:-#branch=blender-v${_ver}-release}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=(optix{\>=7.0,\<=7.2}); }
 
 pkgname=blender-${_ver}-git
-pkgver=2.93.r105643.g9e64fd461ac
+pkgver=2.93.r105893.gd52a0fa1159
 pkgrel=1
 pkgdesc="Maintenance version of Blender v${_ver} branch"
 changelog=blender.changelog
@@ -71,7 +71,7 @@ pkgver() {
 
 prepare() {
   # update the submodules
-  git -C "$srcdir/blender" submodule update --init --recursive --remote
+  git -C "$srcdir/blender" -c protocol.file.allow=always submodule update --init --recursive --remote
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
