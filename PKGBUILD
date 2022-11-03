@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=ginga
 pkgname=python-${_pyname}-doc
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Documentation for Ginga"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'graphviz')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/ejeschke/ginga/archive/v${pkgver}.tar.gz")
-md5sums=('a81f1923b14d482689ca2e4b86e04427')
+md5sums=('e2f781b962b73a3001ba65710c10d186')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
