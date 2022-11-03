@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=doseR
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='doseR'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1cec66aee584e794eaf03780308d9a0b9e2663cadc21bacfbe36a903ae1de9bc')
+sha256sums=('c0a5e3714946e6a555eb943dd6c5bb0ee643c17962a2efa1bfd09e0839f2f232')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
