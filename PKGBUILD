@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=release-plz
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 pkgdesc="Release Rust packages without using the command line"
 arch=('x86_64')
@@ -11,16 +11,13 @@ license=('MIT' 'Apache')
 depends=('gcc-libs' 'curl')
 checkdepends=('git')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-v$pkgver.tar.gz"
-	"$pkgname-$pkgver-fix-args.patch::$url/commit/d92659803c82e9ebcad623d2702e71aa0ed1c9e2.patch")
-sha512sums=('c5a6568ee8b471afc07c183749a803f1aa6a4897420b7d6334d9bb6d9dfe6494381a8930173d356d96e5c0998f6e30b67ccb27f1826556a7d3dbb6e8bcd41b39'
-            'c347d3a43b77a77c14af992ffb661f2cc55b5095d2844d164405b22e4d93a65f277885c0afe9f590e3b88b588b5cba109a298abf06c5cdd0392e49e4154efb87')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-v$pkgver.tar.gz")
+sha512sums=('dc9751293be31582d079d023d4ba89a35159abaf4cd1760584ed11e9779d59d3a5afa9a9df7fca98f5cf7672a8df7f84ea6479b45a207079f999b54e427a1660')
 options=('!lto')
 
 prepare() {
   mv "$pkgname-$pkgname-v$pkgver" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  patch -Np1 -i "$srcdir/$pkgname-$pkgver-fix-args.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   mkdir completions
 }
