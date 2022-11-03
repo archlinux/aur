@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HumanTranscriptomeCompendium
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Tools to work with a Compendium of 181000 human transcriptome sequencing studies'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d9f340fc5992aa7510d8a4513e08891f109bc5a73eba1b2f34cea2cf3e57e62c')
+sha256sums=('93f6db71b989cb3eb7364ea3d4e1a7c2eb89ba56b44bbc6ab7bf759dae2d98ca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
