@@ -1,6 +1,6 @@
 pkgbase = r-fraser
 	pkgdesc = Find RAre Splicing Events in RNA-Seq Data
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FRASER
 	arch = x86_64
@@ -51,7 +51,7 @@ pkgbase = r-fraser
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FRASER_1.8.1.tar.gz
-	sha256sums = 03dc3478c4691e9c9e4882ae566bb74c53811135a5b0c289b67f7ad05d563dae
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FRASER_1.10.0.tar.gz
+	sha256sums = ec641116090162d01dc4ec99f7a4f1ade90992f37f67173802a47d4f248284e2
 
 pkgname = r-fraser
