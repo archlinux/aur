@@ -1,13 +1,13 @@
 pkgbase = playerctl-shift
 	pkgdesc = A convenience tool to shift to the next media player when using playerctl.
-	pkgver = 0.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/IngoMeyer441/playerctl-shift
 	arch = any
 	license = MIT
 	makedepends = make
 	depends = playerctl
-	source = https://github.com/IngoMeyer441/playerctl-shift/archive/v0.0.0.tar.gz
-	sha256sums = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	source = https://github.com/IngoMeyer441/playerctl-shift/archive/v0.1.0.tar.gz
+	sha256sums = bb33d5f33bd310e5e9b593bccd58ce3b60419915ac186839c68094ba68d882aa
 
 pkgname = playerctl-shift
