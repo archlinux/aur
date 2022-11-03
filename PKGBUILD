@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rTRM
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Identification of Transcriptional Regulatory Modules from Protein-Protein Interaction Networks'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('89df1ab5173c41867085ebc8c5506554bbebe427622a5b3a1034653bda8d6f9e')
+sha256sums=('9b6cb32c82eb14bfcd5a3b6b88f16524759760aac5537a94aa709011fe3eb785')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
