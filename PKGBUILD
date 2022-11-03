@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BUSpaRse
-_pkgver=1.10.0
+_pkgver=1.11.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='kallisto | bustools R utilities'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9128318a8be3d3ac21e2f70c326cb167faf0e08cf2fc963920bab36413e3c87')
+sha256sums=('19b06a9ee765e11dfa92f5b5de8e6c395615cb79fad640cd96b359a04993ddae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
