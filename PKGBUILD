@@ -3,17 +3,17 @@
 
 pkgname='nimdow'
 pkgver='0.7.35'
-pkgrel='1'
+pkgrel='2'
 _commit='b3097e9'
 pkgdesc='Tiling window manager written in Nim'
 arch=('x86_64')
 url='https://github.com/avahe-kellenberger/nimdow'
 license=('GPL2')
-provides=('nimdow')
-conflicts=('nimdow')
+provides=("$pkgname")
+conflicts=("$pkgname")
 makedepends=('nim')
 source=(
-  "nimdow-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 
 prepare() {
@@ -25,10 +25,12 @@ prepare() {
   # The original build.sh script expects to be run from within
   # a git repository, which is not what we are doing here, so
   # we create out own build.sh script with an appropriate commit
-  cat <<__EOT__ > build.sh
+  cat <<__EOT__ >build.sh
 #!/bin/sh
+set -eu
 printf -- '--- Building with latest commit: %s ---\n' "$_commit"
 LATEST_COMMIT="$_commit" exec nim c --multimethods:on -o:bin/nimdow -d:release --opt:speed src/nimdow.nim
+exit 127
 __EOT__
 
   chmod +x build.sh
