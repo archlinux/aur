@@ -1,6 +1,6 @@
 pkgbase = r-degnorm
 	pkgdesc = DegNorm: degradation normalization for RNA-seq data
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DegNorm
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-degnorm
 	optdepends = r-formatr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DegNorm_1.6.1.tar.gz
-	sha256sums = 4188d1686b25a5b03293f55042266e06904f9ffdec4aa8b7b67963b012af620c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DegNorm_1.8.0.tar.gz
+	sha256sums = 29de805499696eb7a78078304e3c20487ecad7e65cc62ebf4d2e5083128af51c
 
 pkgname = r-degnorm
