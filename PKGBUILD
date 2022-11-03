@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sojourner
-_pkgver=1.10.0
+_pkgver=1.11.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Statistical analysis of single molecule trajectories'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8baadc0b80177bc303842116e3eb4cecb2ed07b50a1a4a0d91b8372f2138efa5')
+sha256sums=('0c42fe259ef548d8bfd5289cb2d87c9ba72844f8a9005fbd272fe962ecc711e8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

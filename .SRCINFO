@@ -1,6 +1,6 @@
 pkgbase = r-sojourner
 	pkgdesc = Statistical analysis of single molecule trajectories
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sojourner
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-sojourner
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sojourner_1.10.0.tar.gz
-	sha256sums = 8baadc0b80177bc303842116e3eb4cecb2ed07b50a1a4a0d91b8372f2138efa5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sojourner_1.11.0.tar.gz
+	sha256sums = 0c42fe259ef548d8bfd5289cb2d87c9ba72844f8a9005fbd272fe962ecc711e8
 
 pkgname = r-sojourner
