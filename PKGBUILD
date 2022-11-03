@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=InterMineR
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='R Interface with InterMine-Powered Databases'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9a6a2d01216f7c481c073ca442976a2f7a2f2c1575a38ea8db438a160801a27')
+sha256sums=('7556ed12461241afae3e664b0549fd6a082e9de8df5955be10b78d49a177e666')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
