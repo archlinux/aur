@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CexoR
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='An R package to uncover high-resolution protein-DNA interactions in ChIP-exo replicates'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c2bfdd3ced6bb7216b5ccca45266547aa10def6a74e93551197309e0d28f0ea')
+sha256sums=('4a9a29f2e7aa8a73f80893cc42d6aeee8e7a2fe68c2d7eeee2031ed3469ba32d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
