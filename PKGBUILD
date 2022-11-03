@@ -2,7 +2,7 @@
 
 pkgname=mmtex
 pkgdesc="A minimal modern (Lua)TeX distribution"
-pkgver=20220805
+pkgver=20221030
 pkgrel=1
 url="https://github.com/vlasakm/$pkgname"
 license=(custom)
@@ -11,7 +11,7 @@ makedepends=(meson)
 depends=(zziplib libpng zlib otf-latin-modern otf-latinmodern-math)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('2ec0636a2b61ef4d66ea2de9d6932aa7c2435ea13bc82aaa9f56852f234bd0a9')
+sha256sums=('9ad414bbc20de5fb9c7979f4405a03d5c00edab691ce07e20aa06f6e16a1e079')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
