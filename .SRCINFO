@@ -1,6 +1,6 @@
 pkgbase = r-htseqgenie
 	pkgdesc = A NGS analysis pipeline.
-	pkgver = 4.25.1
+	pkgver = 4.27.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HTSeqGenie
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-htseqgenie
 	optdepends = r-lungcancerlines
 	optdepends = r-org.hs.eg.db
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HTSeqGenie_4.25.1.tar.gz
-	sha256sums = 68964729ed1402b5e9ef39e895f274d113ac4c7d18ed29b78eba3202d19d383c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HTSeqGenie_4.27.0.tar.gz
+	sha256sums = c093e7ce4b2dce0fb979197e9bef2f655d94a6ce760c3c6daa0169567b758793
 
 pkgname = r-htseqgenie
