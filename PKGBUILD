@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=farms
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='FARMS - Factor Analysis for Robust Microarray Summarization'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec90b14754489c40f0ed8a84809b06fb1a7c0d0a93df305ee8d22b43507bd5d6')
+sha256sums=('e070720d2efb03366c01c22712926d429c3db8faa43bc8b605e0899faf71a5fd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
