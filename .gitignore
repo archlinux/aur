@@ -4,7 +4,8 @@
 *.tgz
 
 # Ignore packages
-*.pkg.tar.xz
+*.pkg.tar*
+globusconnectpersonal-*.tgz*
 
 # Ignore log files
 *.log
