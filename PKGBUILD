@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r3908.4bf168d2
+pkgver=r4397.24a44cde
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -105,7 +105,7 @@ prepare() {
   git config submodule.third_party/imgui_md.url "$srcdir/imgui_md"
   git config submodule.third_party/multipart-parser-c.url "$srcdir/multipart-parser-c"
 
-  git submodule update third_party/imgui \
+  git -c protocol.file.allow=always submodule update third_party/imgui \
                        third_party/uC-sdk \
                        third_party/googletest \
                        third_party/fmt \
@@ -132,7 +132,7 @@ prepare() {
   git submodule init
   git config submodule.deps/lua-compat-5.3.url "$srcdir/lua-compat-5.3"
 
-  git submodule update deps/lua-compat-5.3
+  git -c protocol.file.allow=always submodule update deps/lua-compat-5.3
 }
 
 build() {
