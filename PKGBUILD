@@ -69,7 +69,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/blender"
   # update the submodules
-  git submodule update --init --recursive --remote
+  git -c protocol.file.allow=always submodule update --init --recursive --remote
   git apply -v "${srcdir}"/{embree,usd_python}.patch
 }
 
