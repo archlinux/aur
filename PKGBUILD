@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oposSOM
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Comprehensive analysis of transcriptome data'
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef2ed1adb171a170a69b5ff9a0b297c44495858a978d361a525f5cb4d4b7f439')
+sha256sums=('6a1605cd839d72e10243723c8e6237024675b0ae0a436489ea3ba011df4af333')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
