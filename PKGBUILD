@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=npGSEA
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Permutation approximation methods for gene set enrichment analysis (non-permutation GSEA)'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-reportingtools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('49888f67ea0141f9f320059d1ca70d292d8105552d4ee64d4d7304c0496b8916')
+sha256sums=('10f4f60dda3015f3dff4fc24e386f76e493eee6f4df37998518d1058923b9c04')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
