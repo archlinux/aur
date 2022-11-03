@@ -1,3 +1,14 @@
+2022-10-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.3.2.4-1:
+    Added --input-cryptkey command-line argument (@Abrynos #2714 #2712).
+    Added additional ASF API endpoints for managing IPC IP bans (@Abrynos #2715).
+    Adapted inventory fetching mechanism in ASF for new Steam rate-limits, which fixes entirely broken MatchActively on top of other issues introduced recently by Valve (@JustArchi @Aareksio #2730 #2728).
+    Changed default InventoryLimiterDelay from 3 to 4 in regards to above (@JustArchi).
+    Fixed regression which caused our Docker container to refuse to work with read-only volumes (@JustArchi #2717).
+    Further hardened our systemd service unit for additional security benefits (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.3.1.2-1:
     Added --cryptkey-file command-line argument for people that would prefer ASF to read --cryptkey from specified file (@JustArchi).
