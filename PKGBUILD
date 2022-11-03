@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowMatch
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Matching and meta-clustering in flow cytometry'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-healthyflowdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('89abdf21b5db931c712d94ccda93e03f62629f2188b7279927b030b9e7fbaa24')
+sha256sums=('466792011e5959ca6af4dcc8dacbb0cca1182121f4dfcc5daa24a0b2afef18b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
