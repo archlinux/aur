@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-curl
 	pkgdesc = An URL retrival utility and library (mingw-w64)
-	pkgver = 7.85.0
+	pkgver = 7.86.0
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = any
@@ -15,11 +15,15 @@ pkgbase = mingw-w64-curl
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://curl.haxx.se/download/curl-7.85.0.tar.bz2
+	source = https://curl.haxx.se/download/curl-7.86.0.tar.bz2
 	source = 0002-nghttp2-static.patch
 	source = 0003-libpsl-static-libs.patch
-	sha256sums = 21a7e83628ee96164ac2b36ff6bf99d467c7b0b621c1f7e317d8f0d96011539c
-	sha256sums = e330a7c9bfa88b1347d8ffda2b278a719d658ec99eff68bfa0568e2bc32dffeb
+	source = 0004-more-static-fixes.patch
+	source = b7260c4fda95196b2fa16f32b5913f25323e5098.patch
+	sha256sums = f5ca69db03eea17fa8705bdfb1a9f58d76a46c9010518109bb38f313137e0a28
+	sha256sums = 3ee9c75a3046f86f91290c143170179230c9adc6eabfbb79eb26f708a165b719
 	sha256sums = 7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad
+	sha256sums = 590eb65e90e756eaad993d52a101f29091ada2c742c5a607684e88fc5c560d54
+	sha256sums = 702c3f11cecae2d8cfb3cbc3359c4059e5a87db3b29a93b599f0a83a6e490383
 
 pkgname = mingw-w64-curl

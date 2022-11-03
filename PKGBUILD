@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer at gmail dot com>
 
 pkgname=mingw-w64-curl
-pkgver=7.85.0
+pkgver=7.86.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -18,10 +18,14 @@ makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch"
-        "0003-libpsl-static-libs.patch")
-sha256sums=('21a7e83628ee96164ac2b36ff6bf99d467c7b0b621c1f7e317d8f0d96011539c'
-            'e330a7c9bfa88b1347d8ffda2b278a719d658ec99eff68bfa0568e2bc32dffeb'
-            '7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad')
+        "0003-libpsl-static-libs.patch"
+	"0004-more-static-fixes.patch"
+	"b7260c4fda95196b2fa16f32b5913f25323e5098.patch")
+sha256sums=('f5ca69db03eea17fa8705bdfb1a9f58d76a46c9010518109bb38f313137e0a28'
+            '3ee9c75a3046f86f91290c143170179230c9adc6eabfbb79eb26f708a165b719'
+            '7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad'
+            '590eb65e90e756eaad993d52a101f29091ada2c742c5a607684e88fc5c560d54'
+	    '702c3f11cecae2d8cfb3cbc3359c4059e5a87db3b29a93b599f0a83a6e490383')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -29,6 +33,8 @@ prepare() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
   patch -Np1 -i "${srcdir}/0002-nghttp2-static.patch"
   patch -Np1 -i "${srcdir}/0003-libpsl-static-libs.patch"
+  patch -Np1 -i "${srcdir}/0004-more-static-fixes.patch"
+  patch -Np1 -i "${srcdir}/b7260c4fda95196b2fa16f32b5913f25323e5098.patch"
   autoreconf -vfi
 }
 

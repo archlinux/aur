@@ -1,0 +1,62 @@
+From b7260c4fda95196b2fa16f32b5913f25323e5098 Mon Sep 17 00:00:00 2001
+From: Viktor Szakats <commit@vsz.me>
+Date: Thu, 27 Oct 2022 06:45:32 +0000
+Subject: [PATCH] windows: fix linking .rc to shared curl with autotools
+
+`./configure --enable-shared --disable-static` fails when trying to link
+a shared `curl.exe`, due to `libtool` magically changing the output
+filename of `windres` to one that it doesn't find when linking:
+
+```
+/bin/sh ../libtool --tag=RC --mode=compile windres -I../../curl/include -DCURL_EMBED_MANIFEST  -i ../../curl/src/curl.rc -o curl.o
+libtool: compile:  windres -I../../curl/include -DCURL_EMBED_MANIFEST -i ../../curl/src/curl.rc  -o .libs/curl.o
+[...]
+CCLD     curl.exe
+clang: error: no such file or directory: 'curl.o'
+```
+
+Let's resolve this by skipping `libtool` and calling `windres` directly
+when building `src` (aka `curl.exe`). Leave `lib` unchanged, as it does
+need the `libtool` magic. This solution is compatible with building
+a static `curl.exe`.
+
+This build scenario is not CI-tested.
+
+While here, delete an obsolete comment about a permanent `libtool`
+warning that we've resolved earlier.
+
+Regression from 6de7322c03d5b4d91576a7d9fc893e03cc9d1057
+
+Reported-by: Christoph Reiter
+Fixes #9803
+Closes #9805
+---
+ lib/Makefile.am | 1 -
+ src/Makefile.am | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 5d2df8bffb176..cd1ca97a54df3 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -155,7 +155,6 @@ optiontable:
+ 	perl optiontable.pl < $(top_srcdir)/include/curl/curl.h > easyoptions.c
+ 
+ if OS_WINDOWS
+-# Warning is "normal": libtool:   error: ignoring unknown tag RC
+ .rc.lo:
+ 	$(LIBTOOL) --tag=RC --mode=compile $(RC) -I$(top_srcdir)/include $(RCFLAGS) -i $< -o $@
+ endif
+diff --git a/src/Makefile.am b/src/Makefile.am
+index d9180b0b14827..2c1886f5a838a 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -157,7 +157,6 @@ listhelp:
+ 	(cd $(top_srcdir)/docs/cmdline-opts && ./gen.pl listhelp *.d) > tool_listhelp.c
+ 
+ if OS_WINDOWS
+-# Warning is "normal": libtool:   error: ignoring unknown tag RC
+ .rc.o:
+-	$(LIBTOOL) --tag=RC --mode=compile $(RC) -I$(top_srcdir)/include -DCURL_EMBED_MANIFEST $(RCFLAGS) -i $< -o $@
++	$(RC) -I$(top_srcdir)/include -DCURL_EMBED_MANIFEST $(RCFLAGS) -i $< -o $@
+ endif
