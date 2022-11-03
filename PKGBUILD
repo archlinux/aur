@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cepo
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Cepo for the identification of differentially stable genes'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e552e00740786d2c860ba2e694c6b4cd6e408e536cc862d6f7e93e356f6b7721')
+sha256sums=('07b02b762633441177d3d37e580beea2bb71d548506befc66c1a65c0e798d51f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
