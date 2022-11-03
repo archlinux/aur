@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miloR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Differential neighbourhood abundance testing on a graph'
 arch=('any')
@@ -53,7 +53,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa979a7a1659419344ad30058f477d1fd9184427461adeee02fd339bdfb8e9cb')
+sha256sums=('c3d31432ffb09a3c311e3722eeb0b082044692dedbe625a152b8bf2a83cee91e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
