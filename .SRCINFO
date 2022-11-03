@@ -1,6 +1,6 @@
 pkgbase = coventry
 	pkgdesc = Residential IP telephony gateway
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://codeberg.org/gnutelephony/coventry
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = coventry
 	depends = libosip2
 	depends = openssl
 	depends = fmt
-	source = coventry-v0.5.5.tar.gz::https://codeberg.org/gnutelephony/coventry/archive/v0.5.5.tar.gz
+	source = coventry-v0.5.6.tar.gz::https://codeberg.org/gnutelephony/coventry/archive/v0.5.6.tar.gz
 	source = coventry.service
 	source = coventry.logrotated
-	sha256sums = 35932b58714ca811f8de137299e859c98bbd66345d63f8a7844fd89dfdd9e2ec
+	sha256sums = 6cc4a4bced1fc55e75fff34bdbeb87577f3ae9322eeb27acf5cf39243d7b88cb
 	sha256sums = e46a6b28af301af2469fd2ca7230aabb400c30687b015359241d95bc95a7b46f
 	sha256sums = fea6bd1f1887d3a7d14491a058e35f90d87b401b84dcd45a5d387d3f2edff0e3
 
