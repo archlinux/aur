@@ -1,6 +1,6 @@
 pkgbase = r-rcpi
 	pkgdesc = Molecular Informatics Toolkit for Compound-Protein Interaction in Drug Discovery
-	pkgver = 1.32.2
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rcpi
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-rcpi
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rcpi_1.32.2.tar.gz
-	sha256sums = 820984fd26d407cd31b5080b0c2b17a2800058f977ecc10aa40253aa97b7dc66
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rcpi_1.34.0.tar.gz
+	sha256sums = 0e129c83eb57c6e7cee6cd8e36d5a66a3466d9f53c0d0c6ffc7aa377fe60c478
 
 pkgname = r-rcpi
