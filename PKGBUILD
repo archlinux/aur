@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AGDEX
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Agreement of Differential Expression Analysis'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-gseabase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('29ebdfbb41e4c50bd10c2b4dc5b050984209b6a6c3e604c8084c36a90a778430')
+sha256sums=('28bf46ca878eb5ade47b288d314fce9a993a33eceb325f683bbb92ecc5e86d7b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
