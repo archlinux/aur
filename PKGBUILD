@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5client
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Access HDF5 content from h5serv'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2eb9e886214a22a9f5171f090af4df511011d50da3794706c37d7f88bdbdabd7')
+sha256sums=('d8056f65f3c1d1f46e7458fb9eb43de204368a4837b6afee3eed0d36c3aec071')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
