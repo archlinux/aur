@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TDARACNE
-_pkgver=1.46.0
+_pkgver=1.47.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc='Network reverse engineering from time course data.'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('587911d599007baff0f9156ad01aa1ed4891f5db454b2245944f978095b2d9e7')
+sha256sums=('b82fb6253a47375dcbb09a5741ee58dcb4616a9c4318486d90d13ac6453feea7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
