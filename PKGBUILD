@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=martini
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='GWAS Incorporating Networks'
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44bb3b757ff993bb63a461b2d8bd54b7930df4bea9f9d04f34db422572a17710')
+sha256sums=('7ac1666e47f6a0293fb1e7a8144dbb8cd0d8a661ba2c89c6789d8e8e8f4ba247')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
