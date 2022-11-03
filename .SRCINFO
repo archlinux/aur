@@ -1,6 +1,6 @@
 pkgbase = ewm
 	pkgdesc = An elegant window manager, that just floats perfectly.
-	pkgver = 1
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/pwnwriter/ewm
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = ewm
 	depends = libxinerama
 	depends = libxft
 	depends = freetype2
+	optdepends = doas: powermenu shut-dowm, reboot and sleep
+	optdepends = imagemagick: screenshots
 	provides = ewm
 	conflicts = ewm
 	conflicts = ewm-bin
