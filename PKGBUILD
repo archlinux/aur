@@ -6,7 +6,7 @@
 
 pkgname=maubot
 pkgver=0.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A plugin-based Matrix bot system"
 arch=(any)
 license=(AGPLv3)
@@ -32,9 +32,7 @@ sha256sums=('f3189ab1846274efe20649ecd31943a1c7b12ecb52d845e62d8e7a0fdf3db933'
 prepare() {
   cd "${pkgname}-${pkgver/_rc/-rc}"
   msg2 'Applying patch to permit use of newest mautrix version'
-  sed -i 's/^mautrix==/mautrix>=/' requirements.txt
-  # I don't think we need ^^^^ this
-  # (actually we need that...)
+  sed -i -E "s/([0-9a-z_.-]+).=.*/\1/" requirements.txt optional-requirements.txt
   msg2 'Build static files for management frontend'
   cd "${pkgname}/management/frontend"
   yarn -s

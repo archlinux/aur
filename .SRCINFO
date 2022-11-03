@@ -1,7 +1,7 @@
 pkgbase = maubot
 	pkgdesc = A plugin-based Matrix bot system
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/maubot/maubot
 	install = maubot.install
 	arch = any
