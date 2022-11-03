@@ -23,5 +23,5 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root $pkgdir
+  python setup.py install --root $pkgdir --optimize=1
 }
