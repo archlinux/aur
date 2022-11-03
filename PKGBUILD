@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tilingArray
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Transcript mapping with high-density oligonucleotide tiling arrays'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('caca76638a783868339324dcb0ad53e07b81baebee03916add582f6f0103c39e')
+sha256sums=('ed133ae215d80c68d7fd869446f2d83afcf9ce600259dff4e0e3b279e97a73a5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
