@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=fossilize-git
-pkgver=0.0.0+428.1a5ff351f1
+pkgver=0.0.0+905.f67ffa9c49
 pkgrel=1
 pkgdesc="Library and Vulkan layer for serializing various persistent Vulkan objects which typically end up in hashmaps"
 arch=(x86_64)
