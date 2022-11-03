@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=r3Cseq
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Analysis of Chromosome Conformation Capture and Next-generation Sequencing (3C-seq)'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-bsgenome.rnorvegicus.ucsc.rn5.masked
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8166add41911198e26d34c79ce72633ac72cd16da5c621d82f28751f599decb7')
+sha256sums=('3b0f5647b08dfce1239dbf691e0d50dce5bfe34ad64c91aed1dc0d6e78cb4bf0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
