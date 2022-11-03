@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RJMCMCNucleosomes
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Bayesian hierarchical model for genome-wide nucleosome positioning with high-throughput short-read data (MNase-Seq)'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d10545eb88718f21c716e2b6959a201f9d61b8d64e97aecc5ce2b2e8e9d61955')
+sha256sums=('9502cc42a70aaa7d0b6973ba53cbb5d138d3bb78259b00bd9c025148990d608e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
