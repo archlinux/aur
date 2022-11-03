@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CiteFuse
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='CiteFuse: multi-modal analysis of CITE-seq data'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-scater
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be5a26baf322aa3c611fda65f6e9cb0e0c4cbf90b7f7d6aae3c40c73e9d581a6')
+sha256sums=('392e26d1c2e44c7f9fb0df9746eac31a0ba3fdcaf4b55fc9cc283fccf72aee13')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
