@@ -3,7 +3,7 @@
 # prev-Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=2.100.8.r191.g3c232f07
+pkgver=2.100.8.r285.g81b6de02
 pkgrel=1
 pkgdesc="Highly flexible framework for simulating open quantum dynamics."
 arch=(i686 x86_64)
@@ -29,7 +29,7 @@ prepare() {
   git -C "${srcdir}/${pkgname}" config submodule.blitz.url "${srcdir}"/blitz-cppqed
   git -C "${srcdir}/${pkgname}" config submodule.CPPQEDutils/thirdPartyRandom/pcg-cpp.url "${srcdir}"/pcg-cpp
   git -C "${srcdir}/${pkgname}" config submodule.CPPQEDutils/thirdPartyRandom/Xoshiro-cpp.url "${srcdir}"/Xoshiro-cpp
-  git -C "${srcdir}/${pkgname}" submodule update --init --recursive --remote
+  git -C "${srcdir}/${pkgname}" -c protocol.file.allow=always submodule update --init --recursive --remote
 }
 
 pkgver() {

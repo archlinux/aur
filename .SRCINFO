@@ -1,6 +1,6 @@
 pkgbase = cppqed-git
 	pkgdesc = Highly flexible framework for simulating open quantum dynamics.
-	pkgver = 2.100.8.r191.g3c232f07
+	pkgver = 2.100.8.r285.g81b6de02
 	pkgrel = 1
 	url = http://cppqed.sourceforge.net
 	arch = i686
@@ -32,4 +32,3 @@ pkgbase = cppqed-git
 	sha256sums = f1bcc9fe4cc8accb76a2c3825b633c19f68ba995db3f9e42d89834b72d038bef
 
 pkgname = cppqed-git
-
