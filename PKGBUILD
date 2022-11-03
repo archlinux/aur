@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=prebs
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Probe region expression estimation for RNA-seq data for improved microarray comparability'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-prebsdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2009434993a39c21e2ea66fb9cc23b0ff73c1448972e573a5f0ba4b36be7e26c')
+sha256sums=('6f681db481b0fe67428985ca3f8b261c498fca577cf54d7e82628d621b8a0c68')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
