@@ -1,6 +1,6 @@
 pkgbase = r-qtlizer
 	pkgdesc = Comprehensive QTL annotation of GWAS results
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Qtlizer
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-qtlizer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Qtlizer_1.10.0.tar.gz
-	sha256sums = 0fd288e2160da761835e67f958d9d7b905c10411090831d1e9e86bf675c87e08
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Qtlizer_1.12.0.tar.gz
+	sha256sums = 5bc9d6043a37d65cc93ff6960a10636c44b4fd347a5626cadf12f454173b0ed7
 
 pkgname = r-qtlizer
