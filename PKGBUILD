@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ensembldb
-_pkgver=2.20.2
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.20.2
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='Utilities to create and use Ensembl-based annotation databases'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac1f2d701e9bf99265c8db18c7be7f30a60af6eaa68e31bff40fb61a590bc28a')
+sha256sums=('51d68978b0f2285be379bbbfbb7b890ac689303434259ef6988a2f5ce3b031ec')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
