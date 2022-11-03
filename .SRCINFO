@@ -1,6 +1,6 @@
 pkgbase = r-ggcyto
 	pkgdesc = Visualize Cytometry data with ggplot
-	pkgver = 1.24.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ggcyto
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-ggcyto
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggcyto_1.24.1.tar.gz
-	sha256sums = 450c300a9c7c2cd2d02763fa35ae73aaf16fbeef7ab45ed6abf2e38d4e0786b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggcyto_1.26.0.tar.gz
+	sha256sums = fc14f4c98cfef8afede6068c21f9799c1b572137644aa084913062c649a9105e
 
 pkgname = r-ggcyto
