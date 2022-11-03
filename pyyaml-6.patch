@@ -1,0 +1,158 @@
+From e2c3983c04bb91d0a1367e1f16ebf081e3a00658 Mon Sep 17 00:00:00 2001
+From: Tero Saarni <tero.saarni@est.tech>
+Date: Wed, 21 Apr 2021 16:40:43 +0300
+Subject: [PATCH] Version bump to pyyaml 5.4.1 (#1596)
+
+---
+ curator/utils.py                      |  2 +-
+ test/unit/test_class_index_list.py    | 20 ++++++++++----------
+ test/unit/test_class_snapshot_list.py |  8 ++++----
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/curator/utils.py b/curator/utils.py
+index 3af2c78..0309a4f 100644
+--- a/curator/utils.py
++++ b/curator/utils.py
+@@ -56,7 +56,7 @@ def get_yaml(path):
+     yaml.add_constructor('!single', single_constructor)
+ 
+     try:
+-        return yaml.load(read_file(path))
++        return yaml.load(read_file(path), Loader=yaml.FullLoader)
+     except yaml.scanner.ScannerError as err:
+         print('Unable to read/parse YAML file: {0}'.format(path))
+         print(err)
+diff --git a/test/unit/test_class_index_list.py b/test/unit/test_class_index_list.py
+index 1cf20f4..cfc4621 100644
+--- a/test/unit/test_class_index_list.py
++++ b/test/unit/test_class_index_list.py
+@@ -800,7 +800,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.cluster.state.return_value = testvars.clu_state_four
+         client.indices.stats.return_value = testvars.stats_four
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.pattern_ft)['actions'][1]
++        config = yaml.load(testvars.pattern_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(['a-2016.03.03'], ilo.indices)
+     def test_age_filtertype(self):
+@@ -810,7 +810,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.cluster.state.return_value = testvars.clu_state_two
+         client.indices.stats.return_value = testvars.stats_two
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.age_ft)['actions'][1]
++        config = yaml.load(testvars.age_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(['index-2016.03.03'], ilo.indices)
+     def test_space_filtertype(self):
+@@ -821,7 +821,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.indices.stats.return_value = testvars.stats_four
+         client.field_stats.return_value = testvars.fieldstats_four
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.space_ft)['actions'][1]
++        config = yaml.load(testvars.space_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(['a-2016.03.03'], ilo.indices)
+     def test_forcemerge_filtertype(self):
+@@ -832,7 +832,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.indices.stats.return_value = testvars.stats_one
+         client.indices.segments.return_value = testvars.shards
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.forcemerge_ft)['actions'][1]
++        config = yaml.load(testvars.forcemerge_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual([testvars.named_index], ilo.indices)
+     def test_allocated_filtertype(self):
+@@ -842,7 +842,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.cluster.state.return_value = testvars.clu_state_two
+         client.indices.stats.return_value = testvars.stats_two
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.allocated_ft)['actions'][1]
++        config = yaml.load(testvars.allocated_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(['index-2016.03.04'], ilo.indices)
+     def test_kibana_filtertype(self):
+@@ -857,7 +857,7 @@ class TestIterateFiltersIndex(TestCase):
+         ilo.indices = [
+             '.kibana', '.kibana-5', '.kibana-6', 'dummy'
+         ]
+-        config = yaml.load(testvars.kibana_ft)['actions'][1]
++        config = yaml.load(testvars.kibana_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(['dummy'], ilo.indices)
+     def test_opened_filtertype(self):
+@@ -868,7 +868,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.indices.stats.return_value = testvars.stats_four
+         client.field_stats.return_value = testvars.fieldstats_four
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.opened_ft)['actions'][1]
++        config = yaml.load(testvars.opened_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(['c-2016.03.05'], ilo.indices)
+     def test_closed_filtertype(self):
+@@ -879,7 +879,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.indices.stats.return_value = testvars.stats_four
+         client.field_stats.return_value = testvars.fieldstats_four
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.closed_ft)['actions'][1]
++        config = yaml.load(testvars.closed_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(
+             ['a-2016.03.03','b-2016.03.04','d-2016.03.06'], sorted(ilo.indices))
+@@ -890,7 +890,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.cluster.state.return_value = testvars.clu_state_two
+         client.indices.stats.return_value = testvars.stats_two
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.none_ft)['actions'][1]
++        config = yaml.load(testvars.none_ft, Loader=yaml.FullLoader)['actions'][1]
+         ilo.iterate_filters(config)
+         self.assertEqual(
+             ['index-2016.03.03', 'index-2016.03.04'], sorted(ilo.indices))
+@@ -901,7 +901,7 @@ class TestIterateFiltersIndex(TestCase):
+         client.cluster.state.return_value = testvars.clu_state_two
+         client.indices.stats.return_value = testvars.stats_two
+         ilo = curator.IndexList(client)
+-        config = yaml.load(testvars.invalid_ft)['actions'][1]
++        config = yaml.load(testvars.invalid_ft, Loader=yaml.FullLoader)['actions'][1]
+         self.assertRaises(
+             curator.ConfigurationError,
+             ilo.iterate_filters, config
+diff --git a/test/unit/test_class_snapshot_list.py b/test/unit/test_class_snapshot_list.py
+index d419faf..d77bccd 100644
+--- a/test/unit/test_class_snapshot_list.py
++++ b/test/unit/test_class_snapshot_list.py
+@@ -320,7 +320,7 @@ class TestIterateFiltersSnaps(TestCase):
+         client.snapshot.get.return_value = testvars.snapshots
+         client.snapshot.get_repository.return_value = testvars.test_repo
+         slo = curator.SnapshotList(client, repository=testvars.repo_name)
+-        config = yaml.load(testvars.invalid_ft)['actions'][1]
++        config = yaml.load(testvars.invalid_ft, Loader=yaml.FullLoader)['actions'][1]
+         self.assertRaises(
+             curator.ConfigurationError,
+             slo.iterate_filters, config
+@@ -330,7 +330,7 @@ class TestIterateFiltersSnaps(TestCase):
+         client.snapshot.get.return_value = testvars.snapshots
+         client.snapshot.get_repository.return_value = testvars.test_repo
+         slo = curator.SnapshotList(client, repository=testvars.repo_name)
+-        config = yaml.load(testvars.snap_age_ft)['actions'][1]
++        config = yaml.load(testvars.snap_age_ft, Loader=yaml.FullLoader)['actions'][1]
+         slo.iterate_filters(config)
+         self.assertEqual(
+             ['snap_name', 'snapshot-2015.03.01'], sorted(slo.snapshots))
+@@ -339,7 +339,7 @@ class TestIterateFiltersSnaps(TestCase):
+         client.snapshot.get.return_value = testvars.snapshots
+         client.snapshot.get_repository.return_value = testvars.test_repo
+         slo = curator.SnapshotList(client, repository=testvars.repo_name)
+-        config = yaml.load(testvars.snap_pattern_ft)['actions'][1]
++        config = yaml.load(testvars.snap_pattern_ft, Loader=yaml.FullLoader)['actions'][1]
+         slo.iterate_filters(config)
+         self.assertEqual(
+             ['snap_name', 'snapshot-2015.03.01'], sorted(slo.snapshots))
+@@ -348,7 +348,7 @@ class TestIterateFiltersSnaps(TestCase):
+         client.snapshot.get.return_value = testvars.snapshots
+         client.snapshot.get_repository.return_value = testvars.test_repo
+         slo = curator.SnapshotList(client, repository=testvars.repo_name)
+-        config = yaml.load(testvars.snap_none_ft)['actions'][1]
++        config = yaml.load(testvars.snap_none_ft, Loader=yaml.FullLoader)['actions'][1]
+         slo.iterate_filters(config)
+         self.assertEqual(
+             ['snap_name', 'snapshot-2015.03.01'], sorted(slo.snapshots))
