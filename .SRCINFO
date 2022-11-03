@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-libsoup3
+	pkgdesc = HTTP client/server library (mingw-w64)
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://download.gnome.org/sources/libsoup
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-meson
+	makedepends = git
+	depends = mingw-w64-glib2
+	depends = mingw-w64-glib-networking
+	depends = mingw-w64-sqlite
+	depends = mingw-w64-libnghttp2
+	depends = mingw-w64-libpsl
+	depends = mingw-w64-brotli
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=49e0178c6f91725ca348acf6d3c5d1343e6c9eb1
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libsoup3
