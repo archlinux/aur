@@ -1,6 +1,6 @@
 pkgbase = r-rmassbank
 	pkgdesc = Workflow to process tandem MS files and build MassBank records
-	pkgver = 3.6.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RMassBank
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-rmassbank
 	optdepends = r-rmassbankdata
 	optdepends = r-runit
 	optdepends = r-xcms
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RMassBank_3.6.1.tar.gz
-	sha256sums = 66a02b7464402ddeae4e56b30e3a50e804844311b7b3fc844c29ef77bd217204
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RMassBank_3.8.0.tar.gz
+	sha256sums = e0770cd396eacb014c24c21716e3c2f04d97e6f2310ddbf8cf17c8acfc169bfe
 
 pkgname = r-rmassbank
