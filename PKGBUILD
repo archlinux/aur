@@ -1,12 +1,12 @@
 pkgname=esbuild-bin
-pkgver=0.15.12
+pkgver=0.15.13
 pkgrel=1
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://esbuild.github.io"
 license=('MIT')
 
-_name="${pkgname%-bin}"
+_name="${pkgname%-*}"
 provides=("${_name}")
 conflicts=("${_name}")
 
@@ -21,10 +21,10 @@ source_i686=("$(_get_source 32)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source arm)")
 
-sha256sums_x86_64=('daeed357eec71bc707f9f375fa136c1f91d371bfdff04ea06fe779b960fccbb6')
-sha256sums_i686=('603ac4b2cfcece1edc9585557af2f10884f35d64fcb2540947d22c68dd66ad20')
-sha256sums_aarch64=('32004f9f008dbd099dfaf51eb861f9e0b1e9c4ca422d4466d1ca6e92b66c1cfd')
-sha256sums_armv7h=('e5b04fcc48f432caba760d4d3991adc7e7ca96e5fad14b99827bdfc2378689de')
+sha256sums_x86_64=('db6e52bd3829856dc3c735072a9ce058352a62f11a0df48fe403325ae8490f32')
+sha256sums_i686=('e03823bc4a91ea568262a39f8620d70972ddbd347bd1191a3214ce1e0669c05a')
+sha256sums_aarch64=('d337816da7f909ef37012262c9fc7be4680f827619b32bdac3a3606dd9248271')
+sha256sums_armv7h=('a6e2790cbf8b9df47556a12a3bc62cd68e3edcacdbcc2151c34b5628871a7c54')
 
 package() {
     cd "${srcdir}/package/bin"
