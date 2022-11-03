@@ -1,6 +1,6 @@
 pkgbase = r-pkgdeptools
 	pkgdesc = Package Dependency Tools
-	pkgver = 1.62.0
+	pkgver = 1.63.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pkgDepTools
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-pkgdeptools
 	optdepends = r-biocmanager
 	optdepends = r-rcurl
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pkgDepTools_1.62.0.tar.gz
-	sha256sums = 2fa5f60cef79c0fad1141263107c5023e718b4bed8aa5fda9a3466b5e3a6edba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pkgDepTools_1.63.0.tar.gz
+	sha256sums = 4f51e32fa281b0e23f1ddd87ae89f46c5f0b9bd32446fc05f2771ca06ff80083
 
 pkgname = r-pkgdeptools

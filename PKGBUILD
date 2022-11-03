@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pkgDepTools
-_pkgver=1.62.0
+_pkgver=1.63.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.63.0
 pkgrel=1
 pkgdesc='Package Dependency Tools'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2fa5f60cef79c0fad1141263107c5023e718b4bed8aa5fda9a3466b5e3a6edba')
+sha256sums=('4f51e32fa281b0e23f1ddd87ae89f46c5f0b9bd32446fc05f2771ca06ff80083')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
