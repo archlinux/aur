@@ -1,6 +1,6 @@
 pkgbase = r-phenotest
 	pkgdesc = Tools to test association between gene expression and phenotype in a way that is efficient, structured, fast and scalable. We also provide tools to do GSEA (Gene set enrichment analysis) and copy number variation.
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/phenoTest
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-phenotest
 	optdepends = r-org.mm.eg.db
 	optdepends = r-org.rn.eg.db
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/phenoTest_1.44.0.tar.gz
-	sha256sums = 5d33f405157e0c57fd72bf5abe132084b2f438728d1d19d98f430ed4d581a336
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phenoTest_1.46.0.tar.gz
+	sha256sums = 236093e81df82981913f02057db2ad33ce94e0f1d06a9dbd56493bfab05d8f65
 
 pkgname = r-phenotest
