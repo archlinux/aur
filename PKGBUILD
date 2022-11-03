@@ -2,8 +2,8 @@
 # Contributor: Frederic Bezies <fredbezies@gmail.com>, Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>, LSUtigers3131
 
 pkgname=pamac-flatpak
-pkgver=10.4.2
-pkgrel=4
+pkgver=10.4.3
+pkgrel=1
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak and AppIndicator support)"
@@ -19,7 +19,7 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.bz2") 
-sha512sums=('8b5b2298e16bcfc6fbdfbf2e2cd77cb9cd769d9faa503dd8fec35c18f37b52589ffda670dc9299a8f4962f039ba870007b4601a2610ac0fc298f64a4f8e67eeb')
+sha512sums=('011af395092c27c4e73f50b5f43e662b5fb5cd7ae920176c3702479fb05df958fa7ceaf206bfcdad016103d0fc9d6b94e0d94d27701e5afcad2ae92024c90e5c')
 
 prepare() {
   # adjust version string
