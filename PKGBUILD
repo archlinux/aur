@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSRI
-_pkgver=2.44.0
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.44.0
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='Gene Set Regulation Index'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-parallel
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1e9073c6c1a911f26782d736dfc183d6bd52bd3f142227c4c2b823faaa1e97c')
+sha256sums=('d7088097cdef4941be809a75e137dcdde34df74fbdb12a2846cc1858c48fd08e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
