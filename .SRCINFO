@@ -1,6 +1,6 @@
 pkgbase = r-peakpanther
 	pkgdesc = Peak Picking and Annotation of High Resolution Experiments
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/peakPantheR
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-peakpanther
 	optdepends = r-pander
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/peakPantheR_1.10.0.tar.gz
-	sha256sums = 1c9263ccb216c0fac503c916fe0d11582909738e4a77e4f24ddd04ba11363a2a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/peakPantheR_1.12.0.tar.gz
+	sha256sums = e5c56d4193ef27c14e10ebef244a7fc165b901ac7da6f86153a179aba0690a45
 
 pkgname = r-peakpanther
