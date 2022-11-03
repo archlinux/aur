@@ -1,6 +1,6 @@
 pkgbase = r-gcrisprtools
 	pkgdesc = Suite of Functions for Pooled Crispr Screen QC and Analysis
-	pkgver = 2.2.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gCrisprTools
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-gcrisprtools
 	optdepends = r-org.mm.eg.db
 	optdepends = r-runit
 	optdepends = r-sparrow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gCrisprTools_2.2.2.tar.gz
-	sha256sums = d2f4f35dab3c482a9388b3b63aafa11bfcbc3616628c65a538d38419e3d36c08
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gCrisprTools_2.4.0.tar.gz
+	sha256sums = 321ff507286a361a58d7fea0c212d273983f66cdad90a4a3c484a093d6cebd66
 
 pkgname = r-gcrisprtools
