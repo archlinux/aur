@@ -3,7 +3,7 @@
 
 pkgname=ddnet
 pkgver=16.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
@@ -30,7 +30,6 @@ build() {
         -DAUTOUPDATE=OFF            \
         -DDISCORD=ON                \
         -DDISCORD_DYNAMIC=ON        \
-        -DANTIBOT=ON                \
         -DVIDEORECORDER=ON          \
         -DUPNP=ON                   \
         -DMYSQL=ON                  \
