@@ -1,6 +1,6 @@
 pkgbase = r-sgseq
 	pkgdesc = Splice event prediction and quantification from RNA-seq data
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SGSeq
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-sgseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SGSeq_1.30.0.tar.gz
-	sha256sums = 97f7c9170f8798ffa2615e23e77f206fe8dd58acd1d2a84fa21c9c78cc28e443
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SGSeq_1.32.0.tar.gz
+	sha256sums = cc7317015ed6997d810516bc6b4400c42d1f325b86287eb2280be3772bf8ad0d
 
 pkgname = r-sgseq
