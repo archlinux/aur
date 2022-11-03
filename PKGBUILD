@@ -1,24 +1,23 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
-# Contributor: Robert Knauer <robert@privatdemail.net>
-# Contributor: Eric Forgeot http://anamnese.online.fr
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=abcpp
 pkgver=1.4.6
-pkgrel=2
-pkgdesc='A simple yet powerful preprocessor designed for, but not limited to, ABC music files'
+pkgrel=3
+pkgdesc='A preprocessor designed for, but not limited to, ABC music files'
 url='http://abcplus.sourceforge.net'
-license=(GPL)
-arch=(i686 x86_64)
+license=(GPL2)
+arch=(aarch64 x86_64)
 depends=(glibc)
-source=("https://sourceforge.net/projects/abcplus/files/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('05a9a7f81b35aff8f1b03ad0c41539508812ec1e52d2f584a180d3c12e35edc1')
+groups=(abc pro-audio)
+source=("https://sourceforge.net/projects/abcplus/files/$pkgname/$pkgname-$pkgver.tar.gz"
+        'abcpp-makefile-cflags.patch')
+sha256sums=('05a9a7f81b35aff8f1b03ad0c41539508812ec1e52d2f584a180d3c12e35edc1'
+            '3e57b254946fe9b9b8d07e41f87fd445b0480ffa2c8461ea758de2901a9b67af')
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i \
-    -e 's|\$(CC) \$(CFLAGS)|$(CC) $(CFLAGS) $(LDFLAGS) -D VERSION="$(VERSION)"|' \
-    -e '/^CFLAGS/d' \
-    Makefile
+  patch -p1 -N -r - -i "$srcdir"/abcpp-makefile-cflags.patch
 }
 
 build() {

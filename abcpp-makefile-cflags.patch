@@ -1,0 +1,23 @@
+diff -uNr abcpp-1.4.6.orig/Makefile abcpp-1.4.6/Makefile
+--- abcpp-1.4.6.orig/Makefile	2021-11-16 12:34:01.000000000 +0100
++++ abcpp-1.4.6/Makefile	2022-11-03 13:10:21.905115204 +0100
+@@ -5,16 +5,16 @@
+ 
+ ABCPP   = abcpp
+ VERSION = 1.4.6
+-CC      = gcc
++CC     ?= gcc
+ # settings for Linux, djgpp or mingw32
+-CFLAGS  = -O3 -Wall -D VERSION=\"$(VERSION)\"
++CFLAGS ?= -O3 -Wall
+ # to make a mingw executable using cygwin, use these CFLAGS:
+ # CFLAGS = -O3 -Wall -mno-cygwin -DWIN32
+ 
+ SOURCE  = $(ABCPP).c
+ 
+ $(ABCPP): $(SOURCE)
+-	$(CC) $(CFLAGS) -o $(ABCPP) $(SOURCE)
++	$(CC) $(CFLAGS) $(LDFLAGS) -DVERSION=\"$(VERSION)\" -o $(ABCPP) $(SOURCE)
+ 
+ tgz:    $(ABCPP)
+ 	ln -s . $(ABCPP)-$(VERSION); \
