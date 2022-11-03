@@ -15,7 +15,7 @@ optdepends=('ca-certificates')
 options=('staticlibs')
 source=(
   # https://packages.debian.org/sid/libssl3
-  "http://ftp.debian.org/debian/pool/main/o/openssl/libssl3_${pkgver}-${pkgrel}_amd64.deb"
+  "https://ftp.debian.org/debian/pool/main/o/openssl/libssl3_${pkgver}-${pkgrel}_amd64.deb"
 )
 sha256sums=(
   '83b44b9624711f954d91a4b0414b2f8d46fbc00a222e4c20614c16337a872762'

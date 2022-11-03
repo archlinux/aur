@@ -17,7 +17,7 @@ pkgbase = openssl-3.0-bin
 	conflicts = openssl3-git
 	conflicts = openssl-git
 	options = staticlibs
-	source = http://ftp.debian.org/debian/pool/main/o/openssl/libssl3_3.0.7-1_amd64.deb
+	source = https://ftp.debian.org/debian/pool/main/o/openssl/libssl3_3.0.7-1_amd64.deb
 	sha256sums = 83b44b9624711f954d91a4b0414b2f8d46fbc00a222e4c20614c16337a872762
 
 pkgname = openssl-3.0-bin
