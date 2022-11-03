@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-libnghttp2
+	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library (mingw-w64)
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://nghttp2.org/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-gcc
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/nghttp2/nghttp2/releases/download/v1.50.0/nghttp2-1.50.0.tar.xz
+	sha512sums = c2f7f14972cb268a85966f2bd26ac515fa61d9cf6b6bcaa5cffc04f02a18abf116b15537eb4dfbdfa79e7b1472de7034dfdbce7a082cc5b23627d87e2939e529
+
+pkgname = mingw-w64-libnghttp2
