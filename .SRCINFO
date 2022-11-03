@@ -1,6 +1,6 @@
 pkgbase = r-feast
 	pkgdesc = FEAture SelcTion (FEAST) for Single-cell clustering
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FEAST
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-feast
 	optdepends = r-rmarkdown
 	optdepends = r-seurat
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FEAST_1.4.0.tar.gz
-	sha256sums = 39e8051755293eb29896f6f1ff8b744e2541c521eda65ae47f8995ca113d1514
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FEAST_1.6.0.tar.gz
+	sha256sums = 84e2b4155b778b63cf08e726ab702466db5ff9b5b6f94c5281df296b2c9862fa
 
 pkgname = r-feast
