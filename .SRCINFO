@@ -1,6 +1,6 @@
 pkgbase = r-rcistarget
 	pkgdesc = RcisTarget Identify transcription factor binding motifs enriched on a list of genes or genomic regions
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RcisTarget
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-rcistarget
 	optdepends = r-testthat
 	optdepends = r-visnetwork
 	optdepends = r-zoo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RcisTarget_1.16.0.tar.gz
-	sha256sums = 35124ea89250e397cc8ee591c09af1203c85a70ee8517df61812cb6cde94d69d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RcisTarget_1.17.0.tar.gz
+	sha256sums = 73e760910a90d8ddfc6734f06be201fe6923edb83573ff3eb0029b438a8ddcaa
 
 pkgname = r-rcistarget
