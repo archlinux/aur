@@ -12,8 +12,8 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.0.6
-pkgrel=2
+pkgver=6.0.7
+pkgrel=1
 pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,12 +27,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0102-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
-        '0103-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch'
-        'fb23dad87a0bfb6fdfde3dc1d18104da631d050a.patch'
-        '64ebb671ffc4cbfd548e4f1b4aeb98155fd386dc.patch'
-        'a24b69f369c6c55be8ce40427feb4e127afae129.patch'
-        '785699dbc7041b99e0027bff27ffe17eba202e96.patch'
-        '6df3912f64cea68409b08d282ffbccf0af7f8d8e.patch'
+        '0103-soundwire_intel_Initialize_clock_stop_timeout.patch'
+        '0104-drm_sched_add_DRM_SCHED_FENCE_DONT_PIPELINE_flag.patch'
+        '0105-drm_amdgpu_use_DRM_SCHED_FENCE_DONT_PIPELINE_for_VM_updates.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -54,16 +51,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('864b05af2d869ba73d61a9c5959e4531a141ab2bd7b217483671f625f9747faa'
-            '00b243b5be38077d073074099b46afcd4b9b0e63a54f490284c4d9c522ac3fc4'
+sha256sums=('67dacc2b78605a56e997f4c08d009be87c98ec66f1870220226c8b3cc676590f'
+            'd9f5c5959ea6fc4601a1fd78c00982bb5bf873e904f140559ccb7359097ee194'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'a75d2a2322c8cd99a6dc9945424fd9006e7a8f9d2793c0ae97ef931f2d54b9a5'
-            'a8a2d8b402b2877df1a949a106c634b6c366dd33b954c4b735ce1d3778214169'
-            '6c84ff721c3ef0561f532c92cf0096d9adb7e12414bc1fc80b0824e47a863213'
-            '86ab8a9821ea7300ff7f7c9d64cf54f6662ae4609097fff3795e548f3181d603'
-            '664890dff8196b0ddf14c6c698dedc4b14251e353bfae2b4fd68e3c487ab3dd6'
-            'ad6fb3d449ded539840cc2dc5e12ecbc9563a68b3054bc93dd302f4ab58d7ca2'
-            '232ed297c6535e90f51e02449de236297bb2df6d3d159a8cfb78eccb08e68dbe'
+            '5a72a4163937bc588d6a8ed6320e610f6512376b7aa20c4ada5c0ae09cdcd525'
+            '8ecbe2fdd40c1accc4e7ccd687c319938c18f5adf056ff314c7702775347adf9'
+            '11b7c141c218d6c026a29aed5ba3c3322343ae677155a6dccf622c151eb1b1aa'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '8e5c147591d14300a59ed8354a9d0746cf78650256558b45f964ca76eaed9a9f'

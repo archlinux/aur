@@ -1,4 +1,4 @@
-From a24b69f369c6c55be8ce40427feb4e127afae129 Mon Sep 17 00:00:00 2001
+From 2b078fa1fdcbd43a042ff49ad70f6ab2a22dffb3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Fri, 7 Oct 2022 10:59:58 +0200
 Subject: [PATCH] drm/amdgpu: use DRM_SCHED_FENCE_DONT_PIPELINE for VM updates
@@ -21,7 +21,7 @@ index 718db7d98e5a30..25ad3c7fa24bea 100644
 @@ -115,8 +115,15 @@ static int amdgpu_vm_sdma_commit(struct amdgpu_vm_update_params *p,
  		amdgpu_bo_fence(p->vm->root.bo, f, true);
  	}
- 
+
 -	if (fence && !p->immediate)
 +	if (fence && !p->immediate) {
 +		/*
@@ -34,4 +34,3 @@ index 718db7d98e5a30..25ad3c7fa24bea 100644
 +	}
  	dma_fence_put(f);
  	return 0;
- 
