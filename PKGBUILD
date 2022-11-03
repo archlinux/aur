@@ -1,8 +1,8 @@
 # Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
 
 pkgname=tidal-hifi-git
-pkgrel=1
-pkgver=4.3.1.r0.gbf260b1
+pkgrel=2
+pkgver=4.3.1.r1.gcd2a068
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -80,7 +80,7 @@ package() {
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
 
     install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
-    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}/tidal-hifi.png"
+    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/${pkgname%-git}/tidal-hifi.png"
     install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
     install -Dm 644 "${srcdir}/tidal-hifi.desktop" "${pkgdir}/usr/share/applications/tidal-hifi.desktop"
     install -Dm 644 "${srcdir}/tidal-hifi.xml" "${pkgdir}/usr/share/mime/packages/tidal-hifi.xml"
