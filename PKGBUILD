@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pengls
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Fit Penalised Generalised Least Squares models'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ad3d84a255a7fa9b07b34cbad5e131f02c6a87459bcb0bdb735b0fe7d72687e')
+sha256sums=('3a9a0caaf03529ec25772796dfa165ed8c5e76ed45c0bfb90d5f971570e3b7b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
