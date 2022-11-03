@@ -2,16 +2,17 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=16.4.r35.gd64d76d62
+pkgver=16.5.r34.gd83cf0ac5
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
-makedepends=('git' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools')
+makedepends=('git' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools' 'discord-game-sdk')
 checkdepends=('gmock')
-optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.')
+optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
+            'discord-game-sdk: Enable rich presence in Discord desktop client.')
 provides=('ddnet')
 conflicts=('ddnet')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
@@ -42,6 +43,8 @@ build() {
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUTOUPDATE=OFF            \
+        -DDISCORD=ON                \
+        -DDISCORD_DYNAMIC=ON        \
         -DANTIBOT=ON                \
         -DVIDEORECORDER=ON          \
         -DUPNP=ON                   \
