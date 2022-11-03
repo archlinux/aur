@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPONGE
-_pkgver=1.18.1
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Sparse Partial Correlations On Gene Expression'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-visnetwork
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cd6a8c034b631213b9ea6ccc71644ad28c41c9897224748ee888edc60c493c1c')
+sha256sums=('9ca818d277abe3a1028069307dce799c69a5f9c2fd3ed03ddd0a946f573f9572')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
