@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Pviz
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Peptide Annotation and Data Visualization using Gviz'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-pepdat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe16eefb4092575c20c5833ba43e8b30aed9f72b9d002909ab77e1044170fa46')
+sha256sums=('926fd5bcb232f12a78be99f45b2eea4876935e3111583c4ddba301867cbc438a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
