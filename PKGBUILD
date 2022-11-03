@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MicrobiotaProcess
-_pkgver=1.8.2
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='an R package for analysis, visualization and biomarker discovery of microbiome'
 arch=('any')
@@ -70,7 +70,7 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b01f6e9bb3eaf569cfbf07db763d26629fdc099a94da2262cfd4e16039cfedec')
+sha256sums=('139ea45e302a39a51890588e4b5d49e504ec95c3b57eb480a739a7822aeaa282')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
