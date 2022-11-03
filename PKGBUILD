@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hca
-_pkgver=1.4.3
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Exploring the Human Cell Atlas Data Coordinating Platform'
 arch=('any')
@@ -19,6 +19,9 @@ depends=(
   r-readr
   r-tibble
   r-tidyr
+  r-shiny
+  r-miniui
+  r-dt
 )
 optdepends=(
   r-biocstyle
@@ -33,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e6c7d9f2caedc2bc2f6ac13e8cda19a60af7824424987b465f484cde461cae7')
+sha256sums=('ece84ea76904bd925c2edebfd2d0e7942b7aeb5d105f0b7a834024c23ccd40fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
