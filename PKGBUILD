@@ -3,15 +3,16 @@
 
 pkgname=ddnet
 pkgver=16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
-makedepends=('cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools')
+makedepends=('cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools' 'discord-game-sdk')
 checkdepends=('gmock')
-optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.')
+optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
+            'discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://ddnet.org/downloads/DDNet-$pkgver.tar.xz"
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf")
@@ -27,6 +28,8 @@ build() {
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUTOUPDATE=OFF            \
+        -DDISCORD=ON                \
+        -DDISCORD_DYNAMIC=ON        \
         -DANTIBOT=ON                \
         -DVIDEORECORDER=ON          \
         -DUPNP=ON                   \
@@ -36,6 +39,7 @@ build() {
     ninja
 }
 
+# Net.Ipv4AndIpv6Work fails when building in clean chroot, hence disabled
 check() {
     export GTEST_FILTER='-Net.Ipv4AndIpv6Work'
     ninja run_tests -C build
