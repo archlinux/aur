@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mfa
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Bayesian hierarchical mixture of factor analyzers for modelling genomic bifurcations'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f413a7f38fa7419cd3962264df246b7e19e13afe86fff43ae191dd9a8e29977')
+sha256sums=('c2cf74a948b389ee013a9ba1c90200e0cf461a055cc6440419956fff6da02f77')
 
 prepare() {
   sed -i "s#PI#M_PI#" "${_pkgname}/src/gibbs.cpp"
