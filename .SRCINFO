@@ -1,6 +1,6 @@
 pkgbase = r-expressionatlas
 	pkgdesc = Download datasets from EMBL-EBI Expression Atlas
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ExpressionAtlas
 	arch = any
@@ -13,10 +13,11 @@ pkgbase = r-expressionatlas
 	depends = r-summarizedexperiment
 	depends = r-xml
 	depends = r-xml2
+	depends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExpressionAtlas_1.24.0.tar.gz
-	sha256sums = bd2a3bb2bd956613116112f0f6aa4ec4d995ec090876b4f10720374b5b973055
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExpressionAtlas_1.26.0.tar.gz
+	sha256sums = a95a6805bc183d35ed08c829727ec2aea5f628107e07865ec31fe3cc930c3d7d
 
 pkgname = r-expressionatlas

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ExpressionAtlas
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Download datasets from EMBL-EBI Expression Atlas'
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
   r-summarizedexperiment
   r-xml
   r-xml2
+  r-biocstyle
 )
 optdepends=(
   r-knitr
@@ -25,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bd2a3bb2bd956613116112f0f6aa4ec4d995ec090876b4f10720374b5b973055')
+sha256sums=('a95a6805bc183d35ed08c829727ec2aea5f628107e07865ec31fe3cc930c3d7d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
