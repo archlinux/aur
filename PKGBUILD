@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Bt.eg.db
-_pkgver=3.15.0
+_pkgver=3.16.0
 pkgname=r-${_pkgname,,}
-pkgver=3.15.0
-pkgrel=3
+pkgver=3.16.0
+pkgrel=1
 pkgdesc='Genome wide annotation for Bovine'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d432e550c1312ce3516a6f51e35d7e04c1b0b373140dd85459f5c979ed82b95a')
+sha256sums=('9ab5c965fa59fae6b791675a2c9b25368644eac2748e6c80243ad015b0f4558b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
