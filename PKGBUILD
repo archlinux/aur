@@ -2,7 +2,7 @@
 
 _gemname=google-apis-iamcredentials_v1
 pkgname=ruby-$_gemname
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='simple REST client for IAM Service Account Credentials API V1'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-google-apis-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('e9a256a6d80fbfc77d44bd7e65bc94b9e1e9863a00e6d413edc0102d6cb5551b')
+sha256sums=('8bf009c7fac542b0bb87ea4050c93998323aafc7d2953fff4a5539e22e62a61d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
