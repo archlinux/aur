@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CancerSubtypes
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Cancer subtypes identification, validation and visualization based on multiple genomic data sets'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rtcga.mrna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1d3ca8f6b19726c9eaf0cb6ea7dd1491df269fc206903df0c279d350412be335')
+sha256sums=('c1f376c8c9a3f978051daba94ba3fee7873a6f88f1254a36f7c9c7fb9680e7b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
