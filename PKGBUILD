@@ -3,7 +3,7 @@
 # Contributor: Tim Lee <tl1234562004@yahoo.com>
 
 pkgname=tablelist
-pkgver=6.19
+pkgver=6.20
 pkgrel=1
 pkgdesc="A library for Tcl/Tk 8.0 or higher"
 arch=('any')
@@ -12,8 +12,8 @@ license=("custom")
 depends=('bash' 'tcl')
 source=(https://www.nemethi.de/tablelist/$pkgname$pkgver.tar.gz \
         https://www.nemethi.de/tablelist/COPYRIGHT.txt )
-sha256sums=('67bfd43aef2ab13d58694ee49225478b1b2089cd910116e95ec9ce1e5cfa641b'
-            '075ea86d25b8949db984653728d2c7d9aeee392700ded30411be18c6f95dbdc4')
+sha256sums=('ac8228fde55f6cd5393d6e7c31431464a07c0740282f772c7fc40c331e4208cb'
+            '4a522db58853a139c2e772c81b4c0ce0d2da4965b348048a3818988d5b5bcba0')
 
 package() {
   mkdir -p "$pkgdir"/usr/lib/tcl8.6
