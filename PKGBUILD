@@ -3,7 +3,7 @@
 _arch=x64v3
 pkgname=linux-xanmod-linux-headers-bin-${_arch}
 _major=6.0
-pkgver=${_major}.6
+pkgver=${_major}.7
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -21,7 +21,7 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('5bb771f2d25f2e51187482e68c19b94a1715414ed4b31e2056c55f61e2aed710')
+sha256sums=('38d78ccc767b64e2fb61196d8b3ce9813ecd17b5288a88ee8956ed245fe80740')
 
 prepare() {
   bsdtar -xf data.tar.xz
