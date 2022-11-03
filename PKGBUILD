@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=zellkonverter
-_pkgver=1.6.5
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.5
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Conversion Between scRNA-seq Objects'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('669a314d8ca5f62d29a5ab42d51647c4c2a23e9ae2542921933d48a9e394b767')
+sha256sums=('bed7c72324df7882816e594ccd8d6b84f5575999491c89a4ab5739e8a9d9242c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
