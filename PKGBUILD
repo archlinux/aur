@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rcade
-_pkgver=1.37.0
+_pkgver=1.39.1
 pkgname=r-${_pkgname,,}
-pkgver=1.37.0
+pkgver=1.39.1
 pkgrel=1
 pkgdesc='R-based analysis of ChIP-seq And Differential Expression - a tool for integrating a count-based ChIP-seq analysis with differential expression summary data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cfb9bddc3c970dc174a5eb2f5eb126aa0b9968408747cee96fa4ada1d5240af5')
+sha256sums=('9948e5395dd3971014f9f5b9c9697e20c0bf90aae527adba719a759320899415')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

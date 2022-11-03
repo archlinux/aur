@@ -1,6 +1,6 @@
 pkgbase = r-rcade
 	pkgdesc = R-based analysis of ChIP-seq And Differential Expression - a tool for integrating a count-based ChIP-seq analysis with differential expression summary data
-	pkgver = 1.37.0
+	pkgver = 1.39.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rcade
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-rcade
 	optdepends = r-biomart
 	optdepends = r-limma
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rcade_1.37.0.tar.gz
-	sha256sums = cfb9bddc3c970dc174a5eb2f5eb126aa0b9968408747cee96fa4ada1d5240af5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rcade_1.39.1.tar.gz
+	sha256sums = 9948e5395dd3971014f9f5b9c9697e20c0bf90aae527adba719a759320899415
 
 pkgname = r-rcade
