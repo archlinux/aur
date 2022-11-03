@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PhIPData
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Container for PhIP-Seq Experiments'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d48f0e7154bd58e167e062f44463dac0ccd9f219abd71c44b2660b2b0504cc19')
+sha256sums=('8dabb70df812138a969ce07a4c9181b696742b164b40a50b30ff6f314afea1be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
