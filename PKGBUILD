@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=STROMA4
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Assign Properties to TNBC Patients'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-breastcancermainz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32b215f7b7cad3f0ab72e9e0533afe7cb609e027e3c2fd8e7a75a679953d1f93')
+sha256sums=('a38c34e1a5bdef553d176ca831b918948c8393bf0c6a3082f3f25f4e3c95de33')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
