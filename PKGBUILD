@@ -2,19 +2,26 @@
 _base=syrupy
 pkgname=python-${_base}
 pkgdesc="The sweeter pytest snapshot plugin"
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 arch=(any)
 url="https://github.com/tophat/${_base}"
 license=(Apache)
 depends=(python-pytest python-colored)
 makedepends=(python-build python-installer python-poetry-core)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a03568894460d9a3f525be5e499fd9067e8519b60934e406132a5b7afbea4e3ac848dd0c006bb135fc79f7fd2f4c1e0467c4194b19553039f3c3e6006fc2e06f')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('24eaf1f1d1844f82a94ccb85b008fc97298a5f81c709528ee4b1d63633b00ab7a5766ef019dcb8faaa98f1105acdb2dbd8a70aad6f74f96154939768682c95a0')
 
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
