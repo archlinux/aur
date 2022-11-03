@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FELLA
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Interpretation and enrichment for metabolomics data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-visnetwork
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7c0f9582907b061f80628339b2e57485d83cae7ef804ccddba9303d55547f048')
+sha256sums=('e1a3d0a7b5ecc243e928211fc1d5078f9107baabb4b98d266e3ea7a4ec4f3427')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
