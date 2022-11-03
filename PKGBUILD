@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r6724.42ed0e554
+pkgver=r6773.b654af06f
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
@@ -27,12 +27,13 @@ pkgver() {
 
 build() {
   cmake -B build -S "$_pkgname" -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DTNL_USE_MARCH_NATIVE_FLAG=OFF \
     -DTNL_USE_OPENMP=ON \
     -DTNL_USE_MPI=ON \
     -DTNL_USE_CUDA=ON \
-    -DTNL_USE_CUDA_ARCH="3.5 Maxwell Pascal Turing Volta Ampere" \
+    -DCMAKE_CUDA_ARCHITECTURES="all" \
     -DTNL_BUILD_BENCHMARKS=ON \
     -DTNL_BUILD_EXAMPLES=ON \
     -DTNL_BUILD_TOOLS=ON \
@@ -51,8 +52,9 @@ build() {
 
   # build documentation samples in a separate builddir
   cmake -B build-doc -S "$_pkgname" -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DTNL_USE_MARCH_NATIVE_FLAG=OFF \
     -DTNL_USE_OPENMP=ON \
     -DTNL_USE_MPI=ON \
     -DTNL_USE_CUDA=$TNL_USE_CUDA \
@@ -78,8 +80,9 @@ check() {
   fi
 
   cmake -B build-tests -S "$_pkgname" -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DTNL_USE_MARCH_NATIVE_FLAG=OFF \
     -DTNL_USE_OPENMP=ON \
     -DTNL_USE_MPI=ON \
     -DTNL_USE_CUDA=$TNL_USE_CUDA \
