@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RbcBook1
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Support for Springer monograph on Bioconductor'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-graph
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('84381a8b782b3bbf5e07ee93915b4b8a776cd5995572ce0c79f2cbd0252473c7')
+sha256sums=('143eb24dd985f8b91257701851d606573b30ad9500134bf43fbbb63bc170ad19')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
