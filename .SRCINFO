@@ -1,0 +1,16 @@
+pkgbase = sddm-swish-zh
+	pkgdesc = swish-zh is a login theme for SDDM Display Manager.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Meow-2/Swish
+	arch = any
+	license = GPL3
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = sddm
+	depends = plasma-framework
+	source = sddm-swish-zh.tar.gz::https://github.com/Meow-2/Swish/archive/refs/tags/1.0.tar.gz
+	md5sums = c42620c36097b1c28345eae982184e00
+
+pkgname = sddm-swish-zh
