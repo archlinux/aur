@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-github-binary-upload"
-pkgver="0.1.9"
+pkgver="0.1.10"
 pkgrel="1"
 pkgdesc="A Python package which creates simple interactive menus on the command line."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-requests" "python-yacl")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/github-binary-upload/archive/v${pkgver}.tar.gz")
-sha256sums=("77aabb5a9c5179602d0661c1122528fb442ad4a623c42acd56f470cc55671cbb")
+sha256sums=("90238b6d6273f1532e20274a0b7ff9dc18eaa1eb1c58ca527fe7a44fb5800897")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
