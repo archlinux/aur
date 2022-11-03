@@ -1,10 +1,11 @@
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Zeph <zeph33@gmail.com>
-# Maintainer: LSUtigers3131
+# Contributor: LSUtigers3131
 # https://gitlab.manjaro.org/packages/extra/pamac
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=10.4.2
+pkgver=10.4.3
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -20,7 +21,7 @@ provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 install=pamac.install
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('1ec8fa2a555bb407aab473208d4c07363c0023e03c06475c3097c79b98aca856')
+sha256sums=('a58c47f43599fd6e8db5adbd0d52345df220bd7a9d6acef130c3b3219f00ee14')
 
 _srcdir="$_pkgname-v$pkgver"
 
