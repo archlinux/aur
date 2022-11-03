@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sechm
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='sechm: Complex Heatmaps from a SummarizedExperiment'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6c6713c5a6abd942fdc06095be3b9aa6cf0d43aa8a449825054a55ea74a335e6')
+sha256sums=('146c3782ac56261b04b154cdf74c79368eed686be16a9ec13dd407ae27ab8d88')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
