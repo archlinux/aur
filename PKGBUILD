@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CHRONOS
-_pkgver=1.24.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='CHRONOS: A time-varying method for microRNA-mediated sub-pathway enrichment analysis'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f7d3dcf55cf74ffcb628c8916f9dff942c39716756b06e9c403601e69a472f6')
+sha256sums=('5c9124f7fed2eb3b23e6809e330ff057086635734f979a1a0a6c0e41014d7c2a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
