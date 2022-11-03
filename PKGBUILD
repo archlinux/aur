@@ -3,7 +3,7 @@
 pkgname=sddm-swish-zh
 pkgver=1.0
 pkgrel=1
-pkgdesc="swish-zh is a login theme for SDDM Display Manager."
+pkgdesc="A login theme for SDDM Display Manager."
 arch=('any')
 url="https://github.com/Meow-2/Swish"
 license=('GPL3')
