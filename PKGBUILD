@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyepico
-_pkgver=1.4.2
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='ShinyÉPICo'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -47,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3574dac3c4b082cdaec74238154244fbf21aa3c54a78c0f02e26ad81759d06df')
+sha256sums=('0d962138e3f39a8797261a7894c69469a1fb976152905f9994ad7093142daa02')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
