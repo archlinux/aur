@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellTrails
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Reconstruction, visualization and analysis of branching trajectories'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-scran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6095c8e03e91b42fa269bc6a3d0c386659f0450e423404ccf79a4b95569cb987')
+sha256sums=('3e8f86da3d9f43e5078826a287dabbb4292dcc7611c5d735d2508c7b7db95c0a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
