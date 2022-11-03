@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNPhood
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='SNPhood: Investigate, quantify and visualise the epigenomic neighbourhood of SNPs using NGS data'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-snphooddata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4afc2d6ef13af1a5e813911d7f65ad8dec5e0eb3db9783d8605dded79966d8a0')
+sha256sums=('a2253c90fe36c6747bcf7680b8da7b82d3f124290e86adea60e2d274a28dc04e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
