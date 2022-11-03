@@ -1,6 +1,6 @@
 pkgbase = r-variantexperiment
 	pkgdesc = A RangedSummarizedExperiment Container for VCF/GDS Data with GDS Backend
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VariantExperiment
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-variantexperiment
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantExperiment_1.10.0.tar.gz
-	sha256sums = 1bd75063e79f127e6b69fa6cf3b0c30852751816c4b1a8abcd34c62272a5b99f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantExperiment_1.12.0.tar.gz
+	sha256sums = d22e10e101a4d22faa0f6cf7211a5209428627387674d74006c0602994072a89
 
 pkgname = r-variantexperiment
