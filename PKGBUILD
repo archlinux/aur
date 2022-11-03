@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffcoexp
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Differential Co-expression Analysis'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-geoquery
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aec9693fb1fd79eaa5a5759d335e3bb0dc6934019c458cb4b74983bc57e82f51')
+sha256sums=('0eb36fff0dcccc134863eaec271d32bfc01d949fa6a74b9c472e264f93d5f3dc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
