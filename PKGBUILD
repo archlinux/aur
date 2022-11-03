@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proBatch
-_pkgver=1.11.0
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Tools for Diagnostics and Corrections of Batch Effects in Proteomics'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a6a93ce35b0e25bce3e0d1c493ba3bb47a94355a4e0b627b63d7b87931fd2689')
+sha256sums=('33a9b8acb3215afb162a7dce1b2d753d7181141f7071fe520472f62fdfcaa5fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
