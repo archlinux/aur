@@ -1,5 +1,5 @@
 pkgname=mingw-w64-expat
-pkgver=2.4.9
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="An XML parser library (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
 source=("http://downloads.sourceforge.net/expat/expat-${pkgver}.tar.bz2")
-sha512sums=('fdfdc57dd11541eb307b38bd97ec84f78012c7b48fafc5c879b4b8c768cabfbcd7652ccec11e870bf31fee8f68174b22cf632de12c8c46601277f6750f90c192')
+sha512sums=('22fd904d75aab7506a85c03519b9cf79e44898c8e1ba6abf6cb7f95de71b8e63a7e2d5cf4395e3627d46035ea29342b3e631a8809fef8aad3f59976dc075ad17')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
