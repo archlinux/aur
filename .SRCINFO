@@ -1,6 +1,6 @@
 pkgbase = r-mirnatap
 	pkgdesc = miRNAtap: microRNA Targets - Aggregated Predictions
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/miRNAtap
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-mirnatap
 	optdepends = r-org.hs.eg.db
 	optdepends = r-testthat
 	optdepends = r-topgo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRNAtap_1.30.0.tar.gz
-	sha256sums = 3685d2f37c23bbc089621ecb0b74d4f88ab830e129d436dd6f507cc4f60f2c9c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRNAtap_1.32.0.tar.gz
+	sha256sums = ca0da51e25c2a964d20e3cbfacf817720e4857e6de54e42b646ec2c31566fd16
 
 pkgname = r-mirnatap
