@@ -1,0 +1,13 @@
+pkgbase = interactively-git
+	pkgdesc = interactively author commands - useful for awk, sed, jq
+	pkgver = r6.d2daf03
+	pkgrel = 1
+	url = https://github.com/bigH/interactively
+	arch = any
+	license = custom
+	depends = fzf
+	depends = bash
+	source = git+https://github.com/bigH/interactively
+	sha256sums = SKIP
+
+pkgname = interactively-git
