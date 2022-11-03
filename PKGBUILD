@@ -132,7 +132,7 @@ prepare_submodule() {
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qMasonry.url "$srcdir/masonry-cc"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qJSonRPCPlugin.url "$srcdir/JSonRPCPlugin"
   git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qCanupo/contrib/dlib.url "$srcdir/dlib"
-  git -C "$srcdir/cloudcompare" submodule update --init
+  git -C "$srcdir/cloudcompare" -c protocol.file.allow=always submodule update --init
 }
 source+=(
   "libE57Format::git+https://github.com/asmaloney/libE57Format"
