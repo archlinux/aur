@@ -7,7 +7,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 
 _pkgname=autofdo
 pkgname=$_pkgname-git
-pkgver=0.1.r174.g963a8c1
+pkgver=0.1.r202.gd2313ec
 pkgrel=1
 pkgdesc="a tool to convert perf.data profile to AutoFDO profile that can be used by GCC and LLVM"
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
   git -C "$srcdir/autofdo" config submodule.third_party/perf_data_converter.url "$srcdir/perf_data_converter"
   git -C "$srcdir/autofdo" config submodule.third_party/glog.url "$srcdir/glog"
   git -C "$srcdir/autofdo" config submodule.third_party/googletest.url "$srcdir/googletest"
-  git -C "$srcdir/autofdo" submodule update --init --progress --recursive
+  git -C "$srcdir/autofdo" -c protocol.file.allow=always submodule update --init --progress --recursive
 }
 
 pkgver() {
