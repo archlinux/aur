@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname=sui-git
 _name=sui
-pkgver=r4264.75d822393
+pkgver=r0.14.0
 pkgrel=1
 pkgdesc='Next-generation smart contract platform with high throughput'
 url='https://github.com/MystenLabs/sui'
@@ -22,7 +22,7 @@ _nproc=2
 
 pkgver() {
   cd "$srcdir/$_name"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s" "$(git tag --sort=-taggerdate    --list 'devnet-*' | sed s/devnet-// | head -1)"
 }
 
 prepare() {
