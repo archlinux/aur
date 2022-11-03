@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=1.30.1
+pkgver=1.31.0
 pkgrel=1
-pkgdesc="System performance and usage monitoring tool"
+pkgdesc="Multi-featured system monitor."
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
 license=('GPL3')
-depends=('bash' 'dmidecode' 'gtk3' 'iproute2' 'polkit' 'python-cairo' 'python-gobject'
-         'systemd' 'util-linux')
+depends=('dmidecode' 'gtk3' 'iproute2' 'polkit' 'python-cairo' 'python-gobject'
+         'util-linux')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('327b2206bb9aa7c9da9eac3ab31c71eb26f3d1ae3fa110447a72c500193ccda8')
+sha256sums=('6e6cc566339c39ccb639e5e5ec528e5cccc50d44abb0ba9a77301602df9d61f6')
 
 build() {
   cd "$pkgname-$pkgver"
