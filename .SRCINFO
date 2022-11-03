@@ -1,6 +1,6 @@
 pkgbase = r-plethy
 	pkgdesc = R framework for exploration and analysis of respirometry data
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/plethy
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-plethy
 	depends = r-streamer
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/plethy_1.34.0.tar.gz
-	sha256sums = 8228060a7e263a7d19cfab2d32402b8c53066e11aac29271ff8280f5630c43d2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plethy_1.36.0.tar.gz
+	sha256sums = f9b7d06badae7bfee7ee56efd7f7da2f5d78c12eadf9e8ccdf90a0960d4f2225
 
 pkgname = r-plethy

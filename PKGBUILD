@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plethy
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='R framework for exploration and analysis of respirometry data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8228060a7e263a7d19cfab2d32402b8c53066e11aac29271ff8280f5630c43d2')
+sha256sums=('f9b7d06badae7bfee7ee56efd7f7da2f5d78c12eadf9e8ccdf90a0960d4f2225')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
