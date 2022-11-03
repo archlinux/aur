@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genefu
-_pkgver=2.28.0
+_pkgver=2.30.0
 pkgname=r-${_pkgname,,}
-pkgver=2.28.0
+pkgver=2.30.0
 pkgrel=1
 pkgdesc='Computation of Gene Expression-Based Signatures in Breast Cancer'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3158e57397e4a8c0ad5df98e15618022bc58d90da27c491a50fb975f200678a8')
+sha256sums=('b396fcc72863fdfd91652f459013f6a25075fe0235699dd6e2d3e818c15f2068')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
