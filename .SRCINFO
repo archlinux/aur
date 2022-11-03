@@ -1,6 +1,6 @@
 pkgbase = r-potra
 	pkgdesc = PoTRA: Pathways of Topological Rank Analysis
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PoTRA
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-potra
 	optdepends = r-metap
 	optdepends = r-repmis
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PoTRA_1.12.0.tar.gz
-	sha256sums = b3889cd8dce87bd6d0569a7aa642e6dc5a9fde3a5e38cb4a9e17695781fc234d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PoTRA_1.13.0.tar.gz
+	sha256sums = 4ed69460c06ead0bc014de665d9ca34cfc245bf3a3c0a17ebf44ac66796862a8
 
 pkgname = r-potra
