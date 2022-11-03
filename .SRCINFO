@@ -1,6 +1,6 @@
 pkgbase = r-ontoproc
 	pkgdesc = processing of ontologies of anatomy, cell lines, and so on
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ontoProc
 	arch = any
@@ -20,6 +20,7 @@ pkgbase = r-ontoproc
 	depends = r-rgraphviz
 	depends = r-s4vectors
 	depends = r-shiny
+	depends = r-summarizedexperiment
 	optdepends = r-biocstyle
 	optdepends = r-celldex
 	optdepends = r-knitr
@@ -28,7 +29,7 @@ pkgbase = r-ontoproc
 	optdepends = r-rmarkdown
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ontoProc_1.18.0.tar.gz
-	sha256sums = d7c362d1dc5d2137361247f9aa85dbd72493925007d215faa47e7e42a63f8c07
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ontoProc_1.20.0.tar.gz
+	sha256sums = 20932f7f52047ae2117f8fa57f54c16bb5c2543ec602e1870b28a4a66b22e8dc
 
 pkgname = r-ontoproc
