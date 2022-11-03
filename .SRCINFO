@@ -1,6 +1,6 @@
 pkgbase = r-italics
 	pkgdesc = ITALICS
-	pkgver = 2.56.0
+	pkgver = 2.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ITALICS
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-italics
 	optdepends = r-pd.mapping250k.nsp
 	optdepends = r-pd.mapping250k.sty
 	optdepends = r-pd.mapping50k.hind240
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ITALICS_2.56.0.tar.gz
-	sha256sums = 659ac41e07be074223784a25e5d9ab6c680845a49d158a95c8371ee220771394
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ITALICS_2.58.0.tar.gz
+	sha256sums = 7abd153b4dbd1aa2402680158fef694d2b570d59a8404e04a9b6cffe133c233d
 
 pkgname = r-italics
