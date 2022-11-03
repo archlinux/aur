@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=exomePeak2
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Bias-aware Peak Calling and Quantification for MeRIP-Seq'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -40,7 +40,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('622e1dcec839e7b5257eab9558339785cbd70c89c014fe4dd2fab7e664d425ef')
+sha256sums=('fa4b4c9d3e06a7c54e59f25434363dafe68f1345f3ca9d100acb0fbc0a1e14c9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

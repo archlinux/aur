@@ -1,7 +1,7 @@
 pkgbase = r-exomepeak2
 	pkgdesc = Bias-aware Peak Calling and Quantification for MeRIP-Seq
-	pkgver = 1.8.1
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/exomePeak2
 	arch = any
 	license = GPL
@@ -31,7 +31,7 @@ pkgbase = r-exomepeak2
 	optdepends = r-knitr
 	optdepends = r-rmariadb
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/exomePeak2_1.8.1.tar.gz
-	sha256sums = 622e1dcec839e7b5257eab9558339785cbd70c89c014fe4dd2fab7e664d425ef
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/exomePeak2_1.10.0.tar.gz
+	sha256sums = fa4b4c9d3e06a7c54e59f25434363dafe68f1345f3ca9d100acb0fbc0a1e14c9
 
 pkgname = r-exomepeak2
