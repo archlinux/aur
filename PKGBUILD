@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
-pkgver=3.3.0
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
 url="https://wiki.shibboleth.net/confluence/display/SP3/Home"
 license=(Apache)
@@ -32,14 +32,12 @@ optdepends=(
 )
 source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkgver.tar.gz.asc"
-        "0001-SSPCPP-948-mod_shib-warning-about-Apache-1.3-in-log.patch"
         "apache.conf"
         "shibboleth-sp.sysusers"
         "shibboleth-sp.tmpfiles"
         "shibd.service")
-sha256sums=('7aafb7d80fd00f3a052e15862dc9beca34a1284935092cd46ef57fde352b827d'
+sha256sums=('02c2eb2c723969847ab4f9ca4e843725699750301a235f76580ab9028d990398'
             'SKIP'
-            'ee11e0022848a1aec46c38bb64261dbc9f25f2629659f0ca1820a8a463567f95'
             'ba57a546c213e06c8ff79f7de3daf1927a04ba0dd24f90e6343c2783c9a09c56'
             '8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db'
             '425b561c7e3c582aae635e2f41448cdf10e393ab39209668ab3063fd13acebcd'
@@ -67,7 +65,6 @@ backup=(etc/shibboleth/attrChecker.html
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -Np1 < "$srcdir"/0001-SSPCPP-948-mod_shib-warning-about-Apache-1.3-in-log.patch
 }
 
 build() {
