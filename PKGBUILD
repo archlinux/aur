@@ -2,7 +2,7 @@
 # Contributor: Faye Jackson <justalittleepsilon ant gmail dot com>
 
 pkgname=pleroma-bin
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.'
 url='https://pleroma.social/'
@@ -17,9 +17,9 @@ provides=(pleroma)
 conflicts=(pleroma)
 backup=('etc/pleroma/config.exs')
 install=pleroma.install
-source_x86_64=("pleroma-x86_64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/209298/artifacts/download")
-source_aarch64=("pleroma-aarch64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/209302/artifacts/download")
-source_armv7h=("pleroma-armv7h-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/209300/artifacts/download")
+source_x86_64=("pleroma-x86_64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220705/artifacts/download")
+source_aarch64=("pleroma-aarch64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220709/artifacts/download")
+source_armv7h=("pleroma-armv7h-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220707/artifacts/download")
 source=('pleroma.sysusers'
         'pleroma.tmpfiles'
         'pleroma.service'
@@ -28,9 +28,9 @@ sha256sums=('4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979'
             'b5e844fab22dc4fafdec09c1f14437a06d3a12fae753fc0be968d22eaddfd6dc'
             '268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed'
             'e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104')
-sha256sums_x86_64=('7221965fde2f6692745e0adfcb2332c14de9ef5b73f5fd336af539d914859338')
-sha256sums_aarch64=('5aeede9a594a6b6688a98d0309d884077e42f174a11cbc3c428241c92056b350')
-sha256sums_armv7h=('45f369bf70ca1640b7159814631d40c4104e39f3b5499214ceadfaf1bec14a20')
+sha256sums_x86_64=('8b4e2ab17362c7b0ed3ca685e19d578ad842ac00cde2db7d8c54dfd5a4e05891')
+sha256sums_aarch64=('e432310df95ae4d915a02082252df0346ca7e112ffa4484b6a05075778c71338')
+sha256sums_armv7h=('c31dd8bb62728887cfe5488ef5818dc5e57e90f6443fbcfd501ea12044d0a94c')
 
 package() {
     cd "$srcdir"
