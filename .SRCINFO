@@ -1,6 +1,6 @@
 pkgbase = r-quantiseqr
 	pkgdesc = Quantification of the Tumor Immune contexture from RNA-seq data
-	pkgver = 1.4.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/quantiseqr
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-quantiseqr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/quantiseqr_1.4.1.tar.gz
-	sha256sums = 6ad7cf92b64370050b962996d62c9c76fdcd2019b132ac1359aed8e12c7e797b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/quantiseqr_1.6.0.tar.gz
+	sha256sums = 9c5056080dd02271f107b7cc0f7a6c872353716ce65b5d1640712ffe0724b95b
 
 pkgname = r-quantiseqr

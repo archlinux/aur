@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=quantiseqr
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Quantification of the Tumor Immune contexture from RNA-seq data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6ad7cf92b64370050b962996d62c9c76fdcd2019b132ac1359aed8e12c7e797b')
+sha256sums=('9c5056080dd02271f107b7cc0f7a6c872353716ce65b5d1640712ffe0724b95b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
