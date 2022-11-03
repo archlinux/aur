@@ -1,6 +1,6 @@
 pkgbase = r-drimseq
 	pkgdesc = Differential transcript usage and tuQTL analyses with Dirichlet-multinomial model in RNA-seq
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DRIMSeq
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-drimseq
 	optdepends = r-knitr
 	optdepends = r-pasillatranscriptexpr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DRIMSeq_1.24.0.tar.gz
-	sha256sums = 94a4fd7143ff3015ebb830445de6517394cb9fb976b5f201f76a10190722f0b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DRIMSeq_1.26.0.tar.gz
+	sha256sums = 9c98d07557a2ff00fdbb778cc9375f5fd3cbffbe2fa85c860303ba9496774332
 
 pkgname = r-drimseq
