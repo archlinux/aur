@@ -1,0 +1,19 @@
+pkgbase = colloid-kde-theme-git
+	pkgdesc = colloid theme for KDE Plasma
+	pkgver = r29.393381b
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Colloid-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for included plasma theme
+	optdepends = kvantum-qt5: for included kvantum theme
+	optdepends = sddm: for included sddm theme
+	optdepends = whitesur-icon-theme-git: matching icon theme
+	optdepends = whitesur-cursor-theme-git: matching cursor theme
+	optdepends = whitesur-gtk-theme-git: matching gtk theme
+	provides = colloid-kde-theme
+	source = git+https://github.com/vinceliuice/Colloid-kde.git
+	sha256sums = SKIP
+
+pkgname = colloid-kde-theme-git
