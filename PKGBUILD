@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=zap-soundboard
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Play sounds from a soundboard"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'gjs' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gs
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/${pkgname%-soundboard}-$pkgver.tar.gz)
-b2sums=('7b0ba7a9df18cabab0cf314d3899e34e0e56f363f39568fb6828c2567474168090e408ca707aebd1243e66fd18ae260a2036f7921acee917468ab07c20e7103e')
+b2sums=('1aa079aad3d5af9cffd682e94050aad431e020b5b2e19fbaf05697e1022a298579d27b69eb97d691b3b89b07d8958adcaa4b8c17aa87b0425c2292cfefb890d7')
 
 build() {
   arch-meson "${pkgname%-soundboard}-$pkgver" build

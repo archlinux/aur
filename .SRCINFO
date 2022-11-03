@@ -1,6 +1,6 @@
 pkgbase = zap-soundboard
 	pkgdesc = Play sounds from a soundboard
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://gitlab.com/rmnvgr/zap
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = zap-soundboard
 	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	depends = tracker3
-	source = https://gitlab.com/rmnvgr/zap/-/archive/1.2.1/zap-1.2.1.tar.gz
-	b2sums = 7b0ba7a9df18cabab0cf314d3899e34e0e56f363f39568fb6828c2567474168090e408ca707aebd1243e66fd18ae260a2036f7921acee917468ab07c20e7103e
+	source = https://gitlab.com/rmnvgr/zap/-/archive/1.2.2/zap-1.2.2.tar.gz
+	b2sums = 1aa079aad3d5af9cffd682e94050aad431e020b5b2e19fbaf05697e1022a298579d27b69eb97d691b3b89b07d8958adcaa4b8c17aa87b0425c2292cfefb890d7
 
 pkgname = zap-soundboard
