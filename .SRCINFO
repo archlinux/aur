@@ -1,6 +1,6 @@
 pkgbase = r-inspect
 	pkgdesc = Modeling RNA synthesis, processing and degradation with RNA-seq data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/INSPEcT
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-inspect
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/INSPEcT_1.26.0.tar.gz
-	sha256sums = 5da53f25bb522a9a3b44855adabdcf08759becfe2c65a930fda8f10ef741a84b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/INSPEcT_1.28.0.tar.gz
+	sha256sums = c3cf37023eed873232c06ffc334dd17e7e882a359ca9ab4d48d909abac5acc88
 
 pkgname = r-inspect
