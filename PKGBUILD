@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=UNDO
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Unsupervised Deconvolution of Tumor-Stromal Mixed Expressions'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-nnls
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d9f7233f0745dfa1a22f78dbd6f4c44e4230ecabb4e3ac1c6dd932e045535a39')
+sha256sums=('00941a57772da29996fa036beb90f1c82506fa30a1ef0c494d6648b21b505d7a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
