@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chipenrich.data
-_pkgver=2.20.0
+_pkgver=2.21.0
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
-pkgrel=3
+pkgver=2.21.0
+pkgrel=1
 pkgdesc='Companion package to chipenrich'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -45,7 +45,7 @@ optdepends=(
   r-txdb.rnorvegicus.ucsc.rn6.refgene
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('423388ff4ad127c57913cb571fb3b5be600585ef0cf0fb1d02806f661712e7c1')
+sha256sums=('24387aba1d5e0b302c1b20aca91e96c9d5f59a87d2faecf1b041987f95a8b141')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
