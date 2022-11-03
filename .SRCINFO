@@ -1,6 +1,6 @@
 pkgbase = slowmovideo-git
 	pkgdesc = Video slow motion effect via interpolation
-	pkgver = 0.6.r8.g279026a
+	pkgver = 0.6.1.r0.g6491047
 	pkgrel = 1
 	url = http://slowmovideo.granjow.net/index.html
 	arch = i686
@@ -15,10 +15,7 @@ pkgbase = slowmovideo-git
 	conflicts = slowmovideo
 	source = git+https://github.com/slowmoVideo/slowmoVideo.git
 	source = git+https://github.com/slowmoVideo/libsvflow.git
-	source = OpenCV4_compile.patch
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = bb8ca1d30cdeb5922c783d27c057ae1b
 
 pkgname = slowmovideo-git
-

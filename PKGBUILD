@@ -9,7 +9,7 @@
 
 
 pkgname=slowmovideo-git
-pkgver=0.6.r8.g279026a
+pkgver=0.6.1.r0.g6491047
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
@@ -21,19 +21,13 @@ makedepends=('cmake' 'git')
 provides=('slowmovideo')
 conflicts=('slowmovideo')
 source=('git+https://github.com/slowmoVideo/slowmoVideo.git'
-	'git+https://github.com/slowmoVideo/libsvflow.git'
-	'OpenCV4_compile.patch')
+	'git+https://github.com/slowmoVideo/libsvflow.git')
 md5sums=('SKIP'
-         'SKIP'
-         'bb8ca1d30cdeb5922c783d27c057ae1b')
-#install=$pkgname.install
+         'SKIP')
 
 prepare(){
   git -C slowmoVideo config submodule.src/lib/libsvflow.url "${srcdir}"/libsvflow
-  git -C slowmoVideo submodule update --init --recursive --remote
-#  git -C slowmoVideo apply "${srcdir}"/OpenCV4_compile.patch
-  cd "${srcdir}"
-  mkdir -p build
+  git -C slowmoVideo -c protocol.file.allow=always submodule update --init --recursive --remote
 }
 
 pkgver() {
@@ -41,12 +35,11 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}"/build
   export LDFLAGS="-lX11 ${LDFLAGS}"
-  cmake ../slowmoVideo -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
-  make 
+  cmake -S slowmoVideo -B build -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
