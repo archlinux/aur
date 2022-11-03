@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnem
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Training of logical models from indirect measurements of perturbation experiments'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('22a4bfa37f0eb91f43aadfe46d6b4a7760b6a11fef9df074d249e0047c9f03e2')
+sha256sums=('270490176c99c7a92cd09fb85987537c04bef1de8065f9a1dca36024a1b0fd6c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
