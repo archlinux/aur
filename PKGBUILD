@@ -2,7 +2,7 @@
 
 _pkgname=spdlog
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Very fast, header-only/compiled, C++ logging library (mingw-w64)'
 url="https://github.com/gabime/${_pkgname}/"
@@ -16,18 +16,13 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('697f91700237dbae2326b90469be32b876b2b44888302afbc7aceb68bcfe8224')
+sha256sums=('ca5cae8d6cac15dae0ec63b21d6ad3530070650f68076f3a4a862ca293a858bb')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DSPDLOG_BUILD_BENCH=OFF -DSPDLOG_FMT_EXTERNAL=ON
 	-DSPDLOG_WCHAR_FILENAMES=OFF -DSPDLOG_WCHAR_SUPPORT=OFF -DSPDLOG_ENABLE_PCH=ON -DSPDLOG_BUILD_EXAMPLE=OFF )
-
-prepare() {
-	cd "${_srcdir}"
-	find . -iname '*.cpp' -type f -exec sed -i 's/<Windows.h>/<windows.h>/' '{}' \;
-}
 
 build() {
 	for _arch in ${_architectures}; do
@@ -42,8 +37,7 @@ build() {
 
 check() {
 	for _arch in ${_architectures}; do
-		# Only compile-time tests enabled.
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=ON
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=ON -DSPDLOG_BUILD_TESTS_HO=ON
 		cmake --build "build-${_arch}"
 		cmake --build "build-${_arch}" --target test
 	done
