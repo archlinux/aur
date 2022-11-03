@@ -1,6 +1,6 @@
 pkgbase = r-metabocoreutils
 	pkgdesc = Core Utils for Metabolomics Data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MetaboCoreUtils
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-metabocoreutils
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaboCoreUtils_1.4.0.tar.gz
-	sha256sums = 6afe25f2485b8fb8a0b1391636a32db360a87586737218c0cfff33603f446c53
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaboCoreUtils_1.6.0.tar.gz
+	sha256sums = 5b35f5c58c8c6a5daf26a79330c5e18b125b65f2f0e40dbab441473fad1ec593
 
 pkgname = r-metabocoreutils
