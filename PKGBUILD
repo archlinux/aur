@@ -44,7 +44,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  ./configure --sysconfdir=/etc --prefix=/usr --localstatedir=/var \
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libdir=/usr/lib32 \
       --disable-static --with-builtin=dso --enable-null --disable-oss \
       --enable-alsa --enable-pulse \
