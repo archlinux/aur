@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Glimma
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Interactive HTML graphics'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df6f7fd11e6c0913a8527d367624dd2ad21feedd2feff0a68262c19d805727cc')
+sha256sums=('42bcc0390167920fd1b5c58815fcd1beaddaef8aa9aabf315c99f6d1ee5253bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
