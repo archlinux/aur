@@ -1,6 +1,6 @@
 pkgbase = r-sangerseqr
 	pkgdesc = Tools for Sanger Sequencing Data in R
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sangerseqR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-sangerseqr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sangerseqR_1.32.0.tar.gz
-	sha256sums = be56f8b963f99e888fa4060c9ac2be934b726b4c2984455b10d418898637308b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sangerseqR_1.34.0.tar.gz
+	sha256sums = bc0e635a56f44420a4504e1b711ff07bb60355b83cfe17f020e72b4438ee1fc5
 
 pkgname = r-sangerseqr
