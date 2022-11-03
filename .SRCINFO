@@ -1,6 +1,6 @@
 pkgbase = r-smite
 	pkgdesc = Significance-based Modules Integrating the Transcriptome and Epigenome
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SMITE
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-smite
 	depends = r-scales
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SMITE_1.24.0.tar.gz
-	sha256sums = 2bfc90b2b7f6aec354a302f9e2389e1f81ad69b63428d7d9fbaec5ebd5ef984e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SMITE_1.26.0.tar.gz
+	sha256sums = 6399cc7b7a2ff45d95246d67a792c640d69fcd9537b6f051162d4ac917647d4a
 
 pkgname = r-smite
