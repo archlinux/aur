@@ -1,0 +1,19 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 9b8d7ff..d47bb1a 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -18,7 +18,13 @@ classifiers = [
+ include = [
+     "json_schema_for_humans/*.py",
+     "json_schema_for_humans/schema/*.py",
+-    "json_schema_for_humans/templates/**"
++    "json_schema_for_humans/templates/js/*.html",
++    "json_schema_for_humans/templates/js/*.css",
++    "json_schema_for_humans/templates/js/*.js",
++    "json_schema_for_humans/templates/flat/*.html",
++    "json_schema_for_humans/templates/flat/*.css",
++    "json_schema_for_humans/templates/md/*.md",
++    "json_schema_for_humans/templates/md_nested/*.md",
+ ]
+ 
+ 

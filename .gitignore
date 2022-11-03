@@ -2,4 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!include-schema.patch
+!include-templates.patch
