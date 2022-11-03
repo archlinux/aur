@@ -1,6 +1,6 @@
 pkgbase = r-celltree
 	pkgdesc = Inference and visualisation of Single-Cell RNA-seq data as a hierarchical tree structure
-	pkgver = 1.26.0
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cellTree
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-celltree
 	optdepends = r-knitr
 	optdepends = r-org.hs.eg.db
 	optdepends = r-tools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellTree_1.26.0.tar.gz
-	sha256sums = 5b2d0029d1e8dd68a66e768963ef2328caa2b319096389d677d2b2457801ee7e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellTree_1.27.0.tar.gz
+	sha256sums = 4b27bcd2d0384d927ba8655537edf973c98c3bc381ef3b671c40b6c55c2ad979
 
 pkgname = r-celltree
