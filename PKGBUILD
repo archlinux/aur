@@ -71,7 +71,7 @@ prepare() {
   do
     git config submodule."External/$f".url "$srcdir/$f"
   done
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
