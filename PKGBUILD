@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=decompTumor2Sig
-_pkgver=2.12.0
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Decomposition of individual tumors into mutational signatures by signature refitting'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e663212de9cbeb241207f99986e0fedf16922b951c35d725d3480bf5d64a0f12')
+sha256sums=('0dd71d02409117aa39c43e397930702721620711a85d0d21a4a890e9f9abfb29')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
