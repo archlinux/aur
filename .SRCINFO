@@ -1,6 +1,6 @@
 pkgbase = r-nebulosa
 	pkgdesc = Single-Cell Data Visualisation Using Kernel Gene-Weighted Density Estimation
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Nebulosa
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-nebulosa
 	optdepends = r-scran
 	optdepends = r-seuratobject
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Nebulosa_1.6.0.tar.gz
-	sha256sums = a31475fc931530143848250cd599201070dbe5dd169eb7a36cc2ba7bb75e6744
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Nebulosa_1.8.0.tar.gz
+	sha256sums = c6c2e1afb0136c28c291a7516625d983200b054ac7621dade83370e6f77e32c7
 
 pkgname = r-nebulosa
