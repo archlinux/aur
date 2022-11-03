@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=variancePartition
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Quantify and interpret divers of variation in multilevel gene expression experiments'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b9fe9790c06ecb7c945685b8956e20d9f5b772745c3f471f6fd818528ee6172')
+sha256sums=('f45a2ded2fe707ceb699d54ed7f461be2f96cb88030abd4745e0c3ec410ec9d6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
