@@ -2,7 +2,7 @@
 _base=felupe
 pkgname=python-${_base}
 pkgdesc="Finite Element Analysis"
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
@@ -16,7 +16,7 @@ optdepends=('python-meshio: for export mesh'
   'python-sparse: for sparse arrays support'
   'python-einsumt: for multithreaded numpy.einsum support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ec0f564afc28047978b863d306d1d3f67f43badd1959fc23e5a2414da1217a4539ec4c13a6194594ea60755e0e7a5b9fba250551c7b9d1f9a0acb71423d9044f')
+sha512sums=('8041a68d0638eb4f573bec20bd68abe0e722c79318f4192342f89388a71fd2111ee9359b6bf0595ec446c2db0924a0f5e2dfb2ec3b3b48811d93a898f21ada2e')
 
 build() {
   cd ${_base}-${pkgver}
