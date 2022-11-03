@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=eudysbiome
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Cartesian plot and contingency test on 16S Microbial data'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-rsamtools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f5baa445bff92746ed7b8064101fd8a6f15d5de63f0aec91d1edc220440fb3de')
+sha256sums=('af58609cbe8bad61feab74d4e7407595b5823b3c90c8825d600f66b5a91ddd60')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
