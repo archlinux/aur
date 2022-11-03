@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GlobalAncova
-_pkgver=4.14.0
+_pkgver=4.16.0
 pkgname=r-${_pkgname,,}
-pkgver=4.14.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc='Global test for groups of variables via model comparisons'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('641b24765da7bdbc5fa76c9a3edd19e37274c1e99dc4714e432e3a06e8048507')
+sha256sums=('9b638ad642176b857df209ab830c56b4ddf055cb6b167abdd5909dd0d84c6c7c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
