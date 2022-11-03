@@ -1,6 +1,6 @@
 pkgbase = r-schex
 	pkgdesc = Hexbin plots for single cell omics data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/schex
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-schex
 	optdepends = r-shinydashboard
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/schex_1.10.0.tar.gz
-	sha256sums = 5c04e0d1ea3c8ab17e180f736142b33b730df6e14742549a2c12b7d99fd2604f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/schex_1.12.0.tar.gz
+	sha256sums = 30d0726989c79892e399170bf26a5991426d1b2c3db27041fcf0f3e8915bae23
 
 pkgname = r-schex
