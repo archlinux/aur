@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rfPred
-_pkgver=1.34.2
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.2
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Assign rfPred functional prediction scores to a missense variants list'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67a3624e24a9603f841d9f5fb7b95bccdf2f61ae5c4f1f2b230b2ca7376791b1')
+sha256sums=('47464661035fb08d1b3252a688ef6684014efe3ea9409c6c41b7bb8d4df5d58e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
