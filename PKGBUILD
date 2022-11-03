@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 prepare() {
     cd "MEGAsync"
     git config submodule.src/MEGASync/mega.url "../meganz-sdk"
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
     git -C src/MEGASync/mega apply -v "$srcdir/ffmpeg.patch"
 
     cd "src/MEGASync"
