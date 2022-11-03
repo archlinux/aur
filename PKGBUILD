@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SynMut
-_pkgver=1.12.1
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.1
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='SynMut: Designing Synonymously Mutated Sequences with Different Genomic Signatures'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55bebd7ac2e182b205543333c34fd1c56ad638e4a7bb8cb1429e85f904c4b96a')
+sha256sums=('4cd3a234ee28ebb9bcfcefdaef2f54bc77125c0983a9ede78a24b69b8e670537')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
