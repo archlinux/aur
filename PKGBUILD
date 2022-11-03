@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NoRCE
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='NoRCE: Noncoding RNA Sets Cis Annotation and Enrichment'
 arch=('any')
@@ -59,7 +59,7 @@ optdepends=(
   r-txdb.rnorvegicus.ucsc.rn6.refgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('420261627976b1182e7ebd71983b62cf5334abd981ef7a9d8ee4824247d65c9d')
+sha256sums=('4fc73c7a7fec3d66735368f45701ebf7533ac308349acc4bc6bc98cae37db82e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
