@@ -1,6 +1,6 @@
 pkgbase = r-nxtirfcore
 	pkgdesc = Core Engine for NxtIRF: a User-Friendly Intron Retention and Alternative Splicing Analysis using the IRFinder Engine
-	pkgver = 1.2.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NxtIRFcore
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = r-nxtirfcore
 	optdepends = r-rsubread
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NxtIRFcore_1.2.1.tar.gz
-	sha256sums = 9f67c0eacda7af183592934bc5cd4a6db4b8a9fa6fc0870db1bfeac67d024dd6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NxtIRFcore_1.4.0.tar.gz
+	sha256sums = 5f8d43fd6705b896db94c9138b607d432c1b6a4f402f44cca5d061e9b01b22cd
 
 pkgname = r-nxtirfcore
