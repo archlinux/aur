@@ -1,6 +1,6 @@
 pkgbase = r-grridge
 	pkgdesc = Better prediction by use of co-data: Adaptive group-regularized ridge regression
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GRridge
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-grridge
 	depends = r-mvtnorm
 	depends = r-penalized
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GRridge_1.20.0.tar.gz
-	sha256sums = 11c93096b964db9311d9342ec6e1be548dffdef193b9273a208e44f2ad507999
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GRridge_1.22.0.tar.gz
+	sha256sums = c3d99f251e8dc94fce4aa7d6eacaffdc63576f4c7003d2f1a8714cde40a9bc6e
 
 pkgname = r-grridge
