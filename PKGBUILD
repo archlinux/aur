@@ -1,7 +1,7 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
 pkgver='0.7.35'
-pkgrel='0'
+pkgrel='1'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
 url="https://github.com/avahe-kellenberger/nimdow"
@@ -10,12 +10,14 @@ source=("nimdow-$pkgver::$url/releases/download/v$pkgver/nimdow"
         "nimdow-config-$pkgver.toml::$url/raw/v$pkgver/config.default.toml"
         "nimdow-$pkgver.1::$url/raw/v$pkgver/doc/nimdow.1"
         "nimdow.desktop")
+provides=('nimdow')
+conflicts=('nimdow')
 
 package() {
-  install -D "nimdow-$pkgver" "$pkgdir/usr/bin/nimdow"
-  install -D "nimdow-config-$pkgver.toml" "$pkgdir/usr/share/nimdow/config.default.toml"
-  install -D "nimdow-$pkgver.1" "$pkgdir/usr/share/man/man1/nimdow.1"
-  install -D "nimdow.desktop" "$pkgdir/usr/share/xsessions/nimdow.desktop"
+  install -Dm0755 "nimdow-$pkgver" "$pkgdir/usr/bin/nimdow"
+  install -Dm0644 "nimdow-config-$pkgver.toml" "$pkgdir/usr/share/nimdow/config.default.toml"
+  install -Dm0644 "nimdow-$pkgver.1" "$pkgdir/usr/share/man/man1/nimdow.1"
+  install -Dm0644 "nimdow.desktop" "$pkgdir/usr/share/xsessions/nimdow.desktop"
 }
 
 sha256sums=('d6ed2e31a06dba74d4031dda4d9f82fd077823c6393f04a522986bf4e7bc9898'
