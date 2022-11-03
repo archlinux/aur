@@ -5,12 +5,12 @@
 _pkgname=cura
 pkgname=$_pkgname-bin
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
 license=('LGPL3')
 arch=('x86_64')
-depends=('fuse2' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk')
+depends=('fuse2' 'xdg-desktop-portal')
 makedepends=('util-linux')
 provides=($_pkgname)
 conflicts=($_pkgname)
