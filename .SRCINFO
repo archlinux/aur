@@ -1,6 +1,6 @@
 pkgbase = r-regsplice
 	pkgdesc = L1-regularization based methods for detection of differential splicing
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/regsplice
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-regsplice
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/regsplice_1.22.0.tar.gz
-	sha256sums = 4d6a379a894dde15210623fe427c960aa38dbf3593436d47e0378a3d1c8ccf51
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/regsplice_1.24.0.tar.gz
+	sha256sums = bf76158fc958e9758a31a484cf600ddeb9a9a73996beccd732eef8e34b05f71a
 
 pkgname = r-regsplice
