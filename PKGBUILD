@@ -1,6 +1,6 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=moderncli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="Generic command line system utilities and reusable C++ header libs"
@@ -10,7 +10,7 @@ license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::https://codeberg.org/gnutelephony/$pkgname/archive/v$pkgver.tar.gz)
 makedepends=(cmake pkgconf gcc)
 depends=(openssl fmt)
-sha256sums=('b5cbe7653becb4510e79dc4f488a2557ddec549adb609693aa792cdbfb2f6c71') 
+sha256sums=('4401a50c084c57d131c863be4298c42a6b73135845ad028997a97998fec74d9c') 
 
 build() {
     cd "$srcdir/$pkgname"
