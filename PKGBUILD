@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffHic
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Differential Analyis of Hi-C Data'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5a964d0bbd8ff9019ae3d2ba4192e7ecf58346b5b2a064135cb3eb67433243be')
+sha256sums=('5739786199524f9b65f82cb69a6b58ff82b221c06781549b89ffbb450eeccee5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
