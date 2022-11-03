@@ -1,6 +1,6 @@
 pkgbase = r-gcapc
 	pkgdesc = GC Aware Peak Caller
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gcapc
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-gcapc
 	optdepends = r-bsgenome.mmusculus.ucsc.mm10
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gcapc_1.20.0.tar.gz
-	sha256sums = 74e7b4ec8d226b4211490381156343bc8a96c733edf4dad74ed21cff91eec1a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gcapc_1.22.0.tar.gz
+	sha256sums = 3e0181d04e2dce7e61807a90da1cd6a4b507b435b23236b0b1091b24b7336fd8
 
 pkgname = r-gcapc
