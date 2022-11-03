@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msa
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Multiple Sequence Alignment'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-seqinr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d77f8e9bd6d590ce7539c249ff01eaa631ef3ab01064b7d0e2a20e08c9be906e')
+sha256sums=('15f78ef5b4fddc230478db4fc4af2132464a4bbf512ee80f2b3def431ee434d2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
