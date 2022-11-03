@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fCCAC
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='functional Canonical Correlation Analysis to evaluate Covariance between nucleic acid sequencing datasets'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('16a3222fdda4ce537dc610eb846fa4c07dd1a462a367356811a780f264d6c8b6')
+sha256sums=('3bebaeeb0b83d2728865bfbb2290bbfa4373da770971a4ace619ed1ef66a99e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
