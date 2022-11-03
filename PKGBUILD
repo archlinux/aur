@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PhosR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='A set of methods and tools for comprehensive analysis of phosphoproteomics data'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e24af46b24fd6144d042e94b1e09696f91e3d538bbb32a43540b968a0ac9f865')
+sha256sums=('2717d9d2d8b8beb12ec60cb558af90a17758f9bf2fc737f369b8c4169c5011bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
