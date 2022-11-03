@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fcScan
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='fcScan for detecting clusters of coordinates with user defined options'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7cbb1934fdd6896f772dd37725a76038bb318d85ff7867edaa1f70eb88b677b')
+sha256sums=('1e321466f33275e08236499ab2f3db55556adcdd99d96bd8b6a827de25b3037d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
