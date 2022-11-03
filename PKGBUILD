@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEsingle
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='DEsingle for detecting three types of differential expression in single-cell RNA-seq data'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-singlecellexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f3838ccc43eba65df7b638fc1a3b34e0edeaf67ebab0db6eb0568290f0fa823f')
+sha256sums=('57293c48e9fd3c7775d1c6db59aab6a071a2bfbfe44be411165c7e9f09668498')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
