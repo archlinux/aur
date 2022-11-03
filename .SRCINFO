@@ -1,6 +1,6 @@
 pkgbase = r-adductdata
 	pkgdesc = Data from untargeted MS of modifications to Cys34 of serum albumin
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/adductData
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-adductdata
 	depends = r-experimenthub
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/adductData_1.12.0.tar.gz
-	sha256sums = 883c7f2b638a931a1bad69a3259d8127d1e32a9d0af462f97110ee424cb8270b
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/adductData_1.13.0.tar.gz
+	sha256sums = 8728d31929aa8afd3f804b455d535517c5848ca4f58d0b5f55379f27ff1ba5c4
 
 pkgname = r-adductdata
