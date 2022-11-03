@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneAccord
-_pkgver=1.14.0
+_pkgver=1.15.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='Detection of clonally exclusive gene or pathway pairs in a cohort of cancer patients'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f5d7e4f9a9ccd5d87971770e5290114763ad93b206cabd63f5163aeeba1bfc52')
+sha256sums=('a155431556d6560bc661e71284cd762974d11c9ecff10f9c2fdb059a59c396b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
