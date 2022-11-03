@@ -1,6 +1,6 @@
 pkgbase = r-macsr
 	pkgdesc = MACS: Model-based Analysis for ChIP-Seq
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MACSr
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-macsr
 	optdepends = r-macsdata
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MACSr_1.4.0.tar.gz
-	sha256sums = 30bff462b6b8a6ce8520115ad55060decc91e9d3c0b60e4b38d231209afe65d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MACSr_1.6.0.tar.gz
+	sha256sums = 9a09b427888878cd4929b0151198cf9702d21ff9dcd1008159f6202891ac4b4f
 
 pkgname = r-macsr
