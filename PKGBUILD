@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSEAlm
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Linear Model Toolset for Gene Set Enrichment Analysis'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('601bb93d53e1e3be63c283ec5b577c53560c9337851894661e1baf7496696ef9')
+sha256sums=('be84295e15fc87fbe099f8ec2855e6bc9c3f50171d21fef87bb1138110e4fe77')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
