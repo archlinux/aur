@@ -1,6 +1,6 @@
 pkgbase = r-basic4cseq
 	pkgdesc = Basic4Cseq: an R/Bioconductor package for analyzing 4C-seq data
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Basic4Cseq
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-basic4cseq
 	depends = r-genomicranges
 	depends = r-rcircos
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Basic4Cseq_1.32.0.tar.gz
-	sha256sums = b7f7ee1d449453260d83e8710c73f07b8565f47e8ea3eb7d5d76cdfa6693fb92
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Basic4Cseq_1.34.0.tar.gz
+	sha256sums = 7db0e9f57cde0c54a105548a05b476d8c6d828ab218ef399753485c1523bf0ff
 
 pkgname = r-basic4cseq
