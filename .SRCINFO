@@ -1,5 +1,5 @@
 pkgbase = sddm-swish-zh
-	pkgdesc = swish-zh is a login theme for SDDM Display Manager.
+	pkgdesc = A login theme for SDDM Display Manager.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Meow-2/Swish
