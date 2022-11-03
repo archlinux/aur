@@ -1,6 +1,6 @@
 pkgbase = polymc-bin
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/PolyMC/PolyMC
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = polymc-bin
 	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
 	provides = polymc
 	conflicts = polymc
-	noextract = PolyMC-Linux-Qt6-1.4.2.tar.gz
-	source = https://github.com/PolyMC/PolyMC/releases/download/1.4.2/PolyMC-Linux-Qt6-1.4.2.tar.gz
-	sha256sums = 6958a77c5b99a8c1ec1b1ef50982c8668f076c29c450b796b5a0aeb33ac8a95c
+	noextract = PolyMC-Linux-Qt6-1.4.3.tar.gz
+	source = https://github.com/PolyMC/PolyMC/releases/download/1.4.3/PolyMC-Linux-Qt6-1.4.3.tar.gz
+	sha256sums = 28128f53265ecff4b216fcaaf5bf1ca6dab3c18a4dc4cf4527cd80ec6fd4e63f
 
 pkgname = polymc-bin
