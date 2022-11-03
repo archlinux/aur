@@ -3,7 +3,7 @@
 
 pkgname=aws-sam-cli
 pkgver=1.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
 url='https://github.com/aws/aws-sam-cli'
@@ -19,6 +19,9 @@ sha256sums=('07f852e569d21d8ae7b9d9e5fa6362cdac0ac58b92be5ca925faeb4db894ceb8')
 
 prepare() {
   cd "$pkgname-$pkgver"
+
+  # adjust setup.py to not install the conflicting installer/* files - per https://github.com/aws/aws-sam-cli/issues/4375gXy
+  sed -i -r -e 's/(packages=.*"tests")\]\),$/\1, "installer.*", "installer"]),/' setup.py
 }
 
 package() {
