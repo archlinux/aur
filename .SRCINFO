@@ -1,6 +1,6 @@
 pkgbase = r-bacon
 	pkgdesc = Controlling bias and inflation in association studies using the empirical null distribution
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bacon
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-bacon
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bacon_1.24.0.tar.gz
-	sha256sums = 68a7f14edc68c66248e38b688ed120e145b79a1cf89519514222a13c64eb6cff
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bacon_1.26.0.tar.gz
+	sha256sums = a3fc4e8f607ac08a9865cf08732c32147ce30c7e062bd108d29bbbc2d6deb3ec
 
 pkgname = r-bacon
