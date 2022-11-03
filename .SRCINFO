@@ -1,6 +1,6 @@
 pkgbase = r-casper
 	pkgdesc = Characterization of Alternative Splicing based on Paired-End Reads
-	pkgver = 2.30.0
+	pkgver = 2.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/casper
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-casper
 	depends = r-sqldf
 	depends = r-vgam
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/casper_2.30.0.tar.gz
-	sha256sums = 90830b5bc9bd89d1a62a8014eec5a6ad83316083a3c6bc6d6ca7a223ef1da267
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/casper_2.32.0.tar.gz
+	sha256sums = 9a18c4f46d0d472f1cb5e45d004a0a8fdb3b8d7aaa38926eb93fa5e54e776d45
 
 pkgname = r-casper
