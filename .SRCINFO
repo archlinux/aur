@@ -1,7 +1,7 @@
 pkgbase = r-crossmeta
 	pkgdesc = Cross Platform Meta-Analysis of Microarray Data
-	pkgver = 1.22.1
-	pkgrel = 3
+	pkgver = 1.24.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/crossmeta
 	arch = any
 	license = MIT
@@ -49,7 +49,7 @@ pkgbase = r-crossmeta
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/crossmeta_1.22.1.tar.gz
-	sha256sums = 9aad965ab2332e8001a2cc0eff4fd4ae9859a77dadf117870135ebb242d00be3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/crossmeta_1.24.0.tar.gz
+	sha256sums = c80aaa69451750c5b67442f39c0a5ec543f75ef60c8553d369c15a992421142d
 
 pkgname = r-crossmeta

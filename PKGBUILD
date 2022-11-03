@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=crossmeta
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
-pkgrel=3
+pkgver=1.24.0
+pkgrel=1
 pkgdesc='Cross Platform Meta-Analysis of Microarray Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -59,7 +59,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9aad965ab2332e8001a2cc0eff4fd4ae9859a77dadf117870135ebb242d00be3')
+sha256sums=('c80aaa69451750c5b67442f39c0a5ec543f75ef60c8553d369c15a992421142d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
