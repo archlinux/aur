@@ -8,11 +8,11 @@
 # https://developer.nvidia.com/tensorrt/
 
 pkgbase=tensorrt
-pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.4.3.1
-_ossver=8.4.3
-_cudaver=11.6
-_cudnnver=8.4
+pkgname=('tensorrt' 'python-tensorrt')
+pkgver=8.5.1.7
+_ossver=8.5.1
+_cudaver=11.8
+_cudnnver=8.6
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
 _graphsurgeon_ver=0.4.6
@@ -37,7 +37,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('8d7c2085c1639dcc73875048c23598a8526ce3089136876e31d90258e49e4f61'
+sha256sums=('39cc7f077057d1363794e8ff51c4cf21a5dbeccf1116b0020ba0dae0f3063076'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,18 +56,18 @@ prepare() {
     git -C TensorRT config --local submodule.parsers/onnx.url         "${srcdir}/onnx-tensorrt"
     git -C TensorRT config --local submodule.third_party/protobuf.url "${srcdir}/protobuf-protocolbuffers"
     git -C TensorRT config --local submodule.third_party/cub.url      "${srcdir}/cub-nvlabs"
-    git -C TensorRT submodule update
+    git -C TensorRT -c protocol.file.allow='always' submodule update
     
     # onnx-tensorrt git submodule
     git -C TensorRT/parsers/onnx submodule init
     git -C TensorRT/parsers/onnx config --local submodule.third_party/onnx.url "${srcdir}/onnx"
-    git -C TensorRT/parsers/onnx submodule update
+    git -C TensorRT/parsers/onnx -c protocol.file.allow='always' submodule update
     
     # onnx git submodules
     git -C TensorRT/parsers/onnx/third_party/onnx submodule init
     git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/pybind11.url  "${srcdir}/pybind11"
     git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/benchmark.url "${srcdir}/benchmark"
-    git -C TensorRT/parsers/onnx/third_party/onnx submodule update
+    git -C TensorRT/parsers/onnx/third_party/onnx -c protocol.file.allow='always' submodule update
     
     git -C pybind11 config --local advice.detachedHead false
     
@@ -163,15 +163,4 @@ package_python-tensorrt() {
     install -D -m644 "${srcdir}/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-SLA"
     install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-}
-
-package_tensorrt-doc() {
-    pkgdesc+=' (documentation)'
-    arch=('any')
-    license=('custom:NVIDIA-SLA')
-    
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/doc"/{cpp,python} "${pkgdir}/usr/share/doc/${pkgbase}"
-    install -D -m644 TensorRT-SLA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
 }
