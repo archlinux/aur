@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioMVCClass
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Model-View-Controller (MVC) Classes That Use Biobase'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fbb4d97be45bdcfc8603c564c96efc77074ac0dd95d8de3ef6eedf5bcb7171d')
+sha256sums=('b3f7324ac5422aa99b62c453ff5d47dbf44b2bf9c64ec495c5db1f7d3baf94f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
