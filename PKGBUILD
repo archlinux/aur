@@ -2,8 +2,8 @@
 # Contributor: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _base=holoviews
 pkgname=python-${_base}
-pkgver=1.15.1
-pkgrel=3
+pkgver=1.15.2
+pkgrel=1
 pkgdesc="With Holoviews, your data visualizes itself"
 arch=(any)
 url="https://${_base}.org"
@@ -12,7 +12,7 @@ depends=(python-pandas python-panel python-colorcet)
 makedepends=(python-build python-installer)
 optdepends=('jupyter-nbconvert: for use holoviews command')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('93d0703477e2b7e39adbfc28a8c6c360e4b7fe2f6ae87be11225cd3e47f973b9503c17320c6f7cc59c3ff25392b9fa58b684cb0d0c6d1b0e2071291076e926af')
+sha512sums=('6b1e4eee0fa729fba9ece7fcebfcf584ed31648afc181acfea3ce35b92018a3070e4bd1e66dd90fb944310c52b3343265a68a7a194d5e98b98f50e86b8da22c3')
 
 build() {
   cd ${_base}-${pkgver}
