@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Harshlight
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='A "corrective make-up" program for microarray chips'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f4b0d366b5056c3bc2ad08c9b05423714f091873c9d958eb248147fb2ceb4f94')
+sha256sums=('1503d7b693d559243c0b4a5f26f2246be7108058306b40f1e9e871c52d7b522b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
