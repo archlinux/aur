@@ -1,6 +1,6 @@
 pkgbase = r-peca
 	pkgdesc = Probe-level Expression Change Averaging
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PECA
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-peca
 	depends = r-preprocesscore
 	depends = r-rots
 	optdepends = r-spikein
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PECA_1.32.0.tar.gz
-	sha256sums = 986fd49d1f092c194cd8f804e919d14a8524b9378becbb0d8a3fd99b305b909e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PECA_1.34.0.tar.gz
+	sha256sums = 785f7aa100b80d5b4ee8c2ca7f7ae18a0b491a1c4930b222f02cb3a70cb7e4fa
 
 pkgname = r-peca
