@@ -17,7 +17,7 @@
 
 pkgname=r2-iaito-git
 epoch=1
-pkgver=5.2.2.r2.g54dc54d5
+pkgver=5.7.8.r0.gcccaa377
 pkgrel=1
 pkgdesc='Qt and C++ GUI for radare2 reverse engineering framework (fork of Cutter)'
 url='https://github.com/radareorg/iaito'
@@ -42,10 +42,10 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   git config submodule.src/translations.url "${srcdir}"/iaito-translations
-  git submodule update --init --recursive "${submodules[@]}" src/translations
+  git  -c protocol.file.allow=always submodule update --init --recursive "${submodules[@]}" src/translations
   ((DISABLE_BUNDLED_RADARE)) || {
     git config submodule.radare2.url "${srcdir}"/radare2
-    git submodule update --init --recursive "${submodules[@]}" radare2
+    git -c protocol.file.allow=always submodule update --init --recursive "${submodules[@]}" radare2
   }
 }
 
