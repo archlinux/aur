@@ -1,6 +1,6 @@
 pkgbase = r-geomxtools
 	pkgdesc = NanoString GeoMx Tools
-	pkgver = 3.0.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeomxTools
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-geomxtools
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeomxTools_3.0.1.tar.gz
-	sha256sums = dbf0c7588c97aded7fac8d29bca7339992f234743a9ef6dba424944fa09644ca
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeomxTools_3.2.0.tar.gz
+	sha256sums = 467fc6d5f078d67a51c5d9c747ec7e5dcf3c575cb2d78bad6c08f768b46814e6
 
 pkgname = r-geomxtools
