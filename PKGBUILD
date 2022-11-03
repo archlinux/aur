@@ -84,7 +84,7 @@ prepare() {
   git submodule init
   git config submodule.src/chrono_thirdparty/googlebenchmark.url "${srcdir}"/benchmark
   git config submodule.src/chrono_thirdparty/googletest.url "${srcdir}"/googletest
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   mapfile -t files < <(find . -name CMakeLists.txt)
   mapfile -t -O ${#files[@]} files < <(find . -name \*.cmake\*)
   sed -i 's/lib64/lib/' "${files[@]}"
