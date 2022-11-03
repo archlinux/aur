@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multiOmicsViz
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Plot the effect of one omics data on other omics data along the chromosome'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('265c847461e3bfd4e6960eab9bd3bf671ba36729b80d841589ac8ca4aa187f31')
+sha256sums=('8a28f87fce9e36a0d6245c2f965ceeb06af3ad2546275dc2be54b89d969e483c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
