@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ribor
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='An R Interface for Ribo Files'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12f0556fd44913ecc717abbddbcf32c90346415028fec6b8786547262ceb9fcb')
+sha256sums=('42ca63edfa4da4dc0bbd1508e636a0f22e0f75cd683329e553bcb212d058339a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
