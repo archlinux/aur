@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EWCE
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Expression Weighted Celltype Enrichment'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d83e678d7f64f7acdb73da420ba8d043ebb7892af43836d2f1efbb0cf420b8a6')
+sha256sums=('6b97c3773d35e9a6dfdd4d7e6326580bb55e40db8db3818372c1cb1287e15ab4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
