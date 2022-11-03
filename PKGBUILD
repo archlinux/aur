@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNERO
-_pkgver=1.4.2
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Biological Network Reconstruction Omnibus'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9765a9034b87518ffa70cc308289f7690a5d833382a29d457175b508adb35f37')
+sha256sums=('b09fbb0f0301e0959aa73ebb7e50e051e50c44ba8d9d59ee1816b2a4d07ddc82')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
