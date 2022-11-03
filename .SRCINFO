@@ -1,0 +1,14 @@
+pkgbase = otmorris
+	pkgdesc = Morris sensitivity method module
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://www.openturns.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = swig
+	depends = openturns
+	source = https://github.com/openturns/otmorris/archive/v0.13.tar.gz
+	sha256sums = c5bb44446c3a9b41ffe7f7c1d5d62cf2b95435b3759744044622b722c70f783c
+
+pkgname = otmorris
