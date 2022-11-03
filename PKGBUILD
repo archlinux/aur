@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=a4Classif
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Automated Affymetrix Array Analysis Classification Package'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c2e0a648416142d5973a6e5c450cea095dad0eaf3094bc884ebb88cefdbc1ec')
+sha256sums=('7cb42265b1c30f3ff6fb1d356c06811387c782e960408f9e49a9e6ff31903952')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
