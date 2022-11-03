@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix70'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.83.19.r1.gb84159e4410
+pkgver=2.83.20.r1.g6f40a18ecc2
 pkgrel=1
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
@@ -92,7 +92,7 @@ pkgver() {
 
 prepare() {
   # update the submodules
-  git -C "$srcdir/blender" submodule update --init --recursive --remote
+  git -C "$srcdir/blender" -c protocol.file.allow=always submodule update --init --recursive --remote
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
