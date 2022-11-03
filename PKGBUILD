@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SplicingFactory
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Splicing Diversity Analysis for Transcriptome Data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('93087e2ec67c7021b8c103c321b226fa73183bbc112b80a0c88bd32818c97386')
+sha256sums=('630086ba4714c04919bd99275b151dbd5015e85d95734f68cefcdd634d8a22d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
