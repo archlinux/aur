@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qpgraph
-_pkgver=2.30.2
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.2
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='Estimation of genetic and molecular regulatory networks from high-throughput genomics data'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2534f57e3a2e3b2bd5674b4760268a0c787b8b2e108ccca88ea2a013171ead24')
+sha256sums=('127138ae78b32e3b37cd417f7bd9a477892558234dc34b1db82c6bd74826eee7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
