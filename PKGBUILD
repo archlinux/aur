@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=wavClusteR
-_pkgver=2.30.0
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='Sensitive and highly resolved identification of RNA-protein interaction sites in PAR-CLIP data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6659180bd81ddca1484bb1c94c9a006da360cfd4eda17e6f9229c4144b02b111')
+sha256sums=('7d054dbd9de9c1206bbfed84af00fe91629502d99577a177c65d649c2d1ffefc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
