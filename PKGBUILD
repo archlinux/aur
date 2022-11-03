@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Rn.eg.db
-_pkgver=3.15.0
+_pkgver=3.16.0
 pkgname=r-${_pkgname,,}
-pkgver=3.15.0
-pkgrel=3
+pkgver=3.16.0
+pkgrel=1
 pkgdesc='Genome wide annotation for Rat'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e09eb3e6a7d8c73ba3de018d8e9715b353ad5f5dfd8a488d67e016d115dea47b')
+sha256sums=('d011779b8e208bd31ded100cc76490c8875d01d9600d63157e0b6c9b9c6876f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
