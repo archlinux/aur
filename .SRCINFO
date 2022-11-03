@@ -1,6 +1,6 @@
 pkgbase = r-depecher
 	pkgdesc = Determination of essential phenotypic elements of clusters in high-dimensional entities
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DepecheR
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = r-depecher
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DepecheR_1.12.0.tar.gz
-	sha256sums = 57e2bdb22b5ffb3c61640f0d8a8020b2dd3a91d1e62a0e0a53f715ddda673d66
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DepecheR_1.14.0.tar.gz
+	sha256sums = 92f5956011a055638c9e47204118bd1af7aa43c4024c8450b5400d1df8eb8fc8
 
 pkgname = r-depecher
