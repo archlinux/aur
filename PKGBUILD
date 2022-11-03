@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rGADEM
-_pkgver=2.44.1
+_pkgver=2.46.0
 pkgname=r-${_pkgname,,}
-pkgver=2.44.1
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='de novo motif discovery'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5828fc8f731c00ca338b0428338b1e18e3f3d1bacc9fff65fa6a56bb554c5f14')
+sha256sums=('e30653add6e38db91ca92a2897421461eccaf6604ef02ec83cbc2c849b1c111c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
