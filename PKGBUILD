@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vtpnet
-_pkgver=0.36.0
+_pkgver=0.38.0
 pkgname=r-${_pkgname,,}
-pkgver=0.36.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='variant-transcription factor-phenotype networks'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c0ddbf7c288af160556c00dc464acbc541600072813c5cd5161ad826f4e5983')
+sha256sums=('a3cad5d39a4078a0e32b616c615586e1623b9a959100c206e68fda193921679d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
