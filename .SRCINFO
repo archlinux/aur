@@ -1,6 +1,6 @@
 pkgbase = r-splinetimer
 	pkgdesc = Time-course differential gene expression data analysis using spline regression models followed by gene association network reconstruction
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/splineTimeR
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-splinetimer
 	depends = r-limma
 	depends = r-longitudinal
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/splineTimeR_1.24.0.tar.gz
-	sha256sums = fa7b33412f63c6158250cff8e9559833102c71fac4318ff825fa0ce1aba315ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/splineTimeR_1.26.0.tar.gz
+	sha256sums = 503d7ccbc6b1276e8d75b2ac5580223c751b07c1362be052320ec949bb06af88
 
 pkgname = r-splinetimer
