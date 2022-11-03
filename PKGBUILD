@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=imageHTS
-_pkgver=1.45.1
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.45.1
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Analysis of high-throughput microscopy-based screens'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-mass
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('550bec6b7b74d187a363828e43394d56f0980393d19ed1f927f5eda0750d9ba1')
+sha256sums=('352a466202ead058b2c0cbb2314c23c56933dffe935d448f5c082d04b89e9788')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
