@@ -2,10 +2,10 @@
 
 pkgname=yutto
 pkgver=2.0.0b17
-pkgrel=1
+pkgrel=2
 pkgdesc='一个可爱且任性的 B 站视频下载器'
 arch=('any')
-url='https://github.com/SigureMo/yutto'
+url='https://github.com/yutto-dev/yutto'
 license=('GPL3')
 depends=(
     'python-aiohttp'
