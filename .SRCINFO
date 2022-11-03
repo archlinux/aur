@@ -1,6 +1,6 @@
 pkgbase = r-oligoclasses
 	pkgdesc = Classes for high-throughput arrays supported by oligo and crlmm
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/oligoClasses
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-oligoclasses
 	optdepends = r-pd.mapping50k.xba240
 	optdepends = r-runit
 	optdepends = r-vanillaice
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/oligoClasses_1.58.0.tar.gz
-	sha256sums = b3d5a3f276419c27b7e5f1b164713138098101ad67875194e2a5ba401f289dd4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oligoClasses_1.60.0.tar.gz
+	sha256sums = e8be665b4310a73b1a7f14aefb1949c6fc186eccb7b8522129ee9167baeb69c6
 
 pkgname = r-oligoclasses
