@@ -1,6 +1,6 @@
 pkgbase = r-miqc
 	pkgdesc = Flexible, probabilistic metrics for quality control of scRNA-seq data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/miQC
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-miqc
 	optdepends = r-rmarkdown
 	optdepends = r-scater
 	optdepends = r-scrnaseq
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miQC_1.4.0.tar.gz
-	sha256sums = b546e40ec4291a9f411697328f945b6f7d7ef0d4fdf6ddd9c7ea1130b1f1da14
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miQC_1.6.0.tar.gz
+	sha256sums = dff67faae5accb84d9ecc6e697f56262c354f2ce70c6cb2acdb666572a8ec4bb
 
 pkgname = r-miqc
