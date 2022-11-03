@@ -1,3 +1,6 @@
+#
+# PKGBUILD for albert-minimal (with minimal plugins included))
+#
 # Maintainer: Uffe Jakobsen
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
@@ -35,16 +38,20 @@ prepare()
 {
   mkdir -p build
 
+  #
   cd "${srcdir}/albert"
   git submodule init
+  git config protocol.file.allow always
   git config submodule.plugins.url "${srcdir}/plugins"
-  git submodule update plugins
+  git submodule--helper update plugins
 
+  #
   cd "${srcdir}/albert/plugins"
   git submodule init
+  git config protocol.file.allow always
   git config submodule.python/pybind11.url "${srcdir}/pybind11"
   git config submodule.python/share/modules.url "${srcdir}/python"
-  git submodule update python/pybind11 python/share/modules
+  git submodule--helper update python/pybind11 python/share/modules
 }
 
 
