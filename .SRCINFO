@@ -1,6 +1,6 @@
 pkgbase = r-miasim
 	pkgdesc = Microbiome Data Simulation
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/miaSim
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-miasim
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miaSim_1.2.0.tar.gz
-	sha256sums = fcfb90ffff3a07707bfb14d6c58e0488034e68661f12a037c6f012692bb68635
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miaSim_1.4.0.tar.gz
+	sha256sums = 128a413227d5c8ee36cc0e018744d03583b3718474cb8462bb67056caadc3b07
 
 pkgname = r-miasim
