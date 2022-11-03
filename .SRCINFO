@@ -1,6 +1,6 @@
 pkgbase = r-deepsnv
 	pkgdesc = Detection of subclonal SNVs in deep sequencing data.
-	pkgver = 1.42.1
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/deepSNV
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-deepsnv
 	optdepends = r-knitr
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/deepSNV_1.42.1.tar.gz
-	sha256sums = f64d43645d696af7b375c66f7dccf877d099482f8470dd18c4aba8b1f30bf22d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/deepSNV_1.44.0.tar.gz
+	sha256sums = 01cdcc50256eae782f30096b7f35c68029d7350f3b3315a15bf4a24ed3633d14
 
 pkgname = r-deepsnv
