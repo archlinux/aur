@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TFARM
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Transcription Factors Association Rules Miner'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-plyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b4a5b6782264352db874a475c676d7aa66ba70a4465ca5c4316555344d3ebc66')
+sha256sums=('c85bf4e00f57dc5e27bcd4df6bb56d8402d1a03a9c67dee399338e10181b30a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
