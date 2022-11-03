@@ -5,21 +5,22 @@
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
 pkgname=qtractor-git
-pkgver=0.9.25.r7.ga2bad068d
+pkgver=0.9.29.r29.g7e4f829b0
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('x86_64')
-url="http://qtractor.sourceforge.net/"
+url="https://qtractor.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=(hicolor-icon-theme libmad qt6-base)
-makedepends=(alsa-lib aubio cmake dssi git jack ladspa liblo libogg libsamplerate
+depends=(glibc gcc-libs hicolor-icon-theme libmad libxcb qt6-base qt6-svg zlib)
+makedepends=(alsa-lib aubio clap cmake dssi git jack ladspa liblo libogg libsamplerate
 libsndfile libvorbis lilv lv2 qt6-tools rubberband suil vst3sdk)
 optdepends=(
   'new-session-manager: for session management'
   'qt6-wayland: for native wayland support'
 )
-provides=(dssi-host ladspa-host lv2-host vst-host vst3-host)
+provides=(clap-host dssi-host ladspa-host lv2-host vst-host vst3-host)
+conflicts=(qtractor)
 source=("${pkgname%-*}::git+https://github.com/rncbc/qtractor.git")
 md5sums=('SKIP')
 
