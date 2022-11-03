@@ -1,6 +1,6 @@
 pkgbase = r-drugvsdisease
 	pkgdesc = Comparison of disease and drug profiles using Gene set Enrichment Analysis
-	pkgver = 2.38.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DrugVsDisease
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-drugvsdisease
 	depends = r-qvalue
 	depends = r-runit
 	depends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DrugVsDisease_2.38.0.tar.gz
-	sha256sums = 500c606d65146d9cd26cb69c032ee72da66295c32ac7935e58db1eeae4253360
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DrugVsDisease_2.40.0.tar.gz
+	sha256sums = bca45a7eb469cacaac23a0f0c3bfe833bc97a2e7170c0ac53bac45d618f2b98f
 
 pkgname = r-drugvsdisease
