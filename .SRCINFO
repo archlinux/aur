@@ -1,6 +1,6 @@
 pkgbase = r-ebsea
 	pkgdesc = Exon Based Strategy for Expression Analysis of genes
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EBSEA
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-ebsea
 	depends = r-empiricalbrownsmethod
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBSEA_1.24.0.tar.gz
-	sha256sums = f721fd1d1a96fc2204de77c8040603ed374e78bee8b42a22c7e906421d198580
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBSEA_1.26.0.tar.gz
+	sha256sums = 39001ab0554d8a3619b3c37432d17fedf38cd5080b25cb39697474b5b8baccdd
 
 pkgname = r-ebsea
