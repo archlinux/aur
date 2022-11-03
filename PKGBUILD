@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bcSeq
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Fast Sequence Mapping in High-Throughput shRNA and CRISPR Screens'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0e35f425be11fbeabd53c096e95050c7f30277e7df3374ecbf97ad5b1aac32e')
+sha256sums=('631cb28feba83a2d3b9abda222d5f11cdb4e075f47e93bb40217683ccfc8d6b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
