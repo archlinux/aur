@@ -35,7 +35,7 @@ prepare() {
   git config submodule."cli/dirent".url "$srcdir/dirent"
   git config submodule."cli/volk".url "$srcdir/volk"
   git config submodule."rapidjson".url "$srcdir/rapidjson"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   cmake -S . -B ../build \
     -G Ninja \
     -D CMAKE_INSTALL_PREFIX=/usr \
