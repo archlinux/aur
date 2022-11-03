@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GO.db
-_pkgver=3.15.0
+_pkgver=3.16.0
 pkgname=r-${_pkgname,,}
-pkgver=3.15.0
-pkgrel=3
+pkgver=3.16.0
+pkgrel=1
 pkgdesc='A set of annotation maps describing the entire Gene Ontology'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-dbi
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bac91d73c57f206fa5bc4a501a2aaf61b365cf411181ce44353370cdbc132d99')
+sha256sums=('4652812d8ba380aeeb9b136efbc9365156397eec99c5ca36cfb8294139493b8e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
