@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodbUniprot
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='biodbUniprot, a library for connecting to the Uniprot Database'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7627f4e73154506444f6a4c87e434cdc8be5b5912e988a274b3a8ae40a96b5b3')
+sha256sums=('7b8c37d856e161934b0340a59688f2daae08dd90df329db5a8f83355c571e4f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
