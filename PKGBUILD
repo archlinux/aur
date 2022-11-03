@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnnotationHubData
-_pkgver=1.26.1
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.1
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Transform public data resources into Bioconductor Data Structures'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7d94de4817cf42acfce70baae96756803ba2212589206635bcce6d9802520e8')
+sha256sums=('25bdef0bc22339841f4f7d43b5177f639ff5ba3e7c30e2e6139cb1ce66029d55')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
