@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=faahKO
-_pkgver=1.36.0
+_pkgver=1.37.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='Saghatelian et al. (2004) FAAH knockout LC/MS data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-xcms
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b33d457561c1195c79f4de52ad0147923f5dfdc206569794d33ab847ad6043fc')
+sha256sums=('6750107a1842b8189a1c33bbe95237af2c0a0f3702f64376073467095f82efb1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
