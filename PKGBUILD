@@ -28,7 +28,7 @@ _nativ_dialogs='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.6.r478.gf5ee9c92c
+pkgver=v0.6.6.r573.g1474dfdd6
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -91,7 +91,7 @@ prepare() {
 	git config submodule.libbitdht.url "$srcdir/libbitdht"
 	git config submodule.libretroshare.url "$srcdir/libretroshare"
 	git config submodule.openpgpsdk.url "$srcdir/openpgpsdk"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -109,6 +109,7 @@ build() {
 		${_optJsonapi} ${_optAutol} ${_optClang} \
 		${_optNativDialogs} \
 		${_optPlugin} ${_optWiki} \
+		CONFIG+=no_rs_friendserver \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		RetroShare.pro
