@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AffyCompatible
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Affymetrix GeneChip software compatibility'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa697ca64ef8895a0af9b75d4756d2161d740b5474ba9f131ac760fc64907474')
+sha256sums=('74393e8cec13d9299c24f25717c73300876f315df74d3f7a6a4fbbad158ee7ad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
