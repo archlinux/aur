@@ -1,0 +1,18 @@
+diff --git a/wowup-electron/app/app-updater.ts b/wowup-electron/app/app-updater.ts
+index 6748bdee..a3b44ae6 100644
+--- a/wowup-electron/app/app-updater.ts
++++ b/wowup-electron/app/app-updater.ts
+@@ -18,12 +18,7 @@ class AppUpdater {
+   }
+ 
+   public async checkForUpdates(): Promise<void> {
+-    try {
+-      const result = await autoUpdater.checkForUpdates();
+-      log.info(`checkForUpdates`, result);
+-    } catch (e) {
+-      log.error("checkForUpdates", e);
+-    }
++    log.info('autoUpdater disabled for non-official builds');
+   }
+ 
+   private initIpcHandlers() {
