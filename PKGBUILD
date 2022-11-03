@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Oscope
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Oscope - A statistical pipeline for identifying oscillatory genes in unsynchronized single cell RNA-seq'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c8043d5fa9cf9848ccdba5d4c37d491de149c4b71565b6b245ed4c93a6407f65')
+sha256sums=('49c021d51aaa071ff5a63000e4d4041659b1cbe2c48884591daf4ac07c72a410')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
