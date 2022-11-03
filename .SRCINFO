@@ -1,6 +1,6 @@
 pkgbase = r-iggeneusage
 	pkgdesc = Differential gene usage in immune repertoires
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IgGeneUsage
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = r-iggeneusage
 	depends = r-rstan
 	depends = r-stanheaders
 	depends = r-summarizedexperiment
+	depends = r-rstantools
 	optdepends = r-biocstyle
 	optdepends = r-ggforce
 	optdepends = r-ggplot2
@@ -19,7 +20,7 @@ pkgbase = r-iggeneusage
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IgGeneUsage_1.10.0.tar.gz
-	sha256sums = 180287eb41cefda87b67df210cfcddcf6e289cf900567dd1a5e6f9689d293523
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IgGeneUsage_1.12.0.tar.gz
+	sha256sums = eaef9ee318f6d401e8526fc55793ba726d30c1d4de12fff90583483e2733f2af
 
 pkgname = r-iggeneusage
