@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trena
-_pkgver=1.18.1
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Fit transcriptional regulatory networks using gene expression, priors, machine learning'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e9a8f62585c9522da091c110c01bca4c3853e2e62c3c9b05bc7af01087219b5')
+sha256sums=('566c27500e8c39009208c8a817ab9948c00da9150ad76f3ccaef39718b405530')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
