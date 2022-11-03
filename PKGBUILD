@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tanggle
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Visualization of Phylogenetic Networks'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec38f5534bb7913d02df0352013cae436ddfcfc67dde5f89a780f3847bc504e4')
+sha256sums=('ef8c917580079d50c481d7484e75dfbc6ed5d2ea30465f7eb34cbbe0dd56b086')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
