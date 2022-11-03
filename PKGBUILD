@@ -40,7 +40,7 @@ prepare() {
   do
     git config submodule."external/$external_lib".url "$srcdir/$external_lib"
   done
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
