@@ -2,7 +2,7 @@
 #
 
 pkgname=azpainter
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='Painting software'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi' 'libxcursor' 
 makedepends=('ninja')
 options=('!makeflags')
 source=("https://gitlab.com/azelpg/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('5227396b742ba80f7ceca1809d19c81c9e9f866806b06904f0b254d390430e60')
+sha256sums=('ac95ba62da903feaeb00746bd0583fa4b3172987d7e1485514f5456b931960c4')
 
 
 build() {
