@@ -5,7 +5,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=2.0.r32.gcbc5618b
+pkgver=2.0.r43.gfe8283c8
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
   git config 'submodule.src/dependencies/glfw.url' "${srcdir}/glfw"
-  git submodule update --init --remote src/dependencies/glfw
+  git -c protocol.file.allow=always submodule update --init --remote src/dependencies/glfw
   git apply "${srcdir}"/{findflann-v0.1,submodule,cereal_131}.patch
 }
 
