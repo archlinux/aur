@@ -3,8 +3,8 @@
 _romname=gc_nmq_d
 _romdesc="Ocarina of Time Gamecube Europe PAL Debug"
 pkgname=soh-otr-${_romname}
-pkgver=2
-pkgrel=4
+pkgver=3
+pkgrel=1
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
