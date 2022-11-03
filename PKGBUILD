@@ -1,7 +1,7 @@
 # Maintainer: khhs khhs1671@gmail.com
 
 pkgname="libmemstack"
-pkgver="1.1.0"
+pkgver="1.2.0"
 pkgrel="0"
 pkgdesc="A small lib for managing memory"
 arch=("x86_64" "arm")

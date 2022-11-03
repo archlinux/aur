@@ -1,6 +1,6 @@
 pkgbase = libmemstack
 	pkgdesc = A small lib for managing memory
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 0
 	arch = x86_64
 	arch = arm
@@ -8,7 +8,7 @@ pkgbase = libmemstack
 	depends = make
 	depends = gcc
 	conflicts = libmemstack-git
-	source = memstack-1.1.0.tar.gz
+	source = memstack-1.2.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = libmemstack
