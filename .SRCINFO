@@ -1,6 +1,6 @@
 pkgbase = r-bionetstat
 	pkgdesc = Biological Network Analysis
-	pkgver = 1.16.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioNetStat
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-bionetstat
 	depends = r-shinybs
 	depends = r-whisker
 	depends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNetStat_1.16.1.tar.gz
-	sha256sums = 625db7f20538f023ff2396d029e4d6f048c8c757dfda0ca2d425adbeabbf467f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNetStat_1.18.0.tar.gz
+	sha256sums = fb5dc53d137080182446f513379ff4b06f9638743f9920144cbb706c9f6929c1
 
 pkgname = r-bionetstat
