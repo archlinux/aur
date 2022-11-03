@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=getDEE2
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Programmatic access to the DEE2 RNA expression dataset'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fb7417a3bdcc11559426f61729d19802667aa1f0179f7c3c40efa85c4b8e4a30')
+sha256sums=('57c083f288e3dc91529a55be19c6ab84a062628f1dedab4ac501b3be983f37a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
