@@ -1,6 +1,6 @@
 pkgbase = r-gofuncr
 	pkgdesc = Gene ontology enrichment using FUNC
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOfuncR
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-gofuncr
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOfuncR_1.16.0.tar.gz
-	sha256sums = f372881da9252615e27dfeb5183850cc75ec659ffceae5aa01155c9ca5766d0b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOfuncR_1.18.0.tar.gz
+	sha256sums = 45299a893b3b33212eddf21036121477d8929a98917013b266b1686b898e1d34
 
 pkgname = r-gofuncr
