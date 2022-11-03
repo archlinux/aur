@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epivizrData
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Data Management API for epiviz interactive visualization app'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a0f10dedb2e81b10fdac89f546eab23bb5ef307809fd4c9dea59021747b73b3e')
+sha256sums=('cb2354f7ee66e309ac5966afa4bcfb7edd45cc72872a859236ebf72732b3c83c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
