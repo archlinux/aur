@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=switchde
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Switch-like differential expression across single-cell trajectories'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5e80d4b0fbe1b47f82b1bba2f052dda5a9696a27b7c9ecd1dc11ce6bda70f155')
+sha256sums=('14f303448c28dc37247b5e0232e69a69193011e182a8bd72ecc981f7830a2a48')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
