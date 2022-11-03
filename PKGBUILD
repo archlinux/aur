@@ -3,8 +3,8 @@
 _romname=gc_mq_d
 _romdesc="Ocarina of Time Master Quest Debug"
 pkgname=soh-otr-${_romname}
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=1
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
