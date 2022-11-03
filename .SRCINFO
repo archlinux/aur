@@ -1,6 +1,6 @@
 pkgbase = r-rvs
 	pkgdesc = Computes estimates of the probability of related individuals sharing a rare variant
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RVS
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-rvs
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RVS_1.18.0.tar.gz
-	sha256sums = eb1b8e7f5fd0574a5ed87f34e2854ba32d984c5ccb68c8d87e06ad17865cff7b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RVS_1.20.0.tar.gz
+	sha256sums = c9eaa0d2b295f01083474fea268c164b50724e0c6bbda61e9df41c1d6492a832
 
 pkgname = r-rvs
