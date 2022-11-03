@@ -1,6 +1,6 @@
 pkgbase = r-musicatk
 	pkgdesc = Mutational Signature Comprehensive Analysis Toolkit
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/musicatk
 	arch = any
@@ -64,7 +64,7 @@ pkgbase = r-musicatk
 	optdepends = r-survival
 	optdepends = r-testthat
 	optdepends = r-xvector
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/musicatk_1.6.0.tar.gz
-	sha256sums = df0038f6b34d4cc3bac381bcdf4358889da241fe8a72b8fa1f4855c6bd0064c8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/musicatk_1.8.0.tar.gz
+	sha256sums = eeb5f9421f82f600e42be4369e196aa432a48d1c14176690bf9b4726e19485d0
 
 pkgname = r-musicatk
