@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mygene
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Access MyGene.Info_ services'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7e6b042db74d14dc0eaa52127fb491246ada01cfcc4fe3aaa15c7458d2e72c48')
+sha256sums=('f5aa7af58000957f1c8ab14f1f5d20b9603766799025132e5c72c75d3a708daa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
