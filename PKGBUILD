@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggmsa
-_pkgver=1.2.3
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Plot Multiple Sequence Alignment using 'ggplot2'"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('79e968712b60b1efd1b7ef1f8a446742c6dd6425b6015218a5ec51b4905e468b')
+sha256sums=('30b6f16a0a2b02da0699142516077e7caaf6cb1cc8e8d288ec039045db711d5f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
