@@ -1,6 +1,6 @@
 pkgbase = r-idr2d
 	pkgdesc = Irreproducible Discovery Rate for Genomic Interactions Data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/idr2d
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-idr2d
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/idr2d_1.10.0.tar.gz
-	sha256sums = 41fee541151362f3c2d2f7797231313fbe7e7a0b5ae96d17332c5ae931214051
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/idr2d_1.12.0.tar.gz
+	sha256sums = 2bd4863c41d0b973333f39a7d07d957adcdccb963a4a44ad98aa7a7ecc9239e3
 
 pkgname = r-idr2d
