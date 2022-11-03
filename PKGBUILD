@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=projectR
-_pkgver=1.12.0
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Functions for the projection of weights from PCA, CoGAPS, NMF, correlation, and clustering'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9dc9c4ae786b241fde7f984d4792e77c0170766f02919a696ceb12fdf1f3b61b')
+sha256sums=('90ae3776dd016d08520fc118f7fa4598c974298cd5e48741b5dad1f4a019f517')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
