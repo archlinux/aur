@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/csprite/issues>
 pkgname=csprite-git
-pkgver=0.1.0.r174.ge5c9471
+pkgver=0.1.0.r336.g43008e3
 pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
 pkgdesc="a tiny pixel art editor"
 arch=('i686' 'x86_64')
@@ -20,10 +20,17 @@ pkgver() {
 }
 
 build() {
+	if ! command nproc --help &> /dev/null; then
+		echo "'nproc' could not be found, cannot determine cpu cores, using 4."
+		NUM_CPU=4
+	else
+		NUM_CPU=$(nproc --all)
+	fi
+
     cd csprite
     git submodule update --init --recursive
 	make gen-assets
-	make release
+	make all Stable=1 --jobs $NUM_CPU
 }
 
 package() {
