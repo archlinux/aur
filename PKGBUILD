@@ -1,9 +1,10 @@
-# Maintainer: Florian Pritz <flo@xssn.at>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Florian Pritz <flo@xssn.at>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libcanberra
 pkgver=0.30+r2+gc0620e4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 url="http://0pointer.de/lennart/projects/libcanberra"
@@ -16,7 +17,7 @@ provides=(lib32-libcanberra-pulse libcanberra{,-gtk,-gtk3}.so)
 replaces=("lib32-libcanberra-pulse<0.30+2+gc0620e4-4")
 options=(libtool debug)
 _commit=c0620e432650e81062c1967cc669829dbd29b310  # master
-source=("git+http://git.0pointer.net/clone/libcanberra.git#commit=$_commit"
+source=("git+https://git.0pointer.net/clone/libcanberra.git#commit=$_commit"
         libcanberra-multi-backend.patch)
 sha256sums=('SKIP'
             'de146cae3e40a16b38c8edb4f1a3a423c64eb9c5000e36c316b677e9909c9b06')
@@ -52,7 +53,7 @@ build() {
   make
 }
 
-package_lib32-libcanberra() {
+package() {
   cd libcanberra
 
   make -j1 DESTDIR="$pkgdir" install
@@ -63,4 +64,4 @@ package_lib32-libcanberra() {
   rm -r "$pkgdir"/usr/{include,share,bin,lib,lib32/gnome-settings-daemon-3.0}
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
