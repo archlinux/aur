@@ -1,6 +1,6 @@
 pkgbase = release-plz-git
 	pkgdesc = Release Rust packages without using the command line (git)
-	pkgver = 0.2.21.r0.g87507c3
+	pkgver = 0.2.22.r0.g4539103
 	pkgrel = 1
 	url = https://github.com/MarcoIeni/release-plz
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = release-plz-git
 	conflicts = release-plz
 	options = !lto
 	source = git+https://github.com/MarcoIeni/release-plz
-	source = release-plz-git-0.2.21.r0.g87507c3-fix-args.patch::https://github.com/MarcoIeni/release-plz/commit/d92659803c82e9ebcad623d2702e71aa0ed1c9e2.patch
 	sha512sums = SKIP
-	sha512sums = c347d3a43b77a77c14af992ffb661f2cc55b5095d2844d164405b22e4d93a65f277885c0afe9f590e3b88b588b5cba109a298abf06c5cdd0392e49e4154efb87
 
 pkgname = release-plz-git
