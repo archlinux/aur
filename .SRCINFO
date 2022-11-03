@@ -1,6 +1,6 @@
 pkgbase = r-metavolcanor
 	pkgdesc = An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MetaVolcanoR
 	arch = any

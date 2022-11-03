@@ -1,8 +1,8 @@
 
 _pkgname=MetaVolcanoR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway'
 arch=('any')
