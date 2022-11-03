@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PAIRADISE
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='PAIRADISE: Paired analysis of differential isoform expression'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3a230d1eddac4f0ebbb3d7c42ca91a663426bf803bcec41476833b85af71cdc')
+sha256sums=('f2a66916af53ea30f79fe495702775f36a29b2a29ffa6b9251a757f39d22ffd6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
