@@ -1,0 +1,90 @@
+diff --git a/assets/gfx/kirby.json b/assets/gfx/kirby.json
+index 3f2de7b..fa2754e 100644
+--- a/assets/gfx/kirby.json
++++ b/assets/gfx/kirby.json
+@@ -1,6 +1,6 @@
+ {
+   "meta": {
+-    "image": "assets/gfx/kirby.png",
++    "image": "/opt/miro/assets/gfx/kirby.png",
+     "size": {
+       "w": 234,
+       "h": 26
+diff --git a/assets/gfx/mario.json b/assets/gfx/mario.json
+index 0b25eae..b7cf419 100644
+--- a/assets/gfx/mario.json
++++ b/assets/gfx/mario.json
+@@ -1,6 +1,6 @@
+ {
+   "meta": {
+-    "image": "assets/gfx/mario.png",
++    "image": "/opt/miro/assets/gfx/mario.png",
+     "size": {
+       "w": 96,
+       "h": 32
+diff --git a/assets/gfx/pika.json b/assets/gfx/pika.json
+index 6d59e8b..3c821bc 100644
+--- a/assets/gfx/pika.json
++++ b/assets/gfx/pika.json
+@@ -1,6 +1,6 @@
+ {
+   "meta": {
+-    "image": "assets/gfx/pika.png",
++    "image": "/opt/miro/assets/gfx/pika.png",
+     "size": {
+       "w": 208,
+       "h": 28
+diff --git a/src/gui/spritesheet.rs b/src/gui/spritesheet.rs
+index aab382c..97971a2 100644
+--- a/src/gui/spritesheet.rs
++++ b/src/gui/spritesheet.rs
+@@ -32,16 +32,7 @@ impl SpriteSheet {
+ 
+         let sprite_width = sprites[0].size.0;
+         let sprite_height = sprites[0].size.1;
+-        SpriteSheet {
+-            image_path: String::from(format!(
+-                "{}/{}",
+-                env!("CARGO_MANIFEST_DIR"),
+-                config.image_path
+-            )),
+-            sprites,
+-            sprite_height,
+-            sprite_width,
+-        }
++        SpriteSheet { image_path: config.image_path.clone(), sprites, sprite_height, sprite_width }
+     }
+ }
+ 
+diff --git a/src/main.rs b/src/main.rs
+index f015e3a..915fe36 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -50,24 +50,15 @@ fn main() -> anyhow::Result<()> {
+ 
+     let theme = match matches.value_of("theme") {
+         Some("mario") => Theme {
+-            spritesheet_path: String::from(concat!(
+-                env!("CARGO_MANIFEST_DIR"),
+-                "/assets/gfx/mario.json"
+-            )),
++            spritesheet_path: String::from("/opt/miro/assets/gfx/mario.json"),
+             color: RgbColor { red: 99, green: 137, blue: 250 },
+         },
+         Some("pika") => Theme {
+-            spritesheet_path: String::from(concat!(
+-                env!("CARGO_MANIFEST_DIR"),
+-                "/assets/gfx/pika.json"
+-            )),
++            spritesheet_path: String::from("/opt/miro/assets/gfx/pika.json"),
+             color: RgbColor { red: 176, green: 139, blue: 24 },
+         },
+         Some("kirby") => Theme {
+-            spritesheet_path: String::from(concat!(
+-                env!("CARGO_MANIFEST_DIR"),
+-                "/assets/gfx/kirby.json"
+-            )),
++            spritesheet_path: String::from("/opt/miro/assets/gfx/kirby.json"),
+             color: RgbColor { red: 242, green: 120, blue: 141 },
+         },
+         _ => unreachable!("not possible"),

@@ -1,11 +1,11 @@
 pkgbase = miro-git
 	pkgdesc = A GPU-accelerated terminal emulator written in Rust (git)
-	pkgver = 0.2.0.r17.gce75629
+	pkgver = 0.2.0.r52.g85e14d1
 	pkgrel = 1
 	url = https://github.com/o2sh/miro
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	makedepends = python
 	depends = libxcb
@@ -19,6 +19,8 @@ pkgbase = miro-git
 	provides = miro
 	conflicts = miro
 	source = git+https://github.com/o2sh/miro
+	source = assets-path.patch
 	sha512sums = SKIP
+	sha512sums = 272b70c68ab89ef23b185c794c6affedfdd07170322c8ba950ec3fe79844e025e59064f67d995cfd34f1fda64de51c087719ad2aff882db5d2e5fa7da5ae9e17
 
 pkgname = miro-git
