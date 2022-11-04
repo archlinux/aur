@@ -1,24 +1,33 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=jupyterlab-execute-time
-_pypi=jupyterlab_execute_time
 pkgdesc="JupyterLab extension to show execution time for each cell"
 url='https://github.com/deshaw/jupyterlab-execute-time'
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 license=('BSD')
 arch=('any')
-makedepends=('python-jupyter_packaging' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/j/$_pypi/$_pypi-$pkgver.tar.gz")
-sha256sums=('9005e8ec938680f38ded2d1de99b098d93126e7e38a936f4022d160d6cc10a34')
+depends=('jupyterlab' 'jupyter-notebook')
+makedepends=(
+  'python-build' 'python-installer' 'python-jupyter_packaging'
+  'python-setuptools' 'python-wheel'
+)
+
+_pypi=jupyterlab_execute_time
+source=(
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+)
+sha256sums=(
+  '652126f4fbb897bfcae0c528ab49d928348af1a050a714ebdd45436cc5d7e7e5'
+)
 
 build() {
   cd "$_pypi-$pkgver"
-  python setup.py build
+  python -m build --no-isolation --wheel
 }
 
 package() {
   cd "$_pypi-$pkgver"
-  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
