@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mCSEAdata
-_pkgver=1.17.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Data package for mCSEA package'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('72bcdd103bfdaab97bb4106528da0d2a87dd27b3ef67d2f07e779b4c8ec8b9ce')
+sha256sums=('3f0ccac51b0d4e2aaf724fc0270835279af9a7780986e41c8dc1bdbae167b6af')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
