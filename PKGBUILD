@@ -3,8 +3,8 @@
 # Contributor: Grassblock <hi@imgb.space>
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
-pkgver=0.4.5.r37.g1d43e60
-pkgrel=3
+pkgver=0.4.5.r41.g9ae65c6
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
@@ -27,6 +27,8 @@ _electron=electron13
 
 prepare(){
     cd "${srcdir}/YesPlayMusicOSD"
+    sed -i 's/27232/41342/' "src/background.js"
+    # https://github.com/shih-liang/YesPlayMusicOSD/issues/266#issuecomment-1302994727
     cp .env.example .env
     yarn install
 }
