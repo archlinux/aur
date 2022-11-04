@@ -15,14 +15,9 @@ conflicts=('clasp-cl-git')
 source=('https://github.com/clasp-developers/clasp/archive/refs/tags/2.0.0.tar.gz')
 sha512sums=('79a14366aa8f4cbf079a9f961dd2b3eed95ec3a47b27ffa729da2eb70be6e688b404a62b913a18ec5c4dcb217b9e8e807d71d64f6744abca8cdf6d71689a15f9')
 
-prepare() {
-  cd clasp-$pkgver
-  ./koga --reproducible-build --broken-stdlib --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
-  ./koga --skip-sync --extensions=cando,seqan-clasp --update-version
-}
-
 build() {
   cd clasp-$pkgver
+  ./koga --reproducible-build --broken-stdlib --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ninja -C build
 }
 
