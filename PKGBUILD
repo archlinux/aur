@@ -1,25 +1,22 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname='python-jax'
-pkgver=0.3.23
-pkgrel=1
+pkgver=0.3.24
+pkgrel=3
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('x86_64')
 url='https://github.com/google/jax/'
 license=('Apache')
 depends=('absl-py'
          'python'
-         'python-jaxlib'
          'python-numpy'
          'python-opt_einsum')
 makedepends=('python-pip')
 source=("jax-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v${pkgver}.tar.gz")
-md5sums=('2cd44200534bd10c69a36104ce3fdaad')
+md5sums=('5b2cc40d1c999733daddf35767acb8a5')
 
 package() {
     cd $srcdir/jax-jax-v$pkgver
-    python -m pip install \
-        --root $pkgdir \
-        --ignore-requires-python \
-        .
+    pip --no-python-version-warning -v \
+        install --ignore-installed --no-deps --root $pkgdir .
 }
