@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pwrEWAS.data
-_pkgver=1.11.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='pwrEWAS.data: Reference data accompanying pwrEWAS'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('309cb37fc0d933fb12365b2d4a75de1bae85ed7c5cd87eb3182f521f62a6ddd4')
+sha256sums=('b2e288aec374b0c52e4b3f7ecca76347d0bc4feafd2641bb8b5d69177d2a98c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
