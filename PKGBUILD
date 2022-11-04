@@ -1,7 +1,7 @@
 # Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
 
 pkgname=('discordchatexporter-cli')
-pkgver=2.36.3
+pkgver=2.36.4
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file"
 url="https://github.com/Tyrrrz/DiscordChatExporter"
@@ -9,7 +9,7 @@ license=('GPL')
 source=("${pkgname}-${pkgver}".tar.gz::https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/${pkgver}.tar.gz
 	'discordchatexporter-cli'
 	'netversion.patch')
-b2sums=('4859ac68cb9793ae07834c78ec417a68fd85a674b1ec97414695fda4baaa9c51e5a62098e9f8033b6ecec285779067814456f0f87779703899f25e3c0225981c'
+b2sums=('980f543bd3b997877095ec8d5b9402cde580fdd8ae725c4448b4c1235f117022f72d21a93edddd585209e60a43067ce7f77d296b4196d8ce49d40f9b7f5776e6'
 	'763d7ac60315aa945557096ccaea9ded7050e75aa183860d6f5749bbcd3c2fe565aad9dec7e320673725a4213f00915c5f1c3ce1c48626fde612e765b7d1dd80'
 	'186c274fcdc22e6796fbd8aec8a3f10ec31d6f2117b7f8476adebd170e9114506d701fc730866706521aacbb847f018c1451fd31b984ef3578ee6ba4915400f5')
 arch=('any')
