@@ -1,7 +1,7 @@
 pkgbase = agisoft-viewer
 	pkgdesc = A free stand-alone software to visualize 3D data
 	pkgver = 1.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.agisoft.com/
 	install = agisoft-viewer.install
 	arch = x86_64

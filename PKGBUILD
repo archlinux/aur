@@ -2,7 +2,7 @@
 _pkgname=viewer
 pkgname=agisoft-${_pkgname}
 pkgver=1.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A free stand-alone software to visualize 3D data"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -26,7 +26,7 @@ Type=Application
 Name=Agisoft Viewer
 Comment=Visualise the MetaShape output 3D data
 Exec=agisoft-viewer
-MimeType=application/agisoft.3dv
+MimeType=application/agisoft.3dv;application/agisoft.vpz
 Icon=agisoft-viewer
 Terminal=false
 Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
