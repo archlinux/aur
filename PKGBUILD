@@ -4,10 +4,10 @@ _pkgname=flowUtils
 _pkgver=1.59.0
 pkgname=r-${_pkgname,,}
 pkgver=1.59.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Utilities for flow cytometry'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -21,7 +21,7 @@ depends=(
 optdepends=(
   r-gatingmldata
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('46d4295df433797feb9b7ce8f285a87b5a08d19a383c8397a6b2a6859b30a387')
 
 build() {
