@@ -4,10 +4,10 @@ _pkgname=CountClust
 _pkgver=1.23.1
 pkgname=r-${_pkgname,,}
 pkgver=1.23.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Clustering and Visualizing RNA-Seq Expression Data using Grade of Membership Models'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
