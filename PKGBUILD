@@ -4,10 +4,10 @@ _pkgname=GCSConnection
 _pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Creating R Connection with Google Cloud Storage'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ceee2f03534b4e498db7bb4cb4bc9b662540d9d3135ffcd7fe1ef222d0e055df')
 
 build() {
