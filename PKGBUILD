@@ -5,23 +5,25 @@
 pkgname=pharo-launcher
 epoch=1
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(x86_64)
 source=(PharoLauncher-linux-$pkgver.zip pharo.conf)
 url="http://www.pharo-project.org/"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'libgit2')
 makedepends=('gendesk' 'libcurl-gnutls')
 
 source=(
 	"http://files.pharo.org/pharo-launcher/$pkgver.1/PharoLauncher-linux-$pkgver.1-x64.zip"
 	'local://pharo.conf'
+	'local://launcher-patch.st'
 )
 
 md5sums=(
 	'aed2ea4779afde2f01733aebb6b50170'
 	'b2e30a17b522ee265fd57fe7c45592fc'
+	'ce2ea191c7b8104305adc98943df826e'
 )
 
 prepare() {
@@ -58,4 +60,6 @@ package() {
 	# fix vm stuff
 	mkdir -p $pkgdir/etc/security/limits.d/
 	cp $srcdir/pharo.conf $pkgdir/etc/security/limits.d/pharo.conf
+
+	$pkgdir/usr/share/pharo-vm/pharo --headless $pkgdir/usr/share/pharo-launcher/PharoLauncher.image st $srcdir/launcher-patch.st
 }
