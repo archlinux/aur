@@ -5,9 +5,9 @@
 pkgname=josm-stable
 _name=josm
 _app_id="org.openstreetmap.${_name}"
-pkgver=22.09
-pkgrel=2
-_commit_id=18570
+pkgver=22.10
+pkgrel=1
+_commit_id=18583
 pkgdesc="An editor for OpenStreetMap written in Java. Stable releases"
 arch=('any')
 url="https://josm.openstreetmap.de/"
@@ -22,7 +22,7 @@ source=(https://josm.openstreetmap.de/download/${_name}-snapshot-${_commit_id}.j
         ${_name}.conf.d
         ${_name}::svn+https://josm.openstreetmap.de/svn/trunk#revision=${_commit_id})
 noextract=(${_name}-snapshot-${_commit_id}.jar)
-b2sums=('e69965a4075fd26921b2624668eca70b082660d376112d664eb55ee7c4cb1a9962b9a711120a24f4cabdafc7e6d4e8ab04c77d907d13a08f25156868b188ca11'
+b2sums=('1f661090db02278a05f457093ac6ff8aff060c00ead6347e283892e114ea7bf5c0a96279dd645cf97cbb45a3bf8f8919b5523cc847f52b703b19c4bfa909f463'
         '368a8116c9b2be9906bc76fc5a51c20321137747ddf463ae029a235ec75c1a420f477dc53bce38fd0a68c2f6fdb05dae2f700cf0e65e464f17e28e3439a3d7cf'
         'SKIP')
 
