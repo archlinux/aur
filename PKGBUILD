@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=omicRexposome
-_pkgver=1.19.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Exposome and omic data associatin and integration analysis'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-snpstats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67c97b88b540c807f0fd933a68b2ef0d19661b53d20df264796709ba29a896c7')
+sha256sums=('92e38b630a82103bf5b9a00b5d156d5377fabd0b8184090041fe266ba1b9af8f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
