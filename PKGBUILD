@@ -3,8 +3,8 @@
 # Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-_commit=dc661c59257e855cd9b29c14b91a8ee2d9b86ccb # master 2022-07-09 // v0.6.501
-pkgver=0.6.0.r763.gdc661c5
+_commit=0c752742e54fa34140386547947c81a832c9cad1 # master 2022-09-21 // v0.6.602
+pkgver=0.6.0.r798.g0c75274
 #pkgver=0.6.0
 pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
@@ -23,7 +23,7 @@ options=('!emptydirs')
 #source=(https://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig})
 #sha256sums=('da2975c6379358de52c1257710c67eb59139a7f0a1cd28d00cc64cc3e1c02f75'
 #            'SKIP')
-source=("git://anongit.freedesktop.org/openchrome/xf86-video-openchrome#commit=${_commit}")
+source=("git+https://anongit.freedesktop.org/git/openchrome/xf86-video-openchrome#commit=${_commit}")
 sha256sums=('SKIP')
 validpgpkeys=('CDA92E38A7A7A82237E9AB61C922784178BFFDB0') # "Kevin Brace <kevinbrace@gmx.com>"
 
