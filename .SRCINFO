@@ -1,0 +1,21 @@
+pkgbase = passy
+	pkgdesc = TODO: Write description
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/GlitterWare/Passy
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = git
+	depends = glu
+	depends = java-environment
+	depends = libglvnd
+	depends = unzip
+	depends = cmake
+	depends = ninja
+	provides = passy
+	source = git+https://github.com/GlitterWare/Passy.git
+	sha512sums = SKIP
+
+pkgname = passy
+
