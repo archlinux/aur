@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.6
+pkgver=6.0.7
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -95,25 +95,21 @@ source=(
   0003-soundwire-intel-Initialize-clock-stop-timeout.patch
   0004-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
   0005-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
-  0006-drm-amdgpu-Fix-VRAM-BO-swap-issue.patch
-  0007-drm-amdgpu-Fix-for-BO-move-issue.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('864b05af2d869ba73d61a9c5959e4531a141ab2bd7b217483671f625f9747faa'
+sha256sums=('67dacc2b78605a56e997f4c08d009be87c98ec66f1870220226c8b3cc676590f'
             'SKIP'
             '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
             '2d50a108a111a7f135f91b2676539d0a163e38ee72874d091aed0e1e86f2d477'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            'f1aafd32cd42e9ebb3475597db05bf27561ae52a7b48ec5bc353be3ca50925a1'
-            '0a4ab2a5f7cf2cd78ca20678775f4ead39169bd7d7ba5e7ecae9053a9c94071b'
-            'ef1e125fb021ab64aeeda696408d6ed8232a4261a0a2489afc560350fc7312bc'
-            'feac2bd6fc4ee7c566975e09cb55bdc7be192988b037a0e79fd7e51f3f914221'
-            '76052ea5929bac6b4fccc77b321cb273d6fca64426b7584fca5ff36a470d6eb1'
-            'e0e9dc4b1a0ea0fd1af0825c0b49844ea364e3163c4291b8712919f49914c4ef'
-            '1487f13aa32de66562fca3b61e8c97c45c6f8dc2362403b141be2db423fcc3e1')
+            'e36c9d26b887f52e9cdae99604009ffdf80dd00ecc1788000529be3d3cddac15'
+            'c693877c7fad635fa37662c571baa901a991f0658151de70dce32019efb00be1'
+            '80dc03e2b79147542ea32aaaf964c811e62f126a0ec115c6255493827911c343'
+            '7103f9525bea1c2cc766c9b70c827c5af2af6ad51c6b9c2a471729882196b05b'
+            'a55abfbdf878c282510afc967fad7df6d3c98ed7279cc562ca885d85eb77cceb')
 
 prepare() {
   cd linux-${pkgver}
