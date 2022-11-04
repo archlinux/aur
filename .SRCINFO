@@ -1,12 +1,11 @@
 pkgbase = josm-stable
 	pkgdesc = An editor for OpenStreetMap written in Java. Stable releases
 	pkgver = 22.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://josm.openstreetmap.de/
 	changelog = josm-stable.changelog
 	arch = any
 	license = GPL
-	makedepends = subversion
 	depends = hicolor-icon-theme
 	depends = java-runtime>=11
 	depends = ttf-font
@@ -17,9 +16,15 @@ pkgbase = josm-stable
 	backup = etc/conf.d/josm
 	source = https://josm.openstreetmap.de/download/josm-snapshot-18583.jar
 	source = josm.conf.d
-	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18583
+	source = https://josm.openstreetmap.de/export/18583/josm/trunk/native/linux/tested/usr/share/applications/org.openstreetmap.josm.desktop
+	source = https://josm.openstreetmap.de/export/18583/josm/trunk/native/linux/tested/usr/share/man/man1/josm.1
+	source = https://josm.openstreetmap.de/export/18583/josm/trunk/native/linux/tested/usr/share/metainfo/org.openstreetmap.josm.appdata.xml
+	source = https://josm.openstreetmap.de/export/18583/josm/trunk/native/linux/tested/usr/share/icons/hicolor/scalable/apps/org.openstreetmap.josm.svg
 	b2sums = 1f661090db02278a05f457093ac6ff8aff060c00ead6347e283892e114ea7bf5c0a96279dd645cf97cbb45a3bf8f8919b5523cc847f52b703b19c4bfa909f463
-	b2sums = 368a8116c9b2be9906bc76fc5a51c20321137747ddf463ae029a235ec75c1a420f477dc53bce38fd0a68c2f6fdb05dae2f700cf0e65e464f17e28e3439a3d7cf
-	b2sums = SKIP
+	b2sums = 6ab22295febf20e8124da5f224d28722210345b33a091b948dd02e1897ab7767cdf6b65ee42bf777f3d52dfb88e14b7af9a013ee60e6949964618bb33416b6ee
+	b2sums = d3a5e0204d0188e72eed65e71edd079b5aa025b82f13c515605f7d5bb9f96fc93e4a24c9eea76c6c4027f54f1c449cda811f5c59e0f2ab54975ab3b1bf221ee7
+	b2sums = 095c9a52e8efaf90a41d322c89cee6828ff05a20999a864f438e1b8c101382588e58f455f8339235493a27a16326b9114add69aeab9709e9bf8a28d1ce5594d5
+	b2sums = 59eafa8c80f4ab55406ff909851fceacdd9c6f956017ead50bb3ee47c4d439f4e1e35406823a00f1654178244aec26be1f0de7703ea00cdda6d40cbf0b0d9235
+	b2sums = b0ec92c4e97500d5461200f698fbfccc53c275169c25db3139a4c97826fffa96ec6104d21ab9a16d4221b98725faea09e6a2b7d99ed48a782becab6dd9de8d4f
 
 pkgname = josm-stable
