@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rebus.datetimes
-_pkgver=0.0-1
+_pkgver=0.0-2
 pkgname=r-${_pkgname,,}
-pkgver=0.0.1
-pkgrel=4
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Date and Time Extensions for the 'rebus' Package"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5c22ae363a499508f78970ef855ffa0fc2e54e8e876b0fa562354ee6b209b26')
+sha256sums=('aec17d24978bebb9f88b96940fe5fa359f8342e8312d66679d317eb443ae05c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

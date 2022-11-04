@@ -1,7 +1,7 @@
 pkgbase = r-rebus.datetimes
 	pkgdesc = Date and Time Extensions for the 'rebus' Package
-	pkgver = 0.0.1
-	pkgrel = 4
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rebus.datetimes
 	arch = any
 	license = Unlimited
@@ -9,7 +9,7 @@ pkgbase = r-rebus.datetimes
 	depends = r-rebus.base
 	optdepends = r-stats
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rebus.datetimes_0.0-1.tar.gz
-	sha256sums = a5c22ae363a499508f78970ef855ffa0fc2e54e8e876b0fa562354ee6b209b26
+	source = https://cran.r-project.org/src/contrib/rebus.datetimes_0.0-2.tar.gz
+	sha256sums = aec17d24978bebb9f88b96940fe5fa359f8342e8312d66679d317eb443ae05c3
 
 pkgname = r-rebus.datetimes
