@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylclockData
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Data for methylclock package'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c2713a2bfcd75acc9104448af1ac7eb7e6afa79660ae7a031c5e55980360fe63')
+sha256sums=('aa2bbed0d2326021414d1fb091ba1f9ae64fcdb3b7139530e97cb42406b0e9c6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
