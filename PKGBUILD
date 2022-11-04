@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Illumina450ProbeVariants.db
-_pkgver=1.33.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Annotation Package combining variant data from 1000 Genomes Project for Illumina HumanMethylation450 Bead Chip probes'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a3e0d2ade8157ff379190f04a55a3acccb21507c0b54ca4510e8b514ade00f49')
+sha256sums=('5790aa89ba407b63245451af78a8ea2d60798faa62a91d940e2ae81362c731b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
