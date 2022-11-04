@@ -13,13 +13,13 @@ arch=('any')
 url="https://josm.openstreetmap.de/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'java-runtime>=11' 'ttf-font' 'sh')
-conflicts=('josm')
+conflicts=('josm' 'josm-tested')
 provides=('josm')
 makedepends=()
 changelog=$pkgname.changelog
 backup=('etc/conf.d/josm')
 source=("https://josm.openstreetmap.de/download/${_name}-snapshot-${_commit_id}.jar"
-        ${_name}.conf.d
+        "${_name}.conf.d"
         "https://josm.openstreetmap.de/export/${_commit_id}/josm/trunk/native/linux/tested/usr/share/applications/${_app_id}.desktop"
         "https://josm.openstreetmap.de/export/${_commit_id}/josm/trunk/native/linux/tested/usr/share/man/man1/${_name}.1"
         "https://josm.openstreetmap.de/export/${_commit_id}/josm/trunk/native/linux/tested/usr/share/metainfo/${_app_id}.appdata.xml"

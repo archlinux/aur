@@ -12,6 +12,7 @@ pkgbase = josm-stable
 	depends = sh
 	provides = josm
 	conflicts = josm
+	conflicts = josm-tested
 	noextract = josm-snapshot-18583.jar
 	backup = etc/conf.d/josm
 	source = https://josm.openstreetmap.de/download/josm-snapshot-18583.jar
