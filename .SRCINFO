@@ -8,6 +8,6 @@ pkgbase = python-torch-points3d
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/t/torch_points3d/torch_points3d-1.3.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = abc546c2023d150518614318042772767d9cc2043e538a6152dea3441781bd39
 
 pkgname = python-torch-points3d

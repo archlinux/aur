@@ -12,7 +12,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('abc546c2023d150518614318042772767d9cc2043e538a6152dea3441781bd39')
 
 package() {
   cd ${_pkgname}-${pkgver}
