@@ -4,10 +4,10 @@ _pkgname=PrecisionTrialDrawer
 _pkgver=1.11.0
 pkgname=r-${_pkgname,,}
 pkgver=1.11.0
-pkgrel=1
+pkgrel=4
 pkgdesc='A Tool to Analyze and Design NGS Based Custom Gene Panels'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -41,7 +41,7 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4cc451d5fb6c6aeda70a345421c77d2606f1d23446bfd94eda3dd81f64463cd6')
 
 build() {

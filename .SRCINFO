@@ -1,8 +1,8 @@
 pkgbase = r-precisiontrialdrawer
 	pkgdesc = A Tool to Analyze and Design NGS Based Custom Gene Panels
 	pkgver = 1.11.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/PrecisionTrialDrawer
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/PrecisionTrialDrawer
 	arch = any
 	license = GPL
 	depends = r
@@ -33,7 +33,7 @@ pkgbase = r-precisiontrialdrawer
 	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PrecisionTrialDrawer_1.11.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/PrecisionTrialDrawer_1.11.0.tar.gz
 	sha256sums = 4cc451d5fb6c6aeda70a345421c77d2606f1d23446bfd94eda3dd81f64463cd6
 
 pkgname = r-precisiontrialdrawer
