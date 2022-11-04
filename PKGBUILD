@@ -4,10 +4,10 @@ _pkgname=perturbatr
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Statistical Analysis of High-Throughput Genetic Perturbation Screens'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
