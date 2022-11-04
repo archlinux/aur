@@ -1,6 +1,6 @@
 pkgbase = nomadnet
 	pkgdesc = Off-grid, resilient mesh communication with strong encryption
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/markqvist/nomadnet
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nomadnet
 	makedepends = python-setuptools
 	depends = python-lxmf
 	depends = python-urwid
-	source = https://files.pythonhosted.org/packages/source/n/nomadnet/nomadnet-0.2.6.tar.gz
-	sha256sums = b71a51d1eb0427f104dbe4786200fd9d0f7af1955102d30513334065a2414bf0
+	source = https://files.pythonhosted.org/packages/source/n/nomadnet/nomadnet-0.2.7.tar.gz
+	sha256sums = 44b119223d809fc7a86d2312293eb2a0f4995c0d5a925b2ed303370a14c6bc8b
 
 pkgname = nomadnet
