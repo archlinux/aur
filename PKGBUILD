@@ -4,10 +4,10 @@ _pkgname=genphen
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=4
 pkgdesc='genphen: tool for quantification of genotype-phenotype associations in genome wide association studies (GWAS)'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
   r-xtable
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6805ee931998ad03305a3b56a3356502cb0519cf1bba2f3fe931eece9ec2c0d4')
 
 build() {

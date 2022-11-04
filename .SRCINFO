@@ -1,8 +1,8 @@
 pkgbase = r-genphen
 	pkgdesc = genphen: tool for quantification of genotype-phenotype associations in genome wide association studies (GWAS)
 	pkgver = 1.24.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/genphen
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/genphen
 	arch = any
 	license = GPL
 	depends = r
@@ -22,7 +22,7 @@ pkgbase = r-genphen
 	optdepends = r-reshape
 	optdepends = r-testthat
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genphen_1.24.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/genphen_1.24.0.tar.gz
 	sha256sums = 6805ee931998ad03305a3b56a3356502cb0519cf1bba2f3fe931eece9ec2c0d4
 
 pkgname = r-genphen
