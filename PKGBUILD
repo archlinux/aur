@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneLenDataBase
-_pkgver=1.33.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Lengths of mRNA transcripts for a number of genomes'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('00099030ba0f08a5fca551c4e8d240e6783062e9bb73f34fb49cdd4457792d11')
+sha256sums=('8f9cf0b21de1e9042dd8680c86ca93b72f57c0f68d38acf81a0187cdc2d396f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
