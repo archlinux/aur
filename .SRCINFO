@@ -1,0 +1,23 @@
+pkgbase = ocaml-cil-git
+	pkgdesc = C Intermediate Language CIL is a front-end for the C programming language that facilitates program analysis and transformation. CIL will parse and typecheck a program, and compile it into a simplified subset of C.
+	pkgver = r4768.673aa00b
+	pkgrel = 1
+	url = https://goblint.github.io/cil/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = lib32-glibc
+	makedepends = dune
+	makedepends = perl
+	makedepends = cppo
+	depends = ocaml
+	depends = ocaml-zarith
+	depends = ocaml-stdlib-shims
+	depends = ocaml-ppx_deriving_yojson-git
+	provides = ocaml-cil
+	conflicts = ocaml-cil
+	options = !strip
+	source = ocaml-cil::git+https://github.com/goblint/cil
+	md5sums = SKIP
+
+pkgname = ocaml-cil-git
