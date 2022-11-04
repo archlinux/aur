@@ -1,7 +1,7 @@
 pkgbase = opendnssec
 	pkgdesc = Turn-key solution for DNSSEC
 	pkgver = 2.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opendnssec.org/
 	install = opendnssec.install
 	arch = i686

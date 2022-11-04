@@ -2,7 +2,7 @@
 
 pkgname=opendnssec
 pkgver=2.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-key solution for DNSSEC"
 arch=('i686' 'x86_64')
 url="http://www.opendnssec.org/"
@@ -58,7 +58,7 @@ build()
   ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var/lib --sysconfdir=/etc --with-pkcs11-softhsm=/usr/lib/libsofthsm.so --sbindir=/usr/bin
 
   # Remove optional dependency on libbacktrace (incorrectly detected as present)
-  echo #unset HAVE_BACKTRACE_FULL >> common/config.h
+  sed -i /HAVE_BACKTRACE_FULL/d config.status
 
   # Create the correct (/var/run/opendnssec) directory
   sed -i \
