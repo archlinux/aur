@@ -4,10 +4,10 @@ _pkgname=TVTB
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=4
 pkgdesc='TVTB: The VCF Tool Box'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -42,7 +42,7 @@ optdepends=(
   r-shiny
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('1af5da609ec7b34cc10f5fe898bebf786f4fac573044fee992c86fe15df4dd00')
 
 build() {

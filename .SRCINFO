@@ -1,8 +1,8 @@
 pkgbase = r-tvtb
 	pkgdesc = TVTB: The VCF Tool Box
 	pkgver = 1.22.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/TVTB
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/TVTB
 	arch = any
 	license = Artistic2.0
 	depends = r
@@ -34,7 +34,7 @@ pkgbase = r-tvtb
 	optdepends = r-rtracklayer
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TVTB_1.22.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/TVTB_1.22.0.tar.gz
 	sha256sums = 1af5da609ec7b34cc10f5fe898bebf786f4fac573044fee992c86fe15df4dd00
 
 pkgname = r-tvtb
