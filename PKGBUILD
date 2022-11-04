@@ -2,7 +2,7 @@
 
 pkgname=pc-ble-driver
 pkgver=4.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="C/C++ libraries for Bluetooth Low Energy nRF5 SoftDevice serialization"
 arch=(x86_64)
 url="https://github.com/NordicSemiconductor/pc-ble-driver"
@@ -26,6 +26,7 @@ b2sums=('7e31b05aaffaef4936f4794b527016dc3d550c8ce8fa6b1c89b8d73a71388aa38d8e30a
         '81e82f4257399d303f71595da9b66185a8669387d8fbb85cfc00bc97a2d8c2d9c3132633be29babcae752bd901a30ab2b48f08d200492878f2dbcdad31a7a2c0')
 
 prepare() {
+  # add missing include for thread
   patch -Np1 -d $pkgname-$pkgver -i ../$pkgname-4.1.4-gcc_11.2.patch
   # set project version properly, as it is used by all sorts of downstream projects
   sed -e "s/0.0.0/$pkgver/g" -i $pkgname-$pkgver/CMakeLists.txt
