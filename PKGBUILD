@@ -5,13 +5,13 @@ pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Disney+ desktop application"
 arch=('x86_64')
-url="https://gitlab.com/d6838/application"
+url="https://gitlab.com/disneyplusdesktop/application"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("disneyplus-git")
 sha256sums_x86_64=('SKIP')
-source_x86_64=("https://gitlab.com/d6838/binaries/"$pkgver"-"$pkgrel"/-/raw/main/DisneyPlus-linux-x64.tar.xz")
+source_x86_64=("https://gitlab.com/disneyplusdesktop/binaries/"$pkgver"-"$pkgrel"/-/raw/main/DisneyPlus-linux-x64.tar.xz")
 
 package() {
     for dir in DisneyPlus-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
