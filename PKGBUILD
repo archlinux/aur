@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cageminer
-_pkgver=1.2.5
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Candidate Gene Miner'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('317460a09ff8664b25a119c49d63932c5996b2ff328e5c5b63fa974359c209ab')
+sha256sums=('ab6446e62a6141043ab67bbdeb8515002b7cc67e1ea15ed34e9c7af06a85975b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
