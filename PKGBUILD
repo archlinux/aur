@@ -4,10 +4,10 @@ _pkgname=diffloop
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Identifying differential DNA loops from chromatin topology data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -41,7 +41,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('2f48de52b10b9b59bf31ca50f189939c3c155e14a852d1cb39fc77047c7a126c')
 
 build() {
