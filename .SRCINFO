@@ -1,6 +1,6 @@
 pkgbase = r-scatedata
 	pkgdesc = Data for SCATE (Single-cell ATAC-seq Signal Extraction and Enhancement)
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SCATEData
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-scatedata
 	depends = r-genomicranges
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SCATEData_1.7.0.tar.gz
-	sha256sums = 07412cc285855a21ab8d333375e347c634378b0b80ad59173c5b3feb0f4f292e
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/SCATEData_1.8.0.tar.gz
+	sha256sums = 07e6e39743e41a5f07d55410612e4a7e8ccbee8af8a8a1e0eae0a524bb1f0317
 
 pkgname = r-scatedata
