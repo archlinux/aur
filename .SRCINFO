@@ -1,7 +1,7 @@
 pkgbase = obs-virtual-cam-filter
 	pkgdesc = Adds a filter to output a source or scene to the build in virtual camera
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/virtual-cam-filter.1142/
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = obs-virtual-cam-filter
 	makedepends = libxcomposite
 	makedepends = ffmpeg
 	makedepends = pciutils
-	depends = obs-studio>=27.2.0
+	depends = obs-studio>=28.0.0
 	source = obs-virtual-cam-filter::git+https://github.com/exeldro/obs-virtual-cam-filter#commit=4af4d50d25cb6afa18b29b84a6b1f795e486f4a1
-	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
+	source = obs-studio-28.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/28.0.0.tar.gz
 	sha256sums = SKIP
-	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
+	sha256sums = 412a1a26699a6861dbbe93346310d002369c62e00626e8c3a77c127e5e1c06e8
 
 pkgname = obs-virtual-cam-filter
