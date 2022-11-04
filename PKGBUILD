@@ -10,14 +10,14 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(MIT)
 depends=('python>3.9' 'python-packaging')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'rsync')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}")
 sha512sums=('SKIP')
