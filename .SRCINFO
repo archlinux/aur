@@ -1,0 +1,17 @@
+pkgbase = timeswitch
+	pkgdesc = Power off, reboot, suspend or send a notification on timer.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fsobolev/timeswitch
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	source = git+https://github.com/fsobolev/timeswitch#commit=95c3c50b758a38d4c1d5bdc888335d95c1572639
+	sha256sums = SKIP
+
+pkgname = timeswitch
