@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASpli
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Analysis of Alternative Splicing Using RNA-Seq'
 arch=('any')
@@ -32,7 +32,7 @@ depends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df7a78abe104f974adabe7040557244ef9a93dca682b664d7735928a146734bb')
+sha256sums=('93d054f9511bb08464b006b0fe33c6812997dde29581044283c6cb7e652c973f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

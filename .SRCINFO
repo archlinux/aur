@@ -1,6 +1,6 @@
 pkgbase = r-aspli
 	pkgdesc = Analysis of Alternative Splicing Using RNA-Seq
-	pkgver = 2.6.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASpli
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-aspli
 	depends = r-s4vectors
 	depends = r-tidyr
 	depends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASpli_2.6.0.tar.gz
-	sha256sums = df7a78abe104f974adabe7040557244ef9a93dca682b664d7735928a146734bb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASpli_2.8.0.tar.gz
+	sha256sums = 93d054f9511bb08464b006b0fe33c6812997dde29581044283c6cb7e652c973f
 
 pkgname = r-aspli
