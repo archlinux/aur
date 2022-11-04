@@ -1,8 +1,8 @@
 pkgbase = r-isogenegui
 	pkgdesc = A graphical user interface to conduct a dose-response analysis of microarray data
 	pkgver = 2.31.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/IsoGeneGUI
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/IsoGeneGUI
 	arch = any
 	license = GPL
 	depends = r
@@ -23,7 +23,7 @@ pkgbase = r-isogenegui
 	depends = r-tkrplot
 	depends = r-xlsx
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IsoGeneGUI_2.31.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/IsoGeneGUI_2.31.0.tar.gz
 	sha256sums = f6f5719df91c062ef1ac9241caf4838d79f717de4175f49064e86756b7eefff0
 
 pkgname = r-isogenegui
