@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.3.22
+pkgver=0.3.24
 pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
@@ -34,8 +34,9 @@ build() {
 
 package() {
     cd $srcdir/jax
-    ls -l dist
-    python -m pip install \
+    pip install \
+        --ignore-installed \
+        --no-deps \
         --root $pkgdir \
         dist/*.whl
 }
