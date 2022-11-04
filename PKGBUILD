@@ -12,7 +12,7 @@ url="http://qt-project.org/"
 license=(GPL3 custom)
 depends=(qt5-base)
 makedepends=(git)
-source=("git://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
+source=("git+https://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
 sha512sums=('SKIP')
 _pkgfqn=${pkgname/5-/}
 options=(debug)
