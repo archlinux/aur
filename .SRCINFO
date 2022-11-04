@@ -1,6 +1,6 @@
 pkgbase = r-genomicfeatures
 	pkgdesc = Conveniently import and query gene models
-	pkgver = 1.50.1
+	pkgver = 1.50.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicFeatures
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = r-genomicfeatures
 	optdepends = r-txdb.hsapiens.ucsc.hg19.lincrnastranscripts
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicFeatures_1.50.1.tar.gz
-	sha256sums = 617f9126d14ac021fced2251d8411661b98a4950d277fe11f58caf6f83169b4b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicFeatures_1.50.2.tar.gz
+	sha256sums = ffc36d602dc2f1c1fbd4ba93a1d8f0dbd9980ff7551a48c1c2c9c303822c8183
 
 pkgname = r-genomicfeatures
