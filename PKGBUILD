@@ -4,7 +4,7 @@
 pkgname=shairplay
 _commit=096b61a
 pkgver=20180824.096b61a
-pkgrel=3
+pkgrel=4
 pkgdesc='Apple airplay and raop protocol server'
 arch=('x86_64')
 url='https://github.com/juhovh/shairplay'
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libao' 'avahi')
 makedepends=('git')
 source=(
-    "$pkgname::git://github.com/juhovh/shairplay.git#commit=$_commit"
+    "$pkgname::git+https://github.com/juhovh/shairplay.git#commit=$_commit"
 	'shairplay.service'
 )
 sha256sums=('SKIP'
