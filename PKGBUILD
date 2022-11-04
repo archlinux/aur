@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-draw-on-your-screen2-git
 _pkgname=DrawOnYourScreen2
 _extid='draw-on-your-screen2@zhrexl.github.com'
-pkgver=12.r18.g6d5086a
+pkgver=12.r49.g9a3ff24
 pkgrel=1
 pkgdesc="A drawing extension for the GNOME Shell."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/zhrexl/DrawOnYourScreen2"
 license=('GPLv3')
 depends=('gnome-shell')
 makedepends=('git')
-source=('git+https://github.com/zhrexl/DrawOnYourScreen2.git#branch=GNOMEv42')
+source=('git+https://github.com/zhrexl/DrawOnYourScreen2.git')
 sha256sums=('SKIP')
 
 pkgver() {
