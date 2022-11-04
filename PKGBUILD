@@ -3,13 +3,13 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
 license=('GPL2')
 depends=('git' 'hicolor-icon-theme' 'python-numpy' 'python-pyqt5' 'python-qtpy')
-makedepends=('python-build' 'python-installer' 'python-jaraco.packaging' 'python-pip'
+makedepends=('python-build' 'python-installer' 'python-jaraco.packaging'
              'python-rst.linker' 'python-setuptools-scm' 'python-sphinx' 'python-wheel')
 #checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-flake8')
 checkdepends=('appstream-glib' 'desktop-file-utils')
