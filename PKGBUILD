@@ -1,8 +1,8 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 _use_suffix=1
-pkgver=18.3.9
-_commit=dce1b44b61284b508a141d01a320275c14831b19
+pkgver=18.3.15
+_commit=7dd731d3202fb7aa318e1df231d0ba153d060931
 _chromiumver=100.0.4896.160
 _gcc_patchset=4
 # shellcheck disable=SC2034
@@ -78,8 +78,7 @@ sha256sums=('SKIP'
             '6f666ef0acb08704ca58cc0d5e97e7ce64d8fea51042e593adae1ce15a61231c'
             '0ec88c8022c946ac333cbc1060d6b9cacbef6c4a86fe8763d23add6939a3c490'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
-            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
-           )
+            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a')
 
 _system_libs=('ffmpeg'
               'flac'
