@@ -1,5 +1,7 @@
 [Unit]
 Description=Mautrix syncproxy
+Replaces=postgresql.service
+After=postgresql.service
 
 [Service]
 ExecStart=/usr/bin/mautrix-syncproxy -config /etc/mautrix-syncproxy/syncproxy.yaml
@@ -10,4 +12,4 @@ ProtectHome=yes
 
 [Install]
 WantedBy=multi-user.target
-DefaultInstance=syncproxy
+

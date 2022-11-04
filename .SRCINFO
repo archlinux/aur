@@ -10,6 +10,6 @@ pkgbase = mautrix-syncproxy-git
 	source = mautrix-syncproxy::git+https://github.com/fauxmight/syncproxy.git#branch=config_file
 	source = mautrix-syncproxy.service
 	sha256sums = SKIP
-	sha256sums = 2ce745c093c31e8d622ad1a29c515ecaa9fd02e1d28bfab8414d4b7476ea9c1e
+	sha256sums = 518f0862ddd9b6a9f7d5c1ead047e99511845b524ac83792eac63e14c3ef9bc5
 
 pkgname = mautrix-syncproxy-git

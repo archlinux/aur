@@ -12,7 +12,7 @@ url="https://github.com/mautrix/syncproxy"
 source=(${_pkgname}::git+https://github.com/fauxmight/syncproxy.git#branch=config_file
 	${_pkgname}.service)
 sha256sums=('SKIP'
-            '2ce745c093c31e8d622ad1a29c515ecaa9fd02e1d28bfab8414d4b7476ea9c1e')
+	    '518f0862ddd9b6a9f7d5c1ead047e99511845b524ac83792eac63e14c3ef9bc5')
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines :
 # "If there are no tags then use number of revisions since beginning of the history"
