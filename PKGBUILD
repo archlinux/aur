@@ -2,7 +2,7 @@
 
 pkgname='fn'
 pkgver='0.6.22'
-pkgrel='2'
+pkgrel='3'
 epoch=
 pkgdesc='fn: a container-native, cloud-agnostic tool for defining serverless functions.'
 arch=('x86_64')
