@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=sonixd
 pkgver=0.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -19,6 +19,8 @@ sha256sums=('f6954415491400d802fe098a2fcb94ac451c3c5d535a89f85825c8a1ef0963ee'
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	mkdir -p "$srcdir/.electron-gyp"
+	touch "$srcdir/.electron-gyp/.yarnrc"
 
 	_ver="$(</usr/lib/electron13/version)"
 	HOME="$srcdir/.electron-gyp" yarn upgrade --cache-folder="$srcdir/yarn-cache" "electron@$_ver"
