@@ -3,7 +3,7 @@
 
 pkgname=mpv-mpvacious
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds mpv keybindings to create Anki cards from movies and TV shows."
 arch=('any')
 url="https://github.com/Ajatt-Tools/mpvacious"
@@ -17,6 +17,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('41569ed5929f9c69ed70269f89611a688b578aae6cb7156cdd708a6c41229a46eda917e480311759a4ff342ba2d7ebebc43758225f591d744fcf60d738b4f467')
+install="${pkgname#mpv-}.install"
 
 package() {
 	cd -- "$srcdir/${pkgname#mpv-}-${pkgver}"
@@ -24,4 +25,5 @@ package() {
 		install -Dm644 "$file" "${pkgdir}/etc/mpv/scripts/${pkgname#mpv-}/${file}"
 	done
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 .github/RELEASE/subs2srs.conf "$pkgdir/etc/mpv/script-opts/subs2srs.conf"
 }
