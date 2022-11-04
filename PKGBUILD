@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=changepoint
-_pkgver=2.2.3
+_pkgver=2.2.4
 pkgname=r-${_pkgname,,}
-pkgver=2.2.3
-pkgrel=3
+pkgver=2.2.4
+pkgrel=1
 pkgdesc='Methods for Changepoint Detection'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9255f16583a5296a8af02d2a50925a0888b74eae57489d0a28763f3cd3efedc2')
+sha256sums=('ac636fde7610137385dde1e3d8a22a2ff856a8d5c917c7ad1a5cc49f98b8649b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
