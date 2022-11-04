@@ -3,7 +3,7 @@
 
 pkgname=python-sigstore
 _name=${pkgname#python-}
-pkgver=0.6.8
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="sigstore is a tool for signing and verifying Python package distributions."
 arch=('any')
@@ -12,20 +12,20 @@ license=('Apache')
 depends=(python python-requests python-pydantic python-pyopenssl python-securesystemslib python-pyjwt)
 makedepends=(python-flit-core python-build python-installer python-wheel)
 checkdepends=(python)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('578d3e5ce18701d229ac22bc8aa839fabb19af1d4cf50960c6d089ab8e7c5f55')
+source=(https://github.com/sigstore/sigstore-python/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('318f424b48a3dc1a78e47b0ce1a4d7aed20bb1a48aa67abeef709ca323ce5909')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "sigstore-python-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "sigstore-python-$pkgver"
   #pytest
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "sigstore-python-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

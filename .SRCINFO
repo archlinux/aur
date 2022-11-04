@@ -1,6 +1,6 @@
 pkgbase = python-sigstore
 	pkgdesc = sigstore is a tool for signing and verifying Python package distributions.
-	pkgver = 0.6.8
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.org/project/sigstore/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-sigstore
 	depends = python-pyopenssl
 	depends = python-securesystemslib
 	depends = python-pyjwt
-	source = https://files.pythonhosted.org/packages/source/s/sigstore/sigstore-0.6.8.tar.gz
-	sha256sums = 578d3e5ce18701d229ac22bc8aa839fabb19af1d4cf50960c6d089ab8e7c5f55
+	source = https://github.com/sigstore/sigstore-python/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 318f424b48a3dc1a78e47b0ce1a4d7aed20bb1a48aa67abeef709ca323ce5909
 
 pkgname = python-sigstore
