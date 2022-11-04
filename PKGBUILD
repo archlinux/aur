@@ -18,7 +18,7 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   # briefcase is not necessary on Linux
-  sed -i 's/, "briefcase"//g' -i pyproject.toml
+  sed -i 's/, "briefcase"//g' pyproject.toml
 }
 
 build() {
