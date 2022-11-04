@@ -1,8 +1,8 @@
 pkgbase = r-ctggem
 	pkgdesc = Generating Tree Hierarchy Visualizations from Gene Expression Data
 	pkgver = 1.7.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/ctgGEM
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/ctgGEM
 	arch = any
 	license = GPL
 	depends = r
@@ -20,7 +20,7 @@ pkgbase = r-ctggem
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-vgam
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ctgGEM_1.7.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/ctgGEM_1.7.0.tar.gz
 	sha256sums = abb1cc74e7598e646df2a920557ddc0145d0ae068e07cdd7c844806cd2bfaa42
 
 pkgname = r-ctggem

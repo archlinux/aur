@@ -4,10 +4,10 @@ _pkgname=ctgGEM
 _pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Generating Tree Hierarchy Visualizations from Gene Expression Data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
   r-vgam
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('abb1cc74e7598e646df2a920557ddc0145d0ae068e07cdd7c844806cd2bfaa42')
 
 build() {
