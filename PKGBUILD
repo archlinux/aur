@@ -4,10 +4,10 @@ _pkgname=PubScore
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Automatic calculation of literature relevance of genes'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -32,7 +32,7 @@ optdepends=(
   r-summarizedexperiment
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('0d7908ba4121cea855893e2b5945272c97b889c049c49304a42df76af6fe75a1')
 
 build() {
