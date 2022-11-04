@@ -1,8 +1,8 @@
 pkgbase = r-clonotyper
 	pkgdesc = High throughput analysis of T cell antigen receptor sequences
 	pkgver = 1.34.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/clonotypeR
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/clonotypeR
 	arch = any
 	license = custom
 	depends = r
@@ -13,7 +13,7 @@ pkgbase = r-clonotyper
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clonotypeR_1.34.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/clonotypeR_1.34.0.tar.gz
 	sha256sums = d83cf13658ec2119cfddf4b4d88cdd74843a823bba57dd83a596ad219891d696
 
 pkgname = r-clonotyper
