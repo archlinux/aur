@@ -2,7 +2,7 @@
 
 pkgname=wowup-bin
 _pkgname=wowup
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="WowUp the World of Warcraft addon updater"
 arch=(x86_64)
@@ -22,7 +22,7 @@ source=(
   "$_pkgname"
 )
 noextract=("WowUp-$pkgver.AppImage")
-sha256sums=('e9c20bd267d8026033f2bfe9ece7cf099794920aa70aec606ed1248df007b4e8'
+sha256sums=('64c57d95323fa1f780ca8ad8187e5395c9d20325dd36a41f16b1a0b3fe462584'
             '1c45de78eefd65c4a7b3fc4d6cebbefdc331f854c8f26d112c441c4156f5e90b'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '2864d07fd0ce8e68b34b8b3f5170202972736918793861bd87720f080cb04ab9'
