@@ -1,6 +1,6 @@
 pkgname=mx-puppet-discord-git
 pkgver=v0.1.1.r5.gfd44022
-pkgrel=2
+pkgrel=3
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
@@ -8,7 +8,7 @@ pkgdesc='This is a Matrix bridge for Discord'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/mx-puppet/discord/mx-puppet-discord.git'
 license=('apache')
-depends=('nodejs' 'cairo' 'pango' 'libjpeg-turbo' 'sqlite')
+depends=('nodejs-lts-hydrogen' 'cairo' 'pango' 'libjpeg-turbo' 'sqlite')
 source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basename}.service")
 sha256sums=('SKIP'
             '52882939775b359aceb0b1f16f46d8c2063dab100d58bd2d3753bae66638490d'
