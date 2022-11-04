@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=htmltest-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 provides=('htmltest')
 conflicts=('htmltest')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/wjdp/htmltest/releases/download/v${pkgver}/htmltest_${pkgver}_linux_amd64.tar.gz"
     "https://github.com/wjdp/htmltest/raw/v${pkgver}/LICENCE"
 )
-sha256sums=('4835e857f75d317e84fda6f9b112c70696095f8656740ca9421e74eb7e75f041'
+sha256sums=('775c597ee74899d6002cd2d93076f897f4ba68686bceabe2e5d72e84c57bc0fb'
             '7aa00c7fdb5b0284ee72b0fdb18a0bede0f0479703ca3224e0acb47d2016fb71')
 
 package() {
