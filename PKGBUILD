@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=materialx
 _pkgver_major=1.38
-_pkgver_minor=5
+_pkgver_minor=6
 pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
