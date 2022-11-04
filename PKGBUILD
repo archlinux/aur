@@ -2,13 +2,13 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.3.1.r1.ge1ae23dd
-pkgrel=2
+pkgver=1.3.2.r105.g2121c60c
+pkgrel=1
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 arch=('any')
 makedepends=('git' 'openssh' 'python-dbus' 'python-keyring' 'rsync' 'systemd' 'xorg-xdpyinfo')
-checkdepends=('python-pyqt5')
+checkdepends=('python-pyfakefs' 'python-pyqt5')
 source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
@@ -26,17 +26,17 @@ build() {
   make
 }
 
-check() {
-  #LC_ALL=C make -C $_pkgname/common test
-
-  # Isolate some of the integration tests (~/.ssh/ files, ...)
-  LC_ALL=C HOME=tmp make -C $_pkgname/common test
-  rm -rf $_pkgname/common/tmp
-}
+#check() {
+#  #make -C $_pkgname/common test
+#
+#  # Isolate some of the integration tests (~/.ssh/ files, ...)
+#  HOME=tmp make -C $_pkgname/common test
+#  rm -rf $_pkgname/common/tmp
+#}
 
 package_backintime-cli-git() {
   pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
-  depends=('cron' 'fuse2' 'openssh' 'python-dbus' 'python-keyring' 'rsync')
+  depends=('cron' 'fuse2' 'openssh' 'python-dbus' 'python-keyring' 'python-packaging' 'rsync')
   #'ecryptfs-utils: verify home encryption'
   optdepends=('encfs: encrypted filesystems'
               'sshfs: remote filesystems')
@@ -52,7 +52,8 @@ package_backintime-git() {
   depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   optdepends=('kompare: diff tool'
               'meld: diff tool'
-              'python-secretstorage: store passwords')
+              'python-secretstorage: store passwords'
+              'qt5-wayland: Wayland support')
   provides=($_pkgname)
   conflicts=($_pkgname)
 
