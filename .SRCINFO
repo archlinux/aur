@@ -1,4 +1,4 @@
-pkgbase = passy
+pkgbase = passy-git
 	pkgdesc = Offline password manager with cross-platform synchronization
 	pkgver = 1.2.0
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = passy
 	source = git+https://github.com/GlitterWare/Passy.git
 	sha512sums = SKIP
 
-pkgname = passy
+pkgname = passy-git
 

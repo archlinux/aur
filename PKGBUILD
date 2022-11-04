@@ -1,4 +1,4 @@
-pkgname=passy
+pkgname=passy-git
 _pkgshortname=passy
 pkgver=1.2.0
 pkgrel=1
