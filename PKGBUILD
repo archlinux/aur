@@ -2,7 +2,7 @@
 
 pkgname=tewisay-git
 _gitname='tewisay'
-pkgver=0.66.caa5b01
+pkgver=r66.caa5b01
 pkgrel=2
 pkgdesc='Cowsay replacement with unicode and partial ansi escape support.'
 url='https://github.com/raymond-w-ko/tewisay'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

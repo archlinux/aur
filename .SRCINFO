@@ -1,6 +1,6 @@
 pkgbase = tewisay-git
 	pkgdesc = Cowsay replacement with unicode and partial ansi escape support.
-	pkgver = 0.66.caa5b01
+	pkgver = r66.caa5b01
 	pkgrel = 2
 	url = https://github.com/raymond-w-ko/tewisay
 	arch = i686
