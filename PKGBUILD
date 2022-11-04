@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-    ./mvnw -gs "$srcdir/../settings.xml" clean package
+    MAVEN_USER_HOME="$srcdir/$_pkgname/.m2" ./mvnw -gs "$srcdir/../settings.xml" clean package
 }
 
 package() {
