@@ -2,19 +2,19 @@
 
 pkgname=monkeyjump
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Minimalistic GUI for playing Go with GnuGo and other GTP applications'
 arch=(any)
 url='https://github.com/xyproto/monkeyjump'
 license=(GPL2)
-depends=(python2-pygame gnugo)
-makedepends=(gendesk python2-setuptools setconf)
+depends=(pypy gnugo)
+makedepends=(gendesk setconf)
 backup=(etc/monkeyjump/gnugocmd.conf etc/monkeyjump/theme.conf etc/monkeyjump/keybindings.conf)
 source=("git+$url#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8")
 md5sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
+  cd $pkgname
 
   gendesk -f -n \
     --pkgname="$pkgname" \
@@ -24,12 +24,13 @@ prepare() {
     --terminal=true
   setconf monkeyjump CONFDIR=\"/etc/monkeyjump\"
   setconf monkeyjump THEMEDIR=\"/usr/share/monkeyjump/themes\"
+  sed -i 's/env python2/env pypy/g' $pkgname
 }
 
 package() {
   cd "$pkgname"
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  pypy setup.py install --root="$pkgdir" --optimize=1
 
   # Executable
   install -Dm755 monkeyjump "$pkgdir/usr/bin/monkeyjump"
@@ -48,5 +49,3 @@ package() {
   install -Dm644 "dotimages/$pkgname.png" \
     "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
-
-# vim: ts=2 sw=2 et:
