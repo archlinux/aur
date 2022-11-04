@@ -4,10 +4,10 @@ _pkgname=pulsedSilac
 _pkgver=1.9.1
 pkgname=r-${_pkgname,,}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Analysis of pulsed-SILAC quantitative proteomics data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8b4a5597eaf54181566e0ff3d6bf5d72d81e71583c6fa7abcd2c1398f4ef68fd')
 
 build() {
