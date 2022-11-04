@@ -4,10 +4,10 @@ _pkgname=GAPGOM
 _pkgver=1.11.0
 pkgname=r-${_pkgname,,}
 pkgver=1.11.0
-pkgrel=1
+pkgrel=4
 pkgdesc='GAPGOM (novel Gene Annotation Prediction and other GO Metrics)'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -57,7 +57,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('df7826b3bc9a7e5063d6b70e4de3ba5d5ddddff6d82bce56cbed93fe0b3f896a')
 
 build() {
