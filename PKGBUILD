@@ -4,16 +4,16 @@ _pkgname=tspair
 _pkgver=1.53.0
 pkgname=r-${_pkgname,,}
 pkgver=1.53.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Top Scoring Pairs for Microarray Classification'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
   r-biobase
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('b3a00f4f49371e46b138a728d5430f4fb0084dd7816e3418b4d3d61146cdbd13')
 
 build() {
