@@ -1,37 +1,25 @@
-# Maintainer: Thomas Queiroz <thomasqueirozb @ g m a i l.c o m>
+# Maintainer: Jah Way <jahway603 at protonmail dot com>
+# Contributor: Thomas Queiroz <thomasqueirozb @ g m a i l.c o m>
 # Contributor: Sergio Schneider <spsf1964 @ g m a i l.c o m>
 
 pkgname=session-desktop-appimage
-pkgver=1.10.1
+pkgver=1.10.3
 pkgrel=1
-#pkgdesc="Private messaging from your desktop"
-pkgdesc="Session is an end-to-end encrypted messenger that minimises sensitive metadata"
-
+pkgdesc="Private messaging from your desktop (AppImage version)"
 arch=('x86_64')
-
-#url="https://github.com/loki-project/session-desktop"
 url="https://github.com/oxen-io/session-desktop"
-
 license=('GPL3')
 depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'fuse2')
 provides=('session-desktop-appimage')
-conflicts=('session-desktop' 'session-desktop-bin')
+conflicts=('session-desktop' 'session-desktop-bin' 'session-desktop-git')
 
-#https://github.com/loki-project/session-desktop/releases/download/1.1.0/session-messenger-desktop-linux-x86_64-1.1.0.AppImage
-#https://github.com/loki-project/session-desktop/releases/download/v1.1.2/session-messenger-desktop-linux-x86_64-1.1.2.AppImage
-#https://github.com/loki-project/session-desktop/releases/download/v1.4.3/session-desktop-linux-x86_64-1.4.3.AppImage
-
-#_bin="session-messenger-desktop-linux-x86_64-${pkgver}.AppImage"
 _bin="session-desktop-linux-x86_64-${pkgver}.AppImage"
-
-#source=("${_bin}::https://github.com/loki-project/session-desktop/releases/download/v${pkgver}/${_bin}"
 source=("${_bin}::https://github.com/oxen-io/session-desktop/releases/download/v${pkgver}/${_bin}"
         'session-desktop.desktop'
         'session-desktop.png')
-
-sha256sums=('0c0ac8ab96f1c9e1f2e3966413e148a71065e0fea38874c23759550ae17cd4ef'
-            '2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b'
-            '8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c')
+sha512sums=('6b5fe1d4a1d741bc04e1b219977cd80d9b197cf1c82efe766ad6cbec19d9f188e6100d810071e4bf83af03afed86c00e94545910b4c4deaa872a7257e13fa3a9'
+            '96e2a021ebf7a5904cbd47aabf8d03f450a3ee2831d7ecfad5f1518b4214609acc9fd51ad8ca189875c19a99f28f7fd71e5028999c58e404210f2401f4e6babd'
+            '209d1483601018e2191719117a59da3112570b2e1ae176337a918d4ab2c4032dfddf14d42e4a3b2153888167e694542bbc1f42297589d035ab29f2578877425d')
 
 options=('!strip' '!emptydirs')
 
