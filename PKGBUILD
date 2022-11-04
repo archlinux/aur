@@ -1,7 +1,7 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 #             adapted from package python2-scikit-rf
 pkgname="python-scikit-rf"
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
@@ -18,16 +18,23 @@ depends=(
 	"python-scipy"
 	"python-xlwt"
 )
+makedepends=(python-build python-installer python-wheel)
 optdepends=(
 	"python-pyvisa: for instrument control"
 	"python-vxi11: for instrument control over ethernet"
 	"python-xlrd: for xls reading"
 )
-sha256sums=('7c8c15a81807f60645154aa7ac1e83572b14f22b60dd06d093babaa5fbf52e00')
-source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3adc707bd538cb502684d062052bea9b5088d58ea009409831c98464c79acf46')
+source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v${pkgver}.tar.gz")
 
+
+build() {
+	cd "${srcdir}//scikit-rf-${pkgver}"
+	export PYTHONHASHSEED=0
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	cd "$srcdir/scikit-rf-$pkgver"
-	python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+	cd "${srcdir}//scikit-rf-${pkgver}"
+	find dist -name '*.whl' -exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
 }
