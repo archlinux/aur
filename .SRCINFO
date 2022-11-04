@@ -1,0 +1,14 @@
+pkgbase = debezium-connector-postgres
+	pkgdesc = KafkaConnect plugin for PostgreSQL
+	pkgver = 2.0.0.Final
+	pkgrel = 1
+	url = https://debezium.io/documentation/reference/2.0/connectors/postgresql.html
+	arch = any
+	license = Apache
+	makedepends = maven
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	source = https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/2.0.0.Final/debezium-connector-postgres-2.0.0.Final-plugin.tar.gz
+	sha256sums = 3534c2c750084d8cb0f87c17220a2be032c7da062b3fec763b67abba12774545
+
+pkgname = debezium-connector-postgres
