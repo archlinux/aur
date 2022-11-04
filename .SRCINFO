@@ -1,6 +1,6 @@
 pkgbase = r-biocthis
 	pkgdesc = Automate package and project setup for Bioconductor packages
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biocthis
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-biocthis
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocthis_1.8.0.tar.gz
-	sha256sums = 9d373cb2901e21513d7aee8d36c586bbf20590d1f7f995c4efbdfa994cf75951
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocthis_1.8.1.tar.gz
+	sha256sums = f661d9bae99d03bd95a5eee1e5f03c74d79131b0f97947a838bb733b7b54b17e
 
 pkgname = r-biocthis
