@@ -2,7 +2,7 @@
 _pkgname=viewer
 pkgname=agisoft-${_pkgname}
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free stand-alone software to visualize 3D data"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-viewer-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('3fd53f892e36fdfa19d220d1ee8f5a9dabb2f1f9a8edfe5a55a8908282940143'
+sha256sums=('c388ee930e7692477e40d40a669940836c2ae0f71737ae2f4d74ce0814eed0a0'
             'a5e29a00393d55a9b589e1fb30acb57a96ef26756507d2793e7f3494d5778ae3'
             '047225857a8b30362bab61f916ab1ddb19c0906959bf57c4ab5e499b8a9c4fc8')
 
@@ -34,9 +34,15 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
     # Create Viewer MIME type file
     echo '<?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/agisoft.vpz">
+        <comment>Viewer Project</comment>
+        <icon name="application-agisoft-viewer-vpz"/>
+        <glob-deleteall/>
+        <glob pattern="*.vpz"/>
+    </mime-type>
     <mime-type type="application/agisoft.3dv">
-        <comment>3D Viewer Playlist</comment>
-        <icon name="application-agisoft-pro-3dv"/>
+        <comment>Viewer 1.6 Project</comment>
+        <icon name="application-agisoft-viewer-3dv"/>
         <glob-deleteall/>
         <glob pattern="*.3dv"/>
     </mime-type>
@@ -83,8 +89,9 @@ package() {
     for _res in 16x16 32x32 48x48 64x64 128x128; do
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/"
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/"
+        cp "$srcdir/agisoft-viewer_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-viewer-vpz.png"
         mv "$srcdir/agisoft-viewer_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-viewer.png"
-        mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-pro-3dv.png"
+        mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-viewer-3dv.png"
     done
     
     # Create executables in /usr/bin
