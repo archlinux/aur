@@ -4,10 +4,10 @@ _pkgname=EnMCB
 _pkgver=1.8.2
 pkgname=r-${_pkgname,,}
 pkgver=1.8.2
-pkgrel=1
+pkgrel=4
 pkgdesc='Predicting Disease Progression Based on Methylation Correlated Blocks using Ensemble Models'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -34,7 +34,7 @@ optdepends=(
   r-survminer
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('847b4ad1e11d292f898f5221fc4f54bba9f8d5cf1530be8f54b4969f893ecace')
 
 build() {
