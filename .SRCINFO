@@ -1,11 +1,11 @@
 pkgbase = miro
 	pkgdesc = A GPU-accelerated terminal emulator written in Rust
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/o2sh/miro
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = python
 	depends = libxcb
 	depends = xcb-util-keysyms
