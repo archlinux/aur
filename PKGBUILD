@@ -5,7 +5,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop-git
-pkgver=22.1.4.r138.g459e28557
+pkgver=22.1.5.r138.g459e28557
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -22,10 +22,12 @@ makedepends=('meson' 'xorgproto-git' 'xtrans' 'libxkbfile' 'dbus'
 )
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
         0000_Multi_DPI_support_via_global_factor_rescaling.patch::https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/733.patch
-        0001_Remove_scale_atom_access_control.patch)
+        0001_Remove_scale_atom_access_control.patch
+        0002_Add_unscaled_output_mode.patch)
 sha512sums=('SKIP'
             'ab927b1e038346f967723a3d45a405a0a8339759e15901d0913a55d1348683831e0d058c76c6f7cb2e264a5cef781a507fb290d139ac0f2806a62bd20d84147d'
-            'f16cb5455a1caf26c586cca2d1ec6f4708804721b7d6a8d8bd1e4a7b47b97e8b822d3455fce0da3c74bb14baf6a3980574d85019cf242d6a033a578587f74b14')
+            'f16cb5455a1caf26c586cca2d1ec6f4708804721b7d6a8d8bd1e4a7b47b97e8b822d3455fce0da3c74bb14baf6a3980574d85019cf242d6a033a578587f74b14'
+            'fdaa9f489bb722c70e674271fe19bac7d7c7facc38ed305923077487f3e971d31ee0102cbd52770b35fa270744182a154ced7e039b26ef5952147357d889990d')
 provides=('xorg-server-xwayland' 'xorg-xwayland')
 conflicts=('xorg-server-xwayland' 'xorg-xwayland')
 replaces=('xorg-server-xwayland')
@@ -44,6 +46,7 @@ prepare() {
   cd xserver
   patch -Np1 -i "${srcdir}/0000_Multi_DPI_support_via_global_factor_rescaling.patch"
   patch -Np1 -i "${srcdir}/0001_Remove_scale_atom_access_control.patch"
+  patch -Np1 -i "${srcdir}/0002_Add_unscaled_output_mode.patch"
 }
 
 build() {

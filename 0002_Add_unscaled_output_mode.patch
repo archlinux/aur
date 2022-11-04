@@ -1,0 +1,135 @@
+Port of !861; add both native (and unscaled) resolution modes for
+fullscreen games to optionally use
+diff --color --unified --recursive --text a/hw/xwayland/xwayland-output.c b/hw/xwayland/xwayland-output.c
+--- a/hw/xwayland/xwayland-output.c	2022-11-04 18:03:48.829975351 +0800
++++ b/hw/xwayland/xwayland-output.c	2022-11-04 20:14:56.556451921 +0800
+@@ -117,6 +117,8 @@
+         xwl_output->width = width;
+         xwl_output->height = height;
+     }
++    xwl_output->mode_width = width;
++    xwl_output->mode_height = height;
+     xwl_output->refresh = refresh;
+ }
+ 
+@@ -345,37 +347,74 @@
+  */
+ static RRModePtr *
+ output_get_rr_modes(struct xwl_output *xwl_output,
+-                    int32_t width, int32_t height,
+-                    int *count)
++                    int32_t width, int32_t height, int scale,
++                    int *count, RRModePtr **preferred_mode)
+ {
+     struct xwl_screen *xwl_screen = xwl_output->xwl_screen;
+     RRModePtr *rr_modes;
++    int sw = width;
++    int sh = height;
++    float refresh;
+     int i;
+ 
+-    rr_modes = xallocarray(ARRAY_SIZE(xwl_output_fake_modes) + 1, sizeof(RRModePtr));
++    rr_modes = xallocarray(ARRAY_SIZE(xwl_output_fake_modes) + 3, sizeof(RRModePtr));
+     if (!rr_modes)
+         goto err;
+ 
+-    /* Add actual output mode */
+-    rr_modes[0] = xwayland_cvt(width, height, xwl_output->refresh / 1000.0, 0, 0);
+-    if (!rr_modes[0])
++    /* Add actual output modes */
++    refresh = xwl_output->refresh / 1000.0;
++    *count = 0;
++
++    if (width != xwl_output->mode_width ||
++        height != xwl_output->mode_height) {
++        rr_modes[*count] = xwayland_cvt(xwl_output->mode_width, xwl_output->mode_height, refresh, 0, 0);
++        if (!rr_modes[*count])
++            goto err;
++
++        (*count)++;
++    }
++
++    if (scale != 1) {
++        sw *= scale;
++        sh *= scale;
++        *preferred_mode = rr_modes[*count] = xwayland_cvt(sw, sh, refresh, 0, 0);
++        if (!rr_modes[*count])
++            goto err;
++
++        (*count)++;
++    }
++    
++    rr_modes[*count] = xwayland_cvt(width, height, refresh, 0, 0);
++    if (!rr_modes[*count])
+         goto err;
+ 
+-    *count = 1;
++    if (scale == 1) {
++        *preferred_mode = rr_modes[*count];
++    }
++
++    (*count)++;
+ 
+     if (!xwl_screen_has_resolution_change_emulation(xwl_screen) && !xwl_screen->force_xrandr_emulation)
+         return rr_modes;
+ 
+     /* Add fake modes */
+     for (i = 0; i < ARRAY_SIZE(xwl_output_fake_modes); i++) {
+-        /* Skip actual output mode, already added */
++        /* Skip actual output modes, already added */
++        if (xwl_output_fake_modes[i][0] == sw &&
++            xwl_output_fake_modes[i][1] == sh)
++            continue;
++        
+         if (xwl_output_fake_modes[i][0] == width &&
+             xwl_output_fake_modes[i][1] == height)
+             continue;
+ 
++        if (xwl_output_fake_modes[i][0] == xwl_output->mode_width &&
++            xwl_output_fake_modes[i][1] == xwl_output->mode_height)
++            continue;
++
+         /* Skip modes which are too big, avoid downscaling */
+-        if (xwl_output_fake_modes[i][0] > width ||
+-            xwl_output_fake_modes[i][1] > height)
++        if (xwl_output_fake_modes[i][0] > sw ||
++            xwl_output_fake_modes[i][1] > sh)
+             continue;
+ 
+         rr_modes[*count] = xwayland_cvt(xwl_output_fake_modes[i][0],
+@@ -604,7 +643,7 @@
+     struct xwl_output *it;
+     int mode_width, mode_height, count;
+     int width = 0, height = 0, has_this_output = 0;
+-    RRModePtr *randr_modes;
++    RRModePtr *randr_modes, *preferred_mode;
+     int32_t scale = xwl_screen->global_output_scale;
+ 
+     /* Clear out the "done" received flags */
+@@ -624,9 +663,12 @@
+     }
+     if (xwl_output->randr_output) {
+         /* Build a fresh modes array using the current refresh rate */
+-        randr_modes = output_get_rr_modes(xwl_output, mode_width * scale, mode_height * scale, &count);
++        randr_modes = output_get_rr_modes(xwl_output,
++                                          mode_width, mode_height,
++                                          scale,
++                                          &count, &preferred_mode);
+         RROutputSetModes(xwl_output->randr_output, randr_modes, count, 1);
+-        RRCrtcNotify(xwl_output->randr_crtc, randr_modes[0],
++        RRCrtcNotify(xwl_output->randr_crtc, preferred_mode,
+                      xwl_output->x * scale, xwl_output->y * scale,
+                      xwl_output->rotation, NULL, 1, &xwl_output->randr_output);
+         /* RROutputSetModes takes ownership of the passed in modes, so we only
+diff --color --unified --recursive --text a/hw/xwayland/xwayland-output.h b/hw/xwayland/xwayland-output.h
+--- a/hw/xwayland/xwayland-output.h	2022-11-04 18:03:48.829975351 +0800
++++ b/hw/xwayland/xwayland-output.h	2022-11-04 19:35:55.563174939 +0800
+@@ -53,7 +53,7 @@
+     struct wl_output *output;
+     struct zxdg_output_v1 *xdg_output;
+     uint32_t server_output_id;
+-    int32_t x, y, width, height, scale, refresh;
++    int32_t x, y, width, height, mode_width, mode_height, scale, refresh;
+     Rotation rotation;
+     Bool wl_output_done;
+     Bool xdg_output_done;
