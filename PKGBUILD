@@ -1,7 +1,7 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=zy-player-appimage
-pkgver=2.8.5
+pkgver=2.8.8
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
 pkgrel=1
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
@@ -14,9 +14,9 @@ options=(!strip)
 source=("https://github.com/Hunlongyu/ZY-Player/releases/download/v${_pkgver}/ZY-Player-${_pkgver}.AppImage"
         'zy-player'
         'zy-player.desktop')
-md5sums=('SKIP'
-        '00d32292a0f02465b83182ebe35a1f3f'
-        '8490019ad48ac40a5cde99ae5ba6baff')
+md5sums=('8752541c144a9cae21ea0981f1bcda77'
+         '00d32292a0f02465b83182ebe35a1f3f'
+         '8490019ad48ac40a5cde99ae5ba6baff')
 _filename=ZY-Player-${_pkgver}.AppImage
 
 prepare() {
