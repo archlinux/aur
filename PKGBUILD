@@ -10,7 +10,7 @@
 pkgname=scrt
 pkgver=9.3.0
 incrver=2905
-pkgrel=0
+pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
@@ -29,7 +29,7 @@ package() {
 
        install -Dm 755 ./libClientConfigUiQt.so ${pkgdir}/usr/lib/scrt/libClientConfigUiQt.so
        install -Dm 755 ./libQt5Multimedia.so.5 ${pkgdir}/usr/lib/scrt/libQt5Multimedia.so.5
-       install -Dm 755 ./libpython3Qt.so ${pkgdir}/usr/lib/scrt/libpython3Qt.so
+       install -Dm 755 ./libpython310Qt.so ${pkgdir}/usr/lib/scrt/libpython3Qt.so
        install -Dm 755 ./libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
        install -Dm 755 ./libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
        install -Dm 755 ./libqxcb.so ${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
