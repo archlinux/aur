@@ -4,8 +4,8 @@
 
 pkgname=python-tinyaes
 _name=${pkgname#python-}
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="A utility to find python versions on your system."
 arch=("any")
 url="https://github.com/naufraghi/tinyaes-py.git"
@@ -13,8 +13,8 @@ license=("MIT")
 depends=("cython")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('71efd4bfcd0b68a883f174b06801dcdcc133f8075530c41d0315e5b60bd9730815a89a1b60acaffdfed403d0f50080afbd20ce1539607d05cb340c743558372f')
-b2sums=('3f73cd7c3c4483292e8d0d61c9b0c3daa1bdd237f497d3ce60c05b5da6b9a9710b29775b944c7ec8e680ad5bc8f0f9870ce2953d4a2468db8ec7ad2e1fb226a8')
+sha512sums=('38084eb8ea07526e5cfec1f3aa7ad0d073c5479908944213402574bbe11881fa51349f7edc1ae8f078db3c13c880f4b72a145977eb2012ffa8e1c521fca7548b')
+b2sums=('05bfd3f0506ac293b3f2c2be71696fe1261c385d739e0df68eaa54b7d7d518a00ce05491efe84b5d2c4db25d8ed1bdc64601dac75d4e65c8f1d83f4e5f0eb4f5')
 
 build() {
   cd "$srcdir/${_name}-$pkgver" || exit 1
