@@ -9,11 +9,10 @@ arch=('any')
 license=('GPL2')
 depends=('python-requests' 'python-pysocks' 'python-requests-toolbelt' 'python-urllib3'
   'python-chardet' 'python-termcolor' 'python-colorama' 'python-prettytable'
-  'python-colorlog' 'python-scapy' 'python-faker' 'python-pycryptodomex')
+  'python-colorlog' 'python-scapy' 'python-faker' 'python-pycryptodomex' 'python-pyopenssl'
+  'python-jq' 'python-yaml' 'python-lxml' 'python-mmh3' 'python-dacite')
 makedepends=('python-setuptools')
-optdepends=(
-  'python-pyopenssl: self-signed certificate support'
-)
+optdepends=()
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('292abcfbd12f7ffaf164362e807aa820583b23d3f18a1e6f7b31dd1e6e72152bbc138fe293f6834bb6864d6da8b51008fdafe9669cb9d1e6b04c74c69e96090f')
 
