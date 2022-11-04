@@ -1,13 +1,13 @@
 pkgbase = zshmux
 	pkgdesc = Provides quick access to tmux when a new shell is opened
 	pkgver = 1.1
-	pkgrel = 6
+	pkgrel = 3
 	url = https://github.com/huboles/zshmux
 	arch = any
 	license = GPL
 	depends = zsh
 	depends = tmux
 	source = zshmux-1.1.tar.gz::https://github.com/huboles/zshmux/releases/download/v1.1/zshmux-1.1.tar.gz
-	sha256sums = 290d84e48ea56b864acd9429be9202aaf87458ebaf4fd4937f1a741c42f71b77
+	sha256sums = f7be0a217233549dfff8bee79742f654884276b4ae5a19dbb0c0dcef3b321b11
 
 pkgname = zshmux

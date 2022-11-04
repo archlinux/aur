@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@pm.me>
 pkgname=zshmux
 pkgver=1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Provides quick access to tmux when a new shell is opened"
 arch=('any')
 url="https://github.com/huboles/zshmux"
@@ -13,4 +13,4 @@ package() {
 	cd "$srcdir" || exit
 	install -CDm755 zshmux.zsh -T "$pkgdir/usr/lib/zshmux/zshmux.zsh"
 }
-sha256sums=('290d84e48ea56b864acd9429be9202aaf87458ebaf4fd4937f1a741c42f71b77')
+sha256sums=('f7be0a217233549dfff8bee79742f654884276b4ae5a19dbb0c0dcef3b321b11')
