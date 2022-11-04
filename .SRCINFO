@@ -1,0 +1,12 @@
+pkgbase = gogextract-yepoleb-git
+	pkgdesc = Separate the files in a gog mojo package.
+	pkgver = r2.6601b32
+	pkgrel = 1
+	url = https://github.com/Yepoleb/gogextract
+	arch = any
+	license = MIT
+	provides = gogextract
+	source = git+https://github.com/Yepoleb/gogextract.git
+	sha256sums = SKIP
+
+pkgname = gogextract-yepoleb-git
