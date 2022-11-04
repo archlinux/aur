@@ -3,7 +3,7 @@
 
 _project=QJackCapture
 pkgname="${_project,,}"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A GUI for easy recording of JACK audio sources using jack_capture'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(hicolor-icon-theme jack_capture python-natsort python-pyjacklib python-
 makedepends=(python-build python-installer python-setuptools python-wheel)
 groups=(pro-audio)
 source=("https://files.pythonhosted.org/packages/source/q/$pkgname/$_project-$pkgver.tar.gz")
-sha256sums=('9e46dfc13f0cdadd1b5dedf5f5de378203f3034bf2198c45cbd56af9b485130a')
+sha256sums=('7fbf67b05e2f93ea6b4784fd80b3ca633569b75013c723970e8896746dbbdef8')
 
 build() {
   cd $_project-$pkgver
