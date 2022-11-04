@@ -1,7 +1,7 @@
 pkgbase = qtile-extras
 	pkgdesc = Unofficial mods for qtile. Tagged release to match stable qtile releases.
 	pkgver = 0.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elparaguayo/qtile-extras.git
 	arch = any
 	license = MIT

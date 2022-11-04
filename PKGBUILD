@@ -1,7 +1,7 @@
 # Maintainer: elParaguayo <elparaguayocode at gmail dot com>
 pkgname=qtile-extras
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgdesc="Unofficial mods for qtile. Tagged release to match stable qtile releases."
@@ -29,4 +29,7 @@ package()
 
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 CHANGELOG -t "$pkgdir/usr/share/doc/$pkgname/"
+
+  # Remove test folder which was packaged by mistake
+  find $pkgdir -type d -name "test" -exec rm -rf {} +
 }
