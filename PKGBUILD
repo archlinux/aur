@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=r1376.eb2a1196
+pkgver=r1427.9b9f3b7d
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -23,8 +23,8 @@ makedepends=(
   'scons'
 )
 checkdepends=(
-  'python2'
-  'python2-six'
+  'python'
+  'python-six'
 )
 optdepends=(
   'mariadb-libs: MariaDB database support'
@@ -47,7 +47,7 @@ build() {
 check() {
   cd "${pkgname%-git}/tests"
   scons
-  python2 ./testHarness
+  python ./testHarness
 }
 
 package() {
