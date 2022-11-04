@@ -5,11 +5,12 @@ _repository=https://gitlab.com/brinkervii/grapejuice.git
 _pkgver=6.2.2
 pkgname="${_pkgname}"
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
 depends=(
+    'python'
     'python-pip'
     'python-gobject'
     'python-psutil'
@@ -63,6 +64,9 @@ package() {
     cd "${_built_package_root}" || exit 1
     tar -xf *.tar.gz -C "${pkgdir}"
 
-    mv "${pkgdir}/usr/lib/python3/dist-packages" "${pkgdir}/usr/lib/python${_python_version}"
+    _site_packages=${pkgdir}/usr/lib/python${_python_version}/site-packages
+    mkdir -p "${_site_packages}"
+
+    mv "${pkgdir}/usr/lib/python3/dist-packages"/* "${_site_packages}"
     rm -r "${pkgdir}/usr/lib/python3"
 }
