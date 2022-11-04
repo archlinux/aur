@@ -1,0 +1,16 @@
+pkgbase = openpgl-git
+	pkgdesc = Intel Open Path Guiding Library. Algorithms for more efficient ray tracing renderings.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/openpathguidinglibrary/openpgl
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = embree
+	provides = openpgl
+	source = git+https://github.com/openpathguidinglibrary/openpgl.git
+	md5sums = SKIP
+
+pkgname = openpgl-git
