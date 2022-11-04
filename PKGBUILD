@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.15.76
+pkgver=5.15.77
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -21,7 +21,6 @@ source=(
   0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
   0004-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
   0005-lg-laptop-Recognize-more-models.patch
-  0006-Fix-NFSv4-mount-regression.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -30,15 +29,14 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('9007a020c419e3625b980e361be09f70ebd99e156ccb66129a981483d065d57f'
+sha256sums=('142f841f33796a84c62fae2f2b96d2120bd8bbf9e0aac4ce157692cdb0afe9f9'
             'SKIP'
-            '8e8bf635b2dbf24be1ecbf202f4b507301c545218e3d865f5d4c2ec3c5257bf4'
+            '90b857145f4a2281998ba4338de92d673bd939be5d5ccd32a2d34d6e19b17816'
             '7bd64ff894475b3415d792ba8466ba7e8f872af56dbf1aeed0d261fe4008b8b5'
             '39649dc1dfcb06b411ad124e123769e955a78961b4ea17538c0919a930925549'
             '56c12551e859cc67520909e64feecbf1b190cee8addef150c5b9d1bb1d40981e'
             '5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde'
             '067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9'
-            '95dad02b01937681af0a207e22a6bf64c33e067bf7a14cb98262dd8f69194eb8'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
 
