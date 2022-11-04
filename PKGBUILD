@@ -1,10 +1,11 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Avery Warddhana <them+arch _ nullablevo id au>
+# Contributor: James An <james@jamesan.ca>
 # Contributor: Nikita Mikhailov <nslqqq@gmail.com>
 
 _pkgname=xrandr
 pkgname=xorg-xrandr-git
 pkgver=1.5.1.r8.g213e10f
-pkgrel=1
+pkgrel=2
 pkgdesc='Primitive command line interface to RandR extension. Git version.'
 arch=(i686 x86_64)
 url='http://www.x.org/wiki/Projects/XRandR'
