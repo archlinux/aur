@@ -4,16 +4,16 @@ _pkgname=inveRsion
 _pkgver=1.43.0
 pkgname=r-${_pkgname,,}
 pkgver=1.43.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Inversions in genotype data'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
   r-haplo.stats
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('636acd54444a9fc418469e3e2b3f0f222144f0be8403748e874274e23a085840')
 
 build() {
