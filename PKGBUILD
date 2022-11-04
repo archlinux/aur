@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylclock
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Methylclock - DNA methylation-based clocks'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4721b2a3d35d3fb1eaaa58efdacd9cff071f79708268b44020dfe7f6aef24421')
+sha256sums=('b894b93d51478ae6b3498cd49911787892f9d348aa1058cbf5ea9a3f6aebf75f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
