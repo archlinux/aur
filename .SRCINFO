@@ -1,12 +1,14 @@
 pkgbase = normcap
 	pkgdesc = OCR powered screen-capture tool to capture information instead of images
 	pkgver = 0.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dynobo.github.io/normcap
 	arch = any
 	license = GPL
-	makedepends = python-pip
-	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
 	depends = leptonica
 	depends = pyside6
 	depends = python-certifi
