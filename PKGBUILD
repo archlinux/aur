@@ -4,10 +4,10 @@ _pkgname=TSRchitect
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Promoter identification from large-scale TSS profiling data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r

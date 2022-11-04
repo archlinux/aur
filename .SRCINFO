@@ -1,8 +1,8 @@
 pkgbase = r-tsrchitect
 	pkgdesc = Promoter identification from large-scale TSS profiling data
 	pkgver = 1.22.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/TSRchitect
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/TSRchitect
 	arch = any
 	license = GPL
 	makedepends = git
