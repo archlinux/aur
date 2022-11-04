@@ -3,7 +3,7 @@
 pkgname=zy-player-appimage
 pkgver=2.8.8
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
-pkgrel=2
+pkgrel=3
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=("x86_64")
 url="http://zyplayer.fun/"
