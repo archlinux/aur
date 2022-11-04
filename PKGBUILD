@@ -1,15 +1,15 @@
-# Maintainer: capezotte (carana2099 ob gmail at com)
+# Maintainer (2022-): Koichi Murase <myoga.murase@gmail.com> (akinomyoga at GitHub)
+# Maintainer (2021): capezotte (carana2099 ob gmail at com)
 # Contributor: Seto (huresche at GitHub)
-# Contributor: Koichi Murase (akinomyoga at GitHub)
 
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel3.r1690.dc3827b
+pkgver=0.4.0_devel3.r1833.a144ffa
 pkgrel=1
 license=(BSD)
 url='https://github.com/akinomyoga/ble.sh'
-depends=(bash gawk sed)
+depends=(bash gawk sed make git)
 makedepends=(bash gawk sed make git)
 arch=(any)
 source=("git+$url" "git+${url/%.sh/sh-contrib}" 'blesh-update.sh')
@@ -27,8 +27,12 @@ pkgver() {
 }
 
 prepare() {
+  # From git 2.38.1-1, "git submodule" in PKGBUILD does not work
+  # unless we change the git config "protocol.file.allow" [1,2].
+  # [1] https://bugs.archlinux.org/task/76255
+  # [2] https://bbs.archlinux.org/viewtopic.php?pid=2063104#p2063104
 	cd "$_pkgname"
-	git submodule update --init --recursive
+	git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 package() {
