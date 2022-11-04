@@ -4,10 +4,10 @@ _pkgname=ProteomicsAnnotationHubData
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Transform public proteomics data resources into Bioconductor Data Structures'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
