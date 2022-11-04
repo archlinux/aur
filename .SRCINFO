@@ -1,8 +1,8 @@
 pkgbase = r-slgi
 	pkgdesc = Synthetic Lethal Genetic Interaction
 	pkgver = 1.56.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/SLGI
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.15/SLGI
 	arch = any
 	license = Artistic2.0
 	makedepends = git
