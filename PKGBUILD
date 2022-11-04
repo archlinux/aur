@@ -15,7 +15,7 @@ depends=(
     'networkmanager'
 )
 options=('!emptydirs' '!strip')
-source=("${pkgname}_${pkgver}-{pkgrel}_all.deb::https://github.com/kokoye2007/wifi-qr/releases/download/${pkgver}/${pkgname}_${pkgver}-${pkgrel}_all.deb")
+source=("${pkgname}_${pkgver}-${pkgrel}_all.deb::https://github.com/kokoye2007/wifi-qr/releases/download/${pkgver}/${pkgname}_${pkgver}-${pkgrel}_all.deb")
 sha256sums=('cc38985fe9cd4c44a550a2a6bc314bfc79b6b8d76e27b8da8e5de7beb403b08c')
 
 package() {
