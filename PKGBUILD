@@ -9,21 +9,26 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.4.0')
+provides=('gdal=3.5.3')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.3
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="https://gdal.org/"
 license=('custom')
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
-         'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c'
+         'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c' 'arrow' 'pcre2'
 # needed for ecw support:
 'libecwj2' )
 
-makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-breathe' 'python-numpy' 'python-sphinx' 'boost')
+makedepends=(cmake opencl-headers python-setuptools python-numpy
+             proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
+             libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
+             libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
+             openssl pcre2 libpng podofo poppler postgresql-libs qhull
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd)
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl: perl binding support'
@@ -31,67 +36,86 @@ optdepends=('postgresql: postgresql database support'
 )
 options=('!emptydirs')
 changelog=$pkgbase.changelog
-source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        https://raw.githubusercontent.com/archlinux/svntogit-community/3a1ed1385f3ff65de7f463789e58c77afe1fb6fa/trunk/gdal-perl-vendor.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/b1f3eb2d48ab8ffdf6ce78b11eff4f9fdc2099dc/trunk/poppler-22.03.0.patch
-)
-sha256sums=('ac7bd2bb9436f3fc38bc7309704672980f82d64b4d57627d27849259b8f71d5c'
-            '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed'
-            'b60d94457199ab49ff11cbbb793cd6cd459c732265d342f1c04721f164383e73'
-)
-
-prepare() {
-  cd "${srcdir}"/$_pkgbase-$pkgver
-
-  echo "Fixing mandir..."
-  sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
-
-  echo "Fixing gdal-perl bindings..."
-  patch -Np0 -i "${srcdir}"/gdal-perl-vendor.patch
-
-  echo "Applying poppler 22.03.0..."
-  patch -Np1 -i "${srcdir}"/poppler-22.03.0.patch
-}
+source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
+sha256sums=('d32223ddf145aafbbaec5ccfa5dbc164147fb3348a3413057f9b1600bb5b3890')
 
 build() {
-  cd "${srcdir}"/$_pkgbase-$pkgver
+#  cd "${srcdir}"/$_pkgbase-$pkgver
 
-    ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
-              --with-mysql --with-curl --with-hdf5 --with-perl --with-geos \
-              --with-png --with-poppler --with-spatialite --with-openjpeg \
-              --with-ecw
+    export LDFLAGS="-Wl,-O1,--sort-common,-z,relro,-z,now"
 
-# workaround for bug #13646
-#   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
-#   sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
-
-  echo "Compiling..."
-  make -j$(nproc)
-
-  echo "Compiling man pages..."
-  make man
-
-  echo "Building python3 bindings..."
-  cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python3 setup.py build
+  cmake -B build -S $_pkgbase-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_IPO=ON \
+    -DBUILD_PYTHON_BINDINGS=ON \
+    -DGDAL_ENABLE_PLUGINS=ON \
+    -DGDAL_USE_ARROW=ON \
+    -DGDAL_USE_BLOSC=ON \
+    -DGDAL_USE_CFITSIO=ON \
+    -DGDAL_USE_CURL=ON \
+    -DGDAL_USE_CRYPTOPP=ON \
+    -DGDAL_USE_DEFLATE=ON \
+    -DGDAL_USE_EXPAT=ON \
+    -DGDAL_USE_FREEXL=ON \
+    -DGDAL_USE_GEOTIFF=ON \
+    -DGDAL_USE_GEOS=ON \
+    -DGDAL_USE_GIF=ON \
+    -DGDAL_USE_HEIF=ON \
+    -DGDAL_USE_HDF5=ON \
+    -DGDAL_USE_ICONV=ON \
+    -DGDAL_USE_JPEG=ON \
+    -DGDAL_USE_JSONC=ON \
+    -DGDAL_USE_LIBKML=OFF \
+    -DOGR_ENABLE_DRIVER_LIBKML_PLUGIN:BOOL=OFF \
+    -DGDAL_USE_LIBLZMA=ON \
+    -DGDAL_USE_LIBXML2=ON \
+    -DGDAL_USE_LZ4=ON \
+    -DGDAL_USE_MYSQL=ON \
+    -DGDAL_USE_NETCDF=ON \
+    -DGDAL_USE_ODBC=ON \
+    -DGDAL_USE_OPENCL=ON \
+    -DGDAL_USE_OPENEXR=ON \
+    -DGDAL_USE_OPENJPEG=ON \
+    -DGDAL_USE_OPENSSL=ON \
+    -DGDAL_USE_PARQUET=ON \
+    -DGDAL_USE_PCRE2=ON \
+    -DGDAL_USE_PNG=ON \
+    -DGDAL_USE_POPPLER=ON \
+    -DGDAL_USE_POSTGRESQL=ON \
+    -DGDAL_USE_QHULL=ON \
+    -DGDAL_USE_SPATIALITE=ON \
+    -DGDAL_USE_SQLITE3=ON \
+    -DGDAL_USE_TIFF=ON \
+    -DGDAL_USE_WEBP=ON \
+    -DGDAL_USE_XERCESC=ON \
+    -DGDAL_USE_ZLIB=ON \
+    -DGDAL_USE_ZSTD=ON
+  make -C build
 }
 
 package_gdal-ecw () {
-  cd "${srcdir}"/$_pkgbase-$pkgver
+  depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
+           giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
+           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd)
+  optdepends=('arrow: Arrow/Parquet support'
+              'cfitsio: FITS support'
+              'hdf5: HDF5 support'
+              'libheif: HEIF support'
+              'mariadb-libs: MySQL support'
+              'netcdf: netCDF support'
+              'openexr: EXR support'
+              'openjpeg2: JP2 support'
+              'podofo: PDF support'
+              'poppler: PDF support'
+              'postgresql-libs: PostgreSQL support'
+              'libwebp: WebP support')
 
-  make DESTDIR="${pkgdir}" install
-  make DESTDIR="${pkgdir}" install-man
-
-# install license
-  install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/$_pkgbase/LICENSE
-
-# Remove RPATH
-  eval local $(perl -V:vendorarch)
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/OSR/OSR.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/OGR/OGR.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GDAL/GDAL.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GDAL/Const/Const.so
-  chrpath --delete "${pkgdir}"${vendorarch}/auto/Geo/GNM/GNM.so
+  make -C build DESTDIR="${pkgdir}" install
+  install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/
+  # Move python stuff
+  mkdir -p {bin,lib}
+  mv "${pkgdir}"/usr/bin/*py bin
+  mv "${pkgdir}"/usr/lib/python* lib
 }
 
 package_python-gdal-ecw () {
@@ -101,10 +125,9 @@ package_python-gdal-ecw () {
   depends=("gdal-ecw=$pkgver" 'python-numpy')
   optdepends=()
 
-  cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python3 setup.py install --root="$pkgdir" --optimize=1
-  #install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
-
+  install -d "${pkgdir}"/usr/{bin,lib}
+  mv bin/* "${pkgdir}"/usr/bin
+  mv lib/* "${pkgdir}"/usr/lib
   install -dm755 "${pkgdir}"/usr/share/licenses
   ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
 }
