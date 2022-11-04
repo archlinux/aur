@@ -1,6 +1,6 @@
 pkgbase = r-affycoretools
 	pkgdesc = Functions useful for those doing repetitive analyses with Affymetrix GeneChips
-	pkgver = 1.68.1
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/affycoretools
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-affycoretools
 	optdepends = r-knitr
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/affycoretools_1.68.1.tar.gz
-	sha256sums = 9c0f1ab7e121e6655ce831f70b188ec006ff5fc204f3b8c649af5e593c24a617
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affycoretools_1.70.0.tar.gz
+	sha256sums = 94c4be4223a427763e07bf468e63a1ce2e272a432c5abf4cbd56c2d890a6549f
 
 pkgname = r-affycoretools
