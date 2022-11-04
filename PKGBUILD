@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.11.9'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
@@ -103,7 +103,7 @@ build() {
     cd "$pkgname-$pkgver"
     # Build JREMajorVersion.java
     cp ../JREMajorVersion.java ./
-    javac -source 7 -target 7 -Xlint -Xlint:-options JREMajorVersion.java
+    javac -source 8 -target 8 -Xlint -Xlint:-options JREMajorVersion.java
 
     # Attempt to build with a JDK supported by metals
     local _INDEX=0
