@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=43.0.r9.g2b7bdbb94
+pkgver=43.0.r10.gdc2b87963
 pkgrel=1
 pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
@@ -17,10 +17,8 @@ depends=('appstream-glib' 'enchant' 'folks' 'gcr' 'gmime3' 'gtk3' 'gsound'
 makedepends=('git' 'gobject-introspection' 'itstool' 'meson' 'vala')
 provides=('geary')
 conflicts=('geary')
-source=('git+https://gitlab.gnome.org/GNOME/geary.git'
-        'libsoup2.patch')
-sha256sums=('SKIP'
-            'fa8e8410350a5540226f4fa984641694680c09631df4b97fb87087933dc1aa04')
+source=('git+https://gitlab.gnome.org/GNOME/geary.git')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/geary"
@@ -30,7 +28,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/geary"
     rm -rf build
-    patch -Np1 -i ../../libsoup2.patch
+    #patch -Np1 -i ../../libsoup2.patch
 }
 
 build() {
