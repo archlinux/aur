@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqCNA.annot
-_pkgver=1.33.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Annotation for the copy number analysis of deep sequencing cancer data with seqCNA'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('18e619a47bf6c8d89b8e7964b79cc3939f7082ee998ffd237f2c0a23ed8a372b')
+sha256sums=('4cad356b96ce58fd199e3e4d3f265d6b9ef665823be6b9b77b38ef02508ef199')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
