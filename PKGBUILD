@@ -2,7 +2,7 @@
 # Contributor: Artur Juraszek <artur@juraszek.xyz>
 
 pkgname=dolt-bin
-pkgver=0.50.12
+pkgver=0.50.13
 pkgrel=1
 pkgdesc='Git for data!'
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ source_x86_64=("dolt-linux-${pkgver}-amd64.tar.gz::https://github.com/liquidata-
 		"LICENSE")
 source_aarch64=("dolt-linux-${pkgver}-arm64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v$pkgver/dolt-linux-arm64.tar.gz"
 		"LICENSE")		
-sha256sums_x86_64=('ea7dbfb60925f402bb38633fbb64668081e28b5c152b28c2470ca86959879dfb'
+sha256sums_x86_64=('82cf7ce93bdd62e54fb614150ddce0a50c2408b1f9dd0789fd6ce8ad0ee92af8'
                    'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_aarch64=('8ae07309405983199cf2cf609a09110a63d58f38c24d438528b1dfebd50c1a74'
+sha256sums_aarch64=('12781b346e1c2745d8936b313f23d61357ebaa8559f44929fd9b6e3cae73b4af'
                     'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
