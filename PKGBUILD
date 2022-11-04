@@ -4,10 +4,10 @@ _pkgname=gprege
 _pkgver=1.39.0
 pkgname=r-${_pkgname,,}
 pkgver=1.39.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Gaussian Process Ranking and Estimation of Gene Expression time-series'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('AGPL')
 depends=(
   r
@@ -16,7 +16,7 @@ depends=(
 optdepends=(
   r-spam
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e8a88b04301dc258f87f718b1a74ab707ed7f1566ca8111b3488c9a3cef2d28b')
 
 build() {
