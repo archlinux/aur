@@ -3,7 +3,7 @@
 pkgbase=goland-eap
 pkgname=(goland-eap goland-eap-jre)
 #rlsver=2021.2
-pkgver=223.7255.15
+pkgver=223.7401.12
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz"
         jetbrains-goland-eap.desktop
         LICENSE)
-b2sums=('3ce2828dbaee5a71546b8d48f37c703f5f14bea069e942ed14a85c641a6c4f9fa3194d9f127d002906f26ad67973f654391672867d75a50cc0681d5aa9db82ab'
+b2sums=('f3556f585959da6babbf7ae0ad99efb4788cb21e1dddcfe51e398e8bfa8eb8afb554c4746e216f0e8dcdce294cd3d5e4e8132ee3a9baa865f4edd6349ae65d67'
         'b985586e25598fbe87d697403e87ed45f8ce7b944e6d3ba02509f4c6f2544e3b7a55f19861d399dadcae699db894d3f2be73039401ac004370115f3cefc1fe9c'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
