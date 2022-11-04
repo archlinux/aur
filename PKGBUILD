@@ -1,7 +1,7 @@
 # Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
 pkgname=kitsas
 _reponame=kitupiikki
-pkgver=2.1.1
+pkgver=3.2.1
 _repover="${pkgver//_/-}"
 pkgrel=1
 epoch=
@@ -21,10 +21,19 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/artoh/$_reponame/archive/v$_repover.tar.gz")
+source=(
+	"https://github.com/artoh/$_reponame/archive/v$_repover.tar.gz"
+	"0001_dont_process_pdf_as_image.patch"
+)
 noextract=()
-sha256sums=(36b6d8611c412ff930169aacb87c8263f61c10dbd163ebaeddb62f05652c4a60)
+sha256sums=('79574ceefe457eae5e9174577979871618c7cb32bbdd35cce234ff6219017432'
+            'f0cea2431af21d7640c869856ce16609d340fe45c2c997e72123cea78febc454')
 validpgpkeys=()
+
+prepare() {
+	cd "$_reponame-$_repover"
+	patch -N -p1 -i "${srcdir}/0001_dont_process_pdf_as_image.patch"
+}
 
 build() {
 	cd "$_reponame-$_repover/$pkgname"
