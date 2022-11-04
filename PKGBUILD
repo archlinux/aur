@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=deltaGseg
-_pkgver=1.37.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.37.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='deltaGseg'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('384e53f738eaff85a6ba42e861ce6c337246efdf74a19b5879a60a2ad53df399')
+sha256sums=('d1758b2c36c456047023df5d8deffc53c00ba273d2674255451d8f2ef46d92d4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
