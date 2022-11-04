@@ -4,10 +4,10 @@ _pkgname=Autotuner
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=2
+pkgrel=5
 pkgdesc='Automated parameter selection for untargeted metabolomics data processing'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('MIT')
 depends=(
   r
