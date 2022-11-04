@@ -5,10 +5,10 @@ _pkgname=MMAPPR2
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Mutation Mapping Analysis Pipeline for Pooled RNA-Seq'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -39,7 +39,7 @@ optdepends=(
   r-roxygen2
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d9cd249022e557ea7204dd410da4d208201b2aebaf6d1b7f753edd7854960af1')
 
 build() {
