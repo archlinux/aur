@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicFeatures
-_pkgver=1.50.0
+_pkgver=1.50.1
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.50.1
 pkgrel=1
 pkgdesc='Conveniently import and query gene models'
 arch=('any')
@@ -53,7 +53,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55298b8cf6c1919f83daed9e2e9b7b6d88fedc988deee2fa7daad213c5c6c865')
+sha256sums=('617f9126d14ac021fced2251d8411661b98a4950d277fe11f58caf6f83169b4b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
