@@ -1,5 +1,5 @@
 # maintainer: ArticExploit <artic@articexploit.xyz>
-# contrutor: Arch_user (in the artix forum, https://forum.artixlinux.org/index.php/topic,4601.msg29502.html#msg29502) 
+# contributor: Arch_user (in the artix forum, https://forum.artixlinux.org/index.php/topic,4601.msg29502.html#msg29502) 
 pkgname=pantum-m6200-m6500-m6550-m6600-ms6000-driver
 pkgver="1.1.99"
 pkgrel="1"
