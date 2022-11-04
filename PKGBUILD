@@ -11,7 +11,7 @@ depends=('ncurses')
 makedepends=('qt5-base' 'git' 'clang')
 optdepends=('qt5-base: for i7z-gui')
 url="https://github.com/afontenot/i7z"
-source=(git://github.com/afontenot/i7z.git#commit=dfbcd77
+source=(git+https://github.com/afontenot/i7z.git#commit=dfbcd77
         i7z-qt5.patch)
 sha512sums=('SKIP'
             'd22b28c9e0e1c269aef71a1951e23d04299bc3bde7f882bd584c468bddd04189c6ec9d2a81702dbb784286d61631e099ce54486799d373183d15f796f9ce4af3')
