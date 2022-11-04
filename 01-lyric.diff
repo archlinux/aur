@@ -1,0 +1,42 @@
+diff --git a/src/background.js b/src/background.js
+index 00bff0e..314926f 100644
+--- a/src/background.js
++++ b/src/background.js
+@@ -126,6 +126,10 @@ class Background {
+         'HardwareMediaKeyHandling,MediaSessionService'
+       );
+     }
++
++    if (isLinux) {
++      app.commandLine.appendSwitch('use-gl', 'desktop');
++    }
+   }
+ 
+   async initDevtools() {
+@@ -290,7 +294,7 @@ class Background {
+       );
+       if (!process.env.IS_TEST) this.osdlyrics.webContents.openDevTools();
+     } else {
+-      this.osdlyrics.loadURL('http://localhost:27232/osdlyrics.html');
++      this.osdlyrics.loadURL('http://localhost:41342/osdlyrics.html');
+     }
+   }
+ 
+@@ -457,7 +461,8 @@ class Background {
+   }
+ 
+   handleAppEvents() {
+-    app.on('ready', async () => {
++    app.on('ready', () => {
++      setTimeout(() => {
+       // This method will be called when Electron has finished
+       // initialization and is ready to create browser windows.
+       // Some APIs can only be used after this event occurs.
+@@ -520,6 +525,7 @@ class Background {
+       if (isCreateMpris) {
+         createMpris(this.window);
+       }
++    }, 300);
+     });
+ 
+     app.on('activate', () => {
