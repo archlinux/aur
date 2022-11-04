@@ -1,8 +1,8 @@
 pkgbase = r-gcsfilesystem
 	pkgdesc = Mounting a Google Cloud bucket to a local directory
 	pkgver = 1.6.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/GCSFilesystem
+	pkgrel = 6
+	url = https://bioconductor.org/packages/3.15/GCSFilesystem
 	arch = any
 	license = GPL
 	depends = r
@@ -11,7 +11,7 @@ pkgbase = r-gcsfilesystem
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GCSFilesystem_1.6.0.tar.gz
+	source = https://bioconductor.org/packages/3.15/bioc/src/contrib/GCSFilesystem_1.6.0.tar.gz
 	sha256sums = cd404d908ba897613ac5d6fcd4988909e6989064f7071c32f1e138039eef6862
 
 pkgname = r-gcsfilesystem

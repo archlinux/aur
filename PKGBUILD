@@ -5,10 +5,10 @@ _pkgname=GCSFilesystem
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=6
 pkgdesc='Mounting a Google Cloud bucket to a local directory'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('cd404d908ba897613ac5d6fcd4988909e6989064f7071c32f1e138039eef6862')
 
 build() {
