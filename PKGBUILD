@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RITANdata
-_pkgver=1.21.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='This package contains the annotation and network data sets'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dcea35ba1aebca7ed99fc6724f5f062eca1dd9709090a5db6edf1c77eb8a4309')
+sha256sums=('8f4cea63b16d15dd841d10f33a657eff24059420d4911172c6df6055228aa573')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
