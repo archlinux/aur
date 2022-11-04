@@ -1,5 +1,5 @@
 pkgbase = mgba-git
-	pkgver = 0.10.0.r7169.b5e94b0ab
+	pkgver = 0.11.0.r7777.b8c7196dd
 	pkgrel = 1
 	url = http://mgba.io/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mgba-git
 	sha1sums = SKIP
 
 pkgname = libmgba-git
-	pkgdesc = Shared library of mGBA
+	pkgdesc = Shared library of mGBA (git build)
 	depends = zlib
 	depends = libpng
 	depends = libzip
@@ -31,14 +31,14 @@ pkgname = libmgba-git
 	conflicts = libmgba
 
 pkgname = mgba-sdl-git
-	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy
+	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy (git build)
 	depends = libmgba
 	depends = sdl2
 	provides = mgba-sdl
 	conflicts = mgba-sdl
 
 pkgname = mgba-qt-git
-	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt5 UI.
+	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt5 UI. (git build)
 	depends = libmgba
 	depends = qt5-multimedia
 	depends = sdl2
