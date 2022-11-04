@@ -3,12 +3,12 @@
 pkgname=zy-player-appimage
 pkgver=2.8.8
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
-pkgrel=1
+pkgrel=2
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=("x86_64")
 url="http://zyplayer.fun/"
 license=('MIT')
-depends=('electron11')
+depends=('electron13')
 provides=('zy-player')
 options=(!strip)
 source=("https://github.com/Hunlongyu/ZY-Player/releases/download/v${_pkgver}/ZY-Player-${_pkgver}.AppImage"
