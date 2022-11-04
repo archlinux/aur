@@ -4,10 +4,10 @@ _pkgname=ppiStats
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=1.62.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Protein-Protein Interaction Statistical Package'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -22,7 +22,7 @@ optdepends=(
   r-xtable
   r-yeastexpdata
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('01a9a0f95d0abb2d32d28bf064eb08a087cebc89c8ba2239e9a07801959baf70')
 
 build() {
