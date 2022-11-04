@@ -1,6 +1,6 @@
 pkgbase = adwsteamgtk
 	pkgdesc = A simple Gtk wrapper for Adwaita-for-Steam
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Foldex/AdwSteamGtk
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = adwsteamgtk
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-packaging
-	source = adwsteamgtk-0.1.4.tar.gz::https://github.com/Foldex/AdwSteamGtk/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 11f7359b41482a1320d53fdc5f29d77050db2eb5ba631d536de4ea9438618fce
+	source = adwsteamgtk-0.1.5.tar.gz::https://github.com/Foldex/AdwSteamGtk/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 28c95cfe3a2bbbd95b9be650686a397246b67fb027ab8b64a11f45c2f6a3090d
 
 pkgname = adwsteamgtk
