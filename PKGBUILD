@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=opendnssec
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC"
 arch=('i686' 'x86_64')
@@ -28,13 +28,13 @@ source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
         "opendnssec.tmpfiles")
 noextract=()
 
-sha1sums=('450313b710434d1d7531b5eb5c28a475646a49fb'
+sha1sums=('a71945febb2fda22750990cce435c576fb3a6b42'
           '72bff87f9a2900e24921451f35716b8a94fcf695'
           '04e8bf7504cf728b2c3744d19295a63839dd61ca'
           '2a4fac3a16fea3f89b281f0933b6920524978d49'
           'fa28111fdce06c389813ff6ed2d4cae136252488'
           'f10d783b3e0232fd3beff645a07207c161371d0c')
-sha256sums=('c0a8427de241118dccbf7abc508e4dd53fb75b45e9f386addbadae7ecc092756'
+sha256sums=('7dd7e305f74d877586e8bb25c4e3f8069472c6a195fc33a5d9e6f8499154d453'
             'd11f75881ddf9f6b753b6179ec039ee3a77bb55baa7bef183af239de3e6db073'
             '1a7f604364c050f7206ba893d109db5851c60cb5b000bd282ac55b81d8ff14ca'
             '596d238ad219de1c88f79fd26a8b829250bf0512a308b34c11fd231d0b4eb0f4'
@@ -56,6 +56,9 @@ build()
   automake --add-missing
 
   ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var/lib --sysconfdir=/etc --with-pkcs11-softhsm=/usr/lib/libsofthsm.so --sbindir=/usr/bin
+
+  # Remove optional dependency on libbacktrace (incorrectly detected as present)
+  echo #unset HAVE_BACKTRACE_FULL >> common/config.h
 
   # Create the correct (/var/run/opendnssec) directory
   sed -i \
