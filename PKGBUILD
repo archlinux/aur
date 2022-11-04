@@ -4,10 +4,10 @@ _pkgname=Rgin
 _pkgver=1.15.0
 pkgname=r-${_pkgname,,}
 pkgver=1.15.0
-pkgrel=1
+pkgrel=4
 pkgdesc='gin in R'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('MIT')
 depends=(
   r
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6ae18bf9e748671366ad65c3de03552da49db4cff6ba08601759ef5c9a90bff4')
 
 prepare() {
