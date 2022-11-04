@@ -1,5 +1,5 @@
 # Maintainer: Maciej Dems <maciej.dems@p.lodz.pl>
-pkgname=plask
+pkgname=plask-bin
 pkgver=2022.10.24
 pkgrel=1
 pkgdesc="Photonic LAser Simulation Kit: a comprehensive tool for numerical
@@ -7,6 +7,9 @@ analysis of broad range of physical phenomena in photonic devices"
 url="https://plask.app"
 arch=('x86_64')
 license=('custom')
+provides=('plask')
+replaces=('plask')
+conflicts=('plask')
 depends=('boost-libs' 'expat' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
          'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2' 'libx11')
 optdepends=('python-h5py: for saving results to files'
