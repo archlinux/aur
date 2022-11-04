@@ -3,7 +3,7 @@
 
 pkgname=upak
 pkgver=10.6.8 # <-- current source doesn't have a version. We keep the last known one
-pkgrel=10
+pkgrel=11
 pkgdesc="HRIBF Data Acquisition and analysis."
 url="ftp://ftp.phy.ornl.gov/pub/upak/README.html"
 arch=('x86_64')
@@ -29,6 +29,7 @@ package(){
   install -m644 Dreadme/README-Apr07     $pkgdir/usr/local/hhirf/doc
   install -m644 Dreadme/readme.{tex,doc} $pkgdir/usr/local/hhirf/doc
   install -m644 Dreadme/dvd.{tex,doc}    $pkgdir/usr/local/hhirf/doc
+  ln -s $pkgdir/usr/local/hhirf $pkgdir/usr/hhirf
 
   cd $pkgdir/usr/local/hhirf
   for file in $(ls doc/*.doc);do

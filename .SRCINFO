@@ -1,7 +1,7 @@
 pkgbase = upak
 	pkgdesc = HRIBF Data Acquisition and analysis.
 	pkgver = 10.6.8
-	pkgrel = 10
+	pkgrel = 11
 	url = ftp://ftp.phy.ornl.gov/pub/upak/README.html
 	install = upak.install
 	arch = x86_64
