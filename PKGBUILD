@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FlowSorted.Blood.450k
-_pkgver=1.35.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Illumina HumanMethylation data on sorted blood cell populations'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-minfi
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12eec51eebe8428743c784c567618fb61873cb1e49cd66508304638bc8d7fd3d')
+sha256sums=('58e5c5cd4ee683c282b6e3d5cd7d126b95f460379d9c322df4e28d57aec649c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
