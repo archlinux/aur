@@ -4,10 +4,10 @@ _pkgname=GenoGAM
 _pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=2.14.0
-pkgrel=1
+pkgrel=4
 pkgdesc='A GAM based framework for analysis of ChIP-Seq data'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
