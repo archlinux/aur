@@ -4,10 +4,10 @@ _pkgname=ScISI
 _pkgver=1.68.0
 pkgname=r-${_pkgname,,}
 pkgver=1.68.0
-pkgrel=1
+pkgrel=4
 pkgdesc='In Silico Interactome'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('LGPL')
 depends=(
   r
