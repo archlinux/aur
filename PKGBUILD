@@ -2,6 +2,7 @@
 # Contributor: @xabbu <https://github.com/xabbu>
 # Contributor: Stefano Capitani <stefano_at_manjaro_dot_org>
 # Contributor: Mark Wagie <mark_at_manjaro_dot_org>
+# Contributor: Jonathon Fernyhough
 # Contributor: realqhc <https://github.com/realqhc>
 
 # Archlinux credits:
@@ -13,7 +14,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=43.0
+pkgver=43.1
 pkgrel=1
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -29,7 +30,7 @@ checkdepends=(xorg-server-xvfb wireplumber python-dbusmock zenity)
 provides=(mutter libmutter-11.so)
 conflicts=(mutter)
 _scaling_commit=fd7ba96ccf650634fec883e37f7b07557434a785 # Commit fd7ba96c
-_commit=bdf3470a8a89206a39dc45824a8080dc6a9666ca  # tags/43.0^0
+_commit=8329a3eb5f4960df919e0348bd445c40568d3d60  # tags/43.1^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 	"Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/abc3b7c285779a719c5b9a99b477657a8021727e/Support-Dynamic-triple-double-buffering.patch")
@@ -80,16 +81,6 @@ _check() (
 check() {
   dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
     bash -c "$(declare -f _check); _check"
-}
-
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
 }
 
 package() {
