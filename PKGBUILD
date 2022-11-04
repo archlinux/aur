@@ -2,12 +2,12 @@
 pkgname=punes-git
 pkgver=0.109.r1893.2af242f7
 pkgrel=1
-pkgdesc="Nintendo Entertaiment System emulator"
+pkgdesc="Nintendo Entertaiment System emulator (git build)"
 arch=('x86_64')
 url="https://github.com/punesemu/puNES"
 license=('GPL2')
 depends=('alsa-lib' 'desktop-file-utils' 'ffmpeg' 'hicolor-icon-theme' 'nvidia-cg-toolkit' 'libxrandr' 'qt5-base' 'qt5-svg')
-makedepends=('cmake' 'git' 'glu' 'ninja' 'qt5-tools')
+makedepends=('cmake' 'git' 'glu' 'ninja' 'qt5-tools' 'qt5-wayland')
 conflicts=('punes')
 provides=('punes')
 source=("punes::git+https://github.com/punesemu/puNES.git")

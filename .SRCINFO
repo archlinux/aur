@@ -1,5 +1,5 @@
 pkgbase = punes-git
-	pkgdesc = Nintendo Entertaiment System emulator
+	pkgdesc = Nintendo Entertaiment System emulator (git build)
 	pkgver = 0.109.r1893.2af242f7
 	pkgrel = 1
 	url = https://github.com/punesemu/puNES
@@ -10,6 +10,7 @@ pkgbase = punes-git
 	makedepends = glu
 	makedepends = ninja
 	makedepends = qt5-tools
+	makedepends = qt5-wayland
 	depends = alsa-lib
 	depends = desktop-file-utils
 	depends = ffmpeg
