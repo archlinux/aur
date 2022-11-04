@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pasilla
-_pkgver=1.25.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Data package with per-exon and per-gene read counts of RNA-seq samples of Pasilla knock-down by Brooks et al., Genome Research 2011.'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('43ebd774f90572c1f96d1c5d990e90280f57c3ed7e8f6d159f8d892aa5a13d62')
+sha256sums=('710e65de39cb548fd0fbac558eecb5e86f1dc5727594fefe8e4637b0cf702276')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
