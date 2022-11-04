@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=depmap
-_pkgver=1.11.2
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Cancer Dependency Map Data Package'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cfafe9fc21fb1a6ca2795466d053422041ec372952fb18897e260e670ef2a13f')
+sha256sums=('1b0e67906bf6fb74cb146230004eb6f44113782093655011b69e1c6676d1c183')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
