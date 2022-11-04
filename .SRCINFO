@@ -1,8 +1,8 @@
 pkgbase = tewisay-git
 	pkgdesc = Cowsay replacement with unicode and partial ansi escape support.
-	pkgver = 0.65.e3fc387
+	pkgver = 0.66.caa5b01
 	pkgrel = 1
-	url = https://github.com/lucy/tewisay
+	url = https://github.com/raymond-w-ko/tewisay
 	arch = i686
 	arch = x86_64
 	arch = ARM
@@ -13,8 +13,7 @@ pkgbase = tewisay-git
 	depends = glibc
 	optdepends = cowsay: default cowfiles
 	options = !strip
-	source = git://github.com/lucy/tewisay.git
+	source = git+https://github.com/raymond-w-ko/tewisay.git
 	sha256sums = SKIP
 
 pkgname = tewisay-git
-
