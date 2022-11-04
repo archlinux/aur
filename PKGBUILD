@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCGAbiolinksGUI.data
-_pkgver=1.17.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Data for the TCGAbiolinksGUI package'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cdae09c27f7577c8005da78e69d7435733528307975e4928c665ef0771fb79a7')
+sha256sums=('a5a6551dd649044451fcd50222802ea84247c9fde2138982f1a51fd2c3273060')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
