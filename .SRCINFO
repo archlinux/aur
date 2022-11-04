@@ -1,5 +1,5 @@
 pkgbase = passy
-	pkgdesc = TODO: Write description
+	pkgdesc = Offline password manager with cross-platform synchronization
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/GlitterWare/Passy
