@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-beta-bin
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
 url="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
