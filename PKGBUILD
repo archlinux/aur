@@ -4,10 +4,10 @@ _pkgname=iteremoval
 _pkgver=1.15.1
 pkgname=r-${_pkgname,,}
 pkgver=1.15.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Iteration removal method for feature selection'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -20,7 +20,7 @@ optdepends=(
   r-knitr
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('0218f4fd2bcf4e71df405a78db01a028fa49a8093d6da63cffaab8dd3f45942f')
 
 build() {
