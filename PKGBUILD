@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggprism
-_pkgver=1.0.3
+_pkgver=1.0.4
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3
-pkgrel=4
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="A 'ggplot2' Extension Inspired by 'GraphPad Prism'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('57324fcd31c084cc11fedb63ba399aa76ec1a4e23a9bb95a89c1e8925106b025')
+sha256sums=('83da778298e7fd9eef7e817bafa43ecde18d6a0c26278861319c1173cea59379')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = r-ggprism
 	pkgdesc = A 'ggplot2' Extension Inspired by 'GraphPad Prism'
-	pkgver = 1.0.3
-	pkgrel = 4
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggprism
 	arch = any
 	license = GPL
@@ -24,7 +24,7 @@ pkgbase = r-ggprism
 	optdepends = r-rstatix
 	optdepends = r-tidyr
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/ggprism_1.0.3.tar.gz
-	sha256sums = 57324fcd31c084cc11fedb63ba399aa76ec1a4e23a9bb95a89c1e8925106b025
+	source = https://cran.r-project.org/src/contrib/ggprism_1.0.4.tar.gz
+	sha256sums = 83da778298e7fd9eef7e817bafa43ecde18d6a0c26278861319c1173cea59379
 
 pkgname = r-ggprism
