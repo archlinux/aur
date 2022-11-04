@@ -5,10 +5,10 @@ _pkgname=ensemblVEP
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=4
 pkgdesc='R Interface to Ensembl Variant Effect Predictor'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.15/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -23,7 +23,7 @@ depends=(
 optdepends=(
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c8ac6f434fe43cfc9bb1d7fe39bd233a4c93b2809dc72bcc736083df9bae94f6')
 
 build() {
