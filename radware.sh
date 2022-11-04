@@ -1,9 +1,10 @@
-export RADWARE_HOME=/usr
+export PATH=$PATH:/opt/radware/bin
+export RADWARE_HOME=/opt/radware
 
 #   these variables point to directories containing various RadWare files
-    export RADWARE_FONT_LOC=$RADWARE_HOME/share/fonts/radware
-     export RADWARE_ICC_LOC=$RADWARE_HOME/share/radware/icc
-export RADWARE_GFONLINE_LOC=$RADWARE_HOME/share/doc/radware
+export RADWARE_FONT_LOC=$RADWARE_HOME/font
+export RADWARE_ICC_LOC=$RADWARE_HOME/icc
+export RADWARE_GFONLINE_LOC=$RADWARE_HOME/doc
 
 #   this variable specifies whether to ring the bell in RadWare cursor routines
 export RADWARE_CURSOR_BELL=y

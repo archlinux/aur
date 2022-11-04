@@ -1,20 +1,49 @@
---- Makefile.common	2011-04-14 13:16:13.000000000 -0500
-+++ ../../../Makefile.common	2012-03-04 17:42:48.975097462 -0500
-@@ -2,7 +2,7 @@
- 
+--- src/rw05/src/Makefile.common	2022-11-04 15:38:59.174478050 +0000
++++ Makefile.common	2022-11-02 14:35:03.406950368 +0000
+@@ -3,7 +3,7 @@
  EXE = 4dg8r 4play addesc addmat algndiag calib_ascii combine divide \
-       dixie_gls drawstring effit encal energy escl8r foldout gf3 gf3x gls \
--      gls_conv incub8r legft levit8r lufwhm make4cub pedit plot plot2ps \
-+      gls_conv incub8r legft levit8r lufwhm make4cub pedit plotrw plot2ps \
-       pro3d pro4d pslice sdgen split4cub slice Source spec_ascii statft \
-       subbgm2 subbgmat symmat unfold unfoldesc unix2unix vms2unix win2tab \
-       gtkgls gtkesc gtklev gtk4dg \
-@@ -111,7 +111,7 @@
- pedit: pedit.o menu_x.o caskx.o getfloat.o drawstring.o util.a minig.a
- 	$(CC) $(CFLAGS) -o $@ pedit.o menu_x.o caskx.o getfloat.o \
+       dixie_gls drawstring effit encal energy escl8r foldout fwhm_cal \
+       gf3 gf3_nographics gf3x gls gls_conv incub8r legft levit8r \
+-      lufwhm make4cub pedit plot plot2ps sdgen split4cub slice Source \
++      lufwhm make4cub pedit plotrw plot2ps sdgen split4cub slice Source \
+       spec_ascii statft pro3d pro4d pslice subbgm2 subbgmat symmat \
+       txt2spe unfold unfoldesc unix2unix vms2unix win2tab
+ # his2mat rdm rdmfit
+@@ -120,7 +120,7 @@
+ pedit: pedit.c menu_x.o caskx.o getfloat.o drawstring.o util.a minig.a
+ 	$(CC) $(CFLAGS) -o $@ pedit.c menu_x.o caskx.o getfloat.o \
           drawstring.o util.a minig.a $(LIB_PATHS) $(LIBS)
--plot: plot.o getfloat.o util.a
-+plotrw: plot.o getfloat.o util.a
- 	$(CC) $(CFLAGS) -o $@ plot.o getfloat.o util.a $(LIB_PATHS) $(LIBS)
- plot2ps: plot2ps.o getfloat.o util.a drawstr_ps.o
- 	$(CC) $(CFLAGS) -o $@ plot2ps.o getfloat.o util.a drawstr_ps.o $(LIB_PATHS) $(LIBS)
+-plot: plot.c getfloat.o util.a
++plotrw: plot.c getfloat.o util.a
+ 	$(CC) $(CFLAGS) -o $@ plot.c getfloat.o util.a $(LIB_PATHS) $(LIBS)
+ plot2ps: plot2ps.c getfloat.o util.a drawstr_ps.o
+ 	$(CC) $(CFLAGS) -o $@ plot2ps.c getfloat.o util.a drawstr_ps.o $(LIB_PATHS) $(LIBS)
+@@ -282,22 +282,21 @@
+ #   a r c h i v e s
+ ###############################################################################
+ 
+-gls.a: FORCE
++.PHONY: gls.a minig.a minig.a mingtk.a util.a .c.o
++gls.a:
+ 	cd libs/gls; $(MAKE) ../../gls.a ${SUB_MAKE_FLAGS}
+-minig.a: FORCE
++minig.a:
+ 	cd libs/minig; $(MAKE) ../../minig.a ${SUB_MAKE_FLAGS}
+-mingtk.a: FORCE
++mingtk.a:
+ 	cd libs/mingtk; $(MAKE) ../../mingtk.a ${SUB_MAKE_FLAGS}
+-util.a: FORCE
++util.a:
+ 	cd libs/util; $(MAKE) ../../util.a ${SUB_MAKE_FLAGS}
+ 
+-.c.o: FORCE
++.c.o:
+ 	$(CC) $(CFLAGS) -c $*.c
+ 
+ ###############################################################################
+ 
+-FORCE:
+-
+ clean: 
+ 	$(RM_CMD)
+ clean-exe: 

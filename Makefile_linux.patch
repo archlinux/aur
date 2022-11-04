@@ -1,6 +1,6 @@
---- Makefile.linux	2011-04-12 19:20:18.000000000 -0500
-+++ ../../../Makefile.linux	2012-03-05 23:28:28.843179977 -0500
-@@ -20,13 +20,13 @@
+--- src/rw05/src/Makefile.linux	2022-11-04 15:38:59.174478050 +0000
++++ Makefile.linux	2022-11-04 15:33:51.449500008 +0000
+@@ -20,22 +20,22 @@
  #------------------------------------------------------------------------
  #    CHANGE  the next 3 lines to suit your installation preferences
  
@@ -8,24 +8,42 @@
 -        INSTALL = /usr/bin/install -m 0644 -o radfordd -g users
 -    INSTALL_BIN = /usr/bin/install -m 0755 -o radfordd -g users
 +    INSTALL_DIR = ${DESTINATION_DIR}
-+        INSTALL = /usr/bin/install -m 0644
-+    INSTALL_BIN = /usr/bin/install -m 0755
++        INSTALL = /usr/bin/install -m 0644 -o `id -un` -g `id -gn`
++    INSTALL_BIN = /usr/bin/install -m 0755 -o `id -un` -g `id -gn`
  
  #------------------------------------------------------------------------
  
 -             CC = cc
-+             CC = gcc -fPIC
++             CC = gcc
               FC = $(CC)
-          CFLAGS = -O2 -Wall -I$(MOTIF_TOP)/include -DHAVE_GNU_READLINE
+-         CFLAGS = -O2 -Wall -I$(MOTIF_TOP)/include -DHAVE_GNU_READLINE
++         CFLAGS = -march=native -O2 -Wall -DHAVE_GNU_READLINE
  
-@@ -43,8 +43,8 @@
+          RANLIB = ranlib
+              AR = ar rv
+              RM = -rm -f
+          RM_CMD = $(RM) *.o core* *[~%] *.trace
+ 
+-           LIBS = -lX11 -lm -lreadline -lncurses
++           LIBS = -lX11 -lm -lreadline -lncurses -lgfortran
+      MOTIF_LIBS = -lXm -lMrm -lXt -lXext -lXp
+    STATIC_MOTIF = -lXm -lMrm -lXpm -lXt -lSM -lICE -lXext -lXp
+ 
+@@ -43,13 +43,13 @@
  #  UNCOMMENT and CHANGE (if necessary)  the line defining HISLIBS
  #  if you have orphlib.a on your system, and you want to be able to read .his files.
  #  UNCOMMENT the line defining FC as gcc if orphlib was compiled using gcc
 -#        HISLIBS = /usr/hhirf/orphlib.a
 -#             FC = g77
-+        HISLIBS = /usr/lib/orphlib.a
++        HISLIBS = /usr/local/hhirf/orphlib.a
 +             FC = gfortran
  
  #------------------------------------------------------------------------
  
+-      LIB_PATHS = -L. -L$(X_WIN_TOP)/lib
+-   XM_LIB_PATHS = -L$(MOTIF_TOP)/lib
++      LIB_PATHS = /usr/local/hhirf/orphlib.a -L.
++   XM_LIB_PATHS = -L/usr/lib
+            GTK2 = TRUE
+ 
+  SUB_MAKE_FLAGS = "CC = ${CC}" "CFLAGS = ${CFLAGS}" \
