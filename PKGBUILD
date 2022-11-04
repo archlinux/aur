@@ -13,7 +13,7 @@ depends=('fuse2' 'gawk')
 _filename=heroic-${pkgver}-beta.${pkgrel}.pacman
 source=("$url/releases/download/v${pkgver}-beta.${pkgrel}/${_filename}")
 noextract=("${_filename}")
-md5sums=('7c036a8b1ad2c5dcb3f112c65b0af2ab')
+md5sums=('01dcc41946a87e4896d7d2526ee072fb')
 options=(!strip)
 
 package() {

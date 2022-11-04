@@ -10,9 +10,9 @@ pkgbase = heroic-games-launcher-beta-bin
 	conflicts = heroic-games-launcher-beta-appimage
 	conflicts = heroic-games-launcher-beta-electron
 	conflicts = heroic-games-launcher-bin
-	noextract = heroic-2.5.0-beta.1.pacman
+	noextract = heroic-2.5.0-beta.2.pacman
 	options = !strip
-	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.0-beta.1/heroic-2.5.0-beta.1.pacman
-	md5sums = 7c036a8b1ad2c5dcb3f112c65b0af2ab
+	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.0-beta.2/heroic-2.5.0-beta.2.pacman
+	md5sums = 01dcc41946a87e4896d7d2526ee072fb
 
 pkgname = heroic-games-launcher-beta-bin
