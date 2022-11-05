@@ -18,6 +18,6 @@ pkgbase = python-py-eddy-tracker
 	depends = python-netcdf4
 	depends = python-numba
 	source = py-eddy-tracker-3.6.1.tar.gz::https://github.com/AntSimi/py-eddy-tracker/archive/v3.6.1.tar.gz
-	sha512sums = ae8e869422ba2f183883580b3ace54b2b1e4a06da081a2909c0aa6d89b963dabfbc9f99e5446de071a923effbbd004561eca5ec5e0d109c5c0acf7f51ecea605
+	sha512sums = e6e11ea1df148b80d39ec301b6667370827435c4865eea576830296bda9b5bea41d282838593061a49f569d70ad6d1d12458ff8087d2def83e8bc298781d4b92
 
 pkgname = python-py-eddy-tracker
