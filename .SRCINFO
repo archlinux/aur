@@ -1,0 +1,23 @@
+pkgbase = kea_config
+	pkgdesc = Manage kea dhcp4 configs from single source config
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/gene-git/kea_config
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	makedepends = rsync
+	depends = python>3.9
+	depends = python-packaging
+	depends = python-netaddr
+	depends = python-tomli-w
+	depends = python-qrcode
+	depends = python-tomli
+	source = git+https://github.com/gene-git/kea_config
+	sha512sums = SKIP
+
+pkgname = kea_config
