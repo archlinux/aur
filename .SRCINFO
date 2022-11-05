@@ -1,0 +1,14 @@
+pkgbase = ortp
+	pkgdesc = A Real-time Transport Protocol (RTP) library
+	pkgver = 5.1.67
+	pkgrel = 1
+	url = https://gitlab.linphone.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = doxygen
+	depends = bctoolbox
+	source = https://gitlab.linphone.org/BC/public/ortp/-/archive/5.1.67/ortp-5.1.67.tar.bz2
+	sha256sums = 9d2f939647dd74658213447ff05ccc492bab60e0d37d16cfca614185208dc19c
+
+pkgname = ortp
