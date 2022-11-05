@@ -16,7 +16,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.25"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php80"
 pkgdesc="PHP 8.0.25 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -129,14 +129,13 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "openssl-sslv3-consts.patch"
     "debian-php-8.0.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.0.patch"
 )
 depends=(
-)
-checkdepends=(
 )
 makedepends=(
     "acl"
@@ -198,6 +197,7 @@ makedepends=(
 arch=(
 )
 _patches=(
+    "openssl-sslv3-consts.patch"
     "debian-php-8.0.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -1522,6 +1522,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             'a291b71d0498707fc5514eb5b9513e88f0f1d4890bcdefd67282ded8a2bfb941'
+            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             '9281736f0cbc60699992f92359a62d861c9c53391fd53e3826e77710ab981718'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
