@@ -1,7 +1,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname=kss
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Kubernetes pod status on steroid"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 groups=('utils')
 depends=('python>=3.6' 'kubectl' 'fzf')
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/chmouel/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('1cff4f01a647047eccf69da65f28e9c3c60116e118545522af70c5a8d577bfad2ba412555f760c48b84ff6599b8064254bfed74a6067290728d0faf541b67696')
+sha512sums=('83ad45e35dac2128a6f094a36265ba2ecde8cb9455d79abcd20c9505fd2a90126a6ab09204b32cd2553e833088e7bf8f76e8f72f5dab0d6741861d5c7be68e69')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
