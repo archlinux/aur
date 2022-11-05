@@ -1,0 +1,37 @@
+# Maintainer:
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Adrià Arrufat <swiftscythe@gmail.com>
+# Contributor: Mark Lee <mark@markelee.com>
+
+pkgname=mediastreamer
+pkgver=5.1.67
+pkgrel=1
+pkgdesc='A library written in C that allows you to create and run audio and video streams'
+arch=(x86_64)
+url='https://gitlab.linphone.org/'
+license=(GPL)
+depends=(ortp ffmpeg bzrtp glew libsrtp bcg729)
+makedepends=(cmake python bcunit doxygen libyuv)
+source=(https://gitlab.linphone.org/BC/public/${pkgname}2/-/archive/$pkgver/${pkgname}2-$pkgver.tar.bz2
+        ffmpeg5.patch)
+sha256sums=('aca02aa0519afe64fad83cf520eeb6da98e78878467cf486963f1bcddaf5a45d'
+            'e97e029cbbafe5245eaa6f92664224e4381eea5f45e403d5bfa6b0e5c2be0341')
+validpgpkeys=('9774BC1725758EB16D639F8B3ECD52DEE2F56985')
+
+prepare() {
+  patch -d ${pkgname}2-$pkgver -p1 < ffmpeg5.patch
+}
+
+build() {
+  cmake -B build -S ${pkgname}2-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_STATIC=OFF \
+    -DENABLE_STRICT=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/usr/include/OpenGL
+}
