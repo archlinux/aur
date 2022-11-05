@@ -25,5 +25,5 @@ build () {
 
 package () {
   cd "${pkgname}-${pkgver/v/}"
-  make install DESTDIR="$pkgdir"
+  make install DESTDIR="$pkgdir" PREFIX="/usr"
 }
