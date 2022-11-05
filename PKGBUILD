@@ -1,6 +1,6 @@
 pkgname=passy
 _pkgshortname=passy
-pkgver=1.2.0
+pkgver=1.2.0.r0.g0f623d2
 pkgrel=1
 pkgdesc='Offline password manager with cross-platform synchronization'
 arch=('x86_64')
@@ -12,9 +12,15 @@ source=('git+https://github.com/GlitterWare/Passy.git')
 sha512sums=('SKIP')
 _flutter='submodules/flutter/bin/flutter --no-version-check --suppress-analytics --verbose'
 
+pkgver() {
+  cd Passy
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   # flutter build
   cd Passy
+  git reset --hard $(git describe --tags $(git rev-list --tags --max-count=1))
   git submodule init
   git submodule update
   $_flutter build linux --dart-define=UPDATES_POPUP_ENABLED=false
@@ -61,4 +67,3 @@ package() {
   install -dm755 $pkgdir/usr/share/metainfo
   install -Dm644 linux_assets/com.glitterware.passy.appdata.xml $pkgdir/usr/share/metainfo/${_pkgshortname}.appdata.xml
 }
-
