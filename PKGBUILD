@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Justin Frank <justinpfrank@protonmail.com> (miniterm-git PKGBUILD)
 pkgname='miniterm'
 pkgver='1.7.0'
@@ -11,7 +11,7 @@ depends=('glib2' 'vte3')
 makedepends=('cmake')
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c5a2f93978826a978f952c20b7b68a7f4f670891075195268c93ab80d5753541')
+sha512sums=('b731aba57e7cae1149c0bce59b3c7399342dd93e6769196abc24ecc6db985d9a38371d70cbf12d052b82aeaaa1d917d5a04c54d8e3753e5983004cab8e8b164d')
 
 _sourcedirectory="$pkgname-$pkgver"
 
