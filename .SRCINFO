@@ -1,6 +1,6 @@
 pkgbase = python-syrupy
 	pkgdesc = The sweeter pytest snapshot plugin
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/tophat/syrupy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-syrupy
 	makedepends = python-poetry-core
 	depends = python-pytest
 	depends = python-colored
-	source = syrupy-3.0.3.tar.gz::https://github.com/tophat/syrupy/archive/v3.0.3.tar.gz
-	sha512sums = 24eaf1f1d1844f82a94ccb85b008fc97298a5f81c709528ee4b1d63633b00ab7a5766ef019dcb8faaa98f1105acdb2dbd8a70aad6f74f96154939768682c95a0
+	source = syrupy-3.0.4.tar.gz::https://github.com/tophat/syrupy/archive/v3.0.4.tar.gz
+	sha512sums = 0a2594fc4652fb6ee263048547319265ecf351ecfec4bd5c58e705a31517ed1c6ffe97721787df4d77fd72b8faaad888ff9b5e6b755a3d0dba0fcb3dd6774648
 
 pkgname = python-syrupy
