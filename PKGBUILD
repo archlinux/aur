@@ -13,7 +13,7 @@ depends=('python' 'python-humanfriendly' 'smartmontools')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d4ddf6c5e3d7cd78e969547e5fa57e185df89bb360e1f1fc55d9d08614e72b03')
+sha512sums=('8540d428045345a136ff492f4c423446eda5e8d23d254532c08edbc3fe851a494e3a9b10054bb4f1c6dd2ff312d746f83f604453e8d9fec37bc48a59b122c298')
 
 _sourcedirectory="$_reponame-$pkgver"
 

@@ -12,6 +12,6 @@ pkgbase = python-pysmart
 	depends = python-humanfriendly
 	depends = smartmontools
 	source = python-pysmart-1:1.1.0-1.tar.gz::https://github.com/freenas/py-SMART/archive/v1.1.0.tar.gz
-	sha256sums = d4ddf6c5e3d7cd78e969547e5fa57e185df89bb360e1f1fc55d9d08614e72b03
+	sha512sums = 8540d428045345a136ff492f4c423446eda5e8d23d254532c08edbc3fe851a494e3a9b10054bb4f1c6dd2ff312d746f83f604453e8d9fec37bc48a59b122c298
 
 pkgname = python-pysmart
