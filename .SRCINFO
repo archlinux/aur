@@ -1,6 +1,6 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/adtzlr/felupe
 	arch = any
@@ -9,14 +9,17 @@ pkgbase = python-felupe
 	checkdepends = python-meshio
 	checkdepends = python-h5py
 	checkdepends = python-matplotlib
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-scipy
 	optdepends = python-meshio: for export mesh
 	optdepends = python-h5py: for XDMF-export
 	optdepends = python-numba: for JIT compiler support
 	optdepends = python-sparse: for sparse arrays support
 	optdepends = python-einsumt: for multithreaded numpy.einsum support
-	source = felupe-5.3.0.tar.gz::https://github.com/adtzlr/felupe/archive/v5.3.0.tar.gz
-	sha512sums = 8041a68d0638eb4f573bec20bd68abe0e722c79318f4192342f89388a71fd2111ee9359b6bf0595ec446c2db0924a0f5e2dfb2ec3b3b48811d93a898f21ada2e
+	source = felupe-5.3.1.tar.gz::https://github.com/adtzlr/felupe/archive/v5.3.1.tar.gz
+	sha512sums = 88a51af0cef470aae43134a44d59357cb4f20f0f525ee8890c6f410b1a8f492fee82c967817e3f2c8a5b41a911c753c198846000f2de0b78759d235d5100ea7f
 
 pkgname = python-felupe
