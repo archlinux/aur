@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 # Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
-pkgver=v2.3.1.fix
-pkgrel=5
+pkgver=2.3.2
+pkgrel=1
 epoch=
 pkgdesc="Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用Electron构建, 利用UOS请求头修复了登陆问题."
 arch=('x86_64')
@@ -25,7 +25,7 @@ install=${pkgname}.install
 source=(
 	electronic-wechat-uos-bin.desktop
 	electronic-wechat-uos-bin.svg
-	wechat-${pkgver}.tar.gz::"https://github.com/Riceneeder/electronic-wechat/releases/download/v2.3.1.fix/electronic-wechat-linux-x64.tar.gz"
+	wechat-${pkgver}.tar.gz::"https://github.com/Riceneeder/electronic-wechat/releases/download/v2.3.2-6/electronic-wechat_2.3.2_amd64.deb"
 )
 noextract=()
 md5sums=(
@@ -35,12 +35,15 @@ md5sums=(
 )
 validpgpkeys=()
 package() {
+	info '正在解压缩源文件...'
+	cd ${srcdir}
+	tar -xf data.tar.xz ./usr/lib/electronic-wechat/resources/app.asar
 	for directory in /usr/bin /opt/electronic-wechat-uos-bin /usr/share/applications; do
 		info "创建目录 ${pkgdir}${directory}..."
 		mkdir -p ${pkgdir}${directory}
 	done
 	info "复制文件..."
-	cp -r ${srcdir}/electronic-wechat-linux-x64/resources ${pkgdir}/opt/electronic-wechat-uos-bin
+	cp -r ${srcdir}/usr/lib/electronic-wechat/resources ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.svg ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.desktop ${pkgdir}/usr/share/applications
 	echo '#!/bin/bash
