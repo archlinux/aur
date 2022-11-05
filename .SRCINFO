@@ -1,0 +1,16 @@
+pkgbase = bzrtp
+	pkgdesc = Open source implementation of ZRTP keys exchange protocol
+	pkgver = 5.1.67
+	pkgrel = 1
+	url = https://gitlab.linphone.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bcunit
+	makedepends = cmake
+	depends = libxml2
+	depends = bctoolbox
+	depends = sqlite
+	source = https://gitlab.linphone.org/BC/public/bzrtp/-/archive/5.1.67/bzrtp-5.1.67.tar.bz2
+	sha256sums = 729ad666bdf5a64c20a063d60d40ebfb55821e785147a16dc5f7978511155b04
+
+pkgname = bzrtp
