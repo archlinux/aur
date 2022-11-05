@@ -2,7 +2,7 @@
 
 pkgname=th10
 pkgver=0.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Mountain of Faith trial version. Tenth game of the Touhou Project series.'
 arch=(x86_64)
 url='https://www16.big.or.jp/~zun/html/th10top.html'
@@ -17,8 +17,8 @@ source=('http://kokoron.madoka.org/mirror/D/t/touhoufuujinroku/th10tr002a_setup.
 	'th10.desktop')
 md5sums=('4c816e8d7f59430d5083e55c86df2462'
 	 'ff0501145d6dc00e61fd8bd153e3bc5a'
-	 'f4f205effde8bf6922bcf52bf0c45f79'
-	 'fe3fcfcba78208fddc0d213abb7c39e1'
+	 '027fe63b2c9d28abbff74064a38fe2bb'
+	 '36254f0ca77fb9fe709cbbe2191afa98'
 	 '7e337e7d4e04feb0d7af3d7480e8d4b4'
 	 '729af1ecd46aa43c52f3465fa8a62fb7')
 

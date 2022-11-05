@@ -2,7 +2,7 @@
 
 NAME='th10'
 SRC="/usr/share/$NAME"
-DEST="$HOME/.local/share/$NAME"
+DEST="$HOME/.$NAME"
 
 export WINEPREFIX="$DEST/wine"
 export WINEDLLOVERRIDES='mscoree,mshtml='

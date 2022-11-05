@@ -2,7 +2,7 @@
 
 NAME='th10'
 SRC="/usr/share/$NAME"
-DEST="$HOME/.local/share/$NAME"
+DEST="$HOME/.$NAME"
 INST="$DEST/wine/drive_c/Program Files/上海アリス幻樂団/東方風神録体験版/"
 
 export WINEPREFIX="$DEST/wine"
