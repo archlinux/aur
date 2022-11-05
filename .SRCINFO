@@ -1,10 +1,9 @@
 pkgbase = colloid-icon-theme-git
-	pkgver = 2022.04.22.r5.gb69977e
+	pkgver = 2022.10.26.r3.g9a658d7
 	pkgrel = 1
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = gtk-update-icon-cache
 	options = !strip
 	source = git+https://github.com/vinceliuice/Colloid-icon-theme.git
 	sha256sums = SKIP

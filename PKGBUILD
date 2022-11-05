@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('colloid-icon-theme-git' 'colloid-cursors-git')
 pkgbase=colloid-icon-theme-git
-pkgver=2022.04.22.r5.gb69977e
+pkgver=2022.10.26.r3.g9a658d7
 pkgrel=1
 arch=('any')
 license=('GPL3')
-makedepends=('git' 'gtk-update-icon-cache')
+makedepends=('git')
 options=('!strip')
 source=('git+https://github.com/vinceliuice/Colloid-icon-theme.git')
 sha256sums=('SKIP')
@@ -13,6 +13,13 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/Colloid-icon-theme"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+   cd "$srcdir/Colloid-icon-theme"
+
+  # Disable running gtk-update-icon-cache
+  sed -i '/gtk-update-icon-cache/d' install.sh
 }
 
 package_colloid-icon-theme-git() {
