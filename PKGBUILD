@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -56,7 +56,7 @@ provides=(libtexpdf.so
 conflicts=("$_pkgname")
 _archive="$_pkgname-$pkgver"
 source=("$_url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('7f9735bb2bdea5004b226037baa85bbb684d9de1653d65faa5d1dc0677a6f6d8')
+sha256sums=('28d5e46c238fde611c23f0baa516a649a24f93ab181493b19e25e024e6f03a24')
 
 build () {
 	cd "$_archive"
