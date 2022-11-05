@@ -1,12 +1,13 @@
 # Maintainer: sezanzeb proxima@seanzeb.de
 pkgname=input-remapper-git
-pkgver=1.5.0
-pkgrel=1
+pkgver=1.5.0.r12.gb0478435
+pkgrel=2
 pkgdesc="A tool to change and program the mapping of your input device buttons."
 arch=('any')
 url="https://github.com/sezanzeb/input-remapper/"
 license=('GPL3')
 depends=('python-gobject' 'python-pydbus' 'python-evdev' 'gtk3' 'python-setuptools' 'gtksourceview4' 'python-pydantic')
+optdepends=('xorg-xmodmap: symbol names matching the keyboard layout')
 makedepends=('git' 'fakeroot' 'python-setuptools')
 provides=('input-remapper')
 conflicts=('key-mapper')
