@@ -277,6 +277,10 @@ package_ceph() {
   # rbd udev rules
   install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/udev/50-rbd.rules" \
     "${pkgdir}/etc/udev/rules.d/50-ceph-rbd.rules"
+  # sysctls
+  sed -i -e '/kernel.pid_max/d' "${srcdir}/${pkgbase}-${pkgver}/etc/sysctl/90-ceph-osd.conf"
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/etc/sysctl/90-ceph-osd.conf" \
+    "${pkgdir}/etc/sysctl.d/90-ceph-osd.conf"
 
   # remove debian init script
   rm -rf "${pkgdir}/etc/init.d"
