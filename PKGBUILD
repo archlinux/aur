@@ -5,7 +5,7 @@
 
 pkgname=zfs-utils
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
@@ -63,7 +63,8 @@ package() {
     #rm -r "${pkgdir}"/usr/lib/dracut
     rm -r "${pkgdir}"/usr/lib/modules-load.d
     rm -r "${pkgdir}"/usr/share/initramfs-tools
-    rm -r "${pkgdir}"/usr/share/zfs
+    rm -r "${pkgdir}"/usr/share/zfs/*.sh
+    rm -r "${pkgdir}"/usr/share/zfs/{runfiles,test-runner,zfs-tests}
 
     install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
