@@ -2,10 +2,10 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=cowrie
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
-url='https://github.com/micheloosterhof/cowrie'
+url='https://github.com/cowrie/cowrie'
 arch=('any')
 license=('BSD')
 # from the requirements.txt
@@ -37,7 +37,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/cowrie/${pkgname}/archiv
 #source=(${pkgname}-${_gitrev}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/${_gitrev}.tar.gz
 # '0001-patch-service.patch')
 
-sha512sums=('e49ac55731aa2a0a9e7c996c12da2155893a2eb7956a3ce40e917f828935a4000fc7d1008b78357995758e299d2c31d1f1244550958bd9f6062019b26a4717f9'
+sha512sums=('8412450f1306076ef7a9e04d6c8dad75ba68c2436827fa675c71efbc8ea31d19f9c85463a20eab9c61f361ab950673302cb35f799eb53d113daed6391d1a6452'
             'a79904d764829b246fce7691f90d1de7a478985217eb458d441a2fad0aed4558d70eb2d38208d2bfb393bc42f662dba129678fc14765392959d1316c0d1a8dd1')
 
 prepare() {
