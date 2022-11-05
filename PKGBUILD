@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=sql-language-server
-pkgver=0.12.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="SQL Language Server"
 arch=('x86_64')
 url="https://github.com/joe-re/sql-language-server"
@@ -22,7 +22,8 @@ source=(
 	"https://raw.githubusercontent.com/joe-re/$pkgname/v$pkgver/LICENSE"
 )
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('3e9db41e2e50330519d3897dd99afef1aabfbe1be1f2d21478019550df02aa50' 'SKIP')
+sha256sums=('d299d593dd759f9f9cf97bf5a55f5df1f324de8fda0e4a489156d73080f4bed6'
+            '8515f8a196023a1806ca458e269d7108c7e4c2e4643986dca03e325177ab546f')
 
 package() {
 	cd "$srcdir"

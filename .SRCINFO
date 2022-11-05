@@ -1,7 +1,7 @@
 pkgbase = sql-language-server
 	pkgdesc = SQL Language Server
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/joe-re/sql-language-server
 	arch = x86_64
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = sql-language-server
 	depends = bash
 	depends = coreutils
 	depends = nodejs
-	noextract = sql-language-server-0.12.0.tgz
-	source = https://registry.npmjs.org/sql-language-server/-/sql-language-server-0.12.0.tgz
-	source = https://raw.githubusercontent.com/joe-re/sql-language-server/v0.12.0/LICENSE
-	sha256sums = 3e9db41e2e50330519d3897dd99afef1aabfbe1be1f2d21478019550df02aa50
-	sha256sums = SKIP
+	noextract = sql-language-server-1.2.1.tgz
+	source = https://registry.npmjs.org/sql-language-server/-/sql-language-server-1.2.1.tgz
+	source = https://raw.githubusercontent.com/joe-re/sql-language-server/v1.2.1/LICENSE
+	sha256sums = d299d593dd759f9f9cf97bf5a55f5df1f324de8fda0e4a489156d73080f4bed6
+	sha256sums = 8515f8a196023a1806ca458e269d7108c7e4c2e4643986dca03e325177ab546f
 
 pkgname = sql-language-server
