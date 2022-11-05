@@ -1,13 +1,13 @@
 pkgbase = safesignidentityclient
 	pkgdesc = Smart card PKCS#11 provider and token manager
 	pkgver = 3.7.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://safesign.gdamericadosul.com.br/download
 	arch = x86_64
 	license = custom:copyright
 	depends = pcsclite
 	depends = wxwidgets3.0
-	depends = openssl-1.0
+	depends = openssl-1.1
 	depends = xdg-utils
 	depends = libmspack
 	depends = ccid
