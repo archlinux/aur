@@ -1,6 +1,6 @@
 pkgbase = warpd-wayland
 	pkgdesc = A modal keyboard driven interface for mouse manipulation.
-	pkgver = v1.3.4
+	pkgver = v1.3.5
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = warpd-wayland
 	conflicts = warpd
 	conflicts = warpd-wayland-git
 	options = !buildflags
-	source = warpd-wayland.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/v1.3.4.zip
-	md5sums = d5bdc7dc052ca83ce4635d6cb0cedec3
+	source = warpd-wayland.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/v1.3.5.zip
+	md5sums = e55d892233a5bfedeab4b696a07cc431
 
 pkgname = warpd-wayland

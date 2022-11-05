@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=warpd-wayland
-pkgver=v1.3.4
+pkgver=v1.3.5
 _gitname=warpd
 pkgrel=1
 pkgdesc="A modal keyboard driven interface for mouse manipulation."
@@ -16,17 +16,15 @@ source=(
 )
 
 options=("!buildflags")
-md5sums=('d5bdc7dc052ca83ce4635d6cb0cedec3')
+md5sums=('e55d892233a5bfedeab4b696a07cc431')
 
 build () {
-  cd "warpd-${pkgver/v/}"
+  cd "${pkgname}-${pkgver/v/}"
   make
+  make man
 }
 
 package () {
-  cd "warpd-${pkgver/v/}"
-  install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
-  mkdir -p "${pkgdir}"/usr/share/man/man1/
-  # install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ warpd.1.gz
+  cd "${pkgname}-${pkgver/v/}"
+  make install DESTDIR="$pkgdir"
 }
