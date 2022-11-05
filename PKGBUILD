@@ -2,10 +2,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-mainline-um5302ta
-pkgver=6.0
-pkgrel=2
+pkgver=6.1rc3
+pkgrel=1
 pkgdesc='Linux'
-_srctag=v6.0
+_srctag=v6.1-rc3
 url="https://git.kernel.org/torvalds/h/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -19,9 +19,8 @@ _srcname=linux-mainline
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
   config         # the main kernel config file
+  ALSA-hda-realtek-Add-quirk-for-ASUS-Zenbook-using-CS35L41.patch
   cs35l42-hda-no-acpi-dsd-csc3551.patch
-  patch-realtek-um5302ta-quirk.patch
-  ASoC-amd-yc-Add-ASUS-UM5302TA-into-DMI-table.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,10 +28,9 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3'
-            '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82'
-            '9bb8bba7e33aa57b54f855d9dd788e9aa63e8c01526454694438cbaa22b1b7c5'
-            'c5e4e17c3e265710325d2af16bb1ba3b4a6e22f10677fef79ce7a22f91596bda')
+            '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
+            '1391b24a25148c3f1a60867d2f805f85c3dd201ffd0293b66d1ac892da20d910'
+            '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
