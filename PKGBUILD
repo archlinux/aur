@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=philentropy
-_pkgver=0.6.0
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Similarity and Distance Quantification Between Probability Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('138acf2aedab17c9d367def378e35c8aba80d9e786284b2866955cea1c24eeb6')
+sha256sums=('ce72e2327aee80aeeb630caa33be6a35e4f2b8a7491842d8c21099b9c43584b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
