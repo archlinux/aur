@@ -1,7 +1,7 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
 pkgname=grpcurl
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v$pkgver.tar.gz"
 )
-sha384sums=('6ff5623f705eec96542d86918ef1ccbff436c84d174f744be5bb5619bf088950b9cb3cb50f6b178ddf8073f81d99f0cc')
+sha384sums=('a167798406f73a2949d1951dc8665086ceb3e67cf9c9b2d28288683e37a4e203f6df471998872098bb88407bdf23545d')
 # really, `grpcurl-bin` should be conflicting with us instead of the oposite
 conflicts=('grpcurl-bin')
 
