@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -21,7 +21,7 @@ depends=(
     libsm       # libsm6
     libx11      # libx11-6
     libxxf86vm  # libxxf86vm1
-    openssl     # libssl1.1
+    openssl-1.1 # libssl1.1
     pango       # libpango-1.0-0, libpangocairo-1.0-0
     sdl2        # libsdl2-2.0-0
     zlib        # zlib1g
