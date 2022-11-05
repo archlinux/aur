@@ -18,7 +18,7 @@ pkgbase = ostrajava-git
 	conflicts = ostrajava
 	source = ostrajava-git::git+https://github.com/tkohout/OSTRAJava
 	source = fix-lib-paths.diff
-	sha256sums = SKIP
-	sha256sums = 409f5b9d171d278aa50386e79f58b0f0a5370659999549b86c985fe1421bb026
+	sha512sums = SKIP
+	sha512sums = 6b71abf24317df13e8ffb95e0199d20da27537ddeda5cc21c11d49e0217cf345ee4db1dcf53d81e66bb24b4b9db884e6a103cbaa15635616154be9651849c687
 
 pkgname = ostrajava-git

@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _reponame='OSTRAJava'
 _pkgname="${_reponame,,}"
 pkgname="$_pkgname-git"
@@ -16,8 +16,8 @@ source=(
 	"$pkgname::git+$url"
 	"fix-lib-paths.diff"
 )
-sha256sums=('SKIP'
-            '409f5b9d171d278aa50386e79f58b0f0a5370659999549b86c985fe1421bb026')
+sha512sums=('SKIP'
+            '6b71abf24317df13e8ffb95e0199d20da27537ddeda5cc21c11d49e0217cf345ee4db1dcf53d81e66bb24b4b9db884e6a103cbaa15635616154be9651849c687')
 
 _sourcedirectory="$pkgname"
 
