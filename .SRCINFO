@@ -1,6 +1,6 @@
 pkgbase = clasp-cl-git
 	pkgdesc = Bringing Common Lisp and C++ Together
-	pkgver = 2.0.0_6_gfc63c529c
+	pkgver = 2.0.0_40_g219c77771
 	pkgrel = 1
 	url = https://github.com/clasp-developers/clasp
 	arch = x86_64
@@ -24,7 +24,9 @@ pkgbase = clasp-cl-git
 	provides = cclasp-boehm
 	provides = common-lisp
 	provides = clasp-cl
+	conflicts = cando
 	conflicts = cando-git
+	conflicts = clasp-cl
 	options = !strip
 	source = git+https://github.com/clasp-developers/clasp.git
 	sha512sums = SKIP
