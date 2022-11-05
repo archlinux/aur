@@ -1,13 +1,13 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1211.f89117b
+pkgver=r1212.4daa57f
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL3')
-makedepends=('sibs-git')
+makedepends=('sibs-git' 'unzip')
 depends=('libglvnd' 'libx11' 'curl' 'mpv' 'libxrandr' 'noto-fonts')
 optdepends=(
     'libnotify: For showing notifications'
@@ -19,8 +19,20 @@ optdepends=(
 )
 provides=('quickmedia' 'qm' 'quickmedia-video-player')
 conflicts=('quickmedia' 'qm' 'quickmedia-video-player')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1211.f89117b.tar.gz")
-sha512sums=('4ce3a40d2029e72f54685685b8cc03439c18da10a3cd492538069f306bb0e9c07289c46f6cd91333eef7763782e58e3f4f08432dac4c8ba75742af5a3a003c72')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1212.4daa57f.tar.gz"
+    "twemoji.zip::https://dec05eba.com/files/twemoji.zip"
+)
+sha512sums=(
+    'f434576906dcfe8130324987fb11ec7f38f8d8321fb1291739184c12c23743bf2306e4b8743a2b505f3668de10eeb4eb883e4bcdfce6fa4db80d6b136537b6e6'
+    '127417f5ff5b771248a8112e1a342de0b17b5d5af135ff723e6682e190dec6d3fd7fe090de6d68c4641fa5297482b981d5e8f8ecb9362743f30c74fc81e81682'
+)
+
+prepare() {
+    cd "$srcdir"
+    mkdir emoji
+    unzip -uqq twemoji.zip -d emoji
+}
 
 build() {
   cd "$srcdir"
@@ -44,7 +56,7 @@ package() {
   install -Dm644 mpv/input.conf "$pkgdir/usr/share/quickmedia/mpv/input.conf"
   install -Dm644 mpv/mpv.conf "$pkgdir/usr/share/quickmedia/mpv/mpv.conf"
 
-  for file in images/* icons/* shaders/* themes/*; do
+  for file in images/* icons/* shaders/* themes/* emoji/*; do
     install -Dm644 "$file" "$pkgdir/usr/share/quickmedia/$file"
   done
 
