@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 251.7
-	pkgrel = 1
+	pkgrel = 4
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	arch = aarch64
@@ -127,6 +127,8 @@ pkgname = systemd-selinux
 	depends = libp11-kit
 	depends = libp11-kit.so
 	depends = openssl
+	depends = libcrypto.so
+	depends = libssl.so
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
@@ -137,7 +139,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=251.7
 	provides = udev=251.7
-	provides = systemd=251.7-1
+	provides = systemd=251.7-4
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -175,7 +177,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=251.7-1
+	provides = systemd-libs=251.7-4
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -187,16 +189,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=251.7-1
+	provides = systemd-resolvconf=251.7-4
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=251.7-1
+	conflicts = systemd-resolvconf=251.7-4
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=251.7-1
-	provides = selinux-systemd-sysvcompat=251.7-1
+	provides = systemd-sysvcompat=251.7-4
+	provides = selinux-systemd-sysvcompat=251.7-4
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat

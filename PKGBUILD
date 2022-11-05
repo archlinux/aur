@@ -11,7 +11,7 @@ pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' '
 _tag='7442d25a54b6dd494299b3a932b28953f4e67b21' # git rev-parse v${_tag_name}
 _tag_name=251.7
 pkgver="${_tag_name/-/}"
-pkgrel=1
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -171,7 +171,7 @@ package_systemd-selinux() {
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-selinux' 'libidn2' 'lz4' 'pam-selinux'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux-selinux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
-           'libp11-kit.so' 'openssl')
+           'libp11-kit.so' 'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'
