@@ -2,7 +2,7 @@
 # Contributor: Hugo Denizart <hugo at denizart dot pro>
 _pkgname=obs-streamfx
 pkgname=$_pkgname-unstable
-pkgver=0.12.0a134
+pkgver=0.12.0a151
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64")
@@ -17,7 +17,7 @@ makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#tag="$pkgver)
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 prepare() {
   cd $_pkgname
