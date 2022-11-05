@@ -3,7 +3,7 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
 pkgver=17.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'

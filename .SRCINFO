@@ -1,7 +1,7 @@
 pkgbase = ceph-bin
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 17.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -9,15 +9,15 @@ pkgbase = ceph-bin
 	noextract = ceph-libs-bin-17.2.5.tar.zst
 	noextract = ceph-mgr-bin-17.2.5.tar.zst
 	options = emptydirs
-	source = ceph-bin-17.2.5.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-1/ceph_linux_x86_64.tar.zstd
-	source = ceph-libs-bin-17.2.5.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-1/ceph_libs_linux_x86_64.tar.zstd
-	source = ceph-mgr-bin-17.2.5.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-1/ceph_mgr_linux_x86_64.tar.zstd
+	source = ceph-bin-17.2.5.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-2/ceph_linux_x86_64.tar.zstd
+	source = ceph-libs-bin-17.2.5.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-2/ceph_libs_linux_x86_64.tar.zstd
+	source = ceph-mgr-bin-17.2.5.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-2/ceph_mgr_linux_x86_64.tar.zstd
 	sha512sums = 41b3994c1954a6a0d5940fae8c8d8477315d15b840d7fc23e4dc4d9c4f5c709acbedd4204f6c16dbb82f31dbfd03a185509c9912d4d82c182b664659015ce146
 	sha512sums = b21da187f0f9f990cb25557d48685031f689c9e099329c35e92f6dcf0be65c379582478cb64c72e0a2acbf757a1fd6b1990cda1c6a92264f4d3d6f1d996e7643
 	sha512sums = fa5b55ac32f784385eaf8a7b13547dd17e964f92fee20a987172683c0a3b4b42d567ecb49de4600d720191d523e382219bbac5ca7a489996dd01743d22734f6a
 
 pkgname = ceph-bin
-	depends = ceph-libs=17.2.5-1
+	depends = ceph-libs=17.2.5-2
 	depends = boost-libs
 	depends = curl
 	depends = fuse3
@@ -40,7 +40,7 @@ pkgname = ceph-bin
 	depends = systemd-libs
 	depends = lua
 	depends = gawk
-	provides = ceph=17.2.5-1
+	provides = ceph=17.2.5-2
 	conflicts = ceph
 
 pkgname = ceph-libs-bin
@@ -65,12 +65,12 @@ pkgname = ceph-libs-bin
 	depends = python-prettytable
 	depends = python-yaml
 	depends = python-setuptools
-	provides = ceph-libs=17.2.5-1
+	provides = ceph-libs=17.2.5-2
 	conflicts = ceph-libs
 
 pkgname = ceph-mgr-bin
-	depends = ceph=17.2.5-1
-	depends = ceph-libs=17.2.5-1
+	depends = ceph=17.2.5-2
+	depends = ceph-libs=17.2.5-2
 	depends = bash
 	depends = boost-libs
 	depends = curl
@@ -99,7 +99,7 @@ pkgname = ceph-mgr-bin
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=17.2.5-1
+	provides = ceph-mgr=17.2.5-2
 	conflicts = ceph-mgr
 	options = emptydirs
 	options = !strip
