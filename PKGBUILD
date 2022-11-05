@@ -2,9 +2,9 @@
 
 pkgname=plainabout
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="plainDE about screen"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://plainde.org"
 license=(GPL3)
 depends=(qt6-base noto-fonts-emoji polkit ttf-opensans make plainbase)
