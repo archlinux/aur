@@ -4,7 +4,7 @@ _cranname=websocket
 _cranver=1.4.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="'WebSocket' Client Library"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" NOT_CRAN=true R --vanilla -q -f testthat.R
+  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
