@@ -2,7 +2,7 @@
 
 _pkgname=Ghidra-GameCube-Loader
 pkgname=ghidra-extension-gamecube-loader-git
-pkgver=1.1.4_1.r3.gf8c20a7
+pkgver=1.1.5.r0.gaf629bd
 pkgrel=1
 pkgdesc="A Nintendo GameCube binary loader for Ghidra"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache 2.0')
 provides=()
 conflicts=()
 depends=('ghidra')
-makedepends=('git' 'unzip')
+makedepends=('git' 'unzip' 'gradle')
 optdepends=()
 source=("$_pkgname::git+${url}")
 sha512sums=('SKIP')
@@ -29,8 +29,7 @@ build() {
   /opt/ghidra/support/sleigh -a data/languages
   chmod 0644 data/languages/*.sla
 
-  chmod +x gradlew
-  ./gradlew -PGHIDRA_INSTALL_DIR=/opt/ghidra
+  gradle -PGHIDRA_INSTALL_DIR=/opt/ghidra
 }
 
 package() {
