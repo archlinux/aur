@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index c1b03871..10802c6e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,8 +65,8 @@ build:
+ 	go build $(OUTPUT) -mod=vendor -v -tags "$(GO_BUILD_TAGS)" $(GO_BUILD_FLAGS) -ldflags "$(LDFLAGS) $(EXTRA_LDFLAGS) $(PLATFORM_SPECIFIC_LDFLAGS)" ./cmd/stash
+ 
+ # strips debug symbols from the release build
+-build-release: EXTRA_LDFLAGS := -s -w
+-build-release: GO_BUILD_FLAGS := -trimpath
++build-release: EXTRA_LDFLAGS := -s -w -linkmode=external
++build-release: GO_BUILD_FLAGS := -trimpath -buildmode=pie
+ build-release: build
+ 
+ build-release-static: EXTRA_LDFLAGS := -extldflags=-static -s -w

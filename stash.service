@@ -1,0 +1,12 @@
+[Unit]
+Description=Stash AV Media Server
+After=network.target local-fs.target
+
+[Service]
+User=stash
+EnvironmentFile=/etc/conf.d/stash
+Type=simple
+ExecStart=/usr/bin/stash --nobrowser --config /var/lib/stash/config.yaml
+
+[Install]
+WantedBy=multi-user.target

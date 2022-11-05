@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index fe7628a5..c1b03871 100644
+--- a/Makefile
++++ b/Makefile
+@@ -59,6 +59,7 @@ endif
+ # Windows easily from the Makefile.
+ build: pre-build
+ build:
++	$(eval LDFLAGS := -extldflags=$(LDFLAGS))
+ 	$(eval LDFLAGS := $(LDFLAGS) -X 'github.com/stashapp/stash/internal/api.version=$(STASH_VERSION)' -X 'github.com/stashapp/stash/internal/api.buildstamp=$(BUILD_DATE)' -X 'github.com/stashapp/stash/internal/api.githash=$(GITHASH)')
+ 	$(eval LDFLAGS := $(LDFLAGS) -X 'github.com/stashapp/stash/internal/manager/config.officialBuild=$(OFFICIAL_BUILD)')
+ 	go build $(OUTPUT) -mod=vendor -v -tags "$(GO_BUILD_TAGS)" $(GO_BUILD_FLAGS) -ldflags "$(LDFLAGS) $(EXTRA_LDFLAGS) $(PLATFORM_SPECIFIC_LDFLAGS)" ./cmd/stash
