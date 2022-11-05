@@ -6,15 +6,16 @@
 pkgbase=jack
 pkgname=(jack jack-docs)
 pkgver=0.126.0
-pkgrel=4
+_commit=1c7c1bada449fbfb876c952882351162e5455540  # refs/tags/0.126.0
+pkgrel=5
 pkgdesc="A low-latency audio server"
 arch=(x86_64)
 url="http://jackaudio.org/"
 license=(GPL LGPL)
 makedepends=(alsa-lib db celt doxygen git libffado libsamplerate)
 source=(
-  "$pkgbase::git+https://github.com/jackaudio/${pkgname}1.git#tag=${pkgver}?signed"
-  "git+https://github.com/jackaudio/headers"
+  $pkgbase::git+https://github.com/jackaudio/${pkgname}1.git#tag=$_commit?signed
+  git+https://github.com/jackaudio/headers
 )
 sha512sums=('SKIP'
             'SKIP')
@@ -33,19 +34,23 @@ _pick() {
 }
 
 prepare() {
-  cd "${pkgname}"
+  cd $pkgname
   git submodule init
-  git config submodule.jack.url "${srcdir}/headers"
-  git submodule update
+  git config submodule.jack.url "$srcdir/headers"
+  git -c protocol.file.allow=always submodule update
 
   autoreconf -fiv
 }
 
 build() {
-  cd "${pkgbase}"
-  ./configure --prefix=/usr \
-              --libdir=/usr/lib \
-              --with-html-dir=/usr/share/doc/jack
+  local configure_options=(
+  --prefix=/usr
+  --libdir=/usr/lib
+  --with-html-dir=/usr/share/doc/jack
+  )
+
+  cd $pkgbase
+  ./configure "${configure_options[@]}"
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
@@ -63,12 +68,12 @@ package_jack() {
   conflicts=(jack2 pipewire-jack)
   provides=(libjack.so libjackserver.so)
 
-  make DESTDIR="$pkgdir" install -C "${pkgbase}"
-  install -vDm 644 "${pkgbase}/"{AUTHORS,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
+  make DESTDIR="$pkgdir" install -C $pkgbase
+  install -vDm 644 $pkgbase/{AUTHORS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 
   (
-    cd "$pkgdir"
-    _pick jack-docs usr/share/doc/${pkgbase}/reference
+    cd $pkgdir
+    _pick jack-docs usr/share/doc/$pkgbase/reference
   )
 }
 
