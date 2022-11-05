@@ -4,14 +4,13 @@
 
 pkgbase='ceph'
 pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
-_zstdver=1.5.2
 pkgver=17.2.5
 pkgrel=2
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL')
-makedepends=("zstd=${_zstdver}" 'bash' 'bc' 'boost' 'boost-libs' 'bzip2' 'c-ares' 'cmake' 'coreutils' 'coffeescript'
+makedepends=('zstd' 'bash' 'bc' 'boost' 'boost-libs' 'bzip2' 'c-ares' 'cmake' 'coreutils' 'coffeescript'
              'cpio' 'crypto++' 'cryptsetup' 'cunit' 'curl' 'cython' 'expat'
              'fcgi' 'fontconfig' 'fuse2' 'fuse3' 'fmt' 'gcc' 'gcc-libs' 'git' 'glibc' 'gmock' 'gnutls'
              'gperf' 'gperftools' 'gptfdisk' 'gtest' 'hwloc' 'inetutils' 'java-runtime'
@@ -48,7 +47,6 @@ options=('emptydirs' '!lto')
 source=(
   "https://download.ceph.com/tarballs/${pkgbase}-${pkgver}.tar.gz"
   'ceph.sysusers'
-  "zstd-${_zstdver}.tar.gz::https://github.com/facebook/zstd/archive/v${_zstdver}.tar.gz"
   'ceph-13.2.2-dont-install-sysvinit-script.patch'
   'disable-empty-readable.sh-test.patch'
 
@@ -87,7 +85,6 @@ source=(
 )
 sha512sums=('10cd3d9eb01c91c148a92f1f7d040bbd78af5bb1ab15d071d93f54b37097dc9e1268eed9e788fe32794d137f6af81abd6a2aeaee39cef44d2c45234a15cc6020'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
-            'e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e'
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
             '3774cbc1a979ee8bf7138b96defcf69499444afe0b7186b21feac3453a3a5ec93741f5942d256d93999e9bc306c8d018206893e04e1a3eb9e03593105d9f5791'
@@ -141,10 +138,6 @@ prepare() {
     -e 's|Boost::|boost_|g' \
     -e 's|Boost_|boost_|g' \
     -e 's|[Bb]oost_boost|boost_system|g' -i || exit 1
-
-  # remove bundled zstd and replace with newer release
-  rm -rf src/zstd
-  ln -sf "${srcdir}/zstd-${_zstdver}" src/zstd
 
   # remove tests that require root privileges
   rm src/test/cli/ceph-authtool/cap*.t
