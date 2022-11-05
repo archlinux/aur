@@ -2,8 +2,8 @@
 
 _pkgname=pythonocc-core
 pkgname=python-${_pkgname#python}
-pkgver=7.5.1.r90.g141c53f7
-_commit=141c53f716ca4c138a6ddee2ce6ed1d3c28944e8
+pkgver=7.6.2
+_commit=09d3747dbf6384f94d83ff2171e09259567823ff
 pkgrel=1
 pkgdesc='Python package for 3D CAD/BIM/PLM/CAM'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('python' 'opencascade' 'libxmu' 'libxi')
 # rapidjson appears to be unused but an opencascade
 # header that references it gets dragged in somehow
-makedepends=('cmake' 'swig' 'rapidjson' 'git')
+makedepends=('cmake' 'swig' 'rapidjson' 'git' 'ninja')
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 source=("git+https://github.com/tpaviot/pythonocc-core#commit=$_commit")
 sha512sums=('SKIP')
@@ -24,21 +24,26 @@ pkgver() {
 
 prepare() {
   mv $_pkgname $_pkgname-$pkgver
-  mkdir $_pkgname-$pkgver/build
+  cd $_pkgname-$pkgver
+
+  # Compatibility with opencascade 7.6.3
+  git cherry-pick -n b4ddcf774549dbb3f89f4ca9f9c5db6c3c9ab48c
 }
 
 build() {
-  cd $_pkgname-$pkgver/build
+  cd $_pkgname-$pkgver
 
-  cmake .. \
+  cmake \
+    -Bbuild \
+    -GNinja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 
-  make
+  ninja -C build
 }
 
 package() {
-  cd $_pkgname-$pkgver/build
+  cd $_pkgname-$pkgver
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
