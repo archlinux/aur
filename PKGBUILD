@@ -1,7 +1,7 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 
 pkgname='linux-xanmod-headers-bin'
-pkgver='6.0.6'
+pkgver='6.0.7'
 pkgrel="1"
 pkgbase="$pkgname"
 pkgdesc='Headers and scripts for building modules for the Linux Xanmod - Prebuilt version'
@@ -18,7 +18,7 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('61b6c697ac485008a95dd19fe618c54b76fbc7467d3df4263188989307716ee1')
+sha256sums=('edcd5561aec63891c6ff5d8ffd36cc5532a0402de4656f81f6b682e7ebfc4f5b')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
