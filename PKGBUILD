@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-git
-pkgver=1.0.6694+0+gb558d7936
+pkgver=1.0.6770+0+g0e19bc9cd
 pkgrel=1
 pkgdesc="Jitsi Meet Web git build"
 arch=('any')
@@ -32,6 +32,7 @@ pkgver() {
 build() {
         cd "$pkgname"
         npm install # --no-package-lock
+        sed -i.bak 's!NODE_OPTIONS=--max-old-space-size=8192!NODE_OPTIONS="--openssl-legacy-provider --max-old-space-size=8192"!' Makefile
         make
         make source-package
 }
