@@ -1,11 +1,12 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
-
+#
 # PRs are welcome: https://github.com/yurikoles-aur/zfs-utils-git
+#
 
 pkgname=zfs-utils-git
-pkgver=2.1.99.r1446.g72c99dc959
+pkgver=2.1.99.r1548.gc23738c70e
 pkgrel=1
 epoch=2
 pkgdesc="Userspace utilities for the Zettabyte File System."
@@ -21,10 +22,10 @@ source=('git+https://github.com/openzfs/zfs.git'
         'zfs.initcpio.install'
         'zfs.initcpio.hook'
         'zfs.initcpio.zfsencryptssh.install')
-b2sums=('SKIP'
-        'f7c78e5a0ce887e89e5cdc52515381d647a51586cb05c52a900e1307520f6f0fa828f8f5fd5a30823b233dcd79f0496375b21d044103e1d765e20f728c2d0fee'
-        '4b041722b4f355c9fca300fc021e3e4a0ffbb649f61d1ad9efd2b5c6b83fa2ecf5e60243f6a40bd3962a9140403043b3951e38b4a2e86ec5b5f07501a058ba75'
-        '04e2af875e194df393d6cff983efc3fdf02a03a745d1b0b1e4a745f873d910b4dd0a45db956c1b5b2d97e9d5bf724ef12e23f7a2be3d5c12be027eaccf42349a')
+sha256sums=('SKIP'
+            'd19476c6a599ebe3415680b908412c8f19315246637b3a61e811e2e0961aea78'
+            '569089e5c539097457a044ee8e7ab9b979dec48f69760f993a6648ee0f21c222'
+            '93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51')
 
 pkgver() {
     cd zfs
@@ -46,6 +47,9 @@ build() {
         --sysconfdir=/etc \
         --sbindir=/usr/bin \
         --with-mounthelperdir=/usr/bin \
+        --libdir=/usr/lib \
+        --datadir=/usr/share \
+        --includedir=/usr/include \
         --with-udevdir=/usr/lib/udev \
         --libexecdir=/usr/lib/zfs \
         --enable-pyzfs \
@@ -58,14 +62,13 @@ build() {
 package() {
     cd zfs
     make DESTDIR="${pkgdir}" install
-
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
-    rm -r "${pkgdir}"/etc/sudoers.d #???
-    # We're experimenting with dracut in [extra], so start installing this.
-    #rm -r "${pkgdir}"/usr/lib/dracut
-    rm -r "${pkgdir}"/usr/lib/modules-load.d
     rm -r "${pkgdir}"/usr/share/initramfs-tools
+    rm -r "${pkgdir}"/usr/lib/modules-load.d
+    # fix permissions
+    chmod 750 ${pkgdir}/etc/sudoers.d
+    chmod 440 ${pkgdir}/etc/sudoers.d/zfs
 
     # Install the support files
     install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
