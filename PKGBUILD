@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('c79266768e10e80c32114bf9c9dfa5e3cf471c95f7eaf3cc268aeb44ff4f97e8')
+sha512sums=('cbfcb22170dcb8052e62078787e5c156ecdc27a1a0ad531f5c4ec8d3250ff88595a77dd47a80b02a7e5263303985135734f505fc0ee714210a61b43a85df3250')
 
 _sourcedirectory="$_projectname-$_commit"
 
