@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+export LOCALCFGPATH=$HOME/.config/arachnotron/
+export SYSTEMCFGPATH=/opt/arachnotron/
+export CFGDIRNAME=config/
+if test ! -d $LOCALCFGPATH
+then
+	mkdir -p $LOCALCFGPATH
+fi
+if test ! -d $LOCALCFGPATH/$CFGDIRNAME
+then
+	cp -r --no-preserve=mode,ownership $SYSTEMCFGPATH/$CFGDIRNAME $LOCALCFGPATH
+fi
+cd $LOCALCFGPATH
+$SYSTEMCFGPATH/arachnotron
