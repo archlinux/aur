@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-git
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 22.05.3.1.r438.g8b64de8238
+	pkgver = 22.05.5.1.r1233.gbfc106f0eb
 	pkgrel = 1
 	url = https://www.schedmd.com
 	arch = i686
@@ -27,10 +27,10 @@ pkgbase = slurm-llnl-git
 	optdepends = man2html: HTML versions of the man pages will be generated
 	optdepends = rrdtool: support for the ext_sensors/rrd plugin
 	optdepends = numactl: NUMA support in the task/affinity plugin
-	optdepends = ncurses: adds the smap command
+	optdepends = ncurses: ncurses interface in various utilities
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
 	optdepends = pmix: support Open MPI applications using PMIx
-	provides = slurm-llnl=22.05.3.1.r438.g8b64de8238
+	provides = slurm-llnl=22.05.5.1.r1233.gbfc106f0eb
 	conflicts = slurm-llnl
 	backup = etc/sysconfig/slurmd
 	backup = etc/sysconfig/slurmctld

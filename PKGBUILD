@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=22.05.3.1.r438.g8b64de8238
+pkgver=22.05.5.1.r1233.gbfc106f0eb
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,7 +23,7 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"man2html: HTML versions of the man pages will be generated"
 	"rrdtool: support for the ext_sensors/rrd plugin"
 	"numactl: NUMA support in the task/affinity plugin"
-	"ncurses: adds the smap command "
+	"ncurses: ncurses interface in various utilities"
 	"gtk2: enables the sview command, a simple graphical frontend"
 	"pmix: support Open MPI applications using PMIx")
 makedepends=('git' 'python' 'gtk2' 'hwloc' 'rrdtool' 'hdf5')
