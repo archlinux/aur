@@ -41,6 +41,7 @@ depends=(
 	'zstd'
 	'qt5-graphicaleffects'
 	'qt5-quickcontrols'
+	'qt5-quickcontrols2'
 )
 makedepends=('bash')
 optdepends=()
