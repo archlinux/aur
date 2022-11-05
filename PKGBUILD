@@ -18,7 +18,7 @@ optdepends=('djvulibre: djvu support'
             'poppler: PDF support')
 depends=('giflib' 'libjpeg-turbo' 'libexif' 'sdl' 'terminus-font')
 source=("https://download.savannah.gnu.org/releases/fbi-improved/${pkgname}-${pkgver}-${_pkgname}.tar.gz")
-sha256sums=('01e6def963f9a25c757b146605c38cc0323197f12f09624eb291b316c3cc202c')
+sha256sums=('SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}-${_pkgname}"
