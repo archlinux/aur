@@ -1,7 +1,7 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=bitburner
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitburner is a programming-based incremental game"
 arch=('x86_64')
 url="https://github.com/danielyxie/bitburner"
@@ -10,7 +10,7 @@ depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('steam: achievement support'
             'steam-native-runtime: achievement support')
-_commit='2d9a12202f00c85583f95b39fa3755104cb4cc3d'  # latest master
+_commit='b49cea10fa4a08fcc794fc328bb50a32c92ede1a'  # latest master
 source=("git+$url#commit=$_commit"
         "bitburner.desktop")
 sha256sums=('SKIP'
@@ -20,8 +20,11 @@ build() {
     cd "$pkgname"
 
     npm install
-    npm -C electron install
-    npm run build
+    npm install -C electron
+
+    # TODO: remove this once webpack supports new node crypto behaviour
+    # https://github.com/webpack/webpack/issues/14532
+    NODE_OPTIONS=--openssl-legacy-provider npm run build
 
     sh ./tools/package-electron.sh linux
 }
