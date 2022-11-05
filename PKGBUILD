@@ -3,7 +3,7 @@
 _pkgname='qbittorrent'
 pkgname=qbittorrent-qt5
 pkgver=4.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt5 toolkit and libtorrent-rasterbar'
 arch=(x86_64)
 url='https://www.qbittorrent.org'
