@@ -271,6 +271,9 @@ package_ceph() {
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
   install -Dm644 "${srcdir}/ceph.sysusers" \
     "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+  # logrotate
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/src/logrotate.conf" \
+    "${pkgdir}/etc/logrotate.d/ceph"
 
   # remove debian init script
   rm -rf "${pkgdir}/etc/init.d"
