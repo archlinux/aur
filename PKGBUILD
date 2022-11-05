@@ -16,7 +16,7 @@
 _phpbase="74"
 _suffix=""
 pkgver="7.4.33"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php74"
 pkgdesc="PHP 7.4.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -130,6 +130,7 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "openssl-sslv3-consts.patch"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
     "debian-php-7.4.patch"
@@ -201,6 +202,7 @@ makedepends=(
 arch=(
 )
 _patches=(
+    "openssl-sslv3-consts.patch"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
     "debian-php-7.4.patch"
@@ -1528,6 +1530,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
+            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             '0a3a6e8ff04ff1e0869befcf2c7bca4e886d94065da6d7a10b809a4750b961a0'
             '8fb103438fe12875dbe7c1f5b0899a81a76b4ce1456f16960e23e287d273df14'
             'ccaad50d9e855bebd9d98bec4db6085dde3446ecd68bdbb58c1d450e1f5aeab9'
