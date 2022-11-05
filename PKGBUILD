@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='hlsdl'
 pkgver='0.27'
 _commit='cbf4301a912a3c0bbb418bd92b861f390f9c519c'
@@ -9,7 +9,7 @@ url="https://github.com/selsta/$pkgname"
 license=('MIT')
 depends=('curl' 'openssl')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('fadc627f8695f71ca774ad728f85d230b40a22ddd1f28af4bfc81d0c68d916d1')
+sha512sums=('54b03ea793a08d409d7764ab9c7b40b7a925c2cce95dfd5efd701d45814f9824334d285641bb355f8d00d5f710aadf976d933428dd5c23f027190f8cc59ffc5a')
 
 _sourcedirectory="$pkgname-$_commit"
 
