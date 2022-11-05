@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Reddit gtk client"
 arch=('any')
 url="https://gitlab.gnome.org/World/giara"
@@ -25,14 +25,10 @@ optdepends=('ffmpeg: For video')
 provides=(redditgtk)
 conflicts=(redditgtk)
 replaces=(redditgtk)
-source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz" "gtk4.patch")
-sha256sums=('ec8a7c7cba8ae6b79cf36db7cefe1ee58f8818d04a7ff305773ba5a317fba88f'
-            'b5fe4b2164a076d43baa964a10aff78dcf281300ca6122ca7109e383cf21329e')
+source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('fc38e2cec5315e0abaeb1053b18984e7ded5526f026b435a799d63870a1e4c36')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver/"
-	patch -p1 < "$srcdir/gtk4.patch"
-
 	cd "$srcdir/$pkgname-$pkgver/$pkgname"
 
 	local _pver="$(python --version | sed "s/Python \(.*\)\..*/\1/")"
