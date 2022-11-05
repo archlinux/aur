@@ -27,6 +27,17 @@ pkgver() {
 }
 
 prepare() {
+  # Check if OpenJDK 17 executable is actually installed
+  if ! [ -f "/usr/lib/jvm/java-17-openjdk/bin/java" ]; then
+    echo "Error: OpenJDK 17 executable '/usr/lib/jvm/java-17-openjdk/bin/java' is missing."
+    sh -c "exit 1"
+  fi
+  # Check if FFmpeg executable is actually installed
+  if ! [ -f "/usr/bin/ffmpeg" ]; then
+    echo "Error: FFmpeg executable '/usr/bin/ffmpeg' is missing."
+    sh -c "exit 1"
+  fi
+
   # The size of a full clone is more than 1GB, so we just make a shallow clone
   # Fetching 1000 commits is hopefully enough to find the latest version tag
   rm -rf $pkgname
@@ -69,8 +80,8 @@ package() {
 
   # Link processing's internal java-command to the system's one
   mkdir -p "$pkgdir/usr/share/processing/java/bin/"
-  ln -s /usr/lib/jvm/java-17-openjdk/bin/java "$pkgdir/usr/share/processing/java/bin/java"
+  ln -s "/usr/lib/jvm/java-17-openjdk/bin/java" "$pkgdir/usr/share/processing/java/bin/java"
 
   # Link processing's internal ffmpeg-command to the system's one
-  ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/processing/tools/MovieMaker/tool/"
+  ln -s "/usr/bin/ffmpeg" "$pkgdir/usr/share/processing/tools/MovieMaker/tool/"
 }
