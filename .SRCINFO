@@ -1,0 +1,16 @@
+pkgbase = wireguard-tools-git
+	pkgdesc = next generation secure network tunnel - tools for configuration
+	pkgver = r467.139aac5
+	pkgrel = 1
+	url = https://www.wireguard.com/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	optdepends = openresolv: for DNS functionality
+	optdepends = sudo: elevate privileges
+	conflicts = wireguard-tools
+	source = git+https://github.com/WireGuard/wireguard-tools.git
+	sha256sums = SKIP
+
+pkgname = wireguard-tools-git
