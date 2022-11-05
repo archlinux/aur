@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 252.r60426.09925036cf
+	pkgver = 252.r60763.b6a23ad642
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -118,6 +118,8 @@ pkgname = systemd-git
 	depends = libp11-kit
 	depends = libp11-kit.so
 	depends = openssl
+	depends = libcrypto.so
+	depends = libssl.so
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
@@ -126,9 +128,9 @@ pkgname = systemd-git
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=252.r60426.09925036cf
-	provides = udev=252.r60426.09925036cf
-	provides = systemd=252.r60426.09925036cf
+	provides = systemd-tools=252.r60763.b6a23ad642
+	provides = udev=252.r60763.b6a23ad642
+	provides = systemd=252.r60763.b6a23ad642
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -166,7 +168,7 @@ pkgname = systemd-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=252.r60426.09925036cf
+	provides = systemd-libs=252.r60763.b6a23ad642
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -177,7 +179,7 @@ pkgname = systemd-resolvconf-git
 	depends = systemd-git
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=252.r60426.09925036cf
+	provides = systemd-resolvconf=252.r60763.b6a23ad642
 	conflicts = openresolv
 	conflicts = systemd-resolvconf
 
@@ -185,6 +187,6 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=252.r60426.09925036cf
+	provides = systemd-sysvcompat=252.r60763.b6a23ad642
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
