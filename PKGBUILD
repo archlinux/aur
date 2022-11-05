@@ -1,11 +1,11 @@
 pkgname=abctab2ps
-pkgver=1.8.21
+pkgver=1.8.22
 pkgrel=1
 pkgdesc="ABC notation editor"
 groups=(abc)
 source=(http://www.lautengesellschaft.de/cdmm/${pkgname}-${pkgver}.tar.gz)
 url="http://www.lautengesellschaft.de/cdmm/"
-sha256sums=('ea1576c05026b23aef2483f91e5e98d9bc93fcc0665576f7442337ca978af9de')
+sha256sums=('2cf1452be0f9d448d7d2331544781e40edd3171e966a6154e9e13cb4605446fc')
 arch=('i686' 'x86_64')
 license=('GPL')
 
