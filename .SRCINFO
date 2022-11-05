@@ -1,7 +1,7 @@
 pkgbase = tachidesk-qtui
 	pkgdesc = A free and open source manga read that runs extensions built for Tachiyomi
 	pkgver = 2022.10.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Suwayomi/Tachidesk-QtUI
 	arch = any
 	license = MIT

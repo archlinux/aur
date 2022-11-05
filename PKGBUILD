@@ -1,7 +1,7 @@
 # Maintainer: Norman Dubert <sfiveo13 at gmail dot com>
 pkgname=tachidesk-qtui
 pkgver=2022.10.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A free and open source manga read that runs extensions built for Tachiyomi"
 arch=(any)
 url="https://github.com/Suwayomi/Tachidesk-QtUI"
@@ -21,7 +21,7 @@ prepare() {
   git submodule init
   git config submodule.libs/SortFilterProxyModel.url "$srcdir/SortFilterProxyModel"
   git config submodule.libs/QmlBridgeForMaterialDesignIcons.url "$srcdir/QmlBridgeForMaterialDesignIcons"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   mkdir -p build
 }
 
