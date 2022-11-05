@@ -2,7 +2,7 @@
 
 pkgname=coin-or-couenne
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Convex Over and Under Envelopes for Nonlinear Estimation'
 arch=('x86_64')
 url="https://github.com/coin-or/Couenne/"
@@ -25,10 +25,10 @@ sha256sums=('73b36e7475910f576ca25f8323553b9d5201fcb2656cef0a2c72e69dc0681051')
 build() {
     cd "${srcdir}/Couenne-releases-${pkgver}"
     COIN_SKIP_PROJECTS="Sample" \
-    CXXFLAGS="${CXXFLAGS} -I/usr/include/coin -DCOIN_USE_MUMPS_MPI_H" \
+    CXXFLAGS="${CXXFLAGS} -std=c++11 -I/usr/include/coin -DCOIN_USE_MUMPS_MPI_H" \
     ./configure --prefix=/usr \
                 --with-asl-lib="$(pkg-config --libs coinasl)" \
-                --with-asl-incdir="/usr/include/coin/ThirdParty/" \
+                --with-asl-incdir="/usr/include/coin-or/asl/" \
                 --with-blas \
                 --with-blas-lib="$(pkg-config --libs blas)" \
                 --with-blas-incdir="/usr/include/" \

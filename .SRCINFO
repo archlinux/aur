@@ -1,7 +1,7 @@
 pkgbase = coin-or-couenne
 	pkgdesc = Convex Over and Under Envelopes for Nonlinear Estimation
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coin-or/Couenne/
 	arch = x86_64
 	groups = coin-or
@@ -21,4 +21,3 @@ pkgbase = coin-or-couenne
 	sha256sums = 73b36e7475910f576ca25f8323553b9d5201fcb2656cef0a2c72e69dc0681051
 
 pkgname = coin-or-couenne
-
