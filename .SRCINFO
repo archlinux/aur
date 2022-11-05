@@ -1,22 +1,19 @@
 pkgbase = audiorelay
 	pkgdesc = Stream your PC audio to your phone
 	pkgver = 0.26.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://audiorelay.net
 	arch = x86_64
 	license = unknown
 	depends = alsa-lib
 	depends = flac
 	depends = harfbuzz
-	depends = java-runtime=19
 	depends = libogg
 	depends = libpulse
 	depends = libvorbis
 	depends = libwrap
 	depends = libxau
 	depends = libxcb
-	depends = opus
-	depends = portaudio
 	depends = systemd-libs
 	depends = xdg-utils
 	source = https://dl.audiorelay.net/setups/linux/audiorelay-0.26.3.deb
