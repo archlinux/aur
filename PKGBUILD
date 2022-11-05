@@ -270,9 +270,11 @@ package_ceph() {
   # remove _test_ binaries from the package, not needed
   find "${pkgdir}/usr/bin" -maxdepth 1 -type f -iname 'ceph_test_*' -delete
 
-  # install tmpfiles.d and sysusers.d stuff
+  # install system config files
+  # tmpfiles
   install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/systemd/ceph.tmpfiles.d" \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
+  # sysusers
   install -Dm644 "${srcdir}/ceph.sysusers" \
     "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
   # logrotate
