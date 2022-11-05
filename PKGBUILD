@@ -1,6 +1,6 @@
 pkgname=xmltooling
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Shibboleth Project's XML processing library"
 url="https://wiki.shibboleth.net/confluence/display/OpenSAML/XMLTooling-C"
 license=(Apache)
