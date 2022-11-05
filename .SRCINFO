@@ -1,12 +1,13 @@
 pkgbase = emborg
 	pkgdesc = Front-end to Borg backup
 	pkgver = 1.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KenKundert/emborg
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-flit-core
 	depends = borg
 	depends = python-appdirs
 	depends = python-arrow
