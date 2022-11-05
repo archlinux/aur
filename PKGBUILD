@@ -2,8 +2,8 @@
 # Maintainer: sQVe <oskargrunning@gmail.com>
 
 pkgname=vimix-gtk-themes-translucent-git
-pkgver=r467.88ef6b7
-pkgrel=2
+pkgver=r491.945ffa1
+pkgrel=1
 pkgdesc='A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell, translucent version'
 url='https://github.com/vinceliuice/vimix-gtk-themes'
 arch=('any')
@@ -29,5 +29,5 @@ package() {
     cd "${_gitname}"
     install -dm755 "${pkgdir}/usr/share/themes"
     install -Dm755 ${srcdir}/vimix-gtk4-switch.sh "${pkgdir}/usr/bin/vimix-gtk4-switch"
-    ./install.sh -tweaks translucent -a -d "$pkgdir/usr/share/themes"
+    ./install.sh -tweaks translucent -t all -d "$pkgdir/usr/share/themes"
 }
