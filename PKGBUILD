@@ -274,6 +274,9 @@ package_ceph() {
   # logrotate
   install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/src/logrotate.conf" \
     "${pkgdir}/etc/logrotate.d/ceph"
+  # rbd udev rules
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/udev/50-rbd.rules" \
+    "${pkgdir}/etc/udev/rules.d/50-ceph-rbd.rules"
 
   # remove debian init script
   rm -rf "${pkgdir}/etc/init.d"
