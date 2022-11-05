@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _reponame='OSTRAJava'
 pkgname="${_reponame,,}"
 pkgver='1.1'
@@ -13,8 +13,8 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	"fix-lib-paths.diff"
 )
-sha256sums=('62fa69d5c0c9f1f9b4a742316b190e20dff72f4b87b36dff95c7e3260679f2e7'
-            '409f5b9d171d278aa50386e79f58b0f0a5370659999549b86c985fe1421bb026')
+sha512sums=('4acf1d9ec53f1af58022512b2d7e5427e9251f919709c4e010922bfdb934e1bc4eb37e9e33662eccca314f8971b594f0a603c308acf16070a284d963d13987b8'
+            '6b71abf24317df13e8ffb95e0199d20da27537ddeda5cc21c11d49e0217cf345ee4db1dcf53d81e66bb24b4b9db884e6a103cbaa15635616154be9651849c687')
 
 _sourcedirectory="$_reponame-$pkgver"
 
