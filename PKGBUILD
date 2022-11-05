@@ -11,6 +11,8 @@ conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 options=(!ccache)
 depends=('nvidia-utils')
+makedepends=('git')
+license=("custom:Public Domain")
 source=("git+https://github.com/CFSworks/nvml_fix.git"
 		"nvml-fix-install.hook"
 		"80-nvml-fix-upgrade.hook"
