@@ -5,12 +5,12 @@ pkgname="mongodb44-bin"
 pkgver="4.4.17"
 _basever="4.4"
 _basedist="focal"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("custom:SSPLv1")
-depends=(curl)
+depends=(curl openssl-1.1)
 makedepends=(chrpath)
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 provides=("mongodb=$pkgver")
