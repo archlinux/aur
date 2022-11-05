@@ -6,7 +6,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=106.0.3
+pkgver=106.0.5
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('6f7cc633d75872cb8776feefafcec20becb448359bd591f8204a21fd4b845f8e'
+sha256sums=('9471a7610d0adc350f14c363f1fcd2e15a85f22744f5850604af01aa844bc8a8'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
