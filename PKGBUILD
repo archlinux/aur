@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-tip-git
-pkgver=6.0.r1125281.9b0703cc01a5
+pkgver=6.1.r1137478.b4169c84bf30
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
@@ -16,13 +16,13 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname="${pkgbase}"
+_srcname=$pkgbase
 source=(
   "$_srcname::git://anongit.freedesktop.org/drm-tip#branch=${_branch}"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '6ed43ed093ec7dcbbac286edc204873edfa77e380ac43c8cc2f40b2965ac1aa3')
+            '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6')
 
 pkgver() {
   cd $_srcname
