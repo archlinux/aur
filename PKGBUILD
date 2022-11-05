@@ -3,7 +3,7 @@
 # Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver
-pkgver=7.6.4
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'li
 makedepends=('cfitsio')
 options=()
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('892c3ec0668124bde1078e6ef516750b')
+md5sums=('47fa5198c3037ffbf1124984240ea853')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -38,6 +38,7 @@ build() {
   -DCMAKE_PREFIX_PATH=/opt/v8 \
   -DWITH_CAIRO=ON \
 	-DWITH_CLIENT_WFS=ON \
+	-DWITH_OGCAPI=ON \
 	-DWITH_CLIENT_WMS=ON \
 	-DWITH_CSHARP=OFF \
 	-DWITH_CURL=ON \
@@ -57,12 +58,9 @@ build() {
 	-DWITH_ORACLESPATIAL=OFF \
 	-DWITH_ORACLE_PLUGIN=OFF \
 	-DWITH_PERL=OFF \
-	-DWITH_PHP=OFF \
-	-DWITH_POINT_Z_M=ON \
 	-DWITH_POSTGIS=ON \
 	-DWITH_GIF=ON \
 	-DWITH_PYTHON=ON \
-	-DPYTHON_EXECUTABLE=/usr/bin/python \
 	-DWITH_RSVG=OFF \
 	-DWITH_RUBY=OFF \
 	-DWITH_SOS=ON \
@@ -86,7 +84,11 @@ package() {
   make DESTDIR=${pkgdir} install
   
   #Copy the headers a include for ZooWPS project
-  install -d "$pkgdir"/usr/include/mapserver  
+  install -d "$pkgdir"/usr/include/mapserver
+  install -d "$pkgdir"/usr/share/mapserver
+  install -d "$pkgdir"/opt/mapserver/test/
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/build/*.h "$pkgdir"/usr/include/mapserver/
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/*.h "$pkgdir"/usr/include/mapserver/
+  cp -rfv "${srcdir}/${pkgname}-${pkgver}"/share/ogcapi "$pkgdir"/usr/share/mapserver
+  cp -rfv "${srcdir}/${pkgname}-${pkgver}"/tests/* "$pkgdir"/opt/mapserver/test
 }
