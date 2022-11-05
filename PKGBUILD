@@ -117,10 +117,6 @@ prepare() {
     fi
   done
 
-  # mypy complains about this but the exception is handled; not sure what's up
-  sed -i 's/from base64 import encodestring$/&  # type: ignore/' \
-    src/pybind/mgr/dashboard/awsauth.py
-
   # suppress deprecation warnings
   sed -i '/#ifndef CEPH_CONFIG_H/i#define BOOST_ALLOW_DEPRECATED_HEADERS' \
     src/common/config.h
