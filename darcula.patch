@@ -91,6 +91,18 @@ index 9b1e6199e..642f00686 100644
  	}
  
  	private static String findLookAndFeelClassName(String lookAndFeelName) {
+diff --git a/Ghidra/RuntimeScripts/Common/support/launch.properties b/Ghidra/RuntimeScripts/Common/support/launch.properties
+index b0565ab80..d50fa4d6b 100644
+--- a/Ghidra/RuntimeScripts/Common/support/launch.properties
++++ b/Ghidra/RuntimeScripts/Common/support/launch.properties
+@@ -71,6 +71,7 @@ VMARGS=-Xshare:off
+ 
+ # Permit "illegal reflective accesses" to enable JDK compatibility with Ghidra and 3rd party jars.
+ VMARGS=--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED
++VMARGS=--add-opens=java.desktop/sun.swing=ALL-UNNAMED
+ 
+ # Persistent cache directory used by the application.  This directory will be used to store 
+ # persistent application caches for all users.  The default location for Mac/Linux is the same as 
 diff --git a/gradle/root/distribution.gradle b/gradle/root/distribution.gradle
 index f44c8267b..b5a6d1688 100644
 --- a/gradle/root/distribution.gradle

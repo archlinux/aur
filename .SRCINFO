@@ -1,7 +1,7 @@
 pkgbase = ghidra-darcula
 	pkgdesc = Software reverse engineering framework (with dark theme)
 	pkgver = 10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ghidra-sre.org
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,6 @@ pkgbase = ghidra-darcula
 	sha512sums = 4cf019d5bfde5265d667400111fb0c2473caa2457756c9c73e33d6128da3b116bf8d1b8cbb4092bbe27ea65ea5ab46f922e05a1e53ff36b90f76d8fcc4bfc1e7
 	sha512sums = c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3
 	sha512sums = 0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401
-	sha512sums = b28edc15f99e6f6aacd844b6983ea23946c8479599a34c1254c1457235ae983951f4b4a2081fc7b937e83946dac948955136e06f7cc62dd5ddc9713e4463ab9a
+	sha512sums = 86f7290a7380705666f807f825aa2db6d4ff59cbbda319e2467cdb13fa96143f65cd9f37e9150f5f0b984a8ecf26874f251e1b3830d2ff13bb96bfa171de9316
 
 pkgname = ghidra-darcula
