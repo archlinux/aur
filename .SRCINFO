@@ -1,6 +1,6 @@
 pkgbase = evince-no-gnome
 	pkgdesc = Document viewer, no gnome dependencies
-	pkgver = 42.3
+	pkgver = 43.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evince
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = evince-no-gnome
 	conflicts = libevdocument3.so
 	conflicts = libevview3.so
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/evince.git#commit=0ff17893679b05e7635e76e5c77384995b802f81
+	source = git+https://gitlab.gnome.org/GNOME/evince.git#commit=47461d6dfbf2bb5d183f8db5dc43d205b68241e6
 	sha256sums = SKIP
 
 pkgname = evince-no-gnome
