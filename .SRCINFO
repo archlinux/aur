@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openssl3
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)
-	pkgver = 3.0.5
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = any
@@ -14,11 +14,12 @@ pkgbase = mingw-w64-openssl3
 	options = staticlibs
 	options = !buildflags
 	options = !lto
-	source = https://www.openssl.org/source/openssl-3.0.5.tar.gz
-	source = https://www.openssl.org/source/openssl-3.0.5.tar.gz.asc
-	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+	source = https://www.openssl.org/source/openssl-3.0.7.tar.gz
+	source = https://www.openssl.org/source/openssl-3.0.7.tar.gz.asc
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
-	sha256sums = aa7d8d9bef71ad6525c55ba11e5f4397889ce49c2c9349dcea6d3e4f0b024a7a
+	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+	validpgpkeys = A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C
+	sha256sums = 83049d042a260e696f62406ac5c08bf706fd84383f945cf21bd61e9ed95c396e
 	sha256sums = SKIP
 
 pkgname = mingw-w64-openssl3
