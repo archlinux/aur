@@ -1,18 +1,20 @@
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=davfs2
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="File system driver that allows you to mount a WebDAV folder"
 arch=(x86_64)
-url="https://savannah.nongnu.org/projects/davfs2"
+url="https://savannah.nongnu.org/projects/${pkgname}"
 license=('GPL')
 depends=('neon')
-backup=(etc/davfs2/davfs2.conf etc/davfs2/secrets)
-source=(https://mirror.easyname.at/nongnu/davfs2/${pkgname}-${pkgver}.tar.gz{,.sig})
-validpgpkeys=('B25A637BD5625AE122CF4654C1F5593399D2A26E') # Werner Baumann
-sha256sums=('ce3eb948ece582a51c934ccb0cc70e659839172717caff173f69a5e2af90c5c0'
-            'SKIP')
+backup=(etc/${pkgname}/${pkgname}.conf etc/${pkgname}/secrets)
+source=(https://mirror.easyname.at/nongnu/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.sig})
+validpgpkeys=('51A0F4A0C8CFC98F842EA9A8B94556F81C85D0D5') # Ali Abdallah <aabdallah@suse.com>
+sha512sums=('6ee5820b60ed28ad100949bb4db65ea07bbae1ad0128cd35e7bb69f7f6bdde99606e8cf704ddb197f1400abadc3934d34ab85f298f9100b6ea9e60813c2345f2'
+  'SKIP')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -23,8 +25,4 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-
-  # This directory contains worthless symlinks
-  rm -r "${pkgdir}"/sbin
-  rm -f "${pkgdir}"/usr/share/davfs2/{BUGS,COPYING,FAQ,NEWS,TODO,ChangeLog,GPL,README,THANKS}
 }
