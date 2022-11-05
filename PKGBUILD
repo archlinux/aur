@@ -24,6 +24,17 @@ sha256sums=('22e4cd253b0db58e2d6cbec64f3765fa76ab6a7d3d7741035421ff8d49e619dd'
             'f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64')
 
 prepare() {
+  # Check if OpenJDK 17 executable is actually installed
+  if ! [ -f "/usr/lib/jvm/java-17-openjdk/bin/java" ]; then
+    echo "Error: OpenJDK 17 executable '/usr/lib/jvm/java-17-openjdk/bin/java' is missing."
+    sh -c "exit 1"
+  fi
+  # Check if FFmpeg executable is actually installed
+  if ! [ -f "/usr/bin/ffmpeg" ]; then
+    echo "Error: FFmpeg executable '/usr/bin/ffmpeg' is missing."
+    sh -c "exit 1"
+  fi
+
   # Symbolic link for not having to repeat the revision number
   ln -sf "${pkgname}4-processing-$((1285+${pkgver##4.0.}))-$pkgver" $pkgname
 
@@ -64,8 +75,8 @@ package() {
 
   # Link processing's internal java-command to the system's one
   mkdir -p "$pkgdir/usr/share/processing/java/bin/"
-  ln -s /usr/lib/jvm/java-17-openjdk/bin/java "$pkgdir/usr/share/processing/java/bin/java"
+  ln -s "/usr/lib/jvm/java-17-openjdk/bin/java" "$pkgdir/usr/share/processing/java/bin/java"
 
   # Link processing's internal ffmpeg-command to the system's one
-  ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/processing/tools/MovieMaker/tool/"
+  ln -s "/usr/bin/ffmpeg" "$pkgdir/usr/share/processing/tools/MovieMaker/tool/"
 }
