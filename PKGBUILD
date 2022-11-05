@@ -15,7 +15,6 @@ source=(
   "${pkgname}.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/${pkgver}.zip"
 )
 
-options=("!buildflags")
 md5sums=('e55d892233a5bfedeab4b696a07cc431')
 
 build () {
