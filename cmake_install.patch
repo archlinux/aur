@@ -1,0 +1,86 @@
+diff -rupN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-04-23 16:34:08.000000000 -0700
++++ b/CMakeLists.txt	2021-12-27 15:34:25.764905166 -0800
+@@ -330,6 +330,50 @@ add_library(webm ${libwebm_common_source
+             $<TARGET_OBJECTS:mkvmuxer>
+             $<TARGET_OBJECTS:mkvparser>)
+ 
++install(
++    TARGETS webm
++    RUNTIME DESTINATION bin
++    ARCHIVE DESTINATION lib
++    LIBRARY DESTINATION lib
++)
++
++install(
++  FILES
++    mkvmuxer.hpp
++    mkvmuxertypes.hpp
++    mkvmuxerutil.hpp
++    mkvparser.hpp
++    mkvreader.hpp
++    mkvwriter.hpp
++    webmids.hpp
++  DESTINATION
++    include/libwebm
++)
++
++install(
++  DIRECTORY mkvmuxer/
++  DESTINATION include/libwebm/mkvmuxer
++  FILES_MATCHING PATTERN "*.h"
++)
++
++install(
++  DIRECTORY mkvparser/
++  DESTINATION include/libwebm/mkvparser
++  FILES_MATCHING PATTERN "*.h"
++)
++
++install(
++  DIRECTORY webvtt/
++  DESTINATION include/libwebm/webvtt
++  FILES_MATCHING PATTERN "*.h"
++)
++
++install(
++  DIRECTORY common/
++  DESTINATION include/libwebm/common
++  FILES_MATCHING PATTERN "*.h"
++)
++
+ if (WIN32)
+   # Use libwebm and libwebm.lib for project and library name on Windows (instead
+   # webm and webm.lib).
+@@ -337,18 +381,22 @@ if (WIN32)
+   set_target_properties(webm PROPERTIES PREFIX lib)
+ endif ()
+ 
+-add_executable(mkvparser_sample ${mkvparser_sample_sources})
+-target_link_libraries(mkvparser_sample LINK_PUBLIC webm)
++if (ENABLE_SAMPLES)
++  add_executable(mkvparser_sample ${mkvparser_sample_sources})
++  target_link_libraries(mkvparser_sample LINK_PUBLIC webm)
+ 
+-add_executable(mkvmuxer_sample ${mkvmuxer_sample_sources}
+-               $<TARGET_OBJECTS:webvtt_common>)
+-target_link_libraries(mkvmuxer_sample LINK_PUBLIC webm)
++  add_executable(mkvmuxer_sample ${mkvmuxer_sample_sources}
++                 $<TARGET_OBJECTS:webvtt_common>)
++  target_link_libraries(mkvmuxer_sample LINK_PUBLIC webm)
++endif()
+ 
+-add_executable(dumpvtt ${dumpvtt_sources} $<TARGET_OBJECTS:webvtt_common>)
+-target_link_libraries(dumpvtt LINK_PUBLIC webm)
++if (ENABLE_TOOLS)
++  add_executable(dumpvtt ${dumpvtt_sources} $<TARGET_OBJECTS:webvtt_common>)
++  target_link_libraries(dumpvtt LINK_PUBLIC webm)
+ 
+-add_executable(vttdemux ${vttdemux_sources})
+-target_link_libraries(vttdemux LINK_PUBLIC webm)
++  add_executable(vttdemux ${vttdemux_sources})
++  target_link_libraries(vttdemux LINK_PUBLIC webm)
++endif()
+ 
+ if (ENABLE_WEBMINFO)
+   add_executable(webm_info ${webm_info_sources})

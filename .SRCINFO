@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libwebm
+	pkgdesc = WebM video file parser
+	pkgver = 1.0.0.28
+	pkgrel = 1
+	url = https://www.webmproject.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/webmproject/libwebm/archive/libwebm-1.0.0.28.tar.gz
+	source = cmake_install.patch
+	sha256sums = 4df11d93260d3cd9f17c3697b0828d38400a8f87082183368df6a1ae7a9fc635
+	sha256sums = 8041827dc63d45c65af9870f2a7958a4be81db8da511f440f89aded8d29d8ca8
+
+pkgname = mingw-w64-libwebm
