@@ -1,6 +1,6 @@
 # Maintainer: Fabian Klötzl <fabian-aur@kloetzl.info>
 pkgname=libdna
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Essential Functions for DNA Manipulation"
 url="https://github.com/kloetzl/libdna/"
@@ -9,8 +9,8 @@ depends=()
 arch=("i686" "x86_64")
 makedepends=("meson")
 checkdepends=()
-source=("https://github.com/kloetzl/libdna/archive/refs/tags/v1.2.tar.gz")
-md5sums=('53c43a314228272a476d31693b686a8c')
+source=("https://github.com/kloetzl/libdna/archive/refs/tags/v1.3.tar.gz")
+sha256sums=('f9170d360e3d40d3f6ba1a3e2ce4822662cb8c6e4392397f8bb8a4a0e9529694')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

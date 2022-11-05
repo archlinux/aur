@@ -1,13 +1,13 @@
 pkgbase = libdna
 	pkgdesc = Essential Functions for DNA Manipulation
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/kloetzl/libdna/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = meson
-	source = https://github.com/kloetzl/libdna/archive/refs/tags/v1.2.tar.gz
-	md5sums = 53c43a314228272a476d31693b686a8c
+	source = https://github.com/kloetzl/libdna/archive/refs/tags/v1.3.tar.gz
+	sha256sums = f9170d360e3d40d3f6ba1a3e2ce4822662cb8c6e4392397f8bb8a4a0e9529694
 
 pkgname = libdna
