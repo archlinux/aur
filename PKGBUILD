@@ -2,7 +2,7 @@
 # Maintainer: Arsen Musyaelyan <arsen@arsenm.dev>
 
 pkgname='lure-bin'
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
@@ -12,17 +12,17 @@ provides=('lure')
 conflicts=('lure')
 depends=('sudo' 'pacman')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.2/lure_0.0.2_linux_aarch64.tar.gz")
-sha256sums_aarch64=('8a3da8fa9dd489208868110208c3597ee03bbac2cc0fb14eb6741b9974419821')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.3/lure_0.0.3_linux_aarch64.tar.gz")
+sha256sums_aarch64=('6625ae76899b7cd27e202c81245399e02cd5d2c5e06de92da6e12670144a9890')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.2/lure_0.0.2_linux_armv6.tar.gz")
-sha256sums_armv6h=('29f6613b1875c5c79ded4a0aae28793a8b84074c62c22c83cff09bc54cd1f271')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.3/lure_0.0.3_linux_armv6.tar.gz")
+sha256sums_armv6h=('1a31a6256aea5babae0318a05934dd15620df8a4b2bb06998e4417031e470d91')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.2/lure_0.0.2_linux_i386.tar.gz")
-sha256sums_i686=('d0866e869dba79a71ef51fb510085e87bc5e4a679312672422a99db2bcaab35c')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.3/lure_0.0.3_linux_i386.tar.gz")
+sha256sums_i686=('869ba223fafedd53466f51fc0813d622d2ce35b6ceef7e9bb75e59619a19645e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.2/lure_0.0.2_linux_x86_64.tar.gz")
-sha256sums_x86_64=('796063a1689c8687977377b8fd0bff31bc76a1a946960608a4fe7e5f7cc08752')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.3/lure_0.0.3_linux_x86_64.tar.gz")
+sha256sums_x86_64=('e584f547c1a184b714033fad8ede28382a4bf5e16b063a29781344713cbd6e81')
 
 package() {
   # binaries
