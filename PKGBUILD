@@ -5,12 +5,12 @@ pkgname="mongodb-bin"
 pkgver="6.0.2"
 _basever="6.0"
 _basedist="focal"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("custom:SSPLv1" "Apache")
-depends=(mongosh-bin curl)
+depends=(mongosh-bin curl openssl-1.1)
 makedepends=(chrpath)
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 provides=("mongodb=$pkgver")

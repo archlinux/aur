@@ -10,6 +10,7 @@ pkgbase = mongodb-bin
 	makedepends = chrpath
 	depends = mongosh-bin
 	depends = curl
+	depends = openssl-1.1
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
 	provides = mongodb=6.0.2
 	conflicts = mongodb
