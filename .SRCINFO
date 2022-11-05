@@ -1,19 +1,19 @@
 pkgbase = carapace-bin
 	pkgdesc = multi-shell multi-command argument completer
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/rsteube/carapace-bin
 	license = MIT
 	conflicts = carapace
 	provides = carapace
 	arch = aarch64
-	source_aarch64 = https://github.com/rsteube/carapace-bin/releases/download/v0.17.1/carapace-bin_0.17.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 5b67cd76ca24de95b7cc7eab20cf70339f882cace05b58bcc679ee78d09e5738
+	source_aarch64 = https://github.com/rsteube/carapace-bin/releases/download/v0.18.0/carapace-bin_0.18.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8b067b08e6a6a67b83bb4e537fe75d4b795b9a4ebdc3950e4f05a9ea7b1af8d2
 	arch = i686
-	source_i686 = https://github.com/rsteube/carapace-bin/releases/download/v0.17.1/carapace-bin_0.17.1_Linux_i386.tar.gz
-	sha256sums_i686 = a482c9018cafb41c747d2ec5edcfa9f8e2ae186d84a5adf706f7b4fd1ea22211
+	source_i686 = https://github.com/rsteube/carapace-bin/releases/download/v0.18.0/carapace-bin_0.18.0_Linux_i386.tar.gz
+	sha256sums_i686 = e5d1aa3dc0635a326dc39b96514736f8b5739cd7a0843830f8487f36c6f91dde
 	arch = x86_64
-	source_x86_64 = https://github.com/rsteube/carapace-bin/releases/download/v0.17.1/carapace-bin_0.17.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ecc2ed445244d8d60784742c081e7373048db5ee278cf5c9bffbf4bfeed2cb5b
+	source_x86_64 = https://github.com/rsteube/carapace-bin/releases/download/v0.18.0/carapace-bin_0.18.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 207c35ccd4fb40ffbb49e74307aa56242e57ed67c3726f913217e3a33f5c6aa8
 	
 pkgname = carapace-bin
