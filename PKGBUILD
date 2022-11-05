@@ -3,30 +3,30 @@
 pkgname=malachite
 _pkgname=mlc
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for packaging and maintaining pacman repositories'
 arch=('x86_64' 'aarch64')
-url="https://github.com/crystal-linux/malachite"
+url="https://git.getcryst.al/crystal/software/${pkgname}"
 license=('GPL3')
 depends=('git' 'pacman-contrib' 'gnupg')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('187992fe21bbb6373d4af8ec39c23e75c63725b00ff762b162e70bd4d49ae6c1')
+source=("${pkgname}-${pkgver}::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha256sums=('1099ea27ffd0cead66458e5f4a0c36939f7b560844fa1ab8f678ede4d792c2f9')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-v${pkgver}"
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-v${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-v${pkgver}"
     install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
     install -Dm 644 docs/COMMON_FEATURES.md "${pkgdir}/usr/share/doc/${_pkgname}/COMMON_FEATURES.md"
