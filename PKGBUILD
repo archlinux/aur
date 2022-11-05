@@ -117,11 +117,6 @@ prepare() {
     fi
   done
 
-  # temporarily disable unsubscriptable-object (buggy on Python 3.9)
-  # https://github.com/PyCQA/pylint/issues/3882
-  sed -i '/^disable=/a\        unsubscriptable-object,' \
-    src/pybind/mgr/dashboard/.pylintrc
-
   # mypy complains about this but the exception is handled; not sure what's up
   sed -i 's/from base64 import encodestring$/&  # type: ignore/' \
     src/pybind/mgr/dashboard/awsauth.py
