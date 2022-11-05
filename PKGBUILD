@@ -16,7 +16,7 @@
 _phpbase="73"
 _suffix=""
 pkgver="7.3.33"
-pkgrel="7"
+pkgrel="8"
 pkgbase="php73"
 pkgdesc="PHP 7.3.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -133,6 +133,7 @@ source=(
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "php71-phar-names.patch"
+    "openssl-sslv3-consts.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
     "mysql-socket-php7.1.patch"
@@ -211,6 +212,7 @@ arch=(
 )
 _patches=(
     "php71-phar-names.patch"
+    "openssl-sslv3-consts.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
     "mysql-socket-php7.1.patch"
@@ -304,7 +306,7 @@ _phpconfig="\
     --libdir=/usr/lib/php${_phpbase}${_suffix} \
     --datadir=/usr/share/php${_phpbase}${_suffix} \
     --program-suffix=${_phpbase}${_suffix} \
-    --with-config-file-scan-dir=/${_build_conf_d}
+    --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
     --with-pear \
     --enable-session \
@@ -1546,6 +1548,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
             'ee6529d441b2446d784e80aba23aa956541e541bd73ad54aee480d4a1a6117ca'
+            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             'd175f0c14fdb22855090c93f76e18f04320d7bf15afc057ffde947f9bb361242'
             'f5ae925036744a5e88cea2698879aea0498e1e23aee7801923d90f16be383908'
             '0a3a6e8ff04ff1e0869befcf2c7bca4e886d94065da6d7a10b809a4750b961a0'
