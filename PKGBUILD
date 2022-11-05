@@ -3,8 +3,8 @@
 
 _name=img4tool
 pkgname=$_name-git
-pkgver=r185.fc1ccfe
-pkgrel=1
+pkgver=r197.aca6cf0
+pkgrel=2
 pkgdesc='Tool for manipulating IMG4, IM4M and IM4P files'
 arch=('x86_64')
 url="https://github.com/tihmstar/$_name"
