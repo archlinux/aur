@@ -2,22 +2,22 @@
 
 _basename=gssdp
 pkgname=lib32-gssdp
-pkgver=1.4.0.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A GObject-based API for handling resource discovery and announcement over SSDP (32-bit)"
 arch=(x86_64)
 url="http://gupnp.org/"
 license=(LGPL)
-depends=(lib32-libsoup gssdp)
+depends=(lib32-libsoup3 gssdp)
 makedepends=(git meson vala)
-_commit=4e742a15cde4c330828d17c14185080cd7a6e9a0 # tags/gssdp-1.4.0.1^0
+_commit=6eeaf27aec6ff11f325ff633b52bd56dbc1435aa # tags/gssdp-1.6.0^0
 source=("git+https://git.gnome.org/browse/gssdp#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
     cd $_basename
 
-    git describe --tags | sed 's/^gssdp-//;s/-/+/g'
+    git describe --tags | sed 's/^gssdp-//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
