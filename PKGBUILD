@@ -1,16 +1,16 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=milcheck
-pkgver=0.2.7
+pkgver=0.2.9
 pkgrel=1
-pkgdesc="A simple program that displays the status of your pacman mirrorlist and the Arch Linux lastest news right in your terminal"
+pkgdesc="A simple CLI that displays the status of your pacman mirrorlist and the Arch Linux latest news right in the terminal"
 arch=('x86_64')
 url="https://github.com/doums/milcheck"
 license=('MPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/doums/milcheck/archive/refs/tags/v$pkgver.tar.gz")
 depends=('openssl' 'gcc-libs')
 makedepends=('rust' 'cmake')
-sha256sums=('99afc354fc7f1a10abae746e45d040793d5ff73a7dfbe5ec9d1ec7d99e6f4649')
+sha256sums=('257d456bf6a166871207a8c9cb1382f5da0234c2372f5bfa9ec2694011f815c5')
 
 build() {
   cd "$pkgname-$pkgver"
