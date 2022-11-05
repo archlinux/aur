@@ -1,6 +1,6 @@
 pkgbase = git-dumper-git
 	pkgdesc = A tool to dump a git repository from a website
-	pkgver = r49.5036099
+	pkgver = r56.32d47a2
 	pkgrel = 1
 	url = https://github.com/arthaud/git-dumper
 	arch = any

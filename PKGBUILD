@@ -2,7 +2,7 @@
 
 pkgname=git-dumper-git
 _pkgname=git-dumper
-pkgver=r49.5036099
+pkgver=r56.32d47a2
 pkgrel=1
 pkgdesc="A tool to dump a git repository from a website"
 arch=('any')
@@ -21,12 +21,7 @@ pkgver() {
   )
 }
 
-build() {
-  cd "$srcdir/$_pkgname"
-  python setup.py build
-}
-
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m pip install --root="$pkgdir" .
 }
