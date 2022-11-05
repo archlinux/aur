@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certbot-dns-vultr'
 pkgver='20190506'
 _commit='5acb7e2b6d66f21decb3a37ed0d7ec808eefe844'
@@ -13,8 +13,8 @@ source=(
 	'vultr-hook.py'
 	'LICENSE'
 )
-sha256sums=('43c495691b0eb56d11f1d63beb6ecd5d24c8b7c4919af1282db1d3269c551e0f'
-            '64d6e8ad6b22d73c7df31f140996f0f0356d1837199f048d3d544c032ad9823e')
+sha512sums=('bed005e71fee528dc8a2f96d9012f73a65571b5ce137eb38a361662076c6d50c6ed2d6fb65fead411f6cfd6203c98f93687e422fe78ff5fe410df040d8028d72'
+            '3be99701a9cd1575f3d6a2e57769f1e507f75af9b09e23882a663415db8c569d10e2f4a7dd321df51571cc23c87e331b347f09bc8cf9fea86a09c191b7b54ee7')
 
 package() {
 	cd "$srcdir/"
