@@ -6,7 +6,7 @@
 
 pkgname=mastodon
 pkgver=3.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(x86_64)
 url=https://github.com/mastodon/mastodon
@@ -42,6 +42,7 @@ prepare() {
   cd mastodon-$pkgver
 
   echo "gem 'psych', '< 4'" >> Gemfile
+  sed -i "s/gem 'webauthn', '~> 3.0.0.alpha1'/gem 'webauthn', '~> 3.0.0.alpha2'/g" Gemfile
 }
 
 build() {
