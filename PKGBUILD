@@ -1,6 +1,6 @@
 # Maintainer: Kyle Brown <kdb424@gmail.com>
 pkgname=pmm-git
-pkgver=r30.5f0fcbd
+pkgver=r33.81af692
 _pkgname=pmm
 pkgrel=1
 pkgdesc="Emulating Gentoo’s world files and sets for other package managers."
