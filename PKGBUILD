@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='tarnation'
 pkgver='1.2.0'
 _commit='c5d8a17650b0b26e7d52ef4b274fea8d87c5c8b8'
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/kennyparsons/$pkgname"
 license=('GPL3')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('71fc0b90e733807cd836f6376d1e60980f797f48112157bf526984c7f61ec543')
+sha512sums=('db07ca1c535bd901c7ccb6909d1738377372349d472297cb726aff9b79baa2cf66489edb82b0cf4a068c7ca2a26c8ca992d1f1b5aa76af55344417cc8b49121f')
 
 package() {
 	install -Dm755 "$srcdir/$pkgname-$_commit/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
