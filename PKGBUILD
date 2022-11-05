@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.3.0_devel.161999.fb58cb2882f.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.4.0_devel.162357.dd6c3c2d9f9.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -89,7 +89,6 @@ build () {
        -D platforms=auto \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
        -D vulkan-drivers=auto \
-       -D vulkan-rt-drivers=auto \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
        -D egl=enabled \
