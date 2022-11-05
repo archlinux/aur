@@ -2,26 +2,26 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.3.3
-pkgrel=3
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
-makedepends=('auth-tarball-from-git' 'git' 'go' 'pandoc')
+makedepends=('git' 'go' 'pandoc') # 'auth-tarball-from-git'
 optdepends=('bash-completion: for bash completions'
             'fzf: Fuzzy Finder integration for bash-completion')
 conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
-_commit=ff3e2f2fcd85b8420243559ceaebfddb761fec36
+_commit=a005739f3cd402e015a6129c36e7c2b4911ae657
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'chris.pgp' # Christopher Allen Lane <chris@chris-allen-lane.com>
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git#commit=$_commit")
-sha256sums=('6a1739b71d436f45dc7c028ec79863a34e30cc13da7159bf23604b77f43faaf2'
+sha256sums=('8694d75896dcb1dfb91ed95ec37f7fe409ad2bde76e66f80b20be24ee92ae3ec'
             '6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6'
-            '30df814034a3b7146232e195829564baa7c269940b40c81e1caefbbdc83744e8'
+            '7eddb96f22a29b0d4dc1d953cdb047342495230ea3c0cb16f78a1d888e79fa8e'
             'SKIP')
 
 prepare() {

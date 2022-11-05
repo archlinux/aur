@@ -17,7 +17,7 @@ formatter: terminal256
 # Through which pager should output be piped?
 # 'less -FRX' is recommended on Unix systems
 # 'more' is recommended on Windows
-#pager: PAGER_PATH
+pager: less -FRX
 
 # Cheatpaths are paths at which cheatsheets are available on your local
 # filesystem.

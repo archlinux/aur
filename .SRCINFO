@@ -1,7 +1,7 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
-	pkgver = 4.3.3
-	pkgrel = 3
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://github.com/cheat/cheat
 	arch = x86_64
 	arch = arm
@@ -10,7 +10,6 @@ pkgbase = cheat
 	arch = aarch64
 	license = MIT
 	license = CC0 1.0 Universal
-	makedepends = auth-tarball-from-git
 	makedepends = git
 	makedepends = go
 	makedepends = pandoc
@@ -19,13 +18,13 @@ pkgbase = cheat
 	conflicts = python-cheat
 	replaces = python-cheat
 	backup = etc/cheat/conf.yml
-	source = cheat-4.3.3.tar.gz::https://github.com/cheat/cheat/archive/refs/tags/4.3.3.tar.gz
+	source = cheat-4.4.0.tar.gz::https://github.com/cheat/cheat/archive/refs/tags/4.4.0.tar.gz
 	source = chris.pgp
 	source = conf.yml
-	source = git+https://github.com/cheat/cheatsheets.git#commit=ff3e2f2fcd85b8420243559ceaebfddb761fec36
-	sha256sums = 6a1739b71d436f45dc7c028ec79863a34e30cc13da7159bf23604b77f43faaf2
+	source = git+https://github.com/cheat/cheatsheets.git#commit=a005739f3cd402e015a6129c36e7c2b4911ae657
+	sha256sums = 8694d75896dcb1dfb91ed95ec37f7fe409ad2bde76e66f80b20be24ee92ae3ec
 	sha256sums = 6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6
-	sha256sums = 30df814034a3b7146232e195829564baa7c269940b40c81e1caefbbdc83744e8
+	sha256sums = 7eddb96f22a29b0d4dc1d953cdb047342495230ea3c0cb16f78a1d888e79fa8e
 	sha256sums = SKIP
 
 pkgname = cheat
