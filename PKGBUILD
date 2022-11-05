@@ -12,7 +12,7 @@ license=("GPL")
 makedepends=("cmake" "extra-cmake-modules")
 source=("https://github.com/mhogomchungu/qCheckGMail/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('8ed3d66696a53de338685731f93525f21f5f4a0ed7787310948381d63e5f0b1f')
-optdepends=('KF5: support KDE Plasma tray icon tooltip instead of Qt tooltip'
+optdepends=('plasma-desktop: support KDE Plasma tray icon and tooltip instead of Qt counterparts'
                        'kwallet: support for storing credentials in kwallet'
                        'libsecret: support for storing credentials in libsecret')
 
