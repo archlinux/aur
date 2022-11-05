@@ -4,7 +4,7 @@
 _netflow='ipt-netflow'
 pkgname='ipt_netflow'
 pkgver='2.6'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Netflow as netfilter extension'
 arch=('any')
 url="https://github.com/aabc/${_netflow}"
@@ -14,7 +14,7 @@ makedepends=('gcc' 'gzip' 'gawk' 'sed')
 source=("${url}/archive/v${pkgver}.tar.gz"
 	"ipt_netflow.2.6_kernel_5.15.patch")
 sha256sums=('1ae270ddd0e60449159607c2f413604e31cb446beae516777dfeeee5f9b4931d'
-            'b31412f7c6449700ffd499246d99b96941b72724fb444a8e102fb50e82c5ce9e')
+            '844293b23335ae3c0586cfcc04a075e29ff57afd42ce9bb36966057df19a62a6')
 # define '-lts' for linux-lts package
 _linux_custom=""
 _kdir="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
