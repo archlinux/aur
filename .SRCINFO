@@ -12,6 +12,7 @@ pkgbase = tela-circle-icon-theme
 	b2sums = 8c8d36d481bde7fdbb435be3c8b8f1438ab863262822f6a8e67ec90bec70015e16195ee1a556d34365db9374b50258235da2ef03604af0a5c6cbc222bd18303a
 
 pkgname = tela-circle-icon-theme-all
+	pkgdesc = A flat colorful design icon theme (all variants)
 	conflicts = 
 
 pkgname = tela-circle-icon-theme-standard
@@ -39,5 +40,3 @@ pkgname = tela-circle-icon-theme-yellow
 pkgname = tela-circle-icon-theme-manjaro
 
 pkgname = tela-circle-icon-theme-ubuntu
-
-pkgname = tela-circle-icon-theme-dracula

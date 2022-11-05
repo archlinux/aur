@@ -14,8 +14,7 @@ pkgname=('tela-circle-icon-theme-all'
          'tela-circle-icon-theme-red'
          'tela-circle-icon-theme-yellow'
          'tela-circle-icon-theme-manjaro'
-         'tela-circle-icon-theme-ubuntu'
-         'tela-circle-icon-theme-dracula')
+         'tela-circle-icon-theme-ubuntu')
 pkgver=2022.03.07
 pkgrel=1
 pkgdesc='A flat colorful design icon theme'
@@ -28,6 +27,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/vinceliuice/${pkgbase}/
 b2sums=('8c8d36d481bde7fdbb435be3c8b8f1438ab863262822f6a8e67ec90bec70015e16195ee1a556d34365db9374b50258235da2ef03604af0a5c6cbc222bd18303a')
 
 _package() {
+  pkgdesc="${pkgdesc} (${1} variant)"
   conflicts=("${pkgbase}-all")
   cd "${pkgbase^}-${pkgver//./-}"
   install -dm755 "${pkgdir}/usr/share/icons"
@@ -35,6 +35,7 @@ _package() {
 }
 
 package_tela-circle-icon-theme-all() {
+  pkgdesc="${pkgdesc} (all variants)"
   conflicts=(${pkgname[@]/${pkgbase}-all})
   cd "${pkgbase^}-${pkgver//./-}"
   install -dm755 "${pkgdir}/usr/share/icons"
@@ -91,8 +92,4 @@ package_tela-circle-icon-theme-manjaro() {
 
 package_tela-circle-icon-theme-ubuntu() {
   _package ubuntu
-}
-
-package_tela-circle-icon-theme-dracula() {
-  _package dracula
 }
