@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a413cc368cac5f5cf9199038887e52ed1ece08f431885dd762dde2df56882f13')
+sha512sums=('d5f252aeab363a6fcc837550e742c29707b141c55d615161a540b22e805a3a4f5babce490a43208e7f2a03f79d17fb7c357039790ca3922d63e44532ca1a37f3')
 
 _sourcedirectory="$_projectname-$pkgver"
 
