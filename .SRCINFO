@@ -1,7 +1,7 @@
 pkgbase = ceph
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 17.2.5
-	pkgrel = 2
+	pkgrel = 4
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -175,7 +175,7 @@ pkgbase = ceph
 	sha512sums = 2a6f33791760e14543c90077bfc6bf1b6b82ee2996e80b4762eadb887a0d9a67c221b6f10832ddf780dc6abaed246a1e2ee7680c9c861c4ff70e61b752a37b36
 
 pkgname = ceph
-	depends = ceph-libs=17.2.5-2
+	depends = ceph-libs=17.2.5-4
 	depends = boost-libs
 	depends = curl
 	depends = fuse3
@@ -200,7 +200,7 @@ pkgname = ceph
 	depends = gawk
 	optdepends = smartmontools: disk monitoring via S.M.A.R.T
 	optdepends = nvme-cli: disk monitoring for NVMe drives
-	provides = ceph=17.2.5-2
+	provides = ceph=17.2.5-4
 	conflicts = ceph-bin
 
 pkgname = ceph-libs
@@ -226,12 +226,12 @@ pkgname = ceph-libs
 	depends = python-prettytable
 	depends = python-yaml
 	depends = python-setuptools
-	provides = ceph-libs=17.2.5-2
+	provides = ceph-libs=17.2.5-4
 	conflicts = ceph-libs-bin
 
 pkgname = ceph-mgr
-	depends = ceph=17.2.5-2
-	depends = ceph-libs=17.2.5-2
+	depends = ceph=17.2.5-4
+	depends = ceph-libs=17.2.5-4
 	depends = bash
 	depends = boost-libs
 	depends = curl
@@ -260,6 +260,6 @@ pkgname = ceph-mgr
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=17.2.5-2
+	provides = ceph-mgr=17.2.5-4
 	conflicts = ceph<16.2.1-1
 	conflicts = ceph-mgr-bin
