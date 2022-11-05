@@ -8,7 +8,7 @@ url="https://github.com/huijunchen9260/$pkgname"
 license=('GPL3')
 depends=('xclip' 'wmctrl' 'unrar' 'cabextract' 'dmenu' 'unzip' 'p7zip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('21b4edf5cdbca463ef0f1ca9d2555ef644618bc5f64f2bcf4141abaf247ede22')
+sha512sums=('9e15d3b7559c12883a5f189293e49fd64c1686ea5cea088683c551b890c2672c767938d512f16d14cbd05537cc7b00b24bd7e32093b52a1acf1d71ba24c15f57')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/"
