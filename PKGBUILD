@@ -5,6 +5,7 @@ pkgrel=1
 _pkgrel=2
 _pkgver=${pkgver}-${_pkgrel}
 pkgdesc="WeChat Devtools For Linux."
+license=("MIT")
 arch=("x86_64")
 url="https://github.com/msojocs/wechat-web-devtools-linux"
 provides=("${pkgname%-bin}")

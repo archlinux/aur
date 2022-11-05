@@ -4,6 +4,7 @@ pkgbase = wechat-devtools-bin
 	pkgrel = 1
 	url = https://github.com/msojocs/wechat-web-devtools-linux
 	arch = x86_64
+	license = MIT
 	depends = gconf
 	depends = libxkbfile
 	optdepends = wine
