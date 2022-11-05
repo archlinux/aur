@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=warpd
-pkgver=v1.3.4
+pkgver=v1.3.5
 _gitname=warpd
 pkgrel=1
 pkgdesc="A modal keyboard driven interface for mouse manipulation."
@@ -16,7 +16,7 @@ source=(
   "${pkgname}.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/${pkgver}.zip"
 )
 
-md5sums=('d5bdc7dc052ca83ce4635d6cb0cedec3')
+md5sums=('e55d892233a5bfedeab4b696a07cc431')
 
 build () {
   cd "${pkgname}-${pkgver/v/}"
