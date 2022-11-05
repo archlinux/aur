@@ -1,7 +1,7 @@
 pkgbase = mongodb50-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 5.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = mongodb50-bin
 	license = Apache
 	makedepends = chrpath
 	depends = curl
+	depends = openssl-1.1
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
 	optdepends = mongosh-bin: An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.
 	provides = mongodb=5.0.13
