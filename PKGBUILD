@@ -79,7 +79,7 @@ prepare() {
 }
 
 build() {
-  export NODE_OPTIONS="--max-old-space-size=2048"
+  export NODE_OPTIONS="--max-old-space-size=2048 --openssl-legacy-provider"
 
   cd "$srcdir"/buildbot-$pkgver/pkg
   python setup.py egg_info
