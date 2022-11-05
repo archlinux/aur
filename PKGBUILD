@@ -212,6 +212,7 @@ build() {
     -DWITH_TESTS=ON \
     -Wno-dev
 
+  VERBOSE=1 make -C build legacy-option-headers
   VERBOSE=1 make -C build all
 }
 
