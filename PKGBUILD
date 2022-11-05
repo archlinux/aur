@@ -11,10 +11,9 @@ license=("MIT")
 provides=("python-itchat")
 conflicts=("python-itchat" "python-itchat-git")
 depends=('python-requests' 'python-pyqrcode' 'python-pypng')
-makedepends=('python-pip' 'python-installer' 'git')
 source=('git+https://github.com/why2lyj/ItChat-UOS.git')
 sha256sums=("SKIP")
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 
 pkgver() {
     cd ${_name}
