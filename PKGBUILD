@@ -11,7 +11,7 @@
 
 pkgname=coreutils-selinux
 pkgver=9.1
-pkgrel=1
+pkgrel=3
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL3')
