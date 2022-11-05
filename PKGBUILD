@@ -3,7 +3,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=kismon
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="GUI client for kismet (wireless scanner/sniffer/monitor)"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://www.salecker.org/software/kismon.html"
 license=('BSD')
 depends=('gtk3' 'gobject-introspection-runtime' 'python-gobject' 'python-simplejson' 'python-cairo' 'osm-gps-map' 'python-kismet-rest')
 source=("https://files.salecker.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cb79dafe494c237060a79528d2f86a0af2f6a86aece5eefbc49ce37ef91513a7')
+sha256sums=('a5befd04a546245a801a38ee72e752a366f5ee5e0e24f70071c0f37702bcebd6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
