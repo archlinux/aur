@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.10.1.r28.g69ad2e31
+pkgver=6.10.1.r31.g7d6c131a
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -53,7 +53,7 @@ prepare() {
     git config submodule.third_party/testlib.url "$srcdir/testlib"
     git config submodule.third_party/qhttp.url "$srcdir/qhttp"
 
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
