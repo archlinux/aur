@@ -117,12 +117,6 @@ prepare() {
     fi
   done
 
-  # suppress deprecation warnings
-  sed -i '/#ifndef CEPH_CONFIG_H/i#define BOOST_ALLOW_DEPRECATED_HEADERS' \
-    src/common/config.h
-  sed -i '/#ifndef CEPH_TYPES_H/i#define BOOST_ALLOW_DEPRECATED_HEADERS' \
-    src/include/types.h
-
   # fix boost stuff for system-boost
   find . -name '*.cmake' -or -name 'CMakeLists.txt' -print0 | xargs --null \
     sed -r \
