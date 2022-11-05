@@ -1,0 +1,16 @@
+pkgbase = python-pointnet2
+	pkgdesc = Pointnet2/Pointnet++ PyTorch
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://gitee.com/wang-zhaozhong/pointnet2.git
+	arch = any
+	license = unlicense
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pytest
+	depends = python-pytorch
+	source = pointnet2-3.0.0::git+https://gitee.com/wang-zhaozhong/pointnet2.git
+	sha256sums = SKIP
+
+pkgname = python-pointnet2
