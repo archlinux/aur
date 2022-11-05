@@ -1,6 +1,6 @@
 pkgbase = blivet-gui-git
 	pkgdesc = GUI tool for storage configuration
-	pkgver = dc2ac37
+	pkgver = 1043ae2
 	pkgrel = 1
 	url = https://github.com/storaged-project/blivet-gui
 	arch = any
