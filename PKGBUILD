@@ -46,6 +46,7 @@ build() {
         -DFLB_OUT_NATS=Yes \
         -DFLB_HTTP_SERVER=Yes \
         -DMBEDTLS_FATAL_WARNINGS=Off \
+        -DLUAJIT_BUILD_EXE=Off \
         ..
     make
 }
