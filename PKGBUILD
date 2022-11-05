@@ -2,7 +2,7 @@
 # Contributor: Mario Rodas <marsam at users dot noreply dot github dot com>
 
 pkgname=lightning
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Library that generates assembly language code at run-time'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://www.gnu.org/software/lightning/'
 license=('GPL')
 depends=('zlib')
 source=("https://ftp.gnu.org/gnu/lightning/lightning-${pkgver}.tar.gz")
-sha256sums=('ed856b866dc6f68678dc1151579118fab1c65fad687cf847fc2d94ca045efdc9')
+sha256sums=('0152697cdfec0e5b178ddc825e106f52c24956c0bf8ed1114ba7dfbabe90dc4f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
