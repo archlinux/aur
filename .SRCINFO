@@ -39,6 +39,7 @@ pkgbase = arachnotron-bin
 	depends = zstd
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
 	provides = arachnotron
 	conflicts = arachnotron-git
 	source = http://nephrite.uk/storage/app/media/Doom/arachnotron-linux-lite-1.1.4.tar.gz
