@@ -16,18 +16,15 @@ source=(
   "${pkgname}.tar.gz::https://github.com/rvaiya/warpd/archive/refs/tags/${pkgver}.zip"
 )
 
-options=("!buildflags")
 md5sums=('d5bdc7dc052ca83ce4635d6cb0cedec3')
 
 build () {
   cd "${pkgname}-${pkgver/v/}"
   make
+  make man
 }
 
 package () {
   cd "${pkgname}-${pkgver/v/}"
-  install -Dm755 -t "${pkgdir}"/usr/bin bin/warpd
-  mkdir -p "${pkgdir}"/usr/share/man/man1/
-  # install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ usr/local/share/man/man1/warpd.1.gz
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1/ warpd.1.gz
+  make install DESTDIR="$pkgdir"
 }
