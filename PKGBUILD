@@ -1,15 +1,16 @@
-# Maintainer: Oliver Paschke <oli.paschke@gmail.com>
+# Maintainer: Shane Chen <ss1ha3tw@gmail.com>
+# Contributor: Oliver Paschke <oli.paschke@gmail.com>
 
-pkgname=nginx-mainline-mod-auth-ldap-git
-pkgver=r158.83c059b
-pkgrel=7
+pkgname=nginx-mod-auth-ldap-git
+pkgver=1.22.1_1.r158.83c059b
+pkgrel=1
 
 _modname=nginx-auth-ldap
 
 pkgdesc='LDAP Authentication module for nginx'
 arch=('i686' 'x86_64')
-depends=('nginx-mainline' 'libldap')
-makedepends=('nginx-mainline-src' 'git')
+depends=('nginx' 'libldap')
+makedepends=('nginx-src' 'git')
 url="https://github.com/kvspb/nginx-auth-ldap"
 license=('BSD')
 
@@ -19,7 +20,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir"/$_modname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    PACMAN_OUTPUT=($(pacman -Qe nginx))
+    NGINX_VERSION=${PACMAN_OUTPUT[1]//-/_}
+    printf "%s.r%s.%s" "$NGINX_VERSION" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
