@@ -7,7 +7,7 @@ _version=1.0.6644
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Web"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -32,6 +32,7 @@ install=install
 build() {
         cd "$pkgname"
         npm install # --no-package-lock
+        sed -i.bak 's!NODE_OPTIONS=--max-old-space-size=8192!NODE_OPTIONS="--openssl-legacy-provider --max-old-space-size=8192"!' Makefile
         make
         make source-package
 }
