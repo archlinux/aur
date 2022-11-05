@@ -2,6 +2,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
+#Todo:
+#* add external cmake projects to source array and patch src/externla/*.cmake
+
 #Configuration:
 #Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
 #Use: {yay,paru} --mflags=VAR1=0,VAR2=1
@@ -16,7 +19,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2022.02.r96.g7d84c57c4
+pkgver=2022.02.r120.g026074d38
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -35,14 +38,10 @@ optdepends=('u3d: for U3D and IDTF file support'
 source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}"
         )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
   prepare_submodule
-  #fix gcc:11 headers regression
-  sed -i '1 i\#include <limits>' -i "${srcdir}"/${_name}/src/external/e57/src/E57XmlParser.cpp
 }
 
 pkgver() {
@@ -67,15 +66,10 @@ package() {
 
 prepare_submodule() {
   git -C "$srcdir/meshlab" config submodule.src/vcglib.url "$srcdir/vcglib"
-  git -C "$srcdir/meshlab" config submodule.src/external/nexus.url "$srcdir/nexus"
   git -C "$srcdir/meshlab" -c protocol.file.allow=always submodule update --init
-  git -C "$srcdir/meshlab/src/external/nexus" config submodule.src/corto.url "$srcdir/corto"
-  git -C "$srcdir/meshlab/src/external/nexus" -c protocol.file.allow=always submodule update --init
 }
 source+=(
   "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
-  "nexus::git+https://github.com/cnr-isti-vclab/nexus.git"
-  "corto::git+https://github.com/cnr-isti-vclab/corto.git"
 )
 
 # vim:set ts=2 sw=2 et:
