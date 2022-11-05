@@ -4,6 +4,7 @@ _pkgbase=pip_search
 pkgname=python-pip-search
 pkgrel=1
 pkgver=0.0.12
+license=("MIT")
 pkgdesc="Searching thought pip when hard times strike."
 url=https://github.com/victorgarric/pip_search
 conflicts=('python-pip_search')

@@ -4,6 +4,7 @@ pkgbase = python-pip-search
 	pkgrel = 1
 	url = https://github.com/victorgarric/pip_search
 	arch = any
+	license = MIT
 	depends = python-rich
 	depends = python-beautifulsoup4
 	depends = python-requests
