@@ -16,7 +16,7 @@
 _phpbase="53"
 _suffix=""
 pkgver="5.3.29"
-pkgrel="15"
+pkgrel="16"
 pkgbase="php53"
 pkgdesc="PHP 5.3.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DOPENSSL_NO_SSL3=1  -DOPENSSL_NO_SSL2=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -134,6 +134,7 @@ source=(
     "php53-phar-names.patch"
     "openssl-1.0.patch"
     "openssl-sslv3.patch"
+    "openssl-sslv3-consts.patch"
     "cve-php5.3.patch"
     "mpm-apache.patch"
     "fpm-numeric-uid-gid.patch"
@@ -149,8 +150,6 @@ source=(
     "php-phpinfo.patch"
 )
 depends=(
-)
-checkdepends=(
 )
 makedepends=(
     "acl"
@@ -214,6 +213,7 @@ _patches=(
     "php53-phar-names.patch"
     "openssl-1.0.patch"
     "openssl-sslv3.patch"
+    "openssl-sslv3-consts.patch"
     "cve-php5.3.patch"
     "mpm-apache.patch"
     "fpm-numeric-uid-gid.patch"
@@ -303,7 +303,7 @@ _phpconfig="\
     --libdir=/usr/lib/php${_phpbase}${_suffix} \
     --datadir=/usr/share/php${_phpbase}${_suffix} \
     --program-suffix=${_phpbase}${_suffix} \
-    --with-config-file-scan-dir=/${_build_conf_d}
+    --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
     --with-pear \
     --enable-session \
@@ -1540,6 +1540,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '5cac358527fa9f6cb8b7f22e34b86ef98453d8d3b45a83e745683fecc0fcf9a3'
             '8a5e1a2a563c38f237b0ed735918ecf82c30edd3f7beae5d99be041585901d27'
             'e49744c78d6413ab6e93e3786d70c2d1cbdbb62e5bcfdb85c05efcf16fecfb96'
+            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             '72a94ccc694657b3d52ce9da537e3f9d4ac7aee4970e916c88f6a8af2bc5cc0e'
             'de279c546cfe5de88ae3dc7b169be963b6f367361821ca1b415b9b04973781a5'
             'd175f0c14fdb22855090c93f76e18f04320d7bf15afc057ffde947f9bb361242'
