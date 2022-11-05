@@ -1,19 +1,19 @@
+diff --git a/Ghidra/Framework/Docking/build.gradle b/Ghidra/Framework/Docking/build.gradle
+index 139ec36c1..740d82356 100644
+--- a/Ghidra/Framework/Docking/build.gradle
++++ b/Ghidra/Framework/Docking/build.gradle
+@@ -37,6 +37,7 @@ dependencies {
+ // We export them to all "unnamed" modules, which are modules that don't define themselves
+ // as a new Java 9 style module.  Ghidra is currently using unnamed modules everywhere.
+ ext.addExports([
++	'java.desktop/sun.swing=ALL-UNNAMED',
+ 	'java.desktop/sun.awt=ALL-UNNAMED',
+ 	'java.desktop/sun.awt.image=ALL-UNNAMED'
+ ])
 diff --git a/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java b/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java
-index 48c057437..253eb3b5d 100644
+index 48c057437..a7b4fc347 100644
 --- a/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java
 +++ b/Ghidra/Framework/Docking/src/main/java/docking/widgets/AbstractGCellRenderer.java
-@@ -4,9 +4,9 @@
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-- * 
-+ *
-  *      http://www.apache.org/licenses/LICENSE-2.0
-- * 
-+ *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 @@ -32,7 +32,8 @@ import docking.widgets.label.GDHtmlLabel;
   */
  public abstract class AbstractGCellRenderer extends GDHtmlLabel {
@@ -34,10 +34,10 @@ index 48c057437..253eb3b5d 100644
  
  	protected Color getBackgroundColorForRow(int row) {
 diff --git a/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java b/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java
-index 6ec44132e..7a878c64d 100644
+index e6ad4df80..57e5625f2 100644
 --- a/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java
 +++ b/Ghidra/Framework/Docking/src/main/java/docking/widgets/filter/FilterTextField.java
-@@ -42,7 +42,7 @@ public class FilterTextField extends JPanel {
+@@ -43,7 +43,7 @@ public class FilterTextField extends JPanel {
  	private static final int FLASH_FREQUENCY_MS = 250;
  
  	private static Color FLASH_BACKGROUND_COLOR = Color.WHITE;
@@ -66,7 +66,7 @@ index 778efa242..eea383b15 100644
  	private static final Icon UP_ICON =
  		ResourceManager.getScaledIcon(Icons.SORT_ASCENDING_ICON, 14, 14);
 diff --git a/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java b/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java
-index 1d9ef7bb9..3dcb3834b 100644
+index 9b1e6199e..642f00686 100644
 --- a/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java
 +++ b/Ghidra/Framework/Docking/src/main/java/ghidra/docking/util/DockingWindowsLookAndFeelUtils.java
 @@ -30,6 +30,9 @@ import ghidra.framework.Platform;
@@ -79,7 +79,7 @@ index 1d9ef7bb9..3dcb3834b 100644
  /**
   * A utility class to manage LookAndFeel (LaF) settings.
   */
-@@ -157,9 +160,8 @@ public class DockingWindowsLookAndFeelUtils {
+@@ -162,9 +165,8 @@ public class DockingWindowsLookAndFeelUtils {
  			throws ClassNotFoundException, InstantiationException, IllegalAccessException,
  			UnsupportedLookAndFeelException {
  
@@ -91,3 +91,17 @@ index 1d9ef7bb9..3dcb3834b 100644
  	}
  
  	private static String findLookAndFeelClassName(String lookAndFeelName) {
+diff --git a/gradle/root/distribution.gradle b/gradle/root/distribution.gradle
+index f44c8267b..b5a6d1688 100644
+--- a/gradle/root/distribution.gradle
++++ b/gradle/root/distribution.gradle
+@@ -137,7 +137,8 @@ task createJavadocs(type: Javadoc, description: 'Generate javadocs for all proje
+ 	
+ 	// Some internal packages are not public and need to be exported.
+     options.addMultilineStringsOption("-add-exports").setValue(["java.desktop/sun.awt.image=ALL-UNNAMED", 
+-    															"java.desktop/sun.awt=ALL-UNNAMED"])
++    															"java.desktop/sun.awt=ALL-UNNAMED", 
++    															"java.desktop/sun.swing=ALL-UNNAMED"])
+ }
+ 
+ 

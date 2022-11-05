@@ -6,7 +6,7 @@
 pkgname=ghidra-darcula
 _darcula=5f401c27dc0710575d45e13c2c255d78dbe0a4ab
 _darcula_version=2019.09
-pkgver=10.1.4
+pkgver=10.2
 pkgrel=1
 pkgdesc='Software reverse engineering framework (with dark theme)'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ conflicts=(
 )
 depends=(
   'bash'
-  'java-environment=11'
+  'java-environment=17'
   'polkit'
 )
 makedepends=(
@@ -44,7 +44,7 @@ sha512sums=(
   '4cf019d5bfde5265d667400111fb0c2473caa2457756c9c73e33d6128da3b116bf8d1b8cbb4092bbe27ea65ea5ab46f922e05a1e53ff36b90f76d8fcc4bfc1e7'
   'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
   '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
-  '833fc176889f7682028f167b3093d1828b79805aa58d7f8ed8387b4baeeec1da2f30e5d607aebdb460580b939ea9dceb35e4aabf03b0a0f29f328efaa58e2f82'
+  'b28edc15f99e6f6aacd844b6983ea23946c8479599a34c1254c1457235ae983951f4b4a2081fc7b937e83946dac948955136e06f7cc62dd5ddc9713e4463ab9a'
 )
 _pkgname="${pkgname/-*/}"
 _stop='\e[m'
@@ -63,8 +63,8 @@ prepare() {
 
   # Check Java version (thanks @ignapk)
   JDK_VERSION=$(java -version 2>&1)
-  if [[ ! $JDK_VERSION =~ 11\.0 ]]; then
-    echo "FAILURE: You seem to have jdk11 installed correctly but your system defaults to another java version. To enable jdk11 please type: sudo archlinux-java set java-11-openjdk"
+  if [[ ! $JDK_VERSION =~ 17\.0 ]]; then
+    echo "FAILURE: You seem to have jdk17 installed correctly but your system defaults to another java version. To enable jdk17 please type: sudo archlinux-java set java-17-openjdk"
     exit 1
   fi
 
