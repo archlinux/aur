@@ -16,7 +16,7 @@
 _phpbase="54"
 _suffix=""
 pkgver="5.4.45"
-pkgrel="5"
+pkgrel="6"
 pkgbase="php54"
 pkgdesc="PHP 5.4.45 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DOPENSSL_NO_SSL3=1  -DOPENSSL_NO_SSL2=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -135,6 +135,7 @@ source=(
     "php54-phar-names.patch"
     "openssl-1.0.patch"
     "openssl-sslv3.patch"
+    "openssl-sslv3-consts.patch"
     "php-gd-vpx.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
@@ -150,8 +151,6 @@ source=(
     "php-phpinfo.patch"
 )
 depends=(
-)
-checkdepends=(
 )
 makedepends=(
     "acl"
@@ -214,6 +213,7 @@ _patches=(
     "php54-phar-names.patch"
     "openssl-1.0.patch"
     "openssl-sslv3.patch"
+    "openssl-sslv3-consts.patch"
     "php-gd-vpx.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
@@ -308,7 +308,7 @@ _phpconfig="\
     --libdir=/usr/lib/php${_phpbase}${_suffix} \
     --datadir=/usr/share/php${_phpbase}${_suffix} \
     --program-suffix=${_phpbase}${_suffix} \
-    --with-config-file-scan-dir=/${_build_conf_d}
+    --with-config-file-scan-dir=/${_build_conf_d} \
     --enable-filter \
     --with-pear \
     --enable-session \
@@ -1546,6 +1546,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '91dfb4bb0bf4503ac9302ffb103f239a9f5efcb2b4fcba965b27c11b850a8a29'
             '8a5e1a2a563c38f237b0ed735918ecf82c30edd3f7beae5d99be041585901d27'
             'e49744c78d6413ab6e93e3786d70c2d1cbdbb62e5bcfdb85c05efcf16fecfb96'
+            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             '2c2991ad44432d65580a05b7ca8f84b6f795fd3dcc5c926e8a26242dd3b27036'
             'd175f0c14fdb22855090c93f76e18f04320d7bf15afc057ffde947f9bb361242'
             'f5ae925036744a5e88cea2698879aea0498e1e23aee7801923d90f16be383908'
