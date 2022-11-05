@@ -1,7 +1,7 @@
 pkgbase = sudo-selinux
 	pkgdesc = Give certain users the ability to run some commands as root - SELinux support
 	pkgver = 1.9.12
-	pkgrel = 1
+	pkgrel = 5
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = sudo-selinux
 	depends = libldap
 	depends = zlib
 	depends = libselinux
-	provides = sudo=1.9.12-1
-	provides = selinux-sudo=1.9.12-1
+	provides = sudo=1.9.12-5
+	provides = selinux-sudo=1.9.12-5
 	conflicts = sudo
 	conflicts = selinux-sudo
 	backup = etc/pam.d/sudo
@@ -24,12 +24,22 @@ pkgbase = sudo-selinux
 	backup = etc/sudoers
 	source = https://www.sudo.ws/sudo/dist/sudo-1.9.12.tar.gz
 	source = https://www.sudo.ws/sudo/dist/sudo-1.9.12.tar.gz.sig
+	source = sudo-selinux-CVE-2022-43995.patch::https://github.com/sudo-project/sudo/commit/bd209b9f16fc.patch
 	source = sudo_logsrvd.service
 	source = sudo.pam
 	validpgpkeys = 59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB
 	sha256sums = de15733888170c56834daafd34bf983db10fb21039742fcfc396bd32168d6362
 	sha256sums = SKIP
+	sha256sums = 7f9d1ae9254509f0dfe0e54df671a5d9296c20ab24ca0c54595e6c91dc059f2c
 	sha256sums = 8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
 pkgname = sudo-selinux
+	depends = glibc
+	depends = openssl
+	depends = pam-selinux
+	depends = libldap
+	depends = zlib
+	depends = libselinux
+	depends = libcrypto.so
+	depends = libssl.so
