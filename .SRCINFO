@@ -1,7 +1,7 @@
 pkgbase = arachnotron-bin
 	pkgdesc = Cross platform, advanced Doom launcher built with QT.
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nephrite.uk/arachnotron
 	arch = x86_64
 	license = custom
@@ -45,6 +45,6 @@ pkgbase = arachnotron-bin
 	source = http://nephrite.uk/storage/app/media/Doom/arachnotron-linux-lite-1.1.4.tar.gz
 	source = arachnowrap
 	sha256sums = 2653fcad69a97a7d3f9b96f6e0d80797f315592ffd15f1ab0d7045050fb935cf
-	sha256sums = 0ac7b8fd5497d73ca83ad2f6d0813d3fc49a15eb481ebe84fae9e8d4371fb19e
+	sha256sums = f2bf987cbedbb4b4c8afe72b5f714291628f74ae1cc1d05d3d953dfac2605feb
 
 pkgname = arachnotron-bin

@@ -1,7 +1,7 @@
 # Maintainer: Savchenko Dmitriy <apicalium@gmail.com>
 pkgname="arachnotron-bin"
 pkgver="1.1.4"
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform, advanced Doom launcher built with QT."
 arch=('x86_64')
 url="http://nephrite.uk/arachnotron"
@@ -55,10 +55,11 @@ changelog=
 source=("http://nephrite.uk/storage/app/media/Doom/arachnotron-linux-lite-$pkgver.tar.gz" "arachnowrap")
 noextract=()
 sha256sums=('2653fcad69a97a7d3f9b96f6e0d80797f315592ffd15f1ab0d7045050fb935cf'
-            '0ac7b8fd5497d73ca83ad2f6d0813d3fc49a15eb481ebe84fae9e8d4371fb19e')
+            'f2bf987cbedbb4b4c8afe72b5f714291628f74ae1cc1d05d3d953dfac2605feb')
 
 package() {
 	cd "$srcdir"
+	sed -i 's+/home/richard/Doom/IWADs/+USERPATH+g' config/settings.json
   	mkdir -pm 755 $pkgdir/opt/arachnotron
   	install -m 755 arachnotron $pkgdir/opt/arachnotron
   	cp -r --no-preserve=mode,ownership config $pkgdir/opt/arachnotron

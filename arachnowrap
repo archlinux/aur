@@ -2,13 +2,19 @@
 export LOCALCFGPATH=$HOME/.config/arachnotron/
 export SYSTEMCFGPATH=/opt/arachnotron/
 export CFGDIRNAME=config/
+export IWAD_DIR=$LOCALCFGPATH/iwad
+
+set -e
+
 if test ! -d $LOCALCFGPATH
 then
 	mkdir -p $LOCALCFGPATH
 fi
 if test ! -d $LOCALCFGPATH/$CFGDIRNAME
 then
+	cd
 	cp -r --no-preserve=mode,ownership $SYSTEMCFGPATH/$CFGDIRNAME $LOCALCFGPATH
+	sed -i "s+USERPATH+$IWAD_DIR+g"  $LOCALCFGPATH/$CFGDIRNAME/settings.json
 fi
 cd $LOCALCFGPATH
 $SYSTEMCFGPATH/arachnotron
