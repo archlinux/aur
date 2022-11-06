@@ -1,12 +1,12 @@
 pkgbase = python-sympy-docs
 	pkgdesc = Documentation for Python Sympy module.
-	pkgver = 1.10.1
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = http://www.sympy.org/
 	arch = any
 	license = BSD
 	options = docs
-	source = python-sympy-docs-1.10.1.zip::https://github.com/sympy/sympy/releases/download/sympy-1.10.1/sympy-docs-html-1.10.1.zip
-	sha256sums = f8e0a5de3d8e804239a3e698893176a54ab8bab0360f652f5020761879fbd64a
+	source = python-sympy-docs-1.11.1.zip::https://github.com/sympy/sympy/releases/download/sympy-1.11.1/sympy-docs-html-1.11.1.zip
+	sha256sums = be3bb7fef0e17cf437fa73354041ca84ae6329369c7a746a4d3d015bd09403e2
 
 pkgname = python-sympy-docs
