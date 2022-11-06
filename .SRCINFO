@@ -1,0 +1,16 @@
+pkgbase = libfprint-goodixtls-git
+	pkgdesc = libfprint fork for goodixtls devices. Currently supports 5110
+	pkgver = r1678.bc539f9
+	pkgrel = 4
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = opencv
+	provides = libfprint
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	source = libfprint-goodixtls-git::git+https://github.com/0x00002a/libfprint.git
+	md5sums = SKIP
+
+pkgname = libfprint-goodixtls-git
