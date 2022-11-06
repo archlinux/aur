@@ -12,7 +12,7 @@ depends=(python python-glcontext)
 # For python-setuptools, see here: https://aur.archlinux.org/packages/python-moderngl#comment-864201.
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('2fdca588b4abe11373496288f80367e8c16ac232410ac0b4061f26f458de7713b32ffd517bdeaf23a9c47b5f249a4788a428bba5fe54e86d9996daafa6f91b1b')
+b2sums=('17f622a78a082789200e052ae5d73afa2d2f6e9cecd4ef4375701a1951d736a022dc7c8dc61105bccebb45c43906fc99146dcd53e22690f03164bea664d5a4ba')
 
 build() {
     cd "$_name-$pkgver"
