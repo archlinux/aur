@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev<at>mail.ru>
 pkgname=regtools-git
-pkgver=0.6.0.r0.9221a19
-pkgrel=2
+pkgver=0.6.0.r122.2e3a291
+pkgrel=1
 pkgdesc="Tools that integrate DNA-seq and RNA-seq data to help interpret mutations in a regulatory and splicing context"
 arch=('any')
 url="https://github.com/griffithlab/regtools"
