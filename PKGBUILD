@@ -3,14 +3,14 @@
 # Contributer: Danct12 <danct12@disroot.org>
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
-_pkgver_images_system="17.1-20220723"
-_pkgver_images_system_x86="17.1-20220723"
-_pkgver_images_system_arm="17.1-20220723"
-_pkgver_images_system_arm64="17.1-20220723"
-_pkgver_images_vendor="17.1-20220723"
-_pkgver_images_vendor_x86="17.1-20220723"
-_pkgver_images_vendor_arm="17.1-20220723"
-_pkgver_images_vendor_arm64="17.1-20220723"
+_pkgver_images_system="18.1-20221030"
+_pkgver_images_system_x86="18.1-20221030"
+_pkgver_images_system_arm="18.1-20221030"
+_pkgver_images_system_arm64="18.1-20221030"
+_pkgver_images_vendor="18.1-20221105"
+_pkgver_images_vendor_x86="18.1-20221105"
+_pkgver_images_vendor_arm="18.1-20221105"
+_pkgver_images_vendor_arm64="18.1-20221105"
 pkgname=waydroid-image-gapps
 pkgver="${_pkgver_images_system//-/_}"
 pkgrel=2
@@ -21,13 +21,13 @@ url='https://github.com/waydroid'
 depends=('waydroid')
 provides=('waydroid-image')
 source_i686=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86/lineage-$_pkgver_images_system_x86-GAPPS-waydroid_x86-system.zip
-  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86/lineage-$_pkgver_images_vendor_x86-MAINLINE-waydroid_x86-vendor.zip)
+  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86/lineage-$_pkgver_images_vendor_x86-HALIUM_11-waydroid_x86-vendor.zip)
 source_x86_64=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-$_pkgver_images_system-GAPPS-waydroid_x86_64-system.zip
-  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/lineage-$_pkgver_images_vendor-MAINLINE-waydroid_x86_64-vendor.zip)
+  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/lineage-$_pkgver_images_vendor-HALIUM_11-waydroid_x86_64-vendor.zip)
 source_armv7h=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm/lineage-$_pkgver_images_system_arm-GAPPS-waydroid_arm-system.zip
-  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm/lineage-$_pkgver_images_vendor_arm-MAINLINE-waydroid_arm-vendor.zip)
+  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm/lineage-$_pkgver_images_vendor_arm-HALIUM_11-waydroid_arm-vendor.zip)
 source_aarch64=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm64/lineage-$_pkgver_images_system_arm64-GAPPS-waydroid_arm64-system.zip
-  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-MAINLINE-waydroid_arm64-vendor.zip)
+  https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-HALIUM_11-waydroid_arm64-vendor.zip)
 
 case "$CARCH" in
   aarch64) _imgarch="arm64" ;;
@@ -43,11 +43,11 @@ package() {
   mv "$srcdir/vendor.img" "$pkgdir/usr/share/waydroid-extra/images"
 }
 
-sha256sums_x86_64=('391ccb7de6b911603b841bc511ac3db65da72406edb9e5715eb41dfe8f76052b'
-                   'd76c07ef45232ccf0423fff81f396141176f9e5fbd919134218b9da4200ec2b4')
-sha256sums_i686=('6ce57adfbb7e9acd97e1d5f4f0aa46d78e74479dcde72f9cbcde83912407105a'
-                 '05eece26bd25851b86b19e93d2b3f3c4b50d42d0628bf96a40f96e2df9295ab1')
-sha256sums_armv7h=('f7654855bab0a4e7d5c15fff3a1f05443e8e65539b158c070125b8a53ee05dab'
-                   '71bee674f297fad01f3a31576d08ec9ef7a4d0709d95d7fa6a00e0793109e513')
-sha256sums_aarch64=('c8f01418cd6c7bfa3fd0f55a72a2da1225626e79b331f11dad2f0c86e63355f3'
-                    '4a40747f9a9a5ecdc7d881cf546232a9a8ff68b90ecd489a90f6d6499175da21')
+sha256sums_x86_64=('2e96a24f2bb24d5b8dd6fe8bc04bdb2f4a467ed6784c912e806d30a161972264'
+                   '73aec94db726c33a32cd6b4fc3c3322c066363a8855d14f0897d66ee6540598d')
+sha256sums_i686=('99ced90314088ca535c240106d15e279be73fd77d85ce73b88a5394150e12d4f'
+                 'f8b8d7830690bca3d42fee8c8b305a68795014a9bc8286be4df90490104c3d08')
+sha256sums_armv7h=('b446705b6fce430c7ec56b00516e44ab5a6045aa6f47c3b42cdfc3c3da54d520'
+                   '9808cd679e7855aefd7e3da5e04acc6537d4640c801a8c609601a2bfaffa5942')
+sha256sums_aarch64=('be93e06b5a84e81059c2b692a80ecbf7fff4d93ff59449e7edb99d8ce53a94d5'
+                    '221c6271c2babd315a1fbae885107c3721a0d00d9ff955d6d331833e7535d48d')
