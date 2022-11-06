@@ -17,28 +17,28 @@ depends=('gtk3' 'libaccounts-glib' 'libblockdev' 'libibus' 'libgexiv2' 'python' 
 conflicts=('zim')
 replaces=('zim')
 optdepends=('xdg-utils: recommended on linux'
-			'bzr: Version Control plugin'
-			'ditaa: Insert Ditaa plugin'
-			'git: Version Control plugin'
-			'gnuplot: Insert Gnuplot plugin'
-			'graphviz: Insert Diagram & Link Map plugins'
-			'gtkspell3: Spell Checker plugin'
-			'gtksourceview3: Source View plugin'
-			'hicolor-icon-theme: hicolor theme hierarchy'
-			'lilypond: Insert Score plugin'
-			'mercurial: Version Control plugin'
-			'pygtksourceview2: Source View plugin'
-			'python-gtkspell: Spell Checker plugin'
-			'r: Insert GNU R Plot plugin'
-			'scrot: Insert Screenshot plugin'
-			'texlive-bin: Insert Equation plugin'
-			'xdot: Link Map plugin'
-			'zeitgeist: Log events with Zeitgeist plugin'
+            'bzr: Version Control plugin'
+            'ditaa: Insert Ditaa plugin'
+            'git: Version Control plugin'
+            'gnuplot: Insert Gnuplot plugin'
+            'graphviz: Insert Diagram & Link Map plugins'
+            'gtkspell3: Spell Checker plugin'
+            'gtksourceview3: Source View plugin'
+            'hicolor-icon-theme: hicolor theme hierarchy'
+            'lilypond: Insert Score plugin'
+            'mercurial: Version Control plugin'
+            'pygtksourceview2: Source View plugin'
+            'python-gtkspell: Spell Checker plugin'
+            'r: Insert GNU R Plot plugin'
+            'scrot: Insert Screenshot plugin'
+            'texlive-bin: Insert Equation plugin'
+            'xdot: Link Map plugin'
+            'zeitgeist: Log events with Zeitgeist plugin'
 )
-source=("https://github.com/zim-desktop-wiki/zim-desktop-wiki/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zim-desktop-wiki/zim-desktop-wiki/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=('027fee89db2871de8ce09457ed81cdbd')
 
 package() {
-	cd ${srcdir}/${_pkgname}-desktop-wiki-${pkgver}
-	python setup.py install --root=${pkgdir} --optimize=1
+    cd ${srcdir}/${_pkgname}-desktop-wiki-${pkgver}
+    python setup.py install --root=${pkgdir} --optimize=1
 }
