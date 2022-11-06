@@ -1,0 +1,14 @@
+post_install() {
+  bold=$'\e[1m'
+  normal=$'\e[0m'
+
+  echo "${bold}To browse the website,${normal}"
+  echo "If a web server is running, visit"
+  echo "    http://localhost/gnome-developer-www"
+  echo "Otherwise, visit"
+  echo "    file:///srv/http/gnome-developer-www"
+}
+
+post_upgrade() {
+  post_install
+}
