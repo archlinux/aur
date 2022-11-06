@@ -2,7 +2,7 @@
 pkgname=miniaturo-git
 _name=miniaturo
 _binname=raw-thumbnailer
-pkgver=r8.5296a44
+pkgver=r24.44664f2
 pkgrel=1
 pkgdesc="A raw image thumbnailer. Drop-in replacement for raw-thumbnailer."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
