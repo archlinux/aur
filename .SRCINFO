@@ -1,10 +1,11 @@
 pkgbase = vimix-icon-theme-git
 	pkgdesc = A Material Design icon theme based on Paper Icon Theme
 	pkgver = 2021.11.09.r1.g95a8cbca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/vimix-icon-theme
 	arch = any
 	license = CC BY-SA 4.0
+	makedepends = git
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	provides = vimix-icon-theme

@@ -2,12 +2,13 @@
 # Contributor: Tomáš Vyčítal <tom.vycital@gmail.com>
 pkgname=vimix-icon-theme-git
 pkgver=2021.11.09.r1.g95a8cbca
-pkgrel=1
+pkgrel=2
 pkgdesc="A Material Design icon theme based on Paper Icon Theme"
 arch=('any')
 url="https://github.com/vinceliuice/vimix-icon-theme"
 license=('CC BY-SA 4.0')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
