@@ -2,7 +2,7 @@
 
 pkgname=horizon-eda
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="free EDA package written in C++"
 arch=('x86_64' 'i686')
 url="https://horizon-eda.org"
