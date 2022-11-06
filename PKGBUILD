@@ -1,9 +1,9 @@
 model="6580cdw"
 pkgname="brother-mfc-$model-jpn"
 pkgver="20220218"
-pkgrel=1
-lprver="1.0.1-1"
-cwver="1.0.1-1"
+pkgrel=2
+lprver="1.0.1-0"
+cwver="1.0.1-0"
 pkgdesc="LPR and CUPS drivers for Brother MFC-6580CDW (Japan)"
 url="http://support.brother.com/g/s/id/linux/en/index.html"
 arch=('i686' 'x86_64')

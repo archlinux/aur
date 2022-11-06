@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-6580cdw-jpn
 	pkgdesc = LPR and CUPS drivers for Brother MFC-6580CDW (Japan)
 	pkgver = 20220218
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.brother.com/g/s/id/linux/en/index.html
 	arch = i686
 	arch = x86_64
