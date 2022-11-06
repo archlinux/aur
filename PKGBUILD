@@ -20,7 +20,7 @@ optdepends=(
 # see https://aur.archlinux.org/packages/rua#comment-861014
 options=('!lto')
 
-sha256sums=(85a2a0d2129de4476e667b8996212b52c6ef4f5983a4d947806deaa20a4b41b8)
+b2sums=(65b7b6df319ea26551ce7a16eab70b84d2c4898168fd16ac7daee582e7d5d0efa8ea119a9c65bf897aea11e7a7d123a603045825a0b819766a6da586b64546ca)
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
