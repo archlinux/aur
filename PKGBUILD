@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -15,7 +15,7 @@ depends=('qt5-base'
 				 'qt5-quickcontrols2'
          'qt5-graphicaleffects'
          'pcsclite>=1.5.0'
-         'openssl-1.0'
+         'openssl'
          'ccid'
          'libzip'
          'poppler-qt5'
