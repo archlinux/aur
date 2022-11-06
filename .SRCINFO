@@ -1,13 +1,12 @@
 pkgbase = librdrand
 	pkgdesc = A library and an userspace application (rdrand-gen) for easy access to Intel's RdRand DRNG.
-	pkgver = 2.0.0
-	pkgrel = 1
+	pkgver = 2.1.1
+	pkgrel = 2
 	url = https://github.com/BroukPytlik/RdRand
 	arch = x86_64
 	license = LGPL
 	depends = openssl
-	source = https://github.com/BroukPytlik/RdRand/archive/2.0.0.tar.gz
-	md5sums = e5aa7feb2f1f21b56911c58e8faba475
+	source = librdrand-2.1.1.tar.gz::https://github.com/BroukPytlik/RdRand/archive/2.1.1.tar.gz
+	md5sums = a214829d578f6e3b41e5446b41e4252f
 
 pkgname = librdrand
-

@@ -1,7 +1,7 @@
 # Maintainer: Jan Tulak <jan@tulak.me>
 pkgname=librdrand
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A library and an userspace application (rdrand-gen) for easy access to Intel's RdRand DRNG."
 arch=("x86_64")
