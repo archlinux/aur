@@ -1,0 +1,15 @@
+pkgbase = pip-cache
+	pkgdesc = Local PyPi Package Name Cache.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/brunobeltran/pip-cache
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pip-cache/pip-cache-0.0.6.tar.gz
+	source = LICENSE
+	md5sums = 19cd75d7d391ea6358287ca357d2b525
+	md5sums = 927926b2325dd718ba00afa0e52c11f9
+
+pkgname = pip-cache
