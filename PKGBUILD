@@ -1,7 +1,7 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gnome-developer-www
 pkgver=340.64b8ac4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME development website"
 arch=(any)
 url="https://developer.gnome.org"

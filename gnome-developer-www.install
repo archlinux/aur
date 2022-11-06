@@ -6,7 +6,7 @@ post_install() {
   echo "If a web server is running, visit"
   echo "    http://localhost/gnome-developer-www"
   echo "Otherwise, visit"
-  echo "    file:///srv/http/gnome-developer-www"
+  echo "    file:///srv/http/gnome-developer-www/index.html"
 }
 
 post_upgrade() {
