@@ -1,6 +1,6 @@
 pkgbase = vital-synth
 	pkgdesc = Spectral warping wavetable synth.
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://vital.audio
 	install = vital-synth.install
@@ -17,7 +17,7 @@ pkgbase = vital-synth
 	depends = libglvnd
 	depends = libsecret>=0.7
 	provides = vital
-	source_x86_64 = vital-synth-1.5.4-1.deb::https://github.com/bonecountysheriff/VitalInstaller/releases/download/1.5.4/VitalInstaller.deb
-	sha512sums_x86_64 = e0e1f4be09df2e0c65fc2af8fcb36bbe0b0610345e07cb3771baa69af277b16bcb380af6e4d5fd90c6579e359d543cb91883cbb4bf75eccbb752872da98456e3
+	source_x86_64 = vital-synth-1.5.5-1.deb::https://github.com/bonecountysheriff/VitalInstaller/releases/download/1.5.5/VitalInstaller.deb
+	sha512sums_x86_64 = 2dab6a8ae5b17d607acebcba971913612d03eb9f606dd9b4a5fca948824c05f077b9de56f5699057fd8cbc350efd0678aca8a3a07ea0cba14df743ebf542c629
 
 pkgname = vital-synth
