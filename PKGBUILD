@@ -37,7 +37,7 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = *.patch ]] || continue
+    [[ $src == *.patch ]] || continue
     patch -Np1 <"../$src"
   done
 }
@@ -48,7 +48,8 @@ build() {
     VERSION_ROOT="$_ver" BUILD_NUMBER="$_build" \
     MICROSOFT_AUTH_ID='6a3728d6-27a3-4180-99bb-479895b8f88e' MICROSOFT_AUTH_SECRET='dR.50SWwVez4-PQOF2-e_2GHmC~4Xl-p4p' \
     CURSEFORGE_API_KEY='$2a$10$o8pygPrhvKBHuuh5imL2W.LCNFhB15zBYAExXx/TqTx/Zp5px2lxu' \
-    gradle build -x test --no-daemon
+    gradle build -x test --no-daemon \
+    -D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m'
 }
 
 check() {
