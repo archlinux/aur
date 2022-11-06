@@ -205,7 +205,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -359,8 +359,8 @@ prepare() {
     ### Selecting proper RT config
     if [ -n "$_rtkernel" ]; then
         echo "Setting proper RT config"
-        scripts/config --disable RCU_NOCB_CPU_CB_BOOST \
-            --enable RCU_NOCB_CPU_DEFAULT_ALL \
+        scripts/config --enable RCU_NOCB_CPU_CB_BOOST \
+            --disable RCU_NOCB_CPU_DEFAULT_ALL \
             --enable HZ_1000 \
             --set-val HZ 1000 \
             --enable PREEMPT_RT \
@@ -1030,8 +1030,8 @@ done
 
 sha256sums=('67dacc2b78605a56e997f4c08d009be87c98ec66f1870220226c8b3cc676590f'
             'b782e644a0265c9241b225e14127024aaf5a52a5e19bf8797b4b88c1156d1faf'
-            '06d408a1dad0a31aff812a81725acd1c5d8cb70b34eb2eb5b695c8d426d895da'
+            '34e2cad286f32d8c1c26e4ff18726c9e0aee151e82088bb78c3ae4fb536bf962'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
             'dee8ed716d713f27c8d75a1cef6eabf4ddcb63fe4e37d5b9cf47b25d791e5ea0'
             'd50d641d9b692d0a289d56e45d031d53e4f1a7ce2a5176beebf1d31d6ddd0742'
-            '486efa426c0fe01e4697ed744d4c1fbf7a6433bad4818da3762c07ba0861ce2d')
+            'f6c2e9deaf33760d93097d4dbb2586a163a34b20395fa27969fbf27bc246b3e5')
