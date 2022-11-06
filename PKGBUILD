@@ -2,12 +2,12 @@
 
 pkgname=mongodb40-bin
 pkgver=4.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=("x86_64")
 url='https://www.mongodb.com/'
 license=('custom')
-depends=('curl')
+depends=('curl' 'openssl-1.1')
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-bin")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
