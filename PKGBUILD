@@ -3,8 +3,8 @@
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio-amf
-pkgver=28.1.1
-pkgrel=2
+pkgver=28.1.2
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -42,11 +42,12 @@ build() {
 	mkdir -p build; cd build
 
 	cmake -DCMAKE_INSTALL_PREFIX="/usr" \
-	-DBUILD_VST=OFF \
+	-DENABLE_VST=ON \
 	-DENABLE_VLC=OFF \
 	-DENABLE_BROWSER=ON \
 	-DCEF_ROOT_DIR="../../cef_binary_4638_linux64" \
 	-DENABLE_AJA=OFF \
+	-DENABLE_JACK=ON \
 	-DENABLE_NEW_MPEGTS_OUTPUT=OFF \
 	-DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" ..
 
