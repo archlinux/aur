@@ -1,0 +1,19 @@
+pkgbase = galerio
+	pkgdesc = A simple generator for static HTML flexbox galleries
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dbrgn/galerio
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	source = galerio-1.0.0.tar.gz::https://github.com/dbrgn/galerio/archive/v1.0.0.tar.gz
+	sha256sums = 0f77839b6e1e8d3828c2bfe44afbaa5790b1d019d54df8677224be2dce805659
+
+pkgname = galerio
