@@ -1,5 +1,5 @@
 pkgbase = uboot-legacy-initrd-hooks
-	pkgdesc = Pacman hooks and corresponding scripts to generate uboot legacy initrd
+	pkgdesc = Pacman hooks and corresponding scripts to generate uboot legacy initrd, for AArch64 devices, mainly those with Amlogic SoCs
 	pkgver = 0.0.1
 	pkgrel = 1
 	arch = aarch64
