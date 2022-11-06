@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 ### Any or all of the following plugin can be disabled: omemo, openpgp, http-files. Populate following string as per your needs and uncomment it.
 
-# _DISABLE_PLUGINS="--disable-plugin='omemo;openpgp;http-files'"
+# _DISABLE_PLUGINS="--disable-plugin='omemo;openpgp;http-files;ice'"
 
 ### Any or all of the following plugin can be enabled: notification-sound. Populate the following string as per you needs and uncomment it.
 ### Install any needed optional dependency before
