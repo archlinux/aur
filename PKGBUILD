@@ -1,4 +1,5 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
 pkgver=11237.829db5183
 pkgrel=1
