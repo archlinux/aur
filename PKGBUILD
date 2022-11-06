@@ -2,12 +2,12 @@
 
 pkgname=gmnisrv
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="simple Gemini protocol server"
 url="https://git.sr.ht/~sircmpwn/gmnisrv"
 arch=(x86_64)
 license=("GPL3")
-depends=("openssl" "mailcap")
+depends=("openssl-1.1" "mailcap")
 makedepends=("scdoc")
 source=(${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~sircmpwn/${pkgname}/archive/${pkgver}.tar.gz
 	${pkgname}.service)
@@ -17,6 +17,9 @@ b2sums=('977e93d8826f5aab5fe00f1fa6fb39ca317caf8439116b5dd8f2ab7b811d6a4f650e94e
 
 build() {
     cd "${pkgname}-${pkgver}"
+
+    # It needs openssl-1.1, but build process doesn't seem to allow this easily
+    export PKG_CONFIG_PATH=/usr/lib/openssl-1.1/pkgconfig
 
     mkdir build
     cd build
