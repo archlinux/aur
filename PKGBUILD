@@ -3,22 +3,22 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=4.2.4
-pkgrel=3
+pkgver=4.3
+pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
     	 'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
-		 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
+		 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch' 'glibmm-2.68')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
 			 'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt' 'qt6-tools')
 optdepends=('webkit2gtk: embedded browser features'
 			'xdg-desktop-portal: desktop integration')
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
 		"forkgram.desktop")
-sha512sums=('a91473b93d8b1887fd98bb75cd2d1b7cde0772e6cb762f819bf4aef962d83b20f37e87ed3be67bb7f1e84c5b5af4969c63d0979cca0c2984c80642c7e2448689'
+sha512sums=('3a8c05da2b236bfdd6fe59a06752e7f8108f055cbe719de28ad9d4fdecb0df8b4f2cb83ffa1d479009e23f49234bb3305fe597843e27d9b62c844faf6b48be7a'
             '94d58f02980871655bc4de2c73a8f0ff9fcf66ea19fc611be44e9d545804ec0866331e3b2b6404f0189670aecccecc3d4b3a1a6a24950d375bdb5968b53351ee')
 
 prepare() {
