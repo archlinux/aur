@@ -1,40 +1,40 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 pkgname=opencl-caps-viewer
-pkgver=1.0
-_pkgtag=1.00
+pkgver=1.20
 pkgrel=1
 pkgdesc="OpenCL Hardware Capability Viewer"
 arch=("x86_64")
-depends=("opencl-icd-loader" "qt5-base")
+depends=("opencl-icd-loader" "qt5-x11extras")
 url="https://opencl.gpuinfo.org/"
 license=("GPL2")
 
-source=("opencl-caps-viewer::git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=${_pkgtag}"
+source=("git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=${pkgver}"
         "git+https://github.com/KhronosGroup/OpenCL-Headers.git")
 
 sha256sums=("SKIP"
             "SKIP")
 
 prepare() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/OpenCLCapsViewer"
   git submodule init
   git config submodule.OpenCL-Headers.url "$srcdir/OpenCL-Headers"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
+
+  # Correct binary install path
+  sed -i 's|target.path = /opt/$${TARGET}/bin|target.path = /usr/bin|g' OpenCLCapsViewer.pro
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
-  qmake
+  cd "$srcdir/OpenCLCapsViewer"
+  qmake-qt5 OpenCLCapsViewer.pro \
+    DEFINES+=X11 \
+    CONFIG+=release \
+    PREFIX=/usr
   make
 }
 
 package() {
-  install -dm755 "$pkgdir"/usr/bin
-  install -m755 "${srcdir}/${pkgname}"/OpenCLCapsViewer "${pkgdir}"/usr/bin/OpenCLCapsViewer
-
-  install -dm755 "$pkgdir"/usr/share/applications
-  install -m644 "${srcdir}/${pkgname}"/OpenCLCapsViewer.desktop "${pkgdir}"/usr/share/applications/OpenCLCapsViewer.desktop
-
-  install -dm755 "${pkgdir}"/usr/share/icons
-  install -m644 "${srcdir}/${pkgname}"/Resources/icon.png "${pkgdir}"/usr/share/icons/openclCapsViewer.png
+  cd "$srcdir/OpenCLCapsViewer"
+  make INSTALL_ROOT="$pkgdir/" install
+  install -m644 Resources/icon.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/openclCapsViewer.png
 }
