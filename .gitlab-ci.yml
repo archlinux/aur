@@ -6,7 +6,7 @@ check-for-update:
     image: archlinux:latest
     before_script:
       - pacman-key --init
-      - pacman -Syu
+      - pacman -Syu --noconfirm
       - pacman -Sy --noconfirm sudo binutils git openssh
       - git config --global user.email "${GIT_USER_MAIL}"
       - git config --global user.name "${GIT_USER_NAME}"
