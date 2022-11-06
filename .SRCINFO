@@ -1,9 +1,9 @@
 pkgbase = alacritty-sixel-git
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
-	pkgver = 0.12.0.2085.g10a6cc5d
+	pkgver = 0.12.0.2089.g724bcb2
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/alacritty/alacritty
+	url = https://github.com/chrhasse/alacritty-sixel
 	arch = x86_64
 	arch = i686
 	license = Apache
@@ -25,7 +25,7 @@ pkgbase = alacritty-sixel-git
 	depends = libxrandr
 	provides = alacritty
 	conflicts = alacritty
-	source = alacritty::git+https://github.com/alacritty/alacritty.git
+	source = alacritty::git+https://github.com/chrhasse/alacritty-sixel.git
 	sha256sums = SKIP
 
 pkgname = alacritty-sixel-git

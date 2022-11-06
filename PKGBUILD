@@ -1,11 +1,11 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
-pkgver=0.12.0.2085.g10a6cc5d
+pkgver=0.12.0.2089.g724bcb2
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
-url="https://github.com/alacritty/alacritty"
+url="https://github.com/chrhasse/alacritty-sixel"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
@@ -13,18 +13,8 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/alacritty/alacritty.git")
+source=("$_pkgname::git+https://github.com/chrhasse/alacritty-sixel.git")
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$_pkgname"
-  echo `pwd`
-  git config user.name "user"
-  git config user.email "user@domain.fake"
-  git config pull.rebase false
-  git pull -X theirs origin pull/4763/head --no-edit
-  sed -i 's/ShaderProgram::new(shader_version, GRAPHICS_SHADER_V, GRAPHICS_SHADER_F)?;/ShaderProgram::new(shader_version, None, GRAPHICS_SHADER_V, GRAPHICS_SHADER_F)?;/' alacritty/src/renderer/graphics/shader.rs
-}
 
 pkgver() {
 	cd $_pkgname/alacritty
