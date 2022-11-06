@@ -3,7 +3,7 @@
 
 pkgname=apk-decompiler
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Small Rust utlity to decompile Android apks'
 arch=('x86_64')
 url='https://github.com/robertohuertasm/apk-decompiler'
@@ -16,6 +16,7 @@ sha256sums=('f1489d673209f194b6e2a9cbfdcec03af6906c066203bcccacce2383fbf1b257')
 build() {
   cd "$pkgname-$pkgver"
 
+  echo 'stable' > rust-toolchain
   cargo build --release
 }
 
