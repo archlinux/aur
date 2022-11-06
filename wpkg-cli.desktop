@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WPKG CLI
+Comment=Access to WPKG clients!
+Exec=wpkg-cli
+Icon=wpkg-cli
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;Java;
+StartupWMClass=me-wpkg-cli-main-Main
