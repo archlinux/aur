@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.5.1477.r4437.gaf4b5b29
+pkgver=1.5.1644.r4604.gc6c4413f
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
@@ -37,7 +37,11 @@ prepare() {
   git config submodule.iris.url "$srcdir/iris"
   git config submodule.src/libpsi.url "$srcdir/libpsi"
   # git submodule update
-  git submodule update --remote
+  # From git 2.38.1-1, "git submodule" in PKGBUILD does not work
+  # unless we change the git config "protocol.file.allow" [1,2].
+  # [1] https://bugs.archlinux.org/task/76255
+  # [2] https://bbs.archlinux.org/viewtopic.php?pid=2063104#p2063104
+  git -c protocol.file.allow=always submodule update --init --recursive
 
   # set version 
   cd $srcdir/psi/admin 
