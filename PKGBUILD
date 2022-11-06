@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 pkgname=tela-icon-theme-git
-pkgver=2021.12.25.r4.g651b107f
+pkgver=2022.08.28.r32.geb13dc39
 pkgrel=1
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
@@ -12,16 +12,23 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
-source=("${pkgname%-git}::git+https://github.com/vinceliuice/Tela-icon-theme.git")
+source=('git+https://github.com/vinceliuice/Tela-icon-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/Tela-icon-theme"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+   cd "$srcdir/Tela-icon-theme"
+
+  # Disable running gtk-update-icon-cache
+  sed -i '/gtk-update-icon-cache/d' install.sh
+}
+
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/Tela-icon-theme"
   install -d "$pkgdir/usr/share/icons"
   ./install.sh -a -d "$pkgdir/usr/share/icons"
 }

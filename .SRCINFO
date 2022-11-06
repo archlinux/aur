@@ -1,6 +1,6 @@
 pkgbase = tela-icon-theme-git
 	pkgdesc = A flat colorful design icon theme.
-	pkgver = 2021.12.25.r4.g651b107f
+	pkgver = 2022.08.28.r32.geb13dc39
 	pkgrel = 1
 	url = https://www.pling.com/p/1279924
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tela-icon-theme-git
 	provides = tela-icon-theme
 	conflicts = tela-icon-theme
 	options = !strip
-	source = tela-icon-theme::git+https://github.com/vinceliuice/Tela-icon-theme.git
+	source = git+https://github.com/vinceliuice/Tela-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = tela-icon-theme-git
