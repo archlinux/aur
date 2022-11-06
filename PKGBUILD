@@ -2,7 +2,7 @@
 
 pkgname=dbt-snowflake
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="All of the code enabling dbt to work with Snowflake"
 url="https://github.com/dbt-labs/dbt-snowflake"
 arch=('any')
@@ -32,5 +32,5 @@ package() {
 
     # Link dbt binary
     mkdir -p "${_pkgbin}"
-    ln -s "${_venv}/bin/dbt" "${_pkgbin}/dbt"
+    ln -s "/usr/share/${pkgname}/bin/dbt" "${_pkgbin}/dbt"
 }
