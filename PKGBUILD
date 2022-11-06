@@ -2,14 +2,14 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-git
-pkgver=v0.3.0.r29.g054d3fec
+pkgver=v0.3.0.r53.g7a19a251
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://dino.im/"
 license=('GPL3')
 depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
-	 'libgee>=0.10' 'libgcrypt' 'libsoup' 'sqlite' 'qrencode'
+	 'libgee>=0.10' 'libgcrypt' 'libsoup3' 'sqlite' 'qrencode'
 	 'libsignal-protocol-c' 'gspell' 'gst-plugins-base'
 	 'gst-plugins-good' 'gst-plugin-gtk' 'webrtc-audio-processing'
 	 'libnice' 'libsrtp')
