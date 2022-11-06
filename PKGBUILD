@@ -8,8 +8,8 @@ _dev_plugins=
 ### Do not edit below this line unless you know what you're doing
 
 pkgname=psi-plus-plugins-git
-pkgver=1.1.345.ga0acd31
-pkgrel=2
+pkgver=1.1.411.gdfdb6d9
+pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
 url="https://psi-plus.com"
@@ -45,7 +45,12 @@ prepare() {
   git submodule init
   git config submodule.iris.url "$srcdir/iris"
   git config submodule.src/libpsi.url "$srcdir/libpsi"
-  git submodule update
+  # git submodule update
+  # From git 2.38.1-1, "git submodule" in PKGBUILD does not work
+  # unless we change the git config "protocol.file.allow" [1,2].
+  # [1] https://bugs.archlinux.org/task/76255
+  # [2] https://bbs.archlinux.org/viewtopic.php?pid=2063104#p2063104
+  git -c protocol.file.allow=always submodule update --init --recursive
 
   # copy to proper path
   cp -r $srcdir/plugins $srcdir/psi
