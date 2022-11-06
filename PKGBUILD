@@ -1,4 +1,4 @@
-# Maintainer: Claudio Kozický <claudiokozicky@gmail.com>
+# Maintainer: Claudio Kozický <claudio.kozicky@gmail.com>
 # Contributor: peerchemist <peerchemist@protonmail.ch>
 
 pkgname=('peercoin-cli' 'peercoin-daemon' 'peercoin-qt' 'peercoin-tx')
