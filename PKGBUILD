@@ -5,12 +5,30 @@ pkgname=mssql-server
 pkgver=15.0.4261.1
 _remRevision=2
 _prodver=${pkgver}-${_remRevision}
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
 license=('unknown')
-depends=('numactl' 'sssd' 'openssl-1.0>=1.0.2.l' 'libldap<=2.4.59')
+depends=(
+	'libatomic_ops'
+	'libunwind'
+	'numactl' 
+	'glibc'
+	'libc++'
+	'gdb'
+	'openssl-1.1'
+	'krb5'
+	'nss'
+	'sssd'
+	'gawk'
+	'sed'
+	'pam'
+	'libldap<=2.4.59'
+);
+optdepends=(
+	'python-pyodbc'
+);
 source=("https://packages.microsoft.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
 
 sha256sums=('db9a757b85b218c2c091d716c2ece28e5c0c9aee713eadc61827393b2c1d51b8')
@@ -18,8 +36,16 @@ sha256sums=('db9a757b85b218c2c091d716c2ece28e5c0c9aee713eadc61827393b2c1d51b8')
 install=$pkgname.install
 
 package() {
-  cd $pkgdir
-  mv $srcdir/opt .
-  mv $srcdir/usr .
-  chmod 644 $pkgdir/usr/lib/systemd/system/mssql-server.service
+
+	#Setup
+	cd $pkgdir
+	mv $srcdir/opt .
+	mv $srcdir/usr .
+
+	#Create links to libssl1.0.0, libcrypto1.0.0
+	ln -s /lib/libssl.so.1.0.0 $pkgdir/opt/mssql/lib/libssl.so
+	ln -s /lib/libcrypto.so.1.0.0 $pkgdir/opt/mssql/lib/libcrypto.so
+
+	#Set systemd service file perms
+	chmod 644 $pkgdir/usr/lib/systemd/system/mssql-server.service
 }
