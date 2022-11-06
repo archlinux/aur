@@ -13,7 +13,7 @@ provides=("speki")
 conflicts=("speki")
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('fa600804a3ff1d34b6715c5651107610f39b1c51ef1f73b05d56e4338199d2ed')
+sha256sums=('e272a9f477d12e8217d81109a33e9d557b2366723fc854155a125aaa735289df')
 
 
 
