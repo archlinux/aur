@@ -2,6 +2,7 @@
 
 pkgname=canonical-multipass
 _realname=multipass
+_builddir=_build
 pkgver=1.10.1
 pkgrel=0
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
@@ -27,16 +28,16 @@ prepare() {
 
 build() {
   export CXXFLAGS=-Wno-error=deprecated-declarations
-  cmake -B _build \
+  cmake -B ${_builddir} \
       -S "${_realname}" \
       -Wno-dev \
       -DCMAKE_BUILD_TYPE='None' \
       -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build _build
+  cmake --build ${_builddir}
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install _build
+  DESTDIR="$pkgdir" cmake --install ${_builddir}
   # not needed in package
   rm "$pkgdir"/usr/lib/libssh.a
   install -Dm644 "$srcdir"/multipassd.service "$pkgdir"/usr/lib/systemd/system/multipassd.service
