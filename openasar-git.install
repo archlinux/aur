@@ -1,21 +1,21 @@
 post_install() {
-    _pkgname='openasar'
-    pkgname="${_pkgname}-git"
-    mv "${pkgdir}/opt/discord/resources/app.asar" "${pkgdir}/opt/discord/resources/app.asar.backup"
-    mv "/opt/${pkgname}/app.asar" "/opt/discord/resources/app.asar"
+	_pkgname='openasar'
+	pkgname="${_pkgname}-git"
+	cp "${pkgdir}/opt/discord/resources/app.asar" "${pkgdir}/opt/discord/resources/app.asar.backup"
+	cp "/opt/${pkgname}/app.asar" "/opt/discord/resources/app.asar"
 }
 
 pre_upgrade() {
-    rm "/opt/discord/resources/app.asar"
+	rm "/opt/discord/resources/app.asar"
 }
 
 post_upgrade() {
-    _pkgname='openasar'
-    pkgname="${_pkgname}-git"
-    mv "/opt/${pkgname}/app.asar" "/opt/discord/resources/app.asar"
+	_pkgname='openasar'
+	pkgname="${_pkgname}-git"
+	cp "/opt/${pkgname}/app.asar" "/opt/discord/resources/app.asar"
 }
 
 post_remove() {
-    rm "/opt/discord/resources/app.asar"
-    mv "/opt/discord/resources/app.asar.backup" "/opt/discord/resources/app.asar"
+	rm "/opt/discord/resources/app.asar"
+	cp "/opt/discord/resources/app.asar.backup" "/opt/discord/resources/app.asar"
 }
