@@ -44,7 +44,7 @@ prepare() {
   git config submodule.matrix-react-sdk.url "$srcdir/matrix-react-sdk"
   git config submodule.element-web.url "$srcdir/element-web"
   git config submodule.element-desktop.url "$srcdir/element-desktop"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" ../schildichat-desktop.sh
