@@ -1,0 +1,27 @@
+From 34d4bc3820c7f2b4decfef26a8617aea1dfc2a21 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Tue, 1 Nov 2022 14:23:32 +0100
+Subject: [PATCH] Bump net-ssh to ~> 7.0
+
+This also requires a bump of net-scp and net-sftp
+---
+ vagrant.gemspec | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/vagrant.gemspec b/vagrant.gemspec
+index 68884f35b1..50deba9809 100644
+--- a/vagrant.gemspec
++++ b/vagrant.gemspec
+@@ -27,9 +27,9 @@ Gem::Specification.new do |s|
+   s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
+   s.add_dependency "mime-types", "~> 3.3"
+   s.add_dependency "net-ftp", "~> 0.1"
+-  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
+-  s.add_dependency "net-sftp", "~> 3.0"
+-  s.add_dependency "net-scp", "~> 3.0.0"
++  s.add_dependency "net-ssh", "~> 7.0"
++  s.add_dependency "net-sftp", "~> 4.0"
++  s.add_dependency "net-scp", "~> 4.0"
+   s.add_dependency "rb-kqueue", "~> 0.2.0"
+   s.add_dependency "rexml", "~> 3.2"
+   s.add_dependency "rgl", "~> 0.5.7"

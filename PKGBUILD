@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,11 +22,14 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
+        vagrant-2.3.2-net-ssh-gem-update.patch
         "git+https://github.com/mitchellh/vagrant-installers.git#commit=9ef6148")
 md5sums=('dbc1b9385657d37028be2ffbbb298793'
+         'f2592b99fb1c894c45815415c1e80efe'
          'SKIP')
 
 prepare() {
+  patch -Np1 -d $pkgname-$pkgver -i ../vagrant-2.3.2-net-ssh-gem-update.patch
   cd vagrant-installers
   local _gemdir="$(gem env gemdir)"
 
