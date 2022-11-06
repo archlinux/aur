@@ -1,0 +1,27 @@
+--- galois-0.7/src/makefile.in.orig	2020-09-16 21:03:55.135600462 +0200
++++ galois-0.7/src/makefile.in	2020-09-16 21:04:28.670153046 +0200
+@@ -52,10 +52,10 @@
+ 	- rm -f ${AC}
+ 
+ install : galois
+-	mkdir -p ${prefix}/games
+-	cp galois ${prefix}/games
++	mkdir -p ${prefix}/bin
++	cp galois ${prefix}/bin
+ uninstall :
+-	- rm -f ${prefix}/games/galois
++	- rm -f ${prefix}/bin/galois
+ 
+ # dependencies
+ area.o : area.h grid.h group.h
+--- galois-0.7/misc/galois.desktop.in.orig	2020-09-16 21:04:56.768101564 +0200
++++ galois-0.7/misc/galois.desktop.in	2020-09-16 21:05:12.823403378 +0200
+@@ -17,7 +17,7 @@
+ # @configure_input@
+ 
+ [Desktop Entry]
+-Exec=@prefix@/games/galois
++Exec=@prefix@/bin/galois
+ Terminal=false
+ Type=Application
+ Categories=GNOME;GTK;Game;BlocksGame;
