@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="$_pkgname-nightly-bin"
-pkgverorg='6.2.1-nightly.38'
-pkgver='6.2.1.nightly.38'
+pkgverorg='6.2.1-nightly.39'
+pkgver='6.2.1.nightly.39'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (nightly binary release).'
 arch=('x86_64' 'armv7l' 'aarch64')
@@ -25,9 +25,9 @@ _releaseurl="https://github.com/$_pkgname/$_pkgname-app/releases/download/v$pkgv
 source_x86_64=("$pkgname-$pkgverorg-$pkgrel-amd64.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-amd64.deb")
 source_armv7l=("$pkgname-$pkgverorg-$pkgrel-armv7l.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-armv7l.deb")
 source_aarch64=("$pkgname-$pkgverorg-$pkgrel-arm64.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-arm64.deb")
-sha512sums_x86_64=('629a2e073cd1939c38f195bd53edf6b5249c4443d0e593d378a94ae17e4a0e3eac0242dbd08457cd719aaf81cbf0bebd4bdb67eb8cf492feac6103815e57cc62')
-sha512sums_armv7l=('48fe70d669c581709bd151bdd3948f4fdc2864bd377fbcf8cdc94f58a40d775b32e2356ac04e6336d4e367ba4f947f4fa1171f47e45b8d683d26be6664754ff9')
-sha512sums_aarch64=('1738890080af79e26ab820f4357beb81191932bd661b75a5b05050e6cfdae33d1f8c52252f275bd8c31c38c23dcfb811b068a865f03a233dc07d0228ae298a7a')
+sha512sums_x86_64=('7d6c9e2704ed3fba7739de69a6b7146434ed8c99d8495137d3935e9e49fb50fc4dbcbd6e63de9025a225d0d58603920ba44e7eb5550af6110a7b75807d6e51ef')
+sha512sums_armv7l=('70da8d2c769282bee95da0089c410a8d155b87acf6f38a09687c4280a4c074d9d86319072f4d3f0ff9c6d13ddd03678f56ebf354d1b87ca1d4e365087c1a55f0')
+sha512sums_aarch64=('e78878183c15a39eef7ab8bb9bd9acf0d27c48c46c5a7bcabdd40c2f849ec886bdca2009bbf070ae9c7e94003bbfe14d28703d302b44e73a4fdc4abe52f5d79d')
 
 _sourcedirectory="$pkgname-$pkgverorg-$pkgrel"
 
