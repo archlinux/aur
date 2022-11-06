@@ -7,7 +7,7 @@
 
 _pkgbase=firefox-gnome-theme
 pkgname=${_pkgbase}-git
-pkgver=100.r72.g44606f0
+pkgver=105.1.r18.g9261e16
 pkgrel=1
 pkgdesc='A GNOME theme for Firefox'
 arch=('x86_64')
@@ -19,11 +19,11 @@ install="${_pkgbase}.install"
 source=("${_pkgbase}::git+${url}.git"
         "INSTALL.md")
 sha256sums=('SKIP'
-            '785a05ba54d4ddda6c7b48b1cf696379bf746cd764e2444f6ce37cca74e29d19')
+            'f0fc2ccb43b813174e329fef74ab37a8cbfecd60168dbe05ccba999cfd8d222a')
 
 pkgver() {
   cd "${_pkgbase}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

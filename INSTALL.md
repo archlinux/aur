@@ -23,12 +23,14 @@
 
 	```
 	[[ -s userChrome.css ]] || echo >> userChrome.css
+	[[ -s userContent.css ]] || echo >> userContent.css
 	```
 
 7. Import this theme at the beginning of the CSS files (all `@import`s must come before any existing `@namespace` declarations):
 
 	```
 	sed -i '1s/^/@import "firefox-gnome-theme\/userChrome.css";\n/' userChrome.css
+	sed -i '1s/^/@import "firefox-gnome-theme\/userContent.css";\n/' userContent.css
 	```
 
 8. Symlink preferences file:
