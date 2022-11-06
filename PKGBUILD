@@ -9,7 +9,7 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.44.1
+pkgver=3.46.4
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -19,13 +19,13 @@ depends=(vte3 gsettings-desktop-schemas)
 makedepends=(docbook-xsl libnautilus-extension gnome-shell yelp-tools meson)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-groups=(gnome)
+groups=(gnome-extra)
 changelog=package.changelog
 options=(debug)
-source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
+source=(https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.46.4/gnome-terminal-3.46.4.tar.gz
         transparency.patch)
-sha256sums=('fb6f20ee1ff231a9aaedab13d5dc6e5a64c955711224848b790086e88959d37b'
-            '095d356e0740a4e7a029175c75556bcf20f612cdda79a26d5885254d06f54e42')
+sha256sums=('731c72547aba3911873f3562c500da8d782a28a47391af536d9ed7ab892ba42c'
+            'fd788db8c22fa815e019f213fbd0e37eef637a66a017876fa3d3ba99bdf8d813')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -33,7 +33,11 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgname-$pkgver build
+  local meson_options=(
+    -D b_lto=false
+  )
+
+  arch-meson $_pkgname-$pkgver build "${meson_options[@]}"
   meson compile -C build
 }
 
