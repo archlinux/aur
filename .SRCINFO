@@ -1,0 +1,115 @@
+pkgbase = java18-openjdk
+	pkgver = 18.0.2.u1
+	pkgrel = 1
+	url = https://openjdk.java.net/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment=18
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libelf
+	makedepends = libcups
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = alsa-lib
+	makedepends = pandoc
+	makedepends = graphviz
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
+	makedepends = libpng
+	makedepends = lcms2
+	makedepends = libnet
+	makedepends = bash
+	makedepends = harfbuzz
+	makedepends = gcc-libs
+	makedepends = glibc
+	options = !lto
+	source = https://github.com/openjdk/jdk18u/archive/jdk-18.0.2+1.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = b4587238b714764dd77720e5c71e6f44871b09468810c4e82f51408ae0182989
+	sha256sums = 85c4742764590783160af74587a47269e6797fbdf18ec485c7644bd239adf61d
+	sha256sums = abac1ab09a33a3654378bc69be5a7cf075263ab3ae9efec1eb25cf388e711bb7
+	sha256sums = e7cce0ecf868f656d8dc2eb25ab82ab665526a0a28aba20f02632dd29962dac3
+
+pkgname = jre18-openjdk-headless
+	pkgdesc = OpenJDK Java 18 headless runtime environment
+	install = install_jre-openjdk-headless.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = lcms2
+	depends = liblcms2.so
+	depends = libnet
+	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=18
+	provides = java-runtime-headless-openjdk=18
+	provides = jre18-openjdk-headless=18.0.2.u1-1
+	backup = etc/java18-openjdk/logging.properties
+	backup = etc/java18-openjdk/management/jmxremote.access
+	backup = etc/java18-openjdk/management/jmxremote.password.template
+	backup = etc/java18-openjdk/management/management.properties
+	backup = etc/java18-openjdk/net.properties
+	backup = etc/java18-openjdk/security/java.policy
+	backup = etc/java18-openjdk/security/java.security
+	backup = etc/java18-openjdk/security/policy/README.txt
+	backup = etc/java18-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java18-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java18-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java18-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java18-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java18-openjdk/sound.properties
+
+pkgname = jre18-openjdk
+	pkgdesc = OpenJDK Java 18 full runtime environment
+	install = install_jre-openjdk.sh
+	depends = jre18-openjdk-headless=18.0.2.u1-1
+	depends = giflib
+	depends = libgif.so
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=18
+	provides = java-runtime-openjdk=18
+	provides = jre18-openjdk=18.0.2.u1-1
+
+pkgname = jdk18-openjdk
+	pkgdesc = OpenJDK Java 18 development kit
+	install = install_jdk-openjdk.sh
+	depends = jre18-openjdk=18.0.2.u1-1
+	depends = java-environment-common=3
+	depends = hicolor-icon-theme
+	depends = libelf
+	depends = glibc
+	depends = gcc-libs
+	provides = java-environment=18
+	provides = java-environment-openjdk=18
+	provides = jdk18-openjdk=18.0.2.u1-1
+
+pkgname = openjdk18-src
+	pkgdesc = OpenJDK Java 18 sources
+	depends = jdk18-openjdk=18.0.2.u1-1
+	provides = openjdk18-src=18.0.2.u1-1
+
+pkgname = openjdk18-doc
+	pkgdesc = OpenJDK Java 18 documentation
+	depends = jdk18-openjdk=18.0.2.u1-1
+	provides = openjdk18-doc=18.0.2.u1-1
