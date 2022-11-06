@@ -2,7 +2,7 @@
 
 _pkgname='cmake-init'
 pkgname="${_pkgname}-git"
-pkgver=0.31.2.r0.g65af496
+pkgver=0.32.0.r0.gb618b72
 pkgrel=1
 pkgdesc='An opinionated CMake project initializer that generates CMake projects.'
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 	'conan'
 	'vcpkg'
 )
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 
