@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1220
+pkgver=mainline.0.1226
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
 	'libva'
 	'lz4>=1.8'
 	'nlohmann-json>=3.8'
+	'openssl'
 	'opus>=1.3'
 	'qt5-tools>=5.15'
 	'sdl2>=2.0.18'
@@ -123,6 +124,7 @@ package() {
 		'libavcodec.so'
 		'libavutil.so'
 		'libboost_context.so'
+		'libcrypto.so'
 		'libcubeb.so'
 		'libdynarmic.so'
 		'libfmt.so'
@@ -132,6 +134,7 @@ package() {
 		'libswscale.so'
 		'libusb-1.0.so'
 		'libva.so'
+		'libzstd.so'
 	)
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
