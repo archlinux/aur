@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
 	pkgver = 6.1rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/torvalds/h/v6.1-rc3
 	arch = x86_64
 	license = GPL2
@@ -30,7 +30,7 @@ pkgbase = linux-mainline-um5302ta
 	sha256sums = SKIP
 	sha256sums = 05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6
 	sha256sums = 1391b24a25148c3f1a60867d2f805f85c3dd201ffd0293b66d1ac892da20d910
-	sha256sums = 405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82
+	sha256sums = e2613a7336bd01a2727ca2fc37e1000be6e9d30632aec56eff334e3f7b23e487
 
 pkgname = linux-mainline-um5302ta
 	pkgdesc = The Linux kernel and modules

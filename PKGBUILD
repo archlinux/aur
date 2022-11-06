@@ -3,7 +3,7 @@
 
 pkgbase=linux-mainline-um5302ta
 pkgver=6.1rc3
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v6.1-rc3
 url="https://git.kernel.org/torvalds/h/$_srctag"
@@ -30,7 +30,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
             '1391b24a25148c3f1a60867d2f805f85c3dd201ffd0293b66d1ac892da20d910'
-            '405100dba08840def4e9546f6e49616cc6bb3d9d25d26c58fa32cd82b4d3df82')
+            'e2613a7336bd01a2727ca2fc37e1000be6e9d30632aec56eff334e3f7b23e487')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
