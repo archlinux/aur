@@ -13,7 +13,7 @@ pkgbase = conceal-core
 	makedepends = boost-libs
 	depends = boost
 	depends = boost-libs
-	source = https://github.com/ConcealNetwork/conceal-core/archive/refs/tags/6.6.5.tar.gz
+	source = https://github.com/ConcealNetwork/conceal-core/archive/refs/tags/6.7.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = conceal-core
