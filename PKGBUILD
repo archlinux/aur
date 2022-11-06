@@ -1,6 +1,6 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=torrserver-git
-pkgver=MatriX.118.2.r0.gb505e71
+pkgver=MatriX.118.2.r1.g9485966
 pkgrel=1
 pkgdesc="Torrent stream server"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686')
@@ -26,6 +26,8 @@ prepare(){
     cd "$pkgname"/web
     export YARN_CACHE_FOLDER="$srcdir"/yarn
     yarn install --no-fund
+    sed '10 i const crypto = require("crypto");\nconst crypto_orig_createHash = crypto.createHash;\ncrypto.createHash = algorithm => crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);' \
+        -i node_modules/react-scripts/config/webpack.config.js
 }
 
 build() {
