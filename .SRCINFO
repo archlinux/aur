@@ -1,8 +1,8 @@
 pkgbase = glcapsviewer-git
 	pkgdesc = OpenGL Hardware Capability Viewer
-	pkgver = r119.7ff8d1f
-	pkgrel = 2
-	url = http://www.saschawillems.de/?page_id=771/
+	pkgver = r127.26e160c
+	pkgrel = 1
+	url = https://opengl.gpuinfo.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -21,4 +21,3 @@ pkgbase = glcapsviewer-git
 	sha256sums = 139ceb073a34bea5450ca2b6d7f50523f8986d9f5a6b069d36cf05d03609f352
 
 pkgname = glcapsviewer-git
-
