@@ -2,7 +2,7 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.3.2.r105.g2121c60c
+pkgver=1.3.2.r111.g6fc658dd
 pkgrel=1
 url="https://github.com/bit-team/backintime"
 license=('GPL')
@@ -26,13 +26,11 @@ build() {
   make
 }
 
-#check() {
-#  #make -C $_pkgname/common test
-#
-#  # Isolate some of the integration tests (~/.ssh/ files, ...)
-#  HOME=tmp make -C $_pkgname/common test
-#  rm -rf $_pkgname/common/tmp
-#}
+check() {
+  # Set HOME to isolate some tests, which accesses files in ~/.ssh/, etc.
+  HOME=tmp make -C $_pkgname/common test
+  rm -rf $_pkgname/common/tmp
+}
 
 package_backintime-cli-git() {
   pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
@@ -52,8 +50,7 @@ package_backintime-git() {
   depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   optdepends=('kompare: diff tool'
               'meld: diff tool'
-              'python-secretstorage: store passwords'
-              'qt5-wayland: Wayland support')
+              'python-secretstorage: store passwords')
   provides=($_pkgname)
   conflicts=($_pkgname)
 
