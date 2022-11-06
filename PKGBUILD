@@ -3,7 +3,7 @@
 
 _crate="lottieconv"
 pkgname="lottieconv"
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Convert lottie files to WEBP or GIF'
 url='https://crates.io/crates/lottieconv'
@@ -14,8 +14,8 @@ makedepends=('cargo' 'clang')
 conflicts=('lottie2gif' 'lottie2webp')
 replaces=('lottie2gif' 'lottie2webp')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.2.1/download")
-sha512sums=('5a8328796d3ead53b834e488e7c6e276c0a124d067a4c8a34cb56ebe4443a5b873dad6bc434df3521ed8633974810dd42117c0cc1047a6442a57dc373175d229')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.2.2/download")
+sha512sums=('bb51db1ed824c8a39e63534f4616924be6929f842419e50819b1770bcf447bd788ee8a40f36e6e943fceb80b529245aa50c9538bd9e993ff2b1f8806152cec74')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
