@@ -3,13 +3,13 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.7.0.r1.g65077ea
-pkgrel=2
+pkgver=2.7.7.r2.g3e9c74f1
+pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3')
 makedepends=('nodejs' 'git')
-optdepends=('mongodb-bin: Provides storage'
+optdepends=('mongodb: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
 url="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
@@ -27,6 +27,7 @@ pkgver(){
 
 build(){
     cd "${srcdir}/Icalingua"
+    export NODE_OPTIONS=--openssl-legacy-provider
     node /usr/lib/node_modules/corepack/dist/pnpm.js install
     cd icalingua
     node /usr/lib/node_modules/corepack/dist/pnpm.js run build:dir
