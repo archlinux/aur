@@ -11,7 +11,8 @@ source=("${pkgname}::git+https://github.com/0x00002a/libfprint.git")
 pkgrel=4
 pkgver=r1678.bc539f9
 md5sums=('SKIP')
-optdepends=('fprintd: D-Bus daemon for managing readers' 'libgusb' 'openssl' 'pixman' 'nss' 'libgudev')
+depends=('libgusb' 'openssl' 'pixman' 'nss' 'libgudev')
+optdepends=('fprintd: D-Bus daemon for managing readers')
 url="https://github.com/0x00002a/libfprint/tree/0x2a/dev/goodixtls-sigfm"
 
 

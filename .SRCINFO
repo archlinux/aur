@@ -9,12 +9,12 @@ pkgbase = libfprint-goodixtls-git
 	makedepends = meson
 	makedepends = opencv
 	makedepends = pkgconf
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = nss
+	depends = libgudev
 	optdepends = fprintd: D-Bus daemon for managing readers
-	optdepends = libgusb
-	optdepends = openssl
-	optdepends = pixman
-	optdepends = nss
-	optdepends = libgudev
 	provides = libfprint
 	provides = libfprint-2.so=2-64
 	conflicts = libfprint
