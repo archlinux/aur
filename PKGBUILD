@@ -1,14 +1,14 @@
 # Maintainer: AsamK <asamk@gmx.de>
 pkgname=sequoia-octopus-librnp
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sequoia-based OpenPGP Backend for Thunderbird'
 url="https://gitlab.com/sequoia-pgp/${pkgname}"
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/sequoia-pgp/${pkgname}/-/archive/v$pkgver/${pkgname}-v$pkgver.tar.gz"
         "${pkgname}.hook")
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL2')
-makedepends=('cargo' 'clang')
+makedepends=('cargo' 'clang' 'rustup')
 install="${pkgname}.install"
 depends=('thunderbird')
 sha256sums=('bd88516cc6c257bb29ac79cfc1192c846666a3fee20cfa89de294090c69608ce'
@@ -17,6 +17,7 @@ sha256sums=('bd88516cc6c257bb29ac79cfc1192c846666a3fee20cfa89de294090c69608ce'
 build () {
   cd "$srcdir/$pkgname-v$pkgver"
 
+  echo '1.64.0' > rust-toolchain
   cargo build --locked --release --target-dir target
 }
 
