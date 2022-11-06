@@ -7,7 +7,7 @@ pkgdesc="fast-paced free massively multiplayer online role-playing game"
 arch=('x86_64')
 url="http://www.tibia.com"
 license=('custom')
-depends=('glu' 'libgl' 'libice' 'libxext' 'openssl' 'pcre' 'qt5-base' 'qt5-declarative')
+depends=('glu' 'libgl' 'libice' 'libxext' 'openssl-1.1' 'pcre' 'qt5-base' 'qt5-declarative')
 makedepends=('gendesk' 'python-html2text')
 
 DLAGENTS=("https::/usr/bin/curl --compressed -fLC - --retry 0 --retry-delay 0 -e %u -o %o %u"
