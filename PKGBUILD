@@ -18,12 +18,12 @@ source=(
 md5sums=('e55d892233a5bfedeab4b696a07cc431')
 
 build () {
-  cd "${pkgname}-${pkgver/v/}"
+  cd "warpd-${pkgver/v/}"
   make
   make man
 }
 
 package () {
-  cd "${pkgname}-${pkgver/v/}"
+  cd "warpd-${pkgver/v/}"
   make install DESTDIR="$pkgdir" PREFIX="/usr"
 }
