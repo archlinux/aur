@@ -1,13 +1,13 @@
 # Maintainer: Emil <emildekeyser@telenet.be>
 
 pkgname=dino-patched-git
-pkgver=v0.2.0.r294.g6bfcaf42
-pkgrel=2
+pkgver=v0.2.0.r317.g3296a7ad
+pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala patched with extra stuff"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://dino.im/"
 license=('GPL3')
-depends=('glib2>=2.38' 'glib-networking' 'gtk3>=3.22' 'gpgme'
+depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
 	 'libgee>=0.10' 'libgcrypt' 'libsoup' 'sqlite' 'qrencode'
 	 'libsignal-protocol-c' 'gspell' 'gst-plugins-base'
 	 'gst-plugins-good' 'gst-plugin-gtk' 'webrtc-audio-processing'
