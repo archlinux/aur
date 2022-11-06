@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-git
 pkgver=1.0b9.r113.44d6246
-pkgrel=2
+pkgrel=3
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
 url='https://nickfa.ro/index.php?title=HUGETracker'
@@ -44,7 +44,7 @@ prepare() {
 	for module in Pascal-SDL-2-Headers bgrabitmap hUGEDriver rackctls; do
 		git config submodule.$module.url "$srcdir/$module"
 	done
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 
 	# Copy the "dedicated to the public domain" line as a makeshift license file
 	grep 'public domain' README.md >LICENSE
@@ -61,7 +61,10 @@ build() {
 
 	rgblink <(rgbasm -E -i hUGEDriver hUGEDriver/hUGEDriver.asm -o -) \
 	        <(rgbasm -i hUGEDriver/include halt.asm -o -) \
-                -n halt.sym -o - | rgbfix -vp 0xFF >halt.gb
+	        -n halt.sym -o - | rgbfix -vp 0xFF >halt.gb
+
+	lazbuild --lazarusdir="${_lazdir}" uge2source/uge2source.lpi --build-mode="Default"
+	make -C hUGEDriver/tools # rgb2sdas
 }
 
 package() {
@@ -75,4 +78,7 @@ package() {
 	install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/" halt.{gb,sym}
 	env -C "hUGEDriver" bash -c "git ls-files -z | grep -zEv '^(\.git|README|doc/|[^/]+_example/|tools/)' | xargs -0 -I '{}' install -Dvm 644 '{}' '$pkgdir/usr/share/hugetracker/hUGEDriver/{}'"
 	find "Resources/Sample Songs" -maxdepth 1 -type f -exec install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/Sample Songs/" '{}' +
+
+	install -Dvsm 755 uge2source/uge2source "$pkgdir/usr/bin/uge2source"
+	install -Dvsm 755 hUGEDriver/tools/rgb2sdas "$pkgdir/usr/bin/rgb2sdas"
 }
