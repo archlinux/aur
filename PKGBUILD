@@ -3,7 +3,7 @@
 pkgname=ja2-stracciatella-git
 pkgver=11237.829db5183
 pkgrel=1
-pkgdesc="Jagged Alliance 2 Stracciatella project with a goal of improving JA2"
+pkgdesc='Jagged Alliance 2 Stracciatella'
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
