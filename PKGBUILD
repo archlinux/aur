@@ -3,7 +3,7 @@
 
 
 pkgname=speki
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=0
 pkgdesc="Flashcard app for your terminal"
 url="https://github.com/TBS1996/speki"
