@@ -1,7 +1,7 @@
 pkgbase = miniaturo-git
-	pkgdesc = A raw image thumbnailer. Drop-in replacement for raw-thumbnailer.
+	pkgdesc = A raw image thumbnailer written in Rust. Drop-in replacement for raw-thumbnailer.
 	pkgver = r24.44664f2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbrgn/miniaturo
 	arch = x86_64
 	arch = armv6h
