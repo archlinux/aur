@@ -3,19 +3,19 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
 pkgver=17.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL')
 options=('emptydirs')
-_artifact=v${pkgver}-2
+_artifact=v${pkgver}-${pkgrel}
 source=("ceph-bin-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_linux_${arch}.tar.zstd"
         "ceph-libs-bin-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_libs_linux_${arch}.tar.zstd"
         "ceph-mgr-bin-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_mgr_linux_${arch}.tar.zstd")
-sha512sums=('845cfd6ebff47f1179f5e2044346178cc0c7442f2d083b0015d959e523b81f9c2c09246d5eb1de4fb102c2118aba15ff3a67e385b251e6ca656a90d28e45334d'
-            '9ba7d32b77b64b8c202937dc67a65172603d892e19f68958bf134d8c55e55565ed36ecb7eeb8b8e19ab691fc8afb8f9dacfc6603ddf9b1d5242d2809c8b21902'
-            '18ee4f23d50ae3dd4724903485f0bea6c297c3476cbc4721c1a5d6c1f1041a448be697c81168f78d0a28cfa635cf50d6a7ba28faa735f282785f8fd301d3705a')
+sha512sums=('1771dd508a329a7a379b3023d6c538719eef29b3534d967e545a55f4e6cd5c84456bbf823ab91c394c90e64eb42213a1a28c96c8c1d632240e2f5415ba8401c0'
+            'ad068ef3c4e7dcfeafd18855450b2a1fa19bc22bc4036ba1ca32bbf97e44cebd54ba701e25b165b217448af5d35ba5f48cbadd3d7a6bf084bd17d4f54c400ac7'
+            '4e0cfe0c17a092aa320cc025a7aff9544c7f94c5bd80ab8de2498eb1a81235a620096fcada82301efce51d8d69b53500e65d7feb22fca91524972ef91413d7ae')
 # Don't extract source archives
 noextract=("${source[@]%%::*}")
 
@@ -40,6 +40,8 @@ package_ceph-bin() {
            'ncurses'
            'nss' 'oath-toolkit' 'python'
            'snappy' 'sudo' 'systemd-libs' 'lua' 'gawk')
+  optdepends=('smartmontools: disk monitoring via S.M.A.R.T'
+              'nvme-cli: disk monitoring for NVMe drives')
   provides=("ceph=${pkgver}-${pkgrel}")
   conflicts=('ceph')
 
