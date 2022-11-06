@@ -13,6 +13,6 @@ pkgbase = blightmud
 	provides = blightmud
 	conflicts = blightmud
 	source = blightmud-5.0.0.tar.gz::https://github.com/Blightmud/Blightmud/archive/v5.0.0.tar.gz
-	md5sums = 54ea883de89d6b9a5483018d2ec4bb01
+	md5sums = 553181e0b2df09cec8d612d4268b257d
 
 pkgname = blightmud
