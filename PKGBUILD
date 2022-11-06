@@ -2,7 +2,7 @@
 
 _pkgname=pyfinite
 pkgname=python-$_pkgname
-pkgver=1.9
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Finite field operations and erasure correction codes"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4df2a7165bad4d8e6d73fa68d3b0d5d335758ba8517e9b3a2e1bf22ae00ec5ff')
+sha256sums=('33f58a04e814a30dcddaa73a16c46e32bc13741b097c0a4b57c7090bf5acfec0')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
