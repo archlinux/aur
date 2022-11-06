@@ -1,0 +1,28 @@
+From: Andrej Shadura <andrewsh@debian.org>
+Date: Sat, 15 Dec 2018 14:19:22 +0100
+Subject: Enable TLSv1.0 by default
+
+OpenSSL 1.1.1 disables TLSv1.0 by default and sets the security level to 2.
+Some older networks may support for TLSv1.0 and less secure cyphers.
+---
+ src/crypto/tls_openssl.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/crypto/tls_openssl.c b/src/crypto/tls_openssl.c
+index c9e00b3..273e5cb 100644
+--- a/src/crypto/tls_openssl.c
++++ b/src/crypto/tls_openssl.c
+@@ -1040,6 +1040,13 @@ void * tls_init(const struct tls_config *conf)
+ 		os_free(data);
+ 		return NULL;
+ 	}
++
++#ifndef EAP_SERVER_TLS
++	/* Enable TLSv1.0 by default to allow connecting to legacy
++	 * networks since Debian OpenSSL is set to minimum TLSv1.2 and SECLEVEL=2. */
++	SSL_CTX_set_min_proto_version(ssl, TLS1_VERSION);
++#endif
++
+ 	data->ssl = ssl;
+ 	if (conf) {
+ 		data->tls_session_lifetime = conf->tls_session_lifetime;

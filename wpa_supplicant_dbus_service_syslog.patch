@@ -1,0 +1,36 @@
+From: Kel Modderman <kel@otaku42.de>
+Date: Sat, 21 Apr 2012 15:59:32 +1000
+Subject: Tweak D-Bus/systemd service activation configuration files:
+
+ * log wpa_supplicant messages to syslog
+ * activate control socket interface so that wpa_cli can be used by D-Bus
+   activated wpa_supplicant daemon
+---
+ wpa_supplicant/dbus/fi.w1.wpa_supplicant1.service.in | 2 +-
+ wpa_supplicant/systemd/wpa_supplicant.service.in     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/wpa_supplicant/dbus/fi.w1.wpa_supplicant1.service.in b/wpa_supplicant/dbus/fi.w1.wpa_supplicant1.service.in
+index d97ff39..3b0af67 100644
+--- a/wpa_supplicant/dbus/fi.w1.wpa_supplicant1.service.in
++++ b/wpa_supplicant/dbus/fi.w1.wpa_supplicant1.service.in
+@@ -1,5 +1,5 @@
+ [D-BUS Service]
+ Name=fi.w1.wpa_supplicant1
+-Exec=@BINDIR@/wpa_supplicant -u
++Exec=@BINDIR@/wpa_supplicant -u -s -O /run/wpa_supplicant
+ User=root
+ SystemdService=wpa_supplicant.service
+diff --git a/wpa_supplicant/systemd/wpa_supplicant.service.in b/wpa_supplicant/systemd/wpa_supplicant.service.in
+index 58a6228..bc0688a 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant.service.in
++++ b/wpa_supplicant/systemd/wpa_supplicant.service.in
+@@ -7,7 +7,7 @@ Wants=network.target
+ [Service]
+ Type=dbus
+ BusName=fi.w1.wpa_supplicant1
+-ExecStart=@BINDIR@/wpa_supplicant -u
++ExecStart=@BINDIR@/wpa_supplicant -u -s -O /run/wpa_supplicant
+ 
+ [Install]
+ WantedBy=multi-user.target

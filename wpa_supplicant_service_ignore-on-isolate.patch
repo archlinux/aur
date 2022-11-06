@@ -1,0 +1,36 @@
+From: Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>
+Date: Mon, 13 Mar 2017 13:46:12 -0400
+Subject: Add IgnoreOnIsolate=yes to keep wpa-supplicant running while
+ systemctl isolate
+
+> Add IgnoreOnIsolate=yes so that when switching "runlevels" in
+> oem-config will not kill off wpa and cause wireless to be
+> unavailable on first boot. (LP: #1576024)
+
+Also happens when running systemctl isolate default.target:
+
+> NM should be detecting that wpasupplicant is not running and start
+> it -- this should already have been working by way of wpasupplicant
+> being dbus-activated.
+[...]
+> It seems to me like IgnoreOnIsolate for wpasupplicant would be the
+> right thing to do, or to figure out why it isn't being properly
+> started when NM tries to use it.
+
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1576024
+---
+ wpa_supplicant/systemd/wpa_supplicant.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/wpa_supplicant/systemd/wpa_supplicant.service.in b/wpa_supplicant/systemd/wpa_supplicant.service.in
+index bc0688a..561ae8f 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant.service.in
++++ b/wpa_supplicant/systemd/wpa_supplicant.service.in
+@@ -3,6 +3,7 @@ Description=WPA supplicant
+ Before=network.target
+ After=dbus.service
+ Wants=network.target
++IgnoreOnIsolate=true
+ 
+ [Service]
+ Type=dbus
