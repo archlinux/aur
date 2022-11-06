@@ -1,23 +1,26 @@
 pkgbase = hmcl-new
 	pkgdesc = An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java.
-	pkgver = 3.5.3.223
+	pkgver = 3.5.3.227
 	pkgrel = 1
-	url = https://github.com/skbeh/HMCL-build
+	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
+	makedepends = java-environment>=17
+	makedepends = gradle
 	depends = java-openjfx>=17
 	provides = hmcl
 	conflicts = hmcl
-	noextract = hmcl-new-3.5.3.223-1.jar
 	source = hmcl.desktop
 	source = hmcl-launch-script
 	source = craft_table.png
-	source = LICENSE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE
-	source = hmcl-new-3.5.3.223-1.jar::https://github.com/skbeh/HMCL-build/releases/download/v3.5.3.223/HMCL-3.5.3.223.jar
+	source = hmcl-new-3.5.3.227.tar.gz::https://github.com/huanghongxun/HMCL/archive/refs/tags/v3.5.3.227.tar.gz
+	source = 0001-Target-java-17.patch
+	source = 0002-Cleanup.patch
 	sha256sums = b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef
-	sha256sums = 534e391a637394e47cdeb0d9dfe24cd6fd1dedb863c085951403ec24f1470d06
+	sha256sums = 9adb4243a5123ff82cb3678ebb3e889250d745973859d57ab5a14b2867b7cb04
 	sha256sums = 2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c
-	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = d3680eb1f126f1d9cc2239bf68387165ce2d91b3cc9cd510a8339dddb68fb94d
+	sha256sums = 6d0b1fa5d4a7cab1024e62c12ea6baf19197175e2d2d3af9b23099878057b92f
+	sha256sums = 6348216b7c7c9b4d44355d19e11ea6d27d7b1d48d3f0a43079ab929e70728448
+	sha256sums = 34b2d477abed1858dc36069fc4374510f9ef52632fd415e0a077f99240ee20e6
 
 pkgname = hmcl-new
