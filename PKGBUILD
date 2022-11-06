@@ -8,10 +8,10 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-_tag='a8637afe0398f0be0131f73563b55ef9315ca351' # git rev-parse ${pkgver}
-pkgver=3.1.0
-pkgrel=2
-pkgdesc="Interactive process viewer with solarized patch"
+_tag='f3be499104b3a394505ac00d026c0013cfd33676' # git rev-parse ${pkgver}
+pkgver=3.2.1
+pkgrel=1
+pkgdesc='Interactive process viewer with solarized patch'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://htop.dev/'
 license=('GPL')
@@ -23,7 +23,8 @@ optdepends=('lm_sensors: show cpu temperatures'
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C') # Nathan Scott <nathans@debian.org>
+validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C' # Nathan Scott <nathans@debian.org>
+              '0D316B6ABE022C7798D0324BF1D35CB9E8E12EAD') # Benny Baumann <BenBE@geshi.org>
 source=("git+https://github.com/htop-dev/htop.git#tag=${_tag}?signed"
         'htop-solarized.patch')
 sha256sums=('SKIP'
@@ -44,9 +45,11 @@ build() {
   ./configure \
       --prefix=/usr \
       --sysconfdir=/etc \
-      --enable-cgroup \
+      --enable-affinity \
+      --enable-capabilities \
       --enable-delayacct \
       --enable-openvz \
+      --enable-sensors \
       --enable-unicode \
       --enable-vserver
 
