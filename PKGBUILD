@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/docmirror/dev-sidecar"
 license=("MPL-2.0")
 depends=()
-makedepends=(npm lerna libxcrypt-compat)
+makedepends=(npm libxcrypt-compat)
 provides=(dev-sidecar)
 conflicts=(dev-sidecar)
 source=("git+https://github.com/docmirror/dev-sidecar.git"
@@ -26,9 +26,10 @@ pkgver() {
 
 build() {
   cd dev-sidecar
-  lerna bootstrap
+  npm install
+  npm exec lerna bootstrap
   cd packages/gui
-  npm run electron:build
+  npm --node-options --openssl-legacy-provider run electron:build
 }
 
 package_dev-sidecar-git() {

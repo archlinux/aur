@@ -6,7 +6,6 @@ pkgbase = dev-sidecar-git
 	arch = any
 	license = MPL-2.0
 	makedepends = npm
-	makedepends = lerna
 	makedepends = libxcrypt-compat
 	provides = dev-sidecar
 	conflicts = dev-sidecar
