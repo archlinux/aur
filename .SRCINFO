@@ -1,7 +1,7 @@
 pkgbase = papirus-icon-theme-git
 	pkgdesc = A free and open source SVG icon theme based on Paper Icon Set
-	pkgver = 20211201.r29.gc2c35ba3ab
-	pkgrel = 2
+	pkgver = 20221101.r5.gcce26033ea
+	pkgrel = 1
 	epoch = 1
 	url = https://git.io/papirus-icon-theme
 	install = alt-icons.install
@@ -12,7 +12,6 @@ pkgbase = papirus-icon-theme-git
 	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
 	optdepends = hardcode-tray-git: To fix hardcoded tray icons
 	optdepends = sif-git: To fix icons of running Steam games
-	optdepends = gnome-shell-extension-appindicator: Integrates AppIndicators on GNOME
 	provides = papirus-icon-theme
 	conflicts = papirus-icon-theme
 	options = !strip

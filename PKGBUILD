@@ -7,8 +7,8 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
 pkgname=papirus-icon-theme-git
-pkgver=20211201.r29.gc2c35ba3ab
-pkgrel=2
+pkgver=20221101.r5.gcce26033ea
+pkgrel=1
 epoch=1
 pkgdesc="A free and open source SVG icon theme based on Paper Icon Set"
 arch=('any')
@@ -18,8 +18,7 @@ depends=('gtk-update-icon-cache')
 makedepends=('git')
 optdepends=('hardcode-fixer-git: To deal with hardcoded application icons'
             'hardcode-tray-git: To fix hardcoded tray icons'
-            'sif-git: To fix icons of running Steam games'
-            'gnome-shell-extension-appindicator: Integrates AppIndicators on GNOME')
+            'sif-git: To fix icons of running Steam games')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install='alt-icons.install'
