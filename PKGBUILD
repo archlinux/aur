@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vdu_controls
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
 url="https://github.com/digitaltrails/vdu_controls"
 license=('GPL3')
-depends=('ddcutil' 'python' 'python-pyqt5' 'qt5-multimedia')
+depends=('ddcutil' 'noto-fonts' 'python' 'python-pyqt5' 'qt5-svg')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('b499dca5c827f4a26e8a8ad12d0e89a75f1194d3c599f9ee0fde1e5342c35518'
+sha256sums=('738ff9b6295523629efbff876e8d6a5bb7bcbb25345d68b0fe75bfc0684434ea'
             '726a55c150f3cc77d483e5a484ab252b2ddf3b3919d05042975e82e659f979fc')
 
 build() {
