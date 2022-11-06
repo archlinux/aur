@@ -1,6 +1,6 @@
 # Maintainer: Johannes Larsen <mail@johslarsen.net>
 pkgname=grdl-git-get-git
-pkgver=v0.4.0.r0.f678f4f
+pkgver=v0.5.0.r1.8cd27a8
 pkgrel=1
 pkgdesc="A better way to clone, organize and manage multiple git repositories"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/grdl/git-get"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('git')
+makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
