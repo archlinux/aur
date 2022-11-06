@@ -1,7 +1,7 @@
 pkgbase = ceph
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 17.2.5
-	pkgrel = 2
+	pkgrel = 4
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = ceph
 	checkdepends = python-pylint
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
-	makedepends = zstd=1.5.2
+	makedepends = zstd
 	makedepends = bash
 	makedepends = bc
 	makedepends = boost
@@ -149,7 +149,7 @@ pkgbase = ceph
 	options = !lto
 	source = https://download.ceph.com/tarballs/ceph-17.2.5.tar.gz
 	source = ceph.sysusers
-	source = zstd-1.5.2.tar.gz::https://github.com/facebook/zstd/archive/v1.5.2.tar.gz
+	source = ceph.sudoers
 	source = ceph-13.2.2-dont-install-sysvinit-script.patch
 	source = disable-empty-readable.sh-test.patch
 	source = disable-test-cls-fifo.patch
@@ -162,7 +162,7 @@ pkgbase = ceph
 	source = ceph-17.2.5-fix-iterator-depreciations.patch
 	sha512sums = 10cd3d9eb01c91c148a92f1f7d040bbd78af5bb1ab15d071d93f54b37097dc9e1268eed9e788fe32794d137f6af81abd6a2aeaee39cef44d2c45234a15cc6020
 	sha512sums = 4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049
-	sha512sums = e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e
+	sha512sums = 41dbc1c395cdf9b3edf5c5d91bbc90f416b4338ad964fa3471f26a4312d3ec2a5dcebbc351a1640dc4b047b4f71aa134ac7486747e5f62980092b0176e7567f5
 	sha512sums = ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e
 	sha512sums = 2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222
 	sha512sums = 3774cbc1a979ee8bf7138b96defcf69499444afe0b7186b21feac3453a3a5ec93741f5942d256d93999e9bc306c8d018206893e04e1a3eb9e03593105d9f5791
@@ -175,7 +175,7 @@ pkgbase = ceph
 	sha512sums = 2a6f33791760e14543c90077bfc6bf1b6b82ee2996e80b4762eadb887a0d9a67c221b6f10832ddf780dc6abaed246a1e2ee7680c9c861c4ff70e61b752a37b36
 
 pkgname = ceph
-	depends = ceph-libs=17.2.5-2
+	depends = ceph-libs=17.2.5-4
 	depends = boost-libs
 	depends = curl
 	depends = fuse3
@@ -198,7 +198,9 @@ pkgname = ceph
 	depends = systemd-libs
 	depends = lua
 	depends = gawk
-	provides = ceph=17.2.5-2
+	optdepends = smartmontools: disk monitoring via S.M.A.R.T
+	optdepends = nvme-cli: disk monitoring for NVMe drives
+	provides = ceph=17.2.5-4
 	conflicts = ceph-bin
 
 pkgname = ceph-libs
@@ -224,12 +226,12 @@ pkgname = ceph-libs
 	depends = python-prettytable
 	depends = python-yaml
 	depends = python-setuptools
-	provides = ceph-libs=17.2.5-2
+	provides = ceph-libs=17.2.5-4
 	conflicts = ceph-libs-bin
 
 pkgname = ceph-mgr
-	depends = ceph=17.2.5-2
-	depends = ceph-libs=17.2.5-2
+	depends = ceph=17.2.5-4
+	depends = ceph-libs=17.2.5-4
 	depends = bash
 	depends = boost-libs
 	depends = curl
@@ -258,6 +260,6 @@ pkgname = ceph-mgr
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=17.2.5-2
+	provides = ceph-mgr=17.2.5-4
 	conflicts = ceph<16.2.1-1
 	conflicts = ceph-mgr-bin
