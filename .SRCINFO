@@ -1,6 +1,6 @@
 pkgbase = r-rcppcctz
 	pkgdesc = 'Rcpp' Bindings for the 'CCTZ' Library
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppCCTZ
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rcppcctz
 	depends = r
 	depends = r-rcpp
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/RcppCCTZ_0.2.11.tar.gz
-	sha256sums = 5ca66403493fc3aa966eaa7897e18b988af7c5efd58ffa1b9b81dc103319ff6e
+	source = https://cran.r-project.org/src/contrib/RcppCCTZ_0.2.12.tar.gz
+	sha256sums = 2a2087bdb7ab4b617487b87677a81ccd0c5529f776cfe90d2e23d5f5478424cb
 
 pkgname = r-rcppcctz
