@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.3.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -35,21 +35,7 @@ depends=(
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
-  # Steam native runtime listed here because of atk conflict
-  bash  steam  alsa-lib  alsa-plugins  at-spi2-core  cairo  curl  dbus-glib  fontconfig  freetype2  freeglut  gdk-pixbuf2  glew1.10  glib2  glu  gtk2
-  lib32-alsa-lib  lib32-alsa-plugins  lib32-at-spi2-core  lib32-cairo  lib32-curl  lib32-dbus-glib  lib32-fontconfig  lib32-freetype2  lib32-freeglut
-  lib32-gdk-pixbuf2  lib32-glew1.10  lib32-glib2  lib32-glu  lib32-gtk2  lib32-libcaca  lib32-libcanberra  lib32-libcups  lib32-libcurl-compat
-  lib32-libcurl-gnutls  lib32-dbus  lib32-libdrm  lib32-libgcrypt15  lib32-libice  lib32-libidn11  lib32-libjpeg6  lib32-libnm  lib32-pipewire
-  lib32-libpng12  lib32-libpulse  lib32-librtmp0  lib32-libsm  lib32-libtheora  lib32-libtiff4  lib32-libudev0-shim  lib32-libusb  lib32-libva
-  lib32-libvdpau  lib32-libvorbis  lib32-libvpx1.3  lib32-libwrap  lib32-libxcomposite  lib32-libxcursor  lib32-libxft  lib32-libxi
-  lib32-libxinerama  lib32-libxmu  lib32-libxrandr  lib32-libxrender  lib32-libxtst  lib32-libxxf86vm  lib32-nspr  lib32-openal
-  lib32-openssl-1.0  lib32-pango  lib32-sdl  lib32-sdl2  lib32-sdl2_image  lib32-sdl2_mixer  lib32-sdl2_ttf  lib32-sdl_image  lib32-sdl_mixer
-  lib32-sdl_ttf  libcaca  libcanberra  libcups  libcurl-compat  libcurl-gnutls  dbus  libdrm  libgcrypt15  libice  libidn11  libjpeg6  libnm
-  libpng12  libpulse  librsvg  librtmp0  libsm  libtheora  libtiff4  libudev0-shim  libusb  libva  libvdpau  libvorbis  libvpx1.3  libwrap
-  libxcomposite  libxcursor  libxft  libxi  libxinerama  libxmu  libxrandr  libxrender  libxtst  libxxf86vm  nspr  openal  openssl-1.0  pango
-  sdl  sdl2  sdl2_image  sdl2_mixer  sdl2_ttf  sdl_image  sdl_mixer  sdl_ttf  vulkan-icd-loader  vulkan-driver  lib32-vulkan-driver
-  lib32-vulkan-icd-loader  lib32-libappindicator-gtk2  lib32-libindicator-gtk2  lib32-libdbusmenu-glib  lib32-libdbusmenu-gtk2
-  # End of steam native runtime
+  steam-native-runtime
 )
 
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
@@ -108,7 +94,6 @@ optdepends=(
   libgphoto2
   gsm                   lib32-gsm
   dosbox
-  steam-native-runtime
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
