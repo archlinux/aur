@@ -1,0 +1,40 @@
+#!/bin/bash -e
+
+imgs=()
+all=0
+
+while read -r line; do
+  if [[ "$line" != */vmlinuz ]]; then
+    # triggers when it's a change to usr/lib/initcpio/*
+    # in this case all initramfs will be updated by 90-mkinitcpio-install.hook
+    # so we need to convert all img to uimg
+    all=1
+    continue
+  fi
+
+  if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz}/pkgbase"; then
+    # if the kernel has no pkgbase, we skip it
+    continue
+  fi
+
+  preset="/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  if [[ ! -e "$preset" ]]; then
+    # if the kernel did not install its preset, we skip it
+    continue
+  fi
+
+  imgs+=($(
+    . "$preset"
+    for PRESET in "${PRESETS[@]}"; do
+      IMAGE_VAR="${PRESET}_image"
+      echo "${!IMAGE_VAR}"
+    done
+  ))
+done
+
+if (( all )) && compgen -G /boot/initramfs-linux*.img > /dev/null; then
+  /usr/bin/img2uimg 
+elif (( ${#imgs[@]} )); then
+  /usr/bin/img2uimg "${imgs[@]}"
+fi

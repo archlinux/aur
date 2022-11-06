@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+uimgs=()
+all=0
+
+uimgs_append() {
+  uimgs+=($(
+    . "$preset"
+    for PRESET in "${PRESETS[@]}"; do
+      IMAGE_VAR="${PRESET}_image"
+      IMAGE_NAME="${!IMAGE_VAR}"
+      echo "${IMAGE_NAME%.img}.uimg"
+    done
+  ))
+}
+
+while read -r line; do
+  if [[ "$line" != */vmlinuz ]]; then
+    # triggers when it's a change to the hooks package itself
+    all=1
+    continue
+  fi
+
+  if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz}/pkgbase"; then
+    # if the kernel has no pkgbase, we skip it
+    continue
+  fi
+
+  preset="/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  if [[ ! -e "$preset" ]]; then
+    # if the kernel did not install its preset, we skip it
+    continue
+  fi
+
+  uimgs_append
+  
+done
+
+if (( all )) && compgen -G /boot/initramfs-linux*.uimg > /dev/null && compgen -G /etc/mkinitcpio.d/*.preset; then
+  for preset in /etc/mkinitcpio.d/*.preset; do
+    uimgs_append
+  done
+fi
+
+if (( ${#uimgs[@]} )); then
+  rm -f "${uimgs[@]}"
+fi

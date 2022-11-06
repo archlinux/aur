@@ -1,0 +1,14 @@
+#!/bin/bash -e
+img2uimg_each() {
+  UIMG="${1%.img}.uimg"
+  /usr/bin/mkimage -A arm64 -O linux -T ramdisk -C gzip -n uInitrd -d "$1" "${UIMG}"
+}
+if [[ "$@" ]]; then
+  for i in "$@"; do
+    img2uimg_each "$i"
+  done
+elif compgen -G /boot/initramfs-linux*.img &>/dev/null; then
+  for i in /boot/initramfs-linux*.img; do
+    img2uimg_each "$i"
+  done
+fi

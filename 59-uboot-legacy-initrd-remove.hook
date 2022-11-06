@@ -1,0 +1,15 @@
+[Trigger]
+Type = Path
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Trigger]
+Type = Package
+Operation = Remove
+Target = uboot-legacy-initrd-hooks
+
+[Action]
+Description = Removing uboot legacy initrd images...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/uboot-legacy-initrd-remove
+NeedsTargets
