@@ -1,24 +1,14 @@
 ahoyapi: v2
 commands:
 
-  update-srcinfo:
+  configure:
     cmd: "makepkg --printsrcinfo > .SRCINFO"
-    usage: Update .SRCINFO file.
-
-  check-sanity:
-    cmd: "namcap PKGBUILD"
-
-  make:
-    cmd: "makepkg"
 
   build:
-    cmd: "makepkg --printsrcinfo > .SRCINFO && namcap PKGBUILD && makepkg"
+    cmd: "makepkg --printsrcinfo > .SRCINFO && makepkg"
 
-  commit:
-    cmd: "git add .SRCINFO PKGBUILD && git commit -m'Update upstream'"
+  test:
+    cmd: "namcap PKGBUILD && read newest < <(ls -t *.zst) && namcap $newest"
 
   publish:
-    cmd: "git push"
-
-  install:
-    cmd: "makepkg -i"
+    cmd: "git add .SRCINFO PKGBUILD && git commit -m'Update upstream' && git push"
