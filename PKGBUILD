@@ -1,7 +1,8 @@
+
 # Maintainer: Brodi <me@brodi.space>
 _pkgname=aretext
 pkgname=${_pkgname}
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="[BETA] Minimalist text editor that never slows you down."
 arch=("any")
@@ -11,11 +12,11 @@ makedepends=("go")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}-bin" "${_pkgname}-git")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("d4eed79fd9c6b3c9481b1bef8ba3f4f5b6dd6523eda22953e16ff6949f63fe1e")
+sha256sums=("a9d0eedca74d310bddf2efe47d8cee049f88f38d5cf849b6616f2b0ab673dfdb")
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	go build -o aretext -ldflags="-X 'main.commit=48665b87c9b9abc283cfc535a94056db0b551bf1' -X 'main.version=${pkgver}'" main.go
+	go build -o aretext -ldflags="-X 'main.commit=7b2e0c0c9dc98c85f26f6149bcae2044ce2e9a4f' -X 'main.version=${pkgver}'" main.go
 }
 
 package() {
