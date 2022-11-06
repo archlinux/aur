@@ -9,7 +9,7 @@
 # Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=6.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 url='http://www.omnetpp.org'
@@ -18,7 +18,7 @@ depends=(libxml2 qt5-base tcl jdk-openjdk openmpi libpcap doxygen graphviz clang
 makedepends=(sh wget cmake bison flex perl python-scipy python-pandas python-posix_ipc)
 arch=('i686' 'x86_64')
 optdepends=(
-			'python-numpy: analysing simulation recordings' 
+			'python-numpy: analysing simulation recordings'
 			'python-matplotlib: analysing simulation recordings'
 			'python-pandas: analysing simulation recordings'
 			'python-posix_ipc: analysing simulation recordings'
@@ -32,7 +32,7 @@ source=(
   OMNeT++.desktop
   omnetpp.sh)
 
-sha512sums=('f32461525282cc76aaf50a0c476f30b6032421df54cedafc6e2a41c580705d534d26aa490ac45e7faa332c339a2e8d9ec61f575db0c27e34849e7ba10df81249'
+sha512sums=('fa9c787c6ecd14b9ea3063ff2f6a73ffda6cfbc94161c90c487bae38e0f3c63ffdeef98d57b5b9f8353b5b94daa83781a0866849d6b4ba9d82b4af7538fc17ba'
   '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
   'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 
@@ -61,7 +61,7 @@ package() {
 	# copy profile.d file
 	mkdir -p ${pkgdir}/etc/profile.d/
 	cp omnetpp.sh ${pkgdir}/etc/profile.d/
-	
+
 	# copy desktop shortcut
 	mkdir -p ${pkgdir}/usr/share/applications/
 	cp OMNeT++.desktop ${pkgdir}/usr/share/applications/
