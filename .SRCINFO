@@ -1,0 +1,20 @@
+pkgbase = nile-git
+	pkgdesc = Unofficial Amazon Games client
+	pkgver = r38.7b825bd
+	pkgrel = 1
+	url = https://github.com/imLinguin/nile
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = python-protobuf
+	depends = python-pycryptodome
+	depends = python-pyqt5-webengine
+	depends = python-requests
+	depends = python-zstandard
+	provides = nile
+	conflicts = nile
+	source = git+https://github.com/imLinguin/nile.git
+	sha256sums = SKIP
+
+pkgname = nile-git
