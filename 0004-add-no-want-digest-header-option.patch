@@ -1,0 +1,106 @@
+From 839dd2caf77863503d18252a1aff16cd1dde274c Mon Sep 17 00:00:00 2001
+From: carsonzhu <carsonzhu@tencent.com>
+Date: Sat, 2 Apr 2022 17:06:27 +0800
+Subject: [PATCH] add no-want-digest-header option
+
+---
+ doc/manual-src/en/aria2c.rst |  4 ++++
+ src/HttpRequestCommand.cc    |  2 ++
+ src/OptionHandlerFactory.cc  | 10 ++++++++++
+ src/prefs.cc                 |  2 ++
+ src/prefs.h                  |  2 ++
+ src/usage_text.h             |  3 +++
+ 6 files changed, 23 insertions(+)
+
+diff --git a/doc/manual-src/en/aria2c.rst b/doc/manual-src/en/aria2c.rst
+index 2c174e3f..ee132c35 100644
+--- a/doc/manual-src/en/aria2c.rst
++++ b/doc/manual-src/en/aria2c.rst
+@@ -557,6 +557,10 @@ HTTP Specific Options
+   Use HEAD method for the first request to the HTTP server.
+   Default: ``false``
+ 
++.. option:: --no-want-digest-header [true|false]
++
++  Whether to disable Want-Digest header when doing requests.
++  Default: ``false``
+ 
+ .. option:: -U, --user-agent=<USER_AGENT>
+ 
+diff --git a/src/HttpRequestCommand.cc b/src/HttpRequestCommand.cc
+index a2b8e7ef..3ef3887c 100644
+--- a/src/HttpRequestCommand.cc
++++ b/src/HttpRequestCommand.cc
+@@ -99,6 +99,8 @@ createHttpRequest(const std::shared_ptr<Request>& req,
+   httpRequest->setOption(option.get());
+   httpRequest->setProxyRequest(proxyRequest);
+   httpRequest->setAcceptMetalink(rg->getDownloadContext()->getAcceptMetalink());
++  httpRequest->setNoWantDigest(option->getAsBool(PREF_NO_WANT_DIGEST_HEADER));
++
+   if (option->getAsBool(PREF_HTTP_ACCEPT_GZIP)) {
+     httpRequest->enableAcceptGZip();
+   }
+diff --git a/src/OptionHandlerFactory.cc b/src/OptionHandlerFactory.cc
+index 6bff4caa..2cd2c43e 100644
+--- a/src/OptionHandlerFactory.cc
++++ b/src/OptionHandlerFactory.cc
+@@ -1205,6 +1205,16 @@ std::vector<OptionHandler*> OptionHandlerFactory::createOptionHandlers()
+     op->setChangeOptionForReserved(true);
+     handlers.push_back(op);
+   }
++  {
++    OptionHandler* op(new BooleanOptionHandler(
++        PREF_NO_WANT_DIGEST_HEADER, TEXT_NO_WANT_DIGEST_HEADER, A2_V_FALSE,
++        OptionHandler::OPT_ARG));
++    op->addTag(TAG_HTTP);
++    op->setInitialOption(true);
++    op->setChangeGlobalOption(true);
++    op->setChangeOptionForReserved(true);
++    handlers.push_back(op);
++  }
+   {
+     OptionHandler* op(new DefaultOptionHandler(
+         PREF_USER_AGENT, TEXT_USER_AGENT, "aria2/" PACKAGE_VERSION, A2STR::NIL,
+diff --git a/src/prefs.cc b/src/prefs.cc
+index fe982685..2591b9f0 100644
+--- a/src/prefs.cc
++++ b/src/prefs.cc
+@@ -429,6 +429,8 @@ PrefPtr PREF_HTTP_ACCEPT_GZIP = makePref("http-accept-gzip");
+ // value: true | false
+ PrefPtr PREF_CONTENT_DISPOSITION_DEFAULT_UTF8 =
+     makePref("content-disposition-default-utf8");
++// value: true | false
++PrefPtr PREF_NO_WANT_DIGEST_HEADER = makePref("no-want-digest-header");
+ 
+ /**
+  * Proxy related preferences
+diff --git a/src/prefs.h b/src/prefs.h
+index 9719b3be..338fd6e6 100644
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -381,6 +381,8 @@ extern PrefPtr PREF_HTTP_NO_CACHE;
+ extern PrefPtr PREF_HTTP_ACCEPT_GZIP;
+ // value: true | false
+ extern PrefPtr PREF_CONTENT_DISPOSITION_DEFAULT_UTF8;
++// value: true | false
++extern PrefPtr PREF_NO_WANT_DIGEST_HEADER;
+ 
+ /**;
+  * Proxy related preferences
+diff --git a/src/usage_text.h b/src/usage_text.h
+index 7837a39e..0052b798 100644
+--- a/src/usage_text.h
++++ b/src/usage_text.h
+@@ -539,6 +539,9 @@
+ #define TEXT_USE_HEAD                                                   \
+   _(" --use-head[=true|false]      Use HEAD method for the first request to the HTTP\n" \
+     "                              server.")
++#define TEXT_NO_WANT_DIGEST_HEADER                                      \
++  _(" --no-want-digest-header[=true|false] Whether to disable Want-Digest header \n" \
++    "                              when doing requests.")
+ #define TEXT_CONTENT_DISPOSITION_DEFAULT_UTF8                          \
+   _(" --content-disposition-default-utf8[=true|false] Handle quoted string in\n" \
+     "                              Content-Disposition header as UTF-8 instead of\n" \
+-- 
+2.38.1
+
