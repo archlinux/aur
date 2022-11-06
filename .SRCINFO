@@ -1,8 +1,9 @@
-pkgbase = brother-mfc-6580cdw-jpn
+pkgbase = brother-mfc-j6580cdw
 	pkgdesc = LPR and CUPS drivers for Brother MFC-6580CDW (Japan)
-	pkgver = 20220218
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-j6580cdw.install
 	arch = i686
 	arch = x86_64
 	license = unknown
@@ -16,4 +17,4 @@ pkgbase = brother-mfc-6580cdw-jpn
 	sha256sums = aedcecaab10ec45f9a164607aa3c3c161d519e4132608ac15411e4d48db07359
 	sha256sums = 6557d708c0518216c32712bf5665a295f287a5858e79d6e99b09ca31c0ff72e8
 
-pkgname = brother-mfc-6580cdw-jpn
+pkgname = brother-mfc-j6580cdw
