@@ -5,19 +5,19 @@
 
 pkgname=planner
 pkgver=0.14.90
-pkgrel=7
+pkgrel=8
 pkgdesc='Project management application for GNOME'
 arch=('x86_64')
 license=('GPL')
 url='https://wiki.gnome.org/Apps/Planner'
 depends=('glib2>=2.50', # glib, gmodule, gobject
-	'gtk3>=3.10', # gtk3, gail
+	'gtk3>=3.22', # gtk3, gail
 	'libxml2>=2.6.27',
-	'libxslt>=1.1.2', #libxslt, libexslt
+	'libxslt>=1.1.23', #libxslt, libexslt
 	'libgda>=5.0')
-makedepends=('meson')
+makedepends=('git' 'meson')
 options=('!emptydirs')
-_commit="9e50bb29c7bf5ad6498172d7e29671e7734fc42a" # = master as of 2022-10-13
+_commit="3cd61d8813894ee566d9c2559ec45ff39d3dbe46" # 05 Nov, 2022
 source=("git+https://gitlab.gnome.org/World/planner.git#commit=$_commit")
 sha256sums=('SKIP')
 
