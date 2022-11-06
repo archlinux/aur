@@ -12,7 +12,7 @@ _securityver=2
 _updatever=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
-pkgrel=2
+pkgrel=3
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 #_git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -27,10 +27,10 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('b4587238b714764dd77720e5c71e6f44871b09468810c4e82f51408ae0182989'
-            '85c4742764590783160af74587a47269e6797fbdf18ec485c7644bd239adf61d'
-            'abac1ab09a33a3654378bc69be5a7cf075263ab3ae9efec1eb25cf388e711bb7'
-            'e7cce0ecf868f656d8dc2eb25ab82ab665526a0a28aba20f02632dd29962dac3')
+sha256sums=('06404ddd3c09dd70e7f78a640776082932af2561131a7fc1caf22b45de635046'
+            '58bf779332d21151ba47719926ddcc8811ac7bbf414222141dcf40ac54cfaa2d'           
+            '3a50ded3918024de4e441a46744c8e342faf46441b53c8bac7d589055a28a13c'   
+            '2cace78ec911f73578991370914753c5b6abe9f7304bcbcb7a3077b8dbc7c867')
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
