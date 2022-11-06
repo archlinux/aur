@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
