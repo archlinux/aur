@@ -1,12 +1,12 @@
 pkgbase = procdump
 	pkgdesc = Generate coredumps based off performance triggers
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Sysinternals/ProcDump-for-Linux
 	arch = x86_64
 	license = MIT
 	depends = gdb
-	source = https://github.com/Sysinternals/ProcDump-for-Linux/archive/1.2/ProcDump-for-Linux-1.2.tar.gz
-	sha256sums = 40857406464baeec9feda33877601231cb5fb1bf2c477f0592b93595ca0a4035
+	source = https://github.com/Sysinternals/ProcDump-for-Linux/archive/1.3/ProcDump-for-Linux-1.3.tar.gz
+	sha256sums = 2e3578789a8913616b65a927478d546f330a1634d11e44987ab5a5a222aa46b7
 
 pkgname = procdump
