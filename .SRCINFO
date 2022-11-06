@@ -1,5 +1,5 @@
 pkgbase = linux-firmware-amlogic-ophub
-	pkgdesc = Firmware files for Linux - mainly for Amlogic platform, collected by ophub
+	pkgdesc = Firmware files for Linux - mainly for Aarch64 Amlogic platform, collected by ophub
 	pkgver = 20220916
 	pkgrel = 1
 	url = https://github.com/ophub/amlogic-s9xxx-armbian/raw/main/build-armbian/amlogic-armbian/firmware.tar.xz
