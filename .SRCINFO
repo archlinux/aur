@@ -4,7 +4,7 @@ pkgbase = java18-openjdk
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
-	makedepends = java-environment=18
+	makedepends = java-environment>=11
 	makedepends = cpio
 	makedepends = unzip
 	makedepends = zip
