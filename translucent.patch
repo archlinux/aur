@@ -36,18 +36,6 @@ diff -Naur a/src/main.js b/src/main.js
  	// Support JS Flags
  	const jsFlags = getJSFlags(cliArgs);
  	if (jsFlags) {
-diff -Naur a/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts b/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts
---- a/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler.ts	2022-09-02 21:46:40.243244303 +0200
-@@ -75,7 +75,7 @@
- 		if (backgroundColor === null || minimapSide === 'left') {
- 			this.backgroundColor = null;
- 		} else {
--			this.backgroundColor = Color.Format.CSS.formatHex(backgroundColor);
-+			this.backgroundColor = Color.Format.CSS.formatHexA(backgroundColor);
- 		}
- 
- 		const layoutInfo = options.get(EditorOption.layoutInfo);
 diff -Naur a/src/vs/editor/browser/widget/media/diffEditor.css b/src/vs/editor/browser/widget/media/diffEditor.css
 --- a/src/vs/editor/browser/widget/media/diffEditor.css	2022-09-01 00:05:32.000000000 +0200
 +++ b/src/vs/editor/browser/widget/media/diffEditor.css	2022-09-29 06:01:33.775897418 +0200
@@ -140,7 +128,7 @@ diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
  	light: null,
 diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
 --- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-21 19:45:46.617254995 +0200
++++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-29 06:05:09.976290267 +0200
 @@ -68,11 +68,16 @@
  	private _savePartsSplash() {
  		const theme = this._themeService.getColorTheme();
