@@ -1,7 +1,7 @@
 # Maintainer: notdixon <notdixon at gmx dot com>
 
 pkgname=conceal-core
-pkgver=6.6.5
+pkgver=6.7.0
 pkgrel=1
 pkgdesc="Conceal CLI (release version)"
 arch=('any')
@@ -9,14 +9,8 @@ url="https://github.com/ConcealNetwork/conceal-core"
 license=('MIT')
 depends=('boost' 'boost-libs')
 makedepends=('make' 'gcc' 'cmake' 'python' 'boost' 'boost-libs')
-source=("https://github.com/ConcealNetwork/$pkgname/archive/refs/tags/$pkgver.tar.gz"
-	"https://patch-diff.githubusercontent.com/raw/ConcealNetwork/conceal-core/pull/303.diff")
-sha256sums=('SKIP' 'SKIP')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/303.diff"
-}
+source=("https://github.com/ConcealNetwork/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
