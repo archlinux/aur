@@ -2,8 +2,8 @@ model="6580cdw"
 pkgname="brother-mfc-$model-jpn"
 pkgver="20220218"
 pkgrel=1
-lprver="1.0.1-0"
-cwver="1.0.1-0"
+lprver="1.0.1-1"
+cwver="1.0.1-1"
 pkgdesc="LPR and CUPS drivers for Brother MFC-6580CDW (Japan)"
 url="http://support.brother.com/g/s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ post_install() {
 }
 
 post_upgrade() {
-		/opt/brother/Printers/mfc${model}/cupswrapper/cupswrappermfc${model} >/dev/null
+		/opt/brother/Printers/mfcj${model}/cupswrapper/cupswrappermfcj${model} >/dev/null
 		if [ "$?" -eq 0 ]; then
 				printf "\033[1m\033[32m\x3d\x3d\x3e\033\1330m Done. The printer should be visible now via the CUPS-webinterface (http://localhost:631)\n"
 		else
