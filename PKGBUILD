@@ -2,7 +2,7 @@
 
 pkgname=ginkgo-hpc-git
 _pkgname=ginkgo
-pkgver=r5521.8b036c64f4
+pkgver=r5861.ca2a213368
 pkgrel=1
 pkgdesc="Numerical linear algebra software package"
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('BSD')
 # TODO system 'rapidjson' does not work due to some C++ issues
 # (see the 'declared protected here' error in https://github.com/Tencent/rapidjson/issues/1338#issuecomment-449849215 )
 depends=('cuda' 'gflags' 'hwloc' 'numactl' 'openmpi')
-makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'gtest')
+makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra' 'gtest')
+checkdepends=('openssh')  # openssh is needed for mpirun to run some tests
 source=("git+https://github.com/ginkgo-project/$_pkgname.git")
 md5sums=('SKIP')
 
