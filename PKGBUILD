@@ -7,7 +7,7 @@
 _pkgbase=wpa_supplicant
 pkgname=${_pkgbase}-openssl1
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility providing key negotiation for WPA wireless networks, with openssl 1.1'
 url='https://w1.fi/wpa_supplicant/'
 arch=(x86_64)
@@ -39,13 +39,12 @@ prepare() {
 
   cd $_pkgbase
   cp "$srcdir/wpa_supplicant_config" ./.config
-
-  sed -i 's/-lssl/-l:libssl.so.1.1/g' Makefile
-  sed -i 's/-lcrypto/-l:libcrypto.so.1.1/g' Makefile
-  export CFLAGS="${CFLAGS} -I/usr/include/openssl-1.1"
 }
 
 build() {
+  CFLAGS+=" -I/usr/include/openssl-1.1"
+  LDFLAGS+=' -L/usr/lib/openssl-1.1'
+
   cd $_pkgbase-$pkgver/$_pkgbase
 
   make LIBDIR=/usr/lib BINDIR=/usr/bin
