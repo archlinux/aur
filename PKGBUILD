@@ -9,7 +9,7 @@ url=https://pypi.org/project/ddns
 arch=('any')
 license=("MIT")
 provides=("ddns")
-conflicts=("ddns" "newfuture-ddns-bin")
+conflicts=("ddns" "newfuture-ddns-bin" "python-dnspython")
 makedepends=('python-pip' 'python-installer')
 source=(
 	"https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl"

@@ -12,6 +12,7 @@ pkgbase = python-ddns
 	provides = ddns
 	conflicts = ddns
 	conflicts = newfuture-ddns-bin
+	conflicts = python-dnspython
 	backup = etc/ddns/config.json
 	source = https://files.pythonhosted.org/packages/py2.py3/d/ddns/ddns-2.11.5-py2.py3-none-any.whl
 	source = newfuture_ddns.service
