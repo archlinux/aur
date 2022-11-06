@@ -1,0 +1,12 @@
+pkgbase = pellets
+	pkgdesc = manage installed Arch packages with a configuration file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dpatti/pellets
+	arch = any
+	license = Unlicense
+	depends = bash
+	source = pellets-1.0.0.tar.gz::https://github.com/dpatti/pellets/archive/refs/tags/1.0.0.tar.gz
+	md5sums = 491379406c8bc0a767555b7588d3bfc3
+
+pkgname = pellets
