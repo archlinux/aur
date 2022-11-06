@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-gnome-download-notifications
+	pkgdesc = Native notification integration for completed downloads addon for Firefox.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/gnome-download-notifications
+	arch = any
+	groups = firefox-addons
+	license = MIT
+	depends = firefox
+	source = firefox-extension-gnome-download-notifications-1.3.0.xpi::https://addons.mozilla.org/firefox/downloads/file/3883473/gnome_download_notifications-1.3.0.xpi
+	sha256sums = 65b8a9de6cd6acbcd0ecda6c7b371204c8f0889b3a3c2f9ade5d3dc9374a4f0d
+
+pkgname = firefox-extension-gnome-download-notifications
