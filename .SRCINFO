@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-wifiqrcode-git
+	pkgdesc = This extension add a switch to the WiFi menu, in the GNOME system menu, that show a QrCode of the active connection.
+	pkgver = 1.r0.g2f9b219
+	pkgrel = 1
+	url = https://gitlab.gnome.org/glerro/gnome-shell-extension-wifiqrcode
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gnome-shell
+	provides = gnome-shell-extension-wifiqrcode
+	conflicts = gnome-shell-extension-wifiqrcode
+	source = gnome-shell-extension-wifiqrcode::git+https://gitlab.gnome.org/glerro/gnome-shell-extension-wifiqrcode.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-wifiqrcode-git
