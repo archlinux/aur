@@ -1,6 +1,6 @@
 # Maintainer: Vasili Novikov (replace "nnn" with "n" in email) <nnn1dr+cmarchlinux@yandex.com>
 pkgname=rua
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='AUR helper in Rust providing control, review, patch application and safe build options'
 url='https://github.com/vn971/rua'
@@ -20,7 +20,7 @@ optdepends=(
 # see https://aur.archlinux.org/packages/rua#comment-861014
 options=('!lto')
 
-sha256sums=(b5461aba0169cbf0bf2f7cc250c55cc0190544245891010e7ccd3c5c7a82e74f)
+sha256sums=(85a2a0d2129de4476e667b8996212b52c6ef4f5983a4d947806deaa20a4b41b8)
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
