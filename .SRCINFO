@@ -1,0 +1,16 @@
+pkgbase = linux-firmware-amlogic-ophub
+	pkgdesc = Firmware files for Linux - mainly for Amlogic platform, collected by ophub
+	pkgver = 20220916
+	pkgrel = 1
+	url = https://github.com/ophub/amlogic-s9xxx-armbian/raw/main/build-armbian/amlogic-armbian/firmware.tar.xz
+	arch = aarch64
+	license = GPL2
+	license = GPL3
+	license = custom
+	provides = linux-firmware=20220916
+	conflicts = linux-firmware
+	options = !strip
+	source = https://github.com/ophub/amlogic-s9xxx-armbian/raw/main/build-armbian/amlogic-armbian/firmware.tar.xz
+	sha256sums = 0fe946da8ef60465b21356493c80481ec36f31e8e492ee816f2eeff999757e36
+
+pkgname = linux-firmware-amlogic-ophub
