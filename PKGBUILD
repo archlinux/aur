@@ -9,8 +9,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=sudo-selinux
-_sudover=1.9.12
-pkgrel=5
+_sudover=1.9.12p1
+pkgrel=1
 pkgver=${_sudover/p/.p}
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('x86_64' 'aarch64')
@@ -27,20 +27,16 @@ backup=('etc/pam.d/sudo'
         'etc/sudoers')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
-        $pkgname-CVE-2022-43995.patch::https://github.com/sudo-project/sudo/commit/bd209b9f16fc.patch
         sudo_logsrvd.service
         sudo.pam)
-sha256sums=('de15733888170c56834daafd34bf983db10fb21039742fcfc396bd32168d6362'
+sha256sums=('475a18a8eb3da8b2917ceab063a6baf51ea09128c3c47e3e0e33ab7497bab7d8'
             'SKIP'
-            '7f9d1ae9254509f0dfe0e54df671a5d9296c20ab24ca0c54595e6c91dc059f2c'
             '8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB')
 
 prepare() {
   cd "${pkgname/-selinux}-$_sudover"
-  # fix CVE-2022-43995 (potential heap overflow for passwords < 8 characters)
-  patch -Np1 -i ../$pkgname-CVE-2022-43995.patch
 }
 
 build() {
