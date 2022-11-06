@@ -1,0 +1,192 @@
+From 04c6e9a9ab483f770d7d591ff8d40fb8cf2ee5ac Mon Sep 17 00:00:00 2001
+From: zer0def <zer0def@zer0def.0>
+Date: Fri, 30 Sep 2022 07:38:41 +0200
+Subject: [PATCH] Revert default port change commits
+
+"as per MWD's suggestion I've added the ability": ca10ab6e0d9c606efdd49de6ea7275dc0304fb85.
+"Changed default port of clients to 2222 as opposed to 22.": dd59488357d1e734331a8d18d684457a6201fd10.
+
+This reverts commits:
+- ca10ab6e0d9c606efdd49de6ea7275dc0304fb85
+- dd59488357d1e734331a8d18d684457a6201fd10
+---
+ HPN-README | 10 ----------
+ readconf.c | 22 +++-------------------
+ readconf.h |  6 ++----
+ ssh.c      | 32 +++-----------------------------
+ ssh.h      |  1 -
+ 5 files changed, 8 insertions(+), 63 deletions(-)
+
+diff --git a/HPN-README b/HPN-README
+index a54e9d9b729..45b2c008194 100644
+--- a/HPN-README
++++ b/HPN-README
+@@ -1,15 +1,5 @@
+ Notes:
+ 
+-Automatic Port Fallback (in version 17v3)
+-The hpnssh client now uses TCP port 2222 to connect automatically as this is the
+-default hpnsshd port. However, we understand that many users will be end up connecting
+-standard SSH servers on port 22. To make the easier for users the client will fall back to
+-port 22 in the event that there is no hpnssh server running on port 2222. The behaviour can
+-be modifed as follows:
+--oFallback=[yes|no] will enable or disable port fallback. Default is yes.
+--oFallbackPort=[N] where N is the port number that should be used for fall back.
+-    Default is 22.
+-
+ TCP_INFO Metrics
+ This features allows the client to request tcp networking information from the
+ TCP_INFO struct. This includes data on retransmits, round trip time, lost packets,
+diff --git a/readconf.c b/readconf.c
+index ef16765c5ec..d128128ddcd 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -170,7 +170,7 @@ typedef enum {
+ 	oTcpRcvBufPoll, oTcpRcvBuf, oHPNDisabled, oHPNBufferSize,
+ 	oNoneEnabled, oNoneMacEnabled, oNoneSwitch,
+ 	oDisableMTAES, oHPNBufferLimit,
+-	oMetrics, oMetricsPath, oMetricsInterval, oFallback, oFallbackPort,
++	oMetrics, oMetricsPath, oMetricsInterval,
+ 	oVisualHostKey,
+ 	oKexAlgorithms, oIPQoS, oRequestTTY, oSessionType, oStdinNull,
+ 	oForkAfterAuthentication, oIgnoreUnknown, oProxyUseFdpass,
+@@ -311,8 +311,6 @@ static struct {
+ 	{ "metrics", oMetrics },
+ 	{ "metricspath", oMetricsPath },
+ 	{ "metricsinterval", oMetricsInterval },
+-	{ "fallback", oFallback },
+-	{ "fallbackport", oFallbackPort },
+ 	{ "sessiontype", oSessionType },
+ 	{ "stdinnull", oStdinNull },
+ 	{ "forkafterauthentication", oForkAfterAuthentication },
+@@ -530,7 +528,7 @@ default_ssh_port(void)
+ 
+ 	if (port == 0) {
+ 		sp = getservbyname(SSH_SERVICE_NAME, "tcp");
+-		port = sp ? ntohs(sp->s_port) : HPNSSH_DEFAULT_PORT;
++		port = sp ? ntohs(sp->s_port) : SSH_DEFAULT_PORT;
+ 	}
+ 	return port;
+ }
+@@ -1194,15 +1192,7 @@ process_config_line_depth(Options *options, struct passwd *pw, const char *host,
+ 		options->metrics = 1;
+ 		goto parse_string;
+ 
+-	case oFallback:
+-		intptr = &options->fallback;
+-		goto parse_flag;
+-
+-	case oFallbackPort:
+-		intptr = &options->fallback_port;
+-		goto parse_int;
+-
+-	/*
++	 /*
+ 	 * We check to see if the command comes from the command
+ 	 * line or not. If it does then enable it otherwise fail.
+ 	 *  NONE should never be a default configuration.
+@@ -2519,8 +2509,6 @@ initialize_options(Options * options)
+ 	options->hpn_disabled = -1;
+ 	options->hpn_buffer_size = -1;
+ 	options->hpn_buffer_limit = -1;
+-	options->fallback = -1;
+-	options->fallback_port = -1;
+ 	options->tcp_rcv_buf_poll = -1;
+ 	options->tcp_rcv_buf = -1;
+ 	options->session_type = -1;
+@@ -2733,10 +2721,6 @@ fill_default_options(Options * options)
+ 		options->metrics_interval = 5;
+ 	if (options->control_master == -1)
+ 		options->control_master = 0;
+-	if (options->fallback == -1)
+-		options->fallback = 1;
+-	if (options->fallback_port == -1)
+-		options->fallback_port = SSH_DEFAULT_PORT;
+ 	if (options->control_persist == -1) {
+ 		options->control_persist = 0;
+ 		options->control_persist_timeout = 0;
+diff --git a/readconf.h b/readconf.h
+index 85a1e62e03f..af31c8f2b1f 100644
+--- a/readconf.h
++++ b/readconf.h
+@@ -125,14 +125,12 @@ typedef struct {
+ 	int64_t rekey_limit;
+ 	int     none_switch;    /* Use none cipher */
+ 	int     none_enabled;   /* Allow none to be used */
+-	int     nonemac_enabled;   /* Allow none to be used */
++	int     nonemac_enabled;   /* Allow none to be used */	
+ 	int     disable_multithreaded; /*disable multithreaded aes-ctr*/
+         int     metrics; /* enable metrics */
+         int     metrics_interval; /* time in seconds between polls */
+         char   *metrics_path; /* path for the metrics files */
+-	int     fallback; /* en|disable fallback port (def: true) */
+-	int     fallback_port; /* port to fallback to (def: 22) */
+-	int	rekey_interval;
++        int	rekey_interval;
+ 
+ 	int	no_host_authentication_for_localhost;
+ 	int	identities_only;
+diff --git a/ssh.c b/ssh.c
+index 24758239d15..e1162dc54d2 100644
+--- a/ssh.c
++++ b/ssh.c
+@@ -1549,36 +1549,10 @@ main(int ac, char **av)
+ 		timeout_ms = options.connection_timeout * 1000;
+ 
+ 	/* Open a connection to the remote host. */
+-	/* we try initially on the default hpnssh port returned by
+-	 * default_ssh_port() which now returns HPNSSH_DEFAULT_PORT
+-	 * if that fails we reset the port to SSH_DEFAULT_PORT
+-	 * -cjr 8/17/2022
+-	 */
+-tryagain:
+ 	if (ssh_connect(ssh, host, host_arg, addrs, &hostaddr, options.port,
+-	    options.connection_attempts, &timeout_ms,
+-	    options.tcp_keep_alive) != 0) {
+-		/* could not connect. If the port requested is the same as
+-		 * hpnssh default port then fallback. Otherwise, exit */
+-		if ((options.port == default_ssh_port()) && options.fallback) {
+-			int port = options.fallback_port;
+-			options.port = port;
+-			fprintf(stderr, "HPNSSH server not available on default port %d\n",
+-				default_ssh_port());
+-			if (port == 22)
+-				fprintf(stderr, "Falling back to OpenSSH default port %d\n",
+-					port);
+-			else
+-				fprintf(stderr, "Falling back to user defined port %d\n",
+-					port);
+-			addrs = resolve_host(host, port, 1,
+-					     cname, sizeof(cname));
+-			goto tryagain;
+-		} else {
+-			exit(255);
+-		}
++	    options.connection_attempts,
++	    &timeout_ms, options.tcp_keep_alive) != 0)
+ 		exit(255);
+-	}
+ 
+ 	if (addrs != NULL)
+ 		freeaddrinfo(addrs);
+@@ -2201,7 +2175,7 @@ ssh_session2_open(struct ssh *ssh)
+ 	if (options.hpn_buffer_limit)
+ 		c->hpn_buffer_limit = 1;
+ 
+-
++		
+ 	debug3_f("channel_new: %d", c->self);
+ 
+ 	channel_send_open(ssh, c->self);
+diff --git a/ssh.h b/ssh.h
+index c639115452c..8aa1633a6c3 100644
+--- a/ssh.h
++++ b/ssh.h
+@@ -17,7 +17,6 @@
+ 
+ /* Default port number. */
+ #define SSH_DEFAULT_PORT	22
+-#define HPNSSH_DEFAULT_PORT    2222
+ 
+ /*
+  * Maximum number of certificate files that can be specified
