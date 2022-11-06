@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=11237.829db5183
+pkgver=v0.20.0.r5.gc6e64c8b4
 pkgrel=1
 pkgdesc='Jagged Alliance 2 Stracciatella'
 arch=('x86_64')
@@ -29,7 +29,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/ja2-stracciatella"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
