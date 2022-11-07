@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FLAMES
-_pkgver=1.2.2
+_pkgver=1.3.4
 pkgname=r-${_pkgname,,}
-pkgver=1.2.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='FLAMES: Full Length Analysis of Mutations and Splicing in long read RNA-seq data'
 arch=('x86_64')
@@ -12,30 +12,38 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-bambu
   r-basilisk
+  r-biocgenerics
+  r-biostrings
+  r-circlize
+  r-complexheatmap
+  r-cowplot
   r-dplyr
+  r-genomeinfodb
+  r-genomicfeatures
+  r-genomicranges
+  r-ggbio
+  r-ggplot2
+  r-gridextra
+  r-igraph
   r-magrittr
+  r-rcolorbrewer
   r-rcpp
   r-reticulate
   r-rhtslib
   r-rsamtools
+  r-rtracklayer
   r-s4vectors
   r-scater
+  r-scran
   r-scuttle
   r-singlecellexperiment
+  r-stringr
   r-summarizedexperiment
   r-tidyr
+  r-withr
   r-zlibbioc
-  r-complexheatmap
-  r-rtracklayer
-  r-igraph
-  r-ggbio
-  r-scran
-  r-genomicfeatures
-  r-circlize
-  r-cowplot
-  r-stringr
-  r-bambu
 )
 optdepends=(
   r-biocfilecache
@@ -45,7 +53,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e2e6b256548b9f3eba35d9d6f7fb2f4d051dbc0438e1096b7d524cb807bb61b6')
+sha256sums=('edec5aad7deb6237bc2fb3a4c63050937b2d3a4e1f23336af525aca12b5868a9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
