@@ -4,35 +4,37 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-screencast-vaapi
-pkgver=42.4
-pkgrel=2
+pkgver=43.1
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell (screencast records with VAAPI)"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice gcr gjs gnome-bluetooth-3.0 upower gnome-session gtk4
+depends=(accountsservice gcr-4 gjs upower gnome-session gtk4
          gnome-settings-daemon gsettings-desktop-schemas libcanberra-pulse
          libgdm libsecret mutter libnma unzip libibus gnome-autoar
          gnome-disk-utility libsoup3 libgweather-4 gst-plugins-base-libs)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
-             gobject-introspection git meson sassc asciidoc bash-completion)
+             gobject-introspection git 'meson>=0.64' sassc asciidoc bash-completion)
 checkdepends=(xorg-server-xvfb)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration'
             'gst-plugins-good: Screen recording'
-            'gst-plugin-pipewire: Screen recording')
+            'gst-plugin-pipewire: Screen recording'
+            'gnome-bluetooth-3.0: Bluetooth support'
+            'power-profiles-daemon: Power profile switching')
 conflicts=(gnome-shell gnome-shell-debug)
 provides=(gnome-shell)
 groups=(gnome)
 options=(debug)
-_commit=ca0a1c02152a95c3c0acb39d1f328d786d0d8c87  # tags/42.4^0
+_commit=8b00255cc31814b09a35c9be38228d873676233e  # tags/43.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         screencast-vaapi.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'd57693c0f180405d280e17dafe447924e59e19c21cdae001b6c455af4be969f7')
+            'c52281a39041cfd961b7347f6e4a76244e294fe2f8a442df1aaf8453e91149ea')
 
 pkgver() {
   cd gnome-shell
@@ -42,7 +44,6 @@ pkgver() {
 prepare() {
   cd gnome-shell
 
-  git cherry-pick -n d32c03488fcf6cdb0ca2e99b0ed6ade078460deb # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5585
   patch -p1 < ../../screencast-vaapi.patch
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
@@ -58,8 +59,8 @@ build() {
 }
 
 _check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  export XDG_RUNTIME_DIR
+  export XDG_RUNTIME_DIR="$PWD/runtime-dir"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
   meson test -C build --print-errorlogs
 )
@@ -70,8 +71,8 @@ check() {
 }
 
 package() {
-  depends+=(libmutter-10.so)
+  depends+=(libmutter-11.so)
   meson install -C build --destdir "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
