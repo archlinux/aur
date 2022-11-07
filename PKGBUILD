@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=emulsion
-pkgver=9.0.0
+pkgver=10.3.0
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer"
 arch=('i686' 'x86_64')
@@ -11,17 +11,25 @@ depends=('gcc-libs' 'hicolor-icon-theme')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver%.*}.tar.gz"
         "emulsion.desktop")
-sha256sums=('457d4a44db236c5415a4007ddf7b06575a50124885cf7c7c0bec928bdad61155'
+sha256sums=('ad7fd2eef310673114dda202e5285422c97cb47702ac360d41509eba154b1584'
             '0ddafdb9abec4887cab3e211f216e5c7e0f69bb15cd5426a6b85e469aeafd0aa')
+
+prepare() {
+    cd $pkgname-${pkgver%.*}
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
     cd $pkgname-${pkgver%.*}
-    cargo build --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 check() {
     cd $pkgname-${pkgver%.*}
-    cargo test --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen
 }
 
 package() {
