@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Uniquorn
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Identification of cancer cell lines based on their weighted mutational/ variational fingerprint'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
+  r-data.table
   r-doparallel
   r-foreach
   r-genomicranges
@@ -24,11 +25,10 @@ optdepends=(
   r-biocgenerics
   r-knitr
   r-rmarkdown
-  r-runit
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dc45fa5408eaef35ad8f6e753ee2ba37bfc277df1ae215384e5c02ae807ec241')
+sha256sums=('5e49c46c0fdb50c6217d325163612d647ef2dab1de8e67943cacb7afbb772cad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

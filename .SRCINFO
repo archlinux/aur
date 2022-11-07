@@ -1,11 +1,12 @@
 pkgbase = r-uniquorn
 	pkgdesc = Identification of cancer cell lines based on their weighted mutational/ variational fingerprint
-	pkgver = 2.16.0
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Uniquorn
 	arch = any
 	license = Artistic2.0
 	depends = r
+	depends = r-data.table
 	depends = r-doparallel
 	depends = r-foreach
 	depends = r-genomicranges
@@ -17,9 +18,8 @@ pkgbase = r-uniquorn
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-runit
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Uniquorn_2.16.0.tar.gz
-	sha256sums = dc45fa5408eaef35ad8f6e753ee2ba37bfc277df1ae215384e5c02ae807ec241
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Uniquorn_2.18.0.tar.gz
+	sha256sums = 5e49c46c0fdb50c6217d325163612d647ef2dab1de8e67943cacb7afbb772cad
 
 pkgname = r-uniquorn
