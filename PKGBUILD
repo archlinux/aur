@@ -5,7 +5,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-latest
 pkgver=2.0.6.104
-pkgrel=3
+pkgrel=4
 _date=2022-06-15
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
@@ -33,7 +33,7 @@ sha256sums=('955c6d466a0bb86d9b8f56006ff3b64ed2acae2d5816ebecaa8fe0351145cc3d'
             'f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-depends=(gtk-sharp-2 mono libappindicator-gtk2)
+depends=(openssl-1.1 gtk-sharp-2 mono libappindicator-gtk2)
 optdepends=('notify-sharp: for tray notifications')
 
 package() {
