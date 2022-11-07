@@ -8,7 +8,6 @@ pkgbase = btcpayserver
 	license = MIT
 	depends = aspnet-runtime
 	depends = bash
-	depends = bitcoin-daemon
 	depends = dotnet-sdk
 	depends = lib32-glibc
 	depends = nbxplorer
