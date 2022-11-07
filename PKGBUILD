@@ -3,13 +3,13 @@
 
 pkgname=howdoi
 pkgver=2.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Instant coding answers via the command line"
 arch=('any')
 url="https://github.com/gleitz/howdoi"
 license=('MIT')
-depends=('keep' 'python-appdirs' 'python-cachelib' 'python-cssselect' 'python-lxml'
-         'python-pygments' 'python-pyquery' 'python-requests' 'python-setuptools')
+depends=('keep' 'python-appdirs' 'python-cachelib' 'python-cssselect' 'python-lxml' 'python-colorama'
+         'python-pygments' 'python-pyquery' 'python-requests' 'python-setuptools' 'python-rich')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('51cd40c53e0c0f8f8da88f480eb7423183be2350ab4f0a4d9d4763ca6ac3e2a9')
 
