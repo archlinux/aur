@@ -18,7 +18,7 @@ depends=("aspnet-runtime" "bash" "bitcoin-daemon" "dotnet-sdk" "postgresql")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha512sums=("8c350b4488a1719b24f1863d51c80bc8b498d67b05f66c33b85e6396543b399d003a0948e525b3b14a536c843144d563dfa1e1ef01a8638d870fd470220279d7"
-    "a822048112668c147f7bee4af567443ce577942db1b82c4e0f181502d54bd5604b3d95fc5b4c4fc452083accb7dfc4df7acc4922ace13e071f3156255eb3b7a5")
+    "ce7e68b099de73f0a09d231e6c3ada98c5440b58c57d229fcc20fd4e3b18e2bd445c810960e828893be1a3bb8f6c954ba7c4b40f82caa84a9115bb5e752a1453")
 
 build()
 {
