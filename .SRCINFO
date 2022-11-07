@@ -8,6 +8,7 @@ pkgbase = stackablectl-git
 	makedepends = go
 	makedepends = rust
 	makedepends = git
+	depends = gcc-libs
 	provides = stackablectl
 	conflicts = stackablectl
 	source = stackablectl-git::git+https://github.com/stackabletech/stackablectl.git
