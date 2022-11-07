@@ -14,7 +14,7 @@ pkgver=1.3.5
 pkgrel=3
 pkgdesc="Collection of routines to export data produced by Finite Elements or Finite Volume Simulations in formats used by some visualization programs"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.2.3')
