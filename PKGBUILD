@@ -9,7 +9,7 @@ license=('MIT')
 provides=("$pkgname")
 conflicts=('brem-git')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('b025ed4c0a75da64928cf2227b7aae436dedd35ed9a0f484c9e04564c7709d8b')
+sha256sums=('2529c1aee9c087bb7e417797fbb958529867bb119890ed9ef24b94fee2dd9f5f')
 
 package() {
     cd "$srcdir/$pkgname-v$pkgver"

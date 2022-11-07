@@ -8,6 +8,6 @@ pkgbase = brem
 	provides = brem
 	conflicts = brem-git
 	source = https://gitlab.com/k_lar/brem/-/archive/v1.1/brem-v1.1.tar.gz
-	sha256sums = b025ed4c0a75da64928cf2227b7aae436dedd35ed9a0f484c9e04564c7709d8b
+	sha256sums = 2529c1aee9c087bb7e417797fbb958529867bb119890ed9ef24b94fee2dd9f5f
 
 pkgname = brem
