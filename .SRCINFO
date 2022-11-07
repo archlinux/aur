@@ -12,7 +12,6 @@ pkgbase = zmusic
 	license = custom:dumb
 	makedepends = cmake
 	depends = alsa-lib
-	depends = fluidsynth>=2.2
 	depends = libsndfile
 	depends = mpg123
 	depends = zlib

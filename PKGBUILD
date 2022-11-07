@@ -6,7 +6,7 @@ pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64' 'aarch64')
 url='https://github.com/coelckers/ZMusic'
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
-depends=('alsa-lib' 'fluidsynth>=2.2' 'libsndfile' 'mpg123' 'zlib')
+depends=('alsa-lib' 'libsndfile' 'mpg123' 'zlib')
 optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('cmake')
 _srcname=ZMusic-${pkgver}
