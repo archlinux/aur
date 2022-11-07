@@ -1,7 +1,7 @@
 pkgbase = r-plotly
 	pkgdesc = Create Interactive Web Graphics via 'plotly.js'
-	pkgver = 4.10.0
-	pkgrel = 4
+	pkgver = 4.10.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=plotly
 	arch = any
 	license = MIT
@@ -55,7 +55,7 @@ pkgbase = r-plotly
 	optdepends = r-shinytest
 	optdepends = r-testthat
 	optdepends = r-webshot
-	source = https://cran.r-project.org/src/contrib/plotly_4.10.0.tar.gz
-	sha256sums = bd995c654dbc8c09a84adaba8def99766919e3894caf18b551bb26b2f591389a
+	source = https://cran.r-project.org/src/contrib/plotly_4.10.1.tar.gz
+	sha256sums = ac0921a1cba24e17a0f3a0a28b7a40ac930e17fe5caa9c3973c9a8d1e20c367a
 
 pkgname = r-plotly

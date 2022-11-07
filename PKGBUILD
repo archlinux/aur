@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plotly
-_pkgver=4.10.0
+_pkgver=4.10.1
 pkgname=r-${_pkgname,,}
-pkgver=4.10.0
-pkgrel=4
+pkgver=4.10.1
+pkgrel=1
 pkgdesc="Create Interactive Web Graphics via 'plotly.js'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -64,7 +64,7 @@ optdepends=(
   r-webshot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bd995c654dbc8c09a84adaba8def99766919e3894caf18b551bb26b2f591389a')
+sha256sums=('ac0921a1cba24e17a0f3a0a28b7a40ac930e17fe5caa9c3973c9a8d1e20c367a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
