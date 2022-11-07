@@ -8,7 +8,7 @@ url="https://git.froth.zone/sam/awl"
 license=('BSD')
 makedepends=(
  'git'
-# 'go>=1.18'
+ 'go>=1.18'
  'scdoc'
 )
 provides=("${pkgname%-*}")
