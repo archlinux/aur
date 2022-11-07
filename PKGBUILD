@@ -14,10 +14,10 @@ url="https://github.com/btcpayserver/${pkgname}"
 license=("MIT")
 depends=("aspnet-runtime" "bash" "bitcoin-daemon" "dotnet-sdk" "lib32-glibc" "nbxplorer")
 optdepends=("apache: HTTP server"
-    "core-lightning: Lightning network support"
+    "core-lightning: Lightning Network support"
     "certbot: Creates SSL certificates."
-    "eclair: Lightning network support"
-    "lnd: Lightning network support"
+    "eclair: Lightning Network support"
+    "lnd: Lightning Network support"
     "mariadb: Database"
     "nginx: HTTP server"
     "postgresql: Database"
