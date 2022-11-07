@@ -1,0 +1,19 @@
+--- image_size.gemspec	2022-11-07 12:30:41.056755563 +0100
++++ image_size.gemspec	2022-11-07 12:31:13.743084473 +0100
+@@ -16,14 +16,9 @@
+     'source_code_uri'   => "https://github.com/toy/#{s.name}",
+   }
+ 
+-  s.files         = `git ls-files`.split("\n")
+-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
++  s.files         = `find`.split("\n")
++  s.test_files    = `find spec`.split("\n")
+   s.require_paths = %w[lib]
+ 
+   s.add_development_dependency 'rspec', '~> 3.0'
+-  if RUBY_VERSION >= '2.5'
+-    s.add_development_dependency 'rubocop', '~> 1.22'
+-    s.add_development_dependency 'rubocop-rspec', '~> 2.0'
+-  end
+ end

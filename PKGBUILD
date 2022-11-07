@@ -3,7 +3,7 @@
 
 _gemname=image_size
 pkgname=ruby-${_gemname}
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="measure image size using pure Ruby"
 arch=(any)
@@ -11,23 +11,30 @@ url=https://github.com/toy/image_size
 license=(RUBY GPL)
 depends=(ruby)
 checkdepends=(ruby-rspec ruby-webrick)
-makedepends=(git rubygems ruby-rdoc)
+makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(git+https://github.com/toy/image_size.git#tag=v$pkgver)
-sha256sums=('SKIP')
+source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz
+        fix-gemspec-for-tarball.patch)
+sha256sums=('f8e750a353d869a3545069ddf882d1f503dc80bfd41d26fc9080521092f06230'
+            'a0a5d5f87a0993a3e24273a1a2ab948f6f5babbcfd53dbfda230d68af1859d03')
+
+prepare() {
+  cd ${_gemname}-${pkgver}
+  patch -N -i "$srcdir/fix-gemspec-for-tarball.patch"
+}
 
 build() {
-  cd ${_gemname}
+  cd ${_gemname}-${pkgver}
   gem build ${_gemname}.gemspec
 }
 
 check() {
-  cd ${_gemname}
+  cd ${_gemname}-${pkgver}
   rspec
 }
 
 package() {
-  cd ${_gemname}
+  cd ${_gemname}-${pkgver}
   local _gemdir="$(gem env gemdir)"
 
   gem install \
