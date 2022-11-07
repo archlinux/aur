@@ -1,11 +1,13 @@
 pkgname=ca-certificates-russian-root
-pkgver=20221102
-pkgrel=2
+pkgver=20221107
+pkgrel=1
 pkgdesc="Russian root certificates"
 arch=('any')
 url='https://gu-st.ru'
 license=('unknown')
-depends=()
+depends=(
+    'ca-certificates-utils'
+)
 makedepends=()
 # https://www.gosuslugi.ru/crt
 source=(

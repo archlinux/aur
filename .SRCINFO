@@ -1,10 +1,11 @@
 pkgbase = ca-certificates-russian-root
 	pkgdesc = Russian root certificates
-	pkgver = 20221102
-	pkgrel = 2
+	pkgver = 20221107
+	pkgrel = 1
 	url = https://gu-st.ru
 	arch = any
 	license = unknown
+	depends = ca-certificates-utils
 	source = https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt
 	source = https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt
 	sha256sums = 936a43fea6e8e525bcc0f81acd9c3d21b4fc4b9b68acea7906d698005afc6504
