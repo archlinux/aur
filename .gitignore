@@ -1,1 +1,6 @@
-*.pkg.tar.zst
+*
+!*.install
+!*.sh
+!.gitignore
+!.SRCINFO
+!PKGBUILD
