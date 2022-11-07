@@ -1,6 +1,6 @@
 pkgbase = gzdoom
 	pkgdesc = Feature centric port for all Doom engine games
-	pkgver = 4.8.2
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -24,8 +24,7 @@ pkgbase = gzdoom
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data
 	optdepends = freedm: FreeDM game data
-	optdepends = freedoom1: Freedoom: Phase 1 game data
-	optdepends = freedoom2: Freedoom: Phase 2 game data
+	optdepends = freedoom: Freedoom game data
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = hacx-wad: HacX game data
 	optdepends = harmony-wad: Harmony game data
@@ -39,12 +38,14 @@ pkgbase = gzdoom
 	replaces = gzdoom1
 	replaces = gzdoom-legacy
 	options = !lto
-	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.8.2
+	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.9.0
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch
+	source = 0002-build-unbreak-compilation-on-Linux.patch
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
 	sha256sums = 195a9d1ec0489bd38f1d6c40763e66773dd74f5f719acb6afa32a077fdb0b8f4
+	sha256sums = de85657cccdfca2fbb7f3c21d96491fc8cd3618d19405376dc23a059cf0fabbe
 	optdepends_x86_64 = vulkan-driver: Vulkan renderer
 	optdepends_x86_64 = vulkan-icd-loader: Vulkan renderer
 

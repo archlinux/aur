@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=4.8.2
+pkgver=4.9.0
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,8 +21,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
             'freedm: FreeDM game data'
-            'freedoom1: Freedoom: Phase 1 game data'
-            'freedoom2: Freedoom: Phase 2 game data'
+            'freedoom: Freedoom game data'
             'gxmessage: crash dialog (GNOME)'
             'hacx-wad: HacX game data'
             'harmony-wad: Harmony game data'
@@ -39,14 +38,17 @@ replaces=('gzdoom1' 'gzdoom-legacy')
 options=(!lto)
 source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
-        '0001-Fix-file-paths.patch')
+        '0001-Fix-file-paths.patch'
+        '0002-build-unbreak-compilation-on-Linux.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '195a9d1ec0489bd38f1d6c40763e66773dd74f5f719acb6afa32a077fdb0b8f4')
+            '195a9d1ec0489bd38f1d6c40763e66773dd74f5f719acb6afa32a077fdb0b8f4'
+            'de85657cccdfca2fbb7f3c21d96491fc8cd3618d19405376dc23a059cf0fabbe')
 
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-build-unbreak-compilation-on-Linux.patch -p 1
 }
 
 build() {
