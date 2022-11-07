@@ -1,0 +1,13 @@
+pkgbase = ffsclient-git
+	pkgdesc = A cli to access firefox-sync data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Mikescher/firefox-sync-client
+	arch = any
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = ffsclient-git::git+https://github.com/Mikescher/firefox-sync-client
+	sha256sums = SKIP
+
+pkgname = ffsclient-git
