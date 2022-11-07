@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154
 # The PKGBUILD for BTCPayServer.
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
-# Contributor: Matheus <matheusgwdl@protonmai.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="btcpayserver"
 pkgver="1.6.12"
@@ -12,7 +12,7 @@ pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin paym
 arch=("x86_64")
 url="https://github.com/btcpayserver/${pkgname}"
 license=("MIT")
-depends=("bash" "aspnet-runtime" "bitcoin-daemon" "dotnet-sdk" "lib32-glibc" "nbxplorer")
+depends=("aspnet-runtime" "bash" "bitcoin-daemon" "dotnet-sdk" "lib32-glibc" "nbxplorer")
 optdepends=("apache: HTTP server"
     "core-lightning: Lightning network support"
     "certbot: Creates SSL certificates."
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha512sums=("4f4457867b36057faecbbc4e65ec8f3e34a09919f07d7629d633e2b1a7faf1cfbe92b95503099148d3547106049c8b0df7d379169e5163470cbb5fbdf18624f4"
-    "c9f310e4373f6889a71d5158974c96972efff2141fac448ae1897d0653c7053dc28a8701be44eae6300b69eebc8c6d9f370b5d51598962195fd39d593119f3bf")
+    "0b95e4320dbf06e89895527a1ecc4019463f85b7d8b1799193b7101ad7f324ef21408f84850323195110a5fd2c565317a67156f724a7e688b2843269bd78f75a")
 
 build()
 {
