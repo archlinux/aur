@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clustifyr
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Classifier for Single-cell RNA-seq Using Cell Clusters'
 arch=('any')
@@ -40,11 +40,12 @@ optdepends=(
   r-purrr
   r-remotes
   r-rmarkdown
+  r-seurat
   r-shiny
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac53b68d23ae26d6628581e07a5eb85d8123ca10bd2489944acf295ef55b34b0')
+sha256sums=('af9d7eed474848c7d45f00cedbb2b24ac979a5258b4c6b542048cb6a586df6f8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
