@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellBarcode
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Cellular DNA Barcode Analysis toolkit'
 arch=('x86_64')
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-bh
   r-biostrings
   r-ckmeans.1d.dp
   r-data.table
@@ -20,8 +21,10 @@ depends=(
   r-plyr
   r-rcpp
   r-s4vectors
+  r-seqinr
   r-shortread
   r-stringr
+  r-zlibbioc
 )
 optdepends=(
   r-biocstyle
@@ -30,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d69cb880e49001efaed1c1d318ebcd77b026645367d20005645a4575142456f5')
+sha256sums=('cd0c9629ccb0a4a18f3327bf5b17ea53a1148948c737fd8e8859146179cc2a4e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
