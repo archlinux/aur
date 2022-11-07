@@ -38,17 +38,16 @@ prepare() {
 }
 
 build() {
-  cd build
-  cmake ../${_pkgname}-${pkgver} \
-  -DKF5=$buildKF5Support \
+  cd "$srcdir/${_pkgname}-${pkgver}/build"
+  cmake -DKF5=$buildKF5Support \
   -DNOKDESUPPORT=$skipkde \
   -DNOSECRETSUPPORT=$skipsecret \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=RELEASE
+  -DCMAKE_BUILD_TYPE=RELEASE . ..
   make
 }
 
 package() {
-  cd build
+  cd "$srcdir/${_pkgname}-${pkgver}/build"
   make DESTDIR=${pkgdir} install
 }
