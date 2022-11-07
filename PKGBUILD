@@ -1,32 +1,26 @@
 # Maintainer: John Troxler <firstname dot lastname at gmail dot com>
-# Co-Maintainer: Martin Rys <https://rys.pw/#contact_me>
+# Co-Maintainer: Martin Rys <https://rys.pw/contact>
 
 pkgname=loot
-pkgver=0.16.1
-_pkglibver=0.16.3
+pkgver=0.18.2
+_pkglibver=0.18.2
 pkgrel=3
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL3')
-depends=('boost-libs' 'http-parser' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst')
+depends=('boost-libs' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst' 'qt5-base')
 makedepends=('git' 'cmake' 'rust' 'cbindgen' 'yarn' 'boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
 )
-sha256sums=('7e7356d7b8d6d75924805d8e2b8e2cac69797ab203a18f6a1d12090f01a8c7f3'
-            '6c2ff8bab81aeec74efb83fd6ee9754dde63c09349937c9a9b397fe92cbe2829'
+sha256sums=('85a3f88dfa8c892e20c05c90555244fc036ae711115720a083a59a2b87c147b5'
+            '1722cd816b302cae84bff26470831dc16c073236bc8a3728220f75cc3d19a3e0'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
 )
 
-#prepare() {
-#	yarn install
-#}
-
 build() {
-	# hack as per Comments page
-	find ./ -type f -exec sed -i 's#--config $(CONFIGURATION)##g' {} \;
 	# libloot
 	cd "$srcdir/lib$pkgname-$_pkglibver"
 	yarn install
@@ -42,9 +36,7 @@ build() {
 
 	# loot
 	cd "$srcdir/$pkgname-$pkgver"
-	yarn install
-	# Cripple update check, always return no update available
-	echo 'export default async function updateExists(currentVersion: string, currentBuild: string){if(currentVersion === undefined || currentBuild === undefined || true) {return false;}}' > src/gui/html/js/updateExists.ts
+
 	mkdir -p build
 	cd build
 	cmake .. -DLIBLOOT_URL="$srcdir/lib$pkgname-$_pkglibver/build/lib$pkgname-$_pkglibver.tar.gz" \
@@ -57,27 +49,13 @@ package() {
 
 	install -Dm755 -t "$pkgdir/opt/$pkgname" \
 		"$_builddir/LOOT" \
-		"$_builddir/lib$pkgname.so" \
-		"$_builddir/libcef.so"
-
-	install -Dm644 -t "$pkgdir/opt/$pkgname" \
-		"$_builddir/icudtl.dat" \
-		"$_builddir/snapshot_blob.bin" \
-		"$_builddir/v8_context_snapshot.bin" \
-		"$_builddir/resources.pak" \
-		"$_builddir/chrome_100_percent.pak" \
-		"$_builddir/chrome_200_percent.pak"
-
-	install -Dm644 -t "$pkgdir/opt/$pkgname/resources/l10n" \
-		"$_builddir/external/src/cef/Resources/locales"/*.pak
-
-	cp -r "$_builddir/resources/ui" "$pkgdir/opt/$pkgname/resources/"
+		"$_builddir/lib$pkgname.so"
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/LOOT" "$pkgdir/usr/bin"
 
 	# Install the icon
-	install -Dm644 "${_builddir}/../resources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
+	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
 	# Install desktop entry
 	install -Dm644 ${srcdir}/../LOOT.desktop ${pkgdir}/usr/share/applications/LOOT.desktop
 }
