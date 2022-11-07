@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scDblFinder
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='scDblFinder'
 arch=('any')
@@ -17,7 +17,12 @@ depends=(
   r-biocsingular
   r-bluster
   r-delayedarray
+  r-genomeinfodb
+  r-genomicranges
   r-igraph
+  r-iranges
+  r-rsamtools
+  r-rtracklayer
   r-s4vectors
   r-scater
   r-scran
@@ -25,8 +30,6 @@ depends=(
   r-singlecellexperiment
   r-summarizedexperiment
   r-xgboost
-  r-rtracklayer
-  r-rsamtools
 )
 optdepends=(
   r-biocstyle
@@ -35,7 +38,6 @@ optdepends=(
   r-dplyr
   r-ggplot2
   r-knitr
-  r-mass
   r-mbkmeans
   r-rmarkdown
   r-scrnaseq
@@ -43,7 +45,7 @@ optdepends=(
   r-viridislite
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0834495a342c6467d64dc899ba5913354ea5d53037c9be95e639950db6e2478')
+sha256sums=('f1eb33ad022e4d1c007f9dae72efb05a3c183cd6eb576794b9a0339f9180543f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
