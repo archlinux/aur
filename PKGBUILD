@@ -2,30 +2,32 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fgsea
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Fast Gene Set Enrichment Analysis'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
+  gcc
   r
   r-bh
   r-biocparallel
+  r-cowplot
   r-data.table
   r-fastmatch
   r-ggplot2
-  r-gridextra
   r-rcpp
-  gcc
 )
 optdepends=(
+  r-aggregation
   r-annotationdbi
   r-geoquery
   r-knitr
   r-limma
+  r-msigdbr
   r-org.mm.eg.db
   r-parallel
   r-reactome.db
@@ -33,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef56433dfff96c1ab20737d6af954c1c6f5158fb74654ce875849aa8def3d646')
+sha256sums=('138f343ead7b33c41044b4235f9b137ba35830c6e670da7af7f8e505592d34bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
