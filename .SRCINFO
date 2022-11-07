@@ -1,6 +1,6 @@
 pkgbase = python-pymc
 	pkgdesc = Markov chain Monte Carlo for Python
-	pkgver = 4.1.3
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/pymc-devs/pymc
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = python-pymc
 	depends = python-cloudpickle
 	depends = python-cachetools
 	depends = python-fastprogress
-	source = python-pymc-4.1.3.tar.gz::https://github.com/pymc-devs/pymc/archive/v4.1.3.tar.gz
-	sha256sums = 5b06ea57c0a436c84e30126edd7fbd8c33247613f6d610b4fd9590692d82a149
+	source = python-pymc-4.3.0.tar.gz::https://github.com/pymc-devs/pymc/archive/v4.3.0.tar.gz
+	sha256sums = 384aacc04aeef6f49f2356b61cfcdac22de0000b77b825ba3af73f3f0ba2cb9a
 
 pkgname = python-pymc
