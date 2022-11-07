@@ -22,7 +22,7 @@ optdepends=("cppcheck: Static C/C++ code analysis"
     "libsecp256k1: Optimised C library for EC operations on curve secp256k1"
     "lowdown: Markdown translator"
     "shellcheck: Shell script analysis"
-    "valgrind: Tool for memory management")
+    "valgrind: Tool for memory management problems")
 conflicts=("core-lightning-git")
 source=("${pkgname}::git+${url}.git?signed#tag=${_tag}"
     "git+https://github.com/ElementsProject/libwally-core.git"
@@ -79,7 +79,7 @@ package()
     install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
     cp -r "${srcdir}"/"${pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
-    cd "${srcdir}"/"${pkgname}"/doc/ || exit 1
+    cd "${pkgdir}"/usr/share/doc/"${pkgname}"/ || exit 1
     _list="$(ls -l)"
     _links="$(echo "${_list}" | grep "^l")"
     _links="$(echo "${_links}" | tr -s " ")"
