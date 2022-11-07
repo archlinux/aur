@@ -1,7 +1,7 @@
 pkgbase = phylosuite
-	pkgdesc = an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies
+	pkgdesc = an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies. https://doi.org/10.1111/1755-0998.13096
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 7
 	url = https://github.com/dongzhang0725/PhyloSuite
 	arch = x86_64
 	license = GPL3
@@ -14,4 +14,3 @@ pkgbase = phylosuite
 	md5sums = aca08e388f8d6a180a570b31ccebe764
 
 pkgname = phylosuite
-

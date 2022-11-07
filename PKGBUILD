@@ -3,8 +3,8 @@
 
 pkgname=phylosuite
 pkgver=1.2.2
-pkgrel=1
-pkgdesc="an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies"
+pkgrel=7
+pkgdesc="an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies. https://doi.org/10.1111/1755-0998.13096"
 arch=('x86_64')
 url="https://github.com/dongzhang0725/PhyloSuite"
 license=('GPL3')
@@ -20,7 +20,7 @@ package() {
   install -dm755 "$pkgdir"/usr/{bin/phylosuite,share/applications}
   mv "$srcdir"/PhyloSuite/* "$pkgdir"/usr/bin/phylosuite
   chmod -R 755  "$pkgdir"/usr/bin/phylosuite
-  "$pkgdir"/usr/bin/phylosuite/PhyloSuite
+  chmod +x "$pkgdir"/usr/bin/phylosuite
   install -m 755 "$srcdir"/PhyloSuite.png "$pkgdir"/usr/bin/phylosuite/
   install -m 755 "$srcdir"/PhyloSuite.desktop "$pkgdir"/usr/share/applications/
 }
