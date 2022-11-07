@@ -1,5 +1,5 @@
 [Unit]
-Description=NewRelic Proxy Daemon PHP5
+Description=NewRelic PHP Proxy Daemon
 After=network.target
 
 [Service]

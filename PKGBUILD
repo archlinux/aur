@@ -1,24 +1,24 @@
-# Maintainer: Iván Gabaldón <contact [at] inetol.net>
+# Maintainer: Ivan Gabaldon <ivan [d0t] gab [at] inetol [d0t] net>
 # Contributor: Kim Brandt <myrveln@gmail.com>
 # Contributor: Vinh Nguyen <kurei [at] axcoto.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=newrelic-php5
-pkgver=10.2.0.314
+pkgver=10.3.0.315
 _libver=20210902
 pkgrel=1
 pkgdesc='PHP Monitoring Agent'
 arch=('x86_64' 'i686')
 url='https://newrelic.com/php'
 license=('Apache')
-depends=('glibc' 'php')
+depends=('php')
 backup=('etc/php/conf.d/newrelic.ini')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://download.newrelic.com/php_agent/archive/$pkgver/$pkgname-$pkgver-linux.tar.gz"
         'newrelic-daemon.service')
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('955fb3dc0f1798429d787f6de2a7790514cb1d9172e804414ad447551e4b1051525041dd5ffe116efe398aedf5f7aa9dda9c9f53c75c6fe5330197636c206c0a'
-        'c5f8acd4c94951f7761b98aa9965110f2128fb86b0fa0f5097f2a5ea537db5b58e62dcce57a23e458ca4906bcfe03aca687eb5e7239551726deee8a5d953abbd')
+b2sums=('dec058af592704078f1cc3cb95312127fb786fb8fde9bfa31c98bbbb12b7f9ebf98639e31952b7aec0c2671d084d51e97d2bce9b957a6772df8f4f3e75de5f43'
+        '02b3199ad7edf6ab14207b01f971c7fada8e69c351b04e74fd2d1847900b5ff48591c5f21e862afdf1cbfe3a10256238092a5535addbc554f4f26dd7cb19f5da')
 
 prepare() {
     mkdir -p "$pkgname-$pkgver"
