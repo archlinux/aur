@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=airpart
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Differential cell-type-specific allelic imbalance'
 arch=('any')
@@ -38,9 +38,10 @@ optdepends=(
   r-rmarkdown
   r-roxygen2
   r-testthat
+  r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('06b0adc3cfc81b2a0151e39692be4f9aa9b351ef1c90f1895f19b9b7dfb44a52')
+sha256sums=('74d66b3a0d7eb2bfe265055e941538167b8f498856defe085752512835d8fd1f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
