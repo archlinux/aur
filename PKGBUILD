@@ -3,7 +3,7 @@
 
 pkgname=gitlint
 pkgver=0.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Git commit message linter'
 arch=('any')
 url='https://github.com/jorisroovers/gitlint'
@@ -28,7 +28,7 @@ source=(
 sha256sums=(
   '1c1e895aea22b1ded131a9dc81dd1f37fb064a9f3af7421debd1606ca646196a'
   'ec117041e4ba8a3a46d27e169982129dd08e455501de676d873fce91b1d934cd'
-  'd7b51415865e6c3802e3440462022e3b2349b1af813b5c2459e62f3c1dd2feb3'
+  'c160f586b02894afc3535de1f9c843b60bfc24d2b56cc00ab26472dc296123c4'
 )
 install=gitlint.install
 

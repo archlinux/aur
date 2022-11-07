@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch
+!gitlint.install

@@ -1,21 +1,21 @@
-post_install() {
-  _GITLINT_COMPLETE=bash_source gitlint > gitlint.bash
-  _GITLINT_COMPLETE=fish_source gitlint > gitlint.fish
-  _GITLINT_COMPLETE=zsh_source gitlint > gitlint.zsh
+_install_completions() {
+  tmpdir=$(mktemp -d)
 
-  install -Dm644 gitlint.bash "/usr/share/bash-completion/completions/gitlint"
-  install -Dm644 gitlint.fish "/usr/share/fish/vendor_completions.d/gitlint.fish"
-  install -Dm644 gitlint.zsh "/usr/share/zsh/site-functions/_gitlint"
+  _GITLINT_COMPLETE=bash_source gitlint > "$tmpdir/gitlint.bash"
+  _GITLINT_COMPLETE=fish_source gitlint > "$tmpdir/gitlint.fish"
+  _GITLINT_COMPLETE=zsh_source gitlint > "$tmpdir/gitlint.zsh"
+
+  install -Dm644 "$tmpdir/gitlint.bash" "/usr/share/bash-completion/completions/gitlint"
+  install -Dm644 "$tmpdir/gitlint.fish" "/usr/share/fish/vendor_completions.d/gitlint.fish"
+  install -Dm644 "$tmpdir/gitlint.zsh" "/usr/share/zsh/site-functions/_gitlint"
+}
+
+post_install() {
+  _install_completions
 }
 
 post_upgrade() {
-  _GITLINT_COMPLETE=bash_source gitlint > gitlint.bash
-  _GITLINT_COMPLETE=fish_source gitlint > gitlint.fish
-  _GITLINT_COMPLETE=zsh_source gitlint > gitlint.zsh
-
-  install -Dm644 gitlint.bash "/usr/share/bash-completion/completions/gitlint"
-  install -Dm644 gitlint.fish "/usr/share/fish/vendor_completions.d/gitlint.fish"
-  install -Dm644 gitlint.zsh "/usr/share/zsh/site-functions/_gitlint"
+  _install_completions
 }
 
 post_remove() {
