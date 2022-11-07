@@ -53,5 +53,4 @@ package()
 
     # Install the license.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-    find "${pkgdir}"/usr/share/licenses/"${pkgname}"/ -type f -exec chmod 644 {} +
 }
