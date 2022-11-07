@@ -8,7 +8,7 @@
 
 pkgname=mingw-w64-mariadb-connector-c
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases (mingw-w64)'
 arch=('any')
 url='https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c'
