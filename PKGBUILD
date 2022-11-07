@@ -35,10 +35,20 @@ optdepends=('xdg-utils: recommended on linux'
             'xdot: Link Map plugin'
             'zeitgeist: Log events with Zeitgeist plugin'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zim-desktop-wiki/zim-desktop-wiki/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('027fee89db2871de8ce09457ed81cdbd')
+source=("${pkgname}::git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+build() {
+    cd ${srcdir}/${pkgname}
+    sed -i 's|\t\tinstall_class.run(self)|&\n\t\treturn None|' setup.py
+}
 
 package() {
-    cd ${srcdir}/${_pkgname}-desktop-wiki-${pkgver}
+    cd ${srcdir}/${pkgname}
     python setup.py install --root=${pkgdir} --optimize=1
 }

@@ -37,7 +37,7 @@ pkgbase = zim-git
 	optdepends = zeitgeist: Log events with Zeitgeist plugin
 	conflicts = zim
 	replaces = zim
-	source = https://github.com/zim-desktop-wiki/zim-desktop-wiki/archive/refs/tags/0.75.1.tar.gz
-	md5sums = 027fee89db2871de8ce09457ed81cdbd
+	source = zim-git::git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git
+	md5sums = SKIP
 
 pkgname = zim-git
