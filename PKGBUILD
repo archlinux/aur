@@ -2,8 +2,9 @@
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 # Contributor: ant32 < antreimer at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
+# Contributor: Martchus < martchus at gmx dot net >
 
-_pkgver=1.1.1s
+_pkgver=3.0.7
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -11,15 +12,15 @@ pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
 pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=('any')
-url="https://www.openssl.org"
-license=('BSD')
+url='https://www.openssl.org'
+license=('Apache')
 depends=('mingw-w64-zlib')
 makedepends=('mingw-w64-gcc'
              'mingw-w64-environment'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
-sha256sums=('c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa'
+sha256sums=('83049d042a260e696f62406ac5c08bf706fd84383f945cf21bd61e9ed95c396e'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
@@ -49,14 +50,14 @@ build() {
       no-ssl3-method \
       zlib-dynamic \
       "${CFLAGS}"
-    make
+    make LIBDIR=lib
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
-    make -j1 DESTDIR="${pkgdir}" install_sw
+    make -j1 DESTDIR="${pkgdir}" LIBDIR=lib install_sw
     install -m644 ms/applink.c "${pkgdir}/usr/${_arch}/include/openssl/"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
