@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SEtools
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='SEtools: tools for working with SummarizedExperiment'
 arch=('any')
@@ -13,27 +13,24 @@ depends=(
   r
   r-biocparallel
   r-circlize
-  r-complexheatmap
   r-data.table
   r-deseq2
   r-edger
   r-openxlsx
-  r-randomcolor
+  r-pheatmap
   r-s4vectors
-  r-seriation
+  r-sechm
   r-summarizedexperiment
   r-sva
-  r-sechm
 )
 optdepends=(
   r-biocstyle
   r-ggplot2
   r-knitr
-  r-pheatmap
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9f94dd63f12f31a851bec0d676aa3907c1d4a381fa679064e9d68f3de0156868')
+sha256sums=('aa470e27b5bda255beff01f98070139ff8e460a4865dfe53a323cced07bf8760')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
