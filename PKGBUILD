@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASpediaFI
-_pkgver=1.10.0
+_pkgver=1.11.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='ASpedia-FI: Functional Interaction Analysis of Alternative Splicing Events'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('292de0169382638310841e0fe73ef3a171d5488e235172ddc6418a24158fc7f2')
+sha256sums=('bada73c70b81c82b88bd2a014b01d05a1eedde536a9df19311ae41a498f1568e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

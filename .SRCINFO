@@ -1,6 +1,6 @@
 pkgbase = r-aspediafi
 	pkgdesc = ASpedia-FI: Functional Interaction Analysis of Alternative Splicing Events
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASpediaFI
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-aspediafi
 	depends = r-scales
 	depends = r-summarizedexperiment
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASpediaFI_1.10.0.tar.gz
-	sha256sums = 292de0169382638310841e0fe73ef3a171d5488e235172ddc6418a24158fc7f2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASpediaFI_1.11.0.tar.gz
+	sha256sums = bada73c70b81c82b88bd2a014b01d05a1eedde536a9df19311ae41a498f1568e
 
 pkgname = r-aspediafi
