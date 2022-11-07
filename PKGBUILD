@@ -10,11 +10,11 @@
 
 _pack=bim
 pkgname=octave-${_pack}
-pkgver=1.1.5
-pkgrel=4
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="Package for solving Diffusion Advection Reaction (DAR) Partial Differential Equations"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://github.com/carlodefalco/${_pack}"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.8.0' 'octave-fpl' 'octave-msh')
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("${_archive}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('b29077d94f00061ab6af8de4e44a94b48f5ccffa5249e39ab59fe01e8c4aa7757d376862c7d9b9cd069b2ec70f98108eea15e6e4500990a374b46e88e3c07e17')
+sha512sums=('983c53778bddc83784b9828811a135204301ffba699bc72f294016db793b632750a95fa6267a3ee58c7fa804d8b1e212f589ebbd89e1bfc016318c446c5ef679')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
