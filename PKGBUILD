@@ -1,7 +1,7 @@
 # Maintainer: Sambhav <samb at disroot dot org>
 # Contributer: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui-git
-pkgver=v0.3.2.r5.gacd23b4
+pkgver=v0.3.2.r6.g485df2e
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
@@ -46,7 +46,7 @@ prepare() {
   git config submodule.google-play-api.url $srcdir/google-play-api
   git config submodule.playdl-signin-ui-qt.url $srcdir/playdl-signin-ui-qt
   git config submodule.mcpelauncher-ui-qt.url $srcdir/mcpelauncher-ui-qt
-  git submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
+  git -c protocol.file.allow=always submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
 }
 build() {
   cd mcpelauncher-ui-manifest

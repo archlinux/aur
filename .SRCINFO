@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-ui-git
 	pkgdesc = Minecraft: PE Linux launcher UI
-	pkgver = v0.3.2.r5.gacd23b4
+	pkgver = v0.3.2.r6.g485df2e
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-ui-manifest
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mcpelauncher-ui-git
 	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=qt6
 	source = git+https://github.com/MCMrARM/axml-parser.git
 	source = git+https://github.com/minecraft-linux/file-util.git
-	source = google-play-api::git+https://github.com/MCMrARM/Google-Play-API.git
+	source = google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git
 	source = git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git
 	source = git+https://github.com/minecraft-linux/mcpelauncher-extract.git
 	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git
