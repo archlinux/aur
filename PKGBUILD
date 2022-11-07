@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _appdata_id=org.nicotine_plus.Nicotine
-pkgver=3.3.0.dev3.r8226.59fa7dbd9
+pkgver=3.3.0.dev3.r8228.fc511e27a
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -22,8 +22,8 @@ source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git'
         "${_appdata_id}-gtk4.desktop"
         "${_appdata_id}-libadwaita.desktop")
 sha256sums=('SKIP'
-            'e92495dfede12d88797fe0bcaa03517399da6e0f8411b567005f65cb571aa97f'
-            'ae4f84de9070ad57f43d6a801f20fce164560f0ecb88056e917aed41c4c967a8')
+            'ed5fe4e991655fa28736960b9fabc88541d3b43a2614dcaf6aad925ad86e1f14'
+            '947a92b445a4c3becbf05f5f11f3ddcc7ccca95078ea1cbc22bfa5f409dbe9c8')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
