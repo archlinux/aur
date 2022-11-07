@@ -1,8 +1,8 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=0.25
-pkgrel=2
+pkgver=0.26
+pkgrel=1
 pkgdesc="Single binary terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/naggie/dstask"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7a8b4e9d2d3ce6a59551fa181201148a008c35505d43593f80b1fe80493fdb8c')
+sha256sums=('ccd7afcb825eb799bdaaaf6eaf8150bbb8ceda02fec6c97f042b7bbc913a46fc')
 
 build() {
     _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)
@@ -37,6 +37,6 @@ package() {
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
     install -Dm755 dstask-import -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 .dstask-bash-completions.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-    install -Dm644 .dstask-zsh-completions.sh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    ./dstask bash-completion | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    ./dstask zsh-completion | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
