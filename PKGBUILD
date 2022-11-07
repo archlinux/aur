@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.5.r96.g328ff0e8c
+pkgver=4.0.5.r98.ge17040751
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
@@ -65,6 +65,7 @@ package_soh-git() {
   conflicts=("soh")
   depends=("sdl2" "sdl2_net" "libpulse")
   license=("unknown")
+  install=soh.install
 
   cd "${srcdir}/${_reponame}"
   cd build
