@@ -3,7 +3,7 @@
 _pkgname=HDO.db
 _pkgver=0.99.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.99.1
 pkgrel=1
 pkgdesc='A set of annotation maps describing the entire Human Disease Ontology'
 arch=('any')
