@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
@@ -22,7 +22,7 @@ changelog=
 source=("craftos2-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}-luajit.tar.gz"
         "craftos2-luajit-v2.5.4.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.5.4.tar.gz")
 noextract=()
-sha256sums=('79d51d27ca9e63b93cbe409fd0ca5bae50068b26a6150dac982cf1664a2015ff' 'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
+sha256sums=('c848156ed911aa239c58c85d9af881edecf99cc0e01d86c91f867561cd77c273' 'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
 validpgpkeys=()
 
 prepare() {
