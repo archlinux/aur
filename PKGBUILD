@@ -5,7 +5,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.12.0
+pkgver=4.12.1
 _attnum=3473464
 pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -14,10 +14,10 @@ url="https://confluence.ecmwf.int/display/MAGP"
 license=('Apache')
 depends=('eccodes>=2.19.0' libgeotiff qt6-base pango python)
 optdepends=(ksh libaec odb_api)
-makedepends=(cmake gcc-fortran perl-xml-parser python-jinja swig)
+makedepends=(cmake gcc-fortran python-jinja swig)
 source=(http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz
         gcc11.patch)
-sha256sums=('d07944962b9e85de3fd1eec543f52077afe37efc10957b903bd7bead96e81c90'
+sha256sums=('c9e2322e3ee9e0e1882f1c7f728751ba81a7207a6d4732d39b3dd97175fa8007'
             'c0250ac473b4703e79c8f879f6271d1409e800a0f8a7a77b3793cc9ce9a85951')
 
 prepare() {
