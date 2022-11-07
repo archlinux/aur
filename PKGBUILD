@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=6.00
+pkgver=6.05
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(x86_64)
@@ -28,11 +28,11 @@ _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
 
 _mplabcomm_dir="/opt/microchip/mplabcomm"
 
-source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
+source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/${_mplabx_installer}.tar"
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('452cf9fb8c889ea1e2744c0d2b1fa3d1'
+md5sums=('6fc81f0ff499a61de4880e20eb3c8247'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
@@ -98,8 +98,7 @@ EOF
   rm -rf "${pkgdir}${_mplabx_dir}/sys/java"
   rmdir "${pkgdir}${_mplabx_dir}/sys" # the intent here is to fail if something else than java is put into sys.
 
-  # Move libs away from /usr/local/lib
-  mv "${pkgdir}"/usr/local/lib/*.so "${pkgdir}"/usr/lib/
+  # Remove the /usr/local directory (now empty)
   rm -rf "${pkgdir}/usr/local/"
 
   _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/*)
@@ -133,8 +132,8 @@ EOF
   done
 
   # Tweak .desktop files for better desktop integration
-  echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab.desktop"
-  echo "StartupWMClass=com-microchip-ipe-ui-ProdProgrammerApp" >> "${pkgdir}/usr/share/applications/mplab_ipe.desktop"
+  echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab_ide-v${pkgver}.desktop"
+  echo "StartupWMClass=MPLAB IPE" >> "${pkgdir}/usr/share/applications/mplab_ipe-v${pkgver}.desktop"
 
   install -Dm 644 -t "${pkgdir}/usr/lib/systemd/system/systemd-udevd.service.d/" "${srcdir}/mplabx-override.conf"
 
