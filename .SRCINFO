@@ -1,13 +1,13 @@
 pkgbase = cinny-desktop-bin
 	pkgdesc = Matrix client focusing primarily on a simple, elegant and secure interface (binary release)
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cinny.in/
 	install = cinny-desktop-bin.install
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk
-	depends = openssl
+	depends = openssl-1.1
 	depends = gtk3
 	depends = appmenu-gtk-module
 	depends = libappindicator-gtk3

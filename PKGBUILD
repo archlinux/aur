@@ -4,7 +4,7 @@
 
 pkgname='cinny-desktop-bin'
 pkgver='2.2.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Matrix client focusing primarily on a simple, elegant and secure interface (binary release)'
 arch=('x86_64')
 
@@ -14,7 +14,7 @@ license=('MIT')
 # https://tauri.studio/v1/guides/getting-started/prerequisites#1-system-dependencies
 depends=(
     'webkit2gtk'
-    'openssl'
+    'openssl-1.1' # Binary release is currently still built using OpenSSL 1.1.1
     'gtk3'
     'appmenu-gtk-module'
     'libappindicator-gtk3'
