@@ -1,14 +1,13 @@
 pkgbase = xstow
 	pkgdesc = XStow is a replacement of GNU Stow written in C++. It supports all features of Stow with some extensions.
-	pkgver = 1.0.2
-	pkgrel = 2
-	url = http://xstow.sourceforge.net
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://xstow.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ncurses
-	source = http://downloads.sourceforge.net/sourceforge/xstow/xstow-1.0.2.tar.bz2
-	md5sums = 685fe4f3db3c363191e836082dc0d512
+	source = https://downloads.sourceforge.net/sourceforge/xstow/xstow-1.1.0.tar.bz2
+	md5sums = a568f7e64fc0c39829348942a8dfd343
 
 pkgname = xstow
-
