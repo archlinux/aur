@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.1.8+12+g6b5aebf
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,8 @@ build() {
     cmake -B build \
           -D CMAKE_BUILD_TYPE=Release \
           -D CMAKE_INSTALL_PREFIX=/usr \
-          -D DYN_FLUIDSYNTH=OFF \
+          -D CMAKE_C_FLAGS="${CFLAGS} -ffile-prefix-map=\"${PWD}\"=." \
+          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"${PWD}\"=." \
           -D DYN_MPG123=OFF \
           -D DYN_SNDFILE=OFF
     make -C build
