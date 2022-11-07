@@ -1,0 +1,15 @@
+pkgbase = clipnotify-git
+	pkgdesc = Polling-free clipboard notifier
+	pkgver = 1.0.2.r5.g9c23a8b
+	pkgrel = 1
+	url = http://github.com/cdown/clipnotify
+	arch = x86_64
+	license = custom:Public Domain
+	depends = libx11
+	depends = libxfixes
+	provides = clipnotify
+	conflicts = clipnotify
+	source = git+https://github.com/cdown/clipnotify.git
+	md5sums = SKIP
+
+pkgname = clipnotify-git
