@@ -1,23 +1,28 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
+# Maintainer: txtsd <code@ihavea.quest>
+
 pkgname=progress-quest-bin
-pkgver=6.4.3
+pkgver=6.4.4
 pkgrel=1
 pkgdesc='Progress Quest is an antic and fantastical computer role-playing game'
 arch=('i686' 'x86_64')
 url='http://progressquest.com/'
 license=('MIT')
-makedepends=('unzip')
 depends=('wine')
+provides=('progress-quest')
 source=(
-    'http://www.progressquest.com/dl/pq6-4-3.zip'
-    'progress-quest'
+    'http://www.progressquest.com/dl/pq6-4-4.zip'
 )
-sha256sums=(
-    'b425ce40f2c19d5c853ce2a54f3f208431843e3240da4d38f9cfcba006e016b8'
-    '91fc83b000b581fd29295d99ab3253b40e6f6a94f39c557ae7ed80f7c8bb5702'
-)
+sha256sums=('0c6982f6e9a4270968dfdec2874dc642957bddbdd55f4517fa013692ffe8e67e')
 
 package() {
-  install -Dm755 "pq.exe" "$pkgdir/usr/share/progress-quest/pq.exe"
-  install -Dm755 "progress-quest" "$pkgdir/usr/bin/progress-quest"
+  install -Dm755 "pq.exe" "${pkgdir}/usr/share/progress-quest/pq.exe"
+  cat > "progress-quest" << EOF
+#!/bin/sh
+CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/.progress-quest"
+mkdir -p "${CONFIG_DIR}"
+cd "${CONFIG_DIR}"
+wine /usr/share/progress-quest/pq.exe
+EOF
+  install -Dm755 "progress-quest" "${pkgdir}/usr/bin/progress-quest"
 }
