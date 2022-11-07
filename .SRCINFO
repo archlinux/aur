@@ -1,6 +1,6 @@
 pkgbase = r-motifbreakr
 	pkgdesc = A Package For Predicting The Disruptiveness Of Single Nucleotide Polymorphisms On Transcription Factor Binding Sites
-	pkgver = 2.10.2
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/motifbreakR
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = r-motifbreakr
 	depends = r-bsgenome
 	depends = r-genomeinfodb
 	depends = r-genomicranges
-	depends = r-grimport
 	depends = r-gviz
 	depends = r-iranges
 	depends = r-matrixstats
@@ -31,7 +30,7 @@ pkgbase = r-motifbreakr
 	optdepends = r-rmarkdown
 	optdepends = r-snplocs.hsapiens.dbsnp.20120608
 	optdepends = r-snplocs.hsapiens.dbsnp142.grch37
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/motifbreakR_2.10.2.tar.gz
-	sha256sums = efa127f03b3819a7439f3dfe5c496de2977ac7816d3a6b27051742a1d59aaa76
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/motifbreakR_2.12.0.tar.gz
+	sha256sums = 38ef678acf7ff9360b20974085dd19596a0b74494876b1878388ac97b44a0753
 
 pkgname = r-motifbreakr
