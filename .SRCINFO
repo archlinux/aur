@@ -13,7 +13,6 @@ pkgbase = zmusic-git
 	makedepends = cmake
 	makedepends = git
 	depends = alsa-lib
-	depends = fluidsynth>=2.2
 	depends = libsndfile
 	depends = mpg123
 	depends = zlib
