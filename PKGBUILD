@@ -2,7 +2,7 @@
 # Co-Maintainer: Martin Rys <https://rys.pw/contact>
 
 pkgname=loot
-pkgver=0.18.2
+pkgver=0.18.6
 _pkglibver=0.18.2
 pkgrel=3
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
 )
-sha256sums=('85a3f88dfa8c892e20c05c90555244fc036ae711115720a083a59a2b87c147b5'
+sha256sums=('a93a5df1e34f3f54ec6023971433527776db6f8861be48e620e0f8c6a06169c5'
             '1722cd816b302cae84bff26470831dc16c073236bc8a3728220f75cc3d19a3e0'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
 )
