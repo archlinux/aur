@@ -6,7 +6,7 @@ pkgname=mindmaster_cn
 _pkgname=MindMaster-10
 _softname=mindmaster
 pkgver=10.0.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=(!strip)
 conflicts=("mindmaster" "mindmaster-cn" "mindmaster_en")
@@ -28,8 +28,8 @@ package() {
     export LC_CTYPE="zh_CN.UTF-8"
     bsdtar -xf "${srcdir}/${pkgname}/data.tar.xz" --numeric-owner -C "${pkgdir}"
 
+    sed -i 's|"$@"|"$@" --no-sandbox|g' "${pkgdir}/opt/${_pkgname}/${_softname}.sh"
+
     install -dm0755 "${pkgdir}/usr/bin/"
     ln -sf "/opt/${_pkgname}/${_softname}.sh" "${pkgdir}/usr/bin/${_softname}"
 }
-
-
