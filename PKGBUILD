@@ -1,7 +1,7 @@
 # Maintainer: Nathanael Demacon <nathanael.dmc[at]outlook[dot]fr>
 
 pkgname=sshs
-pkgver="3.3.0"
+pkgver="3.4.0"
 pkgrel="1"
 pkgdesc="Terminal user interface for SSH"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssh')
 makedepends=('go')
 source=("https://github.com/quantumsheep/sshs/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('07992229eab5d97be4fac44a21d3ad3c89ef7c7d15c8814ed579a054334f5e5f')
+sha256sums=('f46f9185f97e35cf3b02286631df715027c3b0d374959c7e402a21bd30208f74')
 
 prepare() {
     cd "$pkgname-$pkgver"
