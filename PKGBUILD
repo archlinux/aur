@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gsean
-_pkgver=1.16.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Gene Set Enrichment Analysis with Networks'
 arch=('any')
@@ -17,13 +17,12 @@ depends=(
 optdepends=(
   r-knitr
   r-plotly
-  r-ranks
   r-rmarkdown
   r-summarizedexperiment
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f07ca709d5a68ef134c5a5b9e9226cb4925eef03fd62e4c0c483c8f8139bff2')
+sha256sums=('f90319a59136fcc17e7d7a0f8a57599e7311f5a729182cb6105b43ddeec8713f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
