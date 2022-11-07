@@ -1,7 +1,7 @@
 pkgbase = comgr
 	pkgdesc = Compiler support library for ROCm LLVM
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/ROCm-CompilerSupport
 	arch = x86_64
 	license = custom:NCSAOSL
