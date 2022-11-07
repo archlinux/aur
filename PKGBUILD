@@ -1,6 +1,6 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 pkgname=restack
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Makes interactive Git rebase aware of intermediate branches.'
 arch=(any)
@@ -8,7 +8,7 @@ url="https://github.com/abhinav/restack"
 license=('MIT')
 makedepends=('cargo-nightly')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('f56b4f9d0c3cbe49e7ad67efb409962c7303bf4ea8c21a8dc4273b76725e5109')
+sha256sums=('a6e6381a632104cb2d1a2e2104a98fdab40c23e9f222bdff53641b7bfb3d8513')
 
 prepare() {
 	( cd "$pkgname-$pkgver" &&
