@@ -3,7 +3,7 @@ pkgname=colloid-kde-theme-git
 _themeName=Colloid
 _gitname="$_themeName-kde"
 pkgver=r29.393381b
-pkgrel=2
+pkgrel=3
 pkgdesc="colloid theme for KDE Plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
@@ -56,7 +56,7 @@ package() {
    for color in {dark,light}; do
      cp -r "${srcdir}/${_gitname}/sddm/${_themeName}" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}"
      cp -r  "${srcdir}/${_gitname}/sddm/images/${_themeName}-${color}.png" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}/background.png"
-     cp -r  "${srcdir}/${_gitname}/sddm/images/Preview-${color}.png" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}/preview.png"
+     cp -r  "${srcdir}/${_gitname}/sddm/images/Preview-${color}.png" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}/Preview.png"
 
      sed -i "/\Name=/s/Colloid/Colloid-${color}/" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}/metadata.desktop"
      sed -i "/\Theme-Id=/s/Colloid/Colloid-${color}/" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}/metadata.desktop"

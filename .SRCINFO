@@ -1,7 +1,7 @@
 pkgbase = colloid-kde-theme-git
 	pkgdesc = colloid theme for KDE Plasma
 	pkgver = r29.393381b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vinceliuice/Colloid-kde
 	arch = any
 	license = GPL3
