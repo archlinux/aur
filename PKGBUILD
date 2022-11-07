@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=uncoverappLib
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Interactive graphical application for clinical assessment of sequence coverage at the base-pair level'
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   r
   r-biocfilecache
   r-bsgenome.hsapiens.ucsc.hg19
+  r-bsgenome.hsapiens.ucsc.hg38
   r-condformat
   r-dt
   r-ensdb.hsapiens.v75
@@ -28,6 +29,7 @@ depends=(
   r-rappdirs
   r-rlist
   r-rsamtools
+  r-s4vectors
   r-shiny
   r-shinybs
   r-shinycssloaders
@@ -36,7 +38,6 @@ depends=(
   r-stringr
   r-txdb.hsapiens.ucsc.hg19.knowngene
   r-txdb.hsapiens.ucsc.hg38.knowngene
-  r-bsgenome.hsapiens.ucsc.hg38
 )
 optdepends=(
   r-biocstyle
@@ -46,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c8cbc5fe9f2883da696406c1338a51ccee77a348963560fbf7b247c4f7c1b64')
+sha256sums=('50236b7341e13938c818737ecc1e9fc8441c4d21387511a4362e743b2f2f56bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
