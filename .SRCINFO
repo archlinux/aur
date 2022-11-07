@@ -1,10 +1,13 @@
 pkgbase = python-fenics-ufl
 	pkgdesc = UFL - Unified Form Language
 	pkgver = 2022.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FEniCS/ufl
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-setuptools
