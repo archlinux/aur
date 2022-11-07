@@ -1,6 +1,6 @@
 pkgbase = r-pipecomp
 	pkgdesc = pipeComp pipeline benchmarking framework
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pipeComp
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-pipecomp
 	depends = r-viridislite
 	optdepends = r-biocstyle
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pipeComp_1.6.0.tar.gz
-	sha256sums = f503cf32b888312a006f6cca3089907f8fc21d444db4e1d99688886e52ba7354
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pipeComp_1.8.0.tar.gz
+	sha256sums = 054a73ea1e31a96175d68c29af539f7b90af7d268281771dfd0f586bd4876eda
 
 pkgname = r-pipecomp
