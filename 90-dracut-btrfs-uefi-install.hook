@@ -7,6 +7,6 @@ Target = usr/lib/modules/*/pkgbase
 [Action]
 Description = Updating linux initcpios (with dracut!)...
 When = PostTransaction
-Exec = /usr/local/bin/dracut-install.sh
+Exec = /usr/share/libalpm/scripts/dracut-btrfs-uefi-install
 Depends = dracut
 NeedsTargets
