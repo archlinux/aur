@@ -4,7 +4,7 @@ pkgname=openasar-bin
 _pkgname=OpenAsar
 pkgver=20221010154340
 _pkgver=nightly
-pkgrel=5
+pkgrel=6
 epoch=3
 pkgdesc="Open-source alternative of Discord desktop's app.asar, needs Discord installed"
 arch=('x86_64')
@@ -12,6 +12,7 @@ url="https://openasar.dev/"
 license=('MIT')
 depends=('unzip')
 optdepends=('discord: Stable channel Discord'
+            'discord-ptb: Public test Discord'
             'discord-canary: Canary channel Discord'
             'discord-development: Development channel Discord')
 conflicts=('discord_arch_electron')
