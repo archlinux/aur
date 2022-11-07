@@ -13,14 +13,13 @@ provides=('qsoas')
 conflicts=('qsoas')
 install=
 source=("https://bip.cnrs.fr/wp-content/uploads/qsoas/${pkgname}-${pkgver}.tar.gz"
-		"${pkgname}.desktop" "version.patch")
+		"${pkgname}.desktop")
 md5sums=('661ef55a4de1e4bddaeaaa3f0256ee25'
-         '05857d790bc8bb91efcaf95f72ec2d7a'
-		 '06813859ba6c32778b3259c68d654310')
+         '05857d790bc8bb91efcaf95f72ec2d7a')
 
 build() {
-	patch -u version.patch "./$pkgname-$pkgver/src/mruby.cc"
 	cd "$pkgname-$pkgver"
+	sed -r -i "s:MRUBY_RELEASE_MAJOR == 2:MRUBY_RELEASE_MAJOR >= 2:g" ./src/mruby.cc
 	qmake-qt5
 	make
 }
