@@ -52,11 +52,11 @@ package_linux-aarch64-flippy-bin() {
   )
   optdepends=(
     'uboot-legacy-initrd-hooks: to generate uboot legacy initrd images'
-    'linux-firmware-amlogic-ophub: Firmware for Amlogic SoCs'
+    'linux-firmware-amlogic-ophub: firmware for Amlogic SoCs'
     'wireless-regdb: to set the correct wireless channels of your country'
-    "${_pkgbase}-dtb-allwinner: DTBs for Allwinner SoCs"
-    "${_pkgbase}-dtb-amlogic: DTBs for Amlogic SoCs"
-    "${_pkgbase}-dtb-rockchip: DTBs for Rockchip SoCs"
+    "${_pkgbase}-dtb-allwinner: dtbs for Allwinner SoCs"
+    "${_pkgbase}-dtb-amlogic: dtbs for Amlogic SoCs"
+    "${_pkgbase}-dtb-rockchip: dtbs for Rockchip SoCs"
   )
   provides=(
     "${_pkgbase}=${pkgver}"
@@ -91,6 +91,12 @@ package_linux-aarch64-flippy-bin() {
 
 package_linux-aarch64-flippy-bin-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
+  provides=(
+    "${_pkgbase}-headers=${pkgver}"
+  )
+  conflicts=(
+    "${_pkgbase}-headers"
+  )
   install -d -m 755 "${pkgdir}/usr/lib/modules/${_pkgver_uname}/build"
   tar -C "${pkgdir}/usr/lib/modules/${_pkgver_uname}/build" -xvzf "${srcdir}/header-${_pkgver_uname}.tar.gz"
   install -d -m 755 "${pkgdir}/usr/src"
