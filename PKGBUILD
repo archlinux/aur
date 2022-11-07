@@ -6,11 +6,10 @@ _commit='099c353680b9f4584a7f71152b0a15d70d8fe114' # The current newest commit, 
 pkgname=linux-firmware-amlogic-ophub
 pkgver=20220916
 pkgrel=1
-pkgdesc="Firmware files for Linux - mainly for Aarch64 Amlogic platform, collected by ophub"
+pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, collected by ophub"
 arch=('aarch64')
 url="https://github.com/ophub/${_repo}"
 license=('GPL2' 'GPL3' 'custom')
-provides=("linux-firmware=${pkgver}")
 conflicts=('linux-firmware')
 options=(!strip)
 source=(
