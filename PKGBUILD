@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
@@ -20,7 +20,7 @@ source=(
   "$_rawurl/scripts/message_views.sql"
 )
 license=('AGPL3')
-depends=('openssl<=1.1.1.q')
+depends=('openssl-1.1')
 provides=('simplex-chat')
 conflicts=('simplex-chat')
 
