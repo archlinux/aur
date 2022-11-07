@@ -9,7 +9,7 @@ pkgbase = linux-firmware-amlogic-ophub
 	license = custom
 	conflicts = linux-firmware
 	options = !strip
-	source = https://github.com/ophub/amlogic-s9xxx-armbian/archive/099c353680b9f4584a7f71152b0a15d70d8fe114.tar.gz
-	sha256sums = 7b0306993117d95a7ed33f138457fa90b7d231c1aa6833bbe7e2c55c8aae1543
+	source = https://github.com/ophub/amlogic-s9xxx-armbian/raw/099c353680b9f4584a7f71152b0a15d70d8fe114/build-armbian/amlogic-armbian/firmware.tar.xz
+	sha256sums = 0fe946da8ef60465b21356493c80481ec36f31e8e492ee816f2eeff999757e36
 
 pkgname = linux-firmware-amlogic-ophub

@@ -13,13 +13,13 @@ license=('GPL2' 'GPL3' 'custom')
 conflicts=('linux-firmware')
 options=(!strip)
 source=(
-  "${url}/archive/${_commit}.tar.gz"
+  "${url}/raw/${_commit}/build-armbian/amlogic-armbian/firmware.tar.xz"
 )
 sha256sums=(
-  '7b0306993117d95a7ed33f138457fa90b7d231c1aa6833bbe7e2c55c8aae1543'
+  '0fe946da8ef60465b21356493c80481ec36f31e8e492ee816f2eeff999757e36'
 )
 
 package() {
   install -d -m 755 "${pkgdir}"/usr
-  tar -C "${pkgdir}"/usr -xvJf "${srcdir}/${_repo}-${_commit}/build-armbian/amlogic-armbian/firmware.tar.xz"
+  mv -v "${srcdir}/lib" "${pkgdir}/usr/"
 }
