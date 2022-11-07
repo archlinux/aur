@@ -3,19 +3,31 @@
 _pkgname="bazecor"
 _branch="development"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0beta15.2516
+pkgver=1.0.0RC.2667
 pkgrel=1
 pkgdesc="Graphical configurator for Dygma Raise. Development branch"
 url="https://github.com/Dygmalab/Bazecor"
 license=("GPL3")
 depends=("fuse")
-makedepends=("yarn" "git")
+makedepends=("yarn" "git" "nvm")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 arch=("x86_64")
 source=("${pkgname}::git+https://github.com/Dygmalab/Bazecor.git#branch=${_branch}")
 cksums=("SKIP")
 options=(!strip)
+
+# From https://wiki.archlinux.org/title/Node.js_package_guidelines
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 pkgver() {
     cd "$srcdir/$pkgname" || return
@@ -26,12 +38,15 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname" || return
-    yarn || /bin/true           # yarn errors, but seems to still work
+    _ensure_local_nvm
+    nvm install 16
+    nvm use 16
 }
 
 build() {
+    _ensure_local_nvm
     cd "$srcdir/$pkgname" || return
+    yarn || /bin/true           # yarn errors, but seems to still work
     yarn run build:linux
 
     _appimage=$(find . -iname "*.AppImage")
