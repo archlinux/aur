@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.8.r2.g643ac57
+pkgver=2.0.14.r1.g5adb1e96
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -59,7 +59,6 @@ prepare() {
 	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	sed -i 's/glm::glm/glm/' src/{Common,input}/CMakeLists.txt
-	sed -i '/target_precompile_headers/c target_compile_options(CemuCommon PUBLIC -include Common/precompiled.h)' src/Common/CMakeLists.txt
 }
 
 build() {
@@ -77,9 +76,11 @@ package() {
 	depends+=(
 		'libboost_filesystem.so'
 		'libboost_program_options.so'
+		'libcrypto.so'
 		'libcubeb.so'
 		'libcurl.so'
 		'libfmt.so'
+		'libssl.so'
 		'libzarchive.so'
 		'libzip.so'
 		'libzstd.so'

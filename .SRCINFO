@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.8.r2.g643ac57
+	pkgver = 2.0.14.r1.g5adb1e96
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -41,9 +41,11 @@ pkgname = cemu-git
 	depends = wxwidgets-gtk3>=3.2
 	depends = libboost_filesystem.so
 	depends = libboost_program_options.so
+	depends = libcrypto.so
 	depends = libcubeb.so
 	depends = libcurl.so
 	depends = libfmt.so
+	depends = libssl.so
 	depends = libzarchive.so
 	depends = libzip.so
 	depends = libzstd.so
