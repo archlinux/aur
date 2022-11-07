@@ -6,13 +6,13 @@
 
 pkgname=elasticsearch
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:SSPL+Elastic-2.0')
-depends=('java-environment>=17' 'systemd' 'libxml2')
-makedepends=('java-environment>=17')
+depends=('java-environment>=17' 'java-environment<19' 'systemd' 'libxml2')
+makedepends=('java-environment>=17' 'java-environment<19')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
