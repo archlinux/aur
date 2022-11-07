@@ -1,21 +1,25 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-
-_realname=pympv
-pkgname=python-pympv
-pkgver=0.5.1
+# Maintainer: éclairevoyant
+_pkgname=pympv
+pkgname=python-$_pkgname
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="A python wrapper for libmpv."
-arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/marcan/pympv"
-license=('GPL')
-depends=('python' 'mpv')
-conflicts=('python-mpv')
-makedepends=('cython')
-source=("https://files.pythonhosted.org/packages/25/b8/edd4a7817e613adef1c8814ecc492744ffd243aee81dc8c45502d5f24cc1/$_realname-$pkgver.tar.gz")
-sha256sums=('22c8fd947216ff93d66725b1737139253f142b41f929c6287dce17bdf358df05')
+pkgdesc='A python wrapper for libmpv'
+arch=('x86_64')
+url='https://github.com/marcan/pympv'
+license=('GPL3')
+depends=('mpv' 'python')
+makedepends=('cython' 'python-setuptools')
+conflicts=('python-mpv' 'python-mpv-git' 'python-pympv-git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/marcan/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+validpgpkeys=('86F34540412F345D65819BD58E60A76DDEF26276') # Hector Martin <marcan at marcan dot st>
+sha256sums=('1d262e7fb2531d27633bdc2334fbc1c3ce094457a6a8f3cfc1c6c9799c1ef202')
+
+build() {
+	cd $_pkgname-$pkgver
+	python setup.py build
+}
 
 package() {
-  cd $_realname-$pkgver
-  python setup.py install --root="$pkgdir"
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+	cd $_pkgname-$pkgver
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
