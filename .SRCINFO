@@ -5,7 +5,6 @@ pkgbase = sac-core
 	url = https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management
 	arch = x86_64
 	license = custom
-	depends = openssl-1.1
 	depends = pcsclite
 	optdepends = sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)
 	source = https://installer.id.ee/media/etoken/Linux_SAC%2010.8.28%20GA%20Build.zip
