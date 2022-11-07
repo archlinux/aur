@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Feature centric port for all Doom engine games (git version)
-	pkgver = 4.8pre+493+g989dcfcf1
+	pkgver = 4.10pre+16+gd422737a7
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -24,8 +24,7 @@ pkgbase = gzdoom-git
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data
 	optdepends = freedm: FreeDM game data
-	optdepends = freedoom1: Freedoom: Phase 1 game data
-	optdepends = freedoom2: Freedoom: Phase 2 game data
+	optdepends = freedoom: Freedoom game data
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = hacx-wad: HacX game data
 	optdepends = harmony-wad: Harmony game data

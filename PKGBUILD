@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.8pre+493+g989dcfcf1
+pkgver=4.10pre+16+gd422737a7
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,8 +20,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
             'freedm: FreeDM game data'
-            'freedoom1: Freedoom: Phase 1 game data'
-            'freedoom2: Freedoom: Phase 2 game data'
+            'freedoom: Freedoom game data'
             'gxmessage: crash dialog (GNOME)'
             'hacx-wad: HacX game data'
             'harmony-wad: Harmony game data'
