@@ -13,7 +13,7 @@
 pkgname=mingw-w64-qt6-base-static
 _qtver=6.4.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
