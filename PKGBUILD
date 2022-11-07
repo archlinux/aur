@@ -3,7 +3,7 @@
 pkgname=python-diffpy.structure
 pkgshort=diffpy.structure
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Storage and manipulation of crystal structure data in python"
 arch=('any')
 url="https://www.diffpy.org/diffpy.structure/"
@@ -25,4 +25,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('e7f6f8ab96414b1bacf1ea25a5091e1f')
+md5sums=('cfa6b5d6bacecee8a31c36f44893b41c')
