@@ -2,7 +2,7 @@
 
 pkgname=luastatus
 pkgver=0.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc='universal status bar content generator'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 	"yajl>=2.0.4: for barlib 'i3'"
 	"alsa-lib>=1.0.27.2: for plugin 'alsa'"
 	"libpulse>=4.0: for plugin 'pulse'"
-	"libudev>=204.0: for plugin 'battery-linux', 'backlight-linux' and 'udev'"
+	"libudev.so: for plugin 'battery-linux', 'backlight-linux' and 'udev'"
 	"libnl>=3.0: for plugin 'network'"
 	"glib2>=2.40.2: for plugin 'dbus'"
 	"libx11>=1.6.2: for plugin 'xkb'"
