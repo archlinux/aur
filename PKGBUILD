@@ -3,7 +3,7 @@
 
 pkgbase=asusctl
 pkgname=(asusctl rog-control-center)
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
@@ -12,13 +12,17 @@ license=('MPL2')
 makedepends=('cmake' 'git' 'rust'
              'hicolor-icon-theme' 'libusb' 'fontconfig' 'systemd' 'power-profiles-daemon')
 conflicts=('asusctl-git')
-_commit=d76cb3b95aac844ed97117b05aaa4abc8ab2696c # tags/4.4.0^0
+_commit=2cd1ee02eecbb64026f78bc895ae99ab952ecd23 # tags/4.5.0^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgbase}"
   git describe --tags | sed -r 's/\.([a-z])/\1/;s/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd "${pkgbase}"
 }
 
 build() {
@@ -39,6 +43,7 @@ _pick() {
 package_asusctl() {
   pkgdesc="${pkgdesc/tools/CLI tools}"
   depends=('libusb' 'systemd' 'power-profiles-daemon' 'hicolor-icon-theme')
+  install='asusctl.install'
   optdepends=('acpi_call: fan control'
             'supergfxctl: hybrid GPU control'
             'asusctltray: tray profile switcher'

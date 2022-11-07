@@ -1,6 +1,6 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
@@ -14,11 +14,12 @@ pkgbase = asusctl
 	makedepends = systemd
 	makedepends = power-profiles-daemon
 	conflicts = asusctl-git
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=d76cb3b95aac844ed97117b05aaa4abc8ab2696c
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=2cd1ee02eecbb64026f78bc895ae99ab952ecd23
 	sha256sums = SKIP
 
 pkgname = asusctl
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
+	install = asusctl.install
 	depends = libusb
 	depends = systemd
 	depends = power-profiles-daemon
