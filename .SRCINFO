@@ -1,6 +1,6 @@
 pkgbase = melonds-git
 	pkgdesc = DS emulator, sorta. also 1st quality melon.
-	pkgver = 0.9.1.r1704.2e999ae
+	pkgver = 0.9.5.r2079.ca19ea1c
 	pkgrel = 1
 	url = http://melonds.kuribo64.net/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = melonds-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = pkg-config
+	makedepends = extra-cmake-modules
 	depends = sdl2
 	depends = libslirp
 	depends = qt5-base
@@ -23,4 +24,3 @@ pkgbase = melonds-git
 	md5sums = SKIP
 
 pkgname = melonds-git
-
