@@ -2,7 +2,7 @@
 
 pkgname=outfox_bin
 #      main  date     sub  codename
-pkgver=5.3.0_20221026_4.18_LTS
+pkgver=5.3.0_20221101_4.18.1_LTS
 read main date sub codename <<< $(echo "${pkgver}" | sed 's/_/ /g')
 pkgrel=1
 pkgdesc="fork of open source rhythm game engine StepMania"
@@ -12,7 +12,7 @@ url="https://projectmoon.dance/index.php"
 license=('Apache')
 depends=('libusb-compat' 'ffmpeg' 'lua')
 makedepends=(gendesk)
-source=("https://github.com/TeamRizu/OutFox/releases/download/OF0.${sub}/OutFox-${codename}-0.${sub}-Linux-64bit-date-${date}.tar.gz"
+source=("https://github.com/TeamRizu/OutFox/releases/download/0.${sub}/OutFox-0.${sub}.${codename}-Linux-amd64-date-${date}.tar.gz"
         "outfox.sh"
         "outfox.png")
 
@@ -32,6 +32,6 @@ package() {
   install -Dm755 $srcdir/outfox.desktop $pkgdir/usr/share/applications/outfox.desktop
   install -Dm755 $srcdir/outfox.png $pkgdir/usr/share/pixmaps/outfox.png
 }
-md5sums=('52a1a6c3f4e97028078bb88ce3d3eb0b'
+md5sums=('949dad66a4c7e10a2d3dc0ead285b25a'
          '3948603b54b512544490928f7acd07c9'
          '2b26841e2f3580e5bf2f63218834ec41')
