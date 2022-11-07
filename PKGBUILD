@@ -1,8 +1,8 @@
 # Maintainer: Lars Francke <lars.francke@stackable.tech>
 
-_commit=a968ab57bfa668f93d099f1cd0eff2b943e7dfa6
+_commit=5d108d58579eb5ef12edf763d18aec0d45775fe6
 pkgname=stackablectl
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
