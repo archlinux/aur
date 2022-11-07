@@ -1,6 +1,6 @@
 pkgbase = r-viseago
 	pkgdesc = ViSEAGO: a Bioconductor package for clustering biological functions using Gene Ontology and semantic similarity
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ViSEAGO
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-viseago
 	optdepends = r-remotes
 	optdepends = r-rgraphviz
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ViSEAGO_1.10.0.tar.gz
-	sha256sums = cd2c6399b3cf1d3fc1da6f15c92a49e412c768f0d8dd4c4e5fe9abd35840bd68
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ViSEAGO_1.12.0.tar.gz
+	sha256sums = d3a9fbd581ba4357e5e19ea48d53bfdabb33e1479b536fb1b3daaec4a53f2778
 
 pkgname = r-viseago
