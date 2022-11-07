@@ -8,7 +8,7 @@ _datetag=2022110709
 
 pkgname="${_appname}-bin"
 pkgver="1.63.${_datetag}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Community build of the hackable text editor, built on Electron"
 arch=("x86_64")
 url="https://github.com/${_reponame}/${_appname}"
@@ -33,5 +33,7 @@ package() {
   mv usr "$pkgdir"
 
   mkdir -p "$pkgdir/usr/bin"
-  ln -sf "/opt/Pulsar/${_appname}" "$pkgdir/usr/bin/${_appname}"
+  chmod +x "$pkgdir/opt/Pulsar/resources/${_appname}.sh"
+
+  ln -sf "/opt/Pulsar/resources/${_appname}.sh" "$pkgdir/usr/bin/${_appname}"
 }
