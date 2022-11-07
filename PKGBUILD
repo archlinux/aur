@@ -10,23 +10,23 @@
 
 _pack=msh
 pkgname=octave-${_pack}
-pkgver=1.0.10
-pkgrel=5
+pkgver=1.0.12
+pkgrel=1
 pkgdesc="Create and manage triangular and tetrahedral meshes for Finite Element or Finite Volume PDE solvers. Use a mesh data structure compatible with PDEtool. Rely on gmsh for unstructured mesh generation."
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://github.com/carlodefalco/${_pack}"
 license=('GPL2')
 groups=('octave-forge')
 depends=('octave>=3.0' 'octave-splines')
 makedepends=()
-optdepends=('gmsh>=1.6.5' 'awk' 'dolfin')
+optdepends=('gmsh' 'awk' 'dolfin')
 backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("${_archive}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('6fd1983d19feb5130725be6157d3316d15268487677312391f7c3d067af7c9868408f42e38f2550fc62715c926cd36290cdea0fde81e96f3820f3336109d4094')
+sha512sums=('7d609932d857f12a38614376701797ceea6dde35067b3733537d6f329920b4a1386e695377ba68a2efe4fb1817b91e8272bb466a5dbc40be6cadb54f140bf45e')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

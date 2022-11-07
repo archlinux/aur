@@ -1,19 +1,19 @@
 pkgbase = octave-msh
 	pkgdesc = Create and manage triangular and tetrahedral meshes for Finite Element or Finite Volume PDE solvers. Use a mesh data structure compatible with PDEtool. Rely on gmsh for unstructured mesh generation.
-	pkgver = 1.0.10
-	pkgrel = 5
-	url = https://octave.sourceforge.io/msh
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/carlodefalco/msh
 	install = octave-msh.install
 	arch = any
 	groups = octave-forge
 	license = GPL2
 	depends = octave>=3.0
 	depends = octave-splines
-	optdepends = gmsh>=1.6.5
+	optdepends = gmsh
 	optdepends = awk
 	optdepends = dolfin
-	noextract = msh-1.0.10.tar.gz
-	source = https://downloads.sourceforge.net/octave/msh-1.0.10.tar.gz
-	sha512sums = 6fd1983d19feb5130725be6157d3316d15268487677312391f7c3d067af7c9868408f42e38f2550fc62715c926cd36290cdea0fde81e96f3820f3336109d4094
+	noextract = msh-1.0.12.tar.gz
+	source = msh-1.0.12.tar.gz::https://github.com/carlodefalco/msh/archive/refs/tags/v1.0.12.tar.gz
+	sha512sums = 7d609932d857f12a38614376701797ceea6dde35067b3733537d6f329920b4a1386e695377ba68a2efe4fb1817b91e8272bb466a5dbc40be6cadb54f140bf45e
 
 pkgname = octave-msh
