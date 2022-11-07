@@ -1,7 +1,7 @@
 pkgbase = howdoi
 	pkgdesc = Instant coding answers via the command line
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gleitz/howdoi
 	arch = any
 	license = MIT
@@ -10,10 +10,12 @@ pkgbase = howdoi
 	depends = python-cachelib
 	depends = python-cssselect
 	depends = python-lxml
+	depends = python-colorama
 	depends = python-pygments
 	depends = python-pyquery
 	depends = python-requests
 	depends = python-setuptools
+	depends = python-rich
 	source = https://files.pythonhosted.org/packages/source/h/howdoi/howdoi-2.0.20.tar.gz
 	sha256sums = 51cd40c53e0c0f8f8da88f480eb7423183be2350ab4f0a4d9d4763ca6ac3e2a9
 
