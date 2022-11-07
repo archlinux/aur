@@ -80,12 +80,12 @@ package()
     cp -r "${srcdir}"/"${pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     cd "${srcdir}"/"${pkgname}"/doc/ || exit 1
-    list="$(ls -l)"
-    links="$(echo "${list}" | grep "^l")"
-    links="$(echo "${links}" | tr -s " ")"
-    to_remove=$(echo "${links}" | cut -d " " -f 9)
+    _list="$(ls -l)"
+    _links="$(echo "${_list}" | grep "^l")"
+    _links="$(echo "${_links}" | tr -s " ")"
+    _to_remove=$(echo "${_links}" | cut -d " " -f 9)
     # shellcheck disable=SC2086
-    rm -r ${to_remove}
+    rm -r ${_to_remove}
 
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
