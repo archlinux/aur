@@ -8,7 +8,8 @@ pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
 url="https://github.com/stackabletech/stackablectl/"
 license=('Apache')
-makedepends=('go' 'rust')
+depends=('gcc-libs')
+makedepends=('go' 'rust' 'git')
 source=("$pkgname::git+https://github.com/stackabletech/stackablectl.git#commit=$_commit")
 b2sums=('SKIP')
 
