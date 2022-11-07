@@ -22,7 +22,7 @@ prepare() {
   cd telegram-bot-api
   git submodule init
   git config submodule.td.url ../td
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
