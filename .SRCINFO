@@ -1,0 +1,11 @@
+pkgbase = xcursor-mizuki
+	pkgdesc = Cursor theme of Akiyama Mizuki from Project Sekai Colorful Stage.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = libxcursor
+	source = xcursor-mizuki.tar.gz
+	sha256sums = d8c1912a39d52ced1a907b06a05f9c5971b0c82926786fe7f52d8a837f5edd10
+
+pkgname = xcursor-mizuki
