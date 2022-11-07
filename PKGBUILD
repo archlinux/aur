@@ -2,25 +2,31 @@
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 
-pkgname=python-plexapi
-_name="PlexAPI"
-pkgver=4.13.0
+pkgname=python-plexapi-girens
+_name="PlexAPI 'Girens Fork"
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
-url="https://github.com/pkkid/python-plexapi"
+url="https://github.com/tijder/python-plexapi"
 license=('BSD')
 depends=('python-requests' 'python-tqdm' 'python-websocket-client')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('86e92cdb2fa6f38f7c518ef42144cd5276a69b083d0df95e9a9fede881e1fa83')
+provides=("python-plexapi")
+conflicts=("python-plexapi")
+source=("https://github.com/tijder/python-plexapi/archive/refs/tags/3.0.6.tar.gz")
+sha256sums=('d43947afb640d47a12525fea24c9d9e1afc80e7fbc7991666184bd942dae130d')
+
+prepare() {
+  mv "python-plexapi-$pkgver" "$pkgname-$pkgver"
+}
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

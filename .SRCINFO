@@ -1,8 +1,8 @@
-pkgbase = python-plexapi
-	pkgdesc = Python bindings for the Plex API.
-	pkgver = 4.13.0
+pkgbase = python-plexapi-girens
+	pkgdesc = Python bindings for the Plex API - Girens fork.
+	pkgver = 3.0.6
 	pkgrel = 1
-	url = https://github.com/pkkid/python-plexapi
+	url = https://github.com/tijder/python-plexapi
 	arch = any
 	license = BSD
 	makedepends = python-build
@@ -12,7 +12,7 @@ pkgbase = python-plexapi
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-websocket-client
-	source = https://files.pythonhosted.org/packages/source/P/PlexAPI/PlexAPI-4.13.0.tar.gz
-	sha256sums = 86e92cdb2fa6f38f7c518ef42144cd5276a69b083d0df95e9a9fede881e1fa83
+	source = https://codeload.github.com/tijder/python-plexapi/tar.gz/refs/tags/3.0.6
+	sha256sums = d43947afb640d47a12525fea24c9d9e1afc80e7fbc7991666184bd942dae130d
 
-pkgname = python-plexapi
+pkgname = python-plexapi-girens
