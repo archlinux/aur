@@ -49,7 +49,7 @@ prepare() {
 	done
 
 	# Run the second part of npm run bootstrap
-	npx lerna run bootstrap --stream
+	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream
 }
 
 build() {
@@ -60,7 +60,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	HADRON_DISTRIBUTION="${_target%-beta}" npm run package-compass --openssl_fips=''
+	HADRON_DISTRIBUTION="${_target%-beta}" NODE_OPTIONS='--openssl-legacy-provider' npm run package-compass --openssl_fips=''
 }
 
 package() {
