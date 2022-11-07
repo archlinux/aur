@@ -1,28 +1,26 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sesame
-_pkgver=1.14.2
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.2
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='SEnsible Step-wise Analysis of DNA MEthylation BeadChips'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-biocfilecache
   r-biocparallel
-  r-dnacopy
-  r-e1071
-  r-fgsea
+  r-dplyr
+  r-genomeinfodb
   r-genomicranges
   r-ggplot2
-  r-ggrepel
   r-illuminaio
   r-iranges
-  r-matrixstats
   r-preprocesscore
-  r-randomforest
+  r-readr
   r-reshape2
   r-s4vectors
   r-sesamedata
@@ -33,20 +31,21 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-dplyr
-  r-flowsorted.blood.450k
-  r-flowsorted.cordbloodnorway.450k
-  r-hdf5array
-  r-illuminahumanmethylation450kmanifest
+  r-dnacopy
+  r-e1071
+  r-ggrepel
+  r-grdevices
   r-knitr
-  r-minfi
+  r-pals
+  r-randomforest
   r-rmarkdown
+  r-rpmm
   r-scales
   r-testthat
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('114806e010ccd1974db6c8326e304eaa85362887c4c1cbbf3c71a4140417fdd2')
+sha256sums=('2bc86064029735d18aa4930b6bdd9d9ba86497a0ef6c5f3671241bd99273c627')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
