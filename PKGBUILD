@@ -1,14 +1,14 @@
-# Maintainer: Ivan Gabaldon <ivan.gab at inetol dot net>
+# Maintainer: Ivan Gabaldon <ivan [d0t] gab [at] inetol [d0t] net>
 # Contributor: Sonu Ishaq <sonuishaq67@gmail.com>
 
 pkgname=deskreen
 pkgver=2.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Turns any device with a web browser to a second screen for your computer'
 arch=('aarch64' 'x86_64' 'i686')
 url='https://deskreen.com'
 license=('AGPL3')
-makedepends=('libxcrypt-compat' 'yarn')
+makedepends=('yarn')
 conflicts=("$pkgname-bin")
 source=("$pkgname-source.tar.gz::https://github.com/pavlobu/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
@@ -22,6 +22,11 @@ prepare() {
 }
 
 build() {
+    ### START BUILD PATCHES
+    # [LAZY FIX] envelope routines::initialization error -> https://lists.archlinux.org/archives/list/arch-dev-public@lists.archlinux.org/thread/IZT6ADWS5YUUNC7IFBUVYIB7O4QIJGZV/
+    export NODE_OPTIONS=--openssl-legacy-provider
+    ### END BUILD PATCHES
+
     cd "$srcdir/$pkgname-source/"
 
     SKIP_PREFLIGHT_CHECK=true yarn install --frozen-lockfile
