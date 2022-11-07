@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Indiana Jones and the Last Crusade (VGA, Italian)
+GenericName=CrusadeVGA
+Comment=Adventure point-and-click game by LucasArts published in 1989
+Type=Application
+TryExec=scummvm
+Exec=sh -c "scummvm --path=/usr/games/com.lucasarts.IndianaJonesAndTheLastCrusade/it --add && scummvm --path=/usr/games/com.lucasarts.IndianaJonesAndTheLastCrusade/it indy3-fm"
+Icon=com.lucasarts.IndianaJonesAndTheLastCrusade
+Categories=Games;
+Terminal=false
+Keywords=Indiana
+
+X-Desktop-File-Install-Version=0.26

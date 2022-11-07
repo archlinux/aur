@@ -1,0 +1,19 @@
+pkgbase = indiana-jones-and-the-last-crusade
+	pkgdesc = LucasArts 1989 videogame.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/The_Secret_of_Monkey_Island
+	arch = any
+	license = custom
+	depends = scummvm
+	source = indianaVGA-it.7z::https://archive.org/download/scummvmitalian_202103/Indiana%20Jones%20and%20the%20Last%20Crusade%20-%20The%20Graphic%20Adventure%20%28FM-Towns%2C%20Italian%29.7z
+	source = com.lucasarts.IndianaJonesAndTheLastCrusade.desktop
+	source = com.lucasarts.IndianaJonesAndTheLastCrusade.png::https://www.mobygames.com/images/covers/l/29986-indiana-jones-and-the-last-crusade-the-graphic-adventure-dos-front-cover.jpg
+	sha256sums = 63f2ea098d441e18e5267b07274a13c3ad7d80bb3440a8694f9defe3e8f33b57
+	sha256sums = 49dc20a0c2bd2afd42ed66bdeab64847759f32d7fcbabe1b3b34ff36a96bf4a8
+	sha256sums = 6d35c55ddc136393da84867eccb254f3152ba78fb21b08291c3a224f2f66af3b
+
+pkgname = indiana-jones-and-the-last-crusade
+
+pkgname = indiana-jones-and-the-last-crusade-it
+	depends = indiana-jones-and-the-last-crusade
