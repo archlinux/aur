@@ -1,10 +1,15 @@
 pkgbase = python-fenics-ffcx
 	pkgdesc = The FEniCSx Form Compiler
 	pkgver = 0.5.0.post0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FEniCS/ffcx
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-sympy
+	checkdepends = python-pygraphviz
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-setuptools
 	depends = python-fenics-ufl
