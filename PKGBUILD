@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rGREAT
-_pkgver=1.28.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Client for GREAT Analysis'
 arch=('any')
@@ -11,20 +11,44 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-annotationdbi
+  r-circlize
+  r-digest
+  r-doparallel
+  r-dt
+  r-foreach
+  r-genomeinfodb
+  r-genomicfeatures
   r-genomicranges
   r-getoptlong
+  r-globaloptions
+  r-go.db
   r-iranges
+  r-org.hs.eg.db
+  r-progress
+  r-rcolorbrewer
+  r-rcpp
   r-rcurl
   r-rjson
+  r-s4vectors
+  r-shiny
+  r-txdb.hsapiens.ucsc.hg19.knowngene
+  r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 optdepends=(
-  r-circlize
+  r-biocmanager
+  r-biomartgogenesets
+  r-keggrest
   r-knitr
+  r-msigdbr
+  r-org.mm.eg.db
+  r-reactome.db
   r-rmarkdown
   r-testthat
+  r-uniprotkeywords
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7e2ac85193d58b2080878160ac5ee1f25d3c0df9382dee7a2dae46595116a75f')
+sha256sums=('6e4147b4398142cd485b88025b5c208d304b03829983f1eb8510f1edfa2fc39a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
