@@ -1,7 +1,7 @@
 pkgbase = luastatus-meta
 	pkgdesc = Meta package to install luastatus's dependencies
 	pkgver = r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shdown/luastatus
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = luastatus-meta
 	depends = yajl>=2.0.4
 	depends = alsa-lib>=1.0.27.2
 	depends = libpulse>=4.0
-	depends = libudev>=204.0
+	depends = libudev.so
 	depends = libnl>=3.0
 	depends = glib2>=2.40.2
 	depends = libx11>=1.6.2
