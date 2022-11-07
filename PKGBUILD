@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.23.13925.73ed657e0
+pkgver=0.0.25.14360.b57ab74ee7
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -90,10 +90,10 @@ prepare() {
     url=$(git config $urlid | awk -F/ '{print $(NF-1)"/"$(NF-0)}')
 
     git config $urlid https://github.com/$url
-    git submodule update --init --depth=1 $path
+    git -c protocol.file.allow=always submodule update --init --depth=1 $path
   done
   
-  git submodule update 3rdparty/glslang/glslang llvm
+  git -c protocol.file.allow=always submodule update 3rdparty/glslang/glslang llvm
 }
 
 build() {
