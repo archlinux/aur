@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-git
 	pkgdesc = The official GUI for MongoDB - git version
-	pkgver = r14887.g536e2d248
-	pkgrel = 2
+	pkgver = r15155.g60ed338bf
+	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
