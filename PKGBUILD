@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=gss-ntlmssp
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GSSAPI Mechanism that implements NTLMSSP"
 url="https://github.com/gssapi/gss-ntlmssp"
 arch=(i686 x86_64)
