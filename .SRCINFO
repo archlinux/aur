@@ -1,6 +1,6 @@
 pkgbase = tiempo-bin
 	pkgdesc = A command line time tracking application
-	pkgver = 1.5.2
+	pkgver = 1.6rc3
 	pkgrel = 1
 	url = https://gitlab.com/categulario/tiempo-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tiempo-bin
 	optdepends = sqlite: for manually editing the database
 	provides = tiempo
 	conflicts = tiempo
-	source = https://gitlab.com/api/v4/projects/27545092/packages/generic/v1.5.2/v1.5.2/tiempo-1.5.2-x86_64.tar.gz
-	sha256sums = dc23f87883374b77506d939c874704b3bcb23a3e4d6a6c032a310794aa93975c
+	source = https://gitlab.com/api/v4/projects/27545092/packages/generic/v1.6rc3/v1.6rc3/tiempo-1.6rc3-x86_64.tar.gz
+	sha256sums = 
 
 pkgname = tiempo-bin
