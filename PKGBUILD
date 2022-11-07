@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VAExprs
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Generating Samples of Gene Expression Data with Variational Autoencoders'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
   r-catencoders
   r-deeppincs
   r-diagrammer
-  r-graddescent
   r-keras
   r-mclust
   r-purrr
@@ -31,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1bc79af61481c21e8eb9bb5d8e676b55531d47e2b2ec8b5a7413de5bd9250a6')
+sha256sums=('336953062a9d053ad6d1aa36e943cd23ba894e2af2f80edef34a816aacdf4c83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
