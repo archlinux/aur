@@ -1,35 +1,66 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
-# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
+# The PKGBUILD for Core Lightning.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 
 _pkgname="lightning"
+_tag="8efed095ba12e74ee846b07426e1d416b2c812a9"
 
 pkgname="core-lightning"
 pkgver="0.12.1"
 pkgrel="1"
-pkgdesc="A specification compliant Lightning Network implementation in C."
-arch=("any")
+pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
+arch=("x86_64")
 url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
-depends=("bitcoin-cli")
-makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python" "python-mako" "rust" "sqlite" "zlib")
+depends=("bitcoin-cli" "postgresql-libs" "python" "sqlite")
+makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python-mako" "rust" "zlib")
 optdepends=("cppcheck: Static C/C++ code analysis"
     "jq: Command-line JSON processor"
     "libsecp256k1: Optimised C library for EC operations on curve secp256k1"
     "lowdown: Markdown translator"
-    "postgresql-libs: Libraries for use with PostgreSQL"
     "shellcheck: Shell script analysis"
     "valgrind: Tool for memory management")
 conflicts=("core-lightning-git")
-source=("git+${url}.git")
-sha512sums=("SKIP")
+source=("${pkgname}::git+${url}.git?signed#tag=${_tag}"
+    "git+https://github.com/ElementsProject/libwally-core.git"
+    "git+https://github.com/ianlancetaylor/libbacktrace.git"
+    "git+https://github.com/jedisct1/libsodium.git"
+    "git+https://github.com/kristapsdz/lowdown.git"
+    "git+https://github.com/niftynei/lnprototest.git"
+    "git+https://github.com/valyala/gheap.git"
+    "git+https://github.com/zserge/jsmn.git")
+validpgpkeys=("30DE693AE0DE9E37B3E7EB6BBFF0F67810C1EED1")
+sha512sums=("SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP")
+
+prepare()
+{
+    cd "${srcdir}"/"${pkgname}"/ || exit 1
+    git submodule init
+
+    git config submodule.daemon/jsmn.url "${srcdir}"/jsmn/
+    git config submodule.external/gheap.url "${srcdir}"/gheap/
+    git config submodule.external/libbacktrace.url "${srcdir}"/libbacktrace/
+    git config submodule.external/libwally-core.url "${srcdir}"/libwally-core/
+    git config submodule.external/lnprototest.url "${srcdir}"/lnprototest/
+    git config submodule.external/lowdown.url "${srcdir}"/lowdown/
+    git config submodule.libsodium.url "${srcdir}"/libsodium/
+
+    git -c protocol.file.allow=always submodule update
+}
 
 build()
 {
-    cd "${srcdir}"/"${_pkgname}"/ || exit 1
-    git checkout tags/v"${pkgver}"
-    git submodule update --init --merge --recursive
+    cd "${srcdir}"/"${pkgname}"/ || exit 1
     ./configure --prefix=/usr/
     make libexecdir=/usr/lib/
 }
@@ -41,14 +72,24 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    cd "${srcdir}"/"${_pkgname}"/ || exit 1
+    cd "${srcdir}"/"${pkgname}"/ || exit 1
     make DESTDIR="${pkgdir}"/ libexecdir=/usr/lib/ install
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    cp -r "${srcdir}"/"${_pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    chmod -R 644 "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    cd "${srcdir}"/"${pkgname}"/doc/ || exit 1
+    list="$(ls -l)"
+    links="$(echo "${list}" | grep "^l")"
+    links="$(echo "${links}" | tr -s " ")"
+    to_remove=$(echo "${links}" | cut -d " " -f 9)
+    # shellcheck disable=SC2086
+    rm -r ${to_remove}
+
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
