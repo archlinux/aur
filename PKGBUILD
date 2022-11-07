@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc='scanMiR'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,17 +13,15 @@ depends=(
   r
   r-biocparallel
   r-biostrings
+  r-cowplot
   r-data.table
   r-genomeinfodb
   r-genomicranges
   r-ggplot2
-  r-gridextra
+  r-ggseqlogo
   r-iranges
   r-s4vectors
-  r-seqlogo
   r-stringi
-  r-ggseqlogo
-  r-cowplot
 )
 optdepends=(
   r-biocstyle
@@ -32,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('136ab85c7f01ce12b922000ed1ed7c2d143e0662e2eb20d7ae02ceffa638fb9c')
+sha256sums=('72423d5f8aa88715021c2549e9bc9ae9d84475c82da3897abd15eca766233101')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
