@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -i 's/Exec=/Exec=env MOZ_ENABLE_WAYLAND=1 /' /usr/share/applications/firefox.desktop

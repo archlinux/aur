@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = firefox
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = firefox-wayland-mode-hook
+
+
+[Action]
+Description = Enabling Firefox Wayland mode...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/firefox-wayland-mode
