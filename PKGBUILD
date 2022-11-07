@@ -3,8 +3,8 @@ _target='compass-isolated'
 _edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r14887.g536e2d248'
-pkgrel='2'
+pkgver='r15155.g60ed338bf'
+pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -53,7 +53,7 @@ prepare() {
 	done
 
 	# Run the second part of npm run bootstrap
-	npx lerna run bootstrap --stream
+	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream
 }
 
 pkgver() {
@@ -69,7 +69,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	HADRON_DISTRIBUTION="$_target" npm run package-compass --openssl_fips=''
+	HADRON_DISTRIBUTION="$_target" NODE_OPTIONS='--openssl-legacy-provider' npm run package-compass --openssl_fips=''
 }
 
 package() {
