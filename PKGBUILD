@@ -2,7 +2,7 @@
 
 pkgname=nerd-fonts-space-mono
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Patched font Space Mono from nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
