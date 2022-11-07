@@ -2,7 +2,7 @@
 
 pkgname='tonelib-jam-bin'
 pkgver=4.7.5
-pkgrel=3
+pkgrel=4
 pkgdesc="ToneLib Jam – the learning and practice software for guitar players"
 arch=('x86_64')
 license=('custom')
@@ -10,7 +10,7 @@ url="https://tonelib.net/jam-overview/"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("${pkgname}-${pkgver}.deb::https://www.tonelib.net/download/ToneLib-Jam-amd64.deb")
-sha256sums=('89b464aa0d3bf973a348529db7d8a181e448d70fed60fc1343a39327487ff101')
+sha256sums=('7c53eb3ee2ab94123b78955bf993819eea506f849c5b9ceba4618060a3cc878b')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
