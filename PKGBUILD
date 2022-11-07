@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=catnet
-_pkgver=1.15.7
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.15.7
-pkgrel=4
+pkgver=1.16.1
+pkgrel=1
 pkgdesc='Categorical Bayesian Network Inference'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f09e439e66fc08108582d63359be211076080a073c873cea5b748096682b804')
+sha256sums=('fb0f055cd862d10533fa6c2d099bc54b42c1e3078c21a21bab98a7393962d5e1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
