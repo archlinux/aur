@@ -1,8 +1,8 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=punes-git
-pkgver=0.109.r1893.2af242f7
+pkgver=0.109.r1896.45a55f4d
 pkgrel=1
-pkgdesc="Nintendo Entertaiment System emulator (git build)"
+pkgdesc="Nintendo Entertainment System emulator (git build)"
 arch=('x86_64')
 url="https://github.com/punesemu/puNES"
 license=('GPL2')

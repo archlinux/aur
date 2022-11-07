@@ -1,6 +1,6 @@
 pkgbase = punes-git
-	pkgdesc = Nintendo Entertaiment System emulator (git build)
-	pkgver = 0.109.r1893.2af242f7
+	pkgdesc = Nintendo Entertainment System emulator (git build)
+	pkgver = 0.109.r1896.45a55f4d
 	pkgrel = 1
 	url = https://github.com/punesemu/puNES
 	arch = x86_64
