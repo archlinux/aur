@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-base-static
 	pkgdesc = A cross-platform application and UI framework, native OpenGL backend (mingw-w64)
-	pkgver = 5.15.7+kde+r167
+	pkgver = 5.15.7+kde+r168
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = mingw-w64-qt5-base-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = git+https://invent.kde.org/qt/qt/qtbase#commit=98c727f273fc83c24550274bd2728e1aafbd213a
+	source = git+https://invent.kde.org/qt/qt/qtbase#commit=08be11284246455bce4455138ebe396d2d8732a1
 	source = 0001-Adjust-win32-g-profile-for-cross-compilation-with-mi.patch
 	source = 0002-Ensure-GLdouble-is-defined-when-using-dynamic-OpenGL.patch
 	source = 0003-Fix-too-many-sections-assemler-error-in-OpenGL-facto.patch
