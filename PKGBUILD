@@ -11,8 +11,8 @@ source=('90-dracut-btrfs-uefi-install.hook'
         '60-dracut-btrfs-uefi-remove.hook'
         'dracut-btrfs-uefi-install'
         'dracut-btrfs-uefi-remove')
-sha256sums=('df94baaf97d110f65f1443dd7063fe0e8ec1f73b5baf142c6ff08c260e571fcb'
-            '41c996bf7ef90e6a81690c4a06cbef89167882a036699834fe22637a1a184982'
+sha256sums=('dd0bd5d30882a69997af0fc4802a336a9fc822c8aa69d09b13fa1f4c6e330d59'
+            '80339794af6734c5bae1d3940527b5cc59ca1442a7eb9752739bec62f41e7050'
             '533597501e7b23dc661c8b8d255a43c2f583d6cdc830a4912afb2252249a3f2d'
             '6d6662a2e3a15a208fa88e83affa5297b1a92d595da10b9b2a8e021885874f2c')
             
