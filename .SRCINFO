@@ -1,7 +1,7 @@
 pkgbase = luastatus
 	pkgdesc = universal status bar content generator
 	pkgver = 0.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3
@@ -12,7 +12,7 @@ pkgbase = luastatus
 	makedepends = yajl>=2.0.4
 	makedepends = alsa-lib>=1.0.27.2
 	makedepends = libpulse>=4.0
-	makedepends = libudev>=204.0
+	makedepends = libudev.so
 	makedepends = libnl>=3.0
 	makedepends = glib2>=2.40.2
 	makedepends = libx11>=1.6.2

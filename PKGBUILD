@@ -2,7 +2,7 @@
 
 pkgname=luastatus
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc='universal status bar content generator'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 	'yajl>=2.0.4'
 	'alsa-lib>=1.0.27.2'
 	'libpulse>=4.0'
-	'libudev>=204.0'
+	'libudev.so'
 	'libnl>=3.0'
 	'glib2>=2.40.2'
 	'libx11>=1.6.2'
