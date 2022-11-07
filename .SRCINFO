@@ -1,6 +1,6 @@
 pkgbase = bbz-cloud
 	pkgdesc = Die Desktop-App für die BBZ Cloud - eine All-in-One-Plattform für Unterricht und Zusammenarbeit
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/koyuawsmbrtn/bbz-cloud
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bbz-cloud
 	depends = minizip
 	depends = re2
 	conflicts = bbz-cloud-sus
-	noextract = bbzcloud-1.6.2.pacman
+	noextract = bbzcloud-1.6.3.pacman
 	options = !strip
-	source = https://github.com/koyuawsmbrtn/bbz-cloud/releases/download/v1.6.2/bbzcloud-1.6.2.pacman
-	md5sums = 75ea13d6e6a549c356e3821f8de09a9a
+	source = https://github.com/koyuawsmbrtn/bbz-cloud/releases/download/v1.6.3/bbzcloud-1.6.3.pacman
+	md5sums = a6976b1d19e63e9bc761ec1e6a1e508f
 
 pkgname = bbz-cloud
