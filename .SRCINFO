@@ -1,7 +1,7 @@
 pkgbase = qcheckgmail
 	pkgdesc = Qt/C++ multiple gmail account checker
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mhogomchungu.github.io/qCheckGMail/
 	arch = i686
 	arch = x86_64
