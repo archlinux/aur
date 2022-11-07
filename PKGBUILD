@@ -4,12 +4,12 @@
 pkgname=vtun
 pkgver=3.0.3.2013.d
 _pkgver=3.0.3
-pkgrel=11
+pkgrel=12
 pkgdesc="The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://vtun.sourceforge.net/"
 license=('GPL')
-depends=('openssl' 'zlib' 'lzo')
+depends=('openssl-1.1' 'zlib' 'lzo')
 backup=('etc/vtund.conf' 'etc/tun-cfg.conf')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
  cvs-2013.patch
@@ -66,8 +66,12 @@ prepare() {
 }
 
 build() {
+  export CFLAGS="$CFLASG -I/usr/include/openssl-1.1"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.1"
   cd "${srcdir}/${pkgname}-${_pkgver}"
   ./configure \
+    --with-ssl-headers=/usr/include/openssl-1.1/openssl \
+    --with-blowfish-headers=/usr/include/openssl-1.1/openssl \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
