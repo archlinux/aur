@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('hexowl')
 conflicts=('hexowl')
 source=("hexowl-${pkgver}.tar.gz::https://github.com/DECE2183/hexowl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3e239a8bdc5a51a40a0e315ad560cc7097d35e8462d6f1421bc4ed0448fe8683')
+sha256sums=('3951d651a6060477539dd6f7927a8e794cbcc653f24efa30c25963e66cb622dd')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
