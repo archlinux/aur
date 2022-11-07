@@ -2,7 +2,7 @@
 # Contributor: Antonio Cervone <ant.cervone@gmail.com>
 
 pkgname=metview
-pkgver=5.16.0
+pkgver=5.17.3
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ source=(https://confluence.ecmwf.int/download/attachments/3964985/Metview-${pkgv
         gfortran.patch
         string.patch)
 noextract=()
-sha256sums=('d1959585aef7da39096233c6cd2ede17d91091cb6eb628ae25759329955b4419'
+sha256sums=('bce78107e91eb20f16d3cd8c84614bd443896e1dcc0fbf799d1061ffc74b36a5'
             'a86a2a0c8c7a52c38f2c37d2366d0ff22beabf81723f8c6f9696a1743221c3f0'
             '8e698feb27bb8c23f8db58f03c481d810ae14cbffde3860e33c6b0a6c328dfd4')
 
@@ -39,8 +39,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
-    -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-    ..
+    -DPYTHON_EXECUTABLE=/usr/bin/python3
 
   make -C build
 }
