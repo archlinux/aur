@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cba
-_pkgver=0.2-21
+_pkgver=0.2-22
 pkgname=r-${_pkgname,,}
-pkgver=0.2.21
-pkgrel=4
+pkgver=0.2.22
+pkgrel=1
 pkgdesc='Clustering for Business Analytics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-gclus
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a61e787458e2df5049bea797bb442d6c86ebc9aa9b4dfbf043e23adac15d5048')
+sha256sums=('f1dc8993f7b41b5bf3258939fb4c9eda5fda0b08f5026727245fd2d3fcbc9040')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
