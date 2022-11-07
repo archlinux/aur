@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NanoTube
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='An Easy Pipeline for NanoString nCounter Data Analysis'
 arch=('any')
@@ -24,16 +24,16 @@ optdepends=(
   r-nanostringdiff
   r-pheatmap
   r-plotly
-  r-qusage
   r-rlang
   r-rmarkdown
   r-ruv
+  r-ruvseq
   r-shiny
   r-testthat
   r-xlsx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c7ac63d2865e04cea984914e73b1a9482f1c090d1fe21cf79f9db752c2eaa038')
+sha256sums=('496626bac54e3641401f8d65257892b847038d79b648b44458b1fa5582a4d23f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
