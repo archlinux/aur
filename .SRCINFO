@@ -4,6 +4,7 @@ pkgbase = biliup-app-bin
 	pkgrel = 1
 	url = https://github.com/ForgQi/biliup-app
 	arch = x86_64
+	license = unknown
 	depends = gtk3
 	depends = webkit2gtk
 	provides = biliup-app

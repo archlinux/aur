@@ -4,6 +4,7 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc="Bilibili uploader, supports Windows, Linux, macOS."
 arch=("x86_64")
+license=("unknown")
 url="https://github.com/ForgQi/biliup-app"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
