@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=progeny
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Pathway RespOnsive GENes for activity inference from gene expression'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b083927c35815f9fca3e5a8f3ad20d163648d36e520e736edcd26e705151ee6')
+sha256sums=('4b4b64dce433256aa0b8c745d94e47eadf86fcfa4b5f5dfbe026b7945374ba38')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
