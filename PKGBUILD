@@ -2,11 +2,11 @@
 
 pkgname=radsecproxy
 pkgver=1.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
 url='https://radsecproxy.github.io/'
-depends=('nettle' 'libnettle.so' 'openssl')
+depends=('nettle' 'libnettle.so' 'openssl' 'libcrypto.so' 'libssl.so')
 optdepends=('freeradius: radius server')
 license=('GPL')
 backup=('etc/radsecproxy/radsecproxy.conf')
