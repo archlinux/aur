@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+disk=$(lsblk /dev/nvme0n1 -o MODEL | awk '{print $2;}' | xargs)
+subvolid=$(btrfs sub show / | grep 'Subvolume ID:' | awk '{print $3;}' | sed -r 's/\s+//g')
+
+while read -r line; do
+	if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+		read -r pkgbase < "/${line}"
+		kver="${line#'usr/lib/modules/'}"
+		kver="${kver%'/pkgbase'}"
+		
+		rm -f "/boot/EFI/Linux/$kver-$disk-$subvolid-dracut.efi"
+	fi
+done
