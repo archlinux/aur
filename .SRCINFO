@@ -1,7 +1,7 @@
 pkgbase = gnuplot-4
 	pkgdesc = Plotting package which outputs to X11, PostScript, PNG, GIF, and others
 	pkgver = 4.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnuplot.info
 	install = gnuplot.install
 	arch = i686

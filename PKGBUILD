@@ -9,7 +9,7 @@ _version_patch=7
 
 pkgname=$_basename-$_version_major
 pkgver=$_version_major.$_version_minor.$_version_patch
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others" 
 arch=('i686' 'x86_64') 
 url="http://www.gnuplot.info" 
@@ -44,11 +44,17 @@ prepare() {
 build() {
   cd "$srcdir/$_basename-$pkgver"
 
+
+  # This flag will set a fixed ABI version. That's needed for safesignidentityclient,
+  # so it can load this lib without warnings
+  export CXXFLAGS="$CXXFLAGS -fabi-version=2"
+
   ./configure --prefix=/usr \
               --libexecdir=/usr/bin \
               --with-gihdir=/usr/share/gnuplot \
               --with-readline=gnu \
-              --enable-stats
+              --enable-stats \
+              --enable-qt4
   make pkglibexecdir=/usr/bin
 }
 
