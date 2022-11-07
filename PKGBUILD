@@ -1,6 +1,6 @@
 # Maintainer: wangzhichao <wangzhichao1990@126.com>
 pkgname=redpanda-cpp-git
-pkgver=1.4
+pkgver=2.3
 pkgrel=1
 pkgdesc="A lightweighted QT-based C/C++ IDE"
 arch=('x86_64')
