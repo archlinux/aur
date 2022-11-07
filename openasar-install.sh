@@ -3,6 +3,7 @@ canary="/opt/discord-canary/resources"
 development="/opt/discord-development/resources"
 stable="/opt/discord/resources"
 canary_electron="/usr/lib/discord-canary"
+ptb="/opt/discord-ptb/resources"
 installOA () {
 mv $1/app.asar $1/app.asar.old
 cp /usr/share/openasar/app.asar $1/app.asar
@@ -26,4 +27,9 @@ if test -f "$development/app.asar"; then
 if test -f "$canary_electron/app.asar"; then 
  installOA $canary_electron
  echo "Installed OpenAsar for Canary with system Electron"
+ fi
+
+if test -f "$ptb/app.asar"; then
+ installOA $ptb
+ echo "Installed OpenAsar for PTB"
  fi
