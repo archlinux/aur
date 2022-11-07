@@ -3,8 +3,8 @@
 _pluginname=source-switcher
 pkgname=obs-$_pluginname
 pkgver=0.4.0
-_obsver=27.2.0
-pkgrel=3
+_obsver=28.0.0
+pkgrel=4
 pkgdesc="Plugin for OBS Studio to add a source that switches between a list of sources"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-switcher.941/"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
   "SKIP"
-  "c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789"
+  "412a1a26699a6861dbbe93346310d002369c62e00626e8c3a77c127e5e1c06e8"
 )
 
 prepare() {
@@ -25,6 +25,8 @@ prepare() {
 
   cd "obs-studio-$_obsver"/plugins
   cp -r "$srcdir/$pkgname" .
+  sed -i 's|check_obs_browser()||g' CMakeLists.txt
+  sed -i 's|FATAL_ERROR "obs-websocket|STATUS "obs-websocket|g' CMakeLists.txt
   echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
@@ -34,23 +36,25 @@ build() {
   cmake -B build \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DDISABLE_UI=ON \
+  -DENABLE_UI=OFF \
   -DENABLE_WAYLAND=OFF \
   -DENABLE_PIPEWIRE=OFF \
   -DENABLE_SCRIPTING=OFF \
-  -DDISABLE_DECKLINK=ON \
-  -DDISABLE_ALSA=ON \
-  -DDISABLE_JACK=ON \
-  -DDISABLE_PULSEAUDIO=ON \
-  -DDISABLE_V4L2=ON \
-  -DDISABLE_SPEEXDSP=ON \
-  -DDISABLE_LIBFDK=ON \
-  -DDISABLE_SNDIO=ON \
-  -DDISABLE_FREETYPE=ON \
-  -DDISABLE_VLC=ON \
-  -DBUILD_BROWSER=OFF \
-  -DBUILD_VST=OFF \
-  -DWITH_RTMPS=OFF
+  -DENABLE_DECKLINK=OFF \
+  -DENABLE_ALSA=OFF \
+  -DENABLE_JACK=OFF \
+  -DENABLE_PULSEAUDIO=OFF \
+  -DENABLE_V4L2=OFF \
+  -DENABLE_SPEEXDSP=OFF \
+  -DENABLE_LIBFDK=OFF \
+  -DENABLE_SNDIO=OFF \
+  -DENABLE_FREETYPE=OFF \
+  -DENABLE_VLC=OFF \
+  -DENABLE_BROWSER=OFF \
+  -DENABLE_VST=OFF \
+  -DENABLE_RTMPS=OFF \
+  -DENABLE_AJA=OFF \
+  -DENABLE_NEW_MPEGTS_OUTPUT=OFF
 
   make -C build
 }
