@@ -1,7 +1,7 @@
 pkgbase = luastatus-luajit
 	pkgdesc = luastatus (a status bar content generator) built with luajit for better performance
 	pkgver = 0.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3
@@ -12,7 +12,7 @@ pkgbase = luastatus-luajit
 	makedepends = yajl>=2.0.4
 	makedepends = alsa-lib>=1.0.27.2
 	makedepends = libpulse>=4.0
-	makedepends = libudev>=204.0
+	makedepends = libudev.so
 	makedepends = libnl>=3.0
 	makedepends = glib2>=2.40.2
 	makedepends = libx11>=1.6.2
@@ -25,7 +25,7 @@ pkgbase = luastatus-luajit
 	optdepends = yajl>=2.0.4: for barlib 'i3'
 	optdepends = alsa-lib>=1.0.27.2: for plugin 'alsa'
 	optdepends = libpulse>=4.0: for plugin 'pulse'
-	optdepends = libudev>=204.0: for plugin 'battery-linux', 'backlight-linux' and 'udev'
+	optdepends = libudev.so: for plugin 'battery-linux', 'backlight-linux' and 'udev'
 	optdepends = libnl>=3.0: for plugin 'network'
 	optdepends = glib2>=2.40.2: for plugin 'dbus'
 	optdepends = libx11>=1.6.2: for plugin 'xkb'
