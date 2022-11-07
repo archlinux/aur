@@ -1,14 +1,13 @@
 pkgbase = nickvision-money
 	pkgdesc = A personal finance manager
 	pkgver = 2022.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nlogozzo/NickvisionMoney
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
 	makedepends = cmake
 	makedepends = meson
-	depends = gtkmm-4.0
 	depends = jsoncpp
 	depends = libadwaita
 	depends = sqlitecpp

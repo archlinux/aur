@@ -3,12 +3,12 @@
 pkgname=nickvision-money
 _pkgname=NickvisionMoney
 pkgver=2022.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal finance manager"
 arch=('x86_64')
 url=https://github.com/nlogozzo/$_pkgname
 license=('GPL3')
-depends=('gtkmm-4.0' 'jsoncpp' 'libadwaita' 'sqlitecpp')
+depends=('jsoncpp' 'libadwaita' 'sqlitecpp')
 makedepends=('boost' 'cmake' 'meson')
 source=($url/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('25592a02546d40e3f29bb43eaf3c74bdca8ab01bb776ffbd4b3ba0f116e66f02')
