@@ -6,14 +6,14 @@
 
 pkgname=stgit-git
 _pkgname=stgit
-pkgver=r2698.9430da0f
+pkgver=r2706.22e16e99
 pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="https://stacked-git.github.io/"
-arch=(x86_64)
-makedepends=('cargo' 'asciidoctor' 'xmlto')
 license=('GPL2')
-depends=('git')
+arch=(x86_64)
+depends=('git' 'libgit2' 'curl' 'bzip2')
+makedepends=('cargo' 'asciidoc' 'xmlto')
 conflicts=('stgit')
 source=("${_pkgname}::git+https://github.com/stacked-git/stgit.git")
 sha256sums=('SKIP')
@@ -32,7 +32,6 @@ build() {
 	cd "${_pkgname}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=${PWD}/target
-	export USE_ASCIIDOCTOR=1
 	make build doc
 	make -C completion all
 }
