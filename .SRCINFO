@@ -1,6 +1,6 @@
 pkgbase = penguins-eggs
 	pkgdesc = A terminal utility which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot
-	pkgver = 9.2.3
+	pkgver = 9.3.7
 	pkgrel = 1
 	url = https://penguins-eggs.net
 	arch = any
@@ -26,13 +26,14 @@ pkgbase = penguins-eggs
 	depends = procps-ng
 	depends = pv
 	depends = rsync
+	depends = sshfs
 	depends = syslinux
 	depends = squashfs-tools
 	depends = xdg-utils
 	optdepends = bash-completion: enable eggs commands automatic completion
 	optdepends = calamares: system installer GUI
 	options = !strip
-	source = penguins-eggs-9.2.3.tar.gz::https://github.com/pieroproietti/penguins-eggs/archive/v9.2.1.tar.gz
-	sha256sums = 00a96b59db0a56b931231394a909f037e83f76837da85d639ff85df9525bd5ff
+	source = penguins-eggs-9.3.7.tar.gz::https://github.com/pieroproietti/penguins-eggs/archive/v9.3.7.tar.gz
+	sha256sums = e6cca6b3b266287a5d49a0f2dbe097790fa5c812daafb909431b1eb4ec08fd5e
 
 pkgname = penguins-eggs
