@@ -1,0 +1,20 @@
+pkgbase = python-nautilus-1
+	pkgdesc = Python bindings for the Nautilus Extension API
+	pkgver = 1.2.3
+	pkgrel = 8
+	url = https://wiki.gnome.org/Projects/NautilusPython
+	arch = x86_64
+	license = GPL2
+	makedepends = gtk-doc
+	depends = nautilus-typeahead
+	depends = python-gobject
+	provides = nautilus-python
+	provides = python-nautilus
+	conflicts = nautilus-python
+	conflicts = python-nautilus
+	source = https://download.gnome.org/sources/nautilus-python/1.2/nautilus-python-1.2.3.tar.xz
+	source = gcc10.patch
+	sha256sums = 073ce0297282259937ab473d189b97a04f42b97197c9292fc3bde9d135282098
+	sha256sums = 291aac3fc44837aa310e03c0cea2e1fccb882b4dd20afbb2796d1c410af4a55f
+
+pkgname = python-nautilus-1
