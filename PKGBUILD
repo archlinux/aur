@@ -12,7 +12,7 @@ pkgver=1.6.2
 pkgrel=1
 pkgdesc="Non-linear optimization toolkit."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/index.html"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.0.0' 'octave-struct>=1.0.12' 'octave-statistics>=1.4.0')
