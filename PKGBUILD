@@ -14,7 +14,7 @@ pkgver=0.2.3
 pkgrel=5
 pkgdesc="Port of TISEAN 3.0.1"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.0.0' 'octave-signal>=1.3.0')
