@@ -1,6 +1,6 @@
 pkgbase = netbird-ui
 	pkgdesc = Official GUI for the Netbird client
-	pkgver = 0.10.5
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://netbird.io
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = netbird-ui
 	provides = netbird-ui
 	conflicts = netbird-ui
 	source = 0001-fix-run-paths.patch
-	source = netbird-ui-0.10.5.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.10.5.tar.gz
+	source = netbird-ui-0.10.7.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.10.7.tar.gz
 	sha256sums = 51d96f5ac1ab6f7b695b557b2eb0ef66ab8b11aec9c97677f5e38eb73ed67048
-	sha256sums = a7ea0b497a206e9ae5793eee734c007439e63499899e1d43933b5859767db126
+	sha256sums = 0084e6004746dd1c6c2b154994c796df8c2e6b368100463032ba7ee48561ae74
 
 pkgname = netbird-ui
