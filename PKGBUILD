@@ -1,7 +1,7 @@
 # Maintainer: Tristan Rice <rice@fn.lc>
 # Maintainer: Dan Buch <dan@meatballhat.com>
 pkgname=gimme-git
-pkgver=v1.7.1
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="gimme is a shell script that knows how to install go. Fancy!"
 arch=('any')
@@ -15,7 +15,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --always --dirty --tags
+  local desc
+  desc="$(git describe --always --dirty --tags)"
+  echo "${desc##v}"
 }
 
 package() {

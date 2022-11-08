@@ -1,6 +1,6 @@
 pkgbase = gimme-git
 	pkgdesc = gimme is a shell script that knows how to install go. Fancy!
-	pkgver = v1.7.1
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/urfave/gimme
 	arch = any
