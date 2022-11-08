@@ -3,11 +3,11 @@ pkgver=2.6d633bc
 pkgrel=1
 pkgdesc='UNIX pipelines for python.'
 arch=('any')
-url='https://git.sr.ht/~ewtoombs/fastpipe/'
+url='https://sr.ht/~ewtoombs/fastpipe/'
 license=("MIT")
 depends=('python')
 makedepends=('python-setuptools')
-source=("git+$url")
+source=('git+https://git.sr.ht/~ewtoombs/fastpipe/')
 md5sums=('SKIP')
 
 pkgver () {
