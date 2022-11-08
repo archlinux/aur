@@ -12,7 +12,7 @@ pkgver=0.5.3
 pkgrel=1
 pkgdesc="Financial manipulation, plotting functions and additional date manipulation tools."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.4.0' 'octave-io>=2.4.11' 'octave-statistics>=1.4.0')

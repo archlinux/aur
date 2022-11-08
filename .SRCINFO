@@ -2,7 +2,7 @@ pkgbase = octave-financial
 	pkgdesc = Financial manipulation, plotting functions and additional date manipulation tools.
 	pkgver = 0.5.3
 	pkgrel = 1
-	url = https://octave.sourceforge.io/financial/
+	url = https://gnu-octave.github.io/packages/financial/
 	install = octave-financial.install
 	arch = any
 	groups = octave-forge
@@ -15,4 +15,3 @@ pkgbase = octave-financial
 	sha256sums = ae6ef255597567c79e15f2b78e2d22febf43bc0d679de7ca6c79f36b9e1f2639
 
 pkgname = octave-financial
-
