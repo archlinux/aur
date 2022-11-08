@@ -78,7 +78,7 @@ package() {
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -exec ${_arch}-strip --strip-debug {} \;
-    rm -r "${pkgdir}/usr/${_arch}/share/"{doc,man}
+    rm -rf "${pkgdir}/usr/${_arch}/share/"{doc,man}
   done
 }
 
