@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
-# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
+# The PKGBUILD for dprint-plugin-markdown.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-markdown"
 pkgver="0.14.1"
@@ -24,9 +26,9 @@ prepare()
 build()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target/
-    cargo build -F wasm --frozen -r --target wasm32-unknown-unknown
+    export CARGO_TARGET_DIR="target/"
+    export RUSTUP_TOOLCHAIN="stable"
+    cargo build --frozen -F wasm -r --target wasm32-unknown-unknown
 }
 
 package()
