@@ -6,6 +6,6 @@ Exec=love /usr/share/TechminoDevelopment/Techmino.love
 Type=Application
 Categories=Game;
 Terminal=false
-Icon=TechminoDevelopment
+Icon=/usr/share/TechminoDevelopment/Techmino.love
 Path=/usr/share/TechminoDevelopment/
 NoDisplay=false
