@@ -1,16 +1,15 @@
 pkgbase = octave-docs
 	pkgdesc = GNU Octave documentation.
-	pkgver = 6.1.0
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/octave/
 	arch = any
 	license = GPL
 	options = docs
-	source = https://ftp.gnu.org.ua/gnu/octave/octave-6.1.0.tar.gz
-	source = https://ftp.gnu.org.ua/gnu/octave/octave-6.1.0.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/octave/octave-7.3.0.tar.gz
+	source = https://ftp.gnu.org/gnu/octave/octave-7.3.0.tar.gz.sig
 	validpgpkeys = DBD9C84E39FE1AAE99F04446B05F05B75D36644B
-	sha256sums = 6ff34e401658622c44094ecb67e497672e4337ca2d36c0702d0403ecc60b0a57
+	sha256sums = 6e14a4649d70af45ab660f8cbbf645aaf1ec33f25f88bfda4697cb17e440c4f5
 	sha256sums = SKIP
 
 pkgname = octave-docs
-
