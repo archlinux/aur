@@ -1,6 +1,6 @@
 pkgbase = lbry-viewer-git
 	pkgdesc = A lightweight LBRY/Odysee client for Linux (CLI/GTK) (fork of pipe-viewer)
-	pkgver = 0.0.6.r0.gaa775e9
+	pkgver = 0.0.7.r0.gfd6e454
 	pkgrel = 1
 	url = https://github.com/trizen/lbry-viewer
 	arch = any
