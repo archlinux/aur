@@ -1,0 +1,22 @@
+pkgbase = exegol-git
+	pkgdesc = Fully featured and community-driven hacking environment.
+	pkgver = r873.1246458
+	pkgrel = 1
+	url = https://github.com/ShutdownRepo/Exegol
+	arch = any
+	license = Apache License, Version 2.0
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = docker
+	depends = git
+	provides = exegol
+	conflicts = exegol
+	source = exegol::git+https://github.com/ShutdownRepo/Exegol.git#branch=dev
+	source = git+https://github.com/ShutdownRepo/Exegol-images.git
+	source = git+https://github.com/ShutdownRepo/Exegol-resources
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = exegol-git
