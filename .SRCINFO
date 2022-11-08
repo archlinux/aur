@@ -1,7 +1,7 @@
 pkgbase = icalingua++-git
 	pkgdesc = A Linux client for QQ and more(fork to upgrading)
 	pkgver = 2.7.7.r2.g3e9c74f1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = icalingua++-git
 	license = AGPL
 	makedepends = nodejs
 	makedepends = git
+	makedepends = python
 	depends = ffmpeg
 	depends = libappindicator-gtk3
 	optdepends = mongodb: Provides storage
