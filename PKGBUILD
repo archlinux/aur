@@ -12,7 +12,7 @@ pkgver=2.4.4
 pkgrel=1
 pkgdesc="Interface to SQL databases, currently only postgresql using libpq."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.2' 'octave-struct>=1.0.12' 'postgresql-libs>=8.3')
