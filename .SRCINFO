@@ -18,6 +18,8 @@ pkgbase = ds3os-loader-rs-git
 	depends = libpng
 	depends = harfbuzz
 	depends = brotli
+	provides = ds3os-loader
+	conflicts = ds3os-loader
 	source = ds3os-loader-rs-git::git+https://github.com/clague/ds3os-loader-rs
 	md5sums = SKIP
 

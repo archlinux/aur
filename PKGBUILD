@@ -1,7 +1,7 @@
 # Maintainer: Trevor Tilby <trevor.tilby@gmail.com>
 pkgname='ds3os-loader-rs-git'
 pkgver=r19.e7b4045
-pkgrel=1
+pkgrel=2
 pkgdesc="Loader for the Dark Souls 3 Open Server"
 arch=('x86_64')
 url="https://github.com/clague/ds3os-loader-rs"
@@ -11,6 +11,8 @@ depends=('openssl' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc'
 makedepends=('cargo' 'git')
 source=("$pkgname::git+https://github.com/clague/ds3os-loader-rs")
 md5sums=("SKIP")
+provides=("ds3os-loader")
+conflicts=("ds3os-loader")
 
 pkgver() {
 	cd "$pkgname"
