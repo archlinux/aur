@@ -4,7 +4,7 @@
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
 pkgver=0.4.5.r41.g9ae65c6
-pkgrel=4
+pkgrel=5
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
@@ -40,6 +40,7 @@ pkgver(){
 }
 build(){
     cd "${srcdir}/YesPlayMusicOSD"
+    export NODE_OPTIONS="--openssl-legacy-provider"
     yarn run electron:build --linux --dir
 }
 package_yesplaymusicosd-origin-git(){
