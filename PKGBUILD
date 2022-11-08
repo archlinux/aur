@@ -1,4 +1,4 @@
-# Maintainer: Peter Weber <peter.weber@mailbox.org>
+# Maintainer:  Peter Weber <peter.weber@mailbox.org>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
@@ -10,7 +10,7 @@
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
 pkgver=3.46.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
@@ -22,7 +22,7 @@ conflicts=("$_pkgname")
 groups=(gnome-extra)
 changelog=package.changelog
 options=(debug)
-source=(https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.46.4/gnome-terminal-3.46.4.tar.gz
+source=(https://gitlab.gnome.org/GNOME/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz
         transparency.patch)
 sha256sums=('731c72547aba3911873f3562c500da8d782a28a47391af536d9ed7ab892ba42c'
             'fd788db8c22fa815e019f213fbd0e37eef637a66a017876fa3d3ba99bdf8d813')
