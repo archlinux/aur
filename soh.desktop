@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Ship of Harkinian
+Exec=soh
+Terminal=false
+Icon=soh
+Type=Application
+Categories=Game;Retro;Emulator;
