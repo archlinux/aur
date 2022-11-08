@@ -1,6 +1,6 @@
 pkgbase = r-learnr
 	pkgdesc = Interactive Tutorials for R
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=learnr
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-learnr
 	optdepends = r-callr
 	optdepends = r-rlang
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/learnr_0.11.1.tar.gz
-	sha256sums = fa8fceca3023a7cf6128b4b80b4e01f1c6dc4a692df6e53c5b75f9b1e12069dc
+	source = https://cran.r-project.org/src/contrib/learnr_0.11.2.tar.gz
+	sha256sums = d2d4460241914da20bde884c0775b9bedb4d9d64b74190ae7baf6e6ce16314f1
 
 pkgname = r-learnr
