@@ -2,30 +2,42 @@
 # Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-cadquery
-pkgver=2.1
+pkgver=2.1.r531.g03c3266
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 conflicts=(python-cadquery-git)
-depends=(python python-ocp python-ezdxf)
-checkdepends=(python-pytest python-typing_extensions)
-source=("https://github.com/CadQuery/cadquery/archive/${pkgver}.tar.gz")
-sha256sums=('574e3674a6f97fb4ae3849e7453bbb341e14c8675642aa1887b30b177b5c7133')
+depends=(
+python
+'python-ocp=>7.6.3'
+python-ezdxf
+)
+checkdepends=(
+python-pytest
+python-typing_extensions
+)
+source=(git+https://github.com/CadQuery/cadquery#commit=03c3266b8d61d487349a15f73d3b3cb13bce625f)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd cadquery
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
 
 build() {
-  cd cadquery-${pkgver}
+  cd cadquery
   python setup.py build
 }
 
 check() {
-  cd cadquery-${pkgver}
+  cd cadquery
   pytest -v
 }
 
 package() {
-  cd cadquery-${pkgver}
+  cd cadquery
   python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
 
   # don't package test dir

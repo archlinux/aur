@@ -2,3 +2,4 @@
 *.tar.xz
 src/
 pkg/
+cadquery/
