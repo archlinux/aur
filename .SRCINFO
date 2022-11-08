@@ -8,7 +8,7 @@ pkgbase = mingw-w64-graphite
 	license = GPL
 	license = custom
 	makedepends = mingw-w64-cmake
-	makedepends = python2
+	makedepends = python
 	depends = mingw-w64-crt
 	options = !strip
 	options = staticlibs
@@ -21,4 +21,3 @@ pkgbase = mingw-w64-graphite
 	sha256sums = c139e0bed6e45f333fbdc136a5013395fe22ca5381eac2294958bc85ea1b69fd
 
 pkgname = mingw-w64-graphite
-
