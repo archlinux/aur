@@ -12,7 +12,7 @@ pkgver=1.5.5
 pkgrel=1
 pkgdesc="ZeroMQ bindings for GNU Octave"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
