@@ -14,7 +14,7 @@ pkgver=2.4.0
 pkgrel=6
 pkgdesc="Quaternion package for GNU Octave, includes a quaternion class with overloaded operators"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
