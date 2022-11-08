@@ -4,7 +4,7 @@
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.49
+pkgver=1.50
 pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
@@ -24,11 +24,11 @@ source=(
   http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz
   remove-sys-cpuaffinity-dep.patch
 )
-sha256sums=('2b51771af4d8124d0ae1c1a9200a7f6c42a934d190d45ab1e9c21b2e82b93314'
+sha256sums=('9a9790edddd2d5588da87cbc2dfd223dcd0967974c5b0bddf734d49ba85d7f6a'
             '0c7a2f1c941c7f3b9acb7219822ffda62df8beea5059f8ccc403a43d6cb83b52')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/work"
 
   patch -p1 < "$startdir/remove-sys-cpuaffinity-dep.patch"
 
@@ -40,13 +40,13 @@ build() {
 
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/work"
 
   make test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/work"
 
   make install DESTDIR=$pkgdir PREFIX=/usr INSTALLSITESCRIPT=/usr/bin
   install -d $pkgdir/usr/share/doc/pristine-tar
