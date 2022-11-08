@@ -2,7 +2,7 @@
 # Contributor: mnabila nblid48[at]gmail[dot]com
 
 pkgname=jupyterlab-desktop-bin
-pkgver=3.4.6
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="JupyterLab desktop application, based on Electron."
 
@@ -12,7 +12,7 @@ license=("MIT")
 arch=('x86_64')
 source=("https://github.com/jupyterlab/jupyterlab-desktop/releases/download/v$pkgver-$pkgrel/JupyterLab-Setup-Debian.deb")
 
-md5sums=('99a38c6af8e273bae57a649f1711dea1')
+md5sums=('5955fcee8175cb994ac015b079f54713')
 
 prepare(){
     cd $srcdir
