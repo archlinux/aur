@@ -4,8 +4,8 @@
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 # Contributor: Lin Further 
 pkgname=cvmfs
-pkgver=2.9.4
-pkgrel=2
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -17,13 +17,11 @@ install=cvmfs.install
 options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         'settings.cmake'
-	'externals.patch'
-        'ctime.patch'
-        )
-md5sums=('14ad4f039fcb780fb46d582e7d0ec8f8'
+        'externals.patch' # TODO: use libcrypto from system openssl instead of building libressl here?
+       )
+md5sums=('bdcb429933c35a28ea0f157e2966a507'
          '20dc60c61077f4a3711463e8686d260d'
-         '9c0825047053ac8b6a06228fc06f873f'
-         'b93f5abe62e1cb8aecc84910b9458ba6')
+         'b6f47be4cf99ca4ee6a4c183fc6ba92a')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -32,7 +30,6 @@ prepare() {
     # We remove all those that are provided by Arch/AUR and leave only
     # the ones not currently available
     patch -Np1 -i "$srcdir/externals.patch"
-    patch -Np1 -i "$srcdir/ctime.patch"
 }
 
 build() {
