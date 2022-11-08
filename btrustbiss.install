@@ -1,11 +1,64 @@
-post_install() {
-    xdg-desktop-menu install /opt/btrustbiss/lib/btrustbiss-BISS.desktop
-    sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
-    systemctl enable --now pcscd
+pre_install(){
+    set -e
+case "$1" in
+    install|upgrade)
+    ;;
+    abort-upgrade)
+    ;;
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+exit 0
 }
 
-post_upgrade() {
-    xdg-desktop-menu install /opt/btrustbiss/lib/btrustbiss-BISS.desktop
-    sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
-    systemctl enable --now pcscd
+post_install() {
+    set -e
+case "$1" in
+    configure)
+xdg-desktop-menu install /opt/btrustbiss/lib/btrustbiss-BISS.desktop
+sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
+    ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+exit 0
+systemctl enable --now pcscd
 }
+
+pre_remove(){
+set -e
+case "$1" in
+    remove|upgrade|deconfigure)
+xdg-desktop-menu uninstall /opt/btrustbiss/lib/btrustbiss-BISS.desktop
+    ;;
+    failed-upgrade)
+    ;;
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+exit 0
+}
+
+post_remove() {
+    set -e
+case "$1" in
+    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+exit 0
+systemctl disable --now pcscd
+}
+
+

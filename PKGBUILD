@@ -1,20 +1,19 @@
 # Maintainer: bbbb mxk1 (at) protonmail (dot) com
 # Maintainer:  Iliya Ivanov <aur@proforge.org>
-# Contributor: ----
 
 pkgname=btrustbiss
-pkgver=3.10
-pkgrel=7
+pkgver=3.15
+pkgrel=1
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 provides=('btrustbiss')
 url="https://www.b-trust.org"
 license=('GPL')
 source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar")
-sha256sums=('3ce3a05f538eab59d9212945798d660d71e09f0ab2951e5dc0d3c22198d69341')
+sha256sums=('ef062e61b0c41d0238ca98c415c1b44122a8f3bf4200bf6f7a94621f17d3929b')
 depends=('fakeroot' 'pcsclite' 'glibc' 'gcc-libs' 'xdg-utils' 'zlib')
 options=('!strip' '!emptydirs' '!makeflags')
-install="$pkgname.install"
+install=$pkgname.install
 
 package(){
     # Extract package
