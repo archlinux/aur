@@ -14,7 +14,7 @@ pkgver=0.1.2
 pkgrel=2
 pkgdesc="Common Gatway Interface for Octave"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL2')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
