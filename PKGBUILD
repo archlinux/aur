@@ -1,5 +1,5 @@
 pkgname=openturns
-pkgver=1.20rc1
+pkgver=1.20
 pkgrel=1
 pkgdesc="Uncertainty treatment library"
 license=('LGPL')
@@ -8,7 +8,7 @@ url="http://www.openturns.org/"
 depends=('libxml2' 'tbb' 'hmat-oss' 'python-matplotlib' 'python-psutil' 'python-dill' 'nlopt' 'cminpack' 'ceres-solver' 'coin-or-bonmin' 'dlib' 'hdf5' 'primesieve' 'pagmo')
 makedepends=('cmake' 'swig' 'boost' 'spectra')
 source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
-sha256sums=('397815b30ea4e54c8a258e743911ed010c8126e810b9fa54cea78e8c32ed0ade')
+sha256sums=('2be5247f0266d153619b35dfb1eeeb46736c502dad993b40aff8857d6314f293')
 
 build() {
   cd openturns-$pkgver
