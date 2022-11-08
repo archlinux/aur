@@ -1,10 +1,11 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: atriix <aur a snilius d com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Jean-Francois Chevrette <jfchevrette@gmail.com>
 # Contributor: Matthew Ellison <matt+aur@arroyonetworks.com>
 
 pkgname=istio-bin
 _pkgname=istio
-pkgver=1.15.2
+pkgver=1.15.3
 pkgrel=1
 pkgdesc='An open platform to connect, manage, and secure microservices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,9 +21,9 @@ source_x86_64=("$_source_base/istio-$pkgver-linux-amd64.tar.gz")
 source_armv7h=("$_source_base/istio-$pkgver-linux-armv7.tar.gz")
 source_aarch64=("$_source_base/istio-$pkgver-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('6e9aa99437ffc1249fdfc7623fc4c89bb7725b94823f0d2765d497ea0b488156')
-sha256sums_aarch64=('ae1db25b73623ebf00327753c0168b5723cdf57afb0e31ba56c576d96349a1aa')
-sha256sums_armv7h=('9ab34f4a01bcdb08d561c3b82f2be7e49388a6eb4ce410b3840b06f34843ecce')
+sha256sums_x86_64=('f5fe82687f3777d6e5c9e4cda0d99bd03ff7aefaa9f10b0e608e0990a6ab000a')
+sha256sums_aarch64=('c05a5fe216b9d59313235e8f26c44b2b5c81facd4268ecc3e2f88c48db6df0c2')
+sha256sums_armv7h=('e1c9e31c92764e5d528654de986f2cdfac52fbaa71a486661e6567f10cf3e336')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
