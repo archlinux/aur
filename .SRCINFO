@@ -1,0 +1,15 @@
+pkgbase = xcalibrate-git
+	pkgdesc = Touch calibrator for libinput.
+	pkgver = r29.c27c47e
+	pkgrel = 1
+	url = https://github.com/reinderien/xcalibrate
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-numpy
+	provides = xcalibrate
+	conflicts = xcalibrate
+	source = xcalibrate::git+https://github.com/reinderien/xcalibrate.git
+	sha256sums = SKIP
+
+pkgname = xcalibrate-git
