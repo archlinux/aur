@@ -13,7 +13,7 @@ pkgver=1.0.5
 pkgrel=1
 pkgdesc="Access a single or a collection of NetCDF files as a multi-dimensional array"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.4.0' 'octave-netcdf>=1.0.2' 'octave-statistics>=1.0.6')
