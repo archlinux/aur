@@ -12,7 +12,7 @@ pkgver=2.0.5
 pkgrel=1
 pkgdesc="Audio recording, processing and playing tools."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/index.html"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=4.0.0' 'rtmidi')
