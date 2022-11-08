@@ -6,7 +6,7 @@ pkgname=cross-mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
 pkgver=12.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
 arch=('x86_64')
@@ -33,7 +33,9 @@ prepare() {
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
-	
+	export CFLAGS="${CFLAGS// -Werror=format-security}"
+	export CXXFLAGS="$CFLAGS"
+
 	./configure \
 		"--prefix=${_sysroot}" \
 		"--bindir=/usr/bin" "--program-prefix=${_target}-" \
