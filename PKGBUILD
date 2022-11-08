@@ -4,7 +4,7 @@
 pkgbase=asusctl
 pkgname=(asusctl rog-control-center)
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
@@ -13,8 +13,10 @@ makedepends=('cmake' 'git' 'rust'
              'hicolor-icon-theme' 'libusb' 'fontconfig' 'systemd' 'power-profiles-daemon')
 conflicts=('asusctl-git')
 _commit=2cd1ee02eecbb64026f78bc895ae99ab952ecd23 # tags/4.5.0^0
-source=("git+${url}.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+${url}.git#commit=$_commit"
+        "asusd-nohwdep.service")
+sha256sums=('SKIP'
+            'f6cf6fe6e379f29282c503351cf7e09c5141572c9acc183b934764099958e4d2')
 
 pkgver() {
   cd "${pkgbase}"
@@ -52,6 +54,9 @@ package_asusctl() {
   cd "${pkgbase}"
   make DESTDIR="${pkgdir}" install
 
+  install -Dm 644 "${srcdir}/asusd-nohwdep.service" \
+    -t "${pkgdir}/usr/lib/systemd/system"
+
   _pick rogcc "${pkgdir}/usr/bin/rog-control-center" \
      "${pkgdir}/usr/share/applications/rog-control-center.desktop" \
      "${pkgdir}/usr/share/icons/hicolor/512x512/apps/rog-control-center.png" \
@@ -61,5 +66,5 @@ package_asusctl() {
 package_rog-control-center() {
   depends=('asusctl' 'fontconfig')
   pkgdesc="App to control asusctl"
-  mv rogcc/* "$pkgdir"
+  mv rogcc/* "${pkgdir}"
 }

@@ -1,0 +1,20 @@
+[Unit]
+Description=ASUS Notebook Control
+StartLimitInterval=200
+StartLimitBurst=2
+Before=multi-user.target
+Conflicts=asusd.service
+
+[Service]
+Environment=IS_SERVICE=1
+ExecStartPre=/bin/sleep 2
+ExecStart=/usr/bin/asusd
+Restart=on-failure
+Restart=always
+RestartSec=1
+Type=dbus
+BusName=org.asuslinux.Daemon
+SELinuxContext=system_u:system_r:unconfined_t:s0
+
+[Install]
+WantedBy=multi-user.target
