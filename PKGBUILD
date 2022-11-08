@@ -3,7 +3,7 @@
 # Contributor: nekowinston <hey@winston.sh>
 
 pkgname='mpd-rich-presence-bin'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Service to display the currently playing song in MPD as your Discord Rich Presence.'
 url=''
@@ -13,11 +13,11 @@ provides=('mpd-rich-presence')
 conflicts=('mpd-rich-presence')
 depends=('mpd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.0-2/mpd-rich-presence_0.7.0-2_linux_arm64.tar.gz")
-sha256sums_aarch64=('177cd6b1bb76b7367d2b4c9bc9ff7a461b593cacffaa7c7d9668c0daf35e95b7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.1/mpd-rich-presence_0.7.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('3a9a3ca1b03f7e163305414f616136fa14c454122a0e19d04f86d150399777ad')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.0-2/mpd-rich-presence_0.7.0-2_linux_amd64.tar.gz")
-sha256sums_x86_64=('ede5a5591ae679cacc1750b331c6a7399e442a4e697b47cdfd5c4f4b110efe58')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.1/mpd-rich-presence_0.7.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('7eade16015f13fe9269e8e6b98f2fe18a2aaf82534ab48a4b68f4853afa10503')
 
 package() {
   # bin
