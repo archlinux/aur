@@ -9,14 +9,14 @@ _version_patch=7
 
 pkgname=$_basename-$_version_major
 pkgver=$_version_major.$_version_minor.$_version_patch
-pkgrel=2
-pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others" 
-arch=('i686' 'x86_64') 
-url="http://www.gnuplot.info" 
-license=('custom') 
-depends=('readline' 'gd' 'wxbase2.8' 'cairo' 'libjpeg' 'openssl-1.1' 'qt4' 'lua')
+pkgrel=3
+pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others"
+arch=('i686' 'x86_64')
+url="http://www.gnuplot.info"
+license=('custom')
+depends=('readline' 'gd' 'wxgtk2.8' 'cairo' 'libjpeg' 'openssl-1.1' 'qt4' 'lua')
 makedepends=('texinfo' 'emacs' 'texlive-core' 'texlive-latexextra')
-install=gnuplot.install 
+install=gnuplot.install
 source=("http://downloads.sourceforge.net/sourceforge/$_basename/$_basename-$pkgver.tar.gz"
         'use-wx-config-2.8.patch'
         'update-lua-5.3.patch')
@@ -44,10 +44,8 @@ prepare() {
 build() {
   cd "$srcdir/$_basename-$pkgver"
 
-
-  # This flag will set a fixed ABI version. That's needed for safesignidentityclient,
-  # so it can load this lib without warnings
-  export CXXFLAGS="$CXXFLAGS -fabi-version=2"
+  # Set same ABI version used to compile wxgtk2.8
+  export CXXFLAGS="${CXXFLAGS:-} -fabi-version=2"
 
   ./configure --prefix=/usr \
               --libexecdir=/usr/bin \

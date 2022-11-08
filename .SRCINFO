@@ -1,7 +1,7 @@
 pkgbase = gnuplot-4
 	pkgdesc = Plotting package which outputs to X11, PostScript, PNG, GIF, and others
 	pkgver = 4.6.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnuplot.info
 	install = gnuplot.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gnuplot-4
 	makedepends = texlive-latexextra
 	depends = readline
 	depends = gd
-	depends = wxbase2.8
+	depends = wxgtk2.8
 	depends = cairo
 	depends = libjpeg
 	depends = openssl-1.1
