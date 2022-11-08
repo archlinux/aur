@@ -5,7 +5,7 @@
 
 pkgname=duplicati2-beta
 pkgver=2.0.6.3
-pkgrel=1
+pkgrel=2
 _date=2021-06-17
 _branch=beta
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
@@ -24,7 +24,7 @@ sha256sums=('85a45ce43e0f8050324854f64f130e8967d881c73c3e120cf81028c1f110cb50'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5')
 arch=('i686' 'x86_64')
-depends=('gtk-sharp-2' 'mono')
+depends=('gtk-sharp-2' 'mono' 'openssl-1.1')
 
 package() {
   # Install the service.
