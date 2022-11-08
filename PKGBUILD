@@ -14,7 +14,7 @@ pkgver=1.1.2
 pkgrel=1
 pkgdesc="Econometrics functions including MLE and GMM based techniques"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.4.0' 'octave-optim')
