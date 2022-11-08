@@ -5,8 +5,8 @@
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=stgit
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="https://stacked-git.github.io/"
 license=('GPL2')
@@ -16,7 +16,7 @@ makedepends=('cargo' 'asciidoc' 'xmlto')
 source=(
 	"https://github.com/stacked-git/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('b7b6d41aeb3fc509444fcf06aca64ad2d8e538900ad75d826c4a64e660ae8a16')
+sha256sums=('f89584e8af72d8da23ab24cdad3e0ba4d8ab11ff99b3cb17e9529f4d9a4faba9')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
