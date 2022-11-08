@@ -14,7 +14,7 @@ pkgver=1.0.13
 pkgrel=3
 pkgdesc="3D graphics using VRML"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=2.9.7' 'octave-linear-algebra' 'octave-miscellaneous' 'octave-struct' 'octave-statistics' 'freewrl')
