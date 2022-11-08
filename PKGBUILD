@@ -24,7 +24,7 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("${_archive}::${url}/downloads/octproj-${pkgver}.tar.gz")
+source=("${_archive}::${url}/downloads/${_archive}")
 noextract=("${_archive}")
 sha512sums=('d7009e8db843528b76b90967d8900e85046227fa98ffd4690b7f12fb54f81f070f155fee1cd58d446e7ade54e8755f080c8561f9f98e6b83629739a5954556b5')
 
