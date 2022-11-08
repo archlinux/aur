@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
-# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
+# The PKGBUILD for dprint-plugin-toml.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-toml"
 pkgver="0.5.4"
@@ -18,15 +20,17 @@ sha512sums=("7b70abf19bd0ca745baed20998f6bd47c42ac1ce5788f383c47d848bd85dd0e530c
 prepare()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
+    # Temporary
+    cargo update
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target/
-    cargo build -F wasm --frozen -r --target wasm32-unknown-unknown
+    export CARGO_TARGET_DIR="target/"
+    export RUSTUP_TOOLCHAIN="stable"
+    cargo build --frozen -F wasm -r --target wasm32-unknown-unknown
 }
 
 package()
