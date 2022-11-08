@@ -3,7 +3,7 @@
 _pkgname=tacentview
 pkgname=${_pkgname}-git
 _pkgver=1.0-33
-pkgver=1.0.32.r6.gf08c019
+pkgver=1.0.32.r10.g256791a
 pkgrel=1
 pkgdesc="Tacent View. An image and texture viewer for tga, png, apng, exr, dds, gif, hdr, jpg, tiff, ico, webp, and bmp files."
 arch=('i686' 'x86_64')
