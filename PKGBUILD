@@ -12,7 +12,7 @@ pkgver=2.6.4
 pkgrel=1
 pkgdesc="Input/Output in external formats."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.2.0')
