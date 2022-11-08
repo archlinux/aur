@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=midica
-pkgver=1.2
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A Music programming language. Translates source code into MIDI. Includes a player. Supports MIDI-Karaoke. Includes a MIDI analyzer"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('java-runtime>=7' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar::https://github.com/truj/midica/releases/download/${pkgver}/midica.jar")
-sha256sums=('33c54c22b00a5aaded8dc2140907035e92203f0fe872c0a0bd283178d31e33e8')
+sha256sums=('586876e9b6cae9e82c31db723e047fc65aa6a27bd411ce037ce27cbffc5f5284')
 
 package() {
   install -Dm644 ${pkgname}-${pkgver}.jar -t "${pkgdir}/usr/share/java/${pkgname}"
