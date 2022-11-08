@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-control
 	pkgdesc = Easily control PulseAudio from any status bar
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/marioortizmanero/polybar-pulseaudio-control
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pulseaudio-control
 	depends = bash
 	depends = libpulse
 	depends = pulseaudio
-	source = https://github.com/marioortizmanero/polybar-pulseaudio-control/archive/v3.1.0.tar.gz
-	md5sums = d49448415ea9536be9c56ae998abeb15
+	source = https://github.com/marioortizmanero/polybar-pulseaudio-control/archive/v3.1.1.tar.gz
+	md5sums = 7724c5f396b5ec8a9a62743ee14044fa
 
 pkgname = pulseaudio-control
