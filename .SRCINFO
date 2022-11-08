@@ -1,7 +1,7 @@
 pkgbase = signal-backup-decode
 	pkgdesc = Decode Signal Backups
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pajowu/signal-backup-decode
 	arch = i686
 	arch = x86_64

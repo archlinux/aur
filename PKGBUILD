@@ -2,7 +2,7 @@
 
 pkgname=signal-backup-decode
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Decode Signal Backups"
 arch=('i686' 'x86_64')
 url="https://github.com/pajowu/signal-backup-decode"
@@ -15,6 +15,7 @@ sha512sums=('8ef0591e87f0fa717795198644f431840f7c479327e2efb67d30493b2b78091895f
 build() {
   cd "$pkgname-$pkgver"
   cargo update -p protoc-rust --precise 2.22.1
+  cargo update -p openssl --precise 0.10.42
   cargo build --features "rebuild-protobuf" --release --locked
 }
 
