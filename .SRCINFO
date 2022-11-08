@@ -7,10 +7,10 @@ pkgbase = mpd-rich-presence-bin
 	conflicts = mpd-rich-presence
 	provides = mpd-rich-presence
 	arch = aarch64
-	source_aarch64 = https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.0-1/mpd-rich-presence_0.7.0-1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8eda0ee553cb33dd485419cd4718e1c24ae60fcf23024c15f0c650e5d9ff19bd
+	source_aarch64 = https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.0-2/mpd-rich-presence_0.7.0-2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 177cd6b1bb76b7367d2b4c9bc9ff7a461b593cacffaa7c7d9668c0daf35e95b7
 	arch = x86_64
-	source_x86_64 = https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.0-1/mpd-rich-presence_0.7.0-1_linux_amd64.tar.gz
-	sha256sums_x86_64 = eee53637a054a1f2da5d41eaa30bb31798842b625b4c5c83382db9c812655670
+	source_x86_64 = https://github.com/nekowinston/mpd-rich-presence/releases/download/v0.7.0-2/mpd-rich-presence_0.7.0-2_linux_amd64.tar.gz
+	sha256sums_x86_64 = ede5a5591ae679cacc1750b331c6a7399e442a4e697b47cdfd5c4f4b110efe58
 	
 pkgname = mpd-rich-presence-bin
