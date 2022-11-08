@@ -13,7 +13,7 @@ pkgver=1.4.3
 pkgrel=1
 pkgdesc="Additional statistics functions for Octave."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.0.0' 'octave-io>=1.0.18')
