@@ -12,7 +12,7 @@ pkgver=2.1.1
 pkgrel=1
 pkgdesc="Octave bindings to the GNU Scientific Library"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=2.9.7')
