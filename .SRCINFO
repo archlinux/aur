@@ -1,11 +1,11 @@
 pkgbase = libmseed
 	pkgdesc = A framework for manipulation of SEED (Standard for the Exchange of Earthquake Data) data records.
-	pkgver = 2.19.6
-	pkgrel = 2
+	pkgver = 2.19.8
+	pkgrel = 1
 	url = https://github.com/iris-edu/libmseed
 	arch = x86_64
 	license = Apache-2.0
-	source = libmseed-2.19.6.tar.gz::https://github.com/iris-edu/libmseed/archive/v2.19.6.tar.gz
-	sha256sums = 80b7f653589a30dcb4abcd53fe6bc1276f634262ee673815e12abdc1ff179d1d
+	source = libmseed-2.19.8.tar.gz::https://github.com/iris-edu/libmseed/archive/v2.19.8.tar.gz
+	sha256sums = 10ac972cb4e76c8d6aa27bf9f56fc59d1922991477d9ddefd375b89dba9e93f6
 
 pkgname = libmseed
