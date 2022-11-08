@@ -3,7 +3,7 @@
 
 pkgname=jupyterlab-desktop-bin
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JupyterLab desktop application, based on Electron."
 
 url="https://github.com/jupyterlab/jupyterlab-desktop"
