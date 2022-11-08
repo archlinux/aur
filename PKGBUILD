@@ -13,7 +13,7 @@ pkgver=1.6.3
 pkgrel=1
 pkgdesc="Provides COM interface and additional functionality on Windows"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
