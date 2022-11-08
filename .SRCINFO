@@ -1,7 +1,7 @@
 pkgbase = r-recordlinkage
 	pkgdesc = Record Linkage Functions for Linking and Deduplicating Data Sets
-	pkgver = 0.4.12.3
-	pkgrel = 4
+	pkgver = 0.4.12.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=RecordLinkage
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = r-recordlinkage
 	depends = r-xtable
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://cran.r-project.org/src/contrib/RecordLinkage_0.4-12.3.tar.gz
-	sha256sums = e35db09aa711bc4226600713eb13ae477c2a70ab84ddaa92d9963806c3abd486
+	source = https://cran.r-project.org/src/contrib/RecordLinkage_0.4-12.4.tar.gz
+	sha256sums = 73bd4f1af768be8786153afc28c6f4162d2a6f0bc053d8d0e1c1b197a6d6d149
 
 pkgname = r-recordlinkage
