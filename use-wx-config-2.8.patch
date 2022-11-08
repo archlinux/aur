@@ -1,0 +1,67 @@
+From 31885accfba3eb9200ca01c1c6fab9ff8ae7ff18 Mon Sep 17 00:00:00 2001
+From: Francesco Zardi <frazar0@hotmail.it>
+Date: Mon, 7 Nov 2022 19:02:06 +0100
+Subject: [PATCH 1/1] Replace calls to "wx-config" with "wx-config-2.8"
+
+---
+ config/mingw/Makefile | 4 ++--
+ configure             | 4 ++--
+ configure.in          | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/config/mingw/Makefile b/config/mingw/Makefile
+index 048a87d..4bc222b 100644
+--- a/config/mingw/Makefile
++++ b/config/mingw/Makefile
+@@ -368,9 +368,9 @@ endif
+ 
+ ifdef WXT
+ 	CFLAGS += -DWXWIDGETS
+-	WXT_CXXFLAGS := $(shell wx-config --cxxflags)
++	WXT_CXXFLAGS := $(shell wx-config-2.8 --cxxflags)
+ 	CXXFLAGS += $(WXT_CXXFLAGS)
+-	WX_LIBS := $(shell wx-config --libs | sed -e "s+-Wl,--subsystem,windows++g" -e "s+-mwindows++g")
++	WX_LIBS := $(shell wx-config-2.8 --libs | sed -e "s+-Wl,--subsystem,windows++g" -e "s+-mwindows++g")
+ 	WX_OBJS = wxt_gui.$(O)
+ endif
+ 
+diff --git a/configure b/configure
+index a7631cf..0bf5bf9 100755
+--- a/configure
++++ b/configure
+@@ -12288,8 +12288,8 @@ if test "${with_wx_config+set}" = set; then :
+ fi
+ 
+ 
+-    # Extract the first word of "wx-config", so it can be a program name with args.
+-set dummy wx-config; ac_word=$2
++    # Extract the first word of "wx-config-2.8", so it can be a program name with args.
++set dummy wx-config-2.8; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+ if ${ac_cv_path_WX_CONFIG+:} false; then :
+diff --git a/configure.in b/configure.in
+index 28e9e5d..f87e31c 100755
+--- a/configure.in
++++ b/configure.in
+@@ -975,7 +975,7 @@ if test "${enable_wxwidgets}" = yes ; then
+ 
+   dnl The user can specify another path for wx-config
+   WXWIDGETS_PATH="${PATH}"
+-  AC_ARG_WITH(wx-config,dnl
++  AC_ARG_WITH(wx-config-2.8,dnl
+   [--with-wx-config=PATH   Use the given path to wx-config, the wxWidgets configuration program
+     (default search in $PATH)],
+     [ if test "${with_wx_config}" != "no" ; then
+@@ -983,7 +983,7 @@ if test "${enable_wxwidgets}" = yes ; then
+      fi ])
+ 
+   dnl Look for wx-config in the path
+-  AC_PATH_PROG(WX_CONFIG, wx-config, no, ${WXWIDGETS_PATH})
++  AC_PATH_PROG(WX_CONFIG, wx-config-2.8, no, ${WXWIDGETS_PATH})
+   if test "${WX_CONFIG}" = "no"; then
+     AC_MSG_WARN([wxWidgets can't be found. You can try --with-wx-config-path to give the right path to wx-config. The wxWidgets terminal will not be compiled.])
+     enable_wxwidgets_ok=no
+-- 
+2.38.1
+
