@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-remotecontrollers
-pkgver=5.26.2
+pkgver=5.26.3
 pkgrel=1
 pkgdesc='Translate various input device events into keyboard and pointer events'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(plasma-workspace)
 makedepends=(extra-cmake-modules plasma-wayland-protocols libcec)
 optdepends=('libcec: TV remotes support')
 source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('7a5f7da2153d1e425417bab4decccced6dd19ec0b757aae20b5c5e8e2c47f190'
+sha256sums=('82f1f91627f7259eae5ddbaf6335172c86c3ca33e926b46b87f81e918066aa42'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
