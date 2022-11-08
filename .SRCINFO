@@ -1,0 +1,24 @@
+pkgbase = ds3os-loader-rs-bin
+	pkgdesc = Loader for the Dark Souls 3 Open Server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/clague/ds3os-loader-rs
+	arch = x86_64
+	license = unknown
+	depends = openssl-1.1
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = expat
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = harfbuzz
+	depends = brotli
+	provides = ds3os-loader
+	conflicts = ds3os-loader
+	source = ds3os-loader-linux::https://github.com/clague/ds3os-loader-rs/releases/download/v0.1.0-rc1/ds3os-loader-linux
+	md5sums = 6fc1b38f4111ffed8c74d05568c54d35
+
+pkgname = ds3os-loader-rs-bin
