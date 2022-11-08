@@ -6,7 +6,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9079.5a7d80172
+pkgver=r9329.c7e259366
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -80,21 +80,18 @@ prepare() {
 	for external in boost catch cpp-jwt cubeb discord-rpc dynarmic enet fmt libressl nihistro soundtouch teakra xbyak zstd inih libusb cryptopp lodepng; do
 		git config submodule.$external.url "$srcdir/$external"
 	done
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 
 	# agh, submodule has submodules
 	cd externals/cubeb
 	git submodule init
 	git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
 	git config submodule.googletest.url "$srcdir/googletest"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
 	cd "$srcdir/$_pkgbase/build"
-
-	# Fix for an issue some users are facing when compiling with GCC
-	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
 
 	# Bump the expression nesting limit for clang
 	if [ "$CXX" = "clang++" ]; then
