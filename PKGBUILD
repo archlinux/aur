@@ -2,27 +2,26 @@
 
 pkgname=gnome-shell-extension-tiling-assistant-git
 _pkgname=Tiling-Assistant
-pkgver=r316.64227e8
+pkgver=36.r0.g48b1f6e
 pkgrel=1
 pkgdesc="A GNOME Shell extension to expand GNOME's native 2 column design."
 arch=('x86_64')
 url="https://github.com/Leleat/Tiling-Assistant"
 license=('GPL2')
-depends=('gnome-shell>=1:40')
+depends=('gnome-shell')
+makedepends=('git')
 install='INSTALL'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
 noextract=("*tiling-assistant@leleat-on-github*")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/Tiling-Assistant"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 build() {
   # cd into repo dir
   cd "${srcdir}/Tiling-Assistant"
