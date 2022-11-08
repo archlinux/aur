@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cq_warehouse
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A cadquery parametric part collection"
 arch=(x86_64)
@@ -17,7 +17,7 @@ python-installer
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gumyr/cq_warehouse/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6c2783f7a948e7e2743d57b487568e733cd6f5b477565def31bed7bbb44b33b6')
+sha256sums=('150aca4cd339083a0f1184e6c56553ccc3d1a770992f100fd1c31e02ca56b427')
 
 prepare() {
   cd cq_warehouse-${pkgver}
