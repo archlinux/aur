@@ -1,7 +1,7 @@
 pkgbase = r-ggstar
 	pkgdesc = Multiple Geometric Shape Point Layer for 'ggplot2'
-	pkgver = 1.0.3
-	pkgrel = 4
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggstar
 	arch = any
 	license = Artistic2.0
@@ -13,7 +13,7 @@ pkgbase = r-ggstar
 	optdepends = r-markdown
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/ggstar_1.0.3.tar.gz
-	sha256sums = 23df22864a38321346f75a059d8266df28c4789ff40af3958e02b508bac62635
+	source = https://cran.r-project.org/src/contrib/ggstar_1.0.4.tar.gz
+	sha256sums = eda19b1be4f5719fdb251666b90f4d664b90b882c452d4b015a60727c3b55354
 
 pkgname = r-ggstar
