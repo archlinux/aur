@@ -1,7 +1,7 @@
 pkgbase = openssh-dotconfig
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh
 	pkgver = 9.1p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssh.com/portable.html
 	arch = x86_64
 	license = custom:BSD
