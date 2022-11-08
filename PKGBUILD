@@ -1,20 +1,21 @@
 # Maintainer: Tristan Rice <rice@fn.lc>
+# Maintainer: Dan Buch <dan@meatballhat.com>
 pkgname=gimme-git
-pkgver=r211.1752cb8
+pkgver=v1.7.1
 pkgrel=1
 pkgdesc="gimme is a shell script that knows how to install go. Fancy!"
 arch=('any')
-url="https://github.com/travis-ci/gimme"
+url="https://github.com/urfave/gimme"
 license=('MIT')
 depends=()
 makedepends=('git')
 backup=()
-source=("$pkgname"::'git+https://github.com/travis-ci/gimme.git')
-md5sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/urfave/gimme.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always --dirty --tags
 }
 
 package() {
