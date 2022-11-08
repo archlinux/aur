@@ -23,14 +23,16 @@ pkgdesc='A flat colorful design icon theme'
 arch=('any')
 url='https://github.com/vinceliuice/Tela-circle-icon-theme'
 license=('GPL3')
-makedepends=('bash' 'gtk-update-icon-cache' 'hicolor-icon-theme')
+depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
+makedepends=('bash')
+provides=('tela-circle-icon-theme')
 options=('!strip')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/vinceliuice/${pkgbase}/archive/${pkgver//./-}.tar.gz")
 b2sums=('f104cabe8f0437f4973158e49690e91fe837e97b76003ec756df5767ed61439055cae7f97cb678c424b314c30c9f5647b114768e769859ba20b299378144e47d')
 
 _package() {
   pkgdesc="${pkgdesc} (${1} variant)"
-  conflicts=("${pkgbase}-all")
+  conflicts=("${pkgbase}-all" "${pkgbase}-all-git" "${pkgbase}-${1}-git")
   cd "${pkgbase^}-${pkgver//./-}"
   install -dm755 "${pkgdir}/usr/share/icons"
   ./install.sh -d "${pkgdir}/usr/share/icons" ${1}
@@ -39,6 +41,7 @@ _package() {
 package_tela-circle-icon-theme-all() {
   pkgdesc="${pkgdesc} (all variants)"
   conflicts=(${pkgname[@]/${pkgbase}-all})
+  for _p in ${pkgname[@]}; do _p=${_p}-git; conflicts+=(${_p}); done
   cd "${pkgbase^}-${pkgver//./-}"
   install -dm755 "${pkgdir}/usr/share/icons"
   ./install.sh -a -d "${pkgdir}/usr/share/icons"
