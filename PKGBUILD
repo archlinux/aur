@@ -1,38 +1,37 @@
 
 # Maintainer: Vitold Sedyshev <vit1251@gmail.com>
 
-pkgname='golden-point'
+pkgbase='golden'
+pkgname=('golden-point')
 pkgver='1.2.19'
-pkgrel='1'
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Golden Point is FIDO network message editor/reader, mailer, tracker and tosser.'
 url='https://github.com/vit1251/golden/releases'
 license=('MIT')
 makedepends=('go>=2:1.18')
-source=("https://github.com/vit1251/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("https://github.com/vit1251/golden/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('0eb99ab2413bf2078b75e202de995764')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     go get -v -u
     go generate
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     export GOOS="linux"
     export GOARCH="amd64"
     export CGO_ENABLED="1"
-    go build -o golden-linux-amd64
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    #go test ./...
+    go build \
+        -trimpath \
+        -buildmode=pie \
+        -o golden-linux-amd64
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     install -m 0755 -d "$pkgdir/opt/golden"
     # Executable
     install -m 0755 golden-linux-amd64 "$pkgdir/opt/golden/golden-linux-amd64"
