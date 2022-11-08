@@ -3,7 +3,7 @@
 
 pkgname=cpprestsdk
 pkgver=2.10.18
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Microsoft/cpprestsdk/"

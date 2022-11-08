@@ -1,7 +1,7 @@
 pkgbase = cpprestsdk
 	pkgdesc = A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications
 	pkgver = 2.10.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Microsoft/cpprestsdk/
 	arch = i686
 	arch = x86_64
