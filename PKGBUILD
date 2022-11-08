@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/FilipeMCruz/playlist-maker"
 license=('MIT')
 makedepends=('git' 'cargo')
-conflicts=('playlist-maker-rs-bin' 'playlist-maker-rs')
+conflicts=('playlist-maker-rs')
+provides=('playlist-maker-rs')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 

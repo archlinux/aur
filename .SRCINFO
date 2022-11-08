@@ -8,10 +8,9 @@ pkgbase = playlist-maker-rs-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	conflicts = playlist-maker-rs-bin
+	provides = playlist-maker-rs
 	conflicts = playlist-maker-rs
 	source = playlist-maker::git+https://github.com/FilipeMCruz/playlist-maker
 	sha256sums = SKIP
 
 pkgname = playlist-maker-rs-git
-
