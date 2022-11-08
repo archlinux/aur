@@ -12,7 +12,7 @@ pkgver=1.2.3
 pkgrel=1
 pkgdesc="Geometry toolbox for 2D/3D geometric computing"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/index.html"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.2.0')
