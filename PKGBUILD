@@ -14,7 +14,7 @@ pkgver=0.10.3
 pkgrel=1
 pkgdesc="Genetic optimization code"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
