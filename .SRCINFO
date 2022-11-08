@@ -1,6 +1,6 @@
 pkgbase = alfaview-beta
 	pkgdesc = High quality audio video conferencing for professional online meetings and live classes
-	pkgver = 8.57.0
+	pkgver = 8.58.0
 	pkgrel = 1
 	url = https://alfaview.com/
 	install = alfaview-beta.install
@@ -17,11 +17,11 @@ pkgbase = alfaview-beta
 	depends = libxkbcommon
 	depends = dbus
 	depends = libpulse
-	provides = alfaview=8.57.0
+	provides = alfaview=8.58.0
 	conflicts = alfaview
-	noextract = alfaview_8.57.0.deb
+	noextract = alfaview_8.58.0.deb
 	options = !strip
-	source = https://production-alfaview-assets.alfaview.com/beta/linux/alfaview_8.57.0.deb
-	sha256sums = c581e2fa538e344d9cc4472eb8dd9b5a1e641797dc7c236ad86208efdd881aba
+	source = https://production-alfaview-assets.alfaview.com/beta/linux/alfaview_8.58.0.deb
+	sha256sums = 9f3e24b3b95df1ab2f3f875d90087401d441995006f0c620cb2670a978dc0515
 
 pkgname = alfaview-beta
