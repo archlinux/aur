@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=20.0a3
-gittag=20.0a3-Nexus
+pkgver=20.0b1
+gittag=20.0b1-Nexus
 gittagvfs=20.1.0-Nexus
 pkgrel=1
 arch=('x86_64')
