@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-battery-time-git
+	pkgdesc = Battery remaining time extension for GNOME Shell
+	pkgver = r2.66591bb
+	pkgrel = 1
+	url = https://github.com/pomoke/battery_time
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-battery-time
+	conflicts = gnome-shell-extension-battery-time
+	source = gnome-shell-extension-battery-time::git+https://github.com/pomoke/battery_time.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-battery-time-git
