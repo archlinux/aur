@@ -1,14 +1,14 @@
 pkgbase = media-downloader
 	pkgdesc = This project is a Qt/C++ based frontend to youtube-dl and it can be used to download any media file supported by youtube-dl
-	pkgver = 2.2.1
-	pkgrel = 3
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/mhogomchungu/media-downloader
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = qt5-base
-	source = https://codeload.github.com/mhogomchungu/media-downloader/tar.gz/2.2.1
-	md5sums = e653989201a82639267a213422ee551b
+	source = https://codeload.github.com/mhogomchungu/media-downloader/tar.gz/2.6.0
+	md5sums = 77ce8770783181cf50af92859f9ffb83
 
 pkgname = media-downloader
