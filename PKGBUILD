@@ -3,44 +3,46 @@
 # Contributor: Chih-Hsuan Yen <yan12125 at gmail dot com>
 
 pkgname=python-plaster
-pkgver=1.0
-pkgrel=6
+_pkg="${pkgname#python-}"
+pkgver=1.1
+pkgrel=1
 pkgdesc="Loader interface for multiple config file formats"
 arch=('any')
 url="https://github.com/pylons/plaster"
 license=('MIT')
-depends=('python-setuptools')
+depends=('python')
 makedepends=(
 	'python-build'
 	'python-installer'
+	'python-setuptools'
 	'python-wheel'
 	'python-sphinx'
 	'python-pylons-sphinx-themes')
 checkdepends=('python-pytest')
 changelog=CHANGES.rst
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster/plaster-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster/plaster-$pkgver.tar.gz.asc")
-sha256sums=('8351c7c7efdf33084c1de88dd0f422cbe7342534537b553c49b857b12d98c8c3'
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/$_pkg/$_pkg-$pkgver.tar.gz.asc")
+sha256sums=('136c09ecbd2a8eab1544fb8513cbd77a32f6e7052b1034fe53856bf74a172faa'
             'SKIP')
 validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
 
 build() {
-	cd "plaster-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
-	cd docs
-	PYTHONPATH=../src make man
+	PYTHONPATH="$PWD/src" make -C docs man
 }
 
 check() {
-	cd "plaster-$pkgver"
-	PYTHONPATH=./src pytest -x
+	cd "$_pkg-$pkgver"
+	PYTHONPATH="$PWD/src" pytest -x
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "plaster-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 docs/_build/man/plaster.1 -t "$pkgdir/usr/share/man/man1/"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dvm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 "docs/_build/man/$_pkg.1" -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

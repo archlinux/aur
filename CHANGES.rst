@@ -1,3 +1,13 @@
+1.1 (2022-10-06)
+================
+
+- Drop support for Python 2.7, 3.4, 3.5, 3.6.
+
+- Add support for Python 3.8, 3.9, 3.10.
+
+- Drop runtime dependency on setuptools / pkg_resources by switching to
+  ``importlib.metadata``.
+
 1.0 (2017-10-11)
 ================
 
