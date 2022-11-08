@@ -1,7 +1,7 @@
 # Maintainer: Maxime Poulin <code@max-p.me>
 
 pkgname=python-hid-parser-git
-pkgver=0.0.4.r25.g4b7944f
+pkgver=0.0.3.r25.g4b7944f
 pkgrel=1
 pkgdesc="Typed pure Python library to parse HID report descriptors"
 url="https://github.com/usb-tools/python-hid-parser"
