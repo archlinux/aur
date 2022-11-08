@@ -7,6 +7,7 @@ pkgbase = playlist-maker-rs-bin
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	provides = playlist-maker-rs
 	conflicts = playlist-maker-rs
 	source = 0.2.0.tar.gz::https://github.com/FilipeMCruz/playlist-maker/releases/download/v0.2.0/playlist-maker-x86_64-unknown-linux-musl.tar.gz
 	source = pl-mker.zsh::https://raw.githubusercontent.com/FilipeMCruz/playlist-maker/master/autocompletions/_pl-mker
@@ -18,4 +19,3 @@ pkgbase = playlist-maker-rs-bin
 	sha256sums = a7e60eb195e59f390f8b8d52d75410a2561c6b40bfa5b04d0ebf4556f30e4656
 
 pkgname = playlist-maker-rs-bin
-
