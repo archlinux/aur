@@ -1,6 +1,6 @@
 pkgbase = sui-git
 	pkgdesc = Next-generation smart contract platform with high throughput
-	pkgver = r0.14.0
+	pkgver = r0.15.0
 	pkgrel = 1
 	url = https://github.com/MystenLabs/sui
 	arch = any
@@ -16,13 +16,11 @@ pkgbase = sui-git
 	backup = etc/default/sui
 	backup = etc/sui/fullnode.yaml
 	source = git+https://github.com/MystenLabs/sui.git#branch=devnet
-	source = https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
 	source = fullnode.yaml
 	source = sui.env
 	source = sui.service
 	source = sui.tmpfiles
 	source = sui.sysusers
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

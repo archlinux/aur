@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname=sui-git
 _name=sui
-pkgver=r0.14.0
+pkgver=r0.15.0
 pkgrel=1
 pkgdesc='Next-generation smart contract platform with high throughput'
 url='https://github.com/MystenLabs/sui'
@@ -12,9 +12,8 @@ backup=('etc/default/sui' 'etc/sui/fullnode.yaml')
 license=('Apache')
 arch=('any')
 source=("git+https://github.com/MystenLabs/sui.git#branch=devnet"
-	"https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob"
        	"fullnode.yaml" "sui.env" "sui.service" "sui.tmpfiles" "sui.sysusers")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 #_nproc=$(($(nproc)/2))
 _nproc=2
@@ -54,8 +53,8 @@ package() {
   install -Dm644 "${_name}.service" "${pkgdir}/usr/lib/systemd/system/${_name}.service"
   install -Dm644 "${_name}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_name}.conf"
   install -Dm644 "${_name}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_name}.conf"
-
-  install -Dm644 "genesis.blob" "${pkgdir}/var/lib/sui/genesis.blob"
+  install -d "${pkgdir}/var/lib/sui"
+  curl -L -s "https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob" > "${pkgdir}/var/lib/sui/genesis.blob"
   install -Dm644 "fullnode.yaml" "${pkgdir}/etc/sui/fullnode.yaml"
   install -Dm644 "sui.env" "${pkgdir}/etc/default/sui"
 }
