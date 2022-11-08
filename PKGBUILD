@@ -10,11 +10,11 @@
 
 _pack=octclip
 pkgname=octave-${_pack}
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="This package allows to do boolean operations with polygons using the Greiner-Hormann algorithm"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://bitbucket.org/jgpallero/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0')
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("${_archive}::${url}/downloads/${_archive}")
 noextract=("${_archive}")
-sha512sums=('c79976a7d812d37cd2b79f9c4d67ab4c8c36ca26b6217aeebd1aa71dfc3411c3f32bf9cbf1b392d3c76faabfc0eacbddc3313e2e12b7bee8b70323f0eb5f305c')
+sha512sums=('2b0866e961e1b16e63bde10c846865ccded92bcf357bc4e2d292c386d2fa07e9bff7def524153a1411b739bcb46c7ac3a8e6641630074b0d87596814d187b77e')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
