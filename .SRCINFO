@@ -1,28 +1,39 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
-	pkgver = 6.0
+	pkgver = 20221103.2
 	pkgrel = 1
-	url = https://gitlab.com/zoli111/simp1e/
+	url = https://gitlab.com/cursors/simp1e
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = librsvg
 	makedepends = python-pillow
 	makedepends = xorg-xcursorgen
-	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=607b83e3b77a18e5c0dcbceee6c1417b89bfd94f
-	source = builder_script::git+https://github.com/mxre/cursor
+	source = xcursor-simp1e::git+https://gitlab.com/cursors/simp1e.git/#tag=20221103.2
+	source = cursor-generator::git+https://gitlab.com/cursors/cursor-generator.git/
 	sha512sums = SKIP
 	sha512sums = SKIP
-
-pkgname = xcursor-simp1e
 
 pkgname = xcursor-simp1e-breeze
 
 pkgname = xcursor-simp1e-breeze-snow
 
+pkgname = xcursor-simp1e
+
 pkgname = xcursor-simp1e-dark
 
-pkgname = xcursor-simp1e-catpuccin
+pkgname = xcursor-simp1e-adw
+
+pkgname = xcursor-simp1e-adw-dark
+
+pkgname = xcursor-simp1e-catpuccin-frappe
+	replaces = xcursor-simp1e-catpuccin
+
+pkgname = xcursor-simp1e-catpuccin-latte
+
+pkgname = xcursor-simp1e-catpuccin-macchiato
+
+pkgname = xcursor-simp1e-catpuccin-mocha
 
 pkgname = xcursor-simp1e-solarized-dark
 
@@ -38,3 +49,7 @@ pkgname = xcursor-simp1e-nord-dark
 pkgname = xcursor-simp1e-nord-light
 
 pkgname = xcursor-simp1e-tokyo-night
+
+pkgname = xcursor-simp1e-tokyo-night-light
+
+pkgname = xcursor-simp1e-tokyo-night-storm

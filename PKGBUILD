@@ -1,28 +1,27 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgbase=xcursor-simp1e
-pkgname=(xcursor-simp1e{,-breeze{,-snow},-dark,-catpuccin,-{solarized,gruvbox,nord}-{dark,light},-tokyo-night})
+pkgname=(xcursor-simp1e{-breeze{,-snow},{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord}-{dark,light},-tokyo-night{,-light,-storm}})
 pkgdesc='An aesthetic cursor theme'
-pkgver=6.0
+pkgver=20221103.2
 pkgrel=1
-url=https://gitlab.com/zoli111/simp1e/
-_commit=607b83e3b77a18e5c0dcbceee6c1417b89bfd94f
+url=https://gitlab.com/cursors/simp1e
 arch=(any)
 makedepends=(git librsvg python-pillow xorg-xcursorgen)
 depends=()
 license=(GPL3)
-source=("${pkgname}::git+${url}#commit=${_commit}"
-        "builder_script::git+https://github.com/mxre/cursor")
+source=("${pkgbase}::git+${url}.git/#tag=${pkgver}"
+		"cursor-generator::git+https://gitlab.com/cursors/cursor-generator.git/")
 sha512sums=(SKIP SKIP)
 
 prepare () {
-	cd "${pkgname}"
+	cd "${pkgbase}"
 	git submodule init
-	git config submodule.builder_script.url "${srcdir}/builder_script"
-	git submodule update
+	git config submodule.cursor-generator.url "${srcdir}/cursor-generator"
+	git -c protocol.file.allow=always submodule update
 }
 
 build () {
-	cd "${pkgname}"
+	cd "${pkgbase}"
 	./build.sh
 }
 
@@ -36,6 +35,12 @@ package_xcursor-simp1e () {
 }
 package_xcursor-simp1e-dark () {
 	_package Simp1e-Dark
+}
+package_xcursor-simp1e-adw () {
+	_package Simp1e-Adw
+}
+package_xcursor-simp1e-adw-dark () {
+	_package Simp1e-Adw-Dark
 }
 package_xcursor-simp1e-breeze () {
 	_package Simp1e-Breeze
@@ -65,6 +70,22 @@ package_xcursor-simp1e-nord-dark () {
 package_xcursor-simp1e-tokyo-night () {
 	_package Simp1e-Tokyo-Night
 }
-package_xcursor-simp1e-catpuccin () {
+package_xcursor-simp1e-tokyo-night-light () {
+	_package Simp1e-Tokyo-Night-Light
+}
+package_xcursor-simp1e-tokyo-night-storm () {
+	_package Simp1e-Tokyo-Night-Light
+}
+package_xcursor-simp1e-catpuccin-frappe () {
+	replaces=(xcursor-simp1e-catpuccin)
 	_package Simp1e-Catppuccin-Frappe
+}
+package_xcursor-simp1e-catpuccin-latte () {
+	_package Simp1e-Catppuccin-Latte
+}
+package_xcursor-simp1e-catpuccin-macchiato () {
+	_package Simp1e-Catppuccin-Macchiato
+}
+package_xcursor-simp1e-catpuccin-mocha () {
+	_package Simp1e-Catppuccin-Mocha
 }
