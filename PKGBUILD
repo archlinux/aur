@@ -14,7 +14,7 @@ pkgver=1.3.0
 pkgrel=1
 pkgdesc="Additional functions for manipulation and analysis of strings"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
