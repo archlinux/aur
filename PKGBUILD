@@ -14,7 +14,7 @@ pkgver=1.1.2
 pkgrel=3
 pkgdesc="divand performs an n-dimensional variational analysis (interpolation) of arbitrarily located observations."
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL2')
 groups=('octave-forge')
 depends=('octave>=3.4.0')
