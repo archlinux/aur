@@ -5,12 +5,12 @@
 
 pkgname=ike
 pkgver=2.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Shrew Soft VPN client for Linux'
 arch=(i686 x86_64)
 url='http://www.shrew.net'
 license=(BSD)
-depends=(openssl libedit)
+depends=(openssl ncurses libedit)
 makedepends=(cmake)
 optdepends=(openldap)
 backup=(etc/iked.conf)
@@ -30,7 +30,7 @@ prepare () {
 
 build () {
     cd "$srcdir/ike"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DQTGUI=NO -DETCDIR=/etc -DNATT=YES \
+    CXXFLAGS="-fpermissive" CFLAGS="-fpermissive" cmake -DCMAKE_INSTALL_PREFIX=/usr -DQTGUI=NO -DETCDIR=/etc -DNATT=YES \
         -DMANDIR=/usr/share/man -DSBINDIR=/usr/bin
     make
 }
