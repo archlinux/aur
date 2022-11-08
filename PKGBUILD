@@ -20,6 +20,9 @@ md5sums=('661ef55a4de1e4bddaeaaa3f0256ee25'
 build() {
 	cd "$pkgname-$pkgver"
 	sed -r -i "s:MRUBY_RELEASE_MAJOR == 2:MRUBY_RELEASE_MAJOR >= 2:g" ./src/mruby.cc
+	sed -r -i "s:struct mrb_irep \*:const &:g" ./src/mruby.cc
+	sed -r -i "s:lv\[i\]\.name:lv\[i\]:g" ./src/mruby.cc
+	sed -r -i "433,440s:.:#&:" ./src/mruby.cc
 	qmake-qt5
 	make
 }
