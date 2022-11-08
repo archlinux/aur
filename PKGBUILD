@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 pkgver=1.1_beta12
 _version=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -17,6 +17,7 @@ source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archiv
 sha256sums=('7e0937c553499281292f4ecdc303670fd8d405590e6bc726b47ffb3526b138a3')
 
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 optdepends=('sing-geosite: sing-geosite database'
             'sing-geoip: sing-geoip database')
 
