@@ -25,7 +25,8 @@ build() {
 	sed -r -i "433,440s:.:\/\/&:" ./src/mruby.cc
 	sed -r -i "500,501s:.:\/\/&:" ./src/mruby.cc
 	sed -r -i "505,506s:.:\/\/&:" ./src/mruby.cc
-	qmake-qt5
+	sed -r -i "s:OP_RAISE:OP_RAISEIF:g" ./src/mruby.cc
+	qmake-qt5	
 	make
 }
 
