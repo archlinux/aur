@@ -1,4 +1,4 @@
-pkgbase = golden
+pkgbase = golden-point
 	pkgdesc = Golden Point is FIDO network message editor/reader, mailer, tracker and tosser.
 	pkgver = 1.2.19
 	pkgrel = 2

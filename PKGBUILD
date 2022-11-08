@@ -1,8 +1,7 @@
 
 # Maintainer: Vitold Sedyshev <vit1251@gmail.com>
 
-pkgbase='golden'
-pkgname=('golden-point')
+pkgname='golden-point'
 pkgver='1.2.19'
 pkgrel=2
 arch=('x86_64')
@@ -14,13 +13,13 @@ source=("https://github.com/vit1251/golden/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('0eb99ab2413bf2078b75e202de995764')
 
 prepare() {
-    cd "$pkgbase-$pkgver"
+    cd "golden-$pkgver"
     go get -v -u
     go generate
 }
 
 build() {
-    cd "$pkgbase-$pkgver"
+    cd "golden-$pkgver"
     export GOOS="linux"
     export GOARCH="amd64"
     export CGO_ENABLED="1"
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-    cd "$pkgbase-$pkgver"
+    cd "golden-$pkgver"
     install -m 0755 -d "$pkgdir/opt/golden"
     # Executable
     install -m 0755 golden-linux-amd64 "$pkgdir/opt/golden/golden-linux-amd64"
