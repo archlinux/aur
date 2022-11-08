@@ -13,7 +13,7 @@ pkgver=4.6.3
 pkgrel=1
 pkgdesc="Stochastic concepts and maximum entropy methods for time series analysis"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=2.9.7' 'octave-nan>3.0.0')
