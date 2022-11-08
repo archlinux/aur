@@ -1,7 +1,7 @@
 pkgbase = syncthingtray-qt6
 	pkgdesc = Tray application for Syncthing (using Qt 6)
 	pkgver = 1.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = syncthingtray-qt6
 	source = https://github.com/Martchus/syncthingtray/commit/521567f2350baa1e75a60ad48f5ed7923777b024.patch
 	source = https://github.com/Martchus/syncthingtray/commit/10ddc79382a385ac361a968121548e616d54004d.patch
 	source = https://github.com/Martchus/syncthingtray/commit/8f4961d1b93f1eb868d8782ba54b97d36721cb56.patch
+	source = https://github.com/Martchus/syncthingtray/commit/e5ffffcaec07c60b49ddc9bd1e8ffc19738f1ea2.patch
 	sha256sums = aece0be140187a3c0c989a50007c3d5541d9e1abd51ec45b8c1e45ab783a9e52
 	sha256sums = 2df0516de56fa279af4fa1f85d524a1aa9e9df4ea3ecd8bacbc146aabf5920d9
 	sha256sums = d6b4af56e0a80d3c813637bc0e9b74dae51f2fbd3919e992a342f9a5abd10acc
@@ -46,5 +47,6 @@ pkgbase = syncthingtray-qt6
 	sha256sums = db68ebd99729865788da17d2b7d61e58602b0df494dcd83de58b5ad088dd225c
 	sha256sums = 959d85df17243215fb144d4556e10dc2a3dc0a8e380ac5e2bc9e17de29f96027
 	sha256sums = 89c4ddda556926ea4dbb66d2c9373930804801fa276f8cbcb61daef2fe2e801e
+	sha256sums = 43dcb6baaa5ea16efecebc4bceb11677d04c82945a4ec0642483fe85f8909ba4
 
 pkgname = syncthingtray-qt6

@@ -27,7 +27,7 @@ _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
@@ -52,7 +52,8 @@ source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/arc
         'https://github.com/Martchus/syncthingtray/commit/0ab21657c4feb0500299af79314664b05edfc365.patch'
         'https://github.com/Martchus/syncthingtray/commit/521567f2350baa1e75a60ad48f5ed7923777b024.patch'
         'https://github.com/Martchus/syncthingtray/commit/10ddc79382a385ac361a968121548e616d54004d.patch'
-        'https://github.com/Martchus/syncthingtray/commit/8f4961d1b93f1eb868d8782ba54b97d36721cb56.patch')
+        'https://github.com/Martchus/syncthingtray/commit/8f4961d1b93f1eb868d8782ba54b97d36721cb56.patch'
+        'https://github.com/Martchus/syncthingtray/commit/e5ffffcaec07c60b49ddc9bd1e8ffc19738f1ea2.patch')
 sha256sums=('aece0be140187a3c0c989a50007c3d5541d9e1abd51ec45b8c1e45ab783a9e52'
             '2df0516de56fa279af4fa1f85d524a1aa9e9df4ea3ecd8bacbc146aabf5920d9'
             'd6b4af56e0a80d3c813637bc0e9b74dae51f2fbd3919e992a342f9a5abd10acc'
@@ -60,7 +61,8 @@ sha256sums=('aece0be140187a3c0c989a50007c3d5541d9e1abd51ec45b8c1e45ab783a9e52'
             '8dfddabf8f231457327d4eb91a6d204af64f4c621038cdb488b050c07581a430'
             'db68ebd99729865788da17d2b7d61e58602b0df494dcd83de58b5ad088dd225c'
             '959d85df17243215fb144d4556e10dc2a3dc0a8e380ac5e2bc9e17de29f96027'
-            '89c4ddda556926ea4dbb66d2c9373930804801fa276f8cbcb61daef2fe2e801e')
+            '89c4ddda556926ea4dbb66d2c9373930804801fa276f8cbcb61daef2fe2e801e'
+            '43dcb6baaa5ea16efecebc4bceb11677d04c82945a4ec0642483fe85f8909ba4')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
@@ -72,6 +74,11 @@ prepare() {
   patch -p1 -i ../f121f5f740d799c2b29e9f5ce8e15ddae7857a28.patch
   patch -p1 -i ../ad81c29a1d8024e79da51efc2b3dc19583be1e21.patch
   patch -p1 -i ../0ca1fd163824e3100ff3ab258ffeb65a6ceadb3a.patch
+  patch -p1 -i ../0ab21657c4feb0500299af79314664b05edfc365.patch
+  patch -p1 -i ../521567f2350baa1e75a60ad48f5ed7923777b024.patch
+  patch -p1 -i ../10ddc79382a385ac361a968121548e616d54004d.patch
+  patch -p1 -i ../8f4961d1b93f1eb868d8782ba54b97d36721cb56.patch
+  patch -p1 -i ../e5ffffcaec07c60b49ddc9bd1e8ffc19738f1ea2.patch
 }
 
 build() {
