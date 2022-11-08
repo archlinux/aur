@@ -23,6 +23,8 @@ build() {
 	sed -r -i "s:struct mrb_irep \*:const &:g" ./src/mruby.cc
 	sed -r -i "s:lv\[i\]\.name:lv\[i\]:g" ./src/mruby.cc
 	sed -r -i "433,440s:.:\/\/&:" ./src/mruby.cc
+	sed -r -i "500,501s:.:\/\/&:" ./src/mruby.cc
+	sed -r -i "505,506s:.:\/\/&:" ./src/mruby.cc
 	qmake-qt5
 	make
 }
