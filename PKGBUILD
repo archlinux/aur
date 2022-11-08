@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-3.4-bin
-pkgver=3.4.221012.b9e4d930b389
+pkgver=3.4.221108.8f439bdc2de1
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -65,7 +65,7 @@ package() {
 	install -Dm644 blender-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/blender-$_upstreamversion-symbolic.svg"
 	mkdir -p "$pkgdir/usr/share/blender/"
 	cp -r $_upstreamversion "$pkgdir/usr/share/blender/$_upstreamversion"
-	cp lib/libpi_level_zero.so lib/libcycles_kernel_oneapi.so lib/libsycl.so* "$pkgdir/usr/share/blender/$_upstreamversion/"
+	cp lib/libpi_level_zero.so lib/libcycles_kernel_oneapi_aot.so lib/libsycl.so* "$pkgdir/usr/share/blender/$_upstreamversion/"
 	# binaries path workaround
 	install -Dm755 blender "$pkgdir/usr/share/blender/blender-$_upstreamversion"
 	install -Dm755 blender-$_upstreamversion "$pkgdir/usr/bin/blender-$_upstreamversion"
