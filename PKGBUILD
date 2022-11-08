@@ -12,7 +12,7 @@ pkgver=4.0.0
 pkgrel=3
 pkgdesc="Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.2.0' 'octave-matgeom>=1.0.0')
