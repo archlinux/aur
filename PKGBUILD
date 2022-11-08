@@ -14,7 +14,7 @@ pkgver=1.1.0
 pkgrel=3
 pkgdesc="Multivariate normal distribution clustering and utility functions"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0')
