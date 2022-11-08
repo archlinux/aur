@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-39
+_srctag=GE-Proton7-41
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=2
+pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
