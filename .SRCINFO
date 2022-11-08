@@ -1,13 +1,13 @@
 pkgbase = morewaita
 	pkgdesc = An Adwaita style extra icons theme for Gnome Shell.
-	pkgver = 43.1.1
+	pkgver = 43.1.2
 	pkgrel = 2
 	url = https://github.com/somepaulo/MoreWaita
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell>=43
-	source = git+https://github.com/somepaulo/MoreWaita#commit=fbc3a2e0ad6f2ab11704265394ea138ae51b296a
+	source = git+https://github.com/somepaulo/MoreWaita#commit=aa0121fcc02335c2aa22dd9142bb3652b0447acd
 	md5sums = SKIP
 
 pkgname = morewaita
