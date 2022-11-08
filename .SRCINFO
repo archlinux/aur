@@ -1,13 +1,13 @@
 pkgbase = ps7b_libps6000
 	pkgdesc = Library for PicoScope 6000 series in PicoScope 7 Beta
-	pkgver = 2.1.100_6r3310
+	pkgver = 2.1.101_6r3316
 	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000/
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000/libps6000_2.1.100-6r3310_amd64.deb
-	md5sums = 578f79b2b490d4c2723a94031c01f0eb
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000/libps6000_2.1.101-6r3316_amd64.deb
+	md5sums = 54b515956a7d4a565a135f95807aed48
 
 pkgname = ps7b_libps6000
