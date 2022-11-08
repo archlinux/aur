@@ -2,7 +2,7 @@
 
 pkgbase=stc-isp-wine
 pkgname=(stc-isp{,-tiny}-wine)
-pkgver=v6.90E
+pkgver=v6.90U
 pkgrel=0
 arch=('x86_64')
 url="http://www.stcmcudata.com"
@@ -11,7 +11,7 @@ provides=('STC-ISP')
 conflicts=('stc-isp' 'stc-isp-bin')
 replaces=('stc-isp-bin')
 depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko')
-optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
+optdepends=()
 makedepends=('unarchiver')
 backup=()
 options=('!strip')
@@ -20,8 +20,8 @@ source=("${pkgname%-wine}-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${p
         "${pkgname%-wine}-tiny-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${pkgver}-tiny.zip"
         "stc-isp-wine.install"
         "stc-isp-tiny-wine.install")
-sha256sums=('4350490f795bf0c92cdf5a083a71d7ce981bbd6aff0d15dcf93306b2f6205b16'
-            '636d97a574bd1b59f9573bae5a1339ab6268e906b85f6097e6844e3753ee6c28'
+sha256sums=('90fbbad582a28316f63e4a92bce92b6aa319a0fcd5a7f92f93f97dce83fb7249'
+            '45f701b3f0d23a61f0024018796fc39b69ef35847cc30656b9d4a6bffdc4fe83'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6')
 noextract=("${pkgname%-wine}-${pkgver}.zip"
