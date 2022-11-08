@@ -1,42 +1,5 @@
-major=9
-minor=1
-
-pre_install() {
-
-	PHASE2_PPDS=/usr/share/cups/model/kyocera/
-	PHASE3_PPDS=/usr/share/ppd/kyocera/
-
-
-	if [ -d $PHASE2_PPDS  ]; then
-	    rm -rvf $PHASE2_PPDS
-	fi
-
-	if [ -d $PHASE3_PPDS  ]; then
-	    rm -rvf $PHASE3_PPDS
-	fi
-}
-
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-
-	ALTERNATE_PPD_DIRECTORY=/usr/share/cups/model/kyocera
-	PRIMARY_PPD_DIRECTORY=/usr/share/ppd/kyocera/
-	
-	INSTALLED_PPD_DIRECTORY=/usr/share/kyocera${major}/ppd${major}
-	
-	if [ ! -d $INSTALLED_PPD_DIRECTORY ]; then
-		INSTALLED_PPD_DIRECTORY=/usr/share/kyocera${major}.${minor}/ppd${major}.${minor}
-	fi
-
-	mkdir -p $PRIMARY_PPD_DIRECTORY
-	cp -r $INSTALLED_PPD_DIRECTORY/* $PRIMARY_PPD_DIRECTORY
-
-	chmod 777 /usr/share/kyocera${major} || chmod 777 /usr/share/kyocera${major}.${minor}
-	chmod 755 /usr/bin/kyoPPDWrite_H
-
-	if [ ! -h $ALTERNATE_PPD_DIRECTORY ]; then
-	    ln -s $PRIMARY_PPD_DIRECTORY $ALTERNATE_PPD_DIRECTORY
-	fi
 
 	mime_line="application/postscript      application/vnd.cups-pdf 66  gstopdf"
 	cups_conf='/etc/cups/local.convs'
@@ -48,10 +11,6 @@ post_install() {
 	update-desktop-database -q
 }
 
-pre_upgrade() {
-	pre_install
-}
-
 post_upgrade() {
 	post_install
 }
@@ -59,87 +18,22 @@ post_upgrade() {
 post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 
-	KYOCERA_CONFIG="/usr/share/kyocera${major}"
-	
-	if [ ! -d $KYOCERA_CONFIG ]; then
-		KYOCERA_CONFIG="/usr/share/kyocera{major}.{minor}"
-	fi
-
-	uninstall_printers(){
-	    files=`grep -l "kyofilter_H\|kyofilter_ras_H\|kyofilter_pdf_H\|kyofilter_kpsl_H" /etc/cups/ppd/* 2>/dev/null`
-	    if [ ! -z "$files" ]; then
-	        for file in ${files}; do
-	            if matches $file .ppd; then
-	                basefile=$(basename $file .ppd)
-	                lpadmin -x $basefile
-	            fi
-	        done
-	    fi
-	}
-
-	get_user_printer_list(){
-	    # $1 is user
-	    if [ -d $KYOCERA_CONFIG/$1  ]; then 
-	        echo `ls $KYOCERA_CONFIG/$1`
-	    fi
-	}
-
-	uninstall_kyocera_config_files(){
-	    # $1 is user
-	    # $2 is printer list
-	    rm -rf "$KYOCERA_CONFIG/$1/"
-	}
-
-	uninstall_lpoptions_config_files(){
-	    # $1 is user
-	    # $2 is printer list
-
-	    lp_options="/home/$1/.cups/lpoptions"
-
-	    #echo "Editing lpoptions config file"
-	    if [ ! -z $2 ]; then 
-	        for printer in ${printers}; do
-	            #echo "sed $base_printer $lp_options"
-	            sed -i "s/\(Dest\|Default\) $base_printer.*//" $lp_options
-	        done
-	    fi
-	}
-
-	uninstall_config_files(){
-	    #For each user, uninstall the config files in
-	    #/usr/share/kyocera9/<username> and ~/.cups/lpoptions
-	    if [ -d $KYOCERA_CONFIG ]; then
-	        users=`ls $KYOCERA_CONFIG | grep -v 'ppd${major}\|ppd${major}.${minor}\|appicon\|Python'`
-	        if [ ! -z "$users" ]; then
-	            for user in ${users}; do
-	                is_appicon=`matches $user appicon.png`
-	                is_python=`matches $user Python`
-	                if [ ! $is_appicon ] && [ ! $is_python ] ;then
-	                    printers=`get_user_printer_list $user`
-	                    uninstall_kyocera_config_files $user $printers
-	                    uninstall_lpoptions_config_files $user $printers
-	                fi
-	            done
-	        fi
-	    fi
-	}
-
-	{
-	    rm -rf /usr/share/cups/model/kyocera
-	    if [ -d /usr/share/ppd/kyocera ]; then
-	        rm -rf "/usr/share/ppd/kyocera"
-	    fi
-	}
-
 	matches(){
 	    input="$1"
 	    pattern="$2"
 	    echo "$input" | grep -q "$pattern"
 	}
-
-
-	uninstall_printers
-	uninstall_config_files
+	
+	# Uninstall printers
+	files=`grep -l "kyofilter_H\|kyofilter_ras_H\|kyofilter_pdf_H\|kyofilter_kpsl_H" /etc/cups/ppd/* 2>/dev/null`
+	if [ ! -z "$files" ]; then
+		for file in ${files}; do
+			if matches $file .ppd; then
+				basefile=$(basename $file .ppd)
+				lpadmin -x $basefile
+			fi
+		done
+	fi
 
 	#echo ""
 	update-desktop-database -q

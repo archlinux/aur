@@ -1,8 +1,8 @@
-# Maintainer: Dominik Wetzel <dimonok@web.de>
-# Contributors: Julian Eckhardt <julian@eckhardt.fi>, Paulo Marcos <contato-myghi63@protonmail.com>
+# Maintainer: Dominik Wetzel <dimonok [at] web [dot] de>
+# Contributors: Julian Eckhardt <julian [at] eckhardt [dot] fi>, Paulo Marcos <contato-myghi63 [at] protonmail [dot] com>
 pkgname=kyocera_universal
-pkgver=9.1.20220203
-pkgrel=2
+pkgver=9.2.20220928
+pkgrel=1
 major=$(cut -d '.' -f 1 <<< $pkgver)
 minor=$(cut -d '.' -f 2 <<< $pkgver)
 date=$(cut -d '.' -f 3 <<< $pkgver)
@@ -18,7 +18,7 @@ DLAGENTS=("https::/usr/bin/wget")
 toDwnld="KyoceraLinuxPackages_${date}_tar_gz.download.gz"
 source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${toDwnld}")
 install=kyodialog-bin.install
-md5sums=('6bc001940c9d4cb8e287bf23f708008c')
+md5sums=('e76eabb903e07ef15f62c963a717a539')
 
 if [ "$arch" == "x86_64" ]; then
   _arch="amd64"
@@ -40,12 +40,35 @@ prepare() {
 }
 
 package() {
-  # Remove unnecessary stuff
+  # Remove unnecessary stuff and move ppd files to appropriate folders
   cd $srcdir
-  rm -r usr/share/kyocera${major}.${minor}/Python || rm -r usr/share/kyocera${major}/Python
+  
+  version=${major}
+  KYOCERA_DIR=usr/share/kyocera${version}
+  if [ ! -d $KYOCERA_DIR ]; then 
+    version=${major}.${minor}
+    KYOCERA_DIR=usr/share/kyocera${version}
+  fi
   rm -r usr/share/applications
-  rm -r usr/share/kyocera${major}.${minor}/appicon_H.png || rm usr/share/kyocera${major}/appicon_H.png
-  rm usr/bin/kyodialog${major}.${minor} || rm usr/bin/kyodialog${major}
+  
+  ALTERNATE_PPD_DIRECTORY=usr/share/cups/model
+  PRIMARY_PPD_DIRECTORY=usr/share/ppd/kyocera
+  
+  TEMP_PPD_DIRECTORY=${KYOCERA_DIR}/ppd${version}
+
+  mkdir -p $PRIMARY_PPD_DIRECTORY
+  mkdir -p $ALTERNATE_PPD_DIRECTORY
+  mv $TEMP_PPD_DIRECTORY/* $PRIMARY_PPD_DIRECTORY
+
+  chmod 755 usr/bin/kyoPPDWrite_H
+
+  if [ ! -h $ALTERNATE_PPD_DIRECTORY/kyocera ]; then
+      ln -s /$PRIMARY_PPD_DIRECTORY $ALTERNATE_PPD_DIRECTORY/kyocera
+  fi
+  
+  rm -r ${KYOCERA_DIR}
+  
+  rm usr/bin/kyodialog${version}
   install -D -m644 "usr/share/doc/kyodialog/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
   rm -r ${srcdir}/usr/share/doc
   cd $pkgdir
