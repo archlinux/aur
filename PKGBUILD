@@ -56,8 +56,6 @@ build() {
 
   pnpm install --frozen-lockfile --offline
 
-  pnpm run build --filter @dust-mail/web
-
   cd "apps/web"
 
   unset SOURCE_DATE_EPOCH
