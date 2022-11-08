@@ -1,0 +1,20 @@
+pkgbase = python-open3d-bin
+	pkgdesc = Open3D: A Modern Library for 3D Data Processing
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://pypi.org/project/open3d/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytorch
+	depends = python-dash
+	depends = python-plotly
+	provides = open3d
+	provides = python-open3d
+	conflicts = open3d
+	conflicts = open3d-git
+	conflicts = python-open3d
+	conflicts = python-open3d-git
+
+pkgname = python-open3d-bin
