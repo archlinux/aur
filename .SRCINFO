@@ -1,12 +1,13 @@
 pkgbase = eva-git
 	pkgdesc = a calculator REPL, similar to bc(1)
-	pkgver = 0.2.7.r18.g3f52f6f
+	pkgver = 0.3.1.r0.gff3db97
 	pkgrel = 1
 	url = https://github.com/NerdyPepper/eva
 	arch = x86_64
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
+	depends = gcc-libs
 	provides = eva
 	conflicts = eva
 	source = git+https://github.com/NerdyPepper/eva
