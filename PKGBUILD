@@ -1,9 +1,9 @@
-# Maintainer: bbbb mxk1 (at) protonmail (dot) com
+# Maintainer: bbbb <mxk1 (at) protonmail (dot) com>
 # Maintainer:  Iliya Ivanov <aur@proforge.org>
 
 pkgname=btrustbiss
 pkgver=3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 provides=('btrustbiss')
@@ -18,7 +18,7 @@ install=$pkgname.install
 package(){
     # Extract package
     tar xvf B-TrustBISS.tar
-    ar xv btrustbiss_3.10-1_amd64.deb
+    ar xv B-TrustBISS.deb
 
     # Install package
     tar Jxf data.tar.xz -C "$pkgdir"
