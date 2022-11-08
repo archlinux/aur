@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTopper
-_pkgver=1.44.0
+_pkgver=1.44.1
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.44.1
 pkgrel=1
 pkgdesc='This package is designed to perform Gene Set Analysis across multiple genomic platforms'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9a5acad7f824faf706c230890ec78d2f80a32e72e29b952ed38c15f2e653dfe7')
+sha256sums=('f7e8e1ae042c694370b5024cffccdd4758b4d374a2a9986f161f35cd0d30613c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

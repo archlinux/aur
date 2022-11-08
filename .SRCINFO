@@ -1,6 +1,6 @@
 pkgbase = r-rtopper
 	pkgdesc = This package is designed to perform Gene Set Analysis across multiple genomic platforms
-	pkgver = 1.44.0
+	pkgver = 1.44.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RTopper
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-rtopper
 	optdepends = r-go.db
 	optdepends = r-keggrest
 	optdepends = r-org.hs.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTopper_1.44.0.tar.gz
-	sha256sums = 9a5acad7f824faf706c230890ec78d2f80a32e72e29b952ed38c15f2e653dfe7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTopper_1.44.1.tar.gz
+	sha256sums = f7e8e1ae042c694370b5024cffccdd4758b4d374a2a9986f161f35cd0d30613c
 
 pkgname = r-rtopper
