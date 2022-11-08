@@ -12,7 +12,7 @@ pkgver=1.3.0
 pkgrel=4
 pkgdesc="Algorithms for smoothing noisy data"
 arch=(any)
-url="https://octave.sourceforge.net/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0' 'octave-optim>=1.0.3')
