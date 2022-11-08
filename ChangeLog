@@ -514,3 +514,11 @@ Improvements:
 - We've tuned performance of the most common calendar interactions, including event creation and deletion, switching between weeks, and making updates.
 - Morgen CalDAV connector now supports Digest Authentication, increasing the number of calendars we support.
 
+=== Morgen 2.5.20
+Fixes:
+- We fixed an issue that was causing calendar events to not be displayed when time zone changes were made or once a computer resumed from sleep.
+
+Improvements:
+- We improved macOS Ventura compatibility, including a fix to avoid the Login Item notification that was popping up every time Morgen launched.
+ 
+ 
