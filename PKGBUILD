@@ -5,7 +5,7 @@ arch=('x86_64')
 
 pkgdesc='A simple and fast mail client'
 
-pkgver=0.1.4
+pkgver=0.2.1
 pkgrel=1
 epoch=1
 
