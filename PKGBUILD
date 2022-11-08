@@ -3,7 +3,7 @@
 pkgname=octopusdeploy-cli
 pkgver=0.5.0
 pkgrel=1
-pkgdesc="Next Generation of the Octopus Deploy CLI"
+pkgdesc="Next Generation Command Line Interface for Octopus Deploy"
 arch=('x86_64' 'i686')
 url="https://github.com/OctopusDeploy/cli"
 license=('Apache')

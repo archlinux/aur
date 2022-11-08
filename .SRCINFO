@@ -1,5 +1,5 @@
 pkgbase = octopusdeploy-cli
-	pkgdesc = Next Generation of the Octopus Deploy CLI
+	pkgdesc = Next Generation Command Line Interface for Octopus Deploy
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/OctopusDeploy/cli
