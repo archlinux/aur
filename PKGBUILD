@@ -14,7 +14,7 @@ pkgver=0.3.0
 pkgrel=3
 pkgdesc="Routines for calculating the time-evolution of the level-set equation and extracting geometric information from the level-set function"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0')
