@@ -14,7 +14,7 @@ pkgver=0.2.0
 pkgrel=3
 pkgdesc="The VIBes API allows one to easily display results (boxes, pavings) from interval methods"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
