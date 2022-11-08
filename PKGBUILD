@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/FilipeMCruz/playlist-maker"
 license=('MIT')
 makedepends=('cargo')
-conflicts=(${pkgname}-bin)
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('13c0599da6ac0053ebd41e42811e05da6cfcc03179e19f03c8d9a71a6988ca18')
 
