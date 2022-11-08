@@ -7,7 +7,7 @@ pkgbase = simple-tpm-pk11
 	license = APACHE
 	depends = trousers
 	depends = opencryptoki
-	source = https://github.com/ThomasHabets/simple-tpm-pk11/archive/0.06.tar.gz
+	source = simple-tpm-pk11-0.06.tar.gz::https://github.com/ThomasHabets/simple-tpm-pk11/archive/0.06.tar.gz
 	sha256sums = 8ecdb2a64e046e04bb18d464fd15332c99be82084eb2bd3d340a5ff0e738dcea
 
 pkgname = simple-tpm-pk11
