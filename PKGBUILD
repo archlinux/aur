@@ -14,7 +14,7 @@ pkgver=0.1.4
 pkgrel=1
 pkgdesc="Functions covering various aspects of optics"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.2')
