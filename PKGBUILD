@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
-# Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
+# The PKGBUILD for Inja.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="inja"
 pkgver="3.3.0"
@@ -17,10 +19,8 @@ sha512sums=("82e22b13f2055b28cd0166bbbb50fd42ea1c549bd1873f5e73bdb00e6d12b47d124
 
 build()
 {
-    mkdir -p "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ || exit 1
-    cmake -D BUILD_BENCHMARK=OFF -D BUILD_TESTING=OFF -D INJA_BUILD_TESTS=OFF -D INJA_USE_EMBEDDED_JSON=OFF ..
-    make
+    cmake -B "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ -D BUILD_BENCHMARK=OFF -D BUILD_TESTING=OFF -D CMAKE_BUILD_TYPE=None -D CMAKE_INSTALL_PREFIX=/usr/ -D INJA_BUILD_TESTS=OFF -D INJA_USE_EMBEDDED_JSON=OFF -S "${srcdir}"/"${pkgname}"-"${pkgver}"/ -Wno-dev
+    cmake --build "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
 }
 
 package()
@@ -30,15 +30,17 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ || exit 1
-    make DESTDIR="${pkgdir}"/ install
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/doc/ || exit 1
     doxygen Doxyfile
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    chmod -R 644 "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 
     # Install the license.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
