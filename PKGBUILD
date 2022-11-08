@@ -1,7 +1,7 @@
 # Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
-pkgver=4.0.1
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Python library to read characters and key strokes"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magmax/python-readchar/archive/v$pkgver.tar.gz"
         "LICENSE")
-md5sums=('048ffd337afaa2a2d06a7fb620fb40d3'
+md5sums=('b7e56f278680fae02c8fdca9786cf9de'
          '688183518094c78c59f08f1b74493a98')
 
 prepare() {
