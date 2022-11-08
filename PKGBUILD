@@ -14,6 +14,11 @@ provides=('playlist-maker-rs')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd "$_pkgname"
   cargo build --release
