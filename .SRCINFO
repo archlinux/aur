@@ -1,11 +1,13 @@
 pkgbase = simplex-chat-bin
 	pkgdesc = A 100% private-by-design chat platform (pre-compiled)
 	pkgver = 4.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://simplex.chat/
 	arch = x86_64
 	license = AGPL3
+	depends = gmp
 	depends = openssl-1.1
+	depends = zlib
 	provides = simplex-chat
 	conflicts = simplex-chat
 	source = simplex-chat-4.2.0::https://github.com/simplex-chat/simplex-chat/releases/download/v4.2.0/simplex-chat-ubuntu-20_04-x86-64
