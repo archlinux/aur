@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp
-pkgver=7.5.3.0
+pkgver=7.6.3.0
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -30,18 +30,18 @@ python-schema
 rapidjson
 python-jinja
 python-toml
-lief
+python-lief
 )
 conflicts=(python-ocp-git)
 source=(
-git+https://github.com/CadQuery/OCP.git#tag=${pkgver}
+git+https://github.com/CadQuery/OCP.git#commit=6b7b7325ab4599a8ba9049f176f099574fe64dfc
 git+https://github.com/CadQuery/pywrap.git
 )
 sha256sums=('SKIP'
             'SKIP')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
-_n_parallel_build_jobs=3
+_n_parallel_build_jobs=1
 
 # pick where the opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
@@ -51,7 +51,7 @@ prepare(){
   cd OCP
   git submodule init
   git config submodule.pywrap.url "${srcdir}"/pywrap
-  git submodule update -q  # use the submodule commit hashes specified
+  git submodule--helper update -q  # use the submodule commit hashes specified
 
   sed "s,^libs_linux = .*,libs_linux = prefix_linux.glob('**/libTK*.so')," -i dump_symbols.py
 
