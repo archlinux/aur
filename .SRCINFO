@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts
-	pkgver = 3.5.24
+	pkgver = 3.5.25
 	pkgrel = 1
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = cyberdropdownloader
 	depends = python-yarl
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-3.5.24.tar.gz
-	sha256sums = 7a44dabcdf6fa5e94ae2bc33deb328d62327f9add43a0deecedca0688940f809
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-3.5.25.tar.gz
+	sha256sums = 08aecd861460dc394b04e75c3a434f235e330a592a94740a2549bfa678b08e31
 
 pkgname = cyberdropdownloader
