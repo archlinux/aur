@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-search-light-git
+	pkgdesc = Extension for GNOME shell that takes the apps search widget out of Overview.
+	pkgver = r32.47250d4
+	pkgrel = 1
+	url = https://github.com/icedman/search-light
+	install = gnome-shell-extension.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell>=43.0
+	provides = gnome-shell-extension-search-light
+	conflicts = gnome-shell-extension-search-light
+	source = git+https://github.com/icedman/search-light.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-search-light-git
