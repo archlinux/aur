@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Autodesk EAGLE v6.6.0
+TryExec=/usr/bin/eagle-6.6.0
+Exec=eagle-6.6.0 %U
+Icon=eagle.png
+Categories=Development;
+MimeType=application/x-eagle-schematic;application/x-eagle-board;application/x-eagle-project;application/x-eagle-library;
