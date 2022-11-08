@@ -5,7 +5,7 @@
 pkgname=cross-mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
-pkgver=12.1.0
+pkgver=12.2.0
 pkgrel=2
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
@@ -14,13 +14,15 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('libmpc' 'xz' "cross-${_target}-binutils")
 makedepends=('gmp' 'mpfr')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
-source=(
-	"ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-	#"ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz.sig"
-)
+source=(ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=(
-	'62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
-	#'f5dba6de2221ea625acae85f97be9dcf550c8125f545372dbaf53e83ebcbeb0d'
+	'e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
+	'1a017479ebeff63777f0854c753dcd8f622c642a31158db43819bf19b59ec831'
+)
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
 )
 _sysroot="/usr/lib/cross-${_target}"
 
