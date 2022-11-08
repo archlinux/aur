@@ -2,7 +2,7 @@
 
 pkgname=rtl_433
 pkgver=21.12
-pkgrel=1
+pkgrel=2
 pkgdesc="is a generic data receiver, mainly for the 433.92 MHz, 868 MHz (SRD), 315 MHz, 345 MHz, and 915 MHz ISM bands"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
@@ -25,6 +25,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	find examples -type f -exec install -Dvm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" {} +;
 	cd build_dir
 	make DESTDIR="${pkgdir}" install
 }
