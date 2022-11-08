@@ -1,7 +1,7 @@
 pkgbase = bootdisk
 	pkgdesc = Simple command to boot device with QEMU/KVM
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatMoul/bootdisk
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = bootdisk
 	depends = edk2-ovmf
 	depends = swtpm
 	provides = bootdisk=0.1
-	source = git://github.com/MatMoul/bootdisk.git
+	source = git+https://github.com/MatMoul/bootdisk.git
 	md5sums = SKIP
 
 pkgname = bootdisk
