@@ -2,7 +2,7 @@ pkgbase = octave-dataframe
 	pkgdesc = Data manipulation toolbox similar to R data.frame
 	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://octave.sourceforge.io/dataframe/
+	url = https://gnu-octave.github.io/packages/dataframe/
 	install = octave-dataframe.install
 	arch = any
 	groups = octave-forge
@@ -13,4 +13,3 @@ pkgbase = octave-dataframe
 	sha256sums = 5d36b296b3854f3d7ccb8c59037ca9952c24ef3f1ba7dd776967cd4710505981
 
 pkgname = octave-dataframe
-

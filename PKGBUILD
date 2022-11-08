@@ -12,7 +12,7 @@ pkgver=1.2.0
 pkgrel=1
 pkgdesc="Data manipulation toolbox similar to R data.frame"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.4.0')
