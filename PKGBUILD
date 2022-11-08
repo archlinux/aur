@@ -15,14 +15,15 @@ pkgdesc="A powerful web analytics platform."
 arch=("any")
 url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
-depends=("bash" "java-runtime" "php" "php-fpm" "php-gd" "perl" "python" "python-beautifulsoup4" "python-pillow" "python-requests" "python-yaml")
-makedepends=("composer" "curl" "git" "git-lfs")
+depends=("alsa-lib" "at-spi2-core" "coffeescript" "gtk3" "java-runtime" "lib32-glibc" "nodejs" "nss" "perl" "php" "php-fpm" "php-gd" "python-beautifulsoup4" "python-pillow" "python-requests" "python-yaml" "rhino" "ruby" "zsh")
+makedepends=("composer" "curl" "git" "git-lfs" "npm")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "mariadb: Database"
     "nginx: HTTP server")
 provides=("${_pkgname}")
 conflicts=("matomo")
+options=("!strip") # TODO
 install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/matomo-icons.git"
@@ -126,6 +127,16 @@ build()
 {
     cd "${srcdir}"/"${_pkgname}"/ || exit 1
     composer install --no-dev
+
+    _package_jsons="$(find "${srcdir}"/"${_pkgname}"/ -name package.json -type f)"
+    readarray -t _package_json_array <<< "${_package_jsons}"
+
+    for _package_json in "${_package_json_array[@]}"; do
+        if [[ "${_package_json}" != "${srcdir}"/"${_pkgname}"*/node_modules/* ]]; then
+            cd "$(dirname "${_package_json}")" || exit 1
+            npm install
+        fi
+    done
 }
 
 package()
