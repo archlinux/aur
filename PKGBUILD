@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Herper
-_pkgver=1.7.2
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='The Herper package is a simple toolset to install and manage conda packages and environments from R'
 arch=('any')
