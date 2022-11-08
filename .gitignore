@@ -1,0 +1,7 @@
+*
+!*.install
+!*.sh
+!.gitignore
+!.SRCINFO
+!override_matomo.conf
+!PKGBUILD

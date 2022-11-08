@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script defines functions for the PKGBUILD.
+
+# Variables
+## Colours
+clear_colour="\033[0m"
+green="\033[0;32m"
+
+post_install()
+{
+    echo -e "${green}Configuration is needed. See https://wiki.archlinux.org/title/Matomo.${clear_colour}"
+}
