@@ -3,7 +3,6 @@ pkgbase = seq66-git
 	pkgver = 0.99.0.r0.g3102ace6
 	pkgrel = 1
 	url = https://github.com/ahlstromcj/seq66
-	arch = i686
 	arch = x86_64
 	groups = pro-audio
 	license = GPL2
