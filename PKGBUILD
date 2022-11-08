@@ -14,7 +14,7 @@ pkgver=0.4.6
 pkgrel=1
 pkgdesc="A mostly MATLAB-compatible fuzzy logic toolkit for Octave"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.2.4')
