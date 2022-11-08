@@ -15,6 +15,14 @@ pkgbase = openasar-git
 	provides = openasar
 	conflicts = openasar
 	source = git+https://github.com/GooseMod/OpenAsar.git
+	source = post-upgrade-discord
+	source = openasar-git-discord-upgrade.hook
+	source = pre-remove-discord
+	source = openasar-git-discord-remove.hook
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = openasar-git

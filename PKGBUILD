@@ -12,8 +12,8 @@ makedepends=('git' 'asar' 'nodejs')
 optdepends=('discord')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha1sums=('SKIP')
+source=("git+${url}.git" "post-upgrade-discord" "openasar-git-discord-upgrade.hook" "pre-remove-discord" "openasar-git-discord-remove.hook")
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install="$pkgname.install"
 
 pkgver() {
@@ -22,6 +22,10 @@ pkgver() {
 }
 
 package() {
+    install -Dm755 "${srcdir}/post-upgrade-discord" -t "${pkgdir}/usr/share/libalpm/scripts/"
+    install -Dm755 "${srcdir}/pre-remove-discord" -t "${pkgdir}/usr/share/libalpm/scripts/"
+    install -Dm644 "${srcdir}/openasar-git-discord-remove.hook" -t "${pkgdir}/usr/share/libalpm/hooks/"
+    install -Dm644 "${srcdir}/openasar-git-discord-upgrade.hook" -t "${pkgdir}/usr/share/libalpm/hooks/"
     cd "${srcdir}/OpenAsar"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     bash scripts/injectPolyfills.sh

@@ -1,0 +1,2 @@
+#!/bin/bash
+mv /opt/discord/resources/app.asar.backup /opt/discord/resources/app.asar
