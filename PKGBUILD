@@ -1,8 +1,9 @@
 # Maintainer: Filipe Cruz <filipecruz@tuta.io>
-pkgname=playlist-maker-rs-bin
 _pkgname=playlist-maker
 _binname=pl-mker
-pkgver=0.2.0
+_pkgver=0.2.0
+pkgname=playlist-maker-rs-bin
+pkgver=0.2.0.r0.gd688126
 pkgrel=1
 pkgdesc='M3u playlist creator that uses query-like statments to find the requested songs, implemented in Rust: binary version'
 arch=('i686' 'x86_64')
