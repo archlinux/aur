@@ -12,6 +12,11 @@ makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('13c0599da6ac0053ebd41e42811e05da6cfcc03179e19f03c8d9a71a6988ca18')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd "$_pkgname-$pkgver"
   cargo build --release --locked
