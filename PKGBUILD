@@ -3,7 +3,7 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=1.0.0.rc7.r33.g9a6987e
+pkgver=1.0.0.rc7.r60.g35cab20
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
@@ -14,13 +14,12 @@ source=(
 md5sums=('SKIP'
          'SKIP')
 arch=(x86_64 i386 armv7h)
-depends=(fmt spdlog nlohmann-json systemd)
-makedepends=(cmake git gcc)
+depends=(fmt spdlog nlohmann-json systemd libelf zlib libbpf)
+makedepends=(cmake clang git nlohmann-json bpf)
 conflicts=(ananicy-cpp)
 provides=(ananicy-cpp)
 optdepends=("ananicy-rules-git: community rules"
             "ananicy-rules: Rules based for ananicy-cpp")
-
 pkgver() {
   cd "$_pkgname"
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -38,6 +37,8 @@ prepare() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_EXTERNAL_SPDLOG=ON \
 		-DUSE_EXTERNAL_JSON=ON \
+		-DUSE_BPF_PROC_IMPL=ON \
+		-DBPF_BUILD_LIBBPF=OFF \
 		-DUSE_EXTERNAL_FMTLIB=ON
 }
 
