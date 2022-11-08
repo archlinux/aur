@@ -12,7 +12,7 @@ pkgver=1.0.16
 pkgrel=1
 pkgdesc="A MATLAB compatible NetCDF interface for Octave"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
