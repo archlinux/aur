@@ -1,17 +1,19 @@
-pkgbase = charmtimetracker
-	pkgdesc = Keep track of time. It is built around two major ideas - tasks and events.
-	pkgver = 1.12.0
-	pkgrel = 3
+pkgbase = charmtimetracker-git
+	pkgdesc = Keep track of time. It is built around two major ideas - tasks and events. Development Version
+	pkgver = 1.12.0.r027.g4f8377a
+	pkgrel = 1
 	url = https://github.com/KDAB/Charm
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = make
-	depends = qt5-base
-	depends = qt5-script
 	depends = qtkeychain
-	source = https://github.com/KDAB/Charm/archive/1.12.0.tar.gz
-	sha256sums = 82e1b2356bd5a29f4b6b19b6c7dc7a8b0ce32574a5999b617647743e012f52b6
+	depends = hicolor-icon-theme
+	provides = charmtimetracker
+	conflicts = charmtimetracker
+	replaces = charmtimetracker
+	source = charmtimetracker::git+https://github.com/KDAB/Charm.git
+	sha256sums = SKIP
 
-pkgname = charmtimetracker
-
+pkgname = charmtimetracker-git
