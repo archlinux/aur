@@ -13,7 +13,7 @@ pkgver=0.7.0
 pkgrel=1
 pkgdesc="The Octave-Forge Doctest package finds specially-formatted blocks of example code within documentation files.  It then executes the code and confirms the output is correct.  This can be useful as part of a testing framework or simply to ensure that  [...]"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.2.0')

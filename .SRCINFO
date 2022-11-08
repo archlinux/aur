@@ -2,7 +2,7 @@ pkgbase = octave-doctest
 	pkgdesc = The Octave-Forge Doctest package finds specially-formatted blocks of example code within documentation files. It then executes the code and confirms the output is correct. This can be useful as part of a testing framework or simply to ensure that [...]
 	pkgver = 0.7.0
 	pkgrel = 1
-	url = https://octave.sourceforge.io/doctest/
+	url = https://gnu-octave.github.io/packages/doctest/
 	install = octave-doctest.install
 	arch = any
 	groups = octave-forge
@@ -13,4 +13,3 @@ pkgbase = octave-doctest
 	sha256sums = c44d2378d6241c87a88e878102c738e713169a3341d6ba735dc9e896e48f0942
 
 pkgname = octave-doctest
-
