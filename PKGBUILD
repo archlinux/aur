@@ -8,10 +8,10 @@ pkgname=('python2-renpy6' 'renpy6' 'renpy6-demos')
 pkgver=6.99.14.3
 pkgrel=2
 pkgdesc="Ren'Py visual novel engine (legacy 6.x version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='http://www.renpy.org'
 license=('MIT')
-makedepends=('cython2' 'ffmpeg' 'glew' 'python2-pygame-sdl2')
+makedepends=('python2-setuptools' 'cython2' 'ffmpeg4.4' 'glew' 'python2-pygame-sdl2')
 source=("http://www.renpy.org/dl/${pkgver}/renpy-${pkgver}-source.tar.bz2"
         'renpy'
         'renpy.desktop'
@@ -25,6 +25,8 @@ prepare() {
   cd renpy-${pkgver}-source
 
   sed 's/python/python2/' -i renpy.py launcher/game/tkaskdir.py
+  sed 's|ffmpeg|ffmpeg4.4|' -i module/setup.py
+  sed 's|os.path.join(i, "lib64"), os.path.join(i, "lib32")|os.path.join(i, "lib/ffmpeg4.4")|' -i module/setuplib.py
 }
 
 build() {
@@ -37,7 +39,7 @@ build() {
 
 package_python2-renpy6() {
   pkgdesc="Base libs of Ren'Py visual novel engine (legacy 6.x version)"
-  depends=('ffmpeg' 'glew' 'python2' 'sdl2')
+  depends=('ffmpeg4.4' 'glew' 'python2' 'sdl2')
 
   cd renpy-${pkgver}-source
 
