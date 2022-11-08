@@ -14,4 +14,3 @@ pkgbase = octave-data-smoothing
 	sha256sums = 012bd7a9681619ed33d8643f3785ba9b17a82febab9b242674fe79746bc31b60
 
 pkgname = octave-data-smoothing
-
