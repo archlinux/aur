@@ -2,7 +2,7 @@
 # Maintainer: Vincent BESANCON (bigbrozer) <besancon.vincent@gmail.com>
 pkgname=azure-storage-fuse
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual file system adapter for Azure Blob storage"
 arch=('x86_64')
 url="https://github.com/Azure/azure-storage-fuse"

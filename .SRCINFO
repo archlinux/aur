@@ -1,7 +1,7 @@
 pkgbase = azure-storage-fuse
 	pkgdesc = A virtual file system adapter for Azure Blob storage
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-storage-fuse
 	arch = x86_64
 	license = MIT
