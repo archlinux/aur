@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-    install -Dm 644 "LICENSE-${sha256sums[1]}" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm 644 "${srcdir}/LICENSE-${sha256sums[1]}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     if [[ "$CARCH" = 'x86_64' ]]; then
         install -Dm 755 "${srcdir}/posh-linux-amd64-${sha256sums_x86_64}" "${pkgdir}/usr/bin/oh-my-posh"
     elif [[ "$CARCH" = 'armv7h' ]]; then
