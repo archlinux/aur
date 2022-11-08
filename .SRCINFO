@@ -1,12 +1,12 @@
 pkgbase = caches-manager
 	pkgdesc = A simple script that helps keep selected directories clean by symlinking to tmpfs ramdisk.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/HanabishiRecca/caches-manager
 	arch = any
 	license = MIT
 	options = !strip
-	source = caches-manager-0.1.0.tar.gz::https://github.com/HanabishiRecca/caches-manager/archive/0.1.0.tar.gz
-	sha256sums = 918a57ae118b4efa6cf9173b56fcb3c33e2b0b4f997ba5672fa7341681af9015
+	source = caches-manager-0.1.1.tar.gz::https://github.com/HanabishiRecca/caches-manager/archive/0.1.1.tar.gz
+	sha256sums = b243270b8f7a82983395566887c6f88e671da58f87dc9ade15e8dafdd90dc98d
 
 pkgname = caches-manager
