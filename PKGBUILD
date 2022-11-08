@@ -12,7 +12,7 @@ pkgver=3.0.1
 pkgrel=1
 pkgdesc="Adds symbolic calculation features to GNU Octave. These include common Computer Algebra System tools such as algebraic operations, calculus, equation solving, Fourier and Laplace transforms, variable precision arithmetic and other features.  Interna [...]"
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=5.1' 'python-sympy>=1.4' 'python-mpmath>=1.0' 'python')
