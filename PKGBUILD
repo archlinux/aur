@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.32.2
+_bcver=1.34.2
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -16,25 +16,25 @@ depends=(
 	"r-biocgenerics>=0.37.0"
 	"r-s4vectors>=0.25.12"
 	"r-iranges>=2.13.12"
-	r-rcurl
-	r-genomeinfodbdata
+	"r-rcurl"
+	"r-genomeinfodbdata"
 )
 optdepends=(
-    r-genomicranges
-	r-rsamtools
-	r-genomicalignments
-	r-genomicfeatures
-	r-txdb.dmelanogaster.ucsc.dm3.ensgene
-	r-bsgenome
-	r-bsgenome.scerevisiae.ucsc.saccer2
-	r-bsgenome.celegans.ucsc.ce2
-	r-bsgenome.hsapiens.ncbi.grch38
-	r-runit
-	r-biocstyle
-	r-knitr
+    "r-genomicranges"
+    "r-rsamtools"
+    "r-genomicalignments"
+    "r-genomicfeatures"
+    "r-txdb.dmelanogaster.ucsc.dm3.ensgene"
+    "r-bsgenome"
+    "r-bsgenome.scerevisiae.ucsc.saccer2"
+    "r-bsgenome.celegans.ucsc.ce2"
+    "r-bsgenome.hsapiens.ncbi.grch38"
+    "r-runit"
+    "r-biocstyle"
+    "r-knitr"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("b0a7bed8527c89b04f96bcc169366c6b238b45d32fa760177ead6227165f67d8")
+b2sums=("4bfb7cc27dc420586208133480a2479748ede743f25d2d1a3295cc1d77d13ef8f1fb54794a0cd24d523cf1c33572135e77202923ddd4217d69414caf4e27030e")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
