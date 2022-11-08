@@ -14,7 +14,7 @@ pkgver=0.0.9
 pkgrel=3
 pkgdesc="A Drift-Diffusion simulator for 1d semiconductor devices"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL2')
 groups=('octave-forge')
 depends=('octave>=3.0' 'octave-bim')
