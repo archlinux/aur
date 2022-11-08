@@ -23,6 +23,11 @@ sha256sums=('c40d0fff8839d4996220302a398a0db1fe696c3274c6e85508bfd82206bab4ce'
 	    'a7e60eb195e59f390f8b8d52d75410a2561c6b40bfa5b04d0ebf4556f30e4656'
 )
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_binname"
   install -Dm644 "pl-mker.zsh" "$pkgdir/usr/share/zsh/site-functions/_pl-mker"
