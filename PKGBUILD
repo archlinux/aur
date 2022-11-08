@@ -4,7 +4,7 @@
 pkgname=dell-command-configure
 _pkgver=4.7.0-433
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Configure various BIOS features on Dell laptops'
 arch=('x86_64')
 url='https://www.dell.com/support/kbdoc/000178000/dell-command-configure'
@@ -30,6 +30,8 @@ prepare() {
 package() {
   cp -a srvadmin/* "${pkgdir}"
   cp -a command-configure/* "${pkgdir}"
+  # Remove global ld preload configurations.
+  rm -r "${pkgdir}/etc/ld.so.conf.d/"
 
   ln -Tsf omreg.d/omreg-hapi.cfg "${pkgdir}/opt/dell/srvadmin/etc/omreg.cfg"
 
