@@ -1,7 +1,7 @@
 pkgbase = omnisharp-roslyn
 	pkgdesc = OmniSharp server (STDIO) based on Roslyn workspaces
 	pkgver = 1.39.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT

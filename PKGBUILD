@@ -2,7 +2,7 @@
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.39.2
-pkgrel=3
+pkgrel=4
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -24,6 +24,12 @@ prepare() {
 
     # only build x86_64-gnu
     sed -i '/linux-arm64/d;/linux-musl/d;' build.cake
+
+    # don't set RuntimeFrameworkVersion, just build against the version we are using
+    # this is needed since otherwise we will use a crossgen compiler version built
+    # against an older .NET 6 that does not have OpenSSL 3 support
+    sed -i '/RuntimeFrameworkVersion/d;' build.cake
+    sed -i '/RuntimeFrameworkVersion/d;' src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj
 
     # use arch-packaged .NET version rather than forcing this version
     rm global.json
