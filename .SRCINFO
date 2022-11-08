@@ -17,6 +17,7 @@ pkgbase = lighttpd2-git
 	depends = openssl
 	depends = glib2
 	depends = libidn
+	depends = libunwind
 	optdepends = valgrind: for deep debuggins
 	provides = lighttpd2
 	conflicts = lighttpd2
