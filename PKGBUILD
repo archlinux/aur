@@ -14,7 +14,7 @@ pkgver=1.4.0
 pkgrel=1
 pkgdesc="Socket functions for networking from within octave"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0')
