@@ -1,6 +1,6 @@
 pkgbase = gdb-git
 	pkgdesc = The GNU Debugger from git
-	pkgver = 109739.4311246bb1f
+	pkgver = 111892.2756004fe78
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686

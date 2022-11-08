@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=109739.4311246bb1f
+pkgver=111892.2756004fe78
 pkgrel=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
   
   [[ -d build ]] || mkdir -p build
   cd build
-  CFLAGS+=" -fcommon" ../configure \
+  CFLAGS+=" -fcommon" CXXFLAGS+=" -fpermissive" ../configure \
     --prefix=/usr \
     --disable-nls \
     --disable-gprofng \
