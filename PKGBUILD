@@ -14,7 +14,7 @@ pkgver=0.1.4
 pkgrel=1
 pkgdesc="A package implementing tools to compute spectral decompositions of irregularly-spaced time series.  Currently includes functions based off the Lomb-Scargle periodogram and Adolf Mathias' implementation for R and C"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0')
