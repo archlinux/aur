@@ -2,7 +2,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos@becker.software>
 
 pkgname='tasktimer-bin'
-pkgver=1.9.4
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Task Timer (tt) is a dead simple TUI task timer'
 url='https://github.com/caarlos0/tasktimer'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('tt')
 conflicts=('tt')
 
-source_aarch64=('https://github.com/caarlos0/tasktimer/releases/download/v1.9.4/tt_linux_arm64.tar.gz')
-sha256sums_aarch64=('462f41c5dfe06185f8fdecbd47f294c8ff741ad6b5137ae3a4a09773f5a75a9d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/tasktimer/releases/download/v1.11.0/tt_linux_arm64.tar.gz")
+sha256sums_aarch64=('7433ff2e77407461e554197e79e1e67f7f8afef08daea38a9449a97def6fff6f')
 
-source_x86_64=('https://github.com/caarlos0/tasktimer/releases/download/v1.9.4/tt_linux_amd64.tar.gz')
-sha256sums_x86_64=('a404250fd6a5756aa9d72010750fcf433e4400c3e0004d1fe7151be397546e80')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/tasktimer/releases/download/v1.11.0/tt_linux_amd64.tar.gz")
+sha256sums_x86_64=('4bc83e569433b69e1a791590488c15edc771a492ade02d828c77fcdcedac8e92')
 
 package() {
   # bin
