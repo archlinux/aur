@@ -1,6 +1,6 @@
 pkgbase = 64gram-desktop-bin
 	pkgdesc = Unofficial desktop version of Telegram messaging app - binary version
-	pkgver = 1.0.51
+	pkgver = 1.0.52
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/TDesktop-x64/tdesktop
@@ -23,7 +23,7 @@ pkgbase = 64gram-desktop-bin
 	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon128.png
 	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon256.png
 	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon512.png
-	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v1.0.51/64Gram_1.0.51_linux.zip
+	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v1.0.52/64Gram_1.0.52_linux_rebuilt.zip
 	sha256sums = 9df3688f1647de70cf00556295bb1fbb2f01c7a727806ddd4dfb2540ab584b80
 	sha256sums = ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c
 	sha256sums = 9e4180c78c895783b4559c5e1a7868a2c9aa30a29969fe5dbe9a4ce4cf5cde6c
@@ -32,6 +32,6 @@ pkgbase = 64gram-desktop-bin
 	sha256sums = 731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6
 	sha256sums = 3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090
 	sha256sums = e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119
-	sha256sums = 022a7a51943d91acfb97efa3783a18a976a0a747e52cca8334dcfe2d107ceeca
+	sha256sums = 57fe8651da2285349678422bf368884ff3466071879ffb5b0844572ed633381c
 
 pkgname = 64gram-desktop-bin
