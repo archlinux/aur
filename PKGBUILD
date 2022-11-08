@@ -14,7 +14,7 @@ pkgver=1.3.0
 pkgrel=1
 pkgdesc="Miscellaneous tools that don't fit somewhere else."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
