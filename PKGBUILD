@@ -12,7 +12,7 @@ pkgver=2.1.2
 pkgrel=1
 pkgdesc="General tools for Octave."
 arch=(any)
-url="https://octave.sourceforge.io/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
