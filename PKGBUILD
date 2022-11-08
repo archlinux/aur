@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=xeoma-client-bin
-pkgver=22.3.16
+pkgver=22.10.12
 pkgrel=1
 pkgdesc='Xeoma Client - the video surveillance software.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
         "xeoma-client.desktop"
         "LICENSE"
 )
-sha256sums=('f22b1f226d3282cb055f0105ad64109c28aba970035dc7cf1c8fc341bef918e5'
+sha256sums=('579acd4b7dc619ed97c9faa3bf71f69be98132309094d6308bcc5c8149e8dc5a'
             'bd0ab0967b483b6d10fbeff18d7e1bd023ce477b8809a586d89741da34a0cffc'
             '1ae7f611c6261b8034974081e42bf2fdee3e5ba47afc7364e2ee8e9b5ef8910e'
             'c76a128f1662d5ca08693dd84e7da892942eaa3d61c0935188a9d32a5e755dfb')
