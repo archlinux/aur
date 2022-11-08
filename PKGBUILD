@@ -14,7 +14,7 @@ pkgver=1.4.2
 pkgrel=1
 pkgdesc="Simple mapping and GIS .shp .dxf and raster file functions"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://gnu-octave.github.io/packages/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=5.2.0' 'octave-io>=2.2.7' 'octave-geometry>=4.0.0')
