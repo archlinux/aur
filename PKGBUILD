@@ -10,11 +10,11 @@
 
 _pack=octproj
 pkgname=octave-${_pack}
-pkgver=2.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="This package allows to call functions of PROJ library for cartographic projections and CRS transformations"
 arch=(any)
-url="https://octave.sourceforge.io/${_pack}"
+url="https://bitbucket.org/jgpallero/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.0.0' 'proj')
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("${_archive}::${url}/downloads/octproj-${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha512sums=('98e1ff7b289b8928efefc95b88aee7cdf09135b05c21fb5d90e11e937622d7c077c6c0a0dae4680648c7f76ba75dee39e4f53e94875b08d830c0ddbe9cf94c1e')
+sha512sums=('d7009e8db843528b76b90967d8900e85046227fa98ffd4690b7f12fb54f81f070f155fee1cd58d446e7ade54e8755f080c8561f9f98e6b83629739a5954556b5')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
