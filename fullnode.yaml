@@ -4,6 +4,7 @@ network-address: "/dns/localhost/tcp/8080/http"
 metrics-address: "127.0.0.1:9184"
 json-rpc-address: "0.0.0.0:9000"
 websocket-address: "0.0.0.0:9001"
+enable-event-processing: true
 
 genesis:
   genesis-file-location: "/var/lib/sui/genesis.blob"

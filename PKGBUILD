@@ -2,7 +2,7 @@
 pkgname=sui-git
 _name=sui
 pkgver=r0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Next-generation smart contract platform with high throughput'
 url='https://github.com/MystenLabs/sui'
 makedepends=('cargo' 'gcc' 'curl' 'clang' 'openssl' 'git')
@@ -15,8 +15,7 @@ source=("git+https://github.com/MystenLabs/sui.git#branch=devnet"
        	"fullnode.yaml" "sui.env" "sui.service" "sui.tmpfiles" "sui.sysusers")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-#_nproc=$(($(nproc)/2))
-_nproc=2
+_nproc=$(($(nproc)-1))
 [[ ${_nproc} < 1 ]] && _nproc=1
 
 pkgver() {
@@ -31,17 +30,9 @@ prepare() {
 
 package() {
   cd "$srcdir/${_name}/target/release"
-  install -Dm0755 narwhal-benchmark-client ${pkgdir}/usr/bin/narwhal-benchmark-client
-  install -Dm0755 narwhal-node ${pkgdir}/usr/bin/narwhal-node
   install -Dm0755 sui-tool ${pkgdir}/usr/bin/sui-tool
-  install -Dm0755 rpc-server ${pkgdir}/usr/bin/sui-rpc-server
   install -Dm0755 sui-node ${pkgdir}/usr/bin/sui-node
-  install -Dm0755 sui-rosetta ${pkgdir}/usr/bin/sui-rosetta
   install -Dm0755 sui ${pkgdir}/usr/bin/sui
-  install -Dm0755 sui-cluster-test ${pkgdir}/usr/bin/sui-cluster-test
-  install -Dm0755 sui-faucet ${pkgdir}/usr/bin/sui-faucet
-  install -Dm0755 stress ${pkgdir}/usr/bin/sui-stress
-  install -Dm0755 sui-test-validator ${pkgdir}/usr/bin/sui-test-validator
 
   cd "$srcdir/${_name}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_name}/README.md"
@@ -54,7 +45,7 @@ package() {
   install -Dm644 "${_name}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_name}.conf"
   install -Dm644 "${_name}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_name}.conf"
   install -d "${pkgdir}/var/lib/sui"
-  curl -L -s "https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob" > "${pkgdir}/var/lib/sui/genesis.blob"
+  curl --output-dir "${pkgdir}/var/lib/sui/" -s  -fLJO https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
   install -Dm644 "fullnode.yaml" "${pkgdir}/etc/sui/fullnode.yaml"
   install -Dm644 "sui.env" "${pkgdir}/etc/default/sui"
 }
@@ -64,5 +55,8 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --profile release --frozen --release --all-features --jobs $_nproc
+  for b in sui-node sui sui-tool ; do
+        cargo build --profile release --frozen --release --bin $b --jobs $_nproc
+  done
+
 }

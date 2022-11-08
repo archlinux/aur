@@ -1,7 +1,7 @@
 pkgbase = sui-git
 	pkgdesc = Next-generation smart contract platform with high throughput
 	pkgver = r0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MystenLabs/sui
 	arch = any
 	license = Apache
