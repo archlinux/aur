@@ -1,5 +1,4 @@
-# Maintainer: fromtheeast710 <theeast710@proton.me>
-# Contributor: physkets <physkets // at // tutanota dot com>
+# Maintainer: physkets <physkets // at // tutanota dot com>
 # Contributor: xpt <user.xpt@gmail.com>
 
 ### BUILD OPTIONS
@@ -21,10 +20,10 @@ _ENABLE_OMP=0
 _ENABLE_KIM=0
 
 pkgname=lammps
-pkgver=20220623
-_pkgver="23Jun2022"
+pkgver=20201029
+_pkgver="29Oct2020"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=2
+pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -32,7 +31,7 @@ license=('GPL')
 depends=('fftw' 'openmpi')
 makedepends=('cmake')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/stable_${_pkgver}.tar.gz")
-sha512sums=('088d7dcbc276168803ddb10643eb71a62a4358456fd6af415332ab5b9641a0da23ca23e66bb414a5f58ee08781937d39672c247f65564d0c08a7aa916665c115')
+sha512sums=('b83792e723de607f113a576a05a3fb5afbfea513c1f013b8c46e4a60b76845f1a054df3182330bca05fe1bb4b256997721c1ff6ee1a317df0da15331451f85d3')
 
 # process the build settings from above
 if (( $_ENABLE_INTEL_COMPILER )); then
