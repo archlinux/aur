@@ -1,18 +1,12 @@
 pkgbase = python-obspy-docs
 	pkgdesc = Set of HTML documentation for Obspy seismological framework.
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://docs.obspy.org
 	arch = any
 	license = LGPL
-	makedepends = python-cartopy
-	makedepends = python-obspy
-	makedepends = python-m2r2
-	makedepends = python-matplotlib
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	options = docs
-	source = python-obspy-1.3.0.tar.gz::https://github.com/obspy/obspy/archive/1.3.0.tar.gz
-	sha256sums = 12a5ba9cae3445c9f31bd0e0561e791bc755cc627d4412f851f6286fef82be34
+	source = https://github.com/obspy/obspy/releases/download/1.3.1/obspy-1.3.1-documentation.tgz
+	sha256sums = bf9674ade7f351c59c0ef016c9714212d1c99ef0bcd2c9743644aa878a2a8d14
 
 pkgname = python-obspy-docs
