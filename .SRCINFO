@@ -1,7 +1,7 @@
 pkgbase = harbour-amazfish
 	pkgdesc = Companion application for Huami Devices and the Pinetime Infinitime
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/piggz/harbour-amazfish
 	arch = x86_64
 	arch = aarch64

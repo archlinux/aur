@@ -2,7 +2,7 @@
 
 pkgname=harbour-amazfish
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=('x86_64' 'aarch64')
 url="https://github.com/piggz/harbour-amazfish"
@@ -40,5 +40,4 @@ build () {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir" install
-	install -Dm644 daemon/harbour-amazfish.service "$pkgdir/usr/lib/systemd/system/harbour-amazfish.service"
 }
