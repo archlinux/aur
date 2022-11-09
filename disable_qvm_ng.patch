@@ -1,0 +1,90 @@
+diff --git a/Makefile b/Makefile
+index 02e1c4f..a37fba6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -43,7 +43,6 @@ system-index.txt: $(QUICKLISP_SETUP)
+ 		$(FOREST_SDK_FEATURE) \
+ 		--eval '(ql:quickload "cffi-grovel")' \
+ 		--eval '(ql:quickload "qvm-app")' \
+-		--eval '(ql:quickload "qvm-app-ng")' \
+ 		--eval '(ql:write-asdf-manifest-file "system-index.txt")'
+ 
+ ###############################################################################
+@@ -72,13 +71,6 @@ qvm: system-index.txt
+ 		--load build-app.lisp \
+                 $(FOREST_SDK_OPTION)
+ 
+-qvm-ng: system-index.txt
+-	$(SBCL) $(FOREST_SDK_FEATURE) \
+-		--eval "(setf sb-ext:\*on-package-variance\* '(:warn (:swank :swank-backend :swank-repl) :error t))" \
+-		$(QVM_FEATURE_FLAGS) \
+-		--load build-app-ng.lisp \
+-		$(FOREST_SDK_OPTION)
+-
+ qvm-sdk-base: FOREST_SDK_FEATURE=--eval '(pushnew :forest-sdk *features*)' \
+ 	--eval '(push :drakma-no-ssl *features*)'
+ qvm-sdk-base: QVM_WORKSPACE=10240
+@@ -111,15 +103,13 @@ docker-sdk-barebones: docker
+ ###############################################################################
+ 
+  .PHONY: install
+-install: qvm qvm-ng
++install: qvm
+ 	install -d $(DESTDIR)$(PREFIX)/bin/
+ 	install qvm $(DESTDIR)$(PREFIX)/bin/
+-	install qvm-ng $(DESTDIR)$(PREFIX)/bin/
+ 
+  .PHONY: uninstall
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/qvm
+-	rm -f $(DESTDIR)$(PREFIX)/bin/qvm-ng
+ 
+ ###############################################################################
+ # TEST
+@@ -133,7 +123,7 @@ testsafe:
+ 		 --eval '(ql:quickload :qvm-tests)' \
+ 		 --eval '(asdf:test-system :qvm)'
+ 
+-test: test-lib test-app test-app-ng
++test: test-lib test-app
+ 
+ test-lib: QVM_FEATURES=qvm-intrinsics
+ test-lib:
+@@ -147,28 +137,6 @@ test-app:
+ 		 --eval '(ql:quickload :qvm-app-tests)' \
+ 		 --eval '(asdf:test-system :qvm-app)'
+ 
+-test-app-ng: QVM_FEATURES=qvm-intrinsics
+-test-app-ng:
+-	$(QUICKLISP) \
+-		--eval '(ql:quickload :qvm-app-ng-tests)' \
+-		--eval '(asdf:test-system :qvm-app-ng)'
+-
+-# Re-run the full QVM-APP-NG-TESTS suite using the generic bordeaux-threads implementation of the
+-# SAFETY-HASH package. Run the test-app-ng target via a recursive make invocation here, rather than
+-# specifying it as a prerequisite; otherwise, in a command line invocation like
+-#
+-#     make test-app-ng test-app-ng-with-generic-safety-hash
+-#
+-# Make will consider the test-app-ng goal to be up-to-date when test-app-ng-with-generic-safety-hash
+-# runs. Run clean-qvm-cache before and after to ensure that this and subsequent builds aren't
+-# polluted with stale FASLs. Since nuking the cache in this way is obnoxious, don't run these tests
+-# as a prerequisite of the default "make test" target.
+-test-app-ng-with-generic-safety-hash: QVM_FEATURES=qvm-intrinsics qvm-app-ng-generic-safety-hash
+-test-app-ng-with-generic-safety-hash:
+-	$(MAKE) clean-qvm-cache
+-	$(MAKE) QVM_FEATURES="$(QVM_FEATURES)" test-app-ng
+-	$(MAKE) clean-qvm-cache
+-
+ test-ccl:
+ 	ccl --batch --eval '(ql:quickload :qvm)' --eval '(quit)'
+ 
+@@ -182,7 +150,7 @@ coverage:
+ 
+ # Clean the executables
+ clean:
+-	rm -f qvm qvm-ng build-output.log system-index.txt
++	rm -f qvm build-output.log system-index.txt
+ 
+ # Clean the Lisp cache, reindex local projects.
+ clean-cache:
