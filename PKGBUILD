@@ -2,7 +2,7 @@
 _base=syrupy
 pkgname=python-${_base}
 pkgdesc="The sweeter pytest snapshot plugin"
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 arch=(any)
 url="https://github.com/tophat/${_base}"
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(python-pytest python-colored)
 makedepends=(python-build python-installer python-poetry-core)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0a2594fc4652fb6ee263048547319265ecf351ecfec4bd5c58e705a31517ed1c6ffe97721787df4d77fd72b8faaad888ff9b5e6b755a3d0dba0fcb3dd6774648')
+sha512sums=('76133ec475363479944cadbb845d536863fca50f2c4df2f765f033b576cd287d0dd0c97d21b3cd1f861198e761cfc0e70a4bacbff5abe2aa243b95af998104a8')
 
 build() {
   cd ${_base}-${pkgver}
