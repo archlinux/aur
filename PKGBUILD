@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=omnu-champagne
-pkgver=09_28_22
+pkgver=10_25_22
 pkgrel=1
 pkgdesc="A champagne colored GTK theme collection designed with Oomox"
 arch=('any')
@@ -17,4 +17,4 @@ package() {
 	install -dm755 "$pkgdir/usr/share/themes"
 	cp -R OmNu-Champagne "$pkgdir/usr/share/themes"
 }
-sha256sums=('9be6b84f87ce8a071099975fd5ecbbbe16a7cafb90805bee028d9dea2c5bc2ef')
+sha256sums=('8273b88738a08201214899eab771730eb3e80e08f66d594faa6a6e1d260b1825')

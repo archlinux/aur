@@ -1,6 +1,6 @@
 pkgbase = omnu-champagne
 	pkgdesc = A champagne colored GTK theme collection designed with Oomox
-	pkgver = 09_28_22
+	pkgver = 10_25_22
 	pkgrel = 1
 	url = https://www.jasong-designs.com/2022/09/28/omnu-champagne/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = omnu-champagne
 	optdepends = openbox: optional window manager theme
 	optdepends = metacity: optional window manager theme
 	optdepends = xfwm4: optional window manager theme
-	source = https://github.com/jgpws/omnu-champagne/raw/main/downloads/omnu-champagne-09-28-22.tar.gz
-	sha256sums = 9be6b84f87ce8a071099975fd5ecbbbe16a7cafb90805bee028d9dea2c5bc2ef
+	source = https://github.com/jgpws/omnu-champagne/raw/main/downloads/omnu-champagne-10-25-22.tar.gz
+	sha256sums = 8273b88738a08201214899eab771730eb3e80e08f66d594faa6a6e1d260b1825
 
 pkgname = omnu-champagne
