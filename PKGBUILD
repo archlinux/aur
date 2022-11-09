@@ -125,4 +125,7 @@ package_citra-qt-git() {
 	cd "$srcdir/$_pkgbase/build"
 	make DESTDIR="$pkgdir/" install
 	rm "$pkgdir/usr/bin/citra"
+
+        # Remove leftover files from tsl.
+        rm -r "$pkgdir/usr/include/tsl" "$pkgdir/usr/share/cmake/tsl-robin-map"
 }
