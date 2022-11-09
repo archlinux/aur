@@ -1,7 +1,7 @@
 pkgbase = python-pycose
 	pkgdesc = A Python implementation of the COSE specification described in RFC 8152
-	pkgver = 0.9.dev8
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/TimothyClaeys/pycose
 	arch = any
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = python-pycose
 	depends = python-ecdsa
 	depends = python-attrs
 	depends = python-certvalidator
-	source = python-pycose.tar.gz::https://github.com/TimothyClaeys/pycose/archive/refs/tags/v0.9.dev8.tar.gz
-	sha256sums = 43dc10e908d09e0afac011e518b026ba513204378f405cf885b822b26c63383e
+	source = python-pycose.tar.gz::https://github.com/TimothyClaeys/pycose/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 251538cfa06785b54808f59d43fe24a87be5ab0faea06a5ca3c102fc31d10b1c
 
 pkgname = python-pycose
