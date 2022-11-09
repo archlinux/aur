@@ -1,6 +1,6 @@
 pkgbase = skypeforlinux-stable-bin
 	pkgdesc = Skype for Linux - Stable/Release Version
-	pkgver = 8.90.0.405
+	pkgver = 8.90.0.407
 	pkgrel = 1
 	url = http://www.skype.com
 	install = install.sh
@@ -22,7 +22,7 @@ pkgbase = skypeforlinux-stable-bin
 	conflicts = skypeforlinux-preview-bin
 	conflicts = skypeforlinux-beta-bin
 	conflicts = skype
-	source = https://repo.skype.com/rpm/stable/skypeforlinux_8.90.0.405-1.x86_64.rpm
-	sha256sums = 06aedb516efe00c905854d90de8caf0aa9e32bbecfa1684377b431e4ec78d869
+	source = https://repo.skype.com/rpm/stable/skypeforlinux_8.90.0.407-1.x86_64.rpm
+	sha256sums = f237f413d669763420b5adbda96b643a45b988d15334d8996f3db99d3180d273
 
 pkgname = skypeforlinux-stable-bin
