@@ -4,36 +4,28 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=bino
-pkgver=1.6.8
-pkgrel=4
+pkgver=2.0
+pkgrel=1
 pkgdesc='3D video player with multi-display support'
 arch=('x86_64')
 url='https://bino3d.org/'
 license=('GPL3')
-depends=('ffmpeg4.4' 'freealut' 'freeglut' 'glewmx' 'libass' 'qt5-base')
-optdepends=('lirc: infrared remote control')
-source=(https://bino3d.org/releases/${pkgname}-${pkgver}.tar.xz{,.sig}
-	ffmpeg4.4.patch)
-sha512sums=('d8cf5be356add4ed3fb36673038b5ffd92d0dc840798cc616fa4b11fec221c7f114347dfc7cdb7a3a24c5599b56301cddc99f84d3862d8e874612960281319cc'
-	'SKIP'
-	'f7bf716a6ae12a4542ecaddeaee1078a6c26d9d765db7cc11a1d7b1ae19b295703f5b05e71564f1aad216485b904d81f2670c122e88ab79c7556f5614c0d1639')
+depends=('qt6-multimedia' 'qt6-svg' 'qvr')
+makedepends=('cmake' 'qt6-tools')
+source=(https://bino3d.org/releases/$pkgname-$pkgver.tar.gz{,.sig})
+sha512sums=('5620c506f4de1a9aa7f21f0a23481c5174e7a6a47e6401a84d048dc87843249ef325e33ebc49790d405eb4697c3c571550b0e202f24e758c446ce8e4014f98b3'
+            'SKIP')
 validpgpkeys=('2F61B4828BBA779AECB3F32703A2A4AB1E32FD34')
 
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -Np1 -i '../ffmpeg4.4.patch'
-}
-
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure \
-	  --prefix=/usr \
-	  --with-qt-version=5 \
-	  #--with-xnvctrl # Enable NVIDIA Quadro SDI output
-	make
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF
+
+	make -C build -j $(nproc)
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+	make -C build DESTDIR="$pkgdir" install
 }
