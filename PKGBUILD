@@ -1,7 +1,7 @@
 # Maintainer: Auston S <austonst@gmail.com>
 
 pkgname=mev-boost
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='MEV middleware for Ethereum validators'
 arch=('x86_64')
