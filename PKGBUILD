@@ -180,7 +180,7 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='7.0.5'
+pkgver='7.0.6'
 pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
@@ -229,7 +229,7 @@ source=(
   '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   '1000-hylafaxplus-modem-support.patch'
 )
-md5sums=('ac8450d7aa8e5d6dd726e4d601702d69'
+md5sums=('84fd80dcd9e98d21b28b674ea7ab05b4'
          '3af38f1eaa4f9fb92cac2f0cf9544321'
          '916f2c100eb2b41ef6b35f96bdb9444a'
          'ae0a86260ab7ed94187a5d8e560a82ac'
@@ -241,7 +241,7 @@ md5sums=('ac8450d7aa8e5d6dd726e4d601702d69'
          '0de848f554e2a93c09352eadb2b2e260'
          '151567ca960d860c88ff0e5154cb5b78'
          'dd1e2859dd1cc13db863ba74bc539ca0')
-sha256sums=('0e55067ec6b852a4179b72ea0887c0a05055467e723e9e6687167a9043119bae'
+sha256sums=('4877d7a498697e592dbcf37c2e9e1a8a8e0b90a03627baa6a49da8a42923c588'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '8b2dbf38d13d0c25e6164e691187b4f45ae971c009e80911cd96aac0f61cf871'
@@ -870,7 +870,7 @@ if [ "\${EUID}" -ne 0 ]; then
   exit 1
 fi
 
-cd /usr/share/ghostscript/[0-9]*/Resource/Font
+cd '/usr/share/ghostscript/Resource/Font'
 
 _fn_build() {
   local f fa fm
