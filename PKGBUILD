@@ -8,7 +8,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.7
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
@@ -27,9 +27,9 @@ optdepends=(
 backup=(etc/Muttrc)
 options=(debug)
 source=(https://bitbucket.org/${_pkgbase}/${_pkgbase}/downloads/${_pkgbase}-$pkgver.tar.gz{,.asc})
-sha512sums=('5bc88d3efe82db50c2756e7011831caf907adf794e4d693d1318d25deeabac6834989ddef074064252f0f1f0e7df30d6d7d895e0a1d7893696e1f5252955ba22'
+sha512sums=('7723dffd5fb0f6f1aa1ab22e90f101d0d8b9cd4f198a3ac7ebbba7a3c00e0f2163ce03075f48a6f288a81bf621204c8d8eb247a3fb216a5f7d37686b0e8b9fb2'
             'SKIP')
-b2sums=('3cc02ec5bc46f6a3f34c87c1454bdb0198be75a5669896b72ccd780b582cb1e7a4de466c41d25d1e74ab34e177bdca8c05574eddc6302e05acb8e3be6f53438e'
+b2sums=('cdbb2ba8971a6f9cf6f5ee8f1e666e835d1716957d001561c67fab6381041ce5f8c994dad6e2d83f76e47f1ea12033d55b2c5f61348369c740f224d80405c0e1'
         'SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
 
