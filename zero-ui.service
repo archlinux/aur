@@ -7,10 +7,8 @@ After=network.target network-online.target
 User=root
 Group=root
 LimitNOFILE=16384
-Environment=NODE_ENV=production
-Environment=ZU_SECURE_HEADERS=true
-Environment=ZU_SERVE_FRONTEND=true
-ExecStart=/usr/bin/node /usr/share/webapps/zero-ui/bin/www
+EnvironmentFile=/etc/zero-ui.conf
+ExecStart=/usr/bin/node /usr/share/webapps/zero-ui/backend/bin/www
 ExecReload=/bin/kill -HUP $MAINPID
 PrivateTmp=true
 PrivateHome=true

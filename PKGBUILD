@@ -2,18 +2,19 @@
 
 pkgname=zero-ui
 pkgver=r227.076b496
-pkgrel=2
+pkgrel=3
 pkgdesc='Zerotier Controller UI'
 arch=('x86_64')
 url='https://github.com/dec0dOS/zero-ui'
 license=('GPL')
-depends=('nodejs')
+depends=('nodejs' 'zerotier-one')
 makedepends=('yarn')
 source=("zero-ui"::'git+https://github.com/dec0dOS/zero-ui'
-        zero-ui.service)
+        zero-ui.service
+        zero-ui.conf)
 sha256sums=('SKIP'
-            '5b0146984590a775c8172f9b396e5dc6a9fec8f9394b0978adce00ee5c4da826')
-options=("!strip")
+            '6484332f98a15a24c186839e68de3182ba119169ab789fcfcac0615a2de1d682'
+            'e7cdf0f4959f3e582ac67ff564fe7939c584103699bcb97c499f1ae1988fde88')
 
 pkgver() {
     cd "$srcdir/zero-ui"
@@ -44,11 +45,13 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/webapps/zero-ui"
+    mkdir -p "$pkgdir/usr/share/webapps/zero-ui/frontend"
     mkdir -p "$pkgdir/usr/lib/systemd/system"
-    cp -r "$srcdir/zero-ui/app/frontend/build" "$pkgdir/usr/share/webapps/zero-ui/app"
-    cp -r "$srcdir/zero-ui/app/backend" "$pkgdir/usr/share/webapps/zero-ui"
+    mkdir -p "$pkgdir/etc"
+    cp -r "$srcdir/zero-ui/app/frontend/build" "$pkgdir/usr/share/webapps/zero-ui/frontend/build"
+    cp -r "$srcdir/zero-ui/app/backend" "$pkgdir/usr/share/webapps/zero-ui/backend"
     cp "$srcdir/zero-ui.service" "$pkgdir/usr/lib/systemd/system/"
+    cp "$srcdir/zero-ui.conf" "$pkgdir/etc/zero-ui.conf"
 }
 
 # vim:set sts=4 sw=4 et:
