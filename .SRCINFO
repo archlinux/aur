@@ -11,4 +11,3 @@ pkgbase = arch-rcscripts-git
 
 pkgname = arch-rcscripts-git
 	backup = etc/conf.d/
-
