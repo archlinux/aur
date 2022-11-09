@@ -13,7 +13,7 @@ arch=("any")
 url="https://github.com/lyz-code/${pkgname}"
 license=("GPL3")
 depends=("python" "python-click" "python-ruyaml")
-makedepends=("python-build" "python-installer")
+makedepends=("python-build" "python-installer" "python-pdm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("bbd71dae1baf088382e0dd792ea8c92b04b8b5ef7ff0c3fb3f03d85a51765e8d1fab455d76512e4b540b11c7f696e21859c2007f2654ea142cbfff666e127bdb")
 
@@ -30,7 +30,7 @@ package()
 
     # Install the software.
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    python -m installer -d "${pkgdir}" "${srcdir}"/"${pkgname}"-"${pkgver}"/dist/*.whl # TODO
+    python -m installer -d "${pkgdir}" "${srcdir}"/"${pkgname}"-"${pkgver}"/dist/*.whl
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/

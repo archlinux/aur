@@ -7,6 +7,7 @@ pkgbase = yamlfix
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pdm
 	depends = python
 	depends = python-click
 	depends = python-ruyaml
