@@ -6,7 +6,7 @@
 
 pkgname=ghidra-git
 pkgver=10.2.r108.c301dd2c8
-pkgrel=1
+pkgrel=2
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64')
 options=(!strip)
