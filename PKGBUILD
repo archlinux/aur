@@ -11,7 +11,7 @@ WITH_KNOTIFICATION=0
 WITH_DARK_ICON=1
 
 pkgname=octopi-git
-pkgver=0.12.0.r0.3198001
+pkgver=0.14.0.r4.2db10e3b
 pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('x86_64')
