@@ -5,38 +5,24 @@
 
 # Maintainer: Tyler Murphy <tylermurphy534@gmail.com>
 pkgname=crab
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-epoch=
 pkgdesc="A rusty permission authentication system"
-arch=(x86_64)
+arch=('x86_64' 'i686')
 url="https://g.tylerm.dev/tylermurphy534/crab.git"
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+license=('GPL3')
+makedepends=('cargo')
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 build() {
-	cd crab
-	cargo build --release
+  cd crab
+  cargo build --release
 }
 
 package() {
-	cd crab
+  cd crab
   install -D --mode=6755 --owner=root --group=root ./target/release/crab ${pkgdir}/usr/bin/crab
   install -D --mode=660 --owner=root --group=root pam ${pkgdir}/etc/pam.d/crab
-  install -D --mode=664 --owner=root --group=root conf ${pkgdir}/usr/share/crab/crab.conf
+  install -D --mode=660 --owner=root --group=root conf ${pkgdir}/usr/share/crab/crab.conf
 }
