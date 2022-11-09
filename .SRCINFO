@@ -1,5 +1,5 @@
 pkgbase = bino
-	pkgdesc = 3D video player with multi-display support
+	pkgdesc = A video player with focus on 3D and Virtual Reality
 	pkgver = 2.0
 	pkgrel = 1
 	url = https://bino3d.org/

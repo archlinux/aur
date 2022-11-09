@@ -6,7 +6,7 @@
 pkgname=bino
 pkgver=2.0
 pkgrel=1
-pkgdesc='3D video player with multi-display support'
+pkgdesc='A video player with focus on 3D and Virtual Reality'
 arch=('x86_64')
 url='https://bino3d.org/'
 license=('GPL3')
