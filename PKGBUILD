@@ -2,12 +2,12 @@
 
 pkgname=snappymail
 pkgver=2.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, modern & fast web-based email client'
 arch=('any')
 license=('AGPL3')
 url='https://snappymail.eu'
-depends=('php-fpm')
+depends=('php-fpm' 'php-sodium')
 makedepends=(
   'git'
   'nodejs'
