@@ -1,6 +1,5 @@
 # Maintainer: Stein Gunnar Bakkeby <bakkeby@gmail.com>
 pkgname="xban"
-_pkgname=xban
 pkgver="1.0"
 pkgrel=1
 pkgdesc="Hides the X mouse cursor on keypress and reveals it again when the mouse cursor moves"
@@ -8,17 +7,17 @@ url="https://github.com/bakkeby/xban"
 arch=("any")
 license=('MIT')
 depends=('libxi' 'libxfixes')
-makedepends=('git' 'make')
-source=(git+https://github.com/bakkeby/xban.git)
+makedepends=('make')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bakkeby/xban/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/${pkgname}-${pkgver}"
     #make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm755 xban "$pkgdir/usr/bin/xban"
     install -Dm644 xban.1 "$pkgdir/usr/share/man/man1/xban.1"
