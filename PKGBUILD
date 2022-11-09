@@ -3,7 +3,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=r12717.7f3aba24
+pkgver=r13351.57dbe1dea
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -35,14 +35,7 @@ pkgver() {
 
 build() {
     cd NBlood
-    make PACKAGE_REPOSITORY=1
-    MAGICK_OCL_DEVICE=OFF convert \
-        source/blood/rsrc/game.bmp \
-        -gravity center \
-        -crop 200x200+0+0 \
-        -rotate 90 \
-        -resize 192x192 \
-        nblood.png
+    NOONE_EXTENSIONS=0 make blood
 }
 
 package() {
@@ -51,6 +44,5 @@ package() {
     install -D -t "$pkgdir"/usr/share/games/nblood -m 644 nblood.pk3
     install -D -t "$pkgdir"/usr/share/licenses/$pkgname -m 644 package/common/buildlic.txt
     install -D -t "$pkgdir"/usr/share/applications -m 644 "$srcdir"/nblood.desktop
-    install -D -t "$pkgdir"/usr/share/icons/hicolor/192x192/apps -m 644 nblood.png
     echo "Place your game files in ~/.config/nblood"
 }
