@@ -13,6 +13,9 @@ ExecStart=/usr/bin/node /usr/share/webapps/zero-ui/backend/bin/www
 ExecReload=/bin/kill -HUP $MAINPID
 PrivateTmp=true
 ProtectHome=true
+ReadWritePaths=/usr/share/webapps/zero-ui
+ReadOnlyPaths=/var/lib/zerotier-one
+ProtectSystem=strict
 
 [Install]
 WantedBy=multi-user.target
