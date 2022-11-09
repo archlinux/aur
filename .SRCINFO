@@ -5,11 +5,10 @@ pkgbase = encircle
 	url = https://github.com/bakkeby/encircle
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = make
 	depends = libxinerama
 	depends = libxi
-	source = git+https://github.com/bakkeby/encircle.git
+	source = encircle-1.0.tar.gz::https://github.com/bakkeby/encircle/archive/refs/tags/1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = encircle
