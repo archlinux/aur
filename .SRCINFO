@@ -1,5 +1,5 @@
 pkgbase = haveno
-	pkgdesc = Decentralized P2P exchange built on Monero and Tor.
+	pkgdesc = Decentralised P2P exchange built on Monero and Tor.
 	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/haveno-dex/haveno
