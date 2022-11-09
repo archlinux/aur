@@ -17,8 +17,6 @@ sha256sums=('e4abb4ccd1ce2e006d7ae0aa416c187384c9acf524dfbf8b1a7a07dfde9efa59')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # mem leak test disabled
-  # https://github.com/libstorage/libstoragemgmt/issues/467
   autoreconf -fvi
   PYTHON="/usr/bin/python" ./configure \
     --prefix=/usr \
@@ -30,7 +28,6 @@ prepare() {
     --datarootdir=/usr/share \
     --datadir=/usr/share \
     --with-python3
-    #--without-mem-leak-test
 }
 
 build() {
