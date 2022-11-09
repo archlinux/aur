@@ -1,7 +1,7 @@
 # Maintainer: Max Shaughnessy <max@mshaugh.com>
 
 pkgname=dnscontrol-bin
-pkgver=3.22.0
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (binary release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/StackExchange/dnscontrol/releases/download/v${pkgver}/dnscontrol_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('c2f53595338eb8810d866fbe93dc15ccecc8858314064a7bc7684bb1c3845488')
+sha256sums=('1b0e5876a3dea4d3b27c5a2579769f1572a7bc7f50fc4a6e4d5430c5a5522353')
 
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
