@@ -44,7 +44,7 @@ check() {
   for _name in {downsampler_{mono,stereo},granulator_{mono,stereo}}; do
     lv2lint -Mpack \
             -I "build/${pkgname//-/.}" \
-            "http://github.com/blablack/deteriorate-lv2/${_name}" \
+            "https://github.com/blablack/deteriorate-lv2/${_name}" \
             || echo "Known to fail: https://github.com/blablack/deteriorate-lv2/issues/10"
   done
 }
