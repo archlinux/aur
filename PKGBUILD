@@ -11,8 +11,8 @@ url='https://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
 arch=('x86_64')
 depends=('glibc' 'systemd')
-source=("http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${_pkgver}.orig.tar.gz"
-	"http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${pkgver/_/-}.diff.gz"
+source=("https://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${_pkgver}.orig.tar.gz"
+	"https://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${pkgver/_/-}.diff.gz"
 	'build.patch'
 	'gcc-4.7.patch')
 md5sums=('64b9c1b87b125fc348e892e24625524a'
