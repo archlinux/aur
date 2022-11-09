@@ -4,13 +4,13 @@
 _pkgname=ripme
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Downloads albums in bulk"
 arch=('any')
-url="https://github.com/RipMeApp/ripme"
+url="https://github.com/ripmeapp2/ripme"
 license=('MIT')
 depends=('java-runtime')
-makedepends=('git' 'maven' 'jq')
+makedepends=('git')
 provides=('ripme')
 conflicts=('ripme')
 source=("git+https://github.com/ripmeapp2/ripme.git")
@@ -23,8 +23,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  mvn clean compile assembly:single
-  cat << EOF > ripme.sh
+  ./gradlew clean build
+  cat <<EOF >ripme.sh
 #!/bin/sh
 exec java -jar /usr/share/java/ripme.jar "\$@"
 EOF
@@ -32,7 +32,7 @@ EOF
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "target/ripme-$(jq -r .latestVersion < ripme.json)-jar-with-dependencies.jar" \
+  install -Dm644 "build/libs/ripme-$(git describe --tags --exclude latest-main | sed -E 's/-g([a-f0-9])/-\1/g')-makepkg.jar" \
     "$pkgdir/usr/share/java/ripme.jar"
   install -Dm755 ripme.sh "$pkgdir/usr/bin/ripme"
 }
