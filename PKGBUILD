@@ -6,7 +6,7 @@ pkgver=latest
 pkgrel=1
 pkgdesc="RealLive clone for Linux and OSX. Git version."
 arch=('x86_64')
-url="http://www.rlvm.net/"
+url="https://github.com/eglaysher/rlvm"
 license=('GPL')
 depends=('boost-libs>=1.46' 'glew' 'libmad' 'libogg' 'libvorbis' 'libpng'
          'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk2')
