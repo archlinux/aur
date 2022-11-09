@@ -9,7 +9,6 @@ pkgbase = dl-librescore
 	depends = bash
 	depends = nodejs
 	noextract = dl-librescore-v0.34.26.tgz
-	options = !strip
 	source = dl-librescore-v0.34.26.tgz::https://registry.npmjs.org/dl-librescore/-/dl-librescore-0.34.26.tgz
 	sha512sums = 729c40474b81ba4b1997f433a5cf333a118bb27aa8be9593e08c076d5df3f8fe8dea4ce6fc619c82c115ed241744dec59fe99b5a0f2abe0b49b51bb82d07b029
 
