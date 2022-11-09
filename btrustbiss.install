@@ -36,6 +36,7 @@ set -e
 case "$1" in
     remove|upgrade|deconfigure)
 xdg-desktop-menu uninstall /opt/btrustbiss/lib/btrustbiss-BISS.desktop
+sudo rm /etc/xdg/autostart/btrustbiss-BISS.desktop
     ;;
     failed-upgrade)
     ;;
@@ -60,5 +61,3 @@ esac
 exit 0
 systemctl disable --now pcscd
 }
-
-
