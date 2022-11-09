@@ -2,7 +2,7 @@
 # Contributor: Lucas dos Santos Abreu <lucas.s.abreu@gmail.com>
 
 pkgname=clockify-cli-bin
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 license=('Apache')
 pkgdesc="A simple cli to manage your time entries on Clockify from terminal"
@@ -16,9 +16,9 @@ source_i686=("$pkgname-v$pkgver.tar.gz::https://github.com/lucassabreu/clockify-
 source_x86_64=("$pkgname-v$pkgver.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v$pkgver/clockify-cli_${pkgver}_Linux_x86_64.tar.gz")
 source=("https://raw.githubusercontent.com/lucassabreu/clockify-cli/main/README.md")
 
-sha256sums_aarch64=('fd651f45b4478bcaa87d82c81c6dade3343ae5bbe244d7c8571a2a9fb41b73e5')
-sha256sums_i686=('1750c986e2d6ea0be33218e18b5f40ad10862f85b83b850b40862b61925eef45')
-sha256sums_x86_64=('c6ca9ade7ed7ead9f7c69f67b7508ce2b0a25a54e94c4be9de87bde94518c2ce')
+sha256sums_aarch64=('afdf01472c49c0a7856844c39df4b8b14549b92a166f458a8cb750c432bbdca1')
+sha256sums_i686=('b2070d5d1920b976ce44289d24af9dab9fcda553e55c56ecf93fa4a1b30d0233')
+sha256sums_x86_64=('f1e7ba2933d29e975924becf7ce3647ebeb0baae0212d52e01bd638dd43ec657')
 sha256sums=(SKIP)
 
 package() {
