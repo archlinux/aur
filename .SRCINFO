@@ -1,0 +1,16 @@
+pkgbase = sddm-swish
+	pkgdesc = A modified login theme for SDDM Display Manager from Eliver Lara.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/icaho/Swish
+	arch = any
+	license = GPL3
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = sddm
+	depends = plasma-framework
+	source = sddm-swish.tar.gz::https://github.com/icaho/Swish/archive/refs/tags/0.2.tar.gz
+	sha256sums = 0f7493e6c9d9f0f0c0e96b63053d8d9dfc22b6ca113de86a8be142642fab1df3
+
+pkgname = sddm-swish
