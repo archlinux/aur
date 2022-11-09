@@ -1,6 +1,6 @@
 pkgbase = etcher-git
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
-	pkgver = 1.7.9.r0.g5945ab1f
+	pkgver = 1.9.0.r0.gc6b0178a
 	pkgrel = 1
 	url = https://etcher.io/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = etcher-git
 	makedepends = git
 	makedepends = jq
 	makedepends = patch
-	makedepends = nodejs<17
+	makedepends = nodejs-lts-fermium
 	depends = electron12
 	depends = gtk3
 	depends = libxtst
@@ -24,7 +24,7 @@ pkgbase = etcher-git
 	depends = polkit
 	depends = libusb
 	optdepends = libnotify: for notifications
-	provides = etcher
+	provides = etcher=1.9.0.r0.gc6b0178a
 	options = !strip
 	source = etcher::git+https://github.com/balena-io/etcher.git
 	source = etcher-scripts::git+https://github.com/balena-io/scripts.git
