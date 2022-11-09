@@ -6,8 +6,8 @@
 _jdkname=liberica-jdk-11-full
 pkgname="${_jdkname}-bin"
 _java_ver=11
-pkgver=11.0.17.u1
-_pkgver=11.0.17+1
+pkgver=11.0.17.u7
+_pkgver=11.0.17+7
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
