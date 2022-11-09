@@ -1,21 +1,22 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-pkgname=ripme-bin
-pkgver=1.7.95
-pkgrel=2
+pkgname="ripme-bin"
+pkgver=2.1.3
+_pkgver="2.1.2-23-e5438e85"
+pkgrel=1
 pkgdesc="Downloads albums in bulk"
 arch=('any')
-url="https://github.com/RipMeApp/ripme"
+url="https://github.com/ripmeapp2/ripme"
 license=('MIT')
 depends=('java-runtime')
 provides=('ripme')
 conflicts=('ripme')
-source=("ripme-$pkgver.jar::https://github.com/RipMeApp/ripme/releases/download/$pkgver/ripme.jar")
-sha256sums=('008201e406f401b27248277a4188f26203bb9da0170872de900125f8a6c8b558')
+source=("https://github.com/ripmeapp2/ripme/releases/download/$pkgver/ripme-$_pkgver.jar")
+sha256sums=('a2309ba7ec0ffe2abca4932bd1b291cf88d0e495c233b888aa8f42c459da2ee0')
 
 package() {
   cd "$srcdir"
-  install -Dm644 "ripme-$pkgver.jar" "$pkgdir/usr/share/java/ripme.jar"
-  cat << EOF | install -Dm755 /dev/stdin "$pkgdir/usr/bin/ripme"
+  install -Dm644 "ripme-$_pkgver.jar" "$pkgdir/usr/share/java/ripme.jar"
+  cat <<EOF | install -Dm755 /dev/stdin "$pkgdir/usr/bin/ripme"
 #!/bin/sh
 exec java -jar /usr/share/java/ripme.jar "\$@"
 EOF
