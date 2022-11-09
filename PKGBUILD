@@ -4,7 +4,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -21,12 +21,12 @@ replaces=(slic3r-prusa3d)
 _wxcommit=489f6118256853cf5b299d595868641938566cdb
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
         https://github.com/prusa3d/wxWidgets/archive/${_wxcommit}/wxWidgets-${_wxcommit}.tar.gz
-        ${pkgname}-fix-lcereal-p1.patch::${url}/commit/0ffcfd8393457fd035576436752267c9a1e6bbcc.patch
-        ${pkgname}-fix-lcereal-p2.patch::${url}/commit/cc788ebb643b6d4048f3550235ac3e9d3697ada0.patch
-        ${pkgname}-boost-1.79-p1.patch::${url}/commit/408e56f0390f20aaf793e0aa0c70c4d9544401d4.patch
-        ${pkgname}-boost-1.79-p2.patch::${url}/commit/926ae0471800abd1e5335e251a5934570eb8f6ff.patch
-        ${pkgname}-boost-1.79-p3.patch::${url}/commit/436a454b2e5dc823c6a878b836f82f56922e8834.patch
-        ${pkgname}-uniqueptr.patch::${url}/commit/4b686af12db49500205ca15038fb7d651ccc4295.patch
+        ${pkgname}-fix-lcereal-p1.patch
+        ${pkgname}-fix-lcereal-p2.patch
+        ${pkgname}-boost-1.79-p1.patch
+        ${pkgname}-boost-1.79-p2.patch
+        ${pkgname}-boost-1.79-p3.patch
+        ${pkgname}-uniqueptr.patch
         use-system-catch2.patch)
 sha256sums=('dbbf3e10c812d1dc7bae4bd6879e60f864d763b2738b099dd34b9636d0e5eb6a'
             'b4f0f6aea13b779e87c227dd7a062a6c2af4cad2f4e92b1272e43e2d45eedf51'
