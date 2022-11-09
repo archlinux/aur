@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 107.0.5304.87
+	pkgver = 107.0.5304.110
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -52,11 +52,11 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=107.0.5304.87
+	provides = chromium=107.0.5304.110
 	conflicts = chromium
 	options = debug
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-107.0.5304.87.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-107.0.5304.110.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-107-patchset-1/chromium-107-patchset-1.tar.xz
 	source = unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
@@ -66,7 +66,7 @@ pkgbase = chromium-no-extras
 	source = REVERT-roll-src-third_party-ffmpeg-m106.patch
 	source = angle-wayland-include-protocol.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 6c0e00c186e22a1be29177ea410ba40ff0bf65f3ded67a345eb5b17f76c93c59
+	sha256sums = d33548074a62ee63b3b790fc7cfdf5a1935cc43f1b05306b89a89e489696fecc
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4
 	sha256sums = b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00
