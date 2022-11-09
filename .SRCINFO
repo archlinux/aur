@@ -1,6 +1,6 @@
 pkgbase = opensuperclone-git
 	pkgdesc = Fork of HDDSuperClone
-	pkgver = r26.f8ee02f
+	pkgver = r101.33bd811
 	pkgrel = 1
 	url = https://github.com/ISpillMyDrink/OpenSuperClone
 	arch = x86_64
@@ -11,10 +11,6 @@ pkgbase = opensuperclone-git
 	depends = libusb-compat
 	optdepends = linux-headers: Direct AHCI kernel driver
 	source = git+https://github.com/ISpillMyDrink/OpenSuperClone.git
-	source = fix-paths.patch
-	source = gtk3-build.patch
 	sha512sums = SKIP
-	sha512sums = 6d5aa44b62b24936c1370db08c293389c75f731f21af3c9139a522441a046ad0aa9c6728e4224fdc7ce273c6a19f16d1ea1d813ffbc6003da189e7149e2fe14c
-	sha512sums = 5bdf87cbe58cd930aec94833612e6cde8249c74fe9457028fe4c5fb88375a98c852930654bb473d8441f762b15e69f0b2b1155df51fac06a20250c9f3a1fc2ae
 
 pkgname = opensuperclone-git
