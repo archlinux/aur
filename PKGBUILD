@@ -124,11 +124,12 @@ prepare()
 
   # apply patches
 
-  #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
+  #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 
+  #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
   #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
 
-  # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7
+  # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7 - is this still a problem - re-test !!!
   #mv wxcrafter wxcrafter.disable
 }
 

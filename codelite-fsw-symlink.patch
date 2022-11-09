@@ -1,0 +1,101 @@
+diff --git CodeLite/clFilesCollector.cpp CodeLite/clFilesCollector.cpp
+index 6bbdc24c5..462fcdc13 100644
+--- CodeLite/clFilesCollector.cpp
++++ CodeLite/clFilesCollector.cpp
+@@ -9,6 +9,12 @@
+ #include <wx/filename.h>
+ #include <wx/tokenzr.h>
+ 
++
++static wxString RealPath(const wxString& fullpath)
++{
++    return fullpath;
++}
++
+ clFilesScanner::clFilesScanner() {}
+ 
+ clFilesScanner::~clFilesScanner() {}
+@@ -102,12 +108,12 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, std::vector<wxString>& f
+ #if defined(__FreeBSD__)
+                     ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(FileUtils::RealPath(fullpath)))
+ #else
+-                    (excludeFolders.count(FileUtils::RealPath(fullpath))
++                    (excludeFolders.count(RealPath(fullpath))
+ #endif
+                      || IsRelPathContainedInSpec(rootFolder, fullpath, excludeFolders)));
+             if(isDirectory && !isExcludeDir) {
+                 // Traverse into this folder
+-                wxString realPath = FileUtils::RealPath(fullpath);
++                wxString realPath = RealPath(fullpath);
+                 if(Visited.insert(realPath).second) {
+                     Q.push(fullpath);
+                 }
+@@ -138,8 +144,8 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
+     std::queue<wxString> Q;
+     std::unordered_set<wxString> Visited;
+ 
+-    Q.push(FileUtils::RealPath(rootFolder));
+-    Visited.insert(FileUtils::RealPath(rootFolder));
++    Q.push(RealPath(rootFolder));
++    Visited.insert(RealPath(rootFolder));
+ 
+     size_t nCount = 0;
+     while(!Q.empty()) {
+@@ -163,7 +169,7 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
+             if(isDirectory /* a folder */ &&
+                !FileUtils::WildMatch(excludeFoldersSpecArr, filename) /* does not match the exclude folder spec */) {
+                 // Traverse into this folder
+-                wxString real_path = FileUtils::RealPath(fullpath);
++                wxString real_path = RealPath(fullpath);
+                 if(Visited.count(real_path) == 0) {
+                     Visited.insert(real_path);
+                     Q.push(fullpath);
+@@ -244,8 +250,8 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
+     std::vector<wxString> Q;
+     std::unordered_set<wxString> Visited;
+ 
+-    Q.push_back(FileUtils::RealPath(rootFolder));
+-    Visited.insert(FileUtils::RealPath(rootFolder));
++    Q.push_back(RealPath(rootFolder));
++    Visited.insert(RealPath(rootFolder));
+ 
+     while(!Q.empty()) {
+         wxString dirpath = Q.front();
+@@ -284,7 +290,7 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
+ 
+                 if(on_folder_cb(fullpath)) {
+                     // Traverse into this folder
+-                    wxString real_path = FileUtils::RealPath(fullpath);
++                    wxString real_path = RealPath(fullpath);
+                     if(Visited.insert(real_path).second) {
+                         Q.push_back(fullpath);
+                     }
+@@ -298,4 +304,4 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
+         // notify about this batch of files
+         on_file_cb(files);
+     }
+-}
+\ No newline at end of file
++}
+diff --git Plugin/globals.cpp Plugin/globals.cpp
+index 68e87c0b1..2800d4b44 100644
+--- Plugin/globals.cpp
++++ Plugin/globals.cpp
+@@ -1220,7 +1220,7 @@ wxFileName wxReadLink(const wxFileName& filename)
+     if(wxIsFileSymlink(filename)) {
+ #if defined(__WXGTK__)
+         // Use 'realpath' on Linux, otherwise this breaks on relative symlinks, and (untested) on symlinks-to-symlinks
+-        return wxFileName(CLRealPath(filename.GetFullPath()));
++        return wxFileName(FileUtils::RealPath(filename.GetFullPath()));
+ 
+ #else  // OSX
+         wxFileName realFileName;
+@@ -1243,7 +1243,7 @@ wxFileName wxReadLink(const wxFileName& filename)
+ wxString CLRealPath(const wxString& filepath) // This is readlink on steroids: it also makes-absolute, and dereferences
+                                               // any symlinked dirs in the path
+ {
+-    return FileUtils::RealPath(filepath);
++    return filepath;
+ }
+ 
+ int wxStringToInt(const wxString& str, int defval, int minval, int maxval)
