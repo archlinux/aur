@@ -1,6 +1,6 @@
 pkgbase = ustreamer
 	pkgdesc = Lightweight and fast MJPEG-HTTP streamer
-	pkgver = 5.20
+	pkgver = 5.31
 	pkgrel = 1
 	url = https://github.com/pikvm/ustreamer
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = ustreamer
 	depends = janus-gateway
 	depends = alsa-lib
 	depends = opus
-	source = ustreamer::git+https://github.com/pikvm/ustreamer#commit=v5.20
+	source = ustreamer::git+https://github.com/pikvm/ustreamer#commit=v5.31
 	md5sums = SKIP
 
 pkgname = ustreamer
