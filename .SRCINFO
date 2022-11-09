@@ -1,7 +1,7 @@
 pkgbase = gnupg23
 	pkgdesc = Complete and free implementation of the OpenPGP standard
-	pkgver = 2.3.7
-	pkgrel = 1
+	pkgver = 2.3.8
+	pkgrel = 0
 	url = https://www.gnupg.org/
 	install = gnupg23.install
 	arch = x86_64
@@ -26,21 +26,19 @@ pkgbase = gnupg23
 	optdepends = libldap: gpg2keys_ldap
 	optdepends = libusb-compat: scdaemon
 	optdepends = pcsclite: scdaemon
-	provides = gnupg=2.3.7
+	provides = gnupg=2.3.8
 	conflicts = gnupg
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.7.tar.bz2
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.7.tar.bz2.sig
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.8.tar.bz2
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.8.tar.bz2.sig
 	source = drop-import-clean.patch
 	source = avoid-beta-warning.patch
-	source = yubikey.patch
 	validpgpkeys = 5B80C5754298F0CB55D8ED6ABCEF7E294B092E28
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
 	validpgpkeys = 02F38DFF731FF97CB039A1DA549E695E905BA208
-	sha256sums = ee163a5fb9ec99ffc1b18e65faef8d086800c5713d15a672ab57d3799da83669
+	sha256sums = 540b7a40e57da261fb10ef521a282e0021532a80fd023e75fb71757e8a4969ed
 	sha256sums = SKIP
 	sha256sums = 2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a
 	sha256sums = 22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d
-	sha256sums = c9450b81c9108ca41b227eae86c957158419027b21f716819956c2a3184fe864
 
 pkgname = gnupg23

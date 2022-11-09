@@ -13,8 +13,8 @@
 # Contributor: @holos
 
 pkgname=gnupg23
-pkgver=2.3.7
-pkgrel=1
+pkgver=2.3.8
+pkgrel=0
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
 license=(GPL)
@@ -36,19 +36,18 @@ validpgpkeys=(
 source=("https://gnupg.org/ftp/gcrypt/${pkgname%23}/${pkgname%23}-${pkgver}.tar.bz2"{,.sig}
 	"drop-import-clean.patch"
 	"avoid-beta-warning.patch"
-        "yubikey.patch")
-sha256sums=('ee163a5fb9ec99ffc1b18e65faef8d086800c5713d15a672ab57d3799da83669'
+)
+sha256sums=('540b7a40e57da261fb10ef521a282e0021532a80fd023e75fb71757e8a4969ed'
             'SKIP'
             '2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a'
             '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
-            'c9450b81c9108ca41b227eae86c957158419027b21f716819956c2a3184fe864')
+)
 install=gnupg23.install
 
 prepare() {
   cd "${srcdir}/${pkgname%23}-${pkgver}"
   patch -p1 -i ../drop-import-clean.patch
   patch -p1 -i ../avoid-beta-warning.patch
-  patch -p1 -i ../yubikey.patch
 
   # improve reproducibility
   rm doc/gnupg.info*
