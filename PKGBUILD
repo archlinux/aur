@@ -7,7 +7,7 @@
 # Contributor: Jelle van der Waa <jellevdwaa@gmail.com>
 
 pkgname=xmind
-_pkgver=22.10.0632
+_pkgver=22.10.0920
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
@@ -17,7 +17,7 @@ license=(unknown)
 depends=(gtk3 alsa-lib libxkbfile nss)
 options=(!strip)
 source_x86_64=("https://dl3.xmind.net/Xmind-for-Linux-amd64bit-${_pkgver}.deb")
-sha256sums_x86_64=('01a48f3f760af38d7afbbff7f0832832ce4699b712bddb225160f01a545c97c9')
+sha256sums_x86_64=('8d4db4710acfee50014ebdd0b5230f206109047948ecb8ca0461508e80f2ce75')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
