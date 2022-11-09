@@ -34,6 +34,10 @@ package() {
   mv opt "$pkgdir"
   mv usr "$pkgdir"
 
+  # Cleanup specs. Remove if implemented upstream
+  find "$pkgdir/opt/Pulsar/resources/app/apm" -type d -name "spec" -exec rm -rf {} +
+  find "$pkgdir/opt/Pulsar/resources/app.asar.unpacked" -type d -name "spec" -exec rm -rf {} +
+
   # This needs removal along with asar makedepend when fixed upstream
   mkdir -p "$pkgdir/opt/Pulsar/resources/app.asar.unpacked/node_modules/github/"
   mv asar/node_modules/github/bin "$pkgdir/opt/Pulsar/resources/app.asar.unpacked/node_modules/github/bin"
