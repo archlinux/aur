@@ -2,13 +2,13 @@
 # Contributor: Fire100265 <fire100265@outlook.com>
 pkgname=timeshift-bin
 pkgver=22.06.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A system restore utility for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxmint/timeshift"
 license=('GPL3')
-depends=('cronie' 'gtk3' 'libgee' 'libnotify' 'libsoup' 'rsync' 'vte3' 'xapp'
-         'xorg-xhost')
+depends=('cronie' 'gtk3' 'libgee' 'libnotify' 'libsoup' 'rsync' 'vte3' 'which'
+         'xapp' 'xorg-xhost')
 optdepends=('btrfs-progs: BTRFS support'
             'grub-btrfs: BtrfS snapshots in grub')
 provides=("${pkgname%-bin}")

@@ -1,7 +1,7 @@
 pkgbase = timeshift-bin
 	pkgdesc = A system restore utility for Linux
 	pkgver = 22.06.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/timeshift
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = timeshift-bin
 	depends = libsoup
 	depends = rsync
 	depends = vte3
+	depends = which
 	depends = xapp
 	depends = xorg-xhost
 	optdepends = btrfs-progs: BTRFS support
