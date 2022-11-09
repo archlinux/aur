@@ -2,7 +2,7 @@
 
 pkgname=zero-ui
 pkgver=r227.076b496
-pkgrel=4
+pkgrel=5
 pkgdesc='Zerotier Controller UI'
 arch=('x86_64')
 url='https://github.com/dec0dOS/zero-ui'
@@ -14,7 +14,7 @@ source=("zero-ui"::'git+https://github.com/dec0dOS/zero-ui'
         zero-ui.conf)
 sha256sums=('SKIP'
             '2ac38719a0a7f792cfeb387f15ee3dfa6f621faf5cf7bf04f019e72165b7d2a0'
-            'e7cdf0f4959f3e582ac67ff564fe7939c584103699bcb97c499f1ae1988fde88')
+            'e0534833f2eb8ecb56c2b9bbb4c09fc315b065c0c67b298d2dc13f116ce7f57a')
 
 pkgver() {
     cd "$srcdir/zero-ui"

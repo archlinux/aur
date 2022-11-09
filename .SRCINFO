@@ -12,7 +12,7 @@ pkgbase = zero-ui
 	source = zero-ui.service
 	source = zero-ui.conf
 	sha256sums = SKIP
-	sha256sums = 6484332f98a15a24c186839e68de3182ba119169ab789fcfcac0615a2de1d682
-	sha256sums = e7cdf0f4959f3e582ac67ff564fe7939c584103699bcb97c499f1ae1988fde88
+	sha256sums = 2ac38719a0a7f792cfeb387f15ee3dfa6f621faf5cf7bf04f019e72165b7d2a0
+	sha256sums = e0534833f2eb8ecb56c2b9bbb4c09fc315b065c0c67b298d2dc13f116ce7f57a
 
 pkgname = zero-ui
