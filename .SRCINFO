@@ -1,7 +1,7 @@
 pkgbase = grive
 	pkgdesc = An open source Linux client for Google Drive with support for the new Drive REST API and partial sync
-	pkgver = 0.5.1
-	pkgrel = 4
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/vitalif/grive2
 	arch = i686
 	arch = x86_64
@@ -18,12 +18,10 @@ pkgbase = grive
 	optdepends = inotify-tools: scheduled syncs and syncs on file change events
 	optdepends = cppunit: unit tests
 	optdepends = binutils: backtrace and libiberty
-	source = grive-0.5.1.tar.gz::https://github.com/vitalif/grive2/archive/v0.5.1.tar.gz
-	source = binutils_compilation.patch::https://github.com/vitalif/grive2/commit/b4d6ac055f8f16ac735a70036243bc4ea2334039.patch
+	source = grive-0.5.3.tar.gz::https://github.com/vitalif/grive2/archive/v0.5.3.tar.gz
 	source = syncer_compilation.patch::https://patch-diff.githubusercontent.com/raw/vitalif/grive2/pull/363.patch
 	source = fgrep_compilation.patch::https://patch-diff.githubusercontent.com/raw/vitalif/grive2/pull/371.patch
-	sha512sums = 609837fc93ad78d143dcb4d1f558743d413c887fec2e9aaac81edd58549b812db859aab5ce7f664f06564779cff4bae32d43529e47fcc36640f1a9b52c5b5888
-	sha512sums = 61b4b642c3f290bf3c4dcc9c1eeccc3aab4cd0802fba0971dc2475152967856b16ee8194038d93be8060318c8ee0b242705ceae3412cc1053ad39a95ce0e9795
+	sha512sums = 9185401500edbe4c45a1eea02983d747c022739aea0f09ce1518a43ae63c0c3e7f352b17f31d5510ac2de16e02e7dbbead6888812c04ee546c5ae39936d4a974
 	sha512sums = 9c4d73105309bb25e03d692313c46c5281b8b0b1f1f3f4fb7bfdd5d167d642e966203024d675d9139ca92de72a2d796819f04e8940da9c8bbb746eb8b5ed615f
 	sha512sums = e2829bb1e046e1f6dd529f54423cd952d95d937f2ae34b4fce05b42dd37aeed61ec128b73a81235c10c012cd0cdc395c03409fd99daedf8e47270a7c6d1508d6
 
