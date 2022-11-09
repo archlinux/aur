@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Tyler Murphy <tylermurphy534@gmail.com>
 pkgname=crab
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A rusty permission authentication system"
 arch=('x86_64' 'i686')
