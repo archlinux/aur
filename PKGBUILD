@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=2.2.34
-pkgrel=2
+pkgver=2.2.35
+pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
@@ -27,20 +27,15 @@ optdepends=(
     'xterm: Default terminal emulator for CLI management of virtual instances'
     'wireshark-qt: Live packet capture')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
-        'gns3.desktop')
-sha256sums=('bf66313a4808fdb1cd9b06c72d34fd9fc4bcf5abe990dfd8de70d8128a2c26dc'
-            '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
+        'gns3.desktop'
+        'fix_requirements_for_Arch.diff')
+sha256sums=('5dee30a6be10a4463d16c3cec516bf81717fc6f37f4f53386347d98de9a1f43b'
+            '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166'
+            '8731b2b81ba742e0341347b3b339e3dc446af5d32ae9dc3cc7b42811445656dd')
 
 prepare() {
-    cd "$pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
-    sed -i \
-        -e 's|^jsonschema==3\.2\.0|jsonschema>=3.2.0|' \
-        -e 's|^sentry-sdk==1\.9\.5$|sentry-sdk>=1.9.5|' \
-        -e 's|^psutil==5\.9\.1$|psutil>=5.9.1|' \
-        -e 's|^distro==1\.7\.0$|distro>=1.7.0|' \
-        -e 's|^setuptools==60\.6\.0|setuptools>=60.6.0|' \
-        requirements.txt
+    patch --strip=1 -i fix_requirements_for_Arch.diff
 }
 
 build() {
