@@ -3,7 +3,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -16,10 +16,19 @@ checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('python-pygments: syntax highlighting'
             'python-send2trash: enables "Send to Trash" functionality.'
             'tcl: to use the built-in ssh-askpass handler')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
+        'https://github.com/git-cola/git-cola/commit/8f0f22e2adc7dfb09a75879fab9bb5404d33d561.patch')
 sha256sums=('b5692841002895bfb2a42be5c8352dbeb454b26f267f56e15d9888e57de0a1b4'
-            'SKIP')
+            'SKIP'
+            'a0599494f83316bcdd5af2fd7620f10079248a0a061a009e7456579732ee46ce')
 validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # https://github.com/git-cola/git-cola/issues/1263
+  patch -Np1 -i ../8f0f22e2adc7dfb09a75879fab9bb5404d33d561.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
