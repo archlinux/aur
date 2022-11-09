@@ -27,4 +27,3 @@ pkgbase = infinityctl-git
 	sha256sums = afcd273106ed6584d1e843477215badea06d8729094e37721f35adad21414597
 
 pkgname = infinityctl-git
-
