@@ -1,10 +1,11 @@
 pkgbase = wofi-pass
 	pkgdesc = A Wayland-native interface for conveniently using pass
-	pkgver = r4.a4e25fa
-	pkgrel = 1
+	pkgver = r26
+	pkgrel = 2
 	url = https://github.com/TinfoilSubmarine/wofi-pass
 	arch = any
 	license = GPL
+	makedepends = jq
 	depends = coreutils
 	depends = findutils
 	depends = grep

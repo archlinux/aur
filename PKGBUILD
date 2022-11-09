@@ -2,7 +2,7 @@
 
 pkgname=wofi-pass
 pkgver=VERSION
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
 url='https://github.com/TinfoilSubmarine/wofi-pass'
@@ -11,11 +11,12 @@ depends=('coreutils' 'findutils' 'grep' 'man-pages' 'pass' 'tcl' 'util-linux' 'w
 optdepends=(
     'wtype: type support'
     'pass-otp: OTP support')
+makedepends=('jq')
 source=(https://raw.githubusercontent.com/TinfoilSubmarine/wofi-pass/master/wofi-pass)
 sha512sums=('a7a18053772e5c675380562a7d77fb56cd20481aa817b86e762a8fef292df24f7c4169f34f6a53b6997a39db460f56be9120b3eeedf58ef4edd7d3957abc00ee')
 
 pkgver() {
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s" "$(curl https://api.github.com/repos/TinfoilSubmarine/wofi-pass/commits | jq length)"
 }
 
 package() {
