@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f6993613..ce9897d3 100644
+index a1134312..064bc623 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -284,12 +284,13 @@ endif()
+@@ -305,12 +305,13 @@ endif()
  
  option(BUILD_SHARED_LIBS "Build shared library" OFF)
  set(XXHASH_BUILD_XXHSUM OFF CACHE BOOL "Build the xxhsum binary")
@@ -20,18 +20,18 @@ index f6993613..ce9897d3 100644
  
  if(USE_VULKAN)
  	option(BUILD_EXTERNAL "Build external dependencies in /External" OFF)
-@@ -298,8 +299,8 @@ if(USE_VULKAN)
+@@ -319,8 +320,8 @@ if(USE_VULKAN)
  	option(ENABLE_GLSLANG_BINARIES "Builds glslangValidator and spirv-remap" OFF)
  	option(ENABLE_HLSL "Enables HLSL input support" OFF)
  	option(ENABLE_PCH "Enables Precompiled header" OFF)
 -	add_subdirectory(core/deps/glslang EXCLUDE_FROM_ALL)
 -	target_link_libraries(${PROJECT_NAME} PRIVATE SPIRV)
-+	find_package(glslang)
-+	target_link_libraries(${PROJECT_NAME} PRIVATE glslang::SPIRV)
++	find_package(Vulkan COMPONENTS glslang)
++	target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::glslang-spirv)
  endif()
  
  if(NOT LIBRETRO)
-@@ -340,13 +341,13 @@ if(NOT LIBRETRO)
+@@ -361,13 +362,13 @@ if(NOT LIBRETRO)
  			target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
  		endif()
  	endif()
@@ -47,7 +47,7 @@ index f6993613..ce9897d3 100644
  	find_package(Lua)
  	if(NOT APPLE AND LUA_FOUND)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_LUA)
-@@ -356,9 +357,9 @@ if(NOT LIBRETRO)
+@@ -377,9 +378,9 @@ if(NOT LIBRETRO)
  	endif()
  endif()
  
@@ -60,7 +60,7 @@ index f6993613..ce9897d3 100644
  
  if(NOT WITH_SYSTEM_ZLIB)
  	target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/core/deps/libchdr/deps/zlib-1.2.11")
-@@ -397,25 +398,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
+@@ -418,25 +419,24 @@ if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_PULSEAUDIO)
  		target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::LIBPULSE)
  	endif()
@@ -89,16 +89,16 @@ index f6993613..ce9897d3 100644
  
  if(NINTENDO_SWITCH AND USE_GLES)
  	pkg_check_modules(GLESV2 IMPORTED_TARGET glesv2)
-@@ -1068,7 +1068,7 @@ if(NOT LIBRETRO)
- endif()
+@@ -1100,7 +1100,7 @@ if(USE_VULKAN)
+ 		target_compile_definitions(${PROJECT_NAME} PUBLIC VK_USE_PLATFORM_MACOS_MVK)
+ 	endif()
  
- if(USE_VULKAN)
 -	add_subdirectory(core/deps/Vulkan-Headers)
-+	add_subdirectory(core/deps/Vulkan-Headers EXCLUDE_FROM_ALL)
++	find_package(Vulkan)
  	target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Headers)
  
  	add_library(VulkanMemoryAllocator INTERFACE)
-@@ -1291,7 +1291,7 @@ if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64.*|AARCH64.*|arm64.*)" OR CMAKE_OSX_
+@@ -1306,7 +1306,7 @@ if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64.*|AARCH64.*|arm64.*)" OR CMAKE_OSX_
  	set(KNOWN_ARCHITECTURE_DETECTED ON)
  endif()
  if(CMAKE_SYSTEM_PROCESSOR MATCHES "i686.*|i386.*|x86.*|amd64.*|x86_64.*|AMD64.*" OR CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")

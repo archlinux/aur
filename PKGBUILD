@@ -3,23 +3,24 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.0.r75.gc15f446f
+pkgver=2.0.r77.g993b705d
 pkgrel=1
 pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/flycast"
 license=('GPL2')
 groups=('libretro')
-depends=('libretro-core-info')
+depends=('glslang>=11.11' 'libretro-core-info')
 makedepends=(
 	'cmake'
 	'git'
 	'glm'
-	'glslang>=11.11'
 	'libchdr'
 	'libgl'
 	'libzip'
 	'miniupnpc'
+	'vulkan-headers'
+	'vulkan-icd-loader'
 	'xbyak'
 	'xxhash'
 	'zlib'
@@ -28,15 +29,13 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_reponame::git+$url.git"
-	'Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 	'VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
 	'unbundle-libs.patch'
 )
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'SKIP'
-	'667b64dab77b80d6091028d28b1c13e1e8f70d352d7d7f4fecb7f54a5db604f741a85d1e2e26ddef6be4e401a4d33209b7d919521452d81b169bf268759e75c2'
+	'46548c4be0e6bdebaece4b3484fd6d05015a7cb07cef5054d25fe8df95ef1855eceea39ec3becd13e64e4753c7badcfb18a1b1f5eeedbb720f3c38c1cb0dc996'
 )
 
 pkgver() {
@@ -46,7 +45,6 @@ pkgver() {
 
 prepare() {
 	cd $_reponame
-	git config submodule.core/deps/Vulkan-Headers.url ../Vulkan-Headers
 	git config submodule.core/deps/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../unbundle-libs.patch
