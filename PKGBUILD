@@ -10,7 +10,7 @@ url="https://www.b-trust.org"
 license=('GPL')
 source=("$url/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar")
 sha256sums=('ef062e61b0c41d0238ca98c415c1b44122a8f3bf4200bf6f7a94621f17d3929b')
-depends=('fakeroot''pcsclite''glibc''gcc-libs''xdg-utils''zlib')
+depends=('fakeroot' 'pcsclite' 'glibc' 'gcc-libs' 'xdg-utils' 'zlib')
 options=(!strip !emptydirs !makeflags)
 install=$pkgname.install
 
