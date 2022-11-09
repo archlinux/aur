@@ -1,0 +1,13 @@
+pkgbase = zsh-nix-shell
+	pkgdesc = zsh plugin that lets you use zsh in nix-shell shells
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/chisui/zsh-nix-shell
+	arch = any
+	license = BSD
+	depends = zsh
+	conflicts = zsh-nix-shell-git
+	source = zsh-nix-shell-0.5.0.tar.gz::https://github.com/chisui/zsh-nix-shell/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = ea931422e302c5e54063c2d77c882d32c6e1bc8ea58031652ba55cfd91c5fbb5
+
+pkgname = zsh-nix-shell
