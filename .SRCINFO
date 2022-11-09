@@ -1,5 +1,5 @@
 pkgbase = augustus
-	pkgdesc = A eucaryotic gene prediction program
+	pkgdesc = A eukaryotic gene prediction program
 	pkgver = 3.5.0
 	pkgrel = 1
 	url = http://bioinf.uni-greifswald.de/augustus/
