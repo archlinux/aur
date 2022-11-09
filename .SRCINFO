@@ -6,6 +6,7 @@ pkgbase = docker-compose-v1-bin
 	arch = x86_64
 	license = Apache
 	depends = docker
+	depends = libxcrypt-compat
 	provides = docker-compose
 	conflicts = docker-compose
 	options = !strip
