@@ -3,8 +3,8 @@
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
@@ -40,7 +40,7 @@ optdepends=('alsa-oss: for OSS output plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
 source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('fa4298fb3a89b3891c2f0403b2c66e20f64206101ad44f53be5208a69b33d3de3e0ced329cf090c17a1a3c4f7b28920baf5f8c964df2b6bdea6095465d0a02d9')
+sha512sums=('54ef09b723df062bf35d435c959792247121ce0b0f0eebc568347ef8725bf3cdd7eee7b9c69f6443b0a2731354d96c33e18a9a9e7d4068d4de7733d1f77d4376')
 
 export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
