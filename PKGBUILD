@@ -13,7 +13,7 @@ source=("zero-ui"::'git+https://github.com/dec0dOS/zero-ui'
         zero-ui.service
         zero-ui.conf)
 sha256sums=('SKIP'
-            '6484332f98a15a24c186839e68de3182ba119169ab789fcfcac0615a2de1d682'
+            '2ac38719a0a7f792cfeb387f15ee3dfa6f621faf5cf7bf04f019e72165b7d2a0'
             'e7cdf0f4959f3e582ac67ff564fe7939c584103699bcb97c499f1ae1988fde88')
 
 pkgver() {
