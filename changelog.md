@@ -1,3 +1,26 @@
+## GE-Proton7-41
+
+HOTFIX:
+
+- fixed issue with EasyAntiCheat folder not being renamed correctly for the Gears 5 EAC workaround -- should now work on the Steam Deck for single player campaign. I've been told coop also works but not confirmed.
+
+## GE-Proton7-40 Released
+
+HOTFIX:
+
+- fixes regression in vkd3d-proton which allows Gears 5 to run again. Still uses EAC workaround, still single-player only. (thanks Rhedox/K0bin!)
+
+## GE-Proton7-39
+
+- proton-wine updated to latest bleeding edge
+- dxvk updated to git
+- vkd3d-proton updated to git
+- overwatch 2 freeze fix added (may help other games)
+- pulled in upstream proton nvapi fixes
+- enabled gamedrive option for ESO by default
+- mono updated to 7.4.0
+- no-longer-required protonfixes removed for Sonic Adventures 2, Farcry 5 EAC, Origin (thanks Bitwolfies)
+
 ## GE-Proton7-38
 
 - Added protonfix to allow Uncharted: Legacy of Thieves collection to launch on systems with more than 16 cpu cores
