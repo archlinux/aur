@@ -2,8 +2,8 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=1.9.6
-pkgrel=2
+pkgver=1.9.8
+pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=("libindi_3rdparty")
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -12,14 +12,15 @@ arch=(i686 x86_64)
 depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr)
 makedepends=(cmake boost)
 conflicts=()
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff")
-sha256sums=("2d2f45d54231b941f896df4069df84a339efb5b9b81f2e060422f29e1c900b84" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372")
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff" "libfirmata-firmata.diff")
+sha256sums=("a222a22ca4edae1816255e3851cfdb91efff557378021a44ca05d672410fc81e" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372" "525dc01ac3b4f96ee02809806abc309ce753271632cef267495074f74808c2c2")
 
 
 prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
   patch -Np1 < ${srcdir}/celestronaux-auxproto.diff
+  patch -Np1 < ${srcdir}/libfirmata-firmata.diff
   find ./ -name CMakeLists.txt -exec sed -i -e 's|"\/lib|"${CMAKE_INSTALL_PREFIX}/lib|g' {} \;        # Allow installing outside of /lib
 }
 
