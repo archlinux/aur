@@ -1,7 +1,7 @@
 pkgbase = r-c50
 	pkgdesc = C5.0 Decision Trees and Rule-Based Models
-	pkgver = 0.1.6
-	pkgrel = 4
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=C50
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-c50
 	optdepends = r-knitr
 	optdepends = r-modeldata
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/C50_0.1.6.tar.gz
-	sha256sums = cc20c0e2656287e6ca76ea341a703c816798b212ea4658f249ec047dbbf18cb4
+	source = https://cran.r-project.org/src/contrib/C50_0.1.7.tar.gz
+	sha256sums = bea19059e9342a894e46b830a6f75c4cad5b55bb02b6eed4c127a6c3ad5de6e0
 
 pkgname = r-c50
