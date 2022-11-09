@@ -39,13 +39,13 @@ if [ -f "/usr/bin/sqlite3" ]; then
   if [ -f "/usr/bin/postgres" ]; then
     echo "Please definate \$DATABASE"
     else
-    echo "Plume will be build with sqlite" && export DATABASE="postgres"
+    echo "Plume will be build with sqlite" && export DATABASE="sqlite"
   fi
   else
   if [ -f "/usr/bin/postgres" ]; then
-    echo "Plume will be build with postgresql"
+    echo "Plume will be build with postgresql"  && export DATABASE="postgres"
     else
-    echo "Please install postgresql or sqlite" && export DATABASE="sqlite"
+    echo "Please install postgresql or sqlite"
   fi
 fi
 
