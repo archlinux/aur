@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-ovh
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="OVH DNS Authenticator plugin for Certbot"
 arch=('any')
@@ -26,9 +26,9 @@ validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               '86379B4F0AF371B50CD9E5FF3402831161D1D280'
               '20F201346BF8F3F455A73F9A780CC99432A28621'
               'F2871B4152AE13C49519111F447BF683AA3B26C3')
-sha512sums=('23fdd8034a16663f5c7b46f02e886914354dc5db014baf91adcaea77a61fae1fedb1ab3eee1405ea76cb23ef77e1b8bf184bb03ccb0f713d3cbc4cc39ebfee15'
+sha512sums=('8214b626a9c68380acf5cb2d653261bd43ba2a3969b78073e605f160deb9ae30811714192f7e91ff0dd4c4a07896ea63b50b304213a6e89ea91d2c018fa0c548'
             'SKIP')
-b2sums=('d526bfd00f3de5fcc2de68062cc9819415bef665ee178db08f173cc34bf352c679f1adcddcf0505a5dbf24f2bef94a2124d68d82d449737687419875aac9e56b'
+b2sums=('b6f580bfb22d0a9a1102067932501de872876d26cc534aac7f59dd1fadb20208b5c502d35668520a54ba7fc22be18a9334a00ee3f165b615d6b4ccb391081d40'
         'SKIP')
 
 prepare() {
