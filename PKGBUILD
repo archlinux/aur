@@ -93,7 +93,7 @@ prepare() {
 build() {
   cd "$_pkgname"
   echo -e "${_prefix}Building Ghidra"
-  gradle --parallel buildGhidra
+  gradle --parallel buildGhidra -x ip
 }
 
 package() {
