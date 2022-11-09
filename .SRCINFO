@@ -1,0 +1,15 @@
+pkgbase = schedtoold-git
+	pkgdesc = daemon to change nice values, priorities, scheduling policies of running processes
+	pkgver = r9.1c085ac
+	pkgrel = 1
+	url = https://github.com/kotarac/schedtoold
+	arch = x86_64
+	license = GPL
+	makedepends = ninja
+	depends = schedtool
+	provides = schedtoold
+	conflicts = schedtoold
+	source = schedtoold::git+https://github.com/kotarac/schedtoold.git
+	sha256sums = SKIP
+
+pkgname = schedtoold-git
