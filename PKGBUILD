@@ -8,7 +8,7 @@ pkgdesc="A daemon that checks for completed downloads and extracts them so Radar
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/davidnewhall/unpackerr"
 license=('MIT')
-depends=('go')
+makedepends=('go')
 optdepends=(
   'transmission-cli: torrent downloader (CLI and daemon)'
   'transmission-gtk: torrent downloader (GTK+)'
