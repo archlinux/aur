@@ -21,7 +21,7 @@ options=(!strip)
 package() {
 	install -Dm755 "${srcdir}/Apifox.AppImage" "${pkgdir}/opt/apifox/Apifox.AppImage"
 	install -Dm644 "${srcdir}/apifox.desktop" "${pkgdir}/usr/share/applications/apifox.desktop"
-	install -Dm644 "${srcdir}/apifox.svg" "${pkgdir}/$HOME/.local/share/icons/apifox.svg"
+	install -Dm644 "${srcdir}/apifox.svg" "${pkgdir}/usr/share/icons/apifox.svg"
 	
 	mkdir -p "${pkgdir}/usr/bin"
 	ln -sf "${pkgdir}/opt/apifox/Apifox.AppImage" "${pkgdir}/usr/bin"
