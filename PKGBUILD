@@ -19,7 +19,8 @@ depends=(gtk3 libxt mime-types dbus-glib
          libvpx libwebp libjpeg zlib icu libevent libpipewire02)
 makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools lld dump_syms wasi-sdk-git)
+             python-setuptools lld dump_syms
+             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -89,9 +90,7 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
 # wasi sdk
-ac_add_options --with-wasi-sysroot=/opt/wasi-sdk/share/wasi-sysroot
-export WASM_CC=/opt/wasi-sdk/bin/clang
-export WASM_CXX=/opt/wasi-sdk/bin/clang++
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
 ac_add_options --enable-official-branding
