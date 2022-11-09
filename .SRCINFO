@@ -1,11 +1,12 @@
 pkgbase = lite-xl-luajit-git
-	pkgdesc = A lightweight text editor written in Lua (luajit branch)
-	pkgver = 2.0.5.luajit.r10.gfb651b69
+	pkgdesc = A lightweight text editor written in Lua (luajit build)
+	pkgver = 2.1.0.r1.b87afce
 	pkgrel = 1
-	url = https://lite-xl.github.io/
+	url = https://github.com/lite-xl/lite-xl/pull/880
 	arch = x86_64
 	license = MIT
-	makedepends = meson>=0.58
+	makedepends = meson>=0.58,
+	makedepends = jq
 	depends = luajit
 	depends = sdl2
 	depends = freetype2
@@ -13,7 +14,7 @@ pkgbase = lite-xl-luajit-git
 	depends = hicolor-icon-theme
 	provides = lite-xl
 	conflicts = lite-xl
-	source = lite-xl-luajit-git::git+https://github.com/lite-xl/lite-xl#branch=master-luajit21-2.0
+	source = lite-xl-luajit-git::git+https://github.com/jgmdev/lite-xl#branch=build-luajit
 	sha256sums = SKIP
 
 pkgname = lite-xl-luajit-git
