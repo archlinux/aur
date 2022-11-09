@@ -8,10 +8,11 @@ User=root
 Group=root
 LimitNOFILE=16384
 EnvironmentFile=/etc/zero-ui.conf
+WorkingDirectory=/usr/share/webapps/zero-ui/backend
 ExecStart=/usr/bin/node /usr/share/webapps/zero-ui/backend/bin/www
 ExecReload=/bin/kill -HUP $MAINPID
 PrivateTmp=true
-PrivateHome=true
+ProtectHome=true
 
 [Install]
 WantedBy=multi-user.target

@@ -2,7 +2,7 @@
 
 pkgname=zero-ui
 pkgver=r227.076b496
-pkgrel=3
+pkgrel=4
 pkgdesc='Zerotier Controller UI'
 arch=('x86_64')
 url='https://github.com/dec0dOS/zero-ui'
