@@ -2,19 +2,19 @@
 # Former maintainer: Anton Kudryavtsev <boblobl4@gmail.com>
 
 pkgname=mbedtls-git
-pkgver=3.1.0.r31.gd1d0b41fc
+pkgver=3.2.1.r1520.g69ae1ee4f
 pkgrel=1
 pkgdesc="An open source, portable, easy to use, readable and flexible SSL library"
 arch=('i686' 'x86_64')
-url="https://tls.mbed.org/"
+url="https://www.trustedfirmware.org/projects/mbed-tls/"
 license=('apache')
 depends=('glibc')
-makedepends=('git' 'perl' 'python-jinja')
+makedepends=('git' 'perl' 'python-jinja' 'python-jsonschema')
 checkdepends=('python')
-provides=('mbedtls' 'polarssl' 'libmbedcrypto.so' 'libmbedtls.so' 'libmbedx509.so')
+provides=("mbedtls=$pkgver" 'polarssl' 'libmbedcrypto.so' 'libmbedtls.so' 'libmbedx509.so')
 conflicts=('mbedtls' 'polarssl')
 options=('staticlibs')
-source=("git+https://github.com/ARMmbed/mbedtls.git")
+source=("git+https://github.com/Mbed-TLS/mbedtls.git")
 sha256sums=('SKIP')
 
 
