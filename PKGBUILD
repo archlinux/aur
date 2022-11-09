@@ -3,11 +3,11 @@
 _name=Cirq
 pkgname=python-cirq
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits.'
 arch=(any)
 url='https://github.com/quantumlib/Cirq'
-license=('MIT')
+license=('Apache')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")

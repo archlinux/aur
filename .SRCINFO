@@ -1,10 +1,10 @@
 pkgbase = python-cirq
 	pkgdesc = A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quantumlib/Cirq
 	arch = any
-	license = MIT
+	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
