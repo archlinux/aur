@@ -2,11 +2,11 @@
 
 pkgname=qvr
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A library that makes writing Virtual Reality (VR) applications very easy'
 arch=('x86_64')
 url='https://marlam.de/qvr/'
-license=('GPL3')
+license=('MIT')
 depends=('qt6-base')
 makedepends=('cmake')
 source=(https://marlam.de/qvr/releases/$pkgname-$pkgver.tar.gz{,.sig})

@@ -1,10 +1,10 @@
 pkgbase = qvr
 	pkgdesc = A library that makes writing Virtual Reality (VR) applications very easy
 	pkgver = 4.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://marlam.de/qvr/
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	makedepends = cmake
 	depends = qt6-base
 	source = https://marlam.de/qvr/releases/qvr-4.0.1.tar.gz
