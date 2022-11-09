@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigmemory.sri
-_pkgver=0.1.3
+_pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.3
-pkgrel=4
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='A shared resource interface for Bigmemory Project packages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-synchronicity
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55403252d8bae9627476d1f553236ea5dc7aa6e54da6980526a6cdc66924e155')
+sha256sums=('3bfa6ac966ce0ea93283f5856a853d0ee5ff85aedd7a7d1ca8a93d0aa642860c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
