@@ -3,7 +3,7 @@
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 
 pkgname=mcmojave-circle-icon-theme-git
-pkgver=2020.10.11.r13.722bb49a
+pkgver=2022.07.03.r8.bb985d6c
 pkgrel=1
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops"
 arch=('any')
