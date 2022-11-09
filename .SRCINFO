@@ -1,8 +1,8 @@
 pkgbase = qvr
-	pkgdesc = 3D video player with multi-display support
+	pkgdesc = A library that makes writing Virtual Reality (VR) applications very easy
 	pkgver = 4.0.1
-	pkgrel = 1
-	url = https://bino3d.org/
+	pkgrel = 2
+	url = https://marlam.de/qvr/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
