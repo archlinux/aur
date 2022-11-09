@@ -1,7 +1,7 @@
 pkgbase = rebar3
 	pkgdesc = A sophisticated build-tool for Erlang projects that follows OTP principles.
 	pkgver = 3.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erlang/rebar3
 	arch = any
 	license = APACHE

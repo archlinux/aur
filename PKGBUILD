@@ -3,7 +3,7 @@
 
 pkgname=rebar3
 pkgver=3.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/erlang/rebar3"
@@ -22,5 +22,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm0755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
-  install -Dm0644 "priv/shell-completion/bash/rebar3" "$pkgdir/usr/share/bash-completion/completions/rebar3"
+  install -Dm0644 "apps/rebar/priv/shell-completion/bash/rebar3" "$pkgdir/usr/share/bash-completion/completions/rebar3"
 }
