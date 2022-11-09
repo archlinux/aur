@@ -1,17 +1,25 @@
 pkgbase = augustus
 	pkgdesc = A eucaryotic gene prediction program
-	pkgver = 3.3.3
+	pkgver = 3.5.0
 	pkgrel = 1
-	url = http://augustus.gobics.de/
+	url = http://bioinf.uni-greifswald.de/augustus/
 	arch = i686
 	arch = x86_64
 	license = custom:Artistic-2.0
+	depends = perl
 	depends = samtools
 	depends = htslib
 	depends = bamtools
+	depends = boost-libs
+	depends = gsl
+	depends = mysql+++
+	depends = sqlite
+	depends = python
+	depends = bamtools
+	depends = lpsolve
 	options = !strip
-	source = augustus-3.3.3.tar.gz::https://github.com/Gaius-Augustus/Augustus/archive/v3.3.3.tar.gz
-	sha256sums = 2fc5f9fd2f0c3bba2924df42ffaf55b5c130228cea18efdb3b6dfab9efa8c9f4
+	source = augustus-3.5.0.tar.gz::https://github.com/Gaius-Augustus/Augustus/archive/v3.5.0.tar.gz
+	sha256sums = ('5ed6ce6106303b800c5e91d37a250baff43b20824657b853ae04d11ad8bdd686')
 
 pkgname = augustus
 
