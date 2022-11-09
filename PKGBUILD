@@ -131,7 +131,8 @@ build()
 
     for _package_json in "${_package_json_array[@]}"; do
         if [[ "${_package_json}" != "${srcdir}"/"${_pkgname}"*/node_modules/* ]]; then
-            npm install "$(dirname "${_package_json}")"
+            cd "$(dirname "${_package_json}")" || exit 1
+            npm install --omit dev
         fi
     done
 }
