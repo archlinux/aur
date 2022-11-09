@@ -1,0 +1,15 @@
+pkgbase = python-duet
+	pkgdesc = A simple future-based async library for python.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/google/duet
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/google/duet/archive/refs/tags/v0.2.7.tar.gz
+	b2sums = 9eceec52d74dcccb8788fbac5b5da56346707bdd5dcfefd3242143e767c9441f339cd22e4a8a95b6cbac6dc61beb370b3efb982d06d62a9d1eb2618386eaa28f
+
+pkgname = python-duet
