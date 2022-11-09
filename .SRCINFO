@@ -1,6 +1,6 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 0.17.4
+	pkgver = 0.17.6
 	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = albert
 	optdepends = muparser: Calculator plugin
 	optdepends = python: Python extension
 	optdepends = virtualbox: VirtualBox plugin
-	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.17.4
+	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.17.6
 	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
 	source = mirrors/python::git+https://github.com/albertlauncher/python.git
 	source = mirrors/pybind11::git+https://github.com/pybind/pybind11.git
