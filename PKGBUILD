@@ -21,7 +21,7 @@ prepare() {
 
   local _f
   for _f in "${noextract[@]}"; do
-    local _dir="$(grep -o '[np]papi' <<< "$_f")"
+    local _dir="$(grep -o '[np]papi' <<<"$_f")"
     mkdir -p "$_dir"
     tar xzfC "$_f" "$_dir"
   done

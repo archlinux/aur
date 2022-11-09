@@ -27,4 +27,3 @@ pkgname = pepper-flash
 	pkgdesc = Adobe Flash Player PPAPI
 	depends = gcc-libs
 	optdepends = flashplugin: settings utility
-
