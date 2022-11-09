@@ -4,7 +4,7 @@
 pkgname=qemacs-git
 pkgdesc="QEmacs (Quick Emacs) is a very small editor with Emacs look and feel, syntax highlighting, UTF-8, dired mode with preview window, and many other features."
 
-pkgver=r1120.f7c1621
+pkgver=r1186.6880277
 pkgrel=1
 _gitname="qemacs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/qemacs/qemacs"
 license=('LGPL2.1')
 depends=('libpng' 'libxv')
 optdepends=('jp2a: for converting JPG images to ASCII')
-makedepends=('git' 'libxrender' 'texi2html')
+makedepends=('git' 'libxrender' 'texi2html' 'clang')
 provides=('qemacs')
 conflicts=('qemacs' 'qemacs-cvs')
 
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  ./configure --prefix=/usr --enable-x11 --enable-xv --enable-xshm --enable-xrender
+  ./configure --prefix=/usr --enable-x11 --enable-xv --enable-xshm --enable-xrender --cc=clang
   make -j1
 }
 
