@@ -1,0 +1,10 @@
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -49,6 +49,7 @@
+ 
+ tasks.withType<Jar> {
+   duplicatesStrategy = DuplicatesStrategy.INCLUDE
++  archiveVersion.set("2.1.3")
+   manifest {
+     attributes["Main-Class"] = "com.rarchives.ripme.App"
+     attributes["Implementation-Version"] =  archiveVersion
