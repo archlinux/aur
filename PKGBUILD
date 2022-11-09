@@ -2,19 +2,26 @@
 # Contributor: Jonas Nyrén <jonas.nyren*mindkiller.com>
 
 pkgname=sidplayfp
-pkgver=2.2.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Sidplay2 fork with improved filter emulation"
 arch=('i686' 'x86_64')
 url="https://github.com/libsidplayfp/sidplayfp"
 license=('GPL')
-depends=('libsidplayfp>=2.3.1')
+depends=('libsidplayfp>=2.4.0')
 reaplces=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 conflicts=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 install=${pkgname}.install
-source=("https://downloads.sourceforge.net/project/sidplay-residfp/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz" "${pkgname}.install")
-sha256sums=('2941857ea01a51430620e8841ba9a4ef9752633710a4fe495474985af42eafff'
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.install")
+
+sha256sums=('d8e74633f048e0cd194ec245dc5aa26f0fce6766c0f9a270809d26095298b4a6'
             '4064bb649615a6d8825b7dcddb9880dd766169591e2643b631ef3b6c12171a33')
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
+  autoreconf -fi
+}
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
