@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./gradlew clean build
+  ./gradlew clean build -x test
   cat <<EOF >ripme.sh
 #!/bin/sh
 exec java -jar /usr/share/java/ripme.jar "\$@"
@@ -32,7 +32,7 @@ EOF
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "build/libs/ripme-$(git describe --tags --exclude latest-main | sed -E 's/-g([a-f0-9])/-\1/g')-makepkg.jar" \
+  install -Dm644 build/libs/ripme-*.jar \
     "$pkgdir/usr/share/java/ripme.jar"
   install -Dm755 ripme.sh "$pkgdir/usr/bin/ripme"
 }
