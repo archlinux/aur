@@ -2,9 +2,9 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-pkgver=1.1_beta12
+pkgver=1.1_beta13
 _version=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz")
-sha256sums=('7e0937c553499281292f4ecdc303670fd8d405590e6bc726b47ffb3526b138a3')
+sha256sums=('c4c4393685ab80b93eea2eb1d20bb960e2d98d7d0ffa8e0201eefde8fbb986e6')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
