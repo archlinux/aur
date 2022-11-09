@@ -1,8 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-nox-poetry
-_pkgname="${pkgname#python-}"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Use Poetry inside Nox sessions'
 arch=('any')
@@ -22,7 +21,7 @@ makedepends=(
   'python-poetry-core'
 )
 #checkdepends=('python-pytest' 'python-pytest-datadir' 'python-pygments' 'python-typing_extensions')
-_commit='c79617548e67b57508543a92d22f7b80c5bf2d23'
+_commit='5772b66ebff8d5a3351a08ed402d3d31e48be5f8'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 

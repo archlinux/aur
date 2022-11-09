@@ -1,6 +1,6 @@
 pkgbase = python-nox-poetry
 	pkgdesc = Use Poetry inside Nox sessions
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/cjolowicz/nox-poetry
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-nox-poetry
 	depends = python-tomlkit
 	depends = python-packaging
 	depends = python-poetry
-	source = python-nox-poetry::git+https://github.com/cjolowicz/nox-poetry#commit=c79617548e67b57508543a92d22f7b80c5bf2d23
+	source = python-nox-poetry::git+https://github.com/cjolowicz/nox-poetry#commit=5772b66ebff8d5a3351a08ed402d3d31e48be5f8
 	b2sums = SKIP
 
 pkgname = python-nox-poetry
