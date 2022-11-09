@@ -1,8 +1,8 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
-	pkgver = 6.1rc3
-	pkgrel = 2
-	url = https://git.kernel.org/torvalds/h/v6.1-rc3
+	pkgver = 6.1rc4
+	pkgrel = 1
+	url = https://git.kernel.org/torvalds/h/v6.1-rc4
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-mainline-um5302ta
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.1-rc3
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.1-rc4
 	source = config
 	source = ALSA-hda-realtek-Add-quirk-for-ASUS-Zenbook-using-CS35L41.patch
 	source = cs35l42-hda-no-acpi-dsd-csc3551.patch
