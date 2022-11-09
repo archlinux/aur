@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=segmenter
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Perform Chromatin Segmentation Analysis in R by Calling ChromHMM'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg18.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5372daaa1ad1a0b0941b37225f3cd760dad302528f1e132749aea036a4e96de0')
+sha256sums=('acb4f3788ca611774567dc70293c78926f085ffabe246667a6f30e2bab862c16')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
