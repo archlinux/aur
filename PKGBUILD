@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./gradlew clean build
+  ./gradlew clean build -x test
   cat <<EOF >ripme.sh
 #!/bin/sh
 exec java -jar /usr/share/java/ripme.jar "\$@"
