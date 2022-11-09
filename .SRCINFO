@@ -1,6 +1,6 @@
 pkgbase = omnu-ice
 	pkgdesc = A cool, light blue/gray theme collection designed in Oomox
-	pkgver = 10_05_22
+	pkgver = 10_26_22
 	pkgrel = 2
 	url = https://www.jasong-designs.com/2022/01/01/omnu-ice-theme-collection/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = omnu-ice
 	optdepends = openbox: optional window manager theme
 	optdepends = metacity: optional window manager theme
 	optdepends = xfwm4: optional window manager theme
-	source = https://github.com/jgpws/omnu-ice/raw/main/downloads/omnu-ice-10-05-22.tar.gz
-	sha256sums = 3753d4a42eec0553a655c9736903cf56e87dbbdc06ac34db94ceca6f71899c74
+	source = https://github.com/jgpws/omnu-ice/raw/main/downloads/omnu-ice-10-26-22.tar.gz
+	sha256sums = 26e858214f6d167bca0b5b293601292910f5e69231b9df7f8ed61eb849cb5670
 
 pkgname = omnu-ice

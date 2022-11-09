@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=omnu-ice
-pkgver=10_05_22
+pkgver=10_26_22
 pkgrel=2
 pkgdesc="A cool, light blue/gray theme collection designed in Oomox"
 arch=('any')
@@ -17,5 +17,4 @@ package() {
 	install -dm755 "$pkgdir/usr/share/themes"
 	cp -R OmNu-Ice "$pkgdir/usr/share/themes"
 }
-
-sha256sums=('3753d4a42eec0553a655c9736903cf56e87dbbdc06ac34db94ceca6f71899c74')
+sha256sums=('26e858214f6d167bca0b5b293601292910f5e69231b9df7f8ed61eb849cb5670')
