@@ -56,5 +56,4 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make INSTALL_ROOT="$pkgdir" install
-	install -Dm644 daemon/harbour-amazfish.service "$pkgdir/usr/lib/systemd/system/harbour-amazfish.service"
 }
