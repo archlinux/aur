@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.34
-pkgrel=2
+pkgver=2.2.35
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
 url='https://github.com/GNS3/gns3-server'
@@ -18,6 +18,7 @@ depends=(
     'python-async_generator'
     'python-async-timeout'
     'python-distro'
+    'python-importlib_resources'
     'python-jinja'
     'python-jsonschema'
     'python-prompt_toolkit'
@@ -37,25 +38,15 @@ optdepends=(
 )
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname@.service")
-sha256sums=('8bd61a0777df7cf195b2670ab81139f3029d9b33cf329cfa612d2b2ea3def947'
-            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
+        "$pkgname@.service"
+        "fix_requirements_for_Arch.diff")
+sha256sums=('2c20ddc968a24fd8a77c272071d35304bac0706266a3f9e643658555e634c489'
+            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
+            '29274baf515265f55f6236c41e24cf0da88f99eaf5f5e2947c6dc07375f85b2c')
 
 prepare() {
-    cd "$pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
-    sed -i \
-        -e 's|^jsonschema==3\.2\.0|jsonschema>=3.2.0|' \
-        -e 's|^aiohttp==3\.8\.1|aiohttp>=3.8.1|' \
-        -e 's|^aiofiles==0\.8\.0$|aiofiles>=0.8.0|' \
-        -e 's|^Jinja2==3\.0\.3$|Jinja2>=3.0.3|' \
-        -e 's|^sentry-sdk==1\.9\.5$|sentry-sdk>=1.9.5|' \
-        -e 's|^psutil==5\.9\.1$|psutil>=5.9.1|' \
-        -e 's|^async-timeout==4\.0\.2$|async-timeout>=4.0.2|' \
-        -e 's|^distro==1\.7\.0$|distro>=1.7.0|' \
-        -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
-        -e 's|^setuptools==60\.6\.0|setuptools>=60.6.0|' \
-        requirements.txt
+    patch --strip=1 -i fix_requirements_for_Arch.diff
 }
 
 build() {
