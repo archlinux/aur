@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=omnu-ice-dark
-pkgver=10_05_22
+pkgver=11_05_22
 pkgrel=2
 pkgdesc="This Numix clone is the dark version of OmNu-Ice. It features a dark and cool color scheme."
 arch=('any')
@@ -17,5 +17,4 @@ package() {
 	install -dm755 "$pkgdir/usr/share/themes"
 	cp -R OmNu-Ice-dark "$pkgdir/usr/share/themes"
 }
-
-sha256sums=('4fe250230411d22ee1bc17710e0207914e52d2a62b39ebb487dbe8b9d9607322')
+sha256sums=('e6ac4948f4231f36045381939e89aa78b55458fe835bcc06dd3a3ef453b3e8d3')
