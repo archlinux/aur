@@ -1,6 +1,6 @@
 # Maintainer: Tyler Murphy <tylermurphy534@gmail.com>
 pkgname=crab
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A rusty permission authentication system"
 arch=('x86_64' 'i686')
