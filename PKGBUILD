@@ -35,7 +35,7 @@ check() {
   cd "$pkgname-$pkgver"
   # the plugin names don't adhere to their project name, so for lv2lint tests they have to be copied in place
   cp -av "build/${pkgname//-/.}" "build/${pkgname}"
-  LV2_PATH="${PWD}/build" lv2lint "http://github.com/blablack/midimsg-lv2/" || echo "Known to fail: https://github.com/blablack/midimsg-lv2/issues/1"
+  LV2_PATH="${PWD}/build" lv2lint "https://github.com/blablack/midimsg-lv2/" || echo "Known to fail: https://github.com/blablack/midimsg-lv2/issues/1"
   rm -rv "build/${pkgname}"
   sord_validate "${PWD}/build/${pkgname//-/.}/"*.ttl || echo "Known to fail: https://github.com/blablack/midimsg-lv2/issues/1"
 }
