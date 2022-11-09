@@ -1,7 +1,7 @@
 pkgbase = hevcesbrowser
 	pkgdesc = a tool for analyzing HEVC (h265) bitstreams
 	pkgver = 1.0.80.120121
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/virinext/hevcesbrowser
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = hevcesbrowser
 	depends = boost-libs
 	options = !emptydirs
 	source = hevcesbrowser-1.0.80.120121.tar.gz::https://github.com/virinext/hevcesbrowser/archive/refs/tags/1.0.80.120121.tar.gz
-	source = qhexview::git://github.com/virinext/QHexView.git#commit=314300a477976897ae46542a76ef31b8b05b897d
+	source = qhexview::git+https://github.com/virinext/QHexView.git#commit=314300a477976897ae46542a76ef31b8b05b897d
 	sha512sums = d3e41736319c0da710c75e54cf4079d0f26a966267bf6d7e5fc849e43c403becfd95152b0687fea2decf460677ba53913bf1c4b92bc3d6e98162bdbc80b48201
 	sha512sums = SKIP
 
 pkgname = hevcesbrowser
-

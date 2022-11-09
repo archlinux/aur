@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='hevcesbrowser'
 pkgver='1.0.80.120121'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a tool for analyzing HEVC (h265) bitstreams"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -10,7 +10,7 @@ depends=('qt5-base' 'boost-libs')
 makedepends=('cmake')
 url='https://github.com/virinext/hevcesbrowser'
 source=("hevcesbrowser-${pkgver}.tar.gz::https://github.com/virinext/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-        "qhexview::git://github.com/virinext/QHexView.git#commit=314300a477976897ae46542a76ef31b8b05b897d")
+        "qhexview::git+https://github.com/virinext/QHexView.git#commit=314300a477976897ae46542a76ef31b8b05b897d")
 sha512sums=('d3e41736319c0da710c75e54cf4079d0f26a966267bf6d7e5fc849e43c403becfd95152b0687fea2decf460677ba53913bf1c4b92bc3d6e98162bdbc80b48201'
             'SKIP')
 
