@@ -9,9 +9,9 @@ pkgver=15.0.01
 pkgrel=1
 pkgdesc="A free bitmap font with wide Unicode support (PCF, PSF and hex versions)"
 arch=('any')
-url="http://unifoundry.com/"
+url="https://unifoundry.com/"
 license=('GPL2' 'custom:OFL')
-source=("http://unifoundry.com/pub/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"{,.sig})
+source=("https://unifoundry.com/pub/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"{,.sig})
 sha256sums=('7d11a924bf3c63ea7fdf2da2b96d6d4986435bedfd1e6816c8ac2e6db47634d5'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
