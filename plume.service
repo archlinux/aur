@@ -4,10 +4,11 @@ Description=plume
 [Service]
 Type=simple
 User=plume
+WorkingDirectory=/usr/share/webapps/plume/
 ExecStart=/usr/bin/plume
-WorkingDirectory=/usr/lib/plume
 TimeoutSec=30
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+

@@ -1,23 +1,24 @@
 pkgbase = plume
 	pkgdesc = Federated blogging application
-	pkgver = 0.3.0a2
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://joinplu.me/
 	install = plume.install
 	arch = x86_64
 	license = AGPL3
-	makedepends = cargo
-	depends = cargo-web
-	depends = diesel_cli
-	depends = postgresql
-	source = plume-0.3.0a2.tar.gz::https://github.com/Plume-org/Plume/archive/0.3.0-alpha-2.tar.gz
-	source = sysuser.conf
+	makedepends = rustup
+	makedepends = wasm-pack
+	depends = openssl
+	optdepends = postgresql: postgresql support
+	optdepends = sqlite3: sqlite support
+	backup = etc/plume/config
+	source = plume-0.7.2.tar.gz::https://github.com/Plume-org/Plume/archive/refs/tags/0.7.2.tar.gz
+	source = plume.sysusers
 	source = plume.service
-	source = config
-	md5sums = 533231959873a2a7c7b416b8df0eaf0a
+	source = .env.sample
+	md5sums = 75d75d08656f707c1ea7b55ce34d8102
 	md5sums = ebfcfb05844a25ff281317af9b64f8bb
-	md5sums = c4e95f7b575ea1be0dd905e64f97eb9b
-	md5sums = 92c6867252e9276d5798c30858ed0278
+	md5sums = d7d282ac020ebf59c7c56b31b41160ef
+	md5sums = 939c960f67f2b859b48f96223bd6b74e
 
 pkgname = plume
-

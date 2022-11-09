@@ -1,8 +1,27 @@
-post_install() {
-  chown plume:plume /usr/share/webapps/plume -R
+pre_install(){
+    echo ""
+    echo "==> You must install postgresql or sqlite"
+    echo ""
 }
-
-post_upgrade() {
-  echo "Your need to upgrade database by runing ."
-  echo "sudo -su plume diesel migration run"
+post_install() {
+    echo ""
+    echo "==> Firstly, you use set up the postgresql before use it: sudo -u postgres createuser -d -P plume_user && sudo -u postgres createdb -O plume_user plume_db"
+    echo ""
+    echo "==> Secondly, edit /etc/plume/config file based on what you set"
+    echo ""
+    echo "==> Finally, use the command to init the db"
+    echo ""
+    echo "==> cd /usr/share/webapps/plume && plm migration run && plm search init"
+    echo ""
+    echo "==> plm instance new --private --domain DOMAIN --name 'PLUME_NAME' -l 'LICENSE_NAME' (if you want to open registeration, without --private)"
+    echo ""
+    echo "==> plm users new --admin (create normal user without --admin)"
+    echo ""
+    echo "==> chown -R plume:plume /usr/share/webapps/plume"
+    echo ""
+    echo "==> to start and enable the service: systemctl start plume && systemctl enable plume"
+    echo ""
+    echo "Be careful to upgrade the postgresql db"
+    echo ""
+    echo "please read for more details: https://docs.joinplu.me/ for details"
 }
