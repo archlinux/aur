@@ -1,0 +1,16 @@
+pkgbase = qvr
+	pkgdesc = 3D video player with multi-display support
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://bino3d.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt6-base
+	source = https://marlam.de/qvr/releases/qvr-4.0.1.tar.gz
+	source = https://marlam.de/qvr/releases/qvr-4.0.1.tar.gz.sig
+	validpgpkeys = 2F61B4828BBA779AECB3F32703A2A4AB1E32FD34
+	sha512sums = 9d306d013873354ec875d1433fe7648219b8e43d34dd510fc72d70b80eabae1049d155e5cf8f8a314f7aed0988bd34ce14cb266b84ff737b8e80cdbb2e5c0a52
+	sha512sums = SKIP
+
+pkgname = qvr
