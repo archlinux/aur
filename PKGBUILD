@@ -32,7 +32,7 @@ package()
 
     for binary in "${binaries[@]}"; do
         install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"/"${binary}" "${pkgdir}"/opt/"${pkgname}"/
-        ln -s /opt/"${pkgname}"/"${binary}" "${pkgdir}"/usr/bin/"${binary}"
+        ln -s /opt/"${pkgname}"/"${binary}" "${pkgdir}"/usr/bin/
     done
 
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/lib/ "${pkgdir}"/opt/"${pkgname}"/
