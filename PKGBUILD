@@ -8,7 +8,7 @@ pkgdesc="CLI tool to manage your torrent client queues. Primary focus is on remo
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/l3uddz/tqm"
 license=('GPL3')
-depends=('go')
+makedepends=('go')
 optdepends=(
   'deluge: torrent downloader'
   'qbittorrent: torrent downloader'
