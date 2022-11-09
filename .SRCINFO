@@ -1,7 +1,7 @@
 pkgbase = python-cirq
 	pkgdesc = A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/quantumlib/Cirq
 	arch = any
 	license = Apache
@@ -13,3 +13,43 @@ pkgbase = python-cirq
 	b2sums = c48a83ccd8d1add6aa87c694cc3585c3ccf18fa6def44ace89f6775c967dcda2152eb1438b131525d0271fdc86177c67544700370783c594166c105b7b3499f1
 
 pkgname = python-cirq
+	depends = python-cirq-aqt
+	depends = python-cirq-core
+	depends = python-cirq-google
+	depends = python-cirq-ionq
+	depends = python-cirq-pasqal
+	depends = python-cirq-web
+
+pkgname = python-cirq-aqt
+	depends = python
+	depends = python-requests
+
+pkgname = python-cirq-core
+	depends = python
+	depends = python-duet
+	depends = python-matplotlib
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-sortedcontainers
+	depends = python-scipy
+	depends = python-sympy
+	depends = python-typing_extensions
+	depends = python-tqdm
+
+pkgname = python-cirq-google
+	depends = python
+	depends = python-google-api-core
+	depends = python-grpcio
+	depends = python-proto-plus
+	depends = python-protobuf
+
+pkgname = python-cirq-ionq
+	depends = python
+	depends = python-requests
+
+pkgname = python-cirq-pasqal
+	depends = python
+	depends = python-requests
+
+pkgname = python-cirq-web
