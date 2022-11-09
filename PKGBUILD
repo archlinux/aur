@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
-pkgver=3.5.5
-pkgrel=2
+pkgver=3.5.24
+pkgrel=1
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
@@ -26,13 +26,12 @@ depends=(
   # "python-uuid" part of standard python
 )
 optdepends=(
-  "dbus-python: needed for notifications on desktop systems"
   "python-notify2: needed for notifications on desktop systems"
 )
 provides=()
 conflicts=()
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('958569ab13fc9127aa32597050f7bd46003aeff7c703ea324bc3a855c72bcc9b')
+sha256sums=('73d1277d93202e3ab859823c311b52cf3c4f30ac1ea8a04b10968664118557b0')
 
 package() {
   # Note: sometimes its "matrix-commander" and sometimes "matrix_commander"...
