@@ -1,8 +1,8 @@
 _pkgname=dolphin
 pkgname="${_pkgname}-tabopts"
-pkgver=22.08.2
+pkgver=22.08.3
 pkgrel=1
-pkgdesc='KDE File Manager (with tab options patch)'
+pkgdesc='KDE File Manager - with tab options patch'
 arch=(x86_64)
 url='https://apps.kde.org/dolphin/'
 license=(LGPL)
@@ -31,7 +31,7 @@ source=(
   "tab-options.patch"::"https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
 )
 sha256sums=(
-  '39f2ee237ee5e62baf05e3798d8512e01a7d40276fca03488e256c6e30543b56'
+  '971489a59cdd6b297e2142eb3315847addafbc4e3504e1609fe5e1d119cf15a3'
   '5fdc620d687ad0d8a6ca6f5e0457b7130b10da2a87a1e10bf1ef41295f8bf3a7'
 )
 
