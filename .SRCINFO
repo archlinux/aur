@@ -11,4 +11,3 @@ pkgbase = zsh-fzy-git
 	sha256sums = SKIP
 
 pkgname = zsh-fzy-git
-
