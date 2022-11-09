@@ -1,7 +1,7 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 18_beta
-	pkgrel = 5
+	pkgver = 19_beta
+	pkgrel = 1
 	url = https://github.com/OpenVPN/openvpn3-linux
 	arch = any
 	license = AGPL3
@@ -25,7 +25,7 @@ pkgbase = openvpn3
 	optdepends = mbedtls: mbed TLS version
 	optdepends = polkit>=0.105: for systemd-resolved integration
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v18_beta
+	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v19_beta
 	source = openvpn3.rule
 	source = sysusers-openvpn3.conf
 	source = tmpfiles-openvpn3.conf
