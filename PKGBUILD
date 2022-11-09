@@ -1,4 +1,5 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+
 pkgname=arrayfire
 pkgver=3.8.2
 pkgrel=5
@@ -14,7 +15,7 @@ optdepends=('cuda: Required for using CUDA backend'
             'opencl-driver: Required for using OpenCL backend'
             'ocl-icd: Required for OpenCL ICD Bindings')
 options=('!lto')
-source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2"
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2"
         'arrayfire-boost-1.76.0.patch')
 sha512sums=('ee8d7fe0406880238af51302f91cdb21879bec0732dc6f257fc522d1f4883ee7136d0ded65c9ebbc493e1795a2a175221a8ca11032ed0cf4ee2e1a555abf3a15'
             '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795')
