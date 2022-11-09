@@ -1,4 +1,5 @@
-# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Jiuyang Liu <liujiuyang1994@gmail.com>
 
 pkgname=plume
 _pkgname=Plume
@@ -32,14 +33,30 @@ prepare(){
 
 build() {
   cd $_pkgname-$pkgver
+  
+  # test the databse type
+if [ -f "/usr/bin/sqlite3" ]; then
+  if [ -f "/usr/bin/postgres" ]; then
+    echo "Please definate \$DATABASE"
+    else
+    echo "Plume will be build with sqlite" && export DATABASE="postgres"
+  fi
+  else
+  if [ -f "/usr/bin/postgres" ]; then
+    echo "Plume will be build with postgresql"
+    else
+    echo "Please install postgresql or sqlite" && export DATABASE="sqlite"
+  fi
+fi
+
   # build the font-end
   rustup target add wasm32-unknown-unknown
   #env PATH=$HOME/.cargo/bin/:$PATH wasm-pack build --target web --release plume-front
   wasm-pack build --target web --release plume-front
 
   # build the back-end
-  cargo install --no-default-features --features postgres --path .
-  cargo install --no-default-features --features postgres --path plume-cli
+  cargo install --no-default-features --features $DATABASE --path .
+  cargo install --no-default-features --features $DATABASE --path plume-cli
 
 }
 
