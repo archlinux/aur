@@ -15,15 +15,13 @@ pkgdesc="A powerful web analytics platform."
 arch=("any")
 url="https://github.com/matomo-org/${_pkgname}"
 license=("GPL3")
-depends=("alsa-lib" "at-spi2-core" "coffeescript" "gtk3" "java-runtime" "lib32-glibc" "nodejs" "nss" "perl" "php" "php-fpm" "php-gd" "python-beautifulsoup4" "python-pillow" "python-requests" "python-yaml" "rhino" "ruby" "zsh")
+depends=("alsa-lib" "at-spi2-core" "bash" "coffeescript" "gtk3" "java-runtime" "lib32-glibc" "mariadb" "nodejs" "nss" "perl" "php" "php-fpm" "php-gd" "python" "python-beautifulsoup4" "python-pillow" "python-requests" "python-yaml" "rhino" "ruby" "zsh")
 makedepends=("composer" "curl" "git" "git-lfs" "npm")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
-    "mariadb: Database"
     "nginx: HTTP server")
 provides=("${_pkgname}")
 conflicts=("matomo")
-options=("!strip") # TODO
 install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/matomo-icons.git"
@@ -119,7 +117,7 @@ prepare()
         fi
     done
 
-    curl https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz -o "${srcdir}"/DBIP-City-Lite.mmdb.gz
+    curl -o "${srcdir}"/DBIP-City-Lite.mmdb.gz https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz
     gzip -d "${srcdir}"/DBIP-City-Lite.mmdb.gz
 }
 
