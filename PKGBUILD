@@ -19,15 +19,15 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2022.02.r120.g026074d38
-pkgrel=2
+pkgver=2022.02.r121.g757189269
+pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
 conflicts=('meshlab')
 provides=('meshlab')
 license=('GPL2')
-depends=('bzip2' 'cgal' 'glew' 'glu' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c')
+depends=('bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c')
 makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir' 'openctm-tools')
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'levmar: for isoparametrization and mutualcorrs plugins'
