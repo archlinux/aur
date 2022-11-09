@@ -1,13 +1,14 @@
 pkgbase = whalebird
 	pkgdesc = An Electron based Mastodon, Pleroma and Misskey client
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whalebird.social
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
 	makedepends = tar
 	makedepends = nodejs>=16.0.0
+	makedepends = nodejs<19.0.0
 	depends = electron19>=19.0.13
 	depends = electron19<20.0.0
 	provides = whalebird
