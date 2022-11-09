@@ -5,7 +5,7 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=10.1.5.r1454.b88cf85d5
+pkgver=10.2.r108.c301dd2c8
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64')
