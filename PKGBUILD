@@ -2,7 +2,7 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=('autokey-git')
-pkgver=0.96.0.beta.8.r0.3978116
+pkgver=0.96.0.r0.fbcc72b
 pkgrel=1
 pkgdesc='A desktop automation utility for Linux and X11 - GTK & Qt frontends'
 arch=('x86_64')
@@ -49,7 +49,8 @@ optdepends=(
   'nvidia-utils'
 )
 source=(
-  'git+https://github.com/autokey/autokey.git#branch=beta'
+  'git+https://github.com/autokey/autokey.git#branch=master
+'
 )
 sha512sums=(
   'SKIP'
