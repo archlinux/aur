@@ -1,0 +1,1245 @@
+From 5b423e9aea7bc672b879359871a5c4c2b8a50e8d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ren=C3=A9=20Reucher?= <rene.reucher@batcom-it.net>
+Date: Tue, 31 May 2022 19:20:34 +0200
+Subject: [PATCH] wip: first version with support for QWebEngine instead of
+ QWebKit
+
+---
+ qmc2.pro                      |   2 +-
+ src/htmleditor/htmleditor.cpp | 178 ++++++++++++++++++++--------------
+ src/htmleditor/htmleditor.ui  |  74 +++++++-------
+ src/macros.h                  |   3 -
+ src/miniwebbrowser.cpp        | 171 +++++++++++++++++---------------
+ src/miniwebbrowser.h          |  15 ++-
+ src/options.cpp               |  19 ++--
+ src/qmc2main.cpp              |  12 ++-
+ 9 files changed, 261 insertions(+), 218 deletions(-)
+
+diff --git a/qmc2.pro b/qmc2.pro
+index 46c736d60..15eae4c44 100644
+--- a/qmc2.pro
++++ b/qmc2.pro
+@@ -1,6 +1,6 @@
+ # general project settings
+ isEmpty(TARGET):TARGET = qmc2
+-QT += core gui widgets xml xmlpatterns network sql svg testlib webkitwidgets
++QT += core gui widgets xml xmlpatterns network sql svg testlib webenginewidgets
+ win32 {
+ 	QT += winextras
+ }
+diff --git a/src/htmleditor/htmleditor.cpp b/src/htmleditor/htmleditor.cpp
+index 2dff0d3cc..deb0f747b 100644
+--- a/src/htmleditor/htmleditor.cpp
++++ b/src/htmleditor/htmleditor.cpp
+@@ -46,7 +46,7 @@
+ #include <QMessageBox>
+ #include <QColorDialog>
+ #include <QToolTip>
+-#include <QtWebKitWidgets/QWebFrame>
++#include <QWebEngineView>
+ #include <QListWidgetItem>
+ 
+ #include <algorithm> // std::sort()
+@@ -120,7 +120,6 @@ HtmlEditor::HtmlEditor(QString editorName, bool embedded, QWidget *parent) :
+ {
+ 	ui->setupUi(this);
+ 
+-	// replace the standard QWebView with the MiniWebBrowser's tweaked one
+ 	ui->verticalLayoutWYSIWYG->removeWidget(ui->webView);
+ 	delete ui->webView;
+ 	ui->webView = new BrowserWidget(ui->tabWYSIWYG, 0);
+@@ -224,6 +223,7 @@ HtmlEditor::HtmlEditor(QString editorName, bool embedded, QWidget *parent) :
+ 	connect(zoomSlider, SIGNAL(valueChanged(int)), SLOT(changeZoom(int)));
+ 	ui->standardToolBar->insertWidget(ui->actionZoomIn, zoomSlider);
+ 
++	/*
+ #if defined(QMC2_BROWSER_PLUGINS_ENABLED)
+ 	ui->webView->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+ #else
+@@ -231,6 +231,7 @@ HtmlEditor::HtmlEditor(QString editorName, bool embedded, QWidget *parent) :
+ #endif
+ 	ui->webView->page()->settings()->setAttribute(QWebSettings::ZoomTextOnly, false);
+ 	ui->webView->page()->settings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
++	*/
+ 
+ 	connect(ui->webView, SIGNAL(loadStarted()), this, SLOT(setLoadActive()));
+ 	connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(setLoadInactive()));
+@@ -260,19 +261,17 @@ HtmlEditor::HtmlEditor(QString editorName, bool embedded, QWidget *parent) :
+ 	connect(ui->actionZoomOut, SIGNAL(triggered()), SLOT(zoomOut()));
+ 	connect(ui->actionZoomIn, SIGNAL(triggered()), SLOT(zoomIn()));
+ 
+-	// these are forwarded to the internal QWebView
+-	FORWARD_ACTION(ui->actionEditUndo, QWebPage::Undo);
+-	FORWARD_ACTION(ui->actionEditRedo, QWebPage::Redo);
+-	FORWARD_ACTION(ui->actionEditCut, QWebPage::Cut);
+-	FORWARD_ACTION(ui->actionEditCopy, QWebPage::Copy);
+-	FORWARD_ACTION(ui->actionEditPaste, QWebPage::Paste);
+-	FORWARD_ACTION(ui->actionFormatBold, QWebPage::ToggleBold);
+-	FORWARD_ACTION(ui->actionFormatItalic, QWebPage::ToggleItalic);
+-	FORWARD_ACTION(ui->actionFormatUnderline, QWebPage::ToggleUnderline);
+-
+-	// Qt 4.5.0 has a bug: always returns 0 for QWebPage::SelectAll
+-	connect(ui->actionEditSelectAll, SIGNAL(triggered()), SLOT(editSelectAll()));
+-	// FIXME: still required?
++	// these are forwarded to the internal QWebEngineView
++	FORWARD_ACTION(ui->actionEditUndo, QWebEnginePage::Undo);
++	FORWARD_ACTION(ui->actionEditRedo, QWebEnginePage::Redo);
++	FORWARD_ACTION(ui->actionEditCut, QWebEnginePage::Cut);
++	FORWARD_ACTION(ui->actionEditCopy, QWebEnginePage::Copy);
++	FORWARD_ACTION(ui->actionEditPaste, QWebEnginePage::Paste);
++	/*
++	FORWARD_ACTION(ui->actionFormatBold, QWebEnginePage::ToggleBold);
++	FORWARD_ACTION(ui->actionFormatItalic, QWebEnginePage::ToggleItalic);
++	FORWARD_ACTION(ui->actionFormatUnderline, QWebEnginePage::ToggleUnderline);
++	*/
+ 
+ 	connect(ui->actionStyleParagraph, SIGNAL(triggered()), SLOT(styleParagraph()));
+ 	connect(ui->actionStyleHeading1, SIGNAL(triggered()), SLOT(styleHeading1()));
+@@ -310,27 +309,31 @@ HtmlEditor::HtmlEditor(QString editorName, bool embedded, QWidget *parent) :
+ 	connect(ui->webView->page(), SIGNAL(linkHovered(const QString &, const QString &, const QString &)), SLOT(linkHovered(const QString &, const QString &, const QString &)));
+ 
+ 	// this effectively *disables* internal link-following
+-	ui->webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
++	//ui->webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
+ 	connect(ui->webView, SIGNAL(linkClicked(QUrl)), SLOT(openLink(QUrl)));
+-	ui->webView->pageAction(QWebPage::OpenImageInNewWindow)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::DownloadImageToDisk)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::OpenFrameInNewWindow)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::OpenLinkInNewWindow)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::OpenLink)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::DownloadLinkToDisk)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::Back)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::Forward)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::Stop)->setVisible(false);
+-	ui->webView->pageAction(QWebPage::Reload)->setVisible(false);
++	//ui->webView->pageAction(QWebEnginePage::OpenImageInNewWindow)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::DownloadImageToDisk)->setVisible(false);
++	//ui->webView->pageAction(QWebEnginePage::OpenFrameInNewWindow)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::OpenLinkInNewWindow)->setVisible(false);
++	//ui->webView->pageAction(QWebEnginePage::OpenLink)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::DownloadLinkToDisk)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::Back)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::Forward)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::Stop)->setVisible(false);
++	ui->webView->pageAction(QWebEnginePage::Reload)->setVisible(false);
+ 
+ 	ui->webView->setFocus();
+-	ui->webView->page()->setContentEditable(!actionReadOnly->isChecked());
++	if ( actionReadOnly->isChecked() )
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = false");
++	else
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = true");
+ 	ui->plainTextEdit->setReadOnly(actionReadOnly->isChecked());
+ 
+ 	if ( !actionShowHTML->isChecked() )
+ 		showHtmlTab(false);
+ 
+-	connect(ui->webView->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()), this, SLOT(javaScriptWindowObjectCleared()));
++	// FIXME
++	//connect(ui->webView->page(), SIGNAL(javaScriptWindowObjectCleared()), this, SLOT(javaScriptWindowObjectCleared()));
+ 
+ 	changeZoom(qmc2Config->value(QMC2_FRONTEND_PREFIX + QString("HtmlEditor/%1/Zoom").arg(myEditorName), 100).toInt());
+ 
+@@ -399,22 +402,26 @@ void HtmlEditor::loadFinished(bool)
+ 
+ void HtmlEditor::setContentEditable(bool readonly)
+ {
+-	ui->webView->page()->setContentEditable(!readonly);
++	if ( readonly )
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = false");
++	else
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = true");
+ 	ui->plainTextEdit->setReadOnly(readonly);
+ }
+ 
+ void HtmlEditor::checkRevertStatus()
+ {
+ 	if ( !fileName.isEmpty() ) {
+-		bool wasModified;
+-		if ( loadedContent.isEmpty() )
+-			wasModified = false;
+-		else if ( ui->tabWidget->currentIndex() == 0 )
+-			wasModified = loadedContent != ui->webView->page()->mainFrame()->toHtml();
+-		else
++		bool wasModified = !loadedContent.isEmpty();
++		if ( ui->tabWidget->currentIndex() == 0 ) {
++			QString data("%1");
++			ui->webView->page()->toHtml([data](const QString &result) { data.arg(result); });
++			wasModified = loadedContent != data;
++		} else
+ 			wasModified = loadedContent != ui->plainTextEdit->toPlainText();
+-		
+-		if ( ui->webView->page()->mainFrame()->toHtml() != emptyContent && wasModified ) {
++		QString data("%1");
++		ui->webView->page()->toHtml([data](const QString &result) { data.arg(result); });
++		if ( data != emptyContent && wasModified ) {
+ 			QFile f(fileName);
+ 			ui->actionFileRevert->setVisible(f.exists());
+ 		} else
+@@ -446,13 +453,16 @@ QString &HtmlEditor::noScript(QString &data)
+ 
+ void HtmlEditor::fileNew()
+ {
+-	ui->webView->page()->setContentEditable(!actionReadOnly->isChecked());
++	if ( actionReadOnly->isChecked() )
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = false");
++	else
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = true");
+ 	ui->plainTextEdit->setReadOnly(actionReadOnly->isChecked());
+ 
+ 	if ( !isEmbeddedEditor )
+ 		setCurrentFileName(QString());
+ 
+-	// quirk in QWebView: need an initial mouse click to show the cursor
++	// quirk in QWebEngineView: need an initial mouse click to show the cursor
+ 	int mx = ui->webView->width() / 2;
+ 	int my = ui->webView->height() / 2;
+ 	QPoint center = QPoint(mx, my);
+@@ -510,11 +520,12 @@ void HtmlEditor::fileOpenInBrowser()
+ 	}
+ 	connect(webBrowser->webViewBrowser->page(), SIGNAL(windowCloseRequested()), webBrowser, SLOT(close()));
+ 	if ( ui->tabWidget->currentIndex() == 1 ) {
+-		ui->webView->page()->mainFrame()->setHtml(ui->plainTextEdit->toPlainText());
++		ui->webView->page()->setHtml(ui->plainTextEdit->toPlainText());
+ 		wysiwygDirty = false;
+ 	}
+-	QString data(ui->webView->page()->mainFrame()->toHtml());
+-	webBrowser->webViewBrowser->setHtml(noScript(data));
++	QString data("%1");
++	webBrowser->webViewBrowser->page()->toHtml([data](const QString &result) { data.arg(result); });
++	webBrowser->webViewBrowser->page()->setHtml(noScript(data));
+ 	if ( !fileName.isEmpty() && QFile(fileName).exists() ) {
+ 		webBrowser->homeUrl = QUrl::fromUserInput(fileName);
+ 		webBrowser->comboBoxURL->lineEdit()->setText(webBrowser->homeUrl.toString());
+@@ -540,10 +551,11 @@ bool HtmlEditor::fileSave()
+ 	bool success = file.open(QIODevice::WriteOnly);
+ 	if ( success ) {
+ 		if ( ui->tabWidget->currentIndex() == 1 ) {
+-			ui->webView->page()->mainFrame()->setHtml(ui->plainTextEdit->toPlainText());
++			ui->webView->page()->setHtml(ui->plainTextEdit->toPlainText());
+ 			wysiwygDirty = false;
+ 		}
+-		QString content(ui->webView->page()->mainFrame()->toHtml());
++		QString content("%1");
++		ui->webView->page()->toHtml([content](const QString &result) { content.arg(result); });
+ 		QTextStream ts(&file);
+ 		ts << noScript(content);
+ 		ts.flush();
+@@ -572,10 +584,11 @@ bool HtmlEditor::fileSaveAs()
+ 	bool success = file.open(QIODevice::WriteOnly);
+ 	if ( success ) {
+ 		if ( ui->tabWidget->currentIndex() == 1 ) {
+-			ui->webView->page()->mainFrame()->setHtml(ui->plainTextEdit->toPlainText());
++			ui->webView->page()->setHtml(ui->plainTextEdit->toPlainText());
+ 			wysiwygDirty = false;
+ 		}
+-		QString content(ui->webView->page()->mainFrame()->toHtml());
++		QString content("%1");
++		ui->webView->page()->toHtml([content](const QString &result) { content.arg(result); });
+ 		QTextStream ts(&file);
+ 		ts << noScript(content);
+ 		ts.flush();
+@@ -751,38 +764,41 @@ void HtmlEditor::zoomIn()
+ 
+ void HtmlEditor::editSelectAll()
+ {
+-	ui->webView->triggerPageAction(QWebPage::SelectAll);
++	ui->webView->triggerPageAction(QWebEnginePage::SelectAll);
+ }
+ 
+ void HtmlEditor::execCommand(const QString &cmd)
+ {
+-	QWebFrame *frame = ui->webView->page()->mainFrame();
++	QWebEnginePage *page = ui->webView->page();
+ 	QString js(QString("document.execCommand(\"%1\", false, null)").arg(cmd));
+-	frame->evaluateJavaScript(js);
++	page->runJavaScript(js);
+ 	localModified = true;
+ }
+ 
+ void HtmlEditor::execCommand(const QString &cmd, const QString &arg)
+ {
+-	QWebFrame *frame = ui->webView->page()->mainFrame();
++	QWebEnginePage *page = ui->webView->page();
+ 	QString js(QString("document.execCommand(\"%1\", false, \"%2\")").arg(cmd).arg(arg));
+-	frame->evaluateJavaScript(js);
++	page->runJavaScript(js);
+ 	localModified = true;
+ }
+ 
+ bool HtmlEditor::queryCommandState(const QString &cmd)
+ {
+-	QWebFrame *frame = ui->webView->page()->mainFrame();
++	QWebEnginePage *page = ui->webView->page();
+ 	QString js(QString("document.queryCommandState(\"%1\", false, null)").arg(cmd));
+-	QVariant result = frame->evaluateJavaScript(js);
+-	return result.toString().simplified().toLower() == "true";
++	QString result("%1");
++	page->runJavaScript(js, [result](const QVariant &r) { result.arg(r.toString()); });
++	return result.simplified().toLower() == "true";
+ }
+ 
+ void HtmlEditor::styleParagraph()
+ {
+ 	execCommand("formatBlock", "p");
+ 	if ( generateEmptyContent ) {
+-		emptyContent = ui->webView->page()->mainFrame()->toHtml();
++		QString data("%1");
++		ui->webView->page()->toHtml([data](const QString &result) { data.arg(result); });
++		emptyContent = data;
+ 		generateEmptyContent = false;
+ 	}
+ }
+@@ -907,14 +923,16 @@ void HtmlEditor::formatBackgroundColor()
+ 
+ void HtmlEditor::adjustActions()
+ {
+-	FOLLOW_ENABLE(ui->actionEditUndo, QWebPage::Undo);
+-	FOLLOW_ENABLE(ui->actionEditRedo, QWebPage::Redo);
+-	FOLLOW_ENABLE(ui->actionEditCut, QWebPage::Cut);
+-	FOLLOW_ENABLE(ui->actionEditCopy, QWebPage::Copy);
+-	FOLLOW_ENABLE(ui->actionEditPaste, QWebPage::Paste);
+-	FOLLOW_CHECK(ui->actionFormatBold, QWebPage::ToggleBold);
+-	FOLLOW_CHECK(ui->actionFormatItalic, QWebPage::ToggleItalic);
+-	FOLLOW_CHECK(ui->actionFormatUnderline, QWebPage::ToggleUnderline);
++	FOLLOW_ENABLE(ui->actionEditUndo, QWebEnginePage::Undo);
++	FOLLOW_ENABLE(ui->actionEditRedo, QWebEnginePage::Redo);
++	FOLLOW_ENABLE(ui->actionEditCut, QWebEnginePage::Cut);
++	FOLLOW_ENABLE(ui->actionEditCopy, QWebEnginePage::Copy);
++	FOLLOW_ENABLE(ui->actionEditPaste, QWebEnginePage::Paste);
++	/*
++	FOLLOW_CHECK(ui->actionFormatBold, QWebEnginePage::ToggleBold);
++	FOLLOW_CHECK(ui->actionFormatItalic, QWebEnginePage::ToggleItalic);
++	FOLLOW_CHECK(ui->actionFormatUnderline, QWebEnginePage::ToggleUnderline);
++	*/
+ 
+ 	ui->actionFormatStrikethrough->setChecked(queryCommandState("strikeThrough"));
+ 	ui->actionFormatNumberedList->setChecked(queryCommandState("insertOrderedList"));
+@@ -940,7 +958,7 @@ void HtmlEditor::changeTab(int index)
+ 	switch ( index ) {
+ 		case 0:
+ 			if ( wysiwygDirty ) {
+-				ui->webView->page()->mainFrame()->setHtml(ui->plainTextEdit->toPlainText());
++				ui->webView->page()->setHtml(ui->plainTextEdit->toPlainText());
+ 				wysiwygDirty = false;
+ 			}
+ 			break;
+@@ -948,7 +966,9 @@ void HtmlEditor::changeTab(int index)
+ 		case 1:
+ 			if ( htmlDirty ) {
+ 				ui->plainTextEdit->blockSignals(true);
+-				ui->plainTextEdit->setPlainText(ui->webView->page()->mainFrame()->toHtml());
++				QString data("%1");
++				ui->webView->page()->toHtml([data](const QString &result) { data.arg(result); });
++				ui->plainTextEdit->setPlainText(data);
+ 				ui->plainTextEdit->blockSignals(false);
+ 				htmlDirty = false;
+ 			}
+@@ -1021,7 +1041,10 @@ bool HtmlEditor::load(const QString &f)
+ 		loadedContent = data;
+ 
+ 	ui->webView->setHtml(data);
+-	ui->webView->page()->setContentEditable(!actionReadOnly->isChecked());
++	if ( actionReadOnly->isChecked() )
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = false");
++	else
++		ui->webView->page()->runJavaScript("document.documentElement.contentEditable = true");
+ 	ui->plainTextEdit->setReadOnly(actionReadOnly->isChecked());
+ 
+ 	if ( fileName.isEmpty() )
+@@ -1093,11 +1116,16 @@ bool HtmlEditor::loadTemplate(const QString &f)
+ 	}
+ 	if ( !qmc2CleaningUp && !stopLoading ) {
+ 		ui->webView->setHtml(data, QUrl::fromLocalFile(f));
+-		ui->webView->page()->setContentEditable(!actionReadOnly->isChecked());
++		if ( actionReadOnly->isChecked() )
++			ui->webView->page()->runJavaScript("document.documentElement.contentEditable = false");
++		else
++			ui->webView->page()->runJavaScript("document.documentElement.contentEditable = true");
+ 		ui->plainTextEdit->setReadOnly(actionReadOnly->isChecked());
+ 		if ( fileName.isEmpty() )
+ 			setCurrentFileName(f);
+-		emptyContent = ui->webView->page()->mainFrame()->toHtml();
++		QString data("%1");
++		ui->webView->page()->toHtml([data](const QString &result) { data.arg(result); });
++		emptyContent = data;
+ 		adjustHTML();
+ 	} else
+ 		emptyContent = "QMC2_INVALID";
+@@ -1107,8 +1135,9 @@ bool HtmlEditor::loadTemplate(const QString &f)
+ 
+ void HtmlEditor::javaScriptWindowObjectCleared()
+ {
+-	ui->webView->page()->mainFrame()->addToJavaScriptWindowObject("qmc2NotesEditorObject", this);
+-	ui->webView->page()->mainFrame()->addToJavaScriptWindowObject("qmc2NEO", this);
++	// FIXME
++	//ui->webView->page()->addToJavaScriptWindowObject("qmc2NotesEditorObject", this);
++	//ui->webView->page()->addToJavaScriptWindowObject("qmc2NEO", this);
+ }
+ 
+ QString HtmlEditor::getIconData()
+@@ -1627,18 +1656,17 @@ bool HtmlEditor::save()
+ 	if ( emptyContent == "QMC2_INVALID" )
+ 		return true;
+ 
+-	if ( !ui->webView->page()->isModified() && !ui->plainTextEdit->document()->isModified() && !localModified )
+-		return true;
+-
+ 	if ( fileName.isEmpty() )
+ 		return false;
+ 
+ 	if ( ui->tabWidget->currentIndex() == 1 ) {
+-		ui->webView->page()->mainFrame()->setHtml(ui->plainTextEdit->toPlainText());
++		ui->webView->page()->setHtml(ui->plainTextEdit->toPlainText());
+ 		wysiwygDirty = false;
+ 	}
+ 
+-	loadedContent = ui->webView->page()->mainFrame()->toHtml();
++	QString data("%1");
++	ui->webView->page()->toHtml([data](const QString &result) { data.arg(result); });
++	loadedContent = data;
+ 
+ 	if ( loadedContent == emptyContent ) {
+ 		QFile f(fileName);
+diff --git a/src/htmleditor/htmleditor.ui b/src/htmleditor/htmleditor.ui
+index 8f64543bb..1bdab5bfa 100644
+--- a/src/htmleditor/htmleditor.ui
++++ b/src/htmleditor/htmleditor.ui
+@@ -41,7 +41,7 @@
+          <number>0</number>
+         </property>
+         <item>
+-         <widget class="QWebView" name="webView">
++         <widget class="QWebEngineView" name="webView">
+           <property name="url">
+            <url>
+             <string>about:blank</string>
+@@ -107,7 +107,7 @@
+       <string>Insert &amp;image</string>
+      </property>
+      <property name="icon">
+-      <iconset resource="../qmc2.qrc">
++     <iconset resource="../../qmc2.qrc">
+        <normaloff>:/htmleditor/images/image-x-generic.png</normaloff>:/htmleditor/images/image-x-generic.png</iconset>
+      </property>
+      <addaction name="actionInsertImageFromFile"/>
+@@ -236,7 +236,7 @@
+   </widget>
+   <action name="actionFileNew">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/document-new.png</normaloff>:/htmleditor/images/document-new.png</iconset>
+    </property>
+    <property name="text">
+@@ -254,7 +254,7 @@
+   </action>
+   <action name="actionFileNewFromTemplate">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/document-new.png</normaloff>:/htmleditor/images/document-new.png</iconset>
+    </property>
+    <property name="text">
+@@ -272,7 +272,7 @@
+   </action>
+   <action name="actionFileRevert">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-undo.png</normaloff>:/htmleditor/images/edit-undo.png</iconset>
+    </property>
+    <property name="text">
+@@ -290,7 +290,7 @@
+   </action>
+   <action name="actionFileOpen">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/document-open.png</normaloff>:/htmleditor/images/document-open.png</iconset>
+    </property>
+    <property name="text">
+@@ -308,7 +308,7 @@
+   </action>
+   <action name="actionFileSave">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/document-save.png</normaloff>:/htmleditor/images/document-save.png</iconset>
+    </property>
+    <property name="text">
+@@ -326,7 +326,7 @@
+   </action>
+   <action name="actionFileSaveAs">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/data/img/filesaveas.png</normaloff>:/data/img/filesaveas.png</iconset>
+    </property>
+    <property name="text">
+@@ -344,7 +344,7 @@
+   </action>
+   <action name="actionFileOpenInBrowser">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/data/img/browser.png</normaloff>:/data/img/browser.png</iconset>
+    </property>
+    <property name="text">
+@@ -362,7 +362,7 @@
+   </action>
+   <action name="actionEditUndo">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-undo.png</normaloff>:/htmleditor/images/edit-undo.png</iconset>
+    </property>
+    <property name="text">
+@@ -374,7 +374,7 @@
+   </action>
+   <action name="actionEditRedo">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-redo.png</normaloff>:/htmleditor/images/edit-redo.png</iconset>
+    </property>
+    <property name="text">
+@@ -386,7 +386,7 @@
+   </action>
+   <action name="actionEditCut">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-cut.png</normaloff>:/htmleditor/images/edit-cut.png</iconset>
+    </property>
+    <property name="text">
+@@ -398,7 +398,7 @@
+   </action>
+   <action name="actionEditCopy">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-copy.png</normaloff>:/htmleditor/images/edit-copy.png</iconset>
+    </property>
+    <property name="text">
+@@ -410,7 +410,7 @@
+   </action>
+   <action name="actionEditPaste">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-paste.png</normaloff>:/htmleditor/images/edit-paste.png</iconset>
+    </property>
+    <property name="text">
+@@ -422,7 +422,7 @@
+   </action>
+   <action name="actionEditSelectAll">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/edit-select-all.png</normaloff>:/htmleditor/images/edit-select-all.png</iconset>
+    </property>
+    <property name="text">
+@@ -437,7 +437,7 @@
+     <bool>true</bool>
+    </property>
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-text-bold.png</normaloff>:/htmleditor/images/format-text-bold.png</iconset>
+    </property>
+    <property name="text">
+@@ -452,7 +452,7 @@
+     <bool>true</bool>
+    </property>
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-text-italic.png</normaloff>:/htmleditor/images/format-text-italic.png</iconset>
+    </property>
+    <property name="text">
+@@ -467,7 +467,7 @@
+     <bool>true</bool>
+    </property>
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-text-underline.png</normaloff>:/htmleditor/images/format-text-underline.png</iconset>
+    </property>
+    <property name="text">
+@@ -482,7 +482,7 @@
+     <bool>true</bool>
+    </property>
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-text-strikethrough.png</normaloff>:/htmleditor/images/format-text-strikethrough.png</iconset>
+    </property>
+    <property name="text">
+@@ -494,7 +494,7 @@
+   </action>
+   <action name="actionFormatAlignLeft">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-justify-left.png</normaloff>:/htmleditor/images/format-justify-left.png</iconset>
+    </property>
+    <property name="text">
+@@ -506,7 +506,7 @@
+   </action>
+   <action name="actionFormatAlignCenter">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-justify-center.png</normaloff>:/htmleditor/images/format-justify-center.png</iconset>
+    </property>
+    <property name="text">
+@@ -518,7 +518,7 @@
+   </action>
+   <action name="actionFormatAlignRight">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-justify-right.png</normaloff>:/htmleditor/images/format-justify-right.png</iconset>
+    </property>
+    <property name="text">
+@@ -530,7 +530,7 @@
+   </action>
+   <action name="actionFormatAlignJustify">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-justify-fill.png</normaloff>:/htmleditor/images/format-justify-fill.png</iconset>
+    </property>
+    <property name="text">
+@@ -542,7 +542,7 @@
+   </action>
+   <action name="actionFormatIncreaseIndent">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-indent-more.png</normaloff>:/htmleditor/images/format-indent-more.png</iconset>
+    </property>
+    <property name="text">
+@@ -554,7 +554,7 @@
+   </action>
+   <action name="actionFormatDecreaseIndent">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/format-indent-less.png</normaloff>:/htmleditor/images/format-indent-less.png</iconset>
+    </property>
+    <property name="text">
+@@ -569,7 +569,7 @@
+     <bool>true</bool>
+    </property>
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/bulleted-list.png</normaloff>:/htmleditor/images/bulleted-list.png</iconset>
+    </property>
+    <property name="text">
+@@ -584,7 +584,7 @@
+     <bool>true</bool>
+    </property>
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/numbered-list.png</normaloff>:/htmleditor/images/numbered-list.png</iconset>
+    </property>
+    <property name="text">
+@@ -596,7 +596,7 @@
+   </action>
+   <action name="actionInsertImageFromFile">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/document-open.png</normaloff>:/htmleditor/images/document-open.png</iconset>
+    </property>
+    <property name="text">
+@@ -608,7 +608,7 @@
+   </action>
+   <action name="actionInsertImageFromUrl">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/text-html.png</normaloff>:/htmleditor/images/text-html.png</iconset>
+    </property>
+    <property name="text">
+@@ -620,7 +620,7 @@
+   </action>
+   <action name="actionCreateLink">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/text-html.png</normaloff>:/htmleditor/images/text-html.png</iconset>
+    </property>
+    <property name="text">
+@@ -632,7 +632,7 @@
+   </action>
+   <action name="actionZoomOut">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/list-remove.png</normaloff>:/htmleditor/images/list-remove.png</iconset>
+    </property>
+    <property name="text">
+@@ -644,7 +644,7 @@
+   </action>
+   <action name="actionZoomIn">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/list-add.png</normaloff>:/htmleditor/images/list-add.png</iconset>
+    </property>
+    <property name="text">
+@@ -733,7 +733,7 @@
+   </action>
+   <action name="actionInsertHtml">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/insert-html.png</normaloff>:/htmleditor/images/insert-html.png</iconset>
+    </property>
+    <property name="text">
+@@ -751,7 +751,7 @@
+   </action>
+   <action name="actionInsertTable">
+    <property name="icon">
+-    <iconset resource="../qmc2.qrc">
++	   <iconset resource="../../qmc2.qrc">
+      <normaloff>:/htmleditor/images/insert-table.png</normaloff>:/htmleditor/images/insert-table.png</iconset>
+    </property>
+    <property name="text">
+@@ -769,13 +769,13 @@
+  </widget>
+  <customwidgets>
+   <customwidget>
+-   <class>QWebView</class>
++   <class>QWebEngineView</class>
+    <extends>QWidget</extends>
+-   <header>QtWebKitWidgets/QWebView</header>
++   <header>QWebEngineView</header>
+   </customwidget>
+  </customwidgets>
+  <resources>
+-  <include location="../qmc2.qrc"/>
++	 <include location="../../qmc2.qrc"/>
+  </resources>
+  <connections/>
+ </ui>
+diff --git a/src/macros.h b/src/macros.h
+index a7b15451d..66b7534e7 100644
+--- a/src/macros.h
++++ b/src/macros.h
+@@ -558,9 +558,6 @@
+ // ProjectMESS base URL (default)
+ #define QMC2_PROJECT_MESS_BASE_URL		"http://www.progettoemma.net/mess/gioco.php?game=%1&list=%2"
+ 
+-// maximum number of pages held in QtWebKit's page cache
+-#define QMC2_BROWSER_CACHE_PAGES		100
+-
+ // type conversions
+ #define QMC2_TO_UINT32(a)			((uchar)*((a) + 0) * (quint32)16777216ULL + \
+ 						(uchar)*((a) + 1) * (quint32)65536ULL + \
+diff --git a/src/miniwebbrowser.cpp b/src/miniwebbrowser.cpp
+index c704088fb..b9dbddae4 100644
+--- a/src/miniwebbrowser.cpp
++++ b/src/miniwebbrowser.cpp
+@@ -4,9 +4,8 @@
+ #include <QApplication>
+ #include <QDesktopWidget>
+ #include <QDir>
+-#include <QtWebKitWidgets/QWebFrame>
+-#include <QtWebKitWidgets/QWebInspector>
+-#include <QWebHistory>
++#include <QWebEngineHistory>
++#include <QWebEngineSettings>
+ #include <QFontMetrics>
+ 
+ #include "settings.h"
+@@ -29,8 +28,6 @@ MiniWebBrowser::MiniWebBrowser(QWidget *parent, bool useAsPdfViewer)
+ 	setObjectName("MiniWebBrowser");
+ 	m_isPdfViewer = useAsPdfViewer;
+ 
+-	QWebSettings::setMaximumPagesInCache(QMC2_BROWSER_CACHE_PAGES);
+-
+ 	if ( MiniWebBrowser::supportedSchemes.isEmpty() )
+ 		MiniWebBrowser::supportedSchemes << "http" << "ftp" << "file";
+ 
+@@ -64,17 +61,16 @@ MiniWebBrowser::MiniWebBrowser(QWidget *parent, bool useAsPdfViewer)
+ 	iconCache.setMaxCost(QMC2_BROWSER_ICONCACHE_SIZE);
+ 
+ 	// we want the same global network access manager for all browsers
+-	webViewBrowser->page()->setNetworkAccessManager(qmc2NetworkAccessManager);
++	//webViewBrowser->page()->setNetworkAccessManager(qmc2NetworkAccessManager);
+ 
+ 	// we want to manipulate the link activation
+-	webViewBrowser->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
++	//webViewBrowser->page()->setLinkDelegationPolicy(QWebEnginePage::DelegateAllLinks);
+ 
+ 	// connect page actions we provide
+ 	connect(webViewBrowser->page(), SIGNAL(downloadRequested(const QNetworkRequest &)), this, SLOT(processPageActionDownloadRequested(const QNetworkRequest &)));
+ 	connect(webViewBrowser->page(), SIGNAL(unsupportedContent(QNetworkReply *)), this, SLOT(processPageActionHandleUnsupportedContent(QNetworkReply *)));
+ 	connect(webViewBrowser->page(), SIGNAL(linkHovered(const QString &, const QString &, const QString &)), this, SLOT(webViewBrowser_linkHovered(const QString &, const QString &, const QString &)));
+ 	connect(webViewBrowser->page(), SIGNAL(statusBarVisibilityChangeRequested(bool)), this, SLOT(webViewBrowser_statusBarVisibilityChangeRequested(bool)));
+-	connect(webViewBrowser->page(), SIGNAL(frameCreated(QWebFrame *)), this, SLOT(webViewBrowser_frameCreated(QWebFrame *)));
+ 
+ 	connect(webViewBrowser, SIGNAL(linkClicked(const QUrl)), this, SLOT(webViewBrowser_linkClicked(const QUrl)));
+ 	connect(webViewBrowser, SIGNAL(urlChanged(const QUrl)), this, SLOT(webViewBrowser_urlChanged(const QUrl)));
+@@ -89,97 +85,103 @@ MiniWebBrowser::MiniWebBrowser(QWidget *parent, bool useAsPdfViewer)
+ 	if ( isPdfViewer() ) {
+ 		frameUrl->hide();
+ 		// hide all page actions
+-		for (QWebPage::WebAction pa = QWebPage::OpenLink; pa != QWebPage::AlignRight; pa = static_cast<QWebPage::WebAction>(static_cast<int>(pa) + 1)) {
++		/*
++		for (QWebEnginePage::WebAction pa = QWebEnginePage::Back; pa != QWebEnginePage::InsertUnorderedList; pa = static_cast<QWebEnginePage::WebAction>(static_cast<int>(pa) + 1)) {
+ 			QAction *a= webViewBrowser->pageAction(pa);
+ 			if ( a )
+ 				a->setVisible(false);
+ 		}
++		*/
+ 	} else {
++		/* 
+ 		// hide page actions we don't provide
+-		webViewBrowser->pageAction(QWebPage::OpenFrameInNewWindow)->setVisible(false);
++		webViewBrowser->pageAction(QWebEnginePage::OpenFrameInNewWindow)->setVisible(false);
+ 
+ 		// change provided page actions to better fit our usage / integrate into QMC2's look
+-		webViewBrowser->pageAction(QWebPage::OpenLink)->setText(tr("Open link"));
+-		webViewBrowser->pageAction(QWebPage::OpenLink)->setIcon(QIcon(QString::fromUtf8(":/data/img/fileopen.png")));
+-		webViewBrowser->pageAction(QWebPage::OpenLinkInNewWindow)->setText(tr("Open link in new window"));
+-		webViewBrowser->pageAction(QWebPage::OpenLinkInNewWindow)->setIcon(QIcon(QString::fromUtf8(":/data/img/browser.png")));
+-		webViewBrowser->pageAction(QWebPage::OpenImageInNewWindow)->setText(tr("Open image in new window"));
+-		webViewBrowser->pageAction(QWebPage::OpenImageInNewWindow)->setIcon(QIcon(QString::fromUtf8(":/data/img/thumbnail.png")));
+-		webViewBrowser->pageAction(QWebPage::DownloadLinkToDisk)->setText(tr("Save link as..."));
+-		webViewBrowser->pageAction(QWebPage::DownloadLinkToDisk)->setIcon(QIcon(QString::fromUtf8(":/data/img/filesaveas.png")));
+-		webViewBrowser->pageAction(QWebPage::CopyLinkToClipboard)->setText(tr("Copy link"));
+-		webViewBrowser->pageAction(QWebPage::CopyLinkToClipboard)->setIcon(QIcon(QString::fromUtf8(":/data/img/editcopy.png")));
+-		webViewBrowser->pageAction(QWebPage::DownloadImageToDisk)->setText(tr("Save image as..."));
+-		webViewBrowser->pageAction(QWebPage::DownloadImageToDisk)->setIcon(QIcon(QString::fromUtf8(":/data/img/filesaveas.png")));
+-		webViewBrowser->pageAction(QWebPage::CopyImageToClipboard)->setText(tr("Copy image"));
+-		webViewBrowser->pageAction(QWebPage::CopyImageToClipboard)->setIcon(QIcon(QString::fromUtf8(":/data/img/editcopy.png")));
+-		webViewBrowser->pageAction(QWebPage::CopyImageUrlToClipboard)->setText(tr("Copy image address"));
+-		webViewBrowser->pageAction(QWebPage::Back)->setText(tr("Go back"));
+-		webViewBrowser->pageAction(QWebPage::Back)->setIcon(QIcon(QString::fromUtf8(":/data/img/back.png")));
+-		webViewBrowser->pageAction(QWebPage::Forward)->setText(tr("Go forward"));
+-		webViewBrowser->pageAction(QWebPage::Forward)->setIcon(QIcon(QString::fromUtf8(":/data/img/forward.png")));
+-		webViewBrowser->pageAction(QWebPage::Reload)->setText(tr("Reload"));
+-		webViewBrowser->pageAction(QWebPage::Reload)->setIcon(QIcon(QString::fromUtf8(":/data/img/reload.png")));
+-		webViewBrowser->pageAction(QWebPage::Stop)->setText(tr("Stop"));
+-		webViewBrowser->pageAction(QWebPage::Stop)->setIcon(QIcon(QString::fromUtf8(":/data/img/stop_browser.png")));
+-		webViewBrowser->pageAction(QWebPage::Copy)->setText(tr("Copy"));
+-		webViewBrowser->pageAction(QWebPage::Copy)->setIcon(QIcon(QString::fromUtf8(":/data/img/editcopy.png")));
++		webViewBrowser->pageAction(QWebEnginePage::OpenLink)->setText(tr("Open link"));
++		webViewBrowser->pageAction(QWebEnginePage::OpenLink)->setIcon(QIcon(QString::fromUtf8(":/data/img/fileopen.png")));
++		webViewBrowser->pageAction(QWebEnginePage::OpenLinkInNewWindow)->setText(tr("Open link in new window"));
++		webViewBrowser->pageAction(QWebEnginePage::OpenLinkInNewWindow)->setIcon(QIcon(QString::fromUtf8(":/data/img/browser.png")));
++		webViewBrowser->pageAction(QWebEnginePage::OpenImageInNewWindow)->setText(tr("Open image in new window"));
++		webViewBrowser->pageAction(QWebEnginePage::OpenImageInNewWindow)->setIcon(QIcon(QString::fromUtf8(":/data/img/thumbnail.png")));
++		webViewBrowser->pageAction(QWebEnginePage::DownloadLinkToDisk)->setText(tr("Save link as..."));
++		webViewBrowser->pageAction(QWebEnginePage::DownloadLinkToDisk)->setIcon(QIcon(QString::fromUtf8(":/data/img/filesaveas.png")));
++		webViewBrowser->pageAction(QWebEnginePage::CopyLinkToClipboard)->setText(tr("Copy link"));
++		webViewBrowser->pageAction(QWebEnginePage::CopyLinkToClipboard)->setIcon(QIcon(QString::fromUtf8(":/data/img/editcopy.png")));
++		webViewBrowser->pageAction(QWebEnginePage::DownloadImageToDisk)->setText(tr("Save image as..."));
++		webViewBrowser->pageAction(QWebEnginePage::DownloadImageToDisk)->setIcon(QIcon(QString::fromUtf8(":/data/img/filesaveas.png")));
++		webViewBrowser->pageAction(QWebEnginePage::CopyImageToClipboard)->setText(tr("Copy image"));
++		webViewBrowser->pageAction(QWebEnginePage::CopyImageToClipboard)->setIcon(QIcon(QString::fromUtf8(":/data/img/editcopy.png")));
++		webViewBrowser->pageAction(QWebEnginePage::CopyImageUrlToClipboard)->setText(tr("Copy image address"));
++		webViewBrowser->pageAction(QWebEnginePage::Back)->setText(tr("Go back"));
++		webViewBrowser->pageAction(QWebEnginePage::Back)->setIcon(QIcon(QString::fromUtf8(":/data/img/back.png")));
++		webViewBrowser->pageAction(QWebEnginePage::Forward)->setText(tr("Go forward"));
++		webViewBrowser->pageAction(QWebEnginePage::Forward)->setIcon(QIcon(QString::fromUtf8(":/data/img/forward.png")));
++		webViewBrowser->pageAction(QWebEnginePage::Reload)->setText(tr("Reload"));
++		webViewBrowser->pageAction(QWebEnginePage::Reload)->setIcon(QIcon(QString::fromUtf8(":/data/img/reload.png")));
++		webViewBrowser->pageAction(QWebEnginePage::Stop)->setText(tr("Stop"));
++		webViewBrowser->pageAction(QWebEnginePage::Stop)->setIcon(QIcon(QString::fromUtf8(":/data/img/stop_browser.png")));
++		webViewBrowser->pageAction(QWebEnginePage::Copy)->setText(tr("Copy"));
++		webViewBrowser->pageAction(QWebEnginePage::Copy)->setIcon(QIcon(QString::fromUtf8(":/data/img/editcopy.png")));
+ #if defined(QMC2_BROWSER_EXTRAS_ENABLED)
+-		webViewBrowser->pageAction(QWebPage::InspectElement)->setText(tr("Inspect"));
+-		webViewBrowser->pageAction(QWebPage::InspectElement)->setIcon(QIcon(QString::fromUtf8(":/data/img/inspect.png")));
++		webViewBrowser->pageAction(QWebEnginePage::InspectElement)->setText(tr("Inspect"));
++		webViewBrowser->pageAction(QWebEnginePage::InspectElement)->setIcon(QIcon(QString::fromUtf8(":/data/img/inspect.png")));
+ #endif
++		*/
+ 
+ 		// connect page actions to own routines
+-		connect(webViewBrowser->pageAction(QWebPage::Back), SIGNAL(triggered()), this, SLOT(checkBackAndForward()));
+-		connect(webViewBrowser->pageAction(QWebPage::Forward), SIGNAL(triggered()), this, SLOT(checkBackAndForward()));
++		connect(webViewBrowser->pageAction(QWebEnginePage::Back), SIGNAL(triggered()), this, SLOT(checkBackAndForward()));
++		connect(webViewBrowser->pageAction(QWebEnginePage::Forward), SIGNAL(triggered()), this, SLOT(checkBackAndForward()));
+ 	}
+ 
+ 	// setup browser settings
++	/*
+ 	webViewBrowser->page()->settings()->setIconDatabasePath(Options::configPath());
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::AutoLoadImages, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::AutoLoadImages, true);
+ #if defined(QMC2_BROWSER_JAVASCRIPT_ENABLED)
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::JavascriptEnabled, true);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::JavascriptCanOpenWindows, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard, true);
+ #else
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
+ #endif
+ #if defined(QMC2_BROWSER_JAVA_ENABLED)
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::JavaEnabled, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::JavaEnabled, true);
+ #else
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::JavaEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::JavaEnabled, false);
+ #endif
+ #if defined(QMC2_BROWSER_PLUGINS_ENABLED)
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
+ #else
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
+ #endif
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::PrivateBrowsingEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::PrivateBrowsingEnabled, false);
+ #if defined(QMC2_BROWSER_EXTRAS_ENABLED)
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::DeveloperExtrasEnabled, true);
+ #else
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::DeveloperExtrasEnabled, false);
+ #endif
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::LinksIncludedInFocusChain, false);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::ZoomTextOnly, false);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::PrintElementBackgrounds, false);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, false);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::OfflineWebApplicationCacheEnabled, false);
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::LinksIncludedInFocusChain, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::ZoomTextOnly, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::PrintElementBackgrounds, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::OfflineStorageDatabaseEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::OfflineWebApplicationCacheEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::LocalStorageEnabled, true);
+ #if defined(QMC2_BROWSER_PREFETCH_DNS_ENABLED)
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::DnsPrefetchEnabled, true);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::DnsPrefetchEnabled, true);
+ #else
+-	webViewBrowser->page()->settings()->setAttribute(QWebSettings::DnsPrefetchEnabled, false);
++	webViewBrowser->page()->settings()->setAttribute(QWebEngineSettings::DnsPrefetchEnabled, false);
+ #endif
++	*/
+ 
+ 	connect(this, SIGNAL(titleChanged(QString &)), this, SLOT(changeTitle(QString &)));
+ 
+ #if defined(QMC2_BROWSER_EXTRAS_ENABLED)
+-	connect(webViewBrowser->pageAction(QWebPage::InspectElement), SIGNAL(triggered()), this, SLOT(postProcessPageActionInspect()), Qt::QueuedConnection);
++	connect(webViewBrowser->pageAction(QWebEnginePage::InspectElement), SIGNAL(triggered()), this, SLOT(postProcessPageActionInspect()), Qt::QueuedConnection);
+ #endif
+ 
+ 	// we want to detect/handle unsupported content
+-	webViewBrowser->page()->setForwardUnsupportedContent(true);
++	//webViewBrowser->page()->setForwardUnsupportedContent(true);
+ 
+ 	// status bar timeout connection
+ 	connect(&statusTimer, SIGNAL(timeout()), this, SLOT(statusTimeout()));
+@@ -230,26 +232,32 @@ void MiniWebBrowser::on_toolButtonHighlight_clicked()
+ 
+ void MiniWebBrowser::on_toolButtonNext_clicked()
+ {
++	// FIXME
++	/*
+ 	searchTimer.stop();
+-	webViewBrowser->page()->findText("", QWebPage::HighlightAllOccurrences);
+-	QWebPage::FindFlags flags = QWebPage::FindWrapsAroundDocument;
++	webViewBrowser->page()->findText("", QWebEnginePage::HighlightAllOccurrences);
++	QWebEnginePage::FindFlags flags = QWebEnginePage::FindWrapsAroundDocument;
+ 	if ( toolButtonCaseSensitive->isChecked() )
+-		flags |= QWebPage::FindCaseSensitively;
++		flags |= QWebEnginePage::FindCaseSensitively;
+ 	webViewBrowser->page()->findText(iconLineEditSearch->text(), flags);
+ 	if ( toolButtonHighlight->isChecked() )
+-		webViewBrowser->page()->findText(iconLineEditSearch->text(), flags | QWebPage::HighlightAllOccurrences);
++		webViewBrowser->page()->findText(iconLineEditSearch->text(), flags | QWebEnginePage::HighlightAllOccurrences);
++	*/
+ }
+ 
+ void MiniWebBrowser::on_toolButtonPrevious_clicked()
+ {
++	// FIXME
++	/*
+ 	searchTimer.stop();
+-	webViewBrowser->page()->findText("", QWebPage::HighlightAllOccurrences);
+-	QWebPage::FindFlags flags = QWebPage::FindWrapsAroundDocument | QWebPage::FindBackward;
++	webViewBrowser->page()->findText("", QWebEnginePage::HighlightAllOccurrences);
++	QWebEnginePage::FindFlags flags = QWebEnginePage::FindWrapsAroundDocument | QWebEnginePage::FindBackward;
+ 	if ( toolButtonCaseSensitive->isChecked() )
+-		flags |= QWebPage::FindCaseSensitively;
++		flags |= QWebEnginePage::FindCaseSensitively;
+ 	webViewBrowser->page()->findText(iconLineEditSearch->text(), flags);
+ 	if ( toolButtonHighlight->isChecked() )
+-		webViewBrowser->page()->findText(iconLineEditSearch->text(), flags | QWebPage::HighlightAllOccurrences);
++		webViewBrowser->page()->findText(iconLineEditSearch->text(), flags | QWebEnginePage::HighlightAllOccurrences);
++	*/
+ }
+ 
+ void MiniWebBrowser::on_toolButtonToggleSearchBar_clicked()
+@@ -287,6 +295,8 @@ void MiniWebBrowser::on_toolButtonForward_clicked()
+ void MiniWebBrowser::hideEvent(QHideEvent *e)
+ {
+ #if defined(QMC2_BROWSER_EXTRAS_ENABLED)
++	// FIXME
++	/*
+   	foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+ 		if ( widget->inherits("QWebInspector") ) {
+ 			QWebInspector *inspector = (QWebInspector *)widget;
+@@ -299,6 +309,7 @@ void MiniWebBrowser::hideEvent(QHideEvent *e)
+ 			}
+ 		}
+ 	}
++	*/
+ #endif
+ 	if ( !e )
+ 		return;
+@@ -309,6 +320,8 @@ void MiniWebBrowser::hideEvent(QHideEvent *e)
+ void MiniWebBrowser::postProcessPageActionInspect()
+ {
+ #if defined(QMC2_BROWSER_EXTRAS_ENABLED)
++	// FIXME
++	/*
+   	foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+ 		if ( widget->inherits("QWebInspector") ) {
+ 			QWebInspector *inspector = (QWebInspector *)widget;
+@@ -318,6 +331,7 @@ void MiniWebBrowser::postProcessPageActionInspect()
+ 			}
+ 		}
+ 	}
++	*/
+ #endif
+ }
+ 
+@@ -383,6 +397,7 @@ void MiniWebBrowser::webViewBrowser_linkClicked(const QUrl url)
+ 			webBrowser->webViewBrowser->load(url);
+ 			webBrowser->show();
+ 		} else {
++			/*
+ 			QWebHitTestResult hitTest = webViewBrowser->page()->mainFrame()->hitTestContent(webViewBrowser->lastMouseClickPosition);
+ 			if ( hitTest.linkTargetFrame() )
+ 				hitTest.linkTargetFrame()->load(url);
+@@ -390,6 +405,9 @@ void MiniWebBrowser::webViewBrowser_linkClicked(const QUrl url)
+ 				webViewBrowser->load(url);
+ 				webViewBrowser_urlChanged(url);
+ 			}
++			*/
++			webViewBrowser->load(url);
++			webViewBrowser_urlChanged(url);
+ 		}
+ 	}
+ 	QTimer::singleShot(0, this, SLOT(checkBackAndForward()));
+@@ -517,7 +535,7 @@ void MiniWebBrowser::webViewBrowser_iconChanged()
+ 		if ( iconCache.contains(urlStr) )
+ 			pageIcon = *iconCache[urlStr];
+ 		if ( pageIcon.isNull() ) {
+-			pageIcon = QWebSettings::iconForUrl(webViewBrowser->url());
++			//pageIcon = QWebEngineSettings::iconForUrl(webViewBrowser->url());
+ 			if ( pageIcon.isNull() )
+ 				pageIcon = QIcon(QString::fromUtf8(":/data/img/browser.png"));
+ 			else
+@@ -546,11 +564,6 @@ void MiniWebBrowser::webViewBrowser_statusBarVisibilityChangeRequested(bool visi
+ 	progressBar->setVisible(visible);
+ }
+ 
+-void MiniWebBrowser::webViewBrowser_frameCreated(QWebFrame *frame)
+-{
+-	// NOP
+-}
+-
+ void MiniWebBrowser::statusTimeout()
+ {
+ 	statusTimer.stop();
+@@ -652,11 +665,11 @@ void MiniWebBrowser::setStatus(QString statusMessage)
+ 	updateGeometry();
+ }
+ 
+-QWebView *BrowserWidget::createWindow(QWebPage::WebWindowType type)
++QWebEngineView *BrowserWidget::createWindow(QWebEnginePage::WebWindowType type)
+ {
+ 	MiniWebBrowser *webBrowser = new MiniWebBrowser(0);
+-	if ( type == QWebPage::WebModalDialog )
+-		webBrowser->setWindowModality(Qt::ApplicationModal);
++	//if ( type == QWebEnginePage::WebModalDialog )
++	//	webBrowser->setWindowModality(Qt::ApplicationModal);
+ 	webBrowser->setAttribute(Qt::WA_DeleteOnClose);
+ 	if ( parentBrowser )
+ 		webBrowser->spinBoxZoom->setValue(parentBrowser->spinBoxZoom->value());
+@@ -679,6 +692,6 @@ void BrowserWidget::wheelEvent(QWheelEvent *e)
+ 		e->accept();
+ 	} else {
+ 		e->ignore();
+-		QWebView::wheelEvent(e);
++		QWebEngineView::wheelEvent(e);
+ 	}
+ }
+diff --git a/src/miniwebbrowser.h b/src/miniwebbrowser.h
+index 4beaafeb3..945892a01 100644
+--- a/src/miniwebbrowser.h
++++ b/src/miniwebbrowser.h
+@@ -2,7 +2,7 @@
+ #define MINIWEBBROWSER_H
+ 
+ #include <Qt>
+-#include <QtWebKitWidgets/QWebView>
++#include <QWebEngineView>
+ #include <QMouseEvent>
+ #include <QTimer>
+ #include <QCache>
+@@ -13,7 +13,7 @@
+ 
+ class MiniWebBrowser;
+ 
+-class BrowserWidget : public QWebView
++class BrowserWidget : public QWebEngineView
+ {
+ 	Q_OBJECT
+ 
+@@ -23,7 +23,7 @@ class BrowserWidget : public QWebView
+ 		QTimer bwuDelayTimer;
+ 		MiniWebBrowser *parentBrowser;
+ 
+-		BrowserWidget(QWidget *parent, MiniWebBrowser *browserParent) : QWebView(parent)
++		BrowserWidget(QWidget *parent, MiniWebBrowser *browserParent) : QWebEngineView(parent)
+ 		{
+ 			bwuDelayTimer.setSingleShot(true);
+ 			lastMouseClickPosition = QPoint(-1, -1);
+@@ -38,22 +38,22 @@ class BrowserWidget : public QWebView
+ 		void mousePressEvent(QMouseEvent *e)
+ 		{
+ 			lastMouseClickPosition = e->pos();
+-			QWebView::mousePressEvent(e);
++			QWebEngineView::mousePressEvent(e);
+ 		}
+ 		void enterEvent(QEvent *e)
+ 		{
+-			QWebView::enterEvent(e);
++			QWebEngineView::enterEvent(e);
+ 			mouseCurrentlyOnView = true;
+ 			emit mouseOnView(true);
+ 		}
+ 		void leaveEvent(QEvent *e)
+ 		{
+-			QWebView::leaveEvent(e);
++			QWebEngineView::leaveEvent(e);
+ 			mouseCurrentlyOnView = false;
+ 			emit mouseOnView(false);
+ 		}
+ 		void wheelEvent(QWheelEvent *);
+-		QWebView *createWindow(QWebPage::WebWindowType);
++		QWebEngineView *createWindow(QWebEnginePage::WebWindowType);
+ };
+ 
+ class MiniWebBrowser : public QWidget, public Ui::MiniWebBrowser
+@@ -110,7 +110,6 @@ class MiniWebBrowser : public QWidget, public Ui::MiniWebBrowser
+ 		void webViewBrowser_iconChanged();
+ 		void webViewBrowser_linkHovered(const QString &, const QString &, const QString &);
+ 		void webViewBrowser_statusBarVisibilityChangeRequested(bool);
+-		void webViewBrowser_frameCreated(QWebFrame *);
+ 		void statusTimeout();
+ 		void adjustIconSizes();
+ 		void setStatus(QString);
+diff --git a/src/options.cpp b/src/options.cpp
+index 0e0ee627a..4c92135fc 100644
+--- a/src/options.cpp
++++ b/src/options.cpp
+@@ -19,6 +19,7 @@
+ #include <QSplashScreen>
+ #include <QNetworkAccessManager>
+ #include <QCache>
++#include <QWebEngineSettings>
+ 
+ #include "options.h"
+ #include "emuopt.h"
+@@ -207,7 +208,7 @@ Options::Options(QWidget *parent) :
+ 
+ 	config = new Settings(QSettings::IniFormat, QSettings::UserScope, "qmc2");
+ 
+-	QWebSettings::enablePersistentStorage(userScopePath);
++	//QWebEngineSettings::enablePersistentStorage(userScopePath);
+ 
+ 	setupUi(this);
+ 
+@@ -600,14 +601,14 @@ void Options::apply()
+ 			tb->setIconSize(iconSizeMiddle);
+ 	}
+ 	// global web-browser fonts
+-	QWebSettings::globalSettings()->setFontFamily(QWebSettings::StandardFont, qApp->font().family());
+-	QWebSettings::globalSettings()->setFontFamily(QWebSettings::SerifFont, qApp->font().family());
+-	QWebSettings::globalSettings()->setFontFamily(QWebSettings::SansSerifFont, qApp->font().family());
+-	QWebSettings::globalSettings()->setFontFamily(QWebSettings::FantasyFont, qApp->font().family());
+-	QWebSettings::globalSettings()->setFontFamily(QWebSettings::CursiveFont, qApp->font().family());
+-	QWebSettings::globalSettings()->setFontFamily(QWebSettings::FixedFont, logFont.family());
+-	QWebSettings::globalSettings()->setFontSize(QWebSettings::DefaultFontSize, qApp->font().pointSize() + 1);
+-	QWebSettings::globalSettings()->setFontSize(QWebSettings::DefaultFixedFontSize, logFont.pointSize() + 1);
++	QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::StandardFont, qApp->font().family());
++	QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::SerifFont, qApp->font().family());
++	QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::SansSerifFont, qApp->font().family());
++	QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FantasyFont, qApp->font().family());
++	QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::CursiveFont, qApp->font().family());
++	QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FixedFont, logFont.family());
++	QWebEngineSettings::defaultSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, qApp->font().pointSize() + 1);
++	QWebEngineSettings::defaultSettings()->setFontSize(QWebEngineSettings::DefaultFixedFontSize, logFont.pointSize() + 1);
+ #if QMC2_JOYSTICK == 1
+ 	pushButtonRescanJoysticks->setIconSize(iconSize);
+ 	pushButtonRemapJoystickFunction->setIconSize(iconSize);
+diff --git a/src/qmc2main.cpp b/src/qmc2main.cpp
+index 2298f0b4a..4cd3ed24f 100644
+--- a/src/qmc2main.cpp
++++ b/src/qmc2main.cpp
+@@ -8130,8 +8130,10 @@ void MainWindow::projectMessLoadFinished(bool ok)
+ 		QString cacheKey = qmc2SoftwareList->currentItem->text(QMC2_SWLIST_COLUMN_LIST) + "_" + qmc2SoftwareList->currentItem->text(QMC2_SWLIST_COLUMN_NAME);
+ 		if ( qmc2ProjectMESSCache.contains(cacheKey) )
+ 			qmc2ProjectMESSCache.remove(cacheKey);
+-		QByteArray data = QMC2_COMPRESS(qmc2ProjectMESS->webViewBrowser->page()->mainFrame()->toHtml().toUtf8());
+-		qmc2ProjectMESSCache.insert(cacheKey, new QByteArray(data), data.size());
++		QString data("%1");
++		qmc2ProjectMESS->webViewBrowser->page()->toHtml([data](const QString &result) { data.arg(result); });
++		QByteArray cdata = QMC2_COMPRESS(data.toUtf8());
++		qmc2ProjectMESSCache.insert(cacheKey, new QByteArray(cdata), cdata.size());
+ 	}
+ 
+ 	// we only want to know this ONCE
+@@ -8146,8 +8148,10 @@ void MainWindow::projectMessSystemLoadStarted()
+ void MainWindow::projectMessSystemLoadFinished(bool ok)
+ {
+ 	if ( ok ) {
+-		QByteArray projectMessData = QMC2_COMPRESS(qmc2ProjectMESSLookup->webViewBrowser->page()->mainFrame()->toHtml().toUtf8());
+-    		QString machName = qmc2CurrentItem->text(QMC2_MACHINELIST_COLUMN_NAME);
++		QString data("%1");
++		qmc2ProjectMESSLookup->webViewBrowser->page()->toHtml([data](const QString &result) { data.arg(result); });
++		QByteArray projectMessData = QMC2_COMPRESS(data.toUtf8());
++    		QString machName(qmc2CurrentItem->text(QMC2_MACHINELIST_COLUMN_NAME));
+ 		if ( qmc2ProjectMESSCache.contains(machName) )
+ 			qmc2ProjectMESSCache.remove(machName);
+ 		qmc2ProjectMESSCache.insert(machName, new QByteArray(projectMessData), projectMessData.size());
+diff --git a/src/qmc2main.cpp b/src/qmc2main.cpp
+index 4cd3ed24f..ec16009b2 100644
+--- a/src/qmc2main.cpp
++++ b/src/qmc2main.cpp
+@@ -31,7 +31,6 @@
+ #include <QChar>
+ #include <QInputDialog>
+ #include <QDesktopWidget>
+-#include <QtWebKitWidgets/QWebFrame>
+ 
+ #include <algorithm> // std::sort()
+ 
+diff --git a/src/machinelist.cpp b/src/machinelist.cpp
+index 8c6944b29..4ccdc3c4b 100644
+--- a/src/machinelist.cpp
++++ b/src/machinelist.cpp
+@@ -1,5 +1,4 @@
+ #include <Qt>
+-#include <QtWebKitWidgets/QWebView>
+ #include <QTextStream>
+ #include <QHeaderView>
+ #include <QTreeWidgetItem>
