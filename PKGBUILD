@@ -2,8 +2,8 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20220422
-pkgrel=2
+pkgver=20221109
+pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
 url='https://phabricator.kde.org/T3722'
@@ -50,7 +50,6 @@ depends=(akonadi-calendar
          kdelibs4support
          kdesignerplugin
          kdesu
-         kdewebkit
          kdnssd
          kdoctools
          kemoticons
