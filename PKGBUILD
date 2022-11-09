@@ -16,7 +16,7 @@ build() {
   local _font
   for _font in {{12..24..2},28,32}{n,b}; do
     python bin/ucstoany.py -f "ter-u$_font.bdf" ISO10646 1 uni/{x11gr,10646-1}.uni |
-      mkitalic | bdftopcf | gzip > "ter-x${_font%n}i.pcf.gz"
+      mkitalic | bdftopcf | gzip >"ter-x${_font%n}i.pcf.gz"
   done
 }
 
