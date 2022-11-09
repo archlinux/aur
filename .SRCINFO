@@ -1,13 +1,12 @@
 pkgbase = florence
 	pkgdesc = A configurable on-screen virtual keyboard
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/florence/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool>=0.23
-	makedepends = gnome-doc-utils
 	depends = gtk3
 	depends = libxml2
 	depends = librsvg
