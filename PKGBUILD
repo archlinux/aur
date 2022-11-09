@@ -3,7 +3,7 @@
 
 pkgname=parcel-bundler
 _pkgname=parcel
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Zero configuration build tool for the web."
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=("npm")
 options=("!strip")
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$_pkgname-$pkgver.tgz")
-sha256sums=('92ada83e5283f15435d9186822bda664946c8a9d08166680557199233ee9145b')
+sha256sums=('88c7f19d2ef2eb9aa3694617e116f6bb54d007fa5795efa39285bc8ee3bda198')
 
 
 package() {
