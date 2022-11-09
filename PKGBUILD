@@ -1,12 +1,13 @@
 # Maintainer: Tyler Murphy <tylermurphy534@gmail.com>
 pkgname=crab
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A rusty permission authentication system"
 arch=('x86_64' 'i686')
 url="https://g.tylerm.dev/tylermurphy534/crab.git"
 license=('GPL3')
-makedepends=('cargo')
+makedepends=('git' 'cargo')
+depends=('glibc' 'pam')
 source=("git+$url")
 md5sums=('SKIP')
 
