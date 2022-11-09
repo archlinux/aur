@@ -1,4 +1,7 @@
-src/
-pkg/
-*.tar.gz
-*.pkg.tar.*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!app.desktop
+!buildInfo.json
+!run.sh
