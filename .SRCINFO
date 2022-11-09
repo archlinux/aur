@@ -1,0 +1,16 @@
+pkgbase = emacs-meson-mode-git
+	pkgdesc = Emacs meson-mode
+	pkgver = 0.3.r9.g82220d1
+	pkgrel = 1
+	url = https://github.com/wentasah/meson-mode
+	install = emacs-meson-mode-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-meson-mode
+	conflicts = emacs-meson-mode
+	source = emacs-meson-mode-git::git+https://github.com/wentasah/meson-mode.git
+	sha256sums = SKIP
+
+pkgname = emacs-meson-mode-git
