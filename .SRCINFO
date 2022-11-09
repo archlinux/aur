@@ -6,8 +6,11 @@ pkgbase = dl-librescore
 	arch = any
 	license = MIT
 	makedepends = npm
+	depends = bash
 	depends = nodejs
-	source = dl-librescore-v0.34.26.tar.gz::https://github.com/LibreScore/dl-librescore/archive/refs/tags/v0.34.26.tar.gz
-	sha512sums = e0e6cbbcdd4ebd868f640e840d3b2d88058f4ce929bae9a0854959c72a1bf5134f9d6750cc890e6a732d6fa21a34a9cc9a9d674dea6a42276f56c5b39a8f299b
+	noextract = dl-librescore-v0.34.26.tgz
+	options = !strip
+	source = dl-librescore-v0.34.26.tgz::https://registry.npmjs.org/dl-librescore/-/dl-librescore-0.34.26.tgz
+	sha512sums = 729c40474b81ba4b1997f433a5cf333a118bb27aa8be9593e08c076d5df3f8fe8dea4ce6fc619c82c115ed241744dec59fe99b5a0f2abe0b49b51bb82d07b029
 
 pkgname = dl-librescore
