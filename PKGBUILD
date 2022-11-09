@@ -1,6 +1,6 @@
 # Maintainer: Europrimus <aur-g4gra at europrimus dot ninja>
 pkgname=pesconvert-git
-pkgver=1
+pkgver=r20.d6d7001
 pkgrel=2
 epoch=
 pkgdesc="Convert embroidery pes file (used by Brother sewing machines) to an image (png or svg)."
@@ -47,4 +47,7 @@ package() {
 	cd "${srcdir}/${pkgname}"
 	install -D "pesconvert" -t "$pkgdir/usr/bin/"
 	install -D "PES-Mime.xml" -t "$pkgdir/usr/share/mime/packages/"
+	install -D "PES.thumbnailer" -t "$pkgdir/usr/share/thumbnailers/"
+	mkdir --parents "$pkgdir/usr/local/bin/"
+	ln -s "/usr/bin/pesconvert" "$pkgdir/usr/local/bin/application-x-pesfile-thumbnailer"
 }
