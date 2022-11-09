@@ -3,7 +3,7 @@ set -x -e -u -o pipefail
 
 VERSION=$1
 PKGREL=${2:-1}
-SOURCE="https://github.com/comtrya/comtrya/archive/v$VERSION.tar.gz"
+SOURCE="https://github.com/comtrya/comtrya/archive/refs/tags/v.$VERSION.tar.gz"
 NAME="fw"
 SHA256=$(curl -L --silent --fail $SOURCE  | sha256sum | awk '{print $1}')
 

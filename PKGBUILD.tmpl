@@ -9,21 +9,21 @@ url="https://github.com/comtrya/comtrya"
 license=('custom:MIT')
 depends=()
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
 sha256sums=('__SHA256__')
 
 build() {
-  cd "$pkgname-$pkgver"
-  cargo build --release --all-features
+  cd "$pkgname-v.$pkgver"
+  cargo build --locked --release --all-features
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  cargo test --release
+  cd "$pkgname-v.$pkgver"
+  cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-v.$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"

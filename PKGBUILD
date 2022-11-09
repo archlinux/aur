@@ -1,7 +1,7 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=comtrya
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A tool to help provision a fresh OS with the packages and configuration (dotfiles) you need to become productive again."
 arch=('x86_64')
@@ -9,21 +9,21 @@ url="https://github.com/comtrya/comtrya"
 license=('custom:MIT')
 depends=()
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b280f6aae31c98907898960df136b932713409d274aaaf8cc464bbe94b636215')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v.$pkgver.tar.gz")
+sha256sums=('f9114430bd8765d987541c95197a98bf1afecd1e97c015618da6a07aa0fdfb8b')
 
 build() {
-  cd "$pkgname-$pkgver"
-  cargo build --release --all-features
+  cd "$pkgname-v.$pkgver"
+  cargo build --locked --release --all-features
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  cargo test --release
+  cd "$pkgname-v.$pkgver"
+  cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-v.$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
