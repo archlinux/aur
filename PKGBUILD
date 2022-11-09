@@ -5,7 +5,7 @@ pkgname=mssql-server
 pkgver=15.0.4261.1
 _remRevision=2
 _prodver=${pkgver}-${_remRevision}
-pkgrel=2
+pkgrel=3
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
@@ -17,7 +17,7 @@ depends=(
 	'glibc'
 	'libc++'
 	'gdb'
-	'openssl-1.1'
+	'openssl-1.0'
 	'krb5'
 	'nss'
 	'sssd'
