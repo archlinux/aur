@@ -2,15 +2,14 @@ pkgbase = conspy
 	pkgdesc = Remote control of Linux virtual consoles
 	pkgver = 1.16
 	pkgrel = 1
-	url = http://conspy.sourceforge.net/
+	url = https://conspy.sourceforge.net/
 	changelog = ChangeLog
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	license = AGPL3
 	depends = ncurses
-	source = http://downloads.sourceforge.net/project/conspy/conspy-1.16-1/conspy-1.16.tar.gz
+	source = https://downloads.sourceforge.net/project/conspy/conspy-1.16-1/conspy-1.16.tar.gz
 	sha256sums = ee5ef648ea08d20d9062db22e7bf62a7b7261af02053f916016d1b80a66a5609
 
 pkgname = conspy
-

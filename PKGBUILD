@@ -8,11 +8,11 @@ pkgver=1.16
 pkgrel=1
 pkgdesc="Remote control of Linux virtual consoles"
 arch=('x86_64' 'i686' 'armv6h')
-url="http://conspy.sourceforge.net/"
+url="https://conspy.sourceforge.net/"
 license=('AGPL3')
 depends=('ncurses')
 changelog=ChangeLog
-source=("http://downloads.sourceforge.net/project/conspy/conspy-$pkgver-$pkgrel/conspy-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/project/conspy/conspy-$pkgver-$pkgrel/conspy-$pkgver.tar.gz")
 sha256sums=('ee5ef648ea08d20d9062db22e7bf62a7b7261af02053f916016d1b80a66a5609')
 
 build() {
