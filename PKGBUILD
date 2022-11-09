@@ -3,19 +3,18 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Link Dupont <link@subpop.net>
 pkgname=libdbus-minimal
-pkgver=1.12.20
+pkgver=1.14.4
 pkgrel=1
 pkgdesc="DBus library"
 arch=('x86_64')
-url="http://www.freedesktop.org/Software/dbus"
+url="https://wiki.freedesktop.org/www/Software/dbus/"
 license=('GPL' 'custom')
 provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
-source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
-sha256sums=('f77620140ecb4cdc67f37fb444f8a6bea70b5b6461f12f1cbe2cec60fa7de5fe'
+source=("https://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.xz"{,.asc})
+sha256sums=('7c0f9b8e5ec0ff2479383e62c0084a3a29af99edf1514e9f659b81b30d4e353e'
             'SKIP')
-validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
-              '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
+validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 build() {
   cd "$srcdir/dbus-$pkgver"
