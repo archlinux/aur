@@ -1,6 +1,6 @@
 pkgbase = electron21-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 21
-	pkgver = 21.2.2
+	pkgver = 21.2.3
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -20,16 +20,16 @@ pkgbase = electron21-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron21=21.2.2
-	provides = electron=21.2.2
+	provides = electron21=21.2.3
+	provides = electron=21.2.3
 	conflicts = electron21
-	source_x86_64 = electron21-bin-chromedriver-21.2.2-1-x86_64.zip::https://github.com/electron/electron/releases/download/v21.2.2/chromedriver-v21.2.2-linux-x64.zip
-	source_x86_64 = electron21-bin-21.2.2-1-x86_64.zip::https://github.com/electron/electron/releases/download/v21.2.2/electron-v21.2.2-linux-x64.zip
-	sha256sums_x86_64 = 97309827c7983f822c7138584c903b048e67bef836c3f5c7532b0acf37ea1bab
-	sha256sums_x86_64 = 745708dc83b36eadfefddbc055e49922602514d333c6ef16b04b792c0e45f562
-	source_aarch64 = electron21-bin-chromedriver-21.2.2-1-aarch64.zip::https://github.com/electron/electron/releases/download/v21.2.2/chromedriver-v21.2.2-linux-arm64.zip
-	source_aarch64 = electron21-bin-21.2.2-1-aarch64.zip::https://github.com/electron/electron/releases/download/v21.2.2/electron-v21.2.2-linux-arm64.zip
-	sha256sums_aarch64 = 713941e26e57c5d34303d758d7105b1eecf576754a3892d1e5fa20b517bbdf76
-	sha256sums_aarch64 = 460e2c3e0a243277889510fc3d64277fddc17bad05a26dd64f8ebaee22d2336e
+	source_x86_64 = electron21-bin-chromedriver-21.2.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v21.2.3/chromedriver-v21.2.3-linux-x64.zip
+	source_x86_64 = electron21-bin-21.2.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v21.2.3/electron-v21.2.3-linux-x64.zip
+	sha256sums_x86_64 = 60242ccb9b3de39cae63d4dabcb5016eb29478616ee011febd81e7a8c1df5efa
+	sha256sums_x86_64 = 0a78175c56c68a9466bc4e02c38e72a2450b86ece59eb4a1b9620f38ea946705
+	source_aarch64 = electron21-bin-chromedriver-21.2.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v21.2.3/chromedriver-v21.2.3-linux-arm64.zip
+	source_aarch64 = electron21-bin-21.2.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v21.2.3/electron-v21.2.3-linux-arm64.zip
+	sha256sums_aarch64 = f5f68dfc0153d79107e15e32ffc558ba5d6822db4e834a182bd5c0e944c79384
+	sha256sums_aarch64 = 95a4bfa838962c299f449ba937254f687a0cd6a6b1839a8b2bf1f90fd498a5d0
 
 pkgname = electron21-bin
