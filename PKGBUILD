@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=lite-xl-bin
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A lightweight text editor written in Lua"
 arch=("x86_64")
@@ -8,12 +8,13 @@ url="https://github.com/lite-xl/lite-xl"
 license=("MIT License")
 provides=("lite-xl")
 conflicts=("lite-xl" "lite-xl-git")
-source=("lite-xl-$pkgver.tar.gz::$url/releases/download/v${pkgver}/lite-xl-linux-x86_64.tar.gz")
-sha256sums=("70219d2caaf1e3aca3d4f278b0c8d08e9a7ae4c6ece2303e8f1cae9a7a35cc1f")
+source=("lite-xl-$pkgver.tar.gz::$url/releases/download/v${pkgver}/lite-xl-v${pkgver}-addons-linux-x86_64-portable.tar.gz")
+sha256sums=('085073b63a9ea42582ad8b0f9988db757ac672a1a3a75e4a931ea8ea3cd0bd95')
 
 package() {
-  cd lite-xl
-  mkdir "${pkgdir}/usr"
+  mkdir -p "${pkgdir}/opt"
+  mkdir -p "${pkgdir}/usr/bin"
 
-  cp -R bin share "${pkgdir}/usr"
+  mv lite-xl "${pkgdir}/opt"
+  ln -sf "/opt/lite-xl/lite-xl" "$pkgdir/usr/bin/lite-xl"
 }
