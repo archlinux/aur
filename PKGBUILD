@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="A simple CLI tool to convert the images to ASCII art 🦀💙"
@@ -38,4 +38,4 @@ package() {
   cd "$pkgname-$pkgver"
   sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('aa8cdf26ac78adf035088d6e12730a593e17a040f54ebfe39f59fc9c438be1c4')
+sha256sums=('0d84923426ab8c4f61a643df15e9118b38cfe6318f4f38b783ffd32290af6311')
