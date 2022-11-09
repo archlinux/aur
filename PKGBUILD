@@ -3,7 +3,7 @@
 
 _pkgname='bat'
 pkgname="bat-cat-git"
-pkgver=r2448.2dbc88d3
+pkgver=r2521.7c847d84
 pkgrel=1
 pkgdesc="A cat(1) clone with wings."
 arch=('x86_64')
