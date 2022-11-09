@@ -6,6 +6,7 @@ pkgbase = kdrive-bin
 	arch = x86_64
 	license = GPL2
 	depends = org.freedesktop.secrets
+	depends = fuse2
 	provides = kdrive
 	conflicts = kdrive
 	options = !strip
