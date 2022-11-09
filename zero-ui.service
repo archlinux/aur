@@ -1,0 +1,19 @@
+[Unit]
+Description=Zerotier controller WebUI
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+User=root
+Group=root
+LimitNOFILE=16384
+Environment=NODE_ENV=production
+Environment=ZU_SECURE_HEADERS=true
+Environment=ZU_SERVE_FRONTEND=true
+ExecStart=/usr/bin/node /usr/share/webapps/zero-ui/bin/www
+ExecReload=/bin/kill -HUP $MAINPID
+PrivateTmp=true
+PrivateHome=true
+
+[Install]
+WantedBy=multi-user.target

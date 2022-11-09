@@ -1,0 +1,16 @@
+pkgbase = zero-ui
+	pkgdesc = Zerotier Controller UI
+	pkgver = r227.076b496
+	pkgrel = 2
+	url = https://github.com/dec0dOS/zero-ui
+	arch = x86_64
+	license = GPL
+	makedepends = yarn
+	depends = nodejs
+	options = !strip
+	source = zero-ui::git+https://github.com/dec0dOS/zero-ui
+	source = zero-ui.service
+	sha256sums = SKIP
+	sha256sums = 5b0146984590a775c8172f9b396e5dc6a9fec8f9394b0978adce00ee5c4da826
+
+pkgname = zero-ui
