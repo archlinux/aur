@@ -1,17 +1,17 @@
 pkgbase = coder-bin
 	pkgdesc = Remote development environments on your infrastructure provisioned with Terraform
-	pkgver = 0.12.4
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://coder.com
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = AGPL3
-	source_x86_64 = https://github.com/coder/coder/releases/download/v0.12.4/coder_0.12.4_linux_amd64.tar.gz
+	source_x86_64 = https://github.com/coder/coder/releases/download/v0.12.5/coder_0.12.5_linux_amd64.tar.gz
 	sha256sums_x86_64 = 8a21ca53478065438632ab93b8b1f8e7564fbf178224883219b5e4ef6f5fc1cc
-	source_aarch64 = https://github.com/coder/coder/releases/download/v0.12.4/coder_0.12.4_linux_arm64.tar.gz
+	source_aarch64 = https://github.com/coder/coder/releases/download/v0.12.5/coder_0.12.5_linux_arm64.tar.gz
 	sha256sums_aarch64 = 09464dcb235ccf922b8d0d0769ad24a98e5ca1375690309cac74c8bfb8f528f6
-	source_armv7h = https://github.com/coder/coder/releases/download/v0.12.4/coder_0.12.4_linux_armv7.tar.gz
+	source_armv7h = https://github.com/coder/coder/releases/download/v0.12.5/coder_0.12.5_linux_armv7.tar.gz
 	sha256sums_armv7h = 158b5f28873108425c8136ee971097420ce9b919a558e09733ff033f08359aff
 
 pkgname = coder-bin
