@@ -2,13 +2,13 @@
 
 _pkgname="melonds"
 pkgname="${_pkgname}-bin"
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="DS emulator, sorta"
 arch=("x86_64" "aarch64")
 url="http://melonds.kuribo64.net"
 license=("GPL3")
-depends=("libepoxy" "libslirp" "qt5-base" "sdl2")
+depends=("libepoxy" "libslirp" "qt5-base" "qt5-multimedia" "sdl2")
 makedepends=("git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -16,11 +16,11 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}-git::git+https://github.com/Arisotura/melonDS.git#tag=${pkgver}")
 sha256sums=("SKIP")
 
-source_x86_64=("${url}/downloads/melonDS_${pkgver}_linux_x64.7z")
-sha256sums_x86_64=("b1a8a1759acce339ec76591ad7d917e18dc932b6bd4b44fd3a4cf783b13d6f36")
+source_x86_64=("${url}/downloads/melonDS_${pkgver}_linux_x64.zip")
+sha256sums_x86_64=("67eb30acb1bb33a36ad9ea3d025a4666cc188ee51c5289857e940f3892efe84d")
 
-source_aarch64=("${url}/downloads/melonDS_${pkgver}_linux_arm64.7z")
-sha256sums_aarch64=("b5239d1fd729f5c0293e49ac9abc1026549edc0bc8d3ecfffe25143bdc51bf0d")
+source_aarch64=("${url}/downloads/melonDS_${pkgver}_linux_arm64.zip")
+sha256sums_aarch64=("1747bd4d34bae7ecd2fdb15b4f7458d991dd0bd9bf014de6fea8ded4b12664d7")
 
 package() {
   cd "${srcdir}"
