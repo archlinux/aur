@@ -1,0 +1,55 @@
+pkgbase = qmc2-git
+	pkgdesc = Qt based UNIX MAME frontend supporting SDLMAME. (GIT version)
+	pkgver = 0.243.14.g112724d69
+	pkgrel = 1
+	url = https://qmc2.batcom-it.net
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rsync
+	makedepends = mesa
+	makedepends = qt5-declarative
+	makedepends = qt5-multimedia
+	makedepends = qt5-script
+	makedepends = qt5-xmlpatterns
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	makedepends = java-environment
+	makedepends = wget
+	options = debug
+	source = git+https://github.com/qmc2/qmc2-mame-fe.git
+	sha256sums = SKIP
+
+pkgname = qmc2-common-git
+	pkgdesc = Qt based UNIX MAME frontend. Core files, included qCHDman GUI. (GIT version)
+	depends = qt5-script
+	depends = java-environment
+	optdepends = qmc2-sdlmame-git: Frontend for SDLMAME
+	optdepends = qmc2-arcade-git: Arcade frontend for SDLMAME
+	provides = qmc2
+	provides = qmc2-common-git=0.243.14.g112724d69
+	conflicts = qmc2
+
+pkgname = qmc2-sdlmame-git
+	pkgdesc = Qt based UNIX MAME frontend for SDLMAME. (GIT version)
+	depends = qmc2-common-git=0.243.14.g112724d69
+	depends = qt5-multimedia
+	depends = qt5-webengine
+	depends = qt5-xmlpatterns
+	depends = libarchive
+	optdepends = sdlmame: A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support
+	provides = qmc2-sdlmame
+	conflicts = qmc2-sdlmame
+	conflicts = qmc2-sdlmame-svn
+
+pkgname = qmc2-arcade-git
+	pkgdesc = Qt based UNIX MAME Arcade frontend for SDLMAME. (GIT version)
+	depends = qmc2-common-git=0.243.14.g112724d69
+	depends = sdl2
+	depends = libarchive
+	depends = qt5-declarative
+	depends = minizip
+	optdepends = sdlmame: A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support
+	provides = qmc2-arcade
+	conflicts = qmc2-arcade
+	conflicts = qmc2-arcade-svn
