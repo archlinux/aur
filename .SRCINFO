@@ -13,4 +13,5 @@ pkgbase = motivewave
 	depends = xorg-xrandr
 	source = motivewave-6.6.9.deb::https://www.motivewave.com/update/download.do?file_type=LINUX
 	sha512sums = 15a79751ca7d1e76dca7ba68bd25a6b340b3bef72455e9058b13009b2ed05585b290e0fd26cb4d8790d0b6a44d84c641823cf839320df1b8872525cc6c8d31ef
+
 pkgname = motivewave
