@@ -2,13 +2,14 @@
 
 pkgname=quilc
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The high-performance and featureful Quil simulator."
 arch=('x86_64')
 url="https://github.com/quil-lang/quilc"
 license=('Apache')
 depends=(gcc-fortran quicklisp sbcl zeromq)
 conflicts=(rigetti-quilc-git)
+options=(!strip)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('d811258c40b037522069cdd3edc7c2f403baf659d4d7182f47716355af771249877b8073c2272946bc76d8ddc9d60c1836069e2eb17048c215657181f4d3e850')
 
@@ -20,18 +21,18 @@ prepare() {
 
 build() {
     cd $pkgname-$pkgver
-    make quilc
+    make -j1 quilc-sdk-barebones
 }
 
 check() {
     cd $pkgname-$pkgver
-    make test
+    make -j1 test
 }
 
 package() {
     cd $pkgname-$pkgver
     mkdir -p "$pkgdir/usr/bin"
-    make DESTDIR="$pkgdir" PREFIX=/usr install
+    make -j1 DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

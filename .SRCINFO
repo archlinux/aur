@@ -1,7 +1,7 @@
 pkgbase = quilc
 	pkgdesc = The high-performance and featureful Quil simulator.
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quil-lang/quilc
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = quilc
 	depends = sbcl
 	depends = zeromq
 	conflicts = rigetti-quilc-git
+	options = !strip
 	source = https://github.com/quil-lang/quilc/archive/refs/tags/v1.26.0.tar.gz
 	b2sums = d811258c40b037522069cdd3edc7c2f403baf659d4d7182f47716355af771249877b8073c2272946bc76d8ddc9d60c1836069e2eb17048c215657181f4d3e850
 
