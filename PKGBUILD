@@ -1,9 +1,9 @@
 # Maintainer: Thorsten Müller contact@thorko.de
 _base=matrix
-pkgname=python-${_base}-client
+pkgname=python-${_base}-client-git
 pkgdesc="Matrix Client-Server SDK"
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/${_base}-org/${_base}-python-sdk"
 license=('Apache')

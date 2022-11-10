@@ -1,7 +1,7 @@
-pkgbase = python-matrix-client
+pkgbase = python-matrix-client-git
 	pkgdesc = Matrix Client-Server SDK
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matrix-org/matrix-python-sdk
 	arch = any
 	license = Apache
@@ -11,4 +11,4 @@ pkgbase = python-matrix-client
 	source = git+https://github.com/matrix-org/matrix-python-sdk.git
 	sha256sums = SKIP
 
-pkgname = python-matrix-client
+pkgname = python-matrix-client-git
