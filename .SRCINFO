@@ -1,0 +1,17 @@
+pkgbase = textseeker
+	pkgdesc = Simpe text search utility
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://codeberg.org/dyfet/textseeker
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = gcc
+	makedepends = qt6-base
+	makedepends = qt6-tools
+	source = textseeker-v1.4.0.tar.gz::https://codeberg.org/dyfet/textseeker/archive/v1.4.0.tar.gz
+	sha256sums = 7ea93b316687c26a4ec24217e97a96a763640869e0121f40a3b5a4ec42486a4f
+
+pkgname = textseeker
