@@ -1,12 +1,12 @@
 pkgbase = rome
 	pkgdesc = Formatter, linter, bundler, and more for Javascript, Typescript, JSON, HTML, Markdown, and CSS
-	pkgver = 10.0.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://rome.tools
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/rome/tools/archive/cli/v10.0.0/tools-cli-v10.0.0.tar.gz
-	sha256sums = 2a7ea0ad4de14066319f03bf69c92499f5043b466382f532f7f90ad17253077f
+	source = https://github.com/rome/tools/archive/cli/v10.0.1/tools-cli-v10.0.1.tar.gz
+	sha256sums = ec2894480bdf2497a1b4e5d00806e74cebf404cbfa33a906fedf705805f9bdf2
 
 pkgname = rome
