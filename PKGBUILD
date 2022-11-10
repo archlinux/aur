@@ -2,14 +2,13 @@
 
 pkgname=kexi
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A visual database applications creator'
 arch=(x86_64)
 url='https://apps.kde.org/es/kexi-3.3/'
 license=(GPL2)
 depends=(kdb kreport ktexteditor breeze-icons hicolor-icon-theme)
-makedepends=(extra-cmake-modules qt5-tools kdoctools mariadb-libs postgresql qt5-webkit doxygen)
-optdepends=('qt5-webkit: Web browser plugin')
+makedepends=(extra-cmake-modules qt5-tools kdoctools mariadb-libs postgresql doxygen)
 source=(https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz{,.sig}
         kexi-qt-5.13.patch::https://invent.kde.org/office/kexi/-/commit/511d99b7.patch
         kexi-glib-2.70.patch::https://invent.kde.org/office/kexi/-/commit/79894e15.patch)
