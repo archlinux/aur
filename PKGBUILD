@@ -1,6 +1,6 @@
 # Maintainer: Dakeryas <mrdakeryas at gmail dot com>
 pkgname=mac-optimised
-pkgver=8.96
+pkgver=8.97
 pkgrel=6
 pkgdesc="Monkey's Audio library and command line APE converter with optimised build flags (from SDK)"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=("Monkey's Audio License Agreement")
 provides=('mac')
 conflicts=('mac')
 makedepends=('gcc' 'make')
-source=('https://monkeysaudio.com/files/MAC_896_SDK.zip')
-sha256sums=('03bfe0b90609e36918b4a329bf83b2b2aa134f982a220cfac19734973485f669')
+source=('https://monkeysaudio.com/files/MAC_897_SDK.zip')
+sha256sums=('ae0bdaac697d032d6bd0a7a8ad41df2d8da6da679c7c02aada92797cfc5cae52')
 
 _project_path() {
     echo "$srcdir/Source/Projects/NonWindows"
