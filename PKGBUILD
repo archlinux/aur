@@ -1,9 +1,9 @@
-# Contributor: Iru Cai <mytbk920423@gmail.com>
+# Maintainer: Thorsten Müller contact@thorko.de
 _base=matrix
-pkgname=python-${_base}-client-git
+pkgname=python-${_base}-client
 pkgdesc="Matrix Client-Server SDK"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/${_base}-org/${_base}-python-sdk"
 license=('Apache')
