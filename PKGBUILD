@@ -2,7 +2,7 @@
 # Contributor: Dario Ostuni <another.code.996@gmail.com>
 
 pkgname=astc-encoder-git
-pkgver=4.0.0.r1.g9cfb30b
+pkgver=4.2.0.r0.g3103c70
 pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard (git version)'
 arch=('x86_64')
@@ -17,12 +17,12 @@ source=('git+https://github.com/ARM-software/astc-encoder.git#branch=main'
         '010-astc-encoder-use-shared-library.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'dbd5d3db47c01435698e6332a9049e6b977a952ee6628aa55bc0866d7da36210')
+            'de18c29f9a12f00562487e73d255135184bb74cd0ebacd0576363655e7071e55')
 
 prepare() {
     git -C astc-encoder submodule init
     git -C astc-encoder config --local submodule.Source/GoogleTest.url "${srcdir}/googletest"
-    git -C astc-encoder submodule update
+    git -C astc-encoder -c protocol.file.allow='always' submodule update
     patch -d astc-encoder -Np1 -i "${srcdir}/010-astc-encoder-use-shared-library.patch"
 }
 
