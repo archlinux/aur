@@ -33,18 +33,18 @@ prepare() {
 
 build() {
     cd $pkgname-$pkgver
-    make QVM_FEATURES='qvm-intrinsics' qvm
+    make -j1 QVM_FEATURES='qvm-intrinsics' qvm
 }
 
 check() {
     cd $pkgname-$pkgver
-    make test
+    make -j1 test
 }
 
 package() {
     cd $pkgname-$pkgver
     mkdir -p "$pkgdir/usr/bin"
-    make DESTDIR="$pkgdir" PREFIX=/usr install
+    make -j1 DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
