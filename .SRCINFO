@@ -1,7 +1,7 @@
 pkgbase = qvm
 	pkgdesc = The high-performance and featureful Quil simulator.
 	pkgver = 1.17.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/quil-lang/qvm
 	arch = x86_64
 	license = Apache

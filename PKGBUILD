@@ -2,7 +2,7 @@
 
 pkgname=qvm
 pkgver=1.17.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The high-performance and featureful Quil simulator."
 arch=('x86_64')
 url="https://github.com/quil-lang/qvm"
@@ -47,6 +47,7 @@ package() {
     cd $pkgname-$pkgver
     mkdir -p "$pkgdir/usr/bin"
     make -j1 DESTDIR="$pkgdir" PREFIX=/usr install
+    install -Dm644 doc/man/qvm.1 "$pkgfdir/usr/share/man/man1/qvm.1"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
