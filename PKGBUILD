@@ -4,7 +4,7 @@
 
 pkgname=koofr
 pkgver=6001.eb5e9e0
-pkgrel=1
+pkgrel=2
 pkgdesc="Managing your Koofr cloud drive"
 arch=('x86_64')
 url="https://koofr.eu/"
@@ -18,11 +18,7 @@ sha512sums=('edfb13dfc82608cb9dd184cfe3533f528f48fcd6c8655fb7b30f91a981b77f66d7a
             '27c27808ebe8e1d36be6714f2d42c89dd4e338bdf6e76af56c5aaf96197b69d4e96fe5b2a920aa5124bca2caeff88eaefeede90c8e1d695d6880de61936e74f1')
 
 package() {
-  cd ${srcdir}
-
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  mkdir -p ${HOME}/.config/autostart/
-  cp "${pkgname}.desktop" "${HOME}/.config/autostart/${pkgname}.desktop"
 
   cd ${pkgname}
   install -Dm644 "icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
