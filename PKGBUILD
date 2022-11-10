@@ -7,24 +7,31 @@
 
 pkgname=lib32-sdl_mixer
 pkgver=1.2.12
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple multi-channel audio mixer'
-arch=('x86_64')
-url='https://www.libsdl.org/projects/SDL_mixer/'
-license=('custom')
-depends=('lib32-libmikmod' 'lib32-libvorbis' 'lib32-sdl' 'lib32-smpeg' 'sdl_mixer')
-makedepends=('gcc-multilib' 'lib32-fluidsynth')
+arch=(x86_64)
+url=https://www.libsdl.org/projects/SDL_mixer/
+license=(custom)
+depends=(
+  lib32-libmikmod
+  lib32-libvorbis
+  lib32-sdl
+  sdl_mixer
+)
+makedepends=(lib32-fluidsynth)
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
-source=("https://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-${pkgver}.tar.gz"
-        'sdl_mixer-mikmod1.patch'
-        'sdl_mixer-mikmod2.patch'
-        'sdl_mixer-fluidsynth-volume.patch'
-        'sdl_mixer-double-free-crash.patch')
-sha256sums=('1644308279a975799049e4826af2cfc787cad2abb11aa14562e402521f86992a'
-            'e0d36cd81083a0b033436b8f300cc4f4513a6043e57fea139afbade02dbe0de8'
-            'a0c5326b4363464159a38dc51badad984b65ce0fa4c3b1dd1ad5f73bc7b6c55e'
-            '4b6c567debf18c88398d4045a6e4ed0954f0e04cc61162ca907a83ddec17cd70'
-            'b707f5c8d1229d1612cc8a9f4e976f0a3b19ea40d7bd1d5bc1cbd5c9f8bca56d')
+source=(
+  https://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-${pkgver}.tar.gz
+  sdl_mixer-mikmod1.patch
+  sdl_mixer-mikmod2.patch
+  sdl_mixer-fluidsynth-volume.patch
+  sdl_mixer-double-free-crash.patch
+)
+b2sums=('b2fa822204fdaad860ff30307120bff7badbcc042d0b891563973794f715099aa961983e0dbf7e3d936179cbc615517c268f01f4619fcdcd48f18ff66dc49bd1'
+        'dde98e1896dba35d3e40c9966d064769122f8411de9a189efd8e51959000d950961bc5e23c059a797c22278fa6e133fb5eb1c36cc204b869c93750e8b50782b0'
+        '0736586531710a6524398128539761d01c20cf150c7e9ed81413d7d6030300a8c1c96d36d4239b588091edcae709e824250808a85bb98916c3b454aea35662c6'
+        'f34ecba744d1c110d9feb05ae1cd5774b8a749ec1c77cc470a03ba3ed6766cecb2b5f09e28a246a724594ae3277f862c3531ab0dd857e5e90c0769a8e93847cb'
+        '068e223b84a162731ea9a306c883d311524db850665aaf17f844619dc81d5c69ac5845b8305c06753f16457e649c63cbf1b997b6111a3263b023f478fd77f83f')
 
 prepare() {
   cd SDL_mixer-${pkgver}
@@ -44,11 +51,11 @@ build() {
   cd SDL_mixer-${pkgver}
 
   export CC='gcc -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32'
+    --prefix=/usr \
+    --libdir=/usr/lib32
   make
 }
 
