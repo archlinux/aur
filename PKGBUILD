@@ -2,14 +2,14 @@
 # Maintainer: Vyacheslav Razykov <v.razykov@gmail.com>
 
 pkgname=outline-client-appimage
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland')
 url="https://getoutline.org"
 license=("Apache License 2.0")
-source=("Outline-Client.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/3/Outline-Client.AppImage"
+source=("Outline-Client.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/${pkgver}/4/Outline-Client.AppImage"
         "outline-client16.png"
         "outline-client24.png"
         "outline-client32.png"
@@ -38,7 +38,7 @@ package() {
   ln -s "/opt/outline-client/Outline-Client.AppImage" "${pkgdir}/usr/bin/outline-client"
 }
 
-sha512sums=('5b8709540e4f1812cbd6b734761dad88bffe595760ba04fd12d9a36fd3ea5c451376eda63aa29ebf35b96a85576a16eedb6978d5b1f51cf1198b185bade87f56'
+sha512sums=('ca5f2048ae98f0463cfafc0533978791bec65a5075252bf8ed21b4d0c1fc81a986574724f096252c696a2a8c5b25cccf157d7047e4daeb984a1264dc657dbd23'
             '3a905a2ffa273b8e1277066def642428eff18e5be665974be5ae0fe9f0d0d49b52adb56f2e11f759d4c5a4ddcb7a82696f98785310c343768f2e2a8f037b8ee2'
             'c92891567c318d4b5f22b93b97536ff38346a392ef1ddb4da6fe80ec31c6e2c05095b5c0b162f328bbf8f22e505529f04bae6f1afbd3891b41e3f8a14079aafa'
             '9bebe0c6820aa4df14c4f6f9da885e7a2d940ec3b741d857e3045344e10cd9a4d20d8390a254ce3bf0188b92b331a8d3a930b35d0973f079b35eaeadcf8b0dc0'
