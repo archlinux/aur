@@ -7,8 +7,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-smpeg
-pkgver=0.4.5
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='SDL MPEG Player Library'
 arch=(x86_64)
 url=https://icculus.org/smpeg/
@@ -16,20 +16,26 @@ license=(LGPL)
 depends=(
   lib32-gcc-libs
   lib32-glibc
-  lib32-sdl
+  lib32-sdl2
   smpeg
 )
 makedepends=(
+  git
   lib32-glu
   lib32-mesa
-  subversion
 )
-source=(smpeg::svn://svn.icculus.org/smpeg/tags/release_${pkgver//./_})
+_tag=62aafbc4ee032c1e9ef02ac8bf98b908c5af62ea
+source=(git+https://github.com/icculus/smpeg.git#tag=${_tag})
 b2sums=(SKIP)
 
 prepare() {
   cd smpeg
   ./autogen.sh
+}
+
+pkgver() {
+  cd smpeg
+  git describe --tags | sed 's/^release_//; s/_/./g'
 }
 
 build() {
