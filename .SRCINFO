@@ -1,0 +1,19 @@
+pkgbase = jupyterlab-hatch-jupyter-builder-git
+	pkgdesc = Build hook plugin for Hatch that adds a build step for use with Jupyter packages
+	pkgver = v0.8.1.r6.g1da7d0f
+	pkgrel = 1
+	url = https://github.com/jupyterlab/hatch-jupyter-builder
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-hatchling
+	provides = jupyterlab-hatch-jupyter-builder
+	conflicts = jupyterlab-hatch-jupyter-builder
+	source = git+https://github.com/jupyterlab/hatch-jupyter-builder
+	md5sums = SKIP
+
+pkgname = jupyterlab-hatch-jupyter-builder-git
