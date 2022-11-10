@@ -8,7 +8,7 @@ _packages=(
     python-cirq-google
     python-cirq-ionq
     python-cirq-pasqal
-    # python-cirq-rigetti
+    python-cirq-rigetti
     python-cirq-web
 )
 pkgname=(
@@ -16,7 +16,7 @@ pkgname=(
     ${_packages[@]}
 )
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits.'
 arch=(any)
 url='https://github.com/quantumlib/Cirq'
@@ -89,12 +89,12 @@ package_python-cirq-pasqal() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# package_python-cirq-rigetti() {
-#     depends+=(python-pyquil)
-#     cd $_name-$pkgver/cirq-rigetti
-#     python -m installer --destdir="$pkgdir" dist/*.whl
-#     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-# }
+package_python-cirq-rigetti() {
+    depends+=(python-pyquil)
+    cd $_name-$pkgver/cirq-rigetti
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
 
 package_python-cirq-web() {
     cd $_name-$pkgver/cirq-web
