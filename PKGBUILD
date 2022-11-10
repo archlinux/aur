@@ -1,20 +1,20 @@
 # Maintainer: Fabian Bornschein <fabiscafe@mailbox.org>
 
 pkgname=misskey
-pkgver=12.118.1
+pkgver=12.119.0
 pkgrel=1
 pkgdesc='🌎 An interplanetary microblogging platform 🚀 (Experimental)'
 url='https://github.com/misskey-dev/misskey'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
-depends=('nodejs>=18' 'nodejs<=19' 'npm' 'postgresql' 'redis' 'yarn')
+depends=('nodejs-lts-gallium' 'npm' 'postgresql' 'redis' 'yarn')
 makedepends=('git' 'python')
-#options=('debug')
+options=('debug')
 install='misskey.install'
 optdepends=('elasticsearch: Search functionality'
             'ffmpeg: Media de-encode functionality'
             'nginx: Reverse-proxy usage')
-_commit='46ec0303b7e3a20c0762f49b205c901d0a54b9d6' #tag/12.118.1
+_commit='a2a1636c1031e4dd5c60e5a5108386f4716a16a1' #tag/12.119.0
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
