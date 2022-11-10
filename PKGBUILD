@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libxinerama' 'libxi')
 makedepends=('make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bakkeby/encircle/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b6e239e72da8618df0ad6848da47c3c923ed365dc9fe4a9a5cce26ad490ef4f0')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
