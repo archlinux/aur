@@ -27,7 +27,8 @@ optdepends=(
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
 _commit=cfb1f88d07ae066dafadf96341d491c0eade54c0  # tags/20.04.67
-source=("git+https://github.com/pop-os/system76-driver.git#commit=${_commit}?signed"
+source=(
+  "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}?signed"
   'cli.patch'
   'wayland.patch'
   'actions.patch')
