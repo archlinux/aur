@@ -8,7 +8,7 @@ url=https://github.com/gorhill/uMatrix
 arch=('any')
 license=('GPL3')
 groups=('firefox-addons')
-source=("https://addons.cdn.mozilla.net/user-media/addons/613250/umatrix-$pkgver-an+fx.xpi")
+source=("$url/releases/download/$pkgver/uMatrix_$pkgver.firefox.signed.xpi")
 noextract=("${source##*/}")
 sha256sums=('1de172b1d82de28c334834f7b0eaece0b503f59e62cfc0ccf23222b8f2cb88e5')
 

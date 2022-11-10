@@ -6,8 +6,8 @@ pkgbase = firefox-umatrix
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	noextract = umatrix-1.4.4-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/613250/umatrix-1.4.4-an+fx.xpi
+	noextract = uMatrix_1.4.4.firefox.signed.xpi
+	source = https://github.com/gorhill/uMatrix/releases/download/1.4.4/uMatrix_1.4.4.firefox.signed.xpi
 	sha256sums = 1de172b1d82de28c334834f7b0eaece0b503f59e62cfc0ccf23222b8f2cb88e5
 
 pkgname = firefox-umatrix
