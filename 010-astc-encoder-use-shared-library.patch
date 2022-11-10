@@ -43,7 +43,7 @@
  endif()
  
  macro(astcenc_set_properties NAME)
-@@ -310,16 +314,16 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+@@ -302,16 +306,16 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
              COMPILE_FLAGS ${EXTERNAL_CXX_FLAGS})
  endif()
  
@@ -64,7 +64,7 @@
          PRIVATE
              $<$<CXX_COMPILER_ID:MSVC>:/W3>)
  
-@@ -330,9 +334,10 @@ if(${CLI})
+@@ -322,9 +326,10 @@ if(${CLI})
          astcenccli_version.h
          ESCAPE_QUOTES @ONLY)
  
