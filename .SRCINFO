@@ -1,6 +1,6 @@
 pkgbase = nvidia-open-beta
 	pkgdesc = NVIDIA open GPU kernel modules (beta version)
-	pkgver = 520.56.06
+	pkgver = 525.53
 	pkgrel = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules/
 	arch = x86_64
@@ -10,22 +10,22 @@ pkgbase = nvidia-open-beta
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = https://github.com/NVIDIA/open-gpu-kernel-modules/archive/520.56.06/nvidia-open-520.56.06.tar.gz
+	source = https://github.com/NVIDIA/open-gpu-kernel-modules/archive/525.53/nvidia-open-525.53.tar.gz
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
-	source = 140-nvidia-open-gcc-ibt-sls.patch
-	sha256sums = c89a5c9be6d79ba45f1b64ffa7eb671adc0ae074e46c1893cf1171a6312d0f3f
-	sha256sums = 515be5b68ca307b7b21687d117926f67756de9f6f4f5dd17dfef0ee02674f9fd
+	source = 140-nvidia-open-gcc-sls.patch
+	sha256sums = ac49b89a9ce65165f0deb48f086eaebaaecb03cbcd321cbaf33d0022076abcb2
+	sha256sums = 492a157b67badee3cfaafbf07b5540078590946869391301beb326ca86e3a6fb
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
-	sha256sums = b7ac1ca4d72fc8392e6682df616d53ba4e9d4e761217ac6339d32c377990cf64
-	sha256sums = b9cb1715caa3431c32d9a1b11bda4dd10986747214a2a952a01da913433c421f
+	sha256sums = e305ea7aa40b028887621d5149727023d09461c87e82961adecbfbc271924f48
+	sha256sums = baa891c56747a4862f64f3259aebcaf24beade8d850a77468f92d4f9bbf6cd7f
 
 pkgname = nvidia-open-beta
 	depends = linux
-	depends = nvidia-utils-beta=520.56.06
+	depends = nvidia-utils-beta=525.53
 	depends = libglvnd
-	provides = nvidia-open=520.56.06
+	provides = nvidia-open=525.53
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
@@ -33,9 +33,9 @@ pkgname = nvidia-open-beta
 pkgname = nvidia-open-beta-dkms
 	pkgdesc = NVIDIA open GPU kernel modules (sources; beta version)
 	depends = dkms
-	depends = nvidia-utils-beta=520.56.06
+	depends = nvidia-utils-beta=525.53
 	depends = libglvnd
-	provides = nvidia-open=520.56.06
+	provides = nvidia-open=525.53
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
