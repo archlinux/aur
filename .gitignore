@@ -1,5 +1,3 @@
-*.xz
-*.zst
-pkg
-src
-*.tar.gz
+*~
+*.log
+imapfilter-*.tar.*

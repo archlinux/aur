@@ -1,16 +1,17 @@
-# Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
 # Contributor: morwel <rt dot riedel at web dot de>
 # Contributor: bct <bct at diffeq dot com>
 
 pkgname=imapfilter
 pkgver=2.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A mail filtering utility for processing IMAP mailboxes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/lefcha/imapfilter"
 license=('MIT')
-depends=('lua' 'pcre' 'openssl')
+depends=('lua' 'pcre2' 'openssl')
 optdepends=('openssl: SSL/TLS encryption and CRAM-MD5 authentication')
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/lefcha/${pkgname}/tar.gz/v${pkgver}")
 sha256sums=('e9063ca210cefe6c47771b400c9f3620bd7a5dce2dfd4d46aeaa86f4cac1d87d')
