@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.162223.a71d068fd07
+pkgver=23.0.0_devel.162697.ecc2dfc503d
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -100,7 +100,7 @@ build () {
         -D microsoft-clc=disabled \
         -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc
 
-    meson configure _build
+    meson configure  --no-pager _build
     
     ninja  $NINJAFLAGS -C _build
 }
