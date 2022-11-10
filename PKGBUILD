@@ -1,7 +1,7 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An ACME (RFC 8555) client daemon"
 arch=('x86_64')
 url="https://github.com/breard-r/acmed/"

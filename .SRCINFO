@@ -1,7 +1,7 @@
 pkgbase = acmed
 	pkgdesc = An ACME (RFC 8555) client daemon
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/breard-r/acmed/
 	arch = x86_64
 	license = Apache
