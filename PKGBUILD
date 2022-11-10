@@ -1,7 +1,7 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
 pkgname=forticlient-vpn
 pkgver=7.0.7.0246
-pkgrel=3
+pkgrel=4
 pkgdesc="Build through the official package of FortiClient VPN"
 arch=("x86_64")
 url="https://www.fortinet.com/support/product-downloads"
@@ -34,7 +34,7 @@ package() {
 	
 	# Symbolic binaries which are located in /opt
 	mkdir -p ${pkgdir}/usr/bin
-	ln -sf '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
+	#ln -sf '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
 	ln -sf '/opt/forticlient/forticlient-cli' "${pkgdir}/usr/bin/forticlient"
 
 	# Symbolic launchers

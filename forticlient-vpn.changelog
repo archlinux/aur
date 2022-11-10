@@ -1,4 +1,8 @@
 ## forticlient-vpn - 7.0.7.0246 - 2022-11-10
+* forticlient-vpn - 7.0.7.0246 - `release 4`
+  + Remove symbolyc link to fortivpn
+
+## forticlient-vpn - 7.0.7.0246 - 2022-11-10
 * forticlient-vpn - 7.0.7.0246 - `release 3`
   + gzip and systemd moved to `depends`
   + upgraded the install script

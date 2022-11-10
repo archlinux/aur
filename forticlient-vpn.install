@@ -210,9 +210,6 @@ post_remove() {
 	# Remove GUI symlink
 	rm -rf /usr/bin/forticlient || true
 
-	# Remove fortivpn symlink
-	rm -rf /usr/bin/fortivpn || true
-
 	# Remove FortiClient service
 	rm -rf /lib/systemd/system/forticlient.service || true
 
