@@ -1,42 +1,36 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=python-rtoml
-pkgver=0.8
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc="A better TOML library for python implemented in rust."
 arch=('x86_64')
 url="https://pypi.org/project/rtoml"
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools' 'python-setuptools-rust' 'cargo')
+depends=(python)
+makedepends=(cargo maturin python-installer)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samuelcolvin/rtoml/archive/v$pkgver.tar.gz")
-sha256sums=('6f7c47762b8a0e908633d8f2cdbbaddc4e79d7abc46ac555584c2f80657cb32c')
-b2sums=('6798b81d7a2ff3000694ee2cdd200bd2d6483e1d0f487977b6b2ce61bdb493352893d1225c431c5bdcf8c05ead86645ff2698fc330c76d4a33d55f2dfbf96aaa')
+sha256sums=('cd144132022e8847e16242a8d4f81abeef793dd236b993e0adaa07700b1b593c')
+b2sums=('473479dbff92e6d5545183e443d422fa9fb5b6722d6e5912d5dd65cb2c0f53b16cbe12639f8cf3e3a581c71bbaeb71622d1e8aa8028de40d656f66ebd8a7778f')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
 prepare() {
   cd "rtoml-$pkgver"
 
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "rtoml-$pkgver"
 
-  python setup.py build
-}
-
-check() {
-  cd "rtoml-$pkgver"
-
-  export PYTHONPATH="build/lib"
-  python setup.py test
+  CFLAGS="$CFLAGS -fPIC" \
+    maturin build --frozen --release --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
   cd "rtoml-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" target/wheels/*.whl
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
