@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp
-pkgver=7.6.3.0
+pkgver=7.5.3.0.r7.g6b7b7325
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -46,6 +46,11 @@ _n_parallel_build_jobs=1
 # pick where the opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
 _opencascade_install_prefix="/usr"
+
+pkgver(){
+  cd OCP
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
 
 prepare(){
   cd OCP
