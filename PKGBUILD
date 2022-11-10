@@ -2,14 +2,13 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=21.07.70.r6606.fcc14a6e7
+pkgver=23.03.70.r6861.087154c11
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
 license=('GPL')
 url='https://kde.org/applications/en/multimedia/org.kde.k3b'
-depends=('qt5-webkit'
-         'knewstuff'
+depends=('knewstuff'
          'kfilemetadata'
          'knotifyconfig'
          'kcmutils'
@@ -38,6 +37,7 @@ provides=('k3b')
 conflicts=('k3b')
 source=('git+https://invent.kde.org/multimedia/k3b.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd k3b
@@ -46,8 +46,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   sed -e 's|Sndfile|SndFile|g' \
       -i k3b/cmake/modules/FindSndfile.cmake \
       -i k3b/CMakeLists.txt
@@ -56,17 +54,17 @@ prepare() {
 }
 
 build() {
-  cd build
-  cmake ../k3b \
+  cmake -S k3b -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
     -DBUILD_TESTING=OFF \
+    -DQt5WebKitWidgets_FOUND=OFF
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }

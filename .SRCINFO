@@ -1,6 +1,6 @@
 pkgbase = k3b-git
 	pkgdesc = Feature-rich and easy to handle CD burning application. (Git version)
-	pkgver = 21.07.70.r6606.fcc14a6e7
+	pkgver = 23.03.70.r6861.087154c11
 	pkgrel = 1
 	url = https://kde.org/applications/en/multimedia/org.kde.k3b
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = k3b-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = python
-	depends = qt5-webkit
 	depends = knewstuff
 	depends = kfilemetadata
 	depends = knotifyconfig
@@ -30,8 +29,8 @@ pkgbase = k3b-git
 	optdepends = emovix: for bootable multimedia CD/DVD support
 	provides = k3b
 	conflicts = k3b
+	options = debug
 	source = git+https://invent.kde.org/multimedia/k3b.git
 	sha256sums = SKIP
 
 pkgname = k3b-git
-
