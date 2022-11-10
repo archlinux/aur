@@ -4,17 +4,17 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='zed'
 pkgname="ocaml-$_projectname"
-pkgver='3.2.0'
+pkgver='3.2.1'
 pkgrel='2'
 pkgdesc='Abstract engine for text edition in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
-depends=('ocaml>=4.02.3' 'ocaml-react' 'ocaml-result' 'ocaml-uchar' 'ocaml-uuseg' 'ocaml-uucp>=1.1.0' 'ocaml-uutf')
+depends=('ocaml>=4.02.3' 'ocaml-react' 'ocaml-result' 'ocaml-uchar' 'ocaml-uuseg' 'ocaml-uucp>=2.0.0' 'ocaml-uutf')
 makedepends=('dune>=3.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('33a7bc450564a4a368bc76939e44e0be87cb25502d9f659b7f7dbb5bbdc48ef713f37d3d5b29885f950309febf3b77e6753b337b91917353abc655e7a35327e9')
+sha512sums=('a1de65684d04d5d44ca4396365c98bfa070cf7c78318b53c3ad3ecca2b411450158ef7644b235490d879b37fe983f1707fef527b69af0c2958e45fd1e7a30f11')
 
 _sourcedirectory="$_projectname-$pkgver"
 
