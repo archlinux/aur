@@ -2,13 +2,14 @@
 
 pkgname=qvm
 pkgver=1.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The high-performance and featureful Quil simulator."
 arch=('x86_64')
 url="https://github.com/quil-lang/qvm"
 license=('Apache' 'AGPL3')
 depends=(quicklisp quilc sbcl)
 conflicts=(rigetti-qvm-git)
+options=(!strip)
 _static_vectors_patch='e2b0dd016ac7cec4f7dd83838cfac222aded95d7.patch'
 _intrinsics_patch='e839fa9568214488a09c51ffeda1137581e77a60.patch'
 source=(

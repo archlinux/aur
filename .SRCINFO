@@ -1,7 +1,7 @@
 pkgbase = qvm
 	pkgdesc = The high-performance and featureful Quil simulator.
 	pkgver = 1.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quil-lang/qvm
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = qvm
 	depends = quilc
 	depends = sbcl
 	conflicts = rigetti-qvm-git
+	options = !strip
 	source = https://github.com/quil-lang/qvm/archive/refs/tags/v1.17.2.tar.gz
 	source = https://github.com/quil-lang/qvm/commit/e2b0dd016ac7cec4f7dd83838cfac222aded95d7.patch
 	source = https://github.com/quil-lang/qvm/commit/e839fa9568214488a09c51ffeda1137581e77a60.patch
