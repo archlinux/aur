@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=osqp
-_pkgver=0.6.0.6
+_pkgver=0.6.0.7
 pkgname=r-${_pkgname,,}
-pkgver=0.6.0.6
+pkgver=0.6.0.7
 pkgrel=1
 pkgdesc="Quadratic Programming Solver using the 'OSQP' Library"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('853f431b96d6097fd679adb84e288e159d60bf2f0b0d6ddc06ff7acef44ec6e0')
+sha256sums=('ee6584d02341e3f1d8fab3b2cb93defd6c48d561297d82a6bedb3e7541868203')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
