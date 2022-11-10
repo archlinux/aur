@@ -3,7 +3,7 @@
 
 pkgname=melonds
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="DS emulator, sorta"
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="http://melonds.kuribo64.net/"
