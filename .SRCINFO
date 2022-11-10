@@ -1,7 +1,7 @@
 pkgbase = koofr
 	pkgdesc = Managing your Koofr cloud drive
 	pkgver = 6001.eb5e9e0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://koofr.eu/
 	arch = x86_64
 	license = custom
