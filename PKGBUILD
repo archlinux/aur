@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=elasticsearch-bin
 pkgver=8.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Log analyzer. search, store and analyze logs"
 arch=('x86_64')
 url='https://elastic.co'

@@ -1,7 +1,7 @@
 pkgbase = elasticsearch-bin
 	pkgdesc = Log analyzer. search, store and analyze logs
 	pkgver = 8.5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://elastic.co
 	install = elasticsearch.install
 	arch = x86_64
