@@ -8,7 +8,7 @@ pkgname=cro-chain-desktop-bin
 pkgdesc='Crypto.com DeFi Desktop Wallet (AppImage version)'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 arch=('x86_64')
 provides=('cro-chain-desktop')
@@ -16,7 +16,7 @@ conflicts=('cro-chain-desktop')
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}"
         "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE")
-sha512sums=('f0b3250af3ea53f9e6edcbb743b1689fc59ed6ba2b27f04473cef8e37c71fe98d037140a06f236c687243799fbc2b1f08e82b6ebeacb46875e9c7a7682cfba7a'
+sha512sums=('2072db8d79ddb7c6de3aa730a3e4f59794b56ff8f987728ea3e77bad679872dc53c37bd17a87973b09bb7fcaf92ff066465a3ef35a715990c6448b1f287dc1d2'
             'e21a90ebc22283c19f4535f263a0297a2428633572ddf19ec515496bd33fe70eacf3c3de63395307cd268330e8325b80e985190b2e92bbbf0079440aa84e89ea')
 
 build() {
