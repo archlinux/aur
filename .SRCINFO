@@ -1,7 +1,7 @@
 pkgbase = arduino-ide-bin
 	pkgdesc = Arduino prototyping platform IDE, rewrite based on the Theia IDE framework.
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arduino/arduino-ide
 	arch = x86_64
 	license = AGPL3
