@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-6.0-bin
 	pkgver = 6.0.11.sdk403
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = dotnet-core-6.0-bin
 
 pkgname = aspnet-runtime-6.0-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
-	depends = dotnet-runtime-bin
+	depends = dotnet-runtime-6.0-bin
 	provides = aspnet-runtime=6.0.11
 	provides = aspnet-runtime-6.0
 	conflicts = aspnet-runtime=6.0.11
@@ -42,9 +42,9 @@ pkgname = dotnet-sdk-6.0-bin
 	pkgdesc = The .NET Core SDK (binary)
 	depends = glibc
 	depends = gcc-libs
-	depends = dotnet-runtime-bin
-	depends = dotnet-targeting-pack-bin
-	depends = netstandard-targeting-pack-bin
+	depends = dotnet-runtime-6.0-bin
+	depends = dotnet-targeting-pack-6.0-bin
+	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk=6.0.11.sdk403
 	provides = dotnet-sdk-6.0
@@ -61,7 +61,7 @@ pkgname = dotnet-targeting-pack-6.0-bin
 
 pkgname = aspnet-targeting-pack-6.0-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
-	depends = dotnet-targeting-pack-bin
+	depends = dotnet-targeting-pack-6.0-bin
 	provides = aspnet-targeting-pack=6.0.11
 	provides = aspnet-targeting-pack-6.0
 	conflicts = aspnet-targeting-pack=6.0.11

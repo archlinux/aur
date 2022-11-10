@@ -11,7 +11,7 @@ pkgname=(
 pkgver=6.0.11.sdk403
 _runtimever=6.0.11
 _sdkver=6.0.403
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -46,7 +46,7 @@ package_dotnet-runtime-6.0-bin() {
 
 package_aspnet-runtime-6.0-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
-  depends=('dotnet-runtime-bin')
+  depends=('dotnet-runtime-6.0-bin')
   provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-6.0")
   conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-6.0")
 
@@ -60,9 +60,9 @@ package_dotnet-sdk-6.0-bin() {
   depends=(
     'glibc'
     'gcc-libs'
-    'dotnet-runtime-bin'
-    'dotnet-targeting-pack-bin'
-    'netstandard-targeting-pack-bin')
+    'dotnet-runtime-6.0-bin'
+    'dotnet-targeting-pack-6.0-bin'
+    'netstandard-targeting-pack')
   optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
   provides=("dotnet-sdk=${pkgver}" "dotnet-sdk-6.0")
   conflicts=("dotnet-sdk=${pkgver}" "dotnet-sdk-6.0")
@@ -89,7 +89,7 @@ package_dotnet-targeting-pack-6.0-bin() {
 
 package_aspnet-targeting-pack-6.0-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
-  depends=(dotnet-targeting-pack-bin)
+  depends=(dotnet-targeting-pack-6.0-bin)
   provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0)
   conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0)
 
