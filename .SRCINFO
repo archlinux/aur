@@ -1,7 +1,7 @@
 pkgbase = libfprint-goodixtls-git
 	pkgdesc = libfprint fork for goodixtls devices. Currently supports 5110. Note you will need to flash your device with [goodix-fp-dump](https://github.com/mpi3d/goodix-fp-dump) to use this
-	pkgver = r1678.bc539f9
-	pkgrel = 4
+	pkgver = r1698.c734fd9
+	pkgrel = 2
 	url = https://github.com/0x00002a/libfprint/tree/0x2a/dev/goodixtls-sigfm
 	arch = x86_64
 	license = LGPL2
@@ -11,6 +11,7 @@ pkgbase = libfprint-goodixtls-git
 	makedepends = pkgconf
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
+	makedepends = doctest
 	depends = libgusb
 	depends = openssl
 	depends = pixman
