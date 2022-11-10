@@ -13,7 +13,7 @@ license=("OFL")
 source=("http://smc.org.in/downloads/fonts/dyuthi/Dyuthi-Regular.ttf"
         "https://gitlab.com/smc/fonts/dyuthi/raw/master/LICENSE.txt"
         "https://gitlab.com/smc/fonts/dyuthi/raw/master/67-smc-dyuthi.conf")
-sha256sums=('d7587e6982943aa5dee8f1c9b5a7775b80de6ba05345e2d34c37b96d3286db48'
+sha256sums=('2af458df4da1c27b781aeba77f45ac842fe8ac659983f481cecc047ec274d114'
             '3c039a91d61ba6b48397d0c1b1af9306686c79cfd0bd0735089b8499955a3e30'
             '3ca219d970748beaa7b64f3cacf398fff5f6164786f9db6a93292fa81c919652')
 
