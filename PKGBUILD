@@ -124,13 +124,13 @@ prepare() {
     for submodule in "${!submodule_paths[@]}"; do
         git config submodule.${submodule}.url "${srcdir}/${submodule_paths[$submodule]}"
     done
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     cd laf
     git submodule init
     git config submodule.third_party/stringencoders.url "${srcdir}/stringencoders"
     git config submodule.third_party/googletest.url "${srcdir}/googletest" # not required if LAF_WITH_TESTS=OFF
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     cd "${srcdir}/${_pkgname}"
     patch --strip=1 --input="${srcdir}/desktop.patch"
