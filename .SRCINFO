@@ -1,6 +1,6 @@
 pkgbase = nickvision-tube-converter
 	pkgdesc = An easy-to-use YouTube video downloader
-	pkgver = 2022.10.3
+	pkgver = 2022.11.0
 	pkgrel = 1
 	url = https://github.com/nlogozzo/NickvisionTubeConverter
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = nickvision-tube-converter
 	depends = yt-dlp
 	depends = webkit2gtk-5.0
 	depends = ffmpeg
-	source = git+https://github.com/nlogozzo/NickvisionTubeConverter.git#tag=2022.10.3
-	source = don-t-install-pre-built-binaries.patch
+	source = git+https://github.com/nlogozzo/NickvisionTubeConverter.git#tag=2022.11.0
 	sha256sums = SKIP
-	sha256sums = b62854996f6539748c1fedeb09d67ebc0c06681adeb4173b053d3c2b5e9df74f
 
 pkgname = nickvision-tube-converter
