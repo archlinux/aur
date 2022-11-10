@@ -1,0 +1,18 @@
+pkgbase = python-types-retry
+	pkgdesc = Typing stubs for retry
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/python/typeshed
+	arch = any
+	license = Apache
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types-retry/types-retry-0.9.9.tar.gz
+	source = https://github.com/python/typeshed/blob/main/LICENSE
+	b2sums = c19542cfb6b6ec785de3afe4787bb1d51ec48fa33a3592db99d920bdd623f9eac9f061fe6c970076d4a341f4333a13155b3305d6ccc73ce837487b8c2dd0e925
+	b2sums = 854309e731f00510e6c17f617773b9401c492f124b385d5852e2bf3535bfb6799bc3669f19664675c5135e992154e259d7020d920209a141ad478d7fcb653610
+
+pkgname = python-types-retry
