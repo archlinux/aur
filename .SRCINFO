@@ -1,0 +1,22 @@
+pkgbase = python-rpcq
+	pkgdesc = The RPC framework and message specification for @rigetti Quantum Cloud Services.
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/rigetti/rpcq
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python
+	depends = python-msgpack
+	depends = python-pyzmq
+	depends = python-rapidjson
+	depends = python-ruamel-yaml
+	source = https://github.com/rigetti/rpcq/archive/refs/tags/v3.10.0.tar.gz
+	b2sums = eed9accd410805b8aa0f649e7bfb68a9c6791c7efc67bc8420f7f83287340242a4ee6cb16f6a7c72b2c8681c7fb6c198de9ce56b73ca3edaafd5dff3c41f155c
+
+pkgname = python-rpcq
