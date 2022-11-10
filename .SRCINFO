@@ -1,6 +1,6 @@
 pkgbase = astrodmx-capture
 	pkgdesc = AstroDMx Capture Astronomical Imaging
-	pkgver = 1.7.1.0
+	pkgver = 1.7.2.0
 	pkgrel = 1
 	url = https://www.astrodmx-capture.org.uk/
 	install = astrodmx-capture.install
@@ -8,7 +8,7 @@ pkgbase = astrodmx-capture
 	license = custom
 	depends = glibc>=2.27
 	options = !strip
-	source = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_1.7.1.0_x86-64-manual.tar.gz
-	sha256sums = 2a91bc1d8ac783eb36e687de83b422c5268335b3405f1066886e34341ffe9100
+	source = https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_1.7.2.0_x86-64-manual.tar.gz
+	sha256sums = 1ad1a3dba3ea8b8347e5d891609b48286e96cbcfdac2538655214a3f0a268cad
 
 pkgname = astrodmx-capture
