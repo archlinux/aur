@@ -4,7 +4,7 @@ wayland_protocols_version=1.25
 
 pkgname=libtdesktopenvironment
 pkgver=rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Common libraries for desktop integration for the- apps"
 arch=("x86_64")
 url="https://github.com/vicr123/libtdesktopenvironment"
@@ -23,7 +23,7 @@ prepare() {
     git submodule init
     git config submodule.lib/wayland-protocols/wayland-protocols.url "$srcdir/wayland-protocols"
     git config submodule.lib/wayland-protocols/wlr-protocols.url "$srcdir/wlr-protocols"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
