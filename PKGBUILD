@@ -1,38 +1,33 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Taras Shpot <mrshpot@gmail.com>
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki@gmail.com>
+# Contributor: Bryan Malyn <bim9262@gmail.com>
 _gitname='rust'
 pkgname=('rust-git' 'rust-docs-git' 'rust-src-git' 'rust-analysis-git' 'cargo-git' 'rls-git')
-pkgver=1.25.0.r74258.39abcc0413
+pkgver=1.67.0.r209627.11fa0850f03
 epoch=3
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=('i686' 'x86_64')
 url="https://www.rust-lang.org/"
 license=('MIT' 'Apache')
-makedepends=('git' 'libffi' 'perl' 'python2' 'curl' 'llvm' 'cmake')
+makedepends=('git' 'libffi' 'perl' 'python' 'curl' 'llvm' 'cmake' 'ninja')
 source=("git+https://github.com/rust-lang/rust.git" "config.toml")
 options=('staticlibs' '!strip' '!emptydirs')
-sha384sums=('SKIP' 'ef5321e440aea799a2b81b702daaab9405d5be8a8ea5fdbd5645aa71b52e8cda4c68b3c6d46a46159511562438536e64')
+sha384sums=('SKIP'
+            '211305c032a61d9bec58cbef6929ce94ae605cfe0c27d73775c5cd67a83f673a0163a45d966087c7503a1694731b581b')
 
 rustbuild_pkgver() {
-    grep '^pub const CFG_RELEASE_NUM' src/bootstrap/channel.rs|head -n1|cut -d\" -f2
+    cat src/version
 }
 
-cargo_pkgver() {
-    grep '^version =' Cargo.toml|head -n1|cut -d\" -f2
-}
 
 install_component() {
-    if [ -z "${3}" ]; then
-        release=$(rustbuild_pkgver)
-    else
-        release=$(cd "${3}" && cargo_pkgver)
-    fi
+    release=$(rustbuild_pkgver)
     triple="${CARCH}-unknown-linux-gnu"
     fullver="${release}-dev-${triple}"
 
-    "./build/tmp/dist/${1}-${fullver}/install.sh" \
+    "./build/tmp/tarball/${1}/${triple}/${1}-${fullver}/install.sh" \
         --prefix=$pkgdir/usr \
         --sysconfdir=$pkgdir/etc \
         --docdir=$pkgdir/usr/share/doc/$2 \
@@ -118,32 +113,28 @@ package_rust-analysis-git() {
 }
 
 package_cargo-git() {
-    local _srcdir=src/tools/cargo
     pkgdesc="The Rust package manager"
     depends=('rust')
     provides=('cargo')
     conflicts=('cargo')
-    #pkgver=$(cd "$_gitname/$_srcdir" && echo "$(cargo_pkgver).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)").rust.$(pkgver)
 
     cd "$_gitname"
 
-    install_component cargo cargo $_srcdir
+    install_component cargo cargo
 
     for license in APACHE MIT; do install -Dm644 "LICENSE-$license" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE-$license"; done
 }
 
 package_rls-git() {
-    local _srcdir=src/tools/rls
     pkgdesc="Rust language server"
     depends=('rust-git' 'rust-src-git' 'rust-analysis-git')
     provides=('rls')
     conflicts=('rls')
-    #pkgver=$(cd "$_gitname/$_srcdir" && echo "$(cargo_pkgver).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)").rust.$(pkgver)
 
     cd "$_gitname"
 
-    install_component rls rls $_srcdir
+    install_component rls rls
 
     for license in APACHE MIT; do install -Dm644 "LICENSE-$license" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE-$license"; done
