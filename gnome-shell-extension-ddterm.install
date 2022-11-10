@@ -1,0 +1,8 @@
+post_install() {
+  echo ''
+  echo '==> To enable Drop Down Terminal:'
+  echo '==> Reload Gnome Shell with Alt-F2 r (on Xorg), logout -> login (wayland)'
+  echo '==> Enable it with the extensions tool'
+  echo '==> or run "gnome-extensions enable ddterm@amezin.github.com"'
+  echo ''
+}
