@@ -3,7 +3,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=251.r59852.cb19517490
+pkgver=252.r60865.9df82722f6
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -50,6 +50,11 @@ build() {
   local _meson_options=(
     --libexecdir  /usr/lib32
     --libdir    /usr/lib32
+
+    # internal version comparison is incompatible with pacman:
+    #   249~rc1 < 249 < 249.1 < 249rc
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+    -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
     # features
