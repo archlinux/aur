@@ -1,0 +1,17 @@
+pkgbase = poedit-git
+	pkgdesc = Poedit: cross-platform translation editor
+	pkgver = 3.2.1.oss.r1.g992181a6f
+	pkgrel = 1
+	url = https://github.com/vslavik/poedit
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	depends = gtkspell3
+	depends = lucene++
+	depends = wxwidgets-gtk3
+	depends = webkit2gtk
+	optdepends = cld2: Compact Language Detector 2
+	source = poedit::git+https://github.com/vslavik/poedit.git
+	sha256sums = SKIP
+
+pkgname = poedit-git
