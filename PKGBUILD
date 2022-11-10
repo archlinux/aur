@@ -10,7 +10,7 @@ makedepends=(bison ruby ruby-rake)
 conflicts=(mruby)
 provides=(mruby)
 source=(mruby-$pkgver.tar.gz::https://github.com/mruby/mruby/archive/$pkgver.tar.gz)
-sha1sums=('66ce7808e26d5c47ffb7da350aaf8e0705c1a75f')
+sha1sums=('d3e0a08b2034ef730fea9aa4fec82916e52d735b')
 
 build(){
     cd mruby-$pkgver
