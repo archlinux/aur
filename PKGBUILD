@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=21.11.70.r522.fb083f5
+pkgver=23.03.70.r575.0a7cf1d
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('x86_64')
