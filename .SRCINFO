@@ -1,6 +1,6 @@
 pkgbase = dxvk-mingw
 	pkgdesc = Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version
-	pkgver = 1.10.3
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -15,18 +15,22 @@ pkgbase = dxvk-mingw
 	depends = bash
 	provides = dxvk
 	provides = d9vk
-	provides = dxvk=1.10.3
+	provides = dxvk=2.0
 	conflicts = dxvk
 	conflicts = d9vk
 	options = !lto
 	options = !staticlibs
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.10.3
-	source = dxvk-async-1111b69.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/1111b69/dxvk-async.patch
+	source = git+https://github.com/doitsujin/dxvk.git
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = dxvk-async-8665e60.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/8665e60/dxvk-async.patch
 	source = dxvk-async-conf.patch
 	source = dxvk-extraopts.patch
 	source = setup_dxvk
 	sha256sums = SKIP
-	sha256sums = 14e9011b9aa40fe3dcc7a248735eec717a525aa2866e2bba5fd6fa5662c3dec0
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 85877b6ea801b3a139797628415ac5c74ec87ce16d1d3c434f5c36b00922833d
 	sha256sums = c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401
 	sha256sums = bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362
 	sha256sums = c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff

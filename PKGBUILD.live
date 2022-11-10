@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.10.3
+pkgver=2.0.r0.g8f8a9369
 _asyncver=master
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
@@ -15,7 +15,6 @@ conflicts=('dxvk' 'd9vk')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/doitsujin/dxvk.git"
-    "git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
     "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
     "dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch"
@@ -32,11 +31,10 @@ pkgver() {
 prepare() {
     cd dxvk
 
-    git submodule init include/{native/directx,vulkan,spirv}
-    git config submodule.include/native/directx.url "$srcdir/mingw-directx-headers"
-    git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
-    git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
-    git submodule update include/{native/directx,vulkan,spirv}
+    git submodule init include/{vulkan,spirv}
+    git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
+    git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
@@ -94,22 +92,20 @@ prepare() {
 }
 
 build() {
-    meson dxvk "build/x64" \
+    meson setup dxvk "build/x64" \
         --cross-file dxvk/build-win64.txt \
         --prefix "/usr/share/dxvk/x64" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
-        --strip \
-        -Denable_tests=false
+        --strip
     ninja -C "build/x64" -v
 
-    meson dxvk "build/x32" \
+    meson setup dxvk "build/x32" \
         --cross-file dxvk/build-win32.txt \
         --prefix "/usr/share/dxvk/x32" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
-        --strip \
-        -Denable_tests=false
+        --strip
     ninja -C "build/x32" -v
 }
 
@@ -124,7 +120,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'

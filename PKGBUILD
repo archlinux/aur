@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.10.3
-_asyncver=1111b69
+pkgver=2.0
+_asyncver=8665e60
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -14,7 +14,9 @@ provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
 options=(!lto !staticlibs)
 source=(
-    "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
+    "git+https://github.com/doitsujin/dxvk.git"
+    "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
     "dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
@@ -23,6 +25,11 @@ source=(
 
 prepare() {
     cd dxvk
+
+    git submodule init include/{vulkan,spirv}
+    git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
+    git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
@@ -80,22 +87,20 @@ prepare() {
 }
 
 build() {
-    meson dxvk "build/x64" \
+    meson setup dxvk "build/x64" \
         --cross-file dxvk/build-win64.txt \
         --prefix "/usr/share/dxvk/x64" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
-        --strip \
-        -Denable_tests=false
+        --strip
     ninja -C "build/x64" -v
 
-    meson dxvk "build/x32" \
+    meson setup dxvk "build/x32" \
         --cross-file dxvk/build-win32.txt \
         --prefix "/usr/share/dxvk/x32" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
-        --strip \
-        -Denable_tests=false
+        --strip
     ninja -C "build/x32" -v
 }
 
@@ -110,7 +115,9 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '14e9011b9aa40fe3dcc7a248735eec717a525aa2866e2bba5fd6fa5662c3dec0'
+            'SKIP'
+            'SKIP'
+            '85877b6ea801b3a139797628415ac5c74ec87ce16d1d3c434f5c36b00922833d'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
