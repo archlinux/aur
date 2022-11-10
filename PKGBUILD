@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libxi' 'libxfixes')
 makedepends=('make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bakkeby/xban/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('83a3a66c9225ffa802c99959417b456bb34367b6ac7efaffee474bddb1549ef5')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
