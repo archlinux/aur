@@ -1,0 +1,25 @@
+pkgbase = python-qcs-api-client
+	pkgdesc = Python client for the QCS API
+	pkgver = 0.21.2
+	pkgrel = 1
+	url = https://github.com/rigetti/qcs-api-client-python
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python
+	depends = python-attrs
+	depends = python-dateutil
+	depends = python-httpx
+	depends = python-iso8601
+	depends = python-pydantic
+	depends = python-pyjwt
+	depends = python-retrying
+	depends = python-rfc3339
+	depends = python-toml
+	source = https://github.com/rigetti/qcs-api-client-python/archive/refs/tags/v0.21.2.tar.gz
+	b2sums = 53eb2a3394fccc6f5914e0d76fa833ac8e2fc2baafaf06b6b9c3984172570d00d82a85205fdb6ed59cdf2452f174903baeb647ed52a1471823e33cf01562d5ef
+
+pkgname = python-qcs-api-client
