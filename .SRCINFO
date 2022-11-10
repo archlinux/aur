@@ -1,7 +1,7 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 7.0
-	pkgrel = 4
+	pkgver = 7.0.1
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -120,16 +120,16 @@ pkgbase = wine-stable
 	optdepends = vulkan-icd-loader
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = wine-stable-mono
-	provides = wine=7.0
+	provides = wine=7.0.1
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = https://dl.winehq.org/wine/source/7.0/wine-7.0.tar.xz
-	source = https://dl.winehq.org/wine/source/7.0/wine-7.0.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/7.0/wine-7.0.1.tar.xz
+	source = https://dl.winehq.org/wine/source/7.0/wine-7.0.1.tar.xz.sign
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	b2sums = 84bfeb28d56f0f40bb93b1b5bf8954c8be2fd90fde5a61608e7c35f48addcce7a4d660e63c3caa3ca2c365d1e83b55a1c3485872b2d6bfa8941e2bce44c4aca6
+	b2sums = 9bf74e7077fe4b77611f8195feeb53fc6475bdaeac97dab5221942115d6108d8786f93d4a96745bad72afb074b15129fec9b0b2f10261d91c9a9b57bd2240ded
 	b2sums = SKIP
 	b2sums = 45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b
 	b2sums = e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588
