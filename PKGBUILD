@@ -4,7 +4,7 @@
 # Contributor: earnestly
 
 pkgname=llpp
-pkgver=39
+pkgver=40
 pkgrel=1
 pkgdesc='opengl accelerated pdf viewer based on mupdf'
 arch=('x86_64')
