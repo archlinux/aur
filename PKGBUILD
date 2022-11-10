@@ -5,7 +5,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=252.r60763.b6a23ad642
+pkgver=252.r60865.9df82722f6
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -35,7 +35,7 @@ source=('git+https://github.com/systemd/systemd'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
 sha512sums=('SKIP'
-            'd53034fcb1c8ebaee6f3abc3bf55766d0948ba87129e15da1609c8f84d9340f8ff18642db04e5ee5e05b2bab208a18e39a0170981c55e010b7dbc18c6dfa0fdc'
+            '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
@@ -85,7 +85,7 @@ build() {
   local _meson_options=(
     # internal version comparison is incompatible with pacman:
     #   249~rc1 < 249 < 249.1 < 249rc
-    -Dversion-tag="${_tag_name/-/\~}-${pkgrel}-arch"
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
