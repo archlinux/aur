@@ -2,12 +2,12 @@
 
 pkgname=tio
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The simple TTY terminal I/O application"
 url="http://tio.github.io/"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPLv2')
-depends=('glibc' 'libinih')
+depends=('glibc' 'libinih' 'bash-completion')
 makedepends=('meson')
 source=("https://github.com/tio/tio/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('77b485aafa3aa8e01fc2976ac547e7769c1c338bac41eeb7c1ec6fc0cc7ee5cd')
