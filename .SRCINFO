@@ -1,7 +1,7 @@
 pkgbase = prey-node-client
 	pkgdesc = Remote tracking and monitoring application for laptops, smartphones, and other electronic devices
 	pkgver = 1.10.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://preyproject.com/
 	install = prey-node-client.install
 	arch = x86_64

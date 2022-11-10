@@ -1,22 +1,14 @@
 post_install() {
-	/opt/prey-node-client/bin/prey config hooks post_install >/dev/null
-	gpasswd -a prey video >/dev/null
+  /opt/prey-node-client/bin/prey config hooks post_install >/dev/null
+  gpasswd -a prey video >/dev/null
 
-	echo
-	echo "You should now configure prey by either"
-	echo "*) editing /etc/prey/prey.conf, or"
-	echo "*) running \"prey_project config gui\""
-	echo
-	echo "Prey use Python2, you need to see"
-	echo "https://wiki.archlinux.org/index.php/Python#Dealing_with_version_problem_in_build_scripts"
-	echo "Make the file /usr/local/bin/python, whith:"
-	echo -e '#!/bin/bash\nscript=$(readlink -f -- "$1")\ncase "$script" in (/opt/prey-node-client/*|/other/path)\nexec python2 "$@"\n;;\nesac\n\n\nexec python3 "$@"'
-
+  echo
+  echo "You should now configure prey by either"
+  echo "*) editing /etc/prey/prey.conf, or"
+  echo "*) running \"prey-tracker config gui\""
 }
 
 pre_remove() {
-	/opt/prey-node-client/bin/prey config hooks pre_uninstall
-	userdel prey
-	echo "if you created python script you can remove /usr/local/bin/python, please see"
-	echo "https://wiki.archlinux.org/index.php/Python#Dealing_with_version_problem_in_build_scripts"
+  /opt/prey-node-client/bin/prey config hooks pre_uninstall
+  userdel prey
 }
