@@ -1,22 +1,31 @@
+diff --git a/src/graphics.rs b/src/graphics.rs
+index 4fecb8b..5974717 100644
 --- a/src/graphics.rs
 +++ b/src/graphics.rs
-@@ -80,7 +80,7 @@ pub enum GraphicsDeviceError {
+@@ -95,7 +95,7 @@ const EXTERNAL_DISPLAY_REQUIRES_NVIDIA: &[&str] = &[
+ ];
+ 
+ const SYSTEMCTL_CMD: &str = "systemctl";
+-const UPDATE_INITRAMFS_CMD: &str = "update-initramfs";
++const UPDATE_INITRAMFS_CMD: &str = "mkinitcpio";
+ 
+ #[derive(Debug, thiserror::Error)]
+ pub enum GraphicsDeviceError {
+@@ -127,7 +127,7 @@ pub enum GraphicsDeviceError {
      SysFs(io::Error),
      #[error("failed to unbind {} on PCI driver {}: {}", func, driver, why)]
      Unbind { func: String, driver: String, why: io::Error },
 -    #[error("update-initramfs failed with {} status", _0)]
-+    #[error("failed to update initramfs: exit status {}", _0)]
++    #[error("mkinitcpio failed with {} status", _0)]
      UpdateInitramfs(ExitStatus),
- }
-
-@@ -427,9 +427,9 @@ impl Graphics {
-         }
-
+     #[error("failed to access Xserver config: {}", _0)]
+     XserverConf(io::Error),
+@@ -535,7 +535,7 @@ impl Graphics {
+ 
          log::info!("Updating initramfs");
--        const UPDATE_INITRAMFS_CMD: &str = "update-initramfs";
-+        const UPDATE_INITRAMFS_CMD: &str = "mkinitcpio";
          let status = process::Command::new(UPDATE_INITRAMFS_CMD)
 -            .arg("-u")
 +            .arg("-P")
              .status()
              .map_err(|why| GraphicsDeviceError::Command { cmd: UPDATE_INITRAMFS_CMD, why })?;
+ 
