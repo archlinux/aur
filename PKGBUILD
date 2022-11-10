@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.65
+pkgver=20.04.67
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -26,9 +26,8 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
-_commit=76af0285125c8c33acc53c0c3f0bf998a6a283f6
-source=(
-  "git+https://github.com/pop-os/system76-driver.git#commit=$_commit"
+_commit=cfb1f88d07ae066dafadf96341d491c0eade54c0  # tags/20.04.67
+source=("git+https://github.com/pop-os/system76-driver.git#commit=${_commit}?signed"
   'cli.patch'
   'wayland.patch'
   'actions.patch')
@@ -57,6 +56,10 @@ prepare() {
 
   # Force Composition Pipeline no longer necessary
   sed -i '/            actions.nvidia_forcefullcompositionpipeline,/d' \
+    system76driver/products.py
+
+  # Blacklisting nvidia_i2c accomplishes nothing
+  sed -i '/           actions.blacklist_nvidia_i2c,/d' \
     system76driver/products.py
 }
 
