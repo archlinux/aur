@@ -8,7 +8,7 @@ pkgbase = python-cadquery
 	checkdepends = python-pytest
 	checkdepends = python-typing_extensions
 	depends = python
-	depends = python-ocp=>7.6.3
+	depends = python-ocp>=7.5.3.0.r7
 	depends = python-ezdxf
 	conflicts = python-cadquery-git
 	source = git+https://github.com/CadQuery/cadquery#commit=03c3266b8d61d487349a15f73d3b3cb13bce625f

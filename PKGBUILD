@@ -11,7 +11,7 @@ license=('Apache')
 conflicts=(python-cadquery-git)
 depends=(
 python
-'python-ocp=>7.6.3'
+'python-ocp>=7.5.3.0.r7'
 python-ezdxf
 )
 checkdepends=(
