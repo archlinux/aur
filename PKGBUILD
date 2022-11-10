@@ -2,7 +2,7 @@
 
 pkgname=auditbeat-oss-bin
 pkgver=8.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
 url='https://www.elastic.co/products/beats'
