@@ -1,7 +1,7 @@
 # Maintainer: Saghm Rossi <aur@saghm.com>
 pkgname=curseforge
 pkgver=0.207.3_6663
-pkgrel=1
+pkgrel=2
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
 url="https://download.curseforge.com/"
