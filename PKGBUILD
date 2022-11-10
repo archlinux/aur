@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=4.1.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -12,27 +12,22 @@ license=('GPL3')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'glibmm'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
+         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'glibmm-2.68'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
+         'openssl-1.1')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        fix-tgcalls-cstdint.patch
-        "0001-kde-theme-injection-fix.patch"
-        "0002-fix-memory-include.patch")
-sha512sums=('d58ad4b3eaf72b4885612ecca0b29057a1f0e7efc7a539c4ed7cdfa9f6b8dd19e378f1e4b9f28a644d8c8559a5310a168e0b949aafac6902bd21155795db2574'
-            'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888'
-            'ceb8135301abbb39dd1e88bb283f83e83c52ec6236f13b527ed25a138f1d870d35ecd9f1c4e080164320f0b34c30d882b1167e0ef4ded7f886f9ba0966570e4d'
-            '3e10935ad4b053ddf6f459658decc1e36e2181825b4bc686c9dc391fae498cf34bd0c8c64235172ca5fca24418385e977b34589db3ca5d885cdfefbcaf64c7b4')
+        "0001-kde-theme-injection-fix.patch")
+sha512sums=('365c16f4260827e3ad7e066f6ec96fc97a6f5874df376933f16de20c3488c24f52bc1aa3bd5df936f29a198e287dc8e706b259d57d7d7a9d6468c7edc7568514'
+            'ceb8135301abbb39dd1e88bb283f83e83c52ec6236f13b527ed25a138f1d870d35ecd9f1c4e080164320f0b34c30d882b1167e0ef4ded7f886f9ba0966570e4d')
 
 prepare() {
     cd tdesktop-$pkgver-full
     rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
-    patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
     patch -Np1 -i "$srcdir"/0001-kde-theme-injection-fix.patch
-    patch -Np1 -i "$srcdir"/0002-fix-memory-include.patch
 }
 
 build() {
