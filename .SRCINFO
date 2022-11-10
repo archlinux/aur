@@ -18,6 +18,7 @@ pkgbase = melonds
 	depends = libepoxy
 	depends = libslirp
 	depends = qt5-base
+	depends = qt5-multimedia
 	depends = sdl2
 	source = git+https://github.com/Arisotura/melonDS.git#tag=0.9.5
 	sha256sums = SKIP
