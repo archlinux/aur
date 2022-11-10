@@ -5,7 +5,7 @@
 
 pkgname=llpp
 pkgver=40
-pkgrel=1
+pkgrel=2
 pkgdesc='opengl accelerated pdf viewer based on mupdf'
 arch=('x86_64')
 url=https://github.com/criticic/llpp
