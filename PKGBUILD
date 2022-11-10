@@ -1,8 +1,8 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 pkgname='batman'
-pkgver=0.32
+pkgver=0.35
 pkgrel=1
-pkgdesc="A battery management service and program for linux phones"
+pkgdesc="A battery management service and program for Linux phones"
 arch=(any)
 url="https://github.com/FakeShell/batman"
 license=('GPLv2')
