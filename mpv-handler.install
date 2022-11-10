@@ -9,8 +9,6 @@ note() {
 
 post_install() {
   note "Don't forget install youtube-dl or yt-dlp for mpv ytdl-hook support"
-  note "The upstream mpv uses yt-dlp by default, But not yet released"
-  note "If you want to use yt-dlp, you need to set \"script-opts=ytdl_hook-ytdl_path=yt-dlp\" in mpv.conf"
 }
 
 post_upgrade() {
