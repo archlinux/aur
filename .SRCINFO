@@ -1,0 +1,18 @@
+pkgbase = cassowary-bin
+	pkgdesc = Modern cross-platform HTTP load-testing tool written in Go
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/rogerwelin/cassowary
+	arch = x86_64
+	arch = i386
+	arch = aarch64
+	license = MIT
+	provides = cassowary
+	source_x86_64 = cassowary-0.16.0.tar.gz::https://github.com/rogerwelin/cassowary/releases/download/v0.16.0/cassowary_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 610c15fac22a09b516b59c6d6e4996a0993cdd8a0c74587f7eee8b7a9f505186
+	source_i386 = cassowary-0.16.0.tar.gz::https://github.com/rogerwelin/cassowary/releases/download/v0.16.0/cassowary_Linux_i386.tar.gz
+	sha256sums_i386 = f0a640881bfc480e37e2a8eb038be84731484dbf39542ffae1bf9318ae7f5457
+	source_aarch64 = cassowary-0.16.0.tar.gz::https://github.com/rogerwelin/cassowary/releases/download/v0.16.0/cassowary_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2ca161d390eb56bffb36137b6c8c98f308f67b66bcc4c7cfd7578cd26f6e0547
+
+pkgname = cassowary-bin
