@@ -1,3 +1,7 @@
+## forticlient-vpn - 7.0.0.0018 - 2022-11-10
+* forticlient-vpn - 7.0.0.0018 - `release 2`
+  + Update maintener contacts
+
 ## forticlient-vpn - 7.0.0.0018 - 2021-06-13
 * forticlient-vpn - 7.0.0.0018 - `release 1`
   + libappindicator-gtk2 moved to `depends`
