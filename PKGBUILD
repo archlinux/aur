@@ -2,7 +2,7 @@
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_elsp_3dp_20210115_v01.nc"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
-md5sums=('f8ddca24152c502b0d22b8bfecf75a1a')
+md5sums=('e7e342081f1e70bfc284f68c96c807f6')
 #        'ba680f74500be6839d3fe232e6a22eb1'
 #        '0239191dd5d8400aaf68ff5a6ee4de0d'
 #        '269b0b2dae018ffa3e7442349e65b0ad'
