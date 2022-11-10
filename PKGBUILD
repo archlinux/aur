@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Laskar <gabriel at lse dot epita dot fr>
 pkgname=oksh
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 url='https://github.com/ibara/oksh/'
 pkgdesc='Ported version of ksh from OpenBSD'
@@ -8,7 +8,7 @@ license=('custom: Public Domain' 'ISC' 'BSD')
 depends=('glibc' 'ncurses')
 arch=('i686' 'x86_64')
 source=(https://github.com/ibara/oksh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('9dc0b0578d9d64d10c834f9757ca11f526b562bc5454da64b2cb270122f52064')
+sha256sums=('3340ca98b1d5a2800ebe7dba75312d8a4971a3fcff20fcd0d0ec5cf7b719427e')
 backup=(etc/ksh.kshrc)
 install=oksh.install
 
