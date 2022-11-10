@@ -2,8 +2,8 @@
 
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
-pkgver=520.56.06
-pkgrel=2
+pkgver=525.53
+pkgrel=1
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -46,7 +46,7 @@ sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
   "4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499"
   "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
-  "ac5a98964e1b7435a0919d313080e53c0453ca3a817ed1ed1693a0164f286973d93f4130428a3737a4871f512c686d72e2606038f533d016d6b9c2873eaa1f8a"
+  "ce9ada733503133f29f561169ef5b5f91abfdd2ff7a75e38e6b94afc24d4600ffdb3be17b53bc10bad13f0987277ff66bd816d04a7890ca85e59395dd54a8c89"
   "SKIP"
   "3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098"
 )
@@ -96,7 +96,7 @@ package() {
   ln -sr "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
 
   # firmware
-  install -Dm644 firmware/gsp.bin "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}/gsp.bin"
+  install -D -m644 firmware/*.bin -t "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}"
 
   # GLX extension module for X
   install -Dm755 "libglxserver_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglxserver_nvidia.so.${pkgver}"
