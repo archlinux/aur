@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
 url="https://download.curseforge.com/"
-source=('https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip'
+source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip"
         'curseforge'
 )
 options=(!strip)
