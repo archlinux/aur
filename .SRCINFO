@@ -1,7 +1,7 @@
 pkgbase = openssh-gssapi
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol
 	pkgver = 9.0p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssh.com/portable.html
 	install = install
 	arch = x86_64
@@ -42,6 +42,5 @@ pkgbase = openssh-gssapi
 	sha256sums = e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7
 	sha256sums = 4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6
 	sha256sums = 64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846
-	sha256sums = 25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93
 
 pkgname = openssh-gssapi

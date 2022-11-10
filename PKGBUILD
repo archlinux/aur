@@ -9,7 +9,7 @@ pkgname=openssh-gssapi
 _pkgname=openssh
 pkgver=9.0p1
 _patch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -36,8 +36,7 @@ sha256sums=('03974302161e9ecce32153cfa10012f1e65c8f3750f573a73ab1befd5972a28a'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
-            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846'
-            '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93')
+            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
