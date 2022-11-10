@@ -1,6 +1,6 @@
 pkgbase = r-matrixqcvis
 	pkgdesc = Shiny-based interactive data-quality exploration for omics data
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MatrixQCvis
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-matrixqcvis
 	optdepends = r-hexbin
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixQCvis_1.6.0.tar.gz
-	sha256sums = 13c275de521ac519fb04941d4a996a291d1f3d4135947fc95846ac9a87bfa067
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixQCvis_1.6.1.tar.gz
+	sha256sums = f3a8a492664c3bbc0b60da0ea28fdb8bce65420ab0e18ccbc8f2f1f1bcb31cd0
 
 pkgname = r-matrixqcvis
