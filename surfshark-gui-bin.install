@@ -1,18 +1,15 @@
 post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	# https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/linux/after-install.tpl
+	PATH="/sbin:/usr/sbin:/bin:/usr/bin"
 
-	# Link to the binary
 	ln -sf '/opt/Surfshark/surfshark' '/usr/bin/surfshark'
 
-	# SUID chrome-sandbox for Electron 5+
 	chmod 4755 '/opt/Surfshark/chrome-sandbox' || true
 
 	update-mime-database /usr/share/mime || true
 	update-desktop-database /usr/share/applications || true
 
-	# Surfshark post-install
-
+	mkdir -p /usr/lib/systemd/user || true
 	echo "
 	[Unit]
 	Description=Surfshark Daemon
@@ -29,8 +26,9 @@ post_install() {
 
 	[Install]
 	WantedBy=default.target
-	" > /usr/lib/systemd/user/surfsharkd.service
+	" > /usr/lib/systemd/user/surfsharkd.service || true
 
+	mkdir -p /usr/lib/systemd/system || true
 	echo "
 	[Unit]
 	Description=Surfshark Daemon2
@@ -47,17 +45,34 @@ post_install() {
 
 	[Install]
 	WantedBy=default.target
-	" > /usr/lib/systemd/system/surfsharkd2.service
+	" > /usr/lib/systemd/system/surfsharkd2.service || true
 
-	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd.js' || :
 
-	# assign group
-	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd2.js' || :
+	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd.js' || true
 
-	chmod 755 '/opt/Surfshark/resources/dist/resources/update' || :
-	chmod 755 '/opt/Surfshark/resources/dist/resources/diagnostics' || :
+	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd2.js' || true
 
-	systemctl enable --global surfsharkd.service &>/dev/null || :
+	chmod 755 '/opt/Surfshark/resources/dist/resources/update' || true
+	chmod 755 '/opt/Surfshark/resources/dist/resources/diagnostics' || true
+
+	chmod 755 '/etc/init.d/surfshark' || true
+	chmod 755 '/etc/init.d/surfshark2' || true
+
+	case "$(ps -p 1 --no-headers -o '%c' | tr -d '\n')" in
+	    systemd)
+	        systemctl daemon-reload || true
+	        systemctl enable --global surfsharkd.service || true
+	    ;;
+	    init)
+	        update-rc.d surfshark defaults || true
+	        update-rc.d surfshark2 defaults || true
+	        /etc/init.d/surfshark restart || true
+	        /etc/init.d/surfshark2 restart || true
+	    ;;
+	    *)
+	        echo "Unsupported service manager"
+	    ;;
+	esac
 	update-desktop-database -q
 }
 
@@ -67,33 +82,40 @@ post_upgrade() {
 
 post_remove() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	# https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/linux/after-remove.tpl
+	PATH="/sbin:/usr/sbin:/bin:/usr/bin"
 
-	systemctl disable --global surfsharkd.service &>/dev/null || :
-	systemctl disable surfsharkd2.service &>/dev/null || :
+	systemctl disable --global surfsharkd.service || true
+	systemctl disable surfsharkd2.service || true
+
+	systemctl stop surfsharkd2.service || true
+
+	/etc/init.d/surfshark stop || true
+	/etc/init.d/surfshark2 stop || true
 
 	kill -15 $(pidof surfshark) || :
 	kill -15 $(pgrep surfsharkd) || :
 
-	rm -f /usr/lib/systemd/user/surfsharkd.service || :
-	rm -f /usr/lib/systemd/system/surfsharkd2.service || :
 	rm -rf /run/surfshark || :
 	rm -f /tmp/surfsharkd.sock || :
 	rm -f /tmp/surfshark-electron.sock || :
 	rm -f $XDG_RUNTIME_DIR/surfsharkd.sock || :
 	rm -f $XDG_RUNTIME_DIR/surfshark-electron.sock || :
 
-	# Delete the link to the binary
 	rm -f '/usr/bin/surfshark' || :
 
 	# Surfshark post-remove
-	nmcli connection delete surfshark_ipv6 &>/dev/null  || :
-	nmcli connection delete surfshark_wg &>/dev/null || :
-	nmcli connection delete surfshark_openvpn &>/dev/null || :
-	rm -rf /home/**/.config/Surfshark
-	rm -rf /home/**/.cache/Surfshark
+	nmcli connection delete surfshark_ipv6 || true
+	nmcli connection delete surfshark_wg || true
+	nmcli connection delete surfshark_openvpn || true
 
-	iptables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/iptables -D/e'
-	ip6tables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/ip6tables -D/e'
+	shopt -s globstar
+	if [ "$1" = purge ]; then
+	    rm -rf /home/**/.config/Surfshark || true
+	fi
+
+	rm -rf /home/**/.cache/Surfshark || true
+
+	iptables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/iptables -D/e' || true
+	ip6tables -S | grep surfshark_ks | sed -r '/.*comment.*surfshark_ks*/s/-A/ip6tables -D/e' || true
 	update-desktop-database -q
 }
