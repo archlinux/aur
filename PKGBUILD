@@ -1,4 +1,6 @@
-# Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
+# Maintainers:
+# + Gavin Lloyd <gavinhungry@gmail.com>
+# + Severen Redwood <me@severen.dev>
 
 pkgname=pnpm
 pkgver=7.14.2
