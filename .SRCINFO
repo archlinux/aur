@@ -1,6 +1,6 @@
 pkgbase = openlens-bin
 	pkgdesc = The Kubernetes IDE (fork lens-bin without lenscloud-lens-extension). Read more - https://github.com/lensapp/lens/issues/5444
-	pkgver = 6.1.17
+	pkgver = 6.1.18
 	pkgrel = 1
 	url = https://k8slens.dev
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = openlens-bin
 	provides = lens
 	conflicts = lens
 	conflicts = lens-bin
-	source = OpenLens-6.1.17.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.1.17/OpenLens-6.1.17.AppImage
+	source = OpenLens-6.1.18.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.1.18/OpenLens-6.1.18.AppImage
 	source = OpenLens.desktop
-	sha256sums = 94a310774ff46eae5052879b841b8b572ff7e6f9d1579c64e60e16a3b7abdf8d
+	sha256sums = 1c20d44a0c2e9e42e0e09f22ca52b16b631b9c3c26670a67ad95340877f7e16b
 	sha256sums = 30ab2e9f91ca6be993b5893fb385a225c6d06f6d11caa305e0d109348b5d132c
 
 pkgname = openlens-bin
