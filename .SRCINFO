@@ -1,12 +1,12 @@
 pkgbase = mangal-bin
 	pkgdesc = The most advanced cli manga downloader in the entire universe!
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/metafates/mangal
 	arch = x86_64
 	license = MIT
 	provides = mangal
-	source = https://github.com/metafates/mangal/releases/download/v4.0.2/mangal_4.0.2_Linux_x86_64.tar.gz
-	sha256sums = 2ec557ce7123df8a8be00b80746ec561b7473ef7be8963a70a9b03936f7c6e28
+	source = https://github.com/metafates/mangal/releases/download/v4.0.3/mangal_4.0.3_Linux_x86_64.tar.gz
+	sha256sums = 42efff875b7fb89b19b47ac4af73c114792ce9ad30e05bf6f4c691149031bbd0
 
 pkgname = mangal-bin
