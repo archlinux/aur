@@ -3,7 +3,8 @@ pkgbase = perl-crypt-openssl-aes
 	pkgver = 0.02
 	pkgrel = 4
 	url = https://metacpan.org/pod/Crypt::OpenSSL::AES
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL
 	license = PerlArtistic
 	depends = curl
@@ -13,4 +14,3 @@ pkgbase = perl-crypt-openssl-aes
 	sha256sums = b66fab514edf97fc32f58da257582704a210c2b35e297d5c31b7fa2ffd08e908
 
 pkgname = perl-crypt-openssl-aes
-
