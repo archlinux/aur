@@ -1,6 +1,6 @@
 pkgbase = wait4x
 	pkgdesc = Wait4X allows you to wait for a port or a service to enter the requested state
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://wait4x.dev
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wait4x
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = wait4x-2.9.0.tar.gz::https://github.com/atkrad/wait4x/archive/v2.9.0.tar.gz
-	sha256sums = d7fb2d63aa8648b1551715d4bf784db83bb3c8a134ed0878ebdde1b83df1d4b7
+	source = wait4x-2.9.1.tar.gz::https://github.com/atkrad/wait4x/archive/v2.9.1.tar.gz
+	sha256sums = 465fd2845b456c7981d9c4f58478263a2625188a6ddac8420ce15f10c3681ef2
 
 pkgname = wait4x
