@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-complete
 	pkgdesc = Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = nerd-fonts-complete
 	provides = nerd-fonts-ubuntu-mono
 	provides = ttf-font-nerd
 	provides = ttf-iosevka-nerd
+	provides = ttf-terminus-nerd
 	provides = ttf-nerd-font
 	provides = ttf-nerd-fonts
 	provides = ttf-nerd-fonts-symbols
