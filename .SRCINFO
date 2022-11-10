@@ -1,14 +1,14 @@
 pkgbase = nodejs-serve
 	pkgdesc = Quick HTTP server
-	pkgver = 14.0.1
+	pkgver = 14.1.1
 	pkgrel = 1
 	url = https://github.com/zeit/serve
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = serve-14.0.1.tgz
-	source = http://registry.npmjs.org/serve/-/serve-14.0.1.tgz
-	sha512sums = b4d1b0c65dbb17003c4db98c42a3748d3692c7cfedacbe77daa66c2475f555d8842238ed3091c2b3b0054ba3afb42edc4c73af9a35eab79c9ccde8d4e825765e
+	noextract = serve-14.1.1.tgz
+	source = http://registry.npmjs.org/serve/-/serve-14.1.1.tgz
+	sha512sums = ed18510c48ab67b43279ee105a10473bda91b63206b083c679c0c33f337394eb230e265672adfa192f058a854902e24f5490410d3b06a77dd658e3b807d03cda
 
 pkgname = nodejs-serve
