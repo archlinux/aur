@@ -1,4 +1,4 @@
-From bf2d69e857366267dc9cc710ba325db1b6940003 Mon Sep 17 00:00:00 2001
+From 74edb0c633892f14943342976b3e8ff0ba7a76fa Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sun, 13 Mar 2022 15:12:37 +0100
 Subject: [PATCH 2/2] ApprovalTests: fix path rewriting for debug builds
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] ApprovalTests: fix path rewriting for debug builds
  1 file changed, 13 insertions(+), 7 deletions(-)
 
 diff --git a/tools/scripts/approvalTests.py b/tools/scripts/approvalTests.py
-index 36bbdd2f..8b39679c 100755
+index 592be36e..8e8f9285 100755
 --- a/tools/scripts/approvalTests.py
 +++ b/tools/scripts/approvalTests.py
-@@ -72,14 +72,20 @@ def diffFiles(fileA, fileB):
+@@ -94,14 +94,20 @@ def diffFiles(fileA, fileB):
  
  
  def normalizeFilepath(line):
@@ -40,5 +40,5 @@ index 36bbdd2f..8b39679c 100755
  
      m = langFilenameParser.match(line)
 -- 
-2.35.1
+2.38.1
 

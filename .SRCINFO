@@ -1,6 +1,6 @@
 pkgbase = catch2-git
 	pkgdesc = Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (developmental version)
-	pkgver = 3.0.0.preview4.r48.g81f612c9
+	pkgver = 3.1.1.r45.gb65c0e27
 	pkgrel = 1
 	url = https://github.com/catchorg/catch2
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = catch2-git
 	makedepends = cmake
 	makedepends = python
 	makedepends = git
-	provides = catch2=3.0.0.preview4.r48.g81f612c9
+	provides = catch2=3.1.1.r45.gb65c0e27
 	conflicts = catch2
 	source = git+https://github.com/catchorg/Catch2
 	source = 0001-Remove-misguided-attempt-at-reproducibility-that-bre.patch
 	source = 0002-ApprovalTests-fix-path-rewriting-for-debug-builds.patch
 	sha256sums = SKIP
-	sha256sums = 6bf9e7322a4a4399b483118e4c5bea1a0a214aca5938f687cf2f44bfb7b9b3fe
-	sha256sums = 8c25aa44ad638eed275190c2850ede73c626ecabf4d8bd176e8d707d04c4a74a
+	sha256sums = d26bd252d163e4648217c942bc5a9ac36edba6a151759edd57597ae437866d8e
+	sha256sums = 72fd49a773699f85eb0954074231c9229ee442c58e2c4e476c25d4ce2328381b
 
 pkgname = catch2-git

@@ -1,4 +1,4 @@
-From 1abd458351a44c14942b93ca77084a7cc0e3589e Mon Sep 17 00:00:00 2001
+From 31c875b3fa603938c37c53fc318882a9bb07c07f Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Thu, 25 Nov 2021 15:59:16 +0100
 Subject: [PATCH 1/2] Remove misguided attempt at reproducibility that breaks
@@ -11,19 +11,19 @@ packages work, -ffile-prefix-map overrides this.
  1 file changed, 2 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 4aa755a4..57bd0fae 100644
+index e81d9b6f..a4cbd546 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -252,7 +252,6 @@ add_library(Catch2 STATIC
-   ${BENCHMARK_HEADERS}
-   ${BENCHMARK_SOURCES}
+@@ -332,7 +332,6 @@ source_group("generated headers"
  )
+ 
+ add_library(Catch2 ${ALL_FILES})
 -add_build_reproducibility_settings(Catch2)
  add_library(Catch2::Catch2 ALIAS Catch2)
  
  if (ANDROID)
-@@ -302,7 +301,6 @@ target_include_directories(Catch2
- add_library(Catch2WithMain STATIC
+@@ -385,7 +384,6 @@ target_include_directories(Catch2
+ add_library(Catch2WithMain
      ${SOURCES_DIR}/internal/catch_main.cpp
  )
 -add_build_reproducibility_settings(Catch2WithMain)
@@ -31,5 +31,5 @@ index 4aa755a4..57bd0fae 100644
  target_link_libraries(Catch2WithMain PUBLIC Catch2)
  set_target_properties(Catch2WithMain
 -- 
-2.35.1
+2.38.1
 
