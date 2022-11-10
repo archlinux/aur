@@ -32,7 +32,6 @@ EOF
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 build/libs/ripme-*.jar \
-    "$pkgdir/usr/share/java/ripme.jar"
+  install -Dm644 build/libs/ripme-*.jar "$pkgdir/usr/share/java/ripme.jar"
   install -Dm755 ripme.sh "$pkgdir/usr/bin/ripme"
 }
