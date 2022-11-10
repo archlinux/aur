@@ -13,7 +13,7 @@ url="https://github.com/lefcha/imapfilter"
 license=('MIT')
 depends=('lua' 'pcre2' 'openssl')
 optdepends=('openssl: SSL/TLS encryption and CRAM-MD5 authentication')
-source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/lefcha/${pkgname}/tar.gz/v${pkgver}")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lefcha/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e9063ca210cefe6c47771b400c9f3620bd7a5dce2dfd4d46aeaa86f4cac1d87d')
 
 build() {
