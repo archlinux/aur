@@ -5,8 +5,8 @@
 
 pkgname=fluent-bit
 
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -73,5 +73,5 @@ package() {
 }
 
 # curl https://releases.fluentbit.io/1.x/source-1.x.y.tar.gz.{md5,sha256}
-md5sums=('429aa656d3d9413a55347c899303c52c')
-sha256sums=('894d0aebe7f661244a8abd915b39fa4d091ec6cecaa8cfd7a717e2d6a25a63f6')
+md5sums=('cc6cd64ddc35d6fa08993fd323db0f72')
+sha256sums=('34c3549789ea3fe5e1f274a48d5b5b6f08c25d3155a6adadfed719e4295fb19d')
