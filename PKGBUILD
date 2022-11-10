@@ -9,6 +9,7 @@ url="https://github.com/reckel-jm/cantara"
 license=('GPL3')
 groups=()
 depends=('qt5pas')
+conflicts=('cantara-bin')
 makedepends=('lazarus-qt5' 'qt5pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/archive/refs/tags/v$pkgver.zip")
@@ -26,14 +27,11 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
-	#cd "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	install cantara $pkgdir/usr/bin/cantara
 	mkdir -p $pkgdir/usr/share/locale/de/LC_MESSAGES
 	install -D languages/de/cantara.mo $pkgdir/usr/share/locale/de/LC_MESSAGES/cantara.mo
 	install -D languages/zh/cantara.mo $pkgdir/usr/share/locale/zh/LC_MESSAGES/cantara.mo
-	mkdir -p $pkgdir/usr/share/applications/
-	install app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
-    mkdir -p $pkgdir/usr/share/icons/
-    install app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
+	install -D app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
+    install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
 }

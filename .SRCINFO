@@ -9,6 +9,7 @@ pkgbase = cantara
 	makedepends = qt5pas
 	depends = qt5pas
 	provides = cantara
+	conflicts = cantara-bin
 	source = https://github.com/reckel-jm/cantara/archive/refs/tags/v2.3.2.zip
 	md5sums = f871696e8d2566f42671c4965e9da770
 
