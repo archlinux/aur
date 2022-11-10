@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=16.0.0_r440693.a68bcd81dcc9
+pkgver=16.0.0_r441433.9fe5ca9b3076
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -82,8 +82,9 @@ build() {
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D LLVM_ENABLE_BINDINGS=OFF \
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
+        -D LLVM_ENABLE_DUMP=ON \
         -Wno-dev
-    
+
     ninja -C _build $NINJAFLAGS 
 }
 
