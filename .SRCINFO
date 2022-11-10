@@ -13,8 +13,7 @@ pkgbase = libfragmentzip-git
 	depends = zlib
 	provides = libfragmentzip
 	conflicts = libfragmentzip
-	source = git://github.com/tihmstar/libfragmentzip
+	source = git+https://github.com/tihmstar/libfragmentzip
 	md5sums = SKIP
 
 pkgname = libfragmentzip-git
-

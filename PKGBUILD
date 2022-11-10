@@ -12,7 +12,7 @@ depends=('curl' 'libzip' 'zlib')
 makedepends=('git' 'libgeneral')
 provides=(libfragmentzip)
 conflicts=(libfragmentzip)
-source=("git://github.com/tihmstar/libfragmentzip")
+source=("git+https://github.com/tihmstar/libfragmentzip")
 md5sums=('SKIP')
 
 function pkgver() {
