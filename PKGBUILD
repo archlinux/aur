@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=routinator
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('rsync')
 makedepends=('rust')
 backup=('etc/routinator/routinator.conf')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/routinator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9c3af5db27fd3d77b2f333d2278225fc2f7c5db6fd37c07cbd0d8c6881521fa')
+sha256sums=('e1e517280b3adca7a976c86bc59ea4cc5b6a6c7a0b8ab0166be6e6bff001c698')
 
 
 check() {
