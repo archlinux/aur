@@ -1,6 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
-pkgname=("otf-oswald" "ttf-oswald")
+# pkgname=("otf-oswald" "ttf-oswald")
+pkgname="otf-oswald"
 pkgver=20171111
 pkgrel=1
 pkgdesc="A reworking of the classic gothic typeface style"
@@ -20,10 +21,10 @@ _package() {
 	install -Dm644 OFL.txt    -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_ttf-oswald() {
-	conflicts=(otf-oswald)
-	_package otf
-}
+# package_ttf-oswald() {
+# 	conflicts=(otf-oswald)
+# 	_package otf
+# }
 
 package_otf-oswald() {
 	conflicts=(ttf-oswald)

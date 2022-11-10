@@ -10,6 +10,3 @@ pkgbase = otf-oswald
 
 pkgname = otf-oswald
 	conflicts = ttf-oswald
-
-pkgname = ttf-oswald
-	conflicts = otf-oswald
