@@ -1,0 +1,23 @@
+diff -uNr check-manifest-0.47.orig/tests.py check-manifest-0.47/tests.py
+--- check-manifest-0.47.orig/tests.py	2021-09-22 10:47:19.000000000 +0200
++++ check-manifest-0.47/tests.py	2022-11-10 15:13:57.310593251 +0100
+@@ -1072,7 +1072,8 @@
+ 
+     def _add_submodule(self, repo, subdir, subrepo):
+         os.chdir(repo)
+-        self.vcs._run('git', 'submodule', 'add', subrepo, subdir)
++        self.vcs._run('git', '-c', 'protocol.file.allow=always', 'submodule',
++                      'add', subrepo, subdir)
+         self._commit()
+         os.chdir(self.tmpdir)
+ 
+@@ -1097,7 +1098,8 @@
+         self._add_submodule('main', 'sub1', '../repo1')
+         self._add_submodule('main', 'subdir/sub2', '../repo2')
+         os.chdir('main')
+-        self.vcs._run('git', 'submodule', 'update', '--init', '--recursive')
++        self.vcs._run('git', '-c', 'protocol.file.allow=always', 'submodule',
++                      'update', '--init', '--recursive')
+         self.assertEqual(
+             get_vcs_files(self.ui),
+             [

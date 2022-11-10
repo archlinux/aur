@@ -1,7 +1,5 @@
 pkg/
 src/
 check-manifest-*.tar.gz
-check-manifest-*.pkg.tar.xz
-check-manifest-*.pkg.tar.zst
+check-manifest-*.pkg.tar.*
 check-manifest-*.src.tar.gz
-.AURINFO
