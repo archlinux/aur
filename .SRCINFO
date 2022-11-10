@@ -1,0 +1,15 @@
+pkgbase = python-rfc3339
+	pkgdesc = Format dates according to the RFC 3339.
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://hg.sr.ht/~henryprecheur/rfc3339
+	arch = any
+	license = ISCL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://hg.sr.ht/~henryprecheur/rfc3339/archive/6.2.tar.gz
+	b2sums = 753577b34e443b76e70dbcdeb6b4487dceac63909d646898faed796b526954fb7180f3b622d47bcc5d203e5268c3f277d704af97539500b95c0fab934ad44793
+
+pkgname = python-rfc3339
