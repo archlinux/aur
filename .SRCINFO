@@ -20,4 +20,3 @@ pkgbase = canorus-git
 	sha256sums = SKIP
 
 pkgname = canorus-git
-

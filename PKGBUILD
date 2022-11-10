@@ -26,8 +26,9 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   # stringop-truncation will be fixes in swig, see https://github.com/swig/swig/issues/893
   export CXXFLAGS+=" -Wno-misleading-indentation -Wno-dangling-else -Wno-stringop-truncation -Wno-deprecated -Wno-deprecated-declarations"
+# See https://github.com/canorusmusic/canorus/issues/182
   cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
-          -DDEFAULT_DATA_DIR="/usr/share/canorus"
+          -DDEFAULT_DATA_DIR="/usr/share/canorus" -DNO_PYTHON=1
   make
 }
 
