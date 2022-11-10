@@ -1,11 +1,13 @@
 pkgbase = ascii-image-converter
-	pkgdesc = A cross-platform command-line tool to convert images into ascii art and print them on the console.
-	pkgver = 1.10.0
+	pkgdesc = A command-line tool that converts images into ascii art and prints them out onto the console
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/TheZoraiz/ascii-image-converter
 	arch = x86_64
-	license = GPL
-	source = ascii-image-converter-1.10.0.tar.gz::https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.10.0/ascii-image-converter_Linux_amd64_64bit.tar.gz
-	md5sums = 96a4e86a4136c0e1d54e975a23ee566d
+	license = Apache
+	makedepends = go
+	conflicts = ascii-image-converter-git
+	source = ascii-image-converter-1.12.0.tar.gz::https://github.com/TheZoraiz/ascii-image-converter/archive/refs/tags/v1.12.0.tar.gz
+	sha256sums = bdecf5b41075e261aed47284c6ed14409ba7708bfc0b85d156e946b22162f2be
 
 pkgname = ascii-image-converter
