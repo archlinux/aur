@@ -1,107 +1,57 @@
-# Maintainer: leuko <leuko_aydos_de>
+# Maintainer: Gökçe Aydos <aur2022_aydos_de>
 
 pkgname=jupyter-nbgrader-git
-provides=(jupyter-nbgrader)
-conflicts=(jupyter-nbgrader)
-pkgver=v0.7.0.r5.ga409a1c1
+_realm=jupyter
+_name_wogit=${pkgname%-git}
+_name=${_name_wogit#$_realm-}
+provides=($_name_wogit)
+conflicts=($_name_wogit)
+pkgver=v0.8.1.r14.gd71461ed
 pkgrel=1
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
-url=https://github.com/jupyter/nbgrader
+url=https://github.com/$_realm/$_name
 license=(BSD)
 depends=(
 	python
-	python-setuptools
 
-	python-sqlalchemy
-	python-dateutil
-	jupyter-notebook
-	jupyter-nbconvert
-	python-requests
-	python-jsonschema
 	python-alembic
-	python-rapidfuzz
+	python-ipywidgets
 	python-jinja
-	python-markupsafe
+	python-jsonschema
 	python-jupyter_client
 	jupyter-server
-	python-qtconsole
-	python-ipywidgets
+	python-jupyterlab_server
+	python-markupsafe
+	jupyter-nbclassic  # As of 2022-11-10 <0.4
 	jupyter-nbclient
+	jupyter-nbconvert
+	jupyter-notebook
+	python-dateutil
+	python-rapidfuzz
+	python-requests
+	python-sqlalchemy
+	python-traitlets  # As of 2022-11-10 <5.2.0
 )
-makedepends=(python-setuptools git)
-source=(git+https://github.com/jupyter/nbgrader)
+makedepends=(
+	jupyterlab-hatch-jupyter-builder
+	python-build
+	python-installer
+	python-wheel
+	git
+)
+source=(git+https://github.com/$_realm/$_name)
 md5sums=(SKIP)
 pkgver() {
-	cd nbgrader
+	cd $_name
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
-	cd nbgrader
-	python setup.py build
+	cd $_name
+	python -m build --wheel --no-isolation
 }
 package() {
-	cd nbgrader
-	python setup.py install --prefix=/usr --root="$pkgdir" --skip-build
-
-	echo
-	echo Installing notebook extension from the build-directory
-	echo
-	jupyter nbextension install --prefix="$pkgdir"/usr "$srcdir/nbgrader"
-	# Do not use `--py nbgrader` because package is not yet installed
-
-	# jupyter-{server,nb}extension-enable does not support setting a prefix.
-	# Follow
-	# https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Distributing%20Jupyter%20Extensions%20as%20Python%20Packages.html#Automatically-enabling-a-server-extension-and-nbextension
-	# to automatically enable the nbextension and the serverextension and
-	# create the file instead.
-	# The files can be created with the command
-	# sudo jupyter serverextension enable --py nbgrader
-	# sudo jupyter nbextension enable --py nbgrader
-	# and copied here.
-	#TODO suggest maintainer automatic activation like here:
-	# https://github.com/jupyter-lsp/jupyterlab-lsp/tree/master/python_packages/jupyter_lsp/jupyter_lsp/etc
-	
-	# jupyter_notebook_config.d
-	_file="$pkgdir"/etc/jupyter/jupyter_notebook_config.d/nbgrader.json
-	mkdir -p $(dirname $_file)
-	cat > $_file <<-EOF
-	{
-	  "NotebookApp": {
-	    "nbserver_extensions": {
-	      "nbgrader.server_extensions.formgrader": true,
-	      "nbgrader.server_extensions.validate_assignment": true,
-	      "nbgrader.server_extensions.assignment_list": true,
-	      "nbgrader.server_extensions.course_list": true
-	    }
-	  }
-	}
-	EOF
-
-	# notebook.d
-	_file="$pkgdir"/etc/jupyter/nbconfig/notebook.d/nbgrader.json
-	mkdir -p $(dirname $_file)
-	cat > $_file  <<-EOF
-	{
-	  "load_extensions": {
-	    "create_assignment/main": true,
-	    "validate_assignment/main": true
-	  }
-	}
-	EOF
-
-	# notebook.d
-	_file="$pkgdir"/etc/jupyter/nbconfig/tree.d/nbgrader.json
-	mkdir -p $(dirname $_file)
-	cat > $_file  <<-EOF
-	{
-	  "load_extensions": {
-	    "formgrader/main": true,
-	    "assignment_list/main": true,
-	    "course_list/main": true
-	  }
-	}
-	EOF
-
+	cd $_name
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
