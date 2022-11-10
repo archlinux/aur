@@ -1,0 +1,24 @@
+diff --git a/python/sites/mach.txt b/python/sites/mach.txt
+index 6547ee58574a..a7d9a8b2ca70 100644
+--- a/python/sites/mach.txt
++++ b/python/sites/mach.txt
+@@ -114,7 +114,7 @@ vendored:third_party/python/taskcluster
+ vendored:third_party/python/taskcluster_taskgraph
+ vendored:third_party/python/taskcluster_urls
+ vendored:third_party/python/tqdm
+-vendored:third_party/python/typing_extensions
++pypi-optional:typing_extensions>=3.10.0:something will break
+ vendored:third_party/python/urllib3
+ vendored:third_party/python/voluptuous
+ vendored:third_party/python/wheel
+@@ -133,5 +133,5 @@ pypi-optional:glean-sdk==44.1.1:telemetry will not be collected
+ # Mach gracefully handles the case where `psutil` is unavailable.
+ # We aren't (yet) able to pin packages in automation, so we have to
+ # support down to the oldest locally-installed version (5.4.2).
+-pypi-optional:psutil>=5.4.2,<=5.8.0:telemetry will be missing some data
+-pypi-optional:zstandard>=0.11.1,<=0.17.0:zstd archives will not be possible to extract
++pypi-optional:psutil>=5.4.2,<=5.9.3:telemetry will be missing some data
++pypi-optional:zstandard>=0.11.1,<=0.19.0:zstd archives will not be possible to extract
+-- 
+2.37.3
+

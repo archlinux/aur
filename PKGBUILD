@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=106.0
+pkgver=106.0.5
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -30,21 +30,24 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 backup=('usr/lib/cachy-browser/cachy.cfg'
         'usr/lib/cachy-browser/distribution/policies.json')
 groups=('cachyos')
-options=(!emptydirs !makeflags !strip !lto !debug ccache)
+options=(!emptydirs !makeflags !strip !lto !debug)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
-# _common_tag="v90.0-1"
 _common_tag="v${pkgver}-${pkgrel}"
 _settings_tag='1.4'
 install=cachy-browser.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
-        "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('1546ebfd9d5a814f17479ed626519ed69aa3c89c22c7fb1fe5c84e4d7e5d7e18'
+        "git+https://github.com/cachyos/cachyos-browser-common.git"
+        "match.patch"
+        "libwebrtc-screen-cast-sync.patch")
+sha256sums=('9471a7610d0adc350f14c363f1fcd2e15a85f22744f5850604af01aa844bc8a8'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'b5597ff5bc658076faa4d66d990c07312ddda121ae227f07567b814a3a286f12'
+            '5c164f6dfdf2d97f3f317e417aaa2e6ae46a9b3a160c3162d5073fe39d203286')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
@@ -87,17 +90,15 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
-#ac_add_options --with-system-av1
-#ac_add_options --with-system-graphite2
-
-#ac_add_options --with-system-harfbuzz
-#ac_add_options --with-system-icu
-#ac_add_options --with-system-jpeg
-#ac_add_options --with-system-libevent
-#ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-#ac_add_options --with-system-zlib
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-webp
+ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-jpeg
+
 ac_add_options --enable-optimize=-O3
 # Features
 ac_add_options --enable-pulseaudio
@@ -215,10 +216,13 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
     patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-
-    #msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-    #patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # broken with 105, wait for a upstream fix
-
+	patch -Np1 < ../match.patch
+    msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+    # https://bugs.archlinux.org/task/76231
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
+    # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
+    patch -Np1 -i ../libwebrtc-screen-cast-sync.patch
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
     cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
 }
@@ -229,9 +233,8 @@ build() {
 
     export MOZ_NOSPAM=1
     export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-    #export MOZ_ENABLE_FULL_SYMBOLS=1
-    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
-    export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
+    export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+    export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach
 
     # LTO needs more open files
     ulimit -n 4096
@@ -240,7 +243,7 @@ build() {
     echo "Building instrumented browser..."
 
     cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
+ac_add_options --enable-profile-generate
 END
 
     ./mach build
@@ -264,8 +267,8 @@ END
     echo "Building optimized browser..."
 
     cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use=cross
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
