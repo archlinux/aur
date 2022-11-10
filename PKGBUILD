@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.11.1
+pkgver=2022.11.2
 pkgrel=1
 epoch=1
 arch=(any)
@@ -66,7 +66,7 @@ optdepends=(
   'python-lxml: Meteo France integration'
   'python-paho-mqtt: mqtt integration'
 )
-_tag=229d60e678442d459ad652c625f4643187dbf56c
+_tag=c757c9b99f4c642cb4c8a6bb694e4bdac2772c99
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
@@ -85,8 +85,8 @@ prepare() {
   sed 's/==/>=/g' -i pyproject.toml requirements.txt setup.cfg homeassistant/package_constraints.txt
   # allow pip >= 20.3 to be used
   sed 's/,<20.3//g' -i pyproject.toml requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # allow any setuptools to be used
-  sed 's/~=62.3//' -i pyproject.toml
+  # allow any setuptools and wheel to be used
+  sed 's/~=62.3//; s/~=0.37.1//' -i pyproject.toml
 }
 
 build() {
