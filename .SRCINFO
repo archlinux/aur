@@ -1,0 +1,18 @@
+pkgbase = raysession
+	pkgdesc = Session manager for audio programs using the Non Session Manager (NSM) API
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/Houston4444/RaySession
+	arch = any
+	groups = pro-audio
+	license = GPL
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = dbus-python
+	depends = python-pyqt5
+	depends = python-pyliblo
+	depends = python-pyxdg
+	source = https://github.com/Houston4444/RaySession/releases/download/v0.13.0/RaySession-0.13.0-source.tar.gz
+	sha256sums = c8d28eba3506d922102681d6f8ce7806d3ce4864a8354a5539991e50fb1b5c74
+
+pkgname = raysession

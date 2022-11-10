@@ -1,0 +1,5 @@
+pkg/
+raysession-*.pkg.tar.*
+RaySession-*-source.tar.gz
+raysession-*.src.tar.gz
+src/
