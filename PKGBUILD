@@ -2,7 +2,7 @@
 
 pkgname=quilc
 pkgver=1.26.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The high-performance and featureful Quil simulator."
 arch=('x86_64')
 url="https://github.com/quil-lang/quilc"
@@ -33,6 +33,7 @@ package() {
     cd $pkgname-$pkgver
     mkdir -p "$pkgdir/usr/bin"
     make -j1 DESTDIR="$pkgdir" PREFIX=/usr install
+    install -Dm644 doc/man/quilc.1 "$pkgfdir/usr/share/man/man1/quilc.1"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

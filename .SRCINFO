@@ -1,7 +1,7 @@
 pkgbase = quilc
 	pkgdesc = The high-performance and featureful Quil simulator.
 	pkgver = 1.26.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/quil-lang/quilc
 	arch = x86_64
 	license = Apache
