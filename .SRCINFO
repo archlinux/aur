@@ -1,11 +1,14 @@
 pkgbase = jupyter-nbgrader
 	pkgdesc = A system for assigning and grading notebooks
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/jupyter/nbgrader
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = jupyterlab-hatch-jupyter-builder
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
 	depends = python-sqlalchemy
@@ -24,7 +27,7 @@ pkgbase = jupyter-nbgrader
 	depends = python-ipywidgets
 	depends = jupyter-nbclient
 	depends = python-traitlets
-	source = https://files.pythonhosted.org/packages/source/n/nbgrader/nbgrader-0.7.1.tar.gz
-	sha256sums = 871705d8bc4ad82c80a2376868381b2290fd69f0398b986925b9eaf9fd496fca
+	source = https://files.pythonhosted.org/packages/source/n/nbgrader/nbgrader-0.8.1.tar.gz
+	sha256sums = af9303537687c8326591aaa996970a3b158f6bc065da3a4b292b9060e1edee71
 
 pkgname = jupyter-nbgrader
