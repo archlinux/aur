@@ -1,6 +1,6 @@
 pkgbase = ktorrent-git
 	pkgdesc = A powerful BitTorrent client. (GIT version)
-	pkgver = 5.2.0.r2616.9747a8f5
+	pkgver = 23.03.70.r2910.a6030200
 	pkgrel = 1
 	url = https://kde.org/applications/en/internet/org.kde.ktorrent
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = ktorrent-git
 	makedepends = kross
 	makedepends = kplotting
 	makedepends = kdesignerplugin
-	makedepends = kdewebkit
 	makedepends = kde-syndication
 	depends = libktorrent
 	depends = knotifyconfig
@@ -27,7 +26,6 @@ pkgbase = ktorrent-git
 	optdepends = geoip: for infowidget plugin
 	optdepends = plasma-workspace: for shutdown plugin
 	optdepends = kdnssd: for zeroconf plugin
-	optdepends = kdewebkit: for syndication plugin
 	optdepends = kde-syndication: for syndication plugin
 	optdepends = kross: for scripting plugin
 	provides = ktorrent
@@ -36,4 +34,3 @@ pkgbase = ktorrent-git
 	sha256sums = SKIP
 
 pkgname = ktorrent-git
-
