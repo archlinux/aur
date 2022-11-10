@@ -1,0 +1,16 @@
+pkgbase = cargo-public-api-git
+	pkgdesc = List and diff the public API of Rust library crates (git)
+	pkgver = 0.21.0.r30.g5f95e57
+	pkgrel = 1
+	url = https://github.com/Enselic/cargo-public-api
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = cargo-public-api
+	conflicts = cargo-public-api
+	source = git+https://github.com/Enselic/cargo-public-api
+	sha512sums = SKIP
+
+pkgname = cargo-public-api-git
