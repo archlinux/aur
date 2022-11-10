@@ -2,38 +2,35 @@
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
 license=('AGPL v3')
 arch=('x86_64')
+makedepends=('npm' 'nvm' 'jq' 'moreutils')
 options=('!strip')
-source=(
-    "https://github.com/Snapmaker/Luban/releases/download/v${pkgver}/snapmaker-luban-${pkgver}-linux-amd64.deb"
-    "https://snapshot.debian.org/archive/debian/20191014T030756Z/pool/main/g/gconf/libgconf-2-4_3.2.6-6_amd64.deb"
-)
-sha256sums=(
-    '9363d4ac7053a9fb72ba0fba9225ee47a763cfb85e94b55bcba8306d7ae15d85'
-    '57a77787a3b29cef92470e2ffdf6582924bfdab2f38d089c490c5ac8511c60cd'
-)
-noextract=("${source[@]##*/}")
+source=("https://github.com/Snapmaker/Luban/archive/refs/tags/v${pkgver}.tar.gz")
+
+sha256sums=('6db462e15fa55691226351a5a908b00b9b25b32aff1734dab2009091fe29a2ee')
 
 prepare() {
+  cd ${srcdir}/Luban-${pkgver}
+  jq '.build.linux.target="pacman"' package.json | sponge package.json
+}
 
-    ar -x "${srcdir}/snapmaker-luban-${pkgver}-linux-amd64.deb" data.tar.xz
-    mkdir "${srcdir}/luban"
-    tar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/luban/"
-    rm "${srcdir}/data.tar.xz"
-
-    ar -x "${srcdir}/libgconf-2-4_3.2.6-6_amd64.deb" data.tar.xz
-    mkdir "${srcdir}/libgconf"
-    tar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/libgconf/"
-    rm "${srcdir}/data.tar.xz"
-
+build() {
+  export PATH=$PATH:node_modules/.bin
+  cd ${srcdir}/Luban-${pkgver}
+  source /usr/share/nvm/init-nvm.sh
+  nvm install 12
+  nvm use 12  
+  npm install
+  npm run build
+  npm run electron-builder
 }
 
 package() {
-  mv "${srcdir}/luban/opt" "${pkgdir}/"
-  mv "${srcdir}/luban/usr" "${pkgdir}/"
-  mv "${srcdir}/libgconf/usr/lib/${CARCH}-linux-gnu/libgconf-2.so.4.1.5" "${pkgdir}/opt/Snapmaker Luban/libgconf-2.so.4"
+  mv ${srcdir}/Luban-${pkgver}/output/${pkgname}-${pkgver}.pacman ${srcdir}/Luban-${pkgver}/output/${pkgname}-${pkgver}.tar.xz
+  tar xf ${srcdir}/Luban-${pkgver}/output/${pkgname}-${pkgver}.tar.xz --exclude='.*' -C ${pkgdir}
+  chown -R root:root "${pkgdir}"
 }
