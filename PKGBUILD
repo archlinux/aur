@@ -16,7 +16,7 @@ depends=(
     'fmt'
     'wayland'
     'libdate-tz.so'
-    'spdlog'
+    'libspdlog.so'
     'gtk-layer-shell'
     'libupower-glib.so'
     'upower'
