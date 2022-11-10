@@ -1,7 +1,7 @@
 # Maintainer: Tobias Langendorf <junglerobba@jngl.one>
 
 pkgname=wlrobs
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors"
 arch=('i686' 'x86_64')
