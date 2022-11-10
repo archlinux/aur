@@ -1,7 +1,7 @@
 pkgbase = waybar-exp-no-systemd-git
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with experimental features enabled and without systemd dependencies (GIT)
 	pkgver = r2001.d10d9b8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = waybar-exp-no-systemd-git
 	depends = fmt
 	depends = wayland
 	depends = libdate-tz.so
-	depends = libspdlog.so
+	depends = spdlog
 	depends = gtk-layer-shell
 	depends = libupower-glib.so
 	depends = upower
