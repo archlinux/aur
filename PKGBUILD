@@ -8,6 +8,7 @@ arch=('any')
 license=('GPL3')
 backup=('etc/automua/automua.conf')
 url='https://github.com/HLFH/automua'
+depends=('python39')
 source=('setupvenv.sh'
         'automua.sysusers'
         'automua.conf'

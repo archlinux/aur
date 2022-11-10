@@ -5,6 +5,7 @@ pkgbase = automua
 	url = https://github.com/HLFH/automua
 	arch = any
 	license = GPL3
+	depends = python39
 	backup = etc/automua/automua.conf
 	source = setupvenv.sh
 	source = automua.sysusers
