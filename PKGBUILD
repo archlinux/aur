@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://booktab.it/"
 license=('unknown')
 conflicts=('booktab-wine')
-depends=("pcre" "fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "libxcursor" "libxinerama" "libpulse" "qt5-svg" "qt5-webkit" "qt5-multimedia" "qt5-webengine")
+depends=("pcre" "fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "libxcursor" "libxinerama" "libpulse" "qt5-svg" "qt5-multimedia")
 
 _debname=BooktabSetup.deb
 
