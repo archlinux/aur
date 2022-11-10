@@ -2,7 +2,7 @@
 
 pkgname=qvm
 pkgver=1.17.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The high-performance and featureful Quil simulator."
 arch=('x86_64')
 url="https://github.com/quil-lang/qvm"
@@ -29,12 +29,13 @@ prepare() {
     patch -p1 < "$srcdir/$_intrinsics_patch"
     patch -p1 < "$srcdir/disable_qvm_ng.patch"
     sed -i 's/$(HOME)/./' Makefile # use local directory instead of home
+    sed -i 's/clean clean-cache qvm/qvm/' Makefile # otherwise it won't work
     export QVM_WORKSPACE=4096 # edit this in case you get heap exhaustion
 }
 
 build() {
     cd $pkgname-$pkgver
-    make -j1 QVM_FEATURES='qvm-intrinsics' qvm
+    make -j1 QVM_FEATURES='qvm-intrinsics' qvm-sdk-barebones
 }
 
 check() {
