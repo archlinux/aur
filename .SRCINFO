@@ -1,6 +1,6 @@
 pkgbase = evid
 	pkgdesc = screen recorder for X with a minimal interface with support for gifs and mp4
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/maquinas07/evid
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = evid
 	depends = libxfixes
 	depends = libnotify
 	depends = ffmpeg
-	source = evid-0.0.1.tar.gz::https://github.com/maquinas07/evid/archive/refs/tags/0.0.1.tar.gz
-	sha256sums = 2dde0e86de668e0bfda858dbfe84ada388e51997e2f9a1cbdc2f25cca2826ab5
+	source = evid-0.0.2.tar.gz::https://github.com/maquinas07/evid/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = db61d557bb59f966ae132523232569f3509e12865453a888dd2bda75783627e4
 
 pkgname = evid
