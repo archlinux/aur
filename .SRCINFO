@@ -1,0 +1,16 @@
+pkgbase = gow-git
+	pkgdesc = Missing watch mode for Go commands
+	pkgver = r51.a5bfab2
+	pkgrel = 1
+	url = https://github.com/mitranim/gow
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = UNLICENSE
+	makedepends = go
+	makedepends = git
+	provides = gow
+	source = git+https://github.com/mitranim/gow.git
+	sha256sums = SKIP
+
+pkgname = gow-git
