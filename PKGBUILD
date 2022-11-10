@@ -6,7 +6,7 @@
 
 pkgname=maubot
 pkgver=0.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A plugin-based Matrix bot system"
 arch=(any)
 license=(AGPLv3)
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"${url}/archive/v${pkgver/_rc/-rc
     "sysusers-${pkgname}.conf"
     "tmpfiles-${pkgname}.conf"
     "${pkgname}.service")
-sha256sums=('f3189ab1846274efe20649ecd31943a1c7b12ecb52d845e62d8e7a0fdf3db933'
+sha256sums=('1c28db3c74b2d634f97b25c3b117a5d8198dbb3c8afb1fa31a429ab3479334b7'
             'e2f01fd60338dd576bb72dee2f536210cb54540ace4a40aa94b5aebe6944ba0f'
             '3fda190e5e5a2dff7c6192c27427a902c286069fac6b56e9abf61b021d49bf9a'
             '8dfbed8ad630cc5ab0e111a7e5da3245ddf82881a00ed6b540bfdcb7ece33083')
