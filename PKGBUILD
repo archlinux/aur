@@ -1,6 +1,6 @@
 # Maintainer: luisbocanegra <luis.bocanegra0 at protonmail dot com>
 pkgname=kde-material-you-colors
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('python-colr: colored hex codes printing'
 )
 options=('!strip')
 source=("${pkgname}-${pkgver}.zip::$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('4d1b8b9c923126d963ac52ae241dab0b3916b24fe663e384befcd526aa30b87c')
+sha256sums=('fbf870b7aafc374dc5c6b6b6f42584535d122ea3415588d696406c155f5bfb9f')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -26,7 +26,8 @@ package() {
   install -Dm644 src/kde-material-you-colors-stop.desktop ${pkgdir}/usr/share/applications/kde-material-you-colors-stop.desktop
   install -Dm644 src/sample_config.conf ${pkgdir}/usr/lib/${pkgname}/sample_config.conf
   install -Dm755 src/kde-material-you-colors ${pkgdir}/usr/lib/${pkgname}/kde-material-you-colors
-  find src/* -type f -name "*.py" -exec install -Dm755 {} ${pkgdir}/usr/lib/${pkgname}/ \;
+  find src/ -maxdepth 1 -type f -name "*.py" -exec install -Dm755 {} ${pkgdir}/usr/lib/${pkgname}/ \;
+  (cd src/; find utils/* -type f -name "*.py" -exec install -Dm755 {} ${pkgdir}/usr/lib/${pkgname}/{} \;)
   install -dm755 ${pkgdir}/usr/bin
   ln -s /usr/lib/${pkgname}/kde-material-you-colors ${pkgdir}/usr/bin/kde-material-you-colors
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
