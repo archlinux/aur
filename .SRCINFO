@@ -1,11 +1,12 @@
 pkgbase = snapmaker-luban-bin
 	pkgdesc = Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines.
 	pkgver = 4.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Snapmaker/Luban
 	arch = x86_64
 	license = AGPL v3
 	provides = snapmaker-luban
+	conflicts = snapmaker-luban
 	noextract = snapmaker-luban-4.4.0-linux-amd64.deb
 	noextract = libgconf-2-4_3.2.6-6_amd64.deb
 	options = !strip
