@@ -1,7 +1,7 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
 pkgname=forticlient-vpn
 pkgver=7.0.7.0246
-pkgrel=2
+pkgrel=3
 pkgdesc="Build through the official package of FortiClient VPN"
 arch=("x86_64")
 url="https://www.fortinet.com/support/product-downloads"
@@ -26,6 +26,8 @@ package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
 	install -Dm644  "${pkgdir}/lib/systemd/system/forticlient.service" "${pkgdir}/usr/lib/systemd/system/forticlient.service"
+
+	rm -rf "${pkgdir}/lib"
 
 	# Install license
     install -Dm 644 "${pkgdir}/usr/share/doc/forticlient/copyright" "${pkgdir}/usr/share/licenses/fortinet/LICENSE"

@@ -1,5 +1,5 @@
 ## forticlient-vpn - 7.0.7.0246 - 2022-11-10
-* forticlient-vpn - 7.0.7.0246 - `release 1`
+* forticlient-vpn - 7.0.7.0246 - `release 3`
   + gzip and systemd moved to `depends`
   + upgraded the install script
 
