@@ -1,14 +1,14 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=elements-project-bin
-pkgver=0.21.0.2
+pkgver=22.0.2
 pkgrel=1
 arch=('aarch64' 'x86_64')
 pkgdesc="Elements blockchain platform, a collection of feature experiments and extensions to the Bitcoin protocol"
 url="https://github.com/ElementsProject/elements"
 license=('MIT')
 backup=('etc/elements/elements.conf')
-source_x86_64=("https://github.com/ElementsProject/elements/releases/download/elements-${pkgver}/elements-elements-${pkgver}-x86_64-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/ElementsProject/elements/releases/download/elements-${pkgver}/elements-elements-${pkgver}-aarch64-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/ElementsProject/elements/releases/download/elements-${pkgver}/elements-${pkgver}-x86_64-linux-gnu.tar.gz")
+source_aarch64=("https://github.com/ElementsProject/elements/releases/download/elements-${pkgver}/elements-${pkgver}-aarch64-linux-gnu.tar.gz")
 provides=("elements-project")
 conflicts=("elements-project")
 source=(elements.conf
@@ -18,8 +18,8 @@ source=(elements.conf
         elements-core-01-systemd-sysusers.hook
 	elements-core-02-chown.hook)
 
-sha256sums_x86_64=('3018116794429b77ce0dd7436c2906f8be4eb5d6163b8451c5ce7e7bedad152b')
-sha256sums_aarch64=('06de6cd39f00a8b5604f2baa6203c08358762b99560bec6ad90a65bc22fadf6f')
+sha256sums_x86_64=('0278017429236f2cc651bb746e8ae826b740811d73789d07d1682649f2414465')
+sha256sums_aarch64=('a1a78f1214a4b549affcddd33012b5251e6f73987b9f533b811babb04101ab7c')
 sha256sums=('SKIP'
 	    'SKIP'
 	    'SKIP'
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 	    'SKIP')
 
 package() {
-  cd "$srcdir/elements-elements-${pkgver}"
+  cd "$srcdir/elements-${pkgver}"
   msg2 'Installing essential directories'
   install -dm 700 "$pkgdir/etc/elements"
   install -dm 750 "$pkgdir/var/lib/elementsd"
