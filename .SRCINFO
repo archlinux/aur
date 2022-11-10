@@ -1,7 +1,7 @@
 pkgbase = python-pyquil
 	pkgdesc = A Python library for quantum programming using Quil.
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rigetti/pyquil
 	arch = any
 	license = Apache
@@ -23,6 +23,8 @@ pkgbase = python-pyquil
 	optdepends = python-sphinx: docs
 	optdepends = python-nbsphinx: docs
 	optdepends = python-recommonmark: docs
+	optdepends = quilc: local compiler server
+	optdepends = qvm: local quantum virtual machine server
 	source = https://github.com/rigetti/pyquil/archive/refs/tags/v3.3.2.tar.gz
 	b2sums = caa4b7ddef768999402e059f935bade5cede209475c75de02ef25a9af0661f0644ec1e44be83957888b2ca9161a09d9da4d61e8c81e426885141dfaec851f4a3
 

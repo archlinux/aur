@@ -3,7 +3,7 @@
 _name=pyquil
 pkgname=python-$_name
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python library for quantum programming using Quil.'
 arch=(any)
 url='https://github.com/rigetti/pyquil'
@@ -26,6 +26,8 @@ optdepends=(
     # 'python-sphinx-rtd-theme: docs'
     'python-nbsphinx: docs'
     'python-recommonmark: docs'
+    'quilc: local compiler server'
+    'qvm: local quantum virtual machine server'
 )
 makedepends=(python-build python-installer python-poetry python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
