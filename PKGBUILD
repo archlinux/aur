@@ -2,22 +2,19 @@
 # Contributor: Anty0 <anty150 at gmail dot com>
 # Contributor: Hezekiah Michael <spiritomb at protonmail dot com>
 
-
-
-
 pkgdesc='Draw.io integration for Nextcloud servers'
 pkgname=nextcloud-app-drawio
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=('any')
 license=('AGPL')
-url="https://github.com/pawelrojek/nextcloud-drawio"
+url="https://github.com/jgraph/drawio-nextcloud"
 makedepends=()
 depends=('nextcloud')
 options=('!strip')
-source=("drawio-v${pkgver}.tar.gz::${url}/releases/download/v.1.0.3/drawio-v${pkgver}.tar.gz")
+source=("drawio-v${pkgver}.tar.gz::${url}/releases/download/v.${pkgver}/drawio-v${pkgver}.tar.gz")
 
-sha256sums=('dd4f8d6e465710b1252af7e38e91f211e08a7c6884696c9c15e7b811c75cc059')
+sha256sums=('d3e0b395fa4ef906e977269569c59e4cec9feb7b87c5f3a6a876b528fd127a6c')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
