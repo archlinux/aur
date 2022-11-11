@@ -13,6 +13,10 @@ pkgbase = qdvdauthor
 	depends = vlc
 	depends = xine-lib
 	depends = libx11
+        provides = qslideshow
+        provides = dvd-slideshow
+        provides = qrender
+        provides = qplayer
 	source = https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-2.3.1-013a.tar.gz
 	md5sums = 47cc4cc2ba33d8058f7978b9ba89f127
 
