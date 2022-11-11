@@ -1,6 +1,6 @@
 # Maintainer: e dot sovetkin at gmaildotcom
 pkgname=smrender-git
-pkgver=4.3.0
+pkgver=v4.3.0
 pkgrel=2
 pkgdesc="A rule-based renderer for OSM data"
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('git')
 conflicts=()
 provides=('smrender')
-source=("git+https://github.com/rahra/smrender.git#tag=v${pkgver}")
+source=("git+https://github.com/rahra/smrender.git#tag=${pkgver}")
 md5sums=('SKIP')
 _gitname=smrender
 
