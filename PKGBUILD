@@ -1,6 +1,6 @@
 # Maintainer: e dot sovetkin at gmaildotcom
 pkgname=smrender-git
-pkgver=v4.3.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A rule-based renderer for OSM data"
 arch=('any')
@@ -10,25 +10,25 @@ depends=()
 makedepends=('git')
 conflicts=()
 provides=('smrender')
-source=('git+https://github.com/rahra/smrender.git#tag=v4.3.0')
+source=("git+https://github.com/rahra/smrender.git#tag=v${pkgver}")
 md5sums=('SKIP')
 _gitname=smrender
 
 pkgver () {
-  cd "$srcdir/$_gitname"
-  echo $(git describe --always | sed 's/-/./g')
+    cd "${srcdir}/${_gitname}"
+    echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  ./autoconf.sh
-  ./configure --prefix=/usr
-  make
+    cd "${srcdir}/${_gitname}"
+    ./autoconf.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package () {
-  cd "$srcdir/$_gitname"
-  make DESTDIR=$pkgdir install
+    cd "${srcdir}/${_gitname}"
+    make DESTDIR=$pkgdir install
 }
 
 # vim:set ts=4 sw=4 et:

@@ -1,6 +1,6 @@
 pkgbase = smrender-git
 	pkgdesc = A rule-based renderer for OSM data
-	pkgver = v4.3.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = http://www.abenteuerland.at/smrender/
 	arch = any
