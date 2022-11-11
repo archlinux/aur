@@ -4,7 +4,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-keraleeyam
-pkgver=3.0.0+20200101
+pkgver=3.0.0+20221109
 pkgrel=2
 pkgdesc="This is Keraleeyam, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
@@ -13,7 +13,7 @@ license=("OFL")
 source=("http://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam-Regular.ttf"
         "https://gitlab.com/smc/fonts/keraleeyam/raw/master/LICENSE.txt"
         "https://gitlab.com/smc/fonts/keraleeyam/raw/master/67-smc-keraleeyam.conf")
-sha256sums=('99968256f37caa5ccf8de4c2db28ac6ef5f70c7f6c7c07ddc74237b0a5ccd68c'
+sha256sums=('6c0c0aced0af3078473a405864ba86e85b9c62ab53f0c03a2815c4096c73d56a'
             '0a32c5287686a06b5712b4fa8079736cfed991a865e2b24691aa5423a4859f2a'
             'de32d00b046423dcb093e376025b22405b468b18280c3d885ef4aff0f4079adc')
 
