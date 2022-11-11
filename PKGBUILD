@@ -10,7 +10,7 @@ license=("MPL2")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha512sums=('708e7b1021dd41e77799c28b2e6e4f6b7b636f0a4e4226ebfac5a5a90a1064ee737733600a75ebf58fa51e997019f8d73720b0200056e394d6e950d9f3d5c73c')
+sha512sums=('aafdac3bc331a583892ce30a8d8b121eb9e4cf2c45de4d9a9eeb5679b28781ddc2a2f2b83105bc6feb969ee2911dc32046b9df6a87912b9149a3c3ea9b31b972')
 
 prepare() {
   cd ${pkgname}-${pkgver}
