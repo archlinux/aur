@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.5.r119107.gba8754cf112
+	pkgver = 3.5.r119175.g129197f20d3
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = blender-git
 	depends = libdecor
 	depends = libepoxy
 	optdepends = cuda: CUDA support in Cycles
-	optdepends = optix=7.1.0: OptiX support in Cycles
+	optdepends = optix>=7.4.0: OptiX support in Cycles
 	optdepends = usd=21.05: USD export Scene
 	optdepends = openimagedenoise: Intel Open Image Denoise support in compositing
 	provides = blender

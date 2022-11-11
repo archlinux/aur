@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.5.r119107.gba8754cf112
+pkgver=3.5.r119175.g129197f20d3
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('libdecor' 'libepoxy')
 optdepends=('cuda: CUDA support in Cycles'
-            'optix=7.1.0: OptiX support in Cycles'
+            'optix>=7.4.0: OptiX support in Cycles'
             'usd=21.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
