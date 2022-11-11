@@ -77,6 +77,28 @@ index 6bbdc24c5..462fcdc13 100644
 -}
 \ No newline at end of file
 +}
+diff --git LiteEditor/mainbook.cpp LiteEditor/mainbook.cpp
+index ee2a5b39d..2ad414497 100644
+--- LiteEditor/mainbook.cpp
++++ LiteEditor/mainbook.cpp
+@@ -438,7 +438,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+     unixStyleFile.Replace(wxT("\\"), wxT("/"));
+ #endif
+     // On gtk either fileName or the editor filepath (or both) may be (or their paths contain) symlinks
+-    wxString fileNameDest = CLRealPath(fullpath);
++    wxString fileNameDest = FileUtils::RealPath(fullpath);
+ 
+     for(size_t i = 0; i < m_book->GetPageCount(); i++) {
+         clEditor* editor = dynamic_cast<clEditor*>(m_book->GetPage(i));
+@@ -464,7 +464,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+ 
+ #if defined(__WXGTK__)
+             // Try again, dereferencing the editor fpath
+-            wxString editorDest = CLRealPath(unixStyleFile);
++            wxString editorDest = FileUtils::RealPath(unixStyleFile);
+             if(editorDest.Cmp(fullpath) == 0 || editorDest.Cmp(fileNameDest) == 0) {
+                 return i;
+             }
 diff --git Plugin/globals.cpp Plugin/globals.cpp
 index 68e87c0b1..2800d4b44 100644
 --- Plugin/globals.cpp
