@@ -1,0 +1,16 @@
+pkgbase = astrocrop
+	pkgdesc = Astronomical image preprocessing tool
+	pkgver = 1.1.1a
+	pkgrel = 1
+	url = https://www.astrodmx-capture.org.uk/
+	install = astrocrop.install
+	arch = x86_64
+	license = custom
+	depends = libxxf86vm
+	depends = at-spi2-core
+	depends = gtk2
+	options = !strip
+	source = https://www.astrodmx-capture.org.uk/downloads/other-software/astrocrop_1.1.1a_amd64.deb
+	sha256sums = d0ac01222721d63b41da0177696f161b73ae293285836b19ee577670359da193
+
+pkgname = astrocrop
