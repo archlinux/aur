@@ -2,7 +2,7 @@
 _basename='hyprshot'
 pkgname="$_basename-git"
 pkgver=1.2.1.r0.a7aa508
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to easily take screenshots in Hyprland using your mouse"
 arch=('any')
 url="https://github.com/Gustash/Hyprshot"
@@ -15,13 +15,15 @@ source=("$_basename::git+https://github.com/Gustash/Hyprshot.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_basename"
+    cd "$srcdir/$_basename"
 
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
-	cd "$srcdir/$_basename"
+    cd "$srcdir/$_basename"
     mkdir -p "$pkgdir/usr/bin"
+
     cp hyprshot "$pkgdir/usr/bin/"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_basename/LICENSE"
 }
