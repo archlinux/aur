@@ -1,7 +1,7 @@
 pkgbase = ttf-malayalam-font-dyuthi
 	pkgdesc = This is Dyuthi, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
-	pkgver = 3.0.0+20200101
-	pkgrel = 2
+	pkgver = 3.0.0+20221109
+	pkgrel = 1
 	url = http://smc.org.in/fonts/
 	arch = any
 	license = OFL
