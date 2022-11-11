@@ -20,8 +20,6 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-
   install -dm755       "$pkgdir/usr/share/${pkgname%-git}"
   cp -r $pkgname/src/* "$pkgdir/usr/share/${pkgname%-git}"
 
