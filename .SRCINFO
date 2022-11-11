@@ -1,11 +1,10 @@
 pkgbase = idris2
 	pkgdesc = Functional Programming Language with Dependent Types
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://idris-lang.github.io/
 	arch = x86_64
 	license = custom
-	makedepends = git
 	depends = chez-scheme
 	optdepends = nodejs: for the node backend
 	optdepends = racket: for the racket backend

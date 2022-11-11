@@ -5,7 +5,7 @@
 
 pkgname=idris2
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Functional Programming Language with Dependent Types"
 url="https://idris-lang.github.io/"
 license=('custom')
@@ -13,7 +13,6 @@ arch=('x86_64')
 depends=('chez-scheme')
 optdepends=('nodejs: for the node backend'
             'racket: for the racket backend')
-makedepends=('git')
 source=("https://www.idris-lang.org/idris2-src/idris2-${pkgver}.tgz")
 sha256sums=('4db59312ed954778d135c78d8e41701bb37b1c4911a8f414a2074e87b246a153')
 
@@ -42,8 +41,9 @@ check() {
     unset MAKEFLAGS
     export SCHEME=chez
 
+    # TODO: next Idris2 release, when #2754 has been merged, re-enable all tests
     PATH="$srcdir/$_srcname/build/exec:$PATH" \
-        make test INTERACTIVE=""
+        make test INTERACTIVE="" except="base/system_info001"
 }
 
 package() {
