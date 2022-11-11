@@ -2,7 +2,7 @@
 # Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=adb-sync-git
-pkgver=r35.fb7c549
+pkgver=r36.76b2783
 pkgrel=1
 pkgdesc='Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)'
 arch=('any')
@@ -10,6 +10,8 @@ url='https://github.com/google/adb-sync'
 license=('Apache')
 depends=('android-tools' 'android-udev' 'python')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -20,5 +22,6 @@ pkgver() {
 
 package() {
   install -Dm755 $pkgname/{adb-sync,adb-channel} -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 

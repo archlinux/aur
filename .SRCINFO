@@ -9,6 +9,8 @@ pkgbase = adb-sync-git
 	depends = android-tools
 	depends = android-udev
 	depends = python
+	provides = adb-sync
+	conflicts = adb-sync
 	source = adb-sync-git::git+https://github.com/google/adb-sync.git
 	sha256sums = SKIP
 
