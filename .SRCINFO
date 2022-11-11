@@ -1,16 +1,15 @@
 pkgbase = crab
 	pkgdesc = A rusty permission authentication system
-	pkgver = 0.0.5
-	pkgrel = 2
-	url = https://g.tylerm.dev/tylermurphy534/crab.git
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://g.tylerm.dev/tylermurphy534/crab
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = git
 	makedepends = cargo
 	depends = glibc
 	depends = pam
-	source = git+https://g.tylerm.dev/tylermurphy534/crab.git
+	source = crab-0.0.6.tar.gz::https://f.tylerm.dev/source/crab/crab-0.0.6.tar.gz
 	md5sums = SKIP
 
 pkgname = crab
