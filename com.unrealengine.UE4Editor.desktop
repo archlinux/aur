@@ -1,11 +1,22 @@
-[Desktop Entry]
-Type=Application
-Name=Unreal Engine 4 Editor
-Comment=Create next-generation video games
-Path=/opt/unreal-engine/Engine/Binaries/Linux/
-Exec=/opt/unreal-engine/Engine/Binaries/Linux/UE4Editor %F
-MimeType=text/x-uproject
-Icon=ue4editor
-Terminal=false
-Categories=Development;
+#!/usr/bin/env xdg-open
 
+[Desktop Entry]
+Categories=Development;
+Comment[en_US]=Create next-generation video games
+Comment=Create next-generation video games
+Exec=/opt/unreal-engine/Engine/Binaries/Linux/UE4Editor %F
+GenericName[en_US]=
+GenericName=
+Icon=ue4editor
+MimeType=
+Name[en_US]=Unreal Engine 4 Editor
+Name=Unreal Engine 4 Editor
+Path=/opt/unreal-engine/Engine/Binaries/Linux/
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
