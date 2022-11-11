@@ -159,7 +159,7 @@ build () {
         -D zstd=enabled \
         -D microsoft-clc=disabled
 
-    meson configure _build
+    meson configure --no-pager _build
     
     ninja  $NINJAFLAGS -C _build
 }
