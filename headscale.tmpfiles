@@ -1,0 +1,2 @@
+d	/var/lib/headscale	0750	headscale	headscale
+h	/var/lib/headscale	-	-		-		-	+C
