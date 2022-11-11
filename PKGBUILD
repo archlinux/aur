@@ -3,7 +3,7 @@
 pkgname='plugdata-bin'
 _name='plugdata'
 pkgdesc='Plugin wrapper around PureData with a new GUI made with JUCE, allowing patching in DAWs'
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 groups=('vst-plugins' 'lv2-plugins' 'vst3-plugins' 'pro-audio')
 depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'webkit2gtk' 'libxrender' 'libxinerama' 'libxcursor' 'alsa-lib' 'curl')
