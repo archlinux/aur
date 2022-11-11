@@ -1,0 +1,15 @@
+pkgbase = openswitcher-git
+	pkgdesc = BlackMagic Atem control software implementation
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://git.sr.ht/~martijnbraam/pyatem
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = python
+	depends = python-pyusb
+	source = git+https://git.sr.ht/~martijnbraam/pyatem
+	md5sums = SKIP
+
+pkgname = openswitcher-git
