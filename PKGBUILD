@@ -4,7 +4,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.2.alpha.r714.gd6f5aea0b3
+pkgver=1.2.alpha.r736.g9a22fec0de
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -25,6 +25,7 @@ depends=(
 	'libcdr'
 	'libjpeg-turbo'
 	'libmagick6'
+	'libsoup'
 	'libvisio'
 	'libxslt'
 	'poppler-glib'
