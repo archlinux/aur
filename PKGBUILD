@@ -4,8 +4,8 @@
 # Maintainer: Peter Sutton <peter@foxdogstudios.com>
 
 _pkgver_year=2022
-_pkgver_month=02
-_pkgver_day=21
+_pkgver_month=09
+_pkgver_day=01
 
 pkgname=abcmidi
 pkgver=$_pkgver_year$_pkgver_month$_pkgver_day
@@ -17,7 +17,7 @@ depends=()
 makedepends=()
 source=("https://ifdo.ca/~seymour/runabc/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.zip")
 arch=(x86_64)
-sha256sums=('138eddaa54668cd6308536c41e22c4d91c137913dc826ed288cb203a951475d5')
+sha256sums=('583933c4277760c52fffd6ec87af1b62967759378cb9f2a8b41e0da4468cac4b')
 
 build() {
     cd "$srcdir"/abcmidi
