@@ -10,7 +10,7 @@ pkgbase = eobcanka
 	arch = armv7h
 	arch = arm
 	arch = aarch64
-	license = GPL
+	license = custom
 	depends = pacman>=5.2
 	depends = pcsclite
 	optdepends = ccid: Smart Card Interface Devices driver

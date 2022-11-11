@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="eObcanka software for Czech Citizen Portal"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://info.identitaobcana.cz"
-license=('GPL')
+license=('custom')
 depends=('pacman>=5.2'
          'pcsclite')
 optdepends=('ccid: Smart Card Interface Devices driver'
