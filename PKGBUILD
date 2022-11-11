@@ -4,8 +4,8 @@
 pkgname=qemacs-git
 pkgdesc="QEmacs (Quick Emacs) is a very small editor with Emacs look and feel, syntax highlighting, UTF-8, dired mode with preview window, and many other features."
 
-pkgver=r1120.f7c1621
-pkgrel=1
+pkgver=r1186.6880277
+pkgrel=3
 _gitname="qemacs"
 arch=('x86_64')
 url="https://github.com/qemacs/qemacs"
