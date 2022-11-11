@@ -1,7 +1,8 @@
-# Maintainer: Julien Savard <juju@juju2143.ca>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r38
+pkgver=r41
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
@@ -21,8 +22,8 @@ install=
 changelog=
 source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip"
 	"https://raw.githubusercontent.com/commanderx16/x16-emulator/$pkgver/.gh/logo.png")
-md5sums=('1b3f470ee57ae605f019e0464f42c4ce'
-         '1a858decc66ce2b47a27b24bb836280c')
+sha256sums=('370496e9daa09fe979ad9ccea9911834c678cb3bdd72e5ab1da5926dfd843689'
+            'd6765978fb80bea04c774d58667ea2c974395958506ef7add48fcd7f4ceb8988')
 
 prepare() {
 	gendesk -f -n --pkgname "${pkgbase%-bin}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgbase%-bin}" --exec "x16emu" --categories "Game;Emulator"
@@ -63,3 +64,4 @@ package_x16-docs-bin() {
 	install -Dm644 docs/Programmer\'s\ Reference\ Guide.html "$pkgdir/usr/share/doc/x16-docs/Programmer's Reference Guide.html"
 	install -Dm644 docs/VERA\ Programmer\'s\ Reference.html "$pkgdir/usr/share/doc/x16-docs/VERA Programmer's Reference.html"
 }
+

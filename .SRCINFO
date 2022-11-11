@@ -1,6 +1,6 @@
 pkgbase = x16-emulator-bin
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16 (release package)
-	pkgver = r38
+	pkgver = r41
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = x16-emulator-bin
 	optdepends = x16-emulator-bin: X16 emulator
 	optdepends = x16-rom-bin: X16 ROMs
 	optdepends = x16-docs-bin: X16 documentation
-	source = https://github.com/commanderx16/x16-emulator/releases/download/r38/x16emu_linux-r38.zip
-	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/r38/.gh/logo.png
-	md5sums = 1b3f470ee57ae605f019e0464f42c4ce
-	md5sums = 1a858decc66ce2b47a27b24bb836280c
+	source = https://github.com/commanderx16/x16-emulator/releases/download/r41/x16emu_linux-r41.zip
+	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/r41/.gh/logo.png
+	sha256sums = 370496e9daa09fe979ad9ccea9911834c678cb3bdd72e5ab1da5926dfd843689
+	sha256sums = d6765978fb80bea04c774d58667ea2c974395958506ef7add48fcd7f4ceb8988
 
 pkgname = x16-emulator-bin
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16 (release package)
@@ -32,4 +32,3 @@ pkgname = x16-docs-bin
 	pkgdesc = Documentation not found in other packages for The 8-Bit Guy's Commander X16 (release package)
 	provides = x16-docs
 	conflicts = x16-docs
-
