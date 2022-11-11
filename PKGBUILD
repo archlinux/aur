@@ -1,7 +1,7 @@
 # Maintainer: Robin Ekman < robin.seth.ekman [at] gmail [dot] com >
 
 pkgname=oldfashiond
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc=" Create gifs using two-pass encoding with ffmpeg "
 url='https://github.com/rsekman/oldfashiond'
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a46e898e968c1a58ad6d79379f690404f25240965461607d9d277be02890243e')
+sha256sums=('fca75f60f2b4081b3aaed0357327758357ecea541aad7b3eb56dfd6481b03553')
 
 provides=("${pkgname}")
 

@@ -1,6 +1,6 @@
 pkgbase = oldfashiond
 	pkgdesc = Create gifs using two-pass encoding with ffmpeg
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/rsekman/oldfashiond
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = oldfashiond
 	optdepends = python-ass: ass support
 	optdepends = python-humanfriendly: nicer logs
 	provides = oldfashiond
-	source = https://github.com/rsekman/oldfashiond/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = a46e898e968c1a58ad6d79379f690404f25240965461607d9d277be02890243e
+	source = https://github.com/rsekman/oldfashiond/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = fca75f60f2b4081b3aaed0357327758357ecea541aad7b3eb56dfd6481b03553
 
 pkgname = oldfashiond
