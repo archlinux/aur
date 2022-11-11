@@ -2,7 +2,7 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=r7924.6da233c38
+pkgver=r8708.c5cf0e408
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
