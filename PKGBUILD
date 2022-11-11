@@ -3,10 +3,10 @@
 pkgname='python-skyfield'
 _name=${pkgname#python-}
 pkgver='1.45'
-pkgrel=1
+pkgrel=2
 pkgdesc="Elegant astronomy for Python"
 url="https://rhodesmill.org/skyfield/"
-depends=('python' 'python-certifi' 'python-numpy' 'python-jplephem' 'python-sgp4')
+depends=('ipython' 'python-certifi' 'python-jplephem' 'python-matplotlib' 'python-pandas' 'python-sgp4' 'python-sympy')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
@@ -21,7 +21,7 @@ build() {
 package() {
 	depends+=()
 	cd "${srcdir}/${_name}-${pkgver}"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
