@@ -1,12 +1,12 @@
 pkgbase = waybar-hyprland-git
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)
-	pkgver = r2001.d10d9b8
+	pkgver = r2269.3718902b
 	pkgrel = 1
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = catch2
+	makedepends = catch2-git
 	makedepends = meson
 	makedepends = scdoc
 	makedepends = wayland-protocols

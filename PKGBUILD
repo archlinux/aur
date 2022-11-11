@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland-git
-pkgver=r2001.d10d9b8
+pkgver=r2269.3718902b
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)'
 arch=('x86_64')
@@ -31,7 +31,7 @@ depends=(
 )
 makedepends=(
     'cmake'
-    'catch2'
+    'catch2-git'
     'meson'
     'scdoc'
     'wayland-protocols'
