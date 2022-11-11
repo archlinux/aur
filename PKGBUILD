@@ -10,6 +10,8 @@ arch=('x86_64')
 url="https://developer.nvidia.com/optix"
 license=('custom:NVIDIA')
 depends=('cuda')
+provides=("${pkgname%74}=${pkgver%.0}")
+conflicts=('optix')
 options=(!strip)
 _script="NVIDIA-OptiX-SDK-$pkgver-linux64-x86_64.sh"
 source=("file://$_script"
@@ -26,7 +28,7 @@ package() {
     mkdir -p "$pkgdir/opt/optix"
     sh "$srcdir/$_script" --prefix="$pkgdir/opt/optix" --exclude-subdir --skip-license
     patch "$pkgdir/opt/optix/SDK/CMake/FindOptiX.cmake" "$srcdir/cmake.patch"
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s /opt/optix/doc/OptiX_EndUserLicense.pdf "$pkgdir/usr/share/licenses/$pkgname/OptiX_EndUserLicense.pdf"
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+    ln -s /opt/optix/doc/OptiX_EndUserLicense.pdf "$pkgdir/usr/share/licenses/${pkgname}/OptiX_EndUserLicense.pdf"
 }
 

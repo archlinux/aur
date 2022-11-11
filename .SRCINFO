@@ -6,6 +6,8 @@ pkgbase = optix74
 	arch = x86_64
 	license = custom:NVIDIA
 	depends = cuda
+	provides = optix=7.4
+	conflicts = optix
 	options = !strip
 	source = file://NVIDIA-OptiX-SDK-7.4.0-linux64-x86_64.sh
 	source = file://cmake.patch
