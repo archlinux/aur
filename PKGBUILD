@@ -24,6 +24,6 @@ package() {
   cp -r $pkgname/src/* "$pkgdir/usr/share/${pkgname%-git}"
 
   install -dm755                                "$pkgdir/usr/bin"
-  ln -s "/usr/share/${pkgname%-git}/adbsync.py" "$pkgdir/usr/bin/adbsync.py"
+  ln -s "/usr/share/${pkgname%-git}/adbsync.py" "$pkgdir/usr/bin/adbsync"
 }
 
