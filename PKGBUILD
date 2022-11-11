@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=104.0.2
+pkgver=106.0.5
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=c9d5562cc0db38ebb7fadf11fcc504ca691c9285
+_patchrev=22b224bf3e8c1431d2d9d961ca351cf3c50fdc15
 options=('!emptydirs' !lto)
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -113,14 +113,9 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix-wayland-build.patch
         # WebRTC - screen cast sync for Wayland
         # MOZILLLA#1672944
-        https://src.fedoraproject.org/rpms/firefox/raw/85f5f771e92b10b6b34cf8da8b2dbb0f9f6562c8/f/libwebrtc-screen-cast-sync-1.patch
+        https://src.fedoraproject.org/rpms/firefox/raw/f0029706cee042f03f836e10d51bb2245e9fa392/f/libwebrtc-screen-cast-sync.patch
         # Unbreak build with python-zstandard 0.18.0 #23
         bump-pypip-zstandard-0.18.diff
-        # MOZILLA#1782988 #24
-        # Avoid build bustage when building against glibc 2.36 or newer. r=RyanVM
-        mozilla-bmo-1782988-0001.patch
-        # Fix use of arc4random_buf use in ping.cpp. r=gsvelto
-        mozilla-bmo-1782988-0002.patch
         # end
 )
 
@@ -183,16 +178,11 @@ prepare() {
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
 
   # WebRTC - screen cast sync for Wayland
-  patch -Np1 -i "$srcdir"/libwebrtc-screen-cast-sync-1.patch
+  patch -Np1 -i "$srcdir"/libwebrtc-screen-cast-sync.patch
 
   # Unbreak build with python-zstandard 0.18.0 #23
   patch -Np1 -i "$srcdir"/bump-pypip-zstandard-0.18.diff
 
-  # Avoid build bustage when building against glibc 2.36 or newer. r=RyanVM
-  # #24 MOZILLA#1782988
-  patch -Np1 -i "$srcdir"/mozilla-bmo-1782988-0001.patch
-  # Fix use of arc4random_buf use in ping.cpp. r=gsvelto #24 MOZILLA#1782988
-  patch -Np1 -i "$srcdir"/mozilla-bmo-1782988-0002.patch
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -327,16 +317,16 @@ md5sums=('SKIP'
          'a26a061efb4def6572d5b319d657f1d6'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
-         'b386ac38ffb7e545b9473e516455a25f'
+         '800d337d558de8201c8828252c1cd199'
          '2e2e0721f1c29b2ae786d8c6e34fa65f'
-         'b8266dc4cc56be5134c210c4c0457851'
+         '4819b01c44ce3f6bdc3fbc096d717ca0'
          '0a5733b7a457a2786c2dd27626a1bf88'
          '63ebf05aea29545081dab2cb023e2bba'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          'dc47b8b0582ca8e97d68e5636b72853c'
          '9e518b30cf2ff9afd0423c79d12ae7b2'
-         '0c292d03c77bc377c2cdc5aa2df248d9'
+         '0ba70a7a61493cb053f93d6560b8be32'
          '548de130fc0f470bff0b6d994a0a91cd'
          'c7b492df4fbf42ffe8aea4c0afb89921'
          '316d71d9cec400890db2ee8c362e672f'
@@ -345,7 +335,5 @@ md5sums=('SKIP'
          '31f950a94966287bfa6ccf03030781cc'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
          '2cf74781f6b742d6b7e6f7251f49311a'
-         'c3e1629c8451ce7576f311a11030a1d1'
-         '29ce7c26f14c9c4169d88d1b05552189'
-         'c6f48b28f327da1ba646517c1c4fe466'
-         '3d0cca4f333d87fcb3a5faf4b1bc6770')
+         '015dbab57c0d9c65d7a94a29dd8bf8a4'
+         'c36ef413ef998444d7d1dd543fd8f58b')
