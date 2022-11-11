@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME
-	pkgver = 0.6.r1.g0ddca321
+	pkgver = 0.6.r71.g25dfa55e
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/GTG
 	arch = x86_64
