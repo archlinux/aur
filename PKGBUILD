@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.23b31835.91b883ad01
+pkgver=2.25b32462.800ff4b485
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -38,15 +38,17 @@ pkgver() {
   cd lilypond/
   printf %s.%sb%s.%s $(grep MAJOR VERSION | cut -d= -f2) \
 	 $(grep MINOR VERSION | cut -d= -f2) $(git rev-list --count HEAD) \
-	 "$(git rev-parse --short HEAD)"
+	 $(git rev-parse --short HEAD)
 }
 
 build() {
   cd lilypond/
   [[ -f config.hh ]] && rm config.hh
+  export GUILE_FLAVOR=guile-3.0
   ./autogen.sh --noconfigure
   [[ -d build ]] || mkdir build
   cd build
+  
   ../configure --prefix=/usr --disable-documentation
   make -j1 
 }
