@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('GNU GPL v3')
 url="https://gitlab.com/waser-technologies/technologies/listen"
 depends=('python-pip' 'python-pyaudio')
-provides=('python-listen')
+provides=($pkgname)
 
 prepare()
 {
