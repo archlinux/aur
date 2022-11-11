@@ -20,11 +20,11 @@ pkgbase = mogan
 	depends = texlive-core
 	depends = python
 	depends = libxext
-	optdepends = gawk: conversion of some files
-	optdepends = ghostscript: rendering ps files
-	optdepends = imagemagick: convert images
-	optdepends = aspell: spell checking
-	source = mogan-1.1.1.tar.gz::https://github.com/XmacsLabs/mogan/archive/v1.1.1.tar.gz
-	sha256sums = 0d474267b7a777ae0fb22705c8515bfc24eb2de15ed69aa758dc51377fc6d9f9
+	optdepends = gawk: Conversion of some files
+	optdepends = ghostscript: Rendering ps files
+	optdepends = imagemagick: Convert images
+	optdepends = aspell: Spell checking
+	source = mogan::git+https://github.com/XmacsLabs/mogan.git#tag=v1.1.1
+	sha256sums = SKIP
 
 pkgname = mogan
