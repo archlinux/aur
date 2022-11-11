@@ -1,0 +1,17 @@
+pkgbase = better-adb-sync-git
+	pkgdesc = Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)
+	pkgver = r61.6b1e982
+	pkgrel = 1
+	url = https://github.com/SelfAdjointOperator/better-adb-sync
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = android-tools
+	depends = android-udev
+	depends = python
+	provides = better-adb-sync
+	conflicts = better-adb-sync
+	source = better-adb-sync-git::git+https://github.com/SelfAdjointOperator/better-adb-sync.git
+	sha256sums = SKIP
+
+pkgname = better-adb-sync-git
