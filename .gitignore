@@ -1,4 +1,4 @@
 *.tar.*
-pacutils-git/
+pacutils/
 pkg/
 src/

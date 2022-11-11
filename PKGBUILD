@@ -1,36 +1,37 @@
+# Maintainer: a821
+# Contributor: agp
+# Contributor: Johannes Löthberg
 pkgname=pacutils-git
-pkgdesc='alpm front-end tools'
-url='https://github.com/andrewgregory/pacutils'
-pkgver=0.11.0
+pkgver=0.11.1.r9.gc14c4e1
 pkgrel=1
-arch=('i686' 'x86_64')
-depends=('pacman>=6.0')
+pkgdesc='Helper tools for libalpm'
+url='https://github.com/andrewgregory/pacutils'
+arch=('x86_64')
+depends=('pacman')
 makedepends=('git')
 conflicts=('pacutils')
-provides=("pacutils=$pkgver")
+provides=("pacutils")
 license=('MIT')
-source=("$pkgname::git://github.com/andrewgregory/pacutils.git")
+source=("git+${url}")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --tags | sed 's/^v//; s/-/./g'
+    cd pacutils
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-
 build() {
-    cd "$srcdir/$pkgname"
-    make SYSCONFDIR=/etc LOCALSTATEDIR=/var
-    make doc
+    cd pacutils
+    make CFLAGS="$CFLAGS $LDFLAGS" SYSCONFDIR=/etc LOCALSTATEDIR=/var
 }
 
 check() {
-    cd "$srcdir/$pkgname"
+    cd pacutils
     make check
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd pacutils
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
