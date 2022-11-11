@@ -1,6 +1,6 @@
 pkgbase = sslide
 	pkgdesc = Simple presentation program
-	pkgver = 0.0.9
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://codeberg.org/sleepntsheep/sdraw
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sslide
 	depends = fontconfig
 	provides = sslide
 	conflicts = sslide
-	source = https://codeberg.org/sleepntsheep/sslide/archive/0.0.9.tar.gz
+	source = https://codeberg.org/sleepntsheep/sslide/archive/0.0.14.tar.gz
 	md5sums = SKIP
 
 pkgname = sslide
