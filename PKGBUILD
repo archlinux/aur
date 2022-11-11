@@ -1,7 +1,7 @@
 # Maintainer: Francesco Palumbo <phranz@subfc.net>
 
 pkgname=guish
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="A language and army knife to make and modify GUIs."
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('libx11' 'libxtst' 'imlib2')
 makedepends=('git' 'libx11' 'libxtst' 'imlib2')
 provides=(guish)
 conflicts=(guish guish-git)
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/phranz/guish/archive/2.1.6.tar.gz")
-sha512sums=('62811d3643b9d39880137173360a6711034b44eb169953be460d3160ea4e6cb9b0a04c808a43be190aa2f6ba664b8d250eabeec0f84c3c4c4d8be93c4026a356')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/phranz/guish/archive/2.1.7.tar.gz")
+sha512sums=('cea8a8b968bde52d90cdd931e8077cb56c9d8f64537613db152b679d53b92802675975618fec61e8e6e877c97117be3fcc4dfb0a23a11ea791c6b4e857bf00d2')
 
 build() {
     cd "${pkgname}"
