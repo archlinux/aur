@@ -3,7 +3,7 @@
 # + Severen Redwood <me@severen.dev>
 
 pkgname=pnpm
-pkgver=7.14.2
+pkgver=7.15.0
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager"
 arch=("any")
