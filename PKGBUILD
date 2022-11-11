@@ -2,16 +2,16 @@
 _basename='hyprshot'
 pkgname="$_basename-git"
 pkgver=1.2.1.r0.a7aa508
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to easily take screenshots in Hyprland using your mouse"
 arch=('any')
-url="https://github.com/Gustash/hyprshot"
+url="https://github.com/Gustash/Hyprshot"
 license=('GPL')
 depends=('jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify' 'imagemagick')
 makedepends=('git')
 provides=("$_basename")
 conflicts=("$_basename")
-source=("$_basename::git+https://github.com/Gustash/hyprshot.git")
+source=("$_basename::git+https://github.com/Gustash/Hyprshot.git")
 md5sums=('SKIP')
 
 pkgver() {

@@ -1,8 +1,8 @@
 pkgbase = hyprshot-git
 	pkgdesc = A utility to easily take screenshots in Hyprland using your mouse
 	pkgver = 1.2.1.r0.a7aa508
-	pkgrel = 1
-	url = https://github.com/Gustash/hyprshot
+	pkgrel = 2
+	url = https://github.com/Gustash/Hyprshot
 	arch = any
 	license = GPL
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = hyprshot-git
 	depends = imagemagick
 	provides = hyprshot
 	conflicts = hyprshot
-	source = hyprshot::git+https://github.com/Gustash/hyprshot.git
+	source = hyprshot::git+https://github.com/Gustash/Hyprshot.git
 	md5sums = SKIP
 
 pkgname = hyprshot-git
