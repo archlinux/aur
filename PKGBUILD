@@ -3,7 +3,7 @@
 
 pkgname=astrodmx-capture
 pkgver=1.7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
 url="https://www.astrodmx-capture.org.uk/"
@@ -12,7 +12,7 @@ url="https://www.astrodmx-capture.org.uk/"
 license=(custom)
 options=(!strip)
 install=$pkgname.install
-depends=('glibc>=2.27')
+depends=('glibc>=2.27' 'libgphoto2' 'glu' 'libtool' 'gtk3' 'at-spi2-core')
 
 # The Author, Nicola, is now copying new releases into both the `current` and `old` folders so that we
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions

@@ -1,7 +1,7 @@
 pkgbase = astrodmx-capture
 	pkgdesc = AstroDMx Capture Astronomical Imaging
 	pkgver = 1.7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.astrodmx-capture.org.uk/
 	install = astrodmx-capture.install
 	arch = x86_64
