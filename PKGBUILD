@@ -3,7 +3,7 @@
 # Maintainer: Elliott Seyler <emhs@mossberg>
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=sweethome3d-furniture-library
-pkgver=1.26
+pkgver=1.30
 pkgrel=1
 pkgdesc="A tool to manage furniture in Sweet Home 3D"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('unzip')
 source=("http://downloads.sourceforge.net/project/sweethome3d/FurnitureLibraryEditor/FurnitureLibraryEditor-$pkgver.jar"
         'furniturelibraryeditor'
         'furniturelibraryeditor.desktop')
-md5sums=('e90f5def561f8a8e517b2ba15681941c'
+md5sums=('3aaad8cca7321fe311a3679a1e8f61a5'
          'b5b638846f984ba39fb58387a6f44a07'
          '152c91ee7b4098c11492f80a587ed64a')
 
