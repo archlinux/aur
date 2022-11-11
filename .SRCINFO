@@ -1,7 +1,7 @@
 pkgbase = skywire
 	pkgdesc = Skywire Mainnet Node implementation. Skycoin.com
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = skywire
 	makedepends = go
 	makedepends = musl
 	makedepends = kernel-headers-musl
-	source = https://github.com/skycoin/skywire/archive/refs/tags/v1.2.1.tar.gz
+	source = skywire-v1.2.1.tar.gz::https://github.com/skycoin/skywire/archive/refs/tags/v1.2.1.tar.gz
 	source = skywire-autoconfig::https://aur.archlinux.org/cgit/aur.git/plain/skywire-autoconfig?h=skywire-bin
-	source = com.skywire.Skywire.desktop::https://aur.archlinux.org/cgit/aur.git/plain/com.skywire.Skywire.desktop?h=skywire-bin
-	source = com.skywirevpn.SkywireVPN.desktop::https://aur.archlinux.org/cgit/aur.git/plain/com.skywirevpn.SkywireVPN.desktop?h=skywire-bin
+	source = skywire.desktop::https://aur.archlinux.org/cgit/aur.git/plain/skywire.desktop?h=skywire-bin
+	source = skywirevpn.desktop::https://aur.archlinux.org/cgit/aur.git/plain/skywirevpn.desktop?h=skywire-bin
 	source = skywirevpn.png::https://aur.archlinux.org/cgit/aur.git/plain/skywirevpn.png?h=skywire-bin
 	source = skywire.png::https://aur.archlinux.org/cgit/aur.git/plain/skywire.png?h=skywire-bin
 	source = skywire.service::https://aur.archlinux.org/cgit/aur.git/plain/skywire.service?h=skywire-bin
