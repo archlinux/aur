@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=2.2.35
+pkgver=2.2.35.1
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -29,9 +29,9 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
         'gns3.desktop'
         'fix_requirements_for_Arch.diff')
-sha256sums=('5dee30a6be10a4463d16c3cec516bf81717fc6f37f4f53386347d98de9a1f43b'
+sha256sums=('0d68b5d8a2bc06acbc15be4d883a704a9e7e2b32fde74f55daab3fae78985b5c'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166'
-            '8731b2b81ba742e0341347b3b339e3dc446af5d32ae9dc3cc7b42811445656dd')
+            '8ef1cc0bd307480b8ef148b2d5804e7f2f8d3622863cc0441792305b72626fc3')
 
 prepare() {
     # Arch usually has the latest versions. Patch requirements to allow them.
