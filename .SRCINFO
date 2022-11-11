@@ -1,0 +1,13 @@
+pkgbase = dops-git
+	pkgdesc = A replacement for the default docker-ps that tries really hard to fit into the width of your terminal.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/Mikescher/better-docker-ps
+	arch = any
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = dops-git::git+https://github.com/Mikescher/better-docker-ps
+	sha256sums = SKIP
+
+pkgname = dops-git
