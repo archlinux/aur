@@ -1,8 +1,8 @@
 # Maintainer: Arley Henostroza <arllk10@gmail.com>
 
 pkgname=weave-gitops-bin
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.10.2
+pkgrel=1
 pkgdesc='Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise'
 arch=('x86_64')
 url='https://github.com/weaveworks/weave-gitops'
@@ -12,7 +12,7 @@ makedepends=()
 provides=('weave-gitops' 'gitops')
 conflicts=('weave-gitops' 'gitops')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weaveworks/weave-gitops/releases/download/v$pkgver/gitops-linux-x86_64.tar.gz")
-sha256sums=('01dbe762e0ffe99cb1d6ef21955e59300cfece20b5f7f693350473ca5eeab3fe')
+sha256sums=('76d46c2515494466c67afadf94855bbe001d12a7bf0ee69deb5ce746e08fce03')
 
 package() {
     install -Dm 755 "$srcdir/gitops" "$pkgdir/usr/bin/gitops"
