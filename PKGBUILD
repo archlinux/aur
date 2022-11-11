@@ -1,6 +1,6 @@
 # Maintainer: Dmitry darkbarker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingrunner
-pkgver=2109172034
+pkgver=2211111548
 pkgrel=1
 pkgdesc='Client runner for billing system BGBilling 8.0+'
 arch=('i686' 'x86_64')
