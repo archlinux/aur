@@ -3,7 +3,7 @@
 
 pkgname=conceal-bin
 _pkgname=conceal
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A trash collector."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 conflicts=('conceal')
 depends=('skim')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-$arch.tar.gz")
-sha256sums=('e3cec0136f158faa1e0365baa9d588e8c743937be9c854f0ad3d2cd063b5217b')
+sha256sums=('7cc107cccfd303d67de3854dcc597f3617f46c1fd0560d2afe68a852c0e57dbb')
 
 package() {
   install -Dm 755 "cnc" -t "$pkgdir/usr/bin"
