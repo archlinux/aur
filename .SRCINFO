@@ -1,12 +1,12 @@
 pkgbase = shadowenv
 	pkgdesc = reversible directory-local environment variable manipulations
-	pkgver = 2.0.5
-	pkgrel = 1
+	pkgver = 2.0.7
+	pkgrel = 2
 	url = https://shopify.github.io/shadowenv
 	arch = x86_64
 	license = MIT
 	depends = cargo
-	source = shadowenv-2.0.5.tar.gz::https://github.com/Shopify/shadowenv/archive/2.0.5.tar.gz
-	b2sums = SKIP
+	source = shadowenv-2.0.7.tar.gz::https://github.com/Shopify/shadowenv/archive/2.0.7.tar.gz
+	b2sums = d77b5de9613d7dca623b71bc80bf9cb11386ef91ad7c462d4fdd601a835af58b29f73bd0c8180a44252070c8bf0986f2d58cb71f71f0af89762ea72a85a6ae78
 
 pkgname = shadowenv

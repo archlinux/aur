@@ -2,7 +2,7 @@
 
 pkgname=shadowenv
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='reversible directory-local environment variable manipulations'
 url='https://shopify.github.io/shadowenv'
 arch=('x86_64')
