@@ -1,13 +1,16 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
-# Maintainer: Dave Reisner <dreisner@archlinux.org> ([core] package)
-# Maintainer: Thomas Bächler <thomas@archlinux.org> ([core] package)
+# Maintainer: nl6720 <nl6720@archlinux.org>
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org> ([core] package)
+# Contributor: Morten Linderud <foxboron@archlinux.org> ([core] package)
+# Contributor: Dave Reisner <dreisner@archlinux.org> ([core] package)
+# Contributor: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=32.r0.g0be0de5
+pkgver=32.r25.g1862ed5
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
-url='https://github.com/archlinux/mkinitcpio'
+url='https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio'
 license=('GPL')
 depends=('awk' 'mkinitcpio-busybox' 'kmod' 'util-linux' 'libarchive' 'coreutils'
          'bash' 'binutils' 'diffutils' 'findutils' 'grep' 'filesystem' 'zstd' 'systemd')
@@ -21,7 +24,7 @@ makedepends=('git' 'asciidoc')
 provides=('initramfs' "mkinitcpio=${pkgver}")
 conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
-source=('git+https://github.com/archlinux/mkinitcpio.git?signed')
+source=('git+https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio.git?signed')
 sha256sums=('SKIP')
 validpgpkeys=('ECCAC84C1BA08A6CC8E63FBBF22FB1D78A77AEAB'    # Giancarlo Razzolini
               'C100346676634E80C940FB9E9C02FF419FECBE16'    # Morten Linderud
