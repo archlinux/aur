@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.7
+pkgver=6.0.8
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -84,7 +84,7 @@ options=('!strip')
 _ckhrtimer=linux-6.0.y
 _commit=5be918e798e2c2cc94fa7dd0f6f031921a4f7598
 
-_gcc_more_v=20221022
+_gcc_more_v=20221104
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -95,21 +95,23 @@ source=(
   0003-soundwire-intel-Initialize-clock-stop-timeout.patch
   0004-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
   0005-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
+  0006-drm-amdgpu-Fix-the-lpfn-checking-condition-in-drm-bu.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('67dacc2b78605a56e997f4c08d009be87c98ec66f1870220226c8b3cc676590f'
+sha256sums=('0de4f83996951c6faf9b2225db4f645882c47b1a09198190f97bd46e5f5fa257'
             'SKIP'
             '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
-            '2d50a108a111a7f135f91b2676539d0a163e38ee72874d091aed0e1e86f2d477'
+            '3a8f397b89bad95c46f42c0f80ede7536a4a45a28621e00ed486918a55f905ed'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            'e36c9d26b887f52e9cdae99604009ffdf80dd00ecc1788000529be3d3cddac15'
-            'c693877c7fad635fa37662c571baa901a991f0658151de70dce32019efb00be1'
-            '80dc03e2b79147542ea32aaaf964c811e62f126a0ec115c6255493827911c343'
-            '7103f9525bea1c2cc766c9b70c827c5af2af6ad51c6b9c2a471729882196b05b'
-            'a55abfbdf878c282510afc967fad7df6d3c98ed7279cc562ca885d85eb77cceb')
+            'ff9076ecd73cc7725d2c9c0d9d381904b9bcc75cffc0da7ecccc0886c99b02a2'
+            'b9a998b084cd583dac4cc755aab79e8810013c4c0d6d9f5e4fa78d2939314ced'
+            '757cb209f1b1759f4c9efcc77501be9ee73676db069d0440104255ab35c4cdd0'
+            'a3ffe9f133029d60bf8fa66775cee64e160ddf33c265e7807eb3dea7d1981ac4'
+            '26669e4925ac1869eeb53a7d9578c8af742c6a7e8cdcdb9af2c081774581a032'
+            'e5f5ebed349af1a95c9c8360fbe07d78ec4dff11cd7a228e436cf21e6409ebe9')
 
 prepare() {
   cd linux-${pkgver}
