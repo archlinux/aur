@@ -8,8 +8,10 @@ epoch=1
 pkgdesc="A color and B&W emoji SVG-in-OpenType font by Twitter with support for ZWJ, skin tone modifiers and country flags (git)"
 url="https://github.com/eosrei/twemoji-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
-source=('git+https://github.com/eosrei/twemoji-color-font.git')
-b2sums=('SKIP')
+source=('git+https://github.com/eosrei/twemoji-color-font.git'
+	'git+https://github.com/13rac1/scfbuild.git')
+b2sums=('SKIP'
+	'SKIP')
 makedepends=('git' 'inkscape' 'imagemagick' 'potrace' 'python-fonttools' 'fontforge' 'svgo' 'nodejs' 'python-yaml')
 arch=('any')
 replaces=('twemoji-color-font')
@@ -23,7 +25,7 @@ pkgver() {
 
 prepare(){
 	cd "${_gitname}"
-	git clone https://github.com/13rac1/scfbuild.git SCFBuild
+	ln -s "${srcdir}"/scfbuild SCFBuild
 	sed -i 's/package: regular-package linux-package deb-package macos-package windows-package/package: linux-package/' Makefile
 }
 
