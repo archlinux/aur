@@ -4,7 +4,7 @@
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=icon-library
-pkgver=0.0.12
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=('x86_64' 'aarch64')
@@ -14,15 +14,15 @@ depends=('libadwaita' 'gtksourceview5')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('9e580c3ef88b8581b60c726b95c27f61dd5db3ec9b851c515c0bb696f94c71d3bb386efd2acd6f3d7a798233247c1ddc92c4444fa06f5ebb1b9d7a0ea99eb0e3')
+b2sums=('08f483f79cd03c3f03c3df521e7e625c3882fff01932350e64c045639325faefc819e43d92b182be55ad54a742e0448e0990b6bf6d174d412d09fbc4e960f56b')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson $pkgname-$pkgver build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
