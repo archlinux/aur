@@ -2,7 +2,7 @@
 
 pkgname=stashpad
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Stashpad is the developer notepad.'
 arch=('x86_64')
 url='https://www.stashpad.com/'
@@ -33,7 +33,7 @@ package() {
 
     rm -f AppRun chrome-sandbox chrome_crashpad_handler
 
-    sed -E -i 's#Exec=[^\n]+#Exec=/opt/stashpad/stashpad --enable-features=UseOzonePlatform --ozone-platform=wayland %U#' stashpad.desktop
+    sed -E -i 's#Exec=[^\n]+#Exec=/opt/stashpad/stashpad %U#' stashpad.desktop
     install -m 644 -D -t "${pkgdir}/usr/share/applications/" stashpad.desktop
     rm -f stashpad.desktop
 
