@@ -1,6 +1,6 @@
 pkgbase = osticket
 	pkgdesc = A widely-used open source support ticket system.
-	pkgver = 1.17
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = http://www.osticket.com/
 	install = osticket.install
@@ -10,7 +10,7 @@ pkgbase = osticket
 	depends = php
 	depends = php-apache
 	depends = mariadb
-	source = https://github.com/osTicket/osTicket/releases/download/v1.17/osTicket-v1.17.zip
-	sha256sums = 296d55cc50782411f0ba81101bc64fc4f6ac65a37772fd75bb5f4dc04d8b364d
+	source = https://github.com/osTicket/osTicket/releases/download/v1.17.1/osTicket-v1.17.1.zip
+	sha256sums = 0c83bade36906d31680ee47ed3c062052d2671bcdf9823bbeb78eeb33d30f801
 
 pkgname = osticket

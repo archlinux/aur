@@ -2,7 +2,7 @@
 # Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 #
 pkgname=osticket
-pkgver=1.17
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='A widely-used open source support ticket system.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('php' 'php-apache' 'mariadb')
 makedepends=('unzip')
 install="${pkgname}.install"
 source=("https://github.com/osTicket/osTicket/releases/download/v$pkgver/osTicket-v$pkgver.zip")
-sha256sums=('296d55cc50782411f0ba81101bc64fc4f6ac65a37772fd75bb5f4dc04d8b364d')
+sha256sums=('0c83bade36906d31680ee47ed3c062052d2671bcdf9823bbeb78eeb33d30f801')
 
 package() {
   cd $srcdir
