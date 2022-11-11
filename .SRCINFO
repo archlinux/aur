@@ -1,7 +1,7 @@
 pkgbase = libbass
 	pkgdesc = BASS audio library
-	pkgver = 2.4.16
-	pkgrel = 5
+	pkgver = 2.4.17
+	pkgrel = 1
 	url = https://www.un4seen.com/
 	arch = i686
 	arch = x86_64
@@ -10,13 +10,7 @@ pkgbase = libbass
 	arch = aarch64
 	license = custom
 	depends = alsa-lib
-	source = libbass-2.4.16.zip::http://www.un4seen.com/files/bass24-linux.zip
-	sha256sums = 77f387762a9ee4b72da3c6581c22e50456ab7aeb7c9a7154564530a9468db655
-	source_armv6h = libbass-2.4.16-arm.zip::http://www.un4seen.com/files/bass24-linux-arm.zip
-	sha256sums_armv6h = 7300ac8c112551bea6dc691b2ef3102fd208c07628c2cc822476465c077b20ba
-	source_armv7h = libbass-2.4.16-arm.zip::http://www.un4seen.com/files/bass24-linux-arm.zip
-	sha256sums_armv7h = 7300ac8c112551bea6dc691b2ef3102fd208c07628c2cc822476465c077b20ba
-	source_aarch64 = libbass-2.4.16-arm.zip::http://www.un4seen.com/files/bass24-linux-arm.zip
-	sha256sums_aarch64 = 7300ac8c112551bea6dc691b2ef3102fd208c07628c2cc822476465c077b20ba
+	source = libbass-2.4.17.zip::http://www.un4seen.com/files/bass24-linux.zip
+	sha256sums = e0caed1509d7e92d12d8b74827d95e60226c1a37dbd3e37d6ecf89aa1353932b
 
 pkgname = libbass
