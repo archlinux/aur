@@ -1,9 +1,7 @@
 # Maintainer: Donn <me@donn.website>
 pkgname=cemu-bin
-_pkgver_raw=2.0
-_buildno=14
-pkgver=${_pkgver_raw}r${_buildno}
-pkgrel=1
+pkgver=2.0
+pkgrel=14
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
@@ -27,7 +25,7 @@ options=(!strip !docs libtool emptydirs)
 install=
 changelog=
 source=(
-  "https://github.com/cemu-project/Cemu/releases/download/v${_pkgver_raw}-${_buildno}/cemu-${_pkgver_raw}-${_buildno}-ubuntu-20.04-x64.zip"
+  "https://github.com/cemu-project/Cemu/releases/download/v${pkgver}-${pkgrel}/cemu-${pkgver}-${pkgrel}-ubuntu-20.04-x64.zip"
   "info.cemu.Cemu.desktop"
   "info.cemu.Cemu.metainfo.xml"
   "info.cemu.Cemu.png"
@@ -41,7 +39,7 @@ sha256sums=(
 )
 
 package() {
-  CEMU_BIN_PATH="$srcdir/Cemu_${_pkgver_raw}-${_buildno}/Cemu"
+  CEMU_BIN_PATH="$srcdir/Cemu_${pkgver}-${pkgrel}/Cemu"
 
   # Patch
   patchelf --replace-needed libpcre.so.3 libpcre.so $CEMU_BIN_PATH
@@ -58,7 +56,7 @@ package() {
   chmod +x $CEMU_BIN_PATH
 
   mkdir -p "$pkgdir/usr/share/cemu"
-  cp -r "$srcdir/Cemu_${_pkgver_raw}-${_buildno}"/* "$pkgdir/usr/share/cemu"
+  cp -r "$srcdir/Cemu_${pkgver}-${pkgrel}"/* "$pkgdir/usr/share/cemu"
 
 	install -Dm644 -t "$pkgdir"/usr/share/applications info.cemu.Cemu.desktop
 	install -Dm644 -t "$pkgdir"/usr/share/metainfo info.cemu.Cemu.metainfo.xml
