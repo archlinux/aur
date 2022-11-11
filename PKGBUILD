@@ -22,6 +22,5 @@ pkgver() {
 
 package() {
   install -Dm755 $pkgname/{adb-sync,adb-channel} -t "$pkgdir/usr/bin"
-  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
