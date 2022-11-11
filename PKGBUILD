@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=(env-modules-tcl)
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('tcl>=7.4' 'procps-ng')
 makedepends=()
 checkdepends=('dejagnu')
 optdepends=()
-provides=()
+provides=(env-modules)
 conflicts=(env-modules)
 replaces=(env-modules)
 options=()

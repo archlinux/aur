@@ -1,7 +1,7 @@
 pkgbase = env-modules-tcl
 	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/modules/
 	install = env-modules-tcl.install
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = env-modules-tcl
 	checkdepends = dejagnu
 	depends = tcl>=7.4
 	depends = procps-ng
+	provides = env-modules
 	conflicts = env-modules
 	replaces = env-modules
 	backup = etc/modules/init/modulerc
 	source = https://sourceforge.net/projects/modules/files/Modules/modules-5.2.0/modules-5.2.0.tar.gz
-	sha256sums = 1985f79e0337f63d6564b08db0238cf96a276a4184def822bb8ad37996dc8295
+	sha256sums = 48f9f10864303df628a48cab17074820a6251ad8cd7d66dd62aa7798af479254
 
 pkgname = env-modules-tcl
