@@ -1,43 +1,45 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# ex-Maintainer: Philip Goto <philip.goto@gmail.com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=app-icon-preview
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Tool for designing applications icons'
-arch=(x86_64 aarch64)
+arch=('x86_64' 'aarch64')
 url='https://gitlab.gnome.org/World/design/app-icon-preview'
-license=(GPL3)
-depends=(libadwaita)
-makedepends=(
-	git
-	meson
-	rust
-)
-source=(
-	"git+${url}.git#tag=${pkgver}"
-	"git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git"
-)
-b2sums=('SKIP' 'SKIP')
+license=('GPL3')
+depends=('libadwaita')
+makedepends=('git' 'meson' 'cargo')
+checkdepends=('appstream-glib')
+_commit=69bbc2e290584041c49a78b19ea5aa4ac8354266  # tags/3.2.0^0
+source=("git+https://gitlab.gnome.org/World/design/app-icon-preview.git#commit=$_commit"
+	"git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
+b2sums=('SKIP'
+        'SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 prepare() {
-	cd app-icon-preview
-
-	git submodule init
-	git config 'submodule.hig.url' "${srcdir}/HIG-app-icons"
-	git submodule update
+  cd $pkgname
+  git submodule init
+  git config submodule.src/hig.url "$srcdir/HIG-app-icons"
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
-	arch-meson app-icon-preview build
-	meson compile -C build
+  arch-meson $pkgname build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
