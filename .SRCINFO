@@ -1,7 +1,7 @@
 pkgbase = python-leveldb
 	pkgdesc = Python bindings for leveldb database library
 	pkgver = 0.201
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rjpower/py-leveldb/
 	arch = x86_64
 	license = BSD
