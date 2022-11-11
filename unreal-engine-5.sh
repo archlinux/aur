@@ -6,6 +6,9 @@ fi
 
 if [ ! -d "${HOME}/.steampath" ] && [ -d "${HOME}/.steam/bin" ]; then
     ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
+elif [ ! -d "${HOME}/.steampath" ] && [ ! -d "${HOME}/.steam/bin" ]; then
+    mkdir -p "${HOME}/.steam/bin"
+    ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
 fi
 
 if [ ! -d "${HOME}/.config/Epic/UnrealEngine/5.0/Intermediate/" ]; then
