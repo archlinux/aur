@@ -6,7 +6,7 @@ _gitbranch=master
 pkgname="python-${_gitname}-git"
 pkgdesc='colorscheme generator and manager for your desktop'
 pkgver=v1.8.4.r0.g473cee2
-pkgrel=1
+pkgrel=2
 url="https://github.com/s-ol/${_gitname}"
 license=('MIT')
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-pillow' 'python-yaml' 'python-jinja' 'python-requests'
 optdepends=('i3-wm: default-supported windowmanager' 'fish: supports completion')
 makedepends=('git' 'python-setuptools')
 install="${_gitname}.install"
-source=("${_gitname}::git://github.com/s-ol/${_gitname}.git#branch=${_gitbranch}"
+source=("${_gitname}::git+https://github.com/s-ol/${_gitname}.git#branch=${_gitbranch}"
         "${install}")
 sha256sums=('SKIP'
             '5783163020b902b4c155155948e0df3d859877961a85f965318a5ff161a3e06a')
