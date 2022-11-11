@@ -1,7 +1,7 @@
 # Maintainer: Michael Herold <arch@michaeljherold.com>
 
 pkgname=shadowenv
-pkgver=2.0.5
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='reversible directory-local environment variable manipulations'
 url='https://shopify.github.io/shadowenv'
@@ -9,10 +9,12 @@ arch=('x86_64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Shopify/$pkgname/archive/$pkgver.tar.gz")
 depends=('cargo')
-b2sums=('9dc870cdada9491f714142ab2d84827bbb54afb3b6b7063203770d7406a6c2dabb8eebd13ea35f084ac886c0684d636393f1b46a1d1c6b0ad09832aba021338d')
+b2sums=('d77b5de9613d7dca623b71bc80bf9cb11386ef91ad7c462d4fdd601a835af58b29f73bd0c8180a44252070c8bf0986f2d58cb71f71f0af89762ea72a85a6ae78')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  patch -Np1 -i ../../0001-Patch-shadowenv-version-to-v2.0.7.patch
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
