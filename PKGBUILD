@@ -1,20 +1,20 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=iotas
-pkgver=0.1.4
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Simple note taking"
-arch=('x86_64')
+arch=('any')
 url="https://gitlab.gnome.org/cheywood/iotas"
 license=('GPL3')
 depends=('libadwaita' 'sqlite' 'org.freedesktop.secrets' 'gtksourceview5' 'python-requests' 'python-gtkspellcheck')
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('65095c1e07a4233fc7146d0d015f707348ff8b8cbb28811691a2c18aacd2d6c21d9bedc4ce7179c53c89bba4cabc6714bb6b5166587b458ca20cdfc67405112d')
+b2sums=('de0edaa1d75f4486ed7634a585a90b3774bffff67f14b519fda1dafc677f620bb1b14b9290ae50bae91deed5adba9cb750a65f5d6e69861a477db32f1a8df176')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson $pkgname-$pkgver build
   meson compile -C build
 }
 
