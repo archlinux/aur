@@ -1,8 +1,8 @@
-# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 # Manual download of '${pkgname}-compiler-${pkgver}.tar' required from upstream
 
 pkgname=aocc
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 install=aocc.install
-sha256sums=("8493525b3df77f48ee16f3395a68ad4c42e18233a44b4d9282b25dbb95b113ec" "SKIP")
+sha256sums=("2729ec524cbc927618e479994330eeb72df5947e90cfcc49434009eee29bf7d4" "SKIP")
 
 # default flags for compiler
 # edit this or /etc/makepkg.conf to your liking for default flags for your architecutre
