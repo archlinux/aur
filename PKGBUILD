@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=tixati
-pkgver=3.11
+pkgver=3.12
 pkgrel=1
 pkgdesc="Tixati is a peer-to-peer file sharing program that uses the popular BitTorrent protocol"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=('LICENSE')
 source_i686=("https://download2.tixati.com/download/$pkgname-${pkgver}-1.i686.manualinstall.tar.gz")
 source_x86_64=("https://download2.tixati.com/download/$pkgname-${pkgver}-1.x86_64.manualinstall.tar.gz")
 sha256sums=('4b8bc7a9be3ad1300dd8e90cbf5af96a597379c3b994ee0793990fee3290c8d2')
-sha256sums_i686=('3633bc3fe9b0f803d4fecedab6ded7d5f7d75c24552555a2bb549cec1e41c9de')
-sha256sums_x86_64=('9b7bb4eeeca43a6cad85a771b68358bb415e07054e9edc67908bbeb326e30e4a')
+sha256sums_i686=('be25f49160f493fc835b9c8a3643d95f6c3842b5dab33582cf8044f3351458c9')
+sha256sums_x86_64=('ee41c0c9dc7fe564f038a8dcfa8e3709d0126b67f8f43619e0010e23a38ea762')
 
 package() {
   cd "$srcdir/$pkgname-${pkgver}-1.$CARCH.manualinstall"
