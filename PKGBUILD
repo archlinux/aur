@@ -2,7 +2,7 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.17.0
+pkgver=4.17.1
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('9f568a3f5365dcd44fad4a165a98c6483efb3f61dc44933235f048cab0157d5e')
+sha256sums=('8f30b249b46d96a9fad3abc7d0b0318ec28c1e8362ce3b280cefcf37ee5135f2')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
