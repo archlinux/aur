@@ -1,0 +1,13 @@
+pkgbase = python-stt-model-manager
+	pkgdesc = Coqui STT Model Manager - install, manage and try out Coqui STT models from the Model Zoo
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/coqui-ai/stt-model-manager
+	arch = x86_64
+	license = MPL2
+	depends = python-pip
+	provides = stt-model-manager
+	source = stt_model_manager-0.0.21::git+https://github.com/coqui-ai/stt-model-manager.git
+	sha256sums = SKIP
+
+pkgname = python-stt-model-manager
