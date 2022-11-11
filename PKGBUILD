@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=7.3.r5.ga79a08a6
+pkgver=7.20.r4.g4303e3ee
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -138,7 +138,7 @@ pkgver() {
 build() {
     # does not compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/-fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    export LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
     
     # build wine-staging 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
