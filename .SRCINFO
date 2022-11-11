@@ -6,6 +6,7 @@ pkgbase = python-stt-model-manager
 	arch = x86_64
 	license = MPL2
 	depends = python-pip
+	depends = python-stt
 	provides = stt-model-manager
 	source = stt_model_manager-0.0.21::git+https://github.com/coqui-ai/stt-model-manager.git
 	sha256sums = SKIP
