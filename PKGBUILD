@@ -2,7 +2,7 @@
 pkgname=doasedit-alternative
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Enable doers to edit non-user-writable files with an unprivileged editor"
+pkgdesc="Enable doers to edit non-user-editable files with an unprivileged editor"
 arch=('any')
 url="https://codeberg.org/TotallyLeGIT/doasedit"
 license=('MIT')
