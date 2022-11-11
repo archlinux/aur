@@ -1,7 +1,7 @@
 pkgname=python-stt-bin 
 _pkgname=STT
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Coqui-STT - Python native client + CTC decoder."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/coqui-ai/STT"
@@ -15,23 +15,23 @@ _src_base_url="https://github.com/coqui-ai/STT/releases/download/v$pkgver"
 _raw_base_url="https://raw.githubusercontent.com/coqui-ai/STT/v$pkgver"
 
 # amd64
-source_x86_64=("$_src_base_url/stt-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
-               "$_src_base_url/coqui_stt_ctcdecoder-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
+source_x86_64=("$_src_base_url/stt-${pkgver}-cp310-cp310-manylinux_2_24_x86_64.whl"
+               "$_src_base_url/coqui_stt_ctcdecoder-${pkgver}-cp310-cp310-manylinux_2_24_x86_64.whl"
                 )
-sha512sums_x86_64=('bad4e9fbf79996cec808d06e77f8a385669351e8ee8c91dcc13f1cfb04c2dc3731d058bab3c36595df35c75a3dcc4bf50f7c4e36b9d3a40a2ddab9ca16ac273b'
-                   '020bc4556b7ca47fa5ffdf62028a82498c46b73edd18b5c577288b7f8ed8960becc72dc94d9b018c366ee4802a37abcf7b3eadebb06fa73633f808f90365839d'
+sha512sums_x86_64=('ed90874b04964e5c76f45521137a51d663fbeda505c45b0a19d267538e1a0a2106dfbf968a2c411b566917417b0dcd70459fd03bb0502fa78c27585c579668f2'
+                   '9f26ac886e1c7e62eeaeacf35f64121fdaa82e7f5edae08fe729a3985f10982dcef644a16858d2a62bfc78a10f819933854c2b191ec57bdb20a9a61a3728decb'
                     )
 
 # armv7h
-source_armv7h=("$_src_base_url/stt-1.3.0-cp37-cp37m-linux_armv7l.whl"
+source_armv7h=("$_src_base_url/stt-${pkgver}-cp37-cp37m-linux_armv7l.whl"
                )
-sha512sums_armv7h=('12099b1a2d2e6d7db3bcea9e8b6d60f4e81e2173bb639fb20c088a0346edb3fe059f184fc514b1b77e305f7b82ae14975f7c4cd10acc2bafe9a0dbe7d7170742'
+sha512sums_armv7h=('1d9811c71020e493be8070d82b5d73d5815a454a1b9d0381798f15b4ed1a39c5cd3381c944cb106089e62402f016d18b8066010d1d4462518ada09cdc421d274'
                    )
 
 # aarch64
-source_aarch64=("$_src_base_url/stt-1.3.0-cp37-cp37m-linux_aarch64.whl"
+source_aarch64=("$_src_base_url/stt-${pkgver}-cp37-cp37m-linux_aarch64.whl"
                )
-sha512sums_aarch64=('6513a1a35cd74a14c4bd49ea5c47c619237bb4c463159d83d773439f7b0cdf83a9c115e7bcf2e96f0cb75238ee9f8df9011b6f52c80f75d20f5777e7e0a04054'
+sha512sums_aarch64=('61062cfd914f48bc4c7c04867f5261a4c8800ed79b4519335d4f8ef672df0308b5fccd176849dcf23af412eb138bb71034f0b276f5f1f6ef9ea726d95bcb7c24'
                     )
 
 prepare()
@@ -52,8 +52,8 @@ package() {
   MACHINE_TYPE=`uname -m`
   if [ ${MACHINE_TYPE} == 'x86_64' ]; then
     # Download the STT Wheel.
-    local stt_fname="stt-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
-    local stt_sum="bad4e9fbf79996cec808d06e77f8a385669351e8ee8c91dcc13f1cfb04c2dc3731d058bab3c36595df35c75a3dcc4bf50f7c4e36b9d3a40a2ddab9ca16ac273b"
+    local stt_fname="stt-${pkgver}-cp310-cp310-manylinux_2_24_x86_64.whl"
+    local stt_sum="ed90874b04964e5c76f45521137a51d663fbeda505c45b0a19d267538e1a0a2106dfbf968a2c411b566917417b0dcd70459fd03bb0502fa78c27585c579668f2"
     wget "$_src_base_url/$stt_fname" -q -O "$srcdir/$stt_fname"
     local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
     if [ ${stt_sum_checkv} != "$stt_sum" ]; then
@@ -63,8 +63,8 @@ package() {
     fi
 
     # Download the CTC Decoder Wheel.
-    local ctc_fname="coqui_stt_ctcdecoder-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
-    local ctc_sum="020bc4556b7ca47fa5ffdf62028a82498c46b73edd18b5c577288b7f8ed8960becc72dc94d9b018c366ee4802a37abcf7b3eadebb06fa73633f808f90365839d"
+    local ctc_fname="coqui_stt_ctcdecoder-${pkgver}-cp310-cp310-manylinux_2_24_x86_64.whl"
+    local ctc_sum="9f26ac886e1c7e62eeaeacf35f64121fdaa82e7f5edae08fe729a3985f10982dcef644a16858d2a62bfc78a10f819933854c2b191ec57bdb20a9a61a3728decb"
     wget "$_src_base_url/$ctc_fname" -q -O "$srcdir/$ctc_fname"
     local ctc_sum_check=$(sha512sum "$ctc_fname" | awk '{print $1}')
     if [ ${ctc_sum_check} != "$ctc_sum" ]; then
@@ -74,22 +74,22 @@ package() {
     fi
   elif [ ${MACHINE_TYPE} == 'armv7h' ]; then
     # Download the STT Wheel.
-    local stt_fname="stt-1.3.0-cp37-cp37m-linux_armv7l.whl"
-    local stt_sum="12099b1a2d2e6d7db3bcea9e8b6d60f4e81e2173bb639fb20c088a0346edb3fe059f184fc514b1b77e305f7b82ae14975f7c4cd10acc2bafe9a0dbe7d7170742"
+    local stt_fname="stt-${pkgver}-cp37-cp37m-linux_armv7l.whl"
+    local stt_sum="1d9811c71020e493be8070d82b5d73d5815a454a1b9d0381798f15b4ed1a39c5cd3381c944cb106089e62402f016d18b8066010d1d4462518ada09cdc421d274"
     wget "$_src_base_url/$stt_fname" -q -O "$srcdir/$stt_fname"
     local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
-    if [ ${stt_sum_checkv} != "$stt_sum" ]; then
+    if [ "${stt_sum_checkv}" != "${stt_sum}" ]; then
       # Bail!
       echo "Verifying STT\'s checksum failed!" 1>&2
       exit 1
     fi
   elif [ ${MACHINE_TYPE} == 'aarch64' ]; then
     # Download the STT Wheel.
-    local stt_fname="stt-1.3.0-cp37-cp37m-linux_aarch64.whl"
-    local stt_sum="6513a1a35cd74a14c4bd49ea5c47c619237bb4c463159d83d773439f7b0cdf83a9c115e7bcf2e96f0cb75238ee9f8df9011b6f52c80f75d20f5777e7e0a04054"
+    local stt_fname="stt-${pkgver}-cp37-cp37m-linux_aarch64.whl"
+    local stt_sum="61062cfd914f48bc4c7c04867f5261a4c8800ed79b4519335d4f8ef672df0308b5fccd176849dcf23af412eb138bb71034f0b276f5f1f6ef9ea726d95bcb7c24"
     wget "$_src_base_url/$stt_fname" -q -O "$srcdir/$stt_fname"
     local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
-    if [ ${stt_sum_checkv} != "$stt_sum" ]; then
+    if [ "${stt_sum_checkv}" != "${stt_sum}" ]; then
       # Bail!
       echo "Verifying STT\'s checksum failed!" 1>&2
       exit 1
