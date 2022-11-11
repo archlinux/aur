@@ -33,10 +33,10 @@ package() {
   mkdir -p $pkgdir/usr/share/pixmaps
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/applications
-  cp FurnitureLibraryEditor-$pkgver.jar $pkgdir/usr/share/java/furniturelibraryeditor.jar
-  cp furniturelibraryeditor.png $pkgdir/usr/share/pixmaps
-  cp furniturelibraryeditor $pkgdir/usr/bin
-  cp furniturelibraryeditor.desktop $pkgdir/usr/share/applications
+  install -Dm644 FurnitureLibraryEditor-$pkgver.jar $pkgdir/usr/share/java/furniturelibraryeditor.jar
+  install -Dm644 furniturelibraryeditor.png $pkgdir/usr/share/pixmaps
+  install -Dm755 furniturelibraryeditor $pkgdir/usr/bin
+  install -Dm644 furniturelibraryeditor.desktop $pkgdir/usr/share/applications
 }
 
 # vim:set ts=2 sw=2 et:
