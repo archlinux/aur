@@ -19,7 +19,7 @@ options=('!makeflags')
 
 build() {
   cd $pkgname-$pkgver
-  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
+  GUILE_EFFECTIVE_VERSION=3.0 ./configure --prefix=/usr
   make 
 }
 
