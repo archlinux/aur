@@ -33,7 +33,7 @@ build(){
 }
 
 package(){
- 	cd "${_gitname}"/build/TwitterColorEmoji-SVGinOT-Linux-13.1.0
+	cd "${_gitname}"/build/TwitterColorEmoji-SVGinOT-Linux-14.0.2
 	install -Dm644 TwitterColorEmoji-SVGinOT.ttf -t "$pkgdir"/usr/share/fonts/TTF/
 	install -Dm644 LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname/
 	install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname/
