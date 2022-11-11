@@ -2,7 +2,7 @@
 pkgname=maixpy-ide-bin
 _pkgname=maixpy-ide
 pkgver=0.2.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Micropython env for Sipeed Maix boards"
 arch=('x86_64')
 url="https://dl.sipeed.com/MAIX/MaixPy/ide/"

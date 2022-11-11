@@ -1,7 +1,7 @@
 pkgbase = maixpy-ide-bin
 	pkgdesc = Micropython env for Sipeed Maix boards
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://dl.sipeed.com/MAIX/MaixPy/ide/
 	arch = x86_64
 	license = custom
