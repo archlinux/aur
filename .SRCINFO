@@ -1,17 +1,17 @@
 pkgbase = python-kosmorrolib
 	pkgdesc = A library to compute the ephemerides
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://kosmorro.space/lib
 	arch = any
 	license = AGPL
 	makedepends = python-pip
 	makedepends = python-poetry
-	depends = python>=3.7.0
+	depends = python>=3.8.0
 	depends = python-skyfield
 	depends = python-skyfield-data
 	depends = python-dateutil
-	source = python-kosmorrolib-v1.0.6.tar.gz::https://codeload.github.com/Kosmorro/lib/tar.gz/refs/tags/v1.0.6
-	sha256sums = 5e6d6833aa718177c22c3a8251cd8e694c8af3db464c1e44120b0c72ee7d9393
+	source = python-kosmorrolib-v1.0.7.tar.gz::https://codeload.github.com/Kosmorro/lib/tar.gz/refs/tags/v1.0.7
+	sha256sums = 4b8de46d7c57f94ec0e4c152fafebd1d28dec8ee31224050ba93cb039f6f976d
 
 pkgname = python-kosmorrolib
