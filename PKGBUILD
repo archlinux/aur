@@ -3,8 +3,8 @@
 
 _appname=pulsar
 _reponame=pulsar-edit
-_tasktag=6569057452294144
-_datetag=2022110914
+_tasktag=5164010308370432
+_datetag=2022111116
 
 pkgname="${_appname}-bin"
 pkgver="1.63.${_datetag}"
@@ -23,7 +23,7 @@ optdepends=(
 provides=("${_appname}")
 conflicts=("${_appname}")
 source=("${_appname}-${pkgver}.deb::https://api.cirrus-ci.com/v1/artifact/task/${_tasktag}/binary/binaries/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('02bd092fde552b4449266012ffc3067c473f7e41b4acb676399223dd8bbec2a6')
+sha256sums=('49eb877093a19eb5f1902dc2e4b3d4e9f5b598dd63ad3d7dcfa109507c09064d')
 
 prepare() {
   bsdtar xf data.tar.xz
@@ -35,7 +35,7 @@ package() {
   mv usr "$pkgdir"
 
   # Cleanup specs. Remove if implemented upstream
-  find "$pkgdir/opt/Pulsar/resources/app/apm" -type d -name "spec" -exec rm -rf {} +
+  find "$pkgdir/opt/Pulsar/resources/app/ppm" -type d -name "spec" -exec rm -rf {} +
   find "$pkgdir/opt/Pulsar/resources/app.asar.unpacked" -type d -name "spec" -exec rm -rf {} +
 
   # This needs removal along with asar makedepend when fixed upstream
