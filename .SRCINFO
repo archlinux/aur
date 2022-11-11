@@ -1,0 +1,12 @@
+pkgbase = python-stt-listen
+	pkgdesc = Transcribe long audio files with STT or use the streaming interface
+	pkgver = 2.3.42
+	pkgrel = 1
+	url = https://gitlab.com/waser-technologies/technologies/listen
+	arch = x86_64
+	license = GNU GPL v3
+	depends = python-pip
+	depends = python-pyaudio
+	provides = python-listen
+
+pkgname = python-stt-listen
