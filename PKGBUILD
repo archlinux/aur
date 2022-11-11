@@ -16,8 +16,8 @@ provides=( 'skywire' )
 conflicts=( 'skywire' )
 license=('license-free')
 install=skywire.install
-backup=(opt/${_pkgname}/{users.db,skywire.json,local})
-source=("skywire-autoconfig"
+backup=("opt/${_pkgname}/{users.db,skywire.json,local}")
+_source=("skywire-autoconfig"
 "skywire.desktop"
 "skywirevpn.desktop"
 "skywirevpn.png"
@@ -25,6 +25,7 @@ source=("skywire-autoconfig"
 "skywire.service"
 "skywire-autoconfig.service"
 )
+source=("${_source[@]}")
 sha256sums=('08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
@@ -39,72 +40,67 @@ sha256sums_armv7=('6619e736efc1823517a98f31ec9611d4211674d1b70b17e25c5ae1cfeab55
 sha256sums_armv7l=('6619e736efc1823517a98f31ec9611d4211674d1b70b17e25c5ae1cfeab556f1')
 sha256sums_armv7h=('6619e736efc1823517a98f31ec9611d4211674d1b70b17e25c5ae1cfeab556f1')
 sha256sums_arm=('a66bdfa7ffe83cc770a7955e2aedeccaeef43d71e5597005e063058eba004fe8')
-#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-amd64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-arm64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-armhf.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-arm.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-amd64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-arm64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-armhf.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-arm.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
-source_armv8=( ${source_aarch64[@]} )
+source_armv8=( "${source_aarch64[@]}" )
 source_arm=("${_release_url}-arm.tar.gz")
 source_armv7=("${_release_url}-armhf.tar.gz")
-source_armv7l=( ${source_armv7[@]} )
-source_armv7h=( ${source_armv7[@]} )
+source_armv7l=( "${source_armv7[@]}" )
+source_armv7h=( "${source_armv7[@]}" )
+_binaries=("skywire-cli" "skywire-visor")
 
 package() {
-_msg2 'Creating dirs'
+GOBIN="${srcdir}/"
+_GOAPPS="${GOBIN}/apps"
+#declare the _pkgdir and systemd directory
 _pkgdir="${pkgdir}"
+_systemddir="usr/lib/systemd/system"
+_package
+}
+#_package function - used in build variants
+_package() {
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
-_skyscripts="${_skydir}/scripts"
-_systemddir="usr/lib/systemd/system"
 _skybin="${_skydir}/bin"
-mkdir -p ${_pkgdir}/usr/bin
-mkdir -p ${_pkgdir}/${_skydir}/bin
-mkdir -p ${_pkgdir}/${_skydir}/apps
-mkdir -p ${_pkgdir}/${_skydir}/local
-mkdir -p ${_pkgdir}/${_skydir}/scripts
-mkdir -p ${_pkgdir}/${_systemddir}
-
+_skyscripts="${_skydir}/scripts"
+_msg2 'creating dirs'
+mkdir -p "${_pkgdir}/usr/bin"
+mkdir -p "${_pkgdir}/${_skydir}/bin"
+mkdir -p "${_pkgdir}/${_skydir}/apps"
+mkdir -p "${_pkgdir}/${_skydir}/local"
+mkdir -p "${_pkgdir}/${_skydir}/scripts"
+mkdir -p "${_pkgdir}/${_systemddir}"
 _msg2 'installing binaries'
- install -Dm755 ${srcdir}/${_pkgname}-cli ${_pkgdir}/${_skybin}/
- install -Dm755 ${srcdir}/${_pkgname}-visor ${_pkgdir}/${_skybin}/
-for _i in ${_pkgdir}/${_skybin}/* ; do
-	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
-done
-
+for _i in "${_binaries[@]}" ; do
+	install -Dm755 "${GOBIN}/${_i}" "${_pkgdir}/${_skybin}/"
+	ln -rTsf "${_pkgdir}/${_skybin}/${_i}" "${_pkgdir}/usr/bin/${_i}"
+ done
 _msg2 'installing app binaries'
-_apps=${srcdir}/apps
-install -Dm755 ${_apps}/* ${_pkgdir}/${_skyapps}/
-for _i in ${_pkgdir}/${_skyapps}/* ; do
-	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
+install -Dm755 "${_GOAPPS}/"* "${_pkgdir}/${_skyapps}/"
+for _i in "${_pkgdir}/${_skyapps}/"* ; do
+	ln -rTsf "${_i}" "${_pkgdir}/usr/bin/${_i##*/}"
 done
-
 _msg2 'Installing scripts'
-install -Dm755 ${srcdir}/skywire-autoconfig ${_pkgdir}/${_skyscripts}/
-for _i in ${_pkgdir}/${_skyscripts}/* ; do
-	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
-done
-
+install -Dm755 "${srcdir}/skywire-autoconfig" "${_pkgdir}/${_skyscripts}/"
+ln -rTsf "${_pkgdir}/${_skyscripts}/skywire-autoconfig" "${_pkgdir}/usr/bin/skywire-autoconfig"
 _msg2 'Correcting symlink names'
-ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
-
-#make sure everything is executable
-chmod +x ${_pkgdir}/usr/bin/*
-
+ln -rTsf "${_pkgdir}/${_skybin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
-install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
-
+install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_skydir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
-install -Dm644 ${srcdir}/*service ${_pkgdir}/${_systemddir}/
-
+install -Dm644 "${srcdir}/"*.service "${_pkgdir}/${_systemddir}/"
 _msg2 'installing desktop files and icons'
-mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-install -Dm644 ${srcdir}/*.desktop ${_pkgdir}/usr/share/applications/
-install -Dm644 ${srcdir}/*.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
+mkdir -p "${_pkgdir}/usr/share/applications/" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
+install -Dm644 "${srcdir}/"*.desktop "${_pkgdir}/usr/share/applications/"
+install -Dm644 "${srcdir}/"*.png "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
 }
+
 
 _msg2() {
 (( QUIET )) && return
