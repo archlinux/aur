@@ -4,7 +4,7 @@
 
 pkgname=klystrack-git
 pkgver=1.7.6.make.fix.r12.gfe6e746
-pkgrel=2
+pkgrel=3
 pkgdesc="Tracker for making chiptune-like music on a modern computer"
 arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
@@ -30,7 +30,7 @@ prepare() {
   cd "$srcdir/$_gitname" #i.e. klystrack
   git submodule init
   git config submodule.klystron.url "$srcdir/klystron"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   # path to default song
   sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "$srcdir/klystrack/src/main.c"
   # CFLAGS needed until https://github.com/kometbomb/klystrack/issues/292 is resolved
