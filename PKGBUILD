@@ -1,9 +1,9 @@
-# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 # Manual download of 'AMDuProf_Linux_x64_${pkgver}.tar.bz2' required from upstream
 
 _pkgname=AMDuProf_Linux_x64
 pkgname=amduprof
-pkgver=3.6.449
+pkgver=4.0.341
 pkgrel=1
 pkgdesc="AMD uProf performance analysis tool."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 depends=(dkms)
 install=amduprof.install
-md5sums=("07c596ae3f0f9fb94c54eb57f02049e4" "SKIP")
+md5sums=("4cd023e8631a9f72edbb3109e0ce11ec" "SKIP")
 
 amduprof_prefix=/opt/${pkgname}
 

@@ -1,11 +1,11 @@
 #%Module1.0
 #
-# Created by Darjan Krijan <darjan_krijan@gmx.de>
+# Created by Darjan Krijan [https://disc-kuraudo.eu]
 #
 
 set MODULE      "amduprof"
 set BASE_DIR    "/opt"
-set VERSION     "3.6.449"
+set VERSION     "4.0.341"
 set MODULE_ROOT "${BASE_DIR}/${MODULE}"
 set MODULE_TEXT "AMD uProf performance analysis tool"
 
