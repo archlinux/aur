@@ -25,7 +25,7 @@ source=('unreal-engine-5.sh'
         'com.unrealengine.UE4Editor.desktop'
         'use_system_clang.patch'
         'unreal-engine-5-pacman-cache.hook')
-sha256sums=('9358ec38944f712101d733eb7b4cfa082b47a5021e42809850781c462a826644'
+sha256sums=('cdef1baaf48aefc8a625bb1c7fc2bfce29e38a978217df4ca0b4eb246195c691'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca')

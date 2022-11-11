@@ -2,6 +2,7 @@
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "ERROR: Run this as an unprivileged user; not as root."
+    return;
 fi
 
 if [ ! -d "${HOME}/.steampath" ] && [ -d "${HOME}/.steam/bin" ]; then
