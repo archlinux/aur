@@ -1,7 +1,7 @@
 # Maintainer: e dot sovetkin at gmaildotcom
 pkgname=smrender-git
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A rule-based renderer for OSM data"
 arch=('any')
 url="http://www.abenteuerland.at/smrender/"
