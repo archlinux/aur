@@ -6,9 +6,15 @@ pkgrel=1
 pkgdesc="Coqui STT Model Manager - install, manage and try out Coqui STT models from the Model Zoo"
 arch=('x86_64')
 license=('MPL2')
+<<<<<<< HEAD
 url="https://github.com/coqui-ai/${_pkgname}"
 depends=('python-pip' 'python-stt')
 source=("${_pkgbase}-${pkgver}::git+https://github.com/coqui-ai/${_pkgname}.git")
+=======
+url="https://github.com/coqui-ai/${pkgname}"
+depends=('python-pip')
+source=("${_pkgbase}-${pkgver}::git+https://github.com/coqui-ai/${pkgname}.git")
+>>>>>>> e5a3e64 (initial commit)
 sha256sums=('SKIP')
 provides=($_pkgname)
 
