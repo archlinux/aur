@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=google-lyra
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A very low-bitrate codec for speech compression"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('apache')
 depends=('gcc-libs')
 makedepends=('bazel' 'python-numpy')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/lyra/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b6b3d2a3d9e1dc6f12b073cd0065b9d2012f51dc89445c904a14fad8177a197')
+sha256sums=('593ec3a92fdcd3cdcbc6760955fd2441110f001001fb5c60ad0a0e9796e487c1')
 
 
 build() {
