@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gMWT
-_pkgver=1.1.1
+_pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 pkgdesc='Generalized Mann-Whitney Type Tests'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,8 +15,8 @@ depends=(
   r-rcpp
   r-rcpparmadillo
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2318f11f58f9f8a8a1b4298b4769628846dd967fe392e2b308c065ef10297ced')
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('6a076da57ebc5854a8331541f1d65ad8003839112bdb5400b5a22da94cadc83f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
