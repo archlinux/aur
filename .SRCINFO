@@ -1,6 +1,6 @@
 pkgbase = opencv3-opt
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version)
-	pkgver = 3.4.16
+	pkgver = 3.4.18
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = x86_64
@@ -31,16 +31,12 @@ pkgbase = opencv3-opt
 	optdepends = hdf5: support for HDF5 format
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python interface
-	source = opencv-3.4.16.tar.gz::https://github.com/opencv/opencv/archive/3.4.16.zip
-	source = opencv_contrib-3.4.16.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.16.tar.gz
-	source = opencv-lapack.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/ea851b9f93224a4c19cc3ddeafa7b733f3f138b6/opencv/repos/extra-x86_64/opencv-lapack-3.10.patch
+	source = opencv-3.4.18.tar.gz::https://github.com/opencv/opencv/archive/3.4.18.zip
+	source = opencv_contrib-3.4.18.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.18.tar.gz
 	source = opencv-tbb.patch::https://raw.githubusercontent.com/DrAtomic/opencv-tbb-patch/main/opencv-tbb.patch
-	source = opencv-cmake.patch
-	sha256sums = b4eddd83f13a4657e6175b2ffbb411cea6d8d6052242d823e64155d868e6a8ed
-	sha256sums = 92b4f6ab8107e9de387bafc3c7658263e5c6be68554d6086b37a2cb168e332c5
-	sha256sums = f83c64f2731a39910d0d4a48898dd04e4aca5c22f746b7b0ead003992ae11199
+	sha256sums = 5cf471bd1a5bcfd96d436b359a37d590cc184b6061422eef7d89e063522da1bf
+	sha256sums = 599bb4d3800a9523a91cecedb7f6d4316890275a39b8f9d66f73263f29ea1f61
 	sha256sums = e604f6effe0b2aacd19ad5e11544589f76ffed816036964963984ab8912266f0
-	sha256sums = 5710070ca513d37c0ee9ff496bfccf9c053e870bbaf5c46c0d18e2abc17c6269
 
 pkgname = opencv3-opt
 	provides = opencv3
@@ -48,5 +44,5 @@ pkgname = opencv3-opt
 
 pkgname = opencv3-opt-samples
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version) (samples)
-	depends = opencv3-opt=3.4.16
+	depends = opencv3-opt=3.4.18
 	provides = opencv3-samples
