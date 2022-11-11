@@ -1,7 +1,7 @@
 # Maintainer: Sol Bekic <s+aur at s-ol dot nu>
 
 pkgname="velocidrone"
-pkgver=1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="a fast paced multi-player and single player FPV drone racing simulator"
 url="https://www.velocidrone.com/"
@@ -12,8 +12,13 @@ depends=()
 
 OPTIONS=(!strip)
 
+# to build this, you need velocidrone.zip from the official site's download section.
+# after purchasing, log in and download the Debian file from here:
+# https://www.velocidrone.com/download/launcher?id=debian
+# and place velocidrone.zip next to this PKGBUILD when building.
+
 source=("git+https://github.com/patchkit-net/patchkit-launcher-qt.git"
-        "debian_launcher.zip::local://Velocidrone%20Debian%20Launcher.zip"
+        "velocidrone.zip::local://velocidrone.zip"
         "velocidrone.png::https://www.velocidrone.com/img/logo.png"
         "velocidrone.desktop")
 md5sums=('SKIP'
