@@ -2,8 +2,9 @@
 
 pkgname=('ttf-twemoji-color-git')
 _gitname=('twemoji-color-font')
-pkgver=v13.1.0.r2.g3239f32
+pkgver=14.0.2.r0.ge451b5d
 pkgrel=1
+epoch=1
 pkgdesc="A color and B&W emoji SVG-in-OpenType font by Twitter with support for ZWJ, skin tone modifiers and country flags (git)"
 url="https://github.com/eosrei/twemoji-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
@@ -17,7 +18,7 @@ conflicts=('twemoji-color-font' 'ttf-twemoji-color')
 
 pkgver() {
   cd "$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
