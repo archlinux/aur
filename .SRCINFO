@@ -1,12 +1,12 @@
 pkgbase = python-sncosmo
 	pkgdesc = Python library for supernova cosmology
-	pkgver = 2.7.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://sncosmo.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
+	checkdepends = python-pytest
 	checkdepends = python-scipy
 	checkdepends = python-astropy
 	checkdepends = python-extinction
@@ -14,11 +14,14 @@ pkgbase = python-sncosmo
 	checkdepends = python-emcee
 	checkdepends = python-nestle
 	checkdepends = python-matplotlib
-	checkdepends = python-yaml
 	makedepends = cython
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sncosmo/sncosmo-2.7.0.tar.gz
-	md5sums = 8554c21efd602ed35c7f4a703dfe26b9
+	source = https://files.pythonhosted.org/packages/source/s/sncosmo/sncosmo-2.9.0.tar.gz
+	md5sums = c22ee71449371bda8739b32e37dc7249
 
 pkgname = python-sncosmo
 	depends = python>=3.5

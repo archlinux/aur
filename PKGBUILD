@@ -2,31 +2,50 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.7.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
 url="https://sncosmo.readthedocs.io"
 license=('BSD')
-makedepends=('cython' 'python-numpy')
-checkdepends=('python-pytest-astropy' 'python-scipy' 'python-astropy' 'python-extinction' 'python-iminuit' 'python-emcee' 'python-nestle' 'python-matplotlib' 'python-yaml')
+makedepends=('cython'
+             'python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-numpy')
+checkdepends=('python-pytest'
+              'python-scipy'
+              'python-astropy'
+              'python-extinction'
+              'python-iminuit'
+              'python-emcee'
+              'python-nestle'
+              'python-matplotlib')
+#             'python-yaml'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('8554c21efd602ed35c7f4a703dfe26b9')
+md5sums=('c22ee71449371bda8739b32e37dc7249')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 prepare() {
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "/oldest-supported-numpy/d" pyproject.toml
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-${_pyver}" -m "not might_download" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -m "not might_download" || warning "Tests failed" # -vv --color=yes
 }
 
 package() {
@@ -41,5 +60,5 @@ package() {
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
