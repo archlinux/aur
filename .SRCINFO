@@ -1,0 +1,11 @@
+pkgbase = python-tts-say
+	pkgdesc = echo but with TTS
+	pkgver = 2.2.52
+	pkgrel = 1
+	url = https://gitlab.com/waser-technologies/technologies/say
+	arch = x86_64
+	license = MPL2
+	depends = python-pip
+	provides = python-say
+
+pkgname = python-tts-say
