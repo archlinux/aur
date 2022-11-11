@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.160795.3246889fb04.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.0.0_devel.162765.4ceaed7839a.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -150,7 +150,7 @@ build () {
        -D prefix=/usr \
        -D sysconfdir=/etc
        
-    meson configure _build
+    meson configure --no-pager _build
     
     ninja $NINJAFLAGS -C _build
 }
