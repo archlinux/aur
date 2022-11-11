@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-git
-pkgver=3.0.4.r1137.g9454423bf1
+pkgver=3.0.7.r1856.g8aa82b3370
 pkgrel=1
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "openssl"
 
-  patch -Np0 -F100 -i "$srcdir/ca-dir.patch"
+  patch -Np1 -F100 -i "$srcdir/ca-dir.patch"
 }
 
 pkgver() {
