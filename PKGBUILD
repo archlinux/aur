@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=0
+pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
