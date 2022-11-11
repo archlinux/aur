@@ -1,0 +1,249 @@
+From 86379195b835eae2dee93bcbcad47028ba440560 Mon Sep 17 00:00:00 2001
+From: "Carsten Haitzler (Rasterman)" <raster@rasterman.com>
+Date: Sat, 22 May 2021 16:30:33 +0100
+Subject: [PATCH 1/1] build - fix overall sysconfdir handling so it can work
+ out of the box
+
+sysconfdir is "etc" by default in meson, this means paths are like
+"etc/PackageKit/xxxx" ... which is not a path. missing a / to begin
+with. not to mention packagekit installs its own etc files in prefix/etc
+(eg /usr/local/etc) by default. so differentiate files installed by
+pkgkit (pk_sysconfdir)) and other system files (sysconfdir) and use
+approplriately in the build. if the default etc is used then fix it to be
+/etc for system and prefix/etc for pk installed files. at least things can
+work out of the box then when you ninja install and dont provide a
+custom sysconfidr on the cmdline.
+---
+ backends/alpm/meson.build                        |  8 ++++----
+ backends/apt/meson.build                       |  2 +-
+ backends/slack/meson.build                       |  5 +++--
+ backends/slack/pk-backend-slack.cc               |  2 +-
+ backends/slack/tests/meson.build                 |  3 ++-
+ contrib/command-not-found/meson.build            |  7 ++++---
+ contrib/command-not-found/pk-command-not-found.c |  2 +-
+ contrib/cron/meson.build                         |  4 ++--
+ data/meson.build                                 |  2 +-
+ etc/meson.build                                  |  2 +-
+ meson.build                                      | 10 +++++++++-
+ src/meson.build                                  |  3 ++-
+ src/pk-shared.c                                  |  2 +-
+ 13 files changed, 32 insertions(+), 20 deletions(-)
+
+diff --git a/backends/alpm/meson.build b/backends/alpm/meson.build
+index eb4d5b373..fc7972128 100644
+--- a/backends/alpm/meson.build
++++ b/backends/alpm/meson.build
+@@ -34,9 +34,9 @@ shared_module(
+   c_args: [
+     '-DPK_LOG_PREFIX="PACKAGEKIT"',
+     '-DG_LOG_DOMAIN="PackageKit-alpm"',
+-    '-DPK_BACKEND_CONFIG_FILE="@0@"'.format(join_paths(get_option('sysconfdir'), 'PackageKit', 'alpm.d', 'pacman.conf')),
+-    '-DPK_BACKEND_GROUP_FILE="@0@"'.format(join_paths(get_option('sysconfdir'), 'PackageKit', 'alpm.d', 'groups.list')),
+-    '-DPK_BACKEND_REPO_FILE="@0@"'.format(join_paths(get_option('sysconfdir'), 'PackageKit', 'alpm.d', 'repos.list')),
++    '-DPK_BACKEND_CONFIG_FILE="@0@"'.format(join_paths(pk_sysconfdir, 'PackageKit', 'alpm.d', 'pacman.conf')),
++    '-DPK_BACKEND_GROUP_FILE="@0@"'.format(join_paths(pk_sysconfdir, 'PackageKit', 'alpm.d', 'groups.list')),
++    '-DPK_BACKEND_REPO_FILE="@0@"'.format(join_paths(pk_sysconfdir, 'PackageKit', 'alpm.d', 'repos.list')),
+     '-DPK_BACKEND_DEFAULT_PATH="/bin:/usr/bin:/sbin:/usr/sbin"',
+   ],
+   install: true,
+@@ -52,5 +52,5 @@ install_data(
+   'groups.list',
+   'pacman.conf',
+   'repos.list',
+-  install_dir: join_paths(get_option('sysconfdir'), 'PackageKit', 'alpm.d')
++  install_dir: join_paths(pk_sysconfdir, 'PackageKit', 'alpm.d')
+ )
+diff --git a/backends/apt/meson.build b/backends/apt/meson.build
+index 5df8f29e2..b29af882b 100644
+--- a/backends/apt/meson.build
++++ b/backends/apt/meson.build
+@@ -75,7 +75,7 @@ shared_module(
+ 
+ install_data(
+   '20packagekit',
+-  install_dir: join_paths(get_option('sysconfdir'), 'apt', 'apt.conf.d'),
++  install_dir: join_paths(sysconfdir, 'apt', 'apt.conf.d'),
+ )
+ 
+ install_data(
+diff --git a/backends/slack/meson.build b/backends/slack/meson.build
+index f44eea193..c6fdee49f 100644
+--- a/backends/slack/meson.build
++++ b/backends/slack/meson.build
+@@ -24,7 +24,8 @@ packagekit_backend_slack_module = shared_module(
+     '-DPK_COMPILATION=1',
+     '-DLOCALSTATEDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('localstatedir'))),
+     '-DLIBDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libdir'))),
+-    '-DSYSCONFDIR="@0@"'.format(get_option('sysconfdir')),
++    '-DSYSCONFDIR="@0@"'.format(sysconfdir),
++    '-DPK_SYSCONFDIR="@0@"'.format(pk_sysconfdir),
+   ],
+   override_options: ['c_std=c14', 'cpp_std=c++14'],
+   install: true,
+@@ -45,7 +46,7 @@ configure_file(
+   output: 'Slackware.conf',
+   configuration: slackware_config_data,
+   install: true,
+-  install_dir: join_paths(get_option('sysconfdir'), 'PackageKit'),
++  install_dir: join_paths(sysconfdir, 'PackageKit'),
+ )
+ 
+ install_data(
+diff --git a/backends/slack/pk-backend-slack.cc b/backends/slack/pk-backend-slack.cc
+index 46e233d9a..4dbce8a50 100644
+--- a/backends/slack/pk-backend-slack.cc
++++ b/backends/slack/pk-backend-slack.cc
+@@ -44,7 +44,7 @@ void pk_backend_initialize(GKeyFile *conf, PkBackend *backend)
+ 
+ 	/* Read the configuration file */
+ 	key_conf = g_key_file_new();
+-	path = g_build_filename(SYSCONFDIR, "PackageKit", "Slackware.conf", NULL);
++	path = g_build_filename(PK_SYSCONFDIR, "PackageKit", "Slackware.conf", NULL);
+ 	g_key_file_load_from_file(key_conf, path, G_KEY_FILE_NONE, &err);
+ 	if (err)
+ 	{
+diff --git a/backends/slack/tests/meson.build b/backends/slack/tests/meson.build
+index c5235227c..49e6161e1 100644
+--- a/backends/slack/tests/meson.build
++++ b/backends/slack/tests/meson.build
+@@ -13,7 +13,8 @@ pk_slack_test_cpp_args = [
+   '-DPK_COMPILATION=1',
+   '-DLOCALSTATEDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('localstatedir'))),
+   '-DLIBDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libdir'))),
+-  '-DSYSCONFDIR="@0@"'.format(get_option('sysconfdir')),
++  '-DSYSCONFDIR="@0@"'.format(sysconfdir),
++  '-DPK_SYSCONFDIR="@0@"'.format(pk_sysconfdir),
+   '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+   '-DLIBEXECDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libexecdir'))),
+   '-DPK_DB_DIR="."',
+diff --git a/contrib/command-not-found/meson.build b/contrib/command-not-found/meson.build
+index c1fba7a95..b1f0e88d8 100644
+--- a/contrib/command-not-found/meson.build
++++ b/contrib/command-not-found/meson.build
+@@ -8,7 +8,8 @@ executable(
+     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+     '-DG_LOG_DOMAIN="PackageKit"',
+     '-DPACKAGE_LOCALE_DIR="@0@"'.format(join_paths(get_option('prefix'), get_option('localedir'))),
+-    '-DSYSCONFDIR="@0@"'.format(get_option('sysconfdir')),
++    '-DSYSCONFDIR="@0@"'.format(sysconfdir),
++    '-DPK_SYSCONFDIR="@0@"'.format(pk_sysconfdir),
+   ]
+ )
+ 
+@@ -19,10 +20,10 @@ configure_file(
+   output: 'PackageKit.sh',
+   configuration: bashprofile_config_data,
+   install: true,
+-  install_dir: join_paths(get_option('sysconfdir'), 'profile.d'),
++  install_dir: join_paths(sysconfdir, 'profile.d'),
+ )
+ 
+ install_data(
+   'CommandNotFound.conf',
+-  install_dir: join_paths(get_option('sysconfdir'), 'PackageKit'),
++  install_dir: join_paths(pk_sysconfdir, 'PackageKit'),
+ )
+diff --git a/contrib/command-not-found/pk-command-not-found.c b/contrib/command-not-found/pk-command-not-found.c
+index 8bedb081c..f7c5005b7 100644
+--- a/contrib/command-not-found/pk-command-not-found.c
++++ b/contrib/command-not-found/pk-command-not-found.c
+@@ -591,7 +591,7 @@ pk_cnf_get_config (void)
+ 
+ 	/* load file */
+ 	file = g_key_file_new ();
+-	path = g_build_filename (SYSCONFDIR, "PackageKit", "CommandNotFound.conf", NULL);
++	path = g_build_filename (PK_SYSCONFDIR, "PackageKit", "CommandNotFound.conf", NULL);
+ 	ret = g_key_file_load_from_file (file, path, G_KEY_FILE_NONE, &error);
+ 	if (!ret) {
+ 		g_printerr ("failed to load config file: %s\n", error->message);
+diff --git a/contrib/cron/meson.build b/contrib/cron/meson.build
+index bff5eec27..5c1926e4b 100644
+--- a/contrib/cron/meson.build
++++ b/contrib/cron/meson.build
+@@ -1,9 +1,9 @@
+ install_data(
+   'packagekit-background.cron',
+-  install_dir: join_paths(get_option('sysconfdir'), 'cron.daily')
++  install_dir: join_paths(sysconfdir, 'cron.daily')
+ )
+ 
+ install_data(
+   'packagekit-background',
+-  install_dir: join_paths(get_option('sysconfdir'), 'sysconfig')
++  install_dir: join_paths(sysconfdir, 'sysconfig')
+ )
+diff --git a/data/meson.build b/data/meson.build
+index a953f6280..11d115204 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -9,7 +9,7 @@ dbus_config_data.set('libexecdir', join_paths(get_option('prefix'), get_option('
+ 
+ dbus_sys_dir = get_option('dbus_sys')
+ if dbus_sys_dir == ''
+-  dbus_sys_dir = join_paths(get_option('sysconfdir'), 'dbus-1', 'system.d')
++  dbus_sys_dir = join_paths(sysconfdir, 'dbus-1', 'system.d')
+ endif
+ 
+ configure_file(
+diff --git a/etc/meson.build b/etc/meson.build
+index d3687f820..5094d93b3 100644
+--- a/etc/meson.build
++++ b/etc/meson.build
+@@ -1,5 +1,5 @@
+ install_data(
+   'PackageKit.conf',
+   'Vendor.conf',
+-  install_dir: join_paths(get_option('sysconfdir'), 'PackageKit')
++  install_dir: join_paths(pk_sysconfdir, 'PackageKit')
+ )
+diff --git a/meson.build b/meson.build
+index 98587c6ec..8eba1544f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -73,7 +73,15 @@ add_project_arguments ('-DPK_COMPILATION', language: 'c')
+ conf = configuration_data()
+ conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
+ conf.set_quoted('LIBDIR', join_paths(get_option('prefix'), get_option('libdir')))
+-conf.set_quoted('SYSCONFDIR', get_option('sysconfdir'))
++if get_option('sysconfdir') == 'etc'
++  pk_sysconfdir = join_paths(get_option('prefix'), get_option('sysconfdir'))
++  sysconfdir = '/etc'
++else
++  pk_sysconfdir = get_option('sysconfdir')
++  sysconfdir = get_option('sysconfdir')
++endif
++conf.set_quoted('SYSCONFDIR', sysconfdir)
++conf.set_quoted('PK_SYSCONFDIR', pk_sysconfdir)
+ 
+ conf.set_quoted('PROJECT_NAME', meson.project_name())
+ conf.set_quoted('PROJECT_VERSION', meson.project_version())
+diff --git a/src/meson.build b/src/meson.build
+index cae73380e..505e9491d 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -54,7 +54,8 @@ packagekit_direct_exec = executable(
+   c_args: [
+     '-DG_LOG_DOMAIN="PackageKit"',
+     '-DLIBDIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libdir'))),
+-    '-DSYSCONFDIR="@0@"'.format(get_option('sysconfdir')),
++    '-DSYSCONFDIR="@0@"'.format(sysconfdir),
++    '-DPK_SYSCONFDIR="@0@"'.format(pk_sysconfdir),
+     '-DVERSION="@0@"'.format(meson.project_version()),
+     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+     '-DPACKAGE_LOCALE_DIR="@0@"'.format(package_locale_dir),
+diff --git a/src/pk-shared.c b/src/pk-shared.c
+index ca825dee9..a9fc623f4 100644
+--- a/src/pk-shared.c
++++ b/src/pk-shared.c
+@@ -326,7 +326,7 @@ pk_util_get_config_filename (void)
+ 	g_free (path);
+ #endif
+ 	/* check the prefix path */
+-	path = g_build_filename (SYSCONFDIR, "PackageKit", "PackageKit.conf", NULL);
++	path = g_build_filename (PK_SYSCONFDIR, "PackageKit", "PackageKit.conf", NULL);
+ 	if (g_file_test (path, G_FILE_TEST_EXISTS))
+ 		goto out;
+ 
+-- 
+2.35.1
+

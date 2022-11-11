@@ -1,31 +1,36 @@
 pkgbase = packagekit-git
 	pkgdesc = A system designed to make installation and updates of packages easier
-	pkgver = r4327.f537e89
-	pkgrel = 1
-	url = http://www.packagekit.org/
-	arch = i686
+	pkgver = 1.2.5
+	pkgrel = 2
+	url = https://www.freedesktop.org/software/PackageKit/
 	arch = x86_64
 	license = GPL
+	makedepends = polkit
+	makedepends = sqlite
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = intltool
-	makedepends = networkmanager
 	makedepends = bash-completion
 	makedepends = vala
 	makedepends = meson
-	depends = dbus-glib
-	depends = pacman>=5.0.0
-	depends = polkit
-	depends = shared-mime-info
-	depends = sqlite
-	optdepends = networkmanager: detect connection status
-	optdepends = bash-completion: command completion in bash
 	replaces = packagekit
+	options = !emptydirs
+	source = 0001-build-fix-overall-sysconfdir-handling-so-it-can-work.patch
+	source = git+https://github.com/PackageKit/PackageKit.git#branch=main
+	validpgpkeys = 163EB50119225DB3DF8F49EA17ACBA8DFA970E17
+	validpgpkeys = EC60AABDF42AAE8FB062640480858FA38F62AF74
+	sha256sums = f4dd7ce7dc2ef4a1b3d39a789d108c6e7f7791534b946b34a23b6553a9df3797
+	sha256sums = SKIP
+
+pkgname = packagekit-git
+	depends = libpackagekit-glib
+	depends = pacman>=6.0.0
+	depends = polkit
+	depends = sqlite
+	optdepends = bash-completion: command completion in bash
 	backup = var/lib/PackageKit/transactions.db
 	backup = etc/PackageKit/alpm.d/pacman.conf
 	backup = etc/PackageKit/alpm.d/repos.list
-	source = git+https://github.com/hughsie/PackageKit.git
-	md5sums = SKIP
 
-pkgname = packagekit-git
-
+pkgname = libpackagekit-glib-git
+	pkgdesc = GLib library for accessing PackageKit
+	depends = glib2
