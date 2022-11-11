@@ -1,8 +1,8 @@
 pkgname=haraka
-pkgver=2.8.27
-pkgrel=2
+pkgver=2.8.28
+pkgrel=1
 pkgdesc='A fast, highly extensible, and event driven SMTP server'
-arch=(i686 x86_64 aarch64)
+arch=(x86_64 aarch64)
 url=http://haraka.github.io/
 license=(MIT)
 depends=(nodejs)
@@ -22,5 +22,5 @@ package() {
 }
 
 
-sha256sums=('3c8902abf5d44aa066f45c7ca0f7d4c096648f4ae05558cb0e58c6a9d6cdfbdd'
+sha256sums=('63b2016f16bf4c546b64a14e3124fe89f9f5abf71da7fbf3008e81afd65f5dcb'
             '12fbaf9d83d54763bd5f5b0ea37906b148f5dcb85c39d4035bec41f589019bcd')
