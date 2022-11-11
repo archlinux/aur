@@ -2,6 +2,7 @@
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "ERROR: Run this as an unprivileged user; not as root."
+    return;
 fi
 
 if [ ! -d "${HOME}/.steampath" ] && [ -d "${HOME}/.steam/bin" ]; then
@@ -11,12 +12,14 @@ elif [ ! -d "${HOME}/.steampath" ] && [ ! -d "${HOME}/.steam/bin" ]; then
     ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
 fi
 
-if [ ! -d "${HOME}/.config/Epic/UnrealEngine/4.0/Intermediate/" ]; then
-    mkdir -p "${HOME}/.config/Epic/UnrealEngine/4.0/Intermediate/"
+if [ ! -d "${HOME}/.config/Epic/UnrealEngine/4.27/Intermediate/" ]; then
+    mkdir -p "${HOME}/.config/Epic/UnrealEngine/4.27/Intermediate/"
+    ln -s "${HOME}/.config/Epic/UnrealEngine/4.0/Intermediate/" "${HOME}/.config/Epic/UnrealEngine/4.27/Intermediate/"
 fi
 
-if [ ! -d "${HOME}/.cnfig/Epic/UnrealEngine/4.0/Intermediate/" ]; then
-    mkdir -p "${HOME}/.cnfig/Epic/UnrealEngine/4.0/Intermediate/"
+if [ ! -d "${HOME}/.cnfig/Epic/UnrealEngine/4.27/Intermediate/" ]; then
+    mkdir -p "${HOME}/.cnfig/Epic/UnrealEngine/4.27/Intermediate/"
+    ln -s "${HOME}/.cnfig/Epic/UnrealEngine/4.0/Intermediate/" "${HOME}/.config/Epic/UnrealEngine/4.27/Intermediate/"
 fi
 
 if [ ! -f "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop" ]; then
