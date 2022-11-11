@@ -5,11 +5,11 @@
 pkgname=qsstv
 pkgver=9.5.8
 _pkgver=9.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Radio Slow-Scan TV for qt"
-url="http://users.telenet.be/on4qz/"
+url="https://github.com/ON4QZ/QSSTV"
 depends=('qt5-base' 'libpulse' 'v4l-utils' 'hamlib' 'fftw' 'openjpeg2' 'alsa-lib')
-source=(http://users.telenet.be/on4qz/qsstv/downloads/${pkgname}_${pkgver}.tar.gz
+source=(https://apps.manko.pro/aur/${pkgname}_${pkgver}.tar.gz
         $pkgname.desktop)
 
 arch=('i686' 'x86_64')
