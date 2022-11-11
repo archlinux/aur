@@ -1,0 +1,18 @@
+pkgbase = fig-nightly-bin
+	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
+	pkgver = 2.8.0_nightly.20221111
+	pkgrel = 1
+	url = https://fig.io
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libappindicator-gtk3
+	depends = ibus
+	depends = xdg-utils
+	provides = fig
+	conflicts = fig
+	source = fig-nightly-bin-2.8.0-nightly.20221111.tar.xz::https://repo.fig.io/generic/nightly/asset/2.8.0-nightly.20221111/x86_64/fig.tar
+	sha256sums = 2191e94edd258dcb8a05375be24f947bc4cd05357aae96317be97df63b7bb50c
+
+pkgname = fig-nightly-bin
