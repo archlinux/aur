@@ -62,7 +62,7 @@ pkgname = libgda5-jdbc
 pkgname = libgda5-mysql
 	pkgdesc = libgda provider for MySQL
 	depends = libgda
-	depends = libsqlclient
+	depends = libmysqlclient
 	provides = libgda-mysql
 	conflicts = libgda-mysql
 

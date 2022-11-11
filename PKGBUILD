@@ -129,7 +129,7 @@ package_libgda5-jdbc() {
 
 package_libgda5-mysql() {
   pkgdesc="${_pkgname} provider for MySQL"
-  depends=("${_pkgname}" "libsqlclient")
+  depends=("${_pkgname}" "libmysqlclient")
   provides=("${_pkgname}-mysql")
   conflicts=("${_pkgname}-mysql")
   _packageprovider mysql
