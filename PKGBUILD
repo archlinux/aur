@@ -1,4 +1,5 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 
 _name=pyroaring
 pkgname=python-$_name
