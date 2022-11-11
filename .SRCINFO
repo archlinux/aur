@@ -1,13 +1,13 @@
 pkgbase = microprofile-docs
 	pkgdesc = Eclipse MicroProfile project documentations.
-	pkgver = 5.0
+	pkgver = 6.0_RC3
 	pkgrel = 1
 	url = https://github.com/eclipse/microprofile
 	arch = any
 	license = APACHE2
 	makedepends = java-environment-openjdk=8
 	makedepends = maven
-	source = microprofile-5.0.tar.gz::https://github.com/eclipse/microprofile/archive/refs/tags/5.0.tar.gz
-	sha256sums = d5d6d07904b2585d47447d5f841aa055b7f80125e1734024601d944b2ebc6666
+	source = microprofile-6.0-RC3.tar.gz::https://github.com/eclipse/microprofile/archive/refs/tags/6.0-RC3.tar.gz
+	sha256sums = e4ac84a37e2065c1230c94e43ea885fcb9c63cf83cfe90af15fff3e60333b2c6
 
 pkgname = microprofile-docs
