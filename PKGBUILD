@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.142
-pkgrel=2
+pkgver=4.4.159
+pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '618783dd211b2e03501c63f9008f56887514eb12e44de140a9822e5ac22c612b'
-            '8bdde1e95f75592001930e9b263d7ef6b9cdcacecc4635c53285af026f2b1f8c'
+            'c31c98fe4cd8158523c45685ba2a949cffd3fc0f06dffef66797d07e3a2bbbee'
+            'd01ba5d69cf0e94f3d44c8e4ed5b10eaab67e83398a7d86f86f378ade59cf8f9'
             'd1702ebfa92b55c26331e26ff50b5240c8bf69b0edfd6b7b78ef2da257a864d4')
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
     git -C stremio-shell config --local submodule.deps/libmpv.url "${srcdir}/libmpv"
     git -C stremio-shell config --local submodule.deps/singleapplication.url "${srcdir}/SingleApplication"
     git -C stremio-shell config --local submodule.deps/chroma.url "${srcdir}/razerchroma"
-    git -C stremio-shell submodule update
+    git -C stremio-shell -c protocol.file.allow='always' submodule update
     
     # do not download server.js during 'make'
     ln -s "../stremio-${pkgver}-server.js" stremio-shell/server.js
