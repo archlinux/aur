@@ -1,15 +1,20 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=sncosmo
 pkgname=python-${_pyname}-doc
-pkgver=2.7.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Documentation for SNCosmo"
 arch=('any')
 url="https://sncosmo.readthedocs.io"
 license=('BSD')
-makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc' 'python-sphinx_rtd_theme' 'python-sphinx-gallery' 'python-iminuit' 'graphviz')
+makedepends=("python-${_pyname}=${pkgver}"
+             'python-numpydoc'
+             'python-sphinx_rtd_theme'
+             'python-sphinx-gallery'
+             'python-iminuit'
+             'graphviz')
 source=("https://github.com/sncosmo/sncosmo/archive/v${pkgver}.tar.gz")
-md5sums=('d05b2bc505bf55ed9fe94d2e1ed242b5')
+md5sums=('e98a9fd0ca006e14640c7167933a801c')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
