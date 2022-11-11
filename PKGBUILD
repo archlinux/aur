@@ -3,14 +3,14 @@
 _pkgname=webargs
 pkgname=python-$_pkgname
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
 url='https://github.com/marshmallow-code/webargs'
 license=('MIT')
 depends=('python-marshmallow')
 makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx-issues' 'python-sphinx-typlog-theme' 'python-sphinx-furo')
-checkdepends=('python-pytest-runner' 'python-mock' 'python-webtest' 'python-pytest-aiohttp' 'python-webtest-aiohttp'
+checkdepends=('python-pytest-runner' 'python-webtest' 'python-pytest-aiohttp' 'python-webtest-aiohttp'
               'python-bottle' 'python-werkzeug' 'python-django' 'python-flask' 'python-tornado' 'python-pytest-asyncio')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('9fc223b70333afe0985ff90648d6f59c94c97b87386df156038e3a6f7c0ac59526181d0a20107df6e060fe0fc9750de9144cbf2c07011cd54840000758eeedd5')
