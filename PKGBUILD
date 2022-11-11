@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/Gustash/hyprshot"
 license=('GPL')
 depends=('jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify' 'imagemagick')
+makedepends=('git')
 provides=("$_basename")
 conflicts=("$_basename")
 source=("$_basename::git+https://github.com/Gustash/hyprshot.git")

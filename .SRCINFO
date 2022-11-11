@@ -5,6 +5,7 @@ pkgbase = hyprshot-git
 	url = https://github.com/Gustash/hyprshot
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = jq
 	depends = grim
 	depends = slurp
