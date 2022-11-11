@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.8.0.16
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2022_05_07
 _ffdetect_ver=2022_05_07
 _skiasharp_ver=2.80.2
@@ -15,9 +15,9 @@ url='https://emby.media'
 license=('custom')
 depends=('alsa-lib'
          'aom'
-         'aspnet-runtime'
+         'aspnet-runtime-6.0'
          'bzip2'
-         'dotnet-runtime'
+         'dotnet-runtime-6.0'
          'expat'
          'fontconfig'
          'fribidi'
@@ -47,7 +47,7 @@ depends=('alsa-lib'
          'sqlite'
          'zlib'
          'zvbi')
-makedepends=('ffnvcodec-headers8.1'
+makedepends=('ffnvcodec-headers'
              'nasm'
              'zstd')
 optdepends=('intel-media-sdk: Intel QuickSync support (requires Emby Premiere)'
