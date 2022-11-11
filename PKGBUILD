@@ -1,7 +1,9 @@
-# Maintainer: Yuan Zhou <xyyqzy@hotmail.com>
+#!/bin/hint/bash
+# Maintainer  : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor : Yuan Zhou <xyyqzy@hotmail.com>
 
-pkgname=optix
-pkgver=7.3.0
+pkgname=optix74
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="An application framework for achieving optimal ray tracing performance on the GPU."
 arch=('x86_64')
@@ -12,7 +14,7 @@ options=(!strip)
 _script="NVIDIA-OptiX-SDK-$pkgver-linux64-x86_64.sh"
 source=("file://$_script"
         "file://cmake.patch")
-sha512sums=('761f5fb2f3215eeaeff3bc1ffcc5314578ba6d822f952640705f0e30ca517fd8eb9827ac26736efbc9ba854a7b11360ce812bef3f088666ca9093add05ff4ea9'
+sha512sums=('04f50c49d08c5e4e9be73ee322c4bff4f10a5e30445bc431e213c879a35cc5e36e0ceb8c864313f417628575a3c71593e65467ea13dd111b432fdf1db9383ae0'
             'c2b3f122bf4e5d1bd987c3ce9693b24d2acd55f71f7366e49ebc0ba2f800945e6ddde439428761c6c12ec77f34a9334fb6900af2c1b10c40dd2905bb58c9ded2')
 
 if ! [ -f $_script ]; then
