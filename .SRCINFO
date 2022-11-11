@@ -1,6 +1,6 @@
 pkgbase = mate-indicator-applet
 	pkgdesc = Applet to display information from various applications consistently in the MATE panel (Built with Ayatana support)
-	pkgver = 1.26.0
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = http://www.mate-desktop.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = mate-indicator-applet
 	depends = mate-panel
 	depends = ayatana-ido
 	depends = libayatana-indicator
-	source = mate-indicator-applet-1.26.0.tar.gz::https://github.com/mate-desktop/mate-indicator-applet/archive/v1.26.0.tar.gz
-	md5sums = 2bbcb5eabf803459d1b930e92a8d4242
+	source = mate-indicator-applet-1.27.0.tar.gz::https://github.com/mate-desktop/mate-indicator-applet/archive/v1.27.0.tar.gz
+	md5sums = 763f34609b8fd3ad9d52766bbba7eae6
 
 pkgname = mate-indicator-applet
