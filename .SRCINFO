@@ -1,6 +1,6 @@
 pkgbase = mpv-handler
 	pkgdesc = Play website videos and songs with mpv & youtube-dl.
-	pkgver = 0.2.17
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/akiirui/mpv-handler/
 	install = mpv-handler.install
@@ -9,9 +9,9 @@ pkgbase = mpv-handler
 	makedepends = cargo
 	makedepends = git
 	depends = mpv
+	optdepends = yt-dlp: ytdl-hook support
 	optdepends = youtube-dl: ytdl-hook support
-	optdepends = yt-dlp: alternatives ytdl-hook support
-	source = mpv-handler-0.2.17.tar.gz::https://github.com/akiirui/mpv-handler/archive/v0.2.17.tar.gz
-	b2sums = 35ce4421679de517ab9eda79cdaa8874e32c9444f6dba27e428afe88f24717b8b1ec006574752f36cf9082ac6b6946e73621ffd80d4b37c8cef25350dc339650
+	source = mpv-handler-0.3.0.tar.gz::https://github.com/akiirui/mpv-handler/archive/v0.3.0.tar.gz
+	b2sums = d247682697f59aa0937982b157ba7ec7995958e41534b928f228fce149536a67d2bfb1c94c392bd6e9ee312897975d3c8fc91dc10140d7726878f5c6ae7f8f1c
 
 pkgname = mpv-handler
