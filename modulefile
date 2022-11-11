@@ -1,11 +1,11 @@
 #%Module1.0
 #
-# Created by Darjan Krijan <${prename}_${surname}@gmx.de>
+# Created by Darjan Krijan [https://disc-kuraudo.eu]
 #
 
 set MODULE      "aocl-aocc"
 set BASE_DIR    "/opt"
-set VERSION     "3.2.0"
+set VERSION     "4.0"
 set MODULE_ROOT "${BASE_DIR}/${MODULE}"
 set MODULE_TEXT "AMD Optimizing CPU Libraries (AOCL)"
 

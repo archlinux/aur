@@ -1,10 +1,10 @@
-# Maintainer: Darjan Krijan (daren) <${prename}_${surname}@gmx.de>
+# Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 # Manual download of 'aocl-linux-aocc-${pkgver}.tar.gz' required from upstream
 # Manual download of 'aocl-linux-gcc-${pkgver}.tar.gz'  required from upstream
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
-pkgver=3.2.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
 options=('staticlibs' '!strip')
 optdepends=('env-modules')
 sha256sums=(
-	"1cd6376aa43b0cc7ff009776b56996b5f287165254be19cb081a9e8a4e6719ee"
-	"9ff057919d8c5e3832054e66cb4393f79834a473d5c7c345521700e55104679b"
+	"c8000a66aaa2a257252cbb307732b4e66758b72b08f43b3723f4eb5404ba28c8"
+	"ad9615032158bc138dc2b0a825e33101183222e9bf978434046b584ef109701f"
 	"SKIP"
 	"SKIP"
 	"SKIP"
