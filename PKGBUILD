@@ -2,7 +2,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=conceal
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A trash collector."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('conceal-bin')
 depends=('skim')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fa39ca16099e0b9ca4548f737e18b31ba2ba2ea1a949b01b0c8793b6f6bab0af')
+sha256sums=('30715d22071cec7b268d721f05872c76c3982eab2dfa6e7b97d14b2f0156b51c')
 
 prepare() {
   cd "$pkgname-$pkgver"
