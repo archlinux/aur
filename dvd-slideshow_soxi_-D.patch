@@ -1,0 +1,11 @@
+--- dvd-slideshow-0.8.6-1/dvd-slideshow.orig	2022-06-03 09:44:33.410821545 -0400
++++ dvd-slideshow-0.8.6-1/dvd-slideshow	2022-11-11 07:10:28.960482665 -0500
+@@ -2534,7 +2534,7 @@
+ 	# wavlength $file 
+ 	# returns song length in ms
+ 	if [ "$soxi" == '1' ] ; then
+-		soxi "$1" -D 1> "$tmpdir"/trash.txt
++		soxi -D "$1" 1> "$tmpdir"/trash.txt
+ 		song_length=`cat "$tmpdir"/trash.txt` 
+ 	else
+ 		sox "$1" $sox_nop stat 2> "$tmpdir"/trash.txt 

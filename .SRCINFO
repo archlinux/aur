@@ -1,7 +1,7 @@
 pkgbase = dvd-slideshow
 	pkgdesc = Scripts for creating slideshow DVDs with menus, audio, and fancy effects.
 	pkgver = 0.8.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dvd-slideshow.sourceforge.net
 	install = dvd-slideshow.install
 	arch = any
@@ -25,8 +25,10 @@ pkgbase = dvd-slideshow
 	source = http://downloads.sourceforge.net/dvd-slideshow/dvd-slideshow-0.8.6-1.tar.gz
 	source = dvd-slideshow_ffprobe.patch
 	source = dir2slideshow_exiftool.patch
+	source = dvd-slideshow_soxi_-D.patch
 	sha1sums = 383f4e6ee33e8c344ccc484f61dd868c714b49dd
 	sha1sums = a96c72392d0dafe19cd93127bfaf70abd1ffa6ed
 	sha1sums = ae1bf3490fdc78a8e00c0b5c86bdeaaf3cc09a2d
+	sha1sums = 1a827b5f308f50e376c2d1cf04ca03e77cfa2e98
 
 pkgname = dvd-slideshow
