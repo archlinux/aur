@@ -23,6 +23,8 @@ pkgbase = plugdata-git
 	depends = libxcursor
 	depends = alsa-lib
 	depends = curl
+	conflicts = plugdata-bin
+	replaces = plugdata-bin
 	source = git+https://github.com/timothyschoen/PlugData/
 	sha512sums = SKIP
 
