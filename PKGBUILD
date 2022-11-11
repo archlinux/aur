@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=7.3.r297.g99ef287bb72
+pkgver=7.20.r331.g384b0b35c35
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -114,7 +114,7 @@ pkgver() {
 build() {
     # does not compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/-fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    export LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
     
     # build wine 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
