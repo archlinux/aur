@@ -1,6 +1,6 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 pkgname=paml
-pkgver=4.10.5
+pkgver=4.10.6
 pkgrel=1
 pkgdesc="Phylogenetic analysis by maximum likelihood. https://doi.org/10.1093/molbev/msm088"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('make')
 provides=('paml')
 source=("https://github.com/abacus-gene/paml/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('ba4a1c7a485f3a7f730a0e19a829c8f27784a250788d8e8c5be1419eb9851c29')
+sha256sums=('95af68480066e22499a90c6d32613e98689d8b8ddb69358180b4dc7e2a599bed')
 prepare(){
 	cd "$pkgname-$pkgver"/
 	mkdir bin
