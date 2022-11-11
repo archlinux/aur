@@ -1,0 +1,26 @@
+pkgbase = libfprint-goodixtls-55x4
+	pkgdesc = libfprint fork for goodixtls 55x4 devices. Currently supports 55b4 and 55a4. Note you will need to flash your device with [goodix-fp-dump](https://github.com/mpi3d/goodix-fp-dump) to use this
+	pkgver = r1710.1033241
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = opencv
+	makedepends = pkgconf
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = doctest
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = nss
+	depends = libgudev
+	optdepends = fprintd: D-Bus daemon for managing readers
+	provides = libfprint
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	source = libfprint-goodixtls-55x4::git+https://github.com/TheWeirdDev/libfprint.git
+	md5sums = SKIP
+
+pkgname = libfprint-goodixtls-55x4
