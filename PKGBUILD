@@ -19,11 +19,11 @@ md5sums=('SKIP'
 install=blesh.install
 
 pkgver() {
-	cd "$_pkgname"
-	printf "%s.r%s.%s" \
-		"$(sed -n 's/-/_/g;s/^FULLVER[[:space:]]*:=[[:space:]]*//p' GNUmakefile)" \
-		"$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "%s.r%s.%s" \
+    "$(sed -n 's/-/_/g;s/^FULLVER[[:space:]]*:=[[:space:]]*//p' GNUmakefile)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -31,13 +31,13 @@ prepare() {
   # unless we change the git config "protocol.file.allow" [1,2].
   # [1] https://bugs.archlinux.org/task/76255
   # [2] https://bbs.archlinux.org/viewtopic.php?pid=2063104#p2063104
-	cd "$_pkgname"
-	git -c protocol.file.allow=always submodule update --init --recursive
+  cd "$_pkgname"
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 package() {
-	# Makes ble-update call an AUR helper
-	install -Dm644 blesh-update.sh "$pkgdir"/usr/share/blesh/lib/_package.sh
-	cd "$_pkgname"
-	make install DESTDIR="$pkgdir" PREFIX=/usr
+  # Makes ble-update call an AUR helper
+  install -Dm644 blesh-update.sh "$pkgdir"/usr/share/blesh/lib/_package.sh
+  cd "$_pkgname"
+  make install DESTDIR="$pkgdir" PREFIX=/usr
 }
