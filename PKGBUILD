@@ -2,7 +2,7 @@
 
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
-pkgver=0.2.17.r1.gb47baf3
+pkgver=0.3.0.r1.gf8c64ea
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
@@ -17,7 +17,7 @@ url="https://github.com/akiirui/mpv-handler/"
 license=("MIT")
 provides=("mpv-handler")
 conflicts=("mpv-handler")
-source=("git+https://github.com/akiirui/mpv-handler.git#branch=dev")
+source=("git+https://github.com/akiirui/mpv-handler.git")
 b2sums=('SKIP')
 epoch=1
 
@@ -37,7 +37,7 @@ package() {
   cd "$srcdir/$_pkgname"
 
   install -Dm755 "target/release/mpv-handler" "$pkgdir/usr/bin/mpv-handler"
+  install -Dm644 "share/linux/config.toml" "$pkgdir/usr/share/doc/mpv-handler/config.toml"
   install -Dm644 "share/linux/mpv-handler.desktop" "$pkgdir/usr/share/applications/mpv-handler.desktop"
-
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
