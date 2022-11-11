@@ -3,10 +3,10 @@
 pkgname='python-sgp4'
 _name=${pkgname#python-}
 pkgver='2.21'
-pkgrel=1
+pkgrel=2
 pkgdesc="Track earth satellite TLE orbits using up-to-date 2010 version of SGP4"
 url="https://pypi.org/project/sgp4/"
-depends=('python')
+depends=('python-numpy')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('x86_64')
@@ -21,8 +21,7 @@ build() {
 package() {
 	depends+=()
 	cd "${srcdir}/${_name}-${pkgver}"
-	# waiting for: https://github.com/brandon-rhodes/python-sgp4/issues/74
-	#install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
