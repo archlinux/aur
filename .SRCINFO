@@ -1,0 +1,22 @@
+pkgbase = qsstv-git
+	pkgdesc = Radio Slow-Scan TV for qt
+	pkgver = r50.c5be1e3
+	pkgrel = 1
+	url = https://github.com/ON4QZ/QSSTV
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = qt5-base
+	depends = libpulse
+	depends = v4l-utils
+	depends = hamlib
+	depends = fftw
+	depends = openjpeg2
+	depends = alsa-lib
+	conflicts = qsstv
+	source = git+https://github.com/ON4QZ/QSSTV
+	md5sums = SKIP
+
+pkgname = qsstv-git
