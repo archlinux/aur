@@ -1,6 +1,6 @@
 pkgbase = dynamic-wallpaper
 	pkgdesc = Dynamic wallpaper creator for Gnome 42
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/dusansimic/dynamic-wallpaper
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = dynamic-wallpaper
 	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = git
+	makedepends = blueprint-compiler
 	depends = python
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita>=1.2.0
-	source = git+https://github.com/dusansimic/dynamic-wallpaper#commit=d43d3c73af028933cbed78aedf7ae3ce73e9735c
+	source = git+https://github.com/dusansimic/dynamic-wallpaper#commit=c9e2e1dcdacf7430a1d450849d2d8eb7daf8804d
 	md5sums = SKIP
 
 pkgname = dynamic-wallpaper
