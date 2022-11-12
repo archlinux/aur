@@ -3,7 +3,7 @@
 
 pkgname=raze-git
 pkgver=1.6pre+2012+g003382654
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
