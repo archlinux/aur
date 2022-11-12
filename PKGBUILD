@@ -7,7 +7,7 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=3.8.4.r696.f9daf42
+pkgver=3.9.3.r762.944e97c
 pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
@@ -75,14 +75,17 @@ fi
 
 ### PKGBUILD STANDARD FUNCTIONS ###
 
-if [[ "${_LOCKFILE}" == "true" ]]; then
-  prepare() {
-    cd "${srcdir:?}/${pkgname%-git}"
-    _TIMES_MAX=1
+prepare() {
+  cd "${srcdir:?}/${pkgname%-git}"
+  _TIMES_MAX=1
+  if [[ "${_LOCKFILE}" == "true" ]]; then
+    ((_TIMES_MAX++))
     _echo_times "Restoring upstream lockfile..."
     git restore "package-lock.json"
-  }
-fi
+  fi
+  _echo_times "Generating / updating a changelog..."
+  _changelog vty > "${_pkgbuilddir:?}/${pkgname%-git}.changelog"
+}
 
 pkgver() {
   cd "${srcdir:?}/${pkgname%-git}"
@@ -141,14 +144,21 @@ package() {
   install -dm755 "${pkgdir}/usr/share/docs"
   cp -R "${pkgname%-git}/docs/" "${pkgdir}/usr/share/docs/${pkgname%-git}/"
   chmod 0644 "${pkgdir}/usr/share/docs/${pkgname%-git}/"
+  _changelog md > "${pkgdir}/usr/share/docs/${pkgname%-git}/Changelog.md"
 
   # Get supported electron version and add it to the dependencies.
-  #   (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
+  #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
   [[ -n "$pkgdir" ]] && depends+=("electron$(_getelectron)")
+
+  # Add changelog file to the package if present
+  if [[ -f "${_pkgbuilddir}/${pkgname%-git}.changelog" ]]; then
+    [[ -n "$pkgdir" ]] && changelog="${pkgname%-git}.changelog"
+  fi
 }
 
 ### INTERNAL PKGBUILD VARIABLES ###
 
+_pkgbuilddir="$PWD"
 _NODE_MODULES=/usr/lib/node_modules/
 _TIMES=1
 _TIMES_MAX='?'
@@ -164,6 +174,35 @@ _gen_buildinfo() {
   cd "${srcdir:?}/${pkgname%-git}"
   printf '{"type":"%s","commit":"%s","features":{"updateNotifications":%s}}' \
     "${_RELEASE_TYPE:=devel}" "$(git rev-parse HEAD)" "${_UPDATE_NOTIFICATIONS:=true}" > buildInfo.json
+}
+
+# Prints a "changelog" in given format.
+_changelog() {
+  local tag_cur tag_prev format title oldpwd
+  oldpwd="$PWD"
+  cd "${srcdir:?}/${pkgname%-git}"
+  case "$1" in
+    "md")
+      title="# Changelog for \`${pkgname}\`\n\n## Changes since %s\n\n%s\n\n## Changes since %s\n\n%s"
+      # shellcheck disable=SC2016
+      format=' - `%h`: *%s* by [**%an**](mailto:%ae).'
+    ;;
+    "vty")
+      title='\n%s\n---\n%s\n\n\n%s\n---\n%s'
+       format=' * [%h]: %s%n'
+      format+='   - %an <%ae>.%n'
+    ;;
+    *) return 1 ;;
+  esac
+  tag_cur="$(git describe --tags --abbrev=0)"
+  tag_prev="$(git describe --tags --abbrev=0 "$tag_cur"~)"
+  # shellcheck disable=SC2059
+  printf "$title" \
+    "${tag_cur}..HEAD" \
+    "$(git log --invert-grep --grep="Bump" --pretty="$format" "$tag_cur"..HEAD)" \
+    "${tag_prev}..${tag_cur}" \
+    "$(git log --invert-grep --grep="Bump" --pretty="$format" "$tag_prev".."$tag_cur")"
+  cd "$oldpwd"
 }
 
 # Internal "echo" command to show a progress on current PKGBUILD step.
