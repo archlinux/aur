@@ -21,6 +21,7 @@ sha512sums=('bb12d72f97c9db76fdbf2bdd400b66e89c4afadc5f7cbe2866a6b46fe998885e5a4
 
 build() {
     cd "$pkgname-$pkgver"
+    export NODE_OPTIONS=--openssl-legacy-provider
     yarn install
     yarn build-prod
 
