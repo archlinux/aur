@@ -1,5 +1,5 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-# Contributor: Albert Graef <aggraef@gmail.com>
+# Maintainer: Albert Graef <aggraef@gmail.com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=touchosc-editor
 pkgver=1.8.9
