@@ -1,0 +1,17 @@
+pkgbase = jpeg2png-ipep-git
+	pkgdesc = Silky smooth JPEG decoding - IPEP fork (includes fixes)
+	pkgver = 1.01.r4.g70f77db
+	pkgrel = 1
+	url = https://github.com/ImageProcessing-ElectronicPublications/jpeg2png
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = libjpeg
+	depends = libpng
+	provides = jpeg2png
+	conflicts = jpeg2png
+	source = jpeg2png-git::git+https://github.com/ImageProcessing-ElectronicPublications/jpeg2png
+	sha256sums = SKIP
+
+pkgname = jpeg2png-ipep-git
