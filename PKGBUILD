@@ -1,9 +1,7 @@
 # Maintainer: Johannes Hörmann <aligator@suncraft-server.de>
 pkgname=goslice
 _pkgname=GoSlice
-pkgver=0.4.0
-# Hash of the commit to pass it as BUILD version (as it's not retrievable without git)
-_pkgverhash=18723ed
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An experimental slicer for 3d printing written in Go."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +11,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aligator/GoSlice/archive/v${pkgver}.tar.gz")
-sha512sums=('ec5da3d914ca0350d8ff94a21a4c6ee4cd811038b21c5f9e6cfa15d191741fea33295cc8683b4fad70dcd676444bc42ce466e308e8fd73e7cb259322be049867')
+sha512sums=('2609644bb457aba77fe925b8e64c75ae1725a498d60e4e6f86a800ae8ced9ddf4eec44048f4835c10e6603268a3fbe250ac6199b8b8b4976665d829883053d77')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
