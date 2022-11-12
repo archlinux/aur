@@ -20,6 +20,7 @@ pkgbase = python-pip-audit-git
 	depends = python-progress
 	depends = python-resolvelib
 	depends = python-rich
+	depends = python-toml
 	provides = python-pip-audit
 	conflicts = python-pip-audit
 	options = !strip

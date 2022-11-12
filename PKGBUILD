@@ -19,6 +19,7 @@ depends=(
   'python-progress'
   'python-resolvelib'
   'python-rich'
+  'python-toml'
 )
 makedepends=(
   'git'
