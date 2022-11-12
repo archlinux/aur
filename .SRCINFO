@@ -1,0 +1,12 @@
+pkgbase = usage-logging
+	pkgdesc = Create daily log files with hour x minute rectangle diagram of device on/off status
+	pkgver = 1
+	pkgrel = 1
+	install = usage-logging.install
+	arch = any
+	license = Unlicense
+	depends = cron
+	source = another-minute.sh
+	md5sums = 7a365ee024107614b65e2317c018977c
+
+pkgname = usage-logging

@@ -1,0 +1,14 @@
+CRON_TASK="* * * * * /usr/bin/usage-logging/another-minute.sh"
+
+post_install ()
+{
+    echo "Adding cron task..."
+    crontab -l | { cat; echo "$CRON_TASK"; } | crontab -
+}
+
+pre_remove ()
+{
+    echo "Removing cron task..."
+    crontab -l | grep -Fxv "$CRON_TASK" | crontab -
+}
+
