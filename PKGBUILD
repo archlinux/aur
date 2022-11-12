@@ -13,9 +13,9 @@ prepare()
 {
     echo "Installing PIP for Python 3.8..."
     python3.8 -m ensurepip
-    rm -f $pkgdir/usr/bin/pip3.10
 }
 
 package() {
     python3.8 -m pip install --root="$pkgdir" -U $_pkgbase
+    rm -f $pkgdir/usr/bin/pip3.10
 }
