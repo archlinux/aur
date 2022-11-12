@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=POMA
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='User-friendly Workflow for Metabolomics and Proteomics Data Analysis'
 arch=('any')
@@ -13,43 +13,39 @@ depends=(
   r
   r-broom
   r-caret
-  r-clisymbols
   r-complexheatmap
-  r-crayon
+  r-dbscan
+  r-deseq2
   r-dplyr
-  r-e1071
-  r-ggcorrplot
   r-ggplot2
-  r-ggraph
   r-ggrepel
   r-glasso
   r-glmnet
   r-impute
-  r-knitr
   r-limma
   r-magrittr
   r-mixomics
-  r-msnbase
-  r-patchwork
-  r-qpdf
   r-randomforest
   r-rankprod
   r-rmarkdown
+  r-summarizedexperiment
   r-tibble
   r-tidyr
+  r-uwot
   r-vegan
-  r-summarizedexperiment
 )
 optdepends=(
-  r-biobase
   r-biocstyle
   r-covr
+  r-ggraph
+  r-knitr
+  r-patchwork
   r-plotly
   r-testthat
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ada5f3a0e8229151c793fcfe135668842a0723f4a6b2494eb336cebe2798a1c9')
+sha256sums=('aa46b19eec19f9fac89864fdd56848bdc63e323443fb5d8582ba7aea930e8652')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
