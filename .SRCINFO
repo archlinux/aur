@@ -1,0 +1,22 @@
+pkgbase = python-tqdm
+	pkgdesc = Fast, Extensible Progress Meter
+	pkgver = 4.64.1
+	pkgrel = 00
+	url = https://tqdm.github.io
+	arch = any
+	license = MIT
+	license = MPL2
+	depends = python
+	depends = python-setuptools-scm
+	depends = python-numpy
+	depends = python-rich
+	depends = python-requests
+	noextract = tqdm-4.64.1-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/47/bb/849011636c4da2e44f1253cd927cfb20ada4374d8b3a4e425416e84900cc/tqdm-4.64.1-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 88036eafe909de2220fcc20ac57c0005
+	md5sums = 32ce3a03347ee640c95acd2ff0e5c28e
+
+pkgname = python-tqdm
