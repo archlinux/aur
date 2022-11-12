@@ -1,6 +1,6 @@
 pkgbase = rr-multilib
 	pkgdesc = Record and Replay framework: lightweight recording and deterministic debugging
-	pkgver = 5.5.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = rr-multilib
 	provides = rr
 	conflicts = rr
 	options = !strip
-	source = rr-5.5.0.tar.gz::https://github.com/rr-debugger/rr/archive/5.5.0.tar.gz
-	sha1sums = 1957e0f62ecbd3e577d53545ee9f0b632632a5b0
+	source = rr-5.6.0.tar.gz::https://github.com/rr-debugger/rr/archive/5.6.0.tar.gz
+	sha1sums = 9a047cbd1c47ef1585293ba090c5cd2d56519fa6
 
 pkgname = rr-multilib

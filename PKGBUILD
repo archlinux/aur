@@ -3,7 +3,7 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-multilib
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ provides=(rr)
 source=(
 	rr-$pkgver.tar.gz::https://github.com/rr-debugger/rr/archive/${pkgver}.tar.gz
 )
-sha1sums=('1957e0f62ecbd3e577d53545ee9f0b632632a5b0')
+sha1sums=('9a047cbd1c47ef1585293ba090c5cd2d56519fa6')
 
 prepare() {
 	cd rr-$pkgver
