@@ -1,5 +1,5 @@
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=bindtointerface
+pkgname=lib32-bindtointerface
 pkgver=4b03914
 pkgrel=1
 arch=("x86_64")
@@ -11,6 +11,7 @@ sha256sums=('04a74f52923a0d92102802162451efb5bddf9251c9843ef49e3f4decbaf9e819')
 
 build() {
 	gcc \
+	-m32 \
 	-nostartfiles \
 	-fpic \
 	-shared bindToInterface.c \
@@ -20,7 +21,7 @@ build() {
 }
 
 package() {
-	install -Dm644 "./bindToInterface.so" "$pkgdir/usr/lib/bindToInterface.so"
-	ln -s "bindToInterface.so" "$pkgdir/usr/lib/bindtointerface.so"
+	install -Dm644 "./bindToInterface.so" "$pkgdir/usr/lib32/bindToInterface.so"
+	ln -s "bindToInterface.so" "$pkgdir/usr/lib32/bindtointerface.so"
 }
 
