@@ -29,8 +29,8 @@ fi
 UE4desktopFileChecksum="$(sha256sum "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop" | cut -f 1 -d ' ')"
 
 if [ "${UE4desktopFileChecksum}" == "ChecksumPlaceholder" ]; then
-    UE4editorLocation=$(find InstalledLocationPlaceholder -type f -iname 'UnrealEditor')
-    UE4editorPath=$(${UE4editorLocation} | sed 's/UnrealEditor//')
+    UE4editorLocation=$(find InstalledLocationPlaceholder -type f -iname 'UE4Editor')
+    UE4editorPath=$(${UE4editorLocation} | sed 's/UE4Editor//')
     
     sed -i "7c\Exec=${UE4editorLocation} %F" "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop"
     sed -i "14c\Path=${UE4editorPath}" "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop"
