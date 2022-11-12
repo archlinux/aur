@@ -8,7 +8,7 @@ pkgbase = python-stt-model-manager
 	depends = python-pip
 	depends = python-stt
 	provides = stt_model_manager
-	source = python-stt-model-manager-0.0.21::git+https://github.com/coqui-ai/python-stt-model-manager.git
+	source = python-stt-model-manager-0.0.21::git+https://github.com/coqui-ai/stt-model-manager.git
 	sha256sums = SKIP
 
 pkgname = python-stt-model-manager

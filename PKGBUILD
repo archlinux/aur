@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MPL2')
 url="https://github.com/coqui-ai/${_pkgname}"
 depends=('python-pip' 'python-stt')
-source=("${pkgname}-${pkgver}::git+https://github.com/coqui-ai/${pkgname}.git")
+source=("${pkgname}-${pkgver}::git+https://github.com/coqui-ai/${_pkgname}.git")
 sha256sums=('SKIP')
 provides=($_pkgbase)
 
