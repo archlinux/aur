@@ -4,14 +4,14 @@
 _pkgname=PyFxA
 pkgname=python-fxa
 pkgver=0.7.7
-pkgrel=5
+pkgrel=6
 pkgdesc='Python library for interacting with the Firefox Accounts ecosystem'
 arch=('any')
 url='https://github.com/mozilla/PyFxA'
 license=('MPL2')
 depends=('python-browserid' 'python-cryptography' 'python-hawkauthlib' 'python-pyjwt' 'python-requests' 'python-six')
 makedepends=('python-setuptools')
-checkdepends=('python-grequests' 'python-mock' 'python-pyotp' 'python-pytest-cov' 'python-pytest-flake8' 'python-pytest-runner' 'python-responses')
+checkdepends=('python-grequests' 'python-pyotp' 'python-pytest-cov' 'python-pytest-flake8' 'python-pytest-runner' 'python-responses')
 source=("https://github.com/mozilla/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('d5b5afdafb6b42344d49e4e4df0582758df54e00b8d0fa3cbc29433410aa9a6f')
 
