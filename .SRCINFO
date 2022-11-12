@@ -11,6 +11,7 @@ pkgbase = tor-git
 	license = BSD
 	checkdepends = python
 	makedepends = asciidoc
+	makedepends = git
 	depends = openssl
 	depends = libevent
 	depends = libseccomp

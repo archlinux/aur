@@ -20,7 +20,7 @@ backup=('etc/tor/torrc'
         'etc/tor/torrc.d/transparent_proxy.conf')
 
 depends=('openssl' 'libevent' 'libseccomp' 'zstd' 'xz')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'git')
 checkdepends=('python')
 optdepends=('torsocks: allow transparent SOCKS proxying'
             'obfs4proxy: obfuscating pluggable transport proxy'
