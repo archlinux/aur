@@ -1,7 +1,7 @@
 _pkgbase=rasa
 pkgname=python38-rasa
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source machine learning framework to automate text- and voice-based conversations: NLU, dialogue management, connect to Slack, Facebook, and more - Create chatbots and voice assistants"
 arch=('x86_64')
 license=('GNU GPL v3')
@@ -16,4 +16,5 @@ prepare()
 
 package() {
     python3.8 -m pip install --root="$pkgdir" $_pkgbase
+    rm ${pkgdir}/usr/lib/python3.8/site-packages/__pycache__/typing_extensions.cpython-38.pyc
 }
