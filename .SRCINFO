@@ -1,6 +1,6 @@
 pkgbase = r-cager
 	pkgdesc = Analysis of CAGE (Cap Analysis of Gene Expression) sequencing data for precise mapping of transcription start sites and promoterome mining
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CAGEr
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-cager
 	optdepends = r-fantom3and4cage
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAGEr_2.2.0.tar.gz
-	sha256sums = 1cd64f6b045a5e246ae92cd709234c806edfcc25463819df0bd32fe4f4b2fd0d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAGEr_2.4.0.tar.gz
+	sha256sums = e026e29d8f86bf2ba934bb6bf22b290ea833365dd499ebc996d65e31a2928ad1
 
 pkgname = r-cager
