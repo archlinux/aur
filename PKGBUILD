@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=grantlee
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='A string template engine based on the Django template system and written in Qt'
 arch=(x86_64)
@@ -11,8 +11,8 @@ url='https://github.com/steveire/grantlee'
 license=(LGPL2.1)
 depends=(qt5-declarative)
 makedepends=(cmake doxygen graphviz)
-source=(http://downloads.grantlee.org/grantlee-$pkgver.tar.gz{,.asc})
-sha256sums=('8c52cd4b0fa86f2bb0a3627d6bee8286f269cd7122a0115101cdec9441669ff2'
+source=(https://github.com/steveire/grantlee/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.asc})
+sha256sums=('ba288ae9ed37ec0c3622ceb40ae1f7e1e6b2ea89216ad8587f0863d64be24f06'
             'SKIP')
 validpgpkeys=(FCA530E51EE4331C2DF16637D264C7B1D02D6509) # Stephen Kelly <steveire@gmail.com>
 
