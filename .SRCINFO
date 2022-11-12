@@ -1,6 +1,6 @@
 pkgbase = oxp-platform-dkms-git
 	pkgdesc = Linux Driver for One X Player mini AMD
-	pkgver = v0.3.1.r9.gb69178f
+	pkgver = v0.4.1.r0.g415fc08
 	pkgrel = 1
 	url = https://gitlab.com/Samsagax/oxp-platform-dkms
 	arch = x86_64
