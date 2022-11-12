@@ -1,7 +1,7 @@
 pkgbase = bindtointerface
 	pkgdesc = With this program you can bind applications to a specific network interface / network adapter.
 	pkgver = 4b03914
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JsBergbau/BindToInterface
 	arch = x86_64
 	license = GPL
