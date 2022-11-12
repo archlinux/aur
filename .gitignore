@@ -1,0 +1,5 @@
+pkg
+src
+*-git
+*.log
+*.tar.*
