@@ -3,7 +3,7 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=5.0.1161
+pkgver=8.0.10018
 pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
@@ -82,7 +82,7 @@ package() {
     #cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons"
 
     # modify and install desktop file
-    mv "shadow.desktop" "${pkgname}.desktop"
+    mv "shadow-launcher.desktop" "${pkgname}.desktop"
     desktop-file-install \
         --dir="${pkgdir}/usr/share/applications" \
         --set-key="Categories" --set-value="Game;" \
@@ -90,10 +90,13 @@ package() {
         --delete-original \
         "${pkgname}.desktop"
 
+    # Fix binary path
+    mv "${pkgdir}/opt/${pkgname}/shadow-launcher" "${pkgdir}/opt/${pkgname}/shadow"
+
     # remove files that are not needed
     rm "${pkgdir}/opt/${pkgname}/AppRun"
     rm "${pkgdir}/opt/${pkgname}/.DirIcon"
-    rm "${pkgdir}/opt/${pkgname}/shadow.png"
+    rm "${pkgdir}/opt/${pkgname}/shadow-launcher.png"
     rm -r "${pkgdir}/opt/${pkgname}/usr/share"
     rm "${pkgdir}/opt/${pkgname}/usr/lib/libappindicator.so.1"
     rm "${pkgdir}/opt/${pkgname}/usr/lib/libgconf-2.so.4"
