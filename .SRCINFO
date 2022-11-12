@@ -5,9 +5,9 @@ pkgbase = otf-urbanist
 	url = https://github.com/coreyhu/Urbanist
 	arch = any
 	license = custom
-	source = https://github.com/coreyhu/Urbanist/releases/download/v1.310/Urbanist_Font_Family_1.310.zip
+	source = https://github.com/coreyhu/Urbanist/releases/download/v${pkgver}/Urbanist-fonts.zip
 	source = OFL.txt
-	sha256sums = 7b51d9d081931875e03fdeaf51033d01c1cc250a40b02ad67f20e1c4bae782e4
+	sha256sums = 43b9c601884e3d348016444d34c5d55ac3381d18fdbe9644432be50305fa54c3
 	sha256sums = 93b568382826c6f92eda0dc4807d0106b05141fb8348cd63ac996077e8cc47fa
 
 pkgname = otf-urbanist
