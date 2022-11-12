@@ -4,7 +4,7 @@
 # LBRY, Why have you stopped the cool release code names?
 
 pkgname=lbry-app-bin
-pkgver=0.53.6
+pkgver=0.53.7
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 provides=('lbry' 'lbrynet')
 depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
 source=("https://github.com/lbryio/lbry-desktop/releases/download/v$pkgver/LBRY_$pkgver.deb")
-sha512sums=('7c2861dc68e8dcacce0c17b1588d6ce17f5535367c860e28ca2a27104423cbb93aa978c22f6b07be7107ebebd6e99441c343d03c41a61d6e7763894d4cc08da9')
+sha512sums=('fe41af66d8c95d8d834d1ef139a70238da2d698c37a3a429aad86fcff71301e8276522537f27d6f5d12d0cd6eb37fb9cf9ee59dfe5a4f228a00add7388b731d5')
 
 package() {
     install -dm 755 "$pkgdir/usr/bin/"
