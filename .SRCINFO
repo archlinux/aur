@@ -1,0 +1,27 @@
+pkgbase = r-visdat
+	pkgdesc = Preliminary Visualisation of Data
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=visdat
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-glue
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-readr
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-gdtools
+	optdepends = r-knitr
+	optdepends = r-plotly
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/visdat_0.5.3.tar.gz
+	sha256sums = 527c76b6643b8475a58516763ef40238cdc61ec62d2dcf690f7c316b93b878c6
+
+pkgname = r-visdat
