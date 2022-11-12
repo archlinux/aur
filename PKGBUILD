@@ -3,18 +3,18 @@
 pkgname=unreal-tournament-goty-steam
 _pkgname=unreal-tournament-goty
 pkgver=469
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 makedepends=('steamcmd' 'icoutils')
 depends=('lib32-libgl'
          'lib32-libpulse'
          'lib32-sdl')
-source=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c-rc4/OldUnreal-UTPatch469c-Linux-x86.tar.bz2" "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c-rc4/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2" "${_pkgname}.desktop" "${_pkgname}.png")
+source=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c/OldUnreal-UTPatch469c-Linux-x86.tar.bz2" "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2" "${_pkgname}.desktop" "${_pkgname}.png")
 pkgdesc="Unreal Tournament GOTY Linux with data via Steam"
 license=('custom')
 url='https://store.steampowered.com/app/13240/Unreal_Tournament_Game_of_the_Year_Edition/'
-sha256sums=('234854664135415e1007e88e6544acdba047d1f9c0abdc04e2a1baf94a6558a7'
-            '32929372ec4ca540897553320e6d245a0ec395afc51ecbdff295b5dbb8235dff'
+sha256sums=('30978800c100e8c5a20fbc66a04b9e12f843424b3a811b04e6fb8e1b6b5d6543'
+            '4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9'
             '842987c1380e304c87d1b3909f1aa10a732c1206d8083beda448844fe0d6d1ed'
             '69c9c5eb9ff8f6ee5cbfd9df5d16f68461d682fbb15c75a34627eaff2474190e')
 
