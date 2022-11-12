@@ -17,4 +17,5 @@ prepare()
 
 package() {
     python3.8 -m pip install --root="$pkgdir" -U $_pkgbase
+    rm $pkgdir/pip3.10
 }
