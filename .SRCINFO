@@ -1,6 +1,6 @@
 pkgbase = cinelerra-gg-git
 	pkgdesc = Professional video editing and compositing environment
-	pkgver = 2022.09.r1.g5e1bee0d
+	pkgver = 2022.10.r4.g541ee122
 	pkgrel = 1
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = cinelerra-gg-git
 	makedepends = perl-xml-libxml
 	makedepends = perl-xml-parser
 	makedepends = python
+	makedepends = xorg-mkfontdir
+	makedepends = xorg-mkfontscale
 	makedepends = yasm
 	depends = alsa-lib
 	depends = aom

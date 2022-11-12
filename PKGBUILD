@@ -2,7 +2,7 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=cinelerra-gg-git
-pkgver=2022.09.r1.g5e1bee0d
+pkgver=2022.10.r4.g541ee122
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
@@ -12,7 +12,8 @@ depends=(alsa-lib aom dav1d fftw flac glu gtk2 libavc1394
          libdv libiec61883 libpulse libtheora libva libvdpau
          libvorbis libvpx libwebp libxv numactl openexr opus)
 makedepends=(cmake ctags git libxml2 nasm perl-xml-libxml
-             perl-xml-parser python yasm)
+             perl-xml-parser python xorg-mkfontdir
+             xorg-mkfontscale yasm)
 provides=(cinelerra-gg)
 conflicts=(cinelerra-gg cin)
 source=("cinelerra-gg::git://git.cinelerra-gg.org/goodguy/cinelerra.git")
