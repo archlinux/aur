@@ -10,7 +10,7 @@ depends=('python-pip' 'python38-rasa' 'python38-rasa-sdk')
 provides=($_pkgbase)
 
 optin_telemetry() {
-    echo "Setting things right"
+    echo "Opt-in not out."
     python3.8 -m rasa telemetry disable
     echo "type 'rasa telemetry enable' to enable it"
     echo "https://rasa.com/docs/rasa/telemetry/telemetry/"
