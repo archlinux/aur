@@ -33,8 +33,10 @@ If everything worked, the GUI for F5 VPN should be visible. Assuming continuous 
 CLI-Only Alternatives
 ---------------------
 
-* `kayrus/gof5 <https://github.com/kayrus/gof5>`_ (FOSS)
+* `kayrus/gof5 <https://github.com/kayrus/gof5>`_ - FOSS
 
 * `zrhoffman/svpn-login <https://github.com/zrhoffman/svpn-login>`_
 
-* `zrhoffman/f5vpn-login <https://github.com/zrhoffman/f5vpn-login>`_ (FOSS, very slow)
+* `zrhoffman/f5vpn-login <https://github.com/zrhoffman/f5vpn-login>`_ - FOSS, but very slow due to no PPP-over-DTLS
+
+* `openvpn <https://www.infradead.org/openconnect/f5.html>`_ - FOSS (use --cookie-on-stdin for 2FA)
