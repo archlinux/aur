@@ -1,0 +1,16 @@
+pkgbase = dropcode
+	pkgdesc = A simple and lightweight code snippet manager.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/egoist/dropcode
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = rust
+	depends = webkit2gtk
+	depends = gtk3
+	source = dropcode-0.0.7.tar.gz::https://github.com/egoist/dropcode/archive/refs/tags/v0.0.7.tar.gz
+	sha512sums = a741217f2c1a3025770b62928b8ee099de4715c038a2e98124ab1a31c57ef25e02a43adc4a28dc508fe0beff3077e9c71dd15f8e3bacf2084b570f4d6a75bc4b
+
+pkgname = dropcode
