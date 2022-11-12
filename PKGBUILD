@@ -3,7 +3,7 @@
 _pkgname=logNormReg
 _pkgver=0.5-0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='log Normal Linear Regression'
 arch=('any')
