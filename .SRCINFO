@@ -1,0 +1,18 @@
+pkgbase = python-log-symbols
+	pkgdesc = Colored symbols for various log levels for Python
+	pkgver = 0.0.14
+	pkgrel = 00
+	url = https://github.com/manrajgrover/py-log-symbols
+	arch = any
+	license = custom:MIT
+	depends = python
+	depends = python-colorama
+	noextract = log_symbols-0.0.14-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/28/5d/d710c38be68b0fb54e645048fe359c3904cc3cb64b2de9d40e1712bf110c/log_symbols-0.0.14-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = c96132dd4a8a04f46671f26bf595f182
+	md5sums = 04fabb2689c4f94f033f3b8a2088ccb7
+
+pkgname = python-log-symbols
