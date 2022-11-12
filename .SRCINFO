@@ -1,0 +1,11 @@
+pkgbase = python38-rasa
+	pkgdesc = Manage domains like packages.
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/RasaHQ/rasa
+	arch = x86_64
+	license = GNU GPL v3
+	depends = python38-pip
+	provides = python38-rasa
+
+pkgname = python38-rasa
