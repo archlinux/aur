@@ -1,6 +1,6 @@
 pkgbase = r-multigsea
 	pkgdesc = Combining GSEA-based pathway enrichment with multi omics data integration
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multiGSEA
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-multigsea
 	optdepends = r-org.xl.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiGSEA_1.6.0.tar.gz
-	sha256sums = 6bb9fb47ac23062c414fa334628bf61b384e9a20bbce127061d1e27123584a5b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiGSEA_1.8.0.tar.gz
+	sha256sums = f3129ebb203b29c49070a89e6ef2ac866c6e12a21a2e4e9379dbc936ea53d27a
 
 pkgname = r-multigsea
