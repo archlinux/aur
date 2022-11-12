@@ -1,0 +1,26 @@
+pkgbase = r-tableone
+	pkgdesc = Create 'Table 1' to Describe Baseline Characteristics with or without Propensity Score Weights
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tableone
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = r-survey
+	depends = r-e1071
+	depends = r-zoo
+	depends = r-gmodels
+	depends = r-labelled
+	optdepends = r-testthat
+	optdepends = r-Matching
+	optdepends = r-reshape2
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-geepack
+	optdepends = r-lme4
+	optdepends = r-lmerTest
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/tableone_0.13.2.tar.gz
+	sha256sums = b1cf15579abd4240e24435d2d9aad255c839d2a0293e28cb2eef0c808c4727af
+
+pkgname = r-tableone
