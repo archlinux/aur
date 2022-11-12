@@ -2,7 +2,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=6.4.0
+pkgver=6.7.0
 pkgrel=1
 pkgdesc="Python PyPi staging server and release tool"
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
   'python-ruamel-yaml'
   'python-waitress'
   'python-strictyaml')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('devpi-client')
 changelog=CHANGELOG
 source=(
@@ -34,26 +34,32 @@ source=(
   'devpi-server.service'
   'devpi-server.sysusers'
   'devpi-server.tmpfiles')
-sha256sums=('ff2d973a3d2caa8ad0938e68162c482ef128ab02efa4c2d7c9b7425c37f8eb23'
+sha256sums=('7e1199ca34ae2ff738385824f3c4cbe9a498cf27e9c634f2faefb57d051660a8'
             '1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95'
             '4327d0e72b277ef7b05dfb4b3bac6ab4c70d55a96c9ad114a90ebb00c954bd48'
             'bcd2321ff41bebcf08392ca02dbfaa0ac2693eba3432f0e5793ff384753ce0f1')
 
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i '66,67c\],' setup.py
+}
+
 build() {
   cd "$pkgname-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  install -Dm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dvm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dvm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dvm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-  export PYTHONHASHSEED=0
   cd "$pkgname-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -sv "$_site/${pkgname/-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
