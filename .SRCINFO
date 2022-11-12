@@ -1,0 +1,13 @@
+pkgbase = python-dmt
+	pkgdesc = Manage domains like packages.
+	pkgver = 1.4.73
+	pkgrel = 1
+	url = https://gitlab.com/waser-technologies/technologies/listen
+	arch = x86_64
+	license = GNU GPL v3
+	depends = python-pip
+	depends = python38-rasa
+	depends = python38-rasa-sdk
+	provides = python-dmt
+
+pkgname = python-dmt
