@@ -6,6 +6,6 @@ pkgbase = python38-rasa-sdk
 	arch = x86_64
 	license = GNU GPL v3
 	depends = python38-pip
-	provides = python38-rasa-sdk
+	provides = rasa-sdk
 
 pkgname = python38-rasa-sdk
