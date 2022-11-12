@@ -1,7 +1,7 @@
 # Maintainer: ferk <ferkiwi @at gmail dot com>
 
 pkgname=udev-media-automount
-pkgver=41.97334dd
+pkgver=50.4f407cd
 pkgrel=1
 pkgdesc="Automatic mounting of removable devices in /media using simple udev rules"
 arch=('any')
