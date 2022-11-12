@@ -1,35 +1,24 @@
 # Maintainer: Brian Steffens <briansteffens@gmail.com>
+# Maintainer: Lancia Greggori <lanciagreggori@gmail.com>
+
 pkgname=vex
 pkgver=0.0.1
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Executes all permutations of a shell command with a pattern syntax"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/briansteffens/vex"
 license=('GPL')
-groups=()
-depends=()
+depends=('gcc-libs')
 makedepends=("rust" "cargo")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("${pkgname%-*}::git+https://github.com/briansteffens/vex.git")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    cargo build --release
+	cd "${srcdir}/${pkgname}"
+	cargo build --release
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="$pkgdir/" install
 }
