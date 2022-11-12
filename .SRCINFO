@@ -1,0 +1,25 @@
+pkgbase = r-rorcid
+	pkgdesc = Interface to the 'Orcid.org' API
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rorcid
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-crul
+	depends = r-data.table
+	depends = r-fauxpas
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-tibble
+	depends = r-xml2
+	optdepends = r-handlr
+	optdepends = r-httpuv
+	optdepends = r-knitr
+	optdepends = r-rcrossref
+	optdepends = r-testthat
+	optdepends = r-vcr
+	source = https://cran.r-project.org/src/contrib/rorcid_0.7.0.tar.gz
+	sha256sums = f94551147a42ab6579bbfab9c2245aaa466d012fb813664509d2eb89082f1ab4
+
+pkgname = r-rorcid
