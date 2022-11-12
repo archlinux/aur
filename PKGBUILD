@@ -21,7 +21,7 @@ sha512sums=('98798065203c3936cc9f10baafbebc370264c5e34c16df31fb3dcab077296b3dea9
 
 
 package() {
-    cd "screenshot-bash-${pkgver}"
+    cd "screenshot-bash"
 
     install -Dm755 "screenshot-bash" "$pkgdir/usr/bin/screenshot-bash"
     install -Dm755 "upload-bash" "$pkgdir/usr/bin/upload-bash"
