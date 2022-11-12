@@ -1,6 +1,6 @@
 # Maintainer: Martin Kühl <martin.kuehl@posteo.net>
 pkgname=color-scheme-monitor
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="Monitor the system-wide color scheme and adapt unaware applications to it"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mkhl/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=('d6c93093fc68065cfce54fe80415db64c756c28392d0bdcb15aca6a96e6f2efd70e5ef0951e65b4c84b886f31da1f8cf0e97a3f69cf38f38b54059f912499640')
+sha512sums=('1d9f0aec68fa66474951d590ac6d9f5e7dfaea3e8d9405e1f9f2f8444e45c68ea49ab64f9567847bcf38090b9ebad2a93afe94b9c19e96a626f9c64ded3e4ce9')
 validpgpkeys=()
 
 prepare() {
