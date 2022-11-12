@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('cargo')
 conflicts=('playlist-maker-rs')
 provides=('playlist-maker-rs')
-source=("$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-musl.tar.gz"
+source=("$pkgver.tar.gz::$url/releases/download/v$_pkgver/$_pkgname-x86_64-unknown-linux-musl.tar.gz"
         "$_binname.zsh::$rawurl/master/autocompletions/_pl-mker"
 	"$_binname.bash::$rawurl/master/autocompletions/pl-mker.bash"
 	"$_binname.fish::$rawurl/master/autocompletions/pl-mker.fish"
@@ -23,11 +23,6 @@ sha256sums=('c40d0fff8839d4996220302a398a0db1fe696c3274c6e85508bfd82206bab4ce'
 	    '3534b24795e056d03c7fab25730fa9d740923bfab9ab4665edda862d71a41a61'
 	    'a7e60eb195e59f390f8b8d52d75410a2561c6b40bfa5b04d0ebf4556f30e4656'
 )
-
-pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 package() {
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_binname"
