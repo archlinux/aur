@@ -12,7 +12,7 @@ source=("${_pkgname}-${pkgver}.zip::https://github.com/CJ-Chen/TBtools/archive/r
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    'c38bd398e590ca8437fa8267e669c86cdcda541f867cbc8da8b1c61f60b55a90'
+    'de988d0bff4ae73341e618867eae5598bf664d530fc4224b0381a4851038aad0'
     '3c12fbf52a0e3fb96fe62302f6b3938e8e42a393468620091ca7d9259073af13'
 )
 options=(!strip)
