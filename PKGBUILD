@@ -1,10 +1,11 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 
 pkgname=tad-bin
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Desktop application for viewing and analyzing tabular data such as CSV files"
 arch=("x86_64")
+depends=("openssl-1.1")
 url="https://www.tadviewer.com/"
 license=("MIT")
 source=(
@@ -12,7 +13,7 @@ source=(
   "tad"
   "LICENSE"
 )
-sha256sums=('da836d10aa3b3d209a5411c86827a4fa2ee954838a48982b3e58b7f8de56db0f'
+sha256sums=('c929e03157c26ab545322ba715a003e796ce644eb53bfd46009757e214078e77'
             '49bcc24cee42880c79e6a0809b0831ab5453edc4517477853974961ffd033294'
             'a242ac627b07bec45c06620e20a5d046b6b31433cdf0a8011da35760b9a54b0e')
 

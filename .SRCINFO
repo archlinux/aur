@@ -1,14 +1,15 @@
 pkgbase = tad-bin
 	pkgdesc = Desktop application for viewing and analyzing tabular data such as CSV files
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://www.tadviewer.com/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/antonycourtney/tad/releases/download/v0.10.0/tad_0.10.0_amd64.deb
+	depends = openssl-1.1
+	source = https://github.com/antonycourtney/tad/releases/download/v0.10.1/tad_0.10.1_amd64.deb
 	source = tad
 	source = LICENSE
-	sha256sums = da836d10aa3b3d209a5411c86827a4fa2ee954838a48982b3e58b7f8de56db0f
+	sha256sums = c929e03157c26ab545322ba715a003e796ce644eb53bfd46009757e214078e77
 	sha256sums = 49bcc24cee42880c79e6a0809b0831ab5453edc4517477853974961ffd033294
 	sha256sums = a242ac627b07bec45c06620e20a5d046b6b31433cdf0a8011da35760b9a54b0e
 
