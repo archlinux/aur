@@ -1,6 +1,6 @@
 pkgbase = r-scp
 	pkgdesc = Mass Spectrometry-Based Single-Cell Proteomics Data Analysis
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scp
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = r-scp
 	depends = r-mscoreutils
 	depends = r-multiassayexperiment
 	depends = r-qfeatures
-	depends = r-rlang
 	depends = r-s4vectors
 	depends = r-singlecellexperiment
 	depends = r-summarizedexperiment
@@ -28,7 +27,7 @@ pkgbase = r-scp
 	optdepends = r-testthat
 	optdepends = r-uwot
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scp_1.6.0.tar.gz
-	sha256sums = d66b74c9e9413a6ab214edbc6c78e2feb02c6766f4fa80ddb39cdc7cacc1f225
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scp_1.8.0.tar.gz
+	sha256sums = 8eba1090b806fdecbbafea972ac5be85868cd5024e62e99eb4c39f649d444358
 
 pkgname = r-scp

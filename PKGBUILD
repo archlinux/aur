@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scp
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Mass Spectrometry-Based Single-Cell Proteomics Data Analysis'
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
   r-mscoreutils
   r-multiassayexperiment
   r-qfeatures
-  r-rlang
   r-s4vectors
   r-singlecellexperiment
   r-summarizedexperiment
@@ -37,7 +36,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d66b74c9e9413a6ab214edbc6c78e2feb02c6766f4fa80ddb39cdc7cacc1f225')
+sha256sums=('8eba1090b806fdecbbafea972ac5be85868cd5024e62e99eb4c39f649d444358')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
