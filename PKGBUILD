@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netDx
-_pkgver=1.8.0
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Network-based patient classifier'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9491fc38c3424165ae359dc64ef13b94b083057b2650ea7eb5de60f82a30c76c')
+sha256sums=('7595e75d8df5d6d79e81a2a88593dc901116d7d759873e483da0e4fe08cecfcc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
