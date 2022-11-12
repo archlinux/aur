@@ -19,6 +19,7 @@ pkgbase = python-pip-audit
 	depends = python-progress
 	depends = python-resolvelib
 	depends = python-rich
+	depends = python-toml
 	options = !strip
 	source = python-pip-audit-2.4.5.tar.gz::https://github.com/pypa/pip-audit/archive/refs/tags/v2.4.5.tar.gz
 	sha512sums = a4c5193010ff5f6eced4b66b2151b98b107d7a057d9115e97a6dbd298515d60641d51ad881e268ebe41e01fcc496dc863e043c925d216c898d13c190da28f036
