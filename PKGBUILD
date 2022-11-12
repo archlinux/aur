@@ -1,13 +1,13 @@
 # Maintainer: phire <me@phire.cc>
 pkgname=wgnord
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A NordVPN Wireguard (\"NordLynx\") client in POSIX shell"
 arch=('any')
-url="https://git.phire.cc/wgnord"
+url="https://github.com/phirecc/wgnord"
 depends=('jq' 'curl' 'wireguard-tools' 'openresolv')
-source=("https://git.phire.cc/$pkgname/snapshot/$pkgname-$pkgver.tar.gz")
-md5sums=("3d84a9e8d3d7233c4a6fa03266355f00")
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+md5sums=("5153dcc43e828ef5ffca4769c6ce545d")
 backup=(var/lib/wgnord/template.conf)
 
 package() {
