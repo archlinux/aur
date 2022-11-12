@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Manage domains like packages."
 arch=('x86_64')
 license=('GNU GPL v3')
-url="https://gitlab.com/waser-technologies/technologies/listen"
+url="https://gitlab.com/waser-technologies/technologies/dmt"
 depends=('python-pip' 'python38-rasa' 'python38-rasa-sdk')
 provides=($_pkgbase)
 
