@@ -8,6 +8,6 @@ pkgbase = python-dmt
 	depends = python-pip
 	depends = python38-rasa
 	depends = python38-rasa-sdk
-	provides = python-dmt
+	provides = dmt
 
 pkgname = python-dmt
