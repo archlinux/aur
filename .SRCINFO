@@ -1,12 +1,12 @@
 pkgbase = dezoomify-rs
 	pkgdesc = Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others
-	pkgver = 2.9.1
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/lovasoa/dezoomify-rs
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
-	source = dezoomify-rs-2.9.1.tar.gz::https://github.com/lovasoa/dezoomify-rs/archive/refs/tags/v2.9.1.tar.gz
-	sha256sums = 4afa9299a68db7ea0c2de9d52ff0cc7057e5a322222797a0cd2d4f7e9086c64e
+	source = dezoomify-rs-2.9.3.tar.gz::https://github.com/lovasoa/dezoomify-rs/archive/refs/tags/v2.9.3.tar.gz
+	sha256sums = 8025a6b8e4f647495d6fb776277cb9a1d977134c6395ed938bfea356e9a6194c
 
 pkgname = dezoomify-rs
