@@ -1,10 +1,10 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 # Creater: Daniel Mensinger <daniel@mensinger-ka.de>
 pkgname=drogon-git
-pkgver=1.7.1.c5398b2
+pkgver=1.8.2.c5398b2
 pkgrel=1
 pkgdesc='A C++14/17 based HTTP web application framework running on Linux/macOS/Unix'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/an-tao/drogon'
 license=('MIT')
 depends=(mariadb postgresql libpqxx sqlite jsoncpp util-linux c-ares hiredis brotli)
@@ -23,7 +23,7 @@ prepare() {
   cd "$pkgname"
   git submodule init
   git config submodule.trantor.url $srcdir/trantor
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 build() {
-	cd "$pkgname"
+  cd "$pkgname"
   [ -d build ] && rm -rf build
   mkdir build
   cd build
