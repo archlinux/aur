@@ -1,6 +1,6 @@
 # Maintainer: varsity <varsity@duck.com>
 pkgname=hybrid-bar
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 makedepends=('wget')
 depends=('gtk3' 'gtk-layer-shell')
@@ -10,7 +10,7 @@ pkgdesc="A status bar focused on wlroots Wayland compositors - Latest Compiled R
 license=('MIT')
 
 prepare() {
-    wget https://github.com/vars1ty/HybridBar/releases/download/0.3.5/hybrid-bar
+    wget https://github.com/vars1ty/HybridBar/releases/download/0.3.6/hybrid-bar
 }
 
 package() {
