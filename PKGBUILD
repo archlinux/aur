@@ -1,7 +1,7 @@
 # Maintainer: buckket <buckket@cock.li>
 
 pkgname=twtxt
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Decentralised, minimalist microblogging service for hackers."
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/buckket/twtxt"
 depends=("python-dateutil" "python-aiohttp" "python-click" "python-humanize")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('be1195b46c32804f4f5f4fc552da678f6c822c6604c54d9d09348613d687be12')
+sha256sums=('f15e580f8016071448b24048402b939b9e8dec07eabacd84b1f2878d751b71ff')
 
 build() {
   cd ${pkgname}-${pkgver}
