@@ -1,7 +1,7 @@
 pkgbase = python-rtoml
 	pkgdesc = A better TOML library for python implemented in rust.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/rtoml
 	arch = x86_64
 	license = MIT

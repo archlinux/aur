@@ -2,7 +2,7 @@
 
 pkgname=python-rtoml
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A better TOML library for python implemented in rust."
 arch=('x86_64')
 url="https://pypi.org/project/rtoml"
@@ -18,14 +18,14 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 prepare() {
   cd "rtoml-$pkgver"
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked
 }
 
 build() {
   cd "rtoml-$pkgver"
 
   CFLAGS="$CFLAGS -fPIC" \
-    maturin build --frozen --release --target "$CARCH-unknown-linux-gnu"
+    maturin build --frozen --release
 }
 
 package() {
