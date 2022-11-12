@@ -1,12 +1,14 @@
 pkgbase = ghc-cabal-arts
 	pkgdesc = Haskell setup to fix ‘There are files missing in the `dynamic-1.0' package’ (9.4.2 / 3.9).
 	pkgver = 9.4.2
-	pkgrel = 1
-	url = https://github.com/bairyn/cabal/commits/fix-dynamic-deps
+	pkgrel = 2
+	url = https://github.com/bairyn/cabal/commits/fix-dynamic-deps-aur-r2
 	arch = x86_64
 	license = BSD
 	makedepends = ghc
 	makedepends = cabal-install
+	makedepends = ghc-libs
+	makedepends = ghc-static
 	makedepends = bubblewrap-suid
 	depends = libffi
 	provides = ghc

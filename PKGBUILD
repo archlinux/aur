@@ -1,4 +1,4 @@
-#0 vim: noet ft=sh
+# vim: noet ft=sh
 
 # Maintainer: Byron Johnson <byron@byronjohnson.net>
 
@@ -22,14 +22,14 @@ pkgbase=ghc-cabal-arts
 pkgname=ghc-cabal-arts
 #pkgver=9.4.2.0.1
 pkgver=9.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Haskell setup to fix ‘There are files missing in the \`dynamic-1.0' package’ (9.4.2 / 3.9)."
-url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps"
+url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps-aur-r2"
 license=("BSD")
 arch=('x86_64')
 # We probably don't really need to use bubblewrap to do this, but it just makes
 # bootstarpping cabal-install a lot easier.
-makedepends=('ghc' 'cabal-install' 'bubblewrap-suid')
+makedepends=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static' 'bubblewrap-suid')
 depends=('libffi')
 conflicts=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 provides=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
