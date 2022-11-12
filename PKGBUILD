@@ -3,7 +3,7 @@ _pkgname=playlist-maker
 _binname=pl-mker
 _pkgver=0.2.0
 pkgname=playlist-maker-rs
-pkgver=0.2.0.r0.gd688126
+pkgver=$_pkgver
 pkgrel=1
 pkgdesc='M3u playlist creator that uses query-like statments to find the requested songs, implemented in Rust'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=("$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
 sha256sums=('13c0599da6ac0053ebd41e42811e05da6cfcc03179e19f03c8d9a71a6988ca18')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname-$_pkgver"
+  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
