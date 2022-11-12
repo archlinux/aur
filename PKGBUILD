@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-	install -Dm644 "./bindToInterface.so" "$pkgdir/usr/lib/bindToInterface.so"
+	install -Dm755 "./bindToInterface.so" "$pkgdir/usr/lib/bindToInterface.so"
 	ln -s "bindToInterface.so" "$pkgdir/usr/lib/bindtointerface.so"
 }
 
