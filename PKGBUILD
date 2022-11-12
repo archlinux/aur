@@ -5,13 +5,13 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live-git
 pkgdesc="Ledger Live - Desktop (Git version)"
-pkgver=2.49.2.r0.g57f78e6077
-pkgrel=2
+pkgver=2.49.2.r0.g77e1ae4acf
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'python>=3.5' 'npm' 'pnpm' 'nodejs>=16' 'nodejs<19' 'node-gyp')
+makedepends=('git' 'python>=3.5' 'npm' 'node-gyp' 'fnm' 'pnpm')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live')
 source=("${pkgname}::git+$url#branch=main")
@@ -21,6 +21,9 @@ build() {
   cd ${pkgname}
   export GIT_REVISION=$pkgver
   export JOBS=max
+
+  eval "$(fnm env --shell bash)"
+  fnm use --install-if-missing
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
   pnpm desktop build
