@@ -8,9 +8,9 @@ pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-makedepends=('yarn' 'nodejs<17')
+makedepends=('yarn' 'fnm')
 provides=('cro-chain-desktop')
 conflicts=('cro-chain-desktop-bin')
 source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v${pkgver}.tar.gz"
@@ -21,6 +21,8 @@ sha512sums=('5b51bdf52d5b25a329746668e6874267586703fa057c9502f0434ca00376ded7c1b
 build() {
   cd ${_pkgbin}-${pkgver}
 
+  eval "$(fnm env --shell bash)"
+  fnm use --install-if-missing
   yarn install
   yarn electron:build
 }
