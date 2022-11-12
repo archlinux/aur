@@ -1,0 +1,16 @@
+pkgbase = r-biocbaseutils
+	pkgdesc = General utility functions for developing Bioconductor packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BiocBaseUtils
+	arch = any
+	license = Artistic2.0
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocBaseUtils_1.0.0.tar.gz
+	sha256sums = c9cc62b5f96e51ea8f90cffe3123ffa28604e287c7306746c606a39e5b8cda5c
+
+pkgname = r-biocbaseutils
