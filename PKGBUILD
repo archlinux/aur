@@ -12,14 +12,14 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.10.3
-pkgrel=4
+pkgver=1.11.1
+pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('x86_64')
 license=('GPL2')
 depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl' 'hicolor-icon-theme')
-makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
+makedepends=('libxt' 'cmake' 'qt5-base' 'qt5-tools' 'gmock' 'gtest')
 optdepends=('qt5-base: gui support')
 source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy-core/archive/v${pkgver}-stable.tar.gz
         use-system-libs.patch
@@ -28,7 +28,7 @@ source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy-core/archiv
         fix-test-build.patch
         synergys.socket
         synergys.service)
-sha512sums=('01497fe362395dd9d26d44f7468ca5c01ee7cd2f590b6c28a67e094f969fdca3b8f78570cca4f188c16fc2575ca895daf8d6ffd07378964ed01da1540db05c8e'
+sha512sums=('54c84596c543eb799ba9244f100d67045b159ec5ef622375fb5b763144b211833999c05f6d5dae42086e28a90b3a87a9d3fc7d7469d4d900f2e4ad9b9a48e0a2'
             '6ed5384ec46e991958f48051c66b87febfb457a748cea48909f87a088c804907f480f123620a0a5921e281ca9871e251de8b7dd5803ffe8566841f68f396c160'
             'b8347b803a7baaeeab75e55778314298fc69e15ccda154a8622b4697c3a3e7d6ba51cb156f06c6b289c41cb0892be7fed5ce49591531ed1ef18fa3a1ec8a7d6d'
             '89b29994f238013393b90ad628d781ea6ea1d46c33819be561f031cc0790ef7f3860faaa2803e1459ed3c14affb749ea3bab6b15598c760424c8063195cb56a6'
