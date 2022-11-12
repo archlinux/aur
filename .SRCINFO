@@ -1,13 +1,13 @@
 pkgbase = calibre-plugin-goodreads
 	pkgdesc = Downloads metadata and covers from Goodreads - Calibre Plugin
-	pkgver = 1.5.3
+	pkgver = 1.7.1
 	pkgrel = 1
-	url = https://www.mobileread.com/forums/showthread.php?t=130638
+	url = https://github.com/kiwidude68/calibre_plugins/tree/main/goodreads
 	arch = any
-	license = custom
-	depends = calibre>=0.8.1
-	noextract = Goodreads-1.5.3.zip
-	source = Goodreads-1.5.3.zip::https://plugins.calibre-ebook.com/130638.zip
-	sha256sums = 757ed8c90c940e3f676ac5c46539c1d895e8654c9744c98de504ee40bde2ba29
+	license = GPL3
+	depends = calibre>=2.0.0
+	noextract = goodreads-v1.7.1.zip
+	source = https://github.com/kiwidude68/calibre_plugins/releases/download/goodreads-v1.7.1/goodreads-v1.7.1.zip
+	sha256sums = 70c6bddfd7575f4f77ec7e4bed0fcd9bea0c64bbfee87fcffdde490caaa1f292
 
 pkgname = calibre-plugin-goodreads
