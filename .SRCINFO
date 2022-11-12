@@ -1,7 +1,7 @@
 pkgbase = ludusavi
 	pkgdesc = Backup tool for PC game saves
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtkennerly/ludusavi
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = ludusavi
 	depends = gcc-libs
 	depends = libxcb
 	depends = fontconfig
-	depends = ttf-material-design-icons
 	options = !lto
 	source = ludusavi-0.15.0.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.15.0.tar.gz
 	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.15.0/ludusavi-v0.15.0-legal.zip
