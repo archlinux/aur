@@ -1,5 +1,5 @@
 pkgbase = python38-rasa
-	pkgdesc = Manage domains like packages.
+	pkgdesc = Open source machine learning framework to automate text- and voice-based conversations: NLU, dialogue management, connect to Slack, Facebook, and more - Create chatbots and voice assistants
 	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/RasaHQ/rasa
