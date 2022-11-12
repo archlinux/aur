@@ -23,10 +23,8 @@ pkgbase = raze-git
 	provides = raze
 	conflicts = raze
 	source = Raze::git+https://github.com/coelckers/Raze
-	source = 0001-Fix-file-paths.patch
 	source = raze.desktop
 	sha256sums = SKIP
-	sha256sums = d8960cba3a0596a6e52072b9bd8f38e92d51be0315fcb53f3cb9c72da4e87081
 	sha256sums = ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8
 
 pkgname = raze-git
