@@ -1,0 +1,190 @@
+diff -aur behave-1.2.7.dev2/py.requirements/testing.txt behave-1.2.7.dev2.new/py.requirements/testing.txt
+--- behave-1.2.7.dev2/py.requirements/testing.txt	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/py.requirements/testing.txt	2022-11-12 17:39:45.594047170 +0100
+@@ -8,8 +8,6 @@
+ pytest >= 5.0; python_version >= '3.0'
+ 
+ pytest-html >= 1.19.0,<2.0
+-mock  <  4.0;   python_version <  '3.6'
+-mock  >= 4.0;   python_version >= '3.6'
+ PyHamcrest >= 2.0.2; python_version >= '3.0'
+ PyHamcrest <  2.0;   python_version <  '3.0'
+ 
+diff -aur behave-1.2.7.dev2/setup.py behave-1.2.7.dev2.new/setup.py
+--- behave-1.2.7.dev2/setup.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/setup.py	2022-11-12 17:39:16.049979987 +0100
+@@ -90,7 +90,6 @@
+         "pytest <  5.0; python_version <  '3.0'", # >= 4.2
+         "pytest >= 5.0; python_version >= '3.0'",
+         "pytest-html >= 1.19.0",
+-        "mock >= 1.1",
+         "PyHamcrest >= 1.9",
+         # -- HINT: path.py => path (python-install-package was renamed for python3)
+         "path.py >= 11.5.0; python_version <  '3.5'",
+diff -aur behave-1.2.7.dev2/tests/api/_test_async_step34.py behave-1.2.7.dev2.new/tests/api/_test_async_step34.py
+--- behave-1.2.7.dev2/tests/api/_test_async_step34.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/api/_test_async_step34.py	2022-11-12 17:38:20.905252662 +0100
+@@ -9,7 +9,7 @@
+ from behave._stepimport import use_step_import_modules
+ from behave.runner import Context, Runner
+ import sys
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ from .testing_support import StopWatch, SimpleStepContainer
+diff -aur behave-1.2.7.dev2/tests/issues/test_issue0619.py behave-1.2.7.dev2.new/tests/issues/test_issue0619.py
+--- behave-1.2.7.dev2/tests/issues/test_issue0619.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/issues/test_issue0619.py	2022-11-12 17:38:20.905252662 +0100
+@@ -19,7 +19,7 @@
+ 
+ from __future__ import absolute_import
+ from behave.runner import Context, scoped_context_layer
+-from mock import Mock
++from unittest.mock import Mock
+ 
+ 
+ def test_issue__getattr_with_protected_unknown_context_attribute_raises_no_error():
+diff -aur behave-1.2.7.dev2/tests/issues/test_issue0767.py behave-1.2.7.dev2.new/tests/issues/test_issue0767.py
+--- behave-1.2.7.dev2/tests/issues/test_issue0767.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/issues/test_issue0767.py	2022-11-12 17:38:20.905252662 +0100
+@@ -14,7 +14,7 @@
+ This seems to be an oversight.
+ """
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ from behave.fixture import fixture, use_fixture_by_tag
+ from behave.runner import Context
+ 
+diff -aur behave-1.2.7.dev2/tests/unit/reporter/test_summary.py behave-1.2.7.dev2.new/tests/unit/reporter/test_summary.py
+--- behave-1.2.7.dev2/tests/unit/reporter/test_summary.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/reporter/test_summary.py	2022-11-12 17:38:20.905252662 +0100
+@@ -3,7 +3,7 @@
+ from __future__ import absolute_import, division
+ import sys
+ import pytest
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from behave.model import ScenarioOutline, Scenario
+ from behave.model_core import Status
+ from behave.reporter.summary import SummaryReporter, format_summary
+diff -aur behave-1.2.7.dev2/tests/unit/test_capture.py behave-1.2.7.dev2.new/tests/unit/test_capture.py
+--- behave-1.2.7.dev2/tests/unit/test_capture.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_capture.py	2022-11-12 17:38:20.905252662 +0100
+@@ -6,7 +6,7 @@
+ from __future__ import absolute_import, print_function
+ import sys
+ from behave.capture import Captured, CaptureController
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ # -----------------------------------------------------------------------------
+diff -aur behave-1.2.7.dev2/tests/unit/test_context_cleanups.py behave-1.2.7.dev2.new/tests/unit/test_context_cleanups.py
+--- behave-1.2.7.dev2/tests/unit/test_context_cleanups.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_context_cleanups.py	2022-11-12 17:38:20.908586081 +0100
+@@ -13,7 +13,7 @@
+ from __future__ import print_function
+ from behave.runner import Context, scoped_context_layer
+ from contextlib import contextmanager
+-from mock import Mock, NonCallableMock
++from unittest.mock import Mock, NonCallableMock
+ import pytest
+ 
+ 
+diff -aur behave-1.2.7.dev2/tests/unit/test_fixture.py behave-1.2.7.dev2.new/tests/unit/test_fixture.py
+--- behave-1.2.7.dev2/tests/unit/test_fixture.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_fixture.py	2022-11-12 17:38:20.908586081 +0100
+@@ -12,7 +12,7 @@
+ from behave.runner import Context, CleanupError, scoped_context_layer
+ from behave._types import Unknown
+ import pytest
+-from mock import Mock
++from unittest.mock import Mock
+ import six
+ 
+ 
+diff -aur behave-1.2.7.dev2/tests/unit/test_formatter.py behave-1.2.7.dev2.new/tests/unit/test_formatter.py
+--- behave-1.2.7.dev2/tests/unit/test_formatter.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_formatter.py	2022-11-12 17:38:20.908586081 +0100
+@@ -7,7 +7,7 @@
+ import unittest
+ import six
+ import pytest
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from behave.formatter._registry import make_formatters
+ from behave.formatter import pretty
+ from behave.formatter.base import StreamOpener
+diff -aur behave-1.2.7.dev2/tests/unit/test_log_capture.py behave-1.2.7.dev2.new/tests/unit/test_log_capture.py
+--- behave-1.2.7.dev2/tests/unit/test_log_capture.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_log_capture.py	2022-11-12 17:38:20.908586081 +0100
+@@ -1,6 +1,6 @@
+ from __future__ import absolute_import, with_statement
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ from behave.log_capture import LoggingCapture
+ from six.moves import range
+ 
+diff -aur behave-1.2.7.dev2/tests/unit/test_matchers.py behave-1.2.7.dev2.new/tests/unit/test_matchers.py
+--- behave-1.2.7.dev2/tests/unit/test_matchers.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_matchers.py	2022-11-12 17:38:20.908586081 +0100
+@@ -1,7 +1,7 @@
+ # -*- coding: UTF-8 -*-
+ from __future__ import absolute_import, with_statement
+ import pytest
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ import parse
+ from behave.matchers import Match, Matcher, ParseMatcher, RegexMatcher, \
+     SimplifiedRegexMatcher, CucumberRegexMatcher
+diff -aur behave-1.2.7.dev2/tests/unit/test_model.py behave-1.2.7.dev2.new/tests/unit/test_model.py
+--- behave-1.2.7.dev2/tests/unit/test_model.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_model.py	2022-11-12 17:38:20.908586081 +0100
+@@ -4,7 +4,7 @@
+ from __future__ import absolute_import, print_function, with_statement
+ import unittest
+ import pytest
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ import six
+ from six.moves import range     # pylint: disable=redefined-builtin
+ from six.moves import zip       # pylint: disable=redefined-builtin
+diff -aur behave-1.2.7.dev2/tests/unit/test_runner.py behave-1.2.7.dev2.new/tests/unit/test_runner.py
+--- behave-1.2.7.dev2/tests/unit/test_runner.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_runner.py	2022-11-12 17:38:20.908586081 +0100
+@@ -12,7 +12,7 @@
+ import six
+ from six import StringIO
+ import pytest
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from behave import runner_util
+ from behave.model import Table
+ from behave.step_registry import StepRegistry
+diff -aur behave-1.2.7.dev2/tests/unit/test_step_registry.py behave-1.2.7.dev2.new/tests/unit/test_step_registry.py
+--- behave-1.2.7.dev2/tests/unit/test_step_registry.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_step_registry.py	2022-11-12 17:38:20.908586081 +0100
+@@ -1,7 +1,7 @@
+ # -*- coding: UTF-8 -*-
+ # pylint: disable=unused-wildcard-import
+ from __future__ import absolute_import, with_statement
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from six.moves import range     # pylint: disable=redefined-builtin
+ from behave import step_registry
+ 
+diff -aur behave-1.2.7.dev2/tests/unit/test_tag_matcher.py behave-1.2.7.dev2.new/tests/unit/test_tag_matcher.py
+--- behave-1.2.7.dev2/tests/unit/test_tag_matcher.py	2021-09-20 16:13:59.000000000 +0200
++++ behave-1.2.7.dev2.new/tests/unit/test_tag_matcher.py	2022-11-12 17:38:20.908586081 +0100
+@@ -8,7 +8,7 @@
+ """
+ 
+ from __future__ import absolute_import
+-from mock import Mock
++from unittest.mock import Mock
+ from unittest import TestCase
+ import warnings
+ import pytest
