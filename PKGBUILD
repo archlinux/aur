@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=bindtointerface
 pkgver=4b03914
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 pkgdesc="With this program you can bind applications to a specific network interface / network adapter."
 url="https://github.com/JsBergbau/BindToInterface"
