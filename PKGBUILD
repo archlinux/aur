@@ -3,14 +3,14 @@
 
 pkgname=python-influxdb
 pkgver=5.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python client for InfluxDB"
 arch=('any')
 url="https://github.com/influxdata/influxdb-python/"
 license=('MIT')
 depends=('python' 'python-requests' 'python-dateutil' 'python-six' 'python-pytz' 'python-msgpack')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'python-mock' 'python-requests-mock' 'python-pandas' 'influxdb')
+checkdepends=('python-nose' 'python-requests-mock' 'python-pandas' 'influxdb')
 optdepends=('influxdb')
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb-python/archive/v$pkgver.tar.gz)
