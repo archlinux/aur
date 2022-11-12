@@ -1,6 +1,6 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayrbar
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="swayrbar is a status command for swaybar implementing the swaybar-procotol."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 
-sha256sums=('47a66ba653f24211d443f299b03aaa536771af3c9de6e5115c6238aaf7a0a82d')
+sha256sums=('3176d63f27952f83be2f0dba232096ac5eb12a50f0b665bf96bda22864f8652d')
 
 build() {
    cd $pkgname-$pkgver
