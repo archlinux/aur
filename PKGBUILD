@@ -3,15 +3,15 @@
 
 pkgname=urbit
 pkgver=1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="An operating function"
 arch=('x86_64')
 url="https://github.com/urbit/urbit"
 license=('MIT')
 conflicts=('urbit-git')
-source=($pkgname-$pkgver-$pkgrel::https://bootstrap.urbit.org/vere/live/$pkgver/vere-v$pkgver-x86_64-linux)
+source=(https://bootstrap.urbit.org/vere/live/$pkgver/vere-v$pkgver-x86_64-linux)
 sha256sums=('8d0052fd7ff7a6137f0746c38485ad5d897df6538407bfd2af9120d89f80b882')
 
 package() {
-  install -Dm755 "${srcdir}/$pkgname-$pkgver-$pkgrel" "$pkgdir/usr/bin/urbit"
+  install -Dm755 "${srcdir}/vere-v$pkgver-x86_64-linux" "$pkgdir/usr/bin/urbit"
 }
