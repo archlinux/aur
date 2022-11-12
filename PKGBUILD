@@ -2,33 +2,33 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LowMACA
-_pkgver=1.26.2
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.2
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='LowMACA - Low frequency Mutation Analysis via Consensus Alignment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
+  clustal-omega
+  ghostscript
+  perl
+  perl-lwp-protocol-https
+  perl-xml-simple
   r
   r-biocparallel
   r-biostrings
   r-cbioportaldata
-  r-cgdsr
   r-data.table
   r-gridbase
   r-httr
   r-lowmacaannotation
   r-motifstack
+  r-plyr
   r-rcolorbrewer
   r-reshape2
   r-stringr
-  ghostscript
-  perl
-  perl-lwp-protocol-https
-  perl-xml-simple
-  clustal-omega
 )
 optdepends=(
   r-biocstyle
@@ -36,7 +36,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a19495a3847ca2eb680576a71fd77a039385baab2eb659e241c644ee1f3ddd46')
+sha256sums=('1b37fd41e3a41169d52cd5164972d3455c4d914bedfa5ccc54fcebf8fb18a248')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
