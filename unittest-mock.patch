@@ -1,0 +1,36 @@
+diff -aur PyBrowserID-0.14.0/browserid/tests/test_supportdoc.py PyBrowserID-0.14.0.new/browserid/tests/test_supportdoc.py
+--- PyBrowserID-0.14.0/browserid/tests/test_supportdoc.py	2018-01-11 22:31:19.000000000 +0100
++++ PyBrowserID-0.14.0.new/browserid/tests/test_supportdoc.py	2022-11-12 18:02:07.879824154 +0100
+@@ -1,7 +1,7 @@
+ import json
+ import socket
+ 
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from requests.exceptions import RequestException
+ 
+ from browserid.supportdoc import fetch_support_document, SupportDocumentManager
+diff -aur PyBrowserID-0.14.0/browserid/tests/test_verifiers.py PyBrowserID-0.14.0.new/browserid/tests/test_verifiers.py
+--- PyBrowserID-0.14.0/browserid/tests/test_verifiers.py	2018-01-11 22:31:19.000000000 +0100
++++ PyBrowserID-0.14.0.new/browserid/tests/test_verifiers.py	2022-11-12 18:02:02.519684436 +0100
+@@ -5,7 +5,7 @@
+ import time
+ import warnings
+ 
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ 
+ import browserid
+ from browserid.tests.support import (patched_supportdoc_fetching,
+diff -aur PyBrowserID-0.14.0/setup.py PyBrowserID-0.14.0.new/setup.py
+--- PyBrowserID-0.14.0/setup.py	2018-01-11 22:31:19.000000000 +0100
++++ PyBrowserID-0.14.0.new/setup.py	2022-11-12 18:01:35.965654261 +0100
+@@ -13,7 +13,7 @@
+ 
+ requires = ['requests']
+ 
+-tests_require = requires + ['mock']
++tests_require = requires
+ if sys.version_info < (2, 7):
+     tests_require.append("unittest2")
+ 
