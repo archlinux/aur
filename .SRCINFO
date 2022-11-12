@@ -5,6 +5,7 @@ pkgbase = lib32-bindtointerface
 	url = https://github.com/JsBergbau/BindToInterface
 	arch = x86_64
 	license = GPL
+	makedepends = lib32-glibc
 	source = https://raw.githubusercontent.com/JsBergbau/BindToInterface/4b039146016d8fbd3bc3e8e5df16eb10ba03c397/bindToInterface.c
 	sha256sums = 04a74f52923a0d92102802162451efb5bddf9251c9843ef49e3f4decbaf9e819
 
