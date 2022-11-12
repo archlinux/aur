@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ANCOMBC
-_pkgver=1.6.4
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.6.4
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Microbiome differential abudance and correlation analyses with bias correction'
 arch=('any')
@@ -20,6 +20,7 @@ depends=(
   r-energy
   r-foreach
   r-hmisc
+  r-lme4
   r-lmertest
   r-magrittr
   r-mia
@@ -32,6 +33,7 @@ depends=(
   r-summarizedexperiment
   r-tibble
   r-tidyr
+  r-treesummarizedexperiment
 )
 optdepends=(
   r-caret
@@ -43,7 +45,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff5e80929cdbf6beb1073a6f5e008e2d2d8bdaccf5f65635b7fccf6d96b9710b')
+sha256sums=('a6a26e041dc13f0e207583556369b0ce125984ef64d140296bc6e8214ddc9faf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
