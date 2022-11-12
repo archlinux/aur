@@ -4,7 +4,7 @@
 # Original Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Original Maintainer: dront78 <dront78@gmail.com>
 pkgname=systemtap
-pkgver=4.7
+pkgver=4.8
 pkgrel=1
 pkgdesc="Infrastructure to simplify the gathering of information about the running Linux system"
 url="http://sourceware.org/systemtap/"
@@ -16,7 +16,7 @@ optdepends=('sqlite3: for storing results in a database')
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.sig"
         )
-sha512sums=('7d7c213dc4f7c5430f81763668da21403fbc351d1701b1096eb1ad233e3f0325e35f01dfd0a33e75f277b26fdde88c46d42dd32e32e4d4f27a45d53e2dd0f831'
+sha512sums=('fdcbc48ba17b2155c1419d99147a4cfbee2e69db945bfd0e6881b71ab11165bd23ea7ce9456856ae36807fb18f9934880a6b7c44456b63833ea260038744d9f2'
             'SKIP')
 install='systemtap.install'
 # Note, you need to run:

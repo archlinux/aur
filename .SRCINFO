@@ -1,6 +1,6 @@
 pkgbase = systemtap
 	pkgdesc = Infrastructure to simplify the gathering of information about the running Linux system
-	pkgver = 4.7
+	pkgver = 4.8
 	pkgrel = 1
 	url = http://sourceware.org/systemtap/
 	install = systemtap.install
@@ -15,12 +15,12 @@ pkgbase = systemtap
 	depends = python
 	depends = cpio
 	optdepends = sqlite3: for storing results in a database
-	source = systemtap-4.7.tar.gz::https://sourceware.org/systemtap/ftp/releases/systemtap-4.7.tar.gz
-	source = systemtap-4.7.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/systemtap-4.7.tar.gz.sig
+	source = systemtap-4.8.tar.gz::https://sourceware.org/systemtap/ftp/releases/systemtap-4.8.tar.gz
+	source = systemtap-4.8.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/systemtap-4.8.tar.gz.sig
 	validpgpkeys = F75E6545B9F8AA15AA932A444DE16D68FDBFFFB8
 	validpgpkeys = 5D38116FA4D3A7CC77E378D37E83610126DCC2E8
 	validpgpkeys = 159B0DF71150B8A8539A8802D7C256443CC637CA
-	sha512sums = 7d7c213dc4f7c5430f81763668da21403fbc351d1701b1096eb1ad233e3f0325e35f01dfd0a33e75f277b26fdde88c46d42dd32e32e4d4f27a45d53e2dd0f831
+	sha512sums = fdcbc48ba17b2155c1419d99147a4cfbee2e69db945bfd0e6881b71ab11165bd23ea7ce9456856ae36807fb18f9934880a6b7c44456b63833ea260038744d9f2
 	sha512sums = SKIP
 
 pkgname = systemtap
