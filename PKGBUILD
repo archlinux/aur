@@ -61,8 +61,8 @@ _minor=0
 #_subversion=1
 _srcname=linux-pf
 pkgbase=linux-pf
-_unpatched_sublevel=7
-_pfrel=4
+_unpatched_sublevel=8
+_pfrel=5
 _kernelname=pf
 _projectcpatchname=prjc_v5.15-r1.patch
 _basekernel=${_major}.${_minor}.${_unpatched_sublevel}
@@ -99,8 +99,8 @@ source=("linux-pf::git+https://codeberg.org/thaodan/linux.git#tag=v${_basekernel
         "60-linux.hook"
        )
 sha256sums=('SKIP'
-            '30fc2e55d0a4393bc8d8002901e4193a867243bc2e03043a426b7cea112834d6'
-            '68224090bb850c91d0c86646008283bdbea58ba13129535a4bf2266d115be180'
+            '45e62e567f4e0aefa54a81c972eb63a5fccad52ede6fb7356eccf382717006f2'
+            '70813abfeb14d504ec58ad3d8785346389c4823dad9be7eb0d9ad39ca0866432'
             'f016df0b9651b83bc72f955ca596b6a3d325b3118026a397ba36033c8026c86d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -597,7 +597,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=('pahole')
   # Depend on variant specific tools and headers for external modules
-  depends=('linux-pf-headers-variant')
+  depends=("linux-pf-headers-variant=$pkgver")
 
   cd "${srcdir}/${_srcname}"
   local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
