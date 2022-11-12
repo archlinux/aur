@@ -10,7 +10,7 @@ pkgbase = tbtools
 	options = !strip
 	source = TBtools-1.098775.zip::https://github.com/CJ-Chen/TBtools/archive/refs/tags/1.098775.zip
 	source = TBtools.desktop
-	sha256sums = c38bd398e590ca8437fa8267e669c86cdcda541f867cbc8da8b1c61f60b55a90
+	sha256sums = de988d0bff4ae73341e618867eae5598bf664d530fc4224b0381a4851038aad0
 	sha256sums = 3c12fbf52a0e3fb96fe62302f6b3938e8e42a393468620091ca7d9259073af13
 
 pkgname = tbtools
