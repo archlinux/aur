@@ -1,18 +1,21 @@
 pkgbase = wemeet-bin
 	pkgdesc = Tencent Video Conferencing, tencent meeting 腾讯会议
 	pkgver = 3.11.0.402
-	pkgrel = 1
+	pkgrel = 2
 	url = https://source.meeting.qq.com/download-center.html
 	arch = x86_64
+	arch = aarch64
 	license = unknown
 	makedepends = patchelf
 	optdepends = bubblewrap: Fix abnormal text color in dark mode.
 	provides = wemeet
 	provides = tencent-meeting
-	source = wemeet-3.11.0.402-x86_64.deb::https://updatecdn.meeting.qq.com/cos/9b74d4127a16a011db8cb6300fa5fbc9/TencentMeeting_0300000000_3.11.0.402_x86_64_default.publish.deb
 	source = wemeet.sh
-	sha512sums = 6b4a5a5499fd8a92dbf86ae04990434b3a7ff2ade7d768dbe70dd3f60e347c599281e1aed211673a3a7986f5cb7a014abefec0c859e087c291286467bf8fbe73
 	sha512sums = e67d6b8fdd9bd055ba8c2177aca884d803a2473fcfe9faf9b23e5bfd4152115814be066709db1e1dbf62917a36aa99693c5ebd8f23f2858950a3f3b98d6b8136
+	source_x86_64 = wemeet-3.11.0.402-x86_64.deb::https://updatecdn.meeting.qq.com/cos/9b74d4127a16a011db8cb6300fa5fbc9/TencentMeeting_0300000000_3.11.0.402_x86_64_default.publish.deb
+	sha512sums_x86_64 = 6b4a5a5499fd8a92dbf86ae04990434b3a7ff2ade7d768dbe70dd3f60e347c599281e1aed211673a3a7986f5cb7a014abefec0c859e087c291286467bf8fbe73
+	source_aarch64 = wemeet-3.11.0.402-aarch64.deb::https://updatecdn.meeting.qq.com/cos/ce5d25cc8e8aae8ddd19295bc3b00d5e/TencentMeeting_0300000000_3.11.0.402_arm64_default.publish.deb
+	sha512sums_aarch64 = 534657987d8030c0798731d72fade34c40a5863f4dcd289423eb0509115e290ad5507616c19d86e76c25ae5ea82272fe167ef45599f0ad1433531ff72f74ce78
 
 pkgname = wemeet-bin
 	depends = qt5-x11extras

@@ -5,19 +5,22 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=3.11.0.402
-_md5=9b74d4127a16a011db8cb6300fa5fbc9
-pkgrel=1
+_x86_md5=9b74d4127a16a011db8cb6300fa5fbc9
+_arm_md5=ce5d25cc8e8aae8ddd19295bc3b00d5e
+pkgrel=2
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('unknown')
 url="https://source.meeting.qq.com/download-center.html"
-source=("${_pkgname}-${pkgver}-${arch}.deb::https://updatecdn.meeting.qq.com/cos/${_md5}/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
-"${_pkgname}".sh
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://updatecdn.meeting.qq.com/cos/${_x86_md5}/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
 )
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://updatecdn.meeting.qq.com/cos/${_arm_md5}/TencentMeeting_0300000000_${pkgver}_arm64_default.publish.deb")
+source=("${_pkgname}".sh)
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
-sha512sums=('6b4a5a5499fd8a92dbf86ae04990434b3a7ff2ade7d768dbe70dd3f60e347c599281e1aed211673a3a7986f5cb7a014abefec0c859e087c291286467bf8fbe73'
-            'e67d6b8fdd9bd055ba8c2177aca884d803a2473fcfe9faf9b23e5bfd4152115814be066709db1e1dbf62917a36aa99693c5ebd8f23f2858950a3f3b98d6b8136')
+sha512sums=('e67d6b8fdd9bd055ba8c2177aca884d803a2473fcfe9faf9b23e5bfd4152115814be066709db1e1dbf62917a36aa99693c5ebd8f23f2858950a3f3b98d6b8136')
+sha512sums_x86_64=('6b4a5a5499fd8a92dbf86ae04990434b3a7ff2ade7d768dbe70dd3f60e347c599281e1aed211673a3a7986f5cb7a014abefec0c859e087c291286467bf8fbe73')
+sha512sums_aarch64=('534657987d8030c0798731d72fade34c40a5863f4dcd289423eb0509115e290ad5507616c19d86e76c25ae5ea82272fe167ef45599f0ad1433531ff72f74ce78')
 
 prepare(){
     tar xpf data.tar.xz -C ${srcdir}
