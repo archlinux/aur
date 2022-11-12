@@ -1,7 +1,7 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 
 pkgname=lite-xl-luajit-git
-pkgver=2.1.0.r1.b87afce
+pkgver=2.1.0.r2054.00f9747
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua (luajit build)'
 arch=('x86_64')
@@ -30,6 +30,7 @@ prepare() {
 pkgver() {
   # git describe --tags --long --exclude 'testing*' | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
   V=$(meson introspect --projectinfo _build | jq -r '.version')
+  cd ${pkgname}
   CNT=$(git rev-list --count HEAD)
   H=$(git rev-parse --short HEAD)
   echo ${V}.r${CNT}.${H}

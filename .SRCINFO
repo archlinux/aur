@@ -1,6 +1,6 @@
 pkgbase = lite-xl-luajit-git
 	pkgdesc = A lightweight text editor written in Lua (luajit build)
-	pkgver = 2.1.0.r1.b87afce
+	pkgver = 2.1.0.r2054.00f9747
 	pkgrel = 1
 	url = https://github.com/lite-xl/lite-xl/pull/880
 	arch = x86_64
