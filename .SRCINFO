@@ -1,7 +1,7 @@
 pkgbase = castor
 	pkgdesc = A Gemini, Gopher and Finger protocol client
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~julienxx/castor
 	arch = i686
 	arch = x86_64
