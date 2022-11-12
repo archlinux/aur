@@ -1,0 +1,11 @@
+pkgbase = python38-rasa-sdk
+	pkgdesc = Open source machine learning framework to automate text- and voice-based conversations: NLU, dialogue management, connect to Slack, Facebook, and more - Create chatbots and voice assistants
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/rasahq/rasa-sdk
+	arch = x86_64
+	license = GNU GPL v3
+	depends = python38-pip
+	provides = python38-rasa-sdk
+
+pkgname = python38-rasa-sdk
