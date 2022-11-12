@@ -2,7 +2,7 @@
 
 pkgname='fig-beta'
 pkgver='2.7.8_beta.1'
-pkgrel=2
+pkgrel=3
 pkgdesc='Adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
 url='https://fig.io'
@@ -17,4 +17,3 @@ sha256sums=('8d2779766f0f6c760c79e4ef03b822a233523ae1134fe7897773ad23db7680be')
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
 }
-
