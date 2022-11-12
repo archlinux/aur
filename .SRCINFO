@@ -1,7 +1,7 @@
 pkgbase = playonlinux
 	pkgdesc = GUI for managing Windows programs under linux
 	pkgver = 4.4+29+gd0ae9ce6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.playonlinux.com/
 	arch = x86_64
 	license = GPL
@@ -23,6 +23,7 @@ pkgbase = playonlinux
 	depends = jq
 	depends = perl
 	depends = python-natsort
+	depends = which
 	options = !strip
 	source = playonlinux4::git+https://github.com/PlayOnLinux/POL-POM-4.git#commit=d0ae9ce61668861dacd5c4981e7f3b020e3cc327
 	source = PlayOnLinuxUrlHandler.desktop
