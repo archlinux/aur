@@ -8,7 +8,7 @@ _datetag=2022111116
 
 pkgname="${_appname}-bin"
 pkgver="1.63.${_datetag}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Community build of the hackable text editor, built on Electron"
 arch=("x86_64")
 url="https://github.com/${_reponame}/${_appname}"
@@ -37,6 +37,9 @@ package() {
   # Cleanup specs. Remove if implemented upstream
   find "$pkgdir/opt/Pulsar/resources/app/ppm" -type d -name "spec" -exec rm -rf {} +
   find "$pkgdir/opt/Pulsar/resources/app.asar.unpacked" -type d -name "spec" -exec rm -rf {} +
+
+  # Fix core modules missing in settings. Remove when implemented upstream
+  sed -i "s/=== 'apm'/=== 'ppm'/" "$pkgdir/opt/Pulsar/resources/app/ppm/lib/apm.js"
 
   # This needs removal along with asar makedepend when fixed upstream
   mkdir -p "$pkgdir/opt/Pulsar/resources/app.asar.unpacked/node_modules/github/"
