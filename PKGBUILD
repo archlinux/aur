@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethReg
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Assessing the regulatory potential of DNA methylation regions or sites on gene transcription'
 arch=('any')
@@ -11,8 +11,10 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-annotationhub
   r-delayedarray
   r-dplyr
+  r-experimenthub
   r-genomicranges
   r-ggplot2
   r-ggpubr
@@ -23,13 +25,13 @@ depends=(
   r-readr
   r-rlang
   r-s4vectors
+  r-sesame
   r-sesamedata
   r-sfsmisc
   r-stringr
   r-summarizedexperiment
   r-tibble
   r-tidyr
-  r-sesame
 )
 optdepends=(
   r-biocfilecache
@@ -41,7 +43,7 @@ optdepends=(
   r-dorothea
   r-downloader
   r-htmltools
-  r-jaspar2020
+  r-jaspar2022
   r-jpeg
   r-knitr
   r-matrixstats
@@ -57,7 +59,7 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('04c8b9aabfce93ebc133f2dd046c2e30ff001c92924a990daead194c64b36384')
+sha256sums=('6efcb33f6a274da3050f7184d25b10e905e44aacda03afde7606545975567f27')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
