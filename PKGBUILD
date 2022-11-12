@@ -1,8 +1,5 @@
-# Maintainers:
-# + Gavin Lloyd <gavinhungry@gmail.com>
-# + Severen Redwood <me@severen.dev>
-# Contributors:
-# + Tomasz Jakub Rup <tomasz.rup@gmail.com>
+# Maintainer: Severen Redwood <me@severen.dev>
+# Contributor: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 
 pkgname=pnpm
 pkgver=7.15.0
