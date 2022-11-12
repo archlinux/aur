@@ -32,11 +32,12 @@ build() {
 
 package() {
     cd "$srcdir/certs"
-    install -Dm644 -t "$pkgdir/usr/share/ca-certificates/trust-source/blocklist/" \
+    install -Dm644 -t "$pkgdir/usr/share/ca-certificates/trust-source/blacklist/" \
+        Certum_Root_CA:2.3.1.0.32.tmp-p11-kit \
+        Certum_Trusted_Network_CA_2:2.16.33.214.208.74.79.37.15.201.50.55.252.170.94.18.141.233.tmp-p11-kit \
+        Certum_Trusted_Network_CA:2.3.4.68.192.tmp-p11-kit \
         GDCA_TrustAUTH_R5_ROOT:2.8.125.9.151.254.240.71.234.122.tmp-p11-kit \
         CFCA_EV_ROOT:2.4.24.74.204.214.tmp-p11-kit \
         Verisign_Class_1_Public_Primary_Certification_Authority_-_G3:2.17.0.139.91.117.86.132.84.133.11.0.207.175.56.72.206.177.164.tmp-p11-kit \
-        Verisign_Class_2_Public_Primary_Certification_Authority_-_G3:2.16.97.112.203.73.140.95.152.69.41.231.176.166.217.80.91.122.tmp-p11-kit \
-        Hongkong_Post_Root_CA_1:2.2.3.232.tmp-p11-kit \
-        Hongkong_Post_Root_CA_3:2.20.8.22.95.138.76.165.236.0.201.147.64.223.196.198.174.35.184.28.90.164.tmp-p11-kit
+        Verisign_Class_2_Public_Primary_Certification_Authority_-_G3:2.16.97.112.203.73.140.95.152.69.41.231.176.166.217.80.91.122.tmp-p11-kit
 }
