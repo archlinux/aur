@@ -8,6 +8,6 @@ pkgbase = rhai-tools
 	license = MIT
 	makedepends = cargo
 	source = rhai-1.11.0.tar.gz::https://github.com/rhaiscript/rhai/archive/v1.11.0.tar.gz
-	sha256sums = 756fcb69b0b0d9fe83fc8bf26c0aea68f5d493523bcc9ec7946f1a4ac22547b5
+	sha256sums = 7bcea078438d78681dbf68cbc3941785b29cbe21dd88d0d3ee0ab7c5a4f1f7ae
 
 pkgname = rhai-tools
