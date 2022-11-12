@@ -1,0 +1,18 @@
+pkgbase = r-rjsoncons
+	pkgdesc = 'C++' Header-Only 'jsoncons' Library for 'JSON' Queries
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rjsoncons
+	arch = x86_64
+	license = BSL
+	depends = r
+	depends = r-cpp11
+	depends = r-jsonlite
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/rjsoncons_1.0.0.tar.gz
+	sha256sums = f942064480e98fc62cc6f292ce14af84999037f09fc740daf39693907872cff8
+
+pkgname = r-rjsoncons
