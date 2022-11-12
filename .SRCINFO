@@ -1,0 +1,13 @@
+pkgbase = ssockets
+	pkgdesc = A C library for scalable TCP servers
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/jlxip/ssockets
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	provides = libssockets.so
+	source = https://github.com/jlxip/ssockets/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 521614aef5a9d8badab6e514399238a7dc6d786c40664b6f9cdc91157c39f497
+
+pkgname = ssockets
