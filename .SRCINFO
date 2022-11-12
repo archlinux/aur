@@ -1,6 +1,6 @@
 pkgbase = x16-emulator-git
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16
-	pkgver = r37.r0.g946284d
+	pkgver = r41.r25.g19f99cc
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = x86_64
@@ -10,13 +10,12 @@ pkgbase = x16-emulator-git
 	makedepends = pandoc
 	makedepends = gendesk
 	depends = sdl2
-	optdepends = x16-rom: ROMs for the emulator
+	optdepends = x16-rom-git: ROMs for the emulator
 	provides = x16-emulator
 	conflicts = x16-emulator
 	source = git+https://github.com/commanderx16/x16-emulator.git
 	source = modify-base-path.patch
-	md5sums = SKIP
-	md5sums = 5cd0550d2af1b4267c9b9f30eed9691e
+	sha256sums = SKIP
+	sha256sums = 5ac6e299e641d07abe2caddfc1532cec42536c20b22875486032940668116461
 
 pkgname = x16-emulator-git
-

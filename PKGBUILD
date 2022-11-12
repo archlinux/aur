@@ -1,6 +1,7 @@
-# Maintainer: Julien Savard <juju@juju2143.ca>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r37.r0.g946284d
+pkgver=r41.r25.g19f99cc
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -9,7 +10,7 @@ license=('BSD')
 groups=('commander-x16')
 depends=('sdl2')
 makedepends=('git' 'pandoc' 'gendesk')
-optdepends=('x16-rom: ROMs for the emulator')
+optdepends=('x16-rom-git: ROMs for the emulator')
 provides=('x16-emulator')
 conflicts=('x16-emulator')
 replaces=()
@@ -18,8 +19,8 @@ install=
 changelog=
 source=("git+https://github.com/commanderx16/x16-emulator.git"
 	"modify-base-path.patch")
-md5sums=('SKIP'
-	'5cd0550d2af1b4267c9b9f30eed9691e')
+sha256sums=('SKIP'
+            '5ac6e299e641d07abe2caddfc1532cec42536c20b22875486032940668116461')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -28,7 +29,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-	patch -uN main.c ../modify-base-path.patch
+	patch -Np1 -i ../modify-base-path.patch
 	gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgname%-git}" --exec "x16emu" --categories "Game;Emulator"
 }
 
@@ -47,3 +48,4 @@ package() {
 	install -Dm644 .gh/logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 	install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
+
