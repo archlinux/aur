@@ -62,7 +62,7 @@ pkgbase = deadbeef-git
 	optdepends = ffmpeg: for ffmpeg plugin
 	optdepends = opusfile: for opus plugin
 	optdepends = mpg123: for MP1/MP2/MP3 playback
-	provides = deadbeef=1.9.2
+	provides = deadbeef=1.9.3
 	conflicts = deadbeef
 	options = !libtool
 	source = git+https://github.com/DeaDBeeF-Player/deadbeef.git

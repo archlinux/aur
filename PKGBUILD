@@ -11,7 +11,7 @@ license=('GPL2'
          'LGPL2.1'
          'ZLIB')
 depends=('alsa-lib' 'hicolor-icon-theme' 'jansson' 'libblocksruntime' 'libdispatch')
-makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse' 
+makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse'
              'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
              'ffmpeg' 'gtk2' 'gtk3' 'clang')
 optdepends=('gtk2: for the GTK2 interface'
@@ -45,7 +45,7 @@ optdepends=('gtk2: for the GTK2 interface'
             'mpg123: for MP1/MP2/MP3 playback')
 options=('!libtool')
 conflicts=('deadbeef')
-provides=('deadbeef=1.9.2')
+provides=('deadbeef=1.9.3')
 source=('git+https://github.com/DeaDBeeF-Player/deadbeef.git')
 md5sums=('SKIP')
 
