@@ -1,5 +1,5 @@
 pkgbase = circom-git
-	pkgdesc = A compiler for cryptographic circuits user for zkSNARK and PLONK proofs
+	pkgdesc = A compiler for cryptographic circuits used for zkSNARK and PLONK proofs
 	pkgver = v2.1.2.r0.g2fbf965
 	pkgrel = 1
 	url = https://docs.circom.io
