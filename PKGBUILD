@@ -3,7 +3,7 @@
 pkgname=guile-git
 epoch=1
 _majorver=3.0
-pkgver=3.0.8.r12.g446842733
+pkgver=3.0.8.r86.gf72cd7915
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,8 +11,8 @@ license=('GPL')
 makedepends=('git' 'gperf')
 optdepends=('texinfo: for using texinfo scheme sources')
 depends=('gc' 'libxcrypt' 'libffi' 'libunistring' 'gmp' 'readline')
-provides=('guile3' "guile=$pkgver")
-conflicts=('guile3')
+provides=("guile=$pkgver")
+conflicts=('guile')
 options=('!strip' '!makeflags' 'libtool')
 source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git")
 url="http://www.gnu.org/software/guile/"
