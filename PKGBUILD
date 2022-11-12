@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cbaf
-_pkgver=1.18.4
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.4
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Automated functions for comparing various omic data from cbioportal.org'
 arch=('any')
@@ -12,12 +12,11 @@ license=('Artistic2.0')
 depends=(
   r
   r-biocfilecache
-  r-cgdsr
+  r-cbioportaldata
   r-genefilter
   r-gplots
   r-openxlsx
   r-rcolorbrewer
-  r-cbioportaldata
 )
 optdepends=(
   r-biocstyle
@@ -25,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3fc78735135d072eaf743d5107aa75e1bf6c8b4b5844e639911313b15ec412c7')
+sha256sums=('1a2017583a50d2338c2471998b4b31da7b2f5ae426bedc6a15b5448176fa64e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
