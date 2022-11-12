@@ -1,14 +1,15 @@
 pkgname=kernel-install-mkinitcpio
 _gitname=eos-systemd-boot
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc='A framework for enabling systemd-boot automation using kernel-install with mkinitcpio'
 arch=(any)
 url='https://gitlab.com/dalto.8/eos-systemd-boot'
 license=(GPL2)
-depends=(systemd)
+depends=(systemd mkinitcpio)
+conflicts=(dracut kernel-install-mkinitcpio)
 source=("$_gitname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_gitname-$pkgver.tar.gz")
-sha512sums=('21bcd5c9464de5e2c6c67d4b9bd21daf52014ff60e555fcf24af3e6c56b1027a3ec8858598f555961f131643a99e3a1229a2be25e4608c59265ad871f8f46276')
+sha512sums=('80d55d3f176f83e4a08b97106c4e3c7f98763bf16ef867142472cba165817c36322c82588ad288e4d47fa5729f48149e53640530481c170f13abf859d402dfce')
 
 package()
 {
