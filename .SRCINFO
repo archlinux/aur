@@ -1,6 +1,6 @@
 pkgbase = r-profia
 	pkgdesc = Preprocessing of FIA-HRMS data
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/proFIA
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-profia
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-plasfia
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/proFIA_1.22.0.tar.gz
-	sha256sums = 4d929e5e066314a8fbe7126ff182c7f10ad123d0c474e8b0dba9e33a56cbf932
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/proFIA_1.23.0.tar.gz
+	sha256sums = 723bb21f11cfa9366f8ec1a229290f3383b621495d72d9df6e85b80088dc0878
 
 pkgname = r-profia
