@@ -4,7 +4,7 @@
 
 _pkgname=teams-for-linux
 pkgname=${_pkgname}-wbundled-electron
-pkgver=1.0.33
+pkgver=1.0.45
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron."
 arch=("any")
@@ -16,7 +16,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${_pkgname}/archive/v${pkgver}.tar.gz"
   "${_pkgname}.desktop.in"
 )
-sha256sums=('b775ab9d763565e491ab2a91fc1162fd04691ee6f8a4295f498652c507bdf5a3'
+sha256sums=('0135ab728093ef67a135bd5351e6059e088a18ababf0bec6f17d5cd0b2463039'
             '9ebf37120c1968e8c4656f7e97b6fa23b8906be4b1bc1059645fd71c1ae2d941')
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
