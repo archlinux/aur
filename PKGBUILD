@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=omicsPrint
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Cross omic genetic fingerprinting'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c32aa01f863536063f37854582bcf7d656cfd5e002a08ab1d732a8b33f16fb21')
+sha256sums=('e4f36136ab0d60979841bbd63b4afaaad96845d5aa13701c5a37350bfc6f517e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
