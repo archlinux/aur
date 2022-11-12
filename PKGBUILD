@@ -1,33 +1,48 @@
-# Maintainer: Raven's Iris <liones121@gmail.com>
-pkgname=nerd-fonts-victor-mono
-pkgver=2.1.0
-pkgrel=2
-pkgdesc="Patched font Victor Mono from nerd-fonts"
-arch=("any")
-url="https://github.com/ryanoasis/nerd-fonts"
+# Maintainer: éclairevoyant
+# Contributor: Raven's Iris <liones121 at gmail dot com>
+
+pkgbase=nerd-fonts-victor-mono
+pkgname=("ttf-$pkgbase" "otf-$pkgbase")
+pkgver=2.2.2
+pkgrel=1
+pkgdesc='Patched font Victor Mono from nerd-fonts'
+arch=('any')
+url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=('fontconfig')
-provides=(
-  'otf-nerd-fonts'
-  'nerd-fonts-victor-mono'
-  'ttf-font-nerd'
-  'ttf-iosevka-nerd'
-  'ttf-nerd-font'
-  'ttf-nerd-fonts'
-  'ttf-nerd-fonts-symbols'
-  'ttf-nerd-fonts-symbols-mono'
-)
-conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'nerd-fonts-complete-mono-glyphs')
-groups=("nerd-fonts")
-source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/VictorMono.zip"
-        "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('1225acdbc30e327f0a73235d43a902414f5f27a2'
-          '92fdad3c8babc0473da5f03e41fb1151417ab386')
+provides=('nerd-fonts-victor-mono' 'ttf-font')
+conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'nerd-fonts-complete-mono-glyphs' "$pkgbase")
+groups=('nerd-fonts')
+source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/VictorMono.zip")
+sha256sums=('21261fbd995653d97ec0879808c2b4fe5cd23dadd43ef4254bd10c30267d8658')
 
+package_ttf-nerd-fonts-victor-mono() {
+  provides+=(
+    'ttf-font-nerd'
+    'ttf-nerd-font'
+    'ttf-nerd-fonts'
+    'ttf-nerd-fonts-symbols'
+    'ttf-nerd-fonts-symbols-mono'
+  )
+  find . \
+    -maxdepth 1 \
+    -iname "*.ttf" \
+    -not -iname "*Windows Compatible.ttf" \
+    -execdir install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname/" '{}' \;
 
-package() {
-  find . -iname "*.otf" -not -iname "*Windows Compatible.otf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/{}" \;
-  find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" -execdir install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
-  
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
+
+package_otf-nerd-fonts-victor-mono() {
+  provides+=(
+    'otf-nerd-fonts'
+  )
+  find . \
+    -maxdepth 1 \
+    -iname "*.otf" \
+    -not -iname "*Windows Compatible.otf" \
+    -execdir install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname/" '{}' \;
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+}
+
+# vim:set sw=2 sts=2 et:
