@@ -10,7 +10,7 @@ depends=('curl' 'openvpn' 'wireguard-tools' 'systemd-resolvconf')
 makedepends=('zip')
 install="${pkgname}.install"
 source=("https://download.cyberghostvpn.com/linux/${pkgname}-ubuntu-20.04-${pkgver}.zip")
-sha256sums=('d28d6008c71896bdb3af67d4d047eb4738e061e7cd5d2d9debef7e90b875fec5')
+sha256sums=('fe9635b244231f943e8f05118e194a696b1e318fee265f06d138a08a421fb07f')
 
 package() {
 	mkdir -p "$pkgdir/usr/local/cyberghost"
