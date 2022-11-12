@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('GNU GPL v3')
 url="https://github.com/RasaHQ/rasa"
 depends=('python38-pip')
-provides=($pkgname)
+provides=($_pkgbase)
 
 prepare()
 {
