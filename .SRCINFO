@@ -11,10 +11,10 @@ pkgbase = terminal-headers
 	depends = bc
 	source = https://concise.cc/pkg/terminal-headers-1.2-1-x86_64.pkg.tar.zst
 	source = https://concise.cc/pkg/terminal-headers-1.2-1-x86_64.pkg.tar.zst.sig
-	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = afd4c969c9e83603fda2de68c11ff3cf
-	md5sums = dcceb4c7c10f3f2cf96545bb95fa9513
-	sha512sums = de4bfdbb90bfd7126e976ddd70e50d8dad04ae8b55d7cfa067092d428c6930aaf9dc999493cdcc821c2f1338160652ce2aad248581272394fc2bddb2c920e7f5
-	sha512sums = d07646abaaa07191525179fa1756b6884354055a3f534262bb3be0cd2c609b7277e573b828d35492cc981542f5d9cf4c1b9ac8ec4b607ab4d0af0b723bc9b4fb
+	validpgpkeys = 9A1F3F41DDA55A60331CB8DD3714CB0967D15980
+	md5sums = 50c9931abe529ce41b2f71f7bb057561
+	md5sums = 7160a00137a62e1a6bf7edc265670735
+	sha512sums = b444bda1fb5d80a6e56699cbc7f3dbff50c71973e20450434dede94f2f898bf0b00e7b080333d9e97a48bac8ea8938fc9ac839511f3d4c89c39899b9ef6bc6a5
+	sha512sums = 7286c709531b74d459d21ec795f4b27d895bd10ca07cc0363dceff2d226453eb623823278759f2424c4605d8f8a9252d4338bc7d0cdc1df2d9fb76ea540dc021
 
 pkgname = terminal-headers
