@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EventPointer
-_pkgver=3.4.1
+_pkgver=3.6.0
 pkgname=r-${_pkgname,,}
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc='An effective identification of alternative splicing events using junction arrays and RNA-Seq data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -40,6 +40,7 @@ depends=(
   r-sgseq
   r-speedglm
   r-stringr
+  r-summarizedexperiment
   r-tximport
 )
 optdepends=(
@@ -52,7 +53,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('742d81dac9986b4f22214a2ba89c15ae0fec8f7c47c5357b91294b12d7ddd33b')
+sha256sums=('c5d3c2cb2749fd2df993076e4dfe851cf0af636dbb72cf6fa8bea2c81d662b7d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
