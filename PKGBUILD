@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('cargo')
 conflicts=('playlist-maker-rs')
 provides=('playlist-maker-rs')
-source=("$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-musl.tar.gz"
+source=("$pkgver.tar.gz::$url/releases/download/v$_pkgver/$_pkgname-x86_64-unknown-linux-musl.tar.gz"
         "$_binname.zsh::$rawurl/master/autocompletions/_pl-mker"
 	"$_binname.bash::$rawurl/master/autocompletions/pl-mker.bash"
 	"$_binname.fish::$rawurl/master/autocompletions/pl-mker.fish"
