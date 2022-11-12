@@ -1,22 +1,20 @@
 pkgbase = ledger-live
 	pkgdesc = Ledger Live - Desktop
 	pkgver = 2.49.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python>=3.5
-	makedepends = npm
-	makedepends = pnpm
-	makedepends = nodejs>=16
-	makedepends = nodejs<19
 	makedepends = node-gyp
+	makedepends = fnm
+	makedepends = pnpm
 	depends = ledger-udev
 	provides = ledger-live
 	conflicts = ledger-live-bin
 	conflicts = ledger-live-git
-	source = ledger-live-desktop-2.49.2.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@2.49.2.tar.gz
-	sha512sums = f14e2b6f4dbf48750a73cba38a251efed7b23823e5874ed1a158eab6f4274244e17d287422dc0fe17c4bfc075c452f74f4d3a20ba0a0de04e6cad42d38aca783
+	source = ledger-live-2.49.2-git::git+https://github.com/LedgerHQ/ledger-live.git#tag=@ledgerhq/live-desktop@2.49.2
+	sha512sums = SKIP
 
 pkgname = ledger-live

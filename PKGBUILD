@@ -7,22 +7,25 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.49.2
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'python>=3.5' 'npm' 'pnpm' 'nodejs>=16' 'nodejs<19' 'node-gyp')
+makedepends=('git' 'python>=3.5' 'node-gyp' 'fnm' 'pnpm')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live-git')
-_extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
-source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz")
-sha512sums=('f14e2b6f4dbf48750a73cba38a251efed7b23823e5874ed1a158eab6f4274244e17d287422dc0fe17c4bfc075c452f74f4d3a20ba0a0de04e6cad42d38aca783')
+_gitdir=${pkgname}-${pkgver}-git
+source=("${_gitdir}::git+${url}.git#tag=@ledgerhq/live-desktop@${pkgver}")
+sha512sums=('SKIP')
 
 build() {
-  cd ${_extdir}
+  cd ${_gitdir}
   export GIT_REVISION=${pkgver}
   export JOBS=max
+
+  eval "$(fnm env --shell bash)"
+  fnm use --install-if-missing
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
   pnpm desktop build
@@ -33,10 +36,10 @@ build() {
 }
 
 package() {
-  cd ${_extdir}/apps/${_pkgbin}
+  cd ${_gitdir}/apps/${_pkgbin}
   install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  install -dm755 "${pkgdir}/opt"
+  install -dm755 "${pkgdir}/opt/${_pkgbin}"
   cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgbin}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
