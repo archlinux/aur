@@ -1,5 +1,5 @@
-_pkgbase=pip
-pkgname=python38-pip
+_pkgbase="pip"
+pkgname="python38-pip"
 pkgver=22.3.1
 pkgrel=2
 pkgdesc="PIP for Python 3.8."
@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('MIT')
 url="https://github.com/pypa/pip"
 depends=('python38')
-provides=($pkgname)
+provides=("pip3.8")
 
 prepare()
 {
