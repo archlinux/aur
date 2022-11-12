@@ -1,12 +1,12 @@
 pkgbase = lolminer
 	pkgdesc = Unofficial installer for lolMiner
-	pkgver = 1.61
+	pkgver = 1.62
 	pkgrel = 2
 	url = https://github.com/Lolliedieb/lolMiner-releases
 	arch = x86_64
 	license = custom: lolMiner License Agreement
 	options = !strip
-	source = https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.61/lolMiner_v1.61_Lin64.tar.gz
+	source = https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.62/lolMiner_v1.62_Lin64.tar.gz
 	sha256sums = SKIP
 
 pkgname = lolminer
