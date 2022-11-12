@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=animalcules
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Interactive microbiome analysis toolkit'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0c4fcf0d2e68cd5e662a6fe89268bdc5b21440c6c00a3ea7079057457f228990')
+sha256sums=('1927094050536ec329c17abf20170f6647ff463d4ecd1519fcfbd197abd297aa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
