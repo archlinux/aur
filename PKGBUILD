@@ -1,19 +1,14 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 pkgname=tee-supplicant
-pkgver=3.6.0.r9.gbc0ec8c
+pkgver=3.19.0
 pkgrel=1
 pkgdesc='Normal world client side of the TEE'
 arch=('aarch64')
 url='https://github.com/OP-TEE/optee_client'
 license=('BSD')
 depends=()
-source=('git://github.com/OP-TEE/optee_client.git')
+source=("git+https://github.com/OP-TEE/optee_client.git#tag=${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd ${srcdir}/optee_client
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
     cd ${srcdir}/optee_client/libteec
