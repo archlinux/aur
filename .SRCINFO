@@ -1,11 +1,13 @@
 pkgbase = ttf-nomnatong
 	pkgdesc = The Hán-Nôm Coded Character Set and Nom Na Tong Regular Reference Font
 	pkgver = 5.02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nomfoundation.org/nom-tools/Nom-Font
 	arch = any
 	license = MIT
 	source = https://github.com/nomfoundation/font/releases/download/v5.02/NomNaTong-Regular.ttf
+	source = LICENSE
 	sha256sums = 0dfce49b773b1f94688f1225b538c09db3801317200b7360df4d53338fa7fec1
+	sha256sums = 5a96128ab441fd6df1ca8aa48a7223dfa3c4bd2c001262712373698bb24e8e72
 
 pkgname = ttf-nomnatong
