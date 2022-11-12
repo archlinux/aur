@@ -1,7 +1,7 @@
 pkgname=caches-manager
 pkgver=0.1.3
 pkgrel=1
-pkgdesc="A simple script that helps keep selected directories clean by symlinking to tmpfs ramdisk."
+pkgdesc="A simple script that helps keep selected directories clean by symlinking or binding to tmpfs ramdisk."
 arch=('any')
 url="https://github.com/HanabishiRecca/${pkgname}"
 license=('MIT')
