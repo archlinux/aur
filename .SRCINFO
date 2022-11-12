@@ -1,6 +1,6 @@
 pkgbase = r-missrows
 	pkgdesc = Handling Missing Individuals in Multi-Omics Data Integration
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/missRows
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-missrows
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/missRows_1.16.0.tar.gz
-	sha256sums = 3f89150067d58865d3ec53bdb0fbff7d111d94a8076f78368563f5b665a90e9e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/missRows_1.18.0.tar.gz
+	sha256sums = 1ec8181926014d00d396273a4a59ff9a5930e3227b6a73993bc02a803eac8b4f
 
 pkgname = r-missrows
