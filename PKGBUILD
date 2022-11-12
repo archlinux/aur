@@ -16,20 +16,6 @@ optin_telemetry() {
     echo "https://rasa.com/docs/rasa/telemetry/telemetry/"
 }
 
-rm_cache() {
-    cd $pkgdir
-    excluded_dir_list=( \
-        "/usr/bin/flask" \
-        "/usr/bin/stt" \
-        "/usr/lib/python3.8/site-packages/idna" \
-        "/usr/lib/python3.8/site-packages/requests" \
-        "/usr/lib/python3.8/site-packages/socketio" \
-    )
-    for d in $excluded_dir_list; do
-        [ -d "$d" ] && rm -rf ".${d}"
-    done
-}
-
 prepare() {
     echo "Installing Domain Management Tools..."
     python3.8 -m pip install transformers
@@ -37,6 +23,5 @@ prepare() {
 
 package() {
     pip install --root="$pkgdir" $_pkgbase
-    rm_cache
     optin_telemetry
 }
