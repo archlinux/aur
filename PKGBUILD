@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ClassifyR
-_pkgver=3.0.3
+_pkgver=3.2.0
 pkgname=r-${_pkgname,,}
-pkgver=3.0.3
-pkgrel=3
+pkgver=3.2.0
+pkgrel=1
 pkgdesc='A framework for cross-validated classification problems, with applications to differential variability and differential distribution testing'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,11 +12,14 @@ license=('GPL')
 depends=(
   r
   r-biocparallel
-  r-locfit
+  r-dplyr
+  r-genefilter
+  r-generics
   r-multiassayexperiment
-  r-plyr
+  r-ranger
+  r-rlang
   r-s4vectors
-  r-randomforest
+  r-tidyr
 )
 optdepends=(
   r-biocstyle
@@ -25,7 +28,6 @@ optdepends=(
   r-cowplot
   r-e1071
   r-edger
-  r-genefilter
   r-ggplot2
   r-glmnet
   r-gridextra
@@ -34,16 +36,19 @@ optdepends=(
   r-iranges
   r-knitr
   r-limma
+  r-matrixmodels
   r-pamr
   r-parathyroidse
   r-poiclaclu
+  r-randomforestsrc
   r-rmarkdown
   r-rmixmod
   r-robustbase
   r-scales
+  r-xgboost
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('15115bd2058bba6a79d42a2e48b7175df23ddb6e0f08971cab9b893d028944a8')
+sha256sums=('c5add29f8e0bbbe560b7365aa835348b720eb4b3fc1e0d20137364f0bc8f317b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
