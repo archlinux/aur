@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-power"
-pkgver="22.9.0"
+pkgver="22.9.1"
 pkgrel="1"
 pkgdesc="Ayatana Indicator showing power state"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cmake-extras" "gettext")
 depends=("glib2" "systemd" "libayatana-common>=0.9.5" "libnotify")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("ee34eb57e44de768fe48a7183658062a")
+md5sums=("e14f74419d52f1a7edf3e6151eb65dff")
 
 build()
 {
