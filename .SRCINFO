@@ -1,6 +1,6 @@
 pkgbase = osmosisd-bin
 	pkgdesc = The AMM Laboratory on Cosmos
-	pkgver = 12.2.1
+	pkgver = 12.3.0
 	pkgrel = 1
 	url = https://github.com/osmosis-labs/osmosis
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = osmosisd-bin
 	license = Apache
 	provides = osmosisd
 	conflicts = osmosisd
-	source = https://raw.githubusercontent.com/osmosis-labs/osmosis/v12.2.1/LICENSE
+	source = https://raw.githubusercontent.com/osmosis-labs/osmosis/v12.3.0/LICENSE
 	sha256sums = 5eef0621386cdfd51981e4a6880d3b1acbe5bce94eb3b16217b6d58c84701faf
-	source_x86_64 = osmosisd-12.2.1-linux::https://github.com/osmosis-labs/osmosis/releases/download/v12.2.1/osmosisd-12.2.1-linux-amd64
-	sha256sums_x86_64 = 74801ab93a0e3f5d59892cd85c0c71bf62f28330f0c6ef92b4a2545e8ce477df
-	source_aarch64 = osmosisd-12.2.1-linux::https://github.com/osmosis-labs/osmosis/releases/download/v12.2.1/osmosisd-12.2.1-linux-arm64
-	sha256sums_aarch64 = 74801ab93a0e3f5d59892cd85c0c71bf62f28330f0c6ef92b4a2545e8ce477df
+	source_x86_64 = osmosisd-12.3.0-linux::https://github.com/osmosis-labs/osmosis/releases/download/v12.3.0/osmosisd-12.3.0-linux-amd64
+	sha256sums_x86_64 = 958210c919d13c281896fa9773c323c5534f0fa46d74807154f737609a00db70
+	source_aarch64 = osmosisd-12.3.0-linux::https://github.com/osmosis-labs/osmosis/releases/download/v12.3.0/osmosisd-12.3.0-linux-arm64
+	sha256sums_aarch64 = 958210c919d13c281896fa9773c323c5534f0fa46d74807154f737609a00db70
 
 pkgname = osmosisd-bin
