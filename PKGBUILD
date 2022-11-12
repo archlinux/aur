@@ -1,7 +1,7 @@
 _pkgbase=pip
 pkgname=python38-pip
 pkgver=22.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PIP for Python 3.8."
 arch=('x86_64')
 license=('MIT')
