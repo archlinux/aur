@@ -3,14 +3,14 @@
 pkgname=health
 _reponame=Health
 pkgver=0.94.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A health tracking app for the GNOME desktop"
 arch=(x86_64)
 url=https://gitlab.gnome.org/Cogitri/Health
 license=(GPL3)
-depends=(libadwaita)
+depends=(libadwaita gtk4)
 checkdepends=(appstream-glib)
-makedepends=(meson rust blueprint-compiler)
+makedepends=(meson rust blueprint-compiler python-gobject)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_reponame-$pkgver.tar.gz"
         "blueprint_version.patch")
 sha512sums=('2cf4314de185c2ad8c42cd51385e7b9ab895932a429e6afb2ece29f24da951b49cb5e8ef184c377cc48a1e6bf6f997c0cd539623a4c5603e91dff70219c4bcab'
