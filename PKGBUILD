@@ -2,7 +2,7 @@
 
 pkgname=drive
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI Google Drive client'
 arch=(x86_64)
 url=http://github.com/odeke-em/$pkgname
@@ -14,10 +14,10 @@ sha512sums=('59e53528222a26e88d8c4bb9ed9f841cc0bf07d6955099c5338a8ce18bc0ff67319
 
 build() {
   cd $pkgname-$pkgver
-  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
-  GOPATH="$srcdir"/$pkgname-$pkgver go get -v -x \
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+  GOPATH="$srcdir"/$pkgname-$pkgver go install -v -x \
     -ldflags "-extldflags \"${LDFLAGS}\"" \
-    github.com/odeke-em/$pkgname/cmd/$pkgname
+    github.com/odeke-em/$pkgname/cmd/$pkgname@latest
 }
 
 package() {

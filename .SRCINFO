@@ -1,7 +1,7 @@
 pkgbase = drive
 	pkgdesc = CLI Google Drive client
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/odeke-em/drive
 	arch = x86_64
 	license = Apache
