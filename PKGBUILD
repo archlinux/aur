@@ -6,7 +6,7 @@ pkgdesc="Transcribe long audio files with STT or use the streaming interface"
 arch=('x86_64')
 license=('GNU GPL v3')
 url="https://gitlab.com/waser-technologies/technologies/listen"
-depends=('python-pip' 'python-pyaudio')
+depends=('python-pip' 'python-pyaudio' 'python-stt-model-manager')
 provides=($pkgname)
 
 prepare()
