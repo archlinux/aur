@@ -3,7 +3,7 @@
 _pkgname=BiocBaseUtils
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='General utility functions for developing Bioconductor packages'
 arch=('any')
