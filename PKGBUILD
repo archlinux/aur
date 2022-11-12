@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=midasHLA
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='R package for immunogenomics data handling and association analysis'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e31b00a30a6c245e2aab45fd5878f50739ea7302f65691dca96cd6caece78f7')
+sha256sums=('7116f832132f746fed98782620cefef1d858b755fe532e1ea94fcfb936e29a48')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
