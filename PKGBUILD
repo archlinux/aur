@@ -3,7 +3,7 @@
 _pkgname=LambertW
 _pkgver=0.6.7-1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.6.7.1
 pkgrel=1
 pkgdesc='Probabilistic Models to Analyze and Gaussianize Heavy-Tailed, Skewed Data'
 arch=('x86_64')
