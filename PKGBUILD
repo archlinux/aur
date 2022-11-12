@@ -5,14 +5,14 @@ _pkgname=hvac
 pkgname=python-$_pkgname
 # https://github.com/hvac/hvac/releases
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 2.7/3.X client for HashiCorp Vault'
 url='https://python-hvac.org/'
 license=(Apache)
 arch=(any)
 depends=(python python-pyhcl python-requests python-six)
 makedepends=(python-build python-installer python-poetry-core vault)
-checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy python-mock
+checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy
               python-parameterized python-requests-mock python-werkzeug python-jwcrypto
               consul)
 # Upstream intentionally prune tests from sdists (https://github.com/hvac/hvac/pull/356)
