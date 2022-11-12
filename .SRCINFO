@@ -1,6 +1,6 @@
 pkgbase = soh
 	pkgver = 4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = soh
 	makedepends = libxi
 	makedepends = glu
 	depends = sdl2
-	depends = sdl2_net
 	depends = libpulse
 	depends = libpng
 	source = https://github.com/HarbourMasters/Shipwright/archive/refs/tags/4.0.5.tar.gz
@@ -33,7 +32,6 @@ pkgname = soh
 	install = soh.install
 	license = unknown
 	depends = sdl2
-	depends = sdl2_net
 	depends = libpulse
 
 pkgname = soh-otr-exporter
