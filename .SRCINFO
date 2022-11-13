@@ -1,0 +1,18 @@
+pkgbase = python-coqpit
+	pkgdesc = Simple (maybe too simple), light-weight config management through python data-classes.
+	pkgver = 0.0.16
+	pkgrel = 00
+	url = https://github.com/erogol/coqpit
+	arch = any
+	license = custom:unknown
+	depends = python
+	depends = python-stt-listen
+	noextract = coqpit-0.0.16-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/a9/66/5b77bdada4e7bc53e70391321b56713ace02392064de59473d27384e5d66/coqpit-0.0.16-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2d3bcb0f8abe560e0be20442d88a01be
+	md5sums = 0402597e7763f2c9240709532b19ab38
+
+pkgname = python-coqpit
