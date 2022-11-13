@@ -2,8 +2,8 @@
 
 pkgname=edrawmind-bin
 _softname=mindmaster
-_pkgname=EdrawMind-9
-pkgver=9.0.10
+_pkgname=EdrawMind-10
+pkgver=10.0.6
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -12,13 +12,13 @@ replaces=("mindmaster_en")
 pkgdesc="Multi-functional, good-looking, easy-to-use professional mind mapping software"
 license=('Commercial')
 url="https://www.edrawsoft.com/download-mindmaster.html"
-source_x86_64=("https://download.edrawsoft.com/archives/${pkgname%-bin}_${pkgver}_en_${arch}.deb")
-sha256sums_x86_64=('3a5f7fa1d5402606a727a5a1fa06f0161b480b38e13f49b4856a41b8fc9c59d0')
+source_x86_64=("https://download.edrawsoft.com/archives/${pkgname%-bin}-${pkgver}-4-${arch}.deb")
+sha256sums_x86_64=('474b570f50d59f9c52a8872331d623468968ce9222ae0443e639e96ebf79ae95')
             
 prepare() {
     ar -x *.deb
 	mkdir -p ${pkgname%-bin}
-    tar -xf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgname%-bin}"
+    tar -xf "${srcdir}/data.tar.zst" --xattrs-include='*' --numeric-owner -C "${pkgname%-bin}"
 }
 
 package() {	
@@ -33,7 +33,7 @@ package() {
    
        install -Dm0644 /dev/stdin "${pkgdir}/opt/${_pkgname}/${pkgname%-bin}.desktop" << EOF
 [Desktop Entry]
-Name=${_pkgname%-9}
+Name=${_pkgname%-10}
 Name[en_US]=${pkgname%-bin}
 Categories=Office;MindMap;Brainstorming;Mind;Map;
 MimeType=application/x-emmx
@@ -45,13 +45,13 @@ Encoding=UTF-8
 Hidden=false
 StartupNotify=false
 X-Deepin-Vendor=EdrawSoft
-Keywords=${_pkgname%-9};Mind;Brainstorming;Map;
-Keywords[de]=${_pkgname%-9};MindMap;
-Keywords[fr]=${_pkgname%-9};MindMap;
-Keywords[ja]=${_pkgname%-9};MindMap;
-Keywords[es]=${_pkgname%-9};Diagrama;
-Keywords[zh_CN]=${_pkgname%-9};MindMap;
-Keywords[zh_TW]=${_pkgname%-9};MindMap;
+Keywords=${_pkgname%-10};Mind;Brainstorming;Map;
+Keywords[de]=${_pkgname%-10};MindMap;
+Keywords[fr]=${_pkgname%-10};MindMap;
+Keywords[ja]=${_pkgname%-10};MindMap;
+Keywords[es]=${_pkgname%-10};Diagrama;
+Keywords[zh_CN]=${_pkgname%-10};MindMap;
+Keywords[zh_TW]=${_pkgname%-10};MindMap;
 Comment=Mind Map Software
 Comment[de]=mind map - software
 Comment[fr]=Logiciel de carte
