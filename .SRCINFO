@@ -1,6 +1,6 @@
 pkgbase = perl-devel-nytprof
 	pkgdesc = Devel::NYTProf - Powerful fast feature-rich perl source code profiler
-	pkgver = 6.10
+	pkgver = 6.11
 	pkgrel = 1
 	url = https://metacpan.org/dist/Devel-NYTProf/
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = perl-devel-nytprof
 	checkdepends = perl-test-pod-coverage
 	checkdepends = perl-test-portability-files
 	makedepends = perl-extutils-makemaker
+	depends = perl-capture-tiny
+	depends = perl-sub-name
 	depends = perl-getopt-long
 	depends = perl-test-simple
 	depends = perl-xsloader
@@ -17,8 +19,7 @@ pkgbase = perl-devel-nytprof
 	depends = perl-json-maybexs
 	depends = zlib
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/J/JK/JKEENAN/Devel-NYTProf-6.10.tar.gz
-	sha256sums = 24ac4174f1f01322063fa4e119b247d371d3260ddca6e778c6c1a0e3f905f58e
+	source = https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/Devel-NYTProf-6.11.tar.gz
+	sha256sums = bb1eb2065a785257e03eba2f01ab27af14ba3fa750c5fd0aa7a6b97a464ac5ee
 
 pkgname = perl-devel-nytprof
-
