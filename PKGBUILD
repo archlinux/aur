@@ -7,7 +7,7 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.49.2
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
@@ -21,8 +21,6 @@ sha512sums=('SKIP')
 
 build() {
   cd ${_gitdir}
-  export GIT_REVISION=${pkgver}
-  export JOBS=max
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
@@ -37,10 +35,11 @@ build() {
 
 package() {
   cd ${_gitdir}/apps/${_pkgbin}
+
   install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
   install -dm755 "${pkgdir}/opt/${_pkgbin}"
-  cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
+  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${_pkgbin}"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgbin}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
