@@ -1,7 +1,7 @@
 pkgbase = r-torch
 	pkgdesc = Tensors and Neural Networks with 'GPU' Acceleration
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=torch
 	arch = x86_64
 	license = MIT
