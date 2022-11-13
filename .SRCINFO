@@ -7,7 +7,7 @@ pkgbase = updiprog-git
 	license = BSD
 	makedepends = make
 	makedepends = git
-	provides = updiprog
+	provides = updiprog=v0.3.r12.5fe7a9c
 	conflicts = updiprog
 	source = updiprog-git::git+https://github.com/Polarisru/updiprog.git
 	source = Makefile
