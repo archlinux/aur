@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LACE
-_pkgver=2.0.0
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Longitudinal Analysis of Cancer Evolution (LACE)'
 arch=('any')
@@ -11,45 +11,49 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('custom')
 depends=(
   r
-  r-data.tree
-  r-igraph
-  r-rcolorbrewer
-  r-rfast
-  r-summarizedexperiment
-  r-curl
-  r-foreach
-  r-doparallel
-  r-sortable
-  r-dplyr
-  r-purrr
-  r-stringr
-  r-tidyr
-  r-jsonlite
-  r-readr
+  r-biomart
+  r-bsplus
+  r-callr
   r-configr
-  r-dt
-  r-fs
+  r-curl
   r-data.table
+  r-data.tree
+  r-doparallel
+  r-dplyr
+  r-dt
+  r-foreach
+  r-fs
   r-htmltools
   r-htmlwidgets
-  r-bsplus
+  r-igraph
+  r-jsonlite
+  r-logr
+  r-purrr
+  r-rcolorbrewer
+  r-readr
+  r-rfast
   r-shiny
-  r-shinythemes
-  r-shinyfiles
-  r-shinyjs
   r-shinybs
   r-shinydashboard
-  r-biomart
-  r-callr
+  r-shinyfiles
+  r-shinyjs
+  r-shinythemes
+  r-shinyvalidate
+  r-sortable
+  r-stringi
+  r-stringr
+  r-summarizedexperiment
+  r-tidyr
 )
 optdepends=(
   r-biocgenerics
   r-biocstyle
   r-knitr
+  r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1caf829d25051d56159f3dc155ae4e1f726f6547ada3df22890f4e4938345557')
+sha256sums=('adfe3cbbc2d9d2a8bec9b7514d7e5e031ee6cde1cf937b2718aa4aeab742e29b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
