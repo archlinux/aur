@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scAnnotatR
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=1
+pkgver=1.4.0
+pkgrel=3
 pkgdesc='Pretrained learning models for cell type prediction on single cell RNA-sequencing data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('abd8a13eb6006c482875a63e44964d882b450e7721b541d10f0dc3a5e629f818')
+sha256sums=('237d1d9ebf6bc35430c2b2a7783bdd52207c9e07efc37b19dd3dfff567198065')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
