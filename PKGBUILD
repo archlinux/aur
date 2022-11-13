@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GWENA
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.8.0
+pkgrel=3
 pkgdesc='Pipeline for augmented co-expression analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ddc6ff66295600f1bf6ac70909a93e6475d0aa62e1832b5549837f3342b9a81')
+sha256sums=('187a71391ac0268f758b196e392e54c0ec198b19e0c00d74510701a31fb747f0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
