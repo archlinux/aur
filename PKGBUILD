@@ -1,5 +1,5 @@
 # Maintainer: Mohamed Ahmed (Sego) <sego at sego dot app>
-pkgname=wine-tkg-git-roblox
+pkgname=wine-tkg-git-rbx
 pkgrel=1
 pkgver=2.6
 url="https://github.com/Frogging-Family/wine-tkg-git"

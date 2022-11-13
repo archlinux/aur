@@ -1,4 +1,4 @@
-pkgbase = wine-tkg-git-roblox
+pkgbase = wine-tkg-git-rbx
 	pkgdesc = wine-tkg-git with patches for Roblox
 	pkgver = 2.6
 	pkgrel = 1
