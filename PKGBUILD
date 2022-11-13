@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNASeqR
-_pkgver=1.14.1
+_pkgver=1.15.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='RNASeqR: an R package for automated two-group RNA-Seq analysis workflow'
 arch=('any')

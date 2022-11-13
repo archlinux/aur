@@ -1,6 +1,6 @@
 pkgbase = r-rnaseqr
 	pkgdesc = RNASeqR: an R package for automated two-group RNA-Seq analysis workflow
-	pkgver = 1.14.1
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RNASeqR
 	arch = any
