@@ -1,13 +1,14 @@
 pkgbase = pinedio-lora-driver-git
 	pkgdesc = Driver and demo applications for the PineDio LoRa backplate for the Pinephone and USB adapter
 	pkgver = r3.3c1ba9d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JF002/pinedio-lora-driver.git
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = aarch64
 	license = LGPL3
+	makedepends = git
 	depends = spi-ch341-usb-dkms
 	provides = pinedio-lora-driver
 	conflicts = pinedio-lora-driver
