@@ -1,11 +1,10 @@
 pkgbase = mullvad-vpn
 	pkgdesc = The Mullvad VPN client app for desktop
 	pkgver = 2022.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
-	arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
