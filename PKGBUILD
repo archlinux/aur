@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer-git
 pkgver=6.5.5_r48681.g12c2a9b7e9
-pkgrel=5
+pkgrel=6
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -31,7 +31,7 @@ install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 'compile.bash')
 b2sums=('SKIP'
-        '3e2b3c952ddb353e159f9f65565fb6838428e39bda0fa062019cfde9158d36f6aaff71a52b13e39fe25e8cd98f8a11097f0d59b152c58dedbb951aae3f9c71f6')
+        '09727e5b1f2aa9f288defb81531cbc10f40a58d34d6276ea241495f149b0d180ec24ee5e3cbcb3043d62e8a6dd729681dca909ea06878932a96a34766e07efc8')
 
 pkgver() {
     cd "${pkgname}" || exit 1
@@ -48,12 +48,6 @@ prepare() {
 
 build() {
     cd "${pkgname}" || exit 1
-    # I could not find the documentation on how to handle BUILDENV/OPTION in
-    # makepkg.conf. If you are reading this and know where it is,
-    # please send it my way.
-    if ! command -v ccache > /dev/null 2>&1; then
-        export AL_NOCCACHE=1
-    fi
     ../../compile.bash build
 }
 

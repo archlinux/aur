@@ -48,11 +48,6 @@ build() {
 			fi
 		fi
 	fi
-	if pacman -Qq ccache &> /dev/null; then
-		export PATH="/usr/lib/ccache/bin/:$PATH"
-		export CCACHE_SLOPPINESS="file_macro,locale,time_macros"
-		export CCACHE_NOHASHDIR="true"
-	fi
 	export AUTOBUILD_CPU_COUNT=$build_jobs
 
 	AL_ARCH_FLAGS=${AL_ARCH_FLAGS:-'-march=x86-64-v2 -mtune=native'}
@@ -64,8 +59,16 @@ build() {
 		-DCMAKE_C_FLAGS="$AL_ARCH_FLAGS"
 		-DCMAKE_CXX_FLAGS="$AL_ARCH_FLAGS"
 		)
-	if [[ -z "$AL_NO_CCACHE" ]]; then
-		ccache --set-config=sloppiness=file_macro,locale,time_macros
+	# I could not find the documentation on how to handle BUILDENV/OPTION in
+    # makepkg.conf. If you are reading this and know where it is,
+    # please send it my way.
+	if [[ -n "$AL_NO_CCACHE" ]] || ! command -v ccache 2 > /dev/null 2>&1; then
+		echo "ccache disabled"
+		AL_CMAKE_CONFIG+=(-UCMAKE_CXX_COMPILER_LAUNCHER)
+	else
+		echo "ccache available and enabled"
+		export CCACHE_SLOPPINESS="file_macro,locale,time_macros"
+		export CCACHE_NOHASHDIR="true"
 		AL_CMAKE_CONFIG+=(-DCMAKE_CXX_COMPILER_LAUNCHER=ccache)
 	fi
 	$prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}"
