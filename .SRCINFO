@@ -1,6 +1,6 @@
 pkgbase = fcitx5-pinyin-zhwiki-rime
 	pkgdesc = Fcitx 5 Pinyin Dictionary from zh.wikipedia.org for rime
-	pkgver = 20210120
+	pkgver = 20221101
 	pkgrel = 1
 	url = https://github.com/felixonmars/fcitx5-pinyin-zhwiki
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = fcitx5-pinyin-zhwiki-rime
 	makedepends = libime
 	makedepends = opencc
 	makedepends = pypinyin
-	source = https://github.com/felixonmars/fcitx5-pinyin-zhwiki/archive/0.2.1/fcitx5-pinyin-zhwiki-rime-0.2.1.tar.gz
-	source = https://dumps.wikimedia.org/zhwiki/20210120/zhwiki-20210120-all-titles-in-ns0.gz
-	md5sums = 2d01f45a73b7c686fef5c44472a9572b
-	md5sums = c926e305e2cc770aaeb720e935918a54
+	source = https://github.com/felixonmars/fcitx5-pinyin-zhwiki/archive/0.2.4/fcitx5-pinyin-zhwiki-rime-0.2.4.tar.gz
+	source = https://dumps.wikimedia.org/zhwiki/20221101/zhwiki-20221101-all-titles-in-ns0.gz
+	md5sums = d929f18b1b0019da22010f0aa7bdb671
+	md5sums = eb625017c5c2d003ccb21c3e8425544a
 
 pkgname = fcitx5-pinyin-zhwiki-rime
-
