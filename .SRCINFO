@@ -1,0 +1,20 @@
+pkgbase = r-shinyvalidate
+	pkgdesc = Input Validation for Shiny Apps
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinyvalidate
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-glue
+	depends = r-htmltools
+	depends = r-rlang
+	depends = r-shiny
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinyvalidate_0.1.2.tar.gz
+	sha256sums = 4751015af9fe37b03885cdf261bafff72deea425bd331a82ebaba9998332fa56
+
+pkgname = r-shinyvalidate
