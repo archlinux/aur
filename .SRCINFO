@@ -1,6 +1,6 @@
 pkgbase = r-cemitool
 	pkgdesc = Co-expression Modules identification Tool
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CEMiTool
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-cemitool
 	depends = r-wgcna
 	optdepends = r-biocmanager
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CEMiTool_1.20.0.tar.gz
-	sha256sums = 1ab9266e60c7c79a350dae83e6ab6cdd6db39b4b255eb188b2856c5e93889716
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CEMiTool_1.22.0.tar.gz
+	sha256sums = 1d29724348ecccce9f927f85164207d463d735b9d74da359d8fc380ba522b595
 
 pkgname = r-cemitool
