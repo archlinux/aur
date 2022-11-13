@@ -2,7 +2,7 @@
 
 pkgname=cider-bin
 _pkgname=Cider
-pkgver=1.5.7
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Installed using the debian release builds from CircleCI."
 arch=("armv7h" "i686" "x86_64")
