@@ -1,14 +1,14 @@
-pkgbase = yolang
+pkgbase = yolang-git
 	pkgdesc = Lightweight, simple interpretive programming language
 	pkgver = 1.5.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PowerAngelXD/YoLang
 	arch = any
 	license = MIT license
 	makedepends = cmake
 	makedepends = git
 	provides = yolang
-	source = yolang-1.5.40.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/tags/Release-2022-11-0160.zip
+	source = yolang-git-1.5.40.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/tags/Release-2022-11-0160.zip
 	md5sums = f6266e901d0a807e6ce7965f255abf77
 
-pkgname = yolang
+pkgname = yolang-git

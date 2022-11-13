@@ -4,9 +4,9 @@
 # then please put 'unknown'.
 
 # Maintainer: XiaoDeng3386 <1744793737@qq.com>
-pkgname="yolang"
+pkgname="yolang-git"
 pkgver="1.5.40"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, simple interpretive programming language"
 arch=("any")
 url="https://github.com/PowerAngelXD/YoLang"
