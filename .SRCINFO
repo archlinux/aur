@@ -1,12 +1,12 @@
 pkgbase = color-code
 	pkgdesc = Encode arbitrary bytes to ANSI colors on the console.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/coNQP/color-code
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/conqp/color-code/archive/refs/tags/0.1.6.tar.gz
-	sha256sums = 82a627078fc68c30ac9d0ed60ff68cb02568950fa897666bf65ad154b02cf364
+	source = https://github.com/conqp/color-code/archive/refs/tags/0.1.7.tar.gz
+	sha256sums = ffd1d2df7239b2826e2ef8938c6df10e792ce85016128cfececd486748ac6e9b
 
 pkgname = color-code
