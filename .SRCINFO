@@ -1,11 +1,12 @@
 pkgbase = alchemy-viewer
 	pkgdesc = This is the next generation of Alchemy Viewer!
-	pkgver = 6.5.2.48000
-	pkgrel = 6
+	pkgver = 6.5.5_r48681.g12c2a9b7e9
+	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
 	license = LGPL
+	makedepends = coreutils
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = python-virtualenv
@@ -41,14 +42,15 @@ pkgbase = alchemy-viewer
 	optdepends = mesa-libgl: Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
+	provides = alchemy-viewer
 	replaces = alchemy-next-viewer
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
 	options = !lto
 	source = alchemy-viewer::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = compile.bash
 	b2sums = SKIP
+	b2sums = b03a84626d849b87fdc012cdee3743d4bc60ffd9cf865f99b7db58fe5fef9fa98e476277ac73f554ffa16a8fdc0b0304b8a93e1d8e62e48b1c79c8b9d18f3f75
 
 pkgname = alchemy-viewer
