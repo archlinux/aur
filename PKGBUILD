@@ -13,7 +13,7 @@ conflicts=("$pkgname-bin")
 source=("$pkgname-source.tar.gz::https://github.com/pavlobu/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
 noextract=("$pkgname-source.tar.gz")
-b2sums=('3e22d44be54b457507a5c0ea8534c70228a7bea92bd7c5b090118835854fe69d2a4c585675eb816c9642269fed95fbceb4ac576dd00d37d644f9c5c649b71fd6'
+b2sums=('bef83c836ac722a854b524bc829b8e2f5a395a10d8d5794a148f0ef7f7a9f1292f99e99f219b10a9d550986d224c744047288a62fa37dcc062bebdbe42684e65'
         '96072794fba957f5d9258778f41595c00e8ea3b866b9692f64282212254139c2c85e4b9ca516d4f6efe1a1deb7fc1c269ec09f86c98debe04e4507cecc79457e')
 
 prepare() {
