@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.19.1
-pkgrel=2
+pkgver=1.19.2
+pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
@@ -25,9 +25,8 @@ sha256sums=(
 prepare() {
   cd $pkgname
 
-  git config --local protocol.file.allow always
   git config submodule.deps/obs-websocket.url $srcdir/obs-websocket
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
