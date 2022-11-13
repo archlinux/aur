@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAmodR.ML
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=3
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Detecting patterns of post-transcriptional modifications using machine learning'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('43a647ca2705430bca1030a58b5ec162fec462eb160f06c70a019ab1c70e799d')
+sha256sums=('3e5267358c985cf92a87475a3280a4c5be434fbd7ebc717dbb8f989032d3d322')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

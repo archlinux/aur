@@ -1,7 +1,7 @@
 pkgbase = r-rnamodr.ml
 	pkgdesc = Detecting patterns of post-transcriptional modifications using machine learning
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAmodR.ML
 	arch = any
 	license = Artistic2.0
@@ -22,7 +22,7 @@ pkgbase = r-rnamodr.ml
 	optdepends = r-rsamtools
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR.ML_1.10.0.tar.gz
-	sha256sums = 43a647ca2705430bca1030a58b5ec162fec462eb160f06c70a019ab1c70e799d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR.ML_1.12.0.tar.gz
+	sha256sums = 3e5267358c985cf92a87475a3280a4c5be434fbd7ebc717dbb8f989032d3d322
 
 pkgname = r-rnamodr.ml
