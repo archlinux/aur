@@ -1,6 +1,6 @@
 pkgbase = pixelcolor
 	pkgdesc = Get the screen pixel color
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://www.muflone.com/pixelcolor
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pixelcolor
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pillow
-	source = pixelcolor-0.1.0.tar.gz::https://github.com/muflone/pixelcolor/archive/0.1.0.tar.gz
-	sha256sums = eff430932929edf4ec395f1e123427778d4e63a8a54898906e81b1980f6a8115
+	source = pixelcolor-0.2.0.tar.gz::https://github.com/muflone/pixelcolor/archive/0.2.0.tar.gz
+	sha256sums = 780d287ea74c020ba3691732ed13c74748d98f7e0d89bc472ec2984ebcf59033
 
 pkgname = pixelcolor
