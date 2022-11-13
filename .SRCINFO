@@ -1,0 +1,16 @@
+pkgbase = python-scimg-git
+	pkgdesc = Python console image view library
+	pkgver = r12.558a5db
+	pkgrel = 1
+	url = https://apps.sdore.me/cimg
+	arch = any
+	license = LGPL3
+	depends = python-pillow
+	depends = python-sutils
+	optdepends = python-requests: for fetching images by URLs
+	provides = python-scimg
+	conflicts = python-scimg
+	source = git+https://apps.sdore.me/cimg.git
+	sha256sums = SKIP
+
+pkgname = python-scimg-git
