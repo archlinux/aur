@@ -1,0 +1,17 @@
+pkgbase = python-pysdb
+	pkgdesc = A simple lightweight portable, embeddable database library
+	pkgver = 0.0.3
+	pkgrel = 00
+	url = https://github.com/TheSyedAasif/pysdb
+	arch = any
+	license = MPL2
+	depends = python
+	noextract = pysdb-0.0.3-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/01/fc/7d45981a569de1e718c4214580ba603d3e553c768cfc69166250b2bf5d35/pysdb-0.0.3-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 35588d24ef6692cf676513af7fb8df0d
+	md5sums = 9741c346eef56131163e13b9db1241b3
+
+pkgname = python-pysdb
