@@ -5,13 +5,12 @@ pkgbase = updiprog-git
 	url = https://github.com/Polarisru/updiprog
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	makedepends = make
 	makedepends = git
 	provides = updiprog=0.5.r2.99df4f8
 	conflicts = updiprog
 	source = updiprog-git::git+https://github.com/Polarisru/updiprog.git
-	source = Makefile
 	sha256sums = SKIP
-	sha256sums = 8145eee13c59c4723ff3b8175c41ea860117fd4fd93cfd18dd176cb74d55cd8a
 
 pkgname = updiprog-git

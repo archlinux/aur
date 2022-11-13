@@ -12,37 +12,27 @@ url="https://github.com/Polarisru/${_pkgname}"
 license=('BSD')
 
 depends=()
-makedepends=('make' 'git')
+makedepends=('cmake' 'make' 'git')
 
 provides=(${_pkgname}=${pkgver})
 conflicts=(${_pkgname})
-source=(
-  "$pkgname::git+$url.git"
-  "Makefile"
-)
-sha256sums=(
-  "SKIP"
-  "8145eee13c59c4723ff3b8175c41ea860117fd4fd93cfd18dd176cb74d55cd8a"
-)
+source=("$pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  cd "${pkgname}/"
-  git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname}/"
-  cp ../Makefile .
+  git -C "${pkgname}/" describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}/"
-  make
+  cmake -B build/ -S "${pkgname}/" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build/
 }
 
 package() {
-  cd "${pkgname}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 LICENSE     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm755 "build/${_pkgname}"  "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
