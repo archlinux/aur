@@ -31,7 +31,7 @@ conflicts=('asymptote' 'git-latexdiff' 'haskell-citeproc' 'psutils' 't1utils'
 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml'
 )
 source=("install-tl-unx-${pkgver}.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
-    "LICENSE.TL::http://texlive.tug.org/texlive/LICENSE.TL")
+    "LICENSE.TL::https://tug.org/texlive/LICENSE.TL")
 sha256sums=('SKIP'
             'e8f070b2d1a9bad00af9d6cb94e687f2120591d092c8dab8727249b70adc96d0')
 #PKGEXT='.pkg.tar'
