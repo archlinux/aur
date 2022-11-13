@@ -2,7 +2,7 @@
 # Maintainer: Ilesh Thiada <ileshkt@gmail.com>
 pkgname=ferium-bin
 _pkgname=ferium
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64" "aarch64")
@@ -13,8 +13,8 @@ url="https://github.com/gorilla-devs/ferium"
 license=('MPL2')
 source_x86_64=("$_pkgname-$pkgver-$pkgrel.x86_64.zip::https://github.com/gorilla-devs/ferium/releases/download/v$pkgver/ferium-linux-nogui.zip")
 source_aarch64=("$_pkgname-$pkgver-$pkgrel.aarch64.zip::https://github.com/gorilla-devs/ferium/releases/download/v$pkgver/ferium-linux-arm64-nogui.zip")
-sha256sums_x86_64=('151d76a917c012aee9b8e8fa47170974903f6868bdb500598167fe082692dd73')
-sha256sums_aarch64=('c8644f0a1e95e4d7e0924dfa6f32752d6d48f5d1b65905dfdf33cce7cbbbff2a')
+sha256sums_x86_64=('bfb75773fed73b88b52deb0765c57cc8e157397bd72668b61ed4fa8e988466fa')
+sha256sums_aarch64=('5b5705100038a5576844950b2463e0073376b062ea5eb175dcf99436397ed382')
 
 package() {
 	cd "$srcdir"
