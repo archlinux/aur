@@ -3,7 +3,7 @@
 _pkgname=cvar
 _pkgver=0.5
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.5
 pkgrel=1
 pkgdesc='Compute Expected Shortfall and Value at Risk for Continuous Distributions'
 arch=('any')
