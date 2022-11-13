@@ -47,8 +47,6 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
 
-  # I don't think it's supposed to go directly in /usr/lib, but I don't feel
-  # like moving it either...
   mkdir -p "$pkgdir"/usr/lib/ossl-modules
   ln -sr "$pkgdir"/usr/lib/pkcs11_provider.so "$pkgdir"/usr/lib/ossl-modules/pkcs11.so
 }
