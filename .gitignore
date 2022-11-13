@@ -1,7 +1,7 @@
 .BUILDINFO
 .INSTALL
 .PKGINFO
-grav-*.pkg.tar.zst
+*.pkg.tar.zst
 grav-*.zip
 pkg
 src

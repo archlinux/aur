@@ -4,7 +4,7 @@
 
 pkgname=grav
 pkgver=1.7.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
 url='https://getgrav.org'
@@ -28,7 +28,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/down
         "grav.php-fpm.ini"
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
-sha256sums=('86797de598aec92550fc2da15f6b8ad6c59189d781bc9e2bbf7ba5d8440cf141'
+sha256sums=('6f04df49441f5d822b3ccedbb3891576d56712d1d1014b2e51518dbea474818c'
             '05eb4e83c3bfa231a48dc107b5916c79f8903369874da532a27b8efc08466d65'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
@@ -46,6 +46,7 @@ prepare() {
   rm -rf assets backup cache .github images logs .phan tests tmp
   rm *.md composer.* now.json
   find . -type f -name '.gitkeep' -exec rm {} \;
+  find . -depth -type d -name '.github' -exec rm -rf {} \;
   mv user user.upstream
 }
 
