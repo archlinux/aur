@@ -1,7 +1,7 @@
 pkgbase = r-distr
 	pkgdesc = Object Oriented Implementation of Distributions
-	pkgver = 2.8.0
-	pkgrel = 4
+	pkgver = 2.9.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=distr
 	arch = x86_64
 	license = LGPL
@@ -11,7 +11,7 @@ pkgbase = r-distr
 	optdepends = r-distrex
 	optdepends = r-knitr
 	optdepends = r-svunit
-	source = https://cran.r-project.org/src/contrib/distr_2.8.0.tar.gz
-	sha256sums = bb7df05d6b946bcdbbec2e3397c7c7e349b537cabfcbb13a34bcf6312a71ceb7
+	source = https://cran.r-project.org/src/contrib/distr_2.9.0.tar.gz
+	sha256sums = 44b1465ad260b7c6a9da65848fae89003f0c1dfcda6a6f73e65d748af4797d39
 
 pkgname = r-distr
