@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ALDEx2
-_pkgver=1.28.1
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
-pkgrel=3
+pkgver=1.30.0
+pkgrel=1
 pkgdesc='Analysis Of Differential Abundance Taking Sample Variation Into Account'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('492e774d4e72c86511028420eac13ec3cd49a210849c10e9257f51aa45e9f776')
+sha256sums=('6eba6fdd689fdd5d18fde3ffe4aa64ad4af5bfdc8977b8038d297fb46ed10515')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
@@ -36,6 +36,5 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
