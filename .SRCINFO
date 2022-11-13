@@ -1,5 +1,5 @@
 pkgbase = llvm-minimal-git
-	pkgver = 16.0.0_r441433.9fe5ca9b3076
+	pkgver = 16.0.0_r441632.1a6d770447c5
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -14,24 +14,31 @@ pkgbase = llvm-minimal-git
 	makedepends = libxcrypt
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = spirv-headers
+	makedepends = spirv-tools
 	options = staticlibs
 	options = !lto
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	source = local://llvm-config.h
+	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git
 	md5sums = SKIP
 	md5sums = 295c343dcd457dc534662f011d7cff1a
+	md5sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd
+	sha512sums = SKIP
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=16.0.0_r441433.9fe5ca9b3076-1
+	depends = llvm-libs-minimal-git=16.0.0_r441632.1a6d770447c5-1
 	depends = perl
+	depends = spirv-tools
 	optdepends = python: for using lit (LLVM Integrated Tester)
 	optdepends = python-setuptools: for using lit
 	provides = llvm
 	provides = compiler-rt
 	provides = clang
+	provides = spirv-llvm-translator
 	conflicts = llvm
 	conflicts = compiler-rt
 	conflicts = clang

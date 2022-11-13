@@ -16,20 +16,23 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=16.0.0_r441433.9fe5ca9b3076
+pkgver=16.0.0_r441632.1a6d770447c5
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             'libxcrypt' 'python' 'python-setuptools')
+             'libxcrypt' 'python' 'python-setuptools' 'spirv-headers' 'spirv-tools')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-                'local://llvm-config.h')
+                'local://llvm-config.h'
+                "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git")
                 
 md5sums=('SKIP'
-         '295c343dcd457dc534662f011d7cff1a')
+         '295c343dcd457dc534662f011d7cff1a'
+         'SKIP')
 sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
+            'SKIP')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -83,6 +86,11 @@ build() {
         -D LLVM_ENABLE_BINDINGS=OFF \
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
         -D LLVM_ENABLE_DUMP=ON \
+        -D LLVM_EXTERNAL_PROJECTS="SPIRV-LLVM-Translator" \
+        -D LLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator \
+        -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ \
+        -D LLVM_SPIRV_INCLUDE_TESTS=ON \
+        -D LLVM_LIT_ARGS="-sv --ignore-fail" \
         -Wno-dev
 
     ninja -C _build $NINJAFLAGS 
@@ -92,12 +100,13 @@ check() {
     ninja -C _build $NINJAFLAGS check-llvm
     ninja -C _build $NINJAFLAGS check-clang
     ninja -C _build $NINJAFLAGS check-clang-tools
+    ninja -C _build $NINJAFLAGS check-llvm-spirv
 }
 
 package_llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
-    depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl')
-    provides=('llvm' 'compiler-rt' 'clang')
+    depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl' 'spirv-tools')
+    provides=('llvm' 'compiler-rt' 'clang' 'spirv-llvm-translator')
     conflicts=('llvm' 'compiler-rt' 'clang')
     optdepends=('python: for using lit (LLVM Integrated Tester)'
                           'python-setuptools: for using lit'
