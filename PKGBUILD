@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tLOH
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Assessment of evidence for LOH in spatial transcriptomics pre-processed data using Bayes factor calculations'
 arch=('any')
@@ -11,13 +11,17 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-bestnormalize
   r-data.table
+  r-depmixs4
   r-dplyr
   r-genomicranges
   r-ggplot2
   r-matrixgenerics
+  r-naniar
   r-purrr
   r-scales
+  r-stringr
   r-variantannotation
 )
 optdepends=(
@@ -25,7 +29,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3531a1b6e6469e0a3b358d2682fe46a613d310e52be1d3a9a5aeda7f0f2b570d')
+sha256sums=('9246e90836f2e52d75e64784b0b2a449857e239a33f882b79d9a69027ef497b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
