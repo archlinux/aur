@@ -1,7 +1,7 @@
 # Maintainer: Rene Hickersberger <r@renehsz.com>
 # Contributor: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=mepo
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Fast, simple, and hackable OSM map viewer for Linux"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -12,8 +12,8 @@ makedepends=('zig>=0.9')
 checkdepends=('zig>=0.9')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('1dac736ee486931f231458e7a23359a5b359826dd496c28eb11c9ea90f3b42bcb31acca2b528278f27185dd6053ee0378cf14be8d1d96b20ade71c8db4d43253')
-sha256sums=('20c56c84456974583b501c34b47c45f229934cfdf10cf904f229b604c7361c80')
+sha256sums=('dc4e5a47e1ff9d11c9e0d1ebe95a451498b537fb6aff818fe449a9033e9c4b47')
+sha512sums=('51e7ba2b3d159b0eb49526530cc6cf7200c734d565c319c923507e734b26c6bf0588b8275c2fac7c963af21c8a575a7a9e3708ffdf83b68a35082a979fb4c523')
 
 build() {
   cd "$pkgname-$pkgver"
