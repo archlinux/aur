@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPsimSeq
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.8.0
+pkgrel=3
 pkgdesc='Semi-parametric simulation tool for bulk and single-cell RNA sequencing data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e95f56ffab1041fb8e348be7f8bd97b0d638eefbf685038c58de5c7fadac5e87')
+sha256sums=('1f50dd5b883b3740e35aad7da5fd62d86464d6d7b69f8e3272f1ecdf28ee1be6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
