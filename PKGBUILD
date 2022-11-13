@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multiMiR
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
-pkgrel=1
+pkgver=1.20.0
+pkgrel=3
 pkgdesc='Integration of multiple microRNA-target databases with their disease and drug associations'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ddf5855c24b24d7a6230a2e9a0ceaa8ac6e11ddb25ef052f0382e685761099f2')
+sha256sums=('2959561a79277522e7634214d17ed30bf2da861783cfdc3938f1e2c059c8d2fd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
