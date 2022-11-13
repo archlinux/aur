@@ -12,9 +12,9 @@ _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
@@ -118,30 +118,16 @@ build() {
   pushd gui
   echo "Packing Mullvad VPN ${PRODUCT_VERSION} artifact(s)..."
   export npm_config_cache="$srcdir/npm_cache"
-  npm run pack:linux
+  npm run pack:linux --release
   popd
 }
-
-#check() {
-#  cd "$srcdir/mullvadvpn-app"
-#  export RUSTUP_TOOLCHAIN=stable
-#  cargo test --frozen
-#
-#  cd gui
-#  npm test
-#}
 
 package() {
   cd "$srcdir/mullvadvpn-app"
 
   # Install main files
   install -d "$pkgdir/opt/Mullvad VPN"
-
-  if [ "$CARCH" == "aarch64" ]; then
-    cp -r dist/linux-arm64-unpacked/* "$pkgdir/opt/Mullvad VPN/"
-  else
-    cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
-  fi
+  cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
 
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
 
