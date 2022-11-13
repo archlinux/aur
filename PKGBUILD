@@ -1,14 +1,25 @@
 pkgname=pkcs11-provider
-pkgver=r155.g0df1dde
+pkgver=r172.g72a9ec1
 pkgrel=1
 pkgdesc="OpenSSL 3.0 provider for PKCS#11 hardware-backed private keys"
 url="https://github.com/latchset/pkcs11-provider"
 arch=(x86_64)
 license=(Apache)
-depends=("openssl>=3.0.5" p11-kit)
-makedepends=(autoconf-archive)
-checkdepends=(nss)
-source=("git+https://github.com/latchset/pkcs11-provider")
+depends=(
+  "openssl>=3.0.5"
+  p11-kit
+)
+makedepends=(
+  autoconf-archive
+  automake
+  gcc
+  libtool
+)
+checkdepends=(
+  nss
+)
+_commit=72a9ec171bbde7b49d241c534afd3e754b65722d
+source=("git+https://github.com/latchset/pkcs11-provider#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
