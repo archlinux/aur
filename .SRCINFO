@@ -1,6 +1,6 @@
 pkgbase = libplacebo-git
 	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)
-	pkgver = 5.228.0.rc1.23.g0b685385
+	pkgver = 5.229.1.28.g27e38da9
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/libplacebo
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = libplacebo-git
 	makedepends = ffmpeg
 	makedepends = lcms2
 	makedepends = shaderc
+	makedepends = glad
+	makedepends = nuklear
 	depends = libvulkan.so
 	depends = liblcms2.so
 	depends = glslang
@@ -28,10 +30,6 @@ pkgbase = libplacebo-git
 	conflicts = libplacebo
 	options = debug
 	source = git+https://code.videolan.org/videolan/libplacebo.git
-	source = git+https://github.com/Immediate-Mode-UI/Nuklear.git
-	source = git+https://github.com/Dav1dde/glad.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libplacebo-git
