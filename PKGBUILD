@@ -3,14 +3,14 @@
 pkgname=python-librabbitmq
 pkgver=2.0.0
 _librabbitmqver=0.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc="AMQP Client using the rabbitmq-c library"
 arch=('x86_64')
 url="https://pypi.python.org/pypi/librabbitmq"
 license=('MPL')
 depends=('python-amqp' 'python-six')
 makedepends=('python-setuptools')
-checkdepends=('python-mock' 'pifpaf' 'rabbitmq')
+checkdepends=('pifpaf' 'rabbitmq')
 source=("https://files.pythonhosted.org/packages/source/l/librabbitmq/librabbitmq-$pkgver.tar.gz"{,.asc}
         "librabbitmq-c-$_librabbitmqver.zip::https://github.com/alanxz/rabbitmq-c/archive/v$_librabbitmqver.zip")
 sha512sums=('c35b815bc776bbac3087880406cb8dbcf6d3d8fad3590139d0dd88ae059599927f7a277493e6fd557ba2da6c9e8ee1a668f079bbb16f5127ccfd223afbd30a3f'
