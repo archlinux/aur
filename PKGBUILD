@@ -4,7 +4,7 @@
 _pkgname=dooble
 _repourl="https://github.com/textbrowser/dooble"
 pkgname=dooble-bin
-pkgver=2022.10.15
+pkgver=2022.11.15
 pkgrel=1
 pkgdesc="Dooble is the scientific browser"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "LICENSE-${pkgver}::${_repourl}/raw/${pkgver}/LICENSE"
 )
 noextract=("Dooble-${pkgver}_amd64.deb")
-sha256sums=('b627238a1a77a75b7666101861c2deb6620c0350ee37e0ed73b1cc430c176ab3'
+sha256sums=('0905cf9bd7e45b1696bd47b43754f5b28e28521b1b96a5dae2626a78927c15e1'
             'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
 
 package() {
