@@ -4,11 +4,11 @@ _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=4.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-sphinx' 'python-sphinx_rtd_theme')
-checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests' 'python-dask'
+checkdepends=('python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests' 'python-dask'
               'python-matplotlib' 'python-hist' 'python-scikit-hep-testdata' 'python-xxhash' 'root' 'xrootd')
 depends=('python-awkward>=1.7.0' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-zstandard')
 optdepends=('xrootd: access remote files over XRootD'
