@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer-git
 pkgver=6.5.5_r48681.g12c2a9b7e9
-pkgrel=3
+pkgrel=4
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
