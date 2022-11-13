@@ -1,19 +1,15 @@
-Release notes to tbsm version v0.6, Feb 2022
+Release notes to tbsm version v0.7, Nov 2022
 ==============================================
-031c2a3 - Makefile: Add new target 'update'
-e7cc113 - Manual: Add Tips&Tricks section
-          Thanks to all who gave a hint
-afdb675 - Allow configuration of session search paths by conf file
-          Thanks to Douglas
-54b0c57 - Support XDG Base Directory Specification
-          Thanks to Vladimir
-0f04aa3 - Exit on error in config file. Prior was such an error ignored
-9f82e2d - Allow custom Xorg startup file
-53d339e - Improved user information in verbose mode - 1a4d9f1
-a6e7bcb - Add new doc file ReleaseNotes (Hey, you're reading it!)
-a6e7bcb - Rename ChangeLog to ReleaseLog
+c69bc18 - runSession: detect DBUS_SESSION_ADDRESS
+          Thanks to Victor for this DBUS/Wayland fix
+4e8ad87 - Drop not needed option when using ln command
+d6e8982 - Make check if running in tty more fuzzy ...
+          With these two we try to be more BSD compatible
+56ec23b - Use colon as path separator in sessionPfads string
+          CAUTION! if you have used that in your config!
+9c3a661 - Manual: Add a hint how to add a shell session to the menu
 ================================================================================
-Previous tbsm version was v0.5, Dez 2018
+Previous tbsm version was v0.6, Feb 2022
 --------------------------------------------------------------------------------
 To view older release notes : tbsm doc log
 The full changelog is online: https://github.com/loh-tar/tbsm/commits/master

@@ -1,6 +1,6 @@
 # Maintainer: loh.tar <loh.tar at googlemail dot com>
 pkgname='tbsm'
-pkgver='0.6'
+pkgver='0.7'
 pkgrel='1'
 pkgdesc='A pure bash session or application launcher. Inspired by cdm, tdm and krunner.'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('bash')
 install="$pkgname.install"
 changelog="release-notes.txt"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loh-tar/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1ed6f5c39d5394374529cc5b820f9cc6c5aaad8e8d0ce6098bdb16780acd117f')
+sha256sums=('fc67d6ce6efe7c4d51d16c29ddb2f96e675a20262d2c7b3ed9b8c808536eca32')
 
 prepare() {
   # Update/Copy/Fetch release-notes/changelog It's not possible to referenz above direct
