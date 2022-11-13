@@ -1,6 +1,6 @@
 pkg
 src
-*.tar.*
 *.log
-clone-dest.diff
-rsync/
+*.tar.*
+*.diff
+rsync*
