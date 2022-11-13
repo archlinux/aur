@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=singleCellTK
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Comprehensive and Interactive Analysis of Single Cell RNA-Seq Data'
 arch=('any')
@@ -11,7 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
   r
-  r-annotationdbi
+  r-annotationhub
   r-ape
   r-batchelor
   r-biobase
@@ -31,6 +31,7 @@ depends=(
   r-dropletutils
   r-dt
   r-enrichr
+  r-ensembldb
   r-experimenthub
   r-fields
   r-fishpond
@@ -51,8 +52,8 @@ depends=(
   r-msigdbr
   r-multtest
   r-plotly
+  r-plyr
   r-r.utils
-  r-rcolorbrewer
   r-reshape2
   r-reticulate
   r-rlang
@@ -66,6 +67,7 @@ depends=(
   r-scmerge
   r-scran
   r-scrnaseq
+  r-scuttle
   r-seurat
   r-shiny
   r-shinyalert
@@ -73,26 +75,29 @@ depends=(
   r-shinyjs
   r-singlecellexperiment
   r-singler
+  r-soupx
   r-summarizedexperiment
   r-sva
   r-tenxpbmcdata
   r-tibble
+  r-trajectoryutils
+  r-tscan
   r-tximport
   r-vam
   r-withr
   r-yaml
   r-zinbwave
-  r-trajectoryutils
-  r-tscan
-  r-soupx
 )
 optdepends=(
   r-biocgenerics
   r-biocstyle
+  r-fastmap
+  r-harmony
   r-kableextra
   r-knitr
   r-lintr
   r-org.mm.eg.db
+  r-rcolorbrewer
   r-rsubread
   r-shinybs
   r-shinyfiles
@@ -102,10 +107,9 @@ optdepends=(
   r-spelling
   r-stringr
   r-testthat
-  r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b7030e5fee606a5aec0b1d087b50208d77355a7f662f75a44bd69d45aef1b1a')
+sha256sums=('ba34dbbecca6c911eb5f301067cbb68da01e1a9f49609ef3df8c003784c3510e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
