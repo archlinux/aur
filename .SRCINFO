@@ -1,7 +1,7 @@
 pkgbase = python-scimg-git
 	pkgdesc = Python console image view library
 	pkgver = r12.558a5db
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.sdore.me/cimg
 	arch = any
 	license = LGPL3

@@ -4,7 +4,7 @@ _pkgbase=python-scimg
 _gitname=cimg
 pkgname=${_pkgbase}-git
 pkgver=r12.558a5db
-pkgrel=1
+pkgrel=2
 pkgdesc="Python console image view library"
 arch=('any')
 url="https://apps.sdore.me/${_gitname}"
@@ -33,7 +33,7 @@ build() {
 package() {
 	cd "${srcdir}"
 
-	python -m installer --destdir="${pkgdir}" dist/*.whl
+	python -m installer --destdir="${pkgdir}" "dist/${_gitname}-"*.whl
 
 	cd "${_gitname}"
 
