@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BayesSpace
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Clustering and Resolution Enhancement of Spatial Transcriptomes'
 arch=('x86_64')
@@ -48,7 +48,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6e071316091dcb7541ba42310012194a4d82fca4a6abff78e7b27ac804770601')
+sha256sums=('41c06a1a55689ee06d0af8d4e67871e7df1a41c65cbaa377e273c5ec04ca14c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
