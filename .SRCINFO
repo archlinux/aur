@@ -1,7 +1,7 @@
 pkgbase = wlroots-nvidia
 	pkgdesc = Modular Wayland compositor library, with fix for nvidia flickering
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
 	license = MIT
@@ -27,6 +27,7 @@ pkgbase = wlroots-nvidia
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	optdepends = xorg-xwayland: Xwayland support
+	provides = wlroots
 	provides = libwlroots.so
 	conflicts = wlroots
 	conflicts = wlroots-git
