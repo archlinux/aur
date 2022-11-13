@@ -1,7 +1,7 @@
 pkgbase = r-rnamodr.ribomethseq
 	pkgdesc = Detection of 2'-O methylations by RiboMethSeq
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAmodR.RiboMethSeq
 	arch = any
 	license = Artistic2.0
@@ -18,7 +18,7 @@ pkgbase = r-rnamodr.ribomethseq
 	optdepends = r-rnamodr.data
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR.RiboMethSeq_1.10.0.tar.gz
-	sha256sums = 88244e3e8aff2c8054c1083e5fc9952eab77df9a50d92e8bfcd970d507d18dbc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR.RiboMethSeq_1.12.0.tar.gz
+	sha256sums = 8fc19fb73d614e36217658291446ea76f0f2d2c29a39a66c92fa7c6d1086f393
 
 pkgname = r-rnamodr.ribomethseq
