@@ -1,7 +1,7 @@
 pkgbase = mpv-vapoursynth
 	pkgdesc = A free, open source, and cross-platform media player (with Vapoursynth libs)
-	pkgver = 0.34.1
-	pkgrel = 2
+	pkgver = 0.35.0
+	pkgrel = 1
 	url = https://mpv.io/
 	arch = i686
 	arch = x86_64
@@ -70,6 +70,7 @@ pkgbase = mpv-vapoursynth
 	depends = lua52
 	depends = mesa
 	depends = mujs
+	depends = pipewire
 	depends = rubberband
 	depends = librubberband.so
 	depends = shaderc
@@ -84,7 +85,7 @@ pkgbase = mpv-vapoursynth
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = git+https://github.com/mpv-player/mpv.git#tag=df6d84c1cf4bbc2b998f4d320542c78df674512d?signed
+	source = git+https://github.com/mpv-player/mpv.git#tag=33f10b1aee5fef45960728fe8595d1603c8a9a85?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
 	sha256sums = SKIP
 
