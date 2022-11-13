@@ -1,6 +1,6 @@
 pkgbase = r-tcgabiolinksgui
 	pkgdesc = "TCGAbiolinksGUI: A Graphical User Interface to analyze cancer molecular and clinical data"
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TCGAbiolinksGUI
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-tcgabiolinksgui
 	optdepends = r-rvest
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCGAbiolinksGUI_1.22.0.tar.gz
-	sha256sums = 170319071cde8ba7a5ff14226b98743e5ece77fd8535663a305623bcaa355be5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCGAbiolinksGUI_1.23.0.tar.gz
+	sha256sums = bd61457b41b884759d93f1fc619c215a843c69b52cf83270d8f433c6be3ee598
 
 pkgname = r-tcgabiolinksgui

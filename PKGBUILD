@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCGAbiolinksGUI
-_pkgver=1.22.0
+_pkgver=1.23.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc='"TCGAbiolinksGUI: A Graphical User Interface to analyze cancer molecular and clinical data"'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('170319071cde8ba7a5ff14226b98743e5ece77fd8535663a305623bcaa355be5')
+sha256sums=('bd61457b41b884759d93f1fc619c215a843c69b52cf83270d8f433c6be3ee598')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
