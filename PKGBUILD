@@ -9,7 +9,8 @@ _ver=2.3.1
 pkgver=${_ver}
 #_release=${_ver}-${_beta}
 _release=${_ver}
-pkgrel=1
+pkgrel=2
+epoch=1
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64')
