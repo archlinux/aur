@@ -18,6 +18,6 @@ pkgbase = e-search
 	options = !strip
 	options = !emptydirs
 	source = https://github.com/xushengfeng/eSearch/releases/download/1.9.2/eSearch_1.9.2.aur
-	sha512sums = b972b5facbb4fc6077186ae3e193de0f4b0376731bdb92f346b874254cd16a9ea528c8b54725d885af9e11f6c51c9dffe1762166dee19b4a4a98bc7cbc1b9df1
+	sha512sums = e135dd79d96db1c3a8b12f49061565b7599c74c5393abc5f6496bd86d09aeabafeea384c96a613e9927d535c7faa1e06601956347398699997e082ba07002066
 
 pkgname = e-search
