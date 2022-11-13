@@ -1,6 +1,6 @@
 pkgbase = r-methylcc
 	pkgdesc = Estimate the cell composition of whole blood in DNA methylation samples
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylCC
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-methylcc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylCC_1.10.0.tar.gz
-	sha256sums = 429390a250eac62acdb84a7621d3b1b3b7326363d89a9ce3adec10cf84e92f6a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylCC_1.12.0.tar.gz
+	sha256sums = b4f47e31294af20370f569fb5b0b4e04e76f8bf715ce32a4a3ba76216dd01f54
 
 pkgname = r-methylcc
