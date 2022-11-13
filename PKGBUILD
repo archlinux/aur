@@ -2,7 +2,7 @@
 pkgname=color-code
 _repo_name="ansi-${pkgname}c"
 pkgver=0.2.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Encode arbitrary bytes to ANSI colors on the console."
 arch=('x86_64')
 url="https://github.com/coNQP/ansi-${_repo_name}c"
@@ -20,6 +20,6 @@ package() {
 	cd "${_repo_name}-${pkgver}"
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install "target/release/${pkgname}" "${pkgdir}/usr/bin"
+	install "target/release/${_repo_name}" "${pkgdir}/usr/bin"
 	install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
