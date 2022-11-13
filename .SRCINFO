@@ -1,13 +1,13 @@
 pkgbase = aaru-git
 	pkgdesc = Disc image management and creation tool for disks, tapes, optical and solid state media
 	pkgver = v6.0.0.3f0f4f1a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.aaru.app
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL
-	makedepends = dotnet-sdk>=6.0.0
+	makedepends = dotnet-sdk>=7.0.0
 	makedepends = git
 	depends = icu70
 	depends = krb5
