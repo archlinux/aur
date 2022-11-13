@@ -1,6 +1,6 @@
 pkgbase = r-psichomics
 	pkgdesc = Graphical Interface for Alternative Splicing Quantification, Analysis and Visualisation
-	pkgver = 1.22.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/psichomics
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = r-psichomics
 	optdepends = r-rstudioapi
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/psichomics_1.22.1.tar.gz
-	sha256sums = 2fc3ba48b5fa87c152ea258a57a8d73803d2efe410b119fc664ba52012b8af05
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/psichomics_1.24.0.tar.gz
+	sha256sums = 4d0b20e56af92bd955507ab0b651e7c861385831912ecc20b045e230dce0249a
 
 pkgname = r-psichomics
