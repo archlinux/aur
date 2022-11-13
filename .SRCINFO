@@ -1,0 +1,17 @@
+pkgbase = r-this.path
+	pkgdesc = Get Executing Script's Path, from 'RStudio', 'Rgui', 'VSCode', 'Rscript' (Shells Including Windows Command-Line / / Unix Terminal), and 'source'
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=this.path
+	arch = x86_64
+	license = MIT
+	depends = r
+	optdepends = r-microbenchmark
+	optdepends = r-rprojroot
+	optdepends = r-rstudioapi
+	optdepends = r-testthat
+	optdepends = r-utils
+	source = https://cran.r-project.org/src/contrib/this.path_1.0.1.tar.gz
+	sha256sums = 5469a1deff793b0f0d1866322cb4bde56ca83865f42d64001027d528a82e7f2f
+
+pkgname = r-this.path
