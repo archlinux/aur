@@ -1,0 +1,20 @@
+pkgbase = python-pytest-verbose-parametrize
+	pkgdesc = Pytest parametrize hook to generate ids for parametrized tests
+	pkgver = 1.7.0
+	pkgrel = 4
+	url = https://github.com/man-group/pytest-plugins/tree/master/pytest-verbose-parametrize
+	arch = any
+	license = MIT
+	checkdepends = python-coverage
+	checkdepends = python-mock
+	checkdepends = python-pytest-virtualenv
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git
+	depends = python-pytest
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/p/pytest-verbose-parametrize/pytest-verbose-parametrize-1.7.0.tar.gz
+	source = python-pytest-verbose-parametrize-python310.patch::https://github.com/man-group/pytest-plugins/commit/fef336a05902.patch
+	sha512sums = ac81cdf002d60b4af916c4beb4c832c9c39dc9dcfa3eea7385b093f9ea18391cbf968a4e908abdb23523a7cb1e294dce2017083414e61eef6762f157319e2cf4
+	sha512sums = 5e05613fd1c8d13f04b4b516907d8dd6e5b1c28bc550c8b38af3f3023c59f29fb586cfe8ffb05438d5fbd134e551976a858cbf439aa9ccddecd2b74c3e79c93d
+
+pkgname = python-pytest-verbose-parametrize
