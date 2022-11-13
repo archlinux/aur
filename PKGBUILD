@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=conclus
-_pkgver=1.3.3
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='ScRNA-seq Workflow CONCLUS - From CONsensus CLUSters To A Meaningful CONCLUSion'
 arch=('any')
@@ -25,7 +25,10 @@ depends=(
   r-geoquery
   r-ggplot2
   r-gridextra
+  r-org.hs.eg.db
+  r-org.mm.eg.db
   r-pheatmap
+  r-rlang
   r-rtsne
   r-scales
   r-scater
@@ -33,8 +36,6 @@ depends=(
   r-singlecellexperiment
   r-stringr
   r-summarizedexperiment
-  r-org.mm.eg.db
-  r-org.hs.eg.db
 )
 optdepends=(
   r-biocstyle
@@ -46,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('469178ed2a313a6f39fd8306b4470601b691edbcd0acfd896d4019c7c304f9d1')
+sha256sums=('4c9aa76ae7b27d7d50320f5e2069a739acbf7097c7d803f0075e77dcf5383327')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
