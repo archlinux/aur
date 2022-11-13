@@ -7,7 +7,7 @@ _pkgname=crashplan
 pkgver=10.4.0
 _pkgtimestamp=15252000061040
 _pkgbuild=224
-pkgrel=1
+pkgrel=2
 pkgdesc="An business online/offsite backup solution"
 url="https://www.crashplan.com/en-us/small-business/"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils'
 makedepends=('cpio')
 conflicts=('crashplan')
 # install=crashplan-pro.install
-source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
+source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro.service
         upgrade.sh
         crashplan-pro_upgrade.service

@@ -1,7 +1,7 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
 	pkgver = 10.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.crashplan.com/en-us/small-business/
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = crashplan-pro
 	depends = slf4j
 	conflicts = crashplan
 	options = !strip
-	source = https://download.code42.com/installs/agent/cloud/10.4.0/224/install/CrashPlanSmb_10.4.0_15252000061040_224_Linux.tgz
+	source = https://download.crashplan.com/installs/agent/cloud/10.4.0/224/install/CrashPlanSmb_10.4.0_15252000061040_224_Linux.tgz
 	source = crashplan-pro.service
 	source = upgrade.sh
 	source = crashplan-pro_upgrade.service
