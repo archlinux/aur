@@ -44,12 +44,17 @@ if pacman -Qq ccache &> /dev/null; then
 	export CCACHE_NOHASHDIR="true"
 fi
 export AUTOBUILD_CPU_COUNT=$build_jobs
-schedtool -B -n 1 -e ionice -n 1 autobuild configure -A 64 -c ReleaseOS -- \
+prefix_cmd=
+if [[ command -v schedtool >/dev/null 2>&1 ]]; then
+	prefix_cmd='schedtool -B -n1 -e'
+fi
+$prefix_cmd ionice -n 1 autobuild configure -A 64 -c ReleaseOS -- \
 	-DLL_TESTS:BOOL=OFF \
 	-DDISABLE_FATAL_WARNINGS=ON \
 	-DUSE_LTO:BOOL=OFF \
 	-DDCMAKE_CXX_FLAGS="-march=x86-64-v2 -mtune=native" \
 	-DVIEWER_CHANNEL="Alchemy Test"
+unset prefix_cmd
 
 echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
 schedtool -B -n 1 -e ionice -n 1 autobuild build -A64 -c ReleaseOS --no-configure
