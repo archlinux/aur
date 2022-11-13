@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=escape
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Easy single cell analysis platform for enrichment'
 arch=('any')
@@ -12,32 +12,35 @@ license=('Apache')
 depends=(
   r
   r-biocparallel
+  r-broom
+  r-data.table
   r-dplyr
   r-ggplot2
   r-ggridges
   r-gseabase
   r-gsva
-  r-limma
+  r-matrixgenerics
   r-msigdbr
-  r-singlecellexperiment
-  r-broom
-  r-reshape2
   r-patchwork
+  r-reshape2
+  r-rlang
+  r-singlecellexperiment
   r-stringr
-  r-data.table
+  r-summarizedexperiment
   r-ucell
 )
 optdepends=(
   r-biocstyle
   r-dittoseq
   r-knitr
+  r-markdown
   r-rmarkdown
   r-seurat
   r-seuratobject
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cf05f805b0ff2dbc7061f6d5e281485d01f5240eee50afe7c8cb63a58a929b52')
+sha256sums=('4d80d2798f07885ae035dbb9d994c707ed3a94fbe6cef5f35da51a50cc4168f1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
