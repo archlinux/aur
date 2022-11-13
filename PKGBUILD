@@ -8,7 +8,7 @@
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 pkgver=5.63.0beta6
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://signal.org"
 depends=('gtk3' 'libvips' 'libxss' 'hicolor-icon-theme')
 # We need libxcrypt-compat for it to build: https://github.com/electron-userland/electron-builder-binaries/issues/47
-makedepends=('yarn' 'git' 'nodejs-lts-gallium' 'npm' 'python' 'git-lfs' 'libxcrypt-compat' 'openjpeg2')
+makedepends=('yarn' 'git' 'nodejs' 'npm' 'python' 'git-lfs' 'libxcrypt-compat' 'openjpeg2')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
@@ -30,6 +30,9 @@ sha512sums=('adcbf5b5cda0dc352fe67b769416f5f2360ec1c78577cce6e1819ef2d4994a8f21b
 
 prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
+
+  # temporary fix for openssl3
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   git lfs install
 
