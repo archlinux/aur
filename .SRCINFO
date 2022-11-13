@@ -1,7 +1,7 @@
 pkgbase = openasar-bin
 	pkgdesc = Open-source alternative of Discord desktop's app.asar, needs Discord installed
 	pkgver = 20221010154340
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 3
 	url = https://openasar.dev/
 	arch = x86_64
