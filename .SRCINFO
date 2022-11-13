@@ -1,0 +1,28 @@
+pkgbase = r-spatstat.explore
+	pkgdesc = Exploratory Data Analysis for the 'spatstat' Family
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=spatstat.explore
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-goftest
+	depends = r-spatstat.data
+	depends = r-spatstat.geom
+	depends = r-spatstat.random
+	depends = r-spatstat.sparse
+	depends = r-spatstat.utils
+	optdepends = r-fftwtools
+	optdepends = r-gsl
+	optdepends = r-locfit
+	optdepends = r-maptools
+	optdepends = r-sm
+	optdepends = r-spatial
+	optdepends = r-spatstat
+	optdepends = r-spatstat.linnet
+	optdepends = r-spatstat.model
+	source = https://cran.r-project.org/src/contrib/spatstat.explore_3.0-5.tar.gz
+	sha256sums = 9f438a12fac3f3e1d0bd550b1393c1e5732be694517b0878db09da557d6dc862
+
+pkgname = r-spatstat.explore
