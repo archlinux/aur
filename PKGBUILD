@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-public-api-git
-pkgver=0.21.0.r30.g5f95e57
+pkgver=0.22.0.r0.g2658a83
 pkgrel=1
 pkgdesc="List and diff the public API of Rust library crates (git)"
 arch=('x86_64')
