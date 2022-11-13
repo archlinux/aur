@@ -1,6 +1,6 @@
 pkgbase = odamex-git
 	pkgdesc = A free client/server multiplayer engine for the classic FPS Doom.
-	pkgver = 10.2.0.r46.g729e3ce6a
+	pkgver = 10.2.0.r78.g8845a5108
 	pkgrel = 1
 	url = http://odamex.net/
 	arch = i686
