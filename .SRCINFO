@@ -1,0 +1,16 @@
+pkgbase = python-unidic-lite
+	pkgdesc = A small version of UniDic packaged for Python
+	pkgver = 1.0.8
+	pkgrel = 00
+	url = https://github.com/polm/unidic-lite
+	arch = any
+	license = MIT
+	depends = python
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/55/2b/8cf7514cb57d028abcef625afa847d60ff1ffbf0049c36b78faa7c35046f/unidic-lite-1.0.8.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 5a6b70b6532e61f3ab8685e11fc4c959
+	md5sums = 9bdc55d5667669fa3f70415c2cc74d84
+
+pkgname = python-unidic-lite
