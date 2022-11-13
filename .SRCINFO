@@ -1,6 +1,6 @@
 pkgbase = chowbyod-bin
 	pkgdesc = Build-your-own guitar distortion!
-	pkgver = 1.0.2
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://chowdsp.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = chowbyod-bin
 	depends = libglvnd
 	depends = freetype2
 	depends = alsa-lib
-	source = https://chowdsp.com/nightly_plugins/BYOD-Linux-x64-1.0.2.deb
-	sha256sums = a380913236108f545b9ff2a39dfa2224b1fa0e25462a6239c5387dd56f5c93bc
+	source = https://chowdsp.com/nightly_plugins/BYOD-Linux-x64-1.0.9.deb
+	sha256sums = 75acd7edf08a4d108650d9776d981a8bd0938818da3cdf69e6783eb10224f322
 
 pkgname = chowbyod-bin
