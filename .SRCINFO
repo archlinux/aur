@@ -1,7 +1,7 @@
 pkgbase = fcitx5-pinyin-zhwiki-rime
 	pkgdesc = Fcitx 5 Pinyin Dictionary from zh.wikipedia.org for rime
 	pkgver = 20221101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/felixonmars/fcitx5-pinyin-zhwiki
 	arch = any
 	license = GFDL
