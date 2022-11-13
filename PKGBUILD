@@ -74,6 +74,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR="lib" \
         -DCMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
         -DBUILD_SHARED_LIBS=ON \
+        -DLAMMPS_EXCEPTIONS=ON \
         "${_feature_args[@]}" #\
         # Add options for additional packages (above this line)
         #-DPKG_<NAME>=yes
