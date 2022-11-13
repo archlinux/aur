@@ -3,7 +3,7 @@
 
 pkgname=deskreen
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Turns any device with a web browser to a second screen for your computer'
 arch=('aarch64' 'x86_64' 'i686')
 url='https://deskreen.com'

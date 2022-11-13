@@ -1,7 +1,7 @@
 pkgbase = deskreen
 	pkgdesc = Turns any device with a web browser to a second screen for your computer
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deskreen.com
 	arch = aarch64
 	arch = x86_64
