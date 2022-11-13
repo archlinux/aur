@@ -1,0 +1,15 @@
+pkgbase = r-gson
+	pkgdesc = Base Class and Methods for 'gson' Format
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gson
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-jsonlite
+	depends = r-rlang
+	depends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/gson_0.0.9.tar.gz
+	sha256sums = f694765cd2872efb73dd7be66ef8e31395915f9b277f59e0891cff138777b118
+
+pkgname = r-gson
