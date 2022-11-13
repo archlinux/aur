@@ -1,12 +1,13 @@
 pkgbase = lib32-libxmp-git
 	pkgdesc = Library that supports over 90 module formats (Amiga, Atari, ..)
-	pkgver = 4.4.1.r113.g19ad5b32
+	pkgver = 4.5.0.r683.g51a1bf5c
 	pkgrel = 1
 	url = http://xmp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = autoconf
 	depends = glibc
 	provides = lib32-libxmp
 	conflicts = lib32-libxmp
@@ -14,4 +15,3 @@ pkgbase = lib32-libxmp-git
 	md5sums = SKIP
 
 pkgname = lib32-libxmp-git
-
