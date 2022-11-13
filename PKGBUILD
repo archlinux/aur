@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=STAN
-_pkgver=2.24.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='The Genomic STate ANnotation Package'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9da3ecf5cc8d9fd7020dd1f16c9215d06a129af37af10c6031c9266b94430aa3')
+sha256sums=('d973ed5b2c082b51179bebb6547fa927b6e0c187038172b7c1cc394736bdaf52')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
