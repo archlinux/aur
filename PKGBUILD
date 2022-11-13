@@ -3,7 +3,7 @@
 _pkgname=survivalAnalysis
 _pkgver=0.3.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='High-Level Interface for Survival Analysis and Associated Plots'
 arch=('any')
