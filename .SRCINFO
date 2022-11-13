@@ -1,19 +1,19 @@
 pkgbase = planner
 	pkgdesc = Project management application for GNOME
 	pkgver = 0.14.90
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wiki.gnome.org/Apps/Planner
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = meson
-	depends = glib2>=2.50,
+	depends = glib2>=2.56,
 	depends = gtk3>=3.22,
 	depends = libxml2>=2.6.27,
 	depends = libxslt>=1.1.23,
 	depends = libgda>=5.0
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/World/planner.git#commit=3cd61d8813894ee566d9c2559ec45ff39d3dbe46
+	source = git+https://gitlab.gnome.org/World/planner.git#commit=a3320f8333e7b4304d93c7c20b4047c38bd0e21e
 	sha256sums = SKIP
 
 pkgname = planner
