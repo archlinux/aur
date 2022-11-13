@@ -18,7 +18,6 @@ pkgbase = python-stt-model-manager
 	depends = python-webrtcvad
 	depends = python-werkzeug
 	depends = python-numpy
-	depends = python-stt-listen
 	provides = stt-model-manager
 	conflicts = stt-model-manager
 	source = PKGBUILD_EXTRAS
