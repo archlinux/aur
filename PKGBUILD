@@ -16,7 +16,7 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libwebp libjpeg zlib icu libevent libpipewire02)
+         libvpx libwebp libjpeg zlib icu libevent pipewire)
 makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools lld dump_syms
