@@ -1,0 +1,21 @@
+--- a/010-ffmpeg-add-svt-hevc-g7771d7c.patch
++++ b/010-ffmpeg-add-svt-hevc-g7771d7c.patch
+@@ -38,15 +38,15 @@ index 0f3042b8a7..655eaf6848 100755
+      libtensorflow
+      libtesseract
+      libtheora
+-@@ -3399,6 +3401,7 @@ libx264_encoder_select="atsc_a53"
+- libx264rgb_encoder_deps="libx264"
++@@ -3400,6 +3405,7 @@ libx264rgb_encoder_deps="libx264"
+  libx264rgb_encoder_select="libx264_encoder"
+  libx265_encoder_deps="libx265"
++ libx265_encoder_select="atsc_a53"
+ +libsvt_hevc_encoder_deps="libsvthevc"
+  libxavs_encoder_deps="libxavs"
+  libxavs2_encoder_deps="libxavs2"
+  libxvid_encoder_deps="libxvid"
+-@@ -6680,6 +6683,7 @@ enabled libssh            && require_pkg_config libssh libssh libssh/sftp.h sftp
++@@ -6681,6 +6687,7 @@ enabled libssh            && require_pkg_config libssh libssh libssh/sftp.h sftp
+  enabled libspeex          && require_pkg_config libspeex speex speex/speex.h speex_decoder_init
+  enabled libsrt            && require_pkg_config libsrt "srt >= 1.3.0" srt/srt.h srt_socket
+  enabled libsvtav1         && require_pkg_config libsvtav1 "SvtAv1Enc >= 0.9.0" EbSvtAv1Enc.h svt_av1_enc_init_handle
