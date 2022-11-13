@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
@@ -34,7 +34,7 @@ backup=(
     )
 install="${pkgname}.install"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('ea1ed7848dbb8cbb947d441a01f6f0c8fad0791601d6e36d90c3e50cbade30d3'
+sha256sums=('ad2d810d2a81d5bee57549de09e8fd4a045913e14009115379e5acc036a0f120'
             '87a479c5216fa79dbe20ff776f67f5ab70ad0f9705da4b274cc662003545c4be'
             '3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
