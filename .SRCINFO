@@ -1,7 +1,7 @@
 pkgbase = syncthing-gtk-python3
 	pkgdesc = GTK3 based GUI and notification area icon for Syncthing. Python 3 port with Debian sources.
 	pkgver = 0.9.4.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Salamandar/syncthing-gtk
 	arch = any

@@ -6,7 +6,7 @@
 _pkgname=syncthing-gtk
 pkgname=syncthing-gtk-python3
 pkgver=0.9.4.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='GTK3 based GUI and notification area icon for Syncthing. Python 3 port with Debian sources.'
 arch=('any')
@@ -30,17 +30,17 @@ sha256sums=(
 )
 
 prepare() {
-    cd "$_pkgname"
+    cd "${_pkgname}-${pkgver}"
     # Enable Gtk.StatusIcon in KDE
     patch -Np1 -i ../kde-statusicon.patch
 }
 
 build() {
-    cd "$_pkgname"
+    cd "${_pkgname}-${pkgver}"
     python3 setup.py build
 }
 
 package() {
-    cd "$_pkgname"
+    cd "${_pkgname}-${pkgver}"
     python3 setup.py install --root="$pkgdir" --optimize=1
 }
