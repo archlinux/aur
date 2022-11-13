@@ -1,6 +1,6 @@
 pkgbase = r-iseeu
 	pkgdesc = iSEE Universe
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iSEEu
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = r-iseeu
 	depends = r-ggplot2
 	depends = r-iranges
 	depends = r-isee
+	depends = r-iseehex
 	depends = r-s4vectors
 	depends = r-shiny
 	depends = r-shinyace
@@ -34,7 +35,7 @@ pkgbase = r-iseeu
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEu_1.8.0.tar.gz
-	sha256sums = 1cb6508375de688145696184aeea77582607b17d8cb5113d210fcca64dd713c8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEu_1.10.0.tar.gz
+	sha256sums = fa1ff447de4def34c19f73bd4934c60f97be3111410d5d0c108fd6156e9a8000
 
 pkgname = r-iseeu
