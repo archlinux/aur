@@ -3,7 +3,7 @@
 
 _pkgname=flycast
 pkgname=$_pkgname-git
-pkgver=r5230.605dc59f
+pkgver=r5231.993b705d
 pkgrel=1
 pkgdesc='A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator'
 arch=('x86_64' 'i686')
