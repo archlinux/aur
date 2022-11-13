@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=signatureSearch
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Environment for Gene Expression Searching Combined with Functional Enrichment Analysis'
 arch=('x86_64')
@@ -27,6 +27,7 @@ depends=(
   r-gseabase
   r-hdf5array
   r-magrittr
+  r-org.hs.eg.db
   r-qvalue
   r-rcpp
   r-reactome.db
@@ -36,19 +37,19 @@ depends=(
   r-rsqlite
   r-scales
   r-summarizedexperiment
+  r-tibble
   r-visnetwork
 )
 optdepends=(
   r-biocstyle
   r-dt
   r-knitr
-  r-org.hs.eg.db
   r-rmarkdown
   r-signaturesearchdata
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a579b37123295725f00357f05cc248c3deba07f8971c5dc9ebb443b8b65b5dce')
+sha256sums=('539fba9fea8181e7e8bbfae76942e7941390150e5da6ad8c08a703d54ca4f0f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
