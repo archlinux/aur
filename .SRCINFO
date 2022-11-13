@@ -1,6 +1,6 @@
 pkgbase = r-singlemoleculefootprinting
 	pkgdesc = Analysis tools for Single Molecule Footprinting (SMF) data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SingleMoleculeFootprinting
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-singlemoleculefootprinting
 	optdepends = r-rmarkdown
 	optdepends = r-singlemoleculefootprintingdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleMoleculeFootprinting_1.4.0.tar.gz
-	sha256sums = 0ec79bf04b7fed4ac00e6ef57303c956aa91d480644e0f9bf6a758a858885e4d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleMoleculeFootprinting_1.6.0.tar.gz
+	sha256sums = efb1423e29de9402a4db6dd11d76557e4ac16822bbfdcf3a010ef68af8e81e37
 
 pkgname = r-singlemoleculefootprinting
