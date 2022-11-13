@@ -1,0 +1,16 @@
+diff -Nur minitube-3.9.2/lib/media/src/mpv/mpvwidget.cpp new/lib/media/src/mpv/mpvwidget.cpp
+--- minitube-3.9.2/lib/media/src/mpv/mpvwidget.cpp	2021-11-11 13:11:41.000000000 +0100
++++ new/lib/media/src/mpv/mpvwidget.cpp	2022-01-21 18:07:34.170765429 +0100
+@@ -30,7 +30,11 @@
+     qDebug() << "initializeGL" << nativeParent;
+     if (nativeParent == nullptr) qFatal("No native parent");
+ 
+-    mpv_opengl_init_params gl_init_params{get_proc_address, this, nullptr};
++    #if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2,0)
++	mpv_opengl_init_params gl_init_params{get_proc_address, this, nullptr};
++    #else
++	mpv_opengl_init_params gl_init_params{get_proc_address, this};
++    #endif
+     mpv_render_param params[]{{MPV_RENDER_PARAM_API_TYPE, (void *)MPV_RENDER_API_TYPE_OPENGL},
+                               {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
+                               {MPV_RENDER_PARAM_INVALID, nullptr},
