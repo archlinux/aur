@@ -60,8 +60,8 @@ build() {
 		-DCMAKE_CXX_FLAGS="$AL_ARCH_FLAGS"
 		)
 	# I could not find the documentation on how to handle BUILDENV/OPTION in
-    # makepkg.conf. If you are reading this and know where it is,
-    # please send it my way.
+	# makepkg.conf. If you are reading this and know where it is,
+	# please send it my way.
 	if [[ -n "$AL_NO_CCACHE" ]] || ! command -v ccache 2 > /dev/null 2>&1; then
 		echo "ccache disabled"
 		AL_CMAKE_CONFIG+=(-UCMAKE_CXX_COMPILER_LAUNCHER)
