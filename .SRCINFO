@@ -1,6 +1,6 @@
 pkgbase = briar-desktop-nightly-bin
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
-	pkgver = 22847
+	pkgver = 23688
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = briar-desktop-nightly-bin
 	source = briar128.png
 	source = briar192.png
 	source = briar-desktop-nightly.desktop
-	sha256sums = a6d62d03769f7da4977aa8fb3e266f620f3f90a2177547fcd1150fbcbf4b21d6
+	sha256sums = SKIP
 	sha256sums = 95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923
 	sha256sums = 965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669
 	sha256sums = 3feb96f9b9c01085170a44fdbf8bca43b1e586fe3b68dab37fb5cb9fd4ca1fa6

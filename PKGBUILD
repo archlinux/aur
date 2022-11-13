@@ -3,7 +3,7 @@
 _app_name=briar-desktop
 _app_nightly_name="${_app_name}-nightly"
 pkgname="${_app_nightly_name}-bin"
-pkgver=22847
+pkgver=23688
 pkgrel=1
 pkgdesc="Prototyping the next generation for Briar on desktop devices"
 arch=('any')
@@ -22,7 +22,7 @@ source=("${_app_nightly_name}.jar::${_jar_source}"
         "briar192.png"
         "${_app_nightly_name}.desktop")
 noextract=("${_app_nightly_name}.jar")
-sha256sums=('a6d62d03769f7da4977aa8fb3e266f620f3f90a2177547fcd1150fbcbf4b21d6'
+sha256sums=('SKIP'
             '95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923'
             '965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669'
             '3feb96f9b9c01085170a44fdbf8bca43b1e586fe3b68dab37fb5cb9fd4ca1fa6'
@@ -31,8 +31,6 @@ sha256sums=('a6d62d03769f7da4977aa8fb3e266f620f3f90a2177547fcd1150fbcbf4b21d6'
             '2a3e508279c2a440372bf73da2c4acf56a9b7a0bcad886a74863f5a723413a93'
             'a00d60b7aa59fb573c2e42f8bb4c23eb7038c91ea5ced47ebf9d537e3f3925cf'
             'db1a6d2c1ee5dc3f8571642e092d6a2182f0595398d676d23c278d5d084f4743')
-
-rm -f "${_app_nightly_name}.jar*"
 
 pkgver() {
     local build_job_number=$(curl -I -s "${_jar_source}" | grep -E ^location: | grep -E -o '[[:digit:]]+')
