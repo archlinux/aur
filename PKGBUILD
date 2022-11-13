@@ -3,7 +3,7 @@
 _pkgname=spatstat.explore
 _pkgver=3.0-5
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="Exploratory Data Analysis for the 'spatstat' Family"
 arch=('x86_64')
