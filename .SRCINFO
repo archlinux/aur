@@ -1,6 +1,6 @@
 pkgbase = r-crisprseekplus
 	pkgdesc = crisprseekplus
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/crisprseekplus
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-crisprseekplus
 	optdepends = r-r.rsp
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/crisprseekplus_1.22.0.tar.gz
-	sha256sums = d7719ce16778bd5743c174e421c023cbacce55511f3b15e16de77bad97e4b1a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/crisprseekplus_1.24.0.tar.gz
+	sha256sums = 052c5d54cc9f1118fd8afb1df51fc47987f04debb368ab64406ddd8b8fa2bec2
 
 pkgname = r-crisprseekplus
