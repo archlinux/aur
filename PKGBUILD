@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=debCAM
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=1
+pkgver=1.16.0
+pkgrel=3
 pkgdesc='Deconvolution by Convex Analysis of Mixtures'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7d9d720b919499b2670c9dcd35236b62cdc3c843b40f801ea16d13ee729dffa')
+sha256sums=('4a30dfb3fef3f3976a27c61ac34cb117922cb921b837c7ecf0adafa68241b525')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
