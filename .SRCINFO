@@ -1,7 +1,7 @@
 pkgbase = python-caldav
 	pkgdesc = A CalDAV (RFC4791) client library for Python
 	pkgver = 0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/python-caldav/caldav
 	arch = any
 	license = Apache
@@ -10,7 +10,6 @@ pkgbase = python-caldav
 	checkdepends = python-nose
 	checkdepends = python-pytest
 	checkdepends = python-tzlocal
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

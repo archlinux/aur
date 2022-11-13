@@ -4,13 +4,13 @@
 pkgname=python-caldav
 _name=${pkgname#python-}
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A CalDAV (RFC4791) client library for Python"
 arch=('any')
 url="https://github.com/python-caldav/caldav"
 license=('Apache' 'GPL3')
 depends=('python' 'python-lxml' 'python-requests' 'python-six' 'python-vobject')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-icalendar' 'python-nose' 'python-pytest' 'python-tzlocal')
 optdepends=('python-icalendar' 'python-tzlocal')
 source=("${_name}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
