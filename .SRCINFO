@@ -1,0 +1,19 @@
+pkgbase = ymaudio-git
+	pkgdesc = Yandex.Music CLI Audio Player
+	pkgver = r18.082e86e
+	pkgrel = 1
+	url = https://apps.sdore.me/YMAudio
+	arch = any
+	license = LGPL3
+	depends = python-yandex-music-api
+	depends = python-vlc
+	depends = python-scurses
+	depends = python-sutils
+	depends = python-scimg
+	optdepends = python-notify2: for playback notifications when MPRIS is not available
+	optdepends = python-gobject: for MPRIS support
+	optdepends = dbus-python: for MPRIS support
+	source = git+https://apps.sdore.me/YMAudio.git
+	sha256sums = SKIP
+
+pkgname = ymaudio-git
