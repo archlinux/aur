@@ -2,12 +2,12 @@ diff --git package.json.org package.json
 index 2344cee..4911d46 100644
 --- package.json.org
 +++ package.json
-@@ -14,7 +14,7 @@
-     "migration:create": "ts-node --project server/tsconfig.json ./node_modules/typeorm/cli.js migration:create",
-     "migration:run": "ts-node --project server/tsconfig.json ./node_modules/typeorm/cli.js migration:run",
-     "format": "prettier --write .",
--    "prepare": "husky install"
-+    "_prepare": "husky install"
-   },
-   "repository": {
-     "type": "git",
+@@ -18,7 +18,7 @@
+     "typecheck": "yarn typecheck:server && yarn typecheck:client",
+     "typecheck:server": "tsc --project server/tsconfig.json --noEmit",
+     "typecheck:client": "tsc --noEmit",
+-    "prepare": "husky install",
++    "_prepare": "husky install",
+     "cypress:open": "cypress open",
+     "cypress:prepare": "ts-node -r tsconfig-paths/register --files --project server/tsconfig.json server/scripts/prepareTestDb.ts",
+     "cypress:build": "yarn build && yarn cypress:prepare"

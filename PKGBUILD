@@ -1,9 +1,10 @@
-# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Maintainer: jab416171 <jab416171@gmail.com>
+# Contributor: Donald Webster <fryfrog@gmail.com>
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=jellyseerr
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
 url='https://github.com/Fallenbagel/jellyseerr'

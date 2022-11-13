@@ -1,7 +1,7 @@
 pkgbase = jellyseerr
 	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fallenbagel/jellyseerr
 	arch = x86_64
 	license = MIT
