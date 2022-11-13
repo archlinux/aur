@@ -2,15 +2,16 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NanoMethViz
-_pkgver=2.2.0
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Visualise methlation data from Oxford Nanopore sequencing'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Apache')
 depends=(
+  gcc
   r
   r-annotationdbi
   r-assertthat
@@ -24,11 +25,12 @@ depends=(
   r-fs
   r-genomicranges
   r-ggplot2
-  r-ggthemes
+  r-ggrastr
   r-glue
   r-limma
   r-patchwork
   r-purrr
+  r-r.utils
   r-rcpp
   r-readr
   r-rlang
@@ -43,7 +45,6 @@ depends=(
   r-tidyr
   r-withr
   r-zlibbioc
-  gcc
 )
 optdepends=(
   r-covr
@@ -51,11 +52,17 @@ optdepends=(
   r-homo.sapiens
   r-knitr
   r-mus.musculus
+  r-org.hs.eg.db
+  r-org.mm.eg.db
   r-rmarkdown
+  r-rtracklayer
   r-testthat
+  r-txdb.hsapiens.ucsc.hg19.knowngene
+  r-txdb.hsapiens.ucsc.hg38.knowngene
+  r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('818a7b18c15ebe791f70b30badaafccda0a1e9de2d285de0f75d9576e11fb363')
+sha256sums=('c30b568e82b472d432778c38d5e053cab30b8348d2ebc55edb802ab30dbb6bf9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
