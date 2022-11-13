@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DAPAR
-_pkgver=1.28.5
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.5
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='Tools for the Differential Analysis of Proteins Abundance with R'
 arch=('any')
@@ -11,13 +11,19 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
+  r-biobase
+  r-dapardata
+  r-foreach
+  r-highcharter
+  r-msnbase
+)
+optdepends=(
   r-annotationdbi
   r-apcluster
-  r-biobase
-  r-cairo
+  r-biocstyle
+  r-cluster
   r-clusterprofiler
   r-cp4p
-  r-dapardata
   r-dendextend
   r-diptest
   r-doparallel
@@ -25,47 +31,43 @@ depends=(
   r-factoextra
   r-factominer
   r-forcats
-  r-foreach
   r-ggplot2
   r-gplots
   r-graph
-  r-highcharter
+  r-graphics
+  r-grdevices
   r-igraph
   r-imp4p
   r-impute
   r-knitr
   r-limma
   r-lme4
+  r-matrix
+  r-methods
   r-mfuzz
-  r-msnbase
   r-multcomp
   r-norm
   r-openxlsx
-  r-pcamethods
-  r-png
+  r-org.sc.sgd.db
+  r-parallel
   r-preprocesscore
   r-purrr
   r-rcolorbrewer
   r-readxl
   r-reshape2
   r-scales
-  r-siggenes
+  r-stats
   r-stringr
+  r-testthat
   r-tibble
   r-tidyr
   r-tidyverse
-  r-tmvtnorm
   r-vioplot
   r-visnetwork
   r-vsn
 )
-optdepends=(
-  r-biocgenerics
-  r-biocstyle
-  r-testthat
-)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7f28c77662ecbabeda7c8a5a50603a50fa283cd741bbd0306c659a230334f7fc')
+sha256sums=('cd8902c75ec8bf07bd9c47cc7a9f9d5e818fdb765b1c6b0c3ccd9dd9cdf2919d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
