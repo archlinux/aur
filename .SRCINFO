@@ -1,6 +1,6 @@
 pkgbase = lilypond-devel-docs
 	pkgdesc = Offline documentation for the unstable version of lilypond
-	pkgver = 2.23.80
+	pkgver = 2.23.81
 	pkgrel = 1
 	url = http://lilypond.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = lilypond-devel-docs
 	provides = lilypond-docs
 	conflicts = lilypond-docs
 	options = !strip
-	source = https://gitlab.com/lilypond/lilypond/-/releases/v2.23.80/downloads/lilypond-2.23.80-documentation.tar.xz
-	sha256sums = 36b6003c4ca0de8e9079342ef7a15459b63a895f072d13852a27f78da0daf7f8
+	source = https://gitlab.com/lilypond/lilypond/-/releases/v2.23.81/downloads/lilypond-2.23.81-documentation.tar.xz
+	sha256sums = 2cec9d868b5b8d23aada820b3fcda69f2ac98836c1cbd6c8117b8e433113dfc9
 
 pkgname = lilypond-devel-docs
