@@ -3,7 +3,7 @@
 _pkgname=coro
 _pkgver=1.0.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="'Coroutines' for R"
 arch=('any')
