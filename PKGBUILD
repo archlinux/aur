@@ -1,7 +1,7 @@
 # Maintainer: McKay Humpherys <mckaybhumpherys@gmail.com>
 # Contributor: McKay
 pkgname=digitalwatchdog-client
-pkgver=5.0.0.35271
+pkgver=5.0.0.35746
 pkgrel=1
 pkgdesc="DW Spectrum Client"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('binutils')
 replaces=('digitalwatchdog-client-1.2<4.2.0')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://updates.networkoptix.com/digitalwatchdog/35271/linux/dwspectrum-client-5.0.0.35271-linux_x64.deb")
-sha512sums_x86_64=('692d89edfebe6a936688739ab02a647ce4a476b9d263ab09656e56c650eca2c6fffad4d726ef2b74fd3632aed68540c1f56127886af9801f416d1e68ece01954')
+source_x86_64=("https://updates.networkoptix.com/digitalwatchdog/35746/linux/dwspectrum-client-5.0.0.35746-linux_x64.deb")
+sha512sums_x86_64=('d1d7ffb8254b0d1a1af5f1b4278bbc5ec909513bf1525610995ae62b801c416847252eb2be57f917ed4fea9dbeeb8e001e60526780a46186c83693fe96aec864')
 
 package(){
 
