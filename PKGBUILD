@@ -7,7 +7,7 @@
 
 pkgbase=odamex-git
 pkgname=odamex-git
-pkgver=10.2.0.r46.g729e3ce6a
+pkgver=10.2.0.r78.g8845a5108
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -44,12 +44,11 @@ _submodlibs=(fltk protobuf miniupnp jsoncpp)
 
 prepare() {
 	cd odamex-git
-
 	git submodule init
 	for SUBMODLIB in "${_submodlibs[@]}"; do
-		git config submodule.libraries/$SUBMODLIB.url "$srcdir/$SUBMODLIB"
+    git config submodule.libraries/$SUBMODLIB.url "$srcdir/$SUBMODLIB"
 	done
-	git submodule update
+	git submodule--helper update
 }
 
 _configure() {
