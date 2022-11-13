@@ -1,4 +1,4 @@
-pkgbase = python-coqui-stt-model-manager-git
+pkgbase = python-stt-model-manager
 	pkgdesc = Model management and testing tool for Coqui STT models
 	pkgver = 0.0.21.r2.gd2902d7
 	pkgrel = 1
@@ -19,8 +19,8 @@ pkgbase = python-coqui-stt-model-manager-git
 	depends = python-werkzeug
 	depends = python-numpy
 	depends = python-stt-listen
-	provides = python-coqui-stt-model-manager
-	conflicts = python-coqui-stt-model-manager
+	provides = python-stt-model-manager
+	conflicts = python-stt-model-manager
 	source = PKGBUILD_EXTRAS
 	source = git+https://github.com/coqui-ai/stt-model-manager.git
 	source = LICENSE
@@ -28,4 +28,4 @@ pkgbase = python-coqui-stt-model-manager-git
 	md5sums = SKIP
 	md5sums = 9741c346eef56131163e13b9db1241b3
 
-pkgname = python-coqui-stt-model-manager-git
+pkgname = python-stt-model-manager
