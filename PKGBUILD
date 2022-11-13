@@ -3,12 +3,12 @@
 
 pkgname=makemkv-cli
 pkgver=1.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DVD and Blu-ray to MKV converter and network streamer - CLI only'
 arch=('i686' 'x86_64')
 url='https://www.makemkv.com'
 license=('LGPL' 'MPL' 'custom')
-depends=('ffmpeg' 'java-runtime')
+depends=('ffmpeg' 'java-runtime' 'openssl-1.1')
 optdepends_x86_64=('lib32-glibc: dts support')
 provides=('makemkv')
 conflicts=('makemkv')
