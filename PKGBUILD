@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.4.4.8.1
-pkgrel=40
+pkgrel=41
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')

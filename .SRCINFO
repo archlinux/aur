@@ -1,7 +1,7 @@
 pkgbase = terraria-server
 	pkgdesc = Official dedicated server for Terraria
 	pkgver = 1.4.4.8.1
-	pkgrel = 40
+	pkgrel = 41
 	url = https://terraria.org/
 	install = terraria-server.install
 	arch = x86_64
