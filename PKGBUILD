@@ -1,8 +1,8 @@
 # Maintainer: Peter Kaplan <peter@pkap.de>
 pkgname=libkeymap
 _pkgname=kbd
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Library for manipulating kernel keymaps"
 arch=('x86_64')
 url="http://www.kbd-project.org"

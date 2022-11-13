@@ -1,6 +1,6 @@
 pkgbase = libkeymap
 	pkgdesc = Library for manipulating kernel keymaps
-	pkgver = 2.4.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = http://www.kbd-project.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libkeymap
 	makedepends = git
 	depends = glibc
 	depends = pam
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git#tag=v2.4.0?signed
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git#tag=v2.5.1?signed
 	validpgpkeys = 7F2A3D07298149A0793C9A4EA45ABA544CFFD434
 	sha256sums = SKIP
 
