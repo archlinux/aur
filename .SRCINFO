@@ -1,7 +1,7 @@
 pkgbase = r-pathrender
 	pkgdesc = Render molecular pathways
-	pkgver = 1.64.0
-	pkgrel = 1
+	pkgver = 1.66.0
+	pkgrel = 3
 	url = https://bioconductor.org/packages/pathRender
 	arch = any
 	license = LGPL
@@ -13,7 +13,7 @@ pkgbase = r-pathrender
 	depends = r-rgraphviz
 	optdepends = r-all
 	optdepends = r-hgu95av2.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathRender_1.64.0.tar.gz
-	sha256sums = 368e6fa2336d160af1d759df61e3e4f434bc532b515f63560d8cd0e4d368aa1e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathRender_1.66.0.tar.gz
+	sha256sums = cec0bfa2a9d1c5037f0f1a2f1c8339cf1368ce81b4e9be8ef48ad42f5921e621
 
 pkgname = r-pathrender
