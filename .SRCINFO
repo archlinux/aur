@@ -1,7 +1,7 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora patches
 	pkgver = 0.70.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,10 @@ pkgname = vte3-notification
 	depends = systemd-libs
 	depends = vte-notification-common
 	provides = vte3=0.70.1
+	provides = vte4=0.70.1
 	provides = libvte-2.91.so
 	conflicts = vte3
+	conflicts = vte4
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3

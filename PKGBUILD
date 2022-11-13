@@ -10,7 +10,7 @@ pkgname=(
   vte-notification-common
 )
 pkgver=0.70.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=(LGPL)
@@ -81,9 +81,13 @@ package_vte3-notification(){
   depends+=(vte-notification-common)
   provides+=(
     "vte3=${pkgver}"
+    "vte4=${pkgver}"
     'libvte-2.91.so'
   )
-  conflicts=('vte3')
+  conflicts=(
+    'vte3'
+    'vte4'
+  )
 
   meson install -C build --destdir "${pkgdir}"
 
