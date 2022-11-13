@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hiro Wallet
+Exec="/opt/Hiro Wallet/stacks-wallet" -no-sandbox  %U
+Terminal=false
+Type=Application
+Icon=stacks-wallet
+StartupWMClass=Hiro Wallet
+Comment=Hiro Wallet v4 — Participate in Stacking to earn bitcoin rewards
+Categories=Finance;

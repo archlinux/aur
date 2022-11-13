@@ -4,7 +4,7 @@ _packager="Romain Gallet <rgallet@grumlimited.co.uk>"
 _deb_pkgname=stacks-wallet.mainnet
 pkgver=4.6.1
 pkgname=stacks-wallet.mainnet-bin
-pkgrel=2
+pkgrel=3
 pkgdesc='Stacks Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.'
 arch=('x86_64')
 url="https://github.com/hirosystems/stacks-wallet"
@@ -19,8 +19,8 @@ replaces=()
 backup=()
 options=()
 install=stacks-wallet.mainnet-bin.install
-source=("$url/releases/download/v$pkgver/stacks-wallet.mainnet.v$pkgver.deb")
-md5sums=('6380873c22a5735e0d89eef4735bc8fe')
+source=("$url/releases/download/v$pkgver/stacks-wallet.mainnet.v$pkgver.deb" "file://stacks-wallet.desktop")
+md5sums=('6380873c22a5735e0d89eef4735bc8fe' 'a3b1f26d804c0af1b055a1c491c9bcb3')
 noextract=()
 
 build() {
@@ -33,6 +33,8 @@ package() {
 	cp -fr opt/ ${pkgdir}
 	
 	mkdir -p ${pkgdir}/usr/bin/
+
+    cp stacks-wallet.desktop ${pkgdir}/usr/share/applications/
 	
-	ln -sf "/opt/Stacks Wallet/stacks-wallet" ${pkgdir}/usr/bin/stacks-wallet
+	ln -sf "/opt/Hiro Wallet/stacks-wallet" ${pkgdir}/usr/bin/stacks-wallet
 }
