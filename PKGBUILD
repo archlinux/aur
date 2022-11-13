@@ -3,7 +3,7 @@
 _pkgname=iSEEhex
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='iSEE extension for summarising data points in hexagonal bins'
 arch=('any')
