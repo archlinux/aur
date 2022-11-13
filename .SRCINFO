@@ -1,0 +1,33 @@
+pkgbase = r-spatstat.model
+	pkgdesc = Parametric Statistical Modelling for the 'spatstat' Family
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=spatstat.model
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-goftest
+	depends = r-spatstat.data
+	depends = r-spatstat.explore
+	depends = r-spatstat.geom
+	depends = r-spatstat.random
+	depends = r-spatstat.sparse
+	depends = r-spatstat.utils
+	depends = r-tensor
+	optdepends = r-fftwtools
+	optdepends = r-glmnet
+	optdepends = r-gsl
+	optdepends = r-locfit
+	optdepends = r-maptools
+	optdepends = r-nleqslv
+	optdepends = r-randomfields
+	optdepends = r-randomfieldsutils
+	optdepends = r-sm
+	optdepends = r-spatial
+	optdepends = r-spatstat
+	optdepends = r-spatstat.linnet
+	source = https://cran.r-project.org/src/contrib/spatstat.model_3.0-2.tar.gz
+	sha256sums = e923f5608bcc571b14ac183af2d8568772dd6b769c5b0a34307084097c71d428
+
+pkgname = r-spatstat.model
