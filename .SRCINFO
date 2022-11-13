@@ -1,7 +1,7 @@
 pkgbase = rofi-vscode-mode
 	pkgdesc = A Rofi mode to open Visual Studio Code workspaces
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fuljo/rofi-vscode-mode
 	arch = x86_64
 	license = MIT

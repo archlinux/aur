@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Fulgini <fuljo97 at gmail dot com>
 pkgname='rofi-vscode-mode'
 pkgver='0.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A Rofi mode to open Visual Studio Code workspaces'
 arch=('x86_64')
 url='https://github.com/fuljo/rofi-vscode-mode'
@@ -35,5 +35,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make all install install.doc install.licenses DESTDIR="${pkgdir}" prefix="/usr"
+  make install install.doc install.licenses DESTDIR="${pkgdir}" prefix="/usr"
 }
