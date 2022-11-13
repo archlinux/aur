@@ -1,5 +1,5 @@
 pkgname=opencore-efi
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 _mode='RELEASE'
 # _mode='DEBUG'
@@ -8,7 +8,7 @@ url='https://github.com/acidanthera/OpenCorePkg'
 arch=('x86_64' 'i686')
 license=('BSD')
 source=("https://github.com/acidanthera/OpenCorePkg/releases/download/$pkgver/OpenCore-$pkgver-$_mode.zip")
-sha256sums=('29bd6c818e8214278930d05997d906b1c33af0af175097f8c824ec8fc58d2301')
+sha256sums=('6ccc53adb7e760bdd3ee70ecffb650b4faff3458bd23c4f10f70ea7e28129f0d')
 
 package(){
   MACHINE_TYPE=`uname -m`
