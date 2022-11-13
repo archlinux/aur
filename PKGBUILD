@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ExperimentHub
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
-pkgrel=1
+pkgver=2.6.0
+pkgrel=3
 pkgdesc='Client to access ExperimentHub resources'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('74d2b33433436f0c01e1a5c42538044d130439d84df07be60f5f859a37521686')
+sha256sums=('ba84b86f66a6eebeeb1427615d9dc98152feadaf4bc438cd7b02fdc87bfde1c8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
