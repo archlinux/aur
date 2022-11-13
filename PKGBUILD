@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DMRcate
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Methylation array and sequencing spatial analysis methods'
 arch=('any')
@@ -28,13 +28,16 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-dmrcatedata
+  r-flowsorted.blood.epic
   r-illuminahumanmethylation450kanno.ilmn12.hg19
   r-illuminahumanmethylationepicanno.ilm10b4.hg19
   r-knitr
   r-runit
+  r-tissuetreg
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5bdadf1c57ae1cc8d4f85ab9c184e0c94af45bc6eda7dff4d7b2dbd013fa0e50')
+sha256sums=('2b62c10914eeaefe615e78cc5dc1e7d397cfc7c4950159e4eacc95aa96a6f046')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
