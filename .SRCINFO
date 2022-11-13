@@ -1,0 +1,13 @@
+pkgbase = gcc4ti
+	pkgdesc = A C cross compiler for the TI-89, TI-89T, TI-92+, and TI-V200
+	pkgver = 0.96b11
+	pkgrel = 1
+	url = https://debrouxl.github.io/gcc4ti/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/debrouxl/gcc4ti.git
+	md5sums = SKIP
+
+pkgname = gcc4ti
