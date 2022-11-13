@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=imcRtools
-_pkgver=1.2.3
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Methods for imaging mass cytometry data analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
   r-concaveman
   r-cytomapper
   r-data.table
+  r-distances
   r-dplyr
   r-dt
   r-ebimage
@@ -24,6 +25,7 @@ depends=(
   r-ggraph
   r-igraph
   r-magrittr
+  r-matrixgenerics
   r-pheatmap
   r-readr
   r-rtriangle
@@ -35,6 +37,7 @@ depends=(
   r-stringr
   r-summarizedexperiment
   r-tidygraph
+  r-tidyselect
   r-viridis
   r-vroom
 )
@@ -46,10 +49,9 @@ optdepends=(
   r-markdown
   r-rmarkdown
   r-testthat
-  r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dc7d7dc805ad18d23fce68c5fd60fe036343af2b89b254893a5d1093ea554fa8')
+sha256sums=('38e3ce86cc887793ba88c56ed1ade85b0097361e5fa95e436e9c387e57f35b56')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
