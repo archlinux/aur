@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=microbiomeMarker
-_pkgver=1.2.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='microbiome biomarker analysis toolkit'
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
   r-ancombc
   r-biobase
   r-biocgenerics
+  r-biocparallel
   r-biomformat
   r-biostrings
   r-caret
@@ -34,12 +35,14 @@ depends=(
   r-patchwork
   r-phyloseq
   r-plotroc
+  r-proc
   r-purrr
   r-rlang
   r-s4vectors
   r-tibble
   r-tidyr
   r-tidytree
+  r-vegan
   r-yaml
 )
 optdepends=(
@@ -53,9 +56,10 @@ optdepends=(
   r-ranger
   r-rmarkdown
   r-testthat
+  r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3761c4c20ac4c8f2ed54bdb329fb8615e222c6c175e5c2f141326654552a52d')
+sha256sums=('d902c6954ae5b404acf83c89d9402ef9a1ab3c66b1a73624dd6309dde9fa5008')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
