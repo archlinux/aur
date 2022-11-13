@@ -8,6 +8,7 @@ Target = discord-development
 Target = openasar-bin
 Target = discord-canary-electron-bin
 Target = discord-ptb
+Target = discord_arch_electron
 
 [Action]
 Depends = openasar-bin
