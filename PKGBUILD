@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRspongeR
-_pkgver=2.0.0
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Identification and analysis of miRNA sponge interaction networks and modules'
 arch=('x86_64')
@@ -13,17 +13,16 @@ depends=(
   r
   r-clusterprofiler
   r-corpcor
+  r-doparallel
   r-dose
+  r-foreach
   r-igraph
   r-linkcomm
   r-mcl
   r-org.hs.eg.db
   r-rcpp
   r-reactomepa
-  r-varhandle
   r-sponge
-  r-foreach
-  r-doparallel
 )
 optdepends=(
   r-biocstyle
@@ -32,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a5038938a0e099c4978a8a0d116c92e92d1f150b535e40afe01e7afb6532566')
+sha256sums=('734c21b17c2001873191245f319ea6d555c1874927afb105cbbf137af9ffa45a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
