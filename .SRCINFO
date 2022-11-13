@@ -1,6 +1,6 @@
 pkgbase = r-org.dm.eg.db
 	pkgdesc = Genome wide annotation for Fly
-	pkgver = 3.15.0
+	pkgver = 3.16.0
 	pkgrel = 3
 	url = https://bioconductor.org/packages/org.Dm.eg.db
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-org.dm.eg.db
 	optdepends = r-annotate
 	optdepends = r-dbi
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Dm.eg.db_3.15.0.tar.gz
-	sha256sums = 734100d885e093ec4348d03c88d606abddef60fa9b4c03d5d0dc1edabb7e31b5
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Dm.eg.db_3.16.0.tar.gz
+	sha256sums = eb02c5373f32e2ea5068bfb79923072cfb8e39856c7242e351f853f052d341eb
 
 pkgname = r-org.dm.eg.db
