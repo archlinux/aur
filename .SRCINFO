@@ -1,6 +1,6 @@
 pkgbase = r-missmethyl
 	pkgdesc = Analysing Illumina HumanMethylation BeadChip Data
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/missMethyl
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-missmethyl
 	optdepends = r-minfidata
 	optdepends = r-rmarkdown
 	optdepends = r-tweedeseqcountdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/missMethyl_1.30.0.tar.gz
-	sha256sums = 81fa1e991bc3dbd5c2ec8fbdf2a55ab935f0c231f8bc71666855f7bc8c22d146
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/missMethyl_1.32.0.tar.gz
+	sha256sums = 26b77733a8cfe24b116cf49a3f653bbe66a8ab315aad4a431230b459d5f62383
 
 pkgname = r-missmethyl
