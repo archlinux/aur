@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Dr.eg.db
-_pkgver=3.15.0
+_pkgver=3.16.0
 pkgname=r-${_pkgname,,}
-pkgver=3.15.0
+pkgver=3.16.0
 pkgrel=3
 pkgdesc='Genome wide annotation for Zebrafish'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('96143b221a67d91c6c925647a1dfe323b0f5e8c32317c692e27a138d30e6af5a')
+sha256sums=('c043767292ff34fe48a9dc65f5ff82ae24a43c63f067bc87498c825d1670b6ef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
