@@ -1,19 +1,20 @@
 pkgbase = dvdae-bin
 	pkgdesc = DVD audio extract & ripping tool for extracting streams from DVD-Audio & Video discs and save them as OGG, MP3, Wave or FLAC files
-	pkgver = 8.3.0
+	pkgver = 8.4.1
 	pkgrel = 1
 	url = https://www.dvdae.com/
 	arch = x86_64
-	license = custom
-	depends = flac
+	license = custom: Computer Application Studio EULA
+	makedepends = chrpath
+	depends = flac1.3
 	depends = gtk3
 	depends = lame
 	depends = libvorbis
 	depends = libsm
 	depends = alsa-lib
-	source = https://www.dvdae.com/dvdae/dvdae_8.3.0_amd64.deb
+	source = https://www.dvdae.com/dvdae/dvdae_8.4.1_amd64.deb
 	source = https://www.dvdae.com/license.htm
-	sha256sums = 0230ab1142a8a4c748c13c057a4650c544e4c2acb7996e249facdc406aac8e66
+	sha256sums = 8a8de84078471bd877460610d1f51bdb438f2f576c2f16f0b95dc155482346b2
 	sha256sums = 6d780e47d8c961a64fb12815872f2bf622018ff0623a9dd82abe59790cee0550
 
 pkgname = dvdae-bin
