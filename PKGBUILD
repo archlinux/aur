@@ -32,7 +32,7 @@ depends=(
 	"lxqt-themes"
 	"xsettingsd"
 	#kwin
-	"lxqt-kcm-integration-extra-git"
+	#"lxqt-kcm-integration-extra-git"
 )
 optdepends=(
 	"lxqt_wallet"
