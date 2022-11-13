@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r801.3b8cc6deb
-pkgrel=3
+pkgver=3.2.2.r878.3aeca6d16
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -76,6 +76,9 @@ prepare() {
   mkdir subprojects/packagecache
   ln -s ../../../"${pkgname}-gtest-1.8.1.zip" subprojects/packagecache/gtest-1.8.1.zip
   ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
+
+  # Fix boost "undefined reference" error
+  sed -i '/BOOST_USE_WINDOWS_H/{n;s/$/\nadd_project_arguments('"'"'-DBOOST_NO_CXX11_SCOPED_ENUMS'"'"', language: '"'"'cpp'"'"')/}' meson.build
 
   arch-meson --buildtype=release -D default_audio_output=PulseAudio build
 }
