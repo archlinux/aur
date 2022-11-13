@@ -4,7 +4,7 @@ pkgname=updiprog-git
 _pkgname="${pkgname%-git}"
 pkgdesc="utility for programming AVR devices with UPDI interface using standard TTL serial port"
 
-pkgver=v0.3.r12.5fe7a9c
+pkgver=0.5.r2.99df4f8
 pkgrel=1
 
 arch=('x86_64')
