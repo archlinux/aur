@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=cemu
-pkgver=2.0.223
+pkgver=2.0.234
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -31,7 +31,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#commit=138510106c63ff697d31fe8e57391e245e477b5c # v2.0-14
+	git+https://github.com/cemu-project/Cemu#commit=e9d10a95810d1c5f21f976000c93d37238d5b4da # v2.0-15
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -40,8 +40,8 @@ source=(
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# upstream proposed patches
-	overlay.diff # 6aa7a0c7b2003f625bfecd64f6143a10605234b2 (https://github.com/cemu-project/Cemu/pull/142)
-	gui.diff # ffed93a69bb8f38a7c81624411bf8be0b45b8646 (https://github.com/cemu-project/Cemu/pull/439)
+	overlay.diff # f1e964bf02baadc3f6af86e4f38dcef7ea5c081c (https://github.com/cemu-project/Cemu/pull/480)
+	online.diff # 68d39331deaa47c812ea3624dc41be3003e5d104 (https://github.com/cemu-project/Cemu/pull/486)
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -49,8 +49,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f'
-            'dcb405fd9b77d73eee4a9591c606a5b7d121999b936920520518e70dcb16ea0e')
+            'f0ebf654e94461a82409860ae83e8ffee1095fc51b5748aefd7bc5cb58b54225'
+            'c7da958b6c53c62477e1b52dabf6b736ac813bb4cb37a85a37c9bfa08e9ff963')
 
 pkgver() {
 	cd Cemu
@@ -93,10 +93,7 @@ prepare() {
 	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
 
 	rm -rf src/util/SystemInfo
-	git apply "$srcdir/overlay.diff"
-	sed -i '/add_library/aSystemInfo/SystemInfo.cpp SystemInfo/SystemInfoLinux.cpp' src/util/CMakeLists.txt
-
-	git apply "$srcdir/gui.diff"
+	git apply --whitespace=nowarn "$srcdir/overlay.diff" "$srcdir/online.diff"
 }
 
 build() {

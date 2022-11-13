@@ -1,6 +1,6 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)
-	pkgver = 2.0.223
+	pkgver = 2.0.234
 	pkgrel = 1
 	url = https://cemu.info
 	install = cemu.install
@@ -25,21 +25,21 @@ pkgbase = cemu
 	optdepends = alsa-lib: Audio output
 	optdepends = vulkan-driver: Vulkan graphics
 	options = !strip
-	source = git+https://github.com/cemu-project/Cemu#commit=138510106c63ff697d31fe8e57391e245e477b5c
+	source = git+https://github.com/cemu-project/Cemu#commit=e9d10a95810d1c5f21f976000c93d37238d5b4da
 	source = git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	source = git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
 	source = git+https://github.com/Exzap/ZArchive#commit=d2c717730092c7bf8cbb033b12fd4001b7c4d932
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	source = overlay.diff
-	source = gui.diff
+	source = online.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f25d13fe76cc6a0b475f0131211a951288160ddae92cd7a815f5aea61d7cfc0f
-	sha256sums = dcb405fd9b77d73eee4a9591c606a5b7d121999b936920520518e70dcb16ea0e
+	sha256sums = f0ebf654e94461a82409860ae83e8ffee1095fc51b5748aefd7bc5cb58b54225
+	sha256sums = c7da958b6c53c62477e1b52dabf6b736ac813bb4cb37a85a37c9bfa08e9ff963
 
 pkgname = cemu
