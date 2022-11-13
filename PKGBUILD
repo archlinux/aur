@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReactomePA
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Reactome Pathway Analysis'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   r-ggplot2
   r-ggraph
   r-graphite
+  r-gson
   r-igraph
   r-reactome.db
 )
@@ -30,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('458b3febb341700414ca04ea4a6f3005061c9db97622cfdfda6b75a74415a7b9')
+sha256sums=('c2c55cf86b81841303952d9c4d4acac1ad964d31c1f8a5d17ff4679b26242919')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
