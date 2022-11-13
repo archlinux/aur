@@ -1,6 +1,6 @@
 pkgbase = r-rnamodr
 	pkgdesc = Detection of post-transcriptional modifications in high throughput sequencing data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAmodR
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-rnamodr
 	optdepends = r-rmarkdown
 	optdepends = r-rnamodr.data
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR_1.10.0.tar.gz
-	sha256sums = cf6cc845301fe46722183e68159335b9847ea3070a719adf613ff1557a3c305a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR_1.12.0.tar.gz
+	sha256sums = 842df31ecb12ecf2d671739155ce0638f934e1b3cc21ce48e05e700abe131f76
 
 pkgname = r-rnamodr

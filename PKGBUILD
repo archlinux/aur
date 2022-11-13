@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAmodR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Detection of post-transcriptional modifications in high throughput sequencing data'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cf6cc845301fe46722183e68159335b9847ea3070a719adf613ff1557a3c305a')
+sha256sums=('842df31ecb12ecf2d671739155ce0638f934e1b3cc21ce48e05e700abe131f76')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
