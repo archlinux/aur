@@ -3,7 +3,7 @@
 _pkgname=bestNormalize
 _pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Normalizing Transformation Functions'
 arch=('any')
