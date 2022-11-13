@@ -2,8 +2,8 @@
 # Contributor: Sonu Ishaq <sonuishaq67@gmail.com>
 
 pkgname=deskreen
-pkgver=2.0.3
-pkgrel=7
+pkgver=2.0.4
+pkgrel=1
 pkgdesc='Turns any device with a web browser to a second screen for your computer'
 arch=('aarch64' 'x86_64' 'i686')
 url='https://deskreen.com'
