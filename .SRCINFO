@@ -1,6 +1,6 @@
 pkgbase = r-splinter
 	pkgdesc = Splice Interpreter of Transcripts
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SPLINTER
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-splinter
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPLINTER_1.22.0.tar.gz
-	sha256sums = fde70ce983950c4d37e99ce420006e96aa1686c1a06a250726b7205567b071cf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPLINTER_1.24.0.tar.gz
+	sha256sums = 5091709655bd885e13c91623817d53f00b37e10162775a81e4d8afb247073807
 
 pkgname = r-splinter
