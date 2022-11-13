@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GUIDEseq
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='GUIDE-seq analysis pipeline'
 arch=('any')
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-biocgenerics
-  r-biocparallel
   r-biostrings
   r-bsgenome
   r-chippeakanno
@@ -21,24 +20,36 @@ depends=(
   r-dplyr
   r-genomeinfodb
   r-genomicalignments
+  r-genomicfeatures
   r-genomicranges
+  r-ggplot2
   r-hash
   r-iranges
   r-limma
   r-matrixstats
+  r-multtest
+  r-openxlsx
+  r-patchwork
+  r-purrr
+  r-rio
+  r-rlang
   r-rsamtools
   r-s4vectors
+  r-stringr
+  r-tidyr
 )
 optdepends=(
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg19
+  r-bsgenome.hsapiens.ucsc.hg38
   r-knitr
   r-org.hs.eg.db
   r-runit
+  r-testthat
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a95dd6027f8ae47236a246a63bf927a53df73ab438cb6ddd1d8c93af20722ab')
+sha256sums=('ef87c12438c2cf343bdeb553aaa33b8ebe372a6f8b25cfa45b1e578e35d0762f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
