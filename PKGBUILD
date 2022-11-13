@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RnaSeqSampleSize
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='RnaSeqSampleSize'
 arch=('x86_64')
@@ -12,17 +12,19 @@ license=('GPL')
 depends=(
   r
   r-biomart
+  r-dplyr
   r-edger
+  r-ggplot2
+  r-ggpubr
   r-heatmap3
   r-keggrest
   r-matlab
   r-rcpp
-  r-rnaseqsamplesizedata
-  r-ggplot2
   r-recount
-  r-ggpubr
+  r-rnaseqsamplesizedata
   r-summarizedexperiment
   r-tidyr
+  r-tidyselect
 )
 optdepends=(
   r-biocstyle
@@ -30,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1676bb18a05b89a03ad2e6af8551695f3086ac84cf338041557982fd7993abec')
+sha256sums=('6ae7e52eec644475b3d5c28624f4809fe50c233eb52a80aa1b92acc02703226c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
