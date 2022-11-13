@@ -1,0 +1,4 @@
+pkg/
+repo/
+src/
+*.pkg.tar.xz

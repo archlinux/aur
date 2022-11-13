@@ -1,0 +1,15 @@
+pkgbase = aquacomputer_d5next-hwmon-dkms
+	pkgdesc = Hwmon Linux kernel driver for monitoring and configuring Aquacomputer PC watercooling devices
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aleksamagicka/aquacomputer_d5next-hwmon
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = aquacomputer_d5next-hwmon
+	source = repo::git+https://github.com/aleksamagicka/aquacomputer_d5next-hwmon
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = 9083307a12a4b7dfc35d733f68d8200d
+
+pkgname = aquacomputer_d5next-hwmon-dkms
