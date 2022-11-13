@@ -1,7 +1,7 @@
 pkgbase = python-stt-model-manager
 	pkgdesc = Model management and testing tool for Coqui STT models
 	pkgver = 0.0.21.r2.gd2902d7
-	pkgrel = 1
+	pkgrel = 00
 	url = https://github.com/coqui-ai/stt-model-manager
 	arch = any
 	license = MPL2
