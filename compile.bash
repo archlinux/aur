@@ -45,7 +45,7 @@ if pacman -Qq ccache &> /dev/null; then
 fi
 export AUTOBUILD_CPU_COUNT=$build_jobs
 prefix_cmd=
-if [[ command -v schedtool >/dev/null 2>&1 ]]; then
+if command -v schedtool >/dev/null 2>&1; then
 	prefix_cmd='schedtool -B -n1 -e'
 fi
 $prefix_cmd ionice -n 1 autobuild configure -A 64 -c ReleaseOS -- \
