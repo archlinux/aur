@@ -15,7 +15,7 @@ makedepends=('libime' 'opencc' 'pypinyin')
 source=("https://github.com/felixonmars/${_reponame}/archive/$_converterver/$pkgname-$_converterver.tar.gz"
         "https://dumps.wikimedia.org/zhwiki/$pkgver/zhwiki-$pkgver-all-titles-in-ns0.gz")
 md5sums=('d929f18b1b0019da22010f0aa7bdb671'
-         'eb625017c5c2d003ccb21c3e8425544a')
+         '54d9ab2949f5872aa7c538aca0b521cd')
 
 prepare() {
   cd ${_reponame}-$_converterver

@@ -12,6 +12,6 @@ pkgbase = fcitx5-pinyin-zhwiki-rime
 	source = https://github.com/felixonmars/fcitx5-pinyin-zhwiki/archive/0.2.4/fcitx5-pinyin-zhwiki-rime-0.2.4.tar.gz
 	source = https://dumps.wikimedia.org/zhwiki/20221101/zhwiki-20221101-all-titles-in-ns0.gz
 	md5sums = d929f18b1b0019da22010f0aa7bdb671
-	md5sums = eb625017c5c2d003ccb21c3e8425544a
+	md5sums = 54d9ab2949f5872aa7c538aca0b521cd
 
 pkgname = fcitx5-pinyin-zhwiki-rime
