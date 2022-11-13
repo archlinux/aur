@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-tray-icons
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Simple version of TopIcons Plus"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/nicovell3/gnome-shell-extension-tray-icons"
 license=('GPL3')
 depends=('gnome-shell')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7900358d15d101ee6eeb8900d4dd323211c563aec716efcfd1b9cdd343fc4120')
+sha256sums=('19cc1df507835201dda4ad70fa364f79760b3c5fde4e7d3ed1e1133920b2a40d')
 
 package() {
 	cd "$pkgname-$pkgver"
