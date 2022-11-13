@@ -1,7 +1,7 @@
 pkgbase = r-openprimerui
 	pkgdesc = Shiny Application for Multiplex PCR Primer Design and Analysis
-	pkgver = 1.18.0
-	pkgrel = 1
+	pkgver = 1.20.0
+	pkgrel = 3
 	url = https://bioconductor.org/packages/openPrimeRui
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-openprimerui
 	depends = r-shinybs
 	depends = r-shinyjs
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/openPrimeRui_1.18.0.tar.gz
-	sha256sums = f4fc57f1b1a83ac0b985b00033233d420e149a9a502af26cccbba9118b9a78be
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/openPrimeRui_1.20.0.tar.gz
+	sha256sums = ec976066ee70342b27861506b126c5d64e2b675f2b9e301d067a11b42ec72855
 
 pkgname = r-openprimerui
