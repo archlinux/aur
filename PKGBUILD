@@ -1,7 +1,7 @@
 #Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=('shaderc-git')
-pkgver=2021.2.1.gc42db58
+pkgver=2022.3.2.gdc9d28a
 pkgrel=1
 pkgdesc="A collection of tools, libraries and tests for shader compilation. (GIT version)"
 url='https://github.com/google/shaderc'
@@ -32,6 +32,7 @@ source=('git+https://github.com/google/shaderc.git#branch=main'
 sha256sums=('SKIP'
             'b4b05ccea7c2905cf018efef15a86d8807011db1a8cabe57314f6aaade33a644'
             )
+options=('debug')
 
 pkgver() {
   cd shaderc
@@ -45,13 +46,14 @@ prepare() {
   patch -p1 -i "${srcdir}/fix-glslang-link-order.patch"
 
   # de-vendor libs and disable git versioning
-  sed '/examples/d;/third_party/d' -i CMakeLists.txt
+  sed '/add_subdirectory(third_party)/d' -i CMakeLists.txt
   sed '/build-version/d' -i glslc/CMakeLists.txt
   cat <<- EOF > glslc/src/build-version.inc
 "${pkgver}\\n"
 "$(pacman -Q spirv-tools|cut -d \  -f 2|sed 's/-.*//')\\n"
 "$(pacman -Q glslang|cut -d \  -f 2|sed 's/-.*//')\\n"
 EOF
+
 }
 
 build() {
