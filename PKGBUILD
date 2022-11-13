@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HiCDCPlus
-_pkgver=1.4.2
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Hi-C Direct Caller Plus'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8844af1b7bb48d9488c9e4ed886193d7afdf5fccfef751f6b4be544235e15c5f')
+sha256sums=('ed84b31fde382e3f1dfd140488b664c1c48a1f69caadb0424f2e894676b8064f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
