@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=loci2path
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=1
+pkgver=1.18.0
+pkgrel=3
 pkgdesc='Loci2path: regulatory annotation of genomic intervals based on tissue-specific expression QTLs'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('459da55e47b57009dcd73fa05d6dac8736e6e7b943323a0a3bdfa560acfcf80d')
+sha256sums=('6f6455caedc47006057d040d4d88468392ec8f1f9f3252038a9823f0d8d835d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
