@@ -3,7 +3,7 @@
 _pkgname=gbutils
 _pkgver=0.5
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.5
 pkgrel=1
 pkgdesc='Utilities for Simulation, Plots, Quantile Functions and Programming'
 arch=('any')
