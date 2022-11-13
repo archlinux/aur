@@ -1,7 +1,7 @@
 # Contributor: Manuel <mdomlop@gmail.com>
 # Maintaner: beelzebud <beelzebud@gmail.com>
 
-_pkgname=flycast
+_pkgname=flycast-2.0
 pkgname=$_pkgname-git
 pkgver=r5231.993b705d
 pkgrel=1
