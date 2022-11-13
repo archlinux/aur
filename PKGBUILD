@@ -1,15 +1,11 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
-
-_mods_dir='etc/httpd/conf/mods-available'
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=a2enmod-git
-pkgver=r3.5ff0dc9
+pkgver=1.2.r1.g5ff0dc9
 pkgrel=1
 pkgdesc='Apache enable/disable module/site. From Debian package.'
 arch=('any')
-url='http://httpd.apache.org/'
+url='https://httpd.apache.org/'
 license=('APACHE')
 depends=(apache)
 optdepends=(
@@ -19,6 +15,7 @@ optdepends=(
 provides=(a2enmod)
 conflicts=(a2enmod)
 replaces=(a2enmod)
+_mods_dir='etc/httpd/conf/mods-available'
 backup=(
 ${_mods_dir}/actions.conf
 ${_mods_dir}/alias.conf
@@ -66,14 +63,18 @@ etc/httpd/conf/conf.d/security
 )
 options=(emptydirs !strip)
 install='a2enmod.install'
-source=('git://github.com/dracorp/a2enmod.git')
+source=('git+https://github.com/dracorp/a2enmod.git')
 _gitname='a2enmod'
 md5sums=('SKIP')
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  if [ -d "$srcdir"/$_gitname ]; then
+    cd "$srcdir"/$_gitname
+    ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+  fi
 }
 package(){
-  cd $_gitname
+  cd "$srcdir"/$_gitname
   make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
 }
