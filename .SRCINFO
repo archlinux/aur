@@ -1,6 +1,6 @@
 pkgbase = r-timirgen
 	pkgdesc = Time sensitive microRNA-mRNA integration, analysis and network generation tool
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TimiRGeN
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-timirgen
 	optdepends = r-org.mm.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TimiRGeN_1.6.0.tar.gz
-	sha256sums = 7eeb5dcc263ad5ff29073176a64db05ab4eddc51708c655c53cd6d34d2041af5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TimiRGeN_1.8.0.tar.gz
+	sha256sums = 525a7e8319043b274bbd9d3457c3a08572504215cc1879fc0050ca803c00c7cb
 
 pkgname = r-timirgen
