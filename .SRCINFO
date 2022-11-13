@@ -1,0 +1,19 @@
+pkgbase = pixelcolor-git
+	pkgdesc = Get the screen pixel color
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.muflone.com/pixelcolor
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pillow
+	provides = pixelcolor
+	conflicts = pixelcolor
+	source = git+https://github.com/muflone/pixelcolor
+	sha256sums = SKIP
+
+pkgname = pixelcolor-git
