@@ -1,0 +1,22 @@
+pkgbase = flatpak-builder-lint-git
+	pkgdesc = A linter for flatpak-builder manifests
+	pkgver = r147.3c8daa9
+	pkgrel = 1
+	url = https://github.com/flathub/flatpak-builder-lint
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-requests
+	depends = python-jsonschema
+	depends = flatpak-builder
+	provides = flatpak-builder-lint
+	conflicts = flatpak-builder-lint
+	source = git+https://github.com/flathub/flatpak-builder-lint
+	md5sums = SKIP
+
+pkgname = flatpak-builder-lint-git
