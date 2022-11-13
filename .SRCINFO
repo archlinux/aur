@@ -1,12 +1,12 @@
 pkgbase = currencyconverter
 	pkgdesc = A CLI program that converts currencies using currency exchange rates
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Rayrsn/currencyConverter
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = https://github.com/Rayrsn/currencyConverter/archive/refs/tags/1.0.3.zip
-	md5sums = 0bf01dd8b9d0e97123e6a417a0e1ac0e
+	source = https://github.com/Rayrsn/currencyConverter/archive/refs/tags/1.0.4.zip
+	md5sums = 0f3dcf876d3240cead3f8a22a7ccf7f9
 
 pkgname = currencyconverter
