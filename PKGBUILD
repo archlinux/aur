@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netboxr
-_pkgver=1.7.1
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='netboxr'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ad03faa1b976e3458f3c40499e46792dd1bed97673c303a49e2197233806ec1a')
+sha256sums=('f5e3138dcb82d4e70830383c1913bc234b796367d85ca2695742177280a936af')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
