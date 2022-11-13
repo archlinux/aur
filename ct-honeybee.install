@@ -1,0 +1,4 @@
+post_install() {
+	echo '==> A systemd timer has been provided, if you wish to run ct-honeybee hourly,'
+	echo '==> enable it by running systemctl enable ct-honeybee.timer.'
+}

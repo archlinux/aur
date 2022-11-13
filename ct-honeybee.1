@@ -1,0 +1,50 @@
+.TH "CT-HONEYBEE" "1" "2021-09-14"
+.
+.SH "NAME"
+ct-honeybee - pollinates STHs between Certificate Transparency logs and auditors
+.
+.SH "SYNOPSIS"
+\fBct-honeybee\fR
+.
+.SH "DESCRIPTION"
+The Certificate Transparency Honeybee (\fBct-honeybee\fR) is a lightweight program that retrieves signed tree heads (STHs) from Certificate Transparency logs and uploads them to auditors.
+.PP
+You can help strengthen the integrity of the Certificate Transparency ecosystem by running \fBct-honeybee\fR on your workstation/server/toaster every hour or so (pick a random minute so that not everyone runs \fBct-honeybee\fR at the same time).  Running \fBct-honeybee\fR from many different Internet vantage points increases the likelihood of detecting a misbehaving log which has presented a different view of the log to different clients.
+.PP
+\fBct-honeybee\fR is stateless and won't write to your filesystem.
+.
+.SH "LOGS"
+All logs trusted or pending inclusion by Chrome are audited by \fBct-honeybee\fR. For the current list of logs audited, see \fIhttps://loglist.certspotter.org/honeybee.json\fR.
+.
+.SH "AUDITORS"
+\fBct-honeybee\fR uploads STHs to the following auditors:
+.PP
+.IP "\(bu" 4
+certspotter.com
+.
+.IP "\(bu" 4
+ct.grahamedgecombe.com
+.
+.PP
+If you run an auditor that implements the sth-pollination endpoint described in Section 8.2 of draft-ietf-trans-gossip-00, please get in touch via \<\fIsslmate@sslmate.com\fR\> and we will add you to \fBct-honeybee\fR.
+.
+.SH "TECHNICAL OPERATION"
+.nr step 1 1
+.IP "\n[step]." 4
+For each log: fetch the latest STH and add it to the list of STHs. For simplicity, signatures are not checked; we leave this job to the auditors.
+.
+.IP "\n+[step]." 4
+Shuffle the list of auditors.
+.
+.IP "\n+[step]." 4
+For each auditor: upload the list of STHs to the auditor using the protocol described in Section 8.2 of draft-ietf-trans-gossip-00. Add each returned STH to the list of STHs so they get pollinated to subsequent auditors.  Since we shuffle the list of auditors, we will pollinate in a different order each time ct-honeybee is run.
+.
+.SH "LEGALESE"
+Written in 2017 by Opsmate, Inc. d/b/a SSLMate \<\fIsslmate@sslmate.com\fR\>
+.PP
+To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
+.PP
+A copy of the CC0 Public Domain Dedication has been included with this software and is available in
+\fI/usr/share/licenses/ct-honeybee/LICENSE\fR.
+.PP
+It is also available online at \fIhttp://creativecommons.org/publicdomain/zero/1.0/\fR.

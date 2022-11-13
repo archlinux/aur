@@ -1,0 +1,11 @@
+[Unit]
+Description=Hourly ct-honeybee run
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=59m
+FixedRandomDelay=true
+Persistent=true
+
+[Install]
+WantedBy=timers.target
