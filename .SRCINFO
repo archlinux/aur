@@ -1,6 +1,6 @@
 pkgbase = rsync-reflink-git
-	pkgdesc = A fast and versatile file copying tool for remote and local files - git checkout with reflink support
-	pkgver = 3.2.7pre1.r2.g00b361db
+	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support (git)
+	pkgver = 3.2.7.r8.g74028965
 	pkgrel = 1
 	url = https://github.com/WayneD/rsync/issues/153
 	arch = i686
@@ -24,9 +24,13 @@ pkgbase = rsync-reflink-git
 	backup = etc/xinetd.d/rsync
 	source = rsync-git::git+https://github.com/WayneD/rsync
 	source = https://github.com/WayneD/rsync-patches/raw/master/clone-dest.diff
+	source = https://github.com/WayneD/rsync-patches/raw/master/detect-renamed.diff
+	source = https://github.com/WayneD/rsync-patches/raw/master/detect-renamed-lax.diff
 	source = rsyncd.conf
 	sha256sums = SKIP
-	sha256sums = 59fbf061d372ef4e6ce9ed89da2cfb8dc7cdbf4a009b99d2b80b17db34e01dac
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b
 
 pkgname = rsync-reflink-git

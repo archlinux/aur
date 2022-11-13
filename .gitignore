@@ -1,6 +1,6 @@
 pkg
 src
-*.pkg.*
 *.log
-clone-dest.diff
-rsync-git
+*.tar.*
+*.diff
+rsync*
