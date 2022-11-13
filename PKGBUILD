@@ -2,7 +2,7 @@
 # Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 
 # shellcheck disable=2034,3030,2154
-pkgname=alchemy-next-viewer-bin
+pkgname=alchemy-viewer-bin
 pkgver=6.5.5.1535
 pkgrel=3
 _ci_build_id=1358
@@ -32,6 +32,8 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
+replaces=('alchemy-next-viewer-bin')
+conflicts=('alchemy-next-viewer-bin')
 # The release url format changes often, please keep this comment for easy switching.
 # source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2")
 source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/package_files/'"${_ci_build_id}"'/download')

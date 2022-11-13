@@ -1,4 +1,4 @@
-pkgbase = alchemy-next-viewer-bin
+pkgbase = alchemy-viewer-bin
 	pkgdesc = This is the next generation of Alchemy Viewer! - Binary Project build
 	pkgver = 6.5.5.1535
 	pkgrel = 3
@@ -34,9 +34,11 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
 	provides = alchemy-viewer
+	conflicts = alchemy-next-viewer-bin
+	replaces = alchemy-next-viewer-bin
 	options = !strip
 	source = Alchemy_Project_AgileAkita_6_5_5_1535_x86_64.tar.bz2::https://git.alchemyviewer.org/alchemy/alchemy-next/-/package_files/1358/download
 	sha1sums = e3cfc48283d27da837b1720f12f8e168764a5157
 	b2sums = db52841efe0c41bb123f7e2441ec2594fd136be87b30811646a7ecb946135dc338119c0ffd1f14456d8e75ff8c93fab07babb09181ce5e9619ec2755e025fbc6
 
-pkgname = alchemy-next-viewer-bin
+pkgname = alchemy-viewer-bin
