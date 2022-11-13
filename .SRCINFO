@@ -1,13 +1,11 @@
 pkgbase = python-scurses-git
 	pkgdesc = Python curses-based TUI framework
 	pkgver = v2.r4.ged0c6ea
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.sdore.me/Scurses
 	arch = any
 	license = LGPL3
-	depends = python-pillow
 	depends = python-sutils
-	optdepends = python-requests: for fetching images by URLs
 	provides = python-scurses
 	conflicts = python-scurses
 	source = git+https://apps.sdore.me/Scurses.git
