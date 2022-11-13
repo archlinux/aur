@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytomapper
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Visualization of highly multiplexed imaging data in R'
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
   r-ggplot2
   r-hdf5array
   r-matrixstats
+  r-nnls
   r-raster
   r-rcolorbrewer
   r-rhdf5
@@ -25,11 +26,11 @@ depends=(
   r-shiny
   r-shinydashboard
   r-singlecellexperiment
+  r-spatialexperiment
   r-summarizedexperiment
   r-svglite
   r-svgpanzoom
   r-viridis
-  r-nnls
 )
 optdepends=(
   r-biocstyle
@@ -41,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('99dbd17842ac9dd1a7a386022c627b2d491c8f6ed8641b22bcf52860810879eb')
+sha256sums=('2546d00c99c38fd44a9192a9ab14ee841166585738fad435b8a49f24b7b300e6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
