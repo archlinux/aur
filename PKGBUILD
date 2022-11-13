@@ -2,7 +2,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-git"
-pkgver=r1847.cb687c2
+pkgver=r2042.ga7ed3a5
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
@@ -85,5 +85,5 @@ package() {
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install -Dm755 ../tmpwlr/lib/libwlroots.so.11032 -t "${pkgdir}/usr/lib"
+	install -Dm755 ../tmpwlr/lib/libwlroots.so.12032 -t "${pkgdir}/usr/lib"
 }
