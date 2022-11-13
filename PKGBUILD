@@ -25,6 +25,7 @@ optdepends=(
     'nvidia-libgl: NVIDIA support'
     'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
+replaces=('alchemy-next-viewer-git')
 options=(!emptydirs !makeflags !strip !lto)
 install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
