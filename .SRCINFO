@@ -1,0 +1,19 @@
+pkgbase = python-deepmultilingualpunctuation
+	pkgdesc = A python package for deep multilingual punctuation prediction.
+	pkgver = 1.0.1
+	pkgrel = 00
+	url = https://github.com/oliverguhr/deepmultilingualpunctuation
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-transformers
+	depends = python-pytorch
+	noextract = deepmultilingualpunctuation-1.0.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/dc/a7/505f531c23aa2c381b597c9e59a62c20d9e6294f32ad7d06e4eaa2f3d438/deepmultilingualpunctuation-1.0.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 8ea2904987d350cdbc1978efb69323e2
+	md5sums = 6bd5c7798801b42c14894192dca0c863
+
+pkgname = python-deepmultilingualpunctuation
