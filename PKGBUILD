@@ -3,7 +3,7 @@
 _pkgname=logr
 _pkgver=1.3.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Creates Log Files'
 arch=('any')
