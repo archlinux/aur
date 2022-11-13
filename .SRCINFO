@@ -1,7 +1,7 @@
 pkgbase = r-rstatix
 	pkgdesc = Pipe-Friendly Framework for Basic Statistical Tests
-	pkgver = 0.7.0
-	pkgrel = 7
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rstatix
 	arch = any
 	license = GPL
@@ -26,7 +26,7 @@ pkgbase = r-rstatix
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rstatix_0.7.0.tar.gz
-	sha256sums = a5ae17dc32cc26fc5dcab9ff0a9747ce3786c9fe091699247ad8b9f823f2600c
+	source = https://cran.r-project.org/src/contrib/rstatix_0.7.1.tar.gz
+	sha256sums = 530563ef3fa74ebfeb3df4d771022e44ceb4fee720f558ff3b5c2259030f0030
 
 pkgname = r-rstatix
