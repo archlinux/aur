@@ -21,6 +21,7 @@ pkgbase = libpamac-nosnap
 	makedepends = asciidoc
 	depends = pacman
 	depends = flatpak
+	depends = appstream-glib
 	depends = archlinux-appstream-data-pamac
 	conflicts = libpamac-aur
 	conflicts = libpamac-flatpak

@@ -4,13 +4,13 @@
 _pkgname=libpamac
 pkgname=$_pkgname-nosnap
 pkgver=11.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak support enabled"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
-depends=('pacman' 'flatpak' 'archlinux-appstream-data-pamac')
+depends=('pacman' 'flatpak' 'appstream-glib' 'archlinux-appstream-data-pamac')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full-dev' 'libpamac-full')
