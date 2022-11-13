@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneStructureTools
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Tools for spliced gene structure manipulation and analysis'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5bf2d639ebddabb739b8757acbb56890a86fdc5a6185df0994d4a408aea62eb2')
+sha256sums=('9c4b8bfbb15ddc18b1e28886f32c0c6153818034c46832b2c98d9bf8dbc3c34e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
