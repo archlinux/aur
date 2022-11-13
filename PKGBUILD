@@ -9,7 +9,7 @@ url="https://blogs.msdn.microsoft.com/sqlnativeclient/"
 license=('custom')
 depends=('unixodbc' 'krb5' 'curl')
 options=('!strip')
-source=(https://packages.microsoft.com/rhel/8/prod/msodbcsql18-$pkgver-1.x86_64.rpm)
+source=(https://packages.microsoft.com/rhel/8/prod/Packages/m/msodbcsql18-$pkgver-1.x86_64.rpm)
 sha256sums=('6b873170f9e27babd5d9698ad2f00546101793b8ef747cba52a2d3080b18dde6')
 install=msodbcsql.install
 
