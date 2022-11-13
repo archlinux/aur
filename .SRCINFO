@@ -1,0 +1,20 @@
+pkgbase = r-coro
+	pkgdesc = 'Coroutines' for R
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=coro
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-rlang
+	optdepends = r-knitr
+	optdepends = r-later
+	optdepends = r-magrittr
+	optdepends = r-promises
+	optdepends = r-reticulate
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/coro_1.0.3.tar.gz
+	sha256sums = 4e7729b1b1461be7805b2fcad0ed4c04755390dad3f1a2cb9f3af701db6d7d73
+
+pkgname = r-coro
