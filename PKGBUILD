@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChromSCape
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Analysis of single-cell epigenomics datasets with a Shiny App'
 arch=('x86_64')
@@ -24,7 +24,10 @@ depends=(
   r-forcats
   r-fs
   r-genomicranges
+  r-gggenes
   r-ggplot2
+  r-ggrepel
+  r-gridextra
   r-iranges
   r-irlba
   r-jsonlite
@@ -52,17 +55,19 @@ depends=(
   r-shinywidgets
   r-singlecellexperiment
   r-stringdist
+  r-stringr
   r-summarizedexperiment
-  r-sushi
   r-tibble
   r-tidyr
   r-umap
   r-viridis
-  r-gggenes
 )
 optdepends=(
   r-biocstyle
+  r-bluster
   r-future
+  r-httr
+  r-igraph
   r-knitr
   r-markdown
   r-rmarkdown
@@ -70,7 +75,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('30abed31221e86e32a21a32f2e2c6428bf67eeb31965da468d8b56aa2f057343')
+sha256sums=('d3b272cf3e66a873e818c019b6931b08be2a587d9f922af24328e26f04627b7f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
