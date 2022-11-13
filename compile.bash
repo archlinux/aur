@@ -57,4 +57,4 @@ $prefix_cmd ionice -n 1 autobuild configure -A 64 -c ReleaseOS -- \
 unset prefix_cmd
 
 echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
-schedtool -B -n 1 -e ionice -n 1 autobuild build -A64 -c ReleaseOS --no-configure
+$prefix_cmd ionice -n 1 autobuild build -A64 -c ReleaseOS --no-configure

@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer-git
 pkgver=6.5.5_r48681.g12c2a9b7e9
-pkgrel=4
+pkgrel=5
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -31,7 +31,7 @@ install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 'compile.bash')
 b2sums=('SKIP'
-        'b373f97bd0fa2b0fd754141196a4051c84a1a5dbc5129ce7050e9678ea3141ec15271e066e4f0b21c176a4b43cc6cf762aa11cea7f4a0307c9088380cfe63d27')
+        '67d8687b690f40a391b3374c1c7bb8d3ff9ea488b9b67742b92079c00ff43e091a80e281fcf81a62dd0b8c4f35aedc385593ac48f6dce0298440285c296058ed')
 
 pkgver() {
     cd "${pkgname}" || exit 1
