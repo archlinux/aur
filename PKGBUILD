@@ -7,7 +7,7 @@ pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
 license=('GPL3')
-depends=('java-runtime>=17' 'java-commons-logging' 'sh' 'libsignal-client')
+depends=('java-runtime-headless>=17' 'java-commons-logging' 'sh' 'libsignal-client')
 makedepends=('java-environment>=17' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"

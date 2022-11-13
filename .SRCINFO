@@ -8,7 +8,7 @@ pkgbase = signal-cli
 	makedepends = java-environment>=17
 	makedepends = gradle
 	makedepends = asciidoc
-	depends = java-runtime>=17
+	depends = java-runtime-headless>=17
 	depends = java-commons-logging
 	depends = sh
 	depends = libsignal-client
