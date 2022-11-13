@@ -3,7 +3,7 @@
 
 pkgname=gtkada
 epoch=1
-pkgver=22.0.0
+pkgver=23.0.0
 pkgrel=1
 
 pkgdesc='Ada bindings for the Gtk+ library.'
@@ -14,11 +14,11 @@ license=('GPL3' 'custom')
 depends=('gcc-ada' 'gtk3')
 makedepends=('gprbuild')
 
-_git_hash=9c54a721320e1271ebc884f6bdae31b1a85e8798
+_git_hash=194c463153cf909722545765f1eb702e655df3d3
 
 source=("$pkgname-$_git_hash.tar.gz::$url/archive/$_git_hash.tar.gz"
         "Makefile.in-patch")
-sha256sums=("f4ad2cb3a1444a8abc3173bb9ed76f9b24cdae65504d14fecf442394e516b65d"
+sha256sums=("84fdf8dab32e64cc9a1a2256ad3ddb5ff452179d6f9c877ff41b2d9210f88868"
             "f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4")
 
 prepare()
@@ -31,8 +31,7 @@ build()
 {
     cd "$srcdir/$pkgname-$_git_hash"
 
-    # XXX Disable opengl https://github.com/AdaCore/gtkada/issues/9
-    ./configure --prefix=/usr --with-GL=no
+    ./configure --prefix=/usr
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
