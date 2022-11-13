@@ -1,6 +1,6 @@
 pkgbase = r-systempipeshiny
 	pkgdesc = systemPipeShiny: An Interactive Framework for Workflow Management and Visualization
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/systemPipeShiny
 	arch = any
@@ -62,7 +62,7 @@ pkgbase = r-systempipeshiny
 	optdepends = r-tidyr
 	optdepends = r-upsetr
 	optdepends = r-zip
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/systemPipeShiny_1.8.0.tar.gz
-	sha256sums = c65591522083937ad5a1a26954fae6db0e20baaaea36b0cd066f4733467e58aa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/systemPipeShiny_1.8.1.tar.gz
+	sha256sums = 823556e28659617f96d99e0bd7fbac411cf52aa90a353daef86e4e09a23e6ca4
 
 pkgname = r-systempipeshiny

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=systemPipeShiny
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='systemPipeShiny: An Interactive Framework for Workflow Management and Visualization'
 arch=('any')
@@ -71,7 +71,7 @@ optdepends=(
   r-zip
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c65591522083937ad5a1a26954fae6db0e20baaaea36b0cd066f4733467e58aa')
+sha256sums=('823556e28659617f96d99e0bd7fbac411cf52aa90a353daef86e4e09a23e6ca4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
