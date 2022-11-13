@@ -1,6 +1,6 @@
 # Author: Dominic Radermacher <dominic@familie-radermacher.ch>
 pkgname=lan951x-led-ctl
-pkgver=1.0.r7.gfe5cfbc
+pkgver=1.0.r9.g0443d24
 pkgrel=1
 pkgdesc="Command line tool to control the LED's of a LAN9512/LAN9514 ethernet controller"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -20,9 +20,9 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/${pkgname}"
-	make
+	mkdir -p build && cmake --fresh -B build && cmake --build build
 }
 package() {
 	cd "${srcdir}/${pkgname}"
-	make DESTDIR=${pkgdir}/usr install
+	DESTDIR=${pkgdir} cmake --install build
 }
