@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=famat
-_pkgver=1.6.6
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.6
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Functional analysis of metabolic and transcriptomic data'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-biasedurn
   r-clusterprofiler
   r-dplyr
   r-dt
@@ -18,7 +19,6 @@ depends=(
   r-gprofiler2
   r-keggrest
   r-magrittr
-  r-mpinet
   r-ontologyindex
   r-org.hs.eg.db
   r-plotly
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44f028dfc8acc8d91bd6e5174460f6f51f2de1a26d00598bd4be8961e29044ba')
+sha256sums=('d6ed458cd9d0ed57d057ad4943daacd353f5de3d4358caffb840f285eb7ba4d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
