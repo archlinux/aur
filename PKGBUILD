@@ -26,12 +26,12 @@ optdepends=(
     'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
 replaces=('alchemy-next-viewer-git')
-options=(!emptydirs !makeflags !strip !lto)
+options+=(!emptydirs !buildflags !strip !lto)
 install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 'compile.bash')
 b2sums=('SKIP'
-        '67d8687b690f40a391b3374c1c7bb8d3ff9ea488b9b67742b92079c00ff43e091a80e281fcf81a62dd0b8c4f35aedc385593ac48f6dce0298440285c296058ed')
+        '3e2b3c952ddb353e159f9f65565fb6838428e39bda0fa062019cfde9158d36f6aaff71a52b13e39fe25e8cd98f8a11097f0d59b152c58dedbb951aae3f9c71f6')
 
 pkgver() {
     cd "${pkgname}" || exit 1
@@ -43,11 +43,18 @@ pkgver() {
 
 prepare() {
     cd "${pkgname}" || exit 1
+    ../../compile.bash prepare
 }
 
 build() {
     cd "${pkgname}" || exit 1
-    ../../compile.bash "${OPTIONS}"
+    # I could not find the documentation on how to handle BUILDENV/OPTION in
+    # makepkg.conf. If you are reading this and know where it is,
+    # please send it my way.
+    if ! command -v ccache > /dev/null 2>&1; then
+        export AL_NOCCACHE=1
+    fi
+    ../../compile.bash build
 }
 
 package() {
