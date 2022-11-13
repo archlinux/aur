@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lumi
-_pkgver=2.48.0
+_pkgver=2.50.0
 pkgname=r-${_pkgname,,}
-pkgver=2.48.0
+pkgver=2.50.0
 pkgrel=1
 pkgdesc='BeadArray Specific Methods for Illumina Methylation and Expression Microarrays'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d7964151fc7eab8cd4bea18b17f2d3c60f233a5302bbf46d5d5fb200ba5f51b')
+sha256sums=('582ea1e15b4c70682addb7e6699b468695e2f167213496a5ed2d191d51212181')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
