@@ -3,7 +3,7 @@
 _pkgname=gson
 _pkgver=0.0.9
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Base Class and Methods for 'gson' Format"
 arch=('any')
