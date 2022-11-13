@@ -16,7 +16,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd-dev
 pkgdesc="OpenCL SDK / HIP SDK / ROCM Compiler. This package needs at least 10GB of space."
 pkgver=${amdgpu_install}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -112,22 +112,24 @@ sha256sums=(
 
 #Extract .xz files
 exz() {
-	ar x $1
+	#echo $1
+	ar x $1 data.tar.xz
 	tar xJf data.tar.xz
 	rm data.tar.xz
 }
 #Extract .gz files
 egz() {
-	ar x $1
+	#echo $1
+	ar x $1 data.tar.gz
 	tar xfx data.tar.gz
 	rm data.tar.gz
 }
 
 package() {
 	egz "${srcdir}/openmp-extras-dev_15.53.0.50302-96~22.04_amd64.deb"
-	exz "${srcdir}/rocm-llvm_15.0.0.22414.50302-96~22.04_amd64.deb"
+	egz "${srcdir}/rocm-llvm_15.0.0.22414.50302-96~22.04_amd64.deb"
 	exz "${srcdir}/rocblas_2.45.0.50302-96~22.04_amd64.deb"
-	egz "${srcdir}/rocblas-dev_2.45.0.50302-96~22.04_amd64.deb"		
+	exz "${srcdir}/rocblas-dev_2.45.0.50302-96~22.04_amd64.deb"
 	exz "${srcdir}/hipblas_0.52.0.50302-96~22.04_amd64.deb"
 	exz "${srcdir}/hipblas-dev_0.52.0.50302-96~22.04_amd64.deb"
 	exz "${srcdir}/rocprim-dev_2.10.9.50302-96~22.04_amd64.deb"
