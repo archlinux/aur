@@ -41,8 +41,8 @@ _first_source() {
 _vcs="$(grep -Po '^[a-z]+(?=\+)' <<< "$(_first_source)")"
 if [[ "$_vcs" ]]; then
     makedepends+=("$(pkgfile --quiet /usr/bin/$_vcs)")
-    provides+=("${pkgname%-$_vcs}")
-    conflicts+=("${pkgname%-$_vcs}")
+    provides+=("${_pkgbase%-$_vcs}")
+    conflicts+=("${_pkgbase%-$_vcs}")
 fi
 
 _is_wheel() {
@@ -135,7 +135,7 @@ _package() {
         mv "$pkgdir/usr/etc" "$pkgdir/etc"
     fi
     if [[ -f LICENSE ]]; then
-        install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
     fi
     
     optin_telemetry
