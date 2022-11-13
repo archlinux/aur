@@ -1,6 +1,6 @@
 pkgbase = r-sp
 	pkgdesc = Classes and Methods for Spatial Data
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sp
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = r-sp
 	optdepends = r-deldir
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/sp_1.5-0.tar.gz
-	sha256sums = 939a06adf78ec8de7a663d6ca5bba426780852b357773446b00cc298200ff81c
+	source = https://cran.r-project.org/src/contrib/sp_1.5-1.tar.gz
+	sha256sums = 69b9eab481d389bbb736d2adcf50c180aca248c3ffc4ebda8ffe2accc5f229df
 
 pkgname = r-sp
