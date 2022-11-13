@@ -1,6 +1,6 @@
 pkgbase = r-recount
 	pkgdesc = Explore and download data from the recount project
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/recount
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-recount
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/recount_1.22.0.tar.gz
-	sha256sums = 9e668e7034e5ed1affca6e0f7d3cfd29af0c765f8906647b7dc7c2982d9237d6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/recount_1.24.0.tar.gz
+	sha256sums = 6a3f44432b2ca86be411916d8c6d1584a261543d3e43dac56003d886dfccf8b9
 
 pkgname = r-recount
