@@ -1,0 +1,18 @@
+pkgbase = python-sutils-git
+	pkgdesc = Sdore's Utils lib
+	pkgver = r83.3d7f497
+	pkgrel = 1
+	url = https://apps.sdore.me/utils
+	arch = any
+	license = LGPL3
+	depends = python-regex
+	depends = python-pygments
+	depends = python-typing_inspect
+	provides = python-sutils
+	conflicts = python-sutils
+	source = git+https://apps.sdore.me/utils.git
+	source = pyproject.toml
+	sha256sums = SKIP
+	sha256sums = a55dd9d9b45773520c17d02f305babeff8a54c17bfe01e3b02d17f7dbe5a13dc
+
+pkgname = python-sutils-git
