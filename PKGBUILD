@@ -1,7 +1,8 @@
 # Maintainer: éclairevoyant
 # Contributor: xiretza <xiretza+aur@gmail.com>
+
 pkgname=python-discord
-pkgver=2.0.1
+pkgver=2.1.0
 _tarname=discord.py-$pkgver
 pkgrel=1
 pkgdesc="An API wrapper for Discord written in Python"
@@ -18,7 +19,7 @@ optdepends=('python-pynacl>=1.3.0: voice support'
 			'python-cchardet=2.1.7: speed support'
 			'python<3.10: speed support')
 source=("$_tarname.tar.gz::https://github.com/Rapptz/discord.py/archive/v$pkgver.tar.gz")
-sha512sums=('339f5feb2a5873e909555af6f868d8bbdb4fd59410b8042ac4c0643ff9c125df98839289ac051d578a7b6ff222b166d1404718c1c9b8a9fdeef598214058e616')
+sha512sums=('842eff70c209613516e7d43a26d260f0269a141e5351ce02aaca05fe67f3b63963f2a4de2f71de1760b9efbb00a1587f2a3c7a7b45af0ac1833a47a30288b76e')
 
 build() {
 	cd "$srcdir/$_tarname"
