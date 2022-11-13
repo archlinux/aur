@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.34.0.519.g42cfed002f
+	pkgver = v0.35.0.2.g1e9a2cbebf
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
@@ -79,8 +79,6 @@ pkgbase = mpv-build-git
 	source = git+https://github.com/libass/libass.git
 	source = git+https://github.com/haasn/libplacebo.git
 	source = git+https://github.com/Immediate-Mode-UI/Nuklear.git
-	source = git+https://github.com/Dav1dde/glad.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

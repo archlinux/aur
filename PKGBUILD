@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.34.0.519.g42cfed002f
+pkgver=v0.35.0.2.g1e9a2cbebf
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -82,10 +82,8 @@ source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/libass/libass.git'
         'git+https://github.com/haasn/libplacebo.git'
         'git+https://github.com/Immediate-Mode-UI/Nuklear.git'
-        'git+https://github.com/Dav1dde/glad.git'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -113,14 +111,13 @@ prepare() {
   git clone "${srcdir}/libass"
   git clone "${srcdir}/libplacebo"
 
-  pushd "${srcdir}/libplacebo"
+  (
+    cd libplacebo
     git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
     git config submodule.3rdparty/glad.url "${srcdir}/glad"
     git -c protocol.file.allow=always submodule update --init \
-      demos/3rdparty/nuklear \
-      3rdparty/glad
-
-  popd
+      demos/3rdparty/nuklear
+  )
 
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
@@ -178,7 +175,10 @@ fi
     '--enable-cuda-interop'
     '--color=yes'
     )
-  _libplacebo_options=('')
+  _libplacebo_options=(
+    '-Dvulkan=enabled'
+    '-Dlcms=enabled'
+    )
 
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
@@ -191,7 +191,7 @@ fi
 
 build() {
   cd mpv-build
-  PYTHONPATH="${srcdir}/libplacebo/3rdparty/glad" ./build
+  ./build
 }
 
 package() {
