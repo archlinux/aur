@@ -3,7 +3,7 @@
 _pkgname=tidytidbits
 _pkgver=0.3.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A Collection of Tools and Helpers Extending the Tidyverse'
 arch=('any')
