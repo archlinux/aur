@@ -1,0 +1,23 @@
+pkgbase = r-tidytidbits
+	pkgdesc = A Collection of Tools and Helpers Extending the Tidyverse
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tidytidbits
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-extrafont
+	depends = r-forcats
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-tidyselect
+	optdepends = r-survival
+	source = https://cran.r-project.org/src/contrib/tidytidbits_0.3.2.tar.gz
+	sha256sums = e87093aab927c2d34626b88cdff1f2cfd3883ffde778f8d5794ad6b88a0975fd
+
+pkgname = r-tidytidbits
