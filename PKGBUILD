@@ -4,7 +4,7 @@
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer-git
-pkgver=6.5.5.48681.12c2a9b7e9
+pkgver=6.5.5_r48681.g12c2a9b7e9
 pkgrel=2
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
@@ -37,7 +37,7 @@ pkgver() {
     cd "${pkgname}" || exit 1
     ( set -o pipefail
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "%s_r%s.g%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
 
