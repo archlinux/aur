@@ -4,19 +4,21 @@
 
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt)
-pkgdesc='patched version of transmission that bans Xunlei (a well-known leecher client)'
+pkgdesc='patched version of transmission that bans Xunlei (a well-known leech-only client)'
 pkgver=3.00
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
-url="http://www.transmissionbt.com/"
+url="https://www.transmissionbt.com/"
 license=(MIT)
 makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools libappindicator-gtk3)
 source=(https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
+        transmission-3.00-openssl-3.patch
         ban-xunlei.patch
         ban-3-more-leech-only-clients.patch
         transmission-noxunlei-cli.sysusers
         transmission-noxunlei-cli.tmpfiles)
 sha256sums=('9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
+            'a5e56b906724f007db0bdb9835fbf5088bb56a521ec2971aec0ea44578d5955b'
             'c1b21b0e2d54a0a041c602709f6f0c2dc3626e6aa04c049c1a76b2e3d0dcc89d'
             '90d6e7fcdc84fc14546d1060880f656e5f2e9490e094c42339b74a7973be779b'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
@@ -26,7 +28,11 @@ prepare() {
   ln -sf transmission-$pkgver $pkgbase-$pkgver
   cd $pkgbase-$pkgver
 
-  # loqs's patch that fixes builds under autoconf 2.70+  https://bugs.archlinux.org/task/70877
+  # Fix compatibility with OpenSSL 3.0 (patch from Gentoo)
+  # https://github.com/transmission/transmission/issues/1777
+  patch -Np1 -i ../transmission-3.00-openssl-3.patch
+
+  # loqs's patch, fixes building with autoconf 2.70+  https://bugs.archlinux.org/task/70877
   sed -i 's/\[IT_PROG_INTLTOOL(\[/[\nIT_PROG_INTLTOOL(\[/' configure.ac
 
   # Ban Xunlei (Thunder) downloader as described in blog.zscself.com/posts/66b00f02/
