@@ -1,14 +1,14 @@
 # Maintainer: Donn <me@donn.website>
 pkgname=cemu-bin
 pkgver=2.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
 license=('MPL-2.0')
 groups=()
 depends=(
-	'pugixml'
+  'pugixml'
   'pulseaudio'
   'opengl-driver'
   'vulkan-driver'
@@ -32,10 +32,10 @@ source=(
 )
 noextract=()
 sha256sums=(
-  '92760341c85e7566464bc7847d76ac1b2bf8afb3bf9895514a717cc564a96470'
-  'c9f711d46917ac112c497e8600c6e99d68bb3d16b862e9232dc7578314b95978'
-  '054fc7d9050a545bb9d4a0320720f4cee8b994a47c3daf029edbda1e996d3447'
-  '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33'
+  '97fcfd289daa67bf53e9169c2e487c575c96ec241541518cedd67bc0f33ebb6f'
+  'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
 package() {
@@ -58,7 +58,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/cemu"
   cp -r "$srcdir/Cemu_${pkgver}-${pkgrel}"/* "$pkgdir/usr/share/cemu"
 
-	install -Dm644 -t "$pkgdir"/usr/share/applications info.cemu.Cemu.desktop
-	install -Dm644 -t "$pkgdir"/usr/share/metainfo info.cemu.Cemu.metainfo.xml
-	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/128x128/apps info.cemu.Cemu.png
+  install -Dm644 -t "$pkgdir"/usr/share/applications info.cemu.Cemu.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/metainfo info.cemu.Cemu.metainfo.xml
+  install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/128x128/apps info.cemu.Cemu.png
 }

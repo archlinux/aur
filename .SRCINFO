@@ -1,7 +1,7 @@
 pkgbase = cemu-bin
 	pkgdesc = Nintendo Wii U Emulator
 	pkgver = 2.0
-	pkgrel = 14
+	pkgrel = 15
 	url = https://cemu.info
 	arch = x86_64
 	license = MPL-2.0
@@ -22,13 +22,13 @@ pkgbase = cemu-bin
 	options = !docs
 	options = libtool
 	options = emptydirs
-	source = https://github.com/cemu-project/Cemu/releases/download/v2.0-14/cemu-2.0-14-ubuntu-20.04-x64.zip
+	source = https://github.com/cemu-project/Cemu/releases/download/v2.0-15/cemu-2.0-15-ubuntu-20.04-x64.zip
 	source = info.cemu.Cemu.desktop
 	source = info.cemu.Cemu.metainfo.xml
 	source = info.cemu.Cemu.png
-	sha256sums = 92760341c85e7566464bc7847d76ac1b2bf8afb3bf9895514a717cc564a96470
-	sha256sums = c9f711d46917ac112c497e8600c6e99d68bb3d16b862e9232dc7578314b95978
-	sha256sums = 054fc7d9050a545bb9d4a0320720f4cee8b994a47c3daf029edbda1e996d3447
-	sha256sums = 6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33
+	sha256sums = 97fcfd289daa67bf53e9169c2e487c575c96ec241541518cedd67bc0f33ebb6f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = cemu-bin
