@@ -1,5 +1,4 @@
 pkg/
 src/
-darkice-*.pkg.tar.xz
-darkice-*.pkg.tar.zst
-darkice-*.tar.gz
+*.tar.*
+*.zip
