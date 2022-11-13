@@ -1,5 +1,5 @@
 pkgname="techmino-git"
-pkgver=0.17.8.r4681.e1200b50
+pkgver=0.17.8.r4685.f91fe34a
 pkgrel=1
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
@@ -33,7 +33,7 @@ pkgver() {
 	commit_count=$(git rev-list --all --count)
 	version=$(sed -n '4p' version.lua)
 	version=${version:17:-7}
-	echo "$version.r$commit_count.$commit_id"
+	printf '%s.r%d.%s' $version $commit_count $commit_id
 }
 package() {
 	cd ${srcdir}/Techmino
