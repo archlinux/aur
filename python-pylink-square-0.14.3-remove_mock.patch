@@ -1,0 +1,133 @@
+diff --git c/setup.py w/setup.py
+index f87b026..6312871 100644
+--- c/setup.py
++++ w/setup.py
+@@ -263,11 +263,6 @@ setuptools.setup(
+     # Tests
+     test_suite='tests',
+ 
+-    # Test requirements
+-    tests_require=[
+-        'mock == 2.0.0'
+-    ],
+-
+     # Additional scripts.
+     scripts=[
+         os.path.join('examples', 'pylink-rtt'),
+diff --git c/tests/unit/protocols/test_swd.py w/tests/unit/protocols/test_swd.py
+index 03652f6..1a74455 100644
+--- c/tests/unit/protocols/test_swd.py
++++ w/tests/unit/protocols/test_swd.py
+@@ -15,7 +15,7 @@
+ import pylink.protocols.swd as swd
+ import pylink.util
+ 
+-import mock
++from unittest import mock
+ 
+ import unittest
+ 
+diff --git c/tests/unit/test_decorators.py w/tests/unit/test_decorators.py
+index ba2096b..2430cc3 100644
+--- c/tests/unit/test_decorators.py
++++ w/tests/unit/test_decorators.py
+@@ -14,7 +14,7 @@
+ 
+ import pylink.decorators as decorators
+ 
+-import mock
++from unittest import mock
+ 
+ import threading
+ import unittest
+diff --git c/tests/unit/test_jlink.py w/tests/unit/test_jlink.py
+index fa7c32f..8beb2b9 100644
+--- c/tests/unit/test_jlink.py
++++ w/tests/unit/test_jlink.py
+@@ -20,7 +20,7 @@ import pylink.structs as structs
+ import pylink.unlockers.unlock_kinetis as unlock_kinetis
+ import pylink.util as util
+ 
+-import mock
++from unittest import mock
+ 
+ try:
+     import StringIO
+diff --git c/tests/unit/test_jlock.py w/tests/unit/test_jlock.py
+index 7913b86..7492900 100644
+--- c/tests/unit/test_jlock.py
++++ w/tests/unit/test_jlock.py
+@@ -14,7 +14,7 @@
+ 
+ import pylink.jlock as jlock
+ 
+-import mock
++from unittest import mock
+ 
+ import errno
+ import os
+diff --git c/tests/unit/test_library.py w/tests/unit/test_library.py
+index fb92f92..3b06800 100644
+--- c/tests/unit/test_library.py
++++ w/tests/unit/test_library.py
+@@ -16,7 +16,7 @@ from platform import platform
+ import pylink.library as library
+ import pylink.util as util
+ 
+-import mock
++from unittest import mock
+ 
+ import unittest
+ 
+diff --git c/tests/unit/test_main.py w/tests/unit/test_main.py
+index 9b50396..c9cadbd 100644
+--- c/tests/unit/test_main.py
++++ w/tests/unit/test_main.py
+@@ -16,7 +16,7 @@ import pylink
+ import pylink.__main__ as main
+ 
+ import logging
+-import mock
++from unittest import mock
+ 
+ try:
+     import StringIO
+diff --git c/tests/unit/test_util.py w/tests/unit/test_util.py
+index c60d6da..67f70a0 100644
+--- c/tests/unit/test_util.py
++++ w/tests/unit/test_util.py
+@@ -15,7 +15,7 @@
+ import pylink.enums as enums
+ import pylink.util as util
+ 
+-import mock
++from unittest import mock
+ 
+ try:
+     import StringIO
+diff --git c/tests/unit/unlockers/test_unlock.py w/tests/unit/unlockers/test_unlock.py
+index e625745..ce4f0a6 100644
+--- c/tests/unit/unlockers/test_unlock.py
++++ w/tests/unit/unlockers/test_unlock.py
+@@ -14,7 +14,7 @@
+ 
+ import pylink.unlockers as unlock
+ 
+-import mock
++from unittest import mock
+ 
+ import unittest
+ 
+diff --git c/tests/unit/unlockers/test_unlock_kinetis.py w/tests/unit/unlockers/test_unlock_kinetis.py
+index e1c0738..1e80f8d 100644
+--- c/tests/unit/unlockers/test_unlock_kinetis.py
++++ w/tests/unit/unlockers/test_unlock_kinetis.py
+@@ -16,7 +16,7 @@ import pylink.enums as enums
+ import pylink.protocols.swd as swd
+ import pylink.unlockers as unlock
+ 
+-import mock
++from unittest import mock
+ 
+ import unittest
+ 
