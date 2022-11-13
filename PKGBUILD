@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ODER
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Optimising the Definition of Expressed Regions'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-xfun
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a086bf5d4acecac4e750832a1aabf7ce41708859f2250e2aa72693100a143ee')
+sha256sums=('9b19c7d94638a2428410f479a3a00f1b3e02bdc90dc945f1ca83f1c702c8fb27')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
