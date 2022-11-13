@@ -1,14 +1,14 @@
 pkgbase = makemkv
 	pkgdesc = DVD and Blu-ray to MKV converter
 	pkgver = 1.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.makemkv.com
 	install = makemkv.install
 	arch = x86_64
 	arch = i686
+	license = custom: GuinpinSoft Inc EULA
 	license = LGPL
 	license = MPL
-	license = custom
 	depends = qt5-base
 	depends = ffmpeg
 	optdepends = java-runtime
