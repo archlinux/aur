@@ -1,0 +1,29 @@
+pkgbase = r-survivalanalysis
+	pkgdesc = High-Level Interface for Survival Analysis and Associated Plots
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=survivalAnalysis
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cowplot
+	depends = r-dplyr
+	depends = r-forcats
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-scales
+	depends = r-stringr
+	depends = r-survminer
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-tidytidbits
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tidyverse
+	source = https://cran.r-project.org/src/contrib/survivalAnalysis_0.3.0.tar.gz
+	sha256sums = eef98a2d2517c3367b89f6054ef1ba19302f5bbf819dbc17fb243d282b8c8c68
+
+pkgname = r-survivalanalysis
