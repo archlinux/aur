@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=lprint-git
-pkgver=253_1.1.0_r13_ged195b5
+pkgver=278_1.1.0_r38_gb2806b1
 pkgrel=1
 pkgdesc="A Label Printer Application"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
 
-  ./configure --prefix=/usr CPPFLAGS="${CPPFLAGS} -D_FILE_OFFSET_BITS=64"
+  ./configure --prefix=/usr LIBS="-lcups"
   make
 }
 
