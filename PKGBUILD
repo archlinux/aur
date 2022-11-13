@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epihet
-_pkgver=1.12.0
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Determining Epigenetic Heterogeneity from Bisulfite Sequencing Data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('53a289dbc9ec9b4440abd7d389b86da5e26fb7dbeceb08c6d2e292651214006c')
+sha256sums=('f928a39240a5e5a7de7d75b15fa2da62d01b3e6c276cb01d80467a34c87abadc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
