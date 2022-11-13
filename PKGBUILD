@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spicyR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Spatial analysis of in situ cytometry data'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   r-concaveman
   r-data.table
   r-dplyr
+  r-ggforce
   r-ggplot2
   r-iranges
   r-lme4
@@ -24,8 +25,11 @@ depends=(
   r-rlang
   r-s4vectors
   r-scam
+  r-singlecellexperiment
+  r-spatialexperiment
   r-spatstat.core
   r-spatstat.geom
+  r-summarizedexperiment
   r-tidyr
 )
 optdepends=(
@@ -34,7 +38,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7f5483f45d4eb54c2037f1e5c40a22dff93795ab84875057f327d4b4c6bd6fe')
+sha256sums=('9557a07ff37a9335a31b34f291643caa985b7d5d4a82db9219f54d98239a6c1a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
