@@ -1,0 +1,30 @@
+diff -uNrw triceratops.orig/triceratops.ttl triceratops/triceratops.ttl
+--- triceratops.orig/triceratops.ttl	2021-09-15 13:03:48.000000000 +0200
++++ triceratops/triceratops.ttl	2022-11-13 21:08:16.626774135 +0100
+@@ -5,6 +5,7 @@
+ @prefix lv2: <http://lv2plug.in/ns/lv2core#> .
+ @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
++@prefix urid: <http://lv2plug.in/ns/ext/urid#> .
+ 
+ # This is a custom extension, which allows us to tag things easily later
+ @prefix guiext: <http://lv2plug.in/ns/extensions/ui#>.
+@@ -17,10 +18,17 @@
+ <http://nickbailey.co.nr/triceratops>
+ 	a lv2:Plugin ,
+ 		lv2:InstrumentPlugin ;
+-	doap:maintainer <http://nickbailey.co.nr> ;
++	doap:maintainer [
++		foaf:name "Nick Bailey" ;
++		foaf:homepage <http://nickbailey.co.nr> ;
++		foaf:mbox <tb303@gmx.com> ;
++	] ;
+ 	doap:name "Triceratops" ;
+ 	doap:license <http://opensource.org/licenses/gpl-3.0> ;
++	lv2:requiredFeature urid:map ;
+ 	lv2:optionalFeature lv2:hardRTCapable ;
++	lv2:minorVersion 2 ;
++	lv2:microVersion 0 ;
+ 
+ # here we say that this plugin has a GUI, and its URI is that
+ guiext:ui <http://nickbailey.co.nr/triceratops/gui>;

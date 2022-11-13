@@ -1,0 +1,23 @@
+pkgbase = triceratops
+	pkgdesc = Polyphonic synthesizer LV2 plugin
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/triceratops/
+	arch = aarch64
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lv2lint
+	makedepends = python
+	makedepends = lv2
+	depends = gtkmm
+	optdepends = lv2-host: for loading the LV2 plugin
+	provides = triceratops.lv2
+	conflicts = triceratops.lv2
+	source = https://downloads.sourceforge.net/project/triceratops/triceratops_v0.5.0_Oct_2022.tar.gz
+	source = triceratops-ttl.patch
+	sha256sums = 93b2d74bb611fc3a26c2060ba678656b89d7ddba5b9e31e27a5758ec9924596e
+	sha256sums = 1083b10d0a004b3dd39afe37f6385d815e7cfdd26078aa7bcf85e2fc24afc262
+
+pkgname = triceratops

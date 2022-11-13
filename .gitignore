@@ -1,0 +1,6 @@
+pkg/
+src/
+triceratops-*.pkg.tar.*
+triceratops-*.pkg.tar.zst
+triceratops-*.src.tar.gz
+triceratops_*.tar.gz
