@@ -46,7 +46,13 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p ${pkgdir}/usr/share/java/qtjambi
-    cp -r ${pkgver}/deployment/* ${pkgdir}/usr/share/java/qtjambi/
+    install ${pkgver}/deployment/*.jar ${pkgdir}/usr/share/java/qtjambi/
+    install ${pkgver}/deployment/native/linux-x64/release/plugins/sqldrivers/*.jar ${pkgdir}/usr/share/java/qtjambi/
+    mkdir -p ${pkgdir}/usr/{lib,bin}
+    install ${pkgver}/deployment/native/linux-x64/release/utilities/*.so ${pkgdir}/usr/lib/
+    install ${pkgver}/deployment/native/linux-x64/release/lib/* ${pkgdir}/usr/lib/
+    install ${pkgver}/deployment/native/linux-x64/release/plugins/sqldrivers/*.so ${pkgdir}/usr/lib/
+    install ${pkgver}/deployment/native/linux-x64/release/utilities/QtJambiLauncher ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/share/licenses/qtjambi
     cp LICENSE.* ${pkgdir}/usr/share/licenses/qtjambi/
 }
