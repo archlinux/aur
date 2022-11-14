@@ -1,17 +1,18 @@
 pkgbase = camorama
-	pkgdesc = GNOME 2 Webcam application featuring various image filters
-	pkgver = 0.20.7.r51.gcde678b
+	pkgdesc = GNOME 3 Webcam application featuring various image filters
+	pkgver = 0.21.2
 	pkgrel = 1
-	url = https://github.com/mchehab/camorama
+	url = https://github.com/alessio/camorama
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	makedepends = gnome-common
-	makedepends = v4l-utils
-	depends = libgnomeui
+	depends = gtk3
+	depends = v4l-utils
 	provides = camorama
 	conflicts = camorama-git
-	source = git+https://github.com/mchehab/camorama.git
-	sha256sums = SKIP
+	source = https://github.com/alessio/camorama/archive/refs/tags/0.21.2.tar.gz
+	source = 3e2e3de.patch
+	sha256sums = 434ea95081b90f88f8dd6d67d6d9d4a517d55d83da9f04870bb27633511c5d39
+	sha256sums = 9d9ab85eee0f18ea2f696dc8ac072483de84a2b44845d2d01a8f05eb280ea14e
 
 pkgname = camorama

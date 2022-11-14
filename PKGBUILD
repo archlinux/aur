@@ -4,31 +4,32 @@
 # Contributor: Federico Quagliata (quaqo) <quaqo@despammed.com>
 
 pkgname=camorama
-pkgver=0.20.7.r51.gcde678b
+pkgver=0.21.2
 pkgrel=1
-pkgdesc="GNOME 2 Webcam application featuring various image filters"
-url="https://github.com/mchehab/camorama"
+pkgdesc="GNOME 3 Webcam application featuring various image filters"
+url="https://github.com/alessio/camorama"
 arch=('x86_64')
 license=('GPL2')
-depends=('libgnomeui')
-makedepends=('git' 'gnome-common' 'v4l-utils')
+depends=('gtk3' 'v4l-utils')
+makedepends=('gnome-common')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("${url}/archive/refs/tags/0.21.2.tar.gz" '3e2e3de.patch')
+sha256sums=('434ea95081b90f88f8dd6d67d6d9d4a517d55d83da9f04870bb27633511c5d39'
+            '9d9ab85eee0f18ea2f696dc8ac072483de84a2b44845d2d01a8f05eb280ea14e')
 
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 <../3e2e3de.patch
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" make install
 }
