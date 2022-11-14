@@ -2,9 +2,9 @@
 
 pkgname=keepass-keetheme
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin that provides a dark theme for keepass"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/xatupal/KeeTheme"
 license=('MIT')
 depends=('keepass')
