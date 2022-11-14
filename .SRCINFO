@@ -1,6 +1,6 @@
 pkgbase = helm-secrets
 	pkgdesc = Helm plugin to manage secrets with Git workflow and store them anywhere
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/jkroepke/helm-secrets
 	install = helm-secrets.install
@@ -10,7 +10,7 @@ pkgbase = helm-secrets
 	depends = helm
 	optdepends = sops: secret driver
 	optdepends = vault: secret driver
-	source = https://github.com/jkroepke/helm-secrets/archive/v4.1.1/helm-secrets-4.1.1.tar.gz
-	sha256sums = 5faa4fa4c42e7b47c7e4abed3c8f16ceaf874962d47b6881e98e44ff830a4d62
+	source = https://github.com/jkroepke/helm-secrets/archive/v4.2.0/helm-secrets-4.2.0.tar.gz
+	sha256sums = 18f6d79fb272d580403e93abffe630e0d4456ab12abf958e4b2966fa7881c225
 
 pkgname = helm-secrets
