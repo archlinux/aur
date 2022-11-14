@@ -2,7 +2,7 @@
 pkgname=color-code
 _repo_name="ansi-${pkgname}c"
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Encode arbitrary bytes to ANSI colors on the console."
 arch=('x86_64')
 url="https://github.com/coNQP/ansi-${_repo_name}c"
