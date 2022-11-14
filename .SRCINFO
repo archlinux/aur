@@ -16,7 +16,6 @@ pkgbase = syncthing-gtk-python3
 	depends = python-dateutil
 	depends = python-gobject
 	conflicts = syncthing-gtk
-	replaces = syncthing-gtk
 	source = https://github.com/salamandar/syncthing-gtk/archive/v0.9.4.5.tar.gz
 	source = kde-statusicon.patch
 	sha256sums = 19d234b3a4514420cf123ae1b477590684e11dd54b7fa208c0b19e9dccf2c465

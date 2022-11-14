@@ -14,7 +14,6 @@ arch=('any')
 url='https://github.com/Salamandar/syncthing-gtk'
 license=('GPL2')
 conflicts=( 'syncthing-gtk' )
-replaces=(  'syncthing-gtk' )
 depends=(
     'syncthing>=0.14.50' 'gtk3' 'libnotify'
     'python-bcrypt' 'python-cairo' 'python-dateutil' 'python-gobject'
