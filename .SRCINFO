@@ -1,12 +1,12 @@
 pkgbase = vechain-sync2-bin
 	pkgdesc = Vechain Sync - Desktop
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://github.com/vechain/sync2
 	arch = x86_64
 	license = LGPL3
 	optdepends = ledger-live: Ledger Hardware Wallet Support
-	source = Sync2-linux-x86_64-2.0.4.AppImage::https://github.com/vechain/sync2/releases/download/v2.0.4/Sync2-linux-x86_64-2.0.4.AppImage
-	sha512sums = d4ce2cf49165e11cd0cc0e645b363bd2464cbdb6832dd2154c1440e63a23f03b3f8814672e4b61571241fa1f263e118e35766ef5d174bdc084357dc522cc485c
+	source = Sync2-linux-x86_64-2.0.5.AppImage::https://github.com/vechain/sync2/releases/download/v2.0.5/Sync2-linux-x86_64-2.0.5.AppImage
+	sha512sums = 516cd9941158741077ceaaade005773b59fb47b477b774136f9eeeac123ce40f9cc1be5074a9990b9a0d3d1030d9a91cf67a09473652ccf11611d32a2e880093
 
 pkgname = vechain-sync2-bin
