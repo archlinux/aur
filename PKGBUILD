@@ -5,7 +5,7 @@ pkgver=6.4.0
 _qtver=qt6
 _javaver=19
 ####################################
-pkgrel=1
+pkgrel=2
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
