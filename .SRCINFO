@@ -1,6 +1,6 @@
 pkgbase = volatile-git
 	pkgdesc = Simple ALSA status icon and volume control
-	pkgver = 0.35.28d699e
+	pkgver = 0.36.e669e8d
 	pkgrel = 1
 	url = https://github.com/gavinhungry/volatile
 	arch = any
