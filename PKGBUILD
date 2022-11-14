@@ -4,7 +4,7 @@
 
 pkgname=alltray
 pkgver=0.7.5.1dev
-pkgrel=6
+pkgrel=7
 pkgdesc="Drops any app in the tray."
 license=('GPL')
 arch=('x86_64')
@@ -12,6 +12,7 @@ url="https://github.com/mbt/alltray"
 depends=('libxpm' 'libgtop' 'libwnck')
 source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${pkgver}.tar.gz)
 md5sums=('5842253b89a5943031b5a02bbd8fd4fb')
+sha256sums=('09dad447b85ecb57debcb423f34381db7f112a010fbc83e4f65b3b31cf416514')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
