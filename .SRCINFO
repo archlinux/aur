@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
 	pkgver = 6.1rc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/torvalds/h/v6.1-rc5
 	arch = x86_64
 	license = GPL2
@@ -22,14 +22,12 @@ pkgbase = linux-mainline-um5302ta
 	options = !strip
 	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.1-rc5
 	source = config
-	source = ALSA-hda-realtek-Add-quirk-for-ASUS-Zenbook-using-CS35L41.patch
 	source = cs35l42-hda-no-acpi-dsd-csc3551.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
 	sha256sums = 05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6
-	sha256sums = 1391b24a25148c3f1a60867d2f805f85c3dd201ffd0293b66d1ac892da20d910
 	sha256sums = e2613a7336bd01a2727ca2fc37e1000be6e9d30632aec56eff334e3f7b23e487
 
 pkgname = linux-mainline-um5302ta

@@ -3,5 +3,4 @@
 !/PKGBUILD
 !/.SRCINFO
 !/config
-!/ALSA-hda-realtek-Add-quirk-for-ASUS-Zenbook-using-CS35L41.patch
 !/cs35l42-hda-no-acpi-dsd-csc3551.patch
