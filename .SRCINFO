@@ -1,12 +1,12 @@
 pkgbase = vkbasalt-cli
 	pkgdesc = Command-line utility for vkBasalt
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/TheEvilSkeleton/vkbasalt-cli
 	arch = any
 	license = LGPL3
 	makedepends = git
-	makedepends = meson
+	makedepends = python-setuptools
 	depends = python
 	source = git+https://gitlab.com/TheEvilSkeleton/vkbasalt-cli.git#tag=v3.0
 	sha256sums = SKIP
