@@ -1,7 +1,7 @@
 pkgbase = avbin
 	pkgdesc = A C library that provides a wrapper around Libav’s video and audio decoding functionality
 	pkgver = 10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://avbin.github.io/
 	arch = x86_64
 	license = LGPL3
@@ -9,6 +9,7 @@ pkgbase = avbin
 	makedepends = yasm
 	depends = bzip2
 	depends = zlib
+	options = !lto
 	source = git+https://github.com/AVbin/AVbin.git#tag=avbin-10
 	source = libav-avbin::git+https://github.com/AVbin/libav.git
 	source = 0001-avbin-remove-unwanted-optimization.patch
@@ -17,10 +18,9 @@ pkgbase = avbin
 	source = avbin.pc
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8f8b20d6e57bdc6bf73723691740ae35b157785ebda5764a7611a68df427c30a
-	sha256sums = fa8f7263326b10f968836f5fe7ae9efef04cdce58a28cfd3f7cb93985fffb469
+	sha256sums = cd44745477803d96d9cf762c4004b7d53c0b84e5a6ba4a3c1f5ce46f4572a2ca
+	sha256sums = a177c0906928338113469c688d309ae8e95a753de35c2a73bff02b6d99de6008
 	sha256sums = be5e45a35c35229c68adfc1606c31d479a4813926de1c022d3919c7592d92c8b
 	sha256sums = d43b24480805ede648a5851465b3071fde75d4114f8a6c84430902075767667f
 
 pkgname = avbin
-

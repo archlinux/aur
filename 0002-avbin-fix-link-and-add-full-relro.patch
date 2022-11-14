@@ -1,6 +1,5 @@
-diff -Naurp a/linux-x86-32.Makefile b/linux-x86-32.Makefile
---- a/linux-x86-32.Makefile	2019-04-28 20:32:41.000000000 +0000
-+++ b/linux-x86-32.Makefile	2019-04-28 20:36:08.000000000 +0000
+--- a/linux-x86-32.Makefile
++++ b/linux-x86-32.Makefile
 @@ -2,7 +2,7 @@ SONAME=libavbin.so.$(AVBIN_VERSION)
  LIBNAME=$(OUTDIR)/$(SONAME)
  
@@ -10,9 +9,8 @@ diff -Naurp a/linux-x86-32.Makefile b/linux-x86-32.Makefile
  
  STATIC_LIBS = -whole-archive \
                $(BACKEND_DIR)/libavformat/libavformat.a \
-diff -Naurp a/linux-x86-64.Makefile b/linux-x86-64.Makefile
---- a/linux-x86-64.Makefile	2019-04-28 20:32:47.000000000 +0000
-+++ b/linux-x86-64.Makefile	2019-04-28 20:36:08.000000000 +0000
+--- a/linux-x86-64.Makefile
++++ b/linux-x86-64.Makefile
 @@ -2,7 +2,7 @@ SONAME=libavbin.so.$(AVBIN_VERSION)
  LIBNAME=$(OUTDIR)/$(SONAME)
  

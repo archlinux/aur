@@ -3,13 +3,14 @@
 
 pkgname=avbin
 pkgver=10
-pkgrel=3
+pkgrel=4
 pkgdesc='A C library that provides a wrapper around Libav’s video and audio decoding functionality'
 arch=('x86_64')
 url='https://avbin.github.io/'
 license=('LGPL3')
 depends=('bzip2' 'zlib')
 makedepends=('git' 'yasm')
+options=('!lto')
 source=("git+https://github.com/AVbin/AVbin.git#tag=avbin-${pkgver}"
         'libav-avbin'::'git+https://github.com/AVbin/libav.git'
         '0001-avbin-remove-unwanted-optimization.patch'
@@ -18,28 +19,24 @@ source=("git+https://github.com/AVbin/AVbin.git#tag=avbin-${pkgver}"
         'avbin.pc')
 sha256sums=('SKIP'
             'SKIP'
-            '8f8b20d6e57bdc6bf73723691740ae35b157785ebda5764a7611a68df427c30a'
-            'fa8f7263326b10f968836f5fe7ae9efef04cdce58a28cfd3f7cb93985fffb469'
+            'cd44745477803d96d9cf762c4004b7d53c0b84e5a6ba4a3c1f5ce46f4572a2ca'
+            'a177c0906928338113469c688d309ae8e95a753de35c2a73bff02b6d99de6008'
             'be5e45a35c35229c68adfc1606c31d479a4813926de1c022d3919c7592d92c8b'
             'd43b24480805ede648a5851465b3071fde75d4114f8a6c84430902075767667f')
 
 prepare() {
-    cd AVbin
+    git -C AVbin submodule init
+    git -C AVbin config --local "submodule.libav.url" "${srcdir}/libav-avbin"
+    git -C AVbin -c protocol.file.allow='always' submodule update
     
-    git submodule init
-    git config --local "submodule.libav.url" "${srcdir}/libav-avbin"
-    git submodule update
-    
-    patch -Np1 -i "${srcdir}/0001-avbin-remove-unwanted-optimization.patch"
-    patch -Np1 -i "${srcdir}/0002-avbin-fix-link-and-add-full-relro.patch"
-    patch -Np1 -i "${srcdir}/0003-avbin-faster-build.patch"
+    patch -d AVbin -Np1 -i "${srcdir}/0001-avbin-remove-unwanted-optimization.patch"
+    patch -d AVbin -Np1 -i "${srcdir}/0002-avbin-fix-link-and-add-full-relro.patch"
+    patch -d AVbin -Np1 -i "${srcdir}/0003-avbin-faster-build.patch"
 }
 
 build() {
     cd AVbin
-    
-    unset LDFLAGS # won't build if setted, modified by patch
-    
+    unset -v LDFLAGS # won't build if setted, modified by patch
     ./build.sh --fast linux-x86-64
 }
 
