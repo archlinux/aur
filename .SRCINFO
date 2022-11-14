@@ -1,13 +1,13 @@
 pkgbase = gbkunzip
 	pkgdesc = Extract zip files with encoding GBK instead of UTF-8
 	pkgver = 0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://lilydjwg.is-programmer.com/posts/16293.html
 	arch = any
 	license = unknown
 	depends = python3
 	source = https://blog.lilydjwg.me/user_files/lilydjwg/File/gbkunzip.tar.bz2
-	md5sums = 492e2794338da165a2b950829fd9548e
+	sha256sums = c4658d19f293fe000f5133ee2016cb929403d0a6a4141c33d37012aabee4e5fe
 
 pkgname = gbkunzip
 
