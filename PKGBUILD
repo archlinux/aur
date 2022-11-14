@@ -1,11 +1,11 @@
-# Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
+# Maintainer: parov0z <andrey.android7890@gmail.com>
 
 pkgname=bootsplash-manager-git
 _pkgname=${pkgname//-git}
 pkgver=1.9.r0.g4f83103
 pkgrel=1
 pkgdesc="Simple bootsplash manager"
-url="https://github.com/ANDRoid7890/bootsplash-manager"
+url="https://github.com/parov0z/bootsplash-manager"
 arch=(x86_64)
 license=(GPL3)
 depends=('qt5-base'
@@ -15,7 +15,7 @@ depends=('qt5-base'
          'sdl2')
 conflicts=('bootsplash-manager-bin')
 
-source=("git+https://github.com/ANDRoid7890/bootsplash-manager.git")
+source=("git+https://github.com/parov0z/bootsplash-manager.git")
 md5sums=('SKIP')
 
 pkgver() {
