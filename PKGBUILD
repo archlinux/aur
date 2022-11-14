@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.24.3
-pkgrel=2
+pkgver=1.25.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -24,7 +24,6 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
         0002-fix-Deduplicate-resources-directories.patch
-        0003-build-Fix-build-with-clang.patch
         pl-0001-Use-C-23-standard.patch
         pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
 sha256sums=('SKIP'
@@ -33,22 +32,20 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c2a46722e0169e4d4f95e76ec6a0232ff54e7d7399cb8c2a76dc502268cf9dff'
-            '6b0fea58a0b8e501681a0fc90af0bc0d91ebe00096bdd32c4e09e4cac610499f'
-            'f8a7d20cf5787d823a47e4664dc5b85be73de26aaff2292522e6d8da6a542b14'
-            '8502d17aa838a601ba6cf5b613c1613033dd07b73d7b6ca8c0a912f90717f6d6'
-            '48fe8ec54aca8eea1bac5a2bf6f4ab79f7f376b52c644d91a97a7dc0412755df')
+            'c13f47520affa06b3ab4687d528084ff1f7ecc2cd9600b2e43dae0513727eb5f'
+            'b004f268d18c03e2d225179fb52ca02877e93d81d87b4f08344f19ad4ab6fd31'
+            '2110b942bba25d6d0b0fe4f4ad2b47c9907ad329a0d064ff86bf54b83965f673'
+            '6bf93b82a254f79bdf92aefda4bcf413dcbe26b4b42444f1fd18793ee35cb402')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'bfe7e3b148a82613832aaa686c0ad2a62a04474807c8e05b0df79ce4a47819bd0ec9c63ee112028e4d7cda23233c98b15aa19b3d634f9edd33730011016f3e7d'
-        '48b2fa8f928aab89a4398bd210103c74fb319a27c2abe099df6f24fe7d18ce6426c733eef893dd6ace9cf263523b5bfee6e65a20b7e9de72f1a0db5070476af5'
-        '87fb6437af144f839a084c766537102fc7789b0a8287b7315ccf9f830d53fb4fc5276441359ce082b5695c0cfef89f8962806702b2f1f9aa8e3e0a40b79628ac'
-        '6e87704c3066a8d5dbe3955647eac8193826a46ff3130e505324b158e0276deab04e9ff9766fe5d3ad33448ba2695126efe3339cd1d64dc7926c6eb843253aca'
-        '266c7c77aadca11302ee6e6742e7a9a0dc05becfdc996353ae51308d7305fabb51377d03dd05708e07b9ffc286b7309554da3d905c90b0d82511194a2911c59c')
+        '75030d92294ff36642acbae000931ee6b8f03ba6e577b66b5c70a058ca9320f521368fbe225b642df1f4138172c24d966c9ec66fd4eb7f9de24ee896e91363cf'
+        'ad679ef4fde42ebf9adefec9c3bffb9b640e79f2917141940050e285c79b13e1c7ad58f497db01dd22e56750372545ac544fb4b5400c5d5895461f931365a50e'
+        '3c10abfafeb8979924efff0b5d32e543f9ca2fa3eb4216f1c84d8cb5a6ba6c8af4c5b7e3012d4f535d132fe2492c6824473ed309e8ce09d012963de033bf37b5'
+        '2c26d8b28212b98b9bb202f86c5ff84ac4bd44732ee3a30bdca91b576f5a64802c454314baff53621aafa08f761871ae95102b1727ba1f5a5d300103895e07a6')
 options=(!lto !strip)
 
 prepare() {
@@ -65,8 +62,7 @@ prepare() {
 
   git apply \
     "$srcdir/0001-makepkg-Fix-compiler-check.patch" \
-    "$srcdir/0002-fix-Deduplicate-resources-directories.patch" \
-    "$srcdir/0003-build-Fix-build-with-clang.patch"
+    "$srcdir/0002-fix-Deduplicate-resources-directories.patch"
 
   git -C lib/external/pattern_language apply \
     "$srcdir/pl-0001-Use-C-23-standard.patch" \

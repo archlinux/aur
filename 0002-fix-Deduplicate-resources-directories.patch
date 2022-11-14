@@ -1,4 +1,4 @@
-From 00281ee1bb6a99e9828d58fbb9e680a89cf18bf9 Mon Sep 17 00:00:00 2001
+From 684cca4d5dc6874842e0a505617abcad0f26472d Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 11 Jun 2022 23:08:31 +0200
 Subject: [PATCH 2/3] fix: Deduplicate resources directories
@@ -10,7 +10,7 @@ It seems to actually happens despite xdgpp already doing that...
  2 files changed, 16 insertions(+)
 
 diff --git a/lib/libimhex/include/hex/helpers/utils.hpp b/lib/libimhex/include/hex/helpers/utils.hpp
-index 5dec8b66..ff216804 100644
+index 3419043f..7d9d1e05 100644
 --- a/lib/libimhex/include/hex/helpers/utils.hpp
 +++ b/lib/libimhex/include/hex/helpers/utils.hpp
 @@ -199,6 +199,17 @@ namespace hex {
@@ -30,9 +30,9 @@ index 5dec8b66..ff216804 100644
 +
      std::vector<std::string> splitString(const std::string &string, const std::string &delimiter);
      std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
- 
+     std::string replaceStrings(std::string string, const std::string &search, const std::string &replace);
 diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
-index 352ba642..364612b3 100644
+index ab6e30d5..b4fce7b1 100644
 --- a/lib/libimhex/source/helpers/fs.cpp
 +++ b/lib/libimhex/source/helpers/fs.cpp
 @@ -1,4 +1,5 @@
@@ -60,5 +60,5 @@ index 352ba642..364612b3 100644
          #endif
      }
 -- 
-2.38.0
+2.38.1
 

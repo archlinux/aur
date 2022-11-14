@@ -1,4 +1,4 @@
-From 6d3ab072e0959ae3a34f03f26f214b24474b7a9b Mon Sep 17 00:00:00 2001
+From f05087e0d92d6312294b06f026ef8a19fac4eac2 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 17 Sep 2022 16:27:17 +0200
 Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
@@ -8,11 +8,11 @@ Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index 00af7f1..f71bd82 100644
+index 4d593ff..585fdb2 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -33,7 +33,7 @@ add_library(libpl ${LIBRARY_TYPE}
-         source/pl/lib/std/core.cpp
+@@ -34,7 +34,7 @@ add_library(libpl ${LIBRARY_TYPE}
+         source/pl/lib/std/hash.cpp
  )
  
 -target_compile_options(libpl PRIVATE -Wall -Wextra -Werror -Wno-unknown-pragmas)
@@ -21,5 +21,5 @@ index 00af7f1..f71bd82 100644
  target_link_libraries(libpl PUBLIC fmt::fmt intervaltree)
  set_property(TARGET libpl PROPERTY POSITION_INDEPENDENT_CODE ON)
 -- 
-2.38.0
+2.38.1
 
