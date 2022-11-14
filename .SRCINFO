@@ -1,6 +1,6 @@
 pkgbase = r-scater
 	pkgdesc = Single-Cell Analysis Toolkit for Gene Expression Data in R
-	pkgver = 1.26.0
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scater
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-scater
 	optdepends = r-scrnaseq
 	optdepends = r-snifter
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scater_1.26.0.tar.gz
-	sha256sums = df6c2dc049052d77029c84c7b90ca9c8ec4df22ac8dffa02a60a8608d5778b8d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scater_1.26.1.tar.gz
+	sha256sums = 03336f494089d71920b30e285876b7256aba2946dcc3f4ce8976d340bc7056d6
 
 pkgname = r-scater
