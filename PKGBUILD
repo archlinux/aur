@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk
-pkgver=9.1.0
+pkgver=9.2.2
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -9,16 +9,13 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-exp
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-pegtl2')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('8fed42f4f8f1eb8083107b68eaa9ad71da07110161a3116ad807f43e5ca5ce96')
+sha256sums=('1c5b0a2be71fac96ff4831af69e350f7a0ea3168981f790c000709dcf9121075')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
-  # libharu 2.4.0
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/commit/c8b27677ee410233.patch | patch -p1
 }
-
 
 build() {
   cd "${srcdir}/VTK-${pkgver}"
