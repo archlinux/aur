@@ -1,0 +1,20 @@
+pkgbase = lc2kicad-git
+	pkgdesc = A utility that converts EasyEDA files to KiCad files
+	pkgver = alpha.0.1.6.r39.g9fe34d8
+	pkgrel = 1
+	url = https://github.com/RigoLigoRLC/LC2KiCad
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	optdepends = kicad: Electronic schematic and printed circuit board (PCB) design tools
+	provides = LC2KiCad
+	conflicts = lc2kicad
+	options = !strip
+	source = lc2kicad::git+https://github.com/RigoLigoRLC/LC2KiCad.git
+	sha256sums = SKIP
+
+pkgname = lc2kicad-git
