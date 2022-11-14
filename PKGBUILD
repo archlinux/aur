@@ -3,7 +3,8 @@
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
-pkgname=python-coqui-trainer
+pkgbase=python-coqui-trainer
+pkgname=${pkgbase}
 epoch=
 pkgver=0.0.16
 pkgrel=00

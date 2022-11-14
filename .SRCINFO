@@ -1,4 +1,4 @@
-pkgbase = python-trainer
+pkgbase = python-coqui-trainer
 	pkgdesc = General purpose model trainer for PyTorch that is more flexible than it should be, by 🐸Coqui.
 	pkgver = 0.0.16
 	pkgrel = 00
@@ -11,7 +11,6 @@ pkgbase = python-trainer
 	depends = python-protobuf
 	depends = python-soundfile
 	depends = python-tensorboardx
-	depends = python-torch
 	depends = python-pytorch
 	noextract = trainer-0.0.16-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
@@ -21,4 +20,4 @@ pkgbase = python-trainer
 	md5sums = 15abe1cb3199944388bf0f8591b75ebd
 	md5sums = a5c534c0b0d5eb7b11a937c909109c2c
 
-pkgname = python-trainer
+pkgname = python-coqui-trainer
