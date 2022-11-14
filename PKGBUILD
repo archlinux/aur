@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.35.0.2.g1e9a2cbebf
+pkgver=0.35.0.4.g62af31cbca
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
          'libcaca'
          'libcdio-paranoia'
          'libdav1d.so'
-         'libdvdnav'
+         'libdvdnav.so'
          'libgme'
          'libmysofa'
          'libpulse.so'
@@ -28,40 +28,45 @@ depends=(
          'libvdpau'
          'libxinerama'
          'libxkbcommon'
-         'libxrandr'
          'libxss'
          'libxv'
+         'libzimg.so'
          'luajit'
          'mujs'
          'libopenal.so'
          'libxpresent'
-         'rubberband'
+         'librubberband.so'
+         'libpipewire-0.3.so'
          'sdl2'
-         'sndio'
+         'libsndio.so'
          'uchardet'
          'v4l-utils'
-         'libvulkan.so'
-         'wayland'
          'spirv-cross'
-         'zimg'
-         'libpipewire-0.3.so'
          'davs2'
+         'glslang'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
 makedepends=(
              'git'
+             'meson'
              'python-docutils'
              'nasm'
              'ladspa'
+             'libdvdnav'
              'fontconfig'
              'vulkan-headers'
              'wayland-protocols'
              'ffnvcodec-headers'
-             'clang'
+             'rubberband'
+             'zimg'
+             'sndio'
              'python-mako'
              'python-jinja'
              'python-markupsafe'
+             'nuklear'
+             'glad'
+
              )
 optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
@@ -75,16 +80,14 @@ provides=('mpv'
 conflicts=('mpv'
            'libmpv.so'
            )
-options=('!emptydirs')
+options=('!emptydirs' 'debug')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
         'git+https://github.com/ffmpeg/ffmpeg.git'
         'git+https://github.com/libass/libass.git'
         'git+https://github.com/haasn/libplacebo.git'
-        'git+https://github.com/Immediate-Mode-UI/Nuklear.git'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -101,25 +104,22 @@ fi
 
 pkgver() {
   cd mpv
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
   cd mpv-build
+  # use arch-meson
+  sed -e 's|meson setup|arch-meson|g' \
+      -e 's|-Dbuildtype=release|--auto-features disabled -Ddefault_library=shared|g' \
+      -i scripts/{mpv,libplacebo}-config
+
   git clone "${srcdir}/mpv"
   git clone "${srcdir}/ffmpeg"
   git clone "${srcdir}/libass"
   git clone "${srcdir}/libplacebo"
 
-  (
-    cd libplacebo
-    git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
-    git config submodule.3rdparty/glad.url "${srcdir}/glad"
-    git -c protocol.file.allow=always submodule update --init \
-      demos/3rdparty/nuklear
-  )
-
-  # Set ffmpeg/libass/mpv flags
+  # Set ffmpeg/libass/libplacebo/mpv flags
   _ffmpeg_options=(
     '--disable-programs'
     '--enable-libbs2b'
@@ -133,70 +133,102 @@ prepare() {
     '--enable-libdavs2'
     '--enable-nonfree'
     '--enable-cuda'
+    '--disable-cuda-llvm'
     )
-if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
-  _ffmpeg_options+=('--enable-avisynth')
-fi
-if [ -f /usr/lib/libvapoursynth.so ]; then
-  _ffmpeg_options+=('--enable-vapoursynth')
-fi
+
   _mpv_options=(
-    '--prefix=/usr'
-    '--confdir=/etc/mpv'
-    '--htmldir=/usr/share/doc/mpv/html'
-    '--disable-build-date'
-    '--lua=luajit'
-    '--enable-cdda'
-    '--enable-dvbin'
-    '--enable-dvdnav'
-    '--enable-html-build'
-    '--enable-libarchive'
-    '--enable-libmpv-shared'
-    '--enable-openal'
-    '--enable-sdl2'
-    '--enable-shaderc'
-    '--enable-vulkan'
-    '--enable-gl-x11'
-    '--enable-egl'
-    '--enable-egl-x11'
-    '--enable-egl-drm'
-    '--enable-gl-wayland'
-    '--enable-drm'
-    '--enable-gbm'
-    '--enable-wayland'
-    '--enable-vdpau'
-    '--enable-vdpau-gl-x11'
-    '--enable-vaapi'
-    '--enable-vaapi-x11'
-    '--enable-vaapi-wayland'
-    '--enable-vaapi-drm'
-    '--enable-vaapi-x-egl'
-    '--enable-cuda-hwaccel'
-    '--enable-cuda-interop'
-    '--color=yes'
+    '-Dlibmpv=true'
+    '-Dbuild-date=false'
+
+    '-Dcdda=enabled'
+    '-Dcplugins=enabled'
+    '-Ddvbin=enabled'
+    '-Ddvdnav=enabled'
+    '-Diconv=enabled'
+    '-Dlcms2=enabled'
+    '-Dlibarchive=enabled'
+    '-Dlibavdevice=enabled'
+    '-Dlibbluray=enabled'
+
+    '-Dlua=luajit'
+
+    '-Drubberband=enabled'
+    '-Dsdl2=enabled'
+    '-Dsdl2-gamepad=enabled'
+    '-Duchardet=enabled'
+    '-Dzimg=enabled'
+    '-Dzlib=enabled'
+
+    '-Dalsa=enabled'
+    '-Djack=enabled'
+    '-Dopenal=enabled'
+    '-Dpipewire=enabled'
+    '-Dpulse=enabled'
+    '-Dsdl2-audio=enabled'
+    '-Dsndio=enabled'
+
+    '-Dcaca=enabled'
+    '-Ddrm=enabled'
+    '-Degl=enabled'
+    '-Degl-drm=enabled'
+    '-Degl-wayland=enabled'
+    '-Degl-x11=enabled'
+    '-Dgbm=enabled'
+    '-Dgl=enabled'
+    '-Dgl-x11=enabled'
+    '-Djpeg=enabled'
+    '-Dlibplacebo=enabled'
+    '-Dsdl2-video=enabled'
+    '-Dshaderc=enabled'
+    '-Dsixel=enabled'
+    '-Dspirv-cross=enabled'
+    '-Dplain-gl=enabled'
+    '-Dvdpau=enabled'
+    '-Dvdpau-gl-x11=enabled'
+    '-Dvaapi=enabled'
+    '-Dvaapi-x11=enabled'
+    '-Dvaapi-wayland=enabled'
+    '-Dvaapi-drm=enabled'
+    '-Dvaapi-x-egl=enabled'
+    '-Dvulkan=enabled'
+    '-Dwayland=enabled'
+    '-Dx11=enabled'
+    '-Dxv=enabled'
+    '-Dcuda-hwaccel=enabled'
+    '-Dcuda-interop=enabled'
+
+    '-Dhtml-build=enabled'
     )
+
   _libplacebo_options=(
     '-Dvulkan=enabled'
     '-Dlcms=enabled'
+    '-Dd3d11=disabled'
     )
+
+if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
+   _ffmpeg_options+=('--enable-avisynth')
+fi
+if [ -f /usr/lib/libvapoursynth.so ]; then
+  _ffmpeg_options+=('--enable-vapoursynth')
+  _mpv_options+=('-Dvapoursynth=enabled')
+fi
 
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
   (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options )
 
-  cd mpv
-
-  ./bootstrap.py
 }
 
 build() {
   cd mpv-build
-  ./build
+  LDFLAGS+=',-Bsymbolic' #NOTE if not, fail link libmpv.so.x.x
+  BUILDSYSTEM=meson ./build
 }
 
 package() {
   cd mpv-build
-  DESTDIR="${pkgdir}" ./install
+  BUILDSYSTEM=meson DESTDIR="${pkgdir}" ./install
 
   install -Dm755 mpv/TOOLS/mpv_identify.sh "${pkgdir}/usr/bin/mpv-identify"
   install -Dm755 mpv/TOOLS/idet.sh "${pkgdir}/usr/bin/mpv-idet"
