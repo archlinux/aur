@@ -5,12 +5,12 @@ pkgver=1.1.r0.g7f2390e
 pkgrel=2
 arch=('x86_64')
 pkgdesc="Beautiful Manjaro Bootsplash with space animation"
-url="https://github.com/ANDRoid7890/bootsplash-theme-manjaro-space-purple"
+url="https://github.com/parov0z/bootsplash-theme-manjaro-space-purple"
 license=('GPL')
 depends=()
 optdepends=('bootsplash-systemd: for bootsplash functionality')
 makedepends=('imagemagick' 'git')
-source=('git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-space-purple.git')
+source=('git+https://github.com/parov0z/bootsplash-theme-manjaro-space-purple.git')
 sha256sums=('SKIP')
 
 pkgver() {
