@@ -11,16 +11,16 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL-3')
 depends=(
     'r>=3.5.0'
-    'r-Formula'
+    'r-formula'
     'r-knitr'
     'r-htmltools'
     'r-yaml'
 )
 optdepends=(
-    'r-MatchIt'
+    'r-matchit'
     'r-rmarkdown'
     'r-printr'
-    'r-kableExtra'
+    'r-kableextra'
     'r-flextable'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
