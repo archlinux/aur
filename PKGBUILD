@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino-git
-pkgver=2022.1.0.dev20220316.r194.ga63e2080e1
+pkgver=2022.2.0.r1048.g951be58dc3
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -72,7 +72,7 @@ sha256sums=('SKIP'
             '48b6a93bb54c36f9bc87a7f326b0a634f752f34f57f90a60dccc13f92fd96a9d'
             '15918bfcab40965828e2f6250b16152dc9b8c078bd86f1929bb5fd38f19f854d'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '33233c69916485f1bef20c9d5f48bdba1189012ce8bad9dafc01249e7bc10f86')
+            'c33688f5a183d28802332a16a29ab489272fdc302ef3bc4ebe56a6b33811e669')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -81,7 +81,7 @@ prepare() {
     git -C openvino lfs pull "${source[0]/git+/}"
     
     git -C openvino submodule init
-    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/mkl-dnn.url "${srcdir}/oneDNN-openvinotoolkit"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/onednn.url "${srcdir}/oneDNN-openvinotoolkit"
     git -C openvino config --local submodule.thirdparty/xbyak.url "${srcdir}/xbyak"
     git -C openvino config --local submodule.thirdparty/zlib/zlib.url "${srcdir}/zlib"
     git -C openvino config --local submodule.thirdparty/pugixml.url "${srcdir}/pugixml"
@@ -100,7 +100,7 @@ prepare() {
     git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json_schema_validator.url "${srcdir}/json-schema-validator"
-    git -C openvino submodule update
+    git -C openvino -c protocol.file.allow='always' submodule update
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
@@ -110,7 +110,7 @@ pkgver() {
     local _version
     local _revision
     local _shorthash
-    _version="$(git -C openvino tag --list | sort -Vr | sed '/dev_/d' | head -n1)"
+    _version="$(git -C openvino tag --list | grep '^[[:digit:]]' | sed '/dev/d' | sort -r | head -n1)"
     _revision="$(git -C openvino rev-list --count "${_version}..HEAD")"
     _shorthash="$(git -C openvino rev-parse --short HEAD)"
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
@@ -146,15 +146,10 @@ package() {
     
     local _gnaver
     local _gnasover
-    local _gnasover_full
     local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
     _gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
-    _gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
-    _gnasover_full="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
+    _gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-extended' -regex '.*/libgna\.so\.[0-9]+$' | sed 's/.*\.//')"
     
-    rm "${_gnadir}/libgna.so."{"${_gnasover}","${_gnasover_full}"}
-    mv "${_gnadir}/libgna.so"{,."${_gnasover_full}"}
-    ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
     ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
     
     cp -dr --no-preserve='ownership' "openvino/temp/gna_${_gnaver}/include" \

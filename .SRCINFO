@@ -1,6 +1,6 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications (git version)
-	pkgver = 2022.1.0.dev20220316.r194.ga63e2080e1
+	pkgver = 2022.2.0.r1048.g951be58dc3
 	pkgrel = 1
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64
@@ -82,6 +82,6 @@ pkgbase = openvino-git
 	sha256sums = 48b6a93bb54c36f9bc87a7f326b0a634f752f34f57f90a60dccc13f92fd96a9d
 	sha256sums = 15918bfcab40965828e2f6250b16152dc9b8c078bd86f1929bb5fd38f19f854d
 	sha256sums = 502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0
-	sha256sums = 33233c69916485f1bef20c9d5f48bdba1189012ce8bad9dafc01249e7bc10f86
+	sha256sums = c33688f5a183d28802332a16a29ab489272fdc302ef3bc4ebe56a6b33811e669
 
 pkgname = openvino-git
