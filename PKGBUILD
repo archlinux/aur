@@ -1,16 +1,16 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=fishnet-bin
-pkgver=2.5.1
+pkgver=2.6.6
 pkgrel=2
 pkgdesc='Distributed Stockfish analysis for lichess.org'
 arch=(x86_64)
-url='https://github.com/niklasf/fishnet'
+url='https://github.com/lichess-org/fishnet'
 license=(GPL)
 conflicts=(${pkgname%-bin})
 provides=(${pkgname%-bin})
-source=("$url/releases/download/v$pkgver/fishnet-$arch-unknown-linux-gnu")
-sha256sums=('f45af03021c1e6316a3ec6a80f756b5a5058862aea0f6742c1ba833fc1b07b65')
+source=("$url/releases/download/v$pkgver/fishnet-v$pkgver-$arch-unknown-linux-gnu")
+sha256sums=('cb550dfe90fdc7660869a30638f930403045cf9a5a239add28d41cb38b6a27de')
 
 package() {
   install -Dm755 fishnet-$arch-unknown-linux-gnu "$pkgdir/usr/bin/fishnet"
