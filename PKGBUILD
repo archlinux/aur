@@ -2,19 +2,20 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=mingw-w64-libplacebo
-pkgver=4.208.0
+pkgver=5.229.1
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)'
 url='https://github.com/haasn/libplacebo'
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
-depends=('mingw-w64-crt' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-glslang' 'mingw-w64-lcms2' 'mingw-w64-shaderc' 'mingw-w64-libepoxy' 'mingw-w64-spirv-cross')
+depends=('mingw-w64-crt' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-glslang' 'mingw-w64-lcms2' 'mingw-w64-shaderc' 'mingw-w64-spirv-cross')
 options=(!strip !buildflags staticlibs)
-makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'ninja' 'mingw-w64-vulkan-headers')
+makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'ninja' 'mingw-w64-vulkan-headers'
+             'glad' 'nuklear' 'python' 'python-mako' 'python-markupsafe' 'python-jinja')
 #provides=('libplacebo.so')
 source=(https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz)
-sha512sums=('5d4b9a9d61dcd61c716bf9bbb22b9a0976f5d42069a46993da9b9b5625a6c75c352b353f74ec74f80f91f6bb1acb96dd7809d36e80ad1a8e64aab62d07107ffa')
-b2sums=('1ad2b10f007dc26b51621dc54b93f1d9d4dd970b79181dee6a3ce103b5fccf4cabfdbb2b446084c18e5e80b4f22b137d8a05efd5f857513f1fbe3d9b6af4e3bb')
+sha512sums=('45efb252d5d44e5429790f9024b1b2a153051d6d604b07fcf3e4de7d49a2e91d20457be76e08b3b9ab43248c4a2e7268c9f8dc69837783e572f9b8735c955334')
+b2sums=('0a59e16b4565b10b222c5a5a8e607670bd4010a2be9b99ebdc15638827fcaf21bbf3c16a3cd2b902bcef43041dec56441494a0f618094e14db8f99a9d314c621')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -30,7 +31,8 @@ build() {
       -D shaderc=enabled \
       -D lcms=enabled \
       -D d3d11=enabled \
-      -D vulkan-registry="/usr/${_arch}/share/vulkan/registry/vk.xml"
+      -D vulkan-registry="/usr/${_arch}/share/vulkan/registry/vk.xml" \
+      -D demos=false
 
     ninja
   done
