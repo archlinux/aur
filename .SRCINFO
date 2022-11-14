@@ -1,6 +1,6 @@
 pkgbase = dragonflydb
 	pkgdesc = A modern replacement for Redis/Memcached
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://dragonflydb.io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dragonflydb
 	depends = openssl
 	depends = boost-libs
 	depends = libunwind
-	source = dragonflydb::git+https://github.com/dragonflydb/dragonfly#commit=10c3d9f66607c856d04d918059ddb9397aee4725
+	source = dragonflydb::git+https://github.com/dragonflydb/dragonfly#commit=b3958340602a912c2a38d947c4973c824d6ab830
 	source = github.com-romage-helio::git+https://github.com/romange/helio
 	b2sums = SKIP
 	b2sums = SKIP
