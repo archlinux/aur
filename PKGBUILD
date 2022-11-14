@@ -4,7 +4,7 @@
 
 pkgname=autocutsel
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="synchronizes the two copy/paste buffers mainly used by X applications"
 arch=('x86_64')
 depends=('libxaw')
@@ -13,6 +13,7 @@ url="https://github.com/sigmike/autocutsel"
 install=autocutsel.install
 license=('GPL')
 md5sums=('4e891b51745891d3367f085ff84610de')
+sha256sums=('f17e06d42f7494436d4b26f4be0b6b0da39481c0400c96778e4b905b6341eb17')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
