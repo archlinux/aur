@@ -3,7 +3,7 @@ pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
@@ -13,24 +13,25 @@ makedepends=('python-setuptools' 'gsl'
              'python-wheel'
              'python-build'
              'python-installer')
-checkdepends=('python-nose' 'python-scipy' 'python-matplotlib')
+checkdepends=('python-nose'
+              'python-scipy'
+              'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ed53bb6e0e637242f7e3d8d122f09a51')
+md5sums=('02926db04ece780d713e5ef979cae769')
 
 #get_pyver() {
-#    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+#    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 #}
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}/${_pyname}/snapshot
 
-    sed -i "/directnbody/s/directnbody/galpy.snapshot.directnbody/" Snapshot.py
-    sed -i "/from\ Snapshot/s/Snapshot/galpy.snapshot.Snapshot/" snapshotMovies.py
+    sed -i "/directnbody/s/directnbody/.directnbody/" Snapshot.py
+    sed -i "/from\ Snapshot/s/Snapshot/.Snapshot/" snapshotMovies.py
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-#   python setup.py build
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
@@ -40,13 +41,13 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   pytest "build/lib.linux-${CARCH}-$(get_pyver)"
+#   pytest -vv --color=yes "build/lib.linux-${CARCH}-cpython-$(get_pyver)"
 #   python setup.py test
     nosetests
 }
 
 package_python-galpy() {
-    depends=('python-setuptools' 'python-scipy' 'python-matplotlib')
+    depends=('python-packaging' 'python-scipy' 'python-matplotlib')
     optdepends=('python-galpy-doc: Documentation for galpy'
                 'gsl>=1.14: For some advanced features'
                 'python-astropy: For Quantity support'
@@ -59,7 +60,6 @@ package_python-galpy() {
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README* -t "${pkgdir}/usr/share/doc/${pkgname}"
-#   python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
