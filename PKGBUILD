@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _pkgname="NBXplorer"
+readonly _pkgname="NBXplorer"
 
 pkgname="nbxplorer"
 pkgver="2.3.44"
