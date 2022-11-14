@@ -1,14 +1,11 @@
 pkgbase = hashbrowns-git
 	pkgdesc = Provides cryptographic hashes with a minimal UI
-	pkgver = 0.18.5a3aeb2
-	pkgrel = 2
+	pkgver = 0.19.4bfcac4
+	pkgrel = 1
 	url = https://github.com/gavinhungry/hashbrowns
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = pygtk
-	depends = pango
-	depends = python2-pysha3
 	source = hashbrowns-git::git+https://github.com/gavinhungry/hashbrowns.git
 	sha256sums = SKIP
 

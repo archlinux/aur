@@ -1,14 +1,13 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=hashbrowns-git
-pkgver=0.18.5a3aeb2
-pkgrel=2
+pkgver=0.19.4bfcac4
+pkgrel=1
 pkgdesc='Provides cryptographic hashes with a minimal UI'
 url='https://github.com/gavinhungry/hashbrowns'
 license=('MIT')
 arch=('any')
 makedepends=('git')
-depends=('pygtk' 'pango' 'python2-pysha3')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
