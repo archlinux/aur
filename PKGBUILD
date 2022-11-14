@@ -8,14 +8,14 @@
 #######################
 
 pkgname=rstudio-desktop-daily-bin
-pkgver=2022.12.0.daily.295
-pkgver_url=2022.12.0-daily-295
+pkgver=2022.12.0.preview.322
+pkgver_url=2022.12.0-preview-322
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0' 'postgresql-libs')
+depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.1' 'postgresql-libs')
 #makedepends=('patchelf')
 optdepends=(
     'pandoc: markdown support'
@@ -24,9 +24,9 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('1a7c6ea4fba0734fe33a2cc64be70753a418a96f9462a42900c597e63ec72b33')
+sha256sums_x86_64=('b3e14d7932b48e494c875f093a410f1283963cd26cf4d273c02063fb71ae9f3b')
 #source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
-source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/electron/bionic/amd64/rstudio-2022.12.0-daily-295-amd64.deb")
+source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/electron/bionic/amd64/rstudio-2022.12.0-preview-322-amd64.deb")
 
 package() {
 
