@@ -5,8 +5,8 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.7.0.0pre.r21.g10a3c072
-pkgrel=2
+pkgver=v0.7.0.0pre.r163.gd50c1324
+pkgrel=3
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -36,7 +36,10 @@ pkgver() {
     cd "$srcdir/$_pkgname"
     # check for the DI rewrite commit that makes plugins incompatible
     if git merge-base --is-ancestor 10a3c07206028f7df5befbdeca6aadb30efe4cb3 HEAD >/dev/null; then
-        git describe --long --tags 10a3c07206028f7df5befbdeca6aadb30efe4cb3 | sed 's/0.6.0.4/0.7.0.0pre/' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        printf "%s.r%s.g%s\n" \
+        "v0.7.0.0pre" \
+        $(git log --oneline 10a3c072.. | wc -l) \
+        $(git describe --long --tags | sed 's/.*-g\(.*\)/\1/')
     else
         git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     fi
