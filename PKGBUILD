@@ -1,21 +1,19 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
-pkgname=xfce4-theme-switcher
+pkgname=xts-arcolinux-theme
 pkgver=0.1
-pkgrel=4
-pkgdesc="Utility for fast switch betwen Xfce4 themes."
-
+pkgrel=1
+pkgdesc="ArcoLinux theme for xfce4-theme switcher."
 arch=('any')
-url="https://gitlab.com/linux-stuffs/xfce4-theme-switcher"
+url="https://gitlab.com/linux-stuffs/xts-themes"
 license=('GPL3')
-groups=('xfce4-goodies' 'xfce4-goodies-devel')
+groups=('xfce4-goodies')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('bash' 'xfce4-whiskermenu-plugin' 'coreutils' 'grep' 'sed' 'python3' 'conky' 'plank' 'xfce4-panel' 'gtk3' 'python-gobject>=3.38')
+depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'arc-gtk-theme' 'gtk-engines' 'plank' 'conky')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-4.tar.gz')
-
+source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-arcolinux-theme/distrib/xts-arcolinux-theme-0.1-1.tar.gz')
 sha256sums=('SKIP')
 
 package() {
