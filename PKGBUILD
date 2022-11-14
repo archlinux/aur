@@ -16,7 +16,7 @@ pkgname=(
 	$_basename-server-git
 	$_basename-unixd-clients-git
 )
-pkgver=1.1.0.alpha.9.r19.gfba012ef
+pkgver=1.1.0.alpha.10.r14.g06c9e087c
 pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
@@ -52,6 +52,7 @@ package_kanidm-git () {
 package_kanidm-clients-git () {
   conflicts=("$_basename-clients-bin")
   provides=("$_basename-clients")
+  depends=("libgit2")
   pkgdesc='kanidm client to interact with kanidm identity management server.'
   backup=("etc/kanidm/config")
 
@@ -69,6 +70,7 @@ package_kanidm-clients-git () {
 package_kanidm-server-git () {
   conflicts=("$_basename-server-bin")
   provides=("$_basename-server")
+  depends=("libgit2")
   pkgdesc='kanidm server for idendity management, supports RADIUS, ssh key management.'
   backup=("etc/kanidm/server.toml")
 
@@ -78,13 +80,10 @@ package_kanidm-server-git () {
   install -Dm644 platform/opensuse/kanidmd.service "${pkgdir}/usr/lib/systemd/system/kanidmd.service"
 
   install -Dm755 target/release/kanidmd "${pkgdir}/usr/bin/kanidmd"
-  install -Dm755 target/release/kanidm_badlist_preprocess "${pkgdir}/usr/bin/kanidm_badlist_preprocess"
 
   install -Dm644 target/release/build/completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
-  install -Dm644 target/release/build/completions/_kanidm_badlist_preprocess "${pkgdir}/usr/share/zsh/site-functions/_kanidm_badlist_preprocess"
 
   install -Dm644 target/release/build/completions/kanidmd.bash "${pkgdir}/usr/share/bash-completion/completions/kanidmd.sh"
-  install -Dm644 target/release/build/completions/kanidm_badlist_preprocess.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_badlist_preprocess.sh"
 
   # add web-ui files
   install -dv "${pkgdir}/usr/share/kanidm/ui/"

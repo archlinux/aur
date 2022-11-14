@@ -1,6 +1,6 @@
 pkgbase = kanidm-git
 	pkgdesc = A identity management service and clients.
-	pkgver = 1.1.0.alpha.9.r19.gfba012ef
+	pkgver = 1.1.0.alpha.10.r14.g06c9e087c
 	pkgrel = 1
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
@@ -13,19 +13,21 @@ pkgbase = kanidm-git
 	sha256sums = SKIP
 
 pkgname = kanidm-git
-	depends = kanidm-server-git=1.1.0.alpha.9.r19.gfba012ef
-	depends = kanidm-clients-git=1.1.0.alpha.9.r19.gfba012ef
-	depends = kanidm-unixd-clients-git=1.1.0.alpha.9.r19.gfba012ef
+	depends = kanidm-server-git=1.1.0.alpha.10.r14.g06c9e087c
+	depends = kanidm-clients-git=1.1.0.alpha.10.r14.g06c9e087c
+	depends = kanidm-unixd-clients-git=1.1.0.alpha.10.r14.g06c9e087c
 	conflicts = kanidm-bin
 
 pkgname = kanidm-clients-git
 	pkgdesc = kanidm client to interact with kanidm identity management server.
+	depends = libgit2
 	provides = kanidm-clients
 	conflicts = kanidm-clients-bin
 	backup = etc/kanidm/config
 
 pkgname = kanidm-server-git
 	pkgdesc = kanidm server for idendity management, supports RADIUS, ssh key management.
+	depends = libgit2
 	provides = kanidm-server
 	conflicts = kanidm-server-bin
 	backup = etc/kanidm/server.toml
