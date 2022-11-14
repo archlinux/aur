@@ -1,7 +1,7 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
 pkgver=1.24.81
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager and launcher for Paradox Interactive games"
 arch=('x86_64')
 url="https://github.com/bcssov/IronyModManager"
@@ -18,7 +18,7 @@ sha256sums=('0aaf26d8ffe7e468c3ab4db0b8b6af45a1956ab05fb0a4398233538a0bbb8d40'
             '43c8454a1d74fa0f0d2bdeae41836c5a73c079d1fb915c3fd709086d119c87a7'
             'bf522e178388d52f959348e0a0406a37ff16181b50eb848398a753cd6ebe1237'
             'acbb98b22127ec04aec858d1fd6767526eb78c6a10b3e091f040dfe503b29a8e'
-            'cafa0f7d84e49d9a26082e839db1dfcf0f87ca8462aca050007690d5565a7157')
+            'ed3f09c20b0d1a09a6ad0659a680b92fb058a55a6c9f1c3b1cd98b92293a7a04')
 noextract=("$pkgname-$pkgver-$pkgrel.zip")
 
 prepare() {

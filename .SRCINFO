@@ -1,7 +1,7 @@
 pkgbase = irony-mod-manager-bin
 	pkgdesc = A mod manager and launcher for Paradox Interactive games
 	pkgver = 1.24.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcssov/IronyModManager
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = irony-mod-manager-bin
 	depends = krb5
 	depends = lttng-ust
 	depends = imagemagick
-	noextract = irony-mod-manager-bin-1.24.81-1.zip
-	source = irony-mod-manager-bin-1.24.81-1.zip::https://github.com/bcssov/IronyModManager/releases/download/v1.24.81/linux-x64.zip
+	noextract = irony-mod-manager-bin-1.24.81-2.zip
+	source = irony-mod-manager-bin-1.24.81-2.zip::https://github.com/bcssov/IronyModManager/releases/download/v1.24.81/linux-x64.zip
 	source = irony-mod-manager-bin.png::https://raw.githubusercontent.com/bcssov/IronyModManager/v1.24.81/src/IronyModManager/Assets/logo.png
 	source = irony-mod-manager-bin.desktop
 	source = irony-mod-manager-bin.sh
@@ -23,6 +23,6 @@ pkgbase = irony-mod-manager-bin
 	sha256sums = 43c8454a1d74fa0f0d2bdeae41836c5a73c079d1fb915c3fd709086d119c87a7
 	sha256sums = bf522e178388d52f959348e0a0406a37ff16181b50eb848398a753cd6ebe1237
 	sha256sums = acbb98b22127ec04aec858d1fd6767526eb78c6a10b3e091f040dfe503b29a8e
-	sha256sums = cafa0f7d84e49d9a26082e839db1dfcf0f87ca8462aca050007690d5565a7157
+	sha256sums = ed3f09c20b0d1a09a6ad0659a680b92fb058a55a6c9f1c3b1cd98b92293a7a04
 
 pkgname = irony-mod-manager-bin

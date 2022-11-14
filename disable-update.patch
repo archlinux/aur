@@ -1,6 +1,6 @@
 --- appSettings.json	2022-09-09 05:22:07.295823229 +0200
-+++ appSettingsUpdated.json	2022-09-09 05:22:12.586815963 +0200
-@@ -15,7 +15,7 @@
++++ appSettingsUpdated.json	2022-11-14 19:45:19.246822578 +0100
+@@ -15,10 +15,12 @@
          "UseDeferredRendering": null
      },
      "Updates": {
@@ -8,4 +8,10 @@
 +        "Disable": true
      },
      "Steam": {
-         "UseLegacyLaunchMethod": false
+-        "UseLegacyLaunchMethod": false
++        "UseLegacyLaunchMethod": false,
++        "UseGameHandler": true,
++        "GameHandlerPath": "IronyModManager.GameHandler"
+     },
+     "Formatting": {
+         "UseSystemCulture": true
