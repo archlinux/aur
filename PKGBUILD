@@ -9,9 +9,9 @@ license=(MIT)
 provides=(deno)
 conflicts=(deno deno-git)
 source_x86_64=(https://github.com/denoland/deno/releases/download/v$pkgver/deno-$arch-unknown-linux-gnu.zip)
-sha256sums_x86_64=(647665c9b46b88d5f987557574c6de240d8bd93bb9eafe9b8312731725bf5c81)
+sha256sums_x86_64=(1f23102a92abe8d65cb194ae14d1ef4a4ea8574e53061eecb8381fd8371bbefc)
 source_aarch64=(https://github.com/LukeChannings/deno-arm64/releases/download/v$pkgver/deno-linux-arm64.zip)
-sha256sums_aarch64=(be23c2d62845a17d5833e3aa717bc6e55019b794f24bed2f62928725d012db55)
+sha256sums_aarch64=(0b6ecc7271d09aaeec6f232590f860baf6d780ac6c5898aedfc97ff4eba6c40c)
 
 package() {
   install -Dm755 "$srcdir/deno" "$pkgdir/usr/bin/deno"
