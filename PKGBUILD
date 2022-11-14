@@ -3,7 +3,7 @@
 
 _pkgname=orbitfight
 pkgname=${_pkgname}-git
-pkgver=0.8.1.r11.g9cdc4f3
+pkgver=0.8.1.r12.g5a8f6c4
 pkgrel=1
 pkgdesc="A game in C++ written with SFML, very in-development (git version)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 
-	gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}"
+	gendesk -f --pkgname "${pkgname}" --pkgdesc "${pkgdesc}"
 }
 
 build() {
