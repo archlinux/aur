@@ -2,7 +2,7 @@
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
 pkgver=7.04
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
 url="https://github.com/rigaya/$_UpstreamPkgName"
@@ -13,14 +13,17 @@ depends=('cuda>=10' 'ffmpeg' 'libass' 'vapoursynth')
 makedepends=('git')
 source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/tplgy/cppcodec.git
-        ldflags-adjustments.patch)
+        ldflags-adjustments.patch
+        use-type-instead-of-which.patch)
 sha256sums=('SKIP'
             'SKIP'
-            '9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5')
+            '9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5'
+            '717bf4396d9a82d47f9d5ddbc4bcf60da138f1b123359268254d29ff08fc21e5')
 
 prepare() {
 	cd $_UpstreamPkgName
 	patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
+	patch --forward --strip=1 --input="${srcdir}/use-type-instead-of-which.patch"
 }
 
 build() {
