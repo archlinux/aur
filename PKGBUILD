@@ -12,6 +12,7 @@ provides=('nodejs')
 conflicts=('fnm-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ddb7bde503ef990c95c762863f4c858499f17c00d8e6ded7885b4fbbf1600250')
+options=('!lto')
 
 build() {
   cd "$pkgname-$pkgver"
