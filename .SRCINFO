@@ -58,6 +58,7 @@ pkgbase = firefox-wayland-hg
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
+	options = !lto
 	source = hg+https://hg.mozilla.org/mozilla-unified#revision=autoland
 	source = firefox.desktop
 	source = firefox-symbolic.svg
