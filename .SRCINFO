@@ -1,13 +1,12 @@
 pkgbase = volatile-git
 	pkgdesc = Simple ALSA status icon and volume control
-	pkgver = 0.33.64f5dbb
+	pkgver = 0.35.28d699e
 	pkgrel = 1
 	url = https://github.com/gavinhungry/volatile
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = pygtk
-	depends = python2-pyalsaaudio
+	depends = python-pyalsaaudio
 	source = volatile-git::git+https://github.com/gavinhungry/volatile.git
 	sha256sums = SKIP
 
