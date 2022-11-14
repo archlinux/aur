@@ -1,6 +1,12 @@
---- appSettings.json	2022-09-09 05:22:07.295823229 +0200
+--- appSettings.json	2022-11-14 19:58:47.384484430 +0100
 +++ appSettingsUpdated.json	2022-11-14 19:45:19.246822578 +0100
-@@ -15,10 +15,12 @@
+@@ -1,4 +1,4 @@
+-    {
++{
+     "Logging": {
+         "EnableAvaloniaLogger": false
+     },
+@@ -15,7 +15,7 @@
          "UseDeferredRendering": null
      },
      "Updates": {
@@ -8,10 +14,11 @@
 +        "Disable": true
      },
      "Steam": {
--        "UseLegacyLaunchMethod": false
-+        "UseLegacyLaunchMethod": false,
-+        "UseGameHandler": true,
-+        "GameHandlerPath": "IronyModManager.GameHandler"
-     },
-     "Formatting": {
-         "UseSystemCulture": true
+         "UseLegacyLaunchMethod": false,
+@@ -28,4 +28,4 @@
+     "OSXOptions": {
+         "UseFileStreams": false
+     }
+-    }
+\ No newline at end of file
++}
