@@ -1,5 +1,5 @@
 # Maintainer: Michael Wyraz <archlinux@michael.wyraz.de>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Arjan Timmerman <arjan@archlinux.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
@@ -8,15 +8,27 @@
 
 pkgbase=network-manager-applet-nolibappindicator
 pkgname=(network-manager-applet-nolibappindicator)
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
-pkgdesc="Applet for managing network connections (without dependency to libappindicator)"
+pkgdesc="Applet for managing network connections"
 url="https://gitlab.gnome.org/GNOME/network-manager-applet"
 arch=(x86_64)
 license=(GPL LGPL)
-makedepends=(libsecret libnotify libmm-glib gobject-introspection git gtk-doc meson libnma
-             libgudev)
-_commit=c6738f174cebd39d39494e26d42ff9a59cca9f1b  # tags/1.28.0^0
+depends=(
+  libmm-glib
+  libnma
+  libsecret
+  networkmanager
+)
+makedepends=(
+  git
+  gobject-introspection
+  gtk-doc
+  libgudev
+  meson
+)
+options=(debug)
+_commit=d99d0305178738f6e96c4d49ceb394d513c10b6d  # tags/1.30.0^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(network-manager-applet)
@@ -32,7 +44,12 @@ prepare() {
 }
 
 build() {
-  arch-meson network-manager-applet build -D selinux=false -D appindicator=no
+  local meson_options=(
+    -D selinux=false
+    -D appindicator=no
+  )
+
+  arch-meson network-manager-applet build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -51,14 +68,18 @@ _pick() {
 }
 
 package_network-manager-applet-nolibappindicator() {
-  depends=(nm-connection-editor libmm-glib libnotify libsecret networkmanager)
+  depends+=(nm-connection-editor)
 
   meson install -C build --destdir "$pkgdir"
 
-  _pick nmce "$pkgdir"/usr/bin/nm-connection-editor
-  _pick nmce "$pkgdir"/usr/share/applications/nm-connection-editor.desktop
-  _pick nmce "$pkgdir"/usr/share/icons/hicolor/*/*/nm-device-wwan{,-symbolic}.*
-  _pick nmce "$pkgdir"/usr/share/locale
-  _pick nmce "$pkgdir"/usr/share/man/man1/nm-connection-editor.1
-  _pick nmce "$pkgdir"/usr/share/metainfo
+  cd "$pkgdir"
+
+  _pick nmce usr/bin/nm-connection-editor
+  _pick nmce usr/share/applications/nm-connection-editor.desktop
+  _pick nmce usr/share/icons/hicolor/*/*/nm-device-wwan{,-symbolic}.*
+  _pick nmce usr/share/locale
+  _pick nmce usr/share/man/man1/nm-connection-editor.1
+  _pick nmce usr/share/metainfo
 }
+
+# vim:set sw=2 sts=-1 et:
