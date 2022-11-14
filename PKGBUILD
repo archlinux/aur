@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -27,6 +27,9 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v
 md5sums=('dbc1b9385657d37028be2ffbbb298793'
          'f2592b99fb1c894c45815415c1e80efe'
          'SKIP')
+sha256sums=('76d3737e273fa73501f7c12a4814f6a63851b8119118575cc77e9911ce3acb06'
+            '74602976d0513e82c225b6aaefa08351ff75ca534f666ca308878101e3d1f6bf'
+            'SKIP')
 
 prepare() {
   patch -Np1 -d $pkgname-$pkgver -i ../vagrant-2.3.2-net-ssh-gem-update.patch
