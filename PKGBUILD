@@ -5,8 +5,8 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-_pkgname="lightning"
-_tag="8efed095ba12e74ee846b07426e1d416b2c812a9"
+declare -r _pkgname="lightning"
+declare -r _tag="8efed095ba12e74ee846b07426e1d416b2c812a9"
 
 pkgname="core-lightning"
 pkgver="0.12.1"
@@ -80,9 +80,11 @@ package()
     cp -r "${srcdir}"/"${pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     cd "${pkgdir}"/usr/share/doc/"${pkgname}"/ || exit 1
-    _list="$(ls -l)"
+    declare -r _list="$(ls -l)"
+    declare _links
     _links="$(echo "${_list}" | grep "^l")"
     _links="$(echo "${_links}" | tr -s " ")"
+    declare -r _to_remove
     _to_remove=$(echo "${_links}" | cut -d " " -f 9)
     # shellcheck disable=SC2086
     rm -r ${_to_remove}
