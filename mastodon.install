@@ -19,5 +19,5 @@ post_upgrade() {
   echo "Upgrading database schema"
   sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate
   echo "Precompiling assets"
-  sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile
+  sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider bundle exec rails assets:precompile
 }
