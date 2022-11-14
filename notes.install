@@ -27,7 +27,7 @@ msg_modules() {
 }
 
 msg_faq() {
-	echo -e "In the case that you still have issues after following these instructions, the FAQ at ${GREEN}https://opentabletdriver.net/Wiki/FAQ/Linux${RESET} may help."
+	echo -e "In case that you still have issues after following these instructions, the FAQ at ${GREEN}https://opentabletdriver.net/Wiki/FAQ/Linux${RESET} may help."
 	echo
 }
 
@@ -48,6 +48,11 @@ post_upgrade() {
   echo
   if [ $(vercmp $2 0.6.0-1) -lt 0 ]; then
     echo -e "${BOLD}The plugin API and tablet configuration format has changed in OpenTabletDriver 0.6${RESET}"
+    echo -e "You may want to clear the contents of the ${GREEN}Plugins/${RESET} and ${GREEN}Configurations/${RESET} folder in ${GREEN}~/.config/OpenTabletDriver/${RESET}"
+    echo
+  fi
+  if [ $(vercmp $2 0.7.0.0pre) -lt 0 ]; then
+    echo -e "${BOLD}The plugin API and tablet configuration format has again changed in OpenTabletDriver 0.7${RESET}"
     echo -e "You may want to clear the contents of the ${GREEN}Plugins/${RESET} and ${GREEN}Configurations/${RESET} folder in ${GREEN}~/.config/OpenTabletDriver/${RESET}"
     echo
   fi

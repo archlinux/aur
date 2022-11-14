@@ -5,7 +5,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.6.0.4.r20.g325c28ca
+pkgver=v0.7.0.0pre.r21.g10a3c072
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -30,11 +30,16 @@ sha256sums=('SKIP'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'c18e36c7287db4dc16df687693f7ffe548620b26c03b2a98b0b44f4fdedfd442')
+            'cddf5b0928bc6e1d8d87ac503b4dd31536d956b1f37e7e3fa1c1b47a0ad23880')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    # check for the DI rewrite commit that makes plugins incompatible
+    if git merge-base --is-ancestor 10a3c07206028f7df5befbdeca6aadb30efe4cb3 HEAD >/dev/null; then
+        git describe --long --tags 10a3c07206028f7df5befbdeca6aadb30efe4cb3 | sed 's/0.6.0.4/0.7.0.0pre/' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    fi
 }
 
 build() {
