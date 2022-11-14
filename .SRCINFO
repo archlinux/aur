@@ -2,7 +2,7 @@ pkgbase = bootsplash-manager-bin
 	pkgdesc = Simple bootsplash manager
 	pkgver = 1.9
 	pkgrel = 1
-	url = https://github.com/ANDRoid7890/bootsplash-manager
+	url = https://github.com/parov0z/bootsplash-manager
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
@@ -11,7 +11,7 @@ pkgbase = bootsplash-manager-bin
 	depends = pamac
 	depends = sdl2
 	conflicts = bootsplash-manager
-	source = https://github.com/ANDRoid7890/bootsplash-manager/releases/download/1.9/bootsplash-manager-1.9.tar.gz
+	source = https://github.com/parov0z/bootsplash-manager/releases/download/1.9/bootsplash-manager-1.9.tar.gz
 	md5sums = f1ebc1e753ddbc94fc34a832e36b1e19
 
 pkgname = bootsplash-manager-bin
