@@ -1,0 +1,13 @@
+pkgbase = unity-installer-arch
+	pkgdesc = Install the Unity desktop on Arch
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	depends = python3
+	depends = git
+	depends = paru
+	depends = libnewt
+	source = unity-installer-arch
+	sha512sums = SKIP
+
+pkgname = unity-installer-arch

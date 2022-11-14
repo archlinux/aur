@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# text styling
+
+no_styling='\033[0m'
+
+color_black='\033[0;30m'
+color_red='\033[0;31m'
+color_reen='\033[0;32m'
+color_yellow='\033[0;33m'
+color_blue='\033[0;34m'
+color_purple='\033[0;35m'
+color_cyan='\033[0;36m'
+color_white='\033[0;37m'
+
+style_bold=$(tput bold)
+
+# helper functions
+
+error() {
+  echo -e "${color_red}${style_bold}>> e:${no_styling}${style_bold} $1"
+  echo -e "exiting...${no_styling}"
+  exit 1
+}
+
+# checks
+
+paru --version &>/dev/null || error 'paru not installed'
+git --version &>/dev/null || error 'git not installed'
+whiptail --version &>/dev/null || error 'whiptail not installed'
+
+# menu
+
+rm -rf ~/Unity
+trap "rm -rf ~/Unity" err exit SIGINT
+
+CHOICE=$(
+whiptail --title 'unity-installer-arch' --menu "Choose an option" 15 78 5 \
+  "1." "Install Unity desktop" \
+  "2." "Install single package" \
+  "3." "Download Unity sources" \
+  3>&2 2>&1 1>&3 
+)
+
+case $CHOICE in
+  "1.")
+    mkdir -p ~/Unity
+    cd ~/Unity && git clone https://gitlab.com/rswat09/unity-for-arch.git || { rm -rf ~/Unity; error 'failed to clone git repository'; }
+    cd unity-for-arch; ./build-and-install.sh -e || { rm -rf ~/Unity; error 'installation failed; see above log'; }
+    whiptail --title "unity-installer-arch" --msgbox "Unity has been installed successfully!" 7 60
+    rm -rf ~/Unity;;
+  "2.")
+    mkdir -p ~/Unity
+    cd ~/Unity && git clone https://gitlab.com/rswat09/unity-for-arch.git || { rm -rf ~/Unity; error 'failed to clone git repository'; }
+    echo -e "${style_bold}Available Unity packages:${no_styling}"
+    cd unity-for-arch; ./packages.py
+    read -p "Which package would you like to install? " input_pkg
+    [[ "$input_pkg" != "" ]] || { rm -rf ~/Unity; exit; }
+    [[ -d "$input_pkg" ]] || { rm -rf ~/Unity; error 'no such package exists'; }
+    ./build-and-install.sh -p "$input_pkg" || { rm -rf ~/Unity; error 'failed to build package'; }
+    whiptail --title "unity-installer-arch" --msgbox "${input_pkg} has been installed successfully!" 7 60;;
+  "3.")
+    cd ~ && rm -rf unity-sources && git clone https://gitlab.com/rswat09/unity-for-arch.git unity-sources || { error 'failed to clone git repository'; }
+    cd unity-sources; ./build-and-install.sh -d || { rm -rf ~/Unity; error 'failed to download sources'; }
+    whiptail --title "unity-installer-arch" --msgbox "Sources have been downloaded to ~/unity-sources" 7 60;;
+esac
