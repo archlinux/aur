@@ -3,8 +3,8 @@
 
 # Variables
 ## Colours
-clear_colour="\033[0m"
-green="\033[0;32m"
+declare -r clear_colour="\033[0m"
+declare -r green="\033[0;32m"
 
 post_install()
 {

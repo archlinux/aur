@@ -5,8 +5,8 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-_pkgname="matomo"
-_tag="866da57b5acc69037c82ee147848d16b0b5248ef"
+declare -r _pkgname="matomo"
+declare -r _tag="866da57b5acc69037c82ee147848d16b0b5248ef"
 
 pkgname="matomo-git"
 pkgver="4.12.3"
@@ -94,12 +94,14 @@ prepare()
     git -c protocol.file.allow=always submodule update
 
     # GeoIP database
+    declare -i _current_year
     _current_year="$(date +"%Y")"
+    declare -i _current_month
     _current_month="$(date +"%m")"
 
     while [[ "$(curl -o /dev/null/ -sw "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz || true)" != "200" ]]; do
         ## Remove the preceding "0".
-        if [[ "${_current_month::1}" == "0" ]]; then
+        if [[ "${_current_month::1}" -eq "0" ]]; then
             _current_month=${_current_month:1}
         fi
 
@@ -112,7 +114,7 @@ prepare()
         fi
 
         ## Put a "0" at the beginning again.
-        if [[ "${#_current_month}" == "2" ]]; then
+        if [[ "${#_current_month}" -eq "2" ]]; then
             _current_month="0${_current_month}"
         fi
     done
@@ -126,7 +128,7 @@ build()
     cd "${srcdir}"/"${_pkgname}"/ || exit 1
     composer install --no-dev
 
-    _package_jsons="$(find "${srcdir}"/"${_pkgname}"/ -name package.json -type f)"
+    declare -r _package_jsons="$(find "${srcdir}"/"${_pkgname}"/ -name package.json -type f)"
     readarray -t _package_json_array <<< "${_package_jsons}"
 
     for _package_json in "${_package_json_array[@]}"; do
