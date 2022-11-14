@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap
 pkgver=0.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of an ICAP server'
 depends=('brotli' 'libldap' 'pcre')
 arch=(i686 x86_64)
