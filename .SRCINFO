@@ -1,0 +1,17 @@
+pkgbase = python-gruut-ipa
+	pkgdesc = Library for manipulating pronunciations using the International Phonetic Alphabet (IPA)
+	pkgver = 0.13.0
+	pkgrel = 00
+	url = https://github.com/rhasspy/gruut-ipa
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-scikit-learn
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/51/9f/7eff478e38913cc9930527ff40c9ebcb04744dfcd0ddd43bd5a1eb9565b7/gruut-ipa-0.13.0.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = e2b33af3c4c79dc9e39f9cf2384d0382
+	md5sums = e18d31df63b289d2da1347a16b85d383
+
+pkgname = python-gruut-ipa
