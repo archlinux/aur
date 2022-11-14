@@ -1,15 +1,14 @@
 pkgbase = caprover
 	pkgdesc = Command Line Interface for CapRover.
-	pkgver = 2.1.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/caprover/caprover-cli
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	noextract = caprover-2.1.1.tgz
-	source = https://registry.npmjs.org/caprover/-/caprover-2.1.1.tgz
-	sha512sums = 9c7349bb80197a8fe57954a515117d0bd8b7f0ccf5d06d376659ef22c951de3b63319252a71a0d2c84aec22017639fc7a2626c8a2c576605e22b3cd0306ed474
+	noextract = caprover-2.2.3.tgz
+	source = https://registry.npmjs.org/caprover/-/caprover-2.2.3.tgz
+	sha512sums = ec7f5dea21bb7ce58745fe2334652a0a8a0dbd0a67300466e7aad4d6b8fa42dfe62eb1b77f438e75b4aeae00f42b5b3e7f1e6a5d5daa793c90ced7744fa4e689
 
 pkgname = caprover
-
