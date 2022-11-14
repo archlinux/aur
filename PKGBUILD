@@ -1,13 +1,12 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/toropisco>
 pkgname=('ttf-literata' 'ttf-literata-opticals')
 pkgbase=ttf-literata
 pkgver=3.002
-pkgrel=2
+pkgrel=4
 pkgdesc="Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution."
 arch=('any')
 url="https://github.com/googlefonts/literata"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-util')
 conflicts=('otf-literata')
 replaces=('otf-literata')
 source=("https://github.com/googlefonts/literata/releases/download/$pkgver/Literata-v$pkgver.zip"
@@ -20,11 +19,11 @@ pkgname='ttf-literata'
 pkgdesc="Google's default typeface for Play Books. Truetype Collections, open source (OFL) distribution."
   cd "$srcdir"
 
-  install -dm755 "$pkgdir/usr/share/fonts/TTF/literata-variable"
-  install -dm755 "$pkgdir/usr/share/licences/$pkgname"
+  install -dm755 "$pkgdir/usr/share/fonts/TTF"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
-  install -m644 variable/Literata*.ttf "$pkgdir/usr/share/fonts/TTF/literata-variable"
-  install -m644 OFL.txt "$pkgdir/usr/share/licences/$pkgname"
+  install -m644 variable/Literata*.ttf "$pkgdir/usr/share/fonts/TTF"
+  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_ttf-literata-opticals() {
@@ -32,9 +31,9 @@ pkgname='ttf-literata-opticals'
 pkgdesc="Google's default typeface for Play Books. Truetype opticals, open source (OFL) distribution."
   cd "$srcdir"
 
-  install -dm755 "$pkgdir/usr/share/fonts/TTF/literata-opticals"
-  install -dm755 "$pkgdir/usr/share/licences/$pkgname"
+  install -dm755 "$pkgdir/usr/share/fonts/TTF"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
-  install -m644 static/ttf/Literata*.ttf "$pkgdir/usr/share/fonts/TTF/literata-opticals"
-  install -m644 OFL.txt "$pkgdir/usr/share/licences/$pkgname"
+  install -m644 static/ttf/Literata*.ttf "$pkgdir/usr/share/fonts/TTF"
+  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname"
 }

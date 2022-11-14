@@ -1,12 +1,10 @@
 pkgbase = ttf-literata
 	pkgdesc = Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution.
 	pkgver = 3.002
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/googlefonts/literata
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-util
 	conflicts = otf-literata
 	replaces = otf-literata
 	source = https://github.com/googlefonts/literata/releases/download/3.002/Literata-v3.002.zip
@@ -19,4 +17,3 @@ pkgname = ttf-literata
 
 pkgname = ttf-literata-opticals
 	pkgdesc = Google's default typeface for Play Books. Truetype opticals, open source (OFL) distribution.
-
