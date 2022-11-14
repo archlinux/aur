@@ -1,7 +1,7 @@
 pkgbase = openvpn-xor-git
 	pkgdesc = OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)
-	pkgver = 2.5.6
-	pkgrel = 2
+	pkgver = 2.5.8
+	pkgrel = 1
 	url = https://github.com/openvpn/openvpn
 	arch = x86_64
 	license = custom
@@ -20,14 +20,14 @@ pkgbase = openvpn-xor-git
 	optdepends = easy-rsa
 	optdepends = pam
 	optdepends = qopenvpn
-	provides = openvpn=2.5.6
+	provides = openvpn=2.5.8
 	provides = openvpn-dev
 	conflicts = openvpn
 	conflicts = openvpn-dev
 	conflicts = openvpn-git
 	conflicts = openvpn-xor-patched
 	conflicts = libressl
-	source = https://github.com/openvpn/openvpn/archive/v2.5.6.tar.gz
+	source = https://github.com/openvpn/openvpn/archive/v2.5.8.tar.gz
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.6/patches/02-tunnelblick-openvpn_xorpatch-a.diff
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.6/patches/03-tunnelblick-openvpn_xorpatch-b.diff
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.6/patches/04-tunnelblick-openvpn_xorpatch-c.diff
@@ -36,7 +36,7 @@ pkgbase = openvpn-xor-git
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.5.6/patches/10-route-gateway-dhcp.diff
 	source = systemd.diff
 	source = openvpn-xor-watermark.diff
-	sha256sums = 1061275433a48af24657228204718ac933519956ba09b30879267d3138678787
+	sha256sums = c216a66c967181b38002c1fd06fb5cad4a8c21865af76cb22b3bf4786070d315
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
