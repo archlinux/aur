@@ -1,7 +1,7 @@
 # Maintainer: Yongchun Jiang <me at JSpringYC@gmail.com>
 pkgname=clash-for-windows-chinese
 pkgver=0.20.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
@@ -16,6 +16,8 @@ optdepends=(
     'nftables: TUN mode required.'
     'iproute2: TUN mode required.'
 )
+
+options=(!strip)
 
 provides=('clash-for-windows')
 conflicts=('clash-for-windows')
