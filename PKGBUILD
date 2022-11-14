@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.17.1
+pkgver=4.17.2
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2"
         'default-xsettings-xml.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/xfce4-settings/trunk/default-xsettings-xml.patch')
-sha256sums=('bc52b466f4ac117d7f1eeb8bf89abed68e3657e2339c723243d6b9e12c7e349c'
+sha256sums=('f47089ca5e8efc20b17900555a5cde7177af223995d85ef5211fa1074447388f'
             '8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7')
 
 prepare() {
