@@ -1,0 +1,17 @@
+pkgbase = bspwm-gnome-git
+	pkgdesc = Use bspwm with GNOME Session integration.
+	pkgver = r110.1665f4f
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/hu3rror/bspwm-gnome
+	arch = any
+	license = MIT
+	depends = bspwm
+	depends = gnome-session
+	depends = gnome-settings-daemon
+	optdepends = gdm
+	optdepends = gnome-flashback
+	source = bspwm-gnome-git::git+https://github.com/hu3rror/bspwm-gnome.git
+	sha256sums = SKIP
+
+pkgname = bspwm-gnome-git
