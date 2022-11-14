@@ -2,8 +2,7 @@
 
 pkgname=bspwm-gnome-git
 pkgver=r110.1665f4f
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc="Use bspwm with GNOME Session integration."
 arch=('any')
 url="https://github.com/hu3rror/bspwm-gnome"
