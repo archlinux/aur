@@ -1,17 +1,14 @@
 pkgbase = papi
 	pkgdesc = Performance Application Programming Interface
-	pkgver = 6.0.0.1
-	pkgrel = 2
-	url = http://icl.cs.utk.edu/papi/
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://icl.cs.utk.edu/papi
 	arch = x86_64
 	arch = i686
 	license = BSD
 	depends = glibc
 	depends = gcc-fortran
-	conflicts = libpfm4
-	source = http://icl.cs.utk.edu/projects/papi/downloads/papi-6.0.0.1.tar.gz
-	source = 0000-pfm4-fix-a-false-alarm-to-make-gcc12-happy.patch
-	sha256sums = 3cd7ed50c65b0d21d66e46d0ba34cd171178af4bbf9d94e693915c1aca1e287f
-	sha256sums = cd365fb40adbdc7bb3eeed499f486e05054e35cadc5822875b2069a244b409fb
+	source = http://icl.cs.utk.edu/projects/papi/downloads/papi-7.0.0.tar.gz
+	sha512sums = 4c5d5eef5c89e72c41fa44eb384e66a615957ac6cbc56c9f80bdca297589808ead854389b4414f14c157d5ff5b70001126c3ba33aba0557277a801e49ef44403
 
 pkgname = papi
