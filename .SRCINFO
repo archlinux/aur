@@ -1,0 +1,24 @@
+pkgbase = python-trainer
+	pkgdesc = General purpose model trainer for PyTorch that is more flexible than it should be, by 🐸Coqui.
+	pkgver = 0.0.16
+	pkgrel = 00
+	url = https://github.com/coqui-ai/Trainer
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-coqpit
+	depends = python-fsspec
+	depends = python-protobuf
+	depends = python-soundfile
+	depends = python-tensorboardx
+	depends = python-torch
+	depends = python-pytorch
+	noextract = trainer-0.0.16-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/a4/4e/fea63b7857a034c05b98bae73cf8709c71a089b9c88ef147df3c90b2d893/trainer-0.0.16-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 15abe1cb3199944388bf0f8591b75ebd
+	md5sums = a5c534c0b0d5eb7b11a937c909109c2c
+
+pkgname = python-trainer
