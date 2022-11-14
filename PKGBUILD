@@ -2,7 +2,7 @@
 
 pkgname=dmusic
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Compact and native Yandex Music client"
 arch=('i686' 'x86_64')
 url="https://github.com/levovix0/DMusic"
@@ -21,6 +21,11 @@ depends=(
   'qt5-svg')
 
 makedepends=('nim')
+
+prepare(){
+  cd $srcdir/DMusic-$pkgver
+  [ -d build ] || mkdir build
+}
 
 build(){
   cd $srcdir/DMusic-$pkgver
