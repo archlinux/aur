@@ -1,16 +1,14 @@
 pkgbase = e2factory
 	pkgdesc = A software buildsystem not only for embedded systems
 	pkgver = 2.3.18p1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://e2factory.org
 	install = .INSTALL
 	arch = any
 	license = GPLv3
 	source = LICENSE
-	source = e2factory.conf
 	source = https://github.com/emlix/e2factory/archive/refs/tags/e2factory-2.3.18p1.tar.gz
 	sha256sums = c61f12da7cdad526bdcbed47a4c0a603e60dbbfdaf8b66933cd088e9132c303f
-	sha256sums = 277d15ded89f2261d427119e7df70a3d27ca1f71847a45ee61659a3c27b38b22
 	sha256sums = 7474dcadc663a3fd5bed34f79f6b7253d4b637ce34daef46651ce57564b04202
 
 pkgname = e2factory

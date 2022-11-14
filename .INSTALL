@@ -1,4 +1,5 @@
 post_install() {
+  groupadd -f e2factory
   chgrp e2factory /var/lib/e2factory/
   chgrp e2factory /usr/local/bin/e2-su
   chgrp e2factory /usr/local/bin/e2-su-2.2
