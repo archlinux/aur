@@ -1,15 +1,15 @@
 # Maintainer: Richard Neumann aka. Schard <mail at richard dash neumann period de>
 pkgname=color-code
 _repo_name="ansi-${pkgname}c"
-pkgver=0.3.4
-pkgrel=3
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="Encode arbitrary bytes to ANSI colors on the console."
 arch=('x86_64')
 url="https://github.com/coNQP/ansi-${_repo_name}c"
 license=('MIT')
 makedepends=("cargo")
 source=("https://github.com/conqp/${_repo_name}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('831ae792f4bca9a105c4cf84c64d64119c96be2bb18942adff28929f046b8798')
+sha256sums=('51cbec038090770f9671780caa5c01e4a1efd34b233cea318509f2660823de24')
 
 build() {
 	cd "${_repo_name}-${pkgver}"
