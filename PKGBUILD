@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=embridge-bin
 pkgver=3.1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure channel between network applications and keys stored in hardware tokens'
 arch=(x86_64)
 url='https://embridge.emudhra.com'
