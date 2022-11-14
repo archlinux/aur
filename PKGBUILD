@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-flask: adds support for the Flask Web Framework'
             'python-httpx: HTTPX integration'
             'python-multipart: Optional dependency of Starlette to parse form data'
+            'python-pymongo: PyMongo integration'
             'python-pyramid: adds support for the Pyramid Web Framework'
             'python-pyspark: adds support for the Python API for Apache Spark'
             'python-quart: adds support for the Quart Web Framework'
@@ -33,7 +34,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('105faf7bd7b7fa25653404619ee261527266b14103fe1389e0ce077bd23a9691')
+sha256sums=('e7b78a1ddf97a5f715a50ab8c3f7a93f78b114c67307785ee828ef67a5d6f117')
 
 build() {
   cd "$_name-$pkgver"
