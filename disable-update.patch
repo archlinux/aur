@@ -1,24 +1,11 @@
---- appSettings.json	2022-11-14 19:58:47.384484430 +0100
-+++ appSettingsUpdated.json	2022-11-14 19:45:19.246822578 +0100
-@@ -1,4 +1,4 @@
--    {
-+{
-     "Logging": {
-         "EnableAvaloniaLogger": false
-     },
+--- appSettings.json	2022-11-14 04:51:24.000000000 +0100
++++ appSettingsUpdated.json	2022-11-14 20:08:06.025319771 +0100
 @@ -15,7 +15,7 @@
-         "UseDeferredRendering": null
-     },
-     "Updates": {
--        "Disable": false
-+        "Disable": true
-     },
-     "Steam": {
-         "UseLegacyLaunchMethod": false,
-@@ -28,4 +28,4 @@
-     "OSXOptions": {
-         "UseFileStreams": false
-     }
--    }
-\ No newline at end of file
-+}
+     "UseDeferredRendering": null
+   },
+   "Updates": {
+-    "Disable": false
++    "Disable": true
+   },
+   "Steam": {
+     "UseLegacyLaunchMethod": false,
