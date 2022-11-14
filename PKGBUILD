@@ -4,7 +4,7 @@
 pkgbase=srsran-git
 pkgname=$pkgbase
 _pkgname=srsRAN
-pkgver=22.4.1.r0.gce8a3cae1
+pkgver=22.10.0.r0.g254cc719a
 pkgrel=1
 pkgdesc='Open source SDR LTE software suite from Software Radio Systems (SRS)'
 arch=('x86_64')
