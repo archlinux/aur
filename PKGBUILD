@@ -4,7 +4,7 @@ pkgbase=python-sphinx-hoverxref
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Sphinx extension to embed content in a tooltip on xref hover"
 arch=('any')
@@ -17,12 +17,22 @@ makedepends=('python-flit-core'
 #            'python-sphinx-tabs'
 #            'python-sphinx-prompt'
 #            'python-sphinx-autoapi'
+#            'python-sphinxcontrib.jquery'
 #            'python-sphinx-version-warning'
 #            'python-sphinx-notfound-page'
-#            'python-sphinxcontrib-bibtex')
+#            'python-sphinxcontrib-bibtex'
+#            'python-sphinxemoji'
+#            'python-setuptools'
+#           )
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('64969566ffd0fdcbc765cba04b353d61')
+md5sums=('54de1b2be60f6ca07067faf98d0e071a')
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs
+#
+#    sed -i "/language\ = /s/None/'en'/" conf.py
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -39,11 +49,11 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   python setup.py test
-    nosetests #|| warning "Tests failed"
+    nosetests || warning "Tests failed"
 }
 
 package_python-sphinx-hoverxref() {
-    depends=('python-sphinx>=1.8')
+    depends=('python-sphinx>=1.8' 'python-sphinxcontrib.jquery')
 #   optdepends=('python-sphinx-hoverxref-doc: Documentation for sphinx-hoverxref')
     cd ${srcdir}/${_pyname}-${pkgver}
 
