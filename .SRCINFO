@@ -1,6 +1,6 @@
 pkgbase = python-kolo
 	pkgdesc = See everything happening in your running Django app
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 00
 	url = https://kolo.app
 	arch = any
@@ -12,12 +12,16 @@ pkgbase = python-kolo
 	depends = python-tomli
 	depends = python-toolz
 	depends = python-ulid-py
-	noextract = kolo-2.1.0-py3-none-any.whl
+	depends = python-requests
+	depends = python-black
+	depends = python-jinja
+	depends = python-django
+	noextract = kolo-2.2.0-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/08/e6/c8f0a18fb1d1b2d8220f8460faad032bf57fc90415f4b5ed790d52b6d56a/kolo-2.1.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/3e/86/e1f986113e6ccbc1f78d74886c6699556eb2758c4ba2cb1bcef5e9cbc96e/kolo-2.2.0-py3-none-any.whl
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 129e909b4152a53aaa04e805947dde46
+	md5sums = d8d674aa0f986642c0e273dd15f23bbb
 	md5sums = 72a73656a0823dab58aae967ffb09b63
 
 pkgname = python-kolo
