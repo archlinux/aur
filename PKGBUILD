@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbacktrace-git
-pkgver=r60.d0f5e95
+pkgver=r69.8602fda
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces"
 arch=('i686' 'x86_64')
@@ -9,12 +9,23 @@ url="https://github.com/ianlancetaylor/libbacktrace"
 license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=('git' 'libunwind')
-provides=('libbacktrace' 'libbacktrace.so')
+provides=("libbacktrace=$pkgver" 'libbacktrace.so')
 conflicts=('libbacktrace')
 options=('staticlibs')
-source=("git+https://github.com/ianlancetaylor/libbacktrace.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/ianlancetaylor/libbacktrace.git"
+        "0001-Provide-project-information-to-autotools.patch::https://github.com/ianlancetaylor/libbacktrace/commit/e4f3220e535a7bc93730e50d1f10c89ef3996075.patch"
+        "0002-Add-pkg-config-file.patch::https://github.com/ianlancetaylor/libbacktrace/commit/f75f3eee369686694c379619a134c473982c0951.patch")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
+
+prepare() {
+  cd "libbacktrace"
+
+  patch -Np1 -i "$srcdir/0001-Provide-project-information-to-autotools.patch"
+  patch -Np1 -i "$srcdir/0002-Add-pkg-config-file.patch"
+}
 
 pkgver() {
   cd "libbacktrace"
@@ -25,6 +36,7 @@ pkgver() {
 build() {
   cd "libbacktrace"
 
+  autoreconf -fi
   ./configure \
     --prefix="/usr" \
     --enable-shared \
