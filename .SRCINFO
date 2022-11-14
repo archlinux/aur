@@ -1,0 +1,19 @@
+pkgbase = python-sphinxcontrib.jquery
+	pkgdesc = Extension to include jQuery on newer Sphinx releases
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/jquery
+	arch = any
+	license = custom:0BSD
+	checkdepends = python-nose
+	makedepends = python-flit-core
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib.jquery/sphinxcontrib.jquery-3.0.0.tar.gz
+	source = https://github.com/sphinx-contrib/jquery/raw/master/LICENCE
+	md5sums = bbdc263b54529e4d5da045221d501c31
+	md5sums = SKIP
+
+pkgname = python-sphinxcontrib.jquery
+	depends = python-sphinx
