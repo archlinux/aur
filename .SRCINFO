@@ -1,6 +1,6 @@
 pkgbase = remote-desktop-manager
 	pkgdesc = Devolutions Remote Desktop Manager Enterprise centralizes all remote connections on a single platform that is securely shared between users and across the entire team.
-	pkgver = 2022.3.0.4
+	pkgver = 2022.3.0.5
 	pkgrel = 1
 	url = https://remotedesktopmanager.com/
 	install = remote-desktop-manager.install
@@ -9,7 +9,7 @@ pkgbase = remote-desktop-manager
 	depends = webkit2gtk
 	depends = p11-kit
 	options = !strip
-	source = RemoteDesktopManager_2022.3.0.4_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2022.3.0.4/RemoteDesktopManager_2022.3.0.4_amd64.deb
-	sha256sums = 4950db9c2ed9f08d1cfa777eb4976a01da26e694bc9b9b93223d39b9dfc26fbe
+	source = RemoteDesktopManager_2022.3.0.5_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2022.3.0.5/RemoteDesktopManager_2022.3.0.5_amd64.deb
+	sha256sums = bc8105974298b4dcba984b287aef81313f6aaf6c8c4bb7beaa9989eaae77ce63
 
 pkgname = remote-desktop-manager
