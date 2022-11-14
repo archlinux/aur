@@ -2,7 +2,7 @@
 
 pkgname=dmusic
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Compact and native Yandex Music client"
 arch=('i686' 'x86_64')
 url="https://github.com/levovix0/DMusic"
@@ -12,10 +12,15 @@ source=("https://github.com/levovix0/DMusic/archive/refs/tags/$pkgver.zip"
         "DMusic.desktop")
 sha256sums=('1f82e732584257246162201bc59b339adca71a90dcd811b775a6b681f067d7f2'
             '5aa2b3210f93963c825373195aae8adaa75edf9c82c59d657c0c3250a37c3a8a')
-depends=('taglib' 'qt6-base' 'qt6-declarative' 'qt6-quick3d' 'qt6-quicktimeline' 
-    'qt6-svg' 'qt6-webchannel' 'qt6-webengine')
+depends=(
+  'taglib' 
+  'qt5-base' 
+  'qt5-declarative' 
+  'qt5-multimedia'   
+  'qt5-quickcontrols2' 
+  'qt5-svg')
+
 makedepends=('nim')
-#options=('!strip')
 
 build(){
   cd $srcdir/DMusic-$pkgver
