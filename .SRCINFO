@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications
 	pkgver = 2022.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64
 	license = Apache

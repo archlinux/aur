@@ -2,7 +2,7 @@
 
 pkgname=openvino
 pkgver=2022.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -117,7 +117,7 @@ prepare() {
     git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json_schema_validator.url "${srcdir}/json-schema-validator"
-    git -C openvino submodule update
+    git -C openvino -c protocol.file.allow='always' submodule update
     
     mkdir -p openvino/temp/vpu/firmware/{pcie,usb}-ma2x8x
     bsdtar -xf "firmware_pcie-ma2x8x_${_firmware_ver}.zip" -C openvino/temp/vpu/firmware/pcie-ma2x8x
