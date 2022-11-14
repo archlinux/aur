@@ -2,7 +2,7 @@
 
 pkgname=libsurvive
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Tracking system for Lighthouse and Vive based devices'
 arch=('x86_64')
 url='https://github.com/cntools/libsurvive/'
@@ -26,10 +26,10 @@ prepare() {
     
     git -C libsurvive submodule init
     git -C libsurvive config --local submodule.libs/cnkalman.url "${srcdir}/cnkalman"
-    git -C libsurvive submodule update
+    git -C libsurvive -c protocol.file.allow='always' submodule update
     git -C libsurvive/libs/cnkalman submodule init
     git -C libsurvive/libs/cnkalman config --local submodule.libs/cnmatrix.url "${srcdir}/cnmatrix"
-    git -C libsurvive/libs/cnkalman submodule update
+    git -C libsurvive/libs/cnkalman -c protocol.file.allow='always' submodule update
 }
 
 build() {
