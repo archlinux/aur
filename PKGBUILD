@@ -2,7 +2,7 @@
 
 _modname=nchan
 pkgname=nginx-mainline-mod-$_modname
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 
 pkgdesc='nchan nginx module'
@@ -14,9 +14,13 @@ license=('MIT')
 
 source=(
 	https://github.com/slact/$_modname/archive/v${pkgver}.tar.gz
+        https://github.com/slact/nchan/commit/bc6e17188a90f3cccfd30bfb5b49af63fc1cf6f4.diff
+        https://github.com/slact/nchan/commit/0e8702c1bd846fe32a37b0e57c924d0c0010d37f.diff
 )
 
 prepare() {
+        patch -p1 -d $_modname-$pkgver < bc6e17188a90f3cccfd30bfb5b49af63fc1cf6f4.diff
+        patch -p1 -d $_modname-$pkgver < 0e8702c1bd846fe32a37b0e57c924d0c0010d37f.diff
 	mkdir -p build
 	cd build
 	ln -sf /usr/src/nginx/auto
@@ -39,4 +43,6 @@ package() {
 	done
 }
 
-sha256sums=('ea18db8679e6d35c10c48d03c2b65376957a7761167c8e0edffc4689f599054e')
+sha256sums=('f5a5a5dd6170fd750a232227654cdce8cdb0c3d36d114fe9b6b735641e2ccee1'
+            '8adbdb71c7789c4a7a3d004ffd782fafc3e0c609dc3decec723eb5e9aee9c6d1'
+            '7c776f270f0d381c22f7d7458f708ca4c6b909db040204a9a07713c73069bca7')
