@@ -3,6 +3,7 @@
 pkgname=ydotool-git
 pkgver=0.0.1.r2.g1d5d227
 pkgrel=1
+epoch=1
 pkgdesc="Generic command-line automation tool (no X!)"
 depends=()
 makedepends=('git' 'cmake' 'ninja' 'scdoc')
