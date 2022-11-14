@@ -8,7 +8,7 @@
 _pkgname=taglib
 pkgname=lib32-taglib
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (32 bit)"
 arch=('x86_64')
 url="https://developer.kde.org/~wheeler/taglib.html"
@@ -17,6 +17,7 @@ depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('cmake')
 source=("https://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
 md5sums=('0b75619b67b9149cfcbbe5c127df6395')
+sha256sums=('58f08b4db3dc31ed152c04896ee9172d22052bc7ef12888028c01d8b1d60ade0')
 
 prepare() {
   mkdir -p build
