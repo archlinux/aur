@@ -3,7 +3,7 @@
 # Contributor: Rafał Wyszomirski <rawyszo at gmail dot com>
 
 pkgname=flipper-bin
-pkgver=0.173.0
+pkgver=0.174.0
 pkgrel=1
 pkgdesc='A desktop debugging platform for mobile developers'
 arch=('x86_64')
@@ -22,7 +22,7 @@ noextract=("${pkgname}-${pkgver}.zip")
 source=("${pkgname}-${pkgver}.zip::https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip"
         'LICENSE::https://raw.githubusercontent.com/facebook/flipper/master/LICENSE'
         'icon.png::https://camo.githubusercontent.com/673adcb9028e5675877b9682e437869e36b5687a/68747470733a2f2f6662666c69707065722e636f6d2f696d672f69636f6e2e706e67')
-sha256sums=('a93b222246c7cfef6c282fe9faea4b2e1d86a31865f74b7fed514675af39df1b'
+sha256sums=('a8847d4102e656deee35536bcdc41845e4277fa4343f966de6048eb896efa34a'
             'da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93'
             '336377e7d4fd4340f3c6ad8b7c6e4dcfe36c27b667bf82c2aa18526a6ced3834')
 
