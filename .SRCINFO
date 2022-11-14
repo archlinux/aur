@@ -1,0 +1,16 @@
+pkgbase = python-gruut-lang-en
+	pkgdesc = English language files for gruut tokenizer/phonemizer
+	pkgver = 2.0.0
+	pkgrel = 00
+	url = https://github.com/rhasspy/gruut
+	arch = any
+	license = MIT
+	depends = python
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/76/c5/9dcb07bb44c7c66f89bdfb554d433c071ef7fed38d39d164716901db12b1/gruut_lang_en-2.0.0.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = ff94d26b11e273588cb86dfcfd331e47
+	md5sums = e18d31df63b289d2da1347a16b85d383
+
+pkgname = python-gruut-lang-en
