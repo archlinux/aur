@@ -1,6 +1,6 @@
 pkgbase = efifs-git
 	pkgdesc = Standalone EFI file system drivers (git version)
-	pkgver = 1.8.r1.ge44d7c6
+	pkgver = 1.9.r0.g3ac43bb
 	pkgrel = 1
 	url = https://efi.akeo.ie/
 	arch = any

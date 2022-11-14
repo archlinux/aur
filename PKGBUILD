@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=efifs-git
-pkgver=1.8.r1.ge44d7c6
+pkgver=1.9.r0.g3ac43bb
 pkgrel=1
 pkgdesc='Standalone EFI file system drivers (git version)'
 arch=('any')
@@ -22,7 +22,7 @@ prepare() {
     git -C efifs submodule init
     git -C efifs config --local submodule.grub.url "${srcdir}/grub"
     git -C efifs config --local submodule.gnu-efi.url "${srcdir}/gnu-efi"
-    git -C efifs submodule update
+    git -C efifs -c protocol.file.allow='always' submodule update
     
     patch -d efifs/grub -Np1 -i "${srcdir}/efifs/0001-GRUB-fixes.patch"
     
