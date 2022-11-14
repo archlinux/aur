@@ -1,7 +1,7 @@
 pkgbase = vidcutter-git
 	pkgdesc = A modern and fast media cutter and joiner
 	pkgver = 6.0.5.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://vidcutter.ozmartians.com
 	install = vidcutter-git.install
 	arch = x86_64
