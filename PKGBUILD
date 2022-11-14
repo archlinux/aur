@@ -1,4 +1,4 @@
-# Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
+# Maintainer: parov0z <andrey.android7890@gmail.com>
 
 # https://gitlab.manjaro.org/packages/core/linux515
 #

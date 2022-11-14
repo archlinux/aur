@@ -28,7 +28,7 @@ pkgbase = linux-manjaro-xanmod
 	sha256sums = SKIP
 	sha256sums = ac005da87d858425fb21046d9f77a54274d232793d9f4de913e1395dddffc0b9
 	sha256sums = 5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30
-	sha256sums = 9182982ca2ee138f84d00e974ea0661f2bf8be6f58ccc160fea8b325733cab91
+	sha256sums = f4fda1fba4066cfbbaa5f54ca30f514c6029a9c3c3252f3c4781000b7f8c4df1
 
 pkgname = linux-manjaro-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support). Ashmem and binder are enabled
