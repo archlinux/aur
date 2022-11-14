@@ -1,11 +1,12 @@
-# Author: Prism019 <derektutaj at gmail dot com>
+# Author: Hedge Berg <hedgeberg at gmail dot com>
+# Contributor: Prism019 <derektutaj at gmail dot com>
 # Original Maintainer: WoefulDerelict <WoefulDerelict at GMail dot com>
 
 pkgname=ladish-py3-no-gui-git
 srcname=ladish
 pkgver=1
 pkgrel=2
-pkgdesc="Session management system for JACK. (No gladish)"
+pkgdesc="Session management system for JACK, now built with Python 3 (No gladish)"
 arch=('x86_64')
 url="https://github.com/LADI/ladish"
 license=('GPL2')

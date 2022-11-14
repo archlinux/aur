@@ -1,5 +1,5 @@
-pkgbase = ladish-no-gui
-	pkgdesc = Session management system for JACK. (No gladish)
+pkgbase = ladish-py3-no-gui-git
+	pkgdesc = Session management system for JACK, now built with Python 3 (No gladish)
 	pkgver = 1
 	pkgrel = 2
 	url = https://github.com/LADI/ladish
@@ -8,18 +8,17 @@ pkgbase = ladish-no-gui
 	makedepends = intltool
 	depends = dbus-glib
 	depends = jack
-	depends = python2
+	depends = python
 	optdepends = a2jmidid: a2jmidid proxy
 	provides = lash
 	provides = ladish
 	conflicts = lash
 	conflicts = ladish
-	source = https://github.com/LADI/ladish/archive/ladish-1.tar.gz
+	source = git+https://github.com/LADI/ladish.git
 	source = ladish_conf.diff
 	source = ladish_no_gui.diff
-	sha512sums = b01e24cd79c2711139c9d46c9bff4687049c3a735562a7f48a387103eec25c0222e935b90fb4eb2d3fc24629e417dab0c5aac215cbbca659ac49a2e802d1fd10
+	sha512sums = SKIP
 	sha512sums = 8a5a937614a35ecfd1855e9fbe6325b86871a662cd771993eaae89f9b95b229469d939675284ef530cfc38acbfa2b674d094400b0aa793cbbf1fdce119fa4fae
-	sha512sums = bec88ee9334a5a5ffd697bc52b81b12135d553c3b1130be856168a4142a902a8b690d5e30db3ee87a9aaae079a88c15f06314c4a3e72118fca2bfdf3eaf27dc6
+	sha512sums = c56404f44b8927b9b5b1b70d4fc375fde52fe145a40813efaf8f6a1eac853a5343de3767e55438eb167bda29d1166d1cbbf7f16a4cbd1fd7949a8b99648983e0
 
-pkgname = ladish-no-gui
-
+pkgname = ladish-py3-no-gui-git
