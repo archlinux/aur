@@ -6,7 +6,7 @@ _module="$_name"
 pkgname=("python-$_module")
 pkgdesc="Python package with reference library to get information from solar inverters"
 pkgver="0.9.01"
-pkgrel=2
+pkgrel=3
 url="https://github.com/jblance/mpp-solar"
 license=('MIT')
 arch=('any')
@@ -24,12 +24,17 @@ build() {
   python setup.py build
 }
 
-package_python-mpp-solar(){
-  cd "$_name-$pkgver"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-  install --mode 644 -D docs/service/mpp-solar.service "$pkgdir/etc/systemd/user/mpp-solar.service"
-  install --mode 644 -D docs/service/mpp-solar.conf.example "$pkgdir/etc/mpp-solar/mpp-solar.conf"
-  install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+package() {
+  cd mpp-solar-$pkgver
+  python setup.py install --root="$pkgdir" --skip-build --optimize=1
+  install -d "${pkgdir}/usr/share/doc/${pkgname}/service"
+  install -d "${pkgdir}"/usr/lib/systemd/system
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -m 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -m 644 docs/{MQTT_Influx_Grafana,README,configfile,hardware,interface,service-README,troubleshooting,usage}.md "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -m 644 docs/service/{jkbms.conf,mpp-solar.conf}.example "${pkgdir}/usr/share/doc/${pkgname}/service/"
+  install -Dm 644 docs/service/{mpp-solar,jkbms}.service "${pkgdir}"/usr/lib/systemd/system/
 }
 
 # vim: ts=2 sw=2 et

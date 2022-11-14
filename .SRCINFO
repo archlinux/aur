@@ -1,7 +1,7 @@
 pkgbase = python-mpp-solar
 	pkgdesc = Python package with reference library to get information from solar inverters
 	pkgver = 0.9.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jblance/mpp-solar
 	arch = any
 	license = MIT
