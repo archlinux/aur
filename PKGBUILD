@@ -23,20 +23,20 @@ source=(https://downloads.sourceforge.net/project/slim.berlios/slim-$pkgver-them
         https://downloads.sourceforge.net/project/slim.berlios/slim-zenwalk.tar.gz
         https://downloads.sourceforge.net/project/slim.berlios/slim-archlinux-simple.tar.gz
         https://downloads.sourceforge.net/project/slim.berlios/slim-debian-moreblue.tar.bz2)
-md5sums=('fd1295d3a260849790dc17081da4a34f'
-         'c0cef9e7b95bdf2df3fb303d155f8476'
-         '2981627a5822a535f3ebd0e21dba9f76'
-         '34696aef39fad7092c80ccf7a38886a5'
-         '6fe38013c6eed67dead507616667ae9a'
-         '6e846e8adafa70a7bd0e22d5bd06dc5f'
-         '631a00eb27c09b0daa50b88bd9606d07'
-         '337876e05b2bdf4bd657d114464ad46a'
-         'fde18fb892bccc383c93fb7ed07fbe84'
-         '8417022e369be012f1b7a4ee04edf0f9'
-         'c727aab888dde774acc04403c84b5b3b'
-         '7a0bd7a0736794e638668769b9c4c745'
-         '7c7aaa255561444a4ae3e9f1dfb4be5d'
-         '5f3818e01b0593d0e576fcd7e2c6bafa')
+sha256sums=('244b7326157eee947348ce4b48a1d62587600affaded9bc4ad4199a2d6f1825b'
+            'f7d662e37068a6c64cbf910adf3c192f1b50724baa427a8c9487cb9f7ed95851'
+            '48b703f84ce7b814cda0824f65cafebf695cd71a14166b481bb44616097d3144'
+            '0092d531540f9da8ef07ad173e527c4ef9c088d04962d142be3c11f0c5c0c5e9'
+            '1543eb45e4d664377e0dd4f7f954aba005823034ba9692624398b3d58be87d76'
+            '1f2a69f8fc0dc8ed8eb86a4c1d1087ba7be486973fb81efab52a63c661d726f8'
+            'd83e3afdb05be50cff7da037bb31208b2c152539d1a009740b13857f5f910072'
+            '0b123706ccb67e94f626c183530ec5732b209bab155bc661d6a3f5cd5ee39511'
+            'fd60a434496ed39b968ffa1e5457b36cd12f64a4e2ecedffc675f97ca3f3bba1'
+            '0205568e3e157973b113a83b26d8829ce9962a85ef7eb8a33d3ae2f3f9292253'
+            'be75676da5bf8670daa48379bb9cc1be0b9a5faa09adbea967dfd7125320b959'
+            'f0f41d17ea505b0aa96a036e978fabaf673a51d3f81a919cb0d43364d4bc7a57'
+            '7d60d6782fa86302646fe67253467c04692d247f89bdbe87178f690f32b270db'
+            '5b76929827d4a4d604ddca4f42668cca3309b6f7bd659901021c6f49d6d2c481')
 
 package() {
   cd "${srcdir}"
