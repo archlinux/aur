@@ -111,6 +111,6 @@ package() {
 	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
 	install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
 	
-	# remove unused scripts
-	rm -rf "$pkgdir"/usr/lib/plymouth/plymouth-{generate,populate}-initrd
+	# actually, these scripts are used by dracut...
+	# rm -rf "$pkgdir"/usr/lib/plymouth/plymouth-{generate,populate}-initrd
 }
