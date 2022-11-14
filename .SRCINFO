@@ -1,0 +1,14 @@
+pkgbase = orbitfight
+	pkgdesc = A game in C++ written with SFML, very in-development
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/Ilya246/orbitfight
+	arch = x86_64
+	license = GPL3
+	makedepends = sfml
+	makedepends = gendesk
+	depends = ttf-hack
+	source = git+https://github.com/Ilya246/orbitfight.git#tag=0.8.1
+	sha256sums = SKIP
+
+pkgname = orbitfight
