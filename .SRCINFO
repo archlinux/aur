@@ -1,12 +1,12 @@
 pkgbase = amdctl
 	pkgdesc = Tool for changing voltages and clock speeds for AMD processors
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://github.com/kevinlekiller/amdctl
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = amdctl-0.10.tar.gz::https://github.com/kevinlekiller/amdctl/archive/refs/tags/v0.10.tar.gz
-	md5sums = 7a2a2071d4e3e6e658599c7e44783c78
+	source = amdctl-0.11.tar.gz::https://github.com/kevinlekiller/amdctl/archive/refs/tags/v0.11.tar.gz
+	md5sums = 43f10949d9fee3e6f50968f281938e44
 
 pkgname = amdctl

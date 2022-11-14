@@ -1,6 +1,6 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=amdctl
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Tool for changing voltages and clock speeds for AMD processors"
 url="https://github.com/kevinlekiller/amdctl"
@@ -11,7 +11,7 @@ makedepends=()
 conflicts=()
 provides=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kevinlekiller/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('7a2a2071d4e3e6e658599c7e44783c78')
+md5sums=('43f10949d9fee3e6f50968f281938e44')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
