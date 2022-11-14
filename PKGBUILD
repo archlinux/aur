@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=avm
-pkgver=3.0.0rc1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'yasm' 'perl')
 provides=('libaom.so')
 conflicts=('aom')
 BUILDENV+=('!check')
-source=("git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v${pkgver/rc/-rc}"
+source=("git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v${pkgver}"
         'git+https://github.com/tensorflow/tensorflow.git')
 sha256sums=('SKIP'
             'SKIP')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 prepare() {
     git -C avm submodule init
     git -C avm config --local submodule.third_party/tensorflow.url "${srcdir}/tensorflow"
-    git -C avm submodule update
+    git -C avm -c protocol.file.allow='always' submodule update
 }
 
 build() {
