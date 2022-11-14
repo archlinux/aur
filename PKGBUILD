@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-psutil' 'python-suntime' 'python-systemd' 'python-pyqt6' 'pyside6' 'qt6-positioning')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.2.0.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.2.1.zip")
 sha256sums=('b1f0704c47c58b70e1fb0987e393e140c0dcf74b1dc669e5b3c1a8ce2f8b70c6')
 
 package() {
