@@ -1,7 +1,7 @@
 pkgbase = zluda
-	pkgdesc = A drop-in replacement for CUDA on Intel GPUs
+	pkgdesc = A drop-in replacement for CUDA on Intel Skylake/Gen9 or newer GPUs
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vosen/ZLUDA/
 	arch = x86_64
 	license = Apache
@@ -21,4 +21,3 @@ pkgbase = zluda
 	sha256sums = SKIP
 
 pkgname = zluda
-

@@ -2,8 +2,8 @@
 
 pkgname=zluda
 pkgver=2
-pkgrel=2
-pkgdesc='A drop-in replacement for CUDA on Intel GPUs'
+pkgrel=3
+pkgdesc='A drop-in replacement for CUDA on Intel Skylake/Gen9 or newer GPUs'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
 license=('Apache' 'MIT')
@@ -21,7 +21,7 @@ prepare() {
     git -C ZLUDA submodule init
     git -C ZLUDA config --local submodule.ext/spirv-tools.url "${srcdir}/SPIRV-Tools"
     git -C ZLUDA config --local submodule.ext/spirv-headers.url "${srcdir}/SPIRV-Headers"
-    git -C ZLUDA submodule update
+    git -C ZLUDA -c protocol.file.allow='always' submodule update
     cargo fetch --manifest-path='ZLUDA/Cargo.toml'
 }
 
