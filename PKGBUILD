@@ -84,8 +84,7 @@ package()
     declare _links
     _links="$(echo "${_list}" | grep "^l")"
     _links="$(echo "${_links}" | tr -s " ")"
-    declare -r _to_remove
-    _to_remove=$(echo "${_links}" | cut -d " " -f 9)
+    declare -r _to_remove="$(echo "${_links}" | cut -d " " -f 9)"
     # shellcheck disable=SC2086
     rm -r ${_to_remove}
 
