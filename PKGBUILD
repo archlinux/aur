@@ -2,7 +2,7 @@
 
 _pkgnamebase=cppfront
 pkgname=${_pkgnamebase}-git
-pkgver=r264.8d5c9b7
+pkgver=r303.b1754db
 pkgrel=1
 pkgdesc="Experimental and incomplete compiler for proposed C++ 'syntax 2'"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${_pkgnamebase}/source/"
-    g++ cppfront.cpp -o cppfront -std=c++20
+    g++ ${CXXFLAGS} cppfront.cpp -o cppfront -std=c++20
 }
 
 package() {

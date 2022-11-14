@@ -1,6 +1,6 @@
 pkgbase = cppfront-git
 	pkgdesc = Experimental and incomplete compiler for proposed C++ 'syntax 2'
-	pkgver = r264.8d5c9b7
+	pkgver = r303.b1754db
 	pkgrel = 1
 	url = https://github.com/hsutter/cppfront
 	arch = x86_64
