@@ -1,10 +1,11 @@
 pkgbase = python-buildlog-consultant
 	pkgdesc = Build log parser and analyser
 	pkgver = 0.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jelmer/buildlog-consultant
 	arch = any
 	license = GPL2
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
