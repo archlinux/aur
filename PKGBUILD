@@ -2,7 +2,7 @@
 
 pkgname=ctrlr
 pkgver=5.4.16
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Control any midi enabled hardware: synthesizers, drum machines, samplers, effects.  Create custom user interfaces.  Host them as VST or AU plugins in your favorite daws."
 arch=('x86_64')
@@ -42,7 +42,7 @@ package() {
 	# Create symbolic link libbfd-2.24-system.so, used by Ctrlr,
 	# to the last version of libbfd.so
 	CTRLR_LIBBFD_LINK="libbfd-2.24-system.so"
-	LIBBFD_PATH=$(ls /usr/lib/libbfd-?.??.so | sort -r | head -n1)
+	LIBBFD_PATH=$(ls /usr/lib/libbfd-?.??*.so | sort -r | head -n1)
 	LIBBFD_NAME=$(basename ${LIBBFD_PATH})
 	ln -s "${LIBBFD_NAME}" "${LIBPATH}/${CTRLR_LIBBFD_LINK}"
 }

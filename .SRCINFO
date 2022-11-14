@@ -1,7 +1,7 @@
 pkgbase = ctrlr
 	pkgdesc = Control any midi enabled hardware: synthesizers, drum machines, samplers, effects. Create custom user interfaces. Host them as VST or AU plugins in your favorite daws.
 	pkgver = 5.4.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ctrlr.org
 	arch = x86_64
 	groups = pro-audio
