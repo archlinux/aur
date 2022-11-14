@@ -1,6 +1,6 @@
 # Maintainer: Namaku1801 <namaku1801@gmail.com>
 pkgname=deno-bin
-pkgver=1.27.2
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="A modern runtime for JavaScript and TypeScript."
 arch=('x86_64' 'aarch64')
