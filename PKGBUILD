@@ -1,7 +1,7 @@
 # Maintainer: Abheek Dhawan <abheekd at protonmail dot com>
 
 pkgname="wwise-audio-tools-git"
-pkgver=0.8.0.r3.g7ad7a49
+pkgver=0.8.1.r0.gbb94fda
 pkgrel=1
 pkgdesc="Tools for working with Wwise file types"
 arch=("x86_64")
