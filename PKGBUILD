@@ -7,7 +7,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.11
+pkgver=4.2.12
 secp256k1ver=0.20.9
 pkgrel=1
 url='http://www.electroncash.org/'
@@ -60,12 +60,14 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
-sha256sums=('bb83d805e2f21816cea8f3a431f32b79fb6f5b98523083ccd48091b3fcc4d2f2'
+sha256sums=('566ad3ef041240f306cffac75f36f32ff3205b46030ce6110de4c4ceda9b386f'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
 
 prepare() {
   rmdir "Electron-Cash-${pkgver}/contrib/secp256k1"
   ln -s "${PWD}/secp256k1-${secp256k1ver}" "Electron-Cash-${pkgver}/contrib/secp256k1"
+
+  sed -i 's/py\.test/pytest/'  "Electron-Cash-${pkgver}/tox.ini"
 }
 
 build() {
