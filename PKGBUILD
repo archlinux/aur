@@ -2,7 +2,7 @@
 pkgname=exam-terminal
 pkgdesc="Terminal/console based exam, test, or quiz tool for educators and learners"
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/ismet55555/${pkgname}"
 license=('Apache')
@@ -29,6 +29,6 @@ package() {
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  ln -s "${site_packages}/${_base/-/_}-${pkgver}.dist-info/LICENSE" \
+  ln -s "${site_packages}/${pkgname/-/_}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

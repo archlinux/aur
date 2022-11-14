@@ -1,7 +1,7 @@
 pkgbase = exam-terminal
 	pkgdesc = Terminal/console based exam, test, or quiz tool for educators and learners
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ismet55555/exam-terminal
 	arch = any
 	license = Apache
