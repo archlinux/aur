@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}"
+	gendesk -f --pkgname "${pkgname}" --pkgdesc "${pkgdesc}"
 }
 
 build() {
