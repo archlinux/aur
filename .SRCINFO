@@ -1,0 +1,22 @@
+pkgbase = r-table1
+	pkgdesc = Tables of Descriptive Statistics in HTML
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=table1
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = r>=3.5.0
+	depends = r-Formula
+	depends = r-knitr
+	depends = r-htmltools
+	depends = r-yaml
+	optdepends = r-MatchIt
+	optdepends = r-rmarkdown
+	optdepends = r-printr
+	optdepends = r-kableExtra
+	optdepends = r-flextable
+	source = https://cran.r-project.org/src/contrib/table1_1.4.2.tar.gz
+	sha256sums = 64c18c98ffc782ac4ed760e535a4634780679447e0fb25b931d3256ea42d88b3
+
+pkgname = r-table1
