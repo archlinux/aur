@@ -4,18 +4,17 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=22.02.122.r94.g4bd41a35
+_pkgname=plymouth
+pkgver=22.02.122.r100.g29fa684c
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libdrm' 'freetype2' 'systemd')
-makedepends=('git' 'docbook-xsl' 'pango')
-optdepends=('cantarell-fonts: For true type font support'
-        'xf86-video-fbdev: Support special graphic cards on early startup'
-        'pango: to use pango instead of freetype2 as the label plugin')
+depends=('libdrm' 'systemd' 'pango' 'cantarell-fonts' 'ttf-dejavu')
+makedepends=('git' 'docbook-xsl' 'meson')
+optdepends=('xf86-video-fbdev: Support special graphic cards on early startup')
 provides=('plymouth')
 conflicts=('plymouth')
 backup=('etc/plymouth/plymouthd.conf')
@@ -45,72 +44,60 @@ sha256sums=('SKIP'
             'c39f526f7e99173bc8f012900f53257537a25e2d8c19e23df630f1fe9a7627ba'
             '3b17ed58b59a4b60d904c60bba52bae7ad685aa8273f6ceaae08a15870c0a9eb'
             '2a80e2cad8de428358647677afa166219589d3338c5f94838146c804a29e2769'
-            'e7225fc47b4947d27e346ddc90c6dfb8a12cc2d6c4ec2a5fdb2e6429dc81a8dd'
-            '5b0aa9cccdccb7b8d39452ce7b7244b11b51e548d3b381fde183f73b1e4e354b'
+            'c63ba9be00b2cba11fbd8c7b5914032dac18c0cd099e42374e1e4329335ccbad'
+            'e4255956d64b11b771b891b7c7af234eb9f5a29e06b84f8d27f8096ef9c60fac'
             'dec28b86ddea93704f8479d33e08f81cd7ff4ccaad57e9053c23bd046db2278a'
             '74908ba59cea53c6a9ab67bb6dec1de1616f3851a0fd89bb3c157a1c54e6633a'
             '71d34351b4313da01e1ceeb082d9776599974ce143c87e93f0a465f342a74fd2')
 
 pkgver() {
-  cd plymouth
+  cd $_pkgname
   git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
-	cd plymouth
+	cd $_pkgname
 	patch -p1 -i $srcdir/plymouth-update-initrd.patch
 	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
 	patch -p1 -i $srcdir/plymouthd.conf.patch
 }
 
 build() {
-	cd plymouth
+  local meson_options=(
+    -D logo="/usr/share/plymouth/arch-logo.png"
+    -D background-color=0x000000
+    -D background-start-color-stop=0x000000
+    -D background-end-color-stop=0x4D4D4D
+    -D gtk=disabled
+  )
 
-	LDFLAGS="$LDFLAGS -ludev" ./autogen.sh \
-		--prefix=/usr \
-		--exec-prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--libdir=/usr/lib \
-		--libexecdir=/usr/lib \
-		--sbindir=/usr/bin \
-		--enable-systemd-integration \
-		--enable-drm \
-		--enable-tracing \
-		--enable-pango \
-		--enable-gtk=no \
-		--with-release-file=/etc/os-release \
-		--with-logo=/usr/share/plymouth/arch-logo.png \
-		--with-background-color=0x000000 \
-		--with-background-start-color-stop=0x000000 \
-		--with-background-end-color-stop=0x4D4D4D \
-		--without-rhgb-compat-link \
-		--without-system-root-install \
-		--runstatedir=/run
+  arch-meson $_pkgname build "${meson_options[@]}"
+  meson compile -C build
+}
 
-	make
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd plymouth
+  install -Dm644 "$srcdir/arch-logo.png" "$pkgdir/usr/share/plymouth/arch-logo.png"
 
-	make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir/plymouth.encrypt_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth-encrypt"
+  install -Dm644 "$srcdir/plymouth.encrypt_install" "$pkgdir/usr/lib/initcpio/install/plymouth-encrypt"
+  install -Dm644 "$srcdir/plymouth.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth"
+  install -Dm644 "$srcdir/plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/plymouth"
+  install -Dm644 "$srcdir/sd-plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/sd-plymouth"
 
-	install -Dm644 "$srcdir/arch-logo.png" "$pkgdir/usr/share/plymouth/arch-logo.png"
+  for i in {sddm,lxdm,lightdm}-plymouth.service; do
+    install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
+  done
 
-	install -Dm644 "$srcdir/plymouth.encrypt_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth-encrypt"
-	install -Dm644 "$srcdir/plymouth.encrypt_install" "$pkgdir/usr/lib/initcpio/install/plymouth-encrypt"
-	install -Dm644 "$srcdir/plymouth.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth"
-	install -Dm644 "$srcdir/plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/plymouth"
-	install -Dm644 "$srcdir/sd-plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/sd-plymouth"
-
-	for i in {sddm,lxdm,lightdm}-plymouth.service; do
-		install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
-	done
-
-	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
-	install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
+  install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
 	
-	# actually, these scripts are used by dracut...
-	# rm -rf "$pkgdir"/usr/lib/plymouth/plymouth-{generate,populate}-initrd
+  # actually, these scripts are used by dracut...
+  # rm -rf "$pkgdir"/usr/lib/plymouth/plymouth-{generate,populate}-initrd
+  
+  meson install -C build --destdir "$pkgdir"
+
+  install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
 }

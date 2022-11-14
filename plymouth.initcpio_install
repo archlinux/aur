@@ -30,18 +30,14 @@ build() {
 	add_file ${DATADIR}/plymouthd.defaults
 	
 	add_binary ${PLYMOUTH_PLUGIN_PATH}/label-freetype.so
-	if [ -f "/usr/bin/pango-view" ]; then
-	  add_binary ${PLYMOUTH_PLUGIN_PATH}/label-pango.so
-	fi
+	add_binary ${PLYMOUTH_PLUGIN_PATH}/label-pango.so
 	add_file "/etc/fonts/fonts.conf"
 	add_file "${FONT}"
 	add_symlink "/usr/share/fonts/Plymouth.ttf" "${FONT}"
-	
-	if [ -f "/usr/share/fonts/cantarell/Cantarell-VF.otf" ]; then
-	  add_file "/usr/share/fonts/cantarell/Cantarell-VF.otf"
-	  add_symlink "/usr/share/fonts/cantarell/Cantarell-Thin.otf" "/usr/share/fonts/cantarell/Cantarell-VF.otf"
-	  add_symlink "/usr/share/fonts/cantarell/Cantarell-Regular.otf" "/usr/share/fonts/cantarell/Cantarell-VF.otf"
-	fi	
+	add_file "/usr/share/fonts/cantarell/Cantarell-VF.otf"
+	add_symlink "/usr/share/fonts/cantarell/Cantarell-Thin.otf" "/usr/share/fonts/cantarell/Cantarell-VF.otf"
+	add_symlink "/usr/share/fonts/cantarell/Cantarell-Regular.otf" "/usr/share/fonts/cantarell/Cantarell-VF.otf"
+	add_file "/usr/share/fonts/TTF/DejaVuSans.ttf"
 	if [ -f "/etc/fonts/conf.d/60-latin.conf" ]; then
 	  add_file "/etc/fonts/conf.d/60-latin.conf"
 	fi
