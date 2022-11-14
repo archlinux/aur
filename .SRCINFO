@@ -1,7 +1,7 @@
 pkgbase = xsudo-git
 	pkgdesc = A script to run GUI applications with pkexec
-	pkgver = v1.0.1
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://gitlab.com/davisrichard437/xsudo
 	arch = any
 	license = MIT

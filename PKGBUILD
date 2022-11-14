@@ -1,7 +1,7 @@
 # Maintainer: Richard Davis < davisrichard437 at gmail dot com >
 pkgname='xsudo-git'
-pkgver=v1.0.1
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc='A script to run GUI applications with pkexec'
 arch=('any')
 url='https://gitlab.com/davisrichard437/xsudo'
@@ -19,7 +19,7 @@ prepare() {
 
 pkgver() {
     cd "$srcdir/xsudo/"
-    git describe | sed 's/-/_/g'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/_/g'
 }
 
 package() {
