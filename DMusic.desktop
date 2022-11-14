@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=DMusic Яндекс Музыка
+GenericName=Music player
+GenericName[ru]=Музыкальный проигрыватель Яндекс Музыка
+Comment= Yandex.Music client / music player
+Comment[ru]=Яндекс Музыка клиент
+Icon=/usr/share/DMusic/app.svg
+Exec=/usr/bin/dmusic
+Categories=AudioVideo;
+Terminal=false
+X-AppImage-Version=0.0.0
+Keywords[ru]=музыка;яндекс; плеер
+Keywords=music;yandex;player
+
+SingleMainWindow=true
