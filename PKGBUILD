@@ -1,18 +1,17 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ruff
-pkgver=0.0.86
+pkgver=0.0.118
 pkgrel=1
 pkgdesc='Experimental Python linter written in Rust'
 arch=('x86_64')
 url="https://github.com/charliermarsh/ruff"
 license=('MIT')
-depends=('gcc-libs')
-optdepends=('python>=3.7')
-makedepends=('maturin' 'python-installer' 'python-wheel')
+depends=('python>=3.7')
+makedepends=('maturin' 'python-installer')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('b96aca791d0eef857f631514e96f5c1ebaf729c009865271a32717bb635013a8')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f885eabd1c06866a74ad4b9d11bfa352006249daf73d283c938be9fe80cf5edd')
 
 prepare() {
 	cd "$pkgname-$pkgver"
