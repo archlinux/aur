@@ -11,7 +11,7 @@ license=('GPL')
 depends=('qt6-svg' 'libpulse' 'gnuradio-osmosdr' 'libxkbcommon-x11')
 makedepends=('boost' 'cmake' 'spdlog')
 source=("$pkgname-$pkgver.tgz::https://github.com/gqrx-sdr/gqrx/archive/v$pkgver.tar.gz")
-md5sums=('8c22b0e66b109ac7ea89de6537663298')
+sha256sums=('4a826b468b2fb38a59cbe1f1b566e62c3114509186a7a25ba27dc92833f3eb44')
 
 prepare() {
   cd "$srcdir/gqrx-$pkgver"
