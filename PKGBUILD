@@ -14,7 +14,7 @@ makedepends=('python-build'
              'python-setuptools-scm'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mdshw5/pyfaidx/archive/v$pkgver.tar.gz")
-sha1sums=('7b60727b1fbc318b01cb98e7375badce6230a393')
+sha1sums=('0f9f582249396522714546c739c7df0b0244e23d')
 
 build() {
     cd "$srcdir/pyfaidx-$pkgver"
