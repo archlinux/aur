@@ -2,7 +2,7 @@
 
 pkgname=karlender
 _app_id=codes.loers.Karlender
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An apative GTK-4 calendar app."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'libnotify')
 makedepends=('cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('804b21d5b24c71856f25f42adc95d7b5ea075eaffa6c3dbb82bb31afa86eecb7ec3d110247261759335ba36b03b4a67ebe6bb61a58bd23803b0dd5514fa8f506')
+b2sums=('8b004c301da7133afe9911e04fd5f182ce61c5e0ae0086a5e6c660b15f571fc36aa0fa4c533cb30f08f20efc24a2e84bf16d139c7dea5c466e7086a4aa55dddd')
 
 build() {
   cd "$pkgname-v$pkgver"
