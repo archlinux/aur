@@ -1,12 +1,12 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-git
-pkgver=5.15.0.r5275.g92640829ad
+pkgver=6.0.0_r58826.g6fa2ee7f4a
 pkgrel=1
-_commit=9edfb7a1b5
-arch=(x86_64)
+arch=($CARCH)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
@@ -22,15 +22,16 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'freetds: MS SQL driver'
             'gtk3: GTK platform plugin'
             'perl: for fixqt4headers and syncqt')
-conflicts=(qt6-base)
-provides=(qt6-base)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 groups=(qt6)
 source=(git+https://code.qt.io/qt/qtbase.git#branch=dev)
 sha256sums=('SKIP')
 
 pkgver() {
   cd qtbase
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
