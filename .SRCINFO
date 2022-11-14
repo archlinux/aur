@@ -1,20 +1,15 @@
 pkgbase = zlib-ng
-	pkgdesc = zlib replacement with optimizations for "next generation" systems
+	pkgdesc = zlib replacement with optimizations for 'next generation' systems
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zlib-ng/zlib-ng
 	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
-	license = zlib
+	license = custom:zlib
 	makedepends = cmake
 	depends = glibc
-	provides = zlib=1.2.11
-	conflicts = zlib
-	source = https://github.com/zlib-ng/zlib-ng/archive/2.0.6.zip
-	sha256sums = cb8af7677e5f3bd9e56a6b1c384d9c17bf3d44aeb3c0523453f00772185b337a
+	options = staticlibs
+	source = zlib-ng-2.0.6-src.tar.gz::https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.0.6.tar.gz
+	sha256sums = 8258b75a72303b661a238047cb348203d88d9dddf85d480ed885f375916fcab6
 
 pkgname = zlib-ng
