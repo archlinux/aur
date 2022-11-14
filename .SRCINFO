@@ -1,0 +1,26 @@
+pkgbase = python-tts-say
+	pkgdesc = echo but with TTS.
+	pkgver = 2.2.52
+	pkgrel = 00
+	url = https://gitlab.com/waser-technologies/technologies/say
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-num2words
+	depends = python-pydub
+	depends = python-python-shell
+	depends = python-simpleaudio
+	depends = python-tts
+	depends = python-sanic
+	depends = python-numpy
+	depends = python-toml
+	depends = python-psutil
+	noextract = tts_say-2.2.52-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/82/05/c1f07012da768cf99ca1d859cf6c660987423a43f8c009b75a8ce9051a2a/tts_say-2.2.52-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 9e55523a572ff65664c777f0578c44ca
+	md5sums = 9741c346eef56131163e13b9db1241b3
+
+pkgname = python-tts-say
