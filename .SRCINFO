@@ -1,7 +1,7 @@
 pkgbase = kongress
 	pkgdesc = Companion application for conferences
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 22.09
+	pkgrel = 1
 	url = https://github.com/KDE/kongress
 	arch = x86_64
 	license = BSD
@@ -23,8 +23,7 @@ pkgbase = kongress
 	depends = kdbusaddons
 	depends = ki18n
 	depends = knotifications
-	source = https://github.com/KDE/kongress/archive/v1.0.tar.gz
-	sha256sums = da8527d0bb0b9fe3d58b1dac8a251046e3ad29eaef6212f6f6aa5f984c6592a3
+	source = https://github.com/KDE/kongress/archive/v22.09.tar.gz
+	sha256sums = 24f1ff4a52b74dc1ade852154016d95d3ed7e81f74ed2a3d123b5acef045dd37
 
 pkgname = kongress
-
