@@ -1,6 +1,6 @@
 pkgbase = ryusak-bin
-	pkgdesc = Allows you to download saves and shaders for Switch emulators. Continuation of emusak
-	pkgver = 1.4.3
+	pkgdesc = Allows you to download saves and shaders for Switch emulators.
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Ecks1337/RyuSAK
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ryusak-bin
 	depends = nss
 	depends = gtk3
 	conflicts = emusak-bin
-	source = https://github.com/Ecks1337/RyuSAK/releases/download/v1.4.3/ryusak_1.4.3_amd64.deb
-	sha256sums = 7c1fa250bbe63fac10c3375a2c04606884f389b7195da037ed6b10b2a2e10b83
+	source = https://github.com/Ecks1337/RyuSAK/releases/download/v1.5.0/ryusak_1.5.0_amd64.deb
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = ryusak-bin
