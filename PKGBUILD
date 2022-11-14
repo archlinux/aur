@@ -2,13 +2,13 @@
 pkgname=python-fpdf2
 _name=${pkgname#python-}
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple PDF generation for Python'
 arch=(any)
 url='https://pyfpdf.github.io/fpdf2/'
 license=(LGPL3)
 conflicts=('python-fpdf')
-depends=('python' 'python-pillow' 'python-defusedxml')
+depends=('python' 'python-pillow' 'python-defusedxml' 'python-fonttools')
 makedepends=('python-setuptools')
 optdepends=('python-svg.path')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
