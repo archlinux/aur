@@ -3,11 +3,13 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.5.r107.g15a997520
+pkgver=4.0.5.r120.gd5b3cfe64
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
-depends=("sdl2" "sdl2_net" "libpulse" "glew" "libpng")
+_depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
+_depends_soh_otr_exporter=("libpng")
+depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu")
 source=("git+${url}.git"
         "git+https://github.com/kenix3/libultraship.git"
@@ -20,9 +22,10 @@ sha256sums=('SKIP'
             'SKIP'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
-            'dacfc829eb2427f8d33525a0782159b161d4325c71c063185169e64abe88b575'
+            '8b4a4bb6bdbb68cf1adfbb2c28a42a9597d7927c0c68cf31d8d69a8e32459477'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f'
             '3e9090d6e64929383290264822ee29313d028606fad1a14900623241159d3fd7')
+noextract=("assets-headers-gc_nmq_pal_f.tar.xz")
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -73,14 +76,13 @@ prepare() {
     # $ cd ../soh
     # $ ../../../remove-unneeded-asset-defines.py
     # $ cd ..
-    # $ git ls-files -o -i --exclude-standard soh | XZ_OPT=-e9 tar -c -J -T - -f ../../assets-headers-gc_nmq_pal_f.tar.xz
+    # $ find soh/assets -name \*.h | XZ_OPT=-e9 tar -c -J -T - -f ../../assets-headers-gc_nmq_pal_f.tar.xz
     #
     # Make sure to regenerate source checksums after recreating the archive
   fi
 
   patch -Np1 -i "${srcdir}/soh-use-appbasedir.patch"
   patch -Np1 -i "${srcdir}/lus-install-paths.patch"
-  echo "#cmakedefine SHIP_INSTALL_PATH \"@SHIP_INSTALL_PATH@\"" > libultraship/src/install_config.h.in
 }
 
 build() {
@@ -107,7 +109,7 @@ package_soh-git() {
   pkgdesc="A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch"
   provides=("soh")
   conflicts=("soh")
-  depends=("sdl2" "sdl2_net" "libpulse" "glew")
+  depends=("${_depends_soh[@]}")
   license=("unknown")
   install=soh.install
 
@@ -126,7 +128,7 @@ package_soh-otr-exporter-git() {
   provides=("soh-otr-exporter")
   conflicts=("soh-otr-exporter")
   license=("MIT")
-  depends=("libpng")
+  depends=("${_depends_soh_otr_exporter[@]}")
   optdepends=("zenity: OTRGui file chooser"
               "kdialog: OTRGui file chooser (KDE)")
 

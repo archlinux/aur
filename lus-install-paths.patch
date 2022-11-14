@@ -34,7 +34,7 @@ index e1af64e..18a45f4 100644
  )
  
 diff --git a/libultraship/src/core/Window.cpp b/libultraship/src/core/Window.cpp
-index 315615d..e547bd7 100644
+index 083654b..2ec2584 100644
 --- a/libultraship/src/core/Window.cpp
 +++ b/libultraship/src/core/Window.cpp
 @@ -39,6 +39,7 @@
@@ -56,7 +56,7 @@ index 315615d..e547bd7 100644
      if (mappingsAdded >= 0) {
          SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
      } else {
-@@ -332,15 +333,34 @@ std::string Window::GetAppDirectoryPath() {
+@@ -330,15 +331,34 @@ std::string Window::GetAppDirectoryPath() {
      char* fpath = std::getenv("SHIP_HOME");
      if (fpath != NULL)
          return std::string(fpath);
@@ -92,7 +92,7 @@ index 315615d..e547bd7 100644
      gfx_start_frame();
  }
 diff --git a/libultraship/src/core/Window.h b/libultraship/src/core/Window.h
-index 90b34ce..1b13435 100644
+index dc8359c..ac7c77a 100644
 --- a/libultraship/src/core/Window.h
 +++ b/libultraship/src/core/Window.h
 @@ -21,7 +21,9 @@ class Window {
@@ -105,3 +105,10 @@ index 90b34ce..1b13435 100644
  
      Window(std::string Name);
      ~Window();
+diff --git a/libultraship/src/install_config.h.in b/libultraship/src/install_config.h.in
+new file mode 100644
+index 0000000..e734934
+--- /dev/null
++++ b/libultraship/src/install_config.h.in
+@@ -0,0 +1 @@
++#cmakedefine SHIP_INSTALL_PATH "@SHIP_INSTALL_PATH@"
