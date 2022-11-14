@@ -2,7 +2,7 @@
 
 pkgname=python-xtarfile
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wrapper around tarfile to add support for more compression formats'
 arch=('any')
 url=https://github.com/ascoderu/xtarfile
@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd xtarfile-$pkgver
-  python setup.py test
+  python -m unittest discover -vs .
 }
 
 package() {
