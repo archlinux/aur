@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _pkgname="matomo"
+readonly _pkgname="matomo"
 declare -r _tag="866da57b5acc69037c82ee147848d16b0b5248ef"
 
 pkgname="matomo-git"
