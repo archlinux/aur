@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=cernlib
 pkgver=2022.11.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A large collection of CERN libraries and tools for high energy physics, e.g. PAW and GEANT 3.21."
 arch=('x86_64' 'i686')
 url="https://cernlib.web.cern.ch/index.html"
@@ -26,4 +26,5 @@ package() {
         cd "$srcdir/cernlib-cernlib-$pkgver"
         cd build
 	DESTDIR="$pkgdir/" cmake --install . --prefix=/usr
+        rm $pkgdir/usr/include/cfortran.h  ## TODO: conflicts with ROOT
 }
