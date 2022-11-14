@@ -1,0 +1,107 @@
+diff --git a/libultraship/src/CMakeLists.txt b/libultraship/src/CMakeLists.txt
+index e1af64e..18a45f4 100644
+--- a/libultraship/src/CMakeLists.txt
++++ b/libultraship/src/CMakeLists.txt
+@@ -6,6 +6,11 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+ use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
+ endif()
+ 
++if (NOT CMAKE_INSTALL_PREFIX STREQUAL "" AND NOT SHIP_INSTALL_PATH)
++set(SHIP_INSTALL_PATH "${CMAKE_INSTALL_PREFIX}")
++endif()
++
++
+ #=================== Audio ===================
+ 
+ set(Source_Files__Audio
+@@ -83,7 +88,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
+ 
+ #=================== Core ===================
+ 
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/install_config.h.in ${CMAKE_BINARY_DIR}/install_config.h @ONLY)
++
+ set(Source_Files__Core
++    ${CMAKE_BINARY_DIR}/install_config.h
+     ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.h
+     ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.cpp
+ )
+@@ -341,6 +349,7 @@ target_sources(libultraship PRIVATE ${Source_Files__Lib__stb})
+ target_include_directories(libultraship
+     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern
+             ${CMAKE_CURRENT_SOURCE_DIR}/graphic/Fast3D/U64/PR
++            ${CMAKE_BINARY_DIR}
+     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../extern/spdlog/include ${CMAKE_CURRENT_SOURCE_DIR}/../extern/stb
+ )
+ 
+diff --git a/libultraship/src/core/Window.cpp b/libultraship/src/core/Window.cpp
+index 315615d..e547bd7 100644
+--- a/libultraship/src/core/Window.cpp
++++ b/libultraship/src/core/Window.cpp
+@@ -39,6 +39,7 @@
+ #elif defined(__WIIU__)
+ #include "port/wiiu/WiiUImpl.h"
+ #endif
++#include "install_config.h"
+ 
+ #define LOAD_TEX(texPath) \
+     static_cast<Ship::Texture*>(Ship::Window::GetInstance()->GetResourceManager()->LoadResource(texPath).get());
+@@ -58,8 +59,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
+     }
+ 
+ #ifndef __SWITCH__
+-    const char* controllerDb = "gamecontrollerdb.txt";
+-    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
++    std::string controllerDb = Ship::Window::GetPathRelativeToAppBaseDirectory("gamecontrollerdb.txt");
++    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
+     if (mappingsAdded >= 0) {
+         SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
+     } else {
+@@ -332,15 +333,34 @@ std::string Window::GetAppDirectoryPath() {
+     char* fpath = std::getenv("SHIP_HOME");
+     if (fpath != NULL)
+         return std::string(fpath);
++
++    fpath = SDL_GetPrefPath(NULL, "soh");
++    if (fpath != NULL) {
++        std::string ret(fpath);
++        SDL_free(fpath);
++        return ret;
++    }
+ #endif
+ 
+     return ".";
+ }
+ 
++std::string Window::GetAppBaseDirectoryPath() {
++#ifdef SHIP_INSTALL_PATH
++    return SHIP_INSTALL_PATH;
++#else
++    return GetAppDirectoryPath();
++#endif
++}
++
+ std::string Window::GetPathRelativeToAppDirectory(const char* path) {
+     return GetAppDirectoryPath() + "/" + path;
+ }
+ 
++std::string Window::GetPathRelativeToAppBaseDirectory(const char* path) {
++    return GetAppBaseDirectoryPath() + "/" + path;
++}
++
+ void Window::StartFrame() {
+     gfx_start_frame();
+ }
+diff --git a/libultraship/src/core/Window.h b/libultraship/src/core/Window.h
+index 90b34ce..1b13435 100644
+--- a/libultraship/src/core/Window.h
++++ b/libultraship/src/core/Window.h
+@@ -21,7 +21,9 @@ class Window {
+     static std::shared_ptr<Window> CreateInstance(const std::string name, const std::vector<std::string>& otrFiles = {},
+                                                   const std::unordered_set<uint32_t>& validHashes = {});
+     static std::string GetAppDirectoryPath();
++    static std::string GetAppBaseDirectoryPath();
+     static std::string GetPathRelativeToAppDirectory(const char* path);
++    static std::string GetPathRelativeToAppBaseDirectory(const char* path);
+ 
+     Window(std::string Name);
+     ~Window();
