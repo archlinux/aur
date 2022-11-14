@@ -1,7 +1,7 @@
 pkgbase = gromit-mpx
 	pkgdesc = On-screen annotation tool
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bk138/gromit-mpx/
 	arch = x86_64
 	license = GPL

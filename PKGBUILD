@@ -2,7 +2,7 @@
 
 pkgname=gromit-mpx
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='On-screen annotation tool'
 arch=('x86_64')
 url='https://github.com/bk138/gromit-mpx/'
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 prepare() {
     git -C gromit-mpx submodule init
     git -C gromit-mpx config --local submodule.flatpak/shared-modules.url "${srcdir}/flatpak-shared-modules"
-    git -C gromit-mpx submodule update
+    git -C gromit-mpx -c protocol.file.allow='always' submodule update
 }
 
 build() {
