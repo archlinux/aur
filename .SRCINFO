@@ -1,6 +1,6 @@
 pkgbase = python-cstruct
 	pkgdesc = C-style structs for Python
-	pkgver = 3.3
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/andreax79/python-cstruct
 	changelog = changelog.txt
@@ -12,9 +12,7 @@ pkgbase = python-cstruct
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = python-cstruct-3.3.tar.gz::https://github.com/andreax79/python-cstruct/archive/v3.3.tar.gz
-	source = exclude-tests.patch
-	sha256sums = edfa9dd96b2512a4d7cd24842b9234ba32a60a65e15e08f7dbfca35836ea81e3
-	sha256sums = 50c62f343cdb71381bf5f5e9e71fe75bab9f5b1a4d810855265f3a4c35036569
+	source = python-cstruct-5.0.tar.gz::https://github.com/andreax79/python-cstruct/archive/v5.0.tar.gz
+	sha256sums = 7e929b879b9ebdac49bce16e170499180a7273bf381393da27a46bcdefea3fc7
 
 pkgname = python-cstruct

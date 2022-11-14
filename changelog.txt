@@ -46,7 +46,7 @@
 
 - compatibiliy fix
 
-### 1.6
+## 1.6
 
 2017-12-12
 
@@ -54,7 +54,7 @@
 
 - fixed size of 64-bit integers, they now have 64 bits, not 32
 
-### 1.7
+## 1.7
 
 2018-03-14
 
@@ -62,7 +62,7 @@
 
 - add support for // comments
 
-### 1.8
+## 1.8
 
 2018-10-30
 
@@ -75,7 +75,7 @@
 - fix Python 2.5 support in main module
 - examples fix
 
-### 1.9
+## 1.9
 
 2019-07-09
 
@@ -88,7 +88,7 @@
 - flexible array parsing
 - union initial support
 
-### 2.0
+## 2.0
 
 2020-04-11
 
@@ -96,7 +96,7 @@
 
 - drop Python 2 support
 
-### 2.1
+## 2.1
 
 2020-10-09
 
@@ -106,7 +106,7 @@
 - Python 3.9 support
 - Github workfows
 
-### 2.2
+## 2.2
 
 2022-08-23
 
@@ -120,7 +120,7 @@
 - pytest
 - black code style
 
-### 2.3
+## 2.3
 
 2022-09-01
 
@@ -128,7 +128,7 @@
 
 - Fix compare with None
 
-### 3.0
+## 3.0
 
 2022-09-05
 
@@ -136,7 +136,7 @@
 
 - Flexible array support
 
-### 3.1
+## 3.1
 
 2022-09-13
 
@@ -144,7 +144,7 @@
 
 - Make CStruct/MemCStruct Pickle Friendly
 
-### 3.2
+## 3.2
 
 2022-10-23
 
@@ -152,7 +152,7 @@
 
 - Fix padding tests on 32bit architectures
 
-### 3.3
+## 3.3
 
 2022-10-24
 
@@ -163,3 +163,30 @@
 ### Fix
 
 - Fix padding tests on 32bit architectures
+
+## 4.0
+
+2022-11-01
+
+### Added
+
+- Add support for nameless inline struct
+
+### Improved
+
+- Python 3.11 support
+
+## 5.0
+
+2022-11-12
+
+### Added
+
+- Add support for enums
+- Add support for multiple definition to cstruct.parse
+- Add inspect method
+
+### Improved
+
+- Documentation and examples
+- Restructure setup
