@@ -1,9 +1,9 @@
 # Maintainer: BasedUser <route@baseduser.eu.org>
-# Contributor: Egor Vorontsov <sdoregor@sdore.me>
+# Co-maintainer: Egor Vorontsov <sdoregor@sdore.me>
 
 pkgname=orbitfight
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A game in C++ written with SFML, very in-development"
 arch=('x86_64')
 url="https://github.com/Ilya246/${pkgname}"
@@ -28,7 +28,12 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -Dm755 "${pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm755 "${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
+	install -d "${pkgdir}/usr/lib/${pkgname}/assets"
+	ln -s "/usr/share/fonts/TTF/Hack-Regular.ttf" "${pkgdir}/usr/lib/${pkgname}/assets/font.ttf"
+
+	install -d "${pkgdir}/usr/bin"
+	ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
 
 	install -Dm644 'SERVERS.md' -t "${pkgdir}/usr/share/${pkgname}/"
 
