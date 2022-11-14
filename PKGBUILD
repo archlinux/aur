@@ -32,6 +32,11 @@ build() {
   cd "server-$pkgver"
   (
     cd ui
+
+    if node --help | grep -q -- "--openssl-legacy-provider"; then
+      export NODE_OPTIONS=--openssl-legacy-provider
+    fi
+
     yarn --frozen-lockfile
     NODE_ENV=production yarn --frozen-lockfile build
   )
