@@ -2,7 +2,7 @@
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=kvazaar-git
-pkgver=2.1.0.r63.g96b00ff5
+pkgver=2.1.0.r133.ga4005046
 pkgrel=1
 pkgdesc='An open-source HEVC encoder (git version)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 prepare() {
     git -C kvazaar submodule init
     git -C kvazaar config --local submodule.greatest.url "${srcdir}/greatest"
-    git -C kvazaar submodule update
+    git -C kvazaar -c protocol.file.allow='always' submodule update
     autoreconf -fi kvazaar
 }
 
