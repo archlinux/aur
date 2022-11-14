@@ -2,7 +2,8 @@
 
 _pkgname=xfce4-windowck-plugin
 pkgname=${_pkgname}-xfwm4-theme-support
-pkgver=0.4.5+125+gcef4f71
+epoch=1
+pkgver=0.4.5+139+g23d3432
 pkgrel=1
 pkgdesc="Xfce panel plugin for displaying window title and buttons (xfwm4 theme support reenabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +14,7 @@ makedepends=('intltool' 'xfce4-dev-tools' 'python' 'imagemagick' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 options=('!libtool')
-source=("${_pkgname}::git+${url}")
+source=("${_pkgname}::git+${url}#branch=xfwm-support")
 sha256sums=('SKIP')
 
 pkgver() {

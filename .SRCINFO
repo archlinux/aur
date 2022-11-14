@@ -1,7 +1,8 @@
 pkgbase = xfce4-windowck-plugin-xfwm4-theme-support
 	pkgdesc = Xfce panel plugin for displaying window title and buttons (xfwm4 theme support reenabled)
-	pkgver = 0.4.5+125+gcef4f71
+	pkgver = 0.4.5+139+g23d3432
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/twa022/xfce4-windowck-plugin
 	arch = i686
 	arch = x86_64
@@ -18,7 +19,7 @@ pkgbase = xfce4-windowck-plugin-xfwm4-theme-support
 	provides = xfce4-windowck-plugin=0.4.5
 	conflicts = xfce4-windowck-plugin
 	options = !libtool
-	source = xfce4-windowck-plugin::git+https://github.com/twa022/xfce4-windowck-plugin
+	source = xfce4-windowck-plugin::git+https://github.com/twa022/xfce4-windowck-plugin#branch=xfwm-support
 	sha256sums = SKIP
 
 pkgname = xfce4-windowck-plugin-xfwm4-theme-support
