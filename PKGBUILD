@@ -1,7 +1,7 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=nickvision-tube-converter
-pkgver=2022.11.0
-pkgrel=3
+pkgver=2022.11.1
+pkgrel=1
 pkgdesc="An easy-to-use YouTube video downloader"
 arch=(x86_64)
 url="https://github.com/nlogozzo/NickvisionTubeConverter"
