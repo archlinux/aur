@@ -1,0 +1,21 @@
+diff --git a/mrbuild/Makefile.common.footer b/mrbuild/Makefile.common.footer
+index e1ec16ef..0ea76434 100644
+--- a/mrbuild/Makefile.common.footer
++++ b/mrbuild/Makefile.common.footer
+@@ -256,16 +256,7 @@ PY3_MODULE_PATH := $(shell python3  -c "from distutils.sysconfig import get_pyth
+ $(if $(PY3_MODULE_PATH),,$(error "Couldn't find the python3 module path!"))
+ endif
+ 
+-USE_DEBIAN_PATHS := $(wildcard /etc/debian_version)
+-ifneq (,$(USE_DEBIAN_PATHS))
+-  # we're a debian-ish box, use the multiarch dir
+-  DEB_HOST_MULTIARCH := $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
+-  USRLIB             := usr/lib/$(DEB_HOST_MULTIARCH)
+-else
+-  # we're something else. Do what CentOS does.
+-  # If /usr/lib64 exists, use that. Otherwise /usr/lib
+-  USRLIB := $(if $(wildcard /usr/lib64),usr/lib64,usr/lib)
+-endif
++USRLIB := /usr/lib
+ 
+ endif
