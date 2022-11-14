@@ -4,7 +4,7 @@ _get() {
 }
 
 pkgname=lapce-nightly-bin
-pkgver=20220912
+pkgver=$(date -d $(_get published_at) +%Y%m%d)
 pkgrel=1
 pkgdesc='Lightning-fast and powerful code editor'
 arch=(x86_64)
@@ -30,11 +30,6 @@ sha256sums=(
     'SKIP'
     'SKIP'
 )
-
-pkgver() {
-    date -d $(_get published_at) +%Y%m%d
-    #"Lapce/lapce" -V | cut -d - -f 2
-}
 
 prepare() {
     sed -i dev.lapce.lapce.desktop \
