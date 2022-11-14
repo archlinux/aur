@@ -1,12 +1,12 @@
 pkgbase = keepass-keetheme
 	pkgdesc = A plugin that provides a dark theme for keepass
-	pkgver = 0.9.12
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/xatupal/KeeTheme
 	arch = x86_64
 	license = MIT
 	depends = keepass
-	source = https://github.com/xatupal/KeeTheme/releases/download/v0.9.12/KeeTheme.plgx
-	sha256sums = ed7c6b07a300189b7edc4cd5ce54b1ed73ab95618e9512a1e36699bf1b8e66b8
+	source = https://github.com/xatupal/KeeTheme/releases/download/v0.10.0/KeeTheme.plgx
+	sha256sums = 56136b3fc96d6100935bac9a67e67b44eda3056749b8f40cf897cba534f5afd1
 
 pkgname = keepass-keetheme
