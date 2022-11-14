@@ -1,13 +1,13 @@
 pkgbase = ocaml-pcre
 	pkgdesc = Perl compatible regular expressions for OCaml
 	pkgver = 7.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mmottl.github.io/pcre-ocaml
 	arch = x86_64
 	license = custom:LGPL2.1 with linking exception
 	makedepends = dune
-	depends = ocaml
 	depends = ocaml-base
+	depends = ocaml-findlib
 	depends = pcre
 	provides = pcre-ocaml
 	conflicts = pcre-ocaml

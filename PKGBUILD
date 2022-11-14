@@ -7,12 +7,12 @@
 
 pkgname=ocaml-pcre
 pkgver=7.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('x86_64')
 url="http://mmottl.github.io/pcre-ocaml"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml' 'ocaml-base' 'pcre')
+depends=('ocaml-base' 'ocaml-findlib' 'pcre')
 makedepends=('dune')
 provides=('pcre-ocaml')
 replaces=('pcre-ocaml')
@@ -24,21 +24,16 @@ sha256sums=('671142f40b6d86171cbc067253faadf903019161d57488bd0fb6c5456c2cbd1a')
 build() {
     cd "${srcdir}/pcre-${pkgver}"
 
+    export OCAMLPATH="$(ocamlfind printconf destdir)"
     dune build @install
 }
 
 package() {
     cd "${srcdir}/pcre-${pkgver}"
 
-    install -d "${pkgdir}/usr/share/doc"          \
-        "${pkgdir}/usr/share/licenses/${pkgname}" \
-        "${pkgdir}/$(ocamlfind -printconf destdir)"
+    dune install --prefix="/usr" --destdir="${pkgdir}" --libdir="$(ocamlfind printconf destdir)"
 
-    dune install --prefix "${pkgdir}/usr/share" \
-                 --libdir "${pkgdir}$(ocamlfind printconf destdir)"
-
-    mv "${pkgdir}/usr/share/doc/pcre" "${pkgdir}/usr/share/doc/${pkgname}"
-
-    mv "${pkgdir}/usr/share/doc/${pkgname}/LICENSE.md" \
-       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/doc/pcre/LICENSE.md"
+    mv "${pkgdir}/usr/doc/pcre" "${pkgdir}/usr/doc/${pkgname}"
+    mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share"
 }
