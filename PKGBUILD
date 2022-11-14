@@ -1,7 +1,7 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
-pkgver=469c_rc4
-pkgrel=3
+pkgver=469c
+pkgrel=1
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/game/unreal_tournament_goty"
@@ -12,13 +12,13 @@ depends=('lib32-libgl'
          'lib32-sdl')
 makedepends=('innoextract')
 source=("setup_ut_goty.exe::gogdownloader://unreal_tournament_goty/en1installer0"
-        "OldUnreal-UTPatch-Linux-amd64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c-rc4/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2"
+        "OldUnreal-UTPatch-Linux-amd64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469c/OldUnreal-UTPatch469c-Linux-amd64.tar.bz2"
         "gog-unreal-tournament-goty.desktop"
         "fallback_dlagent.sh")
 noextract=("OldUnreal-UTPatch469c-Linux-amd64.tar.bz2")
 sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
-            "32929372ec4ca540897553320e6d245a0ec395afc51ecbdff295b5dbb8235dff"
-            "60a0211a47a4d1b2c6b31da4ecd4848fcb3338dc06430599969c77dc6a5d87e0"
+            "4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9"
+            "4c507f98e74b3f6aa87cc1d8e48750afd4f0b33078337d5406efd0e46d256600"
             "518a904603b3971eb516d0c5198031345dd2d3b5e6d87d12e02dccfe169a9505")
 
 # If you want to use lgogdownloader add the following to /etc/makepkg.conf
@@ -52,7 +52,7 @@ package() {
 
   # symlink game binary which is located in /opt
   ln --symbolic \
-    "/opt/gog/${pkgname#gog-}/System64/ut-bin" \
+    "/opt/gog/${pkgname#gog-}/System64/ut-bin-amd64" \
     "${pkgdir}/usr/bin/${pkgname}"
 
   # install desktop entry and license document
