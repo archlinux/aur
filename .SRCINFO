@@ -1,0 +1,25 @@
+pkgbase = python-gruut
+	pkgdesc = A tokenizer, text cleaner, and phonemizer for many human languages.
+	pkgver = 2.3.4
+	pkgrel = 00
+	url = https://github.com/rhasspy/gruut
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-babel
+	depends = python-dateparser
+	depends = python-gruut-ipa
+	depends = python-gruut-lang-en
+	depends = python-jsonlines
+	depends = python-networkx
+	depends = python-num2words
+	depends = python-numpy
+	depends = python-python-crfsuite
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/4c/74/40e0bff02cf4daa3908c440e2111b20490c82080259f0114d0cfe07ce126/gruut-2.3.4.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 1f4e426132a083c1add08e7fc34aa1c2
+	md5sums = e18d31df63b289d2da1347a16b85d383
+
+pkgname = python-gruut
