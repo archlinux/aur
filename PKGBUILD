@@ -2,7 +2,7 @@
 # Maintainer: Patrick Klein <patrick@libklein.com>
 
 pkgname=gurobi
-pkgver=9.5.2
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
@@ -16,11 +16,11 @@ optdepends=(
   'matlab: MATLAB programming interface support, versions 2008b onwards'
 )
 source=(
-    "https://packages.gurobi.com/${pkgver:0:3}/gurobi${pkgver}_linux64.tar.gz"
+    "https://packages.gurobi.com/${pkgver:0:4}/gurobi${pkgver}_linux64.tar.gz"
   "gurobi.sh"
   "gurobi_setup.m"
 )
-md5sums=('6ea20f2f21a1779c2c2701a16030ed89'
+md5sums=('b9bde94fdc5037e51a36a7f5dd56a199'
          '1f34712dbc8df686d987b6bf129811fd'
          'fde2cef01f075e2d28188576a2639b34')
 
