@@ -3,14 +3,14 @@
 pkgname=cpcec-gtk
 pkgver=1.5
 _tag=20220104
-pkgrel=1
+pkgrel=2
 pkgdesc="An Amstrad CPC / Plus / GX-4000 emulator"
 url="https://gitlab.com/norecess464/cpcec-gtk"
 license=('custom')
 arch=('x86_64')
 depends=('sdl2' 'gtk3')
 makedepends=('git')
-source=("${pkgname}-${pkgver}::git+https://gitlab.com/norecess464/cpcec-gtk#tag=v${pkgver}-${_tag}"
+source=("${pkgname}-${pkgver}::git+https://bitbucket.org/norecess464/cpcec-gtk.git#tag=v${pkgver}-${_tag}"
         cpcec-gtk.mk)
 sha256sums=('SKIP'
             'a2ee410380a74c1fbd4ee6d87ca764e5b2ab07711cee57caa9ec66701f266deb')
