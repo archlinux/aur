@@ -1,7 +1,7 @@
 pkgbase = notes
 	pkgdesc = Note taking application, write down your thoughts
 	pkgver = 2.0.0+2+g5d245d0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.get-notes.com/
 	arch = x86_64
 	license = MPL

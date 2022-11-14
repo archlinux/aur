@@ -3,7 +3,7 @@
 # Contributor: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
 pkgver=2.0.0+2+g5d245d0
-pkgrel=1
+pkgrel=2
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://www.get-notes.com/'
@@ -31,7 +31,7 @@ prepare() {
   git submodule set-url 3rdParty/qautostart "$srcdir/qautostart"
   git submodule set-url 3rdParty/qmarkdowntextedit "$srcdir/qmarkdowntextedit"
   git submodule set-url 3rdParty/QSimpleUpdater "$srcdir/QSimpleUpdater"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
