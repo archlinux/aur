@@ -1,11 +1,11 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=fishnet-git
-pkgver=2.3.4.dev_r1413.g2bae165
+pkgver=2.6.7.dev_r1657.g97e0011
 pkgrel=1
 pkgdesc='Distributed Stockfish analysis for lichess.org'
 arch=($CARCH)
-url='https://github.com/niklasf/fishnet'
+url='https://github.com/lichess-org/fishnet'
 license=(GPL)
 makedepends=(git rust)
 conflicts=(${pkgname%-git})
