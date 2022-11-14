@@ -1,6 +1,6 @@
 pkgbase = bottles-git
 	pkgdesc = Easily manage wineprefix using environments
-	pkgver = 2022.9.28.1.r14.g33d99968
+	pkgver = 2022.11.14.r7.g6dc02256
 	pkgrel = 2
 	epoch = 1
 	url = https://usebottles.com/
@@ -32,6 +32,7 @@ pkgbase = bottles-git
 	depends = python-requests
 	depends = python-steamgriddb
 	depends = python-yaml
+	depends = vkbasalt-cli
 	depends = webkit2gtk
 	depends = wine
 	depends = xorg-xdpyinfo
