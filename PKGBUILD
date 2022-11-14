@@ -22,7 +22,7 @@ md5sums=("$_md5")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  msg2 "Run autoreconf & autoupdate (allows more architecture)"
+  echo "  -> Run autoreconf & autoupdate (allows more architecture)"
   autoreconf -fi
   autoupdate
 }
@@ -30,14 +30,14 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 "Run make"
+  echo "  -> Run make"
 
   ./configure --prefix="$pkgdir/usr"
   make
 
   cd theme
 
-  msg2 "Aliases Bluecurve to Bluecurve8"
+  echo "  -> Aliases Bluecurve to Bluecurve8"
 
   # This is to avoid conflicts with community xcursor-bluecurve package
   mv Bluecurve Bluecurve8
@@ -45,7 +45,7 @@ build() {
   sed -i 's/name="Bluecurve"/name="Bluecurve8"/' Bluecurve8/Bluecurve.cursortheme
   mv Bluecurve8/Bluecurve.cursortheme Bluecurve8/Bluecurve8.cursortheme
 
-  msg2 "Remove now useless Makefiles"
+  echo "  -> Remove now useless Makefiles"
 
   for theme in Bluecurve8 Bluecurve-inverse LBluecurve LBluecurve-inverse; do
     find . -type f -name "Makefile*" -exec rm {} \;
@@ -55,7 +55,7 @@ build() {
 
   cd Bluecurve8
 
-  msg2 "Patch index.theme and symlink.manifest"
+  echo "  -> Patch index.theme and symlink.manifest"
 
   sed -i "s/^Context=FileSystems$/Context=Places/" index.theme
   sed -i "s|^\[\(.*\)/status\]$|[\1/status]\nContext=Status|" index.theme
@@ -240,7 +240,7 @@ build() {
     echo "$size/apps/org.xfce.panel.pager display-capplet.png" >> symlink.manifest
   done
 
-  msg2 "Apply symlink.manifest"
+  echo "  -> Apply symlink.manifest"
 
   cat > read_manifest.py <<PYSCRIPT
 import os
