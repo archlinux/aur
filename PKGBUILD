@@ -129,6 +129,7 @@ _package() {
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
+    rm -rf $pkgdir/usr/lib/python3.10/site-packages/tests
 }
 
 package() { _package; }
