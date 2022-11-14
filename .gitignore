@@ -4,3 +4,5 @@
 !PKGBUILD
 !config.yaml
 !service
+!sysusers
+!tmpfiles
