@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=nspluginwrapper
 pkgver=1.4.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Cross-platform NPAPI compatible plugin viewer"
 arch=('x86_64')
 url="http://nspluginwrapper.davidben.net/"
@@ -15,6 +15,9 @@ source=("https://github.com/davidben/nspluginwrapper/archive/nspluginwrapper-$pk
 md5sums=('f00fbc0cea8c962dfc0de2f11e2ab548'
          '00ca2d1ab0d7348e3157cb7b72f30e1a'
          'd42696fb591d278b1b56002e547f7740')
+sha256sums=('d82cadc076b0d83a192ffed2100138c620f5830e01c96c37ef7e4c54895775a3'
+            '2630d9d8826ac19c1273b645bfe122e751076f9f0e6fd1d8495768ac10dee5e2'
+            'e5744fa6d4a7d2f6414eca6c5f5846321005e60cd4e4fa43ebdc98974c5a44c7')
 
 prepare() {
   cd $pkgname-$pkgname-$pkgver
