@@ -9,7 +9,7 @@
 
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
-pkgver=102.4.0
+pkgver=102.5.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
