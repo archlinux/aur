@@ -1,24 +1,20 @@
 pkgbase = ydotool-git
-	pkgdesc = Generic command-line automation tool (no X!), works on Wayland
-	pkgver = v0.2.0.r11.gb1d041f
+	pkgdesc = Generic command-line automation tool (no X!)
+	pkgver = 0.0.1.r2.g1d5d227
 	pkgrel = 1
 	url = https://github.com/ReimuNotMoe/ydotool
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
-	arch = pentium4
-	license = MIT
-	makedepends = cmake
+	install = ydotool.install
+	arch = any
+	license = AGPL3
 	makedepends = git
-	makedepends = make
-	makedepends = pkg-config
+	makedepends = cmake
+	makedepends = ninja
 	makedepends = scdoc
-	depends = boost-libs
 	provides = ydotool
 	conflicts = ydotool
-	source = ydotool::git+https://github.com/ReimuNotMoe/ydotool.git
+	source = ydotool-git::git+https://github.com/ReimuNotMoe/ydotool.git
+	source = 80-uinput.rules
 	sha256sums = SKIP
+	sha256sums = e839f6a07c79fedea58c3ef3d3ce2370a870ffcc503fc2a64ded9f11d513ef24
 
 pkgname = ydotool-git
-
