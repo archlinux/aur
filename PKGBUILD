@@ -2,7 +2,7 @@
 
 _pkgname=DESeq2
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc="Differential gene expression analysis based on the negative binomial distribution."
 url="https://bioconductor.org/packages/DESeq2"
@@ -14,7 +14,7 @@ depends=('r'
          'r-genomicranges'
          'r-summarizedexperiment')
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${pkgver}.tar.gz")
-sha1sums=('5a2890897a509174af3a95030fc50658cdc8e2fe')
+sha1sums=('d88e0911e5b9ab55345187cf34ee2d86b1651de6')
 
 package() {
     mkdir -p "$pkgdir/usr/lib/R/library"
