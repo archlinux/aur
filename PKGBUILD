@@ -1,6 +1,6 @@
 # Maintainer: Mikhail Swift <mikhail.swift@gmail.com>
 pkgname=lazydocker
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A simple terminal UI for docker and docker-compose, written in Go with the gocui library.'
 arch=('1686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/jesseduffield/lazydocker'
 license=('MIT')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jesseduffield/lazydocker/archive/v${pkgver}.tar.gz")
-sha1sums=('6ab37b992e78b05a04f27e3b8a86da06c86c39cb')
+sha1sums=('50fbb8e35f19dd32047adbba310825d5fd27e460')
 
 build() {
     cd "${pkgname}-${pkgver}"
