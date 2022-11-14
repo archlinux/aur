@@ -5,7 +5,7 @@ pkgname=(
   'duckdb'
   'python-duckdb'
 )
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A high-performance analytical database system'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   'python-wheel'
   'python-setuptools-scm'
 )
-_commit='7c111322de1095436350f95e33c5553b09302165'
+_commit='2213f9c946073a6df1242aa1bc339ee46bd45716'
 source=("$pkgbase::git+https://github.com/duckdb/duckdb.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -41,15 +41,15 @@ prepare() {
   cmake \
     -S "$pkgbase" \
     -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_VISUALIZER_EXTENSION=1 \
-    -DBUILD_ICU_EXTENSION=1 \
-    -DBUILD_TPCH_EXTENSION=1 \
-    -DBUILD_TPCDS_EXTENSION=1 \
-    -DBUILD_FTS_EXTENSION=1 \
-    -DBUILD_HTTPFS_EXTENSION=1 \
-    -DBUILD_PARQUET_EXTENSION=1
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_VISUALIZER_EXTENSION=1 \
+    -D BUILD_ICU_EXTENSION=1 \
+    -D BUILD_TPCH_EXTENSION=1 \
+    -D BUILD_TPCDS_EXTENSION=1 \
+    -D BUILD_FTS_EXTENSION=1 \
+    -D BUILD_HTTPFS_EXTENSION=1 \
+    -D BUILD_PARQUET_EXTENSION=1
 }
 
 build() {
