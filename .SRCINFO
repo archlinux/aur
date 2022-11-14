@@ -1,14 +1,16 @@
 pkgbase = sciplot
 	pkgdesc = C++ scientific plotting library powered by gnuplot
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.2.2
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/sciplot/sciplot/
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = catch2
 	depends = gnuplot
-	source = git+https://github.com/sciplot/sciplot.git#tag=v0.3.1
+	source = git+https://github.com/sciplot/sciplot.git#tag=v0.2.2
 	source = git+https://github.com/allanleal/doxystrap.git
 	source = git+https://github.com/sciplot/gnuplot-palettes.git
 	sha256sums = SKIP
