@@ -14,7 +14,7 @@ depends=('lxappearance-gtk3' 'openbox' 'libobrender.so')
 makedepends=('intltool')
 conflicts=($_pkgname)
 source=(https://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
-md5sums=('ae0076d489aa786f5d573f7ff592a4ab')
+sha256sums=('3150b33b4b7beb71c1803aee2be21c94767d73b70dfc8d2bcaafe2650ea83149')
 
 prepare() {
   cd $_pkgname-$pkgver
