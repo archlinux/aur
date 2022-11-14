@@ -1,0 +1,16 @@
+pkgbase = python-crfsuite
+	pkgdesc = Python binding for CRFsuite
+	pkgver = 0.9.8
+	pkgrel = 00
+	url = https://github.com/scrapinghub/python-crfsuite
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/5b/b9/b6f48d74e10136ccfafbadcae751f3e81d143b40847d0f20728026783834/python-crfsuite-0.9.8.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = fb5f58abfefac542bef40c69bbee1b0a
+	md5sums = 0a36d267a3ece77cbc8ebc95ca7e2edd
+
+pkgname = python-crfsuite
