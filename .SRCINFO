@@ -1,8 +1,8 @@
 pkgbase = unifetch
-	pkgdesc = An unofficial fork of neofetch.
-	pkgver = 1.0.2
-	pkgrel = 3
-	url = https://osdn.net/projects/univalentgnulinux
+	pkgdesc = Show system info, fork of neofetch.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Jin-Asanami/unifetch
 	arch = any
 	license = MIT
 	checkdepends = shellcheck
@@ -20,7 +20,7 @@ pkgbase = unifetch
 	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
 	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
 	conflicts = unifetch
-	source = https://osdn.net/projects/univalentgnulinux/storage/aur/unifetch/unifetch-1.0.2.tar.gz
-	sha512sums = 496266548792658a08d9b3036636f2df4d42f6bf2e0845ec1fa615719ee69aab94e2a5aea3f8d644dc3953bfae2bc32b03c98297888215cf203295768be56f11
+	source = https://osdn.net/projects/univalentgnulinux/storage/aur/unifetch/unifetch-1.1.tar.gz
+	sha512sums = 40c459fd40b4e1f2cf6308af829b571fd62176fb8e4c2bf56cdaadcc43d8505b35c80634204d3c5a43876a05beea9afac3d6661ad54210a687bf2c661c297f2d
 
 pkgname = unifetch

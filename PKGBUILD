@@ -1,10 +1,11 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch
-pkgver=1.0.2
-pkgrel=3
-pkgdesc="An unofficial fork of neofetch."
+pkgver=1.1
+pkgrel=1
+pkgdesc="Show system info, fork of neofetch."
 arch=('any')
-url="https://osdn.net/projects/univalentgnulinux"
+url="https://github.com/Jin-Asanami/unifetch"
+_url="https://osdn.net/projects/univalentgnulinux"
 license=('MIT')
 depends=('bash')
 optdepends=(
@@ -23,8 +24,8 @@ optdepends=(
 )
 checkdepends=('shellcheck')
 conflicts=("${pkgname}")
-source=("${url}/storage/aur/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('496266548792658a08d9b3036636f2df4d42f6bf2e0845ec1fa615719ee69aab94e2a5aea3f8d644dc3953bfae2bc32b03c98297888215cf203295768be56f11')
+source=("${_url}/storage/aur/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('40c459fd40b4e1f2cf6308af829b571fd62176fb8e4c2bf56cdaadcc43d8505b35c80634204d3c5a43876a05beea9afac3d6661ad54210a687bf2c661c297f2d')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
