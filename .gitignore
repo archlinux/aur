@@ -1,0 +1,9 @@
+.BUILDINFO
+.INSTALL
+.PKGINFO
+*.pkg.tar.zst
+repo
+pkg
+src
+TODO
+test-*
