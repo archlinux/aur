@@ -1,23 +1,25 @@
 # Maintainer: Ralph Plawetzki <ralph@purejava.org>
 
 pkgname=seahorse-nautilus-ext
-pkgver=3.11.92+57+g390364d
+pkgver=3.11.92+r96+g0fd324c
 pkgrel=1
+epoch=1
 pkgdesc="PGP encryption and signing for nautilus with configurable extension for encrypted files"
-arch=(x86_64)
 url="https://gitlab.gnome.org/purejava/seahorse-nautilus/tree/encrypt-ext-conf"
+arch=(x86_64)
 license=(GPL)
-depends=(libcryptui nautilus libgnome-keyring)
+depends=(libnautilus-extension gtk3 gcr libcryptui libnotify)
 makedepends=(meson git)
 provides=(seahorse-nautilus)
 conflicts=(seahorse-nautilus)
-_commit=390364db3bb09d7f6e07e3de90c872112584442a  # master
-source=($pkgname::"git+https://gitlab.gnome.org/GNOME/seahorse-nautilus.git#commit=$_commit")
+options=(debug)
+_commit=0fd324c191565bff76ca45a01b2da14b4ab7b3bd  # master
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -27,9 +29,13 @@ prepare() {
 
 build() {
   arch-meson $pkgname build
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  depends+=(libnautilus-extension.so)
+
+  meson install -C build --destdir "$pkgdir"
 }
+
+# vim:set sw=2 sts=-1 et:
