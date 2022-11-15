@@ -1,0 +1,22 @@
+pkgbase = blueberry-wayland
+	pkgdesc = Bluetooth configuration tool - Patched systray for Wayland/AppIndicator support
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/linuxmint/blueberry
+	arch = any
+	license = GPL
+	depends = bluez-tools
+	depends = gnome-bluetooth
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = rfkill
+	depends = xapps
+	provides = blueberry
+	conflicts = blueberry
+	source = https://github.com/linuxmint/blueberry/archive/1.4.8/blueberry-wayland-1.4.8.tar.gz
+	source = wayland.patch
+	sha256sums = 37a5b0bc3c7cbccee625209b9196a2e2966396cfe5c7652318559642fb6a7a32
+	sha256sums = 80edd86b6fb78a21aab128355990ceca40634c52454fae5f63bcf1953b8b2711
+
+pkgname = blueberry-wayland
