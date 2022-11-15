@@ -1,14 +1,14 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: Manuel Hüsers <aur@huesers.de>
 
-pkgname=sublime-text2
+pkgname=sublime-text-2
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sophisticated text editor for code, html and prose (legacy version)"
 arch=('i686' 'x86_64')
 url="https://www.sublimetext.com/2"
 license=('custom: commercial')
 depends=("libpng" "gtk2" "bash" "xdg-utils" "desktop-file-utils" "shared-mime-info")
-conflicts=("sublime-text")
         # EULA file: 'html2text --body-width=80 https://www.sublimetext.com/eula'
 source=("$pkgname-EULA"
         "$pkgname.desktop"
@@ -21,8 +21,8 @@ source=("$pkgname-EULA"
 source_i686=("https://download.sublimetext.com/Sublime%20Text%20${pkgver}.tar.bz2")
 source_x86_64=("https://download.sublimetext.com/Sublime%20Text%20${pkgver}%20x64.tar.bz2")
 sha256sums=('dec26169ec941f1089810b7be599193577d0250f20e465d1399b062f71f2a244'
-            '7a3d0ea23fc0eb8d1e4d322df96a18aab214f8f7ef5808a60f9ad4866c0fc14b'
-            '153cfa48f8f058cba03e30aa39dc90d9b9ab1d07ce9bfb3bceb78b2c699c47e8'
+            'f2815b2b73d81ca83d71956f7f97d3b8d386f9175a612531838e6b9d311c1890'
+            '026acee29d3c7ba4763d6b99df5be8da69991355adfd6027c2ced266f2721c88'
             '1c97a90bc22107e50f04f77a0115f4ec890d5c6a373ac4c560e8fb87259e92de'
             '4196f3c3894f455a78a65170209fc948b01a7448304d8c39bc29d37852b8c73b'
             '0632ea1d588cb7b85dfc2c13444de1682e9d7e61caaf8cce118fc535bc9f4d90'
@@ -54,7 +54,7 @@ package () {
   cp -r "Sublime Text 2" "$pkgdir"/opt/$pkgname
 
   # launcher
-  install -Dm0755 $pkgname.sh "$pkgdir"/usr/bin/subl
+  install -Dm0755 $pkgname.sh "$pkgdir"/usr/bin/subl2
 
   # .desktop file and icons
   install -Dm0644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop

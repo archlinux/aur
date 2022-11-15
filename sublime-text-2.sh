@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ST=/opt/sublime-text2
+ST=/opt/sublime-text-2
 
 # needed for .desktop launcher
 ARGS="--class=sublime_text"
