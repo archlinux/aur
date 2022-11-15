@@ -2,22 +2,22 @@
 # Contributor: Philip <philip1731 protonmail ch>
 
 pkgname=qucs-s
-pkgver=0.0.24
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI"
 arch=('x86_64' 'i686')
 url="https://ra3xdh.github.io"
 license=('GPL')
 options=(!makeflags)
-depends=('qt5-base')
-makedepends=('cmake' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool' 'flex' 'bison' 'qt5-tools' 'qt5-script' 'qt5-svg')
+depends=('qt5-svg')
+makedepends=('cmake' 'qt5-tools')
 optdepends=('ngspice: recommended simulation backend'
             'qucs: for Qucsator simulation backend'
-            'freehdl: to permit digital circuit simulation'
-            'asco: to enable circuit optimization'
+            'xyce-serial: a SPICE-compatible simulation backend'
+            'spiceopus: a general purpose simulation backend for optimization loops'
             )
 source=(https://github.com/ra3xdh/qucs_s/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('ba7cf6fb06babbddcbb7d4eae0437df4e36346b7cc39a84af62f1643d7e8f296')
+sha256sums=('fc8d446a52dd4730ccba021df8f8a5331d22e1a26edd5d853c2d16518d32953f')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
