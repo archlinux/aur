@@ -1,14 +1,14 @@
 pkgbase = blastem-hg
-	pkgdesc = Fast and accurate Sega Genesis/Mega Drive emulator
-	pkgver = r2241.48f718126099
+	pkgdesc = Fast and accurate Sega Genesis/Mega Drive emulator (Development build)
+	pkgver = r2242.31fc1186ffbb
 	pkgrel = 1
 	url = https://www.retrodev.com/blastem/
 	arch = x86_64
 	license = GPLv3
+	makedepends = imagemagick
 	makedepends = mercurial
 	makedepends = python-pillow
 	makedepends = vasm
-	makedepends = xcftools
 	depends = sdl2
 	depends = glew
 	provides = blastem
