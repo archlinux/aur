@@ -13,7 +13,7 @@ makedepends=(ruby-native-package-installer rake)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3e709372ae3a9f5712b1ef5f54dd940b2209f422')
+sha256sums=('c6c49fa273285c2e18da8f6b541c86dc8667659efaf76eb78be33e1cd1b93f22')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
