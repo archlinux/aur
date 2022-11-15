@@ -11,7 +11,8 @@ license=('custom:vim')
 depends=('ruby' 'vim')
 groups=('vim-plugins')
 source=("https://www.vim.org/scripts/download_script.php?src_id=$_scriptid" license.txt)
-md5sums=('4ba364a003903ace6fd51ccbe6b86d78' 'cd49910a3dde6fe0a7e24ebe8cbf7066')
+sha256sums=('a0b510431c29e600233c4a7d6a77ad7380d37dcfe862d42811f8258046fba94d'
+            '446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3')
 
 package() {
   cd "$srcdir"
