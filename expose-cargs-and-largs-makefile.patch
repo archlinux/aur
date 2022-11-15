@@ -1,8 +1,6 @@
-diff --git a/Makefile.in b/Makefile.in
-index c6327d2..3355762 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -51,14 +51,22 @@ all: static
+--- Makefile.in-orig	2022-09-28 16:33:19.000000000 +1000
++++ Makefile.in	2022-11-15 21:15:27.002332097 +1100
+@@ -68,14 +68,22 @@
  install: install-clean install-static
  endif
  
@@ -15,16 +13,16 @@ index c6327d2..3355762 100644
 +endif
 +
  static:
--	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr
-+	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr $(CARGS) $(LARGS)
+-	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr ${GPROPTS_EXTRA}
++	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr ${GPROPTS_EXTRA} $(CARGS) $(LARGS)
  
  shared relocatable:
--	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr
-+	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr $(CARGS) $(LARGS)
+-	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr ${GPROPTS_EXTRA}
++	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr ${GPROPTS_EXTRA} $(CARGS) $(LARGS)
  
  static-pic:
--	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr
-+	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr $(CARGS) $(LARGS)
+-	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr ${GPROPTS_EXTRA}
++	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr ${GPROPTS_EXTRA} $(CARGS) $(LARGS)
  
  # Rebuild the tests (and not the XML/Ada code itself)
  test: force

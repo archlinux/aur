@@ -5,8 +5,8 @@
 
 pkgname=xmlada
 epoch=1
-pkgver=22.0.0
-pkgrel=2
+pkgver=23.0.0
+pkgrel=1
 pkgdesc="An XML parser for Ada95"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/xmlada/"
@@ -15,21 +15,23 @@ depends=('gcc-ada')
 makedepends=('gprbuild-bootstrap')
 conflicts=("$pkgname-git")
 
-source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	'expose-cargs-and-largs-makefile.patch'
-)
-sha256sums=('853ed895defd395c0bc96c23a50812168b656b31befc1336f45c5541f2bec06d'
-            '8cf1c7a650a698ec9b7b1c71659be82f7f31a37dbdd8d24636c17ebfb0e7b989')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	'expose-cargs-and-largs-makefile.patch')
 
-prepare() {
+sha256sums=('66245a68f2e391c8dc8dc50d6d5f109eb3b371e261d095d2002dff3927dd5253'
+            '7543e5fa8f2b0b400b937b0b3bb27b46b263a3cd7b17f00f6f9c6b3905729610')
+
+prepare()
+{
     cd "$srcdir/$pkgname-$pkgver"
 
-    patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
+    patch -Np0 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
 }
 
-build() {
+build()
+{
     cd "$srcdir/$pkgname-$pkgver"
+
     ./configure --prefix=/usr --libexecdir=/lib --enable-shared
 
     # Rid flags not used by Ada.
@@ -40,7 +42,8 @@ build() {
     make -j1 GPRBUILD_OPTIONS=-R
 }
 
-package() {
+package()
+{
     cd "$srcdir/$pkgname-$pkgver"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
