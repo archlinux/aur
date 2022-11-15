@@ -1,23 +1,22 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
-# Contributor: Sigitas Mazaliauskas <sigisnn at gmail dot com>
+# Maintainer: Steven Xu <mail@stevendoesstuffs.dev>
+# Contributor: Merell Matlock <mlmatlock@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
+# Contributor: Sigitas Mazaliauskas <sigisnn@gmail.com>
 # Contributor: Lucas Saliés Brum <sistematico@gmail.com>
 
 pkgname=gtkman
-pkgver=1.0
+pkgver=2.3.2
 pkgrel=1
-pkgdesc='Simple GTK+2 manual page viewer'
+pkgdesc='Simple GTK+3 manual page viewer'
 arch=('i686' 'x86_64')
 url='https://github.com/gapan/gtkman'
-license=('GPL')
-depends=('pygtk')
+license=('GPL3')
 makedepends=('txt2tags' 'intltool')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gapan/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('1723d9f578b8ebaf4b375f840dd631c222c08358214e9f258cce543c67b6a397')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gapan/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('0fbd0b238561a5992458e9a1dbe83bd48f6addda51c16ebdde0674eb4240a617')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	sed -i '1s|python|python2|' src/${pkgname}
 }
 
 build() {
@@ -31,4 +30,3 @@ package() {
 
 	make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
-
