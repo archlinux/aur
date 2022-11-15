@@ -24,16 +24,16 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S "${pkgname}" \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_BUILD_TYPE=RelWithDebInfo \
         -D OPENSPADES_RESDIR=/usr/share/$_pkgname/Resources \
         -D OPENSPADES_INSTALL_RESOURCES=share/$_pkgname/Resources \
-        -D OPENSPADES_INSTALL_BINARY=bin .
-  make
+        -D OPENSPADES_INSTALL_BINARY=bin
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
   rm -rf "${pkgdir}/usr/share/menu"
 }
