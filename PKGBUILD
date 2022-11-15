@@ -11,8 +11,8 @@ url='https://www.vim.org/scripts/script.php?script_id=294'
 license=('custom')
 depends=('vim')
 groups=('vim-plugins')
-md5sums=('40bf32ee1da9ea08b65cb107f5181f0f'
-         'b924ab4f0d09585ac4482208cc32bd2f')
+sha256sums=('b8d9ca0de80940157dea4a6531346cf3c43b54b6bcb661a6baac85ac37adf211'
+            '49bbc4c6b0169346d675bbbbca8f11cde565b6b15b5a621e4b45b5e358889262')
 source=("${pkgname}.vbz.gz::https://www.vim.org/scripts/download_script.php?src_id=${_scriptid}"
   'LICENSE')
 
