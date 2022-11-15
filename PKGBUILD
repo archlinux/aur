@@ -15,6 +15,8 @@ source=(https://www.nico.schottelius.org/software/gpm/archives/${_pkgname}-${pkg
         gpm-glibc-2.26.patch)
 sha1sums=('8d9f3655c80ce7667d31ede2a100b44986480369'
           '57d98a5ed864ead76290d32a6899caaed0b55959')
+sha256sums=('a955053b36556ffa7c628ce18fd6de7d625966573fa412fb08869533d8f7385c'
+            '5430d5b43613af325eb50bd7338cca3098bb2d7d62ff01de657a77b5f211bfb7')
 
 prepare() {
   cd $_pkgname-$pkgver
