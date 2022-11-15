@@ -1,6 +1,6 @@
 pkgbase = morgen-bin
 	pkgdesc = Morgen is a modern, intuitive and smart calendar application and successor to MineTime
-	pkgver = 2.5.20
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://morgen.so
 	changelog = ChangeLog
@@ -12,9 +12,9 @@ pkgbase = morgen-bin
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	provides = morgen
-	source = https://download.todesktop.com/210203cqcj00tw1/morgen-2.5.20.deb
+	source = https://download.todesktop.com/210203cqcj00tw1/morgen-2.6.1.deb
 	source = morgen
-	b2sums = a8a68e1445416211f81942e7f4399fe7f896332a2a079777dd538e40204b75e01a630d997511159c14a7569deb947bf6ad4a633528b9b5f239a02b6ccf233170
+	b2sums = 404db3b8ab0e2e986abcc20fbf2f0e3d344f482ccf2d76f9f27423207d65cf9152a89156a3f93664c98263dcbd012cf3975f6e34e5f87e74ba6c846dfaedf417
 	b2sums = ad953f1507c74e71ef2580e8b7c94fe4ea3a77e547f3c459adc7966df84e911fdc35fcf8ca708a28fd42c46999cf395f264333d441da5b4fc7d5644b3779ccdd
 
 pkgname = morgen-bin

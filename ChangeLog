@@ -521,4 +521,15 @@ Fixes:
 Improvements:
 - We improved macOS Ventura compatibility, including a fix to avoid the Login Item notification that was popping up every time Morgen launched.
  
- 
+=== Morgen 2.6.1
+New Features:
+- Now in closed Beta: Team Availability Sharing. You can also elect to share your consolidated availability, based on your availability across all your calendars (personal and professional) with other Morgen users inside and outside your organization. All event details are excluded. If you work in a team and would like early access, you can request to join the closed beta.
+
+
+Fixes:
+- We fixed an issue causing the event merging functionality to turn off.
+
+Improvements:
+- The tray icon on macOS and Linux has been restyled to better fit the system design and now displays the current date.
+-We added guidance when connecting a calendar account to help you choose between "Office 365" and "Outlook / Exchange."
+- General UI improvements.
