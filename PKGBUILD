@@ -5,7 +5,7 @@ pkgname=mssql-server
 pkgver=15.0.4261.1
 _remRevision=2
 _prodver=${pkgver}-${_remRevision}
-pkgrel=3
+pkgrel=4
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
@@ -17,7 +17,7 @@ depends=(
 	'glibc'
 	'libc++'
 	'gdb'
-	'openssl-1.0'
+	'openssl-1.1'
 	'krb5'
 	'nss'
 	'sssd'
@@ -42,9 +42,9 @@ package() {
 	mv $srcdir/opt .
 	mv $srcdir/usr .
 
-	#Create links to libssl1.0.0, libcrypto1.0.0
-	ln -s /lib/libssl.so.1.0.0 $pkgdir/opt/mssql/lib/libssl.so
-	ln -s /lib/libcrypto.so.1.0.0 $pkgdir/opt/mssql/lib/libcrypto.so
+	#Create links to non-breaking libssl and libcrypto libs
+	ln -sf /lib/libssl.so.1.1 $pkgdir/opt/mssql/lib/libssl.so
+	ln -sf /lib/libcrypto.so.1.1 $pkgdir/opt/mssql/lib/libcrypto.so
 
 	#Set systemd service file perms
 	chmod 644 $pkgdir/usr/lib/systemd/system/mssql-server.service
