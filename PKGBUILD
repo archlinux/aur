@@ -10,7 +10,7 @@ url="https://jetmore.org/john/code/${pkgname}/"
 license=('GPL')
 depends=('perl-net-dns' 'perl-net-ssleay')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jetmore/swaks/archive/v$pkgver.tar.gz")
-md5sums=('b8be0de2db7d118ca601375149c84834')
+sha256sums=('600ad03fd4e76b5d90e8b51e7ab572082747c8b6fb718aba04007f63a862b25f')
 
 package() {
   cd "${pkgname}-${pkgver}"
