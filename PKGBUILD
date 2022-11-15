@@ -3,7 +3,7 @@
 BUILDENV+=(!check)
 
 pkgname=nixpacks
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='App source + Nix packages + Docker = Image'
 arch=(x86_64)
@@ -18,7 +18,7 @@ checkdepends=(zig)
 options=('!lto')
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('189a2b78e1d6b9eb62cc80ccadab114b820dc048b6b04e238b5ba180421a77a9')
+sha256sums=('0ed58751085de2edc15993ccff8b669fa7e2e1f7a027da95b8d59318350283e1')
 
 prepare() {
 	cd "$_archive"
