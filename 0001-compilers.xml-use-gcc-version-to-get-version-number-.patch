@@ -19,8 +19,8 @@ index f8909d2..eee25a2 100644
      <name>GCC</name>
      <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc</executable>
      <version>
--      <external>${PREFIX}gcc -v</external>
-+      <external>${PREFIX}gcc --version</external>
+-      <external>$EXEC -v</external>
++      <external>$EXEC --version</external>
        <nogrep regexp="for GNAT Pro"></nogrep>
 -      <grep regexp="^gcc \S+ (\S+)" group="1"></grep>
 +      <grep regexp="^gcc \(GCC\) (\S+)" group="1"></grep>

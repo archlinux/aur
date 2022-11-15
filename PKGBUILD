@@ -6,26 +6,23 @@
 pkgbase=gprbuild
 pkgname=(libgpr gprbuild)
 epoch=1
-pkgver=22.0.0
-pkgrel=2
+pkgver=23.0.0
+pkgrel=1
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3' 'custom')
 makedepends=('gprbuild-bootstrap' 'xmlada')
 
-source=(
-	"$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
         '0001-Makefile-build-relocatable-instead-of-static-binarie.patch'
-        '0002-Makefile-always-use-host-gprinstall.patch'
-        '0001-compilers.xml-use-gcc-version-to-get-version-number-.patch'
-)
-sha256sums=('076e2b6ac0c7170753a6499094a6d30a98698aca2551c6796b3a617dd9ffc704'
-            'cc19437e0982d9af31e09ad7c42eac6a445dac65336bd53d67ba61f630be7f13'
+        '0001-compilers.xml-use-gcc-version-to-get-version-number-.patch')
+
+sha256sums=('141b403ea8a3f82b58b6a8690f8409fe295f3692b667ba3ec487fafcbd26e389'
+            '182d9108c91390ddd67c841e45a3fc9dd23a94b33d4a1f05ed2788c1fb9b7dd2'
             '6ebbea41d4b8b516d0646438338fb228ea907600a2ad2c594bab41a7e1c3680c'
-            'bcb0887eacce9ae609676c1965425847ab4fb27c5a5689f625c1864caeac8ad3'
-            '42c66c412eb2e4949a754d660b04b77395d40d54b26a933ef7c75c5881e94238')
+            'ffa2a18febe9d8c512f81d66a58e73a6bd9f417aa3a8d8acfc1eab2047492569')
 
 prepare() {
     cd "$srcdir/gprconfig_kb-$pkgver"
@@ -35,7 +32,6 @@ prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
 
     patch -Np1 -i "$srcdir/0001-Makefile-build-relocatable-instead-of-static-binarie.patch"
-    patch -Np1 -i "$srcdir/0002-Makefile-always-use-host-gprinstall.patch"
 
     ln -sfT "$srcdir/gprconfig_kb-$pkgver/db/" "share/gprconfig"
 
