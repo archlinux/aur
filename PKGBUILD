@@ -1,7 +1,7 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="nyaash"
-pkgver="1.3.0"
+pkgver="1.4.0"
 pkgrel="1"
 pkgdesc="Simple POSIX shell script to query Nyaa instances."
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('noto-fonts-cjk: chinese, japanese, and korean characters' 'dmenu: d
 license=('GPL')
 url="https://notabug.org/BezierQuadratic/nyaash"
 source=("https://notabug.org/BezierQuadratic/nyaash/archive/$pkgver.tar.gz")
-md5sums=('7db7d53cda3937bf6f0bb4d47dec7f77')
+md5sums=('5b10083f365ae4a6138518e65940862a')
 package(){
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/doc/nyaash
