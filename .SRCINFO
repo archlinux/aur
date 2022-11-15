@@ -1,13 +1,13 @@
 pkgbase = tuxedo-keyboard-tools
 	pkgdesc = Tools for TUXEDO Laptops
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onurbbr/tuxedo-keyboard-tools
 	install = tuxedo-keyboard-tools.install
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
-	depends = tuxedo-keyboard
+	depends = tuxedo-keyboard-dkms
 	depends = sudo
 	depends = libxss
 	provides = tuxedo-keyboard-tools

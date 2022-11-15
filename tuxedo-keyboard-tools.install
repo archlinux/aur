@@ -17,7 +17,7 @@ EOF
 post_remove() {
 	cat << EOF
 
-Please execute after uninstalling kos
+Please execute after uninstalling tuxedo-keyboard-tools
 
   $ sudo systemctl disable tuxedo-keyboard-keep-light-level.service
   $ systemctl --user disable tuxedo-keyboard-idle.service
