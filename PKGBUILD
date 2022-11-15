@@ -24,13 +24,13 @@ sha512sums=('5086081579a1998ac87d3903b22f964961b1e8421d9d314ab3f36f6750a5065f11e
             'a52be36a626a79442c1f34496a1444e8012515f67a8899a34c5a97109a847a6a5d8c87f866c5c6315b87bfe411e902315a64cf93d413d7bf070b819a5f93d828')
 
 prepare() {
-    cd $_pkgname-$pkgver-full
+    cd $_pkgname-v$pkgver-full
     rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
     patch -Np1 --binary -i ../block-sponsored_messages.patch
 }
 
 build() {
-    cd "${srcdir}/$_pkgname-$pkgver-full"
+    cd "${srcdir}/$_pkgname-v$pkgver-full"
     export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     cmake \
         -B build \
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    cd $_pkgname-$pkgver-full
+    cd $_pkgname-v$pkgver-full
     DESTDIR=$pkgdir ninja -C build install
     install -Dm644 /dev/null "$pkgdir/etc/tdesktop/externalupdater"
 }
