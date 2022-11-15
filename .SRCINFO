@@ -1,6 +1,6 @@
 pkgbase = nwg-dock
 	pkgdesc = GTK3-based dock for sway Wayland compositor
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-dock
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nwg-dock
 	provides = nwg-dock
 	conflicts = nwg-dock-git
 	conflicts = nwg-dock-bin
-	source = nwg-dock-0.3.1.tar.gz::https://github.com/nwg-piotr/nwg-dock/archive/v0.3.1.tar.gz
-	md5sums = 91e5277a679ca20c003bd45899f56a7e
+	source = nwg-dock-0.3.2.tar.gz::https://github.com/nwg-piotr/nwg-dock/archive/v0.3.2.tar.gz
+	md5sums = 8cc1132cd764f647849942671f99748f
 
 pkgname = nwg-dock
