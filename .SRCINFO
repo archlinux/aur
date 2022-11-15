@@ -1,0 +1,23 @@
+pkgbase = smiley-sans-bin
+	pkgdesc = 得意黑 Smiley Sans
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/atelier-anchor/smiley-sans
+	arch = any
+	license = OFL
+	source = smiley-sans-v1.0.0.zip::https://github.com/atelier-anchor/smiley-sans/releases/download/v1.0.0/smiley-sans-v1.0.0.zip
+	source = LICENSE::https://github.com/atelier-anchor/smiley-sans/raw/main/LICENSE
+	sha512sums = e233b4af5d95c6c94319d096b612539b37a1c80d05391b684665bb324f60bcdef23f3f9e6a58d721459bf9cc26133463028000a5124a9921cfa0f39f8ed6ff56
+	sha512sums = 94f0ca7615da9f263c6b612c8db0fc969150610514534bbfce2709216261020a072b59f6ce40c7cf3e63a54d29e1997a6aff89c02cf2562e2a8087cce3621489
+
+pkgname = otf-smiley-sans-bin
+	pkgdesc = 得意黑 Smiley Sans (otf)
+	conflicts = otf-smiley-sans
+
+pkgname = ttf-smiley-sans-bin
+	pkgdesc = 得意黑 Smiley Sans (ttf)
+	conflicts = ttf-smiley-sans
+
+pkgname = woff2-smiley-sans-bin
+	pkgdesc = 得意黑 Smiley Sans (woff2)
+	conflicts = woff2-smiley-sans
