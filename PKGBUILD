@@ -12,9 +12,9 @@ depends=('gcc-libs')
 source=("https://downloads.sourceforge.net/${pkgname}/$pkgname-$pkgver.tar.gz"
         0001-Fix-narrowing-conversion-error.patch
         xplc-0.3.13-as-needed.patch)
-md5sums=('39da3270527c8712b8e8fcf03768d29f'
-         '049ca1c475703c52b2e11d06bfb676fc'
-         '308e3b8f7d7f6a7df05699bdcaed9b18')
+sha256sums=('158a0f44a2eb055522377c275bbd0e7412dd3b8a9b75ec344c0457b3a1a29cbb'
+            '13eaf225b33ca26a5152fedd51ca835757fd0f652d36d5428b19670966820074'
+            '8381931466572f4804fa553e8d86d05039d622aa344415c490eab00e0fca7e31')
 
 prepare() {
   cd "$pkgname-$pkgver"
