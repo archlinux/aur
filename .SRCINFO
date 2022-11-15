@@ -1,7 +1,7 @@
 pkgbase = lmath-bin
 	pkgdesc = Proprietary LaTeX based math editor
 	pkgver = r1.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://lehtodigital.fi/lmath/
 	arch = x86_64
 	license = custom

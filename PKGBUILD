@@ -3,7 +3,7 @@
 pkgname=lmath-bin
 _pkgname=${pkgname%-bin}
 pkgver=r1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary LaTeX based math editor"
 arch=('x86_64')
 url="https://lehtodigital.fi/lmath/"
