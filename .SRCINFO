@@ -1,7 +1,7 @@
 pkgbase = megatools
 	pkgdesc = CLI for MEGA
 	pkgver = 1.11.0+20220519
-	pkgrel = 1
+	pkgrel = 2
 	url = https://megatools.megous.com
 	arch = i686
 	arch = x86_64
