@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. Schard <mail at richard dash neumann period de>
 pkgname=color-code
 _repo_name="ansi-${pkgname}c"
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Encode arbitrary bytes to ANSI colors on the console."
 arch=('x86_64')
