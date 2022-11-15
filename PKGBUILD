@@ -21,6 +21,10 @@ _cachy_config=${_cachy_config-'yes'}
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
 _cpusched=${_cpusched-'bore'}
 
+## Apply some suggested sysctl values from the bore developer
+## These are adjusted to BORE
+_tune_bore=${_tune_bore-}
+
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
@@ -144,6 +148,15 @@ _use_llvm_lto=${_use_llvm_lto-}
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
+# ATTENTION!: Really experimental LTO implementation for GCC
+# This can improve the performance of the kernel
+# The performance difference is currently negligible
+# DEBUG and BTF needs to be disabled, otherwise the compilation is failing
+# The Kernel is bigger with GCC LTO due to more inlining
+# More informations:
+# https://lore.kernel.org/lkml/20221114114344.18650-1-jirislaby@kernel.org/T/#md8014ad799b02221b67f33584002d98ede6234eb
+_use_gcc_lto=${_use_gcc_lto-}
+
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
 # scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
@@ -251,9 +264,13 @@ fi
 if [ "$_cpusched" = "pds" ]; then
     source+=("${_patchsource}/sched/0001-prjc-cachy.patch")
 fi
-## BORE Scheduler
+## BORE Scheduler with latency_nice
 if [ "$_cpusched" = "bore" ]; then
     source+=("${_patchsource}/sched/0001-bore-cachy.patch")
+## BORE SYSCTL TUNING
+   if [ -n "$_tune_bore" ]; then
+		source+=("${_patchsource}/misc/0001-bore-tuning-sysctl.patch")
+   fi
 fi
 ## CacULE Scheduler
 if [ "$_cpusched" = "cacule" ]; then
@@ -295,6 +312,12 @@ fi
 ## rt kernel
 if [ -n "$_rtkernel" ]; then
     source+=("${_patchsource}/misc/0001-rt.patch")
+fi
+if [ -n "$_use_gcc_lto" ]; then
+## GCC-LTO Patch
+## Fix for current gcc --enable-default-pie option
+    source+=("${_patchsource}/misc/gcc-lto/0001-gcc-LTO-support-for-the-kernel.patch"
+             "${_patchsource}/misc/gcc-lto/0002-gcc-lto-no-pie.patch")
 fi
 
 export KBUILD_BUILD_HOST=cachyos
@@ -440,6 +463,15 @@ prepare() {
             --enable HAVE_GCC_PLUGINS
     else
         scripts/config --enable LTO_NONE
+    fi
+
+    ### Enable GCC FULL LTO
+    ### Disable LTO_CP_CLONE, its experimental
+    if [ -n "$_use_gcc_lto" ]; then
+         scripts/config --enable LTO_GCC \
+            --disable LTO_CP_CLONE
+    ### Disable DEBUG, pahole is currently broken with GCC LTO
+            _disable_debug=y
     fi
 
     ### Select tick rate
@@ -1029,9 +1061,9 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('51307576df4a1651dcad4e361e6e411cfe9ed7841783c198a72ed7d89e3057c3'
-            '6a78ba1cabbbac20ca5c53f8ce179053d859374342611801c232f779d6483bec'
+            '775c599894bc0b59190975835146da68dbf0c9241de7b0e3e5962e24ced42b94'
             '34e2cad286f32d8c1c26e4ff18726c9e0aee151e82088bb78c3ae4fb536bf962'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            'cdcac38083b64308a6695f9481d04ece87e2a199bd3c5e0302d4070a906c9b5b'
-            'ce5a95bdf23cd8d86f0494ebc813a1733eac51910b30092c4ee20542d1c21848'
-            '90d3bc76d3efae6b15002cbcc0b5e812beea721b17bfab2f6781d338e02db93b')
+            'd1400a8f486ffc2362ca5ba791f7ff71f8219461c18014fb2f90bb615c41a9c5'
+            '5c379c9cd2c74bca8ff92db7fedc46aab7c54289b39fba2d79b91ead89aa0a99'
+            '70874e69a9383cbdf3c033193a7d6706783fe06e3b0205208f9491ac53bb25b6')
