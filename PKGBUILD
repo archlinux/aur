@@ -18,7 +18,7 @@ source=("https://zsmith.co/archives/${pkgname}-${_orig_fullver}.tar.gz"
 
 prepare() {
   cd "${srcdir}"
-  patch -N -p0 -d "${pkgname}-${_orig_fullver}" < ../make-clean-fix.patch
+  patch -N -p0 -d "${pkgname}-${_orig_fullver}" < make-clean-fix.patch
 }
 
 build() {
