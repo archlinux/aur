@@ -1,7 +1,7 @@
 pkgbase = avr-libc-avrxmega3-svn
 	pkgdesc = The C runtime library for the AVR family of microcontrollers (incl. avrxmega3 devices)
-	pkgver = r2550M
-	pkgrel = 1
+	pkgver = r2557M
+	pkgrel = 2
 	url = http://savannah.nongnu.org/projects/avr-libc/
 	arch = any
 	license = BSD
@@ -14,9 +14,8 @@ pkgbase = avr-libc-avrxmega3-svn
 	options = libtool
 	options = staticlibs
 	source = avr-libc::svn+http://svn.savannah.nongnu.org/svn/avr-libc/trunk/avr-libc/
-	source = avrxmega3-v10.diff.xz::https://file.savannah.nongnu.org/file/avrxmega3-v10.diff.xz?file_id=48974
+	source = avrxmega3-v12.diff.xz::https://file.savannah.nongnu.org/file/avrxmega3-v12.diff.xz?file_id=52334
 	md5sums = SKIP
-	md5sums = 12ca80af092e6b138356287b69f40d2a
+	md5sums = 382ff8c9af985afe0f489475ae3390b4
 
 pkgname = avr-libc-avrxmega3-svn
-
