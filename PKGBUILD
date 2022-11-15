@@ -2,9 +2,9 @@
 pkgname=givemebadge-bin
 _pkgname=givemebadge
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/AlexFlipnote/GiveMeBadge"
 license=('MIT')
 depends=('python')
