@@ -6,7 +6,7 @@
 
 pkgname=pstotext
 pkgver=1.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Converts Postscript to text"
 arch=('x86_64')
 url="https://www.cs.wisc.edu/~ghost/doc/pstotext.htm"
@@ -14,6 +14,7 @@ license=('GPL')
 depends=('ghostscript')
 source=(ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/$pkgname-$pkgver.tar.gz)
 md5sums=('64576e8a10ff5514e285d98b3898ae78')
+sha256sums=('cfe0a251d0d43982a7d3bdf1d1670c854432739d00cb593c9beaca4b2cc36c27')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
