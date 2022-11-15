@@ -14,7 +14,7 @@ depends=(ruby pango ruby-cairo gobject-introspection ruby-cairo-gobject=$pkgver 
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c0b1ee011f29cc99ba75e891dbd559edc81aab53')
+sha256sums=('c5a98577785fe518d2306ddf88ce6344701bb26062bbffa713b88d12f92190ba')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
