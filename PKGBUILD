@@ -6,18 +6,21 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gtk3-ubuntu
-_ubuntu_ver=3.24.33
-_ubuntu_rel=1ubuntu1
-_import_pkgver=3.24.33
+_ubuntu_ver=3.24.34
+_ubuntu_rel=3ubuntu2
+_import_pkgver=3.24.34
 pkgver=3.24.34
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(x86_64)
 url="http://www.gtk.org/"
-depends=(adwaita-icon-theme at-spi2-atk atk cairo cantarell-fonts dconf desktop-file-utils fribidi iso-codes gdk-pixbuf2 gtk-update-icon-cache json-glib lib{cloudproviders,colord,cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr} mesa pango rest shared-mime-info tracker3 wayland)
+depends=(adwaita-icon-theme {at-spi2-,}atk cairo cantarell-fonts dconf
+desktop-file-utils fribidi iso-codes gdk-pixbuf2 gtk-update-icon-cache
+lib{cloudproviders,colord,cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr}
+mesa pango shared-mime-info tracker3 wayland)
 makedepends=(gobject-introspection git gtk-doc glib2-docs sassc meson wayland-protocols)
 license=(LGPL)
-_commit=4e3a3f05533789e1a68c70c185e1755d386d6c47  # tags/3.24.33^0
+_commit=4e3a3f05533789e1a68c70c185e1755d386d6c47 # tags/3.24.34^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         add_ubuntu_headers_to_meson_build.patch)
@@ -25,7 +28,7 @@ source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_${_ubuntu
 sha256sums=('SKIP'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
             '5d283c23657a2301fec22cec5130ea7d5edb659e0e50e7a2a5e87fea234893af'
-            '51a5c1cd1a1657cfb6b81aaf86f423d8179a833fb53735bf8a817db5a2a0c52c')
+            'c0ad9402a78d621d20c7e0887980be11a7fab326394cf47d0760132c2a2675ab')
 
 pkgver() {
   cd gtk
