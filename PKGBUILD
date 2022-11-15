@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=hashbrowns-git
-pkgver=0.20.310ef6b
+pkgver=0.19.9cfa7ef
 pkgrel=1
 pkgdesc='Provides cryptographic hashes with a minimal UI'
 url='https://github.com/gavinhungry/hashbrowns'
