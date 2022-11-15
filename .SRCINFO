@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-order-icons-git
 	pkgdesc = Gnome Shell extension for ordering icons in the top bar like for Ubuntu unity
-	pkgver = 15.24c88bd
+	pkgver = r42.9be1082
 	pkgrel = 1
 	url = https://github.com/andia89/order-icons
 	arch = any
