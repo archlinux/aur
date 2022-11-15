@@ -4,13 +4,13 @@
 pkgname=loot
 pkgver=0.18.6
 _pkglibver=0.18.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL3')
 depends=('boost-libs' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst' 'qt5-base')
-makedepends=('git' 'cmake' 'rust' 'cbindgen' 'yarn' 'boost')
+makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
@@ -23,7 +23,6 @@ sha256sums=('a93a5df1e34f3f54ec6023971433527776db6f8861be48e620e0f8c6a06169c5'
 build() {
 	# libloot
 	cd "$srcdir/lib$pkgname-$_pkglibver"
-	yarn install
 	mkdir -p build
 	cd build
 	cmake .. -DCMAKE_SKIP_RPATH=TRUE
