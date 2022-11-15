@@ -2,7 +2,7 @@
 
 pkgname=dmusic
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Compact and native Yandex Music client"
 arch=('i686' 'x86_64')
 url="https://github.com/levovix0/DMusic"
@@ -30,7 +30,7 @@ prepare(){
 
 build(){
   cd $srcdir/DMusic-$pkgver
-  nimble build -d:release
+  nimble build -yd:release
 }
 
 package() {

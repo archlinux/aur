@@ -1,7 +1,7 @@
 pkgbase = dmusic
 	pkgdesc = Compact and native Yandex Music client
 	pkgver = 0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/levovix0/DMusic
 	arch = x86_64
 	license = GPL3
