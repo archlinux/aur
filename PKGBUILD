@@ -9,7 +9,7 @@ url="https://bitbucket.org/astanin/python-split"
 license=('MIT')
 depends=('python')
 source=("https://pypi.io/packages/source/s/split/split-$pkgver.zip")
-md5sums=('16e72d45b66b0f8da2349be0f82d5216')
+sha256sums=('c4be970a857d605d94999da18779bc10c34a34f937dede983268de3877b81faa')
 
 package() {
   cd split-$pkgver
