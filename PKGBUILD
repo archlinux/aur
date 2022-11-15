@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=108.0a1+20221029.1+h4babcdac54d0
+pkgver=109.0a1+20221115.1+hf130aa968d7e
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 arch=(x86_64)
@@ -24,11 +24,9 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 _repo=https://hg.mozilla.org/mozilla-central
 source=("hg+$_repo"
         firefox-install-dir.patch
-        0001-libwebrtc-screen-cast-sync.patch
         $pkgname.desktop identity-icons-brand.svg)
 sha256sums=('SKIP'
             'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
-            '5c164f6dfdf2d97f3f317e417aaa2e6ae46a9b3a160c3162d5073fe39d203286'
             '7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -70,11 +68,6 @@ prepare() {
   mkdir mozbuild
   cd mozilla-central
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # https://bugs.archlinux.org/task/76231
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
-  # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
-  patch -Np1 -i ../0001-libwebrtc-screen-cast-sync.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
