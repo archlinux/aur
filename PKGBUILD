@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal Image and Video Viewer"
 arch=('any')
 url="https://github.com/hzeller/timg"
@@ -20,7 +20,8 @@ build() {
 	-DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
 	-DWITH_VIDEO_DECODING=On \
 	-DWITH_VIDEO_DEVICE=On \
-	-DWITH_OPENSLIDE_SUPPORT=On
+	-DWITH_OPENSLIDE_SUPPORT=On \
+	-DWITH_STB_IMAGE=Off
   make
 }
 
