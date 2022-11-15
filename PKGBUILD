@@ -12,7 +12,7 @@ license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/m/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-md5sums=('a7c557bc24d0a3fb0a6e138b049d86e8')
+sha256sums=('17d8d10d43e42f18456e3d8422ec73b54b2efb307d62021c414bd7cbec59d987')
 
 package() {
   cd "$srcdir/$_pipname-$pkgver"
