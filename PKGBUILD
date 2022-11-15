@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=distrobox-git
-pkgver=1.4.0.r669.0e5acdd
+pkgver=1.4.1.r735.acb36a4
 pkgrel=1
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgname%-git}::git+${url}")
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s.r%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
