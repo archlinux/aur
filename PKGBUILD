@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=cargo-hatch
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Hatch new projects like a chick coming out of its egg"
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('gcc-libs' 'openssl' 'zlib')
 makedepends=('cargo' 'git' 'libgit2' 'libssh2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('820793e4351b1b736caae0a23a079c8f045c3ecc2b946c6436d1050128fd8b4a902b9efdcfaabce58945d5c4d57fa06021e8a379110e845f0caec3a04c376426')
+b2sums=('e612c6fb4565712b47d72d01ae801d042642108c43cdf011a86db70cfbb3f9dcdecd0d4bafe1c07ce9cb9e6ddd22c4d73e6327594d10544e0756cf1c73174370')
 
 prepare() {
   cd "$pkgname-$pkgver"
