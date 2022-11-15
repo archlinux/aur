@@ -1,9 +1,9 @@
-# Maintainer: farawayer <farwayer@gmail.com>
+# Contributor: farawayer <farwayer@gmail.com>
 
 _gemname=naturally
 pkgname=ruby-$_gemname
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='Natural Sorting with support for legal numbering, course numbers, and other number/letter mixes.'
 arch=(any)
 url='https://github.com/public-law/naturally'
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0a3ea72dac5b8e11c1ccd54f9de1f05a45d358c7')
+sha1sums=('dbdd12d478236be97b95aa4fc8f406c6a43e505e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
