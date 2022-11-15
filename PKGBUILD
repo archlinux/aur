@@ -14,11 +14,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/inversepath/tenshi/archive/
         'tenshi.sysusers'
         'tenshi.tmpfiles'
         'conf.diff')
-md5sums=('5ff83250bd5dd8eaf01714e8318ddde8'
-         '8c8a582c6a8c61d4ff596ed3af8ab593'
-         '19314a464da97b3046a2c7b7c81cd2e6'
-         '68aafee3a3c8ea472296408854adac76'
-         '451250b1955b14691ca1c7124d1991f2')
+sha256sums=('9b7e72b6496e2f6abd77d1dd3c4c6b77bdce61ca5531f9f1c62376b020904db7'
+            'e4ed6b3ec69e4f0f3011b5ddb6bb8888814be25ef110099c16a1281ba63fc3ad'
+            'a4909d42e2e7df439af60e3d9967eabe4575c1e2788accd24d6269c698f359c5'
+            'dddb7e52546e5a58d809cbb8214f02c2e5a6c931a622b9cfc26f462481525ac9'
+            '9a7126e868ba985a935512b43f699033dd068d8c436d22374ec02d3830dc2159')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
