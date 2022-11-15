@@ -12,7 +12,7 @@ checkdepends=('python-nose' 'python-hypothesis')
 license=('GPL')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mulkieran/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('2527651c3783b374e59fc137e653715e')
+sha256sums=('e2ae5a552816f618dc4dcb408b3fc1711097f829dd825a1fd508c69357b562e6')
 
 check() {
     cd "$srcdir/${_pkgname}-$pkgver"
