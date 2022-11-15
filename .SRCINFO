@@ -1,0 +1,17 @@
+pkgbase = drone-monitor-git
+	pkgdesc = Monitor your drone like a pro
+	pkgver = r44.f315867
+	pkgrel = 1
+	url = https://github.com/puceaulytech/drone-monitor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-3d
+	depends = qt6-base
+	provides = drone-monitor
+	conflicts = drone-monitor
+	source = git+https://github.com/puceaulytech/drone-monitor.git
+	md5sums = SKIP
+
+pkgname = drone-monitor-git
