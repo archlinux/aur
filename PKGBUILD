@@ -4,7 +4,7 @@
 
 pkgname=gtk-chtheme
 pkgver=0.3.1
-pkgrel=10
+pkgrel=11
 pkgdesc="A little program to change your gtk+ 2.0 theme"
 arch=('x86_64')
 license=('GPL')
@@ -12,6 +12,7 @@ url="http://plasmasturm.org/programs/gtk-chtheme/"
 depends=('gtk2')
 source=(http://plasmasturm.org/programs/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('f688053bf26dd6c4f1cd0bf2ee33de2a')
+sha256sums=('26f4b6dd60c220d20d612ca840b6beb18b59d139078be72c7b1efefc447df844')
 
 build() {
   cd $pkgname-$pkgver
