@@ -25,8 +25,14 @@ ips =
 {
     mode = inline,
 
+    -- disable rules which cause excessive logging
+    --states = [[
+    --    alert ( gid:116; sid: 150; enable:no; )
+    --    alert ( gid:116; sid: 151; enable:no; )
+    --]],
+
     -- use this to enable decoder and inspector alerts
-    enable_builtin_rules = true,
+    --enable_builtin_rules = true,
 
     -- use include for rules files; be sure to set your path
     -- note that rules files can include other rules files
