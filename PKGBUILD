@@ -2,7 +2,7 @@
 
 pkgname=python-pyemf3
 _pkgname=pyemf3
-pkgver=3.1
+pkgver=3.3
 pkgrel=1
 pkgdesc="Pure Python Enhanced Metafile Library"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest' 'python-freezegun' 'python-hypothesis')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeremysanders/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87b953d401ff7e93e4182f40c55100ad0495b13061a7c0615bb4eb233d2a4bcc')
+sha256sums=('59dde1609ac1bb586c6fccaf47183ba8cb46d9d7570d51f1cba19aada82a0cf4')
 
 build() {
   cd "$_pkgname-$pkgver"
