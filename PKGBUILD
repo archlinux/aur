@@ -2,7 +2,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "flutter::git+https://github.com/flutter/flutter.git"
 )
 sha256sums=(
-    '1aaa40f7f97a685a9c214b7896a441bfbfd616dc023617636be3ee9b1bde5fe0'
+    '9f14c7281c9946eb043efafddfff57b6ebbdae30ce0932ae0de9d74d7affc57f'
     'SKIP'
 )
 
