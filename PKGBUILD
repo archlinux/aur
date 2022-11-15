@@ -1,6 +1,6 @@
 # Maintainer: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
-pkgver=1.5.10
+pkgver=1.5.11
 pkgrel=0
 pkgdesc='lunatask.app (unofficial and *not* supported by Lunatask developers'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('proprietary')
 
 _file=Lunatask-${pkgver}.AppImage
 source=(https://lunatask.app/download/${_file})
-sha512sums=('07882fdabd4890c95c5b80e4ad9cd553bcac38508c22ecfb8a407bd56e1011c20c86466f5bc9ec7d4f1e2ceb59c17a7b60e36ad57de403bdf7621d7dae1ea7ff')
+sha512sums=('dfec4752e37c1153e4602a5b54d8bf85af08e0e2bed8294692044b08ed589fe6d3b6a0f4703f737e64cad038cdf3d6242f39af6bba2fd1b6ff2be81ac7577e98')
 
 options=('!strip')
 
