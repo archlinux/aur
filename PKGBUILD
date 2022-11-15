@@ -13,8 +13,8 @@ makedepends=('gtk2')
 optdepends=('gtk2: run gmp3info GUI')
 source=(https://ibiblio.org/pub/linux/apps/sound/mp3-utils/$pkgname/$pkgname-$pkgver.tgz
         gmp3info.desktop)
-md5sums=('cb7b619a10a40aaac2113b87bb2b2ea2'
-         '70071d6503161a5f466d34ec9649b2fc')
+sha256sums=('0438ac68e9f04947fb14ca5573d27c62454cb9db3a93b7f1d2c226cd3e0b4e10'
+            'c2e42945ed41ad97babe4f85c7504bc9be8639aa17466f3723810f4eb615f905')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
