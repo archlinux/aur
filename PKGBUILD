@@ -5,7 +5,7 @@ arch=('x86_64')
 
 pkgdesc='A simple and fast mail client'
 
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 epoch=1
 
@@ -15,8 +15,8 @@ license=('MIT')
 
 source=("https://github.com/Guusvanmeerveld/Dust-Mail/releases/download/${pkgver}/dust-mail_${pkgver}_amd64.deb")
 
-md5sums=('664e665855f6cacdbfa6b46f14338266')
-sha256sums=('08af47bfd2b9a52ec2f9bbf172dffcfac38f071415ead599c29b33f3fec658dc')
+md5sums=('f1009b2a7adb29675d6ea2c96b7701ed')
+sha256sums=('c210d1a2c67e0571e2cfdfc96aeb3593781d4353231411087b4cc996998a4100')
 
 prepare() {
   tar -zxvf data.tar.gz
