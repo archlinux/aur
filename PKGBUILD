@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.103.3
+pkgver=3.104.5
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('nvm' 'python')
 optdepends=('libappindicator-gtk3: StatusNotifierItem support')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('ba0e0ae158110892f255c60e41f3d563f1fb7d77906a04f7d373eb1796107b89'
+sha256sums=('76ff25b6ecf032ad4e7fcecde644612dca1c6b2423e181a5b531f4f9d338026a'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
 _ensure_local_nvm() {
@@ -52,10 +52,11 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
 
-  for icon_size in 64 512; do
-    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/
-    install -Dm644 resources/desktop-icons/icon/${icon_size}.png \
-      ${pkgdir}${icons_dir}${pkgname}.png
+  for icon_size in 16x16 32x32 128x128 256x256 512x512; do
+    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${icon_size}.png \
+      "$pkgdir/usr/share/icons/hicolor/${icon_size}/apps/$pkgname.png"
+    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${icon_size}@2x.png \
+      "$pkgdir/usr/share/icons/hicolor/${icon_size}@2x/apps/$pkgname.png"
   done
 
   install -Dm644 "$srcdir/$pkgname.desktop" -t \
