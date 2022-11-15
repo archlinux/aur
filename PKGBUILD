@@ -13,7 +13,7 @@ depends=(ruby ruby-cairo ruby-glib2=$pkgver)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('f92c812ff9bfa4b85581e3cd2cd8f265a996f6d6')
+sha256sums=('2a1048bfbc294e13ffd3d3e83af1e3512f4a961f9068882dafe846e67eb4e3bf')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
