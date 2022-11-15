@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$_pypiname-$pkgver.tar.gz::https://github.com/pmaupin/$_pypiname/archive/v$pkgver.tar.gz")
-md5sums=('8dc599a0c808a15f1499c0116ee3c92d')
+sha256sums=('f4da059213a0fdf8f63aa3f711cfbc25a5100333514b396f71bb90cb7bd4365f')
 
 prepare(){
     cp -r "$srcdir/$_pypiname-$pkgver" "$srcdir/$_pypiname-$pkgver-py2"
