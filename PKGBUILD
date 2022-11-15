@@ -2,7 +2,7 @@
 
 _pkgname=solunar2
 pkgname=${_pkgname}-git
-pkgver=r3.ace69a7
+pkgver=2.0b.r10.7d0b06f
 pkgrel=1
 pkgdesc='Calculate sun and moon, rise and set times'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep -E '^[[:space:]]*VERSION[[:space:]]*:+=' "${srcdir}/solunar2/Makefile" | awk '{print $3}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
