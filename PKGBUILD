@@ -2,8 +2,8 @@
 
 pkgname=python-gluoncv-torch-git
 _pkgver=0.0.3
-pkgver=0.0.3.r8.7b71149
-pkgrel=3
+pkgver=0.0.3.r9.8cab8da
+pkgrel=1
 pkgdesc='PyTorch API for GluonCV Models'
 arch=('any')
 url='https://github.com/StacyYang/gluoncv-torch'
@@ -21,7 +21,7 @@ makedepends=(
 )
 provides=(python-gluoncv-torch=${pkgver})
 conflicts=(python-gluoncv-torch)
-source=("${pkgname}::git+https://github.com/zhanghang1989/gluoncv-torch.git")
+source=("${pkgname}::git+https://github.com/StacyYang/gluoncv-torch.git")
 md5sums=('SKIP')
 
 pkgver() {
