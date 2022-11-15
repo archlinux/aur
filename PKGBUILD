@@ -16,6 +16,7 @@ provides=(
 
 depends=(
   'pcsclite'
+  'ccid'
 )
 source=("https://gitlab.com/openpgp-card/openpgp-card/-/archive/tools/v${pkgver}/openpgp-card-tools-v${pkgver}.tar.gz")
 sha256sums=('62033a23a70065b2d9fba3b55dc0c55c385c0e266a319c1659b21d4ff619f7eb')
