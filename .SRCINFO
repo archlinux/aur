@@ -1,6 +1,6 @@
 pkgbase = touchegg-git
 	pkgdesc = Linux multi-touch gesture recognizer
-	pkgver = 2.0.12.r3.g439d3b7
+	pkgver = 2.0.15.r0.ge7577a22fbce
 	pkgrel = 1
 	url = https://github.com/JoseExposito/touchegg
 	install = touchegg.install
@@ -16,7 +16,7 @@ pkgbase = touchegg-git
 	depends = libx11
 	depends = libxrandr
 	depends = libxtst
-	provides = touchegg=2.0.12.r3.g439d3b7
+	provides = touchegg=2.0.15.r0.ge7577a22fbce
 	conflicts = touchegg
 	source = touchegg::git+https://github.com/JoseExposito/touchegg.git
 	sha256sums = SKIP

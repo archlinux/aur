@@ -5,7 +5,7 @@
 
 _pkgname=touchegg
 pkgname=${_pkgname}-git
-pkgver=2.0.12.r3.g439d3b7
+pkgver=2.0.15.r0.ge7577a22fbce
 pkgrel=1
 pkgdesc='Linux multi-touch gesture recognizer'
 arch=('x86_64')
