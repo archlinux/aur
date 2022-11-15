@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=bilili
-pkgver=1.4.12
+pkgver=1.4.13
 pkgrel=1
 pkgdesc='bilibili video and danmaku downloader | B站视频、弹幕下载器'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-requests' 'python-biliass' 'ffmpeg')
 makedepends=('python-setuptools' 'python-wheel')
 source=("https://pypi.io/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('93631af491a80ae5f6a15a7d31a5d6d8e522ea17629ea4f2704bedce98a3767a')
+sha256sums=('78aae85dbf82c9e35db13e8ca1b02b419f0e426126ad6b8c0307f2d290032752')
 
 build() {
     cd "$pkgname-$pkgver"
