@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cmake -B build -S "${_pkgname}" -DCMAKE_BUILD_TYPE=Release ..
-    make -C build -j$(nproc)
+    make -C build
 }
 
 package() {
