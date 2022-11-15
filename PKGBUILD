@@ -12,7 +12,7 @@ license=("BSD")
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/s/speaklater/speaklater-${pkgver}.tar.gz")
-md5sums=('e8d5dbe36e53d5a35cff227e795e8bbf')
+sha256sums=('59fea336d0eed38c1f0bf3181ee1222d0ef45f3a9dd34ebe65e6bfffdd6a65a9')
 
 package() {
     cd speaklater-$pkgver
