@@ -1,6 +1,6 @@
 pkgbase = git-branchless
 	pkgdesc = High-velocity monorepo-scale workflow for Git
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/arxanas/git-branchless
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = git-branchless
 	makedepends = cargo
 	depends = git
 	depends = libgit2
-	source = https://github.com/arxanas/git-branchless/archive/v0.5.1/git-branchless-0.5.1.tar.gz
-	sha256sums = a79e5a63ef0322defe5b918ed62d576d30681b0a16b12e57d6b5ce17096bff4f
+	source = https://github.com/arxanas/git-branchless/archive/v0.6.0/git-branchless-0.6.0.tar.gz
+	sha256sums = 362ac1ff6da00b1e5c1ab68614753fb5ffff3f1860a9a8272bf067cd8a9edccc
 
 pkgname = git-branchless
