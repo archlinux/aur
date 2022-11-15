@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd
-pkgver=5.6
+pkgver=5.7
 pkgrel=1
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('systemd-libs' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polk
          'ddcutil' 'libmodule' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
 makedepends=('git' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c629cb3a83e17677cc146f366a53768bca8c944d92b2a96d6091e4c564810267')
+sha256sums=('75a01ee5f314866291efd66f2639516e3a7aa06da6ec5ea33f81211dc1082efa')
 
 build() {
   cmake -B build -S Clightd-$pkgver \
