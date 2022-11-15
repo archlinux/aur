@@ -12,7 +12,7 @@ optdepends=('pyprof2calltree')
 makedepends=('python-setuptools' 'pyprof2calltree')
 checkdepends=('python-nose')
 source=("https://pypi.io/packages/source/r/repoze.profile/repoze.profile-$pkgver.tar.gz")
-md5sums=('65e87b8ef5ac7e6b2074decdb89a180b')
+sha256sums=('a13e01a40f8780d4c445758159be191bbd14f45040c49888fb2335fefffd5b8e')
 
 build() {
   cd repoze.profile-$pkgver
