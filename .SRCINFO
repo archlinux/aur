@@ -6,6 +6,8 @@ pkgbase = jchroot-git
 	arch = x86_64
 	license = ISC
 	makedepends = git
+	provides = jchroot
+	conflicts = jchroot
 	source = git+https://github.com/vincentbernat/jchroot
 	md5sums = SKIP
 

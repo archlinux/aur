@@ -10,6 +10,8 @@ license=('ISC')
 makedepends=('git')
 source=("git+${url}")
 md5sums=('SKIP')
+provides=('jchroot')
+conflicts=('jchroot')
 
 pkgver() {
   cd jchroot
@@ -23,7 +25,8 @@ build() {
 
 package() {
   cd jchroot
-  install -Dm755 jchroot $pkgdir/usr/bin/jchroot
-  install -Dm644 jchroot.8 $pkgdir/usr/share/man/man8/jchroot.8
-  install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+  install -Dm755 jchroot "$pkgdir/usr/bin/jchroot"
+  install -Dm644 jchroot.8 "$pkgdir/usr/share/man/man8/jchroot.8"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
