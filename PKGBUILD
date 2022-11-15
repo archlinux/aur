@@ -12,7 +12,7 @@ depends=('squeak-vm' 'shared-mime-info' 'desktop-file-utils' 'pango'
          'gtk-update-icon-cache')
 backup=('usr/lib/scratch/Scratch.ini')
 source=(https://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
-md5sums=('f948e9e6de3ec9c7c7b4cc2a1975eb5a')
+sha256sums=('b94d89278ecef2ba2d1147eec23936dd99697293ffa2c216c0a375ba98226a3e')
 
 prepare() {
   cd $pkgname-$pkgver.src
