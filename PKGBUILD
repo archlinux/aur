@@ -4,8 +4,8 @@
 
 pkgname=libdrm-git
 _realname=libdrm
-pkgver=2.4.113.r0.gfb5c0c30
-pkgrel=2
+pkgver=2.4.114.r2.ge699b28b
+pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
@@ -39,7 +39,7 @@ build() {
         --wrap-mode      nofallback \
         -D udev=false \
         -D valgrind=disabled
-    meson configure _build
+    meson configure --no-pager _build
     ninja -C _build
 }
 
