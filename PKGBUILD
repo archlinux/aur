@@ -40,8 +40,7 @@ source=(
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	# upstream proposed patches
-	overlay.diff # f1e964bf02baadc3f6af86e4f38dcef7ea5c081c (https://github.com/cemu-project/Cemu/pull/480)
-	online.diff # 68d39331deaa47c812ea3624dc41be3003e5d104 (https://github.com/cemu-project/Cemu/pull/486)
+	overlay.diff # 402b24ef19f401aef27c37ba580c4efe6e3d0bba (https://github.com/cemu-project/Cemu/pull/480)
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -49,8 +48,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f0ebf654e94461a82409860ae83e8ffee1095fc51b5748aefd7bc5cb58b54225'
-            'c7da958b6c53c62477e1b52dabf6b736ac813bb4cb37a85a37c9bfa08e9ff963')
+            'a4272ac6b31216e7226d25abeff8ee89a5551fddf791e2eb811ee2ff492fbfee')
 
 pkgver() {
 	cd Cemu
@@ -93,7 +91,7 @@ prepare() {
 	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
 
 	rm -rf src/util/SystemInfo
-	git apply --whitespace=nowarn "$srcdir/overlay.diff" "$srcdir/online.diff"
+	git apply --whitespace=nowarn "$srcdir/overlay.diff"
 }
 
 build() {

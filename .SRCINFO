@@ -32,14 +32,12 @@ pkgbase = cemu
 	source = git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	source = git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	source = overlay.diff
-	source = online.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f0ebf654e94461a82409860ae83e8ffee1095fc51b5748aefd7bc5cb58b54225
-	sha256sums = c7da958b6c53c62477e1b52dabf6b736ac813bb4cb37a85a37c9bfa08e9ff963
+	sha256sums = a4272ac6b31216e7226d25abeff8ee89a5551fddf791e2eb811ee2ff492fbfee
 
 pkgname = cemu

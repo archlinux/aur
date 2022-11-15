@@ -1,5 +1,3 @@
-diff --git a/src/Cafe/HW/Latte/Core/LatteOverlay.cpp b/src/Cafe/HW/Latte/Core/LatteOverlay.cpp
-index 21b70d25..441ec169 100644
 --- a/src/Cafe/HW/Latte/Core/LatteOverlay.cpp
 +++ b/src/Cafe/HW/Latte/Core/LatteOverlay.cpp
 @@ -12,30 +12,16 @@
@@ -149,8 +147,6 @@ index 21b70d25..441ec169 100644
  
  	// update vram
  	g_renderer->GetVRAMInfo(g_state.vramUsage, g_state.vramTotal);
-diff --git a/src/Cafe/HW/Latte/Core/LattePerformanceMonitor.cpp b/src/Cafe/HW/Latte/Core/LattePerformanceMonitor.cpp
-index 7104dbd9..714758e9 100644
 --- a/src/Cafe/HW/Latte/Core/LattePerformanceMonitor.cpp
 +++ b/src/Cafe/HW/Latte/Core/LattePerformanceMonitor.cpp
 @@ -98,7 +98,10 @@ void LattePerformanceMonitor_frameEnd()
@@ -181,8 +177,6 @@ index 7104dbd9..714758e9 100644
 -}
 \ No newline at end of file
 +}
-diff --git a/src/util/CMakeLists.txt b/src/util/CMakeLists.txt
-index 06c8f857..5af88176 100644
 --- a/src/util/CMakeLists.txt
 +++ b/src/util/CMakeLists.txt
 @@ -16,8 +16,6 @@ add_library(CemuUtil
@@ -229,8 +223,6 @@ index 06c8f857..5af88176 100644
  set_property(TARGET CemuUtil PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
  
  target_include_directories(CemuUtil PUBLIC "../")
-diff --git a/src/util/Fiber/FiberUnix.cpp b/src/util/Fiber/FiberUnix.cpp
-index c2ced28b..7d3bf05a 100644
 --- a/src/util/Fiber/FiberUnix.cpp
 +++ b/src/util/Fiber/FiberUnix.cpp
 @@ -1,5 +1,4 @@
@@ -246,8 +238,6 @@ index c2ced28b..7d3bf05a 100644
 -
 -#endif
 \ No newline at end of file
-diff --git a/src/util/Fiber/FiberWin.cpp b/src/util/Fiber/FiberWin.cpp
-index af7df700..ae5da517 100644
 --- a/src/util/Fiber/FiberWin.cpp
 +++ b/src/util/Fiber/FiberWin.cpp
 @@ -1,5 +1,4 @@
@@ -263,8 +253,6 @@ index af7df700..ae5da517 100644
 -
 -#endif
 \ No newline at end of file
-diff --git a/src/util/MemMapper/MemMapperUnix.cpp b/src/util/MemMapper/MemMapperUnix.cpp
-index 0ea52aa0..0ade291d 100644
 --- a/src/util/MemMapper/MemMapperUnix.cpp
 +++ b/src/util/MemMapper/MemMapperUnix.cpp
 @@ -1,6 +1,5 @@
@@ -281,8 +269,6 @@ index 0ea52aa0..0ade291d 100644
 -
 -#endif
 \ No newline at end of file
-diff --git a/src/util/MemMapper/MemMapperWin.cpp b/src/util/MemMapper/MemMapperWin.cpp
-index 5c07949f..0e8d3496 100644
 --- a/src/util/MemMapper/MemMapperWin.cpp
 +++ b/src/util/MemMapper/MemMapperWin.cpp
 @@ -1,7 +1,5 @@
@@ -300,9 +286,6 @@ index 5c07949f..0e8d3496 100644
 -
 -#endif
 \ No newline at end of file
-diff --git a/src/util/SystemInfo/SystemInfo.cpp b/src/util/SystemInfo/SystemInfo.cpp
-new file mode 100644
-index 00000000..afda4e8b
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfo.cpp
 @@ -0,0 +1,34 @@
@@ -341,9 +324,6 @@ index 00000000..afda4e8b
 +	out.user = user;
 +}
 \ No newline at end of file
-diff --git a/src/util/SystemInfo/SystemInfo.h b/src/util/SystemInfo/SystemInfo.h
-new file mode 100644
-index 00000000..72ce98db
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfo.h
 @@ -0,0 +1,17 @@
@@ -364,13 +344,12 @@ index 00000000..72ce98db
 +void QueryProcTime(uint64 &out_now, uint64 &out_user, uint64 &out_kernel);
 +void QueryProcTime(ProcessorTime &out);
 +void QueryCoreTimes(uint32 count, std::vector<ProcessorTime>& out);
-diff --git a/src/util/SystemInfo/SystemInfoLinux.cpp b/src/util/SystemInfo/SystemInfoLinux.cpp
-new file mode 100644
-index 00000000..d147893b
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoLinux.cpp
-@@ -0,0 +1,46 @@
+@@ -0,0 +1,48 @@
 +#include "util/SystemInfo/SystemInfo.h"
++
++#include <unistd.h>
 +
 +uint64 QueryRamUsage()
 +{
@@ -416,9 +395,6 @@ index 00000000..d147893b
 +		for (auto i = 0; i < count; ++i) out[i] = { };
 +	}
 +}
-diff --git a/src/util/SystemInfo/SystemInfoMac.cpp b/src/util/SystemInfo/SystemInfoMac.cpp
-new file mode 100644
-index 00000000..608f1ffc
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoMac.cpp
 @@ -0,0 +1,62 @@
@@ -484,9 +460,6 @@ index 00000000..608f1ffc
 +	if (ret != KERN_SUCCESS)
 +		cemuLog_force("vm_deallocate() failed");
 +}
-diff --git a/src/util/SystemInfo/SystemInfoStub.cpp b/src/util/SystemInfo/SystemInfoStub.cpp
-new file mode 100644
-index 00000000..b6d1fc84
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoStub.cpp
 @@ -0,0 +1,21 @@
@@ -511,9 +484,6 @@ index 00000000..b6d1fc84
 +		out[i] = { };
 +	}
 +}
-diff --git a/src/util/SystemInfo/SystemInfoUnix.cpp b/src/util/SystemInfo/SystemInfoUnix.cpp
-new file mode 100644
-index 00000000..87bd9f8c
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoUnix.cpp
 @@ -0,0 +1,15 @@
@@ -532,9 +502,6 @@ index 00000000..87bd9f8c
 +	out_kernel = static_cast<uint64>(clock_kernel);
 +}
 +
-diff --git a/src/util/SystemInfo/SystemInfoWin.cpp b/src/util/SystemInfo/SystemInfoWin.cpp
-new file mode 100644
-index 00000000..375608ce
 --- /dev/null
 +++ b/src/util/SystemInfo/SystemInfoWin.cpp
 @@ -0,0 +1,68 @@
