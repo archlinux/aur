@@ -1,7 +1,7 @@
 # Maintainer Wings-Fantasy <1056947073@qq.com>
 
 pkgname=badlion-client
-pkgver=3.8.0
+pkgver=3.12.2
 pkgrel=1
 pkgdesc="A Minecraft client with anti-cheat protection"
 url="https://client.badlion.net"
@@ -11,7 +11,7 @@ provides=('BadlionClient')
 source=('BadlionClient::https://client-updates-cdn77.badlion.net/BadlionClient'
 'AppRun'
 'BadlionClient.desktop')
-sha256sums=('8eb19a6bbabd38cb7cf901980b1798f5fab2ccf4d84d3f21a6ad5b400e7bb647'
+sha256sums=('6d995865c866d81448eaeb71e949292b36fcd48f6164171a878bebf64866eee9'
             '5baab55280a92c293b2453c22a67fd40cf3e10855cda217ddce50abec1df6816'
             '3f5730cff2f8d1f0d36b14ebf6dd83ea25548fdc287c448716a3533e6f2d0885')
 
