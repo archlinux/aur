@@ -12,8 +12,8 @@ makedepends=('mesa')
 options=('!makeflags')
 install=glhack.install
 source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz glhack-libpng15.patch)
-sha1sums=('7dc46e6bd4a3c2ec10ab4d314acfbb30cefc6eae'
-          '4cf1a13e76cc1f1eb3708d42c74b85b7f321092d')
+sha256sums=('cbde16bb03d3058cd1aa9341ee65b746976b35f92ff88a34ca58910114e287ad'
+            '69d6f2916dff787f73a2b6eb1b2d9e12e435d11ad930133db3f9e58754bbdf28')
 
 prepare() {
   cd ${pkgname}-${pkgver}
