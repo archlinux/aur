@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=0.2.4
+Name=Highflux version manager (Preview)
+GenericName = Version Manager
+Comment=Next-generation Git client for the remote work era. Preview version
+Path=/usr/bin
+Exec=/usr/bin/highflux
+Icon=git
+Terminal=false
+Categories=Utility;Git
