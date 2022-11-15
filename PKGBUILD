@@ -3,7 +3,7 @@
 pkgname=lmath-bin
 _pkgname=${pkgname%-bin}
 pkgver=r1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary LaTeX based math editor"
 arch=('x86_64')
 url="https://lehtodigital.fi/lmath/"
@@ -23,7 +23,7 @@ options=('!strip')
 
 package() {
     mkdir "${srcdir}/app"
-    tar xzvf $_pkgname-$pkgver.tar.gz -C "${srcdir}/app"
+    tar xzf $_pkgname-$pkgver.tar.gz -C "${srcdir}/app"
 
     install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
     install -d "${pkgdir}/opt/${_pkgname}"
