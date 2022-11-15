@@ -9,7 +9,7 @@ url='https://ambiq.com/'
 license=('unknown')
 options=(!strip)
 source=("https://ambiq.com/wp-content/uploads/2020/09/AmbiqSuite-R${pkgver}.zip")
-md5sums=('83643c29b5e42c670009194b70791b71')
+md5sums=('f2c77549d769853211a76db4789cb0b1')
 
 package() {
 	cd "AmbiqSuite-R${pkgver}"
