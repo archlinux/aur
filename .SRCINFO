@@ -1,7 +1,7 @@
 pkgbase = cmos
 	pkgdesc = Small markdown renderer based on CommonMark libcmark
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sr.ht/~bitfehler/cmos
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = cmos
 	depends = libunistring
 	depends = cmark
 	depends = source-highlight
+	depends = boost
 	provides = cmos
 	conflicts = cmos-git
 	source = cmos-1.1.tar.gz::https://git.sr.ht/~bitfehler/cmos/archive/v1.1.tar.gz
