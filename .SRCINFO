@@ -1,12 +1,12 @@
 pkgbase = nerd-fonts-sarasa-mono
 	pkgdesc = Sarasa Mono SC font patched with Nerd fonts.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/laishulu/Sarasa-Mono-SC-Nerd
 	arch = any
 	license = OFL
 	makedepends = fontconfig
-	source = git+https://github.com/laishulu/Sarasa-Mono-SC-Nerd.git
-	sha256sums = SKIP
+	source = https://github.com/laishulu/Sarasa-Mono-SC-Nerd/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = de9774741187d154aecad60b0e10ac5d05b72b1c2e4f767d922ec69ac7f0114d
 
 pkgname = nerd-fonts-sarasa-mono
