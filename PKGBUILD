@@ -2,7 +2,7 @@
 # Contributor: Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2022.10.14.1
+pkgver=2022.11.14
 pkgrel=1
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -32,7 +32,8 @@ depends=(
   'python-steamgriddb'
   'python-yaml'
   'webkit2gtk'
-  'xorg-xdpyinfo')
+  'xorg-xdpyinfo'
+  'vkbasalt-cli')
 optdepends=(
   'gamemode'
   'gvfs' 
@@ -43,7 +44,7 @@ optdepends=(
   'vulkan-icd-loader')
 makedepends=('meson' 'ninja' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3031a9755a466df64a4344f54808e3d743a5043155ad6fe96adccb047bb61f29')
+sha256sums=('b0e9f5ea1b05ff4641d24b542ad989ae59b4f360c741e59c79e2fff742e3e896')
 
 build() {
   if [[ -d Bottles ]]; then 
