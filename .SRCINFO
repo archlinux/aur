@@ -1,7 +1,7 @@
 pkgbase = fastgithub-bin
 	pkgdesc = Speedup github access in China
 	pkgver = 2.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dotnetcore/FastGithub
 	install = fastgithub-bin.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastgithub-bin
 	depends = mono
 	provides = fastgithub
 	options = !strip
-	source = https://hub.fastgit.xyz/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip
+	source = https://ghproxy.com/https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip
 	sha256sums = 01106995885a907c5832c594880f79763e6074877e20d61c391b3e9912a3b038
 
 pkgname = fastgithub-bin

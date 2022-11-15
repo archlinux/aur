@@ -3,11 +3,11 @@
 pkgname='fastgithub-bin'
 _pkgName='fastgithub'
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Speedup github access in China"
 arch=('x86_64')
 url="https://github.com/dotnetcore/FastGithub"
-_url="https://hub.fastgit.xyz/dotnetcore/FastGithub"
+_url="https://ghproxy.com/${url}"
 license=('MIT')
 depends=('mono')
 options=('!strip')
