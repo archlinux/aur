@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=L'Math
+Comment=Proprietary LaTeX based math editor
+GenericName=Math Editor
+Exec=/usr/bin/lmath %F
+Icon=lmath
+Type=Application
+StartupNotify=false
+Categories=TextEditor;MathEditor;Math;Education;
+MimeType=application/x-lmath-file;
+Keywords=lmath;l'math;math;
