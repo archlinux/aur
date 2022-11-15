@@ -5,7 +5,7 @@
 _pkgname=libavc1394
 pkgname=lib32-libavc1394
 pkgver=0.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A library to control A/V devices using the 1394ta AV/C commands (32-bit)"
 arch=("x86_64")
 url="https://sourceforge.net/projects/libavc1394/"
@@ -13,6 +13,7 @@ license=('LGPL')
 depends=('lib32-libraw1394' 'libavc1394')
 source=("https://downloads.sourceforge.net/sourceforge/libavc1394/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('caf0db059d8b8d35d6f08e6c0e1c7dfe')
+sha256sums=('7cb1ff09506ae911ca9860bef4af08c2403f3e131f6c913a2cbd6ddca4215b53')
 
 build() {
   export CC="gcc -m32"
