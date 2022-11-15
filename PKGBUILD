@@ -11,10 +11,10 @@ url="https://github.com/lwfinger/rtw8852be/tree/main"
 makedepends=('git')
 depends=('dkms' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}" "rtl8852be")
-source=("git+https://github.com/lwfinger/rtw8852be.git"
+source=("git+https://github.com/lwfinger/rtw8852be.git#branch=main"
        'dkms.conf')
 sha256sums=('SKIP'
-            '7505da64cf4861f25f0968a323d312cb609b6cb77f4eb64d58a224c1e123f89d')
+            '8dec8fb7a03c1e69c94fd7d031b9be8ea54f58a628e3d89bb47c6b9ef2deb4f9')
 
 pkgver() {
     cd ${srcdir}/${_pkgbase}
