@@ -1,7 +1,7 @@
 pkgbase = libpamac-nosnap
 	pkgdesc = Library for Pamac package manager based on libalpm - flatpak support enabled
 	pkgver = 11.4.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
