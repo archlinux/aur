@@ -2,14 +2,14 @@
 pkgname=color-code
 _repo_name="ansi-${pkgname}c"
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Encode arbitrary bytes to ANSI colors on the console."
 arch=('x86_64')
 url="https://github.com/coNQP/ansi-${_repo_name}c"
 license=('MIT')
 makedepends=("cargo")
 source=("https://github.com/conqp/${_repo_name}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('51cbec038090770f9671780caa5c01e4a1efd34b233cea318509f2660823de24')
+sha256sums=('e686a51ad61d8bffe0da3b16658a15f4d6441c3120381a0332e61f26d5410b4c')
 
 build() {
 	cd "${_repo_name}-${pkgver}"
