@@ -6,11 +6,11 @@ pkgver=1.1.6
 pkgrel=4
 pkgdesc="an advanced console based ip subnet calculator."
 arch=('x86_64')
-url="http://www.routemeister.net/projects/sipcalc/"
+url="https://www.routemeister.net/projects/sipcalc/"
 license=('BSD')
 depends=('glibc')
-source=(http://www.routemeister.net/projects/sipcalc/files/$pkgname-$pkgver.tar.gz)
-md5sums=('e431c64387f2c8d20e96ad1d7931a845')
+source=(https://www.routemeister.net/projects/sipcalc/files/$pkgname-$pkgver.tar.gz)
+sha256sums=('cfd476c667f7a119e49eb5fe8adcfb9d2339bc2e0d4d01a1d64b7c229be56357')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
