@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=107.0.5304.88
+pkgver=107.0.5304.110
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=1
@@ -41,7 +41,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('1e6595af1e56882627982b5e69dff0cb3575d65449dbe79697f3d4b0922492cc'
+sha256sums=('d33548074a62ee63b3b790fc7cfdf5a1935cc43f1b05306b89a89e489696fecc'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
             'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
@@ -61,10 +61,12 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
+        remove-main-main10-profile-limit.patch
         chromium-drirc-disable-10bpc-color-configs.conf)
 sha256sums=(${sha256sums[@]}
-            '11e286263f629443e91027dd1ee84116b3ad5df5d90ad0eb2817e17d371af6d8'
-            'e08a2c4c1e1059c767343ea7fbf3c77e18c8daebbb31f8019a18221d5da05293'
+            'c497b0f3256a3c0bb1e48dd14115040b97bd7319b9def1c6501f9155fc56fef6'
+            'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
+            'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
