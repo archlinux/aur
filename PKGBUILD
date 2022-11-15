@@ -14,8 +14,8 @@ license=('Public Domain')
 depends=('ncurses')
 source=(https://ibiblio.org/pub/linux/apps/financial/spreadsheet/$pkgname-$pkgver.tar.gz
         https://launchpadlibrarian.net/1281150/${pkgname}_$pkgver-2.diff.gz)
-md5sums=('1db636e9b2dc7cd73c40aeece6852d47'
-         '83d5d8a4b5ffb4e85da887b63c49f2ff')
+sha256sums=('1997a00b6d82d189b65f6fd2a856a34992abc99e50d9ec463bbf1afb750d1765'
+            '37116b9619790564650c4090b4a6264c08aa59fa1e24c63ca073011cd70507cb')
 
 build() {
   cd $pkgname-$pkgver
