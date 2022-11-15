@@ -15,8 +15,8 @@
 
 
 pkgbase=llvm-minimal-git
-pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=16.0.0_r441632.1a6d770447c5
+pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-git')
+pkgver=16.0.0_r441898.191ab4f46eba
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -72,6 +72,7 @@ build() {
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
         -D CLANG_LINK_CLANG_DYLIB=ON \
+        -D LLVM_DYLIB_COMPONENTS="all" \
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
@@ -105,8 +106,8 @@ check() {
 
 package_llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
-    depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl' 'spirv-tools')
-    provides=('llvm' 'compiler-rt' 'clang' 'spirv-llvm-translator')
+    depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl')
+    provides=('llvm' 'compiler-rt' 'clang')
     conflicts=('llvm' 'compiler-rt' 'clang')
     optdepends=('python: for using lit (LLVM Integrated Tester)'
                           'python-setuptools: for using lit'
@@ -125,6 +126,14 @@ package_llvm-minimal-git() {
     # Remove files which conflict with llvm-libs
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
+    
+    # spirv-llvm-translator files go to a separate package
+    mkdir -p "$srcdir"/spirv/usr/{bin,include/LLVMSPIRVLib/,lib/pkgconfig}
+    mv "$pkgdir"/usr/bin/llvm-spirv "$srcdir"/spirv/usr/bin
+    mv "$pkgdir"/usr/include/LLVMSPIRVLib/* "$srcdir"/spirv/usr/include/LLVMSPIRVLib/
+    mv "$pkgdir"/usr/lib/libLLVMSPIRVLib.a "$srcdir"/spirv/usr/lib
+    mv "$pkgdir"/usr/lib/pkgconfig/LLVMSPIRVLib.pc "$srcdir"/spirv/usr/lib/pkgconfig
+
   
     # llvm project uses /usr/libexec and setting CMAKE_INSTALL_LIBEXECDIR doesn't change that.
     # to comply with archlinux packaging standards we have to move some files manually
@@ -151,17 +160,33 @@ package_llvm-minimal-git() {
 }
 
 package_llvm-libs-minimal-git() {
-  pkgdesc="LLVM runtime libraries"
-  depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-  provides=('llvm-libs')
-  optdepends=('llvm-libs: for LLVMgold linker')
+    pkgdesc="LLVM runtime libraries, trunk version"
+    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
+    provides=('llvm-libs')
+    optdepends=('llvm-libs: for LLVMgold linker')
 
-  install -d "$pkgdir/usr/lib"
-  cp -P \
-    "$srcdir"/lib{LLVM,LTO,Remarks,clang-cpp}*.so* \
-    "$pkgdir"/usr/lib/
+    install -d "$pkgdir/usr/lib"
+    cp -P \
+        "$srcdir"/lib{LLVM,LTO,Remarks,clang-cpp}*.so* \
+        "$pkgdir"/usr/lib/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+package_spirv-llvm-translator-git() {
+pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
+depends=(llvm-minimal-git=$pkgver-$pkgrel 'spirv-tools')
+provides=('spirv-llvm-translator')
+conflicts=('spirv-llvm-translator')
+
+    cp --preserve --recursive "$srcdir"/spirv/* "$pkgdir"/
+#  install -d "$pkgdir/usr/lib"
+#  cp -P \
+#    "$srcdir"/lib{LLVM,LTO,Remarks,clang-cpp}*.so* \
+#    "$pkgdir"/usr/lib/
+
+    install -Dm644 "$srcdir"/SPIRV-LLVM-Translator/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
+}
+
 
 # vim:set ts=2 sw=2 et:
