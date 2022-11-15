@@ -11,6 +11,8 @@ arch=('any')
 url='https://github.com/syncthing-gtk/syncthing-gtk'
 license=('GPL2')
 replaces=( 'syncthing-gtk-python3' )
+provides=( 'syncthing-gtk-python3' )
+conflicts=('syncthing-gtk-python3' )
 depends=(
     'syncthing>=0.14.50' 'gtk3' 'libnotify'
     'python-bcrypt' 'python-cairo' 'python-dateutil' 'python-gobject'
