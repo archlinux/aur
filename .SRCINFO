@@ -1,24 +1,16 @@
 pkgbase = python-flask-debugtoolbar
 	pkgdesc = A toolbar overlay for debugging Flask applications
-	pkgver = 0.10.1
+	pkgver = 0.13.1
 	pkgrel = 1
-	url = http://flask-debugtoolbar.rtfd.org/
+	url = https://flask-debugtoolbar.readthedocs.io/
 	arch = any
 	license = BSD
-	makedepends = python2-setuptools
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/F/Flask-DebugToolbar/Flask-DebugToolbar-0.10.1.tar.gz
-	sha256sums = ec810083123aae0632eb32ba11e1cb4cdace81e7ce6c5009dd06c5204afbce52
-
-pkgname = python2-flask-debugtoolbar
-	depends = python2-blinker
-	depends = python2-flask
-	depends = python2-visitor
-	depends = python2-dominate
-
-pkgname = python-flask-debugtoolbar
 	depends = python-blinker
 	depends = python-flask
-	depends = python-visitor
-	depends = python-dominate
+	depends = python-werkzeug
+	depends = python-itsdangerous
+	source = https://pypi.python.org/packages/source/F/Flask-DebugToolbar/Flask-DebugToolbar-0.13.1.tar.gz
+	sha256sums = 0c26aa013a9813b8886857bf0ec24d28ab494114a264baf06c951cadc4dd0dae
 
+pkgname = python-flask-debugtoolbar
