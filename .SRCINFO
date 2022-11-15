@@ -40,6 +40,7 @@ pkgbase = forkgram
 	depends = abseil-cpp
 	depends = libdispatch
 	depends = glibmm-2.68
+	depends = openssl-1.1
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
