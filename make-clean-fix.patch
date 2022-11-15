@@ -1,0 +1,10 @@
+--- OOC/Makefile	2022-11-15 15:25:59.668336806 +0000
++++ OOC/Makefile.fixed	2022-11-15 15:25:53.498212219 +0000
+@@ -31,6 +31,6 @@
+ 	ar rvs OOC64.a ${OOC_OBJ}
+ 
+ clean:
+-	chmod 644 *.c *.h *.asm *.txt Makefile*
++	-chmod 644 *.c *.h *.asm *.txt Makefile*
+ 	rm -f ${OOC_OBJ} OOC32.a OOC64.a
+ 
