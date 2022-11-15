@@ -145,3 +145,9 @@ essential for additional Haskell packages beyond the base, foundational
 packages that others can depend on.
 
 This package provides both pieces in one package.
+
+## Revisions
+
+- r3: Intermediate revision for testing before the second iteration PRs.
+- r2: The first iteration, before splitting this validation pass to another
+  phase.

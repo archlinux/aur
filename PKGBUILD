@@ -17,14 +17,20 @@
 # restarting the build since it has (possibly non-deterministically) bitten me
 # before when I was writing this up
 # (https://gitlab.haskell.org/ghc/ghc/-/issues/22099).
+#
+# 2022-11-17 Yeah, I randomly get this error:
+# 	"inplace/bin/ghc-cabal" configure libraries/ghc-prim dist-install --with-ghc="/home/bairyn/git/ghc-cabal-arts/src/ghc-9.4.2/inplace/bin/ghc-stage1" --with-ghc-pkg="/home/bairyn/git/ghc-cabal-arts/src/ghc-9.4.2/inplace/bin/ghc-pkg"  --disable-library-for-ghci --enable-library-vanilla --enable-library-for-ghci --enable-library-profiling --enable-shared --configure-option=CFLAGS="-Wall    -Werror=unused-but-set-variable -Wno-error=inline -iquote /home/bairyn/git/ghc-cabal-arts/src/ghc-9.4.2/libraries/ghc-prim" --configure-option=LDFLAGS="  " --configure-option=CPPFLAGS="   " --gcc-options="-Wall    -Werror=unused-but-set-variable -Wno-error=inline -iquote /home/bairyn/git/ghc-cabal-arts/src/ghc-9.4.2/libraries/ghc-prim   " --configure-option=--with-gmp --configure-option=--host=x86_64-unknown-linux --with-gcc="/usr/bin/gcc" --with-ld="ld.lld" --with-ar="/usr/bin/ar" --with-alex="/usr/bin/alex" --with-happy="/usr/bin/happy"
+# 	Configuring ghc-prim-0.9.0...
+# 	Error: ghc-cabal: Encountered missing or private dependencies:
+# 	rts >=1.0 && <1.1
 
 pkgbase=ghc-cabal-arts
 pkgname=ghc-cabal-arts
 #pkgver=9.4.2.0.1
 pkgver=9.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Haskell setup to fix ‘There are files missing in the \`dynamic-1.0' package’ (9.4.2 / 3.9)."
-url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps-aur-r2"
+url="https://github.com/bairyn/cabal/commits/wip-fix-dynamic-deps-2-bak9-aur-r3"
 license=("BSD")
 arch=('x86_64')
 # We probably don't really need to use bubblewrap to do this, but it just makes
@@ -34,16 +40,16 @@ depends=('libffi')
 conflicts=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 provides=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 source=(
-	https://github.com/bairyn/cabal/archive/0114ec9ac2b3fb68a69b36a9c70482e9c4486366.tar.gz
+	https://github.com/bairyn/cabal/archive/5778390093f23a043f39c433e6303072ffcedf6d.tar.gz
 	#https://github.com/ghc/ghc/archive/refs/tags/ghc-9.4.2-release.tar.gz  # Probably easier for us to just get the submodules bundled, so use the next URL instead.
 	https://downloads.haskell.org/~ghc/9.4.2/ghc-9.4.2-src.tar.xz
 )
 sha512sums=(
-	7c26a3e3bd8ccffb701f6f517533c2e31f9e7b6930c0fc4fe306b2351df1e816f453301e0f2f4455f55db95bd2bd518e7feb43a56b336642478fbb380c209ee7
+	8f0c1f27255ec4950340d3a74474710e49158da3512534821e65e3f87078958d95c6a86913a292bcb3177623028f8815b490a27c2673439b93764180969a3125
 	#381a8103b944008c0004a2492ff3bc10d865440b97e9dd451d3fec2ec1cb7c0fef3402baa43629c6ff18651e4a02933374f26d3a0eda0b57a07bb69265390564
 	c55ad01b71ac3285dc057fcd3d83415767859cf20667374323bbaeefe9268b47ee0fc19add6860a8e1481e943855886cc7ace4bcb2f79349f94a44752c6aeccb
 )
-noextract=('0114ec9ac2b3fb68a69b36a9c70482e9c4486366.tar.gz' 'ghc-9.4.2-src.tar.xz')
+noextract=('5778390093f23a043f39c433e6303072ffcedf6d.tar.gz' 'ghc-9.4.2-src.tar.xz')
 
 # Be careful not to remove things we may want for this package.
 options=(
@@ -62,8 +68,8 @@ prepare() {
 	# > Need to extract this tarball with a UTF-8 locale instead of a chroot's "C"
 	# > locale; otherwise we get:
 	# >   bsdtar: Pathname can't be converted from UTF-8 to current locale.
-	LANG=en_US.UTF-8 bsdtar xf "0114ec9ac2b3fb68a69b36a9c70482e9c4486366.tar.gz"
-	cabaldir="cabal-0114ec9ac2b3fb68a69b36a9c70482e9c4486366"
+	LANG=en_US.UTF-8 bsdtar xf "5778390093f23a043f39c433e6303072ffcedf6d.tar.gz"
+	cabaldir="cabal-5778390093f23a043f39c433e6303072ffcedf6d"
 
 	echo "Extracting ghc…"
 
@@ -181,7 +187,7 @@ check() {
 
 package_ghc-cabal-arts() {
 	ghcdir="ghc-9.4.2"
-	cabaldir="cabal-0114ec9ac2b3fb68a69b36a9c70482e9c4486366"
+	cabaldir="cabal-5778390093f23a043f39c433e6303072ffcedf6d"
 
 	echo "Installing ghc…"
 	cd -- "$ghcdir"
