@@ -1,15 +1,15 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
 pkgver=8.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686 aarch64)
 url="https://github.com/jzbor/moonwm"
 license=('MIT')
 groups=()
 depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg imagemagick libnotify
-            notification-daemon nerd-fonts-fira-code pademelon pavucontrol
-	    sound-theme-freedesktop xorg-xrandr xorg-xrdb)
+            notification-daemon pademelon pavucontrol sound-theme-freedesktop
+	    ttf-firacode-nerd xorg-xrandr xorg-xrdb)
 makedepends=(go-md2man pkgconf)
 checkdepends=()
 optdepends=('scrot: integrated screenshot support'
