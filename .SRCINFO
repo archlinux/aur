@@ -1,8 +1,9 @@
 pkgbase = dell-command-configure
 	pkgdesc = Configure various BIOS features on Dell laptops
 	pkgver = 4.7.0.433
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dell.com/support/kbdoc/000178000/dell-command-configure
+	install = dell-command-configure.install
 	arch = x86_64
 	license = unknown
 	depends = bash
