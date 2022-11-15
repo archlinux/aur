@@ -1,0 +1,7 @@
+post_install() {
+  echo -e "\n\n  \e[32;1;3mUsage:\e[0;35;1m\n\n
+  qed \e[1;37m            => \e[36;1m (Dry Run) List all slots and associated files\e[35;1m\n
+  qed \e[33;1m [  FILE  ]\e[1;37m => \e[36;1m Save file to a selected slot (1-10)\e[35;1m
+  qed \e[33;1m [ 1 - 10 ]\e[1;37m => \e[36;1m Open file in slot selected slot in ${EDITOR:-your editor}\e[35;1m
+  qed \e[33;1m [ -c|cls ]\e[1;37m => \e[36;1m Clear all slots\e[0m\n\n"
+}
