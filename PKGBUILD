@@ -12,7 +12,7 @@ depends=(vte3 ruby ruby-gtk3)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5bda0c14236e82348d0e821c10c2412d95aa1b78')
+sha256sums=('04b1ca7fa031e570304c01c08ee67fc580a264fded637aba67bc9146f7f611b8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
