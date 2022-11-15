@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "${_pkgname}"
+    cmake -B build -S "${_pkgname}" -D CMAKE_INSTALL_PREFIX=/usr
     make -C build
 }
 
