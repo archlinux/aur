@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-typish
-pkgver=1.9.1
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Functions for thorough checks on types'
 arch=(x86_64)
@@ -19,7 +19,7 @@ python-coverage
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ramonhagenaars/typish/archive/v${pkgver}.tar.gz")
-sha512sums=('867694f5fee9387b14cc94d3741ada256b8a32db931f01576a4d38d78fd237fe708f8e890703db21ccb790ace5ff178a09cda28d8ab9164b6ecbb105eeefc670')
+sha512sums=('baad9d2229ac289c4eb1d6e64bac0313efd4680f42a95270e0c1141d511392e6a95a5fea767943ddf432f5f0d48d95a05bbf26e06df188079ac177d321e4fa5c')
 
 prepare(){
   msg2 "${MAKEFLAGS}"
@@ -39,4 +39,8 @@ check(){
 package() {
   cd typish-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # don't package test dir
+  _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
+  rm -rf "${_i_dir}/tests"
 }

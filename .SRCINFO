@@ -1,6 +1,6 @@
 pkgbase = python-typish
 	pkgdesc = Functions for thorough checks on types
-	pkgver = 1.9.1
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/ramonhagenaars/typish
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = python-typish
 	checkdepends = python-coverage
 	makedepends = python-setuptools
 	depends = python
-	source = python-typish-1.9.1.tar.gz::https://github.com/ramonhagenaars/typish/archive/v1.9.1.tar.gz
-	sha512sums = 867694f5fee9387b14cc94d3741ada256b8a32db931f01576a4d38d78fd237fe708f8e890703db21ccb790ace5ff178a09cda28d8ab9164b6ecbb105eeefc670
+	source = python-typish-1.9.3.tar.gz::https://github.com/ramonhagenaars/typish/archive/v1.9.3.tar.gz
+	sha512sums = baad9d2229ac289c4eb1d6e64bac0313efd4680f42a95270e0c1141d511392e6a95a5fea767943ddf432f5f0d48d95a05bbf26e06df188079ac177d321e4fa5c
 
 pkgname = python-typish
-
