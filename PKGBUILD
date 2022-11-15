@@ -10,7 +10,7 @@ license=('GPL')
 depends=('fcitx' 'libgooglepinyin')
 makedepends=('cmake' 'intltool')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
-md5sums=('7ee33bbb66d29536819b0d2f73b69713')
+sha256sums=('29a5506ed45d26534f7bcbca1c56138984dcc7e99a42652c6a49fe20ec0da781')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
