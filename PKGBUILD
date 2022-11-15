@@ -13,7 +13,7 @@ makedepends=(ruby-native-package-installer ruby-glib2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('a4374a153576056c5e88532b30381c24760572cf')
+sha256sums=('8577dbcc70966bd1d3a2f10a6df1830ba0db9ee9a73f2dde58133f3f9c1dfaea')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
