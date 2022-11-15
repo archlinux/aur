@@ -1,7 +1,7 @@
 pkgbase = snort-nfqueue
 	pkgdesc = A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.
 	pkgver = 3.1.45.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.snort.org
 	install = snort.install
 	arch = i686
@@ -49,6 +49,6 @@ pkgbase = snort-nfqueue
 	sha256sums = a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e
 	sha256sums = ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051
 	sha256sums = bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2
-	sha256sums = e1ff858e2cb062d76f72757746c4f87410151b06221255ca827b7279fee0d5df
+	sha256sums = 7f624e050265896fde5617305e9a28239bd41c6320427ecb8c2ecf4e4b86ed29
 
 pkgname = snort-nfqueue
