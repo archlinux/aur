@@ -1,32 +1,30 @@
-# Maintainer: Ivy Foster <code@escondida.tk>
+# Maintainer: Ivy Foster <iff@archlinux.org>
 # Contributor: Jan Fader <jan.fader@web.de>
 # Reference: PKGBUILD(5)
 
 pkgname=t-prot
 pkgver=3.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Filter to improve readability of email/usenet by hiding annoyances'
-url='https://www.escape.de/~tolot/mutt/'
+# https://escape.de/~tolot appears to be dead.
+url='https://github.com/kdave/t-prot'
 license=(BSD)
 
 depends=(gettext perl perl-locale-gettext)
+makedepends=(git)
 
 arch=(any)
 # LICENSE text from t-prot.1
 source=(
-	"https://www.escape.de/~tolot/mutt/t-prot/downloads/t-prot-$pkgver.tar.gz"
+	'git+https://github.com/kdave/t-prot.git#commit=9301fda1d84f573a731d1a4c24520220c5017032'
 	LICENSE
 )
-md5sums=(
-	c075489f1bd7063d589dcfb2536989b9
-	712bd4102dde61b207be93a1f64d03bc
-)
+sha256sums=(SKIP SKIP)
 
 package() {
 	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/t-prot/LICENSE"
 
-	cd "t-prot-$pkgver"
-
+	cd t-prot
 	install -D t-prot "$pkgdir/usr/bin/t-prot"
 	install -D -m 644 t-prot.1 "$pkgdir/usr/share/man/man1/t-prot.1"
 	install -D -m 644 README "$pkgdir/usr/share/doc/t-prot/README"
