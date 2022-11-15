@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=protonplus
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple proton version manager"
 arch=('x86_64')
 url="https://github.com/Vysp3r/ProtonPlus"
 license=('GPL3')
-depends=('libadwaita' 'libarchive')
+depends=('json-glib' 'libadwaita' 'libarchive' 'libsoup3')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
