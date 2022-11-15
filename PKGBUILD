@@ -5,7 +5,7 @@ pkgver=3.11.92+r96+g0fd324c
 pkgrel=1
 epoch=1
 pkgdesc="PGP encryption and signing for nautilus with configurable extension for encrypted files"
-url="https://gitlab.gnome.org/purejava/seahorse-nautilus/tree/encrypt-ext-conf"
+url="https://gitlab.gnome.org/GNOME/seahorse-nautilus"
 arch=(x86_64)
 license=(GPL)
 depends=(libnautilus-extension gtk3 gcr libcryptui libnotify)
@@ -18,17 +18,17 @@ source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd seahorse-nautilus
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd seahorse-nautilus
 	git apply ../../0001-Make-file-extension-for-encrypted-files-configurable.patch
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson seahorse-nautilus build
   meson compile -C build
 }
 

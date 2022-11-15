@@ -1,19 +1,28 @@
 pkgbase = seahorse-nautilus-ext
 	pkgdesc = PGP encryption and signing for nautilus with configurable extension for encrypted files
-	pkgver = 3.11.92+57+g390364d
+	pkgver = 3.11.92+r96+g0fd324c
 	pkgrel = 1
-	url = https://gitlab.gnome.org/purejava/seahorse-nautilus/tree/encrypt-ext-conf
+	epoch = 1
+	url = https://gitlab.gnome.org/GNOME/seahorse-nautilus
 	arch = x86_64
 	license = GPL
 	makedepends = meson
 	makedepends = git
+	depends = libnautilus-extension
+	depends = gtk3
+	depends = gcr
 	depends = libcryptui
-	depends = nautilus
-	depends = libgnome-keyring
+	depends = libnotify
 	provides = seahorse-nautilus
 	conflicts = seahorse-nautilus
-	source = seahorse-nautilus-ext::git+https://gitlab.gnome.org/GNOME/seahorse-nautilus.git#commit=390364db3bb09d7f6e07e3de90c872112584442a
+	options = debug
+	source = git+https://gitlab.gnome.org/GNOME/seahorse-nautilus.git#commit=0fd324c191565bff76ca45a01b2da14b4ab7b3bd
 	sha256sums = SKIP
 
 pkgname = seahorse-nautilus-ext
-
+	depends = libnautilus-extension
+	depends = gtk3
+	depends = gcr
+	depends = libcryptui
+	depends = libnotify
+	depends = libnautilus-extension.so
