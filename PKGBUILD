@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Terminal Image and Video Viewer"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('libwebp' 'libjpeg-turbo' 'libexif' 'graphicsmagick' 'ffmpeg' 'openslide')
 makedepends=('cmake' 'pkgconf' 'git' 'gcc')
 source=("timg-$pkgver.tar.gz::https://github.com/hzeller/timg/archive/v$pkgver.tar.gz")
-sha256sums=('66d2e00b50068fd6638bb8be1859c50ca4f24caef751f9dc95b303f37fb07b1e')
+sha256sums=('3c96476ce4ba2af4b9f639c5b59ded77ce1a4511551a04555ded105f14398e01')
 
 build() {
   cd $pkgname-$pkgver
