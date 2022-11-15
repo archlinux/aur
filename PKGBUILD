@@ -13,7 +13,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/$_pypiname/$_pypiname-${pkgver}.tar.gz")
-md5sums=('2ea28d6ec311aeeebaf993cb3008b27c')
+sha256sums=('37812d863c9ad3e35c0734c42e0bf0320ce8c3bed82cd20ad54cb34d158157ba')
 
 build() {
   cd "$_pypiname-${pkgver}"
