@@ -2,7 +2,7 @@
 
 pkgname=python-dbapi-compliance
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python DB API 2.0 driver compliance unit test suite'
 arch=(any)
 url='https://github.com/baztian/dbapi-compliance'
@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd dbapi-compliance-$pkgver
-  python setup.py test
+  python -m unittest discover -vs .
 }
 
 package() {
