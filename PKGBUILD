@@ -14,7 +14,6 @@ license=('GPL3' 'custom')
 depends=('libgpr')
 makedepends=('gprbuild' 'texlive-bin' 'python-sphinx' 'python-sphinx_rtd_theme' 'texlive-core' 'texlive-latexextra')
 
-#source=("https://github.com/AdaCore/gnatcoll-core/archive/refs/tags/v22.0.0.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=("a9e57bfaeaa24c23a738e1d60e0c3b775dc9845c9694c8271efca43381fee85f")
 
