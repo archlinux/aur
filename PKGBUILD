@@ -46,7 +46,7 @@ prepare() {
    016_no_offscreen_widgets_grabbing.patch
    017_no_offscreen_device_grabbing.patch
    060_ignore-random-icons.patch
-   reftest-known-fail.patch
+   #reftest-known-fail.patch
    Disable-accessibility-dump-aka-a11ytests-test.patch
    073_treeview_almost_fixed.patch
    bzg_gtkcellrenderer_grabbing_modifier.patch
