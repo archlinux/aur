@@ -7,15 +7,14 @@ pkgname=(
     gnatcoll-iconv
     gnatcoll-lzma
     gnatcoll-omp
-#    gnatcoll-python2
     gnatcoll-python
     gnatcoll-readline
     gnatcoll-syslog
     gnatcoll-zlib
 )
 epoch=1
-pkgver=22.0.0
-pkgrel=2
+pkgver=23.0.0
+pkgrel=1
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings'
@@ -24,33 +23,30 @@ license=('GPL3' 'custom')
 
 makedepends=('python' 'gprbuild' 'gnatcoll-core' 'libiconv' 'syslog-ng')
 
-source=(
-    "$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "0001-fix-omp-read-version-information-file-in-text-mode.patch"
-    "0002-fix-python-don-t-cache-prefix-during-install.patch"
-)
-sha1sums=('d1d3b80331dd097bb4e07289d53cd33fad247794'
-          'ca00377ecc3e05e5b89f947e0806631fd4e6b48c'
-          '575d5d17bcf3983bea31bd75a32035b5005ab805')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        "0002-fix-python-don-t-cache-prefix-during-install.patch")
 
-_source_dir="gnatcoll-bindings-22.0.0"
+sha256sums=('d51a7d1d35b2689feb6b05568702c4a22226538902ffd658e6f98a5d69d7bd51'
+            '0655801612e6b69a81d240e6fff71262c7db73c4708766e24627c1329730c345')
+
+_source_dir="$pkgbase-$pkgver"
+
+
+prepare()
+{
+    cd "$srcdir/$_source_dir"
+    patch -p1 < "$srcdir/0002-fix-python-don-t-cache-prefix-during-install.patch"
+}
 
 build()
 {
+    cd "$srcdir/$_source_dir"
+   
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
     ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
    _gpr_opts="-R -cargs $ADA_FLAGS -fPIC -largs $LDFLAGS"
-
-    cd "$srcdir/$_source_dir"
-
-    patch -p1 < "$srcdir/0001-fix-omp-read-version-information-file-in-text-mode.patch"
-    patch -p1 < "$srcdir/0002-fix-python-don-t-cache-prefix-during-install.patch"
-
-#    cd "$srcdir/$_source_dir/python"
-#    # --gpr-opts reads all remaining arguments, so no quotes
-#    python setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
     cd "$srcdir/$_source_dir/python3"
     python setup.py build --prefix=/usr --gpr-opts $_gpr_opts
@@ -91,19 +87,6 @@ _install_license()
        "COPYING.RUNTIME" \
        "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 }
-
-#package_gnatcoll-python2()
-#{
-#    pkgdesc='GNAT Components Collection - Interface to the python 2 interpreter.'
-#    depends=('python2' 'gnatcoll-core')
-#    provides=('gnatcoll-python')
-#    replaces=('gnatcoll-python')
-#
-#    cd "$srcdir/$_source_dir/python"
-#    python setup.py install --prefix="$pkgdir/usr"
-#
-#    _install_license
-#}
 
 package_gnatcoll-python()
 {

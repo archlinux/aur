@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-bindings
 	pkgdesc = GNAT Components Collection - Language and library bindings
-	pkgver = 22.0.0
-	pkgrel = 2
+	pkgver = 23.0.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings
 	arch = i686
@@ -13,12 +13,10 @@ pkgbase = gnatcoll-bindings
 	makedepends = gnatcoll-core
 	makedepends = libiconv
 	makedepends = syslog-ng
-	source = gnatcoll-bindings-22.0.0.tar.gz::https://github.com/AdaCore/gnatcoll-bindings/archive/refs/tags/v22.0.0.tar.gz
-	source = 0001-fix-omp-read-version-information-file-in-text-mode.patch
+	source = gnatcoll-bindings-23.0.0.tar.gz::https://github.com/AdaCore/gnatcoll-bindings/archive/refs/tags/v23.0.0.tar.gz
 	source = 0002-fix-python-don-t-cache-prefix-during-install.patch
-	sha1sums = d1d3b80331dd097bb4e07289d53cd33fad247794
-	sha1sums = ca00377ecc3e05e5b89f947e0806631fd4e6b48c
-	sha1sums = 575d5d17bcf3983bea31bd75a32035b5005ab805
+	sha256sums = d51a7d1d35b2689feb6b05568702c4a22226538902ffd658e6f98a5d69d7bd51
+	sha256sums = 0655801612e6b69a81d240e6fff71262c7db73c4708766e24627c1329730c345
 
 pkgname = gnatcoll-gmp
 	pkgdesc = GNAT Components Collection - Bindings to GMP
