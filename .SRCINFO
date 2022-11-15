@@ -1,7 +1,7 @@
 pkgbase = cmos
 	pkgdesc = Small markdown renderer based on CommonMark libcmark
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~bitfehler/cmos
 	arch = x86_64
 	license = MIT

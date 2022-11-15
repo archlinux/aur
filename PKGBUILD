@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=cmos
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Small markdown renderer based on CommonMark libcmark'
 arch=(x86_64)
 url='https://sr.ht/~bitfehler/cmos'
