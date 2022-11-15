@@ -1,0 +1,50 @@
+diff --git a/configure.ac b/configure.ac
+index d42edd8..f66af10 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -290,7 +290,7 @@ AC_HEADER_TIME
+ 
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS([gettimeofday vasprintf fcntl clock_gettime strtok_r strsep])
+-AC_CHECK_FUNCS([getnameinfo strlcpy inet_ntop inet_pton signal sigaction strtoll inet_aton pipe eventfd sendfile mmap splice arc4random arc4random_buf issetugid geteuid getegid getprotobynumber setenv unsetenv putenv sysctl])
++AC_CHECK_FUNCS([getnameinfo strlcpy inet_ntop inet_pton signal sigaction strtoll inet_aton pipe eventfd sendfile mmap splice arc4random arc4random_addrandom arc4random_buf issetugid geteuid getegid getprotobynumber setenv unsetenv putenv sysctl])
+ AC_CHECK_FUNCS([umask])
+ 
+ AC_CACHE_CHECK(
+diff --git a/evutil_rand.c b/evutil_rand.c
+index 284341c..255e940 100644
+--- a/evutil_rand.c
++++ b/evutil_rand.c
+@@ -171,10 +171,11 @@ evutil_secure_rng_get_bytes(void *buf, size_t n)
+ 	ev_arc4random_buf(buf, n);
+ }
+ 
++#ifdef HAVE_ARC4RANDOM_ADDRANDOM
+ void
+ evutil_secure_rng_add_bytes(const char *buf, size_t n)
+ {
+ 	arc4random_addrandom((unsigned char*)buf,
+ 	    n>(size_t)INT_MAX ? INT_MAX : (int)n);
+ }
+-
++#endif
+diff --git a/include/event2/util.h b/include/event2/util.h
+index dde9113..e55c8b4 100644
+--- a/include/event2/util.h
++++ b/include/event2/util.h
+@@ -690,6 +690,7 @@ int evutil_secure_rng_init(void);
+  */
+ int evutil_secure_rng_set_urandom_device_file(char *fname);
+ 
++#ifdef HAVE_ARC4RANDOM_ADDRANDOM
+ /** Seed the random number generator with extra random bytes.
+ 
+     You should almost never need to call this function; it should be
+@@ -705,6 +706,7 @@ int evutil_secure_rng_set_urandom_device_file(char *fname);
+     @param datlen the number of bytes to read from datlen
+  */
+ void evutil_secure_rng_add_bytes(const char *dat, size_t datlen);
++#endif
+ 
+ #ifdef __cplusplus
+ }
