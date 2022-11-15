@@ -21,21 +21,21 @@ sha256sums_x86_64=('785a3dbf8852ae9d60579e9a755c8507db0e02939794a36f5415b4c1b158
 sha256sums_aarch64=('326c12a6dbd21f9d3bf97f464fc182e2dcd917311f4f6a4a73efd0bb949b3243')
 
 package() {
-  cd "${srcdir}"
+	cd "${srcdir}"
 
-  install -dm755 "${pkgdir}/opt"
-  cp --preserve=mode -r 'sublime_text' "${pkgdir}/opt/sublime_text"
+	install -dm755 "${pkgdir}/opt"
+	cp --preserve=mode -r 'sublime_text' "${pkgdir}/opt/sublime_text"
 
-  for res in 128x128 16x16 256x256 32x32 48x48; do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    ln -s "/opt/sublime_text/Icon/${res}/sublime-text.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/sublime-text.png"
-  done
+	for res in 128x128 16x16 256x256 32x32 48x48; do
+		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
+		ln -s "/opt/sublime_text/Icon/${res}/sublime-text.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/sublime-text.png"
+	done
 
-  sed -i 's#/opt/sublime_text/sublime_text#/usr/bin/subl#g' 'sublime_text/sublime_text.desktop'
+	sed -i 's#/opt/sublime_text/sublime_text#/usr/bin/subl#g' 'sublime_text/sublime_text.desktop'
 
-  install -dm755 "${pkgdir}/usr/share/applications"
-  install -Dm644 'sublime_text/sublime_text.desktop' "${pkgdir}/usr/share/applications/sublime_text.desktop"
+	install -dm755 "${pkgdir}/usr/share/applications"
+	install -Dm644 'sublime_text/sublime_text.desktop' "${pkgdir}/usr/share/applications/sublime_text.desktop"
 
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s '/opt/sublime_text/sublime_text' "${pkgdir}/usr/bin/subl"
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s '/opt/sublime_text/sublime_text' "${pkgdir}/usr/bin/subl"
 }
