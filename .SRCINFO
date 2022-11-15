@@ -7,7 +7,7 @@ pkgbase = dust-mail-client
 	arch = x86_64
 	license = MIT
 	source = https://github.com/Guusvanmeerveld/Dust-Mail/releases/download/0.2.3/dust-mail_0.2.3_amd64.deb
-	md5sums = f1009b2a7adb29675d6ea2c96b7701ed
-	sha256sums = c210d1a2c67e0571e2cfdfc96aeb3593781d4353231411087b4cc996998a4100
+	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dust-mail-client
