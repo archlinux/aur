@@ -119,13 +119,6 @@ prepare() {
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
-  # Title: screenshot: Move HAVE_RECORDER check into screencast service 
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2519
-  # Type:3
-  # Status: 2
-  # Comment: This fixes https://bugs.archlinux.org/task/76368?project=1&string=mutter
-  pick_mr 2519 merge
-
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git -c protocol.file.allow=always submodule update
