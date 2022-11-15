@@ -1,6 +1,6 @@
 pkgbase = prismlauncher-bin
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
-	pkgver = 5.1
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://prismlauncher.org
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = prismlauncher-bin
 	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
 	provides = prismlauncher
 	conflicts = prismlauncher
-	noextract = PrismLauncher-Linux-Qt6-5.1.tar.gz
-	source = https://github.com/PrismLauncher/PrismLauncher/releases/download/5.1/PrismLauncher-Linux-Qt6-5.1.tar.gz
-	sha256sums = a004c8b8a345a817f8b984352a4d47b926d93b66672ee68961f42701e80d5988
+	noextract = PrismLauncher-Linux-Qt6-5.2.tar.gz
+	source = https://github.com/PrismLauncher/PrismLauncher/releases/download/5.2/PrismLauncher-Linux-Qt6-5.2.tar.gz
+	sha256sums = ccd5865c65149454bf5caf618f9db89b036956def5437a2fe328264efd0dfb7c
 
 pkgname = prismlauncher-bin
