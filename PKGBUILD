@@ -3,10 +3,9 @@
 pkgname=python-pyfzf
 pkgdesc="A python wrapper for fzf"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
-depends=('python-plumbum')
 makedepends=('git' 'python-setuptools')
 provides=('python-pyfzf')
 conflicts=('python-pyfzf')
