@@ -4,7 +4,7 @@
 pkgname=gtkada
 epoch=1
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
@@ -14,22 +14,20 @@ license=('GPL3' 'custom')
 depends=('gcc-ada' 'gtk3')
 makedepends=('gprbuild')
 
-_git_hash=194c463153cf909722545765f1eb702e655df3d3
-
-source=("$pkgname-$_git_hash.tar.gz::$url/archive/$_git_hash.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "Makefile.in-patch")
-sha256sums=("84fdf8dab32e64cc9a1a2256ad3ddb5ff452179d6f9c877ff41b2d9210f88868"
+sha256sums=("011d47f7ea8dbebd5489d6933572a618fcf3ea8b1bbfb3d60622752269cec087"
             "f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4")
 
 prepare()
 {
-    cd "$srcdir/$pkgname-$_git_hash"
+    cd "$srcdir/$pkgname-$pkgver"
     patch -Np1 -i ../Makefile.in-patch
 }
 
 build()
 {
-    cd "$srcdir/$pkgname-$_git_hash"
+    cd "$srcdir/$pkgname-$pkgver"
 
     ./configure --prefix=/usr
 
@@ -49,7 +47,7 @@ build()
 
 package()
 {
-    cd "$srcdir/$pkgname-$_git_hash"
+    cd "$srcdir/$pkgname-$pkgver"
 
     make -j1 PROCESSORS=1 DESTDIR="$pkgdir" install
     
