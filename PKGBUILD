@@ -1,11 +1,11 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=qtjambi
-pkgver=6.4.0
+pkgver=6.4.1
 ##change these variables if needed##
 _qtver=qt6
 _javaver=19
 ####################################
-pkgrel=3
+pkgrel=1
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
@@ -13,7 +13,7 @@ license=('LGPL' 'GPL')
 depends=('chrpath' 'jdk-openjdk' "${_qtver}-base")
 makedepends=('ant' 'apache-ant-contrib')
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=(0c6bfd58be3ea2b9d691d09422d69feaac6e26cf212f4147eeeadbcbb51b45c3) 
+sha256sums=(280e9f49b11cfbe3fb5461e5a21f2c52aedd903596ea97ac312e1b3eeca4e90b) 
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
