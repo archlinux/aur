@@ -1,4 +1,4 @@
 /brickstore-*.pkg.tar.zst
+/brickstore-*.tar.gz
 /pkg/
 /src/
-/v*.tar.gz
