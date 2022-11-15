@@ -19,4 +19,4 @@ package() {
   install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
 
-md5sums=('e9b594a3d94317aaf51f5c3c79a8feaa')
+sha256sums=('fab7a2ce7bd149cf73144b48dc6c14c85917e2b711c04e9808573816ded3a2ee')
