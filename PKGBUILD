@@ -3,7 +3,7 @@
 
 pkgname=assistant
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 _pkgdesc_ru='Удобный инструмент для безопасного удаленного доступа и решения задач.'
 arch=('x86_64')
@@ -18,4 +18,5 @@ package() {
 
 	install -Dm644 ${pkgdir}/opt/assistant/license/License.rtf "$pkgdir/usr/share/licenses/$pkgname/License.rtf"
 	install -Dm644 ${pkgdir}/opt/assistant/scripts/assistant.desktop "$pkgdir/usr/share/applications/remote-assistant.desktop"
+	find "${pkgdir}" -type d -print0 |xargs -0 chmod 755
 }
