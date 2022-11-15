@@ -11,7 +11,7 @@ url="https://github.com/wdlkmpx/gmrun"
 license=('GPL')
 depends=('gtk3' 'popt')
 source=($pkgname-$pkgver.tar.gz::https://github.com/wdlkmpx/gmrun/archive/$pkgver.tar.gz)
-md5sums=('45b7a88c0dbf2ec4c15f469537eda106')
+sha256sums=('7715eca337877abe180b435494a12d3ec3383a6677fe638724bcd23d84a5841b')
 backup=('etc/gmrunrc')
 
 build() {
