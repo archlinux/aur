@@ -1,14 +1,16 @@
 # Maintainer: Mohamed Ahmed (Sego) <sego at sego dot app>
 pkgname=wine-tkg-roblox
 pkgrel=1
-pkgver=2.5
+pkgver=7.20
 url="https://github.com/Frogging-Family/wine-tkg-git"
 # this fork of the patch uses a wine version before the breaking changes were made to wine upstream
 # https://github.com/Frogging-Family/wine-tkg-git/issues/889
-source=("https://raw.githubusercontent.com/SegoGithub/robloxWineBuildGuide/e8761a8615499660f5e257d6401ec372c2aa074b/roblox-wine-staging-v2.5.patch")
+source=("roblox-wine-staging-v2.5.patch::https://raw.githubusercontent.com/SegoGithub/robloxWineBuildGuide/e8761a8615499660f5e257d6401ec372c2aa074b/roblox-wine-staging-v2.5.patch"
+	"git+https://github.com/Frogging-Family/wine-tkg-git")
 pkgdesc="wine-tkg-git with patches for Roblox"
 arch=('x86_64')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+	    'SKIP')
 license=('LGPL')
 
 depends=(
@@ -66,11 +68,11 @@ makedepends=('patch' 'git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex
     'lib32-libgcrypt'       $_user_makedeps
 )
 
+
+
 build() {
-    cd "$srcdir"
-    git clone https://github.com/Frogging-Family/wine-tkg-git.git
     cd "$srcdir/wine-tkg-git/wine-tkg-git"
-    git apply "$srcdir/roblox-wine-staging-v2.6.patch"
+    git apply "$srcdir/roblox-wine-staging-v2.5.patch"
     makepkg -si --noconfirm
 }
 
