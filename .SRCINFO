@@ -1,6 +1,6 @@
 pkgbase = gprbuild-bootstrap
 	pkgdesc = Static GPRbuild to bootstrap XML/Ada and GPRbuild itself
-	pkgver = 22.0.0
+	pkgver = 23.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gprbuild/
@@ -9,11 +9,11 @@ pkgbase = gprbuild-bootstrap
 	license = GPL3
 	license = custom
 	depends = gcc-ada
-	source = gprbuild-22.0.0.tar.gz::https://github.com/AdaCore/gprbuild/archive/v22.0.0.tar.gz
-	source = xmlada-22.0.0.tar.gz::https://github.com/AdaCore/xmlada/archive/v22.0.0.tar.gz
-	source = gprconfig_kb-22.0.0.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v22.0.0.tar.gz
-	sha256sums = 076e2b6ac0c7170753a6499094a6d30a98698aca2551c6796b3a617dd9ffc704
-	sha256sums = 853ed895defd395c0bc96c23a50812168b656b31befc1336f45c5541f2bec06d
-	sha256sums = cc19437e0982d9af31e09ad7c42eac6a445dac65336bd53d67ba61f630be7f13
+	source = gprbuild-23.0.0.tar.gz::https://github.com/AdaCore/gprbuild/archive/v23.0.0.tar.gz
+	source = xmlada-23.0.0.tar.gz::https://github.com/AdaCore/xmlada/archive/v23.0.0.tar.gz
+	source = gprconfig_kb-23.0.0.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v23.0.0.tar.gz
+	sha256sums = 141b403ea8a3f82b58b6a8690f8409fe295f3692b667ba3ec487fafcbd26e389
+	sha256sums = 66245a68f2e391c8dc8dc50d6d5f109eb3b371e261d095d2002dff3927dd5253
+	sha256sums = 182d9108c91390ddd67c841e45a3fc9dd23a94b33d4a1f05ed2788c1fb9b7dd2
 
 pkgname = gprbuild-bootstrap
