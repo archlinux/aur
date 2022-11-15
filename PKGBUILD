@@ -2,7 +2,7 @@
 pkgname=givemebadge-git
 _pkgname=givemebadge
 pkgver=1.0.5+r6+g96a115c
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
 arch=('any')
 url="https://github.com/AlexFlipnote/GiveMeBadge"
@@ -27,6 +27,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
+	export PATH=${HOME}/.local/bin:${PATH}
 	pyinstaller index.py --onefile --icon=assets/logo.ico --name $_pkgname
 }
 
