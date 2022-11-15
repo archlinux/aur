@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "${_pkgname}" -DCMAKE_BUILD_TYPE=Release ..
+    cmake -B build -S "${_pkgname}"
     make -C build
 }
 
