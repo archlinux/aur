@@ -1,24 +1,14 @@
 pkgbase = sublime-text-3
 	pkgdesc = Sophisticated text editor for code, html and prose - stable build
 	pkgver = 3.3211
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sublimetext.com/3
+	install = sublime-text-3.install
 	arch = x86_64
 	license = custom
 	depends = libpng
 	depends = gtk2
-	provides = sublime-text
-	conflicts = sublime-text-4-dev
-	conflicts = sublime-text-4
-	conflicts = sublime-text-3-imfix
-	conflicts = sublime-text-imfix
-	conflicts = sublime-text-nightly
-	conflicts = sublime-text-dev
-	conflicts = sublime-text2
-	replaces = sublime-text-3-imfix
 	source = https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
-	source = LICENSE
 	sha256sums = 0b3c8ca5e6df376c3c24a4b9ac2e3b391333f73b229bc6e87d0b4a5f636d74ee
-	sha256sums = 339dbd1b6ae3e699809afcdd6c690299e6fa0d385aa2ef658a52d336a3f8107f
 
 pkgname = sublime-text-3

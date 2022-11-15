@@ -1,0 +1,18 @@
+post_install() {
+  cat << _EOF
+
+  ==> sublime-text-3 install note:
+  ------------------------------------------------------------------------------
+    Since this is the last version of Sublime Text 3, you might want to disable
+    in-application reminders about new Sublime Text versions (reportedly only
+    works as a licensed user).
+
+    Add the following setting to your User Preferences file:
+    "update_check": false
+
+_EOF
+}
+
+post_upgrade() {
+  post_install
+}
