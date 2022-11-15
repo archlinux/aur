@@ -7,7 +7,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=prismlauncher
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/$pkgver/PrismLauncher-$pkgver.tar.gz")
-sha256sums=('d5774911c2fde98f6b663c76084e49e8f664a0f21e13da9196072d38191a7d1e')
+sha256sums=('307257f34ddf664d1cf33ad5ba6ad2e08cf23392f58065a223e90448235ad556')
 
 build() {
   cd "PrismLauncher-$pkgver"
