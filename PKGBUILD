@@ -1,6 +1,5 @@
-
 pkgname=mingw-w64-muparser
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A fast math parser library (mingw-w64)"
 arch=('any')
@@ -10,7 +9,7 @@ makedepends=('mingw-w64-cmake')
 license=('custom')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/beltoforion/muparser/archive/v${pkgver}.tar.gz")
-sha256sums=('b35fc84e3667d432e3414c8667d5764dfa450ed24a99eeef7ee3f6647d44f301')
+sha256sums=('0c3fa54a3ebf36dda0ed3e7cd5451c964afbb15102bdbcba08aafb359a290121')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
