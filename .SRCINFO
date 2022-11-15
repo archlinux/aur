@@ -1,0 +1,16 @@
+pkgbase = protonplus
+	pkgdesc = A simple proton version manager
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Vysp3r/ProtonPlus
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	depends = libarchive
+	source = protonplus-0.1.2.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 0ec49c7827177cb1c0dff2a11b5c0799cda9fc972817aa71756b2568b6f51aaf
+
+pkgname = protonplus
