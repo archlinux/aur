@@ -2,7 +2,6 @@ pkgbase = syncthing-gtk
 	pkgdesc = GTK3 based GUI and notification area icon for Syncthing.
 	pkgver = 0.9.4.4.2
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/syncthing-gtk/syncthing-gtk
 	arch = any
 	license = GPL2
