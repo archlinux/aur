@@ -12,7 +12,7 @@ depends=(gtk4 ruby ruby-atk=$pkgver ruby-gdk4=$pkgver)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('a6e8290f083ea4bdbd4dbfdc169383c305752fe2')
+sha256sums=('b2cc7efed6cf5d2e6738391d2054b960dca79fbd6513a517ef4216b1635f004e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
