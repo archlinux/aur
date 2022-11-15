@@ -1,12 +1,13 @@
 pkgbase = bapctools-git
 	pkgdesc = Tools for developing ICPC-style programming contest problems.
-	pkgver = r944.5832b17
+	pkgver = r1242.73bfd16
 	pkgrel = 1
 	url = https://github.com/RagnarGrootKoerkamp/BAPCtools
 	install = bapctools.install
 	arch = any
 	license = GPL 3.0
 	makedepends = git
+	makedepends = rsync
 	depends = python3
 	depends = python-yaml
 	depends = python-colorama
@@ -29,4 +30,3 @@ pkgbase = bapctools-git
 	md5sums = SKIP
 
 pkgname = bapctools-git
-
