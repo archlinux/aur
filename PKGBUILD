@@ -13,7 +13,7 @@ makedepends=(gobject-introspection ruby-native-package-installer)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7300ddc6450680c8a93005d6df84f17dfada5c26')
+sha256sums=('1db33d71ea47437687446862709f3152bba198251f271b10880e8cca7488cf0f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
