@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('18e9cc292bccd0e63a80e767c1a0c2fd85542e13')
+sha256sums=('516ebbacd7382b7e424da96eda6666d60dfad4dd407245a6ad5c1ad94e803ae4')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
