@@ -1,13 +1,13 @@
 pkgbase = dofi-manager
 	pkgdesc = A simple dotfile manager
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/akiirui/dofi
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = dofi-manager-0.1.7.tar.gz::https://github.com/akiirui/dofi/archive/v0.1.7.tar.gz
-	b2sums = 8ce8c7d4e265c61cd412f48a246dbb1738b1856fa2837ff0c0dd166af3192b65b4949e8f8a70c8ad6d623260ca4960010227ac80f4a807c2dcd238f1294f7119
+	source = dofi-manager-0.1.8.tar.gz::https://github.com/akiirui/dofi/archive/v0.1.8.tar.gz
+	b2sums = 5c3f6a89dcb2a7233c640772981fc7757e67ad09fd55a8fb7607ce69b5cb239c7fa1d797dee78e7a65060df3ec389b847a49d3f54695c914b678d732f58c7437
 
 pkgname = dofi-manager
