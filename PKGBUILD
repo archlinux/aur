@@ -15,7 +15,7 @@ replaces=(ruby-gdkpixbuf2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3960aa2c4ebc8b823c8db971aaed5fe03e1c412a')
+sha256sums=('71b9eeb744e238e4cccced0d097804a24af960f37109973392b0038dd49e24e5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
