@@ -14,8 +14,8 @@ conflicts=("${_pkgbase}")
 source=("git+https://github.com/HRex39/rtl8852be.git#branch=dev"
        'dkms.conf')
 sha256sums=('SKIP'
-            '70c218fb75c47d1be0833319ef77f464888974722b241ebce4b85add4509a357')
-            
+            '63e8368df35bb656f5abae3d189604480387ea838ea79d34f98a4d7848cb1b9d')
+
 pkgver() {
     cd ${srcdir}/${_pkgbase}
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,6 +26,7 @@ package() {
     mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
     cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
     cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    
     # Set name and version
     sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
         -e "s/@PKGVER@/${pkgver}/" \
