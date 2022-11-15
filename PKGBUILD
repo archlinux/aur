@@ -2,8 +2,8 @@
 
 _pkgname=mmpose
 pkgname=python-mmpose
-pkgver=0.28.1
-pkgrel=1
+pkgver=0.29.0
+pkgrel=2
 pkgdesc='OpenMMLab Pose Estimation Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmpose'
@@ -33,7 +33,7 @@ optdepends=(
   python-trimesh
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmpose/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('fa5450fc5ae16f93fa5ebcb2c70bcba7e065a747ba2137f2970f8eb3eb588eac55054cd6d2455a887f56abe59eb768dc79814fe854e0e843641864c0b1d2e5ec')
+sha512sums=('587cd6f181df62b7e6ee6775709ef47f626d91c0dd936912a087a8ac0d5c807e52087e29f4dbd4752caa0157554ef190012ce3100d7bd85fde3b7bea860ef5cc')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -43,5 +43,7 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rfv ${pkgdir}${site_packages}/tests
 }
 # vim:set ts=2 sw=2 et:
