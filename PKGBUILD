@@ -1,9 +1,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Levente Polyak <anthraxx@archlinux.org>
 
 pkgbase=grails
 pkgname=(grails grails-docs)
-pkgver=5.2.4
+pkgver=5.2.5
 pkgrel=1
 pkgdesc='Groovy on rails, a web framework'
 url='https://grails.org/'
@@ -16,14 +16,12 @@ options=(!emptydirs)
 noextract=(${pkgname[1]}-$pkgver.zip)
 source=(${pkgname[0]}-$pkgver.zip::https://github.com/grails/grails-core/releases/download/v$pkgver/grails-$pkgver.zip
         ${pkgname[1]}-$pkgver.zip::https://github.com/grails/grails-doc/releases/download/v$pkgver/grails-docs.zip)
-b2sums=('d6a1aaba310252d4639a4ceaaba5e908109dd9b18d424045d16f2cc9695daccb2e2aef8c4ca95478a61a81eb3a2516b9a757c63e99dd6963839810e1cd062ae3'
-        'cd850d460aecf164bbc1e60626e5f08345302e0f70f00158862f47db0d15a6aac9c165e2db9225225a8d8c7d7ce029021027439ed73deea3a2bf088a7f85fad6')
+b2sums=('8d26420cdeaaaca971940cdcf9eb9495a0e381ee5c7ab22ca9f1a50ad6a1d2baa24606ddef7c34f378311ef53eb29b80705cbcd4a7cd486ff4fff974e85a9825'
+        '453330108ed6de5260cc2121f897d3a41f26aacfa3a61f1804d26077633381030f76fe87584517e7958a91e081ad92b5d0fc1998d2c6696103c111e51e8c4145')
 
 prepare() {
-  cd $pkgbase-$pkgver
-  echo 'export GRAILS_HOME=/usr/share/grails' > "${srcdir}/${pkgbase}.profile"
-  setconf bin/grails APP_HOME /usr/share/grails
-  tail bin/grails
+  echo 'export GRAILS_HOME=/usr/share/grails' > $pkgbase.profile
+  setconf $pkgbase-$pkgver/bin/grails APP_HOME /usr/share/grails
 }
 
 package_grails() {
@@ -37,14 +35,13 @@ package_grails() {
   install -Dm644 media/icons/*.png -t "$pkgdir/usr/share/pixmaps"
 
   # clean up
-  cd "$pkgdir/usr/share/$pkgname"
-  rm -rf doc INSTALL LICENSE README
-  find "${pkgdir}/usr/share" -name "*.bat" -exec rm {} \;
+  rm -rf "$pkgdir/usr/share/$pkgname/"{doc,INSTALL,LICENSE,README}
+  find "$pkgdir/usr/share" -name "*.bat" -exec rm {} \;
 }
 
 package_grails-docs() {
   pkgdesc='Documentation for Grails'
   install -d "$pkgdir/usr/share/doc" "$pkgdir/usr/share/grails"
-  unzip "grails-docs-$pkgver.zip" -d "$pkgdir/usr/share/doc/grails-$pkgver"
+  unzip grails-docs-$pkgver.zip -d "$pkgdir/usr/share/doc/grails-$pkgver"
   ln -s "/usr/share/doc/grails-$pkgver" "$pkgdir/usr/share/grails/doc"
 }
