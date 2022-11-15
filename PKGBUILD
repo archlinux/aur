@@ -2,11 +2,11 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
-license=("LGPL")
+license=('LGPL')
 depends=(
 	'mingw-w64-crt'
 	'mingw-w64-libpng'
@@ -15,12 +15,13 @@ depends=(
 	'mingw-w64-x265'
 	'mingw-w64-rav1e'
 	'mingw-w64-dav1d'
+	'mingw-w64-svt-av1'
 )
 makedepends=('mingw-w64-cmake')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('50def171af4bc8991211d6027f3cee4200a86bbe60fddb537799205bf216ddca')
+sha256sums=('9901cb0743caa80c316fabcf785c39466f41dda5c42152f2b7992be43db8d047')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
 )
@@ -31,12 +32,21 @@ _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DCMAKE_CXX_STANDARD_LIBRARIES='-lws2_32 -lwsock32 -luserenv -lbcrypt'
+	-DCMAKE_CXX_STANDARD_LIBRARIES='-lws2_32 -lwsock32 -luserenv'
+	-DWITH_RAV1E=OFF
+	-DWITH_SvtEnc=ON # Only supported on 64 bits platforms
+	-DWITH_SvtEnc_PLUGIN=OFF
 	-DWITH_EXAMPLES=OFF )
+
+prepare() {
+	cd "${_srcdir}"
+	sed -i 's/int input_value = pow2_value;/[[maybe_unused]] int input_value = pow2_value;/' 'libheif/plugins/heif_encoder_svt.cc'
+}
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
