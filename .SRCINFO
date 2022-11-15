@@ -1,0 +1,14 @@
+pkgbase = brother-mfc-b7715dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-B7715DW
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother commercial license
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103658/mfcb7715dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = c89cebb555a505d5285f58e6b361ef76a837aa839cdc4161ab6c755745f6907c
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-b7715dw
