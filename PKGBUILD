@@ -12,8 +12,8 @@ depends=('vim')
 groups=('vim-plugins')
 source=("$pkgname.vim::https://www.vim.org/scripts/download_script.php?src_id=9750"
         'https://raw.githubusercontent.com/tomasr/molokai/master/LICENSE.md')
-md5sums=('fea8138fa815caa399f8b4fcf56bfe0e'
-         '338d7dd470454d1998138ca71340ce16')
+sha256sums=('1a1f3d14ed6d73836948d610fb2644bbf06f3cf2a6e7afe079bb957ef5a3f617'
+            '263e96052648ab398088d855a62bf28c1dc1b13de88ea6138bb0c8c1adab6dee')
 
 package() {
   install -Dm644 "$pkgname.vim" \
