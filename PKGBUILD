@@ -13,7 +13,7 @@ depends=(ruby glib2 ruby-pkg-config ruby-native-package-installer)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('001dda4e7f927c11bce06beb3d7dbc7185e26692')
+sha256sums=('77f24e0bee67f3c272901b483e37cb3bb682083da8ea02073ec87d0352bbc53c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
