@@ -16,14 +16,16 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt' 'qt6-tools')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
+provides=(telegram-desktop)
+conflicts=(telegram-desktop)
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
-        "block-sponsored_messages.patch"
-        "64gramdesktop.desktop")
+        "block-sponsored_messages.patch")
 sha512sums=('f024a34ec6eb90833c5b24735f50f32761ab8a1f51232d0953b3a7982582c10f3b8f20bd1dac60cd14d7ae5c66decf782814b1d95af718c83e0aa49afbfdcdae'
             'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae'
             '71e91adfa3d8fb198380069e42a6119fb37a588df2ad47b8eeaf5a87c874cb257da1e45eaa8229333bb7fc8a9218fb3411977642239bc93f01e37a2fdf58db3e')
 prepare() {
     cd $_pkgname-$pkgver-full
+    rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
     patch -Np1 --binary -i ../block-sponsored_messages.patch
 }
 
@@ -36,8 +38,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
-        -DTDESKTOP_API_TEST=ON \
-        -DTDESKTOP_LAUNCHER_BASENAME=64gramdesktop
+        -DTDESKTOP_API_TEST=ON 
     sed -i '/LINK_LIBRARIES/s/$/ \/usr\/lib\/liblzma.so/' build/build.ninja
     ninja -C build
 }
@@ -45,8 +46,5 @@ build() {
 package() {
     cd $_pkgname-$pkgver-full
     DESTDIR=$pkgdir ninja -C build install
-    mv "$pkgdir/usr/bin/telegram-desktop" "$pkgdir/usr/bin/64gram-desktop"
-    install -Dm644 "$srcdir/64gramdesktop.desktop" -t "$pkgdir/usr/share/applications"
-    find "$pkgdir" -type f -name "telegram.png" -exec rename telegram.png 64gram.png {} \;
     install -Dm644 /dev/null "$pkgdir/etc/tdesktop/externalupdater"
 }
