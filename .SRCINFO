@@ -1,0 +1,13 @@
+pkgbase = fig-headless-bin
+	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
+	pkgver = 2.7.8
+	pkgrel = 1
+	url = https://fig.io
+	arch = x86_64
+	license = custom
+	provides = fig
+	conflicts = fig
+	source = fig-headless-bin-2.7.8.tar.xz::https://repo.fig.io/generic/stable/asset/2.7.8/x86_64/fig_headless.tar.xz
+	sha256sums = 932daba32064d7cbbd85a7eb683fc0049c076576734fb89946d62d42fd39845f
+
+pkgname = fig-headless-bin
