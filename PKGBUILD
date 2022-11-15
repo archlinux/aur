@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('perl' 'perl-net-server' 'spamassassin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mpaperno/spampd/archive/$pkgver.tar.gz"
         spampd.service)
-md5sums=('e5cd2854e151e1088e872ef4f06a5b6f'
-         '009db21d0046a73bde74e403e903da6e')
+sha256sums=('91e60f10745ea4f9c27b9e57619a1bf246ab9a88ea1b88c4f39f8af607e2dbae'
+            '2bd1612761b07e6a613331b6448d4e0609c69aaf451707ddba1e1d9e1c0a35b6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
