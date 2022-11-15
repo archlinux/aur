@@ -4,7 +4,7 @@
 
 pkgname=openspades-git
 _pkgname=openspades
-pkgver=0.1.3.rc.156.gffb3f33a
+pkgver=0.1.3.rc.510.g9c5ba847b045
 pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75 (git version)"
 arch=('i686' 'x86_64')
