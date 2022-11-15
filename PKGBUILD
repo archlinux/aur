@@ -1,7 +1,7 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
 pkgver=19.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Matrix
 _gitname=pvr.iptvsimple
@@ -30,6 +30,8 @@ sha256sums=('57710d3add72301d47a9eef016916ee5f61b7b8604c73450d67b9ba962eff60c'
 build() {
     mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"
     cd "${_gitname}-${pkgver}-${_koditarget}/build"
+    
+    CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
 
     cmake \
             -DCMAKE_INSTALL_PREFIX=/usr \

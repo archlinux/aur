@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-pvr-iptvsimple
 	pkgdesc = IPTV Simple PVR client addon for Kodi
 	pkgver = 19.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
 	arch = armv6h
 	arch = armv7h
