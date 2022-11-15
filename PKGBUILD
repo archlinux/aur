@@ -3,9 +3,10 @@
 pkgname=qed
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Quick Edit - A CLI tool to quickly edit and save files saved slots 1-10"
 arch=(any)
+pkgdesc="Quick Edit - A CLI tool to quickly edit and save files saved slots 1-10"
 url="https://gitlab.com/a4to/${pkgname}"
+install="qed.install"
 license=('MIT')
 depends=(dialog)
 source=(
@@ -13,12 +14,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '153b76f65c456f13b5b802ad4d62d606463e901ef8a413698179e61758f1ddb86e49bb57bc8d969554f545d4fb681f5107a6ecc1f0a8e8e33f65cc29700ede26'
-  'dfe3a0c23599faf4a0433d0c4321b93d7afe6a0397ae86458a23f6ce5677affe6a1d826ece1021e798f8a74b71d402d609148be52f7f4ed9e5d7c26220aa8f80'
+  '09354ba5dd61e6708854d005243ece0ceebb267b227c1de5e1da3436aff8cde2afbaad04e94e2f9a7a916621c6b28b951a02c2d1b5698086a58c05694ba57d6e'
+  'fbcca033d8fde4fccdd911a58ecaa65d0741752f395a80cb94fa8cc09253e1921f0064930bd01b6154d897d70cf40d86910f04efdcd9c12c9fe4022cfcf3d9e8'
   )
 md5sums=(
-  'd0e0e1114ad831a01ddfe2c30668b783'
-  'ad1d866ea66a5bd9d2278b79162f776c'
+  '6add8565f2659dd4d06ae97376f66dd4'
+  'f0c0d2c88d0877d1a1456f9384c43b84'
   )
 validpgpkeys=('9A1F3F41DDA55A60331CB8DD3714CB0967D15980')
 
