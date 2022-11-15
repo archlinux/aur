@@ -2,7 +2,7 @@
 pkgname=ooniprobe-desktop
 pkgver=3.8.2
 _cliver=3.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
@@ -30,6 +30,7 @@ prepare() {
 
 build() {
   cd "${pkgname#ooni}-$pkgver"
+  export NODE_OPTIONS=--openssl-legacy-provider
   yarn install --cache-folder "$srcdir/yarn-cache"
   node_modules/.bin/next build renderer
   node_modules/.bin/next export renderer
