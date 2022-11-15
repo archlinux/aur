@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-scikit-build)
 provides=(${_base%%-*})
 conflicts=(${_base%%-*})
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('741b33d0f065dfccf6164c3436d88b770ca0307d4d71932f1ab63cc3335cba49a6639c6e15277f3c16de0246bd79dadf4ae0e9d34533a505dcd9d101703dbf0b')
+sha512sums=('f6193ba9d1d55da11a437d17b96ef7c0574fd0033c05b1f2d2a4c652241a460a1066f2044bbbe9f134e2af3c8ff185304053da5dd7a10e337cdf60f910a11062')
 
 build() {
   cd ${_base}-${pkgver}
