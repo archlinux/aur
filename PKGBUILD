@@ -2,7 +2,7 @@
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-pkgbase=linux-fsync-nobara
+pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
 pkgver=6.0.8
 pkgrel=1

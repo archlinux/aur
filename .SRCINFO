@@ -1,4 +1,4 @@
-pkgbase = linux-fsync-nobara
+pkgbase = linux-fsync-nobara-bin
 	pkgdesc = The Linux kernel and modules of Nobara Project - Prebuilt version
 	pkgver = 6.0.8
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = linux-fsync-nobara
 	sha256sums = 9f08fcb602f8d4ca698e0dae1ec877c8cb95ab90f325bd0405e4b1052f453e6a
 	sha256sums = 038225911c7c74678b9009fa0982a1a1a4fd9fb4f82e39d17ebe5c826b58cfec
 
-pkgname = linux-fsync-nobara
+pkgname = linux-fsync-nobara-bin
