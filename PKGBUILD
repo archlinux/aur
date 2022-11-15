@@ -5,7 +5,7 @@ pkgver=6.4.0
 _qtver=qt6
 _javaver=19
 ####################################
-pkgrel=2
+pkgrel=3
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
@@ -34,13 +34,13 @@ prepare() {
     ln -s "/usr/share/${_qtver}/modules" qtdir/modules
     #this should enable use of system qt
 
-    export QTDIR="${srcdir}/${pkgname}-${pkgver}/qtdir"
-    export JAVA_HOME_TARGET="/usr/lib/jvm/java-${_javaver}-openjdk"
 }
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-    ant all
+    export QTDIR="${srcdir}/${pkgname}-${pkgver}/qtdir"
+    export JAVA_HOME_TARGET="/usr/lib/jvm/java-${_javaver}-openjdk"
+	ant all
 }
 
 package() {
