@@ -1,0 +1,4 @@
+*.zip
+*.tar.gz
+.kdev4/*
+archupdate.kdev4
