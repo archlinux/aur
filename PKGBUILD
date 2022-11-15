@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('GPL2' 'GPL3')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mulkieran/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('08ddcd37eb8f1c70447d9cfb70e2a737')
+sha256sums=('d6ab4ee02b60e03d7bc442c34203ea8398f0c305220d8e26ca00124c8186f84e')
 
 check() {
     cd "$srcdir/${_pkgname}-$pkgver"
