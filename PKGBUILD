@@ -16,8 +16,8 @@ backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
 url="https://github.com/NagiosEnterprises/nrpe"
 source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
         nrpe.sysusers)
-md5sums=('ace32f8d41e9b9138ea5d40b8beed274'
-         '079d1f8c06598303be95151a8985927b')
+sha256sums=('a1f14aa8aaf935b576cc55ab5d77b7cb9c920d7702aff44c9d18c4c841ef8ecc'
+            '9430d6c7ccf9817f9c66eda8e2126b0b0fdad93fa17dee9227627c35a4101ad3')
 
 build() {
   cd $pkgname-$pkgver
