@@ -22,7 +22,7 @@ optdepends=('gcc: for compiling c++ sources',
 	'ghostscript: for LaTeX figures',
 	'asymptote: for visualizations'
 )
-makedepends=('git')
+makedepends=('git' 'rsync')
 source=("${_pkgname}::git+https://github.com/RagnarGrootKoerkamp/BAPCtools")
 md5sums=('SKIP')
 install=bapctools.install
