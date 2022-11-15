@@ -3,7 +3,7 @@
 
 pkgname=xplot
 pkgver=0.90.7.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Reads from a xpl file to generate plots"
 arch=('x86_64')
 url="http://www.xplot.org/"
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('libx11' 'perl')
 source=("http://www.xplot.org/xplot/$pkgname-$pkgver.tar.gz")
 md5sums=('755e32f8ae429f1c546fdeee7c28c92e')
+sha256sums=('01ceac45540f2d01e6ffe368cc0e950f4bb7fe1d235efde5349a09199e662240')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
