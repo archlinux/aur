@@ -10,7 +10,7 @@ url="https://github.com/ianweller/python-simplemediawiki"
 license=('LGPL')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ianweller/python-simplemediawiki/archive/${pkgver/_/}.tar.gz")
-md5sums=('7c10122a1a884a902ac7fda5f01f4986')
+sha256sums=('417d17d65c7f6b94519a4f6b7fc2ec7cee2b5ee7a0515e19b3e4bf30c55904a8')
 
 package() {
   cd "python-simplemediawiki-${pkgver/_/}"
