@@ -1,7 +1,7 @@
 pkgbase = givemebadge
 	pkgdesc = Pretty simple Discord bot to get the active developer badge
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AlexFlipnote/GiveMeBadge
 	arch = any
 	license = MIT
