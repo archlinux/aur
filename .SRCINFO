@@ -8,7 +8,7 @@ pkgbase = mediapurge
 	depends = ffmpeg
 	depends = gtk2
 	source = http://www.peter-ebe.de/ubuntu/repo/binary/mediapurge.deb
-	sha256sums = 642ef250cc3008ffc8310d5e941ffd801837683980749ff1f24edf4b3b103b2a
+	sha256sums = 4bc0cdff35f5d7e1aca60364d22b609add7a08e532e0a0bad4db6ace282dd528
 
 pkgname = mediapurge
 
