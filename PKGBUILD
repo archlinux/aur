@@ -6,9 +6,9 @@
 pkgbase="citra-bin"
 pkgname=("citra-bin" "citra-qt-bin")
 # to update: reset $pkgrel to 1, go to https://github.com/citra-emu/citra-nightly/releases and copy $pkgver (release) and $_ref (date-commit)
-_ref=20220823-141471e
-pkgver=1781
-pkgrel=2
+_ref=20221113-94d0399
+pkgver=1809
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 url="https://citra-emu.org"
 license=("GPL2")
@@ -23,7 +23,7 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/citra-emu/citra-nightly/releases/download/nightly-$pkgver/citra-linux-$_ref.tar.xz"
         "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
-sha256sums=('016bbfd743262110d45cfe6a3eb17fa5fb6d2a30f22984ad3bea0acab9c4fc2b'
+sha256sums=('66e073a865bb508d792bb8d5b5be7c40af413a65fbd7dc9557ab83ca392154de'
             'b4c9433fbcbb1b9ddf19f009252e89d8d653ebac7f67d5d0beb49259f583ab69')
 
 package_citra-bin(){
