@@ -1,6 +1,6 @@
 pkgbase = kitty-git
 	pkgdesc = Modern, hackable, featureful, OpenGL based terminal emulator
-	pkgver = r10552.g2a2dca8a
+	pkgver = r11076.gc03af4d29
 	pkgrel = 2
 	epoch = 1
 	url = https://sw.kovidgoyal.net/kitty/
@@ -20,6 +20,7 @@ pkgbase = kitty-git
 	makedepends = python-sphinx-inline-tabs
 	makedepends = python-sphinxext-opengraph
 	makedepends = python-sphinx-furo
+	makedepends = go
 	depends = python
 	depends = freetype2
 	depends = fontconfig
