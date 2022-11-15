@@ -1,0 +1,27 @@
+pkgbase = linux-fsync-nobara
+	pkgdesc = The Linux kernel and modules of Nobara Project - Prebuilt version
+	pkgver = 6.0.8
+	pkgrel = 1
+	url = https://nobaraproject.org
+	arch = x86_64
+	license = GPL2
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	provides = NTFS3-MODULE
+	options = !strip
+	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05036983-kernel/kernel-core-6.0.8-301.fsync.fc37.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05036983-kernel/kernel-modules-6.0.8-301.fsync.fc37.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05036983-kernel/kernel-modules-extra-6.0.8-301.fsync.fc37.x86_64.rpm
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 21c36ad6da50f1af2edd9f1dd08e0228ff33a81ce41eab9a0b5037a719a88ebe
+	sha256sums = 9f08fcb602f8d4ca698e0dae1ec877c8cb95ab90f325bd0405e4b1052f453e6a
+	sha256sums = 038225911c7c74678b9009fa0982a1a1a4fd9fb4f82e39d17ebe5c826b58cfec
+
+pkgname = linux-fsync-nobara
