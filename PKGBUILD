@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=cmos
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Small markdown renderer based on CommonMark libcmark'
 arch=(x86_64)
 url='https://sr.ht/~bitfehler/cmos'
@@ -10,9 +10,8 @@ depends=(
   'libunistring'
   'cmark'
   'source-highlight'
-  'boost'
 )
-makedepends=(git meson ninja)
+makedepends=(git meson ninja boost)
 provides=('cmos')
 conflicts=('cmos-git')
 
