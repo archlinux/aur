@@ -28,7 +28,7 @@ prepare() {
   ln -srfT "$srcdir/jitify-$_jitify_commit" cupy/_core/include/cupy/jitify
 
   # patch for hipThrust
-  sed -i 's/thrust::make_constant_iterator/rocprim::make_constant_iterator/g' cupy/cuda/cupy_thrust.cu
+  sed -i '4 i\#include <thrust/iterator/constant_iterator.h>'  cupy/cuda/cupy_thrust.cu
 }
 
 build() {
