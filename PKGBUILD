@@ -11,8 +11,8 @@ options=(emptydirs)
 depends=('rrdtool' 'perl-file-tail')
 source=("https://mailgraph.schweikert.ch/pub/$pkgname-$pkgver.tar.gz"
 mailgraph.service)
-md5sums=('0f0ae91968ea7ae0c1d14985c560530b'
-         '92d411ab7f14083a77faa07b2ade653f')
+sha256sums=('50ea6ea8a33f5015926edd8b70a4d954ac27df4863514bddc5e69c948a7aac81'
+            'c6983cbd698457d09db8911f18da73d93451f5940fc4adddd04e0e1859d8d0b1')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
