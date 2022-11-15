@@ -10,7 +10,7 @@ url="https://shh.thathost.com/pub-unix"
 license=('PerlArtistic')
 options=('staticlibs')
 source=($url/files/$pkgname-$pkgver.tar.gz)
-md5sums=('30cab93040d2892539847437b7246b8b')
+sha256sums=('88c69e3f0b920b1ef93f6c10f354786f171d7cb3ab170a463bb9ab8bbf13a02b')
 
 build() {
   cd $pkgname-$pkgver
