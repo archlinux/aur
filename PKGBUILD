@@ -26,9 +26,9 @@ pkgver() {
 
 build() {
     cmake -B build -S "${_pkgname}" -D CMAKE_INSTALL_PREFIX=/usr
-    make -C build
+    cmake --build build
 }
 
 package() {
-    DESTDIR="$pkgdir" make -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
