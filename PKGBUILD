@@ -1,8 +1,8 @@
-# Maintainer: farawayer <farwayer@gmail.com>
+# Contributor: farawayer <farwayer@gmail.com>
 
 _gemname=simctl
 pkgname=ruby-$_gemname
-pkgver=1.6.6
+pkgver=1.6.8
 pkgrel=1
 pkgdesc='Ruby interface to xcrun simctl'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('e89b32372b4acec62ea5e04e35756cf488a8aea4')
+sha1sums=('0cbd93d42159b7878253d30c7f505781a3dc1cea')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
