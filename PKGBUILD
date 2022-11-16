@@ -3,20 +3,22 @@
 
 pkgname=gnatcoll-sqlite
 epoch=1
-pkgver=22.0.0
-pkgrel=2
+pkgver=23.0.0
+pkgrel=1
 _repo_name=gnatcoll-db
 
 pkgdesc='GNAT Components Collection - SQLite database support'
-url='https://github.com/AdaCore/gnatcoll-db/'
+url='https://github.com/AdaCore/gnatcoll-db'
 arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
 depends=('gnatcoll-sql')
 makedepends=('gprbuild')
 
-source=("https://github.com/AdaCore/gnatcoll-db/archive/refs/tags/v22.0.0.tar.gz")
-sha256sums=('8d29e2047adac2de8bc20ae50d12fe6759428197079082d246d7f1cd480d380f')
+#source=("https://github.com/AdaCore/gnatcoll-db/archive/refs/tags/v22.0.0.tar.gz")
+source=("$_repo_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+
+sha256sums=('0a4cc9f9c034be34ca4d08ae2c8fedce66c462719a2e1035d916559f6eee7a4d')
 
 build()
 {
