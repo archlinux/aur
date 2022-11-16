@@ -3,7 +3,7 @@
 
 pkgname=pint
 
-pkgver=0.31.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="Prometheus rule linter"
 url="https://github.com/cloudflare/pint"
@@ -13,7 +13,7 @@ depends=()
 makedepends=('go')
 
 source=(https://github.com/cloudflare/pint/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('e01c12e07b78d1c37b84a268431e78ca8c9a4fa5adbcb13f3ca6c8477e7e369b76efaa57bdf093be7fa1bf17babf0ad8a8d7a3e15787349a683af571dbcd99d0')
+sha512sums=('7ae24252dfd08f34b7b6f8619781e068f91eef7bffe22b0c7eedbc40653cd9ff4f16fab7aa7d76bc486952df4f1d83da5ba1076f4ae39511296b5e3c4e88a7c7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
