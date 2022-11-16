@@ -1,7 +1,7 @@
 # Maintainer: Angelo Verlain <hey@vixalien.com>
 
 pkgname=supabase-bin
-pkgver=1.11.4
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 url="https://github.com/supabase/cli"
@@ -10,7 +10,7 @@ arch=("x86_64")
 provides=("supabase")
 conflicts=("supabase")
 source=("https://github.com/supabase/cli/releases/download/v$pkgver/supabase_${pkgver}_linux_amd64.tar.gz")
-sha256sums=("7216e36a5caec37ba381ed74006706c9e98762325cf858dc5a7ce1f87517fbe5")
+sha256sums=("0e1cdf8d58923f129feb43fe5422c335b5c55409ae163d03efbb1c45e57d56e4")
 optdepends=(
     'bash-completion: for shell auto-completion'
     'zsh-completions: for shell auto-completion'
