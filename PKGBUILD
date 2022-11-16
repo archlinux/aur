@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqminer
-_pkgver=8.4
+_pkgver=8.5
 pkgname=r-${_pkgname,,}
-pkgver=8.4
-pkgrel=4
+pkgver=8.5
+pkgrel=1
 pkgdesc='Efficiently Read Sequence Data (VCF Format, BCF Format, METAL Format and BGEN Format) into R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e8856b5896df4bc5ddc09d9f7855699e8a1f9579835805e1f1f9c196380c7dd5')
+sha256sums=('a7815161974200ed29086ff2c75521635292e281a63cd1874f7e8ef5165928ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
