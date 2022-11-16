@@ -12,6 +12,7 @@ pkgbase = libfprint-goodixtls-git
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = doctest
+	makedepends = cmake
 	depends = libgusb
 	depends = openssl
 	depends = pixman
