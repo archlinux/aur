@@ -2,7 +2,7 @@
 _base=einsumt
 pkgname=python-${_base}
 pkgdesc="Multithreaded version of numpy.einsum function"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 arch=(any)
 url="https://github.com/mrkwjc/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('868087bae6660fb7127857dba6991df883c9ec07bc667e121ae9dffb5ff8ed6d51ac00f2f41edc48e08e922880aff55076216b4b1a13d83de81ef694a673bdef')
+sha512sums=('f2d3b1a5ccad3c8982722841c33db1e1fe8dc78b237f870991e783b99d6b04e33c4a6b5f0ecb3baa5fa3228cb8cfbccef580b3f07391c0e4247a3b8181e5762b')
 
 build() {
   cd ${_base}-${pkgver}

@@ -1,6 +1,6 @@
 pkgbase = python-einsumt
 	pkgdesc = Multithreaded version of numpy.einsum function
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/mrkwjc/einsumt
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-einsumt
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = einsumt-0.9.2.tar.gz::https://github.com/mrkwjc/einsumt/archive/0.9.2.tar.gz
-	sha512sums = 868087bae6660fb7127857dba6991df883c9ec07bc667e121ae9dffb5ff8ed6d51ac00f2f41edc48e08e922880aff55076216b4b1a13d83de81ef694a673bdef
+	source = einsumt-0.9.3.tar.gz::https://github.com/mrkwjc/einsumt/archive/0.9.3.tar.gz
+	sha512sums = f2d3b1a5ccad3c8982722841c33db1e1fe8dc78b237f870991e783b99d6b04e33c4a6b5f0ecb3baa5fa3228cb8cfbccef580b3f07391c0e4247a3b8181e5762b
 
 pkgname = python-einsumt
