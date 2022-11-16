@@ -3,39 +3,37 @@
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools
-pkgver=2022
-pkgrel=2
+epoch=1
+pkgver=23.0.0
+pkgrel=1
 
 pkgdesc="Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub"
 url='https://github.com/AdaCore/libadalang-tools'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3')
 
-depends=('libadalang')
+depends=('ada-web-server' 'libadalang')
 makedepends=('gprbuild' 'which')
 
-source=("https://github.com/AdaCore/libadalang-tools/archive/refs/tags/v22.0.0.tar.gz"
-        "0001-pp-actions.adb-patch-for-compatibility-with-release-.patch"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "0002-Makefile-add-GPRBUILD_FLAGS-variable.patch"
-        "0003-Makefile-don-t-force-j-to-be-passed-to-gprbuild.patch"
-)
-sha1sums=('a71465b19d099a1a0f9bcaf029ede067c388c187'
-          'ef13af536f419fb8181810b17a5feebff1b98342'
-          '31bc3f4b157782e95dc7cdbc3185e4f74f7fc576'
-          'af4b98efc227ac64c02f5dde4b20e39c8c967470')
+        "0003-Makefile-don-t-force-j-to-be-passed-to-gprbuild.patch")
+
+sha256sums=('c6e06d7d0df874cab2b61530165f94b93ebd900b59735ff702b2f9d70456faa6'
+            'c71fcd7a535c348c24ba984186d3663f41085296e8dc7b79c06bb9d85fabf419'
+            '627fd033fd90630c0b5cf24dff4ca6537c903215148384b966567986c17f63aa')
 
 prepare()
 {
-    cd "$srcdir/libadalang-tools-22.0.0"
+    cd "$srcdir/$pkgname-$pkgver"
 
-    patch -p1 < "$srcdir/0001-pp-actions.adb-patch-for-compatibility-with-release-.patch"
     patch -p1 < "$srcdir/0002-Makefile-add-GPRBUILD_FLAGS-variable.patch"
     patch -p1 < "$srcdir/0003-Makefile-don-t-force-j-to-be-passed-to-gprbuild.patch"
 }
 
 build()
 {
-    cd "$srcdir/libadalang-tools-22.0.0"
+    cd "$srcdir/$pkgname-$pkgver"
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -50,7 +48,7 @@ build()
 
 package()
 {
-    cd "$srcdir/libadalang-tools-22.0.0"
+    cd "$srcdir/$pkgname-$pkgver"
 
     make DESTDIR="$pkgdir/usr/"   \
          install-lib
