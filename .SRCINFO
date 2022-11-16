@@ -1,6 +1,6 @@
 pkgbase = courier-maildrop
 	pkgdesc = mail delivery agent - procmail like but nicer syntax
-	pkgver = 3.0.8
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = http://courier-mta.org/maildrop/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = courier-maildrop
 	depends = courier-unicode>=2.1
 	depends = libidn
 	conflicts = courier-mta
-	source = http://downloads.sourceforge.net/project/courier/maildrop/3.0.8/maildrop-3.0.8.tar.bz2
+	source = http://downloads.sourceforge.net/project/courier/maildrop/3.0.9/maildrop-3.0.9.tar.bz2
 	options = !libtool
 	options = !staticlibs
-	sha512sums = a9a7d10ac002f5790d4a8e2856549d7f407a69287b0aafb43b55bdf5fc59693fb7dd46e8fff6348b445b84aeb41287a85f6e1c998d0965bfebb092157ed2f503
+	sha512sums = 8ce61151b000d14947ba51722a981b1dc2d14ff488f1cdd555eebb7c925e5f9b8b4bea8be5ff3fa621a2c75306f5393f245c49b4758e4419cca8b252deea6be6
 
 pkgname = courier-maildrop
 
