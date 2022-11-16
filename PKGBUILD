@@ -2,7 +2,7 @@
 
 pkgname=lc0
 pkgver=0.28.2
-pkgrel=4
+pkgrel=5
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
 		       specifically those of the LeelaChessZero project."
 arch=('x86_64')
@@ -10,8 +10,8 @@ arch=('x86_64')
 url="https://lczero.org/"
 license=('GPL3')
 
-depends=('ocl-icd' 'zlib' 'opencl-driver' 'clang')
-makedepends=('git' 'meson' 'eigen' 'opencl-headers' 'openblas-cblas-git')
+depends=('ocl-icd' 'opencl-driver' 'openblas-cblas-git')
+makedepends=('git' 'meson' 'eigen' 'opencl-headers')
 checkdepends=('gtest')
 optdepends=("cudnn: Neural network library for use with nvidia GPUs")
 
