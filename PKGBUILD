@@ -12,7 +12,7 @@ depends=('python' 'ninja' 'python-requests')
 makedepends=('git' 'python-setuptools')
 optdepends=('clang: for compiling C/C++ code'
             'llvm: tools for C/C++ development'
-            'ld.lld: for linking'
+            'lld: for linking'
             'nasm: for compiling assembly code')
 source=("${pkgname}::git+https://github.com/devse-org/osdk.git")
 sha256sums=('SKIP')
