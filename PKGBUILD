@@ -8,7 +8,7 @@ pkgdesc="An operating system development kit."
 arch=('any')
 url="https://github.com/devse-org/osdk"
 license=('MIT')
-depends=('python')
+depends=('python' 'ninja' 'python-requests')
 makedepends=('git' 'python-setuptools')
 optdepends=('clang: for compiling C/C++ code'
             'llvm: tools for C/C++ development'
