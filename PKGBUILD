@@ -2,16 +2,16 @@
 
 pkgname=solidigm-sst-storage-tool-cli
 pkgver=1.3.208
-pkgrel=1
+pkgrel=2
 pkgdesc="Solidigm Storage Tool (SST) supports firmware upgrades and 4Kn sector size changes for Intel and Solidigm PCIe/NVMe/SATA NAND SSDs"
 arch=(x86_64)
-url="https://www.intel.com/content/www/us/en/download/715595/"
+url="https://www.solidigm.com/content/solidigm/us/en/support-page/drivers-downloads/ka-00085.html"
 license=()
 makedepends=('libarchive')
 optdepends=()
-source=(https://downloadmirror.intel.com/743764/SST_CLI_Linux_1.3.zip)
-md5sums=('cb6a8ea8e08e54220fe271dc361fceb8')
-sha1sums=('7d0b569778d272012512ac90f6efb8fc25043500')
+source=(https://sdmsdfwdriver.blob.core.windows.net/files/kba-gcc/drivers-downloads/ka-00085--sst/sst--1-3/sst-cli-linux-rpm--1-3.zip)
+md5sums=('3ce3e61af7434f4d7d73b6b375bca4b9')
+sha1sums=('a5d1e137bee0c4459e635ee05cbaaac2843389e8')
 
 package() {
 	cd "$pkgdir"
