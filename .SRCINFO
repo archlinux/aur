@@ -7,7 +7,6 @@ pkgbase = xdg-terminal-exec-git
 	license = GPL3
 	checkdepends = bash-bats
 	makedepends = git
-	depends = which
 	source = git+https://github.com/Vladimir-csp/xdg-terminal-exec
 	sha256sums = SKIP
 
