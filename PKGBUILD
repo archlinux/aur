@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distr
-_pkgver=2.9.0
+_pkgver=2.9.1
 pkgname=r-${_pkgname,,}
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Object Oriented Implementation of Distributions'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44b1465ad260b7c6a9da65848fae89003f0c1dfcda6a6f73e65d748af4797d39')
+sha256sums=('82b790a90bd40025c7ff8ccc7da784fa967015fc015874f6b209088d0bd01a5f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
