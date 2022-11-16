@@ -9,7 +9,7 @@ url='https://github.com/google/jax/'
 license=('Apache')
 depends=('absl-py'
          'python'
-         'python-jax'
+         'python-jaxlib'
          'python-numpy'
          'python-opt_einsum')
 makedepends=('python-pip')
