@@ -1,6 +1,6 @@
 pkgbase = osbuild-composer
 	pkgdesc = An HTTP service for building bootable OS images
-	pkgver = 67
+	pkgver = 68
 	pkgrel = 1
 	url = https://www.osbuild.org
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = osbuild-composer
 	depends = qemu
 	depends = osbuild
 	depends = systemd
-	source = osbuild-composer-67.tar.gz::https://github.com/osbuild/osbuild-composer/archive/refs/tags/v67.tar.gz
-	sha256sums = e8152d4d3dbdeab184ce6c4ad4f1d2531eb4e0768052b8148e9d4f41b2b63544
+	source = osbuild-composer-68.tar.gz::https://github.com/osbuild/osbuild-composer/archive/refs/tags/v68.tar.gz
+	sha256sums = 331f9bbd199b5b93d2c96ec991ea7483f49fe14e829b019fa28759ee1045ac0e
 
 pkgname = osbuild-composer
