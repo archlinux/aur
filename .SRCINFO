@@ -1,21 +1,15 @@
 pkgbase = obs-source-record
 	pkgdesc = Plugin for OBS Studio to add a filter that allows you to record a source
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/source-record.1285/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = libxcomposite
-	makedepends = ffmpeg
-	makedepends = pciutils
-	depends = obs-studio>=28.0.0
-	source = obs-source-record::git+https://github.com/exeldro/obs-source-record#commit=8d71fc5c6994cce68b912ae3c075e39415f982aa
-	source = obs-studio-28.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/28.0.0.tar.gz
+	depends = obs-studio>=28
+	source = obs-source-record::git+https://github.com/exeldro/obs-source-record#commit=4a543d3577d56a27f5f2b9aa541a466b37dafde0
 	sha256sums = SKIP
-	sha256sums = 412a1a26699a6861dbbe93346310d002369c62e00626e8c3a77c127e5e1c06e8
 
 pkgname = obs-source-record
