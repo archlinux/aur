@@ -1,17 +1,20 @@
 pkgbase = trenchbroom-bin
 	pkgdesc = A free (GPLv3+), cross platform level editor for Quake-engine based games
-	pkgver = 2022.1
+	pkgver = 2022.2
 	pkgrel = 1
 	url = https://trenchbroom.github.io/
 	arch = x86_64
 	license = GPL3
+	depends = freeimage
+	depends = glew
+	depends = tinyxml2
 	depends = qt5-svg
 	depends = hicolor-icon-theme
 	provides = trenchbroom
 	conflicts = trenchbroom
 	conflicts = trenchbroom-git
-	noextract = TrenchBroom-Linux-v2022.1-Release.x86_64.deb
-	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2022.1/TrenchBroom-Linux-v2022.1-Release.x86_64.deb
-	sha256sums = d0d1bfc159d1aa99ef727521fab1e476cef38bf6b6d670a7c472222f673496a1
+	noextract = TrenchBroom-Linux-ubuntu-22.04-v2022.2-RC3-Release.x86_64.deb
+	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2022.2/TrenchBroom-Linux-ubuntu-22.04-v2022.2-RC3-Release.x86_64.deb
+	sha256sums = 69e9863869bd3ba0325fec822b47367f777a8ee14c58eec3fb1334e9a9f60157
 
 pkgname = trenchbroom-bin
