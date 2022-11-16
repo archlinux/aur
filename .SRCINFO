@@ -1,0 +1,17 @@
+pkgbase = dde-kwin-reborn
+	pkgdesc = KWin configures on DDE
+	pkgver = 5.6.5
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-kwin
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = deepin-qt5integration
+	depends = deepin-wallpapers
+	depends = kwin
+	source = dde-kwin-reborn-5.6.5-deepin.tar.gz::https://github.com/justforlxz/dde-kwin/archive/5.6.5.tar.gz
+	sha512sums = 61851376f003c9f7d6316dbd47edea392037a7ad7c89fc8419cffe19aab2500052f7b7239af66b569052424ce9c5fa94e12b333e4b5d7236f61e8cd8b1997548
+
+pkgname = dde-kwin-reborn
