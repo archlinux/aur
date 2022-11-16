@@ -1,0 +1,13 @@
+pkgbase = ruts-bin
+	pkgdesc = A Rust-based TMUX session manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ethanholz/ruts
+	arch = x86_64
+	license = MIT
+	provides = ruts
+	conflicts = ruts
+	source = https://github.com/ethanholz/ruts/releases/download/v0.1.0/ruts-0.1.0-x86_64.tar.gz
+	sha256sums = f34d85bdfda7d621699b5947889eb206c30ef65b6fa13ae70083931e5db7357a
+
+pkgname = ruts-bin
