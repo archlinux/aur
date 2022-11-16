@@ -1,6 +1,5 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
@@ -75,7 +74,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.19.8
+pkgver=6.0.9
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -84,13 +83,13 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   'bc' 'kmod' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz'
-  'xmlto' 'python-sphinx' 'python-sphinx_rtd_theme' 'graphviz' 'imagemagick'
+  'xmlto' 'python-sphinx' 'python-sphinx_rtd_theme' 'graphviz' 'imagemagick' 'texlive-latexextra'
   'git'
 )
 options=('!strip')
-_gcc_more_v='20220315'
+_gcc_more_v='20221104'
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver:0:4}.tar".{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver:0:3}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/patch-${pkgver}.xz"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   config         # the main kernel config file
@@ -98,13 +97,12 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('4db03a6830a3b3bbf0837e1912182a443d9a4aa8af20a12e6ec814ed708038452d3c0ccee1258cca671c464d76461536363a8adc56e9d098c9a44ae3484a297a'
+b2sums=('c09a9c877ac0fac83dc31d2d04d96f0a3331d4ed78e3ad4edfd4dc077e1c11d0c49f419fdac4008b5c93d1b09c2b724e12ef0b38371ad0962908abf85dfa95fa'
         'SKIP'
-        '3b661fec35c883a97f2f2b489e43cb276eb7cfe6818d37cc3482c880d8c52d3f4ce740b9791d30095d21146ae842988f684c2f7bd153359ba8d2adaaef71221c'
-        '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '28b82cdb5faac7f93368bbd5c4a9106f729dd39624abbd7a0acc4909599175af0a987c91bb6c0e348ae1ab2180f5e85c3a04ce6ba03e03b0dee45fe3b81d3847')
+        '94ac851e2273cbcd9e67216f6010d481c5d64bd65fddc373c483877ba4de73796a0a298d6849f4f275d78eaa2226ca9ab494423f8edde29cabb5c212b1c2c879'
+        '05bddc2b57189d7e302f32041079bcf60a06938e9afcfd02a0085a1430255286a5b663eed7cdb7f857717c65e9e27af4d15625b17e0a36d1b4ce1cbda6baee2b'
+        '1a3a8c081adfd44b3c35c13fe110df3798f65ffddb1f5a88d38c4f59ae67a16258d5b204e9f9d1ba02e241f06dd161cc58adb93110d1160285fb1de72a38b2ff')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -115,7 +113,7 @@ prepare() {
   if [[ ! -f "$srcdir/patch-${pkgver}" ]]; then
     xz -dc "$SRCDEST/patch-${pkgver}.xz" > "patch-${pkgver}"
   fi
-  cd linux-${pkgver:0:4}
+  cd linux-${pkgver:0:3}
 
   ### Add upstream patches
         echo "Add upstream patches"
@@ -267,7 +265,7 @@ prepare() {
 }
 
 build() {
-  cd linux-${pkgver:0:4}
+  cd linux-${pkgver:0:3}
   make all
 }
 
@@ -280,7 +278,7 @@ _package() {
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd linux-${pkgver:0:4}
+  cd linux-${pkgver:0:3}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
