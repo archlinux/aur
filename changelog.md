@@ -1,17 +1,20 @@
-## 0.53.6
+## 0.53.7
+
+Added
+
+    'Collections' to txo filter community pr! (#7711)
+    Swap comment servers community pr! (#7670)
 
 Fixed
 
-    Make thumbnails optional (#7690)
-    Show downloads newest first (#7684)
-    Only allow images in image uploader (#7672)
-    Fixed bug with csv exports (#7697)
-    Fixed small screen viewer position (#7677)
-    Fixed various upload bugs including transcoding (#7688)
-    Fallback for files with no extension (#7704)
+    Thumbnails no longer disable publish (#7714)
+    Publishing posts were empty (#7715)
+    Minor layout fixes community pr! (#7709)
+    Comment section buttons layout (#7716)
 
 Changed
 
-    Upgraded Electron to v17.2.0 (#7703)
-    Upgraded Electron to v17.0.0 (#7691)
-    Updated lbrynet to 0.111.0
+    Removed watchman and its errors (#7710)
+    Updated lbrynet to 0.112.0
+
+
