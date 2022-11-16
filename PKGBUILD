@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
-pkgver='2.6.9.20221104'
+pkgver='2.6.9.20221116'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -10,7 +10,7 @@ depends=(libxml2 boost libbsctools)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         clusteringsuite-Build-fix-for-GCC-11-invocable-as-const.patch
         clusteringsuite-Fix-references-to-the-build-directory.patch)
-sha512sums=(d8722e96dfa25ab6a42c0d0c198a9066afd2a2ab2dcf993058a872eff241cd240741ca8abd5e20c30fed0cc10858108c7e5f9e9353ddb0521397c688b42eb118
+sha512sums=(8eacd0101ebfcef7e62d6eeafa537ccc22a9ec325d24717ee4be8d53976c224be9c58296e9101f00e07398a25f1bcbbff0473b1ebf988976fbedddc6c6855919
             e88047f3df0b1e0d6512741e33557cba336b282b7d6d52f380991dcdb3138c7cc72fbdf187a6d5c4fefe01c605153f939c21c5ba71df7ac448facafdcea678a5
             05a0c1a2d04f715b145e5ef98f29fa2ddfe45010c6ad4dce7b467ebaa552effb9b61836ad26b243348dfe4e480c47eaf96e5f56e4eb491f8034a1374627c8d3f)
 
