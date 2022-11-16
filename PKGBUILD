@@ -7,7 +7,7 @@ pkgdesc="Add multi-machine sync to borg"
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('qt5-base' 'borg')
-source=("git+https://gitlab.com/tomzander/borg-backup.git#branch=master")
+source=("git+https://codeberg.org/zander/borgBackup.git#branch=master")
 sha256sums=("SKIP")
 
 build() {
