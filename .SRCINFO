@@ -1,25 +1,50 @@
 pkgbase = ifcopenshell
 	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon.
-	pkgver = 0.6.0b0
-	pkgrel = 2
+	pkgver = 0.7.0a6
+	pkgrel = 1
 	url = http://ifcopenshell.org/
 	arch = x86_64
 	arch = i686
 	license = LGPL3
 	makedepends = cmake
 	makedepends = boost>=1.58.0
-	makedepends = swig3
+	makedepends = swig
+	makedepends = python-babel
 	depends = boost-libs>=1.58.0
 	depends = opencascade
 	depends = icu
 	depends = opencollada
 	depends = python
+	optdepends = python-svgwrite: blender bim addon svg support
+	optdepends = python-occ-core: blender bim addon cut ifc support
+	optdepends = python-pystache: blender bim addon
+	optdepends = python-numpy: blender bim addon cut ifc support
+	optdepends = python-xmlschema: blender bim addon, bcf support
+	optdepends = hpp-fcl: ifcclash
+	optdepends = python-deepdiff: ifcdiff
+	optdepends = python-pyparsing: ifcexpressparser support
+	optdepends = python-requests: blender bim addon covetool support
+	optdepends = python-lark-parser: util, ifccsv, ifcclash support
+	optdepends = python-odfpy: blender bim addon and ifccobie support
+	optdepends = python-behave: python-bimtester
+	optdepends = python-isodate: blender bim addon
+	optdepends = python-olca-ipc: blender bim addon life cycle analysis support
+	optdepends = python-toposort: ifcpatch
+	optdepends = python-xsdata: blender bim addon
 	provides = ifcopenshell
-	provides = ifcblender
+	provides = blender-plugin-bim
 	provides = IfcConvert
 	provides = IfcGeomServer
-	source = https://github.com/IfcOpenShell/IfcOpenShell/archive/v0.6.0b0.tar.gz
-	md5sums = b69c6607436ada76f2ab263385fa6a8c
+	provides = python-ifcpatch
+	provides = python-ifcdiff
+	provides = python-bcf
+	provides = python-bimtester
+	provides = python-ifccsv
+	source = https://github.com/IfcOpenShell/IfcOpenShell/archive/v0.7.0a6.tar.gz
+	source = git+https://github.com/IfcOpenShell/svgfill.git
+	source = git+https://github.com/svgpp/svgpp.git
+	md5sums = 0814f545b57a5f4de0211151de99fcc7
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = ifcopenshell
-
