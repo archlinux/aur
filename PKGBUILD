@@ -2,7 +2,7 @@
 
 pkgname=qimgv
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 image viewer with experimental webm playback"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/easymodo/qimgv"
@@ -25,6 +25,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DVIDEO_SUPPORT=OFF \
     -DCMAKE_INSTALL_LIBDIR=lib
 
   make
