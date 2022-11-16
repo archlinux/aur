@@ -1,6 +1,6 @@
 pkgbase = python-lupa-luajit
 	pkgdesc = Python wrapper around LuaJIT
-	pkgver = 1.14
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://github.com/scoder/lupa
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-lupa-luajit
 	depends = luajit
 	provides = python-lupa
 	conflicts = python-lupa
-	source = https://github.com/scoder/lupa/releases/download/lupa-1.14/lupa-1.14.tar.gz
-	sha256sums = 59deaa9c50693c99da821263f7e84f709b9c8426dce8e01c2af11d0eaab1f49d
+	source = https://github.com/scoder/lupa/releases/download/lupa-1.14.1/lupa-1.14.1.tar.gz
+	sha256sums = d0fd4e60ad149fe25c90530e2a0e032a42a6f0455f29ca0edb8170d6ec751c6e
 
 pkgname = python-lupa-luajit
