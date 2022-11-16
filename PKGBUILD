@@ -2,7 +2,7 @@
 
 pkgname=python-aesara
 _pkgname=aesara
-pkgver=2.8.8
+pkgver=2.8.9
 pkgrel=1
 pkgdesc="Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(any)
@@ -21,7 +21,7 @@ depends=(
   python-typing_extensions
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-${pkgver}.tar.gz")
-sha256sums=('180dce70c7b1a7f3bf3abe3fa377a0dca05a78505215080c5ee62457c0891c1b')
+sha256sums=('3ced708aa151b572143bffec08df2f1dd4dab913a9f90925d9e7ca909a72e21c')
 
 build() {
   cd "$_pkgname-rel-$pkgver"
