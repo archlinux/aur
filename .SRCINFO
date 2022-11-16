@@ -7,8 +7,7 @@ pkgbase = imagescan-plugin-networkscan
 	arch = x86_64
 	license = custom
 	depends = imagescan
-	source = https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-32-3.65.0.x64.rpm.tar.gz
+	source = https://buzo.eu/mirror/epson/imagescan-bundle-fedora-32-3.65.0.x64.rpm.tar.gz
 	sha256sums = 7f18badec57e6093a5bf56954df08f21738f7cd028f91ef334fbc0d75b0598c9
 
 pkgname = imagescan-plugin-networkscan
-

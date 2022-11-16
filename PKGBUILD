@@ -14,7 +14,7 @@ url="http://support.epson.net/linux/en/imagescanv3.php"
 license=(custom)
 depends=(imagescan)
 install=imagescan-plugin-networkscan.install
-source=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-$_fedrel-$_pkgver.x64.rpm.tar.gz")
+source=("https://buzo.eu/mirror/epson/imagescan-bundle-fedora-$_fedrel-$_pkgver.x64.rpm.tar.gz")
 sha256sums=('7f18badec57e6093a5bf56954df08f21738f7cd028f91ef334fbc0d75b0598c9')
 
 prepare() {
