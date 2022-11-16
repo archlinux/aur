@@ -1,0 +1,20 @@
+pkgbase = upscaler-git
+	pkgdesc = Upscale and enhance images
+	pkgver = 1.0.0.r0.g712c262
+	pkgrel = 1
+	url = https://gitlab.com/TheEvilSkeleton/Upscaler
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = blueprint-compiler
+	makedepends = meson
+	depends = libadwaita
+	depends = python-gobject
+	depends = realesrgan-ncnn-vulkan
+	provides = upscaler
+	conflicts = upscaler
+	source = upscaler::git+https://gitlab.com/TheEvilSkeleton/Upscaler.git
+	b2sums = SKIP
+
+pkgname = upscaler-git
