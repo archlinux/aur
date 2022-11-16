@@ -3,7 +3,7 @@
 # Contributor: txtsd <code@ihavea.quest>
 
 pkgname=pollymc-bin
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Prism Launcher fork that adds Ely.by support and allows you to use offline mode without an account."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/fn2006/PollyMC/releases/download/${pkgver}/PollyMC-Linux-Qt6-${pkgver}.tar.gz")
 noextract=("PollyMC-Linux-Qt6-${pkgver}.tar.gz")
-sha256sums=('207f747683e5777c4af0b2b12dcf44f934df601c93a9d21141350e3c3b96f6f5')
+sha256sums=('d3720e3b60d7a9b8f2a381851cdc9046e037140f3783366e664257d3ed8bc28f')
 
 package() {
     install -d "$pkgdir/usr"
