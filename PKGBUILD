@@ -1,16 +1,17 @@
-# Maintainer: procrastinator
+# Maintainer: ikubaku <hide4d51 at gmail.com>
+# Contributor (Maintainer until 1.2.1): procrastinator
 pkgname=gyazo
-pkgver=1.2.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Launch the Gyazo app and drag your mouse to grab the screen. "
 arch=('any')
 url="http://gyazo.com/"
 license=('GPL')
 groups=(multimedia)
-depends=('ruby' 'xclip' 'imagemagick')
+depends=('ruby' 'xclip' 'imagemagick' 'xdotool' 'xorg-xprop' 'xorg-xwininfo')
 conflicts=('gyazo-git')
 source=("https://github.com/gyazo/Gyazo-for-Linux/archive/${pkgver}.tar.gz")
-sha256sums=('c3a2a336a5f2515fc7cf71b07619ac9dc78e1db78bc326f8979b74d7ed4132e6')
+sha256sums=('a474949a44bc0c7c8f9bf922c3ac630543982e8d0b934a5121a95d44f22e11b9')
 
 package() {
 	cd "${srcdir}"
