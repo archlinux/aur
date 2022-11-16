@@ -5,6 +5,7 @@ pkgbase = xdg-terminal-exec-git
 	url = https://github.com/Vladimir-csp/xdg-terminal-exec
 	arch = any
 	license = GPL3
+	checkdepends = bash-bats
 	makedepends = git
 	depends = which
 	source = git+https://github.com/Vladimir-csp/xdg-terminal-exec

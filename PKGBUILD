@@ -8,6 +8,7 @@ arch=(any)
 url="https://github.com/Vladimir-csp/$_pkgname"
 depends=('which')
 makedepends=('git')
+checkdepends=('bash-bats')
 license=('GPL3')
 source=("git+$url")
 sha256sums=('SKIP')
@@ -18,8 +19,8 @@ pkgver() {
 }
 
 check() {
-	cd "$_pkgname"/test
-    ./runtests.sh
+    cd "$_pkgname"
+    bats "test/"
 }
 
 package() {
