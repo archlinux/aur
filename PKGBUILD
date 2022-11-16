@@ -1,8 +1,8 @@
 # Maintainer: Hikari Hayashi <rev.hikari@gmail.com>
 
 pkgname=figma-agent-linux
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Figma Agent for Linux"
 url="https://github.com/neetly/figma-agent-linux"
 license=(MIT)
@@ -11,6 +11,7 @@ depends=(freetype2 fontconfig)
 makedepends=(git rust clang)
 source=("$pkgname::git+https://github.com/neetly/figma-agent-linux.git#tag=v$pkgver")
 cksums=(SKIP)
+install=figma-agent.install
 
 prepare() {
   cd "$srcdir/$pkgname"
