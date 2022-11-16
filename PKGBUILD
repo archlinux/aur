@@ -1,15 +1,18 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
+# Co-Maintainer: Alexander Mezin <mezin.alexander at gmail dot com>
 
 pkgname=gnome-shell-extension-ddterm-git
-pkgver=40.r14.g2e27988
+pkgver=41.r8.g804cf42
 pkgrel=1
 pkgdesc="Another Drop Down Terminal Extension for GNOME Shell (Github version)."
 arch=('any')
 url="https://github.com/ddterm/${pkgname%-git}"
 license=('GPL3')
-depends=('gnome-shell')
-makedepends=('gettext'  'git' 'libxslt' 'npm' 'zip')
-install=${pkgname%-git}.install
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+depends=('gnome-shell' 'gtk3' 'vte3')
+makedepends=('git' 'gtk4' 'libxslt' 'npm' 'zip')
+install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -25,14 +28,11 @@ prepare() {
 
 build() {
     cd "${pkgname%-git}"
-    make pack
+    make build
 }
 
 package() {
     cd "${pkgname%-git}"
-    local _uuid="ddterm@amezin.github.com"
-    local dest="${pkgdir}/usr/share/gnome-shell/extensions/$_uuid"
-    install -d "${dest}"
-    bsdtar --no-same-owner -xvf ${_uuid}.shell-extension.zip -C "${dest}"
+    make DESTDIR="$pkgdir/" install
 }
 # vim:set ts=4 sw=4 et:
