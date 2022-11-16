@@ -1,13 +1,13 @@
 pkgbase = python-pyodbc
 	pkgdesc = ODBC module for Python
-	pkgver = 4.0.34
+	pkgver = 4.0.35
 	pkgrel = 1
 	url = https://github.com/mkleehammer/pyodbc
 	arch = x86_64
 	license = MIT
 	depends = python
 	depends = unixodbc
-	source = https://github.com/mkleehammer/pyodbc/archive/4.0.34/python-pyodbc-4.0.34.tar.gz
-	sha512sums = eb18ebf9214c8d97992d8735a8aeb4a9e31bee7aeb06f8fcb62a8fa1b79cd8437f8400f679fba243e8f27375de3c440cd2a2bdec269d50c6c2df18be3358c5f7
+	source = https://github.com/mkleehammer/pyodbc/archive/4.0.35/python-pyodbc-4.0.35.tar.gz
+	sha512sums = 140987cfc9115aa96631dc1571e897b75026abe12f5bb99c8ab59081d3e0e3d438a0310404a562b1d43b9752c751296994b397844c5bf14fe0284c00bdef8847
 
 pkgname = python-pyodbc
