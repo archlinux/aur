@@ -1,18 +1,18 @@
 pkgbase = debspawn
 	pkgdesc = Debspawn is a tool to build Debian packages in an isolated environment, using systemd-nspawn containers
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lkhq/debspawn
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
 	makedepends = python-pkgconfig
-	makedepends = python-tomlkit
 	depends = libxslt
 	depends = docbook-xsl
 	depends = python
 	depends = zstd
 	depends = debootstrap
+	depends = python-tomlkit
 	source = https://github.com/lkhq/debspawn/archive/refs/tags/v0.6.0.tar.gz
 	md5sums = 2c9a055791d128bfa0aa14e155054e42
 
