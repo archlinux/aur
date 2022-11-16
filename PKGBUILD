@@ -5,7 +5,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname='darling-git'
-pkgver=r3848.b75c25e2c
+pkgver=r3901.8011c83cc
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -48,6 +48,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-corefoundation.git'
         'git+https://github.com/darlinghq/darling-coretls.git'
         'git+https://github.com/darlinghq/darling-crontabs.git'
+        'git+https://github.com/darlinghq/darling-csu.git'
         'git+https://github.com/darlinghq/darling-cups.git'
         'git+https://github.com/darlinghq/darling-curl.git'
         'git+https://github.com/darlinghq/darling-dbuskit.git'
@@ -171,7 +172,7 @@ md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -210,6 +211,7 @@ prepare() {
     git config submodule.src/external/corefoundation.url "$srcdir/darling-corefoundation"
     git config submodule.src/external/coretls.url "$srcdir/darling-coretls"
     git config submodule.src/external/crontabs.url "$srcdir/darling-crontabs"
+    git config submodule.src/external/csu.url "$srcdir/darling-csu"
     git config submodule.src/external/cups.url "$srcdir/darling-cups"
     git config submodule.src/external/curl.url "$srcdir/darling-curl"
     git config submodule.src/external/darling-dmg.url "$srcdir/darling-dmg"
