@@ -3,7 +3,7 @@
 
 pkgname=collision
 _app_id=dev.geopjr.Collision
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('libadwaita' 'libyaml')
 makedepends=('crystal' 'gobject-introspection' 'shards' 'spglib')
 conflicts=("$pkgname-hashes" "hashbrown")
 replaces=("$pkgname-hashes" "hashbrown")
-source=("${url}/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	0288-Use-pacman-hooks.patch)
 _source=Collision
-b2sums=('63a33bf22c009810e9bcea17e9bb890213c06d6c784a917d57dc66f7e4d0f1f0b5badd03f584fe2679fa13fa11a5c41ef5fe780922de40bfb7859aba6d896bad'
+b2sums=('abe6bcf4ad84a28fdaa7b2ac07ad21adaa4b87225f5ce55d560441d00c8c6dabe4e9174e2ead74a4d20eb3e97f8afe1913a712b94ae2e2f54ae2a824b7c753af'
         '77c51994e7d5035eda087d0e1ec03a54cd32c559438a08112af1a4f318f4fbf8a86e4c21af42e26d6b1d5a96525f4d0f55a15db1b492b84d4bb53ee7da013e9c')
 
 prepare() {
