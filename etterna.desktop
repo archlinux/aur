@@ -2,7 +2,7 @@
 Version=1.1
 Name=Etterna
 Comment=A advanced cross-platform rhythm game focused on keyboard play.
-Exec=env vblank_mode=0 /usr/bin/etterna
+Exec=env vblank_mode=0 __GL_SYNC_TO_VBLANK=0 /usr/bin/etterna
 Icon=/opt/etterna/icon.png
 Terminal=false
 Type=Application
