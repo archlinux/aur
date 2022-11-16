@@ -9,14 +9,14 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(
   qemu-git
-  #qemu-headless-git
+  qemu-headless-git
   qemu-arch-extra-git
-  #qemu-headless-arch-extra-git
+  qemu-headless-arch-extra-git
   qemu-block-{iscsi,gluster}-git
   qemu-guest-agent-git
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=7.2.0.rc0.r0.g60ab36907d
+pkgver=7.2.0.rc1.r0.g2c8311241d
 pkgrel=1
 epoch=17
 arch=(i686 x86_64)
@@ -110,20 +110,20 @@ prepare() {
 build() {
   _build full
 
-  #_build headless \
-  #  --audio-drv-list= \
-  #  --disable-sdl \
-  #  --disable-gtk \
-  #  --disable-vte \
-  #  --disable-brlapi \
-  #  --disable-opengl \
-  #  --disable-dbus-display \
-  #  --disable-virglrenderer \
-  #  --disable-alsa \
-  #  --disable-jack \
-  #  --disable-oss \
-  #  --disable-pa \
-  #  --disable-sdl
+  _build headless \
+    --audio-drv-list= \
+    --disable-sdl \
+    --disable-gtk \
+    --disable-vte \
+    --disable-brlapi \
+    --disable-opengl \
+    --disable-dbus-display \
+    --disable-virglrenderer \
+    --disable-alsa \
+    --disable-jack \
+    --disable-oss \
+    --disable-pa \
+    --disable-sdl
 }
 
 _build() (
