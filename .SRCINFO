@@ -1,10 +1,11 @@
 pkgbase = nym-wallet
 	pkgdesc = The next generation of privacy infrastructure (Nym Wallet)
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://nymtech.net/
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm
@@ -17,7 +18,5 @@ pkgbase = nym-wallet
 	depends = librsvg
 	depends = libbsd
 	optdepends = libappindicator-gtk3: system tray support
-	source = https://github.com/nymtech/nym/archive/refs/tags/nym-wallet-v1.0.9.tar.gz
-	sha512sums = 191d6e9848dacaa9cbb6a4ec26776d509981408b42028381138f9a1cb1904dbcc5da2fe68f349e8fd112ebde808ba4c566f83db257e3cb0317d8ac077db19fc5
 
 pkgname = nym-wallet
