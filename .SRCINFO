@@ -1,7 +1,7 @@
 pkgbase = python-mmcv
 	pkgdesc = OpenMMLab Computer Vision Foundation
 	pkgver = 1.7.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/open-mmlab/mmcv
 	arch = x86_64
