@@ -1,0 +1,20 @@
+pkgbase = local-arch-wiki
+	pkgdesc = An offline version of arch linux wiki.
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/whoisyoges/local-arch-wiki
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = arch-wiki-docs
+	depends = dmenu
+	depends = bash
+	depends = sed
+	optdepends = rofi
+	optdepends = firefox
+	optdepends = xdg-utils
+	optdepends = notify-send
+	source = local-arch-wiki::git+https://github.com/whoisyoges/local-arch-wiki
+	sha256sums = SKIP
+
+pkgname = local-arch-wiki
