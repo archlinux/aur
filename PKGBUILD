@@ -2,52 +2,34 @@
 
 pkgname=libvss
 epoch=1
-pkgver=22.0.0
-pkgrel=3
+pkgver=23.0.0
+pkgrel=1
 
 pkgdesc="A high level string and text processing library for Ada."
 url="https://github.com/AdaCore/VSS"
 
 arch=('i686' 'x86_64')
-license=('GPL3' 'custom')
+license=('Apache')
 
 makedepends=('gprbuild')
          
-source=("https://github.com/AdaCore/VSS/archive/refs/tags/v22.0.0.tar.gz"
-        "patch-Makefile")
-sha256sums=(eddccea4b109ce67f13c92937e59e5ae00a93244c8c05b1234c7b6413451f24e
-            a6f9feb705fe503021497eb4b453650312e89f50580a55e986c1642da7a05381)
-
-prepare()
-{
-  cd "$srcdir/VSS-22.0.0"
-
-  patch -p0 -i ../patch-Makefile
-  mv source/regexp/vss-regular_expressions-utilities.ads source/regexp/vss-regular_expressions-utilities.ads-orig
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=(94f782d629c2817ae3755461fa8f813a00c8576e91388606bc772ff708efec28)
 
 build()
 {
-   cd "$srcdir/VSS-22.0.0"
+   cd "$srcdir/VSS-$pkgver"
    make all
 }
 
 package()
 {
-   cd "$srcdir/VSS-22.0.0"
+   cd "$srcdir/VSS-$pkgver"
 
-   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_json.gpr
-   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_text.gpr
-   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_gnat.gpr
-   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_regexp.gpr
+   make DESTDIR=$pkgdir install
 
    # Install the license.
    install -D -m644     \
-      "COPYING3"        \
-      "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
-
-   # Install the custom license.
-   install -D -m644     \
-      "COPYING.RUNTIME" \
-      "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+      "LICENSE"         \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
