@@ -1,0 +1,22 @@
+pkgbase = nano-benchmarker
+	pkgdesc = A simple benchmarking script using xz, kernel compilation, blender etc.
+	pkgver = 0.9.r131.gc4368b6
+	pkgrel = 1
+	url = https://gitlab.com/torvic9/bash-scripts/-/tree/master/nano-benchmarker
+	arch = x86_64
+	depends = gcc
+	depends = make
+	depends = cmake
+	depends = time
+	depends = unzip
+	depends = inxi
+	depends = gmp
+	depends = wget
+	depends = blender
+	depends = zlib
+	depends = git
+	depends = python
+	source = git+https://gitlab.com/torvic9/bash-scripts.git
+	sha512sums = SKIP
+
+pkgname = nano-benchmarker
