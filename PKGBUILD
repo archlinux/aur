@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils breeze
          pipewire-session-manager libqaccessibilityclient lcms2 libxcvt)
-makedepends=(extra-cmake-modules qt5-tools kdoctools deepin-wayland-protocols-reborn python ninja)
+makedepends=(extra-cmake-modules qt5-tools kdoctools deepin-wayland-protocols-reborn dde-kwin-reborn python ninja)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/justforlxz/deepin-kwin/archive/refs/tags/$_tag.tar.gz")
 install=$_pkgname.install
 sha256sums=('725239b2f01d78e8ef51ae22eb8856d2344f110a150ad3f253d51bc1faa7643b')

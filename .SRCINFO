@@ -9,6 +9,7 @@ pkgbase = deepin-kwin-reborn
 	makedepends = qt5-tools
 	makedepends = kdoctools
 	makedepends = deepin-wayland-protocols-reborn
+	makedepends = dde-kwin-reborn
 	makedepends = python
 	makedepends = ninja
 	depends = kscreenlocker
