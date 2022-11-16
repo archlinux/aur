@@ -1,16 +1,18 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=qtjambi
 pkgver=6.4.1
+_pkg2="$(echo ${pkgver} | cut -d. -f-2)" 
+_pkg1="$(echo ${pkgver} | cut -d. -f1)"
 ##change these variables if needed##
 _qtver=qt6
 _javaver=19
 ####################################
-pkgrel=1
+pkgrel=2
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
 license=('LGPL' 'GPL')
-depends=('chrpath' 'jdk-openjdk' "${_qtver}-base")
+depends=('chrpath' 'jdk-openjdk' "${_qtver}-base" "${_qtver}-remoteobjects")
 makedepends=('ant' 'apache-ant-contrib')
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=(280e9f49b11cfbe3fb5461e5a21f2c52aedd903596ea97ac312e1b3eeca4e90b) 
@@ -55,4 +57,18 @@ package() {
     install ${pkgver}/deployment/native/linux-x64/release/utilities/QtJambiLauncher ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/share/licenses/qtjambi
     cp LICENSE.* ${pkgdir}/usr/share/licenses/qtjambi/
+
+    #libraries get installed as copies instead of as symlinks. Fix up
+    cd ${pkgdir}/usr/lib
+    for i in {libQtJambi{,3D{Animation,Core,Extras,Input,Logic,Quick{,Extras,Scene2D},Render},Bluetooth,Charts,\
+        Concurrent,Core,DBus,DataVisualization,Designer,Gui,Help,HttpServer,Multimedia{,Widgets},Network{,Auth},\
+        Nfc,OpenGL,{,Widgets},Pdf{,Widgets},Positioning,PrintSupport,Qml,Quick{,3D,Controls2,Test,Widgets}.\
+        RemoteObjects,Scxml,Sensors,Serial{Bus,Port},SpatialAudio,Sql,StateMachine,Svg{,Widgets},Test,TextToSpeech,\
+        UIC,UiTools,VirtualKeyboard,Web{Channel,Engine{Core,Quick,Widgets},Sockets,View},Widgets,Xml}; do
+        for j in {${_pkg2},${_pkg1}}; do
+            rm ${i}.so.${j}
+            ln -s ${i}.so.${pkgver} ${i}.so.${j}
+        done
+    done
+    #Hopefully will this ugly hack only be temporary...
 }
