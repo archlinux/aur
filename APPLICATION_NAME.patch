@@ -1,5 +1,5 @@
---- a/stackheme/OEM.cmake	2018-12-02 13:28:38.808807308 +0100
-+++ b/stacktheme/OEM.cmake	2018-03-09 11:10:44.000000000 +0100
+--- a/branding/OEM.cmake	2018-12-02 13:28:38.808807308 +0100
++++ b/branding/OEM.cmake	2018-03-09 11:10:44.000000000 +0100
 @@ -1,6 +1,6 @@
  set( APPLICATION_SHORTNAME  "stack" )
  set( APPLICATION_NAME       "STACK" )
