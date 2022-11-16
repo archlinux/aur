@@ -1,0 +1,28 @@
+pkgbase = xen-pvhgrub
+	pkgdesc = a version of GRUB2 for booting Xen PVH domUs
+	pkgver = 2.11.119.3c60d90
+	pkgrel = 1
+	url = https://www.gnu.org/software/grub/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = xz
+	makedepends = python
+	makedepends = texinfo
+	makedepends = gettext
+	makedepends = device-mapper
+	depends = xen
+	noextract = grub.cfg
+	noextract = README.md
+	options = !buildflags
+	options = !strip
+	source = git+https://git.savannah.gnu.org/git/grub.git#commit=d9b4638c50b16d4722e66d334e2c1a674b4a45cc
+	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=9f48fb992a3d7e96610c4ce8be969cff2d61a01b
+	source = grub.cfg
+	source = README.md
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 538ec7d6e33baaf7d1c708ed1ae6313691a04c331fd7d2cc2b47f56f2b5c218c75081b20204be68934bf88b6497b937917555424e3a379e12a481921093d7ce8
+	sha512sums = 4686fc68af70887228df076325c1bc668ec8e97002fc42734ba9ceea5b1bca6c6b01e8bb40b7d0ed721b9a466446da69c61e7d0cedb28181d5f7e4fc83a852a6
+
+pkgname = xen-pvhgrub
