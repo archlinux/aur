@@ -3,7 +3,7 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
-pkgver=2.99.12
+pkgver=2.99.14
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -35,17 +35,11 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'lua51-lgi: LUA scripting support')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz
-        linux.gpl
-        file-heif.diff)
-sha256sums=('7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
-            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3'
-            '4996eedcf6d8238c21c52c70ac4b3027f007b2a2a8f1eab9a0caaee6989dcc35')
+        linux.gpl)
+sha256sums=('313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8'
+            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 build() {
-  local _dir="${_pkgname}-${pkgver}"
-  # fix builing with libheif 1.13.0+
-  # see https://gitlab.gnome.org/GNOME/gimp/-/issues/8570
-  patch "$_dir/plug-ins/common/file-heif.c" < file-heif.diff
-  arch-meson "$_dir" build \
+  arch-meson "${_pkgname}-${pkgver}" build \
     -Dgi-docgen=enabled \
     -Dg-ir-doc=true
   meson compile -C build
@@ -72,4 +66,9 @@ package() {
   rm "${pkgdir}/usr/share/man/man1/gimp.1"
   rm "${pkgdir}/usr/share/man/man1/gimptool.1"
   rm "${pkgdir}/usr/share/man/man5/gimprc.5"
+  rm "${pkgdir}/usr/bin/gimp"
+  rm "${pkgdir}/usr/bin/gimp-console"
+  rm "${pkgdir}/usr/bin/gimp-test-clipboard"
+  rm "${pkgdir}/usr/bin/gimptool"
+  rm "${pkgdir}/usr/lib/gimp-debug-tool"
 }

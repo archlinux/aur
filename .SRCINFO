@@ -1,6 +1,6 @@
 pkgbase = gimp-devel-noconflict
 	pkgdesc = GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)
-	pkgver = 2.99.12
+	pkgver = 2.99.14
 	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = i686
@@ -71,12 +71,10 @@ pkgbase = gimp-devel-noconflict
 	optdepends = gjs: JavaScript scripting support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
-	provides = gimp=2.99.12
-	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.12.tar.xz
+	provides = gimp=2.99.14
+	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.14.tar.xz
 	source = linux.gpl
-	source = file-heif.diff
-	sha256sums = 7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3
+	sha256sums = 313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
-	sha256sums = 4996eedcf6d8238c21c52c70ac4b3027f007b2a2a8f1eab9a0caaee6989dcc35
 
 pkgname = gimp-devel-noconflict
