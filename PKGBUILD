@@ -7,7 +7,7 @@ pkgdesc='A simple benchmarking script using xz, kernel compilation, blender etc.
 url="https://gitlab.com/torvic9/bash-scripts/-/tree/master/nano-benchmarker"
 arch=('x86_64')
 licence=('GPL3')
-depends=('gcc' 'make' 'cmake' 'time' 'unzip'
+depends=('gcc' 'make' 'time' 'unzip' 'xz'
 	 'inxi' 'gmp' 'wget' 'blender'
 	 'zlib' 'git' 'python')
 source=(git+https://gitlab.com/torvic9/bash-scripts.git)
