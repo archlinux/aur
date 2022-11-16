@@ -1,34 +1,18 @@
 --- meson.build
 +++ meson.build
-@@ -1696 +1695,0 @@
+@@ -1715,5 +1714,0 @@
 -subdir('app-tools')
-@@ -1699,2 +1697,0 @@
+-
+-# Docs
 -subdir('docs')
 -subdir('devel-docs')
 
 --- app/meson.build
 +++ app/meson.build
-@@ -42 +41,0 @@
+@@ -44 +43,0 @@
 -  'tests.c',
-@@ -116 +114,0 @@
+@@ -118 +116,0 @@
 -subdir('tests')
-@@ -185,16 +182,0 @@
--gimpconsole_exe = executable('gimp-console-'+gimp_app_version,
--  'main.c',
--  libapp_sources,
--  console_rc_file,
--  c_args: [
--    '-DG_LOG_DOMAIN="Gimp"',
--    '-DGIMP_APP_GLUE_COMPILATION',
--    '-DGIMP_CONSOLE_COMPILATION',
--    psapi_cflags,
--  ],
--  dependencies: libapp_dep,
--  link_with: [
--    app_links,
--  ],
--  install: true,
--)
 
 --- app/config/meson.build
 +++ app/config/meson.build
@@ -58,8 +42,8 @@
 
 --- tools/meson.build
 +++ tools/meson.build
-@@ -9,23 +9,0 @@
--gimptool = executable('gimptool-' + gimp_app_version,
+@@ -9,34 +8,0 @@
+-gimptool = executable('gimptool' + exec_ver,
 -  'gimptool.c',
 -  include_directories: rootInclude,
 -  dependencies: [
@@ -74,7 +58,7 @@
 -  install: true,
 -)
 -
--executable('gimp-test-clipboard-' + gimp_app_version,
+-gimp_test_clipboard = executable('gimp-test-clipboard' + exec_ver,
 -  'gimp-test-clipboard.c',
 -  include_directories: rootInclude,
 -  dependencies: [
@@ -82,3 +66,14 @@
 -  ],
 -  install: true,
 -)
+-
+-if enable_default_bin and meson.version().version_compare('>=0.61.0')
+-  install_symlink(fs.name(gimptool.full_path()).replace(exec_ver, ''),
+-    pointing_to: fs.name(gimptool.full_path()),
+-    install_dir: get_option('bindir')
+-  )
+-  install_symlink(fs.name(gimp_test_clipboard.full_path()).replace(exec_ver, ''),
+-    pointing_to: fs.name(gimp_test_clipboard.full_path()),
+-    install_dir: get_option('bindir')
+-  )
+-endif
