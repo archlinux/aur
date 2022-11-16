@@ -320,20 +320,20 @@ prepare() {
     git config submodule.src/external/zsh.url "$srcdir/darling-zsh"
 
     echo "Updating git submodules"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     echo "Updating recursive submodules"
 
     cd "$srcdir/$_gitname/src/external/openpam/"
     git submodule init
     git config submodule.pam_modules.url "$srcdir/darling-pam_modules"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_gitname/src/external/IOKitUser"
     git submodule init
     git config submodule.IOGraphics.url "$srcdir/darling-IOGraphics"
     git config submodule.IOHIDFamily.url "$srcdir/darling-IOHIDFamily"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     echo "Creating build directory."
     cd "$srcdir/$_gitname"
