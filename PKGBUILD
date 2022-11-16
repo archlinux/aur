@@ -24,7 +24,7 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
@@ -57,10 +57,9 @@ fi
 
 prepare() {
   cd "$pkgname"
-  git config --local protocol.file.allow always
   git config submodule.dlib.url $srcdir/dlib
   git config submodule.libvisca.url $srcdir/libvisca-ip
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
