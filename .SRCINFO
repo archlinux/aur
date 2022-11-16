@@ -1,7 +1,7 @@
 pkgbase = ioninja
 	pkgdesc = Professional all-in-one terminal emulator, sniffer, and protocol analyzer
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ioninja.com
 	arch = i686
 	arch = x86_64
