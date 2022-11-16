@@ -1,13 +1,13 @@
 pkgbase = r-pbapply
 	pkgdesc = Adding Progress Bar to '*apply' Functions
-	pkgver = 1.5.0
-	pkgrel = 4
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pbapply
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-shiny
-	source = https://cran.r-project.org/src/contrib/pbapply_1.5-0.tar.gz
-	sha256sums = effdfee286e5ba9534dc2ac3cee96590a37f5cd2af28c836d00c25ca9f070a55
+	source = https://cran.r-project.org/src/contrib/pbapply_1.6-0.tar.gz
+	sha256sums = e8c13e7edf2d2415242f5c66377fc9647dba705359ec34813fa9d2f1fbc37f61
 
 pkgname = r-pbapply
