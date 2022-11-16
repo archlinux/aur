@@ -104,7 +104,7 @@ else
 pkgname="emacs-native-comp-git-enhanced"
 fi
 pkgver=29.0.50.161920
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -115,7 +115,7 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/emacs.git")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
 options=(!strip)
