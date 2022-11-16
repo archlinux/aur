@@ -1,0 +1,14 @@
+pkgbase = nodejs-markdown-table-formatter
+	pkgdesc = A tool for checking markdown table formatting and applying fixes
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/nvuillam/markdown-table-formatter
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = markdown-table-formatter-1.4.0.tgz
+	source = https://registry.npmjs.org/markdown-table-formatter/-/markdown-table-formatter-1.4.0.tgz
+	sha256sums = 2d110d7f26119fbbefc6e48e43d1c881db419bedc04eca5d32e28ced68d71aa9
+
+pkgname = nodejs-markdown-table-formatter
