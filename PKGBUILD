@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggstance
-_pkgver=0.3.5
+_pkgver=0.3.6
 pkgname=r-${_pkgname,,}
-pkgver=0.3.5
-pkgrel=4
+pkgver=0.3.6
+pkgrel=1
 pkgdesc="Horizontal 'ggplot2' Components"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed641857c49eb60f5baf2817fbd610caea62322a247f8b2c1aca3056eddee94b')
+sha256sums=('cd9ad4fb83c583009ee45371c7d02d32b33d06238d3f0162b3ba9851e27a6372')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

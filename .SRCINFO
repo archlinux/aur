@@ -1,7 +1,7 @@
 pkgbase = r-ggstance
 	pkgdesc = Horizontal 'ggplot2' Components
-	pkgver = 0.3.5
-	pkgrel = 4
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggstance
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-ggstance
 	optdepends = r-hmisc
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggstance_0.3.5.tar.gz
-	sha256sums = ed641857c49eb60f5baf2817fbd610caea62322a247f8b2c1aca3056eddee94b
+	source = https://cran.r-project.org/src/contrib/ggstance_0.3.6.tar.gz
+	sha256sums = cd9ad4fb83c583009ee45371c7d02d32b33d06238d3f0162b3ba9851e27a6372
 
 pkgname = r-ggstance
