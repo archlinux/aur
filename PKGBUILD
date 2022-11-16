@@ -1,7 +1,8 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Yassine Oudjana <y.oudjana@protonmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=42.0
+pkgver=43.0
 pkgrel=1
 pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
@@ -9,6 +10,7 @@ url='https://gitlab.gnome.org/GNOME/calls'
 license=(GPL3)
 depends=(
 	callaudiod
+	evolution-data-server
 	feedbackd
 	folks
 	gom
@@ -23,32 +25,30 @@ makedepends=(
 	meson
 	vala
 )
-options=(debug)
-_commit=${pkgver}
 source=(
-	"git+${url}.git#commit=$_commit"
+	"git+${url}.git#tag=v${pkgver}"
 	"git+https://gitlab.gnome.org/World/Phosh/libcall-ui.git"
 )
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP'
+        'SKIP')
 
 prepare() {
-	cd calls
+	cd $pkgname
 
 	git submodule init
-	git submodule set-url subprojects/libcall-ui "$srcdir/libcall-ui"
-	git submodule update
+	git submodule set-url subprojects/libcall-ui "../libcall-ui"
+	git -c protocol.file.allow=always submodule update
 }
 
 
 build() {
-	arch-meson calls build -D tests=false
-	meson compile -C build
-}
-
-check() {
-	meson test -C build --print-errorlogs
+	cd $pkgname
+	arch-meson . _build
+	ninja -C _build
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C build
+	cd $pkgname
+
+	DESTDIR="${pkgdir}" ninja install -C _build
 }
