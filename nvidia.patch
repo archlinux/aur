@@ -1,0 +1,37 @@
+--- render/gles2/renderer.c
++++ render/gles2/renderer.c
+@@ -165,7 +165,7 @@
+ 		assert(wlr_egl_is_current(renderer->egl));
+
+ 		push_gles2_debug(renderer);
+-		glFlush();
++		glFinish();
+ 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+ 		pop_gles2_debug(renderer);
+
+--- types/output/render.c
++++ types/output/render.c
+@@ -327,22 +327,7 @@ struct wlr_drm_format *output_pick_format(struct wlr_output *output,
+ }
+
+ uint32_t wlr_output_preferred_read_format(struct wlr_output *output) {
+-	struct wlr_renderer *renderer = output->renderer;
+-	assert(renderer != NULL);
+-
+-	if (!renderer->impl->preferred_read_format || !renderer->impl->read_pixels) {
+-		return DRM_FORMAT_INVALID;
+-	}
+-
+-	if (!output_attach_back_buffer(output, &output->pending, NULL)) {
+-		return false;
+-	}
+-
+-	uint32_t fmt = renderer->impl->preferred_read_format(renderer);
+-
+-	output_clear_back_buffer(output);
+-
+-	return fmt;
++	return DRM_FORMAT_XRGB8888;
+ }
+
+ bool output_is_direct_scanout(struct wlr_output *output,
