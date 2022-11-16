@@ -1,4 +1,6 @@
-pkg
-src
-utt-*
-utt
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!README.md
+!utt.sh
