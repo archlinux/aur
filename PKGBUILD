@@ -2,12 +2,12 @@
 
 pkgname=monkeyjump
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Minimalistic GUI for playing Go with GnuGo and other GTP applications'
 arch=(any)
 url='https://github.com/xyproto/monkeyjump'
 license=(GPL2)
-depends=(pypy gnugo)
+depends=(python2-pygame gnugo)
 makedepends=(gendesk setconf)
 backup=(etc/monkeyjump/gnugocmd.conf etc/monkeyjump/theme.conf etc/monkeyjump/keybindings.conf)
 source=("git+$url#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8")
@@ -24,13 +24,12 @@ prepare() {
     --terminal=true
   setconf monkeyjump CONFDIR=\"/etc/monkeyjump\"
   setconf monkeyjump THEMEDIR=\"/usr/share/monkeyjump/themes\"
-  sed -i 's/env python2/env pypy/g' $pkgname
 }
 
 package() {
   cd "$pkgname"
 
-  pypy setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
   # Executable
   install -Dm755 monkeyjump "$pkgdir/usr/bin/monkeyjump"

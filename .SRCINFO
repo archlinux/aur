@@ -1,13 +1,13 @@
 pkgbase = monkeyjump
 	pkgdesc = Minimalistic GUI for playing Go with GnuGo and other GTP applications
 	pkgver = 0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/xyproto/monkeyjump
 	arch = any
 	license = GPL2
 	makedepends = gendesk
 	makedepends = setconf
-	depends = pypy
+	depends = python2-pygame
 	depends = gnugo
 	backup = etc/monkeyjump/gnugocmd.conf
 	backup = etc/monkeyjump/theme.conf
