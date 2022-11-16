@@ -8,8 +8,8 @@ pkgdesc="Fast and Portable Cryptography Extension Library for Pyrogram"
 arch=("any")
 url="https://github.com/pyrogram/$_pkgname"
 license=("GPL3" 'LGPL3')
-depends=("python" "python-pyaes" "python-pysocks")
-makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-numpy")
+depends=("python")
+makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("923c93bb93dc05f039278b132870f66ab19fdf8f07facce55d4e9f9af1e5c40c")
 

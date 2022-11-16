@@ -10,10 +10,7 @@ pkgbase = python-tgcrypto
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python-numpy
 	depends = python
-	depends = python-pyaes
-	depends = python-pysocks
 	source = https://github.com/pyrogram/tgcrypto/archive/refs/tags/v1.2.5.tar.gz
 	sha256sums = 923c93bb93dc05f039278b132870f66ab19fdf8f07facce55d4e9f9af1e5c40c
 
