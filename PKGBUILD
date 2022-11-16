@@ -16,7 +16,7 @@ conflicts=($_pkgname)
 
 source=("https://github.com/Slimbook-Team/slimbook_service/releases/download/$pkgver/slimbook_$pkgver.tar.xz")
 
-md5sums=('SKIP')
+md5sums=('77116c0d6e3147ad1da00896bf8b6fb9')
 
 prepare() {
 	tar -xf slimbook_$pkgver.tar.xz
