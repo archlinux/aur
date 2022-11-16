@@ -62,7 +62,7 @@ package() {
     cd ${pkgdir}/usr/lib
     for i in {libQtJambi{,3D{Animation,Core,Extras,Input,Logic,Quick{,Extras,Scene2D},Render},Bluetooth,Charts,\
         Concurrent,Core,DBus,DataVisualization,Designer,Gui,Help,HttpServer,Multimedia{,Widgets},Network{,Auth},\
-        Nfc,OpenGL,{,Widgets},Pdf{,Widgets},Positioning,PrintSupport,Qml,Quick{,3D,Controls2,Test,Widgets}.\
+        Nfc,OpenGL,{,Widgets},Pdf{,Widgets},Positioning,PrintSupport,Qml,Quick{,3D,Controls2,Test,Widgets},\
         RemoteObjects,Scxml,Sensors,Serial{Bus,Port},SpatialAudio,Sql,StateMachine,Svg{,Widgets},Test,TextToSpeech,\
         UIC,UiTools,VirtualKeyboard,Web{Channel,Engine{Core,Quick,Widgets},Sockets,View},Widgets,Xml}; do
         for j in {${_pkg2},${_pkg1}}; do
