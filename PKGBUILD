@@ -1,7 +1,7 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=v0.9.1.120.g83c6f815c
+pkgver=v0.9.5.21.g0537322eb
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "sdl2_mixer" "curl" "lua53
 depends=("boost-libs" "libgl" "sdl_mixer" "sdl2_mixer" "miniupnpc" "lua53" "libsamplerate")
 optdepends=("siedler2-data")
 conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin")
-provides=("return-to-the-roots")
+provides=("return-to-the-roots" "s25rttr")
 install="return-to-the-roots.install"
 changelog="ChangeLog"
 source=("git+https://github.com/Return-To-The-Roots/s25client.git"
@@ -46,7 +46,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "s25client/"
-	git describe --long | sed 's/-/./g'
+	git describe --tags | sed 's/-/./g'
 }
 
 prepare() {
@@ -67,7 +67,7 @@ prepare() {
 	git config submodule.contrib/turtle.url $srcdir/turtle
 
 	# Get modules
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -76,11 +76,8 @@ build() {
 	# Build
 	mkdir -p build && cd build
 
-	# NOTE: Wno-error=stringop-overflow is added to bypass an error in
-	#       25client/libs/s25main/GamePlayer.cpp:328
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
 	      -DBUILD_TESTING=Off \
-	      -DCMAKE_CXX_FLAGS="-Wno-error=stringop-overflow" \
 	      -DRTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" \
 	      -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" \
 	      -DRTTR_USE_SYSTEM_SAMPLERATE=On \

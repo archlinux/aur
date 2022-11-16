@@ -1,3 +1,9 @@
+2022-11-16 Pierre Choffet <peuc@wanadoo.fr>
+	* v0.9.5.21.g0537322eb-1 :
+	Fix package versioning scheme
+	Fix error in prepare() after git changes
+	Remove a now useless workaround
+
 2022-02-03 Pierre Choffet <peuc@wanadoo.fr>
 	* v0.9.1.120.g83c6f815c :
 	Fix package versioning scheme after upstream changes
