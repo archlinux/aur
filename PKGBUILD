@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=ggpubr
-_pkgver=0.4.0
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
-pkgver=0.4.0
-pkgrel=7
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="'ggplot2' Based Publication Ready Plots"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -36,7 +36,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('abb21ec0b1ae3fa1c58eedca2d59b9b009621b30e3660f1247b3880c5fa50675')
+sha256sums=('fb21a091c7b866b2d35529ca218ce876051c31d3c9e4a68f3c6b297d591e7539')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
