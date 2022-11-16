@@ -10,6 +10,6 @@ pkgbase = slimbookservice-bin
 	provides = slimbookservice
 	conflicts = slimbookservice
 	source = https://github.com/Slimbook-Team/slimbook_service/releases/download/0.3.1/slimbook_0.3.1.tar.xz
-	md5sums = SKIP
+	md5sums = 77116c0d6e3147ad1da00896bf8b6fb9
 
 pkgname = slimbookservice-bin
