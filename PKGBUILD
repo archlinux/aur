@@ -1,8 +1,8 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=ada-libfswatch
-pkgver=20210818
-pkgrel=2
+pkgver=20221116
+pkgrel=1
 pkgdesc='An Ada binding to the libfswatch library in the fswatch project'
 
 url='https://github.com/AdaCore/ada_libfswatch'
@@ -12,18 +12,17 @@ license=('GPL3' 'custom')
 depends=('fswatch' 'gnatcoll-core')
 makedepends=('git' 'gcc-ada' 'gprbuild')
 
-_git_hash=94c0a5f137b88113a791a148b60e5e7d019d6fa1
+_git_hash=00fb794cd61f9f86e00151e8380886d361dba102
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_git_hash.tar.gz"
 	'0001-Use-system-libfswatch-install.patch'
 	'0002-Build-dynamic-library.patch'
 	'0003-Makefile-allow-passing-custom-flags-to-gprbuild.patch'
 )
-sha1sums=('9b49fbd1953ed56858305dc15c4ab72ef38f5387'
-          'f79efd5b3d7599d1653c2a5b335e1b0184e4c59f'
-          '526a664c25b08f77dbb61e469b8ca61db8a334ce'
-          '02ec74e84d3396cb2e494a7518bf3e86e93b32c6')
-
+sha256sums=('1fdaa48f5d16b5225e848d7c2e8f3961cfbacb6a412efc3e5898d541df411e9a'
+            'a1947e1d8b0f0449d196d422d0a2fd038fd8aa6e0abdd533cf71dbece901492b'
+            '904c986f2cb67744f8799ec7770f73f3f893713d0ccc5f4c552d8d9a3cc9dae8'
+            '53dc07cbb68b3ddfdb3133b0c2edb9878818fcba54d2f1dbc70b8821cf42d1cf')
 
 prepare()
 {
