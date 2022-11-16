@@ -1,13 +1,13 @@
 pkgbase = hooroo
-	pkgdesc = Synchronise your pacman and flatpak packages with files
-	pkgver = 0.2
+	pkgdesc = Synchronise your packages with a file
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/ca-cl2/hooroo
 	arch = any
 	license = Apache
 	depends = bash
 	provides = hooroo
-	source = https://github.com/ca-cl2/hooroo/archive/refs/tags/v0.2.tar.gz
-	sha256sums = 4d0a88a279023212b72a1da178b9da98ce4c9cc6ce13e07c202db391b34c536e
+	source = https://github.com/ca-cl2/hooroo/archive/refs/tags/v0.3.tar.gz
+	sha256sums = d08b7579fb4b44dc3547e9df026ca46c3ed8e889374b2bc4a59277e7c98c8417
 
 pkgname = hooroo
