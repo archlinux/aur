@@ -2,8 +2,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
-pkgver="0.17.0beta"
-pkgrel=2
+pkgver="0.18.0beta"
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/Hyprland"
@@ -48,7 +48,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/source-v${pkgver}.tar.gz")
-sha256sums=('ae67f7b1833293d22b99673de7828a2d4341eccf6bda56cda221adb48b594fc9')
+sha256sums=('ae46909de009d7c208669ca5e1c2e9c0bfb1736424e2892c9d9db8fb82a45992')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
@@ -72,5 +72,5 @@ package() {
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install -Dm755 "${srcdir}/tmpwlr/lib/libwlroots.so.11032" -t "${pkgdir}/usr/lib"
+	install -Dm755 "${srcdir}/tmpwlr/lib/libwlroots.so.12032" -t "${pkgdir}/usr/lib"
 }
