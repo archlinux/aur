@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.8
+pkgver=6.0.9
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -95,13 +95,12 @@ source=(
   0003-soundwire-intel-Initialize-clock-stop-timeout.patch
   0004-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
   0005-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
-  0006-drm-amdgpu-Fix-the-lpfn-checking-condition-in-drm-bu.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('0de4f83996951c6faf9b2225db4f645882c47b1a09198190f97bd46e5f5fa257'
+sha256sums=('6114a208e82739b4a1ab059ace35262be2a83be34cd1ae23cb8a09337db831c7'
             'SKIP'
             '05168cbbeb6378eec6c84fe3300cede4fa5cf6130c39fb8af95040529bd390a6'
             '3a8f397b89bad95c46f42c0f80ede7536a4a45a28621e00ed486918a55f905ed'
@@ -110,8 +109,7 @@ sha256sums=('0de4f83996951c6faf9b2225db4f645882c47b1a09198190f97bd46e5f5fa257'
             'b9a998b084cd583dac4cc755aab79e8810013c4c0d6d9f5e4fa78d2939314ced'
             '757cb209f1b1759f4c9efcc77501be9ee73676db069d0440104255ab35c4cdd0'
             'a3ffe9f133029d60bf8fa66775cee64e160ddf33c265e7807eb3dea7d1981ac4'
-            '26669e4925ac1869eeb53a7d9578c8af742c6a7e8cdcdb9af2c081774581a032'
-            'e5f5ebed349af1a95c9c8360fbe07d78ec4dff11cd7a228e436cf21e6409ebe9')
+            '26669e4925ac1869eeb53a7d9578c8af742c6a7e8cdcdb9af2c081774581a032')
 
 prepare() {
   cd linux-${pkgver}
@@ -315,7 +313,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sbi "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
