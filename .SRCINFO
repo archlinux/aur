@@ -1,6 +1,6 @@
 pkgbase = python-pyftdi
 	pkgdesc = FTDI device driver written in pure Python
-	pkgver = 0.53.3
+	pkgver = 0.54.0
 	pkgrel = 1
 	url = https://github.com/eblot/pyftdi
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pyftdi
 	makedepends = python-setuptools
 	depends = python-pyusb
 	depends = python-pyserial
-	source = python-pyftdi-0.53.3.tar.gz::https://github.com/eblot/pyftdi/archive/v0.53.3.tar.gz
-	sha256sums = 66c2284137007aa8b4d19f70f81f2df7bc291a54e271accb0346234d36ece210
+	source = python-pyftdi-0.54.0.tar.gz::https://github.com/eblot/pyftdi/archive/v0.54.0.tar.gz
+	sha256sums = 3989782dbc806fa1c7b89ba8bdcc51c282663be0d59a3b6dc47738d9975c6e0a
 
 pkgname = python-pyftdi

@@ -1,7 +1,7 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Margret Riegert <margret at eowyn net>
 # Contributor: Vianney le Clément de Saint-Marcq <vleclement AT gmail·com>
 pkgname=python-pyftdi
-pkgver=0.53.3
+pkgver=0.54.0
 pkgrel=1
 pkgdesc="FTDI device driver written in pure Python"
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('python-pyusb' 'python-pyserial')
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('66c2284137007aa8b4d19f70f81f2df7bc291a54e271accb0346234d36ece210')
+sha256sums=('3989782dbc806fa1c7b89ba8bdcc51c282663be0d59a3b6dc47738d9975c6e0a')
 
 package() {
     cd "pyftdi-${pkgver}"
