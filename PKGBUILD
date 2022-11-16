@@ -15,8 +15,8 @@
 
 
 pkgbase=llvm-minimal-git
-pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-git')
-pkgver=16.0.0_r441898.191ab4f46eba
+pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
+pkgver=16.0.0_r441988.dabb7514f562
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -173,18 +173,13 @@ package_llvm-libs-minimal-git() {
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-package_spirv-llvm-translator-git() {
+package_spirv-llvm-translator-minimal-git() {
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 depends=(llvm-minimal-git=$pkgver-$pkgrel 'spirv-tools')
 provides=('spirv-llvm-translator')
 conflicts=('spirv-llvm-translator')
 
     cp --preserve --recursive "$srcdir"/spirv/* "$pkgdir"/
-#  install -d "$pkgdir/usr/lib"
-#  cp -P \
-#    "$srcdir"/lib{LLVM,LTO,Remarks,clang-cpp}*.so* \
-#    "$pkgdir"/usr/lib/
-
     install -Dm644 "$srcdir"/SPIRV-LLVM-Translator/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
 

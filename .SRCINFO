@@ -1,5 +1,5 @@
 pkgbase = llvm-minimal-git
-	pkgver = 16.0.0_r441898.191ab4f46eba
+	pkgver = 16.0.0_r441988.dabb7514f562
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = llvm-minimal-git
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=16.0.0_r441898.191ab4f46eba-1
+	depends = llvm-libs-minimal-git=16.0.0_r441988.dabb7514f562-1
 	depends = perl
 	optdepends = python: for using lit (LLVM Integrated Tester)
 	optdepends = python-setuptools: for using lit
@@ -52,9 +52,9 @@ pkgname = llvm-libs-minimal-git
 	optdepends = llvm-libs: for LLVMgold linker
 	provides = llvm-libs
 
-pkgname = spirv-llvm-translator-git
+pkgname = spirv-llvm-translator-minimal-git
 	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version
-	depends = llvm-minimal-git=16.0.0_r441898.191ab4f46eba-1
+	depends = llvm-minimal-git=16.0.0_r441988.dabb7514f562-1
 	depends = spirv-tools
 	provides = spirv-llvm-translator
 	conflicts = spirv-llvm-translator
