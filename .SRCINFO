@@ -1,13 +1,13 @@
 pkgbase = hooroo
 	pkgdesc = Synchronise your packages with a file
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ca-cl2/hooroo
 	arch = any
 	license = Apache
 	depends = bash
 	provides = hooroo
-	source = https://github.com/ca-cl2/hooroo/archive/refs/tags/v0.3.tar.gz
-	sha256sums = d08b7579fb4b44dc3547e9df026ca46c3ed8e889374b2bc4a59277e7c98c8417
+	source = https://github.com/ca-cl2/hooroo/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 01259d99aae918603747cdc913af2c77b0baaee7848175fa459f540d0785a5de
 
 pkgname = hooroo

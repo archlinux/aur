@@ -1,7 +1,7 @@
 # Maintainer: Callum Andrew
 
 pkgname=hooroo
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Synchronise your packages with a file'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('bash')
 provides=("$pkgname")
 source=("https://github.com/ca-cl2/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d08b7579fb4b44dc3547e9df026ca46c3ed8e889374b2bc4a59277e7c98c8417')
+sha256sums=('01259d99aae918603747cdc913af2c77b0baaee7848175fa459f540d0785a5de')
 
 package() {
 	install -Dm755 "${pkgname}-${pkgver}/$pkgname" -t "${pkgdir}/usr/bin"
