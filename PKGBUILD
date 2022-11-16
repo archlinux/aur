@@ -2,7 +2,7 @@
 
 arch=('x86_64')
 pkgname="libfprint-goodixtls-git"
-pkgdesc="libfprint fork for goodixtls devices. Currently supports 5110. Note you will need to flash your device with [goodix-fp-dump](https://github.com/mpi3d/goodix-fp-dump) to use this"
+pkgdesc="libfprint fork for goodixtls devices"
 makedepends=("git" "meson" "opencv" "pkgconf" "gobject-introspection" "gtk-doc" "doctest" "cmake")
 license=("LGPL2")
 provides=("libfprint" "libfprint-2.so=2-64")
