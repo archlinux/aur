@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r654.0bb8396
-pkgrel=2
+pkgver=r677.f8b98a5
+pkgrel=1
 pkgdesc='Stylish top panel (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -27,7 +27,7 @@ source=('git+https://github.com/elementary/wingpanel.git'
 sha256sums=('SKIP'
             '1fbc81bbb6c6ac59f7ea8761cdac0714fd2f39877dc81a0b0d6db855163d4f14'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
-            '6d4c88c4b6dd13fc7ca60f2e2387f3af86d804f89591bd7826cf93a946b6f1b6'
+            '87732bcf30de9d2b9ad63d2ac185dcd1940553880bb96a5b1c44f53ee189b910'
             'aa15974b87a1000ab432bb048bc8a6ba0f36edd24e682d4e57833179c7b93f45'
             '5b29e24b4dc9076d54621334b839d2dbfa6a6adce1e8b444e38c2412f314f8c7')
 
