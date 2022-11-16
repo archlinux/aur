@@ -1,7 +1,7 @@
 pkgbase = crowdsec
 	pkgdesc = The open-source and collaborative IPS
-	pkgver = 1.4.1
-	pkgrel = 4
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://crowdsec.net
 	install = crowdsec.install
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = crowdsec
 	depends = libnewt
 	optdepends = docker: Used to run metabase container for statistics
 	provides = crowdsec
-	source = crowdsec-v1.4.1.tgz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v1.4.1.tar.gz
+	source = crowdsec-v1.4.2.tgz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v1.4.2.tar.gz
 	source = crowdsec.install
-	sha256sums = efc6eefa7e657a1440a9cc4608a4a04ab0b98bf62c14a8a9d6f1d3aba70b4715
+	sha256sums = 52d1ae451bd46fd6bae8dde0280940c9026afbafa7a56bfc56e1e6b4feeb21a6
 	sha256sums = 53c852472e10709426a7b1d246493493cdbd9b6ffe80737e725a82dee9e220ab
 
 pkgname = crowdsec
