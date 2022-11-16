@@ -8,6 +8,7 @@ pkgbase = deepin-kwin-reborn
 	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
 	makedepends = kdoctools
+	makedepends = dwayland-reborn
 	makedepends = deepin-wayland-protocols-reborn
 	makedepends = dde-kwin-reborn
 	makedepends = python
