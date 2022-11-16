@@ -1,10 +1,10 @@
-# Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
+# Maintainer: nullableVoidPtr <them+arch _ nullablevo _ id _ au>
 # Contributor: Alex Sarum <rum.274.4 at gmail dot com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-engine-git')
-pkgver=2.0.0.r50.g2a3cc7a1
+pkgver=2.0.1.r4.ge9c1c17f
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
@@ -39,7 +39,7 @@ build() {
     python const_generator.py ruby
   )
   (cd bindings/python
-    LIBUNICORN_PATH="../../build" python setup.py build
+    env LIBUNICORN_PATH="set to not rebuild so" python setup.py build
   )
   (cd bindings/ruby/unicorn_gem
     gem build unicorn-engine.gemspec
@@ -53,7 +53,7 @@ check() {
 
 package_unicorn-git() {
   depends=('glibc')
-  provides=('unicorn' 'libunicorn.so')
+  provides=('unicorn' 'libunicorn.so=2')
   cd ${pkgbase}
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm 644 samples/*.c -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
@@ -65,7 +65,6 @@ package_python-unicorn-git() {
   conflicts=(python-unicorn)
   cd ${pkgbase}/bindings/python
   python setup.py install --root="${pkgdir}" -O1 --skip-build
-  rm -r "${pkgdir}/usr/lib/"python*/site-packages/unicorn/{include,lib}
   install -Dm 644 sample* shellcode.py -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
