@@ -4,11 +4,13 @@
 #   `bash PKGBUILD -d <destination>`
 # which downloads the tar.gz file from blackmagicdesign.com, but will not unpack or install it. 
 
-# Variables here are programatically generated off of the `update.js` utility in the source.
+# This build script, as well as tools to automatically fetch updates, lives in creative-toolkit
+# https://github.com/paperdave/creative-toolkit/blob/main/src/fusion-studio-aur
+
 pkgver=18.1
 # $_downloadid can be grabbed off of https://www.blackmagicdesign.com/api/support/us/downloads.json
 _downloadid=3871c2d117cf49949a9eb903ffdd69be
-sha256sums=('5253ceae01338b0fa75eac6cd9d1b608dc66e800468fabc2a14d504931ab6ce0')
+sha256sums=(5253ceae01338b0fa75eac6cd9d1b608dc66e800468fabc2a14d504931ab6ce0)
 
 #
 pkgname=(fusion-studio fusion-render-node)
