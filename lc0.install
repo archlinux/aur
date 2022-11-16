@@ -1,7 +1,3 @@
 post_install() {
     lc0 benchmark
 }
-
-post_remove() {
-    rm -dr /usr/lib/lc0
-}
