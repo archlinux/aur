@@ -6,7 +6,7 @@ pkgbase = netclient
 	arch = x86_64
 	license = custom:SSPL
 	depends = wireguard-tools
-	source = 0.16.3-1.tar.zst::https://github.com/gravitl/netmaker/releases/download/v0.16.3/netclient-0.16.3-1-x86_64.pkg.tar.zst
+	source = 0.16.3-0.tar.zst::https://github.com/gravitl/netmaker/releases/download/v0.16.3/netclient-0.16.3-1-x86_64.pkg.tar.zst
 	sha256sums = 2b5eddb99a985443d7de2d872371beea485e65c5391497b695eef3ba3cae9623
 
 pkgname = netclient
