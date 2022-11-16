@@ -1,0 +1,19 @@
+pkgbase = python-tgcrypto
+	pkgdesc = Fast and Portable Cryptography Extension Library for Pyrogram
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/pyrogram/tgcrypto
+	arch = any
+	license = GPL3
+	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaes
+	depends = python-pysocks
+	source = https://github.com/pyrogram/tgcrypto/archive/refs/tags/v1.2.5.tar.gz
+	sha256sums = 923c93bb93dc05f039278b132870f66ab19fdf8f07facce55d4e9f9af1e5c40c
+
+pkgname = python-tgcrypto
