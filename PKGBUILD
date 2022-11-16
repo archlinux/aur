@@ -21,4 +21,5 @@ build() {
 package() {
   cd dde-kwin-$pkgver
   DESTDIR="$pkgdir" ninja install
+  chmod +x $pkgdir/usr/bin/kwin_no_scale
 }
