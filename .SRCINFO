@@ -1,7 +1,7 @@
 pkgbase = luastatus-luajit-git
 	pkgdesc = luastatus (a status bar content generator) built with luajit for better performance - git version
 	pkgver = r773.8d01bdf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3

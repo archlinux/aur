@@ -2,7 +2,7 @@
 
 pkgname=luastatus-luajit-git
 pkgver=r773.8d01bdf
-pkgrel=1
+pkgrel=2
 pkgdesc='luastatus (a status bar content generator) built with luajit for better performance - git version'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -59,6 +59,9 @@ build() {
 package() {
 	cd 'luastatus'
 	make DESTDIR="$pkgdir" install
+	install -dm755 "$pkgdir/usr/share/doc/luastatus/"
+	install -Dm644 'DOCS/MIGRATION_GUIDE.md' -t "$pkgdir/usr/share/doc/luastatus/" ||:
+	cp -r 'examples' -t "$pkgdir/usr/share/doc/luastatus/" ||:
 }
 
 # vim:noexpandtab
