@@ -1,13 +1,13 @@
 pkgbase = nym-wallet-appimage
 	pkgdesc = The Nym desktop wallet enables you to use the Nym network and take advantage of its key capabilities
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nymtech/nym/tree/develop/nym-wallet
 	arch = x86_64
 	license = Apache 2.0
 	depends = webkit2gtk
 	options = !strip
-	source_x86_64 = https://github.com/nymtech/nym/releases/download/nym-wallet-v1.0.9/nym-wallet_1.0.9_amd64.AppImage
-	sha256sums_x86_64 = 2f13dc389837f63d708618602fe3124086fd5ddc512c8d888fc9e57e30db2d6a
+	source_x86_64 = https://github.com/nymtech/nym/releases/download/nym-wallet-v1.1.0/nym-wallet_1.1.0_amd64.AppImage
+	sha256sums_x86_64 = 4e4a3ddc382a4964686a18a4334bbf7a2863913d872c9ed95c9a882b06d9fa90
 
 pkgname = nym-wallet-appimage
