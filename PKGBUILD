@@ -2,25 +2,26 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=libadalang
-epoch=1
-pkgver=2022
-pkgrel=2
+epoch=2
+pkgver=23.0.0
+pkgrel=1
 
 pkgdesc="A high performance semantic engine for the Ada programming language."
 url="https://github.com/AdaCore/libadalang"
 arch=('i686' 'x86_64')
-license=('GPL3' 'custom')
+license=('Apache')
 
 depends=('gnatcoll-gmp' 'langkit')
 makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 
              'python-e3-core' 'python-docutils' 'python-sphinx')
 
-source=(https://github.com/AdaCore/libadalang/archive/refs/tags/v22.0.0.tar.gz)
-sha1sums=("6ff10f106a154108f56987f834bd7ef700ec6cba")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=("0655d2eb755b9789ebf2b1ecfe5189bd64a5a80471d008a2e7ad0e58b9b35350")
+
 
 build()
 {
-  cd "$srcdir/libadalang-22.0.0"
+  cd "$srcdir/$pkgname-$pkgver"
 
   ADA_FLAGS="$CFLAGS"
   ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -40,7 +41,7 @@ build()
 
 package()
 {
-  cd "$srcdir/libadalang-22.0.0"
+  cd "$srcdir/$pkgname-$pkgver"
 
   python manage.py                                \
     install                                       \
@@ -50,20 +51,17 @@ package()
 
   # Install the developers manual
   pushd dev_manual/_build/html
+
   for file in $(find . -type f); do
       install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
   done
+
   popd
 
   # Install the license.
   install -D -m644     \
-     "COPYING3"        \
-     "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
-
-  # Install the custom license.
-  install -D -m644     \
-     "COPYING.RUNTIME" \
-     "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+     "LICENSE"        \
+     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install the Python binding
   cd build/python
