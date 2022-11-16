@@ -15,9 +15,7 @@ license=('GPL3' 'custom')
 depends=('gnatcoll-sql')
 makedepends=('gprbuild')
 
-#source=("https://github.com/AdaCore/gnatcoll-db/archive/refs/tags/v22.0.0.tar.gz")
 source=("$_repo_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-
 sha256sums=('0a4cc9f9c034be34ca4d08ae2c8fedce66c462719a2e1035d916559f6eee7a4d')
 
 build()
