@@ -1,0 +1,27 @@
+pkgbase = deepin-kwin-reborn
+	pkgdesc = An easy to use, but flexible, composited Window Manager
+	pkgver = 5.24.3
+	pkgrel = 1
+	install = deepin-kwin.install
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = kdoctools
+	makedepends = deepin-wayland-protocols
+	makedepends = python
+	makedepends = ninja
+	depends = kscreenlocker
+	depends = xcb-util-cursor
+	depends = plasma-framework
+	depends = kcmutils
+	depends = breeze
+	depends = pipewire-session-manager
+	depends = libqaccessibilityclient
+	depends = lcms2
+	depends = libxcvt
+	options = debug
+	source = deepin-kwin-5.24.3.tar.gz::https://github.com/justforlxz/deepin-kwin/archive/refs/tags/4%255.24.3-deepin.1.8.tar.gz
+	sha256sums = 725239b2f01d78e8ef51ae22eb8856d2344f110a150ad3f253d51bc1faa7643b
+
+pkgname = deepin-kwin-reborn
