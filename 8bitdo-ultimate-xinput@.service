@@ -1,0 +1,6 @@
+[Unit]
+Description=8BitDo Ultimate Controller XInput Mode Xbobxdrv Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xboxdrv --mimic-xpad --silent --type xbox360 --device-by-id %I

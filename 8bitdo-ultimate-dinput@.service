@@ -1,0 +1,7 @@
+[Unit]
+Description=8BitDo Ultimate Controller DInput Mode Xbobxdrv Daemon
+StopWhenUnneeded=true
+   
+[Service]
+Type=simple
+ExecStart=/usr/bin/xboxdrv --mimic-xpad --silent --quiet --type xbox360 --evdev %I --evdev-absmap ABS_BRAKE=LT,ABS_GAS=RT,ABS_Y=Y1,ABS_X=X1,ABS_RZ=Y2,ABS_Z=X2,ABS_HAT0X=dpad_x,ABS_HAT0Y=dpad_y --evdev-keymap BTN_TL=LB,BTN_TR=RB,BTN_X=X,BTN_Y=Y,BTN_A=A,BTN_B=B,BTN_THUMBL=TL,BTN_THUMBR=TR,BTN_SELECT=back,BTN_START=start,BTN_MODE=guide --axismap -Y1=Y1,-Y2=Y2

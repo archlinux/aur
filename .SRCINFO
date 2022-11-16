@@ -1,0 +1,20 @@
+pkgbase = 8bitdo-ultimate-controller-udev
+	pkgdesc = udev rules for 8bitdo controller 2.4GHz mode
+	pkgver = 1.0
+	pkgrel = 1
+	install = install
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = libevdev
+	depends = xboxdrv
+	depends = systemd
+	depends = udev
+	source = file://99-8bitdo-ultimate-controllers.rules
+	source = file://8bitdo-ultimate-dinput@.service
+	source = file://8bitdo-ultimate-xinput@.service
+	sha256sums = 25b2fd49c1c60068f1b9d7607b63e1942442691ba5014d4c0fa96b198bb616ca
+	sha256sums = c9b8f6853518baa14fcddb8b021dd643142e8ea8f94443c625257272f6b5a66d
+	sha256sums = a0fe329b4f86af73b594055150fecce1f2c55c48b7d5adeb1c4d287a3e866df5
+
+pkgname = 8bitdo-ultimate-controller-udev
