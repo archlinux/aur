@@ -16,7 +16,6 @@ pkgbase = wingpanel-indicator-ayatana-git
 	depends = indicator-application
 	depends = libindicator-gtk3
 	depends = libgranite.so
-	depends = libwingpanel.so
 	provides = wingpanel-indicator-ayatana
 	conflicts = wingpanel-indicator-ayatana
 	source = git+https://github.com/Lafydev/wingpanel-indicator-ayatana.git
