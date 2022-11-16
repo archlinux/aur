@@ -2,7 +2,7 @@
 # Contributor: Shuyuan Liu (AUR)
 
 pkgname=aptdec-git
-pkgver=r200.be640ff
+pkgver=r212.4d4a0c9
 pkgrel=1
 pkgdesc='NOAA APT satellite imagery decoder'
 arch=('x86_64' 'arm' 'aarch64')
@@ -29,7 +29,7 @@ prepare() {
 
     git submodule init
     git config submodule.src/argparse.url "$srcdir/argparse"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
