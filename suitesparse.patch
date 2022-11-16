@@ -1,0 +1,24 @@
+diff --unified --recursive --text old/cmake/Packages/SuiteSparse.cmake new/cmake/Packages/SuiteSparse.cmake
+--- old/cmake/Packages/SuiteSparse.cmake	2021-04-20 07:33:14.000000000 -0500
++++ new/cmake/Packages/SuiteSparse.cmake	2022-11-16 15:03:38.151986393 -0600
+@@ -51,9 +51,9 @@
+       SUITESPARSE_VERSION "${_SUITESPARSE_VERSION}")
+   ENDIF (SUITESPARSE_INCLUDE_DIR)
+   
+-  IF (${SUITESPARSE_VERSION} GREATER 3)
++  # IF (${SUITESPARSE_VERSION} GREATER 3)
+     LIST (APPEND SUITESPARSE_REQUIRED_LIBS "suitesparseconfig")
+-  ENDIF (${SUITESPARSE_VERSION} GREATER 3)
++  # ENDIF (${SUITESPARSE_VERSION} GREATER 3)
+ 
+   # Search user environment for libraries, then default paths
+   SET (SUITESPARSE_LIBRARIES)
+@@ -75,7 +75,7 @@
+ 
+   IF (SUITESPARSE_FOUND)
+     # Set flags and print a status message
+-    MESSAGE (STATUS "SuiteSparse version ${SUITESPARSE_VERSION} found:")
++    MESSAGE (STATUS "SuiteSparse version \${SUITESPARSE_VERSION} found:")
+ 
+     SET (SUITESPARSE_CPPFLAGS "-I${SUITESPARSE_INCLUDE_DIR}")
+     SET (SUITESPARSE_LDFLAGS "${SUITESPARSE_LIBRARIES}")
