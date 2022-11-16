@@ -1,0 +1,200 @@
+Author: Robert Mader <robert.mader@posteo.de>
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2671
+Editor: Mingi Sung <FiestaLake@protonmail.com>
+Commit: d9f1681b149c12c94e3e457c6decd34babed951f
+Last Updated: 11/16/22 (Mutter 43.0-1)
+---
+
+Avoid some allocations, save some CPU cycles and make the code easier
+to read.
+
+Behaviourwise the only expected change is that now, if there are mapped
+clones, we unconditionally choose the view with the highest refresh
+rate the actor (or one of its clones) is on and don't check the
+obscurred region any more.
+
+Thus in some cases a client may receive a higher rate of frame callbacks
+when obscurred on a faster view while a clone is present on a slower
+one. The assumption is that cases like this are relatively rare and
+that the reduction of code complexity, the reduction of allocations in
+meta_surface_actor_is_obscured_on_stage_view() whenever the actor is
+not fully obscurred and has clones on other views, as well as generally
+fewer lookups and less code in most common cases, compensate for that.
+
+---
+diff --git a/src/compositor/meta-surface-actor-wayland.c b/src/compositor/meta-surface-actor-wayland.c
+index b58f328dc3272b9f418beda90c607b1759d5b345..7cbaa65ce3f628295337c6dc471895f4c9681aae 100644
+--- a/src/compositor/meta-surface-actor-wayland.c
++++ b/src/compositor/meta-surface-actor-wayland.c
+@@ -67,60 +67,79 @@ meta_surface_actor_wayland_is_opaque (MetaSurfaceActor *actor)
+ 
+ #define UNOBSCURED_TRESHOLD 0.1
+ 
+-ClutterStageView *
+-meta_surface_actor_wayland_get_current_primary_view (MetaSurfaceActor *actor,
+-                                                     ClutterStage     *stage)
++gboolean
++meta_surface_actor_wayland_is_stage_view_current_primary_view (MetaSurfaceActor *actor,
++                                                               ClutterStageView *stage_view)
+ {
+   ClutterStageView *current_primary_view = NULL;
+   float highest_refresh_rate = 0.f;
+   float biggest_unobscurred_fraction = 0.f;
+   GList *l;
+ 
+-  for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
++  if (!clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
++                                                   stage_view))
++    return FALSE;
++
++  if (clutter_actor_has_mapped_clones (CLUTTER_ACTOR (actor)))
+     {
+-      ClutterStageView *stage_view = l->data;
+-      float refresh_rate;
+-      float unobscurred_fraction = 1.f;
++      ClutterStage *stage;
+ 
+-      if (clutter_actor_has_mapped_clones (CLUTTER_ACTOR (actor)))
++      stage = CLUTTER_STAGE (clutter_actor_get_stage (CLUTTER_ACTOR (actor)));
++      for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
+         {
++          ClutterStageView *view = l->data;
++          float refresh_rate;
++
+           if (!clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
+-                                                           stage_view))
++                                                           view))
+             continue;
+-        }
+-      else
+-        {
+-          if (l->next || biggest_unobscurred_fraction > 0.f)
+-            {
+-              if (meta_surface_actor_is_obscured_on_stage_view (actor,
+-                                                                stage_view,
+-                                                                &unobscurred_fraction))
+-                continue;
+-            }
+-          else
++
++          refresh_rate = clutter_stage_view_get_refresh_rate (view);
++          if (refresh_rate > highest_refresh_rate)
+             {
+-              if (meta_surface_actor_is_obscured (actor) ||
+-                  !clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
+-                                                               stage_view))
+-                continue;
++              current_primary_view = view;
++              highest_refresh_rate = refresh_rate;
+             }
+         }
+ 
+-      refresh_rate = clutter_stage_view_get_refresh_rate (stage_view);
++      return current_primary_view == stage_view;
++    }
++
++  l = clutter_actor_peek_stage_views (CLUTTER_ACTOR (actor));
++  g_assert (l != NULL);
++
++  if (!l->next)
++    {
++      g_assert (l->data == stage_view);
++      return !meta_surface_actor_is_obscured (actor);
++    }
++
++  for (; l; l = l->next)
++    {
++      ClutterStageView *view = l->data;
++      float refresh_rate;
++      float unobscurred_fraction;
++
++      if (meta_surface_actor_is_obscured_on_stage_view (actor,
++                                                        view,
++                                                        &unobscurred_fraction))
++        continue;
++
++      refresh_rate = clutter_stage_view_get_refresh_rate (view);
+ 
+       if ((refresh_rate > highest_refresh_rate &&
+-           (unobscurred_fraction > UNOBSCURED_TRESHOLD ||
+-            biggest_unobscurred_fraction < UNOBSCURED_TRESHOLD)) ||
++           (biggest_unobscurred_fraction < UNOBSCURED_TRESHOLD ||
++            unobscurred_fraction > UNOBSCURED_TRESHOLD)) ||
+           (biggest_unobscurred_fraction < UNOBSCURED_TRESHOLD &&
+            unobscurred_fraction > UNOBSCURED_TRESHOLD))
+         {
+-          current_primary_view = stage_view;
++          current_primary_view = view;
+           highest_refresh_rate = refresh_rate;
+           biggest_unobscurred_fraction = unobscurred_fraction;
+         }
+     }
+ 
+-  return current_primary_view;
++  return current_primary_view == stage_view;
+ }
+ 
+ static void
+diff --git a/src/compositor/meta-surface-actor-wayland.h b/src/compositor/meta-surface-actor-wayland.h
+index 1a349af91f250978ff356a3114d1da3817010089..1898147d55e0180efdb7320efbf421ad67958b24 100644
+--- a/src/compositor/meta-surface-actor-wayland.h
++++ b/src/compositor/meta-surface-actor-wayland.h
+@@ -44,8 +44,8 @@ MetaSurfaceActor * meta_surface_actor_wayland_new (MetaWaylandSurface *surface);
+ MetaWaylandSurface * meta_surface_actor_wayland_get_surface (MetaSurfaceActorWayland *self);
+ void meta_surface_actor_wayland_surface_destroyed (MetaSurfaceActorWayland *self);
+ 
+-ClutterStageView * meta_surface_actor_wayland_get_current_primary_view (MetaSurfaceActor *actor,
+-                                                                        ClutterStage     *stage);
++gboolean meta_surface_actor_wayland_is_stage_view_current_primary_view (MetaSurfaceActor *actor,
++                                                                        ClutterStageView *stage_view);
+ 
+ G_END_DECLS
+ 
+diff --git a/src/wayland/meta-wayland-presentation-time.c b/src/wayland/meta-wayland-presentation-time.c
+index fb99445eb70dd72d95e8e425a3230be8505b8b25..0025b62e1e6a0381f30b70e3ef2da817dc3dc214 100644
+--- a/src/wayland/meta-wayland-presentation-time.c
++++ b/src/wayland/meta-wayland-presentation-time.c
+@@ -156,7 +156,6 @@ on_after_paint (ClutterStage          *stage,
+       GList *l_cur = l;
+       MetaWaylandSurface *surface = l->data;
+       MetaSurfaceActor *actor;
+-      ClutterStageView *surface_primary_view;
+ 
+       l = l->next;
+ 
+@@ -164,9 +163,8 @@ on_after_paint (ClutterStage          *stage,
+       if (!actor)
+         continue;
+ 
+-      surface_primary_view =
+-        meta_surface_actor_wayland_get_current_primary_view (actor, stage);
+-      if (stage_view != surface_primary_view)
++      if (!meta_surface_actor_wayland_is_stage_view_current_primary_view (actor,
++                                                                          stage_view))
+         continue;
+ 
+       if (!wl_list_empty (&surface->presentation_time.feedback_list))
+diff --git a/src/wayland/meta-wayland.c b/src/wayland/meta-wayland.c
+index 9d066b19cb4d555b720f908b3f099ee8fbab4235..af8f9db1c3db8c1dc1876e3a4ec53ef5d25a5a65 100644
+--- a/src/wayland/meta-wayland.c
++++ b/src/wayland/meta-wayland.c
+@@ -224,7 +224,6 @@ on_after_update (ClutterStage          *stage,
+       MetaWaylandSurface *surface = l->data;
+       MetaSurfaceActor *actor;
+       MetaWaylandActorSurface *actor_surface;
+-      ClutterStageView *surface_primary_view;
+ 
+       l = l->next;
+ 
+@@ -232,9 +231,8 @@ on_after_update (ClutterStage          *stage,
+       if (!actor)
+         continue;
+ 
+-      surface_primary_view =
+-        meta_surface_actor_wayland_get_current_primary_view (actor, stage);
+-      if (stage_view != surface_primary_view)
++      if (!meta_surface_actor_wayland_is_stage_view_current_primary_view (actor,
++                                                                          stage_view))
+         continue;
+ 
+       actor_surface = META_WAYLAND_ACTOR_SURFACE (surface->role);

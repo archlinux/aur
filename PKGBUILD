@@ -13,8 +13,8 @@
 ### PACKAGE OPTIONS
 
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880')
-_merge_requests_to_use=('1441' '1880')
+# Merge Requests List: ('579' '1441' '1880' '2671')
+_merge_requests_to_use=('1441' '1880' '2671')
 
 ## Disable building a DOCS package
 # Remember to unset this variable when producing .SRCINFO
@@ -29,7 +29,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.0+r97+gd313c8f4f
+pkgver=43.1
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -42,13 +42,15 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
-_commit=d313c8f4fe14d8a287bd75bb202434c538048808  # tags/43.0^97
+_commit=8329a3eb5f4960df919e0348bd445c40568d3d60  # tags/43.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
-        'mr1880.patch')
+        'mr1880.patch'
+        'mr2671.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
-            'a075fad955d589ea5e59178221a80fe162f7b10cd0c77fcb94219fb380810952')
+            'a075fad955d589ea5e59178221a80fe162f7b10cd0c77fcb94219fb380810952'
+            'd7f8e1a52ddcc02af677b7a7167b720028a4363f1b4df8a9a47fdf5b770ca721')
 
 pkgver() {
   cd $pkgname
@@ -149,6 +151,14 @@ prepare() {
   # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
   #          Fixes: #1162
   pick_mr '1880' 'mr1880.patch' 'patch'
+
+  # Title: surface-actor-wayland: Clean up and optimize check for primary view
+  # Author: Robert Mader <robert.mader@posteo.de>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2671
+  # Type: 1
+  # Status: 2
+  # Comment: Avoid some allocations, save some CPU cycles and make the code easier to read.
+  pick_mr '2671' 'mr2671.patch' 'patch'
 
 }
 
