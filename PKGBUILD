@@ -1,4 +1,4 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Margret Riegert <margret at eowyn net>
 
 pkgname=trove_downloader
 pkgver=2.1.9
