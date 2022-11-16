@@ -27,7 +27,14 @@ noextract=('$_weights')
 
 prepare() {
   cd "$pkgname-$pkgver/libs"
-  git clone https://github.com/LeelaChessZero/lczero-common.git
+  if [ -d ./lczero-common ]; then {
+    cd lczero-common
+    git pull
+  }
+  else {
+    git clone https://github.com/LeelaChessZero/lczero-common.git
+  }
+  fi
 }
 
 build() {
