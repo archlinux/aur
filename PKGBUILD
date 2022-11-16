@@ -2,15 +2,15 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=2.99.12
-pkgrel=2
+pkgver=2.99.14
+pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
          'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
-         'babl>=0.1.78' 'gegl>=0.4.38' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
+         'babl>=0.1.98' 'gegl>=0.4.40' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
 makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
@@ -35,16 +35,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
-        'fix_build_with_libheif_1.13.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/a61299ddb184babca015a846c72bf3e1a57faf2a.patch'
         'linux.gpl')
-sha256sums=('7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
-            '6b3dbe50b85ec058f652b84ad7c959319618b8f5c23a9626face074ae3256aaf'
+sha256sums=('313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  patch -Np1 -i ../fix_build_with_libheif_1.13.patch
-}
 
 build() {
   local meson_options=(

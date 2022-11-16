@@ -1,7 +1,7 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
-	pkgver = 2.99.12
-	pkgrel = 2
+	pkgver = 2.99.14
+	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = i686
 	arch = x86_64
@@ -49,8 +49,8 @@ pkgbase = gimp-devel
 	depends = poppler-data
 	depends = openexr
 	depends = mypaint-brushes1
-	depends = babl>=0.1.78
-	depends = gegl>=0.4.38
+	depends = babl>=0.1.98
+	depends = gegl>=0.4.40
 	depends = cairo
 	depends = python-gobject
 	depends = appstream-glib
@@ -71,13 +71,11 @@ pkgbase = gimp-devel
 	optdepends = gjs: JavaScript scripting support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
-	provides = gimp=2.99.12
+	provides = gimp=2.99.14
 	conflicts = gimp
-	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.12.tar.xz
-	source = fix_build_with_libheif_1.13.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/a61299ddb184babca015a846c72bf3e1a57faf2a.patch
+	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.14.tar.xz
 	source = linux.gpl
-	sha256sums = 7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3
-	sha256sums = 6b3dbe50b85ec058f652b84ad7c959319618b8f5c23a9626face074ae3256aaf
+	sha256sums = 313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
 
 pkgname = gimp-devel
