@@ -1,7 +1,7 @@
 pkgbase = o
 	pkgdesc = Text editor and minimalistic IDE
 	pkgver = 2.57.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD
@@ -17,7 +17,7 @@ pkgbase = o
 	optdepends = clojure: for compiling Clojure
 	optdepends = crystal: for compiling Crystal
 	optdepends = cxx: for compiling C and C++
-	optdepends = elm: for compiling Elm
+	optdepends = elm-bin: for compiling Elm
 	optdepends = fpc: for compiling Object Pascal
 	optdepends = fstabfmt: for formatting /etc/fstab
 	optdepends = gdb: for debugging C
@@ -46,11 +46,11 @@ pkgbase = o
 	optdepends = scdoc: for writing man pages
 	optdepends = shfmt: for formattig Shell scripts
 	optdepends = tidy: for formatting HTML
-	optdepends = v: for compiling and formatting V
+	optdepends = vlang: for compiling and formatting V
 	optdepends = vte3: for the ko GUI frontend
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
 	source = git+https://github.com/xyproto/o#commit=983e53231e91f3c24e0010c8ec9e17c9cff62442
+	b2sums = SKIP
 
 pkgname = o
-
