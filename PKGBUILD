@@ -15,6 +15,7 @@ depends=('libgl' 'libpulse' 'libxrender')
 makedepends=('cmake') 
 source=(http://squeakvm.org/unix/release/Squeak-$pkgver-src.tar.gz)
 md5sums=('8a5cb1d6899d55df56154fab8716e034')
+sha256sums=('3db6d12ea223e5bc49f52af7f6f832e383a3a006a53bc8a87f6469e1af5dfc2e')
 
 build() {
   cd Squeak-$pkgver-src/
