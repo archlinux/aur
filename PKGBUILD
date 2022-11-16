@@ -1,10 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"
+_CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6;8.9;9.0;9.0+PTX"
 pkgname=python-monai
 _pkgname=MONAI
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='AI Toolkit for Healthcare Imaging'
 arch=('x86_64')
 url='https://monai.io'
@@ -14,7 +14,6 @@ depends=(
   python-numpy
 )
 makedepends=(
-  gcc10
   python-pip
   python-setuptools
   python-wheel
@@ -42,8 +41,6 @@ sha512sums=('82857e54a15059656431bbd9fd9194b4b27ad2a2f27b23fc13e65b0f08c87617466
 build() {
   cd "${_pkgname}-${pkgver}"
   BUILD_MONAI=1 \
-  CC=gcc-10 \
-  CXX=g++-10 \
   FORCE_CUDA=1 \
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
   python setup.py build
@@ -52,8 +49,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   BUILD_MONAI=1 \
-  CC=gcc-10 \
-  CXX=g++-10 \
   FORCE_CUDA=1 \
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
