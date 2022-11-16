@@ -2,7 +2,7 @@
 # Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
 pkgname=gnome-gesture-improvements
 pkgver=r191.f259234
-pkgrel=1
+pkgrel=2
 pkgdesc="Touchpad gesture improvements for GNOME on Wayland/X11"
 arch=('any')
 url="https://github.com/harshadgavali/gnome-gesture-improvements"
@@ -34,4 +34,8 @@ package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
   bsdtar xvf "build/$_uuid.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+
+  install -Dm644 "build/extension/schemas/$_schema" -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
 }

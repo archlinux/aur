@@ -1,7 +1,7 @@
 pkgbase = gnome-gesture-improvements
 	pkgdesc = Touchpad gesture improvements for GNOME on Wayland/X11
 	pkgver = r191.f259234
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harshadgavali/gnome-gesture-improvements
 	arch = any
 	license = GPL3
