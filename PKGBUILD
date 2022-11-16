@@ -1,5 +1,5 @@
 pkgname="blokator"
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Simple system-wide adblocker"
 url="https://gitlab.com/Tomkoid/blokator"
