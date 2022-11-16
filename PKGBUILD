@@ -13,7 +13,10 @@ depends=('systemd' 'iproute2')
 arch=('any')
 optdepends=(
 	'nftables: nat feature'
-	'bash-completion')
+	'bash-completion'
+	'dnsmasq'
+	'dhcpcd'
+	'openresolv: for dhcpcd')
 makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml' 'cmake')
 sha256sums=('SKIP')
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
