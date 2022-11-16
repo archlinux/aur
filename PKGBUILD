@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -13,7 +13,7 @@ makedepends=(libnma libnma-gtk4 python git)
 optdepends=('libnma: GUI support (GTK 3)'
             'libnma-gtk4: GUI support (GTK 4)')
 options=(debug)
-_commit=98d8b8b4e39338d00239676fe6e0318f92258f8e  # tags/1.10.0^0
+_commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6  # tags/1.10.2^0
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit")
 sha256sums=('SKIP')
 
