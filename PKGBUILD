@@ -1,7 +1,7 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=mmfm
-pkgver=0.2
+pkgver=0.4b
 pkgrel=1
 pkgdesc='Viewer and manager for multimedia files'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	'4755c8b6b1625ff3f7af8e33fa5b1302a27f7b829295c72a9c94876a093e4ec7'
+	'76bcb78bed1dde2cdd19a37ce6c95b2a2e678e0300bdd85522f9d3642f2e14b4'
 )
 
 prepare() {
