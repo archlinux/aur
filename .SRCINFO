@@ -30,7 +30,6 @@ pkgbase = libvirt-git
 	depends = polkit
 	depends = netcf
 	depends = glusterfs
-	depends = ceph-libs
 	depends = libiscsi
 	depends = fmt
 	optdepends = libvirt-storage-gluster: Gluster storage backend
