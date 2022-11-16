@@ -15,7 +15,7 @@ pkgbase = save3ds_fuse-git
 	depends = fuse
 	provides = save3ds_fuse
 	conflicts = save3ds_fuse
-	source = save3ds::git+https://github.com/wwylele/save3ds.git#branch=master
+	source = git+https://github.com/wwylele/save3ds.git#branch=master
 	md5sums = SKIP
 
 pkgname = save3ds_fuse-git
