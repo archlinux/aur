@@ -1,6 +1,5 @@
 # Maintainer: Luis Batalha <lfrb25 at gmail dot com>
 
-commit_hash=09d144f89264342901250d280b5a7905748fa66f
 source_dir='qoi'
 
 pkgname=(qoi-headers-git
@@ -8,13 +7,13 @@ pkgname=(qoi-headers-git
          qoibench-git
         )
 pkgbase=qoi-git
-pkgver=r192.09d144f
-pkgrel=2
+pkgver=r276.660839c
+pkgrel=1
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
 url='https://qoiformat.org/'
 license=('MIT')
-source=("$source_dir::git+https://github.com/phoboslab/qoi.git#commit=$commit_hash")
+source=("$source_dir::git+https://github.com/phoboslab/qoi.git")
 makedepends=('git'
              'gcc-libs'
              'stb'
@@ -29,8 +28,7 @@ pkgver() {
 
 build() {
   cd $source_dir
-  gcc -std=gnu99 -lpng -I /usr/include/stb/ $CFLAGS -o qoibench qoibench.c
-  gcc -std=c99 $CFLAGS -I /usr/include/stb/ -o qoiconv qoiconv.c
+  make CFLAGS="-I /usr/include/stb/"
 }
 
 package_qoi-headers-git() {
