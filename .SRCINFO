@@ -1,7 +1,7 @@
 pkgbase = luastatus
 	pkgdesc = universal status bar content generator
 	pkgver = 0.6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/shdown/luastatus
 	arch = x86_64
 	license = LGPL3

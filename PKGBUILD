@@ -2,7 +2,7 @@
 
 pkgname=luastatus
 pkgver=0.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc='universal status bar content generator'
 url='https://github.com/shdown/luastatus'
 arch=('x86_64')
@@ -50,4 +50,9 @@ build() {
 package() {
 	cd "luastatus-${pkgver}"
 	make DESTDIR="$pkgdir" install
+	install -dm755 "$pkgdir/usr/share/doc/luastatus/"
+	install -Dm644 'DOCS/MIGRATION_GUIDE.md' -t "$pkgdir/usr/share/doc/luastatus/"
+	cp -r 'examples' -t "$pkgdir/usr/share/doc/luastatus/"
 }
+
+# vim:noexpandtab
