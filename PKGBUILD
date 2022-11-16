@@ -5,14 +5,14 @@
 # which downloads the tar.gz file from blackmagicdesign.com, but will not unpack or install it. 
 
 # Variables here are programatically generated off of the `update.js` utility in the source.
-pkgver=18.0.4
+pkgver=18.1
 # $_downloadid can be grabbed off of https://www.blackmagicdesign.com/api/support/us/downloads.json
-_downloadid=22eb3c7927f3445e91cc4d15a2483295
-sha256sums=('6a7d4d6f6518c4f6db1cf27e17614cc37f4f8310b7f9f623fd31a89390f4ee47')
+_downloadid=3871c2d117cf49949a9eb903ffdd69be
+sha256sums=('5253ceae01338b0fa75eac6cd9d1b608dc66e800468fabc2a14d504931ab6ce0')
 
 #
 pkgname=(fusion-studio fusion-render-node)
-pkgrel=2
+pkgrel=1
 pkgdesc="GPU accelerated 2D and 3D compositing and motion graphics software. Requires USB activation dongle."
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/products/fusion"
