@@ -1,4 +1,4 @@
-pkgbase = slimbook_service-bin
+pkgbase = slimbookservice-bin
 	pkgdesc = Service to get desktop notifications from your device
 	pkgver = 0.3.1
 	pkgrel = 0
@@ -7,9 +7,9 @@ pkgbase = slimbook_service-bin
 	license = GPL3
 	makedepends = python-pip
 	depends = python>=3
-	provides = slimbook_service
-	conflicts = slimbook_service
+	provides = slimbookservice
+	conflicts = slimbookservice
 	source = https://github.com/Slimbook-Team/slimbook_service/releases/download/0.3.1/slimbook_0.3.1.tar.xz
 	md5sums = SKIP
 
-pkgname = slimbook_service-bin
+pkgname = slimbookservice-bin

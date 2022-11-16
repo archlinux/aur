@@ -1,7 +1,7 @@
 # Maintainer: Marcos Gutiérrez <margual56@gmail.com>
 # Maintainer: Slimbook <dev@slimbook.es>
 
-_pkgname=slimbook_service
+_pkgname=slimbookservice
 pkgname=$_pkgname-bin
 pkgver=0.3.1
 pkgrel=0
