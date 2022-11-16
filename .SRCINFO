@@ -1,0 +1,17 @@
+pkgbase = python-solc
+	pkgdesc = Python wrapper around the solc Solidity compiler.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/ethereum/py-solc
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = solidity
+	depends = python-tox
+	depends = python-semantic-version
+	depends = python-bumpversion
+	depends = twine
+	source = https://pypi.org/packages/source/p/py-solc/py-solc-3.2.0.tar.gz
+	sha256sums = 82095bdac661072f48cf2daf8a96bdb625674330d92b225be26043e8d3ef8c9a
+
+pkgname = python-solc
