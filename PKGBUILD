@@ -14,7 +14,7 @@ depends=('python>=3'
          'python-dateutil')
 makedepends=('python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jorgebastida/${pkgname}/archive/${pkgver}.tar.gz"
-        'exlude-tests.patch::https://github.com/jorgebastida/awslogs/commit/4c43ec681ce17e427a5f33a054b4ef66baa98ee9.patch'
+        'exclude-tests.patch::https://github.com/jorgebastida/awslogs/commit/4c43ec681ce17e427a5f33a054b4ef66baa98ee9.patch'
         'support-jmespath-1x.patch::https://github.com/jorgebastida/awslogs/commit/57861bed66e6a4ca6f24ef6487709e6b891746cc.patch')
 sha512sums=('73f7d4e983b0a1658027aa88174ced0d2760823463c67832303be72b174ecdfbf6aabd73342634e233afd7736c57d397b55f0db89d0c59392145062de8868241'
             'f56c1861a334c32eff762bae73d8af85cb961a61137e5613e6d49258b10ed676721fb0925e9186d54dee68e8b63116829be1046e432854b1b161617c001564e9'
