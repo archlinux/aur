@@ -2,7 +2,7 @@
 
 pkgname=mbcord-appimage
 pkgver=3.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="An Emby/Jellyfin rich presence client for Discord"
 arch=('x86_64')
 url="https://github.com/SandwichFox/MBCord"
@@ -14,7 +14,7 @@ optdepends=('discord: Official stable client'
 depends=()
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source=(
-  "https://github.com/SandwichFox/MBCord/releases/download/v${pkgver}/mbcord-${pkgver}.AppImage"
+  "https://github.com/SandwichFox/MBCord/releases/download/${pkgver}/mbcord-${pkgver}.AppImage"
 )
 sha512sums=(
 d968302a582a747d42c2b4e6cef3d260cf46b288fa0ed98018c3375fbe5a526595699d5a3d016d11fdef55e21e45b13924616347464cca15220195af7e4063a2
