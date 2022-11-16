@@ -9,8 +9,8 @@ pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
 license=('GPL3')
-makedepends=('git' 'clang' 'llvm' 'libelf'
-             'binutils' 'bc' 'rsync' 'flex')
+makedepends=('clang' 'llvm' 'libelf' 'flex'
+             'binutils' 'bc' 'rsync')
 depends=('opensnitch')
 provides=("${pkgname%-stable}")
 conflicts=("${pkgname%-stable}" "${pkgname%-stable}-git")
