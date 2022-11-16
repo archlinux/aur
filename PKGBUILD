@@ -2,13 +2,13 @@
 
 pkgname=python-django-docs
 pkgver=4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation for Python Django module."
 arch=('any')
 url='https://docs.djangoproject.com/'
 license=('GPL')
 source=("${pkgname}-${pkgver}.zip::https://media.djangoproject.com/docs/django-docs-${pkgver}-en.zip")
-sha256sums=('116279104eff6fc0429021f55480268497a0291438493abbd2d7c008d756d2b0')
+sha256sums=('SKIP')
 
 prepare() {
 	rm ${pkgname}-${pkgver}.zip
