@@ -1,7 +1,7 @@
 pkgbase = o-bin
 	pkgdesc = Text editor, IDE and gdb frontend (CLI only)
 	pkgver = 2.57.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/o
 	arch = aarch64
 	arch = armv6
@@ -18,7 +18,7 @@ pkgbase = o-bin
 	optdepends = clojure: for compiling Clojure
 	optdepends = crystal: for compiling Crystal
 	optdepends = cxx: for compiling C and C++
-	optdepends = elm: for compiling Elm
+	optdepends = elm-bin: for compiling Elm
 	optdepends = fpc: for compiling Object Pascal
 	optdepends = fstabfmt: for formatting /etc/fstab
 	optdepends = gdb: for debugging C
@@ -47,12 +47,12 @@ pkgbase = o-bin
 	optdepends = scdoc: for writing man pages
 	optdepends = shfmt: for formattig Shell scripts
 	optdepends = tidy: for formatting HTML
-	optdepends = v: for compiling and formatting V
+	optdepends = vlang: for compiling and formatting V
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
 	conflicts = o
-	source = https://github.com/xyproto/o/releases/download/v2.57.0/o-2.57.0-linux__static.tar.xz
+	source = https://github.com/xyproto/o/releases/download/v2.57.0/o-2.57.0-linux_x86_64_static.tar.xz
 	sha256sums = 78fcd537465c43293770b87265a2c558279839151440e9c91deb570833e3e2a1
+	b2sums = 54e255c3912fc89acdc8add69ef9f6685e81a1edb1468d0f37f54482ee89db076aa16dabe766ce012aa39ba2edaf926f523f56ab6ab095b1bf4ee2aae430e791
 
 pkgname = o-bin
-

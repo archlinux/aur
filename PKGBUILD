@@ -2,7 +2,7 @@
 
 pkgname=o-bin
 pkgver=2.57.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
 url='https://github.com/xyproto/o'
@@ -18,7 +18,7 @@ optdepends=('asciidoctor: for writing man pages'
             'clojure: for compiling Clojure'
             'crystal: for compiling Crystal'
             'cxx: for compiling C and C++'
-            'elm: for compiling Elm'
+            'elm-bin: for compiling Elm'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
             'gdb: for debugging C'
@@ -47,7 +47,7 @@ optdepends=('asciidoctor: for writing man pages'
             'scdoc: for writing man pages'
             'shfmt: for formattig Shell scripts'
             'tidy: for formatting HTML'
-            'v: for compiling and formatting V'
+            'vlang: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
 sha256sums=('78fcd537465c43293770b87265a2c558279839151440e9c91deb570833e3e2a1')
@@ -56,11 +56,11 @@ b2sums=('54e255c3912fc89acdc8add69ef9f6685e81a1edb1468d0f37f54482ee89db076aa16da
 package() {
   cd o-$pkgver-linux_${CARCH}_static
   install -Dm755 o "$pkgdir/usr/bin/o"
+  install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/edith"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/vs"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/sw"
-  install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
