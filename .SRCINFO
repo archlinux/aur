@@ -1,7 +1,7 @@
 pkgbase = slimbookservice-bin
 	pkgdesc = Service to get desktop notifications from your device
 	pkgver = 0.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Slimbook-Team/slimbook_service
 	arch = x86_64
 	license = GPL3

@@ -4,7 +4,7 @@
 _pkgname=slimbookservice
 pkgname=$_pkgname-bin
 pkgver=0.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Service to get desktop notifications from your device'
 url='https://github.com/Slimbook-Team/slimbook_service'
 license=('GPL3')
