@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=vipster-git
-pkgver=r1383.2272ab6
+pkgver=r1606.b04730d
 pkgrel=1
 pkgdesc="Molecule editor based on Qt, specialized on periodic structures, development version"
 arch=('x86_64')
@@ -20,7 +20,6 @@ pkgver() {
 
 build() {
     cd vipster
-    git submodule update --init external/lammps
 
     mkdir -p build
     cd build
@@ -33,7 +32,7 @@ check() {
     cd vipster/build
 
     make test_lib
-    ./test_lib
+    ctest
 }
 
 package() {
