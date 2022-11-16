@@ -1,7 +1,7 @@
 pkgbase = trove_downloader
 	pkgdesc = Command line downloader for Humble Bundle Trove
 	pkgver = 2.1.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/silver_rust/trove_downloader
 	install = trove_downloader.install
 	arch = x86_64

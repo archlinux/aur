@@ -3,7 +3,7 @@
 pkgname=trove_downloader
 pkgver=2.1.9
 _pkghash=f377dcd6a39a6e4cd65412e56cdf2cdbbbb53df5
-pkgrel=1
+pkgrel=3
 pkgdesc="Command line downloader for Humble Bundle Trove"
 arch=('x86_64')
 url="https://gitlab.com/silver_rust/trove_downloader"
