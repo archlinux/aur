@@ -1,7 +1,7 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=transfer-more
-pkgver=v0.5.6
-pkgrel=7
+pkgver=v0.5.7
+pkgrel=1
 pkgdesc="Fast and lite file upload server (transfer.sh clone), git build."
 arch=('any')
 url="https://git.sceptique.eu/Sceptique/transfer_more"
@@ -16,9 +16,9 @@ backup=()
 options=()
 install=
 # source=('transfer_more::git+https://git.sceptique.eu/Sceptique/transfer_more')
-source=('transfer_more_v0.5.6.tar.gz::https://git.sceptique.eu/Sceptique/transfer_more/archive/v0.5.6.tar.gz')
+source=('transfer_more_v0.5.7.tar.gz::https://git.sceptique.eu/Sceptique/transfer_more/archive/v0.5.7.tar.gz')
 noextract=()
-sha256sums=('0d60e7d8332efa8b0022db1b66a20d0ac7e2574b048a71a5fe1bbd07b25b4dc2')
+sha256sums=('50f5d67a016dc737043ad32f04e610cdb916f6e6512a5fa1fe21049574207766')
 
 # pkgver() {
 #   cd "$srcdir/transfer_more"
