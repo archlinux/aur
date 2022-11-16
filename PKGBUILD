@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=wavethresh
-_pkgver=4.7.1
+_pkgver=4.7.2
 pkgname=r-${_pkgname,,}
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 pkgdesc='Wavelets Statistics and Transforms'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('330cf1ea755f27de938e5e4012f08e5923680bab6e0800cb0cdc91cea895009d')
+sha256sums=('9a9774ca23496df4ecaa2bf9bff345a2ae40ded07f6afd81dd8847d48b43b656')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
