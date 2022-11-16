@@ -1,11 +1,11 @@
 pkgbase = ffsclient-bin
 	pkgdesc = A cli to access firefox-sync data
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Mikescher/firefox-sync-client
 	arch = x86_64
 	license = Apache
-	source = https://github.com/Mikescher/firefox-sync-client/releases/download/v1.2.0/ffsclient_linux-amd64
+	source = https://github.com/Mikescher/firefox-sync-client/releases/download/v1.3.0/ffsclient_linux-amd64
 	sha256sums = 48addb268291151b0dd6752675829dc3ba81523d1515d6094ccf18269e26dfd6
 
 pkgname = ffsclient-bin
