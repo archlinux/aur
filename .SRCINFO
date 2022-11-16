@@ -1,6 +1,6 @@
 pkgbase = xfce4-places-plugin
 	pkgdesc = Places menu plugin for the Xfce panel
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = xfce4-places-plugin
 	makedepends = intltool
 	depends = libnotify
 	depends = xfce4-panel
-	source = http://archive.xfce.org/src/panel-plugins/xfce4-places-plugin/1.8/xfce4-places-plugin-1.8.1.tar.bz2
+	source = http://archive.xfce.org/src/panel-plugins/xfce4-places-plugin/1.8/xfce4-places-plugin-1.8.3.tar.bz2
 	source = mounts.patch
-	sha256sums = f211219f03c9260f624370e18c79e4176c9d35a8247158e77e5d811327610ab2
+	sha256sums = f11d0e6d03f22ab02c2e6b507d365b5a918532e8819e50647ee1860eca60c743
 	sha256sums = 0f772f067bff34dd94a473b192494335eb73c4c3d867e4f5bf81828f825d95eb
 
 pkgname = xfce4-places-plugin
-

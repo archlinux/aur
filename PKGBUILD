@@ -3,7 +3,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce4-places-plugin
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Places menu plugin for the Xfce panel"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('libnotify' 'xfce4-panel')
 makedepends=('intltool')
 source=("http://archive.xfce.org/src/panel-plugins/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.bz2"
         "mounts.patch")
-sha256sums=('f211219f03c9260f624370e18c79e4176c9d35a8247158e77e5d811327610ab2'
+sha256sums=('f11d0e6d03f22ab02c2e6b507d365b5a918532e8819e50647ee1860eca60c743'
             '0f772f067bff34dd94a473b192494335eb73c4c3d867e4f5bf81828f825d95eb')
 
 prepare() {
