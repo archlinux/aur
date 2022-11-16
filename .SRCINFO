@@ -1,6 +1,6 @@
 pkgbase = trove_downloader
 	pkgdesc = Command line downloader for Humble Bundle Trove
-	pkgver = 2.1.5
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://gitlab.com/silver_rust/trove_downloader
 	install = trove_downloader.install
@@ -10,8 +10,7 @@ pkgbase = trove_downloader
 	depends = gcc-libs
 	provides = trove_downloader
 	conflicts = trove_downloader
-	source = https://gitlab.com/silver_rust/trove_downloader/-/archive/v2.1.5/trove_downloader-2.1.5.tar.gz
-	sha256sums = dc88d897ea0ffa2c3d08c49b3fe1cda2ee350e42a6e723d1c086b6790695663b
+	source = https://gitlab.com/silver_rust/trove_downloader/-/archive/v2.1.9/trove_downloader-2.1.9.tar.gz
+	sha256sums = 5759e26b7597a14a04b885306b9aa17a596295184f61710a2f9fcced9737ff46
 
 pkgname = trove_downloader
-
