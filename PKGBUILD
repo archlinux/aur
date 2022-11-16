@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sesame
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='SEnsible Step-wise Analysis of DNA MEthylation BeadChips'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2bc86064029735d18aa4930b6bdd9d9ba86497a0ef6c5f3671241bd99273c627')
+sha256sums=('fe1a485da04b92c576c1bd225e28184c517f036c40a47a4a7e8fa5df0d506205')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
