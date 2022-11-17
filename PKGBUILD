@@ -69,7 +69,7 @@ _CMAKE_FLAGS+=(
 _name=alice-vision
 pkgname=${_name}
 pkgver=2.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
@@ -90,12 +90,16 @@ source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/ar
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "cmake_cxx_std_14.patch"
         "openexr3.patch"
+        "iomanip.patch::https://github.com/alicevision/AliceVision/commit/711eda620449c080b642fc7cb6118758535ab614.patch"
+        "isnormal.patch::https://github.com/alicevision/AliceVision/commit/22fd9d4ba3f8b5344261cedfd9bc3cd4cb58eece.patch"
 )
 sha256sums=('39dcf4bb0a7cb1d0ba234b4ec2de6d245a83ac21846585de3156b37b82d3066b'
             'SKIP'
             'SKIP'
             'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
-            'de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b')
+            'de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b'
+            '8403ad7fc41c86dc771f0b1c986d22831ed7c4fee8520f8aa96171f20387bc2d'
+            '29440da035b36e3b0e4b94645551ae1bb6041c31b337136894a158217946135f')
 
 prepare() {
   cd "${srcdir}"/AliceVision-${pkgver}
@@ -119,6 +123,10 @@ prepare() {
   sed 's/${OPENIMAGEIO_LIBRARIES};dl/OpenImageIO::OpenImageIO/g' -i "${srcdir}"/AliceVision-${pkgver}/src/CMakeLists.txt
 # fix [io]fstream(path) initializer
   sed '1 i#include <fstream>' -i $(grep -Rl std::[io]fstream "${srcdir}"/AliceVision-${pkgver}/src)
+# fix missing <iomanip> header (setw,setfill,etc.)
+  git apply -v "${srcdir}"/iomanip.patch
+# fix missing isnormal() from std namespace
+  git apply -v "${srcdir}"/isnormal.patch
 }
 
 

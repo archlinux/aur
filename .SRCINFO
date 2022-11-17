@@ -1,7 +1,7 @@
 pkgbase = alice-vision
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
 	pkgver = 2.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://alicevision.github.io/
 	arch = i686
 	arch = x86_64
@@ -28,10 +28,14 @@ pkgbase = alice-vision
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
 	source = cmake_cxx_std_14.patch
 	source = openexr3.patch
+	source = iomanip.patch::https://github.com/alicevision/AliceVision/commit/711eda620449c080b642fc7cb6118758535ab614.patch
+	source = isnormal.patch::https://github.com/alicevision/AliceVision/commit/22fd9d4ba3f8b5344261cedfd9bc3cd4cb58eece.patch
 	sha256sums = 39dcf4bb0a7cb1d0ba234b4ec2de6d245a83ac21846585de3156b37b82d3066b
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275
 	sha256sums = de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b
+	sha256sums = 8403ad7fc41c86dc771f0b1c986d22831ed7c4fee8520f8aa96171f20387bc2d
+	sha256sums = 29440da035b36e3b0e4b94645551ae1bb6041c31b337136894a158217946135f
 
 pkgname = alice-vision
