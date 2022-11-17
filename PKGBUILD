@@ -3,10 +3,11 @@
 pkgname=python-fsociety
 pkgdesc="A Modular Penetration Testing Framework"
 pkgver=3.2.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
-makedepends=('git' 'python-setuptools')
+depends=('python-gitpython')
+makedepends=('python' 'python-setuptools')
 provides=('python-fsociety')
 conflicts=('python-fsociety')
 url="https://github.com/fsociety-team/fsociety"

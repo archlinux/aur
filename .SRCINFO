@@ -1,12 +1,13 @@
 pkgbase = python-fsociety
 	pkgdesc = A Modular Penetration Testing Framework
 	pkgver = 3.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fsociety-team/fsociety
 	arch = any
 	license = MIT
-	makedepends = git
+	makedepends = python
 	makedepends = python-setuptools
+	depends = python-gitpython
 	provides = python-fsociety
 	conflicts = python-fsociety
 	source = python-fsociety-3.2.8.tar.gz::https://github.com/fsociety-team/fsociety/archive/refs/tags/v3.2.8.tar.gz
