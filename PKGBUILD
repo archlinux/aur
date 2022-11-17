@@ -7,7 +7,6 @@ arch=(x86_64)
 source=(http://mirrors.kernel.org/ubuntu/pool/universe/k/kylin-video/kylin-video_2.1.0-1_amd64.deb)
 sha512sums=('41406b72b2fabe47be3188a338a0ed84560414640ed4931e683843220a597a584cb2a5b5906281eafa03caa31f79052fd441df253316db091e98d4a6971b4406')
 depends=('bash-completion' 'hicolor-icon-theme' 'libx11' 'mesa-vdpau' 'mpv>=0.6.2' 'qt5-base>=5.12.2')
-optdepends=('libcrystalhd')
 
 package() {
   cd "${srcdir}"
