@@ -1,4 +1,4 @@
-From 5a7cf8cdcbd88c83ceb76060464a9b4631eb5c18 Mon Sep 17 00:00:00 2001
+From c4952d4f828bbb3eca96cb215800db79d38ee81a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
 Subject: [PATCH 09/12] Find fontconfig via pkg-config for correct handling of
@@ -46,7 +46,7 @@ index 0aa24cca77..d144d000fb 100644
  
  qt_internal_extend_target(Gui CONDITION APPLE AND NOT MACOS
 diff --git a/src/gui/configure.cmake b/src/gui/configure.cmake
-index 6b05d4cce3..62f48ddf0c 100644
+index 9844d778e6..c55d2ef2ab 100644
 --- a/src/gui/configure.cmake
 +++ b/src/gui/configure.cmake
 @@ -39,7 +39,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
@@ -59,5 +59,5 @@ index 6b05d4cce3..62f48ddf0c 100644
  qt_find_package(gbm PROVIDED_TARGETS gbm::gbm MODULE_NAME gui QMAKE_LIB gbm)
  qt_find_package(WrapSystemHarfbuzz 2.6.0 PROVIDED_TARGETS WrapSystemHarfbuzz::WrapSystemHarfbuzz MODULE_NAME gui QMAKE_LIB harfbuzz)
 -- 
-2.37.3
+2.38.1
 
