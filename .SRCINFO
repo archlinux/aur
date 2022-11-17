@@ -7,9 +7,12 @@ pkgbase = mozregression-gui
 	license = MPL
 	makedepends = python-pip
 	makedepends = python-virtualenv
-	makedepends = libxcb
-	makedepends = libxkbcommon-x11
-	makedepends = libglvnd
+	makedepends = git
+	depends = libxcb
+	depends = libxkbcommon-x11
+	depends = libglvnd
+	depends = gtk3
+	depends = python
 	conflicts = mozregression-gui-bin
 	options = !strip
 	source = git+https://github.com/mozilla/mozregression.git#tag=5.1.0

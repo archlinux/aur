@@ -8,7 +8,8 @@ arch=('any')
 license=(MPL)
 url="https://github.com/mozilla/mozregression"
 conflicts=("mozregression-gui-bin")
-makedepends=('python-pip' 'python-virtualenv' 'libxcb' 'libxkbcommon-x11' 'libglvnd')
+depends=('libxcb' 'libxkbcommon-x11' 'libglvnd' 'gtk3' 'python')
+makedepends=('python-pip' 'python-virtualenv' 'git')
 options=('!strip')
 source=("git+https://github.com/mozilla/mozregression.git#tag=$pkgver"
         "mozregression-gui.desktop")
