@@ -8,8 +8,8 @@
 #
 
 _pkgname=sidfactory2
-#_pkgver=20210104
-#_commit=fed95a77b995fc594c83d84eee073af1a396cf2b
+#_pkgver=20221007
+#_commit=8a5dc723da875ba31e361f64c9de415525fd0e35
 
 pkg_ident="release-${_pkgver//_/-}"
 pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
@@ -20,7 +20,7 @@ pkg_name_dir="${_pkgname}"
 #pkg_name_dir="${pkg_name_ver}"
 
 pkgname=${_pkgname}-git
-pkgver=release.20210104.r9.gc4b7a2a
+pkgver=20221007.r1.g821d0d9
 pkgrel=1
 pkgdesc="Cross-platform editor for composing music for the Commodore C64 SID chip"
 arch=('i686' 'x86_64')
@@ -30,7 +30,11 @@ makedepends=('pkgconfig' 'make' 'gcc')
 depends=('sdl2')
 optdepends=()
 conflicts=('sidfactory2')
+
+#
 source=("${_pkgname}::git+https://github.com/Chordian/${_pkgname}.git")
+
+#
 md5sums=('SKIP')
 
 #
@@ -40,7 +44,7 @@ pkgver()
 {
   cd "${srcdir}/${pkg_name_dir}"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^release\.//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
