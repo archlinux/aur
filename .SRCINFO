@@ -1,12 +1,12 @@
 pkgbase = free-delta
 	pkgdesc = An Open Source System for Processing Taxonomic Descriptions
-	pkgver = 2.9.1
-	pkgrel = 3
+	pkgver = 2.9.2
+	pkgrel = 1
 	url = http://freedelta.sourceforge.net/
 	arch = x86_64
 	license = GPL2
 	depends = gtk2
-	source = https://sourceforge.net/projects/freedelta/files/freedelta/freedelta_2.9.1_amd64.deb
-	sha256sums = 32b1f063ecf9b72727f171f508d40073b8917f254b5c72a09b33edbda3c48297
+	source = https://sourceforge.net/projects/freedelta/files/freedelta/freedelta_2.9.2_amd64.deb
+	sha256sums = 2391b7351e72d74db58ca050eef13883956759ecad681d1bdf5a37c54a0dad5e
 
 pkgname = free-delta

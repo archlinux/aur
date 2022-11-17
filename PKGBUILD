@@ -2,8 +2,8 @@
 # Contributor: FabioLolix
 
 pkgname=free-delta
-pkgver=2.9.1
-pkgrel=3
+pkgver=2.9.2
+pkgrel=1
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
 arch=('x86_64')
 url="http://freedelta.sourceforge.net/"
@@ -11,7 +11,7 @@ url="http://freedelta.sourceforge.net/"
 license=('GPL2')
 depends=(gtk2)
 source=("https://sourceforge.net/projects/freedelta/files/freedelta/freedelta_${pkgver}_amd64.deb")
-sha256sums=('32b1f063ecf9b72727f171f508d40073b8917f254b5c72a09b33edbda3c48297')
+sha256sums=('2391b7351e72d74db58ca050eef13883956759ecad681d1bdf5a37c54a0dad5e')
 
 package() {
     install -dDm755 "$pkgdir"/usr/{bin,share/free-delta}
