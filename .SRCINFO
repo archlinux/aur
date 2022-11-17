@@ -1,28 +1,33 @@
 pkgbase = python-ccdproc
 	pkgdesc = Affiliated package for the AstroPy package for basic data reductions of CCD images
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://ccdproc.readthedocs.io
 	arch = any
 	license = BSD
-	checkdepends = python-pytest-astropy
+	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-astroscrappy
+	checkdepends = python-scikit-image
+	checkdepends = python-reproject
 	checkdepends = python-memory-profiler
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-scikit-image
-	makedepends = python-astroscrappy
-	makedepends = python-reproject
 	makedepends = python-sphinx-astropy
+	makedepends = python-astropy
+	makedepends = python-scipy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-2.3.1.tar.gz
-	md5sums = 1d2d2e908517132c45128ad327e21b6c
+	source = https://files.pythonhosted.org/packages/source/c/ccdproc/ccdproc-2.4.0.tar.gz
+	source = fix-underline-length.patch
+	md5sums = aecb5216aa0f1c923effc1cadbef76ce
+	md5sums = 714badd0bef757818fda5babe233d235
 
 pkgname = python-ccdproc
 	depends = python>=3.7
 	depends = python-scipy
-	depends = python-astropy>=4.0.6
+	depends = python-astropy>=4.3
 	depends = python-scikit-image
 	depends = python-astroscrappy>=1.0.8
 	depends = python-reproject>=0.7

@@ -1,0 +1,47 @@
+--- a/ccdproc/combiner.py	2022-11-17 06:53:15.000000000 +0800
++++ b/ccdproc/combiner.py	2022-11-17 08:43:12.337111987 +0800
+@@ -59,7 +59,7 @@
+     and weighting used for combining frames.
+ 
+     Parameters
+-    -----------
++    ----------
+     ccd_iter : list or generator
+         A list or generator of CCDData objects that will be combined together.
+ 
+@@ -224,7 +224,7 @@
+         Nimages-nlow-nhigh pixel values instead of the combination of Nimages.
+ 
+         Parameters
+-        -----------
++        ----------
+         nlow : int or None, optional
+             If not None, the number of low values to reject from the
+             combination.
+@@ -278,7 +278,7 @@
+         """Mask all pixels that are below min_clip or above max_clip.
+ 
+          Parameters
+-         -----------
++         ----------
+          min_clip : float or None, optional
+              If not None, all pixels with values below min_clip will be masked.
+              Default is ``None``.
+@@ -311,7 +311,7 @@
+         high_thresh or lower than that set by low_thresh will be rejected.
+ 
+         Parameters
+-        -----------
++        ----------
+ 
+         low_thresh : positive float or None, optional
+             Threshold for rejecting pixels that deviate below the baseline
+@@ -708,7 +708,7 @@
+     Convenience function for combining multiple images.
+ 
+     Parameters
+-    -----------
++    ----------
+     img_list : `numpy.ndarray`, list or str
+         A list of fits filenames or `~astropy.nddata.CCDData` objects that will be
+         combined together. Or a string of fits filenames separated by comma
