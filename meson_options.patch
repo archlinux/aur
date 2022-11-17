@@ -1,0 +1,10 @@
+--- a/meson_options.txt	2022-11-01 19:25:51.209738128 +0100
++++ b/meson_options.txt	2022-11-01 19:29:12.422743876 +0100
+@@ -5,7 +5,6 @@
+ option('libevdev', type: 'feature', value: 'auto', description: 'Enable libevdev support for evdev related features')
+ option('pulseaudio', type: 'feature', value: 'auto', description: 'Enable support for pulseaudio')
+ option('upower_glib', type: 'feature', value: 'auto', description: 'Enable support for upower')
+-option('systemd', type: 'feature', value: 'auto', description: 'Install systemd user service unit')
+ option('dbusmenu-gtk', type: 'feature', value: 'auto', description: 'Enable support for tray')
+ option('man-pages', type: 'feature', value: 'auto', description: 'Generate and install man pages')
+ option('mpd', type: 'feature', value: 'auto', description: 'Enable support for the Music Player Daemon')
