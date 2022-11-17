@@ -1,0 +1,22 @@
+pkgbase = forgit
+	pkgdesc = Utility tool powered by fzf for using git interactively
+	pkgver = 22.11.0
+	pkgrel = 1
+	url = https://github.com/wfxr/forgit
+	install = forgit.install
+	arch = any
+	groups = fish-plugins
+	groups = zsh-plugins
+	license = MIT
+	depends = bash
+	depends = fzf
+	optdepends = zsh: supported shell
+	optdepends = fish: supported shell
+	optdepends = git-delta: human readable diffs
+	optdepends = diff-so-fancy: human readable diffs
+	optdepends = bat: syntax highlighting for .gitignore
+	optdepends = emoji-cli: emoji support for git log
+	source = forgit-22.11.0.tar.gz::https://github.com/wfxr/forgit/archive/22.11.0.tar.gz
+	sha256sums = 4ae75c154f72d64025d2e335a23f740ce4233f01734c3183248d586de976f816
+
+pkgname = forgit

@@ -1,0 +1,4 @@
+post_install()  {
+  printf ":: Bash users will need to source the scripts under\n"
+  printf ":: /usr/share/zsh/plugins/forgit.plugin.zsh to use this package.\n"
+}
