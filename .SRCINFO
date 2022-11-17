@@ -1,11 +1,12 @@
 pkgbase = cdist
 	pkgdesc = A usable configuration management system
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.ungleich.ch/ungleich-public/cdist/
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = python-six
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	depends = python

@@ -2,13 +2,13 @@
 
 pkgname=cdist
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A usable configuration management system'
 arch=('any')
 url='https://code.ungleich.ch/ungleich-public/cdist/'
 license=('GPL3')
 depends=('python' 'openssh')
-makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+makedepends=('python-setuptools' 'python-six' 'python-sphinx' 'python-sphinx_rtd_theme')
 source=("https://code.ungleich.ch/ungleich-public/cdist/archive/${pkgver}.tar.gz")
 sha256sums=('951f37b01a57e0b630987d68827ceb2eeb44e29251028406b1c37c8dc05beb9f')
 
