@@ -1,0 +1,25 @@
+pkgbase = custom-install-git
+	pkgdesc = Installs a title directly to an SD card for the Nintendo 3DS
+	pkgver = 2.1.r8.g1be4221
+	pkgrel = 1
+	url = https://github.com/ihaveamac/custom-install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-events
+	depends = python-pyctr
+	depends = save3ds_fuse
+	optdepends = tk: GUI support
+	provides = custom-install
+	conflicts = custom-install
+	source = git+https://github.com/ihaveamac/custom-install.git#branch=safe-install
+	source = https://github.com/ihaveamac/custom-install/releases/download/v2.1/custom-install-finalize.3dsx
+	source = custominstall.sh
+	source = ci-gui.sh
+	md5sums = SKIP
+	md5sums = d7c4f5b41bb30dc7db978a2ffe61ad4e
+	md5sums = 8428490bcd8068b4c12812d9daf26435
+	md5sums = 52ec8eb031d26f49fecbb8f04871a0cd
+
+pkgname = custom-install-git
