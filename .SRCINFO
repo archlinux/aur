@@ -1,6 +1,6 @@
 pkgbase = tkdiff
 	pkgdesc = a graphical front end to the diff program
-	pkgver = 5.5.1
+	pkgver = 5.6
 	pkgrel = 1
 	url = http://tkdiff.sourceforge.net/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tkdiff
 	depends = tcl
 	depends = tk
 	conflicts = tkcvs
-	source = https://downloads.sourceforge.net/project/tkdiff/tkdiff/5.5.1/tkdiff-5-5-1.zip
-	md5sums = 40106ebb00dfc1809c82c50fdef94cb0
+	source = https://downloads.sourceforge.net/project/tkdiff/tkdiff/5.6/tkdiff-5-6.zip
+	md5sums = 69355922c7738efe9ec9203acef36e02
 
 pkgname = tkdiff
