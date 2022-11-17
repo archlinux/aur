@@ -1,0 +1,140 @@
+diff --git a/include/X11/Xlibint.h b/include/X11/Xlibint.h
+index cbf3aac30bc094e0391e00b8b4c676e790a59055..b4275ebdb3608f5730bd0a6005e2b7d766bccb5c 100644
+--- a/include/X11/Xlibint.h
++++ b/include/X11/Xlibint.h
+@@ -207,6 +207,7 @@ struct _XDisplay
+ 
+ 	XIOErrorExitHandler exit_handler;
+ 	void *exit_handler_data;
++        Bool in_ifevent;
+ };
+ 
+ #define XAllocIDs(dpy,ids,n) (*(dpy)->idlist_alloc)(dpy,ids,n)
+diff --git a/src/ChkIfEv.c b/src/ChkIfEv.c
+index 876a850e6afab3d4af30ddcdca169c283a84bf78..327b5eafb30df7d17bac9342a78b7638b667eb3c 100644
+--- a/src/ChkIfEv.c
++++ b/src/ChkIfEv.c
+@@ -50,6 +50,7 @@ Bool XCheckIfEvent (
+ 	int n;			/* time through count */
+ 
+         LockDisplay(dpy);
++        dpy->in_ifevent = True;
+ 	prev = NULL;
+ 	for (n = 3; --n >= 0;) {
+ 	    for (qelt = prev ? prev->next : dpy->head;
+@@ -60,6 +61,7 @@ Bool XCheckIfEvent (
+ 		    *event = qelt->event;
+ 		    _XDeq(dpy, prev, qelt);
+ 		    _XStoreEventCookie(dpy, event);
++                    dpy->in_ifevent = False;
+ 		    UnlockDisplay(dpy);
+ 		    return True;
+ 		}
+@@ -78,6 +80,7 @@ Bool XCheckIfEvent (
+ 		/* another thread has snatched this event */
+ 		prev = NULL;
+ 	}
++        dpy->in_ifevent = False;
+ 	UnlockDisplay(dpy);
+ 	return False;
+ }
+diff --git a/src/IfEvent.c b/src/IfEvent.c
+index ead93dcac6268d8856f42656e83e1c0bc0f9d092..a0aed7e31c0272e58eaf2268dd9311996b1b0a91 100644
+--- a/src/IfEvent.c
++++ b/src/IfEvent.c
+@@ -49,6 +49,7 @@ XIfEvent (
+ 	unsigned long qe_serial = 0;
+ 
+         LockDisplay(dpy);
++        dpy->in_ifevent = True;
+ 	prev = NULL;
+ 	while (1) {
+ 	    for (qelt = prev ? prev->next : dpy->head;
+@@ -59,6 +60,7 @@ XIfEvent (
+ 		    *event = qelt->event;
+ 		    _XDeq(dpy, prev, qelt);
+ 		    _XStoreEventCookie(dpy, event);
++                    dpy->in_ifevent = False;
+ 		    UnlockDisplay(dpy);
+ 		    return 0;
+ 		}
+diff --git a/src/OpenDis.c b/src/OpenDis.c
+index 5017b040ba8c9aeefcbca25b3cc6bf2131355af9..e1bc2a30494722c4c857b5a6dae043bc4a1327ce 100644
+--- a/src/OpenDis.c
++++ b/src/OpenDis.c
+@@ -189,6 +189,7 @@ XOpenDisplay (
+ 	dpy->xcmisc_opcode	= 0;
+ 	dpy->xkb_info		= NULL;
+ 	dpy->exit_handler_data	= NULL;
++        dpy->in_ifevent         = False;
+ 
+ /*
+  * Setup other information in this display structure.
+diff --git a/src/PeekIfEv.c b/src/PeekIfEv.c
+index 207cd11913b1b1978b73c8208c0130d6303c4bd0..c4e8af0de9a5cb72f6221fce6f30e8f1997579e9 100644
+--- a/src/PeekIfEv.c
++++ b/src/PeekIfEv.c
+@@ -50,6 +50,7 @@ XPeekIfEvent (
+ 	unsigned long qe_serial = 0;
+ 
+ 	LockDisplay(dpy);
++        dpy->in_ifevent = True;
+ 	prev = NULL;
+ 	while (1) {
+ 	    for (qelt = prev ? prev->next : dpy->head;
+@@ -63,6 +64,7 @@ XPeekIfEvent (
+ 			_XStoreEventCookie(dpy, &copy);
+ 			*event = copy;
+ 		    }
++                    dpy->in_ifevent = False;
+ 		    UnlockDisplay(dpy);
+ 		    return 0;
+ 		}
+diff --git a/src/locking.c b/src/locking.c
+index ea5000e157e9d73f19e593b895763b6e04988f7f..36530691cc2909f09b744388517bbd5e8cc4caeb 100644
+--- a/src/locking.c
++++ b/src/locking.c
+@@ -452,6 +452,32 @@ static void _XDisplayLockWait(
+     }
+ }
+ 
++static void _XLockDisplay(
++    Display *dpy
++    XTHREADS_FILE_LINE_ARGS
++    );
++
++static void _XIfEventLockDisplay(
++    Display *dpy
++    XTHREADS_FILE_LINE_ARGS
++    )
++{
++    /* assert(dpy->in_ifevent); */
++}
++
++static void _XIfEventUnlockDisplay(
++    Display *dpy
++    XTHREADS_FILE_LINE_ARGS
++    )
++{
++    if (dpy->in_ifevent)
++        return;
++
++    dpy->lock_fns->lock_display = _XLockDisplay;
++    dpy->lock_fns->unlock_display = _XUnlockDisplay;
++    UnlockDisplay(dpy);
++}
++
+ static void _XLockDisplay(
+     Display *dpy
+     XTHREADS_FILE_LINE_ARGS
+@@ -478,6 +504,10 @@ static void _XLockDisplay(
+ #endif
+     _XIDHandler(dpy);
+     _XSeqSyncFunction(dpy);
++    if (dpy->in_ifevent) {
++        dpy->lock_fns->lock_display = _XIfEventLockDisplay;
++        dpy->lock_fns->unlock_display = _XIfEventUnlockDisplay;
++    }
+ }
+ 
+ /*
