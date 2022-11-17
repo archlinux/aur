@@ -4,7 +4,7 @@
 
 pkgname=dwire-debug-git
 _pkgname=dwire-debug
-pkgver=r167.9b98597
+pkgver=r169.a2830d5
 pkgrel=1
 pkgdesc="Simple stand-alone debugger for ATtiny 45 and other ATMEL AVR DebugWIRE chips connected directly to an FT232R or similar"
 arch=("i686" "x86_64")
@@ -30,10 +30,10 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   # workaround for non-existing posix streams include file (stropts.h) on linux
-  touch stropts.h
-  make dwdebug CC="gcc -I." || return 1
+  #touch stropts.h
+  #make dwdebug CC="gcc -I." || return 1
 
-  #make dwdebug || return 1
+  make dwdebug || return 1
 }
 
 package() {

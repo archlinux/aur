@@ -1,6 +1,6 @@
 pkgbase = dwire-debug-git
 	pkgdesc = Simple stand-alone debugger for ATtiny 45 and other ATMEL AVR DebugWIRE chips connected directly to an FT232R or similar
-	pkgver = r167.9b98597
+	pkgver = r169.a2830d5
 	pkgrel = 1
 	url = https://github.com/dcwbrown/dwire-debug
 	arch = i686
