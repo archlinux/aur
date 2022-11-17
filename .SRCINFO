@@ -1,0 +1,18 @@
+pkgbase = python-uninstaller
+	pkgdesc = A library for uninstalling python packages.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/greyltc-org/uninstaller
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	source = git+https://github.com/greyltc-org/uninstaller?signed#commit=1767f4ac5adca9c99620957772797965eaa05603
+	md5sums = SKIP
+
+pkgname = python-uninstaller
