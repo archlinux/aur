@@ -1,5 +1,5 @@
 pkgname=rvxx-amp-bin
-pkgver=20220309
+pkgver=20221117
 pkgrel=1
 pkgdesc="Audio Assault RVXX Aggressive Guitar Amplifier Next Generation"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('9cb4ea4e896f31d72324134cbabe47899020b92164ade82f18302bb78eb391cf')
 
 prepare () {
 	## Extract AIR Impulse Response
-	_archive="`xdg-user-dir DOWNLOAD`/RVXX_EX_v1.0.zip"
+	_archive="`xdg-user-dir DOWNLOAD`/RVXX_EX_102.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
 	find $srcdir -name ".DS_Store" -delete
