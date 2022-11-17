@@ -2,7 +2,7 @@
 
 pkgname=textlint-rule-ja-space-between-half-and-full-width
 _gitname=textlint-rule-preset-ja-spacing
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Textlint rules for half-wide and full-width spaces"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('textlint')
 makedepends=('npm')
 source=(https://github.com/textlint-ja/textlint-rule-preset-ja-spacing/archive/refs/tags/v$pkgver.zip)
-sha256sums=('af6ee1dd5daf1dcc413c07e01552934dc3fefc53901fbb01ae1f4abe164a076e')
+sha256sums=('316dd6b0442f3c4b0c08a6ba29113e139f96f31d58b080543493caddd716a9f5')
 
 package() {
     cd $srcdir/$_gitname-$pkgver
