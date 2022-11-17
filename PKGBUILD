@@ -2,7 +2,7 @@
 
 _desc="flippy's AArch64-focused fork aiming to increase usability. Prebuilt by ophub."
 _pkgver_main=6.0.8
-_pkgver_suffix=flippy-78+
+_pkgver_suffix=ophub
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _url_repo="https://github.com/ophub/kernel"
 _url_raw="${_url_repo}/raw/main/pub/stable/${_pkgver_main}"
@@ -17,7 +17,7 @@ pkgname=(
   "${pkgbase}-dtb-rockchip"
 )
 pkgver="${_pkgver_main}"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="${_url_repo}"
 license=('GPL2')
@@ -32,12 +32,12 @@ source=(
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
-  '111fe489c903c64a82842dde0268799aa156a8ee8278cc62082b03230daec7a1'
-  '585e9c6055aeed4573c4cf59d9e769df206b7a79846866ab42ce2bb40d029095'
-  '9f57c9fa29f32fc449f20e1f2548ee2049a0c7ef6bcb34fcf9ad61c4955dfba9'
-  '01f664d637885ffac80ef93e5aa90dcf47015afec35f015661e0c7653c00d0ab'
-  '7fe2c5c57f87054f8c07b837d33b3bb0507c7f526e6ffe0f78967eec1cc9a29e'
-  '8cc4427bea87de14d64626a4cacd70af084bb7ed8b568158726c59bb22622efd'
+  '23c6ecf1860ca939b8a541add5f39ab619b67a04346a35fd50ed02fb20335529'
+  'ad583f32ee294e1bd8c459222f2633954a16f623c1c029aeaa95c5d620928063'
+  'b724b71e76dbb6a6ca1babb40822562bf233105c5462ce54eeceea9de0a6f910'
+  'af4e58ce5446cc1ddd910afa197a2085fc7a2248771642f92260cccfab7187c0'
+  '0fba49d8378bb85f9f10fe61d6fb4e45a2d0784ca5889dfc3a88cbd5c7e9e8b7'
+  '075307d305559ee094862408b5996f46fb0290c0c94348a08123cda60c7d059f'
 )
 
 _dtb_common_pkg="${_pkgbase}-dtb"
