@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gala-git
-pkgver=3.3.2.r96.9dedf56d
+pkgver=6.3.3.r10.b61a6059
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=(x86_64)
@@ -12,9 +12,9 @@ depends=(
   bamf
   gnome-desktop
   libgraphene-1.0.so=0-64
-  lib{gee,gl}
+  lib{gee,gl,gexiv2}
   libgranite.so
-  libmutter-6.so=0-64
+  libmutter-11.so=0-64
 )
 makedepends=(
   git
