@@ -1,6 +1,6 @@
 pkgbase = helix-git
 	pkgdesc = A text editor written in rust
-	pkgver = r3147.eef9eff2
+	pkgver = r3747.322e957e
 	pkgrel = 1
 	url = https://helix-editor.com
 	arch = x86_64

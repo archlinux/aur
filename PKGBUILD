@@ -1,7 +1,7 @@
 # Maintainer: Robin Jadoul (aur@ur4ndom.dev) 
 pkgname=helix-git
 _pkgname=helix
-pkgver=r3147.eef9eff2
+pkgver=r3747.322e957e
 pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
