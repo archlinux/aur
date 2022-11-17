@@ -1,6 +1,6 @@
 pkgbase = waterfox-g-bin
 	pkgdesc = Fifth generation of customizable privacy-conscious web browser.
-	pkgver = 5.0.2
+	pkgver = 5.1
 	pkgrel = 0
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = waterfox-g-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-g=5.0.2
+	provides = waterfox-g=5.1
 	conflicts = waterfox-g
 	source = waterfox-g.desktop
-	source = https://cdn1.waterfox.net/waterfox/releases/G5.0.2/Linux_x86_64/waterfox-G5.0.2.tar.bz2
-	sha256sums = 09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259
-	sha256sums = 936dd13d7b9fb16aafcd8defae773843fdce65cffb541b188e5612639e2405f3
+	source = https://cdn1.waterfox.net/waterfox/releases/G5.1/Linux_x86_64/waterfox-G5.1.tar.bz2
+	sha256sums = 25e0253dc235e42654708542cbec92bd82e0d48b5f7f3d689d8d54daa004f747
+	sha256sums = 4273ad6b12d4a7facceef48b27617e9f970fe675b213af6dba65148aebafc5ec
 
 pkgname = waterfox-g-bin
