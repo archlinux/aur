@@ -20,10 +20,6 @@ build () {
     _features+="git,"
   fi
 
-  if [[ $(rustc -V) == *"nightly"* ]]; then
-    _features+="backtrace,"
-  fi
-
   if [[ $CARCH != x86_64 ]]; then
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
