@@ -1,0 +1,17 @@
+pkgbase = python-pyqt5-webkit
+	pkgdesc = Python bindings for the Qt5WebKit
+	pkgver = 5.15.7
+	pkgrel = 3
+	url = https://riverbankcomputing.com/software/pyqt/intro
+	arch = x86_64
+	groups = pyqt5
+	license = GPL
+	makedepends = sip
+	makedepends = pyqt-builder
+	depends = python-pyqt5
+	depends = qt5-webkit
+	options = debug
+	source = https://pypi.python.org/packages/source/P/PyQt5/PyQt5-5.15.7.tar.gz
+	sha256sums = 755121a52b3a08cb07275c10ebb96576d36e320e572591db16cfdbc558101594
+
+pkgname = python-pyqt5-webkit
