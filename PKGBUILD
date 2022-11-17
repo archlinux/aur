@@ -3,34 +3,21 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+# Maintainer: Slava Ganzin <slava.ganzin@gmail.com>
+pkgname="strace-grace"
+pkgver="0.0.1"
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
+pkgdesc="grace is a tool for monitoring and annotating syscalls for a given process.  It's essentially a lightweight strace, in Go, with colours and pretty output."
 arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
+url="https://github.com/liamg/grace"
 license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+provides=("grace")
+source=("grace::https://github.com/liamg/grace/releases/download/v$pkgver/grace-linux-amd64")
+md5sums=('e3d2cce335e3f0d0551080df61dc2345')
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
-
-build() {
-	cd "$pkgname-master"
-	cmake -S .
-	make
-}
 
 package() {
-	cd "$pkgname-master"
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+  install -m=777 "grace" "${pkgdir}/usr/bin"
 }
