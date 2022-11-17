@@ -2,7 +2,7 @@
 
 pkgname=libopenblas
 pkgver=0.3.21
-pkgrel=1
+pkgrel=2
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD. (Designed for can be installed side by side with Blas)"
 arch=('x86_64')
 url='http://www.openblas.net'
@@ -29,10 +29,14 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_INCLUDEDIR=include/openblas \
     -DBUILD_SHARED_LIBS=ON
 
   cmake --build build
+}
+
+check() {
+  cd build
+  ctest --output-on-failure
 }
 
 package() {
