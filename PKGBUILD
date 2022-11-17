@@ -20,8 +20,6 @@ package() {
 
 	cp -r "./usr/" "${pkgdir}/"
 
-	ls "usr/share/slimbook/icons/"
-
 	install -Dm644 usr/share/slimbook/icons/*.svg -t "${pkgdir}/usr/share/pixmaps/"
 	install -Dm644 usr/share/slimbook/*.desktop -t "${pkgdir}/usr/share/applications/"
 }
