@@ -17,12 +17,12 @@ source=("git+https://github.com/slingamn/vault-exfiltrate.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -32,6 +32,6 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
