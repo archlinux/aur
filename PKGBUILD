@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.4.3
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ makedepends=('python-setuptools-scm>=3.4'
 #            'python-stregion'
 #            'python-fitsblender'
 #            'python-nictools')
-checkdepends=('python-pytest-remotedata'
+checkdepends=('python-pytest'
               'python-matplotlib'
               'python-scikit-learn'
               'python-scikit-image'
@@ -41,23 +41,24 @@ checkdepends=('python-pytest-remotedata'
               'python-stsci.skypac'
               'python-ci_watson'
               'python-fitsblender'
-#             'python-nictools'
               'python-stsci.image'
               'python-stregion'
               'python-tweakwcs'
               'python-astroquery'
               'python-photutils'
-              'python-pandas'
               'python-bokeh'
-              'python-pypdf2'
-              'python-crds')
+              'python-pypdf2')
+#              'python-pytest-remotedata'
+##             'python-nictools'
+#              'python-pandas'
+#              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('a2fde20790ae44b68940d9055af88b82'
+md5sums=('c8b4f55f306bc9453fb3e71c46fd1d34'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
@@ -77,20 +78,19 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    _pybuild=$(ls -d build/lib.linux*)
-    ln -rs ${srcdir}/ACSWFC3ListDefault50.csv "${_pybuild}/tests/hap"
+    ln -rs ${srcdir}/ACSWFC3ListDefault50.csv "build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap"
     # skip some tests that need lots of online data or cost lots of time; some files are missing in pypi package
-    pytest "${_pybuild}" \
-        --ignore=${_pybuild}/tests/hap/test_run_svmpoller.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_canary.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_hrcsbc.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_ibqk07.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_ibyt50.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_j97e06.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_je281u.py \
-        --ignore=${_pybuild}/tests/hap/test_svm_wfc3ir.py \
-        --deselect=${_pybuild}/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
-        --deselect=${_pybuild}/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_run_svmpoller.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_canary.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_hrcsbc.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_ibqk07.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_ibyt50.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_j97e06.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_je281u.py \
+        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_svm_wfc3ir.py \
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-drizzlepac() {
@@ -105,7 +105,7 @@ package_python-drizzlepac() {
              'python-stsci.skypac>=1.0.9'
              'python-stsci.stimage'
              'python-stwcs>=1.5.3'
-             'python-tweakwcs>=0.7.2'
+             'python-tweakwcs>=0.8.0'
              'python-stregion'
              'python-fitsblender>=0.4.2')
 #            'python-acstools'
@@ -128,7 +128,7 @@ package_python-drizzlepac() {
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    rm -r "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/tests"
+    rm -r "${pkgdir}/usr/lib/python$(get_pyver .)/site-packages/tests"
 #   rm "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/tests/__init__.py"
 #   rm "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/tests/__pycache__"/__init__*
 }
