@@ -1,0 +1,17 @@
+pkgbase = python38-cffi
+	pkgdesc = Foreign Function Interface for Python calling C code.
+	pkgver = 1.15.1
+	pkgrel = 00
+	url = http://cffi.readthedocs.org
+	arch = x86_64
+	license = MIT
+	depends = python38
+	depends = python38-pycparser
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/2b/a8/050ab4f0c3d4c1b8aaa805f70e26e84d0e27004907c5b8ecc1d31815f92a/cffi-1.15.1.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = f493860a6e98cd0c4178149568a6b4f6
+	md5sums = 5677e2fdbf7cdda61d6dd2b57df547bf
+
+pkgname = python38-cffi
