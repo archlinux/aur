@@ -81,7 +81,9 @@ prepare() {
   git submodule update --init
 
   # Apply patches here:
-  # patch -p0 < "${startdir}/codelite-feature.patch"
+  # example: patch -p0 < "${startdir}/codelite-feature.patch"
+
+  #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 }
 
 build() {
