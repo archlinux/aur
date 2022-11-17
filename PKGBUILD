@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-shadertools
-_qtver=6.4.0
+_qtver=6.4.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtshadertools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('dbd6a5f00e8178cd2fea7e84c4eef3818de5287d34e20a68383929c754ae3b90')
+sha256sums=('6bc1748326088c87f562fa3a68140e33fde162fd1333fbfecb775aeb66114504')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
