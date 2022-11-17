@@ -3,7 +3,7 @@
 
 pkgname=lib32-libvpx
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='VP8 and VP9 codec'
 arch=(x86_64)
 url=https://www.webmproject.org/
@@ -17,6 +17,7 @@ makedepends=(
   nasm
 )
 provides=(libvpx.so)
+options=(debug)
 _tag=03265cd42b3783532de72f2ded5436652e6f5ce3
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag})
 sha256sums=(SKIP)
@@ -32,7 +33,7 @@ build() {
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
   CFLAGS+=' -ffat-lto-objects'
   CXXFLAGS+=' -ffat-lto-objects'
@@ -44,6 +45,7 @@ build() {
     --disable-install-bins \
     --disable-install-docs \
     --disable-install-srcs \
+    --disable-unit-tests \
     --enable-pic \
     --enable-postproc \
     --enable-runtime-cpu-detect \
@@ -65,4 +67,4 @@ package() {
   ln -s libvpx "${pkgdir}"/usr/share/licenses/lib32-libvpx
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
