@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quick3d
-_qtver=6.4.0
+_qtver=6.4.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquick3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f10a1660d4d4103f0749f258eddce4d4878fa7bbbc5e610a900bef28adf017ec')
+sha256sums=('a6dbc0fb4d0111fa5d9f8c3998494f71331c804ee808ff7497dc0215dd0d0885')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
