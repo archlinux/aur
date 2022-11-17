@@ -1,7 +1,7 @@
 pkgbase = python-scurses-git
 	pkgdesc = Python curses-based TUI framework
-	pkgver = v2.r4.ged0c6ea
-	pkgrel = 2
+	pkgver = 2.r4.ged0c6ea
+	pkgrel = 1
 	url = https://apps.sdore.me/Scurses
 	arch = any
 	license = LGPL3
