@@ -71,7 +71,7 @@
 
 pkgbase=ttf-ms-win11-auto
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.22621.382
+pkgver=10.0.22621.525
 pkgrel=1
 arch=(any)
 url='https://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -81,7 +81,7 @@ conflicts=(ttf-vista-fonts)
 makedepends=(udisks2 p7zip httpdirfs)
 
 # URL of ISO file from which to extract the fonts.
-_iso="https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/22621.382.220806-0833.ni_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+_iso="https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66751/22621.525.220925-0207.ni_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
 
 _ttf_ms_win11=(
 ########################################################################################
