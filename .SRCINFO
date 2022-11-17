@@ -1,6 +1,6 @@
 pkgbase = jdk11-dragonwell-extended-bin
 	pkgdesc = an in-house OpenJDK implementation at Alibaba (Extended Edition)
-	pkgver = 11.0.16.12
+	pkgver = 11.0.17.13
 	pkgrel = 1
 	url = https://dragonwell-jdk.io/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jdk11-dragonwell-extended-bin
 	provides = java-runtime-openjdk=11
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	source_x86_64 = jdk11-dragonwell-extended-bin-11.0.16.12-x86_64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-extended-11.0.16.12_jdk-11.0.16-ga/Alibaba_Dragonwell_Extended_11.0.16.12.8_x64_linux.tar.gz
-	sha256sums_x86_64 = 47b904df8fa702cb7a454666cbc27dafc40d3c7c73c5178e0d9ebe2fc9b9352a
-	source_aarch64 = jdk11-dragonwell-extended-bin-11.0.16.12-aarch64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-extended-11.0.16.12_jdk-11.0.16-ga/Alibaba_Dragonwell_Extended_11.0.16.12.8_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 28ff34de82a1c020350c7b61b040a03b9e039cb5db4389e6af5711bb52abe4f3
+	source_x86_64 = jdk11-dragonwell-extended-bin-11.0.17.13-x86_64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-extended-11.0.17.13_jdk-11.0.17-ga/Alibaba_Dragonwell_Extended_11.0.17.13.8_x64_linux.tar.gz
+	sha256sums_x86_64 = 9a01b3799883485263158241625a7abf72d4696cb2f3a7e069f1b5df8d1e30cd
+	source_aarch64 = jdk11-dragonwell-extended-bin-11.0.17.13-aarch64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-extended-11.0.17.13_jdk-11.0.17-ga/Alibaba_Dragonwell_Extended_11.0.17.13.8_aarch64_linux.tar.gz
+	sha256sums_aarch64 = d56122ebfee4ded7066955675f0ac2474ef6355547e9de838cd18bf7c7d8ac57
 
 pkgname = jdk11-dragonwell-extended-bin
