@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=xLights
+Exec=/usr/bin/xlights %F
+Comment=
+Terminal=false
+Categories=
+StartupWMClass=xLights
+Version=1.0
