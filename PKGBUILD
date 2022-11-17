@@ -97,13 +97,6 @@ _kyber_disable=${_kyber_disable-y}
 # 'none' - disable multigenerational LRU
 _lru_config=${_lru_config-'standard'}
 
-### Enable per-VMA locking
-# ATTENTION - one of three predefined values should be selected!
-# 'standard' - enable per-VMA locking
-# 'stats' - enable per-VMA locking with stats
-# 'none' - disable per-VMA locking
-_vma_config=${_vma_config-'standard'}
-
 ## Enable DAMON
 _damon=${_damon-}
 
@@ -678,28 +671,6 @@ prepare() {
          exit
     fi
 
-    ### Select VMA config
-    if [ "$_vma_config" = "standard" ]; then
-       echo "Enabling per-VMA locking..."
-       scripts/config --enable PER_VMA_LOCK \
-           --disable PER_VMA_LOCK_STATS
-    elif [ "$_vma_config" = "stats" ]; then
-       echo "Enabling per-VMA locking with stats..."
-       scripts/config --enable PER_VMA_LOCK \
-           --enable PER_VMA_LOCK_STATS
-    elif [ "$_vma_config" = "none" ]; then
-       echo "Disabling per-VMA locking..."
-       scripts/config --disable PER_VMA_LOCK
-    else
-        if [ -n "$_vma_config" ]; then
-           error "The value $_vma_config is invalid. Choose the correct one again."
-        else
-           error "The value is empty. Choose the correct one again."
-        fi
-         error "Enabling per-VMA locking failed!"
-         exit
-    fi
-
     ### Enable DAMON
     if [ -n "$_damon" ]; then
         echo "Enabling DAMON..."
@@ -1018,7 +989,7 @@ _package-headers() {
     echo "Stripping build tools..."
     local file
     while read -rd '' file; do
-        case "$(file -bi "$file")" in
+        case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
@@ -1062,8 +1033,8 @@ done
 
 sha256sums=('51307576df4a1651dcad4e361e6e411cfe9ed7841783c198a72ed7d89e3057c3'
             '775c599894bc0b59190975835146da68dbf0c9241de7b0e3e5962e24ced42b94'
-            '34e2cad286f32d8c1c26e4ff18726c9e0aee151e82088bb78c3ae4fb536bf962'
+            'c3aae004fe02ddf781037bf95ca9994692d19eda2b6b99d5cd767ae23edfb2a5'
             'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
             'd1400a8f486ffc2362ca5ba791f7ff71f8219461c18014fb2f90bb615c41a9c5'
-            '5c379c9cd2c74bca8ff92db7fedc46aab7c54289b39fba2d79b91ead89aa0a99'
-            '70874e69a9383cbdf3c033193a7d6706783fe06e3b0205208f9491ac53bb25b6')
+            '74fae98dc00959e37d42537ff6ea9a758ec4962c98c8c582b4c4e430fd85d837'
+            'ac8a1fabb5993bcf67799426a4a163a24e929a91c9edb552ab0f791a42aa8ef2')
