@@ -1,7 +1,7 @@
 pkgname=kylin-video
 pkgver=2.1.0
 pkgrel=1
-pkdesc='Front-end for MPlayer and MPV Qt5 Mplayer and MPV front-end, with basic features like playing videos and audios to more advanced features. It supports both x86 and ARM platform, and supports most of the audio and video formats.'
+pkgdesc='Front-end for MPlayer and MPV Qt5 Mplayer and MPV front-end, with basic features like playing videos and audios to more advanced features. It supports both x86 and ARM platform, and supports most of the audio and video formats.'
 url='https://github.com/ukui/kylin-video'
 arch=(x86_64)
 source=(http://mirrors.kernel.org/ubuntu/pool/universe/k/kylin-video/kylin-video_2.1.0-1_amd64.deb)
