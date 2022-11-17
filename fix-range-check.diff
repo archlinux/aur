@@ -1,0 +1,22 @@
+--- a/src/Cafe/HW/Espresso/Interpreter/PPCInterpreterALU.hpp
++++ b/src/Cafe/HW/Espresso/Interpreter/PPCInterpreterALU.hpp
+@@ -421,7 +421,7 @@ static void PPCInterpreter_MULLWO(PPCInterpreter_t* hCPU, uint32 opcode)
+ 	PPC_OPC_TEMPL3_XO();
+ 	sint64 result = (sint64)hCPU->gpr[rA] * (sint64)hCPU->gpr[rB];
+ 	hCPU->gpr[rD] = (uint32)result;
+-	if (result < -0x80000000ll && result > 0x7FFFFFFFLL)
++	if (result < -0x80000000ll || result > 0x7FFFFFFFLL)
+ 	{
+ 		hCPU->spr.XER |= XER_SO;
+ 		hCPU->spr.XER |= XER_OV;
+--- a/src/Cemu/PPCAssembler/ppcAssembler.cpp
++++ b/src/Cemu/PPCAssembler/ppcAssembler.cpp
+@@ -653,7 +653,7 @@ class EncodedOperand_MemLoc
+ 			{
+ 				immD = ep.Evaluate(svExpressionPart);
+ 				sint32 imm = (sint32)immD;
+-				if (imm < -32768 && imm > 32767)
++				if (imm < -32768 || imm > 32767)
+ 				{
+ 					std::string msg = fmt::format("\"{}\" evaluates to offset out of range (Valid range is -32768 to 32767)", svExpressionPart);
+ 					ppcAssembler_setError(assemblerCtx->ctx, msg);
