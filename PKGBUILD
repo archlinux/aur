@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/slingamn/${_pkgname}"
 license=('MPL2')
 depends=('glibc')
+makedepends=('go')
 provides=('vault-exfiltrate')
 conflicts=('vault-exfiltrate')
 optdepends=(
@@ -28,7 +29,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath"
     go build -o $_pkgname
 }
 
