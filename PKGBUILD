@@ -3,7 +3,7 @@
 pkgname=opensnitch-ebpf-module-stable
 _pkgname=opensnitch
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 _kver=6.0
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -24,7 +24,7 @@ prepare() {
   cd ${srcdir}/linux-${_kver}
 
   patch tools/lib/bpf/bpf_helpers.h < ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/file.patch
-  cp ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/opensnitch.c \
+  cp ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/opensnitch*.c \
     ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/Makefile samples/bpf
 
   yes "" | make oldconfig
@@ -38,10 +38,10 @@ build() {
 
   cd samples/bpf
   make
-  llvm-strip -g opensnitch.o
+  llvm-strip -g opensnitch*.o
 }
 
 package() {
-  install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch.o" -t \
+  install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch"*".o" -t \
     "$pkgdir/etc/opensnitchd"
 }
