@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=magic
-_cranver=1.6-0
+_cranver=1.6-1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=(r-abind)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('4516d48c9618e3f395db873e886f5deb3b66b32ebe10d4c26c1420ac848acbbf')
+sha256sums=('ca79ec7ae92b736cb128556c081abf547f49956c326e053a76579889cbcb7976')
 
 build() {
   mkdir -p build
