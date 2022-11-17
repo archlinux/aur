@@ -1,7 +1,7 @@
 # Mantainer: sgar < swhaat at github >
 
 pkgname=python-aioesphomeapi
-pkgver=10.13.0
+pkgver=11.4.3
 pkgrel=1
 pkgdesc="Python Client for ESPHome native API. Used by Home Assistant."
 url="https://github.com/esphome/aioesphomeapi"
@@ -13,7 +13,7 @@ depends=('python-setuptools'
 license=('MIT')
 arch=('any')
 source=("https://github.com/esphome/aioesphomeapi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4403363d5bdec3d757c2ed771b477b97e54934b89f40b158e0af9b76ee2d3286')
+sha256sums=('990a9d46c7b2ad4b583c8f9491be0077ffcd47f1debd8daf7cbbb22b905c8f41')
 
 prepare() {
     cd "$srcdir/aioesphomeapi-${pkgver}"
