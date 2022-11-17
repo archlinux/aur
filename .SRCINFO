@@ -1,7 +1,7 @@
 pkgbase = forgit-git
 	pkgdesc = Utility tool powered by fzf for using git interactively
-	pkgver = r273.c57c9f9
-	pkgrel = 2
+	pkgver = 22.11.0.r1.gfe4ac0f
+	pkgrel = 1
 	url = https://github.com/wfxr/forgit
 	install = forgit-git.install
 	arch = any
@@ -19,8 +19,7 @@ pkgbase = forgit-git
 	optdepends = emoji-cli: emoji support for git log
 	provides = forgit
 	conflicts = forgit
-	source = git+https://github.com/wfxr/forgit
+	source = forgit::git+https://github.com/wfxr/forgit
 	md5sums = SKIP
 
 pkgname = forgit-git
-
