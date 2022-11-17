@@ -1,0 +1,16 @@
+pkgbase = pachca
+	pkgdesc = Corporate messenger for modern teams
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://www.pachca.com/
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	depends = at-spi2-core
+	options = !strip
+	source = https://github.com/pachca/pachca-desktop/releases/download/v1.1.6/pachca_1.1.6_amd64.deb
+	md5sums = f3cc4110bdea5167e6d454d83fca25b6
+
+pkgname = pachca
