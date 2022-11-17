@@ -1,7 +1,7 @@
 # Maintainer: kfrx <kfrx at protonmail dot com>
 
 pkgname=pdf-over
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc='Graphical tool for creating PAdES conforming PDF signatures'
 arch=('x86_64')
@@ -16,7 +16,7 @@ noextract=("${pkgname}-${pkgver}.jar")
 sha256sums=('0dc4b0a3362f197e250604567a6b4eb16bbc34c186425401e2201a193a82549f'
             'ec75837f568b1c0c6d0d091dcbf71d34a36b1d1f679b07baf1e411d290410e24'
             '022c3020d228f843231469cef3fb0272fca875c2545f319dcdc97ee8001188fd'
-            '236e194a87f04fdc6c9b989aa906f169ded04d30926f366eb38ddd5dd36041cd')
+            '3bfb29cac32bb1156093afd45f70ff9509e769d0acdeb39eaddc2dc0cf014e1e')
 
 package() {
   /usr/lib/jvm/java-17-openjdk/bin/java -jar "${pkgname}-${pkgver}.jar" -options <(echo "INSTALL_PATH=${srcdir}/extracted") </dev/null
