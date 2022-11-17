@@ -2,8 +2,8 @@
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=nextdns-bin
-pkgver=1.37.11
-pkgrel=2
+pkgver=1.38.0
+pkgrel=1
 pkgdesc="NextDNS CLI client (DoH Proxy)"
 url="https://github.com/nextdns/nextdns"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -18,10 +18,10 @@ source_i686=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nex
 source_aarch64=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_arm64.tar.gz)
 source_armv7h=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_armv7.tar.gz)
 sha256sums=('00b0c930275df825475b0d86062f7488131f1b2b5e16e5ec6f9983e53138505b')
-sha256sums_x86_64=('98eaaf3d5ceb67d68604c9deefe43b524e682d03e51fa96b13ebd9e1375061b2')
-sha256sums_i686=('a58ea824574337dfdad70ce8d9d61252a84cb3974078b5e4f1c804639d1f66c5')
-sha256sums_aarch64=('102ea184cb92a8ba79a69de4f5a799daaaa2651539dd65b6fa24918d7edc8828')
-sha256sums_armv7h=('04b6316d849973b2a1d9efc4854deacad9ffdb6511be117724f000d2e3372055')
+sha256sums_x86_64=('fce1007ae4ac5cc250be87009882ba7d2e54eaeb9dd9d324b310e866a83ff466')
+sha256sums_i686=('9c5fa7d2d3e8f466f9d67c2358c1119470f914b191619974f1457eeec17a97fe')
+sha256sums_aarch64=('f3257bf7b612521f9432aeb0598641331e42f3137485a463335b59f5912719fb')
+sha256sums_armv7h=('fc35dd2052ca72c090879bdb101450e4fef62648b82997f84758296af853c273')
 
 build() {
   cd $srcdir
