@@ -1,26 +1,35 @@
 
-del_seed() {
-	seed_date=$(date -r var/lib/lokinet/bootstrap.signed +%s 2>/dev/null || :)
-	if [ -z "$seed_date" ]
+migrate_config() {
+	if [ ! -e etc/loki/lokinet.ini ]
 	then
-		# no seed
-		return
-	fi
-
-	if [ "$seed_date" -lt 1623964915 ]
-	then
-		# remove old seed because it changed at some point
-		rm -f var/lib/lokinet/bootstrap.signed
+		if [ -f var/lib/lokinet/lokinet.ini ]
+		then
+			cp -f var/lib/lokinet/lokinet.ini etc/loki/lokinet.ini.new
+			mv -f etc/loki/lokinet.ini{.new,}
+			ln -sf /etc/loki/lokinet.ini var/lib/lokinet/lokinet.ini.new
+			mv -f var/lib/lokinet/lokinet.ini{.new,}
+		else
+			pushd etc/loki/ >/dev/null
+			rm -f lokinet.ini.new
+			/usr/bin/lokinet -g ./lokinet.ini.new >/dev/null 2>&1
+			mv -f lokinet.ini{.new,}
+			popd >/dev/null
+			ln -sf /etc/loki/lokinet.ini var/lib/lokinet/lokinet.ini.new
+			mv -f var/lib/lokinet/lokinet.ini{.new,}
+		fi
 	fi
 }
 
+del_seed() {
+	rm -f var/lib/lokinet/bootstrap.signed
+}
+
 post_install() {
+	migrate_config
 	del_seed
 
 	cat <<-EOF
-		  To generate default config (optional, will be invoked by lokinet service if needed):
-		    systemctl start lokinet-default-config
-		  To adjust upstream DNS servers and other options, edit /var/lib/lokinet/lokinet.ini
+		  To adjust upstream DNS servers and other options, edit /etc/loki/lokinet.ini
 		  To start lokinet:
 		    systemctl start lokinet
 		  To get .loki domains resolve, enable systemd-resolved: https://wiki.archlinux.org/index.php/Systemd-resolved
@@ -30,5 +39,6 @@ post_install() {
 }
 
 post_upgrade() {
+	migrate_config
 	del_seed
 }

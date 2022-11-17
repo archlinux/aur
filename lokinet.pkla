@@ -1,4 +1,0 @@
-[Allow lokinet to set DNS settings]
-Identity=unix-user:lokinet
-Action=org.freedesktop.resolve1.set-dns-servers;org.freedesktop.resolve1.set-domains
-ResultAny=yes

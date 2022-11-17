@@ -2,10 +2,6 @@
 Description=Lokinet: Anonymous Network layer thingydoo
 Wants=network-online.target
 After=network-online.target
-Wants=lokinet-bootstrap.service
-After=lokinet-bootstrap.service
-Wants=lokinet-default-config.service
-After=lokinet-default-config.service
 Wants=modprobe@tun.service
 After=modprobe@tun.service
 
@@ -17,7 +13,7 @@ SyslogIdentifier=lokinet
 WorkingDirectory=/var/lib/lokinet
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-ExecStart=/usr/bin/lokinet lokinet.ini
+ExecStart=/usr/bin/lokinet ./lokinet.ini
 Restart=always
 RestartSec=5s
 
