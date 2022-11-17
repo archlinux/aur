@@ -1,4 +1,4 @@
-pkgbase = slimbookservice
+pkgbase = slimbookservice-bin
 	pkgdesc = Service to get desktop notifications from your device
 	pkgver = 0.3.1
 	pkgrel = 2
@@ -11,4 +11,4 @@ pkgbase = slimbookservice
 	source = https://github.com/Slimbook-Team/slimbook_service/releases/download/0.3.1/slimbook_0.3.1.tar.xz
 	sha256sums = 9e2e157d23d780feae975ee0ebe90fb3eb6af795495decfece575fb2205939c3
 
-pkgname = slimbookservice
+pkgname = slimbookservice-bin

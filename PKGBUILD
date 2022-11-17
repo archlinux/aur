@@ -1,7 +1,7 @@
 # Maintainer: Marcos Gutiérrez <margual56@gmail.com>
 # Maintainer: Slimbook <dev@slimbook.es>
 
-pkgname=slimbookservice
+pkgname=slimbookservice-bin
 pkgver=0.3.1
 pkgrel=2
 pkgdesc='Service to get desktop notifications from your device'
