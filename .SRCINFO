@@ -1,7 +1,7 @@
 pkgbase = calculix-precice
 	pkgdesc = preCICE-adapter for the CSM code CalculiX
-	pkgver = 2.19.0
-	pkgrel = 3
+	pkgver = 2.20.0
+	pkgrel = 1
 	url = https://github.com/precice/calculix-adapter
 	arch = x86_64
 	license = GPL3
@@ -11,9 +11,9 @@ pkgbase = calculix-precice
 	depends = precice
 	depends = yaml-cpp
 	optdepends = man-db: manual pages for ccx_preCICE
-	source = https://github.com/precice/calculix-adapter/archive/v2.19.0.tar.gz
-	source = http://dhondt.de/ccx_2.19.src.tar.bz2
-	sha512sums = b9e7a34fa6db9822c8a73312513bc8f465f9137f4c3984fab4ec346c0b9a389732167028ad7d226654e3b5076a976b0793a6329ba9de15b222feef522c15f221
-	sha512sums = d4bcc99c75cafea05d9c4179cd241861c94f31dcb8c6097afc1df6dc0462e0d708e55a5116cc7a3fcaf55cbb8e55974d795bafd63d34f6195d4b810ca32a4037
+	source = calculix-adapter-2.20.0.tar.gz::https://github.com/precice/calculix-adapter/archive/v2.20.0.tar.gz
+	source = http://dhondt.de/ccx_2.20.src.tar.bz2
+	sha512sums = 5bba1fd2b03e9578ea17a4c5a937b7e5ab99147d913bc0c40d6acfe1535dee8dc5c6cc36d8d436c2286ada08de66fbacc7c3a60ccc6434de9e66b30fc20873a2
+	sha512sums = 3888c1411ad42c6f2483cbf7d8994e8175ffa9ad4f0c4df224e2d16a7d80973d32f6a8cf10844255586d4f8e076fee99017cee5f2b9bb6576b82edcfe4b4ffb8
 
 pkgname = calculix-precice
