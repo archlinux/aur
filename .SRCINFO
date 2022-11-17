@@ -1,6 +1,6 @@
 pkgbase = fig
 	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
-	pkgver = 2.7.8
+	pkgver = 2.7.10
 	pkgrel = 1
 	url = https://fig.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fig
 	depends = libappindicator-gtk3
 	depends = ibus
 	depends = xdg-utils
-	source = fig-2.7.8.tar.xz::https://repo.fig.io/generic/stable/asset/2.7.8/x86_64/fig.tar.xz
-	sha256sums = a16097b1a9beb79d2f6502afe024e539fe0415014668c9514afcd2b7ca35237d
+	source = fig-2.7.10.tar.xz::https://repo.fig.io/generic/stable/asset/2.7.10/x86_64/fig.tar.xz
+	sha256sums = c67e6510d351c8d343951237845f8cb92ca6b630b1eb31d5ffaa0c3ae90222b8
 
 pkgname = fig
