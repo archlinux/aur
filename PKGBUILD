@@ -2,21 +2,21 @@
 # Contributor: Emilio Reggi <nag@mailbox.org>
 
 pkgname=llama
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Terminal file manager"
-arch=('x86_64' 'i686' 'arm')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/antonmedv/llama"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f0e306022b0073256b7c1f5856610a7bca5c9d3a7a2be07dde780d4038985968')
+sha256sums=('fbe387c567d4be018c7b031a87c311d866fb892a306c8d0619e5ce800a466bb6')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build
-	go mod tidy
+	go mod download
 }
 
 build() {
@@ -24,15 +24,16 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
 	cd "$pkgname-$pkgver"
-	go build -o build/ -ldflags "-linkmode=external -extldflags=${LDFLAGS}"
+	go build -o build \
+		-ldflags "-linkmode=external -extldflags \"${LDFLAGS}\""
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D build/llama -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv build/llama -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
