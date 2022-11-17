@@ -1,6 +1,6 @@
 # Maintainer: Cooper Pierce <cppierce@andrew.cmu.edu>
 pkgname=millet
-pkgver=0.3.12
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Language server implementation for Standard ML"
 url="https://github.com/azdavis/millet"
@@ -8,7 +8,7 @@ arch=('x86_64')
 license=(APACHE MIT)
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('bd7e6d409e0daeca1fa07bcaf6738ecb')
+md5sums=('8232ed51072ab96453b7f321d2b1514a')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -19,7 +19,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/lang-srv" "$pkgdir/usr/bin/millet"
-    install -Dm644 "license-mit.md" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
+    install -Dm644 "LICENSE-MIT.md" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
 
 check() {
@@ -30,5 +30,8 @@ check() {
     # installed.
     cargo fmt -- --check
     cargo clippy
-    cargo test --locked
+    # Ignores tests starting with repo. These tests assume we're in a git repo
+    # (we're not, here, since this is a source tarball), and test for things
+    # like changelog entries existing.
+    cargo test --locked -- --skip repo
 }
