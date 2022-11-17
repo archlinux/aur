@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mixsqp
-_pkgver=0.3-43
+_pkgver=0.3-48
 pkgname=r-${_pkgname,,}
-pkgver=0.3.43
-pkgrel=4
+pkgver=0.3.48
+pkgrel=1
 pkgdesc='Sequential Quadratic Programming for Fast Maximum-Likelihood Estimation of Mixture Proportions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58042d832803462ca03197a9dbd49d022378756de8996682b89e6bc009d02ce2')
+sha256sums=('8874d7c2ce1a43ffe55d2de450bc7bd4e252d7e621c40ebc8f1fc752c7789209')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
