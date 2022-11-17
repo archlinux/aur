@@ -1,7 +1,7 @@
 pkgbase = ceres-solver
 	pkgdesc = Solver for nonlinear least squares problems
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ceres-solver.org/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = ceres-solver
 	optdepends = openmp
 	options = staticlibs
 	source = http://ceres-solver.org/ceres-solver-2.1.0.tar.gz
+	source = 0001-fix-for-suitesparse-6.0.0.patch
 	sha256sums = f7d74eecde0aed75bfc51ec48c91d01fe16a6bf16bce1987a7073286701e2fc6
+	sha256sums = 0eb45170ec3e87839a688b78ce2d2cffe562a7aa3d10619043729252d3a56d79
 
 pkgname = ceres-solver
