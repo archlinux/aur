@@ -1,6 +1,6 @@
-pkgbase = cython-git
+pkgbase = python38-cython
 	pkgdesc = C-Extensions for Python 3.8
-	pkgver = 0.29.7.r371.g1a1087bd6
+	pkgver = 3.0.0a11.r157.g1b028d34d
 	pkgrel = 1
 	url = https://cython.org/
 	arch = i686
@@ -13,4 +13,4 @@ pkgbase = cython-git
 	source = git+https://github.com/cython/cython.git
 	sha256sums = SKIP
 
-pkgname = cython-git
+pkgname = python38-cython

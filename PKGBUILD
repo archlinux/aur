@@ -36,7 +36,7 @@ package() {
     --root "$pkgdir"
 
   for f in cygdb cython cythonize; do
-    mv "$pkgdir/usr/bin"/$f "$pkgdir/usr/bin"/${f}3
-    ln -s ${f}3 "$pkgdir/usr/bin"/$f
+    mv "$pkgdir/usr/bin"/$f "$pkgdir/usr/bin"/${f}38
+    #ln -s ${f}38 "$pkgdir/usr/bin"/$f
   done
 }
