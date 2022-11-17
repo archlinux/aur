@@ -1,0 +1,43 @@
+diff --color --unified --recursive --text app/index.js app2/index.js
+--- app/index.js	2022-10-10 00:16:46.949457385 +0200
++++ app2/index.js	2022-10-10 00:22:26.917985986 +0200
+@@ -7,7 +7,6 @@
+ 
+ // expose globals to electron
+ global.env = require('./src/utils/globals');
+-const autoUpdate = require('./src/auto-update');
+ const windowConfig = require('./src/window-config');
+ const ipcEventListeners = require('./src/ipc-event-listeners');
+ const keyboardShortcuts = require('./src/keyboard-shortcuts');
+@@ -19,7 +18,6 @@
+ 
+ // references
+ let window = null;
+-let autoUpdateCronJob = null;
+ // expose primary window instance id globally
+ global.env.windowInstanceID = null;
+ global.env.windowStateEventDebounce = null;
+@@ -180,19 +178,11 @@
+         if (global.env.isDevMode()) {
+             window.openDevTools({ mode: 'detach' });
+ 
+-        // Equivalent to --inspect for a node process
+-        if (global.env.runInspector) {
+-            require('inspector').open();
+-        }
++            // Equivalent to --inspect for a node process
++            if (global.env.runInspector) {
++                require('inspector').open();
++            }
+ 
+-        // ----- PRODUCTION ----- //
+-        } else {
+-            // check for updates after launch
+-            autoUpdate.init();
+-
+-            // hourly update check
+-            autoUpdateCronJob = new CronJob('0 0 */1 * * *', () => autoUpdate.checkForUpdate());
+-            autoUpdateCronJob.start();
+         }
+     });
+ 

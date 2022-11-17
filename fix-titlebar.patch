@@ -1,0 +1,69 @@
+diff --color --unified --recursive --text app/index.js app2/index.js
+--- app/index.js	2022-11-17 20:23:19.363387545 +0100
++++ app2/index.js	2022-11-17 21:00:56.980271735 +0100
+@@ -195,7 +195,7 @@
+     });
+ 
+     // not triggered by osx
+-    if (global.env.host.isWindows()) {
++    if (!global.env.host.isOSX()) {
+         window.on('maximize', (e) => {
+             e.sender.webContents.send('main:window--action-callback', 'maximize');
+         });
+diff --color --unified --recursive --text app/src/renderer/app-layout.js app2/src/renderer/app-layout.js
+--- app/src/renderer/app-layout.js	2022-11-17 20:26:11.117654398 +0100
++++ app2/src/renderer/app-layout.js	2022-11-17 21:06:27.148969859 +0100
+@@ -67,8 +67,8 @@
+     // set app title
+     document.querySelector(cssSelector.appTitle).textContent = `Teamwork Desktop v${package.version}`;
+ 
+-    // ----- osx, unix ----- //
+-    if (remote.getGlobal('env').host.isOSX() || remote.getGlobal('env').host.isLinux()) {
++    // ----- osx ----- //
++    if (remote.getGlobal('env').host.isOSX()) {
+ 
+         // add unix specific title-bar alignment styles
+         document.body.classList.add('unix');
+@@ -81,9 +81,9 @@
+             'config',
+         ];
+         addActionEventListeners(validUnixActions);
+-
+-    // ----- win32 ----- //
+-    } else if (remote.getGlobal('env').host.isWindows()) {
++    
++    // ----- win32, Linux ----- //
++    } else if (remote.getGlobal('env').host.isWindows() || remote.getGlobal('env').host.isLinux()) {
+ 
+         // set up title bar action event listener
+         const validWin32Actions = [
+@@ -140,7 +140,7 @@
+                     default:
+                         break;
+                 }
+-            } else if (remote.getGlobal('env').host.isWindows()) {
++            } else if (!remote.getGlobal('env').host.isOSX()) {
+                 ipc.send('main:window--action', action);
+ 
+                 // TODO: add multi monitor support to 'window-state-manager'
+diff --color --unified --recursive --text app/src/renderer/index.html app2/src/renderer/index.html
+--- app/src/renderer/index.html	2022-11-17 20:23:19.323386549 +0100
++++ app2/src/renderer/index.html	2022-11-17 21:02:03.951934922 +0100
+@@ -48,7 +48,7 @@
+                 </div>
+                 <!-- win32 specific -->
+                 <div class="title-bar-icon minimize win32-only">
+-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 10 10"><title>maximise</title><rect class="fill-target" x="0" y="8" width="10" height="2"/></svg>
++                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 10 10"><title>maximise</title><rect class="fill-target minimize--click-delegate" x="0" y="8" width="10" height="2"/></svg>
+                 </div>
+                 <div class="title-bar-icon maximize win32-only">
+                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="9.94" height="9.94" viewBox="0 0 9.94 9.94"><defs><style>.stroke-target { fill: none; stroke-miterlimit: 10; }</style></defs><title>maximise</title><rect class="stroke-target maximize--click-delegate" x="0.5" y="0.5" width="8.94" height="8.94"/></svg>
+@@ -57,7 +57,7 @@
+                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="9.97" height="10" viewBox="0 0 9.97 10"><defs><style>.stroke-target { fill:none; stroke-miterlimit: 10; }</style></defs><title>restore</title><rect class="stroke-target restore--click-delegate" x="2.28" y="0.5" width="7.19" height="7.19"/><rect class="stroke-target restore--click-delegate" x="0.5" y="2.56" width="6.94" height="6.94"/></svg>
+                 </div>
+                 <div class="title-bar-icon close win32-only">
+-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="9.97" height="9.78" viewBox="0 0 9.97 9.78"><defs><style>.stroke-target { fill:none; stroke-linecap: round; stroke-miterlimit: 10; }</style></defs><title>close</title><line class="stroke-target" x1="0.5" y1="0.5" x2="9.47" y2="9.28"/><line class="stroke-target" x1="0.5" y1="9.28" x2="9.47" y2="0.5"/></svg>
++                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="9.97" height="9.78" viewBox="0 0 9.97 9.78"><defs><style>.stroke-target { fill:none; stroke-linecap: round; stroke-miterlimit: 10; }</style></defs><title>close</title><line class="stroke-target close--click-delegate" x1="0.5" y1="0.5" x2="9.47" y2="9.28"/><line class="stroke-target " x1="0.5" y1="9.28" x2="9.47" y2="0.5"/></svg>
+                 </div>
+                 <!-- /win32 specific -->
+             </div>

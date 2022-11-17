@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Teamwork Desktop
+Exec=teamwork-desktop %U
+Terminal=false
+Type=Application
+Icon=teamwork-desktop
+StartupWMClass=Teamwork
+Comment=The Teamwork desktop app
+Categories=Office;
