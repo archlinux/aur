@@ -1,6 +1,6 @@
 pkgbase = cctag
 	pkgdesc = Detection of CCTag markers made up of concentric circles.
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 2
 	url = https://github.com/alicevision/CCTag
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = cctag
 	makedepends = opencv
 	depends = boost-libs
 	depends = tbb
-	source = cctag-1.0.1.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v1.0.1.tar.gz
-	source = tbb2021.patch::https://github.com/alicevision/CCTag/pull/178.patch
-	sha256sums = ae8a819bc978eb13bb1061a204c214da835e56c9b7dc775237ed6b2191011dec
+	source = cctag-1.0.3.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 25396b03c4aa3c1be241a2a8518a29511cb4fff695caa5126203fbba8e8e444d
 	sha256sums = ae2a2d361a7f255fe87cf3e1ca0eca14a4ddcbe0122195cb3f713e59c9064a2b
 
 pkgname = cctag
