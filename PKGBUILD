@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-scxml
-_qtver=6.4.0
+_qtver=6.4.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtscxml-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d40773a5e6594829aca99ccc73aba3559f93301ea081ffb78668a9b616d97664')
+sha256sums=('d2f0e4cbad8f38e701fc590435fa7c6540ffbea7788e1fee8532436d068cbb8e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
