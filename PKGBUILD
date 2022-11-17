@@ -2,7 +2,7 @@
 
 _gemname=fog
 pkgname=ruby-$_gemname
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='brings clouds to you'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-fog-aliyun ruby-fog-atmos ruby-fog-aws ruby-fog-brightbox ruby-fog
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('df3d54faf8c335dcffb281ada9d5bef2bfd8bc5eeb47ec73213ac4156e074309a0961dc167c156daf17a3bfaac76196260dd6a5a88b0ec9771ed0147121b65f0')
+sha512sums=('8f3540fd986f209db34f3acac073fbee248199e014d85c1771dcb0a034d6f89d83a7dfe8feddb013344814ee100393d01f75032944f5941bd0416ac5f2e203d1')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

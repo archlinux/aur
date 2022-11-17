@@ -1,6 +1,6 @@
 pkgbase = ruby-fog
 	pkgdesc = brings clouds to you
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://github.com/fog/fog
 	arch = any
@@ -39,9 +39,9 @@ pkgbase = ruby-fog
 	depends = ruby-fog-xml
 	depends = ruby-ipaddress
 	depends = ruby-json
-	noextract = fog-2.2.0.gem
+	noextract = fog-2.3.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-2.2.0.gem
-	sha512sums = df3d54faf8c335dcffb281ada9d5bef2bfd8bc5eeb47ec73213ac4156e074309a0961dc167c156daf17a3bfaac76196260dd6a5a88b0ec9771ed0147121b65f0
+	source = https://rubygems.org/downloads/fog-2.3.0.gem
+	sha512sums = 8f3540fd986f209db34f3acac073fbee248199e014d85c1771dcb0a034d6f89d83a7dfe8feddb013344814ee100393d01f75032944f5941bd0416ac5f2e203d1
 
 pkgname = ruby-fog
