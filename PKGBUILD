@@ -8,7 +8,7 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=22.07.80.r16397
+pkgver=22.08.0.r16446
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ conflicts=('kdenlive')
 #run the following command in the kdenlive repo directory:
 #git remote set-url origin https://invent.kde.org/multimedia/kdenlive
 ##If there has been a branch switch, Arch will not build unless you supply --cleanbuild to makepkg
-source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/22.08')
+source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/22.12')
 sha1sums=('SKIP')
 install=$pkgname.install
 #options=(debug !strip)

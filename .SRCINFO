@@ -1,6 +1,6 @@
 pkgbase = kdenlive-release-git
 	pkgdesc = A non-linear video editor. Following latest released branch in git.
-	pkgver = 22.07.80.r16397
+	pkgver = 22.08.0.r16446
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-release-git.install
@@ -32,7 +32,7 @@ pkgbase = kdenlive-release-git
 	optdepends = oxygen-icons: optional for xfce
 	provides = kdenlive
 	conflicts = kdenlive
-	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/22.08
+	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/22.12
 	sha1sums = SKIP
 
 pkgname = kdenlive-release-git
