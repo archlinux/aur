@@ -1,0 +1,15 @@
+pkgbase = vault-exfiltrate-git
+	pkgdesc = Proof-of-concept for recovering the master key from a Hashicorp Vault coredump
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/slingamn/vault-exfiltrate-git
+	arch = x86_64
+	license = MPL2
+	depends = glibc
+	optdepends = vault: in order to interact more with vault,
+	provides = vault-exfiltrate
+	conflicts = vault-exfiltrate
+	source = git+https://github.com/slingamn/vault-exfiltrate.git
+	sha256sums = SKIP
+
+pkgname = vault-exfiltrate-git
