@@ -1,7 +1,7 @@
 pkgbase = discord-electron-bin
 	pkgdesc = Discord using system provided electron (v13) for increased security and performance
 	pkgver = 0.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.com
 	arch = x86_64
 	license = custom
@@ -13,6 +13,7 @@ pkgbase = discord-electron-bin
 	optdepends = xdg-utils: Open files
 	provides = discord
 	conflicts = discord
+	options = !strip
 	source = https://dl.discordapp.net/apps/linux/0.0.21/discord-0.0.21.tar.gz
 	sha512sums = 149ae5b8b7d92549e12eca52e45d3f5761ef022ae321cf33fadc3b56c4cee0616a5166380faea038256213713a7aa90e1befc4caa3e6a4de8e15c1cb1d8f925d
 
