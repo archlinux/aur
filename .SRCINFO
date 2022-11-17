@@ -1,8 +1,8 @@
 pkgbase = vault-exfiltrate-git
 	pkgdesc = Proof-of-concept for recovering the master key from a Hashicorp Vault coredump
-	pkgver = 0.1
+	pkgver = r19.28c722d
 	pkgrel = 1
-	url = https://github.com/slingamn/vault-exfiltrate-git
+	url = https://github.com/slingamn/vault-exfiltrate
 	arch = x86_64
 	license = MPL2
 	depends = glibc
