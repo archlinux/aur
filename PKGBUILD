@@ -4,7 +4,7 @@ pkgname=electronic-wechat-uos-bin
 pkgver=2.3.2
 pkgrel=1
 epoch=
-pkgdesc="Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用Electron构建, 利用UOS请求头修复了登陆问题."
+pkgdesc="Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron, 利用UOS请求头修复了登陆问题."
 arch=('x86_64')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
@@ -35,7 +35,7 @@ md5sums=(
 )
 validpgpkeys=()
 package() {
-	info '正在解压缩源文件...'
+	info '解压缩源文件...'
 	cd ${srcdir}
 	tar -xf data.tar.xz ./usr/lib/electronic-wechat/resources/app.asar
 	for directory in /usr/bin /opt/electronic-wechat-uos-bin /usr/share/applications; do
@@ -46,12 +46,11 @@ package() {
 	cp -r ${srcdir}/usr/lib/electronic-wechat/resources ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.svg ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/electronic-wechat-uos-bin.desktop ${pkgdir}/usr/share/applications
+	info '创建可执行文件...'
 	echo '#!/bin/bash
 exec electron /opt/electronic-wechat-uos-bin/resources/app.asar' >${pkgdir}/usr/bin/electronic-wechat-uos-bin
+	chmod -R 755 ${pkgdir}/*
 	chmod 644 ${pkgdir}/usr/share/applications/electronic-wechat-uos-bin.desktop
-	chmod -R 755 ${pkgdir}/opt/electronic-wechat-uos-bin
-	chmod a=rx ${pkgdir}/usr/bin/electronic-wechat-uos-bin
-	chmod u=rwx ${pkgdir}/usr/bin/electronic-wechat-uos-bin
 }
 
 function info() {

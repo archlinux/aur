@@ -1,4 +1,4 @@
-function note() {
+ function note() {
     printf "${blue}==>${yellow} 提示:${bold} $1${all_off}\n"
 }
 
@@ -11,6 +11,7 @@ function post_install(){
     note '如果桌面通知无法送达, 请检查是否正确设置 libnotify'
     note '若要启用 Wayland 支持, 请在 ~/.config/electron-flags.conf 添加 --enable-features=WaylandWindowDecorations 与 --ozone-platform-hint=auto'
     note '请注意: 启用 Wayland 支持后将无法使用Fcitx5以及任何 Electron 应用的全局菜单'
+    note '在Xwayland下请勿添加--use-gl=egl, 否则会导致程序卡顿'
 }
 
 function post_upgrade(){
