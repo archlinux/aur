@@ -1,8 +1,8 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainabout
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="plainDE about screen"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://plainde.org"
