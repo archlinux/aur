@@ -1,30 +1,33 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=mozregression-gui
-pkgver=0.9.46
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Regression range finder for Firefox'
 arch=('any')
 license=(MPL)
 url="https://github.com/mozilla/mozregression"
-makedepends=('python-pip' 'python-virtualenv' 'python2-pyqt4')
-source=("git+https://github.com/mozilla/mozregression.git#tag=gui-$pkgver"
+conflicts=("mozregression-gui-bin")
+makedepends=('python-pip' 'python-virtualenv' 'libxcb' 'libxkbcommon-x11' 'libglvnd')
+options=('!strip')
+source=("git+https://github.com/mozilla/mozregression.git#tag=$pkgver"
         "mozregression-gui.desktop")
 sha256sums=('SKIP'
             '0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb')
 
 build() {
-  cd mozregression
-  virtualenv --system-site-packages -p /usr/bin/python2 venv
-  source venv/bin/activate
-  PIP_CONFIG_FILE=/dev/null pip install --isolated -r requirements-gui-dev.txt
+  cd mozregression || exit
+  python -m venv env
+  source env/bin/activate
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --ignore-installed --no-deps -r requirements/requirements-3.9-Linux.txt
+  PIP_CONFIG_FILE=/dev/null pip install --isolated -e .
   python gui/build.py bundle
 }
 
 package() {
-  cd mozregression
+  cd mozregression || exit
   install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt/mozregression-gui}
-  cp -r ./gui/dist/* "${pkgdir}"/opt/mozregression-gui/
+  cp -r ./gui/dist/* "${pkgdir}"/opt/
   ln -s "/opt/${pkgname}/${pkgname}" \
         "$pkgdir/usr/bin/${pkgname}"
   install -m644 "${srcdir}"/mozregression-gui.desktop "${pkgdir}"/usr/share/applications/
