@@ -1,4 +1,4 @@
-pkgbase = xlights-appimage
+pkgbase = xlights
 	pkgdesc = xLights is a sequencer for Lights.
 	pkgver = 2022.22
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = xlights-appimage
 	md5sums = 8eed73261c469f80ea839f86a03380ab
 	md5sums = db5ba2bc1711d6517d819fad728b76b9
 
-pkgname = xlights-appimage
+pkgname = xlights

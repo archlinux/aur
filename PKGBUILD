@@ -1,4 +1,4 @@
-pkgname=xlights-appimage
+pkgname=xlights
 pkgver=2022.22
 pkgrel=1
 pkgdesc="xLights is a sequencer for Lights."
