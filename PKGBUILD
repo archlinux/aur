@@ -3,7 +3,7 @@
 # Contributor: Samuli Thomasson <samuli.thomasson@paivola.fi>
 
 pkgname=agendav
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Open source multilanguage CalDAV web client"
 arch=(any)
@@ -16,7 +16,7 @@ source=(https://github.com/adobo/agendav/releases/download/$pkgver/agendav-$pkgv
         agendav.tmpfiles
         php.ini)
 install=$pkgname.install
-sha1sums=('ddcf7c4caffbb333501260421b364e506fdff9ff'
+sha1sums=('6668524b1780f0aec375307c2bccb0f0a2b42c87'
           '7f9d5ea5921c446395b2b35b03ae3522b094a283'
           '33192382063a3b2474e33657e50d0a56ecf42d72')
 

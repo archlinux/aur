@@ -1,6 +1,6 @@
 pkgbase = agendav
 	pkgdesc = Open source multilanguage CalDAV web client
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://agendav.org/
 	install = agendav.install
@@ -9,10 +9,10 @@ pkgbase = agendav
 	depends = php
 	options = !strip
 	backup = etc/webapps/agendav/settings.php
-	source = https://github.com/adobo/agendav/releases/download/2.5.0/agendav-2.5.0.tar.gz
+	source = https://github.com/adobo/agendav/releases/download/2.6.0/agendav-2.6.0.tar.gz
 	source = agendav.tmpfiles
 	source = php.ini
-	sha1sums = ddcf7c4caffbb333501260421b364e506fdff9ff
+	sha1sums = 6668524b1780f0aec375307c2bccb0f0a2b42c87
 	sha1sums = 7f9d5ea5921c446395b2b35b03ae3522b094a283
 	sha1sums = 33192382063a3b2474e33657e50d0a56ecf42d72
 
