@@ -1,4 +1,5 @@
-# Maintainer: Vincent Grande <shoober420@gmail.com>
+# Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
+# Contributor: Vincent Grande <shoober420@gmail.com>
 # Contributor: grimi <grimi at poczta dot fm>
 # Contributor: Chromaryu <knight.ryu12@gmail.com>
 pkgname=lib32-libxmp-git
