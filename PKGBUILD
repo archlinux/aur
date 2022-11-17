@@ -1,10 +1,10 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz[at]gmail[dot]com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributer: Felix Golatofski <contact@xdfr.de>
 # Contributer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=java-openjfx-ea-bin
-_majorver=19
-_buildver=10
+_majorver=20
+_buildver=7
 pkgver=${_majorver}rc${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -17,12 +17,12 @@ conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('2143ff2db5ab6e8ca1aa5f608d40d7b5f59265c705194b5816792e151a55346c'
-            '1894e7ca7eca12f3b7e74d2d7d78dd96512a922b87e2337318df63435402b20e'
-            '9e9317e82e9415fc06800630028396346e54d39a79f2d2107e6da9bffeda6788')
-sha512sums=('7db670f973c5ef78e6bf3152400444baaeda8099340a79667545e4931375f0e261a36f96ceb6861566eba5190273dd06e0580159cb0ce3dbee59d5aa0db651d3'
-            'b8ccfa99d033df32d3f6a865ebfa2534bdeebbb299d7c59ec218861309d3b155421d715e0bdff6e10fb8253dcbcb2552e75ae3a61b073d85699543435e5b2258'
-            '2ff39d1e5c3180895c529a7333f6502c2a55ad455f593fe1e62d8942a5a76e8f2e6bf1c6d458dc98eb5b56319d712d3d6b8c565f10fc295a1e9d8020ffc00b21')
+sha256sums=('b807a59aa648902a47e9759342e567c6e3da1ae6de5633fff436ce7d0754d189'
+            '29f7efb24b686284c1ef772eb33816b244c067216f831355fff7d89b6b2edb97'
+            '9c469250d8778deabcf3447a785b207738407dde2905a451dbb6ab1bc89b7eef')
+sha512sums=('64dcbb00d0c8d028a8647634c110a2bace0b364afc964f9714f9c8bb7cfd82c68f89e0931b2df8abac80901ec2677ca302e0d9d78e406ee4f19ae92748ffbad2'
+            '8dfb63b0d586f679ea575536f3d4911ff766a786ef62b5fad863e60ff6435cdf82e1ee545e7bfc67a06f51911367bdc92559f132d0b9a7020bfdb1aa4576b8c2'
+            '5ab3a20ac8e58f39422d5e0c0739bcad1a44845bd6a76b8e0d9685e8d51d1a0707c37fd70f7917ca03ae28998660d5c0e84eeda5745a0bdac622091a3143b109')
 
 
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk"
