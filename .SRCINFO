@@ -1,0 +1,17 @@
+pkgbase = python38-wheel
+	pkgdesc = A built-package format for Python
+	pkgver = 0.38.4
+	pkgrel = 00
+	url = https://github.com/pypa/wheel
+	arch = any
+	license = MIT
+	depends = python38
+	noextract = wheel-0.38.4-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/bd/7c/d38a0b30ce22fc26ed7dbc087c6d00851fb3395e9d0dac40bec1f905030c/wheel-0.38.4-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 6fbe3e99e2ba7e4ff267738bfcca30e1
+	md5sums = 7ffb0db04527cfe380e4f2726bd05ebf
+
+pkgname = python38-wheel
