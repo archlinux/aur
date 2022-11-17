@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gtree
-pkgver=1.7.14
+pkgver=1.7.20
 pkgrel=1
 pkgdesc="Generates tree from Markdown or programmatically"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('477f8fac989b89245feb31f52b3da040959757b6189fa990d4354ac2f3b3a5f4')
+sha256sums=('2392ba00a52112b83c3faa002c57e05e3e1efd5232817145268a42bd731106c5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -39,6 +39,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D build/gtree -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dv build/gtree -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
