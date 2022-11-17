@@ -1,0 +1,19 @@
+pkgbase = python-grilops
+	pkgdesc = GRId LOgic Puzzle Solver
+	pkgver = 0.9.1
+	pkgrel = 00
+	url = https://github.com/obijywk/grilops
+	arch = any
+	license = custom:MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-z3-solver
+	noextract = grilops-0.9.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/6e/77/2a4d8d492140b9174f5792ea90cd4e36c38d32b3e74c5b03517a89c5bd98/grilops-0.9.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = ddf881cebc05824f397a4506f6e98bd3
+	md5sums = 5610fa5a3d7c703057b359bcd76e38d3
+
+pkgname = python-grilops
