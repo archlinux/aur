@@ -1,0 +1,17 @@
+pkgbase = python38-attrs
+	pkgdesc = Classes Without Boilerplate
+	pkgver = 22.1.0
+	pkgrel = 00
+	url = https://www.attrs.org/
+	arch = any
+	license = MIT
+	depends = python38
+	noextract = attrs-22.1.0-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/f2/bc/d817287d1aa01878af07c19505fafd1165cd6a119e9d0821ca1d1c20312d/attrs-22.1.0-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = f440620ea6b2c6555964dda7d9efc5d6
+	md5sums = 5e55731824cf9205cfabeab9a0600887
+
+pkgname = python38-attrs
