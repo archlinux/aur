@@ -1,9 +1,0 @@
-[Trigger]
-Type = Package
-Operation = Remove
-Target = nekuvi
-
-[Action]
-Description = Removing evdev rules for np_prog...
-When = PreTransaction
-Exec = /usr/share/libalpm/scripts/uninstall-nekuvi-layout
