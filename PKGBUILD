@@ -4,8 +4,8 @@
 
 pkgname=lib32-dconf
 pkgver=0.40.0
-pkgrel=2
-pkgdesc='A low-level configuration system'
+pkgrel=3
+pkgdesc='A low-level configuration system (32-bit)'
 arch=(x86_64)
 url=https://live.gnome.org/dconf
 license=(LGPL2.1)
@@ -14,17 +14,14 @@ depends=(
   lib32-glib2
 )
 makedepends=(
-  bash-completion
-  docbook-xsl
   git
-  intltool
+  lib32-dbus
   meson
-  python
-  vala
 )
+options=(debug)
 _tag=4c0a26052efafae923eba42d14c5cb88da745de2
 source=(git+https://gitlab.gnome.org/GNOME/dconf.git#tag=${_tag})
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
   cd dconf
@@ -33,17 +30,23 @@ pkgver() {
 }
 
 build() {
-  export CC='gcc -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-
-  arch-meson dconf build \
+  local meson_options=(
     --libdir=/usr/lib32
-  ninja -C build
+    -D bash_completion=false
+    -D man=false
+    -D vapi=false
+  )
+
+  export CC='gcc -m32'
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
+
+  arch-meson dconf build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir "${pkgdir}"
   rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
