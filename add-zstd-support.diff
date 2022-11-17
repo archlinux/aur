@@ -1,0 +1,416 @@
+diff --git a/extract.c b/extract.c
+index 1ce6870..9c320a7 100644
+--- a/extract.c
++++ b/extract.c
+@@ -28,6 +28,7 @@
+              fnfilter()
+              dircomp()                (SET_DIR_ATTRIB only)
+              UZbunzip2()              (USE_BZIP2 only)
++             UZzstd_decompress()      (USE_ZSTD only)
+ 
+   ---------------------------------------------------------------------------*/
+ 
+@@ -139,17 +140,18 @@ static ZCONST char Far ComprMsgNum[] =
+    static ZCONST char Far CmprLZMA[]       = "LZMA";
+    static ZCONST char Far CmprIBMTerse[]   = "IBM/Terse";
+    static ZCONST char Far CmprIBMLZ77[]    = "IBM LZ77";
++   static ZCONST char Far CmprZstd[]       = "zstd";
+    static ZCONST char Far CmprWavPack[]    = "WavPack";
+    static ZCONST char Far CmprPPMd[]       = "PPMd";
+    static ZCONST char Far *ComprNames[NUM_METHODS] = {
+      CmprNone, CmprShrink, CmprReduce, CmprReduce, CmprReduce, CmprReduce,
+      CmprImplode, CmprTokenize, CmprDeflate, CmprDeflat64, CmprDCLImplode,
+-     CmprBzip, CmprLZMA, CmprIBMTerse, CmprIBMLZ77, CmprWavPack, CmprPPMd
++     CmprBzip, CmprLZMA, CmprIBMTerse, CmprIBMLZ77, CmprZstd, CmprWavPack, CmprPPMd
+    };
+    static ZCONST unsigned ComprIDs[NUM_METHODS] = {
+      STORED, SHRUNK, REDUCED1, REDUCED2, REDUCED3, REDUCED4,
+      IMPLODED, TOKENIZED, DEFLATED, ENHDEFLATED, DCLIMPLODED,
+-     BZIPPED, LZMAED, IBMTERSED, IBMLZ77ED, WAVPACKED, PPMDED
++     BZIPPED, LZMAED, IBMTERSED, IBMLZ77ED, ZSTDED, WAVPACKED, PPMDED
+    };
+ #endif /* !SFX */
+ static ZCONST char Far FilNamMsg[] =
+@@ -274,6 +276,10 @@ static ZCONST char Far Inflate[] = "inflate";
+   static ZCONST char Far BUnzip[] = "bunzip";
+ #endif
+ 
++#ifdef USE_ZSTD
++  static ZCONST char Far Unzstd[] = "unzstd";
++#endif
++
+ #ifndef SFX
+    static ZCONST char Far Explode[] = "explode";
+ #ifndef LZW_CLEAN
+@@ -994,6 +1000,12 @@ static int store_info(__G)   /* return 0 if skipping, 1 if OK */
+ #  define UNKN_LZMA TRUE      /* LZMA unknown */
+ #endif
+ 
++#ifdef USE_ZSTD
++#  define UNKN_ZSTD (G.crec.compression_method!=ZSTDED)
++#else
++#  define UNKN_ZSTD TRUE      /* zstd unknown */
++#endif
++
+ #ifdef USE_WAVP
+ #  define UNKN_WAVP (G.crec.compression_method!=WAVPACKED)
+ #else
+@@ -1011,11 +1023,11 @@ static int store_info(__G)   /* return 0 if skipping, 1 if OK */
+ #    define UNKN_COMPR \
+      (G.crec.compression_method!=STORED && G.crec.compression_method<DEFLATED \
+       && G.crec.compression_method>ENHDEFLATED \
+-      && UNKN_BZ2 && UNKN_LZMA && UNKN_WAVP && UNKN_PPMD)
++      && UNKN_BZ2 && UNKN_LZMA && UNKN_ZSTD && UNKN_WAVP && UNKN_PPMD)
+ #  else
+ #    define UNKN_COMPR \
+      (G.crec.compression_method!=STORED && G.crec.compression_method!=DEFLATED\
+-      && UNKN_BZ2 && UNKN_LZMA && UNKN_WAVP && UNKN_PPMD)
++      && UNKN_BZ2 && UNKN_LZMA && UNKN_ZSTD && UNKN_WAVP && UNKN_PPMD)
+ #  endif
+ #else
+ #  ifdef COPYRIGHT_CLEAN  /* no reduced files */
+@@ -1033,20 +1045,22 @@ static int store_info(__G)   /* return 0 if skipping, 1 if OK */
+ #    define UNKN_COMPR (UNKN_RED || UNKN_SHR || \
+      G.crec.compression_method==TOKENIZED || \
+      (G.crec.compression_method>ENHDEFLATED && UNKN_BZ2 && UNKN_LZMA \
+-      && UNKN_WAVP && UNKN_PPMD))
++      && UNKN_ZSTD && UNKN_WAVP && UNKN_PPMD))
+ #  else
+ #    define UNKN_COMPR (UNKN_RED || UNKN_SHR || \
+      G.crec.compression_method==TOKENIZED || \
+      (G.crec.compression_method>DEFLATED && UNKN_BZ2 && UNKN_LZMA \
+-      && UNKN_WAVP && UNKN_PPMD))
++      && UNKN_ZSTD && UNKN_WAVP && UNKN_PPMD))
+ #  endif
+ #endif
+ 
+-#if (defined(USE_BZIP2) && (UNZIP_VERSION < UNZIP_BZ2VERS))
+-    int unzvers_support = (UNKN_BZ2 ? UNZIP_VERSION : UNZIP_BZ2VERS);
+ #   define UNZVERS_SUPPORT  unzvers_support
+-#else
+-#   define UNZVERS_SUPPORT  UNZIP_VERSION
++    int unzvers_support = UNZIP_VERSION;
++#if defined(USE_BZIP2)
++    if (!UNKN_BZ2 && UNZIP_BZ2VERS > unzvers_support) unzvers_support = UNZIP_BZ2VERS;
++#endif
++#if defined(USE_ZSTD)
++    if (!UNKN_ZSTD && UNZIP_ZSTDVERS > unzvers_support) unzvers_support = UNZIP_ZSTDVERS;
+ #endif
+ 
+ /*---------------------------------------------------------------------------
+@@ -2099,6 +2113,37 @@ static int extract_or_test_member(__G)    /* return PK-type error code */
+             break;
+ #endif /* USE_BZIP2 */
+ 
++#ifdef USE_ZSTD
++        case ZSTDED:
++            if (!uO.tflag && QCOND2) {
++                Info(slide, 0, ((char *)slide, LoadFarString(ExtractMsg),
++                  "unzstd", FnFilter1(G.filename),
++                  (uO.aflag != 1 /* && G.pInfo->textfile==G.pInfo->textmode */)?
++                  "" : (G.pInfo->textfile? txt : bin), uO.cflag? NEWLINE : ""));
++            }
++            if ((r = UZzstd_decompress(__G)) != 0) {
++                if (r < PK_DISK) {
++                    if ((uO.tflag && uO.qflag) || (!uO.tflag && !QCOND2))
++                        Info(slide, 0x401, ((char *)slide,
++                          LoadFarStringSmall(ErrUnzipFile), r == 3?
++                          LoadFarString(NotEnoughMem) :
++                          LoadFarString(InvalidComprData),
++                          LoadFarStringSmall2(Unzstd),
++                          FnFilter1(G.filename)));
++                    else
++                        Info(slide, 0x401, ((char *)slide,
++                          LoadFarStringSmall(ErrUnzipNoFile), r == 3?
++                          LoadFarString(NotEnoughMem) :
++                          LoadFarString(InvalidComprData),
++                          LoadFarStringSmall2(Unzstd)));
++                    error = ((r == 3) ? PK_MEM3 : PK_ERR);
++                } else {
++                    error = r;
++                }
++            }
++            break;
++#endif /* USE_ZSTD */
++
+         default:   /* should never get to this point */
+             Info(slide, 0x401, ((char *)slide,
+               LoadFarString(FileUnknownCompMethod), FnFilter1(G.filename)));
+@@ -3237,3 +3282,106 @@ __GDEF
+     return retval;
+ } /* end function UZbunzip2() */
+ #endif /* USE_BZIP2 */
++
++#ifdef USE_ZSTD
++
++/**********************************/
++/*  Function UZzstd_decompress()  */
++/**********************************/
++
++int UZzstd_decompress(__G)
++__GDEF
++/* decompress a zstd entry using the libzstd routines */
++{
++    int retval = 0;     /* return code: 0 = "no error" */
++    int err=1; // zstd meaning: there is unprocessed input data
++    int repeated_buf_err;
++
++    Trace((stderr, "initializing zstdlib()\n"));
++    ZSTD_DCtx* const dctx = ZSTD_createDCtx();
++
++    if (dctx == NULL)
++      return 3; // ret code: not enough memory
++
++#if (defined(DLL) && !defined(NO_SLIDE_REDIR))
++    if (G.redirect_slide)
++        wsize = G.redirect_size, redirSlide = G.redirect_buffer;
++    else
++        wsize = WSIZE, redirSlide = slide;
++#endif
++
++    ZSTD_inBuffer input = { (const void *)G.inptr, G.incnt, 0 };
++    ZSTD_outBuffer output = { (void *)redirSlide, wsize, 0 };
++
++#define ZSTD_STREAM_END 0
++#ifdef FUNZIP
++    while (err != ZSTD_STREAM_END) {
++#else /* !FUNZIP */
++    while (G.csize > 0) {
++        Trace((stderr, "first loop:  G.csize = %ld\n", G.csize));
++#endif /* ?FUNZIP */
++        while (output.pos < output.size) {
++            err = ZSTD_decompressStream(dctx, &output , &input);
++
++            if (ZSTD_isError(err)) {
++                Trace((stderr, "oops!  (zstd error = %d, %s\n", err, ZSTD_getErrorName(err)));
++                retval = 2; goto uzzstd_cleanup_exit;
++            }
++
++#ifdef FUNZIP
++            if (err == ZSTD_STREAM_END) /* "END-of-entry-condition" ? */
++#else /* !FUNZIP */
++            if (G.csize <= 0L)          /* "END-of-entry-condition" ? */
++#endif /* ?FUNZIP */
++                break;
++
++            if (input.pos == input.size) {
++                if (fillinbuf(__G) == 0) {
++                    /* no "END-condition" yet, but no more data */
++                    retval = 2; goto uzzstd_cleanup_exit;
++                }
++
++                input.src = (const void *)G.inptr;
++                input.size = G.incnt;
++                input.pos = 0;
++            }
++            Trace((stderr, "     avail_in = %u\n", input.size - input.pos));
++        }
++        /* flush slide[] */
++        if ((retval = FLUSH(output.pos)) != 0)
++            goto uzzstd_cleanup_exit;
++        Trace((stderr, "inside loop:  flushing %ld bytes\n",
++          (long)(output.pos)));
++        output.dst = (void *)redirSlide;
++        output.size = wsize;
++        output.pos = 0;
++    }
++
++    /* no more input, so loop until we have all output */
++    Trace((stderr, "beginning final loop:  err = %d\n", err));
++    repeated_buf_err = FALSE;
++    while (err != ZSTD_STREAM_END) {
++        err = ZSTD_decompressStream(dctx, &output , &input);
++        if (ZSTD_isError(err)) {
++            Trace((stderr, "oops!  (zstd final loop, error = %d, %s\n", err, ZSTD_getErrorName(err)));
++            retval = 2; goto uzzstd_cleanup_exit;
++        }
++        /* final flush of slide[] */
++        if ((retval = FLUSH(output.pos)) != 0)
++            goto uzzstd_cleanup_exit;
++        Trace((stderr, "final loop:  flushing %ld bytes\n",
++          (long)(output.pos)));
++        output.dst = (void *)redirSlide;
++        output.size = wsize;
++        output.pos = 0;
++    }
++
++    G.inptr += input.pos;
++    G.incnt -= G.inptr - G.inbuf;       /* reset for other routines */
++
++uzzstd_cleanup_exit:
++    ZSTD_freeDCtx(dctx);
++
++    return retval;
++} /* end function UZzstd_decompress() */
++#endif /* USE_ZSTD */
+diff --git a/fileio.c b/fileio.c
+index 1b98e7d..53b2898 100644
+--- a/fileio.c
++++ b/fileio.c
+@@ -673,7 +673,7 @@ int readbyte(__G)   /* refill inbuf and return a byte if available, else EOF */
+ 
+ 
+ 
+-#if defined(USE_ZLIB) || defined(USE_BZIP2)
++#if defined(USE_ZLIB) || defined(USE_BZIP2) || defined(USE_ZSTD)
+ 
+ /************************/
+ /* Function fillinbuf() */
+@@ -703,7 +703,7 @@ int fillinbuf(__G) /* like readbyte() except returns number of bytes in inbuf */
+ 
+ } /* end function fillinbuf() */
+ 
+-#endif /* USE_ZLIB || USE_BZIP2 */
++#endif /* USE_ZLIB || USE_BZIP2 || USE_ZSTD*/
+ 
+ 
+ 
+diff --git a/globals.h b/globals.h
+index 09bab87..7e689ad 100644
+--- a/globals.h
++++ b/globals.h
+@@ -146,6 +146,10 @@
+ #  include "bzlib.h"
+ #endif
+ 
++#ifdef USE_ZSTD
++#  include "zstd.h"
++#endif
++
+ 
+ /*************/
+ /*  Globals  */
+diff --git a/list.c b/list.c
+index a688a3e..0289296 100644
+--- a/list.c
++++ b/list.c
+@@ -121,7 +121,7 @@ int list_files(__G)    /* return PK-type error code */
+     static ZCONST char Far method[NUM_METHODS+1][8] =
+         {"Stored", "Shrunk", "Reduce1", "Reduce2", "Reduce3", "Reduce4",
+          "Implode", "Token", "Defl:#", "Def64#", "ImplDCL", "BZip2",
+-         "LZMA", "Terse", "IBMLZ77", "WavPack", "PPMd", "Unk:###"};
++         "LZMA", "Terse", "IBMLZ77", "zstd", "WavPack", "PPMd", "Unk:###"};
+ 
+ 
+ 
+diff --git a/unix/Makefile b/unix/Makefile
+index 6c51d1c..8cd540a 100644
+--- a/unix/Makefile
++++ b/unix/Makefile
+@@ -573,6 +573,14 @@ generic_bz2:	unix_make
+ 	 L_BZ2="-lbz2" LIBBZ2="$(IZ_OUR_BZIP2_DIR)/libbz2.a" \
+ 	 CC_BZ="$(CC)" CFLAGS_BZ="$(CFLAGS)"
+ 
++# Generic unzip and funzip target using either shared or static libzstd for
++# zstd compression method.
++
++generic_zstd:	unix_make
++	@echo\
++ "This target assumes libzstd (libzstd.a or libzstd.so.*) is already installed."
++	$(MAKE) unzip funzip CF="$(CF) -DUSE_ZSTD" LF2="-lzstd $(LF2)"
++
+ # Generic unzip and funzip target using either shared or static zlib for
+ # inflate rather than the original UnZip version.  (libz was libgz prior
+ # to 0.94)  Need to figure out how to force unzipsfx to use static libz.
+diff --git a/unzip.c b/unzip.c
+index 1ef4be4..ff4f996 100644
+--- a/unzip.c
++++ b/unzip.c
+@@ -531,6 +531,10 @@ static ZCONST char Far ZipInfoUsageLine3[] = "miscellaneous options:\n\
+      static ZCONST char Far UseBZip2[] =
+      "USE_BZIP2 (PKZIP 4.6+, using bzip2 lib version %s)";
+ #  endif
++#  ifdef USE_ZSTD
++     static ZCONST char Far UseZstd[] =
++     "USE_ZSTD (PKZIP 6.3+, using zstd lib version %s)";
++#  endif
+ #  ifdef VMS_TEXT_CONV
+      static ZCONST char Far VmsTextConv[] = "VMS_TEXT_CONV";
+ #  endif
+@@ -2660,6 +2664,13 @@ static void show_version_info(__G)
+           (char *)(slide+256)));
+         ++numopts;
+ #endif
++#ifdef USE_ZSTD
++        sprintf((char *)(slide+256), LoadFarStringSmall(UseZstd),
++          ZSTD_versionString());
++        Info(slide, 0, ((char *)slide, LoadFarString(CompileOptFormat),
++          (char *)(slide+256)));
++        ++numopts;
++#endif
+ #ifdef VMS_TEXT_CONV
+         Info(slide, 0, ((char *)slide, LoadFarString(CompileOptFormat),
+           LoadFarStringSmall(VmsTextConv)));
+diff --git a/unzpriv.h b/unzpriv.h
+index 6fa131a..29834db 100644
+--- a/unzpriv.h
++++ b/unzpriv.h
+@@ -676,9 +676,12 @@
+ /*  Defines  */
+ /*************/
+ 
++#define UNZIP_ZSTDVERS  63
+ #define UNZIP_BZ2VERS   46
+ #ifdef ZIP64_SUPPORT
+-# ifdef USE_BZIP2
++# ifdef USE_ZSTD
++#  define UNZIP_VERSION   UNZIP_ZSTDVERS
++# elif defined(USE_BZIP2)
+ #  define UNZIP_VERSION   UNZIP_BZ2VERS
+ # else
+ #  define UNZIP_VERSION   45
+@@ -1703,9 +1706,10 @@
+ #define LZMAED           14
+ #define IBMTERSED        18
+ #define IBMLZ77ED        19
++#define ZSTDED           93
+ #define WAVPACKED        97
+ #define PPMDED           98
+-#define NUM_METHODS      17     /* number of known method IDs */
++#define NUM_METHODS      18     /* number of known method IDs */
+ /* don't forget to update list.c (list_files()), extract.c and zipinfo.c
+  * appropriately if NUM_METHODS changes */
+ 
+@@ -2446,6 +2450,9 @@ int    huft_build                OF((__GPRO__ ZCONST unsigned *b, unsigned n,
+    int    UZbunzip2              OF((__GPRO));                  /* extract.c */
+    void   bz_internal_error      OF((int bzerrcode));           /* ubz2err.c */
+ #endif
++#ifdef USE_ZSTD
++   int    UZzstd_decompress      OF((__GPRO));                  /* extract.c */
++#endif
+ 
+ /*---------------------------------------------------------------------------
+     Internal API functions (only included in DLL versions):
+diff --git a/zipinfo.c b/zipinfo.c
+index cb7e08d..a88654c 100644
+--- a/zipinfo.c
++++ b/zipinfo.c
+@@ -208,6 +208,7 @@ static ZCONST char Far MthdBZip2[] = "bzipped";
+ static ZCONST char Far MthdLZMA[] = "LZMA-ed";
+ static ZCONST char Far MthdTerse[] = "tersed (IBM)";
+ static ZCONST char Far MthdLZ77[] = "LZ77-compressed (IBM)";
++static ZCONST char Far MthdZstd[] = "zstd-ed";
+ static ZCONST char Far MthdWavPack[] = "WavPacked";
+ static ZCONST char Far MthdPPMd[] = "PPMd-ed";
+ 
+@@ -1075,7 +1076,8 @@ static int zi_long(__G__ pEndprev, error_in_archive)
+     static ZCONST char Far *method[NUM_METHODS] = {
+         MthdNone, MthdShrunk, MthdRedF1, MthdRedF2, MthdRedF3, MthdRedF4,
+         MthdImplode, MthdToken, MthdDeflate, MthdDeflat64, MthdDCLImplode,
+-        MthdBZip2, MthdLZMA, MthdTerse, MthdLZ77, MthdWavPack, MthdPPMd
++        MthdBZip2, MthdLZMA, MthdTerse, MthdLZ77, MthdZstd, MthdWavPack,
++        MthdPPMd
+     };
+     static ZCONST char Far *dtypelng[4] = {
+         DeflNorm, DeflMax, DeflFast, DeflSFast
+@@ -1962,8 +1964,8 @@ static int zi_short(__G)   /* return PK-type error code */
+ #endif
+     static ZCONST char Far method[NUM_METHODS+1][5] = {
+         "stor", "shrk", "re:1", "re:2", "re:3", "re:4", "i#:#", "tokn",
+-        "def#", "d64#", "dcli", "bzp2", "lzma", "ters", "lz77", "wavp",
+-        "ppmd", "u###"
++        "def#", "d64#", "dcli", "bzp2", "lzma", "ters", "lz77", "zstd",
++        "wavp", "ppmd", "u###"
+     };
+ 
+ 
