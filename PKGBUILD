@@ -16,14 +16,14 @@ url="https://github.com/uwzis/gpu-passthrough-manager"
 license=('GPL')
 groups=()
 depends=(python3)
-makedepends=('jsoncpp' 'glib2'  'gtk3' 'gcc')
+makedepends=('git' 'jsoncpp' 'glib2'  'gtk3' 'gcc')
 install=
 source=("git+$url")
 md5sums=('SKIP')
 
 build() {
 	cd ${pkgname}
-	sh ./Build.sh
+	make
 	
 }
 
@@ -38,7 +38,9 @@ package() {
 	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/style.css" "${pkgdir}/usr/share/gpu-passthrough-manager"
 	install -Dm755 "${srcdir}/gpu-passthrough-manager/GPUPM" "${pkgdir}/usr/share/gpu-passthrough-manager/GPUPM"
 	install -Dm755 "${srcdir}/gpu-passthrough-manager/tools/Reboot" "${pkgdir}/usr/share/gpu-passthrough-manager/tools/Reboot"
-
+	rm -r "${pkgdir}/usr/share/gpu-passthrough-manager/tools/reboot.c"
+	rm -r "${pkgdir}/usr/share/gpu-passthrough-manager/tools/apphandler.c"
+	
 	chmod +x "${pkgdir}/usr/share/gpu-passthrough-manager/GPUPM"
 	chmod +x "${pkgdir}/usr/share/gpu-passthrough-manager/tools/Reboot"
 

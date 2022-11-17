@@ -5,6 +5,7 @@ pkgbase = gpu-passthrough-manager
 	url = https://github.com/uwzis/gpu-passthrough-manager
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = jsoncpp
 	makedepends = glib2
 	makedepends = gtk3
