@@ -1,0 +1,14 @@
+post_install() {
+	echo " ==> Add the Mullvad daemon to system startup wtih 'rc-update add mullvad-daemon default'"
+	echo " ==> Add the Mullvad early boot network blocker to boot with 'rc-update add mullvad-early-boot-blocking boot'"
+	echo " ==> Start the mullvad daemon now with 'rc-service mullvad-daemon start'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure you run 'rc-update del mullvad-daemon default'"
+	echo " ==> Make sure you run 'rc-update del mullvad-early-boot-blocking boot'"
+}

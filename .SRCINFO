@@ -1,0 +1,18 @@
+pkgbase = mullvad-vpn-openrc
+	pkgdesc = mullvad openrc service
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mullvad-vpn-openrc
+	arch = any
+	license = GPL
+	depends = openrc
+	depends = mullvad-vpn
+	source = mullvad-daemon.rc
+	source = mullvad-early-boot-blocking.rc
+	source = mullvad.install
+	sha256sums = 30d4add10f0673de2fb49ca017fe6d6c939262acf6369138fdda14eae697923a
+	sha256sums = 4127f351a7eea23b6a9cd2012efa7600683aeb56d7e32b62d627415fcd3c10ce
+	sha256sums = 9e81c3f1b97d3c26a4a5d5216d18147cf9b0307b4208cfaa441f4700975f6cde
+
+pkgname = mullvad-vpn-openrc
+	install = mullvad.install

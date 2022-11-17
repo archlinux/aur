@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# OpenRC service unit file for the Mullvad VPN daemon
+
+depend() {
+    need net
+    after mullvad-early-boot-blocking
+}
+
+export "MULLVAD_RESOURCE_DIR=/opt/Mullvad VPN/resources/"
+name=$RC_SVCNAME
+description="Mullvad VPN daemon"
+supervisor="supervise-daemon"
+command="/usr/bin/mullvad-daemon"
+command_args="-v --disable-stdout-timestamps"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background=true
