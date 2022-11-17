@@ -3,33 +3,84 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=109.0a1+20221115.1+hf130aa968d7e
+pkgver=109.0a1+20221117.1+hefbd04cb0748
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
-arch=(x86_64)
-license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/channel/#nightly"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm python
-             lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
-             mercurial)
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland')
-options=(!emptydirs !makeflags !strip !lto !debug)
+arch=(x86_64)
+license=(
+  GPL
+  LGPL
+  MPL
+)
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  libpulse
+  libxt
+  mime-types
+  nss
+  ttf-font
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  imake
+  inetutils
+  jack
+  lld
+  llvm
+  mercurial
+  mesa
+  nasm
+  nodejs
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  xorg-server-xvfb
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+options=(
+  !debug
+  !emptydirs
+  !lto
+  !makeflags
+  !strip
+)
 _repo=https://hg.mozilla.org/mozilla-central
-source=("hg+$_repo"
-        firefox-install-dir.patch
-        $pkgname.desktop identity-icons-brand.svg)
+source=(
+  hg+$_repo
+  $pkgname.desktop
+  identity-icons-brand.svg
+  firefox-install-dir.patch
+)
+validpgpkeys=(
+  '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
+)
 sha256sums=('SKIP'
-            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
             '7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97'
-            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
+b2sums=('SKIP'
+        '3a7c8c5123349ea777ddb8f2f219f6048ce1f213b0a65edaad1fab42380be4e7b5cd27e4667f43786efeb13be827174936c3282607276f167b6eee0fd530af2a'
+        '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -67,6 +118,8 @@ pkgver() {
 prepare() {
   mkdir mozbuild
   cd mozilla-central
+
+  # Change install dir from 'firefox' to 'firefox-nightly'
   patch -Np1 -i ../firefox-install-dir.patch
 
   echo -n "$_google_api_key" >google-api-key
@@ -230,4 +283,4 @@ END
   fi
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
