@@ -1,12 +1,13 @@
 pkgbase = openmrac-data
 	pkgdesc = Data for OpenMRac
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Franticware/OpenMRac-data
 	arch = x86_64
 	arch = aarch64
 	license = CC0
 	makedepends = sox
+	depends = gsm
 	source = openmrac-data-1.0::https://github.com/Franticware/OpenMRac-data/archive/refs/tags/v1.0.tar.gz
 	sha256sums = 16e2f4c8cb3a499a6738de6d8dc384628297677734761fb571e3cd83b93dc0f3
 
