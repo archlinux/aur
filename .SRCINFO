@@ -1,12 +1,12 @@
 pkgbase = shroud
 	pkgdesc = A simple command-line secret manager using GNU Guile
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dthompson.us/projects/shroud.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = guile
+	depends = guile2.0
 	depends = gnupg
 	depends = xclip
 	source = https://files.dthompson.us/shroud/shroud-0.1.1.tar.gz
@@ -15,4 +15,3 @@ pkgbase = shroud
 	sha256sums = 427dc6f5cc4185c2138ba454d7a822d3f99853e0881cfb3361a9ac8588fe9b18
 
 pkgname = shroud
-
