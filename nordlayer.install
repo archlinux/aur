@@ -27,8 +27,8 @@ post_install() {
   systemctl enable nordlayer.service
 
   # Restart service now
-  systemctl restart nordlayer.socket
-  systemctl restart nordlayer.service
+  systemctl start nordlayer.socket
+  systemctl start nordlayer.service
 
 }
 
