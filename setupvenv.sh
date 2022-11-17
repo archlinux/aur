@@ -15,5 +15,5 @@ python3.9 -m venv "${dir}"
 source "${dir}/bin/activate"
 
 set +e
-pip install -U pip hatch wheel || true
+pip install -U pip || true
 
