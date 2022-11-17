@@ -1,18 +1,18 @@
 pkgbase = sharedown
 	pkgdesc = Electron application to download Sharepoint videos (especially meant for students)
-	pkgver = 5.1.1
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/kylon/Sharedown
 	arch = x86_64
 	license = gpl
 	depends = ffmpeg
 	depends = yt-dlp
-	noextract = sharedown-5.1.1.AppImage
+	noextract = sharedown-5.2.1.AppImage
 	options = !strip
-	source_x86_64 = https://github.com/kylon/Sharedown/releases/download/5.1.1/sharedown-5.1.1.AppImage
+	source_x86_64 = https://github.com/kylon/Sharedown/releases/download/5.2.1/sharedown-5.2.1.AppImage
 	source_x86_64 = sharedown.desktop
 	source_x86_64 = icon.png
-	sha256sums_x86_64 = c7f6d6941c1a07f64e3d40f42d98f9056a85918c44032e5bd5322e959bdff7c5
+	sha256sums_x86_64 = f2e77905ef0ab65f51e76a95dabeb14ef44d897558a22ea71b2dbbeaec82f759
 	sha256sums_x86_64 = 0586bf9de90587649c43c58b8665d97ac41fde8a64e5e239bef07099dbd1e255
 	sha256sums_x86_64 = 42cd3a7ed38456d161af85013b25237c982013204f1c578021eb341c7c864dd7
 
