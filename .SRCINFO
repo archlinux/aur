@@ -53,6 +53,7 @@ pkgbase = waterfox-g-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
+	options = !lto
 	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G5.1
 	source = waterfox-g.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/waterfox-g.desktop
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/distribution.ini

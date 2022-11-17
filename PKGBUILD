@@ -15,7 +15,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi'
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
-options=('!emptydirs' '!makeflags' 'zipman')
+options=('!emptydirs' '!makeflags' 'zipman' '!lto')
 _filesrev=8b87af25b6c74fa1926f6fe10cb7833e720c88a5
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
