@@ -1,0 +1,13 @@
+pkgbase = discord-reactor-git
+	pkgdesc = Command-line tool to turn a sentence into Discord reaction messages
+	pkgver = r14.ae82491
+	pkgrel = 1
+	url = https://github.com/TechnicJelle/DiscordReactor
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = python
+	source = discord-reactor::git+https://github.com/TechnicJelle/DiscordReactor.git
+	sha256sums = SKIP
+
+pkgname = discord-reactor-git
