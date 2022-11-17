@@ -1,0 +1,14 @@
+pkgbase = git-workspace
+	pkgdesc = Sync personal and work git repositories from multiple providers
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/orf/git-workspace
+	arch = x86_64
+	license = custom:none
+	makedepends = cargo
+	depends = git
+	options = !lto
+	source = git-workspace-1.0.3.tar.gz::https://github.com/orf/git-workspace/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = dbbca1194990203049e6e0c95b2e8242a61e2be1d37261ae9168f0c02a309935
+
+pkgname = git-workspace
