@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/wuhgit/CustomPinyinDictionary"
 license=('GFDL' 'CCPL:by-sa')
 source=("https://github.com/wuhgit/${_reponame}/releases/download/assets/CustomPinyinDictionary_Fcitx_${pkgver}.tar.gz")
-sha256sums=('47d868b48942314b556d640f6f64969938fcb684ab9fdf3bc8abb865c681b656')
+sha256sums=('1e6e7d4c7a7b21f51590139d38bdbc2d359d224fdbda1e72d35687a806db91ac')
 
 package() {
   install -Dm644 CustomPinyinDictionary_Fcitx.dict -t ${pkgdir}/usr/share/fcitx5/pinyin/dictionaries/
