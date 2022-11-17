@@ -1,4 +1,4 @@
-# Maintainer: Wojciech Kępka (wojciech@wkepka.dev) 
+# Maintainer: Robin Jadoul (aur@ur4ndom.dev) 
 pkgname=helix-git
 _pkgname=helix
 pkgver=r3147.eef9eff2
