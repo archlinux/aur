@@ -1,0 +1,17 @@
+pkgbase = python38-pycparser
+	pkgdesc = C parser in Python 3.8
+	pkgver = 2.21
+	pkgrel = 00
+	url = https://github.com/eliben/pycparser
+	arch = any
+	license = BSD
+	depends = python38
+	noextract = pycparser-2.21-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/62/d5/5f610ebe421e85889f2e55e33b7f9a6795bd982198517d912eb1c76e1a53/pycparser-2.21-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 763d265dfc20860dfbb4c81458400d03
+	md5sums = 9761c3ffee7ba99c60dca0408fd3262b
+
+pkgname = python38-pycparser
