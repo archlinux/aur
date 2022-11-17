@@ -1,7 +1,7 @@
 pkgbase = vlfeat
 	pkgdesc = An open library of computer vision algorithms
 	pkgver = 0.9.21
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.vlfeat.org/
 	arch = x86_64
 	license = BSD
@@ -25,4 +25,3 @@ pkgname = octave-vlfeat
 	depends = gcc-libs
 	depends = vlfeat
 	depends = octave
-

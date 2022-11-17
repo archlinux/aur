@@ -3,7 +3,7 @@
 _pkgname=vlfeat
 pkgname=(vlfeat octave-vlfeat)
 pkgver=0.9.21
-pkgrel=9
+pkgrel=10
 pkgdesc='An open library of computer vision algorithms'
 arch=('x86_64')
 url='https://www.vlfeat.org/'
@@ -36,6 +36,8 @@ prepare() {
   # fix octave building, see https://github.com/vlfeat/vlfeat/issues/188
   mkdir -p "${srcdir}/${_pkgname}/toolbox/mex/octave/mexa64"
   sed -i '32,35d' "${srcdir}/${_pkgname}/toolbox/mexutils.h"
+  # fix gomp error
+  sed -i "s#-liomp5#-lgomp#g" ${srcdir}/${_pkgname}/make/matlab.mak
 }
 
 build() {
