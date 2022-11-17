@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-paperwm-git
 	license = GPL3
 	makedepends = git
 	depends = gnome-shell
-	source = git+https://github.com/paperwm/PaperWM#branch=gnome-42
+	source = git+https://github.com/paperwm/PaperWM#branch=develop
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-paperwm-git
