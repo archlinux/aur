@@ -21,6 +21,8 @@ makedepends=('git' 'cmake' 'llvm' 'nlohmann-json' 'librsvg' 'python')
 optdepends=(
   'imhex-patterns-git: ImHex base patterns'
 )
+provides=(imhex)
+conflicts=(imhex)
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git"
         "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
