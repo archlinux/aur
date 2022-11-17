@@ -1,15 +1,15 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=0.24.42
+pkgver=0.24.43
 _commit_glm=0d973b4
-_commit_glslang=42398c9
+_commit_glslang=f74f37c
 _commit_imgui=fd2a90e
 _commit_lz4=d443718
 _commit_miniz=a426483
 _commit_slang_binaries=5ed82af
-_commit_spirv_headers=36c0c15
-_commit_spirv_tools=60761de
+_commit_spirv_headers=85a1ed2
+_commit_spirv_tools=d49b34d
 _commit_tinyobjloader=d541711
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
@@ -27,7 +27,7 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/richgel999/miniz#commit=$_commit_miniz"
         "git+https://github.com/lz4/lz4#commit=$_commit_lz4"
         )
-sha1sums=('398eb9bf82b8740c795c666c10bcfb778ca58e1f'
+sha1sums=('6649ab1efdf59b46447a2ac952e5e1c82efa1f06'
           'SKIP'
           'SKIP'
           'SKIP'
