@@ -1,0 +1,1 @@
+java -Xmx4608M -jar /usr/share/universal-randomizer/PokeRandoZX.jar please-use-the-launcher
