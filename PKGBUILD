@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.0.2
+pkgver=5.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=3e2b1e0b838409a28cee52ecca149598ad037b6b
+_filesrev=8b87af25b6c74fa1926f6fe10cb7833e720c88a5
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
@@ -56,16 +56,11 @@ sha256sums=('SKIP'
             '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
             '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
             '4628d136c3beada292e83cd8e89502cac4aa3836851b34259a665582a7713978'
-            '7809875890a3d9dd8777808b8707a5bcc11217eaa12e69fbd28daf1877b1d3b4')
+            '3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a')
 
 prepare() {
 
   cd Waterfox
-
-  # Generate date and version for metadata file
-  export TODAY_DATE=$(date +%Y-%m-%d)
-  sed -i "s/__DATE__/$TODAY_DATE/g" ../waterfox-g.appdata.xml.in
-  sed -i "s/__VERSION__/$(<browser/config/version_display.txt)/g" ../waterfox-g.appdata.xml.in
 
   # Add patches
   patch -Np1 -i ../global_menu.patch
@@ -139,9 +134,11 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  LDFLAGS+=" -Wl,--no-keep-memory -Wl,--no-mmap-output-file"
-  export LDFLAGS
+  export LDFLAGS+=" -Wl,--no-keep-memory -Wl,--no-mmap-output-file"
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+
+  export WF_VERSION="G$pkgver"
+  echo "$WF_VERSION" > ./browser/config/version_display.txt
 
   # LTO needs more open files
   ulimit -n 4096
@@ -200,7 +197,7 @@ END
 #         sed -i "s|obj_LANG|obj_$locale|" ${PWD}/mozconfig_$locale
 #         export MOZCONFIG=${PWD}/mozconfig_$locale
 #         ./mach build config/nsinstall langpack-$locale
-#         cp -L ../obj_$locale/dist/linux-*/xpi/waterfox-g-$(<browser/config/version_display.txt).$locale.langpack.xpi \
+#         cp -L ../obj_$locale/dist/linux-*/xpi/waterfox-g-$WF_VERSION.$locale.langpack.xpi \
 #             ${PWD}/langpack-$locale@l10n.waterfox.net.xpi
 # ' -- {}
 }
@@ -245,11 +242,15 @@ END
   install -Dm644 $srcdir/distribution.ini \
     "$pkgdir/usr/lib/waterfox-g/distribution/distribution.ini"
 
+  install -Dm644 "$srcdir/vendor.js" "$pkgdir/usr/lib/waterfox-g/browser/defaults/preferences/vendor.js"
+
+  # Generate date and version for metadata file
+  export TODAY_DATE=$(date +%Y-%m-%d)
+  sed -i "s/__DATE__/$TODAY_DATE/g" ../waterfox-g.appdata.xml.in
+  sed -i "s/__VERSION__/G$pkgver/g" ../waterfox-g.appdata.xml.in
 
   install -Dm644 $srcdir/waterfox-g.appdata.xml.in \
     "$pkgdir/usr/share/metainfo/waterfox-g.appdata.xml"
-
-  install -Dm644 "$srcdir/vendor.js" "$pkgdir/usr/lib/waterfox-g/browser/defaults/preferences/vendor.js"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/waterfox-g" <<END

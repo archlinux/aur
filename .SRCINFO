@@ -1,6 +1,6 @@
 pkgbase = waterfox-g-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
-	pkgver = 5.0.2
+	pkgver = 5.1
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -53,25 +53,25 @@ pkgbase = waterfox-g-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G5.0.2
-	source = waterfox-g.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/waterfox-g.desktop
-	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/distribution.ini
-	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/vendor.js
-	source = waterfox-g.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/waterfox-g.1
-	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/syspref.js
-	source = waterfox-g.appdata.xml.in::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/waterfox-g.appdata.xml.in
-	source = global_menu.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/global_menu.patch
-	source = g-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/g-kde.patch
-	source = fis-csd-global-menu.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/fis-csd-global-menu.patch
-	source = nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/nongnome-proxies.patch
-	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/mozilla-ntlm-full-path.patch
-	source = glibc236.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/glibc236.patch
-	source = libavcodec58_91.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/libavcodec58_91.patch
-	source = fix-langpack-id.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/fix-langpack-id.patch
-	source = waterfox-branded-icons.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/waterfox-branded-icons.patch
-	source = fix-wayland-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/fix-wayland-build.patch
-	source = cbindgen-0.24.0.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/cbindgen-0.24.0.patch
-	source = mach-depends.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/3e2b1e0b838409a28cee52ecca149598ad037b6b/waterfox-g-kpe/patches/mach-depends.patch
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G5.1
+	source = waterfox-g.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/waterfox-g.desktop
+	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/distribution.ini
+	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/vendor.js
+	source = waterfox-g.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/waterfox-g.1
+	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/syspref.js
+	source = waterfox-g.appdata.xml.in::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/waterfox-g.appdata.xml.in
+	source = global_menu.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/global_menu.patch
+	source = g-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/g-kde.patch
+	source = fis-csd-global-menu.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/fis-csd-global-menu.patch
+	source = nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/nongnome-proxies.patch
+	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/mozilla-ntlm-full-path.patch
+	source = glibc236.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/glibc236.patch
+	source = libavcodec58_91.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/libavcodec58_91.patch
+	source = fix-langpack-id.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/fix-langpack-id.patch
+	source = waterfox-branded-icons.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/waterfox-branded-icons.patch
+	source = fix-wayland-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/fix-wayland-build.patch
+	source = cbindgen-0.24.0.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/cbindgen-0.24.0.patch
+	source = mach-depends.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/patches/mach-depends.patch
 	sha256sums = SKIP
 	sha256sums = 09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259
 	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
@@ -90,7 +90,7 @@ pkgbase = waterfox-g-kpe
 	sha256sums = 2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92
 	sha256sums = 46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25
 	sha256sums = 4628d136c3beada292e83cd8e89502cac4aa3836851b34259a665582a7713978
-	sha256sums = 7809875890a3d9dd8777808b8707a5bcc11217eaa12e69fbd28daf1877b1d3b4
+	sha256sums = 3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a
 
 pkgname = waterfox-g-kpe
 	optdepends = networkmanager: Location detection via available WiFi networks
@@ -100,4 +100,4 @@ pkgname = waterfox-g-kpe
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = kwaterfoxhelper: KDE Plasma Integration
-	provides = waterfox-g=5.0.2
+	provides = waterfox-g=5.1
