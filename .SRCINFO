@@ -1,5 +1,5 @@
 pkgbase = electronic-wechat-uos-bin
-	pkgdesc = Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用Electron构建, 利用UOS请求头修复了登陆问题.
+	pkgdesc = Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron, 利用UOS请求头修复了登陆问题.
 	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/Riceneeder/electronic-wechat
