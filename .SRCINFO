@@ -11,6 +11,7 @@ pkgbase = lokinet
 	makedepends = git
 	makedepends = python
 	makedepends = systemd
+	makedepends = nlohmann-json
 	depends = libuv
 	depends = libsodium
 	depends = curl
