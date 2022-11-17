@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=0.21.0.30241.g818a8add04
+pkgver=0.21.0.31043.g7a8a453746
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -25,7 +25,6 @@ python-pivy
 python-ply
 qt5-svg
 qt5-tools
-qt5-webkit
 qt5-webengine
 qt5-webchannel
 qt5-x11extras
