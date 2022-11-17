@@ -3,37 +3,33 @@
 
 pkgname=deskreen
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Turns any device with a web browser to a second screen for your computer'
 arch=('aarch64' 'x86_64' 'i686')
 url='https://deskreen.com'
 license=('AGPL3')
-makedepends=('yarn')
+makedepends=('nodejs>=12.22.12' 'npm' 'yarn')
 conflicts=("$pkgname-bin")
-source=("$pkgname-source.tar.gz::https://github.com/pavlobu/$pkgname/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pavlobu/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-noextract=("$pkgname-source.tar.gz")
+noextract=("$pkgname-$pkgver.tar.gz")
 b2sums=('bef83c836ac722a854b524bc829b8e2f5a395a10d8d5794a148f0ef7f7a9f1292f99e99f219b10a9d550986d224c744047288a62fa37dcc062bebdbe42684e65'
         '96072794fba957f5d9258778f41595c00e8ea3b866b9692f64282212254139c2c85e4b9ca516d4f6efe1a1deb7fc1c269ec09f86c98debe04e4507cecc79457e')
 
 prepare() {
-    mkdir -p "$pkgname-source"
-    bsdtar -xpf "$pkgname-source.tar.gz" --strip-components=1 -C "$pkgname-source/"
+    mkdir -p "$pkgname-$pkgver"
+    bsdtar -xpf "$pkgname-$pkgver.tar.gz" --strip-components=1 -C "$pkgname-$pkgver/"
 }
 
 build() {
-    ### START BUILD PATCHES
-    # [LAZY FIX] envelope routines::initialization error -> https://lists.archlinux.org/archives/list/arch-dev-public@lists.archlinux.org/thread/IZT6ADWS5YUUNC7IFBUVYIB7O4QIJGZV/
+    # envelope routines::initialization error -> https://github.com/webpack/webpack/issues/14532
     export NODE_OPTIONS=--openssl-legacy-provider
-    ### END BUILD PATCHES
 
-    cd "$srcdir/$pkgname-source/"
+    cd "$srcdir/$pkgname-$pkgver/"
 
-    SKIP_PREFLIGHT_CHECK=true yarn install --frozen-lockfile
-    cd app/client/
-    SKIP_PREFLIGHT_CHECK=true yarn install --frozen-lockfile
-    cd ../../
-    SKIP_PREFLIGHT_CHECK=true yarn build
+    cd app/client/ && yarn install --frozen-lockfile
+    cd ../../ && yarn install --frozen-lockfile
+    yarn build
 
     case "$CARCH" in
         'aarch64')
@@ -49,16 +45,19 @@ build() {
             mv 'release/linux-ia32-unpacked/' 'release/linux-unpacked/'
             ;;
     esac
+
+    # This increases the memory usage quite a lot due to electron, it is not recommended to uncomment, yet.
+    #upx "$srcdir/$pkgname-$pkgver/release/linux-unpacked/deskreen" 2> /dev/null || true
 }
 
 package() {
     install -d "$pkgdir/opt/$pkgname"
-    cp -r "$srcdir/$pkgname-source/release/linux-unpacked/"* "$pkgdir/opt/$pkgname/"
-    cp "$srcdir/$pkgname-source/resources/icon.png" "$pkgdir/opt/$pkgname/"
+    cp -r "$srcdir/$pkgname-$pkgver/release/linux-unpacked/"* "$pkgdir/opt/$pkgname/"
+    cp "$srcdir/$pkgname-$pkgver/resources/icon.png" "$pkgdir/opt/$pkgname/"
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/$pkgname-source/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
