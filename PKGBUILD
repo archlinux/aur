@@ -2,7 +2,7 @@
 pkgname=save3ds_fuse-git
 _reponame=${pkgname%_fuse-git}
 pkgver=1.3.0.r14.g07e3d37
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract/Import/FUSE for 3DS save/extdata/database"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/wwylele/save3ds"
@@ -40,5 +40,6 @@ check() {
 
 package() {
     cd "$srcdir/${_reponame}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "LICENSE-MIT"
+    install -Dm755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
 }
