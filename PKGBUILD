@@ -7,8 +7,11 @@ pkgrel=1
 _mod=''
 pkgdesc='NASA high energy astrophysics library'
 depends=('libxpm' 'libidn' 'ncurses' 'readline')
-makedepends=('glibc' 'gcc-fortran' 'inetutils' 'perl' 'python-numpy')
-optdepends=("python-numpy: python binding")
+makedepends=('glibc' 'gcc-fortran' 'inetutils' 'perl' 'python-astropy' 'python-scipy')
+optdepends=(
+  "python-astropy: python binding"
+  "python-numpy: python binding"
+)
 url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
 license=('NASA' 'GPL')
