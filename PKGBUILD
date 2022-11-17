@@ -9,6 +9,7 @@ arch=('any')
 url=https://github.com/home-assistant/home-assistant-cli
 license=('Apache')
 depends=('python' 'python-requests' 'python-netdisco' 'python-click' 'python-click-log' 'python-tabulate' 'python-jsonpath-ng' 'python-jinja' 'python-dateparser' 'python-regex' 'python-ruamel-yaml' 'python-aiohttp' 'python-setuptools')
+conflicts=('home-assistant-cli')
 source=("https://files.pythonhosted.org/packages/source/h/homeassistant-cli/$_name-$pkgver.tar.gz")
 sha256sums=("4e74591d6400c7b1ba93e8967d39ce00c2789523508406c6cbc8fd712ff6710e")
 

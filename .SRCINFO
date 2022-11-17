@@ -18,6 +18,7 @@ pkgbase = python-homeassistant-cli
 	depends = python-ruamel-yaml
 	depends = python-aiohttp
 	depends = python-setuptools
+	conflicts = home-assistant-cli
 	source = https://files.pythonhosted.org/packages/source/h/homeassistant-cli/homeassistant-cli-0.9.4.tar.gz
 	sha256sums = 4e74591d6400c7b1ba93e8967d39ce00c2789523508406c6cbc8fd712ff6710e
 
