@@ -27,6 +27,7 @@ pkgbase = freecad-git
 	depends = pyside2-tools
 	depends = python-yaml
 	depends = python-matplotlib
+	depends = python-packaging
 	depends = python-pivy
 	depends = python-ply
 	depends = qt5-svg

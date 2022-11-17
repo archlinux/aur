@@ -20,6 +20,7 @@ pyside2
 pyside2-tools
 python-yaml
 python-matplotlib
+python-packaging
 python-pivy
 python-ply
 qt5-svg
