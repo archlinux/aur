@@ -3,9 +3,9 @@
 
 _java_ver=17
 _jdkname="zulu-jre-fx"
-_zulu_build="${_java_ver}.36.13-ca"
+_zulu_build="${_java_ver}.38.21-ca"
 pkgname="zulu-jre-fx-bin"
-pkgver="${_java_ver}.0.4"
+pkgver="${_java_ver}.0.5"
 pkgrel=1
 pkgdesc='Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=(
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-fx-jre${pkgver}-linux_x64"
 source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('f6251649ac5c1ca6d47df6ad43d224b2869a59cc47eb5fabf3480d02a95eb5cc')
+sha256sums=('50c9a14c44823db4e789e1ac7b2253f0194f9177e11c9fe6648089be3d611c97')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
