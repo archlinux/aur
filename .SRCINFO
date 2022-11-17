@@ -1,15 +1,14 @@
 pkgbase = monitorfs
 	pkgdesc = Monitor filesystem, Do something on some filesystem event
-	pkgver = v0.0.3.r2.ge34dfd8
+	pkgver = v0.0.4.r0.g90fe838
 	pkgrel = 1
 	url = https://github.com/vcup/MonitorFileSystem
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = git
+	makedepends = dotnet-sdk
 	source = git+https://github.com/vcup/MonitorFileSystem
-	source = https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
 	sha256sums = SKIP
-	sha256sums = 18450c72b35727b13b9b8a4191c2c95d7fbd3f4a0091ab71edcfb16eb57e5494
 
 pkgname = monitorfs
