@@ -1,6 +1,6 @@
 pkgbase = r-data.table
-	pkgdesc = Extension of 'data.frame'
-	pkgver = 1.14.4
+	pkgdesc = Extension of ‘data.frame’
+	pkgver = 1.14.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=data.table
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = r-data.table
 	optdepends = r-xts
 	optdepends = r-yaml
 	optdepends = r-zoo>=1.8.1
-	source = https://cran.r-project.org/src/contrib/data.table_1.14.4.tar.gz
-	b2sums = f402d25b930ae35f40058b5923fb099f94d0229d9c736750967b371c513b68b6510224c4850c6757a2c13adc70ecdcbeb416a6c09f29684616c4dcbe92b795f5
+	source = https://cran.r-project.org/src/contrib/data.table_1.14.6.tar.gz
+	b2sums = 0fcdb2dd2f3871ec2718de94bb3cace67859127665b43f77f56c5cc9dc5b42fcfdf4a4e40224bb8ead4706409b5acff5c97e8f26bba9cdf4b5783b099bc44fdd
 
 pkgname = r-data.table
