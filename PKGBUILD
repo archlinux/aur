@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym-wallet
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Wallet)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ _datadir="src-tauri/target/release/bundle/deb/nym-wallet_${pkgver}_amd64/data"
 
 prepare() {
     # NOTE: Build process requires full git repo
-    git clone https://github.com/nymtech/nym.git -b v$pkgver
+    git clone https://github.com/nymtech/nym.git -b nym-wallet-v$pkgver
     sed -ri 's/"targets": .+,/"targets": ["deb"],/' nym/nym-wallet/src-tauri/tauri.conf.json
 }
 
