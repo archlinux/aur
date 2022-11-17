@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=7.82b
+pkgver=7.82c
 pkgrel=0
 epoch=50
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -37,10 +37,10 @@ desktops=(
         "JFlashSPIExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('2bc3e34882d0376f4b5afa50e2c9f8ef')
-md5sums_i686=('df345548667a56be15b16b9b1c41b1a8')
-md5sums_aarch64=('d1585dacf764edab43288f66cdb12a63')
-md5sums_armv7h=('f85140f26b67c8d48f8429abfaf8a575')
+md5sums_x86_64=('947b37e42618fe4cbc1e3da923433914')
+md5sums_i686=('20938f7879c2ca485e7d448b6ebeee7f')
+md5sums_aarch64=('65d4cccf56ec79e7b19ee3730a042d38')
+md5sums_armv7h=('e326a32481b9f4ed6ca9074686bcc651')
 
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
