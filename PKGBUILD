@@ -3,8 +3,8 @@
 
 pkgname=mullvad-vpn-openrc
 pkgver=1.0
-pkgrel=1
-pkgdesc="mullvad openrc service"
+pkgrel=2
+pkgdesc="OpenRC service for Mullvad VPN"
 arch=('any')
 url='https://aur.archlinux.org/packages/mullvad-vpn-openrc'
 license=('GPL')
