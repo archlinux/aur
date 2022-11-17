@@ -1,29 +1,42 @@
-# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+#
+# AUR PKGBUILD for "bleeding edge" codelite from github repo
+#
+# Maintainer: Uffe Jakobsen <uffe _at_ uffe _dot_ org>
+# Past Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 # Contributor: Pyro Devil <p dot devil at gmail dot com>
+#
+# NOTES:
+#
+# Using Make as long as Ninja cannot be resource-comtrolled from makepkg.conf (like Make can)
+# System with many cores but little memory will be (OOM) killed by Ninja creating too many jobs
+#
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=14.0.2.r99.g84ee59970
+pkgver=16.5.0.r18.gdfde6e967
 pkgrel=1
-pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
+pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.codelite.org/"
 license=('GPL')
-makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
+
+makedepends=('pkgconfig' 'cmake' 'clang' 'git')
+
 depends=(
   'wxgtk3'
   'libedit'
   'libssh'
   'mariadb-libs'
   'ncurses'
-  'xterm'
-  'wget'
-  'curl'
-  'python2'
   'clang'
   'lldb'
   'hunspell'
+  #'xterm'
+  #'wget'
+  #'curl'
+  #'python2'
 )
+
 optdepends=(
   'graphviz: callgraph visualization'
   'cscope: CScope Integration for CodeLite'
@@ -32,18 +45,31 @@ optdepends=(
   'gdb: debugger'
   'valgrind: debugger'
 )
+
 conflicts=('codelite' 'codelite-bin')
 provides=('codelite')
+
 source=(
-  git://github.com/eranif/codelite.git
+  ${_gitname}::git+https://github.com/eranif/codelite.git
   http://repos.codelite.org/wxCrafterLibs/wxgui.zip
 )
-md5sums=(
+
+sha256sums=(
   'SKIP'
   'SKIP'
 )
+
 noextract=('wxgui.zip')
 
+#
+#
+#
+
+BUILD_DIR="_build.out"
+
+#
+#
+#
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -52,27 +78,46 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  mkdir -p build
+  git submodule update --init
+
+  # Apply patches here:
+  # patch -p0 < "${startdir}/codelite-feature.patch"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}/build"
+  cd "${srcdir}/${_gitname}"
+
+  mkdir -p "${BUILD_DIR}"
 
   CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
+  export CXXFLAGS
 
-  cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_WX_CONFIG=/usr/bin/wx-config-gtk3 \
-    -DENABLE_LLDB=1 -DWITH_MYSQL=0 \
+  #WX_CONFIG="/usr/bin/wx-config-gtk3"
+  WX_CONFIG="wx-config"
+
+  # generate
+  cmake -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    ..
+    -DWITH_WX_CONFIG="${WX_CONFIG}" \
+    -DENABLE_LLDB=1 \
+    -DWITH_MYSQL=0 \
+    -B "${BUILD_DIR}" \
+    -S .
 
-  ninja
+  # build
+  make -s -C "${BUILD_DIR}"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}/build"
+  cd "${srcdir}/${_gitname}"
 
-  DESTDIR="${pkgdir}" ninja install
-  install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
+  make -s -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
+
   install -m 644 -D "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/codelite/LICENSE"
+  install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
 }
+
+#
+# EOF
+#
