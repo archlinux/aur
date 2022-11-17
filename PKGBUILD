@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=vertica-client
-pkgver=10.1.1
+pkgver=12.0.2
 _pkgver=${pkgver}-0
 pkgrel=1
 pkgdesc="Client for the Vertica Analytic Database"
@@ -10,10 +10,10 @@ url="https://www.vertica.com/"
 license=('custom: commercial')
 PKGEXT=.pkg.tar
 install=${pkgname}.install
-depends=(java-runtime gcc-libs)
+depends=(java-runtime gcc-libs libxcrypt-compat)
 optdepends=('java-environment: Needed for the JDBC client')
-source=(https://www.vertica.com/client_drivers/10.1.x/${_pkgver}/vertica-client-${_pkgver}.x86_64.tar.gz LICENSE)
-sha256sums=('fdd7c5238146bceac3db4bedd16b5aa4b1038c51f3e66c0b9fcf25464d2667d9'
+source=(https://www.vertica.com/client_drivers/12.0.x/${_pkgver}/vertica-client-${_pkgver}.x86_64.tar.gz LICENSE)
+sha256sums=('a1e3ee0348ae699509a1df33beeb6bccca6c4083c446d56e23a337c5c76be53f'
             '6e0cd8aec08647e568b34d70754bfa354106d610873f753ae66d987a0ae0a796')
 
 if test "$CARCH" == i686; then
