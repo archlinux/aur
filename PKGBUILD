@@ -10,7 +10,7 @@ depends=('curl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "updater.patch")
 sha256sums=('59ed9ef164f42668d6d34d6f2691f9493d8b5774286e98a6ba25d26ce1db656e'
-            '102c3ed41af37590112111ea76dc10aa5c8c27fcd7a9320fa1a1532f2111df1c')
+            '891130b091b82e40c119078810351c7793781f822df30c4746e543da945a792d')
 
 prepare() {
   patch --directory="${pkgname}" --forward --strip=0 --input="${srcdir}/updater.patch"

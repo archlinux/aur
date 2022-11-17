@@ -2,7 +2,7 @@
 +++ updater
 @@ -119 +119 @@
 -			while getopts ':abc:de:g:hilno:p:qrstuvy' opt; do
-+			while getopts ':abc:de:g:hilno:p:qrstvy' opt; do
++			while getopts ':abc:de:g:hilno:p:qrtvy' opt; do
 @@ -180,4 +179,0 @@
 -					# TODO: remove '-s' in future version
 -					s|u)
