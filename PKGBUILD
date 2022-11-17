@@ -2,7 +2,7 @@
 
 pkgname=cilium-cli-bin
 pkgver=0.12.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Network, Service & Security Observability for Kubernetes using eBPF'
 arch=('x86_64' 'aarch64')
 url='https://cilium.io/'

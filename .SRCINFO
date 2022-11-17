@@ -1,7 +1,7 @@
 pkgbase = cilium-cli-bin
 	pkgdesc = Network, Service & Security Observability for Kubernetes using eBPF
 	pkgver = 0.12.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cilium.io/
 	arch = x86_64
 	arch = aarch64
