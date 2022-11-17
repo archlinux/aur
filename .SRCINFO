@@ -1,0 +1,15 @@
+pkgbase = runscript-git
+	pkgdesc = Command runner for project-specific commands
+	pkgver = r237.83a3797
+	pkgrel = 1
+	url = https://git.sr.ht/~theonlymrcat/runscript
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	provides = run
+	conflicts = runscript
+	source = runscript::git+https://git.sr.ht/~theonlymrcat/runscript
+	sha256sums = SKIP
+
+pkgname = runscript-git
