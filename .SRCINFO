@@ -1,7 +1,7 @@
 pkgbase = nickvision-money
 	pkgdesc = A personal finance manager
-	pkgver = 2022.10.0
-	pkgrel = 2
+	pkgver = 2022.11.0
+	pkgrel = 1
 	url = https://github.com/nlogozzo/NickvisionMoney
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = nickvision-money
 	depends = jsoncpp
 	depends = libadwaita
 	depends = sqlitecpp
-	source = https://github.com/nlogozzo/NickvisionMoney/archive/refs/tags/2022.10.0.tar.gz
-	sha256sums = 25592a02546d40e3f29bb43eaf3c74bdca8ab01bb776ffbd4b3ba0f116e66f02
+	source = https://github.com/nlogozzo/NickvisionMoney/archive/refs/tags/2022.11.0.tar.gz
+	sha256sums = ec816b35eab7547356cf68f12a25822a0535eb1b81d64f64f374367b2fb45f95
 
 pkgname = nickvision-money

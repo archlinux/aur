@@ -2,8 +2,8 @@
 
 pkgname=nickvision-money
 _pkgname=NickvisionMoney
-pkgver=2022.10.0
-pkgrel=2
+pkgver=2022.11.0
+pkgrel=1
 pkgdesc="A personal finance manager"
 arch=('x86_64')
 url=https://github.com/nlogozzo/$_pkgname
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('jsoncpp' 'libadwaita' 'sqlitecpp')
 makedepends=('boost' 'cmake' 'meson')
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('25592a02546d40e3f29bb43eaf3c74bdca8ab01bb776ffbd4b3ba0f116e66f02')
+sha256sums=('ec816b35eab7547356cf68f12a25822a0535eb1b81d64f64f374367b2fb45f95')
 
 prepare() {
 	#fix conflict with geary
