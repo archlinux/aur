@@ -1,0 +1,12 @@
+pkgbase = checkupdates-with-aur
+	pkgdesc = Helper script to check updates, including AUR updates
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	depends = pacman-contrib
+	depends = aurutils
+	source = checkupdates-with-aur.sh
+	sha256sums = 7dc7d98367e6c929a291346eae286509132f4a46f5561b4cff4c69e98360034b
+
+pkgname = checkupdates-with-aur
