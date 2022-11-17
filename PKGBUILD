@@ -1,6 +1,6 @@
 pkgname=disneyplus-bin
 _pkgname=DisneyPlus-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Disney+ desktop application"
