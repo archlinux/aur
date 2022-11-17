@@ -2,7 +2,7 @@
 
 pkgname=sonic-pi
 pkgver=3.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"
@@ -13,8 +13,7 @@ ruby ruby-activesupport ruby-ffi ruby-gettext ruby-i18n ruby-kramdown
 ruby-locale ruby-minitest ruby-mocha ruby-multi_json ruby-polyglot ruby-rouge
 ruby-rugged ruby-sys-proctable ruby-text ruby-treetop sc3-plugins
 supercollider)
-makedepends=(boost cmake erlang-nox gendesk lua qt5-tools ruby-bundler
-wkhtmltopdf)
+makedepends=(boost cmake erlang-nox gendesk lua qt5-tools ruby-bundler)
 checkdepends=(ruby-rake)
 optdepends=('sox: for further effects')
 options=(debug)
