@@ -3,7 +3,7 @@
 
 pkgname=python38
 pkgver=3.8.15
-pkgrel=2
+pkgrel=3
 _pybasever=3.8
 _pymajver=3
 pkgdesc="Major release 3.8 of the Python high-level programming language"

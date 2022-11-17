@@ -1,7 +1,7 @@
 pkgbase = python38
 	pkgdesc = Major release 3.8 of the Python high-level programming language
 	pkgver = 3.8.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
