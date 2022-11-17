@@ -1,0 +1,17 @@
+pkgbase = wkhtmltopdf
+	pkgdesc = Command line tools to render HTML into PDF and various image formats
+	pkgver = 0.12.6
+	pkgrel = 1
+	url = https://wkhtmltopdf.org/
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = qt5-webkit
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	optdepends = xorg-server: wkhtmltopdf needs X or Xvfb to operate
+	source = git+https://github.com/wkhtmltopdf/wkhtmltopdf.git#tag=0.12.6?signed
+	validpgpkeys = 76C0969C076A23EC4849F462D3E3E8ACF99DE8EA
+	sha256sums = SKIP
+
+pkgname = wkhtmltopdf
