@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='6.0.8'
+pkgver='6.0.9'
 pkgrel="1"
 pkgbase="$pkgname"
 pkgdesc='The Linux kernel and modules with Xanmod patches - Prebuilt version'
@@ -26,7 +26,7 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('172f09d03f11047098c678f08b93a31631f5b87983c4e4482925f5b14b08cca3')
+sha256sums=('f9ada8654b9a052cb66cd547f3763041063e840187408b37b4f89fc5e92b4bfe')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
