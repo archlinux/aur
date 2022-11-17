@@ -1,4 +1,4 @@
-# Maintainer: Maxr1998 <max.rumpf1998@gmail.com>
+# Maintainer: Maxr1998 <aur@maxr1998.de>
 
 _name=homeassistant-cli
 pkgname=python-homeassistant-cli
