@@ -2,7 +2,7 @@
 # Contributor: Dan Johansen <strit@manjaro.org>
 
 pkgname=box64
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ptitSeb/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f30ae33b42008ab8c00e79d506d2d771d37fe17e5cd1f27913006a16f12420fb')
+sha256sums=('fd4440a8010320339c9c6c065f6a65fdb802d32cf8fa5f6fa750f368d4864b62')
 
 build() {
     cd ${pkgname}-${pkgver}
