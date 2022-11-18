@@ -20,19 +20,19 @@ package() {
 EOT
 
     chmod +x Netlify
-    ln -s "/opt/libelectron/node_modules" "$srcdir/application"
-    install -dm755 "$pkgdir/opt/netlify"
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application"
+    install -dm755 "$pkgdir/opt/Netlify"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
-    cp -r ./ "$pkgdir/opt/DisneyPlus"
-    cp -r "$pkgdir/opt/DisneyPlus/Netlify.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r ./ "$pkgdir/opt/Netlify"
+    cp -r "$pkgdir/opt/Netlify/netlify.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/DisneyPlus/netlify" "$pkgdir/usr/bin/Netlify"
+    ln -s "/opt/Netlify/Netlify" "$pkgdir/usr/bin/Netlify"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application/DisneyPlus.desktop" \
-        "$pkgdir/usr/share/applications/DisneyPlus.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/DisneyPlus.desktop"
+    install -Dm644 "$srcdir/application/Netlify.desktop" \
+        "$pkgdir/usr/share/applications/Netlify.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Netlify.desktop"
 }

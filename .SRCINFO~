@@ -1,0 +1,15 @@
+pkgbase = netlify-application
+	pkgdesc = Unofficial Netlify desktop application
+	pkgver = 1.0.6
+	pkgrel = 2
+	arch = any
+	license = GPL
+	depends = libelectron
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	source = git+https://gitlab.com/netlify-desktop/application
+	sha256sums = SKIP
+
+pkgname = netlify-application
