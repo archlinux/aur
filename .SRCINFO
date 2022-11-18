@@ -13,6 +13,6 @@ pkgbase = earth-wallpaper-nightly
 	source = git+https://jihulab.com/ambition-echo/earth_wallpaper.git
 	source = earth-wallpaper.desktop
 	sha256sums = SKIP
-	sha256sums = cf4764128b5fffe69ed3bbaf53e107f9359050f3d4580d33d136db4b1fa3fe9b
+	sha256sums = 7ce17a298bbf171fde6697fb4c1082f84dd1968504120ebf73d152a71c43122d
 
 pkgname = earth-wallpaper-nightly
