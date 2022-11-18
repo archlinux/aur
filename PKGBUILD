@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=reason
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='A shell for research papers'
 arch=('x86_64')
@@ -11,28 +11,32 @@ depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "$pkgname-$pkgver-Cargo.lock::https://raw.githubusercontent.com/jaywonchung/reason/3ab7b662510a52ea9ed1e65450c914d7ef65ae62/Cargo.lock"
+  'Cargo.lock'
 )
-sha512sums=('0281d8837cdde7dcffe70c413f6acb6878f33c6325321fa5a489b9fb181f9de090963c60b2e69dca93ee981f07170becd061a03ce46ab838cd7b041352f84c1c'
-            '1de5d4a6b18f8c81b375cb4ef6dad734b228514e192d7c40af02cfc2adc6e09019f0f9d42ec94313a7fa359f39776137341cb754418ac2614ff1613c5a097462')
-b2sums=('ea643a239959ebdd760bd1cbc4a70c3a7dbe59e674e56c41e0a0a5de45fc03249b39ecb9317a1c7b672b75d025be58421b1394261b242a44000f4efc45d6722e'
-        '9048fbb26915557c359835dfdd8d0c6da5faaf6e10bb99410882ba4ce8fd48799c78f7c8f0bbd3159f6d2cc12cf769ed55b1035ae8f9975fd89f728b591222e1')
+sha512sums=('341eefe8394902ba9f0540fa577fd3cf1ecd142f9b0c74e77fa9e952ab7b8a0b0f9aefb01410af64b4c419471d21e098e50e4d7f4646eee2c2be3664aebc37ac'
+            '3c15f4dd8fed641fb94d40cded1fab9164243873c9645f61d5a51b8cbdf41ae318899910f2e19e8885457dcff837b21f6b520e9416e065265729c4270d77305c')
+b2sums=('be0a2381b962e86ff1c353bc598a62e4f62cff29e1029ac2cdab46fb1e505d8c882ed3bb9417e35d37c6d9cc30e8a7ac0d3678bb4f17ed0f04ccb144027a1616'
+        'c64164a9fab29a0285af35115843d497034c08b751294e837e36b8fdb6022d216456079090c8f81bbb5310e1547aa203723f8d88b4243f8ea31149d6190fd101')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cp -vf "$srcdir/$pkgname-$pkgver-Cargo.lock" Cargo.lock
+  # updated lockfile
+  cp -vf "$srcdir/Cargo.lock" Cargo.lock
 
+  # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname-$pkgver"
+
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
+
   cargo test --frozen --all-features
 }
 
