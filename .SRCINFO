@@ -1,15 +1,15 @@
 pkgbase = linux-xanmod-linux-headers-bin-x64v3
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - x64v3
-	pkgver = 6.0.8
+	pkgver = 6.0.9
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	depends = pahole
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.0.8-xanmod1/linux-headers-6.0.8-x64v3-xanmod1_6.0.8-x64v3-xanmod1-0.20221111.27412d21_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.0.9-xanmod1/linux-headers-6.0.9-x64v3-xanmod1_6.0.9-x64v3-xanmod1-0.20221116.d9f29c5_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 7d364da754351f9f4561ca380e0e46cac34f8897d625b6d2f0ce67966fe441d7
+	sha256sums = 1b951108818043518910674e664c06a9d9f2bdfa645bbd4850a1aef32ab05908
 
 pkgname = linux-xanmod-linux-headers-bin-x64v3
