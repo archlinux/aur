@@ -1,0 +1,9 @@
+pkgbase = libelectron
+	pkgdesc = A collection of npm dependencies for electron packages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = npm
+
+pkgname = libelectron
