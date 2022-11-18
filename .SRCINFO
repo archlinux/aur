@@ -1,0 +1,13 @@
+pkgbase = zfs-undelete
+	pkgdesc = easy-to-use CLI tool to recover files from zfs snapshots
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arctic-penguin/zfs-undelete
+	arch = any
+	license = GPL3
+	makedepends = rust
+	depends = zfs-utils
+	source = https://github.com/arctic-penguin/zfs-undelete/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 013c8f4ba6c9a1213ab6e841553858f6c5f29332f5a87bc4748ea0abf7fec98a
+
+pkgname = zfs-undelete
