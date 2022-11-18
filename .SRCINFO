@@ -1,0 +1,15 @@
+pkgbase = tradingview
+	pkgdesc = Experience extra power, extra speed and extra flexibility, all with the same UX you know and love
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://www.tradingview.com/desktop/
+	arch = x86_64
+	license = custom
+	makedepends = squashfs-tools
+	conflicts = tradingview-bin
+	source = tradingview-1.0.17.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_28.snap
+	source = desktop_entry.patch
+	b2sums = 30eebad7a5e9429756fbba88368b5a29937bedead517fed431d9308bf4ad7c0373c5f730201a3f8435a7d761b9598eaa314a7f2e034962fb0194331b879cbb7f
+	b2sums = b7dbd4f2de84d281ae4b93d35ee039f9dad111696f856867e295b4e214bf28c524b350bf6f160992f8d72d3c15a17291f9dee744e0cb7d5d1ab0449fd6b316a3
+
+pkgname = tradingview
