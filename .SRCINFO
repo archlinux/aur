@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsdeinterlace-git
+	pkgdesc = Plugin for Vapoursynth: vsdeinterlace (GIT version)
+	pkgver = 0.2.0.1.g5045396
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-deinterlace
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = vapoursynth-plugin-vstools-git
+	depends = vapoursynth-plugin-vskernels-git
+	depends = vapoursynth-plugin-vsrgtools-git
+	provides = vapoursynth-plugin-vsdeinterlace
+	conflicts = vapoursynth-plugin-vsdeinterlace
+	conflicts = vapoursynth-plugin-debandshit-git
+	source = vsdeinterlace::git+https://github.com/Irrational-Encoding-Wizardry/vs-deinterlace.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsdeinterlace-git
