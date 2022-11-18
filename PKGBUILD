@@ -3,16 +3,23 @@
 # Contributor: Glaucous <glakke1 at gmail dot com>
 
 pkgname=lib32-apitrace
-pkgver=10.0
+pkgver=11.1
 pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=('custom')
 depends=('python' 'lib32-libgl' 'lib32-procps-ng' 'apitrace')
-makedepends=('cmake' 'gcc-multilib')
-source=("apitrace-$pkgver.tar.gz::https://github.com/apitrace/apitrace/archive/${pkgver}.tar.gz")
-sha256sums=('2e57d37af39369d7ce78666acb8afb1a49ec758f683a21077ec39eb0befae4ad')
+makedepends=('cmake' 'git' 'gcc-multilib')
+source=("apitrace-$pkgver::git+https://github.com/apitrace/apitrace.git#tag=${pkgver}")
+sha256sums=('SKIP')
+
+prepare() {
+  cd apitrace-${pkgver}
+
+  git submodule update --init --depth 1 --recursive
+}
+
 
 build() {
   cd apitrace-${pkgver}
