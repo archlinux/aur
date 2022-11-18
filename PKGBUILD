@@ -19,7 +19,7 @@ package() {
     npm start
 EOT
 
-    chmod +x netlify
+    chmod +x Netlify
     ln -s "/opt/libelectron/node_modules" "$srcdir/application"
     install -dm755 "$pkgdir/opt/netlify"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
