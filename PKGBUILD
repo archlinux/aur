@@ -2,7 +2,7 @@
 
 _plug=vardefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.6.2.1.g0ddc6ae
+pkgver=0.7.2.1.g14a6b2a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python-numpy'
          'vapoursynth-plugin-neo_f3kdb-git'
          'vapoursynth-plugin-lvsfunc-git'
          'vapoursynth-plugin-vsutil-git'
-         'vapoursynth-plugin-debandshit-git'
+         'vapoursynth-plugin-vsdeband-git'
          )
 makedepends=('git'
              'python-pip'

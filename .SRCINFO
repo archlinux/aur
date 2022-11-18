@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vardefunc-git
 	pkgdesc = Plugin for Vapoursynth: vardefunc (GIT version)
-	pkgver = 0.6.2.1.g0ddc6ae
+	pkgver = 0.7.2.1.g14a6b2a
 	pkgrel = 1
 	url = https://github.com/Ichunjo/Vardefunc
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = vapoursynth-plugin-vardefunc-git
 	depends = vapoursynth-plugin-neo_f3kdb-git
 	depends = vapoursynth-plugin-lvsfunc-git
 	depends = vapoursynth-plugin-vsutil-git
-	depends = vapoursynth-plugin-debandshit-git
+	depends = vapoursynth-plugin-vsdeband-git
 	provides = vapoursynth-plugin-vardefunc
 	conflicts = vapoursynth-plugin-vardefunc
 	source = vardefunc::git+https://github.com/Ichunjo/Vardefunc.git
