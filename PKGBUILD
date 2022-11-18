@@ -3,7 +3,7 @@
 
 _pkgname='natron'
 pkgname="${_pkgname}-bin"
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='Node-graph video compositor'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 noextract=("${_pkgname}-${pkgver}.tar.xz")
 source=("${_pkgname}-${pkgver}.tar.xz::${_url_source}/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-Linux-x86_64-no-installer.tar.xz")
-sha512sums=('72bc654c51b147b3981263532696eb986d26b2ae5dec3ab69743732337e9ce6793b0342674e82172d5ac7a9e21b7dc795d3dbee6f8160536bbf66eadf427d960')
+sha512sums=('5a176d7cc0776b26c39ca6baa74090c83526a458c8204d7be27f73e1aedb38a80f48f13359ce15d5b8dfc853a4fadd8bcb7d137a1b0ef1e0226229a29822fecc')
 
 prepare() {
   gendesk -f -n \
