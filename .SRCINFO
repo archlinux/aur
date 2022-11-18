@@ -6,6 +6,7 @@ pkgbase = tvrenamer-bin
 	arch = x86_64
 	license = GPL2
 	depends = java-runtime>=8
+	depends = java-runtime<=11
 	provides = tvrenamer
 	conflicts = tvrenamer
 	source = https://github.com/tvrenamer/tvrenamer/releases/download/v1.0b4/TVRenamer-1.0b4-gtk64.zip

@@ -6,7 +6,7 @@ pkgdesc="A Java GUI utility to rename TV episodes from TV listings"
 arch=('x86_64')
 url="http://tvrenamer.org"
 license=('GPL2')
-depends=('java-runtime>=8')
+depends=('java-runtime>=8' 'java-runtime<=11')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/tvrenamer/tvrenamer/releases/download/v$pkgver/TVRenamer-$pkgver-gtk64.zip"
