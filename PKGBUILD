@@ -8,7 +8,7 @@
 # Contributor : Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync-nopdfium
-pkgver=4.7.2.0
+pkgver=4.7.3.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
          'qt5-base' 'qt5-svg' 'qt5-x11extras' 'libmediainfo' 'libraw'
          'ffmpeg' 'freeimage')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
-_extname="_Linux"
+_extname="_Win"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
         "ffmpeg.patch")
