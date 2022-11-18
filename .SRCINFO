@@ -1,6 +1,6 @@
 pkgbase = paddlepaddle-bin
 	pkgdesc = Machine Learning Framework from Industrial Practice
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://paddlepaddle.org.cn
 	arch = x86_64
@@ -10,16 +10,15 @@ pkgbase = paddlepaddle-bin
 	depends = python-numpy
 	depends = python-protobuf
 	depends = python-pillow
-	depends = python-six
 	depends = python-decorator
-	depends = python-paddle_bfloat
 	depends = python-astor
 	depends = python-opt_einsum
 	depends = perl
-	provides = paddlepaddle=2.3.2
+	depends = python-setuptools
+	provides = paddlepaddle=2.4.0
 	conflicts = paddlepaddle
 	conflicts = paddlepaddle-gpu
-	source = https://pypi.org/packages/cp310/p/paddlepaddle/paddlepaddle-2.3.2-cp310-cp310-manylinux1_x86_64.whl
-	sha256sums = 66c7d091a6faef4af4bbe4b0ceccfa43b1ad4c0d194b8a7dbd24f7fdd3e1a7ca
+	source = https://pypi.org/packages/cp310/p/paddlepaddle/paddlepaddle-2.4.0-cp310-cp310-manylinux1_x86_64.whl
+	sha256sums = 2d2f43e8f0b1704d9bfde765c1b09c5d5d59aabed4f007ed9f46bc952d807af9
 
 pkgname = paddlepaddle-bin
