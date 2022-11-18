@@ -1,7 +1,7 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=detwinner-git
-pkgver=r96.fd17d2d
+pkgver=0.4.2.r1.g4a11b7f
 pkgrel=1
 pkgdesc='Duplicate file finder for the Linux desktop'
 url='https://neatdecisions.com/products/detwinner-linux/'
@@ -17,7 +17,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd ${pkgname%-git}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -26,9 +26,9 @@ build() {
 }
 
 check() {
-	meson test -C build --print-errorlogs
+	meson test -C build
 }
 
 package() {
-	meson install -C build --destdir "$pkgdir"
+	DESTDIR="$pkgdir" meson install -C build
 }
