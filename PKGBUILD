@@ -3,7 +3,7 @@
 pkgname=python-name-that-hash
 _pkgname=Name-That-Hash
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Modern Hash Identification System."
 arch=("any")
 url="https://github.com/HashPals/Name-That-Hash"
