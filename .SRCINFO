@@ -1,12 +1,13 @@
 pkgbase = hse-git
 	pkgdesc = Heterogeneous-memory storage engine
-	pkgver = 2.2.0.dev.r50.ge3919157
+	pkgver = 3.1.0.dev.r8.g1a5673ce
 	pkgrel = 1
 	url = https://hse-project.github.io/
 	arch = i686
 	arch = x86_64
 	license = apache
 	makedepends = git
+	makedepends = cmake
 	makedepends = meson
 	depends = glibc
 	depends = cjson
@@ -19,7 +20,7 @@ pkgbase = hse-git
 	depends = mongo-c-driver
 	depends = pmdk
 	depends = xxhash
-	provides = hse
+	provides = hse=3.1.0.dev.r8.g1a5673ce
 	conflicts = hse
 	options = staticlibs
 	source = git+https://github.com/hse-project/hse.git
