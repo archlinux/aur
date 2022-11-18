@@ -1,12 +1,11 @@
 pkgbase = tvrenamer-bin
 	pkgdesc = A Java GUI utility to rename TV episodes from TV listings
 	pkgver = 1.0b4
-	pkgrel = 1
-	url = http://www.tvrenamer.org
+	pkgrel = 2
+	url = http://tvrenamer.org
 	arch = x86_64
 	license = GPL2
 	depends = java-runtime>=8
-	depends = zenity
 	provides = tvrenamer
 	conflicts = tvrenamer
 	source = https://github.com/tvrenamer/tvrenamer/releases/download/v1.0b4/TVRenamer-1.0b4-gtk64.zip

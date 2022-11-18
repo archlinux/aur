@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tvrenamer-bin
 pkgver=1.0b4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java GUI utility to rename TV episodes from TV listings"
 arch=('x86_64')
-url="http://www.tvrenamer.org"
+url="http://tvrenamer.org"
 license=('GPL2')
-depends=('java-runtime>=8' 'zenity')
+depends=('java-runtime>=8')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/tvrenamer/tvrenamer/releases/download/v$pkgver/TVRenamer-$pkgver-gtk64.zip"
