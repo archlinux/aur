@@ -1,6 +1,6 @@
 pkgbase = jdk17-dragonwell-standard-bin
 	pkgdesc = an in-house OpenJDK implementation at Alibaba (Standard Edition)
-	pkgver = 17.0.4.0.4
+	pkgver = 17.0.5.0.5
 	pkgrel = 1
 	url = https://dragonwell-jdk.io
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jdk17-dragonwell-standard-bin
 	provides = java-runtime-openjdk=17
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
-	source_x86_64 = jdk17-dragonwell-standard-bin-17.0.4.0.4-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-17.0.4.0.4+8_jdk-17.0.4-ga/Alibaba_Dragonwell_Standard_17.0.4.0.4+8_x64_linux.tar.gz
-	sha256sums_x86_64 = 31b3b6293b6645de7c531d16427ec38809ffaa0ef2db9a29c9c2230c5dc10eec
-	source_aarch64 = jdk17-dragonwell-standard-bin-17.0.4.0.4-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-17.0.4.0.4+8_jdk-17.0.4-ga/Alibaba_Dragonwell_Standard_17.0.4.0.4+8_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 1e7b974b860e9062c8a65dab4c71f84b20527b08866062a67c38963017a5f3fe
+	source_x86_64 = jdk17-dragonwell-standard-bin-17.0.5.0.5-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-17.0.5.0.5+8_jdk-17.0.5-ga/Alibaba_Dragonwell_Standard_17.0.5.0.5.8_x64_linux.tar.gz
+	sha256sums_x86_64 = a505dea63fd58925a1512dad77d5fdc9bc6c2ebb42f065001091eb31e30ed43f
+	source_aarch64 = jdk17-dragonwell-standard-bin-17.0.5.0.5-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-17.0.5.0.5+8_jdk-17.0.5-ga/Alibaba_Dragonwell_Standard_17.0.5.0.5.8_aarch64_linux.tar.gz
+	sha256sums_aarch64 = 929be7d0d0aa7c2bd196db4b6f3ead10dbeb240afc9db6c68974e79961c59003
 
 pkgname = jdk17-dragonwell-standard-bin
