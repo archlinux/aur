@@ -11,7 +11,7 @@ license=('MIT')
 depends=('electron')
 optdepends=('npm: plugin support')
 provides=('picgo')
-conflicts=('picgo' 'picgo-appimage' 'picgo-electron' 'picgo-appimage-beta')
+conflicts=('picgo')
 source=(
 	"https://github.com/Molunerfinn/PicGo/releases/download/v$pkgver/PicGo-$pkgver.AppImage"
 	#"https://picgo-1251750343.cos.ap-chengdu.myqcloud.com/$pkgver/PicGo-$pkgver.AppImage"

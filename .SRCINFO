@@ -9,9 +9,6 @@ pkgbase = picgo-bin-electron
 	optdepends = npm: plugin support
 	provides = picgo
 	conflicts = picgo
-	conflicts = picgo-appimage
-	conflicts = picgo-electron
-	conflicts = picgo-appimage-beta
 	source = https://github.com/Molunerfinn/PicGo/releases/download/v2.3.1/PicGo-2.3.1.AppImage
 	sha256sums = 465581a6f775a4dbb0f5251a85dd3a87bbc466fe442fbe96dfb4f206bdb75a62
 
