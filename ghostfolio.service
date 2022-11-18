@@ -1,7 +1,7 @@
 [Unit]
 Description=Open source wealth management
-Wants=network-online.target
-After=network-online.target
+Wants=postgresql.service redis.service
+After=postgresql.service redis.service
 
 [Service]
 Type=simple

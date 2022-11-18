@@ -14,7 +14,7 @@ source=("ghostfolio-$pkgver.tar.gz::https://github.com/ghostfolio/ghostfolio/arc
         "ghostfolio.sysusers"
         "ghostfolio.tmpfiles")
 sha256sums=('aee17d61e27fbe676cb608408f95112a3a0b32d93d0c0a667e318e0c1895c99b'
-            '38528fddb3710eb617a21cf0bb3cc3bfcebbe92d539980ed559e9248b0ec1f78'
+            '4992b5c87b0088585b23104d334f3705f7eeca2588a71c0edb6fe1ebd4b45540'
             '128f0df32f5af102e7915b96c3868a90e9f33421d2376adbea63197f0257fcc1'
             'e640d2239e5308198b9ee84cefa9825d156dbd6151f86559e0d7f94dd1144b44')
 
