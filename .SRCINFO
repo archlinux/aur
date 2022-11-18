@@ -15,6 +15,5 @@ pkgbase = cctag
 	depends = tbb
 	source = cctag-1.0.3.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v1.0.3.tar.gz
 	sha256sums = 25396b03c4aa3c1be241a2a8518a29511cb4fff695caa5126203fbba8e8e444d
-	sha256sums = ae2a2d361a7f255fe87cf3e1ca0eca14a4ddcbe0122195cb3f713e59c9064a2b
 
 pkgname = cctag
