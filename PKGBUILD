@@ -20,7 +20,7 @@ sha512sums=("bbd71dae1baf088382e0dd792ea8c92b04b8b5ef7ff0c3fb3f03d85a51765e8d1fa
 build()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    python -m build -n -w
+    python -m build -nw
 }
 
 package()
