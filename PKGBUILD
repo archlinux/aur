@@ -3,8 +3,8 @@
 pkgname=opensnitch-ebpf-module-stable
 _pkgname=opensnitch
 pkgver=1.5.2
-pkgrel=2
-_kver=6.0
+pkgrel=3
+_kver=6.0.8
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -15,9 +15,9 @@ depends=('opensnitch')
 provides=("${pkgname%-stable}")
 conflicts=("${pkgname%-stable}" "${pkgname%-stable}-git")
 source=("${url}/archive/v${pkgver}.tar.gz"
-        "https://github.com/torvalds/linux/archive/v${_kver}.tar.gz")
+        "https://cdn.kernel.org/pub/linux/kernel/v${_kver%%.*}.x/linux-${_kver}.tar.xz")
 sha256sums=('8aa9cb07dfed2881240c5d3a359668cc3d19060fe8f2819c73cd265abd62b2c6'
-            'f63602d33f9b98ab8abd1f668fe1debbb1eea28984e7218a0e051ac1d25aac37')
+            '0de4f83996951c6faf9b2225db4f645882c47b1a09198190f97bd46e5f5fa257')
 options=('!strip') # we're stripping with llvm-strip
 
 prepare() {
