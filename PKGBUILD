@@ -4,9 +4,9 @@
 _pkgname=openvpn3-linux
 pkgname=openvpn3
 pkgver=19_beta
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN 3 Linux client'
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/OpenVPN/$_pkgname"
 license=('AGPL3')
 depends=(

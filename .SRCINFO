@@ -1,9 +1,12 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
 	pkgver = 19_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenVPN/openvpn3-linux
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = AGPL3
 	makedepends = autoconf-archive
 	makedepends = git
