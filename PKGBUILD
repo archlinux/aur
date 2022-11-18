@@ -1,44 +1,66 @@
 # Maintainer: dakataca <🐬danieldakataca@gmail.com>
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
-pkgname=pseint
+pkgname='pseint'
 pkgver=20210609
 pkgrel=1
-pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
-comment="Educational tool to learn the fundamentals and development of programming logic"
+pkgdesc="A tool for learning programming basis with a simple spanish pseudocode."
 arch=('x86_64')
-url='http://pseint.sourceforge.net'
+url='sourceforge.net/p/pseint'
 license=('GPL2')
 conflicts=('pseint-bin')
 depends=('gendesk' 'wxwidgets-gtk3')
 noextract=(creator.psz)
-source=("$pkgname-$pkgver.tar.gz::https://cfhcable.dl.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-l64-${pkgver}.tgz")
-sha256sums=('a5df4e147c529e3da509b30dee02791642c32cb3b5bbbc6cd3cd7594f10cb9f4')  # 'makepkg -g' para generarlo.
+source=("https://netactuate.dl.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-src-${pkgver}.tgz")
+sha256sums=('cbebd218c7b8adf3050054c3e778bc4c8fdace59bc6cd43754cf4d267dd02952')  # 'makepkg -g' to generate it.
 
 prepare(){
+
+    cd ${pkgname}
     gendesk -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
         --name="${pkgname}" \
         --genericname="${pkgname}" \
-        --comment="${comment}" \
+        --comment="${pkgdesc}" \
         --exec="${pkgname}" \
         --path="/opt/${pkgname}" \
         --icon="${pkgname}" \
         --categories='Development,Education'
 }
 
-package(){
-    install -Dvm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dvm644 "${srcdir}/${pkgname}/imgs/icon.icns" "${pkgdir}/usr/share/pixmaps/${pkgname}.icns"
-    install -Dvm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    cp -r ${srcdir}/${pkgname}/ ${pkgdir}/opt/
+pkgver(){
+
+    cd ${pkgname}
+    cat "bin/version"
 }
 
-## Test:
-# rm -rf pseint-{20210609.tar.gz,l64-20210609.tgz,20210609-1.src.tar.gz} src/ pkg/
-## References
+build(){
 
+    cd ${pkgname}
+    local -r wxconfig_version=$(wx-config --version | sed -E 's/([0-9]\.[0-9])(\.[0-9])*/\1/')
+    sed -Ei \
+        "s/(--version=)[0-9](\.[0-9])*/\1${wxconfig_version}/g ; \
+        s,bin(/bin),\1," \
+        {wxPSeInt,ps{eval,term,draw{E,3}}}/Makefile.lnx
+    make linux
+ }
+
+package(){
+
+    cd "${pkgname}"
+    mkdir -p ${pkgdir}/opt/${pkgname}
+    cp -rv bin/* ${pkgdir}/opt/${pkgname}
+    install -Dvm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dvm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dvm755 <(echo -e '#!/usr/bin/env bash\n/opt/pseint/wxPSeInt') ${pkgdir}/usr/bin/${pkgname}
+}
+
+## Test
+# rm -rf pseint-* src/ pkg/
+
+## References
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=densify
 # https://wiki.archlinux.org/title/Desktop_entries#How_to_use
-# https://sourceforge.net/projects/pseint/files/
-# https://sourceforge.net/projects/pseint/files/20210609/pseint-l64-20210609.tgz/download
+# https://sourceforge.net/p/pseint/code/ci/master/tree/
+# https://askubuntu.com/questions/1060601/is-there-a-way-to-create-a-script-and-make-it-executable-in-less-code-than-this#comment1736560_1060642
+# https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html
