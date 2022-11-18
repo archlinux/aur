@@ -29,6 +29,7 @@ build()
       -DLAPACKE=ON \
       -DCBLAS=ON \
       -DBUILD_TESTING=OFF \
+      -DTEST_FORTRAN_COMPILER=OFF \
       ..
     make
     popd
@@ -38,6 +39,7 @@ build()
       -DLAPACKE=ON \
       -DCBLAS=ON \
       -DBUILD_TESTING=OFF \
+      -DTEST_FORTRAN_COMPILER=OFF \
       ..
     make
     popd
