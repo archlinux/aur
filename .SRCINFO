@@ -1,14 +1,14 @@
 pkgbase = synth-bin
 	pkgdesc = The Declarative Data Generator
 	pkgver = 0.6.8_r2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.getsynth.com/
 	arch = arm64
 	arch = x86_64
 	license = Apache
 	provides = synth
 	conflicts = synth
-	source_arm64 = https://github.com/shuttle-hq/synth/releases/download/v0.6.8-r2/synth-ubuntu-arm64-x86_64.tar.gz
+	source_arm64 = https://github.com/shuttle-hq/synth/releases/download/v0.6.8-r2/synth-ubuntu-latest-arm64.tar.gz
 	sha512sums_arm64 = 935b3d516e996f6d25948ba8a54c1b7f70f7f0e3f517e36481fdf0196c2c5cfc2841f86e891f3df9517746b7fb605db47cdded1b8ff78d9482ddaa621db43a34
 	source_x86_64 = https://github.com/shuttle-hq/synth/releases/download/v0.6.8-r2/synth-ubuntu-latest-x86_64.tar.gz
 	sha512sums_x86_64 = 9028539389209cb9e98c268e81cb901e12f892766024fb28a25c66d4d454d2ea652711e9eeee4d9b238448a26b39d745e76f341974f42fb28ad2f17944a32c7a
