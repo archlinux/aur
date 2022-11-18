@@ -5,7 +5,7 @@ pkgbase=snapd-glib-git
 pkgname=snapd-glib-git
 pkgdesc="Library to allow GLib/Qt based applications access to snapd, the daemon that controls Snaps"
 depends=( 'libsoup' 'json-glib')
-pkgver=1.44.r6.g44ae271
+pkgver=1.63.r1.gba68fa1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd-glib"
@@ -25,12 +25,16 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgbase"
- ./autogen.sh --disable-silent-rules --enable-gtk-doc --prefix=/usr
-  make $MAKEFLAGS
+    cd "$_pkgbase"
+    meson _build --prefix=/usr
+    ninja -C _build install
+#  ./autogen.sh --disable-silent-rules --enable-gtk-doc --prefix=/usr
+#   make $MAKEFLAGS
 }
 
 package_snapd-glib-git() {
-  cd "$_pkgbase"
-  make install DESTDIR="$pkgdir"
+    cd "$_pkgbase"
+    meson _build --prefix=/usr
+    ninja -C _build install
+#   make install DESTDIR="$pkgdir"
 }
