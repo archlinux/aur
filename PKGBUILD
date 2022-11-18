@@ -8,13 +8,12 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-deband'
 license=('MIT')
-depends=('vapoursynth-plugin-mvsfunc-git'
-         'vapoursynth-plugin-vsutil-git'
-         'vapoursynth-plugin-fmtconv'
-         'vapoursynth-plugin-vstools-git'
-         'vapoursynth-plugin-vsexprtools-git'
-         'vapoursynth-plugin-vskernels-git'
+depends=('vapoursynth-plugin-vstools-git'
          'vapoursynth-plugin-vsrgtools-git'
+         'vapoursynth-plugin-vskernels-git'
+         'vapoursynth-plugin-vsexprtools-git'
+         'vapoursynth-plugin-vsmask-git'
+         'vapoursynth-plugin-vsscale-git'
          )
 makedepends=('git'
              'python-pip'
