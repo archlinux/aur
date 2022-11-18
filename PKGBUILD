@@ -3,7 +3,7 @@
 pkgname=hooroo
 pkgver=0.3.2
 pkgrel=1
-pkgdesc='Synchronise your packages with a file'
+pkgdesc='Automatically synchronise your packages with a file'
 arch=('any')
 url="https://github.com/ca-cl2/${pkgname}"
 license=('Apache')

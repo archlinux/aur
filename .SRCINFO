@@ -1,5 +1,5 @@
 pkgbase = hooroo
-	pkgdesc = Synchronise your packages with a file
+	pkgdesc = Automatically synchronise your packages with a file
 	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ca-cl2/hooroo
