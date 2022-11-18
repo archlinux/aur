@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Snapchat Web
+Comment=Snapchat Web built with nativefier (electron)
+Exec=snapchat-nativefier
+Icon=snapchat
+Encoding=UTF-8
+StartupWMClass=snapchat-nativefier
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
