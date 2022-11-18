@@ -1,0 +1,25 @@
+pkgbase = typesettersdesk-git
+	pkgdesc = Manage your typesetting projects
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://www.typesettersdesk.org
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-tools
+	depends = qt5-webengine
+	depends = poppler-qt5
+	depends = ktexteditor
+	depends = breeze-icons
+	depends = hunspell
+	depends = mythes
+	depends = texlive-core
+	depends = hunspell-en_us
+	provides = typesettersdesk
+	source = git+https://gitlab.com/michael.oleary.math/typesettersdesk.git
+	md5sums = SKIP
+
+pkgname = typesettersdesk-git
