@@ -3,12 +3,12 @@
 # Contributors: edacval
 
 pkgname=pycharm-professional
-pkgver=2022.2.3
+pkgver=2022.2.4
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
 url='https://www.jetbrains.com/pycharm/'
-conflicts=('pycharm' 'pycharm-community-edition')
+conflicts=('pycharm' 'pycharm-community-edition' 'pycharm-community-jre' 'pycharm-community-eap' 'pycharm-eap')
 provides=('pycharm')
 license=('custom')
 backup=("opt/$pkgname/bin/pycharm64.vmoptions"
@@ -18,7 +18,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('c73750a2e27ed2410741a739071a920cca9844608a81f07735ed2e35a024cca1'
+sha256sums=('cd6253f558ef0b2f3890713401cfe11eadb717c14373dfbb520bedce621e728b'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             'c01a62a9a17a018f645e7301fd98b98dec77e682f1d0cd908b850e8be03830e0')
@@ -54,7 +54,7 @@ build() {
 package() {
     # licenses
     install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
-    mv "pycharm-$pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
+    install -m 644 "pycharm-$pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
     
     # base
     install -dm 755 "$pkgdir/opt/$pkgname"
