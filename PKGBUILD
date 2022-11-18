@@ -14,7 +14,7 @@ name=meshroom
 fragment="#branch=develop"
 components+=(QtOIIO qmlAlembic)
 pkgname=${name}-git
-pkgver=2021.1.0.r134.gf1331c6a
+pkgver=2021.1.0.r630.g8e9128be
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
@@ -32,13 +32,11 @@ source=("${name}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git#branch=develop"
         "git+https://github.com/alicevision/qmlAlembic.git#branch=develop"
-        "pyside_property_error.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'e211783ead22d388c72f60bac7ab95d670a4d6ae196225c15038b5c9e7c80fdc')
+            'SKIP')
 ((ENABLE_QTALICEVISION)) && {
   source+=("git+https://github.com/alicevision/qtAliceVision.git#branch=develop")
   sha256sums+=('SKIP')
@@ -69,9 +67,6 @@ prepare() {
   sed -i '/find_package(IlmBase REQUIRED)/d' "${srcdir}"/qmlAlembic/CMakeLists.txt
   sed -i 's|${ILMBASE_INCLUDE_DIR}||' "${srcdir}"/qmlAlembic/src/CMakeLists.txt
   rm -rf "${srcdir}"/qmlAlembic/cmake/
-
-  # avoid bug in pyside 5.15.2 (https://bugreports.qt.io/browse/PYSIDE-1426)
-  patch -Np1 -i "$srcdir"/pyside_property_error.patch
 }
 
 build() {
