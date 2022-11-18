@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -20,7 +20,7 @@ optdepends=('qt5-base: qmake build system for projects'
             'kdevelop: IDE for projects'
             'clion: IDE for projects'
             'pacman-contrib: for the paccache cleaning hook')
-license=('custom:UnrealEngine')
+license=('custom:UnrealEngine' 'GPL3')
 source=('unreal-engine-5.sh'
         'com.unrealengine.UE4Editor.desktop'
         'use_system_clang.patch'
@@ -183,7 +183,13 @@ package() {
   cd "${pkgname}" || return
   
   # Icon for Desktop entry
-  install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
+  # install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
+  wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
+  install -Dm750 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
+  wget --output-document "LICENSE" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
+  rm ue5editor.svg
+  rm LICENSE
 
   # License
   install -Dm770 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
