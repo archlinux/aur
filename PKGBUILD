@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-jamo-git
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Hangul syllable decomposition and synthesis using jamo"
 arch=('any')
