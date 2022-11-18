@@ -1,0 +1,24 @@
+pkgbase = vapoursynth-plugin-vsdenoise-git
+	pkgdesc = Plugin for Vapoursynth: vsdenoise (GIT version)
+	pkgver = 1.1.0.5.gd485270
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-denoise
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = vapoursynth-plugin-vsrgtools-git
+	depends = vapoursynth-plugin-vstools-git
+	depends = vapoursynth-plugin-vsutil-git
+	depends = vapoursynth-plugin-vskernels-git
+	depends = vapoursynth-plugin-vsexprtools-git
+	depends = vapoursynth-plugin-vsaa-git
+	depends = vapoursynth-plugin-vsscale-git
+	provides = vapoursynth-plugin-vsdenoise
+	conflicts = vapoursynth-plugin-vsdenoise
+	source = vsdenoise::git+https://github.com/Irrational-Encoding-Wizardry/vs-denoise.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsdenoise-git
