@@ -11,7 +11,7 @@ pkgrel=6
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
-makedepends=('git' 'openssh' 'sed' 'grep' 'glibc')
+makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget')
 depends=('icu63' 'sdl2' 'python' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl-1.1' 'steam' 'coreutils' 'findutils')
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'

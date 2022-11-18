@@ -15,6 +15,7 @@ pkgbase = unreal-engine
 	makedepends = sed
 	makedepends = grep
 	makedepends = glibc
+	makedepends = wget
 	depends = icu63
 	depends = sdl2
 	depends = python
