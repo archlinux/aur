@@ -2,8 +2,8 @@
 
 _pkgname=peldd
 pkgname=$_pkgname-git
-pkgver=r19.5b07cb3
-pkgrel=3
+pkgver=r20.2af684a
+pkgrel=1
 pkgdesc='A tool for listing shared object dependencies of a portable executable (PE)'
 arch=('x86_64')
 url="https://github.com/gsauthof/pe-util"
@@ -23,7 +23,7 @@ prepare() {
   cd $_pkgname
   git submodule init
   git config submodule.pe-parse.url $srcdir/pe-parse
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   patch -p1 -i $srcdir/0001-Fix-search-paths-for-Arch.patch
 }
 
