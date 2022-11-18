@@ -4,15 +4,23 @@
 
 pkgname=cdw
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ncurses CD writer program which uses cdrecord and mkisofs"
 arch=('i686' 'x86_64')
 url="http://cdw.sourceforge.net/"
 license=('GPL')
 depends=('cdrtools' 'ncurses' 'libburn' 'libcdio')
-source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}%20${pkgver}/${pkgname}-${pkgver}.tar.gz/download)
-md5sums=('9e6b5c2bbe54e8f1dc0d20e3cb966e5c')
+source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}%20${pkgver}/${pkgname}-${pkgver}.tar.gz/download
+        0001-add-formatstring.patch)
+md5sums=('9e6b5c2bbe54e8f1dc0d20e3cb966e5c'
+         '4275a59000cd5d03c7aa9171dbc4271c')
 
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+
+  patch -Np1 -i ${srcdir}/0001-add-formatstring.patch
+}
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
