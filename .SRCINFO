@@ -1,6 +1,6 @@
 pkgbase = buzz-git
 	pkgdesc = A simple system tray application for notifying about unseen e-mail
-	pkgver = .r0.0247964
+	pkgver = 1.6.0.r4.07cf74e
 	pkgrel = 1
 	url = https://github.com/jonhoo/buzz
 	arch = i686
