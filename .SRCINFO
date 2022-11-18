@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsdfft-git
+	pkgdesc = Plugin for Vapoursynth: vsdfft (GIT version)
+	pkgver = 1.0.0.3.g5584f85
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-dfft.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = vapoursynth-plugin-vstools-git
+	depends = vapoursynth-plugin-vskernels-git
+	depends = vapoursynth-plugin-vsexprtools-git
+	depends = vapoursynth-plugin-vsrgtools-git
+	depends = vapoursynth-plugin-vsmask-git
+	provides = vapoursynth-plugin-vsdfft
+	conflicts = vapoursynth-plugin-vsdfft
+	source = vsdfft::git+https://github.com/Irrational-Encoding-Wizardry/vs-dfft.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsdfft-git
