@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/HashPals/Name-That-Hash"
 license=("GPL3")
 depends=("python" "python-click" "python-rich")
-makedepends=("python-setuptools" "python-dephell")
+makedepends=("python-build" "python-installer" "python-poetry-core")
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=("2f8dd4beaf7326d2f664f18205c024848dcb627ff29ceffb22ab410fbef2d761")
 
@@ -19,12 +19,12 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname-$pkgver"
-	python setup.py build
+	cd $_pkgname-$pkgver
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
-	python setup.py install --prefix="/usr" --root="$pkgdir/" --optimize=1 --skip-build
+	cd $_pkgname-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
