@@ -1,0 +1,14 @@
+pkgbase = local-lua-debugger-vscode-git
+	pkgdesc = A simple Lua debugger which requires no additional dependencies.
+	pkgver = 260
+	pkgrel = 1
+	url = https://github.com/tomblind/local-lua-debugger-vscode
+	arch = any
+	license = MIT
+	makedepends = npm
+	provides = local-lua-debugger-vscode
+	conflicts = local-lua-debugger-vscode
+	source = git+https://github.com/tomblind/local-lua-debugger-vscode.git
+	md5sums = SKIP
+
+pkgname = local-lua-debugger-vscode-git
