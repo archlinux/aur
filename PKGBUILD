@@ -6,7 +6,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=v0.7.0.0pre.r163.gd50c1324
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -50,7 +50,12 @@ build() {
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
     cd "$srcdir/$_pkgname"
-    PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
+    # check for the DI rewrite commit that makes plugins incompatible
+    if git merge-base --is-ancestor 10a3c07206028f7df5befbdeca6aadb30efe4cb3 HEAD >/dev/null; then
+        PREFIX="0.7.0.0-pre"
+    else
+        PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
+    fi
 
     if check_option "strip" y; then
         EXTRA_OPTIONS="/p:DebugType=None /p:DebugSymbols=false"
