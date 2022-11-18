@@ -3,7 +3,7 @@
 resname=earth_wallpaper
 pkgname=earth-wallpaper-nightly
 name=earth-wallpaper
-pkgver=2.0.1
+pkgver=2.0.1.r1.gfe05700
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
@@ -30,8 +30,8 @@ pkgver() {
 }
 
 prepare() {
-    cd $srcdir/$resname/$resname
-    sed -i "s/2.0.1/$pkgver/g" about.py
+    cd $srcdir/$resname
+    sed -i "s/2.0.1/$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" $resname/about.py
 }
 
 package() {
