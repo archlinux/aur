@@ -9,7 +9,7 @@
 
 
 pkgname=pycharm-community-eap
-pkgver=223.7255.83
+pkgver=223.7401.13
 _pkgver=2022.3
 _eap=y
 pkgrel=1
@@ -32,7 +32,7 @@ options=('!strip')
 
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=('9d3bc4747753437d67bd9503d1d9e74401300ee472f266414350cfd20fcc18f2')
+sha256sums=('f2baee604902b7b79bb1a790263fbf92278070d35fe3b7a2f71814304bdcb5df')
 
 
 prepare() {
@@ -50,7 +50,7 @@ prepare() {
 	fi
 }
 
-build() {
+do-not-build() {
 	cd "pycharm-community-$pkgver/plugins/python-ce/helpers/pydev"
 
 	# compile PyDev debugger used by PyCharm to speedup debugging
@@ -100,6 +100,5 @@ package() {
 		exec "/opt/$pkgname/bin/pycharm.sh"
 	EOF
 }
-
 
 # vim: ts=4 sw=4 noet ft=PKGBUILD:
