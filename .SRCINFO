@@ -1,0 +1,23 @@
+pkgbase = vapoursynth-plugin-vsscale-git
+	pkgdesc = Plugin for Vapoursynth: vsscale (GIT version)
+	pkgver = 1.3.1.4.g96f2cad
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-scale
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = vapoursynth-plugin-vstools-git
+	depends = vapoursynth-plugin-vskernels-git
+	depends = vapoursynth-plugin-vsexprtools-git
+	depends = vapoursynth-plugin-vsrgtools-git
+	depends = vapoursynth-plugin-vsaa-git
+	depends = vapoursynth-plugin-vsmask-git
+	provides = vapoursynth-plugin-vsscale
+	conflicts = vapoursynth-plugin-vsscale
+	source = vsscale::git+https://github.com/Irrational-Encoding-Wizardry/vs-scale.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsscale-git
