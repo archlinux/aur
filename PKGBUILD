@@ -12,14 +12,15 @@ pkgdesc="Decentralised P2P exchange built on Monero and Tor."
 arch=("any")
 url="https://github.com/haveno-dex/${pkgname}"
 license=("AGPL3")
-depends=("bash" "jdk11-openjdk")
+depends=("bash" "java-runtime")
+makedepends=("java-environment>=11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("c5ab75991b3692166e75a86ff78816ead88b52d26424c0100fc4dc1f9ff4965356a8ee40cc6af25c8f618932b5df4413a2f4b962fbfa93d994680fd3a46e7385")
 
 build()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    make skip-tests
+    ./gradlew -F lenient -x test build
 }
 
 package()
