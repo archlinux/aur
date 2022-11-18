@@ -2,8 +2,9 @@
 # Contributor: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd-no-ddc
+_pkgname=clightd
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bus interface to change screen brightness based on ambient brightness (DDC disabled)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
@@ -21,7 +22,7 @@ build() {
     -G "Unix Makefiles" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBEXECDIR=lib/"$pkgname" \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib/"$_pkgname" \
     -DENABLE_DDC=0 \
     -DENABLE_GAMMA=1 \
     -DENABLE_DPMS=1 \

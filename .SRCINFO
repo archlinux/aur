@@ -1,7 +1,7 @@
 pkgbase = clightd-no-ddc
 	pkgdesc = Bus interface to change screen brightness based on ambient brightness (DDC disabled).
 	pkgver = 5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FedeDP/Clightd
 	arch = x86_64
 	arch = aarch64
