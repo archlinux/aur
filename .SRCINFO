@@ -1,0 +1,19 @@
+pkgbase = tray-control
+	pkgdesc = Simple CLI tool to show items in systray and activate them. Build on top of DBus
+	pkgver = r10.08a0ff9
+	pkgrel = 1
+	url = https://github.com/andrewerf/tray-control
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = systemd-libs
+	depends = fmt
+	depends = sdbus-cpp
+	source = git+https://github.com/andrewerf/tray-control.git
+	source = git+https://github.com/Neargye/magic_enum.git
+	source = git+https://github.com/jarro2783/cxxopts.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = tray-control
