@@ -1,4 +1,4 @@
-# Maintainer: Igor Saric <karabaja4 -at- gmail -dot- com>
+# Maintainer: Igor Saric <karabaja4 at gmail.com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: Giampaolo Mancini <giampaolo@trampolineup.com>
 
