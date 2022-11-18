@@ -9,7 +9,6 @@ pkgbase = python-wandb-git
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-gitpython
-	depends = python-dateutil
 	depends = python-requests
 	depends = python-click
 	depends = python-promise
@@ -22,6 +21,7 @@ pkgbase = python-wandb-git
 	depends = python-pyaml
 	depends = python-docker-pycreds
 	depends = python-yaspin
+	depends = python-setproctitle
 	provides = python-wandb
 	conflicts = python-wandb-git
 	source = python-wandb-git::git+https://github.com/wandb/client
