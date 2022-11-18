@@ -1,8 +1,8 @@
 # Maintainer: Viktor Tereshchenko < m0nochr0me at gmail dot com >
 pkgname="shyysh-git"
 _gitpkg="shyysh"
-_gitcommit="3b9188d1a8f0db827f55fab97bc8b6aa84b5c592"
-pkgver="0.0.5"
+_gitcommit="0acb5e7d07bb0127bbbb9df5e4752de82722440d"
+pkgver="0.0.6"
 pkgrel="1"
 pkgdesc="TUI SSH Connection Manager"
 arch=("any")
