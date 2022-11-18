@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.20.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ makedepends=('cython'
              'python-wheel'
              'python-build'
              'python-installer'
+             'python-extension-helpers'
              'python-numpy')
 #'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-nbsphinx' 'python-sphinx-click' 'python-click' 'python-yaml' 'python-regions' 'python-naima')
 #checkdepends=('python-pydantic'
@@ -21,14 +22,14 @@ makedepends=('cython'
 #              'python-yaml'
 #              'python-scipy'
 #              'python-regions')
-checkdepends=('python-pytest-remotedata'
-              'python-pytest-astropy-header'
+checkdepends=('python-pytest-astropy-header'
+              'python-pytest-remotedata'
               'python-scipy'
               'python-regions'
               'python-click'
               'python-matplotlib'
-              'python-iminuit'
-              'python-pydantic')
+#             'python-pydantic'
+              'python-iminuit')
 #             'python-healpy'
 #             'python-reproject'
 #             'python-iminuit'
@@ -36,10 +37,10 @@ checkdepends=('python-pytest-remotedata'
 #             'jupyter-nbformat'
 #             'python-sphinx'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a061826514fc5915660296b351f386a2')
+md5sums=('33db5efaddc89cda27045c2c8cf9e666')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
@@ -60,9 +61,9 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
-        build/lib.linux-${CARCH}-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver).egg-info
-    PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest "build/lib.linux-${CARCH}-$(get_pyver)" || warning "Tests failed"
-#   python setup.py test
+        build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver .).egg-info
+#   PYTHONPATH="build/lib.linux-${CARCH}-cpython $(get_pyver)" pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-gammapy() {
