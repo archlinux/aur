@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-git
-pkgver=202207
+pkgver=202209
 pkgrel=1
 pkgdesc='End-to-End Speech Processing Toolkit Python Package'
 arch=('any')
