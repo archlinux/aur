@@ -1,0 +1,16 @@
+pkgbase = bottom-nightly-bin
+	pkgdesc = Yet another cross-platform graphical process/system monitor
+	pkgver = 2022_11_17
+	pkgrel = 1
+	url = https://github.com/ClementTsang/bottom
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = bottom
+	conflicts = bottom
+	conflicts = bottom-bin
+	conflicts = bottom-git
+	source = bottom-2022_11_17.tar.gz::https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = bottom-nightly-bin
