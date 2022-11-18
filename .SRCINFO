@@ -1,13 +1,27 @@
 pkgbase = discreet-bin
 	pkgdesc = Discreet Cryptocurrency Wallet. discreet.net
-	pkgver = 0.0.1
-	pkgrel = 1
-	url = https://github.com/DiscreetNetwork/discreet
+	pkgver = 0.2.23
+	pkgrel = 2
+	url = https://discreet.net
 	arch = x86_64
-	depends = dotnet-sdk
+	noextract = -gui_0.2.23-3_amd64.deb
+	noextract = discreet-daemon_0.0.28-2_amd64.deb
+	source = https://deb.discreet.net/pool/main/discreet-gui_0.2.23-3_amd64.deb
+	source = https://deb.discreet.net/pool/main/discreet-daemon_0.0.28-2_amd64.deb
+	sha256sums = 0c8063f314e8a3a148efe25d44495d8694746375115995682d75e939da13b4d3
+	sha256sums = 438d093d4a692204e85c35966b95ef0d8b5b96c35708630cb4cdbdab1d7f434c
+
+pkgname = discreet-gui-bin
+	depends = discreet-daemon
 	provides = discreet
 	conflicts = discreet
-	source = https://github.com/DiscreetNetwork/discreet/releases/download/assets/linux-x64.tar.bz2
-	sha256sums = be503d33f1e875a65cbb1b06727b3b0229bff75fc35b799bd1dcfeae750d07d7
 
-pkgname = discreet-bin
+pkgname = discreet-daemon-bin
+	depends = bzip2
+	depends = snappy
+	depends = lz4
+	depends = zlib
+	depends = zstd
+	depends = glibc
+	provides = discreet-daemon
+	conflicts = discreet-daemon
