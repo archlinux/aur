@@ -11,7 +11,7 @@
 
 pkgname=cycles-standalone
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
@@ -20,7 +20,7 @@ depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree o
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=3cdcc8ac9273f8893880f85b5f11decd833a10d1"
+source=("git+https://github.com/blender/cycles.git#commit=2db39bdc99ef371a5ce66eb6d7ec733ec5fe03fc"
         0001-Remove-FindClang.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
