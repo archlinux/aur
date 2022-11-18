@@ -1,13 +1,13 @@
 pkgbase = r-hdinterval
 	pkgdesc = Highest (Posterior) Density Intervals
-	pkgver = 0.2.2
-	pkgrel = 4
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=HDInterval
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-coda
-	source = https://cran.r-project.org/src/contrib/HDInterval_0.2.2.tar.gz
-	sha256sums = 047eeb08c3dba21dc1cba8e35e3191cde6cdc98c77ee3a3496e045f7937565ed
+	source = https://cran.r-project.org/src/contrib/HDInterval_0.2.4.tar.gz
+	sha256sums = bb07f0edd660a02ed18e578c2798eb8c2db0e181a5e0c3e23db182d13e9494f6
 
 pkgname = r-hdinterval
