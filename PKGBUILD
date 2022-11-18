@@ -2,20 +2,21 @@
 # Contributor: Bruce Zhang
 pkgname=picgo
 _name=PicGo
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64' 'i686')
 url="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
 depends=()
+optdepends=('npm: plugin support')
 makedepends=('yarn')
 provides=('picgo')
-conflicts=('picgo-appimage')
+conflicts=('picgo')
 source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/Molunerfinn/PicGo/archive/v$pkgver.tar.gz"
 )
-sha256sums=('605a4f209c97ce5b0494b5f9a7c4f1685ed766a84dc61a6db8a02bb4665fa79f')
+sha256sums=('c88f748973300bfea33e13c3f42b2096a520b5102e14ff96a531fab2700c796d')
 
 prepare() {
 	cd "$_name-$pkgver"
@@ -24,7 +25,7 @@ prepare() {
 
 build() {
 	cd "$_name-$pkgver"
-	yarn electron:build --dir
+	NODE_OPTIONS=--openssl-legacy-provider yarn electron:build --dir
 }
 
 package() {
