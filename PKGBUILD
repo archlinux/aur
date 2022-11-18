@@ -17,6 +17,7 @@ url="https://github.com/elexis/${_pkgname}"
 license=("EPL")
 depends=("alsa-lib" "at-spi2-core" "dbus-glib" "freetype2" "java-runtime" "libcups" "libnet" "libxcomposite" "libxkbcommon" "libxrandr" "mesa" "nss")
 makedepends=("git" "java-environment>=11" "java-environment<=17" "maven")
+# The git repository is needed for the build.
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
 sha512sums=("SKIP")
 
