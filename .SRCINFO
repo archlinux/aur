@@ -1,12 +1,11 @@
 pkgbase = ttf-hananiah
 	pkgdesc = A Hebrew simulation typeface derived from Ezra SIL
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fontlibrary.org/en/font/hananiah
 	arch = any
-	license = custom:OFL
+	license = OFL
 	source = https://fontlibrary.org/assets/downloads/hananiah/5b316c3d0960044bc6c85e964c1de25f/hananiah.zip
 	sha256sums = c8dd72f032508d7702b9d571efd9c45cc2ccb980f8a0ba8df2ee0c04e9248a12
 
 pkgname = ttf-hananiah
-
