@@ -2,7 +2,7 @@
 
 pkgname=snapchat-nativefier
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Snapchat web built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://web.${pkgname%-nativefier}.com"
@@ -15,7 +15,7 @@ source=(
   "${pkgname}.desktop"
 )
 sha256sums=('6a64d75a4f704d6d6bd21b845ee99bc577b2ac82cecbfdad2fe97fe9c41757cc'
-            'ddea0071b5236dd9cda3a68e7ae194c2d7b1a174e6199fdcf517eab04b2e4681')
+            '46ff7aa6dbe376cf081411419bd30249e5b6babc50abfa2bde15f4d659a64bf4')
 
 build() {
   cd "${srcdir}"
