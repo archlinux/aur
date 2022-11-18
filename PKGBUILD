@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FLAMES
-_pkgver=1.3.4
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='FLAMES: Full Length Analysis of Mutations and Splicing in long read RNA-seq data'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   r-complexheatmap
   r-cowplot
   r-dplyr
+  r-dropletutils
   r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
@@ -27,7 +28,9 @@ depends=(
   r-ggplot2
   r-gridextra
   r-igraph
+  r-jsonlite
   r-magrittr
+  r-multiassayexperiment
   r-rcolorbrewer
   r-rcpp
   r-reticulate
@@ -48,12 +51,17 @@ depends=(
 optdepends=(
   r-biocfilecache
   r-biocstyle
+  r-geoquery
   r-knitr
   r-markdown
+  r-r.utils
   r-rmarkdown
+  r-shortread
+  r-testthat
+  r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('edec5aad7deb6237bc2fb3a4c63050937b2d3a4e1f23336af525aca12b5868a9')
+sha256sums=('3b5c20137f7dc492c0dd0fde954da31c1c994f830e0ee0d951e770d5c2466e39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
