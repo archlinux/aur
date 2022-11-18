@@ -6,6 +6,7 @@ pkgver=w17.0.0.r12.g78b7781
 _pkgver=$(echo $pkgver | cut -c 2-7)
 url='https://github.com/mkubecek/vmware-host-modules'
 pkgrel=1
+epoch=1
 pkgdesc='Patches needed to build VMware Player host modules against recent kernels'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL2')
