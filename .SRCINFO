@@ -1,7 +1,7 @@
 pkgbase = vmware-host-modules-dkms-git
 	pkgdesc = Patches needed to build VMware Player host modules against recent kernels
-	pkgver = 16.2.4.k5.18.r3.gc06f22f
-	pkgrel = 6
+	pkgver = w17.0.0.r12.g78b7781
+	pkgrel = 1
 	url = https://github.com/mkubecek/vmware-host-modules
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = vmware-host-modules-dkms-git
 	conflicts = vmware-host-modules-dkms
 	conflicts = vmware-host-modules
 	conflicts = vmware-workstation
-	source = git+https://github.com/mkubecek/vmware-host-modules.git#branch=player-16.2.4
+	source = git+https://github.com/mkubecek/vmware-host-modules.git#branch=workstation-17.0.0
 	source = dkms-vmmon.conf
 	source = dkms-vmnet.conf
 	sha256sums = SKIP
