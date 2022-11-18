@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-ctc-segmentation-git
-pkgver=1.7.1
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='Determine and align utterance segments within audio files using CTC'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    cythonize -3 ctc_segmentation/ctc_segmentation_dyn.pyx
+    cythonize -3 ctc_segmentation/ctc_segmentation_dyn.pyx 2>&1 > /dev/null # discarding the ouptut prevents any stdout leaking to pkgver()
     python setup.py build 2>&1
     # echo " --> Warnings of a deprected numpy API can be safely ignored."
 }
