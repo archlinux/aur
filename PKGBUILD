@@ -1,17 +1,16 @@
-# Maintainer: Jan Subelj <jan dot subelj010 at gmail dot com>
+# Maintainer: jlaunay
 # Contributor: Jan Subelj <jan dot subelj010 at gmail dot com>
 pkgname=g910-gkeys-git
 _appname=g910-gkeys
 _gitname=g910-gkey-macro-support
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='GKey support for Logitech G910 Keyboard on GNU/Linux'
 url='https://github.com/JSubelj/g910-gkey-macro-support'
 arch=('any')
 license=('GPL3')
 depends=('python-pyusb' 'python-uinput')
-#source=('git://github.com/JSubelj/g910-gkey-macro-support.git#branch=development')
-source=('git://github.com/JSubelj/g910-gkey-macro-support.git')
+source=('git+https://github.com/JSubelj/g910-gkey-macro-support.git')
 install=${pkgname}.install
 backup=("etc/${_appname}/config.json" "usr/lib/systemd/system/g910-gkeys.service")
 md5sums=('SKIP')
