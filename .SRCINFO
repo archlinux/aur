@@ -1,6 +1,6 @@
 pkgbase = fig-nightly-bin
 	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
-	pkgver = 2.8.0_nightly.20221117
+	pkgver = 2.8.0_nightly.20221118
 	pkgrel = 1
 	url = https://fig.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fig-nightly-bin
 	depends = xdg-utils
 	provides = fig
 	conflicts = fig
-	source = fig-nightly-bin-2.8.0-nightly.20221117.tar.xz::https://repo.fig.io/generic/nightly/asset/2.8.0-nightly.20221117/x86_64/fig.tar.xz
-	sha256sums = 35c9c292fe9d10c10d6c8be16b9270aa4bdb01a1af69e7a35408ccb05300a5a0
+	source = fig-nightly-bin-2.8.0-nightly.20221118.tar.xz::https://repo.fig.io/generic/nightly/asset/2.8.0-nightly.20221118/x86_64/fig.tar.xz
+	sha256sums = f70078029df3fae11c1c5f9b5bd91830791e4041e275450a5ea8bff55bc3b0dd
 
 pkgname = fig-nightly-bin
