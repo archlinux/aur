@@ -1,14 +1,13 @@
 pkgbase = jellyfin
 	pkgdesc = The Free Software Media System
 	pkgver = 10.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = GPL2
-	makedepends = dotnet-sdk-6.0>=6
-	makedepends = dotnet-sdk-6.0<7
+	makedepends = dotnet-sdk-6.0
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
@@ -34,10 +33,8 @@ pkgname = jellyfin-web
 
 pkgname = jellyfin-server
 	pkgdesc = Jellyfin server component
-	depends = dotnet-runtime-6.0>=6
-	depends = dotnet-runtime-6.0<7
-	depends = aspnet-runtime-6.0>=6
-	depends = aspnet-runtime-6.0<7
+	depends = dotnet-runtime-6.0
+	depends = aspnet-runtime-6.0
 	depends = ffmpeg
 	depends = sqlite
 	backup = etc/conf.d/jellyfin
