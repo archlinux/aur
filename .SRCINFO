@@ -1,17 +1,17 @@
 pkgbase = python-name-that-hash
 	pkgdesc = The Modern Hash Identification System.
 	pkgver = 1.11.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/HashPals/Name-That-Hash
 	arch = any
 	license = GPL3
-	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
+	makedepends = python-wheel
 	depends = python
 	depends = python-click
 	depends = python-rich
-	source = https://github.com/HashPals/Name-That-Hash/archive/1.11.0/python-name-that-hash-1.11.0.tar.gz
-	sha256sums = 2f8dd4beaf7326d2f664f18205c024848dcb627ff29ceffb22ab410fbef2d761
+	source = https://files.pythonhosted.org/packages/19/7a/731c96302f39610f1ce6742a4e5b997d621b06f5608dc939f5cd48a639a0/name_that_hash-1.11.0-py3-none-any.whl
+	sha256sums = 59682a35714235d958e723d658c0874abb81edf77ceb9d81d7e6416bc2af3b84
 
 pkgname = python-name-that-hash

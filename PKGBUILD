@@ -3,23 +3,27 @@
 pkgname=python-name-that-hash
 _pkgname=Name-That-Hash
 pkgver=1.11.0
-pkgrel=5
+pkgrel=6
 pkgdesc="The Modern Hash Identification System."
 arch=("any")
 url="https://github.com/HashPals/Name-That-Hash"
 license=("GPL3")
 depends=("python" "python-click" "python-rich")
-makedepends=("python-build" "python-installer" "python-poetry-core")
-source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("2f8dd4beaf7326d2f664f18205c024848dcb627ff29ceffb22ab410fbef2d761")
+makedepends=("python-installer" "python-poetry-core" "python-wheel")
+source=("https://files.pythonhosted.org/packages/19/7a/731c96302f39610f1ce6742a4e5b997d621b06f5608dc939f5cd48a639a0/name_that_hash-1.11.0-py3-none-any.whl")
+sha256sums=("59682a35714235d958e723d658c0874abb81edf77ceb9d81d7e6416bc2af3b84")
 
-build() {
-	cd $_pkgname-$pkgver
-	python -m build --wheel --skip-dependency-check --no-isolation
-}
+
+# NOTE: for now install directly via wheel as I was getting the
+# 		ModuleNotFoundError: No module named 'name_that_hash'
+#       error after installation and cannot look into it right now
+
+# build() {
+# 	cd $_pkgname-$pkgver
+# 	python -m build --wheel --skip-dependency-check --no-isolation
+# }
 
 package() {
-	cd $_pkgname-$pkgver
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	python -m installer --destdir="$pkgdir" *.whl
+	# install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
