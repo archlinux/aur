@@ -1,16 +1,16 @@
 pkgbase = mkmm
 	pkgdesc = Moviuro's Kernel Module Manager
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://git.sr.ht/~moviuro/mkmm
 	install = mkmm.install
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://git.sr.ht/~moviuro/mkmm?signed#tag=0.2.0
+	source = git+https://git.sr.ht/~moviuro/mkmm?signed#tag=0.3.0
 	source = mkmm.install
 	validpgpkeys = 2CD96FEE343C6799B9CEAFAD62009A2E0C22D9AB
 	sha256sums = SKIP
-	sha256sums = 19066ac2fd8b1790b8f03b237596d98880149f2bcbd8bf328567e32f042d93b7
+	sha256sums = 681d23e0770c4a73b27da5017bbe37c3cf922dec4d9b3a46048ff1e58b15b694
 
 pkgname = mkmm

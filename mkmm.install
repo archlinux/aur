@@ -21,3 +21,9 @@ post_install() {
 post_remove() {
   note "Remove the hooks from /etc/pacman.d/hooks, and disable the mkmm-bleach service"
 }
+
+post_upgrade() {
+  case "$2" in
+    0.1.*|0.2.*) note "The restore hooks have changed, they are now numbered 65-*" ;;
+  esac
+}
