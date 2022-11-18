@@ -3,13 +3,13 @@
 pkgname=vault-exfiltrate-git
 _pkgname=${pkgname%-git}
 pkgver=r19.28c722d
-pkgrel=1
+pkgrel=2
 pkgdesc='Proof-of-concept for recovering the master key from a Hashicorp Vault coredump'
 arch=('x86_64')
 url="https://github.com/slingamn/${_pkgname}"
 license=('MPL2')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git')
 provides=('vault-exfiltrate')
 conflicts=('vault-exfiltrate')
 optdepends=(
