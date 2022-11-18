@@ -1,19 +1,18 @@
 pkgbase = earth-wallpaper-nightly
 	pkgdesc = Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
-	pkgver = 1.8.7
+	pkgver = 2.0.1
 	pkgrel = 0
 	url = https://jihulab.com/ambition-echo/earth_wallpaper
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
-	makedepends = git
-	makedepends = ninja
 	depends = dbus-python
-	depends = qt5-base
 	depends = python
 	depends = python-pillow
 	depends = python-requests
+	depends = pyside6
 	source = git+https://jihulab.com/ambition-echo/earth_wallpaper.git
+	source = earth-wallpaper.desktop
 	sha256sums = SKIP
+	sha256sums = cf4764128b5fffe69ed3bbaf53e107f9359050f3d4580d33d136db4b1fa3fe9b
 
 pkgname = earth-wallpaper-nightly
