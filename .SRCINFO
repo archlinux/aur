@@ -1,6 +1,6 @@
 pkgbase = python-hyperpyyaml-git
 	pkgdesc = Extensions to YAML syntax for better python interaction.
-	pkgver = 1.0.1.r13
+	pkgver = 1.1.0.r24
 	pkgrel = 1
 	url = https://github.com/speechbrain/HyperPyYAML
 	arch = any
