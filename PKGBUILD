@@ -2,8 +2,8 @@
 
 pkgname=icamerasrc-git
 _pkgname=icamerasrc
-pkgver=r42.4d4293d
-pkgrel=1
+pkgver=r55.3b7cdb9
+pkgrel=2
 pkgdesc="Intel IPU6 camera source for GStreamer"
 arch=('x86_64')
 url="https://github.com/intel/icamerasrc"
@@ -13,8 +13,10 @@ makedepends=('git'
              'autoconf'
              'make'
              'gcc')
-source=("git+${url}.git#branch=icamerasrc_slim_api")
-sha256sums=('SKIP')
+source=("git+${url}.git#branch=icamerasrc_slim_api"
+        "70-ipu6-psys.rules")
+sha256sums=('SKIP'
+            '41f0406f4548f12dd3ec5c4c94c5f6f4590d48ac4c80623682f3d22622a8a9bd')
 
 pkgver() {
     cd $_pkgname
@@ -31,5 +33,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
+    mkdir -p $pkgdir/usr/lib/udev/rules.d
     make DESTDIR="$pkgdir" install
+    install -Dm644 $srcdir/70-ipu6-psys.rules $pkgdir/usr/lib/udev/rules.d
 }
