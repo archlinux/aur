@@ -1,7 +1,7 @@
 pkgbase = securefs
 	pkgdesc = A better transparent encryption filesystem
-	pkgver = 0.13.0
-	pkgrel = 2
+	pkgver = 0.13.1
+	pkgrel = 1
 	url = https://github.com/netheril96/securefs
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = securefs
 	makedepends = python
 	depends = fuse
 	depends = clang
-	source = git+https://github.com/netheril96/securefs.git#tag=0.13.0
+	source = git+https://github.com/netheril96/securefs.git#tag=0.13.1
 	sha256sums = SKIP
 
 pkgname = securefs
