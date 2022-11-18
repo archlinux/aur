@@ -2,14 +2,14 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-powersave-git
-pkgver=r40.846432d
+pkgver=r41.59204bd
 pkgrel=1
 pkgdesc='User-discretion power management utility for Wingpanel'
 arch=('x86_64')
 url='https://github.com/quequotion/wingpanel-indicator-powersave'
 license=('GPL2')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' lib{granite,wingpanel}.so 'polkit' 'throttlectl')
+depends=('glib2' 'glibc' 'gtk3' libgranite.so 'polkit' 'throttlectl')
 makedepends=('git' 'meson' 'vala' 'wingpanel' 'polkit')
 provides=("${pkgname%-git}" "wingpanel-indicator-cpufreq")
 conflicts=("${pkgname%-git}" "wingpanel-indicator-cpufreq")

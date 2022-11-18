@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-powersave-git
 	pkgdesc = User-discretion power management utility for Wingpanel
-	pkgver = r40.846432d
+	pkgver = r41.59204bd
 	pkgrel = 1
 	url = https://github.com/quequotion/wingpanel-indicator-powersave
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = wingpanel-indicator-powersave-git
 	depends = glibc
 	depends = gtk3
 	depends = libgranite.so
-	depends = libwingpanel.so
 	depends = polkit
 	depends = throttlectl
 	provides = wingpanel-indicator-powersave
