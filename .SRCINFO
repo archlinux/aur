@@ -1,7 +1,7 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
 	pkgver = 8.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libvirt.org/
 	arch = x86_64
 	license = LGPL
@@ -107,5 +107,4 @@ pkgname = libvirt-xen
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
 	provides = libvirt-qemu.so
-	provides = libvirt-libxl.so
 	conflicts = libvirt

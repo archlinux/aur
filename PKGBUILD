@@ -10,7 +10,7 @@
 
 pkgname=libvirt
 pkgver=8.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -151,7 +151,6 @@ check() {
 package() {
   conflicts=('libvirt')
   provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
-  provides+=('libvirt-libxl.so')
 
   DESTDIR="$pkgdir" ninja -C build install
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
