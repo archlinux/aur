@@ -1,9 +1,9 @@
 # Maintainer : Eric Lesiuta <elesiuta@gmail.com>
 
 pkgname=picosnitch
-pkgver=0.11.6
+pkgver=0.11.7
 pkgrel=1
-pkgdesc='Protect your privacy, see which applications make network connections'
+pkgdesc='Monitor network traffic per executable using BPF'
 arch=('any')
 url='https://elesiuta.github.io/picosnitch/'
 license=('GPL3')
@@ -13,7 +13,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("picosnitch-${pkgver}.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v${pkgver}/picosnitch.tar.gz")
-sha256sums=('743f41b3859e7eb8a2023c073034a6f41fb71ac67ccf64e9f016925baada5952')
+sha256sums=('e0245ff7e6c1d22c37db9a52d9dc073ae7ba8e56ddcf15c87c7a9e212a85bb6e')
 
 build() {
     python setup.py build

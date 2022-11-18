@@ -1,6 +1,6 @@
 pkgbase = picosnitch
-	pkgdesc = Protect your privacy, see which applications make network connections
-	pkgver = 0.11.6
+	pkgdesc = Monitor network traffic per executable using BPF
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://elesiuta.github.io/picosnitch/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = picosnitch
 	depends = python-plotly
 	depends = python-psutil
 	depends = python-requests
-	source = picosnitch-0.11.6.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v0.11.6/picosnitch.tar.gz
-	sha256sums = 743f41b3859e7eb8a2023c073034a6f41fb71ac67ccf64e9f016925baada5952
+	source = picosnitch-0.11.7.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v0.11.7/picosnitch.tar.gz
+	sha256sums = e0245ff7e6c1d22c37db9a52d9dc073ae7ba8e56ddcf15c87c7a9e212a85bb6e
 
 pkgname = picosnitch
