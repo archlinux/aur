@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --frozen --release --target "$CARCH-unknown-linux-gnu"
+  cargo build --release --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
