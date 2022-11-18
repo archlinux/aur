@@ -1,6 +1,6 @@
 pkgbase = mauiman-git
 	pkgdesc = Maui Manager Library. Server and public library API.
-	pkgver = 1.0.0.r5.g6ef5b9c
+	pkgver = 1.0.0.r6.g7a65fa5
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauiman
 	arch = x86_64
