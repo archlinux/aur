@@ -1,6 +1,6 @@
 pkgname=tlstunnel
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
 url="https://sr.ht/~emersion/tlstunnel"
@@ -15,7 +15,7 @@ source=(
   'tlstunnel.sysusers'
 )
 validpgpkeys=("34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48")
-sha256sums=('fd9ae435690473b3ca2028df0b34afa1d9f80ee01e2eebba540a11eaed2e59fb'
+sha256sums=('439ddcf00f6f5526321c5554f7763a438ff0b62112b23e0bae2b36cd449c9683'
             'SKIP'
             'a298eb15cef1253c235c89e670a01f2ef9eb09276b0661c7b265cfd8bf43326a'
             '4a891acfb64531c8ff3a9b1d596df749614d89dd4edd4571f683b71c7c31a5a6'
