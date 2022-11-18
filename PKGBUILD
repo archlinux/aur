@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -202,7 +202,7 @@ package() {
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
-  install -Dm755 unreal-engine-5.sh "${pkgdir}/usr/bin/"
+  install -Dm755 ../unreal-engine-5.sh "${pkgdir}/usr/bin/"
   chmod +x "${pkgdir}/usr/bin/unreal-engine-5.sh"
   ln -s "${pkgdir}/usr/bin/unreal-engine-5.sh" "${pkgdir}/usr/bin/ue5"
   ln -s "${pkgdir}/usr/bin/unreal-engine-5.sh" "${pkgdir}/usr/bin/UE5"
