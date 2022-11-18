@@ -7,7 +7,7 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net"
 pkgver=0.2.23
 _guiver="${pkgver}-3"
 _daemonver=0.0.28-2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 #depends=('dotnet-sdk')
 url="https://discreet.net"
@@ -20,7 +20,7 @@ noextract=("${_pkgname}-gui_${_guiver}_amd64.deb"
 "${_pkgname1}_${_daemonver}_amd64.deb")
 
 package_discreet-gui-bin() {
-	depends=("discreet-daemon")
+	depends=("discreet-daemon-bin")
 	provides=("discreet")
 	conflicts=("discreet")
 	#create directory trees
