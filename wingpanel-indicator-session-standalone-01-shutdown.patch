@@ -61,7 +61,7 @@ index bd130cf..8dde95d 100644
      private async void init_interfaces () {
          try {
              system_interface = yield Bus.get_proxy (BusType.SYSTEM, "org.freedesktop.login1", "/org/freedesktop/login1");
-@@ -294,61 +271,6 @@ public class Session.Indicator : Wingpanel.Indicator {
+@@ -298,62 +298,6 @@
  
      public override void closed () {}
  
@@ -78,7 +78,9 @@ index bd130cf..8dde95d 100644
 -
 -        unowned EndSessionDialogServer server = EndSessionDialogServer.get_default ();
 -
--        current_dialog = new Widgets.EndSessionDialog (type);
+-        current_dialog = new Widgets.EndSessionDialog (type) {
+-            transient_for = (Gtk.Window) indicator_icon.get_toplevel ()
+-        };
 -        current_dialog.destroy.connect (() => {
 -            server.closed ();
 -            current_dialog = null;
@@ -116,7 +118,6 @@ index bd130cf..8dde95d 100644
 -            }
 -        });
 -
--        current_dialog.set_transient_for (indicator_icon.get_toplevel () as Gtk.Window);
 -        current_dialog.show_all ();
 -    }
 -
