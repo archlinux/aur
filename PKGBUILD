@@ -18,17 +18,17 @@ depends=(
 )
 optdepends=(
     'r-testthat'
-    'r-Matching'
+    'r-matching'
     'r-reshape2'
     'r-ggplot2'
     'r-knitr'
     'r-geepack'
     'r-lme4'
-    'r-lmerTest'
+    'r-lmertest'
     'r-rmarkdown'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b1cf15579abd4240e24435d2d9aad255c839d2a0293e28cb2eef0c808c4727af')
+sha512sums=('bb641f1b951f180942a199877358d3197b90b138adfa7436c55cff615a990e908754bcaeaf4bafe858216b4f110bb0887e978ca398fac1cea4b0b64d620f8fb4')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
