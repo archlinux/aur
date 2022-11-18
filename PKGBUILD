@@ -1,10 +1,10 @@
-# Maintainer: musiclover <musiclover382@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=text-engine
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight rich-text framework for GTK"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/mjakeman/$pkgname"
 license=('LGPL3')
 depends=('gtk4' 'json-glib' 'libadwaita' 'libxml2')
