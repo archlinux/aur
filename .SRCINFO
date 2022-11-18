@@ -1,0 +1,24 @@
+pkgbase = brother-dcpt820dw
+	pkgdesc = Brother printer driver (lpd/cups) for the DCP-T820DW multifuncional printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpt820dw_all
+	install = dcpt820dw.install
+	arch = i686
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = a2ps
+	depends = cups
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: making dcpt820dw scaner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf105183/dcpt820dwpdrv-3.5.0-1.i386.deb
+	source = spool.patch
+	sha256sums = 6ed43c54bfdcf8e56b6a7a62af6d72424908ea7b0d887d8a7e2c422fd4152434
+	sha256sums = 433d199b720e04a6fcb3da2d4324dccc2abf6d12e6c2fa10da0ba6150daeb728
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpt820dw
