@@ -1,7 +1,7 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-pkgname="ripme-bin"
+pkgname=ripme-bin
 pkgver=2.1.3
-_pkgver="2.1.2-23-e5438e85"
+_pkgver=2.1.2-23-e5438e85
 pkgrel=1
 pkgdesc="Downloads albums in bulk"
 arch=('any')
