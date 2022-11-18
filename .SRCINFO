@@ -1,0 +1,13 @@
+pkgbase = python-pytorch-msssim
+	pkgdesc = Fast and differentiable MS-SSIM and SSIM for pytorch
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/VainF/pytorch-msssim
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python-pytorch
+	source = https://files.pythonhosted.org/packages/py3/p/pytorch-msssim/pytorch_msssim-0.2.1-py3-none-any.whl
+	sha256sums = f98f75efebe71bc221b4a6dd1a4616a153a1edb74a7bd955f0d0a9280480a108
+
+pkgname = python-pytorch-msssim
