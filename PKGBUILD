@@ -43,8 +43,7 @@ makedepends=(boost cmake eigen ninja opencv)
 ((ENABLE_APPS)) && depends+=(devil2 qt5-base)
 ((ENABLE_DOC)) && makedepends+=(python-sphinx doxygen)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('25396b03c4aa3c1be241a2a8518a29511cb4fff695caa5126203fbba8e8e444d'
-            'ae2a2d361a7f255fe87cf3e1ca0eca14a4ddcbe0122195cb3f713e59c9064a2b')
+sha256sums=('25396b03c4aa3c1be241a2a8518a29511cb4fff695caa5126203fbba8e8e444d')
 
 
 build() {
