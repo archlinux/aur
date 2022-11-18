@@ -1,7 +1,7 @@
 pkgbase = ghidra-darcula
 	pkgdesc = Software reverse engineering framework (with dark theme)
-	pkgver = 10.2
-	pkgrel = 2
+	pkgver = 10.2.2
+	pkgrel = 1
 	url = https://ghidra-sre.org
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = ghidra-darcula
 	conflicts = ghidra-dev
 	conflicts = ghidra-desktop
 	options = !strip
-	source = git+https://github.com/NationalSecurityAgency/ghidra#tag=Ghidra_10.2_build
+	source = git+https://github.com/NationalSecurityAgency/ghidra#tag=Ghidra_10.2.2_build
 	source = git+https://github.com/encounter/darcula-laf.git#commit=5f401c27dc0710575d45e13c2c255d78dbe0a4ab
 	source = ghidra.desktop
 	source = ghidra-root.desktop
