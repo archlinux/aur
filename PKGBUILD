@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=5
+pkgrel=6
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -198,7 +198,7 @@ package() {
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
-  install -Dm755 unreal-engine-4.sh "${pkgdir}/usr/bin/"
+  install -Dm755 ../unreal-engine-4.sh "${pkgdir}/usr/bin/"
   chmod +x "${pkgdir}/usr/bin/unreal-engine-4.sh"
   ln -s "${pkgdir}/usr/bin/unreal-engine-4.sh" "${pkgdir}/usr/bin/ue4"
   ln -s "${pkgdir}/usr/bin/unreal-engine-4.sh" "${pkgdir}/usr/bin/UE4"
