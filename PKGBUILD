@@ -62,6 +62,7 @@ prepare() {
   sed -i 's|${OPENIMAGEIO_LIBRARIES}|OpenImageIO::OpenImageIO|g' "${srcdir}"/QtOIIO/src/{imageIOHandler,depthMapEntity}/CMakeLists.txt
   sed -i 's|${OPENIMAGEIO_INCLUDE_DIRS}|${OpenImageIO_INCLUDE_DIRS}|g' "${srcdir}"/QtOIIO/src/{imageIOHandler,depthMapEntity}/CMakeLists.txt
   sed -i 's|OPENIMAGEIO_FOUND|OpenImageIO_FOUND|' "${srcdir}"/QtOIIO/CMakeLists.txt
+  sed -i 's|isfinite|std::isfinite|' "${srcdir}"/QtOIIO/src/depthMapEntity/DepthMapEntity.cpp
   rm -rf "${srcdir}"/QtOIIO/cmake/
 
 # Fix for qmlAlembic plugin to build against openexr:3
