@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=ja2-stracciatella
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jagged Alliance 2 Stracciatella"
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
@@ -17,7 +17,7 @@ source=(
     "https://github.com/Neargye/magic_enum/releases/download/v${_magic_enum_ver}/magic_enum.hpp"
     "https://github.com/mackron/miniaudio/archive/${_miniaudio_commit}.tar.gz"
 )
-sha256sums=('f5ef9b9c436c6e99cc923d260e491d9e1bc6adfe42d32bac3bfd952914ba43e2'
+sha256sums=('432e8c834ce5c5aaa2be3e10e44c47963970936ede39c33c95e7d8f874770ff8'
             '903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540'
             '5feb82b4ed59196aabac7325339621b49caddc078b86399d1a0b5425177462a9')
 
