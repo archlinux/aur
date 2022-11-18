@@ -1,6 +1,6 @@
 # Maintainer: Mistle <tehmistle [at] gmx.com>
 pkgname=vr2normal
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="C++ QT Program that converts virtual reality videos into normal videos for viewing on any screen"
 arch=('x86_64')
@@ -11,9 +11,8 @@ makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 "0001-Fix-Linux-packaging-with-correctly-set-target.path.patch"
 )
-sha256sums=('e590926a8a36753908d576f48a972df6ed559753aae2f6ee64afeccac95a9de3'
-'e0ae9e79fdf2140df22045b10ee7417eb18e7250151b02a3e819e96eff1edb5d'
-)
+sha256sums=('2eab584e87d0d533347f4c498d237b3b08b5c59b6ef16343801c54497db1fcd7'
+            'e0ae9e79fdf2140df22045b10ee7417eb18e7250151b02a3e819e96eff1edb5d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
