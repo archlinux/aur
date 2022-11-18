@@ -2,12 +2,12 @@
 
 pkgname=sdl2-gamepad-mapper
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate SDL2 Controller mapping strings"
 arch=('any')
 url='https://gitlab.com/ryochan7/sdl2-gamepad-mapper'
 depends=('sdl2' 'qt5-base')
-makedepends=('cmake' 'git')
+makedepends=('git')
 source=('git+https://gitlab.com/ryochan7/sdl2-gamepad-mapper#commit=e3f9ea51a1a1d7fbd2b05c52e6b2e262ebe3f4fe')
 sha256sums=("SKIP")
 
