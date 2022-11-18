@@ -1,15 +1,14 @@
 pkgbase = openfoam-com-precice
 	pkgdesc = preCICE adapter for OpenFOAM
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/precice/openfoam-adapter
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = openfoam-com=v2206
 	depends = precice
-	source = git+https://github.com/precice/openfoam-adapter.git?signed#commit=e88aca117eb180b3f55ba07ea4d4623cd6fd621e
-	validpgpkeys = 0FBAF2A65E37EEB1EEDEB8878852E191BDAF81BF
+	source = git+https://github.com/precice/openfoam-adapter.git#commit=65222e0ae3d9f291e58cfc99f9bf6d4a7d8b85d2
 	sha512sums = SKIP
 
 pkgname = openfoam-com-precice
