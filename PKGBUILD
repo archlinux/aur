@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -191,8 +191,10 @@ package() {
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
-  install -Ddm777 Engine "${pkgdir}/${_install_dir}/Engine"
-  install -Ddm777 LocalBuilds/Engine/Linux/ "${pkgdir}/${_install_dir}/LocalBuilds/Engine/Linux/"
+  mv Engine "${pkgdir}/${_install_dir}"
+  # mv LocalBuilds/Engine/Linux/ "${pkgdir}/${_install_dir}/LocalBuilds/Engine/Linux/"
+  mv LocalBuilds "${pkgdir}/${_install_dir}"
+  chmod -R 777 "${pkgdir}/${_install_dir}"
   
   chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/xbuild"
   chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/mcs"
