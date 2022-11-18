@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-applications-menu-git
-pkgver=2.8.0.r22.0ba02643
+pkgver=2.11.0.r2.2fec07eb
 pkgrel=1
 pkgdesc='The Pantheon Application Menu'
 arch=(x86_64)
@@ -16,15 +16,12 @@ depends=(
   gnome-menus
   gtk3
   json-glib
-  lib{gee,soup,handy}
-  lib{granite,wingpanel}.so
-  libswitchboard-2.0.so
+  lib{gee,soup,handy,granite.so,switchboard-2.0.so}
   zeitgeist
 )
 makedepends=(
   git
   meson
-  granite
   switchboard
   vala
   wingpanel
@@ -41,9 +38,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson pantheon-applications-menu build \
-    -D b_pie=false \
-    -D with-unity=false
+  arch-meson pantheon-applications-menu build
   ninja -C build
 }
 
