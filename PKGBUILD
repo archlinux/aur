@@ -34,9 +34,9 @@ package()
     mkdir -p "${pkgdir}"/usr/share/java/"${pkgname}"/
 
     # Install the software.
-    cp -r "${srcdir}"/"${pkgname}"/ch.elexis.core.p2site/target/products/Elexis3/linux/gtk/x86_64/* "${pkgdir}"/usr/share/java/"${pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"/ch.elexis.core.p2site/target/products/Elexis3/linux/gtk/"${CARCH}"/* "${pkgdir}"/usr/share/java/"${pkgname}"/
     ln -s /usr/share/java/"${pkgname}"/Elexis3 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
-    cp -r "${srcdir}"/"${pkgname}"/readme.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${pkgname}"/readme.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 }
