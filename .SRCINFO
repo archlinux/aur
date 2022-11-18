@@ -1,0 +1,27 @@
+pkgbase = elexis
+	pkgdesc = Software for medical practices.
+	pkgver = 3.9
+	pkgrel = 1
+	url = https://github.com/elexis/elexis-3-core
+	arch = x86_64
+	license = EPL
+	makedepends = git
+	makedepends = java-environment>=11
+	makedepends = java-environment<=17
+	makedepends = maven
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = dbus-glib
+	depends = freetype2
+	depends = java-runtime
+	depends = libcups
+	depends = libnet
+	depends = libxcomposite
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = mesa
+	depends = nss
+	source = elexis::git+https://github.com/elexis/elexis-3-core.git#tag=29e738676684a7ef6afee57908b5e9df499b1390
+	sha512sums = SKIP
+
+pkgname = elexis
