@@ -18,12 +18,20 @@ source=(
     )
 sha256sums=(
     "SKIP"
-    "cf4764128b5fffe69ed3bbaf53e107f9359050f3d4580d33d136db4b1fa3fe9b"
+    "7ce17a298bbf171fde6697fb4c1082f84dd1968504120ebf73d152a71c43122d"
     )
+
+pkgver() {
+    cd $resname
+    ( set -o pipefail
+        git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
 
 prepare() {
     cd $srcdir/$resname/$resname
-    sed -i "s/2..0..1/$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" about.py
+    sed -i "s/2.0.1/$pkgver/g" about.py
 }
 
 package() {

@@ -2,7 +2,7 @@
 Categories=Application;Network;
 Comment=Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
 Exec=/opt/earth-wallpaper-nightly/earth_wallpaper/main.py
-Icon=/opt/earth-wallpaper-nightly/earth-wallpaper/resource/earth-wallpaper.png
+Icon=/opt/earth-wallpaper-nightly/earth_wallpaper/resource/earth-wallpaper.png
 GenericName=earth-wallpaper
 Keywords=earth
 Name=earth-wallpaper
