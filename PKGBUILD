@@ -2,11 +2,11 @@
 
 pkgname=vault-kv-search
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Recursively search Hashicorp Vault for a substring.'
 arch=('x86_64')
 url="https://github.com/xbglowx/${pkgname}"
-license=('Mozilla Public License Version 2.0')
+license=('MPL2')
 depends=('glibc')
 optdepends=(
     'vault: in order to interact more with vault',
