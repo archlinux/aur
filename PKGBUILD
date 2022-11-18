@@ -9,14 +9,14 @@ arch=('x86_64' 'i686')
 url=https://app.lizardbyte.dev
 license=('GPL3')
 
-depends=('avahi' 'boost-libs' 'ffmpeg4.4' 'libevdev' 'libpulse' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'openssl' 'opus' 'udev')
+depends=('avahi' 'boost-libs' 'curl' 'ffmpeg4.4' 'libevdev' 'libpulse' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'openssl' 'opus' 'udev')
 makedepends=('boost' 'cmake' 'git' 'make')
 optdepends=('cuda' 'libcap' 'libdrm')
 
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=66615a0be02197e778986ee9e8ea77ffcef40b62")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=01b8ba353a60e941b48659ef0c8c3075ac06b3aa")
 sha256sums=('SKIP')
 
 prepare() {

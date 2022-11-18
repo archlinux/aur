@@ -12,6 +12,7 @@ pkgbase = sunshine
 	makedepends = make
 	depends = avahi
 	depends = boost-libs
+	depends = curl
 	depends = ffmpeg4.4
 	depends = libevdev
 	depends = libpulse
@@ -26,7 +27,7 @@ pkgbase = sunshine
 	optdepends = cuda
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=66615a0be02197e778986ee9e8ea77ffcef40b62
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=01b8ba353a60e941b48659ef0c8c3075ac06b3aa
 	sha256sums = SKIP
 
 pkgname = sunshine
