@@ -1,0 +1,46 @@
+pkgbase = linux-aarch64-flippy
+	pkgver = 6.0.9
+	pkgrel = 1
+	url = https://github.com/unifreq/linux-6.0.y
+	arch = aarch64
+	license = GPL2
+	makedepends = kmod
+	makedepends = git
+	makedepends = dtc
+	makedepends = uboot-tools
+	options = !strip
+	source = https://github.com/unifreq/linux-6.0.y/archive/337cc294ea20d4248b241b3c5eff4891298b07d4.tar.gz
+	source = config
+	source = linux.preset
+	sha256sums = 2a256082375b3cb0278dd3d3ae37ed72ec429abd62a49c11c4fd50a5f10019f5
+	sha256sums = 50836909a3ce8cc06bc57228b5d51de91bb65532d44071803b6f06a079503efe
+	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
+
+pkgname = linux-aarch64-flippy
+	pkgdesc = The Linux Kernel and module - flippy's AArch64-focused fork aiming to increase usability
+	depends = linux-aarch64-flippy-dtb
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = uboot-legacy-initrd-hooks: to generate uboot legacy initrd images
+	optdepends = linux-firmware-amlogic-ophub: firmware for Amlogic SoCs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-aarch64-flippy-dtb-allwinner: dtbs for Allwinner SoCs
+	optdepends = linux-aarch64-flippy-dtb-amlogic: dtbs for Amlogic SoCs
+	optdepends = linux-aarch64-flippy-dtb-rockchip: dtbs for Rockchip SoCs
+	backup = etc/mkinitcpio.d/linux-aarch64-flippy.preset
+
+pkgname = linux-aarch64-flippy-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - flippy's AArch64-focused fork aiming to increase usability
+
+pkgname = linux-aarch64-flippy-dtb-allwinner
+	pkgdesc = DTB files for Allwinner SoCs for flippy's AArch64 kernel
+	provides = linux-aarch64-flippy-dtb=6.0.9
+
+pkgname = linux-aarch64-flippy-dtb-amlogic
+	pkgdesc = DTB files for Amlogic SoCs for flippy's AArch64 kernel
+	provides = linux-aarch64-flippy-dtb=6.0.9
+
+pkgname = linux-aarch64-flippy-dtb-rockchip
+	pkgdesc = DTB files for Rockchip SoCs for flippy's AArch64 kernel
+	provides = linux-aarch64-flippy-dtb=6.0.9
