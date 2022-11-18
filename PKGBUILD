@@ -11,7 +11,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.22.12
+pkgver=3.22.13
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -29,7 +29,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch)
-sha256sums=('24524b5acfebe2f3b8a0e80634a00f599d88dbd6de9007b5679578b774e486d5'
+sha256sums=('57b2bb73107ea5c4b7735f9574a07385c9a35af5c7158bed3fbde0d6e20309df'
             'c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304')
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
 
