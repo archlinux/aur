@@ -1,7 +1,7 @@
 pkgbase = lokinet
 	pkgdesc = Anonymous, decentralized and IP based overlay network for the internet.
 	pkgver = 0.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lokinet.org
 	install = lokinet.install
 	arch = x86_64
