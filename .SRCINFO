@@ -1,6 +1,6 @@
 pkgbase = bytehound
 	pkgdesc = A memory profiler for Linux
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/koute/bytehound
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bytehound
 	makedepends = node-gyp
 	depends = gcc-libs
 	options = !lto
-	source = bytehound::git+https://github.com/koute/bytehound#commit=5c295843f52157cec4324a67944f7425d645c7f5
+	source = bytehound::git+https://github.com/koute/bytehound#commit=961367c2c9e95905dddb8f0002ea4f70833e2419
 	b2sums = SKIP
 
 pkgname = bytehound
