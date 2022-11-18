@@ -1,6 +1,6 @@
 pkgbase = cask-server-git
 	pkgdesc = Public server and API to interface with Cask features
-	pkgver = 0.5.5.r4.ga16cff8
+	pkgver = 0.5.5.r6.gda27892
 	pkgrel = 1
 	url = https://github.com/Nitrux/cask-server
 	arch = x86_64
