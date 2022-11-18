@@ -1,0 +1,10 @@
+pkgbase = common-lisp-hyperspec
+	pkgdesc = Common Lisp HyperSpec
+	pkgver = 7.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	source = http://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz
+	md5sums = 8df440c9f1614e2acfa5e9a360c8969a
+
+pkgname = common-lisp-hyperspec
