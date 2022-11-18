@@ -2,17 +2,17 @@
 
 _plug=vsaa
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.0.3.g4d83fda
+pkgver=1.4.1.1.gf67abe8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-aa.git'
 license=('GPL')
-depends=('vapoursynth-plugin-vsutil-git'
-         'vapoursynth-plugin-vsmask-git'
+depends=('vapoursynth-plugin-vstools-git'
          'vapoursynth-plugin-vskernels-git'
-         'vapoursynth-plugin-vsrgtools-git'
          'vapoursynth-plugin-vsexprtools-git'
+         'vapoursynth-plugin-vsrgtools-git'
+         'vapoursynth-plugin-vsmask-git'
          )
 makedepends=('git'
              'python-pip'
