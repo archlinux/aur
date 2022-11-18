@@ -2,13 +2,15 @@
 pkgname=zfs-undelete-git
 _pkgname=zfs-undelete
 pkgver=0.1.0.r10.g1374933
-pkgrel=1
+pkgrel=2
 pkgdesc='easy-to-use CLI tool to recover files from zfs snapshots'
 url="https://github.com/arctic-penguin/$_pkgname"
 source=("git+https://github.com/arctic-penguin/${_pkgname}")
 arch=('any')
 license=('GPL3')
 depends=('zfs-utils')
+provides=('zfs-undelete')
+conflicts=('zfs-undelete')
 makedepends=('rust')
 sha256sums=(SKIP)
 
@@ -19,7 +21,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo test
+  cargo test --release
 }
 
 package() {
