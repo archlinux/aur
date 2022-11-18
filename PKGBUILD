@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hse
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
 url="https://hse-project.github.io/"
 license=('apache')
 depends=('glibc' 'cjson' 'curl' 'libbsd' 'libmicrohttpd' 'liburcu' 'libyaml' 'lz4' 'mongo-c-driver' 'pmdk' 'xxhash')
-makedepends=('meson')
+makedepends=('cmake' 'meson')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/hse-project/hse/archive/refs/tags/r$pkgver.tar.gz")
-sha256sums=('7cdc29214f4a4bde49be2fc6f4f6b910c29d4df5a931f975cb05c657414b2768')
+sha256sums=('67e4ac82e004e70ad2dd51d8e4ce4a1611a707e0232b3372e4113921e183328a')
 
 
 build() {
@@ -19,7 +19,7 @@ build() {
   meson \
     --buildtype=plain \
     --prefix="/usr" \
-    -Dforce_fallback_for="cjson,xxhash" \
+    -Dforce_fallback_for="" \
     "_build"
   meson compile -C "_build"
 }
