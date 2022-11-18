@@ -1,7 +1,8 @@
-# Maintainer: D S <contact@circuitrcay.com>
+# Maintainer: Jeremy MountainJohnson <jay@jskier.com>
+# Contributor: D S <contact@circuitrcay.com>
 pkgname=webex-teams-vdi
 pkgver=3.0.16605.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Webex Teams VDI is a lightweight client for virtual desktops."
 arch=('x86_64')
 url="http://www.cisco.com"
