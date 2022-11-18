@@ -1,0 +1,12 @@
+pkgbase = python-compressai
+	pkgdesc = A PyTorch library and evaluation platform for end-to-end compression research
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/InterDigitalInc/CompressAI
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/compressai/compressai-1.2.1.tar.gz
+	sha256sums = 84e48808c1da33f330fc52a9cae269f2ec6822368c0dd622798278855b16479c
+
+pkgname = python-compressai
