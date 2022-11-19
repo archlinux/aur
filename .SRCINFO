@@ -1,0 +1,23 @@
+pkgbase = python38-pep621
+	pkgdesc = PEP 621 metadata parsing
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/FFY00/python-pep621
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-tomli
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	makedepends = python38-sphinx
+	makedepends = python38-sphinx-autodoc-typehints
+	makedepends = python38-sphinx-furo
+	depends = python38-packaging
+	source = git+https://github.com/FFY00/python-pep621#tag=0.6.1?signed
+	validpgpkeys = 3DCE51D60930EBA47858BA4146F633CBB0EB4BF2
+	sha512sums = SKIP
+
+pkgname = python38-pep621
