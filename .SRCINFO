@@ -1,0 +1,19 @@
+pkgbase = python38-typing_extensions
+	pkgdesc = Backported and Experimental Type Hints for Python 3.7+
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://github.com/python38/typing_extensions
+	arch = any
+	license = custom
+	checkdepends = python38-tests
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-flit-core
+	makedepends = python38-installer
+	depends = python38
+	provides = python38-typing-extensions
+	conflicts = python38-typing-extensions
+	source = git+https://github.com/python38/typing_extensions.git#tag=4.4.0
+	b2sums = SKIP
+
+pkgname = python38-typing_extensions
