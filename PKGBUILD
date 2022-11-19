@@ -3,13 +3,13 @@
 
 pkgname=wingpanel-indicator-weather-git
 pkgver=r139.62ba375
-pkgrel=1
+pkgrel=2
 pkgdesc='Weather indicator for Wingpanel'
 arch=('x86_64')
 url='https://github.com/casasfernando/wingpanel-indicator-weather'
 license=('GPL2')
 groups=('pantheon-unstable')
-depends=('geoclue2' 'glib2' 'glibc' 'gtk3' lib{{granite,wingpanel}.so,gweather,notify,handy})
+depends=('geoclue2' 'glib2' 'glibc' 'gtk3' lib{granite.so,gweather,notify,handy})
 makedepends=('git' 'meson' 'vala' 'wingpanel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

@@ -1,7 +1,7 @@
 pkgbase = wingpanel-indicator-weather-git
 	pkgdesc = Weather indicator for Wingpanel
 	pkgver = r139.62ba375
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casasfernando/wingpanel-indicator-weather
 	arch = x86_64
 	groups = pantheon-unstable
@@ -15,7 +15,6 @@ pkgbase = wingpanel-indicator-weather-git
 	depends = glibc
 	depends = gtk3
 	depends = libgranite.so
-	depends = libwingpanel.so
 	depends = libgweather
 	depends = libnotify
 	depends = libhandy
