@@ -20,6 +20,20 @@
  
  include $(SRCROOT)/Makefile.kernel
  
+--- a/vmmon/include/vm_basic_defs.h
++++ b/vmmon/include/vm_basic_defs.h
+@@ -50,7 +50,10 @@
+  * References:
+  *   C90 7.17, C99 7.19, C11 7.19
+  */
+-#if !defined(VMKERNEL)
++/* Use linux/stddef.h when building Linux kernel modules. */
++#ifdef KBUILD_MODNAME
++#  include <linux/stddef.h>
++#elif !defined(VMKERNEL)
+ #  include <stddef.h>
+ #else
+    /*
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
 @@ -47,6 +47,8 @@
@@ -120,7 +134,7 @@
     lockedPages += global_node_page_state(NR_SLAB_UNRECLAIMABLE);
  #else
     lockedPages += global_page_state(NR_SLAB_UNRECLAIMABLE);
-@@ -2389,16 +2426,22 @@
+@@ -2389,16 +2426,26 @@
  static Bool
  isVAReadable(VA r)  // IN:
  {
@@ -128,7 +142,11 @@
     uint32 dummy;
     int ret;
  
-+#ifdef HAVE_GET_KERNEL_NOFAULT
++#if defined(HAVE_GET_KERNEL_NOFAULT) || LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0)
++   /*
++    * Exists from 5.10, first indicated by HAVE_GET_KERNEL_NOFAULT,
++    * and from post-5.17 just existing everywhere.
++    */
 +   ret = get_kernel_nofault(dummy, (void *)r);
 +#else
 +   {
@@ -280,61 +298,3 @@
     /*
      * Do not exit thread until we are told to do so.
      */
-From 4232f780eb114f22498f3274eaeef81d8c63f2ab Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Tue, 9 Nov 2021 09:01:57 +0100
-Subject: [PATCH] modules: fix stddef.h include
-
-After mainline commit 04e85bbf71c9 ("isystem: delete global -isystem
-compile option") in 5.16-rc1, vm_basic_types.h in both vmmon and vmnet
-does not find (userspace) stddef.h any more. As it should not include this
-header anyway, fix the include directives to include stddef.h from kernel.
-
-Kernel version of stddef.h has been available since the beginning of git so
-that it is safe to include it regardless of kernel version.
----
- vmmon-only/include/vm_basic_defs.h | 2 +-
- vmnet-only/vm_basic_defs.h         | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/vmmon-only/include/vm_basic_defs.h b/vmmon-only/include/vm_basic_defs.h
-index 0ec30b3..b920e2d 100644
---- a/vmmon-only/include/vm_basic_defs.h
-+++ b/vmmon-only/include/vm_basic_defs.h
-@@ -51,7 +51,7 @@
-  *   C90 7.17, C99 7.19, C11 7.19
-  */
- #if !defined(VMKERNEL)
--#  include <stddef.h>
-+#  include <linux/stddef.h>
- #else
-    /*
-     * Vmkernel's bogus __FreeBSD__ value causes gcc <stddef.h> to break.
-From 16d490ae022d7fc4ca867971e20e2dcd59e6ca5a Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Mon, 4 Apr 2022 01:57:28 +0200
-Subject: [PATCH] vmmon: do not rely on HAVE_GET_KERNEL_NOFAULT
-
-Mainline commit 34737e269803 ("uaccess: add generic
-__{get,put}_kernel_nofault") in 5.18-rc1 removes HAVE_GET_KERNEL_NOFAULT
-macro as all architectures can use get_kernel_nofault() now. Check for
-existence of __get_kernel_nofault() instead and add also a version check in
-case it stops being a macro or is removed in the future.
----
- vmmon-only/linux/hostif.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index a21c300..b6326e9 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -2436,7 +2436,8 @@ isVAReadable(VA r)  // IN:
-    uint32 dummy;
-    int ret;
- 
--#ifdef HAVE_GET_KERNEL_NOFAULT
-+#if defined(HAVE_GET_KERNEL_NOFAULT) || defined(__get_kernel_nofault) || \
-+    (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 18, 0))
-    ret = get_kernel_nofault(dummy, (void *)r);
- #else
-    {
