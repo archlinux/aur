@@ -1,0 +1,20 @@
+pkgbase = python38-jaraco.functools
+	pkgdesc = Functools like those found in stdlib
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://github.com/jaraco/jaraco.functools
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-jaraco.classes
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-more-itertools
+	conflicts = python38-jaraco
+	replaces = python38-jaraco
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.functools/jaraco.functools-3.5.2.tar.gz
+	sha512sums = 3f67d151f4f6553b3e560b0e6ab71cf726d6c8f36ef5e9f69b6325605547797e19a3f9eb1331cf332db498538953ccaeb75820528e6599fd7cf125abdc073e69
+
+pkgname = python38-jaraco.functools
