@@ -1,0 +1,19 @@
+pkgbase = python38-pep517
+	pkgdesc = Wrappers to build Python 3.8 packages using PEP 517 hooks
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/takluyver/pep517
+	arch = any
+	license = MIT
+	checkdepends = python38-mock
+	checkdepends = python38-pytest
+	checkdepends = python38-testpath
+	checkdepends = python38-pip
+	makedepends = python38-build
+	makedepends = python38-flit-core
+	makedepends = python38-installer
+	depends = python38-tomli
+	source = https://pypi.io/packages/source/p/pep517/pep517-0.13.0.tar.gz
+	sha512sums = 110c62441e0084cb2f0b7310ec2d7bb3e08615d65efbeb84eab953ec21600fc4242ef8611f9cdf74a936c1f9e389f4379d165bb5c7a8bd9efe50ee53c1b8d4e1
+
+pkgname = python38-pep517
