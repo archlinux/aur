@@ -1,0 +1,21 @@
+pkgbase = python-pymboot
+	pkgdesc = Python based library for communication with NXP MCU Bootloader.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/molejar/pyMBoot
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-bincopy
+	depends = python-click
+	depends = python-pyenum
+	depends = python-pyserial
+	depends = python-pyusb
+	source = https://github.com/molejar/pyMBoot/archive/0.3.0/pyMBoot-0.3.0.tar.gz
+	b2sums = ba665d97235943559cb839e4af56cbd78a46d2dadd528ebe545e431694c78886bda819d3f192ce5e14f0fb296d9ef328b2a29800725c94e618f577eab69a4122
+
+pkgname = python-pymboot
