@@ -1,0 +1,17 @@
+pkgbase = python38-mdurl
+	pkgdesc = URL utilities for markdown-it
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/executablebooks/mdurl
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-flit-core
+	makedepends = python38-wheel
+	depends = python38-uc-micro-py
+	source = python38-mdurl-0.1.2.tar.gz::https://github.com/executablebooks/mdurl/archive/0.1.2.tar.gz
+	sha512sums = e301ca3ab6d80df1ad28b9c2725d66b6e6cf139d93e5f7fd2a70333678616a3f6db64f15250972eee3cd1cf1eaff6ec587415629e6802dcf07995edff6865ff2
+
+pkgname = python38-mdurl
