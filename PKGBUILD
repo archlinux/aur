@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=picolibc-git
-pkgver=r24542.gd980f357f
+pkgver=r25702.gc9296499d
 pkgrel=1
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
   cd "picolibc"
 
   # ref: scripts/do-amd64-configure
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --includedir="include/picolibc" \
