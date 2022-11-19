@@ -9,7 +9,7 @@ pkgbase = jackett
 	license = GPL
 	makedepends = dotnet-sdk>=6.0.0
 	depends = curl
-	depends = openssl-1.0
+	depends = openssl
 	optdepends = flaresolverr: A proxy server to bypass Cloudflare protection
 	options = !strip
 	options = staticlibs
