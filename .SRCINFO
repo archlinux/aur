@@ -1,0 +1,18 @@
+pkgbase = python38-pytz
+	pkgdesc = World timezone definitions, modern and historical
+	pkgver = 2022.6
+	pkgrel = 00
+	url = http://pythonhosted.org/pytz
+	arch = any
+	license = MIT
+	depends = python38
+	depends = python38-setuptools
+	noextract = pytz-2022.6-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/85/ac/92f998fc52a70afd7f6b788142632afb27cd60c8c782d1452b7466603332/pytz-2022.6-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = ee5792704836da32fa2a51aa10b6d1b9
+	md5sums = 1a67fc46c1b596cce5d21209bbe75999
+
+pkgname = python38-pytz
