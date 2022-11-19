@@ -10,8 +10,8 @@ _SequenceParsing_commit=3c93fcc488632b0bdfeee3181586809932357598
 _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=natron-compositor
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.4.4
+pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
@@ -36,8 +36,8 @@ source=("${_pkgname}.tar.gz::${_url}/${_pkgname%-*}/archive/refs/tags/v${pkgver}
         "google-test-${_google_test_commit}.tar.gz::${_url}/google-test/archive/${_google_test_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
 	"tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('50339d72f4ba57f63ccc15a3a28badb3f4fbd840497a2840b55132d965583f330e6011939631f445a4d0b6120a532bb795a3d53e3f61dd698ec073c50e15e954'
-            '56fc96d0820d053940336ef3ae9fee4e4386e90c9cede6e5450de66c92220f2670f12b25dfb17aaec621001db140281ab47ee8f3fa5e5915a56cfefe2be813fe'
+sha512sums=('a703f36c01e0a980d53d1e12bf51fc1c819437261319f9a24cfd48e6ec810238c8907ba9a1460455572bbc5a182a343d31d4fb4d5d5658a87e285e1cde541e6f'
+            '39983f693798121342bf6509c819f9243c176c8123e4e2665309270ba3709f686592f9f29b3b938d2c7ce87c756b0ce9ef0ea36c0c96e4d3ba3379bd7f5976be'
             '1e2c20a2ccc597aec8c69352f2b0533f75afcceda427247346b64752ce0de82631ab89f47ff182c326e12d3fce2efda8ee846d6768cb8cfcb27e3da6e2399e78'
             'SKIP'
             'SKIP'
