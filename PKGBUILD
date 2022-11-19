@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocCheck
-_pkgver=1.34.1
+_pkgver=1.34.2
 pkgname=r-${_pkgname,,}
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc='Bioconductor-specific package checks'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8fd4306d7d762c6246d153442fff583d650e0564a3aa3d654ff71c28d34245f5')
+sha256sums=('5070cc94a82e0e8be6f03e8a6bb2c6319a5cec36d7091418d25cc4fdd71c44fe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
