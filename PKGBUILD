@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -145,9 +145,9 @@ prepare() {
   # For some reason, despite this file explicitly asking not to be removed, it was removed from the UE5 source; it has to be re-added or the build will fail
   if [[ ! -f ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies ]]
   then
-    mkdir -p ${pkgname}/Engine/Source/ThirdParty/Linux/
-    touch ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies
-    sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies
+    mkdir -p "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/"
+    touch "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
+    sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
   fi
   
   ./Setup.sh
@@ -199,7 +199,15 @@ package() {
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
-  mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}"
+  mv FeaturePacks "${pkgdir}/${_install_dir}"
+  mv Samples "${pkgdir}/${_install_dir}"
+  mv Templates "${pkgdir}/${_install_dir}"
+  mv Default.uprojectdirs "${pkgdir}/${_install_dir}"
+  mv cpp.hint "${pkgdir}/${_install_dir}"
+  install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
+  if [ -d LocalBuilds ]; then
+    mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}"
+  fi
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
   chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/xbuild"
