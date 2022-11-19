@@ -1,0 +1,32 @@
+pkgbase = python38-flit
+	pkgdesc = Simplified packaging of Python modules
+	pkgver = 3.8.0
+	pkgrel = 2
+	url = https://github.com/takluyver/flit
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-testpath
+	checkdepends = python-responses
+	makedepends = python38-pip
+	makedepends = python38-poetry-core
+	makedepends = python-requests
+	makedepends = python-docutils
+	depends = python38
+	depends = python38-tomli
+	depends = python-tomli-w
+	source = python38-flit-3.8.0.tar.gz::https://github.com/takluyver/flit/archive/3.8.0.tar.gz
+	sha512sums = c4af79e1511e647303dc6b0913d8526586580db8d916aa7c4a52a9ebb281b375b6082e961ac8be05c0fc8ffdd8c3ec858fcba4e7faea25f465895288fa09c355
+
+pkgname = python38-flit
+	depends = python38
+	depends = python38-tomli
+	depends = python-tomli-w
+	depends = python-flit-core
+	depends = python-requests
+	depends = python-docutils
+	provides = flit
+	conflicts = flit
+
+pkgname = python38-flit-core
+	pkgdesc = Simplified packaging of Python modules (core backend)
