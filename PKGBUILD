@@ -4,7 +4,7 @@
 _name=ytmusicapi
 pkgname=python-$_name
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial API for YouTube Music"
 arch=('any')
 url="https://github.com/sigma67/ytmusicapi"
@@ -19,12 +19,6 @@ makedepends=(
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('bdb496801cdeded14b1291dd8772578a3de6e51ea20214d28eb08c6922d96a56')
-
-prepare() {
-  cd "$_name-$pkgver"
-  # Relax version requirement for python-setuptools
-  sed -i 's/"setuptools>=65"/"setuptools"/' pyproject.toml
-}
 
 build() {
   cd "$_name-$pkgver"

@@ -1,7 +1,7 @@
 pkgbase = python-ytmusicapi
 	pkgdesc = Unofficial API for YouTube Music
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigma67/ytmusicapi
 	arch = any
 	license = MIT
