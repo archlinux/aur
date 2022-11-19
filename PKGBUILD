@@ -201,7 +201,7 @@ package() {
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
   
   # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
-  for object in ${PWD}; do
+  for object in "${PWD}"; do
     if [ -d "${object}" ]; then
       if [ "${object}" == "LocalBuilds" ]; then
         if [ -d LocalBuilds/Engine/Linux/ ]; then
