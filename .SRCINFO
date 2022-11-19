@@ -1,0 +1,18 @@
+pkgbase = python38-pytest-regressions
+	pkgdesc = Pytest plugin for regression testing
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/ESSS/pytest-regressions
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-pytest
+	depends = python38-pytest-datadir
+	depends = python38-yaml
+	source = python38-pytest-regressions-2.4.1.tar.gz::https://github.com/ESSS/pytest-regressions/archive/2.4.1.tar.gz
+	sha512sums = 391ddeeeb7a245a86fed72b47bc05804e6d7cd3d0f58bb0653913c59c3f043176560b6b413369c5989a09a3e905177debbbc814ebed9fcb57f2a7eca40334120
+
+pkgname = python38-pytest-regressions
