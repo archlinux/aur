@@ -1,0 +1,18 @@
+pkgbase = python38-rich
+	pkgdesc = Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+	pkgver = 12.6.0
+	pkgrel = 2
+	url = https://github.com/willmcgugan/rich
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	makedepends = python38-wheel
+	depends = python38-colorama
+	depends = python38-commonmark
+	depends = python38-pygments
+	source = https://github.com/willmcgugan/rich/archive/v12.6.0/rich-12.6.0.tar.gz
+	b2sums = 58367ef0acb61d68931ea0394ea458e29b3bb59726c6b95d4b179553183c5cef2766484e0d040203181aad927add70198fb3483bfe6113e20851db141de3a867
+
+pkgname = python38-rich
