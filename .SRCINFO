@@ -1,0 +1,16 @@
+pkgbase = python38-imagesize
+	pkgdesc = Analyzes JPEG/JPEG 2000/PNG/GIF/TIFF/SVG/Netpbm/WebP image headers and returns image size or DPI
+	pkgver = 1.4.1
+	pkgrel = 2
+	url = https://github.com/shibukawa/imagesize_py
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/i/imagesize/imagesize-1.4.1.tar.gz
+	sha256sums = 69150444affb9cb0d5cc5a92b3676f0b2fb7cd9ae39e947a5e11a36b4497cd4a
+
+pkgname = python38-imagesize
