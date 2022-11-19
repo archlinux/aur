@@ -1,7 +1,7 @@
 # Maintainer: Marc Fehling <mafehling.git@gmail.com>
 pkgname=('python-sphinx-external-toc')
 _pkgname=('sphinx-external-toc')
-pkgver='0.2.3'
+pkgver='0.2.4'
 pkgrel=1
 pkgdesc="A sphinx extension that allows the site-map to be defined in a single YAML file."
 url="https://github.com/executablebooks/sphinx-external-toc"
@@ -17,7 +17,7 @@ makedepends=()
 license=('MIT')
 arch=("any")  
 source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e90a98bb5442120769f9470f9d7f52e9fe958bbc765e6ed669f19ddb4f53b864')
+sha256sums=('669dcb8cc53f77d7e052f5611d91f9f6dbef725264e693964009217666b5fec1')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
