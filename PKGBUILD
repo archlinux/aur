@@ -3,28 +3,28 @@
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
-pkgver=1.8.7
+resname=earth_wallpaper
+pkgver=2.0.3
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
-url="https://jihulab.com/ambition-echo/earth_wallpaper"
+url="https://github.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
-source=("https://jihulab.com/api/v4/projects/40487/packages/generic/earth_wallpaper/$pkgver/earth-wallpaper-deepin-amd64-$pkgver.deb")
-sha256sums=('SKIP')
-depends=('dbus-python' 'qt5-base' 'python' 'python-pillow' 'python-requests')
-build() {
-    bsdtar -xpf "$srcdir/earth-wallpaper-deepin-amd64-$pkgver.deb"
-    bsdtar -xpf "$srcdir/data.tar.xz"
-}
-package() {
-    cd $srcdir
-    sed -i "s/Exec=.*/Exec=\/opt\/$pkgname\/$name/g" ./opt/apps/$appid/entries/applications/$appid.desktop
-    sed -i "s/Icon=.*/Icon=\/opt\/$pkgname\/icon.png/g" ./opt/apps/$appid/entries/applications/$appid.desktop
-    
-    install -D ./opt/apps/$appid/files/bin/$name $pkgdir/opt/$pkgname/$name
-    install -D ./opt/apps/$appid/files/bin/scripts/* -t $pkgdir/opt/$pkgname/scripts
-    install -D ./opt/apps/$appid/files/bin/template/* -t $pkgdir/opt/$pkgname/template
+depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6')
 
-    install -D ./opt/apps/$appid/entries/icons/hicolor/256x256/apps/$appid.png $pkgdir/opt/$pkgname/icon.png
-    install -D ./opt/apps/$appid/entries/applications/$appid.desktop $pkgdir/usr/share/applications/$name.desktop
+source=(
+    "$name-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "$name.desktop"
+    )
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    )
+
+package() {
+    install -Dm644 ./$name.desktop $pkgdir/usr/share/applications/$name.desktop
+    cd $srcdir/${pkgname}-${pkgver}
+    mkdir -p $pkgdir/opt/$pkgname/$resname
+    cp -r $resname/* $pkgdir/opt/$pkgname/$resname
+    chmod +x $pkgdir/opt/$pkgname/$resname/main.py
 }
