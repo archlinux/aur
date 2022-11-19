@@ -1,0 +1,17 @@
+pkgbase = python38-exceptiongroup
+	pkgdesc = Backport of PEP 654 (exception groups)
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/agronholm/python38-exceptiongroup
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-flit-scm
+	depends = python38
+	source = https://github.com/agronholm/python38-exceptiongroup/archive/1.0.4/python38-exceptiongroup-1.0.4.tar.gz
+	sha256sums = 69e8a2ddd1b03175ca2c43f474bb1e7eb5074afadf73e63e9c905cdee1a82a6b
+
+pkgname = python38-exceptiongroup
