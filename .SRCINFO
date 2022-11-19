@@ -1,0 +1,16 @@
+pkgbase = python-pyenum
+	pkgdesc = User friendly implementation of documented Enum type in Python language.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/molejar/pyEnum
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = https://github.com/molejar/pyEnum/archive/0.3/pyEnum-0.3.tar.gz
+	b2sums = 559d49f6fa823c841e40dad085b5443aa17410bfd085d1235e3add189cf2ec94d59b5b7e0ead02103f0efc28e72b0ce7293ce6c61b83394c950226f730a01009
+
+pkgname = python-pyenum
