@@ -14,8 +14,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=16.2.4
-_buildver=20089737
+pkgver=17.0.0
+_buildver=20800274
 _pkgver=${pkgver}_${_buildver}
 pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
@@ -76,11 +76,11 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '2e46708db46630edc96cdb11514d5e338f5300c46f51a90132e9a4cd11c3f3c0'
+  '9014e87066f5b60e62f9dbd698e68f7cf507c6b59c5fcfe86de2aa44647e9910'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  'bfd2aa7d85d9fd029b8bc59072d5102458a21a9b03b1c835ac4901e0787c09f5'
+  'a692c3bd724b16504e4b70721e0bf31eabfe8e26811161b2ce23cde99dcbfd1a'
   '48d203450db426e8780f3696a2cf85ee08db004e93f8aca50a9aa24129b1e839'
   'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
 
@@ -92,8 +92,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '31ed2d3766d3f3bd3b23222f67bcd39ff8edbbe8ff13fbe7b1fa565c8ed61144'
-  '755ceab482df270eeac783228098ccb9ea0e1967c60891405be7730ee6123075'
+  '1060b5d45caeda5119b220fab4e1ece398af34d75131139a5dc6f74ee06672c3'
+  '7c3b6a7871b19e31fafdcc2631751dd9569196740d8e7c2026653d155c0c8da0'
 )
 options=(!strip emptydirs)
 
@@ -109,8 +109,8 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.2.4
-_vmware_fusion_buildver=20071091
+_vmware_fusion_ver=13.0.0
+_vmware_fusion_buildver=20802013
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -122,12 +122,12 @@ makedepends+=(
 )
 
 source+=(
-  "https://download3.vmware.com/software/FUS-${_vmware_fusion_ver//./}/VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.dmg"
+  "https://download3.vmware.com/software/FUS-${_vmware_fusion_ver//./}/VMware-Fusion-${_vmware_fusion_ver_full/_/-}_universal.dmg"
   "unlocker.py"
   "efi-patches.txt"
 )
 sha256sums+=(
-  '0b0516f4d5f70e759ae08a40d2e14f487c0b66d84ee467e38972ad013e1f6c7f'
+  '40bb9fbd4b2a18b48138a7fb3285d89187d50caab10506cff81b367b6edc858d'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -168,8 +168,8 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2img -s VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.dmg VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.iso
-  7z e -y VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
+  dmg2img -s VMware-Fusion-${_vmware_fusion_ver_full/_/-}_universal.dmg VMware-Fusion-${_vmware_fusion_ver_full/_/-}.iso
+  7z e -y VMware-Fusion-${_vmware_fusion_ver_full/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
@@ -219,7 +219,7 @@ package() {
     "$pkgdir/usr/lib/vmware/setup"
 
   cp -r \
-    vmware-vix-lib-Workstation1600/lib/Workstation-16.0.0 \
+    vmware-vix-lib-Workstation1700/lib/Workstation-17.0.0 \
     vmware-vix-core/{lib/*,vixwrapper-config.txt} \
     "$pkgdir/usr/lib/vmware-vix"
 
