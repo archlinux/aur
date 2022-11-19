@@ -1,0 +1,18 @@
+pkgbase = python38-pypandoc
+	pkgdesc = Thin wrapper for pandoc
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/bebraw/pypandoc
+	arch = any
+	license = MIT
+	checkdepends = texlive-core
+	checkdepends = texlive-latexextra
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	makedepends = python38-wheel
+	depends = pandoc
+	source = https://github.com/bebraw/pypandoc/archive/v1.10/python38-pypandoc-1.10.tar.gz
+	sha512sums = 4ee7aef7cb3f73dbbf1a646d63db131e6b0cd4c343b6113cd1c022be2c64200859db26daf626a9c7f30ed45ae8c789949a5814e265ace8646c6ad9b3f78c001d
+
+pkgname = python38-pypandoc
