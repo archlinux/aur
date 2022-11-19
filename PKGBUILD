@@ -2,7 +2,7 @@
 
 pkgname=picolibc
 pkgver=1.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
 url="https://keithp.com/picolibc/"
@@ -16,7 +16,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   # ref: scripts/do-amd64-configure
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --includedir="include/picolibc" \

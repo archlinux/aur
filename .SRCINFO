@@ -1,7 +1,7 @@
 pkgbase = picolibc
 	pkgdesc = A C library designed for embedded 32 and 64 bit systems
 	pkgver = 1.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keithp.com/picolibc/
 	arch = i686
 	arch = x86_64
