@@ -13,12 +13,12 @@ license=('GPL3')
 depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6')
 
 source=(
-    "$name-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "$name-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "$name.desktop"
     )
 sha256sums=(
-    'SKIP'
-    'SKIP'
+    '3cae2f7fbdb1d9bd3bcb398a8ab40c6cd2ad9a2bf55e4f2a12cf059f34c32ed7'
+    '13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5'
     )
 
 package() {

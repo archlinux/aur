@@ -10,9 +10,9 @@ pkgbase = earth-wallpaper-bin
 	depends = python-pillow
 	depends = python-requests
 	depends = pyside6
-	source = earth-wallpaper-2.0.3.tar.gz::https://github.com/ambition-echo/earth_wallpaper/archive/refs/tags/v2.0.3.tar.gz
+	source = earth-wallpaper-2.0.3.tar.gz::https://github.com/ambition-echo/earth_wallpaper/archive/refs/tags/2.0.3.tar.gz
 	source = earth-wallpaper.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3cae2f7fbdb1d9bd3bcb398a8ab40c6cd2ad9a2bf55e4f2a12cf059f34c32ed7
+	sha256sums = 13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5
 
 pkgname = earth-wallpaper-bin
