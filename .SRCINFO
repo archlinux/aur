@@ -1,0 +1,19 @@
+pkgbase = python38-urllib3
+	pkgdesc = HTTP library with thread-safe connection pooling, file post, and more.
+	pkgver = 1.26.12
+	pkgrel = 00
+	url = https://urllib3.readthedocs.io/
+	arch = any
+	license = MIT
+	depends = python38
+	depends = python38-pyopenssl
+	depends = python38-google-api-core
+	noextract = urllib3-1.26.12-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/6f/de/5be2e3eed8426f871b170663333a0f627fc2924cc386cd41be065e7ea870/urllib3-1.26.12-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 5b4ab9952aa599cd3baf5c20802b2ea9
+	md5sums = c2823cb995439c984fd62a973d79815c
+
+pkgname = python38-urllib3
