@@ -1,0 +1,21 @@
+pkgbase = python38-jaraco.classes
+	pkgdesc = Module for classes manipulation
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://github.com/jaraco/jaraco.classes
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-enabler
+	checkdepends = python38-pytest-mypy
+	checkdepends = python38-pip
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-more-itertools
+	conflicts = python38-jaraco
+	replaces = python38-jaraco
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.classes/jaraco.classes-3.2.3.tar.gz
+	sha512sums = 73fe80de5c50b553efee6aa51fff98e30e72dcb4167b6056628d3cbbb897e29abde4fa9da79a2b413830d8440055a43ea97ace4daa62853d874419cb36c43fee
+
+pkgname = python38-jaraco.classes
