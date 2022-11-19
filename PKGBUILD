@@ -1,21 +1,18 @@
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Maintainer : David Phillips <dbphillipsnz at gmail>
 # Contributor: Ricardo Leuck <leuck.r at gmail> (original brewtarget-git PKGBUILD)
 
 pkgname=brewtarget
-pkgver=2.3.1
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
 url="http://www.brewtarget.org/"
 arch=('x86_64' 'i686')
-license=('GPL3'
-         'WTFPL-2')
-depends=('qt5-tools' 'qt5-multimedia' 'qt5-webkit' 'qt5-svg')
-optdepends=()
-makedepends=('cmake')
-conflicts=("${pkgname}-git")
-backup=()
-source=("${pkgname}-${pkgver}.zip"::"https://github.com/Brewtarget/${pkgname}/archive/v${pkgver}.zip")
-sha512sums=('a0e4ecadfaaaa7f6b2d53f21c5d6d2a54b76dfb29f3210235121b638e385b3b373747a18a3782bae8f5107e6631544d94791d3f8ff1f85fe4f353a0151e68d70')
+license=('CCPL:by-sa' 'GPL3' 'LGPL2.1' 'LGPL3' 'WTFPL-2')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'xalan-c' 'xerces-c')
+makedepends=('cmake' 'boost' 'qt5-tools')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Brewtarget/brewtarget/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('b465c1835ffdfceb79cd7fb234d4858108b8162e463797362feaa714efe0fa4f6a837e161e0e830989e60c8e6418872be6829ac670c0a394681f29589656cada')
 
 build() {
   mkdir -p "${pkgname}-build"
@@ -27,6 +24,6 @@ build() {
 package() {
   cd "${pkgname}-build"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "../${pkgname}-${pkgver}/COPYING.GPLv3" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPLv3"
+  install -Dm644 "../${pkgname}-${pkgver}/COPYRIGHT" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
   install -Dm644 "../${pkgname}-${pkgver}/COPYING.WTFPL" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.WTFPL"
 }
