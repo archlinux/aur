@@ -1,0 +1,21 @@
+pkgbase = python38-xmlschema
+	pkgdesc = An XML Schema validator and decoder
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/sissaschool/xmlschema
+	arch = any
+	license = MIT
+	checkdepends = python38-lxml
+	checkdepends = python38-jinja
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-elementpath
+	optdepends = python38-jinja: for XSD based code generators
+	source = python38-xmlschema::git+https://github.com/sissaschool/xmlschema#commit=a2165b49e66ad123a3d005cbf8e173e4c5139248
+	b2sums = SKIP
+
+pkgname = python38-xmlschema
