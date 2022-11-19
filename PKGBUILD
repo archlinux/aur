@@ -1,6 +1,6 @@
 #Maintainer: EMPTY <testerthe60@gmail.com>
 pkgname=numworks-upsilon-git
-pkgver=1.22.1.E15.r525.g1d00d7d9d
+pkgver=1.22.1.E15.r526.g78b606e82
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Upsilon firmware)"
 arch=('x86_64')
