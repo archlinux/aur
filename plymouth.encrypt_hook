@@ -1,0 +1,313 @@
+#!/usr/bin/ash
+# shellcheck shell=dash
+
+_get_key() {
+    msg ":: getting key for encrypted device..."
+    IFS=: read ckdev ckarg1 ckarg2 <<EOF
+$cryptkey
+EOF
+    # shellcheck disable=SC2154
+    if [ "$ckdev" = "rootfs" ]; then
+        ckeyfile=$ckarg1
+    elif resolved=$(resolve_device "${ckdev}" ${rootdelay}); then
+        case ${ckarg1} in
+            *[!0-9]*)
+                # Use a file on the device
+                # ckarg1 is not numeric: ckarg1=filesystem, ckarg2=path
+                IFS=, read ckfs1 ckfs2 <<EOF
+$ckarg1
+EOF
+                IFS=, read ckpath1 ckpath2 <<EOF
+$ckarg2
+EOF
+                mkdir /ckey
+                msg ":: mount ${resolved} (${ckfs1})..."
+                mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
+                ckey="/ckey/${ckpath1}"
+                is_fs=$(blkid -o value -s TYPE "${ckey}")
+                if [ "${is_fs}" != "" ]; then
+                    msg ":: mount ${ckey} (${is_fs})..."
+                    if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
+                        msg ":: device ${key} is a LUKS volume..."
+                        plymouth ask-for-password --prompt="Password for ckey volume" --dont-pause-progress --number-of-tries=15 --command="/sbin/cryptsetup luksOpen --key-file=- ${ckey} ckey"
+                        ckey="/dev/mapper/ckey"
+                    fi
+                    mount --mkdir -r -t "$ckfs2" "${ckey}" /ckey2
+                    ckey="/ckey2/${ckpath2}"
+                fi
+                dd if="${ckey}" of="${ckeyfile}" >/dev/null 2>&1
+                if mountpoint -q /ckey2; then
+                    umount /ckey2
+                    cryptsetup close --type luks ckey;
+                fi
+                umount /ckey
+                ;;
+            *)
+                # Read raw data from the block device
+                # ckarg1 is numeric: ckarg1=offset, ckarg2=length
+                dd if="${resolved}" of="${ckeyfile}" bs=1 skip="${ckarg1}" count="${ckarg2}" >/dev/null 2>&1
+                ;;
+        esac
+    fi
+
+    [ ! -f "${ckeyfile}" ] && echo "Keyfile could not be opened. Reverting to passphrase."
+}
+
+_get_sig() {
+    msg ":: getting signature for airootfs encrypted container..."
+    DEPRECATED_CRYPT=0
+    IFS=: read sigdev sigarg1 sigarg2 <<EOF
+$sigdevice
+EOF
+    if resolved=$(resolve_device "${sigdev}" ${rootdelay}); then
+        case ${sigarg1} in
+            *[!0-9]*)
+                # Use a file on the device
+                # sigarg1 is not numeric: sigarg1=filesystem, sigarg2=path
+                IFS=, read sigfs1 sigfs2 <<EOF
+$sigarg1
+EOF
+                IFS=, read sigpath1 sigpath2 <<EOF
+$sigarg2
+EOF
+
+                msg ":: mount ${resolved} (${sigfs1}) over /sigdev..."
+                mount --mkdir -r -t "$sigfs1" "$resolved" /sigdev
+                sigpath="/sigdev/${sigpath1}"
+                is_fs=$(blkid -o value -s TYPE "${sigpath}")
+                if [ "${is_fs}" != "" ]; then
+                    if cryptsetup isLuks "${sigpath}" >/dev/null 2>&1; then
+                        plymouth ask-for-password --prompt="Password for ckey volume" --dont-pause-progress --number-of-tries=15 --command="/sbin/cryptsetup luksOpen --key-file=- ${sigpath} sigdev"
+                        sigpath="/dev/mapper/sigdev"
+                    fi
+                    msg ":: mount ${sigpath} (${sigfs2}) over /sigdev2"
+                    mount --mkdir -r -t "$sigfs2" "${sigpath}" /sigdev2
+                    sigpath="/sigdev2/${sigpath2}"
+                fi
+                dd if="${sigpath}" of="${sigfile}" >/dev/null 2>&1
+                if mountpoint -q /sigdev2; then
+                    umount /sigdev2
+                    cryptsetup close --type luks sigdev;
+                fi
+                umount /sigdev
+                ;;
+            *)
+                # Read raw data from the block device
+                # sigarg1 is numeric: sigarg1=offset, sigarg2=length
+                dd if="${resolved}" of="${sigfile}" bs=1 skip="${sigarg1}" count="${sigarg2}" >/dev/null 2>&1
+                ;;
+        esac
+    else
+        err "Can't mount device ${sigdev} over /sigdev"
+        launch_interactive_shell
+    fi
+    if [ ! -f "${sigfile}" ]; then
+        err "Signature file could not be opened. "
+        launch_interactive_shell
+    fi
+}
+
+_verify_signature() {
+    local _status
+    local _file="${1}"
+    local _sigfile="${2}"
+    local _dir _filename
+
+    _dir="$(dirname "${_file}")"
+    _filename="$(basename "${_file}")"
+    cd "${_dir}" || exit 1
+    gpg --homedir /gpg --status-fd 1 --verify "${_sigfile}" "${_filename}" 2>/dev/null | grep -E '^\[GNUPG:\] GOODSIG'
+    _status=$?
+    cd -- "${OLDPWD}" || exit 1
+    return ${_status}
+}
+
+_cryptdev() {
+    if [ -n "${cryptdevice}" ]; then
+        DEPRECATED_CRYPT=0
+        IFS=: read cryptdev cryptname cryptoptions <<EOF
+$cryptdevice
+EOF
+    else
+        DEPRECATED_CRYPT=1
+        cryptdev="${root}"
+        cryptname="root"
+    fi
+
+    IFS=, read cryptdev cryptdevpath <<EOF
+$cryptdev
+EOF
+
+    if [ -n "${cryptdevpath}" ]; then
+        if mount --mkdir -o "defaults" "${cryptdev}" /run/cryptdev; then
+            msg ":: device ${cryptdev} mounted over /run/cryptdev"
+            cryptdev="/run/cryptdev/${cryptdevpath}"
+        else
+            err "Can't mount device ${cryptdev} over /run/cryptdev"
+            launch_interactive_shell
+        fi
+    fi
+}
+
+_set_cryptargs() {
+    set -f
+    OLDIFS="$IFS"; IFS=,
+    for cryptopt in ${cryptoptions}; do
+        case ${cryptopt} in
+            allow-discards|discard)
+                cryptargs="${cryptargs} --allow-discards"
+                ;;
+            no-read-workqueue|perf-no_read_workqueue)
+                cryptargs="${cryptargs} --perf-no_read_workqueue"
+                ;;
+            no-write-workqueue|perf-no_write_workqueue)
+                cryptargs="${cryptargs} --perf-no_write_workqueue"
+                ;;
+            readonly|read-only)
+                cryptargs="${cryptargs} --readonly"
+                ;;
+            *)
+                msg "::Encryption option '${cryptopt}' not known, ignoring." >&2
+                ;;
+        esac
+    done
+    set +f
+    IFS="$OLDIFS"
+    unset OLDIFS
+}
+
+warn_deprecated() {
+    msg "The syntax 'root=${root}' where '${root}' is an encrypted volume is deprecated"
+    msg "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
+}
+
+_open_root() {
+    resolved=$(cryptsetup isLuks "${cryptdev}" >/dev/null 2>&1 && echo "${cryptdev}")
+    [ "${resolved}" = "" ] && resolved=$(resolve_device "${cryptdev}" ${rootdelay})
+    if [ "${resolved}" != "" ]; then
+        if cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
+            [ ${DEPRECATED_CRYPT} -eq 1 ] && warn_deprecated
+            dopassphrase=1
+            # If keyfile exists, try to use that
+            if [ -f "${ckeyfile}" ]; then
+                if eval cryptsetup --key-file ${ckeyfile} open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}; then
+                    dopassphrase=0
+                else
+                    echo "Invalid keyfile. Reverting to passphrase."
+                fi
+            fi
+            # Ask for a passphrase
+            if [ ${dopassphrase} -gt 0 ]; then
+                echo ""
+                echo "A password is required to access the ${cryptname} volume:"
+                plymouth ask-for-password --prompt="Password for ${cryptname} volume" --dont-pause-progress --number-of-tries=15 --command="/sbin/cryptsetup luksOpen --key-file=- ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}"
+            fi
+            if [ -e "/dev/mapper/${cryptname}" ]; then
+                if [ ${DEPRECATED_CRYPT} -eq 1 ]; then
+                    export root="/dev/mapper/root"
+                fi
+            else
+                err "Password succeeded, but ${cryptname} creation failed, aborting..."
+                return 1
+            fi
+        elif [ -n "${crypto}" ]; then
+            [ ${DEPRECATED_CRYPT} -eq 1 ] && warn_deprecated
+            msg "Non-LUKS encrypted device found..."
+            if echo "$crypto" | awk -F: '{ exit(NF == 5) }'; then
+                err "Verify parameter format: crypto=hash:cipher:keysize:offset:skip"
+                err "Non-LUKS decryption not attempted..."
+                return 1
+            fi
+            exe="cryptsetup open --type plain $resolved $cryptname $cryptargs"
+            IFS=: read c_hash c_cipher c_keysize c_offset c_skip <<EOF
+$crypto
+EOF
+            [ -n "$c_hash" ]    && exe="$exe --hash '$c_hash'"
+            [ -n "$c_cipher" ]  && exe="$exe --cipher '$c_cipher'"
+            [ -n "$c_keysize" ] && exe="$exe --key-size '$c_keysize'"
+            [ -n "$c_offset" ]  && exe="$exe --offset '$c_offset'"
+            [ -n "$c_skip" ]    && exe="$exe --skip '$c_skip'"
+            if [ -f "$ckeyfile" ]; then
+                exe="$exe --key-file $ckeyfile"
+            else
+                echo ""
+                echo "A password is required to access the ${cryptname} volume:"
+            fi
+            eval "$exe $CSQUIET"
+
+            if [ $? -ne 0 ]; then
+                err "Non-LUKS device decryption failed. verify format: "
+                err "      crypto=hash:cipher:keysize:offset:skip"
+                return 1
+            fi
+            if [ -e "/dev/mapper/${cryptname}" ]; then
+                if [ ${DEPRECATED_CRYPT} -eq 1 ]; then
+                    export root="/dev/mapper/root"
+                fi
+            else
+                err "Password succeeded, but ${cryptname} creation failed, aborting..."
+                return 1
+            fi
+        else
+            err "Failed to open encryption mapping: The device ${cryptdev} is not a LUKS volume and the crypto= paramater was not specified."
+        fi
+    fi
+}
+
+_compare_signatures() {
+    local _cryptdev_sig_sha _keys_sig_sha
+    _cryptdev_sig_sha=$(sha512sum "${cryptdev}.sig")
+    _keys_sig_sha=$(sha512sum "/crypto_sigfile.bin")
+    if [ "${_keys_sig_sha%% *}" != "${_cryptdev_sig_sha%% *}" ]; then
+        err "Signatures on devices are different."
+        return 1
+    else
+        msg "Signatures match, continue booting."
+    fi
+}
+
+_verify() {
+    _compare_signatures
+    if _verify_signature "${cryptdev}" "/crypto_sigfile.bin"; then
+        msg ":: Signature is OK, continue booting."
+        export verify="n"
+    else
+        err "One or more files are corrupted"
+        return 1
+    fi
+}
+
+run_hook() {
+    modprobe -a -q dm-crypt >/dev/null 2>&1
+    # shellcheck disable=SC2154
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+    _cryptdev
+
+    # Get signature file if specified
+    sigfile="/crypto_sigfile.bin"
+    if [ -n "$sigdevice" ]; then
+        _get_sig
+    fi
+
+    # shellcheck disable=SC2154
+    [ "${verify}" = "y" ] && _verify
+
+    # Get key file if specified
+    ckeyfile="/crypto_keyfile.bin"
+    if [ -n "$cryptkey" ]; then
+        _get_key
+    fi
+
+    # This may happen if third party hooks do the crypt setup
+    if [ -b "/dev/mapper/${cryptname}" ]; then
+        echo "Device ${cryptname} already exists, not doing any crypt setup."
+        return 0
+    fi
+
+    _set_cryptargs
+    _open_root
+    rm -f ${ckeyfile}
+    rm -f "${sigfile}"
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
