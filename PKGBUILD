@@ -2,15 +2,15 @@
 # Maintainer: Vlad <ejiek@mail.ru>
 pkgname=gomuks
 pkgdesc='A terminal based Matrix client written in Go'
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 url=https://github.com/tulir/gomuks
 license=(GPL3)
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 depends=(libolm)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::"https://codeload.github.com/tulir/gomuks/tar.gz/v$pkgver")
-sha512sums=('d16bd4cb7ae12f172e290916450a6e11900259ceba60ce03a9f19f4351647929984701f4d859a467a88c4dd4ae5e9bf2d7206eeb567763c478c2b357e88ca65f')
+sha512sums=('9f001db7b926779f4f33dd0fa3c5d4a88ec31862ecbcfd529846b187d3ac26f70d2836250bc827a8852b8af62a32a3e2e20861f849cfa2d39bf1784967c4c80a')
 
 build () {
 	cd "$pkgname-$pkgver"
