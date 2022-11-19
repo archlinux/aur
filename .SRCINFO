@@ -1,0 +1,11 @@
+pkgbase = kitty-xterm-symlinks
+	pkgdesc = Runs kitty if xterm is called
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = kitty
+	provides = xterm
+	conflicts = xterm
+	conflicts = alacritty-xterm-symlink
+
+pkgname = kitty-xterm-symlinks
