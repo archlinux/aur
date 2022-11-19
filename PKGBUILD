@@ -4,8 +4,8 @@
 # Contributor: Allan McRae <allan at archlinux dot org>
 
 pkgname=mbpfan-git
-pkgver=2.3.0.r1.g7981306
-pkgrel=2
+pkgver=2.3.0.r3.g71d72cf
+pkgrel=1
 pkgdesc="A simple daemon to control fan speed on all MacBook/MacBook Pros"
 arch=('x86_64' 'i686')
 url="https://github.com/linux-on-mac/mbpfan"
@@ -33,4 +33,5 @@ package() {
     install -Dm644 "mbpfan.conf" "$pkgdir/etc/mbpfan.conf"
     install -Dm644 "mbpfan.service" "$pkgdir/usr/lib/systemd/system/mbpfan.service"
     install -Dm644 "mbpfan.8.gz" "$pkgdir/usr/share/man/man8/mbpfan.8.gz"
+    install -Dm644 "mbpfan.depend.conf" "$pkgdir/usr/lib/modules-load.d/mbpfan.depend.conf"
 }
