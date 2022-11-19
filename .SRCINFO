@@ -1,0 +1,15 @@
+pkgbase = python38-tomli
+	pkgdesc = A lil' TOML parser
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/hukkin/tomli
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-flit-core
+	depends = python38
+	source = https://github.com/hukkin/tomli/archive/2.0.1/python38-tomli-2.0.1.tar.gz
+	sha512sums = a467f8d48cdbd7213bd9b6f85fd48ba142ab7c9656c40bb30785e1c4b37a9e29eaed420f183458ad20112baee8413ebbec87755332795c8f02235d1018c3aa5c
+
+pkgname = python38-tomli
