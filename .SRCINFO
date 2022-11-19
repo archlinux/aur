@@ -1,0 +1,18 @@
+pkgbase = python38-nodeenv
+	pkgdesc = Node.js virtual environment builder
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/ekalinin/nodeenv
+	arch = any
+	license = BSD
+	checkdepends = nodejs
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-coverage
+	checkdepends = python38-mock
+	depends = python38-setuptools
+	depends = make
+	optdepends = nodejs: for --node=system
+	source = python38-nodeenv-1.7.0.tar.gz::https://github.com/ekalinin/nodeenv/archive/1.7.0.tar.gz
+	sha512sums = 1e3e4068591d51d8915de73ab0f82f04620ca628152ec5a454e7ad18001ff20b698f9818353c44b80200ab529d95fa3196a3dbc85f0c497ea49f60eaa5dc9ea7
+
+pkgname = python38-nodeenv
