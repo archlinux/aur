@@ -1,16 +1,27 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='luxtorpeda-git'
 pkgver=60.0.0.r370.2c040cd
-pkgrel=1
+pkgrel=2
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64' 'i686')
 url='https://github.com/luxtorpeda-dev/luxtorpeda'
 license=('GPL2')
 depends=()
-makedepends=('git' 'rust' 'godot')
+makedepends=('git' 'rust' 'godot' 'clang')
 optdepends=('steam: The Steam client')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
+
+# Godot requires X11 for its builder even with '--no-window' option;
+# if we operate under X11-less environment, we will need to add framebuffer wrapper
+# so that the build can still run correctly
+if [ ! -v DISPLAY ]; then
+  makedepends+=('xorg-server-xvfb')
+  godot_command=('xvfb-run' "--auth-file=$(mktemp -u)" '--error-file=/dev/stderr' 'make')
+else
+  godot_command=('make')
+fi
 
 source=("git+${url}.git"
         'reproducible-build.patch'
@@ -69,8 +80,13 @@ build() {
     echo "SHA512 checksums verified"
 
     # Unpack the godot templates into user-local directory
-    mkdir -p "$godot_template_dir"
-    unzip -j "$godot_download_loc" -d "$godot_template_dir"
+    (
+      echo "Unpacking export templates into user directory..." &&
+      mkdir -p "$godot_template_dir" &&
+      cd "$godot_template_dir" &&
+      bsdtar -xf "$godot_download_loc" &&
+      mv templates/* . && rmdir templates
+    )
   fi
 
   # Perform build and track what its success/failure is;
@@ -79,7 +95,7 @@ build() {
   if (
     cd "$srcdir/${pkgname%-git}" &&
     mkdir -p "target/release" &&
-    make GODOT=/usr/bin/godot luxtorpeda
+    "${godot_command[@]}" GODOT=/usr/bin/godot luxtorpeda
   ); then
     build_exitcode=0
   else
