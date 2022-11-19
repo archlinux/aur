@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=4.2.1
+_pkgver=4.3.0
 pkgname=r-${_pkgname,,}
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Tools for Single Cell Genomics'
 arch=('x86_64')
@@ -78,7 +78,7 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('410238b6ca147451b43800a6e49c132fa5f6aacfe6b93b39a1e4d61257a9e35e')
+sha256sums=('7ebacb3b86f74279de60b597f9a6e728f0668719811b0dca3425d21762fff97c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
