@@ -1,7 +1,7 @@
 pkgbase = mosdns-bin-arm
 	pkgdesc = 一个 DNS 转发器
 	pkgver = 4.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IrineSistiana/mosdns/
 	arch = aarch64
 	arch = armv7h
@@ -20,8 +20,8 @@ pkgbase = mosdns-bin-arm
 	sha256sums = 2f2c9bbec87f610d4365cfa2631488a3517d3c5529e7e9942d778f550030c807
 	sha256sums = 0be8eb1cdf1dd563f829c2ab86a00be4d889d22a29e34c9582caff5c2876a2e1
 	source_aarch64 = mosdns-bin-arm-4.5.3_aarch64.zip::https://github.com/IrineSistiana/mosdns//releases/download/v4.5.3/mosdns-linux-arm64.zip
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = f8431d5f197537257b1a333df619ea45d587dcc46e36bfac451f4c5eee235dd7
 	source_armv7h = mosdns-bin-arm-4.5.3_armv7h.zip::https://github.com/IrineSistiana/mosdns//releases/download/v4.5.3/mosdns-linux-arm-7.zip
-	sha256sums_armv7h = SKIP
+	sha256sums_armv7h = f51d956ee1fa947e48945a0a4b71aafc0df5653b9e9b3aa43ba0373cffa7ce8e
 
 pkgname = mosdns-bin-arm
