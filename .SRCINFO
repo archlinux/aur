@@ -1,0 +1,17 @@
+pkgbase = python38-beautifulsoup4
+	pkgdesc = A python38 HTML/XML parser designed for quick turnaround projects like screen-scraping
+	pkgver = 4.11.1
+	pkgrel = 1
+	url = https://www.crummy.com/software/BeautifulSoup/index.html
+	arch = any
+	license = PSF
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38-soupsieve
+	optdepends = python38-chardet: to autodetect character encodings
+	optdepends = python38-lxml: alternative HTML parser
+	optdepends = python38-html5lib: alternative HTML parser
+	source = https://pypi.io/packages/source/b/beautifulsoup4/beautifulsoup4-4.11.1.tar.gz
+	sha512sums = 7446be07cd55f23def929e6491f0d74a940cf50206ed520b8ae7b9d57bd19ecf6aa821f446ca4f26f1e08b43fcc71fb397886f51a3f0ec691f9e53dfdc7a0cf8
+
+pkgname = python38-beautifulsoup4
