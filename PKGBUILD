@@ -3,7 +3,7 @@ pkgname='mqtt-explorer-beta'
 gitver=0.4.0
 betaver=3
 pkgver=${gitver}.${betaver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
@@ -27,7 +27,13 @@ source=("$pkgname-${pkgver}-beta${betaver}.tar.gz::https://github.com/thomasnord
 validpgpkeys=("4AEE18F83AFDEB23")
 
 build() {
+	export NODE_OPTIONS=--openssl-legacy-provider
         cd "MQTT-Explorer-${gitver}-beta${betaver}"
+
+	sed -i 's/"heapdump": "^0.3.12",//' app/package.json
+	sed -i 's/if (!/\/*if (!/' app/src/components/Demo/index.tsx
+	sed -i 's/return path/\*\/return path/' app/src/components/Demo/index.tsx
+
         yarn || sed -i 's/node-gyp rebuild/node-gyp rebuild --openssl_fips=X/' app/package.json
         yarn build
 }
