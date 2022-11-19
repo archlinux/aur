@@ -1,6 +1,6 @@
 pkgbase = r-clue
 	pkgdesc = Cluster Ensembles
-	pkgver = 0.3.62
+	pkgver = 0.3.63
 	pkgrel = 1
 	url = https://cran.r-project.org/package=clue
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-clue
 	optdepends = r-quadprog
 	optdepends = r-relations
 	optdepends = r-rweka
-	source = https://cran.r-project.org/src/contrib/clue_0.3-62.tar.gz
-	sha256sums = 575a3fa2c4aa1ae5c7e35f4462f2f331d291d87916aa12f0d11f61988d5e1ed2
+	source = https://cran.r-project.org/src/contrib/clue_0.3-63.tar.gz
+	sha256sums = d913283c258a74bfdf95fb4c82b55d548829b0d650ce6824689d853c96138030
 
 pkgname = r-clue
