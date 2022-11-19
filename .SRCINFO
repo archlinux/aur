@@ -1,0 +1,14 @@
+pkgbase = python38-pluggy
+	pkgdesc = Plugin and hook calling mechanisms for python38
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pluggy
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools-scm
+	depends = python38
+	source = https://github.com/pytest-dev/pluggy/archive/1.0.0/python38-pluggy-1.0.0.tar.gz
+	sha512sums = 88f1180d2607115d6516cba07fa7c1f0e284d1e16fb7ed42c4a05d5d2b0dc1419d2bdbdadc34e2eb7f6b0cc9fc97715c6b184542c01f6bc33242a872c46d7903
+
+pkgname = python38-pluggy
