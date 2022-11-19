@@ -1,0 +1,17 @@
+pkgbase = python38-yaml
+	pkgdesc = Python bindings for YAML, using fast libYAML library
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://pyyaml.org/wiki/PyYAML
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = python38-setuptools
+	depends = libyaml
+	depends = python38
+	provides = python38-pyyaml
+	source = https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-6.0.tar.gz
+	sha512sums = b402993073282e7f4202823b051d364b91929362edd5b3aebe93b56833956ec9279c1ba82b97f8bc8a2b82d20e1060e4ec9fc90400a6ed902adce3e4f83a6e0e
+	b2sums = 00a871f6a6ea8b0a3f7aec4279b03e102af2c2b75ce45f2bcf68584f67843b2a0b37113bd431c73d9c84b2abaaf48bd97163aa970074afb8e7ef04247938f271
+
+pkgname = python38-yaml
