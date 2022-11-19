@@ -1,0 +1,14 @@
+pkgbase = python38-iniconfig
+	pkgdesc = brain-dead simple config-ini parsing
+	pkgver = 1.1.1
+	pkgrel = 5
+	url = https://github.com/RonnyPfannschmidt/iniconfig
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	makedepends = python38-setuptools-scm
+	source = python38-iniconfig-1.1.1.tar.gz::https://github.com/RonnyPfannschmidt/iniconfig/archive/v1.1.1.tar.gz
+	sha512sums = 3e86490e424adefcc36b498ed0e6c6a6d4c6a2804a95b99163cef456f303b1913e9afe34035039cf0f2e96f7624719dc85e4ab3917ccd59278b22894a00dbf26
+
+pkgname = python38-iniconfig
