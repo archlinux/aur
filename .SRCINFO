@@ -1,7 +1,7 @@
 pkgbase = apk-tools-git
 	pkgdesc = Alpine package manager
-	pkgver = 2.12.10.r248.gff7c8f6
-	pkgrel = 2
+	pkgver = 2.12.10.r250.gc21f61d
+	pkgrel = 1
 	url = https://gitlab.alpinelinux.org/alpine/apk-tools
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = apk-tools-git
 	depends = glibc
 	depends = openssl
 	depends = zlib
-	provides = apk-tools=2.12.10.r248.gff7c8f6
+	provides = apk-tools=2.12.10.r250.gc21f61d
 	conflicts = apk-tools
 	options = staticlibs
 	source = git+https://gitlab.alpinelinux.org/alpine/apk-tools.git

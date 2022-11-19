@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apk-tools-git
-pkgver=2.12.10.r248.gff7c8f6
-pkgrel=2
+pkgver=2.12.10.r250.gc21f61d
+pkgrel=1
 pkgdesc="Alpine package manager"
 arch=('i686' 'x86_64')
 url="https://gitlab.alpinelinux.org/alpine/apk-tools"
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "apk-tools"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
