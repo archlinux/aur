@@ -1,0 +1,20 @@
+pkgbase = python38-pygments
+	pkgdesc = Python 3.8 syntax highlighter
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://pygments.org/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-lxml
+	makedepends = python38-setuptools
+	makedepends = python38-sphinx
+	makedepends = python38-wcag-contrast-ratio
+	depends = python38
+	provides = py38gmentize
+	conflicts = py38gmentize
+	replaces = pyg38mentize
+	source = https://pypi.org/packages/source/P/Pygments/Pygments-2.13.0.tar.gz
+	sha256sums = 56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1
+
+pkgname = python38-pygments
