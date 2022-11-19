@@ -1,0 +1,187 @@
+From eb0462759684405bc2f2855dac6bdf3a5fa4f30e Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:20:14 +0200
+Subject: [PATCH 13/13] spdlog
+
+---
+ CMakeLists.txt                                    | 6 +++++-
+ deps/spdlog-1.8.0/include/spdlog/common-inl.h     | 2 +-
+ include/luxcore/luxcorelogger.h                   | 2 +-
+ include/luxcore/luxcoresink.h                     | 2 +-
+ samples/luxcoreconsole/CMakeLists.txt             | 3 ++-
+ samples/luxcoredemo/CMakeLists.txt                | 3 ++-
+ samples/luxcorescenedemo/CMakeLists.txt           | 3 ++-
+ samples/luxcoreui/CMakeLists.txt                  | 6 +++++-
+ src/luxcore/luxcore.cpp                           | 2 +-
+ src/luxcore/luxcoreinit.cpp                       | 6 +++---
+ tests/luxcoreimplserializationdemo/CMakeLists.txt | 3 ++-
+ 11 files changed, 25 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 586ca9ece..c0da2b5d5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,12 +107,16 @@ include_directories("${LuxRays_SOURCE_DIR}/deps/json-3.7.3/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/cuew/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/clew/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/optix-7.1.0/include")
+-include_directories("${LuxRays_SOURCE_DIR}/deps/spdlog-1.8.0/include")
++#include_directories("${LuxRays_SOURCE_DIR}/deps/spdlog-1.8.0/include")
+ include_directories("${LuxRays_SOURCE_DIR}/deps/robin-hood-hashing-3.9.1/src/include")
+ 
+ # Find dependencies
+ include(Dependencies)
+ 
++add_definitions(-DSPDLOG_FMT_EXTERNAL=1)
++find_package(spdlog REQUIRED)
++include_directories(${SPDLOG_INCLUDE_DIRS})
++
+ SET(Boost_Save ${Boost_LIBRARIES})
+ find_package(OpenVDB)
+ LIST(APPEND Boost_LIBRARIES ${Boost_Save})
+diff --git a/deps/spdlog-1.8.0/include/spdlog/common-inl.h b/deps/spdlog-1.8.0/include/spdlog/common-inl.h
+index be0d8f8ea..4e5a09cb9 100644
+--- a/deps/spdlog-1.8.0/include/spdlog/common-inl.h
++++ b/deps/spdlog-1.8.0/include/spdlog/common-inl.h
+@@ -54,7 +54,7 @@ SPDLOG_INLINE spdlog_ex::spdlog_ex(std::string msg)
+ SPDLOG_INLINE spdlog_ex::spdlog_ex(const std::string &msg, int last_errno)
+ {
+     memory_buf_t outbuf;
+-    fmt::format_system_error(outbuf, last_errno, msg);
++    fmt::format_system_error(outbuf, last_errno, msg.c_str());
+     msg_ = fmt::to_string(outbuf);
+ }
+ 
+diff --git a/include/luxcore/luxcorelogger.h b/include/luxcore/luxcorelogger.h
+index ecf979893..030f891f2 100644
+--- a/include/luxcore/luxcorelogger.h
++++ b/include/luxcore/luxcorelogger.h
+@@ -22,7 +22,7 @@
+ #include <memory>
+ #include <sstream>
+ 
+-#include "spdlog/spdlog.h"
++#include <spdlog/spdlog.h>
+ 
+ #include "luxrays/utils/strutils.h"
+ #include "luxrays/utils/properties.h"
+diff --git a/include/luxcore/luxcoresink.h b/include/luxcore/luxcoresink.h
+index a7207a027..0e8528dd8 100644
+--- a/include/luxcore/luxcoresink.h
++++ b/include/luxcore/luxcoresink.h
+@@ -21,7 +21,7 @@
+ 
+ #include <mutex>
+ 
+-#include "spdlog/sinks/rotating_file_sink.h"
++#include <spdlog/sinks/rotating_file_sink.h>
+ 
+ //------------------------------------------------------------------------------
+ // Our SpdLog sink for LuxCore call back handler
+diff --git a/samples/luxcoreconsole/CMakeLists.txt b/samples/luxcoreconsole/CMakeLists.txt
+index 638bcd1da..bd9a73651 100644
+--- a/samples/luxcoreconsole/CMakeLists.txt
++++ b/samples/luxcoreconsole/CMakeLists.txt
+@@ -27,9 +27,10 @@ set(LUXCORECONSOLE_SRCS
+ 	)
+ 
+ add_executable(luxcoreconsole ${LUXCORECONSOLE_SRCS})
++find_package(fmt REQUIRED)
+ 
+ if(APPLE)
+ TARGET_LINK_LIBRARIES(luxcoreconsole expat "-framework Carbon" "-framework IOKit" ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
+ else()
+-TARGET_LINK_LIBRARIES(luxcoreconsole opencolorio ${OpenVDB_LIBRARIES}  ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
++  TARGET_LINK_LIBRARIES(luxcoreconsole opencolorio ${OpenVDB_LIBRARIES}  ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} fmt::fmt)
+ endif()
+diff --git a/samples/luxcoredemo/CMakeLists.txt b/samples/luxcoredemo/CMakeLists.txt
+index c7ac7ac77..e2f5d114a 100644
+--- a/samples/luxcoredemo/CMakeLists.txt
++++ b/samples/luxcoredemo/CMakeLists.txt
+@@ -28,5 +28,6 @@ set(LUXCORELIBDEMO_SRCS
+ 
+ add_executable(luxcoredemo ${LUXCORELIBDEMO_SRCS})
+ add_definitions(${VISIBILITY_FLAGS})
++find_package(fmt REQUIRED)
+ 
+-TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES} ${OpenVDB_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES} ${OpenVDB_LIBRARIES} fmt::fmt)
+diff --git a/samples/luxcorescenedemo/CMakeLists.txt b/samples/luxcorescenedemo/CMakeLists.txt
+index f428305ec..5a010f325 100644
+--- a/samples/luxcorescenedemo/CMakeLists.txt
++++ b/samples/luxcorescenedemo/CMakeLists.txt
+@@ -28,5 +28,6 @@ set(LUXCORESCENEDEMO_SRCS
+ 
+ add_executable(luxcorescenedemo ${LUXCORESCENEDEMO_SRCS})
+ add_definitions(${VISIBILITY_FLAGS})
++find_package(fmt REQUIRED)
+ 
+-TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OpenVDB_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OpenVDB_LIBRARIES} fmt::fmt)
+diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
+index 92f1784f7..c06be0fb6 100644
+--- a/samples/luxcoreui/CMakeLists.txt
++++ b/samples/luxcoreui/CMakeLists.txt
+@@ -85,6 +85,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ ENDIF()
+ 
+ add_executable(luxcoreui ${LUXCOREUI_SRCS})
++find_package(fmt REQUIRED)
+ 
+ if(APPLE)
+ 
+@@ -105,5 +106,8 @@ TARGET_LINK_LIBRARIES(luxcoreui
+ 	${GTK3_LIBRARIES}
+        ${Boost_LIBRARIES}
+         ${PYTHON_LIBRARIES}
+-        ${OpenVDB_LIBRARIES})
++        ${OpenVDB_LIBRARIES}
++        ${FMT_LIBRARIES}
++        fmt::fmt
++        )
+ endif()
+diff --git a/src/luxcore/luxcore.cpp b/src/luxcore/luxcore.cpp
+index ab754faac..2a86bc817 100644
+--- a/src/luxcore/luxcore.cpp
++++ b/src/luxcore/luxcore.cpp
+@@ -19,7 +19,7 @@
+ #include <OpenImageIO/imagebuf.h>
+ #include <OpenImageIO/imagebufalgo.h>
+ 
+-#include "spdlog/spdlog.h"
++#include <spdlog/spdlog.h>
+ 
+ #include "luxrays/core/intersectiondevice.h"
+ #include "luxrays/utils/utils.h"
+diff --git a/src/luxcore/luxcoreinit.cpp b/src/luxcore/luxcoreinit.cpp
+index 489968516..b6cee09a0 100644
+--- a/src/luxcore/luxcoreinit.cpp
++++ b/src/luxcore/luxcoreinit.cpp
+@@ -20,9 +20,9 @@
+ #include <boost/format.hpp>
+ #include <boost/thread/mutex.hpp>
+ 
+-#include "spdlog/spdlog.h"
+-#include "spdlog/sinks/rotating_file_sink.h"
+-#include "spdlog/sinks/null_sink.h"
++#include <spdlog/spdlog.h>
++#include <spdlog/sinks/rotating_file_sink.h>
++#include <spdlog/sinks/null_sink.h>
+ 
+ #include "luxrays/luxrays.h"
+ #include "luxrays/utils/strutils.h"
+diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
+index 2bfad6bf1..276851016 100644
+--- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
++++ b/tests/luxcoreimplserializationdemo/CMakeLists.txt
+@@ -30,5 +30,6 @@ include_directories(${LuxRays_SOURCE_DIR}/deps/bcd-1.1/include)
+ include_directories(${LuxRays_SOURCE_DIR}/deps/opencolorio-2.0.0/include)
+ 
+ add_executable(luxcoreimplserializationdemo ${LUXCOREIMPL_SERIALIZATIONDEMO_SRCS})
++find_package(fmt)
+ 
+-TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES} fmt::fmt)
+-- 
+2.38.1
+

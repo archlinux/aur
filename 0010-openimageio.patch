@@ -1,7 +1,7 @@
-From 81d27a09836fb5deae2466ebbf4a72ad668642b5 Mon Sep 17 00:00:00 2001
+From 5cb832372c5e12481b922e59ace3878f90fbab72 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:20:33 +0200
-Subject: [PATCH 11/13] openimageio
+Subject: [PATCH 10/13] openimageio
 
 ---
  cmake/Packages/FindOpenImageIO.cmake | 11 ++++++++++-
@@ -37,5 +37,5 @@ index 66bf54966..49eb82372 100644
  ENDIF(OPENIMAGEIO_FOUND)
  
 -- 
-2.37.0
+2.38.1
 
