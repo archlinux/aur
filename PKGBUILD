@@ -3,7 +3,7 @@
 _pkgname=vulkan-icd-loader
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Loader
-pkgver=1.3.226
+pkgver=1.3.235
 pkgrel=1
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=(any)
@@ -16,11 +16,11 @@ options=(!buildflags staticlibs !strip)
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz"
   'https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch')
-sha256sums=('992d8c7c9f85ac9e8a261a448a50f0ae602ac17964c1b2550894fc128c037226'
+sha256sums=('948407ba3662801b87bae170db2ed1a7aebe900bb66405be7d301bf656140595'
             '55736dff82300a74834beb9c832c8c2937158f7ada5993a01d832664f72c38a9')
 
 _srcdir="${_dirname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures='x86_64-w64-mingw32'
 _flags=(
   -Wno-dev
   -DCMAKE_BUILD_TYPE=Release
@@ -32,10 +32,6 @@ _flags=(
 prepare() {
   cd "${_srcdir}"
   patch -p1 -i '../710.patch'
-  sed -i 's|NO_CMAKE_FIND_ROOT_PATH||g' 'cmake/FindVulkanHeaders.cmake'
-
-  # Not available yet on mingw.
-  sed -i 's|#include <appmodel.h>||' 'loader/loader_windows.c'
 }
 
 build() {
