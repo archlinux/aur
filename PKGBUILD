@@ -1,7 +1,7 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname=eso-logs-uploader-bin
-pkgver=5.9.5
+pkgver=5.9.6
 pkgrel=1
 pkgdesc="Official log uploader application for esologs.com"
 arch=('any')
@@ -16,10 +16,10 @@ source=("${pkgname%-bin}-$pkgver.AppImage::$url/releases/download/v$pkgver/ESO-L
         'eso-logs-uploader.sh'
         'no-devtools.patch'
         'no-ads.patch')
-sha256sums=('e306383fcad5a172626c955b95c44ff949f6a460e79591a334622346bc719d46'
+sha256sums=('8abbf6e5ffba92febbc31e51a4edda1e9ccd2225e1a13ae50a84f4f415efa53e'
             '6b260619df25c8f73b2ad252462480745130d3a2d51eb8be431e55f81e637239'
             '0d1ee7d16d8e226a78300e5f20d6bb743bd194aa68090adccd436952f0b0d287'
-            '53c3b564c22088ba45bc6c6a9c6e0c7cf9be126caad9cb77cf88f85973701df0')
+            '9df84f23e7c397d25011c67a68aa6ec4ff1598af71ec38f9a9e7113d1ac58598')
 
 prepare() {
     cd "$srcdir"
@@ -32,8 +32,8 @@ prepare() {
     sed -i 's/^\(Exec=\).*$/\1eso-logs-uploader/' "squashfs-root/esologs.desktop"
 
     cd "${pkgname%-bin}"
-    patch -p1 < "$srcdir/no-devtools.patch"
     patch -p1 < "$srcdir/no-ads.patch"
+    patch -p1 < "$srcdir/no-devtools.patch"
 }
 
 package() {

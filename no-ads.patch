@@ -1,3 +1,15 @@
+diff -ruN a/main.js b/main.js
+--- a/main.js	2022-11-19 12:15:47.180054024 +0100
++++ b/main.js	2022-11-19 12:21:38.458818923 +0100
+@@ -92,8 +92,6 @@
+       nodeIntegration: true,
+       webviewTag: true,
+       contextIsolation: false,
+-      // Some ads load over HTTP instead of HTTPS :(
+-      webSecurity: false,
+     },
+   };
+ 
 diff -ruN a/main-view.js b/main-view.js
 --- a/main-view.js	2022-05-28 14:17:42.739111678 +0200
 +++ b/main-view.js	2022-05-28 14:50:14.227972642 +0200
