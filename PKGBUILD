@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3tuning
-_pkgver=0.16.0
+_pkgver=0.17.0
 pkgname=r-${_pkgname,,}
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Tuning for 'mlr3'"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fbbe417a45bfbe3c83939d08a49b3040edcfbb494f8e78c20a4ca5f1fdc76920')
+sha256sums=('b7553da82aa5ed0705e9cb9fbd5324d2a2c6cf1a9eea43347fd455ef3d16e0b5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
