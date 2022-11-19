@@ -3,13 +3,13 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/NatronGitHub/openfx-misc"
 license=('GPL')
-depends=('libgl')
+depends=('libgl' 'python')
 makedepends=('openmp')
 optdepends=('natron-plugins-git: More presets for the Shadertoy plugin')
 
@@ -20,9 +20,9 @@ _url=${url%/${pkgname}}
 source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-supportext-${_natron_ver}.tar.gz::${_url}/openfx-supportext/archive/${_natron_ver}.tar.gz")
-sha512sums=('706ce5814c978de057e482af77793dc59bd108b339cad384a02654c356e6e31769b6306f7831582fa259e45418f3a2917fa87b74ecfb35ed82e0b57905c4069e'
-            '56fc96d0820d053940336ef3ae9fee4e4386e90c9cede6e5450de66c92220f2670f12b25dfb17aaec621001db140281ab47ee8f3fa5e5915a56cfefe2be813fe'
-            'b700769ffc0df0cb3f48ec68cfbdddb01e25a55a3606df5c618cd277ba86af77c58b4301678a5f2b045c13fbe8f0403afe965102e2c78dc69226e11ea8e4be53')
+sha512sums=('b7c7f4684c629be59deb5968f72b0250974329eea6df892b052d03e5185cdf027f282907e2d57026fda3d2061baf91bb7739f0aa4f4f91549e8d77ca722cbbdd'
+            '39983f693798121342bf6509c819f9243c176c8123e4e2665309270ba3709f686592f9f29b3b938d2c7ce87c756b0ce9ef0ea36c0c96e4d3ba3379bd7f5976be'
+            '6b577c26c9299e0c1a707eeaa97e752cd3dd29587580c663ebeabe8d09c76afb66ae31feb0b10a473f84b8e6f4359ed0791c11c1b7cc1b48fb7df0ed69c44b52')
 
 prepare() {
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
