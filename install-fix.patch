@@ -1,0 +1,17 @@
+Due to some unexpected behaviour of Makefile targets, it seems that running `make install` causes the build
+to be re-run, but this time around possibly without Godot export templates. As we have a guarantee of
+all the executables being there from the build step, we just remove the prerequisite to avoid re-running it.
+
+diff --git a/Makefile b/Makefile
+index 268c112..dcc81ea 100644
+--- a/Makefile
++++ b/Makefile
+@@ -93,7 +93,7 @@ $(tool_dir).tar.xz: $(tool_dir)
+ 
+ 	tar -cJf $@ $(tool_dir)
+ 
+-install: $(tool_dir)
++install:
+ 	mkdir -p $(install_dir)
+ 	cp -av $(tool_dir)/* $(install_dir)/
+ 
