@@ -1,15 +1,15 @@
 pkgbase = python-sox
 	pkgdesc = Python wrapper around SoX
-	pkgver = 1.3.7
-	pkgrel = 1
+	pkgver = 1.4.2
+	pkgrel = 2
 	url = https://github.com/rabitt/pysox
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = sox
-	source = sox-1.3.7::git+https://github.com/rabitt/pysox#commit=eae89bde74567136ec3f723c3e6b369916d9b837
+	source = sox-1.4.2::git+https://github.com/rabitt/pysox#commit=0a428b88f76c41e93eecbf49bb27b97c7b3f9de7
 	md5sums = SKIP
 
 pkgname = python-sox
-
