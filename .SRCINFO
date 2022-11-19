@@ -1,0 +1,22 @@
+pkgbase = python38-pip-run
+	pkgdesc = Install packages and run Python 3.8 with them
+	pkgver = 8.8.1
+	pkgrel = 1
+	url = https://github.com/jaraco/pip-run
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = jupyter-nbformat
+	checkdepends = python38-pytest-enabler
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-autocommand
+	depends = python38-packaging
+	depends = python38-path
+	depends = python38-pip
+	source = https://github.com/jaraco/pip-run/archive/v8.8.1/python38-pip-run-8.8.1.tar.gz
+	sha512sums = ae964ca96f0be33fdb33974061e75486c443fda5edf0cf43247e8bd293d9a6a87d2cd421100578ed5179f13c9f46ff10ec730e0b403982da7e8aac22651268ea
+
+pkgname = python38-pip-run
