@@ -1,15 +1,17 @@
 diff --git a/Makefile b/Makefile
-index 475c85b..2800d44 100644
+index 268c112..87873dc 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -37,13 +37,13 @@ build:
- 	cargo build
+@@ -43,7 +43,7 @@ build:
+ 	$(GODOT) --path . --export "Linux/X11" target/debug/luxtorpeda.x86_64 --no-window
  
  release:
 -	cargo build --release
 +	cargo build --release --locked
- 
- lint:
+ 	mkdir -p target/debug
+ 	cp -r target/release/* target/debug
+ 	$(GODOT) --path . --export "Linux/X11" target/release/luxtorpeda.x86_64 --no-window
+@@ -52,7 +52,7 @@ lint:
  	cargo clippy -- -D warnings
  
  test:

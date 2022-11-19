@@ -16,8 +16,8 @@ source=("git+${url}.git"
         'reproducible-build.patch'
         'size-optimisations.patch')
 sha256sums=('SKIP'
-            'e97cf95dedcf60c97edb3a693052964e4ce6da795631ca5c9f04182462f67895'
-            '1aea00fecd857e8d7b8a3d4c3a5d2f9ef18007bb9366461b4f16878d64a7bf40')
+            '38a0cc7ec879a2f2dec10adf98d9d76ad7ea9a66a097122031f1759a2c4761d1'
+            '02fe3f63b7ff6e3f020c61ce02b2f91a8129668bc06aa16ba37709ed755b9334')
 
 pkgver() {
   cd "${pkgname%-git}"
