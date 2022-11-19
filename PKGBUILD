@@ -2,13 +2,13 @@
 
 pkgname=wob
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/francma/wob'
 license=('ISC')
-depends=('wayland')
-makedepends=('meson' 'wayland-protocols' 'scdoc' 'libinih')
+depends=('wayland' 'libinih')
+makedepends=('meson' 'wayland-protocols' 'scdoc')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/francma/wob/releases/download/${pkgver}/wob-${pkgver}.tar.gz"
 	"${pkgname}-${pkgver}.tar.gz.sig::https://github.com/francma/wob/releases/download/${pkgver}/wob-${pkgver}.tar.gz.sig"
