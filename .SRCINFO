@@ -1,0 +1,21 @@
+pkgbase = python38-importlib-metadata
+	pkgdesc = Read metadata from Python packages
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://importlib-metadata.readthedocs.io
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = python38-pep517
+	checkdepends = python38-pyfakefs
+	checkdepends = python38-pip
+	checkdepends = python38-tests
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-zipp
+	source = https://github.com/python/importlib_metadata/archive/v5.0.0/python38-importlib-metadata-5.0.0.tar.gz
+	sha512sums = b1cb91fa37ded81283e54a8d21dfe075922284ba4d702322bdc5222b04fae5fc3424bbe4dc8ed8318f77a4f241919f082e9d5df69022f903e284c829d46223b5
+
+pkgname = python38-importlib-metadata
