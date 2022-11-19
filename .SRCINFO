@@ -1,0 +1,21 @@
+pkgbase = python38-pbr
+	pkgdesc = Python Build Reasonableness
+	pkgver = 5.11.0
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/pbr
+	arch = any
+	license = Apache
+	checkdepends = python38-stestr
+	checkdepends = python38-testscenarios
+	checkdepends = python38-testresources
+	checkdepends = python38-testrepository
+	checkdepends = python38-virtualenv
+	checkdepends = python38-wheel
+	checkdepends = python38-sphinx
+	checkdepends = git
+	depends = python38-importlib-metadata
+	depends = python38-setuptools
+	source = python38-pbr-5.11.0.tar.gz::https://github.com/openstack-dev/pbr/archive/5.11.0.tar.gz
+	sha512sums = dbce8a76c06b2c60c2f4c9bbe94333504506563c0366b5e1ec6da2c784e612c47048cc6391501f3103ba1cd3b246283b466c73ebf264702bfe6896ddd501bdb6
+
+pkgname = python38-pbr
