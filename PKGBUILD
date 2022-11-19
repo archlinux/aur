@@ -7,11 +7,7 @@ pkgrel=8
 arch=('any')
 license=('BSD')
 url='https://github.com/manahl/pytest-plugins'
-<<<<<<< HEAD
 makedepends=('python38-pytest' 'python38-setuptools' 'python38-pypandoc' 'python38-execnet' 'python38-path'
-=======
-makedepends=('python38-pytest' 'python38-setuptools-git' 'python38-pypandoc' 'python38-execnet' 'python38-path.py'
->>>>>>> de7c3577e705dc52f377149addc289e908491fae
              'python38-mock' 'python38-virtualenv' 'python38-termcolor')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/manahl/pytest-plugins/archive/v$pkgver.tar.gz")
 sha512sums=('6ce64f554359ae8b4e8b1cdab9908226501bad1d6bcdec9d7968133bbf0b3530842883cf3ea7ef14e09372fd1454d685d4b1bf4e8d95498b69a8b0f20177e2be')
@@ -59,11 +55,7 @@ package_python38-pytest-fixture-config() {
 
 package_python38-pytest-shutil() {
   pkgdesc='A goodie-bag of unix shell and environment tools for py.test'
-<<<<<<< HEAD
   depends=('python38-pytest' 'python38-execnet' 'python38-path' 'python38-mock' 'python38-termcolor')
-=======
-  depends=('python38-pytest' 'python38-execnet' 'python38-path.py' 'python38-mock' 'python38-termcolor')
->>>>>>> de7c3577e705dc52f377149addc289e908491fae
 
   cd pytest-plugins-$pkgver/pytest-shutil
   python3.8 setup.py install --root="$pkgdir" --optimize=1
