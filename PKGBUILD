@@ -5,9 +5,9 @@
 _microarchitecture=0
 
 ## Major kernel version
-_major=5.19
+_major=6.0
 ## Minor kernel version
-_minor=7
+_minor=9
 
 ## PKGBUILD ##
 
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-${pkgver}
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.{xz,sign}
   "git+https://github.com/graysky2/kernel_compiler_patch.git"
   "git+https://github.com/Frogging-Family/linux-tkg.git"
   "choose-gcc-optimization.sh"
@@ -38,7 +38,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('SKIP' # stock skips this too: https://github.com/archlinux/svntogit-packages/blob/packages/linux/trunk/PKGBUILD
+sha256sums=('6114a208e82739b4a1ab059ace35262be2a83be34cd1ae23cb8a09337db831c7'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -65,13 +65,16 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
-  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0010-lru_${_major}.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0008-${_major}-bcachefs.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-bmq.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-ondemand-bmq.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-prjc_v${_major}-r0.patch
+  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0010-lru_${_major}.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0013-optimize_harder_O3.patch
 
   msg2 "Apply GCC Optimization Patch..."
   patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.17+.patch
@@ -92,6 +95,10 @@ prepare() {
   msg2 "Disable old dynticks..."
   scripts/config --disable CONFIG_NO_HZ
 
+  msg2 "Enable BMQ Scheduler..."
+  scripts/config --enable CONFIG_SCHED_ALT
+  scripts/config --enable CONFIG_SCHED_BMQ
+
   msg2 "Set up a GCC -O3 optimized kernel..."
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
@@ -107,27 +114,13 @@ prepare() {
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
-  msg2 "Enable Anbox support..."
-  scripts/config --module CONFIG_ASHMEM
-  scripts/config --enable CONFIG_ANDROID
-  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
-  scripts/config --enable ANDROID_BINDER_IPC_SELFTEST
-  scripts/config --enable CONFIG_ANDROID_BINDERFS
-  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
-  scripts/config --enable CONFIG_SW_SYNC
-  scripts/config --module CONFIG_UHID
-
   msg2 "Disable kernel debugging for smaller builds..."
   scripts/config --disable CONFIG_CONTEXT_TRACKING
   scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
   scripts/config --disable CONFIG_DEBUG_KERNEL
   scripts/config --disable CONFIG_DEBUG_INFO
-  scripts/config --disable CONFIG_ENABLE_MUST_CHECK
   scripts/config --disable CONFIG_UNUSED_SYMBOLS
   scripts/config --disable CONFIG_DEBUG_FS
-  scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
-  scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
-  scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
   scripts/config --disable CONFIG_KGDB
   scripts/config --disable CONFIG_FUNCTION_TRACER
   scripts/config --disable CONFIG_STACK_TRACER
