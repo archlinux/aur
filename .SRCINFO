@@ -6,6 +6,7 @@ pkgbase = cone-simple
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = procps-ng
 	depends = libxml2
 	depends = libidn
 	depends = libldap

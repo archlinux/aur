@@ -18,19 +18,22 @@ arch=('i686' 'x86_64')
 _pkgname=cone
 url="http://courier-mta.org/cone/"
 license=('GPL2')
-groups=()
+#groups=()
+makedepends=('procps-ng')
 depends=('libxml2' 'libidn' 'libldap' 'aspell' 'courier-unicode')
 checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+#optdepends=()
+#provides=()
+#conflicts=()
+#replaces=()
+#backup=()
+#options=()
+#install=
+#changelog=
+
 source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgver}.tar.bz2)
-noextract=()
+
+#noextract=()
 
 sha256sums=('df745cbbc79e60a39c16dcef5b43c8af4086d3659390e18a9f918ecf4a2788f1')
 
@@ -38,22 +41,26 @@ sha256sums=('df745cbbc79e60a39c16dcef5b43c8af4086d3659390e18a9f918ecf4a2788f1')
 #
 #
 
-prepare() {
+prepare()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
 }
 
-build() {
+build()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
   "${srcdir}/${_pkgname}-${pkgver}/configure" -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode
   make
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
   #make -k check
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
