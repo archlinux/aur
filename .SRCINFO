@@ -1,0 +1,16 @@
+pkgbase = python38-execnet
+	pkgdesc = Rapid multi-Python deployment
+	pkgver = 1.9.0
+	pkgrel = 4
+	url = https://codespeak.net/execnet
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-timeout
+	checkdepends = procps-ng
+	checkdepends = openssh
+	makedepends = python38-setuptools-scm
+	depends = python38
+	source = https://pypi.io/packages/source/e/execnet/execnet-1.9.0.tar.gz
+	sha512sums = d425e7b6f3708efecb5dfa2c36a837cb55f2c32cf2ec0c1dc11cd1ca6ea614d119d04908b84dd5a3593c87db35e71fee202f843665c853ac3538479f60c83d60
+
+pkgname = python38-execnet
