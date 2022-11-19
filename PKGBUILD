@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bambu
-_pkgver=3.0.1
+_pkgver=3.0.2
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Reference-guided isoform reconstruction and quantification for long read RNA-Seq data'
 arch=('x86_64')
@@ -53,7 +53,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c46f20aed1c4e91219dca13f151f944c2c052eb036660fc2fd335859d7067023')
+sha256sums=('7d13aff78855544bd0e038b289d4216c87637b73f912ffb3d4becf408b658608')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
