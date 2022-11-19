@@ -1,0 +1,22 @@
+pkgbase = python38-toml
+	pkgdesc = A Python library for parsing and creating TOML
+	pkgver = 0.10.2
+	pkgrel = 8
+	url = https://github.com/uiri/toml
+	arch = any
+	license = MIT
+	checkdepends = python38-numpy
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.2.tar.gz
+	source = python38-toml-0.10.1-install_type_hints.patch
+	sha256sums = b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
+	sha256sums = 7597ca115ba497797cf7c1330f5e93146ff5a924ef3bc331a8e77da12ee880cf
+	b2sums = a613d5e86fc77279f2d7b130309627eed1cab3a65fe8647cb1dc3e58d09a9d58c078472638f06f45394b00c142bcb2bc75e9c0c649d58aade2f4f6bdab23f12e
+	b2sums = 23449773cb0c7004d6c367c4cef666561e16fcd38166d17428a8192f6649bdfa76277f20bd4662f7571bc020fba6e5614e8f7dcf8502d18eb1e0ede6cb3ddde2
+
+pkgname = python38-toml
