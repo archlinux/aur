@@ -1,21 +1,23 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='dave-gnukem'
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+_pkgver=1.0.1
+pkgrel=1
 pkgdesc='2D scrolling platform shooter inspired by Duke Nukem 1'
 arch=('x86_64')
 url='https://github.com/davidjoffe/dave_gnukem'
 _url_data='https://github.com/davidjoffe/gnukem_data'
 license=('GPL2' 'MIT')
-depends=('hicolor-icon-theme' 'sdl_mixer')
+depends=('hicolor-icon-theme' 'sdl2_mixer')
 makedepends=('imagemagick')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}-data.tar.gz::${_url_data}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}-data.tar.gz::${_url_data}/archive/refs/tags/${_pkgver}.tar.gz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('2f00a6c373e270578160a73a5484fb8ec92a9361c7960cb4670856bcdc7a8a14'
+sha256sums=('d50a839d77c684a2f99b91adb274b81ac9cd4f6e040ecbcc456f601e3d71a008'
             '46c06c5fb7e1ca8d0848c1866d6e1df96e021ddf8cebc7e64d97cfee64232027'
             '7462158ad4dd0c853f01bedb90a8e6b8490f48b33dd39252260d4cfa425b8289'
             '209cb430b87c2b89455833b7c79ca309a8b87331c63882092b8c1ebeadbf2745'
@@ -39,7 +41,7 @@ package() {
   done
 
   install -dv "${pkgdir}/usr/share/${pkgname}/data"
-  cp -rfv "${pkgname#*-}_data-${pkgver}/"* "${pkgdir}/usr/share/${pkgname}/data"
+  cp -rfv "${pkgname#*-}_data-${_pkgver}/"* "${pkgdir}/usr/share/${pkgname}/data"
 
   cd "${pkgname/-/_}-${pkgver}"
   install -Dvm755 "${pkgname/-/}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
