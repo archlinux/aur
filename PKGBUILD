@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjcat-git
-pkgver=0.1.10.r3.g653893a
+pkgver=0.1.12.r3.g016038d
 pkgrel=1
 pkgdesc="Library for reading and writing Jcat files"
 arch=('i686' 'x86_64')
 url="https://github.com/hughsie/libjcat"
 license=('LGPL')
 depends=('glibc' 'gpgme' 'json-glib')
-makedepends=('git' 'meson' 'gobject-introspection' 'help2man' 'vala')
-provides=('libjcat')
+makedepends=('git' 'gobject-introspection' 'help2man' 'meson' 'vala')
+provides=("libjcat=$pkgver")
 conflicts=('libjcat')
 source=("git+https://github.com/hughsie/libjcat.git")
 sha256sums=('SKIP')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "libjcat"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
