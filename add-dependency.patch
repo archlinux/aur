@@ -1,0 +1,19 @@
+diff --git a/setup.cfg.org b/setup.cfg
+index f9dd790..0cd700e 100644
+--- a/setup.cfg.orig
++++ b/setup.cfg
+@@ -26,6 +26,14 @@ packages = find_namespace:
+ # include_package_data = true
+ python_requires = >=3.7
+ install_requires =
++	appdirs
++	jaraco.text
++	more-itertools
++	ordered-set
++	packaging
++	pyparsing
++	tomli
++	validate-pyproject
+ 
+ [options.packages.find]
+ exclude =
