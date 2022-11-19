@@ -8,7 +8,7 @@ pkgdesc='Low-level library for installing a Python 3.8 package from a wheel dist
 arch=('any')
 url='https://github.com/pypa/installer'
 license=('MIT')
-depends=('python')
+depends=('python38')
 makedepends=('git' 'python38-flit-core' 'python38-build'
              'python38-sphinx' 'python38-sphinx-furo' 'python38-myst-parser'
              'python38-sphinx-argparse')

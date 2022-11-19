@@ -13,7 +13,7 @@ pkgbase = python38-installer
 	makedepends = python38-sphinx-furo
 	makedepends = python38-myst-parser
 	makedepends = python38-sphinx-argparse
-	depends = python
+	depends = python38
 	source = python38-installer-0.5.1.tar.gz::https://github.com/pypa/installer/archive/refs/tags/0.5.1.tar.gz
 	sha512sums = 0320c1795c98a593b5da46775465e26bdf8736f59835970517cb02f2756030a3744b9385a9342e8062362d0769d585ff6cce504fdf105e99d27d6ba40281842b
 
