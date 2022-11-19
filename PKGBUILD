@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libinih-git
-pkgver=r53.r8.ga52c070
+pkgver=r56.r1.g03c604a
 pkgrel=1
 pkgdesc="Simple .INI file parser in C, good for embedded systems"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/benhoyt/inih"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'meson')
-provides=('libinih' 'libinih.so' 'libINIReader.so')
+provides=("libinih=$pkgver" 'libinih.so' 'libINIReader.so')
 conflicts=('libinih')
 options=('staticlibs')
 source=("git+https://github.com/benhoyt/inih.git")
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "inih"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
