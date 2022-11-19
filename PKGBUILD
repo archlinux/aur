@@ -8,7 +8,7 @@
 
 pkgname=gittyup
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://murmele.github.io/${pkgname^}"
 _url="https://github.com/Murmele/${pkgname^}"
