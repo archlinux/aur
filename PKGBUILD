@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=10
+pkgrel=11
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -199,15 +199,29 @@ package() {
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
-  mv FeaturePacks "${pkgdir}/${_install_dir}"
-  mv Samples "${pkgdir}/${_install_dir}"
-  mv Templates "${pkgdir}/${_install_dir}"
-  mv Default.uprojectdirs "${pkgdir}/${_install_dir}"
-  mv cpp.hint "${pkgdir}/${_install_dir}"
-  install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
-  if [ -d LocalBuilds ]; then
-    mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}"
+  
+  # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
+  for object in ${PWD}; do
+    if [ -d "${object}" ]; then
+      if [ "${object}" == "LocalBuilds" ]; then
+        if [ -d LocalBuilds/Engine/Linux/ ]; then
+          mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}"
+        fi
+      else
+        mkdir -p "${pkgdir}/${_install_dir}/${object}"
+        mv "${object}"/* "${pkgdir}/${_install_dir}/${object}"
+      fi
+    fi
+  done
+  
+  if [ -f cpp.hint ] && [ ! -d cpp.hint ]; then
+    mv cpp.hint "${pkgdir}/${_install_dir}"
+  elif [ -d cpp.hint ]; then
+    mv cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
   fi
+  
+  install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
+  
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
   chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/xbuild"
