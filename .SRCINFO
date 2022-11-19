@@ -1,0 +1,21 @@
+pkgbase = python38-sphinxcontrib-jsmath
+	pkgdesc = Sphinx extension which renders display math in HTML via JavaScript
+	pkgver = 1.0.1
+	pkgrel = 12
+	url = https://github.com/sphinx-doc/sphinxcontrib-jsmath
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-sphinx
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	source = https://files.python38hosted.org/packages/source/s/sphinxcontrib-jsmath/sphinxcontrib-jsmath-1.0.1.tar.gz
+	source = jsmath-read_text.patch::https://github.com/sphinx-doc/sphinxcontrib-jsmath/commit/3297b27177ab4862d1b2408a2db66235397fe212.patch
+	sha256sums = a9925e4a4587247ed2191a22df5f6970656cb8ca2bd6284309578f2153e0c4b8
+	sha256sums = 697764efeaa1a6ef234d516a4a6b3fde0c77197a89eaae3246daf8b3ad1f12df
+	b2sums = 055ff298e11678d7d30975e4bef509ece0128be30ca0c5fd2be1323c2eb4fe92f861826ea5ddfcbd2d3e3a80535b374d2b1a13446c2604f3e448d5a8982b9881
+	b2sums = 028e21e345de13f86e11bd5e7b5bd80c1add25b50321c983db3c61ebf5de9c776750fc763584abab0485a6e5e470b19dcbdbd1a068be35ddd18e4b4285fe569a
+
+pkgname = python38-sphinxcontrib-jsmath
