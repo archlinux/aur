@@ -2,14 +2,14 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-monitor-git
-pkgver=r91.b143db4
+pkgver=r105.7beb312
 pkgrel=1
 pkgdesc='Manage processes, monitor of system resources and drives.'
 arch=('x86_64')
 url='https://github.com/Dirli/pantheon-monitor'
 license=('GPL2')
 groups=('pantheon-unstable')
-depends=('cairo' 'glib2' 'glibc' 'gtk3' lib{{granite,wingpanel}.so,gee,gtop,wnck} 'udisks2')
+depends=('cairo' 'glib2' 'glibc' 'gtk3' lib{granite.so,gee,gtop,wnck} 'udisks2')
 makedepends=('git' 'meson' 'vala' 'wingpanel')
 provides=("${pkgname%-git}" wingpanel-indicator-{sensors,monitor})
 conflicts=("${pkgname%-git}" wingpanel-indicator-{sensors,monitor})

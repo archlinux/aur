@@ -1,6 +1,6 @@
 pkgbase = pantheon-monitor-git
 	pkgdesc = Manage processes, monitor of system resources and drives.
-	pkgver = r91.b143db4
+	pkgver = r105.7beb312
 	pkgrel = 1
 	url = https://github.com/Dirli/pantheon-monitor
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = pantheon-monitor-git
 	depends = glibc
 	depends = gtk3
 	depends = libgranite.so
-	depends = libwingpanel.so
 	depends = libgee
 	depends = libgtop
 	depends = libwnck
