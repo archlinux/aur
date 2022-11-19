@@ -1,0 +1,18 @@
+pkgbase = python-awaitable-git
+	pkgdesc = A decorator to asynchronously execute synchronous functions
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://www.muflone.com/awaitable/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	conflicts = python-awaitable
+	source = git+https://github.com/muflone/awaitable
+	sha256sums = SKIP
+
+pkgname = python-awaitable-git
