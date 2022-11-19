@@ -1,7 +1,7 @@
 pkgbase = techmino-client
 	pkgdesc = Techmino:方块研究所
 	pkgver = 0.17.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://home.techmino.org
 	arch = x86_64
 	license = (L)GPL

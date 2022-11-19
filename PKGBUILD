@@ -1,6 +1,6 @@
 pkgname="techmino-client"
 pkgver=0.17.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Techmino:方块研究所"
 arch=('x86_64')
 url="http://home.techmino.org"
@@ -19,7 +19,7 @@ prepare() {
 	cd ${srcdir}
 	chmod a+x ${_pkgname}
 	${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+wrapper-love+env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/Techmino.desktop"
+    sed -i "s+Exec=app+Exec=env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/Techmino.desktop"
     sed -i "s/[[:space:]]%U$//" "squashfs-root/Techmino.desktop"
 }
 
