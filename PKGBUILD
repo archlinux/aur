@@ -2,7 +2,7 @@
 
 pkgname=python-awaitable
 _pkgname=${pkgname//python-/}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc=" A decorator to asynchronously execute synchronous functions"
 url="http://www.muflone.com/awaitable/"
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('edd20a885587baa8e0d9914b710b7541f89c7a276fb4ce270218e88616269d4e')
+sha256sums=('41b796cf37eac0e7a9a6c4790a5ab993d85f5740a39d27190036bac7c8482bcc')
 
 build() {
   cd "${_pkgname}-${pkgver}"
