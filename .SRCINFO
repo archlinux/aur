@@ -1,0 +1,19 @@
+pkgbase = python38-soupsieve
+	pkgdesc = A CSS4 selector implementation for Beautiful Soup
+	pkgver = 2.3.2.post1
+	pkgrel = 1
+	url = https://github.com/facelessuser/soupsieve
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-beautifulsoup4
+	checkdepends = python38-html5lib
+	checkdepends = python38-lxml
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	depends = python38
+	source = https://github.com/facelessuser/soupsieve/archive/2.3.2.post1/python38-soupsieve-2.3.2.post1.tar.gz
+	sha512sums = 80eae1e7256cbcf2f2b8520779a5bdb68798e9813ed738ee933204ff1c23ad52553e21f3aa89ad61b900b906dcaa7a1eebd819300417304df782cda9e2d79c4a
+
+pkgname = python38-soupsieve
