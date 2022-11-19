@@ -1,0 +1,26 @@
+pkgbase = python38-html5lib
+	pkgdesc = A Python HTML parser/tokenizer based on the WHATWG HTML5 spec
+	pkgver = 1.1
+	pkgrel = 11
+	url = https://github.com/html5lib
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-expect
+	checkdepends = python38-mock
+	checkdepends = python38-lxml
+	makedepends = python38-setuptools
+	makedepends = python38-six
+	makedepends = python38-webencodings
+	depends = python38-six
+	depends = python38-webencodings
+	optdepends = python38-lxml: lxml treebuilder
+	optdepends = python38-genshi: genshi treewalker
+	source = python38-html5lib-1.1.tar.gz::https://github.com/html5lib/html5lib-python/archive/1.1.tar.gz
+	source = https://github.com/html5lib/html5lib-python/commit/2c19b9899ab3a3e8bd0ca35e5d78544334204169.patch
+	source = https://github.com/html5lib/html5lib-tests/archive/71eebd59772d1d39aced0c0582ae9c09acf3ce6e.tar.gz
+	sha256sums = 66e9e24a53c10c27abb6be8a3cf2cf55824c6ea1cef8570a633cb223ec46e894
+	sha256sums = 6f37b33667e35ea138279be9842f012792821b1497b81ae4b108a74180cfe249
+	sha256sums = c866f5e4ae9ef34313e2b61fcb74849b6f8aef970bf8249956b6a5d142197087
+
+pkgname = python38-html5lib
