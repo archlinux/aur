@@ -2,15 +2,15 @@
 
 pkgname=reclass.net-git
 _pkgname=ReClass.NET
-pkgver=1.2.r228.g96b36cf
+pkgver=1.2.r245.g2e48bce
 pkgrel=1
 pkgdesc="A reverse-engineering tool for dissecting data structures in memory"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/ReClassNET/ReClass.NET"
 provides=('reclass.net')
-depends=('mono')
-makedepends=('git' 'mono-msbuild')
+depends=('mono-msbuild')
+makedepends=('git' 'lib32-gcc-libs' 'lib32-glibc')
 source=("git+https://github.com/ReClassNET/ReClass.NET.git"
         "linux-native-plugin-path.patch"
         "linux-windows-sections.patch")
@@ -47,6 +47,6 @@ package() {
     mkdir -p ${pkgdir}/usr/lib/${_pkgname}/Plugins
 
     install -Dm755 ${_pkgname}/bin/Release/x64/${_pkgname}.exe ${pkgdir}/usr/bin/${_pkgname}
-    install -Dm755 NativeCore/Unix/build/release/NativeCore.so -t ${pkgdir}/usr/lib
+    install -Dm755 NativeCore/Unix/build/release/x64/NativeCore.so -t ${pkgdir}/usr/lib
     install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${_pkgname}
 }

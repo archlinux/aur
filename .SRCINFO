@@ -1,13 +1,14 @@
 pkgbase = reclass.net-git
 	pkgdesc = A reverse-engineering tool for dissecting data structures in memory
-	pkgver = 1.2.r228.g96b36cf
+	pkgver = 1.2.r245.g2e48bce
 	pkgrel = 1
 	url = https://github.com/ReClassNET/ReClass.NET
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = mono-msbuild
-	depends = mono
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glibc
+	depends = mono-msbuild
 	provides = reclass.net
 	source = git+https://github.com/ReClassNET/ReClass.NET.git
 	source = linux-native-plugin-path.patch
@@ -17,4 +18,3 @@ pkgbase = reclass.net-git
 	sha256sums = 66d87fec0d6f330ba518cd7d97abaeeb6fb2c2f3232fb7229d13264a54aeaa15
 
 pkgname = reclass.net-git
-
