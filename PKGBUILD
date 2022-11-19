@@ -1,5 +1,5 @@
 # Maintainer: Danny Waser (Waser Technologies) <waser@waser.tech>
-pkgname=python-jaraco.text
+pkgname=python38-jaraco.text
 pkgver=3.10.0
 pkgrel=1
 pkgdesc='Module for text manipulation'
