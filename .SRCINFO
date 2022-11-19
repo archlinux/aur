@@ -1,0 +1,21 @@
+pkgbase = python38-path
+	pkgdesc = A module wrapper for os.path
+	pkgver = 16.5.0
+	pkgrel = 1
+	url = https://github.com/jaraco/path
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-enabler
+	checkdepends = python38-pytest-mypy
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	provides = python38-path.py
+	conflicts = python38-path.py
+	replaces = python38-path.py
+	source = https://github.com/jaraco/path/archive/v16.5.0/python38-path-16.5.0.tar.gz
+	sha512sums = 0b9b306b2b5cce1e51d65a7555e54770e19a3d4796dbaf2d617bbe8282c771e3d7975112e443462e9b43bafc533d6dc61bedb8608b0d93cc0d1febec995d1780
+
+pkgname = python38-path
