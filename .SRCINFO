@@ -1,0 +1,16 @@
+pkgbase = python38-pysocks
+	pkgdesc = SOCKS4, SOCKS5 or HTTP proxy (Anorov fork PySocks replaces socksipy)
+	pkgver = 1.7.1
+	pkgrel = 7
+	url = https://github.com/Anorov/PySocks
+	arch = any
+	license = BSD
+	checkdepends = lib32-glibc
+	makedepends = python38-setuptools
+	source = python38-pysocks-f660e75d4844e64e4b162b0c01f8df8d866ee000.tar.gz::https://github.com/Anorov/PySocks/archive/f660e75d4844e64e4b162b0c01f8df8d866ee000.tar.gz
+	sha512sums = d5db8d55603758cecd0e4974729df437febcfabe8a80dcbfe6132d0ce5a23caeccfefff01bf918cdbb9f26db4cb795d26ed1f3c536c415b496e4ac1bd43e9240
+
+pkgname = python38-pysocks
+	depends = python38
+	provides = python38-socks
+	replaces = python38-socks
