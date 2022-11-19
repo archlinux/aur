@@ -1,0 +1,17 @@
+pkgbase = python38-jaraco.context
+	pkgdesc = Context managers by jaraco
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://github.com/jaraco/jaraco.context
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools-scm
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/jaraco/jaraco.context/archive/v4.1.2/python38-jaraco.context-4.1.2.tar.gz
+	sha512sums = bac276b2c5f3e9b3941c8ba48a87aec044591580c1d3ac9350dcaa79e5a421f56a58d8fffc4e0cb57cdcb63b2afffb33bf1e525f858316b084ff9c4c55df797f
+
+pkgname = python38-jaraco.context
