@@ -1,0 +1,19 @@
+pkgbase = python38-pyparsing
+	pkgdesc = General parsing module for Python
+	pkgver = 3.0.9
+	pkgrel = 1
+	url = https://github.com/pyparsing/pyparsing/
+	arch = any
+	license = MIT
+	checkdepends = python38-jinja
+	checkdepends = python38-railroad-diagrams
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-flit-core
+	depends = python38
+	optdepends = python38-railroad-diagrams: for generating Railroad Diagrams
+	optdepends = python38-jinja: for generating Railroad Diagrams
+	source = https://github.com/pyparsing/pyparsing/archive/pyparsing_3.0.9.tar.gz
+	sha512sums = 1158f27e31f8eced540217b7234b09005eac416fad74faf59678fdae93fe2f76e0e3b5f4adfd3ceb42c8aef19150950293e989c9a5189741175073eb7a03cd6d
+
+pkgname = python38-pyparsing
