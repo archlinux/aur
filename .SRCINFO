@@ -1,0 +1,18 @@
+pkgbase = python38-flit-scm
+	pkgdesc = A PEP 518 backend using setuptools_scm to generate a version file, then flit to build
+	pkgver = 1.7.0
+	pkgrel = 2
+	url = https://gitlab.com/WillDaSilva/flit_scm
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38
+	depends = python38-flit-core
+	depends = python38-setuptools-scm
+	depends = python38-tomli
+	source = flit_scm-1.7.0.tar.gz::https://gitlab.com/WillDaSilva/flit_scm/-/archive/1.7.0/flit_scm-1.7.0.tar.gz
+	sha256sums = 05a267d77f6f8ca50a053786fe3c1a74f7222f2955292f2e6c03d2d064a141dc
+
+pkgname = python38-flit-scm
