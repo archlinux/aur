@@ -1,15 +1,16 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='dave-gnukem'
 pkgname="${_pkgname}-git"
-pkgver=1.0.1.r23.g2d1541e
+pkgver=1.0.2.r18.g78f98dd
 pkgrel=1
 pkgdesc='2D scrolling platform shooter inspired by Duke Nukem 1'
 arch=('x86_64')
 url='https://github.com/davidjoffe/dave_gnukem'
 _url_data='https://github.com/davidjoffe/gnukem_data'
 license=('GPL2' 'MIT')
-depends=('hicolor-icon-theme' 'sdl_mixer')
+depends=('hicolor-icon-theme' 'sdl2_mixer')
 makedepends=('git' 'imagemagick')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
