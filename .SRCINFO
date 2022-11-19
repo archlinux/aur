@@ -2,6 +2,7 @@ pkgbase = microsoft365-chromium
 	pkgdesc = A launcher for Microsoft 365
 	pkgver = 0.0.1
 	pkgrel = 1
+	url = office.com
 	install = microsoft365-chromium.install
 	arch = any
 	license = MIT
