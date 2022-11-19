@@ -7,7 +7,7 @@ pkgbase = python-x-transformers
 	license = MIT
 	makedepends = python-installer
 	depends = python-einops
-	depends = python-torch
+	depends = python-pytorch
 	source = https://files.pythonhosted.org/packages/py3/x/x-transformers/x_transformers-1.2.3-py3-none-any.whl
 	sha256sums = 099de097586f4f2823510a67d455a8ab726ef693adf20227afc9166220d2ad69
 
