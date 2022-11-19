@@ -1,14 +1,16 @@
 pkgbase = techmino-client
 	pkgdesc = Techmino:方块研究所
-	pkgver = 0.17.5
+	pkgver = 0.17.8
 	pkgrel = 1
 	url = http://home.techmino.org
 	arch = x86_64
 	license = (L)GPL
+	makedepends = curl
+	makedepends = gawk
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source = https://github.com/26F-Studio/Techmino/releases/download/v0.17.5/Techmino_a0.17.5_Linux.AppImage
-	sha256sums = afcc36242b7c09363965b8d42d6624e0f804bfdcb3d2239af8f4df5609e2fb63
+	source = https://github.com/26F-Studio/Techmino/releases/latest/download/Techmino_Linux.AppImage
+	sha256sums = SKIP
 
 pkgname = techmino-client
