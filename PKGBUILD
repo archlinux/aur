@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=7
+pkgrel=8
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -176,7 +176,7 @@ package() {
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
   install -Dm775 unreal-engine-4-pacman-cache.hook "${pkgdir}/etc/pacman.d/hooks/unreal-engine-4-pacman-cache.hook"
   
-  cd "${pkgname}" || return
+  cd "${srcdir}/${pkgname}" || return
   
   # Icon for Desktop entry
   install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue4editor.png"
