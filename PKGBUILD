@@ -3,12 +3,12 @@
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="https://www.grisbi.org"
 license=('GPL')
-depends=('gtk3' 'libgsf')
+depends=('gtk3' 'libgsf' 'openssl-1.1')
 optdepends=('libofx: for OFX support')
 makedepends=('intltool' 'imagemagick')
 provides=('grisbi')
