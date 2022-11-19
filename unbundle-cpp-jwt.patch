@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -522,6 +522,11 @@ if (MSVC AND CMAKE_GENERATOR STREQUAL "Ninja")
+@@ -547,6 +547,11 @@ if (MSVC AND CMAKE_GENERATOR STREQUAL "Ninja")
      )
  endif()
  

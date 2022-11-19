@@ -1,8 +1,8 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -786,6 +786,12 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
-     -DBOOST_REGEX_NO_LIB
- )
+@@ -547,6 +547,12 @@ if (MSVC AND CMAKE_GENERATOR STREQUAL "Ninja")
+     )
+ endif()
  
 +if (USE_DISCORD_PRESENCE)
 +    find_library(DISCORD_RPC_LIBRARY discord-rpc REQUIRED)
@@ -15,12 +15,12 @@
  add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -82,7 +82,7 @@ if(ENABLE_CUBEB)
+@@ -83,7 +83,7 @@ if(ENABLE_CUBEB)
  endif()
  
  # DiscordRPC
 -if (USE_DISCORD_PRESENCE)
-+if (USE_DISCORD_PRESENCE AND NOT TARGET discord-rpc)
++if (FALSE)
      add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
      target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
  endif()

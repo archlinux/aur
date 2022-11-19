@@ -1,8 +1,8 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -786,6 +786,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
-     -DBOOST_REGEX_NO_LIB
- )
+@@ -547,6 +547,11 @@ if (MSVC AND CMAKE_GENERATOR STREQUAL "Ninja")
+     )
+ endif()
  
 +if (ENABLE_WEB_SERVICE)
 +    find_package(httplib REQUIRED)
@@ -14,12 +14,12 @@
  add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -97,7 +97,7 @@ if (NOT libzip_FOUND)
-     add_subdirectory(libzip EXCLUDE_FROM_ALL)
- endif()
+@@ -91,7 +91,7 @@ endif()
+ # Sirit
+ add_subdirectory(sirit)
  
 -if (ENABLE_WEB_SERVICE)
-+if (ENABLE_WEB_SERVICE AND NOT TARGET httplib)
++if (FALSE)
      find_package(OpenSSL 1.1)
      if (OPENSSL_FOUND)
          set(OPENSSL_LIBRARIES OpenSSL::SSL OpenSSL::Crypto)

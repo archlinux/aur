@@ -1,10 +1,10 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -786,6 +786,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
-     -DBOOST_REGEX_NO_LIB
- )
+@@ -547,6 +547,11 @@ if (MSVC AND CMAKE_GENERATOR STREQUAL "Ninja")
+     )
+ endif()
  
-+if (ARCHITECTURE_x86_64)
++if (ARCHITECTURE_x86_64 OR ARCHITECTURE_arm64)
 +    find_package(dynarmic REQUIRED)
 +    add_library(dynarmic ALIAS dynarmic::dynarmic)
 +endif()
@@ -14,11 +14,12 @@
  add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -18,6 +18,6 @@ add_library(catch-single-include INTERFACE)
- target_include_directories(catch-single-include INTERFACE catch/single_include)
+@@ -11,7 +11,7 @@ if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
+ endif()
  
  # Dynarmic
--if (ARCHITECTURE_x86_64)
-+if (ARCHITECTURE_x86_64 AND NOT TARGET dynarmic)
-     set(DYNARMIC_NO_BUNDLED_FMT ON)
-     set(DYNARMIC_IGNORE_ASSERTS ON CACHE BOOL "" FORCE)
+-if (ARCHITECTURE_x86_64 OR ARCHITECTURE_arm64)
++if (FALSE)
+     if (ARCHITECTURE_arm64)
+        set(DYNARMIC_FRONTENDS "A32")
+     endif()
