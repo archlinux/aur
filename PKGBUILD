@@ -1,6 +1,6 @@
 # Maintainer: Balázs Batári <bayi@bayi.hu>
 pkgname=qdmenu
-pkgver=v1.0.41.gd3d1565
+pkgver=v1.0.64.g07736f9
 pkgrel=1
 pkgdesc="A QML launcher similar to dmenu"
 arch=('i686' 'x86_64')
@@ -27,5 +27,4 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 "$srcdir/$pkgname/qdmenu" "$pkgdir/usr/bin/qdmenu"
-    install -Dm755 "$srcdir/$pkgname/qdmenu-terminal" "$pkgdir/usr/bin/qdmenu-terminal"
 }
