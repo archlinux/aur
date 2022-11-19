@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hse-git
-pkgver=3.1.0.dev.r8.g1a5673ce
+pkgver=3.1.0.dev.r9.g2161da28
 pkgrel=1
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "hse"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     -Dforce_fallback_for="" \
