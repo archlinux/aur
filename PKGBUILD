@@ -3,7 +3,7 @@
 
 _pkgname=PcbDraw
 pkgname=pcbdraw
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Convert your KiCAD board into a nicely looking 2D drawing suitable for pinout diagrams"
 arch=('any')
@@ -16,8 +16,8 @@ options=('!strip' '!emptydirs')
 provides=('pcbdraw')
 conflicts=('pcbdraw')
 
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('d736694e4eab200fe7c65e3e3b29a5ca7a825c8d43f55d89c7457f11d788f007cd7bcb345bb1d7a579df50edff58c093545266d180cebfce85722cea91c0782a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('023b62c68b7ad91b1d0d3134775ba7c645a523a5724b8a188665178ddb5071746a15e5bdc565aeed5737d0031a093ddc8a5bea09b74f2fcc4d25582026d6eff6')
 
 prepare() {
   cd $_pkgname-$pkgver
