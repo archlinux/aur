@@ -1,0 +1,19 @@
+pkgbase = python38-sphinx-argparse
+	pkgdesc = Sphinx extension that automatically documents argparse commands and options
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ashb/sphinx-argparse
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	makedepends = python38-wheel
+	depends = python38-sphinx
+	optdepends = python38-commonmark: markdown support
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx_argparse-0.4.0.tar.gz
+	sha512sums = b96050da6c02f87c54f9dc9146bed955e99258df740b467575a2b3e9919fa8c4c6d30a736dab24360086bfc0d7d09c4bc7a818700af2c7846eed3a3b99053d65
+	b2sums = 73118f56ff82d52f04066b9d500aebc77eb5a0fecd03fa69f382c0f2afc0cbffdd395da707cf37b59f039e93935f8d5c3fe0e0f7a2820d3b6509dd78b37b0d74
+
+pkgname = python38-sphinx-argparse
