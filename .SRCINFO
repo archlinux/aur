@@ -1,6 +1,6 @@
 pkgbase = speedify
 	pkgdesc = Use multiple internet connections in parallel
-	pkgver = 12.6.0.10684
+	pkgver = 12.7.0.10717
 	pkgrel = 0
 	url = https://speedify.com/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = speedify
 	depends = net-tools
 	provides = speedify
 	replaces = speedify
-	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_12.6.0-10684_amd64.deb
-	md5sums_x86_64 = a6ce873e9eefea60aa5ac021dbba1faa
-	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_12.6.0-10684_arm64.deb
+	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_12.7.0-10717_amd64.deb
+	md5sums_x86_64 = 3493557995442f3d06e8e3ea8dd4a0d7
+	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_12.7.0-10717_arm64.deb
 	md5sums_aarch64 = SKIP
-	source_armv7h = http://apt.connectify.me/pool/main/s/speedify/speedify_12.6.0-10684_armhf.deb
+	source_armv7h = http://apt.connectify.me/pool/main/s/speedify/speedify_12.7.0-10717_armhf.deb
 	md5sums_armv7h = SKIP
 
 pkgname = speedify
