@@ -1,6 +1,6 @@
 pkgbase = zim-tools-git
 	pkgdesc = Various ZIM command line tools
-	pkgver = 3.1.0.r10.g288dce5
+	pkgver = 3.1.2.r5.g56c3604
 	pkgrel = 1
 	url = https://github.com/openzim/zim-tools
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = zim-tools-git
 	depends = file
 	depends = gumbo-parser
 	depends = libzim
-	provides = zim-tools
+	provides = zim-tools=3.1.2.r5.g56c3604
 	conflicts = zim-tools
 	source = git+https://github.com/openzim/zim-tools.git
 	sha256sums = SKIP

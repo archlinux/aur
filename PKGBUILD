@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=zim-tools-git
-pkgver=3.1.0.r10.g288dce5
+pkgver=3.1.2.r5.g56c3604
 pkgrel=1
 pkgdesc="Various ZIM command line tools"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/openzim/zim-tools"
 license=('GPL')
 depends=('glibc' 'docopt' 'file' 'gumbo-parser' 'libzim')
 makedepends=('git' 'meson' 'mustache')
-provides=('zim-tools')
+provides=("zim-tools=$pkgver")
 conflicts=('zim-tools')
 source=("git+https://github.com/openzim/zim-tools.git")
 sha256sums=('SKIP')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "zim-tools"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
