@@ -1,0 +1,20 @@
+pkgbase = python38-sphinx-argparse-cli
+	pkgdesc = Render CLI arguments (sub-commands friendly) defined by argparse module
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/tox-dev/sphinx-argparse-cli
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	makedepends = python38-toml
+	depends = python38
+	depends = python38-sphinx
+	depends = python38-docutils-stubs
+	source = python38-sphinx-argparse-cli-1.10.0.tar.gz::https://github.com/tox-dev/sphinx-argparse-cli/archive/1.10.0.tar.gz
+	sha512sums = 9ad64f3f4a677e1e24d0f5c23380b6a3ae3050afde9432e4979fc2d7e75cf7e7fe860388aa7253a49e4db6bf46a6fe00f0b5fa3a65ac719a4d5506972f1ea989
+
+pkgname = python38-sphinx-argparse-cli
