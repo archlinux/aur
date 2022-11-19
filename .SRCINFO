@@ -1,0 +1,18 @@
+pkgbase = python38-jaraco.path
+	pkgdesc = Miscellaneous path functions
+	pkgver = 3.4.0
+	pkgrel = 3
+	url = https://github.com/jaraco/jaraco.path
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-enabler
+	checkdepends = python38-pytest-mypy
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/jaraco/jaraco.path/archive/v3.4.0/python38-jaraco.path-3.4.0.tar.gz
+	sha512sums = a9d9cbb605584764ea7ea97a9c8d51a383cb18866787cc20bd08fb5fb2227ea05d8fbf0754d240821530dc493a80634810df1f8446454d5dcca3980eb6144483
+
+pkgname = python38-jaraco.path
