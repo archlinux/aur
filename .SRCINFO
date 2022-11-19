@@ -1,0 +1,17 @@
+pkgbase = python38-idna
+	pkgdesc = Internationalized Domain Names in Applications (IDNA)
+	pkgver = 3.4
+	pkgrel = 00
+	url = https://pypi.org/project/idna/
+	arch = any
+	license = BSD
+	depends = python38
+	noextract = idna-3.4-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/fc/34/3030de6f1370931b9dbb4dad48f6ab1015ab1d32447850b9fc94e60097be/idna-3.4-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 7ab9782a3a1180cfa1fef20a1c9c166c
+	md5sums = 53603c402b2015364986250ac360fd0e
+
+pkgname = python38-idna
