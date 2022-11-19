@@ -1,6 +1,6 @@
 pkgbase = cockpit-file-sharing
 	pkgdesc = A Cockpit plugin to easily manage samba and NFS file sharing.
-	pkgver = 3.2.0
+	pkgver = 3.2.9
 	pkgrel = 1
 	url = https://github.com/45Drives/cockpit-file-sharing
 	arch = any
