@@ -1,6 +1,6 @@
 pkgbase = mutt-kiss
 	pkgdesc = Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL
-	pkgver = 1.14.7
+	pkgver = 2.2.9
 	pkgrel = 1
 	url = http://www.mutt.org/
 	install = mutt-kiss.install
@@ -13,11 +13,10 @@ pkgbase = mutt-kiss
 	provides = mutt
 	conflicts = mutt
 	backup = etc/Muttrc
-	source = http://ftp.mutt.org/pub/mutt/mutt-1.14.7.tar.gz
-	source = http://ftp.mutt.org/pub/mutt/mutt-1.14.7.tar.gz.asc
+	source = http://ftp.mutt.org/pub/mutt/mutt-2.2.9.tar.gz
+	source = http://ftp.mutt.org/pub/mutt/mutt-2.2.9.tar.gz.asc
 	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
-	sha256sums = e4f507b133253cb5eef27996b8668956cdf9caac622cf8adad13f0f9a4eda864
+	sha256sums = fa531b231d58fe1f30ceda0ed626683ea9ebdfb76ce47ef8bb27c2f77422cffb
 	sha256sums = SKIP
 
 pkgname = mutt-kiss
-
