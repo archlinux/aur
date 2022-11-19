@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=8
+pkgrel=9
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -180,7 +180,7 @@ package() {
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
   install -Dm775 unreal-engine-5-pacman-cache.hook "${pkgdir}/etc/pacman.d/hooks/unreal-engine-5-pacman-cache.hook"
   
-  cd "${pkgname}" || return
+  cd "${srcdir}/${pkgname}" || return
   
   # Icon for Desktop entry
   # install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
