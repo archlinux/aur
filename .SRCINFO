@@ -1,0 +1,17 @@
+pkgbase = python38-pytest-httpbin
+	pkgdesc = A py.test fixture for httpbining code
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/kevin1024/pytest-httpbin
+	arch = any
+	license = MIT
+	checkdepends = python38-requests
+	depends = python38-pytest
+	depends = python38-six
+	depends = httpbin
+	source = python38-pytest-httpbin-1.0.2.tar.gz::https://github.com/kevin1024/pytest-httpbin/archive/v1.0.2.tar.gz
+	source = LICENSE
+	sha512sums = b4adac1c37506391d83f7772814b4a9ce5134cc6834d8758e71d39610f8b29e57e72b11b2233be51e41b2c36bc305d40fc4b260a7f83d10390f4e940df8aa366
+	sha512sums = 949cb93164ce92e0a5acc184cca2da5580e31def2d153771ebfa386030fa2da65bcd48670780096d2cefe3e631dc755fc3024ae417f2d1bb3333bd85a39baf22
+
+pkgname = python38-pytest-httpbin
