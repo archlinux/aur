@@ -1,0 +1,19 @@
+pkgbase = python38-sphinx-autodoc-typehints
+	pkgdesc = Type hints support for the Sphinx autodoc extension
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://github.com/agronholm/sphinx-autodoc-typehints
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-sphobjinv
+	makedepends = git
+	makedepends = python38-setuptools
+	makedepends = python38-setuptools-scm
+	depends = python38
+	depends = python38-sphinx
+	depends = python38-typing_extensions
+	source = git+https://github.com/agronholm/sphinx-autodoc-typehints#commit=2f863c20f83bb789610982375cb76b3c45bb787e
+	sha512sums = SKIP
+
+pkgname = python38-sphinx-autodoc-typehints
