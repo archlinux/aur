@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/kulikjak/nmap"
 license=("GPL2")
 makedepends=("unzip")
-
+conflicts=("zenmap")
 depends=("python"
             "python-cairo"
             "nmap"

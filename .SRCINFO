@@ -6,12 +6,15 @@ pkgbase = zenmap-python3-git
 	arch = any
 	license = GPL2
 	makedepends = unzip
+	depends = python
+	depends = python-cairo
 	depends = nmap
 	depends = gtk3
 	depends = python-gobject
 	optdepends = gksu: starting zenmap as root
 	provides = zenmap
-	source = https://github.com/kulikjak/nmap/archive/refs/heads/master-python3.zip
+	conflicts = zenmap
+	source = nmap.zip::https://github.com/kulikjak/nmap/archive/refs/heads/master-python3.zip
 	md5sums = SKIP
 
 pkgname = zenmap-python3-git
