@@ -1,16 +1,15 @@
 pkgbase = hass-configurator
 	pkgdesc = Configuration UI for Home Assistant
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/danielperna84/hass-configurator
 	arch = any
 	license = MIT
 	depends = python
 	depends = home-assistant
-	source = hass-configurator-0.2.6.tar.gz::https://github.com/danielperna84/hass-configurator/archive/0.2.6.tar.gz
+	source = hass-configurator-0.5.2.tar.gz::https://github.com/danielperna84/hass-configurator/archive/0.5.2.tar.gz
 	source = hass-configurator.service
-	sha512sums = b2a43ce80df7baefed0071d5634b08f088492544dc508ab0870edea43f906404a42082fc75a6f96d2bbb42575d045d78c780e192e1bc5d3066c46ee61affb3b6
-	sha512sums = 2840d5e9023f5eabe3f2794801f7b765d31ccaf8f0352b3608da67f9effe252c4c19b56029b2b785a2bfce0c13068e787e4c646c2b62a7850bcbb9e90cc73665
+	sha512sums = 53261fa76e71896212024591d671a5b06d2e3e08eb16b36a2a494e868d40aa597d6218d119b12ebd6b092e6eb9513e6fb4b9069d5519571ee1b8e4230d383219
+	sha512sums = 6102b199e55afc8ef1f7e3299294deb46678deb3edad2fde20f45ea7e3e2fb08eea605645cde8f3d9c9ba48558304b211e5504b573abf154053a5e5fc7eafd0f
 
 pkgname = hass-configurator
-
