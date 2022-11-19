@@ -126,8 +126,8 @@ prepare() {
       cd "${pkgname}" || return
     else
       rm -f .git/index.lock
-      git fetch --depth=1 origin tag @{upstream}
-      git reset --hard @{upstream}
+      git fetch --depth=1 origin tag ${pkgver}-release
+      git reset --hard ${pkgver}-release
     fi
   fi
   
