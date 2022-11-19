@@ -1,0 +1,34 @@
+pkgbase = python38-pytest-plugins
+	pkgver = 1.7.0
+	pkgrel = 8
+	url = https://github.com/manahl/pytest-plugins
+	arch = any
+	license = BSD
+	makedepends = python38-pytest
+	makedepends = python38-setuptools
+	makedepends = python38-pypandoc
+	makedepends = python38-execnet
+	makedepends = python38-path
+	makedepends = python38-mock
+	makedepends = python38-virtualenv
+	makedepends = python38-termcolor
+	source = python38-pytest-plugins-1.7.0.tar.gz::https://github.com/manahl/pytest-plugins/archive/v1.7.0.tar.gz
+	sha512sums = 6ce64f554359ae8b4e8b1cdab9908226501bad1d6bcdec9d7968133bbf0b3530842883cf3ea7ef14e09372fd1454d685d4b1bf4e8d95498b69a8b0f20177e2be
+
+pkgname = python38-pytest-fixture-config
+	pkgdesc = Fixture configuration utils for py.test
+	depends = python38-pytest
+
+pkgname = python38-pytest-shutil
+	pkgdesc = A goodie-bag of unix shell and environment tools for py.test
+	depends = python38-pytest
+	depends = python38-execnet
+	depends = python38-path
+	depends = python38-mock
+	depends = python38-termcolor
+
+pkgname = python38-pytest-virtualenv
+	pkgdesc = Virtualenv fixture for py.test
+	depends = python38-pytest-fixture-config
+	depends = python38-pytest-shutil
+	depends = python38-virtualenv
