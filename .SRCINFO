@@ -1,0 +1,16 @@
+pkgbase = python38-autocommand
+	pkgdesc = A library to create a command-line program from a function
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/Lucretiel/autocommand
+	arch = any
+	license = LGPL
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/Lucretiel/autocommand/archive/2.2.1/python38-autocommand-2.2.1.tar.gz
+	source = https://github.com/Lucretiel/autocommand/commit/031c9750c74e3313b954b09e3027aaa6595649bb.patch
+	sha512sums = 6ab6b7f712c9e57cefb25299e2f98359bb39fd55439fc40a5c9ed752ff54f664c9badf044418576c0dc47b1b76114d96946b2df5343b27eeb87eb24213a33a26
+	sha512sums = 3535f6f62cb2803a218d92b0d5c77895633afaae0b17e2d82cb15b5d7fdad84afa95f91a2c3a739fb61620abdd25851064f84e1351793e4ea1e4e67f03c58ff0
+
+pkgname = python38-autocommand
