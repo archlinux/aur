@@ -14,7 +14,7 @@ pkgbase = cockpit-file-sharing
 	provides = cockpit-file-sharing
 	conflicts = cockpit-file-sharing-bin
 	conflicts = cockpit-file-sharing-git
-	source = https://github.com/45Drives/cockpit-file-sharing/archive/refs/tags/v3.2.0.tar.gz
+	source = https://github.com/45Drives/cockpit-file-sharing/archive/refs/tags/v3.2.9.tar.gz
 	sha512sums = a4548f8051932b7f0a74c1ca4b787646884f423b4ba146a737d3dc7e039f0a31c41fb3390fc9e71af8cbcbea966cffd43622668f17fcfe720c164b6f712f44a9
 
 pkgname = cockpit-file-sharing
