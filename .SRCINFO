@@ -1,0 +1,17 @@
+pkgbase = binge
+	pkgdesc = Unnofficial Binge desktop application
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://gitlab.com/binge-desktop/application
+	arch = x86_64
+	license = GPL
+	depends = libelectron
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	conflicts = binge-bin
+	source = git+https://gitlab.com/binge-desktop/application.git
+	sha256sums = SKIP
+
+pkgname = binge
