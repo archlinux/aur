@@ -1,6 +1,6 @@
 pkgbase = neopo-git
 	pkgdesc = A lightweight solution for local Particle development.
-	pkgver = r359.f122089
+	pkgver = r360.907b8d7
 	pkgrel = 1
 	url = https://github.com/nrobinson2000/neopo
 	arch = x86_64
