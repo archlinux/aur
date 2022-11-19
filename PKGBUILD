@@ -2,7 +2,7 @@
 
 _plugin=file-sharing
 pkgname=cockpit-${_plugin}
-pkgver=3.2.0
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="A Cockpit plugin to easily manage samba and NFS file sharing."
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=("cockpit" "make")
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("a4548f8051932b7f0a74c1ca4b787646884f423b4ba146a737d3dc7e039f0a31c41fb3390fc9e71af8cbcbea966cffd43622668f17fcfe720c164b6f712f44a9")
+sha512sums=('2c084d03dc4d352979e1f50c87416a371c2963f10c5d40656fd78a2cd128ab54850273303110419d265f1b9d6872b9157a329325e5473ef95e127be9287b8b1d')
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
