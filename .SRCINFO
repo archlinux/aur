@@ -1,0 +1,15 @@
+pkgbase = python38-pexpect
+	pkgdesc = For controlling and automating applications
+	pkgver = 4.8.0
+	pkgrel = 6
+	url = https://pexpect.readthedocs.org/en/stable/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python38
+	depends = python38
+	depends = python38-ptyprocess
+	source = git+https://github.com/pexpect/pexpect#commit=5eed1a31a2853a09b7367c59fbd1a4a0b53341df
+	sha512sums = SKIP
+
+pkgname = python38-pexpect
