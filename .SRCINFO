@@ -1,0 +1,25 @@
+pkgbase = python38-requests
+	pkgdesc = Python 3.8 HTTP for Humans
+	pkgver = 2.28.1
+	pkgrel = 1
+	url = http://python-requests.org
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest-httpbin
+	checkdepends = python38-pytest-mock
+	checkdepends = python38-pysocks
+	checkdepends = python38-trustme
+	makedepends = python38-setuptools
+	makedepends = python38-chardet
+	makedepends = python38-urllib3
+	makedepends = python-idna
+	depends = python-urllib3
+	depends = python38-chardet
+	depends = python38-idna
+	optdepends = python38-pysocks: SOCKS proxy support
+	source = https://github.com/psf/requests/archive/v2.28.1/python38-requests-2.28.1.tar.gz
+	source = certs.patch
+	sha512sums = caed2d08340c79af9448eefaa1df796f9112a7c8da30b218d5f342326a9629d95928c0978b9600e4bd7f56a297ef41afb088af390738be431b91b8c7429e741b
+	sha512sums = 424a3bb01b23409284f6c9cd2bc22d92df31b85cfd96e1d1b16b5d68adeca670dfed4fff7977d8b10980102b0f780eacc465431021fcd661f3a17168a02a39a3
+
+pkgname = python38-requests
