@@ -1,0 +1,14 @@
+pkgbase = python38-chardet
+	pkgdesc = Python3 module for character encoding auto-detection
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/chardet/chardet
+	arch = any
+	license = LGPL
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/c/chardet/chardet-5.0.0.tar.gz
+	sha512sums = 3853248584d53d977abe0e6ab856e1526fd7360d9b94b4f08d03895da80ba9efac8882dbd3f919f0d52b0699c0d7fd68edb223c37512685976c6f2b212fbe0ff
+
+pkgname = python38-chardet
