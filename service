@@ -1,0 +1,16 @@
+[Unit]
+Description=mosdns Service
+Documentation=https://irine-sistiana.gitbook.io/mosdns-wiki/
+After=network.target
+
+[Service]
+User=mosdns
+Group=mosdns
+NoNewPrivileges=true
+ExecStart=/usr/bin/mosdns start -c /etc/mosdns/config.yaml -d /var/lib/mosdns
+Restart=on-failure
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+**/*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!config.yaml
+!service
+!sysusers
+!tmpfiles
