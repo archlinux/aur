@@ -1,7 +1,7 @@
 pkgbase = mkchromecast-git
 	pkgdesc = Cast Audio/Video to your Google Cast and Sonos Devices
 	pkgver = 0.3.8.1.r165.g0de9fd78
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mkchromecast.com
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = mkchromecast-git
 	depends = python-gobject
 	depends = python-netifaces
 	depends = python-psutil
-	depends = python-pychromecast-git
+	depends = python-pychromecast
 	optdepends = alsa-utils: to cast with ALSA
 	optdepends = ffmpeg: for ffmpeg backend and/or to cast with ALSA
 	optdepends = gstreamer: for gstreamer backend
