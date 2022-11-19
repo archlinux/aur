@@ -1,0 +1,14 @@
+pkgbase = python38-sphinx-alabaster-theme
+	pkgdesc = Sphinx default theme
+	pkgver = 0.7.12
+	pkgrel = 9
+	url = https://github.com/bitprophet/alabaster
+	arch = any
+	license = custom:BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.org/packages/source/a/alabaster/alabaster-0.7.12.tar.gz
+	sha256sums = a661d72d58e6ea8a57f7a86e37d86716863ee5e92788398526d58b26a4e4dc02
+	b2sums = 5690d9c0b8aabfc2c95c4279183d174d6a5768f89732028f7ec6eb790531499a2017b9f3b9896442e298f3189f79070178b3e281b6d0bcfad3741625caa99c48
+
+pkgname = python38-sphinx-alabaster-theme
