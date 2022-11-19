@@ -1,0 +1,19 @@
+pkgbase = f1multiviewer-bin
+	pkgdesc = Unofficial desktop client for F1TV
+	pkgver = 1.11.5
+	pkgrel = 1
+	url = https://beta.f1mv.com/
+	arch = x86_64
+	license = unknown
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = at-spi2-core
+	provides = f1multiviewer
+	conflicts = f1multiviewer
+	source = https://releases.f1mv.com/download/85035235/MultiViewer.for.F1-linux-x64-1.11.5.zip
+	source = f1multiviewer.desktop
+	sha256sums = 92675a6eff988e5e2d7538d84611bcf24a229542e95d1211a634f80a347eb2fe
+	sha256sums = SKIP
+
+pkgname = f1multiviewer-bin

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MultiViewer for F1
+Comment=Unofficial desktop client for F1TV
+Path=/opt/f1multiviewer-bin
+Exec=f1multiviewer
+Icon=f1multiviewer
+Terminal=false
+Categories=AudioVideo;Video;TV
