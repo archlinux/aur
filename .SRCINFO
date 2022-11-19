@@ -1,0 +1,21 @@
+pkgbase = python38-sphinx-furo
+	pkgdesc = A clean customizable documentation theme for Sphinx
+	pkgver = 2022.09.29
+	pkgrel = 1
+	url = https://github.com/pradyunsg/furo
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-sphinx-theme-builder
+	makedepends = python38-flit-core
+	makedepends = nodejs-lts-gallium
+	makedepends = npm
+	makedepends = expac
+	depends = python38-sphinx-basic-ng
+	depends = python38-pygments
+	depends = python38-beautifulsoup4
+	source = python38-sphinx-furo-2022.09.29.tar.gz::https://github.com/pradyunsg/furo/archive/2022.09.29.tar.gz
+	sha512sums = 62967c7449428ad02b8d38fe21afb1fa200febb1d8cb7c3999320988ddeac85ecd70eef5ede9bbc9d5b2fe586afeff11f53150d2e864941b177ba0680ef5a296
+
+pkgname = python38-sphinx-furo
