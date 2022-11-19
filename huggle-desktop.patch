@@ -1,0 +1,14 @@
+diff --git a/src/build/huggle.desktop b/src/build/huggle.desktop
+index 51d4b72c..3413a79a 100644
+--- a/src/build/huggle.desktop
++++ b/src/build/huggle.desktop
+@@ -3,7 +3,7 @@ Name=Huggle
+ GenericName=Huggle
+ Comment=Huggle is an anti-vandalism tool for use on Wikipedia and related projects
+ Exec=huggle
+-Icon=/snap/huggle/current/meta/gui/icon.png
++Icon=huggle
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+
