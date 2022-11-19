@@ -1,0 +1,24 @@
+pkgbase = python-jaraco.text
+	pkgdesc = Module for text manipulation
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/jaraco/jaraco.text
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	depends = python38-jaraco.functools
+	depends = python38-jaraco.context
+	depends = python38-autocommand
+	depends = python38-inflect
+	depends = python38-more-itertools
+	conflicts = python38-jaraco
+	replaces = python38-jaraco
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco.text-3.10.0.tar.gz
+	sha512sums = 1c83dc9247e8c55ed20d8768abcb66c3fb4cdfb9ade3744f3d3c3e705b94e376c7b44fdfe242189001d69fbf28fdb5601ff33b1874495b3c2ad9bdd781265f43
+
+pkgname = python-jaraco.text
