@@ -1,0 +1,31 @@
+pkgbase = python38-lxml
+	pkgdesc = Python3 binding for the libxml2 and libxslt libraries
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://lxml.de/
+	arch = x86_64
+	license = BSD
+	license = custom
+	checkdepends = python38-cssselect
+	checkdepends = python38-html5lib
+	checkdepends = python38-beautifulsoup4
+	makedepends = python38-setuptools
+	makedepends = python38-pygments
+	makedepends = python38-sphinx
+	makedepends = python38-sphinx_rtd_theme
+	makedepends = cython
+	depends = python38
+	depends = libxslt
+	optdepends = python38-beautifulsoup4: support for beautifulsoup parser to parse not well formed HTML
+	optdepends = python38-cssselect: support for cssselect
+	optdepends = python38-html5lib: support for html5lib parser
+	optdepends = python38-lxml-docs: offline docs
+	source = https://github.com/lxml/lxml/archive/lxml-4.9.1.tar.gz
+	sha512sums = f52d54908f92997f610638a9a3054cb73723ae81a5ad9e77918b0603ec7441b0e7d2143f8a8ac66c05cd6a0b3b298d348397b7e2df19f83c21e336514c47d910
+
+pkgname = python38-lxml
+
+pkgname = python38-lxml-docs
+	pkgdesc = Python binding for the libxml2 and libxslt libraries (docs)
+	depends = 
+	options = docs
