@@ -1,0 +1,13 @@
+pkgbase = python38-railroad-diagrams
+	pkgdesc = Generate SVG railroad syntax diagrams, like on JSON.org.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/tabatkins/railroad-diagrams
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/tabatkins/railroad-diagrams/archive/f87f9483d96da76d784b489c34688832fb88cf84/python38-railroad-diagrams-f87f9483d96da76d784b489c34688832fb88cf84.tar.gz
+	sha512sums = 48f3f8a4303d8101037a0089889ac901c112abdbfaf8a496deb3e733bee84dac437444874fe4ae454cc1e283dfacba2ff7e7f32deeb595ea3794573bc886fe99
+
+pkgname = python38-railroad-diagrams
