@@ -3,7 +3,7 @@
 _pkgname=wootility-lekker
 pkgname=${_pkgname}-appimage
 pkgver=4.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for configuring Wooting keyboards (binary AppImage version)"
 arch=('x86_64')
 url="https://wooting.io/wootility"
@@ -23,8 +23,8 @@ source=(
 )
 sha512sums=(
     "64ca9993728739a67f706fc15bbf24ee3f9632f1959eb4ff754d036459fd8bc6153044471fdb1a6c5628e4424592ae06830d7e6bc129be925159cac632c18d5a"
-    "c8463344da908f2e984c7b6f72a36402a47766641516fc8ca7de51fefd4c9ceed826d1f10f946fa518f0a9ab039dc1c97c6c5d0bc08688f61293fd78d325edb2"
-    "2f679f24d4ddd0fb67fbe363120e8378b172209e36009d0fa4de625a1b5a4c51c7e1d8f54dcbbe0bf1b6044780750ad6ee955883b54670063530fb9490113d32"
+    "6c52c9ac633920f3a8746c13c86132d4f60075005294c4e77dfca54f39c9483f10ce1affbcff027df5947638d297e9f42bce36ed2372b87667b701fa4b1fc3c7"
+    "f74379c88438676cd2d071b6092d8122bc8a8bf93fc456e86a6de1c91ec7294864ea45e93e839df8b3bfd08cbdc45401b6b42ba33a03f13acb5851d774b5bdc5"
     "5612170539f68985d133989645601ef1950033b1883bf416368a40274892aca2b8a606bfb30a1482bada20dc7d3695e64bca3b6dba420c65c7c8fa4c7b1e8045"
 )
 
@@ -44,11 +44,11 @@ package() {
     install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}" # Install $_appimage to /opt/$_pkgname/$_appimage
     install -d "${pkgdir}/usr/bin" # Install /usr/bin
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}" # Link /opt/$_pkgname/$_appimage to /usr/bin/$_pkgname
-
+    
     # Install desktop entry and icon
     install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dpm644 "squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-
+    
     # Install udev rules and systemd services
     install -Dpm644 "wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/wooting.rules"
     install -Dpm644 "wooting-xinput.rules" "${pkgdir}/usr/lib/udev/rules.d/wooting-xinput.rules"

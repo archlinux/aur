@@ -1,11 +1,19 @@
 # Wooting One
 SUBSYSTEM=="usb", ENV{PRODUCT}=="3eb/ff01/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@03eb:ff01"
+SUBSYSTEM=="usb", ENV{PRODUCT}=="31e3/1100/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@31e3:1100"
 
 # Wooting Two
 SUBSYSTEM=="usb", ENV{PRODUCT}=="3eb/ff02/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@03eb:ff02"
+SUBSYSTEM=="usb", ENV{PRODUCT}=="31e3/1200/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@31e3:1200"
 
 # Wooting Two Lekker Edition
 SUBSYSTEM=="usb", ENV{PRODUCT}=="31e3/1210/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@31e3:1210"
 
 # Wooting Two HE
 SUBSYSTEM=="usb", ENV{PRODUCT}=="31e3/1220/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@31e3:1220"
+
+# Wooting Two 60HE
+SUBSYSTEM=="usb", ENV{PRODUCT}=="31e3/1300/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@31e3:1300"
+
+# Wooting Two 60HE (Arm)
+SUBSYSTEM=="usb", ENV{PRODUCT}=="31e3/1310/*", ENV{INTERFACE}=="255/93/1", TAG+="systemd", ENV{SYSTEMD_WANTS}="wooting-xinput@31e3:1310"
