@@ -1,4 +1,4 @@
-pkgbase = python-jaraco.text
+pkgbase = python38-jaraco.text
 	pkgdesc = Module for text manipulation
 	pkgver = 3.10.0
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = python-jaraco.text
 	source = https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco.text-3.10.0.tar.gz
 	sha512sums = 1c83dc9247e8c55ed20d8768abcb66c3fb4cdfb9ade3744f3d3c3e705b94e376c7b44fdfe242189001d69fbf28fdb5601ff33b1874495b3c2ad9bdd781265f43
 
-pkgname = python-jaraco.text
+pkgname = python38-jaraco.text
