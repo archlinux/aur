@@ -1,0 +1,17 @@
+pkgbase = python38-more-itertools
+	pkgdesc = More routines for operating on iterables, beyond itertools
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/more-itertools/more-itertools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-flit-core
+	depends = python38
+	source = python38-more-itertools::git+https://github.com/more-itertools/more-itertools#commit=ffcfe0b4e63c75fe1470b8b25a29b0e698a9a587
+	b2sums = SKIP
+
+pkgname = python38-more-itertools
