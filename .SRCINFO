@@ -1,0 +1,16 @@
+pkgbase = gpr-unit-provider
+	pkgdesc = A unit provider for Libadalang based on GPR project analysis library.
+	pkgver = 23.0.0
+	pkgrel = 1
+	url = https://github.com/AdaCore/gpr-unit-provider
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = gprbuild
+	depends = gpr
+	depends = libadalang
+	source = gpr-unit-provider-23.0.0.tar.gz::https://github.com/AdaCore/gpr-unit-provider/archive/v23.0.0.tar.gz
+	sha256sums = 08c8194812042134730b4bb4cb5ac8761cb7798f57dfbee2dbf41913b5f8b382
+
+pkgname = gpr-unit-provider
