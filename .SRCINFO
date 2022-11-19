@@ -1,0 +1,13 @@
+pkgbase = emmcdl-git
+	pkgdesc = Console utility for working with device partitions based on the Qualcomm processor for Linux
+	pkgver = 0.r88.d7b7804
+	pkgrel = 1
+	url = https://github.com/Zalexanninev15/emmcdl
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	source = emmcdl-git::git+https://github.com/Zalexanninev15/emmcdl.git
+	md5sums = SKIP
+
+pkgname = emmcdl-git
