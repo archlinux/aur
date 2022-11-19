@@ -1,7 +1,7 @@
 #!/bin/bash
 
 post_install() {
-	echo "Use 'clonehero' or the desktop file to run the game and place your"\
+	echo "Use 'clonehero' or the desktop file to run the game and place your "\
 "songs + customs in '~/Clone Hero/{Songs,Custom}' (the folders will be "\
 "created upon launching the game for the first time)."
 }

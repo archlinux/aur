@@ -1,7 +1,7 @@
 pkgbase = clonehero-ptb
 	pkgdesc = Public test build for Clone Hero. Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard.
-	pkgver = v1.0.0.3805
-	pkgrel = 4
+	pkgver = v1.0.0.3925
+	pkgrel = 1
 	url = https://clonehero.net/
 	install = clonehero.install
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = clonehero-ptb
 	optdepends = discord: Discord rich presence support
 	conflicts = clonehero
 	options = !strip
-	source = clonehero-linux_v1.0.0.3805.tar.xz::https://pubdl.clonehero.net/ptb/v1.0.0.3805-master/clonehero-linux.tar.xz
+	source = clonehero-linux_v1.0.0.3925.tar.xz::https://pubdl.clonehero.net/ptb/v1.0.0.3925-master/clonehero-linux.tar.xz
 	source = clonehero.desktop
 	source = clonehero.install
 	source = clonehero
-	sha256sums = 2f93e014817284ee0456eda49fa73579ef848c8bdfb8e069f335e022aa1e13d9
+	sha256sums = 52aa4b8afdfd5d6dba84d8b3d080303c360022214290855142295334b827a335
 	sha256sums = 6d6d3e8e08ba65fedcc07a2d4ef8d5f6eabd4aec20dbc7e0febc6d58faff72bf
-	sha256sums = 66a1b0002951bfa966379b48ea81ce4c5d59836fa79c84af6441f154d41314c4
-	sha256sums = 2aff1db59fb7aaadbad80675271f2bcfff8ddf873d69815c242333a0dd4d1fba
+	sha256sums = 334fabab9d9ebaf2b4ecea7abaea9b0d1dbcf0626311257e03989251940802ff
+	sha256sums = 67f0a9ff15aae984d481c2eb394d2dc25c0388c0c193352b3f5813e5ea40a6df
 
 pkgname = clonehero-ptb

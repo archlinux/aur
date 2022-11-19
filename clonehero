@@ -1,7 +1,29 @@
 #!/bin/bash
 
+# PTB v1.0.0.3925 seems to have rolled back the Linux path fix from 8305, so
+# we'll work around that so it works as before.
+gamedir="$HOME/Clone Hero"
+mkdir -p "$gamedir"
+if ! cd "$gamedir"; then
+	>&2 echo "Unable to create '$gamedir' to run the game in."
+	exit 1
+fi
+
+# We have to copy the executable because the game uses the path the binary is in
+# rather than the working directory and symbolic links seem to be ignored.
+# We'll also remove the files first to ensure they are the same as the ones
+# installed in '/opt/clonehero'.
+rm -f 'clonehero'
+cp '/opt/clonehero/clonehero' 'clonehero'
+
+rm -f 'UnityPlayer.so'
+ln -s '/opt/clonehero/UnityPlayer.so' 'UnityPlayer.so'
+
+rm -f 'clonehero_Data'
+ln -s '/opt/clonehero/clonehero_Data' 'clonehero_Data'
+
 # We need to increase the open file limit otherwise the game eventually crashes
 # or softlocks with the log pointing to IOExceptions refering to "too many open
 # files".
 ulimit -Sn 8192
-exec /opt/clonehero/clonehero "$@"
+exec './clonehero' "$@"
