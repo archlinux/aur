@@ -1,14 +1,14 @@
 pkgbase = offlinemsmtp
 	pkgdesc = Use msmtp offline by queuing email until you have an internet connection.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sumnerevans/offlinemsmtp
 	arch = any
 	license = GPL3
 	makedepends = python-poetry
 	makedepends = python-installer
 	depends = python
-	depends = python-watchdog
+	depends = python-inotify
 	depends = python-gobject
 	replaces = python-offlinemsmtp
 	noextract = offlinemsmtp.service

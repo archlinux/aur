@@ -4,7 +4,7 @@ AUR_NAME=offlinemsmtp
 PROJ_NAME=offlinemsmtp
 DESCRIPTION="Use msmtp offline by queuing email until you have an internet connection."
 URL=https://github.com/sumnerevans/offlinemsmtp
-DEPENDS=(python-watchdog python-gobject)
+DEPENDS=(python-inotify python-gobject)
 LICENSE='GPL3'
 ADDITIONAL="replaces=('python-offlinemsmtp')"
 SOURCES=(

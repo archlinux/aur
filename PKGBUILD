@@ -4,12 +4,12 @@ pkgbase='offlinemsmtp'
 pkgname=('offlinemsmtp')
 _module='offlinemsmtp'
 pkgver='0.4.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Use msmtp offline by queuing email until you have an internet connection.'
 url='https://github.com/sumnerevans/offlinemsmtp'
 depends=(
     'python'
-    'python-watchdog'
+    'python-inotify'
     'python-gobject'
 )
 makedepends=('python-poetry' 'python-installer')
