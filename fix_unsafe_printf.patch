@@ -1,0 +1,24 @@
+diff --git a/src/network.cpp b/src/network.cpp
+--- a/src/network.cpp
++++ b/src/network.cpp
+@@ -573,7 +573,7 @@
+ 		if ( NETWORK_GetState() == NETSTATE_SERVER )
+ 		{
+ 			message.AppendFormat( "Please resolve these issues before hosting again.\n" );
+-			I_FatalError( message );
++			I_FatalError("%s", message );
+ 		}
+ 
+ 		message.AppendFormat( "These issues must be resolved if you plan on hosting these files in online games.\n" );
+diff --git a/src/sv_main.cpp b/src/sv_main.cpp
+--- a/src/sv_main.cpp
++++ b/src/sv_main.cpp
+@@ -7257,7 +7257,7 @@
+ 		// and the parameter from each other.
+ 		if ( ulVoteCmd == VOTECMD_FLAG )
+ 		{
+-			sprintf( szCommand, Parameters.Left( Parameters.IndexOf( ' ' )).GetChars( ));
++			sprintf( szCommand,"%s", Parameters.Left( Parameters.IndexOf( ' ' )).GetChars( ));
+ 			Parameters = Parameters.Right( Parameters.Len() - ( strlen( szCommand ) + 1 ));
+ 		}
+ 
