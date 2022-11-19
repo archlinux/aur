@@ -1,0 +1,57 @@
+--- a/vmmon/Makefile
++++ b/vmmon/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+--- a/vmmon/include/vm_assert.h
++++ b/vmmon/include/vm_assert.h
+@@ -40,7 +40,11 @@
+ 
+ // XXX not necessary except some places include vm_assert.h improperly
+ #include "vm_basic_types.h"
++
++/* No stdarg.h on Linux kernels 5.15+ */
++#ifndef KBUILD_MODNAME
+ #include <stdarg.h>
++#endif
+ 
+ #ifdef __cplusplus
+ extern "C" {
+--- a/vmmon/include/vm_basic_defs.h
++++ b/vmmon/include/vm_basic_defs.h
+@@ -50,7 +50,10 @@
+  * References:
+  *   C90 7.17, C99 7.19, C11 7.19
+  */
+-#if !defined(VMKERNEL)
++/* Use linux/stddef.h when building Linux kernel modules. */
++#ifdef KBUILD_MODNAME
++#  include <linux/stddef.h>
++#elif !defined(VMKERNEL)
+ #  include <stddef.h>
+ #else
+    /*
+--- a/vmmon/linux/hostif.c
++++ b/vmmon/linux/hostif.c
+@@ -2356,7 +2332,11 @@
+    int ret;
+ 
+    r = APICR_TO_ADDR(r, APICR_VERSION);
+-#ifdef HAVE_GET_KERNEL_NOFAULT
++#if defined(HAVE_GET_KERNEL_NOFAULT) || LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0)
++   /*
++    * Exists from 5.10, first indicated by HAVE_GET_KERNEL_NOFAULT,
++    * and from post-5.17 just existing everywhere.
++    */
+    ret = get_kernel_nofault(dummy, (void *)r);
+ #else
+    {
