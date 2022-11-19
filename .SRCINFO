@@ -1,0 +1,21 @@
+pkgbase = python38-trustme
+	pkgdesc = Library for fake certificate authority (CA) to generate fake TLS certs
+	pkgver = 0.9.0
+	pkgrel = 5
+	url = https://trustme.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pyopenssl
+	checkdepends = python38-service-identity
+	makedepends = python38
+	makedepends = python38-setuptools
+	makedepends = python38-cryptography
+	depends = python38
+	depends = python38-cryptography
+	depends = python38-idna
+	source = https://github.com/python-trio/trustme/archive/v0.9.0/python38-trustme-0.9.0.tar.gz
+	sha512sums = c605803d91eaedb7efd1295a2bebfb9cb7723220f325a25f7fe61e8256f3700bf9da0d85f796905a76f317c7eda8261d78a46c64aeabd357854f001f6ba1628e
+	b2sums = 970700274ac25b9871b53bba4ddbac2d22bb9db672012fd1216726091c39fd901023c93b9c1b49cb2f90a9610f7f64d76ef9c9a1509282f9bbc944d56a352ff2
+
+pkgname = python38-trustme
