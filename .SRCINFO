@@ -1,0 +1,19 @@
+pkgbase = python38-pytest-runner
+	pkgdesc = Invoke py.test as distutils command with dependency resolution
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-runner
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-virtualenv
+	checkdepends = python38-pytest-enabler
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-pytest
+	depends = python38-setuptools
+	source = https://github.com/pytest-dev/pytest-runner/archive/v6.0.0/python38-pytest-runner-6.0.0.tar.gz
+	sha512sums = 8628f4b2ef24a1bcd3294efcfad289cb96949b0b1176e64b2033b8767c5fd217acdf763a3cdb137af6043e0dacd64a76d0a104674dc88464fbb473df37d24c61
+
+pkgname = python38-pytest-runner
