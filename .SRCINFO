@@ -1,7 +1,7 @@
 pkgbase = beyondallreason-appimage
 	pkgdesc = The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine
 	pkgver = 1.1779.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.beyondallreason.info
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,6 @@ pkgbase = beyondallreason-appimage
 	depends = zlib
 	options = !strip
 	source = https://github.com/beyond-all-reason/BYAR-Chobby/releases/download/v1.1779.0/Beyond-All-Reason-1.1779.0.AppImage
-	sha512sums = ff955b9e1811db6f8cdf54c49bf6b93f0dc19807d0008b6b11adfffcef4c2bef1da41a99a0b9d7cb6832abdeca9831a623baf20ebbf29b1954e331bef931d79f
+	sha512sums = 03c6136c25500f7e487668c0b2cccb9d821063bf68b69c13ee413a670d5098dd919a88849d95c58cbc395a9191a15ca2658f4a73b79f7e5fd70b2209b48e3cf7
 
 pkgname = beyondallreason-appimage
