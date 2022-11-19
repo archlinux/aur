@@ -2,7 +2,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=blocky-bin
-pkgver=0.19
+pkgver=v0.20
 pkgrel=1
 pkgdesc='Fast and lightweight DNS proxy as ad-blocker'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
