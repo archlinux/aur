@@ -1,0 +1,17 @@
+pkgbase = gnatdoc
+	pkgdesc = GNAT documentation generation tool.
+	pkgver = 23.0.0
+	pkgrel = 1
+	url = https://github.com/AdaCore/gnatdoc
+	arch = i686
+	arch = x86_64
+	makedepends = gprbuild
+	depends = gnatcoll-core
+	depends = libvss
+	depends = markdown
+	depends = gpr-unit-provider
+	depends = libadalang
+	source = gnatdoc-23.0.0.tar.gz::https://github.com/AdaCore/gnatdoc/archive/v23.0.0.tar.gz
+	sha256sums = 123c8e3517512f6f4f7e92d62f2d0e1b35c8d59c87acc5ba504eeeb0988b20d5
+
+pkgname = gnatdoc
