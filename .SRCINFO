@@ -1,6 +1,6 @@
 pkgbase = iputils-git
 	pkgdesc = Network monitoring tools, including ping
-	pkgver = 20211215.r10.g854873b
+	pkgver = 20211215.r68.g1a5d7a6
 	pkgrel = 1
 	url = https://github.com/iputils/iputils
 	install = iputils.install
@@ -17,7 +17,7 @@ pkgbase = iputils-git
 	depends = libidn2
 	depends = openssl
 	optdepends = xinetd: for tftpd
-	provides = iputils
+	provides = iputils=20211215.r68.g1a5d7a6
 	conflicts = iputils
 	conflicts = arping
 	conflicts = netkit-base

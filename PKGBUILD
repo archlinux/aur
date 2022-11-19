@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iputils-git
-pkgver=20211215.r10.g854873b
+pkgver=20211215.r68.g1a5d7a6
 pkgrel=1
 pkgdesc="Network monitoring tools, including ping"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'BSD' 'custom')
 depends=('glibc' 'libcap' 'libidn2' 'openssl')
 optdepends=('xinetd: for tftpd')
 makedepends=('git' 'meson' 'libxslt')
-provides=('iputils')
+provides=("iputils=$pkgver")
 conflicts=('iputils' 'arping' 'netkit-base' 'netkit-tftpd')
 replaces=('netkit-base')
 backup=('etc/xinetd.d/tftp')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "iputils"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
