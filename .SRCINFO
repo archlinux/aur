@@ -1,7 +1,7 @@
 pkgbase = input-remapper-beta-git
 	pkgdesc = Beta version of input-remapper. Contains unfinished features that require testing.
-	pkgver = 1.5.0.beta.r10.g2d23120
-	pkgrel = 2
+	pkgver = 1.5.0.beta.r46.geff463e6
+	pkgrel = 1
 	url = https://github.com/sezanzeb/input-remapper/tree/beta
 	install = input-remapper-git.install
 	arch = any
@@ -17,10 +17,9 @@ pkgbase = input-remapper-beta-git
 	depends = gtksourceview4
 	depends = python-pydantic
 	optdepends = xorg-xmodmap: symbol names matching the keyboard layout
-	provides = input-remapper
+	conflicts = input-remapper
 	conflicts = key-mapper
-	replaces = input-remapper-git
-	source = git+https://github.com/sezanzeb/input-remapper.git
+	source = git+https://github.com/sezanzeb/input-remapper.git#branch=beta
 	md5sums = SKIP
 
 pkgname = input-remapper-beta-git
