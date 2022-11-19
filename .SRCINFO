@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-applications-overview-tooltip
+	pkgdesc = Shows a tooltip over applications icons on applications overview
+	pkgver = 16
+	pkgrel = 1
+	url = https://github.com/RaphaelRochet/applications-overview-tooltip
+	install = gnome-shell-extension-applications-overview-tooltip.install
+	arch = any
+	license = GPL
+	makedepends = glib2
+	depends = gnome-shell>=43
+	source = gnome-shell-extension-applications-overview-tooltip-16.zip::https://extensions.gnome.org/extension-data/applications-overview-tooltipRaphaelRochet.v16.shell-extension.zip
+	sha256sums = 961343384b70c922339664493d7cc6c9736c56639dfbeebf6bd02d3c9eb46f51
+
+pkgname = gnome-shell-extension-applications-overview-tooltip
