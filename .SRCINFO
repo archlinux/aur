@@ -1,7 +1,7 @@
 pkgbase = hse
 	pkgdesc = Heterogeneous-memory storage engine
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hse-project.github.io/
 	arch = i686
 	arch = x86_64

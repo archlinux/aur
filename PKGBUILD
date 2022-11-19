@@ -2,7 +2,7 @@
 
 pkgname=hse
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
 url="https://hse-project.github.io/"
@@ -16,7 +16,7 @@ sha256sums=('67e4ac82e004e70ad2dd51d8e4ce4a1611a707e0232b3372e4113921e183328a')
 build() {
   cd "$pkgname-r$pkgver"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     -Dforce_fallback_for="" \
