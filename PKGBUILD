@@ -2,25 +2,26 @@
 
 pkgname=upscaler
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Upscale and enhance images"
 arch=('x86_64')
 url="https://gitlab.com/TheEvilSkeleton/Upscaler"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject' 'realesrgan-ncnn-vulkan')
+depends=('libadwaita' 'python-gobject' 'realesrgan-ncnn-vulkan-bin')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 _commit=712c262a3453ea37344424c213362d0234582d60 # tags/1.0.0^0
-source=("$pkgname-$pkgver::git+$url.git#commit=$_commit")
+_source=Upscaler
+source=("git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
-  cd $pkgname-$pkgver
+  cd $_source
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  arch-meson $_source build
   meson compile -C build
 }
 
