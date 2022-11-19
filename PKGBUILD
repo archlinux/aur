@@ -3,7 +3,7 @@
 # Contributor: Dustin Blackman
 
 pkgname='languagetool-code-comments-bin'
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Integrates the LanguageTool API to parse, spell check, and correct the grammar of your code comments!'
 url='https://github.com/dustinblackman/languagetool-code-comments'
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('languagetool-code-comments')
 conflicts=('languagetool-code-comments')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.4.0/languagetool-code-comments_0.4.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('bb8d0ccfd5e3a4eb8f3368b0e5f80eed9ff736b434a47c4d949b548ab12c5f53')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.4.2/languagetool-code-comments_0.4.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('2c5113e0bc7d33da833682d867ec25e95d753ab9bcb07a2be107b994c24a6478')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.4.0/languagetool-code-comments_0.4.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('10e1597ea9940afea0026ac4af15a793daf339dee40ba94fb415fed3c888961e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/languagetool-code-comments/releases/download/v0.4.2/languagetool-code-comments_0.4.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('5569047d7faf7461fe79bca8328960bb221a9d5e3ebd489d846b982fec9de5a3')
 
 package() {
   # bin
