@@ -1,6 +1,6 @@
 pkgbase = plocate-git
 	pkgdesc = A locate(1) based on posting lists, completely replacing mlocate with a much faster (and smaller) index
-	pkgver = 1.1.16.r2.g0125004
+	pkgver = 1.1.16.r7.g31641da
 	pkgrel = 1
 	url = https://plocate.sesse.net/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = plocate-git
 	depends = liburing
 	depends = systemd
 	depends = zstd
-	provides = plocate=1.1.16.r2.g0125004
+	provides = plocate=1.1.16.r7.g31641da
 	conflicts = plocate
 	conflicts = mlocate
 	backup = etc/updatedb.conf
