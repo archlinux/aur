@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fuse3-git
-pkgver=3.10.5.r6.g3c2ba7a
+pkgver=3.12.0.r2.g7776639
 pkgrel=1
 pkgdesc="The reference implementation of the Linux FUSE (Filesystem in userspace) interface"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/libfuse/libfuse"
 license=('GPL2' 'LGPL')
 depends=('glibc')
 makedepends=('git' 'meson' 'pkgconf' 'udev')
-provides=('fuse3' 'fuse-common')
+provides=("fuse3=$pkgver" 'fuse-common')
 conflicts=('fuse3' 'fuse-common')
 options=('staticlibs')
 backup=('etc/fuse.conf')
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "libfuse"
 
-  meson \
+  meson setup \
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
