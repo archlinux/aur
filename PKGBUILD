@@ -7,7 +7,7 @@
 
 pkgname=bsd-games2
 pkgver=2.17
-pkgrel=18
+pkgrel=19
 pkgdesc='Linux port of the collection of BSD command line games, "junk pile" included'
 url='https://ibiblio.org/pub/linux/games/'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   bsd-games-2.17-64bit.patch
   bad-ntohl-cast.diff null-check.diff)
 md5sums=('238a38a3a017ca9b216fc42bde405639'
-         '2ea80281ee9993a9ee47323e78349a2a'
+         '0d11fba067dafb30425dac49ad454df1'
          '784f68c796b9e099ac008aecef1af998'
          '9c0fa6e2345bd0a7945c9a41d5ba68aa'
          '5356bd6999ae53dd27cb2a0f837a3e70'
@@ -73,6 +73,12 @@ prepare() {
   # Prior to release 2.17-10 of the ArchLinux package, wargames was
   # broken, since binaries are in /usr/bin instead.
   sed -i -e 's|/usr/games|/usr/bin|g' wargames/wargames
+
+
+  # Use CFLAGS from makepkg instead.
+  # -Werror=format-security had to be disabled because this code was written
+  # back when printf was cool and security hadn't been invented yet.
+  echo "bsd_games_cfg_other_cflags='${CFLAGS} -Wno-error=format-security'" >> config.params
 }
 
 build() {
