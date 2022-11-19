@@ -14,6 +14,10 @@ pkgrel=1
 pkgdesc="Using a ViT to convert images of equations into LaTeX code."
 arch=(any)
 url=https://github.com/$_repo
+depends=(python-tqdm python-munch python-pytorch python-opencv python-requests
+  python-einops python-x-transformers python-transformers python-tokenizers
+  python-numpy python-pillow python-yaml python-pandas python-timm
+  python-albumentations)
 makedepends=(python-installer)
 license=(MIT)
 _py=py3
