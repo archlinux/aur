@@ -30,7 +30,7 @@ package() {
 	rm -rf "${pkgdir}/lib"
 
 	# Install license
-    install -Dm 644 "${pkgdir}/usr/share/doc/forticlient/copyright" "${pkgdir}/usr/share/licenses/fortinet/LICENSE"
+	install -Dm 644 "${pkgdir}/usr/share/doc/forticlient/copyright" "${pkgdir}/usr/share/licenses/fortinet/LICENSE"
 	
 	# Symbolic link to fortivpn CLI
 	mkdir -p ${pkgdir}/usr/bin
