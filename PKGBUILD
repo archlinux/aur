@@ -1,7 +1,7 @@
 # Maintainer: Marc Fehling <mafehling.git@gmail.com>
 pkgname=('python-jupyter-book')
 _pkgname=('jupyter-book')
-pkgver='0.12.1'
+pkgver='0.12.2'
 pkgrel=1
 pkgdesc="Build interactive, publication-quality documents from Jupyter Notebooks."
 url="https://github.com/executablebooks/jupyter-book"
@@ -25,14 +25,13 @@ depends=('python'
   'python-sphinx-togglebutton'
   'python-sphinxcontrib-bibtex'
   'python-sphinx-multitoc-numbering'
-  'python-importlib-metadata'
 )
 checkdepends=()
 makedepends=()
 license=('BSD')
 arch=("any")  
 source=("${_pkgname}-${pkgver}.tgz::https://github.com/executablebooks/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('355df73dfa91cfa84ca711831913a39b12fb22514e58b8b40075e092072b82e1')
+sha256sums=('f3fccbea1f37098454fc92561593003ab7f12c73aa08612c7984237af2a8cb89')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"

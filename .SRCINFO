@@ -1,6 +1,6 @@
 pkgbase = python-jupyter-book
 	pkgdesc = Build interactive, publication-quality documents from Jupyter Notebooks.
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/executablebooks/jupyter-book
 	arch = any
@@ -25,8 +25,7 @@ pkgbase = python-jupyter-book
 	depends = python-sphinx-togglebutton
 	depends = python-sphinxcontrib-bibtex
 	depends = python-sphinx-multitoc-numbering
-	depends = python-importlib-metadata
-	source = jupyter-book-0.12.1.tgz::https://github.com/executablebooks/jupyter-book/archive/v0.12.1.tar.gz
-	sha256sums = 355df73dfa91cfa84ca711831913a39b12fb22514e58b8b40075e092072b82e1
+	source = jupyter-book-0.12.2.tgz::https://github.com/executablebooks/jupyter-book/archive/v0.12.2.tar.gz
+	sha256sums = f3fccbea1f37098454fc92561593003ab7f12c73aa08612c7984237af2a8cb89
 
 pkgname = python-jupyter-book
