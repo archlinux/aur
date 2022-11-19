@@ -1,6 +1,6 @@
 pkgbase = r-extremes
 	pkgdesc = Extreme Value Analysis
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=extRemes
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-extremes
 	depends = r-distillery
 	depends = r-lmoments
 	optdepends = r-fields
-	source = https://cran.r-project.org/src/contrib/extRemes_2.1-2.tar.gz
-	sha256sums = a7a38dc9a876967d54843872b4355c65e1910c324b0630f91a50009c2f3005a7
+	source = https://cran.r-project.org/src/contrib/extRemes_2.1-3.tar.gz
+	sha256sums = e1ccf0dd542502eb9775682ff64ed358fce4aec271b98cd746e58fbfcf093c40
 
 pkgname = r-extremes
