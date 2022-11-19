@@ -1,22 +1,23 @@
 pkgbase = snapchat-nativefier
 	pkgdesc = Snapchat web built with nativefier (electron)
-	pkgver = 0.0.1
-	pkgrel = 3
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://web.snapchat.com
 	arch = armv7l
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = imagemagick
+	makedepends = inkscape
 	makedepends = nodejs-nativefier
 	makedepends = unzip
 	depends = gtk3
 	depends = libxss
 	depends = nss
 	optdepends = libindicator-gtk3
-	source = snapchat-nativefier.png
+	source = https://upload.wikimedia.org/wikipedia/en/c/c4/Snapchat_logo.svg
 	source = snapchat-nativefier.desktop
-	sha256sums = 6a64d75a4f704d6d6bd21b845ee99bc577b2ac82cecbfdad2fe97fe9c41757cc
+	sha256sums = 73b811daaddb6eac1dde7f110850148ca273cb108e4f4cd95ac1d4d1b72eeab2
 	sha256sums = 46ff7aa6dbe376cf081411419bd30249e5b6babc50abfa2bde15f4d659a64bf4
 
 pkgname = snapchat-nativefier
