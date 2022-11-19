@@ -1,0 +1,14 @@
+pkgbase = ruby-matrix
+	pkgdesc = An implementation of Matrix and Vector classes
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/ruby/matrix
+	arch = any
+	license = custom:BSD2
+	depends = ruby
+	noextract = matrix-0.4.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/matrix-0.4.2.gem
+	sha256sums = 71083ccbd67a14a43bfa78d3e4dc0f4b503b9cc18e5b4b1d686dc0f9ef7c4cc0
+
+pkgname = ruby-matrix
