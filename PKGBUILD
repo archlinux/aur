@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=16.1
-_updatever=1
+_securityver=17
+_updatever=8
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -60,8 +60,8 @@ source_x86_64=(https://github.com/adoptium/temurin${_majorver}-binaries/releases
 sha256sums=('502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75'
             '464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df'
             '0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed')
-sha256sums_x86_64=('5f6b513757d386352cf91514ed5859d1ab59364b4453e1f1c57152ba2039b8e2')
-sha256sums_armv7h=('a703acfd04ece4a4aac4cb9bda26b7d225874008bba324237bd6f53792edb778')
+sha256sums_x86_64=('b8d46ed08ef4859476fe6421a7690d899ed83dce63f13fd894f994043177ef3c')
+sha256sums_armv7h=('9ff3b4bd2bac18fb39f3356148efa2dc710ac029e12dc8f18ea1fe6be23bf299')
 source_armv7h=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_arm_linux_hotspot_${_tag_ver_short/+/_}.tar.gz)
 source=(freedesktop-java.desktop
         freedesktop-jconsole.desktop
