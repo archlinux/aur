@@ -1,0 +1,14 @@
+pkgbase = python38-snowballstemmer
+	pkgdesc = Snowball stemming library collection for Python
+	pkgver = 2.2.0
+	pkgrel = 3
+	url = https://snowballstem.org
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	optdepends = python38-pystemmer: for improved performance
+	source = https://pypi.python.org/packages/source/s/snowballstemmer/snowballstemmer-2.2.0.tar.gz
+	sha512sums = f1dee83e06fc79ffb250892fe62c75e3393b9af07fbf7cde413e6391870aa74934302771239dea5c9bc89806684f95059b00c9ffbcf7340375c9dd8f1216cd37
+
+pkgname = python38-snowballstemmer
