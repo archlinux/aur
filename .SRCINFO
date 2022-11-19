@@ -1,0 +1,18 @@
+pkgbase = python38-sphinxcontrib-devhelp
+	pkgdesc = Sphinx extension which outputs Devhelp document
+	pkgver = 1.0.2
+	pkgrel = 9
+	url = https://github.com/sphinx-doc/sphinxcontrib-devhelp
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-sphinx
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	source = https://files.python38hosted.org/packages/source/s/sphinxcontrib-devhelp/sphinxcontrib-devhelp-1.0.2.tar.gz
+	sha256sums = ff7f1afa7b9642e7060379360a67e9c41e8f3121f2ce9164266f61b9f4b338e4
+	b2sums = fcf04148bc4a77963517d9011c20a6b77eee499f1a5dcd4a9631b4f415f80a9f7091b254f74ba2fbc9b7106dfb741dc839e14813e088d5a0802793ed457e95df
+
+pkgname = python38-sphinxcontrib-devhelp
