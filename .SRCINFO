@@ -1,0 +1,19 @@
+pkgbase = python38-validate-pyproject
+	pkgdesc = Validation library and CLI tool for checking on 'pyproject.toml' files using JSON Schema
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/abravalheri/validate-pyproject
+	arch = any
+	license = MPL
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools-scm
+	depends = python38-packaging
+	depends = python38-trove-classifiers
+	depends = python38-tomli
+	source = https://github.com/abravalheri/validate-pyproject/archive/v0.10.1/python38-validate-pyproject-0.10.1.tar.gz
+	sha512sums = e8212813a782e305b53a89104f16f45b357ab1bbfaf7f6652ac848581102df4bf534d5d408acb8d910ebd7dc4b88e3c9fea3b2dcf41eeb14907cfbc5c9b8ad56
+
+pkgname = python38-validate-pyproject
