@@ -1,0 +1,14 @@
+pkgbase = python38-markupsafe
+	pkgdesc = Implements a XML/HTML/XHTML Markup safe string for python38
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/MarkupSafe
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/pallets/markupsafe/archive/2.1.1/python38-markupsafe-2.1.1.tar.gz
+	sha512sums = 6b06a5f470858409eb186d20edd129be90f31030be91fcc73e989b0a4ee51c3755cce0938edd9a7c73471d307385260f868101b5e11cc4d97c309420b5a573da
+
+pkgname = python38-markupsafe
