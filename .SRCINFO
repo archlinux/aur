@@ -1,0 +1,16 @@
+pkgbase = python38-decorator
+	pkgdesc = Python 3.8 Decorator module
+	pkgver = 5.1.1
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/decorator
+	arch = any
+	license = BSD
+	makedepends = python38
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.python.org/packages/source/d/decorator/decorator-5.1.1.tar.gz
+	source = LICENSE.txt
+	sha512sums = 584857ffb0c3e52344b473ceb9e28adfd7d789d480a528471f8ab37be055ebe5feb170f41077010e25350e1c311189d45b90773cf12f0043de98ea8ebcde20ab
+	sha512sums = 0a06dfb3f470b8d3b056bd4e4776df715876d04d0acc86dec536fa7cff0214ba5255833923558d1778db730d080960f31d5e12f939e761530823b6e70646b5c2
+
+pkgname = python38-decorator
