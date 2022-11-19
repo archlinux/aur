@@ -1,6 +1,6 @@
 pkgbase = bluez-utils-compat
 	pkgdesc = Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools.
-	pkgver = 5.65
+	pkgver = 5.66
 	pkgrel = 1
 	url = http://www.bluez.org/
 	arch = i686
@@ -23,13 +23,13 @@ pkgbase = bluez-utils-compat
 	depends = glib2
 	optdepends = ell: for btpclient
 	provides = bluez-hcidump
-	provides = bluez-utils=5.65
+	provides = bluez-utils=5.66
 	provides = bluez-hcitool
 	conflicts = bluez-hcidump
 	conflicts = bluez-utils
 	conflicts = bluez-hcitool
 	backup = etc/bluetooth/mesh-main.conf
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.65.tar.xz
-	sha256sums = 2565a4d48354b576e6ad92e25b54ed66808296581c8abb80587051f9993d96d4
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.66.tar.xz
+	sha256sums = 39fea64b590c9492984a0c27a89fc203e1cdc74866086efb8f4698677ab2b574
 
 pkgname = bluez-utils-compat
