@@ -1,0 +1,30 @@
+pkgbase = python38-build
+	pkgdesc = A simple, correct PEP 517 build frontend
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pypa/build
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-mock
+	checkdepends = python38-pytest-rerunfailures
+	checkdepends = python38-filelock
+	checkdepends = python38-toml
+	checkdepends = python38-wheel
+	makedepends = git
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	makedepends = python38-sphinx
+	makedepends = python38-sphinx-argparse-cli
+	makedepends = python38-sphinx-autodoc-typehints
+	makedepends = python38-sphinx-furo
+	depends = python38-tomli
+	depends = python38-pep517
+	depends = python38-packaging
+	optdepends = python38-virtualenv: Use virtualenv for build isolation
+	source = git+https://github.com/pypa/build#tag=0.9.0?signed
+	validpgpkeys = 3DCE51D60930EBA47858BA4146F633CBB0EB4BF2
+	sha512sums = SKIP
+
+pkgname = python38-build
