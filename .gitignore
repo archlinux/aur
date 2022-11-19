@@ -1,5 +1,4 @@
-OneTrick-SIMIAN-*-Source.zip
-ot-simian-*
-pkg
-src
-Dplug
+pkg/
+src/
+*.tar.*
+*.zip
