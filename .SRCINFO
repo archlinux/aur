@@ -1,0 +1,17 @@
+pkgbase = python38-six
+	pkgdesc = Python 2 and 3 compatibility utilities
+	pkgver = 1.16.0
+	pkgrel = 00
+	url = https://github.com/benjaminp/six
+	arch = any
+	license = MIT
+	depends = python38
+	noextract = six-1.16.0-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 529d7fd7e14612ccde86417b4402d6f3
+	md5sums = 43cfc9e4ac0e377acfb9b76f56b8415d
+
+pkgname = python38-six
