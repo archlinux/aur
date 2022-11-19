@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu-bin
 	pkgdesc = Firefox-appmenu, binary version
-	pkgver = 106.0.5
+	pkgver = 107.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/firefox-appmenu/
 	arch = x86_64
@@ -22,16 +22,16 @@ pkgbase = firefox-appmenu-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=106.0.5
+	provides = firefox=107.0
 	conflicts = firefox
-	noextract = firefox-appmenu-106.0.5-1-x86_64.pkg.tar.zst
+	noextract = firefox-appmenu-107.0-1-x86_64.pkg.tar.zst
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-106.0.5-1-x86_64.pkg.tar.zst
-	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-106.0.5-1-x86_64.pkg.tar.zst.sig
+	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-107.0-1-x86_64.pkg.tar.zst
+	source = https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-appmenu-107.0-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = 85F86E317555BECC1C2184BF2C45BA09ABC5D7DA
-	sha256sums = fad10616780bde079077b6d5aa9be5802d59af77535e7ecf5d06195173e92990
+	sha256sums = 0f5b5a0d4107fcb690e894a43ef97019d2468c23fc728d2a92af3f0154e0f26c
 	sha256sums = SKIP
 
 pkgname = firefox-appmenu-bin
