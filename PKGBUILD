@@ -11,6 +11,7 @@ pkgdesc='CachyOS - ananicy-rules'
 url='https://github.com/CachyOS/ananicy-rules'
 source=("${pkgname}::git+https://github.com/CachyOS/${pkgname}.git")
 sha256sums=('SKIP')
+makedepends=('git')
 replaces=(ananicy-rules-git)
 provides=(ananicy-rules-git)
 conflicts=(ananicy-rules-git)
