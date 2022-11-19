@@ -1,0 +1,15 @@
+pkgbase = microsoft365-chromium
+	pkgdesc = A launcher for Microsoft 365
+	pkgver = 0.0.1
+	pkgrel = 1
+	install = microsoft365-chromium.install
+	arch = any
+	license = MIT
+	depends = chromium
+	optdepends = xdg-desktop-portal-kde: KDE native file chooser
+	optdepends = xdg-desktop-portal-lxqt: lxqt native file chooser
+	optdepends = xdg-desktop-portal-gnome: Gnome native file chooser
+	source = microsoft365-chromium.desktop
+	md5sums = SKIP
+
+pkgname = microsoft365-chromium

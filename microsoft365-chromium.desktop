@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[zh_CN]=
+Comment=
+Exec=chromium --app=https://www.office.com
+GenericName[zh_CN]=
+GenericName=
+Icon=libreoffice5.0
+MimeType=
+Name[zh_CN]=Microsoft 365
+Name=Microsoft 365
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,0 +1,22 @@
+function note() {
+    printf "${blue}==>${yellow} Note:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+function post_install(){
+    note 'If you want to enable Wayland backend, open ~/.config/electron-flags.conf and paste:'
+    echo '--enable-features=WaylandWindowDecorations'
+    echo '--ozone-platform-hint=auto'
+    note 'Enabling Wayland backend will mess up Global Menu and CJK typing such as Fcitx5'
+    note 'As a workaround, add --ozone-platform-hint=auto --gtk-version=4 --enable-features=WaylandWindowDecorations to your ~/.config/chromium-flags.conf to enable Fcitx input under Wayland'
+    note 'DO NOT add flag --use-gl=egl under Xwayland or you will encounter some slutter'
+}
+
+function post_upgrade(){
+    post_install
+}
+
