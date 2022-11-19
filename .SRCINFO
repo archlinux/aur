@@ -1,0 +1,16 @@
+pkgbase = python-awaitable
+	pkgdesc = A decorator to asynchronously execute synchronous functions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.muflone.com/awaitable/
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-awaitable-0.1.0.tar.gz::https://github.com/muflone/awaitable/archive/0.1.0.tar.gz
+	sha256sums = edd20a885587baa8e0d9914b710b7541f89c7a276fb4ce270218e88616269d4e
+
+pkgname = python-awaitable
