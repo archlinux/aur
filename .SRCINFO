@@ -1,0 +1,23 @@
+pkgbase = cplot
+	pkgdesc = Function plotter for real and complex mathematical functions
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://zoon.cc/cplot/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python>=3.0.0
+	makedepends = ninja
+	makedepends = boost
+	depends = zlib
+	depends = sdl2
+	depends = libgl
+	depends = glu
+	depends = glew
+	depends = glibc
+	depends = pango
+	depends = cairo
+	source = git+https://github.com/hilgenberg/cplot#commit=a8b8f5f6ad42698c36cc55710a616c304aa56bb5
+	sha256sums = SKIP
+
+pkgname = cplot
