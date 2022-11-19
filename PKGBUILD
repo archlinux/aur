@@ -23,7 +23,7 @@ sha256sums=(
 
 package() {
     install -Dm644 ./$name.desktop $pkgdir/usr/share/applications/$name.desktop
-    cd $srcdir/${pkgname}-${pkgver}
+    cd $srcdir/$name-$pkgver
     mkdir -p $pkgdir/opt/$pkgname/$resname
     cp -r $resname/* $pkgdir/opt/$pkgname/$resname
     chmod +x $pkgdir/opt/$pkgname/$resname/main.py
