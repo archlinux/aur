@@ -1,7 +1,7 @@
 pkgbase = hsa-rocr
 	pkgdesc = HSA Runtime API and runtime for ROCm
 	pkgver = 5.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCR-Runtime.html
 	arch = x86_64
 	license = custom:NCSAOSL
