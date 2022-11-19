@@ -2,7 +2,7 @@
 
 pkgname=electronwmd-appimage-git
 _pkgname=electronwmd
-pkgver=r34.2bb69cd
+pkgver=r15.e305508
 pkgrel=1
 pkgdesc='Upload music to NetMD MiniDisc devices'
 arch=('x86_64')
