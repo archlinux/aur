@@ -1,0 +1,17 @@
+pkgbase = python38-mdit_py_plugins
+	pkgdesc = Collection of core plugins for markdown-it-py
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/executablebooks/mdit-py-plugins
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-regressions
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-flit-core
+	depends = python38-markdown-it-py
+	source = python38-mdit_py_plugins-0.3.1.tar.gz::https://github.com/executablebooks/mdit-py-plugins/archive/v0.3.1.tar.gz
+	sha512sums = a934953e95eba04f5c1626d8256fed53cbbb26e35d816b41b7aaf968b452e3bfaa99e3008009dbdd8d9e7c89497916916c2cc1fabbecb735624231cafee864ea
+
+pkgname = python38-mdit_py_plugins
