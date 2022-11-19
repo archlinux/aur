@@ -2,31 +2,31 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_io_commit=22751c949f0992644af2bf70bbffc438fbb10caa
-_SequenceParsing_commit=103c528347ebb2dd0ff5d79b5cee24bbcf938ce0
+_SequenceParsing_commit=3c93fcc488632b0bdfeee3181586809932357598
 _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-io
-pkgver=2.4.3+g22751c9
+pkgver=2.4.4
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=('GPL')
-depends=('ffmpeg' 'opencolorio1' 'openimageio' 'libseexpr2')
+depends=('ffmpeg' 'openimageio' 'libseexpr2')
+makedepends=('opencolorio')
 
 _natron_ver="Natron-${pkgver%+*}"
-_pkgname="${pkgname}-${_openfx_io_commit}"
+_pkgname="${pkgname}-${_natron_ver}"
 _url=${url%/${pkgname}}
 
-source=("${_pkgname}.tar.gz::${url}/archive/${_openfx_io_commit}.tar.gz"
+source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-supportext-${_natron_ver}.tar.gz::${_url}/openfx-supportext/archive/${_natron_ver}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
         "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('SKIP'
-            '56fc96d0820d053940336ef3ae9fee4e4386e90c9cede6e5450de66c92220f2670f12b25dfb17aaec621001db140281ab47ee8f3fa5e5915a56cfefe2be813fe'
-            'b700769ffc0df0cb3f48ec68cfbdddb01e25a55a3606df5c618cd277ba86af77c58b4301678a5f2b045c13fbe8f0403afe965102e2c78dc69226e11ea8e4be53'
+sha512sums=('df556665b757136fab1f2d51825cac397c939f9701b2a5d850411238711826d4473570af9847c663ab4685d13ccd0769a61f03e4947bd7901bf93c5a4b5cb9d2'
+            '39983f693798121342bf6509c819f9243c176c8123e4e2665309270ba3709f686592f9f29b3b938d2c7ce87c756b0ce9ef0ea36c0c96e4d3ba3379bd7f5976be'
+            '6b577c26c9299e0c1a707eeaa97e752cd3dd29587580c663ebeabe8d09c76afb66ae31feb0b10a473f84b8e6f4359ed0791c11c1b7cc1b48fb7df0ed69c44b52'
             'SKIP'
             'SKIP')
 
@@ -40,10 +40,6 @@ prepare() {
       -C   "${_pkgname}/IOSupport/SequenceParsing/"
   tar -xzf "tinydir-${_tinydir_commit}.tar.gz" --strip 1 \
       -C   "${_pkgname}/IOSupport/SequenceParsing/tinydir"
-
-  # Change OpenColorIO library references to the version of "opencolorio1" package
-  find "${_pkgname}/IOSupport/" -name GenericOCIO.* \
-        -exec sed -i 's/include <OpenColorIO/include <OpenColorIO1/' {} \;
 }
 
 build() {
