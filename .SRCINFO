@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-fmtconv
 	pkgdesc = Plugin for Vapoursynth: fmtconv
-	pkgver = r28
+	pkgver = r30
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=166504
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = vapoursynth-plugin-fmtconv
 	depends = vapoursynth
 	provides = vapoursynth-plugin-fmtconv-git
 	conflicts = vapoursynth-plugin-fmtconv-git
-	source = http://ldesoras.free.fr/src/vs/fmtconv-r28.zip
-	sha256sums = 90f28223927bcdacc683cbd44a7e11f44e71b8706c7bcbc6ab36b63b23c08d56
+	source = http://ldesoras.free.fr/src/vs/fmtconv-r30.zip
+	sha256sums = f35dba222f2a4d998cd5f777e14382d21337f86fec8ba38832d577ad5795f2e6
 
 pkgname = vapoursynth-plugin-fmtconv
