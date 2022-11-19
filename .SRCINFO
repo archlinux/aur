@@ -1,0 +1,22 @@
+pkgbase = python38-babel
+	pkgdesc = A collection of tools for internationalizing Python 3.8 applications
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = http://babel.pocoo.org/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-freezegun
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-pytz
+	noextract = cldr-core-41.zip
+	source = python38-babel-2.11.0.tar.gz::https://github.com/python-babel/babel/archive/v2.11.0.tar.gz
+	source = cldr-core-41.zip::http://unicode.org/Public/cldr/41/core.zip
+	source = cldr-common-41.0.zip::http://unicode.org/Public/cldr/41/cldr-common-41.0.zip
+	sha256sums = ae1eef5784c3399df3df9ceb62f1236d0347b0d1f6ac15d22234ff75eccbe470
+	sha256sums = 823c6170c41e2de2c229574e8a436332d25f1c9723409867fe721e00bc92d853
+	sha256sums = 823c6170c41e2de2c229574e8a436332d25f1c9723409867fe721e00bc92d853
+
+pkgname = python38-babel
