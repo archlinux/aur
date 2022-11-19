@@ -1,0 +1,20 @@
+pkgbase = python38-jaraco.envs
+	pkgdesc = Classes for orchestrating Python 3.8 (virtual) environments
+	pkgver = 2.4.0
+	pkgrel = 2
+	url = https://github.com/jaraco/jaraco.envs
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-enabler
+	checkdepends = python38-pytest-mypy
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-path
+	depends = python38-virtualenv
+	depends = python38-tox
+	source = https://github.com/jaraco/jaraco.envs/archive/v2.4.0/python38-jaraco.envs-2.4.0.tar.gz
+	sha512sums = 08610971183227ac92aafdb7dbf92c9045a0ccd20ed451fd36c9c71dc869a86559d75fdfc64de18a1f7a0ebef6666d66896eef162e9c8482203e75a9b2f0a1f6
+
+pkgname = python38-jaraco.envs
