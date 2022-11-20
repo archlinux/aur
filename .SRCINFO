@@ -1,0 +1,31 @@
+pkgbase = python38-pillow
+	pkgdesc = Python Imaging Library (PIL) fork
+	pkgver = 9.3.0
+	pkgrel = 1
+	url = https://python-pillow.org
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	makedepends = libwebp
+	makedepends = tk
+	depends = python38
+	depends = freetype2
+	depends = lcms2
+	depends = libraqm
+	depends = libtiff
+	depends = openjpeg2
+	depends = libimagequant
+	depends = libxcb
+	optdepends = libwebp: for webp images
+	optdepends = tk: for the ImageTK module
+	optdepends = python38-olefile: OLE2 file support
+	optdepends = python38-pyqt5: for the ImageQt module
+	source = python38-pillow::git+https://github.com/python-pillow/Pillow#commit=d594f4cb8dc47fb0c69ae58d9fff86faae4515bd
+	b2sums = SKIP
+
+pkgname = python38-pillow
