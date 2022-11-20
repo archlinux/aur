@@ -1,13 +1,13 @@
 pkgbase = epitls-pi-bin
 	pkgdesc = A little helper tool meant to ease the developpment of the C piscine at EPITA/Toulouse.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/MajorBarnulf/epitls-pi
 	arch = x86_64
 	license = GPL-3.0+
 	provides = epitls-pi
 	conflicts = epitls-pi
-	source = https://github.com/MajorBarnulf/epitls-pi/releases/download/v1.4.0/epitls-pi-1.4.0-x86_64.tar.gz
-	sha256sums = 194b37f9a545118e10f7147ad1ca9d50df0cae9707dc6a855d04d6b7d55b0e6e
+	source = https://github.com/MajorBarnulf/epitls-pi/releases/download/v1.4.1/epitls-pi-1.4.1-x86_64.tar.gz
+	sha256sums = 5cfa9ad0bad35cd3a4beb6cc8cb48a74d569d5c82f7965670fee2ec0d83b880b
 
 pkgname = epitls-pi-bin
