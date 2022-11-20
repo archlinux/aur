@@ -1,0 +1,14 @@
+pkgbase = python38-genty
+	pkgdesc = Allows you to run a test with multiple data sets
+	pkgver = 1.3.2
+	pkgrel = 11
+	url = https://github.com/box/genty
+	arch = any
+	license = Apache
+	makedepends = python38-setuptools
+	makedepends = git
+	depends = python38-six
+	source = git+https://github.com/box/genty.git#tag=v1.3.2
+	sha512sums = SKIP
+
+pkgname = python38-genty
