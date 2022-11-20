@@ -1,0 +1,20 @@
+pkgbase = python38-cairocffi
+	pkgdesc = cairocffi is a CFFI-based drop-in replacement for Pycairo, a set of Python bindings and object-oriented API for cairo.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://cairocffi.readthedocs.io/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-numpy
+	checkdepends = python38-pikepdf
+	makedepends = python38-setuptools
+	makedepends = gdk-pixbuf2
+	depends = python38-cffi
+	depends = cairo
+	depends = python38-xcffib
+	optdepends = gdk-pixbuf2: for cairocffi.pixbuf
+	source = python38-cairocffi-1.4.0.tar.gz::https://github.com/Kozea/cairocffi/archive/v1.4.0.tar.gz
+	sha512sums = 5622aa50d33cbd206c9fb1da33f5c832e9b38a4d679e410c0ced8c75387524c58cb63daf0194e5e5b1c9700b55060471e38c672d7496efc9fc75638866e0a2dc
+
+pkgname = python38-cairocffi
