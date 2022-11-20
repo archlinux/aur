@@ -1,17 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
-pkgver=0.3.14
-pkgrel=2
+pkgver=0.3.15
+pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
 license=('GPL')
-depends=('leptonica' 'pyside6' 'python-certifi' 'python-pytesseract' 'wl-clipboard')
+depends=('leptonica' 'pyside6' 'python-certifi' 'python-jeepney' 'python-pytesseract'
+         'wl-clipboard')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('7ac66b227299d51d160d4dd45b0c10f41025dd6a866fb53cd4d3798fea4963f8'
+sha256sums=('8db83d664725efeeef56b98cb7608d555f82d9b45d3ea62ea3877b7af1a880ef'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 prepare() {
@@ -29,6 +30,12 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Module no longer packed in wheel package
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cp -r "src/$pkgname" "${pkgdir}${site_packages}/"
+  python -m compileall -d / "${pkgdir}${site_packages}/$pkgname"
+  python -O -m compileall -d / "${pkgdir}${site_packages}/$pkgname"
 
   install -Dm644 "assets/icons/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
