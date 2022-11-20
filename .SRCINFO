@@ -1,0 +1,22 @@
+pkgbase = python38-openpyxl
+	pkgdesc = A Python library to read/write Excel 2007 xlsx/xlsm files
+	pkgver = 3.0.10
+	pkgrel = 1
+	url = https://openpyxl.readthedocs.org/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-py
+	checkdepends = python38-lxml
+	checkdepends = python38-pandas
+	checkdepends = python38-pillow
+	makedepends = python38-setuptools
+	depends = python38-et-xmlfile
+	optdepends = python38-pillow: needed to include images
+	optdepends = python38-lxml: alternative XML backend
+	optdepends = python38-defusedxml: guard against various XML vulnerabilities
+	optdepends = python38-pandas: for iteration over Pandas DataFrames
+	source = https://foss.heptapod.net/openpyxl/openpyxl/-/archive/3.0.10/openpyxl-3.0.10.tar.bz2
+	sha256sums = 265ae51674a0b30d5394a437a2c96c520c6cfcaf479a4d3e0f75d829d172664e
+
+pkgname = python38-openpyxl
