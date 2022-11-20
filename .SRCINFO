@@ -1,0 +1,14 @@
+pkgbase = python38-extras
+	pkgdesc = Useful extra bits for Python 3.8 - things that should be in the standard library
+	pkgver = 1.0.0
+	pkgrel = 10
+	url = https://github.com/testing-cabal/extras
+	arch = any
+	license = MIT
+	checkdepends = python38-testtools
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/testing-cabal/extras/archive/1.0.0/python38-extras-1.0.0.tar.gz
+	sha512sums = db264cf183dd0f63a411d03def51bb6ec8c5d47fe1e3e75cab4d65f2793b9458023a2387574968b095bf39cf7746428f7e7f190100dbdf2d99695f4c69875475
+
+pkgname = python38-extras
