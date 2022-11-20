@@ -1,0 +1,14 @@
+pkgbase = python38-hyperframe
+	pkgdesc = HTTP/2 framing layer for Python
+	pkgver = 6.0.1
+	pkgrel = 3
+	url = https://hyper.rtfd.org
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-hyperframe-6.0.1.tar.gz::https://github.com/python-hyper/hyperframe/archive/v6.0.1.tar.gz
+	sha512sums = b4170194ef7504f0897a9cee689b32e22784e9b0d98d6da267b62983f013758acbfe53df9d6f6fad5f9709299e95ed32e1e73213f9515a4de20bd5c36fa39814
+
+pkgname = python38-hyperframe
