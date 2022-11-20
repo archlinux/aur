@@ -1,0 +1,18 @@
+pkgbase = python38-responses
+	pkgdesc = A utility library for mocking out the `requests` Python library.
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/getsentry/responses
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-asyncio
+	checkdepends = python38-pytest-httpserver
+	makedepends = python38-setuptools
+	depends = python38-requests
+	depends = python38-urllib3
+	depends = python38-toml
+	source = https://github.com/getsentry/responses/archive/0.22.0/python38-responses-0.22.0.tar.gz
+	sha512sums = 361e59e02df36fac0fb0ba2a070b730e485ec94fe90490c271e4ac86fae7954a551bf2486714d95c91e9d0b011f06a9d10b0d6408fd4d03234e1224cca1e9d0e
+
+pkgname = python38-responses
