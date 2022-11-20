@@ -1,0 +1,19 @@
+pkgbase = python38-commonmark
+	pkgdesc = Python parser for the CommonMark Markdown spec
+	pkgver = 0.9.1
+	pkgrel = 6
+	url = https://pypi.org/project/commonmark/
+	arch = any
+	license = BSD
+	checkdepends = python38-hypothesis
+	makedepends = python38-setuptools
+	makedepends = python38-sphinx
+	makedepends = python38-sphinx_rtd_theme
+	depends = python38-docutils
+	depends = python38-future
+	options = !makeflags
+	source = python38-commonmark-0.9.1.tar.gz::https://github.com/readthedocs/commonmark.py/archive/0.9.1.tar.gz
+	sha256sums = b5d5be6af35a183c3f915d714b31b61e6918894051114419f9ac0bbb715bf4c6
+	sha512sums = a6de0b384247ff79fe326012bd1fc71135e6ae5bc7b6a15d5402969a94f81fdd802f1a9d557c504eb74bfb3fea68f55355a70a6e0112a620cc285cf9039892e4
+
+pkgname = python38-commonmark
