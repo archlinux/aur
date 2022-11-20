@@ -1,0 +1,14 @@
+pkgbase = python38-stevedore
+	pkgdesc = Manage dynamic plugins for Python applications
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/openstack/stevedore
+	arch = any
+	license = Apache
+	makedepends = python38-pbr
+	depends = python38
+	options = !emptydirs
+	source = https://pypi.org/packages/source/s/stevedore/stevedore-4.1.1.tar.gz
+	sha256sums = 7f8aeb6e3f90f96832c301bff21a7eb5eefbe894c88c506483d355565d88cc1a
+
+pkgname = python38-stevedore
