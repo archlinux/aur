@@ -1,0 +1,14 @@
+pkgbase = python38-wrapt
+	pkgdesc = A Python module for decorators, wrappers and monkey patching
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/wrapt
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/GrahamDumpleton/wrapt/archive/1.14.1/python38-wrapt-1.14.1.tar.gz
+	sha512sums = c67e99eb29afeefb2512fb545cd180b8e96f69235d6281edebe62ea5e411188a904a7e683afdda2d6a86cf8b7fd74f79a3c3bec04e19a7c5ef347729bb43f94c
+
+pkgname = python38-wrapt
