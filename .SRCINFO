@@ -13,7 +13,8 @@ pkgbase = elexis
 	depends = at-spi2-core
 	depends = dbus-glib
 	depends = freetype2
-	depends = java-runtime
+	depends = java-runtime>=11
+	depends = java-runtime<=17
 	depends = libcups
 	depends = libnet
 	depends = libxcomposite
