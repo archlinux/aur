@@ -1,0 +1,16 @@
+pkgbase = python3.8-cssselect
+	pkgdesc = A Python3 library that parses CSS3 Selectors and translates them to XPath 1.0
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cssselect
+	arch = any
+	license = BSD
+	checkdepends = python3.8-pytest
+	checkdepends = python3.8-lxml
+	checkdepends = python3.8-sybil
+	makedepends = python3.8-setuptools
+	depends = python3.8
+	source = https://github.com/scrapy/cssselect/archive/v1.2.0/python3.8-cssselect-1.2.0.tar.gz
+	sha512sums = 439f83e37c381f962abcfca0b83050372cbad44179e876591d8504abc2da1d4fe80891c8c8e1763341cf152525259565dc5e80038fa7c14e8c69f22a11f83d94
+
+pkgname = python3.8-cssselect
