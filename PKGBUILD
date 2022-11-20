@@ -15,7 +15,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd-dev
 pkgdesc="OpenCL SDK / HIP SDK / ROCM Compiler. This package needs at least 10GB of space."
 pkgver=${amdgpu_install}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -42,6 +42,8 @@ source=(
 "https://repo.radeon.com/rocm/apt/5.3.3/pool/main/h/hipfft-dev/hipfft-dev_1.0.9.50303-99~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.3.3/pool/main/h/hipfort/hipfort_0.4.0.50303-99~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.3.3/pool/main/h/hipfort-dev/hipfort-dev_0.4.0.50303-99~22.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/5.3.3/pool/main/h/hipsolver/hipsolver_1.5.0.50303-99~22.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/5.3.3/pool/main/h/hipsolver-dev/hipsolver-dev_1.5.0.50303-99~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.3.3/pool/main/h/hipify-clang/hipify-clang_15.0.0.50303-99~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.3.3/pool/main/r/rocsparse/rocsparse_2.3.3.50303-99~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.3.3/pool/main/r/rocsparse-dev/rocsparse-dev_2.3.3.50303-99~22.04_amd64.deb"
@@ -84,6 +86,8 @@ sha256sums=(
 "5ef6ba20730ad67b3981a22a6e3d21622f69daf120e57729ae395adc660a0c9e"
 "2c2bb011e24eaf7a4604a5496c024776e2db026bfc11e8f5c8748ad355655353"
 "c0968bac00d10b03713068d85489da01cac3ce7d6f69aae444ce661ee60bb361"
+"a0021ad10adf44dcae6a2a2e251ed0ec0c69ca7136c1a986b733be555598c928"
+"a8690f9e647dfd6b7f5be8f5bf7e07329621fd2369b8026e264ae8305d3b51c7"
 "8c6c8b16f7fef841febce1313f6556012b96ae07c0fa5f58e9cae4ef275eeb3b"
 "75ed1ee080e23c90cdda0c16aeedb8abffe4bc29362534094e89c4453ab236f5"
 "5da7c409d62bec2ebdc7e5de1838b97e717975ce440aab7554da332c8e614f68"
@@ -139,6 +143,8 @@ package() {
 	exz "${srcdir}/hipfft-dev_1.0.9.50303-99~22.04_amd64.deb"
 	exz "${srcdir}/hipfort_0.4.0.50303-99~22.04_amd64.deb"
 	exz "${srcdir}/hipfort-dev_0.4.0.50303-99~22.04_amd64.deb"
+	exz "${srcdir}/hipsolver_1.5.0.50303-99~22.04_amd64.deb"
+	exz "${srcdir}/hipsolver-dev_1.5.0.50303-99~22.04_amd64.deb"
 	egz "${srcdir}/hipify-clang_15.0.0.50303-99~22.04_amd64.deb"
 	exz "${srcdir}/rocsparse_2.3.3.50303-99~22.04_amd64.deb"
 	exz "${srcdir}/rocsparse-dev_2.3.3.50303-99~22.04_amd64.deb"
