@@ -1,6 +1,6 @@
 pkgbase = pkglog
 	pkgdesc = Reports log of package updates
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://github.com/bulletmark/pkglog
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = pkglog
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.7
-	depends = python-rich
-	source = pkglog-1.17.tar.gz::https://github.com/bulletmark/pkglog/archive/1.17.tar.gz
-	sha1sums = 5e1a607dfdebbbca869d30e3312996aa0dc53cbc
+	source = pkglog-1.18.tar.gz::https://github.com/bulletmark/pkglog/archive/1.18.tar.gz
+	sha1sums = 95fbc6c1f9708666a26639545deb692d4b4e91cf
 
 pkgname = pkglog
