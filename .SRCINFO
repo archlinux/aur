@@ -1,0 +1,19 @@
+pkgbase = python38-hatch-vcs
+	pkgdesc = Hatch plugin for versioning with your preferred VCS
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ofek/hatch-vcs
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	depends = python38-hatchling
+	depends = python38-setuptools-scm
+	source = https://github.com/ofek/hatch-vcs/archive/v0.2.0/python38-hatch-vcs-0.2.0.tar.gz
+	source = python38-hatch-vcs-setuptools-scm-7.patch::https://github.com/ofek/hatch-vcs/pull/9.patch
+	sha512sums = 1c3627240ef5b659b9d87a69c84dd71cac4c83758f5be676e808377400383e996209cf6eabb1222f5330c0a97f0d261ced1eb9dc40e1d5c2bb2fc708659360eb
+	sha512sums = d4d01c7ce2027f6fa698ab918f4ba6e399472622361fdfa818f10c196dd5cf6bf11ff8e4439f3dd866e7b3d5f2b2b00aea9f8405b3a93f1ac6c647375fe8de8c
+
+pkgname = python38-hatch-vcs
