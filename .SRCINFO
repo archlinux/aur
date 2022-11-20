@@ -1,0 +1,19 @@
+pkgbase = python38-pytest-asyncio
+	pkgdesc = Pytest support for asyncio.
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-asyncio/
+	arch = any
+	license = Apache
+	checkdepends = python38-flaky
+	checkdepends = python38-hypothesis
+	checkdepends = python38-pytest-trio
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-pytest
+	source = https://github.com/pytest-dev/pytest-asyncio/archive/v0.20.2/python38-pytest-asyncio-0.20.2.tar.gz
+	sha512sums = 5d8b4965cea14dec2a2c7f21f6bb1bad6693b93f07b9dab5c880107a944942bd2c3ef38adc0e17b309222a53afa7504f827baf42201c2a0282a266118e3f7eb7
+
+pkgname = python38-pytest-asyncio
