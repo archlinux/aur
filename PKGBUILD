@@ -2,7 +2,7 @@
 
 pkgname=libdeltachat-git
 _srcname=deltachat-core-rust
-pkgver=1.83.0.r3.gb7d2828f
+pkgver=1.101.0.r6.g960a7f82
 pkgrel=1
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64' 'aarch64')
