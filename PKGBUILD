@@ -1,7 +1,7 @@
 # Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
 
 pkgname=bgfx-cmake-git
-pkgver=1.115.8109.a7ac0aa
+pkgver=1.118.8374.52feec4
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
@@ -42,7 +42,11 @@ prepare() {
   git config --file=.gitmodules submodule.bimg.url $srcdir/bimg
   git config --file=.gitmodules submodule.bgfx.url $srcdir/bgfx
   git submodule sync
-  git submodule update --init
+  # From git 2.38.1-1, "git submodule" in PKGBUILD does not work
+  # unless we change the git config "protocol.file.allow" [1,2].
+  # [1] https://bugs.archlinux.org/task/76255
+  # [2] https://bbs.archlinux.org/viewtopic.php?pid=2063104#p2063104
+  git -c protocol.file.allow=always submodule update --init
 
   # prepend bgfx to bin names to avoid naming conflicts
   for BIN in geometryc geometryv shaderc texturec texturev
