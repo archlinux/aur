@@ -1,0 +1,15 @@
+pkgbase = python-expiring-dict
+	pkgdesc = Python dict with TTL support for auto-expiring caches
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/expiring-dict
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = expiring-dict-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/e/expiring-dict/expiring-dict-1.1.0.tar.gz
+	source = https://github.com/dparker2/py-expiring-dict/raw/master/LICENSE
+	sha512sums = 94ef75ab79adef1f413bf22c0ad1ff8e3d1ad1ca5d0b620b6244eb4a1f19ee8c9a9c7b8c6109288d6c114dd7cb79881b550c6de2fd5b81e7d912f3d97d667f89
+	sha512sums = 10febcc48b9f8d7210144cf00edbac8b82482f7ebefb0a1af05125fb3672acff765499f1627f9b80afe24cc926751b104e205b48a414c92c28d9c2d2b7c99814
+
+pkgname = python-expiring-dict
