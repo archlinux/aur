@@ -1,0 +1,17 @@
+pkgbase = python38-linkify-it-py
+	pkgdesc = Links recognition library with full unicode support
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/tsutsu3/linkify-it-py
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38-uc-micro-py
+	source = python38-linkify-it-py-2.0.0.tar.gz::https://github.com/tsutsu3/linkify-it-py/archive/v2.0.0.tar.gz
+	sha512sums = 7d2a66d5f0e33aece5b8d2737f20bd83f6cb2b7958b681c293f5996263f65f525862ce0cb0f7be9df1597844e58ed804b5b604c257e4d84cbf05677fd2733dda
+
+pkgname = python38-linkify-it-py
