@@ -1,0 +1,21 @@
+pkgbase = python38-pytest-trio
+	pkgdesc = Pytest plugin for Trio
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = https://github.com/python-trio/pytest-trio
+	arch = any
+	license = APACHE
+	license = MIT
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-trio-asyncio
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-async_generator
+	depends = python38-hypothesis
+	depends = python38-pytest
+	depends = python38-trio
+	source = git+https://github.com/python-trio/pytest-trio.git#tag=250ec45f5d72eca78ab0ea2d1571667d2c51f8b5
+	b2sums = SKIP
+
+pkgname = python38-pytest-trio
