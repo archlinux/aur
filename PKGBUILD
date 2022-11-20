@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 
 for target_arch in ${_targets}; do
-  pkgname+=("${target_arch}")
+  pkgname+=("${pkgbase}-${target_arch}")
   provides+=("${pkgbase}-${target_arch}")
 done
 
@@ -38,8 +38,7 @@ build() {
 }
 
 do_package() {
-  target_arch="${pkgname}"
-  pkgname="${pkgbase}-${target_arch}"
+  target_arch="$(echo ${pkgname} | cut -d '-' -f 3)"
   pkgdesc+="${target_arch}"
   
   toolchain_dir="usr/${target_arch}-coreboot-gnu"
@@ -48,30 +47,30 @@ do_package() {
   mv ${srcdir}/${target_arch}/* "${dest_path}"
 }
 
-package_i386() {
+package_coreboot-toolchain-i386() {
   do_package
 }
 
-package_x64() {
+package_coreboot-toolchain-x64() {
   do_package
 }
 
-package_arm() {
+package_coreboot-toolchain-arm() {
   do_package
 }
 
-package_aarch64() {
+package_coreboot-toolchain-aarch64() {
   do_package
 }
 
-package_riscv() {
+package_coreboot-toolchain-riscv() {
   do_package
 }
 
-package_ppc64() {
+package_coreboot-toolchain-ppc64() {
   do_package
 }
 
-package_nds32le() {
+package_coreboot-toolchain-nds32le() {
   do_package
 }

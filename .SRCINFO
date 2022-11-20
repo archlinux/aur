@@ -22,16 +22,16 @@ pkgbase = coreboot-toolchain
 	source = git+https://review.coreboot.org/coreboot#commit=f4c97ea131944c7be940b35361407e4b63a14faf
 	sha256sums = SKIP
 
-pkgname = i386
+pkgname = coreboot-toolchain-i386
 
-pkgname = x64
+pkgname = coreboot-toolchain-x64
 
-pkgname = arm
+pkgname = coreboot-toolchain-arm
 
-pkgname = aarch64
+pkgname = coreboot-toolchain-aarch64
 
-pkgname = riscv
+pkgname = coreboot-toolchain-riscv
 
-pkgname = ppc64
+pkgname = coreboot-toolchain-ppc64
 
-pkgname = nds32le
+pkgname = coreboot-toolchain-nds32le
