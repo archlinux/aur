@@ -2,7 +2,7 @@
 
 pkgname=xx-net
 pkgver=3.12.10
-pkgrel=1
+pkgrel=2
 
 pkgdesc="XX-Net, a web proxy tool."
 arch=('i686' 'x86_64' 'armv7h')
