@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc="Automatic Conversion of 3D Models to CSG Trees"
 arch=('any')
 url="http://inversecsg.csail.mit.edu/"
-license=('GPL')
 makedepends=('sd' 'ripgrep')
 depends=('autoconf' 'bison' 'cmake' 'eigen' 'flex' 'ipython' 'libtool' 'mercurial' 'python' 'python-scikit-learn' 'python-numpy' 'python-scipy' 'python-matplotlib'  'sketch' 'zsh') #'python-sketch'
 source=("https://dl.acm.org/action/downloadSupplement?doi=10.1145%2F3272127.3275006&file=a213-du.zip"

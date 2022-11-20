@@ -4,7 +4,6 @@ pkgbase = inversecsg
 	pkgrel = 1
 	url = http://inversecsg.csail.mit.edu/
 	arch = any
-	license = GPL
 	makedepends = sd
 	makedepends = ripgrep
 	depends = autoconf
