@@ -1,0 +1,27 @@
+pkgbase = python38-google-auth
+	pkgdesc = Google Authentication Library
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/google-auth-library-python
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = python38-mock
+	checkdepends = python38-requests
+	checkdepends = python38-flask
+	checkdepends = python38-oauth2client
+	checkdepends = python38-pytest-localserver
+	checkdepends = python38-cryptography
+	checkdepends = python38-freezegun
+	checkdepends = python38-responses
+	checkdepends = python38-pyopenssl
+	checkdepends = python38-pyu2f
+	depends = python38-cachetools
+	depends = python38-certifi
+	depends = python38-pyasn1-modules
+	depends = python38-rsa
+	depends = python38-setuptools
+	source = https://github.com/GoogleCloudPlatform/google-auth-library-python/archive/v2.10.0/python38-google-auth-2.10.0.tar.gz
+	sha512sums = 9484d24b733811d10b381e032041aae25afbefed9fb25ab212581c4390e8adf0faddbeecdb7d731669e521a69b57aab64235401420fce34a5f763b1e587dea2b
+
+pkgname = python38-google-auth
