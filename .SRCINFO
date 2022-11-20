@@ -1,0 +1,27 @@
+pkgbase = elexis-base
+	pkgdesc = Plugins for Elexis.
+	pkgver = 3.9
+	pkgrel = 1
+	url = https://github.com/elexis/elexis-3-base
+	arch = x86_64
+	license = EPL
+	makedepends = git
+	makedepends = java-environment>=11
+	makedepends = java-environment<=17
+	makedepends = maven
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = dbus-glib
+	depends = freetype2
+	depends = java-runtime
+	depends = libcups
+	depends = libnet
+	depends = libxcomposite
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = mesa
+	depends = nss
+	source = elexis-base::git+https://github.com/elexis/elexis-3-base.git#tag=4c8f642d611e49fbdeedd0e969ef54ce704e465a
+	sha512sums = SKIP
+
+pkgname = elexis-base
