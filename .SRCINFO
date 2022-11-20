@@ -1,0 +1,18 @@
+pkgbase = python38-zope-testing
+	pkgdesc = Zope testing helpers
+	pkgver = 4.10
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.testing
+	arch = any
+	license = ZPL
+	checkdepends = python38-nose
+	makedepends = python38-setuptools
+	makedepends = python38-zope-interface
+	makedepends = python38-zope-exceptions
+	depends = python38-setuptools
+	depends = python38-zope-interface
+	depends = python38-zope-exceptions
+	source = -4.10.tar.gz::https://github.com/zopefoundation/zope.testing/archive/4.10.tar.gz
+	sha512sums = ea820a97d675d2ee99662381a568dbbd6c287264a8fcaecb92794fe2dab8c6781fa0564010a162ce6695ce4b666db5e5eefec0aee391d56afe0f5d56446683cf
+
+pkgname = python38-zope-testing
