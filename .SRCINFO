@@ -1,0 +1,15 @@
+pkgbase = python38-livereload
+	pkgdesc = livereload server in python38 3.8
+	pkgver = 2.6.3
+	pkgrel = 2
+	url = https://github.com/lepture/python38-livereload
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-tornado
+	source = python38-livereload-2.6.3.tar.gz::https://github.com/lepture/python38-livereload/archive/2.6.3.tar.gz
+	sha512sums = ccccb17cb4d835eb9e812f8076f871164f6afb2fdc1aee9e35c5ef2d75be2c0403cee51d4eb30b029d7b35522f357ee8c3e9df926fd93511ba7d010ed2a69e8e
+
+pkgname = python38-livereload
