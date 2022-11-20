@@ -1,0 +1,13 @@
+pkgbase = python38-pyserial
+	pkgdesc = Multiplatform Serial Port Module for Python
+	pkgver = 3.5
+	pkgrel = 4
+	url = https://github.com/pyserial/pyserial
+	arch = any
+	license = custom:PYTHON
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-pyserial-3.5.tar.gz::https://github.com/pyserial/pyserial/archive/v3.5.tar.gz
+	sha256sums = 81cbbb8147f11cbaefea8bacece25adeffeb2b5503a571e686d4658863fdd6c6
+
+pkgname = python38-pyserial
