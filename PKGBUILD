@@ -1,15 +1,15 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-pkgname=python-flaky
+pkgname=python38-flaky
 pkgver=3.7.0
 pkgrel=7
 pkgdesc='Plugin for nose or py.test that automatically reruns flaky tests'
 arch=('any')
 license=('Apache')
 url='https://github.com/box/flaky'
-depends=('python')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-nose' 'python-genty')
+depends=('python38')
+makedepends=('python38-setuptools')
+checkdepends=('python38-pytest' 'python38-nose' 'python38-genty')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/box/flaky/archive/v$pkgver.tar.gz"
         "update-python-versions.patch::https://github.com/box/flaky/commit/32fd411fc20f4f21e954f06e377d515ae5a233b5.patch")
 sha512sums=('20ec44c721aa68aad07b5669a3b23b7551380ef5cddecf9cc6197bbf78c5b1a823887046394aa6c4a66011e1a31c78b02c3cc89e96775498b600f20211ce7b99'
@@ -29,7 +29,7 @@ check() {
   # Hack entry points by installing it
 
   cd "$srcdir"/flaky-$pkgver
-  python setup.py install --root="$PWD/tmp_install" --optimize=1
+  python3.8 setup.py install --root="$PWD/tmp_install" --optimize=1
   (
     export PYTHONPATH="$PWD/tmp_install/usr/lib/python3.8/site-packages:$PYTHONPATH"
     nosetests3 --with-flaky --exclude="test_nose_options_example" test/test_nose/
@@ -42,7 +42,7 @@ check() {
 
 package() {
   cd "$srcdir"/flaky-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python3.8 setup.py install --root="$pkgdir" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
