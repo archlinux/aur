@@ -5,7 +5,7 @@
 # Contributor: Matthias Sobczyk <matthias.sobczyk@googlemail.com>
 # Contributor: Kamil Kaminski <kyle@kkaminsk.com>
 pkgname=readymedia-transcode-git
-pkgver=735.1bcfcc3
+pkgver=895.e37c92c
 pkgrel=1
 pkgdesc="A DLNA/UPnP-AV Media server with transcode support"
 arch=('i686' 'x86_64')
