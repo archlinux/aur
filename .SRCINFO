@@ -1,0 +1,13 @@
+pkgbase = python38-wcwidth
+	pkgdesc = Measures number of Terminal column cells of wide-character codes
+	pkgver = 0.2.5
+	pkgrel = 6
+	url = https://github.com/jquast/wcwidth
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/w/wcwidth/wcwidth-0.2.5.tar.gz
+	sha256sums = c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83
+
+pkgname = python38-wcwidth
