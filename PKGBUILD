@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-oldest-supported-numpy
 _pyname=${pkgname#python-}
-pkgver=2022.8.16
+pkgver=2022.11.19
 pkgrel=1
 pkgdesc="Meta-package providing oldest supported Numpy for given Python version"
 arch=('any')
@@ -13,19 +13,19 @@ makedepends=('python-setuptools')
 #checkdepends=('python-pytest')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f133166d44c75019f14f70e92e5c9357')
+md5sums=('122014451636fc42711301328dfdd861')
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     #export _npver=$(python -c 'import numpy; print(numpy.__version__)')
-    #sed -i '/'"$(get_pyver)"'/!b;n;c\numpy=='"${_npver}" oldest_supported_numpy.egg-info/requires.txt
-    #sed -i "/$(get_pyver)/s/==.*;/>=${_npver};/" setup.cfg
-    sed -i "/$(get_pyver)/s/==/>=/" setup.cfg
+    #sed -i '/'"$(get_pyver .)"'/!b;n;c\numpy=='"${_npver}" oldest_supported_numpy.egg-info/requires.txt
+    #sed -i "/$(get_pyver .)/s/==.*;/>=${_npver};/" setup.cfg
+    sed -i "/$(get_pyver .)/s/==/>=/" setup.cfg
 }
 
 build() {
