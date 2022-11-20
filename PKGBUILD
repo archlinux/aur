@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python-atomicwrites' 'python-configobj' 'python-ruamel-yaml'
 'python-setuptools' 'python-unidecode' 'python-vobject')
 makedepends=('python-sphinx-autoapi' 'python-sphinx-autodoc-typehints'
-'python-setuptools_scm' 'python-sphinx' 'git')
+'python-setuptools-scm' 'python-sphinx' 'git')
 checkdepends=('python-pytest')
 optdepends=('vdirsyncer: Synchronization of address books with a DAV server'
             'diffutils: Using sdiff_khard_wrapper.sh')

@@ -8,7 +8,7 @@ pkgbase = khard-git
 	checkdepends = python-pytest
 	makedepends = python-sphinx-autoapi
 	makedepends = python-sphinx-autodoc-typehints
-	makedepends = python-setuptools_scm
+	makedepends = python-setuptools-scm
 	makedepends = python-sphinx
 	makedepends = git
 	depends = python-atomicwrites
@@ -25,4 +25,3 @@ pkgbase = khard-git
 	sha512sums = SKIP
 
 pkgname = khard-git
-
