@@ -1,4 +1,4 @@
-pkgbase = inverscsg
+pkgbase = inversecsg
 	pkgdesc = Automatic Conversion of 3D Models to CSG Trees
 	pkgver = r1
 	pkgrel = 1
@@ -35,4 +35,4 @@ pkgbase = inverscsg
 	sha512sums = e6301e41fe2f2482c01e66cb123c3db457c1cfedb8637bb1de09442aa9fad4710f3109fdbd391c2575ec1b7455034916dedab186963fdf76b7490fee8a19ff4f
 	sha512sums = 3462c27e4b9c53f0732b839016fb9fd03759850b83cf69b1709f5588e8b5f5c86462aa7accc9fc6f51559c2966b9bf419107b328ebcf45d687a09e6a685dbe25
 
-pkgname = inverscsg
+pkgname = inversecsg

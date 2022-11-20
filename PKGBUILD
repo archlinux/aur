@@ -1,6 +1,6 @@
 # Maintainer: LuckyturtleDev [aur at lukas1818 dot de]
 
-pkgname=inverscsg
+pkgname=inversecsg
 pkgver=r1
 pkgrel=1
 pkgdesc="Automatic Conversion of 3D Models to CSG Trees"
