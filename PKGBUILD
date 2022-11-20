@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 for target_arch in ${_targets}; do
   pkgname+=("${target_arch}")
-  provides+=("coreboot-toolchain-${target_arch}")
+  provides+=("${pkgbase}-${target_arch}")
 done
 
 
