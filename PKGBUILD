@@ -2,7 +2,7 @@
 
 pkgname=kdeltachat-git
 pkgver=r195.8cce6d2
-pkgrel=1
+pkgrel=2
 pkgdesc="KDeltaChat is a Delta Chat client using Kirigami framework"
 arch=(x86_64 aarch64)
 url="https://git.sr.ht/~link2xt/kdeltachat"
