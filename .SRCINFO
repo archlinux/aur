@@ -1,0 +1,17 @@
+pkgbase = libblkio
+	pkgdesc = High-performance block device I/O library with C API
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/libblkio/libblkio
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	makedepends = python-docutils
+	depends = gcc-libs
+	source = git+https://gitlab.com/libblkio/libblkio.git#commit=c46866ac4825fff96770d4741e3a5d4fa432dd42
+	sha256sums = SKIP
+
+pkgname = libblkio
