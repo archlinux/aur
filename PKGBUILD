@@ -1,4 +1,4 @@
-# Maintainer: matt kasun <matt  at gravil.com>
+# Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=netclient
 pkgver=0.16.3
 pkgrel=1
