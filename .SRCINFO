@@ -1,0 +1,21 @@
+pkgbase = python38-hatchling
+	pkgdesc = A modern project, package, and virtual env manager (backend)
+	pkgver = 1.11.1
+	pkgrel = 2
+	url = https://github.com/pypa/hatch
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	depends = python38-tomli
+	depends = python38-packaging
+	depends = python38-pathspec
+	depends = python38-pluggy
+	depends = python38-editables
+	source = https://github.com/pypa/hatch/archive/refs/tags/hatchling-v1.11.1.tar.gz
+	sha256sums = 614ae622aee0747e0d350e2eedab9bfddb624e03e3f8e5db655af724792eecc1
+
+pkgname = python38-hatchling
