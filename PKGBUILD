@@ -1,10 +1,12 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=txt2epub
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert one or more plain text files into an EPUB document'
-arch=('x86_64')
+arch=('any')
+makedepends=('pcre')
 url='https://github.com/kevinboone/txt2epub'
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
