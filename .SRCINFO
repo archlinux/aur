@@ -1,0 +1,17 @@
+pkgbase = python38-tornado
+	pkgdesc = open source version of the scalable, non-blocking web server and tools
+	pkgver = 6.2.0
+	pkgrel = 2
+	url = https://www.tornadoweb.org/
+	arch = x86_64
+	license = Apache
+	checkdepends = python38-pycurl
+	checkdepends = python38-twisted
+	makedepends = python38-setuptools
+	depends = python38
+	optdepends = python38-pycurl: for tornado.curl_httpclient
+	optdepends = python38-twisted: for tornado.platform.twisted
+	source = python38-tornado-6.2.0.tar.gz::https://github.com/tornadoweb/tornado/archive/v6.2.0.tar.gz
+	sha512sums = b8f98b76198f21bb3a13f44e8698397d7906a415e75621550dfeea8ae3a7e9405f5e314136a93b6714455062501051c145dfd32c71b433715fc8ed591fcb882b
+
+pkgname = python38-tornado
