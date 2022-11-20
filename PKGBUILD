@@ -1,13 +1,15 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+
 _pkgname=Mosca
 pkgname="${_pkgname,,}"
 pkgver=0.96
 _pkgver="${pkgver//.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Manual search tool to find bugs like a grep unix command"
 arch=('any')
 url="https://github.com/CoolerVoid/Mosca/"
 license=('GPL3')
+depends=('pcre')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CoolerVoid/Mosca/archive/refs/tags/${_pkgname}_v${_pkgver}.tar.gz")
