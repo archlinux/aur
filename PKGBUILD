@@ -1,26 +1,34 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='luxtorpeda-git'
 pkgver=60.0.0.r370.2c040cd
-pkgrel=2
+pkgrel=3
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64' 'i686')
 url='https://github.com/luxtorpeda-dev/luxtorpeda'
 license=('GPL2')
 depends=()
-makedepends=('git' 'rust' 'godot' 'clang')
+makedepends=('git' 'rust' 'clang' 'godot-headless-bin')
 optdepends=('steam: The Steam client')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto')
 
-# Godot requires X11 for its builder even with '--no-window' option;
-# if we operate under X11-less environment, we will need to add framebuffer wrapper
-# so that the build can still run correctly
-if [ ! -v DISPLAY ]; then
-  makedepends+=('xorg-server-xvfb')
-  godot_command=('xvfb-run' "--auth-file=$(mktemp -u)" '--error-file=/dev/stderr' 'make')
+# Standard godot requires X11 for building a project even with '--no-window' argument,
+# and to avoid that, we prefer godot-headless package, which specifically avoids that
+# requirement.
+# If regular godot package from Arch repository is preferred, run the build with
+# 'USE_STANDARD_GODOT=1' environment variable; in such case, if it's run on a headless
+# system, an extra make dependency will be pulled to fake the X11 server.
+#
+if [[ -v USE_STANDARD_GODOT ]]; then
+  makedepends[-1]="godot"
+  godot_command=('make' 'GODOT=/usr/bin/godot')
+  if [[ ! -v DISPLAY ]]; then
+    makedepends+=('xorg-server-xvfb')
+    godot_command=('xvfb-run' "--auth-file=$(mktemp -u)" '--error-file=/dev/stderr' "${godot_command[@]}")
+  fi
 else
-  godot_command=('make')
+  godot_command=('make' 'GODOT=/usr/bin/godot-headless')
 fi
 
 source=("git+${url}.git"
@@ -57,14 +65,14 @@ build() {
   # Additionally, if we had to pull the export templates, we remove them
   # afterwards to avoid polluting user directory.
   #
-  godot_version="$(pacman -Qi godot | awk -F " : " '/^Version/ {print $2}' | sed -E 's/-[^-]+$//')"
+  godot_version="$(pacman -Qi "${makedepends[3]}" | awk -F " : " '/^Version/ {print $2}' | sed -E 's/-[^-]+$//')"
   godot_template_dir="${XDG_DATA_HOME:-$HOME/.local/share}/godot/templates/$godot_version.stable"
   godot_download_loc="$srcdir/godot-templates-$godot_version.zip"
 
   if [ -d "$godot_template_dir" ]; then
-    echo "Godot export templates already present, skipping download"
+    echo "Godot export templates v${godot_version} already present, skipping download"
   else
-    echo "No Godot export templates present, downloading..."
+    echo "No Godot export templates v${godot_version} present, downloading..."
 
     echo "Retrieving SHA512 checksum for verification..."
     template_sha512="$(curl -Ss "https://downloads.tuxfamily.org/godotengine/$godot_version/SHA512-SUMS.txt" | awk '/Godot_v'"$godot_version"'-stable_export_templates.tpz$/ {print $1}')  godot-templates-$godot_version.zip"
@@ -80,37 +88,25 @@ build() {
     echo "SHA512 checksums verified"
 
     # Unpack the godot templates into user-local directory
-    (
-      echo "Unpacking export templates into user directory..." &&
-      mkdir -p "$godot_template_dir" &&
-      cd "$godot_template_dir" &&
-      bsdtar -xf "$godot_download_loc" &&
-      mv templates/* . && rmdir templates
-    )
+    echo "Unpacking export templates into user directory..."
+    mkdir -p "$godot_template_dir"
+    cd "$godot_template_dir"
+    bsdtar -xf "$godot_download_loc"
+    mv templates/* . && rmdir templates
   fi
 
-  # Perform build and track what its success/failure is;
-  # if there's a failure, we don't want to raise it until
-  # the temporary export templates have been cleaned up
-  if (
+  # The actual build is run in a sub-shell with a trap set up to remove the temporary export templates.
+  # pacman sets up its own traps for signals and exists, and the sub-shell setup ensures that the clean-up
+  # will happen regardless of what happens during the build process (including user-initiated aborts).
+  (
+    if [ -v template_sha512 ]; then
+      trap -- "echo 'Removing temporary export templates...' && rm -f '$godot_template_dir/'* && rmdir -p --ignore-fail-on-non-empty '$godot_template_dir'" EXIT TERM
+    fi
+
     cd "$srcdir/${pkgname%-git}" &&
     mkdir -p "target/release" &&
-    "${godot_command[@]}" GODOT=/usr/bin/godot luxtorpeda
-  ); then
-    build_exitcode=0
-  else
-    build_exitcode=1
-  fi
-
-  if [ -v template_sha512 ]; then
-    echo "Removing temporary export templates..."
-    rm "$godot_template_dir/"*
-    rmdir -p --ignore-fail-on-non-empty "$godot_template_dir"
-  fi
-
-  if [ "$build_exitcode" -ne 0 ]; then
-    false
-  fi
+    "${godot_command[@]}" luxtorpeda
+  )
 }
 
 check() {
