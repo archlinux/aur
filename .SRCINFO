@@ -1,0 +1,17 @@
+pkgbase = sch-rnd
+	pkgdesc = free/open source, flexible, modular Printed Circuit Board editor
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://www.repo.hu/projects/pcb-rnd/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = librnd3>=3.2.0
+	depends = libxml2
+	optdepends = gd: gd based exports and pixmap imports (png, gif, jpeg)
+	optdepends = freetype2: import_ttf plugin
+	optdepends = fungw
+	source = http://www.repo.hu/projects/sch-rnd/releases/sch-rnd-0.9.3.tar.gz
+	sha256sums = 42445fae1f10a3822e3a6ef9c099c2b5dbf4599eb4cf46b33d9d94816a5d7d01
+
+pkgname = sch-rnd
