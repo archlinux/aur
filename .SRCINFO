@@ -1,0 +1,23 @@
+pkgbase = python38-cliff
+	pkgdesc = Command Line Interface Formulation Framework
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://docs.openstack.org/cliff/latest/
+	arch = any
+	license = Apache
+	checkdepends = python-stestr
+	checkdepends = python38-sphinx
+	checkdepends = python38-testscenarios
+	makedepends = git
+	depends = python38-six
+	depends = python38-cmd2
+	depends = python38-prettytable
+	depends = python38-importlib-metadata
+	depends = python38-stevedore
+	depends = python38-yaml
+	depends = python38-autopage
+	options = !emptydirs
+	source = python38-cliff-4.1.0.tar.gz::https://github.com/openstack/cliff/archive/4.1.0.tar.gz
+	sha512sums = 185ccceddebee30f813dff8d95d46d884a2911249741d4b418cf2112c9d19675d78f94b7b138aa485cb93248296b23b8e2a6d949af4fd0c81eb04704cb5a6c75
+
+pkgname = python38-cliff
