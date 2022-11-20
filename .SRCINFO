@@ -1,11 +1,12 @@
 pkgbase = mingw-w64-waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime (mingw-w64)
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://waffle.freedesktop.org
 	arch = any
 	license = BSD
-	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-meson
+	makedepends = cmake
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
