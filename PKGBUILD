@@ -8,6 +8,7 @@ arch=('any')
 url="http://www.guru-group.fi/~too/nottoomuch/nottoomuch-addresses/"
 license=('GPL')
 depends=('notmuch')
+makedepends=('git')
 source=("git+https://github.com/domo141/${pkgname%-addresses-git}.git")
 sha256sums=('SKIP')
 
