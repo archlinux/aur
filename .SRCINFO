@@ -1,7 +1,7 @@
 pkgbase = readymedia-transcode-git
 	pkgdesc = A DLNA/UPnP-AV Media server with transcode support
 	pkgver = 895.e37c92c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/stativ/readymedia-transcode
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = readymedia-transcode-git
 	source = minidlna.service
 	sha256sums = SKIP
 	sha256sums = 27a04ca6ffcecb998d832d484aa98444b649280658f1ad2db4d87ca6e5aaf0e4
-	sha256sums = 80545d285f2327bd9a0295a90551103579bb8c932a79901d6596f8dea037d95a
-	sha256sums = 4eb142014ea06eaa8717b1886ec1e4f003e45a938e1d13aa76bdcaf3fc5bb31d
+	sha256sums = f1a25ab74d20f080664cb3ef70ac2452c3222ab1422ccc6b9c48bc96a1f09b41
+	sha256sums = a5d95e1ed0b6277fd68f421f5ddc5158fbd615a10dd70c5479535ae39ec9026b
 
 pkgname = readymedia-transcode-git

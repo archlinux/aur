@@ -6,7 +6,7 @@
 # Contributor: Kamil Kaminski <kyle@kkaminsk.com>
 pkgname=readymedia-transcode-git
 pkgver=895.e37c92c
-pkgrel=1
+pkgrel=2
 pkgdesc="A DLNA/UPnP-AV Media server with transcode support"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/stativ/readymedia-transcode"
@@ -23,8 +23,8 @@ source=('readymedia-transcode::git+https://bitbucket.org/stativ/readymedia-trans
         minidlna.rc tmpfiles.conf minidlna.service)
 sha256sums=('SKIP'
             '27a04ca6ffcecb998d832d484aa98444b649280658f1ad2db4d87ca6e5aaf0e4'
-            '80545d285f2327bd9a0295a90551103579bb8c932a79901d6596f8dea037d95a'
-            '4eb142014ea06eaa8717b1886ec1e4f003e45a938e1d13aa76bdcaf3fc5bb31d')
+            'f1a25ab74d20f080664cb3ef70ac2452c3222ab1422ccc6b9c48bc96a1f09b41'
+            'a5d95e1ed0b6277fd68f421f5ddc5158fbd615a10dd70c5479535ae39ec9026b')
 
 pkgver() {
   cd "$srcdir/readymedia-transcode"
