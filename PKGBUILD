@@ -5,14 +5,16 @@
 
 pkgname=waffle
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='https://waffle.freedesktop.org'
 license=('BSD')
 
-depends=('libx11' 'libxcb' 'libudev.so' 'libgl' 'libgles')
-optdepends=('libegl: for gbm, surfaceless, x11_egl or wayland support'
+depends=('libx11' 'libxcb' 'libudev.so')
+optdepends=('libgl: for OpenGL or GLX support'
+            'libgles: for GLES support'
+            'libegl: for gbm, surfaceless, x11_egl or wayland support'
             'mesa: for gbm support'
             'wayland: for wayland support')
 
