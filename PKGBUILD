@@ -9,7 +9,7 @@ pkgver=1.7.0
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
-url='http://www.waffle-gl.org'
+url='https://waffle.freedesktop.org'
 license=('BSD')
 
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-systemd' 'lib32-libgl' 'lib32-libgles' "${_pkgbasename}=${pkgver}")
