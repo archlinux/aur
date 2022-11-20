@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=cemu
-pkgver=2.0.236
+pkgver=2.0.241
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -31,7 +31,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#tag=v2.0-16
+	git+https://github.com/cemu-project/Cemu#tag=v2.0-17
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -39,19 +39,13 @@ source=(
 	# cubeb submodules
 	git+https://github.com/arsenm/sanitizers-cmake#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
-	# backported patches from main
-	fix-range-check.diff # https://github.com/cemu-project/Cemu/commit/57c8dec33589ff46b57041ea1c2cd9b4342e30eb
-	# upstream proposed patches
-	overlay.diff # 402b24ef19f401aef27c37ba580c4efe6e3d0bba (https://github.com/cemu-project/Cemu/pull/480)
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '0887677b0e06999e516e7e3dddb4a7cb4230d2beb2f884592558811bf2ff11a2'
-            'a4272ac6b31216e7226d25abeff8ee89a5551fddf791e2eb811ee2ff492fbfee')
+            'SKIP')
 
 pkgver() {
 	cd Cemu
@@ -92,9 +86,6 @@ prepare() {
 
 	# gamelist column width improvement
 	sed -i '/InsertColumn/s/kListIconWidth/&+8/;/SetColumnWidth/s/last_col_width/&-1/' src/gui/components/wxGameList.cpp
-
-	rm -rf src/util/SystemInfo
-	git apply --whitespace=nowarn "$srcdir/fix-range-check.diff" "$srcdir/overlay.diff"
 }
 
 build() {
