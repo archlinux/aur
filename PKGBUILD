@@ -2,14 +2,14 @@
 
 _pkgname=waylock
 pkgname=${_pkgname}-git
-pkgver=0.3.5.r12.g20be010
+pkgver=0.4.0.r9.g7262210
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ifreund/waylock"
 pkgdesc="A simple screenlocker for Wayland compositors"
 license=('ISC')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'pam' 'pkgconf')
-makedepends=('git' 'zig')
+makedepends=('git' 'zig' 'scdoc')
 provides=('waylock')
 conflicts=('waylock')
 source=(
@@ -32,9 +32,9 @@ prepare() {
     cd "$_pkgname"
     git submodule init
     for dep in wayland xkbcommon; do
-        git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
+        git config "submodule.externals/vendor/zig-${dep}.url" "$srcdir/zig-${dep}"
     done
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 package() {

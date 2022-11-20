@@ -1,12 +1,13 @@
 pkgbase = waylock-git
 	pkgdesc = A simple screenlocker for Wayland compositors
-	pkgver = 0.3.5.r12.g20be010
+	pkgver = 0.4.0.r9.g7262210
 	pkgrel = 1
 	url = https://github.com/ifreund/waylock
 	arch = x86_64
 	license = ISC
 	makedepends = git
 	makedepends = zig
+	makedepends = scdoc
 	depends = wayland
 	depends = wayland-protocols
 	depends = libxkbcommon
