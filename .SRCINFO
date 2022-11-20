@@ -1,0 +1,19 @@
+pkgbase = python38-libcst
+	pkgdesc = A concrete syntax tree parser and serializer library for Python that preserves many aspects of Python's abstract syntax tree
+	pkgver = 0.3.20
+	pkgrel = 4
+	url = https://github.com/Instagram/LibCST
+	arch = any
+	license = MIT
+	checkdepends = python38-hypothesis
+	checkdepends = python38-hypothesmith
+	makedepends = python38-setuptools
+	makedepends = python38-isort
+	makedepends = python38-black
+	depends = python38-typing_extensions
+	depends = python38-typing_inspect
+	depends = python38-yaml
+	source = python38-libcst-0.3.20.tar.gz::https://github.com/Instagram/LibCST/archive/v0.3.20.tar.gz
+	sha512sums = 03920d896850a228c3e48d9eb6256d6e781829965a6ccc4a8d9051ea8ad21a86c25b95cb4aef03b0fd3bd8d45694398dd7e30aeefc9d1b530747ee85ba73861f
+
+pkgname = python38-libcst
