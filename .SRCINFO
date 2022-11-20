@@ -1,0 +1,13 @@
+pkgbase = python38-zope-event
+	pkgdesc = Provides a simple event system
+	pkgver = 4.5.0
+	pkgrel = 6
+	url = https://github.com/zopefoundation/zope.event
+	arch = any
+	license = ZPL
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/zopefoundation/zope.event/archive/4.5.0.tar.gz
+	sha512sums = 2414a283988dc646e48153e389688b8eec4db528f7ac9ff45f982ce42295d390985825ac0f9db566fc5600fe4c96a8297a9c5718a16abc6d1831c72ee42c163d
+
+pkgname = python38-zope-event
