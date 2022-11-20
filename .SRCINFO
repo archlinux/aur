@@ -1,0 +1,15 @@
+pkgbase = python38-pyrsistent
+	pkgdesc = Persistent/Functional/Immutable data structures
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://github.com/tobgu/pyrsistent
+	arch = x86_64
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-hypothesis
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/tobgu/pyrsistent/archive/v0.19.2/python38-pyrsistent-0.19.2.tar.gz
+	sha512sums = 1b954e2621ffad03a8885abf69673d842669c0f69f26f33ef02353b7eb46dd966c8d56b208cbc9de3ed197218ef578221bb5bc389b14db7321224e7a21515f7e
+
+pkgname = python38-pyrsistent
