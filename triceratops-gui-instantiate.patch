@@ -1,0 +1,13 @@
+diff --git a/triceratops_gui.cpp b/triceratops_gui.cpp
+index d91d3ff..5374164 100755
+--- a/triceratops_gui.cpp
++++ b/triceratops_gui.cpp
+@@ -312,7 +312,7 @@ static GtkWidget* make_gui(triceratopsGUI *self) {
+ }
+ 
+ 
+-static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
++static LV2UI_Handle instantiate(const struct LV2UI_Descriptor * descriptor,
+                 const char * plugin_uri,
+                 const char * bundle_path,
+                 LV2UI_Write_Function write_function,

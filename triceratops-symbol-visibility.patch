@@ -1,0 +1,14 @@
+diff --git a/wscript b/wscript
+index a8f4f22..a38d638 100644
+--- a/wscript
++++ b/wscript
+@@ -27,7 +27,8 @@ def configure(conf):
+     if conf.env['MSVC_COMPILER']:
+         conf.env.append_unique('CXXFLAGS', ['-TP', '-MD', '-g'])
+     else:
+-        conf.env.append_unique('CXXFLAGS', ['-O2','-funroll-loops','-std=c++0x','-g'])
++        conf.env.append_unique('CXXFLAGS',
++            ['-O2', '-funroll-loops', '-fvisibility=hidden', '-std=c++0x', '-g'])
+ 
+     if sys.maxsize >= 9223372036854775807:
+         print("detected 64 bit architecture, enabling -fPIC")

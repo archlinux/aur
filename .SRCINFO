@@ -1,7 +1,7 @@
 pkgbase = triceratops
 	pkgdesc = Polyphonic synthesizer LV2 plugin
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/triceratops/
 	arch = aarch64
 	arch = x86_64
@@ -16,8 +16,14 @@ pkgbase = triceratops
 	provides = triceratops.lv2
 	conflicts = triceratops.lv2
 	source = https://downloads.sourceforge.net/project/triceratops/triceratops_v0.5.0_Oct_2022.tar.gz
+	source = triceratops-gui-instantiate.patch
+	source = triceratops-remove-printf.patch
+	source = triceratops-symbol-visibility.patch
 	source = triceratops-ttl.patch
 	sha256sums = 93b2d74bb611fc3a26c2060ba678656b89d7ddba5b9e31e27a5758ec9924596e
+	sha256sums = c2442694fbde36782d419e5d2e6c61b9b61eaaa4f464e7b3895a555c731ad9fc
+	sha256sums = 316e46bfe6c18aa2032fd66fa9a95b32a8b657a8e4b0b3c77246d44942bc8e75
+	sha256sums = 7f993a07d1e32876e49f2477b17c2349e886864ae694d0035f4e000f53d1cc9d
 	sha256sums = 1083b10d0a004b3dd39afe37f6385d815e7cfdd26078aa7bcf85e2fc24afc262
 
 pkgname = triceratops
