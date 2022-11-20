@@ -12,10 +12,10 @@ pkgname="elexis-base"
 pkgver="3.9"
 pkgrel="1"
 pkgdesc="Plugins for Elexis."
-arch=("x86_64")
+arch=("any")
 url="https://github.com/elexis/${_pkgname}"
 license=("EPL")
-depends=("alsa-lib" "at-spi2-core" "dbus-glib" "freetype2" "java-runtime" "libcups" "libnet" "libxcomposite" "libxkbcommon" "libxrandr" "mesa" "nss")
+depends=("java-runtime>=11" "java-runtime<=17")
 makedepends=("git" "java-environment>=11" "java-environment<=17" "maven")
 # The git repository is needed for the build.
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
@@ -35,7 +35,6 @@ package()
 
     # Install the software.
     cp -r "${srcdir}"/"${pkgname}"/ch.elexis.base.p2site/target/repository/* "${pkgdir}"/usr/share/java/"${pkgname}"/
-    ln -s /usr/share/java/"${pkgname}"/Elexis3 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"/readme.textile "${pkgdir}"/usr/share/doc/"${pkgname}"/
