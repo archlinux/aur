@@ -1,0 +1,15 @@
+pkgbase = python38-webencodings
+	pkgdesc = This is a Python implementation of the WHATWG Encoding standard.
+	pkgver = 0.5.1
+	pkgrel = 9
+	url = https://github.com/gsnedders/python-webencodings
+	arch = any
+	license = BSD
+	checkdepends = python38-nose
+	makedepends = python38
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-webencodings-0.5.1.tar.gz::https://github.com/gsnedders/python-webencodings/archive/v0.5.1.tar.gz
+	sha256sums = 082367f568a7812aa5f6922ffe3d9d027cd83829dc32bcaac4c874eeed618000
+
+pkgname = python38-webencodings
