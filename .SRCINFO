@@ -1,6 +1,6 @@
 pkgbase = local-arch-wiki
 	pkgdesc = An offline version of arch linux wiki.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/whoisyoges/local-arch-wiki
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = local-arch-wiki
 	optdepends = rofi
 	optdepends = firefox
 	optdepends = xdg-utils
-	optdepends = notify-send
+	optdepends = libnotify
 	source = local-arch-wiki::git+https://github.com/whoisyoges/local-arch-wiki
 	sha256sums = SKIP
 
