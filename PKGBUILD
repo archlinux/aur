@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bodky <dbodky at gmail dot com>
 pkgname=acorn-cli
 pkgver="v0.4.0"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple application deployment framework for Kubernetes"
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("acorn-$pkgver::git+https://github.com/acorn-io/acorn#branch=release-$pkgver")
+source=("acorn-$pkgver::git+https://github.com/acorn-io/acorn#tag=$pkgver")
 noextract=()
 sha256sums=("SKIP")
 validpgpkeys=()
