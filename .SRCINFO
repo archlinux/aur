@@ -1,0 +1,13 @@
+pkgbase = python38-mypy_extensions
+	pkgdesc = Experimental type system extensions for programs checked with the mypy typechecker
+	pkgver = 0.4.3
+	pkgrel = 5
+	url = http://www.mypy-lang.org/
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-mypy_extensions-0.4.3.tar.gz::https://pypi.org/packages/source/m/mypy_extensions/mypy_extensions-0.4.3.tar.gz
+	sha256sums = 2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8
+
+pkgname = python38-mypy_extensions
