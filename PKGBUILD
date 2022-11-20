@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('libxml2')
-makedepends=('byacc')
+makedepends=('byacc' 'inetutils')
 
 source=("http://tiptop.gforge.inria.fr/releases/tiptop-$pkgver.tar.gz")
 
