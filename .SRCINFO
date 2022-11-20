@@ -1,0 +1,16 @@
+pkgbase = python38-elementpath
+	pkgdesc = XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/sissaschool/elementpath
+	arch = any
+	license = MIT
+	checkdepends = python38-lxml
+	checkdepends = python38-pytest
+	checkdepends = python38-xmlschema
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-elementpath-3.0.2.tar.gz::https://github.com/sissaschool/elementpath/archive/v3.0.2.tar.gz
+	sha512sums = 46392cece136bd6e73285333b14a00ebbebcca70c7df42cd04021225207593ef33337fd468c12f089030f2a8adc1251660ebf762aa17f82b2f26ba902d6e89d2
+
+pkgname = python38-elementpath
