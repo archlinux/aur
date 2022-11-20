@@ -1,0 +1,20 @@
+pkgbase = python38-pyperclip
+	pkgdesc = A cross-platform clipboard module for Python
+	pkgver = 1.8.2
+	pkgrel = 4
+	url = https://github.com/asweigart/pyperclip
+	arch = any
+	license = BSD
+	checkdepends = xorg-server-xvfb
+	checkdepends = python38-pytest
+	checkdepends = xsel
+	checkdepends = xclip
+	makedepends = python38-setuptools
+	depends = python38
+	optdepends = xclip: xclip backend
+	optdepends = xsel: xsel backend
+	optdepends = plasma-workspace: klipper backend
+	source = python38-pyperclip-714be1f3f8e5bb289bbd77aa83be212d660f3cb0.tar.gz::https://github.com/asweigart/pyperclip/archive/714be1f3f8e5bb289bbd77aa83be212d660f3cb0.tar.gz
+	sha512sums = 616619dbbfec3e28f4bc86ef9088df0b77b32f6183f42689c23f6a43a5e905ea0c6e939237fe905c62e4ed46e4fd029d512c43fb99549252b8841dc6eb811ec4
+
+pkgname = python38-pyperclip
