@@ -1,0 +1,14 @@
+diff --git a/main.py b/main_new.py
+index 5435dc7..4d34981 100644
+--- a/main.py
++++ b/main_new.py
+@@ -18,8 +18,7 @@ parser.add_argument('--initsample', help='number of initial samples sent to' \
+                     'sketch', default=1000)
+ parser.add_argument('--max_iter', help='max number of iterations used by ' \
+                     'sketch to solve each part', default=10)
+-parser.add_argument('--mesh', help='location of the .off file',
+-                    default='example/one_cube/csg.off')
++parser.add_argument('mesh', help='location of the .off file')
+ parser.add_argument('--method', help='choose "sketch" or "genetic"',
+                     default='sketch')
+ parser.add_argument('--outdir', help='a folder to store all results',

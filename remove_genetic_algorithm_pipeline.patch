@@ -1,0 +1,22 @@
+diff --git a/main.py b/main_new.py
+index 8a96808..5492280 100644
+--- a/main.py
++++ b/main_new.py
+@@ -5,7 +5,6 @@ import sys
+ 
+ import helper
+ import sketch_pipeline
+-import genetic_algorithm_pipeline
+ 
+ # Parse input arguments.
+ parser = argparse.ArgumentParser()
+@@ -46,8 +45,7 @@ if __name__ == '__main__':
+     sketch_pipeline.SetupSketchPipeline(args)
+     sketch_pipeline.RunSketchPipeline()
+   elif args.method == 'genetic':
+-    genetic_algorithm_pipeline.SetupGeneticAlgorithmPipeline(args)
+-    genetic_algorithm_pipeline.RunGeneticAlgorithmPipeline()
++    raise NotImplementedError('genetic_algorithm not supported!')
+   else:
+     helper.PrintWithRedColor('Invalid method: %s' % method)
+     sys.exit(-1)

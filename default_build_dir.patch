@@ -1,0 +1,13 @@
+diff --git a/main.py b/main_new.py
+index 5435dc7..636e090 100644
+--- a/main.py
++++ b/main_new.py
+@@ -10,7 +10,7 @@ import genetic_algorithm_pipeline
+ parser = argparse.ArgumentParser()
+ parser.add_argument('--builddir',
+                     help='same as the build folder used in install.py',
+-                    default='../build/')
++                    default='/opt/inverscsg/')
+ parser.add_argument('--countersample', help='number of counter samples at '
+                     'each iteration. Used by sketch only', default=100)
+ parser.add_argument('--eps', help='minimum distance to mesh', default='0.01')

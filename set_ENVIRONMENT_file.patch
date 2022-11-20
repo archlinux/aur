@@ -1,0 +1,13 @@
+diff --git a/main.py b/main_new.py
+index 8a96808..b79194e 100644
+--- a/main.py
++++ b/main_new.py
+@@ -35,7 +35,7 @@ parser.add_argument('--volumedensity', help='number of samples in unit ' \
+ args = parser.parse_args()
+ 
+ # Load environment variables.
+-env_file = os.path.join(os.path.realpath(args.builddir), 'ENVIRONMENT')
++env_file = '/opt/inverscsg/ENVIRONMENT'
+ for line in open(env_file):
+   if '#' not in line:
+     key, value = line.strip().split()
