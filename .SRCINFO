@@ -1,0 +1,14 @@
+pkgbase = python38-sybil
+	pkgdesc = Automated testing for the examples in your documentation.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/cjw296/sybil
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/cjw296/sybil/archive/3.0.1/python38-sybil-3.0.1.tar.gz
+	sha512sums = 293978eae4a7b2b24f64f062bea79837b15c11dc44716b933f82cae3ed9cf1f306c8c74bba76df2653c3a0d5b7ed5977795e261c8650e07a5b03b41874c88d89
+
+pkgname = python38-sybil
