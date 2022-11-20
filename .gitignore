@@ -1,6 +1,4 @@
-src/
 pkg/
-sfzlint-*.tar.gz
-sfzlint-*.pkg.tar.xz
-sfzlint-*.pkg.tar.zst
-sfzlint-*.src.tar.gz
+src/
+*.tar.*
+*.zip
