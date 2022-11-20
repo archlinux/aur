@@ -1,0 +1,17 @@
+pkgbase = python38-lupa
+	pkgdesc = Python wrapper around Lua and LuaJIT
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://github.com/scoder/lupa
+	arch = x86_64
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = lua
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/l/lupa/lupa-1.13.tar.gz
+	sha256sums = e1d94ac2a630d271027dac2c21d1428771d9ea9d4d88f15f20a7781340f02a4e
+
+pkgname = python38-lupa
