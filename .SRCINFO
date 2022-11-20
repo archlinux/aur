@@ -1,0 +1,18 @@
+pkgbase = python38-tomlkit
+	pkgdesc = Style-preserving TOML library for Python
+	pkgver = 0.11.6
+	pkgrel = 1
+	url = https://github.com/sdispater/tomlkit
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-yaml
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	makedepends = python38-wheel
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/t/tomlkit/tomlkit-0.11.6.tar.gz
+	sha512sums = 692f2facb18440609b63995f690f4ba29e82d696f5ce612f872499b4a42bb0ab33fcbf52abf36057c25448b3e29f30955dbc7e0ba34f10d21cb9b5d36e9ad9bf
+
+pkgname = python38-tomlkit
