@@ -1,0 +1,15 @@
+pkgbase = python38-tblib
+	pkgdesc = Python traceback fiddling library
+	pkgver = 1.7.0
+	pkgrel = 5
+	url = https://github.com/ionelmc/python-tblib
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	makedepends = python38-six
+	depends = python38-six
+	source = https://github.com/ionelmc/python-tblib/archive/v1.7.0/python38-tblib-1.7.0.tar.gz
+	sha512sums = 14745af9647262c4569ae578e2bd439b4fbc430735449bf3c4dbc99c6dd39706725ddbf5b6d6e078eee34f0ccb5d9a5f5143d133a2a0b171afa6975e21c30999
+	b2sums = edbd9e475304b6486072ef86147a65c0a8f540dc821a0f7e8babd72386276246b64d3d04f4fbb89edb34164965746e999694fba5d5b65f71b8ce3e8cfddb0add
+
+pkgname = python38-tblib
