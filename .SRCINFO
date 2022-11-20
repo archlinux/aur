@@ -1,11 +1,12 @@
 pkgbase = gog-stardew-valley
 	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.
 	pkgver = 1.5.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://stardewvalley.net/
 	arch = x86_64
 	license = custom
+	depends = openssl-1.1
 	options = !strip
 	options = staticlibs
 	source = gog-stardew-valley

@@ -1,9 +1,10 @@
 # Contributor: Rafael Silva <perigoso@riseup.net>
 # Contributor: Dan Beste <drb@wishalloy.io>
+# Contributor: Alastair Hughes
 
 pkgname='gog-stardew-valley'
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 # Fix upstream versioning shenanigans:
 epoch=1
 pkgdesc="You’ve inherited your grandfather’s old farm plot in Stardew Valley.
@@ -12,6 +13,7 @@ life."
 url='http://stardewvalley.net/'
 license=('custom')
 arch=('x86_64')
+depends=('openssl-1.1')
 options=('!strip' 'staticlibs')
 source=(
   "${pkgname}"
