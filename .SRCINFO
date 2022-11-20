@@ -1,0 +1,13 @@
+pkgbase = python38-pytest-subtests
+	pkgdesc = unittest subTest() support and subtests fixture
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-subtests
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools-scm
+	depends = python38-pytest
+	source = https://github.com/pytest-dev/pytest-subtests/archive/0.9.0/python38-pytest-subtests-0.9.0.tar.gz
+	sha512sums = f1bc2b99e6f04864cdc45675574d32821fd5e08c01c937bddc846ac509cd8906d21ee63b11e9e8a87c2631334541e9adc601a7dd69702572d51c3d4b72443ad2
+
+pkgname = python38-pytest-subtests
