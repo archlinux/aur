@@ -5,7 +5,7 @@
 
 pkgname=waffle
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='https://waffle.freedesktop.org'
@@ -29,21 +29,16 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D')
 build() {
   arch-meson "$pkgname-$pkgver" build \
     --buildtype release \
-    -D gbm=enabled \
-    -D glx=enabled \
-    -D surfaceless_egl=enabled \
-    -D x11_egl=enabled \
-    -D wayland=enabled \
     -D build-manpages=true \
     -D build-htmldocs=true \
     -D build-examples=false
 
-  meson configure build
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
+
   install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
