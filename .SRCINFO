@@ -1,0 +1,13 @@
+pkgbase = python38-profilestats
+	pkgdesc = Decorator for profiling individual functions and converting profiling data to the kcachegrind/qcachegrind format.
+	pkgver = 2.0
+	pkgrel = 11
+	url = https://github.com/hannosch/profilestats
+	arch = any
+	license = BSD
+	depends = python38-setuptools
+	depends = pyprof2calltree
+	source = https://github.com/hannosch/profilestats/archive/2.0/python38-profilestats-2.0.tar.gz
+	sha512sums = 918d23df8f076dc6b0be0dc70e8899f638d6a911472193624e6a7594a1b1c82975f0090dddbcdadcb0c6a0c11b2bb6f22fad11561322cdf962c719854663b23a
+
+pkgname = python38-profilestats
