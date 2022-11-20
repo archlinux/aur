@@ -1,0 +1,13 @@
+pkgbase = python38-rsa
+	pkgdesc = Pure-Python RSA implementation
+	pkgver = 4.9
+	pkgrel = 1
+	url = https://github.com/sybrenstuvel/python-rsa/
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38-pyasn1
+	source = https://files.pythonhosted.org/packages/source/r/rsa/rsa-4.9.tar.gz
+	sha256sums = e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21
+
+pkgname = python38-rsa
