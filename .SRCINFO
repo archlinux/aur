@@ -1,19 +1,19 @@
 pkgbase = system-monitoring-center
 	pkgdesc = Multi-featured system monitor.
-	pkgver = 1.33.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = dmidecode
-	depends = gtk3
+	depends = gtk4
 	depends = iproute2
 	depends = polkit
 	depends = python-cairo
 	depends = python-gobject
 	depends = util-linux
-	source = system-monitoring-center-1.33.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v1.33.0.tar.gz
-	sha256sums = c4d8b5f6fb6deeb98ae66bcfca0111e38f531bc92b4f975c3263f37ff92be8f8
+	source = system-monitoring-center-2.0.1.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 0c42780a796a7e019b99fedafd5e7c40c29fcdc774173a92b6826ca5ee59f485
 
 pkgname = system-monitoring-center
