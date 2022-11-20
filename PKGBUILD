@@ -18,8 +18,8 @@ source=("git+https://review.coreboot.org/coreboot#commit=${_commit}")
 sha256sums=('SKIP')
 
 
-for target_arch in ${_targets}; do
-  pkgname+=("${pkgbase}-${target_arch}")
+for target in ${_targets}; do
+  pkgname+=("${pkgbase}-${target}")
 done
 
 
@@ -30,19 +30,19 @@ build() {
   export CFLAGS=${CFLAGS/-Werror=format-security/}
   export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  for target_arch in ${_targets}; do
-    make crossgcc-${target_arch} CPUS=$(nproc) DEST="${srcdir}/${target_arch}"
+  for target in ${_targets}; do
+    make crossgcc-${target} CPUS=$(nproc) DEST="${srcdir}/${target}"
   done
 }
 
 do_package() {
-  target_arch="$(echo ${pkgname} | cut -d '-' -f 3)"
-  pkgdesc+="${target_arch}"
+  target="$(echo ${pkgname} | cut -d '-' -f 3)"
+  pkgdesc+="${target}"
   
-  toolchain_dir="usr/${target_arch}-coreboot-gnu"
+  toolchain_dir="usr/${target}-coreboot-gnu"
   dest_path="${pkgdir}/${toolchain_dir}"
   mkdir -p ${dest_path}
-  mv ${srcdir}/${target_arch}/* "${dest_path}"
+  mv ${srcdir}/${target}/* "${dest_path}"
 }
 
 package_coreboot-toolchain-i386() {
