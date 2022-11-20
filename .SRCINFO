@@ -1,0 +1,14 @@
+pkgbase = python38-voluptuous
+	pkgdesc = A Python 3.8 data validation library
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/alecthomas/voluptuous
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/alecthomas/voluptuous/archive/refs/tags/0.13.1/python38-voluptuous-0.13.1.tar.gz
+	sha512sums = 874960bdd3fce213e46f8017fbc56ede02133de6f8cb439d810db38ca06d9c5fcf5496150ef4c73fd19d9e06489ba08a510fd96aa16b8825564a52fd01cc3f4f
+
+pkgname = python38-voluptuous
