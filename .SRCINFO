@@ -1,0 +1,13 @@
+pkgbase = python38-protobuf
+	pkgdesc = Python 3 bindings to Google Protocol Buffers
+	pkgver = 3.0.0b2.post2
+	pkgrel = 2
+	url = https://github.com/google/protobuf
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.python.org/packages/source/p/protobuf/protobuf-3.0.0b2.post2.tar.gz
+	sha256sums = 37127b74dd673f3815e24f8c1c62df25879da508e22537d5603603658f99b229
+
+pkgname = python38-protobuf

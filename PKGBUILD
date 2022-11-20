@@ -1,0 +1,27 @@
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+_pkgname=protobuf
+pkgname=python38-$_pkgname
+pkgver=3.0.0b2.post2
+pkgrel=2
+pkgdesc="Python 3 bindings to Google Protocol Buffers"
+arch=("any")
+license=("BSD")
+url="https://github.com/google/protobuf"
+depends=("python38")
+makedepends=("python38-setuptools")
+source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=("37127b74dd673f3815e24f8c1c62df25879da508e22537d5603603658f99b229")
+
+
+build() {
+	cd "$srcdir/$_pkgname-$pkgver"
+	python3.8 ./setup.py build
+}
+
+package() {
+	cd "$srcdir/$_pkgname-$pkgver"
+	python3.8 ./setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	# https://github.com/google/protobuf/issues/737
+	chmod -R a+r "$pkgdir"/usr/lib/python3.8/site-packages/protobuf-$pkgver-py3.5.egg-info/
+}
