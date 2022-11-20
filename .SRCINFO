@@ -1,0 +1,14 @@
+pkgbase = python38-pytest-mock
+	pkgdesc = Thin-wrapper around the mock package for easier use with py.test
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-mock/
+	arch = any
+	license = LGPL3
+	checkdepends = python38-pytest-asyncio
+	makedepends = python38-setuptools-scm
+	depends = python38-pytest
+	source = https://github.com/pytest-dev/pytest-mock/archive/v3.10.0/python38-pytest-mock-3.10.0.tar.gz
+	sha512sums = 50dbee13203bec24510a40d3e6dc1be29d1d12a342714f7b9fcd3d2be57b4f495eebb9b6330304e55a59a3515aa039143ab83c40b183a886a4068ae8e7456648
+
+pkgname = python38-pytest-mock
