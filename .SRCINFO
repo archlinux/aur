@@ -1,0 +1,16 @@
+pkgbase = python38-hatch-fancy-pypi-readme
+	pkgdesc = Fancy PyPI READMEs with Hatch
+	pkgver = 22.8.0
+	pkgrel = 1
+	url = https://github.com/hynek/hatch-fancy-pypi-readme
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-wheel
+	makedepends = python38-build
+	makedepends = python38-installer
+	depends = python38-hatchling
+	source = https://github.com/hynek/hatch-fancy-pypi-readme/archive/22.8.0/python38-hatch-fancy-pypi-readme-22.8.0.tar.gz
+	sha256sums = 4563ec6793d10b076f6f2e5a4ab576b6005ac0ed15b5ed108b62901e82880685
+
+pkgname = python38-hatch-fancy-pypi-readme
