@@ -2,13 +2,15 @@
 
 _pkgname=rssnix
 pkgname=${_pkgname}-git
-pkgver=r23.b413bdd
+pkgver=r26.b2e2135
 pkgrel=1
 pkgdesc="Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader"
 arch=('any')
 url="https://github.com/jafarlihi/rssnix"
 license=('MIT')
 makedepends=('git' 'go')
+optdepends=('vim: default viewer'
+						'ranger: enhanced viewer')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(git+${url}.git)
