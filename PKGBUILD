@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=avml
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A portable volatile memory acquisition tool for Linux'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/microsoft/avml'
 license=('MIT')
 makedepends=('musl' 'rust-musl')
 source=("https://github.com/microsoft/avml/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9dad3dc7993431308e734950ca993c9dd76640f6925fcb72d19dbde0680b13cc')
+sha256sums=('bbed986ade68a6930063e0bb4404c11f7be484b076669c68be750f9ac4fdd0c8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
