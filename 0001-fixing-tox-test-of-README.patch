@@ -1,0 +1,140 @@
+From bedd5b5f86abe12fe2754a78271b4547d1315c5d Mon Sep 17 00:00:00 2001
+From: AlexV <asmodehn@gmail.com>
+Date: Sun, 16 Sep 2018 15:27:41 +0100
+Subject: [PATCH] fixing tox test of README.
+
+(cherry picked from commit a70f208959542cfb5e599d41cdc16da510179a55)
+[drop unrelated, non-mergeable changes for stable release -- Eli Schwartz]
+---
+ README.rst | 31 ++++++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 11 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 49173a8..39663aa 100644
+--- a/README.rst
++++ b/README.rst
+@@ -41,6 +41,9 @@ functionality except support for "async def" functions.
+ 
+ Preconditions and Postconditions
+ ================================
++
++    >>> from dpcontracts import require, ensure
++
+ Contracts on functions consist of preconditions and postconditions.
+ A precondition is declared using the `requires` decorator, and describes
+ what must be true upon entrance to the function. The condition function
+@@ -67,7 +70,7 @@ with a PreconditionError (a subtype of AssertionError):
+ 
+     >>> add2("foo", 2)
+     Traceback (most recent call last):
+-    PreconditionError: `i` must be an integer
++    dpcontracts.PreconditionError: `i` must be an integer
+ 
+ Functions can also have postconditions, specified using the `ensure`
+ decorator.  Postconditions describe what must be true after the function
+@@ -95,7 +98,7 @@ Except that the function is broken in unexpected ways:
+ 
+     >>> add2(7, 4)
+     Traceback (most recent call last):
+-    PostconditionError: the result must be greater than either `i` or `j`
++    dpcontracts.PostconditionError: the result must be greater than either `i` or `j`
+ 
+ The function specifying the condition doesn't have to be a lambda; it can be
+ any function, and pre- and postconditions don't have to actually reference
+@@ -118,10 +121,10 @@ the function's environments and effects:
+     >>> add_to_database("Marvin")
+     >>> add_to_database("Marvin")
+     Traceback (most recent call last):
+-    PreconditionError: `name` must not already be in the database
++    dpcontracts.PreconditionError: `name` must not already be in the database
+     >>> add_to_database("Rob")
+     Traceback (most recent call last):
+-    PostconditionError: the normalized version of the name must be added to the database
++    dpcontracts.PostconditionError: the normalized version of the name must be added to the database
+ 
+ All of the various calling conventions of Python are supported:
+ 
+@@ -146,6 +149,8 @@ A common contract is to validate the types of arguments. To that end,
+ there is an additional decorator, `types`, that can be used
+ to validate arguments' types:
+ 
++    >>> from dpcontracts import types
++
+     >>> class ExampleClass:
+     ...     pass
+ 
+@@ -159,11 +164,11 @@ to validate arguments' types:
+ 
+     >>> func(1.0, "foo", ExampleClass) # invalid type for `a`
+     Traceback (most recent call last):
+-    PreconditionError: the types of arguments must be valid
++    dpcontracts.PreconditionError: the types of arguments must be valid
+ 
+     >>> func(1, "foo") # invalid type (the default) for `c`
+     Traceback (most recent call last):
+-    PreconditionError: the types of arguments must be valid
++    dpcontracts.PreconditionError: the types of arguments must be valid
+ 
+ Contracts on Classes
+ ====================
+@@ -181,7 +186,7 @@ not just bare functions:
+ 
+     >>> foo = Foo("")
+     Traceback (most recent call last):
+-    PreconditionError: `name` should be nonempty
++    dpcontracts.PreconditionError: `name` should be nonempty
+ 
+ Classes may also have an additional sort of contract specified over them:
+ the invariant.  An invariant, created using the `invariant` decorator,
+@@ -190,6 +195,8 @@ In this case, "always" means "before invocation of any method and after
+ its return" -- methods are allowed to violate invariants so long as they
+ are restored prior to return.
+ 
++    >>> from dpcontracts import invariant
++
+ Invariant contracts are passed a single variable, a reference to the
+ instance of the class. For example:
+ 
+@@ -222,11 +229,11 @@ instance of the class. For example:
+     >>> nl.pop()
+     >>> nl.pop()
+     Traceback (most recent call last):
+-    PostconditionError: inner list can never be empty
++    dpcontracts.PostconditionError: inner list can never be empty
+ 
+     >>> nl = NonemptyList(["a", "b", "c"])
+     Traceback (most recent call last):
+-    PostconditionError: inner list must consist only of integers
++    dpcontracts.PostconditionError: inner list must consist only of integers
+ 
+ Violations of invariants are ignored in the following situations:
+ 
+@@ -265,7 +272,7 @@ For example:
+     >>> x.break_everything()
+     >>> x.get_always()
+     Traceback (most recent call last):
+-    PreconditionError: `always` should be True
++    dpcontracts.PreconditionError: `always` should be True
+ 
+ Also note that if a method invokes another method on the same object,
+ all of the invariants will be tested again:
+@@ -295,7 +302,7 @@ This works well in most situations:
+     6
+     >>> my_func([0, -1, 2])
+     Traceback (most recent call last):
+-    PreconditionError: every item in `l` must be > 0
++    dpcontracts.PreconditionError: every item in `l` must be > 0
+ 
+ But it fails in the case of a generator:
+ 
+@@ -319,6 +326,8 @@ We get around that limitation here using an additional decorator, called
+ `transform` that transforms the arguments to a function, and a function
+ called `rewrite` that rewrites argument tuples.
+ 
++    >>> from dpcontracts import transform, rewrite
++
+ For example:
+ 
+     >>> @transform(lambda args: rewrite(args, l=list(args.l)))
+-- 
+2.27.0
