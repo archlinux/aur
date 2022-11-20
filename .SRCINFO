@@ -1,0 +1,18 @@
+pkgbase = python38-testtools
+	pkgdesc = Extensions to the Python standard library unit testing framework
+	pkgver = 2.5.0
+	pkgrel = 3
+	url = https://github.com/testing-cabal/testtools
+	arch = any
+	license = MIT
+	checkdepends = python38-testscenarios
+	makedepends = python38-setuptools
+	depends = python38-pbr
+	depends = python38-extras
+	depends = python38-fixtures
+	source = https://github.com/testing-cabal/testtools/archive/2.5.0/python38-testtools-2.5.0.tar.gz
+	source = python38-testtools-python38.patch::https://github.com/testing-cabal/testtools/commit/ec9bb7ed0265.patch
+	sha512sums = 81e2a31f34461aefa52a553966deb979e2cc8632c0fe2b87640925958d403598e45a3a16eb35d583894fac507670b349cebae002ae5376185e86032ebfb5da80
+	sha512sums = d1e9763a3fa5ef66666f28687e5c798c2d92c6eb73f702f216b125ef15f5eb10e100da8836e81a6dc0748f1cb8887c92647a29f0e615413d5c371653910f0573
+
+pkgname = python38-testtools
