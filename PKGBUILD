@@ -6,7 +6,7 @@
 _name=PyPDF2
 pkgname=python-pypdf2
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for splitting, merging, cropping, and transforming pages of PDF files'
 arch=(any)
 url="https://github.com/py-pdf/$_name"
