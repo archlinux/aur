@@ -1,0 +1,16 @@
+pkgbase = python38-pytest-timeout
+	pkgdesc = py.test plugin to abort hanging tests
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-timeout
+	arch = any
+	license = MIT
+	checkdepends = python38-pexpect
+	checkdepends = python38-pytest-cov
+	makedepends = python38-setuptools
+	makedepends = python38-pytest
+	depends = python38-pytest
+	source = https://github.com/pytest-dev/pytest-timeout/archive/2.1.0/python38-pytest-timeout-2.1.0.tar.gz
+	sha512sums = 4897c111a0b0ae1287cbc3d9d641fd0908a6b47d505159378391d9d8da3912411adf86b236c22a3f7501c3b3cf84c279711ac8bab19b3e3b83ae67f069331aab
+
+pkgname = python38-pytest-timeout
