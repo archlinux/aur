@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-gsconnect
 	pkgdesc = gsconnect addon for firefox.
-	pkgver = 6
+	pkgver = 8
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/gsconnect/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = firefox-extension-gsconnect
 	license = GPLV3
 	depends = firefox
 	depends = gnome-shell-extension-gsconnect
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/2104250/gsconnect-6-an+fx-linux.xpi
-	sha512sums = f8424b82bbbfc5a54e074d6296223c550d65eb6849f75d9e891319bdade9984d6a44b87a2b8ca083ab32609ef9d25cbd3d380553bc4c1792254778ec514a9ac9
+	source = firefox-extension-gsconnect-8.xpi::https://addons.mozilla.org/firefox/downloads/file/3626312/gsconnect-8.xpi
+	sha512sums = 4ff2b1da1495b5f9b5bbd2bf8cfd0fecc5df679c2c144af094410841f23ac3783bdd1655527273ba843801359f67bc648838283f36fdcb9305df30beba4539b0
 
 pkgname = firefox-extension-gsconnect
-
