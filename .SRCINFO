@@ -1,8 +1,9 @@
 pkgbase = gnome-shell-extension-gsconnect-git
 	pkgdesc = KDE Connect implementation with GNOME Shell integration
-	pkgver = 32.r0.g15e6fe98
+	pkgver = 54.r11.ga7c3fef6
 	pkgrel = 1
-	url = https://github.com/andyholmes/gnome-shell-extension-gsconnect
+	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
+	install = gnome-shell-extension-gsconnect.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -15,8 +16,7 @@ pkgbase = gnome-shell-extension-gsconnect-git
 	optdepends = gsound: Themed sound effects
 	provides = gnome-shell-extension-gsconnect
 	conflicts = gnome-shell-extension-gsconnect
-	source = git+https://github.com/andyholmes/gnome-shell-extension-gsconnect
+	source = gnome-shell-extension-gsconnect::git+https://github.com/GSConnect/gnome-shell-extension-gsconnect
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-gsconnect-git
-
