@@ -1,0 +1,17 @@
+pkgbase = zenity-gtk4-git
+	pkgdesc = Display graphical dialog boxes from shell scripts
+	pkgver = 3.32.0.r105.g55f7e47e
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/zenity
+	arch = x86_64
+	license = LGPL
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = libnotify
+	provides = zenity-gtk4
+	conflicts = zenity-gtk4
+	replaces = zenity
+	source = zenity::git+https://gitlab.gnome.org/GNOME/zenity#branch=gtk4-port
+	sha256sums = SKIP
+
+pkgname = zenity-gtk4-git
