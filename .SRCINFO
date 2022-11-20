@@ -1,0 +1,17 @@
+pkgbase = python38-uri-template
+	pkgdesc = An implementation of RFC 6570 URI Templates
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/plinss/uri_template
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-uri-template::git+https://github.com/plinss/uri_template#commit=ae070b1716c853fbc5a3c879e6ef1d1cfb2c9533
+	b2sums = SKIP
+
+pkgname = python38-uri-template
