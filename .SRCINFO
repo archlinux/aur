@@ -7,7 +7,7 @@ pkgbase = lapack-static
 	license = custom
 	makedepends = gcc-fortran
 	makedepends = cmake
-	source = https://github.com/Reference-LAPACK/lapack/archive/v3.11.0/lapack-static-3.11.0.tar.gz
+	source = https://github.com/Reference-LAPACK/lapack/archive/v3.11.0/lapack-3.11.0.tar.gz
 	sha256sums = 4b9ba79bfd4921ca820e83979db76ab3363155709444a787979e81c22285ffa9
 
 pkgname = lapack-static

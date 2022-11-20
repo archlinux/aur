@@ -6,7 +6,7 @@ pkgdesc='Linear Algebra PACKage'
 makedepends=(gcc-fortran cmake)
 arch=(x86_64)
 license=(custom)
-source=(https://github.com/Reference-LAPACK/lapack/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+source=(https://github.com/Reference-LAPACK/lapack/archive/v$pkgver/lapack-$pkgver.tar.gz)
 sha256sums=('4b9ba79bfd4921ca820e83979db76ab3363155709444a787979e81c22285ffa9')
 
 build() {
