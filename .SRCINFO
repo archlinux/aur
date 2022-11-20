@@ -1,0 +1,16 @@
+pkgbase = python38-pyopenssl
+	pkgdesc = Python3 wrapper module around the OpenSSL library
+	pkgver = 22.1.0
+	pkgrel = 1
+	url = https://github.com/pyca/pyopenssl
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = python38-pretend
+	checkdepends = python38-flaky
+	makedepends = python38-setuptools
+	depends = python38-cryptography
+	source = https://github.com/pyca/pyopenssl/archive/22.1.0/python38-pyopenssl-22.1.0.tar.gz
+	sha512sums = 724a685042f890eccac7b97caada0b06297320b7352346ff6a714594e78e53fccb8119b606ffac113e3eb7d96402765892bb69a705176d448bd61a7426ac24ae
+
+pkgname = python38-pyopenssl
