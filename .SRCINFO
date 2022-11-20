@@ -1,0 +1,14 @@
+pkgbase = python38-webcolors
+	pkgdesc = A library for working with color names and color value formats defined by the HTML and CSS specifications for use in documents on the Web
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/ubernostrum/webcolors
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/w/webcolors/webcolors-1.12.tar.gz
+	sha512sums = 2c1e46ba2036ff960a973b9f5b4cec06241e9385fa0de876f66a6cf742d5b11bc212fce262011968a612c1446b78a6f50b3e75d04584c3b2b47f3ac3d66fdd51
+
+pkgname = python38-webcolors
