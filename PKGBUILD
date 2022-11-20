@@ -1,7 +1,7 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="communist"
 pkgver="2.0.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Simple GTK4 based p2p messenger"
 license=('GPL3')
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=("https://github.com/ProfessorNavigator/communist/archive/refs/tags/v2.0.
 url="https://github.com/ProfessorNavigator/communist"
 makedepends=('meson' 'ninja' 'pkgconf' 'gcc' 'gtkmm-4.0' 'hunspell' 'icu' 'libcommunist' 'boost')
 depends=('gtkmm-4.0' 'hunspell' 'icu' 'gst-plugins-good' 'libcommunist')
-sha256sums=('c673d2904a7cd02d5d73dfe6f58dc36ddd8d0bedd6a51350943c5e0b80e51273')
+sha256sums=('5c8b7468a66f9e60ad7c70d0706dcb2c6ef22faac5c65299b6c32f558af49c77')
 options=(strip)
 
 build() {   
