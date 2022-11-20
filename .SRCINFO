@@ -1,0 +1,20 @@
+pkgbase = python38-pycurl
+	pkgdesc = A Python 3.x interface to libcurl
+	pkgver = 7.45.1
+	pkgrel = 2
+	url = http://pycurl.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	license = MIT
+	checkdepends = python38-bottle
+	checkdepends = python38-pytest
+	checkdepends = vsftpd
+	checkdepends = python38-flaky
+	checkdepends = python38-pyflakes
+	makedepends = python38-setuptools
+	depends = python38
+	depends = curl
+	source = https://github.com/pycurl/pycurl/archive/REL_7_45_1/python38-pycurl-7.45.1.tar.gz
+	sha512sums = 8b54b625d692d1f152a4e4ff29fbb8d66f51b5a657ab08e5493c6d4a9a7a1f58bb8407885d6a061ef64078db416e60d7f9a246c4a0e87f11d411cb706b96000d
+
+pkgname = python38-pycurl
