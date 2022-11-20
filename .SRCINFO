@@ -1,0 +1,20 @@
+pkgbase = python38-automat
+	pkgdesc = Self-service finite-state machines for the programmer on the go.
+	pkgver = 22.10.0
+	pkgrel = 1
+	url = https://github.com/glyph/automat
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-benchmark
+	checkdepends = python38-twisted
+	checkdepends = python38-graphviz
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-attrs
+	depends = python38-six
+	optdepends = python38-graphviz: for automat-visualize
+	optdepends = python38-twisted: for automat-visualize
+	source = https://github.com/glyph/automat/archive/v22.10.0/python38-automat-22.10.0.tar.gz
+	sha512sums = 16caea66a8621b7d50e68e94007085218ec40ae0f57599d5076ed1915d4a2ebabd2da66659ba70acb9c6d30bc354bcd6126f913af0c0a005db305ca0c203481d
+
+pkgname = python38-automat
