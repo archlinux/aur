@@ -1,0 +1,15 @@
+pkgbase = python38-incremental
+	pkgdesc = A small library that versions your Python projects
+	pkgver = 22.10.0
+	pkgrel = 1
+	url = https://github.com/hawkowl/incremental
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	depends = python38-click
+	depends = python38-setuptools
+	depends = python38-twisted
+	source = https://github.com/hawkowl/incremental/archive/incremental-22.10.0.tar.gz
+	sha512sums = fbc0b123038341a788789aa513c93dfa08592881ea89aafebdd5b21917a9888f7a7d54d7765c105eb362559391ef45f15d8ef98278b0e75c84fce7d83febf5f0
+
+pkgname = python38-incremental
