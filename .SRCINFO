@@ -1,0 +1,19 @@
+pkgbase = python38-pyquery
+	pkgdesc = A jquery-like library for python.
+	pkgver = 1.4.3
+	pkgrel = 3
+	url = https://github.com/gawel/pyquery/
+	arch = any
+	license = BSD
+	checkdepends = python38-requests
+	checkdepends = python38-webob
+	checkdepends = python38-nose
+	checkdepends = python38-webtest
+	makedepends = python38-setuptools
+	depends = python38-lxml
+	depends = python38-cssselect
+	optdepends = python38-webob: query wsgi app
+	source = https://github.com/gawel/pyquery/archive/1.4.3/python38-pyquery-1.4.3.tar.gz
+	sha512sums = ab5110232d79209fb861fa3ac61c8803352c28c8372ba5d96b3fe731ebdb0b732c0c1642719c9cebbd0030a27edd2a962a7c368c99a7c966bf0ea77f7ae89a37
+
+pkgname = python38-pyquery
