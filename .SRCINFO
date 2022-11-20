@@ -1,0 +1,19 @@
+pkgbase = python38-cairo
+	pkgdesc = Python bindings for the cairo graphics library
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://pycairo.readthedocs.io/en/latest/
+	arch = x86_64
+	license = LGPL2.1
+	license = MPL
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = cairo
+	depends = python38
+	source = https://github.com/pygobject/pycairo/releases/download/v1.21.0/pycairo-1.21.0.tar.gz
+	source = https://github.com/pygobject/pycairo/releases/download/v1.21.0/pycairo-1.21.0.tar.gz.sig
+	validpgpkeys = 0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC
+	sha256sums = 251907f18a552df938aa3386657ff4b5a4937dde70e11aa042bc297957f4b74b
+	sha256sums = SKIP
+
+pkgname = python38-cairo
