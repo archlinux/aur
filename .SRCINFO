@@ -1,0 +1,21 @@
+pkgbase = python38-cryptography
+	pkgdesc = A package designed to expose cryptographic recipes and primitives to Python developers
+	pkgver = 38.0.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cryptography
+	arch = x86_64
+	license = Apache
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-pytest-subtests
+	checkdepends = python38-cryptography-vectors=38.0.3
+	checkdepends = python38-iso8601
+	checkdepends = python38-pretend
+	checkdepends = python38-hypothesis
+	checkdepends = python38-pytz
+	checkdepends = python38-pytest-benchmark
+	makedepends = python38-setuptools-rust
+	depends = python38-cffi
+	source = https://pypi.io/packages/source/c/cryptography/cryptography-38.0.3.tar.gz
+	sha512sums = f133d83266f386cb0169a3cf2226d258b7d599e7aaad9913f8a4b01ee0841670586a21cee93fb4d4d9f61b0da53109c5dbcf7d91d470cfbb166aa04f4a1d7634
+
+pkgname = python38-cryptography
