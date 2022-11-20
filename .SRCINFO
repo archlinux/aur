@@ -1,0 +1,13 @@
+pkgbase = python38-xlwt
+	pkgdesc = Library to create spreadsheet files compatible with MS Excel 97/2000/XP/2003 XLS files
+	pkgver = 1.3.0
+	pkgrel = 6
+	url = http://www.python-excel.org/
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/python-excel/xlwt/archive/1.3.0.tar.gz
+	sha256sums = 1961682c6a3cedb44e6a96ff6ed099d80af8da9a669dbbbc1d1959e8398122d6
+
+pkgname = python38-xlwt
