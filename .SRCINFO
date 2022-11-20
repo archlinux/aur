@@ -1,0 +1,23 @@
+pkgbase = python38-coverage
+	pkgdesc = A tool for measuring code coverage of Python programs
+	pkgver = 6.5.0
+	pkgrel = 2
+	url = https://nedbatchelder.com/code/coverage/
+	arch = x86_64
+	license = Apache
+	checkdepends = python38-flaky
+	checkdepends = python38-hypothesis
+	checkdepends = python38-pycontracts
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-xdist
+	checkdepends = python38-tomli
+	checkdepends = python38-unittest-mixins
+	checkdepends = python38-virtualenv
+	makedepends = python38-setuptools
+	depends = python38
+	optdepends = python38-tomli: for pyproject.toml support
+	source = python38-coverage-6.5.0.tar.gz::https://github.com/nedbat/coveragepy/archive/6.5.0.tar.gz
+	sha512sums = 40d8c1a6b796925e7c1082fe27398f160725be7f7b73afef6328080930b6b635bfae863ed303b262d530ccd46cc8c4ab823acc1998cdd21b686b9f81b01a16ff
+	b2sums = 09d3efc0673485190c920c03f2fc1d2dac14c0759953df2d4f3e7043f63ea7b6c26ddcf715b6456671f3391bacefb34ed68228970faaf352ef6fd8ecb83413a7
+
+pkgname = python38-coverage
