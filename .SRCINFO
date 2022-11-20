@@ -1,0 +1,22 @@
+pkgbase = python38-faker
+	pkgdesc = Faker generates fake data for you.
+	pkgver = 12.1.0
+	pkgrel = 1
+	url = https://faker.readthedocs.io/en/master/
+	arch = any
+	license = MIT
+	checkdepends = python38-validators
+	checkdepends = python38-ukpostcodeparser
+	checkdepends = python38-random2
+	checkdepends = python38-freezegun
+	checkdepends = python38-pillow
+	makedepends = python38-setuptools
+	makedepends = python38-pytest
+	depends = python38-dateutil
+	provides = python38-fake-factory=12.1.0
+	conflicts = python38-fake-factory
+	replaces = python38-fake-factory
+	source = python38-faker-12.1.0.tar.gz::https://github.com/joke2k/faker/archive/v12.1.0.tar.gz
+	sha512sums = 2624b1eec6b90a664dbed095950eb6a669e51279a66d690fc0de87b050bb82f0874e5cb47b9a1d120b5cea9206a82a237abdcc4cd31a7cd91411af716eebf9f6
+
+pkgname = python38-faker
