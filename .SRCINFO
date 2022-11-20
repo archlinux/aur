@@ -1,6 +1,6 @@
 pkgbase = python-imgviz
 	pkgdesc = Image Visualization Tools (object detection, semantic and instance segmentation)
-	pkgver = 1.5.1
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/wkentaro/imgviz
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-imgviz
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-yaml
-	source = python-imgviz-1.5.1.tar.gz::https://github.com/wkentaro/imgviz/archive/v1.5.1.tar.gz
-	sha512sums = 4dc03092cc525f9143761031dbb2c126ed7937b88e23306d6764d19f9e11109d9f17332493fb3b4b8c42d5f49371a0383e0a402fa363c5bd1cfa27b7162c07bd
+	source = python-imgviz-1.6.1.tar.gz::https://github.com/wkentaro/imgviz/archive/v1.6.1.tar.gz
+	sha512sums = a10c689a6d11795582829ab6ad1d476c1387f8bee59634fd624ec84515922ce8f5be7f947d60c67eb8b77d4a402811c7bf96dae854e24a5db3dbcc3d96dd4bfa
 
 pkgname = python-imgviz
