@@ -1,0 +1,21 @@
+pkgbase = python38-cmd2
+	pkgdesc = A tool for building interactive command line apps
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/python-cmd2/cmd2
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-pytest-mock
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-pytest-xdist
+	checkdepends = vi
+	makedepends = python38-setuptools-scm
+	depends = python38-attrs
+	depends = python38-colorama
+	depends = python38-pyperclip
+	depends = python38-wcwidth
+	source = https://pypi.io/packages/source/c/cmd2/cmd2-2.4.2.tar.gz
+	sha512sums = d70d264671db2783526c589199ff74cc70d53a4fbaa1d78636a508dbf8216aefab17f5764bf25b2b86e9c1413e0e61977819fbb0dec59d3209195df522d3fa5f
+
+pkgname = python38-cmd2
