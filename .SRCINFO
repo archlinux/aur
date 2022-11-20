@@ -1,0 +1,17 @@
+pkgbase = python38-pyhamcrest
+	pkgdesc = Hamcrest framework for matcher objects
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/hamcrest/PyHamcrest
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	makedepends = python38-hatch-vcs
+	depends = python38
+	source = https://github.com/hamcrest/PyHamcrest/archive/V2.0.4/python38-pyhamcrest-2.0.4.tar.gz
+	sha512sums = 6ee558fe04dce839d5d5d20b90ecf82fed96570e1c5b3a827fce19dba167bf4702ea707560b19e2d6e82be20913deb6cf17fa7e140733899a92abb28e9f2aa56
+
+pkgname = python38-pyhamcrest
