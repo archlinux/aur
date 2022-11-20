@@ -4,7 +4,7 @@
 # Contributor: Earnest
 pkgname=tiptop
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='hardware performance counters monitor'
 url='http://tiptop.gforge.inria.fr'
 arch=('i686' 'x86_64')

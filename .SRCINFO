@@ -1,7 +1,7 @@
 pkgbase = tiptop
 	pkgdesc = hardware performance counters monitor
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tiptop.gforge.inria.fr
 	arch = i686
 	arch = x86_64
