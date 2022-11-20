@@ -1,0 +1,16 @@
+pkgbase = python38-hacking
+	pkgdesc = OpenStack Hacking Guideline Enforcement
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://docs.openstack.org/developer/hacking
+	arch = any
+	license = Apache
+	checkdepends = python38-ddt
+	checkdepends = python38-oslotest
+	makedepends = python38-pbr
+	makedepends = python38-setuptools
+	depends = flake8
+	source = python38-hacking-5.0.0.tar.gz::https://github.com/openstack/hacking/archive/5.0.0.tar.gz
+	sha512sums = d698a2643d26e867b0eda47f4bd1c80be878a0ba2ef74595a38237ff3c49112bca541956b751291b6f691234eacf26c58dea151aaf40ab10cc70446a93f85fc6
+
+pkgname = python38-hacking
