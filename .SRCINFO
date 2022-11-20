@@ -1,0 +1,14 @@
+pkgbase = python38-mox3
+	pkgdesc = Mock object framework for Python
+	pkgver = 1.1.0
+	pkgrel = 5
+	url = https://docs.openstack.org/developer/mox3
+	arch = any
+	license = Apache
+	checkdepends = python38-oslotest
+	depends = python38-pbr
+	depends = python38-fixtures
+	source = python38-mox3-1.1.0.tar.gz::https://github.com/openstack/mox3/archive/1.1.0.tar.gz
+	sha512sums = e531e0d5e61c7eca75733770a466d6bd5f451250c250c2ba7e751ba9a4e9fae24eb58e452687c3838b341fa0a87f56975b83c3a1164774969bea159719742d10
+
+pkgname = python38-mox3
