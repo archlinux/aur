@@ -1,0 +1,21 @@
+pkgbase = python38-service-identity
+	pkgdesc = Service identity verification for pyOpenSSL
+	pkgver = 21.1.0
+	pkgrel = 4
+	url = https://pypi.python38.org/pypi/service_identity
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	makedepends = python38-idna
+	depends = python38-attrs
+	depends = python38-pyasn1-modules
+	depends = python38-pyasn1
+	depends = python38-cryptography
+	depends = python38-six
+	optdepends = python38-idna: for Internationalized Domain Names support
+	replaces = python38-service_identity
+	source = https://github.com/pyca/service-identity/archive/21.1.0/python38-service-identity-21.1.0.tar.gz
+	sha512sums = 6375bc5e8329118b2beb163ffffecc1479839e4e98173576e4737deebcc4c057ac357315976d3f53a280defd4e2c1f6b74e9604ec1aa94144240c2fb4bf07461
+
+pkgname = python38-service-identity
