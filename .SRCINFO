@@ -1,0 +1,17 @@
+pkgbase = python38-platformdirs
+	pkgdesc = A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir"
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://github.com/platformdirs/platformdirs
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-mock
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	makedepends = python38-hatch-vcs
+	depends = python38-typing_extensions
+	source = https://pypi.io/packages/source/p/platformdirs/platformdirs-2.5.4.tar.gz
+	sha512sums = 1b7ff79a421bc0b0320a9b1ba8f99dbbecd34a9bea7fa7696b58007f2e05d8a910a3f32e2c03e6e3a8f3d272ab1c045051a682e3155c5bc5285e66e4add59489
+
+pkgname = python38-platformdirs
