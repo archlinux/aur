@@ -1,6 +1,6 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=camv-rnd
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="free/open source, small, flexible viewer for PCB-related CAM file formats"
 url="http://www.repo.hu/projects/camv-rnd/"
@@ -9,7 +9,14 @@ license=('GPL2')
 depends=('librnd3>=3.1.1'
          'freetype2')
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('2d88e4acc82beaadc70ab987cf6422bb1e1b354604c051d31597da78ddce13c8')
+sha256sums=('0efc77c4d40634cc19551348680f0b9b67157a88c1cead4465ac3a05bae9cfe9')
+
+prepare() {
+  # ensure the system font directory exists, even when no fonts are installed
+  if [ ! -d /usr/local/share/fonts ]; then
+    mkdir -p /usr/local/share/fonts
+  fi
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
