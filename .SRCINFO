@@ -1,0 +1,17 @@
+pkgbase = python38-subunit
+	pkgdesc = Python implementation of subunit test streaming protocol
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://launchpad.net/subunit
+	arch = any
+	license = Apache
+	checkdepends = python38-fixtures
+	checkdepends = python38-hypothesis
+	checkdepends = python38-testscenarios
+	makedepends = python38-setuptools
+	depends = python38-extras
+	depends = python38-testtools
+	source = https://pypi.io/packages/source/p/python-subunit/python-subunit-1.4.0.tar.gz
+	sha512sums = 7f8ebf1cfdd7ff22bfd68367cb90dd75e7f3b5f7da71830b304225905e1799ad1ec8f0d41f5f98895c831dc10fe77229137a472b8e8e57ea84c05c66694a5b5b
+
+pkgname = python38-subunit
