@@ -1,0 +1,17 @@
+pkgbase = python38-googleapis-common-protos
+	pkgdesc = Python 3.8 classes generated from the common protos in the googleapis repository
+	pkgver = 1.56.4
+	pkgrel = 1
+	url = https://github.com/googleapis/googleapis
+	arch = any
+	license = Apache
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38-protobuf
+	optdepends = python38-grpcio: for grpc support
+	source = https://files.pythonhosted.org/packages/source/g/googleapis-common-protos/googleapis-common-protos-1.56.4.tar.gz
+	sha256sums = c25873c47279387cfdcbdafa36149887901d36202cb645a0e4f29686bf6e4417
+
+pkgname = python38-googleapis-common-protos
