@@ -1,0 +1,17 @@
+pkgbase = python38-pytest-param-files
+	pkgdesc = Create pytest parametrize decorators from external files
+	pkgver = 0.3.4
+	pkgrel = 2
+	url = https://github.com/chrisjsewell/pytest-param-files
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-flit-core
+	depends = python38
+	depends = python38-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-param-files/pytest_param_files-0.3.4.tar.gz
+	sha256sums = 6c0c324f9d91bd16a5d63ab5bb78bd2d19ca5c6f2b68b6acbc4ae61fb1b6893d
+
+pkgname = python38-pytest-param-files
