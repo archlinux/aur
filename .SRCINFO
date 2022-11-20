@@ -1,0 +1,21 @@
+pkgbase = python38-numpy
+	pkgdesc = Scientific tools for Python 3.8
+	pkgver = 1.23.4
+	pkgrel = 1
+	url = https://www.numpy.org/
+	arch = x86_64
+	license = custom
+	checkdepends = python38-pytest
+	checkdepends = python38-hypothesis
+	makedepends = python38-setuptools
+	makedepends = gcc-fortran
+	makedepends = python38-cython
+	depends = cblas
+	depends = lapack
+	depends = python38
+	optdepends = openblas: faster linear algebra
+	options = staticlibs
+	source = https://github.com/numpy/numpy/releases/download/v1.23.4/numpy-1.23.4.tar.gz
+	sha512sums = 727ca8950b0fbd5670e939b1c9c5cea852781ec4254d56a1659a91dc0430fc10b01ffdd16e1bb28a62319f91029e087024f4c6298bfc859a6050bfb507edcff8
+
+pkgname = python38-numpy
