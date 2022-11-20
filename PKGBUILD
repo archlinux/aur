@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgname=python-scooby
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A Great Dane turned Python environment detective'
 arch=('any')
@@ -10,7 +10,17 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-pip')
 source=("https://github.com/banesullivan/scooby/archive/v${pkgver}.tar.gz")
-sha256sums=('5ea4e782dc31ee13c2a8f8e62f8c8542c96ef704491cdb80546f7f90bd171397')
+sha256sums=('e7da53fa2f0cb29390f4b35db1d197092706392cf9a4548c3d263d81fc83f142')
+
+# uses git version, release does not work
+prepare() {
+    cd "$srcdir"/scooby-${pkgver}
+    head -n 35 setup.py >tmp
+    sed -i "/^import setuptools.*/a __version__='$pkgver'" tmp
+    echo "   version=__version__)" >> tmp
+    echo "version='$pkgver'" > scooby/version.py
+    mv tmp setup.py
+}
 
 build() {
   cd "$srcdir"/scooby-${pkgver}
