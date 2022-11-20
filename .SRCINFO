@@ -1,0 +1,16 @@
+pkgbase = python38-testpath
+	pkgdesc = Test utilities for code working with files and commands
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/testpath
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-flit-core
+	depends = python38
+	source = https://pypi.io/packages/source/t/testpath/testpath-0.6.0.tar.gz
+	sha256sums = 2f1b97e6442c02681ebe01bd84f531028a7caea1af3825000f52345c30285e0f
+
+pkgname = python38-testpath
