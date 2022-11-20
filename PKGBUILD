@@ -1,7 +1,7 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-vsg
-pkgver=1
-pkgrel=11.1
+pkgver=3.13.1
+pkgrel=1
 pkgdesc="VHDL style guide: coding style enforcement for VHDL"
 arch=('any')
 url="https://github.com/jeremiah-c-leary/vhdl-style-guide/"
