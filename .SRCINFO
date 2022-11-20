@@ -1,0 +1,22 @@
+pkgbase = python38-pytest-enabler
+	pkgdesc = Enable installed pytest plugins
+	pkgver = 1.3.0
+	pkgrel = 2
+	url = https://github.com/jaraco/pytest-enabler
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-mypy
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-jaraco.context
+	depends = python38-jaraco.functools
+	depends = python38-pytest
+	depends = python38-toml
+	source = https://github.com/jaraco/pytest-enabler/archive/v1.3.0/python38-pytest-enabler-1.3.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/t/types-toml/types-toml-0.10.1.tar.gz
+	sha512sums = 20abe21f6e56ab2e327f5340f72d58391012cbda4ca87f5e632db3636c95b47562c4d848f46f90c0363ad0963ed6fb3fb8da073cc9538f0116d488821898dbe5
+	sha512sums = 001757f956dd3af0688a6544b90ba415b26ab3128e0fbb238f4dfaf0bab6b5795d5598bcc9422d854ea235acbc9e78b245c17f9ebc9ad9251ae3c0722b382812
+
+pkgname = python38-pytest-enabler
