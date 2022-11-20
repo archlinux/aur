@@ -1,0 +1,16 @@
+pkgbase = python38-redis
+	pkgdesc = The Python interface to the Redis key-value store
+	pkgver = 4.3.4
+	pkgrel = 1
+	url = https://github.com/redis/redis-py
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = pifpaf
+	checkdepends = redis
+	makedepends = python38-setuptools
+	depends = python38-deprecated
+	source = https://pypi.io/packages/source/r/redis/redis-4.3.4.tar.gz
+	sha512sums = 606a09ff87870be9eda84b4ac074bf35b06882d9a9da448a9c17a54cb5e0a295f28d3f765ee88e92b1ad6d08532a2a6799acc4a1ea30e7cec9e652214999e98a
+
+pkgname = python38-redis
