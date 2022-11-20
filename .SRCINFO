@@ -1,0 +1,17 @@
+pkgbase = python38-editables
+	pkgdesc = A Python library for creating editable wheels
+	pkgver = 0.3
+	pkgrel = 2
+	url = https://github.com/pfmoore/editables
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/pfmoore/editables/archive/0.3/python38-editables-0.3.tar.gz
+	sha256sums = 42f7240164af1e028ccb7b60e72f54bbd8b639e9409595fbeffac5d3fb610643
+
+pkgname = python38-editables
