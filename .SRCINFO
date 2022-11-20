@@ -1,0 +1,20 @@
+pkgbase = python38-graphviz
+	pkgdesc = Simple Python interface for Graphviz
+	pkgver = 0.20.1
+	pkgrel = 2
+	url = https://github.com/xflr6/graphviz
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-mock
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = graphviz
+	depends = python38
+	source = https://github.com/xflr6/graphviz/archive/0.20.1/graphviz-0.20.1.tar.gz
+	sha256sums = 815346b8c2fcd8ccede29623a67bfc30abdbb75749e96128b9d414573d6d8f04
+	b2sums = 65d0b993e01492894b6d245c0869412b4956e5d55f9d8d490505c8f3477dc5ab98739cf0bf1aa1a15c4bacb2db4c2807659ce410ca65503c5876ffdc278e959f
+
+pkgname = python38-graphviz
