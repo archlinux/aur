@@ -1,0 +1,13 @@
+pkgbase = python38-random2
+	pkgdesc = Python 3.8 compatible port of Python 2 random module
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = https://pypi.org/project/random2/
+	arch = any
+	license = PSF
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.python.org/packages/source/r/random2/random2-1.0.1.zip
+	sha256sums = 34ad30aac341039872401595df9ab2c9dc36d0b7c077db1cea9ade430ed1c007
+
+pkgname = python38-random2
