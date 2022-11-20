@@ -1,0 +1,22 @@
+pkgbase = python-aiohttp-middlewares
+	pkgdesc = Collection of useful middlewares for aiohttp.web applications
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/playpauseandstop/aiohttp-middlewares
+	arch = any
+	license = custom:BSD3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp
+	depends = python-async-timeout
+	depends = python-yarl
+	source = python-aiohttp-middlewares-2.2.0.tar.gz::https://github.com/playpauseandstop/aiohttp-middlewares/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 354e97552937cc881ffb36f7c0bb5a679d7a81d485bf0dba6367eb5294586f60
+
+pkgname = python-aiohttp-middlewares
