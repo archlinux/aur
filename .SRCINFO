@@ -1,0 +1,15 @@
+pkgbase = python-brutesleuth-git
+	pkgdesc = Making bruteforce wordlists smarter, not harder
+	pkgver = 1.4.3.r1.b9b0d9c
+	pkgrel = 1
+	url = https://github.com/rad10/BruteSleuth
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	provides = python-brutesleuth
+	conflicts = python-brutesleuth
+	source = python-brutesleuth::git+https://github.com/rad10/BruteSleuth.git
+	md5sums = SKIP
+
+pkgname = python-brutesleuth-git
