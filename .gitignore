@@ -1,6 +1,6 @@
+rezonateur-*.patch
+rezonateur-Makefile.base.mk
 pkg/
 src/
-rezonateur-*.tar.gz
-rezonateur-*.pkg.tar.xz
-rezonateur-*.pkg.tar.zst
-rezonateur-*.src.tar.gz
+*.tar.*
+*.zip
