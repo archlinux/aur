@@ -6,7 +6,7 @@
 _pkgbasename=waffle
 pkgname=lib32-${_pkgbasename}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='https://waffle.freedesktop.org'
@@ -31,21 +31,15 @@ build() {
 	arch-meson "${_pkgbasename}-$pkgver" build \
 		--buildtype release \
 		--libdir=/usr/lib32 \
-		-D gbm=enabled \
-		-D glx=enabled \
-		-D surfaceless_egl=enabled \
-		-D x11_egl=enabled \
-		-D wayland=enabled \
 		-D build-manpages=false \
 		-D build-htmldocs=false \
 		-D build-examples=false
 
-	meson configure build
-	ninja -C build
+	meson compile -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	meson install -C build --destdir "$pkgdir"
 
 	mv "$pkgdir/usr/bin/wflinfo" "$pkgdir/usr/bin/wflinfo32"
 	rm -rf "$pkgdir/usr/include"
