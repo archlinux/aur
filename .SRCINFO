@@ -1,0 +1,11 @@
+pkgbase = catppuccin-mocha-dark-cursors
+	pkgdesc = Catppuccin mocha dark cursors, Soothing pastel mouse cursors
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/catppuccin/cursors
+	arch = any
+	license = GPL
+	source = https://github.com/catppuccin/cursors/raw/main/cursors/Catppuccin-Mocha-Dark-Cursors.zip
+	sha256sums = c270995f54e067275d60c6a4fac6528b991421ea2a192e3ac8f636fdc9c68a54
+
+pkgname = catppuccin-mocha-dark-cursors
