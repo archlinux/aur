@@ -1,0 +1,14 @@
+pkgbase = python38-uc-micro-py
+	pkgdesc = Micro subset of unicode data files for linkify-it-py projects
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = https://github.com/tsutsu3/uc.micro-py
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-uc-micro-py-1.0.1.tar.gz::https://github.com/tsutsu3/uc.micro-py/archive/v1.0.1.tar.gz
+	sha512sums = c6747943bd4ac9a3b7bf8d02a52947df04d4d4986311da7fa77d6ae010d512de9ad429d78a436a2f8e11c6f2d8dde00bea70ea0b1237a35e5b16ed4ad6b430fe
+
+pkgname = python38-uc-micro-py
