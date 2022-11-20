@@ -1,0 +1,14 @@
+pkgbase = python38-configupdater
+	pkgdesc = Parser like ConfigParser but for updating configuration files
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/pyscaffold/configupdater
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-cov
+	makedepends = python38-setuptools-scm
+	depends = python38
+	source = https://github.com/pyscaffold/configupdater/archive/v3.1.1/python38-configupdater-3.1.1.tar.gz
+	sha512sums = 1e499f87d0ac3d75f32aafe532d7c83b4b86fbaa204fcdbaf7a3dcb5262d936fe027ee0b21d169ef69a0590edbe965a872390b14be274fbb1c893f2d4695b92c
+
+pkgname = python38-configupdater
