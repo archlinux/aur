@@ -1,0 +1,18 @@
+pkgbase = python38-tomli-w
+	pkgdesc = A lil' TOML writer
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = https://github.com/hukkin/tomli-w
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-tomli
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-flit-core
+	makedepends = python38-installer
+	depends = python38
+	source = git+https://github.com/hukkin/tomli-w.git#tag=19099125f32e7c491603e393263754262b356956
+	b2sums = SKIP
+
+pkgname = python38-tomli-w
