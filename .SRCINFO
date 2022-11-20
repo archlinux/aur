@@ -1,0 +1,17 @@
+pkgbase = python38-tokenize-rt
+	pkgdesc = Wrapper around the stdlib `tokenize` which roundtrips
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/asottile/tokenize-rt
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/asottile/tokenize-rt/archive/v5.0.0/tokenize-rt-5.0.0.tar.gz
+	b2sums = d5e5dd3637615c451463d85e63b6d48670ed18de58e111625b106cfc0af2616726d2ff510412decd32db2c67dea5807d5f9b64ecfa902f56fd32b739085698c3
+
+pkgname = python38-tokenize-rt
