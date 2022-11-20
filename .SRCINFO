@@ -1,0 +1,16 @@
+pkgbase = python38-rfc3339-validator
+	pkgdesc = A pure python RFC3339 validator
+	pkgver = 0.1.4
+	pkgrel = 3
+	url = https://github.com/naimetti/rfc3339-validator
+	arch = any
+	license = MIT
+	checkdepends = python38-hypothesis
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-strict-rfc3339
+	makedepends = python38-setuptools
+	depends = python38-six
+	source = https://github.com/naimetti/rfc3339-validator/archive/v0.1.4/python38-rfc3339-validator-0.1.4.tar.gz
+	sha512sums = ed593b31c4984cdbc313e42dc0432173eaa649712e29627ab462dfa262efb30cee97b74f589d3d211c2193623fac3baca560a52a7a3f718071a63482e06c4203
+
+pkgname = python38-rfc3339-validator
