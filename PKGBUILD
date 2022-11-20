@@ -2,7 +2,7 @@
 # Maintainer: jon4hz <me@jon4hz.io>
 
 pkgname='dero-stratum-miner-bin'
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Dero Stratum Miner'
 url='whalesburg.com'
@@ -11,17 +11,17 @@ license=('custom')
 provides=('dero-stratum-miner')
 conflicts=('dero-stratum-miner')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.3/dero-stratum-miner-v1.0.3-linux-arm64.tar.gz")
-sha256sums_aarch64=('48f5e5321416086d96980f4c78c11da3202fc009c6a5b0dccb1777232e1efda4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.4/dero-stratum-miner-v1.0.4-linux-arm64.tar.gz")
+sha256sums_aarch64=('6156e94121f8372a68aa3b01db823be2047eb7cfbab78d450b3c2a7ff5c20fd6')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.3/dero-stratum-miner-v1.0.3-linux-armv7.tar.gz")
-sha256sums_armv7h=('99ba6a961b646fff4a48fb0aafdf6466b5f04ea09d2ddf59123be39ef1c6188b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.4/dero-stratum-miner-v1.0.4-linux-armv7.tar.gz")
+sha256sums_armv7h=('873c0900b2e0e8837942f673732e96eb0033f15ed1f7e869ff9b803900ceafcf')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.3/dero-stratum-miner-v1.0.3-linux-386.tar.gz")
-sha256sums_i686=('cc5f3c918b31ee4ae9c40c6ea975da05ff3cbd963d078775a6bd9e4b4038cd69')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.4/dero-stratum-miner-v1.0.4-linux-386.tar.gz")
+sha256sums_i686=('50af69e000c93c77a973c0040dfc8a71df679112acfaf47d297c42628c9840db')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.3/dero-stratum-miner-v1.0.3-linux-amd64.tar.gz")
-sha256sums_x86_64=('cef326dcd9e2701c3eb8cdf76bd1c91fc444a6e695b2fc7388084e6cae0b4f48')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/whalesburg/dero-stratum-miner/releases/download/v1.0.4/dero-stratum-miner-v1.0.4-linux-amd64.tar.gz")
+sha256sums_x86_64=('a7d5100841719ab5a4108f02b40883360640fb67f0aed080003f28c224b10064')
 
 package() {
   # bin
