@@ -9,7 +9,7 @@ url="https://plugin.purejava.org/"
 license=('MIT')
 depends=('cryptomator' 'keepassxc')
 makedepends=('java-environment>=17' 'maven')
-source=("keepassxc-cryptomator-${pkgver}.tar.gz::https://github.com/purejava/keepassxc-cryptomator/archive/refs/tags/${pkgver}.tar.gz"
+source=("keepassxc-cryptomator-${pkgver}.tar.gz::https://github.com/purejava/keepassxc-cryptomator/releases/download/${pkgver}/keepassxc-cryptomator-${pkgver}.tar.gz"
         "keepassxc-cryptomator-${pkgver}.tar.gz.sig::https://github.com/purejava/keepassxc-cryptomator/releases/download/${pkgver}/keepassxc-cryptomator-${pkgver}.tar.gz.sig")
 sha256sums=('4e77c41a86de2a119571dd4eff9ec127eafa53c37c035dd4f6aba7abf6e56e68'
             'SKIP')
