@@ -1,0 +1,16 @@
+pkgbase = python38-filelock
+	pkgdesc = A platform independent file lock
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/benediktschmitt/py-filelock
+	arch = any
+	license = custom:Unlicense
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-timeout
+	makedepends = python38-setuptools
+	makedepends = python38-setuptools-scm
+	depends = python38
+	source = python38-filelock-3.8.0.tar.gz::https://github.com/benediktschmitt/py-filelock/archive/3.8.0.tar.gz
+	sha512sums = a9b63ab9a6697334eb8c561c422e8ec6febd0b7b203c0ebb4cfd1e4281f16cc0ef5145121c90f3c08bec88f13e219c0655142e3d3f856163702a0d32e14cd5ce
+
+pkgname = python38-filelock
