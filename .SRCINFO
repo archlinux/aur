@@ -1,0 +1,15 @@
+pkgbase = python38-hpack
+	pkgdesc = Pure-Python HPACK header compression
+	pkgver = 4.0.0
+	pkgrel = 3
+	url = https://hyper.rtfd.org/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-hypothesis
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/python-hyper/hpack/archive/v4.0.0/python38-hpack-4.0.0.tar.gz
+	sha512sums = f482d086d7a82649393e3cfea55c98966ce57055cb1826bc4dec1ea334661c02708e7903f2e8e588ee1c30df41373e1de9fb960c2e7bbc18d0ace0b8f97b195b
+
+pkgname = python38-hpack
