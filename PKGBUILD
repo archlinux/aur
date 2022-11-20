@@ -1,8 +1,8 @@
-# Maintainer: musiclover <musiclover382@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=zapzap
 _pkgname=com.rtosta.zapzap
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=2
 pkgdesc="WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 	'hunspell: spell check'
 	)
 source=($url/archive/v$pkgver.tar.gz)
-sha256sums=('6e9de491e5114cbf3cab5ba36610d635718a20a8357f1c32d52248bf0cf2d10c')
+sha256sums=('3a5007f90caa251fad3e6e43846cc4342f297f0e704fc17b9b8f22f0349aa2cc')
 
 prepare() {
   cd $pkgname-$pkgver
