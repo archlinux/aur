@@ -1,0 +1,16 @@
+pkgbase = python38-sphobjinv
+	pkgdesc = Manipulate and inspect Sphinx objects.inv files
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/bskinn/sphobjinv
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-attrs
+	depends = python38-certifi
+	depends = python38-jsonschema
+	source = https://github.com/bskinn/sphobjinv/archive/v2.3/sphobjinv-2.3.tar.gz
+	sha256sums = 29c2287afe54682bdc6ff66337c36af7dda63b1198166bae7aa0185012e46dde
+
+pkgname = python38-sphobjinv
