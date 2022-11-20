@@ -1,0 +1,19 @@
+pkgbase = python38-pytest-xdist
+	pkgdesc = py.test xdist plugin for distributed testing and loop-on-failing modes
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-xdist
+	arch = any
+	license = MIT
+	checkdepends = python38-filelock
+	checkdepends = python38-psutil
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-execnet
+	depends = python38-pytest
+	source = https://github.com/pytest-dev/pytest-xdist/archive/v3.0.2/python38-pytest-xdist-3.0.2.tar.gz
+	sha512sums = fcbc8a6e176e6c7a5523718ce9ab5129f87b0eda5a8e1b818c28f24ae83089d3d5097c8ad7d3a52219a8d2cc7f917b9569dac51712552d463fe920f8eeb867d4
+
+pkgname = python38-pytest-xdist
