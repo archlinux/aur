@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=hidpi-daemon-git
 pkgver=18.04.6.r1.g8f165bb
 pkgrel=1
