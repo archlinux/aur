@@ -1,0 +1,19 @@
+pkgbase = python38-argcomplete
+	pkgdesc = Easy, extensible command line tab completion of arguments for your Python script
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kislyuk/argcomplete
+	arch = any
+	license = Apache
+	checkdepends = python38-pexpect
+	checkdepends = tcsh
+	checkdepends = fish
+	checkdepends = python38-pip
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38
+	source = argcomplete::git+https://github.com/kislyuk/argcomplete#commit=bf16566adcfb2fd0307c6ecdf24304b21b0b5752?signed
+	validpgpkeys = 29BCBADB4ECAAAC2382699388AFAFCD242818A52
+	sha512sums = SKIP
+
+pkgname = python38-argcomplete
