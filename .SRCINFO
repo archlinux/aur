@@ -1,0 +1,13 @@
+pkgbase = python38-sqlparse
+	pkgdesc = Non-validating SQL parser for Python
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/andialbrecht/sqlparse
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-sqlparse-0.4.3.tar.gz::https://github.com/andialbrecht/sqlparse/archive/0.4.3.tar.gz
+	sha256sums = 4f0562bbfe48242689cfe42c34ab035982b6c96a98c9753f458c00c6d147c20d
+
+pkgname = python38-sqlparse
