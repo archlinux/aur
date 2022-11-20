@@ -1,0 +1,12 @@
+diff --unified --recursive --text tiptop-2.3.1/src/helpwin.c tiptop-2.3.1.new/src/helpwin.c
+--- tiptop-2.3.1/src/helpwin.c	2017-10-08 08:24:46.000000000 +0000
++++ tiptop-2.3.1.new/src/helpwin.c	2022-11-20 16:51:24.471470084 +0000
+@@ -61,7 +61,7 @@
+     wattroff(win, A_REVERSE);
+ 
+   /* screen description */
+-  mvwprintw(win, 2, 1, screen->desc);
++  mvwprintw(win, 2, 1, "%s", screen->desc);
+ 
+   /* max size of column headers */
+   for(i = 0; i < n; i++) {

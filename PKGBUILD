@@ -13,7 +13,7 @@ license=('GPL')
 depends=('libxml2')
 makedepends=('byacc' 'inetutils')
 
-source=("http://tiptop.gforge.inria.fr/releases/tiptop-$pkgver.tar.gz")
+source=("https://files.inria.fr/pacap/tiptop/tiptop-$pkgver.tar.gz" "tiptop-2.3.1--format-security.patch")
 
 sha1sums=('52ccd0d5dfa0a8a6f692c379e560a394a6f376b9')
 
