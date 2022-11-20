@@ -8,19 +8,19 @@
 # https://github.com/QubesOS/qubes-issues/issues/3279
 # https://bugs.archlinux.org/task/50548
 
+# shellcheck disable=SC2034
 _pkgname="zenity"
 _variant="gtk4"
 pkgname="${_pkgname}-${_variant}-git"
 pkgver=3.32.0.r105.g55f7e47e
 pkgrel=1
 pkgdesc="Display graphical dialog boxes from shell scripts"
-url="https://gitlab.gnome.org/GNOME/zenity"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 _branch="${_variant}-port"
 arch=(x86_64)
 license=(LGPL)
-provides=("${_pkgname}-${_variant}")
-conflicts=("${_pkgname}-${_variant}")
-replaces=('zenity')
+provides=("${_pkgname}" "${_pkgname}-${_variant}")
+conflicts=("${_pkgname}" "${_pkgname}-${_variant}")
 depends=('libnotify')
 makedepends=(meson yelp-tools)
 source=("${_pkgname}::git+${url}#branch=${_branch}")
@@ -37,24 +37,15 @@ prepare() {
 }
 
 build() {
-  arch-meson zenity build
+  arch-meson "${_pkgname}" build
   meson compile -C build
 }
-#  cd ${pkgname%-*}
-#  ./configure \
-#      --prefix=/usr \
-#      --sysconfdir=/etc \
-#      --disable-webkitgtk \
-#      --localstatedir=/var
-#  make
-#}
 
 check() {
   meson test -C build --print-errorlogs
 }
 
+# shellcheck disable=SC2154
 package() {
-#  cd ${pkgname%-*}
-#  make DESTDIR="${pkgdir}" install
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir}"
 }
