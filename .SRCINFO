@@ -1,0 +1,19 @@
+pkgbase = python38-aspectlib
+	pkgdesc = Development library for quickly writing configurable applications and daemons
+	pkgver = 1.5.2
+	pkgrel = 4
+	url = https://github.com/ionelmc/python-aspectlib
+	arch = any
+	license = BSD
+	checkdepends = python38-tornado
+	checkdepends = python38-process-tests
+	checkdepends = python38-profilestats
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38-fields
+	source = python38-aspectlib-1.5.2.tar.gz::https://github.com/ionelmc/python-aspectlib/archive/v1.5.2.tar.gz
+	source = python310.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/master/python-aspectlib/trunk/python310.patch
+	sha512sums = 33642f828989d07c6af78bdf9adc9f2abbc419df89b878cfe7bd9c8df226a59401176b56b1f2b3ba48661ea5a145520de0bc7a0980226b742b0a79f31ab7dd7f
+	sha512sums = 74b4261afd1fe20749f94dab067514eab12c484453607b820a96e1e8308fddbac4ac49ce24334c79c9fea6729877457ae60cb5004709106186c51d9af66087af
+
+pkgname = python38-aspectlib
