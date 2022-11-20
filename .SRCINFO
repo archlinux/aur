@@ -1,6 +1,6 @@
 pkgbase = rocm-opencl-runtime
 	pkgdesc = OpenCL implementation for AMD
-	pkgver = 5.3.0
+	pkgver = 5.3.3
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rocm-opencl-runtime
 	depends = mesa
 	depends = opencl-icd-loader
 	provides = opencl-driver
-	source = rocm-opencl-runtime-5.3.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-5.3.0.tar.gz
-	source = rocm-opencl-runtime-rocclr-5.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-5.3.0.tar.gz
-	sha256sums = d251e2efe95dc12f536ce119b2587bed64bbda013969fa72be58062788044a9e
-	sha256sums = 2bf14116b5e2270928265f5d417b3d0f0f2e13cbc8ec5eb8c80d4d4a58ff7e94
+	source = rocm-opencl-runtime-5.3.3.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-5.3.3.tar.gz
+	source = rocm-opencl-runtime-rocclr-5.3.3.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-5.3.3.tar.gz
+	sha256sums = cab394e6ef16c35bab8de29a66b96a7dc0e7d1297aaacba3718fa1d369233c9f
+	sha256sums = f8133a5934f9c53b253d324876d74f08a19e2f5b073bc94a62fe64b0d2183a18
 
 pkgname = rocm-opencl-runtime
