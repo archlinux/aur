@@ -1,0 +1,13 @@
+pkgbase = python38-pytest-lazy-fixture
+	pkgdesc = Use fixtures in @pytest.mark.parametrize
+	pkgver = 0.6.3
+	pkgrel = 5
+	url = https://github.com/tvorog/pytest-lazy-fixture
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-lazy-fixture/pytest-lazy-fixture-0.6.3.tar.gz
+	sha256sums = 0e7d0c7f74ba33e6e80905e9bfd81f9d15ef9a790de97993e34213deb5ad10ac
+
+pkgname = python38-pytest-lazy-fixture
