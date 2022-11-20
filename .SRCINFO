@@ -1,0 +1,24 @@
+pkgbase = python38-elasticsearch
+	pkgdesc = Python client for Elasticsearch
+	pkgver = 7.9.0
+	pkgrel = 1
+	url = https://github.com/elastic/elasticsearch-py
+	arch = any
+	license = Apache
+	checkdepends = python38-requests
+	checkdepends = python38-mock
+	checkdepends = python38-yaml
+	checkdepends = python38-pytest
+	checkdepends = python38-numpy
+	checkdepends = python38-pandas
+	checkdepends = python38-aiohttp
+	checkdepends = python38-pytest-asyncio
+	makedepends = python38-setuptools
+	makedepends = git
+	depends = python38-certifi
+	depends = python38-urllib3
+	source = python38-elasticsearch-7.9.0.tar.gz::https://github.com/elastic/elasticsearch-py/archive/7.9.0.tar.gz
+	sha512sums = 2fae863434f7bf06c0669426b4a261f5d0c9ea26bd68783393bf25521e46484a0d6267438ae73590b7961b2a1b1a347cf89f33a9904983a82469b25b14894657
+	sha512sums = 495694c1d89ad453fd1d2e83092a741a256cbe5627ebcca22770b340a9ac77fabcdea83fa84f1c9c0ffe734517a099f98ee8a95f1384b5f716eb34273a21b39f
+
+pkgname = python38-elasticsearch
