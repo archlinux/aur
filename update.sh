@@ -1,4 +1,6 @@
 # /bin/bash
+set +e
+sudo pacman -R symfony-cli-bin
 set -e
 rm -rf src
 rm -rf pkg
