@@ -3,7 +3,7 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 # Maintainer: Jeff Mickey <jeff@archlinux.org>
 pkgname=shepherd
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Service manager that looks after the herd."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('guile' 'guile-fibers')
 makedepends=('gcc' 'make' 'gawk' 'sed')
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('b8861f58596f0938375d1a13ab4142f6dca50340')
+sha1sums=('bb6694367f5f0a620c4999050133dad6d3754ecf')
 
 OPTIONS=(!strip)
 
