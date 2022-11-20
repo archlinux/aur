@@ -1,7 +1,7 @@
 # Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 
 pkgname=snapchat-nativefier
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Snapchat web built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -12,9 +12,11 @@ optdepends=("libindicator-gtk3")
 makedepends=("imagemagick" "inkscape" "nodejs-nativefier" "unzip")
 source=(
   "https://upload.wikimedia.org/wikipedia/en/c/c4/Snapchat_logo.svg"
+  "whatsapp-nativefier-inject.js::https://aur.archlinux.org/cgit/aur.git/plain/whatsapp-nativefier-inject.js?h=whatsapp-nativefier"
   "${pkgname}.desktop"
 )
 sha256sums=('73b811daaddb6eac1dde7f110850148ca273cb108e4f4cd95ac1d4d1b72eeab2'
+            'SKIP'
             '46ff7aa6dbe376cf081411419bd30249e5b6babc50abfa2bde15f4d659a64bf4')
 
 build() {
@@ -29,6 +31,7 @@ build() {
     --width "800px" \
     --height "600px" \
     --user-agent "Mozilla/5.0 (X11; Linux $(uname -m)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.167 Safari/537.36" \
+    --inject "whatsapp-nativefier-inject.js" \
     --verbose \
     --single-instance \
     --tray \
