@@ -1,0 +1,14 @@
+pkgbase = python38-bcrypt
+	pkgdesc = Modern password hashing for your software and your servers
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/pyca/bcrypt
+	arch = x86_64
+	license = Apache
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools-rust
+	depends = python38
+	source = python38-bcrypt-4.0.1.tar.gz::https://github.com/pyca/bcrypt/archive/4.0.1.tar.gz
+	sha512sums = eb7b1d67a2d60e82e2d2e4dcb12d7808be910f9b7aefab714a22dedbffc3722182875fdcf3c8c650c0bb7c1122e9e8bead92f18bc660043b017a14957467e2a9
+
+pkgname = python38-bcrypt
