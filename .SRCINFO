@@ -1,0 +1,13 @@
+pkgbase = python38-typed-ast
+	pkgdesc = a fork of Python 2 and 3 ast modules with type comment support
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/python/typed_ast
+	arch = x86_64
+	license = Apache
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-typed-ast-1.5.4.tar.gz::https://github.com/python/typed_ast/archive/1.5.4.tar.gz
+	sha256sums = 1b2db37247c74594660aa9ad40014394fd765ed7fba90256f472329c06e742ab
+
+pkgname = python38-typed-ast
