@@ -1,0 +1,20 @@
+pkgbase = python38-iso8601
+	pkgdesc = Simple module to parse ISO 8601 dates
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = https://pyiso8601.readthedocs.io/en/latest/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-hypothesis
+	checkdepends = python38-pytz
+	makedepends = python38-poetry-core
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	makedepends = python38-build
+	makedepends = python38-installer
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/i/iso8601/iso8601-1.1.0.tar.gz
+	sha256sums = 32811e7b81deee2063ea6d2e94f8819a86d1f3811e49d23623a41fa832bef03f
+
+pkgname = python38-iso8601
