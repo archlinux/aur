@@ -1,0 +1,13 @@
+pkgbase = python38-numexpr
+	pkgdesc = Fast numerical array expression evaluator for Python 3.8, NumPy, PyTables, pandas
+	pkgver = 2.8.4
+	pkgrel = 1
+	url = https://github.com/pydata/numexpr
+	arch = x86_64
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38-numpy
+	source = https://github.com/pydata/numexpr/archive/v2.8.4/python38-numexpr-2.8.4.tar.gz
+	sha256sums = 0e21addd25db5f62d60d97e4380339d9c1fb2de72c88b070c279776ee6455d10
+
+pkgname = python38-numexpr
