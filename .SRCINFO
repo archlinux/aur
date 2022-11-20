@@ -8,9 +8,10 @@ pkgbase = zenity-gtk4-git
 	makedepends = meson
 	makedepends = yelp-tools
 	depends = libnotify
+	provides = zenity
 	provides = zenity-gtk4
+	conflicts = zenity
 	conflicts = zenity-gtk4
-	replaces = zenity
 	source = zenity::git+https://gitlab.gnome.org/GNOME/zenity#branch=gtk4-port
 	sha256sums = SKIP
 
