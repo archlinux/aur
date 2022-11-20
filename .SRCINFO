@@ -1,7 +1,7 @@
 pkgbase = catppuccin-mocha-light-cursors
 	pkgdesc = Catppuccin mocha light cursors, Soothing pastel mouse cursors
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catppuccin/cursors
 	arch = any
 	license = GPL
