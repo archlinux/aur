@@ -1,0 +1,20 @@
+pkgbase = python38-setuptools-rust
+	pkgdesc = Compile and distribute Python 3.8 extensions written in rust as easily as if they were written in C.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/PyO3/setuptools-rust
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-benchmark
+	checkdepends = python38-beautifulsoup4
+	checkdepends = python38-lxml
+	checkdepends = python38-cffi
+	depends = rust
+	depends = python38-setuptools
+	depends = python38-semantic-version
+	depends = python38-typing-extensions
+	source = https://github.com/PyO3/setuptools-rust/archive/v1.5.2/python38-setuptools-rust-1.5.2.tar.gz
+	sha512sums = e80d1296fd09c24b644d821e981261153ff19ae62d978fc8ee81c78e440d215f9d1e91e33d758effb94fcb64985937445940f2e2f032ad1b8c2aa39be79cf19d
+
+pkgname = python38-setuptools-rust
