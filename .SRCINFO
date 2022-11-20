@@ -1,0 +1,16 @@
+pkgbase = python38-ddt
+	pkgdesc = Data-Driven/Decorated Tests
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/txels/ddt
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-six
+	checkdepends = python38-yaml
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-ddt-1.6.0.tar.gz::https://github.com/txels/ddt/archive/1.6.0.tar.gz
+	sha512sums = c5ea14d3f60384676d9631c84d938b774dd360cea9b0ee1b111692dc2bc06238b5ffd3ab8950207b77aa007bac0ac79b290533a2532be4bee68b642629843a82
+
+pkgname = python38-ddt
