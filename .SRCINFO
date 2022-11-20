@@ -11,13 +11,6 @@ pkgbase = coreboot-toolchain
 	license = GPL2
 	license = LGPL2Plus
 	license = GPL3Plus
-	provides = coreboot-toolchain-i386
-	provides = coreboot-toolchain-x64
-	provides = coreboot-toolchain-arm
-	provides = coreboot-toolchain-aarch64
-	provides = coreboot-toolchain-riscv
-	provides = coreboot-toolchain-ppc64
-	provides = coreboot-toolchain-nds32le
 	options = buildflags
 	source = git+https://review.coreboot.org/coreboot#commit=f4c97ea131944c7be940b35361407e4b63a14faf
 	sha256sums = SKIP

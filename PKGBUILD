@@ -12,7 +12,6 @@ url='https://www.coreboot.org'
 license=(BSD2 BSD3 GPL2 LGPL2Plus GPL3Plus)
 arch=(x86_64 aarch64 riscv)
 depends=() # TODO
-provides=()
 makedepends=() # TODO
 options=('buildflags')
 source=("git+https://review.coreboot.org/coreboot#commit=${_commit}")
@@ -21,7 +20,6 @@ sha256sums=('SKIP')
 
 for target_arch in ${_targets}; do
   pkgname+=("${pkgbase}-${target_arch}")
-  provides+=("${pkgbase}-${target_arch}")
 done
 
 
