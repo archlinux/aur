@@ -17,6 +17,11 @@ source=("https://files.inria.fr/pacap/tiptop/tiptop-$pkgver.tar.gz" "tiptop-2.3.
 
 sha1sums=('52ccd0d5dfa0a8a6f692c379e560a394a6f376b9')
 
+prepare () {
+    cd "$srcdir/$pkgname-$pkgver"
+    patch --strip=1 --input="${srcdir}/tiptop-2.3.1--format-security.patch"
+}
+
 build() {
     cd tiptop-"$pkgver"
     ./configure --prefix=/usr
