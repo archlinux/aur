@@ -1,0 +1,17 @@
+pkgbase = python38-pytest-mypy
+	pkgdesc = Mypy static type checker plugin for Pytest
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/dbader/pytest-mypy
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-xdist
+	checkdepends = python38-pexpect
+	makedepends = python38-setuptools-scm
+	depends = mypy
+	depends = python38-filelock
+	depends = python38-pytest
+	source = https://github.com/dbader/pytest-mypy/archive/v0.10.1/python38-pytest-mypy-0.10.1.tar.gz
+	sha512sums = 3c86aa94183f28ec066ee5cc8470235a7b052d876d78375d543db705fe99ed4ea9b40bfee9c0ec9f609f643ab146bdecbce1bce5756f7b6069f9f76a02de1fb7
+
+pkgname = python38-pytest-mypy
