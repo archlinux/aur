@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.3.0
+	pkgver = 4.3.0_arbitrary_city_state_uniques
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.3.0.jar
-	source = Unciv-4.3.0.jar::https://github.com/yairm210/Unciv/releases/download/4.3.0/Unciv.jar
-	source = Unciv-4.3.0.png::https://raw.githubusercontent.com/yairm210/Unciv/4.3.0/extraImages/Unciv%20icon%20v4.png
-	source = Unciv-4.3.0.zip::https://github.com/yairm210/Unciv/releases/download/4.3.0/linuxFilesForJar.zip
-	md5sums = 7411eb8588633d0aabe2a8869f3f5cb1
+	noextract = Unciv-4.3.0-arbitrary-city-state-uniques.jar
+	source = Unciv-4.3.0-arbitrary-city-state-uniques.jar::https://github.com/yairm210/Unciv/releases/download/4.3.0-arbitrary-city-state-uniques/Unciv.jar
+	source = Unciv-4.3.0-arbitrary-city-state-uniques.png::https://raw.githubusercontent.com/yairm210/Unciv/4.3.0-arbitrary-city-state-uniques/extraImages/Unciv%20icon%20v4.png
+	source = Unciv-4.3.0-arbitrary-city-state-uniques.zip::https://github.com/yairm210/Unciv/releases/download/4.3.0-arbitrary-city-state-uniques/linuxFilesForJar.zip
+	md5sums = 28ead4ee54bfa62498f29f35bfdd229e
 	md5sums = 5aca7fc33f121fcf901fef14f784731a
-	md5sums = 12966bbe2e6e4c050f801ea4cc65eb52
+	md5sums = 841d84ed83ae572b1bbee9020a3b5fe7
 
 pkgname = unciv-bin
