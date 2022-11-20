@@ -1,0 +1,18 @@
+pkgbase = python38-certifi
+	pkgdesc = Python package for providing Mozilla's CA Bundle (using system CA store)
+	pkgver = 2022.09.24
+	pkgrel = 1
+	url = https://github.com/certifi/python-certifi
+	arch = any
+	license = MPL2
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	depends = ca-certificates
+	source = https://github.com/certifi/python-certifi/archive/2022.09.24/python38-certifi-2022.09.24.tar.gz
+	sha512sums = a7b5ffa2cc3de39c8a204ed7da077c63971d4305565d6663292fc6b530fb6bbb9cfc6777b5998c54f8a06506f871063aae02692ec8508f903f716c73852487e4
+
+pkgname = python38-certifi
