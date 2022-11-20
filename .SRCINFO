@@ -1,16 +1,14 @@
-pkgbase = remindme-git
-	pkgdesc = Simple tool to add remind(1) task using natural language processing
-	pkgver = v1.2.0.r0.g7cfef70
+pkgbase = monocol-git
+	pkgdesc = Simple tool to generate monochromatic colorscheme for wpg
+	pkgver = v1.0.0.r0.g9998d59
 	pkgrel = 1
-	url = https://git.sr.ht/~primalmotion/remindme
+	url = https://git.sr.ht/~primalmotion/monocol
 	arch = any
 	license = GPL3
 	makedepends = go
-	makedepends = pandoc
-	depends = remind
-	provides = remindme
-	conflicts = remindme
-	source = remindme-git::git+https://git.sr.ht/~primalmotion/remindme
+	provides = monocol
+	conflicts = monocol
+	source = monocol-git::git+https://git.sr.ht/~primalmotion/monocol
 	sha1sums = SKIP
 
-pkgname = remindme-git
+pkgname = monocol-git
