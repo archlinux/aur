@@ -1,0 +1,18 @@
+pkgbase = python38-prettytable
+	pkgdesc = A simple Python library for easily displaying tabular data
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/jazzband/prettytable
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-lazy-fixture
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	makedepends = python38-hatch-vcs
+	depends = python38-wcwidth
+	conflicts = python38-ptable
+	source = https://github.com/jazzband/prettytable/archive/3.5.0/python38-prettytable-3.5.0.tar.gz
+	sha512sums = 24ef28a42365568bf68a974afd42fcc1bfb9208e1cb75fc1b2890bc2253487afa6536e778b58e320e952ca8bf9b69193bd1293bb7615628d03765ee24c44edff
+
+pkgname = python38-prettytable
