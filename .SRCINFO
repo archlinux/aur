@@ -1,0 +1,22 @@
+pkgbase = python38-isoduration
+	pkgdesc = Operations with ISO 8601 durations
+	pkgver = 20.11.0
+	pkgrel = 1
+	url = https://github.com/bolsote/isoduration
+	arch = any
+	license = ISC
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-benchmark
+	checkdepends = python38-isodate
+	checkdepends = python38-hypothesis
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = python
+	depends = python38-arrow
+	source = python38-isoduration::git+https://github.com/bolsote/isoduration#commit=f7316c5dad4d087d823795feaa401653906ac340
+	b2sums = SKIP
+
+pkgname = python38-isoduration
