@@ -1,6 +1,26 @@
-# This is a software made by David Rosca (nowrep); published on GitHub.
+# This is a software made by David Rosca (nowrep); forked by Martin Stibor; published on GitHub.
 #
-# This PKGBUILD is modified by Martin von Reichenberg from original upstream dualsensectl-git PKGBUILD - https://github.com/nowrep/dualsensectl/blob/main/dist/PKGBUILD.
+# AUTHORS:
+#
+# Original developer:  David Rosca <nowrep@gmail.com>
+# Arch Linux packager:  David Rosca <nowrep@gmail.com>
+# Original openSUSE packager: Fabio Pesari  <fpesari@tuxfamily.org>
+# openSUSE packager:  Martin Stibor <martin.von.reichenberg@protonmail.com>
+# Fedora packager:  Christian Birk <mail@birkc.de>
+# Debian/Ubuntu packager:  Martin Stibor <martin.von.reichenberg@protonmail.com>
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the GPL/MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+#
+# Please submit bugfixes or comments via https://bugzilla.opensuse.org/ | https://build.opensuse.org/ ; more info at https://en.opensuse.org/openSUSE:Submitting_bug_reports
+# Alternatively use GitHub to contact the 'developers' directly.
+#
 #
 # RECOMMENDED:
 # udev rules - https://github.com/nowrep/dualsensectl#udev-rules:
@@ -13,16 +33,16 @@
 # KERNEL=="hidraw*", KERNELS=="*054C:0CE6*", MODE="0660", TAG+="uaccess"
 
 pkgname=dualsensectl
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
-pkgdesc='Tool for controlling PS5 DualSense controller on Linux'
+pkgdesc='Tool for controlling Sony PlayStation 5 DualSense controller on Linux'
 arch=('any')
 conflicts=('dualsensectl-git')
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL2')
 depends=('dbus' 'hidapi')
-makedepends=( 'make' 'git' 'gcc')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nowrep/dualsensectl/archive/refs/tags/v${pkgver}.tar.gz")
+makedepends=('make' 'gcc')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MartinVonReichenberg/dualsensectl/archive/refs/tags/v0.3.tar.gz")
 sha512sums=('SKIP')
 
 build() {
@@ -36,6 +56,6 @@ package() {
 install() {
     $(CC) main.c -o $(TARGET) $(DEFINES) $(CFLAGS) $(LIBS)
     install -D -m 755 -p $(TARGET) $(DESTDIR)/usr/bin/$(TARGET)
-	install -D -m 644 -p completion/$(TARGET) $(DESTDIR)/usr/share/bash-completion/completions/$(TARGET)
-	install -D -m 644 -p completion/_$(TARGET) $(DESTDIR)/usr/share/zsh/site-functions/_$(TARGET)
+    install -D -m 755 -p completion/$(TARGET) $(DESTDIR)/usr/share/bash-completion/completions/$(TARGET)
+    install -D -m 755 -p completion/_$(TARGET) $(DESTDIR)/usr/share/zsh/site-functions/_$(TARGET)
 }
