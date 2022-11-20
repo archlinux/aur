@@ -10,13 +10,13 @@ url=https://app.lizardbyte.dev
 license=('GPL3')
 
 depends=('avahi' 'boost-libs' 'curl' 'ffmpeg4.4' 'libevdev' 'libpulse' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'openssl' 'opus' 'udev')
-makedepends=('boost' 'cmake' 'git' 'make')
+makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
 optdepends=('cuda' 'libcap' 'libdrm')
 
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=4c1371aaeb4be1dabd479a0650305950cb59ec4f")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=fbd6807eb874346319c91777f9e867b8ea7dcce7")
 sha256sums=('SKIP')
 
 prepare() {
@@ -25,6 +25,10 @@ prepare() {
 }
 
 build() {
+    pushd "$pkgname/src_assets/common/assets/web"
+    npm install
+    popd
+
     export CFLAGS="${CFLAGS/-Werror=format-security/}"
     export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
