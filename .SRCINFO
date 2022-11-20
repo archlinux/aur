@@ -1,0 +1,18 @@
+pkgbase = python38-hypothesmith
+	pkgdesc = Hypothesis strategies for generating Python programs, something like CSmith
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Zac-HD/hypothesmith
+	arch = any
+	license = MPL
+	checkdepends = python38-black
+	checkdepends = python38-parso
+	checkdepends = python38-pytest-cov
+	makedepends = python38-setuptools
+	depends = python38-hypothesis
+	depends = python38-lark-parser
+	depends = python38-libcst
+	source = https://pypi.io/packages/source/h/hypothesmith/hypothesmith-0.2.0.tar.gz
+	sha512sums = b82627897f0e07e6249ce2d3730134690dbe340b81632a1101b6b6b9a9ac6ccd0f350ba10f729349ef200b9243081f7f58eb760ccbcb4175adfcc5f411a8a045
+
+pkgname = python38-hypothesmith
