@@ -1,0 +1,15 @@
+pkgbase = python38-pandas-datareader
+	pkgdesc = Data readers extracted from the pandas codebase
+	pkgver = 0.10.0
+	pkgrel = 2
+	url = https://github.com/pydata/pandas-datareader
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38-pandas
+	depends = python38-lxml
+	depends = python38-requests
+	source = python38-pandas-datareader-0.10.0.tar.gz::https://github.com/pydata/pandas-datareader/archive/v0.10.0.tar.gz
+	sha256sums = 73385b23d42599c6f6f34966f0f22287acd8b775917d5694ae6df4adaf0d0add
+
+pkgname = python38-pandas-datareader
