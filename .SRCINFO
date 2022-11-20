@@ -1,0 +1,18 @@
+pkgbase = python38-isort
+	pkgdesc = A Python utility / library to sort Python imports
+	pkgver = 5.10.1
+	pkgrel = 6
+	url = https://github.com/PyCQA/isort
+	arch = any
+	license = MIT
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-poetry-core
+	depends = python38
+	depends = python38-toml
+	depends = python38-tomli
+	source = https://github.com/PyCQA/isort/archive/5.10.1/isort-5.10.1.tar.gz
+	sha256sums = 7f3a99bb1e93e58ae10737b8a31d45aa03a096b1c4cbbbd55f05226e40089cf7
+
+pkgname = python38-isort
