@@ -2,7 +2,7 @@
 
 pkgname=json-schema-for-humans
 pkgver=0.42.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=('any')
 url="https://github.com/coveooss/json-schema-for-humans"
@@ -31,23 +31,15 @@ checkdepends=(
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  "include-templates.patch"
 )
 sha256sums=(
   '4ba6c990495a9d25bccebbb716defaca208d15cff41a5dbd982243eb252e5cc1'
-  '0a0276981b44707d3e18df224397fdc67100161a2ebbba8cf310a4ca6ef73c9a'
 )
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch --forward --strip=1 --input="$srcdir/include-templates.patch"
-}
 
 build() {
   cd "$pkgname-$pkgver"
 
-  python -m build --wheel --no-isolation
+  GIT_DIR=$PWD python -m build --wheel --no-isolation
 }
 
 check() {
