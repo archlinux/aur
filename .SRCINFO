@@ -1,0 +1,14 @@
+pkgbase = python38-debtcollector
+	pkgdesc = A collection of Python deprecation patterns and strategies that help you collect your technical debt in a non-destructive manner.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://docs.openstack.org/developer/debtcollector
+	arch = any
+	license = Apache
+	checkdepends = python38-stestr
+	makedepends = python38-pbr
+	depends = python38-wrapt
+	source = https://github.com/openstack/debtcollector/archive/2.5.0/python38-debtcollector-2.5.0.tar.gz
+	sha512sums = a6f00eece3e5fa61feef39a4d10f82f81a2548eac06b2650b2caea2ee525ce886db0994053b64032adf06171d94dfb7f90af06acc56ddde76a62188ee8f4f9ae
+
+pkgname = python38-debtcollector
