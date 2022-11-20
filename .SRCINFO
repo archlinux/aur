@@ -1,6 +1,6 @@
 pkgbase = glances-git
 	pkgdesc = CLI curses-based monitoring tool (git)
-	pkgver = 3.2.4.2.r65.g021ac4ce
+	pkgver = 3.3.0.4.r65.gea60836c
 	pkgrel = 1
 	url = https://github.com/nicolargo/glances
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = glances-git
 	depends = python-psutil
 	depends = python-future
 	depends = python-defusedxml
+	depends = python-ujson
 	optdepends = hddtemp: HDD temperature monitoring support
 	optdepends = python-bottle: web server support
 	optdepends = python-docker: for the Docker monitoring support
