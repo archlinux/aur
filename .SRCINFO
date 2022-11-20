@@ -1,0 +1,20 @@
+pkgbase = python38-zipp
+	pkgdesc = Pathlib-compatible object wrapper for zip files
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/jaraco/zipp
+	arch = any
+	license = MIT
+	checkdepends = python38-jaraco.itertools
+	checkdepends = python38-func-timeout
+	checkdepends = python38-more-itertools
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-toml
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/jaraco/zipp/archive/v3.10.0/python38-zipp-3.10.0.tar.gz
+	sha512sums = ca0103742051648531b2df57545018f779b166fb25117254ea4826ec5364b1fb501fab68aa56d5ffe86df563116027a68858e87a9eacb9b67fb50ad51cbf1066
+
+pkgname = python38-zipp
