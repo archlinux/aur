@@ -27,7 +27,6 @@ package() {
   local bin=${_repo##*/}
   PYTHONPATH="$(ls -d "$pkgdir"/usr/lib/python*/site-packages)"
   export PYTHONPATH
-  echo $PYTHONPATH
   "$pkgdir/usr/bin/$bin" --print-completion bash > "$bin.bash"
   "$pkgdir/usr/bin/$bin" --print-completion zsh > "_$bin"
   "$pkgdir/usr/bin/$bin" --print-completion tcsh > "$bin.csh"
