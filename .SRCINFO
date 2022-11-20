@@ -1,0 +1,16 @@
+pkgbase = python38-pytest-localserver
+	pkgdesc = py.test plugin to test server connections locally
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://bitbucket.org/pytest-dev/pytest-localserver
+	arch = any
+	license = MIT
+	checkdepends = python38-requests
+	makedepends = python38-setuptools
+	depends = python38-pytest
+	depends = python38-werkzeug
+	optdepends = python38-aiosmtpd: for smtp
+	source = https://files.pythonhosted.org/packages/source/p/pytest-localserver/pytest-localserver-0.7.0.tar.gz
+	sha512sums = 1fb1acaeb190d35ebd05cdd63ce15e4a9138802901cef8c25c1fa6dd177d8af2b6b2749f5a052942bf655ffd2ff6105de8a652d73faab369ce6dcf3219bb2394
+
+pkgname = python38-pytest-localserver
