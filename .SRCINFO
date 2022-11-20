@@ -1,0 +1,22 @@
+pkgbase = python38-pytest-benchmark
+	pkgdesc = A py.test fixture for benchmarking code
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/ionelmc/pytest-benchmark
+	arch = any
+	license = BSD
+	checkdepends = python38-pygal
+	checkdepends = python38-pygaljs
+	checkdepends = python38-freezegun
+	checkdepends = mercurial
+	checkdepends = python38-aspectlib
+	checkdepends = python38-pytest-xdist
+	checkdepends = python38-elasticsearch
+	checkdepends = git
+	makedepends = python38-setuptools
+	depends = python38-pytest
+	depends = python38-py-cpuinfo
+	source = python38-pytest-benchmark-4.0.0.tar.gz::https://github.com/ionelmc/pytest-benchmark/archive/v4.0.0.tar.gz
+	sha512sums = 88636e44c184f5072ad081a89f08e8838a11397e6b88298d7f235b531f894792001b858fc5c810b1399d41ec55de5db9057552fb7544fb405a04c3ba5ffbe329
+
+pkgname = python38-pytest-benchmark
