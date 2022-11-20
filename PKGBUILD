@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=ecal
-pkgver=5.10.2
+pkgver=5.10.3
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -10,14 +10,13 @@ license=('Apache')
 depends=('curl' 'protobuf' 'qt5-base' 'qwt' 'hdf5')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz')
 optdepends=()
-source=("https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz"
-        "fineftp-server.filesystem.cpp.patch")
-sha256sums=('6be9b6318896bc91e86fb288f40811d377633dc1d485c3cecaa34900a3657abd'
-            'ebbc58b792f402c43d83f05e4dec59b714ae455077a5e93aff5a040fffd3bb72')
+source=("https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
+sha256sums=('3d80dc37364474e3a9cf52ac0b05a3cd256e407d547ae0417545f0947f9fd558')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
-    patch --forward --strip=1 --input="../fineftp-server.filesystem.cpp.patch" "$pkgname/thirdparty/fineftp-server/fineftp-server/src/filesystem.cpp"
+#    patch --forward --strip=1 --input="../fineftp-server.filesystem.cpp.patch" "$pkgname/thirdparty/fineftp-server/fineftp-server/src/filesystem.cpp"
+    :
 }
 
 build() {
