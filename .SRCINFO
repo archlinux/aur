@@ -1,0 +1,26 @@
+pkgbase = python38-tabulate
+	pkgdesc = Pretty-print tabular data in Python, a library and a command-line utility.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/astanin/python-tabulate
+	arch = any
+	license = MIT
+	checkdepends = python38-nose
+	checkdepends = python38-numpy
+	checkdepends = python38-pandas
+	checkdepends = python38-pytest
+	checkdepends = python38-wcwidth
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-toml
+	makedepends = python38-wheel
+	depends = python38
+	optdepends = python38-numpy: NumPy array support
+	optdepends = python38-pandas: pandas.DataFrame support
+	optdepends = python38-wcwidth: wide-character support
+	source = https://files.pythonhosted.org/packages/source/t/tabulate/tabulate-0.9.0.tar.gz
+	sha512sums = 042a6b34ea6e5b6324cb40112b3078b62e6f1f6186401262e7b06a5b96dd118d4b70e259a96121e383ac1fe53f3953c27532206af9825b97db9f41fe1e5f3934
+	b2sums = 5912f173002428df2e5ff899cff8322e9bcec76e5ba0cbe2e3321d4b2e54ba110c84b8bb112b1a9b4e032b35eb5695604181474884154af1379c6226120b84b2
+
+pkgname = python38-tabulate
