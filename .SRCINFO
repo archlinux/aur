@@ -1,0 +1,15 @@
+pkgbase = python38-asgiref
+	pkgdesc = Reference ASGI adapters and channel layers
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = http://github.com/django/asgiref
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-asyncio
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/a/asgiref/asgiref-3.5.2.tar.gz
+	sha256sums = 4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424
+
+pkgname = python38-asgiref
