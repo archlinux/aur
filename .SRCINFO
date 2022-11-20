@@ -1,0 +1,14 @@
+pkgbase = python38-xlsxwriter
+	pkgdesc = A Python module for creating Excel XLSX files
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/jmcnamara/XlsxWriter
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-xlsxwriter-3.0.3.tar.gz::https://github.com/jmcnamara/XlsxWriter/archive/RELEASE_3.0.3.tar.gz
+	sha512sums = 92a53226aa9ee9f8493fe7171ce752f3a13ef8f3107aecbef896f17022e93bd7dbccb5e619fcbbb3598102030b190d75508d4dacce20b9643eead59a4441f6aa
+	b2sums = f4dfa6b286dda94a1a44d8168b8e17f7a37f2f59a23aa3a5ed0efa46b5d8bdcdb831e99a61924e22755c6a921c23f5c540c048152cd07363841ff09a49549c79
+
+pkgname = python38-xlsxwriter
