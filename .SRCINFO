@@ -1,0 +1,22 @@
+pkgbase = python38-flask
+	pkgdesc = Micro webdevelopment framework for Python
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://flask.pocoo.org/
+	arch = any
+	license = custom:BSD
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = python38-werkzeug
+	depends = python38-jinja
+	depends = python38-itsdangerous
+	depends = python38-click
+	optdepends = python38-asgiref: async functions and views
+	optdepends = python38-dotenv: loading env vars from files
+	source = python38-flask-2.2.2.tar.gz::https://github.com/pallets/flask/archive/2.2.2.tar.gz
+	sha512sums = ab069d27fdfc056a3cdde2fa7f89486781fbf4fa396c0dde20e99458b76790f83cda4e4acba23f598bc0a86c68a80d7b2c58657ad0b2c67b5ad1bb997185db2a
+
+pkgname = python38-flask
