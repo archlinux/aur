@@ -1,0 +1,17 @@
+pkgbase = python38-characteristic
+	pkgdesc = Python attributes without boilerplate.
+	pkgver = 14.3.0
+	pkgrel = 15
+	url = https://pypi.python.org/pypi/characteristic
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/c/characteristic/characteristic-14.3.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/characteristic/characteristic-14.3.0.tar.gz.asc
+	validpgpkeys = C2A04F86ACE28ADCF817DBB7AE2536227F69F181
+	sha256sums = ded68d4e424115ed44e5c83c2a901a0b6157a959079d7591d92106ffd3ada380
+	sha256sums = SKIP
+
+pkgname = python38-characteristic
