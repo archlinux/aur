@@ -1,0 +1,21 @@
+pkgbase = python38-django
+	pkgdesc = A high-level Python 3.8 Web framework that encourages rapid development and clean design
+	pkgver = 4.1.3
+	pkgrel = 1
+	url = http://www.djangoproject.com/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-tblib
+	makedepends = python38
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-pytz
+	depends = python38-sqlparse
+	depends = python38-asgiref
+	optdepends = python38-psycopg2: for PostgreSQL backend
+	optdepends = python38-argon2_cffi: for Argon2 password hashing support
+	source = Django-4.1.3.tar.gz::https://www.djangoproject.com/download/4.1.3/tarball/
+	sha512sums = 3bc77444f22b9dc029d5f45b6481224b99afe41f43d6306db69d01ca5ba24ed05f6c3bd7b3f5320dd96e6d79a47ac1c8f45a86cd8d3822432be4e73b006026ca
+
+pkgname = python38-django
