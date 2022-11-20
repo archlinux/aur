@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp-middlewares
 	pkgdesc = Collection of useful middlewares for aiohttp.web applications
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/playpauseandstop/aiohttp-middlewares
 	arch = any
 	license = custom:BSD3

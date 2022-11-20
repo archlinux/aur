@@ -3,7 +3,7 @@
 pkgname=python-aiohttp-middlewares
 _pypiname=aiohttp-middlewares
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of useful middlewares for aiohttp.web applications"
 arch=('any')
 url="https://github.com/playpauseandstop/aiohttp-middlewares"
@@ -54,4 +54,6 @@ package() {
   cd "$_pypiname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
