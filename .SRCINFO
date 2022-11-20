@@ -1,0 +1,14 @@
+pkgbase = python38-cachetools
+	pkgdesc = Extensible memoizing collections and decorators
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/tkem/cachetools
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-cachetools-5.2.0.tar.gz::https://github.com/tkem/cachetools/archive/v5.2.0.tar.gz
+	sha512sums = ac290120e9f6430e372a4ce3ff6e43f636b2934ad452ecc0f3a05002ad6aaf17b245bbce0081f769f251094a8518dc0e8f04b3d9f3ab5b87f97c02e536598c83
+
+pkgname = python38-cachetools
