@@ -1,7 +1,7 @@
  # Maintainer: Mike Cuche <cuche@gmx.com>
 
 pkgname=python-omgifol
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=2
 pkgdesc="A Python library for manipulating Doom WAD files"
 
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 
 source=("https://github.com/devinacker/omgifol/archive/${pkgver}.tar.gz")
 
-sha256sums=('4d19e1d4d11e4a9db6f9a939ad0845b804caa617c42d43cfafefeb9f6be557a2')
+sha256sums=('978e4e1f725b3badbfb3a69e74d366df4ccdc8029bfa2e60b1776fff67d2d802')
 
 package() {
   cd "${srcdir}/omgifol-${pkgver}"
