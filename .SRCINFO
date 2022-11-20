@@ -1,0 +1,14 @@
+pkgbase = python38-bottleneck
+	pkgdesc = Fast NumPy array functions written in Cython
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/kwgoodman/bottleneck
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38-numpy
+	source = https://github.com/kwgoodman/bottleneck/archive/v1.3.5/python38-bottleneck-1.3.5.tar.gz
+	sha256sums = cb39611e58e1661447000d6fb65207a73b1e355cb82174154563949e4cceea57
+
+pkgname = python38-bottleneck
