@@ -1,0 +1,20 @@
+pkgbase = python38-js2py
+	pkgdesc = JavaScript to Python Translator & JavaScript interpreter written in 100% pure Python
+	pkgver = 0.72
+	pkgrel = 1
+	url = https://github.com/PiotrDabkowski/Js2Py
+	arch = any
+	license = MIT
+	checkdepends = npm
+	checkdepends = python38-numpy
+	makedepends = python38-setuptools
+	makedepends = python38-tzlocal
+	depends = python38-six
+	depends = python38-pyjsparser
+	optdepends = python38-tzlocal: for local timezone support
+	source = python38-js2py-70fe4f557e957db082ee49f8e9b4cf4ac80071ef.tar.gz::https://github.com/PiotrDabkowski/Js2Py/archive/70fe4f557e957db082ee49f8e9b4cf4ac80071ef.tar.gz
+	source = js2py-opt-tzlocal.patch::https://github.com/PiotrDabkowski/Js2Py/pull/293.patch
+	sha512sums = 55ae8ff0d9875ce7588bbd5541077015070b95c382e2ce35a40b44939e5194cd3f29b08d544ad38d37d5cd38e6fc01884fabb35bbb2449566051095d224c4592
+	sha512sums = db4fce5b0b26cc89346347719f7feb8da65119ef54504f6475d7a52f0dbb6483c26ff259a1b5c54c98422057e64debad5d2d92585e1acfd1a1c67f301d6a328c
+
+pkgname = python38-js2py
