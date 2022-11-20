@@ -1,0 +1,19 @@
+pkgbase = python38-distlib
+	pkgdesc = Low-level functions that relate to packaging and distribution of Python 3.8 software
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://distlib.readthedocs.io
+	arch = any
+	license = PSF
+	makedepends = python38-setuptools
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/pypa/distlib/releases/download/0.3.6/distlib-0.3.6.tar.gz
+	source = https://github.com/pypa/distlib/releases/download/0.3.6/distlib-0.3.6.tar.gz.asc
+	validpgpkeys = CA749061914EAC138E66EADB9147B477339A9B86
+	b2sums = 9cd6cca18f2e2ed0c7644865644ccfa98387128ef4a4672a3fe457ee12f7625e8a01cbc8a12321262ae2e2a0c444d504bee11a2f608009d331e3a99b94206728
+	b2sums = SKIP
+
+pkgname = python38-distlib
