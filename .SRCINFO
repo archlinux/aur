@@ -9,7 +9,6 @@ pkgbase = python38-importlib-metadata
 	checkdepends = python38-pep517
 	checkdepends = python38-pyfakefs
 	checkdepends = python38-pip
-	checkdepends = python38-tests
 	makedepends = python38-build
 	makedepends = python38-installer
 	makedepends = python38-setuptools-scm
