@@ -1,0 +1,17 @@
+pkgbase = python38-google-api-core
+	pkgdesc = Google API client core library
+	pkgver = 2.10.2
+	pkgrel = 1
+	url = https://github.com/googleapis/googleapis
+	arch = any
+	license = Apache
+	makedepends = python38-setuptools
+	depends = python38-pytz
+	depends = python38-requests
+	depends = python38-googleapis-common-protos
+	depends = python38-google-auth
+	optdepends = python38-grpcio: for grpc support
+	source = https://files.pythonhosted.org/packages/source/g/google-api-core/google-api-core-2.10.2.tar.gz
+	sha256sums = 10c06f7739fe57781f87523375e8e1a3a4674bf6392cd6131a3222182b971320
+
+pkgname = python38-google-api-core
