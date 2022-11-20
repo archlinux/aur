@@ -1,0 +1,16 @@
+pkgbase = python38-psutil
+	pkgdesc = A cross-platform process and system utilities module for Python
+	pkgver = 5.9.4
+	pkgrel = 1
+	url = https://github.com/giampaolo/psutil
+	arch = x86_64
+	license = custom: BSD
+	checkdepends = net-tools
+	checkdepends = procps-ng
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/giampaolo/psutil/archive/release-5.9.4.tar.gz
+	sha512sums = ea131f301e1464bde52493910631d3cb3c8ac6a8456c19218c24433d94c11eada1cb553496838ba42eff0d6ea2ed8be68115261439fdf6ea4a642fa3fc18dc1c
+
+pkgname = python38-psutil
