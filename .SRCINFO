@@ -1,0 +1,18 @@
+pkgbase = emojimenu
+	pkgdesc = Search, copy and insert any emoji by name from dmenu/rofi.
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/whoisyoges/emojimenu
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dmenu
+	depends = xclip
+	depends = xdotool
+	depends = sed
+	optdepends = rofi
+	optdepends = libnotify
+	source = emojimenu::git+https://github.com/whoisyoges/emojimenu
+	sha256sums = SKIP
+
+pkgname = emojimenu
