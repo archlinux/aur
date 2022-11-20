@@ -1,0 +1,18 @@
+pkgbase = python38-ini2toml
+	pkgdesc = Automatically conversion of .ini/.cfg files to TOML equivalents
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/abravalheri/ini2toml
+	arch = any
+	license = MPL
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-tomli-w
+	checkdepends = python38-validate-pyproject
+	makedepends = python38-setuptools-scm
+	depends = python38-configupdater
+	depends = python38-packaging
+	depends = python38-tomlkit
+	source = https://github.com/abravalheri/ini2toml/archive/v0.11.1/python38-ini2toml-0.11.1.tar.gz
+	sha512sums = 5229072e5ebaffb1c2efd16f58f72c562fd1ca73d3ce46dccc80672085301f9d35460796f8ac4118ea37f970e45d4e4d4efd3da8e4a88c6a696f1e8b644cf1cd
+
+pkgname = python38-ini2toml
