@@ -1,0 +1,16 @@
+pkgbase = python38-h2
+	pkgdesc = HTTP/2 State-Machine based protocol implementation
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://hyper.rtfd.org
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-hypothesis
+	makedepends = python38-setuptools
+	depends = python38-hpack
+	depends = python38-hyperframe
+	source = https://github.com/python-hyper/h2/archive/v4.1.0/python38-h2-4.1.0.tar.gz
+	sha512sums = 4e9cf88b3ae702a8a42bded775ad337809787fe8172d501c230d55abbf1edd764acf3b227f2e58756d882499661ffcf6bbdd4812a4d938c04fac3f1aa2390b28
+
+pkgname = python38-h2
