@@ -1,6 +1,6 @@
 # /bin/bash
 set +e
-sudo pacman -R symfony-cli-bin
+sudo pacman -R symfony-cli-bin --noconfirm
 set -e
 rm -rf src
 rm -rf pkg
