@@ -1,0 +1,19 @@
+pkgbase = python38-blosc
+	pkgdesc = Python wrapper for the extremely fast Blosc compression library
+	pkgver = 1.10.6
+	pkgrel = 5
+	url = http://python-blosc.blosc.org/
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-numpy
+	checkdepends = python38-psutil
+	makedepends = python38-scikit-build
+	makedepends = ninja
+	depends = python38
+	depends = blosc
+	optdepends = python38-numpy: for tests and benchmarks
+	source = https://github.com/Blosc/python-blosc/archive/v1.10.6/python38-blosc-1.10.6.tar.gz
+	sha512sums = e283b132ebb91e7ce362ec65a1d6760e3793046371ea545a9e842372084182bcc194c3a0e1cb20914de58554063995a238ea0a129214731689e8cd5f4203d3ed
+	b2sums = 44f444fa5050a6198e83649973fc82d6804eec50bf79c332ed6a974e417f2a58baf09480a9bb5c5b7abcef2a961cd7bc61f962c12db625b1a7c48799ace0b39a
+
+pkgname = python38-blosc
