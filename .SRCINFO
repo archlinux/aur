@@ -1,0 +1,14 @@
+pkgbase = python38-cython-test-exception-raiser
+	pkgdesc = A trivial extension that just raises an exception
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = https://github.com/twisted/cython-test-exception-raiser
+	arch = x86_64
+	license = MIT
+	makedepends = python38-setuptools
+	makedepends = python38-cython
+	depends = python38
+	source = https://github.com/twisted/cython-test-exception-raiser/archive/v1.0.2/python38-cython-test-exception-raiser-1.0.2.tar.gz
+	sha512sums = ad245eb87fe2d4d93d244b125d80f17fe6deeac86ae9a9129d211d9ff1738da39dc30d49a80f33d50a6fa52029403018c87a8637db9c21098ef8b0e3afe20ea7
+
+pkgname = python38-cython-test-exception-raiser
