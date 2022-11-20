@@ -20,9 +20,9 @@ pkgbase = openasar-git
 	source = pre-remove-discord
 	source = openasar-git-discord-remove.hook
 	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
+	sha1sums = 7bc291ac6ba295ed707daeabcabb42da7b4ceedb
+	sha1sums = 275d5228ceb7c5d39c3d846a898b98624cbef02b
+	sha1sums = 99664e9a0b07f43052cb75d5ccdb8b5123134fbc
+	sha1sums = 9fa086af362a64a4b0a7f01c4235d3b4fdacad06
 
 pkgname = openasar-git

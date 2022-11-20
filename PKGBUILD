@@ -13,7 +13,11 @@ optdepends=('discord')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git" "post-upgrade-discord" "openasar-git-discord-upgrade.hook" "pre-remove-discord" "openasar-git-discord-remove.hook")
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP'
+          '7bc291ac6ba295ed707daeabcabb42da7b4ceedb'
+          '275d5228ceb7c5d39c3d846a898b98624cbef02b'
+          '99664e9a0b07f43052cb75d5ccdb8b5123134fbc'
+          '9fa086af362a64a4b0a7f01c4235d3b4fdacad06')
 install="$pkgname.install"
 
 pkgver() {
