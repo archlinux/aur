@@ -1,0 +1,20 @@
+pkgbase = python38-cairosvg
+	pkgdesc = SVG converter based on Cairo. It can export SVG files to PDF, PostScript and PNG files
+	pkgver = 2.5.2
+	pkgrel = 4
+	url = https://cairosvg.org
+	arch = any
+	license = LGPL3
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	makedepends = python38-pytest-runner
+	depends = python38-cairocffi
+	depends = python38-cssselect2
+	depends = python38-defusedxml
+	depends = python38-pillow
+	depends = python38-tinycss2
+	replaces = cairosvg
+	source = python38-cairosvg-2.5.2.tar.gz::https://github.com/Kozea/CairoSVG/archive/2.5.2.tar.gz
+	sha512sums = a2e397bd0847baa87de76c7b3c1db56924634ba0c3510e91dafc4ab4f74850b7cd54683298d315dc1ff644f9b674ba20e03d7b3a17575a9d7e7c0c432845b05e
+
+pkgname = python38-cairosvg
