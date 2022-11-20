@@ -1,0 +1,18 @@
+pkgbase = python38-fqdn
+	pkgdesc = RFC-compliant FQDN validation and manipulation for Python
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/ypcrts/fqdn
+	arch = any
+	license = MPL2
+	checkdepends = python38-pytest
+	makedepends = git
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-fqdn::git+https://github.com/ypcrts/fqdn#commit=3a4feda3414bde7b3386e995ed1d2ed36607d4cf
+	b2sums = SKIP
+
+pkgname = python38-fqdn
