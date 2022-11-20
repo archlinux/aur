@@ -15,7 +15,8 @@ makedepends=('byacc' 'inetutils')
 
 source=("https://files.inria.fr/pacap/tiptop/tiptop-$pkgver.tar.gz" "tiptop-2.3.1--format-security.patch")
 
-sha1sums=('52ccd0d5dfa0a8a6f692c379e560a394a6f376b9')
+sha1sums=('52ccd0d5dfa0a8a6f692c379e560a394a6f376b9'
+          '0b651ff6a343ae4833e3a9ccbc3dd9c607f9d7c2')
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver"
