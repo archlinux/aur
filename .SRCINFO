@@ -1,0 +1,19 @@
+pkgbase = coreboot-toolchain
+	pkgdesc = coreboot toolchain for target architecture
+	pkgver = 4.18
+	pkgrel = 1
+	url = https://www.coreboot.org
+	arch = x86_64
+	arch = aarch64
+	arch = riscv
+	license = BSD2
+	license = BSD3
+	license = GPL2
+	license = LGPL2Plus
+	license = GPL3Plus
+	provides = coreboot-toolchain-i386
+	options = buildflags
+	source = git+https://review.coreboot.org/coreboot#commit=f4c97ea131944c7be940b35361407e4b63a14faf
+	sha256sums = SKIP
+
+pkgname = i386
