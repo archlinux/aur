@@ -40,11 +40,10 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   ln -s "/opt/${_pkgbin}/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  install -d "${pkgdir}/usr/share/icons/hicolor/"{"128x128","256x256","512x512","1024x1024"}"/apps"
-  ln -s "/opt/${_pkgbin}/usr/share/icons/hicolor/128x128/apps/${_pkgbin}.png"  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgbin}.png"
-  ln -s "/opt/${_pkgbin}/usr/share/icons/hicolor/256x256/apps/${_pkgbin}.png"  "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgbin}.png"
-  ln -s "/opt/${_pkgbin}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"  "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
-  ln -s "/opt/${_pkgbin}/usr/share/icons/hicolor/1024x1024/apps/${_pkgbin}.png"  "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgbin}.png"
+  for i in 128 256 512 1024; do
+    install -d "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
+    ln -s "/opt/${_pkgbin}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgbin}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgbin}.png"
+  done
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
 
