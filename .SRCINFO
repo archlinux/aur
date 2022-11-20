@@ -1,0 +1,13 @@
+pkgbase = python38-pytest-datadir
+	pkgdesc = pytest plugin for test data directories and files
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/gabrielcnr/pytest-datadir
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools-scm
+	depends = python38-pytest
+	source = python38-pytest-datadir-1.4.1.tar.gz::https://github.com/gabrielcnr/pytest-datadir/archive/1.4.1.tar.gz
+	sha512sums = c3a8740b8798f4682420229ccb816b3681150354ba2a97d5370da0ac09a80e7edb5d45ea26a5b0a4c608f3855cc1debbbc5a5704bd50ab4534fc8a536d5652fe
+
+pkgname = python38-pytest-datadir
