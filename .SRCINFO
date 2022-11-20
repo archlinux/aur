@@ -1,0 +1,25 @@
+pkgbase = python38-testrepository
+	pkgdesc = A repository of test results.
+	pkgver = 0.0.20
+	pkgrel = 10
+	url = https://launchpad.net/testrepository
+	arch = any
+	license = Apache
+	license = BSD
+	checkdepends = python38-testresources
+	checkdepends = python38-pytz
+	checkdepends = python38-testscenarios
+	makedepends = python38-setuptools
+	depends = python38-testtools
+	depends = python38-fixtures
+	depends = python38-subunit
+	source = https://pypi.python.org/packages/source/t/testrepository/testrepository-0.0.20.tar.gz
+	source = testrepository-py3-tests.patch::https://github.com/testing-cabal/testrepository/commit/d3d6cac4fd42f2067c0dd81be748853f81c348fc.patch
+	source = testrepository-new-testtools.patch::https://github.com/testing-cabal/testrepository/commit/8f8ab15fafdad6db850c84772323b32375b09285.patch
+	source = testrepository-new-testtools-2.patch::https://github.com/testing-cabal/testrepository/commit/e2f84ae6b2bcf89221613056d0c45dd308f46d62.patch
+	sha512sums = df14500e2b27b6f39d9d4c4f42961efd63dfe25186e561eb1678952a8ab9311f17c36b78819fea33e0ac879c47a33d45c31ff58be017609c8a6157905ee712d6
+	sha512sums = 0bbeafcd9ee399a47f1a6ec7249ce9412a6d154b2738899bab75b9593a0703bf297c9a6654e8c4131ccef6daf7c111ed3033e6e3263b5cace28f135bc9593b3e
+	sha512sums = b12926910a8f745515734bdc504b730341263d9d3ce44a598886b4e0aa0c9452a4b187e7926fb77e00837ce5f17ffdb6c3c84d53c06005e8caa29317bc42a62b
+	sha512sums = 544141753d48cfcc5b973fc4ef2b469df0c85829f6ad324a194c1502d561460d26041c58c21a7afec40ebd3930b2742732c94e06563c81c5e4a26f09a2f9b9bc
+
+pkgname = python38-testrepository
