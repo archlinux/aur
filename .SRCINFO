@@ -1,0 +1,13 @@
+pkgbase = python38-process-tests
+	pkgdesc = Tools for testing processes
+	pkgver = 2.1.2
+	pkgrel = 5
+	url = https://pypi.python.org/pypi/process-tests
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/p/process-tests/process-tests-2.1.2.tar.gz
+	sha512sums = 56a76d8467312de34413994e663eb63378ff179720b883037735eae9d8f23a5cc0ea32d4a9a2f9041af417b5ada07b7948fd481e3d5b2cb43db3c19183f6b263
+
+pkgname = python38-process-tests
