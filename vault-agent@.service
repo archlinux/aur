@@ -1,0 +1,30 @@
+[Unit]
+Description=Vault agent (config:%i)
+Documentation=https://developer.hashicorp.com/vault/docs/agent
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=vault
+Group=vault
+ExecStart=/bin/vault agent -config=/etc/vault-agent.d/%i/agent.hcl
+KillSignal=SIGINT
+
+[Service]
+Environment=GOMAXPROCS=2
+EnvironmentFile=-/etc/default/vault-agent
+EnvironmentFile=-/etc/vault-agent.d/%i/agent.env
+WorkingDirectory=/etc/vault-agent.d/%i
+TimeoutStopSec=30s
+Restart=on-failure
+RestartSec=15
+
+[Unit]
+ConditionPathIsDirectory=/etc/vault-agent.d/%i
+ConditionFileNotEmpty=/etc/vault-agent.d/%i/agent.hcl
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target
+
