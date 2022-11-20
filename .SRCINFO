@@ -1,0 +1,15 @@
+pkgbase = rssnix-git
+	pkgdesc = Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader
+	pkgver = r23.b413bdd
+	pkgrel = 1
+	url = https://github.com/jafarlihi/rssnix
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = rssnix
+	conflicts = rssnix
+	source = git+https://github.com/jafarlihi/rssnix.git
+	sha256sums = SKIP
+
+pkgname = rssnix-git
