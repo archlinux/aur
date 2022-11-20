@@ -1,0 +1,18 @@
+pkgbase = python38-gobject
+	pkgdesc = Python 3.8 Bindings for GLib/GObject/GIO/GTK+
+	pkgver = 3.36.1
+	pkgrel = 5
+	url = https://wiki.gnome.org/Projects/PyGObject
+	arch = x86_64
+	license = LGPL
+	makedepends = python38-cairo
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = gobject-introspection-runtime
+	depends = python38
+	optdepends = cairo: Cairo bindings
+	source = git+https://gitlab.gnome.org/GNOME/pygobject.git#commit=5c6bee1c2a0d08cf367aa61784b5b967128e68b2
+	sha256sums = SKIP
+
+pkgname = python38-gobject
