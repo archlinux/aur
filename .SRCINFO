@@ -1,0 +1,23 @@
+pkgbase = python38-stestr
+	pkgdesc = A test runner runner similar to testrepository
+	pkgver = 4.0.1
+	pkgrel = 2
+	url = https://stestr.readthedocs.io/en/latest/
+	arch = any
+	license = Apache
+	checkdepends = python38-hacking
+	checkdepends = python38-sphinx
+	checkdepends = python38-coverage
+	checkdepends = python38-ddt
+	depends = python38-future
+	depends = python38-cliff
+	depends = python38-pbr
+	depends = python38-subunit
+	depends = python38-fixtures
+	depends = python38-testtools
+	depends = python38-yaml
+	depends = python38-voluptuous
+	source = https://pypi.io/packages/source/s/stestr/stestr-4.0.1.tar.gz
+	sha512sums = a74b9278b1941da62af58a087a10e5a0624901ceb81dcdd25eab3a05f003756773551fe6eec46dfb371f7b726cf296abfe0116444fb32c94fb6811440ee22a58
+
+pkgname = python38-stestr
