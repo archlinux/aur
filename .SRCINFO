@@ -1,6 +1,6 @@
 pkgbase = milton-git
 	pkgdesc = An infinite-canvas paint program
-	pkgver = 1.9.0.r9.c2a9dc3
+	pkgver = 1.9.1.r27.768c035
 	pkgrel = 1
 	url = https://github.com/serge-rgb/milton
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = milton-git
 	makedepends = git
 	makedepends = icoutils
 	makedepends = patch
-	makedepends = sdl2
 	depends = opengl-driver
 	depends = gtk2
 	provides = milton
@@ -22,4 +21,3 @@ pkgbase = milton-git
 	sha256sums = 59e5dec9b6ec0cfadc45e56728d83e66e612c84cfa67f15451df38ec0bad55d0
 
 pkgname = milton-git
-
