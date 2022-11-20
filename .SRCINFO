@@ -1,0 +1,19 @@
+pkgbase = python38-pytest-cov
+	pkgdesc = py.test plugin for coverage reporting with support for both centralised and distributed testing, including subprocesses and multiprocessing
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-cov
+	arch = any
+	license = MIT
+	checkdepends = python38-virtualenv
+	checkdepends = python38-process-tests
+	checkdepends = python38-pytest-xdist
+	checkdepends = python38-fields
+	makedepends = python38-setuptools
+	depends = python38-coverage
+	depends = python38-pytest
+	depends = python38-tomli
+	source = python38-pytest-cov-4.0.0.tar.gz::https://github.com/pytest-dev/pytest-cov/archive/v4.0.0.tar.gz
+	sha512sums = bbc2ce3c6e6541dad3122a2af3cf33456fcfdeebd9ad31fe216b77f1ac2f7abf1ed1ed583f186bea88b8a9cf754500e929263eb8d635fd55e4f3615ed107b49c
+
+pkgname = python38-pytest-cov
