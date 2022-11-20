@@ -3,7 +3,7 @@
 
 pkgname=python-pytenable
 _pkg=pyTenable
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
@@ -34,7 +34,7 @@ checkdepends=(
 	'python-responses')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3722780d148f010c855d3d37ce529e22634e606d19a200b1fa149d125e86ba9e')
+sha256sums=('566b34fe9a1f9ef3d44a11bc0915379c138d55d65abc34e1cd59557aa2801cb4')
 
 prepare() {
 	cd "$_pkg-$pkgver"
@@ -55,10 +55,10 @@ check() {
 package() {
 	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 docs/_build/man/pytenable.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dvm644 docs/_build/man/pytenable.1 -t "$pkgdir/usr/share/man/man1/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv \
 		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/"
 }
