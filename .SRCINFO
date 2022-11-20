@@ -1,6 +1,6 @@
 pkgbase = upp
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
-	pkgver = 15947
+	pkgver = 16270
 	pkgrel = 1
 	url = http://www.ultimatepp.org
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = upp
 	options = !makeflags
 	options = emptydirs
 	options = !strip
-	source = http://downloads.sourceforge.net/upp/upp/2021.1/upp-posix-15947.tar.xz
-	md5sums = c13823b454abe5084244ea86bdf0eb30
+	source = http://downloads.sourceforge.net/upp/upp/2022.2/upp-posix-16270.tar.xz
+	sha256sums = 81f9805c1dad23234907361f4aa6e640cc91b651bba22d5c0492bc5b0f034587
 
 pkgname = upp
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
@@ -33,4 +33,3 @@ pkgname = theide
 
 pkgname = umk
 	pkgdesc = Command line builder for U++ applications
-
