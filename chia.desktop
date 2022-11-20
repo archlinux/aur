@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Chia
+Comment=GUI for the Chia Blockchain
+Exec=chia-gui %u
+Icon=chia
+Terminal=false
+Categories=Network;Office;Finance;P2P;
+Keywords=chia;blockchain;plot;farm;wallet;
