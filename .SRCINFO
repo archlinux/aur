@@ -1,6 +1,6 @@
 pkgbase = python-scooby
 	pkgdesc = A Great Dane turned Python environment detective
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/banesullivan/scooby
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-scooby
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python
-	source = https://github.com/banesullivan/scooby/archive/v0.6.0.tar.gz
-	sha256sums = 5ea4e782dc31ee13c2a8f8e62f8c8542c96ef704491cdb80546f7f90bd171397
+	source = https://github.com/banesullivan/scooby/archive/v0.7.0.tar.gz
+	sha256sums = e7da53fa2f0cb29390f4b35db1d197092706392cf9a4548c3d263d81fc83f142
 
 pkgname = python-scooby
