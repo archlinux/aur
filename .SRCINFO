@@ -1,0 +1,21 @@
+pkgbase = python38-openapi-spec-validator
+	pkgdesc = OpenAPI 2.0 (aka Swagger) and OpenAPI 3 spec validator
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/p1c2u/openapi-spec-validator
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	depends = python38-jsonschema
+	depends = python38-openapi-schema-validator
+	depends = python38-yaml
+	depends = python38-importlib_resources
+	depends = python38-jsonschema-spec
+	depends = python38-lazy-object-proxy
+	source = python38-openapi-spec-validator-0.5.1.tar.gz::https://github.com/p1c2u/openapi-spec-validator/archive/0.5.1.tar.gz
+	sha512sums = b70a2f926d889fec9d4fd26c51e1fbbeb5e75f13449d2d0205b1b7edb12ab2ba49e4cac69426f782ca3a4430c79a6de8f66b4aad2fc552bcfcf7005e866522ff
+
+pkgname = python38-openapi-spec-validator
