@@ -1,11 +1,11 @@
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=ipyvuetify
 pkgname=python-$_pkgname
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.4
+pkgrel=1
 pkgdesc="Jupyter widgets based on vuetify UI components"
 arch=('any')
-url="https://github.com/widgetti/ipyvuetify"
+url="https://pypi.org/project/ipyvuetify"
 license=('MIT')
 depends=(
     'python-ipyvue'
@@ -19,8 +19,8 @@ makedepends=(
     'python-wheel'
 )
 optdepends=('jupyterlab-widgets: to use widgets on Jupyter Lab')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/widgetti/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e3e6d17ef7983f956435d8e71081c8eacafe4b4eaa5cf954cda7288514e92fd02232a037e8ab009d725be73932aa3d34940438db69562a66163916ca4f2c67bb')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+b2sums=('91d3e61ed24c0b359b8b8009ba957d291af4b204699d6807252de37f9f1e32425be8869417b034620a11f59c31067d261996f9ab9b78f2eef36cbd29bd225f64')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
