@@ -1,0 +1,18 @@
+pkgbase = python38-wsgiproxy2
+	pkgdesc = A WSGI Proxy with various http client backends
+	pkgver = 0.5.1
+	pkgrel = 3
+	url = https://github.com/gawel/WSGIProxy2/
+	arch = any
+	license = MIT
+	checkdepends = python38-nose
+	checkdepends = python38-requests
+	checkdepends = python38-webtest
+	checkdepends = python38-waitress
+	makedepends = python38-setuptools
+	depends = python38-webob
+	depends = python38-six
+	source = https://github.com/gawel/WSGIProxy2/archive/0.5.1/python38-wsgiproxy2-0.5.1.tar.gz
+	sha512sums = f72e151fedafae535fae3708220586b4baf137b66980b4b395be2895ae2c91e4a8c2a0473cb76a80de6ce057cdf9990620184f726235c1bb780bfb59d0cf54c0
+
+pkgname = python38-wsgiproxy2
