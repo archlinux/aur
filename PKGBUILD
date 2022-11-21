@@ -1,4 +1,5 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Danny Waser <danny@waser.tech>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 
 _pkg=dask
 pkgname=python38-${_pkg}
@@ -9,7 +10,7 @@ arch=(any)
 url="https://dask.org"
 license=(BSD)
 makedepends=(python38-setuptools)
-depends=(python3.8 python-cloudpickle python-fsspec python-packaging python-partd python-toolz python-yaml mpdecimal)
+depends=(python38 python38-cloudpickle python38-fsspec python38-packaging python38-partd python38-toolz python38-yaml mpdecimal)
 optdepends=(
 #    'python38-bokeh: visualizing dask diagnostics'
 #    'python38-cityhash: faster hashing of arrays'
