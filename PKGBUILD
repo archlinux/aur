@@ -1,8 +1,8 @@
 # Maintainer: Rihards Skuja <rhssk at posteo dot eu>
 
 pkgname=slc-cli
-pkgver=1.0.3
-pkgrel=2
+pkgver=5.4.2
+pkgrel=1
 pkgdesc='Command line tool to generate projects with Silicon Labs SDK'
 arch=('x86_64')
 url='https://siliconlabs.github.io/slc-specification'
@@ -11,7 +11,7 @@ options=('!strip')
 depends=('java-runtime' 'python-requests' 'python-websockets' 'python-colorama')
 source=('https://www.silabs.com/documents/login/software/slc_cli_linux.zip')
 noextract=('slc_cli_linux.zip')
-sha256sums=('ec0928a02a3e0cae5e1fc958592e40dde9da464359d2ee3ecf359fe3bc4becee')
+sha256sums=('0befd4e3c919739b1ba366f6d0aac6767e9e552eb023ec2c0cacb880ad301b40')
 
 prepare() {
 	unzip slc_cli_linux.zip
