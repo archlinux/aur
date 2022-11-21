@@ -1,0 +1,16 @@
+pkgbase = python38-pycodestyle
+	pkgdesc = Python style guide checker
+	pkgver = 2.9.1
+	pkgrel = 2
+	url = https://pycodestyle.pycqa.org
+	arch = any
+	license = custom:Expat
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/PyCQA/pycodestyle/archive/2.9.1/python38-pycodestyle-2.9.1.tar.gz
+	sha512sums = 420248fa90b67a625acc7cca0bde4e8a0f69e0de9e2798ddd3b3c6ee8c9917b0c8c970dde2f01881ac446354d75131a84bbe7c207754190343f6df5d3b125ab7
+
+pkgname = python38-pycodestyle
