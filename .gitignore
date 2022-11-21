@@ -1,5 +1,5 @@
-*.pkg.tar.zst
-*.pkg.tar.zst.sig
+src/
+pkg/
+*.tar.*
 *.whl
 */
-
