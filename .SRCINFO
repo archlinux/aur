@@ -1,0 +1,19 @@
+pkgbase = python38-xcffib
+	pkgdesc = Python3 drop in replacement for xpyb, an XCB python binding
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/xcffib
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = xorg-server-xvfb
+	checkdepends = xorg-xeyes
+	makedepends = python38-setuptools
+	makedepends = haskell-xcffib
+	depends = python38-six
+	depends = python38-cffi
+	depends = libxcb
+	source = https://github.com/tych0/xcffib/archive/v0.12.1/python38-xcffib-0.12.1.tar.gz
+	sha512sums = ff3650d484863921c0ce00bf1ce5d4c43fc919f3f54f1cca06d93a33a183682434294a6db45f113d794316054c4884427519a1c24f9c18f7ced1b1d74695bbd7
+
+pkgname = python38-xcffib
