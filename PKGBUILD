@@ -16,7 +16,7 @@ license=('GPL')
 groups=(pyqt5)
 depends=('python38-pyqt5-sip' 'qt5-base')
 optdepends=('python38-opengl: enable OpenGL 3D graphics in PyQt applications'
-            'python38-dbus: for python-dbus mainloop support'
+            'dbus: for python-dbus mainloop support'
             'qt5-multimedia: QtMultimedia, QtMultimediaWidgets'
             'qt5-tools: QtHelp, QtDesigner'
             'qt5-svg: QtSvg'
@@ -32,8 +32,8 @@ optdepends=('python38-opengl: enable OpenGL 3D graphics in PyQt applications'
             'qt5-location: QtLocation, QtPositioning'
             'qt5-sensors: QtSensors'
             'qt5-webchannel: QtWebChannel')
-provides=(qt5-python-bindings)
-makedepends=('sip' 'pyqt-builder' 'python38-opengl' 'python38-dbus'
+provides=(qt5-python38-bindings)
+makedepends=('sip' 'pyqt-builder' 'python38-opengl' 'dbus'
              'qt5-connectivity' 'qt5-multimedia' 'qt5-tools' 'qt5-serialport' 'qt5-speech' 'qt5-svg'
              'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-remoteobjects' 'qt5-quick3d'
              'qt5-sensors' 'qt5-webchannel' 'qt5-location')
