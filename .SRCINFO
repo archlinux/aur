@@ -1,0 +1,22 @@
+pkgbase = python38-ipywidgets
+	pkgdesc = IPython HTML widgets for Jupyter
+	pkgver = 8.0.2
+	pkgrel = 1
+	url = https://github.com/ipython/ipywidgets
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-pytz
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38-ipykernel
+	depends = python38-jsonschema
+	depends = python38-ipython-genutils
+	optdepends = jupyterlab-widgets: widgets for Jupyter lab
+	optdepends = jupyter-widgetsnbextension: widgets for the legacy notebook
+	source = https://pypi.io/packages/source/i/ipywidgets/ipywidgets-8.0.2.tar.gz
+	sha256sums = 08cb75c6e0a96836147cbfdc55580ae04d13e05d26ffbc377b4e1c68baa28b1f
+
+pkgname = python38-ipywidgets
