@@ -11,7 +11,7 @@ license=('custom')
 depends=('wine')
 makedepends=('lha')
 optdepends=('timidity++: to get MIDI background music')
-source=(th08.sh th08.desktop license th08.xpm 'https://www.dropbox.com/s/0dwwpkokrko2f4m/eiya_tr003.lzh?dl=0')
+source=(th08.sh th08.desktop license th08.xpm eiya_tr003.lzh::'https://files.catbox.moe/lpdkcc.lzh')
 install=${pkgname}.install
 md5sums=('f68cc931fdce0d4fa65dfe0614c08db2'
          '6ebb33c8949a426794bd6203f52a8cc5'
@@ -19,12 +19,11 @@ md5sums=('f68cc931fdce0d4fa65dfe0614c08db2'
          'fcd7e155a01b98b06affe5cf6d7f2ca9'
          'c42647202a695bd1fdd2d88ce6615d53')
 
-noextract=()
+noextract=(eiya_tr003.lzh)
 options=(!strip)
 
 build() {
   cd $srcdir/
-  mv 'eiya_tr003.lzh?dl=0' eiya_tr003.lzh
   lha xf eiya_tr003.lzh
   cd eiya
   find -type d|LANG=C grep -v '\(html\|^.$\)'|xargs -I DIR mv DIR th08man
