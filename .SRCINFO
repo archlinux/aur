@@ -1,0 +1,16 @@
+pkgbase = python38-seaborn
+	pkgdesc = Statistical data visualization
+	pkgver = 0.11.2
+	pkgrel = 3
+	url = https://seaborn.pydata.org/
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38-pandas
+	depends = python38-matplotlib
+	depends = python38-scipy
+	optdepends = python38-statsmodels: for some advanced statistical plots
+	source = python38-seaborn-0.11.2.tar.gz::https://github.com/mwaskom/seaborn/archive/v0.11.2.tar.gz
+	sha256sums = 693e3877d7608e08201feb6b99a7c9fce06ecaa88acbb8c3e928bdff9feb8515
+
+pkgname = python38-seaborn
