@@ -1,0 +1,15 @@
+pkgbase = python38-os-service-types
+	pkgdesc = Python library for consuming OpenStack sevice-types-authority data
+	pkgver = 1.7.0
+	pkgrel = 9
+	url = https://pypi.python.org/pypi/os-service-types/1.7.0
+	arch = any
+	license = Apache
+	checkdepends = python38-oslotest
+	checkdepends = python38-requests-mock
+	depends = python38-pbr
+	options = !emptydirs
+	source = python38-os-service-types-1.7.0.tar.gz::https://github.com/openstack/os-service-types/archive/1.7.0.tar.gz
+	sha512sums = df5848d648a9181dabd33fa734b556ea3799e8b06d0d4ba9f440c66bf7e942b5d65a5ffbd00fadfc61705a702fce3aa2b5d601a5ebde23a1da7259a712c4c0d5
+
+pkgname = python38-os-service-types
