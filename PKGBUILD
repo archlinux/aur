@@ -1,14 +1,14 @@
 # Maintainer: Fabio Manganiello <info@fabiomanganiello.com>
 
 pkgname=platypush-git
-pkgver=0.23.6.r0.d95baac7
+pkgver=0.24.0.r0.73f6712f
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
 url="https://git.platypush.tech/platypush/platypush"
 makedepends=('git')
-depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-pyjwt' 'python-croniter' 'python-marshmallow' 'python-pytz' 'python-magic')
+depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-rsa' 'python-croniter' 'python-marshmallow' 'python-pytz' 'python-magic')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
 	'python-gattlib: Low-energy Bluetooth devices support'
@@ -20,7 +20,7 @@ conflicts=('platypush')
 provides=('platypush')
 options=(!strip)
 source=("master.tar.gz::https://git.platypush.tech/platypush/platypush/archive/master.tar.gz")
-sha512sums=('24023324f3ae151c42160a8756d980b14affc838a22b42bb8d7050f7eec5a23a69653eb575f42b97207a8fbc05f7a9c88d4a72b306e4f413ee565067073f9192')
+sha512sums=('ccb50f334df12c8412663f1e58cf482a12f899c2b8f5009d296634393ca2222216bf8a3cab3b1118fbb8f06e24a313757a7c165986fd4503cdb9a5e1d0b09307')
 
 package() {
     cd "${srcdir}/platypush"
