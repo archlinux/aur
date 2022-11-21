@@ -1,0 +1,23 @@
+pkgbase = python38-paramiko
+	pkgdesc = Python module that implements the SSH2 protocol
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://github.com/paramiko/paramiko/
+	arch = any
+	license = LGPL
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-pytest-relaxed
+	checkdepends = python38-pyasn1
+	checkdepends = python38-invoke
+	checkdepends = python38-mock
+	makedepends = python38-setuptools
+	makedepends = python38-bcrypt
+	makedepends = python38-cryptography
+	makedepends = python38-pynacl
+	depends = python38-bcrypt
+	depends = python38-cryptography
+	depends = python38-pynacl
+	source = https://github.com/paramiko/paramiko/archive/2.11.1/python38-paramiko-2.11.1.tar.gz
+	sha512sums = 7cf3f9124fcdd5df2f132bec213be60fe2e78a95eee80e0a4388459d22907d2c23dbf4cc7ae7bfc9575f392aacad5b3d3a32955b662a0804999e24b922269bc5
+
+pkgname = python38-paramiko
