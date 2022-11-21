@@ -1,0 +1,18 @@
+pkgbase = python38-pure-eval
+	pkgdesc = Safely evaluate AST nodes without side effects
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = https://github.com/alexmojaki/pure_eval
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/p/pure_eval/pure_eval-0.2.2.tar.gz
+	sha256sums = 2b45320af6dfaa1750f543d714b6d1c520a1688dec6fd24d339063ce0aaa9ac3
+	b2sums = 19f86a1436e5f1a026a24f62c435e8970d84960f4cde1de80c58949b1aede6aa7562e8430e10e3f7171212c31d5699a3321fad5fb2ea1eed961a30d43a632a79
+
+pkgname = python38-pure-eval
