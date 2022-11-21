@@ -1,8 +1,8 @@
 pkgbase = linux-mainline-um5302ta
 	pkgdesc = Linux
-	pkgver = 6.1rc5
-	pkgrel = 2
-	url = https://git.kernel.org/torvalds/h/v6.1-rc5
+	pkgver = 6.1rc6
+	pkgrel = 1
+	url = https://git.kernel.org/torvalds/h/v6.1-rc6
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-mainline-um5302ta
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.1-rc5
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.1-rc6
 	source = config
 	source = cs35l42-hda-no-acpi-dsd-csc3551.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
