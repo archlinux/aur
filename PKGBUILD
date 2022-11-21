@@ -2,7 +2,7 @@
 
 _pkgname=maui-shell
 pkgname=$_pkgname-git
-pkgver=0.5.5.r18.ge077362
+pkgver=0.5.5.r22.g3f4826c
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
@@ -39,8 +39,8 @@ depends=(bluedevil
          kunitconversion
          kwallet
          kwayland
-         maui-agenda-git
          maui-core-git
+         mauikit-calendar-git
          mauikit-filebrowsing
          mauikit-git
          mauiman-git
