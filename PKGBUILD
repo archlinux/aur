@@ -28,7 +28,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'6d21872a2b2bdbfaebb20de5cac28ac402316e5314c97a89049320ff13c2f622'
-	'db9eec714bf9d1c52b1ccd7adc9e720519585becf7f9a1f18cca1888d3e1cc11'
+	'30118e22623b645a5e2cc81240fcf36d5189613383a09d1225aa3a76f7eba245'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'cd46475a1bc62240e03abb6b385b0c9b0b911ad828219fd31f98f7742807f935'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
@@ -94,11 +94,7 @@ package() {
 	#done
 	# copy changelog where it will be found by the application
 	mv changelog.txt src/
-	# extract lua libs
-	unzip runtime-win32.zip lua/xml.lua lua/base64.lua lua/sha1.lua
-	mv lua/*.lua .
-	rmdir lua
-	rm runtime-win32.zip
+	# copy lua libs
 	# tidy-up permissions
 	chmod og-w -R "${dst_dir}"
 	# install binaries
