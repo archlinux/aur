@@ -1,0 +1,18 @@
+pkgbase = python38-sure
+	pkgdesc = An idiomatic testing library for python with powerful and flexible assertions
+	pkgver = 2.0.0
+	pkgrel = 5
+	url = https://github.com/gabrielfalcao/sure
+	arch = any
+	license = GPL
+	checkdepends = python38-pytest
+	checkdepends = python38-nose
+	makedepends = python38-setuptools
+	makedepends = git
+	depends = python38-six
+	source = python38-sure-2.0.0.tar.gz::https://github.com/gabrielfalcao/sure/archive/2.0.0.tar.gz
+	source = use-unittest-mock.diff
+	sha512sums = d113b08afd63c379ec9f05169b1ad15f3bb616a1f6ad7d0ef6513e98ba7ebb7462254b2d25307906d9f63603fed4f9e4b83ccbca0ec53a2b483f9395fa0fb94a
+	sha512sums = ad17f0bc171058cc488f844a55bd0cf2f83b391c6c47b4ac1864b5de0d0842eb086dd1413c249a05684a45c67542c15eadfa2a7cdff095669e327d0e80f09183
+
+pkgname = python38-sure
