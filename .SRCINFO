@@ -1,0 +1,15 @@
+pkgbase = python38-pyjsparser
+	pkgdesc = Fast javascript parser (based on esprima.js)
+	pkgver = 2.7.1
+	pkgrel = 9
+	url = https://github.com/PiotrDabkowski/pyjsparser
+	arch = any
+	license = MIT
+	checkdepends = python38-js2py
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-pyjsparser-5465d037b30e334cb0997f2315ec1e451b8ad4c1.tar.gz::https://github.com/PiotrDabkowski/pyjsparser/archive/5465d037b30e334cb0997f2315ec1e451b8ad4c1.tar.gz
+	sha512sums = 2e4b3ee1cd863099da262eaf4df5ec4f364ce54e7c7535558f36d3449e21c9f851460078e1a7057ef8c82e2ed9c82f54944cd92782fe3f8cd05411edca191a40
+
+pkgname = python38-pyjsparser
