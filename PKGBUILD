@@ -20,15 +20,10 @@ pkgver() {
 }
 
 build() {
-    cd $_basename
-    cmake -DCMAKE_INSTALL_PREFIX=/usr .
-    make
-
+    cmake -B build -S "$_basename" -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
+    cmake --build build
 }
 
 package() {
-    mkdir -p $pkgdir/usr/lib/obs-plugins/
-    mkdir -p $pkgdir/usr/share/obs/obs-plugins/$_basename
-    cp   $srcdir/$_basename/rundir/RelWithDebInfo/obs-plugins/64bit/obs-shaderfilter.so $pkgdir/usr/lib/obs-plugins
-    cp -R  $srcdir/$_basename/rundir/RelWithDebInfo/data/obs-plugins/$_basename/data/*  $pkgdir/usr/share/obs/obs-plugins/$_basename/
+    DESTDIR="$pkgdir" cmake --install build
 }
