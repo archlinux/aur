@@ -1,0 +1,22 @@
+pkgbase = python38-trio
+	pkgdesc = A friendly Python library for async concurrency and I/O
+	pkgver = 0.22.0
+	pkgrel = 2
+	url = https://github.com/python-trio/trio
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-async_generator
+	depends = python38-attrs
+	depends = python38-exceptiongroup
+	depends = python38-idna
+	depends = python38-outcome
+	depends = python38-sniffio
+	depends = python38-sortedcontainers
+	provides = python38-multio-provider
+	source = git+https://github.com/python-trio/trio.git#tag=87ea87018da2085180138bd952abcac67961be62
+	b2sums = SKIP
+
+pkgname = python38-trio
