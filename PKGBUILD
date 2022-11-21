@@ -201,7 +201,7 @@ package() {
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
   
   # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
-  for object in "${srcdir}/${pkgname}"; do
+  for object in ${srcdir}/${pkgname}; do
     if [ -d "${object}" ]; then
       if [ "${object}" == "LocalBuilds" ]; then
         if [ -d LocalBuilds/Engine/Linux/ ]; then
@@ -226,7 +226,7 @@ package() {
   
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
-  if [ -x "$(find "${pkgdir}/${_install_dir"} -type f -iname 'xbuild')" ]; then
+  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild')" ]; then
     find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x '{}' \;
   fi
   
@@ -237,7 +237,7 @@ package() {
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
-  mkdir -p "${pkgbuild}/usr/bin"
+  mkdir -p "${pkgname}/usr/bin"
   install -Dm755 ../unreal-engine-5.sh "${pkgdir}/usr/bin/"
   chmod +x "${pkgdir}/usr/bin/unreal-engine-5.sh"
   ln -s "${pkgdir}/usr/bin/unreal-engine-5.sh" "${pkgdir}/usr/bin/ue5"
