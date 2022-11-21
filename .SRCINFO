@@ -1,0 +1,20 @@
+pkgbase = python38-cytoolz
+	pkgdesc = Cython implementation of Toolz: High performance functional utilities
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/pytoolz/cytoolz/
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = cython
+	depends = python38-toolz
+	options = debug
+	source = https://files.pythonhosted.org/packages/source/c/cytoolz/cytoolz-0.12.0.tar.gz
+	sha512sums = efc42ed63676389279e0733944d8d41ce0f0139337103e44e9cc04ebb0f346e2e034b6dbb9160e5486bcd9af5b1fde49ef61e18a48922c3d0bab6fc4f6526338
+	b2sums = ff6ada5f16acf016e57078f049c375fcea1031220b904157bbc5286645c08e2606debc5d016c0edbfd5d0ee32ca9b4754ba09672f067eebb5f630b9b05639c05
+
+pkgname = python38-cytoolz
