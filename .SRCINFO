@@ -1,0 +1,17 @@
+pkgbase = python38-munch
+	pkgdesc = A dot-accessible dictionary (a la JavaScript objects)
+	pkgver = 2.5.0
+	pkgrel = 6
+	url = https://github.com/Infinidat/munch
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-yaml
+	makedepends = python38-setuptools
+	makedepends = python38-pbr
+	makedepends = git
+	depends = python38-six
+	source = https://pypi.io/packages/source/m/munch/munch-2.5.0.tar.gz
+	sha512sums = 7eca31111f40782a19b49535322bc56d723022d52b0842c4beff512f32fa415a6c75851eb84950358cb6a11693095cafe56364028e48385b11135de414edca21
+
+pkgname = python38-munch
