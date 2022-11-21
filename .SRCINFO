@@ -1,0 +1,18 @@
+pkgbase = python38-requests-kerberos
+	pkgdesc = A kerberos of useful classes and functions to be used with python-requests.
+	pkgver = 0.14.0
+	pkgrel = 3
+	url = https://github.com/requests/requests-kerberos
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = python38-pyspnego
+	checkdepends = python38-pytest-mock
+	makedepends = python38-setuptools
+	depends = python38-requests
+	depends = python38-pyspnego
+	depends = python38-cryptography
+	source = python38-requests-kerberos-0.14.0.tar.gz::https://github.com/requests/requests-kerberos/archive/v0.14.0.tar.gz
+	sha512sums = 9dd6eed0d6afe4b852ba96f621be3af2965e9011bf372c5dce77e0bca18191255ea407ba313904271615d722d60029807db2d6815b24437b021b02b026eb60d6
+
+pkgname = python38-requests-kerberos
