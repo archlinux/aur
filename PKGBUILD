@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=forecast
-_pkgver=8.18
+_pkgver=8.19
 pkgname=r-${_pkgname,,}
-pkgver=8.18
+pkgver=8.19
 pkgrel=1
 pkgdesc='Forecasting Functions for Time Series and Linear Models'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-uroot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5920baa8d9d81988000d0e2edcea61c05126b5cb923cb5921a6fcd7bc312d8dd')
+sha256sums=('305e16dfb14892f9a99732836359b6b5c4e2100fa83f045d0ac369f81a6d75d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
