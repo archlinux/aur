@@ -1,0 +1,18 @@
+pkgbase = python38-ephemeral-port-reserve
+	pkgdesc = Bind to an ephemeral port
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/Yelp/ephemeral-port-reserve/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/Yelp/ephemeral-port-reserve//archive/v1.1.4/python38-ephemeral-port-reserve-1.1.4.tar.gz
+	sha512sums = e0412ac5ec362cffbd5efeb8c24a47ee36b50f2bf126438816824711f1f34412c903b116e96d4e541183925e7422b8f58bb0b7c5b819090d0f3d063cbf8c9f87
+	b2sums = 843ddbfe8b102c10b3166628ba2aa1ef40f3314a74ac5e944e4e6c500f3f0d871424ca37dbbe64bc385352ba3ee9895884e82fd169962db8b6bf96aaf131d078
+
+pkgname = python38-ephemeral-port-reserve
