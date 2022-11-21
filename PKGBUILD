@@ -3,7 +3,7 @@
 
 pkgname=th08
 pkgver=0.03
-pkgrel=4
+pkgrel=5
 pkgdesc="The eighth game of the Touhou Project series, Imperishable Night trial version (via wine). Easy upgrade to full version."
 arch=(i686 x86_64)
 url="https://www16.big.or.jp/~zun/html/th08top.html"
