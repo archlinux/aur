@@ -1,0 +1,16 @@
+pkgbase = python38-kiwisolver
+	pkgdesc = A fast implementation of the Cassowary constraint solver
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/nucleic/kiwi
+	arch = x86_64
+	license = PerlArtistic
+	checkdepends = python38-pytest-runner
+	makedepends = python38-cppy
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/nucleic/kiwi/archive/1.4.4/python38-kiwisolver-1.4.4.tar.gz
+	sha512sums = 9a7ed487bb28f8c430543dc21ea59156078c129fd29b1382f1578368e72f312f4e813eb4501e4c9387647b42b085b93d4bd27d0e846f1396fa4ce68fd9e9ba5f
+
+pkgname = python38-kiwisolver
