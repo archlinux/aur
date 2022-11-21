@@ -16,11 +16,6 @@ optdepends=(
 source=($url/archive/v$pkgver.tar.gz)
 sha256sums=('1ed202ea2363702bceb3ccf9eac23947846202215c7175c7ff61ba43f96e27bc')
 
-prepare() {
-  cd $pkgname-$pkgver
-  sed -i 's/= EXEC_FLATPAK/= EXEC_LOCAL/' zapzap/services/portal_desktop.py
-}
-
 build() {
   cd $pkgname-$pkgver
   python -m build --wheel --no-isolation
