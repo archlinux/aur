@@ -1,0 +1,24 @@
+pkgbase = python38-cfn-lint
+	pkgdesc = CloudFormation Linter
+	pkgver = 0.68.1
+	pkgrel = 1
+	url = https://github.com/aws-cloudformation/cfn-lint
+	arch = any
+	license = custom:MIT No Attribution
+	checkdepends = python38-pytest
+	checkdepends = python38-pydot
+	makedepends = python38-setuptools
+	depends = python3.8
+	depends = python-yaml
+	depends = python-aws-sam-translator
+	depends = python38-jsonpatch
+	depends = python38-jsonschema
+	depends = python38-networkx
+	depends = python-junit-xml
+	depends = python-jschema-to-python
+	depends = python-sarif-om
+	optdepends = python38-pydot: for building graphs from templates
+	source = https://github.com/aws-cloudformation/cfn-lint/archive/v0.68.1/cfn-lint-0.68.1.tar.gz
+	sha256sums = f684d2831def3fb91712e5b3ac404e5a9faf73c1e97c6cfe8a03899618c2d7cd
+
+pkgname = python38-cfn-lint
