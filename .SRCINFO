@@ -1,0 +1,20 @@
+pkgbase = python38-boto3
+	pkgdesc = The AWS SDK for Python
+	pkgver = 1.26.11
+	pkgrel = 00
+	url = https://github.com/boto/boto3
+	arch = any
+	license = Apache
+	depends = python38
+	depends = python38-botocore
+	depends = python38-jmespath
+	depends = python38-s3transfer
+	noextract = boto3-1.26.11-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/6c/ca/085ac7a0b251e17ba8a55a200cabed54b67d6e31f6130c2ab28c7a35a479/boto3-1.26.11-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 19438f1550476421c04da3b7e6cac74f
+	md5sums = 2ee41112a44fe7014dce33e26468ba93
+
+pkgname = python38-boto3
