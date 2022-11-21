@@ -1,0 +1,15 @@
+pkgbase = python38-waitress
+	pkgdesc = Waitress WSGI server
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/Pylons/waitress
+	arch = any
+	license = ZPL
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/Pylons/waitress/archive/v2.1.2/python38-waitress-2.1.2.tar.gz
+	sha512sums = b27d1f6f9969299e3986604c6d95e130f35772c4f687c1b9b31a3a29b77330fda1c9d0ddfc640963c2bf25173ce2fcf734464ec2400afee77ec605767700208c
+
+pkgname = python38-waitress
