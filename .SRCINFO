@@ -1,0 +1,19 @@
+pkgbase = python38-pyftpdlib
+	pkgdesc = Very fast asynchronous FTP server library
+	pkgver = 1.5.7
+	pkgrel = 2
+	url = https://github.com/giampaolo/pyftpdlib/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pyopenssl
+	checkdepends = python38-psutil
+	makedepends = python38-setuptools
+	makedepends = python38-pysendfile
+	depends = python38
+	optdepends = python38-pyopenssl: FTPS support
+	optdepends = python38-psutil: to keep track of FTP server memory usage
+	source = https://pypi.io/packages/source/p/pyftpdlib/pyftpdlib-1.5.7.tar.gz
+	sha512sums = 66ad5a1ab8fde26233250351f553cdc411303616d717c416cdce059f93c64e6ef64c7707103644583249b6aba22a9841994b38e731edc7997e95e266dbdbdc22
+
+pkgname = python38-pyftpdlib
