@@ -1,0 +1,17 @@
+pkgbase = python38-frozenlist
+	pkgdesc = A list-like structure which implements collections.abc.MutableSequence
+	pkgver = 1.3.3
+	pkgrel = 00
+	url = https://github.com/aio-libs/frozenlist
+	arch = x86_64
+	license = Apache
+	makedepends = python38-cython
+	depends = python38
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/e9/10/d629476346112b85c912527b9080944fd2c39a816c2225413dbc0bb6fcc0/frozenlist-1.3.3.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 14e9ffd849c6a1dfa3c6b1fb1ff77b14
+	md5sums = cf056e8e7a0a5477451af18b7b5aa98c
+
+pkgname = python38-frozenlist
