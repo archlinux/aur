@@ -1,0 +1,19 @@
+pkgbase = python38-regex
+	pkgdesc = Alternative python regular expression module.
+	pkgver = 2022.10.31
+	pkgrel = 1
+	url = https://bitbucket.org/mrabarnett/mrab-regex
+	arch = x86_64
+	license = Python
+	license = Apache
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/r/regex/regex-2022.10.31.tar.gz
+	sha256sums = a3a98921da9a1bf8457aeee6a551948a83601689e5ecdd736894ea9bbec77e83
+	b2sums = 060822767ab28e26d000faa198f4226ba1e4600141a7b3e0f656df8d004b5007a0a7934057e608d524f6a21421573fbeb8a1be208ce69ba2d912a55d19fb3f22
+
+pkgname = python38-regex
