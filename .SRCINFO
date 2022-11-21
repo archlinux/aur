@@ -1,0 +1,16 @@
+pkgbase = python38-debugpy
+	pkgdesc = An implementation of the Debug Adapter Protocol for Python
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://aka.ms/debugpy
+	arch = x86_64
+	license = EPL
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/microsoft/debugpy/archive/v1.6.3/python38-debugpy-1.6.3.tar.gz
+	source = fix-build.patch
+	sha256sums = ddc10bf05903d1b4037a5ba7a511b0c5f188bdaf8f1c95a0bace505a9ce709fc
+	sha256sums = a86e1e1a5a4d7a585c8185721863f563233b680c36fa35d65bfbff11abd519bc
+
+pkgname = python38-debugpy
