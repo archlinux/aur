@@ -1,0 +1,21 @@
+pkgbase = python38-fs
+	pkgdesc = Filesystem abstraction layer
+	pkgver = 2.4.16
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/fs/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-runner
+	checkdepends = fuse2
+	checkdepends = python38-pyftpdlib
+	checkdepends = python38-psutil
+	checkdepends = python38-pysendfile
+	checkdepends = python38-parameterized
+	depends = python38-appdirs
+	depends = python38-pytz
+	depends = python38-setuptools
+	depends = python38-six
+	source = https://github.com/PyFilesystem/pyfilesystem2/archive/v2.4.16/python38-fs-2.4.16.tar.gz
+	sha512sums = 24a50fdbb668916e19ef26b21feb345beb6d734e841435de2bef32672e4f6b8329a44e827b6d3bb878c2522098499dea4915adcfa381b0a3c9e20f8c4f7352bb
+
+pkgname = python38-fs
