@@ -1,34 +1,38 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
-
-pkgname=python-scienceplots-git
-_pkgname=${pkgname%-*}
-_name='SciencePlots'
-pkgver=1.0.9.r7.g41d5215
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
+_base=SciencePlots
+pkgname=python-${_base,,}-git
+pkgdesc="Matplotlib styles for scientific plotting"
+pkgver=2.0.0.r0.g65da69c
 pkgrel=1
-pkgdesc='Matplotlib styles for scientific plotting.'
-arch=('any')
-url='https://github.com/garrettj403/SciencePlots'
-license=('MIT')
-depends=('python' 'python-matplotlib')
-makedepends=('python-setuptools')
-conflicts=('python-scienceplots')
-source=("git+$url")
-sha256sums=('SKIP')
+arch=(any)
+url="https://github.com/garrettj403/${_base}"
+license=(MIT)
+depends=(python-matplotlib python-setuptools)
+makedepends=(python-build python-installer python-wheel git)
+source=(git+${url}.git#branch=master)
+sha512sums=('SKIP')
+provides=(${_base,,})
+conflicts=(${_base,,})
 
 pkgver() {
-	cd "$srcdir/$_name"
-	git describe --long --tags | sed 's/-/.r/;s/-/./'
+  cd ${_base}
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-	cd "$srcdir/$_name"
-	python setup.py build
+  cd ${_base}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  cd ${_base}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  ln -s "${site_packages}/${_base}"-*.dist-info/LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
