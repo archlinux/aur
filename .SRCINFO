@@ -1,0 +1,17 @@
+pkgbase = python38-zict
+	pkgdesc = Useful Mutable Mappings
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/dask/zict/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-lmdb
+	checkdepends = python38-psutil
+	makedepends = python38-setuptools
+	depends = python
+	depends = python38-heapdict
+	source = https://files.pythonhosted.org/packages/source/z/zict/zict-2.2.0.tar.gz
+	sha256sums = d7366c2e2293314112dcf2432108428a67b927b00005619feefc310d12d833f3
+
+pkgname = python38-zict
