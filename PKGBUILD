@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 pkgver=1.1_beta17
 _version=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -42,13 +42,18 @@ build(){
         -tags "$_tags" \
         -ldflags '-linkmode=external -w -s' \
         ./cmd/sing-box
+
+    sed -i '/^\[Service\]$/a User=sing-box' release/config/${_pkgname}*.service
+
+    echo 'u sing-box - "Sing-box Service" - -' > release/config/${_pkgname}.sysusers
 }
 
 package() {
     cd "$_pkgname-$_version" || return
 
-    install -Dm755 "${_pkgname}"                        -t "${pkgdir}/usr/bin"
-    install -Dm644 "release/config/config.json"         -t "${pkgdir}/etc/${_pkgname}"
-    install -Dm644 "release/config/sing-box.service"    -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "release/config/sing-box@.service"   -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm755 "${_pkgname}"                         -t "${pkgdir}/usr/bin"
+    install -Dm644 "release/config/config.json"          -t "${pkgdir}/etc/${_pkgname}"
+    install -Dm644 "release/config/${_pkgname}.service"  -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "release/config/${_pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "release/config/${_pkgname}.sysusers"    "${pkgdir}/usr/lib/sysusers.d//${_pkgname}.conf"
 }
