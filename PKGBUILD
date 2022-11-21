@@ -2,7 +2,7 @@
 
 _pkgname=mtr
 pkgname=$_pkgname-git
-pkgver=v0.93.r36.gb4d3983
+pkgver=v0.95.r17.g826ffa9
 pkgrel=1
 arch=('any')
 pkgdesc='Combines the functionality of traceroute and ping into one tool (CLI version, git)'
@@ -13,7 +13,7 @@ depends=('ncurses')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$_pkgname.install
-source=('git://github.com/traviscross/mtr')
+source=('git+https://github.com/traviscross/mtr')
 sha256sums=('SKIP')
 
 pkgver() {

@@ -10,8 +10,7 @@ pkgbase = mtr-git
 	depends = ncurses
 	provides = mtr
 	conflicts = mtr
-	source = git://github.com/traviscross/mtr
+	source = git+https://github.com/traviscross/mtr
 	sha256sums = SKIP
 
 pkgname = mtr-git
-
