@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka
 pkgname=${_pkgname}-git
-pkgver=1619488675
+pkgver=1668963274
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=()
 
 prepare () {
   rm -rf Iosevka
-  git clone --depth 1 --branch master 'https://github.com/be5invis/Iosevka'
+  git clone --depth 1 --branch main 'https://github.com/be5invis/Iosevka'
 }
 
 pkgver () {
