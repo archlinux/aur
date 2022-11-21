@@ -24,7 +24,7 @@ optdepends=('qt6-tools: QtHelp, QtDesigner bindings'
             'qt6-webchannel: QtWebChannel bindings'
             'qt6-webengine: QtPdf bindings'
             'qt6-websockets: QtWebSockets bindings'
-            'python38-dbus: for python-dbus mainloop support')
+            'dbus: for python-dbus mainloop support')
 makedepends=(sip pyqt-builder python38-opengl dbus-python
              qt6-tools qt6-svg qt6-declarative qt6-quick3d qt6-shadertools qt6-multimedia qt6-remoteobjects
              qt6-positioning qt6-sensors qt6-serialport qt6-webchannel qt6-websockets qt6-connectivity qt6-speech qt6-webengine)
