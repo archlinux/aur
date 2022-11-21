@@ -1,0 +1,17 @@
+pkgbase = python38-jmespath
+	pkgdesc = JSON Matching Expressions
+	pkgver = 1.0.1
+	pkgrel = 00
+	url = https://github.com/jmespath/jmespath.py
+	arch = any
+	license = MIT
+	depends = python38
+	noextract = jmespath-1.0.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 10009c3f0c6e63a22bb3eab7b5843b45
+	md5sums = 2683790f5fabb41a3f75b70558799eb4
+
+pkgname = python38-jmespath
