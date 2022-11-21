@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=13
+pkgrel=14
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -220,7 +220,9 @@ package() {
     mv cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
   fi
   
-  install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
+  if [ -f GenerateProjectFiles.sh ]; then
+    install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
+  fi
   
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
