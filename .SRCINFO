@@ -6,6 +6,7 @@ pkgbase = invoiceninja-desktop-git
 	arch = i686
 	arch = x86_64
 	license = unknown
+	provides = invoiceninja-desktop
 	source = git+https://github.com/invoiceninja/admin-portal
 	source = invoiceninja-desktop.desktop
 	sha256sums = SKIP
