@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.2.3.r210.g424fdb5c
+pkgver=6.3.1.r0.gdf72827b
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,7 @@ makedepends=(
 	'git'
 	'robin-map>=0.6.2'
 	'xbyak>=6.61'
-	'zydis>=3.1'
-	'zydis<4'
+	'zydis>=4'
 )
 checkdepends=('catch2>=2.13.8')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
