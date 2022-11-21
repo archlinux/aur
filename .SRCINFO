@@ -1,0 +1,21 @@
+pkgbase = python38-smbprotocol
+	pkgdesc = SMBv2 and v3 client
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/jborean93/smbprotocol
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-mock
+	checkdepends = python38-gssapi
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38-cryptography
+	depends = python38-pyspnego
+	depends = python38-six
+	optdepends = python38-gssapi: Kerberos support
+	source = git+https://github.com/jborean93/smbprotocol.git#commit=ad98d67392e43a84f9c906ecd610d60627b1b87d
+	validpgpkeys = A03A0E13C2EFFD384B1EC39A2AAC89085FBBDAB5
+	sha256sums = SKIP
+
+pkgname = python38-smbprotocol
