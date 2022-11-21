@@ -1,9 +1,9 @@
 # Maintainer: Glen Ogilvie <nelg at linuxsolutions dot co dot nz>
 
 pkgname=tfautomv
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='Automatic Terraform moved blocks'
+pkgdesc='Generate Terraform moved blocks automatically for painless refactoring'
 arch=('x86_64')
 url='https://github.com/padok-team/tfautomv'
 license=('Apache')
