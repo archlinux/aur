@@ -1,5 +1,5 @@
 pkgname=arkenfox-user.js-git
-pkgver=106.0.r0.g8a65c5a
+pkgver=107.0.r0.gcc0f053
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
@@ -26,12 +26,12 @@ sha256sums=(
 )
 
 pkgver() {
-    cd "${srcdir}/${_repo}"
+    cd "${_repo}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/${_repo}"
+    cd "${_repo}"
     patch -i "${srcdir}/${source[1]}"
     patch -i "${srcdir}/${source[2]}"
 }
@@ -46,7 +46,7 @@ package() {
     ln -s "${lib#"${pkgdir}"}/${updater}" "${bin}/${_name}-updater"
     ln -s "${lib#"${pkgdir}"}/${cleaner}" "${bin}/${_name}-cleaner"
 
-    cd "${srcdir}/${_repo}"
+    cd "${_repo}"
     install -Dm755 -t "${lib}" "${updater}" "${cleaner}"
     install -Dm644 -t "${lib}" "user.js"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.txt"

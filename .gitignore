@@ -1,3 +1,6 @@
-src/
-pkg/
-*.tar.*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!updater.patch
+!cleaner.patch
