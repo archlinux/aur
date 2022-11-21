@@ -1,4 +1,4 @@
-# Maintainer: ZhangHua <zhanghua.00 at qq dot com>
+# Contributor: ZhangHua <zhanghua.00 at qq dot com>
 # Contributor: Danct12 <danct12@disroot.org>
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
