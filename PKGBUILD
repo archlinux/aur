@@ -2,7 +2,7 @@
 
 pkgname=gpr-unit-provider
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A unit provider for Libadalang based on GPR project analysis library.'
 url='https://github.com/AdaCore/gpr-unit-provider'
@@ -20,7 +20,7 @@ build()
 {
     cd "$srcdir/$pkgname-$pkgver"
 
-    make ENABLE_SHARED=yes               \
+    make ENABLE_SHARED=no                \
          GPR_UNIT_PROVIDER_BUILD=release \
          PROCESSORS=0
 }
@@ -29,12 +29,11 @@ package()
 {
     cd "$srcdir/$pkgname-$pkgver"
 
-    make ENABLE_SHARED=yes               \
+    make ENABLE_SHARED=no                \
          GPR_UNIT_PROVIDER_BUILD=release \
          PROCESSORS=0                    \
          prefix="$pkgdir/usr"            \
          install
-    
 
     # Install the license.
     install -D -m644     \

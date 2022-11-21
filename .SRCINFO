@@ -1,7 +1,7 @@
 pkgbase = gpr-unit-provider
 	pkgdesc = A unit provider for Libadalang based on GPR project analysis library.
 	pkgver = 23.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gpr-unit-provider
 	arch = i686
 	arch = x86_64
