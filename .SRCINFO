@@ -1,6 +1,6 @@
 pkgbase = sing-box
 	pkgdesc = The universal proxy platform.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://sing-box.sagernet.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sing-box
 	optdepends = sing-geoip: sing-geoip database
 	conflicts = sing-box-git
 	backup = etc/sing-box/config.json
-	source = sing-box-1.0.6.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.0.6.tar.gz
-	sha256sums = 0216f4512fa355eeb69083e0240f19284c9674f7227991c7a858bc0ba16dcb34
+	source = sing-box-1.0.7.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.0.7.tar.gz
+	sha256sums = 8c07e6c966aa79545647ada297b2c99d861636e5721bdeba720d2213d0883233
 
 pkgname = sing-box
