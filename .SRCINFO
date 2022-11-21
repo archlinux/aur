@@ -1,0 +1,25 @@
+pkgbase = python38-httplib2
+	pkgdesc = Comprehensive HTTP client library, supporting many features
+	pkgver = 0.21.0
+	pkgrel = 2
+	url = https://github.com/httplib2/httplib2
+	arch = any
+	license = MIT
+	checkdepends = flake8
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-pytest-forked
+	checkdepends = python38-pytest-timeout
+	checkdepends = python38-pytest-xdist
+	checkdepends = python38-pytest-randomly
+	checkdepends = python38-future
+	checkdepends = python38-cryptography
+	checkdepends = python38-six
+	makedepends = python38-setuptools
+	depends = python38
+	depends = ca-certificates
+	source = python38-httplib2-0.21.0.tar.gz::https://github.com/httplib2/httplib2/archive/v0.21.0.tar.gz
+	source = cert.patch
+	sha512sums = 8269014f05f5e4b668c7dea8ae708b27a60b4216d712a93ab58b74f399ab5bc0dcdcd8c1411ccff587c7bdb6bc20917451ad969e5bef2d5c5262327cabe17bbb
+	sha512sums = 503719fb07b9ff1f06f252b73804787759139098dba990a7dcd9e9b3602f7271d2251e703993636b249b3597c9a240c721c536a4fe31526ec4ba9441f6c8da56
+
+pkgname = python38-httplib2
