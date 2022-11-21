@@ -1,0 +1,21 @@
+pkgbase = python38-botocore
+	pkgdesc = Low-level, data-driven core of boto 3.
+	pkgver = 1.29.11
+	pkgrel = 00
+	url = https://github.com/boto/botocore
+	arch = any
+	license = Apache
+	depends = python38
+	depends = python38-jmespath
+	depends = python38-dateutil
+	depends = python38-urllib3
+	depends = python38-certifi
+	noextract = botocore-1.29.11-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/3c/07/278bbd4e475b55b3b4e8f61e43ca9a0b8fae242489a38d2bca36683a3dce/botocore-1.29.11-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 523e3d299dbbb5ac9b672e8f95c3ff7f
+	md5sums = 2ee41112a44fe7014dce33e26468ba93
+
+pkgname = python38-botocore
