@@ -1,0 +1,20 @@
+pkgbase = python38-matplotlib-inline
+	pkgdesc = Inline Matplotlib backend for Jupyter
+	pkgver = 0.1.6
+	pkgrel = 2
+	url = https://github.com/ipython/matplotlib-inline
+	arch = any
+	license = BSD
+	checkdepends = ipython
+	checkdepends = python38-matplotlib
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38-traitlets
+	optdepends = python38-matplotlib
+	source = https://files.pythonhosted.org/packages/source/m/matplotlib-inline/matplotlib-inline-0.1.6.tar.gz
+	sha256sums = f887e5f10ba98e8d2b150ddcf4702c1e5f8b3a20005eb0f74bfdbd360ee6f304
+	b2sums = 3c8579660c36f790604c2ddcc99b587b8f54135f823d1a04b3e7ad5709bf7ba49cecd22da164c7bd6ffba4b84d61681f063ca036fba2d4a0cfaf81a9ea66a7e2
+
+pkgname = python38-matplotlib-inline
