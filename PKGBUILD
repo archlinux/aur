@@ -33,10 +33,10 @@ package() {
 	install -D -m644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
 	install -D -m644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/APACHE"
 
-	install -D -m644 extra/config.toml "${pkgdir}/etc/lemurs/config.toml"
-	install -D -m755 extra/xsetup.sh "${pkgdir}/etc/lemurs/xsetup.sh"
+	sudo install -D -m644 extra/config.toml "${pkgdir}/etc/lemurs/config.toml"
+	sudo install -D -m755 extra/xsetup.sh "${pkgdir}/etc/lemurs/xsetup.sh"
 
-	sudo systemctl disable display-manager.service || echo 'No current display manager'
-	install -D -m644 extra/lemurs.service /usr/lib/systemd/system/lemurs.service
+	sudo systemctl disable display-manager.service || echo "No current display manager. That's alright!"
+	sudo install -D -m644 extra/lemurs.service /usr/lib/systemd/system/lemurs.service
 	sudo systemctl enable lemurs.service
 }
