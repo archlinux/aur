@@ -6,7 +6,7 @@
 #	zer0def <zer0def on freenode>
 
 pkgname=libpurple-signald
-pkgver=0.8.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Pidgin libpurple bridge to signald.'
 url='https://github.com/hoehermann/libpurple-signald'
@@ -15,19 +15,31 @@ arch=('any')
 conflicts=('libpurple-signald-git')
 depends=('json-glib' 'libpurple' 'signald' 'qrencode')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hoehermann/libpurple-signald/archive/v${pkgver}.tar.gz")
-sha256sums=('b04394f932bd8461c5db0d06f110635b85a693764e2a60864b52b3b23990a1c9')
+sha256sums=('50ae22bcb6de410c344330a0e35a4da524998af775733472828e54402e2d83cb')
+
+prepare(){
+  cd "${srcdir}/purple-signald-${pkgver}"
+  cd submodules
+  git clone -n https://github.com/trumpowen/MegaMimes/
+  cd MegaMimes
+  git checkout b839068db99cbfcff1af8df1229bd7e41701fe96
+  cd ..
+  git clone -n https://github.com/nayuki/QR-Code-generator/
+  cd QR-Code-generator
+  git checkout 4e41cb2c721a5e06eff75e79fd47a4274f6bb8b0
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make all
+  cd "${srcdir}/purple-signald-${pkgver}"
+  mkdir build
+  cd build
+  cmake ..
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm644 libsignald.so "${pkgdir}/usr/lib/purple-2/libsignald.so"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 icons/16/signal.png "${pkgdir}/usr/share/pixmaps/pidgin/protocols/16/signal.png"
-  install -Dm644 icons/48/signal.png "${pkgdir}/usr/share/pixmaps/pidgin/protocols/48/signal.png"
-
+  cd "${srcdir}/purple-signald-${pkgver}"
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
 
