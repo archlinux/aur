@@ -10,7 +10,7 @@ source=(
 )
 
 sha256sums=('cdd06fcce79493008dc0a79f5a9439ccc697bff5da5ad2b3ca72d2243743e66a'
-            '60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
+            'ac610105c621168903e4aa73d8eb53b5c9a6c0c88734bd4c922dc8f5d42d08e0')
 
 package() {
 	for dir in usr/bin var/db etc/newrelic-infra var/log/newrelic-infra usr/lib/systemd/system; do
