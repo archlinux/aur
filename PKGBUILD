@@ -1,9 +1,9 @@
 # Maintainer: Hyperdriveguy <hyperdriveguy@gmail.com>
 _pkgbase=fltk
 pkgname=fltk-mod
-pkgver=1.3.5.10305
+pkgver=1.3.7.10307
 pkgrel=1
-pkgdesc="FLTK 1.3.5 using the latest abi version."
+pkgdesc="FLTK 1.3.7 using the latest abi version."
 arch=('x86_64')
 url='http://www.fltk.org/'
 license=('LGPL')
@@ -11,14 +11,16 @@ depends=('libjpeg' 'libpng' 'zlib' 'libxinerama' 'libxft' 'libxcursor')
 makedepends=('git' 'make')
 provides=('fltk')
 conflicts=('fltk')
-source=("${pkgname}"::'git+https://github.com/hyperdriveguy/fltk-1.3.5-10305.git')
+source=("${pkgname}"::'git+https://github.com/fltk/fltk.git')
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
 
-  chmod +x configure
-  ./configure --prefix=/usr --with-abiversion=10305
+  git branch release-1.3.7
+
+  chmod +x autogen.sh
+  ./autogen.sh --prefix=/usr --with-abiversion=10307
   make
 }
 
