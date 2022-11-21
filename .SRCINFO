@@ -1,14 +1,15 @@
 pkgbase = invoiceninja-desktop
 	pkgdesc = Desktop version for Invoice Ninja
-	pkgver = 1.0.0
+	pkgver = 5.0.100
 	pkgrel = 1
-	url = https://www.invoiceninja.com/desktop/
+	url = https://github.com/invoiceninja/admin-portal
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source = https://download.invoiceninja.com/linux
+	provides = invoiceninja-desktop
+	source = https://github.com/invoiceninja/admin-portal/archive/refs/tags/v5.0.100.tar.gz
 	source = invoiceninja-desktop.desktop
-	sha256sums = c76660c5aa9fcfa3c4f329798656f91e14467214207b02f65e5439ecb722d652
-	sha256sums = b22d248305fd80fa230a27bd1674f8c817332c2910079c6e7cc0ccb42942a93a
+	sha256sums = cb1c92b63c528471d7804d3a2fc1bb2590ba184b35841ac21fc4e40d5632b9c2
+	sha256sums = beb5d95b727169634e0ee42bf4d4f556ac1fa2d2f73a9d9a61c29820c13dc1c6
 
 pkgname = invoiceninja-desktop
