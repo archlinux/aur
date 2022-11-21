@@ -1,0 +1,14 @@
+pkgbase = package-sizes
+	pkgdesc = list pacman packages sorted by their removable size.
+	pkgver = r1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/package-sizes
+	arch = any
+	license = Unlicense
+	depends = pacman
+	depends = pacutils
+	depends = awk
+	source = package-sizes
+	sha256sums = a882fc3dc39010b94f853fde8e9db19074122a9c2924eb9c0b05a9922739c01c
+
+pkgname = package-sizes
