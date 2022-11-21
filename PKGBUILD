@@ -16,7 +16,7 @@ pkgbase=mesa-panfork-git
 pkgname=('vulkan-mesa-layers-panfork-git' 'opencl-mesa-panfork-git' 'vulkan-swrast-panfork-git' 'libva-mesa-driver-panfork-git' 'mesa-vdpau-panfork-git' 'mesa-panfork-git')
 pkgdesc="Mesa with Panfrost that supports Mali G610/G710 GPUs (Valhall v10 CSF)"
 pkgver=r163343.3504c9b1b31
-pkgrel=2
+pkgrel=3
 arch=('aarch64' 'arm7vh' 'x86_64' 'i686')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
@@ -50,7 +50,7 @@ build() {
     -D b_ndebug=true \
     -D b_lto=false \
     -D platforms=x11,wayland \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,kmsro,lima,panfrost \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,kmsro,panfrost \
     -D vulkan-drivers=swrast \
     -D vulkan-layers=device-select,overlay \
     -D dri3=enabled \

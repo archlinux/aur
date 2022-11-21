@@ -1,7 +1,7 @@
 pkgbase = mesa-panfork-git
 	pkgdesc = Mesa with Panfrost that supports Mali G610/G710 GPUs (Valhall v10 CSF)
 	pkgver = r163343.3504c9b1b31
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mesa3d.org/
 	arch = aarch64
 	arch = arm7vh
