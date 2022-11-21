@@ -1,6 +1,6 @@
 # Maintainer: coxackie
 
-pkgname=gnome-shell-extension-no-annoyance-v2-git
+pkgname=gnome-shell-extension-no-annoyance-2-git
 pkgver=r46.c6804a4
 pkgrel=1
 pkgdesc='Another extension, that removes the Window is ready notification and puts the window into focus.'
