@@ -37,3 +37,12 @@ git --no-pager diff PKGBUILD
 
 # cleanup temp
 rm -r src pkg *.tar.gz *.tar.zst
+
+git status
+printf "Commit and push changes? (Y/n): "
+read ans
+if [ "$ans" != "n" ] && [ "$ans" != "N" ]; then
+  git add -A
+  git commit -m "Release $VERSION"
+  git push origin
+fi

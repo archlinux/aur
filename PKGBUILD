@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
 pkgname=phpactor
-pkgver="2022.10.11"
+pkgver="2022.11.12"
 pkgrel=1
 pkgdesc="PHP completion, refactoring, introspection tool and language server"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('composer: faster class location and more features'
   'git: faster refactorings in your repository scope')
 provides=(phpactor)
 source=("https://github.com/phpactor/phpactor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("228f26ae0b513c7a74e07a0767adc0c63eb5f2c7f70d794b193154d178d4cf39")
+sha256sums=("7ea993e11f93688a9582e59d01786cea09692b310f4730efce04d2431af893ea")
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -24,6 +24,7 @@ package() {
   rm -r "$LIB_DIRECTORY" 2>/dev/null
   cp -r . "$LIB_DIRECTORY"
 
+  export COMPOSER_ALLOW_SUPERUSER=1 # allow su in fakeroot env
   composer install --no-interaction --no-dev --optimize-autoloader --working-dir "$LIB_DIRECTORY"
 
   mkdir "$LIB_DIRECTORY/extensions"
