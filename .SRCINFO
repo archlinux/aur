@@ -1,0 +1,25 @@
+pkgbase = python38-jupyter_client
+	pkgdesc = Jupyter protocol implementation and client libraries
+	pkgver = 7.4.7
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/jupyter_client
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-async_generator
+	checkdepends = python38-pytest-asyncio
+	checkdepends = python38-pytest-timeout
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	depends = python38-ipykernel
+	depends = python38-traitlets
+	depends = python38-pyzmq
+	depends = python38-jupyter_core
+	depends = python38-dateutil
+	depends = python38-entrypoints
+	depends = python38-nest-asyncio
+	source = https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-7.4.7.tar.gz
+	sha256sums = 330f6b627e0b4bf2f54a3a0dd9e4a22d2b649c8518168afedce2c96a1ceb2860
+
+pkgname = python38-jupyter_client
