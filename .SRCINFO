@@ -1,8 +1,8 @@
 pkgbase = python-ipyvue
 	pkgdesc = Jupyter widgets base for Vue libraries
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
-	url = https://github.com/widgetti/ipyvue
+	url = https://pypi.org/project/ipyvue
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -13,7 +13,7 @@ pkgbase = python-ipyvue
 	depends = jupyterlab
 	depends = python-ipywidgets
 	depends = python-watchdog
-	source = ipyvue-1.7.0.tar.gz::https://github.com/widgetti/ipyvue/archive/refs/tags/v1.7.0.tar.gz
-	b2sums = 81ede22832ef575fefef4fa9f4763a610bef9818f5063464299c752fe7850436ef8fb324aafa3ddefa63662d9eba31decc20a3c3d3fd1f4dcf72de8530063450
+	source = python-ipyvue-1.8.0.tar.gz::https://files.pythonhosted.org/packages/source/i/ipyvue/ipyvue-1.8.0.tar.gz
+	b2sums = f09d0b76a78d428929c262e1db21fc43bad8752bc7bf9b6cf5862e0d02dcdd5879e363f12200f0c56daff4bdfaedf0088222d5e6b293d7fe35fabb638c16d46c
 
 pkgname = python-ipyvue

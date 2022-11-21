@@ -1,11 +1,11 @@
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=ipyvue
 pkgname=python-$_pkgname
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Jupyter widgets base for Vue libraries"
 arch=('any')
-url="https://github.com/widgetti/ipyvue"
+url="https://pypi.org/project/ipyvue"
 license=('MIT')
 depends=(
     'jupyterlab'
@@ -19,8 +19,8 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/widgetti/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('81ede22832ef575fefef4fa9f4763a610bef9818f5063464299c752fe7850436ef8fb324aafa3ddefa63662d9eba31decc20a3c3d3fd1f4dcf72de8530063450')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+b2sums=('f09d0b76a78d428929c262e1db21fc43bad8752bc7bf9b6cf5862e0d02dcdd5879e363f12200f0c56daff4bdfaedf0088222d5e6b293d7fe35fabb638c16d46c')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
