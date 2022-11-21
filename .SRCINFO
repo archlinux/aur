@@ -1,0 +1,17 @@
+pkgbase = python38-zope-testrunner
+	pkgdesc = Zope testrunner script
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.testrunner
+	arch = any
+	license = ZPL
+	checkdepends = python38-zope-testing
+	checkdepends = python38-zope-testrunner
+	depends = python38-setuptools
+	depends = python38-zope-interface
+	depends = python38-zope-exceptions
+	depends = python38-six
+	source = https://github.com/zopefoundation/zope.testrunner/archive/5.5.1/python38-zope-testrunner-5.5.1.tar.gz
+	sha512sums = 1f25ce6b8a3c3fed43d95bfde2b359ebabac09c71fcfc9c751938f8bde5df5b67a86e8df6d4c3e915ce0b663485b29c195e73c0f574adcad75716eff4cdc51eb
+
+pkgname = python38-zope-testrunner
