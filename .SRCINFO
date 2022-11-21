@@ -1,0 +1,15 @@
+pkgbase = python38-flask-cors
+	pkgdesc = A Flask extension adding a decorator for CORS support
+	pkgver = 3.0.10
+	pkgrel = 3
+	url = https://pypi.org/project/Flask-Cors
+	arch = any
+	license = MIT
+	checkdepends = python38-nose
+	makedepends = python38-setuptools
+	depends = python38-flask
+	depends = python38-six
+	source = https://pypi.org/packages/source/F/Flask-Cors/Flask-Cors-3.0.10.tar.gz
+	sha256sums = b60839393f3b84a0f3746f6cdca56c1ad7426aa738b70d6c61375857823181de
+
+pkgname = python38-flask-cors
