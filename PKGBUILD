@@ -7,29 +7,30 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=("libappindicator-bzr")
-pkgver=296
+pkgver=12.10.0.r298
 pkgrel=1
-pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray. GTK+ 3 Bzr version.'
+pkgdesc='A library to allow applications to export a menu into the Unity Menu bar. GTK3 Bzr version.'
 url='https://launchpad.net/libappindicator'
-arch=('x86_64')
-license=('LGPL2.1' 'LGPL3')
-makedepends=('dbus-glib' 'gobject-introspection' 'libdbusmenu-gtk3' 'libindicator-gtk3' 'vala' 'gnome-common' 'gtk-sharp-2' 'gtk-sharp-3' 'perl-xml-libxml' 'bzr' 'automake')
-depends=('libdbusmenu-gtk3')
-options=('!emptydirs')
+arch=(x86_64)
+license=(LGPL2.1 LGPL3)
+makedepends=(dbus-glib gobject-introspection libdbusmenu-gtk3 libindicator-gtk3 vala gnome-common gtk-sharp-2 gtk-sharp-3 perl-xml-libxml bzr automake mono)
+depends=(libdbusmenu-gtk3)
+options=(!emptydirs)
 source=('bzr+lp:libappindicator')
-conflicts=('libappindicator-gtk3')
-replaces=('libappindicator-gtk3')
-provides=('libappindicator-gtk3')
+conflicts=(libappindicator-gtk3)
+provides=(libappindicator-gtk3=$pkgver)
 
 sha512sums=('SKIP')
 
 pkgver() {
   cd libappindicator
-  bzr revno
+  ver=`grep "AC_INIT" configure.ac -A1 | tail -1 | sed "s#        \[##" | sed "s#\],##"`
+  _bzrrev=`bzr revno`
+  echo "${ver}.r${_bzrrev}"
 }
 
 build() {
-  export CFLAGS="${CFLAGS} -Wno-deprecated-declarations"
+  # Without this gapi2-codegen will fail
   export CSC='/usr/bin/mcs'
 
   (cd libappindicator
@@ -37,7 +38,7 @@ build() {
       --sysconfdir=/etc \
       --localstatedir=/var \
       --with-gtk=3
-    make
+    make -j1
   )
 }
 
