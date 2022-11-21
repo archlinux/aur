@@ -215,9 +215,10 @@ package() {
   done
   
   if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-    mv cpp.hint "${pkgdir}/${_install_dir}"
+    mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
   elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-    mv cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
+    mkdir -p "${pkgdir}/${_install_dir}/cpp.hint"
+    mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
   fi
   
   if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
