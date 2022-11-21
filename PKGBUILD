@@ -12,8 +12,8 @@ depends=(python-matplotlib python-setuptools)
 makedepends=(python-build python-installer python-wheel git)
 source=(git+${url}.git#branch=master)
 sha512sums=('SKIP')
-provides=(${_base,,})
-conflicts=(${_base,,})
+provides=(python-${_base,,})
+conflicts=(python-${_base,,})
 
 pkgver() {
   cd ${_base}
