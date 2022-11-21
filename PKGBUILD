@@ -1,7 +1,7 @@
 # Maintainer: Bao <qubidt at gmail dot com>
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
-pkgname=zotero-beta
+pkgname=zotero-beta-bin
 _pkgver=6.0.19-beta.3+89bc09469
 pkgver="${_pkgver/-beta/beta}"
 pkgrel=1
