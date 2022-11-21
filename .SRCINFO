@@ -1,0 +1,25 @@
+pkgbase = python38-pygit2
+	pkgdesc = Python bindings for libgit2
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/libgit2/pygit2
+	arch = x86_64
+	license = GPL2
+	checkdepends = python38-pytest-runner
+	makedepends = cython
+	makedepends = python38-build
+	makedepends = python38-cffi
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = git
+	makedepends = python38-six
+	makedepends = python38-wheel
+	depends = libgit2
+	depends = libgit2.so
+	depends = python38-cffi
+	depends = python38-six
+	depends = python38-cached-property
+	source = https://github.com/libgit2/pygit2/archive/v1.11.0/python38-pygit2-1.11.0.tar.gz
+	sha256sums = b53797c5ea378200ffdf9a575d71649d4b657f2501bed332a2a22b3495d273f2
+
+pkgname = python38-pygit2
