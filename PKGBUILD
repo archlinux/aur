@@ -2,7 +2,7 @@
 
 pkgname=simplicity-commander
 pkgver=1.14.0
-pkgrel=2
+pkgrel=1
 pkgdesc='GUI and command line access to the debug features of Silicon Labs devices'
 arch=('x86_64')
 url='https://www.silabs.com/mcu/programming-options'
