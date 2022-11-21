@@ -1,0 +1,14 @@
+pkgbase = python38-fluidity
+	pkgdesc = Fluidity: state machine implementation for Python objects
+	pkgver = 0.2.1
+	pkgrel = 3
+	url = https://github.com/nsi-iff/fluidity
+	arch = any
+	license = MIT
+	checkdepends = python38-should-dsl
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/nsi-iff/fluidity/archive/468627ea13ed4c3043dc67ccc1ff16089fdb7b25/python38-fluidity-468627ea13ed4c3043dc67ccc1ff16089fdb7b25.tar.gz
+	sha512sums = 9c80fb3480fe4167247374f4fb8f1d8d8b77cb7d485d26518485b06b628d70f7bf0d538c4b6a08bf071bccff3082c7266e446d1682984a60e447c0d090b0f899
+
+pkgname = python38-fluidity
