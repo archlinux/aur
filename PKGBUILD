@@ -2,7 +2,7 @@
 
 pkgname=zapzap
 _pkgname=com.rtosta.zapzap
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=2
 pkgdesc="WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 	'hunspell: spell check'
 	)
 source=($url/archive/v$pkgver.tar.gz)
-sha256sums=('3a5007f90caa251fad3e6e43846cc4342f297f0e704fc17b9b8f22f0349aa2cc')
+sha256sums=('1ed202ea2363702bceb3ccf9eac23947846202215c7175c7ff61ba43f96e27bc')
 
 prepare() {
   cd $pkgname-$pkgver
