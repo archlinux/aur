@@ -1,0 +1,19 @@
+pkgbase = python38-cssselect2
+	pkgdesc = CSS selectors for Python ElementTree
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://pypi.org/project/cssselect2/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-pytest-isort
+	checkdepends = python38-pytest-runner
+	makedepends = python38-build
+	makedepends = python38-flit-core
+	makedepends = python38-installer
+	depends = python38-tinycss2
+	depends = python38-webencodings
+	source = https://pypi.io/packages/source/c/cssselect2/cssselect2-0.7.0.tar.gz
+	sha512sums = e3c975fe159d3bec53002bda31c72d9cb346f40529272d8d5bef6aa13142ce60f1e8aa20b039d93ff5ff3d2cd34119b8b2d406f889964eded69e770e4f04e949
+
+pkgname = python38-cssselect2
