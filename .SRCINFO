@@ -1,0 +1,17 @@
+pkgbase = python38-ipython-genutils
+	pkgdesc = Vestigial utilities from IPython
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://ipython.org/
+	arch = any
+	license = BSD
+	checkdepends = python38-nose
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/i/python38-ipython_genutils/python38-ipython_genutils-0.2.0.tar.gz
+	sha256sums = eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8
+
+pkgname = python38-ipython-genutils
