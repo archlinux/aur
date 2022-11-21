@@ -1,0 +1,14 @@
+pkgbase = python38-ipdb
+	pkgdesc = IPython-enabled pdb
+	pkgver = 0.13.9
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/ipdb
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	makedepends = python38-toml
+	depends = python38-ipython
+	source = python38-ipdb-0.13.9.tar.gz::https://github.com/gotcha/ipdb/archive/0.13.9.tar.gz
+	sha512sums = 9a100901442e5d32c131790c549e0bc13748ac5894af6ffc202ea5bffd7f63993bab64259e7ece5c7fdf4c16d8d69785639bf6c63945190ff21752cb482c4a4e
+
+pkgname = python38-ipdb
