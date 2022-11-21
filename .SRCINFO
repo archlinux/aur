@@ -1,0 +1,17 @@
+pkgbase = python38-tzdata
+	pkgdesc = Provider of IANA time zone data
+	pkgver = 2022.6
+	pkgrel = 00
+	url = https://github.com/python/tzdata
+	arch = any
+	license = Apache
+	depends = python38
+	noextract = tzdata-2022.6-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/61/1e/3c4bf37f8d6ceba07ae357e70eedd21bd15a032b460bab6b12a58c0fce9d/tzdata-2022.6-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2996fd41dda77dc765f7c41aa8404df5
+	md5sums = fca9fd5c15a28eb874ba38577a585d48
+
+pkgname = python38-tzdata
