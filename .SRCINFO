@@ -1,0 +1,16 @@
+pkgbase = python38-typeguard
+	pkgdesc = Run-time type checker for Python
+	pkgver = 2.13.3
+	pkgrel = 1
+	url = https://github.com/agronholm/typeguard
+	arch = any
+	license = MIT
+	checkdepends = mypy
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-typing_extensions
+	makedepends = python38-setuptools-scm
+	depends = python38
+	source = https://github.com/agronholm/typeguard/archive/2.13.3/python38-typeguard-2.13.3.tar.gz
+	sha512sums = 26c31ee9670650d1969320187a924d29d986894a38f1026af58f705b132b64be3b6e2ac34729f966f5d302d486334b5a5d9e65fb206245b82b0ff0852020b609
+
+pkgname = python38-typeguard
