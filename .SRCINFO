@@ -1,0 +1,17 @@
+pkgbase = python38-setuptools-scm-git-archive
+	pkgdesc = setuptools_scm plugin for git archives
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/changaco/setuptools_scm_git_archive/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38-setuptools-scm
+	source = https://files.pythonhosted.org/packages/source/s/setuptools-scm-git-archive/setuptools_scm_git_archive-1.4.tar.gz
+	sha512sums = dee1a088cf7cc8c829bd6b197ab751135b65fdfbab40460cec5d360b50f84ccd64c28271312a8f387ac91111d688eebcf3626edeb3afdc7a8c7604a10647df93
+	b2sums = 4258fbf3a7644e7a30ec3cb46ffe7b70ec465d35b5d2ce743e536f72e7bc89104934e2b161a4210a15724f498219906483d255aa1381701428da0f2e1f30dae4
+
+pkgname = python38-setuptools-scm-git-archive
