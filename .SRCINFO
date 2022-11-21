@@ -1,0 +1,13 @@
+pkgbase = python38-pkgconfig
+	pkgdesc = Python module to interface with the pkg-config command line tool
+	pkgver = 1.5.5
+	pkgrel = 3
+	url = https://github.com/matze/pkgconfig
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/p/pkgconfig/pkgconfig-1.5.5.tar.gz
+	sha256sums = deb4163ef11f75b520d822d9505c1f462761b4309b1bb713d08689759ea8b899
+
+pkgname = python38-pkgconfig
