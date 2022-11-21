@@ -1,7 +1,7 @@
 # Maintainer: Michael Beaumont <mjboamail@gmail.com>
 _pkgname=kumactl
 pkgname=${_pkgname}-bin
-pkgver=1.8.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="CLI for Kuma, the universal Envoy service mesh"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "${_pkgname}-${pkgver}::https://download.konghq.com/mesh-alpine/kuma-${pkgver}-debian-amd64.tar.gz"
 )
 sha256sums=(
-  '31ef6733aa8c8eac2f9443455a098f642cc43f85bdbd0d39af26042d0e649c98'
+  'c5247a19ce6d0a8137c3640b8e25dd84ba141d39a6924341879da396e9aa7a20'
 )
 
 package() {
