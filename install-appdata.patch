@@ -1,0 +1,32 @@
+From ea8b4dce33fd5a74012d14d92bef43e26c6dda66 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 17 Apr 2021 21:00:32 +0200
+Subject: [PATCH] Install appdata file
+
+---
+ QuiteRSS.pro | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/QuiteRSS.pro b/QuiteRSS.pro
+index d5088fdf..22dceac5 100644
+--- a/QuiteRSS.pro
++++ b/QuiteRSS.pro
+@@ -287,6 +287,9 @@ unix:!mac {
+ 
+   desktop.files = quiterss.desktop
+   desktop.path =  $$quote($$PREFIX/share/applications)
++  
++  appdata.files = quiterss.appdata.xml
++  appdata.path =  $$quote($$PREFIX/share/metainfo)
+ 
+   target1.files = images/48x48/quiterss.png
+   target1.path =  $$quote($$PREFIX/share/pixmaps)
+@@ -314,7 +317,7 @@ unix:!mac {
+   style.files = style
+   style.path = $$quote($$DATA_DIR)
+ 
+-  INSTALLS += target desktop target1
++  INSTALLS += target desktop appdata target1
+   INSTALLS += icon_16 icon_32 icon_48 icon_64 icon_128 icon_256
+   INSTALLS += translations sound style
+ }
