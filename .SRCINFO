@@ -1,6 +1,6 @@
 pkgbase = instalee-git
-	pkgdesc = TODO
-	pkgver = r35.a7746da
+	pkgdesc = Unixy universal package installation management
+	pkgver = r60.d53c764
 	pkgrel = 1
 	url = https://github.com/xeruf/instalee
 	arch = any
