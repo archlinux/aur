@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur at ezpz dot cz>
 
 pkgname=ghostfolio
-pkgver=1.213.0
+pkgver=1.214.0
 pkgrel=1
 pkgdesc="Open source wealth management software."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("ghostfolio-$pkgver.tar.gz::https://github.com/ghostfolio/ghostfolio/arc
         "ghostfolio.service"
         "ghostfolio.sysusers"
         "ghostfolio.tmpfiles")
-sha256sums=('aee17d61e27fbe676cb608408f95112a3a0b32d93d0c0a667e318e0c1895c99b'
+sha256sums=('01d60a9f92fda853f73e942804f80dd29d94ecdc016f65960e267fa7e0f30d23'
             '4992b5c87b0088585b23104d334f3705f7eeca2588a71c0edb6fe1ebd4b45540'
             '128f0df32f5af102e7915b96c3868a90e9f33421d2376adbea63197f0257fcc1'
             'e640d2239e5308198b9ee84cefa9825d156dbd6151f86559e0d7f94dd1144b44')
