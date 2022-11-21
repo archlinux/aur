@@ -1,0 +1,16 @@
+pkgbase = python38-lz4
+	pkgdesc = LZ4 bindings for Python
+	pkgver = 3.1.10
+	pkgrel = 7
+	url = https://github.com/python-lz4/python-lz4
+	arch = x86_64
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-psutil
+	makedepends = python38-setuptools-scm
+	makedepends = python38-pkgconfig
+	depends = python38
+	source = https://pypi.org/packages/source/l/lz4/lz4-3.1.10.tar.gz
+	sha512sums = 61983e77fa445f59503ccf8ed5fe0605d79754cdeb166e16a7093a856b23369634db7d105d57b3829e680dad0a3728adec9d18dccd92c994347b74c5af95580e
+
+pkgname = python38-lz4
