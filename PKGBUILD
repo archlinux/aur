@@ -10,6 +10,7 @@ pkgrel=1
 url="https://github.com/invoiceninja/$_repo"
 source=("git+${url}" "invoiceninja-desktop.desktop")
 provides=("${_pkgname}")
+conflicts=("$_pkgname")
 make_depends=(flutter)
 arch=('i686' 'x86_64')
 license=('unknown')
