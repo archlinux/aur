@@ -1,0 +1,15 @@
+pkgbase = python38-aioitertools
+	pkgdesc = Implementation of itertools, builtins, and more for AsyncIO and mixed-type iterables
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/omnilib/aioitertools
+	arch = any
+	license = MIT
+	makedepends = python38-flit-core
+	makedepends = python38-build
+	makedepends = python38-installer
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/a/aioitertools/aioitertools-0.11.0.tar.gz
+	sha256sums = 42c68b8dd3a69c2bf7f2233bf7df4bb58b557bca5252ac02ed5187bbc67d6831
+
+pkgname = python38-aioitertools
