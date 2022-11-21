@@ -1,0 +1,18 @@
+pkgbase = python38-vcrpy
+	pkgdesc = Automatically mock your HTTP interactions to simplify and speed up testing
+	pkgver = 4.2.1
+	pkgrel = 2
+	url = https://github.com/kevin1024/vcrpy
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-pytest-httpbin
+	makedepends = python38-setuptools
+	depends = python38-yaml
+	depends = python38-wrapt
+	depends = python38-six
+	depends = python38-yarl
+	source = https://github.com/kevin1024/vcrpy/archive/v4.2.1/python38-vcrpy-4.2.1.tar.gz
+	sha512sums = 59231e5164cda3099b18d099f0ef97e062e6401e52e5dfc4022aa89ca02881e9e6e3c782f12c288f5281b3b3bf175dc33a267bc6d2b40791582a1221f5d7aaab
+
+pkgname = python38-vcrpy
