@@ -1,0 +1,27 @@
+pkgbase = python38-keras
+	pkgdesc = A deep learning API written in Python, running on top of the machine learning platform TensorFlow
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://keras.io/
+	arch = any
+	license = Apache
+	makedepends = python38-pip
+	depends = absl-py
+	depends = python
+	depends = python38-h5py
+	depends = python38-keras-preprocessing
+	depends = python38-numpy
+	depends = python38-pandas
+	depends = python38-pillow
+	depends = python38-pydot
+	depends = python38-scipy
+	depends = python38-six
+	depends = python38-tensorflow
+	depends = python38-yaml
+	depends = tensorboard
+	source = https://files.pythonhosted.org/packages/py2.py3/k/keras/keras-2.10.0-py2.py3-none-any.whl
+	source = keras-2.10.0-LICENSE::https://raw.githubusercontent.com/keras-team/keras/v2.10.0/LICENSE
+	sha256sums = 26a6e2c2522e7468ddea22710a99b3290493768fc08a39e75d1173a0e3452fdf
+	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+
+pkgname = python38-keras
