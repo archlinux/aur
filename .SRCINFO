@@ -14,11 +14,11 @@ pkgbase = python38-aiobotocore
 	checkdepends = python38-flask
 	checkdepends = python38-flask-cors
 	makedepends = python38-setuptools
-	depends = python3.8
-	depends = python-aiohttp
-	depends = python-botocore
-	depends = python-wrapt
-	depends = python-aioitertools
+	depends = python38
+	depends = python38-aiohttp
+	depends = python38-botocore
+	depends = python38-wrapt
+	depends = python38-aioitertools
 	source = https://github.com/aio-libs/aiobotocore/archive/2.4.0/python38-aiobotocore-2.4.0.tar.gz
 	sha256sums = 13cd39bdbec4583384c3c68ac36959e82acf81a131b3cc27d20df98ecd8f1519
 

@@ -9,7 +9,7 @@ pkgdesc='asyncio support for botocore library using aiohttp'
 arch=(any)
 url='https://github.com/aio-libs/aiobotocore'
 license=(Apache)
-depends=(python3.8 python-aiohttp python-botocore python-wrapt python-aioitertools)
+depends=(python38 python38-aiohttp python38-botocore python38-wrapt python38-aioitertools)
 makedepends=(python38-setuptools)
 checkdepends=(python38-moto python38-pytest python38-pytest-asyncio
               # moto optdepends
