@@ -1,0 +1,32 @@
+pkgbase = python38-scikit-build
+	pkgdesc = Improved build system generator for CPython C, C++, Cython and Fortran extensions
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://scikit-build.org
+	arch = any
+	license = MIT
+	checkdepends = cython
+	checkdepends = gcc
+	checkdepends = gcc-fortran
+	checkdepends = ninja
+	checkdepends = python38-build
+	checkdepends = python38-path
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-mock
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-pytest-virtualenv
+	checkdepends = python38-requests
+	checkdepends = python38-six
+	checkdepends = python38-virtualenv
+	makedepends = git
+	makedepends = python38-setuptools-scm
+	depends = cmake
+	depends = python38-distro
+	depends = python38-packaging
+	depends = python38-setuptools
+	depends = python38-wheel
+	source = git+https://github.com/scikit-build/scikit-build.git#tag=f15effa826c77c8be7b208d6681c87086ba461fb?signed
+	validpgpkeys = 2FDEC9863E5E14C7BC429F27B9D0E45146A241E8
+	sha256sums = SKIP
+
+pkgname = python38-scikit-build
