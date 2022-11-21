@@ -1,0 +1,18 @@
+pkgbase = python38-netcdf4
+	pkgdesc = Python/NumPy interface to the netCDF C library
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://unidata.github.io/netcdf4-python
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = python38-setuptools
+	depends = python38-numpy
+	depends = python38-cftime
+	depends = netcdf
+	source = https://files.pythonhosted.org/packages/source/n/netCDF4/netCDF4-1.6.1.tar.gz
+	source = python38-netcdf4-fix-netcdf-filters-detection.patch::https://github.com/Unidata/netcdf4-python/pull/1173.patch
+	sha256sums = ba8dc5d65293a99f1afb8c2acf588d903fdfdc1963a62545b677fa2734262a78
+	sha256sums = cea33cb4b763cc450386c111b61a8c051d834a360ad6ce0487c890dd6dc4ba85
+
+pkgname = python38-netcdf4
