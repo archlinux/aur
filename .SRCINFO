@@ -1,0 +1,20 @@
+pkgbase = python38-executing
+	pkgdesc = Get the currently executing AST node of a frame, and other information
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/alexmojaki/executing
+	arch = any
+	license = MIT
+	checkdepends = python38-asttokens
+	checkdepends = python38-littleutils
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/e/executing/executing-1.2.0.tar.gz
+	sha256sums = 19da64c18d2d851112f09c287f8d3dbbdf725ab0e569077efb6cdcbd3497c107
+	b2sums = 662048e98a1eb3128dd57bbd61a8b7d7fb90dcf5adabc532c69f9ecce2a8ca73cf496ce7ba9b19c94d40083be1382b59dd673b36840e004a7cd0add888292ada
+
+pkgname = python38-executing
