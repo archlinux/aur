@@ -9,7 +9,7 @@ url='https://github.com/padok-team/tfautomv'
 license=('Apache')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('b0e1abbf677f5d5287497238da3b8745f256a67d5674c0bedf7150172cb29385')
+sha256sums=('5224c8974fabd9945f8a642fc60e0813a3b69523d2c8d01216a345ffc89d59ff')
 
 build() {
   cd "tfautomv-$pkgver"
