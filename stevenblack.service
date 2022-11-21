@@ -1,0 +1,11 @@
+[Unit]
+Description=Download the latest hosts file from Steven Black
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/stevenblack
+
+[Install]
+RequiredBy=multi-user.target

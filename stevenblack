@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Downloads and updates hosts from Steven Black.
+
+readonly hostsource="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+readonly tmpfile=/tmp/hosts
+readonly hostsfile=/etc/hosts
+
+if ! [[ -w $hostsfile ]]; then
+	echo "Can't write to $hostsfile. Check your permissions."
+	exit 1
+fi
+
+rm -- "$tmpfile" 2>/dev/null
+
+if ! curl -sL --fail "$hostsource" -o "$tmpfile"; then
+	echo "Couldn't download from $hostsource to $tmpfile. Check your internet connection."
+	exit 1
+fi
+
+{
+	echo "# NOTE: Written by $0 on $(date '+%c')"
+	cat -- "$tmpfile"
+} > "$hostsfile"
+
+echo "$hostsfile has been updated successfully."
+
+rm -- "$tmpfile"
