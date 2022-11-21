@@ -1,0 +1,20 @@
+pkgbase = python38-distro
+	pkgdesc = Linux OS platform information API
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/python-distro/distro
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	makedepends = python38-sphinx
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python
+	depends = python38-setuptools
+	options = !makeflags
+	source = https://github.com/python-distro/distro/archive/v1.8.0/python38-distro-1.8.0.tar.gz
+	sha512sums = 05e857b85f701a0289343cb1254fd82e2826705ce1859078e23f2f2e97fa7edbffec1dc6b79b0cc5c9800ddd25b970da2d75978b4f65c4113b835c69c4e8141c
+	b2sums = 3608ee82db15a5385fc89b74339bc13f516170481e369791f79a0002295adf939126f9b0658a9fad9325e616b86125d48fe9a7e1709f55e7159052e5927239b7
+
+pkgname = python38-distro
