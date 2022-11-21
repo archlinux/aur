@@ -1,0 +1,17 @@
+pkgbase = python38-pytest-mpi
+	pkgdesc = pytest plugin for working with MPI
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://pytest-mpi.readthedocs.io/
+	arch = any
+	license = BSD
+	checkdepends = openmpi
+	checkdepends = python38-mpi4py
+	checkdepends = python38-sybil
+	checkdepends = python38-pytest-mpi
+	makedepends = python38-setuptools
+	depends = python38-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-mpi/pytest-mpi-0.6.tar.gz
+	sha256sums = 09b3cd3511f8f3cd4d205f54d4a7223724fed0ab68b872ed1123d312152325a9
+
+pkgname = python38-pytest-mpi
