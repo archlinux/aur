@@ -34,6 +34,8 @@ package() {
 	rm python2-build/bin/pydoc
 	rm python2-build/bin/python
 	rm python2-build/bin/python-config
+	rm python2-build/lib/pkgconfig/python.pc
+	rm python2-build/share/man/man1/python.1
 
 	sed -i "s|/mnt/storage/temp/python2-build|/usr|" python2-build/bin/python${_pybasever}-config
 	sed -i "s|/mnt/storage/temp/python2-build|/usr|" python2-build/lib/pkgconfig/python-${_pybasever}.pc
