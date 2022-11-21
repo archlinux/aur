@@ -1,0 +1,14 @@
+pkgbase = article_md
+	pkgdesc = An CLI application to parse a web article into readable text.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/aome510/article-md-cli
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = npm
+	noextract = article_md-0.2.1.tgz
+	source = article_md-0.2.1.tgz::https://registry.npmjs.org/article_md/-/article_md-0.2.1.tgz
+	sha256sums = 9cba4eb5a3c4569cd63fb0263d751248099660daf44277bf9319a69c8ef1f5bc
+
+pkgname = article_md
