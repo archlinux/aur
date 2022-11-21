@@ -1,7 +1,7 @@
 pkgbase = python38-pyqt5
 	pkgdesc = A set of Python 3.8 bindings for the Qt5 toolkit
 	pkgver = 5.15.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	groups = pyqt5
