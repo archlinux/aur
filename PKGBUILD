@@ -6,7 +6,7 @@
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.4.8738
+pkgver=7.3.6.9285
 pkgrel=1
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
@@ -14,7 +14,6 @@ url='https://www.google.com/earth/'
 license=('custom')
 depends=(
     'alsa-lib'
-    'curl'
     'desktop-file-utils'
     'fontconfig'
     'glu'
@@ -25,6 +24,7 @@ depends=(
     'libproxy'
     'libxi'
     'libxrender'
+    'sqlite'
 )
 provides=('google-earth')
 options=('!strip' '!emptydirs')
@@ -38,12 +38,11 @@ source=(
 )
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
 b2sums=(
-    '46233141ed43d1f810f4c3cdd966d1174a7ac09212c2214e023dcbd60b712e419c5dfbda07fb3eccc70f65f2ee9ccbf4c8c7952c922cd91e21d9089768e7d5c5'
+    '03e566aa63889cacd3cda8cbbcdc480cf2e3c12a0a8338d094ecb59e7f92a352a360b950863ebf367132eb983545789729ed747146f95141db72a054d18a46d8'
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
-)
+    'SKIP')
 
 _installdir='/opt/google/earth/pro'
 
