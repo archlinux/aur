@@ -1,7 +1,7 @@
 pkgbase = python38-pyqt6
 	pkgdesc = A set of Python bindings for the Qt6 toolkit
 	pkgver = 6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	groups = pyqt6
