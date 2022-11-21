@@ -12,9 +12,10 @@ sha512sums=('SKIP')
 
 build() {
   cd utena-launcher
-  meson build \
+  meson setup \
     -Dprefix=/usr \
-    -Dbuildtype=release
+    -Dbuildtype=release \
+    build
   ninja -C build
 }
 
