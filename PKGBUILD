@@ -2,7 +2,7 @@
 
 pkgname=pipecontrol
 _pkgname=PipeControl
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Pipewire control GUI program in Qt (Kirigami2)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools')
 depends=('pipewire>=0.3.38' 'kirigami2' 'kcoreaddons' 'ki18n')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/portaloffreedom/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('df267e4ff27e7928233393289c26b1b9fb8bdc504fbb9a6b82e8603643cfffd4')
+sha256sums=('585c0bcb431fc59b2a8504e277ea7abcc86767f2b451da7a2f95a7856af2a2d9')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
