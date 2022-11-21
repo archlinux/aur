@@ -1,0 +1,16 @@
+pkgbase = python38-multidict
+	pkgdesc = multidict implementation
+	pkgver = 6.0.2
+	pkgrel = 00
+	url = https://github.com/aio-libs/multidict
+	arch = x86_64
+	license = Apache
+	depends = python38
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/fa/a7/71c253cdb8a1528802bac7503bf82fe674367e4055b09c28846fdfa4ab90/multidict-6.0.2.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = f8230905ad1f50c87e8d9cc6b0bb7ca2
+	md5sums = 84c63e2bcd84e619d249af5181e2147f
+
+pkgname = python38-multidict
