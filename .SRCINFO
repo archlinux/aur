@@ -1,0 +1,18 @@
+pkgbase = python38-pynacl
+	pkgdesc = Python binding to the Networking and Cryptography (NaCl) library
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://pypi.python.org/pypi/PyNaCl
+	arch = x86_64
+	license = Apache
+	makedepends = python38-setuptools
+	makedepends = python38-pycparser
+	makedepends = python38-wheel
+	depends = libsodium
+	depends = python
+	depends = python38-six
+	depends = python38-cffi
+	source = https://pypi.org/packages/source/P/PyNaCl/PyNaCl-1.4.0.tar.gz
+	sha512sums = 355b974010f94d551f631a2dd5ae792da3d4d0abf8ed70b6decc78aad24a9f965636988aebd14947b137ea14cdcbb73531775f08b1b4d5a9d72b5df3dba0b022
+
+pkgname = python38-pynacl
