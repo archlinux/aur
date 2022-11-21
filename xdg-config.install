@@ -9,6 +9,10 @@ post_install() {
   echo "For Flatpak applications, you need to override their permissions:"
   echo "sudo flatpak override --filesystem=xdg-config/gtk-3.0"
   echo ""
+  echo "============================================================================="
+  echo "Please don't report theming issue to upstream, open an issue in the Gradience"
+  echo "repo instead"
+  echo "============================================================================="
 }
 
 post_upgrade() {
