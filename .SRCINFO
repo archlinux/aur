@@ -1,0 +1,18 @@
+pkgbase = python38-xxhash
+	pkgdesc = Python binding for xxHash
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/ifduyue/python38-xxhash
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python38-setuptools-scm
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38
+	depends = xxhash
+	source = python38-xxhash::git+https://github.com/ifduyue/python38-xxhash.git#tag=v3.0.0
+	sha512sums = SKIP
+
+pkgname = python38-xxhash
