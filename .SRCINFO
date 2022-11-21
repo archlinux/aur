@@ -1,0 +1,14 @@
+pkgbase = python38-deprecated
+	pkgdesc = Python @deprecated decorator to deprecate old python classes, functions or methods
+	pkgver = 1.2.13
+	pkgrel = 3
+	url = https://github.com/tantale/deprecated
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	makedepends = python38-setuptools
+	depends = python38-wrapt
+	source = python38-deprecated-1.2.13.tar.gz::https://github.com/tantale/deprecated/archive/v1.2.13.tar.gz
+	sha512sums = c170b086bc4e37462181a0f53edbe745aa4f4924c7fd64d9693de267e070392b74445f9cba935e85c878b755603ca6cada8b4130ac96ab071be284047aa35619
+
+pkgname = python38-deprecated
