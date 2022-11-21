@@ -221,7 +221,7 @@ package() {
   fi
   
   if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
-    install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
+    install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_install_dir}"
   fi
   
   chmod -R 777 "${pkgdir}/${_install_dir}"
