@@ -1,0 +1,26 @@
+pkgbase = python38-oslo-config
+	pkgdesc = parsing command line arguments and .ini style configuration files
+	pkgver = 9.0.0
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/oslo.config/9.0.0
+	arch = any
+	license = Apache
+	checkdepends = python38-oslotest
+	checkdepends = python38-sphinx
+	checkdepends = python38-requests-mock
+	checkdepends = python38-oslo-log
+	makedepends = python38-setuptools
+	depends = python38-six
+	depends = python38-netaddr
+	depends = python38-stevedore
+	depends = python38-debtcollector
+	depends = python38-oslo-i18n
+	depends = python38-rfc3986
+	depends = python38-yaml
+	options = !emptydirs
+	source = https://github.com/openstack/oslo.config/archive/9.0.0/python38-oslo-config-9.0.0.tar.gz
+	source = python38-oslo-config-cliff-3.4.patch::https://opendev.org/openstack/oslo.config/commit/78098e6b18026ff9ef03a948b57348f02d42e13b.patch
+	sha512sums = f8de473d4693d18c145f360f59eeded2d4ad8e0d2fb6de9b6f394f87ced5673c2eaab501c674c5b6469dc5477250cb3877227ac987e33ab44acaa9fc4ade8421
+	sha512sums = 34d302cad1a6818773ee5093a20e41c18bfaac88a21d9b916f56f60eac566c9d3e9b18cc434920af079a0e7501e2ca51f7c56427e2eff2f90de911019639cd23
+
+pkgname = python38-oslo-config
