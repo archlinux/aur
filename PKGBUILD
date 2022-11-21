@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='wasmer-bin'
-pkgver='2.3.0'
+pkgver='3.0.0'
 _shortver="${pkgver%.*}"
 _majorver="${_shortver%.*}"
 pkgrel='2'
@@ -27,8 +27,8 @@ provides=(
   "libwamser.so=$pkgver"
 )
 source=(
-  "wasmer-linux-amd64-$pkgver.tar.gz::$_repo/releases/download/$pkgver/wasmer-linux-amd64.tar.gz"
-  "https://raw.githubusercontent.com/wasmerio/wasmer/$pkgver/LICENSE"
+  "wasmer-linux-amd64-$pkgver.tar.gz::$_repo/releases/download/v$pkgver/wasmer-linux-amd64.tar.gz"
+  "https://raw.githubusercontent.com/wasmerio/wasmer/v$pkgver/LICENSE"
 )
 sha512sums=(
   'SKIP'
