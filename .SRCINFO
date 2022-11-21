@@ -1,7 +1,7 @@
 pkgbase = th08
 	pkgdesc = The eighth game of the Touhou Project series, Imperishable Night trial version (via wine). Easy upgrade to full version.
 	pkgver = 0.03
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www16.big.or.jp/~zun/html/th08top.html
 	install = th08.install
 	arch = i686
@@ -10,12 +10,13 @@ pkgbase = th08
 	makedepends = lha
 	depends = wine
 	optdepends = timidity++: to get MIDI background music
+	noextract = eiya_tr003.lzh
 	options = !strip
 	source = th08.sh
 	source = th08.desktop
 	source = license
 	source = th08.xpm
-	source = https://www.dropbox.com/s/0dwwpkokrko2f4m/eiya_tr003.lzh?dl=0
+	source = eiya_tr003.lzh::https://files.catbox.moe/lpdkcc.lzh
 	md5sums = f68cc931fdce0d4fa65dfe0614c08db2
 	md5sums = 6ebb33c8949a426794bd6203f52a8cc5
 	md5sums = 5de1cb787942308b7620f93a176367d9
@@ -23,4 +24,3 @@ pkgbase = th08
 	md5sums = c42647202a695bd1fdd2d88ce6615d53
 
 pkgname = th08
-
