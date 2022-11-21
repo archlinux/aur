@@ -1,0 +1,16 @@
+pkgbase = python38-pytest-qt
+	pkgdesc = pytest support for PyQt and PySide applications
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-qt
+	arch = any
+	license = MIT
+	checkdepends = python38-pyqt5
+	checkdepends = pyside2
+	checkdepends = xorg-server-xvfb
+	makedepends = python38-setuptools-scm
+	depends = python38-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-4.2.0.tar.gz
+	sha512sums = 57e175bada0e33101eeb7d85579f6e804658d74168714b117b3a1ba564826405e70860b258caf28c917ddca7acd1842de2133a55b342862762fc37ca1a758b69
+
+pkgname = python38-pytest-qt
