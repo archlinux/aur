@@ -1,0 +1,19 @@
+pkgbase = python38-trio-asyncio
+	pkgdesc = A re-implementation of the asyncio mainloop on top of Trio
+	pkgver = 0.12.0
+	pkgrel = 3
+	url = https://github.com/python-trio/trio-asyncio
+	arch = any
+	license = APACHE
+	license = MIT
+	makedepends = git
+	makedepends = python38-setuptools
+	makedepends = python38-pytest-runner
+	depends = python38
+	depends = python38-async_generator
+	depends = python38-outcome
+	depends = python38-trio
+	source = git+https://github.com/python-trio/trio-asyncio.git#tag=970d81c498f857d052738a2c4db2c899910dc038
+	sha256sums = SKIP
+
+pkgname = python38-trio-asyncio
