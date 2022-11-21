@@ -1,0 +1,17 @@
+pkgbase = python38-krb5
+	pkgdesc = krb5 API interface
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jborean93/pykrb5
+	arch = x86_64
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-k5test
+	makedepends = cython
+	makedepends = python38-setuptools
+	depends = python38
+	depends = krb5
+	source = https://github.com/jborean93/pykrb5/archive/v0.4.1/python38-krb5-0.4.1.tar.gz
+	sha256sums = fc7329c91eff254f46d01088995e12127844a79bcaac14ba29cbd7ec6bcbdd37
+
+pkgname = python38-krb5
