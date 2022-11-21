@@ -1,0 +1,22 @@
+pkgbase = python38-pyspnego
+	pkgdesc = SPNEGO Authentication library
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/jborean93/pyspnego
+	arch = any
+	license = MIT
+	checkdepends = cython
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-mock
+	checkdepends = python38-gssapi
+	checkdepends = python38-krb5
+	checkdepends = python38-ruamel-yaml
+	makedepends = python38-setuptools
+	depends = python38-cryptography
+	optdepends = python38-gssapi: Kerberos support
+	optdepends = python38-krb5: Kerberos support
+	optdepends = python38-ruamel-yaml: YAML configuration
+	source = https://github.com/jborean93/pyspnego/archive/v0.6.2/python38-pyspnego-0.6.2.tar.gz
+	sha256sums = 9d82105879363e6af61f3e79ae2070b17575e9cd9a22b6ad5cc539758dc4356f
+
+pkgname = python38-pyspnego
