@@ -1,0 +1,15 @@
+pkgbase = python38-greenlet
+	pkgdesc = Lightweight in-process concurrent programming
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/greenlet/
+	arch = x86_64
+	license = MIT
+	checkdepends = python38-objgraph
+	checkdepends = python38-psutil
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-2.0.1.tar.gz
+	sha512sums = 3f4ccc761f64c7f10946d2fa965ef847e814ca1b6f57dc0df262cb6eed24148b44c6629770bf038656a9e3706e45553080844dfc841643604bd4776ca7ca03a2
+
+pkgname = python38-greenlet
