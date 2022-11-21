@@ -1,6 +1,6 @@
 pkgbase = pipecontrol
 	pkgdesc = Pipewire control GUI program in Qt (Kirigami2)
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/portaloffreedom/PipeControl
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = pipecontrol
 	depends = kirigami2
 	depends = kcoreaddons
 	depends = ki18n
-	source = PipeControl-0.2.4.tar.gz::https://github.com/portaloffreedom/PipeControl/archive/v0.2.4.tar.gz
-	sha256sums = 49d0a260691ccce51617e05986b91d0588f483d33a0206941d688f9d75bc147e
+	source = PipeControl-0.2.5.tar.gz::https://github.com/portaloffreedom/PipeControl/archive/v0.2.5.tar.gz
+	sha256sums = df267e4ff27e7928233393289c26b1b9fb8bdc504fbb9a6b82e8603643cfffd4
 
 pkgname = pipecontrol
