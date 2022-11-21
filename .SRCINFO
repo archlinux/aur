@@ -1,0 +1,16 @@
+pkgbase = python38-traitlets
+	pkgdesc = A configuration system for Python applications
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = https://traitlets.readthedocs.io/en/stable/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	depends = python38-decorator
+	source = https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-5.5.0.tar.gz
+	sha256sums = b122f9ff2f2f6c1709dab289a05555be011c87828e911c0cf4074b85cb780a79
+
+pkgname = python38-traitlets
