@@ -1,0 +1,15 @@
+pkgbase = python38-k5test
+	pkgdesc = Library for setting up self-contained Kerberos 5 environments
+	pkgver = 0.10.1
+	pkgrel = 3
+	url = https://github.com/pythongssapi/k5test
+	arch = any
+	license = custom
+	makedepends = python38-setuptools
+	depends = python38
+	depends = krb5
+	source = https://github.com/pythongssapi/k5test/archive/v0.10.1/python38-k5test-0.10.1.tar.gz
+	sha512sums = 36687bed6f14a3e53446cc97a556ad16d053f2bf0ab58689bf252382d2374a663cf59c1a4157b11d0e6b07e2016f40e4d0fccb53d8503ed9eb507927a7dfec2b
+	b2sums = 673d94d572b6d37d3124466f6875bece0d37e80a16b5abe43db6a4333eecf3f5e1337b67020d00c2337d87b390df29a57cd563461fec01cfc95ee69adb9a8a39
+
+pkgname = python38-k5test
