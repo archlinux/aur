@@ -27,7 +27,7 @@ class ClashUp:
     "is_subscribe_banned": false,
     "custom_rules": [],
     "mmdb_file_url": "http://www.ideame.top/mmdb/Country.mmdb",
-    "mmdb_version_url: "http://www.ideame.top/mmdb/version",
+    "mmdb_version_url": "http://www.ideame.top/mmdb/version",
     "periodically_update": false
 }
 '''
