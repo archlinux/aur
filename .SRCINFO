@@ -1,0 +1,24 @@
+pkgbase = python38-stack-data
+	pkgdesc = Extract data from python stack frames and tracebacks for informative displays
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/alexmojaki/stack_data
+	arch = any
+	license = MIT
+	checkdepends = cython
+	checkdepends = python38-littleutils
+	checkdepends = python38-pygments
+	checkdepends = python38-pytest
+	checkdepends = python38-typeguard
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-asttokens
+	depends = python38-executing
+	depends = python38-pure-eval
+	source = https://files.pythonhosted.org/packages/source/s/stack_data/stack_data-0.6.1.tar.gz
+	sha256sums = 6c9a10eb5f342415fe085db551d673955611afb821551f554d91772415464315
+	b2sums = 50b8b69d30504035d210c8276be88339a3261c66ea948dc64456c39d982c920e211df5f85b7db8b9931d754b0e64d0ca3d26f9c3edad3652139095faa4f8a183
+
+pkgname = python38-stack-data
