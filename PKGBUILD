@@ -22,7 +22,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
 
-	cargo +stable build --locked --release --target-dir target
+	cargo +nightly build --locked --release --target-dir target
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
 	install -D -m644 extra/config.toml "${pkgdir}/etc/lemurs/config.toml"
 	install -D -m755 extra/xsetup.sh "${pkgdir}/etc/lemurs/xsetup.sh"
 
-	sudo systemctl disable display-manager.service
+	sudo systemctl disable display-manager.service || echo 'No current display manager'
 	install -D -m644 extra/lemurs.service /usr/lib/systemd/system/lemurs.service
 	sudo systemctl enable lemurs.service
 }
