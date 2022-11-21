@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=gotify-desktop
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small Gotify daemon to send messages as desktop notifications '
 arch=('aarch64' 'x86_64')
 url="https://github.com/desbma/${pkgname}"
