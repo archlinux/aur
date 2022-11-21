@@ -1,0 +1,15 @@
+pkgbase = python38-locket
+	pkgdesc = File-based locks for Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mwilliamson/locket.py
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-spur
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/mwilliamson/locket.py/archive/1.0.0/python38-locket-1.0.0.tar.gz
+	sha256sums = 1017278428998ac23c0716660587eeb39f069493d39922b7f5ae6c39c62f86c6
+
+pkgname = python38-locket
