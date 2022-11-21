@@ -1,0 +1,18 @@
+pkgbase = snid
+	pkgdesc = SNI-based Proxy Server
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://rclone.org/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = snid-0.2.0.tar.gz::https://github.com/AGWA/snid/archive/v0.2.0.tar.gz
+	sha256sums = 03dfee392b4c9817e3a0fb63d6abf1024b381dc6d92d093c25b8975aba4fce1f
+
+pkgname = snid
