@@ -1,0 +1,23 @@
+pkgbase = python38-ufolib2
+	pkgdesc = A library to deal with UFO font sources
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/fonttools/ufoLib2
+	arch = any
+	license = Apache
+	checkdepends = python38-msgpack
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	makedepends = python38-setuptools-scm
+	depends = python38
+	depends = python38-attrs
+	depends = python38-cattrs
+	depends = python38-fonttools
+	depends = python38-fs
+	depends = python38-lxml
+	source = https://files.pythonhosted.org/packages/source/u/ufoLib2/ufoLib2-0.14.0.tar.gz
+	sha256sums = 39d5097cd7b79ce43209fde74fdff9cbf0bcbd95e74805a22c7bd9f065cc562c
+
+pkgname = python38-ufolib2
