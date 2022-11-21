@@ -1,7 +1,7 @@
 # Maintainer: necklace <ns@nsz.no>
 
 pkgname=iridium-rpm
-pkgver=106.0
+pkgver=107.0
 pkgrel=1
 _folder='iridium-browser'
 _name='iridium-browser'
@@ -15,9 +15,9 @@ depends=('ffmpeg4.4' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
-source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.10.106-1.el8.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.11.107-1.el8.x86_64.rpm')
 
-sha256sums=('0f4c0e17e80853ee40592d27e8acf933077bcbf0273ddd93ef09a7ca315ee1da')
+sha256sums=('0fea54c0698fe00ac44814667c93b772e7fbc95638f71317c9acff229bdcc20c')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
