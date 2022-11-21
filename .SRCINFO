@@ -1,0 +1,17 @@
+pkgbase = python38-warlock
+	pkgdesc = Python object model built on JSON schema and JSON patch.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/bcwaldon/warlock
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	depends = python38-jsonschema
+	depends = python38-jsonpatch
+	source = python38-warlock-2.0.1.tar.gz::https://github.com/bcwaldon/warlock/archive/2.0.1.tar.gz
+	sha512sums = f354f0dd2af524a9e09ed03b072e1f68859fc70bf5ec083f8853fde2f1cec3172bef42318df176a3cf5fa48d93f030010db81d710961f2b05a092a4ee25041c1
+
+pkgname = python38-warlock
