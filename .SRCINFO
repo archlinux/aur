@@ -1,13 +1,13 @@
 pkgbase = mcap-cli-bin
 	pkgdesc = MCAP is a modular container format and logging library for pub/sub messages with arbitrary message serialization.
-	pkgver = 0.0.23
+	pkgver = 0.0.24
 	pkgrel = 1
 	url = https://github.com/foxglove/mcap
 	arch = x86_64
 	license = MPL
 	provides = mcap-cli
 	conflicts = mcap-cli
-	source = mcap-cli-bin-0.0.23-x86_64::https://github.com/foxglove/mcap/releases/download/releases%2Fmcap-cli%2Fv0.0.23/mcap-linux-amd64
-	sha512sums = 35e57f5899c9cf986c3d972061e3d390e28a91f399754dc3f97e9be76e8967f9b8b0c750dcf25c3caa24099f384fa1fad277986482ab6512cd6f49b09acb5f54
+	source = mcap-cli-bin-0.0.24-x86_64::https://github.com/foxglove/mcap/releases/download/releases%2Fmcap-cli%2Fv0.0.24/mcap-linux-amd64
+	sha512sums = 02a641c8f33f0f1d4529a3fa20f3e8ef699aacd0db9238d80272441edfb472f1f4acb31488220f4c5463f02d22c8f13019af350652933abad81f1363665778ce
 
 pkgname = mcap-cli-bin
