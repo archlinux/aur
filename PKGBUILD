@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1243
+pkgver=mainline.0.1245
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('aarch64' 'x86_64')
