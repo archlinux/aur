@@ -1,0 +1,16 @@
+pkgbase = python38-backports-zoneinfo
+	pkgdesc = Backport of the standard library zoneinfo module
+	pkgver = 0.2.1
+	pkgrel = 00
+	url = https://github.com/pganssle/zoneinfo
+	arch = x86_64
+	license = Apache
+	depends = python38
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/ad/85/475e514c3140937cf435954f78dedea1861aeab7662d11de232bdaa90655/backports.zoneinfo-0.2.1.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = d51faaaed4a1d5158dcfcef90355e805
+	md5sums = fca9fd5c15a28eb874ba38577a585d48
+
+pkgname = python38-backports-zoneinfo
