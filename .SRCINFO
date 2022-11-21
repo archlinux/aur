@@ -13,6 +13,7 @@ pkgbase = eric
 	depends = qt6-svg
 	depends = python-editorconfig
 	depends = python-asttokens
+	depends = python-black
 	conflicts = eric-common
 	replaces = eric-common
 	source = https://downloads.sourceforge.net/eric-ide/eric7-22.11.1.tar.gz
