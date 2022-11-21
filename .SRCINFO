@@ -1,9 +1,9 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 22.0.0
-	pkgrel = 4
+	pkgver = 23.0.10
+	pkgrel = 1
 	epoch = 2
-	url = https://github.com/AdaCore/ada_language_server/
+	url = https://github.com/AdaCore/ada_language_server
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc-ada
@@ -13,9 +13,11 @@ pkgbase = ada_language_server
 	depends = libvss
 	depends = ada_spawn
 	depends = ada-libfswatch
-	source = https://github.com/AdaCore/ada_language_server/archive/refs/tags/v22.0.0.zip
+	depends = gpr
+	depends = gnatdoc
+	source = ada_language_server-23.0.10.tar.gz::https://github.com/AdaCore/ada_language_server/archive/refs/tags/23.0.10.tar.gz
 	source = als.patch
-	sha1sums = 9ad4dd52e6553d5ace5d07eb476a299fa049be1e
-	sha1sums = a3905d1ee3a4a84fdbbb1a8f5fd1c6deb2b767ba
+	b2sums = 100a0d042a6c638b1b3eb7c9c27a638f218a66e3f52a6f9be53fc42e764aff636c4fe7c1f532f2ba7ae6a811bf4cb8a8ce4a416fd1958c460ffb7f715a7166f5
+	b2sums = 95a8d0ad9367606e5d6426dec432941d76e7bf7f8f7de3915282dcea9fcf7da783611b94f1f09376d5fac5b0fa2e81f470d01344dd42ab607918709e5a48e43b
 
 pkgname = ada_language_server
