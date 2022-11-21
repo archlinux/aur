@@ -1,11 +1,12 @@
-# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Maintainer :  Biginoz 
+# Contributor :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 
 pkgname=whalebird-bin
 _name="${pkgname%-bin}"
 
-pkgver=4.6.5
+pkgver=4.7.0
 #_ver=4.6.0-rc.1
 #pkgver="${_ver/-}"
 pkgrel=1
@@ -22,7 +23,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'l
 
 _url="https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm"
 source=("$_url")
-sha256sums=('55368ad328c7e15ad0cee4ab73ad2f67d06bfe3e83928a0d379549cf81412bf0')
+sha256sums=('b46e23c096675ac1a85ce4d8ede8b09d7272d044d2dd05fb1b067a30c7c0c976')
 #_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
 #source=("$_url")
 #sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
