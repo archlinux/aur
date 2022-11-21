@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=106.0.5
+pkgver=107.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -41,12 +41,12 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
         "libwebrtc-screen-cast-sync.patch")
-sha256sums=('9471a7610d0adc350f14c363f1fcd2e15a85f22744f5850604af01aa844bc8a8'
+sha256sums=('8a562e5a397b57e9bf383c2988308ab494c5d28844e792c658fedea27756584a'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP'
-            'b5597ff5bc658076faa4d66d990c07312ddda121ae227f07567b814a3a286f12'
+            '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499'
             '5c164f6dfdf2d97f3f317e417aaa2e6ae46a9b3a160c3162d5073fe39d203286')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -199,7 +199,8 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools-cachy.patch
 
     patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
-
+    msg2 "Firefox View"
+    patch -Np1 -i ${_patches_dir}/librewolf-ui/firefox-view.patch
     msg2 "change bus/dbus/remoting names to org.cachyos"
     patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
@@ -212,17 +213,20 @@ END
     msg2 "Hide passwordmgr"
     patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
 
+
     msg2 "KDE MENU"
     patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
     patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-	patch -Np1 < ../match.patch
     msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
     patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
     # https://bugs.archlinux.org/task/76231
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
     # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
     patch -Np1 -i ../libwebrtc-screen-cast-sync.patch
+    msg2 "Match to system libs"
+    patch -Np1 -i ../match.patch
+
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
     cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
 }
