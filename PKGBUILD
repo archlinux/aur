@@ -4,7 +4,7 @@
 
 pkgname=archlinux-hello
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool providing access to documentation and support for new Arch Linux users."
 url="https://github.com/KoraggKnightWolf/archlinux-hello"
 arch=('any')
