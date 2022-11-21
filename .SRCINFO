@@ -1,0 +1,18 @@
+pkgbase = python38-s3transfer
+	pkgdesc = An Amazon S3 Transfer Manager
+	pkgver = 0.6.0
+	pkgrel = 00
+	url = https://github.com/boto/s3transfer
+	arch = any
+	license = Apache
+	depends = python38
+	depends = python38-botocore
+	noextract = s3transfer-0.6.0-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/5e/c6/af903b5fab3f9b5b1e883f49a770066314c6dcceb589cf938d48c89556c1/s3transfer-0.6.0-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = a8e4ac6484afa66b26e2cc9f92d908f1
+	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+
+pkgname = python38-s3transfer
