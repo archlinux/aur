@@ -2,8 +2,8 @@
 
 pkgname=firefox-userchromejs
 _pkgname=firefox-scripts
-pkgver=101.0b3
-_pkgver=77f56676dc6686af15827f9d51c1e4d3e0989c2a
+pkgver=107.0b7
+_pkgver=bb883bb0942cca89424ef3522c78029e9225f316
 pkgrel=1
 pkgdesc="Patching Firefox to enable JS injection (userchrome-js)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('firefox')
 url="https://github.com/xiaoxiaoflood/firefox-scripts"
 license=('MPL2')
 source=(https://codeload.github.com/xiaoxiaoflood/$_pkgname/tar.gz/$_pkgver)
-sha512sums=('fc9d15ae702dc08ca1ed2202087de4b175bdad51f276aec4f7b700d80cbdc923f618fcb2398d87c6b796eb495659f072e7982608d8b9b7a0137e2214cb52e8ed')
+sha512sums=('3adab367654aadbe674704f26b81d01dcf5957aa471c0b4dd4cf0097c1e69f258e6a63942ef2e94a8ef3fca4197f69df366750585ad4935dcd8feb2561290bfd')
 install=firefox-userchromejs.install
 
 package() {
@@ -27,9 +27,10 @@ package() {
   cd ../chrome/utils
   install -d $pkgdir/usr/share/$pkgname/base/chrome/utils
   install BootstrapLoader.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install chrome.manifest $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
   install RDFDataSource.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
   install RDFManifestConverter.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
+  install chrome.manifest $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
+  install hookFunction.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
   install userChrome.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
   install xPref.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
 
