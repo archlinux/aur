@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine@lesviallon.fr>
 
 pkgname=ananicy-cpp
-_pkgver=1.0.0-rc7
+_pkgver=1.0.1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
@@ -10,21 +10,22 @@ license=(GPLv3)
 source=(
 	"https://gitlab.com/ananicy-cpp/${pkgname}/-/archive/v${_pkgver}/${pkgname}-v${_pkgver}.tar.gz"
 	)
-md5sums=('fb921722da05102093ca86beb0998ee7'
-         'e3654b522fb829dcad2818ff7b8de8e9')
+md5sums=('e0107e820c42b17ae774a0c695780902'
+         'e1f9d6bf78380b04a6a500a671bd8d38')
 
 
 declare -g -A externals
-externals['std-format']="45296602ad78a804411e7c3b617e13759f38e4e7"
+externals['std-format']="dfa4fdc87c7cb9bb1683125009baa7278bb85901"
 
 for external in "${!externals[@]}"; do
-	source+=(https://gitlab.com/ananicy-cpp/stl-polyfills/${external}/-/archive/${externals[$external]}/${external}-${externals[$external]}.tar.gz)
+	source+=(https://gitlab.com/vnepogodin/${external}/-/archive/${externals[$external]}/${external}-${externals[$external]}.tar.gz)
 done
 
 arch=(x86_64 i386 armv7h x86_64_v3 aarch64 pentium4)
-depends=(fmt spdlog nlohmann-json systemd)
-makedepends=(cmake git)
-optdepends=("ananicy-rules-git: community rules")
+depends=(fmt spdlog nlohmann-json systemd libelf zlib libbpf)
+makedepends=(cmake clang git nlohmann-json bpf)
+optdepends=("ananicy-rules-git: community rules"
+            "ananicy-rules: rules for ananicy-cpp")
 
 prepare() {
 	cd "$pkgname-v${_pkgver}"
@@ -41,6 +42,8 @@ prepare() {
 		-DUSE_EXTERNAL_JSON=ON \
 		-DUSE_EXTERNAL_FMTLIB=ON \
 		-DENABLE_SYSTEMD=ON \
+		-DUSE_BPF_PROC_IMPL=ON \
+		-DBPF_BUILD_LIBBPF=OFF \
 		-DVERSION=${_pkgver}
 }
 
