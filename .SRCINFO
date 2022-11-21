@@ -1,0 +1,14 @@
+pkgbase = python38-sshpubkeys
+	pkgdesc = OpenSSH public key parser for Python
+	pkgver = 3.3.1
+	pkgrel = 3
+	url = https://github.com/ojarva/python-sshpubkeys
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38-ecdsa
+	depends = python38-cryptography
+	source = https://files.pythonhosted.org/packages/source/s/sshpubkeys/sshpubkeys-3.3.1.tar.gz
+	sha256sums = 3020ed4f8c846849299370fbe98ff4157b0ccc1accec105e07cfa9ae4bb55064
+
+pkgname = python38-sshpubkeys
