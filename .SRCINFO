@@ -1,0 +1,15 @@
+pkgbase = python38-prometheus_client
+	pkgdesc = Prometheus instrumentation library for Python applications
+	pkgver = 0.15.0
+	pkgrel = 2
+	url = https://github.com/prometheus/client_python
+	arch = any
+	license = APACHE
+	checkdepends = python38-twisted
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = client_python-0.15.0.tar.gz::https://github.com/prometheus/client_python/archive/v0.15.0.tar.gz
+	sha512sums = ea11cb2fc08bd5e10ea97ee3be3068a2c37cbaa45ab3e146f8a0080074f69e7744ff90d1a0fb4f01eaefd1efc5f76428d6c898bead85d5fa37b6a59e9f832134
+
+pkgname = python38-prometheus_client
