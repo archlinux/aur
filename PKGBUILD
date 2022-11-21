@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-patch
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Cargo subcommand for patching dependencies using patch files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('curl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('568fcc79feacc759b1c5e8aec45cfc17e635dc367d72c9c1cf4d5dd36e11d582fa1e8e1585bebfc1480d62e4cd15745834e16eedbaec9d7ca9c886b149837daa')
+sha512sums=('effcf1dc0a58118e05ab3c65c91a9ce5c666b8ec7ce6a41fa1709b0127f3db9a60b67e96c5c40ca06f1fc6df277c9b0c13565bf1a7d3b3c9b780cb269198c5b4')
 
 prepare() {
   cd "$pkgname-$pkgver"
