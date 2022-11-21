@@ -1,0 +1,24 @@
+pkgbase = python38-werkzeug
+	pkgdesc = Swiss Army knife of Python web development
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://werkzeug.palletsprojects.com/
+	arch = any
+	license = custom:BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-timeout
+	checkdepends = python38-pytest-xprocess
+	checkdepends = python38-requests
+	checkdepends = python38-ephemeral-port-reserve
+	checkdepends = python38-greenlet
+	checkdepends = python38-watchdog
+	checkdepends = python38-cryptography
+	makedepends = python38-setuptools
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38-markupsafe
+	source = https://github.com/pallets/werkzeug/archive/2.2.2/python38-werkzeug-2.2.2.tar.gz
+	sha512sums = cded6c7e0b00871366b70a41de45e31323c0fc09300413d0efca98f5a2f8207026fd77c7e5670fde727da377fd02b9b636f390a2524d2b5778e9e3bdbdfe3e3a
+
+pkgname = python38-werkzeug
