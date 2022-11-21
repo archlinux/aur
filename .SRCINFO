@@ -1,0 +1,22 @@
+pkgbase = python38-pytest-httpserver
+	pkgdesc = Http server for pytest to test http clients
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/csernazs/pytest-httpserver
+	arch = any
+	license = MIT
+	checkdepends = python38-ipdb
+	checkdepends = python38-pytest
+	checkdepends = python38-requests
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-poetry-core
+	makedepends = python38-wheel
+	depends = python3.8
+	depends = python-pytest
+	depends = python-werkzeug
+	source = https://files.pythonhosted.org/packages/source/p/pytest_httpserver/pytest_httpserver-1.0.6.tar.gz
+	sha256sums = 9040d07bf59ac45d8de3db1d4468fd2d1d607975e4da4c872ecc0402cdbf7b3e
+	b2sums = 0a3afcd370b502264eb7a5fa9ce4d82fed34c4a4b53597423bb157b15ed3bd2f02976b24f4d803928ad6bed5ad40612587d2541afb438cc634ca43bda9781ae1
+
+pkgname = python38-pytest-httpserver
