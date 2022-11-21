@@ -1,10 +1,10 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=obs-shaderfilter-git
-pkgver=v1.2.r32.g13eb537
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="enables custom shaders for OBS sources"
 arch=('x86_64')
-url="https://github.com/Oncorporation/obs-shaderfilter/"
+url="https://github.com/exeldro/obs-shaderfilter/"
 license=('Unlicense')
 depends=(obs-studio)
 makedepends=(git)
@@ -21,12 +21,14 @@ pkgver() {
 
 build() {
     cd $_basename
-    CFLAGS="$CFLAGS -O2 -I /usr/include/obs"
-    LDFLAGS="$LDFLAGS -shared -fpic  -lobs"
-    cc ${CFLAGS} ${LDFLAGS} -o ${_basename}.so src/*.c
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    make
+
 }
 
 package() {
-    mkdir -p $pkgdir/usr/lib/obs-plugins
-    install -t $pkgdir/usr/lib/obs-plugins $srcdir/$_basename/${_basename}.so
+    mkdir -p $pkgdir/usr/lib/obs-plugins/
+    mkdir -p $pkgdir/usr/share/obs/obs-plugins/$_basename
+    cp   $srcdir/$_basename/rundir/RelWithDebInfo/obs-plugins/64bit/obs-shaderfilter.so $pkgdir/usr/lib/obs-plugins
+    cp -R  $srcdir/$_basename/rundir/RelWithDebInfo/data/obs-plugins/$_basename/data/*  $pkgdir/usr/share/obs/obs-plugins/$_basename/
 }
