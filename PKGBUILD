@@ -1,7 +1,7 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 _pkgname=quickgui
 pkgname=$_pkgname-bin
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="A Flutter frontend for quickget and quickemu"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}_$pkgver-1_kinetic1.0_amd64.deb"::"https://github.com/quickemu-project/$_pkgname/releases/download/v$pkgver/${_pkgname}_$pkgver-1_kinetic1.0_amd64.deb")
-sha256sums=('68ae39a5fca566af36c57404fc7b3edc82795bfdcb69f23ef1f2f0b66b5570f5')
+sha256sums=('7855e8f21c0ddc30650464584124fad6aee1f9a47f88661ba13723e0925b4809')
 
 package() {
   tar -xf data.tar.zst -C "$pkgdir"
