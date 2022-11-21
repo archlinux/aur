@@ -1,8 +1,9 @@
-# Maintainer: duzda <duzda666@gmail.com>
+# Maintainer: duzda <duzda@disroot.org>
 
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
-pkgver=v0.3.1.r0.g3f1d283
+# version.r0.g<gitcommit>
+pkgver=v0.3.2.r0.g7f99dc6
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
