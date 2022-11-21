@@ -1,0 +1,16 @@
+pkgbase = python38-pint
+	pkgdesc = A unit library for Python
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://pint.readthedocs.org
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-subtests
+	checkdepends = python38-numpy
+	checkdepends = python38-uncertainties
+	makedepends = python38-setuptools-scm
+	depends = python38
+	source = https://pypi.io/packages/source/P/Pint/Pint-0.19.2.tar.gz
+	sha512sums = 9f4a00142159d298bf09fdc8ed2c4367a9ef2328663466b43bb4fbc31361c4fa63b1f0d5dec6a71fc5e50ddff22cb86e37abac5e75a13569c5332bb52884c7ee
+
+pkgname = python38-pint
