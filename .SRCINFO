@@ -1,0 +1,18 @@
+pkgbase = python38-itsdangerous
+	pkgdesc = Various helpers to pass trusted data to untrusted environments
+	pkgver = 2.1.2
+	pkgrel = 2
+	url = https://palletsprojects.com/p/itsdangerous/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-freezegun
+	makedepends = python38-setuptools
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/mitsuhiko/itsdangerous/archive/2.1.2/python38-itsdangerous-2.1.2.tar.gz
+	sha256sums = a983dd8e49b9374c942b7946f9bfbcf639ed4a22838d353e4cd30d45e20cc943
+
+pkgname = python38-itsdangerous
