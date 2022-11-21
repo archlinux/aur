@@ -1,7 +1,7 @@
 pkgbase = python-pymc
 	pkgdesc = Markov chain Monte Carlo for Python
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymc-devs/pymc
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = python-pymc
 	depends = python-cachetools
 	depends = python-fastprogress
 	source = python-pymc-4.4.0.tar.gz::https://github.com/pymc-devs/pymc/archive/v4.4.0.tar.gz
-	sha256sums = 58f0980683bb12f3a4f3f9e6ac0a2116ae9e3605cef2cc76f76111ca6a9e3eb1
+	sha256sums = fadd03765c892e240c6db24a3b588e64e9d837e422b13e4d1bf53a531069539f
 
 pkgname = python-pymc
