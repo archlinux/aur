@@ -1,20 +1,20 @@
 # Maintainer: Simon Gomizelj <simongmzlj@gmail.com>
 
 pkgname=bitlbee-steam-git
-pkgver=323.439d777
+pkgver=v1.4.2.r5.g49d46c8
 pkgrel=1
 pkgdesc="Steam protocol plugin for BitlBee"
 arch=('i686' 'x86_64')
-url="https://github.com/jgeboski/bitlbee-steam"
-license=('GPL')
+url="https://github.com/bitlbee/bitlbee-steam"
+license=('GPLv2')
 depends=('bitlbee' 'libgcrypt')
 makedepends=('git')
-source=("git+https://github.com/jgeboski/bitlbee-steam")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "bitlbee-steam"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
