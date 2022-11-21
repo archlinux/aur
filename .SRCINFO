@@ -1,0 +1,13 @@
+pkgbase = python-latexify-py
+	pkgdesc = A library to generate LaTeX expression from Python code.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/google/latexify_py
+	arch = any
+	license = ApacheV2
+	makedepends = python-installer
+	depends = python-dill
+	source = https://files.pythonhosted.org/packages/py3/l/latexify_py/latexify_py-0.2.0-py3-none-any.whl
+	sha256sums = a661528e334e51d83e9bc552f54776f11862261a04de9cdbbd5b5667ccbca423
+
+pkgname = python-latexify-py
