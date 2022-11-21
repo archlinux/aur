@@ -1,0 +1,20 @@
+pkgbase = python38-tzlocal
+	pkgdesc = tzinfo object for the local timezone
+	pkgver = 4.2
+	pkgrel = 00
+	url = https://pypi.org/project/tzlocal/
+	arch = any
+	license = MIT
+	depends = python38
+	depends = python38-backports-zoneinfo
+	depends = python38-pytz-deprecation-shim
+	depends = python-tzlocal
+	noextract = tzlocal-4.2-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/31/b7/3bc2c1868f27677139b772e4fde95265b93151912fd90eb874827943bfcf/tzlocal-4.2-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = b29735d51d8961fa3831484ba38a6f7f
+	md5sums = 57e0bd61643d81d05683cdce65b11d10
+
+pkgname = python38-tzlocal
