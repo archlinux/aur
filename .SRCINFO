@@ -10,6 +10,7 @@ pkgbase = picoscope7beta
 	depends = ps7b_libpicoipp
 	depends = ps7b_libpicocv
 	depends = desktop-file-utils
+	depends = which
 	optdepends = ps7b_libps2000: Support for PicoScope 2000 series
 	optdepends = ps7b_libps2000a: Support for PicoScope 2000a series
 	optdepends = ps7b_libps3000: Support for PicoScope 3000 series

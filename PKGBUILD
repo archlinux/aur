@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
 license=('custom')
 groups=()
-depends=(gtk-sharp-3 ps7b_libpicoipp ps7b_libpicocv desktop-file-utils)
+depends=(gtk-sharp-3 ps7b_libpicoipp ps7b_libpicocv desktop-file-utils which)
 optdepends=('ps7b_libps2000: Support for PicoScope 2000 series'
 		'ps7b_libps2000a: Support for PicoScope 2000a series'
         'ps7b_libps3000: Support for PicoScope 3000 series'
