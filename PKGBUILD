@@ -3,7 +3,7 @@
 _base=SciencePlots
 pkgname=python-${_base,,}
 pkgdesc="Matplotlib styles for scientific plotting"
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/garrettj403/${_base}"
@@ -11,16 +11,9 @@ license=(MIT)
 depends=(python-matplotlib python-setuptools)
 makedepends=(python-build python-installer python-wheel)
 source=(${_base}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('9fcf47077bc72404bb976a0d853b1e5d0f3648837b7928ac81bbf353431a61610dda56c0815dc4bd46b1f96475853cf3a1e82734895eefe534854742771a428d')
+sha512sums=('db9141ab496c030fcc7b9d95bbe6093a647490a3b472338450f865943b85a7cb18cedde2cd749693acae2a821d6b775dfeeca81449af1d92933f4ee6dd5c7e8f')
 provides=(${_base,,})
 conflicts=(${_base,,}-git)
-
-prepare() {
-	cd ${_base}-${pkgver}
-	mv ${_base} ${_base,,}
-	# sed -i 's/packages=\["'${_base,,}'"\]/packages=\["'${_base}'"\]/' ${_base}-${pkgver}/setup.py
-	# sed -i "s/'"${_base,,}"':/'"${_base}"':/" ${_base}-${pkgver}/setup.py
-}
 
 build() {
 	cd ${_base}-${pkgver}
