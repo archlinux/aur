@@ -1,0 +1,17 @@
+pkgbase = python38-cloudpickle
+	pkgdesc = Extended pickling support for Python objects
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/cloudpipe/cloudpickle
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-psutil
+	checkdepends = python38-tornado
+	checkdepends = python38-numpy
+	depends = python38-setuptools
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-2.1.0.tar.gz
+	sha256sums = bb233e876a58491d9590a676f93c7a5473a08f747d5ab9df7f9ce564b3e7938e
+
+pkgname = python38-cloudpickle
