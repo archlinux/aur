@@ -1,0 +1,18 @@
+pkgbase = python38-pytest-randomly
+	pkgdesc = Pytest plugin to randomly order tests and control random.seed
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-randomly
+	arch = any
+	license = MIT
+	checkdepends = python38-factory-boy
+	checkdepends = python38-faker
+	checkdepends = python38-numpy
+	checkdepends = python38-pytest-xdist
+	makedepends = python38-setuptools
+	depends = python38-importlib-metadata
+	depends = python38-pytest
+	source = python38-pytest-randomly-3.12.0.tar.gz::https://github.com/pytest-dev/pytest-randomly/archive/3.12.0.tar.gz
+	sha512sums = e2241c1304b9597f93cc57d6830808f85c59ea1b4815624dcd9d088f87eb4a34d6cb6394de9c31ebedcb8280fb6ff12b110fd5a559ab28c9e0381481fce52c4d
+
+pkgname = python38-pytest-randomly
