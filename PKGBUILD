@@ -28,9 +28,9 @@ package() {
 
   cd build/linux/x64/release
   dest="${pkgdir}/opt/${pkgname}"
-  mkdir -p "$dest"
+  mkdir -p "$dest" "${pkgdir}/usr/bin/"
   cp -r bundle/data "$dest"
   cp -r bundle/lib "$dest"
   install -m 755 bundle/invoiceninja "$dest"
-  install -m 755 bundle/invoiceninja "${pkgdir}/usr/bin"
+  install -m 755 bundle/invoiceninja "${pkgdir}/usr/bin/"
 }
