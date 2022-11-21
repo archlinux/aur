@@ -1,6 +1,6 @@
 pkgbase = quickgui
 	pkgdesc = A Flutter frontend for quickget and quickemu
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/quickgui/quickgui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = quickgui
 	depends = zenity
 	provides = quickgui
 	conflicts = quickgui
-	source = quickgui-1.2.7.tar.xz::https://github.com/quickgui/quickgui/archive/refs/tags/v1.2.7.tar.gz
-	sha256sums = d482f3cc42f2382f2b2961a72d733c92ee7e839e5687157b5acc65025cac69df
+	source = quickgui-1.2.8.tar.xz::https://github.com/quickgui/quickgui/archive/refs/tags/v1.2.8.tar.gz
+	sha256sums = 2d55a7f065547d52a243008bbf14543b1bd8d12aeba40bbaded32a1a7c369c6c
 
 pkgname = quickgui
