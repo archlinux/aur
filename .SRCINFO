@@ -1,0 +1,14 @@
+pkgbase = python38-cycler
+	pkgdesc = Composable style cycles
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/matplotlib/cycler
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38-six
+	source = https://github.com/matplotlib/cycler/archive/v0.11.0/python38-cycler-0.11.0.tar.gz
+	sha512sums = cdf91b861d20710b3d77ad105e54668fafa4be69e566d6a09683c638a35aa423b542a141ca0bbffd7a6cd30c8e2a629d578be88648ab9f38a0c43405f2f39613
+
+pkgname = python38-cycler
