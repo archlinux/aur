@@ -11,7 +11,7 @@ url="https://github.com/invoiceninja/$_repo"
 source=("git+${url}" "invoiceninja-desktop.desktop")
 provides=("${_pkgname}")
 conflicts=("$_pkgname")
-make_depends=(flutter)
+makedepends=(flutter)
 arch=('i686' 'x86_64')
 license=('unknown')
 sha256sums=('SKIP'
@@ -29,7 +29,7 @@ package() {
 
   cd build/linux/x64/release
   dest="${pkgdir}/opt/${pkgname}"
-  mkdir -p "$dest"
+  mkdir -p "$dest" "${pkgdir}/usr/bin"
   cp -r bundle/data "$dest"
   cp -r bundle/lib "$dest"
   install -m 755 bundle/invoiceninja "$dest"
