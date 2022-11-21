@@ -1,0 +1,14 @@
+pkgbase = python38-pastedeploy
+	pkgdesc = Load, configure, and compose WSGI applications and servers
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://pythonpaste.org/deploy/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = python38-pastedeploy-3.0.1.tar.gz::https://github.com/Pylons/pastedeploy/archive/3.0.1.tar.gz
+	sha512sums = 2b06351b9104da1e0d30c90492ee31113aacf5cde7a66a34482c4625af902b855eab2af80073db4eb18805a192f858dac360062dadf58a161cc3cfabf5b67a1a
+
+pkgname = python38-pastedeploy
