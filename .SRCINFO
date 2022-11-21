@@ -1,0 +1,16 @@
+pkgbase = python38-zope-exceptions
+	pkgdesc = Generic exceptions and implementations for Zope
+	pkgver = 4.6
+	pkgrel = 1
+	url = https://github.com/zopefoundation/zope.exceptions
+	arch = any
+	license = ZPL
+	checkdepends = python38-zope-testrunner
+	makedepends = python38-setuptools
+	makedepends = python38-zope-interface
+	depends = python38-setuptools
+	depends = python38-zope-interface
+	source = python38-zope-exceptions-4.6.tar.gz::https://github.com/zopefoundation/zope.exceptions/archive/4.6.tar.gz
+	sha512sums = 31bb34e3a28fc835b2265126250032591540f2f547f26e8c5fa5b295d6cec5111b1df53cb104df000f9ad4b9e6c2290e86c5bdd356903836068d5367a3e32977
+
+pkgname = python38-zope-exceptions
