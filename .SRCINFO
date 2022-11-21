@@ -1,0 +1,23 @@
+pkgbase = python38-bottle
+	pkgdesc = A fast and simple micro-framework for small web-applications
+	pkgver = 0.12.23
+	pkgrel = 1
+	url = https://bottlepy.org
+	arch = any
+	license = MIT
+	checkdepends = python38-mako
+	checkdepends = python38-jinja
+	checkdepends = python38-cherrypy
+	checkdepends = python38-twisted
+	checkdepends = python38-tornado
+	checkdepends = python38-paste
+	checkdepends = python38-gevent
+	checkdepends = python38-eventlet
+	makedepends = python38-setuptools
+	makedepends = git
+	depends = python38
+	options = !emptydirs
+	source = python38-bottle-0.12.23.tar.gz::https://github.com/defnull/bottle/archive/0.12.23.tar.gz
+	sha512sums = f5c75ab819a492c38baabf299cd7d5f709140afeded598e4e6f76716e03912583c1126f817e3c0fec369bde086a08d21c23a1bf4167820e188ffc2a998b8f484
+
+pkgname = python38-bottle
