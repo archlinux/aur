@@ -1,0 +1,15 @@
+pkgbase = python38-arrow
+	pkgdesc = Better dates and times for Python
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://arrow.readthedocs.io
+	arch = any
+	license = APACHE
+	checkdepends = python38-tox
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38-dateutil
+	source = git+https://github.com/crsmithdev/arrow.git#tag=8842f8c3263d1f1219c189a0500aa67abdd0a214
+	sha256sums = SKIP
+
+pkgname = python38-arrow
