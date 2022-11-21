@@ -1,0 +1,15 @@
+pkgbase = python38-et-xmlfile
+	pkgdesc = A low memory library for creating large XML files.
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://et-xmlfile.readthedocs.io/
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest-runner
+	checkdepends = python38-lxml
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://foss.heptapod.net/openpyxl/et_xmlfile/-/archive/1.1/et_xmlfile-1.1.tar.gz
+	sha256sums = 8d6705c2f97b2d6195c95e5f3781a1ed44a59d43cf1263e04034767e5db65131
+
+pkgname = python38-et-xmlfile
