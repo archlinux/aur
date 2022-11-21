@@ -1,0 +1,13 @@
+pkgbase = python38-requestsexceptions
+	pkgdesc = Import exceptions from potentially bundled packages in requests.
+	pkgver = 1.4.0
+	pkgrel = 9
+	url = https://github.com/openstack-infra/requestsexceptions
+	arch = any
+	license = Apache
+	makedepends = python38-pbr
+	depends = python38-requests
+	source = python38-requestsexceptions-1.4.0.tar.gz::https://github.com/openstack-infra/requestsexceptions/archive/1.4.0.tar.gz
+	sha512sums = fb7cf432584963eee659b7294a11b4d0a1d1dd850bfccdac7a1d7014b6e97a5330553436df58c034088c8a2096b14bfe40ded7e128a5d8741114265c935cd02f
+
+pkgname = python38-requestsexceptions
