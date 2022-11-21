@@ -1,0 +1,24 @@
+pkgbase = python38-ipykernel
+	pkgdesc = The ipython kernel for Jupyter
+	pkgver = 6.17.1
+	pkgrel = 1
+	url = https://pypi.org/project/ipykernel/
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-timeout
+	checkdepends = python38-flaky
+	checkdepends = python38-ipyparallel
+	checkdepends = python38-matplotlib
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-hatchling
+	depends = python38-traitlets
+	depends = python38-tornado
+	depends = ipython
+	depends = python38-jupyter_client
+	depends = python38-debugpy
+	depends = python38-psutil
+	source = ipykernel-6.17.1.tgz::https://github.com/ipython/ipykernel/archive/v6.17.1.tar.gz
+	sha256sums = b9bacbae860a5c4c3fd1f64c473ccba737dcf9b8364e9198a08bf60f0b774fec
+
+pkgname = python38-ipykernel
