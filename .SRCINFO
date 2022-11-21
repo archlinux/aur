@@ -1,0 +1,13 @@
+pkgbase = python38-flup
+	pkgdesc = Random assortment of WSGI servers
+	pkgver = 1.0.3
+	pkgrel = 8
+	url = https://www.saddi.com/software/flup/
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/f/flup/flup-1.0.3.tar.gz
+	sha512sums = f165685b39a8539d29d48d0ad3c9c0495f428892b8935545a128730687c658a1e8b74a09c8084dd4a2490b1d26f1382b48c95ba43401171fd46876b068ba2f8e
+
+pkgname = python38-flup
