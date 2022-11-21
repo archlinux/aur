@@ -1,0 +1,11 @@
+diff -upr a/cherrypy/test/test_states.py b/cherrypy/test/test_states.py
+--- a/cherrypy/test/test_states.py	2020-04-17 19:49:39.000000000 +0200
++++ b/cherrypy/test/test_states.py	2020-11-16 10:53:32.382567506 +0100
+@@ -162,6 +162,7 @@ class ServerStateTests(helper.CPWebCase)
+         self.assertEqual(len(db_connection.threads), 0)
+ 
+     def test_2_KeyboardInterrupt(self):
++        pytest.skip('broken, see https://github.com/cherrypy/cherrypy/issues/1873')
+         # Raise a keyboard interrupt in the HTTP server's main thread.
+         # We must start the server in this, the main thread
+         engine.start()
