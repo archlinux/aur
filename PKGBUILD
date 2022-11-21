@@ -9,8 +9,8 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.3.2
-pkgrel=3
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,17 +22,11 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        vagrant-2.3.2-net-ssh-gem-update.patch
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=9ef6148")
-md5sums=('dbc1b9385657d37028be2ffbbb298793'
-         'f2592b99fb1c894c45815415c1e80efe'
-         'SKIP')
-sha256sums=('76d3737e273fa73501f7c12a4814f6a63851b8119118575cc77e9911ce3acb06'
-            '74602976d0513e82c225b6aaefa08351ff75ca534f666ca308878101e3d1f6bf'
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=c5d8e87")
+sha256sums=('06142fc406e96ed4f78dc877a20e2c8509c732c280fdfb44d1a84ce4f4c6ecc3'
             'SKIP')
 
 prepare() {
-  patch -Np1 -d $pkgname-$pkgver -i ../vagrant-2.3.2-net-ssh-gem-update.patch
   cd vagrant-installers
   local _gemdir="$(gem env gemdir)"
 
