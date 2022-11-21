@@ -1,0 +1,14 @@
+pkgbase = python38-purl
+	pkgdesc = An immutable URL class for easy URL-building and manipulation
+	pkgver = 1.6
+	pkgrel = 3
+	url = https://github.com/codeinthehole/purl
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38-six
+	source = https://github.com/codeinthehole/purl/archive/1.6/python38-purl-1.6.tar.gz
+	sha512sums = 293079e9e15ac7e1669ea534ea8ac3aea92ebc1a18b33fc15e135e241da9c5612978946deca8fe3e53b39004ee33393317901ed3dfe053be12399591050dd9cd
+
+pkgname = python38-purl
