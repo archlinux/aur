@@ -1,0 +1,35 @@
+# Maintainer: Danny Waser <danny@waser.tech>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgbase=python38-pyqt5-3d
+pkgname=(python38-pyqt5-3d)
+pkgver=5.15.5
+pkgrel=3
+pkgdesc='Python 3.8 bindings for Qt3D'
+arch=(x86_64)
+url='https://www.riverbankcomputing.com/software/pyqt3d/intro'
+license=(GPL3)
+groups=(pyqt5)
+depends=(qt5-3d python38-pyqt5)
+makedepends=(sip pyqt-builder)
+conflicts=(python38-pyqt3d)
+provides=(python38-pyqt3d)
+replaces=(python38-pyqt3d)
+source=(https://pypi.python.org/packages/source/P/PyQt3D/PyQt3D-$pkgver.tar.gz)
+sha256sums=('c025e8a2de12a27e3bd34671d01cac39f78305128cc6cea3f0ba99e4ca3ec41b')
+options=(debug)
+
+build() {
+  cd PyQt3D-$pkgver
+  sip-build \
+    --no-make \
+    --api-dir /usr/share/qt/qsci/api/python38
+  cd build
+  make
+}
+
+package_python38-pyqt5-3d(){
+  cd PyQt3D-$pkgver/build
+  make INSTALL_ROOT="$pkgdir" install
+}
