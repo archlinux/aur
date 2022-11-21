@@ -46,7 +46,7 @@ check() {
 
 package() {
   cd pytest-trio
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python3.8 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/python-pytest-trio/
   install -Dm 644 LICENSE.MIT -t "${pkgdir}"/usr/share/licenses/python-pytest-trio/
 }
