@@ -4,8 +4,8 @@
 
 pkgname=crackmapexec
 _pkgname=CrackMapExec
-pkgver=5.2.2dev
-_pkgver=5.2.2
+pkgver=5.4.0
+_pkgver=5.4.0
 pkgrel=1
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
@@ -31,19 +31,14 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 
 makedepends=('python-build' 'python-installer' 'python-poetry')
 source=("${url}/archive/v${_pkgver}.tar.gz")
-sha512sums=('7120f82c4a4247bcd114fa33e9b4f5ce1007a2e93180563fa95d337ce4b127d13cb9f3a2b07005d5cbbbb1cc6d3f38f3214abdccb627cf455d451122bd2f2846')
-
-#prepare() {
-#  cd $_pkgname-$_pkgver
-#  make clean
-#}
+sha512sums=('36be587970c988080fc44c6c86d446eda7594ce02b4bfb4a7c2864d885bfd999b202afdf4051d53af132f27abe1f2558a077af3322ad34427ae61bd279604358')
 
 build() {
   cd $_pkgname-$_pkgver
   poetry build
-  python -m build --wheel --no-isolation
-  cd dist
-  tar zxvf "${pkgname}-${_pkgver}.tar.gz"
+  #python -m build --wheel --no-isolation
+  #cd dist
+  #tar zxvf "${pkgname}-${_pkgver}.tar.gz"
 }
 
 package() {
