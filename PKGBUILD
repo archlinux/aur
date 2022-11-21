@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Danny Waser <danny@waser.tech>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=pytest_httpserver
 pkgname=python38-pytest-httpserver
@@ -8,7 +9,7 @@ pkgdesc="Http server for pytest to test http clients"
 arch=(any)
 url="https://github.com/csernazs/pytest-httpserver"
 license=(MIT)
-depends=(python3.8 python-pytest python-werkzeug)
+depends=(python38 python38-pytest python38-werkzeug)
 makedepends=(python38-build python38-installer python38-poetry-core python38-wheel)
 checkdepends=(python38-ipdb python38-pytest python38-requests)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
