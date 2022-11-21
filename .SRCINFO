@@ -1,0 +1,21 @@
+pkgbase = python38-pytz-deprecation-shim
+	pkgdesc = Shims to make deprecation of pytz easier
+	pkgver = 0.1.0.post0
+	pkgrel = 00
+	url = https://github.com/pganssle/pytz-deprecation-shim
+	arch = any
+	license = Apache
+	depends = python38
+	depends = python38-backports-zoneinfo
+	depends = python38-tzdata
+	depends = python-dateutil
+	depends = python-pytz
+	noextract = pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/eb/73/3eaab547ca809754e67e06871cff0fc962bafd4b604e15f31896a0f94431/pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = d311c7fac8e259fb03f41911d50e134e
+	md5sums = fca9fd5c15a28eb874ba38577a585d48
+
+pkgname = python38-pytz-deprecation-shim
