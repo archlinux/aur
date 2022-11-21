@@ -26,13 +26,13 @@ package() {
 
   cd ../chrome/utils
   install -d $pkgdir/usr/share/$pkgname/base/chrome/utils
-  install BootstrapLoader.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install RDFDataSource.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install RDFManifestConverter.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install chrome.manifest $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install hookFunction.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install userChrome.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
-  install xPref.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/ 
+  install BootstrapLoader.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install RDFDataSource.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install RDFManifestConverter.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install chrome.manifest $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install hookFunction.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install userChrome.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
+  install xPref.jsm $pkgdir/usr/share/$pkgname/base/chrome/utils/
 
   cd ../..
   install -d $pkgdir/usr/share/$pkgname/misc
