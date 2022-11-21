@@ -1,13 +1,14 @@
 pkgbase = mosdns-bin
 	pkgdesc = 一个 DNS 转发器
 	pkgver = 4.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/IrineSistiana/mosdns/
 	arch = x86_64
 	license = GPL3
 	optdepends = v2ray-domain-list-community: geosite.dat
 	optdepends = v2ray-geoip: geoip.dat
 	optdepends = v2ray-rules-dat-git: geosite.dat & geoip.dat
+	optdepends = redis: redis support in cache plugin
 	provides = mosdns
 	backup = etc/mosdns/config.yaml
 	source = mosdns-bin-4.5.3.zip::https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip

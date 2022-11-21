@@ -2,14 +2,15 @@
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
 pkgver=4.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="一个 DNS 转发器"
 arch=('x86_64')
 url="https://github.com/IrineSistiana/mosdns/"
 license=('GPL3')
 optdepends=('v2ray-domain-list-community: geosite.dat'
             'v2ray-geoip: geoip.dat'
-            'v2ray-rules-dat-git: geosite.dat & geoip.dat')
+            'v2ray-rules-dat-git: geosite.dat & geoip.dat'
+            'redis: redis support in cache plugin')
 backup=('etc/mosdns/config.yaml')
 provides=('mosdns')
 
