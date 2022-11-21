@@ -1,0 +1,17 @@
+pkgbase = python38-curio
+	pkgdesc = Concurrent I/O
+	pkgver = 1.6
+	pkgrel = 2
+	url = https://github.com/dabeaz/curio
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-sphinx
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38
+	provides = python38-multio-provider
+	source = git+https://github.com/dabeaz/curio.git#tag=5d8ecb2333761b4fd629e14d940f3807d143c0ed
+	sha256sums = SKIP
+
+pkgname = python38-curio
