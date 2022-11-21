@@ -3,7 +3,7 @@
 _corpname=python-glaxnimate
 _pkgname='glaxnimate'
 pkgname=python-glaxnimate
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Python bindings for Glaxnimate."
 url="https://glaxnimate.mattbas.org/"
