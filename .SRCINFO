@@ -1,0 +1,15 @@
+pkgbase = python38-pytest-sugar
+	pkgdesc = A plugin for py.test that changes the default look and feel of py.test
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://pivotfinland.com/pytest-sugar/
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38-pytest
+	depends = python38-termcolor
+	depends = python38-packaging
+	source = https://github.com/Frozenball/pytest-sugar/archive/59428a115d0646f4d771f4da20e32904b09331fe/python38-pytest-sugar-59428a115d0646f4d771f4da20e32904b09331fe.tar.gz
+	sha512sums = be5d370422b10f5edaa6ddc2fdbabc5c74cdfa992aa70da1884cc4bd8103ada2922a8648c34334bd80705f3aa17db68e25e172dc94cc26af3a7b25405e37b093
+
+pkgname = python38-pytest-sugar
