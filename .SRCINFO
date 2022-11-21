@@ -1,0 +1,13 @@
+pkgbase = python38-strict-rfc3339
+	pkgdesc = Strict, simple, lightweight RFC3339 functions
+	pkgver = 0.7
+	pkgrel = 9
+	url = http://www.danielrichman.co.uk/libraries/strict-rfc3339.html
+	arch = any
+	license = GPL
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/s/strict-rfc3339/strict-rfc3339-0.7.tar.gz
+	sha512sums = 94a2992a9ea41b75527348f0f8dae1d118d57b0764122f874baa85f5e3b523beb219ed83c2d7224725e504cd3737a6bde485957135856dcde470f32675e44e77
+
+pkgname = python38-strict-rfc3339
