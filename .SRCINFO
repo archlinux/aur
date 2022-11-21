@@ -1,0 +1,14 @@
+pkgbase = python38-rfc3986
+	pkgdesc = Validating URI References per RFC 3986
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://rfc3986.readthedocs.org/
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/r/rfc3986/rfc3986-2.0.0.tar.gz
+	sha512sums = 5c8370cb1e21811eaab91269b9a30972b8fbcbe1fa1d806fd3ceabe0e1937de856d757146137fee470fbdbcc7e948b236f72a42306da41a6d03807e7333983df
+
+pkgname = python38-rfc3986
