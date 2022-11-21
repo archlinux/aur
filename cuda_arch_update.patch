@@ -1,0 +1,58 @@
+From 71fe069d985e97b5947d133f2f2bde9adea01ed7 Mon Sep 17 00:00:00 2001
+From: Greg Hogan <gregjhogan@gmail.com>
+Date: Mon, 24 Oct 2022 21:25:36 +0000
+Subject: [PATCH] ada lovelace (arch 8.9) support (#87436)
+
+changes required to be able to compile https://github.com/pytorch/vision and https://github.com/nvidia/apex for `sm_89` architecture
+Pull Request resolved: https://github.com/pytorch/pytorch/pull/87436
+Approved by: https://github.com/ngimel
+---
+ .../upstream/FindCUDA/select_compute_arch.cmake       | 11 +++++++++++
+ torch/utils/cpp_extension.py                          |  3 ++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake b/cmake/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake
+index 7f22d476d2fbe..822c041ee5268 100644
+--- a/cmake/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake
++++ b/cmake/Modules_CUDA_fix/upstream/FindCUDA/select_compute_arch.cmake
+@@ -98,8 +98,22 @@ if(NOT CUDA_VERSION VERSION_LESS "11.1")
+   list(APPEND CUDA_ALL_GPU_ARCHITECTURES "8.6")
+   set(CUDA_LIMIT_GPU_ARCHITECUTRE "8.6")
+ 
++  if(CUDA_VERSION VERSION_LESS "11.8")
++    set(CUDA_LIMIT_GPU_ARCHITECTURE "8.9")
++  endif()
++endif()
++
++if(NOT CUDA_VERSION VERSION_LESS "11.8")
++  list(APPEND CUDA_KNOWN_GPU_ARCHITECTURES "Ada")
++  list(APPEND CUDA_COMMON_GPU_ARCHITECTURES "8.9")
++  list(APPEND CUDA_ALL_GPU_ARCHITECTURES "8.9")
++  list(APPEND CUDA_KNOWN_GPU_ARCHITECTURES "Hopper")
++  list(APPEND CUDA_COMMON_GPU_ARCHITECTURES "9.0")
++  list(APPEND CUDA_ALL_GPU_ARCHITECTURES "9.0")
++
+   if(CUDA_VERSION VERSION_LESS "12.0")
+     set(CUDA_LIMIT_GPU_ARCHITECTURE "9.0")
++    list(APPEND CUDA_COMMON_GPU_ARCHITECTURES "8.9+PTX")
+   endif()
+ endif()
+ 
+diff --git a/torch/utils/cpp_extension.py b/torch/utils/cpp_extension.py
+index 36811bf22dedc..612ae9fdf0785 100644
+--- a/torch/utils/cpp_extension.py
++++ b/torch/utils/cpp_extension.py
+@@ -1729,10 +1729,12 @@ def _get_cuda_arch_flags(cflags: Optional[List[str]] = None) -> List[str]:
+         ('Volta', '7.0+PTX'),
+         ('Turing', '7.5+PTX'),
+         ('Ampere', '8.0;8.6+PTX'),
++        ('Ada', '8.9+PTX'),
++        ('Hopper', '9.0+PTX'),
+     ])
+ 
+     supported_arches = ['3.5', '3.7', '5.0', '5.2', '5.3', '6.0', '6.1', '6.2',
+-                        '7.0', '7.2', '7.5', '8.0', '8.6']
++                        '7.0', '7.2', '7.5', '8.0', '8.6', '8.9', '9.0']
+     valid_arch_strings = supported_arches + [s + "+PTX" for s in supported_arches]
+ 
+     # The default is sm_30 for CUDA 9.x and 10.x
