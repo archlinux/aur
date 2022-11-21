@@ -1,0 +1,23 @@
+pkgbase = chia-cli-git
+	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Latest git commit, CLI only
+	pkgver = 1.7.0.b2.r15.g5f706cea27
+	pkgrel = 1
+	url = https://www.chia.net/
+	install = chia-cli-git.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	depends = python
+	depends = openssl
+	provides = chia-cli
+	conflicts = chia-cli
+	options = !strip
+	source = git+https://github.com/Chia-Network/chia-blockchain.git
+	source = git+https://github.com/Chia-Network/mozilla-ca.git
+	source = chia.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ff9b9ee5d8a8b0d8b2d2129431663b3d4a199fe47d8996cfcdf06183c48b6349
+
+pkgname = chia-cli-git
