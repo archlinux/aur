@@ -2,7 +2,7 @@
 pkgname=handygccs-git
 _gitdir=HandyGCCS
 pkgver=22.11.2.r107.d753ca8
-pkgrel=1
+pkgrel=3
 pkgdesc="Handheld Game Console Controller Support."
 arch=('any')
 url="https://github.com/ShadowBlip/HandyGCCS"
@@ -11,12 +11,12 @@ groups=()
 depends=('python' 'python-evdev' 'dbus-python' 'python-bmi160-i2c')
 optdepends=()
 makedepends=('git')
-_tag=d753ca85f22b48ecbc217491702dc071c3fcfd08
+_tag=4086338ea9fbab101c7641c9615020e01660c741
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag}")
 sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_gitdir}"
-	printf "%s.%s.r%s.%s" $(date '+%y.%m') "$pkgrel" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.%s.%s" $(date '+%y.%m') "$pkgrel" "$(git rev-parse --short HEAD)"
 }
 package() {
 	cd "$srcdir/${_gitdir}"
