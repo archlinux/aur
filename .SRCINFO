@@ -1,0 +1,14 @@
+pkgbase = python38-lexicon
+	pkgdesc = Powerful dict subclass(es) with aliasing & attribute access
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/bitprophet/lexicon
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest-relaxed
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://github.com/bitprophet/lexicon/archive/2.0.1/python38-lexicon-2.0.1.tar.gz
+	sha512sums = ce63ca85d823851c757c4e7292f4e7d6d6a7714bd48ef4df1a6f792ecf03965ea89aa09f81411128e8e734d72e6dd062a8afb03602c2511be951756216c823ec
+
+pkgname = python38-lexicon
