@@ -1,0 +1,17 @@
+pkgbase = python38-cppy
+	pkgdesc = A collection of C++ headers which make it easier to write Python C extension modules
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://github.com/nucleic/cppy
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38
+	source = https://github.com/nucleic/cppy/archive/1.2.1/python38-cppy-1.2.1.tar.gz
+	sha512sums = f6493830a8a66f52fff7c592db9d255fd7178ba320faee6a96258f29b6f299ffeca83f001650390b05c1037eb1350b0bd4da701d77a7bcb1a1babc108b7b8f97
+
+pkgname = python38-cppy
