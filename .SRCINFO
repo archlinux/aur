@@ -1,0 +1,20 @@
+pkgbase = python38-portend
+	pkgdesc = Use portend to monitor TCP ports for bound or unbound states.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/jaraco/portend
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	makedepends = python38-setuptools-scm
+	makedepends = python38-tox
+	makedepends = python38-tempora
+	depends = python
+	depends = python38-tempora
+	source = https://files.pythonhosted.org/packages/source/p/portend/portend-3.1.0.tar.gz
+	source = LICENSE
+	sha512sums = 017dff68ea85f48d19398f71fbd8189329ca9c27c05d8599dd5e53632eb5ddc6dea322e94c924a0653f25f042a3c8ee1cda5f8450b02f3406a72036d54cd1aaf
+	sha512sums = 1106afed483b7258e4ae89c5d9459c3834412b31aac90169725ed62d2ab44f61f6f79e894d4c9e4d8bd99e14530ab778df2187784f0b25eaab86d312fad68944
+
+pkgname = python38-portend
