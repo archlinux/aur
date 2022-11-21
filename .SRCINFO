@@ -1,0 +1,14 @@
+pkgbase = muse2pokecrystal
+	pkgdesc = Convert MusicXML sheet music to the pokecrystal music macro format.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nephitejnf/muse2pokecrystal
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	depends = python
+	optdepends = musescore: Musescore palette import
+	source = muse2pokecrystal::git+https://github.com/nephitejnf/muse2pokecrystal.git
+	sha256sums = SKIP
+
+pkgname = muse2pokecrystal
