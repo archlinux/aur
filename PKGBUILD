@@ -16,7 +16,7 @@ pkgbase=mesa-panfork-git
 pkgname=('vulkan-mesa-layers-panfork-git' 'opencl-mesa-panfork-git' 'vulkan-swrast-panfork-git' 'libva-mesa-driver-panfork-git' 'mesa-vdpau-panfork-git' 'mesa-panfork-git')
 pkgdesc="Mesa with Panfrost that supports Mali G610/G710 GPUs (Valhall v10 CSF)"
 pkgver=r163343.3504c9b1b31
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'arm7vh' 'x86_64' 'i686')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
@@ -77,7 +77,7 @@ build() {
     -D valgrind=enabled
 
   # Print config
-  meson configure build
+  meson configure build --no-pager
 
   ninja -C build
   meson compile -C build
@@ -98,7 +98,7 @@ _install() {
 }
 
 package_vulkan-mesa-layers-panfork-git() {
-  pkgdesc="Mesa's Vulkan layers"
+  pkgdesc="Mesa's Vulkan layers - Panfork"
   depends=('libdrm' 'libxcb' 'wayland' 'python')
   conflicts=('vulkan-mesa-layer' 'vulkan-mesa-layers')
   provides=('vulkan-mesa-layers')
@@ -113,7 +113,7 @@ package_vulkan-mesa-layers-panfork-git() {
 }
 
 package_opencl-mesa-panfork-git() {
-  pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers"
+  pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers - Panfork"
   depends=('libdrm' 'libclc' 'clang' 'expat')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   conflicts=('opencl-mesa')
@@ -127,7 +127,7 @@ package_opencl-mesa-panfork-git() {
 }
 
 package_vulkan-swrast-panfork-git() {
-  pkgdesc="Vulkan software rasteriser driver"
+  pkgdesc="Vulkan software rasteriser driver - Panfork"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
   conflicts=('vulkan-mesa' 'vulkan-swrast')
@@ -141,7 +141,7 @@ package_vulkan-swrast-panfork-git() {
 }
 
 package_libva-mesa-driver-panfork-git() {
-  pkgdesc="VA-API implementation for gallium"
+  pkgdesc="VA-API implementation for gallium - Panfork"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
   depends+=('libexpat.so')
   conflicts=('libva-mesa-driver')
@@ -153,7 +153,7 @@ package_libva-mesa-driver-panfork-git() {
 }
 
 package_mesa-vdpau-panfork-git() {
-  pkgdesc="Mesa VDPAU drivers"
+  pkgdesc="Mesa VDPAU drivers - Panfork"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
   depends+=('libexpat.so')
   conflicts=('mesa-vdpau')

@@ -1,7 +1,7 @@
 pkgbase = mesa-panfork-git
 	pkgdesc = Mesa with Panfrost that supports Mali G610/G710 GPUs (Valhall v10 CSF)
 	pkgver = r163343.3504c9b1b31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mesa3d.org/
 	arch = aarch64
 	arch = arm7vh
@@ -51,7 +51,7 @@ pkgbase = mesa-panfork-git
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 
 pkgname = vulkan-mesa-layers-panfork-git
-	pkgdesc = Mesa's Vulkan layers
+	pkgdesc = Mesa's Vulkan layers - Panfork
 	depends = libdrm
 	depends = libxcb
 	depends = wayland
@@ -62,7 +62,7 @@ pkgname = vulkan-mesa-layers-panfork-git
 	replaces = vulkan-mesa-layer
 
 pkgname = opencl-mesa-panfork-git
-	pkgdesc = OpenCL support for AMD/ATI Radeon mesa drivers
+	pkgdesc = OpenCL support for AMD/ATI Radeon mesa drivers - Panfork
 	depends = libdrm
 	depends = libclc
 	depends = clang
@@ -73,7 +73,7 @@ pkgname = opencl-mesa-panfork-git
 	conflicts = opencl-mesa
 
 pkgname = vulkan-swrast-panfork-git
-	pkgdesc = Vulkan software rasteriser driver
+	pkgdesc = Vulkan software rasteriser driver - Panfork
 	depends = wayland
 	depends = libx11
 	depends = libxshmfence
@@ -88,7 +88,7 @@ pkgname = vulkan-swrast-panfork-git
 	replaces = vulkan-mesa
 
 pkgname = libva-mesa-driver-panfork-git
-	pkgdesc = VA-API implementation for gallium
+	pkgdesc = VA-API implementation for gallium - Panfork
 	depends = libdrm
 	depends = libx11
 	depends = llvm-libs
@@ -100,7 +100,7 @@ pkgname = libva-mesa-driver-panfork-git
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-panfork-git
-	pkgdesc = Mesa VDPAU drivers
+	pkgdesc = Mesa VDPAU drivers - Panfork
 	depends = libdrm
 	depends = libx11
 	depends = llvm-libs
