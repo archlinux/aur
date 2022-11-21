@@ -6,6 +6,7 @@ pkgbase = invoiceninja-desktop
 	arch = i686
 	arch = x86_64
 	license = unknown
+	makedepends = flutter
 	provides = invoiceninja-desktop
 	source = https://github.com/invoiceninja/admin-portal/archive/refs/tags/v5.0.100.tar.gz
 	source = invoiceninja-desktop.desktop
