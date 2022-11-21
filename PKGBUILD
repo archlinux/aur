@@ -8,7 +8,7 @@ pkgver=0.4.2
 pkgrel=1
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 
-arch=('any')
+arch=('x86_64')
 license=('MIT')
 url="https://manimpango.manim.community"
 
