@@ -1,0 +1,23 @@
+pkgbase = python38-jedi
+	pkgdesc = Awesome autocompletion for python
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/davidhalter/jedi
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-parso
+	makedepends = git
+	makedepends = python38-setuptools
+	makedepends = python38-sphinx
+	makedepends = python38-sphinx_rtd_theme
+	depends = python
+	depends = python38-parso
+	source = git+https://github.com/davidhalter/jedi#commit=fae26fa7a427b94a21e11500503d8008647e6309
+	source = git+https://github.com/davidhalter/typeshed
+	source = git+https://github.com/davidhalter/django-stubs
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python38-jedi
