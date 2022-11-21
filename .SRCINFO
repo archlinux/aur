@@ -1,0 +1,14 @@
+pkgbase = python38-objgraph
+	pkgdesc = Draws Python object reference graphs with graphviz
+	pkgver = 3.5.0
+	pkgrel = 7
+	url = https://github.com/mgedmin/objgraph
+	arch = any
+	license = MIT
+	checkdepends = graphviz
+	makedepends = python38-setuptools
+	depends = python38
+	source = -3.5.0.tar.gz::https://github.com/mgedmin/objgraph/archive/3.5.0.tar.gz
+	sha512sums = 50bf1967d6696547598628d49f3c827f1535d6de032fb429881e523f144bb57e128d09f43d280b89a0f9205ca97ef10331e0da1dc86637af0214bfd7aa4cba3b
+
+pkgname = python38-objgraph
