@@ -9,7 +9,7 @@ pkgdesc="Puoi leggere su computer desktop, sul portatile e sul tablet i tuoi lib
 arch=('x86_64')
 url="http://www.scuolabook.it/applicazioni"
 license=('custom')
-depends=("gst-plugins-bad" "libpulse" "nss" "mesa" "libxrandr" "qt5-svg" "qt5-webkit")
+depends=("gst-plugins-bad" "libpulse" "nss" "mesa" "libxrandr" "qt5-svg")
 
 source=(license https://cdn-support.scuolabook.it/3.3/Scuolabook_3.3.0_amd64_18.04.deb)
 md5sums=('94f26429ae1b95e18457020be1d7dc08'
