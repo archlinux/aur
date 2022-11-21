@@ -1,0 +1,26 @@
+pkgbase = python38-glanceclient
+	pkgdesc = OpenStack Image API Client Library
+	pkgver = 4.1.0
+	pkgrel = 2
+	url = https://docs.openstack.org/developer/python-glanceclient
+	arch = any
+	license = Apache
+	checkdepends = python38-stestr
+	checkdepends = python38-ddt
+	checkdepends = python38-requests-mock
+	checkdepends = python38-testscenarios
+	makedepends = python38-setuptools
+	depends = python38-pbr
+	depends = python38-prettytable
+	depends = python38-keystoneauth1
+	depends = python38-requests
+	depends = python38-warlock
+	depends = python38-oslo-utils
+	depends = python38-oslo-i18n
+	depends = python38-wrapt
+	depends = python38-pyopenssl
+	options = !emptydirs
+	source = https://github.com/openstack/python-glanceclient/archive/4.1.0/python38-glanceclient-4.1.0.tar.gz
+	sha512sums = f39d82ffe2279bf7eaf741d9dcca3678f3f7f064183c6dc5e1849b24d08497335caebaf8a9db2f65b145191f449af79f370c0e0dadb6df6e9801b941a4277756
+
+pkgname = python38-glanceclient
