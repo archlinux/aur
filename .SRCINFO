@@ -1,0 +1,14 @@
+pkgbase = python38-gast03
+	pkgdesc = AST that abstracts the underlying Python version
+	pkgver = 0.3.3
+	pkgrel = 3
+	url = https://github.com/serge-sans-paille/gast
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38
+	conflicts = python38-gast
+	source = https://pypi.io/packages/source/g/gast/gast-0.3.3.tar.gz
+	sha512sums = 36869a5e0976223a5a82be8bf25a01654896f4de70affe0fec5252104ea6d1fea3eb8c5153530fcac8addc47b51535b02e3920a0e82aad11ba1ca8350cd11341
+
+pkgname = python38-gast03
