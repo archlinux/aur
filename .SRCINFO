@@ -1,7 +1,7 @@
 pkgbase = inversecsg
 	pkgdesc = Automatic Conversion of 3D Models to CSG Trees
 	pkgver = r1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://inversecsg.csail.mit.edu/
 	arch = any
 	makedepends = sd

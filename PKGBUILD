@@ -2,7 +2,7 @@
 
 pkgname=inversecsg
 pkgver=r1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Conversion of 3D Models to CSG Trees"
 arch=('any')
 url="http://inversecsg.csail.mit.edu/"
@@ -79,4 +79,6 @@ package() {
 	install -Dm755 "visualize_point_cloud.py" "$_py_help_path"
 	# install required config file
 	cp "../ENVIRONMENT" "$pkgdir/opt/$pkgname/ENVIRONMENT"
+	
+	ln -s "$pkgdir/opt/inversecsg/main.py" "$pkgdir/usr/bin/inversecsg"
 }
