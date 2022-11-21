@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=14
+pkgrel=15
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -201,36 +201,43 @@ package() {
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
   
   # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
-  for object in "${PWD}"; do
+  for object in "${srcdir}/${pkgname}"; do
     if [ -d "${object}" ]; then
       if [ "${object}" == "LocalBuilds" ]; then
         if [ -d LocalBuilds/Engine/Linux/ ]; then
-          mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}"
+          mv "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}/${pkgname}"
         fi
       else
         mkdir -p "${pkgdir}/${_install_dir}/${object}"
-        mv "${object}"/* "${pkgdir}/${_install_dir}/${object}"
+        mv "${object}"/* "${pkgdir}/${_install_dir}/${pkgname}/${object}"
       fi
     fi
   done
   
-  if [ -f cpp.hint ] && [ ! -d cpp.hint ]; then
+  if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
     mv cpp.hint "${pkgdir}/${_install_dir}"
-  elif [ -d cpp.hint ]; then
+  elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
     mv cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
   fi
   
-  if [ -f GenerateProjectFiles.sh ]; then
+  if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
     install -Dm777 GenerateProjectFiles.sh "${pkgdir}/${_install_dir}"
   fi
   
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
-  chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/xbuild"
-  chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/mcs"
+  if [ -x "$(find "${pkgdir}/${_install_dir"} -type f -iname 'xbuild')" ]; then
+    find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x '{}' \;
+  fi
+  
+  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'mcs')" ]; then
+    find "${pkgdir}/${_install_dir}" -type f -iname 'mcs' -exec chmod +x '{}' \;
+  fi
+  
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
+  mkdir -p "${pkgbuild}/usr/bin"
   install -Dm755 ../unreal-engine-5.sh "${pkgdir}/usr/bin/"
   chmod +x "${pkgdir}/usr/bin/unreal-engine-5.sh"
   ln -s "${pkgdir}/usr/bin/unreal-engine-5.sh" "${pkgdir}/usr/bin/ue5"
