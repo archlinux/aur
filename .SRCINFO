@@ -1,21 +1,26 @@
 pkgbase = tor-shadow
-	pkgdesc = an open-source network simulator/emulator hybrid (e.g. for Tor and Bitcoin)
-	pkgver = 1.11.2
+	pkgdesc = An open-source network simulator/emulator hybrid (e.g. for Tor and Bitcoin)
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://shadow.github.io/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom
-	makedepends = llvm>=3.2
-	makedepends = cmake>=2.8.8
-	depends = igraph>=0.5.4
+	makedepends = gcc
+	makedepends = cmake>=3.2
+	makedepends = make
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = xz
+	makedepends = util-linux
 	depends = glib2>=2.32.0
-	source = https://github.com/shadow/shadow/archive/v1.11.2.tar.gz
-	source = patch_addLLVM.patch
-	source = patch_fix_build_dir.patch
-	md5sums = 72a65ce92c311117fa80f9309824dfe3
-	md5sums = ad343433a279cc78a54f6eecffb92b36
-	md5sums = bc3c5e1e79c0fcf8600a30e2cb8e0fe0
+	depends = python>=3.6
+	optdepends = python-numpy
+	optdepends = python-lxml
+	optdepends = python-matplotlib
+	optdepends = python-networkx
+	optdepends = python-scipy
+	optdepends = python-yaml
+	source = https://github.com/shadow/shadow/archive/v2.2.0.tar.gz
+	sha256sums = 707e27c4b1181849ebaa0ab052de0932713d0af26a1f3c682e47d5abfeffaf25
 
 pkgname = tor-shadow
-
