@@ -1,6 +1,6 @@
 # Maintainer: Hyperdriveguy <hyperdriveguy@gmail.com>
 pkgname=polished-map-plus-plus
-pkgver=2.5.4
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A map and tileset editor for pokecrystal, pokered, and hacks based on them like Polished Crystal (attributes support)."
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  git checkout c6dd68a
+  git checkout 2818dc5
 
   make
 }
