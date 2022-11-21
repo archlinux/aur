@@ -1,6 +1,6 @@
-pkgbase = openfortigui
+pkgbase = openfortigui-git
 	pkgdesc = OpenFortiGUI is an open-source VPN-Client to connect to Fortigate VPN-Hardware. It is based on openfortivpn and adds an easy to use and nice GUI on top of it, written in Qt5.
-	pkgver = 0.9.6
+	pkgver = 0.9.8.1.r0.g31eff99
 	pkgrel = 1
 	url = https://github.com/theinvisible/openfortigui.git
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = openfortigui
 	depends = openssl
 	depends = ppp
 	depends = sudo
-	source = git+https://github.com/theinvisible/openfortigui.git#tag=v0.9.6
-	source = user-env.patch
-	md5sums = SKIP
-	md5sums = 7f1e96dea4ce324b59b8190640f22c43
+	provides = openfortigui
+	conflicts = openfortigui
+	source = git+https://github.com/theinvisible/openfortigui.git
+	b2sums = SKIP
 
-pkgname = openfortigui
+pkgname = openfortigui-git

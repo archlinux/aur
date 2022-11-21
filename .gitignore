@@ -1,4 +1,3 @@
-openfortigui/
-src/
-pkg/
-openfortigui-*.tar.xz
+*
+!PKGBUILD
+!.SRCINFO
