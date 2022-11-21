@@ -35,10 +35,9 @@ build() {
   done
 }
 
-do_package() {
+do_package_gcc() {
   target="$(echo ${pkgname} | cut -d '-' -f 3)"
-  pkgdesc+="${target}"
-  
+
   toolchain_dir="usr/${target}-coreboot-gnu"
   dest_path="${pkgdir}/${toolchain_dir}"
   mkdir -p ${dest_path}
@@ -46,29 +45,29 @@ do_package() {
 }
 
 package_coreboot-toolchain-i386() {
-  do_package
+  do_package_gcc
 }
 
 package_coreboot-toolchain-x64() {
-  do_package
+  do_package_gcc
 }
 
 package_coreboot-toolchain-arm() {
-  do_package
+  do_package_gcc
 }
 
 package_coreboot-toolchain-aarch64() {
-  do_package
+  do_package_gcc
 }
 
 package_coreboot-toolchain-riscv() {
-  do_package
+  do_package_gcc
 }
 
 package_coreboot-toolchain-ppc64() {
-  do_package
+  do_package_gcc
 }
 
 package_coreboot-toolchain-nds32le() {
-  do_package
+  do_package_gcc
 }
