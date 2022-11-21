@@ -16,7 +16,7 @@ _system_type=VANILLA
 
 pkgname=waydroid-image-halium
 pkgver="${_pkgver_images_system//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system (Android image with halium)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('Apache')
@@ -33,11 +33,9 @@ source_armv7h=(https://sourceforge.net/projects/waydroid/files/images/system/lin
 source_aarch64=(https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm64/lineage-$_pkgver_images_system_arm64-$_system_type-waydroid_arm64-system.zip
   https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-$_vendor_type-waydroid_arm64-vendor.zip)
 
-case "$CARCH" in
-  aarch64) _imgarch="arm64" ;;
-  armv7h) _imgarch="arm" ;;
-  *) _imgarch="$CARCH" ;;
-esac
+pkgver() {
+  echo ${_pkgver_images_system//-/_}
+}
 
 package() {
   install -dm755 "$pkgdir/usr/share/waydroid-extra/images"
@@ -47,11 +45,11 @@ package() {
   mv "$srcdir/vendor.img" "$pkgdir/usr/share/waydroid-extra/images"
 }
 
-sha256sums_x86_64=('82023e7b04adeea64fa0073f335f55300b67c8f4cf866eb1629da2fd2eae072d'
-                   'd76c07ef45232ccf0423fff81f396141176f9e5fbd919134218b9da4200ec2b4')
-sha256sums_i686=('2e022c086af68e65129c07fc18c07d54fee6630d7f19024161c4111f238f67a6'
-                 '05eece26bd25851b86b19e93d2b3f3c4b50d42d0628bf96a40f96e2df9295ab1')
-sha256sums_armv7h=('7c7c06135a6c31db6b27cf392c07754890134052b2be5c0c2c7538fea86cfbab'
-                   '71bee674f297fad01f3a31576d08ec9ef7a4d0709d95d7fa6a00e0793109e513')
-sha256sums_aarch64=('fc600f3cfa994c8d5619386b7ef764307731102a4ebd854424487f7858a04d91'
-                    '4a40747f9a9a5ecdc7d881cf546232a9a8ff68b90ecd489a90f6d6499175da21')
+sha256sums_x86_64=('f2262a8109291104c56d4dcc777e2f7b8d5341c00a8ba7ba75dd71312b373d69'
+                   'd122b33e1d070d305b734c71dd94ecbca40563e2dbe75c6d91d45dab0d07cb2a')
+sha256sums_i686=('f00e10fff4f49310cacf455970ea37ea0984ed754fc0e500bdb33d3447346f78'
+                 '79fc6ce2dde6e0eb8dff9ce9d4dad1a20d049f376e820318117f960c8b87407f')
+sha256sums_armv7h=('03cb771bb2747db543bc54169acd157659cceeca0b018308b44e18e43f82bd6d'
+                   'dc225ec44e7d049f7b697ccc8a7f7673d28b4c462734ef61772d8cbdf809bcee')
+sha256sums_aarch64=('ddd199470dfc564c812ef1f65b7d7a98fa5953a571cc4f51a1bf6a3031c41f1b'
+                    '1f92cbd5e1b6c51ae42e1cece0f30580c618ba22f10e9fcdd7579a18abdd244f')
