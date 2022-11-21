@@ -1,0 +1,17 @@
+pkgbase = python38-asttokens
+	pkgdesc = Get the currently executing AST node of a frame, and other information
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/gristlabs/asttokens
+	arch = any
+	license = Apache
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-wheel
+	depends = python38-six
+	source = https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-2.1.0.tar.gz
+	sha256sums = 4aa76401a151c8cc572d906aad7aea2a841780834a19d780f4321c0fe1b54635
+	b2sums = 8b5eb309eddff6e41bfaaa4395d7a693f83de3271d76b9e08cd9e309c5b3780ce084890285e5e4b604f08bb4aea816d672dad38cfc3085afb521a0751eceb632
+
+pkgname = python38-asttokens
