@@ -1,0 +1,18 @@
+pkgbase = python38-perf
+	pkgdesc = Toolkit to run Python benchmarks
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/haypo/perf
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python38-setuptools
+	makedepends = python38-six
+	depends = python
+	depends = python38-setuptools
+	depends = python38-six
+	source = python38-perf-2.3.1.tar.gz::https://github.com/vstinner/perf/archive/2.3.1.tar.gz
+	sha256sums = 82c67986f06b14de040608847546131056177a6cc39be21540c87a3c0fc3e009
+	sha512sums = 56ac84962199bf3504766b6bc6eb89cbcb8367bcd64a6756eacb6d9ea7469df85a0f1d5b75c37c374ad731c425168469fd2dcc53ec789c6057abc5e84815a1e4
+
+pkgname = python38-perf
