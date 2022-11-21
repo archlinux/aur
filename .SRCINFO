@@ -1,0 +1,19 @@
+pkgbase = python38-yarl
+	pkgdesc = Yet another URL library
+	pkgver = 1.8.1
+	pkgrel = 00
+	url = https://github.com/aio-libs/yarl/
+	arch = x86_64
+	license = Apache
+	makedepends = python38-cython
+	depends = python38
+	depends = python38-idna
+	depends = python38-multidict
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/d6/04/255c68974ec47fa754564c4abba8f61f9ed68b869bbbb854198d6259c4f7/yarl-1.8.1.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = ff8f2843481cd11c3c674ce4f6fa167b
+	md5sums = e581798a7b985311f29fa3e163ea27ae
+
+pkgname = python38-yarl
