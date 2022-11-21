@@ -1,0 +1,19 @@
+pkgbase = python38-gssapi
+	pkgdesc = Provides both low-level and high level wrappers around the GSSAPI C libraries
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/pythongssapi/python-gssapi
+	arch = x86_64
+	license = ISC
+	checkdepends = python38-parameterized
+	checkdepends = python38-k5test
+	makedepends = python38-setuptools
+	makedepends = cython
+	depends = python
+	depends = python38-decorator
+	depends = krb5
+	source = https://github.com/pythongssapi/python-gssapi/archive/v1.8.2/python38-gssapi-1.8.2.tar.gz
+	sha512sums = b3003351aba19553031a1a4343b8c1b93474c9464e166f3a53d1b411b70378363229594f3a1fdee7448aa9981475b654d0996b8b75baa0411dd57fc8740720f4
+	b2sums = be3a8776342d9dfa69ad8a3cf0d7926719bc63881f837623e554b66324c74a1de079c64e1453fd1adc3bece7cb2c53d8a4c3ad6e3aa674cf126b075c863790ea
+
+pkgname = python38-gssapi
