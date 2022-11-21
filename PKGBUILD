@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=dynarmic
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
@@ -13,13 +13,12 @@ makedepends=(
 	'fmt>=9'
 	'robin-map>=0.6.2'
 	'xbyak>=6.61'
-	'zydis>=3.1'
-	'zydis<4'
+	'zydis>=4'
 )
 checkdepends=('catch2>=2.13.8')
 provides=('libdynarmic.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('93034366ec0f89bcf1c98e02518e7051e7a1b8469e8a84924f85b32382b8e4faac06d09f8817451ba899c406888c3057f53e67dd146e3e4d2c1604bab328b5c4')
+b2sums=('c663f1e5aa86a28d3abcfd6f5f62a05fb30928114c549ffc086b593aac35ba334cd2fd523ada9e567c0dcbc4a72f6c81cd5a44e26b0b8ff43b47f5ac0363cc1d')
 
 build() {
 	cmake -S $pkgname-$pkgver -B build \
