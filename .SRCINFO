@@ -1,0 +1,23 @@
+pkgbase = python38-gevent
+	pkgdesc = Python network library that uses greenlet and libev for easy and scalable concurrency
+	pkgver = 22.10.2
+	pkgrel = 1
+	url = http://www.gevent.org/
+	arch = x86_64
+	license = MIT
+	checkdepends = lsof
+	checkdepends = python38-perf
+	checkdepends = python38-objgraph
+	checkdepends = python38-dnspython
+	checkdepends = python38-requests
+	makedepends = cython
+	depends = c-ares
+	depends = libev
+	depends = python38-greenlet
+	depends = python38-setuptools
+	depends = python38-zope-event
+	depends = python38-zope-interface
+	source = python38-gevent-22.10.2.tar.gz::https://github.com/gevent/gevent/archive/22.10.2.tar.gz
+	sha512sums = 9ceb8e03016cd2fe8fa58f9fb65daa1b52b80a25067bb0fa8fc4b744695b85b0ba003e933783dd4546f4600f2859c08d5627e322ccfbc5a6fa3a8e4d67f59a5f
+
+pkgname = python38-gevent
