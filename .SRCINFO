@@ -1,0 +1,13 @@
+pkgbase = python38-pytest-repeat
+	pkgdesc = pytest plugin for repeating test execution
+	pkgver = 0.9.1
+	pkgrel = 3
+	url = https://github.com/pytest-dev/pytest-repeat
+	arch = any
+	license = MPL
+	makedepends = python38-setuptools-scm
+	depends = python38-pytest
+	source = python38-pytest-repeat-0.9.1.tar.gz::https://github.com/pytest-dev/pytest-repeat/archive/v0.9.1.tar.gz
+	sha512sums = 6820712ef0aeb03a5147e3f025d1ea6024c970b3027fb9f698f7ccadea83bbf9f1871e0b8ee3ca0bf4daece5f498a7f5016bca1b5816f535593521073ab8fb6b
+
+pkgname = python38-pytest-repeat
