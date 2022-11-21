@@ -1,0 +1,26 @@
+pkgbase = python38-proxy.py
+	pkgdesc = Lightweight HTTP, HTTPS, HTTP2 and WebSockets proxy server
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://github.com/abhinavsingh/proxy.py
+	arch = any
+	license = BSD
+	checkdepends = python38-httpx
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-asyncio
+	checkdepends = python38-pytest-cov
+	checkdepends = python38-pytest-mock
+	makedepends = python38-build
+	makedepends = python38-installer
+	makedepends = python38-setuptools-scm
+	makedepends = python38-setuptools-scm-git-archive
+	makedepends = python38-wheel
+	depends = python38
+	optdepends = python38-httpx: Cloudflare DNS resolver plugin support
+	optdepends = python38-paramiko: proxy over SSH tunnel support
+	source = https://files.pythonhosted.org/packages/source/p/proxy.py/proxy.py-2.4.3.tar.gz
+	source = python38-proxy.py-2.4.0_fix-asyncio-deprecationwarning.patch::https://github.com/abhinavsingh/proxy.py/commit/e0cc90d057b44ef506b88362d71f2c707db11db9.patch
+	sha256sums = 6134e8f1282db1fd7fa1a4b7049e49307566851023b2ac312d9dd36e92f0c9b1
+	sha256sums = e7e511215189c95d96f279fde344c4d7473b846f9c96a3fc0077985856e97bcc
+
+pkgname = python38-proxy.py
