@@ -1,0 +1,16 @@
+pkgbase = python38-oauthlib
+	pkgdesc = A generic, spec-compliant, thorough implementation of the OAuth request-signing logic
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/oauthlib/oauthlib
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	makedepends = python38-wheel
+	makedepends = python38-build
+	makedepends = python38-installer
+	depends = python38-cryptography
+	source = https://files.pythonhosted.org/packages/source/o/oauthlib/oauthlib-3.2.2.tar.gz
+	sha256sums = 9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918
+
+pkgname = python38-oauthlib
