@@ -1,0 +1,25 @@
+pkgbase = python38-httpretty
+	pkgdesc = HTTP client mock for Python
+	pkgver = 1.1.4
+	pkgrel = 3
+	url = https://github.com/gabrielfalcao/httpretty
+	arch = any
+	license = MIT
+	checkdepends = python38-nose
+	checkdepends = python38-coverage
+	checkdepends = python38-eventlet
+	checkdepends = python38-freezegun
+	checkdepends = python38-httplib2
+	checkdepends = python38-redis
+	checkdepends = python38-rednose
+	checkdepends = python38-requests
+	checkdepends = python38-sure
+	checkdepends = python38-tornado
+	checkdepends = python38-httpx
+	checkdepends = python38-boto3
+	makedepends = python38-setuptools
+	depends = python38-urllib3
+	source = https://github.com/gabrielfalcao/HTTPretty/archive/1.1.4/python38-httpretty-1.1.4.tar.gz
+	sha512sums = 58c733ba4719f97e06e2313bb6b94f1c6609d3facb2e0262ac37be97f1c3430eac661611ba9b3712c9c1809846e177b61f3fc2945f3770d475f70b81bea2aced
+
+pkgname = python38-httpretty
