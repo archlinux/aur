@@ -1,0 +1,14 @@
+pkgbase = python38-pytest-forked
+	pkgdesc = run tests in isolated forked subprocesses
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = https://github.com/pytest-dev/pytest-forked
+	arch = any
+	license = MIT
+	makedepends = python38-pytest
+	makedepends = python38-setuptools-scm
+	depends = python38-pytest
+	source = -1.4.0.tar.gz::https://github.com/pytest-dev/pytest-forked/archive/v1.4.0.tar.gz
+	sha512sums = f5ccf71d7f335073b5cfef15d44a65b315824c1087017ee692118354fc2f17da697ed6b0a7d7030b6259a4c3ceb9356ebd015f7867f3b4a5673eae12fd9ec952
+
+pkgname = python38-pytest-forked
