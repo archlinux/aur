@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfun
-_pkgver=0.0.8
+_pkgver=0.0.9
 pkgname=r-${_pkgname,,}
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Miscellaneous Functions for 'ggplot2'"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9471a12fc7af203a419767b845e6b6c1e63c080370cb8f2dac80187194122273')
+sha256sums=('5c740e9d1e73b77658f41ed65e21492f4e71b12c7c9ff4b9e52ebf5f8f197612')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
