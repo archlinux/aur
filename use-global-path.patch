@@ -1,6 +1,6 @@
 --- a/Source/PluginProcessor.cpp
 +++ b/Source/PluginProcessor.cpp
-@@ -773,7 +773,7 @@ File ObxdAudioProcessor::getCurrentBankFile() const
+@@ -838,7 +838,7 @@ File ObxdAudioProcessor::getCurrentBankFile() const
  //==============================================================================
  File ObxdAudioProcessor::getDocumentFolder() const
  {

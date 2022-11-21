@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=ob-xd
-pkgver=2.9
+pkgver=2.10
 pkgrel=1
 pkgdesc='Virtual analog synthesizer based on the Oberheim OB-X, OB-Xa and OB-8 synths'
 arch=('x86_64')
@@ -38,15 +38,17 @@ optdepends=(
   'lv2-host: for LV2 plugins'
 )
 options=('debug')
-_commit='15a7e10297f7349cab3b3e7893b5fe7af7536661'
+_commit='2afc035ac3e70171a71840bbc2f859715b6ce765'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'use-global-path.patch'
   'skip-legacy-vst2-plugin.patch'
+  'use-system-juce.patch'
 )
 b2sums=('SKIP'
-        '72a750e36d3b204472e78ed50e09ff2de5531f286b43fe4ab86ff7854868405caaa765d419cf35b2865c5edb2d5e105d15bfa91a38ce6491504f2cd7bbe2bed6'
-        '37f805531f8986b2a409912c0f0d60589e4bfa27932a4b583b57d889f99501870f7b60647c02e73d14b0945476377d9d926edb9ceb2001a395e8c292f6867926')
+        '9e9954ff7aeedc176e4f12ed9fcc97bac7b2a1c45450adf27af7b7ab1f3869121b98eb4d5c93926416d09073b6bfb937d89115f31730abfdc4399b3c2526bac2'
+        'b71a23ba0d7f48df9039fa7e8951e96818dfd0c57a49491d9984860cf0dccd120b3c54c3833a01d94cb723432493f282e9073a6ce6ab190d1abc616401600202'
+        '9bfaf21ab88a016bff1adfa916252335757a387ba95fed5ab3584c4a03bd10795fb23108e8e0d645f84d94e789c1498717d472106b176b4336dbed34e3e149f7')
 
 pkgver() {
   cd "$pkgname"
@@ -62,10 +64,9 @@ prepare() {
 
   # skip legacy VST2 plugin
   patch -p1 -i "$srcdir/skip-legacy-vst2-plugin.patch"
-  sed -e 's/JUCEOPTIONS /JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" /' -i OB-Xd.jucer
 
   # use system juce
-  sed -e 's/useGlobalPath="0"/useGlobalPath="1"/g' -i OB-Xd.jucer
+  patch -p1 -i "$srcdir/use-system-juce.patch"
 
   # generate desktop file
   gendesk -n \
