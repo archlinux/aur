@@ -1,0 +1,18 @@
+pkgbase = python38-netaddr
+	pkgdesc = Pure Python network address representation and manipulation library
+	pkgver = 0.8.0
+	pkgrel = 5
+	url = https://github.com/drkjam/netaddr
+	arch = any
+	license = BSD
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-cov
+	makedepends = python38-sphinx
+	depends = python38
+	optdepends = python38-ipython: netaddr interractive command support
+	options = !makeflags
+	source = https://github.com/drkjam/netaddr/archive/0.8.0/python38-netaddr-0.8.0.tar.gz
+	sha512sums = 0b518ef240b81af425a5aaa6f087b10dece3f352c0c67cde8553ac00daa9d1890637c05d16740e2c23b30ae068c1b4c409ca8291e02093699fafd638701b9069
+	b2sums = c0a361c100490c17203aad14eb14a3e09c63f5a6ce2f4b7e85bc57942329ac4603a1d4b3a09a9ab964a775dfb50a8746f6dd4a05d2f9bba01674624a7d7b46c1
+
+pkgname = python38-netaddr
