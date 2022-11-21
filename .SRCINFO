@@ -1,0 +1,15 @@
+pkgbase = python38-re-assert
+	pkgdesc = Provides a helper class to make assertions of regexes simpler
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://github.com/asottile/re-assert
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	makedepends = python38-setuptools
+	depends = python
+	depends = python38-regex
+	source = python38-re-assert-1.1.0.tar.gz::https://github.com/asottile/re-assert/archive/v1.1.0.tar.gz
+	sha256sums = 01c4a849ed520923e4bab9afdf73b5f2698c4f92ad7f580ccb3f68ea79c69c0c
+
+pkgname = python38-re-assert
