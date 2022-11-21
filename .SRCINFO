@@ -10,8 +10,8 @@ pkgbase = python-scienceplots
 	makedepends = python-wheel
 	depends = python-matplotlib
 	depends = python-setuptools
-	provides = scienceplots
-	conflicts = scienceplots-git
+	provides = python-scienceplots
+	conflicts = python-scienceplots-git
 	source = SciencePlots.tar.gz::https://github.com/garrettj403/SciencePlots/archive/2.0.0.tar.gz
 	sha512sums = db9141ab496c030fcc7b9d95bbe6093a647490a3b472338450f865943b85a7cb18cedde2cd749693acae2a821d6b775dfeeca81449af1d92933f4ee6dd5c7e8f
 
