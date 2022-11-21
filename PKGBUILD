@@ -2,7 +2,7 @@
 
 pkgname=sing-box
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'i686')
@@ -38,6 +38,10 @@ build(){
         -tags "$_tags" \
         -ldflags '-linkmode=external -w -s' \
         ./cmd/sing-box
+
+    sed -i '/^\[Service\]$/a User=sing-box' release/config/${pkgname}*.service
+
+    echo 'u sing-box - "Sing-box Service" - -' > release/config/${pkgname}.sysusers
 }
 
 package() {
@@ -46,6 +50,7 @@ package() {
     install -Dm755 "${pkgname}"                         -t "${pkgdir}/usr/bin"
     install -Dm644 "LICENSE"                            -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "release/config/config.json"         -t "${pkgdir}/etc/${pkgname}"
-    install -Dm644 "release/config/sing-box.service"    -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "release/config/sing-box@.service"   -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "release/config/${pkgname}.service"  -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "release/config/${pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "release/config/${pkgname}.sysusers"    "${pkgdir}/usr/lib/sysusers.d//${pkgname}.conf"
 }
