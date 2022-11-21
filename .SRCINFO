@@ -1,0 +1,16 @@
+pkgbase = python38-backcall
+	pkgdesc = Backwards compatible callback APIs
+	pkgver = 0.2.0
+	pkgrel = 7
+	url = https://github.com/takluyver/backcall
+	arch = any
+	license = BSD
+	makedepends = python38-build
+	makedepends = python38-flit-core
+	makedepends = python38-installer
+	depends = python38
+	source = https://files.pythonhosted.org/packages/source/b/backcall/backcall-0.2.0.tar.gz
+	sha256sums = 5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e
+	b2sums = 67f9ac96d26b368972a5749775a70c497b5705b37d45ba7f64c1259be776cc7f4c9d78ae51da9c1e9e46521d33bf511790675688feef88a68d25ae30cd79612d
+
+pkgname = python38-backcall
