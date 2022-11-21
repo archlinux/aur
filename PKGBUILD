@@ -1,7 +1,7 @@
 # Maintainer: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.25.3
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
 arch=('any')
@@ -26,7 +26,9 @@ makedepends=(
 	'python-installer'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6dc71f49fb0e20325f64aa5d4fb48b637c27ab79e2bb69ec371dc9a1165e51c2')
+sha256sums=(
+	'7e4eb4f55ed84b0f3fecf74adf7d8b5b72421565c60a5df14b511f1705597753'
+)
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
