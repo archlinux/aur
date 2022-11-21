@@ -1,7 +1,7 @@
 # Maintainer: Tang Yuming <felinae225@qq.com>
 pkgname=clashup
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="auto update clash's config file"
 license=('GPL')
 arch=('any')
