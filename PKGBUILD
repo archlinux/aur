@@ -1,7 +1,7 @@
 # Maintained by Faisal Moledina (faisal at moledina dot me)
 pkgname=onedriver
-pkgver=0.12.0
-pkgrel=1
+pkgver=0.13.0
+pkgrel=0
 pkgdesc="Native Linux filesystem for Microsoft OneDrive"
 arch=('x86_64')
 url='https://github.com/jstaf/onedriver'
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('fuse2' 'webkit2gtk')
 makedepends=('pkgconf' 'go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0bcac46bdcdf8f671640e2fae1f648a82de3ea92395ca1e7ec153991f2b89311cd957dcc1f88e279aab626610e3f20bce0141d19cc561c534d7027d9b5d2af52')
+sha512sums=('aa831017c4d9612fbdea1e2fab05864f84074e6b80e7613ae739d2954e7b6e975d6a1aaaaba330c0038dae69839dcf608576a96a88797cf575791fae65673d4a')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -20,13 +20,24 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
 
   go build \
+    -v \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+    -ldflags "-X main.commit=$(git rev-parse HEAD) -linkmode external -extldflags \"${LDFLAGS}\"" \
+    ./cmd/onedriver
 
-  make $pkgname-launcher
+  export CGO_CFLAGS="-Wno-deprecated-declarations ${CFLAGS}"
+
+  go build \
+    -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-X main.commit=$(git rev-parse HEAD) -linkmode external -extldflags \"${LDFLAGS}\"" \
+    ./cmd/onedriver-launcher
 }
 
 package() {
