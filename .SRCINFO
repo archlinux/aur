@@ -1,0 +1,16 @@
+pkgbase = python38-pylibmc
+	pkgdesc = Quick and small memcached client for Python
+	pkgver = 1.6.1
+	pkgrel = 7
+	url = https://pypi.python.org/pypi/pylibmc
+	arch = x86_64
+	license = GPL
+	makedepends = python38
+	makedepends = gcc
+	makedepends = zlib
+	depends = libmemcached
+	depends = python38
+	source = https://pypi.org/packages/source/p/pylibmc/pylibmc-1.6.1.tar.gz
+	sha256sums = 8a8dd406487d419d58c6d944efd91e8189b360a0c4d9e8c6ebe3990d646ae7e9
+
+pkgname = python38-pylibmc
