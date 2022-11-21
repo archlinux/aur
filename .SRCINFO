@@ -1,7 +1,7 @@
 pkgbase = nvenc
 	pkgdesc = NVIDIA Video Codec based command line encoder
-	pkgver = 7.04
-	pkgrel = 2
+	pkgver = 7.05
+	pkgrel = 1
 	url = https://github.com/rigaya/NVEnc
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = nvenc
 	depends = ffmpeg
 	depends = libass
 	depends = vapoursynth
-	source = git+https://github.com/rigaya/NVEnc.git#tag=7.04
+	source = git+https://github.com/rigaya/NVEnc.git#tag=7.05
 	source = git+https://github.com/tplgy/cppcodec.git
 	source = ldflags-adjustments.patch
 	source = use-type-instead-of-which.patch
