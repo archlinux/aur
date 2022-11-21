@@ -1,0 +1,737 @@
+diff --git a/3rdParty/LibIDN/SConscript b/3rdParty/LibIDN/SConscript
+index 90892b0f8..c99aff8ba 100644
+--- a/3rdParty/LibIDN/SConscript
++++ b/3rdParty/LibIDN/SConscript
+@@ -40,13 +40,13 @@ if env.get("LIBIDN_BUNDLED", False) :
+             if conf.CheckFunc("stricmp") :
+                 myenv.Append(CPPDEFINES = [("strcasecmp", "stricmp")])
+             else :
+-                print "Error: Cannot find strcasecmp() or stricmp()"
++                print("Error: Cannot find strcasecmp() or stricmp()")
+                 Exit(1)
+         if not conf.CheckFunc('strncasecmp') :
+             if conf.CheckFunc("strnicmp") :
+                 myenv.Append(CPPDEFINES = [("strncasecmp", "strnicmp")])
+             else :
+-                print "Error: Cannot find strncasecmp() or strnicmp()"
++                print("Error: Cannot find strncasecmp() or strnicmp()")
+                 Exit(1)
+         conf.Finish()
+ 
+diff --git a/BuildTools/CheckHeaders.py b/BuildTools/CheckHeaders.py
+index 79ff85c12..752d2573f 100755
+--- a/BuildTools/CheckHeaders.py
++++ b/BuildTools/CheckHeaders.py
+@@ -36,7 +36,7 @@ for line in file.readlines() :
+         continue
+     for forbiddenInclude, ignores in FORBIDDEN_INCLUDES :
+         if forbiddenInclude in line and len([x for x in ignores if x in filename]) == 0 :
+-            print "Found " + forbiddenInclude + " include in " + filename
++            print("Found " + forbiddenInclude + " include in " + filename)
+             foundBadHeaders = True
+ 
+ sys.exit(foundBadHeaders)
+diff --git a/BuildTools/CheckTranslations.py b/BuildTools/CheckTranslations.py
+index 615f81f1e..0617fbac0 100755
+--- a/BuildTools/CheckTranslations.py
++++ b/BuildTools/CheckTranslations.py
+@@ -41,10 +41,10 @@ for filename in os.listdir("Swift/Translations") :
+             translationText = getText(translation.childNodes)
+             translationPlaceholders = set(re.findall("%\d+%?", translationText))
+             if translationPlaceholders != sourcePlaceholders :
+-                print "[Error] " + filename + ": Placeholder mismatch in translation '" + sourceText + "'"
++                print("[Error] " + filename + ": Placeholder mismatch in translation '" + sourceText + "'")
+         if not finished :
+-                print "[Warning] " + filename + ": Unfinished"
++                print("[Warning] " + filename + ": Unfinished")
+         if language not in desktop_generic_names and language != "en" :
+-                print "[Warning] GenericName field missing in desktop entry for " + language
++                print("[Warning] GenericName field missing in desktop entry for " + language)
+         if language not in desktop_comments and language != "en" :
+-                print "[Warning] Comment field missing in desktop entry for " + language
++                print("[Warning] Comment field missing in desktop entry for " + language)
+diff --git a/BuildTools/Copyright/find-contribs.py b/BuildTools/Copyright/find-contribs.py
+index ac30afb2b..799ae7b45 100755
+--- a/BuildTools/Copyright/find-contribs.py
++++ b/BuildTools/Copyright/find-contribs.py
+@@ -46,12 +46,12 @@ def print_log(full_log):
+ 
+ full_swiften_log = subprocess.check_output(["git", "log", "--", "Swiften"])
+ 
+-print "Contributors for Swiften/ subtree:\n"
++print("Contributors for Swiften/ subtree:\n")
+ print_log(full_swiften_log)
+ 
+ full_all_log = subprocess.check_output(["git", "log"])
+ 
+-print "\n\n\n\n"
++print("\n\n\n\n")
+ 
+-print "Contributors for full tree:\n"
++print("Contributors for full tree:\n")
+ print_log(full_all_log)
+diff --git a/BuildTools/Copyrighter.py b/BuildTools/Copyrighter.py
+index a16050cb1..cfde98f62 100755
+--- a/BuildTools/Copyrighter.py
++++ b/BuildTools/Copyrighter.py
+@@ -122,14 +122,14 @@ def check_copyright(filename, hints) :
+                     return True
+                 else :
+                     if hints :
+-                        print "Copyright block for " + copyrightSetting.author + " does not cover current year in: " + filename
++                        print("Copyright block for " + copyrightSetting.author + " does not cover current year in: " + filename)
+                     return False
+         if hints :
+-            print "Missing copyright block for " + copyrightSetting.author + " in: " + filename
++            print("Missing copyright block for " + copyrightSetting.author + " in: " + filename)
+         return False
+     else :
+         if hints :
+-            print "No copyright found in: " + filename
++            print("No copyright found in: " + filename)
+         return False
+ 
+ def replace_data_in_file(filename, begin, end, replaceWith) :
+@@ -140,7 +140,7 @@ def replace_data_in_file(filename, begin, end, replaceWith) :
+ 
+ def set_or_update_copyright(filename) :
+     if check_copyright(filename, False) :
+-        print "No update required for file: " + filename
++        print("No update required for file: " + filename)
+     else :
+         copyrightBlocks = parse_file_new(filename)
+         username, email = get_userinfo()
+@@ -161,7 +161,7 @@ def set_or_update_copyright(filename) :
+         replace_data_in_file(filename, lastBlock+1, lastBlock+1, "\n" + str(copyrightSetting))
+ 
+ def print_help() :
+-    print """Usage:
++    print("""Usage:
+     Copyrighter.py check-copyright $filename
+         Cheks for the existence of a copyright comment block.
+ 
+@@ -172,7 +172,7 @@ def print_help() :
+         A users license configuration can be set via the SWIFT_LICENSE_CONFIG environment variable 
+         in the format "$copyright holder|$license", e.g. "Jane Doe|mit". Possible values for 
+         $license are default, mit and gpl.
+-    """
++    """)
+ 
+ if sys.argv[1] == "check-copyright" :
+     file = sys.argv[2]
+@@ -183,6 +183,6 @@ elif sys.argv[1] == "set-copyright" :
+     file = sys.argv[2]
+     set_or_update_copyright(file)
+ else :
+-    print "Unknown command: " + sys.argv[1]
++    print("Unknown command: " + sys.argv[1])
+     print_help()
+     sys.exit(-1)
+diff --git a/BuildTools/CrashReportAnalysis/WindowsMinidumpAnalyse.py b/BuildTools/CrashReportAnalysis/WindowsMinidumpAnalyse.py
+index dada92095..92f9b28f1 100644
+--- a/BuildTools/CrashReportAnalysis/WindowsMinidumpAnalyse.py
++++ b/BuildTools/CrashReportAnalysis/WindowsMinidumpAnalyse.py
+@@ -19,11 +19,11 @@ import time
+ 
+ swiftWindowBuildsPathPrefix = os.getenv("SWIFT_DIST")
+ if swiftWindowBuildsPathPrefix == None :
+-    print "Please set the SWIFT_DIST environment variable to a location containing msi and pdb.gz files."
++    print("Please set the SWIFT_DIST environment variable to a location containing msi and pdb.gz files.")
+     sys.exit(1)
+ 
+ if len(sys.argv) != 3:
+-    print "Usage: python WindowsMinidumpAnalyse.py VERSION MINIDUMP_FILE"
++    print("Usage: python WindowsMinidumpAnalyse.py VERSION MINIDUMP_FILE")
+     sys.exit(1)
+ 
+ version = sys.argv[1]
+@@ -93,7 +93,7 @@ def printHumanReadableReport():
+ try:
+     shutil.rmtree(working_folder)
+ except:
+-    print ""
++    print("")
+ 
+ # clone local git repository into dedicated directory
+ call(["git", "clone",  ".", working_folder], shell=True)
+@@ -120,7 +120,7 @@ assert(len(commit) > 0)
+ if not os.path.exists(symbol_cache_path):
+     os.makedirs(symbol_cache_path)
+ 
+-#print "Checking out commit {0}.".format(commit)
++#print("Checking out commit {0}.".format(commit))
+ call(["git", "-C", working_folder, "checkout", commit])
+ 
+ os.chdir(working_folder)
+diff --git a/BuildTools/DocBook/SCons/XSLT.py b/BuildTools/DocBook/SCons/XSLT.py
+index 38e36c533..6a40b62a8 100644
+--- a/BuildTools/DocBook/SCons/XSLT.py
++++ b/BuildTools/DocBook/SCons/XSLT.py
+@@ -8,7 +8,7 @@ import xml.dom.minidom, os, os.path
+ def generate(env) :
+     def generate_actions(source, target, env, for_signature) :
+         if not env.has_key("XSLTSTYLESHEET") :
+-            raise SCons.Errors.UserError, "The XSLTSTYLESHEET construction variable must be defined"
++            raise SCons.Errors.UserError("The XSLTSTYLESHEET construction variable must be defined")
+ 
+         # Process the XML catalog files
+         # FIXME: It's probably not clean to do an ENV assignment globally
+diff --git a/BuildTools/FixIncludes.py b/BuildTools/FixIncludes.py
+index 898494473..e53246455 100755
+--- a/BuildTools/FixIncludes.py
++++ b/BuildTools/FixIncludes.py
+@@ -153,12 +153,12 @@ for line in content[headerStart:headerEnd]:
+             headerGroups[headerType] = [line]
+ 
+ if containsComplexPreprocessorDirectives:
+-    print "Cannot format headers containing preprocessor #if, #pragma, #define or #undef statements!"
++    print("Cannot format headers containing preprocessor #if, #pragma, #define or #undef statements!")
+     exit(1)
+ 
+ if filename_base.endswith(".h"):
+     if not HeaderType.PRAGMA_ONCE in headerGroups:
+-        print "Missing #pragma once!"
++        print("Missing #pragma once!")
+         exit(2)
+     cleanHeaderFile(content, headerStart, headerEnd, headerGroups)
+ elif filename_base.endswith(".cpp") or filename_base.endswith(".mm"):
+diff --git a/BuildTools/GetBuildVersion.py b/BuildTools/GetBuildVersion.py
+index 70fdc5ce5..be7cc03e6 100755
+--- a/BuildTools/GetBuildVersion.py
++++ b/BuildTools/GetBuildVersion.py
+@@ -16,6 +16,6 @@ if only_major :
+     if version_match :
+         print version_match.group(1)
+     else :
+-        print "0"
++        print("0")
+ else :
+     print Version.getBuildVersion(os.path.dirname(sys.argv[0]) + "/..", sys.argv[1])
+diff --git a/BuildTools/Gource/GetGravatars.py b/BuildTools/Gource/GetGravatars.py
+index d1f40a4d6..17198aa13 100755
+--- a/BuildTools/Gource/GetGravatars.py
++++ b/BuildTools/Gource/GetGravatars.py
+@@ -5,7 +5,7 @@ import subprocess, os, sys, hashlib, urllib
+ GRAVATAR_URL = "http://www.gravatar.com/avatar/%(id)s?d=404"
+ 
+ if len(sys.argv) != 2 :
+-    print "Usage: " + sys.argv[0] + " <output-dir>"
++    print("Usage: " + sys.argv[0] + " <output-dir>")
+     sys.exit(-1)
+ 
+ output_dir = sys.argv[1]
+@@ -18,32 +18,32 @@ for line in p.stdout.readlines() :
+     authors[author_components[0]] = author_components[1]
+ p.stdin.close()
+ if p.wait() != 0 :
+-    print "Error"
++    print("Error")
+     sys.exit(-1)
+ 
+ # Get & save the avatars
+ if not os.path.isdir(output_dir) :
+     os.makedirs(output_dir)
+ for email, name in authors.items() :
+-    print "Processing avatar for " + name + " <" + email + ">"
++    print("Processing avatar for " + name + " <" + email + ">")
+     filename = os.path.join(output_dir, name + ".png")
+     if os.path.isfile(filename) :
+-        print "-> Already there. Skipping."
++        print("-> Already there. Skipping.")
+         continue
+ 
+     m = hashlib.md5()
+     m.update(email)
+     url = GRAVATAR_URL % {"id" : m.hexdigest()}
+-    print "- Downloading " + url
++    print("- Downloading " + url)
+     f = urllib.urlopen(url)
+     input = None
+     if f.getcode() == 200 :
+         input = f.read()
+     f.close()
+     if input :
+-        print "- Saving file " + filename
++        print("- Saving file " + filename)
+         f = open(filename, "w")
+         f.write(input)
+         f.close()
+     else :
+-        print "- No Gravatar found"
++        print("- No Gravatar found")
+diff --git a/BuildTools/SCons/SConstruct b/BuildTools/SCons/SConstruct
+index 6d63d5bcf..e40bfb855 100644
+--- a/BuildTools/SCons/SConstruct
++++ b/BuildTools/SCons/SConstruct
+@@ -7,9 +7,9 @@ root = Dir("../..").abspath
+ 
+ # Override SConscript to handle tests
+ oldSConscript = SConscript
+-def SConscript(*arguments, **keywords) :
+-    if not keywords.get("test_only", False) or env["TEST"] :
+-        return apply(oldSConscript, arguments, keywords)
++def SConscript(*args, **kwargs) :
++    if not kwargs.get("test_only", False) or env["TEST"] :
++        return oldSConscript(*args, **kwargs)
+ env.SConscript = SConscript
+ 
+ ################################################################################
+@@ -142,11 +142,11 @@ conf = Configure(conf_env, custom_tests = {
+     })
+ 
+ if not conf.CheckCXX() or not conf.CheckCC() :
+-    print "Error: You need a working compiler"
++    print("Error: You need a working compiler")
+     Exit(1)
+ 
+ if not conf.CheckCpp11Support() :
+-    print "Error: You need a compiler with support for the C++11 standard"
++    print("Error: You need a compiler with support for the C++11 standard")
+     Exit(1)
+ 
+ 
+@@ -170,7 +170,7 @@ if (not zlib_okay) and conf.CheckLib("z") :
+ if zlib_okay :
+     env["ZLIB_FLAGS"] = zlib_flags
+ elif not env.get("zlib_bundled_enable", True) :
+-    print "Error: Zlib not found and zlib_bundled_enable is false"
++    print("Error: Zlib not found and zlib_bundled_enable is false")
+     Exit(1)
+ else :
+     env["ZLIB_BUNDLED"] = True
+@@ -238,7 +238,7 @@ if not env.get("boost_force_bundled") and allLibsPresent :
+         # FIXME: Remove this workaround when UUID is available in most distros
+         env["BOOST_BUNDLED_UUID_ONLY"] = True
+ elif not env.get("boost_bundled_enable", True) :
+-    print "Error: Boost not found and boost_bundled_enable is false"
++    print("Error: Boost not found and boost_bundled_enable is false")
+     Exit(1)
+ else :
+     env["BOOST_BUNDLED"] = True
+@@ -373,7 +373,7 @@ if env.get("try_expat", True) and not env.get("HAVE_LIBXML",0) :
+ # Bundled expat
+ bundledExpat = False
+ if not env.get("HAVE_EXPAT", 0) and not env.get("HAVE_LIBXML", 0) :
+-    print "Expat or LibXML not found. Using bundled Expat"
++    print("Expat or LibXML not found. Using bundled Expat")
+     SConscript("#/3rdParty/Expat/SConscript")
+     env["HAVE_EXPAT"] = 1
+     env["EXPAT_BUNDLED"] = True
+@@ -424,10 +424,10 @@ if not env.get("HAVE_ICU", False) and not env.get("HAVE_LIBIDN", False) :
+         env["HAVE_LIBIDN"] = 1
+         env["LIBIDN_BUNDLED"] = 1
+     elif env.get("need_idn", True):
+-        print "Error: ICU and LIBIDN not found, and libidn_bundled_enable is false"
++        print("Error: ICU and LIBIDN not found, and libidn_bundled_enable is false")
+         Exit(1)
+     else:
+-        print "Proceeding without an IDN library because need_idn was false. This will break all internal binaries"
++        print("Proceeding without an IDN library because need_idn was false. This will break all internal binaries")
+ 
+ # Unbound
+ if env["unbound"] :
+@@ -514,7 +514,7 @@ if not env.get("lua_force_bundled", False) and conf.CheckLibWithHeader(env["lua_
+     if lua_version > 0 :
+         env["LUA_FLAGS"]["LUA_VERSION"] = str(lua_version // 100) + "." + str(lua_version % 100)
+     else :
+-        print "Warning: Unable to determine Lua version. Not installing Lua libraries."
++        print("Warning: Unable to determine Lua version. Not installing Lua libraries.")
+     env["LUA_FLAGS"].update(lua_flags)
+ else :
+     env["LUA_BUNDLED"] = 1
+@@ -666,7 +666,7 @@ try :
+ except SCons.Errors.StopError:
+     env["HAVE_QT"] = False
+ except Exception as e:
+-    print "Info: %s" % str(e)
++    print("Info: %s" % str(e))
+     env["HAVE_QT"] = False
+ 
+ ################################################################################
+@@ -688,7 +688,7 @@ try:
+         if not env.GetOption("clean") and env.get("install_git_hooks", True) :
+             env.Install("#/.git/hooks", Glob("#/BuildTools/Git/Hooks/*"))
+ except TypeError:
+-    print "You seem to be using Swift in a Git submodule. Not installing hooks."
++    print("You seem to be using Swift in a Git submodule. Not installing hooks.")
+ 
+ 
+ ################################################################################
+@@ -752,7 +752,7 @@ modules.append("QA")
+ env["PROJECTS"] = [m for m in modules if m not in ["Documentation", "QA", "SwifTools"] and not m.startswith("3rdParty")]
+ for stage in ["flags", "build"] :
+     env["SCONS_STAGE"] = stage
+-    SConscript(dirs = map(lambda x : root + "/" + x, modules))
++    SConscript(dirs = list(map(lambda x : root + "/" + x, modules)))
+ 
+ # SLOCCount
+ if ARGUMENTS.get("sloccount", False) :
+@@ -764,9 +764,9 @@ if ARGUMENTS.get("sloccount", False) :
+ # Print summary
+ ################################################################################
+ 
+-print
+-print "  Build Configuration"
+-print "  -------------------"
++print("")
++print("  Build Configuration")
++print("  -------------------")
+ 
+ parsers = []
+ if env.get("HAVE_LIBXML", 0):
+@@ -775,14 +775,14 @@ if env.get("HAVE_EXPAT", 0):
+     parsers.append("Expat")
+     if env.get("EXPAT_BUNDLED", False) :
+         parsers.append("(Bundled)")
+-print "  Projects: " + ' '.join(env["PROJECTS"])
+-print ""
+-print "  XML Parsers: " + ' '.join(parsers)
++print("  Projects: " + ' '.join(env["PROJECTS"]))
++print("")
++print("  XML Parsers: " + ' '.join(parsers))
+ 
+-print "  TLS Support: " + (env.get("HAVE_OPENSSL",0) and "OpenSSL" or env.get("HAVE_SECURETRANSPORT",0) and "Secure Transport" or env.get("HAVE_SCHANNEL", 0) and "Schannel" or "Disabled")
+-print "  DNSSD Support: " + (env.get("HAVE_BONJOUR") and "Bonjour" or (env.get("HAVE_AVAHI") and "Avahi" or "Disabled"))
+-print
++print("  TLS Support: " + (env.get("HAVE_OPENSSL",0) and "OpenSSL" or env.get("HAVE_SECURETRANSPORT",0) and "Secure Transport" or env.get("HAVE_SCHANNEL", 0) and "Schannel" or "Disabled"))
++print("  DNSSD Support: " + (env.get("HAVE_BONJOUR") and "Bonjour" or (env.get("HAVE_AVAHI") and "Avahi" or "Disabled")))
++print("")
+ 
+ if not GetOption("help") and not env.get("HAVE_OPENSSL", 0) and not env.get("HAVE_SCHANNEL", 0) and not env.get("HAVE_SECURETRANSPORT", 0):
+-    print "Error: A working TLS backend is required. Please check the documentation for more information."
++    print("Error: A working TLS backend is required. Please check the documentation for more information.")
+     Exit(1)
+diff --git a/BuildTools/SCons/Tools/AppBundle.py b/BuildTools/SCons/Tools/AppBundle.py
+index 337e83f7c..31cfef109 100644
+--- a/BuildTools/SCons/Tools/AppBundle.py
++++ b/BuildTools/SCons/Tools/AppBundle.py
+@@ -34,7 +34,7 @@ def generate(env) :
+     """
+         for key, value in infoDict.items() :
+             plist += "<key>" + key + "</key>\n"
+-            plist += "<string>" + value.encode("utf-8") + "</string>\n"
++            plist += "<string>" + value + "</string>\n"
+         if handlesXMPPURIs :
+             plist += """<key>CFBundleURLTypes</key>
+ <array>
+@@ -50,7 +50,7 @@ def generate(env) :
+ 
+         if sparklePublicDSAKey :
+             plist += "<key>SUPublicDSAKeyFile</key>"
+-            plist += "<string>" + sparklePublicDSAKey.name.encode("utf-8") + "</string>"
++            plist += "<string>" + sparklePublicDSAKey.name + "</string>"
+             env.Install(resourcesDir, sparklePublicDSAKey)
+         plist += """</dict>
+     </plist>
+diff --git a/BuildTools/SCons/Tools/InstallWithSymLinks.py b/BuildTools/SCons/Tools/InstallWithSymLinks.py
+index 23d12ed80..495519210 100644
+--- a/BuildTools/SCons/Tools/InstallWithSymLinks.py
++++ b/BuildTools/SCons/Tools/InstallWithSymLinks.py
+@@ -74,21 +74,21 @@ def scons_copytree(src, dst, symlinks=False):
+             else:
+                 shutil.copy2(srcname, dstname)
+             # XXX What about devices, sockets etc.?
+-        except (IOError, os.error), why:
++        except (IOError, os.error) as why:
+             errors.append((srcname, dstname, str(why)))
+         # catch the CopytreeError from the recursive copytree so that we can
+         # continue with other files
+-        except CopytreeError, err:
++        except CopytreeError as err:
+             errors.extend(err.args[0])
+     try:
+         shutil.copystat(src, dst)
+     except WindowsError:
+         # can't copy file access times on Windows
+         pass
+-    except OSError, why:
++    except OSError as why:
+         errors.extend((src, dst, str(why)))
+     if errors:
+-        raise CopytreeError, errors
++        raise CopytreeError(errors)
+ 
+ 
+ def symlinkBuilderImpl(target, source, env):
+diff --git a/BuildTools/SCons/Tools/qt4.py b/BuildTools/SCons/Tools/qt4.py
+index d5c14e20c..c97e751bc 100644
+--- a/BuildTools/SCons/Tools/qt4.py
++++ b/BuildTools/SCons/Tools/qt4.py
+@@ -137,23 +137,23 @@ class _Automoc:
+         out_sources = source[:]
+ 
+         for obj in source:
+-            if isinstance(obj,basestring):  # big kludge!
+-                print "scons: qt4: '%s' MAYBE USING AN OLD SCONS VERSION AND NOT CONVERTED TO 'File'. Discarded." % str(obj)
++            if isinstance(obj,str):  # big kludge!
++                print("scons: qt4: '%s' MAYBE USING AN OLD SCONS VERSION AND NOT CONVERTED TO 'File'. Discarded." % str(obj))
+                 continue
+             if not obj.has_builder():
+                 # binary obj file provided
+                 if debug:
+-                    print "scons: qt: '%s' seems to be a binary. Discarded." % str(obj)
++                    print("scons: qt: '%s' seems to be a binary. Discarded." % str(obj))
+                 continue
+             cpp = obj.sources[0]
+             if not splitext(str(cpp))[1] in cxx_suffixes:
+                 if debug:
+-                    print "scons: qt: '%s' is no cxx file. Discarded." % str(cpp) 
++                    print("scons: qt: '%s' is no cxx file. Discarded." % str(cpp) )
+                 # c or fortran source
+                 continue
+             #cpp_contents = comment.sub('', cpp.get_contents())
+             try:
+-                cpp_contents = cpp.get_contents()
++                cpp_contents = str(cpp.get_contents())
+             except: continue # may be an still not generated source
+             h=None
+             for h_ext in header_extensions:
+@@ -163,12 +163,12 @@ class _Automoc:
+                 h = find_file(hname, (cpp.get_dir(),), env.File)
+                 if h:
+                     if debug:
+-                        print "scons: qt: Scanning '%s' (header of '%s')" % (str(h), str(cpp))
++                        print("scons: qt: Scanning '%s' (header of '%s')" % (str(h), str(cpp)))
+                     #h_contents = comment.sub('', h.get_contents())
+-                    h_contents = h.get_contents()
++                    h_contents = str(h.get_contents())
+                     break
+             if not h and debug:
+-                print "scons: qt: no header for '%s'." % (str(cpp))
++                print("scons: qt: no header for '%s'." % (str(cpp)))
+             if h and q_object_search.search(h_contents):
+                 # h file with the Q_OBJECT macro found -> add moc_cpp
+                 moc_cpp = env.Moc4(h)
+@@ -176,14 +176,14 @@ class _Automoc:
+                 out_sources.append(moc_o)
+                 #moc_cpp.target_scanner = SCons.Defaults.CScan
+                 if debug:
+-                    print "scons: qt: found Q_OBJECT macro in '%s', moc'ing to '%s'" % (str(h), str(moc_cpp))
++                    print("scons: qt: found Q_OBJECT macro in '%s', moc'ing to '%s'" % (str(h), str(moc_cpp)))
+             if cpp and q_object_search.search(cpp_contents):
+                 # cpp file with Q_OBJECT macro found -> add moc
+                 # (to be included in cpp)
+                 moc = env.Moc4(cpp)
+                 env.Ignore(moc, moc)
+                 if debug:
+-                    print "scons: qt: found Q_OBJECT macro in '%s', moc'ing to '%s'" % (str(cpp), str(moc))
++                    print("scons: qt: found Q_OBJECT macro in '%s', moc'ing to '%s'" % (str(cpp), str(moc)))
+                 #moc.source_scanner = SCons.Defaults.CScan
+         # restore the original env attributes (FIXME)
+         objBuilder.env = objBuilderEnv
+@@ -344,7 +344,7 @@ def generate(env):
+                 else:
+                     result.append(itemPath)
+             return result
+-        contents = node.get_contents()
++        contents = str(node.get_contents())
+         includes = [included[1] for included in qrcinclude_re.findall(contents)]
+         qrcpath = os.path.dirname(node.path)
+         dirs = [included for included in includes if os.path.isdir(os.path.join(qrcpath,included))]
+diff --git a/BuildTools/SCons/Tools/textfile.py b/BuildTools/SCons/Tools/textfile.py
+index cc5866693..c19bdf917 100644
+--- a/BuildTools/SCons/Tools/textfile.py
++++ b/BuildTools/SCons/Tools/textfile.py
+@@ -107,7 +107,7 @@ def _action(target, source, env):
+     # write the file
+     try:
+         fd = open(target[0].get_path(), "wb")
+-    except (OSError,IOError), e:
++    except (OSError,IOError) as e:
+         raise SCons.Errors.UserError("Can't write target file %s" % target[0])
+     # separate lines by 'linesep' only if linesep is not empty
+     lsep = None
+diff --git a/BuildTools/SCons/Version.py b/BuildTools/SCons/Version.py
+index f215a5d6d..9021831f2 100644
+--- a/BuildTools/SCons/Version.py
++++ b/BuildTools/SCons/Version.py
+@@ -6,7 +6,7 @@ def getGitBuildVersion(root, project) :
+         return tag.rstrip()[len(project)+1:]
+     tag = git("describe --tags --match \"" + project + "-*\"", root)
+     if tag :
+-        m = re.match(project + "-(.*)-(.*)-(.*)", tag)
++        m = re.match(project + "-(.*)-(.*)-(.*)", tag.decode('utf-8'))
+         if m :
+             return m.group(1) + "-dev" + m.group(2)
+     return None
+@@ -17,7 +17,7 @@ def git(cmd, root) :
+     gitVersion = p.stdout.read()
+     # error = p.stderr.read()
+     # if error:
+-    #   print "Git error: " + error
++    #   print("Git error: " + error)
+     p.stdin.close()
+     if p.wait() == 0 :
+         return gitVersion
+@@ -163,7 +163,7 @@ class convertToWindowsVersionTest(unittest.TestCase):
+             ('3.0alpha-dev524', (3, 0, 524)),
+             ('3.0alpha-dev515', (3, 0, 515)),
+         ]
+-        windowsVersionMapping = list(map(lambda (x,y): (x, convertToWindowsVersion(x)), versionStringsWithOldVersions))
++        windowsVersionMapping = list(map(lambda x,y: (x, convertToWindowsVersion(x)), versionStringsWithOldVersions))
+ 
+     def testThatBetaIsHigherThanAlpha(self):
+         self.assertTrue(convertToWindowsVersion("3.0beta0") > convertToWindowsVersion("3.0alpha0"))
+@@ -194,8 +194,8 @@ if __name__ == '__main__':
+     if len(sys.argv) == 1:
+         unittest.main()
+     elif len(sys.argv) == 2:
+-        print convertToWindowsVersion(sys.argv[1])
++        print (convertToWindowsVersion(sys.argv[1]))
+         sys.exit(0)
+     else:
+-        print "Error: Simply run the script without arguments or pass a single argument."
++        print ("Error: Simply run the script without arguments or pass a single argument.")
+         sys.exit(-1)
+diff --git a/BuildTools/scons2ninja.py b/BuildTools/scons2ninja.py
+index 6c77c8897..855a1339e 100755
+--- a/BuildTools/scons2ninja.py
++++ b/BuildTools/scons2ninja.py
+@@ -429,7 +429,7 @@ for line in f.stdout :
+         previous_filename = filename
+ 
+ if f.wait() != 0 :
+-    print "Error calling '" + scons_generate_cmd + "'"
++    print("Error calling '" + scons_generate_cmd + "'")
+     print f.stderr.read()
+     exit(-1)
+ 
+diff --git a/Slimber/SConscript b/Slimber/SConscript
+index a41fe0b6d..fa5aa53b2 100644
+--- a/Slimber/SConscript
++++ b/Slimber/SConscript
+@@ -11,10 +11,10 @@ elif env["PLATFORM"] != "darwin" :
+         env["PROJECTS"].remove("Slimber")
+ 
+ if not "Slimber" in env["PROJECTS"] and env["SCONS_STAGE"] == "flags" :
+-        print "Bonjour missing. Not building Slimber."
++        print("Bonjour missing. Not building Slimber.")
+ 
+ if not env.get("HAVE_QT", False) and "Slimber" in env["PROJECTS"] :
+-    print "Qt missing. Not building Slimber."
++    print("Qt missing. Not building Slimber.")
+     env["PROJECTS"].remove("Slimber")
+ 
+ if "Slimber" in env["PROJECTS"] :
+diff --git a/Sluift/SConscript b/Sluift/SConscript
+index de9cab618..af54ece20 100644
+--- a/Sluift/SConscript
++++ b/Sluift/SConscript
+@@ -3,7 +3,7 @@ import Version, os.path
+ Import(["env"])
+ 
+ if env["SCONS_STAGE"] == "build" and not GetOption("help") and not env.get("HAVE_LUA", 0) :
+-    print "Warning: Lua was not found. Sluift will not be built."
++    print("Warning: Lua was not found. Sluift will not be built.")
+     if "Sluift" in env["PROJECTS"] :
+         env["PROJECTS"].remove("Sluift")
+ 
+diff --git a/Swift/Packaging/SConscript b/Swift/Packaging/SConscript
+index 3aa791fa8..556c59652 100644
+--- a/Swift/Packaging/SConscript
++++ b/Swift/Packaging/SConscript
+@@ -25,5 +25,5 @@ if env["SCONS_STAGE"] == "build" :
+             target='$HELP2MAN_DEBIAN_DIR/swift-im.1', source='#/Swift/QtUI/swift-im',
+             action = Action('$HELP2MAN --no-discard-stderr -m "Swift Manual" -S "Swift" -n "swift-im" -N $SOURCE > $TARGET', cmdstr = "$HELP2MANSTR"))
+     else:
+-        print "Enabled help2man but help2man is not in the PATH of the current environment."
++        print("Enabled help2man but help2man is not in the PATH of the current environment.")
+         Exit(1)
+diff --git a/Swift/QtUI/SConscript b/Swift/QtUI/SConscript
+index 54f0450c0..cc51340b3 100644
+--- a/Swift/QtUI/SConscript
++++ b/Swift/QtUI/SConscript
+@@ -22,7 +22,7 @@ Import("env")
+ myenv = env.Clone()
+ 
+ # Disable warnings that affect Qt
+-myenv["CXXFLAGS"] = filter(lambda x : x != "-Wfloat-equal", myenv["CXXFLAGS"])
++myenv["CXXFLAGS"] = list(filter(lambda x : x != "-Wfloat-equal", myenv["CXXFLAGS"]))
+ if "clang" in env["CC"] :
+     myenv.Append(CXXFLAGS = ["-Wno-float-equal", "-Wno-shorten-64-to-32", "-Wno-missing-prototypes", "-Wno-unreachable-code", "-Wno-disabled-macro-expansion", "-Wno-unused-private-field", "-Wno-extra-semi", "-Wno-duplicate-enum", "-Wno-missing-variable-declarations", "-Wno-conversion", "-Wno-undefined-reinterpret-cast"])
+ 
+@@ -496,16 +496,16 @@ if env["PLATFORM"] == "win32" :
+                 def signToolAction(target = None, source = None, env = None):
+                     signresult = 0
+                     for x in range (1, 4) :
+-                        print "Attemping to sign the packages [%s]" % x
++                        print("Attemping to sign the packages [%s]" % x)
+                         signresult = env.Execute('signtool.exe sign /fd SHA256 /f "${SIGNTOOL_KEY_PFX}" /t "${SIGNTOOL_TIMESTAMP_URL}" /d "Swift Installer" ' + str(target[0]))
+                         if signresult != 1 :
+                             break
+                     #If all 3 attemps to sign the package failed, stop the build.
+                     if signresult == 1 :
+-                        print "Error: The build has failed to sign the installer package"
++                        print("Error: The build has failed to sign the installer package")
+                         Exit(1)
+                     if signresult == 2 :
+-                        print "Signing was completed with warnings."
++                        print("Signing was completed with warnings.")
+ 
+                 myenv.AddPostAction(lightTask, signToolAction)
+ 
+diff --git a/Swift/SConscript b/Swift/SConscript
+index b211435ac..30b09e008 100644
+--- a/Swift/SConscript
++++ b/Swift/SConscript
+@@ -7,17 +7,17 @@ SConscript("Controllers/SConscript")
+ if env["SCONS_STAGE"] == "build" :
+     if not GetOption("help") and not env.get("HAVE_QT", 0) :
+         if "Swift" in env["PROJECTS"] :
+-            print "Warning: Swift requires Qt. Not building the Swift Qt application."
++            print("Warning: Swift requires Qt. Not building the Swift Qt application.")
+             env["PROJECTS"].remove("Swift")
+     elif not GetOption("help") and env["target"] == "native" and "Swift" in env["PROJECTS"] :
+         try :
+             SConscript("QtUI/SConscript")
+         except Exception as e:
+-            print "Warning: %s" % str(e)
++            print("Warning: %s" % str(e))
+             env["PROJECTS"].remove("Swift")
+ if "Swift" in env["PROJECTS"] and env["BOOST_1_64_DETECTED"] and not env.get("allow_boost_1_64") and not env.GetOption("clean") :
+     #Version 1.64 has some issues with the serialization of boost::optional, see https://svn.boost.org/trac10/ticket/13050
+-    print "Boost 1.64 has been detected. It is not recommended to use this version due to a regression within the library. Swift has been removed from the current build. You can still use this version by setting allow_boost_1_64 to true, but recent chats and highlighting rules will reset."
++    print("Boost 1.64 has been detected. It is not recommended to use this version due to a regression within the library. Swift has been removed from the current build. You can still use this version by setting allow_boost_1_64 to true, but recent chats and highlighting rules will reset.")
+     env["PROJECTS"].remove("Swift")
+ if env["help2man"]:
+     SConscript("Packaging/SConscript")
+\ No newline at end of file
+diff --git a/BuildTools/SCons/Tools/Flags.py b/BuildTools/SCons/Tools/Flags.py
+index fe0cfcc54..7e0a9723b 100644
+--- a/BuildTools/SCons/Tools/Flags.py
++++ b/BuildTools/SCons/Tools/Flags.py
+@@ -4,7 +4,7 @@ def generate(env) :
+     def useFlags(env, flags) :
+         for flag in flags :
+             if flag in env :
+-                env[flag] = env[flag] + flags[flag]
++                env[flag] = list(env[flag]) + flags[flag]
+             else :
+                 env[flag] = flags[flag]
+     env.AddMethod(useFlags, "UseFlags")
+diff --git a/BuildTools/SCons/Tools/qt4.py b/BuildTools/SCons/Tools/qt4.py
+index d5c14e20c..a19e35e2a 100644
+--- a/BuildTools/SCons/Tools/qt4.py
++++ b/BuildTools/SCons/Tools/qt4.py
+@@ -46,7 +47,7 @@ import SCons.Tool
+ import SCons.Util
+ import SCons.SConf
+ 
+-class ToolQtWarning(SCons.Warnings.Warning):
++class ToolQtWarning(SCons.Warnings.SConsWarning):
+     pass
+ 
+ class GeneratedMocFileNotIncluded(ToolQtWarning):
+diff --git a/BuildTools/SCons/Tools/textfile.py b/BuildTools/SCons/Tools/textfile.py
+index cc5866693..ac9b83f9f 100644
+--- a/BuildTools/SCons/Tools/textfile.py
++++ b/BuildTools/SCons/Tools/textfile.py
+@@ -106,7 +106,7 @@ def _action(target, source, env):
+ 
+     # write the file
+     try:
+-        fd = open(target[0].get_path(), "wb")
++        fd = open(target[0].get_path(), "w")
+     except (OSError,IOError) as e:
+         raise SCons.Errors.UserError("Can't write target file %s" % target[0])
+     # separate lines by 'linesep' only if linesep is not empty
