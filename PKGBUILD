@@ -2,7 +2,7 @@
 _pkgbase=fltk
 pkgname=fltk-mod
 pkgver=1.3.7.10307
-pkgrel=1
+pkgrel=2
 pkgdesc="FLTK 1.3.7 using the latest abi version."
 arch=('x86_64')
 url='http://www.fltk.org/'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname"
 
-  git branch release-1.3.7
+  git checkout 70ebfdb
 
   chmod +x autogen.sh
   ./autogen.sh --prefix=/usr --with-abiversion=10307
