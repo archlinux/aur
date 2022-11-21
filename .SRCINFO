@@ -1,0 +1,19 @@
+pkgbase = python38-requests-mock
+	pkgdesc = A mock of useful classes and functions to be used with python-requests.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/jamielennox/requests-mock
+	arch = any
+	license = Apache
+	checkdepends = python38-mock
+	checkdepends = python38-purl
+	checkdepends = python38-pytest
+	checkdepends = python38-requests-futures
+	checkdepends = python38-testrepository
+	makedepends = python38-pbr
+	depends = python38-requests
+	depends = python38-six
+	source = python38-requests-mock-1.10.0.tar.gz::https://github.com/jamielennox/requests-mock/archive/1.10.0.tar.gz
+	sha512sums = 24e34407651a14d89ce24b4fcd32556d7a522c02a3855466c6523c45e88dbc751d560478cc9af1eafc903dc8fdfc8715e1effedd116e33dee96063c980050560
+
+pkgname = python38-requests-mock
