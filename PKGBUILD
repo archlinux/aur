@@ -2,7 +2,7 @@
 
 pkgname=gnatdoc
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='GNAT documentation generation tool.'
 url='https://github.com/AdaCore/gnatdoc'
@@ -19,7 +19,9 @@ sha256sums=("123c8e3517512f6f4f7e92d62f2d0e1b35c8d59c87acc5ba504eeeb0988b20d5")
 build()
 {
     cd "$srcdir/$pkgname-$pkgver"
-    make 
+ 
+     gprbuild -j0 -p -P gnat/libgnatdoc.gpr -XSUPERPROJECT=
+     gprbuild -j0 -p -P gnat/gnatdoc.gpr -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=static -XSUPERPROJECT= -XGPR_UNIT_PROVIDER_BUILD=release
 }
 
 package()
@@ -36,3 +38,9 @@ package()
 #       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
 
 }
+
+
+
+
+
+
