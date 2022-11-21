@@ -1,0 +1,14 @@
+pkgbase = python38-oslo-i18n
+	pkgdesc = Oslo i18n library
+	pkgver = 5.1.0
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/oslo.i18n/5.1.0
+	arch = any
+	license = Apache
+	checkdepends = python38-oslotest
+	checkdepends = python38-oslo-config
+	depends = python38-pbr
+	source = https://github.com/openstack/oslo.i18n/archive/5.1.0/python38-oslo-i18n-5.1.0.tar.gz
+	sha512sums = d9cca3af4f899517fa7d2ea961b6c6c03080e0e3343acc2abcc06698ad6ff10fc95189ff312255fd1285e174104c6667ecd2e1abc5b1b5168705bdabf58306e0
+
+pkgname = python38-oslo-i18n
