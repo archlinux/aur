@@ -1,0 +1,16 @@
+pkgbase = python38-watchdog
+	pkgdesc = Python API and shell utilities to monitor file system events
+	pkgver = 2.1.9
+	pkgrel = 1
+	url = https://github.com/gorakhargosh/watchdog
+	arch = any
+	license = Apache
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-timeout
+	makedepends = python38-setuptools
+	depends = python38
+	optdepends = python38-yaml: for watchmedo
+	source = python38-watchdog-2.1.9.tar.gz::https://github.com/gorakhargosh/watchdog/archive/v2.1.9.tar.gz
+	sha512sums = 1005c48b08968db7705acbb8a94a0852c72d8bcf45ac935e7e0b49daa6e422adb081cf431485618b37bcc1b2d3429369af1672b826bf9c1ebfa7aff91a88175a
+
+pkgname = python38-watchdog
