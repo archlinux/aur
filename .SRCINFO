@@ -1,16 +1,14 @@
 pkgbase = metis
-	pkgdesc = a set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices.
-	pkgver = 5.1.0.p1
+	pkgdesc = A set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices
+	pkgver = 5.1.0.p10
 	pkgrel = 2
 	url = http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
-	install = metis.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake
+	depends = glibc
 	options = docs
-	source = http://ftp.mcs.anl.gov/pub/petsc/externalpackages/metis-5.1.0-p1.tar.gz
-	sha256sums = a82d0f0ec65f51d88766a9548c78b42ef4481e2d76d0361dc972c08e529b3e96
+	source = metis-5.1.0.p10.tar.bz2::https://bitbucket.org/petsc/pkg-metis/get/v5.1.0-p10.tar.bz2
+	sha256sums = ddcb99746a8795ebb9d9c020acc31b85fe696eb2992c9ee5ac7588074a503a4b
 
 pkgname = metis
-

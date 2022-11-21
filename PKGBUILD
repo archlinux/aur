@@ -1,33 +1,37 @@
-# Maintainer: jedbrown
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: jedbrown
 # Contributor: eleftg
 # Contributor: mickele
 # Contributor: gborzi
 # Contributor: abenson
 
 pkgname=metis
-pkgver=5.1.0.p1
-_pkgver=5.1.0-p1
+pkgver=5.1.0.p10
+_pkgver=5.1.0-p10
 pkgrel=2
-pkgdesc="a set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices."
+arch=(x86_64)
+pkgdesc="A set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices"
 url="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"
-license=("custom")
-makedepends=("cmake")
-install="${pkgname}.install"
-arch=('i686' 'x86_64')
-options=('docs')
-# source=("http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/${pkgname}-${pkgver}.tar.gz")
-source=("http://ftp.mcs.anl.gov/pub/petsc/externalpackages/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('a82d0f0ec65f51d88766a9548c78b42ef4481e2d76d0361dc972c08e529b3e96')
+license=(custom)
+depends=(glibc)
+makedepends=(cmake)
+options=(docs)
+source=($pkgname-$pkgver.tar.bz2::https://bitbucket.org/petsc/pkg-metis/get/v$_pkgver.tar.bz2)
+sha256sums=('ddcb99746a8795ebb9d9c020acc31b85fe696eb2992c9ee5ac7588074a503a4b')
+
+prepare() {
+  mv petsc-pkg-metis-* $pkgname-$_pkgver
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-  make config shared=1 prefix=/usr
-  make
+  cmake -B build -S $pkgname-$_pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSHARED=ON \
+    -DMATH_LIB=m
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
-  make install DESTDIR="${pkgdir}"
-  install -m644 -D LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+  install -m644 -D $pkgname-$_pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
