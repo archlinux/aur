@@ -24,7 +24,7 @@ fi
 TAG=py-$LAST
 
 DOWNLOAD_URL="https://github.com/pola-rs/polars/archive/refs/tags/$TAG.tar.gz"
-SUM=$(curl -sL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1)
+SUM=$( (curl -sfL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1) || (echo "Error fetching $DOWNLOAD_URL" >&2 && exit 1) )
 
 sed -i 's/.*sums=.*$/'$HASH_NAME'=("'$SUM'")/' PKGBUILD
 sed -i 's/pkgver=.*/pkgver='$LAST'/' PKGBUILD
