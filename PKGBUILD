@@ -2,12 +2,13 @@
 
 pkgname=th07
 pkgver=0.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Perfect cherry blossom trial version. Seventh game of the Touhou Project series. (via wine)"
 arch=(i686 x86_64)
 url="https://www16.big.or.jp/~zun/html/th07.html"
 license=('custom')
 depends=('wine')
+makedepends=('lha')
 optdepends=('timidity++: to get MIDI background music')
 source=(
   th07.sh
@@ -26,9 +27,11 @@ md5sums=('49ffef262520a2858e9c6cabc26e59a5'
          '05360e859c1a3ca173b9d57d96a45b9b')
 
 
+noextract=(youmu_tr011.lzh)
 options=(!strip)
 
 build() {
+  lha xf youmu_tr011.lzh
   cd $srcdir/youmu
   mv $'\203'\}$'\203'j$'\203'$'\205'$'\203'A$'\203'$'\213' th07man
   ls *.txt|grep -va '^[rc]'|xargs -I file mv file info.txt
