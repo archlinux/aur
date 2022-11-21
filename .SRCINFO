@@ -1,0 +1,13 @@
+pkgbase = python38-pyflakes
+	pkgdesc = A lint-like tool for Python to identify common errors quickly without executing code
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyflakes
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python38
+	source = https://pypi.io/packages/source/p/pyflakes/pyflakes-2.5.0.tar.gz
+	sha512sums = e47303c4b445e0c010dfc96244b6fa991bd1870072c61cc7acd309947af3d81581276b012b56b7db0d8df3f91a4216a5ec502720c149f5707d5d1d28654aeeb4
+
+pkgname = python38-pyflakes
