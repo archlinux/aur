@@ -1,0 +1,17 @@
+pkgbase = python38-pytest-relaxed
+	pkgdesc = Relaxed test discovery for pytest
+	pkgver = 1.1.5
+	pkgrel = 8
+	url = https://github.com/bitprophet/pytest-relaxed
+	arch = any
+	license = BSD
+	makedepends = python38-setuptools
+	depends = python38-pytest
+	depends = python38-decorator
+	depends = python38-six
+	source = https://github.com/bitprophet/pytest-relaxed/archive/1.1.5/-1.1.5.tar.gz
+	source = python38-pytest-relaxed-pytest5.4-warnings.patch::https://github.com/bitprophet/pytest-relaxed/pull/10.patch
+	sha512sums = a5484bc92be29e5228afb7d9911c1d3a7d6e493bec44af541780de24b91dfa8e8c9e1245acd8ae8670805294eb52b20f7c4abefad1afb8373109249a2df1cdaa
+	sha512sums = 4102a7cea45bcb90b8aa93ed619162f6c9554632dab95a7df152ebe58de9fd038ceef74630ad37f0abc5a3d032b79b78427f09ab489003703af607a92929bda9
+
+pkgname = python38-pytest-relaxed
