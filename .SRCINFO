@@ -1,0 +1,14 @@
+pkgbase = python38-keras-preprocessing
+	pkgdesc = Preprocessing module of the Keras deep learning library
+	pkgver = 1.1.2
+	pkgrel = 6
+	url = https://pypi.org/project/Keras-Preprocessing/
+	arch = any
+	license = MIT
+	makedepends = python38-setuptools
+	depends = python
+	depends = python38-numpy
+	source = https://files.pythonhosted.org/packages/source/K/Keras_Preprocessing/Keras_Preprocessing-1.1.2.tar.gz
+	sha256sums = add82567c50c8bc648c14195bf544a5ce7c1f76761536956c3d2978970179ef3
+
+pkgname = python38-keras-preprocessing
