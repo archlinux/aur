@@ -1,0 +1,18 @@
+pkgbase = python38-outcome
+	pkgdesc = Capture the outcome of Python function calls
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/python-trio/outcome
+	arch = any
+	license = MIT
+	checkdepends = python38-pytest
+	checkdepends = python38-pytest-asyncio
+	checkdepends = python38-pytest-cov
+	makedepends = git
+	makedepends = python38-setuptools
+	depends = python38
+	depends = python38-attrs
+	source = git+https://github.com/python-trio/outcome.git#tag=ae996f8b7887e4a61ee6b3717c01ecba19a5b7dc
+	sha256sums = SKIP
+
+pkgname = python38-outcome
