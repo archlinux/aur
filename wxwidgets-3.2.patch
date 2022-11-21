@@ -1,0 +1,181 @@
+From 323129f44917b3c972800cd82603e8b2c596bb61 Mon Sep 17 00:00:00 2001
+From: Robin Dunn <robin@alldunn.com>
+Date: Tue, 17 May 2022 17:20:59 -0700
+Subject: [PATCH] Adjust all the custom wx.MenuItem methods. Return new
+ instances, mark them as factories, etc.
+
+---
+ etg/menuitem.py            | 38 ++++++++++++++++++++++----------------
+ unittests/test_menuitem.py |  2 +-
+ 2 files changed, 23 insertions(+), 17 deletions(-)
+
+diff --git a/etg/menuitem.py b/etg/menuitem.py
+index ba7940390..242ed4f6b 100644
+--- a/etg/menuitem.py
++++ b/etg/menuitem.py
+@@ -47,13 +47,16 @@ def run():
+     c.find('GetLabelFromText').ignore()
+ 
+ 
+-    # These are MSW only. Make them be empty stubs for the other ports
+-    c.find('GetBackgroundColour').type = 'const wxColour*'
++    # These are MSW only. Make them be empty stubs for the other ports. Several
++    # have incorrect details in the interface docs, so we need to tweak their
++    # return types too.
++    c.find('GetBackgroundColour').type = 'wxColour*'
++    c.find('GetBackgroundColour').factory = True
+     c.find('GetBackgroundColour').setCppCode("""\
+         #ifdef __WXMSW__
+-            return &self->GetBackgroundColour();
++            return new wxColor(self->GetBackgroundColour());
+         #else
+-            return &wxNullColour;
++            return new wxColour;
+         #endif
+         """)
+ 
+@@ -63,12 +66,13 @@ def run():
+         #endif
+         """)
+ 
+-    c.find('GetFont').type = 'const wxFont*'
++    c.find('GetFont').type = 'wxFont*'
++    c.find('GetFont').factory = True
+     c.find('GetFont').setCppCode("""\
+         #ifdef __WXMSW__
+-            return &self->GetFont();
++            return new wxFont(self->GetFont());
+         #else
+-            return &wxNullFont;
++            return new wxFont;
+         #endif
+         """)
+ 
+@@ -92,12 +96,13 @@ def run():
+         #endif
+         """)
+ 
+-    c.find('GetTextColour').type = 'const wxColour*'
++    c.find('GetTextColour').type = 'wxColour*'
++    c.find('GetTextColour').factory = True
+     c.find('GetTextColour').setCppCode("""\
+         #ifdef __WXMSW__
+-            return &self->GetTextColour();
++            return new wxColour(self->GetTextColour());
+         #else
+-            return &wxNullColour;
++            return new wxColour;
+         #endif
+         """)
+ 
+@@ -108,13 +113,13 @@ def run():
+         """)
+ 
+ 
+-    c.find('GetBitmap').type = 'const wxBitmap*'
+-    c.find('GetBitmap').transferBack = True
++    c.find('GetBitmap').type = 'wxBitmap*'
++    c.find('GetBitmap').factory = True
+     c.find('GetBitmap').setCppCode("""\
+         #ifdef __WXMSW__
+             return new wxBitmap(self->GetBitmap(checked));
+         #else
+-            return new wxBitmap(self->GetBitmap());
++            return new wxBitmap(self->GetBitmap()); // no checked arg in this case
+         #endif
+         """)
+ 
+@@ -135,13 +140,13 @@ def run():
+         """)
+ 
+ 
+-    c.find('GetDisabledBitmap').type = 'const wxBitmap*'
+-    c.find('GetDisabledBitmap').transferBack = True  # Python takes ownership of the return value
++    c.find('GetDisabledBitmap').type = 'wxBitmap*'
++    c.find('GetDisabledBitmap').factory = True
+     c.find('GetDisabledBitmap').setCppCode("""\
+         #ifdef __WXMSW__
+             return new wxBitmap(self->GetDisabledBitmap());
+         #else
+-            return new wxBitmap(wxNullBitmap);
++            return new wxBitmap;
+         #endif
+         """)
+ 
+@@ -151,6 +156,7 @@ def run():
+         #endif
+         """)
+ 
++
+     c.addAutoProperties()
+     c.addItem(etgtools.PropertyDef('Enabled', 'IsEnabled', 'Enable'))
+ 
+diff --git a/unittests/test_menuitem.py b/unittests/test_menuitem.py
+index 0d028a7e0..b58cb52b5 100644
+--- a/unittests/test_menuitem.py
++++ b/unittests/test_menuitem.py
+@@ -12,7 +12,7 @@ class menuitem_Tests(wtc.WidgetTestCase):
+     def test_menuitemCtor(self):
+         m1 = wx.MenuItem()
+         m2 = wx.MenuItem(None, -1, "Menu Item", "Help text", wx.ITEM_NORMAL)
+-        m2.SetBitmap(wx.Bitmap(pngFile))
++        m2.SetBitmap(wx.BitmapBundle(wx.Bitmap(pngFile)))
+ 
+ 
+     def test_menuitemProperties(self):
+diff --git a/etg/bmpbndl.py b/etg/bmpbndl.py
+index 71fded894..b7e9caed0 100644
+--- a/etg/bmpbndl.py
++++ b/etg/bmpbndl.py
+@@ -37,7 +37,7 @@ def run():
+ 
+     c = module.find('wxBitmapBundle')
+     assert isinstance(c, etgtools.ClassDef)
+-
++    c.find('wxBitmapBundle').findOverload('xpm').ignore()
+     c.find('FromSVG').findOverload('char *data, const wxSize &sizeDef').ignore()
+     c.find('FromImpl.impl').transfer = True
+ 
+diff --git a/etg/menuitem.py b/etg/menuitem.py
+index 242ed4f6b..fa61c926a 100644
+--- a/etg/menuitem.py
++++ b/etg/menuitem.py
+@@ -113,9 +113,10 @@ def run():
+         """)
+ 
+ 
+-    c.find('GetBitmap').type = 'wxBitmap*'
+-    c.find('GetBitmap').factory = True
+-    c.find('GetBitmap').setCppCode("""\
++    m = c.find('GetBitmap').findOverload('checked')
++    m.type = 'wxBitmap*'
++    m.factory = True
++    m.setCppCode("""\
+         #ifdef __WXMSW__
+             return new wxBitmap(self->GetBitmap(checked));
+         #else
+@@ -123,7 +124,8 @@ def run():
+         #endif
+         """)
+ 
+-    c.find('SetBitmap').setCppCode("""\
++    m = c.find('SetBitmap').findOverload('checked')
++    m.setCppCode("""\
+         #ifdef __WXMSW__
+             self->SetBitmap(*bmp, checked);
+         #else
+diff --git a/etg/bitmap.py b/etg/bitmap.py
+index 7b9019219..e5c767129 100644
+--- a/etg/bitmap.py
++++ b/etg/bitmap.py
+@@ -92,6 +92,10 @@ def run():
+ 
+     c.find('SetMask.mask').transfer = True
+ 
++    # TODO: This is different than the docs, but only on MSW... Remove this
++    # if/when that gets fixed.
++    c.find('UseAlpha').type = 'void'
++
+     c.addCppMethod('void', 'SetMaskColour', '(const wxColour& colour)',
+         doc="Create a mask for this bitmap based on the pixels with the given colour.",
+         body="""\

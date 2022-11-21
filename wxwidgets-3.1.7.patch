@@ -1,0 +1,230 @@
+diff --git a/etg/menuitem.py b/etg/menuitem.py
+index ac6cdb38f..ba7940390 100644
+--- a/etg/menuitem.py
++++ b/etg/menuitem.py
+@@ -136,11 +136,12 @@ def run():
+ 
+ 
+     c.find('GetDisabledBitmap').type = 'const wxBitmap*'
++    c.find('GetDisabledBitmap').transferBack = True  # Python takes ownership of the return value
+     c.find('GetDisabledBitmap').setCppCode("""\
+         #ifdef __WXMSW__
+-            return &self->GetDisabledBitmap();
++            return new wxBitmap(self->GetDisabledBitmap());
+         #else
+-            return &wxNullBitmap;
++            return new wxBitmap(wxNullBitmap);
+         #endif
+         """)
+ 
+diff --git a/docs/sphinx/itemToModuleMap.json b/docs/sphinx/itemToModuleMap.json
+index ce1b856c9..dd7959386 100644
+--- a/docs/sphinx/itemToModuleMap.json
++++ b/docs/sphinx/itemToModuleMap.json
+@@ -1261,7 +1261,16 @@
+ "FileCtrlNameStr":"wx.",
+ "FileDataObject":"wx.",
+ "FileDialog":"wx.",
++"FileDialogButton":"wx.",
++"FileDialogCheckBox":"wx.",
++"FileDialogChoice":"wx.",
++"FileDialogCustomControl":"wx.",
++"FileDialogCustomize":"wx.",
++"FileDialogCustomizeHook":"wx.",
+ "FileDialogNameStr":"wx.",
++"FileDialogRadioButton":"wx.",
++"FileDialogStaticText":"wx.",
++"FileDialogTextCtrl":"wx.",
+ "FileDirPickerEvent":"wx.",
+ "FileDropTarget":"wx.",
+ "FileHistory":"wx.",
+@@ -6832,6 +6841,7 @@
+ "SetDisplayName":"wx.",
+ "SetEnv":"wx.",
+ "SettableHeaderColumn":"wx.",
++"SharedClientDataContainer":"wx.",
+ "Shell":"wx.",
+ "ShowEffect":"wx.",
+ "ShowEvent":"wx.",
+@@ -7903,6 +7913,8 @@
+ "wxEVT_GRID_RANGE_SELECT":"wx.grid.",
+ "wxEVT_GRID_RANGE_SELECTED":"wx.grid.",
+ "wxEVT_GRID_RANGE_SELECTING":"wx.grid.",
++"wxEVT_GRID_ROW_AUTO_SIZE":"wx.grid.",
++"wxEVT_GRID_ROW_MOVE":"wx.grid.",
+ "wxEVT_GRID_ROW_SIZE":"wx.grid.",
+ "wxEVT_GRID_SELECT_CELL":"wx.grid.",
+ "wxEVT_GRID_TABBING":"wx.grid.",
+@@ -8212,6 +8224,7 @@
+ "wxEVT_WEBVIEW_NAVIGATING":"wx.html2.",
+ "wxEVT_WEBVIEW_NEWWINDOW":"wx.html2.",
+ "wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED":"wx.html2.",
++"wxEVT_WEBVIEW_SCRIPT_RESULT":"wx.html2.",
+ "wxEVT_WEBVIEW_TITLE_CHANGED":"wx.html2.",
+ "wxEVT_WINDOW_MODAL_DIALOG_CLOSED":"wx.",
+ "wxEVT_WIZARD_BEFORE_PAGE_CHANGED":"wx.adv.",
+diff --git a/etg/_core.py b/etg/_core.py
+index 220c13711..04d47438c 100644
+--- a/etg/_core.py
++++ b/etg/_core.py
+@@ -196,6 +196,7 @@
+               'dirdlg',
+               'dirctrl',
+               'filedlg',
++              'filedlgcustomize',
+               'frame',
+               'msgdlg',
+               'richmsgdlg',
+diff --git a/etg/clntdatactnr.py b/etg/clntdatactnr.py
+index 69364a7b6..a2c3c8bc1 100644
+--- a/etg/clntdatactnr.py
++++ b/etg/clntdatactnr.py
+@@ -17,7 +17,8 @@
+ 
+ # The classes and/or the basename of the Doxygen XML files to be processed by
+ # this script.
+-ITEMS  = [ 'wxClientDataContainer' ]
++ITEMS  = [ 'wxClientDataContainer',
++           'wxSharedClientDataContainer' ]
+ 
+ #---------------------------------------------------------------------------
+ 
+diff --git a/etg/event.py b/etg/event.py
+index 5f79d8881..4a5c30e1e 100644
+--- a/etg/event.py
++++ b/etg/event.py
+@@ -100,11 +100,6 @@ def run():
+     #endif
+     """)
+ 
+-    # Missing in 3.1.6
+-    module.addItem(etgtools.WigCode("""\
+-        wxEventType wxEVT_FULLSCREEN /PyName=wxEVT_FULLSCREEN/;
+-        """))
+-
+ 
+     module.addPyClass('PyEventBinder', ['object'],
+         doc="""\
+diff --git a/etg/filedlgcustomize.py b/etg/filedlgcustomize.py
+new file mode 100644
+index 000000000..9f8e72cff
+--- /dev/null
++++ b/etg/filedlgcustomize.py
+@@ -0,0 +1,86 @@
++#---------------------------------------------------------------------------
++# Name:        etg/filedlgcustomize.py
++# Author:      Scott Talbert
++#
++# Created:     07-Jun-2022
++# Copyright:   (c) 2022 by Total Control Software
++# License:     wxWindows License
++#---------------------------------------------------------------------------
++
++import etgtools
++import etgtools.tweaker_tools as tools
++
++PACKAGE   = "wx"
++MODULE    = "_core"
++NAME      = "filedlgcustomize"   # Base name of the file to generate to for this script
++DOCSTRING = ""
++
++# The classes and/or the basename of the Doxygen XML files to be processed by
++# this script.
++ITEMS  = [ 'wxFileDialogButton',
++           'wxFileDialogChoice',
++           'wxFileDialogCheckBox',
++           'wxFileDialogCustomControl',
++           'wxFileDialogCustomize',
++           'wxFileDialogCustomizeHook',
++           'wxFileDialogRadioButton',
++           'wxFileDialogStaticText',
++           'wxFileDialogTextCtrl',
++          ]
++
++#---------------------------------------------------------------------------
++
++def run():
++    # Parse the XML file(s) building a collection of Extractor objects
++    module = etgtools.ModuleDef(PACKAGE, MODULE, NAME, DOCSTRING)
++    etgtools.parseDoxyXML(module, ITEMS)
++
++    #-----------------------------------------------------------------
++    # Tweak the parsed meta objects in the module object as needed for
++    # customizing the generated code and docstrings.
++
++    c = module.find('wxFileDialogButton')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogChoice')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogCheckBox')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogCustomControl')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogCustomize')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogCustomizeHook')
++    assert isinstance(c, etgtools.ClassDef)
++
++    c = module.find('wxFileDialogRadioButton')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogStaticText')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++    c = module.find('wxFileDialogTextCtrl')
++    assert isinstance(c, etgtools.ClassDef)
++    c.noDefCtor = True
++
++
++    #-----------------------------------------------------------------
++    tools.doCommonTweaks(module)
++    tools.runGenerators(module)
++
++
++#---------------------------------------------------------------------------
++if __name__ == '__main__':
++    run()
++
+diff --git a/etg/propgridpagestate.py b/etg/propgridpagestate.py
+index 0799adb53..adf085f52 100644
+--- a/etg/propgridpagestate.py
++++ b/etg/propgridpagestate.py
+@@ -46,6 +46,8 @@ def run():
+ 
+     c = module.find('wxPropertyGridPageState')
+     tools.ignoreConstOverloads(c)
++    # Incorrectly documented in 3.1.7
++    c.find('GetColumnFullWidth.p').type = 'wxPGProperty *'
+ 
+ 
+     module.find('wxPG_IT_CHILDREN').ignore()
+diff --git a/etg/webview.py b/etg/webview.py
+index 6fec50458..4a6bde2d3 100644
+--- a/etg/webview.py
++++ b/etg/webview.py
+@@ -103,13 +103,6 @@ def run():
+                             'wxVersionInfo': 'wxVersionInfo()',
+                             })
+ 
+-    # Missing in 3.1.6
+-    module.addItem(etgtools.WigCode("""\
+-        wxEventType wxEVT_WEBVIEW_FULLSCREEN_CHANGED /PyName=wxEVT_WEBVIEW_FULLSCREEN_CHANGED/;
+-        wxEventType wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED /PyName=wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED/;
+-        wxEventType wxEVT_WEBVIEW_SCRIPT_RESULT /PyName=wxEVT_WEBVIEW_SCRIPT_RESULT/;
+-        """))
+-
+     c = module.find('wxWebView')
+     assert isinstance(c, etgtools.ClassDef)
+     tools.fixWindowClass(c)

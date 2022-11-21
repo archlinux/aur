@@ -1,0 +1,716 @@
+From aa1ef7bd75412191e7912855abdfdc1af1c70335 Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Thu, 14 Apr 2022 19:51:57 -0400
+Subject: [PATCH] Update ETG scripts to support wxWidgets 3.1.6 functionality
+
+Fixes #2136.
+---
+ docs/sphinx/itemToModuleMap.json |   3 +-
+ etg/_core.py                     |   2 +
+ etg/_stc.py                      |   1 +
+ etg/app.py                       |   3 +
+ etg/bmpbndl.py                   |  58 +++++++++++++++++
+ etg/cursor.py                    |   1 +
+ etg/dataview.py                  |   2 +-
+ etg/defs.py                      |   3 +
+ etg/event.py                     |   5 ++
+ etg/gdicmn.py                    |   3 +
+ etg/htmlwin.py                   |   2 +-
+ etg/icon.py                      |   3 +
+ etg/listctrl.py                  |   4 ++
+ etg/menuitem.py                  |   9 ++-
+ etg/richtextbuffer.py            |  17 ++++-
+ etg/textctrl.py                  |  11 ++++
+ etg/treectrl.py                  |   1 -
+ etg/webview.py                   |  12 ++++
+ etgtools/tweaker_tools.py        |   1 -
+ src/wxvector.sip                 | 106 +++++++++++++++++++++++++++++++
+ 20 files changed, 238 insertions(+), 9 deletions(-)
+ create mode 100644 etg/bmpbndl.py
+ create mode 100644 src/wxvector.sip
+
+diff --git a/docs/sphinx/itemToModuleMap.json b/docs/sphinx/itemToModuleMap.json
+index 5fa174fba..6d97957a7 100644
+--- a/docs/sphinx/itemToModuleMap.json
++++ b/docs/sphinx/itemToModuleMap.json
+@@ -753,6 +753,7 @@
+ "Country":"wx.DateTime.",
+ "CreateDynamicObject":"wx.",
+ "CreateFileTipProvider":"wx.adv.",
++"CredentialEntryDialog":"wx.",
+ "Cursor":"wx.",
+ "CursorProperty":"wx.propgrid.",
+ "CustomDataObject":"wx.",
+@@ -1038,6 +1039,9 @@
+ "FD_SAVE":"wx.",
+ "FD_SHOW_HIDDEN":"wx.",
+ "FFont":"wx.",
++"FH_PATH_SHOW_ALWAYS":"wx.",
++"FH_PATH_SHOW_IF_DIFFERENT":"wx.",
++"FH_PATH_SHOW_NEVER":"wx.",
+ "FIXED_LENGTH":"wx.",
+ "FIXED_MINSIZE":"wx.",
+ "FLEX_GROWMODE_ALL":"wx.",
+@@ -1254,6 +1258,7 @@
+ "FileDirPickerEvent":"wx.",
+ "FileDropTarget":"wx.",
+ "FileHistory":"wx.",
++"FileHistoryMenuPathStyle":"wx.",
+ "FileLayout":"wx.StandardPaths.",
+ "FileOffset":"wx.",
+ "FilePickerCtrl":"wx.",
+@@ -1319,6 +1324,7 @@
+ "FromEnd":"wx.",
+ "FromStart":"wx.",
+ "FromString":"wx.",
++"FullScreenEvent":"wx.",
+ "GA_HORIZONTAL":"wx.",
+ "GA_PROGRESS":"wx.",
+ "GA_SMOOTH":"wx.",
+@@ -2066,6 +2072,7 @@
+ "LANGUAGE_ENGLISH_CARIBBEAN":"wx.",
+ "LANGUAGE_ENGLISH_DENMARK":"wx.",
+ "LANGUAGE_ENGLISH_EIRE":"wx.",
++"LANGUAGE_ENGLISH_ISRAEL":"wx.",
+ "LANGUAGE_ENGLISH_JAMAICA":"wx.",
+ "LANGUAGE_ENGLISH_NEW_ZEALAND":"wx.",
+ "LANGUAGE_ENGLISH_PHILIPPINES":"wx.",
+@@ -2623,7 +2630,7 @@
+ "ObjectRefData":"wx.",
+ "OperatingSystemId":"wx.",
+ "Orientation":"wx.",
+-"Origin":"wx.grid.GridActivationSource.",
++"Origin":"wx.HelpEvent.",
+ "OutBottom":"wx.",
+ "OutCode":"wx.",
+ "OutLeft":"wx.",
+@@ -2784,6 +2791,9 @@
+ "PENSTYLE_TRANSPARENT":"wx.",
+ "PENSTYLE_USER_DASH":"wx.",
+ "PENSTYLE_VERTICAL_HATCH":"wx.",
++"PEN_QUALITY_DEFAULT":"wx.",
++"PEN_QUALITY_HIGH":"wx.",
++"PEN_QUALITY_LOW":"wx.",
+ "PGArrayEditorDialog":"wx.propgrid.",
+ "PGArrayStringEditorDialog":"wx.propgrid.",
+ "PGAttributeStorage":"wx.propgrid.",
+@@ -3057,10 +3067,12 @@
+ "PenInfo":"wx.",
+ "PenJoin":"wx.",
+ "PenList":"wx.",
++"PenQuality":"wx.",
+ "PenStyle":"wx.",
+ "PercentOf":"wx.",
+ "PickerBase":"wx.",
+ "PixelDataBase":"wx.",
++"PlatformId":"wx.",
+ "PlatformInformation":"wx.",
+ "Point":"wx.",
+ "Point2D":"wx.",
+@@ -3216,6 +3228,8 @@
+ "RIBBON_ART_PANEL_ACTIVE_BACKGROUND_TOP_GRADIENT_COLOUR":"wx.ribbon.",
+ "RIBBON_ART_PANEL_BORDER_COLOUR":"wx.ribbon.",
+ "RIBBON_ART_PANEL_BORDER_GRADIENT_COLOUR":"wx.ribbon.",
++"RIBBON_ART_PANEL_HOVER_BORDER_COLOUR":"wx.ribbon.",
++"RIBBON_ART_PANEL_HOVER_BORDER_GRADIENT_COLOUR":"wx.ribbon.",
+ "RIBBON_ART_PANEL_HOVER_LABEL_BACKGROUND_COLOUR":"wx.ribbon.",
+ "RIBBON_ART_PANEL_HOVER_LABEL_BACKGROUND_GRADIENT_COLOUR":"wx.ribbon.",
+ "RIBBON_ART_PANEL_HOVER_LABEL_COLOUR":"wx.ribbon.",
+@@ -6675,6 +6689,8 @@
+ "WEBVIEW_FIND_HIGHLIGHT_RESULT":"wx.html2.",
+ "WEBVIEW_FIND_MATCH_CASE":"wx.html2.",
+ "WEBVIEW_FIND_WRAP":"wx.html2.",
++"WEBVIEW_INJECT_AT_DOCUMENT_END":"wx.html2.",
++"WEBVIEW_INJECT_AT_DOCUMENT_START":"wx.html2.",
+ "WEBVIEW_NAV_ACTION_NONE":"wx.html2.",
+ "WEBVIEW_NAV_ACTION_OTHER":"wx.html2.",
+ "WEBVIEW_NAV_ACTION_USER":"wx.html2.",
+@@ -6952,6 +6968,7 @@
+ "WebViewNavigationActionFlags":"wx.html2.",
+ "WebViewNavigationError":"wx.html2.",
+ "WebViewReloadFlags":"wx.html2.",
++"WebViewUserScriptInjectionTime":"wx.html2.",
+ "WebViewZoom":"wx.html2.",
+ "WebViewZoomType":"wx.html2.",
+ "WeekDay":"wx.DateTime.",
+@@ -7161,6 +7178,7 @@
+ "wxEVT_FIND_REPLACE_ALL":"wx.",
+ "wxEVT_FONTPICKER_CHANGED":"wx.",
+ "wxEVT_FSWATCHER":"wx.",
++"wxEVT_FULLSCREEN":"wx.",
+ "wxEVT_GESTURE_PAN":"wx.",
+ "wxEVT_GESTURE_ROTATE":"wx.",
+ "wxEVT_GESTURE_ZOOM":"wx.",
+@@ -7483,10 +7501,13 @@
+ "wxEVT_WEBKIT_NEW_WINDOW":"wx.webkit.",
+ "wxEVT_WEBKIT_STATE_CHANGED":"wx.webkit.",
+ "wxEVT_WEBVIEW_ERROR":"wx.html2.",
++"wxEVT_WEBVIEW_FULLSCREEN_CHANGED":"wx.html2.",
++"wxEVT_WEBVIEW_FULL_SCREEN_CHANGED":"wx.html2.",
+ "wxEVT_WEBVIEW_LOADED":"wx.html2.",
+ "wxEVT_WEBVIEW_NAVIGATED":"wx.html2.",
+ "wxEVT_WEBVIEW_NAVIGATING":"wx.html2.",
+ "wxEVT_WEBVIEW_NEWWINDOW":"wx.html2.",
++"wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED":"wx.html2.",
+ "wxEVT_WEBVIEW_TITLE_CHANGED":"wx.html2.",
+ "wxEVT_WINDOW_MODAL_DIALOG_CLOSED":"wx.",
+ "wxEVT_WIZARD_BEFORE_PAGE_CHANGED":"wx.adv.",
+diff --git a/etg/grid.py b/etg/grid.py
+index 23703b8d3..77e5023c4 100644
+--- a/etg/grid.py
++++ b/etg/grid.py
+@@ -425,6 +425,8 @@ def fixEditorClass(name):
+     c.find('SetEditor.editor').transfer = True  # these are probably redundant now...
+     c.find('SetRenderer.renderer').transfer = True
+ 
++    c.find('GetRendererPtr').ignore()
++
+     #-----------------------------------------------------------------
+     module.find('wxGridCellRendererPtr').piIgnored = True
+     module.find('wxGridCellEditorPtr').piIgnored = True
+@@ -635,7 +637,7 @@ def fixEditorClass(name):
+     # Custom code to deal with the wxGridBlockCoordsVector return type of these
+     # methods. It's a wxVector, which we'll just convert to a list.
+ 
+-    # TODO: There are a few of these now to we ought to either wrap wxVector, or add
++    # TODO: There are a few of these now so we ought to either wrap wxVector, or add
+     #       something in tweaker_tools to make adding code like this easier and more
+     #       automated.
+     code = """\
+diff --git a/etg/menu.py b/etg/menu.py
+index c7fd309a8..14530e9cd 100644
+--- a/etg/menu.py
++++ b/etg/menu.py
+@@ -99,6 +99,7 @@ def addTransferAnnotations(c, arg):
+         body="""\
+             return self->FindItem(id);""")
+ 
++    c.find('MSWCommand').ignore()
+ 
+     #-----------------------------------------------------------------
+     c = module.find('wxMenuBar')
+diff --git a/etg/object.py b/etg/object.py
+index cb86d495c..650675423 100644
+--- a/etg/object.py
++++ b/etg/object.py
+@@ -103,6 +103,8 @@ def run():
+     dtor = c.find('~wxObjectDataPtr')
+     dtor.isDtor = True
+ 
++    ctor.findOverload('< U >').ignore()
++
+     # more name hacks/fixes
+     c.nodeBases = ({'wxObjectDataPtr': ('wxObjectDataPtr', [])},
+                    ['wxObjectDataPtr'])
+diff --git a/etg/platinfo.py b/etg/platinfo.py
+index f96f5d6ed..ca0d65ec8 100644
+--- a/etg/platinfo.py
++++ b/etg/platinfo.py
+@@ -19,6 +19,7 @@
+ # this script.
+ ITEMS  = [ 'wxPlatformInfo',
+            'wxLinuxDistributionInfo',
++           'wxPlatformId',
+            ]
+ 
+ #---------------------------------------------------------------------------
+diff --git a/docs/sphinx/itemToModuleMap.json b/docs/sphinx/itemToModuleMap.json
+index 7cbd105eb..80caca1ca 100644
+--- a/docs/sphinx/itemToModuleMap.json
++++ b/docs/sphinx/itemToModuleMap.json
+@@ -3582,6 +3582,7 @@
+ "RichTextImageBlock":"wx.richtext.",
+ "RichTextLine":"wx.richtext.",
+ "RichTextLineBreakChar":"wx.richtext.",
++"RichTextLineVector":"wx.richtext.",
+ "RichTextListStyleDefinition":"wx.richtext.",
+ "RichTextModuleInit":"wx.richtext.",
+ "RichTextObject":"wx.richtext.",
+diff --git a/etg/_core.py b/etg/_core.py
+index 9bf82d21c..220c13711 100644
+--- a/etg/_core.py
++++ b/etg/_core.py
+@@ -49,6 +49,7 @@
+               'userdata',
+               'wxpybuffer',
+               'msgdlg_btnlabel',
++              'wxvector',
+ 
+               'stockgdi',
+               'longlong',
+@@ -76,6 +77,7 @@
+               'image',
+               'gdiobj',
+               'bitmap',
++              'bmpbndl',
+               'icon', 'iconloc', 'iconbndl',
+               'font',
+               'fontutil',
+diff --git a/etg/_stc.py b/etg/_stc.py
+index 50d384333..bcf8b55f6 100644
+--- a/etg/_stc.py
++++ b/etg/_stc.py
+@@ -152,6 +152,7 @@ def run():
+     tc_excludes = ['OSXEnableAutomaticQuoteSubstitution',
+                    'OSXEnableAutomaticDashSubstitution',
+                    'OSXDisableAllSmartSubstitutions',
++                   'OSXEnableNewLineReplacement',
+                    ]
+     import textctrl
+     mod = textctrl.parseAndTweakModule()
+diff --git a/etg/app.py b/etg/app.py
+index ccb4cb6c4..bd2ef2aea 100644
+--- a/etg/app.py
++++ b/etg/app.py
+@@ -10,6 +10,7 @@
+ import etgtools
+ import etgtools.tweaker_tools as tools
+ from etgtools import PyFunctionDef, PyCodeDef, PyPropertyDef
++import sys
+ 
+ PACKAGE   = "wx"
+ MODULE    = "_core"
+@@ -206,6 +207,8 @@ def run():
+     c.addProperty('UseBestVisual GetUseBestVisual SetUseBestVisual')
+     c.addProperty('TopWindow GetTopWindow SetTopWindow')
+ 
++    if sys.platform != 'linux':
++        c.find('GTKSuppressDiagnostics').ignore()
+ 
+     #-------------------------------------------------------
+ 
+diff --git a/etg/bmpbndl.py b/etg/bmpbndl.py
+new file mode 100644
+index 000000000..a166b576c
+--- /dev/null
++++ b/etg/bmpbndl.py
+@@ -0,0 +1,58 @@
++#---------------------------------------------------------------------------
++# Name:        etg/bmpbndl.py
++# Author:      Scott Talbert
++#
++# Created:     13-Apr-2022
++# Copyright:   (c) 2022 by Scott Talbert
++# License:     wxWindows License
++#---------------------------------------------------------------------------
++
++import etgtools
++import etgtools.tweaker_tools as tools
++from etgtools import MethodDef
++
++PACKAGE   = "wx"
++MODULE    = "_core"
++NAME      = "bmpbndl"   # Base name of the file to generate to for this script
++DOCSTRING = ""
++
++# The classes and/or the basename of the Doxygen XML files to be processed by
++# this script.
++ITEMS  = [ 'wxBitmapBundle',
++           'wxBitmapBundleImpl',
++           ]
++
++#---------------------------------------------------------------------------
++
++def run():
++    # Parse the XML file(s) building a collection of Extractor objects
++    module = etgtools.ModuleDef(PACKAGE, MODULE, NAME, DOCSTRING)
++    etgtools.parseDoxyXML(module, ITEMS)
++
++    #-----------------------------------------------------------------
++    # Tweak the parsed meta objects in the module object as needed for
++    # customizing the generated code and docstrings.
++
++    #module.addHeaderCode('#include <wx/some_header_file.h>')
++
++    c = module.find('wxBitmapBundle')
++    assert isinstance(c, etgtools.ClassDef)
++
++    c.find('FromSVG').findOverload('char *data, const wxSize &sizeDef').ignore()
++
++
++    c = module.find('wxBitmapBundleImpl')
++    assert isinstance(c, etgtools.ClassDef)
++
++    m = MethodDef(name='~wxBitmapBundleImpl', isDtor=True, isVirtual=True, protection='protected')
++    c.addItem(m)
++
++    #-----------------------------------------------------------------
++    tools.doCommonTweaks(module)
++    tools.runGenerators(module)
++
++
++#---------------------------------------------------------------------------
++if __name__ == '__main__':
++    run()
++
+diff --git a/etg/cursor.py b/etg/cursor.py
+index 5e221fe91..f957358b5 100644
+--- a/etg/cursor.py
++++ b/etg/cursor.py
+@@ -45,6 +45,7 @@ def run():
+     c.find('wxCursor').findOverload('cursorName').find('type').default='wxBITMAP_TYPE_ANY'
+     # TODO: This ctor ^^ in Classic has a custom implementation for wxGTK that
+     # sets the hotspot. Is that still needed?
++    c.find('wxCursor').findOverload('(const char *const *xpmData)').ignore()
+ 
+     c.addCppMethod('int', '__nonzero__', '()', "return self->IsOk();")
+     c.addCppMethod('int', '__bool__', '()', "return self->IsOk();")
+diff --git a/etg/dataview.py b/etg/dataview.py
+index 80eade26e..fdfb4e1ae 100644
+--- a/etg/dataview.py
++++ b/etg/dataview.py
+@@ -344,7 +344,7 @@ def _fixupTypeParam(klass):
+     c.addItem(etgtools.WigCode("""\
+         virtual void SetTitle(const wxString& title);
+         virtual wxString GetTitle() const;
+-        virtual void SetBitmap(const wxBitmap& bitmap);
++        virtual void SetBitmap(const wxBitmapBundle& bitmap);
+         virtual wxBitmap GetBitmap() const;
+         virtual void SetWidth(int width);
+         virtual int GetWidth() const;
+diff --git a/etg/defs.py b/etg/defs.py
+index 167e07264..4445cf93c 100644
+--- a/etg/defs.py
++++ b/etg/defs.py
+@@ -110,6 +110,9 @@ class wxExecuteEnv;
+     module.addPyCode("ADJUST_MINSIZE = 0")
+     module.addPyCode("WS_EX_VALIDATE_RECURSIVELY = 0")
+ 
++    # This is only supported with C++14, so ignore it for now
++    module.find('wxDEPRECATED_ATTR').ignore()
++
+ 
+     #-----------------------------------------------------------------
+     tools.doCommonTweaks(module)
+diff --git a/etg/event.py b/etg/event.py
+index 4a5c30e1e..5f79d8881 100644
+--- a/etg/event.py
++++ b/etg/event.py
+@@ -100,6 +100,11 @@ def run():
+     #endif
+     """)
+ 
++    # Missing in 3.1.6
++    module.addItem(etgtools.WigCode("""\
++        wxEventType wxEVT_FULLSCREEN /PyName=wxEVT_FULLSCREEN/;
++        """))
++
+ 
+     module.addPyClass('PyEventBinder', ['object'],
+         doc="""\
+diff --git a/etg/gdicmn.py b/etg/gdicmn.py
+index 04ca36931..f182266a3 100644
+--- a/etg/gdicmn.py
++++ b/etg/gdicmn.py
+@@ -155,6 +155,9 @@ def run():
+              c.find('operator*=').all() + \
+              c.find('operator/=').all():
+         f.ignore(False)
++    # Ignore these because they conflict with __imul__() and __itruediv__()
++    c.find('operator*=').findOverload('double').ignore()
++    c.find('operator/=').findOverload('double').ignore()
+ 
+     c.addCppMethod('bool', '__eq__', '(const wxSize& other)',
+         body="return *self == *other;")
+diff --git a/etg/htmlwin.py b/etg/htmlwin.py
+index 1023e7519..fd902921c 100644
+--- a/etg/htmlwin.py
++++ b/etg/htmlwin.py
+@@ -73,7 +73,7 @@ def run():
+         virtual wxWindow* GetHTMLWindow();
+         virtual wxColour GetHTMLBackgroundColour() const;
+         virtual void SetHTMLBackgroundColour(const wxColour& clr);
+-        virtual void SetHTMLBackgroundImage(const wxBitmap& bmpBg);
++        virtual void SetHTMLBackgroundImage(const wxBitmapBundle& bmpBg);
+         virtual void SetHTMLStatusText(const wxString& text);
+         virtual wxCursor GetHTMLCursor(wxHtmlWindowInterface::HTMLCursor type) const;
+         """))
+diff --git a/etg/icon.py b/etg/icon.py
+index 2733ddd6f..6b1faf239 100644
+--- a/etg/icon.py
++++ b/etg/icon.py
+@@ -79,6 +79,9 @@ def run():
+             #endif
+             """)
+ 
++    # Documented wrongly in 3.1.6
++    c.find('GetLogicalSize').type = 'wxSize'
++
+ 
+     # For compatibility:
+     module.addPyFunction('EmptyIcon', '()',
+diff --git a/etg/listctrl.py b/etg/listctrl.py
+index d25171da2..6362b866e 100644
+--- a/etg/listctrl.py
++++ b/etg/listctrl.py
+@@ -333,6 +333,10 @@ def run():
+         #endif
+         """)
+ 
++    # Documented wrongly in 3.1.6
++    c.find('RemoveSortIndicator').type = 'void'
++    c.find('RemoveSortIndicator').isConst = False
++
+ 
+     #-------------------------------------------------------
+     c = module.find('wxListView')
+diff --git a/etg/menuitem.py b/etg/menuitem.py
+index b2f620b4c..ac6cdb38f 100644
+--- a/etg/menuitem.py
++++ b/etg/menuitem.py
+@@ -109,11 +109,12 @@ def run():
+ 
+ 
+     c.find('GetBitmap').type = 'const wxBitmap*'
++    c.find('GetBitmap').transferBack = True
+     c.find('GetBitmap').setCppCode("""\
+         #ifdef __WXMSW__
+-            return &self->GetBitmap(checked);
++            return new wxBitmap(self->GetBitmap(checked));
+         #else
+-            return &self->GetBitmap();
++            return new wxBitmap(self->GetBitmap());
+         #endif
+         """)
+ 
+@@ -157,6 +158,10 @@ def run():
+ 
+     module.addItem(tools.wxListWrapperTemplate('wxMenuItemList', 'wxMenuItem', module))
+ 
++    # Documented wrongly in 3.1.6
++    c.find('AddExtraAccel.accel').isConst = True
++    c.find('AddExtraAccel.accel').type = 'wxAcceleratorEntry&'
++
+ 
+ 
+     #-----------------------------------------------------------------
+diff --git a/etg/richtextbuffer.py b/etg/richtextbuffer.py
+index aaaba8584..dad166b12 100644
+--- a/etg/richtextbuffer.py
++++ b/etg/richtextbuffer.py
+@@ -79,8 +79,6 @@ def run():
+         tools.wxArrayWrapperTemplate('wxRichTextVariantArray', 'wxVariant', module))
+     module.addItem(
+         tools.wxListWrapperTemplate('wxRichTextObjectList', 'wxRichTextObject', module))
+-    module.addItem(
+-        tools.wxListWrapperTemplate('wxRichTextLineList', 'wxRichTextLine', module))
+ 
+     # Can this even work?  Apparently it does.
+     module.addItem(
+@@ -319,6 +317,21 @@ def _fixDrawObject(c, addMissingVirtuals=True):
+                                     fakeListClassName='wxRichTextObjectList_'))
+     c.find('MoveToList.list').type = 'wxRichTextObjectList_&'
+     c.find('MoveFromList.list').type = 'wxRichTextObjectList_&'
++    # TODO: figure out why wxvector.sip doesn't work for this
++    c.find('GetLines').type = 'PyObject*'
++    c.find('GetLines').setCppCode("""\
++        wxPyThreadBlocker blocker;
++        PyObject* result = PyList_New(0);
++        const wxRichTextLineVector& vector = self->GetLines();
++        for (size_t idx=0; idx < vector.size(); idx++) {{
++            PyObject* obj;
++            wxRichTextLine* item = new wxRichTextLine(*vector.at(idx));
++            obj = wxPyConstructObject((void*)item, "wxRichTextLine", true);
++            PyList_Append(result, obj);
++            Py_DECREF(obj);
++        }}
++        return result;
++        """)
+ 
+ 
+     #-------------------------------------------------------
+diff --git a/etg/textctrl.py b/etg/textctrl.py
+index 7f1c1fba0..a590512ec 100644
+--- a/etg/textctrl.py
++++ b/etg/textctrl.py
+@@ -9,6 +9,8 @@
+ # License:     wxWindows License
+ #---------------------------------------------------------------------------
+ 
++import sys
++
+ import etgtools
+ import etgtools.tweaker_tools as tools
+ 
+@@ -144,6 +146,15 @@ def parseAndTweakModule():
+             #endif
+             """)
+ 
++    # TODO: add support for wxTextProofOptions (only supported on MSW/GTK3)
++    # so will need stubs on other platforms.
++    c.find('EnableProofCheck').ignore()
++    c.find('GetProofCheckOptions').ignore()
++
++    # This function only exists on OSX
++    if sys.platform != 'darwin':
++        c.find('OSXEnableNewLineReplacement').ignore()
++
+ 
+ 
+     c = module.find('wxTextUrlEvent')
+diff --git a/etg/treectrl.py b/etg/treectrl.py
+index 4b1d0a227..23945b607 100644
+--- a/etg/treectrl.py
++++ b/etg/treectrl.py
+@@ -150,7 +150,6 @@ def TreeItemData(data):
+ 
+ 
+     # transfer imagelist ownership
+-    c.find('AssignImageList.imageList').transfer = True
+     c.find('AssignStateImageList.imageList').transfer = True
+     c.find('AssignButtonsImageList.imageList').transfer = True
+ 
+diff --git a/etg/webview.py b/etg/webview.py
+index b4abb35c2..6fec50458 100644
+--- a/etg/webview.py
++++ b/etg/webview.py
+@@ -91,6 +91,11 @@ def run():
+     # This tweak is needed only for the stub code
+     module.find('wxWebViewHandler.wxWebViewHandler').argsString = '(const wxString& scheme="")'
+ 
++    # Documented wrongly in 3.1.6 (needs to be fixed in stubs too)
++    c = module.find('wxWebViewFactory')
++    c.find('GetVersionInfo').argsString = '()'
++    c.find('GetVersionInfo').items = []
++
+     tools.generateStubs('wxUSE_WEBVIEW', module,
+                         typeValMap={
+                             'wxWebViewNavigationActionFlags': 'wxWEBVIEW_NAV_ACTION_NONE',
+@@ -98,6 +103,13 @@ def run():
+                             'wxVersionInfo': 'wxVersionInfo()',
+                             })
+ 
++    # Missing in 3.1.6
++    module.addItem(etgtools.WigCode("""\
++        wxEventType wxEVT_WEBVIEW_FULLSCREEN_CHANGED /PyName=wxEVT_WEBVIEW_FULLSCREEN_CHANGED/;
++        wxEventType wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED /PyName=wxEVT_WEBVIEW_SCRIPT_MESSAGE_RECEIVED/;
++        wxEventType wxEVT_WEBVIEW_SCRIPT_RESULT /PyName=wxEVT_WEBVIEW_SCRIPT_RESULT/;
++        """))
++
+     c = module.find('wxWebView')
+     assert isinstance(c, etgtools.ClassDef)
+     tools.fixWindowClass(c)
+diff --git a/etgtools/tweaker_tools.py b/etgtools/tweaker_tools.py
+index e67975db2..5b76888e4 100644
+--- a/etgtools/tweaker_tools.py
++++ b/etgtools/tweaker_tools.py
+@@ -497,7 +497,6 @@ def addWindowVirtuals(klass):
+         ('DoSetSize',                 'void DoSetSize(int x, int y, int width, int height, int sizeFlags)'),
+         ('DoSetClientSize',           'void DoSetClientSize(int width, int height)'),
+         ('DoSetSizeHints',            'void DoSetSizeHints( int minW, int minH, int maxW, int maxH, int incW, int incH )'),
+-        ('DoGetBorderSize',           'wxSize DoGetBorderSize() const'),
+         ('DoMoveWindow',              'void DoMoveWindow(int x, int y, int width, int height)'),
+         ('DoSetWindowVariant',        'void DoSetWindowVariant( wxWindowVariant variant)'),
+         ('GetDefaultBorder',          'wxBorder GetDefaultBorder() const'),
+diff --git a/src/wxvector.sip b/src/wxvector.sip
+new file mode 100644
+index 000000000..16c0a9434
+--- /dev/null
++++ b/src/wxvector.sip
+@@ -0,0 +1,106 @@
++//--------------------------------------------------------------------------
++// Name:        wxvector.sip
++// Purpose:     MappedType for wxVector
++//
++// Author:      Scott Talbert
++//
++// Created:     14-Apr-2022
++// Copyright:   (c) 2022 by Scott Talbert
++// Licence:     wxWindows license
++//--------------------------------------------------------------------------
++
++template<_TYPE_>
++%MappedType wxVector<_TYPE_>
++{
++    %ConvertFromTypeCode
++        PyObject *l = PyList_New(sipCpp->size());
++
++        if (!l)
++            return 0;
++
++        for (int i = 0; i < sipCpp->size(); ++i) {
++            _TYPE_ *t = new _TYPE_(sipCpp->at(i));
++            PyObject *tobj = sipConvertFromNewType(t, sipType__TYPE_,
++                    sipTransferObj);
++
++            if (!tobj) {
++                delete t;
++                Py_DECREF(l);
++
++                return 0;
++            }
++
++            PyList_SetItem(l, i, tobj);
++        }
++
++        return l;
++    %End
++
++    %ConvertToTypeCode
++        PyObject *iter = PyObject_GetIter(sipPy);
++
++        if (!sipIsErr) {
++            PyErr_Clear();
++            Py_XDECREF(iter);
++
++            return (iter
++#if PY_MAJOR_VERSION < 3
++                    && !PyString_Check(sipPy)
++#endif
++                    && !PyUnicode_Check(sipPy));
++        }
++
++        if (!iter) {
++            *sipIsErr = 1;
++
++            return 0;
++        }
++
++        wxVector<_TYPE_> *wv = new wxVector<_TYPE_>;
++
++        for (Py_ssize_t i = 0; ; ++i) {
++            PyErr_Clear();
++            PyObject *itm = PyIter_Next(iter);
++
++            if (!itm) {
++                if (PyErr_Occurred()) {
++                    delete wv;
++                    Py_DECREF(iter);
++                    *sipIsErr = 1;
++
++                    return 0;
++                }
++
++                break;
++            }
++
++            int state;
++            _TYPE_ *t = reinterpret_cast<_TYPE_ *>(
++                    sipForceConvertToType(itm, sipType__TYPE_, sipTransferObj,
++                            SIP_NOT_NONE, &state, sipIsErr));
++
++            if (*sipIsErr) {
++                PyErr_Format(PyExc_TypeError,
++                        "index %zd has type '%s' but '_TYPE_' is expected", i,
++                        sipPyTypeName(Py_TYPE(itm)));
++
++                Py_DECREF(itm);
++                delete wv;
++                Py_DECREF(iter);
++
++                return 0;
++            }
++
++            wv->push_back(*t);
++
++            sipReleaseType(t, sipType__TYPE_, state);
++            Py_DECREF(itm);
++        }
++
++        Py_DECREF(iter);
++ 
++        *sipCppPtr = wv;
++ 
++        return sipGetState(sipTransferObj);
++    %End
++};

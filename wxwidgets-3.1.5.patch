@@ -1,0 +1,304 @@
+From c4442cbc561e7c148520e6c02c78ec7fe893649f Mon Sep 17 00:00:00 2001
+From: Robin Dunn <robin@alldunn.com>
+Date: Fri, 18 Dec 2020 15:32:38 -0800
+Subject: [PATCH] Ignore the static overload of GetBitness, which doesn't seem
+ to exist
+
+---
+ docs/sphinx/itemToModuleMap.json | 5 +++++
+ etg/platinfo.py                  | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/docs/sphinx/itemToModuleMap.json b/docs/sphinx/itemToModuleMap.json
+index ab3a1166d..84e17e9e9 100644
+--- a/docs/sphinx/itemToModuleMap.json
++++ b/docs/sphinx/itemToModuleMap.json
+@@ -419,6 +419,10 @@
+ "BITMAP_TYPE_XBM_DATA":"wx.",
+ "BITMAP_TYPE_XPM":"wx.",
+ "BITMAP_TYPE_XPM_DATA":"wx.",
++"BITNESS_32":"wx.",
++"BITNESS_64":"wx.",
++"BITNESS_INVALID":"wx.",
++"BITNESS_MAX":"wx.",
+ "BI_EXPAND":"wx.",
+ "BK_ALIGN_MASK":"wx.",
+ "BK_BOTTOM":"wx.",
+@@ -507,6 +511,7 @@
+ "BitmapHandler":"wx.",
+ "BitmapToggleButton":"wx.",
+ "BitmapType":"wx.",
++"Bitness":"wx.",
+ "BookCtrl":"wx.",
+ "BookCtrlBase":"wx.",
+ "BookCtrlEvent":"wx.",
+diff --git a/etg/platinfo.py b/etg/platinfo.py
+index 587d2c977..f96f5d6ed 100644
+--- a/etg/platinfo.py
++++ b/etg/platinfo.py
+@@ -48,7 +48,7 @@ def run():
+     c.find('GetOperatingSystemFamilyName').findOverload('os').ignore()
+     c.find('GetPortIdName').findOverload('port').ignore()
+     c.find('GetPortIdShortName').findOverload('port').ignore()
+-
++    c.find('GetBitness').findOverload('bitness').ignore()
+ 
+     #-----------------------------------------------------------------
+     tools.doCommonTweaks(module)
+From 70535a722b945b817af5217841fbd5895d3ba7a9 Mon Sep 17 00:00:00 2001
+From: Robin Dunn <robin@alldunn.com>
+Date: Sat, 24 Jul 2021 15:59:37 -0700
+Subject: [PATCH] remove wx.webkit
+
+---
+ etg/_webkit.py           | 71 ------------------------------------
+ etg/webkit.py            | 77 ----------------------------------------
+ unittests/test_webkit.py | 77 ----------------------------------------
+ 3 files changed, 225 deletions(-)
+ delete mode 100644 etg/_webkit.py
+ delete mode 100644 etg/webkit.py
+ delete mode 100644 unittests/test_webkit.py
+
+diff --git a/etg/_webkit.py b/etg/_webkit.py
+deleted file mode 100644
+index 95e9e8a52..000000000
+--- a/etg/_webkit.py
++++ /dev/null
+@@ -1,71 +0,0 @@
+-#---------------------------------------------------------------------------
+-# Name:        etg/_webkit.py
+-# Author:      Robin Dunn
+-#
+-# Created:     22-Aug-2013
+-# Copyright:   (c) 2013-2020 by Total Control Software
+-# License:     wxWindows License
+-#---------------------------------------------------------------------------
+-
+-import etgtools
+-import etgtools.tweaker_tools as tools
+-
+-PACKAGE   = "wx"
+-MODULE    = "_webkit"
+-NAME      = "_webkit"   # Base name of the file to generate to for this script
+-DOCSTRING = """\
+-The :ref:`wx.webkit.wxWebKitCtrl` and related classes are provided mainly for
+-backwards compatibility only. New code would be more future-proof by using the
+-``wx.html2`` module.  The classes in this module are light wrappers around
+-the OSX WebKit control and is not implemented on any other platform.
+-"""
+-
+-# The classes and/or the basename of the Doxygen XML files to be processed by
+-# this script.
+-ITEMS  = [ ]
+-
+-
+-# The list of other ETG scripts and back-end generator modules that are
+-# included as part of this module. These should all be items that are put in
+-# the wxWidgets "webview" library in a multi-lib build.
+-INCLUDES = [ 'webkit',
+-             ]
+-
+-
+-# Separate the list into those that are generated from ETG scripts and the
+-# rest. These lists can be used from the build scripts to get a list of
+-# sources and/or additional dependencies when building this extension module.
+-ETGFILES = ['etg/%s.py' % NAME] + tools.getEtgFiles(INCLUDES)
+-DEPENDS = tools.getNonEtgFiles(INCLUDES)
+-OTHERDEPS = [  ]
+-
+-
+-#---------------------------------------------------------------------------
+-
+-def run():
+-    # Parse the XML file(s) building a collection of Extractor objects
+-    module = etgtools.ModuleDef(PACKAGE, MODULE, NAME, DOCSTRING)
+-    etgtools.parseDoxyXML(module, ITEMS)
+-    module.check4unittest = False
+-
+-    #-----------------------------------------------------------------
+-    # Tweak the parsed meta objects in the module object as needed for
+-    # customizing the generated code and docstrings.
+-
+-    module.addHeaderCode('#include <wxPython/wxpy_api.h>')
+-    module.addImport('_core')
+-    module.addPyCode('import wx', order=10)
+-    module.addInclude(INCLUDES)
+-
+-
+-    #-----------------------------------------------------------------
+-    #-----------------------------------------------------------------
+-    tools.doCommonTweaks(module)
+-    tools.runGenerators(module)
+-
+-
+-
+-#---------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    run()
+diff --git a/etg/webkit.py b/etg/webkit.py
+deleted file mode 100644
+index 7a3e70e6d..000000000
+--- a/etg/webkit.py
++++ /dev/null
+@@ -1,77 +0,0 @@
+-#---------------------------------------------------------------------------
+-# Name:        etg/webkit.py
+-# Author:      Robin Dunn
+-#
+-# Created:     22-Aug-2013
+-# Copyright:   (c) 2013-2020 by Total Control Software
+-# License:     wxWindows License
+-#---------------------------------------------------------------------------
+-
+-import etgtools
+-import etgtools.tweaker_tools as tools
+-
+-PACKAGE   = "wx"
+-MODULE    = "_webkit"
+-NAME      = "webkit"   # Base name of the file to generate to for this script
+-DOCSTRING = ""
+-
+-# The classes and/or the basename of the Doxygen XML files to be processed by
+-# this script.
+-ITEMS  = [ 'wxWebKitCtrl',
+-           'wxWebKitBeforeLoadEvent',
+-           'wxWebKitStateChangedEvent',
+-           'wxWebKitNewWindowEvent',
+-           ]
+-
+-#---------------------------------------------------------------------------
+-
+-def run():
+-    # Parse the XML file(s) building a collection of Extractor objects
+-    module = etgtools.ModuleDef(PACKAGE, MODULE, NAME, DOCSTRING)
+-    etgtools.parseDoxyXML(module, ITEMS)
+-
+-    #-----------------------------------------------------------------
+-    # Tweak the parsed meta objects in the module object as needed for
+-    # customizing the generated code and docstrings.
+-
+-    module.addHeaderCode('#include <wx/html/webkit.h>')
+-
+-    tools.generateStubs('wxUSE_WEBKIT', module,
+-                        extraHdrCode='extern const char* wxWebKitCtrlNameStr;\n',
+-                        extraCppCode='const char* wxWebKitCtrlNameStr = "";\n')
+-
+-
+-    c = module.find('wxWebKitCtrl')
+-    assert isinstance(c, etgtools.ClassDef)
+-    c.addPrivateCopyCtor()
+-    tools.fixWindowClass(c)
+-    c.find('wxWebKitCtrl.strURL').default = '""'
+-    c.find('Create.strURL').default = '""'
+-
+-
+-    module.addGlobalStr('wxWebKitCtrlNameStr', c)
+-
+-    c = module.find('wxWebKitBeforeLoadEvent')
+-    tools.fixEventClass(c)
+-
+-    c = module.find('wxWebKitStateChangedEvent')
+-    tools.fixEventClass(c)
+-
+-    c = module.find('wxWebKitNewWindowEvent')
+-    tools.fixEventClass(c)
+-
+-    module.addPyCode("""\
+-        EVT_WEBKIT_BEFORE_LOAD = wx.PyEventBinder( wxEVT_WEBKIT_BEFORE_LOAD, 1 )
+-        EVT_WEBKIT_STATE_CHANGED = wx.PyEventBinder( wxEVT_WEBKIT_STATE_CHANGED, 1 )
+-        EVT_WEBKIT_NEW_WINDOW = wx.PyEventBinder( wxEVT_WEBKIT_NEW_WINDOW, 1 )
+-        """)
+-
+-    #-----------------------------------------------------------------
+-    tools.doCommonTweaks(module)
+-    tools.runGenerators(module)
+-
+-
+-#---------------------------------------------------------------------------
+-if __name__ == '__main__':
+-    run()
+-
+diff --git a/unittests/test_webkit.py b/unittests/test_webkit.py
+deleted file mode 100644
+index 3241d319a..000000000
+--- a/unittests/test_webkit.py
++++ /dev/null
+@@ -1,77 +0,0 @@
+-import unittest
+-from unittests import wtc
+-import wx
+-import sys
+-if sys.platform == 'darwin':
+-    import wx.webkit
+-
+-#---------------------------------------------------------------------------
+-
+-class webkit_Tests(wtc.WidgetTestCase):
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit01(self):
+-        wk = wx.webkit.WebKitCtrl()
+-        wk.Create(self.frame)
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit02(self):
+-        wk = wx.webkit.WebKitCtrl(self.frame)
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit03(self):
+-        wk = wx.webkit.WebKitCtrl(self.frame, -1, "http://wxpython.org")
+-
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit04(self):
+-        e = wx.webkit.WebKitBeforeLoadEvent()
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit05(self):
+-        e = wx.webkit.WebKitStateChangedEvent()
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit06(self):
+-        e = wx.webkit.WebKitNewWindowEvent()
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit07(self):
+-        wx.webkit.WEBKIT_STATE_START
+-        wx.webkit.WEBKIT_STATE_NEGOTIATING
+-        wx.webkit.WEBKIT_STATE_REDIRECTING
+-        wx.webkit.WEBKIT_STATE_TRANSFERRING
+-        wx.webkit.WEBKIT_STATE_STOP
+-        wx.webkit.WEBKIT_STATE_FAILED
+-
+-        wx.webkit.WEBKIT_NAV_LINK_CLICKED
+-        wx.webkit.WEBKIT_NAV_BACK_NEXT
+-        wx.webkit.WEBKIT_NAV_FORM_SUBMITTED
+-        wx.webkit.WEBKIT_NAV_RELOAD
+-        wx.webkit.WEBKIT_NAV_FORM_RESUBMITTED
+-        wx.webkit.WEBKIT_NAV_OTHER
+-
+-        wx.webkit.wxEVT_WEBKIT_STATE_CHANGED
+-        wx.webkit.wxEVT_WEBKIT_BEFORE_LOAD
+-        wx.webkit.wxEVT_WEBKIT_NEW_WINDOW
+-
+-        wx.webkit.EVT_WEBKIT_STATE_CHANGED
+-        wx.webkit.EVT_WEBKIT_BEFORE_LOAD
+-        wx.webkit.EVT_WEBKIT_NEW_WINDOW
+-
+-
+-    @unittest.skipIf(sys.platform != 'darwin', 'WebKit only implemented on Mac')
+-    def test_webkit08(self):
+-        wx.webkit.wxEVT_WEBKIT_STATE_CHANGED
+-        wx.webkit.wxEVT_WEBKIT_BEFORE_LOAD
+-        wx.webkit.wxEVT_WEBKIT_NEW_WINDOW
+-
+-        wx.webkit.EVT_WEBKIT_STATE_CHANGED
+-        wx.webkit.EVT_WEBKIT_BEFORE_LOAD
+-        wx.webkit.EVT_WEBKIT_NEW_WINDOW
+-
+-
+-#---------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    unittest.main()
