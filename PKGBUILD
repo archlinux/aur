@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka-fixed-custom
 pkgname=${_pkgname}-git
-pkgver=1631347067
+pkgver=1668963274
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -13,11 +13,11 @@ depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 source=('private-build-plans.toml.example')
-sha256sums=('c3658ace62d106edf431937a41468d90b3437bae1cbdb3b9607ed0e7fb421b16')
+sha256sums=('08ed59dbef31e671ed35c2436b3ccf71ed85ffe15020e5806e3f165d8615a744')
 
 prepare () {
   rm -rf Iosevka
-  git clone --depth 1 --branch master 'https://github.com/be5invis/Iosevka'
+  git clone --depth 1 --branch main 'https://github.com/be5invis/Iosevka'
 
   buildplans="$HOME/.config/iosevka/private-build-plans.toml"
   if [[ -f "$buildplans" ]]; then
