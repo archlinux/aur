@@ -1,7 +1,7 @@
 # Maintainer: Tomás Ralph <tomasralph2000@gmail.com>
 _pkgname=Steam-Metadata-Editor
 pkgname=steam-metadata-editor-git
-pkgver=1.0.0
+pkgver=1.0.0.r39.557f318
 pkgrel=1
 pkgdesc="A metadata editor for Steam"
 arch=(any)
@@ -22,18 +22,20 @@ package() {
   mkdir -pv $HOME/.local/share/${_pkgname}/config
 
   local licdir="$pkgdir/usr/share/licenses/${pkgname%-git}"
+  local progdir="$pkgdir/opt/sme"
   local bindir="$pkgdir/usr/bin"
-  local imgdir="$pkgdir/usr/share/pixmaps/${pkgname%-git}"
   local appdir="$pkgdir/usr/share/applications"
+  local imgdir="$pkgdir/usr/share/pixmaps/${pkgname%-git}"
   local docdir="$pkgdir/usr/share/doc/${pkgname%-git}"
 
   cd "${srcdir}/$_pkgname"
   install -Dm0644 --target-directory "$docdir" "$srcdir/$_pkgname/README.md"
   install -Dm0644 --target-directory "$licdir" "$srcdir/$_pkgname/LICENSE"
   install -Dm0644 --target-directory "$imgdir" "$srcdir/$_pkgname/img/steam-metadata-editor.png"
-  install -Dm0644 --target-directory "$imgdir" "$srcdir/$_pkgname/src/img/UpArrow.png"
-  install -Dm0644 --target-directory "$imgdir" "$srcdir/$_pkgname/src/img/DownArrow.png"
-  install -Dm0644 --target-directory "$imgdir" "$srcdir/$_pkgname/src/img/Delete.png"
+  install -Dm0644 --target-directory "$progdir/img" "$srcdir/$_pkgname/src/img/UpArrow.png"
+  install -Dm0644 --target-directory "$progdir/img" "$srcdir/$_pkgname/src/img/DownArrow.png"
+  install -Dm0644 --target-directory "$progdir/img" "$srcdir/$_pkgname/src/img/Delete.png"
   install -Dm0644 --target-directory "$appdir" "$srcdir/$_pkgname/steam-metadata-editor.desktop"
-  install -Dm0755 --target-directory "$bindir" "$srcdir/$_pkgname/src/steammetadataeditor"
+  install -Dm0644 --target-directory "$progdir" "$srcdir/$_pkgname/src/steammetadataeditor.py"
+  install -Dm0755 --target-directory "$bindir" "$srcdir/$_pkgname/steammetadataeditor"
 }
