@@ -3,10 +3,10 @@
 pkgname=augustus
 _pkgname=Augustus
 pkgver=3.5.0
-pkgrel=1
+pkgrel=4
 pkgdesc="A eukaryotic gene prediction program"
 arch=('i686' 'x86_64')
-url="http://bioinf.uni-greifswald.de/augustus/"
+url="http://augustus.gobics.de/"
 license=('custom:Artistic-2.0')
 depends=('bamtools'  'boost-libs' 'gsl' 'mysql++' 'sqlite' 'python' 'lpsolve' 'perl' 'htslib')
 makedepends=('boost' 'suitesparse' 'samtools' )
@@ -20,18 +20,18 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  make SAMTOOLS=/usr/include/bam PREFIX="$pkgdir"/usr INSTALLDIR=${pkgdir}/opt/augustus
+  make SAMTOOLS=/usr/include/bam PREFIX="$pkgdir"/usr INSTALLDIR=${pkgdir}/usr/lib/augustus
 }
 
 package() {
   cd $_pkgname-$pkgver
   install -d ${pkgdir}/usr/bin
-  make DESTDIR="$pkgdir" PREFIX="$pkgdir"/usr INSTALLDIR=${pkgdir}/opt/augustus install
+  make DESTDIR="$pkgdir" PREFIX="$pkgdir"/usr INSTALLDIR=${pkgdir}/usr/lib/augustus install
 
   # fix broken links
   for bin in {augustus,etraining,prepareAlign,fastBlockSearch}
   do
-    ln -sf /opt/augustus/bin/${bin} "$pkgdir"/usr/bin/${bin}
+    ln -sf /usr/lib/augustus/bin/${bin} "$pkgdir"/usr/bin/${bin}
   done
   rm "$pkgdir"/usr/bin/{load2db,getSeq}
 
