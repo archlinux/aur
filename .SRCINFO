@@ -8,7 +8,6 @@ pkgbase = nap-bin
 	arch = i686
 	license = MIT
 	depends = pacman
-	depends = go
 	provides = nap
 	conflicts = nap
 	source_x86_64 = https://github.com/maaslalani/nap/releases/download/v0.1.1/nap_0.1.1_linux_amd64.tar.gz
