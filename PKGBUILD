@@ -1,5 +1,5 @@
 pkgname=lighthouse-ethereum
-pkgver=3.1.2
+pkgver=3.2.1
 _pkgname=lighthouse
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://lighthouse.sigmaprime.io/'
 license=('Apache License 2.0')
 depends=('openssl')
-makedepends=('cargo' 'cmake' 'clang')
+makedepends=('cargo' 'cmake' 'clang' 'protobuf')
 provides=('lighthouse')
 conflicts=('lighthouse')
 replaces=('lighthouse')
