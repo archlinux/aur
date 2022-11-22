@@ -1,0 +1,17 @@
+pkgbase = v2ray4
+	pkgdesc = A set of network tools that helps you to build your own computer network (old version).
+	pkgver = 4.45.2
+	pkgrel = 1
+	url = https://github.com/v2fly/v2ray-core
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = v2ray-domain-list-community
+	depends = v2ray-geoip
+	conflicts = v2ray
+	conflicts = v2ray-git
+	backup = etc/v2ray/config.json
+	source = v2ray-linux-64.zip::https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip
+	sha512sums = SKIP
+
+pkgname = v2ray4
