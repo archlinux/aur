@@ -1,6 +1,6 @@
 pkgbase = gweb
 	pkgdesc = a simple web browser written in C
-	pkgver = 1.4.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = gweb
 	depends = gtk3
 	depends = webkit2gtk
 	provides = gweb
-	source = https://gitlab.sokoll.com/moritz/gweb/-/archive/3638f2e63fd1a9b7a012899743c7ecee0d4a706a/gweb-3638f2e63fd1a9b7a012899743c7ecee0d4a706a.tar.gz
-	sha256sums = c6cd4a6e21247bc85499b80c791086a1df61ecf34ef7d96e760e073a21f28971
+	source = https://gitlab.sokoll.com/moritz/gweb/-/archive/37d72fb37365de680f7d6fa790534d3fe5aec318/gweb-37d72fb37365de680f7d6fa790534d3fe5aec318.tar.gz
+	sha256sums = 6de73e606fcff7239121e3b369039103669c8027e833fc5ac396af0b9a5ebbe4
 
 pkgname = gweb
