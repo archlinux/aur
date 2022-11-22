@@ -2,7 +2,7 @@
 
 pkgname=cartridge-cli
 pkgrel=1
-pkgver=2.12.2
+pkgver=2.12.3
 pkgdesc='Tarantool Cartridge command-line utility'
 arch=(x86_64)
 url="https://tarantool.io/"
@@ -11,7 +11,7 @@ options=(!lto) # due to go 'relocation target _cgo_yield not defined' error
 depends=(glibc)
 makedepends=(go mage)
 source=(cartridge-cli-$pkgver.tar.gz::https://github.com/tarantool/cartridge-cli/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('d16cd3daac51214b67fb42a971424e5cc5dff76f9f3322085c3d1dbab433fd2a')
+sha256sums=('d279434020a1980e87034c203d1c48be065756a6d76066eca60457587f84a18c')
 
 build() { 
   cd $pkgname-$pkgver
