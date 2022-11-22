@@ -7,11 +7,7 @@ arch=(x86_64)
 url=https://icculus.org/smpeg/
 license=(LGPL)
 depends=(sdl)
-optdepends=(glu)
-makedepends=('mesa'
-            'glu'
-            'subversion'
-            )
+optdepends=('glu: to use glmovie')
 provides=(smpeg1)
 source=('https://archive.archlinux.org/packages/s/smpeg/smpeg-0.4.5-5-x86_64.pkg.tar.zst')
 sha256sums=('a25ef96ff199930e3be79b186f66bc5768909aaabf273d3b301a85f7ddb295b5')
