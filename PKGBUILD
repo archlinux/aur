@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=blockmodeling
-_pkgver=1.1.3
+_pkgver=1.1.4
 pkgname=r-${_pkgname,,}
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Generalized and Classical Blockmodeling of Valued Networks'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f705f92c9b96dcbdd6f109c6a99f88d70c576485369700b82391b6a75afbda6')
+sha256sums=('69ce17ed96ca754a6308edb62188e0040e357568b975ce8986f68ecb2fead2b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

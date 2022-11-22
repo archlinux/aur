@@ -1,6 +1,6 @@
 pkgbase = r-blockmodeling
 	pkgdesc = Generalized and Classical Blockmodeling of Valued Networks
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=blockmodeling
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-blockmodeling
 	optdepends = r-dorng
 	optdepends = r-foreach
 	optdepends = r-sna
-	source = https://cran.r-project.org/src/contrib/blockmodeling_1.1.3.tar.gz
-	sha256sums = 5f705f92c9b96dcbdd6f109c6a99f88d70c576485369700b82391b6a75afbda6
+	source = https://cran.r-project.org/src/contrib/blockmodeling_1.1.4.tar.gz
+	sha256sums = 69ce17ed96ca754a6308edb62188e0040e357568b975ce8986f68ecb2fead2b8
 
 pkgname = r-blockmodeling
