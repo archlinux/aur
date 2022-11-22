@@ -3,8 +3,8 @@
 _pkgbase=liblc3
 pkgbase=liblc3-git
 pkgname=(liblc3-git)
-pkgver=1.0.1.r0.gcf1676d
-pkgrel=1
+pkgver=1.0.1.r5.g685b1d0
+pkgrel=2
 pkgdesc="Low Complexity Communication Codec (LC3)"
 url="https://github.com/google/${_pkgbase}"
 license=(Apache)
@@ -12,17 +12,8 @@ arch=(x86_64)
 makedepends=(git meson)
 source=(
   "git+https://github.com/google/${_pkgbase}.git"
-  "pr-12.patch::https://github.com/google/liblc3/pull/12.patch"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
-
-prepare() {
-  cd $_pkgbase
-  patch -Np1 <../pr-12.patch
-}
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase

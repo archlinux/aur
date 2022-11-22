@@ -1,15 +1,13 @@
 pkgbase = liblc3-git
 	pkgdesc = Low Complexity Communication Codec (LC3)
-	pkgver = 1.0.1.r0.gcf1676d
-	pkgrel = 1
+	pkgver = 1.0.1.r5.g685b1d0
+	pkgrel = 2
 	url = https://github.com/google/liblc3
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = meson
 	source = git+https://github.com/google/liblc3.git
-	source = pr-12.patch::https://github.com/google/liblc3/pull/12.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = liblc3-git
