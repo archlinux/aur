@@ -1,7 +1,7 @@
 pkgbase = slc-cli
 	pkgdesc = Command line tool to generate projects with Silicon Labs SDK
 	pkgver = 5.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://siliconlabs.github.io/slc-specification
 	arch = x86_64
 	license = unknown
@@ -9,9 +9,9 @@ pkgbase = slc-cli
 	depends = python-requests
 	depends = python-websockets
 	depends = python-colorama
-	noextract = slc_cli_linux.zip
+	noextract = slc-cli-5.4.2.zip
 	options = !strip
-	source = https://www.silabs.com/documents/login/software/slc_cli_linux.zip
+	source = slc-cli-5.4.2.zip::https://www.silabs.com/documents/login/software/slc_cli_linux.zip
 	sha256sums = 0befd4e3c919739b1ba366f6d0aac6767e9e552eb023ec2c0cacb880ad301b40
 
 pkgname = slc-cli
