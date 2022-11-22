@@ -1,7 +1,7 @@
 pkgbase = monctl
 	pkgdesc = Monitor Control for Gigabyte G27Q
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gothem/monctl
 	arch = any
 	license = MIT
@@ -9,9 +9,12 @@ pkgbase = monctl
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-hatchling
+	depends = qt5-python-bindings
 	depends = python-qtpy
 	depends = python-pyusb
 	source = https://files.pythonhosted.org/packages/source/m/monctl/monctl-1.0.tar.gz
+	source = 50-gigabyte-monitor.rules
 	sha256sums = 4dccb6c6b7915f2fddb3a9f28e4c3812f62f7ce43b47fa5e3e2baec4b4786337
+	sha256sums = 98eb3014f2577a26582482980c857ae27a2f79adae4ef50abb8bf7476df2f368
 
 pkgname = monctl
