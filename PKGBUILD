@@ -1,6 +1,6 @@
 # Maintainer: Jakob Kreuze <jakob@memeware.net>
 pkgname=pince-git
-pkgver=r643.95dbae2
+pkgver=r1222.9db33c3
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -34,8 +34,8 @@ package() {
 
   sed -i 's/import misc/from \. import misc/g' libpince/libscanmem/scanmem.py
   sed -i 's/\.\/gdb_pince\/gdb.*\/bin\/gdb/\/usr\/bin\/gdb/g' libpince/type_defs.py
-  sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo python3 PINCE.py/' PINCE.sh
-  sed -i 's/\ssudo -E python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo -E python3 PINCE.py/' PINCE.sh
+  sed -i 's/\ssudo/cd \/usr\/share\/pince \&\& sudo/' PINCE.sh
+  sed -i 's/\sgksudo/cd \/usr\/share\/pince \&\& gksudo/' PINCE.sh
   sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
 
   install -d "$pkgdir/usr/bin"
