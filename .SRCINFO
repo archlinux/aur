@@ -1,0 +1,17 @@
+pkgbase = pinterest-downloader-git
+	pkgdesc = Download all images/videos from Pinterest user/board/section.
+	pkgver = e6a2816.20221120.155
+	pkgrel = 1
+	url = https://github.com/limkokhole/pinterest-downloader
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-colorama
+	depends = python-lxml
+	depends = python-requests
+	depends = python-termcolor
+	depends = python-pysocks
+	source = git+https://github.com/limkokhole/pinterest-downloader.git
+	sha256sums = SKIP
+
+pkgname = pinterest-downloader-git
