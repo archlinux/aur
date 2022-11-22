@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libipuz
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Library for parsing .ipuz puzzle files'
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(json-glib)
 makedepends=(meson)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/libipuz-${_commit}.tar.gz")
-b2sums=('ee3fe81b473c4a6dde51d7912dfaf885a11f7323d0fb840260c92f95baff535c798eb7f91a933b3d2c47bc86cb041bf3148780617e9a44f50c413e94371cda18')
+b2sums=('7c95cac07987ba1d5a3614b071fa545fc80b3ad271bb42a3533da8c6f2a286e4e73bcfedb35a03ae55c148602e0701fa51515d5d58975706a8005821117f00cd')
 
 build() {
 	arch-meson "${pkgname}-${_commit}" build
