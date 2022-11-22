@@ -8,6 +8,5 @@ index 7933b7d988..1a9498dd43 100644
  
 +#include <cstring>
 +
- #include "bat/ads/internal/ml/data/text_data.h"
  #include "third_party/zlib/zlib.h"
  

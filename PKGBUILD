@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennana <caleb@alerque.com>
+# Contributor: Caesar Woo <caesar.wu@outlook.com>
 # Contributor: Martin Rodriguez Reboredo <yakoyoku@gmail.com>
 # Contributor: Monarc <warcraft99@web.de>
 # Contributor: Joan Figueras <ffigue at gmail dot com>
@@ -27,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.44.112
+pkgver=1.45.131
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
@@ -66,8 +67,11 @@ makedepends=(cargo-audit
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend')
-_chromium_ver=106.0.5249.119
-_gcc_patchset=2
+_chromium_ver=107.0.5304.110
+_gcc_patchset=1
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kdialog: support for native dialogs in Plasma'
+            'org.freedesktop.secrets: password storage backend')
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
 _brave_base_ver="1.28"
@@ -88,64 +92,74 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-1.43-bitcoin-core_remove-serialize.h.patch
         brave-1.43-brave_today-base_utf_string_conversions.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
-        brave-1.43-ntp_background_images-std-size_t.patch)
-_arch_revision=bf2401407df5bcc938382eb03748fbef41e41c89
-_patches=(unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
-          REVERT-enable-GlobalMediaControlsCastStartStop.patch
-          REVERT-roll-src-third_party-ffmpeg-m102.patch
-          REVERT-roll-src-third_party-ffmpeg-m106.patch
-          angle-wayland-include-protocol.patch)
-for _patch in "${_patches[@]}"; do
-  source+=("$_patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/trunk/$_patch")
-done
+        brave-1.43-ntp_background_images-std-size_t.patch
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/angle-wayland-include-protocol.patch"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/use-oauth2-client-switches-as-default.patch"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/REVERT-enable-GlobalMediaControlsCastStartStop.patch"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch"
+        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch"
+)
+#_arch_revision=bf2401407df5bcc938382eb03748fbef41e41c89
+#_patches=(unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+#          REVERT-enable-GlobalMediaControlsCastStartStop.patch
+#          REVERT-roll-src-third_party-ffmpeg-m102.patch
+#          REVERT-roll-src-third_party-ffmpeg-m106.patch
+#          angle-wayland-include-protocol.patch)
+#for _patch in "${_patches[@]}"; do
+#  source+=("$_patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/trunk/$_patch")
+#done
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121'
+            '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
             'c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '8fc41a0d98b328a12b17d6b6702a65c13292332ed8a843e7f35392424e545913'
             'f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef'
-            '754cecaf8bc6707f95265b5b0d56a3837e115f6583b6125c8e6b9ee37c4d6d8e'
+            'a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b'
             '5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e'
             '0b5764355b9201d201b1e08f700bbb5a7fa238bef127b95d36cbf8ce2afa73a6'
             'ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
+            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
+            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
             'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
-            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572')
+            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=brotli
-  [dav1d]=dav1d
-  [ffmpeg]=ffmpeg
-  [flac]=flac
-  [fontconfig]=fontconfig
-  [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
-  [icu]=icu
-  [jsoncpp]=jsoncpp
-  [libaom]=aom
-  #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/d22d4de94120
-  [libdrm]=
-  [libjpeg]=libjpeg
-  [libpng]=libpng
-  #[libvpx]=libvpx
-  [libwebp]=libwebp
-  [libxml]=libxml2
-  [libxslt]=libxslt
-  [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
-  [zlib]=minizip
+    [brotli]=brotli
+    [dav1d]=dav1d
+    [ffmpeg]=ffmpeg
+    [flac]=flac
+    [fontconfig]=fontconfig
+    [freetype]=freetype2
+    [harfbuzz-ng]=harfbuzz
+    [icu]=icu
+    [jsoncpp]=jsoncpp
+    [libaom]=aom
+    #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/d22d4de94120
+    [libdrm]=
+    [libjpeg]=libjpeg
+    [libpng]=libpng
+    #[libvpx]=libvpx
+    [libwebp]=libwebp
+    [libxml]=libxml2
+    [libxslt]=libxslt
+    [opus]=opus
+    [re2]=re2
+    [snappy]=snappy
+    [woff2]=woff2
+    [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   "$(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')"
@@ -231,8 +245,14 @@ prepare() {
     third_party/libxml/chromium/*.cc \
     third_party/maldoca/src/maldoca/ole/oss_utils.h
 
+  # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
+  # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
+  # runtime -- this allows signing into Chromium without baked-in values
+  patch -Np1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
+
   # Upstream fixes
   patch -Np1 -i "${srcdir}/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch"
+  patch -Np1 -i "${srcdir}/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch"
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
@@ -249,8 +269,7 @@ prepare() {
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i "${srcdir}/patches/chromium-103-VirtualCursor-std-layout.patch"
-  patch -Np1 -i "${srcdir}/patches/chromium-105-compiler.patch"
-  patch -Np1 -i "${srcdir}/patches/chromium-106-AutofillPopupControllerImpl-namespace.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-107-compiler.patch"
 
   # Sysroot usage in autocxx for Rust
   patch -Np1 -i "${srcdir}/rust-autocxx-use_sysroot.patch"
@@ -321,7 +340,7 @@ build() {
   echo "brave_services_key = qjVKcxtUybh8WpKNoQ7EbgbkJTMu7omjDHKk=VrPApb8PwJyPE9eqchxedTsMEWg" > .npmrc
   echo "brave_variations_server_url = https://variations.brave.com/seed" >> .npmrc
   echo "brave_stats_updater_url = https://laptop-updates.brave.com" >> .npmrc
-  echo "brave_stats_api_key = fe033168-0ff8-4af6-9a7f-95e2cbfc" >> .npmrc
+  echo "brave_stats_api_key = fe033168-0ff8-4af6-9a7f-95e2cbfc9f4f" >> .npmrc
   echo "brave_sync_endpoint = https://sync-v2.brave.com/v2" >> .npmrc
   echo "updater_dev_endpoint = https://go-updater-dev.bravesoftware.com/extensions" >> .npmrc
   echo "updater_prod_endpoint = https://go-updater.brave.com/extensions" >> .npmrc
@@ -356,7 +375,10 @@ build() {
       'rtc_use_pipewire=true'
       'link_pulseaudio=true'
       'use_gnome_keyring=false'
+      'use_qt=false' # look into enabling this for M108
       'use_sysroot=false'
+      'use_system_libwayland_server=true'
+      'use_system_wayland_scanner=true'
       'use_custom_libcxx=false'
       'enable_hangout_services_extension=true'
       'enable_widevine=true'

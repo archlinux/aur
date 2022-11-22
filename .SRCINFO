@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.44.112
+	pkgver = 1.45.131
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -40,12 +40,12 @@ pkgbase = brave
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.44.112
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.44.112
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=106.0.5249.119
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.45.131
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.45.131
+	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=107.0.5304.110
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-106-patchset-2/chromium-106-patchset-2.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-107-patchset-1/chromium-107-patchset-1.tar.xz
 	source = https://gitlab.com/hadogenes/brave-patches/-/archive/brave-1.28-patches-1/brave-patches-brave-1.28-patches-1.zip
 	source = chromium-launcher-electron-app.patch
 	source = rust-autocxx-use_sysroot.patch
@@ -56,31 +56,35 @@ pkgbase = brave
 	source = brave-1.43-brave_today-base_utf_string_conversions.patch
 	source = brave-1.43-debounce-debounce_navigation_throttle_fix.patch
 	source = brave-1.43-ntp_background_images-std-size_t.patch
-	source = unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/bf2401407df5bcc938382eb03748fbef41e41c89/trunk/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
-	source = REVERT-enable-GlobalMediaControlsCastStartStop.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/bf2401407df5bcc938382eb03748fbef41e41c89/trunk/REVERT-enable-GlobalMediaControlsCastStartStop.patch
-	source = REVERT-roll-src-third_party-ffmpeg-m102.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/bf2401407df5bcc938382eb03748fbef41e41c89/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch
-	source = REVERT-roll-src-third_party-ffmpeg-m106.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/bf2401407df5bcc938382eb03748fbef41e41c89/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch
-	source = angle-wayland-include-protocol.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/bf2401407df5bcc938382eb03748fbef41e41c89/trunk/angle-wayland-include-protocol.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/REVERT-enable-GlobalMediaControlsCastStartStop.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/angle-wayland-include-protocol.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/a4877c0840780910faa5ec4506e8e1267f8eb942/chromium/trunk/use-oauth2-client-switches-as-default.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = 2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121
+	sha256sums = 2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4
 	sha256sums = c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe
 	sha256sums = 9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5
 	sha256sums = 8fc41a0d98b328a12b17d6b6702a65c13292332ed8a843e7f35392424e545913
 	sha256sums = f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef
-	sha256sums = 754cecaf8bc6707f95265b5b0d56a3837e115f6583b6125c8e6b9ee37c4d6d8e
+	sha256sums = a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b
 	sha256sums = 5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e
 	sha256sums = 0b5764355b9201d201b1e08f700bbb5a7fa238bef127b95d36cbf8ce2afa73a6
 	sha256sums = ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93
 	sha256sums = 30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f
 	sha256sums = ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b
-	sha256sums = b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00
 	sha256sums = 779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6
 	sha256sums = 30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44
 	sha256sums = 4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152
 	sha256sums = cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572
+	sha256sums = 9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716
+	sha256sums = b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00
+	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 
 pkgname = brave
