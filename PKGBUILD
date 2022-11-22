@@ -1,8 +1,8 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=googlemaps
-pkgver=20210323
-_commit=8f7def10c203fd3faa5ef96c5010a7294dca0759
+pkgver=20220503
+_commit=2f8b4ba0ba54ff593511522ab0b9df57ac485054
 pkgrel=1
 pkgdesc='Google Maps plugin for QtLocation'
 url='https://github.com/vladest/googlemaps'
@@ -11,7 +11,7 @@ arch=('x86_64')
 makedepends=('git' 'qt5-tools')
 depends=('qt5-location')
 validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23')
-source=("git+https://github.com/vladest/googlemaps#commit=${_commit}?signed")
+source=("git+https://github.com/vladest/googlemaps#commit=${_commit}")
 sha256sums=('SKIP')
 
 build() {
