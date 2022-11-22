@@ -12,7 +12,7 @@ pkgdesc='Manage domains like packages.'
 arch=(any)
 url=https://gitlab.com/waser-technologies/technologies/dmt
 license=("GNU GPL v3")
-depends=(python python-halo python-prompt-toolkit python-yaml python-requests python-tqdm python-transformers python38-rasa python38-rasa-sdk)
+depends=(python python-halo python-prompt-toolkit python-yaml python-requests python-tqdm python-transformers rasa)
 ## EXTRA_DEPENDS ##
 makedepends=()
 checkdepends=()
@@ -28,7 +28,7 @@ md5sums+=(3e2b0075ebc1ee7ed096ed7fb9175a37)
 
 optin_telemetry() {
     echo "Opt-in not out."
-    python3.8 -m rasa telemetry disable
+    rasa telemetry disable
     echo "type 'rasa telemetry enable' to enable it"
     echo "https://rasa.com/docs/rasa/telemetry/telemetry/"
 }
