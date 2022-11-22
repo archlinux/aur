@@ -1,7 +1,7 @@
 pkgbase = liboffsetfinder64-git
 	pkgdesc = i64bit offsetfinder. It finds offsets, patches, parses Mach-O and even supports IMG4
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cryptiiiic/liboffsetfinder64
 	arch = x86_64
 	license = LGPL-2.1
