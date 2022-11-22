@@ -2,7 +2,7 @@
 pkgbase=python-casa-formats-io
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Code to handle I/O from/to data in CASA format Resources"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ makedepends=('python-setuptools-scm'
              'python-numpydoc'
              'python-sphinx-automodapi'
              'python-dask'
-#            'python-toolz'
+#            'python-toolz' # not needed
              'python-astropy')
-checkdepends=('python-pytest')  # astropy and dask already in makedepends. glue-core for pdepend
+checkdepends=('python-pytest-openfiles')  # astropy and dask already in makedepends. glue-core for pdepend
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fb4d06c549a5711c67a46030771e0eae')
+md5sums=('9ea305e432e6486f8d7a2327ca5b15ec')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
