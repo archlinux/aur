@@ -7,12 +7,14 @@ pkgbase=gprbuild
 pkgname=(libgpr gprbuild)
 epoch=1
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
 license=('GPL3' 'custom')
-makedepends=('gprbuild-bootstrap' 'xmlada')
+
+depends=('xmlada')
+makedepends=('gprbuild-bootstrap' 'which')
 
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
