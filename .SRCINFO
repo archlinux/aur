@@ -1,0 +1,14 @@
+pkgbase = qmk-udev-rules-git
+	pkgdesc = Udev rules to own qmk supported keyboards in bootloader mode
+	pkgver = 0.18.17.r38.g06a3801a278
+	pkgrel = 1
+	url = https://github.com/qmk/qmk_firmware
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	depends = systemd
+	conflicts = qmk-udev-rules
+	source = qmk-firmware::git+https://github.com/qmk/qmk_firmware
+	sha256sums = SKIP
+
+pkgname = qmk-udev-rules-git
