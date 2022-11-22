@@ -1,6 +1,6 @@
 pkgbase = k3s-1.25-bin
 	pkgdesc = Lightweight Kubernetes
-	pkgver = 1.25.3+k3s1
+	pkgver = 1.25.4+k3s1
 	pkgrel = 1
 	url = https://k3s.io
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = k3s-1.25-bin
 	sha256sums = 4f613d87b6fca9b2f2d15700f448538b5537b846405451a1fdc060727445c529
 	sha256sums = cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679
 	sha256sums = a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6
-	source_x86_64 = k3s-1.25.3+k3s1-x86_64::https://github.com/k3s-io/k3s/releases/download/v1.25.3+k3s1/k3s
-	sha256sums_x86_64 = 971a89432a107bae4e8762271ce74ccb02ccea5a21f2c6bdab779ffca976ad4a
-	source_armv7h = k3s-1.25.3+k3s1-armv7h::https://github.com/k3s-io/k3s/releases/download/v1.25.3+k3s1/k3s-armhf
-	sha256sums_armv7h = b960a3939a2190f55588c26cd11e9ee8e4f104f46d33bf14f25523b7c8bd1554
-	source_aarch64 = k3s-1.25.3+k3s1-aarch64::https://github.com/k3s-io/k3s/releases/download/v1.25.3+k3s1/k3s-arm64
-	sha256sums_aarch64 = f256de3455229829f4bf7a9432480e1b612f9662661b236841bb58a254ea843e
+	source_x86_64 = k3s-1.25.4+k3s1-x86_64::https://github.com/k3s-io/k3s/releases/download/v1.25.4+k3s1/k3s
+	sha256sums_x86_64 = 744e136a50a61095ae95cb0fe60f60b81da563cde583a3bedb3f2e0e6394efc2
+	source_armv7h = k3s-1.25.4+k3s1-armv7h::https://github.com/k3s-io/k3s/releases/download/v1.25.4+k3s1/k3s-armhf
+	sha256sums_armv7h = 7f131ea79e0763ad3d90f7b32c7303da150e0f2bec0911a3884547c2b8a30212
+	source_aarch64 = k3s-1.25.4+k3s1-aarch64::https://github.com/k3s-io/k3s/releases/download/v1.25.4+k3s1/k3s-arm64
+	sha256sums_aarch64 = 320e6d1c5dd9c941a2f50684ad0db6274834c6403587591ba9906c076351f626
 
 pkgname = k3s-1.25-bin
