@@ -1,4 +1,4 @@
-pkgname=v2ray4
+pkgname=v2ray4-bin
 pkgver=4.45.2
 pkgrel=1
 pkgdesc="A set of network tools that helps you to build your own computer network (old version)."
