@@ -1,4 +1,4 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=liboffsetfinder64-git
@@ -21,7 +21,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/liboffsetfinder64"
-  git submodule update --init external/libgeneral
 
   # Remove img4tool and libplist from build chain,
   # since we can add those to the dependency list
