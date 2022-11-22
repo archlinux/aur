@@ -1,0 +1,70 @@
+From 1680eda71781e0bfb836ec1d9c35432aaffeb3c2 Mon Sep 17 00:00:00 2001
+From: c4pp4
+Date: Sat, 16 Jul 2022 01:37:55 +0200
+Subject: [PATCH 1/1] Add unity-version.xml used by u-c-c
+
+Signed-off-by: c4pp4
+---
+ CMakeLists.txt       | 7 +++++++
+ config.h.cmake       | 7 +++++++
+ unity-version.xml.in | 8 ++++++++
+ 3 files changed, 22 insertions(+)
+ create mode 100644 unity-version.xml.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e3abf80..a075e46 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,11 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGNOME_DESKTOP_USE_UNSTABLE_API -std=c
+ set (CMAKE_CXX_FLAGS_DEBUG "-g3 -DUNITY_DEBUG_BUILD")
+ set (CMAKE_CXX_FLAGS_RELEASE "")
+ 
++set (UNITY_RELEASE "${UNITY_RELEASE}")
++set (UNITY_DATE_COMMENT_START "<!--")
++set (UNITY_DATE_COMMENT_END "-->")
++string(TIMESTAMP UNITY_DATE %Y-%m-%d)
++
+ option(
+   ENABLE_X_SUPPORT
+   "Enable X.org support in unity"
+@@ -343,3 +348,5 @@ if (DOXYGEN_FOUND STREQUAL "YES")
+ 
+ endif (DOXYGEN_FOUND STREQUAL "YES")
+ 
++configure_file(unity-version.xml.in ${CMAKE_CURRENT_BINARY_DIR}/unity-version.xml)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/unity-version.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/unity)
+diff --git a/config.h.cmake b/config.h.cmake
+index 3caa2ec..c7db79c 100644
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -5,6 +5,13 @@
+ #cmakedefine UNITY_DATADIR "@UNITY_DATADIR@"
+ #cmakedefine UNITY_LIBDIR "@UNITY_LIBDIR@"
+ #cmakedefine UNITY_INSTALL_LIBDIR "@UNITY_INSTALL_LIBDIR@"
++#cmakedefine UNITY_MAJOR "@UNITY_MAJOR@"
++#cmakedefine UNITY_MINOR "@UNITY_MINOR@"
++#cmakedefine UNITY_MICRO "@UNITY_MICRO@"
++#cmakedefine UNITY_RELEASE "@UNITY_RELEASE@"
++#cmakedefine UNITY_DATE_COMMENT_START "@UNITY_DATE_COMMENT_START@"
++#cmakedefine UNITY_DATE_COMMENT_END "@UNITY_DATE_COMMENT_END@"
++#cmakedefine UNITY_DATE "@UNITY_DATE@"
+ #cmakedefine PKGDATADIR "@PKGDATADIR@"
+ #cmakedefine LOCALE_DIR "@LOCALE_DIR@"
+ #cmakedefine VERSION "@VERSION@"
+diff --git a/unity-version.xml.in b/unity-version.xml.in
+new file mode 100644
+index 0000000..d54343f
+--- /dev/null
++++ b/unity-version.xml.in
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<unity-version>
++  <platform>@UNITY_MAJOR@</platform>
++  <minor>@UNITY_MINOR@</minor>
++  <micro>@UNITY_MICRO@</micro>
++  <release>@UNITY_RELEASE@</release>
++  @UNITY_DATE_COMMENT_START@<date>@UNITY_DATE@</date>@UNITY_DATE_COMMENT_END@
++</unity-version>
+-- 
+2.35.1
+
