@@ -6,7 +6,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 _pkgbase=dmt
 pkgname=python-dmt
 epoch=
-pkgver=r54.b0599a2
+pkgver=r58.389bfb7
 pkgrel=1
 pkgdesc='Manage domains like packages.'
 arch=(any)
@@ -21,7 +21,7 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(git+https://gitlab.com/waser-technologies/technologies/dmt.git)
+source+=("git+https://gitlab.com/waser-technologies/technologies/dmt.git")
 md5sums+=(SKIP)
 source+=(LICENSE)
 md5sums+=(3e2b0075ebc1ee7ed096ed7fb9175a37)
