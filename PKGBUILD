@@ -1,31 +1,39 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
+
 pkgname=pmd
-pkgver=6.40.0
+pkgver=6.51.0
 pkgrel=1
-pkgdesc="An extensible cross-language static code analyzer."
+pkgdesc="Extensible cross-language static code analyzer"
 arch=('any')
-url="https://pmd.github.io/"
+url="https://github.com/pmd/pmd"
 license=('BSD' 'Apache')
-depends=('java-environment')
-conflicts=("pmd-bin")
-replaces=("pmd-bin")
-source=("https://github.com/$pkgname/$pkgname/releases/download/${pkgname}_releases/$pkgver/$pkgname-bin-$pkgver.zip"
+depends=('java-runtime>=7')
+makedepends=('java-environment>=11' 'maven')
+source=("$pkgname-$pkgver.zip::$url/releases/download/pmd_releases%2F$pkgver/pmd-src-$pkgver.zip"
         pmdapp)
-sha256sums=('31b2009e2b52a35a0e9c28c4ae25c6eea21611b960232c6a0240fecf77995955'
-            'b1a73343ba0435801ce18c7fc18e14b7fed6a9be7b0a5907b67730471c176fc8')
+sha256sums=('007990bec5ca9780dacc8adb30b58e8b8441de4f822b60c3533da1002cefab78'
+            '047ea25735c7fabb75679889652d82e3a557c8df8d87380045c5cd3eb5f5b02e')
+
+prepare() {
+	cd "pmd-src-$pkgver"
+	JAVA_HOME=/usr/lib/jvm/default mvn dependency:go-offline
+}
+
+build() {
+	cd "pmd-src-$pkgver"
+	JAVA_HOME=/usr/lib/jvm/default mvn install -Dmaven.test.skip=true
+	mkdir -p "$srcdir/build"
+	bsdtar -xf "pmd-dist/target/pmd-bin-$pkgver.zip" -C "$srcdir/build" --strip-components 1 "pmd-bin-$pkgver/lib"
+}
 
 package() {
-    cd "$pkgname-bin-$pkgver"
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    for app in pmd-bgastviewer pmd-cpd pmd-cpdgui pmd-designer pmd-designerold pmd; do
-        install -Dm755 "../pmdapp" "$pkgdir/usr/bin/$app"
-    done
-
-    cd lib
-    for file in *.jar; do
-        install -Dm644 "$file" "$pkgdir/usr/share/java/$pkgname/$file"
-    done
+	install -Dvm644 build/lib/*.jar -t "$pkgdir/usr/share/java/$pkgname/"
+	install -Dv pmdapp -t "$pkgdir/usr/bin/"
+	for i in pmd-bgastviewer pmd-cpd pmd-cpdgui pmd-designer pmd-designerold pmd; do
+		ln -sv /usr/bin/pmdapp "$pkgdir/usr/bin/$i"
+	done
+	cd "pmd-src-$pkgver"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
