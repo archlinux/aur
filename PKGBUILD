@@ -12,8 +12,9 @@ optdepends=('doxygen: Documentation Support'
             'unity-control-center: not found yet'
             'unity-indicators-meta: not found yet'
             'unity-lens-meta: not found yet'
-            'unity-session-migration: not found yet')
-depends=(glew glewmx gtk-engine-murrine xcb-util-wm startup-notification libxtst dbus gnome-desktop gsettings-desktop-schemas xpathselect libxslt unity-asset-pool libxrender libxext libx11 gdk-pixbuf2 unity-greeter unity-language-pack unity-session-shortcuts libglvnd nemo gnome-session dconf at-spi2-atk libxi pango libxfixes libnotify cairo ido unity-settings-daemon nux gsettings-ubuntu-touch-schemas compiz bamf pam zeitgeist libunity-misc libunity libsigc++ libappindicator-gtk3 libdbusmenu-gtk3 json-glib dee atk appstream-glib)
+            'unity-session-migration: not found yet'
+            'unity-greeter: lack of dependencies')
+depends=(glew glewmx gtk-engine-murrine xcb-util-wm startup-notification libxtst dbus gnome-desktop gsettings-desktop-schemas xpathselect libxslt unity-asset-pool libxrender libxext libx11 gdk-pixbuf2 unity-language-pack unity-session-shortcuts libglvnd nemo gnome-session dconf at-spi2-atk libxi pango libxfixes libnotify cairo ido unity-settings-daemon nux gsettings-ubuntu-touch-schemas compiz bamf pam zeitgeist libunity-misc libunity libsigc++ libappindicator-gtk3 libdbusmenu-gtk3 json-glib dee atk appstream-glib)
 makedepends=(gcc glibc systemd gtk3-ubuntu cmake ninja patch)
 _commit=e7c90e4fad47878161fa9ba4a2aedacada624c1b
 source=("git+https://gitlab.com/ubuntu-unity/unity/unity.git#commit=$_commit"
