@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-memory-profiler
-pkgver=0.60
+pkgver=0.61
 pkgrel=1
 pkgdesc="A module for monitoring memory usage of a python program"
 url="https://github.com/pythonprofilers/memory_profiler"
@@ -11,7 +11,7 @@ depends=('python-psutil')
 makedepends=('python-setuptools')
 checkdepends=('python-numpy')
 source=("https://github.com/pythonprofilers/memory_profiler/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('407e44a410cdb4c7c8cc5ff40198c28012f8b0c6bba88d2d1612681eb621a1b802ef137be62fc64ca9e3c362ca3814433bc12169d7c3827bf97293c5bbb8bfbc')
+sha512sums=('02c70a049107ad4df635e20e22eaaa91fd4e4fd29690b0a7c314e08ed6e076bbb81f85dd97924ed35f7f0133cfd3c7e55b35400449489733beb172debe592c4e')
 
 build() {
   cd memory_profiler-$pkgver
