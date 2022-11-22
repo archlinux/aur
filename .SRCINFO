@@ -1,11 +1,11 @@
 pkgbase = cntb-bin
 	pkgdesc = Command-line interface (CLI) for managing products from Contabo like VPS and VDS
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/contabo/cntb
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/contabo/cntb/releases/download/v1.3.0/cntb_v1.3.0_Linux_x86_64.tar.gz
-	sha256sums = 52f1dd26ea77f98b12ae3c00c7ab32250c1d4bc6516946941362c2e3ba943258
+	source = https://github.com/contabo/cntb/releases/download/v1.3.1/cntb_v1.3.1_Linux_x86_64.tar.gz
+	sha256sums = 90733d056d2086c2ec19ebff2b36cc3785f32c2cf118d93e6d189595c785c2b5
 
 pkgname = cntb-bin
