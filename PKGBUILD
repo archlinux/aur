@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Zen Wen <zen.8841@gmail.com>
 
 pkgname=python-pyqt5-webkit
 pkgdesc="Python bindings for the Qt5WebKit"
@@ -34,6 +34,7 @@ package(){
 
   # Remove files provided by pyqt5:
   rm -r "$pkgdir"/usr/{bin,share,lib/python*/site-packages/{*.dist-info,PyQt5/{QtCore.*,bindings/QtCore,uic,sip.pyi,py.typed,__init__.py}}}
+  rm "$pkgdir"/usr/lib/python3.10/site-packages/dbus/mainloop/pyqt5.abi3.so
 
   # compile Python bytecode
   python -m compileall -d / "$pkgdir"/usr/lib
