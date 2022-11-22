@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=16
+pkgrel=17
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -205,7 +205,7 @@ package() {
     if [ -d "${object}" ]; then
       if [ "${object}" == "LocalBuilds" ]; then
         if [ -d LocalBuilds/Engine/Linux/ ]; then
-          mv "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}/${pkgname}"
+          mv "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}/"
         fi
       else
         mkdir -p "${pkgdir}/${_install_dir}/${object}"
