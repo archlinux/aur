@@ -1,14 +1,24 @@
 pkgbase = django-haystack-git
-	pkgdesc = Modular search for Django.
-	pkgver = 20120918
+	pkgdesc = Modular search for Django. Git version.
+	pkgver = v3.2.1+4+g8ca77121
 	pkgrel = 1
-	url = http://haystacksearch.org/
+	epoch = 1
+	url = https://github.com/django-haystack/django-haystack
 	arch = any
-	license = MIT
+	license = BSD
 	makedepends = git
-	depends = python
-	depends = django
-	optdepends = python2-pysolr-git: solr backend
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-django
+	optdepends = python-elasticsearch: interface with an elasticsearch instance as search backend
+	optdepends = python-pysolr: interface with a solr instance as search backend
+	optdepends = python-whoosh: use whoosh as search backend
+	optdepends = python-xapian-haystack: use python-xapian as search backend
+	provides = python-django-haystack=v3.2.1+4+g8ca77121
+	conflicts = python-django-haystack
+	source = git+https://github.com/django-haystack/django-haystack.git
+	md5sums = SKIP
 
 pkgname = django-haystack-git
-

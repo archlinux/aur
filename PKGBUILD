@@ -1,46 +1,39 @@
 # Maintainer: Lubosz Sarnecki <lubosz at gmail com>
 
 pkgname=django-haystack-git
-pkgver=20120918
+pkgver=v3.2.1+4+g8ca77121
 pkgrel=1
-pkgdesc="Modular search for Django."
+epoch=1
+pkgdesc="Modular search for Django. Git version."
 arch=(any)
-url="http://haystacksearch.org/"
-license=('MIT')
-depends=('python' 'django')
-optdepends=('python2-pysolr-git: solr backend')
-makedepends=('git')
-source=()
-md5sums=()
+url="https://github.com/django-haystack/django-haystack"
+license=(BSD)
+depends=(python-django)
+optdepends=(
+  'python-elasticsearch: interface with an elasticsearch instance as search backend'
+  'python-pysolr: interface with a solr instance as search backend'
+  'python-whoosh: use whoosh as search backend'
+  'python-xapian-haystack: use python-xapian as search backend'
+)
+makedepends=(git python-build python-installer python-setuptools-scm python-wheel)
+provides=("python-django-haystack=$pkgver")
+conflicts=(python-django-haystack)
+source=("git+https://github.com/django-haystack/django-haystack.git")
+md5sums=("SKIP")
 
-_gitroot="git://github.com/toastdriven/django-haystack.git"
-_gitname="django-haystack"
+pkgver() {
+  cd django-haystack
+  git describe --tags | sed 's/-/+/g'
+}
 
 build() {
-  msg "Connecting to github...."
-  if [[ -d ${srcdir}/${_gitname} ]] ; then
-    cd ${_gitname}
-    git pull origin
-    msg "The local files are updated..."
-  else
-    git clone ${_gitroot}
-  fi
-
-  msg "git clone done."
-  
-  if [[ -d ${srcdir}/${_gitname}-build ]]; then
-    msg "Cleaning the previous build directory..." 
-    rm -rf ${srcdir}/${_gitname}-build
-  fi
-
-  git clone ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
-
-  cd ${srcdir}/${_gitname}-build
-  
-	python2 setup.py build || return 1
+  cd django-haystack
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd ${srcdir}/${_gitname}-build
-	python2 setup.py install --root=$pkgdir --optimize=1 || return 1
+  cd django-haystack
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 {AUTHORS,CONTRIBUTING.md,README.rst} -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
