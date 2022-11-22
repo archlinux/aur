@@ -1,6 +1,6 @@
 pkgbase = chef-workstation
 	pkgdesc = Chef Workstation gives you everything you need to get started with Chef. Start scanning and configuring your environments today with InSpec and chef-run.
-	pkgver = 22.4.861
+	pkgver = 22.10.1013
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-workstation/
 	arch = x86_64

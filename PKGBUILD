@@ -1,4 +1,4 @@
-# Maintainer: Томас <70m4c@70m4c.su>
+# Maintainer: Paweł Otlewski <pawel@idkcloud.com>
 
 # shellcheck disable=SC2148 # Ignore lack of shebang
 # shellcheck disable=SC2034 # Ignore "unused" PKGBUILD variables
