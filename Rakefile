@@ -7,8 +7,8 @@ require 'mixlib/install'
 chefio_options = {
   channel: :stable,
   product_name: 'chef-workstation',
-  platform: "ubuntu",
-  platform_version: "18.04",
+  platform: "debian",
+  platform_version: "11",
   architecture: "x86_64"
 }
 
