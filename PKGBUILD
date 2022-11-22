@@ -2,14 +2,14 @@
 
 pkgname=gnatdoc
 pkgver=23.0.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='GNAT documentation generation tool.'
 url='https://github.com/AdaCore/gnatdoc'
 arch=('i686' 'x86_64')
 #license=('GPL3' 'custom')
 
-depends=(gnatcoll-core libvss markdown gpr-unit-provider libadalang)
+depends=(gnatcoll-core markdown gpr-unit-provider)
 makedepends=('gprbuild')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
