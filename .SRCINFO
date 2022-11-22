@@ -1,6 +1,6 @@
 pkgbase = rssnix-git
 	pkgdesc = Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader
-	pkgver = r26.b2e2135
+	pkgver = r30.95ebe7d
 	pkgrel = 1
 	url = https://github.com/jafarlihi/rssnix
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = rssnix-git
 	optdepends = ranger: enhanced viewer
 	provides = rssnix
 	conflicts = rssnix
+	conflicts = rssnix-bin
 	source = git+https://github.com/jafarlihi/rssnix.git
 	sha256sums = SKIP
 
