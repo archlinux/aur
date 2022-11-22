@@ -1,4 +1,5 @@
-# Maintainer: Coelacanthus <coelacanthus@outlook.com>
+# Maintainer: yuri_k7 <riyu12383@gmail.com>
+# Contributor: Coelacanthus <coelacanthus@outlook.com>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Christoph Zeiler <rabyte@gmail.com>
@@ -18,7 +19,7 @@ depends=('sdl_image'
          'fontconfig'
          'libjpeg'
          'bzip2'
-         'smpeg'
+         'smpeg1'
          'cmake'
          'ninja'
          )
