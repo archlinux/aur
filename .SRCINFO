@@ -1,0 +1,13 @@
+pkgbase = unity-asset-pool
+	pkgdesc = Design assets for Unity
+	pkgver = 0.8.24.17.10.20170507
+	pkgrel = 1
+	url = https://launchpad.net/unity-asset-pool
+	arch = any
+	license = GPL
+	makedepends = icon-naming-utils
+	depends = adwaita-icon-theme
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/unity-asset-pool_0.8.24+17.10.20170507.orig.tar.gz
+	sha512sums = SKIP
+
+pkgname = unity-asset-pool
