@@ -1,0 +1,26 @@
+pkgbase = unity-indicator-session
+	pkgdesc = Indicator showing session management, status and user switching used by the Unity7 user interface
+	pkgver = 17.3.20.21.10.20210613.1
+	pkgrel = 1
+	url = https://launchpad.net/indicator-session
+	arch = x86_64
+	license = GPL
+	makedepends = cmake-extras
+	makedepends = systemd
+	makedepends = glib2
+	makedepends = ninja
+	depends = unity-settings-daemon
+	depends = dbus
+	depends = ubuntu-docs
+	depends = gnome-user-docs
+	depends = yelp
+	depends = glibc
+	depends = gsettings-desktop-schemas
+	depends = gnome-settings-daemon
+	depends = dconf
+	depends = libindicator-gtk3
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/indicator-session_17.3.20+21.10.20210613.1.orig.tar.gz
+	source = unity-yelp.desktop
+	sha512sums = SKIP
+
+pkgname = unity-indicator-session

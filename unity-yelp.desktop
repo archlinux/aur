@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Unity Help
+Comment=Get help with Unity
+Keywords=documentation;information;manual;help;
+OnlyShowIn=Unity;
+Exec=yelp help:ubuntu-help
+Icon=help-browser
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Core;Documentation;Utility;
+X-GNOME-Gettext-Domain=indicator-session
