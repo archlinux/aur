@@ -14,14 +14,15 @@ pkgname=(
 )
 epoch=1
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings'
 arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
-makedepends=('python' 'gprbuild' 'gnatcoll-core' 'libiconv' 'syslog-ng')
+depends=('gnatcoll-core')
+makedepends=('python' 'gprbuild' 'libiconv' 'syslog-ng')
 
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "0002-fix-python-don-t-cache-prefix-during-install.patch")
