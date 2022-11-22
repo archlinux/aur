@@ -1,25 +1,34 @@
-# Maintainer: Mikael Blomstrand <gmail.com: kmbloms>
+# Contributor: éclairevoyant
+# Contributor: Mikael Blomstrand <gmail.com: kmbloms>
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname=futhark
-pkgver=0.15.3
+pkgver=0.22.4
 pkgrel=1
 pkgdesc="A data-parallel functional programming language."
 arch=('x86_64')
 url='https://futhark-lang.org/'
 license=('ISC')
 depends=('ncurses5-compat-libs' 'zlib')
+makedepends=('cabal-static' 'ghc>=7.0.1' 'ghc-libs' 'ghc-static')
 optdepends=('opencl-headers: OpenCL backend'
             'cuda: CUDA backend'
             'python-pyopencl: PyOpenCL backend')
-source=("https://github.com/diku-dk/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.xz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/diku-dk/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5edf79ed2076192ead64efb8a4d30d05b56b2c1ec5bdd0905c33d6099d312850')
 
-sha1sums=('f3eaeef88a3d59d908c126a73f8d55a884f59386')
-sha256sums=('df90f913a0fab7d3e1b7dcfcea1d777f637b65301ca4269384f02d5b076747cf')
-sha512sums=('2717779cd805cec88a27d65b0cbb4114be78274f815f18224a28a9401ebfc8d7c752ed9aebec346ace9990dde129cb04d46e67ef55888cf3915427b4d4c9aa1f')
+prepare() {
+	cd $pkgname-$pkgver
+	make configure
+}
+
+build() {
+	cd $pkgname-$pkgver
+	make build
+}
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}-linux-x86_64"
-    make PREFIX="${pkgdir}/usr" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd $pkgname-$pkgver
+	make PREFIX="$pkgdir/usr" install
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
