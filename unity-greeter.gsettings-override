@@ -1,0 +1,16 @@
+[com.canonical.unity-greeter:unity-greeter]
+play-ready-sound = false
+
+[com.canonical.unity.settings-daemon.plugins.power:unity-greeter]
+button-sleep = 'suspend'
+critical-battery-action = 'suspend'
+sleep-inactive-ac-timeout = 0
+
+## nm-applet and indicator-keyboard icon theme, password field cursor ##
+[org.gnome.desktop.interface:unity-greeter]
+icon-theme = 'ubuntu-mono-dark'
+cursor-theme = 'DMZ-White'
+
+## libnotify font rendering (nm-applet notification) ##
+[org.gnome.settings-daemon.plugins.xsettings.deprecated:unity-greeter]
+antialiasing = 'rgba'
