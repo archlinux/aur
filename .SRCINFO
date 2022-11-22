@@ -1,0 +1,22 @@
+pkgbase = rssnix-bin
+	pkgdesc = Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/jafarlihi/rssnix
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	optdepends = vim: default viewer
+	optdepends = ranger: enhanced viewer
+	provides = rssnix
+	conflicts = rssnix-git
+	conflicts = rssnix
+	source_x86_64 = rssnix-x64_0.2.1.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.2.1/rssnix_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7657a0c6d9ea501fc5b1c759f26ec75023518f19d475a8443785da64957d1c02
+	source_i686 = rssnix_386_0.2.1.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.2.1/rssnix_0.2.1_linux_386.tar.gz
+	sha256sums_i686 = 4b8e8858a4a8e36a4e16d28bf8d1a3b19ce139006f5754eaf774a42b4f3b76bb
+	source_aarch64 = rssnix_arm64_0.2.1.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.2.1/rssnix_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 52ea3673a6621f63e2351d1872971b40567aac81d1e8caeb8b2cbb1d9b99322b
+
+pkgname = rssnix-bin
