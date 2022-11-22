@@ -15,6 +15,8 @@ source=("$pkgname-$pkgver.zip::$url/releases/download/$pkgver/ClearURLs-chrome.z
 noextract=("$pkgname-$pkgver.zip")
 sha256sums=('fdc576f7059a41571c57a4db2b9990e90df50e53ed1d132cc039549bd6eb5df0'
             '81e2b3fc4c621493c9c3e7625064b0ec5cb8e0dc64d8715ffd10c46de0a419d8')
+provides=('chromium-extension-clearurls')
+conflicts=('chromium-extension-clearurls')
 
 package() {
     install -Dm644 "$pkgname-$pkgver.crx" "$pkgdir/usr/share/$pkgname/$pkgname.crx"
