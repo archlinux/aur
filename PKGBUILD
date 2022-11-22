@@ -2,7 +2,7 @@
 
 _pkgname=rescrobbled
 pkgname="${_pkgname}-git"
-pkgver=0.5.2.r0.ge70f327
+pkgver=0.6.2.r0.gec0fc3d
 pkgrel=1
 pkgdesc="Music scrobbler daemon using the MPRIS D-Bus interface."
 arch=('x86_64')
