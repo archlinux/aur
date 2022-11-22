@@ -5,7 +5,7 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=1.9.0.0
+pkgver=2.0.0.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
