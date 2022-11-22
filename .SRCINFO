@@ -11,7 +11,6 @@ pkgbase = unity-indicator-session
 	makedepends = ninja
 	depends = unity-settings-daemon
 	depends = dbus
-	depends = ubuntu-docs
 	depends = gnome-user-docs
 	depends = yelp
 	depends = glibc
