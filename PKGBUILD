@@ -19,14 +19,12 @@ sha256sums=("c7c0ac859547a53dc0bb60c4370e3063ac612a2d229d656b1465715b099afb11")
 prepare()
 {
     cd "$srcdir/$pkgname-$pkgver"
-
     make setup prefix="$pkgdir/usr" GPR2KBDIR=/usr/share/gprconfig
 }
 
 build()
 {
     cd "$srcdir/$pkgname-$pkgver"
-
     make
 }
 
