@@ -1,0 +1,28 @@
+From 3d3d8eaaa1b6887e86a379d1f847c0ac2183928d Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Tue, 22 Nov 2022 11:04:04 +0100
+Subject: [PATCH 8/8] hmderrors_public: Remove usage of undefined enum.
+
+VRInitError_Init_CreateDriverDirectDeviceFailed was removed in
+OpenVR SDK 1.23.7.
+
+Fixed the build.
+---
+ src/vrcommon/hmderrors_public.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/vrcommon/hmderrors_public.cpp b/src/vrcommon/hmderrors_public.cpp
+index 6f44d3a..786f249 100644
+--- a/src/vrcommon/hmderrors_public.cpp
++++ b/src/vrcommon/hmderrors_public.cpp
+@@ -180,7 +180,6 @@ const char *GetIDForVRInitError( vr::EVRInitError eError )
+ 		RETURN_ENUM_AS_STRING( VRInitError_Init_PrismNeedsNewDrivers );
+ 		RETURN_ENUM_AS_STRING( VRInitError_Init_PrismStartupTimedOut );
+ 		RETURN_ENUM_AS_STRING( VRInitError_Init_CouldNotStartPrism );
+-		RETURN_ENUM_AS_STRING( VRInitError_Init_CreateDriverDirectDeviceFailed );
+ 		RETURN_ENUM_AS_STRING( VRInitError_Init_PrismExitedUnexpectedly );
+ 
+ 		RETURN_ENUM_AS_STRING( VRInitError_Driver_Failed );
+-- 
+2.38.1
+

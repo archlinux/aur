@@ -1,6 +1,6 @@
 pkgname=openvr-git
-pkgver=1.16.8.r0.g4c85abc
-pkgrel=2
+pkgver=1.23.7.r0.g08de382
+pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
 url="https://github.com/ValveSoftware/openvr"
@@ -19,14 +19,16 @@ source=("git+https://github.com/ValveSoftware/openvr.git"
         'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch' # Add ability to build with system installed jsoncpp
         'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1524.patch' # fix broken 1.6.8 build https://github.com/ValveSoftware/openvr/issues/1525
         '0001-Add-include-stdarg.h-to-strtools_public.cpp.patch'                            # missing include for va_start and va_end
+        '0008-hmderrors_public-Remove-usage-of-undefined-enum.patch'                        # Delete remains of removed enum
         )
 md5sums=('SKIP'
          '4aa6ee8199d86dde2a563b4495f41a53'
          'd3dc9d20967362a2e92e3fb1c7f82b57'
          'e68ff412ff73b1ca75f8b17ab6c7069a'
          'b9ce6c53ec78251d82460f10e07e6645'
-         'fb7e22a32ee2f35bd5555d13a5700ba6'
-         'ac790ec12a558931895504f1ca92c364')
+         '30e13170804c6d6756d74fa1ee7bdcb0'
+         'ac790ec12a558931895504f1ca92c364'
+         '9193a495096b6736d9aeb3ee2bad9808')
 
 install_examples=false
 
@@ -45,7 +47,8 @@ prepare() {
     "../0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch" \
     "../1178.patch" \
     "../1524.patch" \
-    "../0001-Add-include-stdarg.h-to-strtools_public.cpp.patch"
+    "../0001-Add-include-stdarg.h-to-strtools_public.cpp.patch" \
+    "../0008-hmderrors_public-Remove-usage-of-undefined-enum.patch"
   do
     echo "Applying $i"
     git apply "$i"
