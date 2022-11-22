@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-mplfinance
 _pkgname=${pkgname:7}
-pkgver=0.12.9b1
+pkgver=0.12.9b5
 pkgrel=1
 pkgdesc="Utilities for the visualization, and visual analysis, of financial data"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=(python-build python-installer python-wheel)
 depends=(python)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('33691b7d84cfc88d3c56e21583a3c8a655bc0bbaa334c07593de166b82bf81b2')
+sha256sums=('4efa30fdfbe8bebbc44dc3f651702c1fa730a3553352e6373f97de8b88df6fa5')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
