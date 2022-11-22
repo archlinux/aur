@@ -10,10 +10,8 @@ arch=('x86_64')
 url="https://github.com/Cryptiiiic/liboffsetfinder64"
 license=('LGPL-2.1')
 makedepends=('libplist')
-source=("git+https://github.com/Cryptiiiic/liboffsetfinder64.git"
-	"libgeneral.patch")
-sha512sums=('SKIP'
-            '8e055ce5021bc983e0a3bc459728b6035842f5a46706e4f047f22e0c55a7eeaf2a0581e904f9342b3baff34c394a7b7db644c474f7e59548f133e256e79ce695')
+source=("git+https://github.com/Cryptiiiic/liboffsetfinder64.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -38,11 +36,6 @@ prepare() {
   # Disable machopatchfinder64 and kernelpatchfinder64,
   # not working on Linux systems
   sed -i '14,15d' liboffsetfinder64/Makefile.am
-
-  # Applying libgeneral.patch
-  # see: https://github.com/tihmstar/liboffsetfinder64/issues/5#issuecomment-538143482
-  cd external/libgeneral
-  patch -p1 -i "${srcdir}/libgeneral.patch"
 }
 
 build() {
