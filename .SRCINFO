@@ -1,6 +1,6 @@
 pkgbase = python-holidays
 	pkgdesc = Generate and work with holidays in Python
-	pkgver = 0.16
+	pkgver = 0.17
 	pkgrel = 2
 	url = https://pypi.org/project/holidays
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-holidays
 	depends = python-convertdate>=2.3.0
 	depends = python-korean_lunar_calendar
 	depends = python-hijri-converter
-	source = https://files.pythonhosted.org/packages/source/h/holidays/holidays-0.16.tar.gz
-	sha256sums = 1d7f4fd6b1980298fbbb3316b0d57fa6f15b5313074cdacc12a3ab93bf3ca5cd
+	source = https://files.pythonhosted.org/packages/source/h/holidays/holidays-0.17.tar.gz
+	sha256sums = 9f16b60f07be2a03caaa3d6ca8b0d66aee8990b7206a0d1394ce31fad2b4242e
 
 pkgname = python-holidays
