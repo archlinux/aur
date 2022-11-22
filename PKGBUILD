@@ -1,4 +1,4 @@
-# Maintainer: Victor <victor@xirion.net>
+# Maintainer: Paweł Otlewski <pawel@idkcloud.com>
 
 pkgname=rke-bin
 pkgver=1.4.0
