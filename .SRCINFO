@@ -1,0 +1,16 @@
+pkgbase = xpathselect
+	pkgdesc = Select objects in an object tree using XPath queries
+	pkgver = 1.4.15.10.20150824.1
+	pkgrel = 1
+	url = https://launchpad.net/xpathselect
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = ninja
+	makedepends = cmake
+	depends = boost
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xpathselect_1.4+15.10.20150824.1.orig.tar.gz
+	sha512sums = SKIP
+
+pkgname = xpathselect
