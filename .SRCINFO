@@ -1,13 +1,16 @@
 pkgbase = chromium-extension-clearurls
 	pkgdesc = a chromium extension to automatically remove tracking elements from URLs to help protect your privacy
-	pkgver = 1.25.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/ClearURLs/Addon
 	arch = any
 	license = LGPL3
+	makedepends = unzip
 	depends = chromium
-	noextract = chromium-extension-clearurls-1.25.0.crx
-	source = chromium-extension-clearurls-1.25.0.crx::https://github.com/ClearURLs/Addon/releases/download/1.25.0/ClearURLs-1.25.0-chrome.crx
-	sha256sums = 3e5ffa9340f56105ca58b90d71a770985a60d7bfd0e66337226fa6ac416f359a
+	noextract = chromium-extension-clearurls-1.26.0.zip
+	source = chromium-extension-clearurls-1.26.0.zip::https://github.com/ClearURLs/Addon/releases/download/1.26.0/ClearURLs-chrome.zip
+	source = clearurls.pem
+	sha256sums = fdc576f7059a41571c57a4db2b9990e90df50e53ed1d132cc039549bd6eb5df0
+	sha256sums = 81e2b3fc4c621493c9c3e7625064b0ec5cb8e0dc64d8715ffd10c46de0a419d8
 
 pkgname = chromium-extension-clearurls
