@@ -26,28 +26,23 @@ if __name__ == '__main__':
 
     path = '/usr/local/ssl'
 
-    cmake_cmd = subprocess.run(
-        [
+    cmake_cmd = subprocess.run([
             'cmake',
             '-DOPENSSL_ROOT_DIR={}'.format(path),
             '-DOPENSSL_LIBRARIES={}/lib'.format(path),
             '..'
         ],
         stdout=subprocess.PIPE,
-        universal_newlines=True)
+        universal_newlines=True
+    )
 
-    # Make sure OpenSSL never says 1.1.1
-
-    if 'OpenSSL' and 'found version "1.1.1"' in cmake_cmd.stdout:
-        raise IOError('Oof, some reason we still are using OpenSSL 1.1.1')
-
-    make_cmd = subprocess.run(
-        [
+    make_cmd = subprocess.run([
             'make',
             'libXPwn.a'
         ],
         subprocess.PIPE,
-        universal_newlines=True)
+        universal_newlines=True
+    )
 
     # Some reason I still get ld errors on linux and on windows,
     # though we can still build
@@ -66,6 +61,6 @@ if __name__ == '__main__':
 
     print('Unzipping xpwn headers...')
     zip = zipfile.ZipFile('../xpwn-modified-headers.zip')
-    zip.extractall("headers")
+    zip.extractall("../headers")
 
     print('Ok, everything should be done!')
