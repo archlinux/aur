@@ -1,7 +1,7 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname=python-dbx
 _name=dbx
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=(python-build python-installer)
 source=($pkgname-$pkgver.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('b467afcc6cba39d1ad0de38c413dcb02e8d14045dc41ecf2fbaefb47de9eab53438855575eb80eae72d1004dd217522c16dc3096937d1992299f904a0077c7a5')
+sha512sums=('d03ca8ca068513f1ccc3b5a9b7d7f01677884296194b8fe893ae5589407495443b6f91011ba64ed2cdab0b0171cae7b9be200daf45095a499a9498375764aadb')
 
 build() {
 	cd "$_name-$pkgver"
