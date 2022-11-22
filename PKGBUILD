@@ -1,33 +1,24 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Balló György <ballogyor+arch@gmail.com>
+# Maintainer: Xinc
 
 pkgname=ido
-pkgver=12.10.2
-pkgrel=4
-pkgdesc='Widgets and other objects used for indicators'
-arch=('i686' 'x86_64')
-url='https://launchpad.net/ido'
-license=('LGPL')
-depends=('gtk3')
-source=("https://launchpad.net/ido/${pkgver%.*}/${pkgver}/+download/ido-${pkgver}.tar.gz")
-sha256sums=('e2279c7c0eeeb2e038eaf87418df109327de28c758f45e72e19c7154a1f71f00')
+_actual_ver=13.10.0
+_extra_ver=+22.10.20221007
+pkgver=${_actual_ver}${_extra_ver/\+/.}
+pkgrel=1
+pkgdesc="Widgets and other objects used for indicators by the Unity7 user interface"
+arch=(x86_64)
+url="https://launchpad.net/ido"
+license=(GPL)
+depends=(libxi libx11 gobject-introspection pango gdk-pixbuf2 cairo gtk3-ubuntu)
+makedepends=(gnome-common pkgconf glibc glib2 vala)
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/ido_${_actual_ver}${_extra_ver}.orig.tar.gz")
+sha512sums=('SKIP')
 
 build() {
-  cd ido-${pkgver}
-
-  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
-
-  ./configure \
-    --prefix='/usr' \
-    --localstatedir='/var' \
-    --sysconfdir='/etc'
-  make
+ ./autogen.sh --prefix=/usr --libexecdir=/usr/lib/"${pkgname}" --disable-static --disable-introspection
+ make
 }
 
-package(){
-  cd ido-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
+package() {
+ make DESTDIR="${pkgdir}" -j1 install
 }
-
-# vim: ts=2 sw=2 et:

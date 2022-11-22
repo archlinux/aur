@@ -1,14 +1,23 @@
 pkgbase = ido
-	pkgdesc = Widgets and other objects used for indicators
-	pkgver = 12.10.2
-	pkgrel = 4
+	pkgdesc = Widgets and other objects used for indicators by the Unity7 user interface
+	pkgver = 13.10.0.22.10.20221007
+	pkgrel = 1
 	url = https://launchpad.net/ido
-	arch = i686
 	arch = x86_64
-	license = LGPL
-	depends = gtk3
-	source = https://launchpad.net/ido/12.10/12.10.2/+download/ido-12.10.2.tar.gz
-	sha256sums = e2279c7c0eeeb2e038eaf87418df109327de28c758f45e72e19c7154a1f71f00
+	license = GPL
+	makedepends = gnome-common
+	makedepends = pkgconf
+	makedepends = glibc
+	makedepends = glib2
+	makedepends = vala
+	depends = libxi
+	depends = libx11
+	depends = gobject-introspection
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = gtk3-ubuntu
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ido_13.10.0+22.10.20221007.orig.tar.gz
+	sha512sums = SKIP
 
 pkgname = ido
-
