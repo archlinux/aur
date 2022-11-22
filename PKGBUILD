@@ -4,7 +4,7 @@
 _pkgname=mochi
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.14.1
+pkgver=1.15.10
 pkgrel=1
 pkgdesc="Flash cards / spaced repetition using markdown"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://mochi.cards/releases/Mochi-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('10891d0904967cd25f0a719af4c4b694f4508937d1b0ed7caffeea041aa85bae')
+sha256sums_x86_64=('26e813b75abeb8993b8554e20b64b5a208c1873adc9e9d282d640595fc9b2e19')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -40,7 +40,7 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/" "${pkgdir}/usr/share/icons/"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
