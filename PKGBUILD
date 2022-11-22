@@ -6,7 +6,7 @@
 pkgname=python-eyed3
 pkgver=0.9.7pre
 _eyed3_gitrev=6ae1554
-pkgrel=1
+pkgrel=4
 pkgdesc="A Python module and program for processing information about mp3 files"
 arch=('any')
 url="http://eyed3.nicfit.net/"
