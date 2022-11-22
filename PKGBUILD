@@ -3,20 +3,20 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20200613.56c6cd06c
-pkgrel=1
+pkgver=20221119.f27ff6597
+pkgrel=2
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
 license=('GPL2')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'asciidoc' 'qt5-tools')
-depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
-         'subsurface-libdc-git' 'qt5-svg' 'qt5-location'
-         'qt5-connectivity' 'qt5-webkit' 'grantlee' 'googlemaps')
+depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2' 'googlemaps'
+         'subsurface-libdc-git' 'qt5-svg' 'qt5-location' 'qt5-connectivity')
 source=('git+https://github.com/subsurface/subsurface')
 sha256sums=('SKIP')
 
-# qt5-webkit still used for: printing, manual, facebook
+# No QtLocation in Qt6 yet...
+# https://bugreports.qt.io/browse/QTBUG-96795
 
 provides=('subsurface')
 conflicts=('subsurface')
