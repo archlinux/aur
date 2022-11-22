@@ -1,0 +1,17 @@
+pkgbase = python-x-wr-timezone
+	pkgdesc = Handling of non-standard X-WR-TIMEZONE icalendar property in Python and Command Line
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/niccokunzmann/x-wr-timezone
+	arch = any
+	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-icalendar
+	depends = python-pytz
+	source = https://files.pythonhosted.org/packages/source/x/x_wr_timezone/x_wr_timezone-0.0.5.tar.gz
+	sha256sums = c05cb34b9b58a4607a788db086dcae5766728e4b94e0672870dc5593a6e13fe6
+
+pkgname = python-x-wr-timezone
