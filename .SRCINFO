@@ -1,7 +1,7 @@
 pkgbase = lokinet-gui
 	pkgdesc = Graphical user interface for lokinet
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oxen-io/lokinet-gui
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = lokinet-gui
 	source = lokinet-gui.desktop
 	sha256sums = e0919464e64540a3f573ace4dfaa93d00a5d13daa754d6c054befcb882f855a0
 	sha256sums = c42bf520ceb87783604e50fd6a3145eea34e8d6ff244bfbb77540cac2415f447
-	sha256sums = cd672a5ccc287bb6dbc4e1403bb28d08d14f4538fda286e46f3949659f67fc26
+	sha256sums = 1116ac3773bf24afd9d04d42809b3390d9aa7893717e2e1230852f5de50bcace
 
 pkgname = lokinet-gui

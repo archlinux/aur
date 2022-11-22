@@ -5,4 +5,4 @@ Terminal=false
 Type=Application
 Icon=lokinet-gui
 Comment=GUI for Lokinet
-Categories=Internet;
+Categories=Network

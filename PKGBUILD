@@ -2,7 +2,7 @@
 
 pkgname=lokinet-gui
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical user interface for lokinet"
 arch=('i686' 'x86_64')
 url="https://github.com/oxen-io/lokinet-gui"
@@ -11,7 +11,7 @@ makedepends=('nodejs' 'libxcrypt-compat')
 source=("https://github.com/oxen-io/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "git-config" "lokinet-gui.desktop")
 sha256sums=('e0919464e64540a3f573ace4dfaa93d00a5d13daa754d6c054befcb882f855a0'
             'c42bf520ceb87783604e50fd6a3145eea34e8d6ff244bfbb77540cac2415f447'
-            'cd672a5ccc287bb6dbc4e1403bb28d08d14f4538fda286e46f3949659f67fc26')
+            '1116ac3773bf24afd9d04d42809b3390d9aa7893717e2e1230852f5de50bcace')
 
 build() {
   cd "$pkgname-$pkgver"
