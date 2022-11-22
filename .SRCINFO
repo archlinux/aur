@@ -1,0 +1,17 @@
+pkgbase = smpeg1
+	pkgdesc = SDL MPEG Player Library - Legacy version 0.4.5
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://icculus.org/smpeg/
+	arch = x86_64
+	license = LGPL
+	makedepends = mesa
+	makedepends = glu
+	makedepends = subversion
+	depends = sdl
+	optdepends = glu
+	provides = smpeg1
+	source = https://archive.archlinux.org/packages/s/smpeg/smpeg-0.4.5-5-x86_64.pkg.tar.zst
+	sha256sums = a25ef96ff199930e3be79b186f66bc5768909aaabf273d3b301a85f7ddb295b5
+
+pkgname = smpeg1
