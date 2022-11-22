@@ -1,7 +1,7 @@
 # Maintainer: eatsu <mkrmdk@gmail.com>
 
 pkgname='pac-wrapper'
-pkgver='1.0.0'
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc='A simple pacman wrapper that provides intuitive syntax similar to dnf, apt, zypper, etc.'
 arch=('any')
@@ -13,17 +13,16 @@ depends=(
   'sudo'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5d73c0981a36ad9bcb5040ff2395e44cb285bc76e6648824dca3ed4902bf0187')
+sha256sums=('489d5a5f6e999125ad8ed52c5cc7caec381bb9ce0f29849410204cdd8eacb710')
 
 package() {
   cd "$pkgname-$pkgver"
 
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" pac
+  make DESTDIR="$pkgdir" install
 
   # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   # doc
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
