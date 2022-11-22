@@ -1,14 +1,14 @@
 pkgbase = python-dmt
 	pkgdesc = Manage domains like packages.
-	pkgver = r54.b0599a2
-	pkgrel = 2
+	pkgver = r58.389bfb7
+	pkgrel = 1
 	url = https://gitlab.com/waser-technologies/technologies/dmt
 	arch = any
 	license = GNU GPL v3
 	makedepends = git
 	depends = python
 	depends = python-halo
-	depends = python-prompt-toolkit
+	depends = python-prompt_toolkit
 	depends = python-yaml
 	depends = python-requests
 	depends = python-tqdm

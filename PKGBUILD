@@ -12,7 +12,7 @@ pkgdesc='Manage domains like packages.'
 arch=(any)
 url=https://gitlab.com/waser-technologies/technologies/dmt
 license=("GNU GPL v3")
-depends=(python python-halo python-prompt-toolkit python-yaml python-requests python-tqdm python-transformers rasa)
+depends=(python python-halo python-prompt_toolkit python-yaml python-requests python-tqdm python-transformers rasa)
 ## EXTRA_DEPENDS ##
 makedepends=()
 checkdepends=()
