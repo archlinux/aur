@@ -1,8 +1,8 @@
 # Maintainer: Ning Sun <n at sunng dot info>
 
 pkgname=greptimedb-bin
-pkgver=0.1.0.20221116
-_pkgvergh=0.1.0-alpha-20221116
+pkgver=0.1.0.20221122
+_pkgvergh=v0.1.0-alpha-20221122-nightly
 pkgrel=1
 pkgdesc='Open-source time-series database.'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('Apache-2.0')
 provides=('greptimedb')
 conflicts=()
 
-source=("https://github.com/GreptimeTeam/greptimedb/releases/download/v${_pkgvergh}/greptime-linux-amd64.tgz")
-sha256sums=("c26bf098dd6e726d634856d81a5a1422253f11938b0f090e0d53aa2c7bd34049")
+source=("https://github.com/GreptimeTeam/greptimedb/releases/download/${_pkgvergh}/greptime-linux-amd64.tgz")
+sha256sums=("95b77fe818d1292d7fcbd40245a7e29049cc946cb957f98d2e806eb825a14c31")
 
 package() {
     install -Dm755 "${srcdir}/greptime" "${pkgdir}/usr/bin/greptime"
