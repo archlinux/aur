@@ -2,14 +2,14 @@
 
 pkgname=simplicity-commander
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI and command line access to the debug features of Silicon Labs devices'
 arch=('x86_64')
 url='https://www.silabs.com/mcu/programming-options'
 license=('LGPL')
 options=('!strip')
 depends=('jlink-software-and-documentation')
-source=('https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip')
+source=("$pkgname-$pkgver.zip::https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip")
 sha256sums=('75e68b6f9f2f97d4ef3a208353d3b6d5acc3079f8d13a00e60f8021434608b23')
 
 package() {
