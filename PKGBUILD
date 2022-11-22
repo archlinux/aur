@@ -1,7 +1,9 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Dan Trickey
+
 pkgname=webots-nightly
-pkgver=2022b_2022_8_24
+pkgver=2023a_2022_11_21
+_buildver=21_11_2022
 pkgrel=1
 pkgdesc="Robot simulation software."
 arch=('x86_64')
@@ -23,8 +25,8 @@ provides=("${pkgname%-nightly}")
 conflicts=("${pkgname%-nightly}")
 options=('!strip' '!emptydirs')
 install=webots.install
-source=("${pkgname}-${pkgver//_/-}-amd64.deb::${url}/releases/download/nightly_24_8_2022/webots_2022b_amd64.deb")
-sha512sums=('4c949652a888970de8ab0f3c22e302ab81fd62ac9e29196665ce4f0ac2252948b7f685def15f74fad51d06fb15fa401c7bbfb4cb0b8b024c5bdd77ed29bcc2bb')
+source=("${pkgname}-${pkgver//_/-}-amd64.deb::${url}/releases/download/nightly_${_buildver}/${pkgname%-nightly}_${pkgver%%_*}_amd64.deb")
+sha512sums=('c58f9bfa97a51a147f2076ede0d755bfe201999baab1dc0e3613e68c8f5ed542ae406d497da4950f4d2fd08ec557828364502d421c6f1affea41df391b391322')
 
 package(){
     # Extract package data
