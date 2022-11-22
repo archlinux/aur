@@ -3,7 +3,7 @@
 pkgname=langkit
 epoch=1
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 url='https://github.com/AdaCore/langkit/'
@@ -11,7 +11,15 @@ arch=('i686' 'x86_64')
 license=('Apache')
 
 depends=('gnatcoll-iconv' 'gnatcoll-gmp' 'python')
-makedepends=('gprbuild' 'texlive-bin' 'python-sphinx' 'python-e3-core' 'python-funcy' 'python-mako')
+makedepends=('gprbuild' 'texlive-bin'
+             'python-sphinx' 'python-e3-core' 'python-funcy' 'python-mako'
+             'python-e3-testsuite' 'python-pygments' 'python-coverage' 
+             'python-docutils' 'python-pexpect' 'python-ptyprocess' 'python-pycodestyle'
+             'python-railroad-diagrams')
+
+# 'python-gnatdbg'        'python-autopep8'  'python-flake8' 'python-mypy' 'python-sphinx-rtd-theme'
+# 'python-types-docutils' 'python-types-gdb' 'python-yapf'
+
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=("50cb8b08fc180eab939a5747c52f68c073c7b77e6c12ef5c5aa488845d5c934c")
