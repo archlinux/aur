@@ -1,4 +1,4 @@
-# Maintainer: Bryce Chidester <bryce@cobryce.com>
+# Maintainer: Manuel Groß <mgr@irimi.one>
 
 _pkgname=rescrobbled
 pkgname="${_pkgname}-git"
