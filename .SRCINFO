@@ -1,4 +1,4 @@
-pkgbase = django-haystack-git
+pkgbase = python-django-haystack-git
 	pkgdesc = Modular search for Django. Git version.
 	pkgver = v3.2.1+4+g8ca77121
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = django-haystack-git
 	source = git+https://github.com/django-haystack/django-haystack.git
 	md5sums = SKIP
 
-pkgname = django-haystack-git
+pkgname = python-django-haystack-git

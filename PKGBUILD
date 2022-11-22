@@ -1,6 +1,6 @@
 # Maintainer: Lubosz Sarnecki <lubosz at gmail com>
 
-pkgname=django-haystack-git
+pkgname=python-django-haystack-git
 pkgver=v3.2.1+4+g8ca77121
 pkgrel=1
 epoch=1
