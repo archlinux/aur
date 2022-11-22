@@ -6,13 +6,13 @@ pkgrel=1
 epoch=1
 pkgdesc="Parallel RSP is a fast RSP LLE plugin for mupen64plus"
 arch=("x86_64" "i686")
-url="https://github.com/loganmc10/parallel-rsp"
+url="https://github.com/Mastergatto/parallel-rsp"
 license=("LGPL3" "MIT")
 depends=("mupen64plus-git")
 makedepends=("git")
 provides=(mupen64plus-rsp-parallel)
 conflicts=(mupen64plus-rsp-parallel)
-source=("git+https://github.com/loganmc10/parallel-rsp.git#branch=m64p"
+source=("git+https://github.com/Mastergatto/parallel-rsp.git#branch=m64p"
         "fix-build.patch")
 sha256sums=("SKIP"
             "badfbb0a51ddca3b514e238a547ffe86523bbcd00d09b81a6efaca5c19ce4d7d")
