@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=posh-git-sh
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Bash/Zsh version of the posh-git command prompt"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('bash'
          'git')
 optdepends=('zsh: alternative supported shell')
 install="${pkgname}".install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lyze/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ef4a991782590e5a52243711ee49cb074454eb3cd622a0a95576a05b3b889ae5')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lyze/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('b18e09539bfff422fda112ea4643c081f990e25a641bef8f3089aec2f878fdd0efde9f1846437b78c70d3f4b8abef54074cd818a9f2086be565970b3ddbce1bf')
 
 package() {
   cd "${pkgname}-${pkgver}"
