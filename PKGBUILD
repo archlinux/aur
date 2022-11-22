@@ -2,7 +2,7 @@
 
 pkgname=privatebin-cli
 _binname=privatebin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='CLI for privatebin server'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname}-git")
 makedepends=('go' 'pandoc')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ceef4f10ad86df1109b6530ae4cb4c25ffe419c1e9ebf9803d5beed32e28246e')
+sha256sums=('78f1f6ec4dadc6f951c8c605ddadf751ccc83e106d87103c34a6be14cbf976d6')
 
 prepare() {
   cd $_binname-$pkgver
