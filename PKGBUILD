@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=openfoam
 pkgname=${_base}-com-precice
-_gitcommit=65222e0ae3d9f291e58cfc99f9bf6d4a7d8b85d2
+_gitcommit=7afeaede9d9aec8d48457c77e8be9c6131897f44
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="preCICE adapter for OpenFOAM"

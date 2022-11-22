@@ -8,7 +8,7 @@ pkgbase = openfoam-com-precice
 	makedepends = git
 	depends = openfoam-com=v2206
 	depends = precice
-	source = git+https://github.com/precice/openfoam-adapter.git#commit=65222e0ae3d9f291e58cfc99f9bf6d4a7d8b85d2
+	source = git+https://github.com/precice/openfoam-adapter.git#commit=7afeaede9d9aec8d48457c77e8be9c6131897f44
 	sha512sums = SKIP
 
 pkgname = openfoam-com-precice
