@@ -1,0 +1,16 @@
+pkgbase = gsettings-ubuntu-touch-schemas
+	pkgdesc = GSettings desktop-wide schemas for the Unity7 user interface
+	pkgver = 0.0.7.21.10.20210712
+	pkgrel = 1
+	url = https://launchpad.net/gsettings-ubuntu-touch-schemas
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = glib2
+	makedepends = make
+	depends = accountsservice
+	depends = dconf
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-ubuntu-touch-schemas_0.0.7+21.10.20210712.orig.tar.gz
+	sha512sums = SKIP
+
+pkgname = gsettings-ubuntu-touch-schemas
