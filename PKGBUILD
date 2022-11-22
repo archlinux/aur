@@ -4,7 +4,7 @@
 
 pkgname=tailscale-git
 _pkgname=tailscale
-pkgver=1.33.28+tb55761246
+pkgver=1.33.292+t0f7da5c7d
 pkgrel=1
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
