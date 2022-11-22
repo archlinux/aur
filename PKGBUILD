@@ -69,6 +69,8 @@ ALSA=             # Linux sound support.
 NOCAIRO=          # Disable here. 
                
 XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
+
+SITTER="YES"      # Use tree-sitter incremental language parsing.
                
 DOCS_HTML=        # Generate and install html documentation.
                
@@ -83,7 +85,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.160133
+pkgver=29.0.50.162441
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -183,6 +185,14 @@ if [[ $XWIDGETS == "YES" ]]; then
     exit 1;
   else
     depends+=( 'webkit2gtk' );
+  fi
+fi
+
+if [[ $SITTER == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'tree-sitter' );
+  else
+    depends+=( 'tree-sitter' );
   fi
 fi
 
@@ -292,6 +302,10 @@ fi
 
 if [[ $XWIDGETS == "YES" ]]; then
   _conf+=( '--with-xwidgets' );
+fi
+
+if [[ $SITTER == "YES" ]]; then
+  _conf+=( '--with-tree-sitter' );
 fi
 
 if [[ $GPM == "YES" ]]; then
