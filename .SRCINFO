@@ -1,12 +1,12 @@
 pkgbase = ttf-mononoki
 	pkgdesc = Monospace font for programmers, successor of monoOne
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://madmalik.github.io/mononoki/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = https://github.com/madmalik/mononoki/archive/1.4.tar.gz
-	sha256sums = 8d8fc4713f327a66482a030cf7bf18ec36b85afc24c7863ddaee7d18996eba7a
+	source = https://github.com/madmalik/mononoki/archive/1.5.tar.gz
+	sha256sums = 75071aa1baadc9a63d9808656eb3b525b7d777ad302e92cc28d2054b85a0e74d
 
 pkgname = ttf-mononoki

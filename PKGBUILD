@@ -1,5 +1,5 @@
 pkgname=ttf-mononoki
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Monospace font for programmers, successor of monoOne"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://madmalik.github.io/mononoki/"
 license=('custom:OFL')
 depends=('fontconfig')
 source=("https://github.com/madmalik/mononoki/archive/$pkgver.tar.gz")
-sha256sums=('8d8fc4713f327a66482a030cf7bf18ec36b85afc24c7863ddaee7d18996eba7a')
+sha256sums=('75071aa1baadc9a63d9808656eb3b525b7d777ad302e92cc28d2054b85a0e74d')
 
 package() {
   cd mononoki-$pkgver
