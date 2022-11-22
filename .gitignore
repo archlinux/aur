@@ -1,0 +1,4 @@
+src/
+pkg/
+fedistar_*.deb
+*.pkg.tar.xz
