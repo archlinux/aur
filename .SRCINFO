@@ -1,13 +1,11 @@
 pkgbase = ada-libfswatch
 	pkgdesc = An Ada binding to the libfswatch library in the fswatch project
 	pkgver = 20221116
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/ada_libfswatch
 	arch = x86_64
 	license = GPL3
 	license = custom
-	makedepends = git
-	makedepends = gcc-ada
 	makedepends = gprbuild
 	depends = fswatch
 	depends = gnatcoll-core
