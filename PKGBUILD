@@ -1,5 +1,5 @@
 pkgname=pkcs11-provider
-pkgver=r192.g47e1c47
+pkgver=r195.g167482c
 pkgrel=1
 pkgdesc="OpenSSL 3.0 provider for PKCS#11 hardware-backed private keys"
 url="https://github.com/latchset/pkcs11-provider"
@@ -19,7 +19,7 @@ checkdepends=(
   nss
   softhsm
 )
-_commit=47e1c475a4f6da14f7028208514ee888b3db305a
+_commit=167482cb4c4c73d56bdca0afe88a6b0c85b99172
 source=("git+https://github.com/latchset/pkcs11-provider#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -47,9 +47,6 @@ check() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
-
-  mkdir -p "$pkgdir"/usr/lib/ossl-modules
-  ln -sr "$pkgdir"/usr/lib/pkcs11_provider.so "$pkgdir"/usr/lib/ossl-modules/pkcs11.so
 }
 
 # vim: ts=2:sw=2:et
