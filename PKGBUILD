@@ -4,9 +4,9 @@ _name=xpwn
 _fork=nyuszika7h
 _forkpkgname=$_name-${_fork,,}
 pkgname=$_forkpkgname-git
-_pkgver=1
-pkgver=1
-pkgrel=2
+_pkgver=1.1
+pkgver=1.1
+pkgrel=0
 pkgdesc="A cross-platform custom NOR firmware loader and custom IPSW generator for the iPhone"
 arch=('x86_64')
 url="https://github.com/$_fork/$_name"
@@ -23,8 +23,9 @@ sha512sums=('SKIP'
 )
 
 pkgver() {
-  cd "$_name"
-  printf "$_pkgver" 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir"/"$_name"
+  __pkgver=$(echo "$_pkgver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" | rev | cut -c 2- | rev)
+  echo "$__pkgver"
 }
 
 prepare() {
