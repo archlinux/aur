@@ -2,9 +2,9 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.6.0rc2.r16.96cccb8
+pkgver=1.6.0rc2.r60.71747eb
 pkgrel=1
-_kver=5.19
+_kver=6.0.9
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -15,9 +15,10 @@ depends=('opensnitch')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/evilsocket/opensnitch.git'
-        "https://github.com/torvalds/linux/archive/v${_kver}.tar.gz")
+        "https://www.kernel.org/pub/linux/kernel/v${_kver%%.*}.x/linux-${_kver}.tar.xz")
+        # "https://github.com/torvalds/linux/archive/v${_kver}.tar.gz")
 sha256sums=('SKIP'
-            '11614fc737638f693d02bf0d95422dfe2b3bcf3088196cd1c4c799cfdf675b70')
+            '6114a208e82739b4a1ab059ace35262be2a83be34cd1ae23cb8a09337db831c7')
 options=('!strip') # we're stripping with llvm-strip
 
 pkgver() {
@@ -53,5 +54,5 @@ package() {
   install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch.o" \
     "${srcdir}/linux-${_kver}/samples/bpf/opensnitch-procs.o" \
     "${srcdir}/linux-${_kver}/samples/bpf/opensnitch-dns.o" -t \
-    "$pkgdir/etc/opensnitchd"
+    "$pkgdir/usr/lib/opensnitchd/ebpf/"
 }
