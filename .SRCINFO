@@ -1,7 +1,7 @@
 pkgbase = utena-launcher
 	pkgdesc = launcher make by slint, hope I will get my revolution
 	pkgver = 0.3.2
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = https://github.com/Decodetalkers/launchre
 	arch = x86_64
 	arch = aarch64
