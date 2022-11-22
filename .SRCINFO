@@ -1,19 +1,19 @@
 pkgbase = lazycomplete-bin
 	pkgdesc = lazy loading for shell completion scripts
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/rsteube/lazycomplete
 	license = MIT
 	conflicts = lazycomplete
 	provides = lazycomplete
 	arch = aarch64
-	source_aarch64 = https://github.com/rsteube/lazycomplete/releases/download/v0.0.18/lazycomplete_0.0.18_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 142a4b8fc75ab5673e5be51a93457dc6985f47e330431a9707bad9240c47448b
+	source_aarch64 = https://github.com/rsteube/lazycomplete/releases/download/v0.0.19/lazycomplete_0.0.19_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 100ef050f2be34d5835945b3664308ecf19b78aada8d4317ade88c1db301b7c5
 	arch = i686
-	source_i686 = https://github.com/rsteube/lazycomplete/releases/download/v0.0.18/lazycomplete_0.0.18_Linux_i386.tar.gz
-	sha256sums_i686 = d52df651eb2d6489994e6b96ddc6d99efd15bcefe9216a7d762e154cc6365420
+	source_i686 = https://github.com/rsteube/lazycomplete/releases/download/v0.0.19/lazycomplete_0.0.19_Linux_i386.tar.gz
+	sha256sums_i686 = 18e2a8ec900c866b5fbfeccbed7665a8c3e7456ea3456d0a5f93bf708920cdba
 	arch = x86_64
-	source_x86_64 = https://github.com/rsteube/lazycomplete/releases/download/v0.0.18/lazycomplete_0.0.18_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 89785be6a72a2f313edfb662c2c67dcd14bc8af1520513879c5f8b8c1df0a56f
+	source_x86_64 = https://github.com/rsteube/lazycomplete/releases/download/v0.0.19/lazycomplete_0.0.19_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b6f341b629cfbe67a4c1146c8cb0aa8e33b7761d341d9bda6580dd78d8ed7391
 	
 pkgname = lazycomplete-bin
