@@ -1,0 +1,11 @@
+-- ace14/lib/table.c  2012-03-24 14:00:49.000000000 -0400
++++ ace-1.4/lib/table.c   2022-11-21 05:36:11.183763096 -0500
+@@ -216,7 +216,7 @@
+   printf("copy clip: x=%3d y=%3d w=%3d h=%3d (ex=%d ey=%d ew=%d eh=%d)\n",
+         dx+x, dy+y, w, h, ex, ey, ew, eh);
+ #endif
+-  if (w>0 && h>0)
++  if (w>0 && h>0 && !(w == 1 && h == 1 && (dx+x) == 0 && (dy+y) == 0))
+   {
+ #if TRACE_PICTURES
+     printf("copy aft: x=%3d y=%3d w=%3d h=%3d\n", dx+x, dy+y, w, h);
