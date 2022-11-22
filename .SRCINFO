@@ -1,7 +1,7 @@
 pkgbase = kind
 	pkgdesc = Kubernetes IN Docker - local clusters for testing Kubernetes
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kind.sigs.k8s.io/
 	install = kind.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=kind
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64')
 url='https://kind.sigs.k8s.io/'
