@@ -1,7 +1,7 @@
 pkgbase = python2-eyed3
 	pkgdesc = A Python module and program for processing information about mp3 files
 	pkgver = 0.9.7pre
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://eyed3.nicfit.net/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = python2-eyed3
 	depends = python-filetype
 	depends = python-packaging
 	options = !emptydirs
-	source = eyed3-0.9.7pre.tar.gz::https://github.com/nicfit/eyeD3/archive/2ac035b.tar.gz
+	source = eyed3-0.9.7pre-6ae1554.tar.gz::https://github.com/nicfit/eyeD3/archive/6ae1554.tar.gz
 	source = http://eyed3.nicfit.net/releases/eyeD3-test-data.tgz
-	sha256sums = 7fa9753f9b9fad089b4576a22c2d13cbba4f275a5a5c4a211bb27f73bf1a0bb0
-	sha256sums = 8bd11c921e0e34f88b84f1a51e24290d0243f3b2660233a527902f2c13af3a67
+	sha256sums = 9621aa18e9d4c76911489359576869c4d87e94da353e70698151f75f9f5dae33
+	sha256sums = b7cd2fe8d7114f597dbe1e06c11587af566cf92f640cef9af6408a824face37f
 
 pkgname = python-eyed3
