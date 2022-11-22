@@ -19,7 +19,8 @@ makedepends=(gcc glibc systemd gtk3-ubuntu cmake ninja patch)
 _commit=e7c90e4fad47878161fa9ba4a2aedacada624c1b
 source=("git+https://gitlab.com/ubuntu-unity/unity/unity.git#commit=$_commit"
         unity-7.6.0-support-fixes.patch)
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
   cd $pkgname
