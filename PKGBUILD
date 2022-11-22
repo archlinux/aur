@@ -2,45 +2,38 @@
 
 pkgname=pato
 pkgver=0.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
-url="https://github.com/amatria/pato"
+url="https://github.com/UDC-GAC/pato"
 license=('MIT')
 depends=()
-makedepends=('git')
 optdepends=()
 conflicts=('pato' 'pato-git')
 provides=('pato')
-source=("git+${url}.git#branch=master")
-sha256sums=('SKIP')
-
-# In case there is some activity on the repo (which I doubt will happen)
-# pkgver() {
-#   cd "${srcdir}/${pkgname}/"
-#   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-# }
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/UDC-GAC/pato/archive/v${pkgver}.tar.gz")
+sha256sums=('d42a715fd57e887dedcf032c251836f3ebb30cc7398c9dd811e346ee4aa2cb2c')
 
 # TODO FIX PARSING ARGUMENTS FROM makepkg VARS
 _wflags="-Wno-unknown-pragmas -Wno-address"
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/$pkgname-$pkgver"
   sed -i 's/-march=native//g' makefiles/Makefile.gnu
   sed -i 's/-march=native//g' makefiles/Makefile.clang
   sed -i 's/-xHost//g' makefiles/Makefile.intel
-  sed -i "s/\"v${pkgver}\"/\"v${pkgver}-arch\"/g" src/command_line_parser.hpp
+  sed -i "s/\"v${pkgver}\"/\"v${pkgver}-${pkgrel}arch\"/g" src/command_line_parser.hpp
   sed -i "s/CXXFLAGS+=/CXXFLAGS+=${_wflags} /g" makefiles/Makefile.gnu
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make gnu BUILD=release $MAKEFLAGS
 }
 
 check() {
-  cd "${srcdir}/${pkgname}/"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make gnu BUILD=serial $MAKEFLAGS
 
@@ -48,7 +41,7 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # TODO fix if cross-compiling (please don't do that)
   ./target/gnu/pato.release --export-help=man | gzip > pato.1.gz
