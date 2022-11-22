@@ -1,14 +1,14 @@
 # Maintainer: sukanka <su975853527 [at] gmail.com>
 # Contributor: xantares <xantares09 [at] hotmail.com>
 pkgname=stanmath
-pkgver=4.5.0_rc1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="reverse-mode automatic differentiation library"
 license=('BSD')
 arch=('any')
 url="https://github.com/stan-dev/math"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('95605e162e9867dd61e971d69e048b453b57d3ba4cd9416f98c4dc043afd18c2')
+sha256sums=('0d0e97e59f0c57d1966a9b207c3413f82a9f633d258c9370e22157b28a7823bb')
 
 package() {
   cd math-${pkgver/_/-}
