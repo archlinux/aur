@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mpfr
-_pkgver=4.1.0
+_pkgver=4.1.1
 pkgver=$_pkgver
 pkgrel=1
 pkgdesc="Multiple-precision floating-point library (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=("mingw-w64-gmp")
 options=('staticlibs' '!strip' '!buildflags')
 source=(http://www.mpfr.org/mpfr-${_pkgver}/mpfr-${_pkgver}.tar.xz{,.asc})
-sha256sums=('0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
+sha256sums=('ffd195bd567dbaffc3b98b23fd00aad0537680c9896171e44fe3ff79e28ac33d'
             'SKIP')
 validpgpkeys=('07F3DBBECC1A39605078094D980C197698C3739D')
 
