@@ -28,7 +28,6 @@ pkgbase = unity
 	depends = libxext
 	depends = libx11
 	depends = gdk-pixbuf2
-	depends = unity-greeter
 	depends = unity-language-pack
 	depends = unity-session-shortcuts
 	depends = libglvnd
@@ -64,6 +63,7 @@ pkgbase = unity
 	optdepends = unity-indicators-meta: not found yet
 	optdepends = unity-lens-meta: not found yet
 	optdepends = unity-session-migration: not found yet
+	optdepends = unity-greeter: lack of dependencies
 	source = git+https://gitlab.com/ubuntu-unity/unity/unity.git#commit=e7c90e4fad47878161fa9ba4a2aedacada624c1b
 	source = unity-7.6.0-support-fixes.patch
 	sha256sums = SKIP
