@@ -1,0 +1,14 @@
+pkgbase = unity-session-shortcuts
+	pkgdesc = Allows shutdown, logout, and reboot from dash
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://launchpad.net/session-shortcuts
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gettext
+	depends = gnome-session
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/session-shortcuts/1.4/session-shortcuts_1.4.tar.xz
+	sha512sums = SKIP
+
+pkgname = unity-session-shortcuts
