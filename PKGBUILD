@@ -1,16 +1,26 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-refurb
-pkgver=1.1.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A tool for refurbishing and modernizing Python codebases'
 arch=('any')
 url='https://github.com/dosisod/refurb'
 license=('GPL3')
-depends=('python' 'mypy' 'python-tomli')
-makedepends=('git' 'python-build' 'python-poetry-core' 'python-installer' 'python-wheel')
+depends=(
+  'python'
+  'mypy'
+  'python-tomli'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-poetry-core'
+  'python-installer'
+  'python-wheel'
+)
 checkdepends=('python-pytest')
-_commit='8e016048966022023cf8b165f93b8f26e3bef1e7'
+_commit='06879c28eceea016de940c6a363eeca39d009089'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'skip-coverage-report.patch'
