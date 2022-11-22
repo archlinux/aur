@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.35.0.12.gba20f60add
+pkgver=0.35.0.21.gead8469454
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -66,7 +66,7 @@ makedepends=(
              'python-markupsafe'
              'nuklear'
              'glad'
-
+             'jbigkit'
              )
 optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
