@@ -1,38 +1,37 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: éclairevoyant
 
-pkgname=c2nim-git
-pkgver=20170708
+_pkgname=c2nim
+pkgname="$_pkgname-git"
+pkgver=0.9.18.r24.bc8edce
 pkgrel=1
+epoch=1
 pkgdesc="Tool to translate Ansi C code to Nim"
 arch=('i686' 'x86_64')
-depends=('nim')
-makedepends=('git' 'nimble')
-groups=('nim')
-url="https://github.com/nim-lang/c2nim"
+url="https://github.com/nim-lang/$_pkgname"
 license=('MIT')
-source=(${pkgname%-git}::git+https://github.com/nim-lang/c2nim)
+groups=('nim')
+depends=('nim')
+makedepends=('git' 'openssl-1.1' 'nimble')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+$url.git?signed")
 sha256sums=('SKIP')
-provides=('c2nim')
-conflicts=('c2nim')
+validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing) <noreply@github.com>
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+	cd $pkgname
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-
-  msg2 'Building...'
-  nimble build -y
+	cd $pkgname
+	nimble build -y
 }
 
 package() {
-  cd ${pkgname%-git}
-
-  msg2 'Installing documentation...'
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/c2nim"
-
-  msg2 'Installing...'
-  install -Dm 755 c2nim -t "$pkgdir/usr/bin"
+	cd $pkgname
+	install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
+	install -Dm644 "doc/$_pkgname.rst" -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/c2nim/README"
 }
