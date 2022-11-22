@@ -2,7 +2,7 @@
 # Contributor: Thomas <thomas at 6f dot io>
 
 pkgname=jujutsu
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A git-compatible DVCS'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('gcc-libs' 'zlib')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='6efa47814accfa444a0fb60ee984b2a5c9746432'
+_commit='7bca6854a0a83a0b2ff821f413616181b8c6ee86'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
