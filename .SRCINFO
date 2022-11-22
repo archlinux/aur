@@ -1,0 +1,19 @@
+pkgbase = libunity-misc
+	pkgdesc = Miscellaneous modules for the Unity7 user interface
+	pkgver = 4.0.5.14.04.20140115
+	pkgrel = 1
+	url = https://launchpad.net/libunity-misc
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = make
+	makedepends = gtk-doc
+	makedepends = patch
+	depends = cairo
+	depends = glibc
+	depends = gtk3
+	depends = glib2
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/libunity-misc_4.0.5+14.04.20140115.orig.tar.gz
+	sha512sums = SKIP
+
+pkgname = libunity-misc
