@@ -3,11 +3,11 @@
 # Contributor: Federico Quagliata (quaqo) <quaqo@despammed.com>
 # Contributor: cdhotfire <cdhotfire@gmail.com>
 
-pkgbase=python2-eyed3
-pkgname=('python-eyed3')
+pkgname=python2-eyed3
+provides=('python-eyed3')
 pkgver=0.9.7pre
 _eyed3_gitrev=6ae1554
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Python module and program for processing information about mp3 files"
 arch=('any')
@@ -35,7 +35,7 @@ check() {
   python -m pytest --deselect tests/test_display_plugin.py
 }
 
-package_python-eyed3() {
+package() {
   cd "eyeD3-${_eyed3_gitrev}"*
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
