@@ -2,7 +2,7 @@
 pkgname=unifetch-git
 _pkgname=unifetch
 pkgver=22.11
-pkgrel=20
+pkgrel=23
 pkgdesc="Show system info, fork of neofetch, fresh version."
 arch=('any')
 url="https://github.com/jin-asanami/"
@@ -30,6 +30,7 @@ sha512sums=('SKIP')
 
 package() {
   cd ${_pkgname}
+  git checkout master
   make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
