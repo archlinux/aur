@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=handygccs-git
 _gitdir=HandyGCCS
-pkgver=22.11.3.54c68f5
+pkgver=22.11.r110.54c68f5
 pkgrel=1
 pkgdesc="Handheld Game Console Controller Support."
 arch=('any')
@@ -16,7 +16,7 @@ source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag
 sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_gitdir}"
-	printf "%s.%s.%s" $(date '+%y.%m') "$pkgrel" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" $(date '+%y.%m') "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
 	cd "$srcdir/${_gitdir}"
