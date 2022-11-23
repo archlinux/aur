@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=18
+pkgrel=19
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -182,6 +182,8 @@ package() {
   
   cd "${srcdir}/${pkgname}" || return
   
+  mkdir -p "${pkgname}/usr/bin"
+  mkdir -p "${pkgname}/usr/share/pixmaps/"
   # Icon for Desktop entry
   # install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
   wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
@@ -201,7 +203,6 @@ package() {
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
   
   # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
-  cd "${srcdir}/${pkgname}" || return
   for dir in */ ; do
     if [ -d "${dir}" ]; then
       if [ "${dir}" == "LocalBuilds" ]; then
@@ -239,7 +240,6 @@ package() {
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
-  mkdir -p "${pkgname}/usr/bin"
   install -Dm755 ../unreal-engine-5.sh "${pkgdir}/usr/bin/"
   chmod +x "${pkgdir}/usr/bin/unreal-engine-5.sh"
   ln -s "${pkgdir}/usr/bin/unreal-engine-5.sh" "${pkgdir}/usr/bin/ue5"
