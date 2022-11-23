@@ -1,7 +1,7 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=bash-conf
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Bash Configurator is utility which simplifying the bash prompt configuration"
 arch=('any')
 url="https://gitlab.com/linux-stuffs/bash-conf"
@@ -12,7 +12,7 @@ depends=('bash' 'libnewt' 'coreutils' 'grep' 'sed')
 optdepends=('nano' 'screenfetch')
 options=('!strip' '!emptydirs')
 
-source=('https://gitlab.com/linux-stuffs/bash-conf/raw/master/distrib/bash-conf-0.1-7.tar.gz')
+source=('https://gitlab.com/linux-stuffs/bash-conf/raw/master/distrib/bash-conf-0.1-8.tar.gz')
 sha256sums=('SKIP')
 
 package() {
