@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=timeswitch
-pkgver=2022.11.8
-_commit=eb77fc52192156a3244af70315d2b31f9101325b # tag/v2022.11.8
+pkgver=2022.11.15
+_commit=a493dae1421c5a6a205690641c717365cb225e77 # tag/v2022.11.15
 pkgrel=1
 pkgdesc='Power off, reboot, suspend or send a notification on timer.'
 arch=(any)
