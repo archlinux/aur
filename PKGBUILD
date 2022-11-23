@@ -1,18 +1,22 @@
 # Maintainer: Toolybird <toolybird at tuta dot io>
 
-# NOTE: The upstream repo includes a C API library and some rust crates.
+# NOTES:
+# 1. The upstream repo includes src for a C API library and some rust crates.
 # This PKGBUILD is concerned *only* with the library. More details here:
 # https://bugzilla.redhat.com/show_bug.cgi?id=2124697#c18
 
-# Library license clarification:
+# 2. Library license clarification:
 # https://bugzilla.redhat.com/show_bug.cgi?id=2124697#c13
 
-# crosvm license applies only to virtio-driver crate which is not packaged here:
+# 3. crosvm license applies only to virtio-driver crate which is not built here. See:
 # https://gitlab.com/libblkio/libblkio/-/commit/02ade52f495381719f049ebdd9575a66ce00ad00
 
+# 4. This pkg uses Meson and a shell script to build Rust code. Not sure if the ArchWiki
+# Rust package guidelines are applicable here or not, but try to follow them anyway.
+
 pkgname=libblkio
-pkgver=1.1.0
-_fragment=#commit=c46866ac4825fff96770d4741e3a5d4fa432dd42 # tags/v1.1.0^0
+pkgver=1.1.1
+_fragment=#commit=d056f92019b42b76a6ed0934e47f8b2d73beb007 # tags/v1.1.1^0
 pkgrel=1
 pkgdesc="High-performance block device I/O library with C API"
 arch=(x86_64)
@@ -25,9 +29,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  # Getting the library tag is cumbersome because multiple projects are in the repo
-  # (see NOTE above) and there are multiple tags pointing at the 1 commit.
+  # Getting the library tag is cumbersome because the repo houses multiple projects
+  # (see NOTE 1. above) and there are multiple tags pointing at the 1 commit.
   git tag --points-at | grep "^v[[:digit:]]" | sed 's/^v//'
+}
+
+prepare() {
+  cd $pkgname
+  cargo fetch --locked --target "$CARCH"-unknown-linux-gnu
+  sed -i 's/\(^    --locked\)/\1 --offline/' src/cargo-build.sh # XXX fragile!
 }
 
 build() {
@@ -38,8 +48,7 @@ build() {
 
 check() {
   cd $pkgname
-  # At least 1 test fails in this release -> libblkio:io_uring / poll-queues
-  meson test -C build --print-errorlogs || true
+  meson test -C build --print-errorlogs
 }
 
 package() {
