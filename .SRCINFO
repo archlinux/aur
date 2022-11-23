@@ -11,6 +11,7 @@ pkgbase = rasa
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-virtualenv
+	depends = python39
 	provides = rasa
 	provides = rasa-sdk
 	provides = python39-rasa
