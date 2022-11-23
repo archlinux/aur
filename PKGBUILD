@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
-pkgver=2022.1117.0
+pkgver=2022.1123.0
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
   "osu-lazer"
 )
 noextract=("osu.AppImage")
-sha256sums=('dfde2cc68d334d4517f861f532b57561bfeb2b63ac2f2ba6b6dc7d1e0bd4ebdf'
+sha256sums=('168c4411c9c207c60b123756fb95a5bbd7e9d6e7cde1c3d10149f8d5fa822765'
             '36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             '43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801'
