@@ -1,0 +1,11 @@
+pkgbase = exprtk
+	pkgdesc = C++ Mathematical Expression Library
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://www.partow.net/programming/exprtk/index.html
+	arch = any
+	license = CPL
+	source = https://github.com/ArashPartow/exprtk/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = fb72791c88ae3b3426e14fdad630027715682584daf56b973569718c56e33f28
+
+pkgname = exprtk
