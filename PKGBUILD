@@ -20,7 +20,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_TESTING=OFF
 
-	make -C build -j $(nproc)
+	make -C build
 }
 
 package() {
