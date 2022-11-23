@@ -1,0 +1,35 @@
+pkgbase = gnome-clocks-waked
+	pkgdesc = Clocks applications for GNOME (version with waked support)
+	pkgver = 43.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Clocks
+	arch = x86_64
+	arch = aarch64
+	groups = gnome
+	license = GPL
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = libgweather-4
+	depends = gnome-desktop-4
+	depends = geoclue
+	depends = geocode-glib-2
+	depends = gsound
+	depends = libadwaita
+	depends = waked
+	provides = gnome-clocks
+	conflicts = gnome-clocks
+	options = !debug
+	source = git+https://gitlab.gnome.org/GNOME/gnome-clocks.git#commit=9877dfa0ca9fcc2fcf73fd6d96b57226380baf4a
+	source = 0001-invoke-waked-when-an-alarm-changes.patch
+	source = 0002-Add-argument-to-start-initial-instance-in-the-backgr.patch
+	source = gnome-clocks.desktop
+	sha256sums = SKIP
+	sha256sums = 6203b5c43ac1f23ca5c622ab75d23891de24b17e716546c5230ec89928ccf0be
+	sha256sums = a728598594b1fc7b0c40ebfa4b44ddd770dc33cc6590ef8518b987ccc4b6d0ce
+	sha256sums = 37368c4f902facb6ed735df1c4edbd55fc477198246096929689dd0092f16fe2
+
+pkgname = gnome-clocks-waked
