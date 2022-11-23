@@ -1,0 +1,3 @@
+post_install() {
+	echo "Nautilus Compare Extension has been installed. Restart of Nautilus is needed to make it work properly (hint: 'nautilus -q' in terminal)."
+}

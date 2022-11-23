@@ -1,0 +1,22 @@
+pkgbase = nautilus-compare-40+
+	pkgdesc = Context menu file comparison extension for Nautilus 40+
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/philong/nautilus-compare
+	install = nautilus-compare.install
+	arch = any
+	license = GPL3
+	depends = nautilus
+	depends = python-nautilus
+	depends = python-pyxdg
+	optdepends = meld
+	optdepends = kdiff3
+	optdepends = diffuse
+	optdepends = kompare
+	optdepends = fldiff
+	optdepends = tkdiff
+	optdepends = xxdiff
+	source = nautilus-compare-1.0.1.tar.gz::https://github.com/philong/nautilus-compare/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 4d66e9f29832135578b0f4dfe66644368e14be3c1f8384dcac4ece4cc0c34b8d
+
+pkgname = nautilus-compare-40+
