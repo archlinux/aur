@@ -1,8 +1,8 @@
 # Maintainer: éclairevoyant
 
 pkgname=ascii-image-converter
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="Convert images into ASCII art and print them out to the console"
 arch=('x86_64')
 url="https://github.com/TheZoraiz/$pkgname"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9774374d6d3e0504bba70e2499b5472a216c93c61a0cafd0265ae47e9c7c5e5')
+sha256sums=('3f4d6c62ee3f74c7c165c64209f9de8add01e6d3149174fe35f419cfaafc316a')
 
 build() {
 	cd $pkgname-$pkgver
