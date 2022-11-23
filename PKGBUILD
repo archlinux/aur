@@ -12,7 +12,8 @@ options=('staticlibs' '!strip' '!buildflags')
 source=(http://www.mpfr.org/mpfr-${_pkgver}/mpfr-${_pkgver}.tar.xz{,.asc})
 sha256sums=('ffd195bd567dbaffc3b98b23fd00aad0537680c9896171e44fe3ff79e28ac33d'
             'SKIP')
-validpgpkeys=('07F3DBBECC1A39605078094D980C197698C3739D')
+validpgpkeys=('07F3DBBECC1A39605078094D980C197698C3739D'
+              'A534BE3F83E241D918280AEB5831D11A0D4DB02A') # Vincent Lefevre <vincent@vinc17.net>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
