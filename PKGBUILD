@@ -2,16 +2,16 @@
 # Contributor: Martijn Braam <martijn@brixit.nl>
 
 pkgname=postprocessd
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Queueing megapixels post-processor"
-arch=(any)
+arch=('any')
 url="https://git.sr.ht/~martijnbraam/postprocessd"
-license=(GPL-3.0-only)
-depends=(libexif libjpeg-turbo libtiff opencv libraw)
-makedepends=(meson scdoc)
+license=('GPL3')
+depends=('libraw' 'libtiff' 'libjpeg-turbo' 'libexif' 'opencv')
+makedepends=('meson' 'scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~martijnbraam/postprocessd/archive/$pkgver.tar.gz")
-sha256sums=('a9d990ba0fd720fc63de469805c746ce1a0bb3a14545856ac430e2ee48aac40e')
+sha256sums=('60b541ba4315a31b7ef21fe8bab27e964bad2a50c362601001a396ccd1d18f9e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
