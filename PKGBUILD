@@ -2,10 +2,10 @@
 
 _pkgname=box64
 pkgname=${_pkgname}-git
-pkgver=v0.1.6.r24.g40c5824
+pkgver=v0.2.0.r6.g554f4889
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/ptitSeb/box64'
 license=('MIT')
 depends=('gcc-libs')
@@ -33,6 +33,11 @@ build() {
               -DLD80BITS=1 -DNOALIGN=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
+    elif [[ $CARCH == "riscv64" ]]; then
+        cmake -B build -S . \
+              -DRV64=1 \
+              -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+              -DCMAKE_INSTALL_PREFIX=/usr
     fi
     make -C build
 }
@@ -43,6 +48,8 @@ package() {
       make DESTDIR=${pkgdir} install
     elif [[ $CARCH == "x86_64" ]]; then
       install -Dm755 box64 -t "${pkgdir}/usr/bin/"
+    elif [[ $CARCH == "riscv64" ]]; then
+      make DESTDIR=${pkgdir} install
     fi
 
     install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
