@@ -3,6 +3,7 @@
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
+_servicename=speak
 pkgname=python-tts-say
 epoch=
 pkgver=2.2.52
@@ -25,6 +26,8 @@ md5sums+=(9e55523a572ff65664c777f0578c44ca)
 noextract+=(tts_say-2.2.52-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(9741c346eef56131163e13b9db1241b3)
+source+=("$_servicename.service::https://gitlab.com/waser-technologies/technologies/say/-/raw/master/speak.service.example")
+md5sums+=('SKIP')
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
@@ -129,6 +132,10 @@ _package() {
     fi
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
+    if [[ -f $_servicename.service ]]; then
+        mkdir -p "$pkgdir/usr/lib/systemd/user"
+        cp -f "$_servicename.service" "$pkgdir/usr/lib/systemd/user/$_servicename.service"
     fi
 }
 

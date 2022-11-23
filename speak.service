@@ -1,0 +1,13 @@
+[Unit]
+Description=TTS Services
+StartLimitBurst=1
+StartLimitIntervalSec=0
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python -m say.TTS.as_service
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
