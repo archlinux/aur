@@ -2,7 +2,7 @@
 _name=ctpv
 pkgname="${_name}-git"
 pkgver=r231.0809563
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast previewer for lf (stpv replacement)"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
