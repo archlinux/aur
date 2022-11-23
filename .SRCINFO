@@ -16,8 +16,8 @@ pkgbase = plasma5-wallpapers-wallpaper-engine
 	depends = qt5-websockets
 	optdepends = qt5-webchannel: for web support
 	optdepends = mpv: alternative video backend
-	source = https://github.com/catsout/wallpaper-engine-kde-plugin/archive/v0.5.4.tar.gz
-	source = https://github.com/KhronosGroup/glslang/archive/11.10.0.tar.gz
+	source = https://github.com/catsout/wallpaper-engine-kde-plugin/archive/v0.5.4/wallpaper-engine-kde-plugin-0.5.4.tar.gz
+	source = https://github.com/KhronosGroup/glslang/archive/11.10.0/glslang-11.10.0.tar.gz
 	sha256sums = 83354734f7ea36e7077206506dd05f0e6877eb51294b820fdbdc398255c6f803
 	sha256sums = 8ffc19c435232d09299dd2c91e247292b3508c1b826a3497c60682e4bbf2d602
 

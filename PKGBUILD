@@ -13,10 +13,10 @@ depends=('gst-libav' 'python-websockets' 'plasma-framework' 'qt5-declarative' 'q
 makedepends=('extra-cmake-modules' 'qt5-webchannel' 'mpv' 'vulkan-headers')
 optdepends=('qt5-webchannel: for web support'
 	'mpv: alternative video backend')
-source=("https://github.com/catsout/${_pkgname}/archive/v${pkgver}.tar.gz"
-	"https://github.com/KhronosGroup/glslang/archive/${_pkgver_glslang}.tar.gz")
+source=("https://github.com/catsout/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+	"https://github.com/KhronosGroup/glslang/archive/${_pkgver_glslang}/glslang-${_pkgver_glslang}.tar.gz")
 sha256sums=('83354734f7ea36e7077206506dd05f0e6877eb51294b820fdbdc398255c6f803'
-	'8ffc19c435232d09299dd2c91e247292b3508c1b826a3497c60682e4bbf2d602')
+            '8ffc19c435232d09299dd2c91e247292b3508c1b826a3497c60682e4bbf2d602')
 
 prepare() {
 	mv -T "glslang-${_pkgver_glslang}" "${_pkgname}-${pkgver}/src/backend_scene/third_party/glslang"
