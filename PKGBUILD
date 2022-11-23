@@ -1,16 +1,20 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 _pkgname=awkward
-pkgname="python-${_pkgname}"
-pkgver=1.10.1
+pkgbase="python-${_pkgname}"
+pkgname=("${pkgbase}" "${pkgbase}-docs")
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward"
 license=('BSD')
 arch=('x86_64')
-depends=('python-numpy' 'python-packaging')
-optdepends=('cuda: CUDA support')
-makedepends=('cmake' 'git' 'python-build' 'python-installer' 'python-wheel' 'cuda')
+depends=('python-numpy' 'python-packaging' 'python-importlib_resources')
+optdepends=('cuda: CUDA support'
+            'python-pyarrow: pyArrow connector'
+            'python-numexpr: numexpr connector'
+            'python-pandas: pandas connector')
+makedepends=('cmake' 'git' 'python-build' 'python-installer' 'python-wheel' 'cuda' 'doxygen' 'python-sphinx' 'python-sphinx_rtd_theme')
 checkdepends=('python-pyaml' 'python-pytest' 'python-pytest-cov' 'python-hist' 'python-pandas' 'python-numexpr' 'python-pyarrow' 'python-scikit-hep-testdata' 'python-vector'
               'root' 'pybind11' 'rapidjson')
 source=(
@@ -30,14 +34,14 @@ get_pyver () {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   git submodule init
 
   git config submodule."pybind11".url "${srcdir}/${pkgname}"-pybind11
   git config submodule."rapidjson".url "${srcdir}/${pkgname}"-rapidjson
   git config submodule."dlpack".url "${srcdir}/${pkgname}"-dlpack
 
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update --init --recursive
 
   sed '/cmake/d' -i pyproject.toml
   sed \
@@ -47,20 +51,29 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest || echo 'some tests fail'
 }
 
-package() {
-  cd "${pkgname}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname}"/LICENSE
-  cd "${pkgdir}/usr/lib/python$(get_pyver)/site-packages"
-  # ln -s awkward1 awkward
+package_python-awkward() {
+  optdepends+=("${pkgbase}-docs: docs")
+  cd "${srcdir}/${pkgbase}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}
+
+package_python-awkward-docs() {
+  cd "${srcdir}/${pkgbase}"
+
+  install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D README.md "${pkgdir}/usr/share/${pkgbase}/README.md"
+
+  install -d "${pkgdir}/usr/share/doc/${pkgbase}"
+  PYTHONPATH="${PWD}/build/lib" sphinx-build "${PWD}/docs-sphinx" "${pkgdir}/usr/share/doc/${pkgbase}"
 }
