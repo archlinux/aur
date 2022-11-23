@@ -23,13 +23,15 @@ source=('hmcl.desktop'
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "0001-Target-java-17.patch"
   "0002-Cleanup.patch"
+  "0003-Disable-Pack200.patch"
 )
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '9adb4243a5123ff82cb3678ebb3e889250d745973859d57ab5a14b2867b7cb04'
   '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
   '6d0b1fa5d4a7cab1024e62c12ea6baf19197175e2d2d3af9b23099878057b92f'
-  '6348216b7c7c9b4d44355d19e11ea6d27d7b1d48d3f0a43079ab929e70728448'
-  '34b2d477abed1858dc36069fc4374510f9ef52632fd415e0a077f99240ee20e6')
+  'cbaf1534ea1f68fdecf6fdbe3fc8dd77db0f73277deb6847719f2c4cc694a498'
+  '79084c5d3bd61639b0055b8dc07becc2f96b79178d0f7ce7eb7ba8a059cafbcc'
+  '5df17a227e1cf79cd14145320bfd0fcc3646a65e9b24cf9c48d4c13e4f0e2fa5')
 
 prepare() {
   cd "$_pkgname-$pkgver"
