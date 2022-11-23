@@ -3,6 +3,8 @@
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
+_servicename=assistant
+_servicename_listen=$_servicename.listen
 pkgname=python-assistant
 epoch=
 pkgver=0.9.0a0
@@ -25,6 +27,10 @@ md5sums+=(6982177254d9527221e2469671ebb528)
 noextract+=(assistant-0.9.0a0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(b051377258149bf318fcf62e7a07de00)
+source+=("$_servicename.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/$_servicename.service.example")
+md5sums+=('SKIP')
+source+=("$_servicename_listen.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/$_servicename_listen.service.example")
+md5sums+=('SKIP')
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
@@ -129,6 +135,14 @@ _package() {
     fi
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
+    if [[ -f $_servicename.service ]]; then
+        mkdir -p "$pkgdir/usr/lib/systemd/user"
+        cp -f "$_servicename.service" "$pkgdir/usr/lib/systemd/user/$_servicename.service"
+    fi
+    if [[ -f $_servicename_listen.service ]]; then
+        mkdir -p "$pkgdir/usr/lib/systemd/user"
+        cp -f "$_servicename_listen.service" "$pkgdir/usr/lib/systemd/user/$_servicename_listen.service"
     fi
 }
 
