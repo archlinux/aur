@@ -1,6 +1,6 @@
 pkgbase = r-dose
 	pkgdesc = Disease Ontology Semantic and Enrichment analysis
-	pkgver = 3.24.1
+	pkgver = 3.24.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DOSE
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-dose
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DOSE_3.24.1.tar.gz
-	sha256sums = 61ad46d84398c8aba96ef66ec1dd43370b8e0a6a05539bbcd11c69d4ec1524aa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DOSE_3.24.2.tar.gz
+	sha256sums = 6fec12b1d5f622f5606236d559c801072d185c6f64aaf60e749cc7b09e369769
 
 pkgname = r-dose
