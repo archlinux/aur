@@ -2,12 +2,12 @@
 
 pkgname=ntpsec
 pkgver=1.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.ntpsec.org/"
 license=('custom')
-depends=('avahi' 'libbsd' 'python')
+depends=('avahi' 'libbsd' 'python' 'openssl-1.1')
 makedepends=('asciidoc' 'pps-tools' 'w3m' 'binutils')
 optdepends=('gnuplot: for ntpviz'
             'libevent: for ntpdig'
@@ -42,6 +42,10 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+
+  export CFLAGS="$CFLAGS -I/usr/include/openssl-1.1"
+  export CXXFLAGS="$CXXFLAGS -I/usr/include/openssl-1.1"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.1/"
 
   ./waf configure --prefix /usr --sbindir=/usr/bin --enable-debug-gdb \
         --refclock=all --enable-doc --htmldir=/usr/share/doc/ntpsec \

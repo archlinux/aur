@@ -1,7 +1,7 @@
 pkgbase = ntpsec
 	pkgdesc = Security-hardened Network Time Protocol implementation
 	pkgver = 1.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.ntpsec.org/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = ntpsec
 	depends = avahi
 	depends = libbsd
 	depends = python
+	depends = openssl-1.1
 	optdepends = gnuplot: for ntpviz
 	optdepends = libevent: for ntpdig
 	optdepends = python-psutil: Optional for ntpviz, allows running with ionice
@@ -34,4 +35,3 @@ pkgbase = ntpsec
 	sha512sums = ac4ce13fe88a383382abb92cb34ab231467cbc9dcb8ac8780480d467f295ddf65e217b6415bbadabd8c7ac9832b0fd9058b837946aa2d5dcfd9f3bb81cff6b31
 
 pkgname = ntpsec
-
