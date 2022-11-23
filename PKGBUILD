@@ -9,7 +9,7 @@ url="https://github.com/alexdobin/STAR"
 license=("GPL3")
 makedepends=('vim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexdobin/STAR/archive/${pkgver}.tar.gz")
-sha1sums=('6ecdc8a287863b6b95ee5fa4f57331cb466c1745')
+sha256sums=('0d1b71de6c5be1c5d90b32130d2abcd5785a4fc7c1e9bf19cc391947f2dc46e5')
 
 build() {
     cd "$srcdir/STAR-${pkgver}/source"
