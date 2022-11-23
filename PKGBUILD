@@ -1,14 +1,19 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='salvador'
-pkgver='2.0.3'
+pkgver='2.1.0'
 pkgrel='1'
 pkgdesc='A simple bash script that will help you manage your AUR packages'
 arch=('any')
 url="https://gitlab.com/dpeukert/$pkgname"
 license=('GPL3')
 depends=('git' 'pacman-contrib' 'perl')
+optdepends=(
+	'curl: nvchecker functionality'
+	'jq: nvchecker functionality'
+	'nvchecker: nvchecker functionality'
+)
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ec85c315dee4ac8da3a497675ebd77bc1b22eb49b0f67de0685a7a7f9dc204746eebc95f2371f9fe37d03cc2352b3ddbd3693324fd9fab8d16fb9b93d56709d0')
+sha512sums=('9a3264d995a7ada27394277d3d400fd94324d5215553aa4be4459938ee63ffa3c6998f328fd0c41f008d1bfab6f91c4b1a59b1389b3ac1d94e6a586e75d0f605')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/"
