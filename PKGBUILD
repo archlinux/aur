@@ -2,20 +2,22 @@
 # Maintainer: Randy Fay <randy at randyfay.com>
 
 pkgname='rfay-test-ddev-edge-bin'
-pkgver=1.19.5
+pkgver=1.21.4
 pkgrel=1
-pkgdesc='DDEV-Local: a local web development environment (edge)'
+pkgdesc='DDEV: a local web development environment (edge)'
 url='https://github.com/drud/ddev'
 arch=('aarch64' 'x86_64')
 license=('Apache 2')
 provides=('ddev')
 conflicts=('ddev')
+depends=('docker')
+optdepends=('bash-completion: subcommand completion support' 'docker-compose: for use_docker_compose_from_path option')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.5/ddev_linux-arm64.v1.19.5.tar.gz")
-sha256sums_aarch64=('fa2399e2031f1c7f3698e1eb71c3256c685c8dba61475dc574ccd79f12173a76')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.21.4-aa4/ddev_linux-arm64.v1.21.4-aa4.tar.gz")
+sha256sums_aarch64=('edd08fc0839cce558bb2e0bda6a7f108c20936c826b573e72b58939eb9fad3ca')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.5/ddev_linux-amd64.v1.19.5.tar.gz")
-sha256sums_x86_64=('287547c7b2f7ae02c32a6bef23c2623cc12da061f67c2bb2434368f3faa5b2f5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.21.4-aa4/ddev_linux-amd64.v1.21.4-aa4.tar.gz")
+sha256sums_x86_64=('612d87a0e70a0fbea51faa94a29698c1e1d99a2f69d93c51d74a034df2ca88e5')
 
 package() {
   # bin
