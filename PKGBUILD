@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jasper-gtk-theme-git
-pkgver=r25.6261715
+pkgver=r47.24bce43
 pkgrel=1
 pkgdesc="Jasper gtk theme for linux"
 arch=('any')

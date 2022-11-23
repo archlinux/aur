@@ -1,8 +1,8 @@
 post_install() {
-  echo "Link installed Nephrite gtk-4.0 theme to config folder (replace Nephrite-Dark with chosen theme variant):"
+  echo "Link installed Jasper gtk-4.0 theme to config folder (replace Jasper-Dark with chosen theme variant):"
   echo ""
   echo "mkdir -p ~/.config/gtk-4.0"
-  echo "ln -sf /usr/share/themes/Nephrite-Dark/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
+  echo "ln -sf /usr/share/themes/Jasper-Dark/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
   echo ""
 }
 
