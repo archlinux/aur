@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=28.1.2
+_pkgver=29.0.0-beta1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=4
@@ -156,9 +156,9 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=$_browser \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
+    -DBETA="$_pkgver" ..
+#    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
 #    -DRELEASE_CANDIDATE="$_pkgver" ..
-#    -DBETA="$_pkgver" ..
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" config/obsconfig.h
 
