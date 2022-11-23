@@ -3,6 +3,7 @@
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
+_servicename=listen
 pkgname=python-stt-listen
 epoch=
 pkgver=2.3.42
@@ -25,6 +26,8 @@ md5sums+=(fe14c161bb4dbf8d093a79bf706bc8e9)
 noextract+=(stt_listen-2.3.42-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(71e7a11742a3543dfbc6ad27e2b6fa96)
+source+=("$_servicename.service::https://gitlab.com/waser-technologies/technologies/listen/-/raw/master/listen.service.example")
+md5sums+=('SKIP')
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
@@ -129,6 +132,10 @@ _package() {
     fi
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
+    if [[ -f $_servicename.service ]]; then
+        mkdir -p "$pkgdir/usr/lib/systemd/user"
+        cp -f "$_servicename.service" "$pkgdir/usr/lib/systemd/user/$_servicename.service"
     fi
 }
 
