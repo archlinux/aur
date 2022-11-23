@@ -1,19 +1,20 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=gitoxide
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A command-line application for interacting with git repositories"
 url="https://github.com/Byron/gitoxide"
 license=('Apache' 'MIT')
 arch=('x86_64' 'i686')
+depends=('openssl')
 depends_x86_64=('gcc-libs')
 depends_i686=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Byron/gitoxide/archive/refs/tags/v$pkgver.tar.gz")
-cksums=('3158530872')
-sha256sums=('5fc97535f1bb7f5ad6668b5a3584b55dd4a83f7407aca2ef04ec418c4e9c11fe')
-b2sums=('e3aca674e6f28b7773ebdb8f2085510e6eb8df68c7c24f789e41aea985f0550a7f369e7635da49e4fa2e3543f661824459967890cbfc4be6405e25aa74dd61cc')
+cksums=('2244076510')
+sha256sums=('da306eb250abc7152f39a7f148a7655b2d99beaf8a756a526ec93b973529f9a9')
+b2sums=('2db6ed7c20b2b7ed328a2b7a7247bb216a9ed5310801c6ac6124e0326c026425a757dca9fc8d9535c331c4672adfe532bf2a06c8af1928ee4fc2e02a7e0be7d4')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
@@ -26,6 +27,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
+  OPENSSL_NO_VENDOR=1 \
   CARGO_TARGET_DIR='target' \
     cargo build --frozen --release --features 'max'
 }
