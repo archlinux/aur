@@ -1,0 +1,12 @@
+pkgbase = certgen
+	pkgdesc = A dead simple tool to generate self signed certificates
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/minio/certgen
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	source = https://github.com/minio/certgen/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 4c33bd352971de8378aafd30356a5dc112b5d1b428efe0f840b9dd35910f54ab
+
+pkgname = certgen
