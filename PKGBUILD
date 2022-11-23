@@ -14,8 +14,8 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.57.r4.gf9574355
-pkgrel=1
+pkgver=0.3.60.r44.g0f79014e
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
@@ -45,20 +45,24 @@ pkgver() {
 build() {
   # make AUR helper happy
   rm -rf build || true
-  arch-meson $_pkgbase build \
-    -D bluez5-codec-lc3plus=disabled \
-    -D docs=enabled \
-    -D jack-devel=true \
-    -D libcamera=disabled \
-    -D libjack-path=/usr/lib \
-    -D sdl2=disabled \
-    -D session-managers=[] \
-    -D test=enabled \
-    -D jack=disabled \
-    -D vulkan=disabled \
-    -D ffmpeg=disabled \
-    -D roc=disabled \
+
+  local meson_options=(
+    -D bluez5-codec-lc3plus=disabled
+    -D docs=enabled
+    -D jack-devel=true
+    -D libjack-path=/usr/lib
+    -D sdl2=disabled
+    -D session-managers=[]
+    -D test=enabled
+    -D jack=disabled
+    -D vulkan=disabled
+    -D ffmpeg=disabled
+    -D roc=disabled
+    -D libcamera=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
+  )
+
+  arch-meson $_pkgbase build "${meson_options[@]}"
   meson compile -C build
 }
 
