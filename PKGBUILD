@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
-pkgver=1.24.3.r133.gd0804112
+pkgver=1.25.1.r39.gb3d53252
 pkgrel=1
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustfmt' 'rust-src'
 conflicts=('rust' 'cargo' 'rustfmt' 'rust-nightly' 'rust-nightly-bin' 'rustup')
 replaces=('cargo-tree')
 install='post.install'
-source=("${pkgname}::git+https://github.com/rust-lang/rustup.rs.git")
+source=("${pkgname}::git+https://github.com/rust-lang/rustup.git")
 sha512sums=('SKIP')
 _binlinks=('cargo' 'rustc' 'rustdoc' 'rust-gdb' 'rust-lldb' 'rls' 'rustfmt' 'cargo-fmt' 'cargo-clippy' 'clippy-driver' 'cargo-miri')
 
