@@ -1,0 +1,6 @@
+post_upgrade() {
+	export SIMPLERT_INTERFACE=$(ip link show | grep "state UP" | awk -F ': ' '{ print $2}')
+    echo "simple-rt: To start tethering on a network interface run 'sudo systemctl start simple-rt@<interface>'"
+    echo "           Available interfaces: $SIMPLERT_INTERFACE"
+    echo "           To update the list of available interfaces, reinstall this package"
+}
