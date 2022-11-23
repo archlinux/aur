@@ -15,7 +15,7 @@ depends=('openssl' 'python-fxa' 'python-tokenlib')
 makedepends=('rust' 'cmake' 'pkgconf' 'mariadb-libs')
 optdepends=('mysql: for use with a local database server')
 install="${pkgname}.install"
-source=("https://github.com/mozilla-services/${_pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/mozilla-services/${_pkgname}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.service")
 sha256sums=('62c9922f3fc8067da511780fbdd7e41a55d18ec0790827ec253a17fcc60022a7'
             '609e057cd835ea54b06b32b98e210cd946255f652e7754c9160fd7c94379a83d')
