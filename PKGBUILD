@@ -2,7 +2,7 @@
 _name=river-luatile
 pkgname="${_name}-git"
 pkgver=r11.ac23773
-pkgrel=1
+pkgrel=2
 pkgdesc="Write your own river layout generator in lua"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/MaxVerevkin/river-luatile"
