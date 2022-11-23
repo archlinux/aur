@@ -14,8 +14,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - fermium: 14
 #   - gallium: 16
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron18
-pkgver=1.70.2
+_electron=electron19
+pkgver=1.73.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -37,9 +37,9 @@ source=("$_pkgname::git+$url.git#tag=$pkgver"
         'fix-terminal-not-transparent.diff')
 sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
-            'b8bdb0e53cf8748140ed444c9b02cb6a57a7e1e120d96861d4cc9f79744a987f0253c052a238c78aa2c3f86459c4afb6f3b687435f0588d8f640822a9908b257'
+            '88b0e491b18bb10b1293217c92b984d863a711a5d743c3e929e889e1a927e62e639811b2feaa8dec4f5eac49610c6e5ce75f874d526fc7059134ee612c7991e1'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
-            '83a66451909a1829982b8c412447bf1cd1e2bdf7eea9fe8dcbb5facff0bf4a0d36a57d6e88af58ad8c22e005be0201567469e0704cc5420b2d1b94e255fb4b28'
+            '213d4bc9c856591b7401e2122729cd669f9e897b26ad9a2f183e767888dc3f62db1dc4c9144e07249de299a70fde4ccc6ff3db1b40ad968e81c59979f554fb40'
             'e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e'
             '2c047e9c10f9ae14c10ddfb36a1da6d8814a02213d35c9c5cd47a98da8b348797c32e8bc2ce8519485f45666501aded238074656af15efc67ad6140b3ff83942')
 
@@ -125,10 +125,9 @@ build() {
 
   yarn install --arch=$_vscode_arch
 
-  gulp compile-build
-  gulp compile-extension-media
-  gulp compile-extensions-build
-  gulp vscode-linux-$_vscode_arch-min
+  gulp --max_old_space_size=4096 \
+       --openssl-legacy-provider \
+       vscode-linux-$_vscode_arch-min
 }
 
 package() {

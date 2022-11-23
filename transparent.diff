@@ -45,10 +45,10 @@ index 189811d6fdf..d10bd05bced 100644
  	}
  
  	getWindowSplash(): IPartsSplash | undefined {
-diff --git a/src/vs/platform/windows/electron-main/window.ts b/src/vs/platform/windows/electron-main/window.ts
---- a/src/vs/platform/windows/electron-main/window.ts
-+++ b/src/vs/platform/windows/electron-main/window.ts
-@@ -157,7 +157,8 @@					width: this.windowState.width,
+diff --git a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platform/windows/electron-main/windowImpl.ts
+--- a/src/vs/platform/windows/electron-main/windowImpl.ts
++++ b/src/vs/platform/windows/electron-main/windowImpl.ts
+@@ -208,7 +208,8 @@					width: this.windowState.width,
  				height: this.windowState.height,
  				x: this.windowState.x,
  				y: this.windowState.y,
@@ -57,7 +57,7 @@ diff --git a/src/vs/platform/windows/electron-main/window.ts b/src/vs/platform/w
 +				backgroundColor: '#00000000' || this.themeMainService.getBackgroundColor(),
 				minWidth: WindowMinimumSize.WIDTH,
 				minHeight: WindowMinimumSize.HEIGHT,
-				show: !isFullscreenOrMaximized,
+				show: !isFullscreenOrMaximized, // reduce flicker by showing later
 diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 --- a/src/vs/workbench/common/theme.ts	2020-04-21 11:28:02.140938188 +0800
 +++ b/src/vs/workbench/common/theme.ts	2020-04-21 11:36:36.133491755 +0800
