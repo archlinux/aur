@@ -1,0 +1,18 @@
+pkgbase = python-asdf_unit_schemas
+	pkgdesc = ASDF schemas for units
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://asdf-unit-schemas.readthedocs.io
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/a/asdf_unit_schemas/asdf_unit_schemas-0.1.0.tar.gz
+	md5sums = 21dcda21d3b2fee3423c2497b12a3b7c
+
+pkgname = python-asdf_unit_schemas
+	depends = python>=3.8
+	depends = python-asdf-standard>=1.0.1
+	depends = python-importlib_resources>=3
