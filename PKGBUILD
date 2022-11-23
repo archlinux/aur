@@ -10,7 +10,7 @@ url="https://github.com/prometheus-community/postgres_exporter"
 license=('Apache')
 makedepends=('git' 'go' 'make')
 backup=('etc/conf.d/prometheus-postgresql-exporter')
-source=("https://github.com/prometheus-community/postgres_exporter/archive/v${pkgver}.tar.gz"
+source=("https://github.com/prometheus-community/postgres_exporter/archive/v${pkgver}/postgres_exporter-${pkgver}.tar.gz"
 	"prometheus-postgresql-exporter.service"
 	"prometheus-postgresql-exporter.conf")
 sha256sums=('48e38e5cc8f093f93a84b1536c2ae7dc480760f9c443ae654a9f1f83d289a7bc'
