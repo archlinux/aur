@@ -1,7 +1,7 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r226.063369b
+pkgver=r231.0809563
 pkgrel=1
 pkgdesc="Fast previewer for lf (stpv replacement)"
 arch=('i686' 'x86_64')
@@ -44,11 +44,16 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd "$srcdir/${_name}"
+    make LDFLAGS=-L/usr/lib
+}
+
 package() {
     local license_prefix="$pkgdir/usr/share/licenses/$pkgname"
     mkdir -p "$license_prefix"
     cp "$srcdir/$_name/LICENSE" "$license_prefix"
 
     cd "$srcdir/${_name}"
-    make PREFIX="/usr" DESTDIR="$pkgdir" LDFLAGS=-L/usr/lib install
+    make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
