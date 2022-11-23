@@ -84,12 +84,12 @@
 _major=6.0
 _minor=9
 _srcname=linux-${_major}
-_clr=${_major}.8-1208
+_clr=${_major}.9-1213
 _gcc_more_v='20220315'
 _xanmod='aa66d88835989a3d6ee8e9c2a72afdcf22f4b2bc'
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
