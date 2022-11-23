@@ -1,6 +1,6 @@
 pkgbase = llama
 	pkgdesc = Terminal file manager
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/antonmedv/llama
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = llama
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = llama-1.1.1.tar.gz::https://github.com/antonmedv/llama/archive/v1.1.1.tar.gz
-	sha256sums = fbe387c567d4be018c7b031a87c311d866fb892a306c8d0619e5ce800a466bb6
+	source = llama-1.2.0.tar.gz::https://github.com/antonmedv/llama/archive/v1.2.0.tar.gz
+	sha256sums = cf6fe219f2554c90aadbe4d0ebb961b53fe3296873addab1a3af941646e19ca2
 
 pkgname = llama

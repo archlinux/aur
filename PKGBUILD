@@ -2,7 +2,7 @@
 # Contributor: Emilio Reggi <nag@mailbox.org>
 
 pkgname=llama
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Terminal file manager"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fbe387c567d4be018c7b031a87c311d866fb892a306c8d0619e5ce800a466bb6')
+sha256sums=('cf6fe219f2554c90aadbe4d0ebb961b53fe3296873addab1a3af941646e19ca2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
