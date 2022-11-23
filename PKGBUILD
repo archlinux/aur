@@ -2,14 +2,14 @@
 
 pkgname=gpr
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Parser for Ada GPR project files.'
 url='https://github.com/AdaCore/gpr'
 arch=('i686' 'x86_64')
 license=('GPL3' 'Apache')
 
-depends=(python libadalang which python-funcy python-mako)
+depends=(python libadalang which python-funcy python-mako python-docutils)
 makedepends=('gprbuild')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
