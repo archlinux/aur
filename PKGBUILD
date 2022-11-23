@@ -1,11 +1,9 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
-
 pkgname=nautilus-compare
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Context menu file comparison extension for Nautilus'
 arch=(any)
-url=https://launchpad.net/nautilus-compare/
+url=https://github.com/philong/nautilus-compare
 license=(GPL3)
 depends=(
   nautilus
@@ -22,8 +20,8 @@ optdepends=(
   'xxdiff'
 )
 install=${pkgname}.install
-source=(https://launchpad.net/${pkgname}/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('f42f156cc47c109720bbed0b1bc1bc4022ee33b8328323b8de279607c7f0647c')
+source=(https://github.com/philong/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+b2sums=('6a3e7f29aabd31f70b0aefc76e284f6c8f624b07c71d6314308e901b8db85bf0158804a493ca7efaa40b0b5da4ca15df7191c1c0943e7ec16886fc4e0b94c911')
 
 package() {
   cd "$pkgname-$pkgver"
