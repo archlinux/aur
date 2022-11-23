@@ -18,7 +18,7 @@ build() {
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_DATADIR=/share \
 		-DCMAKE_BUILD_TYPE=Release
-	make -C build -j $(nproc)
+	make -C build
 
 	export CFLAGS="-m32 ${CFLAGS}"
 	export CXXFLAGS="-m32 ${CXXFLAGS}"
@@ -31,7 +31,7 @@ build() {
 		-DCMAKE_LIBRARY_PATH=/usr/lib32 \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_PLUGIN=OFF
-	make -C build32 -j $(nproc)
+	make -C build32
 }
 
 package_obs-vkcapture() {
