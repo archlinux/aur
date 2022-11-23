@@ -1,7 +1,7 @@
 # Maintainer: iridiumR <i@iridium.cyou>
 pkgname=timeshift-systemd-timer
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Add systemd support for timeshift"
 arch=("any")
 license=("GPL3")
@@ -19,6 +19,6 @@ sha256sums=('ad3ef6848f42b69c9f0b1c9b5b385993658eba55169d7051082cba362b75938f'
 
 package() {
     install -m755 -d "${pkgdir}/usr/lib/systemd/system"
-    install -m755 ${srcdir}/* ${pkgdir}/usr/lib/systemd/system
+    install -m644 ${srcdir}/* ${pkgdir}/usr/lib/systemd/system
 }
 
