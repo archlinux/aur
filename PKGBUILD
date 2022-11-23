@@ -4,13 +4,13 @@ pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
 resname=earth_wallpaper
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
 url="https://github.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
-depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6')
+depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6' 'python-pysocks')
 
 source=(
     "$name-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
