@@ -1,10 +1,11 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Mariusz Szczepańczyk <mszczepanczyk@gmail.com>
 # Contributor: Daniel Funke <mr.daniel.funke@gmail.com>
 
 pkgname=libejdb
-pkgver=1.2.12
+pkgver=2.73
 pkgrel=1
 pkgdesc="Embedded JSON Database engine"
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ depends=('zlib' 'bzip2' 'xz' 'lzo')
 makedepends=('cmake')
 provides=('libtcejdb')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Softmotions/ejdb/archive/v${pkgver}.tar.gz")
-sha256sums=('858b58409a2875eb2b0c812ce501661f1c8c0378f7756d2467a72a1738c8a0bf')
+sha256sums=('1381af7790ce67f8005c380de2c90a1811619250d9d62e7cdb64547f27878484')
 
 build() {
     cd "${srcdir}/ejdb-${pkgver}"
