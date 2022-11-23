@@ -1,7 +1,7 @@
 # Maintainer: Greyson Christoforo <grey@christoforo.net>
 pkgname=python-uninstaller
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for uninstalling python packages."
 arch=('any')
 url="https://github.com/greyltc-org/uninstaller"
@@ -17,6 +17,7 @@ python-installer
 python-wheel
 git
 )
+validpgpkeys=('D903108568FB528B94BACE0A80DA60E72570377C')
 _commit=1767f4ac5adca9c99620957772797965eaa05603  # tag v0.0.2
 source=(git+https://github.com/greyltc-org/uninstaller?signed#commit=${_commit})
 md5sums=('SKIP')

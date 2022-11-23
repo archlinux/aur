@@ -1,7 +1,7 @@
 pkgbase = python-uninstaller
 	pkgdesc = A library for uninstalling python packages.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greyltc-org/uninstaller
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-uninstaller
 	makedepends = git
 	depends = python
 	source = git+https://github.com/greyltc-org/uninstaller?signed#commit=1767f4ac5adca9c99620957772797965eaa05603
+	validpgpkeys = D903108568FB528B94BACE0A80DA60E72570377C
 	md5sums = SKIP
 
 pkgname = python-uninstaller
