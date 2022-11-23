@@ -1,8 +1,8 @@
-# Maintainer: Ilaï Deutel
+# Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 _pkgname="scm_breeze"
 pkgname="$_pkgname-git"
-pkgver=1.0.0.r316.g134d101
+pkgver=1.0.0.r337.g0e21e89
 pkgrel=1
 pkgdesc='Streamline your SCM workflow.'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('ruby: improve performance of scm_breeze'
             'bash: shell integration'
             'zsh: shell integration')
 install='scm_breeze-git.install'
-source=("$pkgname::git+git://github.com/scmbreeze/$_pkgname.git"
+source=("$pkgname::git+https://github.com/scmbreeze/$_pkgname.git"
         "scmbDir-location.patch"
         "no-updates.patch")
 sha1sums=('SKIP'
@@ -33,6 +33,9 @@ prepare() {
 
   # Change the location of the scm_breeze directory
   patch --forward --strip=1 --input="${srcdir}/scmbDir-location.patch"
+
+  # egrep is deprecated
+  sed -i 's/egrep/grep -E/' lib/git/fallback/status_shortcuts_shell.sh
 }
 
 package() {
