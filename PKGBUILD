@@ -8,11 +8,11 @@ _productVariant=Germany
 # leave this unset to get a package name based on the application name
 pkgname=
 pkgrel=2
-# 7.3.1 segfaults without this:
-options=(!strip)
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
+# 7.3.1 segfaults without this:
+options=(!strip)
 
 declare -g -A _scriptTailMd5sums
 _scriptTailMd5sums[7.1]=1b231f3988603dbec4e857e247784295
