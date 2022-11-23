@@ -1,7 +1,7 @@
 # Maintainer: robertoszek <robertoszek@robertoszek.xyz>
 pkgname=bruno-appimage
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="The latest stable AppImage of Bruno - an Opensource API Collection Collaboration Suite"
 arch=('x86_64')
 url="https://github.com/usebruno/bruno"
@@ -15,7 +15,7 @@ source=(
 )
 _install_path='/opt/appimages/Bruno.AppImage'
 md5sums=(
-  7e188bfedb0237bc53503b0f9644f173
+  a6ea27668229517225e3d626bee61cea
 )
 
 package() {

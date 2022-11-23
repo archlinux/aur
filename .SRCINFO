@@ -1,14 +1,14 @@
 pkgbase = bruno-appimage
 	pkgdesc = The latest stable AppImage of Bruno - an Opensource API Collection Collaboration Suite
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/usebruno/bruno
 	arch = x86_64
 	license = MIT
 	provides = bruno
 	conflicts = bruno
 	options = !strip
-	source = https://github.com/usebruno/bruno/releases/download/v0.1.0/bruno_0.1.0_x86_64_linux.AppImage
-	md5sums = 7e188bfedb0237bc53503b0f9644f173
+	source = https://github.com/usebruno/bruno/releases/download/v0.3.0/bruno_0.3.0_x86_64_linux.AppImage
+	md5sums = a6ea27668229517225e3d626bee61cea
 
 pkgname = bruno-appimage
