@@ -5,7 +5,7 @@
 
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
-pkgver=4.14.5
+pkgver=4.15.5
 pkgrel=1
 #_mainver=${pkgver%.*}
 pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version)."
@@ -25,7 +25,7 @@ source_x86_64=("${pkgname}-${pkgver}.deb::http://wppkg.baidupcs.com/issue/netdis
 
 sha256sums=('1e0d9616c58d3b772b42d4790625cf2c34ab671f586b8534a2c544c2117bb5d0'
             'c0035e038344a154421301b7855c274049ad432a5b06b52efc74831daa73e02e')
-sha256sums_x86_64=('d5f1acb2e2a41f241c83d30dd590f70919afc3573136b0bb0b4f07b1dc338ab8')
+sha256sums_x86_64=('68118e835140ecf4a98837c022fda3080059ff3ee4ab471ffc862960e6589af1')
 
 prepare() {
     bsdtar -xpf "data.tar.xz"
