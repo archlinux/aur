@@ -1,14 +1,15 @@
 # Maintainer: Thaodan <AUR+me@thaodan.de>
 pkgname=scratchbox2
-pkgver=2.3.90+git53
+pkgver=2.3.90+git58
 pkgrel=1
-pkgdesc=""
+pkgdesc="Scratchbox2 crosscompiling environment"
 arch=('x86_64' 'i686')
 url="https://github.com/sailfishos/scratchbox2"
 license=('GPL')
 depends=('perl' 'lib32-glibc' 'sh' 'lua' 'lib32-lua' 'lua-posix')
 optdepends=('qemu-arch-extra: arm and aarch64 support')
 #_branch=fix_building_against_glibc_2_34
+options=('!lto')
 _vcs_str="${_branch+#branch=}${_branch:-#tag=$pkgver}"
 _src_subdir=$pkgname${_branch+-$_branch}
 source=(
@@ -38,7 +39,7 @@ build() {
   cd $_src_subdir
   ./autogen.sh
   ./configure --prefix=/usr
-  make V=1 -j32
+  make V=1
 }
 
 package() {
