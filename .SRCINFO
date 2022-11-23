@@ -1,13 +1,13 @@
 pkgbase = r-numbers
 	pkgdesc = Number-Theoretic Functions
-	pkgver = 0.8.2
-	pkgrel = 4
+	pkgver = 0.8.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=numbers
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-gmp
-	source = https://cran.r-project.org/src/contrib/numbers_0.8-2.tar.gz
-	sha256sums = c1ac232878d64b5ef844524a5f85a7a7f64fcd0652f3d6fc3936f16fa665573d
+	source = https://cran.r-project.org/src/contrib/numbers_0.8-5.tar.gz
+	sha256sums = 77d5dedb7f953689ab9e89c14e673c0c8f644c8b392fab4ee4fb793930ad220b
 
 pkgname = r-numbers
