@@ -1,8 +1,9 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
+provides=("$_name")
 pkgver=r231.0809563
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast previewer for lf (stpv replacement)"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
