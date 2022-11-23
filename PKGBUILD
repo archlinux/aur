@@ -1,16 +1,24 @@
 # Maintainer: phire <me@phire.cc>
 pkgname=mlvd
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
-pkgdesc="A Mullvad Wireguard client in POSIX shell"
+pkgdesc="A minimal Mullvad WireGuard client"
 arch=('any')
 url="https://github.com/phirecc/mlvd"
-depends=('jq' 'curl' 'wireguard-tools' 'openresolv')
+depends=('wireguard-tools' 'openresolv')
+makedepends=("cargo")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=("d6b707afd7172232e331445287a5c8ef")
+md5sums=("58b688032cd58234494f598859cc5802")
 backup=(var/lib/mlvd/template.conf)
 
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release
+}
+
 package() {
-	install -Dm600 "$srcdir/$pkgname-$pkgver/template.conf" "$pkgdir/var/lib/$pkgname/template.conf"
-	install -Dm755 "$srcdir/$pkgname-$pkgver/mlvd" "$pkgdir/usr/bin/mlvd"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/mlvd" "$pkgdir/usr/bin/mlvd"
+    install -Dm600 "template.conf" "$pkgdir/var/lib/$pkgname/template.conf"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
