@@ -8,11 +8,8 @@ url="https://github.com/realmazharhussain/nautilus-code"
 license=('AGPL3')
 depends=('libnautilus-extension')
 makedepends=('git' 'meson')
-optdepends=("code: for 'Open in VSCode' menu item"
-            "gnome-builder: for 'Open in Builder' menu item")
 provides=('nautilus-code')
 conflicts=('nautilus-code')
-backup=()
 source=("$pkgname"::"git+$url")
 md5sums=('SKIP')
 
