@@ -18,12 +18,12 @@ conflicts=(
 	"${pkgname%-bin}"
 )
 source_x86_64=(
-	"https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/x86_64/$_pkgbin"
-	"https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/x86_64/$_pkgshim"
+	"$_pkgbin-x86_64-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/x86_64/$_pkgbin"
+	"$_pkgshim-x86_64-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/x86_64/$_pkgshim"
 )
 source_aarch64=(
-	"https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/aarch64/$_pkgbin"
-	"https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/aarch64/$_pkgshim"
+	"$_pkgbin-aarch64-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/aarch64/$_pkgbin"
+	"$_pkgshim-aarch64-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/aarch64/$_pkgshim"
 )
 sha512sums_x86_64=('f47a15449cd2a4b25dc768e4d9275d67c22acda6ebbc46270c38f5f135143f7551475168862b846a408f3858ee7edf725861a6bb3ce9ef2c783d1cab6d177511'
                    '3b8bb9453dfc8cad3b2a1c484d9acb6766c7900d6869e1696214216a0fab994e55409e4065267544a360283b2c824790f605d89749674ddb68dd58086f44f956')
@@ -31,6 +31,6 @@ sha512sums_aarch64=('87a39bb2e2e87390f6c6c38dbc4bdcced62d07af9128ddead7b0b46bc7b
                     '0ec5bd37b91a921bdeb26e92251f37d6c6adba4e2176973017b592e229c7512aa1765be4c4a87be44dfbb6bb30827b05f7e1551eff98ea006499317dec4a9e60')
 
 package() {
-	install -Dm 755 "$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
-	install -Dm 755 "$_pkgshim" "$pkgdir/usr/bin/$_pkgshim"
+	install -Dm 755 "$_pkgbin-$CARCH-$pkgver" "$pkgdir/usr/bin/$_pkgbin"
+	install -Dm 755 "$_pkgshim-$CARCH-$pkgver" "$pkgdir/usr/bin/$_pkgshim"
 }

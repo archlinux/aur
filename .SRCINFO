@@ -9,12 +9,12 @@ pkgbase = gvisor-bin
 	optdepends = docker: for Docker runtime support
 	provides = gvisor
 	conflicts = gvisor
-	source_x86_64 = https://storage.googleapis.com/gvisor/releases/release/20221102.1/x86_64/runsc
-	source_x86_64 = https://storage.googleapis.com/gvisor/releases/release/20221102.1/x86_64/containerd-shim-runsc-v1
+	source_x86_64 = runsc-x86_64-20221102.1::https://storage.googleapis.com/gvisor/releases/release/20221102.1/x86_64/runsc
+	source_x86_64 = containerd-shim-runsc-v1-x86_64-20221102.1::https://storage.googleapis.com/gvisor/releases/release/20221102.1/x86_64/containerd-shim-runsc-v1
 	sha512sums_x86_64 = f47a15449cd2a4b25dc768e4d9275d67c22acda6ebbc46270c38f5f135143f7551475168862b846a408f3858ee7edf725861a6bb3ce9ef2c783d1cab6d177511
 	sha512sums_x86_64 = 3b8bb9453dfc8cad3b2a1c484d9acb6766c7900d6869e1696214216a0fab994e55409e4065267544a360283b2c824790f605d89749674ddb68dd58086f44f956
-	source_aarch64 = https://storage.googleapis.com/gvisor/releases/release/20221102.1/aarch64/runsc
-	source_aarch64 = https://storage.googleapis.com/gvisor/releases/release/20221102.1/aarch64/containerd-shim-runsc-v1
+	source_aarch64 = runsc-aarch64-20221102.1::https://storage.googleapis.com/gvisor/releases/release/20221102.1/aarch64/runsc
+	source_aarch64 = containerd-shim-runsc-v1-aarch64-20221102.1::https://storage.googleapis.com/gvisor/releases/release/20221102.1/aarch64/containerd-shim-runsc-v1
 	sha512sums_aarch64 = 87a39bb2e2e87390f6c6c38dbc4bdcced62d07af9128ddead7b0b46bc7bac2f9aa678b8bc5d234dedd9ad5430fe38d0e3df77d65b10589e99f21bdf0516d80b5
 	sha512sums_aarch64 = 0ec5bd37b91a921bdeb26e92251f37d6c6adba4e2176973017b592e229c7512aa1765be4c4a87be44dfbb6bb30827b05f7e1551eff98ea006499317dec4a9e60
 
