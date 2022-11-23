@@ -2,7 +2,7 @@
 pkgname='salvador'
 pkgver='2.1.0'
 pkgrel='1'
-pkgdesc='A simple bash script that will help you manage your AUR packages'
+pkgdesc='A bash script that will help you maintain your AUR packages'
 arch=('any')
 url="https://gitlab.com/dpeukert/$pkgname"
 license=('GPL3')
