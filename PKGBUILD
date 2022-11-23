@@ -1,7 +1,7 @@
 # Maintainer: Rayr https://rayr.ml/LinkInBio/
 
 pkgname=currencyconverter
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A CLI program that converts currencies using currency exchange rates"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Rayrsn/currencyConverter"
 license=('GPL')
 makedepends=('go')
 source=("https://github.com/Rayrsn/currencyConverter/archive/refs/tags/$pkgver.zip")
-md5sums=('0f3dcf876d3240cead3f8a22a7ccf7f9')
+md5sums=('61f93217474d3577ce99f21697b0d0ff')
 
 # Go Flags https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
 export CGO_CPPFLAGS="${CPPFLAGS}"
