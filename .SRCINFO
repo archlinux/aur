@@ -1,7 +1,7 @@
 pkgbase = python-dmt
 	pkgdesc = Manage domains like packages.
 	pkgver = r58.389bfb7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/waser-technologies/technologies/dmt
 	arch = any
 	license = GNU GPL v3
