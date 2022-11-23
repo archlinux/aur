@@ -15,7 +15,11 @@ groups=()
 depends=(tensorflow115 icu)
 makedepends=(go nodejs npm git)
 checkdepends=()
-optdepends=()
+optdepends=("darktable: for RAW to JPEG conversion"
+	    "rawtherapee: for RAW to JPEG conversion"
+	    "libheif: for HEIC/HEIF image conversion"
+	    "ffmpeg: for video transcoding and thumbnail extraction"
+	    "exiftool: for extracting metadata")
 provides=("photoprism")
 conflicts=("photoprism")
 replaces=()
