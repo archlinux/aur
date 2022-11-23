@@ -1,0 +1,17 @@
+pkgbase = river-luatile-git
+	pkgdesc = Write your own river layout generator in lua
+	pkgver = r11.ac23773
+	pkgrel = 1
+	url = https://github.com/MaxVerevkin/river-luatile
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = luajit
+	provides = river-luatile
+	source = git+https://github.com/MaxVerevkin/river-luatile
+	sha512sums = SKIP
+
+pkgname = river-luatile-git
