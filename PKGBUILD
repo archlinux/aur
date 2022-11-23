@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=nautilus-code-git
-pkgver=0.4+0+g905db8f
+pkgver=0.5+11+gba288ea
 pkgrel=1
 pkgdesc="Adds right-click menu items to open current folder in code editors"
 arch=(any)

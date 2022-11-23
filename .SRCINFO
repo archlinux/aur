@@ -1,15 +1,13 @@
 pkgbase = nautilus-code-git
 	pkgdesc = Adds right-click menu items to open current folder in code editors
-	pkgver = 0.4+0+g905db8f
+	pkgver = 0.5+11+gba288ea
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/nautilus-code
 	arch = any
 	license = AGPL3
 	makedepends = git
 	makedepends = meson
-	depends = libnautilus-extension
-	optdepends = code: for 'Open in VSCode' menu item
-	optdepends = gnome-builder: for 'Open in Builder' menu item
+	depends = python-nautilus
 	provides = nautilus-code
 	conflicts = nautilus-code
 	source = nautilus-code-git::git+https://github.com/realmazharhussain/nautilus-code
