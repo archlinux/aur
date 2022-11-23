@@ -15,7 +15,7 @@ optdepends=('virt-what: For use with virtual machines' 'systemtap: Disk and net 
 makedepends=('desktop-file-utils')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
-source=("https://github.com/redhat-performance/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/redhat-performance/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('3cb2aeb9ecebd66a1a1c3aaff9589f5c5402201d16f7caa01acf0b9374ed8724')
 
 prepare() {

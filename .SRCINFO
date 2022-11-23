@@ -21,7 +21,7 @@ pkgbase = tuned
 	optdepends = virt-what: For use with virtual machines
 	optdepends = systemtap: Disk and net statistic monitoring systemtap scripts
 	backup = etc/tuned/active_profile
-	source = https://github.com/redhat-performance/tuned/archive/v2.19.0.tar.gz
+	source = https://github.com/redhat-performance/tuned/archive/v2.19.0/tuned-2.19.0.tar.gz
 	sha256sums = 3cb2aeb9ecebd66a1a1c3aaff9589f5c5402201d16f7caa01acf0b9374ed8724
 
 pkgname = tuned
