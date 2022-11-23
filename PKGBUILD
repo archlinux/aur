@@ -2,16 +2,16 @@
 # Contributor: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=trdsql
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
-pkgdesc="Tool that can execute SQL queries on CSV, LTSV and JSON"
+pkgdesc="CLI tool that can execute SQL queries on CSV, LTSV, JSON and TBLN"
 arch=('i686' 'x86_64')
 url="https://github.com/noborus/trdsql"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7691e745079ff3fef0aeb8cb5aca0952d0bdf4d19262d851b488fca7ce06fe2c')
+sha256sums=('18e0b16d5f090da2fa5ff965f18d6d2c1cda322ddf5c1d595b98054c73e6e6c6')
 
 build() {
   cd ${pkgname}-${pkgver}
