@@ -2,7 +2,7 @@ pkgbase = jdk8-dragonwell-extended
 	pkgdesc = An in-house OpenJDK implementation at Alibaba (Extended Edition)
 	pkgver = 8.13.14
 	pkgrel = 1
-	url = https://openjdk.java.net/
+	url = https://github.com/alibaba/dragonwell8
 	install = jdk8-dragonwell-extended.install
 	arch = x86_64
 	license = GPL2
@@ -24,7 +24,6 @@ pkgbase = jdk8-dragonwell-extended
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	conflicts = jdk8-dragonwell-extended-bin
-	replaces = jdk8-openjdk-wm
 	options = !lto
 	source = https://github.com/alibaba/dragonwell8/archive/refs/tags/dragonwell-extended-8.13.14_jdk8u352-ga.tar.gz
 	source = gcc11.patch

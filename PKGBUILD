@@ -12,7 +12,7 @@ _jdk_updatever=352
 pkgver=${_majorver}.${_minorver}.${_updatever}
 pkgrel=1
 arch=('x86_64')
-url='https://openjdk.java.net/'
+url="https://github.com/alibaba/dragonwell${_majorver}"
 license=('GPL2')
 makedepends=("java-environment=${_majorver}" 'ccache' 'cpio' 'unzip' 'zip' 'git' 'bash'
   'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
@@ -20,10 +20,9 @@ pkgdesc='An in-house OpenJDK implementation at Alibaba (Extended Edition)'
 depends=('java-environment-common' "java-environment-openjdk=${_majorver}")
 provides=("java-runtime=${_majorver}" "java-environment=${_majorver}" "java-environment-openjdk=${_majorver}")
 conflicts=("${pkgname}-bin")
-replaces=('jdk8-openjdk-wm')
 install="${pkgname}.install"
 options=(!lto)
-source=("https://github.com/alibaba/dragonwell${_majorver}/archive/refs/tags/dragonwell-extended-${pkgver}_jdk${_majorver}u${_jdk_updatever}-ga.tar.gz"
+source=("${url}/archive/refs/tags/dragonwell-extended-${pkgver}_jdk${_majorver}u${_jdk_updatever}-ga.tar.gz"
   gcc11.patch)
 b2sums=('14c3e4c0d197f585913472661d0230ac746ce0e6509f837e710730b7f27e12abf047946dea3fb8cd2a14bebca053fe96866f95d6acac0173f987a6c45e8f7375'
   '9679e4dfb6027a87376081489c09810812d6849573afac4ea96abe3a3e00ca5b6af7d0ffb010c43b93cfa913f9e97fbb9f11e19fcc86a89b4548442671c32da1')
