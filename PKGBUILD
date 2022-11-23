@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=immudb
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Immutable database built on a zero-trust model'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 backup=('etc/immudb/immudb.toml')
 options=('!lto')
-_commit='15d0309e159f36e0b3e2775e91a695a509c47542'
+_commit='ad7623ce74bb3257d78af75941d494883591141a'
 _wcver=1.0.18 # extracted from Makefile variable: DEFAULT_WEBCONSOLE_VERSION
 source=(
   "$pkgname::git+https://github.com/codenotary/immudb.git#commit=$_commit"
