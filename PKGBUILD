@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=17
+pkgrel=18
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -132,7 +132,7 @@ prepare() {
   fi
   
   ## Apply custom patches if enabled
-  if [ "${_use_system_clang}" == true ] || [ "${_use_system_clang}" -eq 1 ]; then
+  if [ "${_use_system_clang}" == true ]; then
     patch -p1 -i "${srcdir}/use_system_clang.patch"
   fi
 
