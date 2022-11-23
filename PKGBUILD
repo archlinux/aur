@@ -1,7 +1,7 @@
 #Maintainer: Benjamin Reich <aur@benjaminreich.de>
 #Source found on github.com/b-reich/aur
 pkgname=smap-bin # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="a drop-in replacement for Nmap powered by shodan.io "
 arch=('x86_64')
