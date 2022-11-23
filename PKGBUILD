@@ -9,6 +9,7 @@ pkgname=trash-cli-git
 _pkgname=trash-cli
 pkgver=0.22.10.20.r52.g0b476b1
 pkgrel=1
+epoch=1
 pkgdesc='Command line trashcan (recycle bin) interface'
 arch=('any')
 url="https://github.com/andreafrancia/${_pkgname}"
