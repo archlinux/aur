@@ -34,5 +34,5 @@ build() {
 
 package() {
     ninja -C build install
-    install -D -m0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m0644 "${srcdir}"/${pkgname}-${pkgver}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
