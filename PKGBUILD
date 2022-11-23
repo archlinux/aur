@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <at gmail dot com>
 pkgname=86box-git
-pkgver=3.7.1.r760.ge167988a9
+pkgver=3.7.1.r780.gd75fe8f32
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
