@@ -132,6 +132,7 @@ _package() {
             fi
         done
     fi
+    # Fix python39 miss-aligned libs
     if [[ -d "$pkgdir/usr/etc" ]]; then
         mv "$pkgdir/usr/etc" "$pkgdir/etc"
     fi
