@@ -1,10 +1,11 @@
-# Maintainer: HanFox <han@hanfox.co.uk>
+# Maintainer: M4rQu1Nh0S <blogmrcs[AT]gmail.com
 # Contributor: Nico Suarez <nicodoggie@gmail.com>
 # Contributor: freaknils <nils[AT]czserver.de>
+# Maintainer: M4rQu1Nh0S <blogmrcs[AT]gmail.com
 
 pkgname=hamsket-nightly-bin
 _pkgname=hamsket
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one."
 arch=(x86_64)
