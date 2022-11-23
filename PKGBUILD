@@ -1,4 +1,5 @@
 # Maintainer: lis
+# Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -9,14 +10,14 @@
 pkgname=lilypond-devel
 _pkgname=lilypond
 pkgver=2.23.80
-pkgrel=1
+pkgrel=2
 pkgdesc="Music engraving program (development version)"
 arch=('x86_64')
 url="https://lilypond.org"
 license=('FDL1.3' 'GPL3' 'custom:OFL')
 groups=('pro-audio')
 # NOTE: use guile only with 2.24.x
-depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile')
+depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile>=3.0')
 makedepends=('fontconfig' 'fontforge' 'freetype2' 'glib2' 'imagemagick' 'pango'
 'python' 'rsync' 't1utils' 'texinfo' 'texlive-core' 'tex-gyre-fonts'
 'texlive-langcyrillic' 'zip')
@@ -39,7 +40,9 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
   ./configure --prefix=/usr \
-              --disable-texi2html
+              --disable-texi2html \
+              --disable-documentation \
+              GUILE_FLAVOR=guile-3.0
   make
   make bytecode
 }
