@@ -1,0 +1,12 @@
+pkgbase = veldora
+	pkgdesc = A rust program to bruteforce zips, pdfs and some popular hashes.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/tamton-aquib/veldora
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = veldora.zip::https://github.com/tamton-aquib/veldora/releases/download/v0.2.1/veldora-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = veldora
