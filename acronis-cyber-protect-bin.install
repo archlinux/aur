@@ -1,0 +1,11 @@
+setup="AcronisCyberProtect_15_64-bit.x86_64"
+
+post_install() {
+  cp /proc/kallsyms /boot/System.map
+
+  "/opt/acronis/cyber-protect/$setup" -ad
+}
+
+pre_remove() {
+  "/opt/acronis/cyber-protect/$setup" -adu
+}

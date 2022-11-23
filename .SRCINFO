@@ -1,0 +1,23 @@
+pkgbase = acronis-cyber-protect-bin
+	pkgdesc = Acronis Cyber Protect On-Premises installer
+	pkgver = 15.0.30984_1
+	pkgrel = 1
+	url = https://www.acronis.com/products/cyber-protect/
+	install = acronis-cyber-protect-bin.install
+	arch = x86_64
+	license = unknown
+	depends = dkms
+	depends = java-runtime=8
+	depends = rpm
+	depends = gcc-libs
+	depends = make
+	depends = perl
+	depends = linux-headers
+	noextract = AcronisCyberProtect_15_64-bit.x86_64
+	noextract = acronis-cyber-protect-bin.install
+	source = AcronisCyberProtect_15_64-bit.x86_64::https://dl.acronis.com/u/AcronisCyberProtect15/Release/AcronisCyberProtect_15_64-bit.x86_64
+	source = acronis-cyber-protect-bin.install
+	sha256sums = 5ca66c8c0105e09a55ed8673f24607fc975cef1c371d46f967bf77618b331196
+	sha256sums = d2719245a15efe1fa7489c913b7545281095c1821b52ede86919e9ff6171ffcc
+
+pkgname = acronis-cyber-protect-bin
