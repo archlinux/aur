@@ -1,6 +1,6 @@
 pkgbase = python-asdf
 	pkgdesc = A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files
-	pkgver = 2.13.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://asdf.readthedocs.io
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = python-asdf
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
 	checkdepends = python-pytest-openfiles
-	checkdepends = python-numpy
 	checkdepends = python-jsonschema
 	checkdepends = python-yaml
 	checkdepends = python-semantic-version
@@ -17,25 +16,28 @@ pkgbase = python-asdf
 	checkdepends = python-jmespath
 	checkdepends = python-asdf_transform_schemas
 	checkdepends = python-lz4
+	checkdepends = python-fsspec
+	checkdepends = python-aiohttp
+	checkdepends = python-requests
 	checkdepends = python-psutil
-	checkdepends = python-virtualenv
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.13.0.tar.gz
-	md5sums = c3a1a5bc1cc7f03ebeb93f37d5dca21e
+	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.14.0.tar.gz
+	md5sums = 304437f101c20f560cb4f332335fa8df
 
 pkgname = python-asdf
 	depends = python>=3.8
-	depends = python-numpy>=1.10
+	depends = python-numpy>=1.18
 	depends = python-jmespath>=0.6.2
-	depends = python-jsonschema<4.10.0
+	depends = python-jsonschema>=4.0.1
 	depends = python-packaging>=16.0
 	depends = python-yaml>=3.10
 	depends = python-semantic-version>=2.8
 	depends = python-asdf-standard>=1.0.1
 	depends = python-asdf_transform_schemas>=0.2.2
+	depends = python-asdf_unit_schemas>=0.1.0
 	optdepends = python-astropy: Support for units, time, transform, wcs, or running the tests
 	optdepends = python-lz4>=0.10: Support for lz4 compression
 	optdepends = python-asdf-doc: Documentation for Python-ASDF
