@@ -1,0 +1,20 @@
+pkgbase = aom-av1-lavish-git
+	pkgdesc = aomenc-av1 lavish fork
+	pkgver = r52f6a.00b48332e
+	pkgrel = 1
+	url = https://github.com/Clybius/aom-av1-lavish
+	arch = x86_64
+	license = BSD
+	license = custom:PATENTS
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = yasm
+	depends = gcc-libs
+	depends = vmaf
+	depends = libjxl
+	provides = aom
+	conflicts = aom
+	source = git+https://github.com/Clybius/aom-av1-lavish.git#branch=Endless_Instability
+	sha256sums = SKIP
+
+pkgname = aom-av1-lavish-git
