@@ -1,7 +1,7 @@
 pkgbase = cewe-fotowelt
 	pkgdesc = an offline client for creating photobooks and other photo products and ordering them from CEWE or partners
 	pkgver = 7.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cewe.de/
 	install = cewe-fotowelt.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = cewe-fotowelt
 	conflicts = cewe-fotoservice
 	conflicts = cewe-monlivrephoto-fnac
 	conflicts = cewe-monlivrephoto-fr
+	options = !strip
 	source = https://dls.photoprintit.com/download/Data/24441-de_DE/hps/setup_CEWE_Fotowelt.tgz
 	source = updater.pl
 	md5sums = SKIP
