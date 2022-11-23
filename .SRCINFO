@@ -1,6 +1,6 @@
 pkgbase = r-rgreat
 	pkgdesc = Client for GREAT Analysis
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rGREAT
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-rgreat
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-uniprotkeywords
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rGREAT_2.0.1.tar.gz
-	sha256sums = 116e29e35f29d75c555568d5ce53873f8e3c587bdab2e350f3ac2a1a4be83de8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rGREAT_2.0.2.tar.gz
+	sha256sums = 8d2eca40bce77749909bb2f887cd71730e95eba0c1c3f0500e1f73748b3eb5ee
 
 pkgname = r-rgreat
