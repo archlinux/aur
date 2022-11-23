@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism
-pkgver="220730"
-commit="0e1222c83"
+pkgver="221118"
+commit="e58fee0fb"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
@@ -15,7 +15,11 @@ groups=()
 depends=(tensorflow115 icu)
 makedepends=(go nodejs npm git)
 checkdepends=()
-optdepends=()
+optdepends=("darktable: for RAW to JPEG conversion"
+	    "rawtherapee: for RAW to JPEG conversion"
+	    "libheif: for HEIC/HEIF image conversion"
+	    "ffmpeg: for video transcoding and thumbnail extraction"
+	    "exiftool: for extracting metadata")
 provides=("photoprism")
 conflicts=("photoprism")
 replaces=()
