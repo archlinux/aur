@@ -1,9 +1,9 @@
-# Maintainer: Malacology <guoyizhang at malacology dot com>
+# Maintainer: Malacology <guoyizhang at malacology dot net>
 # Contributor: FabioLolix
 
 pkgname=free-delta
 pkgver=2.9.2
-pkgrel=1
+pkgrel=3
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
 arch=('x86_64')
 url="http://freedelta.sourceforge.net/"
