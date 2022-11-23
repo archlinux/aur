@@ -10,7 +10,7 @@ url="https://bowtie-bio.sourceforge.net/bowtie2"
 license=("GPL3")
 depends=('zstd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
-sha1sums=('744e65bf8e83b13bf93619e375d412e10b776d7c')
+sha256sums=('55dedeba8bea240d3ce3f46211d6e14310035c1de5a3e9ac33f72f739165fea0')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
