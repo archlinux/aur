@@ -1,12 +1,13 @@
 pkgbase = deepin-wayland-protocols-reborn
 	pkgdesc = deepin Specific Protocols for Wayland
-	pkgver = 1.6.0
-	pkgrel = 1
+	pkgver = 1.6.0.deepin.1.1
+	pkgrel = 2
+	url = https://github.com/justforlxz/deepin-wayland-protocols
 	arch = any
 	license = LGPL
 	makedepends = qt5-base
 	makedepends = extra-cmake-modules
-	source = https://github.com/justforlxz/deepin-wayland-protocols/archive/refs/tags/1.6.0-deepin.1.1.tar.gz
+	source = deepin-wayland-protocols-reborn-1.6.0.deepin.1.1.tar.gz::https://github.com/justforlxz/deepin-wayland-protocols/archive/refs/tags/1.6.0-deepin.1.1.tar.gz
 	sha256sums = 3a1efb220c1958d48caa12a4fa4873886b68faa3f12d271bbd4fa00d12854234
 
 pkgname = deepin-wayland-protocols-reborn
