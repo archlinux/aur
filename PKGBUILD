@@ -2,7 +2,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=alice-vision
 pkgver=2.4.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -100,6 +100,10 @@ package() {
 
   ninja -C build doc_doxygen
   DESTDIR="${pkgdir}" ninja -C build install
+
+  # Clean up some stuff that gets installed for some reason
+  rm "${pkgdir}"/usr/lib/libflann_cpp_s.a
+  rm "${pkgdir}"/usr/lib/pkgconfig/flann.pc
 
   install -Dm755 COPYING.md "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.md
   install -Dm755 LICENSE-MPL2.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MPL2.md
