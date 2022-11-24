@@ -11,17 +11,16 @@
 
 
 ### PACKAGE OPTIONS
-
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2671')
-_merge_requests_to_use=('1441' '1880' '2671')
+# Merge Requests List: ('579' '1441' '1880' '2671' '2694')
+_merge_requests_to_use=('1441' '1880' '2671' '2694')
 
 ## Disable building a DOCS package
 # Remember to unset this variable when producing .SRCINFO
 : "${_disable_docs:=""}"
 
 
-### IMPORTANT: Do no edit below this line unless you know what you're doing
+### IMPORTANT: Do no edit below this line unless you know what you're doing!
 
 pkgbase=mutter-performance
 if [ -n "$_disable_docs" ]; then
@@ -30,7 +29,7 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=43.1+r1+gaccf532a2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -46,11 +45,13 @@ _commit=accf532a29ea9a1d70880dfaa1834050aa3ae7be  # tags/43.1^1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
-        'mr2671.patch')
+        'mr2671.patch'
+        'mr2694.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
             'a075fad955d589ea5e59178221a80fe162f7b10cd0c77fcb94219fb380810952'
-            'd7f8e1a52ddcc02af677b7a7167b720028a4363f1b4df8a9a47fdf5b770ca721')
+            '45ba598e88a4b18ab2d0522abe058efaf0ceb05895bae6f31887bcd4492c45ce'
+            '620aabe6b59a6b4ccde95c0aecf98c290ad218c0b8a340bb0bc075c6cc0846e1')
 
 pkgver() {
   cd $pkgname
@@ -98,7 +99,6 @@ prepare() {
   #git fetch verdre
   #git fetch 3v1no
 
-
   ### Merge Requests
 
   # Merge Request Prototype
@@ -123,7 +123,6 @@ prepare() {
   #   4. Merged: MR approved and it changes commited to master.
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
-
 
   # Title: backends: Do not reload keymap on new keyboard notifications
   # Author: Carlos Garnacho <carlosg@gnome.org>
@@ -158,7 +157,18 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment: Avoid some allocations, save some CPU cycles and make the code easier to read.
+  # NOTE: This changes mutter's behaviors, which can bring regressions when using extensions.
+  #       Disable this MR if you encounter errors with those extensions.
   pick_mr '2671' 'mr2671.patch' 'patch'
+
+  # Title: clutter/actor: Show on all stage-views when actors have no allocation
+  # Author: Jonas Dreßler <verdre@v0yd.nl>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2694
+  # Type: 3
+  # Status: 3
+  # Comment: For paint volumes, queue full-stage redraws. For actors without valid allocations,
+  #          set priv->stage_views to all available stage views.
+  pick_mr '2694' 'mr2694.patch' 'patch'
 
 }
 

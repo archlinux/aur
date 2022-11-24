@@ -2,7 +2,7 @@ Author: Robert Mader <robert.mader@posteo.de>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2671
 Editor: Mingi Sung <FiestaLake@protonmail.com>
 Commit: d9f1681b149c12c94e3e457c6decd34babed951f
-Last Updated: 11/16/22 (Mutter 43.0-1)
+Last Updated: 11/16/22 (Mutter 43.1-1)
 ---
 
 Avoid some allocations, save some CPU cycles and make the code easier
