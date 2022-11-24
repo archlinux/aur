@@ -3,7 +3,7 @@ pkgname=git-credential-manager-core-bin
 _pkgname=git-credential-manager-core
 pkgver=2.0.877
 # _pkgver=2.0.452
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services."
 arch=('x86_64')
 url="https://github.com/GitCredentialManager/git-credential-manager"
@@ -23,7 +23,7 @@ source=("https://github.com/GitCredentialManager/git-credential-manager/releases
 		'LICENSE')
 noextract=("gcm-linux_amd64.$pkgver.tar.gz")
 sha256sums=('b8708e19e69798e1f0231b40b4471e9464243daf3bc5267d8a81d4aa8a9d8785'
-            '6898b6748fc03351f27c23d3a1969f609ed781e07702e6c34415599e602b1210'
+            'a413095ee83a9464dfa58f575e35959ded91a993cad3728a2c8e26c00c19c04b'
             '30147347d5ce41662672ea2be7b158ae0e014398b97a148dd07bfd46c5166292')
 
 prepare() {
@@ -37,7 +37,8 @@ package() {
     install -Dm644 -o0 -g0 LICENSE "$pkgdir/usr/share/licenses/git-credential-manager-core-bin/LICENSE"
 
     mkdir -p "$pkgdir/usr/bin/"
-    ln -s ../share/git-credential-manager-core/git-credential-manager-core "$pkgdir/usr/bin/git-credential-manager-core"
+    ln -s ../share/git-credential-manager-core/git-credential-manager "$pkgdir/usr/bin/git-credential-manager"
+    ln -s ../share/git-credential-manager-core/git-credential-manager "$pkgdir/usr/bin/git-credential-manager-core"
 
     cd gcm
     find -type f -exec install -Dm755 -o0 -g0 "{}" "$pkgdir/usr/share/git-credential-manager-core/{}" \;
