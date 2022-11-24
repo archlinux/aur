@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer4
-pkgver=4.20.1
-_debpkgver=4.20.1-100avx2
+pkgver=4.20.2
+_debpkgver=4.20.2-102avx2
 pkgrel=1
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('hqplayer-client' 'evince: hqplayer manual reading')
 conflicts=('hqplayer-embedded-amd' 'hqplayer-embedded-sse' 'hqplayer-embedded')
 provides=('hqplayer')
 source=("https://www.signalyst.com/bins/hqplayer4desktop_"$_debpkgver"_amd64.deb")
-sha256sums=('0c7ba1cebbb4122ace54c6aca0d334a9776c9b089662d4ef6537ef17df357106')
+sha256sums=('068256038876cc570876d0bfe26efbd5c5e29be966864bfb03da6838b8ecc60a')
 options=(!strip)
 install=${pkgname}.install
 
