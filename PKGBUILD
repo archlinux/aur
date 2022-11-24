@@ -1,23 +1,22 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=timer
-pkgver=10.6d03419
+pkgver=11.v2.0.0
 pkgrel=1
+epoch=0
 pkgdesc='Simple CLI timer'
 arch=('any')
 url='https://github.com/yoarch/timer'
 license=('MIT')
 depends=('bash' 'mpv')
-#makedepends=('')
 
 source=("git+https://github.com/yoarch/timer.git")
-#source#=("file:///$MHOME/dev/aur/timer/timer.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	echo "$(git rev-list --count HEAD).$(git describe --always)"
-} # '
+}
 
 package() {
 	cd "$srcdir/$pkgname"
