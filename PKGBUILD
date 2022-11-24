@@ -17,7 +17,7 @@ depends=(
   'python-soundcloud-v2'
 )
 makedepends=(git python-setuptools)
-source=("$pkgname.tag.gz::https://github.com/flyingrub/scdl/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tag.gz::https://github.com/flyingrub/scdl/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9a0c29d86f316c196ca293ebecab0b1795176b61b6e6311296bf20a312347e43')
 
 license=(GPL2)
