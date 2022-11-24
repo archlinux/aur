@@ -1,0 +1,10 @@
+pkgbase = nonickname-devel
+	pkgdesc = Metapackage to test my package
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/nonickname-devel.git
+	arch = x86_64
+	license = None
+	depends = neofetch
+
+pkgname = nonickname-devel
