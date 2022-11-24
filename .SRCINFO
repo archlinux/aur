@@ -1,7 +1,7 @@
 pkgbase = ladybird-git
 	pkgdesc = Web browser built from scratch using the SerenityOS LibWeb engine
 	pkgver = r64.7040a87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/awesomekling/ladybird
 	arch = x86_64
 	license = BSD
