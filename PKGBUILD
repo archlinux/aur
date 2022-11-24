@@ -1,8 +1,6 @@
-# Maintainer: asamk <asamk@gmx.de>
-# Contributor: Max Harmathy <max.harmathy@web.de>
+# Maintainer: Max Harmathy <max.harmathy@web.de>
 pkgname=python-stashy
-pkgver=0.8
-_pkgver=a1e6159344e384a849feab5c0279ee9d6fe04210
+pkgver=0.7
 pkgrel=1
 pkgdesc="Python API client for the Atlassian Stash REST API"
 arch=('any')
@@ -15,11 +13,11 @@ depends=(
   python-requests
   python-decorator
 )
-source=(${url}/archive/${_pkgver}.tar.gz)
-sha256sums=('547a2ac6d50653b77dd10349651497a97ef0ea0d153570c234a45d367110f7cd')
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('3924ea017fc5c096928d4eefa08febf3d16279f74c5d6555481409d986498b49')
 
 package() {
-  cd "$srcdir/stashy-$_pkgver"
+  cd "$srcdir/stashy-$pkgver"
   /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
 }
 
