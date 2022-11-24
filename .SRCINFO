@@ -1,6 +1,6 @@
 pkgbase = timer
 	pkgdesc = Simple CLI timer
-	pkgver = 11.v2.0.0
+	pkgver = 2.0.0.r1.gb1b87b5
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/yoarch/timer

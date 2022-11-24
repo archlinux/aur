@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=timer
-pkgver=11.v2.0.0
+pkgver=2.0.0.r1.gb1b87b5
 pkgrel=1
 epoch=0
 pkgdesc='Simple CLI timer'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	echo "$(git rev-list --count HEAD).$(git describe --always)"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
