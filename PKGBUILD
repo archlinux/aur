@@ -2,7 +2,7 @@
 # Contributor: phijor <mail [at] phijor [dot] me>
 
 pkgname=soundcloud-dl
-pkgver=2.7.1
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(git python-setuptools)
 source=("$pkgname-$pkgver.tag.gz::https://github.com/flyingrub/scdl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a0c29d86f316c196ca293ebecab0b1795176b61b6e6311296bf20a312347e43')
+sha256sums=('e05cc7983369e6635e43eff3c9036f8707d7315db2076dc8d9046bf16f1c020d')
 
 license=(GPL2)
 
