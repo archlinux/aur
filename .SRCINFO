@@ -1,7 +1,7 @@
 pkgbase = 86box
 	pkgdesc = An emulator for classic IBM PC clones
 	pkgver = 3.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = 86box
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake>=3.21
+	makedepends = extra-cmake-modules
 	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = vulkan-headers
