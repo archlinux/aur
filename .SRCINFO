@@ -1,18 +1,16 @@
 pkgbase = perl-text-bidi
 	pkgdesc = Perl/CPAN Module Text::Bidi: Unicode bidi algorithm using libfribidi
-	pkgver = 2.12
-	pkgrel = 2
+	pkgver = 2.18
+	pkgrel = 1
 	url = https://metacpan.org/release/Text-Bidi
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = fribidi>=0.19.7
+	depends = fribidi>=1.0.12
 	depends = perl>=5.10.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAMENSKY/Text-Bidi-2.12.tar.gz
-	md5sums = 075019229cd1e6ce452494fb87959f32
-	sha512sums = 02e391ec1324cad2577ddbf823214dea5e8cd7f846c6d5f16367da90ca3db0c15922a08233f5877f9f223ed9a89374177f488001bd539859dc49e850a2577053
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAMENSKY/Text-Bidi-2.18.tar.gz
+	md5sums = 0c005d73ee05ab98bc848c567f10e995
+	sha512sums = 07cb29eb4ecb2649b1327a486d6d52af025469762c1944291b35c5e17bde351308bc6aa070e3fd548307131e28c7d00cf231af457353dd683daa16adef1a45d1
 
 pkgname = perl-text-bidi
-
