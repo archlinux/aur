@@ -2,7 +2,7 @@
 
 pkgname=zutils
 pkgver=1.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Zutils is a collection of utilities able to process any combination of compressed and uncompressed files transparently. Supports bzip2, gzip, lzip, xz, and zstd."
 url="https://www.nongnu.org/zutils/zutils.html"
 arch=('x86_64')
@@ -23,7 +23,7 @@ build() {
 }
 
 check() {
-	echo -e "\e[1;35m  -> \e[0m\e[1mChecks are currently disabled as they currently seem to be unreliable\e[0m"
+	echo -e "\e[1;35m  -> \e[0m\e[1mChecks are currently ignored as they seem to be unreliable\e[0m"
 	cd "$pkgname-$pkgver"
 	make -k check || true
 }
@@ -31,4 +31,5 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	mv "$pkgdir/usr/etc" "$pkgdir/etc"
 }
