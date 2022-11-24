@@ -1,6 +1,6 @@
 pkgbase = r-graphlayouts
 	pkgdesc = Additional Layout Algorithms for Network Visualizations
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=graphlayouts
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-graphlayouts
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://cran.r-project.org/src/contrib/graphlayouts_0.8.3.tar.gz
-	sha256sums = f9e4e5d794b4d1c6eba962490b3220d09b73e10893f5fa3be210240bfc654421
+	source = https://cran.r-project.org/src/contrib/graphlayouts_0.8.4.tar.gz
+	sha256sums = 778d8f7e190b05d0dbbaa7e6dbdfc0b8fef3c83b71333a6fa89926e6c04690fd
 
 pkgname = r-graphlayouts
