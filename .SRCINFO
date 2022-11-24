@@ -1,0 +1,13 @@
+pkgbase = printargnum
+	pkgdesc = im having fun with this.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = p7zip
+	depends = gcc
+	depends = cmake
+	source = https://github.com/portalmaster137/printargslol/raw/master/archive.7z
+	sha256sums = 8828402a4a8290f314bd95fb1c0f96a40f0392e7e9d1e611ae2d6501cb630314
+
+pkgname = printargnum
