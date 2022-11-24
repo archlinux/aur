@@ -4,7 +4,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.8.0.17
+pkgver=4.8.0.19
 pkgrel=1
 _ffmpeg_ver=2022_05_07
 _ffdetect_ver=2022_05_07
@@ -68,7 +68,7 @@ noextract=('license.docx'
 
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
-sha256sums=('6c6f433d965834bf2c9794fafed5143d94e815419c7bfca75f7fc25e99226563'
+sha256sums=('3f9c2be899e21d5cbc00101031a3d47e903b7f17329b0fecb5e1b67d8211accb'
             'cfa7c7dedd99990ea2b7d2e4228c53d25061caf5fce87a79ce29c4a6ffd27ff2'
             '7202499c296f1f1b80619e10322fceff2068e5e3ed36a3f96d3ae4c2427978bd'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
