@@ -1,7 +1,7 @@
 pkgbase = lolcat-rs
 	pkgdesc = The good ol' lolcat, now with fearless concurrency.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ur0/lolcat
 	arch = x86_64
 	arch = i686
