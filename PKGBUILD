@@ -11,7 +11,7 @@ license=('Apache-2.0')
 provides=('greptimedb')
 conflicts=()
 
-source=("https://github.com/GreptimeTeam/greptimedb/releases/download/${_pkgvergh}/greptime-linux-amd64.tgz")
+source=("greptime-linux-amd64-${pkgver}.tgz::https://github.com/GreptimeTeam/greptimedb/releases/download/${_pkgvergh}/greptime-linux-amd64.tgz")
 sha256sums=("12989f1e468d19b6345809c5c2cef93dffe9a91a194b1b2d82218a996437e7fa")
 
 package() {
