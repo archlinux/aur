@@ -3,7 +3,7 @@
 pkgname=python-face
 _name=${pkgname#python-}
 _py=py3
-pkgver=20.1.1
+pkgver=22.0.0
 pkgrel=1
 pkgdesc="Straightforward CLI parsing and dispatching microframework"
 arch=('any')
