@@ -22,6 +22,7 @@ source=('git+https://github.com/AZO234/NP2kai.git'
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd NP2kai

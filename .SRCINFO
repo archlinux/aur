@@ -12,6 +12,7 @@ pkgbase = np2kai-git
 	depends = sdl2_ttf
 	provides = np2kai
 	conflicts = np2kai
+	options = debug
 	source = git+https://github.com/AZO234/NP2kai.git
 	source = git+https://github.com/aminosbh/sdl2-cmake-modules.git
 	sha256sums = SKIP
