@@ -1,0 +1,12 @@
+pkgbase = not-helloworld
+	pkgdesc = haha funny.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = p7zip
+	depends = gcc
+	source = https://github.com/portalmaster137/not-helloworld/raw/master/not-helloworld.7z
+	sha256sums = 22e0b32e0cb486bfe19fad28ff08b5fb3314c425da4fa22e7b0720052fb04167
+
+pkgname = not-helloworld
