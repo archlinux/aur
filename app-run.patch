@@ -1,0 +1,13 @@
+diff --git a/AppRun b/AppRun
+index 65ab8bf..b4d5378 100755
+--- a/AppRun
++++ b/AppRun
+@@ -5,7 +5,7 @@
+ # make sure errors in sourced scripts will cause this script to stop
+ set -e
+ 
+-this_dir="$(readlink -f "$(dirname "$0")")"
++this_dir='/opt/pocket-sync'
+ 
+ source "$this_dir"/apprun-hooks/"linuxdeploy-plugin-gtk.sh"
+ 
