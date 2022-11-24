@@ -6,7 +6,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 _servicename=listen
 pkgname=python-stt-listen
 epoch=
-pkgver=2.3.42
+pkgver=2.4.2
 pkgrel=00
 pkgdesc='Transcribe long audio files with STT or use the streaming interface'
 arch=(any)
@@ -21,11 +21,11 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/f5/95/ea6ef50263c8845f1cc7ab07c3e5dfc5ab9185675b20260b66482f9ef9d1/stt_listen-2.3.42-py3-none-any.whl)
-md5sums+=(fe14c161bb4dbf8d093a79bf706bc8e9)
-noextract+=(stt_listen-2.3.42-py3-none-any.whl)
+source+=("https://files.pythonhosted.org/packages/ea/0c/d5ca2472c209abb7c38105255c40b1887655d4c3f26dc790bc0b54a8b2d1/stt_listen-2.4.2-py3-none-any.whl")
+md5sums+=('SKIP')
+noextract+=(stt_listen-$pkgver-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(71e7a11742a3543dfbc6ad27e2b6fa96)
+md5sums+=('SKIP')
 source+=("$_servicename.service::https://gitlab.com/waser-technologies/technologies/listen/-/raw/master/listen.service.example")
 md5sums+=('SKIP')
 
