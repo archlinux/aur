@@ -1,0 +1,21 @@
+pkgbase = index-tokenlists-org-git
+	pkgdesc = A site for browsing featured token lists.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://indexdevteam.github.io/tokenlists-org
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = yarn
+	depends = apache
+	provides = index-tokenlists-org
+	provides = tokenlists-org
+	source = tokenlists-org::git+https://github.com/indexdevteam/tokenlists-org
+	source = tokenlists-org.sh
+	source = bg.png
+	sha256sums = SKIP
+	sha256sums = 4a8bebdd02389f8a21945831c90cdbd5a91ceffb408fb1891ae738738706f034
+	sha256sums = fa32fcd05fa51ced4a66667ff9d6e3a17705c25cbcc2e610a0e68959978a6c68
+
+pkgname = index-tokenlists-org-git
