@@ -1,20 +1,30 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=calendar-cli
-pkgver=0.12.0
+_name=${pkgname#python-}
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="calendar-cli is a caldav client for calendar and task management"
 url="https://github.com/tobixen/calendar-cli"
 arch=('any')
 license=('GPL')
-depends=('python' 'python-caldav' 'python-icalendar' 'python-pytz' 'python-vobject' 'python-tzlocal' 'python-six')
+depends=('python' 'python-caldav>=0.11.0' 'python-icalendar' 'python-pytz' 'python-vobject' 'python-tzlocal' 'python-six')
 source=("https://github.com/tobixen/$pkgname/archive/v$pkgver.tar.gz")
 
+
+build() {
+  cd "${_name}-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${_name}-$pkgver"
+  pytest
+}
+
 package() {
-  mkdir -p "$pkgdir/usr/bin/"
-  cd "$srcdir/$pkgname-$pkgver/"
-  cp calendar-cli "$pkgdir/usr/bin/"
-  chmod a+x "$pkgdir/usr/bin/calendar-cli"
+  cd "${_name}-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 
-md5sums=('a0d4ed9621d93d9e0ae182e6d09583d1')
+sha256sums=('d4630c2b8947b576b1d5cc0b466ef1d88e1cc79239fc097cebd598e0544c48c2')
