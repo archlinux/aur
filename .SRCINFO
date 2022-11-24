@@ -1,0 +1,15 @@
+pkgbase = python-nmrglue
+	pkgdesc = A module for working with NMR data in Python
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://www.nmrglue.com
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-ipywidgets
+	source = python-nmrglue-0.9.tar.gz::https://github.com/jjhelmus/nmrglue/archive/refs/tags/v0.9.tar.gz
+	sha256sums = fa721dd9b5675ca0101288727a55af8d8870f7f01a83251798057c1020cb24c3
+
+pkgname = python-nmrglue
