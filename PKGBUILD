@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-terra
 pkgname=python-${_pkgname}
-pkgver=0.22.2
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="An open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms"
 arch=('x86_64')
@@ -46,10 +46,8 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz"
     "rustworkx.patch"
 )
-b2sums=(
-    '2bc25a93e573fa9fa464f3cac5df2fefd0cbb372ff718e4ddc55ea377a1cb532002c1589b1ee551ceeb3fa2b5ba5c49f1a749ec86e85578e64e69e642558ba6a'
-    '94133e4479ad918a8b40bdb53c91e44f2cd5eb85ed3831b559e643f3cf5b985ad11fa27bb16096995e59af67611902595e0e6b10f2b71e8624ff8eadb9a36a1f'
-)
+b2sums=('5046390a9ecec5508d558e2d4609b0308d37367cf82ffb677d0e540e8213f9fb82e8774c4c128072b6c89fef190764c41e6f9de3ab754ba1a5884d21002f930a'
+        '94133e4479ad918a8b40bdb53c91e44f2cd5eb85ed3831b559e643f3cf5b985ad11fa27bb16096995e59af67611902595e0e6b10f2b71e8624ff8eadb9a36a1f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
