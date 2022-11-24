@@ -1,6 +1,6 @@
 pkgbase = fedistar-bin
 	pkgdesc = Multi-column Mastodon and Pleroma client for desktop
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://fedistar.net
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = fedistar-bin
 	depends = openssl-1.1
 	provides = fedistar
 	conflicts = fedistar
-	source = https://github.com/h3poteto/fedistar/releases/download/v0.1.0/fedistar_0.1.0_amd64.deb
-	md5sums = 07f312f535547776fd1815c02d953ce8
+	source = https://github.com/h3poteto/fedistar/releases/download/v0.1.1/fedistar_0.1.1_amd64.deb
+	md5sums = a5aac783d7db0e7c1f520344e136a41e
 
 pkgname = fedistar-bin
