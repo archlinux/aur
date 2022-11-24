@@ -2,9 +2,10 @@
 
 pkgname=kubeshark-bin
 pkgver=37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple-yet-powerful API traffic viewer for Kubernetes enabling you to view all API communication between microservices to help your debug and troubleshoot regressions."
 arch=('x86_64')
+conflicts=('mizu-bin')
 url="https://github.com/kubeshark/kubeshark"
 license=('Apache')
 source=("https://github.com/kubeshark/kubeshark/releases/download/${pkgver}/kubeshark_linux_amd64")
