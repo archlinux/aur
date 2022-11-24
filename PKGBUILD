@@ -1,7 +1,7 @@
 # Maintainer: GCMarvin <GCMarvin@users.noreply.github.com>
 pkgname='ryujinx-ldn-bin'
 pkgver='1.1.0_ldn3.0.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (LDN build)'
 arch=('x86_64')
 url='https://www.patreon.com/ryujinx'
@@ -21,7 +21,8 @@ b2sums=('c4125babb1f0ff7f9c03dad255d12efbf3b07161cf08a9aabdbd75c5ae6b95473c46c16
 package() {
     install -d "${pkgdir}/usr/bin/"
     install -dm777 "${pkgdir}/opt/${pkgname}/Logs/"
-    install -Dt "${pkgdir}/opt/${pkgname}/" "${srcdir}/publish/"* "${srcdir}/Ryujinx.ico"
+    install -Dm644 -t "${pkgdir}/opt/${pkgname}/" "${srcdir}/publish/"* "${srcdir}/Ryujinx.ico"
     install -Dm644 -t "${pkgdir}/usr/share/applications/" "${srcdir}/ryujinx.desktop"
+    chmod +x "${pkgdir}/opt/${pkgname}/Ryujinx"
     ln -s "/opt/${pkgname}/Ryujinx" "${pkgdir}/usr/bin"
 }
