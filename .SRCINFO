@@ -13,6 +13,7 @@ pkgbase = python-dmt
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-transformers
+	depends = git-lfs
 	depends = rasa
 	provides = dmt
 	conflicts = dmt
