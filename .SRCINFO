@@ -1,0 +1,12 @@
+pkgbase = gnome-backgrounds-brush-strokes
+	pkgdesc = Brush Strokes wallpaper from GNOME 42
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/MJochim/gnome-backgrounds-brush-strokes
+	arch = any
+	license = CCPL:by-sa
+	source = gnome-backgrounds-brush-strokes-1.tar.gz::https://github.com/MJochim/gnome-backgrounds-brush-strokes/archive/v1.tar.gz
+	sha256sums = f886ed907bd1ae2d87121346ee01184057d7bdbf33171df765d01fba9b73f532
+
+pkgname = gnome-backgrounds-brush-strokes
+	conflicts = gnome-backgrounds<43
