@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/Ajatt-Tools/impd"
 license=("GPL3")
 source=("${pkgname}::git+${url}")
-depends=('ffmpeg' 'mpd')
+depends=('bash' 'gawk' 'ffmpeg' 'mpd')
 optdepends=(
 	'mpc: interaction with mpd'
 	'libnotify: desktop notifications'
