@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 pkgname=lcr-git
 pkgver=r558.169afcc
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Call Router"
 arch=('x86_64' 'i686')
 url="http://www.linux-call-router.de/"
@@ -30,6 +30,7 @@ build() {
               --localstatedir=/var \
               --docdir=/usr/share/doc/${pkgname%-git} \
               --libdir=/usr/lib/ \
+              --sysconfdir=/etc \
               --with-sip \
               --with-gsm-bs
   make
