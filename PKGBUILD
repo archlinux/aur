@@ -1,4 +1,5 @@
-# Maintainer: 10101000 <10101000_proton [at] pm.me>
+# Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
+# Contributor: 10101000 <10101000_proton [at] pm.me>
 # Contributor: Jeff Henson <jeff [at] henson.io>
 # Contributor: Justin Settle <jus10 [at] partlycloudy.org>
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
