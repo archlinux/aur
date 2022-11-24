@@ -11,8 +11,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: (2519)
-_merge_requests_to_use=(2519)
+# available MR: (2536)
+_merge_requests_to_use=(2536)
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -20,7 +20,7 @@ _merge_requests_to_use=(2519)
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=43.1+4+ga2cd818c8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -118,6 +118,13 @@ prepare() {
   #   4. Merged: MR approved and it changes commited to master.
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
+
+  # Title: appDisplay: Connect to hidden signal after content initialization
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2536
+  # Type: 3
+  # Status: 4
+  # Comment: Fix pageNumber being able to be clamped to -1.
+  pick_mr 2536 merge
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
