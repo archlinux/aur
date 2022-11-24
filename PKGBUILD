@@ -1,6 +1,6 @@
 # Maintainer: Nici <NicolasVontobel at protonmail dot com>
 pkgname='wlprop'
-pkgver=c
+pkgver=1.0
 pkgrel=1
 epoch=1
 pkgdesc="xprop but for wayland"
