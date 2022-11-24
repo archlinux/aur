@@ -8,7 +8,7 @@ pkgdesc="Sekai Project Fork (07th-Mod) of the Ponscripter visual novel engine to
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/07th-mod/ponscripter-fork"
 license=('GPL')
-depends=('sdl2_mixer' 'sdl_image' 'freetype2' 'gcc-libs' 'smpeg2')
+depends=('sdl2_mixer' 'sdl2_image' 'freetype2' 'gcc-libs' 'smpeg2')
 makedepends=('libmodplug')
 source=("${_pkgname}::git+https://github.com/07th-mod/ponscripter-fork.git#tag=${pkgver}")
 md5sums=('SKIP')
