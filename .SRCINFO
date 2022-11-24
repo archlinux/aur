@@ -1,0 +1,20 @@
+pkgbase = sway-screenshot-git
+	pkgdesc = A utility to easily take screenshots in swaywm using your mouse
+	pkgver = 1.0.0.r0.53a3e60
+	pkgrel = 1
+	url = https://github.com/Gustash/sway-screenshot
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = jq
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = libnotify
+	depends = imagemagick
+	provides = sway-screenshot
+	conflicts = sway-screenshot
+	source = sway-screenshot::git+https://github.com/Gustash/sway-screenshot.git
+	md5sums = SKIP
+
+pkgname = sway-screenshot-git
