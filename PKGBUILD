@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/evmar/n2"
 license=(Apache)
 makedepends=(git rust coreutils sed gcc)
+options=(!lto)
 depends=(gcc-libs glibc)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")

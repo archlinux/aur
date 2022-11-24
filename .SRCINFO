@@ -15,6 +15,7 @@ pkgbase = n2-git
 	depends = glibc
 	provides = n2
 	conflicts = n2
+	options = !lto
 	source = n2::git+https://github.com/evmar/n2.git
 	sha256sums = SKIP
 
