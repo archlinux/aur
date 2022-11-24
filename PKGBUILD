@@ -3,8 +3,8 @@
 # Contributor: Hugo Posnic <huluti@manjaro.org>
 
 pkgname=archlinux-hello
-pkgver=0.8.0
-pkgrel=5
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="A tool providing access to documentation and support for new Arch Linux users."
 url="https://github.com/KoraggKnightWolf/archlinux-hello"
 arch=('any')
@@ -37,7 +37,7 @@ package() {
     install -Dm644 $pkgname.desktop $pkgdir/etc/skel/.config/autostart/$pkgname.desktop
     install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     install -Dm644 data/img/archlinux.png $pkgdir/usr/share/icons/hicolor/64x64/apps/archlinux.png
-    install -Dm644 LICENSE $pkgdir/usr/share/license/$pkgname/LICENSE
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
     install -Dm755 src/archlinux_hello.py $pkgdir/usr/bin/$pkgname
 
     cd po

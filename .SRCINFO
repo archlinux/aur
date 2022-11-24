@@ -1,7 +1,7 @@
 pkgbase = archlinux-hello
 	pkgdesc = A tool providing access to documentation and support for new Arch Linux users.
-	pkgver = 0.8.0
-	pkgrel = 5
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/KoraggKnightWolf/archlinux-hello
 	arch = any
 	license = GPL
