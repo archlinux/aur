@@ -1,0 +1,26 @@
+pkgbase = ms-365-electron-bin
+	pkgdesc = Unofficial Microsoft 365 Web Desktop Wrapper made with Electron
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/agam778/MS-365-Electron
+	arch = x86_64
+	license = MIT
+	depends = libxcrypt-compat
+	depends = at-spi2-core
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = util-linux-libs
+	depends = xdg-utils
+	provides = ms-365-electron
+	provides = MS-365-Electron
+	conflicts = ms-365-electron-git
+	source = https://github.com/agam778/MS-365-Electron/releases/download/v0.8.0/MS-365-Electron-v0.8.0-linux-amd64.deb
+	sha512sums = SKIP
+
+pkgname = ms-365-electron-bin
