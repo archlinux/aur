@@ -1,0 +1,19 @@
+pkgbase = python-python-shell
+	pkgdesc = Python Shell Wrapper library
+	pkgver = 1.0.4
+	pkgrel = 00
+	url = https://github.com/bart-tools/python-shell
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-six
+	depends = python-setuptools
+	noextract = python_shell-1.0.4-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/f5/18/a74dfa0be2444e0753b146688284753fc93b5056be7e1e00649be3462254/python_shell-1.0.4-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 7729bce4fb7e6b10364b5ec39a8094ff
+	md5sums = e97f722c320e286537f85f4ed5513242
+
+pkgname = python-python-shell
