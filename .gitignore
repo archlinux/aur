@@ -1,0 +1,8 @@
+*
+
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!0001-change-Exec-value-in-.desktop-file-to-match-archlinu.patch
+!0001-Change-instalation-path-to-be-Arch-linux-friendly.patch
+!0001-disable-version-check.patch
