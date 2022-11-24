@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=loupe-git
-pkgver=r79.ca3c02a
+pkgver=r143.aa781d3
 pkgrel=1
 pkgdesc='Simple image viewer for GNOME'
 arch=(x86_64 aarch64)

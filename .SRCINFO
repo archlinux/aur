@@ -1,6 +1,6 @@
 pkgbase = loupe-git
 	pkgdesc = Simple image viewer for GNOME
-	pkgver = r79.ca3c02a
+	pkgver = r143.aa781d3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/BrainBlasted/loupe
 	arch = x86_64
