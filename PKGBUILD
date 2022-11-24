@@ -13,6 +13,7 @@ depends=('gtk3' 'python-gobject')
 makedepends=('git')
 #optdepends=('calamares: universal installer framework')
 replaces=('manjaro-welcome')
+conflicts=('manjaro-welcome' 'manjaro-hello')
 #source=("$url/archive/$pkgver.tar.gz")
 #md5sums=('03762487fde986419b3416699b34dbec')
 source=("git+$url.git")
@@ -36,6 +37,7 @@ package() {
     install -Dm644 $pkgname.desktop $pkgdir/etc/skel/.config/autostart/$pkgname.desktop
     install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     install -Dm644 data/img/archlinux.png $pkgdir/usr/share/icons/hicolor/64x64/apps/archlinux.png
+    install -Dm644 LICENSE $pkgdir/usr/share/license/$pkgname/LICENSE
     install -Dm755 src/archlinux_hello.py $pkgdir/usr/bin/$pkgname
 
     cd po
