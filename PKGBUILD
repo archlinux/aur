@@ -6,7 +6,7 @@ _name=pdm-pep517
 pkgname=python-pdm-pep517
 # WARNING: python-pdm may not be compatible with whatever pdm-pep517 can be upgraded to:
 # https://github.com/pdm-project/pdm/issues/1165
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 epoch=1
 pkgdesc="A PEP 517 backend for PDM that supports PEP 621 metadata"
@@ -33,9 +33,9 @@ source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
   $pkgname-1.0.5-devendor.patch
 )
-sha512sums=('c7719c9836d449b301ec28b781c744b05648f517d3c4392f6fa25e58bb54979a3740ce074eda293651cfbe9b9f9d780ec28bf37737076855d9be3cfdd81816f9'
+sha512sums=('b09a33a2e3470266d00a0e3fae2fdb59e5404ef891c50efe87805a0b7df85ca75d29a37c747510d5481dcebd5f99abceb49f09155e54218072bc54457fc4a333'
             '0158c486ebb668b7e48b450d50a8223d45776517e868dd85c322d29cd925acd3e2e28782796a16e137dcc38312bce753535ba7c71ced58f8d5dd74ddb41701c0')
-b2sums=('a1d6ae0aecfcc459683d6f92869557fbc7dac2425e85d87c777a39abef079028074524a94153709cf5a6b92850ffe156378e0fe622e2fda23f688cf2a7a912df'
+b2sums=('b38c770b9bada5747017e173e7f6e277b736b6b03204b17ab34184e5bfa2acdcb6b03d2001944c37d35638c3446f4262b1c823e93d3a36d35b2446c8a01f5377'
         '4b20b48d9eeac1bb397eec1c98400a9f70aa576689c1cefb33e31dd86f128f30c51be759bb8ede3a2c26ec65055020e3decee7d1b42d67720902db9e6b13cd42')
 
 prepare() {
