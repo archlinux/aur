@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=6.0
 _minor=9
-_clr=1213
+_clr=1214
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=37650
+_clear_version=37680
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=96b6650ec3c5461461b0b394e236bb7ebd5ce9b99156764755ca7d5ffc60d3fa
-_config_hash_clear_version=37650
+_config_hash=81586d7f7c7f306c7f468ce53fba51361396b0e7245e1c5e9065bae5540f6ad6
+_config_hash_clear_version=37680
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('f123cebba65f0cd57da17cfee39e68daa4536849540f92587324768466a3a464e315ce5a653ffce47349c809e305868d3c6ebdfd1f7cbef784951ed60f7b0d72'
-        'ab4e4c915f4c97c54a16f5f29a55d5c6a8d4ca51f1b09f3c3ea79201bb05d763e025c23c3332f13df09cd8790924be7bed81287ed17fbfb8de29e4cf4c5d17c2'
-        '62c4af85aec2368f09ed66af3e406c856a34124b550f89cab3a8b549ed57f82a8e5256b29c891acb2d0900f61e34a882b13c853b9201ef7d2d0bf4fa6b69a855')
+b2sums=('0696db58b6a547a98e819044b4cf19232017a3e1daa62ea8d0e8e6c1bbdeae9b18dc70886be5a987b8dea025693752b30c8b74ca6957f5be62202a265702f605'
+        'a625d07ffea452b3008b767f102236bc8059afd67c45eeeb44ac26bd921c9870246bc18d4046a0dc8a45a6b03b11deee5922bd59fbb1d4d489701e4cc9ddcbaa'
+        'cba8a5123fa67321136957cc8d4ea38d99f580447ab2e0631f28198cb75143fc3b3276ff7cf2e65b0b3b1fefcd33f50d05af0786242c4044c4e786e932e9cac4')
