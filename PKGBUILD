@@ -2,7 +2,7 @@
 
 pkgname=apparmor.d-git
 pkgver=0.866
-pkgrel=1
+pkgrel=2
 pkgdesc="Full set of apparmor profiles"
 arch=("x86_64")
 url="https://github.com/roddhjav/apparmor.d"
@@ -10,12 +10,8 @@ license=('GPL2')
 depends=('apparmor')
 makedepends=('go' 'git' 'rsync' 'lsb-release')
 conflicts=('apparmor.d')
-source=("$pkgname::git+https://github.com/roddhjav/apparmor.d.git?signed")
+source=("$pkgname::git+https://github.com/roddhjav/apparmor.d.git")
 sha512sums=('SKIP')
-
-# The public key is found at https://pujol.io/keys
-# gpg --recv-keys 06A26D531D56C42D66805049C5469996F0DF68EC
-validpgpkeys=('06A26D531D56C42D66805049C5469996F0DF68EC')
 
 pkgver() {
   cd "$srcdir/$pkgname"
