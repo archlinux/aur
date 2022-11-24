@@ -2,22 +2,22 @@
 
 pkgname=deepin-kwin-reborn
 _pkgname=deepin-kwin
+_tag=dev
 pkgver=5.24.3
-_tag=4%255.24.3-deepin.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=(x86_64)
 license=(LGPL)
 depends=(kscreenlocker xcb-util-cursor plasma-framework kcmutils breeze
          pipewire-session-manager libqaccessibilityclient lcms2 libxcvt)
 makedepends=(extra-cmake-modules qt5-tools kdoctools dwayland-reborn deepin-wayland-protocols-reborn dde-kwin-reborn python ninja)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/justforlxz/deepin-kwin/archive/refs/tags/$_tag.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/justforlxz/deepin-kwin/archive/$_tag.tar.gz")
 install=$_pkgname.install
-sha256sums=('725239b2f01d78e8ef51ae22eb8856d2344f110a150ad3f253d51bc1faa7643b')
+sha256sums=('d55e7a030c3ad7ac5c126b33c55844139cf03e2c228353fa0f3a96cb98128071')
 options=(debug)
 
 build() {
-  cmake -G Ninja -B build -S $_pkgname-4-$pkgver-deepin.1.8 \
+  cmake -G Ninja -B build -S $_pkgname-$_tag \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \

@@ -1,7 +1,7 @@
 pkgbase = deepin-kwin-reborn
 	pkgdesc = An easy to use, but flexible, composited Window Manager
 	pkgver = 5.24.3
-	pkgrel = 1
+	pkgrel = 2
 	install = deepin-kwin.install
 	arch = x86_64
 	license = LGPL
@@ -23,7 +23,7 @@ pkgbase = deepin-kwin-reborn
 	depends = lcms2
 	depends = libxcvt
 	options = debug
-	source = deepin-kwin-5.24.3.tar.gz::https://github.com/justforlxz/deepin-kwin/archive/refs/tags/4%255.24.3-deepin.1.8.tar.gz
-	sha256sums = 725239b2f01d78e8ef51ae22eb8856d2344f110a150ad3f253d51bc1faa7643b
+	source = deepin-kwin-5.24.3.tar.gz::https://github.com/justforlxz/deepin-kwin/archive/dev.tar.gz
+	sha256sums = d55e7a030c3ad7ac5c126b33c55844139cf03e2c228353fa0f3a96cb98128071
 
 pkgname = deepin-kwin-reborn
