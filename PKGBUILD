@@ -11,7 +11,7 @@ depends=(hicolor-icon-theme libconfig libdbus libev libgl pcre pixman
          xcb-util-image xcb-util-renderutil)
 provides=('picom')
 source=("https://archive.archlinux.org/packages/p/picom/picom-9.1-3-x86_64.pkg.tar.zst")
-sha256sums=('ccb8c550c14bd98af423ad79dea096d693f3be40308806c80edc9ad86b61aeec')
+sha256sums=('56e7195d515febcec623f0acf6d70de91a6e00711ff8bc4efe5832eb43d30ef0')
 
 package() {
   tar -xvf "picom-9.1-3-x86_64.pkg.tar.zst"
