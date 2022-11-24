@@ -15,8 +15,9 @@ source=("http://archive.ubuntu.com/ubuntu/pool/universe/p/picom/picom_9-1_amd64.
 sha256sums=('ccb8c550c14bd98af423ad79dea096d693f3be40308806c80edc9ad86b61aeec')
 
 package() {
-  bsdtar -O -xf "picom_9-1_amd64.deb" data.tar.zst | bsdtar -C "${pkgdir}" -xJf -
+  tar -xvf "picom-9.1-3-x86_64.pkg.tar.zst"
+  cp -r usr "${pkgdir}"
+  cp -r etc "${pkgdir}"
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 }
-
 
