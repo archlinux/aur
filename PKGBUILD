@@ -28,8 +28,8 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.1+r1+gaccf532a2
-pkgrel=2
+pkgver=43.1+r2+g6a962803e
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -41,7 +41,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
-_commit=accf532a29ea9a1d70880dfaa1834050aa3ae7be  # tags/43.1^1
+_commit=6a962803e85ff160ab33c6ee42fc009731c5029f  # tags/43.1^2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
@@ -49,7 +49,7 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         'mr2694.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
-            'a075fad955d589ea5e59178221a80fe162f7b10cd0c77fcb94219fb380810952'
+            '6e6ff34859c7654eb6bf56b8658fcedfac460d05d4dd41ed7c305a78f03513cf'
             '45ba598e88a4b18ab2d0522abe058efaf0ceb05895bae6f31887bcd4492c45ce'
             '620aabe6b59a6b4ccde95c0aecf98c290ad218c0b8a340bb0bc075c6cc0846e1')
 
