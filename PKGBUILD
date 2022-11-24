@@ -1,8 +1,9 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Original maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Alex Hirzel <alex@hirzel.us>
 
 pkgname=python-pytorch-lightning
-_pkgname=pytorch-lightning
-pkgver=1.7.7
+_name=${pkgname#python-}
+pkgver=1.8.3.post0
 pkgrel=1
 pkgdesc="The lightweight PyTorch wrapper for high-performance AI research"
 arch=('any')
@@ -10,21 +11,25 @@ url='https://lightning.ai'
 license=('Apache')
 depends=(
   python-fsspec
+  python-google-api-core
   python-jsonargparse
+  python-lightning-utilities
+  python-matplotlib
   python-pandas
+  python-psutil
   python-pyaml
   python-pydeprecate
-  python-numpy
+  python-rich
   python-scikit-learn
-  python-pytorch
+  python-tensorboardx
   python-torchmetrics
   python-torchvision
   python-twine
-  python-tqdm
   tensorboard
+  uvicorn
 )
 optdepends=(
-  'python-apex: mixed precision support'    
+  'python-apex: mixed precision support'
   'python-horovod: for distributed training'
 )
 makedepends=(
@@ -32,16 +37,16 @@ makedepends=(
   python-installer
   python-wheel
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('7025d0f68768155190bcabaa3d49e6ae50af7a926c5774b652c6799c48e8e832edc0de29401b625e3369d033ed2f3b4466a5f41ee0f3c90554be6b28b3edc79f')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('95dae2e52aab8bd0a9620ce7193e84e1c73fe086de3a15684705ffccc91b90cc1ef6d2346449b01f9880e6c8494fda1a8a5f8acbef15a2cb413822b4b1331729')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation
+	cd "${srcdir}/${_name}-${pkgver}"
+	python setup.py build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+	cd "${srcdir}/${_name}-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 # vim:set ts=2 sw=2 et:
