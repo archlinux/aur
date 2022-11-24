@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=19
+pkgrel=20
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -203,7 +203,7 @@ package() {
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
   
   # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
-  for dir in */ ; do
+  for dir in ${srcdir}/${pkgname}; do
     if [ -d "${dir}" ]; then
       if [ "${dir}" == "LocalBuilds" ]; then
         if [ -d LocalBuilds/Engine/Linux/ ]; then
