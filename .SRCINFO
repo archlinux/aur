@@ -1,7 +1,7 @@
 pkgbase = netflix-bin
 	pkgdesc = Unnofficial FoxtelGo desktop application
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/netflix-desktop/application
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = netflix-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = netflix-git
-	source_x86_64 = https://gitlab.com/netflix-desktop/binaries/1.0.5-1/-/raw/main/Netflix-linux-x64.tar.xz
+	source_x86_64 = https://gitlab.com/netflix-desktop/binaries/1.0.5-2/-/raw/main/Netflix-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = netflix-bin
