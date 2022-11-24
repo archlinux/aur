@@ -10,8 +10,7 @@ license=(MIT MPL)
 depends=(hicolor-icon-theme libconfig libdbus libev libgl pcre pixman
          xcb-util-image xcb-util-renderutil)
 provides=('picom')
-noextract=("picom_9-1_amd64.deb")
-source=("http://archive.ubuntu.com/ubuntu/pool/universe/p/picom/picom_9-1_amd64.deb")
+source=("https://archive.archlinux.org/packages/p/picom/picom-9.1-3-x86_64.pkg.tar.zst")
 sha256sums=('ccb8c550c14bd98af423ad79dea096d693f3be40308806c80edc9ad86b61aeec')
 
 package() {
