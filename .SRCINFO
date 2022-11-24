@@ -1,0 +1,15 @@
+pkgbase = jperf
+	pkgdesc = Java Perf - GUI for iPerf
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://shadow.github.io/
+	arch = any
+	license = custom
+	depends = jre8-openjdk
+	depends = iperf
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/xjperf/jperf-2.0.2.zip
+	source = jperf.sh
+	sha256sums = b7cf9d675c2f2945312f1b7783c6c4cad3cbe4df70b787d0188dca46190ada82
+	sha256sums = da44da5ca1eb4a539860ea58176ec9c8a350a7c5be8b4acb14ab36ed261672db
+
+pkgname = jperf
