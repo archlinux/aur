@@ -1,0 +1,23 @@
+pkgbase = chdk-licks-bin
+	pkgdesc = Linux Installer for CHDK and SDM.
+	pkgver = 1.07
+	pkgrel = 1
+	epoch = 0
+	url = http://www.zenoshrdlu.com/licks/licks.html
+	arch = any
+	groups = chdk
+	license = custom: freeware
+	depends = bash
+	depends = java-runtime
+	provides = chdk-licks=1.07
+	conflicts = chdk-licks
+	source = licks_1.07.zip::http://www.zenoshrdlu.com/licks/licks.zip
+	source = chdk-licks_1.07.html::http://www.zenoshrdlu.com/licks/licks.html
+	source = run-licks.sh
+	source = license-info.txt
+	sha256sums = 6e38ccdf481a407da62d8256d9491cddca0b54806be7830321bcf2b0e1c1af45
+	sha256sums = 0617c7e267bd8b670b462e0ef1ed4db10d0ead90243d4a06be97f5b0777ca9a0
+	sha256sums = 311d27011684e67a8b38054aa566587609b8f00ae1c1671f1e7c54c47c8fc183
+	sha256sums = 70a54171def0e302f0555a770aba7f2ebc4afab010cab573b61c95b3f0300afc
+
+pkgname = chdk-licks-bin
