@@ -1,0 +1,5 @@
+type            = process
+command         = /usr/bin/greetd
+smooth-recovery = true
+depends-on      = loginready
+logfile         = /var/log/dinit/greetd.log
