@@ -1,11 +1,11 @@
 _pkgname=yavta
 pkgname=${_pkgname}-git
-pkgver=r122.405e530
-pkgrel=2
+pkgver=r129.c7b5b7570476
+pkgrel=1
 pkgdesc='Yet Another V4L2 Test Application'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://git.ideasonboard.org/yavta.git'
-makedepends=('git')
+makedepends=('git' 'meson')
 license=('GPL2')
 source=("${_pkgname}::git+https://git.ideasonboard.org/git/yavta.git")
 md5sums=('SKIP')
@@ -16,9 +16,9 @@ pkgver() {
 }
 
 build() {
-    make -C "${_pkgname}"
+    arch-meson build "${_pkgname}"
 }
 
 package() {
-    install -D "${srcdir}/${_pkgname}/yavta" "${pkgdir}/usr/bin/yavta"
+    meson install -C build --destdir "${pkgdir}"
 }
