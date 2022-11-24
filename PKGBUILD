@@ -1,8 +1,9 @@
-# Maintainer: chaozhi_l <chaozhi_l@foxmail.com>
+# Maintainer: nastyagrifon <neckronus@yandex.ru>
+# Contributor: chaozhi_l <chaozhi_l@foxmail.com>
 # Contributor: BigE <eric.gach@gmail.com>
 
 pkgname=gnome-shell-extension-desk-changer
-pkgver=34
+pkgver=35
 pkgrel=1
 pkgdesc="DeskChanger is a gnome-shell wallpaper slideshow extension with multiple profile support. The extension allows you to switch profiles on the fly without reloading the daemon."
 arch=('any')
@@ -31,4 +32,4 @@ cp -r * $_install_dir
 
 }
 
-sha512sums=('aec3f6f3c0024eb27b54a99302209bd1726d4460aece3bbefe2b2aea8ac4b7890aec537d5e75c4ba68bd75819046b0efa77a1a580b6dc7ecb94b2b42c38684c8')
+sha512sums=('09dd5dc37d2850dff7f0582f9d35892be4280996c2acfe5861cdc3f5928b21817c9443c2dcb4bb614949b5c38bf21f720330ef53cb669e2b5990e044b7de3d2f')
