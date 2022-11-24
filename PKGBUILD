@@ -1,26 +1,26 @@
 pkgname=smpeg-git
 pkgver=2.0.0_r366.c5793e5
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL MPEG Player Library"
 arch=(x86_64 aarch64)
 url=https://icculus.org/smpeg/
 license=(LGPL2.1)
 depends=(sdl2)
 provides=(smpeg2)
+conflicts=(smpeg)
 source=(git+https://github.com/icculus/smpeg.git)
 md5sums=(SKIP)
 pkgver(){
-  cd smpeg
-  echo 2.0.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
+	cd smpeg
+	echo 2.0.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 build(){
-  cd smpeg
-  ./autogen.sh
-  sed -i /plaympeg/d Makefile.am  # conflicts with smpeg
-  ./configure --prefix=/usr
-  make
+	cd smpeg
+	./autogen.sh
+	./configure --prefix=/usr
+	make
 }
 package(){
-  cd smpeg
-  make DESTDIR=$pkgdir install
+	cd smpeg
+	make DESTDIR=$pkgdir install
 }

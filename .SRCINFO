@@ -1,13 +1,14 @@
 pkgbase = smpeg-git
 	pkgdesc = SDL MPEG Player Library
 	pkgver = 2.0.0_r366.c5793e5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icculus.org/smpeg/
 	arch = x86_64
 	arch = aarch64
 	license = LGPL2.1
 	depends = sdl2
 	provides = smpeg2
+	conflicts = smpeg
 	source = git+https://github.com/icculus/smpeg.git
 	md5sums = SKIP
 
