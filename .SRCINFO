@@ -13,13 +13,13 @@ pkgbase = hode-git
 	source = hode.ini
 	source = hode.sh
 	source = hode.desktop
-	source = amazing.png
+	source = amazing.webp
 	source = amazing32.png
 	md5sums = SKIP
 	md5sums = 874bc298ab565d2d5141101781ef1082
-	md5sums = dd04ae21e99c973deec654186543da3d
+	md5sums = b226c4d247fd0c86e7cf78ad7653e399
 	md5sums = bfdd04e5fdc88f9dfcc2664bbb7578d6
-	md5sums = 6d414f0a121fc4bd36f37cb12b8d34d6
-	md5sums = bccc68e0d4e909f147a424dd8fc2e1dd
+	md5sums = 2d93e887790f571880621e37e1bb24fa
+	md5sums = f9b6c6fbc11be79cd22e409086e7f5c2
 
 pkgname = hode-git
