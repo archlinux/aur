@@ -1,6 +1,6 @@
 pkgbase = python-ibm-platform-services
 	pkgdesc = Python client library for IBM Cloud Platform Services
-	pkgver = 0.28.4
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/IBM/platform-services-python-sdk
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-ibm-platform-services
 	depends = python-ibm-cloud-sdk-core
 	depends = python-requests
 	depends = python-urllib3
-	source = platform-services-python-sdk-0.28.4.tar.gz::https://github.com/IBM/platform-services-python-sdk/archive/refs/tags/v0.28.4.tar.gz
-	b2sums = fef9628a760c36e214f23e6b1ba7822b74c629ee7a5c2efdafcf083322f4948dea77b2d88bb4f269e59e12ec2e9ddd9bf4871764bf375137743ac8d73ea88b53
+	source = platform-services-python-sdk-0.29.0.tar.gz::https://github.com/IBM/platform-services-python-sdk/archive/refs/tags/v0.29.0.tar.gz
+	b2sums = d43d948b3e1ba43f88610b9734fdb05726937a46f38327aaf8a6df4e55c690aa9ca59e6d6a18a6c949482583d89a638769e6e9cf4147c7d2590e260e2082bef9
 
 pkgname = python-ibm-platform-services
