@@ -3,13 +3,13 @@
 pkgname=iqtree
 _pkgname=iqtree2
 pkgver=2.1.2
-pkgrel=4
+pkgrel=6
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP). https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
 url="https://github.com/iqtree/iqtree2"
 license=('GPL2')
-depends=('boost' 'eigen' 'gcc-libs' 'zlib')
-makedepends=('cmake' 'make' 'gcc' 'git')
+depends=('boost-libs' 'eigen' 'gcc-libs' 'zlib')
+makedepends=('cmake' 'make' 'gcc' 'git' 'boost')
 source=("git+$url.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
