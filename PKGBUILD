@@ -42,7 +42,7 @@ package() {
     cd $srcdir/$_pkgname
     make \
         TTCN3_DIR=$pkgdir/usr/ttcn3 \
-        ETCDIR=$pkgdir/etc \
+        ETCDIR=$pkgdir/usr/ttcn3/etc \
         MANDIR=$pkgdir/usr/share/man \
         DOCDIR=$pkgdir/usr/share/doc/titan \
         HELPDIR=$pkgdir/usr/share/doc/titan/html \
