@@ -4,13 +4,13 @@
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
 pkgver='1.6.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
 url='https://github.com/cpplint/cpplint'
 license=('custom:BSD3')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-pytest-runner' 'python-pip' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-pytest-runner' 'python-wheel')
 checkdepends=('python-pytest-flake8' 'python-pylint' 'python-importlib-metadata' 'python-tox' 'python-testfixtures'
               'python-pytest' 'python-pytest-cov')
 provides=('cpplint' 'cpplint-py3')
