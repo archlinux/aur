@@ -5,7 +5,7 @@ pkgname=${_pkgbin}-bin
 pkgdesc='Desktop app to easily deploy on the Akash Network'
 license=('GPL')
 url='https://github.com/maxmaxlabs/cloudmos-deploy'
-pkgver=0.15.0
+pkgver=0.17.1
 pkgrel=1
 arch=('x86_64')
 depends=('libusb')
@@ -17,7 +17,7 @@ source=(
   "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
   "LICENSE::https://raw.githubusercontent.com/maxmaxlabs/cloudmos-deploy/v${pkgver}/LICENSE"
 )
-sha512sums=('5d4bc259992264aca7678688c3799bba42c79b5d86ac3dba292ddd203203dba2b63c636269dc05fd1ae8e70a68e9a778ea144e0a372da7c3f9b409d19b15dac8'
+sha512sums=('4f7c129932f61912725eb8d734871143c02fec9350527e358fad8d1d7991d557ce0f8ad9e3132f3dbba1b341abc044406b95b1c3e0c5e1f4d7c2a50f3fb5440f'
             'adfa9547f59d194835eb7cfa4014fd3f972470f92802e1f9c39e636225f285331956620accc7d431e5c0ff4171a462ef184c334e2bd639a92d383e22501ae60c')
 
 build() {
