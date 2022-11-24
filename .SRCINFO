@@ -1,7 +1,7 @@
 pkgbase = rstudio-server-bin
 	pkgdesc = A integrated development environment (IDE) for R (binary version from RStudio official website)
 	pkgver = 2022.07.1_554
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-server-bin.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rstudio-server-bin
 	depends = glibc>=2.7
 	depends = libedit
 	depends = psmisc
-	depends = openssl-1.0
+	depends = openssl-1.1
 	depends = postgresql-libs
 	provides = rstudio-server=2022.07.1_554
 	conflicts = rstudio-server
