@@ -1,7 +1,7 @@
 pkgbase = morisawa-biz-ud-fonts
 	pkgdesc = Morisawa BIZ UD Fonts.
 	pkgver = 1.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/morisawa-biz-ud-mincho
 	arch = any
 	groups = morisawa-biz-ud-fonts
@@ -30,7 +30,6 @@ pkgbase = morisawa-biz-ud-fonts
 	source = CONTRIBUTORS-mincho.txt::https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/CONTRIBUTORS.txt
 	source = LICENSE-OFL-gothic.txt::https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/OFL.txt
 	source = LICENSE-OFL-mincho.txt::https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/OFL.txt
-	source = OFL-gothic.txt::https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/OFL.txt
 	sha256sums = 35a57b411066610c824f401630fa6b5ead7bf6d8e38ba511d108053228c70c2e
 	sha256sums = 8b7ea71a067150e9c0b4d18224f2f0a2070e9e2d6ca934dd179c337328f4045b
 	sha256sums = 14f9365a1a231e5cfac2fe7517bec7d2eefb2b5f4f60abe862a31b3dc7a8d8cb
@@ -45,17 +44,16 @@ pkgbase = morisawa-biz-ud-fonts
 	sha256sums = 3ede4d32c3042da19a34f5685a86f1503ae38ccec3390bc02bca4bfc77c48529
 	sha256sums = 98a528b6b638463041968783cc0f63adaf4cdc26f5398afed68bab712d1113f3
 	sha256sums = 709fcd41e3209fb765da750472f55ccdf925653e9fa7e1eb007cb65c8f749c75
-	sha256sums = a8c855817e5cfcc0366926070639f1dc2752693034ea19ddfc50f9a70ffddac2
+	sha256sums = b0519d00c7269ae600c4afa52b649da1722a87c8902f1118a6c039015380fd9f
 	sha256sums = 91e6e67841a04533e893885de3643333a803e35242d8b60e343107f506ac5bfa
 	sha256sums = a8e73ddd5a208b2bef62c2846a87c173cd7aae101725044d9e723d361093d7db
-	sha256sums = 02e07546c51503acb864004b663f1762f099d8fbe1af7d619b185568568101ef
+	sha256sums = 57aabfae577f8c1340a278d47a30beaee58d18f47f2d4d09e4cea745d5a1bc57
 	sha256sums = cfd728c227f41117d8c23179963b72d97c7cff01345dc755b6cb819fa1d55ba2
 	sha256sums = cfd728c227f41117d8c23179963b72d97c7cff01345dc755b6cb819fa1d55ba2
 	sha256sums = e7511d722f989a8cab2701b39d76e38524a25a62faaac296fc48bf04bab0f2ed
 	sha256sums = e7511d722f989a8cab2701b39d76e38524a25a62faaac296fc48bf04bab0f2ed
 	sha256sums = e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc
 	sha256sums = ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01
-	sha256sums = e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc
 
 pkgname = morisawa-biz-ud-mincho-fonts
 
