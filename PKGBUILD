@@ -6,7 +6,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 _servicename=speak
 pkgname=python-tts-say
 epoch=
-pkgver=2.2.52
+pkgver=2.3.0
 pkgrel=00
 pkgdesc='echo but with TTS.'
 arch=(any)
@@ -21,11 +21,11 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/82/05/c1f07012da768cf99ca1d859cf6c660987423a43f8c009b75a8ce9051a2a/tts_say-2.2.52-py3-none-any.whl)
-md5sums+=(9e55523a572ff65664c777f0578c44ca)
-noextract+=(tts_say-2.2.52-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/b1/a5/d232bd9fa397e6b28e70d24a9e130e45ed7d5c6325a434c3b7264251df25/tts_say-$pkgver-py3-none-any.whl)
+md5sums+=('SKIP')
+noextract+=(tts_say-$pkgver-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(9741c346eef56131163e13b9db1241b3)
+md5sums+=('SKIP')
 source+=("$_servicename.service::https://gitlab.com/waser-technologies/technologies/say/-/raw/master/speak.service.example")
 md5sums+=('SKIP')
 
