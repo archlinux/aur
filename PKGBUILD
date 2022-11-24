@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
-license=('eclipse')
+license=('custom')
 groups=('devel')
 makedepends=(
     'flex'
@@ -51,4 +51,5 @@ package() {
 
     install -D $srcdir/titan.profile \
         $pkgdir/etc/profile.d/titan.sh
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
