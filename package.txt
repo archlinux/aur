@@ -1,0 +1,6 @@
+git clone ssh://aur@aur.archlinux.org/(package_name).git
+nano PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
+git add (files)
+git commit -m "()"
+git push
