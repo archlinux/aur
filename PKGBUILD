@@ -2,31 +2,45 @@
 # Contributor: Ingo Bürk <admin (at) airblader (dot) de>
 
 pkgname=huestacean
-pkgver=v2.6
-pkgrel=2
+pkgver=2.6
+pkgrel=4
 pkgdesc="Philips Hue control app for desktop with screen syncing"
 arch=('any')
 url="https://github.com/BradyBrenot/huestacean"
 license=('Apache')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-remoteobjects')
+depends=(
+    'libxinerama'
+    'libxtst'
+    'python'
+    'qt5-base'
+    'qt5-quickcontrols2'
+    'qt5-remoteobjects'
+)
 makedepends=('git' 'cmake')
 provides=("${pkgname}")
-source=("${pkgname}::git+https://github.com/BradyBrenot/huestacean#tag=${pkgver}"
-        "${pkgname}.desktop"
-        "${pkgname}.png")
-sha256sums=("SKIP"
-            "94fab0d5a9dc2f454528d3bcbb11d4437fcb87390181791d26be9bb51127ca77"
-            "ec3bacc6516c8cd091d52edaf9f0e98fc846c95e538faa625e167af7c583dcee")
+source=(
+    "${pkgname}::git+https://github.com/BradyBrenot/huestacean#tag=v${pkgver}"
+    "${pkgname}.desktop"
+    "${pkgname}.png"
+)
+b2sums=(
+    'SKIP'
+    'e720c8ff138344a8ca04b5325f70055a19d0b4a88b5210bfb874e5a4e8c0f3bf4fa19f8cf644c0a786d489917c22f2b766d61ee47152654a1ad9d1b80a758b35'
+    'dbc9dec9ef3c48b39677da765d7266da4affba17dce25991dbd1f37fcc53146d56a43d5cce8c0f2484073e3fac0159959e9f3d8e129d9d39ff46fe7f2f564d76'
+)
 
-build() {
+prepare() {
     cd "${pkgname}"
     git submodule sync
     git submodule update --init --recursive
+}
 
-    mkdir -p build
-    cd build
-    cmake ..
-    make huestacean
+build() {
+    cmake -B build -S "${pkgname}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
@@ -35,7 +49,7 @@ package() {
     sed -i "s/REPL_NAME/${pkgname}/g"               "${pkgname}.desktop"
     sed -i "s/REPL_COMMENT/${pkgdesc}/g"            "${pkgname}.desktop"
 
-    install -Dm 755 "${pkgname}/build/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 755 "build/${pkgname}"   "${pkgdir}/usr/bin/${pkgname}"
     install -Dm 644 "${pkgname}.desktop"            "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm 644 "${pkgname}.png"                "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
