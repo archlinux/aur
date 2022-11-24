@@ -4,16 +4,14 @@
 # Helpful URL: http://services.sonarr.tv/v1/releases
 
 pkgname='sonarr-develop'
-pkgver=3.0.9.1555
+pkgver=4.0.0.165
 pkgrel=1
 pkgdesc='TV download automation for usenet and torrents.'
-arch=(any)
+arch=('x86_64' 'aarch64' 'armv7h')
 url='https://sonarr.tv/'
 license=('GPL3')
 
 depends=(
-  'mono'
-  'libmediainfo'
   'sqlite'
 )
 
@@ -35,11 +33,13 @@ provides=('sonarr')
 
 conflicts=(
   'sonarr'
-  'sonarr-phantom'
 )
 
+source_x86_64=("https://download.sonarr.tv/v4/develop/${pkgver}/Sonarr.develop.${pkgver}.linux-x64.tar.gz")
+source_aarch64=("https://download.sonarr.tv/v4/develop/${pkgver}/Sonarr.develop.${pkgver}.linux-arm64.tar.gz")
+source_armv7h=("https://download.sonarr.tv/v4/develop/${pkgver}/Sonarr.develop.${pkgver}.linux-arm.tar.gz")
+
 source=(
-  "https://download.sonarr.tv/v3/develop/${pkgver}/Sonarr.develop.${pkgver}.linux.tar.gz"
   'sonarr.service'
   'sonarr.sysusers'
   'sonarr.tmpfiles'
@@ -47,12 +47,13 @@ source=(
 )
 
 noextract=()
-sha256sums=('91c1426b47a1960f01a4115171ca3e2b7e1e4e1598db1ed0be2449eec5fb4b3c'
-            '52e72fde34bc8d123cd2ea0dd10c35685de9873d866935fc15bb6bf1a0ebb686'
+sha256sums=('2373381d508403469cf58396b1f8f7cc7778ba619604469006bdfdc3f2f25960'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
             'a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90')
-
+sha256sums_x86_64=('fa1cfb1ca0eedd4bdae4a0938f1fee2e40fa4e70eda725358e0dd7b0a9a4eda8')
+sha256sums_aarch64=('56eadac76e0f57050c1826705b6273680066d25a442c1dbd28f79083eb100e7f')
+sha256sums_armv7h=('8801f47b01b24485c65d45f1e36a4229b067a697f93f54e6ba7861c539a5b542')
 package() {
   rm -rf "${srcdir}/Sonarr/Sonarr.Update"
   install -d -m 755 "${pkgdir}/usr/lib/sonarr/bin"
