@@ -1,0 +1,23 @@
+pkgbase = lcr-git
+	pkgdesc = Linux Call Router
+	pkgver = r558.169afcc
+	pkgrel = 1
+	url = http://www.linux-call-router.de/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = pkg-config
+	depends = sofia-sip
+	depends = opencore-amr
+	provides = lcr
+	conflicts = lcr
+	source = git+https://gitea.osmocom.org/vyanitskiy/lcr.git#branch=fixeria/fixes
+	sha256sums = SKIP
+
+pkgname = lcr-git
