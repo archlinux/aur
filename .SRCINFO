@@ -1,0 +1,16 @@
+pkgbase = wlprop
+	pkgdesc = xprop but for wayland
+	pkgver = c
+	pkgrel = 1
+	epoch = 1
+	url = https://gist.github.com/f313386043395ff06570e02af2d9a8e0.git
+	arch = any
+	license = MIT
+	depends = sway
+	depends = jq
+	depends = slurp
+	depends = gawk
+	source = https://gist.githubusercontent.com/crispyricepc/f313386043395ff06570e02af2d9a8e0/raw/758c548bfb4be5b437c428c8062b3987f126f002/wlprop.sh
+	sha256sums = d9f93047db8596197d35e3634f229c54e299d3bb7b1b659c322e87f3e9f5ef65
+
+pkgname = wlprop
