@@ -19,10 +19,10 @@ build()  {
     cd "$pkgname-$pkgver"
     mkdir build && cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
-    make
+    cmake --build . --target all
 }
 
 package() {
     cd "$pkgname-$pkgver/build"
-    make DESTDIR="$pkgdir" install
+    cmake --install . --prefix="$pkgdir/usr"
 }
