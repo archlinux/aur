@@ -3,11 +3,11 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=('jed-snapshot' 'rgrep')
+pkgname=('jed-snapshot' 'xjed-snapshot' 'rgrep')
 _pkgver=0.99.20-170
 pkgver=${_pkgver//-/.}
 _pkgname=${pkgname/-snapshot/}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.jedsoft.org/snapshots/"
 license=('GPL')
@@ -30,6 +30,7 @@ build() {
   cd ${_pkgname}-pre${_pkgver}
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
   make
+  make xjed
 }
 
 package_jed-snapshot() {
@@ -38,6 +39,16 @@ package_jed-snapshot() {
   conflicts=('jed')
   cd ${_pkgname}-pre${_pkgver}
   make DESTDIR="${pkgdir}" install
+  rm "$pkgdir"/usr/bin/xjed
+}
+
+package_xjed-snapshot() {
+  pkgdesc="A freely available text editor - Latest development version"
+  provides=('xjed' 'jed')
+  conflicts=('xjed' 'jed')
+  cd ${_pkgname}-pre${_pkgver}
+  make DESTDIR="${pkgdir}" install
+  rm "$pkgdir"/usr/bin/{jed,jed-script}
 }
 
 package_rgrep() {

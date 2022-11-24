@@ -1,6 +1,6 @@
 pkgbase = jed-snapshot
 	pkgver = 0.99.20.170
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jedsoft.org/snapshots/
 	install = jed-snapshot.install
 	arch = i686
@@ -17,6 +17,13 @@ pkgbase = jed-snapshot
 pkgname = jed-snapshot
 	pkgdesc = A freely available text editor - Latest development version
 	provides = jed
+	conflicts = jed
+
+pkgname = xjed-snapshot
+	pkgdesc = A freely available text editor - Latest development version
+	provides = xjed
+	provides = jed
+	conflicts = xjed
 	conflicts = jed
 
 pkgname = rgrep
