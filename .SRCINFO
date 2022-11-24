@@ -1,7 +1,7 @@
 pkgbase = ludusavi
 	pkgdesc = Backup tool for PC game saves
-	pkgver = 0.15.0
-	pkgrel = 2
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = https://github.com/mtkennerly/ludusavi
 	arch = x86_64
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = ludusavi
 	depends = libxcb
 	depends = fontconfig
 	options = !lto
-	source = ludusavi-0.15.0.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.15.0.tar.gz
-	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.15.0/ludusavi-v0.15.0-legal.zip
-	sha256sums = 30aec04a33de5a19d7f8c83fcae03cd55f865bca4aa08d735c3f4a711b46d1bb
-	sha256sums = 7487a1c48bef3996ebcf32bf9afffde7d4b7ad814555360f673ba9eff6625ac0
+	source = ludusavi-0.15.1.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.15.1.tar.gz
+	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.15.1/ludusavi-v0.15.1-legal.zip
+	sha256sums = 89a72bfaf5214250c270bf3f19480a18c96f3e14d51e45c77e70ef9f22bfee7c
+	sha256sums = d9098e9063b1cd8175b1887396ee009823cd7cb52f6fd350287b5bdf159fdb86
 
 pkgname = ludusavi
