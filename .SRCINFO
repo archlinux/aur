@@ -1,7 +1,7 @@
 pkgbase = octetos-core
 	pkgdesc = C/C++ library to mainly provide Semantic Versioned inplmetation
 	pkgver = 2.57.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/azaeldevel/octetos-core.git
 	arch = x86_64
 	license = GPL

@@ -3,7 +3,7 @@
 
 pkgname=octetos-core
 pkgver=2.57.0
-pkgrel=1
+pkgrel=2
 phase=alpha
 pkgdesc="C/C++ library to mainly provide Semantic Versioned inplmetation"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(https://github.com/azaeldevel/$pkgname/archive/$pkgver-$phase.tar.gz)
 build() {
     cd $pkgname-$pkgver-$phase
     autoreconf -fi
-    ./configure --prefix=/usr --sysconfdir=/etc
+    ./configure --prefix=/usr --sysconfdir=/etc --enable-static --enable-shared
     make
 }
 
