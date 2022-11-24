@@ -3,12 +3,12 @@
 _pkgname=avdump3
 pkgname=avdump3-bin
 pkgver=8293_stable
-pkgrel=1
+pkgrel=2
 pkgdesc='AniDB video/audio codec identification utility (command line version)'
 arch=('any')
 url='https://wiki.anidb.net/Avdump3'
 license=('MIT' 'unknown')
-depends=('dotnet-runtime')
+depends=('dotnet-runtime-6.0')
 makedepends=('unzip')
 provides=('avdump3')
 conflicts=('avdump3')
