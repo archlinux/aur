@@ -1,13 +1,13 @@
 pkgbase = brem
 	pkgdesc = basic notes/reminders management program that's written in POSIX sh
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://gitlab.com/k_lar/brem
 	arch = any
 	license = MIT
 	provides = brem
 	conflicts = brem-git
-	source = https://gitlab.com/k_lar/brem/-/archive/v1.3.1/brem-v1.3.1.tar.gz
-	sha256sums = 7fc6bfeaf50535f4725e340f0ce15091a8d7c695fdd33a23c2682b9733a332a9
+	source = https://gitlab.com/k_lar/brem/-/archive/v1.4.0/brem-v1.4.0.tar.gz
+	sha256sums = 0913c941f0def09833b221c5c267b93185d8367e7f1311cf0ff94580664549a1
 
 pkgname = brem

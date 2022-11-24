@@ -1,6 +1,6 @@
 # Maintainer: K_Lar <zan.sprogar@gmail.com>
 pkgname=brem
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="basic notes/reminders management program that's written in POSIX sh"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=("$pkgname")
 conflicts=('brem-git')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('7fc6bfeaf50535f4725e340f0ce15091a8d7c695fdd33a23c2682b9733a332a9')
+sha256sums=('0913c941f0def09833b221c5c267b93185d8367e7f1311cf0ff94580664549a1')
 
 package() {
     cd "$srcdir/$pkgname-v$pkgver"
