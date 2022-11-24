@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QualCoder
+Comment=Qualitative data analysis application written in python3 and Qt6.
+Exec=qualcoder
+Icon=qualcoder
+Terminal=false
+Type=Application
+Categories=Qt;Office;Database;Science;Literature;Education;Utility;Math;
+Keywords=qualitative;data;analysis;
