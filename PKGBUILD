@@ -1,7 +1,7 @@
 # maintainer: luka null <lukadevnull@vivaldi.net>
 # old maintainer: Alexey Kh <aur@devass.club>
 pkgname=pg_rum
-pkgver=1.3.8
+pkgver=1.3.13
 pkgrel=1
 pkgdesc='RUM access method for PostgreSQL - inverted index with additional information in posting lists'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:PostgreSQL')
 depends=('postgresql')
 makedepends=("make" "gcc" "llvm" "clang")
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('dda1f4446d6796b7b9b363403393d2ea5eb14606d21b06ae610d4b01b07e9115')
+sha256sums=('6ab370532c965568df6210bd844ac6ba649f53055e48243525b0b7e5c4d69a7d')
 
 build()
 {
