@@ -35,7 +35,8 @@ build() {
 }
 
 package() {
-    install -Dm 775 "$srcdir/fulcrum/Fulcrum" -T "$pkgdir/usr/bin/fulcrum"
-    install -Dm 775 "$srcdir/fulcrum/FulcrumAdmin" -T "$pkgdir/usr/bin/fulcrum-admin"
-    install -Dm 664 "$srcdir/fulcrum.conf" -t "$pkgdir/etc/"
+  install -Dm 775 "$srcdir/fulcrum/Fulcrum" -T "$pkgdir/usr/bin/fulcrum"
+  install -Dm 775 "$srcdir/fulcrum/FulcrumAdmin" -T "$pkgdir/usr/bin/fulcrum-admin"
+  install -Dm 664 "$srcdir/fulcrum.conf" -t "$pkgdir/etc/"
+  install -Dm 644 "$srcdir/fulcrum/contrib/rpm/fulcrum.service" -t "$pkgdir/usr/lib/systemd/system"
 }
