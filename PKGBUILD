@@ -1,21 +1,39 @@
-# Maintainer: Manoel Brunnen <manoel.brunnen@gmail.com>
-
 pkgname=netflix
-pkgver=1.0
+_pkgname=Netflix
+pkgver=1.0.5
 pkgrel=2
-pkgdesc="Watch Netflix and stream it to chromecast."
-arch=('i686' 'x86_64')
-url=""
-license=('MIT')
-depends=('google-chrome')
-optdepends=('google-chrome>=51: Chromecast support')
-source=("$pkgname.png"
-        "$pkgname.desktop")
-md5sums=('56ced67fc54f8dbc53977f9262eb8736'
-         '2fded08652e2b3e1d837f838e7936f4a')
+pkgdesc="Unnofficial Netflix desktop application"
+arch=('x86_64')
+url="https://gitlab.com/netflix-desktop/application.git"
+license=('GPL')
+conflicts=("Netflix-bin")
+depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+source=("git+https://gitlab.com/netflix-desktop/application.git")
+sha256sums=('SKIP')
+
 
 package() {
-    install -Dm644 $srcdir/$pkgname.png $pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png
-    install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+    cd "$srcdir/application"
+    cat <<EOT >> netflix
+    #!/bin/bash
+    cd /opt/Netflix &&
+    npm start
+EOT
+
+    chmod +x netflix
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application"
+    install -dm755 "$pkgdir/opt/Netflix"
+    install -dm755 "$pkgdir/usr/share/pixmaps"    
+    cp -r ./ "$pkgdir/opt/Netflix"
+    cp -r "$pkgdir/opt/Netflix/netflix.svg" "$pkgdir/usr/share/pixmaps"  
+
+
+    # Link to binary
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/Netflix/netflix" "$pkgdir/usr/bin"
+
+    # Desktop Entry
+    install -Dm644 "$srcdir/application/Netflix.desktop" \
+        "$pkgdir/usr/share/applications/Netflix.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Netflix.desktop"
 }
-# vim:set ft=sh:
