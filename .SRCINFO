@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-bin
 	pkgdesc = Customizable privacy-conscious web browser with primary support for legacy extensions
-	pkgver = 2022.08
+	pkgver = 2022.11
 	pkgrel = 0
 	url = https://classic.waterfox.net
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = waterfox-classic-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2022.08
+	provides = waterfox-classic=2022.11
 	conflicts = waterfox-classic
 	conflicts = waterfox-classic-git
 	replaces = waterfox-bin
 	source = waterfox-classic.desktop
-	source = https://github.com/WaterfoxCo/Waterfox-Classic/releases/download/2022.08-classic/waterfox-classic-2022.08.en-US.linux-x86_64.tar.bz2
+	source = https://github.com/WaterfoxCo/Waterfox-Classic/releases/download/2022.11-classic/waterfox-classic-2022.11.en-US.linux-x86_64.tar.bz2
 	sha256sums = 5504d06da38c87cf655f8109047ebfdd09baa8588e08a7ee93c0012e2c5a7ad3
-	sha256sums = f928b62090e6ceabd686b5540ab6b299a552db43437bb2322892c047ea66e434
+	sha256sums = 770e671e56624ff9ac0102773eda4a5d6ad1a19742e4189cefdacf6031f209f9
 
 pkgname = waterfox-classic-bin
