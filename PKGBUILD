@@ -15,10 +15,12 @@
 # Merge Requests List: ('579' '1441' '1880' '2671' '2694')
 _merge_requests_to_use=('1441' '1880' '2671' '2694')
 
-## Disable building a DOCS package
+## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
 : "${_disable_docs:=""}"
 
+## Enable the `check()` operation (Disabled if not set)
+: "${_enable_check:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing!
 
@@ -210,10 +212,12 @@ _check() (
   meson test -C build --print-errorlogs -t 3
 )
 
-check() {
-  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-    bash -c "$(declare -f _check); _check"
-}
+if [ -n "$_enable_check" ]; then
+  check() {
+    dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
+      bash -c "$(declare -f _check); _check"
+  }
+fi
 
 _pick() {
   local p="$1" f d; shift
