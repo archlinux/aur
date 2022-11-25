@@ -7,10 +7,10 @@
 
 _pkgbase=firefox-gnome-theme
 pkgname=${_pkgbase}-git
-pkgver=105.1.r18.g9261e16
-pkgrel=1
+pkgver=106.r12.g1b658e1
+pkgrel=2
 pkgdesc='A GNOME theme for Firefox'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/rafaelmardojai/firefox-gnome-theme'
 license=('custom')
 depends=('firefox')
