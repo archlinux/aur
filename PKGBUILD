@@ -2,10 +2,16 @@
 # Maintainer: silentnoodle <lonnqvistben at gmail dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
+
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
+
+# Updated using:
+# https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/PKGBUILD
+# Thanks to the Arch maintainers :)
+
 pkgname=telegram-desktop-dev
-pkgver=4.2.4
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -14,8 +20,9 @@ license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm-2.68'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
+         'openssl-1.1')
 makedepends=('cmake' 'git' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
@@ -28,13 +35,13 @@ _commit="tag=v$pkgver"
 # These files might require modifications to be up-to-date.
 # In such situation, extra patches will be added.
 # An easy way to clone the repo since the last update is:
-# git clone --recurse-submodules --shallow-submodules --remote-submodules --shallow-since=vOLDVER https://github.com/telegramdesktop/tdesktop WORKDIR
-# All the submodules "source" definitions are generated them via:
-# git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
+# git clone --recurse-submodules --remote-submodules --shallow-submodules --shallow-since=vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     "tgcalls_type_fix.diff"
-    # Here are all the repos. See the commands above for populating them
+    # Here are all the submodule repos.
+    # All the submodules "source" definitions are generated them via:
+    # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
     "dispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
@@ -146,7 +153,11 @@ prepare() {
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
 
     # Magic is over!
-    git submodule update
+    # We need the extra flag for this vulnerability:
+    # https://github.blog/2022-10-18-git-security-vulnerabilities-announced/#cve-2022-39253
+    # With the -c flag we enable the file cloning only for this command, as per guidelines:
+    # https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
+    git -c protocol.file.allow=always submodule update
 
     # Cheating! Linking fixed patches to their usual place
     #for fixed in $srcdir/*_fixed*

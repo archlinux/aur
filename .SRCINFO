@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 4.2.4
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = telegram-desktop-dev
 	depends = qt6-wayland
 	depends = qt6-5compat
 	depends = xxhash
-	depends = glibmm
+	depends = glibmm-2.68
 	depends = rnnoise
 	depends = pipewire
 	depends = libxtst
@@ -36,11 +36,12 @@ pkgbase = telegram-desktop-dev
 	depends = jemalloc
 	depends = abseil-cpp
 	depends = libdispatch
+	depends = openssl-1.1
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.2.4
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.3.1
 	source = tgcalls_type_fix.diff
 	source = cmake::git+https://github.com/desktop-app/cmake_helpers.git
 	source = codegen::git+https://github.com/desktop-app/codegen.git
