@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=bytehound
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A memory profiler for Linux'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rustup' 'yarn' 'node-gyp')
 options=('!lto')
-_commit='961367c2c9e95905dddb8f0002ea4f70833e2419'
+_commit='acce3bce127705ea8c840767ed351229a3c2738c'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
