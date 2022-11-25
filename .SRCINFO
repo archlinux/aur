@@ -1,0 +1,11 @@
+pkgbase = singularity-dynamic-wallpaper
+	pkgdesc = Dynamic wallpaper for Singularity
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/waser-technologies/images/wallpapers/singularity-dynamic-wallpaper
+	arch = any
+	license = GPL3
+	source = https://gitlab.com/waser-technologies/images/wallpapers/singularity-dynamic-wallpaper/-/archive/1.1/singularity-dynamic-wallpaper-1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = singularity-dynamic-wallpaper
