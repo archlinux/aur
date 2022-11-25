@@ -43,6 +43,7 @@ EOF
 build() {
   cd jxrlib
 
+  JAVA_HOME=/usr/lib/jvm/default \
   make \
     SHARED=1 \
     PREFIX=/usr \
