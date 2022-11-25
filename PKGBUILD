@@ -2,7 +2,7 @@
 
 _pkgname=maui-agenda
 pkgname=$_pkgname-git
-pkgver=0.5.5.r1.ge77f8a3
+pkgver=0.1.0.r0.gb27824a
 pkgrel=1
 pkgdesc='Calendar application built with MauiKit'
 url='https://github.com/Nitrux/agenda'
