@@ -2,7 +2,7 @@
 
 pkgname=gnatdoc
 pkgver=23.0.0
-pkgrel=3
+pkgrel=4
 
 pkgdesc='GNAT documentation generation tool.'
 url='https://github.com/AdaCore/gnatdoc'
@@ -20,17 +20,29 @@ build()
 {
     cd "$srcdir/$pkgname-$pkgver"
  
-     gprbuild -j0 -p -P gnat/libgnatdoc.gpr -XSUPERPROJECT=
-     gprbuild -j0 -p -P gnat/gnatdoc.gpr -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=static -XSUPERPROJECT= -XGPR_UNIT_PROVIDER_BUILD=release
+     gprbuild -j0 -p -P gnat/libgnatdoc.gpr \
+              -XSUPERPROJECT=
+
+     gprbuild -j0 -p -P gnat/gnatdoc.gpr              \
+              -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=static \
+              -XGPR2_LIBRARY_TYPE=static              \
+              -XSUPERPROJECT=                         \
+              -XGPR_UNIT_PROVIDER_BUILD=release
 }
 
 package()
 {
     cd "$srcdir/$pkgname-$pkgver"
 
-    gprinstall gnat/gnatdoc.gpr    --prefix="$pkgdir/usr" --create-missing-dirs
-    gprinstall gnat/libgnatdoc.gpr --prefix="$pkgdir/usr" --create-missing-dirs
+    gprinstall gnat/gnatdoc.gpr                         \
+               --prefix="$pkgdir/usr"                   \
+               --create-missing-dirs                    \
+                -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=static \
+                -XGPR2_LIBRARY_TYPE=static
 
+    gprinstall gnat/libgnatdoc.gpr    \
+               --prefix="$pkgdir/usr" \
+               --create-missing-dirs
 
 #    # Install the license.
 #    install -D -m644     \
@@ -38,9 +50,3 @@ package()
 #       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
 
 }
-
-
-
-
-
-

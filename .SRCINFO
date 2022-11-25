@@ -1,7 +1,7 @@
 pkgbase = gnatdoc
 	pkgdesc = GNAT documentation generation tool.
 	pkgver = 23.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AdaCore/gnatdoc
 	arch = i686
 	arch = x86_64
