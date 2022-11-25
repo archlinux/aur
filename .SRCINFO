@@ -1,0 +1,16 @@
+pkgbase = perl-test-metrics-any
+	pkgdesc = assert that code produces metrics via Metrics::Any
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Metrics-Any
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-pod
+	makedepends = perl-module-build
+	depends = perl-metrics-any>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Test-Metrics-Any-0.01.tar.gz
+	sha512sums = 7102a8bf5c38bb186c648e2544a01914605e7d5e88ef8a848c301f39eca94af1823b2b40889bc9aabb4fd94573191896e2726f495a7ff03b9ab241d81cd4f304
+
+pkgname = perl-test-metrics-any
