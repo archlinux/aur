@@ -1,14 +1,14 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=betterdiscord-git
-pkgver=1.2.0.r0.g65dc214
-pkgrel=2
+pkgver=1.8.2.r5.gd2a1a29d
+pkgrel=1
 pkgdesc='Discord extension with plugin support, emotes, and more'
 arch=('x86_64')
 url='https://github.com/BetterDiscord/BetterDiscord'
 license=('MIT')
 provides=("${pkgname%-git}")
-makedepends=('git' 'nodejs' 'npm')
+makedepends=('git' 'nodejs' 'pnpm')
 source=("${pkgname%-git}::git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd ${pkgname%-git}
-    npm i && npm run dist
+    pnpm i && pnpm run dist
 }
 
 package() {
