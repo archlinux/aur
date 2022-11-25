@@ -171,14 +171,22 @@ build() {
     # using gcc-11.3.0 to circumvent bug in gcc-12
     # specifying CC and CXX to point to gcc-11 executables
     echo "Configuring the build..."
-    echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=10 -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=10 -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    # Default parallel jobs for this build is 10
+    # Setting it to the value of $(nproc) which correstponds to the number of
+    # cores on the system
+    PARALLEL_JOBS=10
+    # Uncomment the following to use default
+    PARALLEL_JOBS=$(nproc)
+    echo "Setting number of parallel jobs to: $PARALLEL_JOBS"
+    
+    echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
     #echo "Showing the result:"
     #find "$BUILD_IT_HERE"
     echo "--- cmake configuration should have completed here ---"
     echo "--- Now I start building Linphone Desktop vlinphone_desktop_release_version $linphone_desktop_alphabeta 4 ---"
-    echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel 10 --config RelWithDebInfo
-    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel 10 --config RelWithDebInfo
+    echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
+    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
     echo "--- Build should have completed here ---"
     echo "--- Exiting section build() ---"
 }
