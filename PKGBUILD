@@ -16,7 +16,7 @@ sha256sums=('b5fad4383ab905ec5ca5865325e72a4b2c8f0e7c08d3bb8e7419aad12d9a6dc7'
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 -i $srcdir/fix_ftbfs.patch
+  patch -p1 -i ${srcdir}/fix_ftbfs.patch
 }
 
 build() {
@@ -30,6 +30,6 @@ package() {
   mkdir -p ${pkgdir}/{usr/{bin,share/man/man1},etc}
   cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir}/usr SYSCONFDIR=${pkgdir}/etc install
-  install -Dm644 firc.ignore $pkgdir/etc
-  #sed -i 's/ignore_file=firc.ignore/ignore_file=\/etc\/firc.ignore/' $pkgdir/etc/firc.conf
+  install -Dm644 firc.ignore ${pkgdir}/etc
+  #sed -i 's/ignore_file=firc.ignore/ignore_file=\/etc\/firc.ignore/' ${pkgdir}/etc/firc.conf
 }
