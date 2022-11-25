@@ -138,6 +138,7 @@ package_alice-vision() {
 }
 
 package_alice-vision-cuda() {
+  pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms (with CUDA)"
   depends+=('cuda')
   conflicts=('alice-vision')
   provides=('alice-vision')
