@@ -2,14 +2,15 @@
 
 _pkgname=olive
 pkgname=$_pkgname-git
-pkgver=continuous.r1621.g41a49c488
+pkgver=continuous.r2461.g4c00387ab
 pkgrel=1
-arch=('pentium4' 'x86_64')
+arch=('x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'openimageio' 'opentimelineio' 'portaudio' 'qt5-base')
-makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
+#depends=('ffmpeg' 'openimageio' 'opentimelineio' 'portaudio' 'qt6-base')
+depends=('ffmpeg' 'openimageio' 'portaudio' 'qt6-base')
+makedepends=('cmake' 'git' 'ninja' 'qt6-svg' 'qt6-tools')
 
 # Temporarily, the "olive-git" package is incompatible
 # with the dependency "olive-community-effects-git".
@@ -22,17 +23,15 @@ conflicts=('olive')
 source=('git+https://github.com/olive-editor/olive.git')
 sha512sums=('SKIP')
 
+prepare() {
+  # Currently, the build process fails if the OpenTimelineIO library is used
+  sed -i '/find_package(OpenTimelineIO)/d' \
+         "$srcdir"/$_package/CMakeLists.txt
+}
+
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $_pkgname
-
-  # The OpenTimelineIO library requires some features of C++17 standard.
-  # Olive uses C++14 by default, preventing the compilation of modules that use OpenTimelineIO.
-  sed -i "/CXX_STANDARD/ s/14/17/" CMakeLists.txt
 }
 
 build() {
@@ -41,7 +40,7 @@ build() {
         -Bbuild \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DOTIO_DEPS_INCLUDE_DIR=/usr/include/opentimelineio
+        -DQT_VERSION_MAJOR=6
   ninja -C build/
 }
 
