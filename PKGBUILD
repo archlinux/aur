@@ -25,12 +25,10 @@ build() {
 }
 
 package() {
-	  mkdir "$pkgdir"/usr
-	  mkdir "$pkgdir"/usr/lib/
-	  mkdir "$pkgdir"/usr/lib/subread
+	  install -d  "$pkgdir"/usr/lib/subread
 	  mv -f "${srcdir}/$pkgname-$pkgver-source/bin/utilities/"  "${pkgdir}/usr/lib/subread"
 	  rm -Rf "${srcdir}/$pkgname-$pkgver-source/bin/utilities/"
-	  mv -f "${srcdir}/$pkgname-$pkgver-source/bin/" "${pkgdir}/usr/bin"
+	  mv -f "${srcdir}/$pkgname-$pkgver-source/bin/" "${pkgdir}/usr/"
 	  install -D -m644 "${srcdir}/$pkgname-$pkgver-source/doc/SubreadUsersGuide.pdf" -t "$pkgdir/usr/share/doc/subread/"
 	  install -D -m644 "${srcdir}/$pkgname-$pkgver-source/LICENSE" -t "$pkgdir/usr/share/licenses/subread/"
 }
