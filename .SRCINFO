@@ -1,0 +1,16 @@
+pkgbase = perl-metrics-any
+	pkgdesc = Abstract collection of monitoring metrics
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/Metrics-Any
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	makedepends = perl-module-build
+	depends = perl>=5.014
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Metrics-Any-0.08.tar.gz
+	sha512sums = 407346619b3837c4b952b4254a9d68e31d61170aedecbea9346675b843945999960e395ab372ea8cd57d3cc95989c492582c72ebd6d0d8c118a565e8e167443b
+
+pkgname = perl-metrics-any
