@@ -10,7 +10,7 @@ pkgbase=singularity-grub-theme
 pkgname=('grub-theme-live-common' 'grub-theme-live-singularity' 'grub-theme-singularity')
 pkgver=20.2
 pkgrel=12
-_commit=90ae1f550465a38289da575853756da2c61ddeb4
+_commit=b08db8b7bb6edfb6cc2c2b577393d0f84773cd14
 
 pkgdesc='Singularity Linux grub theme'
 arch=('any')
