@@ -1,0 +1,4 @@
+v*.zip
+python-open-clip-torch-*-any.pkg.tar.zst
+src/
+pkg/
