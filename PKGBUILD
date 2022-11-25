@@ -1,14 +1,14 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+ # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 _name=fake-useragent
 pkgname=python-fake-useragent
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Up to date simple useragent faker with real world database'
 arch=('any')
 url=https://github.com/hellysmile/fake-useragent
 license=('Apache')
-depends=('python' 'python-importlib-metadata')
+depends=(python python-importlib-metadata)
 install=python-fake-useragent.install
 makedepends=(
   'python-setuptools'
