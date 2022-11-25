@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pomerium-cli
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='CLI component for Pomerium'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('908e168a96a1aceacd8ea193d7874977f03f02960b59082c712260d9be91bcaa')
+sha256sums=('518188484e89cf35678a44ce4b050279b3e58273f466e93e5883c646dbe51353')
 
 prepare() {
 	cd "cli-$pkgver"
@@ -43,5 +43,5 @@ check() {
 
 package() {
 	cd "cli-$pkgver"
-	install -D "build/$pkgname" -t "$pkgdir/usr/bin/"
+	install -Dv "build/$pkgname" -t "$pkgdir/usr/bin/"
 }
