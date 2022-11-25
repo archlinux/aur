@@ -5,9 +5,9 @@
 
 pkgbase=postgresql13
 pkgname=($pkgbase-libs $pkgbase-docs $pkgbase)
-pkgver=13.8
+pkgver=13.9
 _majorver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles)
-md5sums=('ec56d5c6dbff89a771d00dd7ec9d4d23'
+md5sums=('c11763fddee36c5296cb04009fedffbc'
          '0f96c09cb07cb5bf7c0f74b399128f33'
          '21816c9949ab9766c409421314045d2e'
          '96f82c38f3f540b53f3e5144900acf17'
@@ -33,7 +33,7 @@ md5sums=('ec56d5c6dbff89a771d00dd7ec9d4d23'
          '38fe206c794e2eff95556947af0e5ce5'
          '2050d34e4dfa05f3c6fe4cd7615eaa4b'
          '02d017978f0bba21f455feceb3f0a45a')
-sha256sums=('73876fdd3a517087340458dca4ce15b8d2a4dbceb334c0441424551ae6c4cded'
+sha256sums=('ef1966c0a5e49fbed3370ad2824928cb6b1164617aeeae1606da283f7f33a415'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -42,7 +42,7 @@ sha256sums=('73876fdd3a517087340458dca4ce15b8d2a4dbceb334c0441424551ae6c4cded'
             '7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
-b2sums=('eb076382027a175789652a6ae8579d9b9c8856918741e8058456d22f1ef89525cff5fafe863bf615f658bc94b740b00d1268825969e37a7cefed6b5c90f402c5'
+b2sums=('be653bcfa619af9319357f52aa7a289a6701cfb511574e60ea8321e6d5c646223e783343bdabbc43c151e10e8c50446d77b688a3d2d306a7d439019ec3fb3854'
         '71dc1b4e41294fd235db05317c991d42de082c49d38a2f97d1394572a93a4aa77f42ec29b4e6cf0a17adb3a4471afcb1e2464870f2b9e847906bf49541763a53'
         '5135c5f9dafe427de8d3740d4a67c6dba2869be47dc52b4190b8aa1148e702992fde1821371b68e93b224f5805f697d490ea28ec80d7ce55e5a224551b0a6247'
         '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81'
