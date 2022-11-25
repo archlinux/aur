@@ -1,9 +1,9 @@
-# Maintainer: endaaman <endaaman@frontier.hokudai.ac.jp>
-_version='20221014'
+# Maintainer: endaaman <ken@endaaman.me>
+_version="20221014"
 pkgname=(otf-line-seed ttf-line-seed)
 pkgver=1.0.$_version
 pkgrel=4
-pkgdesc='LINE Seed font'
+pkgdesc="LINE Seed font"
 arch=(any)
 url="https://seed.line.me"
 license=(custom)
