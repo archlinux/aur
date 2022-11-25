@@ -1,0 +1,22 @@
+pkgbase = singularity-grub-theme
+	pkgdesc = Singularity Linux grub theme
+	pkgver = 20.2
+	pkgrel = 11
+	url = https://gitlab.com/waser-technologies/images/wallpapers/singulartiy-grub-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	source = grub-theme::git+https://gitlab.com/waser-technologies/images/wallpapers/singulartiy-grub-theme.git#commit=90ae1f550465a38289da575853756da2c61ddeb4
+	sha256sums = SKIP
+
+pkgname = grub-theme-live-common
+	depends = grub
+	conflicts = grub-theme-live
+	replaces = grub-theme-live
+
+pkgname = grub-theme-live-singularity
+	depends = grub-theme-live-common
+
+pkgname = grub-theme-singularity
+	install = singularity-theme.install
+	depends = grub
