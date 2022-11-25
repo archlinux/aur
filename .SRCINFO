@@ -1,0 +1,33 @@
+pkgbase = alacritty-no-gtk-csds
+	pkgdesc = A cross-platform, GPU-accelerated terminal emulator (without GTK-like CSDs)
+	pkgver = 0.11.0
+	pkgrel = 0
+	url = https://github.com/alacritty/alacritty
+	arch = x86_64
+	license = Apache
+	checkdepends = ttf-dejavu
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = ncurses
+	makedepends = desktop-file-utils
+	makedepends = gdb
+	makedepends = libxcb
+	depends = freetype2
+	depends = fontconfig
+	depends = libxi
+	depends = libxcursor
+	depends = libxkbcommon
+	depends = libxrandr
+	optdepends = ncurses: for alacritty terminfo database
+	provides = alacritty
+	conflicts = alacritty
+	source = alacritty-no-gtk-csds::git+https://github.com/alacritty/alacritty.git#tag=v0.11.0?signed
+	source = remove-gtk-csds.patch
+	validpgpkeys = 4DAA67A9EA8B91FCC15B699C85CDAE3C164BA7B4
+	validpgpkeys = A56EF308A9F1256C25ACA3807EA8F8B94622A6A9
+	sha256sums = SKIP
+	sha256sums = 7f1238805121480c25f00c3c4cb6ff193192152cce1f156542c4d73a194a449d
+
+pkgname = alacritty-no-gtk-csds

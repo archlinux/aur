@@ -1,0 +1,133 @@
+From e17be3ea4931d1ca375943385cd50d77e622d98e Mon Sep 17 00:00:00 2001
+From: Jakob Kukla <jakob.kukla@gmail.com>
+Date: Fri, 25 Nov 2022 19:06:40 +0100
+Subject: [PATCH] Patch: Remove gtk-like wayland CSDs
+
+---
+ Cargo.lock           | 65 --------------------------------------------
+ alacritty/Cargo.toml |  1 -
+ 2 files changed, 66 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 9a32a263c6..93bf14823b 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -94,18 +94,6 @@ dependencies = [
+  "winapi 0.3.9",
+ ]
+ 
+-[[package]]
+-name = "arrayref"
+-version = "0.3.6"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a4c527152e37cf757a3f78aae5a06fbeefdb07ccc535c980a3208ee3060dd544"
+-
+-[[package]]
+-name = "arrayvec"
+-version = "0.5.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "23b62fc65de8e4e7f52534fb52b0f3ed04746ae267519eef2a83941e8085068b"
+-
+ [[package]]
+ name = "atty"
+ version = "0.2.14"
+@@ -147,12 +135,6 @@ version = "3.11.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "c1ad822118d20d2c234f427000d5acc36eabe1e29a348c89b63dd60b13f28e5d"
+ 
+-[[package]]
+-name = "bytemuck"
+-version = "1.12.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2f5715e491b5a1598fc2bef5a606847b5dc1d48ea625bd3c02c00de8285591da"
+-
+ [[package]]
+ name = "calloop"
+ version = "0.10.1"
+@@ -1416,15 +1398,6 @@ version = "1.0.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "4501abdff3ae82a1c1b477a17252eb69cee9e66eb915c1abaa4f44d873df9f09"
+ 
+-[[package]]
+-name = "safe_arch"
+-version = "0.5.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c1ff3d6d9696af502cc3110dacce942840fb06ff4514cad92236ecc455f2ce05"
+-dependencies = [
+- "bytemuck",
+-]
+-
+ [[package]]
+ name = "same-file"
+ version = "1.0.6"
+@@ -1446,18 +1419,6 @@ version = "1.1.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
+ 
+-[[package]]
+-name = "sctk-adwaita"
+-version = "0.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "04b7c47a572f73de28bee5b5060d085b42b6ce1e4ee2b49c956ea7b25e94b6f0"
+-dependencies = [
+- "crossfont",
+- "log",
+- "smithay-client-toolkit",
+- "tiny-skia",
+-]
+-
+ [[package]]
+ name = "semver"
+ version = "1.0.14"
+@@ -1680,31 +1641,6 @@ dependencies = [
+  "syn",
+ ]
+ 
+-[[package]]
+-name = "tiny-skia"
+-version = "0.7.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "642680569bb895b16e4b9d181c60be1ed136fa0c9c7f11d004daf053ba89bf82"
+-dependencies = [
+- "arrayref",
+- "arrayvec",
+- "bytemuck",
+- "cfg-if 1.0.0",
+- "png",
+- "safe_arch",
+- "tiny-skia-path",
+-]
+-
+-[[package]]
+-name = "tiny-skia-path"
+-version = "0.7.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c114d32f0c2ee43d585367cb013dfaba967ab9f62b90d9af0d696e955e70fa6c"
+-dependencies = [
+- "arrayref",
+- "bytemuck",
+-]
+-
+ [[package]]
+ name = "toml"
+ version = "0.5.8"
+@@ -2057,7 +1993,6 @@ dependencies = [
+  "percent-encoding",
+  "raw-window-handle 0.4.3",
+  "raw-window-handle 0.5.0",
+- "sctk-adwaita",
+  "serde",
+  "smithay-client-toolkit",
+  "wasm-bindgen",
+diff --git a/alacritty/Cargo.toml b/alacritty/Cargo.toml
+index fd6c19d7d5..c9ccae7f89 100644
+--- a/alacritty/Cargo.toml
++++ b/alacritty/Cargo.toml
+@@ -74,6 +74,5 @@ wayland = [
+     "copypasta/wayland",
+     "glutin/wayland",
+     "glutin/wayland-dlopen",
+-    "glutin/wayland-csd-adwaita",
+     "wayland-client"]
+ nightly = []
+
