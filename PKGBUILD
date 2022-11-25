@@ -1,10 +1,12 @@
+# Maintainer: AlieZ <aaliezz840@gmail.com>
 pkgname=ttf-pingfang-git
 pkgver=r2.895efd9
 pkgrel=1
 pkgdesc='PingFang font from Apple.'
 url='https://www.apple.com'
-arch=('x86_64')
+arch=('any')
 license=('custom')
+makedepends=('git')
 source=(
 	'git+https://github.com/ShmilyHTT/PingFang.git'
 )

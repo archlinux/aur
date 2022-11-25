@@ -3,8 +3,9 @@ pkgbase = ttf-pingfang-git
 	pkgver = r2.895efd9
 	pkgrel = 1
 	url = https://www.apple.com
-	arch = x86_64
+	arch = any
 	license = custom
+	makedepends = git
 	source = git+https://github.com/ShmilyHTT/PingFang.git
 	sha256sums = SKIP
 
