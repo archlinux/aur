@@ -1,7 +1,7 @@
 pkgbase = singularity-grub-theme
 	pkgdesc = Singularity Linux grub theme
 	pkgver = 20.2
-	pkgrel = 11
+	pkgrel = 12
 	url = https://gitlab.com/waser-technologies/images/wallpapers/singulartiy-grub-theme
 	arch = any
 	license = MIT
