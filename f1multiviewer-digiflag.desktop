@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=DigiFlag for F1MV
+Comment=DigiFlag functionality to MultiViewer For F1
+Exec=f1multiviewer-digiflag
+Icon=f1multiviewer-digiflag
+Terminal=false
+Categories=AudioVideo;Video
