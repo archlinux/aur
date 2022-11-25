@@ -1,7 +1,7 @@
-# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=flacon-git
-pkgver=8.3.0.4.g7f3dad3
+pkgver=9.5.1.0.g9b3bef9
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)"
 arch=('x86_64')
@@ -26,7 +26,19 @@ optdepends=('faac: For AAC support'
             'ttaenc: For TrueAudio support'
             'vorbisgain: For OGG Replay Gain support'
             'wavpack: For WavPack support'
+            'alacenc-git: For ALAC Support'
+            'sox: for SOX support'
             )
+checkdepends=('faac'
+              'flac'
+              'lame'
+              'mac'
+              'vorbis-tools'
+              'ttaenc'
+              'wavpack'
+              'alacenc-git'
+              'sox'
+              )
 conflicts=('flacon')
 provides=('flacon')
 source=('git+https://github.com/flacon/flacon.git')
@@ -53,5 +65,5 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
+  DESTDIR="${pkgdir}" cmake --install build
 }
