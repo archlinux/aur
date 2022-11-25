@@ -1,6 +1,6 @@
 pkgbase = nickvision-tagger
 	pkgdesc = An easy-to-use music tag (metadata) editor
-	pkgver = 2022.11.1
+	pkgver = 2022.11.2
 	pkgrel = 1
 	url = https://github.com/nlogozzo/NickvisionTagger
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nickvision-tagger
 	depends = libadwaita
 	depends = libcurlpp
 	depends = taglib
-	source = nickvision-tagger-2022.11.1.tar.gz::https://github.com/nlogozzo/NickvisionTagger/archive/refs/tags/2022.11.1.tar.gz
-	sha256sums = 3d7344729b55e9068585dbefae852b0325134df671be260d0d3bd20f2a582671
+	source = nickvision-tagger-2022.11.2.tar.gz::https://github.com/nlogozzo/NickvisionTagger/archive/refs/tags/2022.11.2.tar.gz
+	sha256sums = 9a29d233dee8bec7351e1c1d0978a1bca6047ea34371718328ec1abd00108fd5
 
 pkgname = nickvision-tagger
