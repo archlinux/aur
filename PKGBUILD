@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=20
+pkgrel=21
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -182,8 +182,9 @@ package() {
   
   cd "${srcdir}/${pkgname}" || return
   
-  mkdir -p "${pkgname}/usr/bin"
-  mkdir -p "${pkgname}/usr/share/pixmaps/"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/pixmaps/"
+  install -dm755 "${pkgdir}/usr/share/applications/"
   # Icon for Desktop entry
   # install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
   wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
@@ -251,5 +252,5 @@ package() {
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')
   sed -i "s/ChecksumPlaceholder/${DesktopFileChecksum}/" "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
-  sed -i "s/InstalledLocationPlaceholder/${_install_dir}/" "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
+  sed -i "s|InstalledLocationPlaceholder|${_install_dir}|" "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
 }
