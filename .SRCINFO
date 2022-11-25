@@ -1,0 +1,27 @@
+pkgbase = maui-arca-git
+	pkgdesc = Archive manager and explorer.
+	pkgver = r4.68a475c
+	pkgrel = 1
+	url = https://github.com/Nitrux/maui-archiver
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	groups = maui
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = mauikit-git
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = maui-arca
+	conflicts = maui-arca
+	source = maui-arca::git+https://github.com/Nitrux/maui-archiver.git
+	sha256sums = SKIP
+
+pkgname = maui-arca-git
