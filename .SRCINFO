@@ -1,0 +1,15 @@
+pkgbase = obs-source-clone
+	pkgdesc = Plugin for OBS Studio to clone sources
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/source-clone.1632/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio>=28
+	source = obs-source-clone::git+https://github.com/exeldro/obs-source-clone#commit=48f8a9dd6c566d95e64af049e03bcddba86177f7
+	sha256sums = SKIP
+
+pkgname = obs-source-clone
