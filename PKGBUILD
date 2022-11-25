@@ -1,4 +1,4 @@
-# Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
+# Maintainer: Ricardo Grim Cabrita <grim@kriegor.net>
 
 pkgname=java-language-server-git
 _pkgname=java-language-server
