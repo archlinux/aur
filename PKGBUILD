@@ -11,25 +11,25 @@ depends=('ncurses')
 url="http://www.vanheusden.com/fi/"
 source=("http://deb.debian.org/debian/pool/main/f/f-irc/f-irc_${pkgver}.orig.tar.gz"
         "fix_ftbfs.patch")
-md5sums=('f5b092f75f9b5dc068ecdde92a9ebb62'
-         'fb409c6b07aec6c189b8e9f82b1c12ae')
+sha256sums=('b5fad4383ab905ec5ca5865325e72a4b2c8f0e7c08d3bb8e7419aad12d9a6dc7'
+         'e166168a733bcd909b672f5e47a1bda59e391ebb4f4fca588c78a702ed1ca7fd')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   patch -p1 -i $srcdir/fix_ftbfs.patch
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   sed -i '/ln /s%.*%	ln -s /usr/bin/fi $(DESTDIR)/bin/f-irc%' Makefile
   sed -i '/include/s%ncursesw/%%' *.c *.h
  make
 }
 
 package() {
-  mkdir -p $pkgdir/{usr/{bin,share/man/man1},etc}
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir/usr SYSCONFDIR=$pkgdir/etc install
+  mkdir -p ${pkgdir}/{usr/{bin,share/man/man1},etc}
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir}/usr SYSCONFDIR=${pkgdir}/etc install
   install -Dm644 firc.ignore $pkgdir/etc
   #sed -i 's/ignore_file=firc.ignore/ignore_file=\/etc\/firc.ignore/' $pkgdir/etc/firc.conf
 }

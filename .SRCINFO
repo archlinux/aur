@@ -9,7 +9,7 @@ pkgbase = fi
 	depends = ncurses
 	source = http://deb.debian.org/debian/pool/main/f/f-irc/f-irc_1.36.orig.tar.gz
 	source = fix_ftbfs.patch
-	md5sums = f5b092f75f9b5dc068ecdde92a9ebb62
-	md5sums = fb409c6b07aec6c189b8e9f82b1c12ae
+	sha256sums = b5fad4383ab905ec5ca5865325e72a4b2c8f0e7c08d3bb8e7419aad12d9a6dc7
+	sha256sums = e166168a733bcd909b672f5e47a1bda59e391ebb4f4fca588c78a702ed1ca7fd
 
 pkgname = fi
