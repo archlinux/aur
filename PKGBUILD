@@ -8,7 +8,7 @@ pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.10.72
 _armbver=22.08.6
 _kernver="$pkgver-$_target"
-pkgrel=2
+pkgrel=3
 arch=('aarch64')
 _desc="AArch64 multi-platform $_target"
 url="https://github.com/armbian/build"
@@ -23,7 +23,7 @@ source=(
     "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-headers-legacy-${_target}_${_armbver}_arm64.deb"
     )
 sha512sums=(
-    'a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276'
+    '15a035013f7cc21f8a4250d50f297d9bdef271ee06e83b4b5193432319ba45d1c892e79ec77f4e97ecdf9e7f90ef33f29454b53fa1653fe212054557afe2b91b'
     '20950d3177889cd593e008a6c9b94beb50b032cc7d247a0809bf21663403a8a94199da1e0e0461624bf6bb6f872b6236f31feb8d21985fb1b106e1cc1b84e841'
     '9b1779851070a40221d4a6e4cae77eb2c813578ff2b362a5a66b39ff0fb84827f6a69563b1386add010efec05cf6dac81a4c2e64f06e0eb818999024566d3b06'
     'ca23262d8875a42d6fb25afa46ea7860574801d7c876af2eb79515ffd69ea270cbfee5fae5e43d8afe79cc8f3e439b73f55b179369ff30e05c84a9873724565b'
