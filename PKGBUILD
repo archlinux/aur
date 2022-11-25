@@ -1,20 +1,26 @@
 # Maintainer: Brodi <me@brodi.space>
 _pkgname=godu
 pkgname=${_pkgname}-bin
-pkgver=1.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Simple golang utility helping to discover large files/folders."
 url="https://github.com/viktomas/godu"
 license=(MIT)
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64')
 provides=("${_pkgname}" "${_pkgname}-git")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
-source_x86_64=("$url/releases/download/v$pkgver/${_pkgname}-linux-amd64-${pkgver}.tgz")
+source_x86_64=("$url/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
+source_i686=("$url/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
+source_aarch64=("$url/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
+
 source=("https://raw.githubusercontent.com/viktomas/godu/v${pkgver}/LICENSE.md")
 
-sha512sums_x86_64=('324d9bc484ea9e3745ad9be2596db88d8e8ef495b129eb5ff533022e8a511dbc9fad55471c3fa288eb49ed1c713af3961adc350d84744c3a523d9e2de970bdb9')
-sha512sums=('a22dc4868e27b5a6b4bfd1dce50fece3c5ee40760252665f6af4a213c714569711226b8e3b6656f2fe871330537b51e6bd84b56891f28e79863ba48d81ff6eed')
+sha256sums_x86_64=('26001c9e86044948eba7ddf7c2d7dab38015a7540400df21d76d01bfb8bdf059')
+sha256sums_i686=('87411979e46a5e332a3ad4ba2f9d3d169fa7e06ba01597fcbcac184c7e6fca03')
+sha256sums_aarch64=('eb3214ba5b31e778ad3501116730181e49d7809669195beff8a1c1267214589b')
+
+sha256sums=('fbbf1cc302e3112da5f11cafa5b0cb3894c41678fffe5129443fd0da52cd30d2')
 
 package() {
 	install -Dm755 godu "${pkgdir}/usr/bin/godu"
