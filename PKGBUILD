@@ -2,7 +2,7 @@
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-wayland
 pkgver=3.27
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-*}")
 _commit=0f9fd085cf82c46f8391a5ec5b4986e35c8ded3b  # tags/3.27^0
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=$_commit"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-        'https://github.com/SaschaWillems/VulkanCapsViewer/pull/155.patch')
+        '155.patch')
 sha256sums=('SKIP'
             'SKIP'
             'cd6a775c44cacc8549346cb31696822646806f51655a36cf834ef9029d201976')
