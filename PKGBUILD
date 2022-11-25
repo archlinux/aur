@@ -2,10 +2,10 @@
 
 pkgname=zutils
 pkgver=1.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Zutils is a collection of utilities able to process any combination of compressed and uncompressed files transparently. Supports bzip2, gzip, lzip, xz, and zstd."
 url="https://www.nongnu.org/zutils/zutils.html"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 depends=('gzip-zutils')
 #conflicts=('gzip') # See https://aur.archlinux.org/packages/zutils#comment-865937
 makedepends=('lzip' 'bzip2' 'gzip-zutils')
@@ -30,6 +30,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install{,-man}
 	mv "$pkgdir/usr/etc" "$pkgdir/etc"
 }
