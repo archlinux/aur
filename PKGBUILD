@@ -4,7 +4,7 @@
 
 pkgname=python-pymisp
 _pkg="${pkgname#python-}"
-pkgver=2.4.162
+pkgver=2.4.165.1
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
@@ -54,8 +54,8 @@ package() {
 	cd "$pkgname"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv \
 		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/"
 }
