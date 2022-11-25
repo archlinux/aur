@@ -1,5 +1,5 @@
 pkgbase = yass-karaoke
-	pkgdesc = editor for creating, finetuning, organizing and printing Ultrastar karaoke songs
+	pkgdesc = Editor for creating, fine-tuning, organizing and printing Ultrastar karaoke songs
 	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://yass-along.com/
