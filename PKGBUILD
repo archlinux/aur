@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio
-pkgver=0.8.9.28
+pkgver=0.8.9.30
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-dnspython' 'python-requests' 'python-psutil')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
 makedepends=('python-pip' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/coderholic/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3e973ae2bdf33ebd7db83c6e27c1abeadecd82134b5445b06d9f508459504622')
+sha256sums=('1b126c562201a833d45c6d714b28aef176bd121c9a3005033c360d6606441dee')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -26,6 +26,8 @@ package() {
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.{html,md} build.{html,md} -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 pyradio{,_rb}.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 devel/pyradio.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 devel/pyradio.png -t "$pkgdir/usr/share/icons"
 
   PIP_CONFIG_FILE=/dev/null python -m pip install --no-warn-script-location --isolated --root="$pkgdir" --ignore-installed --no-deps .
 
