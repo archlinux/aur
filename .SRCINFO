@@ -1,0 +1,10 @@
+pkgbase = wrongfetch
+	pkgdesc = This isn't the fetch you're looking for.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.github.com/m1ndflay3r/wrongfetch
+	arch = any
+	license = GPL-3.0
+	depends = zsh
+
+pkgname = wrongfetch
