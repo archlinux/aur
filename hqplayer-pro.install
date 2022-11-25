@@ -1,0 +1,13 @@
+post_install () {
+cd /usr/lib
+if [ ! -f "libFLAC.so.8" ]; then
+ln -s libFLAC.so.12 libFLAC.so.8
+fi
+}
+
+post_upgrade() {
+cd /usr/lib
+if [ ! -f "libFLAC.so.8" ]; then
+ln -s libFLAC.so.12 libFLAC.so.8
+fi
+}
