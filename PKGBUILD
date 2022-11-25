@@ -3,7 +3,7 @@
 
 _pkgname=hadolint
 pkgname=hadolint-git
-pkgver=2.12.0.r3.g41a0f7a
+pkgver=2.12.1.beta.r4.ge12f4fa
 pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash'
 url='https://github.com/hadolint/hadolint'
@@ -20,7 +20,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   [ ${PIPESTATUS[0]} -eq 0 ] || \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
