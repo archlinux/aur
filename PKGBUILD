@@ -25,8 +25,7 @@ build() {
 }
 
 package() {
-	  mkdir "$pkgdir"/usr/	  
-	  mkdir "$pkgdir"/usr/bin
+	  mkdir "$pkgdir"/usr
 	  mkdir "$pkgdir"/usr/lib/
 	  mkdir "$pkgdir"/usr/lib/subread
 	  mv -f "${srcdir}/$pkgname-$pkgver-source/bin/utilities/"  "${pkgdir}/usr/lib/subread"
