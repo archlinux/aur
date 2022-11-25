@@ -2,7 +2,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
 pkgver=1.0.53
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=(telegram-desktop 64gram-desktop)
 provides=(64gram-desktop)
 
 source=(
-	"${url}/raw/dev/lib/xdg/telegramdesktop.desktop"
+	"${url}/raw/dev/lib/xdg/org.telegram.desktop.desktop"
 	${url}/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 	"${url}/releases/download/v${pkgver}/64Gram_${pkgver}_linux.zip"
 )
@@ -42,7 +42,7 @@ package() {
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
-	install -Dm644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+	install -Dm644 "$srcdir/org.telegram.desktop.desktop" "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
 
 	# Icons
 	local icon_size icon_dir

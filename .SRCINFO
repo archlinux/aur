@@ -1,7 +1,7 @@
 pkgbase = 64gram-desktop-bin
 	pkgdesc = Unofficial desktop version of Telegram messaging app - binary version
 	pkgver = 1.0.53
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/TDesktop-x64/tdesktop
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = 64gram-desktop-bin
 	provides = 64gram-desktop
 	conflicts = telegram-desktop
 	conflicts = 64gram-desktop
-	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/lib/xdg/telegramdesktop.desktop
+	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/lib/xdg/org.telegram.desktop.desktop
 	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon16.png
 	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon32.png
 	source = https://github.com/TDesktop-x64/tdesktop/raw/dev/Telegram/Resources/art/icon48.png
