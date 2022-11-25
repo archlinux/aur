@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Moktar (OpenTitus)
+Exec=sh opentitus.sh moktar
+Icon=moktar
+Categories=Game

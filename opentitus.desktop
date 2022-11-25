@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Titus the Fox (OpenTitus)
+Exec=sh opentitus.sh
+Icon=titus
+Categories=Game

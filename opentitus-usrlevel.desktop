@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Titus the Fox - User levels (OpenTitus)
+Exec=sh opentitus.sh usrlevel
+Icon=lagbonus
+Comment=Playable without the full game
+Categories=Game
+
