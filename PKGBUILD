@@ -11,7 +11,7 @@ url="https://cupy.dev"
 arch=('x86_64')
 license=('MIT')
 depends=('rocm-hip-sdk' 'python-fastrlock' 'python-numpy')
-makedepends=('hipblas' 'hipsparse' 'rocsparse' 'rocrand' 'rocthrust' 'rocsolver' 'rocfft' 'hipcub' 'rocprim' 'rccl'
+makedepends=('hipblas' 'hipsparse' 'rocsparse' 'rocrand' 'rocthrust' 'roctracer' 'rocsolver' 'rocfft' 'hipcub' 'rocprim' 'rccl'
              'python-setuptools')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz"
         "https://github.com/NVIDIA/cub/archive/$_cub_commit.tar.gz"
