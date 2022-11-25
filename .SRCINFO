@@ -1,7 +1,7 @@
 pkgbase = python-typish
 	pkgdesc = Functions for thorough checks on types
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ramonhagenaars/typish
 	arch = x86_64
 	license = MIT
