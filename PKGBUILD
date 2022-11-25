@@ -2,10 +2,10 @@
 # Contributor: redfish <redfish at galactica dot pw>
 # Contributor: Lothar_m <lothar_m at riseup dot net>
 
-pkgname='zeronet-conservancy-git'
+pkgname='zeronet-conservancy'
 _gitname='zeronet-conservancy'
 _gitroot='https://github.com/zeronet-conservancy/zeronet-conservancy.git'
-pkgver=0.7.7+.r5035.g3c93ca6a
+pkgver=0.7.8
 pkgrel=1
 arch=('any')
 url='https://github.com/zeronet-conservancy/zeronet-conservancy/'
@@ -23,23 +23,16 @@ optdepends=('tor: anonymity'
 	    'namecoin-core: local name resolution')
 makedepends=('git')
 checkdepends=('python-pytest' 'python-mock')
-license=('GPL2')
+license=('GPL3')
 pkgdesc="modern client for decentralized p2p web platform 0net"
 provides=(zeronet)
 conflicts=(zeronet)
-source=("git+https://github.com/zeronet-conservancy/zeronet-conservancy.git#branch=master"
+source=("git+https://github.com/zeronet-conservancy/zeronet-conservancy.git#tag=v${pkgver}"
         "zeronet.conf"
         "zeronet.service")
 install="zeronet.install"
 backup=("etc/zeronet.conf")
 options=(!strip) # attempt to strip binaries fromA dependent libs fial
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-
-  # Extract version and revision from src/Config.py and append commit
-  echo -n $(grep -oP '(?<=self.version = ").+(?=")' src/Config.py).r$(grep -oP '(?<=self.rev = )\w+$' src/Config.py).g$(git rev-parse --short HEAD)
-}
 
 package() {
    cd "$srcdir/$_gitname"
