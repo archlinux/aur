@@ -1,8 +1,8 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=ravro_dcrpt-git
-pkgver=r78.c7fb7fc
-pkgrel=2
+pkgver=r101.7a20746
+pkgrel=1
 pkgdesc="Decrypt secret report files ravro"
 arch=('any')
 url="https://github.com/ravro-ir/ravro_dcrpt"

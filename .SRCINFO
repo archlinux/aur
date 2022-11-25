@@ -1,7 +1,7 @@
 pkgbase = ravro_dcrpt-git
 	pkgdesc = Decrypt secret report files ravro
-	pkgver = r78.c7fb7fc
-	pkgrel = 2
+	pkgver = r101.7a20746
+	pkgrel = 1
 	url = https://github.com/ravro-ir/ravro_dcrpt
 	arch = any
 	license = unknown
