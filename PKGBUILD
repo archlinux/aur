@@ -1,14 +1,14 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
 pkgver=6.1.3.r086c8f9bd
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
 depends=('mpv' 'ffmpeg' 'postgresql>=13' 'electron')
-makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=16' 'python2' 'jq')
+makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=18' 'python' 'jq')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -45,7 +45,7 @@ prepare() {
     git submodule init
     git config submodule.src/lib.url $srcdir/${pkgname%-git}-lib
     git config submodule.assets/guestAvatars.url $srcdir/${pkgname%-git}-avatars
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
