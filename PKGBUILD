@@ -1,7 +1,7 @@
 # Maintainer: Jacob Parnell <aur@jakepenguins.xyz>
 _pkgbin=internxt-drive
 pkgname=internxt-drive-bin
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="Internxt Drive sync client GUI"
 package="Internxt-Drive-${pkgver}.appimage"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://internxt.com'
 license=('AGPL3')
 source=("${package}::https://github.com/internxt/drive-desktop/releases/download/v${pkgver}/${package}")
-sha256sums=('07409e732d1b5beb755cad9d7981ee614aeeba7227f1f7ab02edf67ea151c55e')
+sha256sums=('075f877ea6cf3d199393c8e0aaf3080904347e91adcde1daac2d267dcb624540')
 
 build() {
 	# Extract files from AppImage
