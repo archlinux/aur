@@ -1,0 +1,14 @@
+pkgbase = zypak
+	pkgdesc = Redirect natively sandboxed applications to use a custom sandbox environment
+	pkgver = v2022.04
+	pkgrel = 1
+	url = https://github.com/refi64/zypak
+	arch = x86_64
+	license = BSD
+	depends = systemd
+	depends = dbus
+	provides = zypak
+	source = zypak-v2022.04::git+https://github.com/refi64/zypak
+	sha256sums = SKIP
+
+pkgname = zypak
