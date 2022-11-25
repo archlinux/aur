@@ -3,10 +3,10 @@
 
 pkgname=plzip
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A massively parallel lossless data compressor based on the lzlib compression library"
 url="https://www.nongnu.org/lzip/plzip.html"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('GPL')
 depends=('lzlib')
 source=("https://download.savannah.gnu.org/releases/lzip/plzip/$pkgname-$pkgver.tar.gz"{,.sig})
@@ -26,5 +26,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install{,-man}
 }

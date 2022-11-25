@@ -1,9 +1,10 @@
 pkgbase = plzip
 	pkgdesc = A massively parallel lossless data compressor based on the lzlib compression library
 	pkgver = 1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nongnu.org/lzip/plzip.html
 	arch = x86_64
+	arch = i686
 	license = GPL
 	depends = lzlib
 	source = https://download.savannah.gnu.org/releases/lzip/plzip/plzip-1.10.tar.gz
