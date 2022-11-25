@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scPipe
-_pkgver=1.19.0
+_pkgver=1.20.2
 pkgname=r-${_pkgname,,}
-pkgver=1.19.0
+pkgver=1.20.2
 pkgrel=1
 pkgdesc='pipeline for single cell RNA-seq data analysis'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a69ff5baf9057769895f537a65d7652efe4da03731774dd5486dc8bfc4e85e27')
+sha256sums=('68a58e3edc68f8d299c816a6764bb2a864a45c072a345fb9bf140c4e1664c0e3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
