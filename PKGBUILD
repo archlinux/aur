@@ -11,8 +11,8 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.10.0
-pkgrel=2
+pkgver=4.10.1
+pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -38,22 +38,17 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook
         nis-domainname.service
-        ipaplatform.tar.gz
-        'https://github.com/freeipa/freeipa/pull/6459.patch')
-sha256sums=('2280594dc7d4bb8b25f8f9e1c4285b1fff1012acb6d4884b307b0703a676ce66'
+        ipaplatform.tar.gz)
+sha256sums=('ab6ad0cdc065d6d238ffbfa1c44c0e63d343f3a84e6deeceed8f44107edc5280'
             '09894b521258983da988b6d78ed8d5370669ffb7d6a6e3cfbf0c0b8eda67f11b'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
-            '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e'
-            '6614bc8e034246c6acf6af244da6ed995fd76b331561ffa830d9ec75a9881503')
+            '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')
 
 prepare() {
     cd freeipa-${pkgver}
 
     rm -rf ipaplatform/arch
-
-    # Fix https://pagure.io/freeipa/issue/9160
-    patch -p1 -i "$srcdir/6459.patch"
 
     sed -i 's|/etc/sysconfig/autofs|/etc/autofs/autofs.conf|' 'client/man/ipa-client-automount.1'
     sed -i 's|/etc/pki/ca-trust/source/ipa.p11-kit|/etc/ca-certificates/trust-source/ipa.p11-kit|' 'client/man/ipa-client-install.1'
