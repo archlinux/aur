@@ -36,7 +36,7 @@ build() {
 package() {
   cd "${srcdir}"/$_pkgbase-$pkgver
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install{,-man}
 
   # remove everything that is provided by lzlib
   rm -rf "$pkgdir"/usr/{include,share,bin}
