@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-formulaic'
 _pkgname='formulaic'
-pkgver='0.3.4'
+pkgver='0.5.2'
 pkgrel=1
 pkgdesc="A high performance of Wilkinson formulas in Pythonn"
 url="https://github.com/matthewwardrop/formulaic"
@@ -16,8 +16,15 @@ optdepends=('python-sympy')
 makedepends=(python-build python-installer python-poetry-core python-poetry-dynamic-versioning python-wheel)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('2f841297d27dbd19f51dadea35887c363512d6eed70503b453e0f59c679d0f54')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        "pytest_7_bugfix.patch::https://github.com/matthewwardrop/formulaic/commit/e5dedcb0feed39f5ff6e2326d727ca65d247f26d.patch")
+sha256sums=('25b1e1c8dff73f0b11c0028a6ab350222de6bbc47b316ccb770cec16189cef53'
+            '906ce378642dcc329f25266f7e76c0ec9c94ebb67a3ffb11c43b349872ec9669')
+
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+    patch -p1 < ../pytest_7_bugfix.patch || return 0
+}
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -31,7 +38,7 @@ package() {
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
-#check() {
-    #cd "${_pkgname}-${pkgver}"
-    #PYTHONPATH=. pytest tests
-#}
+check() {
+    cd "${_pkgname}-${pkgver}"
+    PYTHONPATH=. pytest tests
+}
