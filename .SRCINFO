@@ -1,0 +1,16 @@
+pkgbase = gnucsator-git
+	pkgdesc = Gnucap based Simulator for Qucs
+	pkgver = r276.b186ec7
+	pkgrel = 1
+	url = http://gnucap.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = numdiff
+	depends = gnucap-git
+	depends = boost
+	source = git+https://github.com/qucs/gnucsator#branch=develop
+	md5sums = SKIP
+
+pkgname = gnucsator-git
