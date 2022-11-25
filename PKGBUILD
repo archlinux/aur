@@ -24,5 +24,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
+	mkdir -pv "$pkgdir/var/lib/catbind"
 	DESTDIR="$pkgdir" PREFIX="/usr" make install
 }
