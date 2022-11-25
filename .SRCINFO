@@ -1,0 +1,11 @@
+pkgbase = nodejs-v8
+	pkgdesc = PKGBUILD to provide nodejs shared v8
+	pkgver = 19.1.0
+	pkgrel = 1
+	url = https://nodejs.org/
+	arch = x86_64
+	license = MIT
+	depends = nodejs>18.11.0
+	provides = v8
+
+pkgname = nodejs-v8
