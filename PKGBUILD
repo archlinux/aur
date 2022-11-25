@@ -27,13 +27,6 @@ source+=(LICENSE)
 md5sums+=(3e2b0075ebc1ee7ed096ed7fb9175a37)
 #source+=("$_pkgbase.service::https://gitlab.com/waser-technologies/technologies/dmt/-/raw/main/dmt.service.example")
 
-optin_telemetry() {
-    echo "Opt-in not out."
-    rasa telemetry disable
-    echo "type 'rasa telemetry enable' to enable it"
-    echo "https://rasa.com/docs/rasa/telemetry/telemetry/"
-}
-
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
         tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
@@ -143,8 +136,7 @@ _package() {
         mkdir -p "$pkgdir/usr/lib/systemd/user"
         cp -f "$_pkgbase/$_pkgbase.service.example" "$pkgdir/usr/lib/systemd/user/$_pkgbase.service"
     fi
-    
-    optin_telemetry
+
 }
 
 package() { _package; }
