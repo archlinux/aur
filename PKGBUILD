@@ -6,7 +6,7 @@ _pkgver_maj_min=0.9
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.9.66
-pkgrel=1
+pkgrel=4
 pkgdesc="Software for loop and cue handling in .wav files."
 arch=('x86_64')
 url="https://sourceforge.net/projects/loopauditioneer/"
