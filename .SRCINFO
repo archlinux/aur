@@ -1,0 +1,12 @@
+pkgbase = gulzar-font
+	pkgdesc = a Nastaliq font for Urdu text with a typographic, rather than calligraphic feel
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://gulzarfont.org
+	arch = any
+	license = OFL
+	source = https://github.com/googlefonts/Gulzar/releases/download/Gulzar-v1.002/Gulzar-1.002.zip
+	sha256sums = 5e2a5f5517e76897170e5dd034022e11fa06243a0fe00d13321b32801234a31c
+
+pkgname = ttf-gulzar
+	provides = gulzar-font
