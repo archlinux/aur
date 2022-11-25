@@ -1,6 +1,6 @@
 pkgbase = catbin
 	pkgdesc = A pastebin server meant for the terminal
-	pkgver = r59.af7e4fe
+	pkgver = r61.809ecaf
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/catbin
 	arch = x86_64
