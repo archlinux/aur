@@ -1,6 +1,6 @@
 pkgbase = ideapad-wmi-usage-mode
 	pkgdesc = Kernel module for Ideapad usage mode reported by the firmware
-	pkgver = r1.690123d
+	pkgver = r4.650b870
 	pkgrel = 1
 	url = https://github.com/sidevesh/ideapad-wmi-usage-mode
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgbase=ideapad-wmi-usage-mode
 pkgname=${pkgbase}-dkms-git
-pkgver=r1.690123d
+pkgver=r4.650b870
 pkgrel=1
 pkgdesc="Kernel module for Ideapad usage mode reported by the firmware"
 arch=('x86_64')
