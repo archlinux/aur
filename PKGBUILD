@@ -1,8 +1,8 @@
 # Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-pkgname=maui-core-git
-_pkgname=${pkgname%-git}
-pkgver=r8.ca24d8e
+_pkgname=maui-core
+pkgname=$_pkgname-git
+pkgver=0.5.6.r0.gb298165
 pkgrel=1
 pkgdesc='Core libraries to manage the DE to be shared between Maui Settings and Cask.'
 url='https://github.com/Nitrux/maui-core'
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
