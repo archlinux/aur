@@ -8,7 +8,7 @@ pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.10.72
 _armbver=22.08.6
 _kernver="$pkgver-$_target"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 _desc="AArch64 multi-platform $_target"
 url="https://github.com/armbian/build"
@@ -53,8 +53,6 @@ _package() {
 
   install -dm755 "$pkgdir/boot"
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
-
-  ln -s "vmlinuz-$_pkgbase" "$pkgdir/boot/Image"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
