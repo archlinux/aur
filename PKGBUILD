@@ -2,7 +2,7 @@
 
 _pkgname=cask-server
 pkgname=$_pkgname-git
-pkgver=0.5.5.r6.gda27892
+pkgver=0.5.6.r0.g60bb378
 pkgrel=1
 pkgdesc='Public server and API to interface with Cask features'
 url='https://github.com/Nitrux/cask-server'
