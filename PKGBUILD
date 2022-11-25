@@ -6,7 +6,7 @@
 pkgname=whalebird-bin
 _name="${pkgname%-bin}"
 
-pkgver=4.7.0
+pkgver=4.7.1
 #_ver=4.6.0-rc.1
 #pkgver="${_ver/-}"
 pkgrel=1
@@ -23,7 +23,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'l
 
 _url="https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm"
 source=("$_url")
-sha256sums=('b46e23c096675ac1a85ce4d8ede8b09d7272d044d2dd05fb1b067a30c7c0c976')
+sha256sums=('e6e66cd2dbffb94e5f89a3d7301bb9ec8709de6a471c2d30e047468be24cb8f6')
 #_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
 #source=("$_url")
 #sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
