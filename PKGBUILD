@@ -1,17 +1,17 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=alice-vision
+pkgname=('alice-vision' 'alice-vision-cuda')
 pkgver=2.4.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
 options=('!lto')
 license=('MPL2' 'MIT')
 depends=('boost-libs' 'openimageio' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag'
-         'alembic' 'cuda' 'opengv' 'opencv' 'popsift' 'uncertainty-framework')
+         'alembic' 'opengv' 'opencv' 'popsift' 'uncertainty-framework')
 makedepends=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon'
-             'git' 'cmake' 'doxygen' 'python-sphinx')
+             'git' 'cmake' 'doxygen' 'python-sphinx' 'cuda')
 source=("git+https://github.com/alicevision/AliceVision#tag=v${pkgver}"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
@@ -83,6 +83,30 @@ build() {
     -DCCTag_DIR=/usr/lib/cmake/CCTag \
     -DUNCERTAINTYTE_DIR=/usr \
     -DMAGMA_ROOT=/usr \
+    -DALICEVISION_BUILD_EXAMPLES=OFF \
+    -DALICEVISION_USE_CUDA=OFF \
+    -DALICEVISION_USE_CCTAG=ON \
+    -DALICEVISION_USE_POPSIFT=ON \
+    -DALICEVISION_USE_UNCERTAINTYTE=ON \
+    -DALICEVISION_USE_ALEMBIC=ON \
+    -DALICEVISION_USE_OPENGV=ON \
+    -DALICEVISION_USE_OPENCV=ON
+  ninja -C build
+
+  cmake \
+    -Bbuild-cuda \
+    -GNinja \
+    -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin \
+    -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
+    -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
+    -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon \
+    -DPopSift_DIR=/usr \
+    -DCCTag_DIR=/usr/lib/cmake/CCTag \
+    -DUNCERTAINTYTE_DIR=/usr \
+    -DMAGMA_ROOT=/usr \
     -DALICEVISION_CUDA_CC_LIST="52;53;60;61;62;70;72;75;80;86;87;89;90" \
     -DALICEVISION_BUILD_EXAMPLES=OFF \
     -DALICEVISION_USE_CUDA=ON \
@@ -95,7 +119,7 @@ build() {
   ninja -C build
 }
 
-package() {
+package_alice-vision() {
   cd AliceVision
 
   ninja -C build doc_doxygen
@@ -112,4 +136,27 @@ package() {
   install -Dm755 LICENSE-MPL2.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MPL2.md
   install -Dm755 LICENSE-MIT-libmv.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MIT-libmv.md
 }
+
+package_alice-vision-cuda() {
+  depends+=('cuda')
+  conflicts=('alice-vision')
+  provides=('alice-vision')
+
+  cd AliceVision
+
+  ninja -C build-cuda doc_doxygen
+  DESTDIR="${pkgdir}" ninja -C build-cuda install
+
+  # Clean up some stuff that gets installed for some reason
+  rm "${pkgdir}"/usr/lib/libflann_cpp_s.a
+  rm "${pkgdir}"/usr/lib/pkgconfig/flann.pc
+
+  # Fix OpenImageIO linkage in client libraries
+  sed -i 's/OpenImageIO::OpenImageIO/${OPENIMAGEIO_LIBRARIES}/g' "${pkgdir}"/usr/share/aliceVision/cmake/AliceVisionTargets.cmake
+
+  install -Dm755 COPYING.md "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.md
+  install -Dm755 LICENSE-MPL2.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MPL2.md
+  install -Dm755 LICENSE-MIT-libmv.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MIT-libmv.md
+}
+
 # vim:set ts=2 sw=2 et:
