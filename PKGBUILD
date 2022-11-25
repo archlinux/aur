@@ -1,3 +1,4 @@
+# Maintainer: AlieZ <aaliezz840@gmail.com>
 pkgname=v2ray4-bin
 pkgver=4.45.2
 pkgrel=1
