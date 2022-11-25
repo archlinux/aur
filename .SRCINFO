@@ -1,8 +1,8 @@
 pkgbase = supersonicball-git
 	pkgdesc = The crazy ball tunnel game
-	pkgver = 0
+	pkgver = 0.9.3.beta1.1.r0.gdd34415
 	pkgrel = 1
-	url = http://julosoft.net/supersonicball/
+	url = https://github.com/juju2143/supersonicball
 	arch = any
 	license = GPL
 	makedepends = git
@@ -12,10 +12,9 @@ pkgbase = supersonicball-git
 	conflicts = supersonicball
 	source = supersonicball.desktop
 	source = supersonicball.sh
-	source = supersonicball-git::git://github.com/juju2143/supersonicball.git
+	source = supersonicball-git::git+https://github.com/juju2143/supersonicball.git
 	sha1sums = 58f6d0a0058d81c8419a0cb65212a63515b95885
 	sha1sums = 4515bad415633fce6174e54a871454c26af1848b
 	sha1sums = SKIP
 
 pkgname = supersonicball-git
-

@@ -1,11 +1,12 @@
-# Maintainer: Julien Savard <juju2143 at gmail dot com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Julien Savard <juju2143@gmail.com>
 
 pkgname=supersonicball-git
-pkgver=0
+pkgver=0.9.3.beta1.1.r0.gdd34415
 pkgrel=1
 pkgdesc="The crazy ball tunnel game"
 arch=('any')
-url="http://julosoft.net/supersonicball/"
+url="https://github.com/juju2143/supersonicball"
 license=('GPL')
 depends=('love>=0.9.0')
 makedepends=('git' 'zip')
@@ -13,18 +14,18 @@ conflicts=('supersonicball')
 provides=('supersonicball')
 source=(${pkgname%-git}.desktop
         ${pkgname%-git}.sh
-        "$pkgname"::'git://github.com/juju2143/supersonicball.git')
+        "$pkgname"::"git+${url}.git")
 sha1sums=('58f6d0a0058d81c8419a0cb65212a63515b95885'
-	  '4515bad415633fce6174e54a871454c26af1848b'
-          'SKIP')
+        '4515bad415633fce6174e54a871454c26af1848b'
+        'SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 	git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 	zip -r ${pkgname%-git}.love *
 }
 
