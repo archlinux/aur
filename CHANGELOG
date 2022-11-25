@@ -1952,3 +1952,11 @@ Fri Nov 25 20:21:19 2022 +0100
      2022-11-24 3a28899 actionless feat(main: cli_clean_pkg_cache): when running `-Scc --noconfirm` always default everything to yes
      2022-11-24 f220c6a actionless fix(install_info_fetcher: _get_install_pkgs_info): correctly ask user to continue
      2022-11-10 933f2b0 Bundy01 chore(po): update fr and es (#674)
+
+
+Fri Nov 25 20:57:25 2022 +0100
+-------------------------------------------------
+1.14.1          Hotfix release 1.14.1
+    
+    refactor(core: datatype): chaining classmethod descriptors (introduced in python 3.9) will be deprecated in 3.11
+      https://docs.python.org/3.11/whatsnew/3.11.html#language-builtins
