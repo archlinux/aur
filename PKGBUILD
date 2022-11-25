@@ -1,8 +1,9 @@
-# Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=betty-git
 _gitname=betty
-pkgver=0.1.7.r0.g3829fc7
+pkgver=0.1.7.r64.gf95c4e3
 pkgrel=1
 pkgdesc="Friendly English-like interface for your command line"
 arch=('any')
@@ -11,7 +12,7 @@ license=('Apache')
 depends=('ruby')
 makedepends=('git')
 conflicts=('betty')
-source=('git://github.com/pickhardt/betty.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
