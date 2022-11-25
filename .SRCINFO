@@ -1,7 +1,7 @@
 pkgbase = bash-conf
 	pkgdesc = Bash Configurator is utility which simplifying the bash prompt configuration
 	pkgver = 0.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://gitlab.com/linux-stuffs/bash-conf
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = bash-conf
 	conflicts = bash-conf
 	options = !strip
 	options = !emptydirs
-	source = https://gitlab.com/linux-stuffs/bash-conf/raw/master/distrib/bash-conf-0.1-8.tar.gz
+	source = https://gitlab.com/linux-stuffs/bash-conf/raw/master/distrib/bash-conf-0.1-9.tar.gz
 	sha256sums = SKIP
 
 pkgname = bash-conf
