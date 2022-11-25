@@ -1,20 +1,10 @@
-## 0.53.7
-
-Added
-
-    'Collections' to txo filter community pr! (#7711)
-    Swap comment servers community pr! (#7670)
+## 0.53.8
 
 Fixed
 
-    Thumbnails no longer disable publish (#7714)
-    Publishing posts were empty (#7715)
-    Minor layout fixes community pr! (#7709)
-    Comment section buttons layout (#7716)
+    Selecting a large file in publish no longer crashes (#7736)
+    Unfollowing unpublished channels (#7737)
 
 Changed
 
-    Removed watchman and its errors (#7710)
-    Updated lbrynet to 0.112.0
-
-
+    Updated xcode to 13.1 and hacked a fix for release (#7736)
