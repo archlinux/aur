@@ -1,0 +1,13 @@
+pkgbase = dummypkg-generator
+	pkgdesc = A simple generator for Arch-compatible dummy packages
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://mindflayer.sytes.net/miscdev/
+	arch = any
+	license = GPL-3.0
+	depends = zsh
+	depends = wget
+	provides = dummy_gen
+	conflicts = idefkmanyoutellme
+
+pkgname = dummypkg-generator
