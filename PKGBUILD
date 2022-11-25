@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="f-irc is an irc terminal client"
 license=('unknown')
 depends=('ncurses')
-url="http://www.vanheusden.com/fi/"
+url="https://web.archive.org/web/20181207164751/https://vanheusden.com/f-irc/"
 source=("http://deb.debian.org/debian/pool/main/f/f-irc/f-irc_${pkgver}.orig.tar.gz"
         "fix_ftbfs.patch")
 sha256sums=('b5fad4383ab905ec5ca5865325e72a4b2c8f0e7c08d3bb8e7419aad12d9a6dc7'
