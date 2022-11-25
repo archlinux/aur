@@ -1,0 +1,12 @@
+pkgbase = reddit-fs
+	pkgdesc = Reddit as a filesystem
+	pkgver = r35.18ab93a
+	pkgrel = 1
+	url = https://github.com/LevitatingBusinessMan/reddit-fs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/LevitatingBusinessMan/reddit-fs.git
+	sha256sums = SKIP
+
+pkgname = reddit-fs
