@@ -1,0 +1,18 @@
+pkgbase = python-pysbd
+	pkgdesc = pysbd (Python Sentence Boundary Disambiguation) is a rule-based sentence boundary detection that works out-of-the-box across many languages.
+	pkgver = 0.3.4
+	pkgrel = 00
+	url = http://nipunsadvilkar.github.io/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-tqdm
+	noextract = pysbd-0.3.4-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/48/0a/c99fb7d7e176f8b176ef19704a32e6a9c6aafdf19ef75a187f701fc15801/pysbd-0.3.4-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2cdea56c0fb7e974370b8de3b69dd6f8
+	md5sums = 3ddc9ea27f7286b3d3de7cbf734ffd09
+
+pkgname = python-pysbd
