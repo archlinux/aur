@@ -2,8 +2,8 @@
 pkgname=colloid-kde-theme-git
 _themeName=Colloid
 _gitname="$_themeName-kde"
-pkgver=r29.393381b
-pkgrel=3
+pkgver=r31.9ac8ceb
+pkgrel=1
 pkgdesc="colloid theme for KDE Plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
