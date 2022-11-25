@@ -3,7 +3,7 @@
 
 pkgname=python-cadquery
 pkgver=2.1.r531.g03c3266
-pkgrel=1
+pkgrel=2
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -13,6 +13,9 @@ depends=(
 python
 'python-ocp>=7.5.3.0.r7'
 python-ezdxf
+python-multimethod
+nlopt
+casadi
 )
 checkdepends=(
 python-pytest
