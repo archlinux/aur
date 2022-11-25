@@ -4,7 +4,7 @@
 
 pkgname=archlinux-hello
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool providing access to documentation and support for new Arch Linux users."
 url="https://github.com/KoraggKnightWolf/archlinux-hello"
 arch=('any')
@@ -38,6 +38,8 @@ package() {
     install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     install -Dm644 data/img/archlinux.png $pkgdir/usr/share/icons/hicolor/64x64/apps/archlinux.png
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+    install -Dm644 CHANGELOG.md $pkgdir/usr/share/doc/$pkgname/CHANGELOG.md
     install -Dm755 src/archlinux_hello.py $pkgdir/usr/bin/$pkgname
 
     cd po
