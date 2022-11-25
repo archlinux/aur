@@ -1,0 +1,13 @@
+pkgbase = ideapad-wmi-usage-mode
+	pkgdesc = Kernel module for Ideapad usage mode reported by the firmware
+	pkgver = r1.690123d
+	pkgrel = 1
+	url = https://github.com/sidevesh/ideapad-wmi-usage-mode
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/sidevesh/ideapad-wmi-usage-mode.git
+	sha256sums = SKIP
+
+pkgname = ideapad-wmi-usage-mode-dkms-git
