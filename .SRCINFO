@@ -7,9 +7,6 @@ pkgbase = perl-io-async
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-module-build
-	makedepends = perl-test-fatal
-	makedepends = perl-test-identity
-	makedepends = perl-test-refcount
 	depends = perl>=5.10.0
 	depends = perl-future
 	depends = perl-struct-dumb
