@@ -3,8 +3,8 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
-# Note: this copied from the SVN upstream gzip package
-# with minimal modifications to be compatible with zutils
+# Note: this is copied from the SVN upstream gzip package
+# with minimal modifications to be compatible with zutils.
 # Please do not flag gzip-zutils out of date until gzip is
 # up to date in the stable Arch Linux repository.
 
