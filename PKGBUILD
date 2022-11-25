@@ -30,8 +30,8 @@ noextract=(RouteConverterCmdLine-${pkgver}.jar
 
 build() {
   cd "${srcdir}"
-  gendesk -f -n --pkgname "${pkgname}" --exec "routeconverter" --pkgdesc "$pkgdesc" --categories 'Utility;Maps'
-  gendesk -f -n --pkgname "${pkgname}_offline" --exec "routeconverter-offline" --pkgdesc "$pkgdesc (offline)" --categories 'Utility;Maps'
+  gendesk -f -n --pkgname "${pkgname}" --exec "routeconverter" --pkgdesc "${pkgdesc}" --categories 'Utility;Maps'
+  gendesk -f -n --pkgname "${pkgname}_offline" --exec "routeconverter-offline" --pkgdesc "${pkgdesc} (offline)" --categories 'Utility;Maps'
 }
 
 package()
