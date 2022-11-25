@@ -1,7 +1,7 @@
 # Maintainer: Brodi <me@brodi.space>
 _pkgname=activity-relay
 pkgname=${_pkgname}
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Yet another powerful customizable ActivityPub relay server written in Go."
 url="https://github.com/yukimochi/Activity-Relay"
@@ -13,7 +13,7 @@ conflicts=("${_pkgname}-git")
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://raw.githubusercontent.com/yukimochi/Activity-Relay/master/LICENCE")
-sha512sums=("c9a6f6cd0c7cb052856f5612b4eb60cc8ae06f7f45e8b2e3594c41d3a442b30fb81a87a5b65c904dbd9a5879c6946e5d59d1a467affc05a66144faf0c3364acc"
+sha512sums=("fdac0503a10cce9234e613300c0dde18eea06e0ca56d01e9202a514be3978eb12bf5a4ef3241578a74f80966b5fd1e469a0d45b09bff8523d4b5f2bbd32a3c16"
 "6e90d46be391aa645bcf4dfaa67f452cb15a73749f1895633789c7763b43cc0b65d391e5e95652c9a9a2063c956e0e8099a4e1ce4b70b0636629f9eac39c1080")
 
 build() {
