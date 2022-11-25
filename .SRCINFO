@@ -1,7 +1,7 @@
 pkgbase = lib32-lzlib
 	pkgdesc = A library providing in-memory LZMA compression and decompression functions (32-bit)
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/lzip/lzlib.html
 	arch = x86_64
 	license = BSD
