@@ -2,7 +2,7 @@
 # Contributor: Carlos Mogas da Silva <r3pek@r3pek.org>
 
 pkgname=docker-machine-driver-hetzner
-pkgver=3.9.0
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="Hetzner driver for Docker Machine"
 arch=('x86_64')
@@ -30,4 +30,4 @@ package() {
   install -Dm644 "$srcdir/src/github.com/JonasProgrammer/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('8a82b3fd76ae76d696421016756d6102af567226debe9a4f4f3851744974d03d')
+sha256sums=('8471b58661e71d6f54c0dfef9ed2914ba0041767ac7237fa9aab349583c47d0f')
