@@ -1,4 +1,4 @@
-# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=alacenc-git
 pkgver=0.3.0.2.g260574f
