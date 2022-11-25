@@ -1,6 +1,6 @@
 pkgbase = adwaita-icon-theme-git
 	pkgdesc = GNOME standard icons
-	pkgver = 42.0+r18+gefd1c615a
+	pkgver = 43+r60+g4f8e8dc69
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 	arch = any

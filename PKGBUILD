@@ -1,41 +1,41 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Philip Goto <philip dot goto at gmail.com>
 
-pkgname=adwaita-icon-theme-git
-pkgver=42.0+r18+gefd1c615a
+_pkgname=adwaita-icon-theme
+pkgname="$_pkgname-git"
+pkgver=43+r60+g4f8e8dc69
 pkgrel=1
 pkgdesc='GNOME standard icons'
-arch=(any)
-url='https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
-license=(LGPL3 CCPL:by-sa)
-depends=(hicolor-icon-theme gtk-update-icon-cache librsvg)
-makedepends=(git gtk3)
-provides=(adwaita-icon-theme)
-conflicts=(adwaita-icon-theme)
-source=("git+${url}.git")
-b2sums=(SKIP)
+arch=('any')
+url="https://gitlab.gnome.org/GNOME/$_pkgname"
+license=('LGPL3' 'CCPL:by-sa')
+depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'librsvg')
+makedepends=('git' 'gtk3')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-	cd adwaita-icon-theme
+	cd $_pkgname
 	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-	cd adwaita-icon-theme
+	cd $_pkgname
 	autoreconf -fvi
 }
   
 build() {
-	cd adwaita-icon-theme
+	cd $_pkgname
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd adwaita-icon-theme
-	make check
+	make -C $_pkgname check
 }
 
 package() {
-	cd adwaita-icon-theme
-	make DESTDIR="$pkgdir" install
+	make -C $_pkgname DESTDIR="$pkgdir" install
 }
