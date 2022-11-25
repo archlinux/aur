@@ -1,14 +1,14 @@
 pkgbase = nodejs-vls
 	pkgdesc = Vue language server (LSP)
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/vls
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = vls-0.8.1.tgz
-	source = https://registry.npmjs.org/vls/-/vls-0.8.1.tgz
-	sha256sums = 3065e333eed9afa6a3e1ee1d5065c78f9ed3d1af88e7bb4b1b211aae4850eb9d
+	noextract = vls-0.8.2.tgz
+	source = https://registry.npmjs.org/vls/-/vls-0.8.2.tgz
+	sha256sums = 7c9c87cceccb2484a3bdaaf420ef8656e4c985a7b34dbcc833ded488238da866
 
 pkgname = nodejs-vls
