@@ -1,0 +1,14 @@
+pkgbase = taniumclient
+	pkgdesc = Tanium Client for Arch Linux endpoints
+	pkgver = 7.4.9.1046
+	pkgrel = 1
+	url = https://tanium.com
+	install = taniumclient.install
+	arch = x86_64
+	license = custom
+	source = manual://taniumclient_7.4.9.1046-debian11_amd64.deb
+	source = LICENSE
+	sha256sums = c5f3f75214b7f25141aa2e5a8d100235e87f05b0bc35e4358b223d9b9a578997
+	sha256sums = f818fb7e486226555576c360658dcac5488d3dde9d58438664b0a7102a394edf
+
+pkgname = taniumclient

@@ -1,0 +1,13 @@
+post_install() {
+  echo ':: Add your tanium-init.dat to /opt/Tanium/TaniumClient/: '
+  echo "     sudo cp ./tanium-init.dat /opt/Tanium/TaniumClient/"
+  echo ':: Start and enable taniumclient through systemd:'
+  echo '     sudo systemctl enable --now taniumclient'
+}
+
+post_upgrade() {
+  echo ':: Add your tanium-init.dat to /opt/Tanium/TaniumClient/: '
+  echo "     sudo cp ./tanium-init.dat /opt/Tanium/TaniumClient/"
+  echo ':: Start and enable taniumclient through systemd:'
+  echo '     sudo systemctl enable --now taniumclient'
+}
