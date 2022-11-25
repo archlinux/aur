@@ -2,7 +2,7 @@
 # Contributor Melanie Scheirer <mel@nie.rs>
 
 pkgname=aom-av1-lavish-git
-pkgver=r52f6a.00b48332e
+pkgver=r33025.52f6a00b4
 pkgrel=1
 pkgdesc="aomenc-av1 lavish fork"
 url="https://github.com/Clybius/aom-av1-lavish"
@@ -11,7 +11,7 @@ provides=(aom)
 conflicts=(aom)
 license=(BSD custom:PATENTS)
 depends=(gcc-libs vmaf libjxl)
-makedepends=(cmake ninja yasm)
+makedepends=(cmake ninja yasm git)
 source=(git+https://github.com/Clybius/aom-av1-lavish.git#branch=Endless_Instability)
 sha256sums=('SKIP')
 

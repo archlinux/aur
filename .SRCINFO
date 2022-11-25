@@ -1,6 +1,6 @@
 pkgbase = aom-av1-lavish-git
 	pkgdesc = aomenc-av1 lavish fork
-	pkgver = r52f6a.00b48332e
+	pkgver = r33025.52f6a00b4
 	pkgrel = 1
 	url = https://github.com/Clybius/aom-av1-lavish
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = aom-av1-lavish-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = yasm
+	makedepends = git
 	depends = gcc-libs
 	depends = vmaf
 	depends = libjxl
