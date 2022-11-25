@@ -19,6 +19,12 @@ source=(routeconverter
         RouteConverterCmdLine-${pkgver}.jar::http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar
         RouteConverterLinux-${pkgver}.jar::http://static.routeconverter.com/download/RouteConverterLinux.jar)
 
+sha256sums=('d35cd45946a2728a8e2d6b0fb7d53d1803df1016380eb052dad0f3f1b00a25a9'
+         '30ed02e7180c85c0448a257a4b7d40de554b084faadeb899dead72e4e2cdc741'
+         '0237729d3fb3fdb7462fb1f9064175135f7406a9fb0ec2206986ab9f668b4078'
+         '1365da2e13ae8b735efc1f140edb0bfa210122b97467c1129ed45d8f3e95f5a1'
+         'd597e87f286406214dcd8181c788ab813047463210cfba59fbface583ec6a988')
+
 noextract=(RouteConverterCmdLine-${pkgver}.jar
            RouteConverterLinux-${pkgver}.jar)
 
@@ -44,8 +50,3 @@ package()
   unzip -p "${srcdir}/RouteConverterLinux-${pkgver}.jar" slash/navigation/converter/gui/RouteConverter.png >"${pkgdir}/usr/share/pixmaps/routeconverter.png"
 }
 
-md5sums=('44b20257184f3b23014ca12b975dc5b0'
-         'a9e4b76c2aa26c6a0b7a9474964c9648'
-         'fdf570309917df1c1536b7e3c7740b33'
-         '72cb303396b69265851ba3175a1fdf4a'
-         '56b0cb39feaa2f7c6b42475a483c7c1d')
