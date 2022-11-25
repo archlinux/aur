@@ -1,9 +1,9 @@
 # Maintainer: Danny Waser <danny@waser.tech>
-# Contributor: Philip Müller <philm[at]singularity[dog]org>
-# Contributor: artoo <artoo@singularity.org>
+# Contributor: Philip Müller <philm[at]manjaro[dog]org>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: anex <assassin.anex[@]gmail.com>
-# Contributor: Stefano Capitani <stefano@singularity.org>
-# Contributor: Matti Hyttinen <matti@singularity.org> 
+# Contributor: Stefano Capitani <stefano@manjaro.org>
+# Contributor: Matti Hyttinen <matti@manjaro.org> 
 
 
 pkgbase=singularity-grub-theme
