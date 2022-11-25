@@ -1,7 +1,7 @@
 pkgbase = heroic-games-launcher-beta-bin
 	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 	arch = x86_64
 	license = GPL3
@@ -9,12 +9,11 @@ pkgbase = heroic-games-launcher-beta-bin
 	depends = gawk
 	conflicts = heroic-games-launcher-beta-appimage
 	conflicts = heroic-games-launcher-beta-electron
+	conflicts = heroic-games-launcher-beta-git
 	conflicts = heroic-games-launcher-bin
-	conflicts = heroic-games-launcher
-	conflicts = heroic-games-launcher-git
-	noextract = heroic-2.5.0-beta.2.pacman
+	noextract = heroic-2.5.0-beta.3.pacman
 	options = !strip
-	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.0-beta.2/heroic-2.5.0-beta.2.pacman
-	md5sums = 01dcc41946a87e4896d7d2526ee072fb
+	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.0-beta.3/heroic-2.5.0-beta.3.pacman
+	md5sums = 65e921d82a62b96ef008ee7b087be32e
 
 pkgname = heroic-games-launcher-beta-bin
