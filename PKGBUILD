@@ -1,4 +1,4 @@
-# Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
+# Maintainer: Ricardo Grim Cabrita <grim@kriegor.net>
 
 pkgname=kotlin-language-server
 pkgver=1.3.1
