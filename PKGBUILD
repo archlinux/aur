@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=epsonscan2
-pkgver=6.6.42.0
+pkgver=6.7.0.0
 _pkgver="${pkgver}-1"
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('boost' 'cmake')
 optdepends=('epsonscan2-non-free-plugin: OCR support and wireless scanning')
 options=('!buildflags')
 source=("http://support.epson.net/linux/src/scanner/${pkgname}/${pkgname}-${_pkgver}.src.tar.gz")
-sha512sums=('ae93d9c1aed6f1a420ad390af9f72ca9c5d28a3735f51df2fbfe23d26ae12ba45bc9a7f42776745a64d97141db2ec61a6fd3699f310d854b0f1e7e5b5cacb195')
+sha512sums=('0d43d91fb679b901d73da096dba10734cd091fc84365f367c828a1106bc6d62e11fc617a27beddd5e628867e80378bfb03bc0c737249b053738da11e45faec74')
 
 prepare() {
   [[ -d build ]] && rm -r build; mkdir build
