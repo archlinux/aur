@@ -1,6 +1,6 @@
 pkgbase = plex-htpc
 	pkgdesc = Plex HTPC application for linux
-	pkgver = 1.28.1
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = http://plex.tv
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = plex-htpc
 	depends = ffmpeg4.4
 	optdepends = qt5-wayland: Wayland support
 	optdepends = libva: GPU accelerated decoding
-	source = https://api.snapcraft.io/api/v1/snaps/download/81OP06hEXlwmMrpMAhe5hyLy5bQ9q6Kz_21.snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/81OP06hEXlwmMrpMAhe5hyLy5bQ9q6Kz_24.snap
 	source = qt.conf
-	sha256sums = 14c8a317e62b63b3a8e20de76b802e4b1e8a6fdf1249297a3da45ad0df1cbe70
+	sha256sums = 74eb389cb3c9f2cdf76db527b280347ba53c148556d0572a78dd19682d381968
 	sha256sums = 40d1b22236d9d2312d16563493b8c6d69134c5aa54ff6d1531243133fb46f083
 
 pkgname = plex-htpc
