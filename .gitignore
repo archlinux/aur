@@ -1,5 +1,7 @@
-*.bak
-*.log
-*.zst
-*.xz
-cloud_sql_proxy-*
+/cloud_sql_proxy-*
+
+/*.tar.gz
+/*.pkg.tar*
+
+/src/
+/pkg/
