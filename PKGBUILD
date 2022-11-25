@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2'
          'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libavc1394'
          'lcms2' 'lensfun-git' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia'
          'libdc1394' 'libdrm' 'libfdk-aac' 'libgme' 'libgl' 'libgcrypt' 'libiec61883'
-         'libilbc' 'libjxl-git' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
+         'libilbc' 'libjxl' 'libmodplug' 'libmysofa' 'libomxil-bellagio' 'libplacebo'
          'libpulse' 'librabbitmq-c' 'librsvg' 'libssh' 'libsoxr' 'libtheora' 'libva'
          'libvdpau' 'libvorbis' 'libvpx' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
          'libwebp' 'lilv' 'lv2' 'ocl-icd' 'openal' 'opencore-amr' 'openh264' 'openjpeg2'
@@ -62,10 +62,8 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-fix-v4l2-memory-leak.patch"
 }
 
-
 build() {
     cd "ffmpeg-${pkgver}"
-    
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
@@ -133,7 +131,7 @@ build() {
         --enable-libpulse \
         --enable-librabbitmq \
         --enable-librav1e \
-        --disable-librist \
+        --enable-librist \
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
