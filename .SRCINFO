@@ -1,6 +1,6 @@
 pkgbase = licensure
 	pkgdesc = A software license header and copyright management tool
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/chasinglogic/licensure
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = licensure
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = licensure::git+https://github.com/chasinglogic/licensure#commit=eff42ac056bee12c2233fbf46ae0575e1f7bc0bb
+	source = licensure::git+https://github.com/chasinglogic/licensure#commit=a6d276022eb0b638316707f1c55edb79cba33082
 	b2sums = SKIP
 
 pkgname = licensure

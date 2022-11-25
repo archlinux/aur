@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=licensure
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A software license header and copyright management tool'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/chasinglogic/licensure'
 license=('GPL3')
 depends=('gcc-libs' 'openssl')
 makedepends=('git' 'rust')
-_commit='eff42ac056bee12c2233fbf46ae0575e1f7bc0bb'
+_commit='a6d276022eb0b638316707f1c55edb79cba33082'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
