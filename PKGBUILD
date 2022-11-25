@@ -3,7 +3,7 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
@@ -32,7 +32,7 @@ prepare() {
 	git config submodule.src/editorconfig-core-qt.url "$srcdir/editorconfig-core-qt"
 	git config submodule.src/singleapplication.url "$srcdir/SingleApplication"
 	git config submodule.src/uchardet.url "$srcdir/uchardet"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 	mkdir -p build
 }
 
