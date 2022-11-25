@@ -1,0 +1,16 @@
+pkgbase = lzlib
+	pkgdesc = A library providing in-memory LZMA compression and decompression functions (32-bit)
+	pkgver = 1.13
+	pkgrel = 2
+	url = http://www.nongnu.org/lzip/lzlib.html
+	arch = x86_64
+	license = BSD
+	depends = lib32-gcc-libs
+	options = !emptydirs
+	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.gz
+	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.gz.sig
+	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
+	sha256sums = a1ab58f3148ba4b2674e938438166042137a9275bed747306641acfddc9ffb80
+	sha256sums = SKIP
+
+pkgname = lib32-lzlib
