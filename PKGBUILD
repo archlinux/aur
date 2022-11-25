@@ -1,7 +1,7 @@
 # Maintainer: trya <tryagainprod@gmail.com>
 
 pkgname=mach64drm
-pkgver=5.8
+pkgver=6.0
 pkgrel=1
 pkgdesc="Mach64 DRM module"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('linux-headers')
 optdepends=('mach64-dri: Mesa DRI drivers for Mach64'
             'xf86-video-mach64: X.Org Mach64 video driver')
 source=(https://github.com/trya/mach64-drm/archive/v$pkgver.tar.gz)
-sha256sums=('0a8fa6f1a7275590c867f60d874f49d757a71a61009976ff9f025f651a1e4d40')
+sha256sums=('8dce1a4574ddf55849f3bc64ebaf9ee32dd39c6559e3cb64b3818d63a45b77c6')
 install="mach64drm.install"
 
 build() {
