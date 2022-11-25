@@ -7,7 +7,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=22
+pkgrel=23
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -25,7 +25,7 @@ source=('unreal-engine-5.sh'
         'com.unrealengine.UE4Editor.desktop'
         'use_system_clang.patch'
         'unreal-engine-5-pacman-cache.hook')
-sha256sums=('a5c7d6da3592dc245f2cac38cae266c422635dcb7031141731f5ebcbf73056c3'
+sha256sums=('7cbc6fcbcdb9c4d48bba29b8b4b8340f0d02c610fed8591376df2c034e33309a'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca')

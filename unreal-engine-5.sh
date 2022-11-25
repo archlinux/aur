@@ -20,7 +20,7 @@ if [ ! -d "${HOME}/.cnfig/Epic/UnrealEngine/5.0/Intermediate/" ]; then
     mkdir -p "${HOME}/.cnfig/Epic/UnrealEngine/5.0/Intermediate/"
 fi
 
-if [ ! -f "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop" ]; then
+if [ ! -f "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop" ]; then
     cp /usr/share/applications/com.unrealengine.UE5Editor.desktop "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
 fi
 
