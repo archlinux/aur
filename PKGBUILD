@@ -3,7 +3,7 @@
 _pkgname=cursynth
 pkgname=${_pkgname}-git
 pkgver=20150622.r219.578b43c
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU ncurses terminal synthesizer'
 url='http://gnu.org/software/cursynth'
 license=('GPL3')
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
+  unset CFLAGS CXXFLAGS
   autoreconf -i
   ./configure --prefix=/usr
   make
