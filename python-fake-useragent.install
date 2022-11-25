@@ -1,0 +1,9 @@
+post_upgrade() {
+  echo '############################'
+  echo '#'
+  echo '# python-fake-useragent has been updated using a new build method.'
+  echo '# You can safely remove the following directory:'
+  echo '# /usr/lib/python3.10/site-packages/fake_useragent-0.1.13-py3.10.egg-info'
+  echo '#'
+  echo '############################'
+}

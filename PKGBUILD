@@ -2,25 +2,31 @@
 
 _name=fake-useragent
 pkgname=python-fake-useragent
-pkgver=0.1.13
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Up to date simple useragent faker with real world database'
 arch=('any')
 url=https://github.com/hellysmile/fake-useragent
 license=('Apache')
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python' 'python-importlib-metadata')
+install=python-fake-useragent.install
+makedepends=(
+  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
 source=("https://github.com/fake-useragent/fake-useragent/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('139f397c9b92d8f5c213c5b9c1d0973b8b8f458c171104d42dc48efb1907299e5636796d1fe2a8f02c074201932427d899db91178668ab15e03fd183170a5c24')
+sha512sums=('32537b333ea9c13822725d9b220d8ba26b47b69cc412dbbd00b1bddd4677557814b746e8cd299d1f87d73e74016abf57f5ad9d604d78a4285c5a8204da94a42b')
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_name-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl #--optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
