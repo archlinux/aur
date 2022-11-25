@@ -9,7 +9,7 @@ license=("GPL3")
 arch=('i686' 'x86_64')
 depends=('glibc')
 source=("http://biot.com/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4ed0627e3f7afeb471f975569351ab8c')
+sha256sums=('ad491d7f19ada71e8c04f03eb6aa949601b49025276d5a15cfe8a96b9102f050')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
