@@ -1,10 +1,10 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-move-transition
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to move sources to a new position during scene transition"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/move-transition.913/"
 license=("GPL2")
 depends=("obs-studio>=28")
