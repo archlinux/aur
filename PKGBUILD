@@ -5,7 +5,7 @@
 pkgname='zeronet-conservancy-git'
 _gitname='zeronet-conservancy'
 _gitroot='https://github.com/zeronet-conservancy/zeronet-conservancy.git'
-pkgver=0.7.7+.r5035.g3c93ca6a
+pkgver=0.7.8+.r5037.g0475a39f
 pkgrel=1
 arch=('any')
 url='https://github.com/zeronet-conservancy/zeronet-conservancy/'
@@ -23,7 +23,7 @@ optdepends=('tor: anonymity'
 	    'namecoin-core: local name resolution')
 makedepends=('git')
 checkdepends=('python-pytest' 'python-mock')
-license=('GPL2')
+license=('GPL3')
 pkgdesc="modern client for decentralized p2p web platform 0net"
 provides=(zeronet)
 conflicts=(zeronet)

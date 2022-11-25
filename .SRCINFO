@@ -1,11 +1,11 @@
 pkgbase = zeronet-conservancy-git
 	pkgdesc = modern client for decentralized p2p web platform 0net
-	pkgver = 0.7.7+.r5035.g3c93ca6a
+	pkgver = 0.7.8+.r5037.g0475a39f
 	pkgrel = 1
 	url = https://github.com/zeronet-conservancy/zeronet-conservancy/
 	install = zeronet.install
 	arch = any
-	license = GPL2
+	license = GPL3
 	checkdepends = python-pytest
 	checkdepends = python-mock
 	makedepends = git
