@@ -7,6 +7,7 @@ epoch=2
 pkgdesc=" StarWM is an extensible, floating and tiling, X window manager for Linux-based operating systems written in Rust. "
 arch=('any')
 url="https://github.com/starwm/starwm"
+install="${_gitname}.install"
 license=('GPL')
 makedepends=('cargo' 'git')
 depends=('libx11' 'libxcb' 'alacritty' 'rofi')
@@ -30,10 +31,14 @@ pkgver() {
 }
 
 package() {
+
+    # copy license
     install -d "${pkgdir}/usr/share/licenses/${_gitname}"
+    install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 
+    # copy starwm binfile into /bin
+    install -Dm755 "${srcdir}/${pkgname}/target/release/${_gitname}" -t "${pkgdir}/usr/bin"
 
-  install -Dm755 "${srcdir}/${pkgname}/target/release/${_gitname}" -t "${pkgdir}/usr/bin"
-  install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
-  install -Dm644 "${srcdir}/${pkgname}/${_gitname}.desktop" "${pkgdir}/usr/share/xsessions/${_gitname}.desktop"
+    # copy starwm desktop file into xsession dir
+    install -Dm644 "${srcdir}/${pkgname}/${_gitname}.desktop" "${pkgdir}/usr/share/xsessions/${_gitname}.desktop"
 }

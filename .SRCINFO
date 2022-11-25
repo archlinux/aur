@@ -4,6 +4,7 @@ pkgbase = starwm-git
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/starwm/starwm
+	install = starwm.install
 	arch = any
 	license = GPL
 	makedepends = cargo

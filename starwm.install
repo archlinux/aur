@@ -1,0 +1,14 @@
+post_install(){
+    printf "Starwm installed successfully.\n"
+    printf "Now you will see starwm in the list of your gdm.\n"
+    printf "$(tput setaf 2)If you are not using gdm, you can add starwm to your '.xinitrc' and then run Starwm with the 'startx' command.$(tput sgr0)\n"
+}
+
+post_upgrade(){
+  post_install
+}
+
+post_uninstall(){
+    printf "Starwm uninstall successfully.\n"
+    printf "$(tput setaf 1)If you are not using gdm, you need to remove starwm from your xinitrc.$(tput sgr0)\n"
+}

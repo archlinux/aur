@@ -1,3 +1,4 @@
 pkg
 src
-starwm*
+starwm-git/
+*.tar.zst
