@@ -1,0 +1,17 @@
+pkgbase = simple-http-server-bin
+	pkgdesc = Simple http server in Rust
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/TheWaWaR/simple-http-server
+	arch = x86_64
+	license = MIT
+	depends = openssl-1.1
+	depends = gcc-libs
+	provides = simple-http-server-git
+	provides = simple-http-server
+	conflicts = simple-http-server-git
+	conflicts = simple-http-server
+	source = https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.3/x86_64-unknown-linux-musl-simple-http-server
+	sha256sums = 4751f874a79fcb299b15d54cdb96809eb43ad3bca4bd4c2e8bd1ec2217cc929f
+
+pkgname = simple-http-server-bin
