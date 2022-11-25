@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=1.13.2
+pkgver=1.14
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -19,12 +19,15 @@ depends=(
 	'git'
 )
 makedepends=(
+	'python-wheel'
+	'python-build'
+	'python-installer'
 	'python-markdown-it-py'
 )
 optdepends=(
 	'asp: for ABS support in -G/--getpkgbuild operation'
 	'python-pysocks: for socks5 proxy support'
-	'python-defusedxml: wrap Arch news replies'
+	'python-defusedxml: securely wrap Arch news replies'
 )
 conflicts=('pikaur')
 provides=('pikaur')
@@ -39,11 +42,12 @@ build() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	sed -i -e "s/VERSION.*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
 	make
+	/usr/bin/python3 -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	/usr/bin/python3 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+	/usr/bin/python3 -m installer --destdir="$pkgdir" dist/*.whl
 	for langmo in $(cd ./locale && ls ./*.mo); do
 		lang=$(sed -e 's/.mo$//' <<< "${langmo}")
 		install -Dm644 "locale/${langmo}" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
