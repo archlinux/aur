@@ -1,8 +1,8 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing-git
-pkgver=4.0.1.r39.gf681ae31b
-pkgrel=2
+pkgver=4.0.2.r1.g862aaf98b
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
