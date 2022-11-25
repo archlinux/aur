@@ -1,21 +1,23 @@
 # Maintainer: Jozef Riha <jose1711@gmail.com>
+# Maintainer: Avi H.D. <strykar@hotmail.com>
 
 pkgname=tcpconsole
 arch=('i686' 'x86_64')
-pkgver=0.3
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 license=('GPL')
-pkgdesc="a network emergency console for Linux which uses lowlevel Linux system calls"
-url="http://www.vanheusden.com/tcpconsole/"
+pkgdesc="A emergency network console for Linux which uses low-level Linux system calls"
+url="https://github.com/folkertvanheusden/tcpconsole"
 depends=('glibc')
-source=("http://www.vanheusden.com/tcpconsole/${pkgname}-${pkgver}.tgz")
-md5sums=('e421db98fe317b573e739d7e9dc5da4f')
-install=('tcpconsole.install')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/folkertvanheusden/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('279fdb783e109ea9bff586ab084e3539736e77f9f21cb4f1e3b63c4542f87221')
+#install=('tcpconsole.install')
+
 build() {
-cd $srcdir/$pkgname-$pkgver
+cd ${srcdir}/${pkgname}-${pkgver}
 make
 }
 
 package() {
-install -D -m755 $srcdir/$pkgname-$pkgver/tcpconsole $pkgdir/usr/bin/tcpconsole
+install -D -m755 ${srcdir}/${pkgname}-${pkgver}/tcpconsole ${pkgdir}/usr/bin/tcpconsole
 }
