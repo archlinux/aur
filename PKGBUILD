@@ -92,24 +92,18 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-1.43-bitcoin-core_remove-serialize.h.patch
         brave-1.43-brave_today-base_utf_string_conversions.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
-        brave-1.43-ntp_background_images-std-size_t.patch
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/angle-wayland-include-protocol.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/use-oauth2-client-switches-as-default.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/REVERT-enable-GlobalMediaControlsCastStartStop.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/master/chromium/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch"
-)
-#_arch_revision=bf2401407df5bcc938382eb03748fbef41e41c89
-#_patches=(unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
-#          REVERT-enable-GlobalMediaControlsCastStartStop.patch
-#          REVERT-roll-src-third_party-ffmpeg-m102.patch
-#          REVERT-roll-src-third_party-ffmpeg-m106.patch
-#          angle-wayland-include-protocol.patch)
-#for _patch in "${_patches[@]}"; do
-#  source+=("$_patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/trunk/$_patch")
-#done
+        brave-1.43-ntp_background_images-std-size_t.patch)
+_arch_revision=a4877c0840780910faa5ec4506e8e1267f8eb942
+_patches=(REVERT-enable-GlobalMediaControlsCastStartStop.patch
+          REVERT-roll-src-third_party-ffmpeg-m102.patch
+          REVERT-roll-src-third_party-ffmpeg-m106.patch
+          angle-wayland-include-protocol.patch
+          re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
+          unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
+          use-oauth2-client-switches-as-default.patch)
+for _patch in "${_patches[@]}"; do
+  source+=("https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/chromium/trunk/$_patch")
+done
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -126,13 +120,13 @@ sha256sums=('SKIP'
             'ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
+            '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
+            '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
+            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
             'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-            '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
-            '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152')
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -164,8 +158,12 @@ declare -gA _system_libs=(
 _unwanted_bundled_libs=(
   "$(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')"
 )
+for _dep in "${_system_libs[@]}"; do
+  depends+=($_dep)
+done
 
 prepare() {
+
   cd chromium-launcher-$_launcher_ver
   patch -Np1 -i ../chromium-launcher-electron-app.patch
 
