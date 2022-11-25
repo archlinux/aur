@@ -1,4 +1,4 @@
-pkgbase = dummypkg-generator
+pkgbase = dummy_gen
 	pkgdesc = A simple generator for Arch-compatible dummy packages
 	pkgver = 1.0
 	pkgrel = 1
