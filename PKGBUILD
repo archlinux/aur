@@ -9,7 +9,7 @@ license=(GPL LGPL FDL custom)
 depends=(libisl)
 provides=(gcc9)
 conflicts=(gcc9)
-source=(http://ports.ubuntu.com/pool/universe/g/gcc-9/{gcc-9{,-base},cpp-9,libgcc-9-dev}_${pkgver/_/-}_$_arch.deb)
+source=(http://`[ $_arch = amd64 ] && echo archive.ubuntu.com/ubuntu || echo ports.ubuntu.com`/pool/universe/g/gcc-9/{gcc-9{,-base},cpp-9,libgcc-9-dev}_${pkgver/_/-}_$_arch.deb)
 noextract=(*.deb)
 md5sums=($(for I in {gcc-9{,-base},cpp-9,libgcc-9-dev};do curl -s https://packages.ubuntu.com/kinetic/$_arch/$I/download|grep MD5|cut -d'>' -f6|cut -d'<' -f1;done))
 pkgver(){
@@ -17,8 +17,9 @@ pkgver(){
 }
 build(){
 	for I in *.deb;do bsdtar xfO $I data.tar.zst|bsdtar xf - --exclude=usr/share/{lintian,doc/{cpp-9,gcc-9,libgcc-9-dev}};done
+	rm -fr usr/share/doc/gcc9-bin
 	mv usr/share/doc/gcc{-9-base,9-bin}
 }
 package(){
-	cp -r usr $pkgdir
+	cp -r usr "$pkgdir"
 }
