@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=SeqDistK
+Exec=SeqDistK
+Type=Application
+StartupNotify=true
+Icon=SeqDistK
