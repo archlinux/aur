@@ -1,0 +1,552 @@
+diff --git a/CollidingCombSynth/parameter.hpp b/CollidingCombSynth/parameter.hpp
+index e611a1e..d734bd6 100644
+--- a/CollidingCombSynth/parameter.hpp
++++ b/CollidingCombSynth/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/CubicPadSynth/parameter.hpp b/CubicPadSynth/parameter.hpp
+index 7713455..92a19b5 100644
+--- a/CubicPadSynth/parameter.hpp
++++ b/CubicPadSynth/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <string>
+ #include <vector>
+diff --git a/EnvelopedSine/parameter.hpp b/EnvelopedSine/parameter.hpp
+index c1b2076..30faf00 100644
+--- a/EnvelopedSine/parameter.hpp
++++ b/EnvelopedSine/parameter.hpp
+@@ -21,6 +21,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <string>
+ #include <vector>
+diff --git a/EsPhaser/parameter.hpp b/EsPhaser/parameter.hpp
+index 4341ed7..eb20882 100644
+--- a/EsPhaser/parameter.hpp
++++ b/EsPhaser/parameter.hpp
+@@ -21,6 +21,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/FDNCymbal/parameter.hpp b/FDNCymbal/parameter.hpp
+index 48a1dd2..9bce97c 100644
+--- a/FDNCymbal/parameter.hpp
++++ b/FDNCymbal/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/FoldShaper/parameter.hpp b/FoldShaper/parameter.hpp
+index 5bc7e2d..9cea728 100644
+--- a/FoldShaper/parameter.hpp
++++ b/FoldShaper/parameter.hpp
+@@ -22,6 +22,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <string>
+ #include <vector>
+diff --git a/IterativeSinCluster/parameter.hpp b/IterativeSinCluster/parameter.hpp
+index 7765262..3e19c21 100644
+--- a/IterativeSinCluster/parameter.hpp
++++ b/IterativeSinCluster/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/L3Reverb/parameter.hpp b/L3Reverb/parameter.hpp
+index bab5f14..ffdb483 100644
+--- a/L3Reverb/parameter.hpp
++++ b/L3Reverb/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/L4Reverb/parameter.hpp b/L4Reverb/parameter.hpp
+index 7abd4cc..5b0538c 100644
+--- a/L4Reverb/parameter.hpp
++++ b/L4Reverb/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/LatticeReverb/parameter.hpp b/LatticeReverb/parameter.hpp
+index 9ba2cd1..af5b556 100644
+--- a/LatticeReverb/parameter.hpp
++++ b/LatticeReverb/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/LightPadSynth/parameter.hpp b/LightPadSynth/parameter.hpp
+index 4fbbe0e..1b80ea1 100644
+--- a/LightPadSynth/parameter.hpp
++++ b/LightPadSynth/parameter.hpp
+@@ -22,6 +22,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <string>
+diff --git a/ModuloShaper/parameter.hpp b/ModuloShaper/parameter.hpp
+index 8ca9937..99a34d6 100644
+--- a/ModuloShaper/parameter.hpp
++++ b/ModuloShaper/parameter.hpp
+@@ -22,6 +22,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <string>
+diff --git a/OddPowShaper/parameter.hpp b/OddPowShaper/parameter.hpp
+index 8318543..560f82f 100644
+--- a/OddPowShaper/parameter.hpp
++++ b/OddPowShaper/parameter.hpp
+@@ -22,6 +22,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <string>
+diff --git a/SevenDelay/parameter.hpp b/SevenDelay/parameter.hpp
+index 9bd1925..202e8bf 100644
+--- a/SevenDelay/parameter.hpp
++++ b/SevenDelay/parameter.hpp
+@@ -21,6 +21,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/SoftClipper/parameter.hpp b/SoftClipper/parameter.hpp
+index fd23aef..e986978 100644
+--- a/SoftClipper/parameter.hpp
++++ b/SoftClipper/parameter.hpp
+@@ -22,6 +22,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <string>
+diff --git a/SyncSawSynth/parameter.hpp b/SyncSawSynth/parameter.hpp
+index 31dd3ef..05c7406 100644
+--- a/SyncSawSynth/parameter.hpp
++++ b/SyncSawSynth/parameter.hpp
+@@ -21,6 +21,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/TrapezoidSynth/parameter.hpp b/TrapezoidSynth/parameter.hpp
+index 8f7abe7..33a1cb5 100644
+--- a/TrapezoidSynth/parameter.hpp
++++ b/TrapezoidSynth/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/WaveCymbal/parameter.hpp b/WaveCymbal/parameter.hpp
+index f79977c..44b4668 100644
+--- a/WaveCymbal/parameter.hpp
++++ b/WaveCymbal/parameter.hpp
+@@ -20,6 +20,7 @@
+ #include "../common/parameterinterface.hpp"
+ #include "../common/value.hpp"
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/experimental/BubbleSynth/parameter.hpp b/experimental/BubbleSynth/parameter.hpp
+index 15f5fc6..9f977e9 100644
+--- a/experimental/BubbleSynth/parameter.hpp
++++ b/experimental/BubbleSynth/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/experimental/KuramotoModel/parameter.hpp b/experimental/KuramotoModel/parameter.hpp
+index 415adb2..fb18154 100644
+--- a/experimental/KuramotoModel/parameter.hpp
++++ b/experimental/KuramotoModel/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/experimental/NoiseTester/parameter.hpp b/experimental/NoiseTester/parameter.hpp
+index 793f9b7..ebd4f77 100644
+--- a/experimental/NoiseTester/parameter.hpp
++++ b/experimental/NoiseTester/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/experimental/RingDelaySynth/parameter.hpp b/experimental/RingDelaySynth/parameter.hpp
+index 6b306dc..d5e1be2 100644
+--- a/experimental/RingDelaySynth/parameter.hpp
++++ b/experimental/RingDelaySynth/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <iostream>
+ #include <memory>
+ #include <vector>
+diff --git a/lv2cvport/CV_3PoleLP/parameter.hpp b/lv2cvport/CV_3PoleLP/parameter.hpp
+index 75653d9..efb6b39 100644
+--- a/lv2cvport/CV_3PoleLP/parameter.hpp
++++ b/lv2cvport/CV_3PoleLP/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_DelayLP3/parameter.hpp b/lv2cvport/CV_DelayLP3/parameter.hpp
+index ab31cd4..6a4f0e8 100644
+--- a/lv2cvport/CV_DelayLP3/parameter.hpp
++++ b/lv2cvport/CV_DelayLP3/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_DoubleFilter/parameter.hpp b/lv2cvport/CV_DoubleFilter/parameter.hpp
+index 370f79e..c3a3a13 100644
+--- a/lv2cvport/CV_DoubleFilter/parameter.hpp
++++ b/lv2cvport/CV_DoubleFilter/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_ExpADSREnvelope/parameter.hpp b/lv2cvport/CV_ExpADSREnvelope/parameter.hpp
+index 0861455..8254d03 100644
+--- a/lv2cvport/CV_ExpADSREnvelope/parameter.hpp
++++ b/lv2cvport/CV_ExpADSREnvelope/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_ExpLoopEnvelope/parameter.hpp b/lv2cvport/CV_ExpLoopEnvelope/parameter.hpp
+index 65acaf9..1b9585e 100644
+--- a/lv2cvport/CV_ExpLoopEnvelope/parameter.hpp
++++ b/lv2cvport/CV_ExpLoopEnvelope/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_ExpPolyADEnvelope/parameter.hpp b/lv2cvport/CV_ExpPolyADEnvelope/parameter.hpp
+index 07e6f98..b17e6ae 100644
+--- a/lv2cvport/CV_ExpPolyADEnvelope/parameter.hpp
++++ b/lv2cvport/CV_ExpPolyADEnvelope/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_Gate16/parameter.hpp b/lv2cvport/CV_Gate16/parameter.hpp
+index 44dd869..c46710b 100644
+--- a/lv2cvport/CV_Gate16/parameter.hpp
++++ b/lv2cvport/CV_Gate16/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_HoldFilter/parameter.hpp b/lv2cvport/CV_HoldFilter/parameter.hpp
+index f79cc86..bd5f3a9 100644
+--- a/lv2cvport/CV_HoldFilter/parameter.hpp
++++ b/lv2cvport/CV_HoldFilter/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_LinearADSREnvelope/parameter.hpp b/lv2cvport/CV_LinearADSREnvelope/parameter.hpp
+index a9cc906..4ba3b10 100644
+--- a/lv2cvport/CV_LinearADSREnvelope/parameter.hpp
++++ b/lv2cvport/CV_LinearADSREnvelope/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_LinearMap/parameter.hpp b/lv2cvport/CV_LinearMap/parameter.hpp
+index 423a676..194e04b 100644
+--- a/lv2cvport/CV_LinearMap/parameter.hpp
++++ b/lv2cvport/CV_LinearMap/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_LongAllpass/parameter.hpp b/lv2cvport/CV_LongAllpass/parameter.hpp
+index 369fc35..b7aa2af 100644
+--- a/lv2cvport/CV_LongAllpass/parameter.hpp
++++ b/lv2cvport/CV_LongAllpass/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_NaiveDelay/parameter.hpp b/lv2cvport/CV_NaiveDelay/parameter.hpp
+index a1bef61..9a8ea93 100644
+--- a/lv2cvport/CV_NaiveDelay/parameter.hpp
++++ b/lv2cvport/CV_NaiveDelay/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_NestedLongAllpass/parameter.hpp b/lv2cvport/CV_NestedLongAllpass/parameter.hpp
+index 437cbaa..e5d654a 100644
+--- a/lv2cvport/CV_NestedLongAllpass/parameter.hpp
++++ b/lv2cvport/CV_NestedLongAllpass/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_PController/parameter.hpp b/lv2cvport/CV_PController/parameter.hpp
+index c63dcb5..0a4a356 100644
+--- a/lv2cvport/CV_PController/parameter.hpp
++++ b/lv2cvport/CV_PController/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_PTRSaw/parameter.hpp b/lv2cvport/CV_PTRSaw/parameter.hpp
+index 031262e..9474772 100644
+--- a/lv2cvport/CV_PTRSaw/parameter.hpp
++++ b/lv2cvport/CV_PTRSaw/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_PTRTrapezoid/parameter.hpp b/lv2cvport/CV_PTRTrapezoid/parameter.hpp
+index e3f885a..5f7188a 100644
+--- a/lv2cvport/CV_PTRTrapezoid/parameter.hpp
++++ b/lv2cvport/CV_PTRTrapezoid/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_ParabolicADEnvelope/parameter.hpp b/lv2cvport/CV_ParabolicADEnvelope/parameter.hpp
+index 97370cf..0847390 100644
+--- a/lv2cvport/CV_ParabolicADEnvelope/parameter.hpp
++++ b/lv2cvport/CV_ParabolicADEnvelope/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_PolyLoopEnvelope/parameter.hpp b/lv2cvport/CV_PolyLoopEnvelope/parameter.hpp
+index 71e12fd..260ea8a 100644
+--- a/lv2cvport/CV_PolyLoopEnvelope/parameter.hpp
++++ b/lv2cvport/CV_PolyLoopEnvelope/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_PolyLoopEnvelope2/parameter.hpp b/lv2cvport/CV_PolyLoopEnvelope2/parameter.hpp
+index 7d0aa60..e713318 100644
+--- a/lv2cvport/CV_PolyLoopEnvelope2/parameter.hpp
++++ b/lv2cvport/CV_PolyLoopEnvelope2/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_PolyLoopEnvelope4/parameter.hpp b/lv2cvport/CV_PolyLoopEnvelope4/parameter.hpp
+index d664634..8206680 100644
+--- a/lv2cvport/CV_PolyLoopEnvelope4/parameter.hpp
++++ b/lv2cvport/CV_PolyLoopEnvelope4/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_RampFilter/parameter.hpp b/lv2cvport/CV_RampFilter/parameter.hpp
+index 731c702..0ab1616 100644
+--- a/lv2cvport/CV_RampFilter/parameter.hpp
++++ b/lv2cvport/CV_RampFilter/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_RateLimiter/parameter.hpp b/lv2cvport/CV_RateLimiter/parameter.hpp
+index 6598b69..c8e76c0 100644
+--- a/lv2cvport/CV_RateLimiter/parameter.hpp
++++ b/lv2cvport/CV_RateLimiter/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_Sin/parameter.hpp b/lv2cvport/CV_Sin/parameter.hpp
+index bc0b26f..fa27193 100644
+--- a/lv2cvport/CV_Sin/parameter.hpp
++++ b/lv2cvport/CV_Sin/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 
+diff --git a/lv2cvport/CV_StereoGain/parameter.hpp b/lv2cvport/CV_StereoGain/parameter.hpp
+index 0b8191b..af876e5 100644
+--- a/lv2cvport/CV_StereoGain/parameter.hpp
++++ b/lv2cvport/CV_StereoGain/parameter.hpp
+@@ -17,6 +17,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <memory>
+ #include <vector>
+ 

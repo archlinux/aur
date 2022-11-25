@@ -4,5 +4,5 @@ pocketfft/
 src/
 uhhyou.lv2/
 vcl/
-uhhyou.lv2-git-*.pkg.tar.xz
-uhhyou.lv2-git-*.pkg.tar.zst
+uhhyou.lv2-git-*.pkg.tar.*
+uhhyou.lv2-git-*.src.tar.gz

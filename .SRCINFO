@@ -1,26 +1,29 @@
 pkgbase = uhhyou.lv2-git
-	pkgdesc = Various synth, effect and CV LV2 plugins.
-	pkgver = r511.df67460
+	pkgdesc = Various synth, effect and CV LV2 plugins (git version)
+	pkgver = r512.7924bf5
 	pkgrel = 1
 	url = https://github.com/ryukau/LV2Plugins
 	arch = x86_64
 	groups = lv2-plugins
+	groups = pro-audio
 	license = GPL3
 	makedepends = git
 	makedepends = lv2
-	makedepends = mesa
-	depends = glibc
-	depends = libgl
+	makedepends = libglvnd
+	depends = gcc-libs
 	provides = uhhyou.lv2
 	conflicts = uhhyou.lv2
-	source = uhhyou.lv2::git+https://github.com/ryukau/LV2Plugins.git
+	source = uhhyou.lv2::git+https://github.com/Wasted-Audio/ryukau_LV2Plugins.git
 	source = dpf::git+https://github.com/DISTRHO/DPF.git
 	source = vcl::git+https://github.com/vectorclass/version2.git
 	source = pocketfft::git+https://gitlab.mpcdf.mpg.de/mtr/pocketfft.git
+	source = uhhyou-include-array.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = db81dad48cb8d8b450b52521545dd27e
 
 pkgname = uhhyou.lv2-git
-
+	depends = gcc-libs
+	depends = libGL.so
