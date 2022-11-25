@@ -5,6 +5,7 @@ pkgbase = openctm-tools
 	epoch = 2
 	url = https://sourceforge.net/projects/openctm
 	arch = x86_64
+ 	arch = aarch64
 	license = zlib
 	depends = gtk2
 	depends = glu
