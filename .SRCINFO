@@ -1,11 +1,16 @@
 pkgbase = perl-io-async
 	pkgdesc = Asynchronous event-driven programming
 	pkgver = 0.802
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/IO-Async
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-future-io
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-identity
+	checkdepends = perl-test-metrics-any
+	checkdepends = perl-test-refcount
 	makedepends = perl-module-build
 	depends = perl>=5.10.0
 	depends = perl-future
