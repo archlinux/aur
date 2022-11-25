@@ -1,6 +1,6 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname=charge-lnd
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="${pkgname} is a simple policy based fee manager for LND"
 url='https://github.com/accumulator/charge-lnd'
@@ -13,7 +13,7 @@ arch=('any')
 install=${pkgname}.install
 backup=("etc/default/${pkgname}")
 source=("https://github.com/accumulator/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}@.service" "${pkgname}.timer" "${pkgname}.sysusers" "${pkgname}.env")
-sha256sums=('782849bcf814dbf61570dabac83080bfeb5d04ff6eadd66caf37fcd85a1100e6' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('15b4c238f8d6436bc9dc29e8dfbb3fa4fa92c2069fdc3fd8dce10ce5bff28701' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
