@@ -4,7 +4,7 @@ _pypiname=PyGObject-stubs
 _pkgname=pygobject-stubs
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.0.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PEP 561 Typing Stubs for PyGObject."
 arch=('any')
@@ -12,7 +12,7 @@ url='https://github.com/pygobject/pygobject-stubs'
 license=('LGPL')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/P/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha512sums=('c2b8eb76b8654794a07234cb1fd4116be30d02f6b8ffe329d1ba96a55059a8936860fdf3b1ac268d30f9ca63d14f99797427e3a597fa00d8b0530cbd61a626b5')
+sha512sums=('a4766a54caa06c21ee176ab4d3d174f8fa70f0ee1fb300ebde4746377a40dd91d54e027ef9aa60dc9346b26966f85fc2a98bda9fd25aa17174000de262126713')
 
 prepare() {
   cp -a ${_pypiname}-${pkgver}{,-py2}
