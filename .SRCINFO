@@ -1,6 +1,6 @@
 pkgbase = qt6-jpegxl-image-plugin
 	pkgdesc = Qt6 plug-in to allow Qt6 and KDE based applications to read/write JXL images
-	pkgver = 0.3.2
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/novomesk/qt-jpegxl-image-plugin/
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = qt6-jpegxl-image-plugin
 	depends = libjxl
 	depends = qt6-base
 	options = !emptydirs
-	source = https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v0.3.2/qt-jpegxl-image-plugin-0.3.2.tar.gz
-	source = 010-qt-jpegxl-image-plugin-add-qt6-support.patch
-	sha256sums = 8343500ecb9b92fd1fad5dca74d824ce66991c3eac2ff64e1d5757ef98bfcae8
-	sha256sums = 159be60d69cc0b2c8203ebb240cc71e3fbfbf8a2bf17a26ed7e34f564ff07ab8
+	source = https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v0.4.1/qt-jpegxl-image-plugin-0.4.1.tar.gz
+	sha256sums = 0ec1fbb5bf1a1b465acb0508576cf01998c03f7138bf89dd4b31cecfb1141155
 
 pkgname = qt6-jpegxl-image-plugin
