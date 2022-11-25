@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=catbin
-pkgver=r58.d4ceec8
+pkgver=r59.af7e4fe
 arch=("x86_64")
 pkgrel=1
 pkgdesc="A pastebin server meant for the terminal"
@@ -24,6 +24,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	mkdir -pv "$pkgdir/var/lib/catbind"
 	DESTDIR="$pkgdir" PREFIX="/usr" make install
+	mv "$pkgdir/usr/etc" "$pkgdir/etc/"
+	mkdir -pv "$pkgdir/var/lib/catbind"
 }
