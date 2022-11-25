@@ -1,6 +1,6 @@
 # Maintainer: jazztickets <jazztickets at gmail dot com>
 pkgname=emptyclip-git
-pkgver=e71a206
+pkgver=3f0f300
 pkgrel=1
 pkgdesc="A top-down shooter RPG"
 arch=('i686' 'x86_64')
