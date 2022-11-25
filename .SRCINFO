@@ -1,6 +1,6 @@
 pkgbase = python-assistant
 	pkgdesc = Your very own Assistant. Because you deserve it.
-	pkgver = 0.9.1a0
+	pkgver = 0.9.2a0
 	pkgrel = 00
 	url = https://github.com/waser-technologies/technologies/assistant
 	arch = any
@@ -20,15 +20,15 @@ pkgbase = python-assistant
 	depends = python-terminaltables
 	depends = python-setproctitle
 	depends = python-pytorch
-	noextract = assistant-0.9.0a0-py3-none-any.whl
+	noextract = assistant-0.9.2a0-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/20/89/5fc80b78aef63b3f35bde17b5c765213a4102855b5a2597bf3fee6544310/assistant-0.9.0a0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/48/43/4dbef8055abf3bcfe57249f49097d5ebe3f9697158e19dda8b796d521433/assistant-0.9.2a0-py3-none-any.whl
 	source = LICENSE
 	source = assistant.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/assistant.service.example
 	source = assistant.listen.service::https://gitlab.com/waser-technologies/technologies/assistant/-/raw/main/assistant.listen.service.example
 	md5sums = SKIP
-	md5sums = 6982177254d9527221e2469671ebb528
-	md5sums = b051377258149bf318fcf62e7a07de00
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
