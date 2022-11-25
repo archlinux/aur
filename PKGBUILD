@@ -35,11 +35,11 @@ package() {
     cd "OpenCTM-${pkgver}"
 
     O_LIBDIR=/usr/lib/
-    O_INCDIR=/usr/local/include/
-    O_BINDIR=/usr/local/bin/
-    O_MAN1DIR=/usr/local/man/man1/ # Use original directory 'share/man' breaks
+    O_INCDIR=/usr/include/
+    O_BINDIR=/usr/bin/
+    O_MAN1DIR=/usr/share/man/man1/
 
-    mkdir -p ${pkgdir}/usr/{lib,local/{include,bin},local/man/man1}
+    mkdir -p "${pkgdir}/usr/"{lib,include,bin,share/man/man1}
 
     make LIBDIR="${pkgdir}/${O_LIBDIR}" \
          INCDIR="${pkgdir}/${O_INCDIR}" \
