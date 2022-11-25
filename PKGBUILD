@@ -3,7 +3,7 @@
 
 pkgname=lunzip
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Lunzip is a decompressor for the lzip format written in C."
 url="https://www.nongnu.org/lzip/lunzip.html"
 arch=('x86_64' 'i686')
@@ -28,5 +28,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install{,-man}
 }
