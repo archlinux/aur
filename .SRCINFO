@@ -1,6 +1,6 @@
 pkgbase = maui-arca-git
-	pkgdesc = Archive manager and explorer.
-	pkgver = r4.68a475c
+	pkgdesc = Arca - Maui Archive Manager - Browse, create and manage archives.
+	pkgver = 0.1.0.r0.g7a59d44
 	pkgrel = 1
 	url = https://github.com/Nitrux/maui-archiver
 	arch = x86_64
