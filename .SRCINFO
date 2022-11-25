@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-fourier-git
+	pkgdesc = Fourier plugin for GIMP
+	pkgver = 0.4.4.r0.g35e2cfe
+	pkgrel = 1
+	url = https://github.com/rpeyron/plugin-gimp-fourier
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = gimp
+	depends = fftw
+	source = gimp-plugin-fourier-git::git+https://github.com/rpeyron/plugin-gimp-fourier
+	md5sums = SKIP
+
+pkgname = gimp-plugin-fourier-git
