@@ -1,6 +1,6 @@
 pkgbase = r-performance
 	pkgdesc = Assessment of Regression Models Performance
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=performance
 	arch = any
@@ -58,7 +58,7 @@ pkgbase = r-performance
 	optdepends = r-testthat
 	optdepends = r-tweedie
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/performance_0.10.0.tar.gz
-	sha256sums = 0b66d18829a6f09ff9692ffba2db3c9f12e39f5f1fdd2bcf0e74c0137c39dd97
+	source = https://cran.r-project.org/src/contrib/performance_0.10.1.tar.gz
+	sha256sums = ff9ee7ddf034bc090501e03412eff3778641ee2e72f5096ac348d1e5ecff5fd4
 
 pkgname = r-performance
