@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
 pkgver=7.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
@@ -38,7 +38,7 @@ prepare() {
     git submodule init
     git config submodule.src/lib.url $srcdir/${pkgname}-lib
     git config submodule.assets/guestAvatars.url $srcdir/${pkgname}-avatars
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
