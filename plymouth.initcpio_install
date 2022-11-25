@@ -2,6 +2,8 @@
 # /etc/initcpio/install/plymouth — mkinitcpio hook for plymouth
 
 build() {
+	local DATADIR PLYMOUTH_LOGO_FILE PLYMOUTH_THEME_NAME PLYMOUTH_THEME_DIR PLYMOUTH_IMAGE_DIR PLYMOUTH_PLUGIN_PATH PLYMOUTH_MODULE_NAME FONT
+	
 	add_dir /dev/pts
 	add_dir /usr/share/plymouth/themes
 	add_dir /run/plymouth
