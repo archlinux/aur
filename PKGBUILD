@@ -3,10 +3,10 @@
 pkgname=alacenc-git
 pkgver=0.3.0.2.g260574f
 pkgrel=1
-pkgdesc=" encode audio into the Apple Lossless Audio Codec (ALAC) format. (Git Version)"
+pkgdesc="Encode audio into the Apple Lossless Audio Codec (ALAC) format. (Git Version)"
 arch=('x86_64')
 url='https://github.com/flacon/alacenc'
-license=('LGPL2.1')
+license=('MIT')
 depends=('gcc-libs')
 makedepends=('git'
              'cmake'
@@ -32,4 +32,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+
+  install -Dm644 alacenc/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
