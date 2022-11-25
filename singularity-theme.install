@@ -1,0 +1,26 @@
+post_install() {
+
+  sed -i -e 's,.*GRUB_THEME=.*,GRUB_THEME="/usr/share/grub/themes/manjaro/theme.txt",' /etc/default/grub
+  sed -i -e 's,.*GRUB_GFXMODE=.*,GRUB_GFXMODE=auto,' /etc/default/grub
+  grub-mkconfig -o /boot/grub/grub.cfg
+ 
+cat << _EOF 
+
+==> Installation: Theme is added to your /etc/default/grub: GRUB_THEME="/usr/share/grub/themes/manjaro/theme.txt"
+==> Default resolution "auto"
+==> If an OS icon doesn't appear probably not present in /usr/share/grub/themes/manjaro/icons simply add it or merge in
+==> https://gitlab.manjaro.org/artwork/branding/grub-theme
+
+_EOF
+}
+
+post_remove() {
+cat << _EOF
+
+==> IMPORTANT: Edit /boot/grub/grub.cfg , remove
+==> set theme="/boot/grub/themes/manjaro/theme.txt"
+==> and uncomment an existing one / default!
+==> (Maybe without "/boot", depending on PC setup)
+
+_EOF
+}
