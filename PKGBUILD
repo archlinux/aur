@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-calendar
 pkgname=$_pkgname-git
-pkgver=r19.efdef79
+pkgver=1.0.0.r0.gdeb1859
 pkgrel=1
 pkgdesc='MauiKit Calendar components'
 url='https://invent.kde.org/maui/mauikit-calendar'
