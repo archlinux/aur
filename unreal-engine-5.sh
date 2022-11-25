@@ -21,17 +21,17 @@ if [ ! -d "${HOME}/.cnfig/Epic/UnrealEngine/5.0/Intermediate/" ]; then
 fi
 
 if [ ! -f "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop" ]; then
-    cp /usr/share/applications/com.unrealengine.UE5Editor.desktop "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop"
+    cp /usr/share/applications/com.unrealengine.UE5Editor.desktop "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
 fi
 
-UE5desktopFileChecksum="$(sha256sum "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')"
+UE5desktopFileChecksum="$(sha256sum "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')"
 
 if [ "${UE5desktopFileChecksum}" == "ChecksumPlaceholder" ]; then
     UE5editorLocation="$(find InstalledLocationPlaceholder -type f -iname 'UnrealEditor')"
     UE5editorPath="$(echo ${UE5editorLocation/UnrealEditor/})"
     
-    sed -i "7c\Exec=${UE5editorLocation} %F" "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop"
-    sed -i "14c\Path=${UE5editorPath}" "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop"
+    sed -i "7c\Exec=${UE5editorLocation} %F" "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
+    sed -i "14c\Path=${UE5editorPath}" "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
 fi
 
-xdg-open "${HOME}/local/share/applications/com.unrealengine.UE5Editor.desktop"
+xdg-open "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
