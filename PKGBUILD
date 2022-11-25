@@ -1,26 +1,44 @@
-# Maintainer: malacology
-# Contributor: malacology
-
-pkgname=arlequin
+# Maintainer: Guoyi Zhang <myname at malacology dot net>
+pkgbase=arlequin
+pkgname=('arlecore' 'arlsumstat' 'arlequin-extra')
 pkgver=3.5.2.2
-pkgrel=1
+pkgrel=0
 pkgdesc="An Integrated Software for Population Genetics Data Analysis"
-arch=('any')
-url="http://www.cmpg.unibe.ch/software/arlequin35/"
+arch=('x86_64')
+url="http://cmpg.unibe.ch/software/arlequin${pkgver//./}"
 license=('custom')
-depends=(
-	'wine'
-	'wine_gecko'
-	'wine-mono'
-)
-source=("http://www.cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip" "arlequin.desktop" "arlequin.png")
-md5sums=('545409c0e59e5be6687b6c7f122e58b4'
-         '0973863b9050f2702d6ab443bc276aab'
-         '230b156c7c8398218177a31b3db3cb12')
+depends=('glibc')
+source=("$url/linux/arlecore_linux.zip"
+	"$url/linux/arlsumstat_linux.zip"
+	"$url/linux/Example%20files_linux.zip")
+sha256sums=('79d7ce0c126c32f88a66290aabd29e0b2e5b2d8c46cbcf02ef95ac7cbb91ead8'
+            '709590b42d1ad5060cce4d90debe4ef2b9c0d1986f3d8dffd80c7b694d0ff454'
+            '58e76d888ff2f4631df2ac482dd1e3c44cda389f9c31f7512993a852610cd985')
+pkg1=arlecore 
+pkg2=arlsumstat
+package_arlecore() {
+  install -Dm 755 $srcdir/${pkg1}_linux/${pkg1}${pkgver//./}_64bit $pkgdir/usr/bin/$pkg1
+}
+package_arlsumstat() {
+  install -Dm 755 $srcdir/${pkg2}_linux/${pkg2}${pkgver//./}_64bit $pkgdir/usr/bin/$pkg2
+}
+package_arlequin-extra(){
+  # scripts
+  cd $srcdir/'Example files_linux'
+  install -dm 755 $pkgdir/usr/share/$pkgbase
+  cp -r * $pkgdir/usr/share/$pkgbase/
 
-package() {
-  install -dm755 "$pkgdir"/usr/share/{arlequin,applications}
-  mv "$srcdir"/WinArl35/* "$pkgdir"/usr/share/arlequin
-  install -Dm755 ${srcdir}/arlequin.png ${pkgdir}/usr/share/arlequin/arlequin.png
-  install -Dm755 ${srcdir}/arlequin.desktop ${pkgdir}/usr/share/applications/arlequin.desktop
+  # pkg1
+  cd $srcdir/${pkg1}_linux/
+for pdf in $(ls *.pdf)
+do
+  install -Dm 755 $pdf $pkgdir/usr/share/$pkgbase/Arlequin.pdf
+done
+  install -Dm 755 ${pkg1}_readme.txt $pkgdir/usr/share/$pkgbase/${pkg1}_readme.txt
+  install -Dm 755 arl_run.ars $pkgdir/usr/share/$pkgbase/$pkg1.arl_run.ars
+
+  # pkg2
+  cd $srcdir/${pkg2}_linux/
+  install -Dm 755 ${pkg2}_readme.txt $pkgdir/usr/share/$pkgbase/${pkg2}_readme.txt
+  install -Dm 755 arl_run.ars $pkgdir/usr/share/$pkgbase/$pkg2.arl_run.ars
 }

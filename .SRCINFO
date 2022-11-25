@@ -1,19 +1,20 @@
 pkgbase = arlequin
 	pkgdesc = An Integrated Software for Population Genetics Data Analysis
 	pkgver = 3.5.2.2
-	pkgrel = 1
-	url = http://www.cmpg.unibe.ch/software/arlequin35/
-	arch = any
+	pkgrel = 0
+	url = http://cmpg.unibe.ch/software/arlequin3522
+	arch = x86_64
 	license = custom
-	depends = wine
-	depends = wine_gecko
-	depends = wine-mono
-	source = http://www.cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip
-	source = arlequin.desktop
-	source = arlequin.png
-	md5sums = 545409c0e59e5be6687b6c7f122e58b4
-	md5sums = 0973863b9050f2702d6ab443bc276aab
-	md5sums = 230b156c7c8398218177a31b3db3cb12
+	depends = glibc
+	source = http://cmpg.unibe.ch/software/arlequin3522/linux/arlecore_linux.zip
+	source = http://cmpg.unibe.ch/software/arlequin3522/linux/arlsumstat_linux.zip
+	source = http://cmpg.unibe.ch/software/arlequin3522/linux/Example%20files_linux.zip
+	sha256sums = 79d7ce0c126c32f88a66290aabd29e0b2e5b2d8c46cbcf02ef95ac7cbb91ead8
+	sha256sums = 709590b42d1ad5060cce4d90debe4ef2b9c0d1986f3d8dffd80c7b694d0ff454
+	sha256sums = 58e76d888ff2f4631df2ac482dd1e3c44cda389f9c31f7512993a852610cd985
 
-pkgname = arlequin
+pkgname = arlecore
 
+pkgname = arlsumstat
+
+pkgname = arlequin-extra
