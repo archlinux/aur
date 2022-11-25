@@ -1,17 +1,18 @@
-# Maintainer: Julien Savard <juju2143@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Julien Savard <juju2143@gmail.com>
 
 pkgname=supersonicball
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The crazy ball tunnel game"
 arch=('any')
-url="http://julosoft.net/supersonicball/"
-license=('GPL')
+url="https://github.com/juju2143/supersonicball"
+license=('GPL3')
 depends=('love')
 makedepends=('unzip')
 source=(${pkgname}.sh
         ${pkgname}.desktop
-        http://files.julosoft.net/${pkgname}-${pkgver}.love)
+				https://github.com/juju2143/supersonicball/releases/download/${pkgver}/${pkgname}-${pkgver}.love)
 sha1sums=('4515bad415633fce6174e54a871454c26af1848b'
           '1683f7d1827a28eefc8ff311e8bf59630a4837fc'
           '040f1c841e6147cfc7dfbb37e2494b2933549cfe')
