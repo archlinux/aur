@@ -1,6 +1,6 @@
 # Maintainer: Ludvík Pelán <lpelan@email.cz>
 pkgname=jami-all-bin
-pkgver=20221122.1304.2dc8-1
+pkgver=20221122.1304.2dc8
 pkgrel=1
 pkgdesc="Free and universal communication platform which preserves the users’ privacy and freedoms"
 arch=('x86_64')
