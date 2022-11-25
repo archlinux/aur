@@ -1,0 +1,4 @@
+webdataset-*.tar.gz
+python-webdataset-*-any.pkg.tar.zst
+src/
+pkg/
