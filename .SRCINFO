@@ -1,9 +1,10 @@
 pkgbase = lziprecover
 	pkgdesc = A data recovery tool and decompressor for files in the lzip compressed data format
 	pkgver = 1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/lzip/lziprecover.html
 	arch = x86_64
+	arch = i686
 	license = GPL
 	source = https://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.23.tar.gz
 	source = https://download.savannah.gnu.org/releases/lzip/lziprecover/lziprecover-1.23.tar.gz.sig
