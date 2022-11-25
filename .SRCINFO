@@ -1,0 +1,15 @@
+pkgbase = python-cylp
+	pkgdesc = A Python interface to CLP, CBC, and CGL to solve LPs and MIPs
+	pkgver = 0.91.5
+	pkgrel = 1
+	url = https://github.com/coin-or/CyLP
+	arch = x86_64
+	license = EPL
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python-scipy
+	depends = coin-or-cbc
+	source = https://github.com/coin-or/CyLP/releases/download/v0.91.5/cylp-0.91.5.tar.gz
+	sha256sums = d68ab1dde125be60abf45c8fd9edd24ab880c8144ad881718ddfa01ff6674c77
+
+pkgname = python-cylp
