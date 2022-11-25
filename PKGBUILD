@@ -2,21 +2,21 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-mach64
-pkgver=6.9.6
-pkgrel=2
+pkgver=6.9.7
+pkgrel=1
 pkgdesc="X.org mach64 video driver"
 arch=(i686 x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION>=23' 'X-ABI-VIDEODRV_VERSION<25')
-conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=25')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION>=23' 'X-ABI-VIDEODRV_VERSION<26')
+conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=26')
 optdepends=('mach64-dri: DRI1 support from community repo'
             'mach64drm: Mach64 DRM module')
 groups=('xorg-drivers')
 options=('!emptydirs' '!libtool')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('7a0707c71bb522430f83bb5e9d9ee697e661e35534a3a2d10834f86b327a3c9c')
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('50d78abffa7c8227e6f187976f23a244ae2095e97f08de275529b70fba9481ba')
 
 build() {
   cd ${pkgname}-${pkgver}
