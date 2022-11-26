@@ -4,23 +4,24 @@ _pkgname=SeuratObject
 _pkgver=4.1.3
 pkgname=r-${_pkgname,,}
 pkgver=4.1.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Data Structures for Single Cell Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
-  r-rcpp
-  r-rcppeigen
-  r-rlang
   r-future
   r-future.apply
   r-progressr
+  r-rcpp
+  r-rcppeigen
+  r-rlang
   r-sp
-  r-rgeos
 )
 optdepends=(
+  r-ggplot2
+  r-rgeos
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
