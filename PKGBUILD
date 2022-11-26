@@ -4,7 +4,7 @@ _pkgname=MSstatsLiP
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=3
 pkgdesc='LiP Significance Analysis in shotgun mass spectrometry-based proteomic experiments'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,6 +33,7 @@ depends=(
 optdepends=(
   r-biocstyle
   r-covr
+  r-gghighlight
   r-knitr
   r-rmarkdown
   r-tinytest
