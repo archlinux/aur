@@ -1,6 +1,6 @@
 pkgbase = money
 	pkgdesc = A personal finance manager
-	pkgver = 2022.10.0
+	pkgver = 2022.11.1
 	pkgrel = 1
 	url = https://github.com/nlogozzo/NickvisionMoney
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = money
 	makedepends = meson
 	makedepends = gcc
 	makedepends = cmake
+	makedepends = boost
 	depends = gtk4>=4.8.0
 	depends = libadwaita>=1.2.0
 	depends = jsoncpp
 	depends = sqlitecpp
-	depends = boost
-	source = money::git+https://github.com/nlogozzo/NickvisionMoney#commit=a9181a48b0fa333de79a4f1e856471b0d7fef209
+	source = money::git+https://github.com/nlogozzo/NickvisionMoney#commit=02e8ab5e9422e7690522ed496d6412e886488f0b
 	sha256sums = SKIP
 
 pkgname = money
