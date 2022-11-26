@@ -4,22 +4,22 @@ _pkgname=EnhancedVolcano
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Publication-ready volcano plots with enhanced colouring and labeling'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-ggalt
   r-ggplot2
-  r-ggrastr
   r-ggrepel
 )
 optdepends=(
   r-airway
   r-biocgenerics
   r-deseq2
+  r-ggalt
+  r-ggrastr
   r-gridextra
   r-knitr
   r-magrittr
