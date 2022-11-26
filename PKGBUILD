@@ -4,7 +4,7 @@ _pkgname=RTCGA
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=1
+pkgrel=3
 pkgdesc='The Cancer Genome Atlas Data Integration'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -42,7 +42,6 @@ optdepends=(
   r-rtcga.mirnaseq
   r-rtcga.mrna
   r-rtcga.mutations
-  r-rtcga.pancan12
   r-rtcga.rnaseq
   r-rtcga.rppa
   r-s4vectors
