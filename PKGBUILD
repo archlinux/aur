@@ -5,7 +5,7 @@ _pkgname=seqbias
 _pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=1.46.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Estimation of per-position bias in high-throughput sequencing data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   r-biostrings
   r-genomicranges
   r-rhtslib
+  r-zlibbioc
 )
 optdepends=(
   r-ggplot2
