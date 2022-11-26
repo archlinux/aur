@@ -4,14 +4,13 @@ _pkgname=NCmisc
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Miscellaneous Functions for Creating Adaptive Functions and Scripts'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-proftools
 )
 optdepends=(
   r-kernsmooth
