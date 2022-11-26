@@ -4,7 +4,7 @@ _pkgname=gwascat
 _pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=2.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='representing and modeling data in the EMBL-EBI GWAS catalog'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,11 +28,11 @@ optdepends=(
   r-biocstyle
   r-delayedarray
   r-do.db
+  r-dplyr
   r-dt
   r-ggbio
   r-graph
   r-gviz
-  r-iranges
   r-knitr
   r-org.hs.eg.db
   r-rbgl
