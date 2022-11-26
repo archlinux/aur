@@ -11,7 +11,7 @@ pkgbase = binge
 	depends = libxss
 	depends = git
 	conflicts = binge-bin
-	source = git+https://gitlab.com/binge-desktop/application.git
+	source = https://gitlab.com/binge-desktop/application/-/archive/1.0.3-2/application-1.0.3-2.tar.bz2
 	sha256sums = SKIP
 
 pkgname = binge
