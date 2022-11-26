@@ -7,7 +7,7 @@ _pkgname=covr
 _pkgver=3.6.1
 pkgname=r-${_pkgname,,}
 pkgver=3.6.1
-pkgrel=3
+pkgrel=5
 pkgdesc='Test Coverage for Packages'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,6 +23,7 @@ depends=(
   r-yaml
 )
 optdepends=(
+  r-covr
   r-curl
   r-dt
   r-htmltools
