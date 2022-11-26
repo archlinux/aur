@@ -4,7 +4,7 @@ _pkgname=ggtree
 _pkgver=3.6.2
 pkgname=r-${_pkgname,,}
 pkgver=3.6.2
-pkgrel=1
+pkgrel=3
 pkgdesc='an R package for visualization of tree and annotation data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-ape
   r-aplot
+  r-cli
   r-dplyr
   r-ggfun
   r-ggplot2
@@ -29,11 +30,12 @@ optdepends=(
   r-emojifont
   r-ggimage
   r-ggplotify
+  r-glue
   r-grdevices
   r-knitr
   r-prettydoc
   r-rmarkdown
-  r-stats
+  r-shadowtext
   r-testthat
   r-tibble
 )
