@@ -4,7 +4,7 @@ _pkgname=babelgene
 _pkgver=22.9
 pkgname=r-${_pkgname,,}
 pkgver=22.9
-pkgrel=1
+pkgrel=3
 pkgdesc='Gene Orthologs for Model Organisms in a Tidy Data Format'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,6 @@ depends=(
   r
   r-dplyr
   r-rlang
-  r-vctrs
 )
 optdepends=(
   r-covr
