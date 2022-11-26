@@ -4,7 +4,7 @@ _pkgname=corncob
 _pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Count Regression for Correlated Observations with the Beta-Binomial'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-numderiv
   r-optimr
   r-phyloseq
-  r-rmutil
   r-scales
   r-trust
   r-vgam
@@ -29,6 +28,7 @@ optdepends=(
   r-limma
   r-r.rsp
   r-rmarkdown
+  r-slam
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
