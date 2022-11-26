@@ -4,7 +4,7 @@ _pkgname=BiocCheck
 _pkgver=1.34.2
 pkgname=r-${_pkgname,,}
 pkgver=1.34.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Bioconductor-specific package checks'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,16 +16,17 @@ depends=(
   r-graph
   r-httr
   r-knitr
-  r-optparse
   r-stringdist
 )
 optdepends=(
   r-biobase
   r-biocgenerics
   r-biocstyle
+  r-callr
   r-codetoolsbioc
   r-devtools
-  r-rjsonio
+  r-downloader
+  r-jsonlite
   r-rmarkdown
   r-runit
   r-usethis
