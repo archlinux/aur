@@ -4,7 +4,7 @@ _pkgname=spatstat.utils
 _pkgver=3.0-1
 pkgname=r-${_pkgname,,}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Utility Functions for 'spatstat'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 optdepends=(
-  r-spatstat.core
+  r-spatstat.model
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('cba1c7806564fd9145ca15edf77233d6ba5609f0989f7812221f5fc1ece0b91a')
