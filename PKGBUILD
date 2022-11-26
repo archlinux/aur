@@ -5,7 +5,7 @@ _pkgname=MOFA2
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Multi-Omics Factor Analysis v2'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -40,6 +40,7 @@ optdepends=(
   r-ggpubr
   r-ggrastr
   r-knitr
+  r-markdown
   r-matrix
   r-multiassayexperiment
   r-mvtnorm

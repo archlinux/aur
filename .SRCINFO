@@ -1,7 +1,7 @@
 pkgbase = r-mofa2
 	pkgdesc = Multi-Omics Factor Analysis v2
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MOFA2
 	arch = x86_64
 	license = GPL
@@ -32,6 +32,7 @@ pkgbase = r-mofa2
 	optdepends = r-ggpubr
 	optdepends = r-ggrastr
 	optdepends = r-knitr
+	optdepends = r-markdown
 	optdepends = r-matrix
 	optdepends = r-multiassayexperiment
 	optdepends = r-mvtnorm
