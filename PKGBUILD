@@ -4,14 +4,14 @@
 _pkgname=hadolint
 pkgname=hadolint-git
 pkgver=2.12.1.beta.r4.ge12f4fa
-pkgrel=1
+pkgrel=2
 pkgdesc='Dockerfile linter, validate inline bash'
 url='https://github.com/hadolint/hadolint'
 license=('GPL')
 source=('git+https://github.com/hadolint/hadolint.git'
         'stack.yaml')
 sha256sums=('SKIP'
-            'b48e1b7264197c61e79cbd0225cc2ddb924afd62f6444745e33da834e9e7ff5d')
+            'b020b3c470ba3f16bc7f513e82409ea9e7b5964f0f385d67c7fb6f44be8b4806')
 arch=('any')
 makedepends=('git' 'stack')
 provides=('hadolint')
