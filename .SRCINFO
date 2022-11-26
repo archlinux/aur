@@ -1,23 +1,19 @@
 pkgbase = r-styler
 	pkgdesc = Non-Invasive Pretty Printing of R Code
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=styler
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-backports
 	depends = r-cli
-	depends = r-glue
 	depends = r-magrittr
 	depends = r-purrr
 	depends = r-r.cache
-	depends = r-rematch2
 	depends = r-rlang
 	depends = r-rprojroot
-	depends = r-tibble
+	depends = r-vctrs
 	depends = r-withr
-	depends = r-xfun
 	optdepends = r-data.tree
 	optdepends = r-digest
 	optdepends = r-dplyr
@@ -28,6 +24,7 @@ pkgbase = r-styler
 	optdepends = r-roxygen2
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
+	optdepends = r-tibble
 	source = https://cran.r-project.org/src/contrib/styler_1.8.1.tar.gz
 	sha256sums = 15505fa85f0aa2902bc8af3f00b2aeb205d41a92b77bffbd176d657753ee81e9
 

@@ -4,25 +4,21 @@ _pkgname=styler
 _pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Non-Invasive Pretty Printing of R Code'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
-  r-backports
   r-cli
-  r-glue
   r-magrittr
   r-purrr
   r-r.cache
-  r-rematch2
   r-rlang
   r-rprojroot
-  r-tibble
+  r-vctrs
   r-withr
-  r-xfun
 )
 optdepends=(
   r-data.tree
@@ -35,6 +31,7 @@ optdepends=(
   r-roxygen2
   r-rstudioapi
   r-testthat
+  r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('15505fa85f0aa2902bc8af3f00b2aeb205d41a92b77bffbd176d657753ee81e9')
