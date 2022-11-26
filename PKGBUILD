@@ -2,11 +2,11 @@
 # Maintainer: oscareczek <at gmail dot com>
 
 _pkgname=86Box
-_build=b4032
+_build=b4311
 
 pkgname=86box-appimage
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.11
+pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
@@ -21,10 +21,10 @@ source_pentium4=("${_pkgname}-${pkgver}-pentium4.appimage::${_source}-Linux-x86-
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_arm7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
-sha512sums_pentium4=('0fae69d5415bb792e0153fb4e8f641ad1f135abdac49edb09ae34b8218f861561dd5719ef0e87d08a72317f54c3b2f0305d2810cc8de616593b924b2d247cbaf')
-sha512sums_x86_64=('3849f5f61e0780aa06d645c5a5f1c3b1704659613644de6371dbec66a37973ec554083d990a7ad1f47c84716108fbdf6eab436c0a7eb0266ec9b6535ddd84c87')
-sha512sums_arm7h=('edc754d6d9eb99c2565f9594fe17816ce8b1c9e98084c073eb6cac27a64474fdd42a42c2c6c7d820d9ae96b557f60d86471ca77af4f8c61ce9d465212421a0af')
-sha512sums_aarch64=('f8e41834f00e78520c51d51d69b6d9cfd8ad69cbb14320408944eb88e978d93ed122b9d3b3ec2b8dfd3bbaab3938d61ab87d1178a5bf8b6bf203e26d32784663')
+sha512sums_pentium4=('e5466ded0d3f52de662fe0e42ee40cace6ab3f3b3b6d894b58f868bf31cbb5491256d44b2212880fde8a769a08cd86452080cbdbc4c1d31b8e8a483790f255cf')
+sha512sums_x86_64=('8f59221a010d5d034331d721f70d10147d0f191841725e8fcabb3174ac8062432894c61df0c0563abccb8a89ce11334faac09a729a6934a46194612ceb4c01ca')
+sha512sums_arm7h=('c64aea21bb6a43465d5e0d839aa1d115307bc111522f3f99b18bc98bcaeaca400daee698eae4f4562ba261714b0e7faf065e7cedb2a655056c864350bad2160d')
+sha512sums_aarch64=('50ff1e76af00a86551153828cf716baf609fb2aae3961f13132c7cf6c5416c6bb3d4c7457387ddbfe9161d8f8ae5c34e4d7210f43912f57f38a34cd5c3d2b839')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.appimage"
@@ -47,9 +47,7 @@ package() {
             -t "${pkgdir}/usr/share/applications"
 
     # Icon images
-    for i in 48x48 64x64 72x72 96x96 128x128 192x192 256x256 512x512; do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
-    done
+    cp -R "${srcdir}/squashfs-root/usr/share/icons" "$pkgdir/usr/share"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
