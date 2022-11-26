@@ -4,7 +4,7 @@ _pkgname=rms
 _pkgver=6.3-0
 pkgname=r-${_pkgname,,}
 pkgver=6.3.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Regression Modeling Strategies'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,9 +25,11 @@ optdepends=(
   r-boot
   r-knitr
   r-mice
+  r-nnet
   r-plotly
   r-rmsb
   r-tcltk
+  r-vgam
 )
 makedepends=(
   gcc-fortran
