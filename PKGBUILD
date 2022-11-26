@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Adrià Arrufat <swiftscythe@gmail.com>
 # Contributor: Mark Lee <mark@markelee.com>
 
 pkgname=mediastreamer
-pkgver=5.1.67
+pkgver=5.1.71
 pkgrel=1
 pkgdesc='A library written in C that allows you to create and run audio and video streams'
 arch=(x86_64)
@@ -15,9 +15,8 @@ depends=(ortp ffmpeg bzrtp glew libsrtp bcg729)
 makedepends=(cmake python bcunit doxygen libyuv)
 source=(https://gitlab.linphone.org/BC/public/${pkgname}2/-/archive/$pkgver/${pkgname}2-$pkgver.tar.bz2
         ffmpeg5.patch)
-sha256sums=('aca02aa0519afe64fad83cf520eeb6da98e78878467cf486963f1bcddaf5a45d'
+sha256sums=('55952350549e0b34aa5d4f56df46d0113f3e540418c4f2bf296f50352c6bb276'
             'e97e029cbbafe5245eaa6f92664224e4381eea5f45e403d5bfa6b0e5c2be0341')
-validpgpkeys=('9774BC1725758EB16D639F8B3ECD52DEE2F56985')
 
 prepare() {
   patch -d ${pkgname}2-$pkgver -p1 < ffmpeg5.patch
@@ -27,7 +26,8 @@ build() {
   cmake -B build -S ${pkgname}2-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_STATIC=OFF \
-    -DENABLE_STRICT=OFF
+    -DENABLE_STRICT=OFF \
+    -DENABLE_UNIT_TESTS=OFF
   cmake --build build
 }
 
