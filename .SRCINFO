@@ -1,20 +1,19 @@
 pkgbase = gomuks-bin
 	pkgdesc = Terminal Matrix client written in Go
-	pkgver = 0.2.4
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/tulir/gomuks
 	arch = x86_64
 	arch = arm
 	arch = aarch64
 	license = AGPL3
-	depends = libolm
 	provides = gomuks
 	conflicts = gomuks
-	source_x86_64 = gomuks-bin-0.2.4-x86_64::https://github.com/tulir/gomuks/releases/download/v0.2.4/gomuks-linux-amd64
-	sha256sums_x86_64 = 1a5d92b6aea0d34afec8cc83f016334e944c15f311064e209a386c46fb2c60a0
-	source_arm = gomuks-bin-0.2.4-arm::https://github.com/tulir/gomuks/releases/download/v0.2.4/gomuks-linux-arm
-	sha256sums_arm = a4039cf1bf563c47f1549a08b5dbca334dd3d436449b59118fb2ac5330c1ed5e
-	source_aarch64 = gomuks-bin-0.2.4-aarch64::https://github.com/tulir/gomuks/releases/download/v0.2.4/gomuks-linux-arm64
-	sha256sums_aarch64 = 5f374eaa0c0249d97b4e9d6f0a2e4c0cb9370ecfa67b8d802adb3c72831ca872
+	source_x86_64 = gomuks-bin-0.3.0-x86_64::https://github.com/tulir/gomuks/releases/download/v0.3.0/gomuks-linux-amd64
+	sha256sums_x86_64 = 3e35b4ad0e3acbb634152a45dd6cdede8ec4da8659ec1b7c3f269a64f5dfeb56
+	source_arm = gomuks-bin-0.3.0-arm::https://github.com/tulir/gomuks/releases/download/v0.3.0/gomuks-linux-arm
+	sha256sums_arm = be3006e5a6e0de31220d36748d34b5d90b168cb2d0a4018d0fd677f2c6584fa8
+	source_aarch64 = gomuks-bin-0.3.0-aarch64::https://github.com/tulir/gomuks/releases/download/v0.3.0/gomuks-linux-arm64
+	sha256sums_aarch64 = 02a303a669ffda68545896e8804c8ee3abd9775abbac26850268b136e3f17ed2
 
 pkgname = gomuks-bin
