@@ -1,13 +1,12 @@
 pkgbase = r-ggridges
 	pkgdesc = Ridgeline Plots in 'ggplot2'
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggridges
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-ggplot2
-	depends = r-plyr
 	depends = r-scales
 	depends = r-withr
 	optdepends = r-covr
