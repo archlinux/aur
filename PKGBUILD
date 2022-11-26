@@ -5,7 +5,7 @@ _pkgname=DataVisualizations
 _pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=1.2.3
-pkgrel=3
+pkgrel=6
 pkgdesc='Visualizations of High-Dimensional Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,6 +31,7 @@ optdepends=(
   r-ggrepel
   r-htmlwidgets
   r-knitr
+  r-mass
   r-mba
   r-moments
   r-paralleldist

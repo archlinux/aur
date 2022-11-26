@@ -1,7 +1,7 @@
 pkgbase = r-datavisualizations
 	pkgdesc = Visualizations of High-Dimensional Data
 	pkgver = 1.2.3
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=DataVisualizations
 	arch = x86_64
 	license = GPL
@@ -23,6 +23,7 @@ pkgbase = r-datavisualizations
 	optdepends = r-ggrepel
 	optdepends = r-htmlwidgets
 	optdepends = r-knitr
+	optdepends = r-mass
 	optdepends = r-mba
 	optdepends = r-moments
 	optdepends = r-paralleldist
