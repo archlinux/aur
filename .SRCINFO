@@ -1,7 +1,7 @@
 pkgbase = r-genvisr
 	pkgdesc = Genomic Visualizations in R
 	pkgver = 1.29.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GenVisR
 	arch = any
 	license = GPL
@@ -13,7 +13,6 @@ pkgbase = r-genvisr
 	depends = r-bsgenome
 	depends = r-data.table
 	depends = r-dbi
-	depends = r-ffield
 	depends = r-genomeinfodb
 	depends = r-genomicfeatures
 	depends = r-genomicranges

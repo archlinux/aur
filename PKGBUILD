@@ -4,7 +4,7 @@ _pkgname=GenVisR
 _pkgver=1.29.3
 pkgname=r-${_pkgname,,}
 pkgver=1.29.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Genomic Visualizations in R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-bsgenome
   r-data.table
   r-dbi
-  r-ffield
   r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
