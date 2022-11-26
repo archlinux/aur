@@ -1,7 +1,7 @@
 pkgbase = r-car
 	pkgdesc = Companion to Applied Regression
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=car
 	arch = any
 	license = GPL
@@ -9,9 +9,9 @@ pkgbase = r-car
 	depends = r-abind
 	depends = r-cardata
 	depends = r-lme4
-	depends = r-maptools
 	depends = r-pbkrtest
 	depends = r-quantreg
+	depends = r-scales
 	optdepends = r-alr4
 	optdepends = r-boot
 	optdepends = r-coxme
@@ -21,6 +21,7 @@ pkgbase = r-car
 	optdepends = r-lmtest
 	optdepends = r-matrix
 	optdepends = r-matrixmodels
+	optdepends = r-mvtnorm
 	optdepends = r-rgl
 	optdepends = r-rio
 	optdepends = r-sandwich
