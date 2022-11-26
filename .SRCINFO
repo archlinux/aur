@@ -1,13 +1,14 @@
 pkgbase = r-ggdendro
 	pkgdesc = Create Dendrograms and Tree Diagrams Using 'ggplot2'
 	pkgver = 0.1.23
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=ggdendro
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-ggplot2
 	optdepends = r-cluster
+	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-rpart
