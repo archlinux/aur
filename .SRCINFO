@@ -1,0 +1,13 @@
+pkgbase = lexurgy
+	pkgdesc = Simulates historical changes in spoken languages by applying regular rules to a list of words
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/def-gthill/lexurgy
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = bash
+	source = https://github.com/def-gthill/lexurgy/releases/download/v1.1.4/lexurgy-1.1.4.tar
+	sha256sums = a10ccfec3c5c4762efd7978309785328a5aa1408c90c5d44274c3e73403d34d5
+
+pkgname = lexurgy
