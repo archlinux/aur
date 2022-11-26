@@ -4,7 +4,7 @@ _pkgname=rsample
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc='General Resampling Infrastructure'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,8 @@ depends=(
   r-ellipsis
   r-furrr
   r-generics
-  r-lifecycle
+  r-glue
+  r-pillar
   r-purrr
   r-rlang
   r-slider
@@ -35,6 +36,8 @@ optdepends=(
   r-stats
   r-testthat
   r-utils
+  r-whisker
+  r-withr
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
