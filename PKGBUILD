@@ -4,7 +4,7 @@ _pkgname=densityClust
 _pkgver=0.3.2
 pkgname=r-${_pkgname,,}
 pkgver=0.3.2
-pkgrel=3
+pkgrel=6
 pkgdesc='Clustering by Fast Search and Find of Density Peaks'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
   r-rtsne
 )
 optdepends=(
+  r-covr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
