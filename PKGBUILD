@@ -103,7 +103,7 @@ prepare() {
 		git config submodule.$full_repo_path.url $srcdir/$clone
 		pushd $repo_with_submodule > /dev/null
 			git config submodule.$full_repo_path.url $srcdir/$clone
-			git submodule update --init $submodule_path_within_repo
+			git -c protocol.file.allow=always submodule update --init $submodule_path_within_repo
 		popd > /dev/null
 	done
 
