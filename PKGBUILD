@@ -1,10 +1,10 @@
 # Maintainer: Rafael Epplée <aur (at) rafa (dot) ee>
 pkgname=gonic
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight music streaming server which implements the Subsonic API'
 arch=('x86_64')
-depends=('alsa-lib' 'gcc-libs' 'sqlite' 'taglib')
+depends=('gcc-libs' 'sqlite' 'taglib')
 makedepends=('go' 'zlib')
 optdepends=('ffmpeg: on-the-fly audio transcoding and caching' 'mpv: jukebox mode')
 url='https://github.com/sentriz/gonic'
