@@ -4,7 +4,7 @@ _pkgname=coMET
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=1.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='coMET: visualisation of regional epigenome-wide association scan (EWAS) results and DNA co-methylation patterns'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-biomart
-  r-colortools
   r-corrplot
   r-genomicranges
   r-gridextra
@@ -28,6 +27,7 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-runit
+  r-showtext
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('cab1d8aca47736440f3d36a4150f08c6d3073524bc4e77618a55217df44b3945')
