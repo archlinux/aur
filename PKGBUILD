@@ -4,7 +4,7 @@ _pkgname=collections
 _pkgver=0.3.6
 pkgname=r-${_pkgname,,}
 pkgver=0.3.6
-pkgrel=1
+pkgrel=3
 pkgdesc='High Performance Container Data Types'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,6 @@ depends=(
   r
 )
 optdepends=(
-  r-covr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
