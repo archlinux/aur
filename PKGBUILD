@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustdesk/rustdesk/archi
 sha256sums=('e26ee7de1b788962e12940a1b46708b9576ee5ade9e935ef5fa1a3108601b055'
             'SKIP'
             'a1682fbf55e004f1862d6ace31b5220121d20906bdbf308d0a9237b451e4db86'
-            '830d3985e6292851cb33f703f58c1513a9162cca3ccd5ebf669ffe7b14637f3e'
+            'e45abd32fb87abe1289f20f5ce37ea6bfade50dbaf311ade68a319d96527e279'
             'ced3951b69cf32324b6b90f198281a1bd55e6d5308928c7ec47a6414de0a0b63'
             '04b2457a0eff7c82ec499a6f7a4e5474de054a93c1760bd91833a4aef5c881a9')
 build() {
