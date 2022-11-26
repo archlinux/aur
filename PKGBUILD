@@ -4,7 +4,7 @@ _pkgname=insight
 _pkgver=0.18.8
 pkgname=r-${_pkgname,,}
 pkgver=0.18.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Easy Access to Model Information for Various Model Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -56,17 +56,23 @@ optdepends=(
   r-jm
   r-knitr
   r-lavaan
+  r-lavasearch2
   r-lfe
   r-lme4
+  r-lmertest
   r-lmtest
   r-logistf
+  r-logitr
+  r-marginaleffects
   r-mass
   r-matrix
+  r-mclogit
   r-mclust
   r-mcmcglmm
   r-mertools
   r-metabma
   r-mgcv
+  r-mhurdle
   r-mice
   r-mlogit
   r-multgee
@@ -77,6 +83,7 @@ optdepends=(
   r-panelr
   r-parameters
   r-parsnip
+  r-pbkrtest
   r-performance
   r-plm
   r-poorman
@@ -92,14 +99,13 @@ optdepends=(
   r-rstudioapi
   r-sandwich
   r-speedglm
-  r-spelling
   r-splines
   r-statmod
   r-survey
   r-survival
   r-testthat
-  r-tripack
   r-truncreg
+  r-tweedie
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
