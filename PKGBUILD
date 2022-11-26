@@ -4,7 +4,7 @@ _pkgname=ldblock
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=1
+pkgrel=3
 pkgdesc='data structures for linkage disequilibrium measures in populations'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,21 +12,22 @@ license=('Artistic2.0')
 depends=(
   r
   r-biocgenerics
+  r-httr
+  r-rlang
+)
+optdepends=(
+  r-biocstyle
   r-ensdb.hsapiens.v75
   r-ensembldb
   r-genomeinfodb
   r-genomicfiles
-  r-httr
-  r-rsamtools
-  r-snpstats
-  r-variantannotation
-)
-optdepends=(
-  r-biocstyle
   r-gwascat
   r-knitr
   r-rmarkdown
+  r-rsamtools
   r-runit
+  r-snpstats
+  r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d63071f99ac30ff67702623d91249c84d563b14356f8e16e2bee00711d271b45')
