@@ -4,7 +4,7 @@ _pkgname=Seurat
 _pkgver=4.3.0
 pkgname=r-${_pkgname,,}
 pkgver=4.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Single Cell Genomics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,6 +31,7 @@ depends=(
   r-pbapply
   r-plotly
   r-png
+  r-progressr
   r-rann
   r-rcolorbrewer
   r-rcpp
@@ -46,7 +47,6 @@ depends=(
   r-sctransform
   r-seuratobject
   r-shiny
-  r-spatstat.core
   r-spatstat.explore
   r-spatstat.geom
   r-tibble
@@ -56,6 +56,7 @@ optdepends=(
   r-ape
   r-biobase
   r-biocgenerics
+  r-data.table
   r-deseq2
   r-enrichr
   r-genomeinfodb
@@ -68,6 +69,7 @@ optdepends=(
   r-metap
   r-mixtools
   r-monocle
+  r-r.utils
   r-rfast2
   r-rsvd
   r-rtracklayer
