@@ -4,7 +4,7 @@ _pkgname=ngsReports
 _pkgver=2.0.1
 pkgname=r-${_pkgname,,}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Load FastqQC reports and other NGS related files'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,11 +21,12 @@ depends=(
   r-ggplot2
   r-lifecycle
   r-lubridate
-  r-patchwork
   r-pander
+  r-patchwork
   r-plotly
   r-readr
   r-reshape2
+  r-rlang
   r-rmarkdown
   r-scales
   r-stringr
