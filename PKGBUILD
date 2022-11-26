@@ -4,7 +4,7 @@ _pkgname=InterMineR
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='R Interface with InterMine-Powered Databases'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,7 +26,6 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-geneanswers
   r-go.db
   r-gviz
   r-knitr

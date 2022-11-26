@@ -1,7 +1,7 @@
 pkgbase = r-interminer
 	pkgdesc = R Interface with InterMine-Powered Databases
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/InterMineR
 	arch = any
 	license = LGPL
@@ -19,7 +19,6 @@ pkgbase = r-interminer
 	depends = r-xml
 	depends = r-xml2
 	optdepends = r-biocstyle
-	optdepends = r-geneanswers
 	optdepends = r-go.db
 	optdepends = r-gviz
 	optdepends = r-knitr
