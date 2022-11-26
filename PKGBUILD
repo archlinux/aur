@@ -4,7 +4,7 @@ _pkgname=methylclock
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Methylclock - DNA methylation-based clocks'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,10 +19,12 @@ depends=(
   r-ggplot2
   r-ggpmisc
   r-ggpubr
+  r-gridextra
   r-impute
   r-methylclockdata
   r-minfi
   r-performanceanalytics
+  r-planet
   r-preprocesscore
   r-quadprog
   r-rcpp
@@ -30,7 +32,6 @@ depends=(
   r-tibble
   r-tidyr
   r-tidyverse
-  r-planet
 )
 optdepends=(
   r-biocstyle
