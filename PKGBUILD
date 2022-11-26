@@ -4,7 +4,7 @@ _pkgname=SCArray
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Large-scale single-cell RNA-seq data manipulation with GDS files'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,9 +21,11 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-hdf5array
   r-knitr
   r-markdown
   r-matrix
+  r-rhdf5
   r-rmarkdown
   r-runit
   r-scater
