@@ -1,5 +1,5 @@
 .encoding = "UTF-8"
-product.name = "VMware Workstation"
+product.name = "VMware Player"
 product.version = "16.2.4"
 product.buildNumber = "20089737"
 workstation.product.version = "16.2.4"
