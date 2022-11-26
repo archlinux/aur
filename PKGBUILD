@@ -4,7 +4,7 @@ _pkgname=edge
 _pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=2.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Extraction of Differential Gene Expression'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('MIT')
 depends=(
   r
   r-biobase
-  r-jackstraw
   r-qvalue
   r-snm
   r-sva
