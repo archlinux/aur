@@ -4,7 +4,7 @@ _pkgname=arules
 _pkgver=1.7-5
 pkgname=r-${_pkgname,,}
 pkgver=1.7.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Mining Association Rules and Frequent Itemsets'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ optdepends=(
   r-arulescba
   r-arulesviz
   r-pmml
+  r-proxy
   r-testthat
   r-xml
 )
