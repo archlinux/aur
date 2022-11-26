@@ -4,7 +4,7 @@ _pkgname=zellkonverter
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Conversion Between scRNA-seq Objects'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,16 +20,19 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-anndata
   r-biocfilecache
   r-biocstyle
   r-covr
   r-hdf5array
   r-knitr
+  r-pkgload
   r-rhdf5
   r-rmarkdown
   r-scrnaseq
   r-spelling
   r-testthat
+  r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('bed7c72324df7882816e594ccd8d6b84f5575999491c89a4ab5739e8a9d9242c')
