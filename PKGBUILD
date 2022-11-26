@@ -4,7 +4,7 @@ _pkgname=SigsPack
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Mutational Signature Estimation for Single Samples'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,9 +26,9 @@ makedepends=(
   tar
 )
 optdepends=(
-  r-iranges
-  r-bsgenome.hsapines.ucsc.hg19
   r-biocstyle
+  r-bsgenome.hsapiens.ucsc.hg19
+  r-iranges
   r-knitr
   r-rmarkdown
 )
