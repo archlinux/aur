@@ -4,13 +4,14 @@ _pkgname=miloR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential neighbourhood abundance testing on a graph'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-biocgenerics
   r-biocneighbors
   r-biocparallel
   r-biocsingular
@@ -44,11 +45,13 @@ optdepends=(
   r-magick
   r-mass
   r-mousegastrulationdata
+  r-mousethymusageing
   r-mvtnorm
   r-rcurl
   r-rmarkdown
   r-scater
   r-scran
+  r-scuttle
   r-testthat
   r-uwot
 )
