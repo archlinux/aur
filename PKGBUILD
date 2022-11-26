@@ -4,7 +4,7 @@ _pkgname=msPurity
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Automated Evaluation of Precursor Ion Purity for Mass Spectrometry Based Fragmentation in Metabolomics'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-fastcluster
   r-foreach
   r-ggplot2
-  r-jsonlite
   r-magrittr
   r-mzr
   r-plyr
@@ -26,7 +25,6 @@ depends=(
   r-reshape2
   r-rsqlite
   r-stringr
-  r-uuid
 )
 optdepends=(
   r-biocstyle
