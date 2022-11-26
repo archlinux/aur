@@ -4,10 +4,10 @@ _pkgname=FindMyFriends
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=2
+pkgrel=5
 pkgdesc='Microbial Comparative Genomics in R'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/${_pkgname}"
 license=('GPL')
 depends=(
   r

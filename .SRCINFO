@@ -1,8 +1,8 @@
 pkgbase = r-findmyfriends
 	pkgdesc = Microbial Comparative Genomics in R
 	pkgver = 1.24.0
-	pkgrel = 2
-	url = https://bioconductor.org/packages/FindMyFriends
+	pkgrel = 5
+	url = https://bioconductor.org/packages/3.14/FindMyFriends
 	arch = x86_64
 	license = GPL
 	makedepends = git
