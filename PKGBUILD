@@ -4,7 +4,7 @@ _pkgname=TCGAbiolinks
 _pkgver=2.25.3
 pkgname=r-${_pkgname,,}
 pkgver=2.25.3
-pkgrel=1
+pkgrel=3
 pkgdesc='TCGAbiolinks: An R/Bioconductor package for integrative analysis with GDC data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -37,6 +37,7 @@ depends=(
 )
 optdepends=(
   r-affy
+  r-annotationhub
   r-biobase
   r-biocstyle
   r-c3net
@@ -49,6 +50,7 @@ optdepends=(
   r-doparallel
   r-edaseq
   r-edger
+  r-experimenthub
   r-genefilter
   r-ggrepel
   r-grid
@@ -65,6 +67,7 @@ optdepends=(
   r-rmarkdown
   r-scales
   r-sesame
+  r-seurat
   r-suprahex
   r-survival
   r-survminer
