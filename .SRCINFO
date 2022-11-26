@@ -1,7 +1,7 @@
 pkgbase = r-dexma
 	pkgdesc = Differential Expression Meta-Analysis
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/DExMA
 	arch = any
 	license = GPL
@@ -14,6 +14,7 @@ pkgbase = r-dexma
 	depends = r-limma
 	depends = r-pheatmap
 	depends = r-plyr
+	depends = r-rcolorbrewer
 	depends = r-scales
 	depends = r-snpstats
 	depends = r-sva

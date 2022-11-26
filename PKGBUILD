@@ -4,7 +4,7 @@ _pkgname=DExMA
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential Expression Meta-Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
   r-limma
   r-pheatmap
   r-plyr
+  r-rcolorbrewer
   r-scales
   r-snpstats
   r-sva
