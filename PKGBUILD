@@ -4,7 +4,7 @@ _pkgname=Spectra
 _pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Spectra Infrastructure for Mass Spectrometry Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,6 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
-  r-magrittr
   r-msdata
   r-mzr
   r-rhdf5

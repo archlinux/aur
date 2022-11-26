@@ -1,7 +1,7 @@
 pkgbase = r-spectra
 	pkgdesc = Spectra Infrastructure for Mass Spectrometry Data
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/Spectra
 	arch = any
 	license = Artistic2.0
@@ -15,7 +15,6 @@ pkgbase = r-spectra
 	depends = r-s4vectors
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	optdepends = r-magrittr
 	optdepends = r-msdata
 	optdepends = r-mzr
 	optdepends = r-rhdf5
