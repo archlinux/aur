@@ -1,12 +1,15 @@
 pkgbase = r-forcats
 	pkgdesc = Tools for Working with Categorical Variables (Factors)
 	pkgver = 0.5.2
-	pkgrel = 3
+	pkgrel = 5
 	url = https://cran.r-project.org/package=forcats
 	arch = any
 	license = MIT
 	depends = r
+	depends = r-cli
 	depends = r-ellipsis
+	depends = r-glue
+	depends = r-lifecycle
 	depends = r-magrittr
 	depends = r-rlang
 	depends = r-tibble
