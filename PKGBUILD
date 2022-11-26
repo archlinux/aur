@@ -4,7 +4,7 @@ _pkgname=RNOmni
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Rank Normal Transformation Omnibus Test'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,8 @@ depends=(
 )
 optdepends=(
   r-r.rsp
+  r-testthat
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('86d6240ace51b9f34d319fc7b16c994c6e48a7bce3bb28946eaaa588ae238755')
