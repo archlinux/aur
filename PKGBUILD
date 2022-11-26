@@ -4,53 +4,57 @@ _pkgname=AlpsNMR
 _pkgver=4.0.2
 pkgname=r-${_pkgname,,}
 pkgver=4.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Automated spectraL Processing System for NMR'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
   r
-  r-assertthat
   r-baseline
   r-biocparallel
   r-dplyr
   r-fs
-  r-furrr
   r-future
-  r-ggally
+  r-generics
   r-ggplot2
-  r-ggrepel
   r-glue
   r-htmltools
   r-magrittr
   r-matrixstats
   r-mixomics
   r-pcapp
-  r-plyr
   r-purrr
   r-readxl
   r-reshape2
   r-rlang
   r-rmarkdown
-  r-s4vectors
+  r-scales
   r-signal
   r-speaq
   r-stringr
-  r-summarizedexperiment
   r-tibble
   r-tidyr
   r-tidyselect
   r-vctrs
-  r-writexl
-  r-zip
 )
 optdepends=(
+  r-biocstyle
   r-chemospec
+  r-cowplot
+  r-curl
   r-dt
+  r-ggally
+  r-ggrepel
+  r-gridextra
   r-knitr
   r-plotly
+  r-progressr
+  r-s4vectors
+  r-summarizedexperiment
   r-testthat
+  r-writexl
+  r-zip
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f41e5f7db7f55cdf91ad2781274965dfd4e959e5f2734cb42d9b3a440dc398f8')
