@@ -12,13 +12,13 @@ source=("git+${url}")
 md5sums=('SKIP')
 
 build() {
-	cd "gnome-zoomer"
-	gcc -Wall gnome-zoomer.c $(pkg-config --libs --cflags dconf) -o gnome-zoomer
+    cd "gnome-zoomer"
+    gcc -Wall gnome-zoomer.c $(pkg-config --libs --cflags dconf) -o gnome-zoomer
 }
 
 package() {
-	cd "gnome-zoomer"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "gnome-zoomer"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -D -m 0755 gnome-zoomer "${pkgdir}/usr/bin/gnome-zoomer"
+    install -D -m 0755 gnome-zoomer "${pkgdir}/usr/bin/gnome-zoomer"
 }
