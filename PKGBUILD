@@ -4,14 +4,13 @@ _pkgname=ontoProc
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='processing of ontologies of anatomy, cell lines, and so on'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
-  r-annotationdbi
   r-annotationhub
   r-biobase
   r-biocfilecache
@@ -28,6 +27,7 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-annotationdbi
   r-biocstyle
   r-celldex
   r-knitr
