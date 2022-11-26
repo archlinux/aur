@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-bin
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - binary version
-	pkgver = 1.33.1
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mongodb-compass-isolated-bin
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-isolated
 	conflicts = mongodb-compass-isolated
-	source = mongodb-compass-isolated-bin-1.33.1-1.rpm::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.33.1.x86_64.rpm
-	sha512sums = bde27eeafa53f06ab18b920300f293de3e8257f115cded00ff052ac1a30fa15d9125556fa6c257e46ef4ab6fa5470a5534bc8e576d8a9427fa2e9a6c5c12606f
+	source = mongodb-compass-isolated-bin-1.34.1-1.rpm::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.34.1.x86_64.rpm
+	sha512sums = 0d8bb3be799057ea5220269d48387af517774b606737b0041a762770e2b4e49372dcb87e1490353268ab91ff6f6317a4889c91390191869933cd14eb88c9872f
 
 pkgname = mongodb-compass-isolated-bin
