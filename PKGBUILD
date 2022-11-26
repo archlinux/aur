@@ -4,7 +4,7 @@ _pkgname=cola
 _pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=2.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A Framework for Consensus Partitioning'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -45,6 +45,7 @@ optdepends=(
   r-data.tree
   r-dendextend
   r-dose
+  r-e1071
   r-flexclust
   r-genefilter
   r-gplots
@@ -54,6 +55,7 @@ optdepends=(
   r-nmf
   r-pamr
   r-polychrome
+  r-randomforest
   r-reactomepa
   r-rmarkdown
   r-rtsne
