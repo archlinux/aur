@@ -1,6 +1,6 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Show system info, fork of neofetch."
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 checkdepends=('shellcheck')
 conflicts=("${pkgname}")
 source=("${_url}/storage/aur/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('40c459fd40b4e1f2cf6308af829b571fd62176fb8e4c2bf56cdaadcc43d8505b35c80634204d3c5a43876a05beea9afac3d6661ad54210a687bf2c661c297f2d')
+sha512sums=('5a756476686c5a1521e438ffd5ab4e6c272451bb059515ef58b2ff817e60b2cc7afd74ec11a4303941a06cd90bebf6d7ea8e2df307f7e5ffd51f0ad82dde180c')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
