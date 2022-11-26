@@ -1,7 +1,7 @@
 pkgbase = r-rmassbank
 	pkgdesc = Workflow to process tandem MS files and build MassBank records
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/RMassBank
 	arch = any
 	license = Artistic2.0
@@ -32,6 +32,7 @@ pkgbase = r-rmassbank
 	optdepends = r-camera
 	optdepends = r-gplots
 	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	optdepends = r-rmassbankdata
 	optdepends = r-runit
 	optdepends = r-xcms
