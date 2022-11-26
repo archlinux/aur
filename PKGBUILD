@@ -4,7 +4,7 @@ _pkgname=apcluster
 _pkgver=1.4.10
 pkgname=r-${_pkgname,,}
 pkgver=1.4.10
-pkgrel=1
+pkgrel=4
 pkgdesc='Affinity Propagation Clustering'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,8 +14,6 @@ depends=(
   r-rcpp
 )
 optdepends=(
-  r-biostrings
-  r-kebabs
   r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
