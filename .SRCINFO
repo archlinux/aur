@@ -1,13 +1,12 @@
 pkgbase = r-bayesfactor
 	pkgdesc = Computation of Bayes Factors for Common Designs
 	pkgver = 0.9.12.4.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=BayesFactor
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-coda
-	depends = r-gtools
 	depends = r-hypergeo
 	depends = r-matrixmodels
 	depends = r-mvtnorm
