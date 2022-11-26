@@ -1,7 +1,7 @@
 pkgbase = r-msigdbr
 	pkgdesc = MSigDB Gene Sets for Multiple Organisms in a Tidy Data Format
 	pkgver = 7.5.1
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=msigdbr
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = r-msigdbr
 	depends = r-rlang
 	depends = r-tibble
 	depends = r-tidyselect
-	depends = r-vctrs
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
