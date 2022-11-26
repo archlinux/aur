@@ -4,10 +4,10 @@ _pkgname=gramm4R
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=2
+pkgrel=6
 pkgdesc='Generalized correlation analysis and model construction strategy for metabolome and microbiome'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/${_pkgname}"
 license=('GPL')
 depends=(
   r

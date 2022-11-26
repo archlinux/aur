@@ -1,8 +1,8 @@
 pkgbase = r-gramm4r
 	pkgdesc = Generalized correlation analysis and model construction strategy for metabolome and microbiome
 	pkgver = 1.8.0
-	pkgrel = 2
-	url = https://bioconductor.org/packages/gramm4R
+	pkgrel = 6
+	url = https://bioconductor.org/packages/3.14/gramm4R
 	arch = any
 	license = GPL
 	makedepends = git
