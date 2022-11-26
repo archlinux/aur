@@ -1960,3 +1960,15 @@ Fri Nov 25 20:57:25 2022 +0100
     
     refactor(core: datatype): chaining classmethod descriptors (introduced in python 3.9) will be deprecated in 3.11
       https://docs.python.org/3.11/whatsnew/3.11.html#language-builtins
+
+
+Sat Nov 26 08:31:02 2022 +0100
+-------------------------------------------------
+1.14.2          Release 1.14.2
+    
+    Notable changes:
+     2022-11-26 0fed425 actionless fix(pkgbuild): remove prev built wheels before building a new one
+     2022-11-26 9c21455 actionless fix(build, config, core): remove runtime dependency on `typing_extensions`
+     2022-11-26 2bdb925 actionless fix(pprint: create_debug_logger): use `X is not None` except of `not X`
+     2022-11-26 a50ae21 actionless fix(main: OutputEncodingWrapper): reraise exception before stderr closes
+     2022-11-26 a8f3af6 actionless fix(InstallInfoFetcher: get_repo_pkgs_info): correctly determine if pkg already processed
