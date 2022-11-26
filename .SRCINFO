@@ -1,0 +1,16 @@
+pkgbase = msk
+	pkgdesc = A music synchronization CLI tool
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://codeberg.org/ivan.zaera/msk
+	install = install.sh
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = coreutils
+	makedepends = rust
+	depends = ffmpeg
+	depends = sox
+	source = msk-0.0.2.tar.gz::https://codeberg.org/ivan.zaera/msk/archive/0.0.2.tar.gz
+	sha256sums = 0dff205465272118432f76f526eb42fb3a61719548c455f4812645d2d861e0dd
+
+pkgname = msk
