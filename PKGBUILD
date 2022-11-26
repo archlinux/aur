@@ -4,13 +4,14 @@ _pkgname=ggstance
 _pkgver=0.3.6
 pkgname=r-${_pkgname,,}
 pkgver=0.3.6
-pkgrel=1
+pkgrel=3
 pkgdesc="Horizontal 'ggplot2' Components"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-cli
   r-ggplot2
   r-plyr
   r-rlang

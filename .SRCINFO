@@ -1,11 +1,12 @@
 pkgbase = r-ggstance
 	pkgdesc = Horizontal 'ggplot2' Components
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggstance
 	arch = any
 	license = GPL
 	depends = r
+	depends = r-cli
 	depends = r-ggplot2
 	depends = r-plyr
 	depends = r-rlang
