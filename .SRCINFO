@@ -1,14 +1,13 @@
 pkgbase = r-lhs
 	pkgdesc = Latin Hypercube Samples
 	pkgver = 1.1.5
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=lhs
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-rcpp
 	optdepends = r-assertthat
-	optdepends = r-covr
 	optdepends = r-doe.base
 	optdepends = r-knitr
 	optdepends = r-rmarkdown

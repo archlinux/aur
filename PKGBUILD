@@ -4,7 +4,7 @@ _pkgname=lhs
 _pkgver=1.1.5
 pkgname=r-${_pkgname,,}
 pkgver=1.1.5
-pkgrel=3
+pkgrel=6
 pkgdesc='Latin Hypercube Samples'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
 )
 optdepends=(
   r-assertthat
-  r-covr
   r-doe.base
   r-knitr
   r-rmarkdown
