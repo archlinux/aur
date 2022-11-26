@@ -4,9 +4,9 @@
 pkgname=vtun
 pkgver=3.0.3.2013.d
 _pkgver=3.0.3
-pkgrel=12
+pkgrel=13
 pkgdesc="The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support."
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="http://vtun.sourceforge.net/"
 license=('GPL')
 depends=('openssl-1.1' 'zlib' 'lzo')
@@ -59,7 +59,7 @@ prepare() {
     ; do
    patch -p1 -i "${srcdir}/$p" || exit 1
   done
-  [[ "$CARCH" =~ ^arm ]] && patch -p1 -i "${srcdir}/android-dev.patch"
+  [[ "$CARCH" =~ ^(arm|aarch) ]] && patch -p1 -i "${srcdir}/android-dev.patch"
   grep -v setproctitle configure.in > tmp
   mv tmp configure.in
   autoreconf -f
@@ -70,6 +70,7 @@ build() {
   export LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.1"
   cd "${srcdir}/${pkgname}-${_pkgver}"
   ./configure \
+    --build=$CHOST \
     --with-ssl-headers=/usr/include/openssl-1.1/openssl \
     --with-blowfish-headers=/usr/include/openssl-1.1/openssl \
     --prefix=/usr \

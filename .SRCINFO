@@ -1,13 +1,14 @@
 pkgbase = vtun
 	pkgdesc = The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support.
 	pkgver = 3.0.3.2013.d
-	pkgrel = 12
+	pkgrel = 13
 	url = http://vtun.sourceforge.net/
 	install = vtun.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = armv6h
+	arch = aarch64
 	license = GPL
 	depends = openssl-1.1
 	depends = zlib
