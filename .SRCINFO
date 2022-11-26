@@ -1,0 +1,11 @@
+pkgbase = ttf-y145m-2009
+	pkgdesc = ASME-Y14.5M-2009 Geometric Dimensioning and Tolerancing Font
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.wfonts.com/font/y14-5m-2009
+	arch = any
+	license = custom:USA Public Domain
+	source = https://www.wfonts.com/download/data/2016/04/25/y14-5m-2009/y14-5m-2009.zip
+	sha256sums = fd1e9ac2dcdbe6c09cf472f82347b0734d5d3a2c774892501700550eeca3d1c5
+
+pkgname = ttf-y145m-2009
