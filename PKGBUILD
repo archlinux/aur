@@ -4,7 +4,7 @@ _pkgname=MBQN
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Mean/Median-balanced quantile normalization'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,10 +18,9 @@ depends=(
   r-preprocesscore
   r-rappdirs
   r-rcurl
-  r-rpx
+  r-rmarkdown
   r-summarizedexperiment
   r-xml2
-  r-rmarkdown
 )
 optdepends=(
   r-knitr
