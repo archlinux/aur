@@ -4,13 +4,14 @@ _pkgname=enrichR
 _pkgver=3.1
 pkgname=r-${_pkgname,,}
 pkgver=3.1
-pkgrel=1
+pkgrel=4
 pkgdesc="Provides an R Interface to 'Enrichr'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-curl
   r-ggplot2
   r-httr
   r-rjson
