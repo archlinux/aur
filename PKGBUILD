@@ -4,7 +4,7 @@ _pkgname=mistyR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Multiview Intercellular SpaTial modeling framework'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,28 +24,29 @@ depends=(
   r-r.utils
   r-ranger
   r-readr
+  r-ridge
   r-rlang
   r-rlist
   r-stringr
   r-tibble
   r-tidyr
+  r-tidyselect
   r-withr
-  r-ridge
 )
 optdepends=(
   r-biocstyle
   r-covr
+  r-earth
   r-future
   r-igraph
+  r-iml
+  r-kernlab
   r-knitr
-  r-matrix
-  r-progeny
+  r-mass
   r-rmarkdown
-  r-sctransform
-  r-singlecellexperiment
-  r-spatialexperiment
-  r-summarizedexperiment
+  r-rsnns
   r-testthat
+  r-xgboost
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('25d38f81f8ee32247cd900b041074d2255e034c75f1f620c52ca86a6b8eedfbb')
