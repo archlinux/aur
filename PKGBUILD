@@ -4,7 +4,7 @@ _pkgname=MSstats
 _pkgver=4.6.0
 pkgname=r-${_pkgname,,}
 pkgver=4.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Protein Significance Analysis in DDA, SRM and DIA for Label-free or Label-based Proteomics Experiments'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,7 +29,6 @@ optdepends=(
   r-covr
   r-knitr
   r-markdown
-  r-msstatsbiodata
   r-rmarkdown
   r-tinytest
 )
