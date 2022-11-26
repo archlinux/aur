@@ -4,7 +4,7 @@ _pkgname=Rgin
 _pkgver=1.15.0
 pkgname=r-${_pkgname,,}
 pkgver=1.15.0
-pkgrel=4
+pkgrel=6
 pkgdesc='gin in R'
 arch=('x86_64')
 url="https://bioconductor.org/packages/3.15/${_pkgname}"
@@ -12,7 +12,6 @@ license=('MIT')
 depends=(
   r
   r-rcppeigen
-  r-rcpp
 )
 optdepends=(
   r-knitr
