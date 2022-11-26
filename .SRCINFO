@@ -1,7 +1,7 @@
 pkgbase = r-saigegds
 	pkgdesc = Scalable Implementation of Generalized mixed models using GDS files in Phenome-Wide Association Studies
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SAIGEgds
 	arch = x86_64
 	license = GPL
@@ -14,6 +14,7 @@ pkgbase = r-saigegds
 	depends = r-spatest
 	optdepends = r-biocgenerics
 	optdepends = r-crayon
+	optdepends = r-ggmanh
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-parallel
