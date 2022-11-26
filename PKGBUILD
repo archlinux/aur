@@ -4,7 +4,7 @@ _pkgname=InPAS
 _pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=2.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A Bioconductor package for identifying novel Alternative PolyAdenylation Sites (PAS) from RNA-seq data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,14 +12,16 @@ license=('GPL')
 depends=(
   r
   r-annotationdbi
+  r-batchtools
   r-biobase
-  r-biocparallel
   r-biostrings
   r-bsgenome
   r-cleanupdtseq
-  r-dbi
   r-depmixs4
   r-dplyr
+  r-flock
+  r-future
+  r-future.apply
   r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
@@ -27,18 +29,13 @@ depends=(
   r-iranges
   r-limma
   r-magrittr
+  r-parallelly
   r-plyranges
   r-preprocesscore
-  r-purrr
   r-readr
   r-reshape2
   r-rsqlite
   r-s4vectors
-  r-batchtools
-  r-flock
-  r-future
-  r-future.apply
-  r-parallelly
 )
 optdepends=(
   r-biocgenerics
@@ -48,6 +45,7 @@ optdepends=(
   r-bsgenome.mmusculus.ucsc.mm10
   r-ensdb.hsapiens.v86
   r-ensdb.mmusculus.v79
+  r-grdevices
   r-knitr
   r-markdown
   r-rmarkdown
