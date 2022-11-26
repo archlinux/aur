@@ -1972,3 +1972,11 @@ Sat Nov 26 08:31:02 2022 +0100
      2022-11-26 2bdb925 actionless fix(pprint: create_debug_logger): use `X is not None` except of `not X`
      2022-11-26 a50ae21 actionless fix(main: OutputEncodingWrapper): reraise exception before stderr closes
      2022-11-26 a8f3af6 actionless fix(InstallInfoFetcher: get_repo_pkgs_info): correctly determine if pkg already processed
+
+
+Sat Nov 26 21:27:02 2022 +0100
+-------------------------------------------------
+1.14.3          Hotfix release 1.14.3
+    
+    2022-11-26 376b3cc actionless chore(pkgbuild): fix dep chain problem
+    with python-pep517
