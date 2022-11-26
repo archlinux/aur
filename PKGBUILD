@@ -4,9 +4,9 @@ _pkgname=alevinQC
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Generate QC Reports For Alevin Output'
-arch=('any')
+arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
@@ -16,6 +16,7 @@ depends=(
   r-dt
   r-ggally
   r-ggplot2
+  r-rcpp
   r-rjson
   r-rlang
   r-rmarkdown
@@ -24,6 +25,7 @@ depends=(
   r-tximport
 )
 optdepends=(
+  r-biocmanager
   r-biocstyle
   r-knitr
   r-testthat
