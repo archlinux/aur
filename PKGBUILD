@@ -2,7 +2,7 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
 pkgname=kime-bin
-pkgver=2.5.6
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -10,7 +10,6 @@ url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
 optdepends=('dbus: indicator support'
-            'gtk2: gtk2 support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'
             'qt5-base: qt5 support'
@@ -22,11 +21,11 @@ arch=('x86_64')
 license=('GPL3')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"https://github.com/Riey/kime/archive/refs/tags/v${pkgver}.tar.gz"
-    ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-v${pkgver}.tar.zst"
+    ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-refs.tags.v${pkgver}.tar.zst"
 )
 
-sha256sums=('e96ef7427b8ad64434c12e4e7c2c968e62f8efb98682a5887c72ba235ac3df3e'
-         '83f8681f18bd291ea53166a4aaf285e42299797f45a0819d9a4d19dbac8f6211')
+sha256sums=('8fa66a8d64ba8e139e8f4518a5ce306142505973621a476e271893a1b8e9b9cb'
+            '2b23d7277a0b462915a67d1b90a39761be7117d4d91b927f4ee3ee4ee22d9bc4')
 
  
 build() {
