@@ -4,7 +4,7 @@ _pkgname=bigstatsr
 _pkgver=1.5.12
 pkgname=r-${_pkgname,,}
 pkgver=1.5.12
-pkgrel=1
+pkgrel=3
 pkgdesc='Statistical Tools for Filebacked Big Matrices'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,6 @@ depends=(
   r-tibble
 )
 optdepends=(
-  r-biglasso
   r-bigmemory
   r-bigreadr
   r-covr
@@ -34,6 +33,7 @@ optdepends=(
   r-hexbin
   r-memuse
   r-modelmetrics
+  r-plotly
   r-ppcor
   r-rhpcblasctl
   r-spelling

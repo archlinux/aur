@@ -1,7 +1,7 @@
 pkgbase = r-bigstatsr
 	pkgdesc = Statistical Tools for Filebacked Big Matrices
 	pkgver = 1.5.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bigstatsr
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,6 @@ pkgbase = r-bigstatsr
 	depends = r-rmio
 	depends = r-rspectra
 	depends = r-tibble
-	optdepends = r-biglasso
 	optdepends = r-bigmemory
 	optdepends = r-bigreadr
 	optdepends = r-covr
@@ -27,6 +26,7 @@ pkgbase = r-bigstatsr
 	optdepends = r-hexbin
 	optdepends = r-memuse
 	optdepends = r-modelmetrics
+	optdepends = r-plotly
 	optdepends = r-ppcor
 	optdepends = r-rhpcblasctl
 	optdepends = r-spelling
