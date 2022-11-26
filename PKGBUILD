@@ -5,7 +5,7 @@ _pkgname=pdftools
 _pkgver=3.3.2
 pkgname=r-${_pkgname,,}
 pkgver=3.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Text Extraction, Rendering and Converting of PDF Documents'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   poppler
 )
 optdepends=(
-  r-jpeg
   r-png
   r-tesseract
   r-testthat
