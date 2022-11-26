@@ -59,3 +59,16 @@ diff --color -Naur a/NMR/MetaPropagation.cc b/NMR/MetaPropagation.cc
    };
    template<> struct fudge_isotropic_<double> { 
      fudge_isotropic_(double v) : v_(v) {};
+diff --color -Naur a/coredefs/diagonalise.cc b/coredefs/diagonalise.cc
+--- a/coredefs/diagonalise.cc	2011-06-22 11:33:15.000000000 +0300
++++ b/coredefs/diagonalise.cc	2022-11-26 18:00:21.276148521 +0200
+@@ -630,7 +630,8 @@
+ #ifdef USE_SUNPERF
+   zgeev('N','V',n,reinterpret_cast<complex*>(a.vector()),n,reinterpret_cast<complex*>(eigs.vector()),(complex*)NULL,1,reinterpret_cast<complex*>(V.vector()),n,&info);
+ #else
+-  complex worktmp=-1000.0;
++  complex worktmp;
++  worktmp.real(-1000.0);
+   ScratchList<double> rwork(2*n);
+   integer one=1;
+   integer minusone=-1;

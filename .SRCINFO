@@ -1,12 +1,13 @@
 pkgbase = libcmatrix
 	pkgdesc = A library designed for numerical studies of problems in NMR
 	pkgver = 3.11.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.dur.ac.uk/solids.nmr/software/pnmrsim
 	arch = x86_64
 	license = GPL
 	makedepends = root
 	makedepends = cblas
+	makedepends = lapacke
 	depends = openmpi
 	source = https://www.dur.ac.uk/paul.hodgkinson/pNMRsim/libcmatrixR3_lite.tar.gz
 	source = libcmatrix-3.11.0-gcc5.2.patch
@@ -19,6 +20,6 @@ pkgbase = libcmatrix
 	sha256sums = e52c2adb42f5a2836db1e71e4ae2f3235e58bc5c92b04594069548201fd821cf
 	sha256sums = bc4eec9967be3d9ad520d1750abb23f5b6732b8352c7ad61f54c78fb7c9d6312
 	sha256sums = fc4463ff41d3a691b351f4891bcd2fb3177ce3c04f0f4d2f3d398e5b64c26b0a
-	sha256sums = 48953cf9a0f4fc5daa65896222e1cdb43126c2c81d19732283bcf88e36aae633
+	sha256sums = 91cdf928663ba79cd6f4aa7a4c5d198d6e6d86407fad1640cf6b2c4a66aa106a
 
 pkgname = libcmatrix

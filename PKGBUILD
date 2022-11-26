@@ -2,13 +2,13 @@
 
 pkgname=libcmatrix
 pkgver=3.11.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A library designed for numerical studies of problems in NMR"
 arch=('x86_64')
 url="https://www.dur.ac.uk/solids.nmr/software/pnmrsim"
 license=('GPL')
 depends=('openmpi')
-makedepends=('root' 'cblas')
+makedepends=('root' 'cblas' 'lapacke')
 source=(https://www.dur.ac.uk/paul.hodgkinson/pNMRsim/libcmatrixR3_lite.tar.gz
         $pkgname-3.11.0-gcc5.2.patch
         $pkgname-3.11.0-shared.patch
@@ -20,7 +20,7 @@ sha256sums=('0cd4b1f921235ea64d7fbd8d814fbe639bf9ddb23e4a6d3182cf2788cc23f8b8'
             'e52c2adb42f5a2836db1e71e4ae2f3235e58bc5c92b04594069548201fd821cf'
             'bc4eec9967be3d9ad520d1750abb23f5b6732b8352c7ad61f54c78fb7c9d6312'
             'fc4463ff41d3a691b351f4891bcd2fb3177ce3c04f0f4d2f3d398e5b64c26b0a'
-            '48953cf9a0f4fc5daa65896222e1cdb43126c2c81d19732283bcf88e36aae633')
+            '91cdf928663ba79cd6f4aa7a4c5d198d6e6d86407fad1640cf6b2c4a66aa106a')
 
 prepare() {
   mv "$srcdir/libcmatrixR3" "$srcdir/$pkgname-$pkgver"
@@ -50,6 +50,7 @@ build() {
               --with-minuit \
               --with-mpi \
               CXX=mpic++ \
+              CXXFLAGS="$CXXFLAGS -DHAVE_LIBLAPACK" \
               ATLAS_CFLAGS='-I/usr/include' \
               ATLAS_LIBS='-lcblas' \
               LDFLAGS='-L/usr/lib -L/usr/lib/root'
