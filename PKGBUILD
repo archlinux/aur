@@ -4,23 +4,19 @@ _pkgname=qqconf
 _pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Creates Simultaneous Testing Bands for QQ-Plots'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
-  r
-  r-distr
-  r-dplyr
-  r-ggplot2
-  r-magrittr
-  r-rlang
-  r-robustbase
-  r-rcpp
   fftw
+  r
+  r-rcpp
+  r-robustbase
 )
 optdepends=(
+  r-distr
   r-knitr
   r-rmarkdown
 )

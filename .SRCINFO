@@ -1,19 +1,15 @@
 pkgbase = r-qqconf
 	pkgdesc = Creates Simultaneous Testing Bands for QQ-Plots
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=qqconf
 	arch = x86_64
 	license = GPL
-	depends = r
-	depends = r-distr
-	depends = r-dplyr
-	depends = r-ggplot2
-	depends = r-magrittr
-	depends = r-rlang
-	depends = r-robustbase
-	depends = r-rcpp
 	depends = fftw
+	depends = r
+	depends = r-rcpp
+	depends = r-robustbase
+	optdepends = r-distr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/qqconf_1.3.0.tar.gz
