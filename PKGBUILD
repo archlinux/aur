@@ -7,7 +7,7 @@ _pkgname=webshot
 _pkgver=0.5.4
 pkgname=r-${_pkgname,,}
 pkgver=0.5.4
-pkgrel=3
+pkgrel=5
 pkgdesc='Take Screenshots of Web Pages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,6 +23,7 @@ optdepends=(
   r-knitr
   r-rmarkdown
   r-shiny
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('3dc2b9baef7855e1deea060276b9ccc6375eee36b7100987cbb1f8e5cd7a8f24')
