@@ -4,7 +4,7 @@ _pkgname=VIM
 _pkgver=6.2.2
 pkgname=r-${_pkgname,,}
 pkgver=6.2.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Visualization and Imputation of Missing Values'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,11 +24,13 @@ depends=(
   r-vcd
 )
 optdepends=(
+  r-covr
   r-dplyr
   r-knitr
   r-reactable
   r-rmarkdown
-  r-testthat
+  r-tinytest
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('afa7492c54508c46eff39ac66fa4b05627e0044253ebe4a61b2a78d459f715e4')
