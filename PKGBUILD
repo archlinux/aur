@@ -4,25 +4,27 @@ _pkgname=dearseq
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential Expression Analysis for RNA-seq data through a robust variance component test'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-compquadform
+  r-dplyr
   r-ggplot2
+  r-magrittr
   r-matrixstats
   r-patchwork
   r-pbapply
+  r-reshape2
+  r-rlang
+  r-scattermore
   r-statmod
   r-survey
+  r-tibble
   r-viridislite
-  r-compquadform
-  r-reshape2
-  r-plyr
-  r-dplyr
-  r-scattermore
 )
 optdepends=(
   r-biobase
