@@ -1,7 +1,7 @@
 pkgbase = r-dss
 	pkgdesc = Dispersion shrinkage for sequencing data
 	pkgver = 2.46.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/DSS
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = r-dss
 	depends = r-biobase
 	depends = r-biocparallel
 	depends = r-bsseq
-	depends = r-delayedarray
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown

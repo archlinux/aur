@@ -4,7 +4,7 @@ _pkgname=DSS
 _pkgver=2.46.0
 pkgname=r-${_pkgname,,}
 pkgver=2.46.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Dispersion shrinkage for sequencing data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
   r-biobase
   r-biocparallel
   r-bsseq
-  r-delayedarray
 )
 optdepends=(
   r-biocstyle
