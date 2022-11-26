@@ -4,7 +4,7 @@ _pkgname=graphite
 _pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=1.44.0
-pkgrel=1
+pkgrel=3
 pkgdesc='GRAPH Interaction from pathway Topological Environment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,16 +12,17 @@ license=('AGPL')
 depends=(
   r
   r-annotationdbi
-  r-checkmate
   r-graph
   r-httr
-  r-rappdirs
   r-purrr
+  r-rappdirs
+  r-rlang
 )
 optdepends=(
   r-a4preproc
   r-all
   r-biocstyle
+  r-checkmate
   r-clipper
   r-codetools
   r-hgu133plus2.db
