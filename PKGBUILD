@@ -5,29 +5,29 @@ _pkgname=BEclear
 _pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=2.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Correction of batch effects in DNA methylation data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
+  gcc
   r
   r-abind
   r-biocparallel
   r-data.table
+  r-dixontest
   r-futile.logger
   r-ids
-  r-outliers
   r-rcpp
   r-rdpack
-  r-dixontest
-  gcc
 )
 optdepends=(
   r-biocstyle
   r-knitr
   r-pander
   r-rmarkdown
+  r-seewave
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
