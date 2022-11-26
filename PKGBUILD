@@ -5,32 +5,41 @@ _pkgname=fishpond
 _pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=2.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Fishpond: differential transcript and gene expression with inferential replicates'
-arch=('x86_64')
+arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
+  gcc
   r
   r-abind
+  r-genomicranges
   r-gtools
+  r-iranges
   r-jsonlite
   r-matrixstats
   r-qvalue
-  r-rcpp
   r-s4vectors
   r-singlecellexperiment
   r-summarizedexperiment
   r-svmisc
-  gcc
 )
 optdepends=(
+  r-annotationdbi
   r-apeglm
+  r-data.table
   r-deseq2
+  r-ensdb.hsapiens.v86
+  r-ensembldb
+  r-genomeinfodb
+  r-genomicfeatures
+  r-gviz
   r-knitr
   r-limma
   r-macrophage
   r-org.hs.eg.db
+  r-pheatmap
   r-rmarkdown
   r-samr
   r-testthat
