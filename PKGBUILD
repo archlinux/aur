@@ -4,7 +4,7 @@ _pkgname=reldist
 _pkgver=1.7-1
 pkgname=r-${_pkgname,,}
 pkgver=1.7.1
-pkgrel=3
+pkgrel=6
 pkgdesc='Relative Distribution Methods'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-densestbayes
-  r-hmisc
 )
 optdepends=(
   r-locfit
