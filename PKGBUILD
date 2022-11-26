@@ -5,7 +5,7 @@ _pkgname=rversions
 _pkgver=2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=2.1.2
-pkgrel=3
+pkgrel=5
 pkgdesc="Query 'R' Versions, Including 'r-release' and 'r-oldrel'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
   r-xml2
 )
 optdepends=(
+  r-covr
   r-mockery
   r-testthat
 )
