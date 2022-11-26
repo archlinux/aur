@@ -4,13 +4,16 @@ _pkgname=aods3
 _pkgver=0.4-1.2
 pkgname=r-${_pkgname,,}
 pkgver=0.4.1.2
-pkgrel=1
+pkgrel=4
 pkgdesc='Analysis of Overdispersed Data using S3 Methods'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+)
+optdepends=(
+  r-boot
   r-lme4
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
