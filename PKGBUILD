@@ -1,14 +1,17 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
+# https://github.com/phnx47/pkgbuilds
+
 pkgname=oxen-electron-wallet
 pkgdesc="Oxen electron GUI wallet"
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/oxen-io/oxen-electron-gui-wallet'
 license=('BSD-3')
 depends=('oxen-core-bin')
-makedepends=('fnm')
+makedepends=('node-gyp' 'fnm')
 conflicts=('oxen-gui-wallet-appimage')
 _extdir=oxen-electron-gui-wallet-${pkgver}
 source=("${_extdir}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"

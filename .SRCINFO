@@ -1,10 +1,11 @@
 pkgbase = oxen-electron-wallet
 	pkgdesc = Oxen electron GUI wallet
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxen-io/oxen-electron-gui-wallet
 	arch = x86_64
 	license = BSD-3
+	makedepends = node-gyp
 	makedepends = fnm
 	depends = oxen-core-bin
 	conflicts = oxen-gui-wallet-appimage
