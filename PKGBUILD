@@ -4,7 +4,7 @@ _pkgname=basilisk.utils
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Basilisk Installation Utilities'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
+  r-reticulate
   r-rmarkdown
   r-testthat
 )
