@@ -1,0 +1,12 @@
+_setcap_for_airshipper() {
+    # This is required for the server browser to be able to show ping.
+    setcap cap_net_raw=pe /usr/bin/airshipper
+}
+
+post_install() {
+    _setcap_for_airshipper
+}
+
+post_upgrade() {
+    _setcap_for_airshipper
+}
