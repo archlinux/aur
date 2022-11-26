@@ -4,7 +4,7 @@ _pkgname=rapportools
 _pkgver=1.1
 pkgname=r-${_pkgname,,}
 pkgver=1.1
-pkgrel=3
+pkgrel=6
 pkgdesc='Miscellaneous (stats) helper functions with sane defaults for reporting'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,6 @@ depends=(
   r
   r-pander
   r-plyr
-  r-reshape
   r-reshape2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
