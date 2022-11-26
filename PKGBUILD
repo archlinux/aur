@@ -4,13 +4,14 @@ _pkgname=tidybulk
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Brings transcriptomics to the tidyverse'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-crayon
   r-dplyr
   r-genomicranges
   r-lifecycle
@@ -19,6 +20,7 @@ depends=(
   r-purrr
   r-readr
   r-rlang
+  r-s4vectors
   r-scales
   r-stringi
   r-stringr
@@ -40,14 +42,17 @@ optdepends=(
   r-devtools
   r-e1071
   r-edger
+  r-egsea
   r-functional
   r-ggally
   r-ggplot2
   r-ggrepel
+  r-igraph
   r-kernsmooth
   r-knitr
   r-limma
   r-markdown
+  r-matrixstats
   r-msigdbr
   r-org.hs.eg.db
   r-org.mm.eg.db
@@ -55,7 +60,6 @@ optdepends=(
   r-qpdf
   r-rsubread
   r-rtsne
-  r-s4vectors
   r-seurat
   r-survival
   r-survminer
