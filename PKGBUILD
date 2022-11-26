@@ -4,7 +4,7 @@ _pkgname=AnVIL
 _pkgver=1.10.1
 pkgname=r-${_pkgname,,}
 pkgver=1.10.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Bioconductor on the AnVIL compute environment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,22 +13,22 @@ depends=(
   r
   r-biocmanager
   r-dplyr
+  r-dt
   r-futile.logger
+  r-htmltools
   r-httr
   r-jsonlite
+  r-miniui
   r-rapiclient
   r-rlang
+  r-shiny
   r-tibble
   r-tidyr
   r-tidyselect
-  r-vctrs
-  r-shiny
-  r-dt
-  r-miniui
-  r-htmltools
 )
 optdepends=(
   r-biocstyle
+  r-devtools
   r-knitr
   r-parallel
   r-readr
