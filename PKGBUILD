@@ -4,10 +4,10 @@ _pkgname=ENCODExplorer
 _pkgver=2.20.0
 pkgname=r-${_pkgname,,}
 pkgver=2.20.0
-pkgrel=2
+pkgrel=6
 pkgdesc='A compilation of ENCODE metadata'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
