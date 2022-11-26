@@ -1,6 +1,6 @@
 pkgbase = handygccs-git
 	pkgdesc = Handheld Game Console Controller Support.
-	pkgver = 22.11.r113.19f7240
+	pkgver = 22.11.r114.c6a1607
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/HandyGCCS
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = handygccs-git
 	depends = python-evdev
 	depends = dbus-python
 	depends = python-bmi160-i2c
-	source = HandyGCCS::git+https://github.com/ShadowBlip/HandyGCCS.git#tag=19f7240573877d0cb192692d04f20a782fe89e6f
+	source = HandyGCCS::git+https://github.com/ShadowBlip/HandyGCCS.git#tag=c6a1607748450858847c38f8b391e3e051186bed
 	sha256sums = SKIP
 
 pkgname = handygccs-git
