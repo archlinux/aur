@@ -5,17 +5,19 @@ _pkgname=CytoML
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A GatingML Interface for Cross Platform Cytometry Data Sharing'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('custom')
 depends=(
+  gcc
+  libxml2
+  make
   r
-  r-base64enc
   r-bh
   r-biobase
-  r-corpcor
+  r-cpp11
   r-cytolib
   r-data.table
   r-dplyr
@@ -25,22 +27,13 @@ depends=(
   r-graph
   r-jsonlite
   r-opencyto
-  r-plyr
   r-rbgl
-  r-rcpp
-  r-rcpparmadillo
-  r-rcppparallel
   r-rgraphviz
   r-rhdf5lib
   r-rprotobuflib
-  r-runit
   r-tibble
   r-xml
-  r-xml2
   r-yaml
-  gcc
-  make
-  libxml2
 )
 optdepends=(
   r-flowworkspacedata
