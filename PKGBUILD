@@ -4,7 +4,7 @@ _pkgname=spatstat.random
 _pkgver=3.0-1
 pkgname=r-${_pkgname,,}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Random Generation Functionality for the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,8 +20,9 @@ optdepends=(
   r-randomfieldsutils
   r-spatial
   r-spatstat
-  r-spatstat.core
+  r-spatstat.explore
   r-spatstat.linnet
+  r-spatstat.model
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('938c845c063b8781bf894c0a67537e7b2a7c425a4beba4a95ec9d2c37b43e5b6')
