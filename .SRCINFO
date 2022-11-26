@@ -1,7 +1,7 @@
 pkgbase = r-groupdata2
 	pkgdesc = Creating Groups from Data
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=groupdata2
 	arch = any
 	license = MIT
@@ -19,7 +19,6 @@ pkgbase = r-groupdata2
 	optdepends = r-broom
 	optdepends = r-covr
 	optdepends = r-ggplot2
-	optdepends = r-hydrogof
 	optdepends = r-knitr
 	optdepends = r-lmertest
 	optdepends = r-rmarkdown

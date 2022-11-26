@@ -4,7 +4,7 @@ _pkgname=groupdata2
 _pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Creating Groups from Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,6 @@ optdepends=(
   r-broom
   r-covr
   r-ggplot2
-  r-hydrogof
   r-knitr
   r-lmertest
   r-rmarkdown
