@@ -4,20 +4,20 @@ _pkgname=philentropy
 _pkgver=0.7.0
 pkgname=r-${_pkgname,,}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Similarity and Distance Quantification Between Probability Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-dplyr
-  r-rcpp
   r-poorman
+  r-rcpp
 )
 optdepends=(
   r-knitr
-  r-markdown
+  r-microbenchmark
+  r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
