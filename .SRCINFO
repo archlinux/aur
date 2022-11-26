@@ -1,7 +1,7 @@
 pkgbase = r-detectseparation
 	pkgdesc = Detect and Check for Separation and Infinite Maximum Likelihood Estimates
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=detectseparation
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-detectseparation
 	optdepends = r-roi.plugin.ecos
 	optdepends = r-roi.plugin.glpk
 	optdepends = r-roi.plugin.neos
-	optdepends = r-testthat
+	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/detectseparation_0.3.tar.gz
 	sha256sums = e8d7b7d7e58ea5b2d3d917213ad9876f71671c5ae1dbd97091adc25a7eb8e317
 
