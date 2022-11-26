@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=inyokaedit-data-ubuntuusersde
-pkgver=0.27.1
+pkgver=0.27.2
 pkgrel=1
 _lang=de_DE   # Need to set LC_CTYPE/LANG because of filenames with special characters
 pkgdesc='ubuntuusers.de community files for InyokaEdit'
@@ -11,7 +11,7 @@ depends=('bash')
 optdepends=('inyokaedit: Editor for Inyoka based portals'
             'inyokaedit-plugins: Plugins for InyokaEdit')
 source=("https://github.com/inyokaproject/inyokaedit/releases/download/v$pkgver/inyokaedit-community-$pkgver.zip")
-sha256sums=('7fdc687c40ce6f934bd5abec1fe6b7d050b3a72922446ac5d9b2370b32a3be1a')
+sha256sums=('264b9d0011f82a0c4999a4a24eb5b031014f745c89da2d779ec166aa0bfd818f')
 
 build() {
     mv inyokaedit-community/ community/
