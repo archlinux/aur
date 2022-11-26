@@ -4,7 +4,7 @@ _pkgname=aplot
 _pkgver=0.1.9
 pkgname=r-${_pkgname,,}
 pkgver=0.1.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Decorate a 'ggplot' with Associated Information"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,6 @@ depends=(
   r-ggplotify
   r-magrittr
   r-patchwork
-  r-yulab.utils
 )
 optdepends=(
   r-ggtree
