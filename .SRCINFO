@@ -1,15 +1,15 @@
 pkgbase = php-firebird
 	pkgdesc = Firebird module for PHP
-	pkgver = 8.1.12
+	pkgver = 8.1.13
 	pkgrel = 1
 	url = http://www.php.net
 	arch = x86_64
 	license = PHP
-	depends = php=8.1.12
+	depends = php=8.1.13
 	depends = libfbclient
-	source = https://php.net/distributions/php-8.1.12.tar.xz
+	source = https://php.net/distributions/php-8.1.13.tar.xz
 	source = pdo_firebird.ini
-	sha256sums = 08243359e2204d842082269eedc15f08d2eca726d0e65b93fb11f4bfc51bbbab
+	sha256sums = b15ef0ccdd6760825604b3c4e3e73558dcf87c75ef1d68ef4289d8fd261ac856
 	sha256sums = 41187271bb8a552ff10c997bc31557f9f09f47087618fde0c08e3304e204b771
 
 pkgname = php-firebird
