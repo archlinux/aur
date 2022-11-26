@@ -1,4 +1,4 @@
-From 3a3573ec2d5f7453819ff0c2701501e753a71907 Mon Sep 17 00:00:00 2001
+From 0f134b2b1903b238d7bd126c45c59242025fd823 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Fri, 7 Oct 2022 09:51:13 +0200
 Subject: [PATCH 4/7] drm/sched: add DRM_SCHED_FENCE_DONT_PIPELINE flag
@@ -17,10 +17,10 @@ Signed-off-by: Christian König <christian.koenig@amd.com>
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/scheduler/sched_entity.c b/drivers/gpu/drm/scheduler/sched_entity.c
-index 6b25b2f4f5a3..6137537aaea4 100644
+index 7ef1a086a6fb..4b913dbb7d7b 100644
 --- a/drivers/gpu/drm/scheduler/sched_entity.c
 +++ b/drivers/gpu/drm/scheduler/sched_entity.c
-@@ -385,7 +385,8 @@ static bool drm_sched_entity_add_dependency_cb(struct drm_sched_entity *entity)
+@@ -389,7 +389,8 @@ static bool drm_sched_entity_add_dependency_cb(struct drm_sched_entity *entity)
  	}
  
  	s_fence = to_drm_sched_fence(fence);

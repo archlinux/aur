@@ -1,0 +1,223 @@
+From f7f83dfc74d55e134cc85668089d66d4d6df2107 Mon Sep 17 00:00:00 2001
+From: Mani Milani <mani@chromium.org>
+Date: Thu, 10 Nov 2022 16:31:33 +1100
+Subject: [PATCH 6/7] drm/i915: Fix unhandled deadlock in grab_vma()
+
+At present, the gpu thread crashes at times when grab_vma() attempts to
+acquire a gem object lock when in a deadlock state.
+
+Problems:
+I identified the following 4 issues in the current code:
+1. Since grab_vma() calls i915_gem_object_trylock(), which consequently
+   calls ww_mutex_trylock(), to acquire lock, it does not perform any
+   -EDEADLK handling; And -EALREADY handling is also unreliable,
+   according to the description of ww_mutex_trylock().
+2. Since the return value of grab_vma() is a boolean showing
+   success/failure, it does not provide any extra information on the
+   failure reason, and therefore does not provide any mechanism to its
+   caller to take any action to fix a potential deadlock.
+3. Current grab_vma() implementation produces inconsistent behaviour
+   depending on the refcount value, without informing the caller. If
+   refcount is already zero, grab_vma() neither acquires lock nor
+   increments the refcount, but still returns 'true' for success! This
+   means that grab_vma() returning true (for success) does not always
+   mean that the gem obj is actually safely accessible.
+4. Currently, calling "i915_gem_object_lock(obj,ww)" is meant to be
+   followed by a consequent "i915_gem_object_unlock(obj)" ONLY if the
+   original 'ww' object pointer was NULL, or otherwise not be called and
+   leave the houskeeping to "i915_gem_ww_ctx_fini(ww)". There are a few
+   issues with this:
+   - This is not documented anywhere in the code (that I could find),
+     but only explained in an older commit message.
+   - This produces an inconsistent usage of the lock/unlock functions,
+     increasing the chance of mistakes and issues.
+   - This is not a clean design as it requires any new code that calls
+     these lock/unlock functions to know their internals, as well as the
+     internals of the functions calling the new code being added.
+
+Fix:
+To fix the issues above, this patch:
+1. Changes grab_vma() to call i915_gem_object_lock() instead of
+   i915_gem_object_trylock(), to handle -EDEADLK and -EALREADY cases.
+   This should not cause any issue since the PIN_NONBLOCK flag is
+   checked beforehand in the 2 cases grab_vma() is called.
+2. Changes grab_vma() to return the actual error code, instead of bool.
+3. Changes grab_vma() to behave consistently when returning success, by
+   both incrementing the refcount and acquiring lock at all times.
+4. Changes i915_gem_object_unlock() to pair with i915_gem_object_lock()
+   nicely in all cases and do the housekeeping without the need for the
+   caller to do anything other than simply calling lock and unlock.
+5. Ensures the gem obj->obj_link is initialized and deleted from the ww
+   list such that it can be tested for emptiness using list_empty().
+
+Signed-off-by: Mani Milani <mani@chromium.org>
+For: https://gitlab.freedesktop.org/drm/intel/-/issues/7570
+---
+ drivers/gpu/drm/i915/gem/i915_gem_object.c |  2 +
+ drivers/gpu/drm/i915/gem/i915_gem_object.h | 10 ++++-
+ drivers/gpu/drm/i915/i915_gem_evict.c      | 48 ++++++++++++----------
+ drivers/gpu/drm/i915/i915_gem_ww.c         |  8 ++--
+ 4 files changed, 41 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.c b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+index 85482a04d158..0caf171b37d9 100644
+--- a/drivers/gpu/drm/i915/gem/i915_gem_object.c
++++ b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+@@ -78,6 +78,8 @@ void i915_gem_object_init(struct drm_i915_gem_object *obj,
+ 
+ 	INIT_LIST_HEAD(&obj->mm.link);
+ 
++	INIT_LIST_HEAD(&obj->obj_link);
++
+ 	INIT_LIST_HEAD(&obj->lut_list);
+ 	spin_lock_init(&obj->lut_lock);
+ 
+diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.h b/drivers/gpu/drm/i915/gem/i915_gem_object.h
+index 6f0a3ce35567..fe634aebc067 100644
+--- a/drivers/gpu/drm/i915/gem/i915_gem_object.h
++++ b/drivers/gpu/drm/i915/gem/i915_gem_object.h
+@@ -219,7 +219,7 @@ static inline bool i915_gem_object_trylock(struct drm_i915_gem_object *obj,
+ 		return ww_mutex_trylock(&obj->base.resv->lock, &ww->ctx);
+ }
+ 
+-static inline void i915_gem_object_unlock(struct drm_i915_gem_object *obj)
++static inline void __i915_gem_object_unlock(struct drm_i915_gem_object *obj)
+ {
+ 	if (obj->ops->adjust_lru)
+ 		obj->ops->adjust_lru(obj);
+@@ -227,6 +227,14 @@ static inline void i915_gem_object_unlock(struct drm_i915_gem_object *obj)
+ 	dma_resv_unlock(obj->base.resv);
+ }
+ 
++static inline void i915_gem_object_unlock(struct drm_i915_gem_object *obj)
++{
++	if (list_empty(&obj->obj_link))
++		__i915_gem_object_unlock(obj);
++	else
++		i915_gem_ww_unlock_single(obj);
++}
++
+ static inline void
+ i915_gem_object_set_readonly(struct drm_i915_gem_object *obj)
+ {
+diff --git a/drivers/gpu/drm/i915/i915_gem_evict.c b/drivers/gpu/drm/i915/i915_gem_evict.c
+index f025ee4fa526..3eb514b4eddc 100644
+--- a/drivers/gpu/drm/i915/i915_gem_evict.c
++++ b/drivers/gpu/drm/i915/i915_gem_evict.c
+@@ -55,29 +55,33 @@ static int ggtt_flush(struct intel_gt *gt)
+ 	return intel_gt_wait_for_idle(gt, MAX_SCHEDULE_TIMEOUT);
+ }
+ 
+-static bool grab_vma(struct i915_vma *vma, struct i915_gem_ww_ctx *ww)
++static int grab_vma(struct i915_vma *vma, struct i915_gem_ww_ctx *ww)
+ {
++	int err;
++
++	/* Dead objects don't need pins */
++	if (dying_vma(vma))
++		atomic_and(~I915_VMA_PIN_MASK, &vma->flags);
++
++	err = i915_gem_object_lock(vma->obj, ww);
++
+ 	/*
+ 	 * We add the extra refcount so the object doesn't drop to zero until
+-	 * after ungrab_vma(), this way trylock is always paired with unlock.
++	 * after ungrab_vma(), this way lock is always paired with unlock.
+ 	 */
+-	if (i915_gem_object_get_rcu(vma->obj)) {
+-		if (!i915_gem_object_trylock(vma->obj, ww)) {
+-			i915_gem_object_put(vma->obj);
+-			return false;
+-		}
+-	} else {
+-		/* Dead objects don't need pins */
+-		atomic_and(~I915_VMA_PIN_MASK, &vma->flags);
+-	}
++	if (!err)
++		i915_gem_object_get(vma->obj);
+ 
+-	return true;
++	return err;
+ }
+ 
+ static void ungrab_vma(struct i915_vma *vma)
+ {
+-	if (dying_vma(vma))
++	if (dying_vma(vma)) {
++		/* Dead objects don't need pins */
++		atomic_and(~I915_VMA_PIN_MASK, &vma->flags);
+ 		return;
++	}
+ 
+ 	i915_gem_object_unlock(vma->obj);
+ 	i915_gem_object_put(vma->obj);
+@@ -93,10 +97,11 @@ mark_free(struct drm_mm_scan *scan,
+ 	if (i915_vma_is_pinned(vma))
+ 		return false;
+ 
+-	if (!grab_vma(vma, ww))
++	if (grab_vma(vma, ww))
+ 		return false;
+ 
+ 	list_add(&vma->evict_link, unwind);
++
+ 	return drm_mm_scan_add_block(scan, &vma->node);
+ }
+ 
+@@ -284,10 +289,12 @@ i915_gem_evict_something(struct i915_address_space *vm,
+ 		vma = container_of(node, struct i915_vma, node);
+ 
+ 		/* If we find any non-objects (!vma), we cannot evict them */
+-		if (vma->node.color != I915_COLOR_UNEVICTABLE &&
+-		    grab_vma(vma, ww)) {
+-			ret = __i915_vma_unbind(vma);
+-			ungrab_vma(vma);
++		if (vma->node.color != I915_COLOR_UNEVICTABLE) {
++			ret = grab_vma(vma, ww);
++			if (!ret) {
++				ret = __i915_vma_unbind(vma);
++				ungrab_vma(vma);
++			}
+ 		} else {
+ 			ret = -ENOSPC;
+ 		}
+@@ -382,10 +389,9 @@ int i915_gem_evict_for_node(struct i915_address_space *vm,
+ 			break;
+ 		}
+ 
+-		if (!grab_vma(vma, ww)) {
+-			ret = -ENOSPC;
++		ret = grab_vma(vma, ww);
++		if (ret)
+ 			break;
+-		}
+ 
+ 		/*
+ 		 * Never show fear in the face of dragons!
+diff --git a/drivers/gpu/drm/i915/i915_gem_ww.c b/drivers/gpu/drm/i915/i915_gem_ww.c
+index 3f6ff139478e..937b279f50fc 100644
+--- a/drivers/gpu/drm/i915/i915_gem_ww.c
++++ b/drivers/gpu/drm/i915/i915_gem_ww.c
+@@ -19,16 +19,14 @@ static void i915_gem_ww_ctx_unlock_all(struct i915_gem_ww_ctx *ww)
+ 	struct drm_i915_gem_object *obj;
+ 
+ 	while ((obj = list_first_entry_or_null(&ww->obj_list, struct drm_i915_gem_object, obj_link))) {
+-		list_del(&obj->obj_link);
+-		i915_gem_object_unlock(obj);
+-		i915_gem_object_put(obj);
++		i915_gem_ww_unlock_single(obj);
+ 	}
+ }
+ 
+ void i915_gem_ww_unlock_single(struct drm_i915_gem_object *obj)
+ {
+-	list_del(&obj->obj_link);
+-	i915_gem_object_unlock(obj);
++	list_del_init(&obj->obj_link);
++	__i915_gem_object_unlock(obj);
+ 	i915_gem_object_put(obj);
+ }
+ 
+-- 
+2.38.1
+
