@@ -4,7 +4,7 @@ _pkgname=biomaRt
 _pkgver=2.54.0
 pkgname=r-${_pkgname,,}
 pkgver=2.54.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Interface to BioMart databases (i.e. Ensembl)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,6 +27,7 @@ optdepends=(
   r-mockery
   r-rmarkdown
   r-testthat
+  r-webmockr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('989a1ac3c9f99833c277892dfc868f0aebc8ac106ce4d038766e4d514c7cca30')
