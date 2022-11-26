@@ -4,7 +4,7 @@ _pkgname=dplR
 _pkgver=1.7.4
 pkgname=r-${_pkgname,,}
 pkgver=1.7.4
-pkgrel=1
+pkgrel=4
 pkgdesc='Dendrochronology Program Library in R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,6 @@ depends=(
   r-xml
 )
 optdepends=(
-  r-biobase
   r-cairo
   r-dichromat
   r-foreach
@@ -31,6 +30,7 @@ optdepends=(
   r-iterators
   r-knitr
   r-rcolorbrewer
+  r-rmarkdown
   r-testthat
   r-tikzdevice
   r-waveslim
