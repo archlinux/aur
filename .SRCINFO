@@ -1,7 +1,7 @@
 pkgbase = r-pogos
 	pkgdesc = PharmacOGenomics Ontology Support
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/pogos
 	arch = any
 	license = Artistic2.0
@@ -12,6 +12,7 @@ pkgbase = r-pogos
 	depends = r-rjson
 	depends = r-s4vectors
 	depends = r-shiny
+	optdepends = r-biocstyle
 	optdepends = r-dt
 	optdepends = r-knitr
 	optdepends = r-ontologyplot

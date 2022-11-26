@@ -4,7 +4,7 @@ _pkgname=pogos
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='PharmacOGenomics Ontology Support'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
   r-shiny
 )
 optdepends=(
+  r-biocstyle
   r-dt
   r-knitr
   r-ontologyplot
