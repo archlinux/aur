@@ -4,7 +4,7 @@ _pkgname=APAlyzer
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A toolkit for APA analysis using RNA-seq data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,12 +13,12 @@ depends=(
   r
   r-deseq2
   r-dplyr
-  r-ensembldb
   r-genomicalignments
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
   r-ggrepel
+  r-hybridmtest
   r-repmis
   r-rsamtools
   r-rsubread
@@ -26,7 +26,6 @@ depends=(
   r-summarizedexperiment
   r-tidyr
   r-variantannotation
-  r-hybridmtest
 )
 optdepends=(
   r-annotationdbi
