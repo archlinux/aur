@@ -5,7 +5,7 @@ _pkgname=ggExtra
 _pkgver=0.10.0
 pkgname=r-${_pkgname,,}
 pkgver=0.10.0
-pkgrel=3
+pkgrel=6
 pkgdesc="Add Marginal Histograms to 'ggplot2', and More 'ggplot2' Enhancements"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,6 +28,7 @@ optdepends=(
   r-knitr
   r-rmarkdown
   r-rstudioapi
+  r-shinydisconnect
   r-svglite
   r-testthat
   r-vdiffr
