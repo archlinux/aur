@@ -8,7 +8,7 @@ _pkgname=devtools
 _pkgver=2.4.5
 pkgname=r-${_pkgname,,}
 pkgver=2.4.5
-pkgrel=3
+pkgrel=5
 pkgdesc='Tools to Make Developing R Packages Easier'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,6 @@ depends=(
   r-desc
   r-ellipsis
   r-fs
-  r-httr
   r-lifecycle
   r-memoise
   r-miniui
@@ -40,6 +39,7 @@ depends=(
 )
 optdepends=(
   r-biocmanager
+  r-callr
   r-covr
   r-curl
   r-digest
@@ -47,16 +47,16 @@ optdepends=(
   r-foghorn
   r-gh
   r-gmailr
+  r-httr
   r-knitr
   r-lintr
   r-mass
   r-mockery
   r-pingr
-  r-pkgdown
   r-rhub
   r-rmarkdown
-  r-spelling
   r-rstudioapi
+  r-spelling
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('38160ebd839acdec7ebf0699a085b4ab1ebd5500d3c57a9fa7ae484f1909904b')
