@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.3.1.r0.gdf72827b
+pkgver=6.3.1.r5.g905d8228
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
@@ -35,12 +35,8 @@ build() {
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDYNARMIC_IGNORE_ASSERTS=ON \
-		-DDYNARMIC_NO_BUNDLED_CATCH=ON \
-		-DDYNARMIC_NO_BUNDLED_FMT=ON \
-		-DDYNARMIC_NO_BUNDLED_ROBIN_MAP=ON \
-		-DDYNARMIC_NO_BUNDLED_XBYAK=ON \
-		-DDYNARMIC_NO_BUNDLED_ZYDIS=ON \
 		-DDYNARMIC_TESTS="$CHECKFUNC" \
+		-DDYNARMIC_USE_PRECOMPILED_HEADERS=OFF \
 		-Wno-dev
 	cmake --build build
 }
