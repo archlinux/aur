@@ -5,7 +5,7 @@ _pkgname=klaR
 _pkgver=1.7-1
 pkgname=r-${_pkgname,,}
 pkgver=1.7.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Classification and Visualization'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,8 +16,11 @@ depends=(
   r-questionr
 )
 optdepends=(
+  r-clustmixtype
+  r-clustvarlv
   r-e1071
   r-mlbench
+  r-randomforest
   r-rpart
   r-scatterplot3d
   r-som
