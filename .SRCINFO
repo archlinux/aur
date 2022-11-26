@@ -1,7 +1,7 @@
 pkgbase = r-broom.mixed
 	pkgdesc = Tidying Methods for Mixed Models
 	pkgver = 0.2.9.4
-	pkgrel = 7
+	pkgrel = 10
 	url = https://cran.r-project.org/package=broom.mixed
 	arch = any
 	license = GPL
@@ -35,6 +35,7 @@ pkgbase = r-broom.mixed
 	optdepends = r-rmarkdown
 	optdepends = r-rstan
 	optdepends = r-rstanarm
+	optdepends = r-rstantools
 	optdepends = r-testthat
 	optdepends = r-tmb
 	source = https://cran.r-project.org/src/contrib/broom.mixed_0.2.9.4.tar.gz
