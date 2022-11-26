@@ -5,7 +5,7 @@ _pkgname=chimeraviz
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Visualization tools for gene fusions'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -42,12 +42,12 @@ depends=(
   samtools
 )
 optdepends=(
+  grep
   r-devtools
   r-knitr
   r-lintr
   r-roxygen2
   r-testthat
-  grep
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f73fdb313ab8a95e6b7990952f43a8447368a03a6bcac0329ab761297418cf17')
