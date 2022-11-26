@@ -4,7 +4,7 @@ _pkgname=changepoint
 _pkgver=2.2.4
 pkgname=r-${_pkgname,,}
 pkgver=2.2.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Methods for Changepoint Detection'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
 )
 optdepends=(
   r-testthat
+  r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ac636fde7610137385dde1e3d8a22a2ff856a8d5c917c7ad1a5cc49f98b8649b')
