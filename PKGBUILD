@@ -4,7 +4,7 @@ _pkgname=TOAST
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for the analysis of heterogeneous tissues'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,19 +12,18 @@ license=('GPL')
 depends=(
   r
   r-corpcor
+  r-doparallel
   r-epidish
+  r-ggally
+  r-ggplot2
   r-limma
   r-nnls
-  r-reffreeewas
+  r-quadprog
   r-summarizedexperiment
-  r-doparallel
-  r-ggplot2
   r-tidyr
-  r-ggally
 )
 optdepends=(
   r-biocstyle
-  r-cssam
   r-gplots
   r-knitr
   r-matrix
