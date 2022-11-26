@@ -1,13 +1,12 @@
 pkgbase = r-msprep
 	pkgdesc = Package for Summarizing, Filtering, Imputing, and Normalizing Metabolomics Data
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MSPrep
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-crmn
-	depends = r-ddpcr
 	depends = r-dplyr
 	depends = r-magrittr
 	depends = r-missforest

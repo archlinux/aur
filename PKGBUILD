@@ -4,7 +4,7 @@ _pkgname=MSPrep
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Package for Summarizing, Filtering, Imputing, and Normalizing Metabolomics Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-crmn
-  r-ddpcr
   r-dplyr
   r-magrittr
   r-missforest
