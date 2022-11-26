@@ -1,18 +1,26 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Xavier Gongora <ixbalanque@protonmail.ch>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Wolfgang Popp <mail@wolfgang-popp.de>
 # Contributor: Tharre <tharre3@gmail.com>
 # Contributor: Damien Flament <damien.flament at gmx dot com>
 
 pkgname=brittany
-pkgver=0.13.1.1
+pkgver=0.13.1.2
 pkgrel=1
-pkgdesc='Haskell source code formatter'
+pkgdesc='Haskell source code formatter (static)'
 arch=(x86_64)
 url='https://github.com/lspitzner/brittany'
 license=(AGPL3)
 makedepends=(git stack)
-source=("git+$url#commit=4d064db674203626fe5011d10874fcbc335ec9b1") # tag: 0.13.1.1
+_tag=434f9f8e49b847ef3e648672c5564b6dd0d3be67 # git rev-parse $pkgver
+source=("git+$url.git?signed#tag=$_tag")
 b2sums=('SKIP')
+
+pkgver() { # prevents accidentally bumping pkgver without updating _tag as well
+    cd "$pkgname"
+    git describe --tags | sed 's/^v//' # get version tag and remove the first 'v' in the head if present
+}
+
 
 build() {
   cd $pkgname
