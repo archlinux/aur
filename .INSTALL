@@ -1,0 +1,9 @@
+#!/bin/bash
+
+post_install() {
+    [[ ! -d $HOME/.local/state/odot ]] && mkdir -p "$HOME/.local/state/odot"
+}
+
+post_remove() {
+    [[ -d $HOME/.local/state/odot ]] && rm -rf "$HOME/.local/state/odot"
+}
