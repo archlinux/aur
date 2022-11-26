@@ -4,7 +4,7 @@ _pkgname=scatterpie
 _pkgver=0.1.8
 pkgname=r-${_pkgname,,}
 pkgver=0.1.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Scatter Pie Plot'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,6 +22,7 @@ optdepends=(
   r-maps
   r-prettydoc
   r-rmarkdown
+  r-scales
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a6ccc63a8be63fa113704cf5d4893c1ec1b75d3081ab971bd70e650e708872a0')
