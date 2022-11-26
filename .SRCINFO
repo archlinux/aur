@@ -11,7 +11,7 @@ pkgbase = foxtelgo
 	depends = libxss
 	depends = git
 	conflicts = foxtelgo-bin
-	source = git+https://gitlab.com/foxtelgo/application.git
+	source = https://gitlab.com/foxtelgo/application/-/archive/1.0.6-1/application-1.0.6-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = foxtelgo
