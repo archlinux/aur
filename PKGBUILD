@@ -4,7 +4,7 @@ _pkgname=rfPred
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=1.36.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Assign rfPred functional prediction scores to a missense variants list'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,6 +12,7 @@ license=('GPL')
 depends=(
   r
   r-data.table
+  r-genomeinfodb
   r-genomicranges
   r-iranges
   r-rsamtools
