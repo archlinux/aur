@@ -4,7 +4,7 @@ _pkgname=Delaporte
 _pkgver=8.0.3
 pkgname=r-${_pkgname,,}
 pkgver=8.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Statistical Functions for the Delaporte Distribution'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=(
   r-covr
-  r-testthat
+  r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('7c9c55714560d1e041108bd696b7fcb85a71edc9f3ca7913b41f5b4efb9a32b4')
