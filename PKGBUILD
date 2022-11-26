@@ -4,7 +4,7 @@ _pkgname=stars
 _pkgver=0.6-0
 pkgname=r-${_pkgname,,}
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Spatiotemporal Arrays, Raster and Vector Data Cubes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
   r-units
 )
 optdepends=(
+  r-cairo
   r-clue
   r-covr
   r-cubelyr
