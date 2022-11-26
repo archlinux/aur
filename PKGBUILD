@@ -4,7 +4,7 @@ _pkgname=tidytext
 _pkgver=0.3.4
 pkgname=r-${_pkgname,,}
 pkgver=0.3.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -45,7 +45,6 @@ optdepends=(
   r-topicmodels
   r-vdiffr
   r-wordcloud
-  r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a6bc772e0669fdf09884ec6990a642924a45b44d5c4fda83ecb1121f1b2f6756')
