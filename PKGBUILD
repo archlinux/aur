@@ -5,12 +5,14 @@ _pkgname=flowCore
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='flowCore: Basic structures for flow cytometry data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
+  gcc
+  make
   r
   r-bh
   r-biobase
@@ -19,11 +21,8 @@ depends=(
   r-cytolib
   r-matrixstats
   r-rcpp
-  r-rcpparmadillo
   r-rprotobuflib
   r-s4vectors
-  make
-  gcc
 )
 optdepends=(
   r-flowstats
