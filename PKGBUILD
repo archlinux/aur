@@ -4,7 +4,7 @@ _pkgname=GenomicDataCommons
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='NIH / NCI Genomic Data Commons Access'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,19 +20,20 @@ depends=(
   r-rappdirs
   r-readr
   r-rlang
-  r-s4vectors
-  r-summarizedexperiment
   r-tibble
   r-xml2
 )
 optdepends=(
   r-biocparallel
   r-biocstyle
+  r-data.table
   r-dt
   r-genomicalignments
   r-ggplot2
   r-knitr
   r-listviewer
+  r-maftools
+  r-r.utils
   r-rmarkdown
   r-rsamtools
   r-testthat
