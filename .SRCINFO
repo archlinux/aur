@@ -1,6 +1,6 @@
 pkgbase = mauikit-documents-git
 	pkgdesc = MauiKit Documents components
-	pkgver = r12.1c213b4
+	pkgver = 1.0.0.r0.ga8c6075
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-documents
 	arch = x86_64
