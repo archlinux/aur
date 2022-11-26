@@ -4,7 +4,7 @@ _pkgname=ggfortify
 _pkgver=0.4.15
 pkgname=r-${_pkgname,,}
 pkgver=0.4.15
-pkgrel=1
+pkgrel=3
 pkgdesc='Data Visualization Tools for Statistical Analysis Results'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,6 @@ depends=(
 optdepends=(
   r-changepoint
   r-cluster
-  r-dlm
   r-fgarch
   r-forecast
   r-ggrepel

@@ -1,7 +1,7 @@
 pkgbase = r-ggfortify
 	pkgdesc = Data Visualization Tools for Statistical Analysis Results
 	pkgver = 0.4.15
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggfortify
 	arch = any
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = r-ggfortify
 	depends = r-tidyr
 	optdepends = r-changepoint
 	optdepends = r-cluster
-	optdepends = r-dlm
 	optdepends = r-fgarch
 	optdepends = r-forecast
 	optdepends = r-ggrepel
