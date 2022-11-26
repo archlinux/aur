@@ -4,7 +4,7 @@ _pkgname=Matching
 _pkgver=4.10-8
 pkgname=r-${_pkgname,,}
 pkgver=4.10.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Multivariate and Propensity Score Matching with Balance Optimization'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,8 +14,8 @@ depends=(
 )
 optdepends=(
   r-parallel
-  r-rbounds
   r-rgenoud
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('54412e2ddd1f5eeb189ffc653e4d3ead3e2f9c5c4fe516cfb1966abf69ada49a')
