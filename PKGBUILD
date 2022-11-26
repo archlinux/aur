@@ -4,18 +4,18 @@ _pkgname=DAPARdata
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Data accompanying the DAPAR and Prostar packages'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-knitr
   r-msnbase
 )
 optdepends=(
   r-dapar
+  r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('1b85d3320157917b7ea235dc62f655f9f9723cf2d4fa389709ce75f144f8a347')
