@@ -4,7 +4,7 @@ _pkgname=Cardinal
 _pkgver=3.0.1
 pkgname=r-${_pkgname,,}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc='A mass spectrometry imaging toolbox for statistical analysis'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
   r-biobase
   r-biocgenerics
   r-biocparallel
-  r-dplyr
   r-ebimage
   r-irlba
   r-magrittr
