@@ -1,9 +1,9 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-experimental-git
-pkgver=r2001.d10d9b8
+pkgver=0.9.16.r12.gd2b4076a
 pkgrel=1
-pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with experimental features enabled (GIT)'
+pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with experimental features enabled (git version)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')
@@ -14,6 +14,7 @@ depends=(
     'libjsoncpp.so'
     'libsigc++'
     'fmt'
+    'jack' 'libjack.so'
     'wayland'
     'libdate-tz.so'
     'libspdlog.so'
@@ -21,6 +22,7 @@ depends=(
     'libupower-glib.so'
     'upower'
     'libevdev'
+    'libinput'
     'libpulse'
     'libnl'
     'libappindicator-gtk3'
@@ -28,10 +30,11 @@ depends=(
     'libmpdclient'
     'libsndio.so'
     'libxkbcommon'
+    'wireplumber'
 )
 makedepends=(
     'cmake'
-    'catch2'
+    'catch2-git'
     'meson'
     'scdoc'
     'wayland-protocols'
@@ -48,18 +51,19 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
     rm -rf "${srcdir}/build"
+
     meson --prefix=/usr \
           --buildtype=plain \
           --auto-features=enabled \
           --wrap-mode=nodownload \
           "${srcdir}/build"
-    meson configure -Dexperimental=true "${srcdir}/build"
+    meson configure -Dexperimental=true "${srcdir}/build" # enable experimental features
     ninja -C "${srcdir}/build"
 }
 
