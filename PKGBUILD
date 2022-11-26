@@ -4,7 +4,7 @@ _pkgname=performance
 _pkgver=0.10.1
 pkgname=r-${_pkgname,,}
 pkgver=0.10.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Assessment of Regression Models Performance'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,20 +19,25 @@ optdepends=(
   r-aer
   r-afex
   r-bayesfactor
+  r-bayesplot
   r-betareg
   r-bigutilsr
+  r-blavaan
+  r-boot
   r-brms
   r-car
   r-compquadform
   r-correlation
   r-cplm
   r-dbscan
+  r-estimatr
   r-fixest
   r-forecast
   r-gamm4
   r-ggplot2
   r-glmmtmb
-  r-gridextra
+  r-graphics
+  r-httr
   r-ics
   r-icsoutlier
   r-islr
@@ -43,14 +48,18 @@ optdepends=(
   r-magrittr
   r-mass
   r-matrix
+  r-mclust
   r-metafor
   r-mgcv
   r-mlogit
+  r-multimode
   r-nlme
   r-nonnest2
   r-ordinal
   r-parallel
   r-parameters
+  r-patchwork
+  r-poorman
   r-pscl
   r-psych
   r-randomforest
@@ -59,7 +68,6 @@ optdepends=(
   r-rstantools
   r-sandwich
   r-see
-  r-spelling
   r-survey
   r-survival
   r-testthat
