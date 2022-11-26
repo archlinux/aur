@@ -4,7 +4,7 @@ _pkgname=spatstat.data
 _pkgver=3.0-0
 pkgname=r-${_pkgname,,}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Datasets for 'spatstat' Family"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,9 +14,11 @@ depends=(
   r-spatstat.utils
 )
 optdepends=(
-  r-spatstat.core
+  r-spatstat.explore
   r-spatstat.geom
   r-spatstat.linnet
+  r-spatstat.model
+  r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('cff9058a88489020a4a05b9576cd452f37fa9b42084873c474d06931f5187057')
