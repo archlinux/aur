@@ -4,7 +4,7 @@ _pkgname=AUCell
 _pkgver=1.20.1
 pkgname=r-${_pkgname,,}
 pkgver=1.20.1
-pkgrel=1
+pkgrel=3
 pkgdesc="AUCell: Analysis of 'gene set' activity in single-cell RNA-seq data (e.g. identify cells with specific gene signatures)"
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,13 +13,13 @@ depends=(
   r
   r-biocgenerics
   r-data.table
+  r-delayedarray
+  r-delayedmatrixstats
   r-gseabase
   r-mixtools
   r-r.utils
-  r-s4vectors
   r-shiny
   r-summarizedexperiment
-  r-delayedmatrixstats
 )
 optdepends=(
   r-biobase
