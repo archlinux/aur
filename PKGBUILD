@@ -9,33 +9,33 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("googlekeep-bin")
-source=("git+https://gitlab.com/googlekeep-desktop/application")
+source=("https://gitlab.com/googlekeep-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
 
 package() {
-    cd "$srcdir/application"
-    rm -rf .git
-    cat <<EOT >> googlekeep
+    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    cd "$srcdir/$_pkgname"
+    cat <<EOT >> $pkgname
     #!/bin/bash
-    cd /opt/GoogleKeep &&
+    cd /opt/$_pkgname &&
     npm start
 EOT
 
-    chmod +x googlekeep
-    ln -s "/opt/libelectron/node_modules" "$srcdir/application"
-    install -dm755 "$pkgdir/opt/GoogleKeep"
+    chmod +x $pkgname
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
+    install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
-    cp -r ./ "$pkgdir/opt/GoogleKeep"
-    cp -r "$pkgdir/opt/GoogleKeep/googlekeep.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r ./ "$pkgdir/opt/$_pkgname"
+    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/GoogleKeep/googlekeep" "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application/GoogleKeep.desktop" \
-        "$pkgdir/usr/share/applications/GoogleKeep.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/GoogleKeep.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
