@@ -4,7 +4,7 @@ _pkgname=ORFik
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Open Reading Frames in Genomics'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
   r-annotationdbi
   r-biocgenerics
   r-biocparallel
+  r-biomart
   r-biomartr
   r-biostrings
   r-bsgenome
@@ -25,7 +26,6 @@ depends=(
   r-genomicalignments
   r-genomicfeatures
   r-genomicranges
-  r-ggally
   r-ggplot2
   r-gridextra
   r-httr
