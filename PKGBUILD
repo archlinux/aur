@@ -4,7 +4,7 @@ _pkgname=plotgardener
 _pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Coordinate-Based Genomic Visualization Package for R'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   r-data.table
   r-dplyr
   r-ggplotify
+  r-iranges
   r-plyranges
   r-purrr
   r-rcolorbrewer
@@ -33,7 +34,6 @@ optdepends=(
   r-genomicranges
   r-ggplot2
   r-interactionset
-  r-iranges
   r-knitr
   r-org.hs.eg.db
   r-plotgardenerdata
