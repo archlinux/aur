@@ -4,7 +4,7 @@ _pkgname=xcms
 _pkgver=3.20.0
 pkgname=r-${_pkgname,,}
 pkgver=3.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='LC-MS and GC-MS Data Analysis'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -45,6 +45,7 @@ optdepends=(
   r-rgl
   r-rgraphviz
   r-rmarkdown
+  r-signal
   r-spectra
   r-testthat
   r-xml
