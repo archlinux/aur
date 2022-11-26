@@ -1,7 +1,7 @@
 pkgbase = r-sandwich
 	pkgdesc = Robust Covariance Matrix Estimators
 	pkgver = 3.0.2
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=sandwich
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = r-sandwich
 	optdepends = r-car
 	optdepends = r-geepack
 	optdepends = r-lattice
+	optdepends = r-lme4
 	optdepends = r-lmtest
 	optdepends = r-mass
 	optdepends = r-multiwayvcov
