@@ -1,7 +1,7 @@
 pkgbase = qomp
 	pkgdesc = Quick(Qt) Online Music Player
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://github.com/qomp/qomp
 	arch = i686
 	arch = x86_64
@@ -20,14 +20,15 @@ pkgbase = qomp
 	optdepends = gst-libav: additional codecs
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
-	source = git+https://github.com/qomp/qomp#tag=1.4
-	source = git+https://github.com/qomp/translations
-	source = git+https://github.com/qomp/themes
+	source = git+https://github.com/qomp/qomp.git#tag=1.5
+	source = qomp-translations::git+https://github.com/qomp/translations.git
+	source = qomp-themes::git+https://github.com/qomp/themes.git
+	source = git+https://github.com/wadealer/qt-google-analytics.git
 	source = git+https://github.com/wadealer/SingleApplication
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = qomp
-
