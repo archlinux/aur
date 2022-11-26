@@ -4,7 +4,7 @@ _pkgname=golem
 _pkgver=0.3.5
 pkgname=r-${_pkgname,,}
 pkgver=0.3.5
-pkgrel=1
+pkgrel=3
 pkgdesc='A Framework for Robust Shiny Applications'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,35 +16,34 @@ depends=(
   r-config
   r-crayon
   r-desc
-  r-dockerfiler
   r-fs
   r-here
   r-htmltools
-  r-jsonlite
   r-pkgload
-  r-remotes
-  r-rlang
   r-roxygen2
   r-rstudioapi
   r-shiny
-  r-testthat
   r-usethis
   r-yaml
 )
 optdepends=(
+  r-attachment
   r-covr
   r-devtools
-  r-glue
+  r-dockerfiler
   r-knitr
   r-pkgbuild
   r-pkgdown
   r-processx
   r-purrr
   r-rcmdcheck
+  r-renv
+  r-rlang
   r-rmarkdown
   r-rsconnect
   r-spelling
   r-stringr
+  r-testthat
   r-tools
   r-withr
 )
