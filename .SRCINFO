@@ -1,7 +1,7 @@
 pkgbase = r-mlr3tuning
 	pkgdesc = Tuning for 'mlr3'
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mlr3tuning
 	arch = any
 	license = LGPL
@@ -17,10 +17,12 @@ pkgbase = r-mlr3tuning
 	optdepends = r-adagio
 	optdepends = r-gensa
 	optdepends = r-irace
+	optdepends = r-mlr3learners
 	optdepends = r-mlr3pipelines
 	optdepends = r-nloptr
 	optdepends = r-rpart
 	optdepends = r-testthat
+	optdepends = r-xgboost
 	source = https://cran.r-project.org/src/contrib/mlr3tuning_0.17.0.tar.gz
 	sha256sums = b7553da82aa5ed0705e9cb9fbd5324d2a2c6cf1a9eea43347fd455ef3d16e0b5
 

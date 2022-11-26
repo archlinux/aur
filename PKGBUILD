@@ -4,7 +4,7 @@ _pkgname=mlr3tuning
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Tuning for 'mlr3'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,10 +24,12 @@ optdepends=(
   r-adagio
   r-gensa
   r-irace
+  r-mlr3learners
   r-mlr3pipelines
   r-nloptr
   r-rpart
   r-testthat
+  r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('b7553da82aa5ed0705e9cb9fbd5324d2a2c6cf1a9eea43347fd455ef3d16e0b5')
