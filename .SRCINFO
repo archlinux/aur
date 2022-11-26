@@ -1,7 +1,7 @@
 pkgbase = r-svdialogs
 	pkgdesc = SciViews - Standard Dialog Boxes for Windows, MacOS and Linuxes
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=svDialogs
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = r-svdialogs
 	depends = r-svgui
 	optdepends = r-covr
 	optdepends = r-knitr
-	optdepends = r-markdown
+	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/svDialogs_1.1.0.tar.gz

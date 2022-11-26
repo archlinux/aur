@@ -5,7 +5,7 @@ _pkgname=svDialogs
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc='SciViews - Standard Dialog Boxes for Windows, MacOS and Linuxes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ depends=(
 optdepends=(
   r-covr
   r-knitr
-  r-markdown
+  r-rmarkdown
   r-spelling
   r-testthat
 )
