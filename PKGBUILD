@@ -4,7 +4,7 @@ _pkgname=canceR
 _pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=1.32.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,19 +12,22 @@ license=('GPL')
 depends=(
   r
   r-biobase
-  r-cgdsr
   r-circlize
   r-formula
   r-genetclassifier
   r-gseabase
+  r-httr
   r-phenotest
   r-plyr
+  r-r.methodss3
+  r-r.oo
   r-runit
-  r-tcltk2
   r-tkrplot
 )
 optdepends=(
-  r-r.rsp
+  r-biocstyle
+  r-knitr
+  r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
