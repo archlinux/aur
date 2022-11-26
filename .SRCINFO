@@ -1,7 +1,7 @@
 pkgbase = r-emmeans
 	pkgdesc = Estimated Marginal Means, aka Least-Squares Means
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=emmeans
 	arch = any
 	license = GPL
@@ -43,6 +43,7 @@ pkgbase = r-emmeans
 	optdepends = r-rmarkdown
 	optdepends = r-rsm
 	optdepends = r-rstanarm
+	optdepends = r-sandwich
 	optdepends = r-scales
 	optdepends = r-sommer
 	optdepends = r-splines
