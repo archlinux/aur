@@ -3,7 +3,7 @@
 
 pkgbase=dxvk-async-git
 pkgname=('dxvk-async-git')
-pkgver=2.0.r0.g8f8a9369
+pkgver=2.0.r23.g57176e77
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -19,13 +19,15 @@ source=("git+https://github.com/doitsujin/dxvk.git"
         "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         "git+https://github.com/Sporif/dxvk-async.git"
-        "dxvk-async-env.conf")
+        "dxvk-async-env.conf"
+        "setup_dxvk.sh")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '5ea0fbf7fddb45a8575ff001793011a594d999aaeb66ef95378bca950c844300')
+            '5ea0fbf7fddb45a8575ff001793011a594d999aaeb66ef95378bca950c844300'
+            '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7')
 
 pkgver() {
     cd dxvk
@@ -45,7 +47,7 @@ prepare() {
 }
 
 build() {
-    meson dxvk "build/x64" \
+    meson setup dxvk "build/x64" \
         --cross-file dxvk/build-win64.txt \
         --prefix "/usr/share/dxvk/x64" \
         --bindir "" --libdir "" \
@@ -53,7 +55,7 @@ build() {
         --strip
     ninja -C "build/x64"
 
-    meson dxvk "build/x32" \
+    meson setup dxvk "build/x32" \
         --cross-file dxvk/build-win32.txt \
         --prefix "/usr/share/dxvk/x32" \
         --bindir "" --libdir "" \
@@ -67,7 +69,7 @@ package_dxvk-async-git() {
         conflicts=("dxvk-bin" "dxvk-mingw-git")
         DESTDIR="$pkgdir" ninja -C "build/x32" install
         DESTDIR="$pkgdir" ninja -C "build/x64" install
-        install -Dm 644 dxvk/setup_dxvk.sh "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
+        install -Dm 644 "$srcdir/setup_dxvk.sh" "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
         mkdir -p "$pkgdir/usr/bin"
         ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
         chmod +x "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
