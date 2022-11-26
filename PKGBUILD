@@ -1,10 +1,11 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
 _pkgname=renovate
 pkgname=renovate-git
-pkgver=34.26.2.r0.g6c4864365c
+pkgver=34.39.0.r0.gdc0c02716d
 pkgrel=1
 pkgdesc="Renovate - Dependency update tool (Git version)"
 arch=(any)
@@ -35,8 +36,6 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/node_modules/${_pkgname}/dist/renovate.js" "${pkgdir}/usr/bin/$_pkgname"
-
-  install -Dm644 "${srcdir}/${pkgname}/license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "${pkgdir}/usr/lib/node_modules/${_pkgname}"
   yarn install --prod
