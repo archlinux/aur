@@ -1,29 +1,32 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
-pkgname=gnome-developer-www
-pkgver=340.64b8ac4
-pkgrel=2
+_pkgname=gnome-developer-www
+pkgname=gnome-developer-www-git
+pkgver=350.ea0ea9d
+pkgrel=1
 pkgdesc="GNOME development website"
 arch=(any)
 url="https://developer.gnome.org"
 license=(BSD MIT OFL custom)
+provides=($_pkgname)
+conflicts=($_pkgname)
 makedepends=(git python-sphinx python-sphinx-furo python-sphinx-tabs)
 optdepends=('apache: Web server' 'nginx: Web server')
 install=$pkgname.install
-source=("$pkgname"::"git+https://gitlab.gnome.org/Teams/documentation/developer-www.git")
+source=("$_pkgname"::"git+https://gitlab.gnome.org/Teams/documentation/developer-www.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   ./build.sh --incremental
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   mkdir -p "$pkgdir"/srv/http "$pkgdir"/usr/share/licenses
   rm -rf $(find build -name .doctrees)
   cp -rT build "$pkgdir"/srv/http/gnome-developer-www
