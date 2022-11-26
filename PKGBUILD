@@ -4,7 +4,7 @@ _pkgname=CARNIVAL
 _pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=2.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A CAusal Reasoning tool for Network Identification (from gene expression data) using Integer VALue programming'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,10 +18,15 @@ depends=(
   r-rjson
   r-rmarkdown
   r-stringr
+  r-tibble
   r-tidyr
 )
 optdepends=(
+  r-biocstyle
+  r-covr
   r-knitr
+  r-refmanager
+  r-sessioninfo
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
