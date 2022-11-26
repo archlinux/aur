@@ -1,12 +1,13 @@
 pkgbase = r-helloranges
 	pkgdesc = Introduce *Ranges to bedtools users
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/HelloRanges
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-biocgenerics
+	depends = r-biocio
 	depends = r-biostrings
 	depends = r-bsgenome
 	depends = r-docopt
