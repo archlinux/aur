@@ -1,7 +1,7 @@
 pkgbase = r-dcanr
 	pkgdesc = Differential co-expression/association network analysis
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/dcanr
 	arch = any
 	license = GPL
@@ -16,7 +16,6 @@ pkgbase = r-dcanr
 	depends = r-stringr
 	optdepends = r-biobase
 	optdepends = r-biocstyle
-	optdepends = r-cosine
 	optdepends = r-doparallel
 	optdepends = r-dosnow
 	optdepends = r-ebarrays

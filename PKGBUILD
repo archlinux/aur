@@ -4,7 +4,7 @@ _pkgname=dcanr
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential co-expression/association network analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,6 @@ depends=(
 optdepends=(
   r-biobase
   r-biocstyle
-  r-cosine
   r-doparallel
   r-dosnow
   r-ebarrays
