@@ -4,7 +4,7 @@ _pkgname=shinyjqui
 _pkgver=0.4.1
 pkgname=r-${_pkgname,,}
 pkgver=0.4.1
-pkgrel=4
+pkgrel=7
 pkgdesc="'jQuery UI' Interactions and Effects for Shiny"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,12 +14,15 @@ depends=(
   r-htmltools
   r-htmlwidgets
   r-jsonlite
+  r-rlang
   r-shiny
 )
 optdepends=(
   r-ggplot2
   r-highcharter
   r-knitr
+  r-markdown
+  r-plotly
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
