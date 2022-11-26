@@ -4,7 +4,7 @@ _pkgname=permute
 _pkgver=0.9-7
 pkgname=r-${_pkgname,,}
 pkgver=0.9.7
-pkgrel=4
+pkgrel=10
 pkgdesc='Functions for Generating Restricted Permutations of Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,11 @@ depends=(
   r
 )
 optdepends=(
+  r-bookdown
+  r-knitr
   r-parallel
+  r-rmarkdown
+  r-sessioninfo
   r-testthat
   r-vegan
 )
