@@ -4,7 +4,7 @@ _pkgname=reactable
 _pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=0.3.0
-pkgrel=3
+pkgrel=6
 pkgdesc="Interactive Data Tables Based on 'React Table'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,12 +21,14 @@ optdepends=(
   r-covr
   r-crosstalk
   r-dplyr
+  r-fontawesome
   r-leaflet
   r-mass
   r-rmarkdown
   r-shiny
   r-sparkline
   r-testthat
+  r-tippy
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('38e4d49a235f6900e6d7dcb33245c925860edf0b3eb443c78ee0330b6a0c304d')
