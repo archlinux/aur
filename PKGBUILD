@@ -5,27 +5,27 @@ _pkgname=BiocSklearn
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='interface to python sklearn via Rstudio reticulate'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
-  r
-  r-basilisk
-  r-knitr
-  r-rcpp
-  r-reticulate
-  r-summarizedexperiment
   python
-  python-scikit-learn
+  python-h5py
   python-numpy
   python-pandas
-  python-h5py
+  python-scikit-learn
+  r
+  r-basilisk
+  r-basilisk.utils
+  r-reticulate
+  r-summarizedexperiment
 )
 optdepends=(
   r-biocstyle
   r-hdf5array
+  r-knitr
   r-restfulse
   r-rmarkdown
   r-testthat
