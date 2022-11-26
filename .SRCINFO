@@ -1,7 +1,7 @@
 pkgbase = r-genomicscores
 	pkgdesc = Infrastructure to work with genomewide position-specific scores
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GenomicScores
 	arch = any
 	license = Artistic2.0
@@ -16,6 +16,7 @@ pkgbase = r-genomicscores
 	depends = r-genomeinfodb
 	depends = r-genomicranges
 	depends = r-hdf5array
+	depends = r-httr
 	depends = r-iranges
 	depends = r-rhdf5
 	depends = r-s4vectors

@@ -4,7 +4,7 @@ _pkgname=GenomicScores
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Infrastructure to work with genomewide position-specific scores'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-hdf5array
+  r-httr
   r-iranges
   r-rhdf5
   r-s4vectors
