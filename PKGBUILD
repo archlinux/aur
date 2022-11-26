@@ -4,7 +4,7 @@ _pkgname=rgsepd
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=1.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Gene Set Enrichment / Projection Displays'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-go.db
   r-goseq
   r-gplots
-  r-hash
   r-org.hs.eg.db
   r-summarizedexperiment
 )

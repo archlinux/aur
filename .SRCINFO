@@ -1,7 +1,7 @@
 pkgbase = r-rgsepd
 	pkgdesc = Gene Set Enrichment / Projection Displays
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/rgsepd
 	arch = any
 	license = GPL
@@ -12,7 +12,6 @@ pkgbase = r-rgsepd
 	depends = r-go.db
 	depends = r-goseq
 	depends = r-gplots
-	depends = r-hash
 	depends = r-org.hs.eg.db
 	depends = r-summarizedexperiment
 	optdepends = r-biocgenerics
