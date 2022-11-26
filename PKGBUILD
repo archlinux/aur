@@ -4,13 +4,16 @@ _pkgname=tictoc
 _pkgver=1.1
 pkgname=r-${_pkgname,,}
 pkgver=1.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Functions for Timing R Scripts, as Well as Implementations of Stack and List Structures'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Apache')
 depends=(
   r
+)
+optdepends=(
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('120f868ba276bda70c8edef5d6c092586cf73db0fa02eb5459d8f55350fb474d')

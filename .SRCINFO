@@ -1,11 +1,12 @@
 pkgbase = r-tictoc
 	pkgdesc = Functions for Timing R Scripts, as Well as Implementations of Stack and List Structures
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tictoc
 	arch = any
 	license = Apache
 	depends = r
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/tictoc_1.1.tar.gz
 	sha256sums = 120f868ba276bda70c8edef5d6c092586cf73db0fa02eb5459d8f55350fb474d
 
