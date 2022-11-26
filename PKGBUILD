@@ -2,7 +2,7 @@
 
 _pkgname=stackprinter
 pkgname=python-$_pkgname
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Debugging-friendly exceptions for Python"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/cknd/stackprinter"
 license=('MIT')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('304dfcf29196110af8a449c67333bddbbd5bddfd997c25497fc7399dcc117ac7')
+sha256sums=('99d1ea6b91ffad96b28241edd7bcf071752b0cf694cab58d2335df5353acd086')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
