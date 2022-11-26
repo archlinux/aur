@@ -1,13 +1,12 @@
 pkgbase = r-distributional
 	pkgdesc = Vectorised Probability Distributions
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=distributional
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-digest
-	depends = r-ellipsis
 	depends = r-farver
 	depends = r-generics
 	depends = r-ggplot2
