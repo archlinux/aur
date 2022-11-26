@@ -1,12 +1,12 @@
 pkgbase = r-biwt
 	pkgdesc = Functions to compute the biweight mean vector and covariance & correlation matrices
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=biwt
 	arch = any
 	license = GPL
 	depends = r
-	depends = r-rrcov
+	depends = r-robustbase
 	source = https://cran.r-project.org/src/contrib/biwt_1.0.1.tar.gz
 	sha256sums = 9c3528c5a4d2982d992f15086bad6bc8de291fe3c77ab0119b80350e6540e33d
 

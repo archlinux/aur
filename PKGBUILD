@@ -4,14 +4,14 @@ _pkgname=biwt
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Functions to compute the biweight mean vector and covariance & correlation matrices'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-rrcov
+  r-robustbase
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('9c3528c5a4d2982d992f15086bad6bc8de291fe3c77ab0119b80350e6540e33d')
