@@ -4,7 +4,7 @@ _pkgname=osfr
 _pkgver=0.2.9
 pkgname=r-${_pkgname,,}
 pkgver=0.2.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Interface to the 'Open Science Framework' ('OSF')"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,6 +22,7 @@ depends=(
   r-tibble
 )
 optdepends=(
+  r-brio
   r-covr
   r-dplyr
   r-knitr
@@ -31,6 +32,7 @@ optdepends=(
   r-rprojroot
   r-spelling
   r-testthat
+  r-vcr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ac78ff916bbcf0eec13bbb23d7555537c49a6b54763fed229f4bdc48a179733d')
