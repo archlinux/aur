@@ -4,19 +4,16 @@ _pkgname=onlineFDR
 _pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=2.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Online error control'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-dplyr
-  r-ggplot2
   r-progress
   r-rcpp
   r-rcppprogress
-  r-tidyr
 )
 optdepends=(
   r-covr
