@@ -1,7 +1,7 @@
 pkgbase = communist
 	pkgdesc = Simple GTK4 based p2p messenger
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ProfessorNavigator/communist
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,6 @@ pkgbase = communist
 	makedepends = hunspell
 	makedepends = icu
 	makedepends = libcommunist
-	makedepends = boost
 	depends = gtkmm-4.0
 	depends = hunspell
 	depends = icu
