@@ -7,7 +7,7 @@ Target = etc/kernel/install.*
 Target = usr/lib/modules/*/vmlinuz
 
 [Action]
-Description = Removing kernel and initrd from $BOOT (kernel-install)
+Description = Removing kernel and initrd from $BOOT... (kernel-install)
 When = PreTransaction
 Exec = /usr/share/libalpm/scripts/kernel-install.sh remove
 NeedsTargets
