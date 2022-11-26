@@ -4,7 +4,7 @@ _pkgname=mosaicCore
 _pkgver=0.9.2.1
 pkgname=r-${_pkgname,,}
 pkgver=0.9.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Common Utilities for Other MOSAIC-Family Packages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,6 +18,7 @@ depends=(
 optdepends=(
   r-ggformula
   r-mosaic
+  r-mosaiccalc
   r-mosaicdata
   r-nhanes
   r-testthat
