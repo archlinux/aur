@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -41,6 +41,9 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	sed -i -e "s/VERSION.*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
+	if test -d ./dist ; then
+		rm -r ./dist
+	fi
 	make
 	/usr/bin/python3 -m build --wheel --no-isolation
 }
