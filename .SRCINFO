@@ -1,21 +1,22 @@
 pkgbase = wechat-uos
 	pkgdesc = 微信官方原生桌面版 WeChat desktop
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://weixin.qq.com/
 	arch = x86_64
 	license = ISC
-	depends = electron
+	depends = electron20
 	depends = bubblewrap
 	depends = lsb-release
+	depends = openssl-1.1
 	optdepends = scrot: For in-app screenshot
 	source = wechat-2.1.5.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_2.1.5_amd64.deb
 	source = wechat.sh
 	source = wechat-uos.desktop
 	source = license.tar.gz
 	sha512sums = 89bc2c8c087b744e245f39fee7d73f953c1349a68c493df1e4f0d187f2e7450d47ad7507fa6abcb91625c6240707da83f421f513d696eb5fc95b808ef779fc95
-	sha512sums = 39901f4a8187e7939d9bf4e2ceb68fade476e1bacd3dbb374229c78b2f36492a4ef082335f146f5078113b14c8189b9491db1a2274e8db25ed9074003575d653
+	sha512sums = 503c763dfe19f1d1c3cd1fa2c7fc7b488bd23e4ff790d16e0312150b2a6028f9933212ed2177c309c3d3d2a6ede1f1ed02a9a2ecb9efadd4a7f9ca7dfc29fc7b
 	sha512sums = 68d31d9e7a6ee14d5cc330acf55d9905be86c4ac187279e33494bc479a60c078b38eef0fa7833ba9fda2b14978f212d8647dd609b6f3037b0133701fe8f5e72b
 	sha512sums = 8b9d70162a5a71584cf85a309da48730de9db03f49a7e9611de04441864be80267e53e3155f7856c87ed53f99def277d74132392816c4f07893a02e99043ed6c
 

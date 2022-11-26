@@ -6,14 +6,15 @@
 
 pkgname=wechat-uos
 _pkgname=wechat
+_electron=electron20
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
 url="https://weixin.qq.com/"
 license=('ISC')
-depends=(electron bubblewrap lsb-release)
+depends=(${_electron} bubblewrap lsb-release openssl-1.1)
 optdepends=('scrot: For in-app screenshot')
 source=(
   "${_pkgname}-${pkgver}.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_${pkgver}_amd64.deb"
@@ -26,10 +27,14 @@ source=(
   "license.tar.gz"
 )
 sha512sums=('89bc2c8c087b744e245f39fee7d73f953c1349a68c493df1e4f0d187f2e7450d47ad7507fa6abcb91625c6240707da83f421f513d696eb5fc95b808ef779fc95'
-            '39901f4a8187e7939d9bf4e2ceb68fade476e1bacd3dbb374229c78b2f36492a4ef082335f146f5078113b14c8189b9491db1a2274e8db25ed9074003575d653'
+            '503c763dfe19f1d1c3cd1fa2c7fc7b488bd23e4ff790d16e0312150b2a6028f9933212ed2177c309c3d3d2a6ede1f1ed02a9a2ecb9efadd4a7f9ca7dfc29fc7b'
             '68d31d9e7a6ee14d5cc330acf55d9905be86c4ac187279e33494bc479a60c078b38eef0fa7833ba9fda2b14978f212d8647dd609b6f3037b0133701fe8f5e72b'
             '8b9d70162a5a71584cf85a309da48730de9db03f49a7e9611de04441864be80267e53e3155f7856c87ed53f99def277d74132392816c4f07893a02e99043ed6c')
 
+prepare(){
+  cd ${srcdir}
+  sed -i "s|__ELECTRON__|${_electron}|g" wechat.sh
+}
 
 package(){
     echo "  -> Extracting the data.tar.xz..."
@@ -56,11 +61,11 @@ package(){
     install -m 755 -d ${pkgdir}/usr/share/${pkgname}
     cp -r license/etc ${pkgdir}/usr/share/${pkgname}
     cp -r license/var ${pkgdir}/usr/share/${pkgname}
-    
+
     # use system scrot
     cd ${pkgdir}/usr/lib/wechat-uos/packages/main/dist/
     sed -i 's|__dirname,"bin","scrot"|"/usr/bin/"|g' index.js
     rm -rf bin
-    
+
 }
 # vim: ts=2 sw=2 et:
