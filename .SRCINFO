@@ -1,7 +1,7 @@
 pkgbase = r-slingshot
 	pkgdesc = Tools for ordering single-cell sequencing
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/slingshot
 	arch = any
 	license = Artistic2.0
@@ -17,6 +17,7 @@ pkgbase = r-slingshot
 	optdepends = r-biocstyle
 	optdepends = r-clusterexperiment
 	optdepends = r-covr
+	optdepends = r-delayedmatrixstats
 	optdepends = r-knitr
 	optdepends = r-mclust
 	optdepends = r-mgcv

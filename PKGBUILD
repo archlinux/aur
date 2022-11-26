@@ -4,7 +4,7 @@ _pkgname=slingshot
 _pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=2.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for ordering single-cell sequencing'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,6 +24,7 @@ optdepends=(
   r-biocstyle
   r-clusterexperiment
   r-covr
+  r-delayedmatrixstats
   r-knitr
   r-mclust
   r-mgcv
