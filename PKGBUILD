@@ -4,7 +4,7 @@ _pkgname=orthogene
 _pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Interspecies gene mapping'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,31 +14,42 @@ depends=(
   r-babelgene
   r-data.table
   r-delayedarray
-  r-delayedmatrixstats
   r-dplyr
-  r-genomeinfodbdata
   r-ggplot2
   r-ggpubr
+  r-ggtree
   r-gprofiler2
   r-grr
   r-homologene
   r-jsonlite
-  r-matrix.utils
   r-patchwork
   r-repmis
-  r-ggtree
 )
 optdepends=(
+  r-ape
   r-badger
   r-biocstyle
+  r-cairo
   r-covr
+  r-desc
+  r-genomeinfodbdata
+  r-ggimage
+  r-haven
   r-here
+  r-hrbrthemes
   r-knitr
+  r-magick
   r-markdown
+  r-omadb
+  r-phytools
   r-piggyback
+  r-rcolorbrewer
   r-remotes
   r-rmarkdown
+  r-rphylopic
   r-testthat
+  r-treetools
+  r-yulab.utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a26068c02f6ea3d8f43b4d66ee804094ec914e227eb75cb8f0b76cf0831de7ad')
