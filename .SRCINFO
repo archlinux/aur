@@ -1,15 +1,21 @@
 pkgbase = arch-update
-	pkgdesc = A clickeable icon that automatically changes to act as an update notifier/applier
-	pkgver = 1.3.2
+	pkgdesc = An update notifier/applier that assists you with important pre/post update tasks.
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
 	license = GPL3
 	depends = pacman-contrib
+	depends = curl
+	depends = hq
+	depends = diffutils
+	depends = vim
 	optdepends = yay: AUR support
 	optdepends = paru: AUR support
 	optdepends = libnotify: Desktop notification support
-	source = arch-update-1.3.2.tar.gz::https://github.com/Antiz96/arch-update/archive/v1.3.2.tar.gz
-	sha256sums = 586b2ce7ad7ea68ece22a9a0bfeda77e2c83ee67dd1fa1f2e55deabb9c820aa4
+	optdepends = sudo: Privilege elevation
+	optdepends = doas: Privilege elavation
+	source = arch-update-1.4.0::https://github.com/Antiz96/arch-update/archive/v1.4.0.tar.gz
+	sha256sums = dfd7e614cc57053f180e779f0f92851de2a7c0afd15526caad12e3741d5b6398
 
 pkgname = arch-update
