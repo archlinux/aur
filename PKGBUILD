@@ -4,7 +4,7 @@ _pkgname=ggfun
 _pkgver=0.0.9
 pkgname=r-${_pkgname,,}
 pkgver=0.0.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Miscellaneous Functions for 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,10 +15,12 @@ depends=(
   r-rlang
 )
 optdepends=(
+  r-ggnewscale
   r-ggplotify
   r-knitr
   r-prettydoc
   r-rmarkdown
+  r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('5c740e9d1e73b77658f41ed65e21492f4e71b12c7c9ff4b9e52ebf5f8f197612')
