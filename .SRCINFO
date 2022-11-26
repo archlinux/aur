@@ -1,7 +1,7 @@
 pkgbase = opentitus
 	pkgdesc = Rewrite of the game engine used in the old DOS-based games Titus the Fox and Moktar (the French version)
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentitus.sourceforge.net/
 	install = opentitus.install
 	arch = x86_64
