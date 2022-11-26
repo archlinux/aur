@@ -1,4 +1,0 @@
-[salvador]
-source = 'gitlab'
-gitlab = 'dpeukert/salvador'
-use_max_tag = true
