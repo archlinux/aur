@@ -4,7 +4,7 @@ _pkgname=BioTIP
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='BioTIP: An R package for characterization of Biological Tipping-Point'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,11 +12,10 @@ license=('GPL')
 depends=(
   r
   r-genomicranges
-  r-hmisc
   r-igraph
   r-psych
-  r-stringr
   r-scran
+  r-stringr
 )
 optdepends=(
   r-base
