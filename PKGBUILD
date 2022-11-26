@@ -2,12 +2,12 @@
 
 pkgname=gsim
 pkgver=21.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A tool for visualisation and processing of NMR spectra"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gsim"
 license=('GPL')
-depends=('root' 'muparser' 'qt5-svg' 'libcmatrix' 'libemf' 'cblas')
+depends=('root' 'muparser' 'qt5-svg' 'libcmatrix' 'libemf' 'cblas' 'lapack')
 makedepends=('imagemagick')
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgver:0:2}/${pkgname}-${pkgver}.tar.gz")
@@ -21,7 +21,7 @@ prepare() {
   sed -i "/Minuit2\/include/d" $pkgname.pro
   sed -i "/muparser\/include/d" $pkgname.pro
   sed -i "/unix:INCLUDEPATH/c\unix:INCLUDEPATH += \/usr\/include\/libcmatrix \/usr\/include\/root" $pkgname.pro
-  sed -i "/unix:LIBS/c\unix:LIBS += -lcmatrix -L\/usr\/lib\/root -lMinuit2 -lmuparser -lEMF -lgomp -lcblas" $pkgname.pro
+  sed -i "/unix:LIBS/c\unix:LIBS += -lcmatrix -L\/usr\/lib\/root -lMinuit2 -lmuparser -lEMF -lgomp -lcblas -llapack" $pkgname.pro
   
   # Enable EMF support
   sed -i "s/USE_EMF_OUTPUT/USE_EMF_OUTPUT Q_WS_X11/g" $pkgname.pro
