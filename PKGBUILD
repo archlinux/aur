@@ -5,25 +5,21 @@ _pkgname=flowClust
 _pkgver=3.36.0
 pkgname=r-${_pkgname,,}
 pkgver=3.36.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Clustering for Flow Cytometry'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
+  make
   r
   r-biobase
   r-biocgenerics
-  r-clue
-  r-corpcor
-  r-ellipse
   r-flowcore
-  r-flowviz
   r-graph
-  r-mnormt
-  make
 )
 optdepends=(
+  r-flowstats
   r-flowworkspace
   r-flowworkspacedata
   r-knitr
