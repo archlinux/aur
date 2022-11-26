@@ -4,7 +4,7 @@ _pkgname=effectsize
 _pkgver=0.8.2
 pkgname=r-${_pkgname,,}
 pkgver=0.8.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Indices of Effect Size and Standardized Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,6 +12,7 @@ license=('GPL')
 depends=(
   r
   r-bayestestr
+  r-datawizard
   r-insight
   r-parameters
   r-performance
@@ -23,32 +24,20 @@ optdepends=(
   r-brms
   r-car
   r-correlation
-  r-covr
-  r-dplyr
   r-emmeans
-  r-gamm4
-  r-ggplot2
   r-knitr
   r-lavaan
-  r-lm.beta
   r-lme4
   r-lmertest
   r-mass
-  r-mediation
   r-mgcv
-  r-modelbased
-  r-mumin
-  r-performance
-  r-pscl
+  r-parsnip
   r-rmarkdown
   r-rms
   r-rstanarm
   r-rstantools
   r-see
-  r-spelling
   r-testthat
-  r-tidymodels
-  r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6ce2b2abb16cf918fd9429e54d6688388ef9b9e543a051da38ad9236efde73c5')
