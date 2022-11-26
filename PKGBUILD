@@ -4,7 +4,7 @@ _pkgname=GenomicFeatures
 _pkgver=1.50.2
 pkgname=r-${_pkgname,,}
 pkgver=1.50.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Conveniently import and query gene models'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,6 +28,7 @@ depends=(
   r-xvector
 )
 optdepends=(
+  r-annotationfilter
   r-biocstyle
   r-bsgenome
   r-bsgenome.celegans.ucsc.ce11
@@ -37,6 +38,7 @@ optdepends=(
   r-fdb.ucsc.trnas
   r-genomicalignments
   r-knitr
+  r-markdown
   r-mirbase.db
   r-org.hs.eg.db
   r-org.mm.eg.db
