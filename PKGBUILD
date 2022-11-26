@@ -4,7 +4,7 @@ _pkgname=propr
 _pkgver=4.2.6
 pkgname=r-${_pkgname,,}
 pkgver=4.2.6
-pkgrel=4
+pkgrel=7
 pkgdesc='Calculating Proportionality Between Vectors of Compositional Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
   r-vegan
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('cf4dca710a3e6d1ab297fc1f5b0e0be85f0e36e6885da014fd099bcfef7ff099')
 
 build() {

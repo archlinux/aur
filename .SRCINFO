@@ -1,7 +1,7 @@
 pkgbase = r-propr
 	pkgdesc = Calculating Proportionality Between Vectors of Compositional Data
 	pkgver = 4.2.6
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=propr
 	arch = x86_64
 	license = GPL
@@ -28,7 +28,7 @@ pkgbase = r-propr
 	optdepends = r-sdmtools
 	optdepends = r-testthat
 	optdepends = r-vegan
-	source = https://cran.r-project.org/src/contrib/propr_4.2.6.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/propr/propr_4.2.6.tar.gz
 	sha256sums = cf4dca710a3e6d1ab297fc1f5b0e0be85f0e36e6885da014fd099bcfef7ff099
 
 pkgname = r-propr
