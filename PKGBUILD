@@ -4,13 +4,14 @@ _pkgname=ggstar
 _pkgver=1.0.4
 pkgname=r-${_pkgname,,}
 pkgver=1.0.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Multiple Geometric Shape Point Layer for 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
+  r-cli
   r-ggplot2
   r-gridextra
   r-scales
