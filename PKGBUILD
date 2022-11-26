@@ -4,7 +4,7 @@ _pkgname=MsCoreUtils
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Core Utils for Mass Spectrometry Data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,9 +17,12 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-hdf5array
   r-impute
   r-imputelcmd
   r-knitr
+  r-matrix
+  r-missforest
   r-norm
   r-pcamethods
   r-preprocesscore
