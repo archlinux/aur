@@ -3,9 +3,9 @@
 
 pkgname=gerbv-git
 _pkgname=gerbv
-pkgver=2.9.3.r1.g8aa1e02
+pkgver=2.9.5.r1.g3ece126
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="An open source Gerber file (RS-274X only) viewer"
 url="https://github.com/gerbv/gerbv"
 license=('GPL')
