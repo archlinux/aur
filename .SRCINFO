@@ -1,7 +1,7 @@
 pkgbase = r-refmanager
 	pkgdesc = Straightforward 'BibTeX' and 'BibLaTeX' Bibliography Management
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RefManageR
 	arch = any
 	license = GPL
@@ -13,7 +13,6 @@ pkgbase = r-refmanager
 	depends = r-plyr
 	depends = r-stringr
 	depends = r-xml2
-	optdepends = r-bibtex
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-testthat

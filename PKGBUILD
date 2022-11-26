@@ -4,7 +4,7 @@ _pkgname=RefManageR
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Straightforward 'BibTeX' and 'BibLaTeX' Bibliography Management"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,6 @@ depends=(
   r-xml2
 )
 optdepends=(
-  r-bibtex
   r-knitr
   r-markdown
   r-testthat
