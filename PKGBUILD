@@ -6,19 +6,20 @@ _pkgname=shinyWidgets
 _pkgver=0.7.5
 pkgname=r-${_pkgname,,}
 pkgver=0.7.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Custom Inputs Widgets for Shiny'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-anytime
   r-bslib
   r-htmltools
   r-jsonlite
+  r-rlang
   r-sass
   r-shiny
-  r-anytime
 )
 optdepends=(
   r-argondash
