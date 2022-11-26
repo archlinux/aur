@@ -4,7 +4,7 @@ _pkgname=report
 _pkgver=0.5.5
 pkgname=r-${_pkgname,,}
 pkgver=0.5.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Automated Reporting of Results and Statistical Models'
 arch=('any')
 url="https://github.com/easystats/report"
@@ -22,14 +22,13 @@ optdepends=(
   r-bayesfactor
   r-brms
   r-dplyr
-  r-httr
+  r-ivreg
   r-knitr
   r-lavaan
   r-lme4
-  r-logspline
   r-rmarkdown
   r-rstanarm
-  r-spelling
+  r-survival
   r-testthat
 )
 source=("${_pkgname}_${pkgver}.tar.gz::https://github.com/easystats/report/archive/refs/tags/${pkgver}.tar.gz")
