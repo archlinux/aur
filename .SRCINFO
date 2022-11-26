@@ -1,7 +1,7 @@
 pkgbase = r-ggforce
 	pkgdesc = Accelerating 'ggplot2'
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggforce
 	arch = x86_64
 	license = MIT
@@ -23,6 +23,7 @@ pkgbase = r-ggforce
 	optdepends = r-concaveman
 	optdepends = r-covr
 	optdepends = r-deldir
+	optdepends = r-latex2exp
 	optdepends = r-reshape2
 	optdepends = r-sessioninfo
 	optdepends = r-units

@@ -4,7 +4,7 @@ _pkgname=ggforce
 _pkgver=0.4.1
 pkgname=r-${_pkgname,,}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Accelerating 'ggplot2'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -30,6 +30,7 @@ optdepends=(
   r-concaveman
   r-covr
   r-deldir
+  r-latex2exp
   r-reshape2
   r-sessioninfo
   r-units
