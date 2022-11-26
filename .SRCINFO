@@ -1,7 +1,7 @@
 pkgbase = r-isomirs
 	pkgdesc = Analyze isomiRs and miRNAs from small RNA-seq
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/isomiRs
 	arch = any
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = r-isomirs
 	depends = r-cowplot
 	depends = r-degreport
 	depends = r-deseq2
-	depends = r-discriminer
 	depends = r-dplyr
 	depends = r-genomicranges
 	depends = r-ggally

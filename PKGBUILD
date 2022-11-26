@@ -4,7 +4,7 @@ _pkgname=isomiRs
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analyze isomiRs and miRNAs from small RNA-seq'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,7 +19,6 @@ depends=(
   r-cowplot
   r-degreport
   r-deseq2
-  r-discriminer
   r-dplyr
   r-genomicranges
   r-ggally
