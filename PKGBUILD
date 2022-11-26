@@ -4,7 +4,7 @@ _pkgname=magicaxis
 _pkgver=2.2.14
 pkgname=r-${_pkgname,,}
 pkgver=2.2.14
-pkgrel=4
+pkgrel=7
 pkgdesc='Pretty Scientific Plotting with Minor-Tick and Log Minor-Tick Support'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   r-mapproj
   r-plotrix
   r-rann
-  r-rcolorbrewer
   r-sm
 )
 optdepends=(
