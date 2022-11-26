@@ -5,7 +5,7 @@ _pkgname=CGEN
 _pkgver=3.34.0
 pkgname=r-${_pkgname,,}
 pkgver=3.34.0
-pkgrel=1
+pkgrel=3
 pkgdesc="An R package for analysis of case-control studies in genetic epidemiology"
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,9 @@ license=('GPL')
 depends=(
   'r>=4.0'
    r-mvtnorm
+)
+optdepends=(
+  r-cluster
 )
 makedepends=(
   gcc-fortran
