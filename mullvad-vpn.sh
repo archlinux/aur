@@ -1,2 +1,2 @@
 #!/bin/bash
-"/opt/Mullvad VPN/mullvad-vpn" %U
+"/opt/Mullvad VPN/mullvad-vpn" "$@"

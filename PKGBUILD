@@ -21,7 +21,7 @@ _tag=5bcd2533633d76b1deaf5875b24a2c83bec6fc49 # tags/2022.5^0
 _commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
-        'no-rpm.diff'        
+        'no-rpm.diff'
         "$pkgname.sh")
 sha256sums=('SKIP'
             'SKIP'
