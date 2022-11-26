@@ -4,7 +4,7 @@ _pkgname=cageminer
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Candidate Gene Miner'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,8 +22,10 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-covr
   r-knitr
   r-rmarkdown
+  r-sessioninfo
   r-summarizedexperiment
   r-testthat
 )
