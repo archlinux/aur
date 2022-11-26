@@ -4,13 +4,15 @@ _pkgname=microbiome
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Microbiome Analytics'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('BSD')
 depends=(
   r
+  r-biostrings
+  r-compositions
   r-dplyr
   r-ggplot2
   r-phyloseq
@@ -20,7 +22,6 @@ depends=(
   r-tibble
   r-tidyr
   r-vegan
-  r-compositions
 )
 optdepends=(
   r-biocgenerics
