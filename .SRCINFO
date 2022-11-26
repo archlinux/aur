@@ -1,7 +1,7 @@
 pkgbase = r-isee
 	pkgdesc = Interactive SummarizedExperiment Explorer
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/iSEE
 	arch = any
 	license = MIT
@@ -26,6 +26,7 @@ pkgbase = r-isee
 	depends = r-vipor
 	depends = r-viridislite
 	optdepends = r-biocstyle
+	optdepends = r-covr
 	optdepends = r-delayedarray
 	optdepends = r-hdf5array
 	optdepends = r-htmltools
