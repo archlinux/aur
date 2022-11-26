@@ -4,7 +4,7 @@ _pkgname=igvR
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='igvR: integrative genomics viewer'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,17 +16,18 @@ depends=(
   r-genomicalignments
   r-genomicranges
   r-httpuv
-  r-motifdb
+  r-httr
   r-rcolorbrewer
   r-rtracklayer
-  r-seqlogo
   r-variantannotation
 )
 optdepends=(
   r-biocstyle
   r-knitr
+  r-motifdb
   r-rmarkdown
   r-runit
+  r-seqlogo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('623472af3f9e36d2fafa54e871b2b6be460ae8d69c2e5a9923ba781cabc1361b')
