@@ -1,11 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-lua-git
-pkgver=1.6.0.r12.g6f5d401
+pkgver=0.0.14.r0.gfb30e8c
 pkgrel=1
+epoch=1
 pkgdesc="Lua grammar for tree-sitter"
 arch=('x86_64')
-url="https://github.com/nvim-treesitter/tree-sitter-lua"
+url="https://github.com/muniftanjim/tree-sitter-lua"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
@@ -16,8 +17,7 @@ source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
@@ -27,16 +27,15 @@ prepare() {
 
 build() {
 	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CPPFLAGS -c scanner.cc
+	cc $CFLAGS -std=c99 -c parser.c scanner.c
 	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
 }
 
 package() {
-	install -Dm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-lua.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-lua.so" "$pkgdir/usr/share/nvim/runtime/parser/lua.so"
+	install -Dvm644 parser.so "$pkgdir/usr/lib/libtree-sitter-lua.so"
+	install -dv "$pkgdir/usr/share/nvim/runtime/parser/"
+	ln -sv "/usr/lib/libtree-sitter-lua.so" "$pkgdir/usr/share/nvim/runtime/parser/lua.so"
 	cd "$pkgname"
-	install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

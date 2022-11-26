@@ -1,8 +1,9 @@
 pkgbase = tree-sitter-lua-git
 	pkgdesc = Lua grammar for tree-sitter
-	pkgver = 1.6.0.r12.g6f5d401
+	pkgver = 0.0.14.r0.gfb30e8c
 	pkgrel = 1
-	url = https://github.com/nvim-treesitter/tree-sitter-lua
+	epoch = 1
+	url = https://github.com/muniftanjim/tree-sitter-lua
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
@@ -12,7 +13,7 @@ pkgbase = tree-sitter-lua-git
 	depends = gcc-libs
 	provides = tree-sitter-lua
 	conflicts = tree-sitter-lua
-	source = tree-sitter-lua-git::git+https://github.com/nvim-treesitter/tree-sitter-lua
+	source = tree-sitter-lua-git::git+https://github.com/muniftanjim/tree-sitter-lua
 	sha256sums = SKIP
 
 pkgname = tree-sitter-lua-git
