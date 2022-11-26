@@ -4,7 +4,7 @@ _pkgname=RiboDiPA
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential pattern analysis for Ribo-seq data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,6 +12,7 @@ license=('LGPL')
 depends=(
   r
   r-biocfilecache
+  r-biocgenerics
   r-data.table
   r-deseq2
   r-doparallel
