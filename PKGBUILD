@@ -5,7 +5,7 @@ _pkgname=uchardet
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc='The Universal Character Encoding Detector'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
   r
 )
 optdepends=(
-  r-curl
   r-knitr
   r-rmarkdown
   r-tinytest
