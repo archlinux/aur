@@ -4,7 +4,7 @@ _pkgname=NoRCE
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='NoRCE: Noncoding RNA Sets Cis Annotation and Enrichment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
   r-dbi
   r-dbplyr
   r-dplyr
+  r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
@@ -32,6 +33,7 @@ depends=(
   r-rtracklayer
   r-rwikipathways
   r-s4vectors
+  r-stringr
   r-summarizedexperiment
   r-tidyr
   r-zlibbioc
