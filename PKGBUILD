@@ -4,7 +4,7 @@ _pkgname=MungeSumstats
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Standardise summary statistics from GWAS'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
   r-genomicranges
   r-googleauthr
   r-httr
+  r-iranges
   r-jsonlite
   r-magrittr
   r-r.utils
@@ -28,21 +29,24 @@ depends=(
   r-variantannotation
 )
 optdepends=(
+  r-badger
   r-biocgenerics
+  r-biocparallel
   r-biocstyle
   r-bsgenome.hsapiens.1000genomes.hs37d5
   r-bsgenome.hsapiens.ncbi.grch38
   r-covr
-  r-iranges
+  r-genomicfiles
   r-knitr
   r-markdown
   r-matrixgenerics
   r-rmarkdown
   r-rsamtools
   r-s4vectors
-  r-seqminer
   r-snplocs.hsapiens.dbsnp144.grch37
   r-snplocs.hsapiens.dbsnp144.grch38
+  r-snplocs.hsapiens.dbsnp155.grch37
+  r-snplocs.hsapiens.dbsnp155.grch38
   r-testthat
   r-upsetr
 )
