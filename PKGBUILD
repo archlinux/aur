@@ -4,7 +4,7 @@ _pkgname=simplifyEnrichment
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Simplify Functional Enrichment Results'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,9 +15,11 @@ depends=(
   r-biocgenerics
   r-circlize
   r-clue
+  r-colorspace
   r-complexheatmap
   r-digest
   r-getoptlong
+  r-globaloptions
   r-go.db
   r-gosemsim
   r-org.hs.eg.db
@@ -36,9 +38,12 @@ optdepends=(
   r-dose
   r-dynamictreecut
   r-flexclust
+  r-fpc
+  r-genefilter
   r-ggplot2
   r-gridextra
   r-gridgraphics
+  r-gridtext
   r-hu6800.db
   r-igraph
   r-interactivecomplexheatmap
