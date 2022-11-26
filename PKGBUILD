@@ -4,19 +4,15 @@ _pkgname=seqcombo
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Visualization Tool for Sequence Recombination and Reassortment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
-  r-biostrings
-  r-cowplot
-  r-dplyr
   r-ggplot2
   r-igraph
-  r-magrittr
   r-yulab.utils
 )
 optdepends=(
