@@ -5,7 +5,7 @@ _pkgname=mlr
 _pkgver=2.19.1
 pkgname=r-${_pkgname,,}
 pkgver=2.19.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Machine Learning in R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -44,13 +44,11 @@ optdepends=(
   r-cubist
   r-deepnet
   r-dicekriging
-  r-discriminer
   r-e1071
   r-earth
   r-elasticnet
   r-emoa
   r-evtree
-  r-extratrees
   r-fda.usc
   r-fdboost
   r-fnn
@@ -87,7 +85,6 @@ optdepends=(
   r-mrmre
   r-neuralnet
   r-nnet
-  r-nodeharvest
   r-numderiv
   r-pamr
   r-pander
@@ -98,21 +95,18 @@ optdepends=(
   r-pmcmrplus
   r-praznik
   r-randomforest
-  r-randomforestsrc
   r-ranger
   r-rappdirs
   r-refund
   r-rex
   r-rferns
   r-rgenoud
-  r-rknn
   r-rmarkdown
   r-rmpi
   r-rocr
   r-rotationforest
   r-rpart
   r-rrf
-  r-rrlda
   r-rsm
   r-rsnns
   r-rucrdtw
@@ -120,7 +114,6 @@ optdepends=(
   r-sda
   r-sf
   r-smoof
-  r-snow
   r-sparselda
   r-stepplr
   r-survauc
