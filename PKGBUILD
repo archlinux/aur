@@ -4,7 +4,7 @@ _pkgname=RITAN
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Rapid Integration of Term Annotation and Network resources'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,6 +35,7 @@ depends=(
   r-ensdb.hsapiens.v86
 )
 optdepends=(
+  r-bgeedb
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
