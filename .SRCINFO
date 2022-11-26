@@ -1,7 +1,7 @@
 pkgbase = r-metavolcanor
 	pkgdesc = An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MetaVolcanoR
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-metavolcanor
 	depends = r-htmlwidgets
 	optdepends = r-knitr
 	optdepends = r-markdown
-	optdepends = r-rmakrdown
+	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = git+https://git.bioconductor.org/packages/MetaVolcanoR.git
 	sha256sums = SKIP

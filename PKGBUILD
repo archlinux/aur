@@ -3,7 +3,7 @@ _pkgname=MetaVolcanoR
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,11 +27,11 @@ makedepends=(
   tar
 )
 optdepends=(
-    r-knitr
-    r-markdown
-    r-rmakrdown
-    r-testthat
- )
+  r-knitr
+  r-markdown
+  r-rmarkdown
+  r-testthat
+)
 source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
 sha256sums=('SKIP')
 
