@@ -1,7 +1,7 @@
 pkgbase = r-chetah
 	pkgdesc = Fast and accurate scRNA-seq cell type identification
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/CHETAH
 	arch = any
 	license = custom
@@ -12,7 +12,6 @@ pkgbase = r-chetah
 	depends = r-cowplot
 	depends = r-dendextend
 	depends = r-ggplot2
-	depends = r-gplots
 	depends = r-pheatmap
 	depends = r-plotly
 	depends = r-reshape2

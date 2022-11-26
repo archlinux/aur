@@ -4,7 +4,7 @@ _pkgname=CHETAH
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Fast and accurate scRNA-seq cell type identification'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,7 +16,6 @@ depends=(
   r-cowplot
   r-dendextend
   r-ggplot2
-  r-gplots
   r-pheatmap
   r-plotly
   r-reshape2
