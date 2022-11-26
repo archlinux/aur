@@ -12,8 +12,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2671' '2694')
-_merge_requests_to_use=('1441' '1880' '2671' '2694')
+# Merge Requests List: ('579' '1441' '1880' '2671' '2694' '2720')
+_merge_requests_to_use=('1441' '1880' '2694' '2720')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -32,7 +32,7 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=43.1+r2+g6a962803e
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -51,12 +51,14 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         'mr1441.patch'
         'mr1880.patch'
         'mr2671.patch'
-        'mr2694.patch')
+        'mr2694.patch'
+        'mr2720.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
             '6e6ff34859c7654eb6bf56b8658fcedfac460d05d4dd41ed7c305a78f03513cf'
             '45ba598e88a4b18ab2d0522abe058efaf0ceb05895bae6f31887bcd4492c45ce'
-            '620aabe6b59a6b4ccde95c0aecf98c290ad218c0b8a340bb0bc075c6cc0846e1')
+            '620aabe6b59a6b4ccde95c0aecf98c290ad218c0b8a340bb0bc075c6cc0846e1'
+            '34426cc2ae75f3fc462fcdcfa3bd8ebe8f233d167a96a9f3cbe55b9a5aeba076')
 
 pkgver() {
   cd $pkgname
@@ -162,8 +164,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment: Avoid some allocations, save some CPU cycles and make the code easier to read.
-  # NOTE: This changes mutter's behaviors, which can bring regressions when using extensions.
-  #       Disable this MR if you encounter errors with those extensions.
+  # NOTE: This changes mutter's behaviors, which can bring regressions when using some extensions.
   pick_mr '2671' 'mr2671.patch' 'patch'
 
   # Title: clutter/actor: Show on all stage-views when actors have no allocation
@@ -174,6 +175,15 @@ prepare() {
   # Comment: For paint volumes, queue full-stage redraws. For actors without valid allocations,
   #          set priv->stage_views to all available stage views.
   pick_mr '2694' 'mr2694.patch' 'patch'
+
+  # Title: window/wayland: Calculate bottom and right frame extents
+  # Author: Sebastian Keller <skeller@gnome.org>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2720
+  # Type: 3
+  # Status: 2
+  # Comment: Fixes: 6cbc5180
+  #          Closes: gnome-shell#6050
+  pick_mr '2720' 'mr2720.patch' 'patch'
 
 }
 
