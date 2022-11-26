@@ -4,7 +4,7 @@ _pkgname=NMF
 _pkgver=0.25
 pkgname=r-${_pkgname,,}
 pkgver=0.25
-pkgrel=1
+pkgrel=3
 pkgdesc='Algorithms and Framework for Nonnegative Matrix Factorization (NMF)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,6 @@ depends=(
   r-foreach
   r-ggplot2
   r-gridbase
-  r-pkgmaker
   r-rcolorbrewer
   r-registry
   r-reshape2
@@ -27,7 +26,6 @@ depends=(
   r-stringr
 )
 optdepends=(
-  r-bibtex
   r-bigmemory
   r-corpcor
   r-devtools

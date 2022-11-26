@@ -1,7 +1,7 @@
 pkgbase = r-nmf
 	pkgdesc = Algorithms and Framework for Nonnegative Matrix Factorization (NMF)
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=NMF
 	arch = x86_64
 	license = GPL
@@ -14,13 +14,11 @@ pkgbase = r-nmf
 	depends = r-foreach
 	depends = r-ggplot2
 	depends = r-gridbase
-	depends = r-pkgmaker
 	depends = r-rcolorbrewer
 	depends = r-registry
 	depends = r-reshape2
 	depends = r-rngtools
 	depends = r-stringr
-	optdepends = r-bibtex
 	optdepends = r-bigmemory
 	optdepends = r-corpcor
 	optdepends = r-devtools
