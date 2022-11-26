@@ -1,12 +1,13 @@
 pkgbase = r-tsp
 	pkgdesc = Traveling Salesperson Problem (TSP)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=TSP
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-foreach
+	optdepends = r-doparallel
 	optdepends = r-maps
 	optdepends = r-maptools
 	optdepends = r-sp

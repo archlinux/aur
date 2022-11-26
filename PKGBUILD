@@ -4,7 +4,7 @@ _pkgname=TSP
 _pkgver=1.2-1
 pkgname=r-${_pkgname,,}
 pkgver=1.2.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Traveling Salesperson Problem (TSP)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
   r-foreach
 )
 optdepends=(
+  r-doparallel
   r-maps
   r-maptools
   r-sp
