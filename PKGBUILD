@@ -4,7 +4,7 @@ _pkgname=metagene
 _pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=2.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A package to produce metagene plots'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,7 +24,6 @@ depends=(
   r-iranges
   r-magrittr
   r-matrixstats
-  r-mustat
   r-purrr
   r-r6
   r-rsamtools
@@ -37,7 +36,6 @@ optdepends=(
   r-knitr
   r-rmarkdown
   r-runit
-  r-similarpeak
   r-similarpeak
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
