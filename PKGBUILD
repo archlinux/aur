@@ -2,7 +2,7 @@
 
 pkgname=netbird-ui
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Official GUI for the Netbird client'
 url='https://netbird.io'
 arch=(x86_64 aarch64 armv7h armv7l armv6h)
@@ -15,20 +15,13 @@ makedepends=(go)
 optdepends=()
 
 source=(
-  "0001-fix-run-paths.patch"
   "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('51d96f5ac1ab6f7b695b557b2eb0ef66ab8b11aec9c97677f5e38eb73ed67048'
-            'ead3d14129e4a122df36687b1546d61ea3e1a27e55270f069f69a4bc9d4d698f')
+sha256sums=('ead3d14129e4a122df36687b1546d61ea3e1a27e55270f069f69a4bc9d4d698f')
 
 prepare() {
   cd "$srcdir/netbird-$pkgver"
   mkdir -p build
-
-  for patch in "$srcdir"/*.patch; do
-    patch -p1 -i "$patch"
-  done
-
   go mod download
 }
 
