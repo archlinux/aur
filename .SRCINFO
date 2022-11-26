@@ -1,7 +1,7 @@
 pkgbase = libcommunist
 	pkgdesc = Library for P2P communications
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ProfessorNavigator/libcommunist
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = libcommunist
 	makedepends = libtorrent-rasterbar
 	makedepends = libgcrypt
 	makedepends = libzip
+	makedepends = boost
 	depends = libtorrent-rasterbar
 	depends = libgcrypt
 	depends = libzip
