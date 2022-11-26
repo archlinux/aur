@@ -4,7 +4,7 @@ _pkgname=MMUPHin
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Meta-analysis Methods with Uniform Pipeline for Heterogeneity in Microbiome Studies'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,6 +18,7 @@ depends=(
   r-igraph
   r-maaslin2
   r-metafor
+  r-stringr
   r-tidyr
 )
 optdepends=(
