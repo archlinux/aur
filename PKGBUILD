@@ -4,7 +4,7 @@ _pkgname=cleanUpdTSeq
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=1.36.0
-pkgrel=1
+pkgrel=3
 pkgdesc="cleanUpdTSeq cleans up artifacts from polyadenylation sites from oligo(dT)-mediated 3' end RNA sequending data"
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,6 +18,7 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-iranges
+  r-s4vectors
   r-seqinr
   r-stringr
 )
