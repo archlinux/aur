@@ -1,7 +1,7 @@
 pkgbase = r-tximeta
 	pkgdesc = Transcript Quantification Import with Automatic Metadata
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/tximeta
 	arch = any
 	license = GPL
@@ -23,6 +23,7 @@ pkgbase = r-tximeta
 	optdepends = r-deseq2
 	optdepends = r-devtools
 	optdepends = r-edger
+	optdepends = r-fishpond
 	optdepends = r-knitr
 	optdepends = r-limma
 	optdepends = r-org.dm.eg.db

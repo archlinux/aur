@@ -4,7 +4,7 @@ _pkgname=tximeta
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Transcript Quantification Import with Automatic Metadata'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,7 @@ optdepends=(
   r-deseq2
   r-devtools
   r-edger
+  r-fishpond
   r-knitr
   r-limma
   r-org.dm.eg.db
