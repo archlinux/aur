@@ -4,7 +4,7 @@ _pkgname=spp
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=4
+pkgrel=7
 pkgdesc='ChIP-Seq Processing Pipeline'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ depends=(
 optdepends=(
   r-methods
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('3c890f3c414183167f9643b556621dcdc14ce6a1b54a04d618c74070fdebfd23')
 
 build() {
