@@ -1,21 +1,23 @@
 pkgbase = r-sctransform
 	pkgdesc = Variance Stabilizing Transformations for Single Cell UMI Data
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=sctransform
 	arch = x86_64
 	license = GPL
+	depends = gcc
 	depends = r
+	depends = r-dplyr
 	depends = r-future
 	depends = r-future.apply
 	depends = r-ggplot2
 	depends = r-gridextra
+	depends = r-magrittr
 	depends = r-matrixstats
 	depends = r-rcpp
 	depends = r-rcpparmadillo
 	depends = r-reshape2
-	depends = r-dplyr
-	depends = gcc
+	depends = r-rlang
 	optdepends = r-glmgampoi
 	optdepends = r-irlba
 	optdepends = r-knitr

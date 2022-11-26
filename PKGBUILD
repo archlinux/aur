@@ -5,23 +5,25 @@ _pkgname=sctransform
 _pkgver=0.3.5
 pkgname=r-${_pkgname,,}
 pkgver=0.3.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Variance Stabilizing Transformations for Single Cell UMI Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
+  gcc
   r
+  r-dplyr
   r-future
   r-future.apply
   r-ggplot2
   r-gridextra
+  r-magrittr
   r-matrixstats
   r-rcpp
   r-rcpparmadillo
   r-reshape2
-  r-dplyr
-  gcc
+  r-rlang
 )
 optdepends=(
   r-glmgampoi
