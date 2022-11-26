@@ -1,7 +1,7 @@
 pkgbase = r-motifstack
 	pkgdesc = Plot stacked logos for single or multiple DNA, RNA and amino acid sequence
 	pkgver = 1.42.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/motifStack
 	arch = any
 	license = GPL
@@ -16,6 +16,7 @@ pkgbase = r-motifstack
 	optdepends = r-biocstyle
 	optdepends = r-grimport
 	optdepends = r-grimport2
+	optdepends = r-jaspar2020
 	optdepends = r-knitr
 	optdepends = r-motifdb
 	optdepends = r-rcolorbrewer
