@@ -4,7 +4,7 @@ _pkgname=CRISPRseek
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Design of target-specific guide RNAs in CRISPR-Cas9, genome-editing systems'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,9 +32,16 @@ depends=(
 optdepends=(
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg19
+  r-bsgenome.mmusculus.ucsc.mm10
+  r-lattice
+  r-mass
   r-org.hs.eg.db
+  r-org.mm.eg.db
   r-runit
+  r-tensorflow
+  r-testthat
   r-txdb.hsapiens.ucsc.hg19.knowngene
+  r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('309987717b07b3c9b276309b435a4e16aaabec62080eadf1a81807d63457a898')

@@ -1,7 +1,7 @@
 pkgbase = r-crisprseek
 	pkgdesc = Design of target-specific guide RNAs in CRISPR-Cas9, genome-editing systems
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/CRISPRseek
 	arch = any
 	license = GPL
@@ -25,9 +25,16 @@ pkgbase = r-crisprseek
 	depends = r-xvector
 	optdepends = r-biocstyle
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-bsgenome.mmusculus.ucsc.mm10
+	optdepends = r-lattice
+	optdepends = r-mass
 	optdepends = r-org.hs.eg.db
+	optdepends = r-org.mm.eg.db
 	optdepends = r-runit
+	optdepends = r-tensorflow
+	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CRISPRseek_1.38.0.tar.gz
 	sha256sums = 309987717b07b3c9b276309b435a4e16aaabec62080eadf1a81807d63457a898
 
