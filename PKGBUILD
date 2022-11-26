@@ -5,19 +5,20 @@ _pkgname=ClusterR
 _pkgver=1.2.7
 pkgname=r-${_pkgname,,}
 pkgver=1.2.7
-pkgrel=1
+pkgrel=3
 pkgdesc='Gaussian Mixture Models, K-Means, Mini-Batch-Kmeans, K-Medoids and Affinity Propagation Clustering'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
+  blas
   r
   r-ggplot2
   r-gmp
   r-gtools
+  r-lifecycle
   r-rcpp
   r-rcpparmadillo
-  blas
 )
 optdepends=(
   r-covr

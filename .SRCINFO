@@ -1,17 +1,18 @@
 pkgbase = r-clusterr
 	pkgdesc = Gaussian Mixture Models, K-Means, Mini-Batch-Kmeans, K-Medoids and Affinity Propagation Clustering
 	pkgver = 1.2.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ClusterR
 	arch = x86_64
 	license = GPL
+	depends = blas
 	depends = r
 	depends = r-ggplot2
 	depends = r-gmp
 	depends = r-gtools
+	depends = r-lifecycle
 	depends = r-rcpp
 	depends = r-rcpparmadillo
-	depends = blas
 	optdepends = r-covr
 	optdepends = r-fd
 	optdepends = r-knitr
