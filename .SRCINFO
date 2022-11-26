@@ -2,7 +2,7 @@ pkgbase = netflix
 	pkgdesc = Unnofficial Netflix desktop application
 	pkgver = 1.0.5
 	pkgrel = 2
-	url = https://gitlab.com/netflix-desktop/application.git
+	url = https://gitlab.com/netflix-desktop/application
 	arch = x86_64
 	license = GPL
 	depends = libelectron
@@ -11,7 +11,7 @@ pkgbase = netflix
 	depends = libxss
 	depends = git
 	conflicts = Netflix-bin
-	source = git+https://gitlab.com/netflix-desktop/application.git
+	source = https://gitlab.com/netflix-desktop/application/-/archive/1.0.5-2/application-1.0.5-2.tar.bz2
 	sha256sums = SKIP
 
 pkgname = netflix
