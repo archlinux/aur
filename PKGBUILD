@@ -2,7 +2,7 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
 pkgname=kime-bin
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -24,8 +24,8 @@ source=(
     ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-refs.tags.v${pkgver}.tar.zst"
 )
 
-sha256sums=('8fa66a8d64ba8e139e8f4518a5ce306142505973621a476e271893a1b8e9b9cb'
-            '2b23d7277a0b462915a67d1b90a39761be7117d4d91b927f4ee3ee4ee22d9bc4')
+sha256sums=('f383e4012fb5a5421e2d78dd6c6700a78a06d6b840abc83f69d1c469b8298931'
+            '2a58ff20d3b9a2f6b5c9a916877789eca99d8bfc2f161cb6444379b15ece8717')
 
  
 build() {
