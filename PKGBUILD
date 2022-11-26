@@ -4,7 +4,7 @@ _pkgname=mirTarRnaSeq
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='mirTarRnaSeq'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,6 +28,7 @@ optdepends=(
   r-knitr
   r-r.cache
   r-rmarkdown
+  r-sponge
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('dde3db599f019bc70e3b70d573ef0c9383ab759650e23db55d34e97918828e1e')

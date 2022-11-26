@@ -1,7 +1,7 @@
 pkgbase = r-mirtarrnaseq
 	pkgdesc = mirTarRnaSeq
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/mirTarRnaSeq
 	arch = any
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = r-mirtarrnaseq
 	optdepends = r-knitr
 	optdepends = r-r.cache
 	optdepends = r-rmarkdown
+	optdepends = r-sponge
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/mirTarRnaSeq_1.6.0.tar.gz
 	sha256sums = dde3db599f019bc70e3b70d573ef0c9383ab759650e23db55d34e97918828e1e
 
