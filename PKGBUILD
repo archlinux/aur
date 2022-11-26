@@ -4,7 +4,7 @@ _pkgname=miaSim
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Microbiome Data Simulation'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,10 +12,12 @@ license=('Artistic2.0')
 depends=(
   r
   r-desolve
+  r-gtools
+  r-matrixgenerics
   r-powerlaw
+  r-s4vectors
   r-summarizedexperiment
   r-treesummarizedexperiment
-  r-gtools
 )
 optdepends=(
   r-biocstyle
