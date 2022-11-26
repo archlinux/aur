@@ -1,7 +1,7 @@
 pkgbase = r-epir
 	pkgdesc = Tools for the Analysis of Epidemiological Data
 	pkgver = 2.0.53
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=epiR
 	arch = any
 	license = GPL
@@ -15,7 +15,6 @@ pkgbase = r-epir
 	depends = r-officer
 	optdepends = r-foreign
 	optdepends = r-ggplot2
-	optdepends = r-kableextra
 	optdepends = r-knitr
 	optdepends = r-mapproj
 	optdepends = r-maptools
