@@ -5,7 +5,7 @@ _pkgname=MsBackendRawFileReader
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Mass Spectrometry Backend for Reading Thermo Fisher Scientific raw Files'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,6 +25,7 @@ optdepends=(
   r-experimenthub
   r-knitr
   r-lattice
+  r-msbackendmgf
   r-mzr
   r-protviz
   r-rmarkdown
