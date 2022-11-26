@@ -1,7 +1,7 @@
 # Maintainer: Donn <me@donn.website>
 pkgname=cemu-bin
 pkgver=2.0
-pkgrel=17
+pkgrel=18
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
@@ -32,7 +32,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  '460897d64fa1aac2671123eff88b10d7c71f18bb5a1c987a07e34cd8d3acee73'
+  'f439e10b7be66b0e64ee5af6c86177246f8363def932131df99a2c213d4d6c79'
   'SKIP'
   'SKIP'
   'SKIP'
