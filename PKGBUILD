@@ -3,8 +3,8 @@
 # Author: Vitor Lopes <vmnlop@gmail.com>
 
 pkgname=jade-application-kit
-pkgver=3.5.6
-pkgrel=2
+pkgver=3.5.7
+pkgrel=1
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
 url="https://github.com/codesardine/Jade-Application-Kit"
@@ -15,7 +15,7 @@ conflicts=('jade-application-kit-git')
 depends=('python' 'python-gobject' 'webkit2gtk' 'pyside2' 'python-pyqtwebengine')
 makedepends=('python-setuptools')
 source=("https://github.com/codesardine/Jade-Application-Kit/archive/v${pkgver}.tar.gz")
-sha512sums=('5d1e65763371fe61e56eded78092f94737381a4707edac8b87003264c236b88ebc1db159c00e639ef8686e15489977b1fd3dfdbd00c53934aa1b4a38f9ad9454')
+sha512sums=('6650b01a9a60f53040f287a4b7cd2a40e0d371efab7f77823ca378e6c5ebcbdd270341f1a16ce6641e6a9cfc6eb6a3566fc059127703b732fcba436794e50eb6')
 
 prepare() {
     cd "${srcdir}"/jak-${pkgver}
