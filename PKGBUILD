@@ -28,7 +28,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
-  scdoc < man/wpaperd-output.5.scd > target/release/wpaperd-output.5
+  scdoc <man/wpaperd-output.5.scd >target/release/wpaperd-output.5
 }
 
 package() {
