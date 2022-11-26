@@ -4,7 +4,7 @@ _pkgname=learnr
 _pkgver=0.11.2
 pkgname=r-${_pkgname,,}
 pkgver=0.11.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Interactive Tutorials for R'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,6 +25,7 @@ depends=(
   r-promises
   r-rappdirs
   r-renv
+  r-rlang
   r-rmarkdown
   r-rprojroot
   r-shiny
@@ -32,7 +33,13 @@ depends=(
 )
 optdepends=(
   r-callr
-  r-rlang
+  r-dbi
+  r-httpuv
+  r-later
+  r-reticulate
+  r-rsqlite
+  r-rstudioapi
+  r-shinytest2
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
