@@ -1,6 +1,6 @@
 pkgbase = yavta-git
 	pkgdesc = Yet Another V4L2 Test Application
-	pkgver = r129.c7b5b7570476
+	pkgver = r129.c7b5b75
 	pkgrel = 1
 	url = https://git.ideasonboard.org/yavta.git
 	arch = x86_64

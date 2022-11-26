@@ -1,6 +1,6 @@
 _pkgname=yavta
 pkgname=${_pkgname}-git
-pkgver=r129.c7b5b7570476
+pkgver=r129.c7b5b75
 pkgrel=1
 pkgdesc='Yet Another V4L2 Test Application'
 arch=('x86_64' 'i686' 'aarch64')
