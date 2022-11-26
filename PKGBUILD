@@ -4,45 +4,48 @@ _pkgname=EWCE
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Expression Weighted Celltype Enrichment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
-  r-annotationhub
-  r-biomart
-  r-cowplot
+  r-biocparallel
+  r-data.table
+  r-delayedarray
+  r-dplyr
   r-ewcedata
-  r-experimenthub
-  r-future
-  r-ggdendro
   r-ggplot2
-  r-gridextra
   r-hgnchelper
   r-limma
+  r-orthogene
   r-reshape2
   r-rnomni
-  r-scales
+  r-singlecellexperiment
   r-stringr
   r-summarizedexperiment
-  r-singlecellexperiment
-  r-biocparallel
-  r-orthogene
-  r-data.table
 )
 optdepends=(
+  r-badger
   r-biocstyle
-  r-data.table
-  r-devtools
+  r-cowplot
+  r-delayedmatrixstats
+  r-deseq2
+  r-ggdendro
+  r-grdevices
+  r-grid
+  r-gridextra
   r-knitr
+  r-magick
   r-markdown
+  r-mast
   r-memoise
   r-readxl
+  r-remotes
   r-rmarkdown
+  r-scales
   r-sctransform
-  r-singlecellexperiment
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
