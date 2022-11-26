@@ -4,7 +4,7 @@ _pkgname=datawizard
 _pkgver=0.6.4
 pkgname=r-${_pkgname,,}
 pkgver=0.6.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Easy Data Wrangling'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,21 +16,31 @@ depends=(
 optdepends=(
   r-bayestestr
   r-boot
+  r-brms
+  r-data.table
+  r-dplyr
   r-effectsize
   r-gamm4
   r-ggplot2
+  r-gt
+  r-haven
+  r-htmltools
+  r-httr
   r-knitr
   r-lme4
-  r-mass
-  r-modelbased
+  r-mediation
   r-parameters
   r-poorman
   r-psych
+  r-readr
+  r-readxl
+  r-rio
   r-rmarkdown
   r-rstanarm
   r-see
-  r-spelling
   r-testthat
+  r-tidyr
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('37852d11f8455737924a78033849984bc4519c04e74bb17dcf32d6bf10806347')
