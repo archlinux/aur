@@ -2,7 +2,7 @@
 _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python-$_projectname"
-pkgver='1.1.0'
+pkgver='1.2.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork'
@@ -13,7 +13,7 @@ depends=('python' 'python-humanfriendly' 'smartmontools')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8540d428045345a136ff492f4c423446eda5e8d23d254532c08edbc3fe851a494e3a9b10054bb4f1c6dd2ff312d746f83f604453e8d9fec37bc48a59b122c298')
+sha512sums=('6952e660866f61d42f77e2a9db878603d4cf239fe35f5d9521690582df1f55d60cac2e8a88180b293814134c26db4a1b9b8b72aecec47859812fb28d8353a7b3')
 
 _sourcedirectory="$_reponame-$pkgver"
 
