@@ -4,18 +4,18 @@ _pkgname=spatstat.linnet
 _pkgver=3.0-3
 pkgname=r-${_pkgname,,}
 pkgver=3.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Linear Networks Functionality of the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-spatstat.core
   r-spatstat.data
   r-spatstat.explore
   r-spatstat.geom
   r-spatstat.model
+  r-spatstat.random
   r-spatstat.sparse
   r-spatstat.utils
 )
