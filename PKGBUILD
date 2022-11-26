@@ -4,33 +4,26 @@ _pkgname=cosmosR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='COSMOS (Causal Oriented Search of Multi-Omic Space)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-annotationdbi
-  r-biomart
   r-carnival
   r-dorothea
   r-dplyr
-  r-ggplot2
   r-gseabase
   r-igraph
-  r-magrittr
-  r-org.hs.eg.db
-  r-plyr
+  r-progress
   r-purrr
-  r-readr
   r-rlang
-  r-scales
   r-stringr
-  r-tibble
   r-visnetwork
 )
 optdepends=(
+  r-ggplot2
   r-knitr
   r-piano
   r-rmarkdown
