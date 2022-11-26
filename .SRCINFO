@@ -1,7 +1,7 @@
 pkgbase = r-rrvgo
 	pkgdesc = Reduce + Visualize GO
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/rrvgo
 	arch = any
 	license = GPL
@@ -37,7 +37,6 @@ pkgbase = r-rrvgo
 	optdepends = r-org.hs.eg.db
 	optdepends = r-org.mm.eg.db
 	optdepends = r-org.mmu.eg.db
-	optdepends = r-org.pf.plasmo.db
 	optdepends = r-org.pt.eg.db
 	optdepends = r-org.rn.eg.db
 	optdepends = r-org.sc.sgd.db

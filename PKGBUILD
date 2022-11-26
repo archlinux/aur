@@ -4,7 +4,7 @@ _pkgname=rrvgo
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Reduce + Visualize GO'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -44,7 +44,6 @@ optdepends=(
   r-org.hs.eg.db
   r-org.mm.eg.db
   r-org.mmu.eg.db
-  r-org.pf.plasmo.db
   r-org.pt.eg.db
   r-org.rn.eg.db
   r-org.sc.sgd.db
