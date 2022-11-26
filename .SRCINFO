@@ -1,7 +1,7 @@
 pkgbase = r-available
 	pkgdesc = Check if the Title of a Package is Available, Appropriate and Interesting
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=available
 	arch = any
 	license = MIT
@@ -17,7 +17,6 @@ pkgbase = r-available
 	depends = r-stringdist
 	depends = r-tibble
 	depends = r-tidytext
-	depends = r-udapi
 	depends = r-yesno
 	optdepends = r-biocmanager
 	optdepends = r-covr

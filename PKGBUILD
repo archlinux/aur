@@ -4,7 +4,7 @@ _pkgname=available
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Check if the Title of a Package is Available, Appropriate and Interesting'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,6 @@ depends=(
   r-stringdist
   r-tibble
   r-tidytext
-  r-udapi
   r-yesno
 )
 optdepends=(
