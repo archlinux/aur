@@ -4,7 +4,7 @@ _pkgname=hca
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Exploring the Human Cell Atlas Data Coordinating Platform'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,6 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-futile.logger
   r-knitr
   r-loomexperiment
   r-methods
