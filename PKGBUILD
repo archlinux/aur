@@ -4,7 +4,7 @@ _pkgname=fgga
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Hierarchical ensemble method based on factor graph'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,8 +24,9 @@ optdepends=(
   r-go.db
   r-gostats
   r-knitr
-  r-perfmeas
+  r-proc
   r-rmarkdown
+  r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8e5166cc3cf48538968bffca3c01f509f74045f0c08e9533e8b64e511e9d82a1')
