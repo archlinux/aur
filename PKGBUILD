@@ -4,7 +4,7 @@ _pkgname=biomartr
 _pkgver=1.0.2
 pkgname=r-${_pkgname,,}
 pkgver=1.0.2
-pkgrel=3
+pkgrel=6
 pkgdesc='Genomic Data Retrieval'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,6 +27,7 @@ depends=(
   r-readr
   r-stringr
   r-tibble
+  r-withr
   r-xml
 )
 optdepends=(
