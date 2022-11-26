@@ -1,7 +1,7 @@
 pkgbase = r-drtmle
 	pkgdesc = Doubly-Robust Nonparametric Estimation and Inference
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=drtmle
 	arch = any
 	license = MIT
@@ -9,9 +9,7 @@ pkgbase = r-drtmle
 	depends = r-future.apply
 	depends = r-np
 	depends = r-superlearner
-	optdepends = r-earth
 	optdepends = r-foreach
-	optdepends = r-future.batchtools
 	optdepends = r-gam
 	optdepends = r-knitr
 	optdepends = r-nloptr

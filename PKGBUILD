@@ -4,7 +4,7 @@ _pkgname=drtmle
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Doubly-Robust Nonparametric Estimation and Inference'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,9 +16,7 @@ depends=(
   r-superlearner
 )
 optdepends=(
-  r-earth
   r-foreach
-  r-future.batchtools
   r-gam
   r-knitr
   r-nloptr
