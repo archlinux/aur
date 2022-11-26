@@ -4,7 +4,7 @@ _pkgname=SIAMCAT
 _pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Statistical Inference of Associations between Microbial Communities And host phenoTypes'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,10 +17,14 @@ depends=(
   r-gridbase
   r-gridextra
   r-infotheo
+  r-lgr
   r-liblinear
+  r-lmertest
   r-matrixstats
-  r-mlr
-  r-paramhelpers
+  r-mlr3
+  r-mlr3learners
+  r-mlr3tuning
+  r-paradox
   r-phyloseq
   r-proc
   r-progress
@@ -28,12 +32,6 @@ depends=(
   r-rcolorbrewer
   r-scales
   r-stringr
-  r-mlr3
-  r-lmertest
-  r-mlr3learners
-  r-mlr3tuning
-  r-paradox
-  r-lgr
 )
 optdepends=(
   r-biocstyle
