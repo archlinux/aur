@@ -4,19 +4,20 @@ _pkgname=tidygraph
 _pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=1.2.2
-pkgrel=1
+pkgrel=3
 pkgdesc='A Tidy API for Graph Manipulation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-cli
+  r-cpp11
   r-dplyr
   r-igraph
   r-magrittr
   r-pillar
   r-r6
-  r-rcpp
   r-rlang
   r-tibble
   r-tidyr

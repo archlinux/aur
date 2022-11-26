@@ -1,17 +1,18 @@
 pkgbase = r-tidygraph
 	pkgdesc = A Tidy API for Graph Manipulation
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidygraph
 	arch = x86_64
 	license = MIT
 	depends = r
+	depends = r-cli
+	depends = r-cpp11
 	depends = r-dplyr
 	depends = r-igraph
 	depends = r-magrittr
 	depends = r-pillar
 	depends = r-r6
-	depends = r-rcpp
 	depends = r-rlang
 	depends = r-tibble
 	depends = r-tidyr
