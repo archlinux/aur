@@ -1,7 +1,7 @@
 pkgbase = r-ggdist
 	pkgdesc = Visualizations of Distributions and Uncertainty
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=ggdist
 	arch = any
 	license = GPL
@@ -9,7 +9,9 @@ pkgbase = r-ggdist
 	depends = r-distributional
 	depends = r-dplyr
 	depends = r-ggplot2
+	depends = r-glue
 	depends = r-hdinterval
+	depends = r-numderiv
 	depends = r-rlang
 	depends = r-scales
 	depends = r-tibble
@@ -25,6 +27,8 @@ pkgbase = r-ggdist
 	optdepends = r-gdtools
 	optdepends = r-knitr
 	optdepends = r-modelr
+	optdepends = r-palmerpenguins
+	optdepends = r-patchwork
 	optdepends = r-pkgdown
 	optdepends = r-png
 	optdepends = r-posterior
