@@ -1,7 +1,7 @@
 pkgbase = r-roptim
 	pkgdesc = General Purpose Optimization in R using C++
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=roptim
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-roptim
 	depends = r-rcpp
 	depends = r-rcpparmadillo
 	optdepends = r-r.rsp
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/roptim_0.1.6.tar.gz
 	sha256sums = 7ef0c2a2ddb3703efaabf337fa0026485875d5ffb35ba3ef5d60eb0c62c30686
 

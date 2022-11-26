@@ -5,7 +5,7 @@ _pkgname=roptim
 _pkgver=0.1.6
 pkgname=r-${_pkgname,,}
 pkgver=0.1.6
-pkgrel=1
+pkgrel=4
 pkgdesc='General Purpose Optimization in R using C++'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
   r-r.rsp
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('7ef0c2a2ddb3703efaabf337fa0026485875d5ffb35ba3ef5d60eb0c62c30686')
