@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ALS
-_pkgver=0.0.6
+_pkgver=0.0.7
 pkgname=r-${_pkgname,,}
-pkgver=0.0.6
-pkgrel=4
+pkgver=0.0.7
+pkgrel=1
 pkgdesc='Multivariate Curve Resolution Alternating Least Squares (MCR-ALS)'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,8 +14,8 @@ depends=(
   r-iso
   r-nnls
 )
-source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca90d27115ae9e476967f521bf6935723e410a3bf92477e7570e14bfd3b099eb')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('57a195e8c5a3d856cd543c99ae532cc25c83b3b444f513b74447bf4a72378da0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
