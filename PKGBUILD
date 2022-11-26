@@ -4,7 +4,7 @@ _pkgname=CellaRepertorium
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Data structures, clustering and testing for single cell immune receptor repertoires (scRNAseq RepSeq/AIRR-seq)'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,8 @@ depends=(
   r-biostrings
   r-dplyr
   r-forcats
+  r-generics
+  r-glue
   r-progress
   r-purrr
   r-rcpp
