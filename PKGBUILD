@@ -4,7 +4,7 @@
 
 pkgname=jade-application-kit
 pkgver=3.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
 url="https://github.com/codesardine/Jade-Application-Kit"
