@@ -5,12 +5,15 @@ _pkgname=crossmeta
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Cross Platform Meta-Analysis of Microarray Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
+  curl
+  libxml2
+  openssh
   r
   r-affxparser
   r-affy
@@ -20,7 +23,6 @@ depends=(
   r-biocmanager
   r-data.table
   r-dbi
-  r-deseq2
   r-dt
   r-edger
   r-fdrtool
@@ -30,7 +32,6 @@ depends=(
   r-metama
   r-miniui
   r-oligo
-  r-rcolorbrewer
   r-rcurl
   r-reader
   r-readxl
@@ -40,15 +41,10 @@ depends=(
   r-shinyjs
   r-shinypanel
   r-shinywidgets
-  r-statmod
   r-stringr
-  r-summarizedexperiment
   r-sva
   r-tibble
   r-xml
-  libxml2
-  openssh
-  curl
 )
 optdepends=(
   r-knitr
@@ -56,7 +52,6 @@ optdepends=(
   r-org.hs.eg.db
   r-rmarkdown
   r-testthat
-  r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('c80aaa69451750c5b67442f39c0a5ec543f75ef60c8553d369c15a992421142d')
