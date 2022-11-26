@@ -1,7 +1,7 @@
 pkgbase = r-hmisc
 	pkgdesc = Harrell Miscellaneous
 	pkgver = 4.7.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=Hmisc
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,6 @@ pkgbase = r-hmisc
 	depends = r-htmltools
 	depends = r-latticeextra
 	depends = r-viridis
-	depends = r-stringi
 	optdepends = r-acepack
 	optdepends = r-chron
 	optdepends = r-knitr
@@ -26,6 +25,7 @@ pkgbase = r-hmisc
 	optdepends = r-plyr
 	optdepends = r-rlang
 	optdepends = r-rms
+	optdepends = r-rstudioapi
 	optdepends = r-tables
 	optdepends = r-vgam
 	source = https://cran.r-project.org/src/contrib/Hmisc_4.7-2.tar.gz
