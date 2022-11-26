@@ -4,7 +4,7 @@ _pkgname=statTarget
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Statistical Analysis of Molecular Profiles'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,10 +21,7 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-gwidgets2
-  r-gwidgets2rgtk2
   r-knitr
-  r-rgtk2
   r-rmarkdown
   r-testthat
 )
