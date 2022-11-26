@@ -4,7 +4,7 @@ _pkgname=ranger
 _pkgver=0.14.1
 pkgname=r-${_pkgname,,}
 pkgver=0.14.1
-pkgrel=1
+pkgrel=4
 pkgdesc='A Fast Implementation of Random Forests'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   r-rcppeigen
 )
 optdepends=(
-  r-covr
   r-survival
   r-testthat
 )
