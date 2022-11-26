@@ -4,7 +4,7 @@ _pkgname=forestplot
 _pkgver=3.1.0
 pkgname=r-${_pkgname,,}
 pkgver=3.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Advanced Forest Plot Using 'grid' Graphics"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,11 +17,14 @@ depends=(
 optdepends=(
   r-dplyr
   r-knitr
+  r-purrr
   r-rlang
   r-rmarkdown
   r-rmeta
   r-testthat
+  r-tibble
   r-tidyr
+  r-tidyselect
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('0be318107120197e6c9109ba18ba91c44989c921524ceb94584a1fb46e056376')
