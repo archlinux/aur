@@ -4,7 +4,7 @@ _pkgname=dendextend
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Extending 'dendrogram' Functionality in R"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,6 +25,7 @@ optdepends=(
   r-data.table
   r-dendroextras
   r-dendser
+  r-distory
   r-dynamictreecut
   r-fpc
   r-ggdendro
@@ -34,11 +35,15 @@ optdepends=(
   r-knitr
   r-mass
   r-microbenchmark
+  r-modulecolor
+  r-phangorn
   r-pvclust
   r-rmarkdown
   r-rpart
   r-seriation
   r-testthat
+  r-wgcna
+  r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ec2fd09c31a2a93292d87a9bd5bfc261840de941dfded79d6c2fe87116708466')
