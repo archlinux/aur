@@ -1,7 +1,7 @@
 pkgbase = r-gghighlight
 	pkgdesc = Highlight Lines and Points in 'ggplot2'
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gghighlight
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = r-gghighlight
 	depends = r-purrr
 	depends = r-rlang
 	depends = r-tibble
+	optdepends = r-geomtextpath
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-sf

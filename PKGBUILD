@@ -4,7 +4,7 @@ _pkgname=gghighlight
 _pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Highlight Lines and Points in 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
   r-tibble
 )
 optdepends=(
+  r-geomtextpath
   r-knitr
   r-rmarkdown
   r-sf
