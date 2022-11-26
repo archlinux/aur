@@ -4,7 +4,7 @@ _pkgname=clusterSim
 _pkgver=0.50-1
 pkgname=r-${_pkgname,,}
 pkgver=0.50.1
-pkgrel=3
+pkgrel=6
 pkgdesc='Searching for Optimal Clustering Procedure for a Data Set'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
   r-ade4
   r-e1071
   r-r2html
-  r-rgl
 )
 optdepends=(
   r-mlbench
