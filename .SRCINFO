@@ -1,7 +1,7 @@
 pkgbase = r-envstats
 	pkgdesc = Package for Environmental Statistics, Including US EPA Guidance
 	pkgver = 2.7.0
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=EnvStats
 	arch = any
 	license = GPL
@@ -9,10 +9,12 @@ pkgbase = r-envstats
 	depends = r-ggplot2
 	depends = r-nortest
 	optdepends = r-boot
+	optdepends = r-covr
+	optdepends = r-hmisc
 	optdepends = r-lattice
 	optdepends = r-qcc
 	optdepends = r-sp
-	optdepends = r-testthat
+	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/EnvStats_2.7.0.tar.gz
 	sha256sums = 09a6f0d5b60856c7298371e4a8a085a1db7abf0e71ccb9a2dc9ca24248fb5d81
 
