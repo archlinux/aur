@@ -1,13 +1,12 @@
 pkgbase = r-cancersubtypes
 	pkgdesc = Cancer subtypes identification, validation and visualization based on multiple genomic data sets
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/CancerSubtypes
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-consensusclusterplus
-	depends = r-icluster
 	depends = r-impute
 	depends = r-limma
 	depends = r-nmf

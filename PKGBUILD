@@ -4,7 +4,7 @@ _pkgname=CancerSubtypes
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Cancer subtypes identification, validation and visualization based on multiple genomic data sets'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-consensusclusterplus
-  r-icluster
   r-impute
   r-limma
   r-nmf
