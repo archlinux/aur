@@ -3,13 +3,9 @@
 # Contributor: Tim Besard <tim $dot$ besard $at$ gmail $dot$ com>
 # Contributor: Jelle van der Waa <jellevdwaa @ gmail.com>
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
-# from: snap beta
-# what: whatpulse
-_snap=iHVATX2faqAJciG5YGNM241W8fE8UvsF
-_rev_amd64=14 # snap:revision
-
+_tag=latest
 pkgname=whatpulse
-pkgver=4.2
+pkgver=5.0
 pkgrel=1
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
@@ -22,7 +18,6 @@ depends=(
 	hicolor-icon-theme
 )
 makedepends=(
-	squashfs-tools
 	imagemagick
 )
 optdepends=(
@@ -32,17 +27,21 @@ source=(
 	'whatpulse.desktop'
 	LICENSE
 )
-source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${_rev_amd64}.snap")
+source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://d2bz2twqkobp4d.cloudfront.net/${_tag:-$pkgver}/linux/whatpulse-linux-${_tag:-$pkgver}_amd64.AppImage")
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
-sha256sums_x86_64=('1cc5335a406f75456e9f70c58e95a194ab4753ac922c3ca985f310084c6d5e7f')
+sha256sums_x86_64=('9d4579339d255152748a8d1ed842dc9e0d83347ac57c4fd3cb6e3a6e14ec7a2a')
+
+_extract() {
+	./"${pkgname}-${pkgver}-amd64.AppImage" --appimage-extract "$1"
+}
 
 prepare() {
-	rm -rf sfs
-	unsquashfs -q -i -n -d sfs \
-		"${pkgname%*-bin}-$pkgver.sfs" \
-		meta/gui/icon.png \
-		usr/bin/whatpulse
+	chmod +x "${pkgname}-${pkgver}-amd64.AppImage"
+	_extract usr/bin/whatpulse
+	_extract 'whatpulse.png'
+	_extract 'usr/share/icons/hicolor/512x512/apps/whatpulse.png'
+	ln -sf squashfs-root sfs
 }
 
 package() {
@@ -61,7 +60,7 @@ package() {
 				+gravity -crop 615x680+0+0 +repage \
 				-resize "${size}x${size}" -background none \
 				-gravity center -extent "${size}x${size}" \
-				sfs/meta/gui/icon.png xc:"#656565" -channel RGB -clut \
+				sfs//whatpulse.png xc:"#656565" -channel RGB -clut \
 				"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/whatpulse.png"
 	done
 }
