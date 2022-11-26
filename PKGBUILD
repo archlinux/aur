@@ -5,7 +5,7 @@ _pkgname=epialleleR
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Fast, Epiallele-Aware Methylation Reporter'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,6 +27,9 @@ depends=(
   make
 )
 optdepends=(
+  r-ggplot2
+  r-ggstance
+  r-gridextra
   r-knitr
   r-rmarkdown
   r-runit
