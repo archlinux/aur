@@ -1,15 +1,15 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
 pkgname=kaizen
 pkgdesc="Kaizen ElasticSearch GUI"
 pkgver=6.850.110
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.elastic-kaizen.com/'
 license=('custom')
-optdepends=('gtk-theme-murrine-collection')
 _zip="${pkgname}-${pkgver}-linux-x64.zip"
 source=("${_zip}::https://elastic-kaizen.com/install/${pkgver}/${_zip}"
         "kaizen.desktop"
@@ -22,16 +22,14 @@ sha512sums=('7b974b791a0ea056962c57f14cff82d4852d295db6761fff343100f2a70866157fb
             'a0277b72a04cfa7dad2ae8819fc5a009211bbbb44645cc1b7f73fb66e9473d47d5fa6273dfc977bd6746bc435e5ddc21ba28d3cb03e3f090ae6b5ac82137b913')
 
 build() {
-
   # Correct kaizen.sh
-  sed -e "s/jvm/\/opt\/${pkgname}\/jvm/g" -i "$srcdir/${pkgname}.sh"
-  sed -e "s/${pkgname}.jar/\/opt\/${pkgname}\/${pkgname}.jar/g" -i "$srcdir/${pkgname}.sh"
-  sed -e "s/bash/bash\ncd \$HOME\/.config\/kaizen/" -i "$srcdir/${pkgname}.sh"
+  sed -e "s/jvm/\/opt\/${pkgname}\/jvm/g" -i "${srcdir}/${pkgname}.sh"
+  sed -e "s/${pkgname}.jar/\/opt\/${pkgname}\/${pkgname}.jar/g" -i "${srcdir}/${pkgname}.sh"
+  sed -e "s/bash/bash\ncd \$HOME\/.config\/kaizen/" -i "${srcdir}/${pkgname}.sh"
 }
 
 package() {
-
-  install -Dm644 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -dm755 "${pkgdir}/opt"
   mkdir -p "${pkgdir}/opt/${pkgname}/"
@@ -40,7 +38,7 @@ package() {
   cp -a "${srcdir}/jvm" "${pkgdir}/opt/${pkgname}/"
 
   # hack to create config folder
-  mkdir -p "$HOME/.config/${pkgname}"
+  mkdir -p "${HOME}/.config/${pkgname}"
 
   install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
