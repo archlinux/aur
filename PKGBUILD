@@ -4,7 +4,7 @@ _pkgname=flextable
 _pkgver=0.8.3
 pkgname=r-${_pkgname,,}
 pkgver=0.8.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Functions for Tabular Reporting'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,11 +25,18 @@ depends=(
 optdepends=(
   r-bookdown
   r-broom
+  r-broom.mixed
+  r-cluster
   r-commonmark
+  r-doconv
   r-equatags
   r-ggplot2
+  r-lme4
+  r-locatexec
   r-magick
   r-mgcv
+  r-nlme
+  r-officedown
   r-pdftools
   r-scales
   r-testthat
