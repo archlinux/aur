@@ -4,14 +4,13 @@ _pkgname=ptw
 _pkgver=1.9-16
 pkgname=r-${_pkgname,,}
 pkgver=1.9.16
-pkgrel=3
+pkgrel=6
 pkgdesc='Parametric Time Warping'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-nloptr
   r-rcppde
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
