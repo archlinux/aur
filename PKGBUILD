@@ -4,7 +4,7 @@ _pkgname=FGNet
 _pkgver=3.32.0
 pkgname=r-${_pkgname,,}
 pkgver=3.32.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Functional Gene Networks derived from biological enrichment analyses'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,7 +30,6 @@ optdepends=(
   r-org.sc.sgd.db
   r-rcurl
   r-reactome.db
-  r-rgtk2
   r-rmarkdown
   r-runit
   r-topgo

@@ -1,7 +1,7 @@
 pkgbase = r-fgnet
 	pkgdesc = Functional Gene Networks derived from biological enrichment analyses
 	pkgver = 3.32.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/FGNet
 	arch = any
 	license = GPL
@@ -23,7 +23,6 @@ pkgbase = r-fgnet
 	optdepends = r-org.sc.sgd.db
 	optdepends = r-rcurl
 	optdepends = r-reactome.db
-	optdepends = r-rgtk2
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-topgo
