@@ -4,7 +4,7 @@ _pkgname=MSstatsPTM
 _pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=2.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Statistical Characterization of Post-translational Modifications'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,6 @@ depends=(
   r-stringr
 )
 optdepends=(
-  r-biocstyle
   r-covr
   r-knitr
   r-rmarkdown
