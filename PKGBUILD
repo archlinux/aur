@@ -4,7 +4,7 @@ _pkgname=MatrixQCvis
 _pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=1.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Shiny-based interactive data-quality exploration for omics data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,14 +19,12 @@ depends=(
   r-impute
   r-imputelcmd
   r-limma
-  r-openxlsx
   r-pcamethods
   r-plotly
   r-proda
   r-rlang
   r-rmarkdown
   r-rtsne
-  r-s4vectors
   r-shiny
   r-shinydashboard
   r-shinyhelper
@@ -36,7 +34,6 @@ depends=(
   r-tidyr
   r-umap
   r-upsetr
-  r-vegan
   r-vsn
 )
 optdepends=(
