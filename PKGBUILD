@@ -5,7 +5,7 @@ _pkgname=CellNOptR
 _pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=1.44.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Training of boolean logic models of signalling networks using prior knowledge networks and perturbation data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,7 +30,7 @@ optdepends=(
   r-doparallel
   r-dplyr
   r-foreach
-  r-plyr
+  r-knitr
   r-readr
   r-runit
   r-tidyr
