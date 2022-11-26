@@ -4,16 +4,13 @@ _pkgname=yulab.utils
 _pkgver=0.0.5
 pkgname=r-${_pkgname,,}
 pkgver=0.0.5
-pkgrel=1
+pkgrel=7
 pkgdesc="Supporting Functions for Packages Maintained by 'YuLab-SMU'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
-)
-optdepends=(
-  r-pkgbuild
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6ecd4dc5dae40e86b7a462fdac3ab8c0b276dcae5a284eb43390a05b01e3056b')
