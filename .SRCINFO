@@ -1,13 +1,13 @@
 pkgbase = bwidget
 	pkgdesc = A suite of megawidgets for Tk
-	pkgver = 1.9.15
+	pkgver = 1.9.16
 	pkgrel = 1
 	url = https://wiki.tcl.tk/2251
 	arch = any
 	license = GPL
 	depends = bash
 	depends = tcl
-	source = http://downloads.sourceforge.net/project/tcllib/BWidget/1.9.15/bwidget-1.9.15.tar.bz2
-	sha256sums = 9c4dd648fdfd31de7cb5af44b392a1916f949dd195820684d940edcd8485ac13
+	source = http://downloads.sourceforge.net/project/tcllib/BWidget/1.9.16/bwidget-1.9.16.tar.gz
+	sha256sums = bfe0036374b84293d23620a7f6dda86571813d0c7adfed983c1f337e5ce81ae0
 
 pkgname = bwidget
